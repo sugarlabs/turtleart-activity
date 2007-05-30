@@ -1,0 +1,7 @@
+[Activity]
+name = BlockParty
+service_name = org.laptop.BlockPartyActivity
+class = BlockPartyActivity.BlockPartyActivity
+icon = activity-blockparty
+activity_version = 7 
+show_launcher = yes

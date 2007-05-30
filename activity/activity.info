@@ -1,0 +1,7 @@
+[Activity]
+name = TurtleArt
+service_name = org.laptop.TurtleArtActivity
+class = TurtleArtActivity.TurtleArtActivity
+icon = activity-turtleart
+activity_version = 1 
+show_launcher = yes
