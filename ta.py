@@ -13,7 +13,7 @@ import logo
 import turtle
 
 WIDTH=1200
-HEIGHT=900
+HEIGHT=825
 
 DEGTOR = 2*pi/360
 
@@ -479,28 +479,33 @@ def project_flap_pressed(spr,x,y):
 # Startup
 #
 
-def init(top_window, path):
+def init(top_window, path, parentwindow=None):
     global gc, area, category_spr, bgcolor,turtlecanvas, select_mask
     global status_spr, turtle_spr, selbuttons, hidden_palette_icon, project_flap
     global base_path, load_save_folder
     window = top_window
     base_path = path
+    if parentwindow is None:
+        parentwindow = top_window
 
     # remove any children of the window that Sugar may have added
-    for widget in window.get_children(): window.remove(widget)
+    #for widget in window.get_children(): window.remove(widget)
     
-    window.set_title("TurteArt")
+    #window.set_title("TurteArt")
     window.connect("destroy", lambda w: gtk.main_quit())
+    window.set_flags(gtk.CAN_FOCUS)
     window.set_size_request(WIDTH, HEIGHT)
     window.add_events(gtk.gdk.BUTTON_PRESS_MASK)
     window.add_events(gtk.gdk.BUTTON_RELEASE_MASK)
     window.add_events(gtk.gdk.POINTER_MOTION_MASK)
+    parentwindow.add_events(gtk.gdk.KEY_PRESS_MASK)
     window.connect("expose-event", expose_cb)
     window.connect("button-press-event", buttonpress_cb)
     window.connect("button-release-event", buttonrelease_cb)
     window.connect("motion-notify-event", move_cb)
-    window.connect("key_press_event", keypress_cb)
+    parentwindow.connect("key_press_event", keypress_cb)
     window.show()
+    parentwindow.show_all()
     area = window.window
     cursor_pix = gtk.gdk.pixbuf_new_from_file(os.path.join(base_path, 'arrow.gif'))
     cursor = gtk.gdk.Cursor(area.get_display(), cursor_pix, 10, 0)
@@ -516,12 +521,12 @@ def init(top_window, path):
 #    who.setlayer(700)
 
     
-    turtlecanvas = Sprite(0,0,gtk.gdk.Pixmap(area,1200,900,-1))
+    turtlecanvas = Sprite(0,0,gtk.gdk.Pixmap(area,WIDTH,HEIGHT,-1))
     turtlecanvas.type = 'canvas'
     turtlecanvas.setlayer(600)
     select_mask = Sprite(100,100,gtk.gdk.pixbuf_new_from_file(os.path.join(base_path, 'masknumber.gif')))
     select_mask.type = 'selectmask'
-    status_spr = Sprite(0,865,gtk.gdk.pixbuf_new_from_file(os.path.join(base_path, 'status.gif')),True)
+    status_spr = Sprite(0,790,gtk.gdk.pixbuf_new_from_file(os.path.join(base_path, 'status.gif')),True)
     status_spr.type = 'status'
     status_spr.setlayer(400)
     turtle.shapelist = [gtk.gdk.pixbuf_new_from_file(os.path.join(base_path, 'shapes','t'+str(i)+'.gif')) 

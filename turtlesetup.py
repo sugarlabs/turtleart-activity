@@ -8,7 +8,7 @@ import os
 from sprites import *
 
 selectors = (
-  ('turtle', 37, 
+  ('turtle', 37,
     (('clean','clean','noarg'),
      ('forward','forward','onearg',100),
      ('back','back','onearg',100),
@@ -20,7 +20,7 @@ selectors = (
      ('xcor','xcor','num'),
      ('ycor','ycor','num'),
      ('heading','heading','num'))),
-  ('pen', 30, 
+  ('pen', 30,
     (('penup','penup','noarg'),
      ('pendown','pendown','noarg'),
      ('setpensize','setpensize','1arg',5),
@@ -30,7 +30,7 @@ selectors = (
      ('pensize','pensize','num'),
      ('color','color','num'),
      ('shade','shade','num'))),
-  ('numbers', 55, 
+  ('numbers', 55,
     (('number','','num'),
      ('plus','+','ari'),
      ('minus','-','ari'),
@@ -45,7 +45,7 @@ selectors = (
      ('or','or','and'),
      ('not','not','not'),
      ('print','print','onearg'))),
-  ('flow', 30, 
+  ('flow', 30,
     (('wait','wait','onearg',10),
      ('forever','forever','forever'),
      ('repeat','repeat','repeat',4),
@@ -54,7 +54,7 @@ selectors = (
      ('ifelse','ifelse','ifelse'),
      ('hspace','nop','hspace'),
      ('vspace','nop','vspace'))),
-   ('myblocks', 46, 
+   ('myblocks', 46,
     (('hat1','nop','start'),
      ('stack1','stack1','noarg'),
      ('hat2','nop','start'),
@@ -66,7 +66,7 @@ selectors = (
 
 toolbaritems = (
 #    ('new',0,20),('open',70,20), ('save',70,20),
-    ('hideshow',700, 850),('eraser',54,850), ('stopit',54,850))
+    ('hideshow',700, 775),('eraser',54,775), ('stopit',54,775))
 #    ('hideshow',200, 2),('eraser',54,3), ('stopit',54,2))
 
 dockdetails = {
@@ -80,7 +80,7 @@ dockdetails = {
   'if':      (('flow',True,37,5),('logi+',False,80,31),('flow',False,132,79,'['),('flow',False,37,120,']')),
   'ifelse':  (('flow',True,37,5),('logi+',False,80,31),('flow',False,132,79,'['),('flow',False,217,79,']['),('flow',False,37,120,']')),
   'ari':     (('numend',True,12,20),('num',False,39,20)),
-  'ari2':    (('numend',True,12,20),('num',False,51,20)),  
+  'ari2':    (('numend',True,12,20),('num',False,51,20)),
   'stop':    (('flow',True,37,5),('unavailable',False,0,0)),
   'comp':    (('logi+',True,0,21,'('),('num',False,32,21),('num',False,181,21),('logi-',False,320,21,')')),
   'random':  (('num',True,0,31,'('),('num',False,28,31),('num',False,150,31),('numend',False,279,31,')')),
@@ -101,11 +101,11 @@ class BlockProto:
 
 
 def setup_selectors(path):
-    global base_path 
+    global base_path
     base_path = path
     y = 25
     categories = []
-    for s in selectors: 
+    for s in selectors:
         name,dy,blockdescriptions = s
         cat = setup_selector(name,y, blockdescriptions)
         y += dy*3/2
@@ -119,12 +119,12 @@ def setup_selector(name,y,blockdescriptions):
     offshape = gtk.gdk.pixbuf_new_from_file(os.path.join(base_path, 'palette',name+'off.gif'))
     onshape = gtk.gdk.pixbuf_new_from_file(os.path.join(base_path, 'palette',name+'on.gif'))
     who = Sprite(140,y,offshape)
-    who.setlayer(800)   
+    who.setlayer(800)
     who.offshape = offshape
     who.onshape = onshape
     who.group = gtk.gdk.pixbuf_new_from_file(os.path.join(base_path, name,name+'group.gif'))
     maskname = os.path.join(base_path, name,name+'mask.gif')
-    if os.access(maskname, os.F_OK): 
+    if os.access(maskname, os.F_OK):
         who.mask = gtk.gdk.pixbuf_new_from_file(maskname)
     else: who.mask = None
     who.type = 'selbutton'
@@ -145,7 +145,7 @@ def setup_selector(name,y,blockdescriptions):
 
 def setup_toolbar():
     x,y = 330,0
-    for s in toolbaritems: 
+    for s in toolbaritems:
         name,dx,dy= s
         x += dx
         setup_tool(x,y + dy,name)
@@ -155,7 +155,7 @@ def setup_tool(x,y,name):
     offshape = gtk.gdk.pixbuf_new_from_file(os.path.join(base_path, 'toolbar',name+'off.gif'))
     onshape = gtk.gdk.pixbuf_new_from_file(os.path.join(base_path, 'toolbar',name+'on.gif'))
     who = Sprite(x,y,offshape)
-    who.setlayer(800)   
+    who.setlayer(800)
     who.offshape = offshape
     who.onshape = onshape
     who.type = 'tool'
@@ -170,9 +170,9 @@ def setup_project_flap():
 #    who = Sprite(720,0,project_flap['closed'])
     who = Sprite(888,0,project_flap['closed'])
     who.type = 'project_flap'
-    who.setlayer(800)   
+    who.setlayer(800)
     return project_flap
-    
+
 def blockproto(name): return protodict[name]
 
 def toolsprite(name): return toolsprs[name]
