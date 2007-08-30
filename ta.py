@@ -6,19 +6,23 @@ import os
 import os.path
 import pickle
 from math import atan2, pi
+import sys
 
 from sprites import *
 from turtlesetup import *
 import logo
 import turtle
 
+from sugar.datastore import datastore
+
 WIDTH=1200
-HEIGHT=825
+HEIGHT=780
 
 DEGTOR = 2*pi/360
 
 gc = None
 area = None
+window = None
 draggroup = None
 dragpos = (0,0)
 current_category = None
@@ -33,7 +37,6 @@ status_spr = None
 turtle_spr = None
 hidden_palette_icon = None
 selbuttons = None
-project_flap = None
 
 load_save_folder = None
 save_file_name = None
@@ -44,6 +47,7 @@ save_file_name = None
 
 def buttonpress_cb(win, event):
     global draggroup, dragpos, block_operation, selected_block
+    window.grab_focus()
     block_operation = 'click'
     if selected_block!=None: unselect()
     status_spr.setlayer(400)
@@ -61,8 +65,6 @@ def buttonpress_cb(win, event):
         block_pressed(event,x,y,spr)
     elif spr.type == 'turtle':
         turtle_pressed(x,y)
-    elif spr.type == 'project_flap':
-        project_flap_pressed(spr,x,y)
     return True
 
 def block_pressed(event,x,y,spr):
@@ -248,12 +250,10 @@ def keypress_cb(area, event):
     keyname = gtk.gdk.keyval_name(event.keyval)
 #    print keyname
     if (event.get_state()&gtk.gdk.CONTROL_MASK):
-        if keyname=="n": new_project()
-        elif keyname=="o": load_file()
-        elif keyname=="s": save_file()
-        elif keyname=="c": turtle.clearscreen() 
+        if keyname=="s": save_file()
+        if keyname=="k": clear_journal()
         return True
-    if selected_block==None: return True
+    if selected_block==None: return False
     keyname = gtk.gdk.keyval_name(event.keyval)
     if keyname in ['minus', 'period']: keyname = {'minus': '-', 'period': '.'}[keyname]
     if len(keyname)>1: return True
@@ -285,18 +285,28 @@ def new_project():
     save_file_name = None
 
 def load_file():
+    '''Pop a load file dialog to allow the user to pick a .ta file to load. Guess that a .png file with the same name resides in the same directory and try to load that too.'''
     global save_file_name
     fname = get_load_name()
     if fname==None: return
     if fname[-3:]=='.ta': fname=fname[0:-3]
-    f = open(fname+'.ta',"rU")
+    load_files(fname+'.ta', fname+'.png')
+    save_file_name = os.path.basename(fname)
+
+def load_files(ta_file, png_file=''):
+    '''Load the given TA code file and optional starting image as png file into a new project.'''
+    f = open(ta_file, "r")
     data = pickle.load(f)
     f.close()
     new_project()
     read_data(data)
-    if os.access(fname+'.png', os.F_OK): load_pict(fname+'.png') 
+    try:
+        load_pict(png_file)
+    except:
+        '''the picture not loading is OK'''
+        print "load_files: picture didn't load"
+        pass
     turtlecanvas.inval()
-    save_file_name = os.path.basename(fname)
 
 def get_load_name():
     dialog = gtk.FileChooserDialog("Load...", None,
@@ -341,12 +351,13 @@ def load_pict(fname):
     turtlecanvas.image.draw_pixbuf(gc, pict, 0, 0, 0, 0)
 
 def save_file():
+    '''Pop a save file dialog to allow the user to pick a filename to save their project. Also saves the current art as a .png file with the same name.'''
     global save_file_name
     fname = get_save_name()
     if fname==None: return
     if fname[-3:]=='.ta': fname=fname[0:-3]
-    save_data(fname)
-    save_pict(fname)
+    save_data(fname+".ta")
+    save_pict(fname+".png")
     save_file_name = os.path.basename(fname)
 
 def get_save_name():
@@ -358,7 +369,8 @@ def get_save_name():
     return do_dialog(dialog)
 
 def save_data(fname):
-    f = file(fname+".ta", "w")
+    '''Writes the TurtleArt code to the given filename.'''
+    f = file(fname, "w")
     bs = blocks()
     data = []
     for i in range(len(bs)): bs[i].id=i
@@ -374,10 +386,11 @@ def save_data(fname):
     f.close()
 
 def save_pict(fname):
+    '''Writes the current art to the given filename.'''
     tc = turtlecanvas
     pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, tc.width, tc.height)
     pixbuf.get_from_drawable(tc.image, tc.image.get_colormap(), 0, 0, 0, 0, tc.width, tc.height)   
-    pixbuf.save(fname+'.png', 'png')
+    pixbuf.save(fname, 'png')
 
 def get_id(x): 
     if x==None: return None
@@ -397,6 +410,13 @@ def do_dialog(dialog):
         load_save_folder = dialog.get_current_folder()
     dialog.destroy()
     return result
+
+def clear_journal():
+    jobjects, total_count = datastore.find({'activity': 'org.laptop.TurtleArtActivity'})
+    print 'found', total_count, 'entries'
+    for jobject in jobjects[:-1]:
+        print jobject.object_id
+        datastore.delete(jobject.object_id)
 
 
 #
@@ -439,10 +459,7 @@ def blocks(): return [spr for spr in spritelist() if spr.type == 'block']
 #
 
 def tooldispatch(spr):
-    if spr.blocktype == 'new': runtool(spr,new_project)
-    elif spr.blocktype == 'open': runtool(spr,load_file)
-    elif spr.blocktype == 'save': runtool(spr,save_file)
-    elif spr.blocktype == 'hideshow': hideshow_blocks(spr)
+    if spr.blocktype == 'hideshow': hideshow_blocks(spr)
     elif spr.blocktype == 'eraser': runtool(spr,turtle.clearscreen)
     elif spr.blocktype == 'stopit': logo.step = just_stop()    
 
@@ -463,26 +480,14 @@ def hideshow_blocks(spr):
     turtlecanvas.inval()
 
 
-def project_flap_pressed(spr,x,y):
-    if spr.image==project_flap['closed']: spr.setshape(project_flap['open'])
-    else: 
-        dx,dy = x-spr.x, y-spr.y,
-        pixel = getpixel(project_flap['mask'],dx,dy)
-        index = ((pixel%256)>>3)-1
-        if index==0: spr.setshape(project_flap['closed'])
-        elif index==1: new_project()
-        elif index==2: load_file()
-        elif index==3: save_file()
-
-
 #
 # Startup
 #
 
 def init(top_window, path, parentwindow=None):
     global gc, area, category_spr, bgcolor,turtlecanvas, select_mask
-    global status_spr, turtle_spr, selbuttons, hidden_palette_icon, project_flap
-    global base_path, load_save_folder
+    global status_spr, turtle_spr, selbuttons, hidden_palette_icon
+    global base_path, load_save_folder, window
     window = top_window
     base_path = path
     if parentwindow is None:
@@ -498,12 +503,12 @@ def init(top_window, path, parentwindow=None):
     window.add_events(gtk.gdk.BUTTON_PRESS_MASK)
     window.add_events(gtk.gdk.BUTTON_RELEASE_MASK)
     window.add_events(gtk.gdk.POINTER_MOTION_MASK)
-    parentwindow.add_events(gtk.gdk.KEY_PRESS_MASK)
+    window.add_events(gtk.gdk.KEY_PRESS_MASK)
     window.connect("expose-event", expose_cb)
     window.connect("button-press-event", buttonpress_cb)
     window.connect("button-release-event", buttonrelease_cb)
     window.connect("motion-notify-event", move_cb)
-    parentwindow.connect("key_press_event", keypress_cb)
+    window.connect("key_press_event", keypress_cb)
     window.show()
     parentwindow.show_all()
     area = window.window
@@ -541,7 +546,6 @@ def init(top_window, path, parentwindow=None):
     for i in selbuttons: i.hide()
     category_spr.setshape(hidden_palette_icon)
     setup_toolbar()
-    project_flap = setup_project_flap()
     logo.turtle = turtle
     logo.turtle_spr = turtle_spr
     logo.stopsign = toolsprite('stopit')

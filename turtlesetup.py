@@ -66,7 +66,7 @@ selectors = (
 
 toolbaritems = (
 #    ('new',0,20),('open',70,20), ('save',70,20),
-    ('hideshow',700, 775),('eraser',54,775), ('stopit',54,775))
+    ('hideshow',700, 725),('eraser',54,725), ('stopit',54,725))
 #    ('hideshow',200, 2),('eraser',54,3), ('stopit',54,2))
 
 dockdetails = {
@@ -161,17 +161,6 @@ def setup_tool(x,y,name):
     who.type = 'tool'
     who.blocktype = name
     toolsprs[name] = who
-
-def setup_project_flap():
-    project_flap = {
-        'closed': gtk.gdk.pixbuf_new_from_file(os.path.join(base_path, 'toolbar','project-.gif')),
-        'open': gtk.gdk.pixbuf_new_from_file(os.path.join(base_path, 'toolbar','project.gif')),
-        'mask': gtk.gdk.pixbuf_new_from_file(os.path.join(base_path, 'toolbar','projectmask.gif'))}
-#    who = Sprite(720,0,project_flap['closed'])
-    who = Sprite(888,0,project_flap['closed'])
-    who.type = 'project_flap'
-    who.setlayer(800)
-    return project_flap
 
 def blockproto(name): return protodict[name]
 

@@ -3,10 +3,12 @@ logo.py
 masknumber.gif
 sprites.py
 status.gif
+setup.py
 ta.py
 TurtleArtActivity.py
 turtle.py
 turtlesetup.py
+icons/stock-open.svg
 flow/flowgroup.gif
 flow/flowmask.gif
 flow/forever.gif
