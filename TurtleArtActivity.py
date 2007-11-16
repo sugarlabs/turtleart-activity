@@ -1,4 +1,4 @@
-import ta
+import tawindow
 import pygtk
 pygtk.require('2.0')
 import gtk
@@ -7,8 +7,21 @@ from socket import *
 import sys
 import gobject
 
-serverHost = '192.168.1.101'
+serverHost = '192.168.1.102'
 serverPort = 5647
+
+def debug_init():
+    s = socket(AF_INET, SOCK_STREAM)    # create a TCP socket
+    s.connect((serverHost, serverPort)) # connect to server on the port
+    sys.stdout = s.makefile()
+    sys.stderr = sys.stdout
+    gobject.timeout_add(100, debug_tick)
+
+def debug_tick():
+    sys.stdout.flush()
+    return True
+
+#debug_init()
 
 import sugar
 from sugar.activity import activity
@@ -18,11 +31,9 @@ from sugar.datastore import datastore
 from sugar import profile
 from gettext import gettext as _
 
-
 class TurtleArtActivity(activity.Activity):
     def __init__(self, handle):
         super(TurtleArtActivity,self).__init__(handle)
-#        self.debug_init()
 
         self.gamename = 'turtleart'
         self.set_title("TurtleArt")
@@ -35,19 +46,25 @@ class TurtleArtActivity(activity.Activity):
 
         toolbox._activity_toolbar.keep.connect('clicked', self._keep_clicked_cb) # patch
 
-        self.connect('destroy', self._cleanup_cb)
-
         canvas = gtk.EventBox()
 
         sugar.graphics.window.Window.set_canvas(self, canvas)
+        toolbox._activity_toolbar.title.grab_focus()
+        toolbox._activity_toolbar.title.select_region(0,0)
 
-        ta.init(canvas, activity.get_bundle_path(),self)
+        self.tw = tawindow.twNew(canvas, activity.get_bundle_path(),self)
+        self.tw.activity = self
+        self.tw.window.grab_focus()
+
+        toolbox._activity_toolbar._update_title_sid = True
+        toolbox._activity_toolbar.title.connect('focus-out-event', self.update_title_cb, toolbox) # patch
 
         if self._jobject and self._jobject.file_path:
             self.read_file(self._jobject.file_path)
 
-    def _cleanup_cb(self, data=None):
-        return
+    def update_title_cb(self, widget, event, toolbox):
+        toolbox._activity_toolbar._update_title_cb()
+        toolbox._activity_toolbar._update_title_sid = True
 
     def _keep_clicked_cb(self, button):
         self.jobject_new_patch()
@@ -62,8 +79,8 @@ class TurtleArtActivity(activity.Activity):
         del pngfd, tafd
 
         try:
-            ta.save_data(tafile)
-            ta.save_pict(pngfile)
+            tawindow.save_data(self.tw,tafile)
+            tawindow.save_pict(self.tw,pngfile)
             tar_fd.add(tafile, "ta_code.ta")
             tar_fd.add(pngfile, "ta_image.png")
 
@@ -83,22 +100,12 @@ class TurtleArtActivity(activity.Activity):
         try:
             # We'll get 'ta_code.ta' and 'ta_image.png'
             tar_fd.extractall(tmpdir)
-            ta.load_files(os.path.join(tmpdir, 'ta_code.ta'), os.path.join(tmpdir, 'ta_image.png'))
+            tawindow.load_files(self.tw, os.path.join(tmpdir, 'ta_code.ta'), os.path.join(tmpdir, 'ta_image.png'))
 
         finally:
             shutil.rmtree(tmpdir)
             tar_fd.close()
 
-    def debug_init(self):
-        s = socket(AF_INET, SOCK_STREAM)    # create a TCP socket
-        s.connect((serverHost, serverPort)) # connect to server on the port
-        sys.stdout = s.makefile()
-        sys.stderr = sys.stdout
-        gobject.timeout_add(100, self.debug_tick)
-
-    def debug_tick(self):
-        sys.stdout.flush()
-        return True
 
     def jobject_new_patch(self):
         oldj = self._jobject
@@ -117,6 +124,15 @@ class TurtleArtActivity(activity.Activity):
                 error_handler=self._internal_jobject_error_cb)
 
 
+    def clear_journal(self):
+        jobjects, total_count = datastore.find({'activity': 'org.laptop.TurtleArtActivity'})
+        print 'found', total_count, 'entries'
+        for jobject in jobjects[:-1]:
+            print jobject.object_id
+            datastore.delete(jobject.object_id)
+
+
+
 class ProjectToolbar(gtk.Toolbar):
     def __init__(self, pc):
         gtk.Toolbar.__init__(self)
@@ -131,6 +147,6 @@ class ProjectToolbar(gtk.Toolbar):
 
 
     def do_samples(self, button):
-        ta.load_file()
+        tawindow.load_file(self.activity.tw)
 #        self.activity.jobject_new_patch()
 

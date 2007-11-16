@@ -3,5 +3,5 @@ name = TurtleArt
 service_name = org.laptop.TurtleArtActivity
 class = TurtleArtActivity.TurtleArtActivity
 icon = activity-turtleart
-activity_version = 4
+activity_version = 5
 show_launcher = yes
