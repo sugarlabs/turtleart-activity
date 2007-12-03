@@ -216,7 +216,7 @@ def buttonrelease_cb(win, event, tw):
     if tw.block_operation=='click':
         if spr.proto.name=='number':
             tw.selected_block = spr
-            move(tw.select_mask, (spr.x-6,spr.y-6))
+            move(tw.select_mask, (spr.x-5,spr.y-5))
             setlayer(tw.select_mask, 660)
             tw.firstkey = True
         else: run_stack(tw, spr)

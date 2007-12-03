@@ -20,7 +20,7 @@ selectors = (
      ('xcor','xcor','num'),
      ('ycor','ycor','num'),
      ('heading','heading','num'))),
-  ('pen', 45,
+  ('pen', 55,
     (('penup','penup','noarg'),
      ('pendown','pendown','noarg'),
      ('setpensize','setpensize','1arg',5),
@@ -30,7 +30,7 @@ selectors = (
      ('pensize','pensize','num'),
      ('color','color','num'),
      ('shade','shade','num'))),
-  ('numbers', 77,
+  ('numbers', 55,
     (('number','','num'),
      ('plus','+','ari'),
      ('minus','-','ari'),
@@ -44,7 +44,7 @@ selectors = (
      ('and','and','and'),
      ('or','or','and'),
      ('not','not','not'),     ('print','print','onearg'))),
-  ('flow', 45,
+  ('flow', 55,
     (('wait','wait','onearg',10),
      ('forever','forever','forever'),
      ('repeat','repeat','repeat',4),
@@ -53,7 +53,7 @@ selectors = (
      ('ifelse','ifelse','ifelse'),
      ('hspace','nop','hspace'),
      ('vspace','nop','vspace'))),
-   ('myblocks', 69,
+   ('myblocks', 55,
     (('hat1','nop','start'),
      ('stack1','stack1','noarg'),
      ('hat2','nop','start'),
@@ -64,7 +64,7 @@ selectors = (
      ('box2','box2','num'))))
 
 toolbaritems = (
-    ('hideshow',1050),('eraser',50), ('stopit',50))
+    ('hideshow',990),('eraser',75), ('stopit',75))
 
 dockdetails = {
   'noarg':   (('flow',True,37,5),('flow',False,37,44)),
@@ -91,7 +91,7 @@ dockdetails = {
 
 def setup_selectors(tw):
     tw.protodict = {}
-    y = 25
+    y = 30
     tw.selbuttons = []
     for s in selectors:
         name,dy,blockdescriptions = s
@@ -111,7 +111,7 @@ def setup_selectors(tw):
 def setup_selector(tw,name,y,blockdescriptions):
     offshape = load_image(tw.path,'palette',name+'off')
     onshape = load_image(tw.path,'palette',name+'on')
-    who = sprNew(tw,140,y,offshape)
+    who = sprNew(tw,143,y,offshape)
     setlayer(who,800)
     who.offshape = offshape
     who.onshape = onshape
@@ -136,7 +136,7 @@ def setup_selector(tw,name,y,blockdescriptions):
 
 def setup_toolbar(tw):
     tw.toolsprs = {}
-    x,y = 0,20
+    x,y = 0,10
     for s in toolbaritems:
         name,dx= s
         x += dx
