@@ -104,6 +104,7 @@ def setxy(t,x,y):
     move_turtle(t)
 
 def setpensize(t,ps):
+    if ps<0: ps=0;
     t.pensize = ps
     t.gc.set_line_attributes(int(t.pensize),gtk.gdk.LINE_SOLID,gtk.gdk.CAP_ROUND,gtk.gdk.JOIN_MITER)
     return None

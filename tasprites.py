@@ -100,7 +100,7 @@ def draw_label2(spr, label):
     sheight = pl.get_size()[1]/pango.SCALE
     centery = spr.y+spr.height/2
     spr.tw.gc.set_foreground(spr.tw.textcolor)
-    spr.tw.area.draw_layout(spr.tw.gc,spr.x+50,centery-sheight/2,pl)
+    spr.tw.area.draw_layout(spr.tw.gc,spr.x+70,centery-sheight/2,pl)
 
 
 def getpixel(image,x,y):

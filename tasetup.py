@@ -104,7 +104,12 @@ def setup_selectors(tw):
     tw.select_mask = sprNew(tw,100,100,load_image(tw.path, '', 'masknumber'))
     tw.select_mask.type = 'selectmask'
     tw.hidden_palette_icon = load_image(tw.path, 'toolbar','blocks-')
-    tw.status_spr = sprNew(tw,0,743,load_image(tw.path, '', 'status'),True)
+    tw.status_shapes = {}
+    tw.status_shapes['status'] = load_image(tw.path, '', 'status')
+    tw.status_shapes['nostack'] = load_image(tw.path, '', 'nostack')
+    tw.status_shapes['noinput'] = load_image(tw.path, '', 'noinput')
+    tw.status_spr = sprNew(tw,0,743,tw.status_shapes['status'],True)
+ #   tw.status_spr = sprNew(tw,0,670,tw.status_shapes['status'],True)
     tw.status_spr.type = 'status'
     setlayer(tw.status_spr,400)
 

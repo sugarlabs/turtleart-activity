@@ -79,6 +79,7 @@ def load_pict(tw,fname):
     tw.turtle.canvas.image.draw_pixbuf(tw.turtle.gc, pict, 0, 0, 0, 0)
 
 def save_file(tw):
+    if tw.save_folder != None: tw.load_save_folder = tw.save_folder
     fname = get_save_name(tw)
     if fname==None: return
     if fname[-3:]=='.ta': fname=fname[0:-3]

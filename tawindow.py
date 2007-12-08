@@ -22,10 +22,10 @@ from taproject import *
 # Setup
 #
 
-def twNew(win, path, parent=None):
+def twNew(win, path, lang, parent=None):
     tw = taWindow()
     tw.window = win
-    tw.path=path
+    tw.path = os.path.join(path,'images',lang)
     win.set_flags(gtk.CAN_FOCUS)
     win.set_size_request(WIDTH, HEIGHT)
     if parent is None: win.show_all()
@@ -53,6 +53,7 @@ def twNew(win, path, parent=None):
     tw.turtle = tNew(tw,WIDTH,HEIGHT)
     tw.lc = lcNew(tw)
     tw.load_save_folder = os.path.join(path,'samples')
+    tw.save_folder = None
     tw.save_file_name = None
     return tw
 
@@ -112,7 +113,6 @@ def select_category(tw, spr):
     setshape(tw.category_spr,spr.group)
 
 def new_block_from_category(tw,proto,x,y):
-    tw.block_operation = 'new'
     if proto == None: return True
     newspr = sprNew(tw,x-20,y-20,proto.image)
     setlayer(newspr,2000)
@@ -134,6 +134,7 @@ def new_block_from_category(tw,proto,x,y):
         argspr.connections = [newspr,None]
         newspr.connections[i+1] = argspr
     tw.draggroup = findgroup(newspr)
+    tw.block_operation = 'move'
 
 def block_pressed(tw,event,x,y,spr):
     if event.get_state()&gtk.gdk.CONTROL_MASK:
@@ -279,8 +280,8 @@ def expose_cb(win, event, tw):
 
 def keypress_cb(area, event,tw):
     keyname = gtk.gdk.keyval_name(event.keyval)
-#    print keyname
-    if (event.get_state()&gtk.gdk.CONTROL_MASK):
+#    print keyname,event.get_state()
+    if (event.get_state()&gtk.gdk.MOD4_MASK):
         if keyname=="n": new_project(tw)
         if keyname=="o": load_file(tw)
         if keyname=="s": save_file(tw)

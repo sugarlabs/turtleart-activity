@@ -30,13 +30,16 @@ from sugar.graphics.toolbutton import ToolButton
 from sugar.datastore import datastore
 from sugar import profile
 from gettext import gettext as _
+import locale
+import os.path
+import os
 
 class TurtleArtActivity(activity.Activity):
     def __init__(self, handle):
         super(TurtleArtActivity,self).__init__(handle)
 
         self.gamename = 'turtleart'
-        self.set_title("TurtleArt")
+#        self.set_title("TurtleArt...")
 
         toolbox = activity.ActivityToolbox(self)
         self.set_toolbox(toolbox)
@@ -44,7 +47,7 @@ class TurtleArtActivity(activity.Activity):
         toolbox.add_toolbar( ('Project'), self.projectToolbar )
         toolbox.show()
 
-        toolbox._activity_toolbar.keep.connect('clicked', self._keep_clicked_cb) # patch
+#        toolbox._activity_toolbar.keep.connect('clicked', self._keep_clicked_cb) # patch
 
         canvas = gtk.EventBox()
 
@@ -52,12 +55,19 @@ class TurtleArtActivity(activity.Activity):
         toolbox._activity_toolbar.title.grab_focus()
         toolbox._activity_toolbar.title.select_region(0,0)
 
-        self.tw = tawindow.twNew(canvas, activity.get_bundle_path(),self)
+        lang = locale.getdefaultlocale()[0]
+        if not lang: lang = 'en'
+        lang = lang[0:2]
+        if not os.path.isdir(os.path.join(activity.get_bundle_path(),'images',lang)):
+            lang = 'en'
+
+        self.tw = tawindow.twNew(canvas, activity.get_bundle_path(),lang,self)
         self.tw.activity = self
         self.tw.window.grab_focus()
+        self.tw.save_folder = os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'],'data')
 
-        toolbox._activity_toolbar._update_title_sid = True
-        toolbox._activity_toolbar.title.connect('focus-out-event', self.update_title_cb, toolbox) # patch
+#        toolbox._activity_toolbar._update_title_sid = True
+#        toolbox._activity_toolbar.title.connect('focus-out-event', self.update_title_cb, toolbox) # patch
 
         if self._jobject and self._jobject.file_path:
             self.read_file(self._jobject.file_path)

@@ -96,7 +96,7 @@ def evline(lc, list):
         icall(lc, eval); yield True
         if lc.procstop: break
         if lc.iresult==None: continue
-        raise logoerror("You don't say what to do with %s" % token)
+        raise logoerror(str(lc.iresult))
     lc.iline = oldiline
     ireturn(lc); yield True
 
@@ -116,6 +116,7 @@ def evalsym(lc, token):
     undefined_check(lc, token)
     oldcfun, oldarglist = lc.cfun, lc.arglist
     lc.cfun, lc.arglist = token, []
+    if token.nargs==None: raise logoerror("#noinput")
     for i in range(token.nargs):
         no_args_check(lc)
         icall(lc, eval); yield True
@@ -153,7 +154,7 @@ def undefined_check(lc, token):
 
 def no_args_check(lc):
     if lc.iline and lc.iline[0]!=lc.symnothing : return
-    raise logoerror("Not enough inputs to %s" % lc.cfun.name)
+    raise logoerror("#noinput")
 
 def prim_wait(lc,time):
     setlayer(lc.tw.turtle.spr,630)
@@ -194,13 +195,13 @@ def prim_define(name, body):
     name.rprim = True
 
 def prim_stack1(lc):
-    if lc.stacks['stack1']==None: raise logoerror("stack1 undefined")
+    if lc.stacks['stack1']==None: raise logoerror("#nostack")
     icall(lc, evline, lc.stacks['stack1'][:]); yield True
     lc.procstop = False
     ireturn(lc); yield True
 
 def prim_stack2(lc):
-    if lc.stacks['stack2']==None: raise logoerror("stack2 undefined")
+    if lc.stacks['stack2']==None: raise logoerror("#nostack")
     icall(lc, evline, lc.stacks['stack2'][:]); yield True
     lc.procstop = False
     ireturn(lc); yield True
@@ -229,7 +230,7 @@ def lcNew(tw):
     lc.tw = tw
     lc.oblist = {}
 
-    defprim(lc,'print', 1, lambda lc,x: showlabel(lc,int(float(x)*10)/10.))
+    defprim(lc,'print', 1, lambda lc,x: status_print(lc,x))
 #    defprim(lc,'print', 1, lambda lc,x: tyo(int(float(x)*10)/10.))
 
     defprim(lc,'+', None, lambda lc,x,y:x+y)
@@ -321,7 +322,14 @@ def ireturn(lc, res=None):
 def ijmp(lc, fcn, *args):
     lc.step = fcn(lc,*(args))
 
+def status_print(lc,n):
+    showlabel(lc,int(float(n)*10)/10.)
+
 def showlabel(lc,l):
+    if l=='#nostack': shp = 'nostack'; l=''
+    elif l=='#noinput': shp = 'noinput'; l=''
+    else:shp = 'status'
+    setshape(lc.tw.status_spr, lc.tw.status_shapes[shp])
     setlabel(lc.tw.status_spr,l)
     setlayer(lc.tw.status_spr,710);
 
