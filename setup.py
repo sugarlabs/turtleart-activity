@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #Copyright (c) 2007-8, Playful Invention Company.
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
