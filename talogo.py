@@ -229,6 +229,10 @@ def prim_stack2(lc):
 def prim_stopstack(lc):
     lc.procstop = True
 
+def careful_divide(x,y):
+    if y==0: return 0
+    return x/y
+
 def ufuncall(body):
     ijmp(evline, body); yield True
 
@@ -256,7 +260,7 @@ def lcNew(tw):
     defprim(lc,'+', None, lambda lc,x,y:x+y)
     defprim(lc,'-', None, lambda lc,x,y:x-y)
     defprim(lc,'*', None, lambda lc,x,y:x*y)
-    defprim(lc,'/', None, lambda lc,x,y:x/y)
+    defprim(lc,'/', None, lambda lc,x,y:careful_divide(x,y))
     defprim(lc,'random', 2, lambda lc,x,y: int(random.uniform(x,y)))
     defprim(lc,'greater?', 2, lambda lc,x,y: float(x)>float(y))
     defprim(lc,'less?', 2, lambda lc,x,y: float(x)<float(y))
