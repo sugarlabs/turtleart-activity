@@ -102,7 +102,8 @@ def rarc(t,a,r):
     cx = t.xcor+r*cos(t.heading*DEGTOR)
     cy = t.ycor-r*sin(t.heading*DEGTOR)
     x,y,w,h=t.width/2+int(cx-r),t.height/2-int(cy+r),int(2*r),int(2*r)
-    t.canvas.image.draw_arc(t.gc,False,x,y,w,h,int(180-t.heading-a)*64,int(a)*64)
+    if t.pendown:
+        t.canvas.image.draw_arc(t.gc,False,x,y,w,h,int(180-t.heading-a)*64,int(a)*64)
     invalt(t,x-t.pensize/2-3,y-t.pensize/2-3,w+t.pensize+6,h+t.pensize+6)
     right(t,a)
     t.xcor=cx-r*cos(t.heading*DEGTOR)
@@ -113,7 +114,8 @@ def larc(t,a,r):
     cx = t.xcor-r*cos(t.heading*DEGTOR)
     cy = t.ycor+r*sin(t.heading*DEGTOR)
     x,y,w,h=t.width/2+int(cx-r),t.height/2-int(cy+r),int(2*r),int(2*r)
-    t.canvas.image.draw_arc(t.gc,False,x,y,w,h,int(360-t.heading)*64,int(a)*64)
+    if t.pendown:
+        t.canvas.image.draw_arc(t.gc,False,x,y,w,h,int(360-t.heading)*64,int(a)*64)
     invalt(t,x-t.pensize/2-3,y-t.pensize/2-3,w+t.pensize+6,h+t.pensize+6)
     right(t,-a)
     t.xcor=cx+r*cos(t.heading*DEGTOR)
