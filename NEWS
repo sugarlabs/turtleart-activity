@@ -1,3 +1,9 @@
+11
+
+* Rename activity from TurtleArt to Turtle Art (dlo trac #2663)
+* Fix pen up in arc (dlo trac #7656)
+* Point update url at a protected page.
+
 10
 
 * licensing information in activity.info (dlo trac #6340)
