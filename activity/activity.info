@@ -6,3 +6,4 @@ service_name = org.laptop.TurtleArtActivity
 class = TurtleArtActivity.TurtleArtActivity
 icon = activity-turtleart
 show_launcher = yes
+update_url = http://wiki.laptop.org/go/Activities/G1G1
