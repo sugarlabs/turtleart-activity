@@ -22,6 +22,7 @@ import re
 from time import clock
 from operator import isNumberType
 import random
+from math import sqrt
 class taLogo: pass
 
 from taturtle import *
@@ -269,6 +270,7 @@ def lcNew(tw):
     defprim(lc,'or', None, lambda lc,x,y:x|y)
     defprim(lc,'not', 1, lambda lc,x:not x)
     defprim(lc,'%', None, lambda lc,x,y:x%y)
+    defprim(lc,'sqrt', 1, lambda lc,x: sqrt(x))
 
     defprim(lc,'clean', 0, lambda lc: clearscreen(lc.tw.turtle))
     defprim(lc,'forward', 1, lambda lc, x: forward(lc.tw.turtle, x))

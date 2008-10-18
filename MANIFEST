@@ -43,6 +43,7 @@ images/en/numbers/print.gif
 images/en/numbers/product.gif
 images/en/numbers/random.gif
 images/en/numbers/remainder.gif
+images/en/numbers/sqrt.gif
 images/en/palette/flowoff.gif
 images/en/palette/flowon.gif
 images/en/palette/myblocksoff.gif
@@ -163,6 +164,7 @@ images/es/numbers/print.gif
 images/es/numbers/product.gif
 images/es/numbers/random.gif
 images/es/numbers/remainder.gif
+images/es/numbers/sqrt.gif
 images/es/palette/flowoff.gif
 images/es/palette/flowon.gif
 images/es/palette/myblocksoff.gif
@@ -276,6 +278,7 @@ images/fr/numbers/not.gif
 images/fr/numbers/number.gif
 images/fr/numbers/numbersgroup.gif
 images/fr/numbers/numbersmask.gif
+images/fr/numbers/sqrt.gif
 images/fr/numbers/or.gif
 images/fr/numbers/plus.gif
 images/fr/numbers/print.gif
