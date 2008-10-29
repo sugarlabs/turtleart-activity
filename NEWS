@@ -1,3 +1,9 @@
+14
+
+* Changed more file permissions (-x)
+* Deleted some redundant files (stray myblockgroup.gif files)
+* Add #!/usr/bin/env python to taturtle.py
+
 13
 
 * Added Turkish (tr) artwork

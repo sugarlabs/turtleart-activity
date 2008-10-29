@@ -9,7 +9,7 @@ images/en/flow/forever.gif
 images/en/flow/hspace.gif
 images/en/flow/if.gif
 images/en/flow/ifelse.gif
-images/en/flow/myblocksgroup.gif
+
 images/en/flow/repeat.gif
 images/en/flow/stopstack.gif
 images/en/flow/vspace.gif
@@ -128,7 +128,7 @@ images/es/flow/forever.gif
 images/es/flow/hspace.gif
 images/es/flow/if.gif
 images/es/flow/ifelse.gif
-images/es/flow/myblocksgroup.gif
+
 images/es/flow/repeat.gif
 images/es/flow/stopstack.gif
 images/es/flow/vspace.gif
@@ -448,7 +448,7 @@ images/tr/myblocks/box2.gif
 images/tr/myblocks/stack1.gif
 images/tr/myblocks/hat2.gif
 images/tr/myblocks/stackhat1.gif
-images/tr/flow/myblocksgroup.gif
+
 images/tr/flow/hspace.gif
 images/tr/flow/stopstack.gif
 images/tr/flow/flowgroup.gif
