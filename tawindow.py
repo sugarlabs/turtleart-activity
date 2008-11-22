@@ -26,9 +26,6 @@ import os
 import os.path
 class taWindow: pass
 
-WIDTH=1200
-HEIGHT=780
-
 from math import atan2, pi
 DEGTOR = 2*pi/360
 
@@ -47,7 +44,12 @@ def twNew(win, path, lang, parent=None):
     tw.window = win
     tw.path = os.path.join(path,'images',lang)
     win.set_flags(gtk.CAN_FOCUS)
-    win.set_size_request(WIDTH, HEIGHT)
+    print "width: ", gtk.gdk.screen_width()
+    width = gtk.gdk.screen_width()
+    print "height: ", gtk.gdk.screen_height()
+    # subtract toolbar height
+    height = gtk.gdk.screen_height() - 120
+    win.set_size_request(width, height)
     if parent is None: win.show_all()
     else: parent.show_all()
     win.add_events(gtk.gdk.BUTTON_PRESS_MASK)
@@ -70,7 +72,7 @@ def twNew(win, path, lang, parent=None):
     setup_selectors(tw)
     setup_toolbar(tw)
     select_category(tw, tw.selbuttons[0])
-    tw.turtle = tNew(tw,WIDTH,HEIGHT)
+    tw.turtle = tNew(tw,width,height)
     tw.lc = lcNew(tw)
     tw.load_save_folder = os.path.join(path,'samples')
     tw.save_folder = None

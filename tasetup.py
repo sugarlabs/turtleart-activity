@@ -86,7 +86,9 @@ selectors = (
      ('box2','box2','num'))))
 
 toolbaritems = (
-    ('hideshow',990),('eraser',75), ('stopit',75))
+    ('stopit',75),
+    ('eraser',75),
+    ('hideshow',75))
 
 dockdetails = {
   'noarg':   (('flow',True,37,5),('flow',False,37,44)),
@@ -131,8 +133,9 @@ def setup_selectors(tw):
     tw.status_shapes['status'] = load_image(tw.path, '', 'status')
     tw.status_shapes['nostack'] = load_image(tw.path, '', 'nostack')
     tw.status_shapes['noinput'] = load_image(tw.path, '', 'noinput')
-    tw.status_spr = sprNew(tw,0,743,tw.status_shapes['status'],True)
- #   tw.status_spr = sprNew(tw,0,670,tw.status_shapes['status'],True)
+    # position status shapes at bottom of screen (minus shape height and toolbar height)
+    screenh = gtk.gdk.screen_height() - 38 - 120
+    tw.status_spr = sprNew(tw,0,screenh,tw.status_shapes['status'],True)
     tw.status_spr.type = 'status'
     setlayer(tw.status_spr,400)
 
@@ -164,10 +167,11 @@ def setup_selector(tw,name,y,blockdescriptions):
 
 def setup_toolbar(tw):
     tw.toolsprs = {}
-    x,y = 0,10
+    # need to adjust to variable screen width (from right to left)
+    x,y = gtk.gdk.screen_width(),10
     for s in toolbaritems:
         name,dx= s
-        x += dx
+        x -= dx
         tw.toolsprs[name]=setup_tool(tw,x,y,name)
     return
 
@@ -183,4 +187,4 @@ def setup_tool(tw,x,y,name):
     return who
 
 def load_image(path, dir, file):
-    return gtk.gdk.pixbuf_new_from_file(os.path.join(path,dir,file+'.gif'))
+    return gtk.gdk.pixbuf_new_from_file(os.path.join(path,dir,file+'.svg'))

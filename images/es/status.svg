@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg:svg
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   width="767"
+   height="38"
+   version="1.0">
+  <svg:path
+     style="fill:#ffd000;fill-opacity:1;fill-rule:evenodd;stroke:#e0a000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 0.5,37.5 L 0.5,13 L 3.5,6.5 L 8.5,2.5 L 15,0 L 751.5,0 L 758.25,2.5 L 764.25,7 L 767,15 L 767,38 L 0.5,37.5 z" />
+  <svg:g
+     transform="translate(656,63)">
+    <svg:path
+       transform="translate(24,-485)"
+       d="M 79.5,438.375 A 8.375,8.125 0 1 1 62.75,438.375 A 8.375,8.125 0 1 1 79.5,438.375 z"
+       style="fill:#ff4040;fill-opacity:1;fill-rule:nonzero;stroke:#ff4040;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <svg:text
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold">
+       <svg:tspan
+         style="font-size:12"
+         y="-42"
+         x="91">X</svg:tspan>
+    </svg:text>
+  </svg:g>
+  <svg:g>
+    <svg:path
+       transform="translate(-4,20)"
+       d="M 44,15 L 10.5,15 L 27.5,-14 L 44,15 z"
+       style="opacity:1;fill:#404040;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <svg:path
+       transform="translate(1,17)"
+       d="M 44,15 L 10.5,15 L 27.5,-14 L 44,15 z"
+       style="opacity:1;fill:#e0e0e0;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <svg:path
+       transform="translate(-1,18)"
+       d="M 44,15 L 10.5,15 L 27.5,-14 L 44,15 z"
+       style="opacity:1;fill:#ffe000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </svg:g>
+  <svg:text
+     style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans">
+     <svg:tspan
+       x="21"
+       y="29"
+       style="font-size:24px">!</svg:tspan>
+  </svg:text>
+</svg:svg>

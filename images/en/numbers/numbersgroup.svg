@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg:svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   width="145"
+   height="500"
+   version="1.0">
+  <svg:defs>
+    <svg:linearGradient
+       id="linearGradient5166">
+      <svg:stop
+         id="stop5168"
+         offset="0"
+         style="stop-color:#ffffff;stop-opacity:1;" />
+      <svg:stop
+         id="stop5170"
+         offset="1"
+         style="stop-color:#ff00ff;stop-opacity:1;" />
+    </svg:linearGradient>
+    <svg:linearGradient
+       xlink:href="#linearGradient3049"
+       id="linearGradient5187"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.66667,0,0,0.66667,147.83371,171.83398)"
+       x1="0"
+       y1="22"
+       x2="74"
+       y2="22" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3677"
+       x1="37.33316"
+       y1="41.5"
+       x2="107.66684"
+       y2="41.5"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3685"
+       x1="19.999912"
+       y1="78.214287"
+       x2="55.000088"
+       y2="78.214287"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3693"
+       x1="85.560509"
+       y1="78.214287"
+       x2="120.56069"
+       y2="78.214287"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3701"
+       x1="19.999912"
+       y1="114.35662"
+       x2="55.000088"
+       y2="114.35662"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3709"
+       x1="85.560509"
+       y1="114.35662"
+       x2="120.56069"
+       y2="114.35662"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3717"
+       x1="15.999892"
+       y1="150.49895"
+       x2="59.000107"
+       y2="150.49895"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3725"
+       x1="84.393837"
+       y1="150.49895"
+       x2="121.72736"
+       y2="150.49895"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3733"
+       x1="10.277154"
+       y1="192.5"
+       x2="134.72285"
+       y2="192.5"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3741"
+       x1="1.2215077"
+       y1="235"
+       x2="143.7785"
+       y2="235"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3749"
+       x1="1.2215077"
+       y1="278.5"
+       x2="143.7785"
+       y2="278.5"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3757"
+       x1="1.2215077"
+       y1="318"
+       x2="143.7785"
+       y2="318"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3765"
+       x1="8.1665125"
+       y1="360"
+       x2="69.833488"
+       y2="360"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3774"
+       x1="77.666512"
+       y1="359.5"
+       x2="139.33348"
+       y2="359.5"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3782"
+       x1="44.999863"
+       y1="402.5"
+       x2="100.00014"
+       y2="402.5"
+       gradientUnits="userSpaceOnUse" />
+    <svg:linearGradient
+       xlink:href="#linearGradient5166"
+       id="linearGradient3790"
+       x1="43.416519"
+       y1="448.5"
+       x2="92.750099"
+       y2="448.5"
+       gradientUnits="userSpaceOnUse" />
+  </svg:defs>
+  <svg:path
+     style="fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1px;stroke-opacity:1"
+     d="M 0.5594301,0.5 L 0.49711997,486.41023 L 3.6209793,493.14297 L 8.494839,497.1072 L 15.156388,499.50288 L 128.9813,499.50288 L 135.82978,496.93866 L 141.77903,492.04729 L 144.50288,483.79171 L 144.54057,0.5 L 0.5594301,0.5 z" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1.13613331;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="171.19794" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="172.31435" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#ffffc4;stroke-width:1;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="173.29239" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="55.382996" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="56.499405" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#ffffc4;stroke-width:1;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="57.477448" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="-28.931932"
+     transform="scale(1,-1)" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="-27.815523"
+     transform="scale(1,-1)" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="-472.77127"
+     transform="scale(1,-1)" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="-471.43195"
+     transform="scale(1,-1)" />
+  <svg:path
+     style="fill:#ff4040;fill-opacity:1;stroke:#ff4040;stroke-width:1;stroke-opacity:1"
+     cx="71.125"
+     cy="438.375"
+     rx="8.375"
+     ry="8.125"
+     d="M 79.5,438.375 A 8.375,8.125 0 1 1 62.75,438.375 A 8.375,8.125 0 1 1 79.5,438.375 z"
+     transform="translate(1.375,47.250977)" />
+  <svg:text
+     style="font-size:12px;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold"><svg:tspan
+       x="67.879883"
+       y="490"
+       style="font-size:12px">X</svg:tspan>
+  </svg:text>
+  <svg:text
+     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+    <svg:tspan
+       x="72.5"
+       y="21.5"
+       style="font-size:20px"
+       id="tspan2796">Numbers</svg:tspan>
+  </svg:text>
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1.13613331;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="212.883" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1.13613331;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="213.99942" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#ffffc4;stroke-width:1.13613331;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="214.97745" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1.13613331;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="337.883" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1.13613331;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="338.99939" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#ffffc4;stroke-width:1.13613331;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="339.97745" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1.13613331;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="425.883" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1.13613331;stroke-opacity:1"
+     width="137.56932"
+     height="0.13955142"
+     x="3.7153397"
+     y="426.99939" />
+  <svg:rect
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#ffffc4;stroke-width:1;stroke-opacity:1"
+     width="137"
+     height="0.2"
+     x="4"
+     y="427" />
+  <svg:path
+     d="M 37.99983,34.8333 L 41.33318,34.8333 L 41.33318,37.49998 L 45.99987,37.49998 L 45.99987,34.8333 L 107.00017,34.8333 L 107.00017,48.1667 L 45.99987,48.1667 L 45.99987,45.50002 L 41.33318,45.50002 L 41.33318,48.1667 L 37.99983,48.1667 L 37.99983,34.8333 z"
+     style="fill:url(#linearGradient3677);fill-opacity:1.0;stroke:#a000a0;stroke-width:1;stroke-opacity:1" />
+  <svg:path
+     style="fill:url(#linearGradient3685);fill-opacity:1.0;stroke:#a000a0;stroke-width:1px;stroke-opacity:1"
+     d="M 20.499915,66.214225 L 54.500085,66.214225 L 54.500085,72.214255 L 51.833405,72.214255 L 51.833405,70.214245 L 45.833375,70.214245 L 45.833375,85.547655 L 51.833405,85.547655 L 51.833405,83.547645 L 54.500085,83.547645 L 54.500085,90.214345 L 20.499915,90.214345 L 20.499915,85.547655 L 28.499955,85.547655 L 28.499955,70.214245 L 20.499915,70.214245 L 20.499915,66.214225 z" />
+  <svg:text
+     style="font-size:8px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+   <svg:tspan
+   x="38"
+   y="83"
+   style="font-size:16px">+</svg:tspan>
+  </svg:text>
+  <svg:path
+     style="fill:url(#linearGradient3693);fill-opacity:1.0;stroke:#a000a0;stroke-width:1px;stroke-opacity:1"
+     d="M 86.060515,66.214225 L 120.06069,66.214225 L 120.06069,72.214255 L 117.39401,72.214255 L 117.39401,70.214245 L 111.39397,70.214245 L 111.39397,85.547655 L 117.39401,85.547655 L 117.39401,83.547645 L 120.06069,83.547645 L 120.06069,90.214345 L 86.060515,90.214345 L 86.060515,85.547655 L 94.060555,85.547655 L 94.060555,70.214245 L 86.060515,70.214245 L 86.060515,66.214225 z" />
+  <svg:text
+     style="font-size:8px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+   <svg:tspan
+   x="103"
+   y="83"
+   style="font-size:16px">–</svg:tspan></svg:text>
+  <svg:path
+     style="fill:url(#linearGradient3701);fill-opacity:1.0;stroke:#a000a0;stroke-width:1px;stroke-opacity:1"
+     d="M 20.499915,102.35656 L 54.500085,102.35656 L 54.500085,108.35658 L 51.833405,108.35658 L 51.833405,106.35657 L 45.833375,106.35657 L 45.833375,121.68998 L 51.833405,121.68998 L 51.833405,119.68997 L 54.500085,119.68997 L 54.500085,126.35667 L 20.499915,126.35667 L 20.499915,121.68998 L 28.499955,121.68998 L 28.499955,106.35657 L 20.499915,106.35657 L 20.499915,102.35656 z" />
+  <svg:text
+     style="font-size:8px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+   <svg:tspan
+   x="38"
+   y="119"
+   style="font-size:21px">⨉</svg:tspan></svg:text>
+  <svg:path
+     style="fill:url(#linearGradient3709);fill-opacity:1.0;stroke:#a000a0;stroke-width:1px;stroke-opacity:1"
+     d="M 86.060515,102.35656 L 120.06069,102.35656 L 120.06069,108.35658 L 117.39401,108.35658 L 117.39401,106.35657 L 111.39397,106.35657 L 111.39397,121.68998 L 117.39401,121.68998 L 117.39401,119.68997 L 120.06069,119.68997 L 120.06069,126.35667 L 86.060515,126.35667 L 86.060515,121.68998 L 94.060555,121.68998 L 94.060555,106.35657 L 86.060515,106.35657 L 86.060515,102.35656 z" />
+  <svg:text
+     style="font-size:8px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+   <svg:tspan
+   x="103"
+   y="119"
+   style="font-size:16px">/</svg:tspan></svg:text>
+  <svg:path
+     style="fill:url(#linearGradient3717);fill-opacity:1.0;stroke:#a000a0;stroke-width:1px;stroke-opacity:1"
+     d="M 16.499895,138.4989 L 58.500105,138.4989 L 58.500105,144.49892 L 55.833425,144.49892 L 55.833425,142.49892 L 49.50006,142.49892 L 49.50006,157.83232 L 55.833425,157.83232 L 55.833425,155.83231 L 58.500105,155.83231 L 58.500105,162.49901 L 16.499895,162.49901 L 16.499895,157.83232 L 24.499935,157.83232 L 24.499935,142.49892 L 16.499895,142.49892 L 16.499895,138.4989 z" />
+  <svg:text
+     style="font-size:8px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     <svg:tspan
+       x="37"
+       y="154"
+       style="font-size:9px">mod</svg:tspan></svg:text>
+  <svg:path
+     style="fill:url(#linearGradient3725);fill-opacity:1.0;stroke:#a000a0;stroke-width:1;stroke-opacity:1"
+     d="M 121.22736,138.49679 L 99.560582,138.49679 L 96.868887,139.93973 L 95.223158,141.58546 L 93.893887,143.83015 L 93.893887,145.78049 L 88.839403,145.84632 L 88.839403,143.83015 L 84.893842,143.83015 L 84.893842,157.16355 L 88.893862,157.16355 L 88.893862,154.83021 L 93.893887,154.83021 L 93.893887,159.60462 L 95.159004,161.44784 L 97.858,162.5011 L 121.22736,162.43527 L 121.22736,155.83021 L 117.67258,155.83021 L 117.67258,157.89306 L 112.0771,157.89306 L 111.89398,142.83015 L 117.89401,142.83015 L 117.89401,144.83016 L 121.22736,144.83016 L 121.22736,138.49679 z" />
+  <svg:g>
+    <svg:text
+       style="font-size:8px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"><svg:tspan
+         style="font-size:16px"
+         y="157"
+         x="102">√</svg:tspan></svg:text>
+  </svg:g>
+  <svg:path
+     style="fill:url(#linearGradient3733);fill-opacity:1.0;stroke:#a000a0;stroke-width:1;stroke-opacity:1"
+     d="M 125.54364,182.16802 L 20.202678,182.44265 L 18.649745,183.26928 L 17.553556,184.00407 L 16.548717,185.65733 L 16.548717,191.5356 L 13.260151,191.62745 L 13.168802,190.06603 L 10.611029,189.97418 L 10.793727,199.34268 L 13.077453,199.34268 L 13.168802,197.41387 L 16.548717,197.50572 L 16.457368,200.99594 L 17.370858,201.82257 L 18.923792,202.55736 L 129.09073,202.8329 L 128.81668,199.06713 L 134.38897,198.88344 L 134.29762,190.52527 L 129.09073,190.52527 L 128.99938,185.38178 L 127.81184,183.72852 L 125.98486,182.16711 L 125.54364,182.16802 L 125.54364,182.16802" />
+  <svg:path
+     d="M 23.057444,190.07932 L 25.310631,190.07932 L 25.310631,192.02538 L 28.465092,192.02538 L 28.465092,190.07932 L 69.698412,190.07932 L 69.698412,199.80963 L 28.465092,199.80963 L 28.465092,197.86356 L 25.310631,197.86356 L 25.310631,199.80963 L 23.057444,199.80963 L 23.057444,190.07932 z"
+     style="fill:#ffffff;fill-opacity:1;stroke:#a000a0;stroke-width:1;stroke-opacity:1" />
+  <svg:path
+     d="M 77.813595,190.07932 L 80.066783,190.07932 L 80.066783,192.02538 L 83.221245,192.02538 L 83.221245,190.07932 L 124.45457,190.07932 L 124.45457,199.80963 L 83.221245,199.80963 L 83.221245,197.86356 L 80.066783,197.86356 L 80.066783,199.80963 L 77.813595,199.80963 L 77.813595,190.07932 z"
+     style="fill:#ffffff;fill-opacity:1;stroke:#a000a0;stroke-width:1;stroke-opacity:1" />
+  <svg:text
+     style="font-size:8px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     <svg:tspan
+       x="72.5"
+       y="189"
+       style="font-size:6px">random</svg:tspan></svg:text>
+  <svg:path
+     style="fill:url(#linearGradient3757);fill-opacity:1.0;stroke:#a000a0;stroke-width:1;stroke-opacity:1"
+     d="M 131.00059,309.49992 L 13.110516,309.61103 L 9.9993735,310.49993 L 5.4437723,312.61106 L 2.9993033,314.72219 L 1.7770688,317.05555 L 1.5548444,317.94445 L 1.5548444,319.38891 L 2.4437422,320.94448 L 4.8882111,322.83339 L 7.777129,324.38896 L 10.554935,325.50008 L 13.221628,326.38898 L 131.44504,326.50009 L 135.6673,324.94452 L 139.55623,323.38895 L 142.0007,321.38893 L 143.33404,319.38891 L 143.44516,318.05556 L 142.77848,315.61109 L 140.33401,312.9444 L 137.00065,311.61105 L 134.00062,310.38882 L 131.00059,309.49992 z" />
+  <svg:path
+     d="M 15.779593,313.30152 L 18.03278,313.30152 L 18.03278,315.24758 L 21.187242,315.24758 L 21.187242,313.30152 L 62.420561,313.30152 L 62.420561,323.03183 L 21.187242,323.03183 L 21.187242,321.08577 L 18.03278,321.08577 L 18.03278,323.03183 L 15.779593,323.03183 L 15.779593,313.30152 z"
+     style="fill:#ffffff;fill-opacity:1;stroke:#a000a0;stroke-width:1;stroke-opacity:1" />
+  <svg:path
+     d="M 82.091416,313.30152 L 84.344603,313.30152 L 84.344603,315.24758 L 87.499066,315.24758 L 87.499066,313.30152 L 128.73239,313.30152 L 128.73239,323.03183 L 87.499066,323.03183 L 87.499066,321.08577 L 84.344603,321.08577 L 84.344603,323.03183 L 82.091416,323.03183 L 82.091416,313.30152 z"
+     style="fill:#ffffff;fill-opacity:1;stroke:#a000a0;stroke-width:1;stroke-opacity:1" />
+  <svg:text
+     style="font-size:5px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     <svg:tspan
+       x="72.5"
+       y="323"
+       style="font-size:14px">=</svg:tspan></svg:text>
+  <svg:path
+     style="fill:url(#linearGradient3749);fill-opacity:1.0;stroke:#a000a0;stroke-width:1;stroke-opacity:1"
+     d="M 131.00059,269.99992 L 13.110516,270.11103 L 9.9993735,270.99993 L 5.4437723,273.11106 L 2.9993033,275.22219 L 1.7770688,277.55555 L 1.5548444,278.44445 L 1.5548444,279.88891 L 2.4437422,281.44448 L 4.8882111,283.33339 L 7.777129,284.88896 L 10.554935,286.00008 L 13.221628,286.88898 L 131.44504,287.00009 L 135.6673,285.44452 L 139.55623,283.88895 L 142.0007,281.88893 L 143.33404,279.88891 L 143.44516,278.55556 L 142.77848,276.11109 L 140.33401,273.4444 L 137.00065,272.11105 L 134.00062,270.88882 L 131.00059,269.99992 z" />
+  <svg:path
+     d="M 15.779593,273.80152 L 18.03278,273.80152 L 18.03278,275.74758 L 21.187242,275.74758 L 21.187242,273.80152 L 62.420561,273.80152 L 62.420561,283.53183 L 21.187242,283.53183 L 21.187242,281.58577 L 18.03278,281.58577 L 18.03278,283.53183 L 15.779593,283.53183 L 15.779593,273.80152 z"
+     style="fill:#ffffff;fill-opacity:1;stroke:#a000a0;stroke-width:1;stroke-opacity:1" />
+  <svg:path
+     d="M 82.091416,273.80152 L 84.344603,273.80152 L 84.344603,275.74758 L 87.499066,275.74758 L 87.499066,273.80152 L 128.73239,273.80152 L 128.73239,283.53183 L 87.499066,283.53183 L 87.499066,281.58577 L 84.344603,281.58577 L 84.344603,283.53183 L 82.091416,283.53183 L 82.091416,273.80152 z"
+     style="fill:#ffffff;fill-opacity:1;stroke:#a000a0;stroke-width:1;stroke-opacity:1" />
+  <svg:text
+     style="font-size:5px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"><svg:tspan
+       x="72.5"
+       y="283"
+       style="font-size:14px">&lt;</svg:tspan></svg:text>
+  <svg:path
+     style="fill:url(#linearGradient3741);fill-opacity:1.0;stroke:#a000a0;stroke-width:1;stroke-opacity:1"
+     d="M 131.00059,226.49992 L 13.110516,226.61103 L 9.9993735,227.49993 L 5.4437723,229.61106 L 2.9993033,231.72219 L 1.7770688,234.05555 L 1.5548444,234.94445 L 1.5548444,236.38891 L 2.4437422,237.94448 L 4.8882111,239.83339 L 7.777129,241.38896 L 10.554935,242.50008 L 13.221628,243.38898 L 131.44504,243.50009 L 135.6673,241.94452 L 139.55623,240.38895 L 142.0007,238.38893 L 143.33404,236.38891 L 143.44516,235.05556 L 142.77848,232.61109 L 140.33401,229.9444 L 137.00065,228.61105 L 134.00062,227.38882 L 131.00059,226.49992 z" />
+  <svg:path
+     d="M 15.779593,230.30152 L 18.03278,230.30152 L 18.03278,232.24758 L 21.187242,232.24758 L 21.187242,230.30152 L 62.420561,230.30152 L 62.420561,240.03183 L 21.187242,240.03183 L 21.187242,238.08577 L 18.03278,238.08577 L 18.03278,240.03183 L 15.779593,240.03183 L 15.779593,230.30152 z"
+     style="fill:#ffffff;fill-opacity:1;stroke:#a000a0;stroke-width:1;stroke-opacity:1" />
+  <svg:path
+     d="M 82.091416,230.30152 L 84.344603,230.30152 L 84.344603,232.24758 L 87.499066,232.24758 L 87.499066,230.30152 L 128.73239,230.30152 L 128.73239,240.03183 L 87.499066,240.03183 L 87.499066,238.08577 L 84.344603,238.08577 L 84.344603,240.03183 L 82.091416,240.03183 L 82.091416,230.30152 z"
+     style="fill:#ffffff;fill-opacity:1;stroke:#a000a0;stroke-width:1;stroke-opacity:1" />
+  <svg:text
+     style="font-size:5px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     <svg:tspan
+       x="72.5"
+       y="239"
+       style="font-size:14px">&gt;</svg:tspan></svg:text>
+  <svg:path
+     style="fill:url(#linearGradient3765);fill-opacity:1.0;stroke:#a000a0;stroke-width:1px;stroke-opacity:1"
+     d="M 8.666515,344.99992 L 69.333485,344.99992 L 69.333485,347.33327 L 63.66679,347.99994 L 59.66677,349.33328 L 56.666755,350.99995 L 53.333405,353.66663 L 51.66673,356.33331 L 50.933393,359.33333 L 51.533396,362.13334 L 53.00007,365.33336 L 55.333415,367.33337 L 58.666765,369.33338 L 62.000115,370.66672 L 65.6668,371.66672 L 69.333485,372.66673 L 69.333485,375.00007 L 8.666515,375.00007 L 8.666515,372.66673 L 13.333205,371.66672 L 17.866561,370.53339 L 21.66658,368.66671 L 24.33326,366.6667 L 25.999935,364.40002 L 26.99994,361.66667 L 26.99994,359.33333 L 26.866606,357.19999 L 25.999935,355.33331 L 23.999925,352.66663 L 21.266578,350.86662 L 17.799894,349.13328 L 13.66654,347.99994 L 8.666515,347.33327 L 8.666515,344.99992 z" />
+  <svg:text
+     style="font-size:8px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     <svg:tspan
+       x="39"
+       y="364"
+       style="font-size:11">and</svg:tspan></svg:text>
+  <svg:path
+     style="fill:url(#linearGradient3774);fill-opacity:1.0;stroke:#a000a0;stroke-width:1px;stroke-opacity:1"
+     d="M 78.166515,344.49992 L 138.83348,344.49992 L 138.83348,346.83327 L 133.16679,347.49994 L 129.16677,348.83328 L 126.16675,350.49995 L 122.8334,353.16663 L 121.16673,355.83331 L 120.43339,358.83333 L 121.0334,361.63334 L 122.50007,364.83336 L 124.83342,366.83337 L 128.16676,368.83338 L 131.50011,370.16672 L 135.1668,371.16672 L 138.83348,372.16673 L 138.83348,374.50007 L 78.166515,374.50007 L 78.166515,372.16673 L 82.833205,371.16672 L 87.366561,370.03339 L 91.16658,368.16671 L 93.83326,366.1667 L 95.499935,363.90002 L 96.49994,361.16667 L 96.49994,358.83333 L 96.366606,356.69999 L 95.499935,354.83331 L 93.499925,352.16663 L 90.766578,350.36662 L 87.299894,348.63328 L 83.16654,347.49994 L 78.166515,346.83327 L 78.166515,344.49992 z" />
+  <svg:text
+     style="font-size:8px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     <svg:tspan
+       x="108"
+       y="363"
+       style="font-size:11">or</svg:tspan></svg:text>
+  <svg:path
+     style="fill:url(#linearGradient3782);fill-opacity:1;stroke:#a000a0;stroke-width:1;stroke-opacity:1"
+     d="M 99.500135,387.83326 L 78.833365,387.83326 L 69.702859,388.44907 L 62.143743,389.72303 L 55.213278,391.78601 L 50.406084,394.468 L 47.325727,397.47844 L 45.951693,399.83392 L 45.499865,402.16667 L 45.919619,404.35053 L 47.033217,406.70602 L 49.52085,409.32195 L 53.508882,411.61136 L 59.067239,413.53834 L 64.471011,414.78601 L 71.035993,416.12797 L 78.833365,417.16674 L 99.500135,417.16674 L 99.500135,415.16674 L 95.613222,414.45565 L 91.400679,413.11754 C 90.25565,412.5941 90.749423,412.81081 88.295954,411.41507 L 84.756944,408.90114 L 82.529748,405.7265 L 81.544442,402.25163 L 82.727965,398.28797 L 86.032833,394.82659 L 90.902247,392.17859 L 95.382932,390.79878 L 99.500135,389.83328 L 99.500135,387.83326" />
+  <svg:text
+     style="font-size:8px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     <svg:tspan
+       x="68"
+       y="406"
+       style="font-size:11">not</svg:tspan></svg:text>
+  <svg:path
+     style="fill:#e000e0;fill-opacity:1;stroke:#800080;stroke-width:1;stroke-opacity:1"
+     d="M 90.083421,437.83328 L 101.08348,437.83328 L 101.08348,441.8333 L 98.416796,441.8333 L 98.416796,439.83329 L 91.416761,439.83329" />
+  <svg:path
+     style="fill:#e000e0;fill-opacity:1;stroke:#800080;stroke-width:1;stroke-opacity:1"
+     d="M 90.083421,456.1667 L 101.08348,456.1667 L 101.08348,452.16668 L 98.416796,452.16668 L 98.416796,454.1667 L 91.416761,454.1667" />
+  <svg:path
+     style="fill:url(#linearGradient3790);fill-opacity:1.0;stroke:#a000a0;stroke-width:1;stroke-opacity:1"
+     d="M 75.416681,434.49993 C 86.083401,434.49993 86.083401,434.49993 86.083401,434.49993 L 89.750086,437.16661 L 92.083431,441.16663 L 92.083431,453.83336 L 89.750086,457.16671 L 86.083401,459.83339 L 74.750011,459.83339 L 74.750011,459.83339 L 74.750011,462.50007 L 61.416611,462.50007 L 61.416611,459.83339 L 50.083221,459.83339 L 46.416536,457.16671 L 44.083191,453.83336 L 44.083191,441.16663 L 46.416536,437.16661 L 50.083221,434.49993 L 60.749941,434.49993 L 60.749941,437.83328 L 75.416681,437.83328 L 75.416681,434.49993 z" />
+  <svg:text
+     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+    <svg:tspan
+       x="70"
+       y="451"
+       font-size="11">print</svg:tspan>
+  </svg:text>
+  <svg:text
+     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     <svg:tspan
+       font-size="11"
+       x="72.5"
+       y="46">number</svg:tspan></svg:text>
+  <svg:text
+     style="font-size:10.5px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     <svg:tspan
+       font-size="10.5"
+       x="46"
+       y="199">min</svg:tspan></svg:text>
+  <svg:text
+     style="font-size:10px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     <svg:tspan
+       x="100"
+       y="199"
+       font-size="10.5">max</svg:tspan></svg:text>
+</svg:svg>
