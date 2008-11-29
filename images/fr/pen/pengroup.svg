@@ -225,14 +225,14 @@
     <svg:tspan
        x="68"
        y="93"
-       font-size="11">fixe</svg:tspan>
+       font-size="10">fixe</svg:tspan>
   </svg:text>
   <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <svg:tspan
        x="68"
        y="106"
-       font-size="11">grosseur</svg:tspan>
+       font-size="10">grosseur</svg:tspan>
   </svg:text>
   <svg:path
      style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
@@ -248,14 +248,14 @@
     <svg:tspan
        x="68"
        y="145"
-       font-size="11">fixe</svg:tspan>
+       font-size="10">fixe</svg:tspan>
   </svg:text>
   <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <svg:tspan
        x="68"
        y="158"
-       font-size="11">couleur</svg:tspan>
+       font-size="10">couleur</svg:tspan>
   </svg:text>
   <svg:path
      style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
@@ -271,14 +271,14 @@
     <svg:tspan
        x="68"
        y="197"
-       font-size="11">fixe</svg:tspan>
+       font-size="10">fixe</svg:tspan>
   </svg:text>
   <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <svg:tspan
        x="68"
        y="210"
-       font-size="11">ton</svg:tspan>
+       font-size="10">ton</svg:tspan>
   </svg:text>
   <svg:path
      style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"

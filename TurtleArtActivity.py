@@ -45,7 +45,6 @@ def debug_tick():
 
 import sugar
 from sugar.activity import activity
-from sugar.activity import registry
 from sugar.graphics.toolbutton import ToolButton
 from sugar.datastore import datastore
 from sugar import profile

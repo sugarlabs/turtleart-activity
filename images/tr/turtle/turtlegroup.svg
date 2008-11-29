@@ -303,7 +303,7 @@
      <svg:tspan
          style="font-size:16px;"
          y="26"
-         x="37">limpiar</svg:tspan>
+         x="37">temizle</svg:tspan>
     </svg:text>
   </svg:g>
   <svg:g
@@ -322,7 +322,7 @@
      <svg:tspan
          style="font-size:16px;"
          y="26"
-         x="37">adelante</svg:tspan>
+         x="37">ileri</svg:tspan>
     </svg:text>
   </svg:g>
   <svg:g
@@ -341,7 +341,7 @@
      <svg:tspan
          style="font-size:16px;"
          y="26"
-         x="37">atrás</svg:tspan>
+         x="37">geri</svg:tspan>
     </svg:text>
   </svg:g>
   <svg:g
@@ -360,7 +360,7 @@
      <svg:tspan
          style="font-size:16px;"
          y="26"
-         x="37">izquierda</svg:tspan>
+         x="37">sol</svg:tspan>
     </svg:text>
   </svg:g>
   <svg:g
@@ -379,7 +379,7 @@
      <svg:tspan
          style="font-size:16px;"
          y="26"
-         x="37">derecha</svg:tspan>
+         x="37">sağ</svg:tspan>
     </svg:text>
   </svg:g>
   <svg:g
@@ -404,17 +404,17 @@
      <svg:tspan
          style="font-size:18px;"
          y="46"
-         x="37">arco</svg:tspan></svg:text>
+         x="37">yay</svg:tspan></svg:text>
     <svg:text
      style="font-size:12px;text-anchor:end;text-align:end;font-family:Bitstream Vera Sans;">
       <svg:tspan
          style="font-size:14px;"
          y="22"
-         x="70">ángulo</svg:tspan>
+         x="70">açı</svg:tspan>
       <svg:tspan
          style="font-size:14px;"
          y="66"
-         x="70">radio</svg:tspan>
+         x="70">yarıçap</svg:tspan>
     </svg:text>
   </svg:g>
   <svg:g
@@ -438,8 +438,15 @@
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans;">
      <svg:tspan
          style="font-size:18px;"
-         y="43"
-         x="37">fijar</svg:tspan>
+         y="37"
+         x="37">eksen</svg:tspan>
+    </svg:text>
+    <svg:text
+     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans;">
+     <svg:tspan
+         style="font-size:18px;"
+         y="49"
+         x="37">ayarla</svg:tspan>
     </svg:text>
     <svg:text
      style="font-size:12px;text-anchor:end;text-align:end;font-family:Bitstream Vera Sans;">
@@ -468,15 +475,8 @@
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans;">
      <svg:tspan
          style="font-size:16px;"
-         y="20"
-         x="37">fijar</svg:tspan>
-    </svg:text>
-    <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans;">
-     <svg:tspan
-         style="font-size:16px;"
-         y="34"
-         x="37">rumbo</svg:tspan>
+         y="27"
+         x="37">başlık ?</svg:tspan>
     </svg:text>
   </svg:g>
   <svg:g
@@ -489,7 +489,7 @@
      <svg:tspan
          style="font-size:16px;"
          y="15.5"
-         x="52">coorx</svg:tspan>
+         x="52">x ekseni</svg:tspan>
     </svg:text>
   </svg:g>
   <svg:g
@@ -502,7 +502,7 @@
      <svg:tspan
          style="font-size:16px;"
          y="15.5"
-         x="52">coory</svg:tspan>
+         x="52">y ekseni</svg:tspan>
     </svg:text>
   </svg:g>
   <svg:g
@@ -515,7 +515,7 @@
      <svg:tspan
          style="font-size:16px;"
          y="15.5"
-         x="52">rumbo</svg:tspan>
+         x="52">başlık</svg:tspan>
     </svg:text>
   </svg:g>
   <svg:text
@@ -523,6 +523,6 @@
      <svg:tspan
        x="72.5"
        y="21.5"
-       style="font-size:20px">Tortuga</svg:tspan>
+       style="font-size:20px">Turtle</svg:tspan>
   </svg:text>
 </svg:svg>
