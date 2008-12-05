@@ -1,6 +1,6 @@
 [Activity]
 name = Turtle Art
-activity_version = 19
+activity_version = 20
 license = MIT
 service_name = org.laptop.TurtleArtActivity
 class = TurtleArtActivity.TurtleArtActivity

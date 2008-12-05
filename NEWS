@@ -1,3 +1,11 @@
+20
+
+* fixed translation problem with Spanish "poner en caja"
+* PT translation
+* height = toolbox.get_size()[1]
+* setyx
+* adding po files
+
 19
 
 * removed "sugar.activity import registry"

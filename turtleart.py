@@ -30,7 +30,7 @@ from tawindow import *
 
 def main():
     win1 = gtk.Window(gtk.WINDOW_TOPLEVEL)
-    twNew(win1, os.path.abspath('.'),'es')
+    twNew(win1, os.path.abspath('.'),'es',75)
     win1.connect("destroy", lambda w: gtk.main_quit())
 #    win2 = gtk.Window(gtk.WINDOW_TOPLEVEL)
 #    twNew(win2, os.path.abspath('.'))

@@ -39,7 +39,7 @@ from taproject import *
 # Setup
 #
 
-def twNew(win, path, lang, parent=None):
+def twNew(win, path, lang, tboxh, parent=None):
     tw = taWindow()
     tw.window = win
     tw.path = os.path.join(path,'images',lang)
@@ -48,7 +48,7 @@ def twNew(win, path, lang, parent=None):
     width = gtk.gdk.screen_width()
     print "height: ", gtk.gdk.screen_height()
     # subtract toolbar height
-    height = gtk.gdk.screen_height() - 120
+    height = gtk.gdk.screen_height() - tboxh
     win.set_size_request(width, height)
     if parent is None: win.show_all()
     else: parent.show_all()

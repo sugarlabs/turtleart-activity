@@ -439,7 +439,7 @@
      <svg:tspan
          style="font-size:18px;"
          y="43"
-         x="37">setxy</svg:tspan>
+         x="37">setyx</svg:tspan>
     </svg:text>
     <svg:text
      style="font-size:12px;text-anchor:end;text-align:end;font-family:Bitstream Vera Sans;">

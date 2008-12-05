@@ -73,6 +73,7 @@ class TurtleArtActivity(activity.Activity):
         sugar.graphics.window.Window.set_canvas(self, canvas)
         toolbox._activity_toolbar.title.grab_focus()
         toolbox._activity_toolbar.title.select_region(0,0)
+        tboxh = toolbox._activity_toolbar.size_request()[1]
 
         lang = locale.getdefaultlocale()[0]
         if not lang: lang = 'en'
@@ -80,7 +81,7 @@ class TurtleArtActivity(activity.Activity):
         if not os.path.isdir(os.path.join(activity.get_bundle_path(),'images',lang)):
             lang = 'en'
 
-        self.tw = tawindow.twNew(canvas, activity.get_bundle_path(),lang,self)
+        self.tw = tawindow.twNew(canvas,activity.get_bundle_path(),lang,tboxh,self)
         self.tw.activity = self
         self.tw.window.grab_focus()
         self.tw.save_folder = os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'],'data')
