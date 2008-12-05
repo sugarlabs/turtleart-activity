@@ -1,0 +1,225 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-17 10:53-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.0.1\n"
+
+#: 
+msgid "Turtle Art"
+msgstr ""
+
+#:
+msgid "Flow"
+msgstr "Akiş"
+
+#:
+msgid "forever"
+msgstr "sürekli"
+
+#:
+msgid "if"
+msgstr "eğer"
+
+#:
+msgid "then"
+msgstr "sonra"
+
+#:
+msgid "else"
+msgstr "voska"
+
+#:
+msgid "repeat"
+msgstr "tekrarla"
+
+#:
+msgid "stop stack"
+msgstr "yığın'ı durdur"
+
+#:
+msgid "wait"
+msgstr "bekle"
+
+#:
+msgid "My Blocks"
+msgstr "Parçalar"
+
+#:
+msgid "box 1"
+msgstr "kutu 1"
+
+#:
+msgid "box 2"
+msgstr "kutu 2"
+
+#:
+msgid "stack 1"
+msgstr "yığın 1"
+
+#:
+msgid "stack 2"
+msgstr "yığın 2"
+
+#:
+msgid "store in box 1"
+msgstr "kutu 1 de sakla"
+
+#:
+msgid "store in box 2"
+msgstr "kutu 1 de sakla"
+
+#:
+msgid "Numbers"
+msgstr "Sayılar"
+
+#:
+msgid "number"
+msgstr ""
+
+#:
+msgid "and"
+msgstr "ve"
+
+#:
+msgid "or"
+msgstr "veya"
+
+#:
+msgid "not"
+msgstr "değil"
+
+#:
+msgid "random"
+msgstr "rastgele"
+
+#:
+msgid "mod"
+msgstr "mod"
+
+#:
+msgid "min"
+msgstr ""
+
+#:
+msgid "max"
+msgstr ""
+
+#:
+msgid "print"
+msgstr "yazdır"
+
+#:
+msgid "Pen"
+msgstr "Kalem"
+
+#:
+msgid "color"
+msgstr "renk"
+
+#:
+msgid "shade"
+msgstr "gölge"
+
+#:
+msgid "fill screen"
+msgstr "ekranı doldur"
+
+#:
+msgid "pen up"
+msgstr "kb"
+
+#:
+msgid "pen down"
+msgstr "kk"
+
+#:
+msgid "set pen size"
+msgstr "kalem boyu ayan"
+
+#:
+msgid "pen size"
+msgstr "kalem boyu"
+
+#:
+msgid "set shade"
+msgstr "gölge ayarı"
+
+#:
+msgid "set color"
+msgstr "renk ayarı"
+
+#:
+msgid "Blocks"
+msgstr "Parçalar"
+
+#:
+msgid "Turtle"
+msgstr ""
+
+#:
+msgid "forward"
+msgstr "ileri"
+
+#:
+msgid "back"
+msgstr "geri"
+
+#:
+msgid "right"
+msgstr "sağ"
+
+#:
+msgid "left"
+msgstr "sol"
+
+#:
+msgid "arc"
+msgstr "yay"
+
+#:
+msgid "angle"
+msgstr "açı"
+
+#:
+msgid "radius"
+msgstr "yarıçap"
+
+#:
+msgid "heading"
+msgstr "başlık"
+
+#:
+msgid "set heading"
+msgstr "başlık"
+
+#:
+msgid "clean"
+msgstr "temizle"
+
+#:
+msgid "set xy"
+msgstr "eksen ayarla"
+
+#:
+msgid "x"
+msgstr "x"
+
+#:
+msgid "y"
+msgstr "y"
+
+#:
+msgid "xcor"
+msgstr "x ekseni"
+
+#:
+msgid "ycor"
+msgstr "y ekseni"

@@ -1,0 +1,225 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-17 11:14-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.0.1\n"
+
+#: 
+msgid "Turtle Art"
+msgstr "Tortuga Art "
+
+#:
+msgid "Flow"
+msgstr "Flujo"
+
+#:
+msgid "forever"
+msgstr "por siempre"
+
+#:
+msgid "if"
+msgstr "si"
+
+#:
+msgid "then"
+msgstr "entonces"
+
+#:
+msgid "else"
+msgstr "si no"
+
+#:
+msgid "repeat"
+msgstr "repetir"
+
+#:
+msgid "stop stack"
+msgstr "detener pila"
+
+#:
+msgid "wait"
+msgstr "esperar"
+
+#:
+msgid "My Blocks"
+msgstr "Mis bloques"
+
+#:
+msgid "box 1"
+msgstr "caja1"
+
+#:
+msgid "box 2"
+msgstr "caja2"
+
+#:
+msgid "stack 1"
+msgstr "pila1"
+
+#:
+msgid "stack 2"
+msgstr "pila2"
+
+#:
+msgid "store in box 1"
+msgstr "poner en caja1"
+
+#:
+msgid "store in box 2"
+msgstr "pner en caja2"
+
+#:
+msgid "Numbers"
+msgstr "Números"
+
+#:
+msgid "number"
+msgstr "número"
+
+#:
+msgid "and"
+msgstr "y"
+
+#:
+msgid "or"
+msgstr "o"
+
+#:
+msgid "not"
+msgstr "no"
+
+#:
+msgid "random"
+msgstr "azar"
+
+#:
+msgid "mod"
+msgstr "mod"
+
+#:
+msgid "min"
+msgstr "min"
+
+#:
+msgid "max"
+msgstr "max"
+
+#:
+msgid "print"
+msgstr "mostrar"
+
+#:
+msgid "Pen"
+msgstr "Pluma"
+
+#:
+msgid "color"
+msgstr "color"
+
+#:
+msgid "shade"
+msgstr "tono"
+
+#:
+msgid "fill screen"
+msgstr "pintar fondo"
+
+#:
+msgid "pen up"
+msgstr "sp"
+
+#:
+msgid "pen down"
+msgstr "cp"
+
+#:
+msgid "set pen size"
+msgstr "fijar tamaño"
+
+#:
+msgid "pen size"
+msgstr "tamaño"
+
+#:
+msgid "set shade"
+msgstr "fijar tono"
+
+#:
+msgid "set color"
+msgstr "fijar color"
+
+#:
+msgid "Blocks"
+msgstr "Bloques"
+
+#:
+msgid "Turtle"
+msgstr "Tortuga"
+
+#:
+msgid "forward"
+msgstr "adelante"
+
+#:
+msgid "back"
+msgstr "atrás"
+
+#:
+msgid "right"
+msgstr "derecha"
+
+#:
+msgid "left"
+msgstr "izquierda"
+
+#:
+msgid "arc"
+msgstr "arco"
+
+#:
+msgid "angle"
+msgstr "ángulo"
+
+#:
+msgid "radius"
+msgstr "radio"
+
+#:
+msgid "heading"
+msgstr "rumbo"
+
+#:
+msgid "set heading"
+msgstr "fijar rumbo"
+
+#:
+msgid "clean"
+msgstr "limpiar"
+
+#:
+msgid "set xy"
+msgstr "fijar xy"
+
+#:
+msgid "x"
+msgstr "x"
+
+#:
+msgid "y"
+msgstr "y"
+
+#:
+msgid "xcor"
+msgstr "coorx"
+
+#:
+msgid "ycor"
+msgstr "coory"
