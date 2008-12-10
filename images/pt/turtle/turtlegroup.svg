@@ -301,7 +301,7 @@
     <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans;">
      <svg:tspan
-         style="font-size:18px;"
+         style="font-size:16px;"
          y="26"
          x="37">limpar</svg:tspan>
     </svg:text>
@@ -320,7 +320,7 @@
     <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans;">
      <svg:tspan
-         style="font-size:18px;"
+         style="font-size:16px;"
          y="26"
          x="37">avante</svg:tspan>
     </svg:text>
@@ -339,7 +339,7 @@
     <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans;">
      <svg:tspan
-         style="font-size:18px;"
+         style="font-size:16px;"
          y="26"
          x="37">atrás</svg:tspan>
     </svg:text>
@@ -358,7 +358,7 @@
     <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans;">
      <svg:tspan
-         style="font-size:18px;"
+         style="font-size:16px;"
          y="26"
          x="37">esquerda</svg:tspan>
     </svg:text>
@@ -377,7 +377,7 @@
     <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans;">
      <svg:tspan
-         style="font-size:18px;"
+         style="font-size:16px;"
          y="26"
          x="37">direita</svg:tspan>
     </svg:text>
@@ -402,7 +402,7 @@
     <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans;">
      <svg:tspan
-         style="font-size:18px;"
+         style="font-size:16px;"
          y="43"
          x="37">arco</svg:tspan></svg:text>
     <svg:text
@@ -437,7 +437,7 @@
     <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans;">
      <svg:tspan
-         style="font-size:18px;"
+         style="font-size:16px;"
          y="43"
          x="37">ajustar</svg:tspan>
     </svg:text>
@@ -467,14 +467,14 @@
     <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans;">
      <svg:tspan
-         style="font-size:16px;"
+         style="font-size:15px;"
          y="20"
          x="37">ajustar</svg:tspan>
     </svg:text>
     <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans;">
      <svg:tspan
-         style="font-size:16px;"
+         style="font-size:15px;"
          y="32"
          x="37">cabeçalho</svg:tspan>
     </svg:text>

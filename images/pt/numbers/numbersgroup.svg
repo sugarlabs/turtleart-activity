@@ -449,7 +449,7 @@
     <svg:tspan
        x="70"
        y="451"
-       font-size="10.5">imprimir</svg:tspan>
+       font-size="10">imprimir</svg:tspan>
   </svg:text>
   <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">

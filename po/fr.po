@@ -196,8 +196,8 @@ msgid "heading"
 msgstr "cap"
 
 #:
-msgid "heading"
-msgstr "fixe cap"
+#msgid "heading"
+#msgstr "fixe cap"
 
 #:
 msgid "clean"
@@ -222,3 +222,11 @@ msgstr "coordx"
 #:
 msgid "ycor"
 msgstr "coordy"
+
+#:
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Samples"
+msgstr ""

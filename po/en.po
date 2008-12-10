@@ -223,3 +223,11 @@ msgstr ""
 #:
 msgid "ycor"
 msgstr ""
+
+#:
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Samples"
+msgstr ""

@@ -223,3 +223,11 @@ msgstr "coorx"
 #:
 msgid "ycor"
 msgstr "coory"
+
+#:
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Samples"
+msgstr ""

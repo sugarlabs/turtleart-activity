@@ -57,17 +57,17 @@
      style="fill:none;stroke:#ffffff;stroke-width:1;stroke-opacity:1"
      d="M 25,7.5 L 49,7.5" />
   <text
-     style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     style="font-size:16px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <tspan
-       x="37"
+       x="38"
        y="27"
-       style="font-size:18px;">ajustar</tspan>
+       style="font-size:16px;">ajustar</tspan>
   </text>
   <text
-     style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     style="font-size:16px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <tspan
-       x="37"
+       x="38"
        y="46"
-       style="font-size:18px;">tamanho</tspan>
+       style="font-size:16px;">tamanho</tspan>
   </text>
 </svg>

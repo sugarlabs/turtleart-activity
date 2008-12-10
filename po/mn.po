@@ -1,225 +1,172 @@
-﻿#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-17 16:21-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Walter Bender <walter@sugarlabs.org>\n"
+"PO-Revision-Date: 2008-12-09 17:22+0530\n"
+"Last-Translator: Sayamindu Dasgupta <sayamindu@gmail.com>\n"
 "Language-Team: Mongolian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.0.1\n"
 
-#: 
 msgid "Turtle Art"
 msgstr "Яст мэлхий уран бүтээл"
 
-#:
 msgid "Flow"
 msgstr "Урсахуй"
 
-#:
 msgid "forever"
 msgstr "үүрд"
 
-#:
 msgid "if"
 msgstr "xзpзb"
 
-#:
 msgid "then"
 msgstr "бол"
 
-#:
 msgid "else"
 msgstr "эсвэл"
 
-#:
 msgid "repeat"
 msgstr "дabtax"
 
-#:
 msgid "stop stack"
 msgstr "эалгаас зогс"
 
-#:
 msgid "wait"
 msgstr "хүлзз"
 
-#:
 msgid "My Blocks"
 msgstr "Миний Блокуд"
 
-#:
 msgid "box 1"
 msgstr "богц 1"
 
-#:
 msgid "box 2"
 msgstr "богц 2"
 
-#:
 msgid "stack 1"
 msgstr "залгас 1"
 
-#:
 msgid "stack 2"
 msgstr "залгас 2"
 
-#:
 msgid "store in box 1"
 msgstr "богц 1-д хадгал"
 
-#:
 msgid "store in box 2"
 msgstr "богц 2-д хадгал"
 
-#:
 msgid "Numbers"
 msgstr "Тооны Уйлдзл"
 
-#:
 msgid "number"
 msgstr ""
 
-#:
 msgid "and"
 msgstr ""
 
-#:
 msgid "or"
 msgstr ""
 
-#:
 msgid "not"
 msgstr ""
 
-#:
 msgid "random"
 msgstr ""
 
-#:
 msgid "mod"
 msgstr ""
 
-#:
 msgid "min"
 msgstr ""
 
-#:
 msgid "max"
 msgstr ""
 
-#:
 msgid "print"
 msgstr "үэүүл"
 
-#:
 msgid "Pen"
 msgstr "Зурах"
 
-#:
 msgid "color"
 msgstr "ѳнгѳ"
 
-#:
 msgid "shade"
 msgstr "сүүдзр"
 
-#:
 msgid "fill screen"
 msgstr "дзлгзц"
 
-#:
 msgid "pen up"
 msgstr "зур"
 
-#:
 msgid "pen down"
 msgstr "бүү зур"
 
-#:
 msgid "set pen size"
 msgstr "үззгний хзмжзз ?"
 
-#:
 msgid "pen size"
 msgstr "үззг хзмжзз"
 
-#:
 msgid "set shade"
 msgstr "сүүдзр ?"
 
-#:
 msgid "set color"
 msgstr "ѳнгѳ ?"
 
-#:
 msgid "Blocks"
 msgstr "Блокууд"
 
-#:
 msgid "Turtle"
 msgstr "Яст Мзлхий"
 
-#:
 msgid "forward"
 msgstr "урагшаа"
 
-#:
 msgid "back"
 msgstr "ухар"
 
-#:
 msgid "right"
 msgstr "баруун"
 
-#:
 msgid "left"
 msgstr "зүүн"
 
-#:
 msgid "arc"
 msgstr "нум"
 
-#:
 msgid "angle"
 msgstr "ѳнцѳг"
 
-#:
 msgid "radius"
 msgstr "радмус"
 
-#:
 msgid "heading"
 msgstr "чмг"
 
-#:
 msgid "set heading"
 msgstr "seth"
 
-#:
 msgid "clean"
 msgstr "арилга"
 
-#:
 msgid "set xy"
 msgstr "тзнхлзг"
 
-#:
 msgid "x"
 msgstr "x"
 
-#:
 msgid "y"
 msgstr "y"
 
-#:
 msgid "xcor"
 msgstr "x тзнхлзг"
 
-#:
 msgid "ycor"
 msgstr "y тзнхлзг"
+

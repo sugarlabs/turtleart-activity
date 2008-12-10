@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="87"
+   height="44"
+   id="svg6047"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="forward.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata6078">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:window-height="687"
+     inkscape:window-width="1278"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showgrid="false"
+     inkscape:zoom="6.2413793"
+     inkscape:cx="43.5"
+     inkscape:cy="22"
+     inkscape:window-x="0"
+     inkscape:window-y="80"
+     inkscape:current-layer="svg6047" />
+  <defs
+     id="defs6049">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 22 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="87 : 22 : 1"
+       inkscape:persp3d-origin="43.5 : 14.666667 : 1"
+       id="perspective6080" />
+    <linearGradient
+       id="linearGradient3166">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3168" />
+      <stop
+         style="stop-color:#00ff00;stop-opacity:1;"
+         offset="1"
+         id="stop3170" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient3166"
+       id="linearGradient3172"
+       x1="0"
+       y1="22"
+       x2="74"
+       y2="22"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <path
+     style="fill:#00e000;fill-opacity:1;stroke:#008000;stroke-width:1.50000000000000000;stroke-opacity:1"
+     d="M 70,6 L 86.5,6 L 86.5,12 L 82.5,12 L 82.5,9 L 72,9"
+     id="path6055" />
+  <path
+     style="fill:#00e000;fill-opacity:1;stroke:#008000;stroke-width:1.50000000000000000;stroke-opacity:1"
+     d="M 70,33.5 L 86.5,33.5 L 86.5,27.5 L 82.5,27.5 L 82.5,30.5 L 72,30.5"
+     id="path6057" />
+  <path
+     style="fill:url(#linearGradient3172);fill-opacity:1;stroke:#00a000;stroke-width:2;stroke-opacity:1"
+     d="M 48,1 C 64,1 64,1 64,1 C 64,1 68.131798,3.4865526 69.5,5 C 70.897472,6.5458243 73,11 73,11 L 73,30 C 73,30 70.78295,33.693654 69.5,35 C 68.07044,36.455629 64,39 64,39 L 47,39 L 47,39 L 47,43 L 27,43 L 27,39 L 10,39 C 10,39 5.9295605,36.455629 4.5,35 C 3.2170498,33.693654 1,30 1,30 L 1,11 C 1,11 3.1025283,6.5458243 4.5,5 C 5.8682021,3.4865526 10,1 10,1 L 26,1 L 26,6 L 48,6 L 48,1 z"
+     id="path6059" />
+  <path
+     style="fill:none;stroke:#ffffff;stroke-width:1;stroke-opacity:1"
+     d="M 49,2.5 L 63,2.5"
+     id="path6061" />
+  <path
+     style="fill:none;stroke:#ffffff;stroke-width:1;stroke-opacity:1"
+     d="M 11,2.5 L 25,2.5"
+     id="path6063" />
+  <path
+     style="fill:none;stroke:#006000;stroke-width:1;stroke-opacity:1"
+     d="M 10.5,39.5 L 26.5,39.5"
+     id="path6065" />
+  <path
+     style="fill:none;stroke:#006000;stroke-width:1;stroke-opacity:1"
+     d="M 47.5,39.5 L 63.5,39.5"
+     id="path6067" />
+  <path
+     style="fill:none;stroke:#006000;stroke-width:1;stroke-opacity:1"
+     d="M 26.5,43.5 L 47.5,43.5"
+     id="path6069" />
+  <path
+     style="fill:none;stroke:#ffffff;stroke-width:1;stroke-opacity:1"
+     d="M 25,7.5 L 49,7.5"
+     id="path6071" />
+  <text
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"
+     id="text6073">
+    <tspan
+       x="37"
+       y="26"
+       style="font-size:18px"
+       id="tspan6075">вперёд</tspan>
+  </text>
+</svg>

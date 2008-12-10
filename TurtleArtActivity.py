@@ -63,7 +63,7 @@ class TurtleArtActivity(activity.Activity):
         toolbox = activity.ActivityToolbox(self)
         self.set_toolbox(toolbox)
         self.projectToolbar = ProjectToolbar(self)
-        toolbox.add_toolbar( ('Project'), self.projectToolbar )
+        toolbox.add_toolbar( _('Project'), self.projectToolbar )
         toolbox.show()
 
 #        toolbox._activity_toolbar.keep.connect('clicked', self._keep_clicked_cb) # patch
@@ -169,7 +169,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.activity = pc
 
         self.sampb = ToolButton( "stock-open" )
-        self.sampb.set_tooltip("samples")
+        self.sampb.set_tooltip(_('Samples'))
         self.sampb.props.sensitive = True
         self.sampb.connect('clicked', self.do_samples)
         self.insert(self.sampb, -1)

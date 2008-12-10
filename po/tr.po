@@ -223,3 +223,11 @@ msgstr "x ekseni"
 #:
 msgid "ycor"
 msgstr "y ekseni"
+
+#:
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Samples"
+msgstr ""

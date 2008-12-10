@@ -223,16 +223,16 @@
   <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <svg:tspan
-       x="68"
+       x="66"
        y="93"
-       font-size="11">ajustar</svg:tspan>
+       font-size="10.5">ajustar</svg:tspan>
   </svg:text>
   <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <svg:tspan
-       x="68"
+       x="67"
        y="106"
-       font-size="11">tamanho</svg:tspan>
+       font-size="10">tamanho</svg:tspan>
   </svg:text>
   <svg:path
      style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
@@ -246,16 +246,16 @@
   <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <svg:tspan
-       x="68"
+       x="66"
        y="145"
-       font-size="11">ajustar</svg:tspan>
+       font-size="10.5">ajustar</svg:tspan>
   </svg:text>
   <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <svg:tspan
-       x="68"
+       x="66"
        y="158"
-       font-size="11">cor</svg:tspan>
+       font-size="10.5">cor</svg:tspan>
   </svg:text>
   <svg:path
      style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
@@ -269,16 +269,16 @@
   <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <svg:tspan
-       x="68"
+       x="66"
        y="197"
-       font-size="11">ajustar</svg:tspan>
+       font-size="10.5">ajustar</svg:tspan>
   </svg:text>
   <svg:text
      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <svg:tspan
-       x="68"
+       x="66"
        y="210"
-       font-size="11">tom</svg:tspan>
+       font-size="10.5">tom</svg:tspan>
   </svg:text>
   <svg:path
      style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
