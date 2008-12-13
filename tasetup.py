@@ -187,4 +187,13 @@ def setup_tool(tw,x,y,name):
     return who
 
 def load_image(path, dir, file):
-    return gtk.gdk.pixbuf_new_from_file(os.path.join(path,dir,file+'.svg'))
+    from sugar.activity import activity
+    
+    # first try to open the cached image
+    # if you fail, open the .svg file and cache the result
+    try: return gtk.gdk.pixbuf_new_from_file(os.path.join(activity.get_activity_root(),"data",file+'.png'))
+    except:
+        foo = gtk.gdk.pixbuf_new_from_file(os.path.join(path,dir,file+'.svg'))
+        foo.save(os.path.join(activity.get_activity_root(),"data",file+'.png'), "png")
+        return foo
+
