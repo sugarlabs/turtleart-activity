@@ -1,0 +1,237 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-17 10:53-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.0.1\n"
+
+#: 
+msgid "Turtle Art"
+msgstr ""
+
+#:
+msgid "Flow"
+msgstr ""
+
+#:
+msgid "forever"
+msgstr ""
+
+#:
+msgid "if"
+msgstr ""
+
+#:
+msgid "then"
+msgstr ""
+
+#:
+msgid "else"
+msgstr ""
+
+#:
+msgid "repeat"
+msgstr ""
+
+#:
+msgid "stop stack"
+msgstr ""
+
+#:
+msgid "wait"
+msgstr ""
+
+#:
+msgid "My Blocks"
+msgstr ""
+
+#:
+msgid "box 1"
+msgstr ""
+
+#:
+msgid "box 2"
+msgstr ""
+
+#:
+msgid "stack 1"
+msgstr ""
+
+#:
+msgid "stack 2"
+msgstr ""
+
+#:
+msgid "store in box 1"
+msgstr ""
+
+#:
+msgid "store in box 2"
+msgstr ""
+
+#:
+msgid "Numbers"
+msgstr ""
+
+#:
+msgid "number"
+msgstr ""
+
+#:
+msgid "and"
+msgstr ""
+
+#:
+msgid "or"
+msgstr ""
+
+#:
+msgid "not"
+msgstr ""
+
+#:
+msgid "random"
+msgstr ""
+
+#:
+msgid "min"
+msgstr ""
+
+#:
+msgid "max"
+msgstr ""
+
+#:
+msgid "mod"
+msgstr ""
+
+#:
+msgid "print"
+msgstr ""
+
+#:
+msgid "Pen"
+msgstr ""
+
+#:
+msgid "color"
+msgstr ""
+
+#:
+msgid "shade"
+msgstr ""
+
+#:
+msgid "fill screen"
+msgstr ""
+
+#:
+msgid "pen up"
+msgstr ""
+
+#:
+msgid "pen down"
+msgstr ""
+
+#:
+msgid "set pen size"
+msgstr ""
+
+#:
+msgid "pen size"
+msgstr ""
+
+#:
+msgid "set shade"
+msgstr ""
+
+#:
+msgid "set color"
+msgstr ""
+
+#:
+msgid "Blocks"
+msgstr ""
+
+#:
+msgid "Turtle"
+msgstr ""
+
+#:
+msgid "forward"
+msgstr ""
+
+#:
+msgid "back"
+msgstr ""
+
+#:
+msgid "right"
+msgstr ""
+
+#:
+msgid "left"
+msgstr ""
+
+#:
+msgid "arc"
+msgstr ""
+
+#:
+msgid "angle"
+msgstr ""
+
+#:
+msgid "radius"
+msgstr ""
+
+#:
+msgid "heading"
+msgstr ""
+
+#:
+msgid "set heading"
+msgstr "seth"
+
+#:
+msgid "clean"
+msgstr ""
+
+#:
+msgid "set xy"
+msgstr ""
+
+#:
+msgid "x"
+msgstr ""
+
+#:
+msgid "y"
+msgstr ""
+
+#:
+msgid "xcor"
+msgstr ""
+
+#:
+msgid "ycor"
+msgstr ""
+
+#:
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Samples"
+msgstr ""
