@@ -1,0 +1,237 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-17 10:53-0500\n"
+"PO-Revision-Date: 2008-12-12 16:25-0500\n"
+"Last-Translator: Myckel Habets <myckel@sdf.lonestar.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.0.1\n"
+
+#: 
+msgid "Turtle Art"
+msgstr "Schildpad Kunst"
+
+#:
+msgid "Flow"
+msgstr "Vloei"
+
+#:
+msgid "forever"
+msgstr "altijd"
+
+#:
+msgid "if"
+msgstr "als"
+
+#:
+msgid "then"
+msgstr "dan"
+
+#:
+msgid "else"
+msgstr "anders"
+
+#:
+msgid "repeat"
+msgstr "herhaal"
+
+#:
+msgid "stop stack"
+msgstr "stop stapel"
+
+#:
+msgid "wait"
+msgstr "wacht"
+
+#:
+msgid "My Blocks"
+msgstr "Mijn blokken"
+
+#:
+msgid "box 1"
+msgstr "doos 1"
+
+#:
+msgid "box 2"
+msgstr "doos 2"
+
+#:
+msgid "stack 1"
+msgstr "stapel 1"
+
+#:
+msgid "stack 2"
+msgstr "stapel 2"
+
+#:
+msgid "store in box 1"
+msgstr "opslaan in doos 1"
+
+#:
+msgid "store in box 2"
+msgstr "opslaan in doos 2"
+
+#:
+msgid "Numbers"
+msgstr "Nummers"
+
+#:
+msgid "number"
+msgstr "nummer"
+
+#:
+msgid "and"
+msgstr "en"
+
+#:
+msgid "or"
+msgstr "of"
+
+#:
+msgid "not"
+msgstr "niet"
+
+#:
+msgid "random"
+msgstr "willekeurig"
+
+#:
+msgid "min"
+msgstr "min"
+
+#:
+msgid "max"
+msgstr "max"
+
+#:
+msgid "mod"
+msgstr "mod"
+
+#:
+msgid "print"
+msgstr "print"
+
+#:
+msgid "Pen"
+msgstr "Pen"
+
+#:
+msgid "color"
+msgstr "kleur"
+
+#:
+msgid "shade"
+msgstr "schaduw"
+
+#:
+msgid "fill screen"
+msgstr "vul scherm"
+
+#:
+msgid "pen up"
+msgstr "pen omhoog"
+
+#:
+msgid "pen down"
+msgstr "pen omlaag"
+
+#:
+msgid "set pen size"
+msgstr "zet pen dikte"
+
+#:
+msgid "pen size"
+msgstr "pen dikte"
+
+#:
+msgid "set shade"
+msgstr "zet schaduw"
+
+#:
+msgid "set color"
+msgstr "zet kleur"
+
+#:
+msgid "Blocks"
+msgstr "Blokken"
+
+#:
+msgid "Turtle"
+msgstr "Schildpad"
+
+#:
+msgid "forward"
+msgstr "vooruit"
+
+#:
+msgid "back"
+msgstr "terug"
+
+#:
+msgid "right"
+msgstr "rechts"
+
+#:
+msgid "left"
+msgstr "links"
+
+#:
+msgid "arc"
+msgstr "boog"
+
+#:
+msgid "angle"
+msgstr "hoek"
+
+#:
+msgid "radius"
+msgstr "straal"
+
+#:
+msgid "heading"
+msgstr "richting"
+
+#:
+#, fuzzy
+msgid "set heading"
+msgstr "seth"
+
+#:
+msgid "clean"
+msgstr "wissen"
+
+#:
+msgid "set xy"
+msgstr "zet xy"
+
+#:
+msgid "x"
+msgstr "x"
+
+#:
+msgid "y"
+msgstr "y"
+
+#:
+msgid "xcor"
+msgstr "xcor"
+
+#:
+msgid "ycor"
+msgstr "ycor"
+
+#:
+msgid "Project"
+msgstr "Project"
+
+#:
+msgid "Samples"
+msgstr "Voorbeelden"
