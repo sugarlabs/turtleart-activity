@@ -1,0 +1,236 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-17 10:53-0500\n"
+"PO-Revision-Date: 2008-12-18 11:28-0500\n"
+"Last-Translator: Γιάννης Κασκαμανίδης <ttnfy17@yahoo.gr>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0rc2\n"
+
+#: 
+msgid "Turtle Art"
+msgstr "Η Τέχνη της Χελώνας"
+
+#:
+msgid "Flow"
+msgstr "Ροή"
+
+#:
+msgid "forever"
+msgstr "για πάντα"
+
+#:
+msgid "if"
+msgstr "εάν"
+
+#:
+msgid "then"
+msgstr "τότε"
+
+#:
+msgid "else"
+msgstr "αλλιώς"
+
+#:
+msgid "repeat"
+msgstr "επανάληψη"
+
+#:
+msgid "stop stack"
+msgstr "σταμάτημα στοίβας"
+
+#:
+msgid "wait"
+msgstr "αναμονή"
+
+#:
+msgid "My Blocks"
+msgstr ""
+
+#:
+msgid "box 1"
+msgstr ""
+
+#:
+msgid "box 2"
+msgstr ""
+
+#:
+msgid "stack 1"
+msgstr "στοίβα 1"
+
+#:
+msgid "stack 2"
+msgstr "στοίβα 2"
+
+#:
+msgid "store in box 1"
+msgstr ""
+
+#:
+msgid "store in box 2"
+msgstr ""
+
+#:
+msgid "Numbers"
+msgstr "Αριθμοί"
+
+#:
+msgid "number"
+msgstr "αριθμός"
+
+#:
+msgid "and"
+msgstr "και"
+
+#:
+msgid "or"
+msgstr "ή"
+
+#:
+msgid "not"
+msgstr "όχι"
+
+#:
+msgid "random"
+msgstr "τυχαίο"
+
+#:
+msgid "min"
+msgstr "ελάχιστο"
+
+#:
+msgid "max"
+msgstr "μέγιστο"
+
+#:
+msgid "mod"
+msgstr ""
+
+#:
+msgid "print"
+msgstr "εκτύπωση"
+
+#:
+msgid "Pen"
+msgstr "Στυλό"
+
+#:
+msgid "color"
+msgstr "χρώμα"
+
+#:
+msgid "shade"
+msgstr "σκιά"
+
+#:
+msgid "fill screen"
+msgstr "γέμισμα οθόνης"
+
+#:
+msgid "pen up"
+msgstr ""
+
+#:
+msgid "pen down"
+msgstr "στυλό κάτω"
+
+#:
+msgid "set pen size"
+msgstr "ορισμός μεγέθους στυλό"
+
+#:
+msgid "pen size"
+msgstr "μέγεθος στυλό"
+
+#:
+msgid "set shade"
+msgstr "ορισμός σκιάς"
+
+#:
+msgid "set color"
+msgstr "ορισμός χρώματος"
+
+#:
+msgid "Blocks"
+msgstr ""
+
+#:
+msgid "Turtle"
+msgstr "Χελώνα"
+
+#:
+msgid "forward"
+msgstr "μπροστά"
+
+#:
+msgid "back"
+msgstr "πίσω"
+
+#:
+msgid "right"
+msgstr "δεξιά"
+
+#:
+msgid "left"
+msgstr "αριστερά"
+
+#:
+msgid "arc"
+msgstr ""
+
+#:
+msgid "angle"
+msgstr ""
+
+#:
+msgid "radius"
+msgstr ""
+
+#:
+msgid "heading"
+msgstr ""
+
+#:
+msgid "set heading"
+msgstr "seth"
+
+#:
+msgid "clean"
+msgstr ""
+
+#:
+msgid "set xy"
+msgstr ""
+
+#:
+msgid "x"
+msgstr ""
+
+#:
+msgid "y"
+msgstr ""
+
+#:
+msgid "xcor"
+msgstr ""
+
+#:
+msgid "ycor"
+msgstr ""
+
+#:
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Samples"
+msgstr ""
