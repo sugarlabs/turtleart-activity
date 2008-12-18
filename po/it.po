@@ -1,0 +1,237 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-17 10:53-0500\n"
+"PO-Revision-Date: 2008-12-14 17:47-0500\n"
+"Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.0.1\n"
+
+#: 
+msgid "Turtle Art"
+msgstr "Turtle Art"
+
+#:
+msgid "Flow"
+msgstr "Flusso"
+
+#:
+msgid "forever"
+msgstr "persempre"
+
+#:
+msgid "if"
+msgstr "se"
+
+#:
+msgid "then"
+msgstr "allora"
+
+#:
+msgid "else"
+msgstr "altrimenti"
+
+#:
+msgid "repeat"
+msgstr "ripeti"
+
+#:
+msgid "stop stack"
+msgstr "stop stack"
+
+#:
+msgid "wait"
+msgstr "aspetta"
+
+#:
+msgid "My Blocks"
+msgstr "I Miei Blocchi"
+
+#:
+msgid "box 1"
+msgstr "scatola 1"
+
+#:
+msgid "box 2"
+msgstr "scatola 2"
+
+#:
+msgid "stack 1"
+msgstr "stack 1"
+
+#:
+msgid "stack 2"
+msgstr "stack 2"
+
+#:
+msgid "store in box 1"
+msgstr "memorizza nella scatola 1"
+
+#:
+msgid "store in box 2"
+msgstr "memorizza nella scatola 2"
+
+#:
+msgid "Numbers"
+msgstr "Numeri"
+
+#:
+msgid "number"
+msgstr "numero"
+
+#:
+msgid "and"
+msgstr "and"
+
+#:
+msgid "or"
+msgstr "or"
+
+#:
+msgid "not"
+msgstr "not"
+
+#:
+msgid "random"
+msgstr "casuale"
+
+#:
+msgid "min"
+msgstr "min"
+
+#:
+msgid "max"
+msgstr "max"
+
+#:
+msgid "mod"
+msgstr "mod"
+
+#:
+msgid "print"
+msgstr "stampa"
+
+#:
+msgid "Pen"
+msgstr "Penna"
+
+#:
+msgid "color"
+msgstr "colore"
+
+#:
+msgid "shade"
+msgstr "ombreggiatura"
+
+#:
+msgid "fill screen"
+msgstr "riempi schermo"
+
+#:
+msgid "pen up"
+msgstr "penna su"
+
+#:
+msgid "pen down"
+msgstr "penna giù"
+
+#:
+msgid "set pen size"
+msgstr "seleziona dimensione penna"
+
+#:
+msgid "pen size"
+msgstr "dimensione penna"
+
+#:
+msgid "set shade"
+msgstr "seleziona ombreggiatura"
+
+#:
+msgid "set color"
+msgstr "seleziona colore"
+
+#:
+msgid "Blocks"
+msgstr "Blocchi"
+
+#:
+msgid "Turtle"
+msgstr "Tartaruga"
+
+#:
+msgid "forward"
+msgstr "avanti"
+
+#:
+msgid "back"
+msgstr "indietro"
+
+#:
+msgid "right"
+msgstr "destra"
+
+#:
+msgid "left"
+msgstr "sinistra"
+
+#:
+msgid "arc"
+msgstr "arco"
+
+#:
+msgid "angle"
+msgstr "angolo"
+
+#:
+msgid "radius"
+msgstr "raggio"
+
+#:
+msgid "heading"
+msgstr "direzione"
+
+#:
+#, fuzzy
+msgid "set heading"
+msgstr "seth"
+
+#:
+msgid "clean"
+msgstr "pulisci"
+
+#:
+msgid "set xy"
+msgstr "seleziona xy"
+
+#:
+msgid "x"
+msgstr "x"
+
+#:
+msgid "y"
+msgstr "y"
+
+#:
+msgid "xcor"
+msgstr "coordinata x"
+
+#:
+msgid "ycor"
+msgstr "coordinata y"
+
+#:
+msgid "Project"
+msgstr "Progetto"
+
+#:
+msgid "Samples"
+msgstr "Esempi"
