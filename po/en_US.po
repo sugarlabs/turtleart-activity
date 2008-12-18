@@ -1,0 +1,236 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-17 10:53-0500\n"
+"PO-Revision-Date: 2008-12-14 22:54-0500\n"
+"Last-Translator: Chris Leonard <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.0.1\n"
+
+#: 
+msgid "Turtle Art"
+msgstr "Turtle Art"
+
+#:
+msgid "Flow"
+msgstr "Flow"
+
+#:
+msgid "forever"
+msgstr "forever"
+
+#:
+msgid "if"
+msgstr "if"
+
+#:
+msgid "then"
+msgstr "then"
+
+#:
+msgid "else"
+msgstr "else"
+
+#:
+msgid "repeat"
+msgstr "repeat"
+
+#:
+msgid "stop stack"
+msgstr "stop stack"
+
+#:
+msgid "wait"
+msgstr "wait"
+
+#:
+msgid "My Blocks"
+msgstr "My Blocks"
+
+#:
+msgid "box 1"
+msgstr "box 1"
+
+#:
+msgid "box 2"
+msgstr "box 2"
+
+#:
+msgid "stack 1"
+msgstr "stack 1"
+
+#:
+msgid "stack 2"
+msgstr "stack 2"
+
+#:
+msgid "store in box 1"
+msgstr "store in box 1"
+
+#:
+msgid "store in box 2"
+msgstr "store in box 2"
+
+#:
+msgid "Numbers"
+msgstr "Numbers"
+
+#:
+msgid "number"
+msgstr "number"
+
+#:
+msgid "and"
+msgstr "and"
+
+#:
+msgid "or"
+msgstr "or"
+
+#:
+msgid "not"
+msgstr "not"
+
+#:
+msgid "random"
+msgstr "random"
+
+#:
+msgid "min"
+msgstr "min"
+
+#:
+msgid "max"
+msgstr "max"
+
+#:
+msgid "mod"
+msgstr "mod"
+
+#:
+msgid "print"
+msgstr "print"
+
+#:
+msgid "Pen"
+msgstr "Pen"
+
+#:
+msgid "color"
+msgstr ""
+
+#:
+msgid "shade"
+msgstr "shade"
+
+#:
+msgid "fill screen"
+msgstr "fill screen"
+
+#:
+msgid "pen up"
+msgstr "pen up"
+
+#:
+msgid "pen down"
+msgstr "pen down"
+
+#:
+msgid "set pen size"
+msgstr "set pen size"
+
+#:
+msgid "pen size"
+msgstr "pen size"
+
+#:
+msgid "set shade"
+msgstr "set shade"
+
+#:
+msgid "set color"
+msgstr "set color"
+
+#:
+msgid "Blocks"
+msgstr "Blocks"
+
+#:
+msgid "Turtle"
+msgstr "Turtle"
+
+#:
+msgid "forward"
+msgstr "forward"
+
+#:
+msgid "back"
+msgstr "back"
+
+#:
+msgid "right"
+msgstr "right"
+
+#:
+msgid "left"
+msgstr "left"
+
+#:
+msgid "arc"
+msgstr "arc"
+
+#:
+msgid "angle"
+msgstr "angle"
+
+#:
+msgid "radius"
+msgstr "radius"
+
+#:
+msgid "heading"
+msgstr "heading"
+
+#:
+msgid "set heading"
+msgstr "seth"
+
+#:
+msgid "clean"
+msgstr "clean"
+
+#:
+msgid "set xy"
+msgstr "set xy"
+
+#:
+msgid "x"
+msgstr "x"
+
+#:
+msgid "y"
+msgstr "y"
+
+#:
+msgid "xcor"
+msgstr "xcor"
+
+#:
+msgid "ycor"
+msgstr "ycor"
+
+#:
+msgid "Project"
+msgstr "Project"
+
+#:
+msgid "Samples"
+msgstr "Samples"
