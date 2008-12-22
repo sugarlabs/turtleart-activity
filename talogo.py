@@ -45,7 +45,6 @@ class logoerror(Exception):
     def __str__(self):
         return repr(self.value)
 
-
 def run_blocks(lc, spr, blocks):
     lc.stacks['stack1'] = None
     lc.stacks['stack2'] = None
@@ -55,6 +54,16 @@ def run_blocks(lc, spr, blocks):
     code = blocks_to_code(spr)
     print code
     setup_cmd(lc, code)
+
+# walk through the blocks, but don't execute them
+# used by save Logo code
+def walk_blocks(lc, spr, blocks):
+    lc.stacks['stack1'] = None
+    lc.stacks['stack2'] = None
+    for i in blocks:
+        if i.proto.name=='hat1': lc.stacks['stack1']= readline(lc,blocks_to_code(i))
+        if i.proto.name=='hat2': lc.stacks['stack2']= readline(lc,blocks_to_code(i))
+    return blocks_to_code(spr)
 
 def blocks_to_code(spr):
     if spr==None: return ['%nothing%']
@@ -311,6 +320,8 @@ def lcNew(tw):
 
     defprim(lc,'define', 2, prim_define)
     defprim(lc,'nop', 0, lambda lc: None)
+    defprim(lc,'nop1', 0, lambda lc: None)
+    defprim(lc,'nop2', 0, lambda lc: None)
     defprim(lc,'start', 0, lambda: None)
 
     lc.symtype = type(intern(lc, 'print'))
