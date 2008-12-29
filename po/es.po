@@ -1,11 +1,10 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 11:14-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2008-11-17 10:53-0500\n"
+"PO-Revision-Date: 2008-12-14 03:57-0500\n"
+"Last-Translator: Javier Mariosa <javier.mariosa@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +73,7 @@ msgstr "poner en caja1"
 
 #:
 msgid "store in box 2"
-msgstr "pner en caja2"
+msgstr "poner en caja2"
 
 #:
 msgid "Numbers"
@@ -98,11 +97,7 @@ msgstr "no"
 
 #:
 msgid "random"
-msgstr "azar"
-
-#:
-msgid "mod"
-msgstr "mod"
+msgstr "aleatorio"
 
 #:
 msgid "min"
@@ -113,8 +108,12 @@ msgid "max"
 msgstr "max"
 
 #:
+msgid "mod"
+msgstr "mod"
+
+#:
 msgid "print"
-msgstr "mostrar"
+msgstr "imprimir"
 
 #:
 msgid "Pen"
@@ -197,8 +196,9 @@ msgid "heading"
 msgstr "rumbo"
 
 #:
+#, fuzzy
 msgid "set heading"
-msgstr "fijar rumbo"
+msgstr "seth"
 
 #:
 msgid "clean"
@@ -226,8 +226,8 @@ msgstr "coory"
 
 #:
 msgid "Project"
-msgstr ""
+msgstr "Proyecto"
 
 #:
 msgid "Samples"
-msgstr ""
+msgstr "Ejemplos"
