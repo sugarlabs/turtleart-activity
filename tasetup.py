@@ -76,9 +76,9 @@ selectors = (
      ('hspace','nop','hspace'),
      ('vspace','nop','vspace'))),
    ('myblocks', 55,
-    (('hat1','nop','start'),
+    (('hat1','nop1','start'),
      ('stack1','stack1','noarg'),
-     ('hat2','nop','start'),
+     ('hat2','nop2','start'),
      ('stack2','stack2','noarg'),
      ('storeinbox1','storeinbox1','1arg'),
      ('box1','box1','num'),
@@ -191,9 +191,9 @@ def load_image(path, dir, file):
     
     # first try to open the cached image
     # if you fail, open the .svg file and cache the result
+    # gtk.gdk.pixbuf_new_from_file_at_size(filename, width, height)
     try: return gtk.gdk.pixbuf_new_from_file(os.path.join(activity.get_activity_root(),"data",file+'.png'))
     except:
         foo = gtk.gdk.pixbuf_new_from_file(os.path.join(path,dir,file+'.svg'))
         foo.save(os.path.join(activity.get_activity_root(),"data",file+'.png'), "png")
         return foo
-

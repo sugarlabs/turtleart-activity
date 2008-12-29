@@ -1,3 +1,8 @@
+24
+
+* add UCB logo export
+* check for conditions where image cache needs refreshing
+
 23
 
 * caching images
