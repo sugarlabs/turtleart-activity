@@ -156,7 +156,8 @@ def new_block_from_category(tw,proto,x,y):
         argspr.connections = [newspr,None]
         newspr.connections[i+1] = argspr
     tw.draggroup = findgroup(newspr)
-    tw.block_operation = 'move'
+#    tw.block_operation = 'move'
+    tw.block_operation = 'new'
 
 def block_pressed(tw,event,x,y,spr):
     if event.get_state()&gtk.gdk.CONTROL_MASK:
@@ -202,6 +203,8 @@ def move_cb(win, event, tw):
     if spr.type=='block':
         dragx, dragy = tw.dragpos
         dx,dy = x-dragx-spr.x,y-dragy-spr.y
+        # skip if there was a move of 0,0
+        if dx == 0 and dy == 0: return True
         for b in tw.draggroup:
             move(b,(b.x+dx, b.y+dy))
     elif spr.type=='turtle':
@@ -229,10 +232,16 @@ def buttonrelease_cb(win, event, tw):
         move_turtle(tw.turtle)
         tw.draggroup = None
         return True
+    # hide blocks that are dropped onto the dock
     if tw.block_operation=='move' and hit(tw.category_spr, (x,y)):
         for b in tw.draggroup: hide(b)
         tw.draggroup = None
         return True
+    # allow new blocks to be created by clicking as well as by drag and drop
+    if tw.block_operation=='new':
+        print "making a new block"
+        for b in tw.draggroup:
+            move(b, (b.x+200, b.y))
     snap_to_dock(tw)
     for b in tw.draggroup: setlayer(b,650)
     tw.draggroup = None
@@ -302,7 +311,7 @@ def expose_cb(win, event, tw):
 
 def keypress_cb(area, event,tw):
     keyname = gtk.gdk.keyval_name(event.keyval)
-#    print keyname,event.get_state()
+    print keyname,event.get_state()
     if (event.get_state()&gtk.gdk.MOD4_MASK):
         if keyname=="n": new_project(tw)
         if keyname=="o": load_file(tw)
