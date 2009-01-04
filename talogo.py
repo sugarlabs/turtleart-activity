@@ -22,8 +22,12 @@ import re
 from time import clock
 from operator import isNumberType
 import random
+import audioop
 from math import sqrt
+from numpy.oldnumeric import *
+from numpy.fft import *
 class taLogo: pass
+from audiograb import AudioGrab
 
 from taturtle import *
 
@@ -280,6 +284,11 @@ def lcNew(tw):
     defprim(lc,'not', 1, lambda lc,x:not x)
     defprim(lc,'%', None, lambda lc,x,y:x%y)
     defprim(lc,'sqrt', 1, lambda lc,x: sqrt(x))
+    
+    defprim(lc,'sensor_val0', 0, lambda lc: sensor_val(lc, 0))
+    defprim(lc,'sensor_val1', 0, lambda lc: sensor_val(lc, 1))
+    defprim(lc,'sensor_val2', 0, lambda lc: sensor_val(lc, 2))
+    defprim(lc,'sensor_val3', 0, lambda lc: sensor_val(lc, 3))
 
     defprim(lc,'clean', 0, lambda lc: clearscreen(lc.tw.turtle))
     defprim(lc,'forward', 1, lambda lc, x: forward(lc.tw.turtle, x))
@@ -385,3 +394,12 @@ def setbox(lc, name,val): lc.boxes[name]=val
 def tyo(n): print n
 def millis(): return int(clock()*1000)
 
+
+def sensor_val(lc, y):    
+    return_this = 0
+    ag = AudioGrab()
+    return_this = ag.get_sensor_val(y)
+    if y==3:
+        return_this = ag.get_sensor_val(y)
+
+    return return_this

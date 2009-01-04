@@ -236,3 +236,24 @@ msgstr ""
 #:
 msgid "Samples"
 msgstr ""
+
+#:
+msgid "Sensors"
+msgstr ""
+
+#:
+msgid "volume"
+msgstr ""
+
+#:
+msgid "pitch"
+msgstr ""
+
+#:
+msgid "voltage"
+msgstr ""
+
+#:
+msgid "resistance"
+msgstr ""
+

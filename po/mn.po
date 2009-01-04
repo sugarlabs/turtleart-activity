@@ -170,3 +170,23 @@ msgstr "x тзнхлзг"
 msgid "ycor"
 msgstr "y тзнхлзг"
 
+
+#:
+msgid "Sensors"
+msgstr ""
+
+#:
+msgid "volume"
+msgstr ""
+
+#:
+msgid "pitch"
+msgstr ""
+
+#:
+msgid "voltage"
+msgstr ""
+
+#:
+msgid "resistance"
+msgstr ""

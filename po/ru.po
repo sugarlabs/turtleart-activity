@@ -231,3 +231,24 @@ msgstr "Проект"
 #:
 msgid "Samples"
 msgstr "Примеры"
+
+
+#:
+msgid "Sensors"
+msgstr ""
+
+#:
+msgid "volume"
+msgstr ""
+
+#:
+msgid "pitch"
+msgstr ""
+
+#:
+msgid "voltage"
+msgstr ""
+
+#:
+msgid "resistance"
+msgstr ""
