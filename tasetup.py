@@ -103,7 +103,11 @@ selectors = (
      ('box2','box2','num'),
      ('storeinbox','storeinbox','1sarg',100,'foo'),
      ('box','box','nfuncs','foo'),
-     ('string','','string','',str,strcheck))))
+     ('string','','string','',str,strcheck),
+     ('push','push','onearg'),
+     ('pop','pop','num'),
+     ('printheap','heap','noarg2'),
+     ('clearheap','emptyheap','noarg2'))))
 
 toolbaritems = (
     ('stopit',75),
@@ -112,6 +116,7 @@ toolbaritems = (
 
 dockdetails = {
   'noarg':   (('flow',True,37,5),('flow',False,37,44)),
+  'noarg2':  (('flow',True,37,5),('flow',False,37,59)),
   'onearg':  (('flow',True,37,5),('num',False,74,21),('flow',False,37,44)),
   '1arg':    (('flow',True,37,5),('num',False,74,29),('flow',False,37,59)),
   'twoargs': (('flow',True,37,5),('num',False,74,21),('num',False,74,58),('flow',False,37,81)),
@@ -162,6 +167,7 @@ def setup_selectors(tw):
     tw.status_shapes['status'] = load_image(tw.path, '', 'status')
     tw.status_shapes['nostack'] = load_image(tw.path, '', 'nostack')
     tw.status_shapes['noinput'] = load_image(tw.path, '', 'noinput')
+    tw.status_shapes['emptyheap'] = load_image(tw.path, '', 'emptyheap')
     # position status shapes at bottom of screen (minus shape height and toolbar height)
     screenh = gtk.gdk.screen_height() - 38 - 120
     tw.status_spr = sprNew(tw,0,screenh,tw.status_shapes['status'],True)

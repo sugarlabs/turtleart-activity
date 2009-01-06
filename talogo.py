@@ -31,6 +31,7 @@ from UserDict import UserDict
 
 class noKeyError(UserDict):
     __missing__=lambda x,y: 0
+
 class taLogo: pass
 
 from taturtle import *
@@ -38,7 +39,6 @@ from taturtle import *
 procstop = False
 
 class symbol:
-
     def __init__(self, name):
         self.name = name
         self.nargs = None
@@ -358,6 +358,10 @@ def lcNew(tw):
     defprim(lc,'storeinbox1', 1, lambda lc,x: setbox(lc, 'box1',x))
     defprim(lc,'storeinbox2', 1, lambda lc,x: setbox(lc, 'box2',x))
     defprim(lc,'storeinbox', 2, lambda lc,x,y: setbox(lc, 'box3'+str(y),x))
+    defprim(lc,'push', 1, lambda lc,x: push_heap(lc,x))
+    defprim(lc,'pop', 0, lambda lc: pop_heap(lc))
+    defprim(lc,'heap', 0, lambda lc: heap_print(lc))
+    defprim(lc,'emptyheap', 0, lambda lc: empty_heap(lc))
 
     defprim(lc,'define', 2, prim_define)
     defprim(lc,'nop', 0, lambda lc: None)
@@ -374,8 +378,8 @@ def lcNew(tw):
 
     lc.istack = []
     lc.stacks = {}
-#    lc.boxes = {'box1': 0, 'box2': 0}
     lc.boxes = noKeyError({'box1': 0, 'box2': 0})
+    lc.heap = []
 
     lc.iline, lc.cfun, lc.arglist, lc.ufun = None, None, None,None
 
@@ -402,16 +406,20 @@ def ireturn(lc, res=None):
 def ijmp(lc, fcn, *args):
     lc.step = fcn(lc,*(args))
 
+def heap_print(lc):
+    showlabel(lc,lc.heap)
+
 def status_print(lc,n):
     showlabel(lc,int(float(n)*10)/10.)
 
 def showlabel(lc,l):
     if l=='#nostack': shp = 'nostack'; l=''
     elif l=='#noinput': shp = 'noinput'; l=''
+    elif l=='#emptyheap': shp = 'emptyheap'; l=''
     else:shp = 'status'
     setshape(lc.tw.status_spr, lc.tw.status_shapes[shp])
     setlabel(lc.tw.status_spr,l)
-    setlayer(lc.tw.status_spr,710);
+    setlayer(lc.tw.status_spr,710)
 
 def stopsignon(lc):
     setshape(lc.stopsign, lc.stopsign.onshape)
@@ -422,12 +430,22 @@ def stopsignoff(lc):
     setlayer(lc.tw.turtle.spr,630)
 
 def stop_logo(tw): tw.lc.step = just_stop()
+
 def just_stop(): yield False
 
 def setbox(lc, name,val): lc.boxes[name]=val
-def tyo(n): print n
-def millis(): return int(clock()*1000)
 
+def push_heap(lc,val): lc.heap.append(val)
+
+def pop_heap(lc):
+    try: return lc.heap.pop(-1)
+    except: raise logoerror ("#emptyheap")
+
+def empty_heap(lc): lc.heap = []
+
+def tyo(n): print n
+
+def millis(): return int(clock()*1000)
 
 def sensor_val(lc, y):    
     return_this = 0
@@ -435,5 +453,5 @@ def sensor_val(lc, y):
     return_this = ag.get_sensor_val(y)
     if y==3:
         return_this = ag.get_sensor_val(y)
-
     return return_this
+

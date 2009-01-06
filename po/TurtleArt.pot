@@ -94,6 +94,14 @@ msgid "pop"
 msgstr ""
 
 #:
+msgid "show heap"
+msgstr
+
+#:
+msgid "empty heap"
+msgstr
+
+#:
 msgid "Numbers"
 msgstr ""
 

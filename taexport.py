@@ -92,6 +92,7 @@ tasetshade :shade \r"
     pensize = 0
     tastack = 0
     arc = 0
+    heap = 0
     for b in bs:
          this_stack = ""
          data = self.walk_stack(tw, b)
@@ -124,12 +125,10 @@ tasetshade :shade \r"
                          this_stack += d[2:] 
                          this_stack += " " 
                          this_stack += myvar 
-                         # this_stack += " "
                          namedbox = 0
                          myvar = ""
                      else:
                          myvar += d
-                         # myvar += " "
                  elif refstack == 1:
                      this_stack += d[2:]
                      this_stack += " "
@@ -137,11 +136,7 @@ tasetshade :shade \r"
                  elif refbox == 1:
                      this_stack += ":" 
                      this_stack += d[2:]
-                     # this_stack += " "
                      refbox = 0
-                 # elif d[0:1] == "#s":
-                 #    this_stack += d[2:]
-                 #    this_stack += " "
                  elif d == "stack":
                      refstack = 1
                  elif d == "box":
@@ -195,6 +190,18 @@ tasetshade :shade \r"
                  elif d == "arc":
                      arc = 1
                      this_stack += "taarc"
+                 elif d == "pop":
+                     heap = 1
+                     this_stack += "tapop"
+                 elif d == "push":
+                     heap = 1
+                     this_stack += "tapush"
+                 elif d == "heap":
+                     heap = 1
+                     this_stack += "taprintheap"
+                 elif d == "emptyheap":
+                     heap = 1
+                     this_stack += "taclearheap"
                  else:
                      this_stack += d
              this_stack += " "
@@ -218,11 +225,18 @@ tasetshade :shade \r"
          code = "to tapensize\routput first round pensize\rend\r" + code
     if setxy: # swap args and round args
          code = "to tasetxy :y :x\rpenup\rsetxy :x :y\rpendown\rend\r" + code
-    if arc:
+    if arc: # need to redefine this one all together
          c = (2 * math.pi)/360
          code = "to taarc :a :r\rrepeat round :a [right 1 forward (" + str(c) + " * :r)]\rend\r" + code
+    if heap: # add psuedo push and pop
+         code = "to tapush :foo\routput fput :foo :taheap\rend\r" + \
+             "to tapop\rif emptyp :taheap [stop]\rmake \"tmp first :taheap\r" + \
+             "make \"taheap butfirst :taheap\routput :tmp\rend\r" + \
+             "to taclearheap\rmake \"taheap []\rend\r" + \
+             "to taprintheap \rprint :taheap\rend\r" + \
+             "make \"taheap []\r" + code
     code = "window\r" + code
-    print code
+#    print code
     return code
 
 def walk_stack(self, tw, spr):
