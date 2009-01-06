@@ -77,6 +77,10 @@ msgid "store in box 2"
 msgstr "kutu 1 de sakla"
 
 #:
+msgid "name"
+msgstr ""
+
+#:
 msgid "Numbers"
 msgstr "Sayılar"
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg:svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="99"
+   height="56">
+  <svg:defs>
+    <svg:linearGradient
+       id="linearGradient3166">
+      <svg:stop
+         id="stop3168"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <svg:stop
+         id="stop3170"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </svg:linearGradient>
+    <svg:linearGradient
+       x1="0"
+       y1="22"
+       x2="74"
+       y2="22"
+       id="linearGradient2392"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(12.5,12)" />
+  </svg:defs>
+  <svg:path
+     d="M 49.5,3 L 1.5,29 L 39.5,51 L 39.5,55 L 59.5,55 L 59.5,51 L 73.53125,45 L 90,45 L 90,39.701705 L 80.5,39.778409 L 80.5,32.5 L 77,32.5 L 77,25.5 L 80.5,25.5 L 80.5,18 L 90,18 L 90,13.5 L 70.736742,13.5 L 49.5,3 z"
+     id="path6722"
+     style="fill:url(#linearGradient2392);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1" />
+  <svg:text
+     style="font-size:18px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <svg:tspan
+       x="49"
+       y="35"
+       id="tspan6728"
+       style="font-size:18px">pilha</svg:tspan>
+  </svg:text>
+</svg:svg>

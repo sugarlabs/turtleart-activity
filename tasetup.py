@@ -1,4 +1,4 @@
-#Copyright (c) 2007-8, Playful Invention Company.
+#Copyright (c) 2007-9, Playful Invention Company.
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,16 @@ class taProto: pass
 
 from tasprites import *
 
+def numcheck(new, old):
+    if new in ['-', '.', '-.']: return new
+    if new=='.': return '0.'
+    try: float(new); return new
+    except ValueError,e : return old
+
+def strcheck(new, old):
+    try: str(new); return new
+    except ValueError,e : return old
+
 selectors = (
   ('turtle', 55,
     (('clean','clean','noarg'),
@@ -51,7 +61,7 @@ selectors = (
      ('color','color','num'),
      ('shade','shade','num'))),
   ('numbers', 55,
-    (('number','','num'),
+    (('number','','num',100,float,numcheck),
      ('plus','+','ari'),
      ('minus','-','ari'),
      ('product','*','ari'),
@@ -85,10 +95,15 @@ selectors = (
      ('stack1','stack1','noarg'),
      ('hat2','nop2','start'),
      ('stack2','stack2','noarg'),
+     ('hat','nop3','starts','bar'),
+     ('stack','stack','sarg','bar'),
      ('storeinbox1','storeinbox1','1arg'),
      ('box1','box1','num'),
      ('storeinbox2','storeinbox2','1arg'),
-     ('box2','box2','num'))))
+     ('box2','box2','num'),
+     ('storeinbox','storeinbox','1sarg',100,'foo'),
+     ('box','box','nfuncs','foo'),
+     ('string','','string','',str,strcheck))))
 
 toolbaritems = (
     ('stopit',75),
@@ -115,12 +130,19 @@ dockdetails = {
   'vspace':  (('flow',True,37,5),('flow',False,37,74)),
   'hspace':  (('flow',True,37,14),('flow',False,128,13)),
   'not':     (('logi+',True,0,24),('unavailable',False,0,0),('logi+',False,55,24)),
-  'start':   (('start',True,50,0),('flow',False,49,55))
+  'start':   (('start',True,50,0),('flow',False,49,55)),
+  'string':  (('string',True,0,11),('stringend',False,105,11)),
+  'nfuncs':  (('num',True,0,17),('string',False,51,16)), #named box
+  'starts':  (('start',True,50,0),('string',False,78,29),('flow',False,49,55)), # named hat
+  'sarg':    (('flow',True,37,5),('string',False,71,20),('flow',False,37,44)),  # named stack and show string
+  '1sarg':   (('flow',True,37,5),('num',False,74,29),('string',False,74,71),('flow',False,37,104)), # storeinbox
 }
 
 
 def setup_selectors(tw):
     tw.protodict = {}
+    tw.valdict = {}
+    tw.defdict = {}
     y = 30
     tw.selbuttons = []
     for s in selectors:
@@ -133,6 +155,8 @@ def setup_selectors(tw):
     setlayer(tw.category_spr,660)
     tw.select_mask = sprNew(tw,100,100,load_image(tw.path, '', 'masknumber'))
     tw.select_mask.type = 'selectmask'
+    tw.select_mask_string = sprNew(tw,100,100,load_image(tw.path, '', 'maskstring'))
+    tw.select_mask_string.type = 'selectmask'
     tw.hidden_palette_icon = load_image(tw.path, 'toolbar','blocks-')
     tw.status_shapes = {}
     tw.status_shapes['status'] = load_image(tw.path, '', 'status')
@@ -162,7 +186,14 @@ def setup_selector(tw,name,y,blockdescriptions):
         proto.name = bname
         proto.image = image
         proto.primname=primname
-        proto.defaults=b[3:]
+        if primname=='':
+          tw.valdict[docktype]=bname
+          tw.defdict[bname]=b[3]
+          proto.eval=b[4]
+          proto.check=b[5]
+          proto.defaults=[]
+        else:
+          proto.defaults=b[3:]
         if docktype in dockdetails: proto.docks=dockdetails[docktype]
         else: proto.docks = docktype
         tw.protodict[bname] = proto

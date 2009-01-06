@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="64"
+   height="32">
+  <defs>
+    <linearGradient
+       id="linearGradient3166">
+      <stop
+         id="stop3168"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3170"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="64"
+       y2="0"
+       id="linearGradient4238"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,4.96875)" />
+  </defs>
+  <g
+     id="g6327">
+    <path
+       d="M 13,1 L 13,10 L 6,10 L 6,6 L 1,6 L 1,25 L 6,25 L 6,21 L 13,21 L 13,31 L 63,31 L 63,27 L 54,27 L 54,20 L 50,20 L 50,12 L 54,12 L 54,5 L 63,5 L 63,1 L 13,1 z"
+       style="opacity:1;fill:url(#linearGradient4238);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1" />
+  <text
+       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+      <tspan
+         x="32"
+         y="22"
+         style="font-size:16px">boîte</tspan>
+    </text>
+  </g>
+</svg>

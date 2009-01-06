@@ -59,6 +59,9 @@ msgstr "богц 1-д хадгал"
 msgid "store in box 2"
 msgstr "богц 2-д хадгал"
 
+msgid "name"
+msgstr ""
+
 msgid "Numbers"
 msgstr "Тооны Уйлдзл"
 

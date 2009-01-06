@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="115"
+   height="31"
+   id="svg2">
+  <defs
+     id="defs15">
+    <linearGradient
+       x1="-2.3910842"
+       y1="11.231461"
+       x2="11.530264"
+       y2="11.231461"
+       id="linearGradient6589"
+       xlink:href="#linearGradient6583"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="105.02274"
+       y1="10.53125"
+       x2="0.069568597"
+       y2="10.53125"
+       id="linearGradient4211"
+       xlink:href="#linearGradient3886"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="0.054486848"
+       y1="15.004988"
+       x2="66.945297"
+       y2="15.004988"
+       id="linearGradient3892"
+       xlink:href="#linearGradient3886"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3886">
+      <stop
+         id="stop3888"
+         style="stop-color:#0000ff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3890"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient6583">
+      <stop
+         id="stop6585"
+         style="stop-color:#ff5555;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop6587"
+         style="stop-color:#ff5555;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+  </defs>
+  <path
+     d="M 5,1.5 L 108,1.5 L 114,15.5 L 108,29.5 L 5,29.5 L 5,22.5 L 1.5,22.5 L 1.5,8 L 5,8 L 5,1.5 z"
+     id="path10"
+     style="fill:none;stroke:#0000a0;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1" />
+  <path
+     d="M 7.5,20 L 3.5,20 L 3.5,10.5 L 7.5,10.5 L 7.5,3.25 L 12.5,3.25 L 17.5,3.25 L 106.5,3.25 L 111.5,15.5 L 106.5,27.75 L 17.5,27.75 L 12.5,27.75 L 7.5,27.75 L 7.5,20 z"
+     id="path12"
+     style="fill:none;fill-opacity:1;stroke:#ffff00;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1" />
+</svg>

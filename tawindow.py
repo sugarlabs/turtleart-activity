@@ -1,4 +1,4 @@
-#Copyright (c) 2007-8, Playful Invention Company.
+#Copyright (c) 2007-9, Playful Invention Company.
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -105,7 +105,6 @@ def buttonpress_cb(win, event, tw):
         turtle_pressed(tw,x,y)
     return True
 
-
 def block_selector_pressed(tw,x,y):
     if tw.category_spr.image==tw.hidden_palette_icon:
         for i in tw.selbuttons: setlayer(i,800)
@@ -141,16 +140,23 @@ def new_block_from_category(tw,proto,x,y):
     tw.dragpos = 20,20
     newspr.type = 'block'
     newspr.proto = proto
-    if newspr.proto.name == 'number': newspr.label=100
+#    if newspr.proto.name == 'number': newspr.label=100
+    if tw.defdict.has_key(newspr.proto.name):
+        newspr.label=tw.defdict[newspr.proto.name]
     newspr.connections = [None]*len(proto.docks)
     for i in range(len(proto.defaults)):
         dock = proto.docks[i+1]
-        numproto = tw.protodict['number']
-        numdock = numproto.docks[0]
-        nx,ny = newspr.x+dock[2]-numdock[2],newspr.y+dock[3]-numdock[3]
-        argspr = sprNew(tw,nx,ny,numproto.image)
+#        numproto = tw.protodict['number']
+#        numdock = numproto.docks[0]
+#        nx,ny = newspr.x+dock[2]-numdock[2],newspr.y+dock[3]-numdock[3]
+#        argspr = sprNew(tw,nx,ny,numproto.image)
+        argproto = tw.protodict[tw.valdict[dock[0]]]
+        argdock = argproto.docks[0]
+        nx,ny = newspr.x+dock[2]-argdock[2],newspr.y+dock[3]-argdock[3]
+        argspr = sprNew(tw,nx,ny,argproto.image)
         argspr.type = 'block'
-        argspr.proto = numproto
+#        argspr.proto = numproto
+        argspr.proto = argproto
         argspr.label = str(proto.defaults[i])
         setlayer(argspr,2000)
         argspr.connections = [newspr,None]
@@ -232,12 +238,11 @@ def buttonrelease_cb(win, event, tw):
         move_turtle(tw.turtle)
         tw.draggroup = None
         return True
-    # hide blocks that are dropped onto the dock
     if tw.block_operation=='move' and hit(tw.category_spr, (x,y)):
         for b in tw.draggroup: hide(b)
         tw.draggroup = None
         return True
-    # allow new blocks to be created by clicking as well as by drag and drop
+    # allow new blocks to be created by clicking as well as dragging
     if tw.block_operation=='new':
         print "making a new block"
         for b in tw.draggroup:
@@ -250,6 +255,11 @@ def buttonrelease_cb(win, event, tw):
             tw.selected_block = spr
             move(tw.select_mask, (spr.x-5,spr.y-5))
             setlayer(tw.select_mask, 660)
+            tw.firstkey = True
+        elif tw.defdict.has_key(spr.proto.name):
+            tw.selected_block = spr
+            move(tw.select_mask_string, (spr.x-5,spr.y-5))
+            setlayer(tw.select_mask_string, 660)
             tw.firstkey = True
         else: run_stack(tw, spr)
     return True
@@ -311,7 +321,7 @@ def expose_cb(win, event, tw):
 
 def keypress_cb(area, event,tw):
     keyname = gtk.gdk.keyval_name(event.keyval)
-    print keyname,event.get_state()
+    # print keyname,event.get_state()
     if (event.get_state()&gtk.gdk.MOD4_MASK):
         if keyname=="n": new_project(tw)
         if keyname=="o": load_file(tw)
@@ -323,21 +333,25 @@ def keypress_cb(area, event,tw):
     if keyname in ['minus', 'period']: keyname = {'minus': '-', 'period': '.'}[keyname]
     if len(keyname)>1: return True
     oldnum = tw.selected_block.label
-    if tw.firstkey: newnum = numcheck(keyname,'0')
+    selblock=tw.selected_block.proto
+#    if tw.firstkey: newnum = numcheck(keyname,'0')
+    if tw.firstkey: newnum = selblock.check(keyname,tw.defdict[selblock.name])
     else: newnum = oldnum+keyname
-    setlabel(tw.selected_block, numcheck(newnum,oldnum))
+#    setlabel(tw.selected_block, numcheck(newnum,oldnum))
+    setlabel(tw.selected_block, selblock.check(newnum,oldnum))
     tw.firstkey = False
     return True
 
-def numcheck(new, old):
-    if new in ['-', '.', '-.']: return new
-    if new=='.': return '0.'
-    try: float(new); return new
-    except ValueError,e : return old
+#def numcheck(new, old):
+#    if new in ['-', '.', '-.']: return new
+#    if new=='.': return '0.'
+#    try: float(new); return new
+#    except ValueError,e : return old
 
 def unselect(tw):
     if tw.selected_block.label in ['-', '.', '-.']: select_block.setlabel('0')
     hide(tw.select_mask)
+    hide(tw.select_mask_string)
     tw.selected_block = None
 
 
@@ -365,7 +379,6 @@ def findgroup(b):
 def find_top_block(spr):
     while spr.connections[0]!=None: spr=spr.connections[0]
     return spr
-
 
 def tooldispatch(tw, spr):
     if spr.blocktype == 'hideshow': hideshow_blocks(tw,spr)

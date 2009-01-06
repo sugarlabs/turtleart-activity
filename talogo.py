@@ -1,4 +1,4 @@
-#Copyright (c) 2007-8, Playful Invention Company.
+#Copyright (c) 2007-9, Playful Invention Company.
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -26,8 +26,12 @@ import audioop
 from math import sqrt
 from numpy.oldnumeric import *
 from numpy.fft import *
-class taLogo: pass
 from audiograb import AudioGrab
+from UserDict import UserDict
+
+class noKeyError(UserDict):
+    __missing__=lambda x,y: 0
+class taLogo: pass
 
 from taturtle import *
 
@@ -50,23 +54,37 @@ class logoerror(Exception):
         return repr(self.value)
 
 def run_blocks(lc, spr, blocks):
+    # user-defined stacks
+    for x in lc.stacks.keys():
+        lc.stacks[x]= None
+    # two built-in stacks
     lc.stacks['stack1'] = None
     lc.stacks['stack2'] = None
     for i in blocks:
         if i.proto.name=='hat1': lc.stacks['stack1']= readline(lc,blocks_to_code(i))
         if i.proto.name=='hat2': lc.stacks['stack2']= readline(lc,blocks_to_code(i))
+        if i.proto.name=='hat':
+            if (i.connections[1]!=None):
+                text=i.connections[1].label
+                lc.stacks['stack3'+text]= readline(lc,blocks_to_code(i))
     code = blocks_to_code(spr)
     print code
     setup_cmd(lc, code)
 
 # walk through the blocks, but don't execute them
-# used by save Logo code
+# used by save to USB Logo code
 def walk_blocks(lc, spr, blocks):
+    for x in lc.stacks.keys():
+        lc.stacks[x]= None
     lc.stacks['stack1'] = None
     lc.stacks['stack2'] = None
     for i in blocks:
         if i.proto.name=='hat1': lc.stacks['stack1']= readline(lc,blocks_to_code(i))
         if i.proto.name=='hat2': lc.stacks['stack2']= readline(lc,blocks_to_code(i))
+        if i.proto.name=='hat':
+            if (i.connections[1]!=None):
+                text=i.connections[1].label
+                lc.stacks['stack3'+text]= readline(lc,blocks_to_code(i))
     return blocks_to_code(spr)
 
 def blocks_to_code(spr):
@@ -75,14 +93,21 @@ def blocks_to_code(spr):
     dock = spr.proto.docks[0]
     if len(dock)>4: code.append(dock[4])
     if spr.proto.primname != '': code.append(spr.proto.primname)
-    else: code.append(float(spr.label))
+#    else: code.append(float(spr.label))
+    else:
+        if spr.proto.name=='number':
+            code.append(float(spr.label))
+        elif spr.proto.name=='string':
+            code.append('#s'+spr.label)
+        else:
+            return ['%nothing%']
     for i in range(1,len(spr.connections)):
         b = spr.connections[i]
         dock = spr.proto.docks[i]
         if len(dock)>4:
             for c in dock[4]: code.append(c)
         if b!=None: code.extend(blocks_to_code(b))
-        elif spr.proto.docks[i][0] not in ['flow','numend','unavailable','logi-']:
+        elif spr.proto.docks[i][0] not in ['flow','numend','stringend','unavailable','logi-']:
             code.append('%nothing%')
     return code
 
@@ -91,7 +116,6 @@ def intern(lc, str):
     sym = symbol(str)
     lc.oblist[str] = sym
     return sym
-
 
 def parseline(str):
     split = re.split(r"\s|([\[\]()])", str)
@@ -105,11 +129,11 @@ def readline(lc, line):
         elif token.isdigit(): res.append(float(token))
         elif token[0]=='-' and token[1:].isdigit(): res.append(-float(token[1:]))
         elif token[0] == '"': res.append(token[1:])
+        elif token[0:2] == "#s": res.append(token[2:])
         elif token == '[': res.append(readline(lc,line))
         elif token == ']': return res
         else: res.append(intern(lc, token))
     return res
-
 
 def setup_cmd(lc, str):
     stopsignon(lc); lc.procstop=False
@@ -185,7 +209,6 @@ def undefined_check(lc, token):
     if token.fcn != None: return False
     raise logoerror("I don't know how to %s" % token.name)
 
-
 def no_args_check(lc):
     if lc.iline and lc.iline[0]!=lc.symnothing : return
     raise logoerror("#noinput")
@@ -227,6 +250,12 @@ def prim_define(name, body):
     if type(name) != symtype: name = intern(name)
     name.nargs, name.fcn = 0, body
     name.rprim = True
+
+def prim_stack(lc,stri):
+    if (not lc.stacks.has_key('stack3'+stri)) or lc.stacks['stack3'+stri]==None: raise logoerror("#nostack")
+    icall(lc, evline, lc.stacks['stack3'+stri][:]); yield True
+    lc.procstop = False
+    ireturn(lc); yield True
 
 def prim_stack1(lc):
     if lc.stacks['stack1']==None: raise logoerror("#nostack")
@@ -322,15 +351,19 @@ def lcNew(tw):
 
     defprim(lc,'stack1', 0, prim_stack1, True)
     defprim(lc,'stack2', 0, prim_stack2, True)
+    defprim(lc,'stack', 1, prim_stack, True)
     defprim(lc,'box1', 0, lambda lc: lc.boxes['box1'])
     defprim(lc,'box2', 0, lambda lc: lc.boxes['box2'])
+    defprim(lc,'box', 1, lambda lc,x: lc.boxes['box3'+str(x)])
     defprim(lc,'storeinbox1', 1, lambda lc,x: setbox(lc, 'box1',x))
     defprim(lc,'storeinbox2', 1, lambda lc,x: setbox(lc, 'box2',x))
+    defprim(lc,'storeinbox', 2, lambda lc,x,y: setbox(lc, 'box3'+str(y),x))
 
     defprim(lc,'define', 2, prim_define)
     defprim(lc,'nop', 0, lambda lc: None)
     defprim(lc,'nop1', 0, lambda lc: None)
     defprim(lc,'nop2', 0, lambda lc: None)
+    defprim(lc,'nop3', 1, lambda lc,x: None)
     defprim(lc,'start', 0, lambda: None)
 
     lc.symtype = type(intern(lc, 'print'))
@@ -341,7 +374,8 @@ def lcNew(tw):
 
     lc.istack = []
     lc.stacks = {}
-    lc.boxes = {'box1': 0, 'box2': 0}
+#    lc.boxes = {'box1': 0, 'box2': 0}
+    lc.boxes = noKeyError({'box1': 0, 'box2': 0})
 
     lc.iline, lc.cfun, lc.arglist, lc.ufun = None, None, None,None
 

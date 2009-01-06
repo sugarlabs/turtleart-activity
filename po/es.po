@@ -77,6 +77,10 @@ msgid "store in box 2"
 msgstr "pner en caja2"
 
 #:
+msgid "name"
+msgstr "nombre"
+
+#:
 msgid "Numbers"
 msgstr "Números"
 

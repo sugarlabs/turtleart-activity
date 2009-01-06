@@ -122,7 +122,8 @@ def save_data(tw,fname):
     for i in range(len(bs)): bs[i].id=i
     for b in bs:
         name = b.proto.name
-        if name=='number': name=(name,b.label)
+#        if name=='number': name=(name,b.label)
+        if tw.defdict.has_key(name): name=(name,b.label)
         connections = [get_id(x) for x in b.connections]
         data.append((b.id,name,b.x-tw.turtle.canvas.x,b.y-tw.turtle.canvas.y,connections))
     data.append((-1,'turtle',

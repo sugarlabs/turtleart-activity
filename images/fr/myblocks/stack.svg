@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="84"
+   height="44">
+  <defs>
+    <linearGradient
+       id="linearGradient3166">
+      <stop
+         id="stop3168"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3170"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="22"
+       x2="74"
+       y2="22"
+       id="linearGradient2406"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <path
+     d="M 10,1 C 10,1 6,3.5 4.5,5 C 3,6.5 1,11 1,11 L 1,30 C 1,30 3,33.5 4.5,35 C 6,36.5 10,39 10,39 L 27,39 L 27,43 L 47,43 L 47,39 L 64,39 C 64,39 66.172333,37.676627 67,37 C 67.5,36.5 69.5,34.5 69.5,34.5 L 83,34.5 L 83,30.5 L 73.5,30.5 L 73.5,23.5 L 69.5,23.5 L 69.5,16 L 73.5,16 L 73.5,8.5 L 83,8.5 L 83,5 L 69.5,5 C 68,3.5 64,1 64,1 C 64,1 64,1 48,1 L 48,6 L 26,6 L 26,1 L 10,1 z"
+     style="opacity:1;fill:url(#linearGradient2406);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1" />
+  <text
+     style="font-size:18px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="37"
+       y="26"
+       style="font-size:18px">pile</tspan>
+  </text>
+</svg>

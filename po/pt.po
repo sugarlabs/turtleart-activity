@@ -77,6 +77,10 @@ msgid "store in box 2"
 msgstr "por na caixa 2"
 
 #:
+msgid "name"
+msgstr ""
+
+#:
 msgid "Numbers"
 msgstr "Números"
 

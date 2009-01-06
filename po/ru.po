@@ -77,6 +77,10 @@ msgid "store in box 2"
 msgstr "сохранить в кармане 2"
 
 #:
+msgid "name"
+msgstr ""
+
+#:
 msgid "Numbers"
 msgstr "Числа"
 
