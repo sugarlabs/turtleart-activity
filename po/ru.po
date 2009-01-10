@@ -16,6 +16,18 @@ msgstr ""
 msgid "Turtle Art"
 msgstr "Черепашка"
 
+#: 
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Samples"
+msgstr ""
+
+#:
+msgid "Save Logo"
+msgstr ""
+
 #:
 msgid "Flow"
 msgstr "Передвижение"
@@ -53,12 +65,19 @@ msgid "My Blocks"
 msgstr "Мои блоки"
 
 #:
+msgid "box"
+msgstr "блок"
+#:
 msgid "box 1"
 msgstr "блок 1"
 
 #:
 msgid "box 2"
 msgstr "блок 2"
+
+#:
+msgid "stack"
+msgstr "цепь"
 
 #:
 msgid "stack 1"

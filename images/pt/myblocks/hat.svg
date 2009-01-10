@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
-<svg:svg
+<svg
    xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.0"
-   width="99"
-   height="56">
-  <svg:defs>
-    <svg:linearGradient
+   width="150"
+   height="75"
+   id="svg2">
+  <defs
+     id="defs4">
+    <linearGradient
        id="linearGradient3166">
-      <svg:stop
+      <stop
          id="stop3168"
          style="stop-color:#ffffff;stop-opacity:1"
          offset="0" />
-      <svg:stop
+      <stop
          id="stop3170"
          style="stop-color:#ffff00;stop-opacity:1"
          offset="1" />
-    </svg:linearGradient>
-    <svg:linearGradient
+    </linearGradient>
+    <linearGradient
        x1="0"
        y1="22"
        x2="74"
@@ -26,18 +29,84 @@
        id="linearGradient2392"
        xlink:href="#linearGradient3166"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(12.5,12)" />
-  </svg:defs>
-  <svg:path
-     d="M 49.5,3 L 1.5,29 L 39.5,51 L 39.5,55 L 59.5,55 L 59.5,51 L 73.53125,45 L 90,45 L 90,39.701705 L 80.5,39.778409 L 80.5,32.5 L 77,32.5 L 77,25.5 L 80.5,25.5 L 80.5,18 L 90,18 L 90,13.5 L 70.736742,13.5 L 49.5,3 z"
+       gradientTransform="translate(37.5,31)" />
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="64"
+       y2="0"
+       id="linearGradient2501"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,4.96875)" />
+    <linearGradient
+       x1="210"
+       y1="10.5"
+       x2="0"
+       y2="10.5"
+       id="linearGradient2496"
+       xlink:href="#linearGradient3886"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3886">
+      <stop
+         id="stop3888"
+         style="stop-color:#0000ff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3890"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="210"
+       y1="10.5"
+       x2="0"
+       y2="10.5"
+       id="linearGradient4211"
+       xlink:href="#linearGradient3886"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="64"
+       y2="0"
+       id="linearGradient4238"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,4.96875)" />
+    <linearGradient
+       id="linearGradient2471">
+      <stop
+         id="stop2473"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop2475"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="64"
+       y2="0"
+       id="linearGradient2492"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-15.5,16.96875)" />
+  </defs>
+  <path
+     d="M 74.5,1 L 1.5,37.5 L 64.5,70 L 64.5,74 L 84.5,74 L 84.5,70 L 148.5,37.5 L 74.5,1 z"
      id="path6722"
      style="fill:url(#linearGradient2392);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1" />
-  <svg:text
-     style="font-size:18px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
-    <svg:tspan
-       x="49"
-       y="35"
-       id="tspan6728"
-       style="font-size:18px">pilha</svg:tspan>
-  </svg:text>
-</svg:svg>
+  <g
+     transform="matrix(1,0,0,1.0454545,22.5,26.522727)"
+     id="layer1"
+     style="fill:#ffffff;fill-opacity:1;stroke:#c0a000;stroke-width:0.9780193;stroke-opacity:1">
+    <path
+       d="M 4,0 L 4,7 L 0,7 L 0,14 L 4,14 L 4,21 L 101,21 L 105,10.5 L 101,0 L 4,0 z"
+       id="path2478"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#c0a000;stroke-width:1.95603859;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+</svg>

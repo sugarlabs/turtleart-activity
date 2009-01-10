@@ -16,6 +16,18 @@ msgstr ""
 msgid "Turtle Art"
 msgstr "Turtle Art"
 
+#: 
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Samples"
+msgstr ""
+
+#:
+msgid "Save Logo"
+msgstr ""
+
 #:
 msgid "Flow"
 msgstr "FLux"
@@ -53,12 +65,20 @@ msgid "My Blocks"
 msgstr "Mes blocs "
 
 #:
+msgid "box"
+msgstr "boîte"
+
+#:
 msgid "box 1"
 msgstr "boîte 1"
 
 #:
 msgid "box 2"
 msgstr "boîte 2"
+
+#:
+msgid "stack"
+msgstr "pile"
 
 #:
 msgid "stack 1"

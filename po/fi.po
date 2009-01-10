@@ -16,6 +16,18 @@ msgstr ""
 msgid "Turtle Art"
 msgstr "Kilpikonnataide"
 
+#: 
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Samples"
+msgstr ""
+
+#:
+msgid "Save Logo"
+msgstr ""
+
 #:
 msgid "Flow"
 msgstr "Virtaus"
@@ -53,12 +65,21 @@ msgid "My Blocks"
 msgstr "Minun lohkoni"
 
 #:
+msgid "box"
+msgstr "laatikko"
+
+#:
 msgid "box 1"
 msgstr "laatikko 1"
+
 
 #:
 msgid "box 2"
 msgstr "laatikko 2"
+
+#:
+msgid "stack"
+msgstr "pino"
 
 #:
 msgid "stack 1"

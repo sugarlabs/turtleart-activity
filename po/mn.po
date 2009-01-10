@@ -14,6 +14,18 @@ msgstr ""
 msgid "Turtle Art"
 msgstr "Яст мэлхий уран бүтээл"
 
+#: 
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Samples"
+msgstr ""
+
+#:
+msgid "Save Logo"
+msgstr ""
+
 msgid "Flow"
 msgstr "Урсахуй"
 
@@ -41,11 +53,17 @@ msgstr "хүлзз"
 msgid "My Blocks"
 msgstr "Миний Блокуд"
 
+msgid "box"
+msgstr "богц"
+
 msgid "box 1"
 msgstr "богц 1"
 
 msgid "box 2"
 msgstr "богц 2"
+
+msgid "stack"
+msgstr "залгас"
 
 msgid "stack 1"
 msgstr "залгас 1"

@@ -5,9 +5,11 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.0"
-   width="64"
-   height="32">
-  <defs>
+   width="140"
+   height="32"
+   id="svg2">
+  <defs
+     id="defs4">
     <linearGradient
        id="linearGradient3166">
       <stop
@@ -28,18 +30,73 @@
        xlink:href="#linearGradient3166"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(0,4.96875)" />
+    <linearGradient
+       x1="210"
+       y1="10.5"
+       x2="0"
+       y2="10.5"
+       id="linearGradient4211"
+       xlink:href="#linearGradient3886"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3886">
+      <stop
+         id="stop3888"
+         style="stop-color:#0000ff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3890"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="210"
+       y1="10.5"
+       x2="0"
+       y2="10.5"
+       id="linearGradient2496"
+       xlink:href="#linearGradient3886"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="64"
+       y2="0"
+       id="linearGradient2501"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,4.96875)" />
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="104"
+       y2="21"
+       id="linearGradient3172"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient2492">
+      <stop
+         id="stop2494"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop2496"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
   </defs>
+  <path
+     d="M 13,1 L 13,10 L 6,10 L 6,6 L 1,6 L 1,25 L 6,25 L 6,21 L 13,21 L 13,31 L 129,31 L 129,26 L 139,26 L 139,6 L 129,6 L 129,1 L 13,1 z"
+     id="path11"
+     style="fill:url(#linearGradient2501);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1" />
   <g
-     id="g6327">
+     transform="translate(19.5,5.5)"
+     id="layer1"
+     style="fill:#ffffff;fill-opacity:1;stroke:#c0a000;stroke-opacity:1">
     <path
-       d="M 13,1 L 13,10 L 6,10 L 6,6 L 1,6 L 1,25 L 6,25 L 6,21 L 13,21 L 13,31 L 63,31 L 63,27 L 54,27 L 54,20 L 50,20 L 50,12 L 54,12 L 54,5 L 63,5 L 63,1 L 13,1 z"
-       style="opacity:1;fill:url(#linearGradient4238);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1" />
-  <text
-       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-      <tspan
-         x="32"
-         y="22"
-         style="font-size:14px">блок</tspan>
-    </text>
+       d="M 4,0 L 4,7 L 0,7 L 0,14 L 4,14 L 4,21 L 101,21 L 105,10.5 L 101,0 L 4,0 z"
+       id="path2478"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#c0a000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>

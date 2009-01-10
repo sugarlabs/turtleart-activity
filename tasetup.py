@@ -25,6 +25,8 @@ import gobject
 import os
 class taProto: pass
 
+from gettext import gettext as _
+
 from tasprites import *
 
 def numcheck(new, old):
@@ -95,15 +97,15 @@ selectors = (
      ('stack1','stack1','noarg'),
      ('hat2','nop2','start'),
      ('stack2','stack2','noarg'),
-     ('hat','nop3','starts','bar'),
-     ('stack','stack','sarg','bar'),
+     ('hat','nop3','starts',_('stack')),
+     ('stack','stack','sarg',_('stack')),
      ('storeinbox1','storeinbox1','1arg'),
      ('box1','box1','num'),
      ('storeinbox2','storeinbox2','1arg'),
      ('box2','box2','num'),
-     ('storeinbox','storeinbox','1sarg',100,'foo'),
-     ('box','box','nfuncs','foo'),
-     ('string','','string','',str,strcheck),
+     ('storeinbox','storeinbox','1sarg',100,_('box')),
+     ('box','box','nfuncs',_('box')),
+     ('string','','string',_('name'),str,strcheck),
      ('push','push','onearg'),
      ('pop','pop','num'),
      ('printheap','heap','noarg2'),
@@ -137,10 +139,10 @@ dockdetails = {
   'not':     (('logi+',True,0,24),('unavailable',False,0,0),('logi+',False,55,24)),
   'start':   (('start',True,50,0),('flow',False,49,55)),
   'string':  (('string',True,0,11),('stringend',False,105,11)),
-  'nfuncs':  (('num',True,0,17),('string',False,51,16)), #named box
-  'starts':  (('start',True,50,0),('string',False,78,29),('flow',False,49,55)), # named hat
-  'sarg':    (('flow',True,37,5),('string',False,71,20),('flow',False,37,44)),  # named stack and show string
-  '1sarg':   (('flow',True,37,5),('num',False,74,29),('string',False,74,71),('flow',False,37,104)), # storeinbox
+  'nfuncs':  (('num',True,0,17),('string',False,20,17),('numend',False,140,17)),
+  'starts':  (('start',True,50,0),('string',False,22,38),('flow',False,75,75)),
+  'sarg':    (('flow',True,65,5),('string',False,12,23),('flow',False,65,44)), 
+  '1sarg':   (('flow',True,65,5),('num',False,130,23),('string',False,13,23),('flow',False,65,44)), 
 }
 
 

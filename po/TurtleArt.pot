@@ -1,7 +1,7 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# POT file for Turtle Art
+# Copyright (C) 2009 Playful Invention Company
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Walter Bender <walter@sugarlabs.org>, 2009.
 #
 #, fuzzy
 msgid ""
@@ -19,6 +19,18 @@ msgstr ""
 
 #: 
 msgid "Turtle Art"
+msgstr ""
+
+#: 
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Samples"
+msgstr ""
+
+#:
+msgid "Save Logo"
 msgstr ""
 
 #:
@@ -58,11 +70,19 @@ msgid "My Blocks"
 msgstr ""
 
 #:
+msgid "box"
+msgstr ""
+
+#:
 msgid "box 1"
 msgstr ""
 
 #:
 msgid "box 2"
+msgstr ""
+
+#:
+msgid "stack"
 msgstr ""
 
 #:

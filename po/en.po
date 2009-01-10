@@ -16,6 +16,18 @@ msgstr ""
 msgid "Turtle Art"
 msgstr ""
 
+#: 
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Samples"
+msgstr ""
+
+#:
+msgid "Save Logo"
+msgstr ""
+
 #:
 msgid "Flow"
 msgstr ""
@@ -53,11 +65,19 @@ msgid "My Blocks"
 msgstr ""
 
 #:
+msgid "box"
+msgstr ""
+
+#:
 msgid "box 1"
 msgstr ""
 
 #:
 msgid "box 2"
+msgstr ""
+
+#:
+msgid "stack"
 msgstr ""
 
 #:
@@ -75,6 +95,26 @@ msgstr ""
 #:
 msgid "store in box 2"
 msgstr ""
+
+#:
+msgid "name"
+msgstr ""
+
+#:
+msgid "push"
+msgstr ""
+
+#:
+msgid "pop"
+msgstr ""
+
+#:
+msgid "show heap"
+msgstr
+
+#:
+msgid "empty heap"
+msgstr
 
 #:
 msgid "Numbers"
@@ -232,7 +272,6 @@ msgstr ""
 msgid "Samples"
 msgstr ""
 
-
 #:
 msgid "Sensors"
 msgstr ""
@@ -252,3 +291,4 @@ msgstr ""
 #:
 msgid "resistance"
 msgstr ""
+
