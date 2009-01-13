@@ -110,11 +110,11 @@ msgstr ""
 
 #:
 msgid "show heap"
-msgstr
+msgstr ""
 
 #:
 msgid "empty heap"
-msgstr
+msgstr ""
 
 #:
 msgid "Numbers"
@@ -262,14 +262,6 @@ msgstr ""
 
 #:
 msgid "ycor"
-msgstr ""
-
-#:
-msgid "Project"
-msgstr ""
-
-#:
-msgid "Samples"
 msgstr ""
 
 #:

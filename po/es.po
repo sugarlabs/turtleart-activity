@@ -16,7 +16,7 @@ msgstr ""
 msgid "Turtle Art"
 msgstr "Tortuga Art "
 
-#: 
+#:
 msgid "Project"
 msgstr ""
 
@@ -247,15 +247,6 @@ msgstr "coorx"
 #:
 msgid "ycor"
 msgstr "coory"
-
-#:
-msgid "Project"
-msgstr ""
-
-#:
-msgid "Samples"
-msgstr ""
-
 
 #:
 msgid "Sensors"

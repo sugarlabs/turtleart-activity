@@ -249,15 +249,6 @@ msgid "ycor"
 msgstr "y ekseni"
 
 #:
-msgid "Project"
-msgstr ""
-
-#:
-msgid "Samples"
-msgstr ""
-
-
-#:
 msgid "Sensors"
 msgstr ""
 

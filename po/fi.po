@@ -250,15 +250,6 @@ msgid "ycor"
 msgstr "y koord"
 
 #:
-msgid "Project"
-msgstr ""
-
-#:
-msgid "Samples"
-msgstr ""
-
-
-#:
 msgid "Sensors"
 msgstr ""
 

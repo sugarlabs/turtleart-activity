@@ -16,13 +16,13 @@ msgstr ""
 msgid "Turtle Art"
 msgstr "Черепашка"
 
-#: 
+#:
 msgid "Project"
-msgstr ""
+msgstr "Проект"
 
 #:
 msgid "Samples"
-msgstr ""
+msgstr "Примеры"
 
 #:
 msgid "Save Logo"
@@ -246,15 +246,6 @@ msgstr "x текущ."
 #:
 msgid "ycor"
 msgstr "y текущ."
-
-#:
-msgid "Project"
-msgstr "Проект"
-
-#:
-msgid "Samples"
-msgstr "Примеры"
-
 
 #:
 msgid "Sensors"
