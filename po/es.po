@@ -18,15 +18,15 @@ msgstr "Tortuga Art "
 
 #:
 msgid "Project"
-msgstr ""
+msgstr "Proyecto"
 
 #:
 msgid "Samples"
-msgstr ""
+msgstr "Ejemplos"
 
 #:
 msgid "Save Logo"
-msgstr ""
+msgstr "Salvar a logo"
 
 #:
 msgid "Flow"
@@ -70,31 +70,47 @@ msgstr "caja"
 
 #:
 msgid "box 1"
-msgstr "caja1"
+msgstr "caja 1"
 
 #:
 msgid "box 2"
-msgstr "caja2"
+msgstr "caja 2"
 
 #:
 msgid "stack"
-msgstr "pila"
+msgstr "acción"
 
 #:
 msgid "stack 1"
-msgstr "pila1"
+msgstr "acción 1"
 
 #:
 msgid "stack 2"
-msgstr "pila2"
+msgstr "acción 2"
 
 #:
 msgid "store in box 1"
-msgstr "poner en caja1"
+msgstr "poner en caja 1"
 
 #:
 msgid "store in box 2"
-msgstr "pner en caja2"
+msgstr "poner en caja 2"
+
+#:
+msgid "push"
+msgstr "empujar"
+
+#:
+msgid "pop"
+msgstr "sacar"
+
+#:
+msgid "show heap"
+msgstr "mostrar pila"
+
+#:
+msgid "empty heap"
+msgstr "vaciar pila"
 
 #:
 msgid "name"
@@ -250,20 +266,20 @@ msgstr "coory"
 
 #:
 msgid "Sensors"
-msgstr ""
+msgstr "Sensores"
 
 #:
 msgid "volume"
-msgstr ""
+msgstr "volumen"
 
 #:
 msgid "pitch"
-msgstr ""
+msgstr "tono"
 
 #:
 msgid "voltage"
-msgstr ""
+msgstr "voltaje"
 
 #:
 msgid "resistance"
-msgstr ""
+msgstr "resistencia"

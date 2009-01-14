@@ -141,8 +141,8 @@ dockdetails = {
   'string':  (('string',True,0,11),('stringend',False,105,11)),
   'nfuncs':  (('num',True,0,17),('string',False,20,17),('numend',False,140,17)),
   'starts':  (('start',True,50,0),('string',False,22,38),('flow',False,75,75)),
-  'sarg':    (('flow',True,65,5),('string',False,12,23),('flow',False,65,44)), 
-  '1sarg':   (('flow',True,65,5),('num',False,130,23),('string',False,13,23),('flow',False,65,44)), 
+  'sarg':    (('flow',True,37,5),('string',False,12,23),('flow',False,37,44)), 
+  '1sarg':   (('flow',True,37,5),('num',False,130,23),('string',False,13,23),('flow',False,37,44)), 
 }
 
 
