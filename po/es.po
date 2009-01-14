@@ -54,7 +54,7 @@ msgstr "repetir"
 
 #:
 msgid "stop stack"
-msgstr "detener pila"
+msgstr "detener acción"
 
 #:
 msgid "wait"
