@@ -114,7 +114,7 @@ selectors = (
 toolbaritems = (
     ('stopit',75),
     ('eraser',75),
-    ('hideshow',75)
+    ('hideshow',75),
     ('run',75))
 
 dockdetails = {

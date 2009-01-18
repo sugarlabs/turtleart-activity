@@ -402,12 +402,13 @@ def hideshow_blocks(tw,spr):
 
 def run(tw, spr):
     print "you better run, turtle, run!!"
+    setshape(spr,spr.onshape)
     for b in blocks(tw):
         if find_block_to_run(tw, b):
-            setshape(spr,spr.onshape)
             run_stack(tw, b)
-            setshape(spr,spr.offshape)
+            gobject.timeout_add(250,setshape,spr,spr.offshape)
             return
+    setshape(spr,spr.offshape)
 
 # find a stack to run (a stack without a hat)
 def find_block_to_run(tw, spr):
