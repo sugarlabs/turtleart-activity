@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="45"
+   height="45"
+   viewBox="0 0 55 55"
+   id="svg2"
+   xml:space="preserve"><defs
+     id="defs12" /><g
+     id="activity-start"
+     style="fill:#808080;fill-opacity:1;display:block">
+	<g
+   id="g5"
+   style="fill:#808080;fill-opacity:1">
+		<polygon
+   points="22.277,19.683 36.071,27.501 22.277,35.317 22.277,19.683 "
+   id="polygon7"
+   style="fill:#808080;fill-opacity:1" />
+		<path
+   d="M 27.5,5 C 15.073,5 5,15.074 5,27.5 C 5,39.926 15.073,50 27.5,50 C 39.927,50 50,39.926 50,27.5 C 50,15.074 39.927,5 27.5,5 z M 41,38.333 L 14,38.333 L 14,16.667 L 41,16.667 L 41,38.333 z"
+   id="path9"
+   style="fill:#808080;fill-opacity:1" />
+	</g>
+</g></svg>

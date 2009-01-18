@@ -384,6 +384,7 @@ def tooldispatch(tw, spr):
     if spr.blocktype == 'hideshow': hideshow_blocks(tw,spr)
     elif spr.blocktype == 'eraser': runtool(tw, spr, clearscreen, tw.turtle)
     elif spr.blocktype == 'stopit': stop_logo(tw)
+    elif spr.blocktype == 'run': run(tw, spr)
 
 def runtool(tw, spr, cmd, *args):
     setshape(spr,spr.onshape)
@@ -399,7 +400,22 @@ def hideshow_blocks(tw,spr):
         setshape(spr,spr.offshape)
     inval(tw.turtle.canvas)
 
+def run(tw, spr):
+    print "you better run, turtle, run!!"
+    for b in blocks(tw):
+        if find_block_to_run(tw, b):
+            setshape(spr,spr.onshape)
+            run_stack(tw, b)
+            setshape(spr,spr.offshape)
+            return
 
+# find a stack to run (a stack without a hat)
+def find_block_to_run(tw, spr):
+    top = find_top_block(spr)
+    if spr == top and spr.proto.name[0:3] != 'hat':
+        return True
+    else:
+        return False
 def blocks(tw): return [spr for spr in tw.sprites if spr.type == 'block']
 def xy(event): return map(int, event.get_coords())
 
