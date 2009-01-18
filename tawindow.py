@@ -69,6 +69,7 @@ def twNew(win, path, lang, tboxh, parent=None):
     tw.sprites = []
     tw.selected_block = None
     tw.draggroup = None
+    tw.step_time = 0
     setup_selectors(tw)
     setup_toolbar(tw)
     select_category(tw, tw.selbuttons[0])
@@ -384,7 +385,8 @@ def tooldispatch(tw, spr):
     if spr.blocktype == 'hideshow': hideshow_blocks(tw,spr)
     elif spr.blocktype == 'eraser': runtool(tw, spr, clearscreen, tw.turtle)
     elif spr.blocktype == 'stopit': stop_logo(tw)
-    elif spr.blocktype == 'run': run(tw, spr)
+    elif spr.blocktype == 'run': run(tw, spr, 0)
+    elif spr.blocktype == 'step': run(tw, spr, 2)
 
 def runtool(tw, spr, cmd, *args):
     setshape(spr,spr.onshape)
@@ -400,11 +402,12 @@ def hideshow_blocks(tw,spr):
         setshape(spr,spr.offshape)
     inval(tw.turtle.canvas)
 
-def run(tw, spr):
+def run(tw, spr, time):
     print "you better run, turtle, run!!"
     setshape(spr,spr.onshape)
     for b in blocks(tw):
         if find_block_to_run(tw, b):
+            tw.step_time = time
             run_stack(tw, b)
             gobject.timeout_add(250,setshape,spr,spr.offshape)
             return

@@ -115,7 +115,8 @@ toolbaritems = (
     ('stopit',75),
     ('eraser',75),
     ('hideshow',75),
-    ('run',75))
+    ('run',75),
+    ('step',75))
 
 dockdetails = {
   'noarg':   (('flow',True,37,5),('flow',False,37,44)),

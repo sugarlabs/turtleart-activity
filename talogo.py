@@ -149,6 +149,12 @@ def evline(lc, list):
     lc.iline = list[:]
     lc.arglist = None
     while lc.iline:
+        if lc.tw.step_time > 0:
+            setlayer(lc.tw.turtle.spr,630)
+            endtime = millis()+an_int(lc,lc.tw.step_time)*100
+            while millis()<endtime:
+                yield True
+            setlayer(lc.tw.turtle.spr,100)
         token = lc.iline[0]
         if token==lc.symopar: token=lc.iline[1]
         icall(lc, eval); yield True
@@ -429,7 +435,9 @@ def stopsignoff(lc):
     setshape(lc.stopsign, lc.stopsign.offshape)
     setlayer(lc.tw.turtle.spr,630)
 
-def stop_logo(tw): tw.lc.step = just_stop()
+def stop_logo(tw):
+    tw.step_time = 0
+    tw.lc.step = just_stop()
 
 def just_stop(): yield False
 
