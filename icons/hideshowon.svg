@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="53"
+   height="43"
+   id="svg2">
+  <defs
+     id="defs5">
+    <linearGradient
+       id="linearGradient3166">
+      <stop
+         id="stop3168"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3170"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="22"
+       x2="74"
+       y2="22"
+       id="linearGradient3172"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="0"
+       y1="22"
+       x2="74"
+       y2="22"
+       id="linearGradient2487"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="0"
+       y1="22"
+       x2="74"
+       y2="22"
+       id="linearGradient2399"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.7128619,0,0,0.8895426,-6.102877e-4,0.9471127)" />
+  </defs>
+  <path
+     d="M 34.216761,1.8366553 C 45.622551,1.8366553 45.622551,1.8366553 45.622551,1.8366553 C 45.622551,1.8366553 48.567953,4.0485498 49.543292,5.3948257 C 50.539496,6.7699023 52.038308,10.732081 52.038308,10.732081 L 52.038308,27.633391 C 52.038308,27.633391 50.457858,30.919053 49.543292,32.081104 C 48.524213,33.375948 45.622551,35.639274 45.622551,35.639274 L 33.503899,35.639274 L 33.503899,35.639274 L 33.503899,39.197444 L 19.246661,39.197444 L 19.246661,35.639274 L 7.1280087,35.639274 C 7.1280087,35.639274 4.2263475,33.375948 3.2072683,32.081104 C 2.2927019,30.919053 0.71225161,27.633391 0.71225161,27.633391 L 0.71225161,10.732081 C 0.71225161,10.732081 2.2110639,6.7699023 3.2072683,5.3948257 C 4.1826074,4.0485498 7.1280087,1.8366553 7.1280087,1.8366553 L 18.533799,1.8366553 L 18.533799,6.2843683 L 34.216761,6.2843683 L 34.216761,1.8366553 z"
+     id="path9"
+     style="fill:url(#linearGradient2399);fill-opacity:1;stroke:#c0a000;stroke-width:1.59263432;stroke-opacity:1" />
+</svg>

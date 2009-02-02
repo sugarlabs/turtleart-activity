@@ -35,12 +35,12 @@ def findsprite(tw,pos):
 def redrawsprites(tw):
     for s in tw.sprites: draw(s)
 
-
 def sprNew(tw,x,y,image,altlabel=False):
     spr = taSprite()
     spr.tw, spr.x, spr.y = tw,x,y
     setimage(spr,image)
     spr.label = None
+    spr.ds_id = None
     if altlabel: spr.draw_label = draw_label2
     else: spr.draw_label = draw_label1
     return spr
@@ -52,7 +52,6 @@ def setimage(spr,image):
         spr.height = image.get_height()
     else: spr.width,spr.height=image.get_size()
 
-
 def move(spr,pos):
     inval(spr)
     spr.x,spr.y = pos
@@ -61,6 +60,9 @@ def move(spr,pos):
 def setshape(spr,image):
     inval(spr)
     setimage(spr,image)
+    inval(spr)
+
+def setshapex(spr):
     inval(spr)
 
 def setlayer(spr, layer):
@@ -88,7 +90,13 @@ def draw(spr):
     if isinstance(spr.image,gtk.gdk.Pixbuf):
         spr.tw.area.draw_pixbuf(spr.tw.gc, spr.image, 0, 0, spr.x, spr.y)
     else: spr.tw.area.draw_drawable(spr.tw.gc,spr.image,0,0,spr.x,spr.y,-1,-1)
-    if spr.label!=None: spr.draw_label(spr,spr.label)
+    if spr.label!=None:
+        try:
+            name = spr.proto.name
+        except:
+            name = ""
+        if name != 'audiooff' and name != 'journal':
+            spr.draw_label(spr,spr.label)
 
 def hit(spr,pos):
     x,y = pos
@@ -98,7 +106,11 @@ def hit(spr,pos):
     if y>spr.y+spr.height: return False
     if isinstance(spr.image,gtk.gdk.Pixmap): return True
     dx,dy = x-spr.x, y-spr.y
-    return ord(spr.image.get_pixels()[(dy*spr.width+dx)*4+3]) == 255
+    try:
+        return ord(spr.image.get_pixels()[(dy*spr.width+dx)*4+3]) == 255
+    except IndexError:
+        print "IndexError: string index out of range" + dy + " " + spr.width + " " + dx
+        return True
 
 def draw_label1(spr, label):
     fd = pango.FontDescription('Sans')
@@ -109,7 +121,7 @@ def draw_label1(spr, label):
     sheight = pl.get_size()[1]/pango.SCALE
     centerx = spr.x+spr.width/2
     centery = spr.y+spr.height/2
-    spr.tw.gc.set_foreground(spr.tw.textcolor)
+    spr.tw.gc.set_foreground(spr.tw.msgcolor)
     spr.tw.area.draw_layout(spr.tw.gc,centerx-swidth/2,centery-sheight/2,pl)
 
 def draw_label2(spr, label):
@@ -119,9 +131,8 @@ def draw_label2(spr, label):
     pl.set_font_description(fd)
     sheight = pl.get_size()[1]/pango.SCALE
     centery = spr.y+spr.height/2
-    spr.tw.gc.set_foreground(spr.tw.textcolor)
+    spr.tw.gc.set_foreground(spr.tw.msgcolor)
     spr.tw.area.draw_layout(spr.tw.gc,spr.x+70,centery-sheight/2,pl)
-
 
 def getpixel(image,x,y):
     array = image.get_pixels()

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="45.000004"
+   height="45"
+   id="svg2">
+  <defs
+     id="defs19" />
+  <path
+     d="M 0.5,44.502878 L 0.5,30.353117 C 0.81811663,28.149435 1.1818834,25.945754 1.5,23.742073 C 1.9963269,22.444548 2.5036731,21.147023 3,19.849497 C 3.6783755,19.065372 4.3216245,18.281246 5,17.49712 L 39.7494,17.49712 L 42,20.014991 C 42.605837,21.615977 42.894162,23.216963 43.5,24.817948 C 43.777382,27.520068 44.222619,30.222187 44.5,32.924307 L 44.5,44.502878 L 0.5,44.502878 z"
+     id="path4"
+     style="fill:#808080;fill-opacity:1;stroke:#a0a0a0;stroke-width:0.99423993px;stroke-opacity:1" />
+  <path
+     d="M 30.875,30.999999 C 30.875,35.624929 27.12538,39.374181 22.5,39.374181 C 17.87462,39.374181 14.125,35.624929 14.125,30.999999 C 14.125,26.37507 17.87462,22.625817 22.5,22.625817 C 27.12538,22.625817 30.875,26.37507 30.875,30.999999 L 30.875,30.999999 z"
+     id="path27"
+     style="fill:#404040;fill-opacity:1;stroke:#404040;stroke-width:1px;stroke-opacity:1" />
+  <text
+     x="-50.760925"
+     y="-462.48117"
+     transform="scale(0.9850096,1.0152185)"
+     id="text29"
+     style="font-size:12.18262196px;font-weight:bold;font-family:Bitstream Vera Sans">
+    <tspan
+       x="18.273933"
+       y="34.975887"
+       id="tspan31"
+       style="font-size:12.18262196px;font-weight:bold;fill:#ffffff">X</tspan>
+  </text>
+</svg>

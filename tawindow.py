@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #Copyright (c) 2007-9, Playful Invention Company.
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,9 +22,12 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
+import pango
 import gobject
 import os
 import os.path
+import time
+
 class taWindow: pass
 
 from math import atan2, pi
@@ -34,22 +38,23 @@ from tasprites import *
 from talogo import *
 from taturtle import *
 from taproject import *
+from sugar.graphics.objectchooser import ObjectChooser
 
 #
 # Setup
 #
 
-def twNew(win, path, lang, tboxh, parent=None):
+def twNew1(win, path, lang, tboxh, parent=None):
     tw = taWindow()
     tw.window = win
     tw.path = os.path.join(path,'images',lang)
+    tw.load_save_folder = os.path.join(path,'samples',lang)
+    tw.save_folder = None
+    tw.save_file_name = None
     win.set_flags(gtk.CAN_FOCUS)
-    print "width: ", gtk.gdk.screen_width()
-    width = gtk.gdk.screen_width()
-    print "height: ", gtk.gdk.screen_height()
-    # subtract toolbar height
-    height = gtk.gdk.screen_height() - tboxh
-    win.set_size_request(width, height)
+    tw.width = gtk.gdk.screen_width()
+    tw.height = gtk.gdk.screen_height() - tboxh
+    win.set_size_request(tw.width, tw.height)
     if parent is None: win.show_all()
     else: parent.show_all()
     win.add_events(gtk.gdk.BUTTON_PRESS_MASK)
@@ -61,25 +66,56 @@ def twNew(win, path, lang, tboxh, parent=None):
     win.connect("button-release-event", buttonrelease_cb, tw)
     win.connect("motion-notify-event", move_cb, tw)
     win.connect("key_press_event", keypress_cb, tw)
+    tw.keypress = ""
+    tw.keyvalue = 0
     tw.area = win.window
     tw.gc = tw.area.new_gc()
-    tw. cm = tw.gc.get_colormap()
+    # tw.window.textentry = gtk.Entry()
+    # on an OLPC-XO-1, there is a scaling factor
+    if os.path.exists('/sys/power/olpc-pm'):
+        tw.scale = 1
+    else: tw.scale = 1.6
+
+    # put a wait brick up
+#    print 'trying to put up wait brick'
+    try:
+        wait_block = gtk.gdk.pixbuf_new_from_file( \
+            os.path.join(activity.get_activity_root(),"data",'wait.png'))
+    except:
+        try: wait_block = gtk.gdk.pixbuf_new_from_file( \
+            os.path.join(tw.path,'flow','wait.svg'))
+        except: print 'couldn not open wait.svg'
+    tw.area.draw_pixbuf(tw.gc, wait_block, 0, 0, (tw.width/2)-22, \
+        (tw.height/2)-43)
+    rect = gtk.gdk.Rectangle(int((tw.width/2)-22), int((tw.height/2)-43), \
+        44, 87)
+    tw.area.invalidate_rect(rect, False)
+    return tw
+
+def millis(): return int(clock()*1000)
+
+def twNew2(tw):
+    tw.cm = tw.gc.get_colormap()
     tw.bgcolor = tw.cm.alloc_color('#fff8de')
-    tw.textcolor = tw.cm.alloc_color('black')
+    tw.msgcolor = tw.cm.alloc_color('black')
+    tw.fgcolor = tw.cm.alloc_color('red')
+    tw.textcolor = tw.cm.alloc_color('blue')
     tw.sprites = []
     tw.selected_block = None
     tw.draggroup = None
+    prep_selectors(tw)
+    for s in selectors:
+#        gobject.idle_add(setup_selectors,tw,s)
+        setup_selectors(tw,s)
+    tw.loaded = False
+#    gobject.idle_add(setup_misc, tw, tboxh)
+    setup_misc(tw)
     tw.step_time = 0
-    setup_selectors(tw)
-    setup_toolbar(tw)
+    tw.hide = False
+    tw.palette = True
     select_category(tw, tw.selbuttons[0])
-    tw.turtle = tNew(tw,width,height)
+    tw.turtle = tNew(tw,tw.width,tw.height)
     tw.lc = lcNew(tw)
-    tw.load_save_folder = os.path.join(path,'samples')
-    tw.save_folder = None
-    tw.save_file_name = None
-    return tw
-
 
 #
 # Button Press
@@ -96,8 +132,6 @@ def buttonpress_cb(win, event, tw):
     if spr==None: return True
     if spr.type == 'selbutton':
         select_category(tw,spr)
-    elif spr.type == 'tool':
-        tooldispatch(tw, spr)
     elif spr.type == 'category':
         block_selector_pressed(tw,x,y)
     elif spr.type == 'block':
@@ -107,16 +141,29 @@ def buttonpress_cb(win, event, tw):
     return True
 
 def block_selector_pressed(tw,x,y):
-    if tw.category_spr.image==tw.hidden_palette_icon:
-        for i in tw.selbuttons: setlayer(i,800)
-        select_category(tw,tw.selbuttons[0])
+    proto = get_proto_from_category(tw,x,y)
+    if proto==None: return
+    if proto!='hide': new_block_from_category(tw,proto,x,y)
     else:
-        proto = get_proto_from_category(tw,x,y)
-        if proto==None: return
-        if proto!='hide': new_block_from_category(tw,proto,x,y)
-        else:
-            for i in tw.selbuttons: hide(i)
-            setshape(tw.category_spr, tw.hidden_palette_icon)
+        hide_palette(tw)
+
+def hideshow_palette(tw):
+    if tw.palette == True:
+        hide_palette(tw)
+        # not sure why this call to do_hidepalette doesn't work
+        tw.activity.projectToolbar.do_hidepalette()
+    else:
+        show_palette(tw)
+
+def show_palette(tw):
+    for i in tw.selbuttons: setlayer(i,800)
+    select_category(tw,tw.selbuttons[0])
+    tw.palette = True
+
+def hide_palette(tw):
+    for i in tw.selbuttons: hide(i)
+    setshape(tw.category_spr, tw.hidden_palette_icon)
+    tw.palette = False
 
 def get_proto_from_category(tw,x,y):
     dx,dy = x-tw.category_spr.x, y-tw.category_spr.y,
@@ -141,29 +188,22 @@ def new_block_from_category(tw,proto,x,y):
     tw.dragpos = 20,20
     newspr.type = 'block'
     newspr.proto = proto
-#    if newspr.proto.name == 'number': newspr.label=100
     if tw.defdict.has_key(newspr.proto.name):
         newspr.label=tw.defdict[newspr.proto.name]
     newspr.connections = [None]*len(proto.docks)
     for i in range(len(proto.defaults)):
         dock = proto.docks[i+1]
-#        numproto = tw.protodict['number']
-#        numdock = numproto.docks[0]
-#        nx,ny = newspr.x+dock[2]-numdock[2],newspr.y+dock[3]-numdock[3]
-#        argspr = sprNew(tw,nx,ny,numproto.image)
         argproto = tw.protodict[tw.valdict[dock[0]]]
         argdock = argproto.docks[0]
         nx,ny = newspr.x+dock[2]-argdock[2],newspr.y+dock[3]-argdock[3]
         argspr = sprNew(tw,nx,ny,argproto.image)
         argspr.type = 'block'
-#        argspr.proto = numproto
         argspr.proto = argproto
         argspr.label = str(proto.defaults[i])
         setlayer(argspr,2000)
         argspr.connections = [newspr,None]
         newspr.connections[i+1] = argspr
     tw.draggroup = findgroup(newspr)
-#    tw.block_operation = 'move'
     tw.block_operation = 'new'
 
 def block_pressed(tw,event,x,y,spr):
@@ -172,10 +212,14 @@ def block_pressed(tw,event,x,y,spr):
         tw.dragpos = x-newspr.x,y-newspr.y
         tw.draggroup = findgroup(newspr)
     else:
-        tw.dragpos = x-spr.x,y-spr.y
         tw.draggroup = findgroup(spr)
         for b in tw.draggroup: setlayer(b,2000)
-        disconnect(spr)
+        if spr.connections[0] != None and spr.proto.name == 'lock':
+            b = find_top_block(spr)
+            tw.dragpos = x-b.x,y-b.y
+        else:
+            tw.dragpos = x-spr.x,y-spr.y
+            disconnect(spr)
 
 def clone_stack(tw,dx,dy,spr):
     newspr = sprNew(tw,spr.x+dx,spr.y+dy,spr.proto.image)
@@ -193,10 +237,10 @@ def clone_stack(tw,dx,dy,spr):
 
 def turtle_pressed(tw,x,y):
     dx,dy = x-tw.turtle.spr.x-30,y-tw.turtle.spr.y-30
-    if dx*dx+dy*dy > 200: tw.dragpos = ('turn', tw.turtle.heading-atan2(dy,dx)/DEGTOR,0)
+    if dx*dx+dy*dy > 200: tw.dragpos = ('turn', \
+        tw.turtle.heading-atan2(dy,dx)/DEGTOR,0)
     else: tw.dragpos = ('move', x-tw.turtle.spr.x,y-tw.turtle.spr.y)
     tw.draggroup = [tw.turtle.spr]
-
 
 #
 # Mouse move
@@ -206,15 +250,18 @@ def move_cb(win, event, tw):
     if tw.draggroup == None: return True
     tw.block_operation = 'move'
     spr = tw.draggroup[0]
-    x,y = xy(event)
     if spr.type=='block':
+        x,y = xy(event)
         dragx, dragy = tw.dragpos
         dx,dy = x-dragx-spr.x,y-dragy-spr.y
         # skip if there was a move of 0,0
         if dx == 0 and dy == 0: return True
+        # drag entire stack if moving lock block
+        tw.draggroup = findgroup(spr)
         for b in tw.draggroup:
             move(b,(b.x+dx, b.y+dy))
     elif spr.type=='turtle':
+        x,y = xy(event)
         type,dragx,dragy = tw.dragpos
         if type == 'move':
             dx,dy = x-dragx-spr.x,y-dragy-spr.y
@@ -223,7 +270,6 @@ def move_cb(win, event, tw):
             dx,dy = x-spr.x-30,y-spr.y-30
             seth(tw.turtle, int(dragx+atan2(dy,dx)/DEGTOR+5)/10*10)
     return True
-
 
 #
 # Button release
@@ -234,8 +280,10 @@ def buttonrelease_cb(win, event, tw):
     spr = tw.draggroup[0]
     x,y = xy(event)
     if spr.type == 'turtle':
-        tw.turtle.xcor = tw.turtle.spr.x-tw.turtle.canvas.x-tw.turtle.canvas.width/2+30
-        tw.turtle.ycor = tw.turtle.canvas.height/2-tw.turtle.spr.y+tw.turtle.canvas.y-30
+        tw.turtle.xcor = tw.turtle.spr.x-tw.turtle.canvas.x- \
+            tw.turtle.canvas.width/2+30
+        tw.turtle.ycor = tw.turtle.canvas.height/2-tw.turtle.spr.y+ \
+            tw.turtle.canvas.y-30
         move_turtle(tw.turtle)
         tw.draggroup = None
         return True
@@ -245,7 +293,6 @@ def buttonrelease_cb(win, event, tw):
         return True
     # allow new blocks to be created by clicking as well as dragging
     if tw.block_operation=='new':
-        print "making a new block"
         for b in tw.draggroup:
             move(b, (b.x+200, b.y))
     snap_to_dock(tw)
@@ -259,11 +306,38 @@ def buttonrelease_cb(win, event, tw):
             tw.firstkey = True
         elif tw.defdict.has_key(spr.proto.name):
             tw.selected_block = spr
-            move(tw.select_mask_string, (spr.x-5,spr.y-5))
-            setlayer(tw.select_mask_string, 660)
-            tw.firstkey = True
+            if spr.proto.name=='string':
+                move(tw.select_mask_string, (spr.x-5,spr.y-5))
+                setlayer(tw.select_mask_string, 660)
+                tw.firstkey = True
+            elif spr.proto.name == 'journal':
+                import_image(tw, spr)
         else: run_stack(tw, spr)
     return True
+
+def import_image(tw, spr):
+#    chooser = ObjectChooser('Choose image', None, gtk.DIALOG_MODAL | \
+#        gtk.DIALOG_DESTROY_WITH_PARENT, 'image/png' )
+    chooser = ObjectChooser('Choose image', None, gtk.DIALOG_MODAL | \
+        gtk.DIALOG_DESTROY_WITH_PARENT)
+    try:
+        result = chooser.run()
+        if result == gtk.RESPONSE_ACCEPT:
+            dsobject = chooser.get_selected_object()
+            load_image(tw, dsobject, spr)
+            spr.ds_id = dsobject.object_id
+            dsobject.destroy()
+    finally:
+        chooser.destroy()
+        del chooser
+
+def load_image(tw, picture, spr):
+    from talogo import get_pixbuf_from_journal
+    pixbuf = get_pixbuf_from_journal(picture,spr.width,spr.height)
+    if pixbuf != None:
+        setimage(spr, pixbuf)
+    else:
+        setimage(spr, tw.media_shapes['texton'])
 
 def snap_to_dock(tw):
     d=200
@@ -293,36 +367,49 @@ def dock_dx_dy(block1,dock1n,block2,dock2n):
     d1type,d1dir,d1x,d1y=dock1[0:4]
     d2type,d2dir,d2x,d2y=dock2[0:4]
     if (d2type!='num') or (dock2n!=0):
-        if block1.connections[dock1n] != None: return (100,100)
-        if block2.connections[dock2n] != None: return (100,100)
+        if block1.connections[dock1n] != None:
+            return (100,100)
+        if block2.connections[dock2n] != None:
+            return (100,100)
     if block1==block2: return (100,100)
-    if d1type!=d2type: return (100,100)
-    if d1dir==d2dir: return (100,100)
+    if d1type!=d2type:
+        # some blocks can take strings or nums
+        if block1.proto.name in ('write', 'push', 'plus2', 'equal', 'nop'):
+            if block1.proto.name == 'write' and d1type == 'string':
+                if d2type == 'num' or d2type == 'string':
+                    pass
+            else: 
+                if d2type == 'num' or d2type == 'string':
+                    pass
+        else:
+            return (100,100)
+    if d1dir==d2dir:
+        return (100,100)
     return (block1.x+d1x)-(block2.x+d2x),(block1.y+d1y)-(block2.y+d2y)
 
 def magnitude(pos):
     x,y = pos
     return x*x+y*y
 
-
 #
 # Repaint
 #
 
 def expose_cb(win, event, tw):
-#    tw.gc.set_foreground(tw.bgcolor)
-#    tw.area.draw_rectangle(tw.gc, True, 0, 0, WIDTH, HEIGHT)
     redrawsprites(tw)
     return True
-
 
 #
 # Keyboard
 #
 
-def keypress_cb(area, event,tw):
+def keypress_cb(area, event, tw):
     keyname = gtk.gdk.keyval_name(event.keyval)
-    # print keyname,event.get_state()
+#    print keyname + ", " + str(event.keyval) + str(event.get_state())
+    tw.keypress = keyname
+#    tw.keyval = unicode(gtk.gdk.keyval_to_unicode(event.keyval))
+#    foo = unichr(gtk.gdk.keyval_to_unicode(event.keyval))
+#    print foo
     if (event.get_state()&gtk.gdk.MOD4_MASK):
         if keyname=="n": new_project(tw)
         if keyname=="o": load_file(tw)
@@ -330,31 +417,50 @@ def keypress_cb(area, event,tw):
         if keyname=="k": tw.activity.clear_journal()
         return True
     if tw.selected_block==None: return False
-    keyname = gtk.gdk.keyval_name(event.keyval)
-    if keyname in ['minus', 'period']: keyname = {'minus': '-', 'period': '.'}[keyname]
-    if len(keyname)>1: return True
-    oldnum = tw.selected_block.label
+    if tw.selected_block.proto.name == 'number':
+        if keyname in ['minus', 'period']: 
+            keyname = {'minus': '-', 'period': '.'}[keyname]
+        if len(keyname)>1: return True
+    else:
+        try: keyname = {
+            'minus': '-', 'period': '.', 'space': ' ', \
+            'parenleft': '(', 'parenright': ')', \
+            'exclam': '!', 'question': '?', 'asterisk': '*', 'at': '@', \
+            'numbersign': '#', \
+            'dollar': '$', 'percent': '%', 'asciicircum': '^', \
+            'ampersand': '&', \
+            'underscore': '_', 'plus': '+', 'equal': '=', 'braceleft': '{', \
+            'braceright': '}', \
+            'comma': ',', 'bracketleft': '[', 'bracketright': ']', \
+            'slash': '/', \
+            'backslash': '\\', 'colon': ':', 'semicolon': ';', \
+            'quotedbl': '\"', \
+            'apostrophe': '\'', 'less': '<', 'greater': '>', \
+            'asciitilde': '~', 'grave': '`', \
+            'bar': '|', 'ntilde': 'ñ', 'Ntilde': 'Ñ', 'aacute': 'á', \
+            'Aacute': 'Á', \
+            'eacute': 'é', 'Eacute': 'É', 'iacute': 'í', 'Iacute': 'Í', \
+            'oacute': 'ó', \
+            'Oacute': 'Ó', 'uacute': 'ú', 'Uacute': 'Ú', 'ccedilla': 'ç', \
+            'Ccedilla': 'Ç' }[keyname]
+        except:
+            if len(keyname)>1:
+                return True
+    oldnum = tw.selected_block.label 
     selblock=tw.selected_block.proto
-#    if tw.firstkey: newnum = numcheck(keyname,'0')
-    if tw.firstkey: newnum = selblock.check(keyname,tw.defdict[selblock.name])
+    if tw.firstkey: newnum = selblock.check( \
+        keyname,tw.defdict[selblock.name])
     else: newnum = oldnum+keyname
-#    setlabel(tw.selected_block, numcheck(newnum,oldnum))
     setlabel(tw.selected_block, selblock.check(newnum,oldnum))
     tw.firstkey = False
     return True
 
-#def numcheck(new, old):
-#    if new in ['-', '.', '-.']: return new
-#    if new=='.': return '0.'
-#    try: float(new); return new
-#    except ValueError,e : return old
-
 def unselect(tw):
-    if tw.selected_block.label in ['-', '.', '-.']: select_block.setlabel('0')
+    if tw.selected_block.label in ['-', '.', '-.']:
+        select_block.setlabel('0')
     hide(tw.select_mask)
     hide(tw.select_mask_string)
     tw.selected_block = None
-
 
 #
 # Block utilities
@@ -368,7 +474,7 @@ def disconnect(b):
 
 def run_stack(tw,spr):
     top = find_top_block(spr)
-    run_blocks(tw.lc, top, blocks(tw))
+    run_blocks(tw.lc, top, blocks(tw), True)
     gobject.idle_add(doevalstep, tw.lc)
 
 def findgroup(b):
@@ -378,48 +484,67 @@ def findgroup(b):
     return group
 
 def find_top_block(spr):
-    while spr.connections[0]!=None: spr=spr.connections[0]
-    return spr
-
-def tooldispatch(tw, spr):
-    if spr.blocktype == 'hideshow': hideshow_blocks(tw,spr)
-    elif spr.blocktype == 'eraser': runtool(tw, spr, clearscreen, tw.turtle)
-    elif spr.blocktype == 'stopit': stop_logo(tw)
-    elif spr.blocktype == 'run': run(tw, spr, 0)
-    elif spr.blocktype == 'step': run(tw, spr, 2)
+    b = spr
+    while b.connections[0]!=None: b=b.connections[0]
+    return b
 
 def runtool(tw, spr, cmd, *args):
-    setshape(spr,spr.onshape)
     cmd(*(args))
-    gobject.timeout_add(250,setshape,spr,spr.offshape)
 
-def hideshow_blocks(tw,spr):
-    if spr.image==spr.offshape:
-        for b in blocks(tw): setlayer(b,100)
-        setshape(spr,spr.onshape)
-    else:
-        for b in blocks(tw): setlayer(b,650)
-        setshape(spr,spr.offshape)
-    inval(tw.turtle.canvas)
+def eraser_button(tw):
+    clear(tw.lc)
 
-def run(tw, spr, time):
+def stop_button(tw):
+    stop_logo(tw)
+
+def runbutton(tw, time):
     print "you better run, turtle, run!!"
-    setshape(spr,spr.onshape)
+    # look for the start block
     for b in blocks(tw):
-        if find_block_to_run(tw, b):
+        if find_start_stack(tw, b):
             tw.step_time = time
             run_stack(tw, b)
-            gobject.timeout_add(250,setshape,spr,spr.offshape)
             return
-    setshape(spr,spr.offshape)
+    # no start block, so run a stack that isn't a hat
+    for b in blocks(tw):
+        if find_block_to_run(tw, b):
+            print "running " + b.proto.name
+            tw.step_time = time
+            run_stack(tw, b)
+    return
 
-# find a stack to run (a stack without a hat)
+def hideshow_button(tw):
+    if tw.hide == False:
+        for b in blocks(tw): setlayer(b,100)
+        hide_palette(tw)
+        hide(tw.select_mask)
+        hide(tw.select_mask_string)
+        tw.hide = True
+    else:
+        for b in blocks(tw): setlayer(b,650)
+        show_palette(tw)
+        tw.hide = False
+    inval(tw.turtle.canvas)
+
+# find start stack
+def find_start_stack(tw, spr):
+    top = find_top_block(spr)
+    if spr.proto.name == 'start':
+        return True
+    else:
+        return False
+
+# find a stack to run (any stack without a hat)
 def find_block_to_run(tw, spr):
     top = find_top_block(spr)
     if spr == top and spr.proto.name[0:3] != 'hat':
         return True
     else:
         return False
-def blocks(tw): return [spr for spr in tw.sprites if spr.type == 'block']
-def xy(event): return map(int, event.get_coords())
+
+def blocks(tw):
+    return [spr for spr in tw.sprites if spr.type == 'block']
+
+def xy(event):
+    return map(int, event.get_coords())
 

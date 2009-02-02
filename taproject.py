@@ -1,4 +1,4 @@
-#Copyright (c) 2007-8, Playful Invention Company.
+#Copyright (c) 2007-9, Playful Invention Company.
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -27,12 +27,13 @@ import os.path
 from tasprites import *
 from taturtle import *
 from talogo import stop_logo
+from sugar.datastore import datastore
 
 def new_project(tw):
     stop_logo(tw)
     for b in blocks(tw): hide(b)
     setlayer(tw.turtle.canvas, 600)
-    setshape(tw.toolsprs['hideshow'], tw.toolsprs['hideshow'].offshape)
+#    setshape(tw.toolsprs['hideshow'], tw.toolsprs['hideshow'].offshape)
     clearscreen(tw.turtle)
     tw.save_file_name = None
 
@@ -49,12 +50,13 @@ def load_files(tw,ta_file, png_file=''):
     f.close()
     new_project(tw)
     read_data(tw,data)
-    try:
-        load_pict(tw,png_file)
-    except:
-        print "load_files: picture didn't load"
-        pass
-    inval(tw.turtle.canvas)
+    if png_file != '':
+        try:
+            load_pict(tw,png_file)
+        except:
+#            print "load_files: picture didn't load"
+            pass
+        inval(tw.turtle.canvas)
 
 def get_load_name(tw):
     dialog = gtk.FileChooserDialog("Load...", None,
@@ -76,13 +78,41 @@ def read_data(tw,data):
         blocks[i].connections = cons
 
 def load_spr(tw,b):
+    media = None
     btype, label = b[1],None
-    if type(btype)==type((1,2)): btype, label = btype
+#    print btype
+    if type(btype)==type((1,2)): 
+        btype, label = btype
+#        print "found a label: " + label
+    # for backward compatibility
+    if btype == 'title':
+        btype = 'string'
+    if btype == 'journal' or btype == 'audiooff':
+        media = label
+        label = None
     proto = tw.protodict[btype]
-    spr = sprNew(tw,b[2]+tw.turtle.canvas.x,b[3]+tw.turtle.canvas.y, proto.image)
+    spr = sprNew(tw,b[2]+tw.turtle.canvas.x,b[3]+tw.turtle.canvas.y, \
+        proto.image)
     spr.type = 'block'
     spr.proto = proto
     if label!=None: spr.label=label
+    if media!=None and media!="media_None" and media!="audio_None":
+        try:
+            dsobject = datastore.get(media)
+            spr.ds_id = dsobject.object_id
+            if spr.proto.name == 'journal':
+                from talogo import get_pixbuf_from_journal
+                pixbuf = get_pixbuf_from_journal \
+                    (dsobject,spr.width,spr.height)
+                if pixbuf != None:
+                    setimage(spr, pixbuf)
+                else:
+                    setimage(spr, tw.media_shapes['texton'])
+            elif spr.proto.name == 'audiooff':
+                setimage(spr, tw.media_shapes['audioon'])
+            dsobject.destroy()
+        except:
+            print "couldn't open dsobject (" + str(spr.ds_id) + ")"
     setlayer(spr,650)
     return spr
 
@@ -110,9 +140,11 @@ def save_file(tw):
 def get_save_name(tw):
     dialog = gtk.FileChooserDialog("Save..", None,
                gtk.FILE_CHOOSER_ACTION_SAVE,
-               (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,gtk.STOCK_SAVE, gtk.RESPONSE_OK))
+               (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,gtk.STOCK_SAVE, \
+                   gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
-    if tw.save_file_name!=None: dialog.set_current_name(tw.save_file_name+'.ta')
+    if tw.save_file_name!=None: dialog.set_current_name( \
+        tw.save_file_name+'.ta')
     return do_dialog(tw,dialog)
 
 def save_data(tw,fname):
@@ -122,10 +154,18 @@ def save_data(tw,fname):
     for i in range(len(bs)): bs[i].id=i
     for b in bs:
         name = b.proto.name
-#        if name=='number': name=(name,b.label)
-        if tw.defdict.has_key(name): name=(name,b.label)
+#        print "\\ " + name + " \\"
+        if tw.defdict.has_key(name) or name == 'journal' or \
+            name == 'audiooff':
+            if b.ds_id != None:
+#                print "/ " + str(b.ds_id) + " /"
+                name=(name,str(b.ds_id))
+            else:
+                name=(name,b.label)
+#        print "* " + str(name) + " *"
         connections = [get_id(x) for x in b.connections]
-        data.append((b.id,name,b.x-tw.turtle.canvas.x,b.y-tw.turtle.canvas.y,connections))
+        data.append((b.id,name,b.x-tw.turtle.canvas.x, \
+            b.y-tw.turtle.canvas.y,connections))
     data.append((-1,'turtle',
                   tw.turtle.xcor,tw.turtle.ycor,tw.turtle.heading,
                   tw.turtle.color,tw.turtle.shade,tw.turtle.pensize))
@@ -134,8 +174,10 @@ def save_data(tw,fname):
 
 def save_pict(tw,fname):
     tc = tw.turtle.canvas
-    pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, tc.width, tc.height)
-    pixbuf.get_from_drawable(tc.image, tc.image.get_colormap(), 0, 0, 0, 0, tc.width, tc.height)
+    pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, tc.width, \
+        tc.height)
+    pixbuf.get_from_drawable(tc.image, tc.image.get_colormap(), 0, 0, 0, 0, \
+        tc.width, tc.height)
     pixbuf.save(fname, 'png')
 
 def get_id(x):

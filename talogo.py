@@ -20,6 +20,7 @@
 
 import re
 from time import clock
+import gobject
 from operator import isNumberType
 import random
 import audioop
@@ -27,7 +28,9 @@ from math import sqrt
 from numpy.oldnumeric import *
 from numpy.fft import *
 from audiograb import AudioGrab
+import subprocess
 from UserDict import UserDict
+from sugar.datastore import datastore
 
 class noKeyError(UserDict):
     __missing__=lambda x,y: 0
@@ -35,6 +38,7 @@ class noKeyError(UserDict):
 class taLogo: pass
 
 from taturtle import *
+
 
 procstop = False
 
@@ -53,7 +57,7 @@ class logoerror(Exception):
     def __str__(self):
         return repr(self.value)
 
-def run_blocks(lc, spr, blocks):
+def run_blocks(lc, spr, blocks, run_flag):
     # user-defined stacks
     for x in lc.stacks.keys():
         lc.stacks[x]= None
@@ -61,44 +65,42 @@ def run_blocks(lc, spr, blocks):
     lc.stacks['stack1'] = None
     lc.stacks['stack2'] = None
     for i in blocks:
-        if i.proto.name=='hat1': lc.stacks['stack1']= readline(lc,blocks_to_code(i))
-        if i.proto.name=='hat2': lc.stacks['stack2']= readline(lc,blocks_to_code(i))
+        if i.proto.name=='hat1':
+            lc.stacks['stack1']= readline(lc,blocks_to_code(lc,i))
+        if i.proto.name=='hat2':
+            lc.stacks['stack2']= readline(lc,blocks_to_code(lc,i))
         if i.proto.name=='hat':
             if (i.connections[1]!=None):
                 text=i.connections[1].label
-                lc.stacks['stack3'+text]= readline(lc,blocks_to_code(i))
-    code = blocks_to_code(spr)
-    print code
-    setup_cmd(lc, code)
+                lc.stacks['stack3'+text]= readline(lc,blocks_to_code(lc,i))
+    code = blocks_to_code(lc,spr)
+    if run_flag == True:
+        print code
+        setup_cmd(lc, code)
+    else: return code
 
-# walk through the blocks, but don't execute them
-# used by save to USB Logo code
-def walk_blocks(lc, spr, blocks):
-    for x in lc.stacks.keys():
-        lc.stacks[x]= None
-    lc.stacks['stack1'] = None
-    lc.stacks['stack2'] = None
-    for i in blocks:
-        if i.proto.name=='hat1': lc.stacks['stack1']= readline(lc,blocks_to_code(i))
-        if i.proto.name=='hat2': lc.stacks['stack2']= readline(lc,blocks_to_code(i))
-        if i.proto.name=='hat':
-            if (i.connections[1]!=None):
-                text=i.connections[1].label
-                lc.stacks['stack3'+text]= readline(lc,blocks_to_code(i))
-    return blocks_to_code(spr)
-
-def blocks_to_code(spr):
+def blocks_to_code(lc,spr):
     if spr==None: return ['%nothing%']
     code = []
     dock = spr.proto.docks[0]
     if len(dock)>4: code.append(dock[4])
     if spr.proto.primname != '': code.append(spr.proto.primname)
-#    else: code.append(float(spr.label))
     else:
         if spr.proto.name=='number':
-            code.append(float(spr.label))
-        elif spr.proto.name=='string':
-            code.append('#s'+spr.label)
+            try:
+                code.append(float(spr.label))
+            except:
+                code.append(float(ord(spr.label[0])))
+        elif spr.proto.name=='string' or spr.proto.name=='title':
+            if type(spr.label) == float or type(spr.label) == int:
+                code.append('#s'+str(spr.label))
+            else:
+                code.append('#s'+spr.label)
+        elif spr.proto.name=='journal':
+            if spr.ds_id != None:
+                code.append('#smedia_'+str(spr.ds_id))
+            else:
+                code.append('#smedia_None')
         else:
             return ['%nothing%']
     for i in range(1,len(spr.connections)):
@@ -106,8 +108,9 @@ def blocks_to_code(spr):
         dock = spr.proto.docks[i]
         if len(dock)>4:
             for c in dock[4]: code.append(c)
-        if b!=None: code.extend(blocks_to_code(b))
-        elif spr.proto.docks[i][0] not in ['flow','numend','stringend','unavailable','logi-']:
+        if b!=None: code.extend(blocks_to_code(lc,b))
+        elif spr.proto.docks[i][0] not in \
+            ['flow', 'numend', 'stringend', 'unavailable', 'logi-']:
             code.append('%nothing%')
     return code
 
@@ -127,7 +130,8 @@ def readline(lc, line):
         token = line.pop(0)
         if isNumberType(token): res.append(token)
         elif token.isdigit(): res.append(float(token))
-        elif token[0]=='-' and token[1:].isdigit(): res.append(-float(token[1:]))
+        elif token[0]=='-' and token[1:].isdigit():
+            res.append(-float(token[1:]))
         elif token[0] == '"': res.append(token[1:])
         elif token[0:2] == "#s": res.append(token[2:])
         elif token == '[': res.append(readline(lc,line))
@@ -136,7 +140,8 @@ def readline(lc, line):
     return res
 
 def setup_cmd(lc, str):
-    stopsignon(lc); lc.procstop=False
+    setlayer(lc.tw.turtle.spr,100) 
+    lc.procstop=False
     list = readline(lc, str)
     lc.step = start_eval(lc, list)
 
@@ -186,13 +191,17 @@ def evalsym(lc, token):
         icall(lc, eval); yield True
         lc.arglist.append(lc.iresult)
     if lc.cfun.rprim:
-        if type(lc.cfun.fcn)==lc.listtype: icall(lc, ufuncall, cfun.fcn); yield True
-        else: icall(lc, lc.cfun.fcn, *lc.arglist); yield True
+        if type(lc.cfun.fcn)==lc.listtype:
+            icall(lc, ufuncall, cfun.fcn); yield True
+        else:
+            icall(lc, lc.cfun.fcn, *lc.arglist); yield True
         result = None
-    else: result = lc.cfun.fcn(lc, *lc.arglist)
+    else: 
+        result = lc.cfun.fcn(lc, *lc.arglist)
     lc.cfun, lc.arglist = oldcfun, oldarglist
     if lc.arglist!=None and result==None:
-        raise logoerror("%s didn't output to %s" % (oldcfun.name, lc.cfun.name))
+        raise logoerror("%s didn't output to %s" % \
+            (oldcfun.name, lc.cfun.name))
     ireturn(lc, result); yield True
 
 def evalinfix(lc, firstarg):
@@ -258,7 +267,8 @@ def prim_define(name, body):
     name.rprim = True
 
 def prim_stack(lc,stri):
-    if (not lc.stacks.has_key('stack3'+stri)) or lc.stacks['stack3'+stri]==None: raise logoerror("#nostack")
+    if (not lc.stacks.has_key('stack3'+stri)) or \
+        lc.stacks['stack3'+stri]==None: raise logoerror("#nostack")
     icall(lc, evline, lc.stacks['stack3'+stri][:]); yield True
     lc.procstop = False
     ireturn(lc); yield True
@@ -279,24 +289,87 @@ def prim_stopstack(lc):
     lc.procstop = True
 
 def careful_divide(x,y):
-    if y==0: return 0
-    return x/y
+    try:
+        if y==0: return 0
+        return x/y
+    except:
+        return 0
 
 def ufuncall(body):
     ijmp(evline, body); yield True
 
 def an_int(lc, n):
-    try: return int(n)
-    except: raise logoerror("%s doesn't like %s as input" % (lc.cfun.name, str(n)))
-
-def a_float(n):
-    try: return int(n)
-    except: raise logoerror("%s doesn't like %s as input" % (cfun.name, str(n)))
+    if type(n) == int:
+        return n
+    elif type(n) == float:
+        return int(n)
+    elif type(n) == str:
+        return int(ord(n[0]))
+    else:
+        raise logoerror("%s doesn't like %s as input" \
+            % (lc.cfun.name, str(n)))
 
 def defprim(lc, name, args, fcn, rprim=False):
     sym = intern(lc, name)
     sym.nargs, sym.fcn = args,fcn
     sym.rprim = rprim
+
+def taequal(x,y):
+    try:
+        return float(x)==float(y)
+    except:
+        if type(x) == str:
+            xx = ord(x[0])
+        else:
+            xx = x
+        if type(y) == str:
+            yy = ord(y[0])
+        else:
+            yy = y
+        return xx==yy
+
+def taless(x,y):
+    try:
+        return(x<y)
+    except:
+        raise logoerror("#syntaxerror")
+
+def tamore(x,y):
+    return taless(y,x)
+
+def taplus(x,y):
+    if (type(x) == int or type(x) == float) and \
+        (type(y) == int or type(y) == float):
+        return(x+y)
+    else:
+        return(str(x) + str(y))
+
+def taminus(x,y):
+    try:
+        return(x-y)
+    except:
+        raise logoerror("#syntaxerror")
+
+def taproduct(x,y):
+    try:
+        return(x*y)
+    except:
+        raise logoerror("#syntaxerror")
+
+def tamod(x,y):
+    try:
+        return(x%y)
+    except:
+        raise logoerror("#syntaxerror")
+
+def tasqrt(x):
+    try:
+        return sqrt(x)
+    except:
+        raise logoerror("#syntaxerror")
+
+def identity(x):
+    return(x)
 
 def lcNew(tw):
     lc = taLogo()
@@ -304,28 +377,32 @@ def lcNew(tw):
     lc.oblist = {}
 
     defprim(lc,'print', 1, lambda lc,x: status_print(lc,x))
-#    defprim(lc,'print', 1, lambda lc,x: tyo(int(float(x)*10)/10.))
-
     defprim(lc,'+', None, lambda lc,x,y:x+y)
+    defprim(lc,'plus', 2, lambda lc,x,y:taplus(x,y))
     defprim(lc,'-', None, lambda lc,x,y:x-y)
+    defprim(lc,'minus', 2, lambda lc,x,y:taminus(x,y))
     defprim(lc,'*', None, lambda lc,x,y:x*y)
+    defprim(lc,'product', 2, lambda lc,x,y:taproduct(x,y))
     defprim(lc,'/', None, lambda lc,x,y:careful_divide(x,y))
+    defprim(lc,'division', 2, lambda lc,x,y:careful_divide(x,y))
     defprim(lc,'random', 2, lambda lc,x,y: int(random.uniform(x,y)))
-    defprim(lc,'greater?', 2, lambda lc,x,y: float(x)>float(y))
-    defprim(lc,'less?', 2, lambda lc,x,y: float(x)<float(y))
-    defprim(lc,'equal?', 2, lambda lc,x,y: float(x)==float(y))
+    defprim(lc,'greater?', 2, lambda lc,x,y: tamore(x,y))
+    defprim(lc,'less?', 2, lambda lc,x,y: taless(x,y))
+    defprim(lc,'equal?', 2, lambda lc,x,y: taequal(x,y))
     defprim(lc,'and', None, lambda lc,x,y:x&y)
     defprim(lc,'or', None, lambda lc,x,y:x|y)
     defprim(lc,'not', 1, lambda lc,x:not x)
     defprim(lc,'%', None, lambda lc,x,y:x%y)
+    defprim(lc,'mod', 2, lambda lc,x,y:tamod(x,y))
     defprim(lc,'sqrt', 1, lambda lc,x: sqrt(x))
+    defprim(lc,'id',1, lambda lc,x: identity(x))
     
     defprim(lc,'sensor_val0', 0, lambda lc: sensor_val(lc, 0))
     defprim(lc,'sensor_val1', 0, lambda lc: sensor_val(lc, 1))
     defprim(lc,'sensor_val2', 0, lambda lc: sensor_val(lc, 2))
     defprim(lc,'sensor_val3', 0, lambda lc: sensor_val(lc, 3))
 
-    defprim(lc,'clean', 0, lambda lc: clearscreen(lc.tw.turtle))
+    defprim(lc,'clean', 0, lambda lc: clear(lc))
     defprim(lc,'forward', 1, lambda lc, x: forward(lc.tw.turtle, x))
     defprim(lc,'back', 1, lambda lc,x: forward(lc.tw.turtle,-x))
     defprim(lc,'seth', 1, lambda lc, x: seth(lc.tw.turtle, x))
@@ -333,6 +410,8 @@ def lcNew(tw):
     defprim(lc,'left', 1, lambda lc,x: right(lc.tw.turtle,-x))
     defprim(lc,'heading', 0, lambda lc: lc.tw.turtle.heading)
     defprim(lc,'setxy', 2, lambda lc, x, y: setxy(lc.tw.turtle, x, y))
+    defprim(lc,'write',2,lambda lc, x,y: write(lc.tw.turtle, x,y))
+    defprim(lc,'insertimage', 1, lambda lc,x: insert_image(lc, x))
     defprim(lc,'arc', 2, lambda lc, x, y: arc(lc.tw.turtle, x, y))
     defprim(lc,'xcor', 0, lambda lc: lc.tw.turtle.xcor)
     defprim(lc,'ycor', 0, lambda lc: lc.tw.turtle.ycor)
@@ -341,9 +420,11 @@ def lcNew(tw):
     defprim(lc,'penup', 0, lambda lc: setpen(lc.tw.turtle, False))
     defprim(lc,'(', 1, lambda lc, x: prim_opar(lc,x))
     defprim(lc,'setcolor', 1, lambda lc, x: setcolor(lc.tw.turtle, x))
+    defprim(lc,'settextcolor', 1, lambda lc, x: settextcolor(lc.tw.turtle, x))
     defprim(lc,'setshade', 1, lambda lc, x: setshade(lc.tw.turtle, x))
     defprim(lc,'setpensize', 1, lambda lc, x: setpensize(lc.tw.turtle, x))
-    defprim(lc,'fillscreen', 2, lambda lc, x, y: fillscreen(lc.tw.turtle, x, y))
+    defprim(lc,'fillscreen', 2, lambda lc, x, y: \
+        fillscreen(lc.tw.turtle, x, y))
     defprim(lc,'color', 0, lambda lc: lc.tw.turtle.color)
     defprim(lc,'shade', 0, lambda lc: lc.tw.turtle.shade)
     defprim(lc,'pensize', 0, lambda lc: lc.tw.turtle.pensize)
@@ -363,7 +444,7 @@ def lcNew(tw):
     defprim(lc,'box', 1, lambda lc,x: lc.boxes['box3'+str(x)])
     defprim(lc,'storeinbox1', 1, lambda lc,x: setbox(lc, 'box1',x))
     defprim(lc,'storeinbox2', 1, lambda lc,x: setbox(lc, 'box2',x))
-    defprim(lc,'storeinbox', 2, lambda lc,x,y: setbox(lc, 'box3'+str(y),x))
+    defprim(lc,'storeinbox', 2, lambda lc,x,y: setbox(lc, 'box3'+str(x),y))
     defprim(lc,'push', 1, lambda lc,x: push_heap(lc,x))
     defprim(lc,'pop', 0, lambda lc: pop_heap(lc))
     defprim(lc,'heap', 0, lambda lc: heap_print(lc))
@@ -377,7 +458,6 @@ def lcNew(tw):
     defprim(lc,'start', 0, lambda: None)
 
     lc.symtype = type(intern(lc, 'print'))
-    lc.numtytpe = type(0.)
     lc.listtype = type([])
     lc.symnothing = intern(lc, '%nothing%')
     lc.symopar = intern(lc, '(')
@@ -386,19 +466,97 @@ def lcNew(tw):
     lc.stacks = {}
     lc.boxes = noKeyError({'box1': 0, 'box2': 0})
     lc.heap = []
+    lc.keyboard = 0
+    lc.gplay = None
+    lc.title_height = int((tw.turtle.height/30)*tw.scale)
+    lc.body_height = int((tw.turtle.height/60)*tw.scale)
+    lc.bullet_height = int((tw.turtle.height/45)*tw.scale)
 
     lc.iline, lc.cfun, lc.arglist, lc.ufun = None, None, None,None
 
-    lc.stopsign = tw.toolsprs['stopit']
-
     return lc
+
+def show_picture(lc, media, x, y, w, h):
+    if media == "" or media[6:] == "":
+#        raise logoerror("#nomedia")
+         print "no media"
+    elif media[6:] != "None":
+        try:
+            dsobject = datastore.get(media[6:])
+        except:
+            raise logoerror("#nomedia")
+        # check to see if it is a movie
+        print dsobject.file_path
+        if dsobject.file_path[-4:] == '.ogv':
+            print "playing movie x:" + str(x) + " y:" + str(y) + " w:" \
+                + str(w) + " h:" + str(h)
+            play_dsobject(lc, dsobject, int(x), int(y), int(w), int(h))
+        else:
+            pixbuf = get_pixbuf_from_journal(dsobject,w,h)
+            if pixbuf != None:
+                draw_pixbuf(lc.tw.turtle, pixbuf, 0, 0, int(x), int(y), \
+                    int(w), int(h))
+        dsobject.destroy()
+
+def get_pixbuf_from_journal(dsobject,w,h):
+    try:
+        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path,w,h)
+    except:
+        try:
+            # print "Trying preview..."
+            pixbufloader = gtk.gdk.pixbuf_loader_new_with_mime_type \
+                ('image/png')
+            pixbufloader.set_size(min(300,w),min(225,h))
+            pixbufloader.write(dsobject.metadata['preview'])
+            pixbufloader.close()
+#            gtk.gdk_pixbuf_loader_close(pixbufloader)
+            pixbuf = pixbufloader.get_pixbuf()
+        except:
+            # print "No preview"
+            pixbuf = None
+    return pixbuf
+
+# image only (at current x,y)
+def insert_image(lc, media):
+    w = 0.25
+    h = 0.25
+    w *= lc.tw.turtle.width
+    h *= lc.tw.turtle.height
+    # convert from Turtle coordinates to screen coordinates
+    x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
+    y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
+    if media[0:5] == 'media':
+        show_picture(lc, media, x, y, w, h)
+
+def clear(lc):
+    clearscreen(lc.tw.turtle)
+
+def write(lc, string, fsize):
+    # convert from Turtle coordinates to screen coordinates
+    x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
+    y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
+    draw_text(lc.tw.turtle,string,x,y,int(fsize),lc.tw.turtle.width)
+
+def hideblocks(lc):
+    from tawindow import hideshow_button
+    lc.tw.hide = False # force hide
+    hideshow_button(lc.tw)
+    for i in lc.tw.selbuttons: hide(i)
+    lc.tw.activity.projectToolbar.do_hide()
 
 def doevalstep(lc):
     starttime = millis()
     try:
         while (millis()-starttime)<120:
-            if not lc.step.next(): stopsignoff(lc); return False
-    except logoerror, e: showlabel(lc, str(e)[1:-1]); stopsignoff(lc); return False
+            try:
+                lc.step.next()
+            except StopIteration:
+                setlayer(lc.tw.turtle.spr,630)
+                return False
+    except logoerror, e:
+        showlabel(lc, str(e)[1:-1])
+        setlayer(lc.tw.turtle.spr,630)
+        return False
     return True
 
 def icall(lc, fcn, *args):
@@ -416,24 +574,21 @@ def heap_print(lc):
     showlabel(lc,lc.heap)
 
 def status_print(lc,n):
-    showlabel(lc,int(float(n)*10)/10.)
+    if type(n) == str:
+        showlabel(lc,n)
+    else:
+        showlabel(lc,int(float(n)*10)/10.)
 
 def showlabel(lc,l):
     if l=='#nostack': shp = 'nostack'; l=''
     elif l=='#noinput': shp = 'noinput'; l=''
     elif l=='#emptyheap': shp = 'emptyheap'; l=''
+    elif l=='#nomedia': shp = 'nomedia'; l=''
+    elif l=='#syntaxerror': shp = 'syntaxerror'; l=''
     else:shp = 'status'
     setshape(lc.tw.status_spr, lc.tw.status_shapes[shp])
     setlabel(lc.tw.status_spr,l)
     setlayer(lc.tw.status_spr,710)
-
-def stopsignon(lc):
-    setshape(lc.stopsign, lc.stopsign.onshape)
-    setlayer(lc.tw.turtle.spr,100)
-
-def stopsignoff(lc):
-    setshape(lc.stopsign, lc.stopsign.offshape)
-    setlayer(lc.tw.turtle.spr,630)
 
 def stop_logo(tw):
     tw.step_time = 0
