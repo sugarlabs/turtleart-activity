@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="145"
+   height="404"
+   id="svg2">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3712">
+      <stop
+         id="stop3714"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3716"
+         style="stop-color:#ff0000;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="69.85585"
+       y1="226.65366"
+       x2="140.1927"
+       y2="226.65366"
+       id="linearGradient2487"
+       xlink:href="#linearGradient3712"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-32.50255,-122.50501)" />
+    <linearGradient
+       x1="69.85585"
+       y1="174.22649"
+       x2="140.1927"
+       y2="174.22649"
+       id="linearGradient2494"
+       xlink:href="#linearGradient3712"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-32.50255,-122.74776)" />
+    <linearGradient
+       x1="69.85585"
+       y1="226.65366"
+       x2="140.1927"
+       y2="226.65366"
+       id="linearGradient2501"
+       xlink:href="#linearGradient3712"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-32.502549,-96.17004)" />
+    <linearGradient
+       x1="69.85585"
+       y1="174.22649"
+       x2="140.1927"
+       y2="174.22649"
+       id="linearGradient2508"
+       xlink:href="#linearGradient3712"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-32.502549,-96.412795)" />
+    <linearGradient
+       x1="0"
+       y1="22"
+       x2="74"
+       y2="22"
+       id="linearGradient3172"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3166">
+      <stop
+         id="stop3168"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3170"
+         style="stop-color:#ff0000;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+  </defs>
+  <path
+     d="M 0.5594301,0.5 L 0.49711997,390.41023 L 3.6209793,397.14297 L 8.494839,401.1072 L 15.156388,403.50288 L 128.9813,403.50288 L 135.82978,400.93866 L 141.77903,396.04729 L 144.50288,387.79171 L 144.54057,0.5 L 0.5594301,0.5 z"
+     id="path13"
+     style="fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1px;stroke-opacity:1" />
+  <rect
+     width="137.5"
+     height="0.14"
+     x="3.7153397"
+     y="-28.931932"
+     transform="scale(1,-1)"
+     id="rect15"
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1" />
+  <rect
+     width="137.5"
+     height="0.14"
+     x="3.7153397"
+     y="-27.815523"
+     transform="scale(1,-1)"
+     id="rect17"
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1" />
+  <rect
+     width="137.5"
+     height="0.14"
+     x="3.7153397"
+     y="-376.77127"
+     transform="scale(1,-1)"
+     id="rect19"
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1" />
+  <rect
+     width="137.5"
+     height="0.14"
+     x="3.7153397"
+     y="-375.43195"
+     transform="scale(1,-1)"
+     id="rect4001"
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1" />
+  <path
+     d="M 79.5,438.375 C 79.5,442.86231 75.750385,446.5 71.125,446.5 C 66.499615,446.5 62.75,442.86231 62.75,438.375 C 62.75,433.88769 66.499615,430.25 71.125,430.25 C 75.750385,430.25 79.5,433.88769 79.5,438.375 L 79.5,438.375 z"
+     transform="translate(1.375,-48.749023)"
+     id="path22"
+     style="fill:#ff4040;fill-opacity:1;stroke:#ff4040;stroke-width:1;stroke-opacity:1" />
+  <text
+     id="text24"
+     style="font-size:12px;font-family:Bitstream Vera Sans">
+    <tspan
+       x="68"
+       y="394"
+       id="tspan26"
+       style="font-size:12px;font-weight:bold;fill:#ffffff">X</tspan>
+  </text>
+  <text
+     id="text28"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="72.5"
+       y="21.5"
+       id="tspan30"
+       style="font-size:20px">Sensores</tspan>
+  </text>
+  <path
+     d="M 38.019998,71.146685 L 41.353498,71.146685 L 41.353498,73.813485 L 46.020398,73.813485 L 46.020398,71.146685 L 107.02345,71.146685 L 107.02345,84.480685 L 46.020398,84.480685 L 46.020398,81.813885 L 41.353498,81.813885 L 41.353498,84.480685 L 38.019998,84.480685 L 38.019998,71.146685 z"
+     id="path100"
+     style="fill:url(#linearGradient2508);fill-opacity:1;stroke:#c00000;stroke-width:1;stroke-opacity:1" />
+  <text
+     x="-29.99712"
+     y="-96.412788"
+     id="text102"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="76.002876"
+       y="81.087212"
+       id="tspan104"
+       style="font-size:11px">tono</tspan>
+  </text>
+  <path
+     d="M 38.019998,123.81662 L 41.353498,123.81662 L 41.353498,126.48342 L 46.020398,126.48342 L 46.020398,123.81662 L 107.02345,123.81662 L 107.02345,137.15062 L 46.020398,137.15062 L 46.020398,134.48382 L 41.353498,134.48382 L 41.353498,137.15062 L 38.019998,137.15062 L 38.019998,123.81662 z"
+     id="path106"
+     style="fill:url(#linearGradient2501);fill-opacity:1;stroke:#c00000;stroke-width:1;stroke-opacity:1" />
+  <text
+     x="-29.99712"
+     y="-96.170036"
+     id="text108"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="76.002876"
+       y="133.82996"
+       id="tspan110"
+       style="font-size:11px">voltaje</tspan>
+  </text>
+  <path
+     d="M 38.02,44.811717 L 41.3535,44.811717 L 41.3535,47.478517 L 46.0204,47.478517 L 46.0204,44.811717 L 107.02345,44.811717 L 107.02345,58.145717 L 46.0204,58.145717 L 46.0204,55.478917 L 41.3535,55.478917 L 41.3535,58.145717 L 38.02,58.145717 L 38.02,44.811717 z"
+     id="path2488"
+     style="fill:url(#linearGradient2494);fill-opacity:1;stroke:#c00000;stroke-width:1;stroke-opacity:1" />
+  <text
+     x="-29.78253"
+     y="-122.74776"
+     id="text2490"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="76.217468"
+       y="54.752228"
+       id="tspan2492"
+       style="font-size:11px">volumen</tspan>
+  </text>
+  <path
+     d="M 38.02,97.481654 L 41.3535,97.481654 L 41.3535,100.14845 L 46.0204,100.14845 L 46.0204,97.481654 L 107.02345,97.481654 L 107.02345,110.81565 L 46.0204,110.81565 L 46.0204,108.14885 L 41.3535,108.14885 L 41.3535,110.81565 L 38.02,110.81565 L 38.02,97.481654 z"
+     id="path2494"
+     style="fill:url(#linearGradient2487);fill-opacity:1;stroke:#c00000;stroke-width:1;stroke-opacity:1" />
+  <text
+     x="-29.78253"
+     y="-122.505"
+     id="text2496"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="76.217468"
+       y="107.49503"
+       id="tspan2498"
+       style="font-size:11px">resistencia</tspan>
+  </text>
+</svg>

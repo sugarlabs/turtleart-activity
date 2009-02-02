@@ -152,21 +152,6 @@
        style="font-size:11px">tono</tspan>
   </text>
   <path
-     d="M 38.019998,123.81662 L 41.353498,123.81662 L 41.353498,126.48342 L 46.020398,126.48342 L 46.020398,123.81662 L 107.02345,123.81662 L 107.02345,137.15062 L 46.020398,137.15062 L 46.020398,134.48382 L 41.353498,134.48382 L 41.353498,137.15062 L 38.019998,137.15062 L 38.019998,123.81662 z"
-     id="path106"
-     style="fill:url(#linearGradient2501);fill-opacity:1;stroke:#c00000;stroke-width:1;stroke-opacity:1" />
-  <text
-     x="-29.99712"
-     y="-96.170036"
-     id="text108"
-     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
-    <tspan
-       x="76.002876"
-       y="133.82996"
-       id="tspan110"
-       style="font-size:11px">voltaje</tspan>
-  </text>
-  <path
      d="M 38.02,44.811717 L 41.3535,44.811717 L 41.3535,47.478517 L 46.0204,47.478517 L 46.0204,44.811717 L 107.02345,44.811717 L 107.02345,58.145717 L 46.0204,58.145717 L 46.0204,55.478917 L 41.3535,55.478917 L 41.3535,58.145717 L 38.02,58.145717 L 38.02,44.811717 z"
      id="path2488"
      style="fill:url(#linearGradient2494);fill-opacity:1;stroke:#c00000;stroke-width:1;stroke-opacity:1" />
@@ -180,20 +165,5 @@
        y="54.752228"
        id="tspan2492"
        style="font-size:11px">volumen</tspan>
-  </text>
-  <path
-     d="M 38.02,97.481654 L 41.3535,97.481654 L 41.3535,100.14845 L 46.0204,100.14845 L 46.0204,97.481654 L 107.02345,97.481654 L 107.02345,110.81565 L 46.0204,110.81565 L 46.0204,108.14885 L 41.3535,108.14885 L 41.3535,110.81565 L 38.02,110.81565 L 38.02,97.481654 z"
-     id="path2494"
-     style="fill:url(#linearGradient2487);fill-opacity:1;stroke:#c00000;stroke-width:1;stroke-opacity:1" />
-  <text
-     x="-29.78253"
-     y="-122.505"
-     id="text2496"
-     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
-    <tspan
-       x="76.217468"
-       y="107.49503"
-       id="tspan2498"
-       style="font-size:11px">resistencia</tspan>
   </text>
 </svg>
