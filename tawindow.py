@@ -44,7 +44,7 @@ from sugar.graphics.objectchooser import ObjectChooser
 # Setup
 #
 
-def twNew1(win, path, lang, tboxh, parent=None):
+def twNew(win, path, lang, tboxh, parent=None):
     tw = taWindow()
     tw.window = win
     tw.path = os.path.join(path,'images',lang)
@@ -75,26 +75,6 @@ def twNew1(win, path, lang, tboxh, parent=None):
     if os.path.exists('/sys/power/olpc-pm'):
         tw.scale = 1
     else: tw.scale = 1.6
-
-    # put a wait brick up
-#    print 'trying to put up wait brick'
-    try:
-        wait_block = gtk.gdk.pixbuf_new_from_file( \
-            os.path.join(activity.get_activity_root(),"data",'wait.png'))
-    except:
-        try: wait_block = gtk.gdk.pixbuf_new_from_file( \
-            os.path.join(tw.path,'flow','wait.svg'))
-        except: print 'couldn not open wait.svg'
-    tw.area.draw_pixbuf(tw.gc, wait_block, 0, 0, (tw.width/2)-22, \
-        (tw.height/2)-43)
-    rect = gtk.gdk.Rectangle(int((tw.width/2)-22), int((tw.height/2)-43), \
-        44, 87)
-    tw.area.invalidate_rect(rect, False)
-    return tw
-
-def millis(): return int(clock()*1000)
-
-def twNew2(tw):
     tw.cm = tw.gc.get_colormap()
     tw.bgcolor = tw.cm.alloc_color('#fff8de')
     tw.msgcolor = tw.cm.alloc_color('black')
@@ -105,10 +85,7 @@ def twNew2(tw):
     tw.draggroup = None
     prep_selectors(tw)
     for s in selectors:
-#        gobject.idle_add(setup_selectors,tw,s)
         setup_selectors(tw,s)
-    tw.loaded = False
-#    gobject.idle_add(setup_misc, tw, tboxh)
     setup_misc(tw)
     tw.step_time = 0
     tw.hide = False
@@ -116,6 +93,7 @@ def twNew2(tw):
     select_category(tw, tw.selbuttons[0])
     tw.turtle = tNew(tw,tw.width,tw.height)
     tw.lc = lcNew(tw)
+    return tw
 
 #
 # Button Press

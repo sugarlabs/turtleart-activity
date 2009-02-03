@@ -96,11 +96,10 @@ class TurtleArtActivity(activity.Activity):
         FILE.writelines(versiondata)
         FILE.close()
 
-        self.tw = tawindow.twNew1(canvas,activity.get_bundle_path(), \
+        self.tw = tawindow.twNew(canvas,activity.get_bundle_path(), \
             lang,tboxh,self)
         self.tw.activity = self
         self.tw.window.grab_focus()
-        tawindow.twNew2(self.tw)
         self.tw.save_folder=os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'], \
             'data')
 

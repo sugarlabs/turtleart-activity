@@ -210,8 +210,6 @@ def prep_selectors(tw):
     tw.selbuttons = []
 
 def setup_selectors(tw,s):
-#    for s in selectors:
-#    s = selectors[i]
     name,dy,blockdescriptions = s      
     cat = setup_selector(tw, name, tw.y, blockdescriptions)
     tw.y += dy
@@ -249,8 +247,6 @@ def setup_misc(tw):
             tw.status_shapes['status'],True)
     tw.status_spr.type = 'status'
     setlayer(tw.status_spr,400)
-    # everything should be loaded at this point
-    tw.loaded = True
 
 def setup_selector(tw,name,y,blockdescriptions):
     # selector tabs
