@@ -53,6 +53,10 @@ msgstr "хүлзз"
 msgid "My Blocks"
 msgstr "Миний Блокуд"
 
+#:
+msgid "start"
+msgstr ""
+
 msgid "box"
 msgstr "богц"
 

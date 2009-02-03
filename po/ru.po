@@ -65,6 +65,10 @@ msgid "My Blocks"
 msgstr "Мои блоки"
 
 #:
+msgid "start"
+msgstr ""
+
+#:
 msgid "box"
 msgstr "блок"
 #:

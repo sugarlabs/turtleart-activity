@@ -65,6 +65,10 @@ msgid "My Blocks"
 msgstr "Mis bloques"
 
 #:
+msgid "start"
+msgstr "empezar"
+
+#:
 msgid "box"
 msgstr "caja"
 

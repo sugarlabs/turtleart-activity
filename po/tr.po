@@ -65,6 +65,10 @@ msgid "My Blocks"
 msgstr "Parçalar"
 
 #:
+msgid "start"
+msgstr ""
+
+#:
 msgid "box"
 msgstr "kutu"
 
