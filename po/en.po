@@ -72,7 +72,7 @@ msgid "clean"
 msgstr ""
 
 #: TurtleArtActivity.py:236
-msgid "sample portfolio templates"
+msgid "samples"
 msgstr ""
 
 #: TurtleArtActivity.py:249

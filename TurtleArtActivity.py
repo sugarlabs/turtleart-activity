@@ -575,7 +575,7 @@ class ProjectToolbar(gtk.Toolbar):
 
         # project open
         self.sampb = ToolButton( "stock-open" )
-        self.sampb.set_tooltip(_('sample portfolio templates'))
+        self.sampb.set_tooltip(_('samples'))
         self.sampb.props.sensitive = True
         self.sampb.connect('clicked', self.do_samples)
         self.insert(self.sampb, -1)

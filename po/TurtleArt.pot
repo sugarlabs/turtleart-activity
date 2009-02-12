@@ -70,12 +70,8 @@ msgstr ""
 msgid "stop turtle"
 msgstr ""
 
-#: TurtleArtActivity.py:223
-msgid "clean"
-msgstr ""
-
 #: TurtleArtActivity.py:236
-msgid "sample portfolio templates"
+msgid "samples"
 msgstr ""
 
 #: TurtleArtActivity.py:249
@@ -257,6 +253,10 @@ msgstr ""
 
 #:
 msgid "Turtle"
+msgstr ""
+
+#:
+msgid "clean"
 msgstr ""
 
 #:

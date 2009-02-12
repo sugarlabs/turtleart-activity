@@ -14,16 +14,79 @@ msgstr ""
 msgid "Turtle Art"
 msgstr "Яст мэлхий уран бүтээл"
 
-#: 
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr ""
+
+#: tasetup.py:66
+msgid "text"
+msgstr ""
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr ""
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr ""
+
+#: tasetup.py:127
+msgid "name"
+msgstr ""
+
+#: TurtleArtActivity.py:48
 msgid "Project"
 msgstr ""
 
 #:
-msgid "Samples"
+msgid "Save as"
 msgstr ""
 
-#:
-msgid "Save Logo"
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr ""
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr ""
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr ""
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr ""
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr ""
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr ""
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr ""
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr ""
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr ""
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr ""
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
 msgstr ""
 
 msgid "Flow"
@@ -144,6 +207,9 @@ msgstr "сүүдзр ?"
 msgid "set color"
 msgstr "ѳнгѳ ?"
 
+msgid "set text color"
+msgstr ""
+
 msgid "Blocks"
 msgstr "Блокууд"
 
@@ -214,4 +280,32 @@ msgstr ""
 
 #:
 msgid "resistance"
+msgstr ""
+
+#:
+msgid "Templates"
+msgstr ""
+
+#:
+msgid "Keyboard"
+msgstr ""
+
+#:
+msgid "read key"
+msgstr ""
+
+#:
+msgid "sound"
+msgstr ""
+
+#:
+msgid "hres"
+msgstr ""
+
+#:
+msgid "vres"
+msgstr ""
+
+#:
+msgid "start"
 msgstr ""

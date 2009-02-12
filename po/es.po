@@ -71,7 +71,7 @@ msgid "clean"
 msgstr "limpiar"
 
 #: TurtleArtActivity.py:236
-msgid "sample portfolio templates"
+msgid "samples"
 msgstr "ejemplos"
 
 #: TurtleArtActivity.py:249
