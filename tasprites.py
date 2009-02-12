@@ -41,7 +41,8 @@ def sprNew(tw,x,y,image,altlabel=False):
     setimage(spr,image)
     spr.label = None
     spr.ds_id = None
-    if altlabel: spr.draw_label = draw_label2
+    if altlabel:
+        spr.draw_label = draw_label2
     else: spr.draw_label = draw_label1
     return spr
 
@@ -84,19 +85,21 @@ def setlabel(spr,label):
     inval(spr)
 
 def inval(spr):
-    spr.tw.area.invalidate_rect(gtk.gdk.Rectangle(spr.x,spr.y,spr.width,spr.height), False)
+    spr.tw.area.invalidate_rect(gtk.gdk.Rectangle(spr.x,spr.y,spr.width, \
+        spr.height), False)
 
 def draw(spr):
     if isinstance(spr.image,gtk.gdk.Pixbuf):
         spr.tw.area.draw_pixbuf(spr.tw.gc, spr.image, 0, 0, spr.x, spr.y)
-    else: spr.tw.area.draw_drawable(spr.tw.gc,spr.image,0,0,spr.x,spr.y,-1,-1)
+    else:
+        spr.tw.area.draw_drawable(spr.tw.gc,spr.image,0,0,spr.x,spr.y,-1,-1)
     if spr.label!=None:
-        try:
+        if hasattr(spr, 'proto') and hasattr(spr.proto, 'name'):
             name = spr.proto.name
-        except:
+        else:
             name = ""
         if name != 'audiooff' and name != 'journal':
-            spr.draw_label(spr,spr.label)
+            spr.draw_label(spr,str(spr.label))
 
 def hit(spr,pos):
     x,y = pos
@@ -109,21 +112,29 @@ def hit(spr,pos):
     try:
         return ord(spr.image.get_pixels()[(dy*spr.width+dx)*4+3]) == 255
     except IndexError:
-        print "IndexError: string index out of range" + dy + " " + spr.width + " " + dx
+        # not sure why this would happen
+        if hasattr(spr, 'proto') and hasattr(spr.proto, 'name'):
+            print spr.proto.name
+        print "IndexError: string index out of range" + dy + " " \
+            + spr.width + " " + dx
         return True
 
+# used for most things
 def draw_label1(spr, label):
     fd = pango.FontDescription('Sans')
     fd.set_size(7*pango.SCALE)
-    pl = spr.tw.window.create_pango_layout(str(label))
-    pl.set_font_description(fd)
-    swidth = pl.get_size()[0]/pango.SCALE
-    sheight = pl.get_size()[1]/pango.SCALE
-    centerx = spr.x+spr.width/2
-    centery = spr.y+spr.height/2
-    spr.tw.gc.set_foreground(spr.tw.msgcolor)
-    spr.tw.area.draw_layout(spr.tw.gc,centerx-swidth/2,centery-sheight/2,pl)
+    if type(label) == str:
+        pl = spr.tw.window.create_pango_layout(str(label))
+        pl.set_font_description(fd)
+        swidth = pl.get_size()[0]/pango.SCALE
+        sheight = pl.get_size()[1]/pango.SCALE
+        centerx = spr.x+spr.width/2
+        centery = spr.y+spr.height/2
+        spr.tw.gc.set_foreground(spr.tw.msgcolor)
+        spr.tw.area.draw_layout(spr.tw.gc,int(centerx-swidth/2), \
+            int(centery-sheight/2),pl)
 
+# used for status blocks
 def draw_label2(spr, label):
     fd = pango.FontDescription('Sans')
     fd.set_size(9*pango.SCALE)
@@ -132,12 +143,14 @@ def draw_label2(spr, label):
     sheight = pl.get_size()[1]/pango.SCALE
     centery = spr.y+spr.height/2
     spr.tw.gc.set_foreground(spr.tw.msgcolor)
-    spr.tw.area.draw_layout(spr.tw.gc,spr.x+70,centery-sheight/2,pl)
+    spr.tw.area.draw_layout(spr.tw.gc,spr.x+70,int(centery-sheight/2),pl)
 
+# used to get pixel value from mask for category selector
 def getpixel(image,x,y):
     array = image.get_pixels()
     offset = (y*image.get_width()+x)*4
-    r,g,b,a = ord(array[offset]),ord(array[offset+1]),ord(array[offset+2]),ord(array[offset+3])
+    r,g,b,a = ord(array[offset]),ord(array[offset+1]),ord(array[offset+2]), \
+        ord(array[offset+3])
     return (a<<24)+(b<<16)+(g<<8)+r
 
 

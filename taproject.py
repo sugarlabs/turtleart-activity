@@ -22,7 +22,9 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import pickle
+import json
 import os.path
+# import base64
 
 from tasprites import *
 from taturtle import *
@@ -33,7 +35,6 @@ def new_project(tw):
     stop_logo(tw)
     for b in blocks(tw): hide(b)
     setlayer(tw.turtle.canvas, 600)
-#    setshape(tw.toolsprs['hideshow'], tw.toolsprs['hideshow'].offshape)
     clearscreen(tw.turtle)
     tw.save_file_name = None
 
@@ -46,29 +47,51 @@ def load_file(tw):
 
 def load_files(tw,ta_file, png_file=''):
     f = open(ta_file, "r")
-    data = pickle.load(f)
+    try:
+        data = pickle.load(f) # old-style data format
+    except:
+        # print "reading saved json data"
+        text = f.read(-1)
+        listdata = json.read(text)
+        data = tuplify(listdata) # json converts tuples to lists
     f.close()
     new_project(tw)
     read_data(tw,data)
-    if png_file != '':
-        try:
-            load_pict(tw,png_file)
-        except:
-#            print "load_files: picture didn't load"
-            pass
-        inval(tw.turtle.canvas)
+    # don't load the png_file -- we run the program instead
+    # if png_file != '':
+    #     try:
+    #         load_pict(tw,png_file)
+    #     except:
+    #         pass
+    #     inval(tw.turtle.canvas)
 
 def get_load_name(tw):
-    dialog = gtk.FileChooserDialog("Load...", None,
-               gtk.FILE_CHOOSER_ACTION_OPEN,
-               (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,gtk.STOCK_OPEN, gtk.RESPONSE_OK))
+    dialog = gtk.FileChooserDialog("Load...", None, \
+        gtk.FILE_CHOOSER_ACTION_OPEN, \
+        (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,gtk.STOCK_OPEN, gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
     return do_dialog(tw,dialog)
+
+# unpack serialized data sent across a share
+# def load_string(tw,btext):
+def load_string(tw,text):
+    # text = base64.b64decode(btext) # no need for base64 encoding with json
+    listdata = json.read(text)
+    data = tuplify(listdata) # json converts tuples to lists
+    # data = pickle.loads(text)
+    new_project(tw)
+    read_data(tw,data)
+
+def tuplify(t):
+    if type(t) is not list:
+        return t
+    return tuple(map(tuplify, t))
 
 def read_data(tw,data):
     blocks = []
     for b in data:
-        if b[1]=='turtle': load_turtle(tw,b)
+        if b[1]=='turtle':
+            load_turtle(tw,b)
         else: spr = load_spr(tw,b); blocks.append(spr)
     for i in range(len(blocks)):
         cons=[]
@@ -84,8 +107,7 @@ def load_spr(tw,b):
     if type(btype)==type((1,2)): 
         btype, label = btype
 #        print "found a label: " + label
-    # for backward compatibility
-    if btype == 'title':
+    if btype == 'title':  # for backward compatibility
         btype = 'string'
     if btype == 'journal' or btype == 'audiooff':
         media = label
@@ -112,8 +134,7 @@ def load_spr(tw,b):
                 setimage(spr, tw.media_shapes['audioon'])
             dsobject.destroy()
         except:
-            pass
-            # print "couldn't open dsobject (" + str(spr.ds_id) + ")"
+            print "couldn't open dsobject (" + str(spr.ds_id) + ")"
     setlayer(spr,650)
     return spr
 
@@ -150,28 +171,44 @@ def get_save_name(tw):
 
 def save_data(tw,fname):
     f = file(fname, "w")
+    data = assemble_data_to_save(tw)
+    # pickle.dump(data,f)
+    text = json.write([data]) # for some reason, we need to add the extra []
+    f.write(text)
+    f.close()
+
+# used to send data across a shared session
+def save_string(tw):
+    data = assemble_data_to_save(tw)
+    # encode it for sending across the network
+    # text = pickle.dumps(data)
+    text = json.write(data)
+    # btext = base64.b64encode(text)
+    # return btext
+    return text # no need for base64 with json encoding
+
+def assemble_data_to_save(tw):
     bs = blocks(tw)
     data = []
     for i in range(len(bs)): bs[i].id=i
     for b in bs:
         name = b.proto.name
-#        print "\\ " + name + " \\"
         if tw.defdict.has_key(name) or name == 'journal' or \
             name == 'audiooff':
             if b.ds_id != None:
-#                print "/ " + str(b.ds_id) + " /"
                 name=(name,str(b.ds_id))
             else:
                 name=(name,b.label)
-#        print "* " + str(name) + " *"
-        connections = [get_id(x) for x in b.connections]
+        if hasattr(b,'connections'):
+            connections = [get_id(x) for x in b.connections]
+        else:
+            connections = None
         data.append((b.id,name,b.x-tw.turtle.canvas.x, \
             b.y-tw.turtle.canvas.y,connections))
     data.append((-1,'turtle',
                   tw.turtle.xcor,tw.turtle.ycor,tw.turtle.heading,
                   tw.turtle.color,tw.turtle.shade,tw.turtle.pensize))
-    pickle.dump(data,f)
-    f.close()
+    return data
 
 def save_pict(tw,fname):
     tc = tw.turtle.canvas

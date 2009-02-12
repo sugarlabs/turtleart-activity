@@ -19,15 +19,12 @@
 #THE SOFTWARE.
 
 import re
-from time import clock
+from time import *
 import gobject
 from operator import isNumberType
 import random
 import audioop
-from math import sqrt
-from numpy.oldnumeric import *
-from numpy.fft import *
-from audiograb import AudioGrab
+from math import *
 import subprocess
 from UserDict import UserDict
 from sugar.datastore import datastore
@@ -38,7 +35,8 @@ class noKeyError(UserDict):
 class taLogo: pass
 
 from taturtle import *
-
+from tagplay import *
+from tajail import *
 
 procstop = False
 
@@ -101,6 +99,11 @@ def blocks_to_code(lc,spr):
                 code.append('#smedia_'+str(spr.ds_id))
             else:
                 code.append('#smedia_None')
+        elif spr.proto.name=='audiooff' or spr.proto.name=='audio':
+            if spr.ds_id != None:
+                code.append('#saudio_'+str(spr.ds_id))
+            else:
+                code.append('#saudio_None')
         else:
             return ['%nothing%']
     for i in range(1,len(spr.connections)):
@@ -110,7 +113,8 @@ def blocks_to_code(lc,spr):
             for c in dock[4]: code.append(c)
         if b!=None: code.extend(blocks_to_code(lc,b))
         elif spr.proto.docks[i][0] not in \
-            ['flow', 'numend', 'stringend', 'unavailable', 'logi-']:
+            ['flow', 'numend', 'stringend', 'mediaend', \
+            'audioend', 'unavailable', 'logi-']:
             code.append('%nothing%')
     return code
 
@@ -397,10 +401,11 @@ def lcNew(tw):
     defprim(lc,'sqrt', 1, lambda lc,x: sqrt(x))
     defprim(lc,'id',1, lambda lc,x: identity(x))
     
-    defprim(lc,'sensor_val0', 0, lambda lc: sensor_val(lc, 0))
-    defprim(lc,'sensor_val1', 0, lambda lc: sensor_val(lc, 1))
-    defprim(lc,'sensor_val2', 0, lambda lc: sensor_val(lc, 2))
-    defprim(lc,'sensor_val3', 0, lambda lc: sensor_val(lc, 3))
+    defprim(lc,'kbinput', 0, lambda lc: kbinput(lc))
+    defprim(lc,'keyboard', 0, lambda lc: lc.keyboard)
+    defprim(lc,'myfunc', 2, lambda lc,f,x: callmyfunc(lc, f, x))
+    defprim(lc,'hres', 0, lambda lc: lc.tw.turtle.width)
+    defprim(lc,'vres', 0, lambda lc: lc.tw.turtle.height)
 
     defprim(lc,'clean', 0, lambda lc: clear(lc))
     defprim(lc,'forward', 1, lambda lc, x: forward(lc.tw.turtle, x))
@@ -457,6 +462,19 @@ def lcNew(tw):
     defprim(lc,'nop3', 1, lambda lc,x: None)
     defprim(lc,'start', 0, lambda: None)
 
+    defprim(lc,'tp1', 2, lambda lc,x,y: show_template1(lc, x, y))
+    defprim(lc,'tp8', 2, lambda lc,x,y: show_template8(lc, x, y))
+    defprim(lc,'tp6', 3, lambda lc,x,y,z: show_template6(lc, x, y, z))
+    defprim(lc,'tp3', 8, lambda lc,x,y,z,a,b,c,d,e: \
+        show_template3(lc, x, y, z, a, b, c, d, e))
+    defprim(lc,'sound', 1, lambda lc,x: play_sound(lc, x))
+    defprim(lc,'video', 1, lambda lc,x: play_movie(lc, x))
+    defprim(lc,'tp2', 3, lambda lc,x,y,z: \
+        show_template2(lc, x, y, z))
+    defprim(lc,'tp7', 5, lambda lc,x,y,z,a,b: \
+        show_template7(lc, x, y, z, a, b))
+    defprim(lc,'hideblocks', 0, lambda lc: hideblocks(lc))
+
     lc.symtype = type(intern(lc, 'print'))
     lc.listtype = type([])
     lc.symnothing = intern(lc, '%nothing%')
@@ -468,13 +486,34 @@ def lcNew(tw):
     lc.heap = []
     lc.keyboard = 0
     lc.gplay = None
+    lc.ag = None
     lc.title_height = int((tw.turtle.height/30)*tw.scale)
     lc.body_height = int((tw.turtle.height/60)*tw.scale)
     lc.bullet_height = int((tw.turtle.height/45)*tw.scale)
 
     lc.iline, lc.cfun, lc.arglist, lc.ufun = None, None, None,None
 
+    # this dictionary is used to define the relative size and postion of 
+    # template elements (w, h, x, y, dx, dy, dx1, dy1...)
+    lc.templates = {
+             'tp1': (0.5, 0.5, 0.125, 0.125, 1, 0),
+             'tp2': (0.5, 0.5, 0.125, 0.125, 1, 1.05),
+             'tp3': (1, 1, 0.125, 0.125, 0, 0.1),
+             'tp6': (0.45, 0.45, 0.125, 0.125, 1, 1.05),
+             'tp7': (0.45, 0.45, 0.125, 0.125, 1, 1.05),
+             'tp8': (0.9, 0.9, 0.125, 0.125, 0, 0),
+             'insertimage': (0.333, 0.333)
+            }
+
     return lc
+
+def callmyfunc(lc, f, x):
+    y = myfunc(lc, f, x)
+    if y is None:
+        raise logoerror("#syntaxerror")
+        stop_logo(lc.tw)
+    else:
+        return y
 
 def show_picture(lc, media, x, y, w, h):
     if media == "" or media[6:] == "":
@@ -492,7 +531,7 @@ def show_picture(lc, media, x, y, w, h):
                 + str(w) + " h:" + str(h)
             play_dsobject(lc, dsobject, int(x), int(y), int(w), int(h))
         else:
-            pixbuf = get_pixbuf_from_journal(dsobject,w,h)
+            pixbuf = get_pixbuf_from_journal(dsobject,int(w),int(h))
             if pixbuf != None:
                 draw_pixbuf(lc.tw.turtle, pixbuf, 0, 0, int(x), int(y), \
                     int(w), int(h))
@@ -500,13 +539,13 @@ def show_picture(lc, media, x, y, w, h):
 
 def get_pixbuf_from_journal(dsobject,w,h):
     try:
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path,w,h)
+        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path,int(w),int(h))
     except:
         try:
             # print "Trying preview..."
             pixbufloader = gtk.gdk.pixbuf_loader_new_with_mime_type \
                 ('image/png')
-            pixbufloader.set_size(min(300,w),min(225,h))
+            pixbufloader.set_size(min(300,int(w)),min(225,int(h)))
             pixbufloader.write(dsobject.metadata['preview'])
             pixbufloader.close()
 #            gtk.gdk_pixbuf_loader_close(pixbufloader)
@@ -516,10 +555,111 @@ def get_pixbuf_from_journal(dsobject,w,h):
             pixbuf = None
     return pixbuf
 
+def show_description(lc, media, x, y, w, h):
+    if media == "" or media[6:] == "":
+#        raise logoerror("#nomedia")
+        print "no media"
+    elif media[6:] != "None":
+        try:
+            dsobject = datastore.get(media[6:])
+            draw_text(lc.tw.turtle, \
+                dsobject.metadata['description'],int(x),int(y), \
+                    lc.body_height, int(w))
+            dsobject.destroy()
+        except:
+            print "no description?"
+
+def draw_title(lc,title,x,y):
+    draw_text(lc.tw.turtle,title,int(x),0,lc.title_height, \
+        lc.tw.turtle.width-x)
+
+def calc_position(lc,t):
+    w,h,x,y,dx,dy = lc.templates[t]
+    x *= lc.tw.turtle.width
+    y *= lc.tw.turtle.height
+    w *= (lc.tw.turtle.width-x)
+    h *= (lc.tw.turtle.height-y)
+    dx *= w
+    dy *= h
+    return(w,h,x,y,dx,dy)
+
+# title, one image, and description
+def show_template1(lc, title, media):
+    w,h,x,y,dx,dy = calc_position(lc,'tp1')
+    draw_title(lc,title,x,y)
+    if media[0:5] == 'media':
+        show_picture(lc, media, x, y, w, h)
+    show_description(lc, media, x+dx, y+dy, w, h)
+
+# title, two images (horizontal), two descriptions
+def show_template2(lc, title, media1, media2):
+    w,h,x,y,dx,dy = calc_position(lc,'tp2')
+    draw_title(lc,title,x,y)
+    if media1[0:5] == 'media':
+        show_picture(lc, media1, x, y, w, h)
+    show_description(lc, media1, x, y+dy, w, h)
+    if media2[0:5] == 'media':
+        show_picture(lc, media2, x+dx, y, w, h)
+    show_description(lc, media2, x+dx, y+dy, w, h)
+
+# title and seven bullets
+def show_template3(lc, title, s1, s2, s3, s4, s5, s6, s7):
+    w,h,x,y,dx,dy = calc_position(lc,'tp3')
+    draw_title(lc,title,x,y)
+    draw_text(lc.tw.turtle,s1,x,y,lc.bullet_height,w)
+    x += dx
+    y += dy
+    draw_text(lc.tw.turtle,s2,x,y,lc.bullet_height,w)
+    x += dx
+    y += dy
+    draw_text(lc.tw.turtle,s3,x,y,lc.bullet_height,w)
+    x += dx
+    y += dy
+    draw_text(lc.tw.turtle,s4,x,y,lc.bullet_height,w)
+    x += dx
+    y += dy
+    draw_text(lc.tw.turtle,s5,x,y,lc.bullet_height,w)
+    x += dx
+    y += dy
+    draw_text(lc.tw.turtle,s6,x,y,lc.bullet_height,w)
+    x += dx
+    y += dy
+    draw_text(lc.tw.turtle,s7,x,y,lc.bullet_height,w)
+
+# title, two images (vertical), two desciptions
+def show_template6(lc, title, media1, media2):
+    w,h,x,y,dx,dy = calc_position(lc,'tp6')
+    draw_title(lc,title,x,y)
+    if media1[0:5] == 'media':
+        show_picture(lc, media1, x, y, w, h)
+    show_description(lc, media1, x+dx, y, w, h)
+    if media2[0:5] == 'media':
+        show_picture(lc, media2, x, y+dy, w, h)
+    show_description(lc, media2, x+dx, y+dy, w, h)
+
+# title and four images
+def show_template7(lc, title, media1, media2, media3, media4):
+    w,h,x,y,dx,dy = calc_position(lc,'tp7')
+    draw_title(lc, title, x, y)
+    if media1[0:5] == 'media':
+        show_picture(lc, media1, x, y, w, h)
+    if media2[0:5] == 'media':
+        show_picture(lc, media2, x+dx, y, w, h)
+    if media4[0:5] == 'media':
+        show_picture(lc, media4, x+dx, y+dy, w, h)
+    if media3[0:5] == 'media':
+        show_picture(lc, media3, x, y+dy, w, h)
+
+# title, one image
+def show_template8(lc, title, media):
+    w,h,x,y,dx,dy = calc_position(lc,'tp8')
+    draw_title(lc,title,x,y)
+    if media[0:5] == 'media':
+        show_picture(lc, media, x, y, w, h)
+
 # image only (at current x,y)
 def insert_image(lc, media):
-    w = 0.25
-    h = 0.25
+    w,h = lc.templates['insertimage']
     w *= lc.tw.turtle.width
     h *= lc.tw.turtle.height
     # convert from Turtle coordinates to screen coordinates
@@ -528,7 +668,12 @@ def insert_image(lc, media):
     if media[0:5] == 'media':
         show_picture(lc, media, x, y, w, h)
 
+# audio only
+def play_sound(lc, audio):
+    play_audio(lc, audio)
+
 def clear(lc):
+    stop_media(lc)
     clearscreen(lc.tw.turtle)
 
 def write(lc, string, fsize):
@@ -541,7 +686,8 @@ def hideblocks(lc):
     from tawindow import hideshow_button
     lc.tw.hide = False # force hide
     hideshow_button(lc.tw)
-    for i in lc.tw.selbuttons: hide(i)
+    for i in lc.tw.selbuttons:
+        hide(i)
     lc.tw.activity.projectToolbar.do_hide()
 
 def doevalstep(lc):
@@ -579,6 +725,18 @@ def status_print(lc,n):
     else:
         showlabel(lc,int(float(n)*10)/10.)
 
+def kbinput(lc):
+    if len(lc.tw.keypress) == 1:
+        lc.keyboard = ord(lc.tw.keypress[0])
+    else:
+        try:
+            lc.keyboard = {'Escape': 27, 'space': 32, 'Return': 13, \
+                'KP_Up': 2, 'KP_Down': 4, 'KP_Left': 1, 'KP_Right': 3,} \
+                [lc.tw.keypress]
+        except:
+            lc.keyboard = 0
+    lc.tw.keypress = ""
+
 def showlabel(lc,l):
     if l=='#nostack': shp = 'nostack'; l=''
     elif l=='#noinput': shp = 'noinput'; l=''
@@ -610,11 +768,4 @@ def tyo(n): print n
 
 def millis(): return int(clock()*1000)
 
-def sensor_val(lc, y):    
-    return_this = 0
-    ag = AudioGrab()
-    return_this = ag.get_sensor_val(y)
-    if y==3:
-        return_this = ag.get_sensor_val(y)
-    return return_this
 

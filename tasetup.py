@@ -55,9 +55,7 @@ selectors = (
      ('image','insertimage','image','None'),
      ('xcor','xcor','num'),
      ('ycor','ycor','num'),
-     ('heading','heading','num'),
-     # not on palette, but needed by write
-     ('journal','','media','','',''))),
+     ('heading','heading','num'))),
   ('pen', 55,
     (('penup','penup','noarg'),
      ('pendown','pendown','noarg'),
@@ -94,10 +92,11 @@ selectors = (
      ('remainder','%','ari2'),
      ('plus','+','ari'))),
   ('sensors', 55,
-    (('volume','sensor_val0','num'),
-     ('pitch','sensor_val1','num'),
-     ('resistance','sensor_val2','num'),
-     ('voltage','sensor_val3','num'))),
+    (('kbinput','kbinput','noarg2'),
+     ('keyboard','keyboard','num'),
+     ('myfunc','myfunc','myfunc',_('x'),100),
+     ('hres','hres','num'),
+     ('vres','vres','num'))),
   ('flow', 55,
     (('wait','wait','onearg',10),
      ('forever','forever','forever'),
@@ -106,7 +105,8 @@ selectors = (
      ('stopstack','stopstack','stop'),
      ('ifelse','ifelse','ifelse'),
      ('hspace','nop','hspace'),
-     ('vspace','nop','vspace'))),
+     ('vspace','nop','vspace'),
+     ('lock','nop','lock'))),
    ('myblocks', 55,
     (('start','nop','start'),
      ('hat1','nop1','start'),
@@ -125,7 +125,18 @@ selectors = (
      ('push','push','onearg'),
      ('pop','pop','num'),
      ('printheap','heap','noarg2'),
-     ('clearheap','emptyheap','noarg2'))))
+     ('clearheap','emptyheap','noarg2'))),
+  ('templates',55,
+    (('journal','','media','','',''),
+     ('template1','tp1','tp1',_('title'),'None'),
+     ('template6','tp6','tp6',_('title'),'None','None'),
+     ('template2','tp2','tp2',_('title'),'None','None'),
+     ('template7','tp7','tp7',_('title'),'None','None','None','None'),
+     ('template3','tp3','tp3',_('title'),'','','','','','',''),
+     ('template4','tp8','tp1',_('title'),'None'),
+     ('sound','sound','sound','None'),
+     ('audiooff','','audio','','',''),
+     ('hideblocks','hideblocks','noarg2'))))
 
 dockdetails = {
   'noarg':   (('flow',True,37,5),('flow',False,37,44)),
@@ -229,7 +240,8 @@ def setup_misc(tw):
     tw.hidden_palette_icon = load_image(tw.path, '','blocks-')
     # media blocks get positioned into other blocks
     tw.media_shapes = {}
-    tw.media_shapes['texton'] = load_image(tw.path, 'turtle', 'texton')
+    tw.media_shapes['audioon'] = load_image(tw.path, 'templates', 'audioon')
+    tw.media_shapes['texton'] = load_image(tw.path, 'templates', 'texton')
     # status shapes get positioned at the bottom of the screen
     tw.status_shapes = {}
     tw.status_shapes['status'] = load_image(tw.path, '', 'status')
@@ -247,6 +259,8 @@ def setup_misc(tw):
             tw.status_shapes['status'],True)
     tw.status_spr.type = 'status'
     setlayer(tw.status_spr,400)
+    # everything should be loaded at this point
+    tw.loaded = True
 
 def setup_selector(tw,name,y,blockdescriptions):
     # selector tabs
@@ -257,13 +271,8 @@ def setup_selector(tw,name,y,blockdescriptions):
     spr.offshape = offshape
     spr.onshape = onshape
     # print 'setting up selector ' + name
-    # some sensor inputs are hardware dependent
-    if name == 'sensors' and os.path.exists('/sys/power/olpc-pm'):
-        spr.group = load_image(tw.path, name,name+'group'+'xo')
-        spr.mask = load_image(tw.path, name,name+'mask'+'xo')
-    else:
-        spr.group = load_image(tw.path, name,name+'group')
-        spr.mask = load_image(tw.path, name,name+'mask')
+    spr.group = load_image(tw.path, name,name+'group')
+    spr.mask = load_image(tw.path, name,name+'mask')
     spr.type = 'selbutton'
     # block prototypes
     protos = []
@@ -292,14 +301,18 @@ def setup_selector(tw,name,y,blockdescriptions):
 def load_image(path, dir, file):
     from sugar.activity import activity
     
+    try:
+        datapath = os.path.join(activity.get_activity_root(), "data")
+    except:
+        # early versions of Sugar (656) didn't support get_activity_root()
+        datapath = "/home/olpc/.sugar/default/org.sugarlabs.TAPortfolioActivity/data"
+
     # first try to open the cached image
     # if you fail, open the .svg file and cache the result as png
     try:
-        return gtk.gdk.pixbuf_new_from_file( \
-            os.path.join(activity.get_activity_root(),"data",file+'.png'))
+        return gtk.gdk.pixbuf_new_from_file(os.path.join(datapath, file+'.png'))
     except:
         foo = gtk.gdk.pixbuf_new_from_file(os.path.join(path,dir,file \
             +'.svg'))
-        foo.save(os.path.join(activity.get_activity_root(),"data",file \
-            +'.png'), "png")
+        foo.save(os.path.join(datapath, file+'.png'), "png")
         return foo

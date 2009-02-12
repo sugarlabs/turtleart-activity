@@ -76,6 +76,7 @@ def twNew(win, path, lang, tboxh, parent=None):
         tw.scale = 1
     else: tw.scale = 1.6
     tw.cm = tw.gc.get_colormap()
+    tw.rgb = [255,0,0]
     tw.bgcolor = tw.cm.alloc_color('#fff8de')
     tw.msgcolor = tw.cm.alloc_color('black')
     tw.fgcolor = tw.cm.alloc_color('red')
@@ -84,6 +85,7 @@ def twNew(win, path, lang, tboxh, parent=None):
     tw.selected_block = None
     tw.draggroup = None
     prep_selectors(tw)
+    tw.loaded = 0
     for s in selectors:
         setup_selectors(tw,s)
     setup_misc(tw)
@@ -93,6 +95,9 @@ def twNew(win, path, lang, tboxh, parent=None):
     select_category(tw, tw.selbuttons[0])
     tw.turtle = tNew(tw,tw.width,tw.height)
     tw.lc = lcNew(tw)
+    tw.buddies = []
+    tw.dx = 0
+    tw.dy = 0
     return tw
 
 #
@@ -101,36 +106,55 @@ def twNew(win, path, lang, tboxh, parent=None):
 
 def buttonpress_cb(win, event, tw):
     win.grab_focus()
+    x, y = xy(event)
+    button_press(tw, event.get_state()&gtk.gdk.CONTROL_MASK, x, y)
+    # if sharing, send button press
+    if hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
+        # print "sending button pressed"
+        if event.get_state()&gtk.gdk.CONTROL_MASK is True:
+            tw.activity._send_event("p:"+str(x)+":"+str(y)+":"+'T')
+        else:
+            tw.activity._send_event("p:"+str(x)+":"+str(y)+":"+'F')
+    return True
+
+def button_press(tw, mask, x, y, verbose=False):
+    if verbose:
+        print "processing remote button press: " + str(x) + " " + str(y)
     tw.block_operation = 'click'
     if tw.selected_block!=None: unselect(tw)
     setlayer(tw.status_spr,400)
-    pos = xy(event)
-    x,y = pos
-    spr = findsprite(tw,pos)
-    if spr==None: return True
+    spr = findsprite(tw,(x,y))
+    tw.dx = 0
+    tw.dy = 0
+    if spr is None:
+        # print "no spr found"
+        return True
     if spr.type == 'selbutton':
         select_category(tw,spr)
     elif spr.type == 'category':
         block_selector_pressed(tw,x,y)
     elif spr.type == 'block':
-        block_pressed(tw,event,x,y,spr)
+        block_pressed(tw,mask,x,y,spr)
     elif spr.type == 'turtle':
         turtle_pressed(tw,x,y)
-    return True
 
 def block_selector_pressed(tw,x,y):
     proto = get_proto_from_category(tw,x,y)
-    if proto==None: return
-    if proto!='hide': new_block_from_category(tw,proto,x,y)
+    if proto==None:
+        return
+    if proto!='hide':
+        new_block_from_category(tw,proto,x,y)
     else:
-        hide_palette(tw)
+        hideshow_palette(tw,False)
 
-def hideshow_palette(tw):
-    if tw.palette == True:
-        hide_palette(tw)
-        # not sure why this call to do_hidepalette doesn't work
+def hideshow_palette(tw,state):
+    if state is False:
+        tw.palette == False
         tw.activity.projectToolbar.do_hidepalette()
+        hide_palette(tw)
     else:
+        tw.palette == True
+        tw.activity.projectToolbar.do_showpalette()
         show_palette(tw)
 
 def show_palette(tw):
@@ -147,9 +171,11 @@ def get_proto_from_category(tw,x,y):
     dx,dy = x-tw.category_spr.x, y-tw.category_spr.y,
     pixel = getpixel(tw.current_category.mask,dx,dy)
     index = ((pixel%256)>>3)-1
-    if index==0: return 'hide'
+    if index==0:
+        return 'hide'
     index-=1
-    if index>len(tw.current_category.blockprotos): return None
+    if index>len(tw.current_category.blockprotos):
+        return None
     return tw.current_category.blockprotos[index]
 
 def select_category(tw, spr):
@@ -160,7 +186,8 @@ def select_category(tw, spr):
     setshape(tw.category_spr,spr.group)
 
 def new_block_from_category(tw,proto,x,y):
-    if proto == None: return True
+    if proto is None:
+        return True
     newspr = sprNew(tw,x-20,y-20,proto.image)
     setlayer(newspr,2000)
     tw.dragpos = 20,20
@@ -184,20 +211,21 @@ def new_block_from_category(tw,proto,x,y):
     tw.draggroup = findgroup(newspr)
     tw.block_operation = 'new'
 
-def block_pressed(tw,event,x,y,spr):
-    if event.get_state()&gtk.gdk.CONTROL_MASK:
-        newspr = clone_stack(tw,x-spr.x-20,y-spr.y-20, spr)
-        tw.dragpos = x-newspr.x,y-newspr.y
-        tw.draggroup = findgroup(newspr)
-    else:
-        tw.draggroup = findgroup(spr)
-        for b in tw.draggroup: setlayer(b,2000)
-        if spr.connections[0] != None and spr.proto.name == 'lock':
-            b = find_top_block(spr)
-            tw.dragpos = x-b.x,y-b.y
+def block_pressed(tw,mask,x,y,spr):
+    if spr is not None:
+        if mask is True:
+            newspr = clone_stack(tw,x-spr.x-20,y-spr.y-20, spr)
+            tw.dragpos = x-newspr.x,y-newspr.y
+            tw.draggroup = findgroup(newspr)
         else:
-            tw.dragpos = x-spr.x,y-spr.y
-            disconnect(spr)
+            tw.draggroup = findgroup(spr)
+            for b in tw.draggroup: setlayer(b,2000)
+            if spr.connections[0] != None and spr.proto.name == 'lock':
+                b = find_top_block(spr)
+                tw.dragpos = x-b.x,y-b.y
+            else:
+                tw.dragpos = x-spr.x,y-spr.y
+                disconnect(spr)
 
 def clone_stack(tw,dx,dy,spr):
     newspr = sprNew(tw,spr.x+dx,spr.y+dy,spr.proto.image)
@@ -215,9 +243,11 @@ def clone_stack(tw,dx,dy,spr):
 
 def turtle_pressed(tw,x,y):
     dx,dy = x-tw.turtle.spr.x-30,y-tw.turtle.spr.y-30
-    if dx*dx+dy*dy > 200: tw.dragpos = ('turn', \
+    if dx*dx+dy*dy > 200:
+        tw.dragpos = ('turn', \
         tw.turtle.heading-atan2(dy,dx)/DEGTOR,0)
-    else: tw.dragpos = ('move', x-tw.turtle.spr.x,y-tw.turtle.spr.y)
+    else:
+        tw.dragpos = ('move', x-tw.turtle.spr.x,y-tw.turtle.spr.y)
     tw.draggroup = [tw.turtle.spr]
 
 #
@@ -225,38 +255,81 @@ def turtle_pressed(tw,x,y):
 #
 
 def move_cb(win, event, tw):
-    if tw.draggroup == None: return True
+    x,y = xy(event)
+    mouse_move(tw, x, y)
+#    if hasattr(tw.activity, 'chattube')and tw.activity.chattube is not None:
+#            tw.activity._send_event("m:"+str(x)+":"+str(y))
+    return True
+
+def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
+    if verbose:
+        print "processing remote mouse move: " + str(x) + " " + str(y)
+    if tw.draggroup is None:
+        return
     tw.block_operation = 'move'
     spr = tw.draggroup[0]
     if spr.type=='block':
-        x,y = xy(event)
         dragx, dragy = tw.dragpos
-        dx,dy = x-dragx-spr.x,y-dragy-spr.y
+        if mdx != 0 or mdy != 0:
+            dx,dy = mdx,mdy
+        else:
+            dx,dy = x-dragx-spr.x,y-dragy-spr.y
         # skip if there was a move of 0,0
-        if dx == 0 and dy == 0: return True
+        if dx == 0 and dy == 0:
+            return
         # drag entire stack if moving lock block
-        tw.draggroup = findgroup(spr)
+        if spr.proto.name == 'lock':
+            tw.draggroup = findgroup(find_top_block(spr))
+        else:
+            tw.draggroup = findgroup(spr)
         for b in tw.draggroup:
             move(b,(b.x+dx, b.y+dy))
     elif spr.type=='turtle':
-        x,y = xy(event)
         type,dragx,dragy = tw.dragpos
         if type == 'move':
-            dx,dy = x-dragx-spr.x,y-dragy-spr.y
+            if mdx != 0 or mdy != 0:
+                dx,dy = mdx,mdy
+            else:
+                dx,dy = x-dragx-spr.x,y-dragy-spr.y
             move(spr, (spr.x+dx, spr.y+dy))
         else:
-            dx,dy = x-spr.x-30,y-spr.y-30
+            if mdx != 0 or mdy != 0:
+                dx,dy = mdx,mdy
+            else:
+                dx,dy = x-spr.x-30,y-spr.y-30
             seth(tw.turtle, int(dragx+atan2(dy,dx)/DEGTOR+5)/10*10)
-    return True
+    if mdx != 0 or mdy != 0:
+        dx,dy = 0,0
+    else:
+        tw.dx += dx
+        tw.dy += dy
+    # print "deltas are " + str(dx) + " " + str(dy)
 
 #
 # Button release
 #
 
 def buttonrelease_cb(win, event, tw):
-    if tw.draggroup == None: return True
-    spr = tw.draggroup[0]
     x,y = xy(event)
+    button_release(tw, x, y)
+    if hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
+        # print "sending release button"
+        tw.activity._send_event("r:"+str(x)+":"+str(y))
+    return True
+
+def button_release(tw, x, y, verbose=False):
+    if tw.dx != 0 or tw.dy != 0 and \
+        hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
+            if verbose:
+                print "processing accumulated move: " + str(tw.dx) + " " + str(tw.dy)
+            tw.activity._send_event("m:"+str(tw.dx)+":"+str(tw.dy))
+            tw.dx = 0
+            tw.dy = 0
+    if verbose:
+        print "processing remote button release: " + str(x) + " " + str(y)
+    if tw.draggroup == None: 
+        return
+    spr = tw.draggroup[0]
     if spr.type == 'turtle':
         tw.turtle.xcor = tw.turtle.spr.x-tw.turtle.canvas.x- \
             tw.turtle.canvas.width/2+30
@@ -264,12 +337,11 @@ def buttonrelease_cb(win, event, tw):
             tw.turtle.canvas.y-30
         move_turtle(tw.turtle)
         tw.draggroup = None
-        return True
+        return
     if tw.block_operation=='move' and hit(tw.category_spr, (x,y)):
         for b in tw.draggroup: hide(b)
         tw.draggroup = None
-        return True
-    # allow new blocks to be created by clicking as well as dragging
+        return
     if tw.block_operation=='new':
         for b in tw.draggroup:
             move(b, (b.x+200, b.y))
@@ -290,8 +362,24 @@ def buttonrelease_cb(win, event, tw):
                 tw.firstkey = True
             elif spr.proto.name == 'journal':
                 import_image(tw, spr)
+            elif spr.proto.name == 'audiooff':
+                import_audio(tw, spr)
         else: run_stack(tw, spr)
-    return True
+
+def import_audio(tw, spr):
+    chooser = ObjectChooser('Choose audio', None, gtk.DIALOG_MODAL | \
+        gtk.DIALOG_DESTROY_WITH_PARENT)
+    try:
+        result = chooser.run()
+        if result == gtk.RESPONSE_ACCEPT:
+            dsobject = chooser.get_selected_object()
+            if dsobject and dsobject.file_path:               
+                spr.ds_id = dsobject.object_id
+                setimage(spr,tw.media_shapes['audioon'])
+            dsobject.destroy()
+    finally:
+        chooser.destroy()
+        del chooser
 
 def import_image(tw, spr):
 #    chooser = ObjectChooser('Choose image', None, gtk.DIALOG_MODAL | \
@@ -312,7 +400,7 @@ def import_image(tw, spr):
 def load_image(tw, picture, spr):
     from talogo import get_pixbuf_from_journal
     pixbuf = get_pixbuf_from_journal(picture,spr.width,spr.height)
-    if pixbuf != None:
+    if pixbuf is not None:
         setimage(spr, pixbuf)
     else:
         setimage(spr, tw.media_shapes['texton'])
@@ -322,20 +410,24 @@ def snap_to_dock(tw):
     me = tw.draggroup[0]
     for mydockn in range(len(me.proto.docks)):
         for you in blocks(tw):
-            if you in tw.draggroup: continue
+            if you in tw.draggroup:
+                continue
             for yourdockn in range(len(you.proto.docks)):
                 thisxy = dock_dx_dy(you,yourdockn,me,mydockn)
-                if magnitude(thisxy)>d: continue
+                if magnitude(thisxy)>d:
+                    continue
                 d=magnitude(thisxy)
                 bestxy=thisxy
                 bestyou=you
                 bestyourdockn=yourdockn
                 bestmydockn=mydockn
     if d<200:
-        for b in tw.draggroup: move(b,(b.x+bestxy[0],b.y+bestxy[1]))
+        for b in tw.draggroup:
+            move(b,(b.x+bestxy[0],b.y+bestxy[1]))
         blockindock=bestyou.connections[bestyourdockn]
         if blockindock!=None:
-            for b in findgroup(blockindock): hide(b)
+            for b in findgroup(blockindock):
+                hide(b)
         bestyou.connections[bestyourdockn]=me
         me.connections[bestmydockn]=bestyou
 
@@ -352,7 +444,9 @@ def dock_dx_dy(block1,dock1n,block2,dock2n):
     if block1==block2: return (100,100)
     if d1type!=d2type:
         # some blocks can take strings or nums
-        if block1.proto.name in ('write', 'push', 'plus2', 'equal', 'nop'):
+        if block1.proto.name in ('write', 'push', 'plus2', 'equal', \
+            'template1', 'template2', 'template3', 'template4', \
+            'template6', 'template7', 'nop'):
             if block1.proto.name == 'write' and d1type == 'string':
                 if d2type == 'num' or d2type == 'string':
                     pass
@@ -383,25 +477,66 @@ def expose_cb(win, event, tw):
 
 def keypress_cb(area, event, tw):
     keyname = gtk.gdk.keyval_name(event.keyval)
-#    print keyname + ", " + str(event.keyval) + str(event.get_state())
+    results = key_press(tw, event.get_state()&gtk.gdk.MOD4_MASK, keyname)
+#    keyname = unichr(gtk.gdk.keyval_to_unicode(event.keyval))
+    if keyname is not None and \
+        hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
+        # print "key press"
+        if event.get_state()&gtk.gdk.MOD4_MASK:
+            tw.activity._send_event("k:"+'T'+":"+keyname)
+        else:
+            tw.activity._send_event("k:"+'F'+":"+keyname)
+    return results
+
+def key_press(tw, mask, keyname, verbose=False):
+    if keyname is None:
+        return False
+    if verbose:
+        print "processing remote key press: " + keyname
     tw.keypress = keyname
-#    tw.keyval = unicode(gtk.gdk.keyval_to_unicode(event.keyval))
-#    foo = unichr(gtk.gdk.keyval_to_unicode(event.keyval))
-#    print foo
-    if (event.get_state()&gtk.gdk.MOD4_MASK):
+    if mask is True:
         if keyname=="n": new_project(tw)
         if keyname=="o": load_file(tw)
         if keyname=="s": save_file(tw)
         if keyname=="k": tw.activity.clear_journal()
+        if keyname=="i": 
+            tw.activity.waiting_for_blocks = True
+            tw.activity._send_event("i") # request sync for sharing
         return True
-    if tw.selected_block==None: return False
+    if tw.selected_block==None:
+        if keyname=="i": 
+            tw.activity.waiting_for_blocks = True
+            tw.activity._send_event("i") # request sync for sharing
+        elif keyname=="p":
+            if tw.palette is True:
+                hideshow_palette(tw,False)
+            else:
+                hideshow_palette(tw,True)
+        elif keyname=="b":
+            if tw.hide == False:
+                tw.activity.projectToolbar.do_hide()
+            else:
+                tw.activity.projectToolbar.do_show()
+            hideshow_button(tw)
+        elif keyname=="r":
+            runbutton(tw, 0)
+        elif keyname=="w":
+            runbutton(tw, 3)
+        elif keyname=="s":
+            stop_button(tw)
+        elif keyname=="e":
+            eraser_button(tw)
+        return False
+    # if and when we use unichr above
+    # we need to change this logic (and logic in talogo.py)
     if tw.selected_block.proto.name == 'number':
         if keyname in ['minus', 'period']: 
             keyname = {'minus': '-', 'period': '.'}[keyname]
-        if len(keyname)>1: return True
+        if len(keyname)>1:
+            return True
     else:
-        # until I get the unicode working properly... a big dictionary
-        try: keyname = {
+        try: 
+            keyname = {
 'aacute': 'á', 'Aacute': 'Á', 'acircumflex': 'â', 'Acircumflex': 'Â', \
 'adiaeresis': 'ä', 'Adiaeresis': 'Ä', 'ae': 'æ', 'AE': 'Æ', 'agrave': \
 'à', 'Agrave': 'À', 'ampersand': '&', 'apostrophe': '\'', 'aring': \
@@ -450,10 +585,12 @@ def keypress_cb(area, event, tw):
 'Cyrillic_i': 'и', 'Cyrillic_I': 'И', 'Cyrillic_te': 'т', \
 'Cyrillic_TE': 'Т', 'Cyrillic_softsign': 'ь', 'Cyrillic_SOFTSIGN': \
 'Ь', 'Cyrillic_ve': 'в', 'Cyrillic_VE': 'В', 'Cyrillic_yu': 'ю', \
-'Cyrillic_YU': 'Ю' }[keyname]
+'Cyrillic_YU': 'Ю', 'KP_Up': '↑', 'KP_Down': '↓', 'KP_Left': '←', \
+'KP_Right': '→'}[keyname]
         except:
             if len(keyname)>1:
                 return True
+
     oldnum = tw.selected_block.label 
     selblock=tw.selected_block.proto
     if tw.firstkey: newnum = selblock.check( \
@@ -475,12 +612,14 @@ def unselect(tw):
 #
 
 def disconnect(b):
-    if b.connections[0]==None: return
+    if b.connections[0]==None:
+        return
     b2=b.connections[0]
     b2.connections[b2.connections.index(b)] = None
     b.connections[0] = None
 
 def run_stack(tw,spr):
+    tw.lc.ag = None
     top = find_top_block(spr)
     run_blocks(tw.lc, top, blocks(tw), True)
     gobject.idle_add(doevalstep, tw.lc)
@@ -493,7 +632,8 @@ def findgroup(b):
 
 def find_top_block(spr):
     b = spr
-    while b.connections[0]!=None: b=b.connections[0]
+    while b.connections[0]!=None:
+        b=b.connections[0]
     return b
 
 def runtool(tw, spr, cmd, *args):
@@ -516,13 +656,13 @@ def runbutton(tw, time):
     # no start block, so run a stack that isn't a hat
     for b in blocks(tw):
         if find_block_to_run(tw, b):
-            # print "running " + b.proto.name
+            print "running " + b.proto.name
             tw.step_time = time
             run_stack(tw, b)
     return
 
 def hideshow_button(tw):
-    if tw.hide == False:
+    if tw.hide is False:
         for b in blocks(tw): setlayer(b,100)
         hide_palette(tw)
         hide(tw.select_mask)
@@ -555,4 +695,5 @@ def blocks(tw):
 
 def xy(event):
     return map(int, event.get_coords())
+
 

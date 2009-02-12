@@ -209,6 +209,7 @@ def set_fgcolor(t):
     rgb = color_table[wrap100(t.color)]
     r,g,b = (rgb>>8)&0xff00,rgb&0xff00,(rgb<<8)&0xff00
     r,g,b = calc_shade(r,sh),calc_shade(g,sh),calc_shade(b,sh)
+    t.tw.rgb = [r>>8,g>>8,b>>8]
     t.tw.fgcolor = t.tw.cm.alloc_color(r,g,b)
 
 def set_textcolor(t):
@@ -239,13 +240,13 @@ def draw_text(t, label, x, y, size, w):
     t.gc.set_foreground(t.tw.textcolor)
     fd = pango.FontDescription('Sans')
     try:
-        fd.set_size(size*pango.SCALE)
+        fd.set_size(int(size)*pango.SCALE)
     except:
         pass
     pl = t.tw.window.create_pango_layout(str(label))
     pl.set_font_description(fd)
-    pl.set_width(w*pango.SCALE)
-    t.canvas.image.draw_layout(t.gc,x,y,pl)
+    pl.set_width(int(w)*pango.SCALE)
+    t.canvas.image.draw_layout(t.gc,int(x),int(y),pl)
     w,h = pl.get_pixel_size()
     invalt(t,x,y,w,h)
 

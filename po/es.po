@@ -12,21 +12,88 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.0.1\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
-msgstr "Tortuga Art "
+msgstr "Tortuga Art"
 
-#:
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "título"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "palabra"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "acción"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "caja"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "nombre"
+
+#: TurtleArtActivity.py:48
 msgid "Project"
 msgstr "Proyecto"
 
 #:
-msgid "Samples"
-msgstr "Ejemplos"
+msgid "Save as"
+msgstr "Guardar a/abrir de"
 
-#:
-msgid "Save Logo"
-msgstr "Salvar a logo"
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "oculta los palettes"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "oculta los bloques"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "correr"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "caminar"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "detener tortuga"
+
+#: TurtleArtActivity.py:223
+msgid "clean"
+msgstr "limpiar"
+
+#: TurtleArtActivity.py:236
+msgid "sample portfolio templates"
+msgstr "ejemplos"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "guardar a HTML"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "guardar a Logo"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "mostrar palette"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "carga de mi bloque"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "mostrar caja"
 
 #:
 msgid "Flow"
@@ -65,24 +132,12 @@ msgid "My Blocks"
 msgstr "Mis bloques"
 
 #:
-msgid "start"
-msgstr "empezar"
-
-#:
-msgid "box"
-msgstr "caja"
-
-#:
 msgid "box 1"
 msgstr "caja 1"
 
 #:
 msgid "box 2"
 msgstr "caja 2"
-
-#:
-msgid "stack"
-msgstr "acción"
 
 #:
 msgid "stack 1"
@@ -115,10 +170,6 @@ msgstr "mostrar pila"
 #:
 msgid "empty heap"
 msgstr "vaciar pila"
-
-#:
-msgid "name"
-msgstr "nombre"
 
 #:
 msgid "Numbers"
@@ -189,6 +240,10 @@ msgid "set pen size"
 msgstr "fijar tamaño"
 
 #:
+msgid "set text color"
+msgstr "fijar el color del texto"
+
+#:
 msgid "pen size"
 msgstr "tamaño"
 
@@ -245,10 +300,6 @@ msgid "set heading"
 msgstr "fijar rumbo"
 
 #:
-msgid "clean"
-msgstr "limpiar"
-
-#:
 msgid "set xy"
 msgstr "fijar xy"
 
@@ -287,3 +338,31 @@ msgstr "voltaje"
 #:
 msgid "resistance"
 msgstr "resistencia"
+
+#:
+msgid "Templates"
+msgstr "Plantillas"
+
+#:
+msgid "read key"
+msgstr "leer tecla"
+
+#:
+msgid "Keyboard"
+msgstr "Teclado"
+
+#:
+msgid "sound"
+msgstr "sonido"
+
+#: horizontal resolution
+msgid "hres"
+msgstr "res h"
+
+#: vertical resolution
+msgid "vres"
+msgstr "res v"
+
+#:
+msgid "start"
+msgstr "empezar"
