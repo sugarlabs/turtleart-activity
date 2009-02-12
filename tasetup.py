@@ -256,7 +256,7 @@ def setup_selector(tw,name,y,blockdescriptions):
     setlayer(spr,800)
     spr.offshape = offshape
     spr.onshape = onshape
-    print 'setting up selector ' + name
+    # print 'setting up selector ' + name
     # some sensor inputs are hardware dependent
     if name == 'sensors' and os.path.exists('/sys/power/olpc-pm'):
         spr.group = load_image(tw.path, name,name+'group'+'xo')

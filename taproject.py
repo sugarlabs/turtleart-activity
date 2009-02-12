@@ -112,7 +112,8 @@ def load_spr(tw,b):
                 setimage(spr, tw.media_shapes['audioon'])
             dsobject.destroy()
         except:
-            print "couldn't open dsobject (" + str(spr.ds_id) + ")"
+            pass
+            # print "couldn't open dsobject (" + str(spr.ds_id) + ")"
     setlayer(spr,650)
     return spr
 

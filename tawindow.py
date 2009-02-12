@@ -516,7 +516,7 @@ def runbutton(tw, time):
     # no start block, so run a stack that isn't a hat
     for b in blocks(tw):
         if find_block_to_run(tw, b):
-            print "running " + b.proto.name
+            # print "running " + b.proto.name
             tw.step_time = time
             run_stack(tw, b)
     return

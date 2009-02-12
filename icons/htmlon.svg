@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="55"
+   height="55"
+   viewBox="0 0 55 55"
+   id="svg2"
+   xml:space="preserve"><defs
+   id="defs29" />
+
+   <polygon
+   points="10.932,6.088 31.874,6.088 43.818,18.027 43.818,48.914 10.932,48.914 10.932,6.088 "
+   transform="translate(-5.182,3.336)"
+   id="polygon10"
+   style="fill:#ff0000;fill-opacity:1;stroke:#ffffff;stroke-width:3.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+   <polyline
+   points="43.818,18.027 31.874,18.027 31.874,6.088    "
+   id="polyline12"
+   style="fill:#ff0000;fill-opacity:1;stroke:#ffffff;stroke-width:3.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+   transform="translate(-5.182,3.336)" />
+   <circle
+   cx="27.375"
+   cy="33.5"
+   r="9.9510002"
+   transform="translate(-5.182,2.549)"
+   id="circle14" />
+   <path
+   d="M 22.194,26.098 C 22.194,26.098 16.591,30.295 16.591,36.086 C 16.591,41.877 22.194,46 22.194,46"
+   id="path16"
+   style="stroke:#ff0000;stroke-opacity:1" />
+   <path
+   d="M 22.194,26.098 C 22.194,26.098 27.726,30.668 27.726,36.086 C 27.726,41.505 22.194,46 22.194,46"
+   id="path18"
+   style="stroke:#ff0000;stroke-opacity:1" />
+   <line
+   x1="22.194"
+   x2="22.194"
+   y1="26.098"
+   y2="46"
+   id="line20"
+   style="stroke:#0000ff;stroke-opacity:1" />
+   <line
+   x1="22.194"
+   x2="22.194"
+   y1="26.098"
+   y2="46"
+   id="line22"
+   style="stroke:#0000ff;stroke-opacity:1" />
+   <line
+   x1="22.194"
+   x2="22.194"
+   y1="26.098"
+   y2="46"
+   id="line24"
+   style="stroke:#ff0000;stroke-opacity:1" />
+   <line
+   x1="12.241"
+   x2="32.144001"
+   y1="36.049"
+   y2="36.049"
+   id="line26"
+   style="stroke:#ff0000;stroke-opacity:1" />
+</svg>
