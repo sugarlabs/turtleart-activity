@@ -25,18 +25,6 @@ msgstr ""
 msgid "text"
 msgstr ""
 
-#: tasetup.py:119 tasetup.py:120
-msgid "stack"
-msgstr ""
-
-#: tasetup.py:125 tasetup.py:126
-msgid "box"
-msgstr ""
-
-#: tasetup.py:127
-msgid "name"
-msgstr ""
-
 #: TurtleArtActivity.py:48
 msgid "Project"
 msgstr ""
@@ -362,6 +350,3 @@ msgstr ""
 msgid "vres"
 msgstr ""
 
-#:
-msgid "start"
-msgstr ""
