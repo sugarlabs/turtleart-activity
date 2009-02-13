@@ -656,4 +656,7 @@ class ProjectToolbar(gtk.Toolbar):
 
     def do_samples(self, button):
         tawindow.load_file(self.activity.tw)
+        # run the activity
+        tawindow.runbutton(self.activity.tw, 0)
+
 
