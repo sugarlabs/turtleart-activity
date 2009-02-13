@@ -1,363 +1,496 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg:svg
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
    width="145"
-   height="404"
-   version="1.0">
-  <svg:defs>
-    <svg:linearGradient
+   height="500"
+   id="svg2">
+  <defs
+     id="defs4">
+    <linearGradient
        id="linearGradient3876">
-      <svg:stop
+      <stop
          id="stop3878"
-         offset="0"
-         style="stop-color:#ffffff;stop-opacity:1;" />
-      <svg:stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
          id="stop3880"
-         offset="1"
-         style="stop-color:#00ffff;stop-opacity:1;" />
-    </svg:linearGradient>
-    <svg:linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3166"
+         style="stop-color:#00ffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="22"
+       x2="74"
+       y2="22"
        id="linearGradient3889"
-       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
        x1="0"
        y1="22"
        x2="74"
-       y2="22" />
-    <svg:linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3166"
+       y2="22"
        id="linearGradient3913"
-       gradientUnits="userSpaceOnUse"
-       x1="0"
-       y1="22"
-       x2="74"
-       y2="22" />
-    <svg:linearGradient
-       inkscape:collect="always"
        xlink:href="#linearGradient3166"
-       id="linearGradient3915"
-       gradientUnits="userSpaceOnUse"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
        x1="0"
        y1="22"
        x2="74"
-       y2="22" />
-    <svg:linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3876"
-       id="linearGradient4830"
+       y2="22"
+       id="linearGradient3915"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
        x1="18.291491"
        y1="48.644657"
        x2="67.627289"
        y2="48.644657"
-       gradientUnits="userSpaceOnUse" />
-    <svg:linearGradient
-       inkscape:collect="always"
+       id="linearGradient4830"
        xlink:href="#linearGradient3876"
-       id="linearGradient4838"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
        x1="77.372711"
        y1="48.644657"
        x2="126.70851"
        y2="48.644657"
-       gradientUnits="userSpaceOnUse" />
-    <svg:linearGradient
-       inkscape:collect="always"
+       id="linearGradient4838"
        xlink:href="#linearGradient3876"
-       id="linearGradient4846"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
        x1="43.415215"
        y1="95.379143"
        x2="92.751015"
        y2="95.379143"
-       gradientUnits="userSpaceOnUse" />
-    <svg:linearGradient
-       inkscape:collect="always"
+       id="linearGradient4846"
        xlink:href="#linearGradient3876"
-       id="linearGradient4854"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
        x1="43.415215"
        y1="147.44724"
        x2="92.751015"
        y2="147.44724"
-       gradientUnits="userSpaceOnUse" />
-    <svg:linearGradient
-       inkscape:collect="always"
+       id="linearGradient4854"
        xlink:href="#linearGradient3876"
-       id="linearGradient4862"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
        x1="43.415215"
        y1="199.5153"
        x2="92.751015"
        y2="199.5153"
-       gradientUnits="userSpaceOnUse" />
-    <svg:linearGradient
-       inkscape:collect="always"
+       id="linearGradient4862"
        xlink:href="#linearGradient3876"
-       id="linearGradient4870"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
        x1="43.415215"
        y1="258.58374"
        x2="92.751015"
        y2="258.58374"
-       gradientUnits="userSpaceOnUse" />
-    <svg:linearGradient
-       inkscape:collect="always"
+       id="linearGradient4870"
        xlink:href="#linearGradient3876"
-       id="linearGradient4878"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
        x1="37.331573"
        y1="312.79697"
        x2="107.66842"
        y2="312.79697"
-       gradientUnits="userSpaceOnUse" />
-    <svg:linearGradient
-       inkscape:collect="always"
+       id="linearGradient4878"
        xlink:href="#linearGradient3876"
-       id="linearGradient4886"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,95.96579)" />
+    <linearGradient
        x1="37.331573"
        y1="337.74872"
        x2="107.66842"
        y2="337.74872"
-       gradientUnits="userSpaceOnUse" />
-    <svg:linearGradient
-       inkscape:collect="always"
+       id="linearGradient4886"
        xlink:href="#linearGradient3876"
-       id="linearGradient4894"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,95.96579)" />
+    <linearGradient
        x1="37.331573"
        y1="362.7005"
        x2="107.66842"
        y2="362.7005"
-       gradientUnits="userSpaceOnUse" />
-  </svg:defs>
-  <svg:path
-     style="fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:0.99423993px;stroke-opacity:1"
-     d="M 0.5594301,0.5 L 0.49711997,390.41023 L 3.6209793,397.14297 L 8.494839,401.1072 L 15.156388,403.50288 L 128.9813,403.50288 L 135.82978,400.93866 L 141.77903,396.04729 L 144.50288,387.79171 L 144.54057,0.5 L 0.5594301,0.5 z" />
-  <svg:rect
-     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1.08842015;stroke-opacity:1"
+       id="linearGradient4894"
+       xlink:href="#linearGradient3876"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,95.96579)" />
+    <linearGradient
+       x1="0"
+       y1="22"
+       x2="74"
+       y2="22"
+       id="linearGradient3172"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.67,0,0,0.67,43.745213,299.47)" />
+    <linearGradient
+       id="linearGradient3166">
+      <stop
+         id="stop3168"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3170"
+         style="stop-color:#00ffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+  </defs>
+  <path
+     d="M 0.5594301,0.5 L 0.49711997,486 L 3.6209793,492 L 8.494839,496 L 15.156388,499 L 128.9813,499 L 135.82978,496 L 141.77903,492 L 144.50288,486 L 144.54057,0.5 L 0.5594301,0.5 z"
+     id="path21"
+     style="fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:0.99423993px;stroke-opacity:1" />
+  <rect
      width="123.6"
      height="0.14"
      x="10.7"
-     y="295" />
-  <svg:rect
-     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1.08842015;stroke-opacity:1"
+     y="391"
+     id="rect23"
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1.08842015;stroke-opacity:1" />
+  <rect
      width="123.6"
      height="0.14"
      x="10.7"
-     y="296" />
-  <svg:rect
-     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#ffffc4;stroke-width:1.08842015;stroke-opacity:1"
+     y="392"
+     id="rect25"
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1.08842015;stroke-opacity:1" />
+  <rect
      width="123.6"
      height="0.14"
      x="10.7"
-     y="297" />
-  <svg:rect
-     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1.13613331;stroke-opacity:1"
+     y="393"
+     id="rect27"
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#ffffc4;stroke-width:1.08842015;stroke-opacity:1" />
+  <rect
      width="137.5"
      height="0.14"
      x="3.7"
      y="-29"
-     transform="scale(1,-1)" />
-  <svg:rect
-     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1.13613331;stroke-opacity:1"
+     transform="scale(1,-1)"
+     id="rect29"
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1.13613331;stroke-opacity:1" />
+  <rect
      width="137.5"
      height="0.14"
      x="3.7"
-     y="-27.8"
-     transform="scale(1,-1)" />
-  <svg:rect
-     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1.13613331;stroke-opacity:1"
+     y="-27.799999"
+     transform="scale(1,-1)"
+     id="rect31"
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1.13613331;stroke-opacity:1" />
+  <rect
      width="137.5"
      height="0.14"
      x="3.7"
-     y="-376.8"
-     transform="scale(1,-1)" />
-  <svg:rect
-     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1.13613331;stroke-opacity:1"
+     y="-474.79999"
+     transform="scale(1,-1)"
+     id="rect33"
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1.13613331;stroke-opacity:1" />
+  <rect
      width="137.5"
      height="0.14"
      x="3.7"
-     y="-375.5"
-     transform="scale(1,-1)" />
-  <svg:path
-     style="fill:#ff4040;fill-opacity:1;stroke:#ff4040;stroke-width:1;stroke-opacity:1"
-     d="M 79.5,438.375 A 8.375,8.125 0 1 1 62.75,438.375 A 8.375,8.125 0 1 1 79.5,438.375 z"
-     transform="translate(1.375,-48.749023)" />
-  <svg:text
-     style="font-size:12px;font-weight:bold;font-family:Bitstream Vera Sans;fill:#ffffff;">
-     <svg:tspan
+     y="-473.5"
+     transform="scale(1,-1)"
+     id="rect35"
+     style="opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1.13613331;stroke-opacity:1" />
+  <path
+     d="M 80.875,486.375 C 80.875,490.86231 77.125385,494.5 72.5,494.5 C 67.874615,494.5 64.125,490.86231 64.125,486.375 C 64.125,481.88769 67.874615,478.25 72.5,478.25 C 77.125385,478.25 80.875,481.88769 80.875,486.375 L 80.875,486.375 z"
+     id="path37"
+     style="fill:#ff4040;fill-opacity:1;stroke:#ff4040;stroke-width:1;stroke-opacity:1" />
+  <text
+     y="96.749023"
+     id="text39"
+     style="font-size:12px;font-weight:bold;fill:#ffffff;font-family:Bitstream Vera Sans">
+    <tspan
        x="68"
-       y="394"
-       style="font-size:12px;font-weight:bold;fill:#ffffff;">X</svg:tspan></svg:text>
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       y="490.74902"
+       id="tspan41"
+       style="font-size:12px;font-weight:bold;fill:#ffffff">X</tspan>
+  </text>
+  <text
+     id="text43"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
        x="72.5"
        y="21"
-       style="font-size:20px">Kalem</svg:tspan>
-  </svg:text>
-  <svg:path
-     style="fill:url(#linearGradient4830);fill-opacity:1.0;stroke:#00a0a0;stroke-width:1;stroke-opacity:1"
-     d="M 50.29309,34.643957 C 60.96029,34.643957 60.96029,34.643957 60.96029,34.643957 L 64.62714,37.310757 L 66.96059,41.310957 L 66.96059,53.978257 L 64.62714,57.311757 L 60.96029,59.978557 L 49.62639,59.978557 L 49.62639,59.978557 L 49.62639,62.645357 L 36.29239,62.645357 L 36.29239,59.978557 L 24.95849,59.978557 L 21.29164,57.311757 L 18.95819,53.978257 L 18.95819,41.310957 L 21.29164,37.310757 L 24.95849,34.643957 L 35.62569,34.643957 L 35.62569,37.977457 L 50.29309,37.977457 L 50.29309,34.643957 z" />
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       id="tspan45"
+       style="font-size:20px">Kalem</tspan>
+  </text>
+  <path
+     d="M 50.29309,34.643957 C 60.96029,34.643957 60.96029,34.643957 60.96029,34.643957 L 64.62714,37.310757 L 66.96059,41.310957 L 66.96059,53.978257 L 64.62714,57.311757 L 60.96029,59.978557 L 49.62639,59.978557 L 49.62639,59.978557 L 49.62639,62.645357 L 36.29239,62.645357 L 36.29239,59.978557 L 24.95849,59.978557 L 21.29164,57.311757 L 18.95819,53.978257 L 18.95819,41.310957 L 21.29164,37.310757 L 24.95849,34.643957 L 35.62569,34.643957 L 35.62569,37.977457 L 50.29309,37.977457 L 50.29309,34.643957 z"
+     id="path47"
+     style="fill:url(#linearGradient4830);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+  <text
+     id="text49"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
        x="43"
        y="51.5"
-       font-size="11">kb</svg:tspan>
-  </svg:text>
-  <svg:path
-     style="fill:url(#linearGradient4838);fill-opacity:1.0;stroke:#00a0a0;stroke-width:1.33340001000000008;stroke-opacity:1"
-     d="M 109.37431,34.643957 C 120.04151,34.643957 120.04151,34.643957 120.04151,34.643957 L 123.70836,37.310757 L 126.04181,41.310957 L 126.04181,53.978257 L 123.70836,57.311757 L 120.04151,59.978557 L 108.70761,59.978557 L 108.70761,59.978557 L 108.70761,62.645357 L 95.373609,62.645357 L 95.373609,59.978557 L 84.039709,59.978557 L 80.372859,57.311757 L 78.039409,53.978257 L 78.039409,41.310957 L 80.372859,37.310757 L 84.039709,34.643957 L 94.706909,34.643957 L 94.706909,37.977457 L 109.37431,37.977457 L 109.37431,34.643957 z" />
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       id="tspan51"
+       style="font-size:11px">kb</tspan>
+  </text>
+  <path
+     d="M 109.37431,34.643957 C 120.04151,34.643957 120.04151,34.643957 120.04151,34.643957 L 123.70836,37.310757 L 126.04181,41.310957 L 126.04181,53.978257 L 123.70836,57.311757 L 120.04151,59.978557 L 108.70761,59.978557 L 108.70761,59.978557 L 108.70761,62.645357 L 95.373609,62.645357 L 95.373609,59.978557 L 84.039709,59.978557 L 80.372859,57.311757 L 78.039409,53.978257 L 78.039409,41.310957 L 80.372859,37.310757 L 84.039709,34.643957 L 94.706909,34.643957 L 94.706909,37.977457 L 109.37431,37.977457 L 109.37431,34.643957 z"
+     id="path53"
+     style="fill:url(#linearGradient4838);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1" />
+  <text
+     id="text55"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
        x="101"
        y="51.5"
-       font-size="11">kk</svg:tspan>
-  </svg:text>
-  <svg:path
-     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
-     d="M 90.084213,85.211967 L 101.08476,85.211967 L 101.08476,89.212167 L 98.417963,89.212167 L 98.417963,87.212067 L 91.417613,87.212067" />
-  <svg:path
-     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
-     d="M 90.084213,103.54622 L 101.08476,103.54622 L 101.08476,99.546017 L 98.417963,99.546017 L 98.417963,101.54612 L 91.417613,101.54612" />
-  <svg:path
-     style="fill:url(#linearGradient4846);fill-opacity:1.0;stroke:#00a0a0;stroke-width:1.33340001000000008;stroke-opacity:1"
-     d="M 75.416813,76.044842 C 86.084013,76.044842 86.084013,76.044842 86.084013,76.044842 L 89.750863,78.711642 L 92.084313,82.711842 L 92.084313,105.37964 L 89.750863,109.37984 L 86.084013,112.04664 L 74.750113,112.04664 L 74.750113,112.04664 L 74.750113,114.71344 L 61.416113,114.71344 L 61.416113,112.04664 L 50.082213,112.04664 L 46.415363,109.37984 L 44.081913,105.37964 L 44.081913,82.711842 L 46.415363,78.711642 L 50.082213,76.044842 L 60.749413,76.044842 L 60.749413,79.378342 L 75.416813,79.378342 L 75.416813,76.044842 z" />
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       id="tspan57"
+       style="font-size:11px">kk</tspan>
+  </text>
+  <path
+     d="M 90.084213,85.211967 L 101.08476,85.211967 L 101.08476,89.212167 L 98.417963,89.212167 L 98.417963,87.212067 L 91.417613,87.212067"
+     id="path59"
+     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1" />
+  <path
+     d="M 90.084213,103.54622 L 101.08476,103.54622 L 101.08476,99.546017 L 98.417963,99.546017 L 98.417963,101.54612 L 91.417613,101.54612"
+     id="path61"
+     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1" />
+  <path
+     d="M 75.416813,76.044842 C 86.084013,76.044842 86.084013,76.044842 86.084013,76.044842 L 89.750863,78.711642 L 92.084313,82.711842 L 92.084313,105.37964 L 89.750863,109.37984 L 86.084013,112.04664 L 74.750113,112.04664 L 74.750113,112.04664 L 74.750113,114.71344 L 61.416113,114.71344 L 61.416113,112.04664 L 50.082213,112.04664 L 46.415363,109.37984 L 44.081913,105.37964 L 44.081913,82.711842 L 46.415363,78.711642 L 50.082213,76.044842 L 60.749413,76.044842 L 60.749413,79.378342 L 75.416813,79.378342 L 75.416813,76.044842 z"
+     id="path63"
+     style="fill:url(#linearGradient4846);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1" />
+  <text
+     y="-4"
+     id="text65"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
        x="68"
-       y="90"
-       font-size="10">kalem</svg:tspan>
-  </svg:text>
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
-       x="68"
-       y="99"
-       font-size="10">boyu</svg:tspan>
-  </svg:text>
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       y="89"
+       id="tspan67"
+       style="font-size:11px">kalem</tspan>
+  </text>
+  <text
+     y="2"
+     id="text69"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
        x="68"
        y="108"
-       font-size="10">ayan</svg:tspan>
-  </svg:text>
-  <svg:path
-     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
-     d="M 90.084213,137.28005 L 101.08476,137.28005 L 101.08476,141.28025 L 98.417963,141.28025 L 98.417963,139.28015 L 91.417613,139.28015" />
-  <svg:path
-     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
-     d="M 90.084213,155.6143 L 101.08476,155.6143 L 101.08476,151.6141 L 98.417963,151.6141 L 98.417963,153.6142 L 91.417613,153.6142" />
-  <svg:path
-     style="fill:url(#linearGradient4854);fill-opacity:1.0;stroke:#00a0a0;stroke-width:1.33340001000000008;stroke-opacity:1"
-     d="M 75.416813,128.11293 C 86.084013,128.11293 86.084013,128.11293 86.084013,128.11293 L 89.750863,130.77973 L 92.084313,134.77993 L 92.084313,157.44773 L 89.750863,161.44793 L 86.084013,164.11473 L 74.750113,164.11473 L 74.750113,164.11473 L 74.750113,166.78153 L 61.416113,166.78153 L 61.416113,164.11473 L 50.082213,164.11473 L 46.415363,161.44793 L 44.081913,157.44773 L 44.081913,134.77993 L 46.415363,130.77973 L 50.082213,128.11293 L 60.749413,128.11293 L 60.749413,131.44643 L 75.416813,131.44643 L 75.416813,128.11293 z" />
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       id="tspan71"
+       style="font-size:11px">ayan</tspan>
+  </text>
+  <path
+     d="M 90.084213,137.28005 L 101.08476,137.28005 L 101.08476,141.28025 L 98.417963,141.28025 L 98.417963,139.28015 L 91.417613,139.28015"
+     id="path73"
+     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1" />
+  <path
+     d="M 90.084213,155.6143 L 101.08476,155.6143 L 101.08476,151.6141 L 98.417963,151.6141 L 98.417963,153.6142 L 91.417613,153.6142"
+     id="path75"
+     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1" />
+  <path
+     d="M 75.416813,128.11293 C 86.084013,128.11293 86.084013,128.11293 86.084013,128.11293 L 89.750863,130.77973 L 92.084313,134.77993 L 92.084313,157.44773 L 89.750863,161.44793 L 86.084013,164.11473 L 74.750113,164.11473 L 74.750113,164.11473 L 74.750113,166.78153 L 61.416113,166.78153 L 61.416113,164.11473 L 50.082213,164.11473 L 46.415363,161.44793 L 44.081913,157.44773 L 44.081913,134.77993 L 46.415363,130.77973 L 50.082213,128.11293 L 60.749413,128.11293 L 60.749413,131.44643 L 75.416813,131.44643 L 75.416813,128.11293 z"
+     id="path77"
+     style="fill:url(#linearGradient4854);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1" />
+  <text
+     id="text79"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
        x="68"
        y="145"
-       font-size="10">renk</svg:tspan>
-  </svg:text>
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       id="tspan81"
+       style="font-size:11px">renk</tspan>
+  </text>
+  <text
+     id="text83"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
        x="68"
        y="158"
-       font-size="10">ayarı</svg:tspan>
-  </svg:text>
-  <svg:path
-     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
-     d="M 90.084213,189.34813 L 101.08476,189.34813 L 101.08476,193.34833 L 98.417963,193.34833 L 98.417963,191.34823 L 91.417613,191.34823" />
-  <svg:path
-     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
-     d="M 90.084213,207.68238 L 101.08476,207.68238 L 101.08476,203.68218 L 98.417963,203.68218 L 98.417963,205.68228 L 91.417613,205.68228" />
-  <svg:path
-     style="fill:url(#linearGradient4862);fill-opacity:1.0;stroke:#00a0a0;stroke-width:1.33340001000000008;stroke-opacity:1"
-     d="M 75.416813,180.18101 C 86.084013,180.18101 86.084013,180.18101 86.084013,180.18101 L 89.750863,182.84781 L 92.084313,186.84801 L 92.084313,209.51581 L 89.750863,213.51601 L 86.084013,216.18281 L 74.750113,216.18281 L 74.750113,216.18281 L 74.750113,218.84961 L 61.416113,218.84961 L 61.416113,216.18281 L 50.082213,216.18281 L 46.415363,213.51601 L 44.081913,209.51581 L 44.081913,186.84801 L 46.415363,182.84781 L 50.082213,180.18101 L 60.749413,180.18101 L 60.749413,183.51451 L 75.416813,183.51451 L 75.416813,180.18101 z" />
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       id="tspan85"
+       style="font-size:11px">ayarı</tspan>
+  </text>
+  <path
+     d="M 90.084213,189.34813 L 101.08476,189.34813 L 101.08476,193.34833 L 98.417963,193.34833 L 98.417963,191.34823 L 91.417613,191.34823"
+     id="path87"
+     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1" />
+  <path
+     d="M 90.084213,207.68238 L 101.08476,207.68238 L 101.08476,203.68218 L 98.417963,203.68218 L 98.417963,205.68228 L 91.417613,205.68228"
+     id="path89"
+     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1" />
+  <path
+     d="M 75.416813,180.18101 C 86.084013,180.18101 86.084013,180.18101 86.084013,180.18101 L 89.750863,182.84781 L 92.084313,186.84801 L 92.084313,209.51581 L 89.750863,213.51601 L 86.084013,216.18281 L 74.750113,216.18281 L 74.750113,216.18281 L 74.750113,218.84961 L 61.416113,218.84961 L 61.416113,216.18281 L 50.082213,216.18281 L 46.415363,213.51601 L 44.081913,209.51581 L 44.081913,186.84801 L 46.415363,182.84781 L 50.082213,180.18101 L 60.749413,180.18101 L 60.749413,183.51451 L 75.416813,183.51451 L 75.416813,180.18101 z"
+     id="path91"
+     style="fill:url(#linearGradient4862);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1" />
+  <text
+     id="text93"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
        x="68"
        y="197"
-       font-size="11">gölge</svg:tspan>
-  </svg:text>
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       id="tspan95"
+       style="font-size:11px">gölge</tspan>
+  </text>
+  <text
+     id="text97"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
        x="68"
        y="210"
-       font-size="11">ayarı</svg:tspan>
-  </svg:text>
-  <svg:path
-     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
-     d="M 89.917538,260.08382 L 100.91809,260.08382 L 100.91809,264.2507 L 98.251288,264.2507 L 98.251288,262.08393 L 91.250938,262.08393" />
-  <svg:path
-     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
-     d="M 89.917538,278.41807 L 100.91809,278.41807 L 100.91809,274.41787 L 98.251288,274.41787 L 98.251288,276.41797 L 91.250938,276.41797" />
-  <svg:path
-     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
-     d="M 90.084213,235.5826 L 101.08476,235.5826 L 101.08476,239.5828 L 98.417963,239.5828 L 98.417963,237.5827 L 91.417613,237.5827" />
-  <svg:path
-     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1"
-     d="M 90.084213,253.91685 L 101.08476,253.91685 L 101.08476,249.91665 L 98.417963,249.91665 L 98.417963,251.91675 L 91.417613,251.91675" />
-  <svg:path
-     style="fill:url(#linearGradient4870);fill-opacity:1.0;stroke:#00a0a0;stroke-width:1.33340001000000008;stroke-opacity:1"
-     d="M 75.416813,232.2491 C 86.084013,232.2491 86.084013,232.2491 86.084013,232.2491 L 89.750863,234.9159 L 92.084313,238.9161 L 92.084313,276.2513 L 89.750863,279.5848 L 86.084013,282.2516 L 74.750113,282.2516 L 74.750113,282.2516 L 74.750113,284.9184 L 61.416113,284.9184 L 61.416113,282.2516 L 50.082213,282.2516 L 46.415363,279.5848 L 44.081913,276.2513 L 44.081913,238.9161 L 46.415363,234.9159 L 50.082213,232.2491 L 60.749413,232.2491 L 60.749413,235.5826 L 75.416813,235.5826 L 75.416813,232.2491 z" />
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       id="tspan99"
+       style="font-size:11px">ayarı</tspan>
+  </text>
+  <path
+     d="M 89.917538,260.08382 L 100.91809,260.08382 L 100.91809,264.2507 L 98.251288,264.2507 L 98.251288,262.08393 L 91.250938,262.08393"
+     id="path101"
+     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1" />
+  <path
+     d="M 89.917538,278.41807 L 100.91809,278.41807 L 100.91809,274.41787 L 98.251288,274.41787 L 98.251288,276.41797 L 91.250938,276.41797"
+     id="path103"
+     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1" />
+  <path
+     d="M 90.084213,235.5826 L 101.08476,235.5826 L 101.08476,239.5828 L 98.417963,239.5828 L 98.417963,237.5827 L 91.417613,237.5827"
+     id="path105"
+     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1" />
+  <path
+     d="M 90.084213,253.91685 L 101.08476,253.91685 L 101.08476,249.91665 L 98.417963,249.91665 L 98.417963,251.91675 L 91.417613,251.91675"
+     id="path107"
+     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1" />
+  <path
+     d="M 75.416813,232.2491 C 86.084013,232.2491 86.084013,232.2491 86.084013,232.2491 L 89.750863,234.9159 L 92.084313,238.9161 L 92.084313,276.2513 L 89.750863,279.5848 L 86.084013,282.2516 L 74.750113,282.2516 L 74.750113,282.2516 L 74.750113,284.9184 L 61.416113,284.9184 L 61.416113,282.2516 L 50.082213,282.2516 L 46.415363,279.5848 L 44.081913,276.2513 L 44.081913,238.9161 L 46.415363,234.9159 L 50.082213,232.2491 L 60.749413,232.2491 L 60.749413,235.5826 L 75.416813,235.5826 L 75.416813,232.2491 z"
+     id="path109"
+     style="fill:url(#linearGradient4870);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1" />
+  <text
+     id="text111"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
        x="68"
        y="255"
-       font-size="11">ekranı</svg:tspan>
-  </svg:text>
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       id="tspan113"
+       style="font-size:11px">ekranı</tspan>
+  </text>
+  <text
+     id="text115"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
        x="68"
        y="268"
-       font-size="11">doldur</svg:tspan>
-  </svg:text>
-  <svg:text
-     style="font-size:12px;text-anchor:end;text-align:end;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       id="tspan117"
+       style="font-size:11px">doldur</tspan>
+  </text>
+  <text
+     id="text119"
+     style="font-size:12px;text-align:end;text-anchor:end;font-family:Bitstream Vera Sans">
+    <tspan
        x="91"
        y="243"
-       font-size="8">renk</svg:tspan>
-  </svg:text>
-  <svg:text
-     style="font-size:12px;text-anchor:end;text-align:end;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       id="tspan121"
+       style="font-size:8px">renk</tspan>
+  </text>
+  <text
+     id="text123"
+     style="font-size:12px;text-align:end;text-anchor:end;font-family:Bitstream Vera Sans">
+    <tspan
        x="91"
        y="277"
-       font-size="8">gölge</svg:tspan>
-  </svg:text>
-  <svg:path
-     style="fill:url(#linearGradient4878);fill-opacity:1.0;stroke:#00a0a0;stroke-width:1.33340001000000008;stroke-opacity:1"
-     d="M 37.998275,306.12996 L 41.331775,306.12996 L 41.331775,308.79676 L 45.998675,308.79676 L 45.998675,306.12996 L 107.00172,306.12996 L 107.00172,319.46396 L 45.998675,319.46396 L 45.998675,316.79716 L 41.331775,316.79716 L 41.331775,319.46396 L 37.998275,319.46396 L 37.998275,306.12996 z" />
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       id="tspan125"
+       style="font-size:8px">gölge</tspan>
+  </text>
+  <path
+     d="M 37.998275,402.09575 L 41.331775,402.09575 L 41.331775,404.76255 L 45.998675,404.76255 L 45.998675,402.09575 L 107.00172,402.09575 L 107.00172,415.42975 L 45.998675,415.42975 L 45.998675,412.76295 L 41.331775,412.76295 L 41.331775,415.42975 L 37.998275,415.42975 L 37.998275,402.09575 z"
+     id="path127"
+     style="fill:url(#linearGradient4878);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1" />
+  <text
+     x="2"
+     y="95.96579"
+     id="text129"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="74.5"
+       y="411.96579"
+       id="tspan131"
+       style="font-size:10.5px">kalem boyu</tspan>
+  </text>
+  <path
+     d="M 37.998275,427.04752 L 41.331775,427.04752 L 41.331775,429.71432 L 45.998675,429.71432 L 45.998675,427.04752 L 107.00172,427.04752 L 107.00172,440.38152 L 45.998675,440.38152 L 45.998675,437.71472 L 41.331775,437.71472 L 41.331775,440.38152 L 37.998275,440.38152 L 37.998275,427.04752 z"
+     id="path133"
+     style="fill:url(#linearGradient4886);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1" />
+  <text
+     y="95.96579"
+     id="text135"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
        x="72.5"
-       y="316"
-       font-size="10.5">kalem boyu</svg:tspan>
-  </svg:text>
-  <svg:path
-     style="fill:url(#linearGradient4886);fill-opacity:1.0;stroke:#00a0a0;stroke-width:1.33340001000000008;stroke-opacity:1"
-     d="M 37.998275,331.08173 L 41.331775,331.08173 L 41.331775,333.74853 L 45.998675,333.74853 L 45.998675,331.08173 L 107.00172,331.08173 L 107.00172,344.41573 L 45.998675,344.41573 L 45.998675,341.74893 L 41.331775,341.74893 L 41.331775,344.41573 L 37.998275,344.41573 L 37.998275,331.08173 z" />
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
+       y="436.96579"
+       id="tspan137"
+       style="font-size:10.5px">renk</tspan>
+  </text>
+  <path
+     d="M 37.998275,451.9993 L 41.331775,451.9993 L 41.331775,454.6661 L 45.998675,454.6661 L 45.998675,451.9993 L 107.00172,451.9993 L 107.00172,465.3333 L 45.998675,465.3333 L 45.998675,462.6665 L 41.331775,462.6665 L 41.331775,465.3333 L 37.998275,465.3333 L 37.998275,451.9993 z"
+     id="path139"
+     style="fill:url(#linearGradient4894);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1" />
+  <text
+     y="95.96579"
+     id="text141"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
        x="72.5"
-       y="341"
-       font-size="10.5">renk</svg:tspan>
-  </svg:text>
-  <svg:path
-     style="fill:url(#linearGradient4894);fill-opacity:1.0;stroke:#00a0a0;stroke-width:1.33340001000000008;stroke-opacity:1"
-     d="M 37.998275,356.03351 L 41.331775,356.03351 L 41.331775,358.70031 L 45.998675,358.70031 L 45.998675,356.03351 L 107.00172,356.03351 L 107.00172,369.36751 L 45.998675,369.36751 L 45.998675,366.70071 L 41.331775,366.70071 L 41.331775,369.36751 L 37.998275,369.36751 L 37.998275,356.03351 z" />
-  <svg:text
-     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
-    <svg:tspan
-       x="72.5"
-       y="366"
-       font-size="10.5">gölge</svg:tspan>
-  </svg:text>
-</svg:svg>
+       y="461.96579"
+       id="tspan143"
+       style="font-size:10.5px">gölge</tspan>
+  </text>
+  <path
+     d="M 90.645213,309.3525 L 101.70021,309.3525 L 101.70021,313.3725 L 99.020213,313.3725 L 99.020213,311.3625 L 91.985213,311.3625"
+     id="path2622"
+     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.29999995;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     d="M 90.645213,327.7775 L 101.70021,327.7775 L 101.70021,323.7575 L 99.020213,323.7575 L 99.020213,325.7675 L 91.985213,325.7675"
+     id="path2624"
+     style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.29999995;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     d="M 75.905213,300.14 C 86.625213,300.14 86.625213,300.14 86.625213,300.14 L 90.310213,302.82 L 92.655213,306.84 L 92.655213,329.62 L 90.310213,333.64 L 86.625213,336.32 L 75.235213,336.32 L 75.235213,336.32 L 75.235213,339 L 61.835213,339 L 61.835213,336.32 L 50.445213,336.32 L 46.760213,333.64 L 44.415213,329.62 L 44.415213,306.84 L 46.760213,302.82 L 50.445213,300.14 L 61.165213,300.14 L 61.165213,303.49 L 75.905213,303.49 L 75.905213,300.14 z"
+     id="path2626"
+     style="fill:url(#linearGradient4886);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33000004;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <text
+     x="43.745213"
+     y="299.47"
+     id="text2628"
+     style="font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="68.53521"
+       y="314.20999"
+       id="tspan2630"
+       style="font-size:10.5px">metin</tspan>
+  </text>
+  <text
+     x="43.745213"
+     y="299.47"
+     id="text2632"
+     style="font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="68.53521"
+       y="323.59"
+       id="tspan2634"
+       style="font-size:10.5px">renk</tspan>
+  </text>
+  <text
+     x="43.745213"
+     y="299.47"
+     id="text2636"
+     style="font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="68.53521"
+       y="332.97"
+       id="tspan2638"
+       style="font-size:10.5px">ayarı</tspan>
+  </text>
+  <text
+     x="-0.13696432"
+     y="-7.938364"
+     id="text2470"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="67.863037"
+       y="98.061638"
+       id="tspan2472"
+       style="font-size:11px">boyu</tspan>
+  </text>
+</svg>
