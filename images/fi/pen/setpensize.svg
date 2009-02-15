@@ -60,14 +60,21 @@
      style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <tspan
        x="37"
-       y="27"
+       y="22"
        style="font-size:16px;">aseta</tspan>
   </text>
   <text
      style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <tspan
        x="37"
-       y="46"
-       style="font-size:16px;">kynän koko</tspan>
+       y="36"
+       style="font-size:16px;">kynän</tspan>
+  </text>
+  <text
+     style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+    <tspan
+       x="37"
+       y="50"
+       style="font-size:16px;">koko</tspan>
   </text>
 </svg>

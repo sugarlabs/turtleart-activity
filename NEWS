@@ -1,3 +1,40 @@
+33
+
+* merge with TAPortfolio (and elimination of Sensor and myblock features)
+
+32
+
+* rebase on TAPortfolio code
+
+31
+
+* run and step
+
+30
+
+* fixed broken POT file
+
+29
+
+* new artwork, better i18n
+
+28
+
+* added push and pop (en only)
+
+27
+
+* add named boxes and stacks
+
+26
+
+* allow new blocks to be created by clicking in addition to drag and drop
+
+25
+
+* added sensor panel from TurtleArt with Sensors
+* catch exceptions where DC Audio is not available (non-OLPC_XO-1 hardware) 
+
 24
 
 * add UCB logo export

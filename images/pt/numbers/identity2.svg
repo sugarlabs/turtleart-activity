@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="52.5"
+   height="57.25"
+   id="svg2">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3166">
+      <stop
+         id="stop3168"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3170"
+         style="stop-color:#ffc000;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="-0.25"
+       y1="18.5"
+       x2="52.25"
+       y2="18.5"
+       id="linearGradient3173"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="104"
+       y2="21"
+       id="linearGradient3172"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-0.2720588,8.0000002)" />
+    <linearGradient
+       id="linearGradient2480">
+      <stop
+         id="stop2482"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop2484"
+         style="stop-color:#ff00ff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="-0.25"
+       y1="18.5"
+       x2="52.25"
+       y2="18.5"
+       id="linearGradient2490"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.78e-7,29.691177)" />
+    <linearGradient
+       x1="-0.25"
+       y1="18.5"
+       x2="52.25"
+       y2="18.5"
+       id="linearGradient2493"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(8.8e-8,33.25)" />
+    <linearGradient
+       x1="-0.25"
+       y1="18.5"
+       x2="52.25"
+       y2="18.5"
+       id="linearGradient2495"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0.25,0.25)" />
+  </defs>
+  <path
+     d="M 30,0.75 L 51.75,0.75 L 51.75,9.75 L 47.75,9.75 L 47.75,6.75 L 38.75,6.75 L 38.75,29.75 L 47.75,29.75 L 47.75,26.75 L 51.75,26.75 L 51.75,35.5 L 38.75,35.5 L 10.75,52.5 L 6.25,52.5 L 6.25,56.5 L 0.75,56.5 L 0.75,36 L 6.25,36 L 6.25,40 L 10.75,40 L 30,28 L 30,0.75 z"
+     id="path10"
+     style="fill:url(#linearGradient2495);fill-opacity:1;stroke:#a97513;stroke-width:1.5px;stroke-opacity:1" />
+</svg>

@@ -16,6 +16,70 @@ msgstr ""
 msgid "Turtle Art"
 msgstr "Kilpikonnataide"
 
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr ""
+
+#: tasetup.py:66
+msgid "text"
+msgstr ""
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Save as"
+msgstr ""
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr ""
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr ""
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr ""
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr ""
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr ""
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr ""
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr ""
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr ""
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr ""
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr ""
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr ""
+
 #:
 msgid "Flow"
 msgstr "Virtaus"
@@ -53,12 +117,24 @@ msgid "My Blocks"
 msgstr "Minun lohkoni"
 
 #:
+msgid "start"
+msgstr ""
+
+#:
+msgid "box"
+msgstr "laatikko"
+
+#:
 msgid "box 1"
 msgstr "laatikko 1"
 
 #:
 msgid "box 2"
 msgstr "laatikko 2"
+
+#:
+msgid "stack"
+msgstr "pino"
 
 #:
 msgid "stack 1"
@@ -75,6 +151,10 @@ msgstr "säilytä laatikossa 1"
 #:
 msgid "store in box 2"
 msgstr "Säilytä laatikossa 2"
+
+#:
+msgid "name"
+msgstr ""
 
 #:
 msgid "Numbers"
@@ -157,6 +237,10 @@ msgid "set color"
 msgstr "aseta väri"
 
 #:
+msgid "set text color"
+msgstr ""
+
+#:
 msgid "Blocks"
 msgstr "Lohkot"
 
@@ -225,9 +309,47 @@ msgid "ycor"
 msgstr "y koord"
 
 #:
-msgid "Project"
+msgid "Sensors"
 msgstr ""
 
 #:
-msgid "Samples"
+msgid "volume"
 msgstr ""
+
+#:
+msgid "pitch"
+msgstr ""
+
+#:
+msgid "voltage"
+msgstr ""
+
+#:
+msgid "resistance"
+msgstr ""
+
+
+#:
+msgid "Templates"
+msgstr ""
+
+#:
+msgid "Keyboard"
+msgstr ""
+
+#:
+msgid "read key"
+msgstr ""
+
+#:
+msgid "sound"
+msgstr ""
+
+#:
+msgid "hres"
+msgstr ""
+
+#:
+msgid "vres"
+msgstr ""
+
