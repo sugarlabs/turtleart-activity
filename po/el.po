@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: 2008-12-18 11:28-0500\n"
+"PO-Revision-Date: 2009-01-29 00:14-0500\n"
 "Last-Translator: Γιάννης Κασκαμανίδης <ttnfy17@yahoo.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -53,15 +53,15 @@ msgstr "αναμονή"
 
 #:
 msgid "My Blocks"
-msgstr ""
+msgstr "Τα τμήματά μου"
 
 #:
 msgid "box 1"
-msgstr ""
+msgstr "πλαίσιο 1"
 
 #:
 msgid "box 2"
-msgstr ""
+msgstr "πλαίσιο 2"
 
 #:
 msgid "stack 1"
@@ -73,11 +73,11 @@ msgstr "στοίβα 2"
 
 #:
 msgid "store in box 1"
-msgstr ""
+msgstr "αποθήκευση στο πλαίσιο 1"
 
 #:
 msgid "store in box 2"
-msgstr ""
+msgstr "αποθήκευση στο πλαίσιο 2"
 
 #:
 msgid "Numbers"
@@ -113,7 +113,7 @@ msgstr "μέγιστο"
 
 #:
 msgid "mod"
-msgstr ""
+msgstr "mod"
 
 #:
 msgid "print"
@@ -121,7 +121,7 @@ msgstr "εκτύπωση"
 
 #:
 msgid "Pen"
-msgstr "Στυλό"
+msgstr "Στιλό"
 
 #:
 msgid "color"
@@ -137,19 +137,19 @@ msgstr "γέμισμα οθόνης"
 
 #:
 msgid "pen up"
-msgstr ""
+msgstr "στιλό πάνω"
 
 #:
 msgid "pen down"
-msgstr "στυλό κάτω"
+msgstr "στιλό κάτω"
 
 #:
 msgid "set pen size"
-msgstr "ορισμός μεγέθους στυλό"
+msgstr "ορισμός μεγέθους στιλό"
 
 #:
 msgid "pen size"
-msgstr "μέγεθος στυλό"
+msgstr "μέγεθος στιλό"
 
 #:
 msgid "set shade"
@@ -161,7 +161,7 @@ msgstr "ορισμός χρώματος"
 
 #:
 msgid "Blocks"
-msgstr ""
+msgstr "Τμήματα"
 
 #:
 msgid "Turtle"
@@ -185,52 +185,52 @@ msgstr "αριστερά"
 
 #:
 msgid "arc"
-msgstr ""
+msgstr "τόξο"
 
 #:
 msgid "angle"
-msgstr ""
+msgstr "γωνία"
 
 #:
 msgid "radius"
-msgstr ""
+msgstr "ακτίνα"
 
 #:
 msgid "heading"
-msgstr ""
+msgstr "κεφαλίδα"
 
 #:
 msgid "set heading"
-msgstr "seth"
+msgstr "ορισμός επικεφαλίδας"
 
 #:
 msgid "clean"
-msgstr ""
+msgstr "καθαρισμός"
 
 #:
 msgid "set xy"
-msgstr ""
+msgstr "ορισμός xy"
 
 #:
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #:
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #:
 msgid "xcor"
-msgstr ""
+msgstr "xγωνία"
 
 #:
 msgid "ycor"
-msgstr ""
+msgstr "yγωνία"
 
 #:
 msgid "Project"
-msgstr ""
+msgstr "Έργο"
 
 #:
 msgid "Samples"
-msgstr ""
+msgstr "Παραδείγματα"
