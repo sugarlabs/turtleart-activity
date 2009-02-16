@@ -1,84 +1,82 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2009-02-15 16:04-0500\n"
+"Last-Translator: Eduardo H. Silva <HoboPrimate@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"X-Generator: Pootle 1.1.0rc2\n"
 
 #: 
 msgid "Turtle Art"
-msgstr "Tartaruga"
-
+msgstr "Arte-tartaruga"
 
 #: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
 #: tasetup.py:53 tasetup.py:54
 msgid "title"
-msgstr ""
+msgstr "título"
 
 #: tasetup.py:66
 msgid "text"
-msgstr ""
+msgstr "texto"
 
 #: TurtleArtActivity.py:48
 msgid "Project"
-msgstr ""
+msgstr "Projecto"
 
 #:
 msgid "Save as"
-msgstr ""
+msgstr "Guardar como"
 
 #: TurtleArtActivity.py:173 TurtleArtActivity.py:262
 #: TurtleArtActivity.py:293
 msgid "hide palette"
-msgstr ""
+msgstr "esconder a palete"
 
 #: TurtleArtActivity.py:181 TurtleArtActivity.py:286
 msgid "hide blocks"
-msgstr ""
+msgstr "esconde os blocos"
 
 #: TurtleArtActivity.py:194
 msgid "run"
-msgstr ""
+msgstr "executar"
 
 #: TurtleArtActivity.py:202
 msgid "step"
-msgstr ""
+msgstr "passo"
 
 #: TurtleArtActivity.py:210
 msgid "stop turtle"
-msgstr ""
+msgstr "parar tartaruga"
 
 #: TurtleArtActivity.py:236
 msgid "samples"
-msgstr ""
+msgstr "exemplos"
 
 #: TurtleArtActivity.py:249
 msgid "save as HTML"
-msgstr ""
+msgstr "guardar como HTML"
 
 #: TurtleArtActivity.py
 msgid "save Logo"
-msgstr ""
+msgstr "guardar Logo"
 
 #: TurtleArtActivity.py
 msgid "load my block"
-msgstr ""
+msgstr "carregar o meu bloco"
 
 #: TurtleArtActivity.py:259 TurtleArtActivity.py:267
 #: TurtleArtActivity.py:290 TurtleArtActivity.py:299
 msgid "show palette"
-msgstr ""
+msgstr "mostrar palete"
 
 #: TurtleArtActivity.py:283 TurtleArtActivity.py:297
 msgid "show blocks"
-msgstr ""
+msgstr "mostrar blocos"
 
 #:
 msgid "Flow"
@@ -90,7 +88,7 @@ msgstr "para sempre"
 
 #:
 msgid "if"
-msgstr "si"
+msgstr "se"
 
 #:
 msgid "then"
@@ -118,7 +116,7 @@ msgstr "Os meus blocos"
 
 #:
 msgid "start"
-msgstr ""
+msgstr "iniciar"
 
 #:
 msgid "box"
@@ -154,7 +152,7 @@ msgstr "por na caixa 2"
 
 #:
 msgid "name"
-msgstr ""
+msgstr "nome"
 
 #:
 msgid "Numbers"
@@ -190,11 +188,11 @@ msgstr "máx"
 
 #:
 msgid "mod"
-msgstr "mód"
+msgstr "mod"
 
 #:
 msgid "print"
-msgstr "imprimir"
+msgstr "Escrever"
 
 #:
 msgid "Pen"
@@ -210,19 +208,19 @@ msgstr "tom"
 
 #:
 msgid "fill screen"
-msgstr "encher ecrã"
+msgstr "encher o ecrã"
 
 #:
 msgid "pen up"
-msgstr "caneta acima"
+msgstr "caneta levantada"
 
 #:
 msgid "pen down"
-msgstr "caneta abaixo"
+msgstr "caneta baixada"
 
 #:
 msgid "set pen size"
-msgstr "ajustar tamanho da caneta"
+msgstr "ajustar o tamanho da caneta"
 
 #:
 msgid "pen size"
@@ -230,15 +228,15 @@ msgstr "tamanho da caneta"
 
 #:
 msgid "set shade"
-msgstr "ajustar tom"
+msgstr "ajustar o tom"
 
 #:
 msgid "set color"
-msgstr "ajustar cor"
+msgstr "ajustar a cor"
 
 #:
 msgid "set text color"
-msgstr ""
+msgstr "ajustar a cor do texto"
 
 #:
 msgid "Blocks"
@@ -250,11 +248,11 @@ msgstr "Tartaruga"
 
 #:
 msgid "forward"
-msgstr "avante"
+msgstr "avançar"
 
 #:
 msgid "back"
-msgstr "atrás"
+msgstr "recuar"
 
 #:
 msgid "right"
@@ -274,7 +272,7 @@ msgstr "ângulo"
 
 #:
 msgid "radius"
-msgstr "rádio"
+msgstr "raio"
 
 #:
 msgid "heading"
@@ -282,7 +280,7 @@ msgstr "cabeçalho"
 
 #:
 msgid "set heading"
-msgstr "ajustar cabeçalho"
+msgstr "ajustar o cabeçalho"
 
 #:
 msgid "clean"
@@ -310,23 +308,23 @@ msgstr "ycor"
 
 #:
 msgid "Sensors"
-msgstr ""
+msgstr "Sensores"
 
 #:
 msgid "volume"
-msgstr ""
+msgstr "volume"
 
 #:
 msgid "pitch"
-msgstr ""
+msgstr "tom"
 
 #:
 msgid "voltage"
-msgstr ""
+msgstr "voltagem"
 
 #:
 msgid "resistance"
-msgstr ""
+msgstr "resistência"
 
 #:
 msgid "Templates"
@@ -334,15 +332,15 @@ msgstr ""
 
 #:
 msgid "Keyboard"
-msgstr ""
+msgstr "Teclado"
 
 #:
 msgid "read key"
-msgstr ""
+msgstr "ler a chave"
 
 #:
 msgid "sound"
-msgstr ""
+msgstr "som"
 
 #:
 msgid "hres"
@@ -351,4 +349,3 @@ msgstr ""
 #:
 msgid "vres"
 msgstr ""
-
