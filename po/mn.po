@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: 2008-12-29 00:44-0500\n"
+"PO-Revision-Date: 2009-02-17 16:34-0500\n"
 "Last-Translator: Odontsetseg Bat-Erdene <obat-erdene@suffolk.edu>\n"
 "Language-Team: Mongolian\n"
 "MIME-Version: 1.0\n"
@@ -18,15 +18,14 @@ msgstr "Яст мэлхий уран бүтээл"
 #: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
 #: tasetup.py:53 tasetup.py:54
 msgid "title"
-msgstr ""
+msgstr "гарчиг"
 
 #: tasetup.py:66
 msgid "text"
-msgstr ""
-
+msgstr "бичвэр"
 
 msgid "Save as"
-msgstr ""
+msgstr "Нэр өөрчилж хадгалах"
 
 #: TurtleArtActivity.py:173 TurtleArtActivity.py:262
 #: TurtleArtActivity.py:293
@@ -43,27 +42,27 @@ msgstr ""
 
 #: TurtleArtActivity.py:202
 msgid "step"
-msgstr ""
+msgstr "алхам"
 
 #: TurtleArtActivity.py:210
 msgid "stop turtle"
-msgstr ""
+msgstr "яст мэлхий зогсоох"
 
 #: TurtleArtActivity.py:236
 msgid "samples"
-msgstr ""
+msgstr "жишээ"
 
 #: TurtleArtActivity.py:249
 msgid "save as HTML"
-msgstr ""
+msgstr "HTML-аар хадгалах"
 
 #: TurtleArtActivity.py
 msgid "save Logo"
-msgstr ""
+msgstr "Logo-аар хадгалах"
 
 #: TurtleArtActivity.py
 msgid "load my block"
-msgstr ""
+msgstr "Миний блок ачаалах"
 
 #: TurtleArtActivity.py:259 TurtleArtActivity.py:267
 #: TurtleArtActivity.py:290 TurtleArtActivity.py:299
@@ -83,7 +82,7 @@ msgstr "үүрд"
 
 #:
 msgid "if"
-msgstr "xзpзb"
+msgstr "xэpэв"
 
 #:
 msgid "then"
@@ -111,7 +110,7 @@ msgstr "Миний Блокуд"
 
 #:
 msgid "start"
-msgstr ""
+msgstr "эхлүүлэх"
 
 msgid "box"
 msgstr "богц"
@@ -142,7 +141,7 @@ msgid "store in box 2"
 msgstr "богц 2-д хадгал"
 
 msgid "name"
-msgstr ""
+msgstr "нэр"
 
 msgid "Numbers"
 msgstr "Тооны Уйлдзл"
@@ -301,46 +300,39 @@ msgstr ""
 #:
 msgid "Samples"
 msgstr "Жишээ"
-msgid "Sensors"
+
+msgid ""
 msgstr ""
 
-#:
+
 msgid "volume"
-msgstr ""
+msgstr "дууны хэмжээ"
 
-#:
 msgid "pitch"
-msgstr ""
+msgstr "өндөр"
 
-#:
 msgid "voltage"
-msgstr ""
+msgstr "цахилгааны хүчдэл"
 
-#:
 msgid "resistance"
-msgstr ""
+msgstr "эсэргүүцэл"
 
-#:
 msgid "Templates"
-msgstr ""
+msgstr "Загвар"
 
-#:
 msgid "Keyboard"
-msgstr ""
+msgstr "Гар"
 
-#:
 msgid "read key"
 msgstr ""
 
-#:
-msgid "sound"
-msgstr ""
 
-#:
+msgid "sound"
+msgstr "дуу чимээ"
+
 msgid "hres"
 msgstr ""
 
-#:
+
 msgid "vres"
 msgstr ""
-
