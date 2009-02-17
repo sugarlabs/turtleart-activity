@@ -2,203 +2,204 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2009-02-13 08:49-0500\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"X-Generator: Pootle 1.1.0rc2\n"
 
+# Tên: không nên dịch
 #: 
 msgid "Turtle Art"
-msgstr ""
+msgstr "Turtle Art"
 
 #:
 msgid "Flow"
-msgstr ""
+msgstr "Chảy"
 
 #:
 msgid "forever"
-msgstr ""
+msgstr "hẳn"
 
 #:
 msgid "if"
-msgstr ""
+msgstr "nếu"
 
 #:
 msgid "then"
-msgstr ""
+msgstr "thì"
 
 #:
 msgid "else"
-msgstr ""
+msgstr "không thì"
 
 #:
 msgid "repeat"
-msgstr ""
+msgstr "lặp lại"
 
 #:
 msgid "stop stack"
-msgstr ""
+msgstr "dừng đống"
 
 #:
 msgid "wait"
-msgstr ""
+msgstr "đợi"
 
 #:
 msgid "My Blocks"
-msgstr ""
+msgstr "Khối của mình"
 
 #:
 msgid "box 1"
-msgstr ""
+msgstr "hộp 1"
 
 #:
 msgid "box 2"
-msgstr ""
+msgstr "hộp 2"
 
 #:
 msgid "stack 1"
-msgstr ""
+msgstr "đống 1"
 
 #:
 msgid "stack 2"
-msgstr ""
+msgstr "đống 2"
 
 #:
 msgid "store in box 1"
-msgstr ""
+msgstr "lưu vào hộp 1"
 
 #:
 msgid "store in box 2"
-msgstr ""
+msgstr "lưu vào hộp 2"
 
 #:
 msgid "Numbers"
-msgstr ""
+msgstr "Số"
 
 #:
 msgid "number"
-msgstr ""
+msgstr "số"
 
 #:
 msgid "and"
-msgstr ""
+msgstr "và"
 
 #:
 msgid "or"
-msgstr ""
+msgstr "hoặc"
 
 #:
 msgid "not"
-msgstr ""
+msgstr "không phải"
 
 #:
 msgid "random"
-msgstr ""
+msgstr "ngẫu nhiên"
 
 #:
 msgid "min"
-msgstr ""
+msgstr "tiểu"
 
 #:
 msgid "max"
-msgstr ""
+msgstr "đại"
 
 #:
 msgid "mod"
-msgstr ""
+msgstr "sửa"
 
 #:
 msgid "print"
-msgstr ""
+msgstr "in"
 
 #:
 msgid "Pen"
-msgstr ""
+msgstr "Bút"
 
 #:
 msgid "color"
-msgstr ""
+msgstr "màu"
 
 #:
 msgid "shade"
-msgstr ""
+msgstr "sắc màu"
 
 #:
 msgid "fill screen"
-msgstr ""
+msgstr "toàn màn hình"
 
 #:
 msgid "pen up"
-msgstr ""
+msgstr "bút lên"
 
 #:
 msgid "pen down"
-msgstr ""
+msgstr "bút xuống"
 
 #:
 msgid "set pen size"
-msgstr ""
+msgstr "đặt kích cỡ bút"
 
 #:
 msgid "pen size"
-msgstr ""
+msgstr "kích cỡ bút"
 
 #:
 msgid "set shade"
-msgstr ""
+msgstr "đặt sắc màu"
 
 #:
 msgid "set color"
-msgstr ""
+msgstr "đặt màu"
 
 #:
 msgid "Blocks"
-msgstr ""
+msgstr "Khối"
 
+# Tên: không nên dịch
 #:
 msgid "Turtle"
-msgstr ""
+msgstr "Turtle"
 
 #:
 msgid "forward"
-msgstr ""
+msgstr "tiếp"
 
 #:
 msgid "back"
-msgstr ""
+msgstr "lùi"
 
 #:
 msgid "right"
-msgstr ""
+msgstr "phải"
 
 #:
 msgid "left"
-msgstr ""
+msgstr "trái"
 
 #:
 msgid "arc"
-msgstr ""
+msgstr "cung"
 
 #:
 msgid "angle"
-msgstr ""
+msgstr "góc"
 
 #:
 msgid "radius"
-msgstr ""
+msgstr "bán kính"
 
 #:
 msgid "heading"
-msgstr ""
+msgstr "tiêu đề"
 
 #:
 msgid "set heading"
@@ -206,32 +207,32 @@ msgstr "seth"
 
 #:
 msgid "clean"
-msgstr ""
+msgstr "gột"
 
 #:
 msgid "set xy"
-msgstr ""
+msgstr "đặt xy"
 
 #:
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #:
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #:
 msgid "xcor"
-msgstr ""
+msgstr "xcor"
 
 #:
 msgid "ycor"
-msgstr ""
+msgstr "ycor"
 
 #:
 msgid "Project"
-msgstr ""
+msgstr "Dự án"
 
 #:
 msgid "Samples"
-msgstr ""
+msgstr "Mẫu ví dụ"
