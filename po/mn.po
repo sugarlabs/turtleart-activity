@@ -24,6 +24,23 @@ msgstr "гарчиг"
 msgid "text"
 msgstr "бичвэр"
 
+#:
+msgid "stack"
+msgstr "залгас"
+
+#:
+msgid "box"
+msgstr "богц"
+
+#:
+msgid "name"
+msgstr "нэр"
+
+#:
+msgid "Project"
+msgstr ""
+
+#:
 msgid "Save as"
 msgstr "Нэр өөрчилж хадгалах"
 
@@ -73,6 +90,7 @@ msgstr ""
 msgid "show blocks"
 msgstr ""
 
+#:
 msgid "Flow"
 msgstr "Урсахуй"
 
@@ -109,12 +127,6 @@ msgid "My Blocks"
 msgstr "Миний Блокуд"
 
 #:
-msgid "start"
-msgstr "эхлүүлэх"
-
-msgid "box"
-msgstr "богц"
-
 msgid "box 1"
 msgstr "богц 1"
 
@@ -122,9 +134,7 @@ msgstr "богц 1"
 msgid "box 2"
 msgstr "богц 2"
 
-msgid "stack"
-msgstr "залгас"
-
+#:
 msgid "stack 1"
 msgstr "залгас 1"
 
@@ -140,9 +150,15 @@ msgstr "богц 1-д хадгал"
 msgid "store in box 2"
 msgstr "богц 2-д хадгал"
 
-msgid "name"
-msgstr "нэр"
+#:
+msgid "push"
+msgstr ""
 
+#:
+msgid "pop"
+msgstr ""
+
+#:
 msgid "Numbers"
 msgstr "Тооны Уйлдзл"
 
@@ -226,12 +242,17 @@ msgstr "өнгө"
 msgid "set text color"
 msgstr ""
 
+#:
 msgid "Blocks"
 msgstr "Блокууд"
 
 #:
 msgid "Turtle"
 msgstr "Яст Мэлхий"
+
+#:
+msgid "clean"
+msgstr "арилга"
 
 #:
 msgid "forward"
@@ -270,10 +291,6 @@ msgid "set heading"
 msgstr "seth"
 
 #:
-msgid "clean"
-msgstr "арилга"
-
-#:
 msgid "set xy"
 msgstr "тэнхлэг"
 
@@ -294,45 +311,50 @@ msgid "ycor"
 msgstr "y тэнхлэг"
 
 #:
-msgid "Project"
+msgid "Sensors"
 msgstr ""
 
 #:
-msgid "Samples"
-msgstr "Жишээ"
-
-msgid ""
-msgstr ""
-
-
 msgid "volume"
 msgstr "дууны хэмжээ"
 
+#:
 msgid "pitch"
 msgstr "өндөр"
 
+#:
 msgid "voltage"
 msgstr "цахилгааны хүчдэл"
 
+#:
 msgid "resistance"
 msgstr "эсэргүүцэл"
 
+#:
 msgid "Templates"
 msgstr "Загвар"
 
+#:
 msgid "Keyboard"
 msgstr "Гар"
 
+#:
 msgid "read key"
 msgstr ""
 
-
+#:
 msgid "sound"
 msgstr "дуу чимээ"
 
+#:
 msgid "hres"
 msgstr ""
 
-
+#:
 msgid "vres"
 msgstr ""
+
+#:
+msgid "start"
+msgstr "эхлүүлэх"
+
