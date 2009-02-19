@@ -182,7 +182,7 @@
        x="22.163086"
        y="21.40197"
        id="tspan2796"
-       style="font-size:20px">Templates</tspan>
+       style="font-size:20px">Modèles</tspan>
   </text>
   <path
      d="M 48.060226,35.454452 L 96.939774,35.454452 L 96.939774,70.3333 L 48.060226,70.3333 L 48.060226,35.454452 z"
@@ -241,7 +241,7 @@
        x="72.273285"
        y="443.93198"
        id="tspan2718"
-       style="font-size:12.06000042px">hide</tspan>
+       style="font-size:12.06000042px">masque</tspan>
   </text>
   <text
      x="47.459724"
@@ -252,7 +252,7 @@
        x="72.249733"
        y="456.66196"
        id="tspan2722"
-       style="font-size:12.06000042px">blocks</tspan>
+       style="font-size:12.06000042px">les blocs</tspan>
   </text>
   <rect
      width="123.61703"
@@ -550,7 +550,7 @@
        x="46.720825"
        y="396.19641"
        id="tspan3043"
-       style="font-size:12.06000042px">sound</tspan>
+       style="font-size:12.06000042px">son</tspan>
   </text>
   <path
      d="M 87.75,93.55 L 89.425,93.55 L 89.425,94.89 L 91.77,94.89 L 91.77,93.55 L 122.4225,93.55 L 122.4225,100.25 L 91.77,100.25 L 91.77,98.91 L 89.425,98.91 L 89.425,100.25 L 87.75,100.25 L 87.75,93.55 z"

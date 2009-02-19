@@ -22,9 +22,8 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import pickle
-import json
+import cjson
 import os.path
-# import base64
 
 from tasprites import *
 from taturtle import *
@@ -51,8 +50,9 @@ def load_files(tw,ta_file, png_file=''):
         data = pickle.load(f) # old-style data format
     except:
         # print "reading saved json data"
-        text = f.read(-1)
-        listdata = json.read(text)
+        f.seek(0) # rewind necessary because of pickle.load
+        text = f.read()
+        listdata = cjson.decode(text)
         data = tuplify(listdata) # json converts tuples to lists
     f.close()
     new_project(tw)
@@ -73,12 +73,9 @@ def get_load_name(tw):
     return do_dialog(tw,dialog)
 
 # unpack serialized data sent across a share
-# def load_string(tw,btext):
 def load_string(tw,text):
-    # text = base64.b64decode(btext) # no need for base64 encoding with json
-    listdata = json.read(text)
+    listdata = cjson.decode(text)
     data = tuplify(listdata) # json converts tuples to lists
-    # data = pickle.loads(text)
     new_project(tw)
     read_data(tw,data)
 
@@ -172,8 +169,7 @@ def get_save_name(tw):
 def save_data(tw,fname):
     f = file(fname, "w")
     data = assemble_data_to_save(tw)
-    # pickle.dump(data,f)
-    text = json.write([data]) # for some reason, we need to add the extra []
+    text = cjson.encode(data)
     f.write(text)
     f.close()
 
@@ -181,11 +177,8 @@ def save_data(tw,fname):
 def save_string(tw):
     data = assemble_data_to_save(tw)
     # encode it for sending across the network
-    # text = pickle.dumps(data)
-    text = json.write(data)
-    # btext = base64.b64encode(text)
-    # return btext
-    return text # no need for base64 with json encoding
+    text = cjson.encode(data)
+    return text
 
 def assemble_data_to_save(tw):
     bs = blocks(tw)

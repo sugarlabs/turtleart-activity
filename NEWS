@@ -1,3 +1,7 @@
+34
+
+* added it; cleaned up fr; converted to cjson (with help from silbe)
+
 33
 
 * merge with TAPortfolio (and elimination of Sensor and myblock features)

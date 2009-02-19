@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="43.5"
+   height="56.5"
+   id="svg2">
+  <defs
+     id="defs5" />
+  <path
+     d="M 0.75,0.75 L 34.618627,0.75 C 34.618627,0.75 38.364227,1.9821101 39.669608,2.995098 C 40.856507,3.9161424 42.75,6.9480392 42.75,6.9480392 L 42.75,49.222549 C 42.75,49.222549 40.914623,52.48677 40.108824,53.285295 C 38.685367,54.6959 34.838235,55.75 34.838235,55.75 L 0.75,55.75 L 0.75,0.75 z"
+     id="path2384"
+     style="fill:#e0e0e0;fill-opacity:1;stroke:#a0a0a0;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1" />
+  <g
+     transform="translate(0.25,-0.9240561)"
+     id="g2392"
+     style="fill:#a000a0;fill-opacity:1">
+    <text
+       x="4.5171318"
+       y="26.866751"
+       id="text2384"
+       xml:space="preserve"
+       style="font-size:12px;fill:#a000a0;fill-opacity:1;stroke:none;stroke-width:1px;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+         x="4.5171318"
+         y="26.866751"
+         id="tspan2386"
+         style="font-size:18px;fill:#a000a0;fill-opacity:1">123</tspan></text>
+    <text
+       x="1.8153553"
+       y="44.840736"
+       id="text2388"
+       xml:space="preserve"
+       style="font-size:12px;fill:#a000a0;fill-opacity:1;stroke:none;stroke-width:1px;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+         x="1.8153553"
+         y="44.840736"
+         id="tspan2390"
+         style="font-size:18px;fill:#a000a0;fill-opacity:1">+–=</tspan></text>
+  </g>
+</svg>
