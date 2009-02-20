@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: 2009-02-15 16:04-0500\n"
+"PO-Revision-Date: 2009-02-20 14:16-0500\n"
 "Last-Translator: Eduardo H. Silva <HoboPrimate@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "MIME-Version: 1.0\n"
@@ -13,7 +13,7 @@ msgstr ""
 
 #: 
 msgid "Turtle Art"
-msgstr "Arte-tartaruga"
+msgstr "Artartaruga"
 
 #: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
 #: tasetup.py:53 tasetup.py:54
@@ -39,7 +39,7 @@ msgstr "esconder a palete"
 
 #: TurtleArtActivity.py:181 TurtleArtActivity.py:286
 msgid "hide blocks"
-msgstr "esconde os blocos"
+msgstr "esconder os blocos"
 
 #: TurtleArtActivity.py:194
 msgid "run"
@@ -63,7 +63,7 @@ msgstr "guardar como HTML"
 
 #: TurtleArtActivity.py
 msgid "save Logo"
-msgstr "guardar Logo"
+msgstr "guardar como Logo"
 
 #: TurtleArtActivity.py
 msgid "load my block"
@@ -144,11 +144,11 @@ msgstr "pilha 2"
 
 #:
 msgid "store in box 1"
-msgstr "por na caixa 1"
+msgstr "pôr na caixa 1"
 
 #:
 msgid "store in box 2"
-msgstr "por na caixa 2"
+msgstr "pôr na caixa 2"
 
 #:
 msgid "name"
@@ -192,7 +192,7 @@ msgstr "mod"
 
 #:
 msgid "print"
-msgstr "Escrever"
+msgstr "escrever"
 
 #:
 msgid "Pen"
@@ -216,7 +216,7 @@ msgstr "caneta levantada"
 
 #:
 msgid "pen down"
-msgstr "caneta baixada"
+msgstr "caneta para baixo"
 
 #:
 msgid "set pen size"
@@ -328,7 +328,7 @@ msgstr "resistência"
 
 #:
 msgid "Templates"
-msgstr ""
+msgstr "Predefinições"
 
 #:
 msgid "Keyboard"
@@ -344,8 +344,8 @@ msgstr "som"
 
 #:
 msgid "hres"
-msgstr ""
+msgstr "hres"
 
 #:
 msgid "vres"
-msgstr ""
+msgstr "vres"
