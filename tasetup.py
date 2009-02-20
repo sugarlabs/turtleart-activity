@@ -240,8 +240,8 @@ def setup_misc(tw):
     tw.hidden_palette_icon = load_image(tw.path, '','blocks-')
     # media blocks get positioned into other blocks
     tw.media_shapes = {}
-    tw.media_shapes['audioon'] = load_image(tw.path, 'templates', 'audioon')
-    tw.media_shapes['texton'] = load_image(tw.path, 'templates', 'texton')
+    tw.media_shapes['audioon'] = load_image(tw.path, '', 'audioon')
+    tw.media_shapes['texton'] = load_image(tw.path, '', 'texton')
     # status shapes get positioned at the bottom of the screen
     tw.status_shapes = {}
     tw.status_shapes['status'] = load_image(tw.path, '', 'status')
@@ -271,14 +271,14 @@ def setup_selector(tw,name,y,blockdescriptions):
     spr.offshape = offshape
     spr.onshape = onshape
     # print 'setting up selector ' + name
-    spr.group = load_image(tw.path, name,name+'group')
-    spr.mask = load_image(tw.path, name,name+'mask')
+    spr.group = load_image(tw.path_lang, name,name+'group')
+    spr.mask = load_image(tw.path_lang, name,name+'mask')
     spr.type = 'selbutton'
     # block prototypes
     protos = []
     for b in blockdescriptions:
         bname,primname,docktype = b[0:3]
-        image = load_image(tw.path, name, bname)
+        image = load_image(tw.path_lang, name, bname)
         proto = taProto()
         proto.name = bname
         proto.image = image

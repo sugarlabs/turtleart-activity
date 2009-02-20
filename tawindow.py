@@ -47,7 +47,8 @@ from sugar.graphics.objectchooser import ObjectChooser
 def twNew(win, path, lang, tboxh, parent=None):
     tw = taWindow()
     tw.window = win
-    tw.path = os.path.join(path,'images',lang)
+    tw.path = os.path.join(path,'images')
+    tw.path_lang = os.path.join(path,'images',lang)
     tw.load_save_folder = os.path.join(path,'samples',lang)
     tw.save_folder = None
     tw.save_file_name = None
