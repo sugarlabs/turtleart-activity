@@ -380,6 +380,7 @@ def main():
      d=\"M 75.416813,76.044842 C 86.084013,76.044842 86.084013,76.044842 86.084013,76.044842 L 89.750863,78.711642 L 92.084313,82.711842 L 92.084313,105.37964 L 89.750863,109.37984 L 86.084013,112.04664 L 74.750113,112.04664 L 74.750113,112.04664 L 74.750113,114.71344 L 61.416113,114.71344 L 61.416113,112.04664 L 50.082213,112.04664 L 46.415363,109.37984 L 44.081913,105.37964 L 44.081913,82.711842 L 46.415363,78.711642 L 50.082213,76.044842 L 60.749413,76.044842 L 60.749413,79.378342 L 75.416813,79.378342 L 75.416813,76.044842 z\" \n \
      id=\"path63\" \n \
      style=\"fill:url(#linearGradient4846);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1\" /> \n "
+
     data8a = \
 "  <text \n \
      id=\"text65\" \n \
@@ -430,7 +431,7 @@ def main():
      style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
     <tspan \n \
        x=\"68\" \n \
-       y=\"98\" \n \
+       y=\"97\" \n \
        id=\"tspan71\" \n \
        style=\"font-size:10px\">"
 
@@ -442,7 +443,7 @@ def main():
      style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
     <tspan \n \
        x=\"68\" \n \
-       y=\"110\" \n \
+       y=\"106\" \n \
        id=\"tspan71\" \n \
        style=\"font-size:10px\">"
 
@@ -727,7 +728,7 @@ def main():
     if len(strings) == 1:
         FILE.write(data2a)
         FILE.write(strings[0].encode("utf-8"))
-    elif len(strings) == 2:
+    else:
         FILE.write(data2b)
         FILE.write(strings[0].encode("utf-8"))
         FILE.write(data3b)
@@ -737,7 +738,7 @@ def main():
     if len(strings) == 1:
         FILE.write(data5a)
         FILE.write(strings[0].encode("utf-8"))
-    elif len(strings) == 2:
+    else:
         FILE.write(data5b)
         FILE.write(strings[0].encode("utf-8"))
         FILE.write(data6b)
@@ -759,34 +760,40 @@ def main():
         FILE.write(strings[1].encode("utf-8"))
         FILE.write(data10c)
         FILE.write(strings[2].encode("utf-8"))
-        if len(strings) == 4:
+        if len(strings) > 3:
             FILE.write(" " + strings[3].encode("utf-8"))
     FILE.write(data11)
     strings = _(mystring5).split(" ",3)
     if len(strings) == 1:
         FILE.write(data12a)
         FILE.write(strings[0].encode("utf-8"))
-    elif len(strings) == 2:
+    else:
         FILE.write(data12b)
         FILE.write(strings[0].encode("utf-8"))
         FILE.write(data13b)
         FILE.write(strings[1].encode("utf-8"))
+    if len(strings) > 2:
+        FILE.write(" " + strings[2].encode("utf-8"))
     FILE.write(data14)
     strings = _(mystring6).split(" ",3)
     if len(strings) == 1:
         FILE.write(data15a)
         FILE.write(strings[0].encode("utf-8"))
-    elif len(strings) == 2:
+    else:
         FILE.write(data15b)
         FILE.write(strings[0].encode("utf-8"))
         FILE.write(data16b)
         FILE.write(strings[1].encode("utf-8"))
+    if len(strings) > 2:
+        FILE.write(" " + strings[2].encode("utf-8"))
     FILE.write(data17)
     strings = _(mystring7).split(" ",2)
     FILE.write(strings[0].encode("utf-8"))
     FILE.write(data18)
-    if len(strings) == 2:
+    if len(strings) > 1:
         FILE.write(strings[1].encode("utf-8"))
+    if len(strings) > 2:
+        FILE.write(" " + strings[2].encode("utf-8"))
     FILE.write(data19)
     FILE.write(_(mystring9).encode("utf-8"))
     FILE.write(data20)
