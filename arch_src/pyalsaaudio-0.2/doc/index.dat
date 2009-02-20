@@ -1,0 +1,27 @@
+<a href="node6.html"><tt class="module">alsaaudio</tt> (extension module)###DEF0000000608
+<a href="node6.html#l2h-2"><tt class="function">mixers()</tt> (in module alsaaudio)###0000000609
+<a href="node6.html#l2h-3"><tt class="class">PCM</tt> (class in alsaaudio)###0000000610
+<a href="node6.html#l2h-4"><tt class="class">Mixer</tt> (class in alsaaudio)###0000000611
+<a href="node6.html#l2h-5"><tt class="exception">ALSAAudioError</tt>###0000000612
+<a href="node8.html#l2h-6"><tt class="class">PCM</tt> (class in alsaaudio)###0000000622
+<a href="node8.html#l2h-7"><tt class="method">pcmtype()</tt> (PCM method)###0000000623
+<a href="node8.html#l2h-8"><tt class="method">pcmmode()</tt> (PCM method)###0000000624
+<a href="node8.html#l2h-9"><tt class="method">cardname()</tt> (PCM method)###0000000625
+<a href="node8.html#l2h-10"><tt class="method">setchannels()</tt> (PCM method)###0000000626
+<a href="node8.html#l2h-11"><tt class="method">setrate()</tt> (PCM method)###0000000627
+<a href="node8.html#l2h-12"><tt class="method">setformat()</tt> (PCM method)###0000000628
+<a href="node8.html#l2h-13"><tt class="method">setperiodsize()</tt> (PCM method)###0000000629
+<a href="node8.html#l2h-14"><tt class="method">read()</tt> (PCM method)###0000000630
+<a href="node8.html#l2h-15"><tt class="method">write()</tt> (PCM method)###0000000631
+<a href="node9.html#l2h-16"><tt class="class">Mixer</tt> (class in alsaaudio)###0000000633
+<a href="node9.html#l2h-17"><tt class="method">cardname()</tt> (Mixer method)###0000000634
+<a href="node9.html#l2h-18"><tt class="method">mixer()</tt> (Mixer method)###0000000635
+<a href="node9.html#l2h-19"><tt class="method">mixerid()</tt> (Mixer method)###0000000636
+<a href="node9.html#l2h-20"><tt class="method">switchcap()</tt> (Mixer method)###0000000637
+<a href="node9.html#l2h-21"><tt class="method">volumecap()</tt> (Mixer method)###0000000638
+<a href="node9.html#l2h-22"><tt class="method">getvolume()</tt> (Mixer method)###0000000639
+<a href="node9.html#l2h-23"><tt class="method">getmute()</tt> (Mixer method)###0000000640
+<a href="node9.html#l2h-24"><tt class="method">getrec()</tt> (Mixer method)###0000000641
+<a href="node9.html#l2h-25"><tt class="method">setvolume()</tt> (Mixer method)###0000000642
+<a href="node9.html#l2h-26"><tt class="method">setmute()</tt> (Mixer method)###0000000643
+<a href="node9.html#l2h-27"><tt class="method">setrec()</tt> (Mixer method)###0000000644

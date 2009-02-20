@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1274"
+   name=""
+   committed-date="2005-03-25T23:37:10.228413Z"
+   url="http://casperr@divmod.org/svn/Shtoom/trunk/audio/pyalsaaudio/doc/src"
+   last-author="casper"
+   kind="dir"
+   revision="1584"/>
+<entry
+   committed-rev="1585"
+   name="libalsaaudio.tex"
+   text-time="2005-07-09T21:08:46.000000Z"
+   committed-date="2005-07-09T21:26:15.500773Z"
+   checksum="757600e4551bc4d9367fcbfe79a0b144"
+   last-author="casper"
+   kind="file"
+   revision="1585"/>
+<entry
+   committed-rev="1585"
+   name="pyalsaaudio.tex"
+   text-time="2005-07-09T21:08:58.000000Z"
+   committed-date="2005-07-09T21:26:15.500773Z"
+   checksum="43e07db73c7507adde7404d63a2b42f6"
+   last-author="casper"
+   kind="file"
+   revision="1585"/>
+<entry
+   committed-rev="1585"
+   name="Makefile"
+   text-time="2005-07-09T21:14:53.000000Z"
+   committed-date="2005-07-09T21:26:15.500773Z"
+   checksum="350ef37c7f1fcf3e2ff2c4a05eec328d"
+   last-author="casper"
+   kind="file"
+   revision="1585"/>
+</wc-entries>

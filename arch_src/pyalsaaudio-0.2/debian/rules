@@ -1,0 +1,55 @@
+#! /usr/bin/make -f 
+
+PYDEF=$(shell pyversions -d)
+PYVERS=$(shell pyversions -r)
+
+build: build-stamp
+build-stamp:
+	dh_testdir
+	set -e; \
+	for python in $(PYVERS); do \
+		python=$$(echo $$python | sed "s/$(PYDEF)/python/"); \
+		$$python setup.py build; \
+	done
+	touch build-stamp
+
+clean:
+	dh_testdir
+	for python in $(PYVERS); do \
+		python=$$(echo $$python | sed "s/$(PYDEF)/python/"); \
+		$$python setup.py clean; \
+	done
+	rm -rf build build-stamp
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	set -e; \
+	for python in $(PYVERS); do \
+		python=$$(echo $$python | sed "s/$(PYDEF)/python/"); \
+		$$python setup.py install --root=$(CURDIR)/debian/python-alsaaudio --no-compile; \
+	done
+
+binary-indep: build install
+	# nothing to do here
+
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installdocs
+	dh_installchangelogs
+	dh_installexamples 
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_pysupport
+	dh_python
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-arch binary-indep

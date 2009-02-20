@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+instflag="${SUGAR_ACTIVITY_ROOT}/data/.installed"
+cpu="$(uname -m)"
+archsrcdir="${SUGAR_BUNDLE_PATH}/arch_src"
+archbundledir="${SUGAR_BUNDLE_PATH}/arch_${cpu}"
+archinstdir="${SUGAR_ACTIVITY_ROOT}/data/.arch_${cpu}"
+pythonversion="$(python -V 2>&1 | cut -d ' ' -f 2 | cut -d . -f 1-2)"
+
+if [ ! -e "${instflag}" ] ; then
+  curchecksum="$(find "${archsrcdir}" -type f -print0 | xargs -0 md5sum -- | md5sum)"
+  if [ "$cpu" = "unknown" -o ! -e "${archbundledir}" ] || [ "${curchecksum}" != "$(cat "${archbundledir}/checksum")" ] ; then
+    # unknown arch or no (current) precompiled binaries -> need to compile
+    compile-archspec "${archsrcdir}" "${archinstdir}"
+  fi
+  touch "${instflag}"
+fi
+
+export LD_LIBRARY_PATH="${archinstdir}/lib:${archinstdir}/lib64:${LD_LIBRARY_PATH}"
+export PYTHONPATH="${archinstdir}/lib/python${pythonversion}/site-packages:${PYTHONPATH}"
+
+exec "$@"

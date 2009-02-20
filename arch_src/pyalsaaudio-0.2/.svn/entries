@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1322"
+   name=""
+   committed-date="2005-03-30T20:44:55.828503Z"
+   url="http://casperr@divmod.org/svn/Shtoom/trunk/audio/pyalsaaudio"
+   last-author="casper"
+   kind="dir"
+   uuid="0b994b0e-dcd6-0310-80a8-c5aa5be65e87"
+   revision="1584"/>
+<entry
+   committed-rev="1585"
+   name="LICENSE"
+   text-time="2005-07-09T21:02:54.000000Z"
+   committed-date="2005-07-09T21:26:15.500773Z"
+   checksum="1a3b161aa0fcec32a0c8907a2219ad9d"
+   last-author="casper"
+   kind="file"
+   revision="1585"/>
+<entry
+   committed-rev="1585"
+   name="alsaaudio.c"
+   text-time="2005-07-07T13:49:38.000000Z"
+   committed-date="2005-07-09T21:26:15.500773Z"
+   checksum="e72939bb5f268025aff2154d77b96201"
+   last-author="casper"
+   kind="file"
+   prop-time="2005-03-30T19:37:29.000000Z"
+   revision="1585"/>
+<entry
+   committed-rev="1585"
+   name="TODO"
+   text-time="2005-07-09T21:13:24.000000Z"
+   committed-date="2005-07-09T21:26:15.500773Z"
+   checksum="4bda164e9f66fbab7b8c102ef5dbcdca"
+   last-author="casper"
+   kind="file"
+   prop-time="2004-10-05T08:43:24.000000Z"
+   revision="1585"/>
+<entry
+   committed-rev="1585"
+   name="recordtest.py"
+   text-time="2005-07-09T20:46:17.000000Z"
+   committed-date="2005-07-09T21:26:15.500773Z"
+   checksum="36fd98bef1a4e935dfd404f8896cbc80"
+   last-author="casper"
+   kind="file"
+   prop-time="2004-10-05T08:43:24.000000Z"
+   revision="1585"/>
+<entry
+   name="doc"
+   kind="dir"/>
+<entry
+   committed-rev="820"
+   name="setup.py"
+   text-time="2005-07-07T13:49:38.000000Z"
+   committed-date="2004-10-04T13:28:33.537193Z"
+   checksum="3a808cedfedf7ee095bf912c4a9dc0c9"
+   last-author="anthony"
+   kind="file"
+   prop-time="2004-10-05T08:43:24.000000Z"/>
+<entry
+   committed-rev="1585"
+   name="CHANGES"
+   text-time="2005-07-09T21:10:57.000000Z"
+   committed-date="2005-07-09T21:26:15.500773Z"
+   checksum="6018069ddf6e383385a283cf25218c1f"
+   last-author="casper"
+   kind="file"
+   revision="1585"/>
+<entry
+   committed-rev="835"
+   name="mixertest.py"
+   text-time="2005-07-07T13:49:38.000000Z"
+   committed-date="2004-10-05T21:43:58.007506Z"
+   checksum="a7c859a05658506b14bbdb3367c2f490"
+   last-author="casper"
+   kind="file"/>
+<entry
+   committed-rev="1585"
+   name="playbacktest.py"
+   text-time="2005-07-09T21:23:10.000000Z"
+   committed-date="2005-07-09T21:26:15.500773Z"
+   checksum="9e47bb9e5f3a0d7a00d23f82fce377be"
+   last-author="casper"
+   kind="file"
+   prop-time="2004-10-05T08:43:24.000000Z"
+   revision="1585"/>
+<entry
+   committed-rev="1585"
+   name="README"
+   text-time="2005-07-09T21:20:32.000000Z"
+   committed-date="2005-07-09T21:26:15.500773Z"
+   checksum="2a402227ae1fb28f39d59f143df562dc"
+   last-author="casper"
+   kind="file"
+   prop-time="2004-10-05T08:43:24.000000Z"
+   revision="1585"/>
+</wc-entries>

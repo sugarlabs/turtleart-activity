@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+archsrcdir="$1"
+archinstdir="$2"
+
+mkdir -p "${archinstdir}"
+cp -a "${archsrcdir}"/* "${archinstdir}"/
+cd "${archinstdir}"
+if [ -e configure ] ; then
+  ./configure --prefix="${archinstdir}"
+fi
+
+make PREFIX="${archinstdir}"
+make install PREFIX="${archinstdir}"
+

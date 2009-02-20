@@ -1,0 +1,44 @@
+pyalsaaudio (0.2-1ubuntu1) feisty; urgency=low
+
+  [ Cesare Tirabassi ]
+  * Include documentation in package (LP: #81347)
+
+  [ Michael Bienia ]
+  * debian/control: Change Maintainer/XSBC-Original-Maintainer field.
+
+ -- Michael Bienia <geser@ubuntu.com>  Fri, 23 Mar 2007 00:18:10 +0100
+
+pyalsaaudio (0.2-1build1) edgy; urgency=low
+
+  * Rebuild to add support for python2.5.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri,  8 Sep 2006 18:26:30 +0000
+
+pyalsaaudio (0.2-1) unstable; urgency=low
+
+  * New upstream release
+  * Add a watch file
+  * Use debian/examples and debian/docs
+  * Merge changelog with ubuntu
+  * Add myself to uploaders field
+  * Upload to debian (closes: #382796)
+
+ -- Paul Brossier <piem@debian.org>  Sun, 13 Aug 2006 17:08:01 +0200
+
+pyalsaaudio (0.1-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Florian Ragwitz <rafl@debian.org>  Wed,  9 Aug 2006 00:18:33 +0200
+
+pyalsaaudio (0.1-1ubuntu1) hoary; urgency=low
+
+  * Upload to hoary with python2.4 support
+
+ -- Thom May <thom@ubuntu.com>  Sat, 29 Jan 2005 12:47:04 +0000
+
+pyalsaaudio (0.1-1) unstable; urgency=low
+
+  * First upload.
+
+ -- Thom May <thom@debian.org>  Fri, 07 Jan 2005 19:19:49 +0000
