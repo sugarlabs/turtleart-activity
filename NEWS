@@ -1,3 +1,9 @@
+35
+
+* updated depreciated fields in activity.info
+* added svg/*.py files to generate svgs from .po
+* added nl
+
 34
 
 * added it; cleaned up fr; converted to cjson (with help from silbe)
