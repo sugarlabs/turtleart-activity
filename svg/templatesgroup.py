@@ -212,23 +212,17 @@ def main():
      id=\"path4003\" \n \
      style=\"fill:#ff4040;fill-opacity:1;fill-rule:nonzero;stroke:#ff4040;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" /> \n \
   <text \n \
-     x=\"67.879883\" \n \
-     y=\"491.74902\" \n \
-     id=\"text4005\" \n \
      xml:space=\"preserve\" \n \
      style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold\"><tspan \n \
-       x=\"67.879883\" \n \
-       y=\"491.74902\" \n \
+       x=\"68\" \n \
+       y=\"492\" \n \
        id=\"tspan4007\" \n \
        style=\"font-size:12px;font-weight:bold;fill:#ffffff;font-family:Bitstream Vera Sans\">X</tspan></text> \n \
   <text \n \
-     x=\"-22.836914\" \n \
-     y=\"1.4019699\" \n \
-     id=\"text3198\" \n \
-     style=\"font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans\"> \n \
+     style=\"font-size:12px;text-align:center;text-anchor:middle;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans\"> \n \
     <tspan \n \
-       x=\"22.163086\" \n \
-       y=\"21.40197\" \n \
+       x=\"72\" \n \
+       y=\"21.5\" \n \
        id=\"tspan2796\" \n \
        style=\"font-size:20px\">"
 
