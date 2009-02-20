@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> 
+ <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="170" 
+    height="95" 
+    version="1.0"> 
+   <defs> 
+     <linearGradient 
+        id="linearGradient3166"> 
+       <stop 
+          style="stop-color:#ffffff;stop-opacity:1;" 
+          offset="0" 
+          id="stop3168" /> 
+       <stop 
+          style="stop-color:#feb00a;stop-opacity:1;" 
+          offset="1" 
+          id="stop3170" /> 
+     </linearGradient> 
+     <linearGradient 
+        xlink:href="#linearGradient3166" 
+        id="linearGradient3172" 
+        x1="0" 
+        y1="22" 
+        x2="74" 
+        y2="22" 
+        gradientUnits="userSpaceOnUse" 
+        gradientTransform="translate(9.39087e-2,-0.2031988)" /> 
+   </defs> 
+   <path 
+      style="opacity:1;fill:url(#linearGradient3172);fill-opacity:1;stroke:#a97513;stroke-width:2;stroke-opacity:1" 
+      d="M 48,1 C 64,1 64.187817,1 64.187817,1 C 64.187817,1 67.093036,1.8126092 68.09137,2.6369032 C 69.004632,3.3909562 70.572334,5.3908629 70.572334,5.3908629 L 98,5.6954315 L 98,11 L 93.51841,11 L 93.263659,8 L 85,8 L 85,31 L 93.310656,31 L 93.360477,28 L 98,28 L 98,41 L 170,41 L 170,53 L 164.5996,52.913706 C 164.5996,52.913706 163.3287,50.514626 162.35627,49.771977 C 161.2959,48.962173 159,48 159,48 L 142,48 L 142,53 L 122,53 L 122,48 L 103,48 C 103,48 99.722895,50.806066 98.5,52 C 97.017521,53.447372 95,56.347563 95,56.347563 L 95,81 L 75.204118,80.90405 C 75.204118,80.90405 73.24214,85.39853 71.78641,86.85394 C 70.354258,88.28578 65.932154,90 65.932154,90 L 47,90 L 47,94 L 28,94 L 28,90 L 10.924831,90 C 10.924831,90 6.228383,88.0831 4.6063009,86.53995 C 3.3197278,85.31599 1,81.54299 1,81.54299 L 1,10.796801 C 1,10.796801 3.196437,6.3426262 4.5939087,4.7968012 C 5.9621108,3.2833542 10.093909,1 10.093909,1 L 26,1 L 26,6 L 48,6 L 48,1 z" /> 
+   <text 
+      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans" 
+      id="text2553"><tspan 
+        x="37" 
+        y="27.5" 
+        style="font-size:18px;">重複</tspan></text> 
+ </svg> 

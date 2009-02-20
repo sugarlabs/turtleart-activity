@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    width="105" 
+    height="21"> 
+   <defs 
+      id="defs5"> 
+     <linearGradient 
+        id="linearGradient3166"> 
+       <stop 
+          style="stop-color:#ffffff;stop-opacity:1;" 
+          offset="0" 
+          id="stop3168" /> 
+       <stop 
+          style="stop-color:#00ffff;stop-opacity:1;" 
+          offset="1" 
+          id="stop3170" /> 
+     </linearGradient> 
+     <linearGradient 
+        xlink:href="#linearGradient3166" 
+        id="linearGradient3172" 
+        x1="0" 
+        y1="0" 
+        x2="104" 
+        y2="21" 
+        gradientUnits="userSpaceOnUse" /> 
+   </defs> 
+   <path 
+      style="fill:url(#linearGradient3172);fill-opacity:1;stroke:#00a0a0;stroke-width:2;stroke-opacity:1" 
+      d="M 1,0.5 L 6,0.5 L 6,4.5 L 13,4.5 L 13,0.5 L 104.5,0.5 L 104.5,20.5 L 13,20.5 L 13,16.5 L 6,16.5 L 6,20.5 L 1,20.5 L 1,0.5 z" /> 
+   <text 
+     style="font-size:16px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="52" 
+        y="15.5" 
+        style="font-size:16px;">形狀</tspan> 
+   </text> 
+ </svg> 
+ 

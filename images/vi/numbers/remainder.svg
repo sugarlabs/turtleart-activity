@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> 
+ <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    width="64" 
+    height="37" 
+    version="1.0"> 
+   <defs> 
+     <linearGradient 
+        id="linearGradient3166"> 
+       <stop 
+          style="stop-color:#ffffff;stop-opacity:1;" 
+          offset="0" 
+          id="stop3168" /> 
+       <stop 
+          style="stop-color:#ff00ff;stop-opacity:1;" 
+          offset="1" 
+          id="stop3170" /> 
+     </linearGradient> 
+     <linearGradient 
+        inkscape:collect="always" 
+        xlink:href="#linearGradient3166" 
+        id="linearGradient3165" 
+        x1="0" 
+        y1="18.5" 
+        x2="52.5" 
+        y2="18.5" 
+        gradientUnits="userSpaceOnUse" /> 
+   </defs> 
+   <path 
+      style="fill:url(#linearGradient3165);fill-opacity:1;stroke:#a000a0;stroke-width:1.5px;stroke-opacity:1" 
+      d="M 0.5,0.5 L 63.5,0.5 L 63.5,9.5 L 59.5,9.5 L 59.5,6.5 L 50,6.5 L 50,29.5 L 59.5,29.5 L 59.5,26.5 L 63.5,26.5 L 63.5,36.5 L 0.5,36.5 L 0.5,29.5 L 12.5,29.5 L 12.5,6.5 L 0.5,6.5 L 0.5,0.5 z" /> 
+   <text 
+      style="font-size:14px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
+      <tspan 
+        x="32" 
+        y="24" 
+        style="font-size:14px">sửa</tspan></text> 
+ </svg> 
