@@ -83,7 +83,7 @@ def main():
     <tspan \n \
        x=\"37\" \n \
        y=\"26\" \n \
-       style=\"font-size:18px;;font-family:Bitstream Vera Sans\">"
+       style=\"font-size:16px;;font-family:Bitstream Vera Sans\">"
 
     data1 = \
 "</tspan> \n \

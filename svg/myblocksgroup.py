@@ -405,7 +405,7 @@ def main():
        x=\"72.5\" \n \
        y=\"21.5\" \n \
        id=\"tspan47\" \n \
-       style=\"font-size:20px\">"
+       style=\"font-size:18px\">"
 
     data1 = \
 "</tspan> \n \
@@ -422,7 +422,7 @@ def main():
        x=\"37\" \n \
        y=\"79\" \n \
        id=\"tspan53\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data2 = \
 "</tspan> \n \
@@ -439,7 +439,7 @@ def main():
        x=\"107\" \n \
        y=\"77\" \n \
        id=\"tspan59\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data3 = \
 "</tspan> \n \
@@ -456,7 +456,7 @@ def main():
        x=\"37\" \n \
        y=\"120\" \n \
        id=\"tspan65\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data4 = \
 "</tspan> \n \
@@ -473,7 +473,7 @@ def main():
        x=\"107\" \n \
        y=\"120\" \n \
        id=\"tspan71\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data5 = \
 "</tspan> \n \
@@ -508,7 +508,7 @@ def main():
        x=\"32\" \n \
        y=\"230\" \n \
        id=\"tspan95\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data6b = \
 "  <text \n \
@@ -519,7 +519,7 @@ def main():
        x=\"32\" \n \
        y=\"224\" \n \
        id=\"tspan95\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10px\">"
 
     data6c = \
 "  <text \n \
@@ -544,7 +544,7 @@ def main():
        x=\"32\" \n \
        y=\"236\" \n \
        id=\"tspan99\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data7c = \
 "</tspan> \n \
@@ -587,7 +587,7 @@ def main():
        x=\"106\" \n \
        y=\"229.5\" \n \
        id=\"tspan105\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data10 = \
 "</tspan> \n \
@@ -618,7 +618,7 @@ def main():
        x=\"32\" \n \
        y=\"277\" \n \
        id=\"tspan117\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data11b = \
 "  <text \n \
@@ -629,7 +629,7 @@ def main():
        x=\"32\" \n \
        y=\"271\" \n \
        id=\"tspan117\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data11c = \
 "  <text \n \
@@ -653,7 +653,7 @@ def main():
        x=\"32\" \n \
        y=\"283\" \n \
        id=\"tspan121\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data12c = \
 "</tspan> \n \
@@ -696,7 +696,7 @@ def main():
        x=\"106\" \n \
        y=\"276\" \n \
        id=\"tspan127\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data15 = \
 "</tspan> \n \
@@ -739,7 +739,7 @@ def main():
        x=\"32.428757\" \n \
        y=\"405.74716\" \n \
        id=\"tspan169\" \n \
-       style=\"font-size:11px;fill:#000000;fill-opacity:1\">"
+       style=\"font-size:10.5px;fill:#000000;fill-opacity:1\">"
 
     data16 = \
 "</tspan> \n \
@@ -757,7 +757,7 @@ def main():
        x=\"105.21051\" \n \
        y=\"407\" \n \
        id=\"tspan177\" \n \
-       style=\"font-size:11px;fill:#000000;fill-opacity:1\">"
+       style=\"font-size:10.5px;fill:#000000;fill-opacity:1\">"
 
     data17 = \
 "</tspan> \n \
@@ -776,7 +776,7 @@ def main():
          x=\"33\" \n \
          y=\"441\" \n \
          id=\"tspan185\" \n \
-         style=\"font-size:11px\">"
+         style=\"font-size:10.5px\">"
 
     data18 = \
 "</tspan> \n \
@@ -788,7 +788,7 @@ def main():
          x=\"33\" \n \
          y=\"453\" \n \
          id=\"tspan189\" \n \
-         style=\"font-size:11px\">"
+         style=\"font-size:10.5px\">"
 
     data19 = \
 "</tspan> \n \
@@ -808,7 +808,7 @@ def main():
          x=\"105\" \n \
          y=\"441\" \n \
          id=\"tspan197\" \n \
-         style=\"font-size:11px\">"
+         style=\"font-size:10.5px\">"
 
     data20 = \
 "</tspan> \n \
@@ -820,7 +820,7 @@ def main():
          x=\"105\" \n \
          y=\"453\" \n \
          id=\"tspan201\" \n \
-         style=\"font-size:11px\">"
+         style=\"font-size:10.5px\">"
 
     data21 = \
 "</tspan> \n \
@@ -851,7 +851,7 @@ def main():
        x=\"72.481155\" \n \
        y=\"372\" \n \
        id=\"tspan155\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data22 = \
 "</tspan> \n \
@@ -875,7 +875,7 @@ def main():
        x=\"72\" \n \
        y=\"49\" \n \
        id=\"tspan89\" \n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data23 = \
 "</tspan> \n \

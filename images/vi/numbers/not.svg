@@ -33,6 +33,10 @@
       style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
       <tspan 
         x="32" 
-        y="28" 
-        style="font-size:18">không phải</tspan></text> 
+        y="22" 
+        style="font-size:12">không</tspan>
+<tspan 
+        x="32" 
+        y="34" 
+        style="font-size:12">phải</tspan></text> 
  </svg> 

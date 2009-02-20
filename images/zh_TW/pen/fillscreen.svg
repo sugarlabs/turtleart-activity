@@ -45,11 +45,8 @@
       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
       <tspan 
         x="37" 
-        y="38" 
-        style="font-size:18px;">全螢幕</tspan><tspan 
-        x="37" 
-        y="54" 
-        style="font-size:18px;"></tspan></text> 
+        y="44" 
+        style="font-size:16px;">全螢幕</tspan></text>
    <text 
       style="font-size:12px;text-anchor:end;text-align:end;font-family:Bitstream Vera Sans"> 
       <tspan 

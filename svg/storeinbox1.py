@@ -98,7 +98,7 @@ def main():
     <tspan \n \
        x=\"37\" \n \
        y=\"27\" \n \
-       style=\"font-size:18px;\">"
+       style=\"font-size:16px;\">"
 
     data2b = \
 "</tspan> \n \
@@ -108,7 +108,7 @@ def main():
     <tspan \n \
        x=\"37\" \n \
        y=\"46\" \n \
-       style=\"font-size:18px;\">"
+       style=\"font-size:16px;\">"
 
     data1c = \
 "  <text \n \

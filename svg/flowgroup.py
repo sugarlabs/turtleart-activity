@@ -292,7 +292,7 @@ def main():
        x=\"67\"\n \
        y=\"54\"\n \
        id=\"tspan51\"\n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10.5px\">"
 
     data2 = \
 "</tspan>\n \
@@ -320,7 +320,7 @@ def main():
        x=\"47\"\n \
        y=\"90\"\n \
        id=\"tspan57\"\n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10px\">"
 
     data2c = \
 "</tspan>\n \
@@ -332,7 +332,7 @@ def main():
        x=\"47\"\n \
        y=\"102\"\n \
        id=\"tspan57\"\n \
-       style=\"font-size:11px\">"
+       style=\"font-size:10px\">"
 
     data3 = \
 "</tspan>\n \

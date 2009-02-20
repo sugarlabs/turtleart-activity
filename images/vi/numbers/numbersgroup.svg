@@ -617,9 +617,14 @@
       style="font-size:8px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="68" 
-        y="414" 
+        y="409" 
         id="tspan170" 
-        style="font-size:11px;fill:#000000;fill-opacity:1">không phải</tspan> 
+        style="font-size:9px;fill:#000000;fill-opacity:1">không</tspan> 
+     <tspan 
+        x="68" 
+        y="419" 
+        id="tspan170" 
+        style="font-size:9px;fill:#000000;fill-opacity:1">phải</tspan>
    </text> 
    <path 
       d="M 90.000086,441.71384 L 101.00015,441.71384 L 101.00015,445.71386 L 98.333456,445.71386 L 98.333456,443.71385 L 91.333426,443.71385" 
@@ -661,7 +666,7 @@
         x="46" 
         y="247" 
         id="tspan188" 
-        style="font-size:10.5px">tiểu</tspan> 
+        style="font-size:9px">tiểu</tspan> 
    </text> 
    <text 
       y="48" 
@@ -671,7 +676,7 @@
         x="100" 
         y="247" 
         id="tspan192" 
-        style="font-size:10.5px">đại</tspan> 
+        style="font-size:9px">đại</tspan> 
    </text> 
    <path 
       d="M 35.889163,215.16016 L 46.764163,215.16016 L 46.764163,210.66016 L 44.764163,210.66016 L 44.764163,212.16016 L 40.264163,212.16016 L 40.264163,200.66016 L 44.764163,200.66016 L 44.764163,202.16016 L 46.764163,202.16016 L 46.764163,197.78516 L 40.264163,197.78516 L 26.264163,189.28516 L 24.014163,189.28516 L 24.014163,187.28516 L 21.264163,187.28516 L 21.264163,197.53516 L 24.014163,197.53516 L 24.014163,195.53516 L 26.264163,195.53516 L 35.889163,201.53516 L 35.889163,215.16016 z" 

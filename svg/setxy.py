@@ -29,7 +29,7 @@ import gettext
 def main():
 
     myname = "setxy"
-    mystring1 = "setyx"
+    mystring1 = "set xy"
     mystring2 = "x"
     mystring3 = "y"
     mygroup = "turtle"
@@ -95,7 +95,7 @@ def main():
       <tspan \n \
        x=\"37\" \n \
        y=\"43\" \n \
-       style=\"font-size:18px;\">"
+       style=\"font-size:16px;\">"
 
     data1 = \
 "</tspan></text> \n \

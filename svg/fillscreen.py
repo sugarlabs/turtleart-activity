@@ -95,13 +95,13 @@ def main():
      <tspan \n \
        x=\"37\" \n \
        y=\"38\" \n \
-       style=\"font-size:18px;\">"
+       style=\"font-size:16px;\">"
 
     data1 = \
 "</tspan><tspan \n \
        x=\"37\" \n \
        y=\"54\" \n \
-       style=\"font-size:18px;\">"
+       style=\"font-size:16px;\">"
 
     data2 = \
 "</tspan></text> \n \
