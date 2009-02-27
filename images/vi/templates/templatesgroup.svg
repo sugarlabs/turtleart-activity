@@ -176,7 +176,7 @@
         x="72" 
         y="21.5" 
         id="tspan2796" 
-        style="font-size:20px">Templates</tspan> 
+        style="font-size:20px">Mẫu</tspan> 
    </text> 
    <path 
       d="M 48.060226,35.454452 L 96.939774,35.454452 L 96.939774,70.3333 L 48.060226,70.3333 L 48.060226,35.454452 z" 
@@ -232,7 +232,7 @@
         x="72" 
         y="444" 
         id="tspan2718" 
-        style="font-size:12px">hide</tspan> 
+        style="font-size:12px">ẩn</tspan> 
    </text> 
    <text 
       style="font-size:12.06000042px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
@@ -240,7 +240,7 @@
         x="72" 
         y="457" 
         id="tspan2722" 
-        style="font-size:12px">blocks</tspan> 
+        style="font-size:12px">khối</tspan> 
    </text> 
    <rect 
       width="123.61703" 
@@ -535,7 +535,7 @@
         x="47" 
         y="396" 
         id="tspan3043" 
-        style="font-size:12px">sound</tspan> 
+        style="font-size:12px">âm thanh</tspan> 
    </text> 
    <path 
       d="M 87.75,93.55 L 89.425,93.55 L 89.425,94.89 L 91.77,94.89 L 91.77,93.55 L 122.4225,93.55 L 122.4225,100.25 L 91.77,100.25 L 91.77,98.91 L 89.425,98.91 L 89.425,100.25 L 87.75,100.25 L 87.75,93.55 z" 

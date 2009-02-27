@@ -43,6 +43,8 @@ def main():
     t.install()
 
     print _(mystring1)
+    print _(mystring2)
+    print _(mystring3)
 
 
     data0 = \
