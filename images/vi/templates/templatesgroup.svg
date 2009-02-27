@@ -164,23 +164,17 @@
       id="path4003" 
       style="fill:#ff4040;fill-opacity:1;fill-rule:nonzero;stroke:#ff4040;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /> 
    <text 
-      x="67.879883" 
-      y="491.74902" 
-      id="text4005" 
       xml:space="preserve" 
       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold"><tspan 
-        x="67.879883" 
-        y="491.74902" 
+        x="68" 
+        y="492" 
         id="tspan4007" 
         style="font-size:12px;font-weight:bold;fill:#ffffff;font-family:Bitstream Vera Sans">X</tspan></text> 
    <text 
-      x="-22.836914" 
-      y="1.4019699" 
-      id="text3198" 
-      style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"> 
+      style="font-size:12px;text-align:center;text-anchor:middle;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"> 
      <tspan 
-        x="22.163086" 
-        y="21.40197" 
+        x="72" 
+        y="21.5" 
         id="tspan2796" 
         style="font-size:20px">Templates</tspan> 
    </text> 

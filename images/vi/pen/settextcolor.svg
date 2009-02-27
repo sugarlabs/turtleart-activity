@@ -43,20 +43,20 @@
      <tspan 
         x="37" 
         y="20" 
-        style="font-size:16px;">set</tspan> 
+        style="font-size:16px;">đặt</tspan> 
    </text> 
    <text 
       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="37" 
         y="35" 
-        style="font-size:16px;">text</tspan> 
+        style="font-size:16px;">màu</tspan> 
    </text> 
    <text 
       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="37" 
         y="50" 
-        style="font-size:16px;">color</tspan> 
+        style="font-size:16px;">chữ</tspan> 
    </text> 
  </svg> 

@@ -33,6 +33,7 @@ def main():
  "back.py", \
  "box1.py", \
  "box2.py", \
+ "clean.py", \
  "clearheap.py", \
  "color.py", \
  "fillscreen.py", \
