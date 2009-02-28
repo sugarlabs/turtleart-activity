@@ -45,7 +45,7 @@ from sugar import profile
 from gettext import gettext as _
 import locale
 import os.path
-import os
+import subprocess
 import tarfile
 import sys
 from taexporthtml import *
@@ -117,7 +117,8 @@ class TurtleArtActivity(activity.Activity):
                 newversion = False
             else:
                 _logger.debug("out with the old, in with the new")
-                os.system("rm " + os.path.join(datapath, '*.png'))
+                cmd = "rm " + os.path.join(datapath, '*.png')
+                subprocess.check_call(cmd, shell=True)
         except:
             _logger.debug("writing new version data")
             _logger.debug("and creating a tamyblock.py Journal entry")

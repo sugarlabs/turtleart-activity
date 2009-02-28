@@ -61,6 +61,7 @@ def main():
  "pop.py", \
  "printheap.py", \
  "print.py", \
+ "push.py", \
  "random.py", \
  "random.pyc", \
  "remainder2.py", \
@@ -93,12 +94,16 @@ def main():
         print "Error: Usage is makesvg.py lang"
         return
 
-    # start from a copy of the en images
-    print "os.system(" + "cp -r ../images/en ../image/" + sys.argv[1] + ")"
-    os.system("cp -r ../images/en ../images/" + sys.argv[1])
-
-    # make a copy of the samples directory too
-    os.system("cp -r ../samples/en ../samples/" + sys.argv[1])
+    try: 
+       FILE = open(os.path.join("../images", sys.argv[1], "turtle", \
+           "forward.svg"), "r")
+       FILE.close()
+    except:
+        # start from a copy of the en images
+        print "os.system(" + "cp -r ../images/en ../image/" + sys.argv[1] + ")"
+        os.system("cp -r ../images/en ../images/" + sys.argv[1])
+        # make a copy of the samples directory too
+        os.system("cp -r ../samples/en ../samples/" + sys.argv[1])
 
     # run the scripts to generate the language-specific files
     for p in py:

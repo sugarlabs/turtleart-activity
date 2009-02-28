@@ -30,7 +30,7 @@ def main():
 
     myname = "printheap"
     mystring = "show heap"
-    mygroup = "myblocks"
+    mygroup = "sensors"
 
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
@@ -58,7 +58,7 @@ def main():
          offset=\"0\" \n \
          id=\"stop3168\" /> \n \
       <stop \n \
-         style=\"stop-color:#ffff00;stop-opacity:1;\" \n \
+         style=\"stop-color:#ff0000;stop-opacity:1;\" \n \
          offset=\"1\" \n \
          id=\"stop3170\" /> \n \
     </linearGradient> \n \
@@ -72,7 +72,7 @@ def main():
        gradientUnits=\"userSpaceOnUse\" /> \n \
   </defs> \n \
   <path \n \
-     style=\"fill:url(#linearGradient3172);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1\" \n \
+     style=\"fill:url(#linearGradient3172);fill-opacity:1;stroke:#c00000;stroke-width:2;stroke-opacity:1\" \n \
      d=\"M 48,1 C 64,1 64,1 64,1 L 69.5,5 L 73,11 L 73,45 L 69.5,51 L 64,55 L 47,55 L 47,55 L 47,59 L 27,59 L 27,55 L 10,55 L 4.5,51 L 1,45 L 1,11 L 4.5,5 L 10,1 L 26,1 L 26,6 L 48,6 L 48,1 z\" /> \n "
 
     data1a = \

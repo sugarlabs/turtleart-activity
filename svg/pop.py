@@ -30,7 +30,7 @@ def main():
 
     myname = "pop"
     mystring = "pop"
-    mygroup = "myblocks"
+    mygroup = "sensors"
 
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
@@ -41,49 +41,56 @@ def main():
     t.install()
 
     print _(mystring)
-
     data0 = \
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n \
+<!-- Created with Inkscape (http://www.inkscape.org/) --> \n \
 <svg \n \
+   xmlns:svg=\"http://www.w3.org/2000/svg\" \n \
    xmlns=\"http://www.w3.org/2000/svg\" \n \
    xmlns:xlink=\"http://www.w3.org/1999/xlink\" \n \
+   version=\"1.0\" \n \
    width=\"105\" \n \
-   height=\"21\"> \n \
-  <defs> \n \
+   height=\"21\" \n \
+   id=\"svg2\"> \n \
+  <defs \n \
+     id=\"defs4\"> \n \
     <linearGradient \n \
        id=\"linearGradient3166\"> \n \
       <stop \n \
-         style=\"stop-color:#ffffff;stop-opacity:1;\" \n \
-         offset=\"0\" \n \
-         id=\"stop3168\" /> \n \
+         id=\"stop3168\" \n \
+         style=\"stop-color:#ffffff;stop-opacity:1\" \n \
+         offset=\"0\" /> \n \
       <stop \n \
-         style=\"stop-color:#ffff00;stop-opacity:1;\" \n \
-         offset=\"1\" \n \
-         id=\"stop3170\" /> \n \
+         id=\"stop3170\" \n \
+         style=\"stop-color:#ff0000;stop-opacity:1\" \n \
+         offset=\"1\" /> \n \
     </linearGradient> \n \
     <linearGradient \n \
-       xlink:href=\"#linearGradient3166\" \n \
-       id=\"linearGradient3172\" \n \
        x1=\"0\" \n \
        y1=\"0\" \n \
        x2=\"104\" \n \
        y2=\"21\" \n \
+       id=\"linearGradient3172\" \n \
+       xlink:href=\"#linearGradient3166\" \n \
        gradientUnits=\"userSpaceOnUse\" /> \n \
   </defs> \n \
   <path \n \
-     style=\"fill:url(#linearGradient3172);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1\" \n \
-     d=\"M 1,0.5 L 6,0.5 L 6,4.5 L 13,4.5 L 13,0.5 L 104.5,0.5 L 104.5,20.5 L 13,20.5 L 13,16.5 L 6,16.5 L 6,20.5 L 1,20.5 L 1,0.5 z\" /> \n \
+     d=\"M 1,0.5 L 6,0.5 L 6,4.5 L 13,4.5 L 13,0.5 L 104.5,0.5 L 104.5,20.5 L 13,20.5 L 13,16.5 L 6,16.5 L 6,20.5 L 1,20.5 L 1,0.5 z\" \n \
+     id=\"path10\" \n \
+     style=\"fill:url(#linearGradient3172);fill-opacity:1;stroke:#a00000;stroke-width:2;stroke-opacity:1\" /> \n \
   <text \n \
-       style=\"font-size:16px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans\"> \n \
+     id=\"text12\" \n \
+     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
     <tspan \n \
        x=\"52\" \n \
        y=\"15.5\" \n \
+       id=\"tspan14\" \n \
        style=\"font-size:16px\">"
 
     data1 = \
 "</tspan> \n \
   </text> \n \
-</svg> \n "
+</svg> \n"
 
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
