@@ -20,7 +20,6 @@
 
 import tawindow
 import talogo
-import re
 import math
 
 def save_logo(self, tw):
@@ -124,14 +123,14 @@ tasetshade :shade \r"
                  # transalate some TA terms into UCB Logo
                  if namedstack == 1:
                      this_stack += "to "
-                     this_stack += re.sub("\s","_",d[2:])
+                     this_stack += d[2:].replace(" ","_")
                      this_stack += "\r"
                      stack = 1
                      namedstack = 0
                  elif namedbox == 1:
                      if d[0:2] == "#s":
                          this_stack += "make \""
-                         this_stack += re.sub("\s","_",d[2:])
+                         this_stack += d[2:].replace(" ","_")
                          this_stack += " " 
                          this_stack += myvar 
                          namedbox = 0
@@ -139,12 +138,12 @@ tasetshade :shade \r"
                      else:
                          myvar += d
                  elif refstack == 1:
-                     this_stack += re.sub("\s","_",d[2:])
+                     this_stack += d[2:].replace(" ","_")
                      this_stack += " "
                      refstack = 0
                  elif refbox == 1:
                      this_stack += ":" 
-                     this_stack += re.sub("\s","_",d[2:])
+                     this_stack += d[2:].replace(" ","_")
                      refbox = 0
                  elif d == "stack":
                      refstack = 1
@@ -287,7 +286,11 @@ def walk_stack(self, tw, spr):
     top = tawindow.find_top_block(spr)
     if spr == top:
         # only walk the stack if the block is the top block
-        return talogo.run_blocks(tw.lc, top, tawindow.blocks(tw), False)
+        code = talogo.run_blocks(tw.lc, top, tawindow.blocks(tw), False)
+        print ">> " 
+        print code 
+        print " <<"
+        return code
     else:
         # not top of stack, then return empty list
         return []
