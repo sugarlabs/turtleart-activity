@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: 2009-02-14 18:30-0500\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2009-02-27 21:13-0500\n"
 "Last-Translator: Yuan Chao <yuanchao@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,9 +15,84 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Pootle 1.1.0rc2\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
 msgstr "小海龜"
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "標題"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "文字"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "堆疊"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "方塊"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "名稱"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "專案"
+
+#:
+msgid "Save as"
+msgstr "另存新檔"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "隱藏調色盤"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "隱藏區塊"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "執行"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "單步執行"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "停止執行"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "範例"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "另存為網頁 HTML"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "儲存 Logo 檔"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "載入我的區塊"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "顯示調色盤"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "顯示區塊"
 
 #:
 msgid "Flow"
@@ -25,7 +100,7 @@ msgstr "流程"
 
 #:
 msgid "forever"
-msgstr "持續動作"
+msgstr "持續執行"
 
 #:
 msgid "if"
@@ -78,6 +153,14 @@ msgstr "放入方塊一"
 #:
 msgid "store in box 2"
 msgstr "放入方塊二"
+
+#:
+msgid "push"
+msgstr "存入堆疊"
+
+#:
+msgid "pop"
+msgstr "取出堆疊"
 
 #:
 msgid "Numbers"
@@ -160,12 +243,20 @@ msgid "set color"
 msgstr "設定線條顏色"
 
 #:
+msgid "set text color"
+msgstr "設定文字顏色"
+
+#:
 msgid "Blocks"
 msgstr "區塊"
 
 #:
 msgid "Turtle"
 msgstr "小海龜"
+
+#:
+msgid "clean"
+msgstr "清除畫面"
 
 #:
 msgid "forward"
@@ -199,13 +290,9 @@ msgstr "半徑"
 msgid "heading"
 msgstr "方向"
 
-#:
+#
 msgid "set heading"
 msgstr "指定方向"
-
-#:
-msgid "clean"
-msgstr "清除畫面"
 
 #:
 msgid "set xy"
@@ -228,9 +315,49 @@ msgid "ycor"
 msgstr "Y座標"
 
 #:
-msgid "Project"
-msgstr "專案"
+msgid "Sensors"
+msgstr "偵測器"
 
 #:
-msgid "Samples"
-msgstr "範例"
+msgid "volume"
+msgstr "音量"
+
+#:
+msgid "pitch"
+msgstr "音高"
+
+#:
+msgid "voltage"
+msgstr "電壓"
+
+#:
+msgid "resistance"
+msgstr "電阻"
+
+#:
+msgid "Templates"
+msgstr "模板"
+
+#:
+msgid "Keyboard"
+msgstr "鍵盤"
+
+#:
+msgid "read key"
+msgstr "讀取按鍵"
+
+#:
+msgid "sound"
+msgstr "音效"
+
+#:
+msgid "hres"
+msgstr "水平解析度"
+
+#:
+msgid "vres"
+msgstr "垂直解析度"
+
+#:
+msgid "start"
+msgstr "啟動"
