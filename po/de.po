@@ -1,237 +1,334 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: turtleart-activity\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2009-02-28 18:33+0100\n"
+"Last-Translator: Markus Schlager <m.slg@gmx.de>\n"
+"Language-Team: OLPC-German <m.slg@gmx.de>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"X-Generator: Pootle 1.1.0rc2\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
-msgstr ""
+msgstr "Turtle-Kunst"
 
-#:
+#: tasetup.py:46
+#: tasetup.py:49
+#: tasetup.py:50
+#: tasetup.py:51
+#: tasetup.py:52
+#: tasetup.py:53
+#: tasetup.py:54
+msgid "title"
+msgstr "Titel"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "Text"
+
+#: tasetup.py:119
+#: tasetup.py:120
+#, fuzzy
+msgid "stack"
+msgstr "Stapel"
+
+#: tasetup.py:125
+#: tasetup.py:126
+#, fuzzy
+msgid "box"
+msgstr "Rahmen"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "Name"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "Projekt"
+
+msgid "Save as"
+msgstr "Speichern unter"
+
+#: TurtleArtActivity.py:173
+#: TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "Palette verbergen"
+
+#: TurtleArtActivity.py:181
+#: TurtleArtActivity.py:286
+#, fuzzy
+msgid "hide blocks"
+msgstr "Blöcke verbergen"
+
+#: TurtleArtActivity.py:194
+#, fuzzy
+msgid "run"
+msgstr "ausführen"
+
+#: TurtleArtActivity.py:202
+#, fuzzy
+msgid "step"
+msgstr "schrittweise"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "Turtle anhalten"
+
+#: TurtleArtActivity.py:236
+#, fuzzy
+msgid "samples"
+msgstr "Beispiele"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "Als HTML speichern"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "Logo speichern"
+
+#: TurtleArtActivity.py
+#, fuzzy
+msgid "load my block"
+msgstr "Meinen Block laden"
+
+#: TurtleArtActivity.py:259
+#: TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290
+#: TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "Palette anzeigen"
+
+#: TurtleArtActivity.py:283
+#: TurtleArtActivity.py:297
+#, fuzzy
+msgid "show blocks"
+msgstr "Blöcke anzeigen"
+
 msgid "Flow"
-msgstr ""
+msgstr "Programmfluss"
 
-#:
 msgid "forever"
-msgstr ""
+msgstr "fortlaufend"
 
-#:
 msgid "if"
-msgstr ""
+msgstr "wenn"
 
-#:
 msgid "then"
-msgstr ""
+msgstr "dann"
 
-#:
 msgid "else"
-msgstr ""
+msgstr "sonst"
 
-#:
 msgid "repeat"
-msgstr ""
+msgstr "wiederhole"
 
-#:
+#, fuzzy
 msgid "stop stack"
-msgstr ""
+msgstr "Stapel anhalten"
 
-#:
 msgid "wait"
-msgstr ""
+msgstr "warte"
 
-#:
+#, fuzzy
 msgid "My Blocks"
-msgstr ""
+msgstr "Meine Blöcke"
 
-#:
+#, fuzzy
 msgid "box 1"
-msgstr ""
+msgstr "Rahmen 1"
 
-#:
+#, fuzzy
 msgid "box 2"
-msgstr ""
+msgstr "Rahmen 2"
 
-#:
+#, fuzzy
 msgid "stack 1"
-msgstr ""
+msgstr "Stapel 1"
 
-#:
+#, fuzzy
 msgid "stack 2"
-msgstr ""
+msgstr "Stapel 2"
 
-#:
+#, fuzzy
 msgid "store in box 1"
-msgstr ""
+msgstr "in Rahmen 1 speichern"
 
-#:
+#, fuzzy
 msgid "store in box 2"
-msgstr ""
+msgstr "in Rahmen 2 speichern"
 
-#:
+#, fuzzy
+msgid "push"
+msgstr "push"
+
+#, fuzzy
+msgid "pop"
+msgstr "pop"
+
 msgid "Numbers"
-msgstr ""
+msgstr "Zahlen"
 
-#:
 msgid "number"
-msgstr ""
+msgstr "Zahl"
 
-#:
 msgid "and"
-msgstr ""
+msgstr "und"
 
-#:
 msgid "or"
-msgstr ""
+msgstr "oder"
 
-#:
 msgid "not"
-msgstr ""
+msgstr "nicht"
 
-#:
 msgid "random"
-msgstr ""
+msgstr "Zufall"
 
-#:
 msgid "min"
-msgstr ""
+msgstr "min"
 
-#:
 msgid "max"
-msgstr ""
+msgstr "max"
 
-#:
 msgid "mod"
-msgstr ""
+msgstr "mod"
 
-#:
+#, fuzzy
 msgid "print"
-msgstr ""
+msgstr "schreibe"
 
-#:
 msgid "Pen"
-msgstr ""
+msgstr "Stift"
 
-#:
 msgid "color"
-msgstr ""
+msgstr "Farbe"
 
-#:
+#, fuzzy
 msgid "shade"
-msgstr ""
+msgstr "Farbton"
 
-#:
 msgid "fill screen"
-msgstr ""
+msgstr "fülle Bildschirm"
 
-#:
 msgid "pen up"
-msgstr ""
+msgstr "hebe Stift an"
 
-#:
 msgid "pen down"
-msgstr ""
+msgstr "senke Stift ab"
 
-#:
 msgid "set pen size"
-msgstr ""
+msgstr "setze Stiftdicke"
 
-#:
 msgid "pen size"
-msgstr ""
+msgstr "Stiftdicke"
 
-#:
+#, fuzzy
 msgid "set shade"
-msgstr ""
+msgstr "setze Farbton"
 
-#:
 msgid "set color"
-msgstr ""
+msgstr "setze Farbe"
 
-#:
+msgid "set text color"
+msgstr "setze Schriftfarbe"
+
+#, fuzzy
 msgid "Blocks"
-msgstr ""
+msgstr "Blöcke"
 
-#:
 msgid "Turtle"
-msgstr ""
+msgstr "Turtle"
 
-#:
+#, fuzzy
+msgid "clean"
+msgstr "lösche alles"
+
 msgid "forward"
-msgstr ""
+msgstr "gehe vorwärts"
 
-#:
 msgid "back"
-msgstr ""
+msgstr "gehe rückwärts"
 
-#:
+#, fuzzy
 msgid "right"
-msgstr ""
+msgstr "dreh dich rechts"
 
-#:
+#, fuzzy
 msgid "left"
-msgstr ""
+msgstr "dreh dich links"
 
-#:
 msgid "arc"
-msgstr ""
+msgstr "Kreisbogen"
 
-#:
 msgid "angle"
-msgstr ""
+msgstr "Winkel"
 
-#:
 msgid "radius"
-msgstr ""
+msgstr "Radius"
 
-#:
 msgid "heading"
-msgstr ""
+msgstr "Richtung"
 
-#:
+#
 msgid "set heading"
 msgstr "seth"
 
-#:
-msgid "clean"
-msgstr ""
-
-#:
 msgid "set xy"
-msgstr ""
+msgstr "setze xy"
 
-#:
 msgid "x"
-msgstr ""
+msgstr "x"
 
-#:
 msgid "y"
-msgstr ""
+msgstr "y"
 
-#:
+#, fuzzy
 msgid "xcor"
-msgstr ""
+msgstr "x-Koordinate"
 
-#:
+#, fuzzy
 msgid "ycor"
-msgstr ""
+msgstr "y-Koordinate"
 
-#:
-msgid "Project"
-msgstr ""
+msgid "Sensors"
+msgstr "Sensoren"
 
-#:
-msgid "Samples"
-msgstr ""
+msgid "volume"
+msgstr "Lautstärke"
+
+msgid "pitch"
+msgstr "Tonhöhe"
+
+msgid "voltage"
+msgstr "Spannung"
+
+msgid "resistance"
+msgstr "Widerstand"
+
+msgid "Templates"
+msgstr "Vorlagen"
+
+msgid "Keyboard"
+msgstr "Tastatur"
+
+#, fuzzy
+msgid "read key"
+msgstr "lies Taste aus"
+
+msgid "sound"
+msgstr "Klang"
+
+#, fuzzy
+msgid "hres"
+msgstr "hor. Auflösung"
+
+msgid "vres"
+msgstr "vert. Auflösung"
+
+#, fuzzy
+msgid "start"
+msgstr "Start"
