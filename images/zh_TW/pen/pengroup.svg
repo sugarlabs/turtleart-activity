@@ -426,7 +426,7 @@
         x="68.53521" 
         y="314.20999" 
         id="tspan2630" 
-        style="font-size:10.5px">set</tspan> 
+        style="font-size:10.5px">設定文字顏色</tspan> 
    </text> 
    <text 
       x="43.745213" 
@@ -437,7 +437,7 @@
         x="68.53521" 
         y="323.59" 
         id="tspan2634" 
-        style="font-size:10.5px">text</tspan> 
+        style="font-size:10.5px"></tspan> 
    </text> 
    <text 
       x="43.745213" 
@@ -448,7 +448,7 @@
         x="68.53521" 
         y="332.97" 
         id="tspan2638" 
-        style="font-size:10.5px">color</tspan> 
+        style="font-size:10.5px"></tspan> 
    </text> 
  </svg> 
  
