@@ -420,9 +420,17 @@
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="32" 
-        y="294" 
+        y="288" 
         id="tspan95" 
-        style="font-size:11px">放入方塊一</tspan> 
+        style="font-size:11px">放入方塊</tspan> 
+   </text> 
+  <text 
+      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="32" 
+        y="300" 
+        id="tspan95" 
+        style="font-size:11px">一</tspan> 
    </text> 
    <path 
       d="M 70.522547,284.44247 L 73.856047,284.44247 L 73.856047,287.10927 L 78.522947,287.10927 L 78.522947,284.44247 L 139.526,284.44247 L 139.526,297.77647 L 78.522947,297.77647 L 78.522947,295.10967 L 73.856047,295.10967 L 73.856047,297.77647 L 70.522547,297.77647 L 70.522547,284.44247 z" 
@@ -456,9 +464,17 @@
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="32" 
-        y="341" 
+        y="335" 
         id="tspan117" 
-        style="font-size:11px">放入方塊二</tspan> 
+        style="font-size:10.5px">放入方塊</tspan> 
+   </text> 
+  <text 
+      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="32" 
+        y="347" 
+        id="tspan117" 
+        style="font-size:10.5px">二</tspan> 
    </text> 
    <path 
       d="M 70.522547,330.86965 L 73.856047,330.86965 L 73.856047,333.53645 L 78.522947,333.53645 L 78.522947,330.86965 L 139.526,330.86965 L 139.526,344.20365 L 78.522947,344.20365 L 78.522947,341.53685 L 73.856047,341.53685 L 73.856047,344.20365 L 70.522547,344.20365 L 70.522547,330.86965 z" 

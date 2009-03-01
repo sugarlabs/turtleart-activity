@@ -33,9 +33,6 @@
       <tspan 
         sodipodi:role="line" 
         x="37" 
-        y="17.5" 
-        style="font-size:14px;text-anchor:middle">停止堆疊</tspan><tspan 
-        x="37" 
-        y="35" 
-        style="font-size:14px;text-anchor:middle"></tspan></text> 
+        y="25" 
+        style="font-size:14px;text-anchor:middle">停止堆疊</tspan></text> 
  </svg> 

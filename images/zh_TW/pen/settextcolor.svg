@@ -42,7 +42,14 @@
       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="37" 
-        y="36" 
-        style="font-size:18px;">設定文字顏色</tspan> 
+        y="28" 
+        style="font-size:14px;">設定</tspan> 
+   </text> 
+   <text 
+      style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="37" 
+        y="44" 
+        style="font-size:14px;">文字顏色</tspan> 
    </text> 
  </svg> 
