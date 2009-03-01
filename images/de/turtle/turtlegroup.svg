@@ -265,9 +265,17 @@
       style="font-size:8.00004005px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="72.5" 
-        y="51.5" 
+        y="47" 
         id="tspan52" 
-        style="font-size:12px;fill:#000000;fill-opacity:1">clean</tspan> 
+        style="font-size:10px;fill:#000000;fill-opacity:1">ab-</tspan> 
+   </text> 
+   <text 
+      style="font-size:8.00004005px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="72.5" 
+        y="56" 
+        id="tspan52" 
+        style="font-size:10px;fill:#000000;fill-opacity:1">wischen</tspan> 
    </text> 
    <path 
       d="M 54.083421,79.3333 L 65.083476,79.3333 L 65.083476,83.33332 L 62.416796,83.33332 L 62.416796,81.33331 L 55.416761,81.33331" 
@@ -285,9 +293,17 @@
       style="font-size:8.00004005px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="32" 
-        y="92.5" 
+        y="88" 
         id="tspan84" 
-        style="font-size:12px">gehe vorwärts</tspan> 
+        style="font-size:10px">gehe</tspan> 
+   </text> 
+   <text 
+      style="font-size:8.00004005px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="32" 
+        y="98" 
+        id="tspan84" 
+        style="font-size:10px">vorwärts</tspan> 
    </text> 
    <path 
       d="M 126.08342,79.3333 L 137.08348,79.3333 L 137.08348,83.33332 L 134.4168,83.33332 L 134.4168,81.33331 L 127.41676,81.33331" 
@@ -305,9 +321,17 @@
       style="font-size:8.00004005px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="104" 
-        y="92.5" 
+        y="88" 
         id="tspan96" 
-        style="font-size:12px">gehe rückwärts</tspan> 
+        style="font-size:10px">gehe</tspan> 
+   </text> 
+   <text 
+      style="font-size:8.00004005px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="104" 
+        y="98" 
+        id="tspan96" 
+        style="font-size:10px">rückwärts</tspan> 
    </text> 
    <path 
       d="M 54.083421,119.99997 L 65.083476,119.99997 L 65.083476,123.99999 L 62.416796,123.99999 L 62.416796,121.99998 L 55.416761,121.99998" 
@@ -327,7 +351,7 @@
         x="32" 
         y="133" 
         id="tspan108" 
-        style="font-size:12px">left</tspan> 
+        style="font-size:12px">links</tspan> 
    </text> 
    <path 
       d="M 126.08342,119.99997 L 137.08348,119.99997 L 137.08348,123.99999 L 134.4168,123.99999 L 134.4168,121.99998 L 127.41676,121.99998" 
@@ -347,7 +371,7 @@
         x="104" 
         y="133" 
         id="tspan120" 
-        style="font-size:12px">right</tspan> 
+        style="font-size:12px">rechts</tspan> 
    </text> 
    <path 
       d="M 89.916753,183.16669 L 100.91681,183.16669 L 100.91681,187.33338 L 98.250129,187.33338 L 98.250129,185.1667 L 91.250094,185.1667" 
@@ -373,9 +397,17 @@
       style="font-size:8.00004005px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="68" 
-        y="183" 
+        y="178" 
         id="tspan136" 
-        style="font-size:12px">Kreisbogen</tspan> 
+        style="font-size:10.5px">Kreis-</tspan> 
+   </text> 
+   <text 
+      style="font-size:8.00004005px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="68" 
+        y="188" 
+        id="tspan136" 
+        style="font-size:10.5px">bogen</tspan> 
    </text> 
    <text 
       style="font-size:8.00004005px;text-align:end;text-anchor:end;font-family:Bitstream Vera Sans"> 
@@ -416,7 +448,7 @@
         x="32" 
         y="252" 
         id="tspan158" 
-        style="font-size:12px">setyx</tspan> 
+        style="font-size:11px">setze xy</tspan> 
    </text> 
    <text 
       style="font-size:9.33337975px;text-align:end;text-anchor:end;font-family:Bitstream Vera Sans"> 
@@ -449,7 +481,7 @@
         x="104" 
         y="241" 
         id="tspan176" 
-        style="font-size:12px">seth</tspan> 
+        style="font-size:11px">setze h</tspan> 
    </text> 
    <path 
       d="M 37.999828,352.33333 L 41.333178,352.33333 L 41.333178,355.00001 L 45.999868,355.00001 L 45.999868,352.33333 L 107.00017,352.33333 L 107.00017,365.66673 L 45.999868,365.66673 L 45.999868,363.00005 L 41.333178,363.00005 L 41.333178,365.66673 L 37.999828,365.66673 L 37.999828,352.33333 z" 

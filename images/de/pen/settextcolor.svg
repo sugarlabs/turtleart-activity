@@ -42,14 +42,21 @@
       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="37" 
-        y="26" 
-        style="font-size:18px;">setze</tspan> 
+        y="22" 
+        style="font-size:16px;">setze</tspan> 
    </text> 
    <text 
       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="37" 
-        y="46" 
-        style="font-size:18px;">Schriftfarbe</tspan> 
+        y="36" 
+        style="font-size:16px;">Schrift-</tspan> 
+   </text> 
+   <text 
+      style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="37" 
+        y="50" 
+        style="font-size:16px;">farbe</tspan> 
    </text> 
  </svg> 

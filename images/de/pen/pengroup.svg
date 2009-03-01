@@ -281,18 +281,27 @@
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="68" 
-        y="93" 
+        y="89" 
         id="tspan67" 
-        style="font-size:11px">setze</tspan> 
+        style="font-size:10px">setze</tspan> 
    </text> 
    <text 
       id="text69" 
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="68" 
-        y="106" 
+        y="99" 
         id="tspan71" 
-        style="font-size:11px">Stiftdicke</tspan> 
+        style="font-size:10px">Stift-</tspan> 
+   </text> 
+   <text 
+      id="text69" 
+      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="68" 
+        y="109" 
+        id="tspan71" 
+        style="font-size:10px">dicke</tspan> 
    </text> 
    <path 
       d="M 90.084213,137.28005 L 101.08476,137.28005 L 101.08476,141.28025 L 98.417963,141.28025 L 98.417963,139.28015 L 91.417613,139.28015" 
@@ -341,18 +350,27 @@
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="68" 
-        y="197" 
+        y="193" 
         id="tspan95" 
-        style="font-size:11px">set</tspan> 
+        style="font-size:10px">setze</tspan> 
    </text> 
    <text 
       id="text97" 
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="68" 
-        y="210" 
+        y="203" 
         id="tspan99" 
-        style="font-size:11px">shade</tspan> 
+        style="font-size:10px">Abstu-</tspan> 
+   </text> 
+   <text 
+      id="text97" 
+      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="68" 
+        y="213" 
+        id="tspan99" 
+        style="font-size:10px">fung</tspan> 
    </text> 
    <path 
       d="M 89.917538,260.08382 L 100.91809,260.08382 L 100.91809,264.2507 L 98.251288,264.2507 L 98.251288,262.08393 L 91.250938,262.08393" 
@@ -381,7 +399,7 @@
         x="68" 
         y="255" 
         id="tspan113" 
-        style="font-size:11px">fülle</tspan> 
+        style="font-size:10px">fülle Bild-</tspan> 
    </text> 
    <text 
       id="text115" 
@@ -389,8 +407,8 @@
      <tspan 
         x="68" 
         y="268" 
-        id="tspan117" 
-        style="font-size:11px">Bildschirm</tspan> 
+        id="tspan117"
+        style="font-size:10px">schirm</tspan> 
    </text> 
    <text 
       id="text119" 
@@ -445,10 +463,10 @@
       id="text141" 
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
-        x="72.5" 
+        x="74" 
         y="461.96579" 
         id="tspan143" 
-        style="font-size:10.5px">shade</tspan> 
+        style="font-size:10.5px">Abstufung</tspan> 
    </text> 
    <path 
       d="M 90.645213,309.3525 L 101.70021,309.3525 L 101.70021,313.3725 L 99.020213,313.3725 L 99.020213,311.3625 L 91.985213,311.3625" 
@@ -477,12 +495,12 @@
       x="43.745213" 
       y="299.47" 
       id="text2632" 
-      style="font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
+      style="font-size:10px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="68.53521" 
         y="323.59" 
         id="tspan2634" 
-        style="font-size:10.5px">Schriftfarbe</tspan> 
+        style="font-size:10px">Schrift-</tspan> 
    </text> 
    <text 
       x="43.745213" 
@@ -493,7 +511,7 @@
         x="68.53521" 
         y="332.97" 
         id="tspan2638" 
-        style="font-size:10.5px"></tspan> 
+        style="font-size:10px">farbe</tspan> 
    </text> 
  </svg> 
  

@@ -45,8 +45,14 @@
       style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
        <tspan 
         x="37" 
-        y="43" 
-        style="font-size:16px;">Kreisbogen</tspan></text> 
+        y="37" 
+        style="font-size:16px;">Kreis-</tspan></text> 
+   <text 
+      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
+       <tspan 
+        x="37" 
+        y="49" 
+        style="font-size:16px;">bogen</tspan></text> 
    <text 
       style="font-size:12px;text-anchor:end;text-align:end;font-family:Bitstream Vera Sans"> 
        <tspan 

@@ -33,6 +33,12 @@
       style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans" > 
       <tspan 
         x="39" 
-        y="28" 
-        style="font-size:18px;">fortlaufend</tspan></text> 
+        y="23" 
+        style="font-size:16px;">fortlau-</tspan></text> 
+  <text 
+      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans" > 
+      <tspan 
+        x="39" 
+        y="38" 
+        style="font-size:16px;">fend</tspan></text> 
  </svg> 
