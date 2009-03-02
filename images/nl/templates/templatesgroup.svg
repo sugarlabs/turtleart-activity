@@ -164,25 +164,19 @@
       id="path4003" 
       style="fill:#ff4040;fill-opacity:1;fill-rule:nonzero;stroke:#ff4040;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /> 
    <text 
-      x="67.879883" 
-      y="491.74902" 
-      id="text4005" 
       xml:space="preserve" 
       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold"><tspan 
-        x="67.879883" 
-        y="491.74902" 
+        x="68" 
+        y="492" 
         id="tspan4007" 
         style="font-size:12px;font-weight:bold;fill:#ffffff;font-family:Bitstream Vera Sans">X</tspan></text> 
    <text 
-      x="-22.836914" 
-      y="1.4019699" 
-      id="text3198" 
-      style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"> 
+      style="font-size:12px;text-align:center;text-anchor:middle;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"> 
      <tspan 
-        x="22.163086" 
-        y="21.40197" 
+        x="72" 
+        y="21.5" 
         id="tspan2796" 
-        style="font-size:20px">Templates</tspan> 
+        style="font-size:20px">Sjablonen</tspan> 
    </text> 
    <path 
       d="M 48.060226,35.454452 L 96.939774,35.454452 L 96.939774,70.3333 L 48.060226,70.3333 L 48.060226,35.454452 z" 
@@ -238,7 +232,7 @@
         x="72" 
         y="444" 
         id="tspan2718" 
-        style="font-size:12px">hide</tspan> 
+        style="font-size:10px">blokken</tspan> 
    </text> 
    <text 
       style="font-size:12.06000042px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
@@ -246,7 +240,7 @@
         x="72" 
         y="457" 
         id="tspan2722" 
-        style="font-size:12px">blocks</tspan> 
+        style="font-size:10px">verbergen</tspan> 
    </text> 
    <rect 
       width="123.61703" 
@@ -541,7 +535,7 @@
         x="47" 
         y="396" 
         id="tspan3043" 
-        style="font-size:12px">sound</tspan> 
+        style="font-size:12px">geluid</tspan> 
    </text> 
    <path 
       d="M 87.75,93.55 L 89.425,93.55 L 89.425,94.89 L 91.77,94.89 L 91.77,93.55 L 122.4225,93.55 L 122.4225,100.25 L 91.77,100.25 L 91.77,98.91 L 89.425,98.91 L 89.425,100.25 L 87.75,100.25 L 87.75,93.55 z" 

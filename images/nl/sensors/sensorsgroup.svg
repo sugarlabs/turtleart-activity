@@ -208,7 +208,7 @@
         x="72.5" 
         y="21.5" 
         id="tspan30" 
-        style="font-size:20px">Keyboard</tspan> 
+        style="font-size:20px">Toetsenbord</tspan> 
    </text> 
    <path 
       d="M 79.87,36.918183 C 90.59,36.918183 90.59,36.918183 90.59,36.918183 L 94.275,39.598183 L 96.62,43.618183 L 96.62,66.398183 L 94.275,70.418183 L 90.59,73.098183 L 79.2,73.098183 L 79.2,73.098183 L 79.2,75.778183 L 65.8,75.778183 L 65.8,73.098183 L 54.41,73.098183 L 50.725,70.418183 L 48.38,66.398183 L 48.38,43.618183 L 50.725,39.598183 L 54.41,36.918183 L 65.13,36.918183 L 65.13,40.268183 L 79.87,40.268183 L 79.87,36.918183 z" 
@@ -220,7 +220,7 @@
         x="72." 
         y="54." 
         id="tspan14" 
-        style="font-size:12.06000042px">read</tspan> 
+        style="font-size:12.06000042px">lees</tspan> 
    </text> 
    <text 
       style="font-size:8.03999996px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
@@ -228,7 +228,7 @@
         x="72." 
         y="67." 
         id="tspan18" 
-        style="font-size:12.06000042px">key</tspan> 
+        style="font-size:12.06000042px">toets</tspan> 
    </text> 
    <path 
       d="M 37.998269,86.158913 L 41.33177,86.158913 L 41.33177,88.825713 L 45.998669,88.825713 L 45.998669,86.158913 L 107.00173,86.158913 L 107.00173,99.492913 L 45.998669,99.492913 L 45.998669,96.826113 L 41.33177,96.826113 L 41.33177,99.492913 L 37.998269,99.492913 L 37.998269,86.158913 z" 
@@ -343,7 +343,7 @@
           x="72" 
           y="260" 
           id="tspan3265" 
-          style="font-size:11px">pop</tspan> 
+          style="font-size:11px">afnemen</tspan> 
      </text> 
    </g> 
    <g 
@@ -385,7 +385,7 @@
             x="102" 
             y="301" 
             id="tspan3275" 
-            style="font-size:12.06000042px">clear</tspan> 
+            style="font-size:12.06000042px">empty</tspan> 
        </text> 
        <text 
           style="font-size:8.03999996px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
@@ -413,8 +413,16 @@
       style="font-size:12.06000042px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="68" 
-        y="244" 
+        y="240" 
         id="tspan3430" 
-        style="font-size:12.06000042px;font-family:Bitstream Vera Sans">push</tspan> 
+        style="font-size:10px;font-family:Bitstream Vera Sans">neer-</tspan> 
+   </text> 
+   <text 
+      style="font-size:12.06000042px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="68" 
+        y="248" 
+        id="tspan3430" 
+        style="font-size:10px;font-family:Bitstream Vera Sans">leggen</tspan> 
    </text> 
  </svg> 
