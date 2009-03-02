@@ -225,26 +225,40 @@
      id="path47"
      style="fill:url(#linearGradient4830);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
   <text
-     id="text49"
      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="43"
-       y="51.5"
+       y="49"
        id="tspan51"
-       style="font-size:11px">ps</tspan>
+       style="font-size:10.5px">penna</tspan>
+  </text>
+  <text
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="43"
+       y="57"
+       id="tspan51"
+       style="font-size:10.5px">su</tspan>
   </text>
   <path
      d="M 109.37431,34.643957 C 120.04151,34.643957 120.04151,34.643957 120.04151,34.643957 L 123.70836,37.310757 L 126.04181,41.310957 L 126.04181,53.978257 L 123.70836,57.311757 L 120.04151,59.978557 L 108.70761,59.978557 L 108.70761,59.978557 L 108.70761,62.645357 L 95.373609,62.645357 L 95.373609,59.978557 L 84.039709,59.978557 L 80.372859,57.311757 L 78.039409,53.978257 L 78.039409,41.310957 L 80.372859,37.310757 L 84.039709,34.643957 L 94.706909,34.643957 L 94.706909,37.977457 L 109.37431,37.977457 L 109.37431,34.643957 z"
      id="path53"
      style="fill:url(#linearGradient4838);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1" />
   <text
-     id="text55"
      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="101"
-       y="51.5"
-       id="tspan57"
-       style="font-size:11px">pg</tspan>
+       y="49"
+       id="tspan51"
+       style="font-size:10.5px">penna</tspan>
+  </text>
+  <text
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="101"
+       y="57"
+       id="tspan51"
+       style="font-size:10.5px">giù</tspan>
   </text>
   <path
      d="M 90.084213,85.211967 L 101.08476,85.211967 L 101.08476,89.212167 L 98.417963,89.212167 L 98.417963,87.212067 L 91.417613,87.212067"
