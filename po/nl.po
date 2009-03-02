@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: 2009-01-30 15:30-0500\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2009-03-01 13:31-0500\n"
 "Last-Translator: Myckel Habets <myckel@sdf.lonestar.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,13 +15,88 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Pootle 1.1.0rc2\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
 msgstr "Schildpad Kunst"
 
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "titel"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "tekst"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "stapel"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "doos"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "naam"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "Project"
+
+#:
+msgid "Save as"
+msgstr "Opslaan als"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "palet verbergen"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "blokken verbergen"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "start"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "stap"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "schildpad stoppen"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "voorbeelden"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "opslaan als HTML"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "Logo opslaan"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "laad mijn blok"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "palet weergeven"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "blokken weergeven"
+
 #:
 msgid "Flow"
-msgstr "Vloei"
+msgstr "Vloeien"
 
 #:
 msgid "forever"
@@ -78,6 +153,14 @@ msgstr "opslaan in doos 1"
 #:
 msgid "store in box 2"
 msgstr "opslaan in doos 2"
+
+#:
+msgid "push"
+msgstr "neerleggen"
+
+#:
+msgid "pop"
+msgstr "afnemen"
 
 #:
 msgid "Numbers"
@@ -160,12 +243,20 @@ msgid "set color"
 msgstr "zet kleur"
 
 #:
+msgid "set text color"
+msgstr "zet tekstkleur"
+
+#:
 msgid "Blocks"
 msgstr "Blokken"
 
 #:
 msgid "Turtle"
 msgstr "Schildpad"
+
+#:
+msgid "clean"
+msgstr "wissen"
 
 #:
 msgid "forward"
@@ -199,13 +290,9 @@ msgstr "straal"
 msgid "heading"
 msgstr "richting"
 
-#:
+#
 msgid "set heading"
 msgstr "richting instellen"
-
-#:
-msgid "clean"
-msgstr "wissen"
 
 #:
 msgid "set xy"
@@ -228,9 +315,49 @@ msgid "ycor"
 msgstr "ycor"
 
 #:
-msgid "Project"
-msgstr "Project"
+msgid "Sensors"
+msgstr "Sensors"
 
 #:
-msgid "Samples"
-msgstr "Voorbeelden"
+msgid "volume"
+msgstr "volume"
+
+#:
+msgid "pitch"
+msgstr "toonhoogte"
+
+#:
+msgid "voltage"
+msgstr "voltage"
+
+#:
+msgid "resistance"
+msgstr "weerstand"
+
+#:
+msgid "Templates"
+msgstr "Sjablonen"
+
+#:
+msgid "Keyboard"
+msgstr "Toetsenbord"
+
+#:
+msgid "read key"
+msgstr "lees toets"
+
+#:
+msgid "sound"
+msgstr "geluid"
+
+#:
+msgid "hres"
+msgstr "hres"
+
+#:
+msgid "vres"
+msgstr "vres"
+
+#:
+msgid "start"
+msgstr "begin"
