@@ -5,19 +5,94 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: 2008-12-14 17:47-0500\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2009-03-02 05:13-0500\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"X-Generator: Pootle 1.1.0rc2\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
 msgstr "Turtle Art"
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "titolo"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "testo"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "pila"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "scatola"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "nome"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "Progetto"
+
+#:
+msgid "Save as"
+msgstr "Salva come"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "nascondi paletta"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "nascondi blocchi"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "esegui"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "passo"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "stop tartaruga"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "esempi"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "salva come HTML"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "salva Logo"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "carica il mio blocco"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "mostra paletta"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "mostra blocchi"
 
 #:
 msgid "Flow"
@@ -78,6 +153,14 @@ msgstr "memorizza nella scatola 1"
 #:
 msgid "store in box 2"
 msgstr "memorizza nella scatola 2"
+
+#:
+msgid "push"
+msgstr "push"
+
+#:
+msgid "pop"
+msgstr "pop"
 
 #:
 msgid "Numbers"
@@ -160,12 +243,20 @@ msgid "set color"
 msgstr "seleziona colore"
 
 #:
+msgid "set text color"
+msgstr "seleziona colore testo"
+
+#:
 msgid "Blocks"
 msgstr "Blocchi"
 
 #:
 msgid "Turtle"
 msgstr "Tartaruga"
+
+#:
+msgid "clean"
+msgstr "pulisci"
 
 #:
 msgid "forward"
@@ -199,14 +290,10 @@ msgstr "raggio"
 msgid "heading"
 msgstr "direzione"
 
-#:
+#
 #, fuzzy
 msgid "set heading"
 msgstr "seth"
-
-#:
-msgid "clean"
-msgstr "pulisci"
 
 #:
 msgid "set xy"
@@ -229,9 +316,49 @@ msgid "ycor"
 msgstr "coordinata y"
 
 #:
-msgid "Project"
-msgstr "Progetto"
+msgid "Sensors"
+msgstr ""
 
 #:
-msgid "Samples"
-msgstr "Esempi"
+msgid "volume"
+msgstr ""
+
+#:
+msgid "pitch"
+msgstr ""
+
+#:
+msgid "voltage"
+msgstr ""
+
+#:
+msgid "resistance"
+msgstr ""
+
+#:
+msgid "Templates"
+msgstr ""
+
+#:
+msgid "Keyboard"
+msgstr ""
+
+#:
+msgid "read key"
+msgstr ""
+
+#:
+msgid "sound"
+msgstr ""
+
+#:
+msgid "hres"
+msgstr ""
+
+#:
+msgid "vres"
+msgstr ""
+
+#:
+msgid "start"
+msgstr ""
