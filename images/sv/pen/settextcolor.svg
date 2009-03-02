@@ -43,13 +43,13 @@
      <tspan 
         x="37" 
         y="26" 
-        style="font-size:18px;">ange</tspan> 
+        style="font-size:16px;">Ange</tspan> 
    </text> 
    <text 
       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="37" 
         y="46" 
-        style="font-size:18px;">textfärg</tspan> 
+        style="font-size:16px;">textfärg</tspan> 
    </text> 
  </svg> 

@@ -229,7 +229,7 @@
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="43" 
-        y="45" 
+        y="47" 
         id="tspan51" 
         style="font-size:10px">Ta</tspan> 
    </text> 
@@ -238,7 +238,7 @@
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="43" 
-        y="55" 
+        y="57" 
         id="tspan51" 
         style="font-size:10px">upp</tspan> 
    </text> 
@@ -251,7 +251,7 @@
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="101" 
-        y="45" 
+        y="47" 
         id="tspan57" 
         style="font-size:10px">Sätt</tspan> 
    </text> 
@@ -260,7 +260,7 @@
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="101" 
-        y="55" 
+        y="57" 
         id="tspan57" 
         style="font-size:10px">ned</tspan> 
    </text> 
@@ -281,18 +281,27 @@
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="68" 
-        y="93" 
+        y="89" 
         id="tspan67" 
-        style="font-size:11px">Ange</tspan> 
+        style="font-size:10.5px">ange</tspan> 
    </text> 
    <text 
       id="text69" 
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="68" 
-        y="106" 
+        y="99" 
         id="tspan71" 
-        style="font-size:11px">pennstorlek</tspan> 
+        style="font-size:10.5px">penn-</tspan> 
+   </text> 
+   <text 
+      id="text69" 
+      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="68" 
+        y="109" 
+        id="tspan71" 
+        style="font-size:10.5px">storlek</tspan> 
    </text> 
    <path 
       d="M 90.084213,137.28005 L 101.08476,137.28005 L 101.08476,141.28025 L 98.417963,141.28025 L 98.417963,139.28015 L 91.417613,139.28015" 
@@ -463,37 +472,20 @@
       id="path2626" 
       style="fill:url(#linearGradient4886);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /> 
    <text 
-      x="43.745213" 
-      y="299.47" 
-      id="text2628" 
       style="font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="68.53521" 
-        y="314.20999" 
+        y="319" 
         id="tspan2630" 
         style="font-size:10.5px">ange</tspan> 
    </text> 
    <text 
-      x="43.745213" 
-      y="299.47" 
-      id="text2632" 
       style="font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="68.53521" 
-        y="323.59" 
+        y="328" 
         id="tspan2634" 
         style="font-size:10.5px">textfärg</tspan> 
-   </text> 
-   <text 
-      x="43.745213" 
-      y="299.47" 
-      id="text2636" 
-      style="font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
-     <tspan 
-        x="68.53521" 
-        y="332.97" 
-        id="tspan2638" 
-        style="font-size:10.5px"></tspan> 
    </text> 
  </svg> 
  
