@@ -471,24 +471,26 @@
      id="path172"
      style="fill:url(#linearGradient3381);fill-opacity:1;stroke:#00a000;stroke-width:1.33334005;stroke-opacity:1" />
   <text
-     x="79.416519"
-     y="223.99988"
-     id="text174"
      style="font-size:8.00004005px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="104.08331"
-       y="241.3333"
+       x="105"
+       y="236"
        id="tspan176"
-       style="font-size:11px">direzione</tspan>
+       style="font-size:10px">seleziona</tspan>
+  </text>
+  <text
+     style="font-size:8.00004005px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="105"
+       y="246"
+       id="tspan176"
+       style="font-size:10px">direzione</tspan>
   </text>
   <path
      d="M 37.999828,352.33333 L 41.333178,352.33333 L 41.333178,355.00001 L 45.999868,355.00001 L 45.999868,352.33333 L 107.00017,352.33333 L 107.00017,365.66673 L 45.999868,365.66673 L 45.999868,363.00005 L 41.333178,363.00005 L 41.333178,365.66673 L 37.999828,365.66673 L 37.999828,352.33333 z"
      id="path180"
      style="fill:url(#linearGradient3405);fill-opacity:1;stroke:#00a000;stroke-width:1.33334005;stroke-opacity:1" />
   <text
-     x="39.333157"
-     y="352"
-     id="text182"
      style="font-size:8.00004005px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="74"
@@ -516,9 +518,6 @@
      id="path196"
      style="fill:url(#linearGradient3421);fill-opacity:1;stroke:#00a000;stroke-width:1.33334005;stroke-opacity:1" />
   <text
-     x="39.333157"
-     y="399.33331"
-     id="text198"
      style="font-size:8.00004005px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="74"
