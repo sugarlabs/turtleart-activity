@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2009-03-02 05:13-0500\n"
+"PO-Revision-Date: 2009-03-02 07:36-0500\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "testo"
 
 #: tasetup.py:119 tasetup.py:120
 msgid "stack"
-msgstr "pila"
+msgstr "stack"
 
 #: tasetup.py:125 tasetup.py:126
 msgid "box"
@@ -317,48 +317,48 @@ msgstr "coordinata y"
 
 #:
 msgid "Sensors"
-msgstr ""
+msgstr "Sensori"
 
 #:
 msgid "volume"
-msgstr ""
+msgstr "volume"
 
 #:
 msgid "pitch"
-msgstr ""
+msgstr "intonazione"
 
 #:
 msgid "voltage"
-msgstr ""
+msgstr "voltaggio"
 
 #:
 msgid "resistance"
-msgstr ""
+msgstr "resistenza"
 
 #:
 msgid "Templates"
-msgstr ""
+msgstr "Modelli"
 
 #:
 msgid "Keyboard"
-msgstr ""
+msgstr "Tastiera"
 
 #:
 msgid "read key"
-msgstr ""
+msgstr "leggi tasto"
 
 #:
 msgid "sound"
-msgstr ""
+msgstr "suono"
 
 #:
 msgid "hres"
-msgstr ""
+msgstr "hres"
 
 #:
 msgid "vres"
-msgstr ""
+msgstr "vres"
 
 #:
 msgid "start"
-msgstr ""
+msgstr "avvia"
