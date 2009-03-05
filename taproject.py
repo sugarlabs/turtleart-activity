@@ -22,7 +22,12 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import pickle
-import cjson
+#import cjson
+try:
+    import json
+    json.dumps
+except (ImportError, AttributeError):
+    import simplejson as json
 import os.path
 
 from tasprites import *
@@ -52,7 +57,8 @@ def load_files(tw,ta_file, png_file=''):
         # print "reading saved json data"
         f.seek(0) # rewind necessary because of pickle.load
         text = f.read()
-        listdata = cjson.decode(text)
+#        listdata = cjson.decode(text)
+        listdata = json.decode(text)
         data = tuplify(listdata) # json converts tuples to lists
     f.close()
     new_project(tw)
@@ -74,7 +80,8 @@ def get_load_name(tw):
 
 # unpack serialized data sent across a share
 def load_string(tw,text):
-    listdata = cjson.decode(text)
+#    listdata = cjson.decode(text)
+    listdata = json.decode(text)
     data = tuplify(listdata) # json converts tuples to lists
     new_project(tw)
     read_data(tw,data)
@@ -169,7 +176,8 @@ def get_save_name(tw):
 def save_data(tw,fname):
     f = file(fname, "w")
     data = assemble_data_to_save(tw)
-    text = cjson.encode(data)
+#    text = cjson.encode(data)
+    text = json.encode(data)
     f.write(text)
     f.close()
 
@@ -177,7 +185,8 @@ def save_data(tw,fname):
 def save_string(tw):
     data = assemble_data_to_save(tw)
     # encode it for sending across the network
-    text = cjson.encode(data)
+#    text = cjson.encode(data)
+    text = json.encode(data)
     return text
 
 def assemble_data_to_save(tw):
