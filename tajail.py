@@ -22,8 +22,7 @@
 import re
 from time import *
 from math import *
-from numpy.oldnumeric import *
-from numpy.fft import *
+from numpy import *
 
 def myfunc(lc, f, x):
     # check to make sure no import calls are made
