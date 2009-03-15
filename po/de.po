@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: turtleart-activity\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2009-02-28 18:33+0100\n"
+"PO-Revision-Date: 2009-03-15 14:21-0400\n"
 "Last-Translator: Markus Schlager <m.slg@gmx.de>\n"
 "Language-Team: OLPC-German <m.slg@gmx.de>\n"
 "MIME-Version: 1.0\n"
@@ -31,15 +31,13 @@ msgstr "Text"
 
 #: tasetup.py:119
 #: tasetup.py:120
-#, fuzzy
 msgid "stack"
 msgstr "Stapel"
 
 #: tasetup.py:125
 #: tasetup.py:126
-#, fuzzy
 msgid "box"
-msgstr "Rahmen"
+msgstr "Variable"
 
 #: tasetup.py:127
 msgid "name"
@@ -60,17 +58,14 @@ msgstr "Palette verbergen"
 
 #: TurtleArtActivity.py:181
 #: TurtleArtActivity.py:286
-#, fuzzy
 msgid "hide blocks"
 msgstr "Blöcke verbergen"
 
 #: TurtleArtActivity.py:194
-#, fuzzy
 msgid "run"
 msgstr "ausführen"
 
 #: TurtleArtActivity.py:202
-#, fuzzy
 msgid "step"
 msgstr "schrittweise"
 
@@ -79,7 +74,6 @@ msgid "stop turtle"
 msgstr "Turtle anhalten"
 
 #: TurtleArtActivity.py:236
-#, fuzzy
 msgid "samples"
 msgstr "Beispiele"
 
@@ -92,7 +86,6 @@ msgid "save Logo"
 msgstr "Logo speichern"
 
 #: TurtleArtActivity.py
-#, fuzzy
 msgid "load my block"
 msgstr "Meinen Block laden"
 
@@ -105,7 +98,6 @@ msgstr "Palette anzeigen"
 
 #: TurtleArtActivity.py:283
 #: TurtleArtActivity.py:297
-#, fuzzy
 msgid "show blocks"
 msgstr "Blöcke anzeigen"
 
@@ -127,46 +119,36 @@ msgstr "sonst"
 msgid "repeat"
 msgstr "wiederhole"
 
-#, fuzzy
 msgid "stop stack"
 msgstr "Stapel anhalten"
 
 msgid "wait"
 msgstr "warte"
 
-#, fuzzy
 msgid "My Blocks"
 msgstr "Meine Blöcke"
 
-#, fuzzy
 msgid "box 1"
-msgstr "Rahmen 1"
+msgstr "Variable 1"
 
-#, fuzzy
 msgid "box 2"
-msgstr "Rahmen 2"
+msgstr "Variable 2"
 
-#, fuzzy
 msgid "stack 1"
 msgstr "Stapel 1"
 
-#, fuzzy
 msgid "stack 2"
 msgstr "Stapel 2"
 
-#, fuzzy
 msgid "store in box 1"
-msgstr "in Rahmen 1 speichern"
+msgstr "in Variable 1 speichern"
 
-#, fuzzy
 msgid "store in box 2"
-msgstr "in Rahmen 2 speichern"
+msgstr "in Variable 2 speichern"
 
-#, fuzzy
 msgid "push"
 msgstr "push"
 
-#, fuzzy
 msgid "pop"
 msgstr "pop"
 
@@ -197,7 +179,6 @@ msgstr "max"
 msgid "mod"
 msgstr "mod"
 
-#, fuzzy
 msgid "print"
 msgstr "schreibe"
 
@@ -207,7 +188,6 @@ msgstr "Stift"
 msgid "color"
 msgstr "Farbe"
 
-#, fuzzy
 msgid "shade"
 msgstr "Farbton"
 
@@ -226,7 +206,6 @@ msgstr "setze Stiftdicke"
 msgid "pen size"
 msgstr "Stiftdicke"
 
-#, fuzzy
 msgid "set shade"
 msgstr "setze Farbton"
 
@@ -236,14 +215,12 @@ msgstr "setze Farbe"
 msgid "set text color"
 msgstr "setze Schriftfarbe"
 
-#, fuzzy
 msgid "Blocks"
 msgstr "Blöcke"
 
 msgid "Turtle"
 msgstr "Turtle"
 
-#, fuzzy
 msgid "clean"
 msgstr "lösche alles"
 
@@ -253,13 +230,11 @@ msgstr "gehe vorwärts"
 msgid "back"
 msgstr "gehe rückwärts"
 
-#, fuzzy
 msgid "right"
-msgstr "dreh dich rechts"
+msgstr "drehe rechts"
 
-#, fuzzy
 msgid "left"
-msgstr "dreh dich links"
+msgstr "drehe links"
 
 msgid "arc"
 msgstr "Kreisbogen"
@@ -275,7 +250,7 @@ msgstr "Richtung"
 
 #
 msgid "set heading"
-msgstr "seth"
+msgstr "setze Richtung"
 
 msgid "set xy"
 msgstr "setze xy"
@@ -286,13 +261,11 @@ msgstr "x"
 msgid "y"
 msgstr "y"
 
-#, fuzzy
 msgid "xcor"
-msgstr "x-Koordinate"
+msgstr "x-Wert"
 
-#, fuzzy
 msgid "ycor"
-msgstr "y-Koordinate"
+msgstr "y-Wert"
 
 msgid "Sensors"
 msgstr "Sensoren"
@@ -315,20 +288,17 @@ msgstr "Vorlagen"
 msgid "Keyboard"
 msgstr "Tastatur"
 
-#, fuzzy
 msgid "read key"
 msgstr "lies Taste aus"
 
 msgid "sound"
 msgstr "Klang"
 
-#, fuzzy
 msgid "hres"
 msgstr "hor. Auflösung"
 
 msgid "vres"
 msgstr "vert. Auflösung"
 
-#, fuzzy
 msgid "start"
 msgstr "Start"
