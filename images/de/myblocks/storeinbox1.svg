@@ -42,21 +42,21 @@
         style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="37" 
-        y="22" 
-        style="font-size:16px;">store</tspan> 
+        y="20" 
+        style="font-size:14px;">in</tspan> 
    </text> 
    <text 
         style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
      <tspan 
-        x="37" 
-        y="35" 
-        style="font-size:16px;">in</tspan> 
+        x="39" 
+        y="34" 
+        style="font-size:14px;">Variable 1</tspan> 
    </text> 
    <text 
         style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="37" 
         y="48" 
-        style="font-size:16px;">box 1</tspan> 
+        style="font-size:14px;">speichern</tspan> 
    </text> 
  </svg> 

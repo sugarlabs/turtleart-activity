@@ -38,7 +38,14 @@
       style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
        <tspan 
         x="37" 
-        y="26" 
+        y="20" 
+        style="font-size:16px;">drehe</tspan> 
+   </text> 
+   <text 
+      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
+       <tspan 
+        x="37" 
+        y="32" 
         style="font-size:16px;">rechts</tspan> 
    </text> 
  </svg> 

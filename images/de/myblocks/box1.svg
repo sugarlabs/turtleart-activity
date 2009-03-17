@@ -31,9 +31,9 @@
    <text 
         style="font-size:16px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
      <tspan 
-        x="52" 
+        x="56" 
         y="15.5" 
-        style="font-size:16px">box 1</tspan> 
+        style="font-size:16px">Variable 1</tspan> 
    </text> 
  </svg> 
  
