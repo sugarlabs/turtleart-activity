@@ -136,7 +136,7 @@ class TurtleArtActivity(activity.Activity):
             'data')
 
         if self._jobject and self._jobject.file_path:
-            self.read_file(self._jobject.file_path)
+            self.read_ta_file(self._jobject.file_path)
 
         ## sharing code
         # Get the Presence Service
@@ -315,7 +315,7 @@ class TurtleArtActivity(activity.Activity):
             os.remove(pngfile)
             os.remove(tafile)
 
-    def read_file(self, file_path):
+    def read_ta_file(self, file_path):
         import tarfile,os,tempfile,shutil
 
         _logger.debug("Reading file %s" %  file_path)
