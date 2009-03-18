@@ -136,7 +136,7 @@ class TurtleArtActivity(activity.Activity):
             'data')
 
         if self._jobject and self._jobject.file_path:
-            self.read_ta_file(self._jobject.file_path)
+            self.read_file(self._jobject.file_path)
 
         ## sharing code
         # Get the Presence Service
@@ -315,28 +315,30 @@ class TurtleArtActivity(activity.Activity):
             os.remove(pngfile)
             os.remove(tafile)
 
-    def read_ta_file(self, file_path):
+    def read_file(self, file_path):
         import tarfile,os,tempfile,shutil
 
-        _logger.debug("Reading file %s" %  file_path)
-        # should be a tar file
-        if file_path[-5:] == ".gtar":
-            tar_fd = tarfile.open(file_path, 'r')
-            tmpdir = tempfile.mkdtemp()
-            try:
-                # We'll get 'ta_code.ta' and possibly a 'ta_image.png'
-                tar_fd.extractall(tmpdir)
-                tawindow.load_files(self.tw, os.path.join(tmpdir, \
-                    'ta_code.ta'), os.path.join(tmpdir, 'ta_image.png'))
-            finally:
-                shutil.rmtree(tmpdir)
-                tar_fd.close()
-        # try to open a .ta file
-        elif file_path[-3:] == ".ta":
-            tawindow.load_files(self.tw, file_path, "")
-
-        # run the activity
-        tawindow.runbutton(self.tw, 0)
+        if hasattr(self, 'tw'):
+            _logger.debug("Reading file %s" %  file_path)
+            # should be a tar file
+            if file_path[-5:] == ".gtar":
+                tar_fd = tarfile.open(file_path, 'r')
+                tmpdir = tempfile.mkdtemp()
+                try:
+                    # We'll get 'ta_code.ta' and possibly a 'ta_image.png'
+                    tar_fd.extractall(tmpdir)
+                    tawindow.load_files(self.tw, os.path.join(tmpdir, \
+                        'ta_code.ta'), os.path.join(tmpdir, 'ta_image.png'))
+                finally:
+                    shutil.rmtree(tmpdir)
+                    tar_fd.close()
+            # try to open a .ta file
+            elif file_path[-3:] == ".ta":
+                tawindow.load_files(self.tw, file_path, "")
+            # run the activity
+            tawindow.runbutton(self.tw, 0)
+        else:
+            _logger.debug("Deferring reading file %s" %  file_path)
 
     def jobject_new_patch(self):
         oldj = self._jobject
