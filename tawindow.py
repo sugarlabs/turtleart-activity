@@ -86,6 +86,7 @@ def twNew(win, path, lang, tboxh, parent=None):
     tw.selected_block = None
     tw.draggroup = None
     prep_selectors(tw)
+    tw.myblock = None
     tw.loaded = 0
     for s in selectors:
         setup_selectors(tw,s)

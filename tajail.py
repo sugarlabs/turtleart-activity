@@ -1,4 +1,4 @@
-#Copyright (c) 2007-9, Playful Invention Company.
+#Copyright (c) 2009, Walter Bender (on behalf of Sugar Labs)
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,7 @@ import re
 from time import *
 from math import *
 from numpy import *
+from taturtle import *
 
 def myfunc(lc, f, x):
     # check to make sure no import calls are made
@@ -33,4 +34,9 @@ def myfunc(lc, f, x):
         return userdefined.values()[0](x)
     except:
         return None
+
+def myfunc_import(lc, f, x):
+    userdefined = {}
+    exec f in globals(), userdefined
+    return userdefined['myblock'](lc,x)
 

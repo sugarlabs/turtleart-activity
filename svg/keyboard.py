@@ -29,7 +29,7 @@ import gettext
 def main():
 
     myname = "keyboard"
-    mystring = "keyboard"
+    mystring = "Keyboard"
     mygroup = "sensors"
 
     if len(sys.argv) != 2:
@@ -40,7 +40,9 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring)
+    s = _(mystring)
+    slower = s.lower()
+    print slower
     data0 = \
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n \
 <!-- Created with Inkscape (http://www.inkscape.org/) --> \n \
@@ -95,7 +97,7 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
-    FILE.write(_(mystring).encode("utf-8"))
+    FILE.write(slower.encode("utf-8"))
     FILE.write(data1)
     FILE.close()
     return

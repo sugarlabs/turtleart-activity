@@ -1,4 +1,5 @@
-#Copyright (c) 2007-9, Playful Invention Company.
+#Copyright (c) 2007, Playful Invention Company.
+#Copyright (c) 2008-9, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -403,6 +404,7 @@ def lcNew(tw):
     
     defprim(lc,'kbinput', 0, lambda lc: kbinput(lc))
     defprim(lc,'keyboard', 0, lambda lc: lc.keyboard)
+    defprim(lc,'userdefined', 1, lambda lc,x: loadmyblock(lc,x))
     defprim(lc,'myfunc', 2, lambda lc,f,x: callmyfunc(lc, f, x))
     defprim(lc,'hres', 0, lambda lc: lc.tw.turtle.width)
     defprim(lc,'vres', 0, lambda lc: lc.tw.turtle.height)
@@ -506,6 +508,14 @@ def lcNew(tw):
             }
 
     return lc
+
+def loadmyblock(lc,x):
+    # execute code inported from the Journal
+    if lc.tw.myblock != None:
+        y = myfunc_import(lc, lc.tw.myblock, x)
+    else:
+        raise logoerror("#nocode")
+    return
 
 def callmyfunc(lc, f, x):
     y = myfunc(lc, f, x)
@@ -742,6 +752,7 @@ def showlabel(lc,l):
     elif l=='#noinput': shp = 'noinput'; l=''
     elif l=='#emptyheap': shp = 'emptyheap'; l=''
     elif l=='#nomedia': shp = 'nomedia'; l=''
+    elif l=='#nocode': shp = 'nocode'; l=''
     elif l=='#syntaxerror': shp = 'syntaxerror'; l=''
     else:shp = 'status'
     setshape(lc.tw.status_spr, lc.tw.status_shapes[shp])

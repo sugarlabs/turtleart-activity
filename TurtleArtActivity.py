@@ -123,6 +123,17 @@ class TurtleArtActivity(activity.Activity):
             _logger.debug("writing new version data")
             _logger.debug("and creating a tamyblock.py Journal entry")
 
+        if newversion is True:
+            dsobject = datastore.create()
+            dsobject.metadata['title'] = 'tamyblock.py'
+            dsobject.metadata['icon-color'] = \
+                profile.get_color().to_string()
+            dsobject.metadata['mime_type'] = 'text/x-python'
+            dsobject.set_file_path(os.path.join( \
+                activity.get_bundle_path(), 'tamyblock.py'))
+            datastore.write(dsobject)
+            dsobject.destroy()
+
         versiondata.append(lang + version)
         FILE = open(os.path.join(datapath, filename), "w")
         FILE.writelines(versiondata)
@@ -409,6 +420,19 @@ class SaveAsToolbar(gtk.Toolbar):
         self.insert(self.savelogo, -1)
         self.savelogo.show()
 
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        self.insert(separator, -1)
+        separator.show()
+
+        # Pippy load myblock source button
+        self.loadmyblock = ToolButton( "pippy-openoff" )
+        self.loadmyblock.set_tooltip(_('load my block'))
+        self.loadmyblock.props.sensitive = True
+        self.loadmyblock.connect('clicked', self.do_loadmyblock)
+        self.insert(self.loadmyblock, -1)
+        self.loadmyblock.show()
+
     def do_savehtml(self, button):
         # write html out to datastore
         self.savehtml.set_icon("htmlon")
@@ -506,6 +530,32 @@ class SaveAsToolbar(gtk.Toolbar):
         datastore.write(file_dsobject)
         gobject.timeout_add(250,self.savelogo.set_icon, "logo-saveoff")
         return
+
+    def do_loadmyblock(self, button):
+        self.loadmyblock.set_icon("pippy-openon")
+        self.import_py()
+        gobject.timeout_add(250,self.loadmyblock.set_icon, "pippy-openoff")
+        return
+
+    def import_py(self):
+        from sugar.graphics.objectchooser import ObjectChooser
+        chooser = ObjectChooser('Python code', None, gtk.DIALOG_MODAL | \
+            gtk.DIALOG_DESTROY_WITH_PARENT)
+        try:
+            result = chooser.run()
+            if result == gtk.RESPONSE_ACCEPT:
+                dsobject = chooser.get_selected_object()
+                try:
+                    _logger.debug("opening %s " % dsobject.file_path)
+                    FILE = open(dsobject.file_path, "r")
+                    self.activity.tw.myblock = FILE.read()
+                    FILE.close()
+                except:
+                    _logger.debug("couldn't open %s" % dsobject.file_path)
+                dsobject.destroy()
+        finally:
+            chooser.destroy()
+            del chooser
 
 class ProjectToolbar(gtk.Toolbar):
 
