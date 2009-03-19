@@ -335,9 +335,10 @@
       id="path39" 
       style="fill:#ff4040;fill-opacity:1;stroke:#ff4040;stroke-width:1;stroke-opacity:1" /> 
    <text 
-      id="text41" 
-      style="font-size:12px;font-variant:normal;font-weight:bold;text-align:start;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-opacity:1;font-family:Bitstream Vera Sans"> 
+      style="font-size:12px;font-weight:bold;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"> 
      <tspan 
+        x="72.5"
+        y="490"
         style="font-size:12px">X</tspan> 
    </text> 
    <text 

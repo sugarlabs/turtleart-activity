@@ -397,8 +397,10 @@ def main():
      style=\"fill:#ff4040;fill-opacity:1;stroke:#ff4040;stroke-width:1;stroke-opacity:1\" /> \n \
   <text \n \
      id=\"text41\" \n \
-     style=\"font-size:12px;font-variant:normal;font-weight:bold;text-align:start;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-opacity:1;font-family:Bitstream Vera Sans\"> \n \
+     style=\"font-size:12px;font-weight:bold;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans\"> \n \
     <tspan \n \
+       x=\"72.5\" \n \
+       y=\"490\" \n \
        style=\"font-size:12px\">X</tspan> \n \
   </text> \n \
   <text \n \
