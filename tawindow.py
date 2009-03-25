@@ -478,8 +478,14 @@ def expose_cb(win, event, tw):
 #
 
 def keypress_cb(area, event, tw):
+    # print keyval.encode("utf-8")
     keyname = gtk.gdk.keyval_name(event.keyval)
-    results = key_press(tw, event.get_state()&gtk.gdk.MOD4_MASK, keyname)
+    if event.get_state()&gtk.gdk.MOD1_MASK:
+        # print "ALT " + gtk.gdk.keyval_name(event.keyval)
+        alt_mask = True
+    else:
+        alt_mask = False
+    results = key_press(tw, alt_mask, keyname)
 #    keyname = unichr(gtk.gdk.keyval_to_unicode(event.keyval))
     if keyname is not None and \
         hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
@@ -490,23 +496,14 @@ def keypress_cb(area, event, tw):
             tw.activity._send_event("k:"+'F'+":"+keyname)
     return results
 
-def key_press(tw, mask, keyname, verbose=False):
+def key_press(tw, alt_mask, keyname, verbose=False):
     if keyname is None:
         return False
     if verbose:
         print "processing remote key press: " + keyname
     tw.keypress = keyname
-    if mask is True:
-        if keyname=="n": new_project(tw)
-        if keyname=="o": load_file(tw)
-        if keyname=="s": save_file(tw)
-        if keyname=="k": tw.activity.clear_journal()
-        if keyname=="i": 
-            tw.activity.waiting_for_blocks = True
-            tw.activity._send_event("i") # request sync for sharing
-        return True
-    if tw.selected_block==None:
-        if keyname=="i": 
+    if alt_mask is True and tw.selected_block==None:
+        if keyname=="z": 
             tw.activity.waiting_for_blocks = True
             tw.activity._send_event("i") # request sync for sharing
         elif keyname=="p":
@@ -528,6 +525,8 @@ def key_press(tw, mask, keyname, verbose=False):
             stop_button(tw)
         elif keyname=="e":
             eraser_button(tw)
+        return True
+    if tw.selected_block==None:
         return False
     # if and when we use unichr above
     # we need to change this logic (and logic in talogo.py)
