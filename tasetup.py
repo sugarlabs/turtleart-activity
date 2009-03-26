@@ -243,6 +243,9 @@ def setup_misc(tw):
     tw.media_shapes = {}
     tw.media_shapes['audioon'] = load_image(tw.path, '', 'audioon')
     tw.media_shapes['texton'] = load_image(tw.path, '', 'texton')
+    # media blocks that replace other blocks
+    tw.media_shapes['pythonloaded'] = \
+        load_image(tw.path_lang, 'sensors', 'nop-loaded')
     # status shapes get positioned at the bottom of the screen
     tw.status_shapes = {}
     tw.status_shapes['status'] = load_image(tw.path, '', 'status')

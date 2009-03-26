@@ -550,6 +550,7 @@ class SaveAsToolbar(gtk.Toolbar):
                     FILE = open(dsobject.file_path, "r")
                     self.activity.tw.myblock = FILE.read()
                     FILE.close()
+	            tawindow.set_userdefined(self.activity.tw)
                 except:
                     _logger.debug("couldn't open %s" % dsobject.file_path)
                 dsobject.destroy()

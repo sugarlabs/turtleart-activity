@@ -87,6 +87,7 @@ def twNew(win, path, lang, tboxh, parent=None):
     tw.draggroup = None
     prep_selectors(tw)
     tw.myblock = None
+    tw.nop = 'nop'
     tw.loaded = 0
     for s in selectors:
         setup_selectors(tw,s)
@@ -190,7 +191,11 @@ def select_category(tw, spr):
 def new_block_from_category(tw,proto,x,y):
     if proto is None:
         return True
-    newspr = sprNew(tw,x-20,y-20,proto.image)
+    # load alternative image of nop block if python code is loaded
+    if proto.name == 'nop' and tw.nop == 'pythonloaded':
+        newspr = sprNew(tw,x-20,y-20,tw.media_shapes['pythonloaded'])
+    else:
+        newspr = sprNew(tw,x-20,y-20,proto.image)
     setlayer(newspr,2000)
     tw.dragpos = 20,20
     newspr.type = 'block'
@@ -406,6 +411,14 @@ def load_image(tw, picture, spr):
         setimage(spr, pixbuf)
     else:
         setimage(spr, tw.media_shapes['texton'])
+
+# change the icon for user-defined blocks after Python code is loaded
+def set_userdefined(tw):
+    list = tw.sprites[:]
+    for spr in list:
+        if hasattr(spr,'proto') and spr.proto.name == 'nop':
+            setimage(spr,tw.media_shapes['pythonloaded'])
+    tw.nop = 'pythonloaded'
 
 def snap_to_dock(tw):
     d=200
