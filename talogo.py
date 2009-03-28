@@ -498,12 +498,12 @@ def lcNew(tw):
     # this dictionary is used to define the relative size and postion of 
     # template elements (w, h, x, y, dx, dy, dx1, dy1...)
     lc.templates = {
-             'tp1': (0.5, 0.5, 0.125, 0.125, 1, 0),
-             'tp2': (0.5, 0.5, 0.125, 0.125, 1, 1.05),
-             'tp3': (1, 1, 0.125, 0.125, 0, 0.1),
-             'tp6': (0.45, 0.45, 0.125, 0.125, 1, 1.05),
-             'tp7': (0.45, 0.45, 0.125, 0.125, 1, 1.05),
-             'tp8': (0.9, 0.9, 0.125, 0.125, 0, 0),
+             'tp1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
+             'tp2': (0.5, 0.5, 0.0625, 0.125, 1.05, 1.05),
+             'tp3': (1, 1, 0.0625, 0.125, 0, 0.1),
+             'tp6': (0.45, 0.45, 0.0625, 0.125, 1.05, 1.05),
+             'tp7': (0.45, 0.45, 0.0625, 0.125, 1.05, 1.05),
+             'tp8': (0.9, 0.9, 0.0625, 0.125, 0, 0),
              'insertimage': (0.333, 0.333)
             }
 
@@ -599,7 +599,7 @@ def show_template1(lc, title, media):
     draw_title(lc,title,x,y)
     if media[0:5] == 'media':
         show_picture(lc, media, x, y, w, h)
-    show_description(lc, media, x+dx, y+dy, w, h)
+    show_description(lc, media, x+dx, y+dy, w-30, h)
 
 # title, two images (horizontal), two descriptions
 def show_template2(lc, title, media1, media2):
@@ -610,7 +610,7 @@ def show_template2(lc, title, media1, media2):
     show_description(lc, media1, x, y+dy, w, h)
     if media2[0:5] == 'media':
         show_picture(lc, media2, x+dx, y, w, h)
-    show_description(lc, media2, x+dx, y+dy, w, h)
+    show_description(lc, media2, x+dx, y+dy, w-30, h)
 
 # title and seven bullets
 def show_template3(lc, title, s1, s2, s3, s4, s5, s6, s7):
@@ -642,10 +642,10 @@ def show_template6(lc, title, media1, media2):
     draw_title(lc,title,x,y)
     if media1[0:5] == 'media':
         show_picture(lc, media1, x, y, w, h)
-    show_description(lc, media1, x+dx, y, w, h)
+    show_description(lc, media1, x+dx, y, w-30, h)
     if media2[0:5] == 'media':
         show_picture(lc, media2, x, y+dy, w, h)
-    show_description(lc, media2, x+dx, y+dy, w, h)
+    show_description(lc, media2, x+dx, y+dy, w-30, h)
 
 # title and four images
 def show_template7(lc, title, media1, media2, media3, media4):

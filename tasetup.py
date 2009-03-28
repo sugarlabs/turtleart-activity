@@ -305,7 +305,9 @@ def load_image(path, dir, file):
         datapath = os.path.join(activity.get_activity_root(), "data")
     except:
         # early versions of Sugar (656) didn't support get_activity_root()
-        datapath = "/home/olpc/.sugar/default/org.sugarlabs.TAPortfolioActivity/data"
+        datapath = os.path.join( \
+            os.environ['HOME'], \
+            ".sugar/default/org.laptop.TurtleArtActivity/data")
 
     # first try to open the cached image
     # if you fail, open the .svg file and cache the result as png

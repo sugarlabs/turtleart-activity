@@ -116,7 +116,8 @@ def buttonpress_cb(win, event, tw):
     x, y = xy(event)
     button_press(tw, event.get_state()&gtk.gdk.CONTROL_MASK, x, y)
     # if sharing, send button press
-    if hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
+    if hasattr(tw, 'activity') and \
+        hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
         # print "sending button pressed"
         if event.get_state()&gtk.gdk.CONTROL_MASK is True:
             tw.activity._send_event("p:"+str(x)+":"+str(y)+":"+'T')
@@ -157,11 +158,13 @@ def block_selector_pressed(tw,x,y):
 def hideshow_palette(tw,state):
     if state is False:
         tw.palette == False
-        tw.activity.projectToolbar.do_hidepalette()
+        if hasattr(tw,'activity'):
+            tw.activity.projectToolbar.do_hidepalette()
         hide_palette(tw)
     else:
         tw.palette == True
-        tw.activity.projectToolbar.do_showpalette()
+        if hasattr(tw,'activity'):
+            tw.activity.projectToolbar.do_showpalette()
         show_palette(tw)
 
 def show_palette(tw):
@@ -268,8 +271,6 @@ def turtle_pressed(tw,x,y):
 def move_cb(win, event, tw):
     x,y = xy(event)
     mouse_move(tw, x, y)
-#    if hasattr(tw.activity, 'chattube')and tw.activity.chattube is not None:
-#            tw.activity._send_event("m:"+str(x)+":"+str(y))
     return True
 
 def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
@@ -323,19 +324,22 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
 def buttonrelease_cb(win, event, tw):
     x,y = xy(event)
     button_release(tw, x, y)
-    if hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
+    if hasattr(tw, 'activity') and \
+        hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
         # print "sending release button"
         tw.activity._send_event("r:"+str(x)+":"+str(y))
     return True
 
 def button_release(tw, x, y, verbose=False):
-    if tw.dx != 0 or tw.dy != 0 and \
-        hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
-            if verbose:
-                print "processing accumulated move: " + str(tw.dx) + " " + str(tw.dy)
-            tw.activity._send_event("m:"+str(tw.dx)+":"+str(tw.dy))
-            tw.dx = 0
-            tw.dy = 0
+    if tw.dx != 0 or tw.dy != 0:
+        if hasattr(tw, 'activity') and \
+            hasattr(tw.activity, 'chattube') and \
+            tw.activity.chattube is not None:
+                if verbose:
+                    print "processing move: " + str(tw.dx) + " " + str(tw.dy)
+                tw.activity._send_event("m:"+str(tw.dx)+":"+str(tw.dy))
+                tw.dx = 0
+                tw.dy = 0
     if verbose:
         print "processing remote button release: " + str(x) + " " + str(y)
     if tw.draggroup == None: 
@@ -504,7 +508,7 @@ def keypress_cb(area, event, tw):
         alt_mask = False
     results = key_press(tw, alt_mask, keyname)
 #    keyname = unichr(gtk.gdk.keyval_to_unicode(event.keyval))
-    if keyname is not None and \
+    if keyname is not None and hasattr(tw, 'activity') and \
         hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
         # print "key press"
         if event.get_state()&gtk.gdk.MOD4_MASK:
@@ -520,10 +524,11 @@ def key_press(tw, alt_mask, keyname, verbose=False):
         print "processing remote key press: " + keyname
     tw.keypress = keyname
     if alt_mask is True and tw.selected_block==None:
-        if keyname=="i": 
+        if keyname=="i" and hasattr(tw, 'activity'):
             tw.activity.waiting_for_blocks = True
             tw.activity._send_event("i") # request sync for sharing
-
+        elif keyname=="p":
+            hideshow_button(tw)
         return True
     if tw.selected_block==None:
         return False

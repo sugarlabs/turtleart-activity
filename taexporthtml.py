@@ -33,8 +33,9 @@ def save_html(self, tw, embed_flag=True):
         datapath = os.path.join(activity.get_activity_root(), "instance")
     except:
         # early versions of Sugar (656) didn't support get_activity_root()
-        datapath = \
-            "/home/olpc/.sugar/default/org.laptop.TurtleArtActivity/instance"
+        datapath = os.path.join( \
+            os.environ['HOME'], \
+            ".sugar/default/org.laptop.TurtleArtActivity/instance")
 
     # dictionary defines the html wrappers around template elements
     # start of block, end of block

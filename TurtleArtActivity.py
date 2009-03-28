@@ -67,8 +67,9 @@ class TurtleArtActivity(activity.Activity):
         except:
             # early versions of Sugar (e.g., 656) didn't support
             # get_activity_root()
-            datapath = \
-              "/home/olpc/.sugar/default/org.laptop.TurtleArtActivity/data"
+            datapath = os.path.join( \
+                os.environ['HOME'], \
+                ".sugar/default/org.laptop.TurtleArtActivity/data")
 
         self.toolbox = activity.ActivityToolbox(self)
         self.set_toolbox(self.toolbox)
@@ -89,13 +90,16 @@ class TurtleArtActivity(activity.Activity):
 
         self.sw = gtk.ScrolledWindow()
         self.set_canvas(self.sw)
-        self.sw.set_policy(gtk.POLICY_ALWAYS, gtk.POLICY_ALWAYS)
+        # self.sw.set_policy(gtk.POLICY_ALWAYS, gtk.POLICY_ALWAYS)
+        self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.sw.show()
         canvas = gtk.DrawingArea()
-        print str(gtk.gdk.screen_width()*2) + " " + \
+        print "ask: " + str(gtk.gdk.screen_width()*2) + " " + \
               str(gtk.gdk.screen_height()*2)
         canvas.set_size_request(gtk.gdk.screen_width()*2, \
                                 gtk.gdk.screen_height()*2)
+        a,b = canvas.get_size_request()
+        print "and you shall receive: " + str(a) + " " + str(b)
         self.sw.add_with_viewport(canvas)
         canvas.show()
 
@@ -152,8 +156,8 @@ class TurtleArtActivity(activity.Activity):
             lang,self)
         self.tw.activity = self
         self.tw.window.grab_focus()
-        self.tw.save_folder=os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'], \
-            'data')
+        self.tw.save_folder=os.path.join( \
+            os.environ['SUGAR_ACTIVITY_ROOT'], 'data')
 
         if self._jobject and self._jobject.file_path:
             self.read_file(self._jobject.file_path)
@@ -177,11 +181,11 @@ class TurtleArtActivity(activity.Activity):
     """
     def recenter(self):
         hadj = self.sw.get_hadjustment()
-        print hadj
+        # print hadj
         hadj.set_value(0)
         self.sw.set_hadjustment(hadj)
         vadj = self.sw.get_vadjustment()
-        print vadj
+        # print vadj
         vadj.set_value(0)
         self.sw.set_vadjustment(vadj)
 
@@ -293,7 +297,7 @@ class TurtleArtActivity(activity.Activity):
             tawindow.button_release(self.tw,int(x),int(y),False)
         elif text[0] == 'm': # mouse move
             e,x,y = re.split(":",text)
-            _logger.debug("recieving move: " + x + " " + y)
+            _logger.debug("receiving move: " + x + " " + y)
             tawindow.mouse_move(self.tw,0,0,False,int(x),int(y))
         elif text[0] == 'k': # typing
             e,mask,keyname = re.split(":",text,3)
@@ -495,8 +499,9 @@ class SaveAsToolbar(gtk.Toolbar):
             datapath = os.path.join(activity.get_activity_root(), "instance")
         except:
             # early versions of Sugar (656) didn't support get_activity_root()
-            datapath = \
-              "/home/olpc/.sugar/default/org.laptop.TurtleArtActivity/instance"
+            datapath = os.path.join( \
+                os.environ['HOME'], \
+                ".sugar/default/org.laptop.TurtleArtActivity/instance")
 
         html_file = os.path.join(datapath, "taportfolio.html")
         f = file(html_file, "w")
@@ -558,8 +563,9 @@ class SaveAsToolbar(gtk.Toolbar):
             datapath = os.path.join(activity.get_activity_root(), "instance")
         except:
             # early versions of Sugar (656) didn't support get_activity_root()
-            datapath = \
-              "/home/olpc/.sugar/default/org.laptop.TurtleArtActivity/instance"
+            datapath = os.path.join( \
+                os.environ['HOME'], \
+                ".sugar/default/org.laptop.TurtleArtActivity/instance")
 
         #Write the actual file to the data directory of this activity's root. 
         file_path = os.path.join(datapath, filename)
