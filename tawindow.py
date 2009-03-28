@@ -54,7 +54,7 @@ def twNew(win, path, lang, tboxh, parent=None):
     tw.save_file_name = None
     win.set_flags(gtk.CAN_FOCUS)
     tw.width = gtk.gdk.screen_width()
-    tw.height = gtk.gdk.screen_height() - tboxh
+    tw.height = gtk.gdk.screen_height() # - tboxh
     win.set_size_request(tw.width, tw.height)
     if parent is None: win.show_all()
     else: parent.show_all()

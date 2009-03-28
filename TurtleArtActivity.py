@@ -633,7 +633,21 @@ class ProjectToolbar(gtk.Toolbar):
         self.sampb.props.sensitive = True
         self.sampb.connect('clicked', self.do_samples)
         self.insert(self.sampb, -1)
-        self.sampb.show()
+        self.sampb.show(
+)
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        self.insert(separator, -1)
+        separator.show()
+
+        # full screen
+        self.fullscreenb = ToolButton( "view-fullscreen" )
+        self.fullscreenb.set_tooltip(_('fullscreen'))
+        self.fullscreenb.props.sensitive = True
+        self.fullscreenb.props.accelerator = '<Alt>Enter'
+        self.fullscreenb.connect('clicked', self.do_fullscreen)
+        self.insert(self.fullscreenb, -1)
+        self.fullscreenb.show()
 
     def do_palette(self, button):
         if self.activity.tw.palette == True:
@@ -713,4 +727,5 @@ class ProjectToolbar(gtk.Toolbar):
         # run the activity
         tawindow.runbutton(self.activity.tw, 0)
 
-
+    def do_fullscreen(self, button):
+        self.activity.fullscreen()
