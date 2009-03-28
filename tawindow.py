@@ -516,28 +516,10 @@ def key_press(tw, alt_mask, keyname, verbose=False):
         print "processing remote key press: " + keyname
     tw.keypress = keyname
     if alt_mask is True and tw.selected_block==None:
-        if keyname=="z": 
+        if keyname=="i": 
             tw.activity.waiting_for_blocks = True
             tw.activity._send_event("i") # request sync for sharing
-        elif keyname=="p":
-            if tw.palette is True:
-                hideshow_palette(tw,False)
-            else:
-                hideshow_palette(tw,True)
-        elif keyname=="b":
-            if tw.hide == False:
-                tw.activity.projectToolbar.do_hide()
-            else:
-                tw.activity.projectToolbar.do_show()
-            hideshow_button(tw)
-        elif keyname=="r":
-            runbutton(tw, 0)
-        elif keyname=="w":
-            runbutton(tw, 3)
-        elif keyname=="s":
-            stop_button(tw)
-        elif keyname=="e":
-            eraser_button(tw)
+
         return True
     if tw.selected_block==None:
         return False

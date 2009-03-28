@@ -569,6 +569,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.palette.set_tooltip(_('hide palette'))
         self.palette.props.sensitive = True
         self.palette.connect('clicked', self.do_palette)
+        self.palette.props.accelerator = '<Alt>p'
         self.insert(self.palette, -1)
         self.palette.show()
 
@@ -577,6 +578,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.blocks.set_tooltip(_('hide blocks'))
         self.blocks.props.sensitive = True
         self.blocks.connect('clicked', self.do_hideshow)
+        self.blocks.props.accelerator = '<Alt>b'
         self.insert(self.blocks, -1)
         self.blocks.show()
 
@@ -590,6 +592,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.runproject.set_tooltip(_('run'))
         self.runproject.props.sensitive = True
         self.runproject.connect('clicked', self.do_run)
+        self.runproject.props.accelerator = '<Alt>r'
         self.insert(self.runproject, -1)
         self.runproject.show()
 
@@ -598,6 +601,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.stepproject.set_tooltip(_('step'))
         self.stepproject.props.sensitive = True
         self.stepproject.connect('clicked', self.do_step)
+        self.stepproject.props.accelerator = '<Alt>w'
         self.insert(self.stepproject, -1)
         self.stepproject.show()
 
@@ -606,6 +610,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.stop.set_tooltip(_('stop turtle'))
         self.stop.props.sensitive = True
         self.stop.connect('clicked', self.do_stop)
+        self.stop.props.accelerator = '<Alt>s'
         self.insert(self.stop, -1)
         self.stop.show()
 
@@ -619,6 +624,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.eraser.set_tooltip(_('clean'))
         self.eraser.props.sensitive = True
         self.eraser.connect('clicked', self.do_eraser)
+        self.eraser.props.accelerator = '<Alt>e'
         self.insert(self.eraser, -1)
         self.eraser.show()
 
@@ -632,6 +638,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.sampb.set_tooltip(_('samples'))
         self.sampb.props.sensitive = True
         self.sampb.connect('clicked', self.do_samples)
+        self.sampb.props.accelerator = '<Alt>o'
         self.insert(self.sampb, -1)
         self.sampb.show(
 )
