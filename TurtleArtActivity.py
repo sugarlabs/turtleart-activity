@@ -1,4 +1,5 @@
-#Copyright (c) 2007-9, Playful Invention Company.
+#Copyright (c) 2007, Playful Invention Company
+#Copyright (c) 2008-9, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -69,8 +70,8 @@ class TurtleArtActivity(activity.Activity):
             datapath = \
               "/home/olpc/.sugar/default/org.laptop.TurtleArtActivity/data"
 
-        toolbox = activity.ActivityToolbox(self)
-        self.set_toolbox(toolbox)
+        self.toolbox = activity.ActivityToolbox(self)
+        self.set_toolbox(self.toolbox)
 
         # Notify when the visibility state changes
         self.add_events(gtk.gdk.VISIBILITY_NOTIFY_MASK)
@@ -78,20 +79,28 @@ class TurtleArtActivity(activity.Activity):
 
         # Add additional panels
         self.projectToolbar = ProjectToolbar(self)
-        toolbox.add_toolbar( _('Project'), self.projectToolbar )
+        self.toolbox.add_toolbar( _('Project'), self.projectToolbar )
         self.saveasToolbar = SaveAsToolbar(self)
-        toolbox.add_toolbar( _('Save as'), self.saveasToolbar )
-        toolbox.show()
+        self.toolbox.add_toolbar( _('Save as'), self.saveasToolbar )
+        self.toolbox.show()
 
         # set the project toolbar as the initial one selected
-        toolbox.set_current_toolbar(1)
+        self.toolbox.set_current_toolbar(1)
 
-        canvas = gtk.EventBox()
+        self.sw = gtk.ScrolledWindow()
+        self.set_canvas(self.sw)
+        self.sw.set_policy(gtk.POLICY_ALWAYS, gtk.POLICY_ALWAYS)
+        self.sw.show()
+        canvas = gtk.DrawingArea()
+        print str(gtk.gdk.screen_width()*2) + " " + \
+              str(gtk.gdk.screen_height()*2)
+        canvas.set_size_request(gtk.gdk.screen_width()*2, \
+                                gtk.gdk.screen_height()*2)
+        self.sw.add_with_viewport(canvas)
+        canvas.show()
 
-        sugar.graphics.window.Window.set_canvas(self, canvas)
-        toolbox._activity_toolbar.title.grab_focus()
-        toolbox._activity_toolbar.title.select_region(0,0)
-        tboxh = toolbox._activity_toolbar.size_request()[1]
+        self.toolbox._activity_toolbar.title.grab_focus()
+        self.toolbox._activity_toolbar.title.select_region(0,0)
 
         try:
             version = os.environ['SUGAR_BUNDLE_VERSION']
@@ -103,7 +112,7 @@ class TurtleArtActivity(activity.Activity):
             lang = 'en'
         lang = lang[0:2]
         if not os.path.isdir(os.path.join(activity.get_bundle_path(), \
-            'images', lang)):
+                             'images', lang)):
             lang = 'en'
 
         # test to see if lang or version has changed since last time
@@ -140,7 +149,7 @@ class TurtleArtActivity(activity.Activity):
         FILE.close()
 
         self.tw = tawindow.twNew(canvas,activity.get_bundle_path(), \
-            lang,tboxh,self)
+            lang,self)
         self.tw.activity = self
         self.tw.window.grab_focus()
         self.tw.save_folder=os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'], \
@@ -163,6 +172,22 @@ class TurtleArtActivity(activity.Activity):
         self.connect('shared', self._shared_cb)
         self.connect('joined', self._joined_cb)
 
+    """
+    Recenter scrolled window around canvas
+    """
+    def recenter(self):
+        hadj = self.sw.get_hadjustment()
+        print hadj
+        hadj.set_value(0)
+        self.sw.set_hadjustment(hadj)
+        vadj = self.sw.get_vadjustment()
+        print vadj
+        vadj.set_value(0)
+        self.sw.set_vadjustment(vadj)
+
+    """
+    Set up initial share
+    """
     def _shared_cb(self, activity):
         if self._shared_activity is None:
             _logger.error("Failed to share or join activity ... \
@@ -185,6 +210,9 @@ class TurtleArtActivity(activity.Activity):
         id = self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].OfferDBusTube(
             SERVICE, {})
 
+    """
+    Or join an exisiting share
+    """
     def _joined_cb(self, activity):
         if self._shared_activity is None:
             _logger.error("Failed to share or join activity ... \
@@ -218,6 +246,9 @@ class TurtleArtActivity(activity.Activity):
     def _list_tubes_error_cb(self, e):
         _logger.error('ListTubes() failed: %s', e)
 
+    """
+    Create a new tube
+    """
     def _new_tube_cb(self, id, initiator, type, service, params, state):
         _logger.debug('New tube: ID=%d initator=%d type=%d service=%s '
                      'params=%r state=%d', id, initiator, type, service, 
@@ -239,7 +270,13 @@ class TurtleArtActivity(activity.Activity):
             if self.waiting_for_blocks is True:
                 self._send_event("i")
 
-    # handle the receiving of events
+    """
+    Handle the receiving of events in share
+    Events are sent as a tuple
+        cmd:data
+    where cmd is a mouse or keyboard event and data is the x,y coordinates
+    or the keysroke
+    """
     def event_received_cb(self, text):
         # maybe we can use a stack to share events to new-comers?
         # self._share += "text + "\n"
@@ -281,14 +318,18 @@ class TurtleArtActivity(activity.Activity):
                 # all caught up
                 self.waiting_for_blocks = False
 
-    # send events
+    """
+    Send event through the tube
+    """
     def _send_event(self, entry):
         # nick = profile.get_nick_name()
         # nick = nick.upper()
         if hasattr(self, 'chattube') and self.chattube is not None:
             self.chattube.SendText(entry)
 
-    # Callback method for when the activity's visibility changes
+    """
+    Callback method for when the activity's visibility changes
+    """
     def __visibility_notify_cb(self, window, event):
         if event.state == gtk.gdk.VISIBILITY_FULLY_OBSCURED:
 #            _logger.debug("I am not visible so I should free the audio")
@@ -304,6 +345,9 @@ class TurtleArtActivity(activity.Activity):
     def _keep_clicked_cb(self, button):
         self.jobject_new_patch()
 
+    """
+    Write the project and a screen snapshot to the Journal
+    """
     def write_file(self, file_path):
         # just save .ta file
         _logger.debug("Writing file %s" % file_path)
@@ -326,6 +370,9 @@ class TurtleArtActivity(activity.Activity):
             os.remove(pngfile)
             os.remove(tafile)
 
+    """
+    Read a project in and then run it
+    """
     def read_file(self, file_path):
         import tarfile,os,tempfile,shutil
 
@@ -369,14 +416,9 @@ class TurtleArtActivity(activity.Activity):
                 error_handler=self._internal_jobject_error_cb)
         self._jobject.destroy()
 
-    def clear_journal(self):
-        jobjects, total_count = datastore.find( \
-            {'activity': 'org.sugarlab.TAPortfolioActivity'})
-        _logger.debug('found', total_count, 'entries')
-        for jobject in jobjects[:-1]:
-            _logger.debug(jobject.object_id)
-            datastore.delete(jobject.object_id)
-
+"""
+Class for setting up tube for sharing
+"""
 class ChatTube(ExportedGObject):
  
     def __init__(self, tube, is_initiator, stack_received_cb):
@@ -399,6 +441,9 @@ class ChatTube(ExportedGObject):
     def SendText(self, text):
         self.stack = text
 
+"""
+SaveAs toolbar: save as HTML, save as LOGO, and import Python code
+"""
 class SaveAsToolbar(gtk.Toolbar):
     def __init__(self, pc):
         gtk.Toolbar.__init__(self)
@@ -558,6 +603,10 @@ class SaveAsToolbar(gtk.Toolbar):
             chooser.destroy()
             del chooser
 
+"""
+Project toolbar: show/hide palettes; show/hide blocks; run; walk; stop; erase;
+                 load sample project; fullscreen
+"""
 class ProjectToolbar(gtk.Toolbar):
 
     def __init__(self, pc):
@@ -679,6 +728,7 @@ class ProjectToolbar(gtk.Toolbar):
     def do_run(self, button):
         self.runproject.set_icon("run-faston")
         self.stop.set_icon("stopiton")
+        self.activity.recenter()
         tawindow.runbutton(self.activity.tw, 0)
         gobject.timeout_add(1000,self.runproject.set_icon,"run-fastoff")
         gobject.timeout_add(1000,self.stepproject.set_icon,"run-slowoff")
@@ -686,6 +736,7 @@ class ProjectToolbar(gtk.Toolbar):
     def do_step(self, button):
         self.stepproject.set_icon("run-slowon")
         self.stop.set_icon("stopiton")
+        self.activity.recenter()
         tawindow.runbutton(self.activity.tw, 3)
         gobject.timeout_add(1000,self.stepproject.set_icon,"run-slowoff")
         gobject.timeout_add(1000,self.runproject.set_icon,"run-fastoff")
@@ -726,6 +777,7 @@ class ProjectToolbar(gtk.Toolbar):
 
     def do_eraser(self, button):
         self.eraser.set_icon("eraseroff")
+        self.activity.recenter()
         tawindow.eraser_button(self.activity.tw)
         gobject.timeout_add(250,self.eraser.set_icon,"eraseron")
 
@@ -736,3 +788,5 @@ class ProjectToolbar(gtk.Toolbar):
 
     def do_fullscreen(self, button):
         self.activity.fullscreen()
+        self.activity.recenter()
+

@@ -255,12 +255,7 @@ def setup_misc(tw):
     tw.status_shapes['nomedia'] = load_image(tw.path, '', 'nomedia')
     tw.status_shapes['nocode'] = load_image(tw.path, '', 'nocode')
     tw.status_shapes['syntaxerror'] = load_image(tw.path, '', 'syntaxerror')
-    # for some reason, the status bar is displayed off screen on the XO
-    if os.path.exists('/sys/power/olpc-pm'):
-        tw.status_spr = sprNew(tw,0,(tw.height-183), \
-            tw.status_shapes['status'],True)
-    else:
-        tw.status_spr = sprNew(tw,0,(tw.height-173), \
+    tw.status_spr = sprNew(tw,0,(tw.height-175), \
             tw.status_shapes['status'],True)
     tw.status_spr.type = 'status'
     setlayer(tw.status_spr,400)

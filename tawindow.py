@@ -44,7 +44,7 @@ from sugar.graphics.objectchooser import ObjectChooser
 # Setup
 #
 
-def twNew(win, path, lang, tboxh, parent=None):
+def twNew(win, path, lang, parent=None):
     tw = taWindow()
     tw.window = win
     tw.path = os.path.join(path,'images')
@@ -54,10 +54,14 @@ def twNew(win, path, lang, tboxh, parent=None):
     tw.save_file_name = None
     win.set_flags(gtk.CAN_FOCUS)
     tw.width = gtk.gdk.screen_width()
-    tw.height = gtk.gdk.screen_height() # - tboxh
+    tw.height = gtk.gdk.screen_height() 
     win.set_size_request(tw.width, tw.height)
-    if parent is None: win.show_all()
-    else: parent.show_all()
+    # starting from command line
+    if parent is None:
+        win.show_all()
+    # starting from Sugar
+    else:
+        parent.show_all()
     win.add_events(gtk.gdk.BUTTON_PRESS_MASK)
     win.add_events(gtk.gdk.BUTTON_RELEASE_MASK)
     win.add_events(gtk.gdk.POINTER_MOTION_MASK)
