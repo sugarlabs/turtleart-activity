@@ -114,7 +114,7 @@ selectors = (
      ('vspace','nop','vspace'),
      ('lock','nop','lock'))),
    ('myblocks', 55,
-    (('start','nop','start'),
+    (('start','start','start'),
      ('hat1','nop1','start'),
      ('stack1','stack1','noarg'),
      ('hat2','nop2','start'),

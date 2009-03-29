@@ -657,6 +657,8 @@ def runbutton(tw, time):
     for b in blocks(tw):
         if find_start_stack(tw, b):
             tw.step_time = time
+            if hasattr(tw,'activity'):
+                tw.activity.recenter()
             run_stack(tw, b)
             return
     # no start block, so run a stack that isn't a hat

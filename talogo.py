@@ -1,4 +1,4 @@
-#Copyright (c) 2007, Playful Invention Company.
+#Copyright (c) 2007-8, Playful Invention Company.
 #Copyright (c) 2008-9, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -376,6 +376,11 @@ def tasqrt(x):
 def identity(x):
     return(x)
 
+# recenter the canvas when the start block is clicked
+def start_stack(lc):
+    if hasattr(lc.tw,'activity'):
+        lc.tw.activity.recenter()
+
 def lcNew(tw):
     lc = taLogo()
     lc.tw = tw
@@ -462,7 +467,7 @@ def lcNew(tw):
     defprim(lc,'nop1', 0, lambda lc: None)
     defprim(lc,'nop2', 0, lambda lc: None)
     defprim(lc,'nop3', 1, lambda lc,x: None)
-    defprim(lc,'start', 0, lambda: None)
+    defprim(lc,'start', 0, lambda lc: start_stack(lc))
 
     defprim(lc,'tp1', 2, lambda lc,x,y: show_template1(lc, x, y))
     defprim(lc,'tp8', 2, lambda lc,x,y: show_template8(lc, x, y))
@@ -549,7 +554,8 @@ def show_picture(lc, media, x, y, w, h):
 
 def get_pixbuf_from_journal(dsobject,w,h):
     try:
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path,int(w),int(h))
+        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path, \
+                                                      int(w),int(h))
     except:
         try:
             # print "Trying preview..."
@@ -573,8 +579,8 @@ def show_description(lc, media, x, y, w, h):
         try:
             dsobject = datastore.get(media[6:])
             draw_text(lc.tw.turtle, \
-                dsobject.metadata['description'],int(x),int(y), \
-                    lc.body_height, int(w))
+                      dsobject.metadata['description'],int(x),int(y), \
+                      lc.body_height, int(w))
             dsobject.destroy()
         except:
             print "no description?"

@@ -1,4 +1,5 @@
 #Copyright (c) 2007-8, Playful Invention Company.
+#Copyright (c) 2008-9, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -71,7 +72,10 @@ def setlayer(spr, layer):
     if spr in sprites: sprites.remove(spr)
     spr.layer = layer
     for i in range(len(sprites)):
-        if layer < sprites[i].layer: sprites.insert(i, spr); inval(spr); return
+        if layer < sprites[i].layer:
+            sprites.insert(i, spr)
+            inval(spr)
+            return
     sprites.append(spr)
     inval(spr)
 
@@ -86,7 +90,7 @@ def setlabel(spr,label):
 
 def inval(spr):
     spr.tw.area.invalidate_rect(gtk.gdk.Rectangle(spr.x,spr.y,spr.width, \
-        spr.height), False)
+                                                  spr.height), False)
 
 def draw(spr):
     if isinstance(spr.image,gtk.gdk.Pixbuf):

@@ -733,7 +733,6 @@ class ProjectToolbar(gtk.Toolbar):
     def do_run(self, button):
         self.runproject.set_icon("run-faston")
         self.stop.set_icon("stopiton")
-        self.activity.recenter()
         tawindow.runbutton(self.activity.tw, 0)
         gobject.timeout_add(1000,self.runproject.set_icon,"run-fastoff")
         gobject.timeout_add(1000,self.stepproject.set_icon,"run-slowoff")
@@ -741,7 +740,6 @@ class ProjectToolbar(gtk.Toolbar):
     def do_step(self, button):
         self.stepproject.set_icon("run-slowon")
         self.stop.set_icon("stopiton")
-        self.activity.recenter()
         tawindow.runbutton(self.activity.tw, 3)
         gobject.timeout_add(1000,self.stepproject.set_icon,"run-slowoff")
         gobject.timeout_add(1000,self.runproject.set_icon,"run-fastoff")

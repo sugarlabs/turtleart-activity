@@ -1,4 +1,5 @@
 #Copyright (c) 2007-8, Playful Invention Company.
+#Copyright (c) 2008-9, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -129,7 +130,7 @@ def rarc(t,a,r):
     x,y,w,h=t.width/2+int(cx-r),t.height/2-int(cy+r),int(2*r),int(2*r)
     if t.pendown:
         t.canvas.image.draw_arc(t.gc,False,x,y,w,h, \
-            int(180-t.heading-a)*64,int(a)*64)
+                                int(180-t.heading-a)*64,int(a)*64)
     invalt(t,x-t.pensize/2-3,y-t.pensize/2-3,w+t.pensize+6,h+t.pensize+6)
     right(t,a)
     t.xcor=cx-r*cos(t.heading*DEGTOR)
@@ -142,7 +143,7 @@ def larc(t,a,r):
     x,y,w,h=t.width/2+int(cx-r),t.height/2-int(cy+r),int(2*r),int(2*r)
     if t.pendown:
         t.canvas.image.draw_arc(t.gc,False,x,y,w,h,int(360-t.heading)*64, \
-            int(a)*64)
+                                int(a)*64)
     invalt(t,x-t.pensize/2-3,y-t.pensize/2-3,w+t.pensize+6,h+t.pensize+6)
     right(t,-a)
     t.xcor=cx+r*cos(t.heading*DEGTOR)
@@ -163,7 +164,7 @@ def setpensize(t,ps):
     except:
         pass
     t.gc.set_line_attributes(int(t.pensize),gtk.gdk.LINE_SOLID, \
-        gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
+                             gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
     return None
 
 def setcolor(t,c):
@@ -260,7 +261,7 @@ def draw_line(t,x1,y1,x2,y2):
     w,h=maxx-minx,maxy-miny
     t.canvas.image.draw_line(t.gc,x1,y1,x2,y2)
     invalt(t,minx-t.pensize/2-3,miny-t.pensize/2-3,w+t.pensize+6, \
-        h+t.pensize+6)
+           h+t.pensize+6)
 
 def turn_turtle(t):
     setshape(t.spr, t.shapelist[(int(t.heading+5)%360)/10])
@@ -272,7 +273,7 @@ def move_turtle(t):
 
 def invalt(t,x,y,w,h):
     rect = gtk.gdk.Rectangle(int(x+t.canvas.x),int(y+t.canvas.y), \
-        int(w),int(h))
+                             int(w),int(h))
     t.tw.area.invalidate_rect(rect, False)
 
 

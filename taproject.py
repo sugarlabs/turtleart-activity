@@ -1,4 +1,5 @@
-#Copyright (c) 2007-9, Playful Invention Company.
+#Copyright (c) 2007-8, Playful Invention Company.
+#Copyright (c) 2008-9, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +23,6 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import pickle
-#import cjson
 try:
     import json
     json.dumps
@@ -57,19 +57,20 @@ def load_files(tw,ta_file, png_file=''):
         # print "reading saved json data"
         f.seek(0) # rewind necessary because of pickle.load
         text = f.read()
-#        listdata = cjson.decode(text)
         listdata = json.decode(text)
         data = tuplify(listdata) # json converts tuples to lists
     f.close()
     new_project(tw)
     read_data(tw,data)
     # don't load the png_file -- we run the program instead
-    # if png_file != '':
-    #     try:
-    #         load_pict(tw,png_file)
-    #     except:
-    #         pass
-    #     inval(tw.turtle.canvas)
+    """
+    if png_file != '':
+        try:
+            load_pict(tw,png_file)
+        except:
+            pass
+        inval(tw.turtle.canvas)
+    """
 
 def get_load_name(tw):
     dialog = gtk.FileChooserDialog("Load...", None, \
@@ -80,7 +81,6 @@ def get_load_name(tw):
 
 # unpack serialized data sent across a share
 def load_string(tw,text):
-#    listdata = cjson.decode(text)
     listdata = json.decode(text)
     data = tuplify(listdata) # json converts tuples to lists
     new_project(tw)
@@ -107,10 +107,8 @@ def read_data(tw,data):
 def load_spr(tw,b):
     media = None
     btype, label = b[1],None
-#    print btype
     if type(btype)==type((1,2)): 
         btype, label = btype
-#        print "found a label: " + label
     if btype == 'title':  # for backward compatibility
         btype = 'string'
     if btype == 'journal' or btype == 'audiooff':
@@ -176,7 +174,6 @@ def get_save_name(tw):
 def save_data(tw,fname):
     f = file(fname, "w")
     data = assemble_data_to_save(tw)
-#    text = cjson.encode(data)
     text = json.encode(data)
     f.write(text)
     f.close()
@@ -184,8 +181,6 @@ def save_data(tw,fname):
 # used to send data across a shared session
 def save_string(tw):
     data = assemble_data_to_save(tw)
-    # encode it for sending across the network
-#    text = cjson.encode(data)
     text = json.encode(data)
     return text
 
@@ -215,9 +210,9 @@ def assemble_data_to_save(tw):
 def save_pict(tw,fname):
     tc = tw.turtle.canvas
     pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, tc.width, \
-        tc.height)
+                            tc.height)
     pixbuf.get_from_drawable(tc.image, tc.image.get_colormap(), 0, 0, 0, 0, \
-        tc.width, tc.height)
+                             tc.width, tc.height)
     pixbuf.save(fname, 'png')
 
 def get_id(x):
