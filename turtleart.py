@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-#Copyright (c) 2007-8, Playful Invention Company.
+#Copyright (c) 2007-8, Playful Invention Company
+#Copyright (c) 2008-9, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -28,12 +29,36 @@ import os.path
 
 from tawindow import *
 
+"""
+Make a path if it doesn't previously exist
+"""
+def makepath(path):
+
+    from os import makedirs
+    from os.path import normpath, dirname, exists
+
+    dpath = normpath(dirname(path))
+    if not exists(dpath): makedirs(dpath)
+
+"""
+Launch Turtle Art from outside of Sugar
+$ python turtleart.py
+
+Caveats:
+    * no Sugar toolbars
+    * no Sugar Journal access
+    * no Sugar sharing
+"""
 def main():
+    # make sure Sugar paths are present
+    tapath = os.path.join(os.environ['HOME'],'.sugar','default', \
+                          'org.laptop.TurtleArtActivity')
+    map (makepath, (os.path.join(tapath,'data/'), \
+                    os.path.join(tapath,'instance/')))
+
     win1 = gtk.Window(gtk.WINDOW_TOPLEVEL)
-    twNew(win1, os.path.abspath('.'),'es')
+    twNew(win1, os.path.abspath('.'),os.environ['LANG'])
     win1.connect("destroy", lambda w: gtk.main_quit())
-#    win2 = gtk.Window(gtk.WINDOW_TOPLEVEL)
-#    twNew(win2, os.path.abspath('.'))
     gtk.main()
     return 0
 
