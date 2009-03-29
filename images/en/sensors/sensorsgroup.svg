@@ -264,7 +264,7 @@
           x="72." 
           y="336" 
           id="tspan2439" 
-          style="font-size:11px">hdim</tspan> 
+          style="font-size:11px">width</tspan> 
    </text> 
    </g> 
    <g 
@@ -280,7 +280,7 @@
           x="72.5" 
           y="362." 
           id="tspan2433" 
-          style="font-size:11px">vdim</tspan> 
+          style="font-size:11px">height</tspan> 
      </text> 
    </g> 
    <rect 
