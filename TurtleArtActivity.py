@@ -93,12 +93,8 @@ class TurtleArtActivity(activity.Activity):
         self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.sw.show()
         canvas = gtk.DrawingArea()
-        print "ask: " + str(gtk.gdk.screen_width()*2) + " " + \
-              str(gtk.gdk.screen_height()*2)
         canvas.set_size_request(gtk.gdk.screen_width()*2, \
                                 gtk.gdk.screen_height()*2)
-        a,b = canvas.get_size_request()
-        print "and you shall receive: " + str(a) + " " + str(b)
         self.sw.add_with_viewport(canvas)
         canvas.show()
 

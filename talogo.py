@@ -28,7 +28,10 @@ import audioop
 from math import *
 import subprocess
 from UserDict import UserDict
-from sugar.datastore import datastore
+try:
+    from sugar.datastore import datastore
+except:
+    pass
 
 class noKeyError(UserDict):
     __missing__=lambda x,y: 0
