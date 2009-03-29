@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2007-9, Playful Invention Company.
+#Copyright (c) 2007, Playful Invention Company
+#Copyright (c) 2008-9, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -55,9 +56,9 @@ def twNew(win, path, lang, parent=None):
     win.set_flags(gtk.CAN_FOCUS)
     tw.width = gtk.gdk.screen_width()
     tw.height = gtk.gdk.screen_height() 
-    win.set_size_request(tw.width, tw.height)
     # starting from command line
     if parent is None:
+        win.set_size_request(tw.width, tw.height)
         win.show_all()
     # starting from Sugar
     else:

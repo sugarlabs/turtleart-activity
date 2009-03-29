@@ -90,7 +90,6 @@ class TurtleArtActivity(activity.Activity):
 
         self.sw = gtk.ScrolledWindow()
         self.set_canvas(self.sw)
-        # self.sw.set_policy(gtk.POLICY_ALWAYS, gtk.POLICY_ALWAYS)
         self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.sw.show()
         canvas = gtk.DrawingArea()
@@ -153,7 +152,7 @@ class TurtleArtActivity(activity.Activity):
         FILE.close()
 
         self.tw = tawindow.twNew(canvas,activity.get_bundle_path(), \
-            lang,self)
+                                 lang,self)
         self.tw.activity = self
         self.tw.window.grab_focus()
         self.tw.save_folder=os.path.join( \
