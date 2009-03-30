@@ -26,6 +26,7 @@ import gtk
 import gobject
 import os
 import os.path
+import locale
 
 from tawindow import *
 
@@ -56,9 +57,18 @@ def main():
     map (makepath, (os.path.join(tapath,'data/'), \
                     os.path.join(tapath,'instance/')))
 
-    win1 = gtk.Window(gtk.WINDOW_TOPLEVEL)
-    twNew(win1, os.path.abspath('.'),os.environ['LANG'])
-    win1.connect("destroy", lambda w: gtk.main_quit())
+    """
+    Find closest match for the user's $LANG
+    """
+    lang = locale.getdefaultlocale()[0]
+    if not lang:
+        lang = 'en'
+    lang = lang[0:2]
+    
+    # win = gtk.Window(gtk.WINDOW_TOPLEVEL)
+    win = gtk.Window()
+    twNew(win, os.path.abspath('.'),lang)
+    win.connect("destroy", lambda w: gtk.main_quit())
     gtk.main()
     return 0
 
