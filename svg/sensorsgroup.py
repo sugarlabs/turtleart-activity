@@ -29,17 +29,6 @@ import gettext
 def main():
 
     myname = "sensorsgroup"
-    mystring1 = "Keyboard"
-    mystring2 = "read key"
-    mystring3 = "keyboard"
-    mystring4 = "hres"
-    mystring5 = "vres"
-    mystring6 = "pop"
-    mystring7 = "show heap"
-    mystring8 = "empty heap"
-    mystring9 = "push"
-    mygroup = "sensors"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -48,17 +37,28 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring1)
-    print _(mystring2)
-    s3 = _(mystring1)
+    mystring1 = _("Keyboard")
+    mystring2 = _("read key")
+    mystring3 = _("keyboard")
+    mystring4 = _("width")
+    mystring5 = _("height")
+    mystring6 = _("pop")
+    mystring7 = _("show heap")
+    mystring8 = _("empty heap")
+    mystring9 = _("push")
+    mygroup = "sensors"
+
+    print mystring1
+    print mystring2
+    s3 = mystring1
     s3lower = s3.lower()
     print s3lower
-    print _(mystring4)
-    print _(mystring5)
-    print _(mystring6)
-    print _(mystring7)
-    print _(mystring8)
-    print _(mystring9)
+    print mystring4
+    print mystring5
+    print mystring6
+    print mystring7
+    print mystring8
+    print mystring9
 
 
     data0 = \
@@ -577,9 +577,9 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
-    FILE.write(_(mystring1).encode("utf-8"))
+    FILE.write(mystring1.encode("utf-8"))
     FILE.write(data1)
-    strings = _(mystring2).split(" ",2)
+    strings = mystring2.split(" ",2)
     if len(strings) == 1:
         FILE.write(data2a)
         FILE.write(strings[0].encode("utf-8"))
@@ -591,13 +591,13 @@ def main():
     FILE.write(data4)
     FILE.write(s3lower.encode("utf-8"))
     FILE.write(data5)
-    FILE.write(_(mystring4).encode("utf-8"))
+    FILE.write(mystring4.encode("utf-8"))
     FILE.write(data6)
-    FILE.write(_(mystring5).encode("utf-8"))
+    FILE.write(mystring5.encode("utf-8"))
     FILE.write(data7)
-    FILE.write(_(mystring6).encode("utf-8"))
+    FILE.write(mystring6.encode("utf-8"))
     FILE.write(data8)
-    strings = _(mystring7).split(" ",2)
+    strings = mystring7.split(" ",2)
     if len(strings) == 1:
         FILE.write(data9a)
         FILE.write(strings[0].encode("utf-8"))
@@ -607,7 +607,7 @@ def main():
         FILE.write(data10b)
         FILE.write(strings[1].encode("utf-8"))
     FILE.write(data11)
-    strings = _(mystring8).split(" ",2)
+    strings = mystring8.split(" ",2)
     if len(strings) == 1:
         FILE.write(data12a)
         FILE.write(strings[0].encode("utf-8"))
@@ -617,7 +617,7 @@ def main():
         FILE.write(data13b)
         FILE.write(strings[1].encode("utf-8"))
     FILE.write(data14)
-    FILE.write(_(mystring9).encode("utf-8"))
+    FILE.write(mystring9.encode("utf-8"))
     FILE.write(data15)
     FILE.close()
     return

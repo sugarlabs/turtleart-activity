@@ -29,9 +29,6 @@ import gettext
 def main():
 
     myname = "sound"
-    mystring1 = "sound"
-    mygroup = "templates"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -40,7 +37,10 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring1)
+    mystring1 = _("sound")
+    mygroup = "templates"
+
+    print mystring1
 
     data0 = \
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n \
@@ -306,7 +306,7 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
-    FILE.write(_(mystring1).encode("utf-8"))
+    FILE.write(mystring1.encode("utf-8"))
     FILE.write(data1)
     FILE.close()
     return

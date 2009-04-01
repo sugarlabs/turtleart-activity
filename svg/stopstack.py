@@ -29,9 +29,6 @@ import gettext
 def main():
 
     myname = "stopstack"
-    mystring = "stop stack"
-    mygroup = "flow"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -40,7 +37,10 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring)
+    mystring = _("stop stack")
+    mygroup = "flow"
+
+    print mystring
 
 
     data0 = \
@@ -92,7 +92,7 @@ def main():
 "</tspan></text> \n \
 </svg> \n"
 
-    strings = _(mystring).split(" ",2)
+    strings = mystring.split(" ",2)
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname+".svg"), "w")
     FILE.write(data0)
     FILE.write(strings[0].encode("utf-8"))

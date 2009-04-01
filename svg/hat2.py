@@ -29,9 +29,6 @@ import gettext
 def main():
 
     myname = "hat2"
-    mystring = "stack 2"
-    mygroup = "myblocks"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -40,7 +37,10 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring)
+    mystring = _("stack 2")
+    mygroup = "myblocks"
+
+    print mystring
 
     data0 = \
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n \
@@ -100,7 +100,7 @@ style=\"font-size:16px\">"
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
-    FILE.write(_(mystring).encode("utf-8"))
+    FILE.write(mystring.encode("utf-8"))
     FILE.write(data1)
     FILE.close()
     return

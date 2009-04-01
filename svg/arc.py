@@ -29,11 +29,6 @@ import gettext
 def main():
 
     myname = "arc"
-    mystring1 = "arc"
-    mystring2 = "angle"
-    mystring3 = "radius"
-    mygroup = "turtle"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -42,9 +37,14 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring1)
-    print _(mystring2)
-    print _(mystring3)
+    mystring1 = _("arc")
+    mystring2 = _("angle")
+    mystring3 = _("radius")
+    mygroup = "turtle"
+
+    print mystring1
+    print mystring2
+    print mystring3
 
     data0 = \
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n \
@@ -80,7 +80,7 @@ def main():
      d=\"M 69.75,42.75 L 86.25,42.75 L 86.25,49 L 82.25,49 L 82.25,45.75 L 71.75,45.75\" /> \n \
   <path \n \
      style=\"fill:#00e000;fill-opacity:1;stroke:#008000;stroke-width:1.5;stroke-opacity:1\" \n \
-     d=\"M 69.75,70.25 L 86.25,70.25 L 86.25,64.249999 L 82.25,64.249999 L 82.25,67.249999 L 71.75,67.249999\" /> \n \
+     d=\"M 69.75,70.25 L 86.25,70.25 L 86.25,64.25 L 82.25,64.25 L 82.25,67.25 L 71.75,67.25\" /> \n \
   <path \n \
      style=\"fill:#00e000;fill-opacity:1;stroke:#008000;stroke-width:1.5;stroke-opacity:1\" \n \
      d=\"M 70,6 L 86.5,6 L 86.5,12 L 82.5,12 L 82.5,9 L 72,9\" /> \n \
@@ -89,7 +89,7 @@ def main():
      d=\"M 70,33.5 L 86.5,33.5 L 86.5,27.5 L 82.5,27.5 L 82.5,30.5 L 72,30.5\" /> \n \
   <path \n \
      style=\"fill:url(#linearGradient3172);fill-opacity:1;stroke:#00a000;stroke-width:2;stroke-opacity:1\" \n \
-     d=\"M 48,1 C 64,1 64,1 64,1 C 64,1 68.131798,3.4865526 69.5,5 C 70.897472,6.5458243 73,11 73,11 L 73,67 C 73,67 70.78295,70.693654 69.5,72 C 68.07044,73.455629 64,76 64,76 L 47,76 L 47,76 L 47,80 L 27,80 L 27,76 L 10,76 C 10,76 5.9295605,73.455629 4.5,72 C 3.2170498,70.693654 1,67 1,67 L 1,11 C 1,11 3.1025283,6.5458243 4.5,5 C 5.8682021,3.4865526 10,1 10,1 L 26,1 L 26,6 L 48,6 L 48,1 z\" /> \n \
+     d=\"M 48,1 C 64,1 64,1 64,1 C 64,1 68.1,3.5 69.5,5 C 70.9,6.5 73,11 73,11 L 73,67 C 73,67 70.8,70.7 69.5,72 C 68.1,73.5 64,76 64,76 L 47,76 L 47,76 L 47,80 L 27,80 L 27,76 L 10,76 C 10,76 6.0,73.5 4.5,72 C 3.2,70.7 1,67 1,67 L 1,11 C 1,11 3.1,6.5 4.5,5 C 5.9,3.5 10,1 10,1 L 26,1 L 26,6 L 48,6 L 48,1 z\" /> \n \
   <text \n \
      style=\"font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans\"> \n \
       <tspan \n \
@@ -121,11 +121,11 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
-    FILE.write(_(mystring1).encode("utf-8"))
+    FILE.write(mystring1.encode("utf-8"))
     FILE.write(data1)
-    FILE.write(_(mystring2).encode("utf-8"))
+    FILE.write(mystring2.encode("utf-8"))
     FILE.write(data2)
-    FILE.write(_(mystring3).encode("utf-8"))
+    FILE.write(mystring3.encode("utf-8"))
     FILE.write(data3)
     FILE.close()
     return

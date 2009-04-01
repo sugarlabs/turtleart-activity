@@ -29,18 +29,6 @@ import gettext
 def main():
 
     myname = "numbersgroup"
-    mystring1 = "Numbers"
-    mystring2 = "random"
-    mystring3 = "and"
-    mystring4 = "or"
-    mystring5 = "not"
-    mystring6 = "print"
-    mystring7 = "number"
-    mystring8 = "min"
-    mystring9 = "max"
-    mystring10 = "mod"
-    mygroup = "numbers"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -49,16 +37,28 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring1)
-    print _(mystring2)
-    print _(mystring3)
-    print _(mystring4)
-    print _(mystring5)
-    print _(mystring6)
-    print _(mystring7)
-    print _(mystring8)
-    print _(mystring9)
-    print _(mystring10)
+    mystring1 = _("Numbers")
+    mystring2 = _("random")
+    mystring3 = _("and")
+    mystring4 = _("or")
+    mystring5 = _("not")
+    mystring6 = _("print")
+    mystring7 = _("number")
+    mystring8 = _("min")
+    mystring9 = _("max")
+    mystring10 = _("mod")
+    mygroup = "numbers"
+
+    print mystring1
+    print mystring2
+    print mystring3
+    print mystring4
+    print mystring5
+    print mystring6
+    print mystring7
+    print mystring8
+    print mystring9
+    print mystring10
 
     data0 = \
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n \
@@ -853,25 +853,25 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname+".svg"), "w")
     FILE.write(data0)
-    FILE.write(_(mystring1).encode("utf-8"))
+    FILE.write(mystring1.encode("utf-8"))
     FILE.write(data1)
-    FILE.write(_(mystring2).encode("utf-8"))
+    FILE.write(mystring2.encode("utf-8"))
     FILE.write(data2)
-    FILE.write(_(mystring3).encode("utf-8"))
+    FILE.write(mystring3.encode("utf-8"))
     FILE.write(data3)
-    FILE.write(_(mystring4).encode("utf-8"))
+    FILE.write(mystring4.encode("utf-8"))
     FILE.write(data4)
-    FILE.write(_(mystring5).encode("utf-8"))
+    FILE.write(mystring5.encode("utf-8"))
     FILE.write(data5)
-    FILE.write(_(mystring6).encode("utf-8"))
+    FILE.write(mystring6.encode("utf-8"))
     FILE.write(data6)
-    FILE.write(_(mystring7).encode("utf-8"))
+    FILE.write(mystring7.encode("utf-8"))
     FILE.write(data7)
-    FILE.write(_(mystring8).encode("utf-8"))
+    FILE.write(mystring8.encode("utf-8"))
     FILE.write(data8)
-    FILE.write(_(mystring9).encode("utf-8"))
+    FILE.write(mystring9.encode("utf-8"))
     FILE.write(data9)
-    FILE.write(_(mystring10).encode("utf-8"))
+    FILE.write(mystring10.encode("utf-8"))
     FILE.write(data10)
     FILE.close()
     return

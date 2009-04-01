@@ -29,25 +29,6 @@ import gettext
 def main():
 
     myname = "turtlegroup"
-    mystring1 = "clean"
-    mystring2 = "forward"
-    mystring3 = "back"
-    mystring4 = "left"
-    mystring5 = "right"
-    mystring6 = "arc"
-    mystring7 = "angle"
-    mystring8 = "radius"
-    mystring9 = "setyx"
-    mystring10 = "x"
-    mystring11 = "y"
-    mystring12 = "set heading"
-    mystring13 = "xcor"
-    mystring14 = "ycor"
-    mystring15 = "heading"
-    mystring16 = "Turtle"
-
-    mygroup = "turtle"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -56,22 +37,40 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring1)
-    print _(mystring2)
-    print _(mystring3)
-    print _(mystring4)
-    print _(mystring5)
-    print _(mystring6)
-    print _(mystring7)
-    print _(mystring8)
-    print _(mystring9)
-    print _(mystring10)
-    print _(mystring11)
-    print _(mystring12)
-    print _(mystring13)
-    print _(mystring14)
-    print _(mystring15)
-    print _(mystring16)
+    mystring1 = _("clean")
+    mystring2 = _("forward")
+    mystring3 = _("back")
+    mystring4 = _("left")
+    mystring5 = _("right")
+    mystring6 = _("arc")
+    mystring7 = _("angle")
+    mystring8 = _("radius")
+    mystring9 = _("setyx")
+    mystring10 = _("x")
+    mystring11 = _("y")
+    mystring12 = _("set heading")
+    mystring13 = _("xcor")
+    mystring14 = _("ycor")
+    mystring15 = _("heading")
+    mystring16 = _("Turtle")
+    mygroup = "turtle"
+
+    print mystring1
+    print mystring2
+    print mystring3
+    print mystring4
+    print mystring5
+    print mystring6
+    print mystring7
+    print mystring8
+    print mystring9
+    print mystring10
+    print mystring11
+    print mystring12
+    print mystring13
+    print mystring14
+    print mystring15
+    print mystring16
 
     data0 = \
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n \
@@ -713,29 +712,29 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
-    FILE.write(_(mystring1).encode("utf-8"))
+    FILE.write(mystring1.encode("utf-8"))
     FILE.write(data1)
-    FILE.write(_(mystring2).encode("utf-8"))
+    FILE.write(mystring2.encode("utf-8"))
     FILE.write(data2)
-    FILE.write(_(mystring3).encode("utf-8"))
+    FILE.write(mystring3.encode("utf-8"))
     FILE.write(data3)
-    FILE.write(_(mystring4).encode("utf-8"))
+    FILE.write(mystring4.encode("utf-8"))
     FILE.write(data4)
-    FILE.write(_(mystring5).encode("utf-8"))
+    FILE.write(mystring5.encode("utf-8"))
     FILE.write(data5)
-    FILE.write(_(mystring6).encode("utf-8"))
+    FILE.write(mystring6.encode("utf-8"))
     FILE.write(data6)
-    FILE.write(_(mystring7).encode("utf-8"))
+    FILE.write(mystring7.encode("utf-8"))
     FILE.write(data7)
-    FILE.write(_(mystring8).encode("utf-8"))
+    FILE.write(mystring8.encode("utf-8"))
     FILE.write(data8)
-    FILE.write(_(mystring9).encode("utf-8"))
+    FILE.write(mystring9.encode("utf-8"))
     FILE.write(data9)
-    FILE.write(_(mystring10).encode("utf-8"))
+    FILE.write(mystring10.encode("utf-8"))
     FILE.write(data10)
-    FILE.write(_(mystring11).encode("utf-8"))
+    FILE.write(mystring11.encode("utf-8"))
     FILE.write(data11)
-    strings = _(mystring12).split(" ",2)
+    strings = mystring12.split(" ",2)
     if len(strings) == 1:
         FILE.write(data12a)
         FILE.write(strings[0].encode("utf-8"))
@@ -745,13 +744,13 @@ def main():
         FILE.write(data13b)
         FILE.write(strings[1].encode("utf-8"))
     FILE.write(data14)
-    FILE.write(_(mystring13).encode("utf-8"))
+    FILE.write(mystring13.encode("utf-8"))
     FILE.write(data15)
-    FILE.write(_(mystring14).encode("utf-8"))
+    FILE.write(mystring14.encode("utf-8"))
     FILE.write(data16)
-    FILE.write(_(mystring15).encode("utf-8"))
+    FILE.write(mystring15.encode("utf-8"))
     FILE.write(data17)
-    FILE.write(_(mystring16).encode("utf-8"))
+    FILE.write(mystring16.encode("utf-8"))
     FILE.write(data18)
     FILE.close()
     return

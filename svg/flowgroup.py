@@ -29,16 +29,6 @@ import gettext
 def main():
 
     myname = "flowgroup"
-    mystring1 = "Flow"
-    mystring2 = "wait"
-    mystring3 = "forever"
-    mystring4 = "repeat"
-    mystring5 = "if"
-    mystring6 = "then"
-    mystring7 = "else"
-    mystring8 = "stop stack"
-    mygroup = "flow"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -47,14 +37,24 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring1)
-    print _(mystring2)
-    print _(mystring3)
-    print _(mystring4)
-    print _(mystring5)
-    print _(mystring6)
-    print _(mystring7)
-    print _(mystring8)
+    mystring1 = _("Flow")
+    mystring2 = _("wait")
+    mystring3 = _("forever")
+    mystring4 = _("repeat")
+    mystring5 = _("if")
+    mystring6 = _("then")
+    mystring7 = _("else")
+    mystring8 = _("stop stack")
+    mygroup = "flow"
+
+    print mystring1
+    print mystring2
+    print mystring3
+    print mystring4
+    print mystring5
+    print mystring6
+    print mystring7
+    print mystring8
 
     data0 = \
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n \
@@ -476,11 +476,11 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname+".svg"), "w")
     FILE.write(data0)
-    FILE.write(_(mystring1).encode("utf-8"))
+    FILE.write(mystring1.encode("utf-8"))
     FILE.write(data1)
-    FILE.write(_(mystring2).encode("utf-8"))
+    FILE.write(mystring2.encode("utf-8"))
     FILE.write(data2)
-    strings = _(mystring3).split(" ",2)
+    strings = mystring3.split(" ",2)
     if len(strings) == 1:
         FILE.write(data2a)
         FILE.write(strings[0].encode("utf-8"))
@@ -490,23 +490,23 @@ def main():
         FILE.write(data2c)
         FILE.write(strings[1].encode("utf-8"))
     FILE.write(data3)
-    FILE.write(_(mystring4).encode("utf-8"))
+    FILE.write(mystring4.encode("utf-8"))
     FILE.write(data4)
-    FILE.write(_(mystring5).encode("utf-8"))
+    FILE.write(mystring5.encode("utf-8"))
     FILE.write(data5)
-    FILE.write(_(mystring6).encode("utf-8"))
+    FILE.write(mystring6.encode("utf-8"))
     FILE.write(data6)
-    strings = _(mystring8).split(" ",2)
+    strings = mystring8.split(" ",2)
     FILE.write(strings[0].encode("utf-8"))
     FILE.write(data7)
     if len(strings) == 2:
         FILE.write(strings[1].encode("utf-8"))
     FILE.write(data8)
-    FILE.write(_(mystring5).encode("utf-8"))
+    FILE.write(mystring5.encode("utf-8"))
     FILE.write(data9)
-    FILE.write(_(mystring6).encode("utf-8"))
+    FILE.write(mystring6.encode("utf-8"))
     FILE.write(data10)
-    FILE.write(_(mystring7).encode("utf-8"))
+    FILE.write(mystring7.encode("utf-8"))
     FILE.write(data11)
     FILE.close()
     return

@@ -29,9 +29,6 @@ import gettext
 def main():
 
     myname = "seth"
-    mystring1 = "set heading"
-    mygroup = "turtle"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -39,6 +36,9 @@ def main():
     t = gettext.translation("org.laptop.TurtleArtActivity", "../locale", languages=[sys.argv[1]])
     _ = t.ugettext
     t.install()
+
+    mystring1 = _("set heading")
+    mygroup = "turtle"
 
     print _(mystring1)
 
@@ -112,7 +112,7 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
-    strings = _(mystring1).split(" ",2)
+    strings = mystring1.split(" ",2)
     if len(strings) == 1:
         FILE.write(data1a)
         FILE.write(strings[0].encode("utf-8"))

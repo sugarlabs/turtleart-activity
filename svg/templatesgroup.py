@@ -29,11 +29,6 @@ import gettext
 def main():
 
     myname = "templatesgroup"
-    mystring1 = "Templates"
-    mystring2 = "hide blocks"
-    mystring3 = "sound"
-    mygroup = "templates"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -42,9 +37,14 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring1)
-    print _(mystring2)
-    print _(mystring3)
+    mystring1 = _("Templates")
+    mystring2 = _("hide blocks")
+    mystring3 = _("sound")
+    mygroup = "templates"
+
+    print mystring1
+    print mystring2
+    print mystring3
 
 
     data0 = \
@@ -666,9 +666,9 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
-    FILE.write(_(mystring1).encode("utf-8"))
+    FILE.write(mystring1.encode("utf-8"))
     FILE.write(data1)
-    strings = _(mystring2).split(" ",2)
+    strings = mystring2.split(" ",2)
     if len(strings) == 1:
         FILE.write(data2a)
         FILE.write(strings[0].encode("utf-8"))
@@ -678,7 +678,7 @@ def main():
         FILE.write(data3b)
         FILE.write(strings[1].encode("utf-8"))
     FILE.write(data4)
-    FILE.write(_(mystring3).encode("utf-8"))
+    FILE.write(mystring3.encode("utf-8"))
     FILE.write(data5)
     FILE.close()
     return

@@ -29,9 +29,6 @@ import gettext
 def main():
 
     myname = "clean"
-    mystring = "clean"
-    mygroup = "turtle"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -40,7 +37,10 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring)
+    mystring = _("clean")
+    mygroup = "turtle"
+
+    print mystring
 
     data0 = \
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n \
@@ -73,7 +73,7 @@ def main():
   </defs> \n \
   <path \n \
      style=\"fill:url(#linearGradient3172);fill-opacity:1;stroke:#00a000;stroke-width:2;stroke-opacity:1\" \n \
-     d=\"M 48,1 C 64,1 64,1 64,1 C 64,1 68.131798,3.4865526 69.5,5 C 70.897472,6.5458243 73,11 73,11 L 73,30 C 73,30 70.78295,33.693654 69.5,35 C 68.07044,36.455629 64,39 64,39 L 47,39 L 47,39 L 47,43 L 27,43 L 27,39 L 10,39 C 10,39 5.9295605,36.455629 4.5,35 C 3.2170498,33.693654 1,30 1,30 L 1,11 C 1,11 3.1025283,6.5458243 4.5,5 C 5.8682021,3.4865526 10,1 10,1 L 26,1 L 26,6 L 48,6 L 48,1 z\" /> \n \
+     d=\"M 48,1 C 64,1 64,1 64,1 C 64,1 68.1,3.5 69.5,5 C 70.9,6.5 73,11 73,11 L 73,30 C 73,30 70.8,33.7 69.5,35 C 68.1,36.5 64,39 64,39 L 47,39 L 47,39 L 47,43 L 27,43 L 27,39 L 10,39 C 10,39 5.9,36.5 4.5,35 C 3.2,33.7 1,30 1,30 L 1,11 C 1,11 3.1,6.5 4.5,5 C 5.9,3.5 10,1 10,1 L 26,1 L 26,6 L 48,6 L 48,1 z\" /> \n \
   <text \n \
      style=\"font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans\"> \n \
       <tspan \n \
@@ -89,7 +89,7 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
-    FILE.write(_(mystring).encode("utf-8"))
+    FILE.write(mystring.encode("utf-8"))
     FILE.write(data1)
     FILE.close()
     return

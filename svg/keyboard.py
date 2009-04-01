@@ -29,9 +29,6 @@ import gettext
 def main():
 
     myname = "keyboard"
-    mystring = "Keyboard"
-    mygroup = "sensors"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -40,7 +37,10 @@ def main():
     _ = t.ugettext
     t.install()
 
-    s = _(mystring)
+    mystring = _("Keyboard")
+    mygroup = "sensors"
+
+    s = mystring
     slower = s.lower()
     print slower
     data0 = \

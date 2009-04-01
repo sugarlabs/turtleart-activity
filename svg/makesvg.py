@@ -63,7 +63,6 @@ def main():
  "print.py", \
  "push.py", \
  "random.py", \
- "random.pyc", \
  "remainder2.py", \
  "remainder.py", \
  "repeat.py", \

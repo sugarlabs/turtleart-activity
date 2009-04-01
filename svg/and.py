@@ -25,13 +25,11 @@ import sys
 import os
 import os.path
 import gettext
+from gettext import gettext as _
 
 def main():
 
     myname = "and"
-    mystring = "and"
-    mygroup = "numbers"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -40,7 +38,10 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring)
+    mystring = _('and')
+    mygroup = "numbers"
+
+    print mystring
 
     data0 = \
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n \
@@ -88,7 +89,7 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
-    FILE.write(_(mystring).encode("utf-8"))
+    FILE.write(mystring.encode("utf-8"))
     FILE.write(data1)
     FILE.close()
     return

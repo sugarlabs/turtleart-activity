@@ -29,11 +29,6 @@ import gettext
 def main():
 
     myname = "ifelse"
-    mystring1 = "if"
-    mystring2 = "then"
-    mystring3 = "else"
-    mygroup = "flow"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -42,9 +37,14 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring1)
-    print _(mystring2)
-    print _(mystring3)
+    mystring1 = _("if")
+    mystring2 = _("then")
+    mystring3 = _("else")
+    mygroup = "flow"
+
+    print mystring1
+    print mystring2
+    print mystring3
 
     data0 = \
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n \
@@ -109,11 +109,11 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname+".svg"), "w")
     FILE.write(data0)
-    FILE.write(_(mystring1).encode("utf-8"))
+    FILE.write(mystring1.encode("utf-8"))
     FILE.write(data1)
-    FILE.write(_(mystring2).encode("utf-8"))
+    FILE.write(mystring2.encode("utf-8"))
     FILE.write(data2)
-    FILE.write(_(mystring3).encode("utf-8"))
+    FILE.write(mystring3.encode("utf-8"))
     FILE.write(data3)
     FILE.close()
     return

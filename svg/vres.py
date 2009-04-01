@@ -29,9 +29,6 @@ import gettext
 def main():
 
     myname = "vres"
-    mystring = "vres"
-    mygroup = "sensors"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -40,7 +37,11 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring)
+    mystring = _("height")
+    mygroup = "sensors"
+
+    print mystring
+
     data0 = \
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n \
 <!-- Created with Inkscape (http://www.inkscape.org/) --> \n \
@@ -95,7 +96,7 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
-    FILE.write(_(mystring).encode("utf-8"))
+    FILE.write(mystring.encode("utf-8"))
     FILE.write(data1)
     FILE.close()
     return

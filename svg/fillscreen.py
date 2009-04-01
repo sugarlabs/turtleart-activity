@@ -29,11 +29,6 @@ import gettext
 def main():
 
     myname = "fillscreen"
-    mystring1 = "fill screen"
-    mystring2 = "color"
-    mystring3 = "shade"
-    mygroup = "pen"
-
     if len(sys.argv) != 2:
         print "Error: Usage is " + myname + ".py lang"
         return
@@ -42,9 +37,14 @@ def main():
     _ = t.ugettext
     t.install()
 
-    print _(mystring1)
-    print _(mystring2)
-    print _(mystring3)
+    mystring1 = _("fill screen")
+    mystring2 = _("color")
+    mystring3 = _("shade")
+    mygroup = "pen"
+
+    print mystring1
+    print mystring2
+    print mystring3
 
     data0 = \
 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n \
@@ -127,15 +127,15 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
-    strings = _(mystring1).split(" ",2)
+    strings = mystring1.split(" ",2)
     FILE.write(strings[0].encode("utf-8"))
     FILE.write(data1)
     if len(strings) == 2:
         FILE.write(strings[1].encode("utf-8"))
     FILE.write(data2)
-    FILE.write(_(mystring2).encode("utf-8"))
+    FILE.write(mystring2.encode("utf-8"))
     FILE.write(data3)
-    FILE.write(_(mystring3).encode("utf-8"))
+    FILE.write(mystring3.encode("utf-8"))
     FILE.write(data4)
     FILE.close()
     return
