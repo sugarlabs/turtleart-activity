@@ -234,7 +234,6 @@ class TurtleArtActivity(activity.Activity):
             reply_handler=self._list_tubes_reply_cb, 
             error_handler=self._list_tubes_error_cb)
 
-        
         # joiner should request current state from sharer
         self.waiting_for_blocks = True
 
@@ -348,7 +347,6 @@ class TurtleArtActivity(activity.Activity):
     Write the project and a screen snapshot to the Journal
     """
     def write_file(self, file_path):
-        # just save .ta file
         _logger.debug("Writing file %s" % file_path)
         self.metadata['mime_type'] = 'application/x-tar'
         import tempfile
@@ -448,6 +446,20 @@ class SaveAsToolbar(gtk.Toolbar):
         gtk.Toolbar.__init__(self)
         self.activity = pc
 
+        # project open
+        self.sampb = ToolButton( "stock-open" )
+        self.sampb.set_tooltip(_('samples'))
+        self.sampb.props.sensitive = True
+        self.sampb.connect('clicked', self.do_samples)
+        self.sampb.props.accelerator = '<Alt>o'
+        self.insert(self.sampb, -1)
+        self.sampb.show()
+
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        self.insert(separator, -1)
+        separator.show()
+
         # HTML save source button
         self.savehtml = ToolButton( "htmloff" )
         self.savehtml.set_tooltip(_('save as HTML'))
@@ -464,6 +476,14 @@ class SaveAsToolbar(gtk.Toolbar):
         self.insert(self.savelogo, -1)
         self.savelogo.show()
 
+        # Save as image button
+        self.saveimage = ToolButton( "image-saveoff" )
+        self.saveimage.set_tooltip(_('save as image'))
+        self.saveimage.props.sensitive = True
+        self.saveimage.connect('clicked', self.do_saveimage)
+        self.insert(self.saveimage, -1)
+        self.saveimage.show()
+
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
         self.insert(separator, -1)
@@ -476,6 +496,33 @@ class SaveAsToolbar(gtk.Toolbar):
         self.loadmyblock.connect('clicked', self.do_loadmyblock)
         self.insert(self.loadmyblock, -1)
         self.loadmyblock.show()
+
+    def do_samples(self, button):
+        tawindow.load_file(self.activity.tw)
+        # run the activity
+        tawindow.runbutton(self.activity.tw, 0)
+
+    def do_saveimage(self, button):
+        self.saveimage.set_icon("image-saveon")
+        _logger.debug("saving image to journal")
+        import tempfile
+        pngfd, pngfile = tempfile.mkstemp(".png")
+        del pngfd
+        tawindow.save_pict(self.activity.tw,pngfile)
+
+        # Create a datastore object
+        file_dsobject = datastore.create()
+
+        # Write metadata
+        file_dsobject.metadata['title'] = "Turtle Art image"
+        file_dsobject.metadata['icon-color'] = profile.get_color().to_string()
+        file_dsobject.metadata['mime_type'] = 'image/png'
+        file_dsobject.set_file_path(pngfile)
+
+        datastore.write(file_dsobject)
+        file_dsobject.destroy()
+        gobject.timeout_add(250,self.saveimage.set_icon, "image-saveoff")
+        return
 
     def do_savehtml(self, button):
         # write html out to datastore
@@ -498,7 +545,7 @@ class SaveAsToolbar(gtk.Toolbar):
                 os.environ['HOME'], \
                 ".sugar/default/org.laptop.TurtleArtActivity/instance")
 
-        html_file = os.path.join(datapath, "taportfolio.html")
+        html_file = os.path.join(datapath, "portfolio.html")
         f = file(html_file, "w")
         f.write(html)
         f.close()
@@ -521,7 +568,7 @@ class SaveAsToolbar(gtk.Toolbar):
 
         # Write any metadata (here we specifically set the title of the file
         # and specify that this is a plain text file). 
-        file_dsobject.metadata['title'] = "TAportfolio"
+        file_dsobject.metadata['title'] = "Turtle Art portfolio"
         file_dsobject.metadata['icon-color'] = profile.get_color().to_string()
         if embed_flag == True:
             file_dsobject.metadata['mime_type'] = 'text/html'
@@ -683,20 +730,6 @@ class ProjectToolbar(gtk.Toolbar):
         self.insert(separator, -1)
         separator.show()
 
-        # project open
-        self.sampb = ToolButton( "stock-open" )
-        self.sampb.set_tooltip(_('samples'))
-        self.sampb.props.sensitive = True
-        self.sampb.connect('clicked', self.do_samples)
-        self.sampb.props.accelerator = '<Alt>o'
-        self.insert(self.sampb, -1)
-        self.sampb.show(
-)
-        separator = gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        self.insert(separator, -1)
-        separator.show()
-
         # full screen
         self.fullscreenb = ToolButton( "view-fullscreen" )
         self.fullscreenb.set_tooltip(_('fullscreen'))
@@ -779,11 +812,6 @@ class ProjectToolbar(gtk.Toolbar):
         self.activity.recenter()
         tawindow.eraser_button(self.activity.tw)
         gobject.timeout_add(250,self.eraser.set_icon,"eraseron")
-
-    def do_samples(self, button):
-        tawindow.load_file(self.activity.tw)
-        # run the activity
-        tawindow.runbutton(self.activity.tw, 0)
 
     def do_fullscreen(self, button):
         self.activity.fullscreen()
