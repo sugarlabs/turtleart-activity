@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=TurtleArt
+Name[nb]=Skilpaddekunst
+GenericName=Sugar TurtleArt activity
+GenericName[nb]=Sugar Skilpaddekunst-aktivitet
+Exec=/usr/share/sugar/activities/TurtleArt.activity/turtleart.py
+Type=Application
+Comment=A Logo programming environment
+Comment[nb]=Et miljø for Logo-programmering
+Terminal=false
+StartupNotify=true
+Categories=Education;
