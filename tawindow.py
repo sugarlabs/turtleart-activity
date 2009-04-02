@@ -229,9 +229,12 @@ def new_block_from_category(tw,proto,x,y):
 def block_pressed(tw,mask,x,y,spr):
     if spr is not None:
         if mask is True:
+            """
             newspr = clone_stack(tw,x-spr.x-20,y-spr.y-20, spr)
             tw.dragpos = x-newspr.x,y-newspr.y
             tw.draggroup = findgroup(newspr)
+            """
+            pass
         else:
             tw.draggroup = findgroup(spr)
             for b in tw.draggroup: setlayer(b,2000)
@@ -241,7 +244,7 @@ def block_pressed(tw,mask,x,y,spr):
             else:
                 tw.dragpos = x-spr.x,y-spr.y
                 disconnect(spr)
-
+"""
 def clone_stack(tw,dx,dy,spr):
     newspr = sprNew(tw,spr.x+dx,spr.y+dy,spr.proto.image)
     newspr.type = spr.type
@@ -255,6 +258,7 @@ def clone_stack(tw,dx,dy,spr):
         clonearg.connections[0]=newspr
     setlayer(newspr,2000)
     return newspr
+"""
 
 def turtle_pressed(tw,x,y):
     dx,dy = x-tw.turtle.spr.x-30,y-tw.turtle.spr.y-30

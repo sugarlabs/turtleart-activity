@@ -86,6 +86,24 @@ def load_string(tw,text):
     new_project(tw)
     read_data(tw,data)
 
+# unpack sserialized data from the clipboard
+def clone_stack(tw,text):
+    listdata = json.decode(text)
+    data = tuplify(listdata) # json converts tuples to lists
+    read_stack(tw,data)
+
+# paste stack from the clipboard
+def read_stack(tw,data):
+    clone = []
+    for b in data:
+        spr = load_spr(tw,b); clone.append(spr)
+    for i in range(len(clone)):
+        cons=[]
+        for c in data[i][4]:
+            if c==None: cons.append(None)
+            else: cons.append(clone[c])
+        clone[i].connections = cons
+
 def tuplify(t):
     if type(t) is not list:
         return t
@@ -207,6 +225,37 @@ def assemble_data_to_save(tw):
                   tw.turtle.color,tw.turtle.shade,tw.turtle.pensize))
     return data
 
+# serialize a stack to save to the clipboard
+def serialize_stack(tw):
+    data = assemble_stack_to_clone(tw)
+    text = json.encode(data)
+    return text
+
+# find the stack under the cursor and serialize it
+def assemble_stack_to_clone(tw):
+    (x,y) = tw.window.get_pointer()
+    # print x,y
+    spr = findsprite(tw,(x,y))
+    bs = findgroup(find_top_block(spr))
+
+    data = []
+    for i in range(len(bs)): bs[i].id=i
+    for b in bs:
+        name = b.proto.name
+        if tw.defdict.has_key(name) or name == 'journal' or \
+            name == 'audiooff':
+            if b.ds_id != None:
+                name=(name,str(b.ds_id))
+            else:
+                name=(name,b.label)
+        if hasattr(b,'connections'):
+            connections = [get_id(x) for x in b.connections]
+        else:
+            connections = None
+        data.append((b.id,name,b.x-tw.turtle.canvas.x+20, \
+            b.y-tw.turtle.canvas.y+20,connections))
+    return data
+
 def save_pict(tw,fname):
     tc = tw.turtle.canvas
     pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, tc.width, \
@@ -234,3 +283,16 @@ def do_dialog(tw,dialog):
     return result
 
 def blocks(tw): return [spr for spr in tw.sprites if spr.type == 'block']
+
+def findgroup(b):
+    group=[b]
+    for b2 in b.connections[1:]:
+        if b2!=None: group.extend(findgroup(b2))
+    return group
+
+def find_top_block(spr):
+    b = spr
+    while b.connections[0]!=None:
+        b=b.connections[0]
+    return b
+

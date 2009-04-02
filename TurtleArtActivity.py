@@ -81,6 +81,8 @@ class TurtleArtActivity(activity.Activity):
         # Add additional panels
         self.projectToolbar = ProjectToolbar(self)
         self.toolbox.add_toolbar( _('Project'), self.projectToolbar )
+        self.editToolbar = EditToolbar(self)
+        self.toolbox.add_toolbar(_('Edit'), self.editToolbar)
         self.saveasToolbar = SaveAsToolbar(self)
         self.toolbox.add_toolbar( _('Save as'), self.saveasToolbar )
         self.toolbox.show()
@@ -437,6 +439,45 @@ class ChatTube(ExportedGObject):
     @signal(dbus_interface=IFACE, signature='s')
     def SendText(self, text):
         self.stack = text
+
+"""
+Edit toolbar: copy and paste text and stacks
+"""
+class EditToolbar(gtk.Toolbar):
+    def __init__(self, pc):
+        gtk.Toolbar.__init__(self)
+        self.activity = pc
+
+        # Copy button
+        self.copy = ToolButton( "edit-copy" )
+        self.copy.set_tooltip(_('copy'))
+        self.copy.props.sensitive = True
+        self.copy.connect('clicked', self._copy_cb)
+        self.copy.props.accelerator = '<Ctrl>C'
+        self.insert(self.copy, -1)
+        self.copy.show()
+
+        # Paste button
+        self.paste = ToolButton( "edit-paste" )
+        self.paste.set_tooltip(_('paste'))
+        self.paste.props.sensitive = True
+        self.paste.connect('clicked', self._paste_cb)
+        self.paste.props.accelerator = '<Ctrl>V'
+        self.insert(self.paste, -1)
+        self.paste.show()
+
+    def _copy_cb(self, button):
+        clipBoard = gtk.Clipboard()
+        _logger.debug("serialize the project and copy to clipboard")
+        text = tawindow.serialize_stack(self.activity.tw)
+        clipBoard.set_text(text)
+
+    def _paste_cb(self, button):
+        clipBoard = gtk.Clipboard()
+        _logger.debug("paste to the project")
+        text = clipBoard.wait_for_text()
+        if text is not None:
+            tawindow.clone_stack(self.activity.tw,text)
 
 """
 SaveAs toolbar: save as HTML, save as LOGO, and import Python code
