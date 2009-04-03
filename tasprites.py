@@ -112,15 +112,17 @@ def hit(spr,pos):
     if y<spr.y: return False
     if y>spr.y+spr.height: return False
     if isinstance(spr.image,gtk.gdk.Pixmap): return True
+    if hasattr(spr, 'proto') and hasattr(spr.proto, 'name') and \
+        spr.proto.name == 'journal':
+            return True
     dx,dy = x-spr.x, y-spr.y
     try:
         return ord(spr.image.get_pixels()[(dy*spr.width+dx)*4+3]) == 255
     except IndexError:
-        # not sure why this would happen
         if hasattr(spr, 'proto') and hasattr(spr.proto, 'name'):
             print spr.proto.name
-        print "IndexError: string index out of range" + dy + " " \
-            + spr.width + " " + dx
+        print "IndexError: string index out of range" + str(dx) + " " \
+            + str(dy) + " " + str(spr.width) + " " + str(spr.height)
         return True
 
 # used for most things
