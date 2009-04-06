@@ -29,6 +29,9 @@ import os
 import os.path
 import time
 
+# Import from Journal for these blocks 
+importblocks = ['audiooff', 'descriptionoff','journal']
+
 class taWindow: pass
 
 from math import atan2, pi
@@ -228,37 +231,14 @@ def new_block_from_category(tw,proto,x,y):
 
 def block_pressed(tw,mask,x,y,spr):
     if spr is not None:
-        if mask is True:
-            """
-            newspr = clone_stack(tw,x-spr.x-20,y-spr.y-20, spr)
-            tw.dragpos = x-newspr.x,y-newspr.y
-            tw.draggroup = findgroup(newspr)
-            """
-            pass
+        tw.draggroup = findgroup(spr)
+        for b in tw.draggroup: setlayer(b,2000)
+        if spr.connections[0] != None and spr.proto.name == 'lock':
+            b = find_top_block(spr)
+            tw.dragpos = x-b.x,y-b.y
         else:
-            tw.draggroup = findgroup(spr)
-            for b in tw.draggroup: setlayer(b,2000)
-            if spr.connections[0] != None and spr.proto.name == 'lock':
-                b = find_top_block(spr)
-                tw.dragpos = x-b.x,y-b.y
-            else:
-                tw.dragpos = x-spr.x,y-spr.y
-                disconnect(spr)
-"""
-def clone_stack(tw,dx,dy,spr):
-    newspr = sprNew(tw,spr.x+dx,spr.y+dy,spr.proto.image)
-    newspr.type = spr.type
-    newspr.proto = spr.proto
-    newspr.label = spr.label
-    newspr.connections = [None]*len(spr.proto.docks)
-    for i in range(1,len(spr.connections)):
-        if(spr.connections[i]==None): continue
-        clonearg=clone_stack(tw,dx,dy,spr.connections[i])
-        newspr.connections[i]=clonearg
-        clonearg.connections[0]=newspr
-    setlayer(newspr,2000)
-    return newspr
-"""
+            tw.dragpos = x-spr.x,y-spr.y
+            disconnect(spr)
 
 def turtle_pressed(tw,x,y):
     dx,dy = x-tw.turtle.spr.x-30,y-tw.turtle.spr.y-30
@@ -320,7 +300,6 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
     else:
         tw.dx += dx
         tw.dy += dy
-    # print "deltas are " + str(dx) + " " + str(dy)
 
 #
 # Button release
@@ -380,43 +359,31 @@ def button_release(tw, x, y, verbose=False):
                 move(tw.select_mask_string, (spr.x-5,spr.y-5))
                 setlayer(tw.select_mask_string, 660)
                 tw.firstkey = True
-            elif spr.proto.name == 'journal':
-                import_image(tw, spr)
-            elif spr.proto.name == 'audiooff':
-                import_audio(tw, spr)
+            elif spr.proto.name in importblocks:
+                import_from_journal(tw, spr)
         else: run_stack(tw, spr)
 
-def import_audio(tw, spr):
-    chooser = ObjectChooser('Choose audio', None, gtk.DIALOG_MODAL | \
-        gtk.DIALOG_DESTROY_WITH_PARENT)
-    try:
-        result = chooser.run()
-        if result == gtk.RESPONSE_ACCEPT:
-            dsobject = chooser.get_selected_object()
-            if dsobject and dsobject.file_path:               
-                spr.ds_id = dsobject.object_id
-                setimage(spr,tw.media_shapes['audioon'])
-            dsobject.destroy()
-    finally:
-        chooser.destroy()
-        del chooser
-
-def import_image(tw, spr):
-#    chooser = ObjectChooser('Choose image', None, gtk.DIALOG_MODAL | \
-#        gtk.DIALOG_DESTROY_WITH_PARENT, 'image/png' )
+def import_from_journal(tw, spr):
     chooser = ObjectChooser('Choose image', None, gtk.DIALOG_MODAL | \
         gtk.DIALOG_DESTROY_WITH_PARENT)
     try:
         result = chooser.run()
         if result == gtk.RESPONSE_ACCEPT:
             dsobject = chooser.get_selected_object()
-            load_image(tw, dsobject, spr)
+            # change block graphic to indicate that object is "loaded"
+            if spr.proto.name == 'journal':
+                load_image(tw, dsobject, spr)
+            elif spr.proto.name == 'audiooff':
+                setimage(spr,tw.media_shapes['audioon'])
+            else:
+                setimage(spr, tw.media_shapes['decson'])
             spr.ds_id = dsobject.object_id
             dsobject.destroy()
     finally:
         chooser.destroy()
         del chooser
 
+# Replace Journal block graphic with preview image
 def load_image(tw, picture, spr):
     from talogo import get_pixbuf_from_journal
     pixbuf = get_pixbuf_from_journal(picture,spr.width,spr.height)
