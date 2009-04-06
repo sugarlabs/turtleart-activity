@@ -35,6 +35,11 @@ from taturtle import *
 from talogo import stop_logo
 from sugar.datastore import datastore
 
+nolabel = ['audiooff', 'descriptionoff','journal']
+shape_dict = {'journal':'texton', \
+              'descriptionoff':'decson', \
+              'audiooff':'audioon'}
+
 def new_project(tw):
     stop_logo(tw)
     for b in blocks(tw): hide(b)
@@ -62,15 +67,6 @@ def load_files(tw,ta_file, png_file=''):
     f.close()
     new_project(tw)
     read_data(tw,data)
-    # don't load the png_file -- we run the program instead
-    """
-    if png_file != '':
-        try:
-            load_pict(tw,png_file)
-        except:
-            pass
-        inval(tw.turtle.canvas)
-    """
 
 def get_load_name(tw):
     dialog = gtk.FileChooserDialog("Load...", None, \
@@ -137,21 +133,19 @@ def load_spr(tw,b):
         proto.image)
     spr.type = 'block'
     spr.proto = proto
-    if label!=None: spr.label=label
-    if media!=None and media!="media_None" and media!="audio_None":
+    if label is not None: spr.label=label
+    if media is not None and \
+        media not in nolabel:
         try:
             dsobject = datastore.get(media)
             spr.ds_id = dsobject.object_id
+            setimage(spr, tw.media_shapes[shape_dict[spr.proto.name]])
             if spr.proto.name == 'journal':
                 from talogo import get_pixbuf_from_journal
                 pixbuf = get_pixbuf_from_journal \
                     (dsobject,spr.width,spr.height)
-                if pixbuf != None:
+                if pixbuf is not None:
                     setimage(spr, pixbuf)
-                else:
-                    setimage(spr, tw.media_shapes['texton'])
-            elif spr.proto.name == 'audiooff':
-                setimage(spr, tw.media_shapes['audioon'])
             dsobject.destroy()
         except:
             print "couldn't open dsobject (" + str(spr.ds_id) + ")"
@@ -171,7 +165,7 @@ def load_pict(tw,fname):
     tw.turtle.canvas.image.draw_pixbuf(tw.turtle.gc, pict, 0, 0, 0, 0)
 
 def save_file(tw):
-    if tw.save_folder != None: tw.load_save_folder = tw.save_folder
+    if tw.save_folder is not None: tw.load_save_folder = tw.save_folder
     fname = get_save_name(tw)
     if fname==None: return
     if fname[-3:]=='.ta': fname=fname[0:-3]
@@ -180,13 +174,15 @@ def save_file(tw):
     tw.save_file_name = os.path.basename(fname)
 
 def get_save_name(tw):
-    dialog = gtk.FileChooserDialog("Save..", None,
-               gtk.FILE_CHOOSER_ACTION_SAVE,
-               (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,gtk.STOCK_SAVE, \
-                   gtk.RESPONSE_OK))
+    dialog = gtk.FileChooserDialog("Save...", None, \
+                                   gtk.FILE_CHOOSER_ACTION_SAVE, \
+                                   (gtk.STOCK_CANCEL, \
+                                    gtk.RESPONSE_CANCEL, \
+                                    gtk.STOCK_SAVE, \
+                                    gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
-    if tw.save_file_name!=None: dialog.set_current_name( \
-        tw.save_file_name+'.ta')
+    if tw.save_file_name is not None:
+        dialog.set_current_name(tw.save_file_name+'.ta')
     return do_dialog(tw,dialog)
 
 def save_data(tw,fname):
@@ -196,7 +192,7 @@ def save_data(tw,fname):
     f.write(text)
     f.close()
 
-# used to send data across a shared session
+# Used to send data across a shared session
 def save_string(tw):
     data = assemble_data_to_save(tw)
     text = json.encode(data)
@@ -208,8 +204,7 @@ def assemble_data_to_save(tw):
     for i in range(len(bs)): bs[i].id=i
     for b in bs:
         name = b.proto.name
-        if tw.defdict.has_key(name) or name == 'journal' or \
-            name == 'audiooff':
+        if tw.defdict.has_key(name) or name in nolabel:
             if b.ds_id != None:
                 name=(name,str(b.ds_id))
             else:
@@ -242,9 +237,8 @@ def assemble_stack_to_clone(tw):
     for i in range(len(bs)): bs[i].id=i
     for b in bs:
         name = b.proto.name
-        if tw.defdict.has_key(name) or name == 'journal' or \
-            name == 'audiooff':
-            if b.ds_id != None:
+        if tw.defdict.has_key(name) or name in nolabel:
+            if b.ds_id is not None:
                 name=(name,str(b.ds_id))
             else:
                 name=(name,b.label)
