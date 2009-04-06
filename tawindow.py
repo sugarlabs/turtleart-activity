@@ -501,6 +501,8 @@ def key_press(tw, alt_mask, keyname, verbose=False):
             tw.activity._send_event("i") # request sync for sharing
         elif keyname=="p":
             hideshow_button(tw)
+        elif keyname=='q':
+            exit()
         return True
     if tw.selected_block==None:
         return False
