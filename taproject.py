@@ -28,6 +28,7 @@ try:
     json.dumps
 except (ImportError, AttributeError):
     import simplejson as json
+from StringIO import StringIO
 import os.path
 
 from tasprites import *
@@ -62,7 +63,9 @@ def load_files(tw,ta_file, png_file=''):
         # print "reading saved json data"
         f.seek(0) # rewind necessary because of pickle.load
         text = f.read()
-        listdata = json.decode(text)
+        io = StringIO(text)
+        listdata = json.load(io)
+        # listdata = json.decode(text)
         data = tuplify(listdata) # json converts tuples to lists
     f.close()
     new_project(tw)
@@ -77,14 +80,18 @@ def get_load_name(tw):
 
 # unpack serialized data sent across a share
 def load_string(tw,text):
-    listdata = json.decode(text)
+    io = StringIO(text)
+    listdata = json.load(io)
+    # listdata = json.decode(text)
     data = tuplify(listdata) # json converts tuples to lists
     new_project(tw)
     read_data(tw,data)
 
 # unpack sserialized data from the clipboard
 def clone_stack(tw,text):
-    listdata = json.decode(text)
+    io = StringIO(text)
+    listdata = json.load(io)
+    # listdata = json.decode(text)
     data = tuplify(listdata) # json converts tuples to lists
     read_stack(tw,data)
 
@@ -188,14 +195,20 @@ def get_save_name(tw):
 def save_data(tw,fname):
     f = file(fname, "w")
     data = assemble_data_to_save(tw)
-    text = json.encode(data)
+    io = StringIO()
+    json.dump(data,io)
+    text = io.getvalue()
+    # text = json.encode(data)
     f.write(text)
     f.close()
 
 # Used to send data across a shared session
 def save_string(tw):
     data = assemble_data_to_save(tw)
-    text = json.encode(data)
+    io = StringIO()
+    json.dump(data,io)
+    text = io.getvalue()
+    # text = json.encode(data)
     return text
 
 def assemble_data_to_save(tw):
@@ -223,7 +236,10 @@ def assemble_data_to_save(tw):
 # serialize a stack to save to the clipboard
 def serialize_stack(tw):
     data = assemble_stack_to_clone(tw)
-    text = json.encode(data)
+    io = StringIO()
+    json.dump(data,io)
+    text = io.getvalue()
+    # text = json.encode(data)
     return text
 
 # find the stack under the cursor and serialize it
