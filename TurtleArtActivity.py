@@ -65,7 +65,7 @@ class TurtleArtActivity(activity.Activity):
         try:
             datapath = os.path.join(activity.get_activity_root(), "data")
         except:
-            # early versions of Sugar (e.g., 656) didn't support
+            # Early versions of Sugar (e.g., 656) didn't support
             # get_activity_root()
             datapath = os.path.join( \
                 os.environ['HOME'], \
@@ -87,9 +87,10 @@ class TurtleArtActivity(activity.Activity):
         self.toolbox.add_toolbar( _('Save as'), self.saveasToolbar )
         self.toolbox.show()
 
-        # set the project toolbar as the initial one selected
+        # Set the project toolbar as the initial one selected
         self.toolbox.set_current_toolbar(1)
 
+        # Create a scrolled window to contain the turtle canvas
         self.sw = gtk.ScrolledWindow()
         self.set_canvas(self.sw)
         self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
@@ -103,6 +104,11 @@ class TurtleArtActivity(activity.Activity):
         self.toolbox._activity_toolbar.title.grab_focus()
         self.toolbox._activity_toolbar.title.select_region(0,0)
 
+        """
+        To be replaced with date checking in tasetup.py; 
+        each language group should be stored in it's own sub-directory
+        """
+        # Check to see if the version or language has changed
         try:
             version = os.environ['SUGAR_BUNDLE_VERSION']
         except:
@@ -116,8 +122,7 @@ class TurtleArtActivity(activity.Activity):
                              'images', lang)):
             lang = 'en'
 
-        # test to see if lang or version has changed since last time
-        # if so, remove any old png files as they will need to be regenerated
+        # If either has changed, remove the old png files
         filename = "version.dat"
         versiondata = []
         newversion = True
@@ -133,6 +138,9 @@ class TurtleArtActivity(activity.Activity):
             _logger.debug("writing new version data")
             _logger.debug("and creating a tamyblock.py Journal entry")
 
+        """
+        Make sure there is a copy of tamyblock.py in the Journal
+        """
         if newversion is True:
             dsobject = datastore.create()
             dsobject.metadata['title'] = 'tamyblock.py'
@@ -149,8 +157,9 @@ class TurtleArtActivity(activity.Activity):
         FILE.writelines(versiondata)
         FILE.close()
 
+        # Initialize the turtle art canvas
         self.tw = tawindow.twNew(canvas,activity.get_bundle_path(), \
-                                 lang,self)
+                                 lang, self)
         self.tw.activity = self
         self.tw.window.grab_focus()
         self.tw.save_folder=os.path.join( \
@@ -159,12 +168,15 @@ class TurtleArtActivity(activity.Activity):
         if self._jobject and self._jobject.file_path:
             self.read_file(self._jobject.file_path)
 
-        ## sharing code
+        """
+        A simplistic sharing model: the sharer is the master;
+        TODO: hand off role of master is sharer leaves
+        """
         # Get the Presence Service
         self.pservice = presenceservice.get_instance()
         self.initiating = None # sharing (True) or joining (False)
 
-        # add my buddy object to the list
+        # Add my buddy object to the list
         owner = self.pservice.get_owner()
         self.owner = owner
         self.tw.buddies.append(self.owner)
@@ -187,7 +199,7 @@ class TurtleArtActivity(activity.Activity):
         self.sw.set_vadjustment(vadj)
 
     """
-    Set up initial share
+    Either set up initial share...
     """
     def _shared_cb(self, activity):
         if self._shared_activity is None:
@@ -212,7 +224,7 @@ class TurtleArtActivity(activity.Activity):
             SERVICE, {})
 
     """
-    Or join an exisiting share
+    ...or join an exisiting share.
     """
     def _joined_cb(self, activity):
         if self._shared_activity is None:
@@ -256,7 +268,8 @@ class TurtleArtActivity(activity.Activity):
 
         if (type == telepathy.TUBE_TYPE_DBUS and service == SERVICE):
             if state == telepathy.TUBE_STATE_LOCAL_PENDING:
-                self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].AcceptDBusTube(id)
+                self.tubes_chan[ \
+                              telepathy.CHANNEL_TYPE_TUBES].AcceptDBusTube(id)
 
             tube_conn = TubeConnection(self.conn, 
                 self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES], id, \
@@ -274,8 +287,8 @@ class TurtleArtActivity(activity.Activity):
     Handle the receiving of events in share
     Events are sent as a tuple
         cmd:data
-    where cmd is a mouse or keyboard event and data is the x,y coordinates
-    or the keysroke
+    where cmd is a mouse or keyboard event and data are x,y coordinates
+    or a keysroke
     """
     def event_received_cb(self, text):
         # maybe we can use a stack to share events to new-comers?
@@ -397,6 +410,9 @@ class TurtleArtActivity(activity.Activity):
         else:
             _logger.debug("Deferring reading file %s" %  file_path)
 
+    """
+    Save instance to Journal
+    """
     def jobject_new_patch(self):
         oldj = self._jobject
         self._jobject = datastore.create()
@@ -406,7 +422,8 @@ class TurtleArtActivity(activity.Activity):
         self._jobject.metadata['activity'] = self.get_service_name()
         self._jobject.metadata['activity_id'] = self.get_id()
         self._jobject.metadata['keep'] = '0'
-        #self._jobject.metadata['buddies'] = ''
+        # Is this the correct syntax for saving the buddies list?
+        self._jobject.metadata['buddies'] = self.tw.buddies
         self._jobject.metadata['preview'] = ''
         self._jobject.metadata['icon-color'] = profile.get_color().to_string()
         self._jobject.file_path = ''
@@ -480,7 +497,8 @@ class EditToolbar(gtk.Toolbar):
             tawindow.clone_stack(self.activity.tw,text)
 
 """
-SaveAs toolbar: save as HTML, save as LOGO, and import Python code
+SaveAs toolbar: (1) load samples; (2) save as HTML; (3) save as LOGO;
+(4) save as PNG; and (5) import Python code.
 """
 class SaveAsToolbar(gtk.Toolbar):
     def __init__(self, pc):
@@ -492,7 +510,7 @@ class SaveAsToolbar(gtk.Toolbar):
         self.sampb.set_tooltip(_('samples'))
         self.sampb.props.sensitive = True
         self.sampb.connect('clicked', self.do_samples)
-        self.sampb.props.accelerator = '<Alt>o'
+        self.sampb.props.accelerator = _('<Alt>o')
         self.insert(self.sampb, -1)
         self.sampb.show()
 
@@ -645,12 +663,12 @@ class SaveAsToolbar(gtk.Toolbar):
         try:
             datapath = os.path.join(activity.get_activity_root(), "instance")
         except:
-            # early versions of Sugar (656) didn't support get_activity_root()
+            # Early versions of Sugar (656) didn't support get_activity_root()
             datapath = os.path.join( \
                 os.environ['HOME'], \
                 ".sugar/default/org.laptop.TurtleArtActivity/instance")
 
-        #Write the actual file to the data directory of this activity's root. 
+        # Write the file to the data directory of this activity's root. 
         file_path = os.path.join(datapath, filename)
         f = open(file_path, 'w')
         try:
@@ -658,7 +676,7 @@ class SaveAsToolbar(gtk.Toolbar):
         finally:
             f.close()
 
-        #Set the file_path in the datastore.
+        # Set the file_path in the datastore.
         file_dsobject.set_file_path(file_path)
 
         datastore.write(file_dsobject)
@@ -671,6 +689,7 @@ class SaveAsToolbar(gtk.Toolbar):
         gobject.timeout_add(250,self.loadmyblock.set_icon, "pippy-openoff")
         return
 
+    # Import Python code from the Journal to load into "myblock"
     def import_py(self):
         from sugar.graphics.objectchooser import ObjectChooser
         chooser = ObjectChooser('Python code', None, gtk.DIALOG_MODAL | \
@@ -707,7 +726,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.palette.set_tooltip(_('hide palette'))
         self.palette.props.sensitive = True
         self.palette.connect('clicked', self.do_palette)
-        self.palette.props.accelerator = '<Alt>p'
+        self.palette.props.accelerator = _('<Alt>p')
         self.insert(self.palette, -1)
         self.palette.show()
 
@@ -716,7 +735,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.blocks.set_tooltip(_('hide blocks'))
         self.blocks.props.sensitive = True
         self.blocks.connect('clicked', self.do_hideshow)
-        self.blocks.props.accelerator = '<Alt>b'
+        self.blocks.props.accelerator = _('<Alt>b')
         self.insert(self.blocks, -1)
         self.blocks.show()
 
@@ -730,7 +749,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.runproject.set_tooltip(_('run'))
         self.runproject.props.sensitive = True
         self.runproject.connect('clicked', self.do_run)
-        self.runproject.props.accelerator = '<Alt>r'
+        self.runproject.props.accelerator = _('<Alt>r')
         self.insert(self.runproject, -1)
         self.runproject.show()
 
@@ -739,7 +758,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.stepproject.set_tooltip(_('step'))
         self.stepproject.props.sensitive = True
         self.stepproject.connect('clicked', self.do_step)
-        self.stepproject.props.accelerator = '<Alt>w'
+        self.stepproject.props.accelerator = _('<Alt>w')
         self.insert(self.stepproject, -1)
         self.stepproject.show()
 
@@ -748,7 +767,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.stop.set_tooltip(_('stop turtle'))
         self.stop.props.sensitive = True
         self.stop.connect('clicked', self.do_stop)
-        self.stop.props.accelerator = '<Alt>s'
+        self.stop.props.accelerator = _('<Alt>s')
         self.insert(self.stop, -1)
         self.stop.show()
 
@@ -762,7 +781,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.eraser.set_tooltip(_('clean'))
         self.eraser.props.sensitive = True
         self.eraser.connect('clicked', self.do_eraser)
-        self.eraser.props.accelerator = '<Alt>e'
+        self.eraser.props.accelerator = _('<Alt>e')
         self.insert(self.eraser, -1)
         self.eraser.show()
 
