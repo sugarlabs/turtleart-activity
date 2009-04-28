@@ -22,7 +22,10 @@
 import re
 from time import *
 from math import *
-from numpy import *
+try:
+    from numpy import *
+except:
+    pass
 from taturtle import *
 
 def myfunc(lc, f, x):
