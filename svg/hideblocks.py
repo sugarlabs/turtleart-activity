@@ -47,7 +47,7 @@ def main():
 <svg \n \
    xmlns=\"http://www.w3.org/2000/svg\" \n \
    xmlns:xlink=\"http://www.w3.org/1999/xlink\" \n \
-   width=\"87\" \n \
+   width=\"74\" \n \
    height=\"60\" \n \
    version=\"1.0\"> \n \
   <defs> \n \
