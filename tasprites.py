@@ -128,7 +128,7 @@ def hit(spr,pos):
 # used for most things
 def draw_label1(spr, label):
     fd = pango.FontDescription('Sans')
-    fd.set_size(7*spr.tw.scale*pango.SCALE)
+    fd.set_size(int(7*spr.tw.scale*pango.SCALE))
     if type(label) == str:
         pl = spr.tw.window.create_pango_layout(str(label))
         pl.set_font_description(fd)
@@ -143,7 +143,7 @@ def draw_label1(spr, label):
 # used for status blocks
 def draw_label2(spr, label):
     fd = pango.FontDescription('Sans')
-    fd.set_size(9*spr.tw.scale*pango.SCALE)
+    fd.set_size(int(9*spr.tw.scale*pango.SCALE))
     pl = spr.tw.window.create_pango_layout(str(label))
     pl.set_font_description(fd)
     sheight = pl.get_size()[1]/pango.SCALE
