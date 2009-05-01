@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2009-02-27 17:54-0500\n"
+"PO-Revision-Date: 2009-04-03 01:26-0400\n"
 "Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "MIME-Version: 1.0\n"
@@ -66,7 +66,6 @@ msgid "stop turtle"
 msgstr "arrêter la tortue"
 
 #: TurtleArtActivity.py:236
-#, fuzzy
 msgid "samples"
 msgstr "échantillons"
 
@@ -153,11 +152,11 @@ msgstr "range dans la boîte 2"
 
 #:
 msgid "push"
-msgstr ""
+msgstr "pousse"
 
 #:
 msgid "pop"
-msgstr ""
+msgstr "dépile"
 
 #:
 msgid "Numbers"
@@ -288,7 +287,6 @@ msgid "heading"
 msgstr "cap"
 
 #
-#, fuzzy
 msgid "set heading"
 msgstr "seth"
 
@@ -342,7 +340,7 @@ msgstr "Clavier"
 
 #:
 msgid "read key"
-msgstr ""
+msgstr "lire la touche"
 
 #:
 msgid "sound"
@@ -350,11 +348,11 @@ msgstr "son"
 
 #:
 msgid "hres"
-msgstr ""
+msgstr "hres"
 
 #:
 msgid "vres"
-msgstr ""
+msgstr "vres"
 
 #:
 msgid "start"
