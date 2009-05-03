@@ -52,11 +52,16 @@ selectors = (
      ('arc','arc','twoargs',90,100),
      ('setxy','setxy','twoargs',0,0),
      ('seth','seth','onearg',0),
-     ('write','write','1sarg',_('text'),32),
-     ('image','insertimage','image','None'),
+     ('show','show','onesarg',_('text')),
+     ('setscale','setscale','onearg',33),
+     ('container','container','container','None'),
      ('xcor','xcor','num'),
      ('ycor','ycor','num'),
-     ('heading','heading','num'))),
+     ('heading','heading','num'),
+     ('scale','scale','num'),
+     # not selectable, but here for backward compatability 
+     ('image','insertimage','image','None'),
+     ('write','write','1sarg',_('text'),32))),
   ('pen', 55,
     (('penup','penup','noarg'),
      ('pendown','pendown','noarg'),
@@ -64,9 +69,12 @@ selectors = (
      ('setcolor','setcolor','1arg',0),
      ('setshade','setshade','1arg',50),
      ('fillscreen','fillscreen','twoargs',60,80),
+     ('settextsize','settextsize','1arg',32),
      ('settextcolor','settextcolor','1arg',0),
      ('pensize','pensize','num'),
      ('color','color','num'),
+     ('textsize','textsize','num'),
+     ('textcolor','textcolor','num'),
      ('shade','shade','num'))),
   ('numbers', 55,
     (('number','','num',100,float,numcheck),
@@ -130,20 +138,23 @@ selectors = (
      ('string','','string',_('name'),str,strcheck))),
   ('templates',55,
     (('journal','','media','','',''),
+     ('audiooff','','audio','','',''),
+     ('descriptionoff','','text','','',''),
      ('template1','tp1','tp1',_('title'),'None'),
      ('template6','tp6','tp6',_('title'),'None','None'),
      ('template2','tp2','tp2',_('title'),'None','None'),
      ('template7','tp7','tp7',_('title'),'None','None','None','None'),
      ('template3','tp3','tp3',_('title'),'','','','','','',''),
      ('template4','tp8','tp1',_('title'),'None'),
-     ('sound','sound','sound','None'),
-     ('audiooff','','audio','','',''),
-     ('hideblocks','hideblocks','noarg2'))))
+     ('hideblocks','hideblocks','noarg2'),
+     # not selectable, but here for backward compatability
+     ('sound','sound','sound','None'))))
 
 dockdetails = {
   'noarg':   (('flow',True,37,5),('flow',False,37,44)),
   'noarg2':  (('flow',True,37,5),('flow',False,37,59)),
   'onearg':  (('flow',True,37,5),('num',False,74,21),('flow',False,37,44)),
+  'onesarg':  (('flow',True,37,5),('string',False,74,21),('flow',False,37,44)),
   '1arg':    (('flow',True,37,5),('num',False,74,29),('flow',False,37,59)),
   'twoargs': (('flow',True,37,5),('num',False,74,21),('num',False,74,58), \
         ('flow',False,37,81)),
@@ -189,7 +200,9 @@ dockdetails = {
         ('num',False,142,21)),
   'media':   (('media',True,0,27),('mediaend',False,75,27)),
   'text':   (('media',True,0,27),('mediaend',False,75,27)),
-  'audio':   (('audio',True,0,27),('audioend',False,75,27)),
+  'audio':   (('media',True,0,27),('mediaend',False,75,27)),
+  'container':     (('num',True,0,33),('media',False,19,33), \
+        ('numend',False,100,33)),
   'tp1':     (('flow',True,37,5),('string',False,10,26), \
         ('media',False,10,73),('flow',False,37,113)),
   'tp2':     (('flow',True,37,5),('string',False,10,26), \
@@ -244,6 +257,8 @@ def setup_misc(tw):
     tw.media_shapes = {}
     tw.media_shapes['audioon'] = load_image(tw.path, '', 'audioon')
     tw.media_shapes['texton'] = load_image(tw.path, '', 'texton')
+    tw.media_shapes['journalon'] = load_image(tw.path, '', 'journalon')
+    tw.media_shapes['decson'] = load_image(tw.path, '', 'descriptionon')
     # media blocks that replace other blocks
     tw.media_shapes['pythonloaded'] = \
         load_image(tw.path_lang, 'sensors', 'nop-loaded')

@@ -67,14 +67,18 @@ def main():
  "remainder.py", \
  "repeat.py", \
  "right.py", \
+ "scale.py", \
  "sensorsgroup.py", \
  "setcolor.py", \
  "seth.py", \
  "setpensize.py", \
+ "setscale.py", \
  "setshade.py", \
  "settextcolor.py", \
+ "settextsize.py", \
  "setxy.py", \
  "shade.py", \
+ "show.py", \
  "sound.py", \
  "stack1.py", \
  "stack2.py", \
@@ -83,6 +87,8 @@ def main():
  "storeinbox1.py", \
  "storeinbox2.py", \
  "templatesgroup.py", \
+ "textcolor.py", \
+ "textsize.py", \
  "turtlegroup.py", \
  "vres.py", \
  "wait.py", \

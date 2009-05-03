@@ -47,7 +47,10 @@ def main():
     mystring8 = _("pen size")
     mystring9 = _("color")
     mystring10 = _("shade")
-    mystring11 = _("set text color")
+    mystring11 = _("set text size")
+    mystring12 = _("set text color")
+    mystring13 = _("text color")
+    mystring14 = _("text size")
     mygroup = "pen"
 
     print mystring1
@@ -61,247 +64,321 @@ def main():
     print mystring9
     print mystring10
     print mystring11
+    print mystring12
+    print mystring13
+    print mystring14
 
     data0 = \
-"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n \
-<!-- Created with Inkscape (http://www.inkscape.org/) --> \n \
-<svg \n \
-   xmlns:svg=\"http://www.w3.org/2000/svg\" \n \
-   xmlns=\"http://www.w3.org/2000/svg\" \n \
-   xmlns:xlink=\"http://www.w3.org/1999/xlink\" \n \
-   version=\"1.0\" \n \
-   width=\"145\" \n \
-   height=\"500\" \n \
-   id=\"svg2\"> \n \
-  <defs \n \
-     id=\"defs4\"> \n \
-    <linearGradient \n \
-       id=\"linearGradient3876\"> \n \
-      <stop \n \
-         id=\"stop3878\" \n \
-         style=\"stop-color:#ffffff;stop-opacity:1\" \n \
-         offset=\"0\" /> \n \
-      <stop \n \
-         id=\"stop3880\" \n \
-         style=\"stop-color:#00ffff;stop-opacity:1\" \n \
-         offset=\"1\" /> \n \
-    </linearGradient> \n \
-    <linearGradient \n \
-       x1=\"0\" \n \
-       y1=\"22\" \n \
-       x2=\"74\" \n \
-       y2=\"22\" \n \
-       id=\"linearGradient3889\" \n \
-       xlink:href=\"#linearGradient3166\" \n \
-       gradientUnits=\"userSpaceOnUse\" /> \n \
-    <linearGradient \n \
-       x1=\"0\" \n \
-       y1=\"22\" \n \
-       x2=\"74\" \n \
-       y2=\"22\" \n \
-       id=\"linearGradient3913\" \n \
-       xlink:href=\"#linearGradient3166\" \n \
-       gradientUnits=\"userSpaceOnUse\" /> \n \
-    <linearGradient \n \
-       x1=\"0\" \n \
-       y1=\"22\" \n \
-       x2=\"74\" \n \
-       y2=\"22\" \n \
-       id=\"linearGradient3915\" \n \
-       xlink:href=\"#linearGradient3166\" \n \
-       gradientUnits=\"userSpaceOnUse\" /> \n \
-    <linearGradient \n \
-       x1=\"18.291491\" \n \
-       y1=\"48.644657\" \n \
-       x2=\"67.627289\" \n \
-       y2=\"48.644657\" \n \
-       id=\"linearGradient4830\" \n \
-       xlink:href=\"#linearGradient3876\" \n \
-       gradientUnits=\"userSpaceOnUse\" /> \n \
-    <linearGradient \n \
-       x1=\"77.372711\" \n \
-       y1=\"48.644657\" \n \
-       x2=\"126.70851\" \n \
-       y2=\"48.644657\" \n \
-       id=\"linearGradient4838\" \n \
-       xlink:href=\"#linearGradient3876\" \n \
-       gradientUnits=\"userSpaceOnUse\" /> \n \
-    <linearGradient \n \
-       x1=\"43.415215\" \n \
-       y1=\"95.379143\" \n \
-       x2=\"92.751015\" \n \
-       y2=\"95.379143\" \n \
-       id=\"linearGradient4846\" \n \
-       xlink:href=\"#linearGradient3876\" \n \
-       gradientUnits=\"userSpaceOnUse\" /> \n \
-    <linearGradient \n \
-       x1=\"43.415215\" \n \
-       y1=\"147.44724\" \n \
-       x2=\"92.751015\" \n \
-       y2=\"147.44724\" \n \
-       id=\"linearGradient4854\" \n \
-       xlink:href=\"#linearGradient3876\" \n \
-       gradientUnits=\"userSpaceOnUse\" /> \n \
-    <linearGradient \n \
-       x1=\"43.415215\" \n \
-       y1=\"199.5153\" \n \
-       x2=\"92.751015\" \n \
-       y2=\"199.5153\" \n \
-       id=\"linearGradient4862\" \n \
-       xlink:href=\"#linearGradient3876\" \n \
-       gradientUnits=\"userSpaceOnUse\" /> \n \
-    <linearGradient \n \
-       x1=\"43.415215\" \n \
-       y1=\"258.58374\" \n \
-       x2=\"92.751015\" \n \
-       y2=\"258.58374\" \n \
-       id=\"linearGradient4870\" \n \
-       xlink:href=\"#linearGradient3876\" \n \
-       gradientUnits=\"userSpaceOnUse\" /> \n \
-    <linearGradient \n \
-       x1=\"37.331573\" \n \
-       y1=\"312.79697\" \n \
-       x2=\"107.66842\" \n \
-       y2=\"312.79697\" \n \
-       id=\"linearGradient4878\" \n \
-       xlink:href=\"#linearGradient3876\" \n \
-       gradientUnits=\"userSpaceOnUse\" \n \
-       gradientTransform=\"translate(0,95.96579)\" /> \n \
-    <linearGradient \n \
-       x1=\"37.331573\" \n \
-       y1=\"337.74872\" \n \
-       x2=\"107.66842\" \n \
-       y2=\"337.74872\" \n \
-       id=\"linearGradient4886\" \n \
-       xlink:href=\"#linearGradient3876\" \n \
-       gradientUnits=\"userSpaceOnUse\" \n \
-       gradientTransform=\"translate(0,95.96579)\" /> \n \
-    <linearGradient \n \
-       x1=\"37.331573\" \n \
-       y1=\"362.7005\" \n \
-       x2=\"107.66842\" \n \
-       y2=\"362.7005\" \n \
-       id=\"linearGradient4894\" \n \
-       xlink:href=\"#linearGradient3876\" \n \
-       gradientUnits=\"userSpaceOnUse\" \n \
-       gradientTransform=\"translate(0,95.96579)\" /> \n \
-    <linearGradient \n \
-       x1=\"0\" \n \
-       y1=\"22\" \n \
-       x2=\"74\" \n \
-       y2=\"22\" \n \
-       id=\"linearGradient3172\" \n \
-       gradientUnits=\"userSpaceOnUse\" \n \
-       gradientTransform=\"matrix(0.67,0,0,0.67,43.745213,299.47)\" /> \n \
-    <linearGradient \n \
-       id=\"linearGradient3166\"> \n \
-      <stop \n \
-         id=\"stop3168\" \n \
-         style=\"stop-color:#ffffff;stop-opacity:1\" \n \
-         offset=\"0\" /> \n \
-      <stop \n \
-         id=\"stop3170\" \n \
-         style=\"stop-color:#00ffff;stop-opacity:1\" \n \
-         offset=\"1\" /> \n \
-    </linearGradient> \n \
-  </defs> \n \
-  <path \n \
-     d=\"M 0.5594301,0.5 L 0.49711997,486 L 3.6209793,492 L 8.494839,496 L 15.156388,499 L 128.9813,499 L 135.82978,496 L 141.77903,492 L 144.50288,486 L 144.54057,0.5 L 0.5594301,0.5 z\" \n \
-     id=\"path21\" \n \
-     style=\"fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:0.99423993px;stroke-opacity:1\" /> \n \
-  <rect \n \
-     width=\"123.6\" \n \
-     height=\"0.14\" \n \
-     x=\"10.7\" \n \
-     y=\"391\" \n \
-     id=\"rect23\" \n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1.08842015;stroke-opacity:1\" /> \n \
-  <rect \n \
-     width=\"123.6\" \n \
-     height=\"0.14\" \n \
-     x=\"10.7\" \n \
-     y=\"392\" \n \
-     id=\"rect25\" \n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1.08842015;stroke-opacity:1\" /> \n \
-  <rect \n \
-     width=\"123.6\" \n \
-     height=\"0.14\" \n \
-     x=\"10.7\" \n \
-     y=\"393\" \n \
-     id=\"rect27\" \n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#ffffc4;stroke-width:1.08842015;stroke-opacity:1\" /> \n \
-  <rect \n \
-     width=\"137.5\" \n \
-     height=\"0.14\" \n \
-     x=\"3.7\" \n \
-     y=\"-29\" \n \
-     transform=\"scale(1,-1)\" \n \
-     id=\"rect29\" \n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1.13613331;stroke-opacity:1\" /> \n \
-  <rect \n \
-     width=\"137.5\" \n \
-     height=\"0.14\" \n \
-     x=\"3.7\" \n \
-     y=\"-27.799999\" \n \
-     transform=\"scale(1,-1)\" \n \
-     id=\"rect31\" \n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1.13613331;stroke-opacity:1\" /> \n \
-  <rect \n \
-     width=\"137.5\" \n \
-     height=\"0.14\" \n \
-     x=\"3.7\" \n \
-     y=\"-474.79999\" \n \
-     transform=\"scale(1,-1)\" \n \
-     id=\"rect33\" \n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1.13613331;stroke-opacity:1\" /> \n \
-  <rect \n \
-     width=\"137.5\" \n \
-     height=\"0.14\" \n \
-     x=\"3.7\" \n \
-     y=\"-473.5\" \n \
-     transform=\"scale(1,-1)\" \n \
-     id=\"rect35\" \n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1.13613331;stroke-opacity:1\" /> \n \
-  <path \n \
-     d=\"M 80.875,486.375 C 80.875,490.86231 77.125385,494.5 72.5,494.5 C 67.874615,494.5 64.125,490.86231 64.125,486.375 C 64.125,481.88769 67.874615,478.25 72.5,478.25 C 77.125385,478.25 80.875,481.88769 80.875,486.375 L 80.875,486.375 z\" \n \
-     id=\"path37\" \n \
-     style=\"fill:#ff4040;fill-opacity:1;stroke:#ff4040;stroke-width:1;stroke-opacity:1\" /> \n \
-  <text \n \
-     y=\"96.749023\" \n \
-     id=\"text39\" \n \
-     style=\"font-size:12px;font-weight:bold;fill:#ffffff;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"490.74902\" \n \
-       id=\"tspan41\" \n \
-       style=\"font-size:12px;font-weight:bold;fill:#ffffff\">X</tspan> \n \
-  </text> \n \
-  <text \n \
-     id=\"text43\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"72.5\" \n \
-       y=\"21\" \n \
-       id=\"tspan45\" \n \
+"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n \
+<!-- Created with Inkscape (http://www.inkscape.org/) -->\n \
+<svg\n \
+   xmlns:svg=\"http://www.w3.org/2000/svg\"\n \
+   xmlns=\"http://www.w3.org/2000/svg\"\n \
+   xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n \
+   version=\"1.0\"\n \
+   width=\"145\"\n \
+   height=\"500\"\n \
+   id=\"svg2\">\n \
+  <defs\n \
+     id=\"defs4\">\n \
+    <linearGradient\n \
+       id=\"linearGradient3876\">\n \
+      <stop\n \
+         id=\"stop3878\"\n \
+         style=\"stop-color:#ffffff;stop-opacity:1\"\n \
+         offset=\"0\" />\n \
+      <stop\n \
+         id=\"stop3880\"\n \
+         style=\"stop-color:#00ffff;stop-opacity:1\"\n \
+         offset=\"1\" />\n \
+    </linearGradient>\n \
+    <linearGradient\n \
+       x1=\"18\"\n \
+       y1=\"48\"\n \
+       x2=\"67\"\n \
+       y2=\"48\"\n \
+       id=\"linearGradient4830\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"77\"\n \
+       y1=\"48\"\n \
+       x2=\"126\"\n \
+       y2=\"48\"\n \
+       id=\"linearGradient4838\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"43\"\n \
+       y1=\"95\"\n \
+       x2=\"92\"\n \
+       y2=\"95\"\n \
+       id=\"linearGradient4846\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"43\"\n \
+       y1=\"147\"\n \
+       x2=\"92\"\n \
+       y2=\"147\"\n \
+       id=\"linearGradient4854\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"43\"\n \
+       y1=\"199\"\n \
+       x2=\"92\"\n \
+       y2=\"199\"\n \
+       id=\"linearGradient4862\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"43\"\n \
+       y1=\"258\"\n \
+       x2=\"92\"\n \
+       y2=\"258\"\n \
+       id=\"linearGradient4870\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"37\"\n \
+       y1=\"312\"\n \
+       x2=\"107\"\n \
+       y2=\"312\"\n \
+       id=\"linearGradient4878\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\"\n \
+       gradientTransform=\"translate(0,65)\" />\n \
+    <linearGradient\n \
+       x1=\"37\"\n \
+       y1=\"337\"\n \
+       x2=\"107\"\n \
+       y2=\"337\"\n \
+       id=\"linearGradient4886\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\"\n \
+       gradientTransform=\"translate(0,61)\" />\n \
+    <linearGradient\n \
+       x1=\"37\"\n \
+       y1=\"362\"\n \
+       x2=\"107\"\n \
+       y2=\"362\"\n \
+       id=\"linearGradient4894\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\"\n \
+       gradientTransform=\"translate(0,57)\" />\n \
+    <linearGradient\n \
+       x1=\"37\"\n \
+       y1=\"337\"\n \
+       x2=\"107\"\n \
+       y2=\"337\"\n \
+       id=\"linearGradient2501\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\"\n \
+       gradientTransform=\"translate(0,95)\" />\n \
+    <linearGradient\n \
+       x1=\"43\"\n \
+       y1=\"95\"\n \
+       x2=\"92\"\n \
+       y2=\"95\"\n \
+       id=\"linearGradient2560\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"43\"\n \
+       y1=\"147\"\n \
+       x2=\"92\"\n \
+       y2=\"147\"\n \
+       id=\"linearGradient2562\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"43\"\n \
+       y1=\"199\"\n \
+       x2=\"92\"\n \
+       y2=\"199\"\n \
+       id=\"linearGradient2580\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"43\"\n \
+       y1=\"199\"\n \
+       x2=\"92\"\n \
+       y2=\"199\"\n \
+       id=\"linearGradient2582\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"37\"\n \
+       y1=\"337\"\n \
+       x2=\"107\"\n \
+       y2=\"337\"\n \
+       id=\"linearGradient2584\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\"\n \
+       gradientTransform=\"translate(0,95)\" />\n \
+    <linearGradient\n \
+       x1=\"37\"\n \
+       y1=\"337\"\n \
+       x2=\"107\"\n \
+       y2=\"337\"\n \
+       id=\"linearGradient2598\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"37\"\n \
+       y1=\"362\"\n \
+       x2=\"107\"\n \
+       y2=\"362\"\n \
+       id=\"linearGradient2600\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"37\"\n \
+       y1=\"362\"\n \
+       x2=\"107\"\n \
+       y2=\"362\"\n \
+       id=\"linearGradient2627\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"37\"\n \
+       y1=\"337\"\n \
+       x2=\"107\"\n \
+       y2=\"337\"\n \
+       id=\"linearGradient2629\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"37\"\n \
+       y1=\"362\"\n \
+       x2=\"107\"\n \
+       y2=\"362\"\n \
+       id=\"linearGradient2631\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"37\"\n \
+       y1=\"337\"\n \
+       x2=\"107\"\n \
+       y2=\"337\"\n \
+       id=\"linearGradient2633\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"43\"\n \
+       y1=\"199\"\n \
+       x2=\"92\"\n \
+       y2=\"199\"\n \
+       id=\"linearGradient2521\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"43\"\n \
+       y1=\"199\"\n \
+       x2=\"92\"\n \
+       y2=\"199\"\n \
+       id=\"linearGradient2523\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"43\"\n \
+       y1=\"199\"\n \
+       x2=\"92\"\n \
+       y2=\"199\"\n \
+       id=\"linearGradient2530\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+    <linearGradient\n \
+       x1=\"43\"\n \
+       y1=\"199\"\n \
+       x2=\"92\"\n \
+       y2=\"199\"\n \
+       id=\"linearGradient2539\"\n \
+       xlink:href=\"#linearGradient3876\"\n \
+       gradientUnits=\"userSpaceOnUse\" />\n \
+  </defs>\n \
+  <path\n \
+     d=\"M 0.5,0.5 L 0.5,486 L 3.6,492 L 8.5,496 L 15.2,499 L 129,499 L 135.8,496 L 141.8,492 L 144.5,486 L 144.5,0.5 L 0.5,0.5 z\"\n \
+     style=\"fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1\" />\n \
+  <rect\n \
+     width=\"123.6\"\n \
+     height=\"0.14\"\n \
+     x=\"10.7\"\n \
+     y=\"363\"\n \
+     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1\" />\n \
+  <rect\n \
+     width=\"123.6\"\n \
+     height=\"0.14\"\n \
+     x=\"10.7\"\n \
+     y=\"364\"\n \
+     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1\" />\n \
+  <rect\n \
+     width=\"123.6\"\n \
+     height=\"0.14\"\n \
+     x=\"10.7\"\n \
+     y=\"365\"\n \
+     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#ffffc4;stroke-width:1;stroke-opacity:1\" />\n \
+  <rect\n \
+     width=\"137.5\"\n \
+     height=\"0.14\"\n \
+     x=\"3.7\"\n \
+     y=\"-29\"\n \
+     transform=\"scale(1,-1)\"\n \
+     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1\" />\n \
+  <rect\n \
+     width=\"137.5\"\n \
+     height=\"0.14\"\n \
+     x=\"3.7\"\n \
+     y=\"-27.799999\"\n \
+     transform=\"scale(1,-1)\"\n \
+     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1\" />\n \
+  <rect\n \
+     width=\"137.5\"\n \
+     height=\"0.14\"\n \
+     x=\"3.7\"\n \
+     y=\"-474.79999\"\n \
+     transform=\"scale(1,-1)\"\n \
+     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1\" />\n \
+  <rect\n \
+     width=\"137.5\"\n \
+     height=\"0.14\"\n \
+     x=\"3.7\"\n \
+     y=\"-473.5\"\n \
+     transform=\"scale(1,-1)\"\n \
+     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1\" />\n \
+  <path\n \
+     d=\"M 80.9,486.4 C 80.9,490.9 77.1,494.5 72.5,494.5 C 67.9,494.5 64.1,490.09 64.1,486.4 C 64.1,481.9 67.9,478.3 72.5,478.3 C 77.1,478.3 80.9,481.9 80.9,486.4 L 80.9,486.4 z\"\n \
+     style=\"fill:#ff4040;fill-opacity:1;stroke:#ff4040;stroke-width:1;stroke-opacity:1\" />\n \
+  <text\n \
+     style=\"font-size:12px;font-weight:bold;fill:#ffffff;font-family:Bitstream Vera Sans\">\n \
+    <tspan\n \
+       x=\"68\"\n \
+       y=\"491\"\n \
+       style=\"font-size:12px;font-weight:bold;fill:#ffffff\">X</tspan>\n \
+  </text>\n \
+  <text\n \
+     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+    <tspan\n \
+       x=\"72.5\"\n \
+       y=\"21\"\n \
        style=\"font-size:20px\">"
 
     data1 = \
-"</tspan> \n \
-  </text> \n \
-  <path \n \
-     d=\"M 50.29309,34.643957 C 60.96029,34.643957 60.96029,34.643957 60.96029,34.643957 L 64.62714,37.310757 L 66.96059,41.310957 L 66.96059,53.978257 L 64.62714,57.311757 L 60.96029,59.978557 L 49.62639,59.978557 L 49.62639,59.978557 L 49.62639,62.645357 L 36.29239,62.645357 L 36.29239,59.978557 L 24.95849,59.978557 L 21.29164,57.311757 L 18.95819,53.978257 L 18.95819,41.310957 L 21.29164,37.310757 L 24.95849,34.643957 L 35.62569,34.643957 L 35.62569,37.977457 L 50.29309,37.977457 L 50.29309,34.643957 z\" \n \
-     id=\"path47\" \n \
-     style=\"fill:url(#linearGradient4830);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" /> \n "
+"</tspan>\n \
+  </text>\n \
+  <g>\n \
+    <path\n \
+       d=\"M 50,34 C 60,34 60,34 60,34 L 64,37 L 66,41 L 66,53 L 64,57 L 60,59 L 49,59 L 49,59 L 49,62 L 36,62 L 36,59 L 24,59 L 21,57 L 18,53 L 18,41 L 21,37 L 24,34 L 35,34 L 35,37 L 50,37 L 50,34 z\"\n \
+       style=\"fill:url(#linearGradient4830);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n"
 
     data2a = \
-"  <text \n \
-     id=\"text49\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"43\" \n \
-       y=\"51.5\" \n \
-       id=\"tspan51\" \n \
-       style=\"font-size:11px\">"
+"    <text\n \
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"43\"\n \
+         y=\"51.5\"\n \
+         style=\"font-size:11px\">"
 
     data2b = \
 "  <text \n \
@@ -310,7 +387,6 @@ def main():
     <tspan \n \
        x=\"43\" \n \
        y=\"45\" \n \
-       id=\"tspan51\" \n \
        style=\"font-size:10px\">"
 
     data3b = \
@@ -322,26 +398,24 @@ def main():
     <tspan \n \
        x=\"43\" \n \
        y=\"55\" \n \
-       id=\"tspan51\" \n \
        style=\"font-size:10px\">"
 
     data4 = \
-"</tspan> \n \
-  </text> \n \
-  <path \n \
-     d=\"M 109.37431,34.643957 C 120.04151,34.643957 120.04151,34.643957 120.04151,34.643957 L 123.70836,37.310757 L 126.04181,41.310957 L 126.04181,53.978257 L 123.70836,57.311757 L 120.04151,59.978557 L 108.70761,59.978557 L 108.70761,59.978557 L 108.70761,62.645357 L 95.373609,62.645357 L 95.373609,59.978557 L 84.039709,59.978557 L 80.372859,57.311757 L 78.039409,53.978257 L 78.039409,41.310957 L 80.372859,37.310757 L 84.039709,34.643957 L 94.706909,34.643957 L 94.706909,37.977457 L 109.37431,37.977457 L 109.37431,34.643957 z\" \n \
-     id=\"path53\" \n \
-     style=\"fill:url(#linearGradient4838);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1\" /> \n "
+"</tspan>\n \
+    </text>\n \
+  </g>\n \
+  <g>\n \
+    <path\n \
+       d=\"M 109,34 C 120,34 120,34 120,34 L 123,37 L 126,41 L 126,53 L 123,57 L 120,59 L 108,59 L 108,59 L 108,62 L 95,62 L 95,59 L 84,59 L 80,57 L 78,53 L 78,41 L 80,37 L 84,34 L 94,34 L 94,37 L 109,37 L 109,34 z\"\n \
+       style=\"fill:url(#linearGradient4838);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1\" />\n"
 
     data5a = \
-"  <text \n \
-     id=\"text55\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"101\" \n \
-       y=\"51.5\" \n \
-       id=\"tspan57\" \n \
-       style=\"font-size:11px\">"
+"    <text\n \
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"101\"\n \
+         y=\"51.5\"\n \
+         style=\"font-size:11px\">"
 
     data5b = \
 "  <text \n \
@@ -350,7 +424,6 @@ def main():
     <tspan \n \
        x=\"101\" \n \
        y=\"45\" \n \
-       id=\"tspan57\" \n \
        style=\"font-size:10px\">"
 
     data6b = \
@@ -362,34 +435,31 @@ def main():
     <tspan \n \
        x=\"101\" \n \
        y=\"55\" \n \
-       id=\"tspan57\" \n \
        style=\"font-size:10px\">"
 
     data7 = \
-"</tspan> \n \
-  </text> \n \
-  <path \n \
-     d=\"M 90.084213,85.211967 L 101.08476,85.211967 L 101.08476,89.212167 L 98.417963,89.212167 L 98.417963,87.212067 L 91.417613,87.212067\" \n \
-     id=\"path59\" \n \
-     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" /> \n \
-  <path \n \
-     d=\"M 90.084213,103.54622 L 101.08476,103.54622 L 101.08476,99.546017 L 98.417963,99.546017 L 98.417963,101.54612 L 91.417613,101.54612\" \n \
-     id=\"path61\" \n \
-     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" /> \n \
-  <path \n \
-     d=\"M 75.416813,76.044842 C 86.084013,76.044842 86.084013,76.044842 86.084013,76.044842 L 89.750863,78.711642 L 92.084313,82.711842 L 92.084313,105.37964 L 89.750863,109.37984 L 86.084013,112.04664 L 74.750113,112.04664 L 74.750113,112.04664 L 74.750113,114.71344 L 61.416113,114.71344 L 61.416113,112.04664 L 50.082213,112.04664 L 46.415363,109.37984 L 44.081913,105.37964 L 44.081913,82.711842 L 46.415363,78.711642 L 50.082213,76.044842 L 60.749413,76.044842 L 60.749413,79.378342 L 75.416813,79.378342 L 75.416813,76.044842 z\" \n \
-     id=\"path63\" \n \
-     style=\"fill:url(#linearGradient4846);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1\" /> \n "
+"</tspan>\n \
+    </text>\n \
+  </g>\n \
+  <g\n \
+     transform=\"translate(0,-6)\">\n \
+    <path\n \
+       d=\"M 90,85 L 101,85 L 101,89 L 98,89 L 98,87 L 91,87\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 90,103 L 101,103 L 101,99 L 98,99 L 98,101 L 91,101\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 75,76 C 86,76 86,76 86,76 L 89,78 L 92,82 L 92,105 L 89,109 L 86,112 L 74,112 L 74,112 L 74,114 L 61,114 L 61,112 L 50,112 L 46,109 L 44,105 L 44,82 L 46,78 L 50,76 L 60,76 L 60,79 L 75,79 L 75,76 z\"\n \
+       style=\"fill:url(#linearGradient2560);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1\" />\n"
 
     data8a = \
-"  <text \n \
-     id=\"text65\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"99\" \n \
-       id=\"tspan67\" \n \
-       style=\"font-size:11px\">"
+"    <text\n \
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"68\"\n \
+         y=\"93\"\n \
+         style=\"font-size:11px\">"
 
     data8b = \
 "  <text \n \
@@ -398,7 +468,6 @@ def main():
     <tspan \n \
        x=\"68\" \n \
        y=\"93\" \n \
-       id=\"tspan67\" \n \
        style=\"font-size:11px\">"
 
     data8c = \
@@ -407,8 +476,7 @@ def main():
      style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
     <tspan \n \
        x=\"68\" \n \
-       y=\"88\" \n \
-       id=\"tspan67\" \n \
+       y=\"89\" \n \
        style=\"font-size:10px\">"
 
     data9b = \
@@ -420,7 +488,6 @@ def main():
     <tspan \n \
        x=\"68\" \n \
        y=\"106\" \n \
-       id=\"tspan71\" \n \
        style=\"font-size:11px\">"
 
     data9c = \
@@ -431,8 +498,7 @@ def main():
      style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
     <tspan \n \
        x=\"68\" \n \
-       y=\"97\" \n \
-       id=\"tspan71\" \n \
+       y=\"98\" \n \
        style=\"font-size:10px\">"
 
     data10c = \
@@ -443,35 +509,32 @@ def main():
      style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
     <tspan \n \
        x=\"68\" \n \
-       y=\"106\" \n \
-       id=\"tspan71\" \n \
+       y=\"108\" \n \
        style=\"font-size:10px\">"
 
     data11 = \
-"</tspan> \n \
-  </text> \n \
-  <path \n \
-     d=\"M 90.084213,137.28005 L 101.08476,137.28005 L 101.08476,141.28025 L 98.417963,141.28025 L 98.417963,139.28015 L 91.417613,139.28015\" \n \
-     id=\"path73\" \n \
-     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" /> \n \
-  <path \n \
-     d=\"M 90.084213,155.6143 L 101.08476,155.6143 L 101.08476,151.6141 L 98.417963,151.6141 L 98.417963,153.6142 L 91.417613,153.6142\" \n \
-     id=\"path75\" \n \
-     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" /> \n \
-  <path \n \
-     d=\"M 75.416813,128.11293 C 86.084013,128.11293 86.084013,128.11293 86.084013,128.11293 L 89.750863,130.77973 L 92.084313,134.77993 L 92.084313,157.44773 L 89.750863,161.44793 L 86.084013,164.11473 L 74.750113,164.11473 L 74.750113,164.11473 L 74.750113,166.78153 L 61.416113,166.78153 L 61.416113,164.11473 L 50.082213,164.11473 L 46.415363,161.44793 L 44.081913,157.44773 L 44.081913,134.77993 L 46.415363,130.77973 L 50.082213,128.11293 L 60.749413,128.11293 L 60.749413,131.44643 L 75.416813,131.44643 L 75.416813,128.11293 z\" \n \
-     id=\"path77\" \n \
-     style=\"fill:url(#linearGradient4854);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1\" /> \n "
+"</tspan>\n \
+    </text>\n \
+  </g>\n \
+  <g\n \
+     transform=\"translate(0,-12)\">\n \
+    <path\n \
+       d=\"M 90,137 L 101,137 L 101,141 L 98,141 L 98,139 L 91,139\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 90,155 L 101,155 L 101,151 L 98,151 L 98,153 L 91,153\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 75,128 C 86,128 86,128 86,128 L 89,130 L 92,134 L 92,157 L 89,161 L 86,164 L 74,164 L 74,164 L 74,166 L 61,166 L 61,164 L 50,164 L 46,161 L 44,157 L 44,134 L 46,130 L 50,128 L 60,128 L 60,131 L 75,131 L 75,128 z\"\n \
+       style=\"fill:url(#linearGradient2562);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n"
 
     data12a = \
-"  <text \n \
-     id=\"text79\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"151\" \n \
-       id=\"tspan81\" \n \
-       style=\"font-size:11px\">"
+"    <text\n \
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"68\"\n \
+         y=\"151\"\n \
+         style=\"font-size:11px\">"
 
     data12b = \
 "  <text \n \
@@ -480,7 +543,6 @@ def main():
     <tspan \n \
        x=\"68\" \n \
        y=\"145\" \n \
-       id=\"tspan81\" \n \
        style=\"font-size:11px\">"
 
     data13b =\
@@ -492,34 +554,31 @@ def main():
     <tspan \n \
        x=\"68\" \n \
        y=\"158\" \n \
-       id=\"tspan85\" \n \
        style=\"font-size:11px\">"
 
     data14 = \
-"</tspan> \n \
-  </text> \n \
-  <path \n \
-     d=\"M 90.084213,189.34813 L 101.08476,189.34813 L 101.08476,193.34833 L 98.417963,193.34833 L 98.417963,191.34823 L 91.417613,191.34823\" \n \
-     id=\"path87\" \n \
-     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" /> \n \
-  <path \n \
-     d=\"M 90.084213,207.68238 L 101.08476,207.68238 L 101.08476,203.68218 L 98.417963,203.68218 L 98.417963,205.68228 L 91.417613,205.68228\" \n \
-     id=\"path89\" \n \
-     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" /> \n \
-  <path \n \
-     d=\"M 75.416813,180.18101 C 86.084013,180.18101 86.084013,180.18101 86.084013,180.18101 L 89.750863,182.84781 L 92.084313,186.84801 L 92.084313,209.51581 L 89.750863,213.51601 L 86.084013,216.18281 L 74.750113,216.18281 L 74.750113,216.18281 L 74.750113,218.84961 L 61.416113,218.84961 L 61.416113,216.18281 L 50.082213,216.18281 L 46.415363,213.51601 L 44.081913,209.51581 L 44.081913,186.84801 L 46.415363,182.84781 L 50.082213,180.18101 L 60.749413,180.18101 L 60.749413,183.51451 L 75.416813,183.51451 L 75.416813,180.18101 z\" \n \
-     id=\"path91\" \n \
-     style=\"fill:url(#linearGradient4862);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1\" /> \n "
+"</tspan>\n \
+    </text>\n \
+  </g>\n \
+  <g>\n \
+    <path\n \
+       d=\"M 90,171 L 101,171 L 101,175 L 98,175 L 98,173 L 91,173\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 90,189 L 101,189 L 101,185 L 98,185 L 98,187 L 91,187\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 75,162 C 86,162 86,162 86,162 L 89,164 L 92,168 L 92,191 L 89,195 L 86,198 L 74,198 L 74,198 L 74,200 L 61,200 L 61,198 L 50,198 L 46,195 L 44,191 L 44,168 L 46,164 L 50,162 L 60,162 L 60,165 L 75,165 L 75,162 z\"\n \
+       style=\"fill:url(#linearGradient2539);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n"
 
     data15a = \
-"  <text \n \
-     id=\"text93\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"203\" \n \
-       id=\"tspan95\" \n \
-       style=\"font-size:11px\">"
+"    <text\n \
+       y=\"-18\"\n \
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"68\"\n \
+         y=\"184\"\n \
+         style=\"font-size:11px\">"
 
     data15b = \
 "  <text \n \
@@ -527,7 +586,7 @@ def main():
      style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
     <tspan \n \
        x=\"68\" \n \
-       y=\"197\" \n \
+       y=\"177\" \n \
        id=\"tspan95\" \n \
        style=\"font-size:11px\">"
 
@@ -539,33 +598,31 @@ def main():
      style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
     <tspan \n \
        x=\"68\" \n \
-       y=\"210\" \n \
+       y=\"190\" \n \
        id=\"tspan99\" \n \
        style=\"font-size:11px\">"
 
     data17 = \
-"</tspan> \n \
-  </text> \n \
-  <path \n \
-     d=\"M 89.917538,260.08382 L 100.91809,260.08382 L 100.91809,264.2507 L 98.251288,264.2507 L 98.251288,262.08393 L 91.250938,262.08393\" \n \
-     id=\"path101\" \n \
-     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" /> \n \
-  <path \n \
-     d=\"M 89.917538,278.41807 L 100.91809,278.41807 L 100.91809,274.41787 L 98.251288,274.41787 L 98.251288,276.41797 L 91.250938,276.41797\" \n \
-     id=\"path103\" \n \
-     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" /> \n \
-  <path \n \
-     d=\"M 90.084213,235.5826 L 101.08476,235.5826 L 101.08476,239.5828 L 98.417963,239.5828 L 98.417963,237.5827 L 91.417613,237.5827\" \n \
-     id=\"path105\" \n \
-     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" /> \n \
-  <path \n \
-     d=\"M 90.084213,253.91685 L 101.08476,253.91685 L 101.08476,249.91665 L 98.417963,249.91665 L 98.417963,251.91675 L 91.417613,251.91675\" \n \
-     id=\"path107\" \n \
-     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" /> \n \
-  <path \n \
-     d=\"M 75.416813,232.2491 C 86.084013,232.2491 86.084013,232.2491 86.084013,232.2491 L 89.750863,234.9159 L 92.084313,238.9161 L 92.084313,276.2513 L 89.750863,279.5848 L 86.084013,282.2516 L 74.750113,282.2516 L 74.750113,282.2516 L 74.750113,284.9184 L 61.416113,284.9184 L 61.416113,282.2516 L 50.082213,282.2516 L 46.415363,279.5848 L 44.081913,276.2513 L 44.081913,238.9161 L 46.415363,234.9159 L 50.082213,232.2491 L 60.749413,232.2491 L 60.749413,235.5826 L 75.416813,235.5826 L 75.416813,232.2491 z\" \n \
-     id=\"path109\" \n \
-     style=\"fill:url(#linearGradient4870);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1\" /> \n \
+"</tspan>\n \
+    </text>\n \
+  </g>\n \
+  <g\n \
+     transform=\"translate(0,-24)\">\n \
+    <path\n \
+       d=\"M 89,260 L 100,260 L 100,264 L 98,264 L 98,262 L 91,262\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 89,278 L 100,278 L 100,274 L 98,274 L 98,276 L 91,276\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 90,235 L 101,235 L 101,239 L 98,239 L 98,237 L 91,237\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 90,253 L 101,253 L 101,249 L 98,249 L 98,251 L 91,251\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 75,232 C 86,232 86,232 86,232 L 89,234 L 92,238 L 92,276 L 89,279 L 86,282 L 74,282 L 74,282 L 74,284 L 61,284 L 61,282 L 50,282 L 46,279 L 44,276 L 44,238 L 46,234 L 50,232 L 60,232 L 60,235 L 75,235 L 75,232 z\"\n \
+       style=\"fill:url(#linearGradient4870);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n \
   <text \n \
      id=\"text111\" \n \
      style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
@@ -612,111 +669,179 @@ def main():
        style=\"font-size:8px\">"
 
     data21 = \
-"</tspan> \n \
-  </text> \n \
-  <path \n \
-     d=\"M 37.998275,402.09575 L 41.331775,402.09575 L 41.331775,404.76255 L 45.998675,404.76255 L 45.998675,402.09575 L 107.00172,402.09575 L 107.00172,415.42975 L 45.998675,415.42975 L 45.998675,412.76295 L 41.331775,412.76295 L 41.331775,415.42975 L 37.998275,415.42975 L 37.998275,402.09575 z\" \n \
-     id=\"path127\" \n \
-     style=\"fill:url(#linearGradient4878);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1\" /> \n \
-  <text \n \
-     id=\"text129\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"74\" \n \
-       y=\"412\" \n \
-       id=\"tspan131\" \n \
-       style=\"font-size:10.5px\">"
+"</tspan>\n \
+    </text>\n \
+  </g>\n \
+  <g\n \
+     transform=\"translate(0,-2)\">\n \
+    <path\n \
+       d=\"M 37,372 L 41,372 L 41,374 L 45,374 L 45,372 L 107,372 L 107,385 L 45,385 L 45,382 L 41,382 L 41,385 L 37,385 L 37,372 z\"\n \
+       style=\"fill:url(#linearGradient4878);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n \
+    <text\n \
+       x=\"4\"\n \
+       y=\"65\"\n \
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"76\"\n \
+         y=\"381\"\n \
+         style=\"font-size:10.5\">"
 
     data22 = \
-"</tspan> \n \
-  </text> \n \
-  <path \n \
-     d=\"M 37.998275,427.04752 L 41.331775,427.04752 L 41.331775,429.71432 L 45.998675,429.71432 L 45.998675,427.04752 L 107.00172,427.04752 L 107.00172,440.38152 L 45.998675,440.38152 L 45.998675,437.71472 L 41.331775,437.71472 L 41.331775,440.38152 L 37.998275,440.38152 L 37.998275,427.04752 z\" \n \
-     id=\"path133\" \n \
-     style=\"fill:url(#linearGradient4886);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1\" /> \n \
-  <text \n \
-     id=\"text135\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"74\" \n \
-       y=\"437\" \n \
-       id=\"tspan137\" \n \
-       style=\"font-size:10.5px\">"
+"</tspan>\n \
+    </text>\n \
+  </g>\n \
+  <g\n \
+     transform=\"translate(0,-2)\">\n \
+    <path\n \
+       d=\"M 37,393 L 41,393 L 41,395 L 45,395 L 45,393 L 107,393 L 107,406 L 45,406 L 45,403 L 41,403 L 41,406 L 37,406 L 37,393 z\"\n \
+       style=\"fill:url(#linearGradient2633);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n \
+    <text\n \
+       x=\"4\"\n \
+       y=\"61\"\n \
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"76\"\n \
+         y=\"402\"\n \
+         style=\"font-size:10.5\">"
 
     data23 = \
-"</tspan> \n \
-  </text> \n \
-  <path \n \
-     d=\"M 37.998275,451.9993 L 41.331775,451.9993 L 41.331775,454.6661 L 45.998675,454.6661 L 45.998675,451.9993 L 107.00172,451.9993 L 107.00172,465.3333 L 45.998675,465.3333 L 45.998675,462.6665 L 41.331775,462.6665 L 41.331775,465.3333 L 37.998275,465.3333 L 37.998275,451.9993 z\" \n \
-     id=\"path139\" \n \
-     style=\"fill:url(#linearGradient4894);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1\" /> \n \
-  <text \n \
-     y=\"95.96579\" \n \
-     id=\"text141\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"72.5\" \n \
-       y=\"461.96579\" \n \
-       id=\"tspan143\" \n \
-       style=\"font-size:10.5px\">"
+"</tspan>\n \
+    </text>\n \
+  </g>\n \
+  <g\n \
+     transform=\"translate(0,-1)\">\n \
+    <path\n \
+       d=\"M 37,413 L 41,413 L 41,416 L 45,416 L 45,413 L 107,413 L 107,427 L 45,427 L 45,424 L 41,424 L 41,427 L 37,427 L 37,413 z\"\n \
+       style=\"fill:url(#linearGradient2631);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n \
+    <text\n \
+       x=\"4\"\n \
+       y=\"57\"\n \
+       style=\"font-size:10px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"76\"\n \
+         y=\"423\"\n \
+         style=\"font-size:10.5\">"
 
     data24 = \
-"</tspan> \n \
-  </text> \n \
-  <path \n \
-     d=\"M 90.645213,309.3525 L 101.70021,309.3525 L 101.70021,313.3725 L 99.020213,313.3725 L 99.020213,311.3625 L 91.985213,311.3625\" \n \
-     id=\"path2622\" \n \
-     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.29999995;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" /> \n \
-  <path \n \
-     d=\"M 90.645213,327.7775 L 101.70021,327.7775 L 101.70021,323.7575 L 99.020213,323.7575 L 99.020213,325.7675 L 91.985213,325.7675\" \n \
-     id=\"path2624\" \n \
-     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.29999995;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" /> \n \
-  <path \n \
-     d=\"M 75.905213,300.14 C 86.625213,300.14 86.625213,300.14 86.625213,300.14 L 90.310213,302.82 L 92.655213,306.84 L 92.655213,329.62 L 90.310213,333.64 L 86.625213,336.32 L 75.235213,336.32 L 75.235213,336.32 L 75.235213,339 L 61.835213,339 L 61.835213,336.32 L 50.445213,336.32 L 46.760213,333.64 L 44.415213,329.62 L 44.415213,306.84 L 46.760213,302.82 L 50.445213,300.14 L 61.165213,300.14 L 61.165213,303.49 L 75.905213,303.49 L 75.905213,300.14 z\" \n \
-     id=\"path2626\" \n \
-     style=\"fill:url(#linearGradient4886);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" /> \n \
-  <text \n \
-     x=\"43.745213\" \n \
-     y=\"299.47\" \n \
-     id=\"text2628\" \n \
-     style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68.53521\" \n \
-       y=\"314.20999\" \n \
-       id=\"tspan2630\" \n \
-       style=\"font-size:10.5px\">"
+"</tspan>\n \
+    </text>\n \
+  </g>\n \
+  <g\n \
+     transform=\"translate(0,-30)\">\n \
+    <path\n \
+       d=\"M 90,309 L 101,309 L 101,313 L 99,313 L 99,311 L 91,311\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 90,327 L 101,327 L 101,323 L 99,323 L 99,325 L 91,325\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 75,300 C 86,300 86,300 86,300 L 90,302 L 92,306 L 92,329 L 90,333 L 86,336 L 75,336 L 75,336 L 75,339 L 61,339 L 61,336 L 50,336 L 46,333 L 44,329 L 44,306 L 46,302 L 50,300 L 61,300 L 61,303 L 75,303 L 75,300 z\"\n \
+       style=\"fill:url(#linearGradient2584);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" />\n \
+    <text\n \
+       style=\"font-size:10;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"68\"\n \
+         y=\"314\"\n \
+         style=\"font-size:10.5\">"
 
     data25 = \
-"</tspan> \n \
-  </text> \n \
-  <text \n \
-     x=\"43.745213\" \n \
-     y=\"299.47\" \n \
-     id=\"text2632\" \n \
-     style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68.53521\" \n \
-       y=\"323.59\" \n \
-       id=\"tspan2634\" \n \
-       style=\"font-size:10.5px\">"
+"</tspan>\n \
+    </text>\n \
+    <text\n \
+       style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"68\"\n \
+         y=\"323\"\n \
+         style=\"font-size:10.5px\">"
 
     data26 = \
-"</tspan> \n \
-  </text> \n \
-  <text \n \
-     x=\"43.745213\" \n \
-     y=\"299.47\" \n \
-     id=\"text2636\" \n \
-     style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68.53521\" \n \
-       y=\"332.97\" \n \
-       id=\"tspan2638\" \n \
-       style=\"font-size:10.5px\">"
+"</tspan>\n \
+    </text>\n \
+    <text\n \
+       style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"68\"\n \
+         y=\"332\"\n \
+         style=\"font-size:10.5px\">"
 
     data27 = \
+"</tspan>\n \
+    </text>\n \
+  </g>\n \
+  <g\n \
+     transform=\"translate(0,18)\">\n \
+    <path\n \
+       d=\"M 90,309 L 101,309 L 101,313 L 99,313 L 99,311 L 91,311\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 90,327 L 101,327 L 101,323 L 99,323 L 99,325 L 91,325\"\n \
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" />\n \
+    <path\n \
+       d=\"M 75,300 C 86,300 86,300 86,300 L 90,302 L 92,306 L 92,329 L 90,333 L 86,336 L 75,336 L 75,336 L 75,339 L 61,339 L 61,336 L 50,336 L 46,333 L 44,329 L 44,306 L 46,302 L 50,300 L 61,300 L 61,303 L 75,303 L 75,300 z\"\n \
+       style=\"fill:url(#linearGradient2501);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" />\n \
+    <text\n \
+       style=\"font-size:10.5;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"68\"\n \
+         y=\"314\"\n \
+         style=\"font-size:10.5\">"
+
+    data28 = \
+"</tspan>\n \
+    </text>\n \
+    <text\n \
+       style=\"font-size:10.5;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"68\"\n \
+         y=\"323\"\n \
+         style=\"font-size:10.5px\">"
+
+    data29 = \
+"</tspan>\n \
+    </text>\n \
+    <text\n \
+       style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"68\"\n \
+         y=\"332\"\n \
+         style=\"font-size:10.5px\">"
+
+    data30 = \
+"</tspan>\n \
+    </text>\n \
+  </g>\n \
+  <g\n \
+     transform=\"translate(0,-2)\">\n \
+    <path\n \
+       d=\"M 37,435 L 41,435 L 41,438 L 45,438 L 45,435 L 107,435 L 107,449 L 45,449 L 45,446 L 41,446 L 41,449 L 37,449 L 37,435 z\"\n \
+       style=\"fill:url(#linearGradient2629);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n \
+    <text\n \
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"76\"\n \
+         y=\"445\"\n \
+         style=\"font-size:10.5px\">"
+
+    data31 = \
+"</tspan>\n \
+    </text>\n \
+  </g>\n \
+  <g\n \
+     transform=\"translate(0,-2)\">\n \
+    <path\n \
+       d=\"M 37,456 L 41,456 L 41,459 L 45,459 L 45,456 L 107,456 L 107,470 L 45,470 L 45,467 L 41,467 L 41,470 L 37,470 L 37,456 z\"\n \
+       style=\"fill:url(#linearGradient2627);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n \
+    <text\n \
+       style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
+      <tspan\n \
+         x=\"76\"\n \
+         y=\"466\"\n \
+         style=\"font-size:10.5\">"
+
+    data32 = \
 "</tspan> \n \
   </text> \n \
+  </g>\n \
 </svg> \n "
 
 
@@ -814,6 +939,19 @@ def main():
     if len(strings) > 2:
         FILE.write(strings[2].encode("utf-8"))
     FILE.write(data27)
+    strings = mystring12.split(" ",3)
+    FILE.write(strings[0].encode("utf-8"))
+    FILE.write(data28)
+    if len(strings) > 1:
+        FILE.write(strings[1].encode("utf-8"))
+    FILE.write(data29)
+    if len(strings) > 2:
+        FILE.write(strings[2].encode("utf-8"))
+    FILE.write(data30)
+    FILE.write(mystring13.encode("utf-8"))
+    FILE.write(data31)
+    FILE.write(mystring14.encode("utf-8"))
+    FILE.write(data32)
     FILE.close()
     return
 

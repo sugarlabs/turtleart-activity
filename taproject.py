@@ -65,6 +65,7 @@ def load_files(tw,ta_file, png_file=''):
         text = f.read()
         io = StringIO(text)
         listdata = json.load(io)
+        print listdata
         # listdata = json.decode(text)
         data = tuplify(listdata) # json converts tuples to lists
     f.close()

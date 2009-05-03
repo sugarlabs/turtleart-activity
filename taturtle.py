@@ -76,6 +76,7 @@ def clearscreen(t):
     setpensize(t,5)
     setcolor(t,0)
     settextcolor(t,70)
+    settextsize(t,32)
     setshade(t,50)
     t.pendown = True
     move_turtle(t)
@@ -181,6 +182,13 @@ def settextcolor(t,c):
     except:
         pass
     set_textcolor(t)
+    return None
+
+def settextsize(t,c):
+    try:
+        t.tw.textsize = c
+    except:
+        pass
     return None
 
 def setshade(t,s):

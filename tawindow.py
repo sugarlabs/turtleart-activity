@@ -90,6 +90,7 @@ def twNew(win, path, lang, parent=None):
     tw.msgcolor = tw.cm.alloc_color('black')
     tw.fgcolor = tw.cm.alloc_color('red')
     tw.textcolor = tw.cm.alloc_color('blue')
+    tw.textsize = 32
     tw.sprites = []
     tw.selected_block = None
     tw.draggroup = None
@@ -439,15 +440,23 @@ def dock_dx_dy(block1,dock1n,block2,dock2n):
     if block1==block2: return (100,100)
     if d1type!=d2type:
         # some blocks can take strings or nums
-        if block1.proto.name in ('write', 'push', 'plus2', 'equal', \
+        if block1.proto.name in ('write', 'plus2', 'equal', \
             'template1', 'template2', 'template3', 'template4', \
-            'template6', 'template7', 'nop'):
+            'template6', 'template7', 'nop', 'print'):
             if block1.proto.name == 'write' and d1type == 'string':
                 if d2type == 'num' or d2type == 'string':
                     pass
             else: 
                 if d2type == 'num' or d2type == 'string':
                     pass
+        # some blocks can take strings, nums, or Journal
+        elif block1.proto.name in ('show', 'push'):
+            if d2type == 'num' or d2type == 'string' or d2type == 'journal':
+                pass
+        # some blocks can take media, audio, movies, of descriptions
+        elif block1.proto.name in ('containter'):
+            if d1type == 'audiooff' or d1type == 'journal':
+                pass
         else:
             return (100,100)
     if d1dir==d2dir:

@@ -103,6 +103,12 @@ def blocks_to_code(lc,spr):
                 code.append('#smedia_'+str(spr.ds_id))
             else:
                 code.append('#smedia_None')
+        elif spr.proto.name=='descriptionoff' or \
+             spr.proto.name=='descriptionon':
+            if spr.ds_id != None:
+                code.append('#sdescr_'+str(spr.ds_id))
+            else:
+                code.append('#sdescr_None')
         elif spr.proto.name=='audiooff' or spr.proto.name=='audio':
             if spr.ds_id != None:
                 code.append('#saudio_'+str(spr.ds_id))
@@ -389,6 +395,7 @@ def lcNew(tw):
     lc.tw = tw
     lc.oblist = {}
 
+    # math primitives
     defprim(lc,'print', 1, lambda lc,x: status_print(lc,x))
     defprim(lc,'+', None, lambda lc,x,y:x+y)
     defprim(lc,'plus', 2, lambda lc,x,y:taplus(x,y))
@@ -410,13 +417,15 @@ def lcNew(tw):
     defprim(lc,'sqrt', 1, lambda lc,x: sqrt(x))
     defprim(lc,'id',1, lambda lc,x: identity(x))
     
+    # keyboard, sensor, and misc. primitives
     defprim(lc,'kbinput', 0, lambda lc: kbinput(lc))
     defprim(lc,'keyboard', 0, lambda lc: lc.keyboard)
     defprim(lc,'userdefined', 1, lambda lc,x: loadmyblock(lc,x))
     defprim(lc,'myfunc', 2, lambda lc,f,x: callmyfunc(lc, f, x))
-    defprim(lc,'hres', 0, lambda lc: lc.tw.turtle.width)
-    defprim(lc,'vres', 0, lambda lc: lc.tw.turtle.height)
+    defprim(lc,'hres', 0, lambda lc: lc.tw.turtle.width) # canvas width
+    defprim(lc,'vres', 0, lambda lc: lc.tw.turtle.height) # canvas height
 
+    # turtle primitives
     defprim(lc,'clean', 0, lambda lc: clear(lc))
     defprim(lc,'forward', 1, lambda lc, x: forward(lc.tw.turtle, x))
     defprim(lc,'back', 1, lambda lc,x: forward(lc.tw.turtle,-x))
@@ -425,17 +434,22 @@ def lcNew(tw):
     defprim(lc,'left', 1, lambda lc,x: right(lc.tw.turtle,-x))
     defprim(lc,'heading', 0, lambda lc: lc.tw.turtle.heading)
     defprim(lc,'setxy', 2, lambda lc, x, y: setxy(lc.tw.turtle, x, y))
-    defprim(lc,'write',2,lambda lc, x,y: write(lc.tw.turtle, x,y))
+    defprim(lc,'show',1,lambda lc, x: show(lc, x))
+    defprim(lc,'setscale', 1, lambda lc,x: set_scale(lc, x))
+    defprim(lc,'scale', 0, lambda lc: lc.scale)
+    defprim(lc,'write',2,lambda lc, x,y: write(lc, x,y))
     defprim(lc,'insertimage', 1, lambda lc,x: insert_image(lc, x))
     defprim(lc,'arc', 2, lambda lc, x, y: arc(lc.tw.turtle, x, y))
     defprim(lc,'xcor', 0, lambda lc: lc.tw.turtle.xcor)
     defprim(lc,'ycor', 0, lambda lc: lc.tw.turtle.ycor)
 
+    # pen primitives
     defprim(lc,'pendown', 0, lambda lc: setpen(lc.tw.turtle, True))
     defprim(lc,'penup', 0, lambda lc: setpen(lc.tw.turtle, False))
     defprim(lc,'(', 1, lambda lc, x: prim_opar(lc,x))
     defprim(lc,'setcolor', 1, lambda lc, x: setcolor(lc.tw.turtle, x))
     defprim(lc,'settextcolor', 1, lambda lc, x: settextcolor(lc.tw.turtle, x))
+    defprim(lc,'settextsize', 1, lambda lc, x: settextsize(lc.tw.turtle, x))
     defprim(lc,'setshade', 1, lambda lc, x: setshade(lc.tw.turtle, x))
     defprim(lc,'setpensize', 1, lambda lc, x: setpensize(lc.tw.turtle, x))
     defprim(lc,'fillscreen', 2, lambda lc, x, y: \
@@ -443,7 +457,10 @@ def lcNew(tw):
     defprim(lc,'color', 0, lambda lc: lc.tw.turtle.color)
     defprim(lc,'shade', 0, lambda lc: lc.tw.turtle.shade)
     defprim(lc,'pensize', 0, lambda lc: lc.tw.turtle.pensize)
+    defprim(lc,'textcolor', 0, lambda lc: lc.tw.turtle.textcolor)
+    defprim(lc,'textsize', 0, lambda lc: lc.tw.textsize)
 
+    # flow primitives
     defprim(lc,'wait', 1, prim_wait, True)
     defprim(lc,'repeat', 2, prim_repeat, True)
     defprim(lc,'forever', 1, prim_forever, True)
@@ -451,6 +468,7 @@ def lcNew(tw):
     defprim(lc,'ifelse', 3, prim_ifelse, True)
     defprim(lc,'stopstack', 0, prim_stopstack)
 
+    # blocks primitives
     defprim(lc,'stack1', 0, prim_stack1, True)
     defprim(lc,'stack2', 0, prim_stack2, True)
     defprim(lc,'stack', 1, prim_stack, True)
@@ -464,14 +482,15 @@ def lcNew(tw):
     defprim(lc,'pop', 0, lambda lc: pop_heap(lc))
     defprim(lc,'heap', 0, lambda lc: heap_print(lc))
     defprim(lc,'emptyheap', 0, lambda lc: empty_heap(lc))
-
+    defprim(lc,'start', 0, lambda lc: start_stack(lc))
     defprim(lc,'define', 2, prim_define)
     defprim(lc,'nop', 0, lambda lc: None)
     defprim(lc,'nop1', 0, lambda lc: None)
     defprim(lc,'nop2', 0, lambda lc: None)
     defprim(lc,'nop3', 1, lambda lc,x: None)
-    defprim(lc,'start', 0, lambda lc: start_stack(lc))
 
+    # templates primitives
+    defprim(lc,'container', 1, lambda lc,x: x)
     defprim(lc,'tp1', 2, lambda lc,x,y: show_template1(lc, x, y))
     defprim(lc,'tp8', 2, lambda lc,x,y: show_template8(lc, x, y))
     defprim(lc,'tp6', 3, lambda lc,x,y,z: show_template6(lc, x, y, z))
@@ -501,7 +520,7 @@ def lcNew(tw):
     lc.body_height = int((tw.turtle.height/60)*tw.scale)
     lc.bullet_height = int((tw.turtle.height/45)*tw.scale)
 
-    lc.iline, lc.cfun, lc.arglist, lc.ufun = None, None, None,None
+    lc.iline, lc.cfun, lc.arglist, lc.ufun = None, None, None, None
 
     # this dictionary is used to define the relative size and postion of 
     # template elements (w, h, x, y, dx, dy, dx1, dy1...)
@@ -514,6 +533,7 @@ def lcNew(tw):
              'tp8': (0.9, 0.9, 0.0625, 0.125, 0, 0),
              'insertimage': (0.333, 0.333)
             }
+    lc.scale = 33
 
     return lc
 
@@ -658,34 +678,97 @@ def show_template6(lc, title, media1, media2):
 
 # title and four images
 def show_template7(lc, title, media1, media2, media3, media4):
-    w,h,x,y,dx,dy = calc_position(lc,'tp7')
-    draw_title(lc, title, x, y)
-    if media1[0:5] == 'media':
-        show_picture(lc, media1, x, y, w, h)
-    if media2[0:5] == 'media':
-        show_picture(lc, media2, x+dx, y, w, h)
-    if media4[0:5] == 'media':
-        show_picture(lc, media4, x+dx, y+dy, w, h)
-    if media3[0:5] == 'media':
-        show_picture(lc, media3, x, y+dy, w, h)
+    x = -(lc.tw.turtle.width/2)
+    y = lc.tw.turtle.height/2
+    setxy(lc.tw.turtle, x, y)
+    # save the text size so we can restore it later
+    save_text_size = lc.tw.textsize
+    # set title text
+    settextsize(lc.tw.turtle, lc.title_height)
+    show(lc,title)
+    # calculate and set scale for media blocks
+    myscale = 50 * (lc.tw.turtle.height - lc.title_height*2)/lc.tw.turtle.height
+    set_scale(lc,myscale)
+    # set body text size
+    settextsize(lc.tw.turtle, lc.body_height)
+    # render four quadrents
+    y -= (lc.title_height*2) # leave some space below the title
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media1)
+    x = 0
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media2)
+    y = -lc.title_height
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media4)
+    x = -(lc.tw.turtle.width/2)
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media3)
+    # restore text size
+    settextsize(lc.tw.turtle, save_text_size)
 
-# title, one image
-def show_template8(lc, title, media):
-    w,h,x,y,dx,dy = calc_position(lc,'tp8')
-    draw_title(lc,title,x,y)
-    if media[0:5] == 'media':
-        show_picture(lc, media, x, y, w, h)
+# title, one media object
+def show_template8(lc, title, media1):
+    x = -(lc.tw.turtle.width/2)
+    y = lc.tw.turtle.height/2
+    setxy(lc.tw.turtle, x, y)
+    # save the text size so we can restore it later
+    save_text_size = lc.tw.textsize
+    # set title text
+    settextsize(lc.tw.turtle, lc.title_height)
+    show(lc,title)
+    # calculate and set scale for media blocks
+    myscale = 100 * (lc.tw.turtle.height - lc.title_height*2) \
+                  / lc.tw.turtle.height
+    set_scale(lc,myscale)
+    # set body text size
+    settextsize(lc.tw.turtle, lc.body_height)
+    # render media object
+    y -= (lc.title_height*2) # leave some space below the title
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media1)
+    # restore text size
+    settextsize(lc.tw.turtle, save_text_size)
+
 
 # image only (at current x,y)
 def insert_image(lc, media):
-    w,h = lc.templates['insertimage']
-    w *= lc.tw.turtle.width
-    h *= lc.tw.turtle.height
+    w = (lc.tw.turtle.width * lc.scale)/100
+    h = (lc.tw.turtle.height * lc.scale)/100
     # convert from Turtle coordinates to screen coordinates
     x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
     y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
     if media[0:5] == 'media':
         show_picture(lc, media, x, y, w, h)
+
+# description text only (at current x,y)
+def insert_desc(lc, media):
+    w = (lc.tw.turtle.width * lc.scale)/100
+    h = (lc.tw.turtle.height * lc.scale)/100
+    # convert from Turtle coordinates to screen coordinates
+    x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
+    y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
+    if media[0:5] == 'descr':
+        show_description(lc, media, x, y, w, h)
+
+def set_scale(lc, x):
+    lc.scale = x
+
+# need to fix export logo to map show to write
+def show(lc, string):
+    if string == "media_None":
+        pass
+    if type(string) == str and string[0:6] == 'media_':
+        insert_image(lc, string)
+    elif type(string) == str and string[0:6] == 'descr_':
+        insert_desc(lc, string)
+    elif type(string) == str and string[0:6] == 'audio_':
+        play_sound(lc, string)
+    else:
+        # convert from Turtle coordinates to screen coordinates
+        x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
+        y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
+        draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width)
 
 # audio only
 def play_sound(lc, audio):
@@ -739,10 +822,19 @@ def heap_print(lc):
     showlabel(lc,lc.heap)
 
 def status_print(lc,n):
-    if type(n) == str:
+    if type(n) == str or type(n) == unicode:
+        showlabel(lc,n)
+    elif type(n) == int:
         showlabel(lc,n)
     else:
-        showlabel(lc,int(float(n)*10)/10.)
+       try:
+           # show no decimals for ints
+           if int(n) == float(n):
+               showlabel(lc, int(n))
+           else:
+               showlabel(lc, int(float(n)*10)/10.)
+       except:
+           print "problem printing %s or type %s" % n, type(n)
 
 def kbinput(lc):
     if len(lc.tw.keypress) == 1:
@@ -756,17 +848,17 @@ def kbinput(lc):
             lc.keyboard = 0
     lc.tw.keypress = ""
 
-def showlabel(lc,l):
-    if l=='#nostack': shp = 'nostack'; l=''
-    elif l=='#noinput': shp = 'noinput'; l=''
-    elif l=='#emptyheap': shp = 'emptyheap'; l=''
-    elif l=='#nomedia': shp = 'nomedia'; l=''
-    elif l=='#nocode': shp = 'nocode'; l=''
-    elif l=='#syntaxerror': shp = 'syntaxerror'; l=''
-    else:shp = 'status'
+def showlabel(lc,label):
+    if label=='#nostack': shp = 'nostack'; label=''
+    elif label=='#noinput': shp = 'noinput'; label=''
+    elif label=='#emptyheap': shp = 'emptyheap'; label=''
+    elif label=='#nomedia': shp = 'nomedia'; label=''
+    elif label=='#nocode': shp = 'nocode'; label=''
+    elif label=='#syntaxerror': shp = 'syntaxerror'; label=''
+    else: shp = 'status'
     setshape(lc.tw.status_spr, lc.tw.status_shapes[shp])
-    setlabel(lc.tw.status_spr,l)
-    setlayer(lc.tw.status_spr,710)
+    setlabel(lc.tw.status_spr, label)
+    setlayer(lc.tw.status_spr, 710)
 
 def stop_logo(tw):
     tw.step_time = 0
