@@ -552,7 +552,7 @@
        <tspan
           x="68"
           y="314"
-          style="font-size:10.5">seleziona</tspan>
+          style="font-size:10.5">imposta</tspan>
      </text>
      <text
         style="font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
@@ -566,7 +566,7 @@
        <tspan
           x="68"
           y="332"
-          style="font-size:10.5px">testo</tspan>
+          style="font-size:10.5px">del testo</tspan>
      </text>
    </g>
    <g
@@ -585,7 +585,7 @@
        <tspan
           x="68"
           y="314"
-          style="font-size:10.5">seleziona</tspan>
+          style="font-size:10.5">imposta</tspan>
      </text>
      <text
         style="font-size:10.5;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
@@ -599,7 +599,7 @@
        <tspan
           x="68"
           y="332"
-          style="font-size:10.5px">testo</tspan>
+          style="font-size:10.5px">del testo</tspan>
      </text>
    </g>
    <g
