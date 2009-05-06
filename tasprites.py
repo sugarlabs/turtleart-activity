@@ -90,7 +90,8 @@ def hide(spr):
     spr.tw.sprites.remove(spr)
 
 def setlabel(spr,label):
-    spr.label = label
+    # pango abhors nulls in strings
+    spr.label = label.replace("\x00","")
     inval(spr)
 
 def inval(spr):

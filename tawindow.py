@@ -480,25 +480,28 @@ def expose_cb(win, event, tw):
 #
 
 def keypress_cb(area, event, tw):
-    # print keyval.encode("utf-8")
     keyname = gtk.gdk.keyval_name(event.keyval)
+    keyunicode = unichr(gtk.gdk.keyval_to_unicode(event.keyval))
     if event.get_state()&gtk.gdk.MOD1_MASK:
-        # print "ALT " + gtk.gdk.keyval_name(event.keyval)
         alt_mask = True
     else:
         alt_mask = False
-    results = key_press(tw, alt_mask, keyname)
-#    keyname = unichr(gtk.gdk.keyval_to_unicode(event.keyval))
-    if keyname is not None and hasattr(tw, 'activity') and \
+    results = key_press(tw, alt_mask, keyname, keyunicode)
+    if keyname is not None and \
         hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
         # print "key press"
-        if event.get_state()&gtk.gdk.MOD4_MASK:
-            tw.activity._send_event("k:"+'T'+":"+keyname)
+        if mask:
+            tw.activity._send_event("k:"+'T'+":"+keyname+":"+keyunicode)
         else:
-            tw.activity._send_event("k:"+'F'+":"+keyname)
-    return results
+            tw.activity._send_event("k:"+'F'+":"+keyname+":"+keyunicode)
+    if len(keyname)>1:
+        # print "(" + keyunicode.encode("utf-8") + ")"
+        return keyname
+    else:
+        # print "[" + keyunicode.encode("utf-8") + "]"
+        return keyunicode.encode("utf-8")
 
-def key_press(tw, alt_mask, keyname, verbose=False):
+def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
     if keyname is None:
         return False
     if verbose:
@@ -523,62 +526,11 @@ def key_press(tw, alt_mask, keyname, verbose=False):
         if len(keyname)>1:
             return True
     else:
-        try: 
-            keyname = {
-'aacute': 'á', 'Aacute': 'Á', 'acircumflex': 'â', 'Acircumflex': 'Â', \
-'adiaeresis': 'ä', 'Adiaeresis': 'Ä', 'ae': 'æ', 'AE': 'Æ', 'agrave': \
-'à', 'Agrave': 'À', 'ampersand': '&', 'apostrophe': '\'', 'aring': \
-'å', 'Aring': 'Å', 'asciicircum': '^', 'asciitilde': '~', 'asterisk': \
-'*', 'at': '@', 'Atilde': 'Â', 'atilde': 'ã', 'backslash': '\\', \
-'bar': '|', 'braceleft': '{', 'braceright': '}', 'bracketleft': '[', \
-'bracketright': ']', 'ccedilla': 'ç', 'Ccedilla': 'Ç', 'colon': ':', \
-'comma': ',', 'dollar': '$', 'eacute': 'é', 'Eacute': 'É', \
-'ecircumflex': 'ê', 'Ecircumflex': 'Ê', 'egrave': 'è', 'Egrave': 'È', \
-'eng': 'ŋ', 'ENG': 'Ŋ', 'equal': '=', 'eth': 'ð', 'ETH': 'Ð', \
-'EuroSign': '€', 'exclam': '!', 'exclamdown': '¡', 'gbreve': 'ğ', \
-'Gbreve': 'Ğ', 'grave': '`', 'greater': '>', 'guillemnotleft': '«', \
-'guillemotright': '»', 'Iabovedot': 'İ', 'iacute': 'í', 'Iacute': 'Í', \
-'icircumflex': 'î', 'Icircumflex': 'Î', 'idotless': 'ı', 'igrave': \
-'ì', 'Igrave': 'Ì', 'less': '<', 'minus': '-', 'mu': 'µ', 'ntilde': \
-'ñ', 'Ntilde': 'Ñ', 'numbersign': '#', 'oacute': 'ó', 'Oacute': 'Ó', \
-'ocircumflex': 'ô', 'Ocircumflex': 'Ô', 'odiaeresis': '', \
-'Odiaeresis': 'Ö', 'oe': 'œ', 'OE': 'Œ', 'ograve': 'ò', 'Ograve': 'Ò', \
-'Ooblique': 'Ø', 'oslash': 'ø', 'parenleft': '(', 'parenright': ')', \
-'percent': '%', 'period': '.', 'plus': '+', 'question': '?', \
-'questiondown': '¿', 'quotedbl': '\"', 'scedilla': 'ş', 'Scedilla': \
-'Ş', 'schwa': 'ə', 'SCHWA': 'Ə', 'semicolon': ';', 'slash': '/', \
-'space': ' ', 'ssharp': 'ß', 'sterling': '£', 'thorn': 'þ', 'THO': \
-'Þ', 'uacute': 'ú', 'Uacute': 'Ú', 'ucircumflex': 'û', 'Ucircumflex': \
-'Û', 'ugrave': '', 'Ugrave': 'Ù', 'underscore': '_', 'ydiaeresis': \
-'ÿ', 'Cyrillic_ie': 'є', 'Cyrillic_IE': 'Е', 'Cyrillic_shcha': 'щ', \
-'Cyrillic_SHCHA': 'Щ', 'Cyrillic_ef': 'ф', 'Cyrillic_EF': 'Ф', \
-'Cyrillic_tse': 'ц', 'Cyrillic_TSE': 'Ц', 'Cyrillic_u': 'у', \
-'Cyrillic_U': 'У', 'Cyrillic_zhe': 'ж', 'Cyrillic_ZHE': 'Ж', \
-'Cyrillic_e': 'э', 'Cyrillic_E': 'Э', 'Cyrillic_en': 'н', \
-'Cyrillic_EN': 'Н', 'Cyrillic_ghe': 'г', 'Cyrillic_GHE': 'Г', \
-'Cyrillic_sha': 'ш', 'Cyrillic_SHA': 'Ш', 'Cyrillic_u_straight': \
-'ү','Cyrillic_U_straight': 'Ү', 'Cyrillic_ze': 'з', 'Cyrillic_ZE': \
-'З', 'Cyrillic_ka': 'к', 'Cyrillic_KA': 'К', 'Cyrillic_hardsign': 'ъ', \
-'Cyrillic_HARDSIGN': 'Ъ', 'Cyrillic_shorti': 'й', 'Cyrillic_SHORTI': \
-'Й', 'Cyrillic_yeru': 'ы', 'Cyrillic_YERU': 'Ы', 'Cyrillic_be': 'б', \
-'Cyrillic_BE': 'Б', 'Cyrillic_o_bar': 'ө', 'Cyrillic_O_bar': 'Ө', \
-'Cyrillic_a': 'а', 'Cyrillic_A': 'А', 'Cyrillic_ha': 'х', \
-'Cyrillic_HA': 'Х', 'Cyrillic_er': 'р', 'Cyrillic_ER': 'Р', \
-'Cyrillic_o': 'о', 'Cyrillic_O': 'О', 'Cyrillic_el': 'л', \
-'Cyrillic_EL': 'Л', 'Cyrillic_de': 'д', 'Cyrillic_DE': 'Д', \
-'Cyrillic_pe': 'п', 'Cyrillic_PE': 'П', 'Cyrillic_ya': 'я', \
-'Cyrillic_YA': 'Я', 'Cyrillic_che': 'ч', 'Cyrillic_CHE': 'Ч', \
-'Cyrillic_io': 'ё', 'Cyrillic_IO': 'Ё', 'Cyrillic_es': 'с', \
-'Cyrillic_ES': 'С', 'Cyrillic_em': 'м', 'Cyrillic_EM': 'М', \
-'Cyrillic_i': 'и', 'Cyrillic_I': 'И', 'Cyrillic_te': 'т', \
-'Cyrillic_TE': 'Т', 'Cyrillic_softsign': 'ь', 'Cyrillic_SOFTSIGN': \
-'Ь', 'Cyrillic_ve': 'в', 'Cyrillic_VE': 'В', 'Cyrillic_yu': 'ю', \
-'Cyrillic_YU': 'Ю', 'KP_Up': '↑', 'KP_Down': '↓', 'KP_Left': '←', \
-'KP_Right': '→'}[keyname]
-        except:
-            if len(keyname)>1:
-                return True
-
+        if keyname in ['Escape', 'space', 'Return', \
+                       'KP_Up', 'KP_Down', 'KP_Left', 'KP_Right']:
+            return True
+        else:
+            keyname = keyunicode
     oldnum = tw.selected_block.label 
     selblock=tw.selected_block.proto
     if tw.firstkey: newnum = selblock.check( \
