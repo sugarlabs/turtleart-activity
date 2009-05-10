@@ -291,8 +291,9 @@ msgid "heading"
 msgstr "方向"
 
 #
+#, fuzzy
 msgid "set heading"
-msgstr "指定方向"
+msgstr "seth"
 
 #:
 msgid "set xy"
