@@ -841,7 +841,7 @@ def kbinput(lc):
         lc.keyboard = ord(lc.tw.keypress[0])
     else:
         try:
-            lc.keyboard = {'Escape': 27, 'space': 32, 'Return': 13, \
+            lc.keyboard = {'Escape': 27, 'space': 32, ' ': 32, 'Return': 13, \
                 'KP_Up': 2, 'KP_Down': 4, 'KP_Left': 1, 'KP_Right': 3,} \
                 [lc.tw.keypress]
         except:

@@ -526,7 +526,7 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
         if len(keyname)>1:
             return True
     else:
-        if keyname in ['Escape', 'space', 'Return', \
+        if keyname in ['Escape', 'Return', \
                        'KP_Up', 'KP_Down', 'KP_Left', 'KP_Right']:
             return True
         else:
