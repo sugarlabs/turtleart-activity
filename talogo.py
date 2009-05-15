@@ -678,7 +678,9 @@ def show_template6(lc, title, media1, media2):
 
 # title and four images
 def show_template7(lc, title, media1, media2, media3, media4):
-    x = -(lc.tw.turtle.width/2)
+    w,h,xo,yo,dx,dy = calc_position(lc,'tp7')
+    x = -(lc.tw.turtle.width/2)+xo
+    print x
     y = lc.tw.turtle.height/2
     setxy(lc.tw.turtle, x, y)
     # save the text size so we can restore it later
@@ -687,7 +689,7 @@ def show_template7(lc, title, media1, media2, media3, media4):
     settextsize(lc.tw.turtle, lc.title_height)
     show(lc,title)
     # calculate and set scale for media blocks
-    myscale = 50 * (lc.tw.turtle.height - lc.title_height*2)/lc.tw.turtle.height
+    myscale = 45 * (lc.tw.turtle.height - lc.title_height*2)/lc.tw.turtle.height
     set_scale(lc,myscale)
     # set body text size
     settextsize(lc.tw.turtle, lc.body_height)
@@ -701,7 +703,7 @@ def show_template7(lc, title, media1, media2, media3, media4):
     y = -lc.title_height
     setxy(lc.tw.turtle, x, y)
     show(lc, media4)
-    x = -(lc.tw.turtle.width/2)
+    x = -(lc.tw.turtle.width/2)+xo
     setxy(lc.tw.turtle, x, y)
     show(lc, media3)
     # restore text size
@@ -709,7 +711,8 @@ def show_template7(lc, title, media1, media2, media3, media4):
 
 # title, one media object
 def show_template8(lc, title, media1):
-    x = -(lc.tw.turtle.width/2)
+    w,h,xo,yo,dx,dy = calc_position(lc,'tp7')
+    x = -(lc.tw.turtle.width/2)+xo
     y = lc.tw.turtle.height/2
     setxy(lc.tw.turtle, x, y)
     # save the text size so we can restore it later
@@ -718,7 +721,7 @@ def show_template8(lc, title, media1):
     settextsize(lc.tw.turtle, lc.title_height)
     show(lc,title)
     # calculate and set scale for media blocks
-    myscale = 100 * (lc.tw.turtle.height - lc.title_height*2) \
+    myscale = 90 * (lc.tw.turtle.height - lc.title_height*2) \
                   / lc.tw.turtle.height
     set_scale(lc,myscale)
     # set body text size
