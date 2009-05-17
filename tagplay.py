@@ -181,9 +181,10 @@ def stop_media(lc):
     lc.gplay.stop()
     if lc.gplay.window != None:
         # We need to figure out how to destroy the video window
-        #lc.gplay.window.destroy()
+        print dir(lc.gplay.window)
+        lc.gplay.window.destroy()
         #lc.gplay == None
 
         # But meanwhile, just shrink it
-        lc.gplay.window.move( 0, 0 )
-        lc.gplay.window.resize( 1, 1 )
+        #lc.gplay.window.move( 0, 0 )
+        #lc.gplay.window.resize( 1, 1 )

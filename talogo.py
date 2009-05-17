@@ -564,7 +564,7 @@ def show_picture(lc, media, x, y, w, h):
             raise logoerror("#nomedia")
         # check to see if it is a movie
         print dsobject.file_path
-        if dsobject.file_path[-4:] == '.ogv':
+        if dsobject.file_path[-4:] == '.ogv' or dsobject.file_path[-4:] == '.vob':
             print "playing movie x:" + str(x) + " y:" + str(y) + " w:" \
                 + str(w) + " h:" + str(h)
             play_dsobject(lc, dsobject, int(x), int(y), int(w), int(h))
