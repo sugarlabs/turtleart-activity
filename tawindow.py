@@ -481,7 +481,12 @@ def expose_cb(win, event, tw):
 
 def keypress_cb(area, event, tw):
     keyname = gtk.gdk.keyval_name(event.keyval)
-    keyunicode = unichr(gtk.gdk.keyval_to_unicode(event.keyval))
+#    keyunicode = unichr(gtk.gdk.keyval_to_unicode(event.keyval)).replace("\x00","")
+    keyunicode = gtk.gdk.keyval_to_unicode(event.keyval)
+    print keyname
+    if keyunicode > 0:
+        print unichr(keyunicode)
+
     if event.get_state()&gtk.gdk.MOD1_MASK:
         alt_mask = True
     else:
@@ -494,13 +499,15 @@ def keypress_cb(area, event, tw):
             tw.activity._send_event("k:"+'T'+":"+keyname+":"+keyunicode)
         else:
             tw.activity._send_event("k:"+'F'+":"+keyname+":"+keyunicode)
+    return keyname
+'''
     if len(keyname)>1:
         # print "(" + keyunicode.encode("utf-8") + ")"
         return keyname
     else:
         # print "[" + keyunicode.encode("utf-8") + "]"
         return keyunicode.encode("utf-8")
-
+'''
 def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
     if keyname is None:
         return False
@@ -518,26 +525,41 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
         return True
     if tw.selected_block==None:
         return False
-    # if and when we use unichr above
-    # we need to change this logic (and logic in talogo.py)
     if tw.selected_block.proto.name == 'number':
         if keyname in ['minus', 'period']: 
             keyname = {'minus': '-', 'period': '.'}[keyname]
         if len(keyname)>1:
             return True
-    else:
+    else: # gtk.keysyms.Left ...
         if keyname in ['Escape', 'Return', \
                        'KP_Up', 'KP_Down', 'KP_Left', 'KP_Right']:
             return True
-        else:
-            keyname = keyunicode
+    if keyname in ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', \
+                   'Alt_L', 'Alt_R', 'KP_Enter']:
+        keyname = ''
+        keyunicode = 0
+    if keyname == 'Tab':
+        keyunicode = 32 # substitute a space for a tab
     oldnum = tw.selected_block.label 
     selblock=tw.selected_block.proto
-    if tw.firstkey: newnum = selblock.check( \
-        keyname,tw.defdict[selblock.name])
-    else: newnum = oldnum+keyname
-    setlabel(tw.selected_block, selblock.check(newnum,oldnum))
-    tw.firstkey = False
+    if keyname == 'BackSpace':
+        if len(oldnum) > 1:
+            newnum = oldnum[:len(oldnum)-1]
+        else:
+            newnum = ''
+        setlabel(tw.selected_block, selblock.check(newnum,oldnum))
+        if len(newnum) > 0:
+            tw.firstkey = False
+    elif keyname is not '':
+        if tw.firstkey:
+            newnum = selblock.check(unichr(keyunicode), \
+                                    tw.defdict[selblock.name])
+        elif keyunicode > 0:
+            newnum = oldnum+unichr(keyunicode)
+        else:
+            newnum = ""
+        setlabel(tw.selected_block, selblock.check(newnum,oldnum))
+        tw.firstkey = False
     return True
 
 def unselect(tw):
