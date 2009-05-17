@@ -483,9 +483,9 @@ def keypress_cb(area, event, tw):
     keyname = gtk.gdk.keyval_name(event.keyval)
 #    keyunicode = unichr(gtk.gdk.keyval_to_unicode(event.keyval)).replace("\x00","")
     keyunicode = gtk.gdk.keyval_to_unicode(event.keyval)
-    print keyname
-    if keyunicode > 0:
-        print unichr(keyunicode)
+#    print keyname
+#    if keyunicode > 0:
+#        print unichr(keyunicode)
 
     if event.get_state()&gtk.gdk.MOD1_MASK:
         alt_mask = True
