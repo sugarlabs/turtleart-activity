@@ -830,14 +830,8 @@ def status_print(lc,n):
     elif type(n) == int:
         showlabel(lc,n)
     else:
-       try:
-           # show no decimals for ints
-           if int(n) == float(n):
-               showlabel(lc, int(n))
-           else:
-               showlabel(lc, int(float(n)*10)/10.)
-       except:
-           print "problem printing %s or type %s" % n, type(n)
+        # show no decimals for ints
+        showlabel(lc, int(float(n)*10)/10.)
 
 def kbinput(lc):
     if len(lc.tw.keypress) == 1:
