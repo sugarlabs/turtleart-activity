@@ -1,3 +1,12 @@
+50
+
+* fixed some problems with taexportlogo
+* cleaned up save/load icons
+* print uses title for Journal objects
+* cleaned up movie window destroy code
+* more consistent template management internally
+* support of a sort for show in taexporthtml
+
 49
 
 * fixed character input bug
