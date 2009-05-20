@@ -100,6 +100,7 @@ tasetshade :shade \r"
     arc = 0
     heap = 0
     write = 0
+    show = 0
     minus = 0
     image = 0
     for b in bs:
@@ -124,7 +125,7 @@ tasetshade :shade \r"
                      write = 0
                  else:
                      this_stack += str(d)
-             elif write == 2:
+             elif show == 2:
                  # use title for Journal objects
                  if d[0:8] == '#smedia_':
                      try:
@@ -135,7 +136,7 @@ tasetshade :shade \r"
                          this_stack += str(d)
                  else:
                      this_stack += str(d)
-                 write = 0
+                 show = 0
              else:
                  # transalate some TA terms into UCB Logo
                  if namedstack == 1:
@@ -256,9 +257,10 @@ tasetshade :shade \r"
                      write = 1
                  elif d == 'show':
                      this_stack == "label"
+                     show = 1
                  elif d == "container":
-                     if write == 1:
-                         write = 2
+                     if show == 1:
+                         show = 2
                  elif d == "minus":
                      this_stack == "taminus"
                      minus = 1
