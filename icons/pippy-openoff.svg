@@ -8,7 +8,8 @@
    height="55"
    viewBox="0 0 55 55"
    id="svg2"
-   xml:space="preserve">
+   xml:space="preserve"><defs
+   id="defs12" />
 <g
    transform="matrix(-1,0,0,-1,93.060248,19.348046)"
    id="g3"
@@ -37,13 +38,13 @@
 <path
    d="M 21.811546,47.176099 C 25.489595,47.176099 30.951388,45.596321 30.951388,40.94995 C 30.951388,35.781439 26.195353,35.303832 24.223039,34.780579 C 22.043113,34.335814 20.591057,33.715148 20.503836,32.857347 C 20.354576,31.386674 21.215122,30.813879 22.927614,30.813879 C 22.927614,30.813879 27.001232,32.853451 30.461841,31.225801 C 31.437249,30.767677 33.184138,28.627351 33.184138,27.151111 C 33.184138,25.674314 27.544831,23.96762 25.833568,23.96762 C 24.121076,23.96762 22.66472,26.109059 22.66472,26.109059 C 19.240965,26.109059 15.816595,29.062653 15.816595,32.016247 C 15.816595,34.969284 19.09232,37.279388 23.007464,37.923434 C 24.827448,38.184504 26.349526,39.159201 26.003711,40.950506 C 25.723005,42.405037 24.164072,43.9041 20.868078,43.9041 C 18.256344,43.9041 12.69873,43.782194 11.811158,41.633518 C 11.240532,40.249682 11.91435,38.736146 12.770596,38.736146 L 12.754011,38.647082 C 11.881795,38.559131 9.3462261,38.736146 9.3462261,41.689183 C 9.3456118,45.475528 14.962806,47.176099 21.811546,47.176099 z"
    id="path2474"
-   style="fill:#ffffff;stroke:#0101ff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /><path
+   style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /><path
    d="M 30.461227,31.226358 C 28.850084,31.066599 26.400508,30.113054 25.874721,28.430853"
    id="path2476"
-   style="fill:none;stroke:#0101ff;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /><circle
+   style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /><circle
    cx="35.805"
    cy="10.96"
    r="1.676"
    transform="matrix(0.6142367,0,0,0.5566517,4.3076424,20.174595)"
    id="circle2478"
-   style="fill:#0101ff;fill-opacity:1;stroke-width:3.42034841;stroke-miterlimit:4;stroke-dasharray:none" /></svg>
+   style="fill:#ffffff;fill-opacity:1;stroke-width:3.42034841;stroke-miterlimit:4;stroke-dasharray:none" /></svg>
