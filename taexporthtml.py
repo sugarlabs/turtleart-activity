@@ -72,6 +72,7 @@ src=\"data:image/png;base64,\n", " \"/>\n")
     for b in bs:
          this_stack = ""
          data = walk_stack(self,tw, b)
+         show = 0
          onepic = 0
          twopic = 0
          fourpic = 0
@@ -83,8 +84,47 @@ src=\"data:image/png;base64,\n", " \"/>\n")
                  continue
              else:
                  # transalate some TA terms into html
-                 print d
-                 if d == "tp1" or d == 'tp8':
+                 # ignores most turtle gr
+                 # print d
+                 if d == "show":
+                     show = 1
+                 elif d == "container":
+                     show = 2
+                 elif show == 1 and d[0:2] == '#s':
+                     # show a string
+                     this_stack += d[2:]
+                     show = 0
+                 elif show == 2:
+                     # show an image
+                     if d[8:] != None:
+                         try:
+                             dsobject = datastore.get(d[8:])
+                             pixbuf = get_pixbuf_from_journal(dsobject,400,300)
+                         except:
+                             pixbuf = None
+                         if pixbuf != None:
+                             filename = os.path.join(datapath, 'image' + \
+                                 str(imagecount) + ".png")
+                             pixbuf.save(filename, "png")
+                             # if the embed flag is True
+                             # embed base64 into the html
+                             if embed_flag == True:
+                                 base64 = os.path.join(datapath, 'base64tmp')
+                                 cmd = "base64 <" + filename + " >" + base64
+                                 subprocess.check_call(cmd, shell=True)
+                                 f = open( base64, 'r')
+                                 imgdata = f.read()
+                                 f.close()
+                             tmp = html_glue['img'][0]
+                             if embed_flag == True:
+                                 tmp = tmp + imgdata
+                             else:
+                                 tmp = tmp + str(imagecount)
+                                 imagecount += 1
+                             tmp = tmp + html_glue['img'][1]
+                             this_stack += tmp
+                     show = 0
+                 elif d == "tp1" or d == 'tp8':
                      onepic = 1
                  elif d == "tp2" or d == 'tp6':
                      twopic = 1
