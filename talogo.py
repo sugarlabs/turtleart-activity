@@ -625,63 +625,136 @@ def calc_position(lc,t):
 
 # title, one image, and description
 def show_template1(lc, title, media):
-    w,h,x,y,dx,dy = calc_position(lc,'tp1')
-    draw_title(lc,title,x,y)
-    if media[0:5] == 'media':
-        show_picture(lc, media, x, y, w, h)
-    show_description(lc, media, x+dx, y+dy, w-30, h)
+    w,h,xo,yo,dx,dy = calc_position(lc,'tp1')
+    x = -(lc.tw.turtle.width/2)+xo
+    y = lc.tw.turtle.height/2
+    setxy(lc.tw.turtle, x, y)
+    # save the text size so we can restore it later
+    save_text_size = lc.tw.textsize
+    # set title text
+    settextsize(lc.tw.turtle, lc.title_height)
+    show(lc,title)
+    # calculate and set scale for media blocks
+    myscale = 45 * (lc.tw.turtle.height - lc.title_height*2) \
+                  / lc.tw.turtle.height
+    set_scale(lc,myscale)
+    # set body text size
+    settextsize(lc.tw.turtle, lc.body_height)
+    # render media object
+    y -= (lc.title_height*2) # leave some space below the title
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media)
+    x = 0
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media.replace("media_","descr_"))
+    # restore text size
+    settextsize(lc.tw.turtle, save_text_size)
 
 # title, two images (horizontal), two descriptions
 def show_template2(lc, title, media1, media2):
-    w,h,x,y,dx,dy = calc_position(lc,'tp2')
-    draw_title(lc,title,x,y)
-    if media1[0:5] == 'media':
-        show_picture(lc, media1, x, y, w, h)
-    show_description(lc, media1, x, y+dy, w, h)
-    if media2[0:5] == 'media':
-        show_picture(lc, media2, x+dx, y, w, h)
-    show_description(lc, media2, x+dx, y+dy, w-30, h)
+    w,h,xo,yo,dx,dy = calc_position(lc,'tp2')
+    x = -(lc.tw.turtle.width/2)+xo
+    y = lc.tw.turtle.height/2
+    setxy(lc.tw.turtle, x, y)
+    # save the text size so we can restore it later
+    save_text_size = lc.tw.textsize
+    # set title text
+    settextsize(lc.tw.turtle, lc.title_height)
+    show(lc,title)
+    # calculate and set scale for media blocks
+    myscale = 45 * (lc.tw.turtle.height - lc.title_height*2)/lc.tw.turtle.height
+    set_scale(lc,myscale)
+    # set body text size
+    settextsize(lc.tw.turtle, lc.body_height)
+    # render four quadrents
+    y -= (lc.title_height*2) # leave some space below the title
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media1)
+    x = 0
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media2)
+    y = -lc.title_height
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media2.replace("media_","descr_"))
+    x = -(lc.tw.turtle.width/2)+xo
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media1.replace("media_","descr_"))
+    # restore text size
+    settextsize(lc.tw.turtle, save_text_size)
 
 # title and seven bullets
 def show_template3(lc, title, s1, s2, s3, s4, s5, s6, s7):
-    w,h,x,y,dx,dy = calc_position(lc,'tp3')
-    draw_title(lc,title,x,y)
-    draw_text(lc.tw.turtle,s1,x,y,lc.bullet_height,w)
-    x += dx
-    y += dy
-    draw_text(lc.tw.turtle,s2,x,y,lc.bullet_height,w)
-    x += dx
-    y += dy
-    draw_text(lc.tw.turtle,s3,x,y,lc.bullet_height,w)
-    x += dx
-    y += dy
-    draw_text(lc.tw.turtle,s4,x,y,lc.bullet_height,w)
-    x += dx
-    y += dy
-    draw_text(lc.tw.turtle,s5,x,y,lc.bullet_height,w)
-    x += dx
-    y += dy
-    draw_text(lc.tw.turtle,s6,x,y,lc.bullet_height,w)
-    x += dx
-    y += dy
-    draw_text(lc.tw.turtle,s7,x,y,lc.bullet_height,w)
+    w,h,xo,yo,dx,dy = calc_position(lc,'tp3')
+    x = -(lc.tw.turtle.width/2)+xo
+    y = lc.tw.turtle.height/2
+    setxy(lc.tw.turtle, x, y)
+    # save the text size so we can restore it later
+    save_text_size = lc.tw.textsize
+    # set title text
+    settextsize(lc.tw.turtle, lc.title_height)
+    show(lc,title)
+    # set body text size
+    settextsize(lc.tw.turtle, lc.bullet_height)
+    y -= (lc.title_height*2) # leave some space below the title
+    setxy(lc.tw.turtle, x, y)
+    show(lc, s1)
+    y -= (lc.bullet_height*2)
+    setxy(lc.tw.turtle, x, y)
+    show(lc, s2)
+    y -= (lc.bullet_height*2)
+    setxy(lc.tw.turtle, x, y)
+    show(lc, s3)
+    y -= (lc.bullet_height*2)
+    setxy(lc.tw.turtle, x, y)
+    show(lc, s4)
+    y -= (lc.bullet_height*2)
+    setxy(lc.tw.turtle, x, y)
+    show(lc, s5)
+    y -= (lc.bullet_height*2)
+    setxy(lc.tw.turtle, x, y)
+    show(lc, s6)
+    y -= (lc.bullet_height*2)
+    setxy(lc.tw.turtle, x, y)
+    show(lc, s7)
+    # restore text size
+    settextsize(lc.tw.turtle, save_text_size)
 
 # title, two images (vertical), two desciptions
 def show_template6(lc, title, media1, media2):
-    w,h,x,y,dx,dy = calc_position(lc,'tp6')
-    draw_title(lc,title,x,y)
-    if media1[0:5] == 'media':
-        show_picture(lc, media1, x, y, w, h)
-    show_description(lc, media1, x+dx, y, w-30, h)
-    if media2[0:5] == 'media':
-        show_picture(lc, media2, x, y+dy, w, h)
-    show_description(lc, media2, x+dx, y+dy, w-30, h)
+    w,h,xo,yo,dx,dy = calc_position(lc,'tp6')
+    x = -(lc.tw.turtle.width/2)+xo
+    y = lc.tw.turtle.height/2
+    setxy(lc.tw.turtle, x, y)
+    # save the text size so we can restore it later
+    save_text_size = lc.tw.textsize
+    # set title text
+    settextsize(lc.tw.turtle, lc.title_height)
+    show(lc,title)
+    # calculate and set scale for media blocks
+    myscale = 45 * (lc.tw.turtle.height - lc.title_height*2)/lc.tw.turtle.height
+    set_scale(lc,myscale)
+    # set body text size
+    settextsize(lc.tw.turtle, lc.body_height)
+    # render four quadrents
+    y -= (lc.title_height*2) # leave some space below the title
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media1)
+    x = 0
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media1.replace("media_","descr_"))
+    y = -lc.title_height
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media2.replace("media_","descr_"))
+    x = -(lc.tw.turtle.width/2)+xo
+    setxy(lc.tw.turtle, x, y)
+    show(lc, media2)
+    # restore text size
+    settextsize(lc.tw.turtle, save_text_size)
 
 # title and four images
 def show_template7(lc, title, media1, media2, media3, media4):
     w,h,xo,yo,dx,dy = calc_position(lc,'tp7')
     x = -(lc.tw.turtle.width/2)+xo
-    print x
     y = lc.tw.turtle.height/2
     setxy(lc.tw.turtle, x, y)
     # save the text size so we can restore it later
