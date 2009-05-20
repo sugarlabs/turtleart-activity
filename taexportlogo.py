@@ -21,6 +21,10 @@
 import tawindow
 import talogo
 import math
+try:
+    from sugar.datastore import datastore
+except:
+    pass
 
 def save_logo(self, tw):
     color_processing = "\
@@ -117,8 +121,21 @@ tasetshade :shade \r"
                  elif write == 1:
                      this_stack += "labelsize "
                      this_stack += str(d)
+                     write = 0
                  else:
                      this_stack += str(d)
+             elif write == 2:
+                 # use title for Journal objects
+                 if d[0:8] == '#smedia_':
+                     try:
+                         dsobject = datastore.get(d[8:])
+                         this_stack += dsobject.metadata['title']
+                         dsobject.destroy()
+                     except:
+                         this_stack += str(d)
+                 else:
+                     this_stack += str(d)
+                 write = 0
              else:
                  # transalate some TA terms into UCB Logo
                  if namedstack == 1:
@@ -234,9 +251,12 @@ tasetshade :shade \r"
                          this_stack += "sentence "
                          this_stack += re.sub("\s"," \"",d[2:])
                          this_stack += "\r"
-                 elif d == "write":
+                 elif d == "write" or d == 'show':
                      this_stack == "label"
                      write = 1
+                 elif d == "container":
+                     if write == 1:
+                         write = 2
                  elif d == "minus":
                      this_stack == "taminus"
                      minus = 1
