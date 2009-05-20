@@ -564,15 +564,16 @@ def show_picture(lc, media, x, y, w, h):
             raise logoerror("#nomedia")
         # check to see if it is a movie
         print dsobject.file_path
-        if dsobject.file_path[-4:] == '.ogv' or dsobject.file_path[-4:] == '.vob':
+        if dsobject.file_path[-4:] == '.ogv' or \
+           dsobject.file_path[-4:] == '.vob':
             print "playing movie x:" + str(x) + " y:" + str(y) + " w:" \
                 + str(w) + " h:" + str(h)
             play_dsobject(lc, dsobject, int(x), int(y), int(w), int(h))
         else:
-            pixbuf = get_pixbuf_from_journal(dsobject,int(w),int(h))
+            pixbuf = get_pixbuf_from_journal(dsobject, int(w), int(h))
             if pixbuf != None:
                 draw_pixbuf(lc.tw.turtle, pixbuf, 0, 0, int(x), int(y), \
-                    int(w), int(h))
+                            int(w), int(h))
         dsobject.destroy()
 
 def get_pixbuf_from_journal(dsobject,w,h):
@@ -826,11 +827,20 @@ def heap_print(lc):
 
 def status_print(lc,n):
     if type(n) == str or type(n) == unicode:
-        showlabel(lc,n)
+        # show title for Journal entries
+        if n[0:6] == 'media_':
+            try:
+                dsobject = datastore.get(n[6:])
+                showlabel(lc, dsobject.metadata['title'])
+                dsobject.destroy()
+            except:
+                showlabel(lc,n)
+        else:
+            showlabel(lc,n)
     elif type(n) == int:
         showlabel(lc,n)
     else:
-        # show no decimals for ints
+        # show one decimal for floats
         showlabel(lc, int(float(n)*10)/10.)
 
 def kbinput(lc):
