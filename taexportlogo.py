@@ -253,10 +253,10 @@ tasetshade :shade \r"
                          this_stack += re.sub("\s"," \"",d[2:])
                          this_stack += "\r"
                  elif d == "write":
-                     this_stack == "label"
+                     this_stack += "label"
                      write = 1
                  elif d == 'show':
-                     this_stack == "label"
+                     this_stack += "label"
                      show = 1
                  elif d == "container":
                      if show == 1:
@@ -266,6 +266,8 @@ tasetshade :shade \r"
                      minus = 1
                  elif d == "hideblocks":
                      this_stack += " "
+                 elif show == 1 and d[0:2] == "#s":
+                     this_stack += d[2:]
                  # need to handle templates somehow
                  else:
                      this_stack += d
