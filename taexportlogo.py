@@ -251,9 +251,11 @@ tasetshade :shade \r"
                          this_stack += "sentence "
                          this_stack += re.sub("\s"," \"",d[2:])
                          this_stack += "\r"
-                 elif d == "write" or d == 'show':
+                 elif d == "write":
                      this_stack == "label"
                      write = 1
+                 elif d == 'show':
+                     this_stack == "label"
                  elif d == "container":
                      if write == 1:
                          write = 2
