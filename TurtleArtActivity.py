@@ -92,6 +92,7 @@ class TurtleArtActivity(activity.Activity):
 
         # Create a scrolled window to contain the turtle canvas
         self.sw = gtk.ScrolledWindow()
+ #       self.fixed = gtk...
         self.set_canvas(self.sw)
         self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.sw.show()

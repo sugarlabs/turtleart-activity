@@ -357,6 +357,7 @@ def button_release(tw, x, y, verbose=False):
         elif tw.defdict.has_key(spr.proto.name):
             tw.selected_block = spr
             if spr.proto.name=='string':
+                # entry = gtk.Entry()
                 move(tw.select_mask_string, (spr.x-5,spr.y-5))
                 setlayer(tw.select_mask_string, 660)
                 tw.firstkey = True
@@ -535,7 +536,7 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
                        'KP_Up', 'KP_Down', 'KP_Left', 'KP_Right']:
             return True
     if keyname in ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', \
-                   'Alt_L', 'Alt_R', 'KP_Enter']:
+                   'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift']:
         keyname = ''
         keyunicode = 0
     if keyname == 'Tab':
@@ -555,7 +556,10 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
             newnum = selblock.check(unichr(keyunicode), \
                                     tw.defdict[selblock.name])
         elif keyunicode > 0:
-            newnum = oldnum+unichr(keyunicode)
+            if unichr(keyunicode) is not '\x00':
+                newnum = oldnum+unichr(keyunicode)
+            else:
+                newnum = oldnum
         else:
             newnum = ""
         setlabel(tw.selected_block, selblock.check(newnum,oldnum))
