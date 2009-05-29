@@ -3,13 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2009-02-27 17:54-0500\n"
+"PO-Revision-Date: 2009-05-29 18:26-0400\n"
 "Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0rc2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 1.2.1\n"
 
 #: activity/activity.info:2
 msgid "Turtle Art"
@@ -66,21 +68,20 @@ msgid "stop turtle"
 msgstr "arrêter la tortue"
 
 #: TurtleArtActivity.py:236
-#, fuzzy
 msgid "samples"
 msgstr "échantillons"
 
 #: TurtleArtActivity.py:249
 msgid "save as HTML"
-msgstr "enregistrer en HTML"
+msgstr "enregistre en HTML"
 
 #: TurtleArtActivity.py
 msgid "save Logo"
-msgstr "enregistrer en logo"
+msgstr "enregistre en Logo"
 
 #: TurtleArtActivity.py
 msgid "load my block"
-msgstr "charger mon bloc"
+msgstr "charge mon bloc"
 
 #: TurtleArtActivity.py:259 TurtleArtActivity.py:267
 #: TurtleArtActivity.py:290 TurtleArtActivity.py:299
@@ -153,11 +154,11 @@ msgstr "range dans la boîte 2"
 
 #:
 msgid "push"
-msgstr ""
+msgstr "pousse"
 
 #:
 msgid "pop"
-msgstr ""
+msgstr "dépile"
 
 #:
 msgid "Numbers"
@@ -342,7 +343,7 @@ msgstr "Clavier"
 
 #:
 msgid "read key"
-msgstr ""
+msgstr "lit la touche"
 
 #:
 msgid "sound"
@@ -350,11 +351,11 @@ msgstr "son"
 
 #:
 msgid "hres"
-msgstr ""
+msgstr "hres"
 
 #:
 msgid "vres"
-msgstr ""
+msgstr "vres"
 
 #:
 msgid "start"
