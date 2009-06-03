@@ -1,3 +1,8 @@
+52
+
+* first attempt at fixing the mimetypes
+* default behavior of tamyblock.py is to draw a dotted line
+
 51
 
 * caught ISO_Level3_Shift problem on OLPC XO keyboard
