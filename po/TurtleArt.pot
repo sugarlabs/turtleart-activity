@@ -512,3 +512,11 @@ msgstr ""
 #: /home/walter/Desktop/turtleart-activity/svg/setxy.py:40
 msgid "set xy"
 msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/svg/toppos.py:40
+msgid "top"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/svg/bottompos.py:40
+msgid "bottom"
+msgstr ""

@@ -424,6 +424,10 @@ def lcNew(tw):
     defprim(lc,'myfunc', 2, lambda lc,f,x: callmyfunc(lc, f, x))
     defprim(lc,'hres', 0, lambda lc: lc.tw.turtle.width) # canvas width
     defprim(lc,'vres', 0, lambda lc: lc.tw.turtle.height) # canvas height
+    defprim(lc,'leftpos', 0, lambda lc: -(lc.tw.turtle.width/2)) 
+    defprim(lc,'toppos', 0, lambda lc: lc.tw.turtle.height/2)
+    defprim(lc,'rightpos', 0, lambda lc: lc.tw.turtle.width/2) 
+    defprim(lc,'bottompos', 0, lambda lc: -(lc.tw.turtle.height/2))
 
     # turtle primitives
     defprim(lc,'clean', 0, lambda lc: clear(lc))
