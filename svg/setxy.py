@@ -121,7 +121,7 @@ def main():
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
-    FILE.write(mystring).encode("utf-8"))
+    FILE.write(mystring1.encode("utf-8"))
     FILE.write(data1)
     FILE.write(mystring2.encode("utf-8"))
     FILE.write(data2)
