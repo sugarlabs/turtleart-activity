@@ -92,7 +92,6 @@ class TurtleArtActivity(activity.Activity):
 
         # Create a scrolled window to contain the turtle canvas
         self.sw = gtk.ScrolledWindow()
- #       self.fixed = gtk...
         self.set_canvas(self.sw)
         self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.sw.show()
@@ -536,14 +535,6 @@ class SaveAsToolbar(gtk.Toolbar):
         self.insert(self.savelogo, -1)
         self.savelogo.show()
 
-        # Save as image button
-        self.saveimage = ToolButton( "image-saveoff" )
-        self.saveimage.set_tooltip(_('save as image'))
-        self.saveimage.props.sensitive = True
-        self.saveimage.connect('clicked', self.do_saveimage)
-        self.insert(self.saveimage, -1)
-        self.saveimage.show()
-
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
         self.insert(separator, -1)
@@ -561,28 +552,6 @@ class SaveAsToolbar(gtk.Toolbar):
         tawindow.load_file(self.activity.tw)
         # run the activity
         tawindow.runbutton(self.activity.tw, 0)
-
-    def do_saveimage(self, button):
-        self.saveimage.set_icon("image-saveon")
-        _logger.debug("saving image to journal")
-        import tempfile
-        pngfd, pngfile = tempfile.mkstemp(".png")
-        del pngfd
-        tawindow.save_pict(self.activity.tw,pngfile)
-
-        # Create a datastore object
-        file_dsobject = datastore.create()
-
-        # Write metadata
-        file_dsobject.metadata['title'] = "Turtle Art image"
-        file_dsobject.metadata['icon-color'] = profile.get_color().to_string()
-        file_dsobject.metadata['mime_type'] = 'image/png'
-        file_dsobject.set_file_path(pngfile)
-
-        datastore.write(file_dsobject)
-        file_dsobject.destroy()
-        gobject.timeout_add(250,self.saveimage.set_icon, "image-saveoff")
-        return
 
     def do_savehtml(self, button):
         # write html out to datastore
@@ -800,6 +769,19 @@ class ProjectToolbar(gtk.Toolbar):
         self.insert(self.fullscreenb, -1)
         self.fullscreenb.show()
 
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        self.insert(separator, -1)
+        separator.show()
+
+        # Save as image button
+        self.saveimage = ToolButton( "image-saveoff" )
+        self.saveimage.set_tooltip(_('save as image'))
+        self.saveimage.props.sensitive = True
+        self.saveimage.connect('clicked', self.do_saveimage)
+        self.insert(self.saveimage, -1)
+        self.saveimage.show()
+
     def do_palette(self, button):
         if self.activity.tw.palette == True:
             tawindow.hideshow_palette(self.activity.tw,False)
@@ -878,3 +860,24 @@ class ProjectToolbar(gtk.Toolbar):
         self.activity.fullscreen()
         self.activity.recenter()
 
+    def do_saveimage(self, button):
+        self.saveimage.set_icon("image-saveon")
+        _logger.debug("saving image to journal")
+        import tempfile
+        pngfd, pngfile = tempfile.mkstemp(".png")
+        del pngfd
+        tawindow.save_pict(self.activity.tw,pngfile)
+
+        # Create a datastore object
+        file_dsobject = datastore.create()
+
+        # Write metadata
+        file_dsobject.metadata['title'] = "Turtle Art image"
+        file_dsobject.metadata['icon-color'] = profile.get_color().to_string()
+        file_dsobject.metadata['mime_type'] = 'image/png'
+        file_dsobject.set_file_path(pngfile)
+
+        datastore.write(file_dsobject)
+        file_dsobject.destroy()
+        gobject.timeout_add(250,self.saveimage.set_icon, "image-saveoff")
+        return
