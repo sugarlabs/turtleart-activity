@@ -196,6 +196,7 @@ def eval(lc, infixarg=False):
     ireturn(lc, res); yield True
 
 def evalsym(lc, token):
+    debug_trace(lc, token)
     undefined_check(lc, token)
     oldcfun, oldarglist = lc.cfun, lc.arglist
     lc.cfun, lc.arglist = token, []
@@ -233,6 +234,10 @@ def infixnext(lc):
     if len(lc.iline)==0: return False
     if type(lc.iline[0])!=lc.symtype: return False
     return lc.iline[0].name in ['+', '-', '*', '/','%','and','or']
+
+def debug_trace(lc, token):
+    if lc.trace:
+        showlabel(lc, token)
 
 def undefined_check(lc, token):
     if token.fcn != None: return False
@@ -518,6 +523,7 @@ def lcNew(tw):
     lc.boxes = noKeyError({'box1': 0, 'box2': 0})
     lc.heap = []
     lc.keyboard = 0
+    lc.trace = 0 # flag for enabling debug output via showlabel
     lc.gplay = None
     lc.ag = None
     lc.title_height = int((tw.turtle.height/30)*tw.scale)
@@ -569,7 +575,9 @@ def show_picture(lc, media, x, y, w, h):
         # check to see if it is a movie
         print dsobject.file_path
         if dsobject.file_path[-4:] == '.ogv' or \
-           dsobject.file_path[-4:] == '.vob':
+           dsobject.file_path[-4:] == '.vob' or \
+           dsobject.file_path[-4:] == '.mp4' or \
+           dsobject.file_path[-4:] == '.mov':
             print "playing movie x:" + str(x) + " y:" + str(y) + " w:" \
                 + str(w) + " h:" + str(h)
             play_dsobject(lc, dsobject, int(x), int(y), int(w), int(h))
@@ -811,7 +819,6 @@ def show_template8(lc, title, media1):
     # restore text size
     settextsize(lc.tw.turtle, save_text_size)
 
-
 # image only (at current x,y)
 def insert_image(lc, media):
     w = (lc.tw.turtle.width * lc.scale)/100
@@ -837,18 +844,29 @@ def set_scale(lc, x):
 
 # need to fix export logo to map show to write
 def show(lc, string):
-    if string == "media_None":
-        pass
-    if type(string) == str and string[0:6] == 'media_':
-        insert_image(lc, string)
-    elif type(string) == str and string[0:6] == 'descr_':
-        insert_desc(lc, string)
-    elif type(string) == str and string[0:6] == 'audio_':
-        play_sound(lc, string)
-    else:
-        # convert from Turtle coordinates to screen coordinates
-        x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
-        y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
+    # convert from Turtle coordinates to screen coordinates
+    x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
+    y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
+    print type(string)
+    print string
+    if type(string) == str or type(string) == unicode:
+        if string == "media_None":
+            pass
+        elif string[0:6] == 'media_':
+            insert_image(lc, string)
+        elif string[0:6] == 'descr_':
+            insert_desc(lc, string)
+        elif string[0:6] == 'audio_':
+            play_sound(lc, string)
+        else:
+            draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width)
+    elif type(string) == float:
+        if int(string) == string:
+            print "int"
+            string = int(string)
+        else:
+            print "flt"
+            string = float(string*10.0/10.0)
         draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width)
 
 # audio only
@@ -917,8 +935,12 @@ def status_print(lc,n):
     elif type(n) == int:
         showlabel(lc,n)
     else:
-        # show one decimal for floats
-        showlabel(lc, int(float(n)*10)/10.)
+        if int(float(n)) == n:
+            # show no decimal for ints
+            showlabel(lc, int(n))
+        else:
+            # show one decimal for floats
+            showlabel(lc, int(float(n)*10)/10.)
 
 def kbinput(lc):
     if len(lc.tw.keypress) == 1:
