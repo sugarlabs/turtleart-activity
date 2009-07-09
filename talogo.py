@@ -847,8 +847,6 @@ def show(lc, string):
     # convert from Turtle coordinates to screen coordinates
     x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
     y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
-    print type(string)
-    print string
     if type(string) == str or type(string) == unicode:
         if string == "media_None":
             pass
@@ -862,10 +860,8 @@ def show(lc, string):
             draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width)
     elif type(string) == float:
         if int(string) == string:
-            print "int"
             string = int(string)
         else:
-            print "flt"
             string = float(string*10.0/10.0)
         draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width)
 
