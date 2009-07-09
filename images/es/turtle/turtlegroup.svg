@@ -542,8 +542,15 @@
         style="font-size:8;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
        <tspan
           x="104"
-          y="241"
+          y="236"
           style="font-size:12">mostrar</tspan>
+     </text>
+     <text
+        style="font-size:8;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+       <tspan
+          x="104"
+          y="246"
+          style="font-size:12">medios</tspan>
      </text>
    </g>
    <g
