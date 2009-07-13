@@ -732,6 +732,15 @@ class ProjectToolbar(gtk.Toolbar):
         self.insert(self.stepproject, -1)
         self.stepproject.show()
 
+        # debug button
+        self.debugproject = ToolButton( "debugoff" )
+        self.debugproject.set_tooltip(_('debug'))
+        self.debugproject.props.sensitive = True
+        self.debugproject.connect('clicked', self.do_debug)
+        self.debugproject.props.accelerator = _('<Alt>d')
+        self.insert(self.debugproject, -1)
+        self.debugproject.show()
+
         # stop button
         self.stop = ToolButton( "stopitoff" )
         self.stop.set_tooltip(_('stop turtle'))
@@ -805,16 +814,25 @@ class ProjectToolbar(gtk.Toolbar):
     def do_run(self, button):
         self.runproject.set_icon("run-faston")
         self.stop.set_icon("stopiton")
+        self.activity.tw.lc.trace = 0
         tawindow.runbutton(self.activity.tw, 0)
         gobject.timeout_add(1000,self.runproject.set_icon,"run-fastoff")
-        gobject.timeout_add(1000,self.stepproject.set_icon,"run-slowoff")
+#        gobject.timeout_add(1000,self.stepproject.set_icon,"run-slowoff")
 
     def do_step(self, button):
         self.stepproject.set_icon("run-slowon")
         self.stop.set_icon("stopiton")
+        self.activity.tw.lc.trace = 0
         tawindow.runbutton(self.activity.tw, 3)
         gobject.timeout_add(1000,self.stepproject.set_icon,"run-slowoff")
-        gobject.timeout_add(1000,self.runproject.set_icon,"run-fastoff")
+#        gobject.timeout_add(1000,self.runproject.set_icon,"run-fastoff")
+
+    def do_debug(self, button):
+        self.debugproject.set_icon("debugon")
+        self.stop.set_icon("stopiton")
+        self.activity.tw.lc.trace = 1
+        tawindow.runbutton(self.activity.tw, 20)
+        gobject.timeout_add(1000,self.debugproject.set_icon,"debugoff")
 
     def do_stop(self, button):
         self.stop.set_icon("stopitoff")
