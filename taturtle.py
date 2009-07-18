@@ -252,12 +252,15 @@ def draw_text(t, label, x, y, size, w):
         fd.set_size(int(size)*pango.SCALE)
     except:
         pass
-    pl = t.tw.window.create_pango_layout(str(label))
-    pl.set_font_description(fd)
-    pl.set_width(int(w)*pango.SCALE)
-    t.canvas.image.draw_layout(t.gc,int(x),int(y),pl)
-    w,h = pl.get_pixel_size()
-    invalt(t,x,y,w,h)
+    if type(label) == str or type(label) == unicode:
+        pl = t.tw.window.create_pango_layout(label.replace("\0"," "))
+        pl.set_font_description(fd)
+        pl.set_width(int(w)*pango.SCALE)
+        t.canvas.image.draw_layout(t.gc,int(x),int(y),pl)
+        w,h = pl.get_pixel_size()
+        invalt(t,x,y,w,h)
+    else:
+        print type(label)
 
 def draw_line(t,x1,y1,x2,y2):
     x1,y1 = t.width/2+int(x1), t.height/2-int(y1)

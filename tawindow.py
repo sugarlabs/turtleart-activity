@@ -44,6 +44,33 @@ from taturtle import *
 from taproject import *
 from sugar.graphics.objectchooser import ObjectChooser
 
+# from palettes import ContentInvoker
+# from gettext import gettext as _
+"""
+class PopupHandler():
+
+    def __init__(self):
+        self.table = {}
+
+    def getInvoker(self, block_name):
+        if block_name in self.table:
+            return self.table[block_name]
+        
+        msg = self._getHelpMessage(block_name)
+        if msg != "":
+            self.table[block_name] = ContentInvoker(msg)
+            return self.table[block_name]
+
+        print("no hay invoker para" + block_name)
+        return None
+
+    def _getHelpMessage(self, block_name):
+        help_msg_name = "popup_help_" + block_name
+        return _(help_msg_name)
+
+popupHandler = PopupHandler()
+"""
+
 #
 # Setup
 #
@@ -77,6 +104,8 @@ def twNew(win, path, lang, parent=None):
     win.connect("key_press_event", keypress_cb, tw)
     tw.keypress = ""
     tw.keyvalue = 0
+    tw.dead_tilde = 0
+    tw.dead_acute = 0
     tw.area = win.window
     tw.gc = tw.area.new_gc()
     # tw.window.textentry = gtk.Entry()
@@ -263,6 +292,12 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
     if verbose:
         print "processing remote mouse move: " + str(x) + " " + str(y)
     if tw.draggroup is None:
+        # popup help from RGS
+#        spr = findsprite(tw,(x,y))
+#        if spr and spr.type == 'category':
+#            proto = get_proto_from_category(tw,x,y)
+#            if proto and proto!='hide':
+#                showPopup(proto.name)
         return
     tw.block_operation = 'move'
     spr = tw.draggroup[0]
@@ -539,6 +574,15 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
                    'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift']:
         keyname = ''
         keyunicode = 0
+    # Hack until I sort out input and unicode + dead keys
+    if keyname == 'dead_tilde':
+        tw.dead_tilde = True
+        keyname = ''
+        keyunicode = 0
+    elif keyname == 'dead_acute':
+        tw.dead_acute = True
+        keyname = ''
+        keyunicode = 0
     if keyname == 'Tab':
         keyunicode = 32 # substitute a space for a tab
     oldnum = tw.selected_block.label 
@@ -552,6 +596,39 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
         if len(newnum) > 0:
             tw.firstkey = False
     elif keyname is not '':
+        # Hack until I sort out input and unicode + dead keys
+        if tw.dead_tilde == True:
+            if keyname == 'n':
+                keyunicode = 241
+            elif keyname == 'N':
+                keyunicode = 209
+            elif keyname == 'a':
+                keyunicode = 227
+            elif keyname == 'A':
+                keyunicode = 195
+            tw.dead_tilde = False
+        elif tw.dead_acute == True:
+            if keyname == 'a':
+                keyunicode = 225
+            elif keyname == 'A':
+                keyunicode = 193
+            elif keyname == 'e':
+                keyunicode = 233
+            elif keyname == 'E':
+                keyunicode = 201
+            elif keyname == 'i':
+                keyunicode = 237
+            elif keyname == 'I':
+                keyunicode = 205
+            elif keyname == 'o':
+                keyunicode = 243
+            elif keyname == 'O':
+                keyunicode = 211
+            elif keyname == 'u':
+                keyunicode = 250
+            elif keyname == 'U':
+                keyunicode = 218
+            tw.dead_acute = False
         if tw.firstkey:
             newnum = selblock.check(unichr(keyunicode), \
                                     tw.defdict[selblock.name])
@@ -663,5 +740,10 @@ def blocks(tw):
 
 def xy(event):
     return map(int, event.get_coords())
+
+def showPopup(block_name):
+    i = popupHandler.getInvoker(block_name)
+    if i:
+        i.showPopup()
 
 
