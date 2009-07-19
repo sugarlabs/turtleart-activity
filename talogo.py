@@ -95,6 +95,8 @@ def blocks_to_code(lc,spr):
                 code.append(float(ord(spr.label[0])))
         elif spr.proto.name=='string' or spr.proto.name=='title':
             if type(spr.label) == float or type(spr.label) == int:
+                #if int(spr.label) == spr.label:
+                #    spr.label = int(spr.label)
                 code.append('#s'+str(spr.label))
             else:
                 code.append('#s'+spr.label)
@@ -858,7 +860,7 @@ def show(lc, string):
             play_sound(lc, string)
         else:
             draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width)
-    elif type(string) == float:
+    elif type(string) == float or type(string) == int:
         if int(string) == string:
             string = int(string)
         else:
