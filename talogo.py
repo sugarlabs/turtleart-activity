@@ -95,8 +95,8 @@ def blocks_to_code(lc,spr):
                 code.append(float(ord(spr.label[0])))
         elif spr.proto.name=='string' or spr.proto.name=='title':
             if type(spr.label) == float or type(spr.label) == int:
-                #if int(spr.label) == spr.label:
-                #    spr.label = int(spr.label)
+                if int(spr.label) == spr.label:
+                    spr.label = int(spr.label)
                 code.append('#s'+str(spr.label))
             else:
                 code.append('#s'+spr.label)
@@ -485,7 +485,7 @@ def lcNew(tw):
     defprim(lc,'stack', 1, prim_stack, True)
     defprim(lc,'box1', 0, lambda lc: lc.boxes['box1'])
     defprim(lc,'box2', 0, lambda lc: lc.boxes['box2'])
-    defprim(lc,'box', 1, lambda lc,x: lc.boxes['box3'+str(x)])
+    defprim(lc,'box', 1, lambda lc,x: box(lc,x))
     defprim(lc,'storeinbox1', 1, lambda lc,x: setbox(lc, 'box1',x))
     defprim(lc,'storeinbox2', 1, lambda lc,x: setbox(lc, 'box2',x))
     defprim(lc,'storeinbox', 2, lambda lc,x,y: setbox(lc, 'box3'+str(x),y))
@@ -522,12 +522,14 @@ def lcNew(tw):
 
     lc.istack = []
     lc.stacks = {}
-    lc.boxes = noKeyError({'box1': 0, 'box2': 0})
+    # lc.boxes = noKeyError({'box1': 0, 'box2': 0})
+    lc.boxes = {'box1': 0, 'box2': 0}
     lc.heap = []
     lc.keyboard = 0
     lc.trace = 0 # flag for enabling debug output via showlabel
     lc.gplay = None
     lc.ag = None
+    lc.nobox = ""
     lc.title_height = int((tw.turtle.height/30)*tw.scale)
     lc.body_height = int((tw.turtle.height/60)*tw.scale)
     lc.bullet_height = int((tw.turtle.height/45)*tw.scale)
@@ -548,6 +550,13 @@ def lcNew(tw):
     lc.scale = 33
 
     return lc
+
+def box(lc,x):
+    try:
+        return lc.boxes['box3'+str(x)]
+    except:
+        lc.nobox = str(x)
+        raise logoerror("#emptybox")
 
 def loadmyblock(lc,x):
     # execute code inported from the Journal
@@ -956,6 +965,7 @@ def showlabel(lc,label):
     if label=='#nostack': shp = 'nostack'; label=''
     elif label=='#noinput': shp = 'noinput'; label=''
     elif label=='#emptyheap': shp = 'emptyheap'; label=''
+    elif label=='#emptybox': shp = 'emptybox'; label='                    '+lc.nobox
     elif label=='#nomedia': shp = 'nomedia'; label=''
     elif label=='#nocode': shp = 'nocode'; label=''
     elif label=='#syntaxerror': shp = 'syntaxerror'; label=''

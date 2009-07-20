@@ -275,6 +275,7 @@ def setup_misc(tw):
     tw.status_shapes['nostack'] = load_image(tw.path, '', 'nostack')
     tw.status_shapes['noinput'] = load_image(tw.path, '', 'noinput')
     tw.status_shapes['emptyheap'] = load_image(tw.path, '', 'emptyheap')
+    tw.status_shapes['emptybox'] = load_image(tw.path, '', 'emptybox')
     tw.status_shapes['nomedia'] = load_image(tw.path, '', 'nomedia')
     tw.status_shapes['nocode'] = load_image(tw.path, '', 'nocode')
     tw.status_shapes['syntaxerror'] = load_image(tw.path, '', 'syntaxerror')
