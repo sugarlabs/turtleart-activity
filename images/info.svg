@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="767"
+   height="200"
+   id="svg2">
+  <defs
+     id="defs27" />
+  <path
+     d="M 15.625132,199.50188 C 12.131069,199.50188 8.6370065,184.53052 6.1412475,171.28928 C 3.6454885,158.04803 1.1497297,139.51029 1.1497297,120.97254 L 1.1497297,78.600561 C 1.1497297,61.386943 3.6454885,33.580327 6.1412475,22.987331 C 8.6370065,12.394335 12.131069,1.8013387 15.625132,1.8013387 L 750.87572,1.8013387 C 753.37148,1.8013387 757.86384,7.0978368 761.35791,22.987331 C 764.85196,37.552701 765.85027,62.711067 765.85027,78.600561 L 765.85027,120.97254 C 765.85027,139.51029 763.85366,158.04803 761.35791,171.28928 C 758.86215,184.53052 754.86894,199.50188 750.87572,199.50188 L 15.625132,199.50188 z"
+     id="path4"
+     style="fill:#ffd000;fill-opacity:1;fill-rule:evenodd;stroke:#e0a000;stroke-width:2.29945922px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  <g
+     transform="translate(648,65.625)"
+     id="g6">
+    <path
+       d="M 79.5,438.5 C 79.5,443 75.75,446.5 71,446.5 C 66.5,446.5 62.75,443 62.75,438.5 C 62.75,434 66.5,430.25 71,430.25 C 75.75,430.25 79.5,434 79.5,438.5 L 79.5,438.5 z"
+       transform="translate(24,-485)"
+       id="path8"
+       style="fill:#ff4040;fill-opacity:1;fill-rule:nonzero;stroke:#ff4040;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       id="text10"
+       style="font-size:12px;font-weight:bold;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans">
+      <tspan
+         x="91"
+         y="-42"
+         id="tspan12"
+         style="font-size:12px">X</tspan>
+    </text>
+  </g>
+  <g
+     transform="translate(5.5,0)"
+     id="g14">
+    <path
+       d="M 44,15 L 10.5,15 L 27.5,-14 L 44,15 z"
+       transform="translate(-4,20)"
+       id="path16"
+       style="opacity:1;fill:#404040;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       d="M 44,15 L 10.5,15 L 27.5,-14 L 44,15 z"
+       transform="translate(1,17)"
+       id="path18"
+       style="opacity:1;fill:#e0e0e0;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       d="M 44,15 L 10.5,15 L 27.5,-14 L 44,15 z"
+       transform="translate(-1,18)"
+       id="path20"
+       style="opacity:1;fill:#ffe000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+  <text
+     x="5.5"
+     id="text22"
+     style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans">
+    <tspan
+       x="26.5"
+       y="29"
+       id="tspan24"
+       style="font-size:24px">!</tspan>
+  </text>
+</svg>
