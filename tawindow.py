@@ -70,6 +70,13 @@ class PopupHandler():
 
 popupHandler = PopupHandler()
 """
+# dead key dictionaries
+dead_grave = {'A':192,'E':200,'I':204,'O':210,'U':217,'a':224,'e':232,'i':236,'o':242,'u':249}
+dead_acute = {'A':193,'E':201,'I':205,'O':211,'U':218,'a':225,'e':233,'i':237,'o':243,'u':250}
+dead_circumflex = {'A':194,'E':202,'I':206,'O':212,'U':219,'a':226,'e':234,'i':238,'o':244,'u':251}
+dead_tilde = {'A':195,'O':211,'N':209,'a':227,'o':245,'n':241}
+dead_diaeresis = {'A':196,'E':203,'I':207,'O':211,'U':218,'a':228,'e':235,'i':239,'o':245,'u':252}
+dead_abovering = {'A':197,'a':229}
 
 #
 # Setup
@@ -104,8 +111,7 @@ def twNew(win, path, lang, parent=None):
     win.connect("key_press_event", keypress_cb, tw)
     tw.keypress = ""
     tw.keyvalue = 0
-    tw.dead_tilde = 0
-    tw.dead_acute = 0
+    tw.dead_key = ""
     tw.area = win.window
     tw.gc = tw.area.new_gc()
     # tw.window.textentry = gtk.Entry()
@@ -575,12 +581,8 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
         keyname = ''
         keyunicode = 0
     # Hack until I sort out input and unicode + dead keys
-    if keyname == 'dead_tilde':
-        tw.dead_tilde = True
-        keyname = ''
-        keyunicode = 0
-    elif keyname == 'dead_acute':
-        tw.dead_acute = True
+    if keyname[0:5] == 'dead_':
+        tw.dead_key = keyname
         keyname = ''
         keyunicode = 0
     if keyname == 'Tab':
@@ -597,38 +599,19 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
             tw.firstkey = False
     elif keyname is not '':
         # Hack until I sort out input and unicode + dead keys
-        if tw.dead_tilde == True:
-            if keyname == 'n':
-                keyunicode = 241
-            elif keyname == 'N':
-                keyunicode = 209
-            elif keyname == 'a':
-                keyunicode = 227
-            elif keyname == 'A':
-                keyunicode = 195
-            tw.dead_tilde = False
-        elif tw.dead_acute == True:
-            if keyname == 'a':
-                keyunicode = 225
-            elif keyname == 'A':
-                keyunicode = 193
-            elif keyname == 'e':
-                keyunicode = 233
-            elif keyname == 'E':
-                keyunicode = 201
-            elif keyname == 'i':
-                keyunicode = 237
-            elif keyname == 'I':
-                keyunicode = 205
-            elif keyname == 'o':
-                keyunicode = 243
-            elif keyname == 'O':
-                keyunicode = 211
-            elif keyname == 'u':
-                keyunicode = 250
-            elif keyname == 'U':
-                keyunicode = 218
-            tw.dead_acute = False
+        if tw.dead_key == 'dead_grave':
+            keyunicode = dead_grave[keyname]
+        elif tw.dead_key == 'dead_acute':
+            keyunicode = dead_acute[keyname]
+        elif tw.dead_key == 'dead_circumflex':
+            keyunicode = dead_circumflex[keyname]
+        elif tw.dead_key == 'dead_tilde':
+            keyunicode = dead_tilde[keyname]
+        elif tw.dead_key == 'dead_diaeresis':
+            keyunicode = dead_diaeresis[keyname]
+        elif tw.dead_key == 'dead_abovering':
+            keyunicode = dead_abovering[keyname]
+        tw.dead_key = ""
         if tw.firstkey:
             newnum = selblock.check(unichr(keyunicode), \
                                     tw.defdict[selblock.name])
