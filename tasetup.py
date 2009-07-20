@@ -54,12 +54,13 @@ selectors = (
      ('seth','seth','onearg',0),
      ('show','show','onesarg',_('text')),
      ('setscale','setscale','onearg',33),
-     ('container','container','container','None'),
+     ('show','show','onecarg','None'),
      ('xcor','xcor','num'),
      ('ycor','ycor','num'),
      ('heading','heading','num'),
      ('scale','scale','num'),
      # not selectable, but here for backward compatability 
+     ('container','container','container','None'),
      ('image','insertimage','image','None'),
      ('write','write','1sarg',_('text'),32))),
   ('pen', 55,
@@ -159,6 +160,7 @@ dockdetails = {
   'noarg2':  (('flow',True,37,5),('flow',False,37,59)),
   'onearg':  (('flow',True,37,5),('num',False,74,21),('flow',False,37,44)),
   'onesarg':  (('flow',True,37,5),('string',False,74,21),('flow',False,37,44)),
+  'onecarg':  (('flow',True,37,5),('media',False,86,21),('flow',False,37,44)),
   '1arg':    (('flow',True,37,5),('num',False,74,29),('flow',False,37,59)),
   'twoargs': (('flow',True,37,5),('num',False,74,21),('num',False,74,58), \
         ('flow',False,37,81)),
@@ -269,6 +271,7 @@ def setup_misc(tw):
     # status shapes get positioned at the bottom of the screen
     tw.status_shapes = {}
     tw.status_shapes['status'] = load_image(tw.path, '', 'status')
+    tw.status_shapes['info'] = load_image(tw.path, '', 'info')
     tw.status_shapes['nostack'] = load_image(tw.path, '', 'nostack')
     tw.status_shapes['noinput'] = load_image(tw.path, '', 'noinput')
     tw.status_shapes['emptyheap'] = load_image(tw.path, '', 'emptyheap')
