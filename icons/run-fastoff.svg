@@ -13,7 +13,7 @@
      d="M 27.849263,20.597427 A 12.959558,15.579044 0 1 1 1.9301481,20.597427 A 12.959558,15.579044 0 1 1 27.849263,20.597427 z"
      transform="matrix(1.6011349,0,0,1.3319174,-1.3404274,-4.9340719)"
      id="path2401"
-     style="opacity:1;fill:#00d000;fill-opacity:1;stroke:#00d000;stroke-width:2.39670968;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     style="opacity:1;fill:#808080;fill-opacity:1;stroke:#808080;stroke-width:2.39670968;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <g
      transform="translate(6.0193572e-8,-1.9999998)"
      id="g3287">
@@ -40,5 +40,5 @@
   <path
      d="M 27.779352,22.5 L 17.220648,28.603239 C 17.220648,16.396761 17.220648,16.396761 17.220648,16.396761 L 27.779352,22.5 z"
      id="path2496"
-     style="fill:#00d000;fill-opacity:1;fill-rule:evenodd;stroke:#00d000;stroke-width:0.81818181px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+     style="fill:#808080;fill-opacity:1;fill-rule:evenodd;stroke:#808080;stroke-width:0.81818181px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
 </svg>

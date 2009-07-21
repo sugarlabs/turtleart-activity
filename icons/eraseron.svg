@@ -14,7 +14,7 @@
    width="50"
    height="43"
    version="1.0"
-   sodipodi:docname="eraseron.svg"
+   sodipodi:docname="eraseroff.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <metadata
      id="metadata7">
@@ -64,27 +64,27 @@
      inkscape:window-y="0"
      inkscape:current-layer="svg2" />
   <path
-     style="fill:#c44000;stroke:#a00000;stroke-width:1.5;stroke-opacity:1;fill-opacity:1;stroke-dasharray:none"
+     style="fill:#808080;stroke:#a0a0a0;stroke-width:1.50000000000000000;stroke-opacity:1;fill-opacity:1;stroke-dasharray:none"
      d="M 37.612208,24.238779 L 36,17.5 L 48.5,4 L 47,14.5 L 37.612208,24.238779 z"
      id="path2394"
      sodipodi:nodetypes="ccccc" />
   <path
-     style="fill:#c44000;stroke:#a00000;stroke-width:1.5;stroke-opacity:1;fill-opacity:1;stroke-dasharray:none"
+     style="fill:#808080;stroke:#a0a0a0;stroke-width:1.50000000000000000;stroke-opacity:1;fill-opacity:1;stroke-dasharray:none"
      d="M 15,17.5 L 28.5,4 L 48.5,4 L 36,17.5 L 15,17.5 z"
      id="path2390"
      sodipodi:nodetypes="ccccc" />
   <path
-     style="fill:#a09400;stroke:#a00000;stroke-width:1.50000000000000000;stroke-opacity:1;fill-opacity:1;stroke-dasharray:none"
+     style="fill:#a0a0a0;stroke:#a0a0a0;stroke-width:1.50000000000000000;stroke-opacity:1;fill-opacity:1;stroke-dasharray:none"
      d="M 22.800718,38.5 L 25.493716,28.5 L 36,17.5 L 37.432675,24.418312 L 22.800718,38.5 z"
      id="path2392"
      sodipodi:nodetypes="ccccc" />
   <path
-     style="fill:#c4a000;stroke:#a00000;stroke-width:1.50000000000000000;stroke-opacity:1;fill-opacity:1;stroke-dasharray:none"
+     style="fill:#c4c4c4;stroke:#a0a0a0;stroke-width:1.50000000000000000;stroke-opacity:1;fill-opacity:1;stroke-dasharray:none"
      d="M 3.9497307,28.5 L 15,17.5 L 36,17.5 L 25.13465,28.5 L 3.9497307,28.5 z"
      id="path2388"
      sodipodi:nodetypes="ccccc" />
   <path
-     style="fill:#e0d000;stroke:#a00000;stroke-width:1.50000000000000000;stroke-opacity:1;fill-opacity:1;stroke-dasharray:none"
+     style="fill:#e0e0e0;stroke:#a0a0a0;stroke-width:1.50000000000000000;stroke-opacity:1;fill-opacity:1;stroke-dasharray:none"
      d="M 0.26929982,38.5 L 3.8599641,28.5 L 25.044883,28.5 L 22.441652,38.5 L 0.26929982,38.5 z"
      id="path2384"
      sodipodi:nodetypes="ccccc" />
