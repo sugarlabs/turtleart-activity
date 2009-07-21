@@ -125,6 +125,7 @@ selectors = (
      ('ifelse','ifelse','ifelse'),
      ('hspace','nop','hspace'),
      ('vspace','nop','vspace'),
+     # not selectable, but here for backward compatability 
      ('lock','nop','lock'))),
    ('myblocks', 55,
     (('start','start','start'),

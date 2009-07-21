@@ -239,7 +239,7 @@ msgstr ""
 
 #: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:47
 #: /home/walter/Desktop/turtleart-activity/svg/stopstack.py:40
-msgid "stop stack"
+msgid "stop action"
 msgstr ""
 
 #: /home/walter/Desktop/turtleart-activity/svg/print.py:40

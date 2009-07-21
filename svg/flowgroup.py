@@ -44,7 +44,7 @@ def main():
     mystring5 = _("if")
     mystring6 = _("then")
     mystring7 = _("else")
-    mystring8 = _("stop stack")
+    mystring8 = _("stop action")
     mygroup = "flow"
 
     print mystring1
