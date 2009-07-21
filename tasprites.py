@@ -133,10 +133,13 @@ def hit(spr,pos):
 def draw_label(spr, label, myscale, center_flag):
     fd = pango.FontDescription('Sans')
     fd.set_size(int(myscale*spr.tw.scale*pango.SCALE))
-    # print label
-    # print type(label)
     if type(label) == str or type(label) == unicode:
-        pl = spr.tw.window.create_pango_layout(label.replace("\0"," "))
+        mylabel = label.replace("\0"," ")
+        l = len(mylabel)
+        if l > 8:
+            pl = spr.tw.window.create_pango_layout("..."+mylabel[l-8:])
+        else:
+            pl = spr.tw.window.create_pango_layout(mylabel)
         pl.set_font_description(fd)
         if center_flag:
             swidth = pl.get_size()[0]/pango.SCALE
