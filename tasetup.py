@@ -139,9 +139,11 @@ selectors = (
      ('box1','box1','num'),
      ('storeinbox2','storeinbox2','1arg'),
      ('box2','box2','num'),
-     ('storeinbox','storeinbox','1sarg',_('box'),100),
+     ('storein','storeinbox','1varg',_('box'),100),
      ('box','box','nfuncs',_('box')),
-     ('string','','string',_('name'),str,strcheck))),
+     ('string','','string',_('name'),str,strcheck),
+     # not selectable, but here for backward compatability 
+     ('storeinbox','storeinbox','1sarg',_('box'),100))),
   ('templates',55,
     (('journal','','media','','',''),
      ('audiooff','','audio','','',''),
@@ -203,7 +205,9 @@ dockdetails = {
         ('flow',False,37,44)),  
   '1sarg':   (('flow',True,37,5),('string',False,12,22), \
         ('num',False,130,23),('flow',False,37,44)),
-  'myfunc':   (('num',True,0,23),('string',False,24,22), \
+  '1varg':   (('flow',True,37,5),('string',False,12,38), \
+        ('num',False,130,30),('flow',False,37,59)),
+  'myfunc':   (('num',True,0,33),('string',False,24,22), \
         ('num',False,142,21)),
   'media':   (('media',True,0,27),('mediaend',False,75,27)),
   'text':   (('media',True,0,27),('mediaend',False,75,27)),

@@ -130,13 +130,13 @@ def hit(spr,pos):
             + str(dy) + " " + str(spr.width) + " " + str(spr.height)
         return True
 
-def draw_label(spr, label, myscale, center_flag):
+def draw_label(spr, label, myscale, center_flag, truncate_flag):
     fd = pango.FontDescription('Sans')
     fd.set_size(int(myscale*spr.tw.scale*pango.SCALE))
     if type(label) == str or type(label) == unicode:
         mylabel = label.replace("\0"," ")
         l = len(mylabel)
-        if l > 8:
+        if truncate_flag and l > 8:
             pl = spr.tw.window.create_pango_layout("..."+mylabel[l-8:])
         else:
             pl = spr.tw.window.create_pango_layout(mylabel)
@@ -157,11 +157,11 @@ def draw_label(spr, label, myscale, center_flag):
 
 # used for most things
 def draw_label1(spr, label):
-    draw_label(spr, label, 7, True)
+    draw_label(spr, label, 7, True, True)
 
 # used for status blocks
 def draw_label2(spr, label):
-    draw_label(spr, str(label), 9, False)
+    draw_label(spr, str(label), 9, False, False)
 
 # used to get pixel value from mask for category selector
 def getpixel(image,x,y):
