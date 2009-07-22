@@ -339,11 +339,11 @@ def taequal(x,y):
     try:
         return float(x)==float(y)
     except:
-        if type(x) == str:
+        if type(x) == str or type(x) == unicode:
             xx = ord(x[0])
         else:
             xx = x
-        if type(y) == str:
+        if type(y) == str or type(y) == unicode:
             yy = ord(y[0])
         else:
             yy = y
