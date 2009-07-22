@@ -258,6 +258,7 @@ def draw_text(t, label, x, y, size, w):
         pl = t.tw.window.create_pango_layout(str(label))
     else:
         print type(label)
+        pl = t.tw.window.create_pango_layout(str(label))
     pl.set_font_description(fd)
     pl.set_width(int(w)*pango.SCALE)
     t.canvas.image.draw_layout(t.gc,int(x),int(y),pl)
