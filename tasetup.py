@@ -207,8 +207,8 @@ dockdetails = {
         ('num',False,130,23),('flow',False,37,44)),
   '1varg':   (('flow',True,37,5),('string',False,12,38), \
         ('num',False,130,30),('flow',False,37,59)),
-  'myfunc':   (('num',True,0,33),('string',False,24,22), \
-        ('num',False,142,21)),
+  'myfunc':   (('num',True,0,22),('string',False,24,22), \
+        ('num',False,142,22)),
   'media':   (('media',True,0,27),('mediaend',False,75,27)),
   'text':   (('media',True,0,27),('mediaend',False,75,27)),
   'audio':   (('media',True,0,27),('mediaend',False,75,27)),
