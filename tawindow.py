@@ -482,7 +482,7 @@ def dock_dx_dy(block1,dock1n,block2,dock2n):
     if block1==block2: return (100,100)
     if d1type!=d2type:
         # some blocks can take strings or nums
-        if block1.proto.name in ('write', 'plus2', 'equal', \
+        if block1.proto.name in ('write', 'plus2', 'equal', 'less', 'greater', \
             'template1', 'template2', 'template3', 'template4', \
             'template6', 'template7', 'nop', 'print'):
             if block1.proto.name == 'write' and d1type == 'string':

@@ -351,9 +351,17 @@ def taequal(x,y):
 
 def taless(x,y):
     try:
-        return(x<y)
+        return float(x)<float(y)
     except:
-        raise logoerror("#syntaxerror")
+        if type(x) == str or type(x) == unicode:
+            xx = ord(x[0])
+        else:
+            xx = x
+        if type(y) == str or type(y) == unicode:
+            yy = ord(y[0])
+        else:
+            yy = y
+        return xx<yy
 
 def tamore(x,y):
     return taless(y,x)
