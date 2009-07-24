@@ -117,8 +117,11 @@ def twNew(win, path, lang, parent=None):
     # tw.window.textentry = gtk.Entry()
     # on an OLPC-XO-1, there is a scaling factor
     if os.path.exists('/sys/power/olpc-pm'):
-        tw.scale = 1
-    else: tw.scale = 1.6
+        tw.lead = 1.6
+        tw.scale = 1.0
+    else:
+        tw.lead = 1.0
+        tw.scale = 1.6
     tw.cm = tw.gc.get_colormap()
     tw.rgb = [255,0,0]
     tw.bgcolor = tw.cm.alloc_color('#fff8de')
@@ -492,7 +495,7 @@ def dock_dx_dy(block1,dock1n,block2,dock2n):
                 if d2type == 'num' or d2type == 'string':
                     pass
         # some blocks can take strings, nums, or Journal
-        elif block1.proto.name in ('show', 'push'):
+        elif block1.proto.name in ('show', 'push', 'storein'):
             if d2type == 'num' or d2type == 'string' or d2type == 'journal':
                 pass
         # some blocks can take media, audio, movies, of descriptions

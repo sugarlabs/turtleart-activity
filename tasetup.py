@@ -163,7 +163,7 @@ dockdetails = {
   'noarg2':  (('flow',True,37,5),('flow',False,37,59)),
   'onearg':  (('flow',True,37,5),('num',False,74,21),('flow',False,37,44)),
   'onesarg':  (('flow',True,37,5),('string',False,74,21),('flow',False,37,44)),
-  'onecarg':  (('flow',True,37,5),('media',False,86,21),('flow',False,37,44)),
+  'onecarg':  (('flow',True,37,5),('media',False,74,21),('flow',False,37,44)),
   '1arg':    (('flow',True,37,5),('num',False,74,29),('flow',False,37,59)),
   'twoargs': (('flow',True,37,5),('num',False,74,21),('num',False,74,58), \
         ('flow',False,37,81)),

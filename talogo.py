@@ -538,9 +538,9 @@ def lcNew(tw):
     lc.gplay = None
     lc.ag = None
     lc.nobox = ""
-    lc.title_height = int((tw.turtle.height/30)*tw.scale)
-    lc.body_height = int((tw.turtle.height/60)*tw.scale)
-    lc.bullet_height = int((tw.turtle.height/45)*tw.scale)
+    lc.title_height = int((lc.tw.turtle.height/30)*lc.tw.scale)
+    lc.body_height = int((lc.tw.turtle.height/60)*lc.tw.scale)
+    lc.bullet_height = int((lc.tw.turtle.height/45)*lc.tw.scale)
 
     lc.iline, lc.cfun, lc.arglist, lc.ufun = None, None, None, None
 
@@ -672,7 +672,7 @@ def show_template1(lc, title, media):
     # set body text size
     settextsize(lc.tw.turtle, lc.body_height)
     # render media object
-    y -= (lc.title_height*2) # leave some space below the title
+    y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
     setxy(lc.tw.turtle, x, y)
     show(lc, media)
     x = 0
@@ -698,7 +698,7 @@ def show_template2(lc, title, media1, media2):
     # set body text size
     settextsize(lc.tw.turtle, lc.body_height)
     # render four quadrents
-    y -= (lc.title_height*2) # leave some space below the title
+    y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
     setxy(lc.tw.turtle, x, y)
     show(lc, media1)
     x = 0
@@ -726,25 +726,25 @@ def show_template3(lc, title, s1, s2, s3, s4, s5, s6, s7):
     show(lc,title)
     # set body text size
     settextsize(lc.tw.turtle, lc.bullet_height)
-    y -= (lc.title_height*2) # leave some space below the title
+    y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
     setxy(lc.tw.turtle, x, y)
     show(lc, s1)
-    y -= (lc.bullet_height*2)
+    y -= int(lc.bullet_height*2*lc.tw.lead)
     setxy(lc.tw.turtle, x, y)
     show(lc, s2)
-    y -= (lc.bullet_height*2)
+    y -= int(lc.bullet_height*2*lc.tw.lead)
     setxy(lc.tw.turtle, x, y)
     show(lc, s3)
-    y -= (lc.bullet_height*2)
+    y -= int(lc.bullet_height*2*lc.tw.lead)
     setxy(lc.tw.turtle, x, y)
     show(lc, s4)
-    y -= (lc.bullet_height*2)
+    y -= int(lc.bullet_height*2*lc.tw.lead)
     setxy(lc.tw.turtle, x, y)
     show(lc, s5)
-    y -= (lc.bullet_height*2)
+    y -= int(lc.bullet_height*2*lc.tw.lead)
     setxy(lc.tw.turtle, x, y)
     show(lc, s6)
-    y -= (lc.bullet_height*2)
+    y -= int(lc.bullet_height*2*lc.tw.lead)
     setxy(lc.tw.turtle, x, y)
     show(lc, s7)
     # restore text size
@@ -767,7 +767,7 @@ def show_template6(lc, title, media1, media2):
     # set body text size
     settextsize(lc.tw.turtle, lc.body_height)
     # render four quadrents
-    y -= (lc.title_height*2) # leave some space below the title
+    y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
     setxy(lc.tw.turtle, x, y)
     show(lc, media1)
     x = 0
@@ -799,7 +799,7 @@ def show_template7(lc, title, media1, media2, media3, media4):
     # set body text size
     settextsize(lc.tw.turtle, lc.body_height)
     # render four quadrents
-    y -= (lc.title_height*2) # leave some space below the title
+    y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
     setxy(lc.tw.turtle, x, y)
     show(lc, media1)
     x = 0
@@ -832,7 +832,7 @@ def show_template8(lc, title, media1):
     # set body text size
     settextsize(lc.tw.turtle, lc.body_height)
     # render media object
-    y -= (lc.title_height*2) # leave some space below the title
+    y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
     setxy(lc.tw.turtle, x, y)
     show(lc, media1)
     # restore text size
