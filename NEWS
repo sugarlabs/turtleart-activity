@@ -1,3 +1,8 @@
+59
+
+* fixed leading bug for OLPC XO portfolio
+* enabled box to hold strings and journal objects
+
 58
 
 * fixed unicode string compare in equal block
