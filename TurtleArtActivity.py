@@ -470,7 +470,10 @@ class EditToolbar(gtk.Toolbar):
         self.copy.set_tooltip(_('copy'))
         self.copy.props.sensitive = True
         self.copy.connect('clicked', self._copy_cb)
-        self.copy.props.accelerator = '<Ctrl>C'
+        try:
+            self.copy.props.accelerator = '<Ctrl>C'
+        except:
+            pass
         self.insert(self.copy, -1)
         self.copy.show()
 
@@ -479,7 +482,10 @@ class EditToolbar(gtk.Toolbar):
         self.paste.set_tooltip(_('paste'))
         self.paste.props.sensitive = True
         self.paste.connect('clicked', self._paste_cb)
-        self.paste.props.accelerator = '<Ctrl>V'
+        try:
+            self.paste.props.accelerator = '<Ctrl>V'
+        except:
+            pass
         self.insert(self.paste, -1)
         self.paste.show()
 
@@ -510,7 +516,10 @@ class SaveAsToolbar(gtk.Toolbar):
         self.sampb.set_tooltip(_('samples'))
         self.sampb.props.sensitive = True
         self.sampb.connect('clicked', self.do_samples)
-        self.sampb.props.accelerator = _('<Alt>o')
+        try:
+             self.sampb.props.accelerator = _('<Alt>o')
+        except:
+            pass
         self.insert(self.sampb, -1)
         self.sampb.show()
 
@@ -696,7 +705,10 @@ class ProjectToolbar(gtk.Toolbar):
         self.palette.set_tooltip(_('hide palette'))
         self.palette.props.sensitive = True
         self.palette.connect('clicked', self.do_palette)
-        self.palette.props.accelerator = _('<Alt>p')
+        try:
+            self.palette.props.accelerator = _('<Alt>p')
+        except:
+            pass
         self.insert(self.palette, -1)
         self.palette.show()
 
@@ -705,7 +717,10 @@ class ProjectToolbar(gtk.Toolbar):
         self.blocks.set_tooltip(_('hide blocks'))
         self.blocks.props.sensitive = True
         self.blocks.connect('clicked', self.do_hideshow)
-        self.blocks.props.accelerator = _('<Alt>b')
+        try:
+            self.blocks.props.accelerator = _('<Alt>b')
+        except:
+            pass
         self.insert(self.blocks, -1)
         self.blocks.show()
 
@@ -719,7 +734,10 @@ class ProjectToolbar(gtk.Toolbar):
         self.runproject.set_tooltip(_('run'))
         self.runproject.props.sensitive = True
         self.runproject.connect('clicked', self.do_run)
-        self.runproject.props.accelerator = _('<Alt>r')
+        try:
+            self.runproject.props.accelerator = _('<Alt>r')
+        except:
+            pass
         self.insert(self.runproject, -1)
         self.runproject.show()
 
@@ -728,7 +746,10 @@ class ProjectToolbar(gtk.Toolbar):
         self.stepproject.set_tooltip(_('step'))
         self.stepproject.props.sensitive = True
         self.stepproject.connect('clicked', self.do_step)
-        self.stepproject.props.accelerator = _('<Alt>w')
+        try:
+            self.stepproject.props.accelerator = _('<Alt>w')
+        except:
+            pass
         self.insert(self.stepproject, -1)
         self.stepproject.show()
 
@@ -737,7 +758,10 @@ class ProjectToolbar(gtk.Toolbar):
         self.debugproject.set_tooltip(_('debug'))
         self.debugproject.props.sensitive = True
         self.debugproject.connect('clicked', self.do_debug)
-        self.debugproject.props.accelerator = _('<Alt>d')
+        try:
+            self.debugproject.props.accelerator = _('<Alt>d')
+        except:
+            pass
         self.insert(self.debugproject, -1)
         self.debugproject.show()
 
@@ -746,7 +770,10 @@ class ProjectToolbar(gtk.Toolbar):
         self.stop.set_tooltip(_('stop turtle'))
         self.stop.props.sensitive = True
         self.stop.connect('clicked', self.do_stop)
-        self.stop.props.accelerator = _('<Alt>s')
+        try:
+            self.stop.props.accelerator = _('<Alt>s')
+        except:
+            pass
         self.insert(self.stop, -1)
         self.stop.show()
 
@@ -760,7 +787,10 @@ class ProjectToolbar(gtk.Toolbar):
         self.eraser.set_tooltip(_('clean'))
         self.eraser.props.sensitive = True
         self.eraser.connect('clicked', self.do_eraser)
-        self.eraser.props.accelerator = _('<Alt>e')
+        try:
+            self.eraser.props.accelerator = _('<Alt>e')
+        except:
+            pass
         self.insert(self.eraser, -1)
         self.eraser.show()
 
@@ -773,7 +803,10 @@ class ProjectToolbar(gtk.Toolbar):
         self.fullscreenb = ToolButton( "view-fullscreen" )
         self.fullscreenb.set_tooltip(_('fullscreen'))
         self.fullscreenb.props.sensitive = True
-        self.fullscreenb.props.accelerator = '<Alt>Enter'
+        try:
+            self.fullscreenb.props.accelerator = '<Alt>Enter'
+        except:
+            pass
         self.fullscreenb.connect('clicked', self.do_fullscreen)
         self.insert(self.fullscreenb, -1)
         self.fullscreenb.show()
