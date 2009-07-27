@@ -864,7 +864,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.debugproject.set_icon("debugon")
         self.stop.set_icon("stopiton")
         self.activity.tw.lc.trace = 1
-        tawindow.runbutton(self.activity.tw, 20)
+        tawindow.runbutton(self.activity.tw, 30)
         gobject.timeout_add(1000,self.debugproject.set_icon,"debugoff")
 
     def do_stop(self, button):

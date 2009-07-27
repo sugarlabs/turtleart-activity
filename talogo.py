@@ -239,7 +239,33 @@ def infixnext(lc):
 
 def debug_trace(lc, token):
     if lc.trace:
-        showlabel(lc, token)
+        if token.name in ['forward', 'right', 'back', 'left', 'seth', 'setxy', 'arc', \
+                          'heading', 'xcor', 'ycor']:
+            my_string = token.name  +\
+                        "\nxcor= " + str(int(lc.tw.turtle.xcor)) +\
+                        "\nycor= " + str(int(lc.tw.turtle.ycor)) +\
+                        "\nheading= " + str(int(lc.tw.turtle.heading)) +\
+                        "\nscale= " + str(lc.scale)
+        elif token.name in ['penup', 'pendown', 'setcolor', 'setshade', 'fillscreen',\
+                           'settextcolor', 'settextsize', 'shade', 'color', 'pensize']:
+            if lc.tw.turtle.pendown:
+                penstatus = "\npen down"
+            else:
+                penstatus = "\npen up"
+            my_string = token.name + penstatus +\
+                        "\ncolor= " + str(int(lc.tw.turtle.color)) +\
+                        "\nshade= " + str(lc.tw.turtle.shade) +\
+                        "\npen size= " + str(lc.tw.turtle.pensize)
+        else:
+            my_string = token.name + "\nblocks status:\n"
+            for k,v in lc.boxes.iteritems():
+                tmp = k +":" + str(v) + "\n"
+                my_string += tmp
+        shp = 'info'
+        setshape(lc.tw.status_spr, lc.tw.status_shapes[shp])
+        setlabel(lc.tw.status_spr, my_string)
+        setlayer(lc.tw.status_spr, 710)
+    return
 
 def undefined_check(lc, token):
     if token.fcn != None: return False
