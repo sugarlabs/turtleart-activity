@@ -495,7 +495,7 @@ def dock_dx_dy(block1,dock1n,block2,dock2n):
                 if d2type == 'num' or d2type == 'string':
                     pass
         # some blocks can take strings, nums, or Journal
-        elif block1.proto.name in ('show', 'push', 'storein'):
+        elif block1.proto.name in ('show', 'push', 'storein', 'storeinbox1', 'storeinbox2'):
             if d2type == 'num' or d2type == 'string' or d2type == 'journal':
                 pass
         # some blocks can take media, audio, movies, of descriptions
@@ -540,7 +540,7 @@ def keypress_cb(area, event, tw):
     if keyname is not None and \
         hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
         # print "key press"
-        if mask:
+        if alt_mask:
             tw.activity._send_event("k:"+'T'+":"+keyname+":"+keyunicode)
         else:
             tw.activity._send_event("k:"+'F'+":"+keyname+":"+keyunicode)
