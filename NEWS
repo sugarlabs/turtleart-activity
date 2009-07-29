@@ -1,3 +1,9 @@
+60
+
+* fixed sharing bug
+* began work on 701 backward compatibility
+* added more debugging code
+
 59
 
 * fixed leading bug for OLPC XO portfolio
