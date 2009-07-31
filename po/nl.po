@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
-"POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2009-05-21 02:33-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-04-01 18:07+0000\n"
+"PO-Revision-Date: 2009-07-31 16:12-0400\n"
 "Last-Translator: Myckel Habets <myckel@sdf.lonestar.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -18,348 +18,453 @@ msgstr ""
 "X-Generator: Pootle 1.2.1\n"
 
 #: activity/activity.info:2
+#: /home/walter/Desktop/turtleart-activity/taexporthtml.py:189
 msgid "Turtle Art"
 msgstr "Schildpad Kunst"
 
-#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
-#: tasetup.py:53 tasetup.py:54
-msgid "title"
-msgstr "titel"
-
-#: tasetup.py:66
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:55
 msgid "text"
 msgstr "tekst"
 
-#: tasetup.py:119 tasetup.py:120
-msgid "stack"
-msgstr "stapel"
-
-#: tasetup.py:125 tasetup.py:126
-msgid "box"
-msgstr "doos"
-
-#: tasetup.py:127
-msgid "name"
-msgstr "naam"
-
-#: TurtleArtActivity.py:48
-msgid "Project"
-msgstr "Project"
-
-#:
-msgid "Save as"
-msgstr "Opslaan als"
-
-#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
-#: TurtleArtActivity.py:293
-msgid "hide palette"
-msgstr "palet verbergen"
-
-#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
-msgid "hide blocks"
-msgstr "blokken verbergen"
-
-#: TurtleArtActivity.py:194
-msgid "run"
-msgstr "start"
-
-#: TurtleArtActivity.py:202
-msgid "step"
-msgstr "stap"
-
-#: TurtleArtActivity.py:210
-msgid "stop turtle"
-msgstr "schildpad stoppen"
-
-#: TurtleArtActivity.py:236
-msgid "samples"
-msgstr "voorbeelden"
-
-#: TurtleArtActivity.py:249
-msgid "save as HTML"
-msgstr "opslaan als HTML"
-
-#: TurtleArtActivity.py
-msgid "save Logo"
-msgstr "Logo opslaan"
-
-#: TurtleArtActivity.py
-msgid "load my block"
-msgstr "laad mijn blok"
-
-#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
-#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
-msgid "show palette"
-msgstr "palet weergeven"
-
-#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
-msgid "show blocks"
-msgstr "blokken weergeven"
-
-#:
-msgid "Flow"
-msgstr "Vloeien"
-
-#:
-msgid "forever"
-msgstr "altijd"
-
-#:
-msgid "if"
-msgstr "als"
-
-#:
-msgid "then"
-msgstr "dan"
-
-#:
-msgid "else"
-msgstr "anders"
-
-#:
-msgid "repeat"
-msgstr "herhaal"
-
-#:
-msgid "stop stack"
-msgstr "stop stapel"
-
-#:
-msgid "wait"
-msgstr "wacht"
-
-#:
-msgid "My Blocks"
-msgstr "Mijn blokken"
-
-#:
-msgid "box 1"
-msgstr "doos 1"
-
-#:
-msgid "box 2"
-msgstr "doos 2"
-
-#:
-msgid "stack 1"
-msgstr "stapel 1"
-
-#:
-msgid "stack 2"
-msgstr "stapel 2"
-
-#:
-msgid "store in box 1"
-msgstr "opslaan in doos 1"
-
-#:
-msgid "store in box 2"
-msgstr "opslaan in doos 2"
-
-#:
-msgid "push"
-msgstr "neerleggen"
-
-#:
-msgid "pop"
-msgstr "afnemen"
-
-#:
-msgid "Numbers"
-msgstr "Nummers"
-
-#:
-msgid "number"
-msgstr "nummer"
-
-#:
-msgid "and"
-msgstr "en"
-
-#:
-msgid "or"
-msgstr "of"
-
-#:
-msgid "not"
-msgstr "niet"
-
-#:
-msgid "random"
-msgstr "willekeurig"
-
-#:
-msgid "min"
-msgstr "min"
-
-#:
-msgid "max"
-msgstr "max"
-
-#:
-msgid "mod"
-msgstr "mod"
-
-#:
-msgid "print"
-msgstr "print"
-
-#:
-msgid "Pen"
-msgstr "Pen"
-
-#:
-msgid "color"
-msgstr "kleur"
-
-#:
-msgid "shade"
-msgstr "schaduw"
-
-#:
-msgid "fill screen"
-msgstr "vul scherm"
-
-#:
-msgid "pen up"
-msgstr "pen omhoog"
-
-#:
-msgid "pen down"
-msgstr "pen omlaag"
-
-#:
-msgid "set pen size"
-msgstr "zet pen dikte"
-
-#:
-msgid "pen size"
-msgstr "pen dikte"
-
-#:
-msgid "set shade"
-msgstr "zet schaduw"
-
-#:
-msgid "set color"
-msgstr "zet kleur"
-
-#:
-msgid "set text color"
-msgstr "zet tekstkleur"
-
-#:
-msgid "Blocks"
-msgstr "Blokken"
-
-#:
-msgid "Turtle"
-msgstr "Schildpad"
-
-#:
-msgid "clean"
-msgstr "wissen"
-
-#:
-msgid "forward"
-msgstr "vooruit"
-
-#:
-msgid "back"
-msgstr "terug"
-
-#:
-msgid "right"
-msgstr "rechts"
-
-#:
-msgid "left"
-msgstr "links"
-
-#:
-msgid "arc"
-msgstr "boog"
-
-#:
-msgid "angle"
-msgstr "hoek"
-
-#:
-msgid "radius"
-msgstr "straal"
-
-#:
-msgid "heading"
-msgstr "richting"
-
-#
-msgid "set heading"
-msgstr "richting instellen"
-
-#:
-msgid "set xy"
-msgstr "zet xy"
-
-#:
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:99
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:49
+#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:41
 msgid "x"
 msgstr "x"
 
-#:
-msgid "y"
-msgstr "y"
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:122
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:123
+msgid "stack"
+msgstr "stapel"
 
-#:
-msgid "xcor"
-msgstr "xcor"
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:128
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:129
+msgid "box"
+msgstr "doos"
 
-#:
-msgid "ycor"
-msgstr "ycor"
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:130
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:47
+msgid "name"
+msgstr "naam"
 
-#:
-msgid "Sensors"
-msgstr "Sensors"
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:133
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:134
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:135
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:136
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:137
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:138
+msgid "title"
+msgstr "titel"
 
-#:
-msgid "volume"
-msgstr "volume"
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:83
+msgid "Project"
+msgstr "Project"
 
-#:
-msgid "pitch"
-msgstr "toonhoogte"
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:85
+msgid "Save as"
+msgstr "Opslaan als"
 
-#:
-msgid "voltage"
-msgstr "voltage"
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:451
+msgid "samples"
+msgstr "voorbeelden"
 
-#:
-msgid "resistance"
-msgstr "weerstand"
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:465
+msgid "save as HTML"
+msgstr "opslaan als HTML"
 
-#:
-msgid "Templates"
-msgstr "Sjablonen"
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:473
+msgid "save Logo"
+msgstr "Logo opslaan"
 
-#:
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:481
+msgid "save as image"
+msgstr "opslaan als afbeelding"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:494
+msgid "load my block"
+msgstr "laad mijn blok"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:666
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:750
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:760
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:796
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:808
+msgid "hide palette"
+msgstr "palet verbergen"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:675
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:789
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:806
+#: /home/walter/Desktop/turtleart-activity/svg/hideblocks.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:41
+msgid "hide blocks"
+msgstr "blokken verbergen"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:689
+msgid "run"
+msgstr "start"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:698
+msgid "step"
+msgstr "stap"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:707
+msgid "stop turtle"
+msgstr "schildpad stoppen"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:721
+#: /home/walter/Desktop/turtleart-activity/svg/clean.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:40
+msgid "clean"
+msgstr "wissen"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:735
+msgid "fullscreen"
+msgstr "schermvullend"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:746
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:755
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:793
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:802
+msgid "show palette"
+msgstr "palet weergeven"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:786
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:800
+msgid "show blocks"
+msgstr "blokken weergeven"
+
+#: /home/walter/Desktop/turtleart-activity/svg/hat2.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:42
+#: /home/walter/Desktop/turtleart-activity/svg/stack2.py:40
+msgid "stack 2"
+msgstr "stapel 2"
+
+#: /home/walter/Desktop/turtleart-activity/svg/stack1.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/hat1.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:41
+msgid "stack 1"
+msgstr "stapel 1"
+
+#: /home/walter/Desktop/turtleart-activity/svg/heading.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:54
+msgid "heading"
+msgstr "richting"
+
+#: /home/walter/Desktop/turtleart-activity/svg/start.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:48
+msgid "start"
+msgstr "begin"
+
+#: /home/walter/Desktop/turtleart-activity/svg/keyboard.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:40
 msgid "Keyboard"
 msgstr "Toetsenbord"
 
-#:
-msgid "read key"
-msgstr "lees toets"
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:40
+msgid "Flow"
+msgstr "Vloeien"
 
-#:
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/wait.py:40
+msgid "wait"
+msgstr "wacht"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:42
+#: /home/walter/Desktop/turtleart-activity/svg/forever.py:40
+msgid "forever"
+msgstr "altijd"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/repeat.py:40
+msgid "repeat"
+msgstr "herhaal"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/if.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:40
+msgid "if"
+msgstr "als"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:45
+#: /home/walter/Desktop/turtleart-activity/svg/if.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:41
+msgid "then"
+msgstr "dan"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:46
+#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:42
+msgid "else"
+msgstr "anders"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:47
+#: /home/walter/Desktop/turtleart-activity/svg/stopstack.py:40
+msgid "stop stack"
+msgstr "stop stapel"
+
+#: /home/walter/Desktop/turtleart-activity/svg/print.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:45
+msgid "print"
+msgstr "print"
+
+#: /home/walter/Desktop/turtleart-activity/svg/color.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:48
+msgid "color"
+msgstr "kleur"
+
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:40
+msgid "My Blocks"
+msgstr "Mijn blokken"
+
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/storeinbox1.py:40
+msgid "store in box 1"
+msgstr "opslaan in doos 1"
+
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/box1.py:40
+msgid "box 1"
+msgstr "doos 1"
+
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:45
+#: /home/walter/Desktop/turtleart-activity/svg/storeinbox2.py:40
+msgid "store in box 2"
+msgstr "opslaan in doos 2"
+
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:46
+#: /home/walter/Desktop/turtleart-activity/svg/box2.py:40
+msgid "box 2"
+msgstr "doos 2"
+
+#: /home/walter/Desktop/turtleart-activity/svg/printheap.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:46
+msgid "show heap"
+msgstr "stapel weergeven"
+
+#: /home/walter/Desktop/turtleart-activity/svg/pendown.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:42
+msgid "pen down"
+msgstr "pen omlaag"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:40
+msgid "Numbers"
+msgstr "Nummers"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/random.py:40
+msgid "random"
+msgstr "willekeurig"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:42
+#: /home/walter/Desktop/turtleart-activity/svg/and.py:41
+msgid "and"
+msgstr "en"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/or.py:40
+msgid "or"
+msgstr "of"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/not.py:40
+msgid "not"
+msgstr "niet"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:46
+msgid "number"
+msgstr "nummer"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:47
+msgid "min"
+msgstr "min"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:48
+msgid "max"
+msgstr "max"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:49
+#: /home/walter/Desktop/turtleart-activity/svg/remainder2.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/remainder.py:40
+msgid "mod"
+msgstr "mod"
+
+#: /home/walter/Desktop/turtleart-activity/svg/ycor.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:53
+msgid "ycor"
+msgstr "ycor"
+
+#: /home/walter/Desktop/turtleart-activity/svg/shade.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:42
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:49
+msgid "shade"
+msgstr "schaduw"
+
+#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:40
+msgid "Templates"
+msgstr "Sjablonen"
+
+#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:42
+#: /home/walter/Desktop/turtleart-activity/svg/sound.py:40
 msgid "sound"
 msgstr "geluid"
 
-#:
-msgid "hres"
-msgstr "hres"
+#: /home/walter/Desktop/turtleart-activity/svg/right.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:44
+msgid "right"
+msgstr "rechts"
 
-#:
-msgid "vres"
-msgstr "vres"
+#: /home/walter/Desktop/turtleart-activity/svg/forward.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:41
+msgid "forward"
+msgstr "vooruit"
 
-#:
-msgid "start"
-msgstr "begin"
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/kbinput.py:40
+msgid "read key"
+msgstr "lees toets"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:42
+msgid "keyboard"
+msgstr "toetsenbord"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/hres.py:40
+msgid "width"
+msgstr "breedte"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/vres.py:40
+msgid "height"
+msgstr "hoogte"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:45
+#: /home/walter/Desktop/turtleart-activity/svg/pop.py:40
+msgid "pop"
+msgstr "afnemen"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:47
+#: /home/walter/Desktop/turtleart-activity/svg/clearheap.py:40
+msgid "empty heap"
+msgstr "stapel wissen"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:48
+#: /home/walter/Desktop/turtleart-activity/svg/push.py:40
+msgid "push"
+msgstr "neerleggen"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:42
+#: /home/walter/Desktop/turtleart-activity/svg/back.py:40
+msgid "back"
+msgstr "terug"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/left.py:40
+msgid "left"
+msgstr "links"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:45
+#: /home/walter/Desktop/turtleart-activity/svg/arc.py:40
+msgid "arc"
+msgstr "boog"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:46
+#: /home/walter/Desktop/turtleart-activity/svg/arc.py:41
+msgid "angle"
+msgstr "hoek"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:47
+#: /home/walter/Desktop/turtleart-activity/svg/arc.py:42
+msgid "radius"
+msgstr "straal"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:48
+msgid "setyx"
+msgstr "setyx"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:50
+#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:42
+msgid "y"
+msgstr "y"
+
+#
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:51
+#: /home/walter/Desktop/turtleart-activity/svg/seth.py:40
+msgid "set heading"
+msgstr "richting instellen"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:52
+#: /home/walter/Desktop/turtleart-activity/svg/xcor.py:40
+msgid "xcor"
+msgstr "xcor"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:55
+msgid "Turtle"
+msgstr "Schildpad"
+
+#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:46
+msgid "fill screen"
+msgstr "vul scherm"
+
+#: /home/walter/Desktop/turtleart-activity/svg/settextcolor.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:50
+msgid "set text color"
+msgstr "zet tekstkleur"
+
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:40
+msgid "Pen"
+msgstr "Pen"
+
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/penup.py:40
+msgid "pen up"
+msgstr "pen omhoog"
+
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/setpensize.py:40
+msgid "set pen size"
+msgstr "zet pen dikte"
+
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/setcolor.py:40
+msgid "set color"
+msgstr "zet kleur"
+
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:45
+#: /home/walter/Desktop/turtleart-activity/svg/setshade.py:40
+msgid "set shade"
+msgstr "zet schaduw"
+
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:47
+#: /home/walter/Desktop/turtleart-activity/svg/pensize.py:40
+msgid "pen size"
+msgstr "pen dikte"
+
+#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:40
+msgid "set xy"
+msgstr "zet xy"
+
+#~ msgid "Blocks"
+#~ msgstr "Blokken"
+
+#~ msgid "Sensors"
+#~ msgstr "Sensors"
+
+#~ msgid "volume"
+#~ msgstr "volume"
+
+#~ msgid "pitch"
+#~ msgstr "toonhoogte"
+
+#~ msgid "voltage"
+#~ msgstr "voltage"
+
+#~ msgid "resistance"
+#~ msgstr "weerstand"
+
+#~ msgid "hres"
+#~ msgstr "hres"
+
+#~ msgid "vres"
+#~ msgstr "vres"
