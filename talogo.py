@@ -667,7 +667,7 @@ def show_description(lc, media, x, y, w, h):
             print "no description?"
 
 def draw_title(lc,title,x,y):
-    draw_text(lc.tw.turtle,title,int(x),0,lc.title_height, \
+    draw_text(lc.tw.turtle,title,int(x),y,lc.title_height, \
         lc.tw.turtle.width-x)
 
 def calc_position(lc,t):
@@ -922,7 +922,7 @@ def write(lc, string, fsize):
     # convert from Turtle coordinates to screen coordinates
     x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
     y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
-    draw_text(lc.tw.turtle,string,x,y,int(fsize),lc.tw.turtle.width)
+    draw_text(lc.tw.turtle,string,x,y-15,int(fsize),lc.tw.turtle.width)
 
 def hideblocks(lc):
     from tawindow import hideshow_button
