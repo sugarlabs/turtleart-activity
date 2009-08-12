@@ -24,10 +24,20 @@ pygtk.require('2.0')
 import gtk
 import pickle
 try:
+    _in_a_pickle = False
     import json
     json.dumps
+    from json import load as jload
+    from json import dump as jdump
 except (ImportError, AttributeError):
-    import simplejson as json
+    try:
+        import simplejson as json
+        from json import load as jload
+        from json import dump as jdump
+    except:
+        # use pickle on old systems
+        _in_a_pickle = True
+
 from StringIO import StringIO
 import os.path
 
@@ -64,9 +74,9 @@ def load_files(tw,ta_file, png_file=''):
         f.seek(0) # rewind necessary because of pickle.load
         text = f.read()
         io = StringIO(text)
-        listdata = json.load(io)
+        listdata = jload(io)
         print listdata
-        # listdata = json.decode(text)
+        # listdata = jdecode(text)
         data = tuplify(listdata) # json converts tuples to lists
     f.close()
     new_project(tw)
@@ -81,20 +91,22 @@ def get_load_name(tw):
 
 # unpack serialized data sent across a share
 def load_string(tw,text):
-    io = StringIO(text)
-    listdata = json.load(io)
-    # listdata = json.decode(text)
-    data = tuplify(listdata) # json converts tuples to lists
-    new_project(tw)
-    read_data(tw,data)
+    if _in_a_pickle is False:
+        io = StringIO(text)
+        listdata = jload(io)
+        # listdata = jdecode(text)
+        data = tuplify(listdata) # json converts tuples to lists
+        new_project(tw)
+        read_data(tw,data)
 
 # unpack sserialized data from the clipboard
 def clone_stack(tw,text):
-    io = StringIO(text)
-    listdata = json.load(io)
-    # listdata = json.decode(text)
-    data = tuplify(listdata) # json converts tuples to lists
-    read_stack(tw,data)
+    if _in_a_pickle is False:
+        io = StringIO(text)
+        listdata = jload(io)
+        # listdata = jdecode(text)
+        data = tuplify(listdata) # json converts tuples to lists
+        read_stack(tw,data)
 
 # paste stack from the clipboard
 def read_stack(tw,data):
@@ -196,21 +208,28 @@ def get_save_name(tw):
 def save_data(tw,fname):
     f = file(fname, "w")
     data = assemble_data_to_save(tw)
-    io = StringIO()
-    json.dump(data,io)
-    text = io.getvalue()
-    # text = json.encode(data)
-    f.write(text)
+    if _in_a_pickle is True:
+        pickle.dump(data,f)
+    else:
+        io = StringIO()
+        jdump(data,io)
+        text = io.getvalue()
+        print text
+        # text = jencode(data)
+        f.write(text)
     f.close()
 
 # Used to send data across a shared session
 def save_string(tw):
-    data = assemble_data_to_save(tw)
-    io = StringIO()
-    json.dump(data,io)
-    text = io.getvalue()
-    # text = json.encode(data)
-    return text
+    if _in_a_pickle is False:
+        data = assemble_data_to_save(tw)
+        io = StringIO()
+        jdump(data,io)
+        text = io.getvalue()
+        # text = jencode(data)
+        return text
+    else:
+        return ""
 
 def assemble_data_to_save(tw):
     bs = blocks(tw)
@@ -236,12 +255,15 @@ def assemble_data_to_save(tw):
 
 # serialize a stack to save to the clipboard
 def serialize_stack(tw):
-    data = assemble_stack_to_clone(tw)
-    io = StringIO()
-    json.dump(data,io)
-    text = io.getvalue()
-    # text = json.encode(data)
-    return text
+    if _in_a_pickle is False:
+        data = assemble_stack_to_clone(tw)
+        io = StringIO()
+        jdump(data,io)
+        text = io.getvalue()
+        # text = jencode(data)
+        return text
+    else:
+        return ""
 
 # find the stack under the cursor and serialize it
 def assemble_stack_to_clone(tw):

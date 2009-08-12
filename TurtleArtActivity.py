@@ -390,8 +390,8 @@ class TurtleArtActivity(activity.Activity):
 
         if hasattr(self, 'tw'):
             _logger.debug("Reading file %s" %  file_path)
-            # should be a tar file
-            if file_path[-5:] == ".gtar":
+            # should be a gtar (newer builds) or tar (767) file
+            if file_path[-5:] == ".gtar" or file_path[-4:] == ".tar":
                 tar_fd = tarfile.open(file_path, 'r')
                 tmpdir = tempfile.mkdtemp()
                 try:
