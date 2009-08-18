@@ -486,8 +486,9 @@ def dock_dx_dy(block1,dock1n,block2,dock2n):
     if d1type!=d2type:
         # some blocks can take strings or nums
         if block1.proto.name in ('write', 'plus2', 'equal', 'less', 'greater', \
-            'template1', 'template2', 'template3', 'template4', \
-            'template6', 'template7', 'nop', 'print'):
+                                 'template1', 'template2', 'template3', \
+                                 'template4', 'template6', 'template7', 'nop', \
+                                 'print', 'stack'):
             if block1.proto.name == 'write' and d1type == 'string':
                 if d2type == 'num' or d2type == 'string':
                     pass
@@ -495,7 +496,8 @@ def dock_dx_dy(block1,dock1n,block2,dock2n):
                 if d2type == 'num' or d2type == 'string':
                     pass
         # some blocks can take strings, nums, or Journal
-        elif block1.proto.name in ('show', 'push', 'storein', 'storeinbox1', 'storeinbox2'):
+        elif block1.proto.name in ('show', 'push', 'storein', 'storeinbox1', \
+                                   'storeinbox2'):
             if d2type == 'num' or d2type == 'string' or d2type == 'journal':
                 pass
         # some blocks can take media, audio, movies, of descriptions
@@ -541,9 +543,9 @@ def keypress_cb(area, event, tw):
         hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
         # print "key press"
         if alt_mask:
-            tw.activity._send_event("k:"+'T'+":"+keyname+":"+keyunicode)
+            tw.activity._send_event("k:"+'T'+":"+keyname+":"+str(keyunicode))
         else:
-            tw.activity._send_event("k:"+'F'+":"+keyname+":"+keyunicode)
+            tw.activity._send_event("k:"+'F'+":"+keyname+":"+str(keyunicode))
     return keyname
 '''
     if len(keyname)>1:
