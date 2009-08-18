@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007, Playful Invention Company
 #Copyright (c) 2008-9, Walter Bender
+#Copyright (c) 2009, Raúl Gutiérrez Segalés
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -44,9 +45,9 @@ from taturtle import *
 from taproject import *
 from sugar.graphics.objectchooser import ObjectChooser
 
-# from palettes import ContentInvoker
-# from gettext import gettext as _
-"""
+from palettes import ContentInvoker
+from gettext import gettext as _
+
 class PopupHandler():
 
     def __init__(self):
@@ -61,7 +62,7 @@ class PopupHandler():
             self.table[block_name] = ContentInvoker(msg)
             return self.table[block_name]
 
-        print("no hay invoker para" + block_name)
+        print("no invoker for" + block_name)
         return None
 
     def _getHelpMessage(self, block_name):
@@ -69,13 +70,19 @@ class PopupHandler():
         return _(help_msg_name)
 
 popupHandler = PopupHandler()
-"""
+
+timeout_tag = [0]
+
 # dead key dictionaries
-dead_grave = {'A':192,'E':200,'I':204,'O':210,'U':217,'a':224,'e':232,'i':236,'o':242,'u':249}
-dead_acute = {'A':193,'E':201,'I':205,'O':211,'U':218,'a':225,'e':233,'i':237,'o':243,'u':250}
-dead_circumflex = {'A':194,'E':202,'I':206,'O':212,'U':219,'a':226,'e':234,'i':238,'o':244,'u':251}
+dead_grave = {'A':192,'E':200,'I':204,'O':210,'U':217,'a':224,'e':232,'i':236,\
+              'o':242,'u':249}
+dead_acute = {'A':193,'E':201,'I':205,'O':211,'U':218,'a':225,'e':233,'i':237,\
+              'o':243,'u':250}
+dead_circumflex = {'A':194,'E':202,'I':206,'O':212,'U':219,'a':226,'e':234,\
+                   'i':238,'o':244,'u':251}
 dead_tilde = {'A':195,'O':211,'N':209,'U':360,'a':227,'o':245,'n':241,'u':361}
-dead_diaeresis = {'A':196,'E':203,'I':207,'O':211,'U':218,'a':228,'e':235,'i':239,'o':245,'u':252}
+dead_diaeresis = {'A':196,'E':203,'I':207,'O':211,'U':218,'a':228,'e':235,\
+                  'i':239,'o':245,'u':252}
 dead_abovering = {'A':197,'a':229}
 
 #
@@ -302,11 +309,37 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
         print "processing remote mouse move: " + str(x) + " " + str(y)
     if tw.draggroup is None:
         # popup help from RGS
-#        spr = findsprite(tw,(x,y))
-#        if spr and spr.type == 'category':
-#            proto = get_proto_from_category(tw,x,y)
-#            if proto and proto!='hide':
-#                showPopup(proto.name)
+        spr = findsprite(tw,(x,y))
+        if spr and spr.type == 'category':
+            proto = get_proto_from_category(tw,x,y)
+            if proto and proto!='hide':
+                if timeout_tag[0] == 0:
+                    timeout_tag[0] = showPopup(proto.name)
+                    return
+            else:
+                if timeout_tag[0] > 0:
+                    try:
+                        gobject.source_remove(timeout_tag[0])
+                        timeout_tag[0] = 0
+                    except:
+                        timeout_tag[0] = 0
+        elif spr and spr.type == 'selbutton':
+            if timeout_tag[0] == 0:
+                timeout_tag[0] = showPopup(spr.name)
+            else:
+                if timeout_tag[0] > 0:
+                    try:
+                        gobject.source_remove(timeout_tag[0])
+                        timeout_tag[0] = 0
+                    except:
+                        timeout_tag[0] = 0
+        else:
+            if timeout_tag[0] > 0:
+                try:
+                    gobject.source_remove(timeout_tag[0])
+                    timeout_tag[0] = 0
+                except:
+                    timeout_tag[0] = 0
         return
     tw.block_operation = 'move'
     spr = tw.draggroup[0]
@@ -732,6 +765,7 @@ def xy(event):
 def showPopup(block_name):
     i = popupHandler.getInvoker(block_name)
     if i:
-        i.showPopup()
+        return gobject.timeout_add(500, i.showPopup, "")
+    return 0
 
 
