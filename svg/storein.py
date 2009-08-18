@@ -95,7 +95,7 @@ def main():
     <tspan]\n\
        x=\"65\"]\n\
        y=\"24\"]\n\
-       style=\"font-size:18px\">\"
+       style=\"font-size:18px\">"
 
     data1 = \
 "</tspan> \n\
