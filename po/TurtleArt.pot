@@ -587,10 +587,10 @@ msgstr "turn turtle clockwise (angle in degrees)"
 msgid "popup_help_arc"
 msgstr "move turtle along an arc"
 
-msgid "popup_help_setyx"
+msgid "popup_help_setxy"
 msgstr "move turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 
-msgid "popup_help_setheading"
+msgid "popup_help_seth"
 msgstr "set the heading of the turtle (0 is towards the top of the screen.)"
 
 msgid "popup_help_show"
@@ -611,7 +611,7 @@ msgstr "holds current heading value of the turtle (can be used in place of a num
 msgid "popup_help_scale"
 msgstr "holds current scale value (can be used in place of a number block)"
 
-msgid " popup_help_penup"
+msgid "popup_help_penup"
 msgstr "turtle will not draw when moved"
 
 msgid "popup_help_pendown"
@@ -665,7 +665,7 @@ msgstr "multiplies two numeric inputs"
 msgid "popup_help_division2"
 msgstr "divides top numeric input (numerator) by bottom numeric input (denominator)"
 
-msgid "popup_help_remaninder2"
+msgid "popup_help_remainder2"
 msgstr "modular (remainder) operator"
 
 msgid "popup_help_identity"
@@ -681,13 +681,13 @@ msgid "popup_help_random"
 msgstr "returns random number between minimum (left) and maximum (right) values"
 
 msgid "popup_help_equal"
-msgstr "logical = operator"
+msgstr "logical equal-to operator"
 
 msgid "popup_help_greater"
-msgstr "logical > operator"
+msgstr "logical greater-than operator"
 
 msgid "popup_help_less"
-msgstr "logical < operator"
+msgstr "logical less-than operator"
 
 msgid "popup_help_and"
 msgstr "logical AND operator"
@@ -719,6 +719,18 @@ msgstr "the canvas width"
 msgid "popup_help_vres"
 msgstr "the canvas height"
 
+msgid "popup_help_leftpos"
+msgstr "xcor of left of screen"
+
+msgid "popup_help_toppos"
+msgstr "ycor of top of screen"
+
+msgid "popup_help_rightpos"
+msgstr "xcor of right of screen"
+
+msgid "popup_help_bottompos"
+msgstr "ycor of bottom of screen"
+
 msgid "popup_help_push"
 msgstr "push value onto FILO (first-in last-out) heap"
 
@@ -744,7 +756,7 @@ msgid "popup_help_if"
 msgstr "if-then operator that uses boolean operators from Numbers palette"
 
 msgid "popup_help_ifelse"
-msgstr "if-then-else operator uses boolean operators from Numbers palette"
+msgstr "if-then-else operator that uses boolean operators from Numbers palette"
 
 msgid "popup_help_stopstack"
 msgstr "do not continue current action"
