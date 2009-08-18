@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-18 17:19+0000\n"
+"POT-Creation-Date: 2009-08-18 22:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -546,3 +546,28 @@ msgstr ""
 #: /home/walter/Desktop/turtleart-activity/svg/setxy.py:40
 msgid "set xy"
 msgstr ""
+
+#: popup help
+msgid "popup_help_turtle"
+msgstr "palette of turtle commands"
+
+msgid "popup_help_pen"
+msgstr "palette of pen commands"
+
+msgid "popup_help_numbers"
+msgstr "palette of numeric operators"
+
+msgid "popup_help_sensors"
+msgstr "palette of extra options"
+
+msgid "popup_help_flow"
+msgstr "palette of flow operators"
+
+msgid "popup_help_myblocks"
+msgstr "palette of variable blocks"
+
+msgid "popup_help_template"
+msgstr "palette of presentation templates"
+
+msgid "popup_help_clean"
+msgstr "clear the screen and reset the turtle"
