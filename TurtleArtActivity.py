@@ -578,7 +578,7 @@ class SaveAsToolbar(gtk.Toolbar):
 
         # Write any metadata (here we specifically set the title of the file
         # and specify that this is a plain text file). 
-        dsobject.metadata['title'] = "Turtle Art portfolio"
+        dsobject.metadata['title'] = self.activity.get_title() + " portfolio"
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         if embed_flag == True:
             dsobject.metadata['mime_type'] = 'text/html'
@@ -607,7 +607,7 @@ class SaveAsToolbar(gtk.Toolbar):
 
         # Write any metadata (here we specifically set the title of the file
         # and specify that this is a plain text file). 
-        dsobject.metadata['title'] = filename
+        dsobject.metadata['title'] = self.activity.get_title() + ".lg"
         dsobject.metadata['mime_type'] = 'text/plain'
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
 
@@ -675,7 +675,7 @@ class SaveAsToolbar(gtk.Toolbar):
         dsobject = datastore.create()
 
         # Write metadata
-        dsobject.metadata['title'] = "Turtle Art image"
+        dsobject.metadata['title'] = self.activity.get_title() + " image"
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         dsobject.metadata['mime_type'] = 'image/png'
         dsobject.set_file_path(pngfile)
@@ -947,7 +947,7 @@ class ProjectToolbar(gtk.Toolbar):
         dsobject = datastore.create()
 
         # Write any metadata
-        dsobject.metadata['title'] = "Turtle Art snapshot"
+        dsobject.metadata['title'] = self.activity.get_title() + " snapshot"
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         dsobject.metadata['mime_type'] = 'application/x-turtle-art'
         dsobject.metadata['activity'] = 'org.laptop.TurtleArtActivity'
