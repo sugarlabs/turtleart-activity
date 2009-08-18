@@ -84,7 +84,7 @@ class TurtleArtActivity(activity.Activity):
         self.editToolbar = EditToolbar(self)
         self.toolbox.add_toolbar(_('Edit'), self.editToolbar)
         self.saveasToolbar = SaveAsToolbar(self)
-        self.toolbox.add_toolbar( _('Save as'), self.saveasToolbar )
+        self.toolbox.add_toolbar( _('Import/Export'), self.saveasToolbar )
         self.toolbox.show()
 
         # Set the project toolbar as the initial one selected
@@ -147,6 +147,7 @@ class TurtleArtActivity(activity.Activity):
             dsobject.metadata['icon-color'] = \
                 profile.get_color().to_string()
             dsobject.metadata['mime_type'] = 'text/x-python'
+            dsobject.metadata['activity'] = 'org.laptop.Pippy'
             dsobject.set_file_path(os.path.join( \
                 activity.get_bundle_path(), 'tamyblock.py'))
             datastore.write(dsobject)
@@ -359,28 +360,12 @@ class TurtleArtActivity(activity.Activity):
         self.jobject_new_patch()
 
     """
-    Write the project and a screen snapshot to the Journal
+    Write the project to the Journal
     """
     def write_file(self, file_path):
-        _logger.debug("Writing file %s" % file_path)
-        self.metadata['mime_type'] = 'application/x-tar'
-        import tempfile
-        tar_fd = tarfile.open(file_path, 'w')
-        pngfd, pngfile = tempfile.mkstemp(".png")
-        tafd, tafile = tempfile.mkstemp(".ta")
-        del pngfd
-        del tafd
-
-        try:
-            tawindow.save_data(self.tw,tafile)
-            tawindow.save_pict(self.tw,pngfile)
-            tar_fd.add(tafile, "ta_code.ta")
-            tar_fd.add(pngfile, "ta_image.png") 
-
-        finally:
-            tar_fd.close()
-            os.remove(pngfile)
-            os.remove(tafile)
+        _logger.debug("Write file: %s" % file_path)
+        self.metadata['mime_type'] = 'application/x-turtle-art'
+        tawindow.save_data(self.tw,file_path)
 
     """
     Read a project in and then run it
@@ -389,8 +374,8 @@ class TurtleArtActivity(activity.Activity):
         import tarfile,os,tempfile,shutil
 
         if hasattr(self, 'tw'):
-            _logger.debug("Reading file %s" %  file_path)
-            # should be a gtar (newer builds) or tar (767) file
+            _logger.debug("Read file: %s" %  file_path)
+            # Could be a gtar (newer builds) or tar (767) file
             if file_path[-5:] == ".gtar" or file_path[-4:] == ".tar":
                 tar_fd = tarfile.open(file_path, 'r')
                 tmpdir = tempfile.mkdtemp()
@@ -402,8 +387,9 @@ class TurtleArtActivity(activity.Activity):
                 finally:
                     shutil.rmtree(tmpdir)
                     tar_fd.close()
-            # try to open a .ta file
-            elif file_path[-3:] == ".ta":
+            # Otherwise, assume it is a .ta file
+            else:
+                print "trying to open a .ta file:" + file_path
                 tawindow.load_files(self.tw, file_path, "")
             # run the activity
             tawindow.runbutton(self.tw, 0)
@@ -419,11 +405,11 @@ class TurtleArtActivity(activity.Activity):
         self._jobject.metadata['title'] = oldj.metadata['title']
         self._jobject.metadata['title_set_by_user'] = \
             oldj.metadata['title_set_by_user']
-        self._jobject.metadata['activity'] = self.get_service_name()
+        # self._jobject.metadata['activity'] = self.get_service_name()
         self._jobject.metadata['activity_id'] = self.get_id()
         self._jobject.metadata['keep'] = '0'
         # Is this the correct syntax for saving the buddies list?
-        self._jobject.metadata['buddies'] = self.tw.buddies
+        # self._jobject.metadata['buddies'] = self.tw.buddies
         self._jobject.metadata['preview'] = ''
         self._jobject.metadata['icon-color'] = profile.get_color().to_string()
         self._jobject.file_path = ''
@@ -511,23 +497,6 @@ class SaveAsToolbar(gtk.Toolbar):
         gtk.Toolbar.__init__(self)
         self.activity = pc
 
-        # project open
-        self.sampb = ToolButton( "stock-open" )
-        self.sampb.set_tooltip(_('samples'))
-        self.sampb.props.sensitive = True
-        self.sampb.connect('clicked', self.do_samples)
-        try:
-             self.sampb.props.accelerator = _('<Alt>o')
-        except:
-            pass
-        self.insert(self.sampb, -1)
-        self.sampb.show()
-
-        separator = gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        self.insert(separator, -1)
-        separator.show()
-
         # HTML save source button
         self.savehtml = ToolButton( "htmloff" )
         self.savehtml.set_tooltip(_('save as HTML'))
@@ -544,6 +513,14 @@ class SaveAsToolbar(gtk.Toolbar):
         self.insert(self.savelogo, -1)
         self.savelogo.show()
 
+        # Save as image button
+        self.saveimage = ToolButton( "image-saveoff" )
+        self.saveimage.set_tooltip(_('save as image'))
+        self.saveimage.props.sensitive = True
+        self.saveimage.connect('clicked', self.do_saveimage)
+        self.insert(self.saveimage, -1)
+        self.saveimage.show()
+
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
         self.insert(separator, -1)
@@ -556,11 +533,6 @@ class SaveAsToolbar(gtk.Toolbar):
         self.loadmyblock.connect('clicked', self.do_loadmyblock)
         self.insert(self.loadmyblock, -1)
         self.loadmyblock.show()
-
-    def do_samples(self, button):
-        tawindow.load_file(self.activity.tw)
-        # run the activity
-        tawindow.runbutton(self.activity.tw, 0)
 
     def do_savehtml(self, button):
         # write html out to datastore
@@ -602,21 +574,22 @@ class SaveAsToolbar(gtk.Toolbar):
                 tar_fd.close()
 
         # Create a datastore object
-        file_dsobject = datastore.create()
+        dsobject = datastore.create()
 
         # Write any metadata (here we specifically set the title of the file
         # and specify that this is a plain text file). 
-        file_dsobject.metadata['title'] = "Turtle Art portfolio"
-        file_dsobject.metadata['icon-color'] = profile.get_color().to_string()
+        dsobject.metadata['title'] = "Turtle Art portfolio"
+        dsobject.metadata['icon-color'] = profile.get_color().to_string()
         if embed_flag == True:
-            file_dsobject.metadata['mime_type'] = 'text/html'
-            file_dsobject.set_file_path(html_file)
+            dsobject.metadata['mime_type'] = 'text/html'
+            dsobject.set_file_path(html_file)
         else:
-            file_dsobject.metadata['mime_type'] = 'application/x-tar'
-            file_dsobject.set_file_path(tar_path)
+            dsobject.metadata['mime_type'] = 'application/x-tar'
+            dsobject.set_file_path(tar_path)
 
-        datastore.write(file_dsobject)
-        file_dsobject.destroy()
+        dsobject.metadata['activity'] = 'org.laptop.WebActivity'
+        datastore.write(dsobject)
+        dsobject.destroy()
         gobject.timeout_add(250,self.savehtml.set_icon, "htmloff")
         return
 
@@ -630,13 +603,13 @@ class SaveAsToolbar(gtk.Toolbar):
         filename = "logosession.lg"
 
         # Create a datastore object
-        file_dsobject = datastore.create()
+        dsobject = datastore.create()
 
         # Write any metadata (here we specifically set the title of the file
         # and specify that this is a plain text file). 
-        file_dsobject.metadata['title'] = filename
-        file_dsobject.metadata['mime_type'] = 'text/plain'
-        file_dsobject.metadata['icon-color'] = profile.get_color().to_string()
+        dsobject.metadata['title'] = filename
+        dsobject.metadata['mime_type'] = 'text/plain'
+        dsobject.metadata['icon-color'] = profile.get_color().to_string()
 
         # save the html code to the instance directory
         try:
@@ -656,9 +629,9 @@ class SaveAsToolbar(gtk.Toolbar):
             f.close()
 
         # Set the file_path in the datastore.
-        file_dsobject.set_file_path(file_path)
+        dsobject.set_file_path(file_path)
 
-        datastore.write(file_dsobject)
+        datastore.write(dsobject)
         gobject.timeout_add(250,self.savelogo.set_icon, "logo-saveoff")
         return
 
@@ -689,6 +662,28 @@ class SaveAsToolbar(gtk.Toolbar):
         finally:
             chooser.destroy()
             del chooser
+
+    def do_saveimage(self, button):
+        self.saveimage.set_icon("image-saveon")
+        _logger.debug("saving image to journal")
+        import tempfile
+        pngfd, pngfile = tempfile.mkstemp(".png")
+        del pngfd
+        tawindow.save_pict(self.activity.tw,pngfile)
+
+        # Create a datastore object
+        dsobject = datastore.create()
+
+        # Write metadata
+        dsobject.metadata['title'] = "Turtle Art image"
+        dsobject.metadata['icon-color'] = profile.get_color().to_string()
+        dsobject.metadata['mime_type'] = 'image/png'
+        dsobject.set_file_path(pngfile)
+
+        datastore.write(dsobject)
+        dsobject.destroy()
+        gobject.timeout_add(250,self.saveimage.set_icon, "image-saveoff")
+        return
 
 """
 Project toolbar: show/hide palettes; show/hide blocks; run; walk; stop; erase;
@@ -816,13 +811,34 @@ class ProjectToolbar(gtk.Toolbar):
         self.insert(separator, -1)
         separator.show()
 
-        # Save as image button
-        self.saveimage = ToolButton( "image-saveoff" )
-        self.saveimage.set_tooltip(_('save as image'))
-        self.saveimage.props.sensitive = True
-        self.saveimage.connect('clicked', self.do_saveimage)
-        self.insert(self.saveimage, -1)
-        self.saveimage.show()
+        # Save snapshot ("keep")
+        self.keepb = ToolButton( "filesave" )
+        self.keepb.set_tooltip(_('save snapshot'))
+        self.keepb.props.sensitive = True
+        try:
+            self.fullscreenb.props.accelerator = '<Ctrl>S'
+        except:
+            pass
+        self.keepb.connect('clicked', self.do_savesnapshot)
+        self.insert(self.keepb, -1)
+        self.keepb.show()
+
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        self.insert(separator, -1)
+        separator.show()
+
+        # project open
+        self.sampb = ToolButton( "stock-open" )
+        self.sampb.set_tooltip(_('samples'))
+        self.sampb.props.sensitive = True
+        self.sampb.connect('clicked', self.do_samples)
+        try:
+             self.sampb.props.accelerator = _('<Alt>o')
+        except:
+            pass
+        self.insert(self.sampb, -1)
+        self.sampb.show()
 
     def do_palette(self, button):
         if self.activity.tw.palette == True:
@@ -850,7 +866,6 @@ class ProjectToolbar(gtk.Toolbar):
         self.activity.tw.lc.trace = 0
         tawindow.runbutton(self.activity.tw, 0)
         gobject.timeout_add(1000,self.runproject.set_icon,"run-fastoff")
-#        gobject.timeout_add(1000,self.stepproject.set_icon,"run-slowoff")
 
     def do_step(self, button):
         self.stepproject.set_icon("run-slowon")
@@ -858,7 +873,6 @@ class ProjectToolbar(gtk.Toolbar):
         self.activity.tw.lc.trace = 0
         tawindow.runbutton(self.activity.tw, 3)
         gobject.timeout_add(1000,self.stepproject.set_icon,"run-slowoff")
-#        gobject.timeout_add(1000,self.runproject.set_icon,"run-fastoff")
 
     def do_debug(self, button):
         self.debugproject.set_icon("debugon")
@@ -911,24 +925,37 @@ class ProjectToolbar(gtk.Toolbar):
         self.activity.fullscreen()
         self.activity.recenter()
 
-    def do_saveimage(self, button):
-        self.saveimage.set_icon("image-saveon")
-        _logger.debug("saving image to journal")
+    def do_samples(self, button):
+        tawindow.load_file(self.activity.tw)
+        # run the activity
+        tawindow.runbutton(self.activity.tw, 0)
+
+    def do_savesnapshot(self, button):
+        # Create a datastore object
+        # save the current state of the project to the instance directory
+        print "### in savesnapshot ###"
+
         import tempfile
-        pngfd, pngfile = tempfile.mkstemp(".png")
-        del pngfd
-        tawindow.save_pict(self.activity.tw,pngfile)
+        tafd, tafile = tempfile.mkstemp(".ta")
+        print tafile
+        try:
+            tawindow.save_data(self.activity.tw,tafile)
+        except:
+            _logger.debug("couldn't save snapshot to journal")
 
         # Create a datastore object
-        file_dsobject = datastore.create()
+        dsobject = datastore.create()
 
-        # Write metadata
-        file_dsobject.metadata['title'] = "Turtle Art image"
-        file_dsobject.metadata['icon-color'] = profile.get_color().to_string()
-        file_dsobject.metadata['mime_type'] = 'image/png'
-        file_dsobject.set_file_path(pngfile)
+        # Write any metadata
+        dsobject.metadata['title'] = "Turtle Art snapshot"
+        dsobject.metadata['icon-color'] = profile.get_color().to_string()
+        dsobject.metadata['mime_type'] = 'application/x-turtle-art'
+        dsobject.metadata['activity'] = 'org.laptop.TurtleArtActivity'
+        dsobject.set_file_path(tafile)
+        datastore.write(dsobject)
 
-        datastore.write(file_dsobject)
-        file_dsobject.destroy()
-        gobject.timeout_add(250,self.saveimage.set_icon, "image-saveoff")
+        # Clean up
+        dsobject.destroy()
+        os.remove(tafile)
+        del tafd
         return

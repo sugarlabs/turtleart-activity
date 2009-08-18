@@ -73,6 +73,7 @@ def load_files(tw,ta_file, png_file=''):
         # print "reading saved json data"
         f.seek(0) # rewind necessary because of pickle.load
         text = f.read()
+        # print text
         io = StringIO(text)
         listdata = jload(io)
         print listdata
