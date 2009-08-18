@@ -24,7 +24,7 @@ pygtk.require('2.0')
 import gtk
 import pickle
 try:
-    _in_a_pickle = False
+    _old_Sugar_system = False
     import json
     json.dumps
     from json import load as jload
@@ -36,7 +36,8 @@ except (ImportError, AttributeError):
         from json import dump as jdump
     except:
         # use pickle on old systems
-        _in_a_pickle = True
+        _old_Sugar_system = True
+        # will try json.read and .write too
 
 from StringIO import StringIO
 import os.path
@@ -66,6 +67,7 @@ def load_file(tw):
     tw.save_file_name = os.path.basename(fname)
 
 def load_files(tw,ta_file, png_file=''):
+    # ignoring the png_file even if it is present
     f = open(ta_file, "r")
     try:
         data = pickle.load(f) # old-style data format
@@ -73,9 +75,11 @@ def load_files(tw,ta_file, png_file=''):
         # print "reading saved json data"
         f.seek(0) # rewind necessary because of pickle.load
         text = f.read()
-        # print text
-        io = StringIO(text)
-        listdata = jload(io)
+        if _old_Sugar_system is True:
+            listdata = json.read(text)
+        else:
+            io = StringIO(text)
+            listdata = jload(io)
         print listdata
         # listdata = jdecode(text)
         data = tuplify(listdata) # json converts tuples to lists
@@ -92,22 +96,24 @@ def get_load_name(tw):
 
 # unpack serialized data sent across a share
 def load_string(tw,text):
-    if _in_a_pickle is False:
+    if _old_Sugar_system is True:
+        listdata = json.read(text)
+    else:
         io = StringIO(text)
         listdata = jload(io)
-        # listdata = jdecode(text)
-        data = tuplify(listdata) # json converts tuples to lists
-        new_project(tw)
-        read_data(tw,data)
+    data = tuplify(listdata) # json converts tuples to lists
+    new_project(tw)
+    read_data(tw,data)
 
 # unpack sserialized data from the clipboard
 def clone_stack(tw,text):
-    if _in_a_pickle is False:
+    if _old_Sugar_system is True:
+        listdata = json.read(text)
+    else:
         io = StringIO(text)
         listdata = jload(io)
-        # listdata = jdecode(text)
-        data = tuplify(listdata) # json converts tuples to lists
-        read_stack(tw,data)
+    data = tuplify(listdata) # json converts tuples to lists
+    read_stack(tw,data)
 
 # paste stack from the clipboard
 def read_stack(tw,data):
@@ -151,7 +157,7 @@ def load_spr(tw,b):
         label = None
     proto = tw.protodict[btype]
     spr = sprNew(tw,b[2]+tw.turtle.canvas.x,b[3]+tw.turtle.canvas.y, \
-        proto.image)
+                 proto.image)
     spr.type = 'block'
     spr.proto = proto
     if label is not None: spr.label=label
@@ -209,7 +215,8 @@ def get_save_name(tw):
 def save_data(tw,fname):
     f = file(fname, "w")
     data = assemble_data_to_save(tw)
-    if _in_a_pickle is True:
+    if _old_Sugar_system is True:
+        # use pickle here to maintain compatibility with TA 10
         pickle.dump(data,f)
     else:
         io = StringIO()
@@ -222,15 +229,14 @@ def save_data(tw,fname):
 
 # Used to send data across a shared session
 def save_string(tw):
-    if _in_a_pickle is False:
-        data = assemble_data_to_save(tw)
+    data = assemble_data_to_save(tw)
+    if _old_Sugar_system is True:
+        text = json.write(data)
+    else:
         io = StringIO()
         jdump(data,io)
         text = io.getvalue()
-        # text = jencode(data)
-        return text
-    else:
-        return ""
+    return text
 
 def assemble_data_to_save(tw):
     bs = blocks(tw)
@@ -248,23 +254,22 @@ def assemble_data_to_save(tw):
         else:
             connections = None
         data.append((b.id,name,b.x-tw.turtle.canvas.x, \
-            b.y-tw.turtle.canvas.y,connections))
+                     b.y-tw.turtle.canvas.y,connections))
     data.append((-1,'turtle',
-                  tw.turtle.xcor,tw.turtle.ycor,tw.turtle.heading,
-                  tw.turtle.color,tw.turtle.shade,tw.turtle.pensize))
+                 tw.turtle.xcor,tw.turtle.ycor,tw.turtle.heading,
+                 tw.turtle.color,tw.turtle.shade,tw.turtle.pensize))
     return data
 
 # serialize a stack to save to the clipboard
 def serialize_stack(tw):
-    if _in_a_pickle is False:
-        data = assemble_stack_to_clone(tw)
+    data = assemble_stack_to_clone(tw)
+    if _old_Sugar_system is True:
+        text = json.write(data)
+    else:
         io = StringIO()
         jdump(data,io)
         text = io.getvalue()
-        # text = jencode(data)
-        return text
-    else:
-        return ""
+    return text
 
 # find the stack under the cursor and serialize it
 def assemble_stack_to_clone(tw):
@@ -287,7 +292,7 @@ def assemble_stack_to_clone(tw):
         else:
             connections = None
         data.append((b.id,name,b.x-tw.turtle.canvas.x+20, \
-            b.y-tw.turtle.canvas.y+20,connections))
+                     b.y-tw.turtle.canvas.y+20,connections))
     return data
 
 def save_pict(tw,fname):
