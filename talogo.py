@@ -479,11 +479,11 @@ def lcNew(tw):
     defprim(lc,'left', 1, lambda lc,x: right(lc.tw.turtle,-x))
     defprim(lc,'heading', 0, lambda lc: lc.tw.turtle.heading)
     defprim(lc,'setxy', 2, lambda lc, x, y: setxy(lc.tw.turtle, x, y))
-    defprim(lc,'show',1,lambda lc, x: show(lc, x))
+    defprim(lc,'show',1,lambda lc, x: show(lc, x, True))
     defprim(lc,'setscale', 1, lambda lc,x: set_scale(lc, x))
     defprim(lc,'scale', 0, lambda lc: lc.scale)
     defprim(lc,'write',2,lambda lc, x,y: write(lc, x,y))
-    defprim(lc,'insertimage', 1, lambda lc,x: insert_image(lc, x))
+    defprim(lc,'insertimage', 1, lambda lc,x: insert_image(lc, x, False))
     defprim(lc,'arc', 2, lambda lc, x, y: arc(lc.tw.turtle, x, y))
     defprim(lc,'xcor', 0, lambda lc: lc.tw.turtle.xcor)
     defprim(lc,'ycor', 0, lambda lc: lc.tw.turtle.ycor)
@@ -667,7 +667,7 @@ def show_description(lc, media, x, y, w, h):
             print "no description?"
 
 def draw_title(lc,title,x,y):
-    draw_text(lc.tw.turtle,title,int(x),y,lc.title_height, \
+    draw_text(lc.tw.turtle,title,int(x),int(y),lc.title_height, \
         lc.tw.turtle.width-x)
 
 def calc_position(lc,t):
@@ -865,12 +865,15 @@ def show_template8(lc, title, media1):
     settextsize(lc.tw.turtle, save_text_size)
 
 # image only (at current x,y)
-def insert_image(lc, media):
+def insert_image(lc, media, center):
     w = (lc.tw.turtle.width * lc.scale)/100
     h = (lc.tw.turtle.height * lc.scale)/100
     # convert from Turtle coordinates to screen coordinates
     x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
     y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
+    if center == True:
+        x -= w/2
+        y -= h/2
     if media[0:5] == 'media':
         show_picture(lc, media, x, y, w, h)
 
@@ -888,7 +891,7 @@ def set_scale(lc, x):
     lc.scale = x
 
 # need to fix export logo to map show to write
-def show(lc, string):
+def show(lc, string, center=False):
     # convert from Turtle coordinates to screen coordinates
     x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
     y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
@@ -896,19 +899,23 @@ def show(lc, string):
         if string == "media_None":
             pass
         elif string[0:6] == 'media_':
-            insert_image(lc, string)
+            insert_image(lc, string, center)
         elif string[0:6] == 'descr_':
             insert_desc(lc, string)
         elif string[0:6] == 'audio_':
             play_sound(lc, string)
         else:
-            draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width)
+            if center == True:
+                y -= lc.tw.textsize
+            draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width-x)
     elif type(string) == float or type(string) == int:
         if int(string) == string:
             string = int(string)
         else:
             string = float(string*10.0/10.0)
-        draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width)
+        if center == True:
+            y -= lc.tw.textsize
+        draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width-x)
 
 # audio only
 def play_sound(lc, audio):
