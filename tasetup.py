@@ -293,16 +293,17 @@ def setup_misc(tw):
 
 def setup_selector(tw,name,y,blockdescriptions):
     # selector tabs
-    offshape = load_image(tw.path,'palette',name+'off')
-    onshape = load_image(tw.path,'palette',name+'on')
+    offshape = load_image(tw.path, 'palette', name+'off')
+    onshape = load_image(tw.path, 'palette', name+'on')
     spr = sprNew(tw,143,y,offshape)
     setlayer(spr,800)
     spr.offshape = offshape
     spr.onshape = onshape
     # print 'setting up selector ' + name
-    spr.group = load_image(tw.path_lang, name,name+'group')
-    spr.mask = load_image(tw.path_lang, name,name+'mask')
+    spr.group = load_image(tw.path_lang, name, name+'group')
+    spr.mask = load_image(tw.path, '', name+'mask')
     spr.type = 'selbutton'
+    spr.name = name
     # block prototypes
     protos = []
     for b in blockdescriptions:
@@ -339,11 +340,18 @@ def load_image(path, dir, file):
             ".sugar/default/org.laptop.TurtleArtActivity/data")
 
     # first try to open the cached image
+    # then try to open .png file
     # if you fail, open the .svg file and cache the result as png
     try:
         return gtk.gdk.pixbuf_new_from_file(os.path.join(datapath, file+'.png'))
     except:
-        foo = gtk.gdk.pixbuf_new_from_file(os.path.join(path,dir,file \
-            +'.svg'))
-        foo.save(os.path.join(datapath, file+'.png'), "png")
-        return foo
+        try:
+            print "trying ... " + os.path.join(path, dir, file+'.png')
+            return gtk.gdk.pixbuf_new_from_file(os.path.join(path, dir, \
+                                                             file+'.png'))
+        except:
+            foo = gtk.gdk.pixbuf_new_from_file(os.path.join(path, dir, \
+                                                            file +'.svg'))
+            foo.save(os.path.join(datapath, file+'.png'), "png")
+            return foo
+
