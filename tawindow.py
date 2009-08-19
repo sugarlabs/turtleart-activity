@@ -46,6 +46,7 @@ from taproject import *
 from sugar.graphics.objectchooser import ObjectChooser
 
 from palettes import ContentInvoker
+from tahoverhelp import *
 from gettext import gettext as _
 
 class PopupHandler():
@@ -62,12 +63,15 @@ class PopupHandler():
             self.table[block_name] = ContentInvoker(msg)
             return self.table[block_name]
 
-        print("no invoker for" + block_name)
+        print("no invoker for " + block_name)
         return None
 
     def _getHelpMessage(self, block_name):
-        help_msg_name = "popup_help_" + block_name
-        return _(help_msg_name)
+        try:
+            return (hover_dict[block_name])
+        except:
+            print("no dictionary entry for " + block_name)
+            return("")
 
 popupHandler = PopupHandler()
 

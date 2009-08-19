@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-18 22:04+0000\n"
+"POT-Creation-Date: 2009-08-19 14:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,6 +55,397 @@ msgstr ""
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:155
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:156
 msgid "title"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:26
+msgid "palette of turtle commands"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:27
+msgid "palette of pen commands"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:28
+msgid "palette of numeric operators"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:29
+msgid "palette of extra options"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:30
+msgid "palette of flow operators"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:31
+msgid "palette of variable blocks"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:32
+msgid "palette of presentation templates"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:33
+msgid "clear the screen and reset the turtle"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:34
+msgid "move turtle forward"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:35
+msgid "move turtle backward"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:36
+msgid "turn turtle counterclockwise (angle in degrees)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:37
+msgid "turn turtle clockwise (angle in degrees)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:38
+msgid "move turtle along an arc"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:39
+msgid ""
+"move turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:40
+msgid "set the heading of the turtle (0 is towards the top of the screen.)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:41
+msgid "draw text or show media from the Journal"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:42
+msgid "set the scale of media"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:43
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:44
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:45
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:46
+msgid "holds current scale value (can be used in place of a number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:47
+msgid "turtle will not draw when moved"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:48
+msgid "turtle will draw when moved"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:49
+msgid "set size of the line drawn by the turtle"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:50
+msgid "set color of the line drawn by the turtle"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:51
+msgid "set shade of the line drawn by the turtle"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:52
+msgid "set color of text drawn by the turtle"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:53
+msgid "set size of text drawn by turtle"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:54
+msgid "fills the background with (color, shade)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:55
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:56
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:57
+msgid "holds current pen shade (can be used in place of a number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:58
+msgid "holds current text size (can be used in place of a number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:59
+msgid "holds current text color (can be used in place of a number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:60
+msgid "used as numeric input in mathematic operators"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:61
+msgid "adds two numeric inputs"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:62
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:63
+msgid "multiplies two numeric inputs"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:64
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:65
+msgid "modular (remainder) operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:66
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:67
+msgid "identity operator used for extending blocks"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:68
+msgid "calculate square root"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:69
+msgid "returns random number between minimum (left) and maximum (right) values"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:70
+msgid "logical equal-to operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:71
+msgid "logical greater-than operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:72
+msgid "logical less-than operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:73
+msgid "logical AND operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:74
+msgid "logical OR operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:75
+msgid "logical NOT operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:76
+msgid "prints value in status block at bottom of the screen"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:77
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:78
+msgid "holds results of query-keyboard block"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:79
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:80
+msgid ""
+"a programmable block: add your own math equation in the block, e.g., sin(x)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:81
+msgid "the canvas width"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:82
+msgid "the canvas height"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:83
+msgid "xcor of left of screen"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:84
+msgid "ycor of top of screen"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:85
+msgid "xcor of right of screen"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:86
+msgid "ycor of bottom of screen"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:87
+msgid "push value onto FILO (first-in last-out) heap"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:88
+msgid "pop value off FILO"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:89
+msgid "show FILO in status block"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:90
+msgid "empty FILO"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:91
+msgid "wait specified number of seconds"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:92
+msgid "loop forever"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:93
+msgid "loop specified number of times"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:94
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:95
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:96
+msgid "do not continue current action"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:97
+msgid "jog stack right"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:98
+msgid "jog stack down"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:99
+msgid "connects action to toolbar run buttons"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:100
+msgid "top of action 1 stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:101
+msgid "invoke action 1 stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:102
+msgid "top of action 2 stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:103
+msgid "invoke action 2 stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:104
+msgid "top of nameable action stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:105
+msgid "invoke named action stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:106
+msgid "store numeric value in variable 1"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:107
+msgid "variable 1 (numeric value)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:108
+msgid "store numeric value in variable 2"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:109
+msgid "variable 2 (numeric value)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:110
+msgid "store numeric value in named variable"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:111
+msgid "named variable (numeric value)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:112
+msgid "string value"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:113
+msgid "Sugar Journal media object"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:114
+msgid "Sugar Journal audio object"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:115
+msgid "Sugar Journal description field"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:116
+msgid "presentation template: select Journal object (with description)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:117
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:118
+msgid "presentation template: select two Journal objects"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:119
+msgid "presentation template: select four Journal objects"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:120
+msgid "presentation template: select Journal object (no description)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:121
+msgid "presentation template: seven bullets"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:122
+msgid "declutter canvas by hiding blocks"
 msgstr ""
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:83
@@ -546,295 +937,3 @@ msgstr ""
 #: /home/walter/Desktop/turtleart-activity/svg/setxy.py:40
 msgid "set xy"
 msgstr ""
-
-#: popup help
-msgid "popup_help_turtle"
-msgstr "palette of turtle commands"
-
-msgid "popup_help_pen"
-msgstr "palette of pen commands"
-
-msgid "popup_help_numbers"
-msgstr "palette of numeric operators"
-
-msgid "popup_help_sensors"
-msgstr "palette of extra options"
-
-msgid "popup_help_flow"
-msgstr "palette of flow operators"
-
-msgid "popup_help_myblocks"
-msgstr "palette of variable blocks"
-
-msgid "popup_help_template"
-msgstr "palette of presentation templates"
-
-msgid "popup_help_clean"
-msgstr "clear the screen and reset the turtle"
-
-msgid "popup_help_forward"
-msgstr "move turtle forward"
-
-msgid "popup_help_back"
-msgstr "move turtle backward"
-
-msgid "popup_help_left"
-msgstr "turn turtle counterclockwise (angle in degrees)"
-
-msgid "popup_help_right"
-msgstr "turn turtle clockwise (angle in degrees)"
-
-msgid "popup_help_arc"
-msgstr "move turtle along an arc"
-
-msgid "popup_help_setxy"
-msgstr "move turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-
-msgid "popup_help_seth"
-msgstr "set the heading of the turtle (0 is towards the top of the screen.)"
-
-msgid "popup_help_show"
-msgstr "draw text or show media from the Journal"
-
-msgid "popup_help_setscale"
-msgstr "set the scale of media"
-
-msgid "popup_help_xcor"
-msgstr "holds current x-coordinate value of the turtle (can be used in place of a number block)"
-
-msgid "popup_help_ycor"
-msgstr "holds current y-coordinate value of the turtle (can be used in place of a number block)"
-
-msgid "popup_help_heading"
-msgstr "holds current heading value of the turtle (can be used in place of a number block)"
-
-msgid "popup_help_scale"
-msgstr "holds current scale value (can be used in place of a number block)"
-
-msgid "popup_help_penup"
-msgstr "turtle will not draw when moved"
-
-msgid "popup_help_pendown"
-msgstr "turtle will draw when moved"
-
-msgid "popup_help_setpensize"
-msgstr "set size of the line drawn by the turtle"
-
-msgid "popup_help_setpencolor"
-msgstr "set color of the line drawn by the turtle"
-
-msgid "popup_help_setpenshade"
-msgstr "set shade of the line drawn by the turtle"
-
-msgid "popup_help_settextcolor"
-msgstr "set color of text drawn by the turtle"
-
-msgid "popup_help_settextsize"
-msgstr "set size of text drawn by turtle"
-
-msgid "popup_help_fillscreen"
-msgstr "fills the background with (color, shade)"
-
-msgid "popup_help_pensize"
-msgstr "holds current pen size (can be used in place of a number block)"
-
-msgid "popup_help_pencolor"
-msgstr "holds current pen color (can be used in place of a number block)"
-
-msgid "popup_help_penshade"
-msgstr "holds current pen shade (can be used in place of a number block)"
-
-msgid "popup_help_textsize"
-msgstr "holds current text size (can be used in place of a number block)"
-
-msgid "popup_help_textcolor"
-msgstr "holds current text color (can be used in place of a number block)"
-
-msgid "popup_help_number"
-msgstr "used as numeric input in mathematic operators"
-
-msgid "popup_help_plus2"
-msgstr "adds two numeric inputs"
-
-msgid "popup_help_minus2"
-msgstr "subtracts bottom numeric input from top numeric input"
-
-msgid "popup_help_product2"
-msgstr "multiplies two numeric inputs"
-
-msgid "popup_help_division2"
-msgstr "divides top numeric input (numerator) by bottom numeric input (denominator)"
-
-msgid "popup_help_remainder2"
-msgstr "modular (remainder) operator"
-
-msgid "popup_help_identity"
-msgstr "identity operator used for extending blocks"
-
-msgid "popup_help_identity2"
-msgstr "identity operator used for extending blocks"
-
-msgid "popup_help_sqrt"
-msgstr "calculate square root"
-
-msgid "popup_help_random"
-msgstr "returns random number between minimum (left) and maximum (right) values"
-
-msgid "popup_help_equal"
-msgstr "logical equal-to operator"
-
-msgid "popup_help_greater"
-msgstr "logical greater-than operator"
-
-msgid "popup_help_less"
-msgstr "logical less-than operator"
-
-msgid "popup_help_and"
-msgstr "logical AND operator"
-
-msgid "popup_help_or"
-msgstr "logical OR operator"
-
-msgid "popup_help_not"
-msgstr "logical NOT operator"
-
-msgid "popup_help_print"
-msgstr "prints value in status block at bottom of the screen"
-
-msgid "popup_help_kbinput"
-msgstr "query for keyboard input (results stored in keyboard block)"
-
-msgid "popup_help_keyboard"
-msgstr "holds results of query-keyboard block"
-
-msgid "popup_help_nop"
-msgstr "runs code found in the tamyblock.py module found in the Journal"
-
-msgid "popup_help_myfunc"
-msgstr "a programmable block: add your own math equation in the block, e.g., sin(x)"
-
-msgid "popup_help_hres"
-msgstr "the canvas width"
-
-msgid "popup_help_vres"
-msgstr "the canvas height"
-
-msgid "popup_help_leftpos"
-msgstr "xcor of left of screen"
-
-msgid "popup_help_toppos"
-msgstr "ycor of top of screen"
-
-msgid "popup_help_rightpos"
-msgstr "xcor of right of screen"
-
-msgid "popup_help_bottompos"
-msgstr "ycor of bottom of screen"
-
-msgid "popup_help_push"
-msgstr "push value onto FILO (first-in last-out) heap"
-
-msgid "popup_help_pop"
-msgstr "pop value off FILO"
-
-msgid "popup_help_prnthear"
-msgstr "show FILO in status block"
-
-msgid "popup_help_clearheap"
-msgstr "empty FILO"
-
-msgid "popup_help_wait"
-msgstr "wait specified number of seconds"
-
-msgid "popup_help_forever"
-msgstr "loop forever"
-
-msgid "popup_help_repeat"
-msgstr "loop specified number of times"
-
-msgid "popup_help_if"
-msgstr "if-then operator that uses boolean operators from Numbers palette"
-
-msgid "popup_help_ifelse"
-msgstr "if-then-else operator that uses boolean operators from Numbers palette"
-
-msgid "popup_help_stopstack"
-msgstr "do not continue current action"
-
-msgid "popup_help_hspace"
-msgstr "jog stack right"
-
-msgid "popup_help_vspace"
-msgstr "jog stack down"
-
-msgid "popup_help_start"
-msgstr "connects action to toolbar run buttons"
-
-msgid "popup_help_hat1"
-msgstr "top of action 1 stack"
-
-msgid "popup_help_stack1"
-msgstr "invoke action 1 stack"
-
-msgid "popup_help_hat2"
-msgstr "top of action 2 stack"
-
-msgid "popup_help_stack2"
-msgstr "invoke action 2 stack"
-
-msgid "popup_help_hat"
-msgstr "top of nameable action stack"
-
-msgid "popup_help_stack"
-msgstr "invoke named action stack"
-
-msgid "popup_help_storeinbox1"
-msgstr "store numeric value in variable 1"
-
-msgid "popup_help_box1"
-msgstr "variable 1 (numeric value)"
-
-msgid "popup_help_storeinbox2"
-msgstr "store numeric value in variable 2"
-
-msgid "popup_help_box2"
-msgstr "variable 2 (numeric value)"
-
-msgid "popup_help_storein"
-msgstr "store numeric value in named variable"
-
-msgid "popup_help_box"
-msgstr "named variable (numeric value)"
-
-msgid "popup_help_string"
-msgstr "string value"
-
-msgid "popup_help_journal"
-msgstr "Sugar Journal media object"
-
-msgid "popup_help_audiooff"
-msgstr "Sugar Journal audio object"
-
-msgid "popup_help_descriptionoff"
-msgstr "Sugar Journal description field"
-
-msgid "popup_help_template1"
-msgstr "presentation template: select Journal object (with description)"
-
-msgid "popup_help_template2"
-msgstr "presentation template: select two Journal objects"
-
-msgid "popup_help_template6"
-msgstr "presentation template: select two Journal objects"
-
-msgid "popup_help_template7"
-msgstr "presentation template: select four Journal objects"
-
-msgid "popup_help_template4"
-msgstr "presentation template: select Journal object (no description)"
-
-msgid "popup_help_template3"
-msgstr "presentation template: seven bullets"
-
-msgid "popup_help_hideblocks"
-msgstr "declutter canvas by hiding blocks"
