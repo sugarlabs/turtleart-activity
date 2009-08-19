@@ -707,7 +707,7 @@ msgstr "query for keyboard input (results stored in keyboard block)"
 msgid "popup_help_keyboard"
 msgstr "holds results of query-keyboard block"
 
-msgid "popup_help_nop_loaded"
+msgid "popup_help_nop"
 msgstr "runs code found in the tamyblock.py module found in the Journal"
 
 msgid "popup_help_myfunc"
