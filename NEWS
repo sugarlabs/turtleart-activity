@@ -1,3 +1,9 @@
+63
+
+* more sample programs
+* consolidated samples into one directory
+* fixed mask bug that prevented palette hiding
+
 62
 
 * first pass at hover help support (thanks Raul)
