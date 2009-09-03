@@ -1,0 +1,445 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-04-01 18:07+0000\n"
+"PO-Revision-Date: 2009-06-20 02:00-0400\n"
+"Last-Translator: Deependra Ariyadewa <deependra@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 1.2.1\n"
+
+#: activity/activity.info:2
+#: /home/walter/Desktop/turtleart-activity/taexporthtml.py:189
+msgid "Turtle Art"
+msgstr "ஆமைச்சித்திரம்"
+
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:55
+msgid "text"
+msgstr "உரை"
+
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:99
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:49
+#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:41
+msgid "x"
+msgstr "எக்ஸ்"
+
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:122
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:123
+msgid "stack"
+msgstr "குவி"
+
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:128
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:129
+msgid "box"
+msgstr "பெட்டி"
+
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:130
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:47
+msgid "name"
+msgstr "பெயர்"
+
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:133
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:134
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:135
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:136
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:137
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:138
+msgid "title"
+msgstr "தலைப்பு"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:83
+msgid "Project"
+msgstr "செயற்றிட்டம்"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:85
+msgid "Save as"
+msgstr "சேமி"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:451
+msgid "samples"
+msgstr "மாதிரி"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:465
+msgid "save as HTML"
+msgstr "மாற்றி சேமி"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:473
+msgid "save Logo"
+msgstr "அடையாளத்தை சேமி"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:481
+msgid "save as image"
+msgstr "படமாக சேமி"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:494
+msgid "load my block"
+msgstr "எனது தொகுதியை  நிரப்பு"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:666
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:750
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:760
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:796
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:808
+msgid "hide palette"
+msgstr "குறை ஒளிந்துள்ளது"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:675
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:789
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:806
+#: /home/walter/Desktop/turtleart-activity/svg/hideblocks.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:41
+msgid "hide blocks"
+msgstr "மறைந்துள்ள தொகுதி"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:689
+msgid "run"
+msgstr "ஓடு"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:698
+msgid "step"
+msgstr "படி"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:707
+msgid "stop turtle"
+msgstr "ஆமையை நிறுத்து "
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:721
+#: /home/walter/Desktop/turtleart-activity/svg/clean.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:40
+msgid "clean"
+msgstr "சுத்தம்"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:735
+msgid "fullscreen"
+msgstr "முழுத்திரை"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:746
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:755
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:793
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:802
+msgid "show palette"
+msgstr "காட்டு"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:786
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:800
+msgid "show blocks"
+msgstr "தொகுதியைக்காட்டு"
+
+#: /home/walter/Desktop/turtleart-activity/svg/hat2.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:42
+#: /home/walter/Desktop/turtleart-activity/svg/stack2.py:40
+msgid "stack 2"
+msgstr "இரண்டாவது குவியல்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/stack1.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/hat1.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:41
+msgid "stack 1"
+msgstr "முதற்  குவியல்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/heading.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:54
+msgid "heading"
+msgstr "தலைப்பு"
+
+#: /home/walter/Desktop/turtleart-activity/svg/start.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:48
+msgid "start"
+msgstr "ஆரம்பி"
+
+#: /home/walter/Desktop/turtleart-activity/svg/keyboard.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:40
+msgid "Keyboard"
+msgstr "விசைப்பலகை"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:40
+msgid "Flow"
+msgstr "தொடருங்கள்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/wait.py:40
+msgid "wait"
+msgstr "பொறு"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:42
+#: /home/walter/Desktop/turtleart-activity/svg/forever.py:40
+msgid "forever"
+msgstr "எப்போதும்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/repeat.py:40
+msgid "repeat"
+msgstr ", திருப்பிச்செய்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/if.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:40
+msgid "if"
+msgstr "எனின்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:45
+#: /home/walter/Desktop/turtleart-activity/svg/if.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:41
+msgid "then"
+msgstr "அதன்பின்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:46
+#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:42
+msgid "else"
+msgstr "வேறு"
+
+#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:47
+#: /home/walter/Desktop/turtleart-activity/svg/stopstack.py:40
+msgid "stop stack"
+msgstr "குவியலை நிறுத்து"
+
+#: /home/walter/Desktop/turtleart-activity/svg/print.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:45
+msgid "print"
+msgstr "அச்சு"
+
+#: /home/walter/Desktop/turtleart-activity/svg/color.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:48
+msgid "color"
+msgstr "நிறம்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:40
+msgid "My Blocks"
+msgstr "எனது தொகுதி"
+
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/storeinbox1.py:40
+msgid "store in box 1"
+msgstr "முதலாவது பெட்டியில் சேமி"
+
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/box1.py:40
+msgid "box 1"
+msgstr "முதலாவது பெட்டி"
+
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:45
+#: /home/walter/Desktop/turtleart-activity/svg/storeinbox2.py:40
+msgid "store in box 2"
+msgstr "இரண்டாவது பெட்டியில் சேமி"
+
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:46
+#: /home/walter/Desktop/turtleart-activity/svg/box2.py:40
+msgid "box 2"
+msgstr "இரண்டாவது பெட்டி"
+
+#: /home/walter/Desktop/turtleart-activity/svg/printheap.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:46
+msgid "show heap"
+msgstr "குவியலைக்காட்டு"
+
+#: /home/walter/Desktop/turtleart-activity/svg/pendown.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:42
+msgid "pen down"
+msgstr "பேனை கீழே"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:40
+msgid "Numbers"
+msgstr "எண்கள்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/random.py:40
+msgid "random"
+msgstr "எழுமாறாக"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:42
+#: /home/walter/Desktop/turtleart-activity/svg/and.py:41
+msgid "and"
+msgstr "உடன்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/or.py:40
+msgid "or"
+msgstr "அல்லது"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/not.py:40
+msgid "not"
+msgstr "இல்லை"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:46
+msgid "number"
+msgstr "எண்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:47
+msgid "min"
+msgstr "மிகக்குறைய"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:48
+msgid "max"
+msgstr "மிகக்கூடிய"
+
+#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:49
+#: /home/walter/Desktop/turtleart-activity/svg/remainder2.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/remainder.py:40
+msgid "mod"
+msgstr "புதுப்பி"
+
+#: /home/walter/Desktop/turtleart-activity/svg/ycor.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:53
+msgid "ycor"
+msgstr "வை கோ"
+
+#: /home/walter/Desktop/turtleart-activity/svg/shade.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:42
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:49
+msgid "shade"
+msgstr "நிழல்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:40
+msgid "Templates"
+msgstr "தூண்டு"
+
+#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:42
+#: /home/walter/Desktop/turtleart-activity/svg/sound.py:40
+msgid "sound"
+msgstr "சத்தம்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/right.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:44
+msgid "right"
+msgstr "வலது"
+
+#: /home/walter/Desktop/turtleart-activity/svg/forward.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:41
+msgid "forward"
+msgstr "முன்னோக்கி அனுப்பு"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/kbinput.py:40
+msgid "read key"
+msgstr "சாவியை வாசி"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:42
+msgid "keyboard"
+msgstr "விசைப்பலகை"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/hres.py:40
+msgid "width"
+msgstr "அகலம்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/vres.py:40
+msgid "height"
+msgstr "உயரம்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:45
+#: /home/walter/Desktop/turtleart-activity/svg/pop.py:40
+msgid "pop"
+msgstr "வரல்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:47
+#: /home/walter/Desktop/turtleart-activity/svg/clearheap.py:40
+msgid "empty heap"
+msgstr "வெற்றுக்குவியல்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:48
+#: /home/walter/Desktop/turtleart-activity/svg/push.py:40
+msgid "push"
+msgstr "தள்ளு"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:42
+#: /home/walter/Desktop/turtleart-activity/svg/back.py:40
+msgid "back"
+msgstr "பின்னால்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/left.py:40
+msgid "left"
+msgstr "இடது"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:45
+#: /home/walter/Desktop/turtleart-activity/svg/arc.py:40
+msgid "arc"
+msgstr "வில்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:46
+#: /home/walter/Desktop/turtleart-activity/svg/arc.py:41
+msgid "angle"
+msgstr "கோணம்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:47
+#: /home/walter/Desktop/turtleart-activity/svg/arc.py:42
+msgid "radius"
+msgstr "குறை"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:48
+msgid "setyx"
+msgstr "        ஒழுங்கு செய்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:50
+#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:42
+msgid "y"
+msgstr "y"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:51
+#: /home/walter/Desktop/turtleart-activity/svg/seth.py:40
+msgid "set heading"
+msgstr "தலைப்பை ஒழுங்கு செய்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:52
+#: /home/walter/Desktop/turtleart-activity/svg/xcor.py:40
+msgid "xcor"
+msgstr "xcor"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:55
+msgid "Turtle"
+msgstr "ஆமை"
+
+#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:46
+msgid "fill screen"
+msgstr "முழுத்திரை"
+
+#: /home/walter/Desktop/turtleart-activity/svg/settextcolor.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:50
+msgid "set text color"
+msgstr "உரைக்கான நிறத்தை தெரிவு செய்"
+
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:40
+msgid "Pen"
+msgstr "பேனை"
+
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/penup.py:40
+msgid "pen up"
+msgstr "பேனை மேலே "
+
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/setpensize.py:40
+msgid "set pen size"
+msgstr "பேனையின் அளவினை ஒழுங்குபடுத்து"
+
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/setcolor.py:40
+msgid "set color"
+msgstr "நிறத்தை  ஒழுங்கு படுத்து"
+
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:45
+#: /home/walter/Desktop/turtleart-activity/svg/setshade.py:40
+msgid "set shade"
+msgstr "நிழலை ஒழுங்கு படுத்து"
+
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:47
+#: /home/walter/Desktop/turtleart-activity/svg/pensize.py:40
+msgid "pen size"
+msgstr "பேனை அளவு"
+
+#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:40
+msgid "set xy"
+msgstr "ஒழுங்கு  படுத்துக"
