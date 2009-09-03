@@ -27,7 +27,7 @@
 #
 
 def myblock(lc,x):
-"""
+
     # draw a dotted line of length x
 
     # make sure x is a number
@@ -47,42 +47,36 @@ def myblock(lc,x):
     forward(lc.tw.turtle, x-dist)
     # restore pen state
     setpen(lc.tw.turtle, pen)
-"""
 
-"""
     # push an uppercase version of a string onto the heap
-    if type(x) != str:
-        X = str(x).upper()
-    else:
-        X = x.upper()
+    # if type(x) != str:
+    #     X = str(x).upper()
+    # else:
+    #     X = x.upper()
     # push result onto heap (use the pop block to use the new string)
-    lc.heap.append(X)
-"""
+    # lc.heap.append(X)
 
-"""
     # push hours, minutes, seconds onto the heap
     # use three pop blocks to retrieve the values
     # remember: the heap is a FILO (first in, last out)
     # the first value you will pop will be seconds
-    lc.heap.append(localtime().tm_hour)
-    lc.heap.append(localtime().tm_min)
-    lc.heap.append(localtime().tm_sec)
-"""
 
-"""
+    # lc.heap.append(localtime().tm_hour)
+    # lc.heap.append(localtime().tm_min)
+    # lc.heap.append(localtime().tm_sec)
+
     # add a third dimension (gray) to the color model
     # calculate the value (brightness) of the current color
-    val = 0.3 * lc.tw.rgb[0] + 0.6 * lc.tw.rgb[1] + 0.1 * lc.tw.rgb[2]
+    # val = 0.3 * lc.tw.rgb[0] + 0.6 * lc.tw.rgb[1] + 0.1 * lc.tw.rgb[2]
     # make sure gray is in range from 0 to 100
-    if x != 100:
-        x = int(x)%100
+    # if x != 100:
+    #     x = int(x)%100
     # mix in gray
-    r = int((val*(100-x) + lc.tw.rgb[0]*x)/100)
-    g = int((val*(100-x) + lc.tw.rgb[1]*x)/100)
-    b = int((val*(100-x) + lc.tw.rgb[2]*x)/100)
+    # r = int((val*(100-x) + lc.tw.rgb[0]*x)/100)
+    # g = int((val*(100-x) + lc.tw.rgb[1]*x)/100)
+    # b = int((val*(100-x) + lc.tw.rgb[2]*x)/100)
     # reallocate current color
-    lc.tw.fgcolor = lc.tw.cm.alloc_color(r<<8,g<<8,b<<8)
-"""
+    # lc.tw.fgcolor = lc.tw.cm.alloc_color(r<<8,g<<8,b<<8)
 
     return
 

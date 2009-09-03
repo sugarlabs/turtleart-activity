@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 #Copyright (c) 2007-8, Playful Invention Company.
 #Copyright (c) 2008-9, Walter Bender
 
@@ -101,8 +103,11 @@ def draw(spr):
     else:
         spr.tw.area.draw_drawable(spr.tw.gc,spr.image,0,0,spr.x,spr.y,-1,-1)
     if spr.label!=None:
-        if hasattr(spr, 'proto') and hasattr(spr.proto, 'name') and \
-                                     spr.proto.name not in nolabel:
+        if hasattr(spr, 'proto') and hasattr(spr.proto, 'name'):
+            name = spr.proto.name
+        else:
+            name = ""
+        if name not in nolabel:
             spr.draw_label(spr,str(spr.label))
 
 def hit(spr,pos):
@@ -125,31 +130,38 @@ def hit(spr,pos):
             + str(dy) + " " + str(spr.width) + " " + str(spr.height)
         return True
 
+def draw_label(spr, label, myscale, center_flag, truncate_flag):
+    fd = pango.FontDescription('Sans')
+    fd.set_size(int(myscale*spr.tw.scale*pango.SCALE))
+    if type(label) == str or type(label) == unicode:
+        mylabel = label.replace("\0"," ")
+        l = len(mylabel)
+        if truncate_flag and l > 8:
+            pl = spr.tw.window.create_pango_layout("..."+mylabel[l-8:])
+        else:
+            pl = spr.tw.window.create_pango_layout(mylabel)
+        pl.set_font_description(fd)
+        if center_flag:
+            swidth = pl.get_size()[0]/pango.SCALE
+            centerx = spr.x+spr.width/2
+            x = int(centerx-swidth/2)
+        else:
+            x = spr.x+70
+        sheight = pl.get_size()[1]/pango.SCALE
+        centery = spr.y+spr.height/2
+        y = int(centery-sheight/2)
+        spr.tw.gc.set_foreground(spr.tw.msgcolor)
+        spr.tw.area.draw_layout(spr.tw.gc, x, y, pl)
+    else:
+        print type(label)
+
 # used for most things
 def draw_label1(spr, label):
-    fd = pango.FontDescription('Sans')
-    fd.set_size(int(7*spr.tw.scale*pango.SCALE))
-    if type(label) == str:
-        pl = spr.tw.window.create_pango_layout(str(label))
-        pl.set_font_description(fd)
-        swidth = pl.get_size()[0]/pango.SCALE
-        sheight = pl.get_size()[1]/pango.SCALE
-        centerx = spr.x+spr.width/2
-        centery = spr.y+spr.height/2
-        spr.tw.gc.set_foreground(spr.tw.msgcolor)
-        spr.tw.area.draw_layout(spr.tw.gc,int(centerx-swidth/2), \
-            int(centery-sheight/2),pl)
+    draw_label(spr, label, 7, True, True)
 
 # used for status blocks
 def draw_label2(spr, label):
-    fd = pango.FontDescription('Sans')
-    fd.set_size(int(9*spr.tw.scale*pango.SCALE))
-    pl = spr.tw.window.create_pango_layout(str(label))
-    pl.set_font_description(fd)
-    sheight = pl.get_size()[1]/pango.SCALE
-    centery = spr.y+spr.height/2
-    spr.tw.gc.set_foreground(spr.tw.msgcolor)
-    spr.tw.area.draw_layout(spr.tw.gc,spr.x+70,int(centery-sheight/2),pl)
+    draw_label(spr, str(label), 9, False, False)
 
 # used to get pixel value from mask for category selector
 def getpixel(image,x,y):

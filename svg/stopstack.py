@@ -37,7 +37,7 @@ def main():
     _ = t.ugettext
     t.install()
 
-    mystring = _("stop stack")
+    mystring = _("stop action")
     mygroup = "flow"
 
     print mystring

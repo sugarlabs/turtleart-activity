@@ -76,6 +76,7 @@ def clearscreen(t):
     setpensize(t,5)
     setcolor(t,0)
     settextcolor(t,70)
+    settextsize(t,32)
     setshade(t,50)
     t.pendown = True
     move_turtle(t)
@@ -183,6 +184,13 @@ def settextcolor(t,c):
     set_textcolor(t)
     return None
 
+def settextsize(t,c):
+    try:
+        t.tw.textsize = c
+    except:
+        pass
+    return None
+
 def setshade(t,s):
     try:
         t.shade = s
@@ -244,12 +252,19 @@ def draw_text(t, label, x, y, size, w):
         fd.set_size(int(size)*pango.SCALE)
     except:
         pass
-    pl = t.tw.window.create_pango_layout(str(label))
+    if type(label) == str or type(label) == unicode:
+        pl = t.tw.window.create_pango_layout(label.replace("\0"," "))
+    elif type(label) == float or type(label) == int:
+        pl = t.tw.window.create_pango_layout(str(label))
+    else:
+        print type(label)
+        pl = t.tw.window.create_pango_layout(str(label))
     pl.set_font_description(fd)
     pl.set_width(int(w)*pango.SCALE)
     t.canvas.image.draw_layout(t.gc,int(x),int(y),pl)
     w,h = pl.get_pixel_size()
     invalt(t,x,y,w,h)
+
 
 def draw_line(t,x1,y1,x2,y2):
     x1,y1 = t.width/2+int(x1), t.height/2-int(y1)

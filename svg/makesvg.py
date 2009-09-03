@@ -31,6 +31,7 @@ def main():
  "and.py", \
  "arc.py", \
  "back.py", \
+ "bottompos.py", \
  "box1.py", \
  "box2.py", \
  "clean.py", \
@@ -50,6 +51,7 @@ def main():
  "kbinput.py", \
  "keyboard.py", \
  "left.py", \
+ "leftpos.py", \
  "myblocksgroup.py", \
  "not.py", \
  "numbersgroup.py", \
@@ -67,22 +69,31 @@ def main():
  "remainder.py", \
  "repeat.py", \
  "right.py", \
+ "rightpos.py", \
+ "scale.py", \
  "sensorsgroup.py", \
  "setcolor.py", \
  "seth.py", \
  "setpensize.py", \
+ "setscale.py", \
  "setshade.py", \
  "settextcolor.py", \
+ "settextsize.py", \
  "setxy.py", \
  "shade.py", \
+ "show.py", \
  "sound.py", \
  "stack1.py", \
  "stack2.py", \
  "start.py", \
  "stopstack.py", \
+ "storein.py", \
  "storeinbox1.py", \
  "storeinbox2.py", \
  "templatesgroup.py", \
+ "textcolor.py", \
+ "textsize.py", \
+ "toppos.py", \
  "turtlegroup.py", \
  "vres.py", \
  "wait.py", \

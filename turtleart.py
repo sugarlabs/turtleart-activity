@@ -67,7 +67,9 @@ def main():
     
     # win = gtk.Window(gtk.WINDOW_TOPLEVEL)
     win = gtk.Window()
-    twNew(win, os.path.abspath('.'),lang)
+    win.set_has_frame(True)
+    win.set_decorated(True)
+    twNew(win, os.path.abspath('.'), lang)
     win.connect("destroy", lambda w: gtk.main_quit())
     gtk.main()
     return 0
@@ -75,4 +77,20 @@ def main():
 if __name__ == "__main__":
     main()
 
+"""
+--- sugar-turtleart-activity-46.orig/turtleart.py
++++ sugar-turtleart-activity-46/turtleart.py
+@@ -57,7 +57,7 @@
+                    os.path.join(tapath,'instance/')))
 
+    win1 = gtk.Window(gtk.WINDOW_TOPLEVEL)
+-    twNew(win1, os.path.abspath('.'),os.environ['LANG'])
++    twNew(win1, os.path.abspath('.'),os.environ.get('LANG', 'C'))
+    win1.connect("destroy", lambda w: gtk.main_quit())
+    gtk.main()
+    return 0
+
+I suspect there are still problems left, as it seem to read the svg
+files from the build directory, and not from the installed files.
+Have not investiaged it yet.
+"""

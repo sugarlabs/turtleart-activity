@@ -43,20 +43,20 @@
     <tspan
        x="37"
        y="22"
-       style="font-size:16px;">fijar</tspan>
+       style="font-size:15px;">fijar</tspan>
   </text>
   <text
      style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <tspan
        x="37"
        y="36"
-       style="font-size:16px;">el color</tspan>
+       style="font-size:15px;">el color</tspan>
   </text>
   <text
      style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <tspan
        x="37"
        y="50"
-       style="font-size:16px;">del texto</tspan>
+       style="font-size:15px;">del texto</tspan>
   </text>
 </svg>

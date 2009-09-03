@@ -52,11 +52,17 @@ selectors = (
      ('arc','arc','twoargs',90,100),
      ('setxy','setxy','twoargs',0,0),
      ('seth','seth','onearg',0),
-     ('write','write','1sarg',_('text'),32),
-     ('image','insertimage','image','None'),
+     ('show','show','onesarg',_('text')),
+     ('setscale','setscale','onearg',33),
+     ('show','show','onecarg','None'),
      ('xcor','xcor','num'),
      ('ycor','ycor','num'),
-     ('heading','heading','num'))),
+     ('heading','heading','num'),
+     ('scale','scale','num'),
+     # not selectable, but here for backward compatability 
+     ('container','container','container','None'),
+     ('image','insertimage','image','None'),
+     ('write','write','1sarg',_('text'),32))),
   ('pen', 55,
     (('penup','penup','noarg'),
      ('pendown','pendown','noarg'),
@@ -64,10 +70,13 @@ selectors = (
      ('setcolor','setcolor','1arg',0),
      ('setshade','setshade','1arg',50),
      ('fillscreen','fillscreen','twoargs',60,80),
+     ('settextsize','settextsize','1arg',32),
      ('settextcolor','settextcolor','1arg',0),
      ('pensize','pensize','num'),
      ('color','color','num'),
-     ('shade','shade','num'))),
+     ('shade','shade','num'),
+     ('textcolor','textcolor','num'),
+     ('textsize','textsize','num'))),
   ('numbers', 55,
     (('number','','num',100,float,numcheck),
      ('plus2','plus','newari'),
@@ -102,7 +111,11 @@ selectors = (
      ('push','push','onearg'),
      ('pop','pop','num'),
      ('printheap','heap','noarg2'),
-     ('clearheap','emptyheap','noarg2'))),
+     ('clearheap','emptyheap','noarg2'),
+     ('leftpos','leftpos','num'),
+     ('toppos','toppos','num'),
+     ('rightpos','rightpos','num'),
+     ('bottompos','bottompos','num'))),
   ('flow', 55,
     (('wait','wait','onearg',10),
      ('forever','forever','forever'),
@@ -112,6 +125,7 @@ selectors = (
      ('ifelse','ifelse','ifelse'),
      ('hspace','nop','hspace'),
      ('vspace','nop','vspace'),
+     # not selectable, but here for backward compatability 
      ('lock','nop','lock'))),
    ('myblocks', 55,
     (('start','start','start'),
@@ -125,25 +139,31 @@ selectors = (
      ('box1','box1','num'),
      ('storeinbox2','storeinbox2','1arg'),
      ('box2','box2','num'),
-     ('storeinbox','storeinbox','1sarg',_('box'),100),
+     ('storein','storeinbox','1varg',_('box'),100),
      ('box','box','nfuncs',_('box')),
-     ('string','','string',_('name'),str,strcheck))),
+     ('string','','string',_('name'),str,strcheck),
+     # not selectable, but here for backward compatability 
+     ('storeinbox','storeinbox','1sarg',_('box'),100))),
   ('templates',55,
     (('journal','','media','','',''),
+     ('audiooff','','audio','','',''),
+     ('descriptionoff','','text','','',''),
      ('template1','tp1','tp1',_('title'),'None'),
      ('template6','tp6','tp6',_('title'),'None','None'),
      ('template2','tp2','tp2',_('title'),'None','None'),
      ('template7','tp7','tp7',_('title'),'None','None','None','None'),
      ('template3','tp3','tp3',_('title'),'','','','','','',''),
      ('template4','tp8','tp1',_('title'),'None'),
-     ('sound','sound','sound','None'),
-     ('audiooff','','audio','','',''),
-     ('hideblocks','hideblocks','noarg2'))))
+     ('hideblocks','hideblocks','noarg2'),
+     # not selectable, but here for backward compatability
+     ('sound','sound','sound','None'))))
 
 dockdetails = {
   'noarg':   (('flow',True,37,5),('flow',False,37,44)),
   'noarg2':  (('flow',True,37,5),('flow',False,37,59)),
   'onearg':  (('flow',True,37,5),('num',False,74,21),('flow',False,37,44)),
+  'onesarg':  (('flow',True,37,5),('string',False,74,21),('flow',False,37,44)),
+  'onecarg':  (('flow',True,37,5),('media',False,74,21),('flow',False,37,44)),
   '1arg':    (('flow',True,37,5),('num',False,74,29),('flow',False,37,59)),
   'twoargs': (('flow',True,37,5),('num',False,74,21),('num',False,74,58), \
         ('flow',False,37,81)),
@@ -185,11 +205,15 @@ dockdetails = {
         ('flow',False,37,44)),  
   '1sarg':   (('flow',True,37,5),('string',False,12,22), \
         ('num',False,130,23),('flow',False,37,44)),
-  'myfunc':   (('num',True,0,23),('string',False,24,22), \
-        ('num',False,142,21)),
+  '1varg':   (('flow',True,37,5),('string',False,12,38), \
+        ('num',False,130,30),('flow',False,37,59)),
+  'myfunc':   (('num',True,0,22),('string',False,24,22), \
+        ('num',False,142,22)),
   'media':   (('media',True,0,27),('mediaend',False,75,27)),
   'text':   (('media',True,0,27),('mediaend',False,75,27)),
-  'audio':   (('audio',True,0,27),('audioend',False,75,27)),
+  'audio':   (('media',True,0,27),('mediaend',False,75,27)),
+  'container':     (('num',True,0,33),('media',False,19,33), \
+        ('numend',False,100,33)),
   'tp1':     (('flow',True,37,5),('string',False,10,26), \
         ('media',False,10,73),('flow',False,37,113)),
   'tp2':     (('flow',True,37,5),('string',False,10,26), \
@@ -244,15 +268,19 @@ def setup_misc(tw):
     tw.media_shapes = {}
     tw.media_shapes['audioon'] = load_image(tw.path, '', 'audioon')
     tw.media_shapes['texton'] = load_image(tw.path, '', 'texton')
+    tw.media_shapes['journalon'] = load_image(tw.path, '', 'journalon')
+    tw.media_shapes['decson'] = load_image(tw.path, '', 'descriptionon')
     # media blocks that replace other blocks
     tw.media_shapes['pythonloaded'] = \
         load_image(tw.path_lang, 'sensors', 'nop-loaded')
     # status shapes get positioned at the bottom of the screen
     tw.status_shapes = {}
     tw.status_shapes['status'] = load_image(tw.path, '', 'status')
+    tw.status_shapes['info'] = load_image(tw.path, '', 'info')
     tw.status_shapes['nostack'] = load_image(tw.path, '', 'nostack')
     tw.status_shapes['noinput'] = load_image(tw.path, '', 'noinput')
     tw.status_shapes['emptyheap'] = load_image(tw.path, '', 'emptyheap')
+    tw.status_shapes['emptybox'] = load_image(tw.path, '', 'emptybox')
     tw.status_shapes['nomedia'] = load_image(tw.path, '', 'nomedia')
     tw.status_shapes['nocode'] = load_image(tw.path, '', 'nocode')
     tw.status_shapes['syntaxerror'] = load_image(tw.path, '', 'syntaxerror')
@@ -265,16 +293,17 @@ def setup_misc(tw):
 
 def setup_selector(tw,name,y,blockdescriptions):
     # selector tabs
-    offshape = load_image(tw.path,'palette',name+'off')
-    onshape = load_image(tw.path,'palette',name+'on')
+    offshape = load_image(tw.path, 'palette', name+'off')
+    onshape = load_image(tw.path, 'palette', name+'on')
     spr = sprNew(tw,143,y,offshape)
     setlayer(spr,800)
     spr.offshape = offshape
     spr.onshape = onshape
     # print 'setting up selector ' + name
-    spr.group = load_image(tw.path_lang, name,name+'group')
-    spr.mask = load_image(tw.path_lang, name,name+'mask')
+    spr.group = load_image(tw.path_lang, name, name+'group')
+    spr.mask = load_image(tw.path, '', name+'mask')
     spr.type = 'selbutton'
+    spr.name = name
     # block prototypes
     protos = []
     for b in blockdescriptions:
@@ -311,11 +340,18 @@ def load_image(path, dir, file):
             ".sugar/default/org.laptop.TurtleArtActivity/data")
 
     # first try to open the cached image
+    # then try to open .png file
     # if you fail, open the .svg file and cache the result as png
     try:
         return gtk.gdk.pixbuf_new_from_file(os.path.join(datapath, file+'.png'))
     except:
-        foo = gtk.gdk.pixbuf_new_from_file(os.path.join(path,dir,file \
-            +'.svg'))
-        foo.save(os.path.join(datapath, file+'.png'), "png")
-        return foo
+        try:
+            print "trying ... " + os.path.join(path, dir, file+'.png')
+            return gtk.gdk.pixbuf_new_from_file(os.path.join(path, dir, \
+                                                             file+'.png'))
+        except:
+            foo = gtk.gdk.pixbuf_new_from_file(os.path.join(path, dir, \
+                                                            file +'.svg'))
+            foo.save(os.path.join(datapath, file+'.png'), "png")
+            return foo
+

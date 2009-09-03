@@ -19,7 +19,6 @@
 #THE SOFTWARE.
 
 # a naive approach to running myfun in a jail
-import re
 from time import *
 from math import *
 try:
@@ -30,7 +29,7 @@ from taturtle import *
 
 def myfunc(lc, f, x):
     # check to make sure no import calls are made
-    myf = "def f(x): return " + re.sub("import","",f)
+    myf = "def f(x): return " + f.replace("import","")
     userdefined = {}
     try:
         exec myf in globals(), userdefined

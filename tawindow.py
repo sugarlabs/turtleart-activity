@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007, Playful Invention Company
 #Copyright (c) 2008-9, Walter Bender
+#Copyright (c) 2009, Raúl Gutiérrez Segalés
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -44,6 +45,50 @@ from taturtle import *
 from taproject import *
 from sugar.graphics.objectchooser import ObjectChooser
 
+from palettes import ContentInvoker
+from tahoverhelp import *
+from gettext import gettext as _
+
+class PopupHandler():
+
+    def __init__(self):
+        self.table = {}
+
+    def getInvoker(self, block_name):
+        if block_name in self.table:
+            return self.table[block_name]
+        
+        msg = self._getHelpMessage(block_name)
+        if msg != "":
+            self.table[block_name] = ContentInvoker(msg)
+            return self.table[block_name]
+
+        print("no invoker for " + block_name)
+        return None
+
+    def _getHelpMessage(self, block_name):
+        try:
+            return (hover_dict[block_name])
+        except:
+            print("no dictionary entry for " + block_name)
+            return("")
+
+popupHandler = PopupHandler()
+
+timeout_tag = [0]
+
+# dead key dictionaries
+dead_grave = {'A':192,'E':200,'I':204,'O':210,'U':217,'a':224,'e':232,'i':236,\
+              'o':242,'u':249}
+dead_acute = {'A':193,'E':201,'I':205,'O':211,'U':218,'a':225,'e':233,'i':237,\
+              'o':243,'u':250}
+dead_circumflex = {'A':194,'E':202,'I':206,'O':212,'U':219,'a':226,'e':234,\
+                   'i':238,'o':244,'u':251}
+dead_tilde = {'A':195,'O':211,'N':209,'U':360,'a':227,'o':245,'n':241,'u':361}
+dead_diaeresis = {'A':196,'E':203,'I':207,'O':211,'U':218,'a':228,'e':235,\
+                  'i':239,'o':245,'u':252}
+dead_abovering = {'A':197,'a':229}
+
 #
 # Setup
 #
@@ -77,19 +122,24 @@ def twNew(win, path, lang, parent=None):
     win.connect("key_press_event", keypress_cb, tw)
     tw.keypress = ""
     tw.keyvalue = 0
+    tw.dead_key = ""
     tw.area = win.window
     tw.gc = tw.area.new_gc()
     # tw.window.textentry = gtk.Entry()
     # on an OLPC-XO-1, there is a scaling factor
     if os.path.exists('/sys/power/olpc-pm'):
-        tw.scale = 1
-    else: tw.scale = 1.6
+        tw.lead = 1.6
+        tw.scale = 1.0
+    else:
+        tw.lead = 1.0
+        tw.scale = 1.6
     tw.cm = tw.gc.get_colormap()
     tw.rgb = [255,0,0]
     tw.bgcolor = tw.cm.alloc_color('#fff8de')
     tw.msgcolor = tw.cm.alloc_color('black')
     tw.fgcolor = tw.cm.alloc_color('red')
     tw.textcolor = tw.cm.alloc_color('blue')
+    tw.textsize = 32
     tw.sprites = []
     tw.selected_block = None
     tw.draggroup = None
@@ -262,6 +312,38 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
     if verbose:
         print "processing remote mouse move: " + str(x) + " " + str(y)
     if tw.draggroup is None:
+        # popup help from RGS
+        spr = findsprite(tw,(x,y))
+        if spr and spr.type == 'category':
+            proto = get_proto_from_category(tw,x,y)
+            if proto and proto!='hide':
+                if timeout_tag[0] == 0:
+                    timeout_tag[0] = showPopup(proto.name)
+                    return
+            else:
+                if timeout_tag[0] > 0:
+                    try:
+                        gobject.source_remove(timeout_tag[0])
+                        timeout_tag[0] = 0
+                    except:
+                        timeout_tag[0] = 0
+        elif spr and spr.type == 'selbutton':
+            if timeout_tag[0] == 0:
+                timeout_tag[0] = showPopup(spr.name)
+            else:
+                if timeout_tag[0] > 0:
+                    try:
+                        gobject.source_remove(timeout_tag[0])
+                        timeout_tag[0] = 0
+                    except:
+                        timeout_tag[0] = 0
+        else:
+            if timeout_tag[0] > 0:
+                try:
+                    gobject.source_remove(timeout_tag[0])
+                    timeout_tag[0] = 0
+                except:
+                    timeout_tag[0] = 0
         return
     tw.block_operation = 'move'
     spr = tw.draggroup[0]
@@ -356,6 +438,7 @@ def button_release(tw, x, y, verbose=False):
         elif tw.defdict.has_key(spr.proto.name):
             tw.selected_block = spr
             if spr.proto.name=='string':
+                # entry = gtk.Entry()
                 move(tw.select_mask_string, (spr.x-5,spr.y-5))
                 setlayer(tw.select_mask_string, 660)
                 tw.firstkey = True
@@ -439,15 +522,25 @@ def dock_dx_dy(block1,dock1n,block2,dock2n):
     if block1==block2: return (100,100)
     if d1type!=d2type:
         # some blocks can take strings or nums
-        if block1.proto.name in ('write', 'push', 'plus2', 'equal', \
-            'template1', 'template2', 'template3', 'template4', \
-            'template6', 'template7', 'nop'):
+        if block1.proto.name in ('write', 'plus2', 'equal', 'less', 'greater', \
+                                 'template1', 'template2', 'template3', \
+                                 'template4', 'template6', 'template7', 'nop', \
+                                 'print', 'stack'):
             if block1.proto.name == 'write' and d1type == 'string':
                 if d2type == 'num' or d2type == 'string':
                     pass
             else: 
                 if d2type == 'num' or d2type == 'string':
                     pass
+        # some blocks can take strings, nums, or Journal
+        elif block1.proto.name in ('show', 'push', 'storein', 'storeinbox1', \
+                                   'storeinbox2'):
+            if d2type == 'num' or d2type == 'string' or d2type == 'journal':
+                pass
+        # some blocks can take media, audio, movies, of descriptions
+        elif block1.proto.name in ('containter'):
+            if d1type == 'audiooff' or d1type == 'journal':
+                pass
         else:
             return (100,100)
     if d1dir==d2dir:
@@ -471,25 +564,35 @@ def expose_cb(win, event, tw):
 #
 
 def keypress_cb(area, event, tw):
-    # print keyval.encode("utf-8")
     keyname = gtk.gdk.keyval_name(event.keyval)
+#    keyunicode = unichr(gtk.gdk.keyval_to_unicode(event.keyval)).replace("\x00","")
+    keyunicode = gtk.gdk.keyval_to_unicode(event.keyval)
+#    print keyname
+#    if keyunicode > 0:
+#        print unichr(keyunicode)
+
     if event.get_state()&gtk.gdk.MOD1_MASK:
-        # print "ALT " + gtk.gdk.keyval_name(event.keyval)
         alt_mask = True
     else:
         alt_mask = False
-    results = key_press(tw, alt_mask, keyname)
-#    keyname = unichr(gtk.gdk.keyval_to_unicode(event.keyval))
-    if keyname is not None and hasattr(tw, 'activity') and \
+    results = key_press(tw, alt_mask, keyname, keyunicode)
+    if keyname is not None and \
         hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
         # print "key press"
-        if event.get_state()&gtk.gdk.MOD4_MASK:
-            tw.activity._send_event("k:"+'T'+":"+keyname)
+        if alt_mask:
+            tw.activity._send_event("k:"+'T'+":"+keyname+":"+str(keyunicode))
         else:
-            tw.activity._send_event("k:"+'F'+":"+keyname)
-    return results
-
-def key_press(tw, alt_mask, keyname, verbose=False):
+            tw.activity._send_event("k:"+'F'+":"+keyname+":"+str(keyunicode))
+    return keyname
+'''
+    if len(keyname)>1:
+        # print "(" + keyunicode.encode("utf-8") + ")"
+        return keyname
+    else:
+        # print "[" + keyunicode.encode("utf-8") + "]"
+        return keyunicode.encode("utf-8")
+'''
+def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
     if keyname is None:
         return False
     if verbose:
@@ -506,77 +609,63 @@ def key_press(tw, alt_mask, keyname, verbose=False):
         return True
     if tw.selected_block==None:
         return False
-    # if and when we use unichr above
-    # we need to change this logic (and logic in talogo.py)
     if tw.selected_block.proto.name == 'number':
         if keyname in ['minus', 'period']: 
             keyname = {'minus': '-', 'period': '.'}[keyname]
         if len(keyname)>1:
             return True
-    else:
-        try: 
-            keyname = {
-'aacute': 'á', 'Aacute': 'Á', 'acircumflex': 'â', 'Acircumflex': 'Â', \
-'adiaeresis': 'ä', 'Adiaeresis': 'Ä', 'ae': 'æ', 'AE': 'Æ', 'agrave': \
-'à', 'Agrave': 'À', 'ampersand': '&', 'apostrophe': '\'', 'aring': \
-'å', 'Aring': 'Å', 'asciicircum': '^', 'asciitilde': '~', 'asterisk': \
-'*', 'at': '@', 'Atilde': 'Â', 'atilde': 'ã', 'backslash': '\\', \
-'bar': '|', 'braceleft': '{', 'braceright': '}', 'bracketleft': '[', \
-'bracketright': ']', 'ccedilla': 'ç', 'Ccedilla': 'Ç', 'colon': ':', \
-'comma': ',', 'dollar': '$', 'eacute': 'é', 'Eacute': 'É', \
-'ecircumflex': 'ê', 'Ecircumflex': 'Ê', 'egrave': 'è', 'Egrave': 'È', \
-'eng': 'ŋ', 'ENG': 'Ŋ', 'equal': '=', 'eth': 'ð', 'ETH': 'Ð', \
-'EuroSign': '€', 'exclam': '!', 'exclamdown': '¡', 'gbreve': 'ğ', \
-'Gbreve': 'Ğ', 'grave': '`', 'greater': '>', 'guillemnotleft': '«', \
-'guillemotright': '»', 'Iabovedot': 'İ', 'iacute': 'í', 'Iacute': 'Í', \
-'icircumflex': 'î', 'Icircumflex': 'Î', 'idotless': 'ı', 'igrave': \
-'ì', 'Igrave': 'Ì', 'less': '<', 'minus': '-', 'mu': 'µ', 'ntilde': \
-'ñ', 'Ntilde': 'Ñ', 'numbersign': '#', 'oacute': 'ó', 'Oacute': 'Ó', \
-'ocircumflex': 'ô', 'Ocircumflex': 'Ô', 'odiaeresis': '', \
-'Odiaeresis': 'Ö', 'oe': 'œ', 'OE': 'Œ', 'ograve': 'ò', 'Ograve': 'Ò', \
-'Ooblique': 'Ø', 'oslash': 'ø', 'parenleft': '(', 'parenright': ')', \
-'percent': '%', 'period': '.', 'plus': '+', 'question': '?', \
-'questiondown': '¿', 'quotedbl': '\"', 'scedilla': 'ş', 'Scedilla': \
-'Ş', 'schwa': 'ə', 'SCHWA': 'Ə', 'semicolon': ';', 'slash': '/', \
-'space': ' ', 'ssharp': 'ß', 'sterling': '£', 'thorn': 'þ', 'THO': \
-'Þ', 'uacute': 'ú', 'Uacute': 'Ú', 'ucircumflex': 'û', 'Ucircumflex': \
-'Û', 'ugrave': '', 'Ugrave': 'Ù', 'underscore': '_', 'ydiaeresis': \
-'ÿ', 'Cyrillic_ie': 'є', 'Cyrillic_IE': 'Е', 'Cyrillic_shcha': 'щ', \
-'Cyrillic_SHCHA': 'Щ', 'Cyrillic_ef': 'ф', 'Cyrillic_EF': 'Ф', \
-'Cyrillic_tse': 'ц', 'Cyrillic_TSE': 'Ц', 'Cyrillic_u': 'у', \
-'Cyrillic_U': 'У', 'Cyrillic_zhe': 'ж', 'Cyrillic_ZHE': 'Ж', \
-'Cyrillic_e': 'э', 'Cyrillic_E': 'Э', 'Cyrillic_en': 'н', \
-'Cyrillic_EN': 'Н', 'Cyrillic_ghe': 'г', 'Cyrillic_GHE': 'Г', \
-'Cyrillic_sha': 'ш', 'Cyrillic_SHA': 'Ш', 'Cyrillic_u_straight': \
-'ү','Cyrillic_U_straight': 'Ү', 'Cyrillic_ze': 'з', 'Cyrillic_ZE': \
-'З', 'Cyrillic_ka': 'к', 'Cyrillic_KA': 'К', 'Cyrillic_hardsign': 'ъ', \
-'Cyrillic_HARDSIGN': 'Ъ', 'Cyrillic_shorti': 'й', 'Cyrillic_SHORTI': \
-'Й', 'Cyrillic_yeru': 'ы', 'Cyrillic_YERU': 'Ы', 'Cyrillic_be': 'б', \
-'Cyrillic_BE': 'Б', 'Cyrillic_o_bar': 'ө', 'Cyrillic_O_bar': 'Ө', \
-'Cyrillic_a': 'а', 'Cyrillic_A': 'А', 'Cyrillic_ha': 'х', \
-'Cyrillic_HA': 'Х', 'Cyrillic_er': 'р', 'Cyrillic_ER': 'Р', \
-'Cyrillic_o': 'о', 'Cyrillic_O': 'О', 'Cyrillic_el': 'л', \
-'Cyrillic_EL': 'Л', 'Cyrillic_de': 'д', 'Cyrillic_DE': 'Д', \
-'Cyrillic_pe': 'п', 'Cyrillic_PE': 'П', 'Cyrillic_ya': 'я', \
-'Cyrillic_YA': 'Я', 'Cyrillic_che': 'ч', 'Cyrillic_CHE': 'Ч', \
-'Cyrillic_io': 'ё', 'Cyrillic_IO': 'Ё', 'Cyrillic_es': 'с', \
-'Cyrillic_ES': 'С', 'Cyrillic_em': 'м', 'Cyrillic_EM': 'М', \
-'Cyrillic_i': 'и', 'Cyrillic_I': 'И', 'Cyrillic_te': 'т', \
-'Cyrillic_TE': 'Т', 'Cyrillic_softsign': 'ь', 'Cyrillic_SOFTSIGN': \
-'Ь', 'Cyrillic_ve': 'в', 'Cyrillic_VE': 'В', 'Cyrillic_yu': 'ю', \
-'Cyrillic_YU': 'Ю', 'KP_Up': '↑', 'KP_Down': '↓', 'KP_Left': '←', \
-'KP_Right': '→'}[keyname]
-        except:
-            if len(keyname)>1:
-                return True
-
+    else: # gtk.keysyms.Left ...
+        if keyname in ['Escape', 'Return', \
+                       'KP_Up', 'KP_Down', 'KP_Left', 'KP_Right']:
+            return True
+    if keyname in ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', \
+                   'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift']:
+        keyname = ''
+        keyunicode = 0
+    # Hack until I sort out input and unicode + dead keys
+    if keyname[0:5] == 'dead_':
+        tw.dead_key = keyname
+        keyname = ''
+        keyunicode = 0
+    if keyname == 'Tab':
+        keyunicode = 32 # substitute a space for a tab
     oldnum = tw.selected_block.label 
     selblock=tw.selected_block.proto
-    if tw.firstkey: newnum = selblock.check( \
-        keyname,tw.defdict[selblock.name])
-    else: newnum = oldnum+keyname
-    setlabel(tw.selected_block, selblock.check(newnum,oldnum))
-    tw.firstkey = False
+    if keyname == 'BackSpace':
+        if len(oldnum) > 1:
+            newnum = oldnum[:len(oldnum)-1]
+        else:
+            newnum = ''
+        setlabel(tw.selected_block, selblock.check(newnum,oldnum))
+        if len(newnum) > 0:
+            tw.firstkey = False
+    elif keyname is not '':
+        # Hack until I sort out input and unicode + dead keys
+        if tw.dead_key == 'dead_grave':
+            keyunicode = dead_grave[keyname]
+        elif tw.dead_key == 'dead_acute':
+            keyunicode = dead_acute[keyname]
+        elif tw.dead_key == 'dead_circumflex':
+            keyunicode = dead_circumflex[keyname]
+        elif tw.dead_key == 'dead_tilde':
+            keyunicode = dead_tilde[keyname]
+        elif tw.dead_key == 'dead_diaeresis':
+            keyunicode = dead_diaeresis[keyname]
+        elif tw.dead_key == 'dead_abovering':
+            keyunicode = dead_abovering[keyname]
+        tw.dead_key = ""
+        if tw.firstkey:
+            newnum = selblock.check(unichr(keyunicode), \
+                                    tw.defdict[selblock.name])
+        elif keyunicode > 0:
+            if unichr(keyunicode) is not '\x00':
+                newnum = oldnum+unichr(keyunicode)
+            else:
+                newnum = oldnum
+        else:
+            newnum = ""
+        setlabel(tw.selected_block, selblock.check(newnum,oldnum))
+        tw.firstkey = False
     return True
 
 def unselect(tw):
@@ -676,5 +765,11 @@ def blocks(tw):
 
 def xy(event):
     return map(int, event.get_coords())
+
+def showPopup(block_name):
+    i = popupHandler.getInvoker(block_name)
+    if i:
+        return gobject.timeout_add(500, i.showPopup, "")
+    return 0
 
 

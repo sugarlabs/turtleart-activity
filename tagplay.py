@@ -163,9 +163,13 @@ def play_video(lc, media, x, y, w, h):
 def play_dsobject(lc, dsobject, x, y, w, h):
     if lc.gplay == None:
         lc.gplay = Gplay()
+    # wait for current movie to stop playing
+    if lc.gplay.is_playing:
+        print "already playing..."
+#        yield True
     lc.gplay.setFile("file:///" + dsobject.file_path)
-    # if lc.gplay.window == None:
-    gplayWin = PlayVideoWindow()
+    if lc.gplay.window == None:
+        gplayWin = PlayVideoWindow()
     lc.gplay.window = gplayWin
     gplayWin.set_type_hint( gtk.gdk.WINDOW_TYPE_HINT_DIALOG )
     gplayWin.set_decorated( False )
@@ -175,15 +179,14 @@ def play_dsobject(lc, dsobject, x, y, w, h):
     gplayWin.resize( w, h )
     gplayWin.show_all( )
 
+
 def stop_media(lc):
     if lc.gplay == None:
         return
     lc.gplay.stop()
     if lc.gplay.window != None:
-        # We need to figure out how to destroy the video window
-        #lc.gplay.window.destroy()
-        #lc.gplay == None
+        # We need to destroy the video window
+        # print dir(lc.gplay.window)
+        lc.gplay.window.destroy()
+        lc.gplay = None
 
-        # But meanwhile, just shrink it
-        lc.gplay.window.move( 0, 0 )
-        lc.gplay.window.resize( 1, 1 )
