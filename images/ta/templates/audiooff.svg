@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="75"
+   height="54"
+   id="svg2">
+  <defs
+     id="defs5">
+    <linearGradient
+       id="linearGradient3166">
+      <stop
+         id="stop3168"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3170"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="0.94254935"
+       y1="-31.669659"
+       x2="94.577461"
+       y2="20.434471"
+       id="linearGradient3172"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.7750554,0,0,0.9997979,0.8784441,32.623865)" />
+  </defs>
+  <path
+     d="M 1,0.88028324 L 74.119717,0.88028324 L 74.119717,53.119717 L 1,53.119717 L 1,0.88028324 z"
+     id="path9"
+     style="fill:url(#linearGradient3172);fill-opacity:1;fill-rule:nonzero;stroke:#c0a000;stroke-width:1.76056659;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <g
+     transform="translate(10.125,-0.501)"
+     id="clipping-audio"
+     style="display:block">
+    <g
+       id="g2758"
+       style="display:inline">
+      <g
+         id="g2760">
+        <polygon
+           points="10.932,6.088 31.874,6.088 43.818,18.027 43.818,48.914 10.932,48.914 10.932,6.088 "
+           id="polygon2762"
+           style="fill:#ffffff;stroke:#010101;stroke-width:3.5" />
+        <polyline
+           id="polyline2764"
+           points="43.818,18.027 31.874,18.027 31.874,6.088    "
+           style="fill:none;stroke:#010101;stroke-width:3.5" />
+      </g>
+    </g>
+    <path
+       d="M 28.325,39.697 C 27.814,38.24 25.115,38.624 23.915,39.627 C 21.515,41.636 23.491,44.023 26.239,42.904 C 27.803,42.266 28.835,41.156 28.325,39.697 z"
+       id="path2766"
+       style="fill:#010101;stroke:#010101;stroke-width:3.5;display:inline" />
+    <line
+       id="line2768"
+       y2="26.966999"
+       y1="39.806"
+       x2="28.941"
+       x1="28.941"
+       display="inline"
+       style="fill:none;stroke:#010101;stroke-width:2.25;display:inline" />
+    <polygon
+       points="35.047,25.036 27.838,28.595 27.838,24.728 35.047,21.166 35.047,25.036 "
+       id="polygon2770"
+       style="fill:#010101;display:inline" />
+  </g>
+</svg>
