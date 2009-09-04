@@ -1,0 +1,369 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-17 10:53-0500\n"
+"PO-Revision-Date: 2009-02-20 14:16-0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0rc2\n"
+
+#: activity/activity.info:2 
+msgid "Turtle Art"
+msgstr ""
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr ""
+
+#: tasetup.py:66
+msgid "text"
+msgstr ""
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Save as"
+msgstr ""
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr ""
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr ""
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr ""
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr ""
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr ""
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr ""
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr ""
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr ""
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr ""
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr ""
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr ""
+
+#:
+msgid "Flow"
+msgstr ""
+
+#:
+msgid "forever"
+msgstr ""
+
+#:
+msgid "if"
+msgstr ""
+
+#:
+msgid "then"
+msgstr ""
+
+#:
+msgid "else"
+msgstr ""
+
+#:
+msgid "repeat"
+msgstr ""
+
+#:
+msgid "stop stack"
+msgstr ""
+
+#:
+msgid "wait"
+msgstr ""
+
+#:
+msgid "My Blocks"
+msgstr ""
+
+#:
+msgid "start"
+msgstr ""
+
+#:
+msgid "box"
+msgstr ""
+
+#:
+msgid "box 1"
+msgstr ""
+
+#:
+msgid "box 2"
+msgstr ""
+
+#:
+msgid "stack"
+msgstr ""
+
+#:
+msgid "stack 1"
+msgstr ""
+
+#:
+msgid "stack 2"
+msgstr ""
+
+#:
+msgid "store in box 1"
+msgstr ""
+
+#:
+msgid "store in box 2"
+msgstr ""
+
+#:
+msgid "name"
+msgstr ""
+
+#:
+msgid "Numbers"
+msgstr ""
+
+#:
+msgid "number"
+msgstr ""
+
+#:
+msgid "and"
+msgstr ""
+
+#:
+msgid "or"
+msgstr ""
+
+#:
+msgid "not"
+msgstr ""
+
+#:
+msgid "random"
+msgstr ""
+
+#:
+msgid "min"
+msgstr ""
+
+#:
+msgid "max"
+msgstr ""
+
+#:
+msgid "mod"
+msgstr ""
+
+#:
+msgid "print"
+msgstr ""
+
+#:
+msgid "Pen"
+msgstr ""
+
+#:
+msgid "color"
+msgstr ""
+
+#:
+msgid "shade"
+msgstr ""
+
+#:
+msgid "fill screen"
+msgstr ""
+
+#:
+msgid "pen up"
+msgstr ""
+
+#:
+msgid "pen down"
+msgstr ""
+
+#:
+msgid "set pen size"
+msgstr ""
+
+#:
+msgid "pen size"
+msgstr ""
+
+#:
+msgid "set shade"
+msgstr ""
+
+#:
+msgid "set color"
+msgstr ""
+
+#:
+msgid "set text color"
+msgstr ""
+
+#:
+msgid "Blocks"
+msgstr ""
+
+#:
+msgid "Turtle"
+msgstr ""
+
+#:
+msgid "forward"
+msgstr ""
+
+#:
+msgid "back"
+msgstr ""
+
+#:
+msgid "right"
+msgstr ""
+
+#:
+msgid "left"
+msgstr ""
+
+#:
+msgid "arc"
+msgstr ""
+
+#:
+msgid "angle"
+msgstr ""
+
+#:
+msgid "radius"
+msgstr ""
+
+#:
+msgid "heading"
+msgstr ""
+
+#:
+msgid "set heading"
+msgstr ""
+
+#:
+msgid "clean"
+msgstr ""
+
+#:
+msgid "set xy"
+msgstr ""
+
+#:
+msgid "x"
+msgstr ""
+
+#:
+msgid "y"
+msgstr ""
+
+#:
+msgid "xcor"
+msgstr ""
+
+#:
+msgid "ycor"
+msgstr ""
+
+#:
+msgid "Sensors"
+msgstr ""
+
+#:
+msgid "volume"
+msgstr ""
+
+#:
+msgid "pitch"
+msgstr ""
+
+#:
+msgid "voltage"
+msgstr ""
+
+#:
+msgid "resistance"
+msgstr ""
+
+#:
+msgid "Templates"
+msgstr ""
+
+#:
+msgid "Keyboard"
+msgstr ""
+
+#:
+msgid "read key"
+msgstr ""
+
+#:
+msgid "sound"
+msgstr ""
+
+#:
+msgid "hres"
+msgstr ""
+
+#:
+msgid "vres"
+msgstr ""
+
+#:
+msgid "push"
+msgstr ""
+
+#:
+msgid "pop"
+msgstr ""
+
+#:
+msgid "show heap"
+msgstr ""
+
+#:
+msgid "empty heap"
+msgstr ""
+
+
