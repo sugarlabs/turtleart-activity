@@ -132,6 +132,14 @@ class TurtleArtActivity(activity.Activity):
         toolbar_box.toolbar.insert(save_as_toolbar_button, -1)
         save_as_toolbar_button.show()
 
+        samples_toolbar = SamplesToolbar(self)
+        samples_toolbar_button = ToolbarButton(
+                page=samples_toolbar,
+                icon_name='stock-open')
+        samples_toolbar.show()
+        toolbar_box.toolbar.insert(samples_toolbar_button, -1)
+        samples_toolbar_button.show()
+
         separator = gtk.SeparatorToolItem()
         separator.props.draw = False
         separator.set_expand(True)
@@ -747,7 +755,7 @@ class SaveAsToolbar(gtk.Toolbar):
 
 """
 Project toolbar: show/hide palettes; show/hide blocks; run; walk; stop; erase;
-                 load sample project
+                 save snapshot (special keep)
 """
 class ProjectToolbar(gtk.Toolbar):
 
@@ -866,23 +874,6 @@ class ProjectToolbar(gtk.Toolbar):
         self.insert(self.keepb, -1)
         self.keepb.show()
 
-        separator = gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        self.insert(separator, -1)
-        separator.show()
-
-        # project open
-        self.sampb = ToolButton( "stock-open" )
-        self.sampb.set_tooltip(_('samples'))
-        self.sampb.props.sensitive = True
-        self.sampb.connect('clicked', self.do_samples)
-        try:
-             self.sampb.props.accelerator = _('<Alt>o')
-        except:
-            pass
-        self.insert(self.sampb, -1)
-        self.sampb.show()
-
     def do_palette(self, button):
         if self.activity.tw.palette == True:
             tawindow.hideshow_palette(self.activity.tw,False)
@@ -964,11 +955,6 @@ class ProjectToolbar(gtk.Toolbar):
         tawindow.eraser_button(self.activity.tw)
         gobject.timeout_add(250,self.eraser.set_icon,"eraseron")
 
-    def do_samples(self, button):
-        tawindow.load_file(self.activity.tw)
-        # run the activity
-        tawindow.runbutton(self.activity.tw, 0)
-
     def do_savesnapshot(self, button):
         # Create a datastore object
         # save the current state of the project to the instance directory
@@ -998,3 +984,29 @@ class ProjectToolbar(gtk.Toolbar):
         os.remove(tafile)
         del tafd
         return
+
+"""
+Samples toolbar: load sample projects
+"""
+class SamplesToolbar(gtk.Toolbar):
+
+    def __init__(self, pc):
+        gtk.Toolbar.__init__(self)
+        self.activity = pc
+
+        # project open
+        self.sampb = ToolButton( "stock-open" )
+        self.sampb.set_tooltip(_('samples'))
+        self.sampb.props.sensitive = True
+        self.sampb.connect('clicked', self.do_samples)
+        try:
+             self.sampb.props.accelerator = _('<Alt>o')
+        except:
+            pass
+        self.insert(self.sampb, -1)
+        self.sampb.show()
+
+    def do_samples(self, button):
+        tawindow.load_file(self.activity.tw)
+        # run the activity
+        tawindow.runbutton(self.activity.tw, 0)
