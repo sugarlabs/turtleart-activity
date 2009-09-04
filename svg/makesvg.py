@@ -113,7 +113,7 @@ def main():
         print "os.system(" + "cp -r ../images/en ../image/" + sys.argv[1] + ")"
         os.system("cp -r ../images/en ../images/" + sys.argv[1])
         # make a copy of the samples directory too
-        os.system("cp -r ../samples/en ../samples/" + sys.argv[1])
+        # os.system("cp -r ../samples/en ../samples/" + sys.argv[1])
 
     # run the scripts to generate the language-specific files
     for p in py:
