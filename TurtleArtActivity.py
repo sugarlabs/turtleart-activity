@@ -32,8 +32,14 @@ _logger = logging.getLogger('turtleart-activity')
 
 import sugar
 from sugar.activity import activity
+from sugar.bundle.activitybundle import ActivityBundle
+from sugar.activity.widgets import ActivityToolbarButton
+from sugar.activity.widgets import StopButton
+from sugar.graphics.toolbarbox import ToolbarBox
+from sugar.graphics.toolbarbox import ToolbarButton
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.menuitem import MenuItem
+from sugar.graphics.icon import Icon
 from sugar.datastore import datastore
 
 import telepathy
@@ -71,24 +77,71 @@ class TurtleArtActivity(activity.Activity):
                 os.environ['HOME'], \
                 ".sugar/default/org.laptop.TurtleArtActivity/data")
 
-        self.toolbox = activity.ActivityToolbox(self)
-        self.set_toolbox(self.toolbox)
-
         # Notify when the visibility state changes
         self.add_events(gtk.gdk.VISIBILITY_NOTIFY_MASK)
         self.connect("visibility-notify-event", self.__visibility_notify_cb)
 
-        # Add additional panels
-        self.projectToolbar = ProjectToolbar(self)
-        self.toolbox.add_toolbar( _('Project'), self.projectToolbar )
-        self.editToolbar = EditToolbar(self)
-        self.toolbox.add_toolbar(_('Edit'), self.editToolbar)
-        self.saveasToolbar = SaveAsToolbar(self)
-        self.toolbox.add_toolbar( _('Import/Export'), self.saveasToolbar )
-        self.toolbox.show()
+        toolbar_box = ToolbarBox()
 
-        # Set the project toolbar as the initial one selected
-        self.toolbox.set_current_toolbar(1)
+        activity_button = ActivityToolbarButton(self)
+        toolbar_box.toolbar.insert(activity_button, 0)
+        activity_button.show()
+
+        edit_toolbar = EditToolbar(self)
+        edit_toolbar_button = ToolbarButton(
+                page=edit_toolbar,
+                icon_name='toolbar-edit')
+        edit_toolbar.show()
+        toolbar_box.toolbar.insert(edit_toolbar_button, -1)
+        edit_toolbar_button.show()
+
+        view_toolbar = gtk.Toolbar()
+        fullscreen_button = ToolButton('view-fullscreen')
+        fullscreen_button.set_tooltip(_("Fullscreen"))
+        fullscreen_button.props.accelerator = '<Alt>Enter'
+        fullscreen_button.connect('clicked', self.__fullscreen_cb)
+        view_toolbar.insert(fullscreen_button, -1)
+        fullscreen_button.show()
+
+        view_toolbar_button = ToolbarButton(
+                page=view_toolbar,
+                icon_name='toolbar-view')
+        view_toolbar.show()
+        toolbar_box.toolbar.insert(view_toolbar_button, -1)
+        view_toolbar_button.show()
+
+        project_toolbar = ProjectToolbar(self)
+        bundle = ActivityBundle(activity.get_bundle_path())
+        icon = Icon(file=bundle.get_icon())
+        project_toolbar_button = ToolbarButton(
+                page=project_toolbar)
+        project_toolbar_button.set_icon_widget(icon)
+        icon.show()
+        project_toolbar.show()
+        toolbar_box.toolbar.insert(project_toolbar_button, -1)
+        project_toolbar_button.show()
+
+        save_as_toolbar = SaveAsToolbar(self)
+        save_as_toolbar_button = ToolbarButton(
+                page=save_as_toolbar,
+                icon_name='document-save')
+        save_as_toolbar.show()
+        toolbar_box.toolbar.insert(save_as_toolbar_button, -1)
+        save_as_toolbar_button.show()
+
+        separator = gtk.SeparatorToolItem()
+        separator.props.draw = False
+        separator.set_expand(True)
+        toolbar_box.toolbar.insert(separator, -1)
+        separator.show()
+
+        stop_button = StopButton(self)
+        stop_button.props.accelerator = '<Ctrl><Shift>Q'
+        toolbar_box.toolbar.insert(stop_button, -1)
+        stop_button.show()
+
+        self.set_toolbar_box(toolbar_box)
+        toolbar_box.show()
 
         # Create a scrolled window to contain the turtle canvas
         self.sw = gtk.ScrolledWindow()
@@ -100,9 +153,6 @@ class TurtleArtActivity(activity.Activity):
                                 gtk.gdk.screen_height()*2)
         self.sw.add_with_viewport(canvas)
         canvas.show()
-
-        self.toolbox._activity_toolbar.title.grab_focus()
-        self.toolbox._activity_toolbar.title.select_region(0,0)
 
         """
         To be replaced with date checking in tasetup.py; 
@@ -198,6 +248,10 @@ class TurtleArtActivity(activity.Activity):
         # print vadj
         vadj.set_value(0)
         self.sw.set_vadjustment(vadj)
+
+    def __fullscreen_cb(self, button):    
+        self.fullscreen()
+        self.recenter()
 
     """
     Either set up initial share...
@@ -687,7 +741,7 @@ class SaveAsToolbar(gtk.Toolbar):
 
 """
 Project toolbar: show/hide palettes; show/hide blocks; run; walk; stop; erase;
-                 load sample project; fullscreen
+                 load sample project
 """
 class ProjectToolbar(gtk.Toolbar):
 
@@ -788,23 +842,6 @@ class ProjectToolbar(gtk.Toolbar):
             pass
         self.insert(self.eraser, -1)
         self.eraser.show()
-
-        separator = gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        self.insert(separator, -1)
-        separator.show()
-
-        # full screen
-        self.fullscreenb = ToolButton( "view-fullscreen" )
-        self.fullscreenb.set_tooltip(_('fullscreen'))
-        self.fullscreenb.props.sensitive = True
-        try:
-            self.fullscreenb.props.accelerator = '<Alt>Enter'
-        except:
-            pass
-        self.fullscreenb.connect('clicked', self.do_fullscreen)
-        self.insert(self.fullscreenb, -1)
-        self.fullscreenb.show()
 
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
@@ -920,10 +957,6 @@ class ProjectToolbar(gtk.Toolbar):
         self.activity.recenter()
         tawindow.eraser_button(self.activity.tw)
         gobject.timeout_add(250,self.eraser.set_icon,"eraseron")
-
-    def do_fullscreen(self, button):
-        self.activity.fullscreen()
-        self.activity.recenter()
 
     def do_samples(self, button):
         tawindow.load_file(self.activity.tw)
