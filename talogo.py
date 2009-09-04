@@ -937,7 +937,7 @@ def hideblocks(lc):
     hideshow_button(lc.tw)
     for i in lc.tw.selbuttons:
         hide(i)
-    lc.tw.activity.projectToolbar.do_hide()
+    lc.tw.activity.project_toolbar.do_hide()
 
 def doevalstep(lc):
     starttime = millis()

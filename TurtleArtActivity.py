@@ -98,7 +98,10 @@ class TurtleArtActivity(activity.Activity):
         view_toolbar = gtk.Toolbar()
         fullscreen_button = ToolButton('view-fullscreen')
         fullscreen_button.set_tooltip(_("Fullscreen"))
-        fullscreen_button.props.accelerator = '<Alt>Enter'
+        try:
+            fullscreen_button.props.accelerator = '<Alt>Enter'
+        except:
+            pass
         fullscreen_button.connect('clicked', self.__fullscreen_cb)
         view_toolbar.insert(fullscreen_button, -1)
         fullscreen_button.show()
@@ -110,14 +113,14 @@ class TurtleArtActivity(activity.Activity):
         toolbar_box.toolbar.insert(view_toolbar_button, -1)
         view_toolbar_button.show()
 
-        project_toolbar = ProjectToolbar(self)
+        self.project_toolbar = ProjectToolbar(self)
         bundle = ActivityBundle(activity.get_bundle_path())
         icon = Icon(file=bundle.get_icon())
         project_toolbar_button = ToolbarButton(
-                page=project_toolbar)
+                page=self.project_toolbar)
         project_toolbar_button.set_icon_widget(icon)
         icon.show()
-        project_toolbar.show()
+        self.project_toolbar.show()
         toolbar_box.toolbar.insert(project_toolbar_button, -1)
         project_toolbar_button.show()
 
@@ -136,7 +139,10 @@ class TurtleArtActivity(activity.Activity):
         separator.show()
 
         stop_button = StopButton(self)
-        stop_button.props.accelerator = '<Ctrl><Shift>Q'
+        try:
+            stop_button.props.accelerator = '<Ctrl><Shift>Q'
+        except:
+            pass
         toolbar_box.toolbar.insert(stop_button, -1)
         stop_button.show()
 
@@ -400,7 +406,7 @@ class TurtleArtActivity(activity.Activity):
     """
     def __visibility_notify_cb(self, window, event):
         if event.state == gtk.gdk.VISIBILITY_FULLY_OBSCURED:
-#            _logger.debug("I am not visible so I should free the audio")
+            # _logger.debug("I am not visible so I should free the audio")
             self.tw.lc.ag = None
         elif event.state in \
             [gtk.gdk.VISIBILITY_UNOBSCURED, gtk.gdk.VISIBILITY_PARTIAL]:

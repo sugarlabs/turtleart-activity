@@ -98,7 +98,7 @@ def twNew(win, path, lang, parent=None):
     tw.window = win
     tw.path = os.path.join(path,'images')
     tw.path_lang = os.path.join(path,'images',lang)
-    tw.load_save_folder = os.path.join(path,'samples',lang)
+    tw.load_save_folder = os.path.join(path,'samples')
     tw.save_folder = None
     tw.save_file_name = None
     win.set_flags(gtk.CAN_FOCUS)
@@ -213,12 +213,12 @@ def hideshow_palette(tw,state):
     if state is False:
         tw.palette == False
         if hasattr(tw,'activity'):
-            tw.activity.projectToolbar.do_hidepalette()
+            tw.activity.project_toolbar.do_hidepalette()
         hide_palette(tw)
     else:
         tw.palette == True
         if hasattr(tw,'activity'):
-            tw.activity.projectToolbar.do_showpalette()
+            tw.activity.project_toolbar.do_showpalette()
         show_palette(tw)
 
 def show_palette(tw):
