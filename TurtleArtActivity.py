@@ -138,11 +138,6 @@ class TurtleArtActivity(activity.Activity):
         toolbar_box.toolbar.insert(view_toolbar_button, -1)
         view_toolbar_button.show()
 
-        separator = gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        toolbar_box.toolbar.insert(separator, -1)
-        separator.show()
-
         # palette button (blocks)
         self.palette = ToolButton( "blocksoff" )
         self.palette.set_tooltip(_('hide palette'))
@@ -161,11 +156,6 @@ class TurtleArtActivity(activity.Activity):
         toolbar_box.toolbar.insert(self.blocks, -1)
         self.blocks.show()
 
-        separator = gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        toolbar_box.toolbar.insert(separator, -1)
-        separator.show()
-
         # eraser button
         self.eraser_button = ToolButton( "eraseron" )
         self.eraser_button.set_tooltip(_('clean'))
@@ -174,11 +164,6 @@ class TurtleArtActivity(activity.Activity):
         self.eraser_button.props.accelerator = _('<Alt>e')
         toolbar_box.toolbar.insert(self.eraser_button, -1)
         self.eraser_button.show()
-
-        separator = gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        toolbar_box.toolbar.insert(separator, -1)
-        separator.show()
 
         # run button
         self.runproject = ToolButton( "run-fastoff" )
@@ -206,11 +191,6 @@ class TurtleArtActivity(activity.Activity):
         self.debugproject.props.accelerator = _('<Alt>d')
         toolbar_box.toolbar.insert(self.debugproject, -1)
         self.debugproject.show()
-
-        separator = gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        toolbar_box.toolbar.insert(separator, -1)
-        separator.show()
 
         # stop button
         self.stop = ToolButton( "stopitoff" )
