@@ -132,19 +132,40 @@ class TurtleArtActivity(activity.Activity):
         toolbar_box.toolbar.insert(save_as_toolbar_button, -1)
         save_as_toolbar_button.show()
 
-        samples_toolbar = SamplesToolbar(self)
-        samples_toolbar_button = ToolbarButton(
-                page=samples_toolbar,
-                icon_name='stock-open')
-        samples_toolbar.show()
-        toolbar_box.toolbar.insert(samples_toolbar_button, -1)
-        samples_toolbar_button.show()
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        toolbar_box.toolbar.insert(separator, -1)
+        separator.show()
+
+        # project open
+        samples_button = ToolButton( "stock-open" )
+        samples_button.set_tooltip(_('samples'))
+        samples_button.props.sensitive = True
+        samples_button.connect('clicked', self._do_samples_cb)
+        try:
+             samples_button.props.accelerator = _('<Alt>o')
+        except:
+            pass
+        toolbar_box.toolbar.insert(samples_button, -1)
+        samples_button.show()
 
         separator = gtk.SeparatorToolItem()
         separator.props.draw = False
         separator.set_expand(True)
         toolbar_box.toolbar.insert(separator, -1)
         separator.show()
+
+        # Save snapshot ("keep")
+        keep_button = ToolButton( "filesave" )
+        keep_button.set_tooltip(_('save snapshot'))
+        keep_button.props.sensitive = True
+        try:
+            self.fullscreenb.props.accelerator = '<Ctrl>S'
+        except:
+            pass
+        keep_button.connect('clicked', self._do_savesnapshot)
+        toolbar_box.toolbar.insert(keep_button, -1)
+        keep_button.show()
 
         stop_button = StopButton(self)
         try:
@@ -249,6 +270,42 @@ class TurtleArtActivity(activity.Activity):
 
         self.connect('shared', self._shared_cb)
         self.connect('joined', self._joined_cb)
+
+    """ Sample projects open dialog """
+    def _do_samples_cb(self, button):
+        tawindow.load_file(self.tw)
+        # run the activity
+        tawindow.runbutton(self.tw, 0)
+
+    """ Save snapshot """
+    def _do_savesnapshot(self, button):
+        # Create a datastore object
+        # save the current state of the project to the instance directory
+
+        import tempfile
+        tafd, tafile = tempfile.mkstemp(".ta")
+        print tafile
+        try:
+            tawindow.save_data(self.tw,tafile)
+        except:
+            _logger.debug("couldn't save snapshot to journal")
+
+        # Create a datastore object
+        dsobject = datastore.create()
+
+        # Write any metadata
+        dsobject.metadata['title'] = self.get_title() + " snapshot"
+        dsobject.metadata['icon-color'] = profile.get_color().to_string()
+        dsobject.metadata['mime_type'] = 'application/x-turtle-art'
+        dsobject.metadata['activity'] = 'org.laptop.TurtleArtActivity'
+        dsobject.set_file_path(tafile)
+        datastore.write(dsobject)
+
+        # Clean up
+        dsobject.destroy()
+        os.remove(tafile)
+        del tafd
+        return
 
     """
     Recenter scrolled window around canvas
@@ -857,23 +914,6 @@ class ProjectToolbar(gtk.Toolbar):
         self.insert(self.eraser, -1)
         self.eraser.show()
 
-        separator = gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        self.insert(separator, -1)
-        separator.show()
-
-        # Save snapshot ("keep")
-        self.keepb = ToolButton( "filesave" )
-        self.keepb.set_tooltip(_('save snapshot'))
-        self.keepb.props.sensitive = True
-        try:
-            self.fullscreenb.props.accelerator = '<Ctrl>S'
-        except:
-            pass
-        self.keepb.connect('clicked', self.do_savesnapshot)
-        self.insert(self.keepb, -1)
-        self.keepb.show()
-
     def do_palette(self, button):
         if self.activity.tw.palette == True:
             tawindow.hideshow_palette(self.activity.tw,False)
@@ -954,59 +994,3 @@ class ProjectToolbar(gtk.Toolbar):
         self.activity.recenter()
         tawindow.eraser_button(self.activity.tw)
         gobject.timeout_add(250,self.eraser.set_icon,"eraseron")
-
-    def do_savesnapshot(self, button):
-        # Create a datastore object
-        # save the current state of the project to the instance directory
-        print "### in savesnapshot ###"
-
-        import tempfile
-        tafd, tafile = tempfile.mkstemp(".ta")
-        print tafile
-        try:
-            tawindow.save_data(self.activity.tw,tafile)
-        except:
-            _logger.debug("couldn't save snapshot to journal")
-
-        # Create a datastore object
-        dsobject = datastore.create()
-
-        # Write any metadata
-        dsobject.metadata['title'] = self.activity.get_title() + " snapshot"
-        dsobject.metadata['icon-color'] = profile.get_color().to_string()
-        dsobject.metadata['mime_type'] = 'application/x-turtle-art'
-        dsobject.metadata['activity'] = 'org.laptop.TurtleArtActivity'
-        dsobject.set_file_path(tafile)
-        datastore.write(dsobject)
-
-        # Clean up
-        dsobject.destroy()
-        os.remove(tafile)
-        del tafd
-        return
-
-"""
-Samples toolbar: load sample projects
-"""
-class SamplesToolbar(gtk.Toolbar):
-
-    def __init__(self, pc):
-        gtk.Toolbar.__init__(self)
-        self.activity = pc
-
-        # project open
-        self.sampb = ToolButton( "stock-open" )
-        self.sampb.set_tooltip(_('samples'))
-        self.sampb.props.sensitive = True
-        self.sampb.connect('clicked', self.do_samples)
-        try:
-             self.sampb.props.accelerator = _('<Alt>o')
-        except:
-            pass
-        self.insert(self.sampb, -1)
-        self.sampb.show()
-
-    def do_samples(self, button):
-        tawindow.load_file(self.activity.tw)
-        # run the activity
-        tawindow.runbutton(self.activity.tw, 0)
