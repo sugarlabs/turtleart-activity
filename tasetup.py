@@ -133,8 +133,8 @@ selectors = (
      ('stack1','stack1','noarg'),
      ('hat2','nop2','start'),
      ('stack2','stack2','noarg'),
-     ('hat','nop3','starts',_('stack')),
-     ('stack','stack','sarg',_('stack')),
+     ('hat','nop3','starts',_('action')),
+     ('stack','stack','sarg',_('action')),
      ('storeinbox1','storeinbox1','1arg'),
      ('box1','box1','num'),
      ('storeinbox2','storeinbox2','1arg'),
@@ -342,16 +342,25 @@ def load_image(path, dir, file):
     # first try to open the cached image
     # then try to open .png file
     # if you fail, open the .svg file and cache the result as png
+    # finally, fallback to tw.path_en
     try:
         return gtk.gdk.pixbuf_new_from_file(os.path.join(datapath, file+'.png'))
     except:
         try:
             print "trying ... " + os.path.join(path, dir, file+'.png')
-            return gtk.gdk.pixbuf_new_from_file(os.path.join(path, dir, \
+            return gtk.gdk.pixbuf_new_from_file(os.path.join(path, \
+                                                             dir, \
                                                              file+'.png'))
         except:
-            foo = gtk.gdk.pixbuf_new_from_file(os.path.join(path, dir, \
-                                                            file +'.svg'))
-            foo.save(os.path.join(datapath, file+'.png'), "png")
-            return foo
-
+            try:
+                foo = gtk.gdk.pixbuf_new_from_file(os.path.join(path, \
+                                                                dir, \
+                                                                file +'.svg'))
+                foo.save(os.path.join(datapath, file+'.png'), "png")
+                return foo
+            except:
+                foo = gtk.gdk.pixbuf_new_from_file(os.path.join(tw.path_en,\
+                                                                dir, \
+                                                                file +'.svg'))
+                foo.save(os.path.join(datapath, file+'.png'), "png")
+                return foo
