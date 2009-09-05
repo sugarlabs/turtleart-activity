@@ -98,6 +98,7 @@ def twNew(win, path, lang, parent=None):
     tw.window = win
     tw.path = os.path.join(path,'images')
     tw.path_lang = os.path.join(path,'images',lang)
+    tw.path_en = os.path.join(path,'images/en') # en as fallback
     tw.load_save_folder = os.path.join(path,'samples')
     tw.save_folder = None
     tw.save_file_name = None
@@ -213,12 +214,12 @@ def hideshow_palette(tw,state):
     if state is False:
         tw.palette == False
         if hasattr(tw,'activity'):
-            tw.activity.project_toolbar.do_hidepalette()
+            tw.activity.do_hidepalette()
         hide_palette(tw)
     else:
         tw.palette == True
         if hasattr(tw,'activity'):
-            tw.activity.project_toolbar.do_showpalette()
+            tw.activity.do_showpalette()
         show_palette(tw)
 
 def show_palette(tw):
