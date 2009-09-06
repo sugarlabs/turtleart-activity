@@ -163,6 +163,8 @@ def setup_cmd(lc, str):
 
 def start_eval(lc, list):
     icall(lc, evline, list); yield True
+    # turn off stop icon when execution is finished
+    lc.tw.activity.stop.set_icon("stopitoff")
     yield False
 
 def evline(lc, list):
@@ -183,7 +185,8 @@ def evline(lc, list):
         if lc.iresult==None: continue
         raise logoerror(str(lc.iresult))
     lc.iline = oldiline
-    ireturn(lc); yield True
+    ireturn(lc)
+    yield True
 
 def eval(lc, infixarg=False):
     token = lc.iline.pop(0)
@@ -195,7 +198,8 @@ def eval(lc, infixarg=False):
         while infixnext(lc):
             icall(lc, evalinfix, res); yield True
             res = lc.iresult
-    ireturn(lc, res); yield True
+    ireturn(lc, res)
+    yield True
 
 def evalsym(lc, token):
     debug_trace(lc, token)
@@ -219,7 +223,8 @@ def evalsym(lc, token):
     if lc.arglist!=None and result==None:
         raise logoerror("%s didn't output to %s" % \
             (oldcfun.name, lc.cfun.name))
-    ireturn(lc, result); yield True
+    ireturn(lc, result)
+    yield True
 
 def evalinfix(lc, firstarg):
     token = lc.iline.pop(0)
