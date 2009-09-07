@@ -89,9 +89,11 @@ class TurtleArtActivity(activity.Activity):
         self.keep_button.connect('clicked', self._do_savesnapshot_cb)
         self.keep_button.show()
         activity_button.props.page.insert(self.keep_button, -1)
-        separator = gtk.SeparatorToolItem()
-        separator.show()
-        activity_button.props.page.insert(separator, -1)
+        samples_button = ToolButton( "stock-open" )
+        samples_button.set_tooltip(_('Samples'))
+        samples_button.connect('clicked', self._do_samples_cb)
+        samples_button.show()
+        activity_button.props.page.insert(samples_button, -1)
         self.save_as_html = ToolButton('htmloff')
         self.save_as_html.set_tooltip(_("Save as HTML"))
         self.save_as_html.connect('clicked', self._do_savehtml_cb)
@@ -128,7 +130,6 @@ class TurtleArtActivity(activity.Activity):
         fullscreen_button.set_tooltip(_("Fullscreen"))
         fullscreen_button.props.accelerator = '<Alt>Enter'
         fullscreen_button.connect('clicked', self.__fullscreen_cb)
-        view_toolbar.insert(fullscreen_button, -1)
         fullscreen_button.show()
 
         view_toolbar_button = ToolbarButton(
@@ -206,14 +207,21 @@ class TurtleArtActivity(activity.Activity):
         toolbar_box.toolbar.insert(separator, -1)
         separator.show()
 
-        # project open
-        samples_button = ToolButton( "stock-open" )
-        samples_button.set_tooltip(_('Samples'))
-        samples_button.props.sensitive = True
-        samples_button.connect('clicked', self._do_samples_cb)
-        samples_button.props.accelerator = _('<Alt>o')
-        toolbar_box.toolbar.insert(samples_button, -1)
-        samples_button.show()
+        # Help
+        help_toolbar = gtk.Toolbar()
+        self.hover_help_label = gtk.Label("help")
+        self.hover_help_label.show()
+        self.hover_toolitem = gtk.ToolItem()
+        self.hover_toolitem.add(self.hover_help_label)
+        help_toolbar.insert(self.hover_toolitem,-1)
+        self.hover_toolitem.show()
+
+        help_toolbar_button = ToolbarButton(
+                page=help_toolbar,
+                icon_name='help-toolbar')
+        help_toolbar.show()
+        toolbar_box.toolbar.insert(help_toolbar_button, -1)
+        help_toolbar_button.show()
 
         separator = gtk.SeparatorToolItem()
         separator.props.draw = False

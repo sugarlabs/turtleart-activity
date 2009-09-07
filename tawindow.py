@@ -319,7 +319,7 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
             proto = get_proto_from_category(tw,x,y)
             if proto and proto!='hide':
                 if timeout_tag[0] == 0:
-                    timeout_tag[0] = showPopup(proto.name)
+                    timeout_tag[0] = showPopup(proto.name,tw)
                     return
             else:
                 if timeout_tag[0] > 0:
@@ -330,7 +330,7 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
                         timeout_tag[0] = 0
         elif spr and spr.type == 'selbutton':
             if timeout_tag[0] == 0:
-                timeout_tag[0] = showPopup(spr.name)
+                timeout_tag[0] = showPopup(spr.name,tw)
             else:
                 if timeout_tag[0] > 0:
                     try:
@@ -767,10 +767,18 @@ def blocks(tw):
 def xy(event):
     return map(int, event.get_coords())
 
-def showPopup(block_name):
+def showPopup(block_name,tw):
+    try:
+        label = block_name + ": " + hover_dict[block_name]
+    except:
+        label = block_name
+    tw.activity.hover_help_label.set_text(label)
+    tw.activity.hover_help_label.show()
+    """
     i = popupHandler.getInvoker(block_name)
     if i:
         return gobject.timeout_add(500, i.showPopup, "")
+    """
     return 0
 
 
