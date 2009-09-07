@@ -85,7 +85,7 @@ class TurtleArtActivity(activity.Activity):
 
         activity_button = ActivityToolbarButton(self)
         self.keep_button = ToolButton('filesave')
-        self.keep_button.set_tooltip(_("save snapshot"))
+        self.keep_button.set_tooltip(_("Save snapshot"))
         self.keep_button.connect('clicked', self._do_savesnapshot_cb)
         self.keep_button.show()
         activity_button.props.page.insert(self.keep_button, -1)
@@ -93,22 +93,22 @@ class TurtleArtActivity(activity.Activity):
         separator.show()
         activity_button.props.page.insert(separator, -1)
         self.save_as_html = ToolButton('htmloff')
-        self.save_as_html.set_tooltip(_("save as HTML"))
+        self.save_as_html.set_tooltip(_("Save as HTML"))
         self.save_as_html.connect('clicked', self._do_savehtml_cb)
         self.save_as_html.show()
         activity_button.props.page.insert(self.save_as_html, -1)
         self.save_as_logo = ToolButton('logo-saveoff')
-        self.save_as_logo.set_tooltip(_("save as Logo"))
+        self.save_as_logo.set_tooltip(_("Save as Logo"))
         self.save_as_logo.connect('clicked', self._do_savelogo_cb)
         self.save_as_logo.show()
         activity_button.props.page.insert(self.save_as_logo, -1)
         self.save_as_image = ToolButton('image-saveoff')
-        self.save_as_image.set_tooltip(_("save as image"))
+        self.save_as_image.set_tooltip(_("Save as image"))
         self.save_as_image.connect('clicked', self._do_saveimage_cb)
         self.save_as_image.show()
         activity_button.props.page.insert(self.save_as_image, -1)
         self.load_python = ToolButton('pippy-openoff')
-        self.load_python.set_tooltip(_("load my block"))
+        self.load_python.set_tooltip(_("Load my block"))
         self.load_python.connect('clicked', self._do_loadpython_cb)
         self.load_python.show()
         activity_button.props.page.insert(self.load_python, -1)
@@ -140,7 +140,7 @@ class TurtleArtActivity(activity.Activity):
 
         # palette button (blocks)
         self.palette = ToolButton( "blocksoff" )
-        self.palette.set_tooltip(_('hide palette'))
+        self.palette.set_tooltip(_('Hide palette'))
         self.palette.props.sensitive = True
         self.palette.connect('clicked', self._do_palette_cb)
         self.palette.props.accelerator = _('<Alt>p')
@@ -149,7 +149,7 @@ class TurtleArtActivity(activity.Activity):
 
         # blocks button (hideshow)
         self.blocks = ToolButton( "hideshowoff" )
-        self.blocks.set_tooltip(_('hide blocks'))
+        self.blocks.set_tooltip(_('Hide blocks'))
         self.blocks.props.sensitive = True
         self.blocks.connect('clicked', self.do_hideshow)
         self.blocks.props.accelerator = _('<Alt>b')
@@ -158,7 +158,7 @@ class TurtleArtActivity(activity.Activity):
 
         # eraser button
         self.eraser_button = ToolButton( "eraseron" )
-        self.eraser_button.set_tooltip(_('clean'))
+        self.eraser_button.set_tooltip(_('Clean'))
         self.eraser_button.props.sensitive = True
         self.eraser_button.connect('clicked', self._do_eraser_cb)
         self.eraser_button.props.accelerator = _('<Alt>e')
@@ -167,7 +167,7 @@ class TurtleArtActivity(activity.Activity):
 
         # run button
         self.runproject = ToolButton( "run-fastoff" )
-        self.runproject.set_tooltip(_('run'))
+        self.runproject.set_tooltip(_('Run'))
         self.runproject.props.sensitive = True
         self.runproject.connect('clicked', self._do_run_cb)
         self.runproject.props.accelerator = _('<Alt>r')
@@ -176,7 +176,7 @@ class TurtleArtActivity(activity.Activity):
 
         # step button
         self.stepproject = ToolButton( "run-slowoff" )
-        self.stepproject.set_tooltip(_('step'))
+        self.stepproject.set_tooltip(_('Step'))
         self.stepproject.props.sensitive = True
         self.stepproject.connect('clicked', self._do_step_cb)
         self.stepproject.props.accelerator = _('<Alt>w')
@@ -185,7 +185,7 @@ class TurtleArtActivity(activity.Activity):
 
         # debug button
         self.debugproject = ToolButton( "debugoff" )
-        self.debugproject.set_tooltip(_('debug'))
+        self.debugproject.set_tooltip(_('Debug'))
         self.debugproject.props.sensitive = True
         self.debugproject.connect('clicked', self._do_debug_cb)
         self.debugproject.props.accelerator = _('<Alt>d')
@@ -194,7 +194,7 @@ class TurtleArtActivity(activity.Activity):
 
         # stop button
         self.stop = ToolButton( "stopitoff" )
-        self.stop.set_tooltip(_('stop turtle'))
+        self.stop.set_tooltip(_('Stop turtle'))
         self.stop.props.sensitive = True
         self.stop.connect('clicked', self._do_stop_cb)
         self.stop.props.accelerator = _('<Alt>s')
@@ -208,7 +208,7 @@ class TurtleArtActivity(activity.Activity):
 
         # project open
         samples_button = ToolButton( "stock-open" )
-        samples_button.set_tooltip(_('samples'))
+        samples_button.set_tooltip(_('Samples'))
         samples_button.props.sensitive = True
         samples_button.connect('clicked', self._do_samples_cb)
         samples_button.props.accelerator = _('<Alt>o')
@@ -222,7 +222,7 @@ class TurtleArtActivity(activity.Activity):
         separator.show()
 
         stop_button = StopButton(self)
-        stop_button.props.accelerator = '<Ctrl><Shift>Q'
+        stop_button.props.accelerator = '<Ctrl>Q'
         toolbar_box.toolbar.insert(stop_button, -1)
         stop_button.show()
 
@@ -854,7 +854,7 @@ class EditToolbar(gtk.Toolbar):
 
         # Copy button
         self.copy = ToolButton( "edit-copy" )
-        self.copy.set_tooltip(_('copy'))
+        self.copy.set_tooltip(_('Copy'))
         self.copy.props.sensitive = True
         self.copy.connect('clicked', self._copy_cb)
         self.copy.props.accelerator = '<Ctrl>C'
@@ -863,7 +863,7 @@ class EditToolbar(gtk.Toolbar):
 
         # Paste button
         self.paste = ToolButton( "edit-paste" )
-        self.paste.set_tooltip(_('paste'))
+        self.paste.set_tooltip(_('Paste'))
         self.paste.props.sensitive = True
         self.paste.connect('clicked', self._paste_cb)
         self.paste.props.accelerator = '<Ctrl>V'
