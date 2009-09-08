@@ -38,8 +38,15 @@
       style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
        <tspan 
         x="37" 
-        y="26" 
-        style="font-size:16px;">முன்னோக்கி அனுப்பு</tspan> 
+        y="20" 
+        style="font-size:13px;">முன்னோக்கி</tspan> 
+   </text> 
+   <text 
+      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
+       <tspan 
+        x="37" 
+        y="32" 
+        style="font-size:13px;">அனுப்பு</tspan> 
    </text> 
  </svg> 
  
