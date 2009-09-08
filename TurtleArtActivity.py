@@ -209,7 +209,7 @@ class TurtleArtActivity(activity.Activity):
 
         # Help
         help_toolbar = gtk.Toolbar()
-        self.hover_help_label = gtk.Label("help")
+        self.hover_help_label = gtk.Label(_("Move the cursor over the yellow palettes for help."))
         self.hover_help_label.show()
         self.hover_toolitem = gtk.ToolItem()
         self.hover_toolitem.add(self.hover_help_label)
