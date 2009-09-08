@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-01 18:07+0000\n"
-"PO-Revision-Date: 2009-08-21 02:27-0400\n"
+"PO-Revision-Date: 2009-09-08 11:09-0400\n"
 "Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: fr\n"
@@ -66,11 +66,11 @@ msgstr "échantillons"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:465
 msgid "save as HTML"
-msgstr "enregistre en HTML"
+msgstr "enregistrer en HTML"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:473
 msgid "save Logo"
-msgstr "enregistre en Logo"
+msgstr "enregistrer en Logo"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:481
 msgid "save as image"
