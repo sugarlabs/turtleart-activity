@@ -1,3 +1,11 @@
+64
+
+* major refactoring for new toolbar design
+* stop sign turns off after execution is finished
+* added preliminary support for mg and ta
+* moved hover help to help toolbar
+* adjusted artwork on Turtle palette
+
 63
 
 * more sample programs
