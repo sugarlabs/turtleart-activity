@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-08 12:56+0000\n"
+"POT-Creation-Date: 2009-09-08 17:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -453,27 +453,23 @@ msgstr ""
 msgid "Save snapshot"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:93
-msgid "Samples"
-msgstr ""
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:98
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:97
 msgid "Save as HTML"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:103
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:102
 msgid "Save as Logo"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:108
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:107
 msgid "Save as image"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:113
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:112
 msgid "Load my block"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:130
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:129
 msgid "Fullscreen"
 msgstr ""
 
@@ -533,41 +529,45 @@ msgstr ""
 msgid "<Alt>s"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:212
-msgid "Move the cursor over the yellow palettes for help."
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:213
+msgid "Samples"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:510
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:520
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:538
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:547
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:224
+msgid "Move the cursor over the orange palette for help."
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:522
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:532
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:550
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:559
 msgid "show palette"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:514
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:525
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:541
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:526
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:537
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:553
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:565
 msgid "hide palette"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:531
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:545
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:543
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:557
 msgid "show blocks"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:534
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:551
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:546
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:563
 #: /home/walter/Desktop/turtleart-activity/svg/hideblocks.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:41
 msgid "hide blocks"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:865
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:877
 msgid "Copy"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:874
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:886
 msgid "Paste"
 msgstr ""
 
