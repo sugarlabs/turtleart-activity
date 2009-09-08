@@ -89,11 +89,10 @@ class TurtleArtActivity(activity.Activity):
         self.keep_button.connect('clicked', self._do_savesnapshot_cb)
         self.keep_button.show()
         activity_button.props.page.insert(self.keep_button, -1)
-        samples_button = ToolButton( "stock-open" )
-        samples_button.set_tooltip(_('Samples'))
-        samples_button.connect('clicked', self._do_samples_cb)
-        samples_button.show()
-        activity_button.props.page.insert(samples_button, -1)
+        separator = gtk.SeparatorToolItem()
+        separator.props.draw = True
+        activity_button.props.page.insert(separator, -1)
+        separator.show()
         self.save_as_html = ToolButton('htmloff')
         self.save_as_html.set_tooltip(_("Save as HTML"))
         self.save_as_html.connect('clicked', self._do_savehtml_cb)
@@ -130,6 +129,7 @@ class TurtleArtActivity(activity.Activity):
         fullscreen_button.set_tooltip(_("Fullscreen"))
         fullscreen_button.props.accelerator = '<Alt>Enter'
         fullscreen_button.connect('clicked', self.__fullscreen_cb)
+        view_toolbar.insert(fullscreen_button,-1)
         fullscreen_button.show()
 
         view_toolbar_button = ToolbarButton(
@@ -209,7 +209,19 @@ class TurtleArtActivity(activity.Activity):
 
         # Help
         help_toolbar = gtk.Toolbar()
-        self.hover_help_label = gtk.Label(_("Move the cursor over the yellow palettes for help."))
+        samples_button = ToolButton( "stock-open" )
+        samples_button.set_tooltip(_('Samples'))
+        samples_button.connect('clicked', self._do_samples_cb)
+        samples_button.show()
+        help_toolbar.insert(samples_button, -1)
+
+        separator = gtk.SeparatorToolItem()
+        separator.props.draw = True
+        help_toolbar.insert(separator, -1)
+        separator.show()
+
+        self.hover_help_label = \
+            gtk.Label(_("Move the cursor over the orange palette for help."))
         self.hover_help_label.show()
         self.hover_toolitem = gtk.ToolItem()
         self.hover_toolitem.add(self.hover_help_label)
