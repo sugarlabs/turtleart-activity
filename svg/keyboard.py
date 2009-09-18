@@ -37,7 +37,7 @@ def main():
     _ = t.ugettext
     t.install()
 
-    mystring = _("Keyboard")
+    mystring = _("keyboard")
     mygroup = "sensors"
 
     s = mystring

@@ -106,8 +106,6 @@ selectors = (
      ('keyboard','keyboard','num'),
      ('nop','userdefined','onearg',100),
      ('myfunc','myfunc','myfunc',_('x'),100),
-     ('hres','hres','num'),
-     ('vres','vres','num'),
      ('push','push','onearg'),
      ('pop','pop','num'),
      ('printheap','heap','noarg2'),
@@ -115,9 +113,11 @@ selectors = (
      ('leftpos','leftpos','num'),
      ('toppos','toppos','num'),
      ('rightpos','rightpos','num'),
-     ('bottompos','bottompos','num'))),
+     ('bottompos','bottompos','num'),
+     ('hres','hres','num'),
+     ('vres','vres','num'))),
   ('flow', 55,
-    (('wait','wait','onearg',10),
+    (('wait','wait','onearg',1),
      ('forever','forever','forever'),
      ('repeat','repeat','repeat',4),
      ('if','if','if'),
@@ -347,7 +347,7 @@ def load_image(path, dir, file):
         return gtk.gdk.pixbuf_new_from_file(os.path.join(datapath, file+'.png'))
     except:
         try:
-            print "trying ... " + os.path.join(path, dir, file+'.png')
+            # print "trying ... " + os.path.join(path, dir, file+'.png')
             return gtk.gdk.pixbuf_new_from_file(os.path.join(path, \
                                                              dir, \
                                                              file+'.png'))

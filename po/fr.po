@@ -574,27 +574,30 @@ msgstr "Passer le curseur sur les palettes jaunes pour afficher l'aide."
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:520
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:538
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:547
-msgid "show palette"
-msgstr "afficher la palette"
+msgid "Show palette"
+msgstr "Afficher la palette"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:514
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:525
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:541
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:553
-msgid "hide palette"
-msgstr "masquer la palette"
+msgid "Hide palette"
+msgstr "Masquer la palette"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:531
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:545
-msgid "show blocks"
-msgstr "afficher les blocs"
+msgid "Show blocks"
+msgstr "Afficher les blocs"
+
+#: /home/walter/Desktop/turtleart-activity/svg/hideblocks.py:40
+msgid "hide blocks"
+msgstr "masquer les blocs"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:534
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:551
-#: /home/walter/Desktop/turtleart-activity/svg/hideblocks.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:41
-msgid "hide blocks"
-msgstr "masquer les blocs"
+msgid "Hide blocks"
+msgstr "Masquer les blocs"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:865
 msgid "Copy"
@@ -892,6 +895,9 @@ msgstr "y"
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:52
 #: /home/walter/Desktop/turtleart-activity/svg/seth.py:40
 msgid "set heading"
+msgstr "seth"
+
+msgid "seth"
 msgstr "seth"
 
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:53

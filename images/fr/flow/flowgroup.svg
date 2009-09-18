@@ -261,11 +261,12 @@
      id="path75"
      style="fill:url(#linearGradient4708);fill-opacity:1;stroke:#a97513;stroke-width:1px;stroke-opacity:1" />
   <text
+     y="-4"
      id="text77"
      style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="105"
-       y="288"
+       y="284"
        id="tspan79"
        style="font-size:10px">arrête</tspan>
   </text>
@@ -308,4 +309,15 @@
      d="M 49.4155,411.64166 C 60.0827,411.64166 60.0827,411.64166 60.0827,411.64166 C 60.0827,411.64166 62.83737,413.29944 63.74955,414.30846 C 64.68124,415.33906 66.083,418.30866 66.083,418.30866 L 66.083,450.97696 C 66.083,450.97696 64.60489,453.43952 63.74955,454.31046 C 62.79646,455.28093 60.0827,456.97726 60.0827,456.97726 L 48.7488,456.97726 L 48.7488,456.97726 L 48.7488,459.64406 L 35.4148,459.64406 L 35.4148,456.97726 L 24.0809,456.97726 C 24.0809,456.97726 21.367138,455.28093 20.41405,454.31046 C 19.558707,453.43952 18.0806,450.97696 18.0806,450.97696 L 18.0806,418.30866 C 18.0806,418.30866 19.482356,415.33906 20.41405,414.30846 C 21.32623,413.29944 24.0809,411.64166 24.0809,411.64166 L 34.7481,411.64166 L 34.7481,414.97516 L 49.4155,414.97516 L 49.4155,411.64166 z"
      id="path105"
      style="fill:url(#linearGradient4683);fill-opacity:1;stroke:#a97513;stroke-width:1.5px;stroke-opacity:1" />
+  <text
+     x="0.7124716"
+     y="4.6988468"
+     id="text2436"
+     style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="105.71246"
+       y="292.69885"
+       id="tspan2438"
+       style="font-size:10px">l'action</tspan>
+  </text>
 </svg>

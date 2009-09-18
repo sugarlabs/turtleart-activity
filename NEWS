@@ -1,3 +1,35 @@
+68
+
+* consistant case on tool tips
+* speeding up debug
+* added i18n to debug panel
+* new artwork for es and fr
+* fixed some problems with svg factory
+
+67
+
+* added mime-type icon
+* changed keyboard shortcuts to use Ctrl instead of Alt as per guidelines
+* wait time in seconds
+* fixed problem with fractional wait times
+* fixed i18n problem with labels in hover help
+* reorganization of extras palette
+* added screen capture to "Save as HTML"
+
+66
+
+* added support for old toolbar design (0.82-0.84)
+* work around Rainbow problem with image save
+* activate Stop Button on launch (thanks to rgs)
+* added open from journal button (with rgs)
+* Erase Button hides status blocks
+* cleaned up some sample code
+
+65
+
+* fixed problem with View Toolbar
+* moved Samples button to Help Toolbar
+
 64
 
 * major refactoring for new toolbar design

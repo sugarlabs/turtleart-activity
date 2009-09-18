@@ -39,6 +39,13 @@
      <tspan
        sodipodi:role="line"
        x="37"
-       y="26"
+       y="20"
        style="font-size:14px;text-anchor:middle">arrête</tspan></text>
+  <text
+     style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     <tspan
+       sodipodi:role="line"
+       x="37"
+       y="32"
+       style="font-size:14px;text-anchor:middle">l'action</tspan></text>
 </svg>

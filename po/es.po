@@ -366,3 +366,390 @@ msgstr "empezar"
 
 #~ msgid "Samples"
 #~ msgstr "Ejemplos"
+#:
+msgid "presentation template: select Journal object (no description)"
+msgstr "plantilla de presentación: selección objeto del Diario (sin descripción)"
+
+#:
+msgid "set color of the line drawn by the turtle"
+msgstr "establecer el color de la línea dibujada por la tortuga"
+
+#:
+msgid "draw text or show media from the Journal"
+msgstr "dibujar texto o mostrar objeto multimedia del Diario"
+
+#:
+msgid "returns random number between minimum (left) and maximum (right) values"
+msgstr "retorna un número al azar entre los valores del mínimo (izquierda) y máximo (derecha) "
+
+#:
+msgid "calculate square root"
+msgstr "calcula la raiz cuadrada"
+
+#:
+msgid "holds results of query-keyboard block"
+msgstr "almacena el resultado del comando que obtiene entrada del teclado"
+
+#:
+msgid "fills the background with (color, shade)"
+msgstr "llena el fondo con (color, sombra)"
+
+#:
+msgid "set color of text drawn by the turtle"
+msgstr "establece el color del texto dibujado por la tortuga"
+
+#:
+msgid "ycor of top of screen"
+msgstr "ycor de la parte superior de la pantalla"
+
+#:
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr "ejecuta el código que se encuentra en el módulo tamyblock.py que se encuentra en el diario"
+
+#:
+msgid "store numeric value in named variable"
+msgstr "almacena un valor número en la variable mencionada"
+
+#:
+msgid "holds current x-coordinate value of the turtle (can be used in place of a number block)"
+msgstr "contiene el valor actual de la coordenada x de la tortuga (puede ser utilizado en vez de un bloque número)"
+
+#:
+msgid "logical less-than operator"
+msgstr "operador lógico menor que"
+
+#:
+msgid "top of nameable action stack"
+msgstr "parte superior de la pila de acción nominable"
+
+#:
+msgid "logical greater-than operator"
+msgstr "operador lógico mayor que"
+
+#:
+msgid "top of action 1 stack"
+msgstr "parte superior de la pila de acción 1"
+
+#:
+msgid "top of action 2 stack"
+msgstr "parte superior de la pila de acción 2"
+
+#:
+msgid "set size of the line drawn by the turtle"
+msgstr "establecer tamaño de la línea dibujada por la tortuga"
+
+#:
+msgid "Sugar Journal description field"
+msgstr "Campo descripción de la entrada del diario"
+
+#:
+msgid "logical NOT operator"
+msgstr "operador lógico negación"
+
+#:
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "substrae el valor número inferior del valor númerio superior"
+
+#:
+msgid "string value"
+msgstr "valor de cadena de texto"
+
+#:
+msgid "holds current text size (can be used in place of a number block)"
+msgstr "almacena el tamaño actual del texto (puede ser utilizado en vez de un bloque de número)"
+
+#:
+msgid "holds current heading value of the turtle (can be used in place of a number block)"
+msgstr "contiene el valor del rumbo de la tortuga (puede ser utilizado en vez de un bloque de número)"
+
+#:
+msgid "palette of turtle commands"
+msgstr "palette de comandos de la tortuga"
+
+#:
+msgid "turn turtle clockwise (angle in degrees)"
+msgstr "mover la tortuga en sentido horario (angulos en grados de sexagesimales)"
+
+#:
+msgid "palette of variable blocks"
+msgstr "palette de bloques de variables"
+
+#:
+msgid "move turtle backward"
+msgstr "mover la tortuga hacia atrás"
+
+#:
+msgid "turtle will draw when moved"
+msgstr "la tortuga va a dibujar al moverse"
+
+#:
+msgid "move turtle along an arc"
+msgstr "mover la tortuga alrededor de un arco"
+
+#:
+msgid "holds current text color (can be used in place of a number block)"
+msgstr "contiene el color actual de la pluma (puede ser utilizado en vez de un bloque de número)"
+
+#:
+msgid "jog stack right"
+msgstr "mover el apuntador de la pila a la derecha"
+
+#:
+msgid "holds current scale value (can be used in place of a number block)"
+msgstr "almacena el valor actual de la escala (puede ser utilizado en vez de un bloque de número)"
+
+#:
+msgid "palette of pen commands"
+msgstr "palette de comandos de la pluma"
+
+#:
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr "operador si-entonces-sino que utiliza operador booleanos del palette de números"
+
+#:
+msgid "multiplies two numeric inputs"
+msgstr "multiplica 2 valores numericos ingresados"
+
+#:
+msgid "prints value in status block at bottom of the screen"
+msgstr "imprime el valor en el bloque de estado en la parte inferior de la pantalla"
+
+#:
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr "contiene el tamaño actual de la pluma (puede ser utilizado en vez de un bloque de número)"
+
+#:
+msgid "Sugar Journal media object"
+msgstr "Objeto multimedia del Diario de Sugar"
+
+#:
+msgid "palette of extra options"
+msgstr "palette de más opciones"
+
+#:
+msgid "wait specified number of seconds"
+msgstr "esperar por un número específico de segundos"
+
+#:
+msgid "named variable (numeric value)"
+msgstr "variable etiquetada (valor numerico)"
+
+#:
+msgid "set size of text drawn by turtle"
+msgstr "establecer tamaño del texto dibujado por la tortuga"
+
+#:
+msgid "Sugar Journal audio object"
+msgstr "objeto audio del Diario de Sugar"
+
+#:
+msgid "adds two numeric inputs"
+msgstr "suma 2 valores numericos ingresados"
+
+#:
+msgid "logical equal-to operator"
+msgstr "operador lógico igual a"
+
+#:
+msgid "do not continue current action"
+msgstr "no continuar la acción actual"
+
+#:
+msgid "set shade of the line drawn by the turtle"
+msgstr "establece sombra de la línea dibujada por la tortuga"
+
+#:
+msgid "logical OR operator"
+msgstr "operador lógico O"
+
+#:
+msgid "presentation template: seven bullets"
+msgstr "plantilla de presentación: siete puntos"
+
+#:
+msgid "the canvas width"
+msgstr "ancho del canvas"
+
+#:
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr "almacena el color actual de la pluma (puede ser utilizado en vez de un bloque de número)"
+
+#:
+msgid "used as numeric input in mathematic operators"
+msgstr "utilizado como dato ingresado numerico con los operadores matemáticos"
+
+#:
+msgid "pop value off FILO"
+msgstr "expulsa un valor de la pila FILO"
+
+#:
+msgid "divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr "divide el número superior (numerador) por el número inferior (denominador)"
+
+#:
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr "solicitar ingreso de datos del teclado (los resultados se guardan en el bloqueo teclado)"
+
+#:
+msgid "modular (remainder) operator"
+msgstr "operador módulo (resto) "
+
+#:
+msgid "connects action to toolbar run buttons"
+msgstr "conecta la acción a los botones de correr en la barra"
+
+#:
+msgid "move turtle forward"
+msgstr "mueve la tortuga hacia adelante"
+
+#:
+msgid "xcor of right of screen"
+msgstr "xcor de la derecha de pantalla"
+
+#:
+msgid "a programmable block: add your own math equation in the block, e.g., sin(x)"
+msgstr "bloque programable: agregue su propia ecuación matemática en el bloque, e.j., sen(x)"
+
+#:
+msgid "empty FILO"
+msgstr "vaciar pila FILO"
+
+#:
+msgid "variable 1 (numeric value)"
+msgstr "variable 1 (valor numerico)"
+
+#:
+msgid "variable 2 (numeric value)"
+msgstr "variable 2 (valor numerico)"
+
+#:
+msgid "declutter canvas by hiding blocks"
+msgstr "comprimir canvas escondiendo bloques"
+
+#:
+msgid "jog stack down"
+msgstr "descender en la pila"
+
+#:
+msgid "ycor of bottom of screen"
+msgstr "ycor del parte inferior de la pantalla"
+
+#:
+msgid "store numeric value in variable 1"
+msgstr "almacenar valor númerico en la variable 1"
+
+#:
+msgid "logical AND operator"
+msgstr "operador lógico Y"
+
+#:
+msgid "presentation template: select Journal object (with description)"
+msgstr "plantilla de presentación: seleccionar 2 objetos del Diario (con descripción)"
+
+#:
+msgid "presentation template: select four Journal objects"
+msgstr "plantilla de presentación: seleccionar 4 objetos del Diario"
+
+#:
+msgid "presentation template: select two Journal objects"
+msgstr "plantilla de presentación: seleccionar 2 objetos del Diario"
+
+#:
+msgid "turtle will not draw when moved"
+msgstr "tortuga no dibujará cuando se mueve"
+
+#:
+msgid "palette of flow operators"
+msgstr "palette de operadores de flujo"
+
+#:
+msgid "holds current y-coordinate value of the turtle (can be used in place of a number block)"
+msgstr "contiene el valor actual de la coordenada y de la tortuga (puede ser utilizado en vez de un bloque de número)"
+
+#:
+msgid "move turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr "mover la tortuga a las coordenadas xcor, ycor; (0, 0) es el centro de la pantalla."
+
+#:
+msgid "palette of numeric operators"
+msgstr "palette de operadores numericos"
+
+#:
+msgid "store numeric value in variable 2"
+msgstr "almacenar valor númerico en la variable 2"
+
+#:
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr "operador si-entonces que utiliza operadores booleanos del palette de números"
+
+#:
+msgid "set the scale of media"
+msgstr "setear escala del objeto multimedia"
+
+#:
+msgid "xcor of left of screen"
+msgstr "xcor de la izquierda de la pantalla"
+
+#:
+msgid "invoke action 2 stack"
+msgstr "invocar la pila de acción 2"
+
+#:
+msgid "invoke action 1 stack"
+msgstr "invocar la pila de acción 1"
+
+#:
+msgid "palette of presentation templates"
+msgstr "palette de plantillas de presentación"
+
+#:
+msgid "loop specified number of times"
+msgstr "iterar un número especifíco de veces"
+
+#:
+msgid "clear the screen and reset the turtle"
+msgstr "limpiar la pantalla y resetear a la tortuga"
+
+#:
+msgid "the canvas height"
+msgstr "altura del canvas"
+
+#:
+msgid "invoke named action stack"
+msgstr "invocar una pila por su nombre"
+
+#:
+msgid "identity operator used for extending blocks"
+msgstr "operador identidad utilizado para extender bloques"
+
+#:
+msgid "loop forever"
+msgstr "iterar por siempre"
+
+#:
+msgid "set the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "establece el rumbo de la tortuga (0 es hacia la parte superior de la pantalla.)"
+
+#:
+msgid "holds current pen shade (can be used in place of a number block)"
+msgstr "contiene el valor de sombra actual de la pluma (puede ser utilizado en vez de un bloque de número)"
+
+#:
+msgid "push value onto FILO (first-in last-out) heap"
+msgstr "empujar el valor a la pila tipo FILO (primer-en-entrar último-en-salir)"
+
+#:
+msgid "show FILO in status block"
+msgstr "mostrar pila FILO (primero-en-entrar-ultimo-en-salir) en el bloque de estado"
+
+#:
+msgid "turn turtle counterclockwise (angle in degrees)"
+msgstr "girar la tortuga en sentido anti-horario (ángulo en grados sexagesimales"
+
+#:
+msgid "Move the cursor over the orange palette for help."
+msgstr "Coloque el cursor encima de la paleta naranja para obtener ayuda."
+
+#: 
+msgid "Help"
+msgstr "Ayuda"

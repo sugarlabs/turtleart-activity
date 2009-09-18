@@ -59,14 +59,15 @@ def new_project(tw):
     clearscreen(tw.turtle)
     tw.save_file_name = None
 
-def load_file(tw):
+def load_file(tw, create_new_project=True):
     fname = get_load_name(tw)
     if fname==None: return
     if fname[-3:]=='.ta': fname=fname[0:-3]
-    load_files(tw,fname+'.ta', fname+'.png')
-    tw.save_file_name = os.path.basename(fname)
+    load_files(tw,fname+'.ta', create_new_project)
+    if create_new_project is True:
+        tw.save_file_name = os.path.basename(fname)
 
-def load_files(tw,ta_file, png_file=''):
+def load_files(tw, ta_file, create_new_project=True):
     # ignoring the png_file even if it is present
     f = open(ta_file, "r")
     try:
@@ -84,7 +85,8 @@ def load_files(tw,ta_file, png_file=''):
         # listdata = jdecode(text)
         data = tuplify(listdata) # json converts tuples to lists
     f.close()
-    new_project(tw)
+    if create_new_project is True:
+        new_project(tw)
     read_data(tw,data)
 
 def get_load_name(tw):
