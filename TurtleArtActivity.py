@@ -1,5 +1,6 @@
 #Copyright (c) 2007, Playful Invention Company
 #Copyright (c) 2008-9, Walter Bender
+#Copyright (c) 2009, Raul Gutierrez Segales
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -32,11 +33,14 @@ _logger = logging.getLogger('turtleart-activity')
 
 import sugar
 from sugar.activity import activity
-from sugar.bundle.activitybundle import ActivityBundle
-from sugar.activity.widgets import ActivityToolbarButton
-from sugar.activity.widgets import StopButton
-from sugar.graphics.toolbarbox import ToolbarBox
-from sugar.graphics.toolbarbox import ToolbarButton
+try: # 0.86 toolbar widgets
+    from sugar.bundle.activitybundle import ActivityBundle
+    from sugar.activity.widgets import ActivityToolbarButton
+    from sugar.activity.widgets import StopButton
+    from sugar.graphics.toolbarbox import ToolbarBox
+    from sugar.graphics.toolbarbox import ToolbarButton
+except ImportError:
+    pass
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.menuitem import MenuItem
 from sugar.graphics.icon import Icon
@@ -81,173 +85,209 @@ class TurtleArtActivity(activity.Activity):
         self.add_events(gtk.gdk.VISIBILITY_NOTIFY_MASK)
         self.connect("visibility-notify-event", self.__visibility_notify_cb)
 
-        toolbar_box = ToolbarBox()
+        try: 
+            # Use 0.86 toolbar design
+            toolbar_box = ToolbarBox()
 
-        activity_button = ActivityToolbarButton(self)
-        self.keep_button = ToolButton('filesave')
-        self.keep_button.set_tooltip(_("Save snapshot"))
-        self.keep_button.connect('clicked', self._do_savesnapshot_cb)
-        self.keep_button.show()
-        activity_button.props.page.insert(self.keep_button, -1)
-        separator = gtk.SeparatorToolItem()
-        separator.props.draw = True
-        activity_button.props.page.insert(separator, -1)
-        separator.show()
-        self.save_as_html = ToolButton('htmloff')
-        self.save_as_html.set_tooltip(_("Save as HTML"))
-        self.save_as_html.connect('clicked', self._do_savehtml_cb)
-        self.save_as_html.show()
-        activity_button.props.page.insert(self.save_as_html, -1)
-        self.save_as_logo = ToolButton('logo-saveoff')
-        self.save_as_logo.set_tooltip(_("Save as Logo"))
-        self.save_as_logo.connect('clicked', self._do_savelogo_cb)
-        self.save_as_logo.show()
-        activity_button.props.page.insert(self.save_as_logo, -1)
-        self.save_as_image = ToolButton('image-saveoff')
-        self.save_as_image.set_tooltip(_("Save as image"))
-        self.save_as_image.connect('clicked', self._do_saveimage_cb)
-        self.save_as_image.show()
-        activity_button.props.page.insert(self.save_as_image, -1)
-        self.load_python = ToolButton('pippy-openoff')
-        self.load_python.set_tooltip(_("Load my block"))
-        self.load_python.connect('clicked', self._do_loadpython_cb)
-        self.load_python.show()
-        activity_button.props.page.insert(self.load_python, -1)
-        toolbar_box.toolbar.insert(activity_button, 0)
-        activity_button.show()
+            # Buttons added to the Activity toolbar
+            activity_button = ActivityToolbarButton(self)
 
-        edit_toolbar = EditToolbar(self)
-        edit_toolbar_button = ToolbarButton(
-                page=edit_toolbar,
-                icon_name='toolbar-edit')
-        edit_toolbar.show()
-        toolbar_box.toolbar.insert(edit_toolbar_button, -1)
-        edit_toolbar_button.show()
+            # Save snapshot is like Keep, but it creates a new activity id
+            self.keep_button = ToolButton('filesave')
+            self.keep_button.set_tooltip(_("Save snapshot"))
+            self.keep_button.connect('clicked', self._do_savesnapshot_cb)
+            self.keep_button.show()
+            activity_button.props.page.insert(self.keep_button, -1)
+            separator = gtk.SeparatorToolItem()
+            separator.props.draw = True
+            activity_button.props.page.insert(separator, -1)
+            separator.show()
 
-        view_toolbar = gtk.Toolbar()
-        fullscreen_button = ToolButton('view-fullscreen')
-        fullscreen_button.set_tooltip(_("Fullscreen"))
-        fullscreen_button.props.accelerator = '<Alt>Enter'
-        fullscreen_button.connect('clicked', self.__fullscreen_cb)
-        view_toolbar.insert(fullscreen_button,-1)
-        fullscreen_button.show()
+            # Save as HTML
+            self.save_as_html = ToolButton('htmloff')
+            self.save_as_html.set_tooltip(_("Save as HTML"))
+            self.save_as_html.connect('clicked', self._do_savehtml_cb)
+            self.save_as_html.show()
+            activity_button.props.page.insert(self.save_as_html, -1)
 
-        view_toolbar_button = ToolbarButton(
-                page=view_toolbar,
-                icon_name='toolbar-view')
-        view_toolbar.show()
-        toolbar_box.toolbar.insert(view_toolbar_button, -1)
-        view_toolbar_button.show()
+            # Save as Logo
+            self.save_as_logo = ToolButton('logo-saveoff')
+            self.save_as_logo.set_tooltip(_("Save as Logo"))
+            self.save_as_logo.connect('clicked', self._do_savelogo_cb)
+            self.save_as_logo.show()
+            activity_button.props.page.insert(self.save_as_logo, -1)
 
-        # palette button (blocks)
-        self.palette = ToolButton( "blocksoff" )
-        self.palette.set_tooltip(_('Hide palette'))
-        self.palette.props.sensitive = True
-        self.palette.connect('clicked', self._do_palette_cb)
-        self.palette.props.accelerator = _('<Alt>p')
-        toolbar_box.toolbar.insert(self.palette, -1)
-        self.palette.show()
+            # Save as image
+            self.save_as_image = ToolButton('image-saveoff')
+            self.save_as_image.set_tooltip(_("Save as image"))
+            self.save_as_image.connect('clicked', self._do_saveimage_cb)
+            self.save_as_image.show()
+            activity_button.props.page.insert(self.save_as_image, -1)
 
-        # blocks button (hideshow)
-        self.blocks = ToolButton( "hideshowoff" )
-        self.blocks.set_tooltip(_('Hide blocks'))
-        self.blocks.props.sensitive = True
-        self.blocks.connect('clicked', self.do_hideshow)
-        self.blocks.props.accelerator = _('<Alt>b')
-        toolbar_box.toolbar.insert(self.blocks, -1)
-        self.blocks.show()
+            # Load Python code into programmable brick
+            self.load_python = ToolButton('pippy-openoff')
+            self.load_python.set_tooltip(_("Load my block"))
+            self.load_python.connect('clicked', self._do_loadpython_cb)
+            self.load_python.show()
+            activity_button.props.page.insert(self.load_python, -1)
+            toolbar_box.toolbar.insert(activity_button, 0)
+            activity_button.show()
 
-        # eraser button
-        self.eraser_button = ToolButton( "eraseron" )
-        self.eraser_button.set_tooltip(_('Clean'))
-        self.eraser_button.props.sensitive = True
-        self.eraser_button.connect('clicked', self._do_eraser_cb)
-        self.eraser_button.props.accelerator = _('<Alt>e')
-        toolbar_box.toolbar.insert(self.eraser_button, -1)
-        self.eraser_button.show()
+            # The edit toolbar -- copy and paste
+            edit_toolbar = EditToolbar(self)
+            edit_toolbar_button = ToolbarButton(
+                    page=edit_toolbar,
+                    icon_name='toolbar-edit')
+            edit_toolbar.show()
+            toolbar_box.toolbar.insert(edit_toolbar_button, -1)
+            edit_toolbar_button.show()
 
-        # run button
-        self.runproject = ToolButton( "run-fastoff" )
-        self.runproject.set_tooltip(_('Run'))
-        self.runproject.props.sensitive = True
-        self.runproject.connect('clicked', self._do_run_cb)
-        self.runproject.props.accelerator = _('<Alt>r')
-        toolbar_box.toolbar.insert(self.runproject, -1)
-        self.runproject.show()
+            # The view toolbar -- just full screen
+            view_toolbar = gtk.Toolbar()
+            fullscreen_button = ToolButton('view-fullscreen')
+            fullscreen_button.set_tooltip(_("Fullscreen"))
+            fullscreen_button.props.accelerator = '<Alt>Enter'
+            fullscreen_button.connect('clicked', self.__fullscreen_cb)
+            view_toolbar.insert(fullscreen_button,-1)
+            fullscreen_button.show()
 
-        # step button
-        self.stepproject = ToolButton( "run-slowoff" )
-        self.stepproject.set_tooltip(_('Step'))
-        self.stepproject.props.sensitive = True
-        self.stepproject.connect('clicked', self._do_step_cb)
-        self.stepproject.props.accelerator = _('<Alt>w')
-        toolbar_box.toolbar.insert(self.stepproject, -1)
-        self.stepproject.show()
+            view_toolbar_button = ToolbarButton(
+                    page=view_toolbar,
+                    icon_name='toolbar-view')
+            view_toolbar.show()
+            toolbar_box.toolbar.insert(view_toolbar_button, -1)
+            view_toolbar_button.show()
 
-        # debug button
-        self.debugproject = ToolButton( "debugoff" )
-        self.debugproject.set_tooltip(_('Debug'))
-        self.debugproject.props.sensitive = True
-        self.debugproject.connect('clicked', self._do_debug_cb)
-        self.debugproject.props.accelerator = _('<Alt>d')
-        toolbar_box.toolbar.insert(self.debugproject, -1)
-        self.debugproject.show()
+            # palette button (blocks)
+            self.palette = ToolButton( "blocksoff" )
+            self.palette.set_tooltip(_('Hide palette'))
+            self.palette.props.sensitive = True
+            self.palette.connect('clicked', self._do_palette_cb)
+            self.palette.props.accelerator = _('<Alt>p')
+            toolbar_box.toolbar.insert(self.palette, -1)
+            self.palette.show()
 
-        # stop button
-        self.stop = ToolButton( "stopitoff" )
-        self.stop.set_tooltip(_('Stop turtle'))
-        self.stop.props.sensitive = True
-        self.stop.connect('clicked', self._do_stop_cb)
-        self.stop.props.accelerator = _('<Alt>s')
-        toolbar_box.toolbar.insert(self.stop, -1)
-        self.stop.show()
+            # blocks button (hideshow)
+            self.blocks = ToolButton( "hideshowoff" )
+            self.blocks.set_tooltip(_('Hide blocks'))
+            self.blocks.props.sensitive = True
+            self.blocks.connect('clicked', self.do_hideshow)
+            self.blocks.props.accelerator = _('<Alt>b')
+            toolbar_box.toolbar.insert(self.blocks, -1)
+            self.blocks.show()
 
-        separator = gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        toolbar_box.toolbar.insert(separator, -1)
-        separator.show()
+            # eraser button
+            self.eraser_button = ToolButton( "eraseron" )
+            self.eraser_button.set_tooltip(_('Clean'))
+            self.eraser_button.props.sensitive = True
+            self.eraser_button.connect('clicked', self._do_eraser_cb)
+            self.eraser_button.props.accelerator = _('<Alt>e')
+            toolbar_box.toolbar.insert(self.eraser_button, -1)
+            self.eraser_button.show()
 
-        # Help
-        help_toolbar = gtk.Toolbar()
-        samples_button = ToolButton( "stock-open" )
-        samples_button.set_tooltip(_('Samples'))
-        samples_button.connect('clicked', self._do_samples_cb)
-        samples_button.show()
-        help_toolbar.insert(samples_button, -1)
+            # run button
+            self.runproject = ToolButton( "run-fastoff" )
+            self.runproject.set_tooltip(_('Run'))
+            self.runproject.props.sensitive = True
+            self.runproject.connect('clicked', self._do_run_cb)
+            self.runproject.props.accelerator = _('<Alt>r')
+            toolbar_box.toolbar.insert(self.runproject, -1)
+            self.runproject.show()
 
-        separator = gtk.SeparatorToolItem()
-        separator.props.draw = True
-        help_toolbar.insert(separator, -1)
-        separator.show()
+            # step button
+            self.stepproject = ToolButton( "run-slowoff" )
+            self.stepproject.set_tooltip(_('Step'))
+            self.stepproject.props.sensitive = True
+            self.stepproject.connect('clicked', self._do_step_cb)
+            self.stepproject.props.accelerator = _('<Alt>w')
+            toolbar_box.toolbar.insert(self.stepproject, -1)
+            self.stepproject.show()
 
-        self.hover_help_label = \
-            gtk.Label(_("Move the cursor over the orange palette for help."))
-        self.hover_help_label.show()
-        self.hover_toolitem = gtk.ToolItem()
-        self.hover_toolitem.add(self.hover_help_label)
-        help_toolbar.insert(self.hover_toolitem,-1)
-        self.hover_toolitem.show()
+            # debug button
+            self.debugproject = ToolButton( "debugoff" )
+            self.debugproject.set_tooltip(_('Debug'))
+            self.debugproject.props.sensitive = True
+            self.debugproject.connect('clicked', self._do_debug_cb)
+            self.debugproject.props.accelerator = _('<Alt>d')
+            toolbar_box.toolbar.insert(self.debugproject, -1)
+            self.debugproject.show()
 
-        help_toolbar_button = ToolbarButton(
-                page=help_toolbar,
-                icon_name='help-toolbar')
-        help_toolbar.show()
-        toolbar_box.toolbar.insert(help_toolbar_button, -1)
-        help_toolbar_button.show()
+            # stop button
+            self.stop = ToolButton( "stopitoff" )
+            self.stop.set_tooltip(_('Stop turtle'))
+            self.stop.props.sensitive = True
+            self.stop.connect('clicked', self._do_stop_cb)
+            self.stop.props.accelerator = _('<Alt>s')
+            toolbar_box.toolbar.insert(self.stop, -1)
+            self.stop.show()
 
-        separator = gtk.SeparatorToolItem()
-        separator.props.draw = False
-        separator.set_expand(True)
-        toolbar_box.toolbar.insert(separator, -1)
-        separator.show()
+            separator = gtk.SeparatorToolItem()
+            separator.set_draw(True)
+            toolbar_box.toolbar.insert(separator, -1)
+            separator.show()
 
-        stop_button = StopButton(self)
-        stop_button.props.accelerator = '<Ctrl>Q'
-        toolbar_box.toolbar.insert(stop_button, -1)
-        stop_button.show()
+            # The Help toolbar -- sample code and hover help
+            help_toolbar = gtk.Toolbar()
+            samples_button = ToolButton( "stock-open" )
+            samples_button.set_tooltip(_('Samples'))
+            samples_button.connect('clicked', self._do_samples_cb)
+            samples_button.show()
+            help_toolbar.insert(samples_button, -1)
+    
+            separator = gtk.SeparatorToolItem()
+            separator.props.draw = True
+            help_toolbar.insert(separator, -1)
+            separator.show()
 
-        self.set_toolbar_box(toolbar_box)
-        toolbar_box.show()
+            self.hover_help_label = \
+              gtk.Label(_("Move the cursor over the orange palette for help."))
+            self.hover_help_label.show()
+            self.hover_toolitem = gtk.ToolItem()
+            self.hover_toolitem.add(self.hover_help_label)
+            help_toolbar.insert(self.hover_toolitem,-1)
+            self.hover_toolitem.show()
+
+            help_toolbar_button = ToolbarButton(
+                    page=help_toolbar,
+                    icon_name='help-toolbar')
+            help_toolbar.show()
+            toolbar_box.toolbar.insert(help_toolbar_button, -1)
+            help_toolbar_button.show()
+
+            separator = gtk.SeparatorToolItem()
+            separator.props.draw = False
+            separator.set_expand(True)
+            toolbar_box.toolbar.insert(separator, -1)
+            separator.show()
+
+            # The ever-present Stop Button
+            stop_button = StopButton(self)
+            stop_button.props.accelerator = '<Ctrl>Q'
+            toolbar_box.toolbar.insert(stop_button, -1)
+            stop_button.show()
+
+            self.set_toolbar_box(toolbar_box)
+            toolbar_box.show()
+
+        except NameError:
+            # Use pre-0.86 toolbar design
+            self.toolbox = activity.ActivityToolbox(self)
+            self.set_toolbox(self.toolbox)
+
+            # Add additional panels
+            self.projectToolbar = ProjectToolbar(self)
+            self.toolbox.add_toolbar( _('Project'), self.projectToolbar )
+            self.editToolbar = EditToolbar(self)
+            self.toolbox.add_toolbar(_('Edit'), self.editToolbar)
+            self.saveasToolbar = SaveAsToolbar(self)
+            self.toolbox.add_toolbar( _('Import/Export'), self.saveasToolbar )
+            self.helpToolbar = HelpToolbar(self)
+            self.toolbox.add_toolbar(_('Help'),self.helpToolbar)
+            self.toolbox.show()
+
+            # Set the project toolbar as the initial one selected
+            self.toolbox.set_current_toolbar(1)
+            pass
 
         # Create a scrolled window to contain the turtle canvas
         self.sw = gtk.ScrolledWindow()
@@ -382,7 +422,7 @@ class TurtleArtActivity(activity.Activity):
 
         # Write any metadata (here we specifically set the title of the file
         # and specify that this is a plain text file). 
-        dsobject.metadata['title'] = self.get_title() + " portfolio"
+        dsobject.metadata['title'] = self.get_title() + " " + _("presentation")
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         if embed_flag == True:
             dsobject.metadata['mime_type'] = 'text/html'
@@ -464,10 +504,15 @@ class TurtleArtActivity(activity.Activity):
     def _do_saveimage_cb(self, button):
         self.save_as_image.set_icon("image-saveon")
         _logger.debug("saving image to journal")
-        import tempfile
-        pngfd, pngfile = tempfile.mkstemp(".png")
-        del pngfd
-        tawindow.save_pict(self.tw,pngfile)
+
+        filename = "ta.png"
+        # save the image to the instance directory
+        datapath = os.path.join(activity.get_activity_root(), "instance")
+
+        # Write the file to the instance directory of this activity's root. 
+        file_path = os.path.join(datapath, filename)
+
+        tawindow.save_pict(self.tw,file_path)
 
         # Create a datastore object
         dsobject = datastore.create()
@@ -476,7 +521,7 @@ class TurtleArtActivity(activity.Activity):
         dsobject.metadata['title'] = self.get_title() + " image"
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         dsobject.metadata['mime_type'] = 'image/png'
-        dsobject.set_file_path(pngfile)
+        dsobject.set_file_path(file_path)
 
         datastore.write(dsobject)
         dsobject.destroy()
@@ -519,50 +564,50 @@ class TurtleArtActivity(activity.Activity):
         if self.tw.palette == True:
             tawindow.hideshow_palette(self.tw,False)
             self.palette.set_icon("blockson")
-            self.palette.set_tooltip(_('show palette'))
+            self.palette.set_tooltip(_('Show palette'))
         else:
             tawindow.hideshow_palette(self.tw,True)
             self.palette.set_icon("blocksoff")
-            self.palette.set_tooltip(_('hide palette'))
+            self.palette.set_tooltip(_('Hide palette'))
 
     """ These methods are called both from buttons and blocks """
     def do_hidepalette(self):
         # print "in do_hidepalette"
         self.palette.set_icon("blockson")
-        self.palette.set_tooltip(_('show palette'))
+        self.palette.set_tooltip(_('Show palette'))
 
     def do_showpalette(self):
         # print "in do_showpalette"
         self.palette.set_icon("blocksoff")
-        self.palette.set_tooltip(_('hide palette'))
+        self.palette.set_tooltip(_('Hide palette'))
 
     def do_hideshow(self, button):
         tawindow.hideshow_button(self.tw)
         if self.tw.hide == True: # we just hid the blocks
             self.blocks.set_icon("hideshowon")
-            self.blocks.set_tooltip(_('show blocks'))
+            self.blocks.set_tooltip(_('Show blocks'))
         else:
             self.blocks.set_icon("hideshowoff")
-            self.blocks.set_tooltip(_('hide blocks'))
+            self.blocks.set_tooltip(_('Hide blocks'))
         # update palette buttons too
         if self.tw.palette == False: 
             self.palette.set_icon("blockson")
-            self.palette.set_tooltip(_('show palette'))
+            self.palette.set_tooltip(_('Show palette'))
         else:
             self.palette.set_icon("blocksoff")
-            self.palette.set_tooltip(_('hide palette'))
+            self.palette.set_tooltip(_('Hide palette'))
 
     def do_hide(self):
         self.blocks.set_icon("hideshowon")
-        self.blocks.set_tooltip(_('show blocks'))
+        self.blocks.set_tooltip(_('Show blocks'))
         self.palette.set_icon("blockson")
-        self.palette.set_tooltip(_('show palette'))
+        self.palette.set_tooltip(_('Show palette'))
 
     def do_show(self):
         self.blocks.set_icon("hideshowoff")
-        self.blocks.set_tooltip(_('hide blocks'))
+        self.blocks.set_tooltip(_('Hide blocks'))
         self.palette.set_icon("blocksoff")
-        self.palette.set_tooltip(_('hide palette'))
+        self.palette.set_tooltip(_('Hide palette'))
 
     def _do_eraser_cb(self, button):
         self.eraser_button.set_icon("eraseroff")
@@ -812,7 +857,15 @@ class TurtleArtActivity(activity.Activity):
             else:
                 print "trying to open a .ta file:" + file_path
                 tawindow.load_files(self.tw, file_path, "")
+  
             # run the activity
+            try:
+                # Use 0.86 toolbar design
+                self.stop.set_icon("stopiton")
+            except:
+                # Use pre-0.86 toolbar design
+                self.projectToolbar.stop.set_icon("stopiton")
+
             tawindow.runbutton(self.tw, 0)
         else:
             _logger.debug("Deferring reading file %s" %  file_path)
@@ -877,7 +930,10 @@ class EditToolbar(gtk.Toolbar):
         self.copy.set_tooltip(_('Copy'))
         self.copy.props.sensitive = True
         self.copy.connect('clicked', self._copy_cb)
-        self.copy.props.accelerator = '<Ctrl>C'
+        try:
+            self.copy.props.accelerator = '<Ctrl>C'
+        except:
+            pass
         self.insert(self.copy, -1)
         self.copy.show()
 
@@ -886,7 +942,10 @@ class EditToolbar(gtk.Toolbar):
         self.paste.set_tooltip(_('Paste'))
         self.paste.props.sensitive = True
         self.paste.connect('clicked', self._paste_cb)
-        self.paste.props.accelerator = '<Ctrl>V'
+        try:
+            self.paste.props.accelerator = '<Ctrl>V'
+        except:
+            pass
         self.insert(self.paste, -1)
         self.paste.show()
 
@@ -902,3 +961,504 @@ class EditToolbar(gtk.Toolbar):
         text = clipBoard.wait_for_text()
         if text is not None:
             tawindow.clone_stack(self.activity.tw,text)
+
+"""
+Help toolbar: Just an icon and a label for displaying hover help
+"""
+class HelpToolbar(gtk.Toolbar):
+    def __init__(self, pc):
+        gtk.Toolbar.__init__(self)
+        self.activity = pc
+
+        # Help icon
+        self.help = ToolButton( "help-toolbar" )
+        self.help.props.sensitive = False
+        self.insert(self.help, -1)
+        self.help.show()
+
+        # Help label
+        self.hover_help_label = \
+          gtk.Label(_("Move the cursor over the orange palette for help."))
+        self.hover_help_label.show()
+        self.hover_toolitem = gtk.ToolItem()
+        self.hover_toolitem.add(self.hover_help_label)
+        self.insert(self.hover_toolitem,-1)
+        self.hover_toolitem.show()
+
+"""
+SaveAs toolbar: (1) load samples; (2) save as HTML; (3) save as LOGO;
+(4) save as PNG; and (5) import Python code.
+"""
+class SaveAsToolbar(gtk.Toolbar):
+    def __init__(self, pc):
+        gtk.Toolbar.__init__(self)
+        self.activity = pc
+
+        # HTML save source button
+        self.savehtml = ToolButton( "htmloff" )
+        self.savehtml.set_tooltip(_('Save as HTML'))
+        self.savehtml.props.sensitive = True
+        self.savehtml.connect('clicked', self.do_savehtml)
+        self.insert(self.savehtml, -1)
+        self.savehtml.show()
+
+        # Berkeley Logo save source button
+        self.savelogo = ToolButton( "logo-saveoff" )
+        self.savelogo.set_tooltip(_('Save Logo'))
+        self.savelogo.props.sensitive = True
+        self.savelogo.connect('clicked', self.do_savelogo)
+        self.insert(self.savelogo, -1)
+        self.savelogo.show()
+
+        # Save as image button
+        self.saveimage = ToolButton( "image-saveoff" )
+        self.saveimage.set_tooltip(_('Save as image'))
+        self.saveimage.props.sensitive = True
+        self.saveimage.connect('clicked', self.do_saveimage)
+        self.insert(self.saveimage, -1)
+        self.saveimage.show()
+
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        self.insert(separator, -1)
+        separator.show()
+
+        # Pippy load myblock source button
+        self.loadmyblock = ToolButton( "pippy-openoff" )
+        self.loadmyblock.set_tooltip(_('load my block'))
+        self.loadmyblock.props.sensitive = True
+        self.loadmyblock.connect('clicked', self.do_loadmyblock)
+        self.insert(self.loadmyblock, -1)
+        self.loadmyblock.show()
+
+    def do_savehtml(self, button):
+        # write html out to datastore
+        self.savehtml.set_icon("htmlon")
+        _logger.debug("saving html code")
+        # til we add the option
+        embed_flag = True
+
+        # grab code from stacks
+        html = save_html(self,self.activity.tw,embed_flag)
+        if len(html) == 0:
+            return
+
+        # save the html code to the instance directory
+        try:
+            datapath = os.path.join(activity.get_activity_root(), "instance")
+        except:
+            # early versions of Sugar (656) didn't support get_activity_root()
+            datapath = os.path.join( \
+                os.environ['HOME'], \
+                ".sugar/default/org.laptop.TurtleArtActivity/instance")
+
+        html_file = os.path.join(datapath, "portfolio.html")
+        f = file(html_file, "w")
+        f.write(html)
+        f.close()
+
+        if embed_flag == False:
+        # need to make a tarball that includes the images
+            tar_path = os.path.join(datapath, 'portfolio.tar')
+            tar_fd = tarfile.open(tar_path, 'w')
+            try:
+                tar_fd.add(html_file, "portfolio.html")
+                import glob
+                image_list = glob.glob(os.path.join(datapath, 'image*'))
+                for i in image_list:
+                    tar_fd.add(i, os.path.basename(i))
+            finally:
+                tar_fd.close()
+
+        # Create a datastore object
+        dsobject = datastore.create()
+
+        # Write any metadata (here we specifically set the title of the file
+        # and specify that this is a plain text file). 
+        dsobject.metadata['title'] = self.activity.get_title() + " " + \
+                                     _("presentation")
+        dsobject.metadata['icon-color'] = profile.get_color().to_string()
+        if embed_flag == True:
+            dsobject.metadata['mime_type'] = 'text/html'
+            dsobject.set_file_path(html_file)
+        else:
+            dsobject.metadata['mime_type'] = 'application/x-tar'
+            dsobject.set_file_path(tar_path)
+
+        dsobject.metadata['activity'] = 'org.laptop.WebActivity'
+        datastore.write(dsobject)
+        dsobject.destroy()
+        gobject.timeout_add(250,self.savehtml.set_icon, "htmloff")
+        return
+
+    def do_savelogo(self, button):
+        # write logo code out to datastore
+        self.savelogo.set_icon("logo-saveon")
+        # grab code from stacks
+        logocode = save_logo(self,self.activity.tw)
+        if len(logocode) == 0:
+            return
+        filename = "logosession.lg"
+
+        # Create a datastore object
+        dsobject = datastore.create()
+
+        # Write any metadata (here we specifically set the title of the file
+        # and specify that this is a plain text file). 
+        dsobject.metadata['title'] = self.activity.get_title() + ".lg"
+        dsobject.metadata['mime_type'] = 'text/plain'
+        dsobject.metadata['icon-color'] = profile.get_color().to_string()
+
+        # save the html code to the instance directory
+        try:
+            datapath = os.path.join(activity.get_activity_root(), "instance")
+        except:
+            # Early versions of Sugar (656) didn't support get_activity_root()
+            datapath = os.path.join( \
+                os.environ['HOME'], \
+                ".sugar/default/org.laptop.TurtleArtActivity/instance")
+
+        # Write the file to the data directory of this activity's root. 
+        file_path = os.path.join(datapath, filename)
+        f = open(file_path, 'w')
+        try:
+            f.write(logocode)
+        finally:
+            f.close()
+
+        # Set the file_path in the datastore.
+        dsobject.set_file_path(file_path)
+
+        datastore.write(dsobject)
+        gobject.timeout_add(250,self.savelogo.set_icon, "logo-saveoff")
+        return
+
+    def do_loadmyblock(self, button):
+        self.loadmyblock.set_icon("pippy-openon")
+        self.import_py()
+        gobject.timeout_add(250,self.loadmyblock.set_icon, "pippy-openoff")
+        return
+
+    # Import Python code from the Journal to load into "myblock"
+    def import_py(self):
+        from sugar.graphics.objectchooser import ObjectChooser
+        chooser = ObjectChooser('Python code', None, gtk.DIALOG_MODAL | \
+            gtk.DIALOG_DESTROY_WITH_PARENT)
+        try:
+            result = chooser.run()
+            if result == gtk.RESPONSE_ACCEPT:
+                dsobject = chooser.get_selected_object()
+                try:
+                    _logger.debug("opening %s " % dsobject.file_path)
+                    FILE = open(dsobject.file_path, "r")
+                    self.activity.tw.myblock = FILE.read()
+                    FILE.close()
+	            tawindow.set_userdefined(self.activity.tw)
+                except:
+                    _logger.debug("couldn't open %s" % dsobject.file_path)
+                dsobject.destroy()
+        finally:
+            chooser.destroy()
+            del chooser
+
+    def do_saveimage(self, button):
+        self.saveimage.set_icon("image-saveon")
+        _logger.debug("saving image to journal")
+
+        filename = "ta.png"
+        # save the image to the instance directory
+        datapath = os.path.join(activity.get_activity_root(), "instance")
+
+        # Write the file to the instance directory of this activity's root. 
+        file_path = os.path.join(datapath, filename)
+
+        tawindow.save_pict(self.activity.tw,file_path)
+
+        # Create a datastore object
+        dsobject = datastore.create()
+
+        # Write metadata
+        dsobject.metadata['title'] = self.activity.get_title() + " image"
+        dsobject.metadata['icon-color'] = profile.get_color().to_string()
+        dsobject.metadata['mime_type'] = 'image/png'
+        dsobject.set_file_path(file_path)
+
+        datastore.write(dsobject)
+        dsobject.destroy()
+        gobject.timeout_add(250,self.saveimage.set_icon, "image-saveoff")
+        return
+
+"""
+Project toolbar: show/hide palettes; show/hide blocks; run; walk; stop; erase;
+                 load sample project; fullscreen
+"""
+class ProjectToolbar(gtk.Toolbar):
+
+    def __init__(self, pc):
+        gtk.Toolbar.__init__(self)
+        self.activity = pc
+
+        # palette button (blocks)
+        self.palette = ToolButton( "blocksoff" )
+        self.palette.set_tooltip(_('Hide palette'))
+        self.palette.props.sensitive = True
+        self.palette.connect('clicked', self.do_palette)
+        try:
+            self.palette.props.accelerator = _('<Alt>p')
+        except:
+            pass
+        self.insert(self.palette, -1)
+        self.palette.show()
+
+        # blocks button (hideshow)
+        self.blocks = ToolButton( "hideshowoff" )
+        self.blocks.set_tooltip(_('Hide blocks'))
+        self.blocks.props.sensitive = True
+        self.blocks.connect('clicked', self.do_hideshow)
+        try:
+            self.blocks.props.accelerator = _('<Alt>b')
+        except:
+            pass
+        self.insert(self.blocks, -1)
+        self.blocks.show()
+
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        self.insert(separator, -1)
+        separator.show()
+
+        # run button
+        self.runproject = ToolButton( "run-fastoff" )
+        self.runproject.set_tooltip(_('Run'))
+        self.runproject.props.sensitive = True
+        self.runproject.connect('clicked', self.do_run)
+        try:
+            self.runproject.props.accelerator = _('<Alt>r')
+        except:
+            pass
+        self.insert(self.runproject, -1)
+        self.runproject.show()
+
+        # step button
+        self.stepproject = ToolButton( "run-slowoff" )
+        self.stepproject.set_tooltip(_('Step'))
+        self.stepproject.props.sensitive = True
+        self.stepproject.connect('clicked', self.do_step)
+        try:
+            self.stepproject.props.accelerator = _('<Alt>w')
+        except:
+            pass
+        self.insert(self.stepproject, -1)
+        self.stepproject.show()
+
+        # debug button
+        self.debugproject = ToolButton( "debugoff" )
+        self.debugproject.set_tooltip(_('Debug'))
+        self.debugproject.props.sensitive = True
+        self.debugproject.connect('clicked', self.do_debug)
+        try:
+            self.debugproject.props.accelerator = _('<Alt>d')
+        except:
+            pass
+        self.insert(self.debugproject, -1)
+        self.debugproject.show()
+
+        # stop button
+        self.stop = ToolButton( "stopitoff" )
+        self.stop.set_tooltip(_('Stop turtle'))
+        self.stop.props.sensitive = True
+        self.stop.connect('clicked', self.do_stop)
+        try:
+            self.stop.props.accelerator = _('<Alt>s')
+        except:
+            pass
+        self.insert(self.stop, -1)
+        self.stop.show()
+
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        self.insert(separator, -1)
+        separator.show()
+
+        # eraser button
+        self.eraser = ToolButton( "eraseron" )
+        self.eraser.set_tooltip(_('Clean'))
+        self.eraser.props.sensitive = True
+        self.eraser.connect('clicked', self.do_eraser)
+        try:
+            self.eraser.props.accelerator = _('<Alt>e')
+        except:
+            pass
+        self.insert(self.eraser, -1)
+        self.eraser.show()
+
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        self.insert(separator, -1)
+        separator.show()
+
+        # full screen
+        self.fullscreenb = ToolButton( "view-fullscreen" )
+        self.fullscreenb.set_tooltip(_('Fullscreen'))
+        self.fullscreenb.props.sensitive = True
+        try:
+            self.fullscreenb.props.accelerator = '<Alt>Enter'
+        except:
+            pass
+        self.fullscreenb.connect('clicked', self.do_fullscreen)
+        self.insert(self.fullscreenb, -1)
+        self.fullscreenb.show()
+
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        self.insert(separator, -1)
+        separator.show()
+
+        # Save snapshot ("keep")
+        self.keepb = ToolButton( "filesave" )
+        self.keepb.set_tooltip(_('Save snapshot'))
+        self.keepb.props.sensitive = True
+        try:
+            self.fullscreenb.props.accelerator = '<Ctrl>S'
+        except:
+            pass
+        self.keepb.connect('clicked', self.do_savesnapshot)
+        self.insert(self.keepb, -1)
+        self.keepb.show()
+
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        self.insert(separator, -1)
+        separator.show()
+
+        # project open
+        self.sampb = ToolButton( "stock-open" )
+        self.sampb.set_tooltip(_('Samples'))
+        self.sampb.props.sensitive = True
+        self.sampb.connect('clicked', self.do_samples)
+        try:
+             self.sampb.props.accelerator = _('<Alt>o')
+        except:
+            pass
+        self.insert(self.sampb, -1)
+        self.sampb.show()
+
+    def do_palette(self, button):
+        if self.activity.tw.palette == True:
+            tawindow.hideshow_palette(self.activity.tw,False)
+            self.palette.set_icon("blockson")
+            self.palette.set_tooltip(_('Show palette'))
+        else:
+            tawindow.hideshow_palette(self.activity.tw,True)
+            self.palette.set_icon("blocksoff")
+            self.palette.set_tooltip(_('Hide palette'))
+
+    def do_hidepalette(self):
+        # print "in do_hidepalette"
+        self.palette.set_icon("blockson")
+        self.palette.set_tooltip(_('Show palette'))
+
+    def do_showpalette(self):
+        # print "in do_showpalette"
+        self.palette.set_icon("blocksoff")
+        self.palette.set_tooltip(_('Hide palette'))
+ 
+    def do_run(self, button):
+        self.runproject.set_icon("run-faston")
+        self.stop.set_icon("stopiton")
+        self.activity.tw.lc.trace = 0
+        tawindow.runbutton(self.activity.tw, 0)
+        gobject.timeout_add(1000,self.runproject.set_icon,"run-fastoff")
+
+    def do_step(self, button):
+        self.stepproject.set_icon("run-slowon")
+        self.stop.set_icon("stopiton")
+        self.activity.tw.lc.trace = 0
+        tawindow.runbutton(self.activity.tw, 3)
+        gobject.timeout_add(1000,self.stepproject.set_icon,"run-slowoff")
+
+    def do_debug(self, button):
+        self.debugproject.set_icon("debugon")
+        self.stop.set_icon("stopiton")
+        self.activity.tw.lc.trace = 1
+        tawindow.runbutton(self.activity.tw, 30)
+        gobject.timeout_add(1000,self.debugproject.set_icon,"debugoff")
+
+    def do_stop(self, button):
+        self.stop.set_icon("stopitoff")
+        tawindow.stop_button(self.activity.tw)
+        self.stepproject.set_icon("run-slowoff")
+        self.runproject.set_icon("run-fastoff")
+
+    def do_hideshow(self, button):
+        tawindow.hideshow_button(self.activity.tw)
+        if self.activity.tw.hide == True: # we just hid the blocks
+            self.blocks.set_icon("hideshowon")
+            self.blocks.set_tooltip(_('Show blocks'))
+        else:
+            self.blocks.set_icon("hideshowoff")
+            self.blocks.set_tooltip(_('Hide blocks'))
+        # update palette buttons too
+        if self.activity.tw.palette == False: 
+            self.palette.set_icon("blockson")
+            self.palette.set_tooltip(_('Show palette'))
+        else:
+            self.palette.set_icon("blocksoff")
+            self.palette.set_tooltip(_('Hide palette'))
+
+    def do_hide(self):
+        self.blocks.set_icon("hideshowon")
+        self.blocks.set_tooltip(_('Show blocks'))
+        self.palette.set_icon("blockson")
+        self.palette.set_tooltip(_('Show palette'))
+
+    def do_show(self):
+        self.blocks.set_icon("hideshowoff")
+        self.blocks.set_tooltip(_('Hide blocks'))
+        self.palette.set_icon("blocksoff")
+        self.palette.set_tooltip(_('Hide palette'))
+
+    def do_eraser(self, button):
+        self.eraser.set_icon("eraseroff")
+        self.activity.recenter()
+        tawindow.eraser_button(self.activity.tw)
+        gobject.timeout_add(250,self.eraser.set_icon,"eraseron")
+
+    def do_fullscreen(self, button):
+        self.activity.fullscreen()
+        self.activity.recenter()
+
+    def do_samples(self, button):
+        tawindow.load_file(self.activity.tw)
+        # run the activity
+        tawindow.runbutton(self.activity.tw, 0)
+
+    def do_savesnapshot(self, button):
+        # Create a datastore object
+        # save the current state of the project to the instance directory
+        print "### in savesnapshot ###"
+
+        import tempfile
+        tafd, tafile = tempfile.mkstemp(".ta")
+        print tafile
+        try:
+            tawindow.save_data(self.activity.tw,tafile)
+        except:
+            _logger.debug("couldn't save snapshot to journal")
+
+        # Create a datastore object
+        dsobject = datastore.create()
+
+        # Write any metadata
+        dsobject.metadata['title'] = self.activity.get_title() + " snapshot"
+        dsobject.metadata['icon-color'] = profile.get_color().to_string()
+        dsobject.metadata['mime_type'] = 'application/x-turtle-art'
+        dsobject.metadata['activity'] = 'org.laptop.TurtleArtActivity'
+        dsobject.set_file_path(tafile)
+        datastore.write(dsobject)
+
+        # Clean up
+        dsobject.destroy()
+        os.remove(tafile)
+        del tafd
+        return
