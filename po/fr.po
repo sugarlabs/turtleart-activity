@@ -510,17 +510,9 @@ msgstr "Charge mon bloc"
 msgid "Fullscreen"
 msgstr "Plein écran"
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:144
-msgid "Hide palette"
-msgstr "Masquer la palette"
-
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:147
 msgid "<Alt>p"
 msgstr "<Alt>p"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:153
-msgid "Hide blocks"
-msgstr "Masquer les blocs"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:156
 msgid "<Alt>b"
