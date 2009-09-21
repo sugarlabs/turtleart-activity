@@ -42,6 +42,8 @@ from taturtle import *
 from tagplay import *
 from tajail import *
 
+from gettext import gettext as _
+
 procstop = False
 
 class symbol:
