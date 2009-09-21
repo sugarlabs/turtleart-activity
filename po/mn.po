@@ -1,48 +1,50 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: 2009-02-17 16:34-0500\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2009-09-21 14:48-0400\n"
 "Last-Translator: Odontsetseg Bat-Erdene <obat-erdene@suffolk.edu>\n"
 "Language-Team: Mongolian\n"
+"Language: mn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0rc2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 1.2.1\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
-msgstr "Яст мэлхий уран бүтээл"
+msgstr "Яст мэлхий Урлан"
 
 #: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
 #: tasetup.py:53 tasetup.py:54
 msgid "title"
-msgstr "гарчиг"
+msgstr "Гарчиг"
 
 #: tasetup.py:66
 msgid "text"
 msgstr "бичвэр"
 
-#:
+#: tasetup.py:119 tasetup.py:120
 msgid "stack"
-msgstr "залгас"
+msgstr "залгаас"
 
-#:
+#: tasetup.py:125 tasetup.py:126
 msgid "box"
 msgstr "богц"
 
-#:
+#: tasetup.py:127
 msgid "name"
 msgstr "нэр"
 
-#:
+#: TurtleArtActivity.py:48
 msgid "Project"
-msgstr ""
+msgstr "Төсөл"
 
 #:
 msgid "Save as"
-msgstr "Нэр өөрчилж хадгалах"
+msgstr "Өөрөөр хадгалах"
 
 #: TurtleArtActivity.py:173 TurtleArtActivity.py:262
 #: TurtleArtActivity.py:293
@@ -51,11 +53,11 @@ msgstr ""
 
 #: TurtleArtActivity.py:181 TurtleArtActivity.py:286
 msgid "hide blocks"
-msgstr ""
+msgstr "блокоо нуу"
 
 #: TurtleArtActivity.py:194
 msgid "run"
-msgstr ""
+msgstr "эхэл"
 
 #: TurtleArtActivity.py:202
 msgid "step"
@@ -63,7 +65,7 @@ msgstr "алхам"
 
 #: TurtleArtActivity.py:210
 msgid "stop turtle"
-msgstr "яст мэлхий зогсоох"
+msgstr "яст мэлхий зогс"
 
 #: TurtleArtActivity.py:236
 msgid "samples"
@@ -71,11 +73,11 @@ msgstr "жишээ"
 
 #: TurtleArtActivity.py:249
 msgid "save as HTML"
-msgstr "HTML-аар хадгалах"
+msgstr "HTML-р хадгал"
 
 #: TurtleArtActivity.py
 msgid "save Logo"
-msgstr "Logo-аар хадгалах"
+msgstr "Logo-р хадгал"
 
 #: TurtleArtActivity.py
 msgid "load my block"
@@ -88,7 +90,7 @@ msgstr ""
 
 #: TurtleArtActivity.py:283 TurtleArtActivity.py:297
 msgid "show blocks"
-msgstr ""
+msgstr "блокоо үзүүл"
 
 #:
 msgid "Flow"
@@ -124,7 +126,7 @@ msgstr "хүлээ"
 
 #:
 msgid "My Blocks"
-msgstr "Миний Блокуд"
+msgstr "Миний Блокууд"
 
 #:
 msgid "box 1"
@@ -136,31 +138,31 @@ msgstr "богц 2"
 
 #:
 msgid "stack 1"
-msgstr "залгас 1"
+msgstr "залгаас 1"
 
 #:
 msgid "stack 2"
-msgstr "залгас 2"
+msgstr "залгаас 2"
 
 #:
 msgid "store in box 1"
-msgstr "богц 1-д хадгал"
+msgstr "1-р богцд хадгал"
 
 #:
 msgid "store in box 2"
-msgstr "богц 2-д хадгал"
+msgstr "2-р богцд хадгал"
 
 #:
 msgid "push"
-msgstr ""
+msgstr "өг"
 
 #:
 msgid "pop"
-msgstr ""
+msgstr "ав"
 
 #:
 msgid "Numbers"
-msgstr "Тооны Уйлдзл"
+msgstr "Тоолохуй"
 
 #:
 msgid "number"
@@ -172,27 +174,27 @@ msgstr "ба"
 
 #:
 msgid "or"
-msgstr "эсвэл"
+msgstr "буюу"
 
 #:
 msgid "not"
-msgstr ""
+msgstr "үгүйсгэ"
 
 #:
 msgid "random"
-msgstr "тохиолдлын"
+msgstr "санамсаргүй"
 
 #:
 msgid "min"
-msgstr ""
+msgstr "минимум"
 
 #:
 msgid "max"
-msgstr ""
+msgstr "максимум"
 
 #:
 msgid "mod"
-msgstr ""
+msgstr "үлдэгдэл"
 
 #:
 msgid "print"
@@ -208,23 +210,23 @@ msgstr "ѳнгѳ"
 
 #:
 msgid "shade"
-msgstr "сүүдзр"
+msgstr "сүүдэр"
 
 #:
 msgid "fill screen"
-msgstr "дзлгзц"
+msgstr "дэлгэц"
 
 #:
 msgid "pen up"
-msgstr "зур"
-
-#:
-msgid "pen down"
 msgstr "бүү зур"
 
 #:
+msgid "pen down"
+msgstr "зур"
+
+#:
 msgid "set pen size"
-msgstr "үзэгний хэмжээ тохирох"
+msgstr "үзгэнд хэмжээ өг"
 
 #:
 msgid "pen size"
@@ -232,15 +234,15 @@ msgstr "үзэг хэмжээ"
 
 #:
 msgid "set shade"
-msgstr "сүүдэр"
+msgstr "сүүдэр өг"
 
 #:
 msgid "set color"
-msgstr "өнгө"
+msgstr "өнгө өг"
 
 #:
 msgid "set text color"
-msgstr ""
+msgstr "бичвэрт өнгө өг"
 
 #:
 msgid "Blocks"
@@ -280,15 +282,14 @@ msgstr "ѳнцѳг"
 
 #:
 msgid "radius"
-msgstr "радмус"
+msgstr "радиус"
 
 #:
 msgid "heading"
-msgstr "чиг"
+msgstr "харах чиг"
 
-#:
 msgid "set heading"
-msgstr "seth"
+msgstr "чиг тогтоо"
 
 #:
 msgid "set xy"
@@ -312,11 +313,11 @@ msgstr "y тэнхлэг"
 
 #:
 msgid "Sensors"
-msgstr ""
+msgstr "Мэдрэхүй"
 
 #:
 msgid "volume"
-msgstr "дууны хэмжээ"
+msgstr "дууны хүч"
 
 #:
 msgid "pitch"
@@ -336,11 +337,11 @@ msgstr "Загвар"
 
 #:
 msgid "Keyboard"
-msgstr "Гар"
+msgstr "Бичих гар"
 
 #:
 msgid "read key"
-msgstr ""
+msgstr "товчлуур таних"
 
 #:
 msgid "sound"
@@ -348,13 +349,12 @@ msgstr "дуу чимээ"
 
 #:
 msgid "hres"
-msgstr ""
+msgstr "хэвтээ"
 
 #:
 msgid "vres"
-msgstr ""
+msgstr "босоо"
 
 #:
 msgid "start"
-msgstr "эхлүүлэх"
-
+msgstr "эхэл"
