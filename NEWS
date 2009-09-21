@@ -1,11 +1,16 @@
+69
+
+* chmod +x svg factory
+* added missing import gettext from talogo.py
+
 68
 
-* made case consistant on tool tips
+* made case consistent on tool tips
 * fixed bug re i18n in debug panel
 * new artwork for es and fr
 * fixed some problems with svg factory
 * fixed bug in Export HTML
-* fixed nameing problem with all save_as functions
+* fixed naming problem with all save_as functions
 * fixed bug in Export Logo in regard to start block
 
 67
