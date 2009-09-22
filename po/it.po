@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-22 09:12-0400\n"
+"PO-Revision-Date: 2009-09-22 09:43-0400\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -135,22 +135,30 @@ msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
+"ricorda la coordinata x (ascissa) della tartaruga (può essere utilizzato in "
+"alternativa ad un blocco variabile numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:44
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
+"ricorda la coordinata y (ordinata) della tartaruga (può essere utilizzato in "
+"alternativa ad un blocco variabile numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:45
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
 msgstr ""
+"ricorda la direzione della tartaruga (può essere utilizzato in alternativa "
+"ad un blocco variabile numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:46
 msgid "holds current scale value (can be used in place of a number block)"
 msgstr ""
+"ricorda la scala della tartaruga (può essere utilizzato in alternativa ad un "
+"blocco variabile numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:47
 msgid "turtle will not draw when moved"
@@ -187,26 +195,36 @@ msgstr "riempi lo sfondo con (colore, ombreggiatura)"
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:55
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr ""
+"ricorda la dimensione della penna (può essere utilizzato in alternativa ad "
+"un blocco variabile numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:56
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr ""
+"ricorda il colore della penna (può essere utilizzato in alternativa ad un "
+"blocco variabile numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:57
 msgid "holds current pen shade (can be used in place of a number block)"
 msgstr ""
+"ricorda l'ombreggiatura della penna (può essere utilizzato in alternativa ad "
+"un blocco variabile numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:58
 msgid "holds current text size (can be used in place of a number block)"
 msgstr ""
+"ricorda la dimensione del testo (può essere utilizzato in alternativa ad un "
+"blocco variabile numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:59
 msgid "holds current text color (can be used in place of a number block)"
 msgstr ""
+"ricorda il colore del testo (può essere utilizzato in alternativa ad un "
+"blocco variabile numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:60
 msgid "used as numeric input in mathematic operators"
-msgstr ""
+msgstr "Utilizza come valore di ingresso per operatori matematici"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:61
 msgid "adds two numeric inputs"
@@ -569,9 +587,8 @@ msgstr "Esempi"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:243
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:981
-#, fuzzy
 msgid "Move the cursor over the orange palette for help."
-msgstr "Muovi il cursore sopra le tavolozze gialle per gli aiuti."
+msgstr "Muovi il cursore sopra il pannello arancio per gli aiuti."
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:279
 msgid "Project"
@@ -579,20 +596,20 @@ msgstr "Progetto"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:281
 msgid "Edit"
-msgstr ""
+msgstr "Modifica"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:283
 msgid "Import/Export"
-msgstr ""
+msgstr "Importa/Esporta"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:285
 msgid "Help"
-msgstr ""
+msgstr "Aiuto"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:425
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1079
 msgid "presentation"
-msgstr ""
+msgstr "presentazione"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:567
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:577
@@ -602,9 +619,8 @@ msgstr ""
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1359
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1404
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1413
-#, fuzzy
 msgid "Show palette"
-msgstr "mostra tavolozza"
+msgstr "mostra pannello"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:588
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:602
@@ -623,9 +639,8 @@ msgid "Paste"
 msgstr "Incolla"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1007
-#, fuzzy
 msgid "Save Logo"
-msgstr "Salva come Logo"
+msgstr "Salva in Logo"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1028
 #, fuzzy
@@ -633,9 +648,8 @@ msgid "load my block"
 msgstr "Carica i miei blocchi"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1340
-#, fuzzy
 msgid "<Alt>o"
-msgstr "<Alt>t"
+msgstr "<Alt>o"
 
 #: /home/walter/Desktop/turtleart-activity/svg/hat2.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:42
@@ -825,7 +839,7 @@ msgstr ""
 #: /home/walter/Desktop/turtleart-activity/svg/textsize.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:53
 msgid "text size"
-msgstr ""
+msgstr "dimensione testo"
 
 #: /home/walter/Desktop/turtleart-activity/svg/forward.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:42
@@ -834,7 +848,7 @@ msgstr "avanti"
 
 #: /home/walter/Desktop/turtleart-activity/svg/scale.py:40
 msgid "scale"
-msgstr ""
+msgstr "scala"
 
 #: /home/walter/Desktop/turtleart-activity/svg/leftpos.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:49
@@ -845,7 +859,7 @@ msgstr "sinistra"
 
 #: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:40
 msgid "Extras"
-msgstr ""
+msgstr "Extra"
 
 #: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:41
 #: /home/walter/Desktop/turtleart-activity/svg/kbinput.py:40
@@ -884,12 +898,12 @@ msgstr "push"
 #: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:50
 #: /home/walter/Desktop/turtleart-activity/svg/toppos.py:40
 msgid "top"
-msgstr ""
+msgstr "cima"
 
 #: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:52
 #: /home/walter/Desktop/turtleart-activity/svg/bottompos.py:40
 msgid "bottom"
-msgstr ""
+msgstr "fondo"
 
 #: /home/walter/Desktop/turtleart-activity/svg/clean.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:41
@@ -947,9 +961,8 @@ msgstr "mostra"
 
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:58
 #: /home/walter/Desktop/turtleart-activity/svg/setscale.py:40
-#, fuzzy
 msgid "set scale"
-msgstr "seleziona ombreggiatura"
+msgstr "seleziona scala"
 
 #: /home/walter/Desktop/turtleart-activity/svg/sound.py:40
 msgid "sound"
