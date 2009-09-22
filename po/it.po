@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-01 18:07+0000\n"
-"PO-Revision-Date: 2009-08-25 13:14-0400\n"
+"POT-Creation-Date: 2009-09-18 12:07+0000\n"
+"PO-Revision-Date: 2009-09-22 09:12-0400\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -18,121 +18,624 @@ msgstr ""
 "X-Generator: Pootle 1.2.1\n"
 
 #: activity/activity.info:2
-#: /home/walter/Desktop/turtleart-activity/taexporthtml.py:189
+#: /home/walter/Desktop/turtleart-activity/taexporthtml.py:229
 msgid "Turtle Art"
 msgstr "Turtle Art"
 
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:55
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:65
 msgid "text"
 msgstr "testo"
 
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:99
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:49
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:108
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:50
 #: /home/walter/Desktop/turtleart-activity/svg/setxy.py:41
 msgid "x"
 msgstr "x"
 
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:122
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:123
-msgid "stack"
-msgstr "stack"
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:136
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:137
+msgid "action"
+msgstr "azione"
 
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:128
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:129
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:142
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:143
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:146
 msgid "box"
 msgstr "scatola"
 
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:130
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:144
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:47
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:59
 msgid "name"
 msgstr "nome"
 
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:133
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:134
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:135
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:136
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:137
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:138
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:151
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:152
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:153
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:154
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:155
+#: /home/walter/Desktop/turtleart-activity/tasetup.py:156
 msgid "title"
 msgstr "titolo"
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:83
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:26
+msgid "palette of turtle commands"
+msgstr "pannello comandi tartaruga"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:27
+msgid "palette of pen commands"
+msgstr "pannello comandi penna"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:28
+msgid "palette of numeric operators"
+msgstr "pannello operatori numerici"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:29
+msgid "palette of extra options"
+msgstr "pannello opzioni extra"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:30
+msgid "palette of flow operators"
+msgstr "pannello operatori di flusso"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:31
+msgid "palette of variable blocks"
+msgstr "pannello blocchi variabili"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:32
+msgid "palette of presentation templates"
+msgstr "pannello strutture per presentazioni"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:33
+msgid "clear the screen and reset the turtle"
+msgstr "Pulisci lo schermo e riposiziona la tartaruga"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:34
+msgid "move turtle forward"
+msgstr "muovi tartaruga avanti"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:35
+msgid "move turtle backward"
+msgstr "muovi tartaruga indietro"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:36
+msgid "turn turtle counterclockwise (angle in degrees)"
+msgstr "ruota tartaruga in senso antiorario (in gradi)"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:37
+msgid "turn turtle clockwise (angle in degrees)"
+msgstr "ruota tartaruga in senso orario (in gradi)"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:38
+msgid "move turtle along an arc"
+msgstr "muovi la tartaruga lungo un arco"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:39
+msgid ""
+"move turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+"muovi la tartaruga alle coordinate xcor, ycor; (0,0) è il centro dello "
+"schermo."
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:40
+msgid "set the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "modifica la direzione della tartaruga (0 è verso l'alto)"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:41
+msgid "draw text or show media from the Journal"
+msgstr "disegna un testo o mostra un contenuto multimediale dal Diario"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:42
+msgid "set the scale of media"
+msgstr "seleziona la scala di visualizzazione del contributo "
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:43
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:44
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:45
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:46
+msgid "holds current scale value (can be used in place of a number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:47
+msgid "turtle will not draw when moved"
+msgstr "la tartaruga non disegnerà muovendosi"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:48
+msgid "turtle will draw when moved"
+msgstr "la tartaruga disegnerà muovendosi"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:49
+msgid "set size of the line drawn by the turtle"
+msgstr "seleziona la larghezza della linea disegnata dalla tartaruga"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:50
+msgid "set color of the line drawn by the turtle"
+msgstr "seleziona il colore della linea disegnata dalla tartaruga"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:51
+msgid "set shade of the line drawn by the turtle"
+msgstr "seleziona l'ombreggiatura della linea disegnata dalla tartaruga"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:52
+msgid "set color of text drawn by the turtle"
+msgstr "seleziona il colore del testo disegnato dalla tartaruga"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:53
+msgid "set size of text drawn by turtle"
+msgstr "seleziona la dimensione del testo disegnato dalla tartaruga"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:54
+msgid "fills the background with (color, shade)"
+msgstr "riempi lo sfondo con (colore, ombreggiatura)"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:55
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:56
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:57
+msgid "holds current pen shade (can be used in place of a number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:58
+msgid "holds current text size (can be used in place of a number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:59
+msgid "holds current text color (can be used in place of a number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:60
+msgid "used as numeric input in mathematic operators"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:61
+msgid "adds two numeric inputs"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:62
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:63
+msgid "multiplies two numeric inputs"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:64
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:65
+msgid "modular (remainder) operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:66
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:67
+msgid "identity operator used for extending blocks"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:68
+msgid "calculate square root"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:69
+msgid "returns random number between minimum (left) and maximum (right) values"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:70
+msgid "logical equal-to operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:71
+msgid "logical greater-than operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:72
+msgid "logical less-than operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:73
+msgid "logical AND operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:74
+msgid "logical OR operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:75
+msgid "logical NOT operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:76
+msgid "prints value in status block at bottom of the screen"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:77
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:78
+msgid "holds results of query-keyboard block"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:79
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:80
+msgid ""
+"a programmable block: add your own math equation in the block, e.g., sin(x)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:81
+msgid "the canvas width"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:82
+msgid "the canvas height"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:83
+msgid "xcor of left of screen"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:84
+msgid "ycor of top of screen"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:85
+msgid "xcor of right of screen"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:86
+msgid "ycor of bottom of screen"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:87
+msgid "push value onto FILO (first-in last-out) heap"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:88
+msgid "pop value off FILO"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:89
+msgid "show FILO in status block"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:90
+msgid "empty FILO"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:91
+msgid "wait specified number of seconds"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:92
+msgid "loop forever"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:93
+msgid "loop specified number of times"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:94
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:95
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:96
+msgid "do not continue current action"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:97
+msgid "jog stack right"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:98
+msgid "jog stack down"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:99
+msgid "connects action to toolbar run buttons"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:100
+msgid "top of action 1 stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:101
+msgid "invoke action 1 stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:102
+msgid "top of action 2 stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:103
+msgid "invoke action 2 stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:104
+msgid "top of nameable action stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:105
+msgid "invoke named action stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:106
+msgid "store numeric value in variable 1"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:107
+msgid "variable 1 (numeric value)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:108
+msgid "store numeric value in variable 2"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:109
+msgid "variable 2 (numeric value)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:110
+msgid "store numeric value in named variable"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:111
+msgid "named variable (numeric value)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:112
+msgid "string value"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:113
+msgid "Sugar Journal media object"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:114
+msgid "Sugar Journal audio object"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:115
+msgid "Sugar Journal description field"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:116
+msgid "presentation template: select Journal object (with description)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:117
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:118
+msgid "presentation template: select two Journal objects"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:119
+msgid "presentation template: select four Journal objects"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:120
+msgid "presentation template: select Journal object (no description)"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:121
+msgid "presentation template: seven bullets"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:122
+msgid "declutter canvas by hiding blocks"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:97
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1319
+msgid "Save snapshot"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:108
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:999
+msgid "Save as HTML"
+msgstr "Salva come HTML"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:115
+msgid "Save as Logo"
+msgstr "Salva come Logo"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:122
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1015
+msgid "Save as image"
+msgstr "Salva come immagine"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:129
+msgid "Load my block"
+msgstr "Carica i miei blocchi"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:148
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1302
+msgid "Fullscreen"
+msgstr "Schermo intero"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:163
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:571
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:582
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:598
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:610
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1203
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1354
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1364
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1407
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1419
+msgid "Hide palette"
+msgstr "Nascondi tavolozza"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:166
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1207
+msgid "<Alt>p"
+msgstr "<Alt>t"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:172
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:591
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:608
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1215
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1400
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1417
+msgid "Hide blocks"
+msgstr "Nascondi blocchi"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:175
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1219
+msgid "<Alt>b"
+msgstr "<Alt>b"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:181
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1285
+msgid "Clean"
+msgstr "Pulisci"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:184
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1289
+msgid "<Alt>e"
+msgstr "<Alt>p"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:190
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1232
+msgid "Run"
+msgstr "Esegui"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:193
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1236
+msgid "<Alt>r"
+msgstr "<Alt>e"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:199
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1244
+msgid "Step"
+msgstr "Passo"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:202
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1248
+msgid "<Alt>w"
+msgstr "<Alt>w"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:208
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1256
+msgid "Debug"
+msgstr "Debug"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:211
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1260
+msgid "<Alt>d"
+msgstr "<Alt>d"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:217
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1268
+msgid "Stop turtle"
+msgstr "Ferma la tartaruga"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:220
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1272
+msgid "<Alt>s"
+msgstr "<Alt>f"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:232
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1336
+msgid "Samples"
+msgstr "Esempi"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:243
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:981
+#, fuzzy
+msgid "Move the cursor over the orange palette for help."
+msgstr "Muovi il cursore sopra le tavolozze gialle per gli aiuti."
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:279
 msgid "Project"
 msgstr "Progetto"
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:85
-msgid "Save as"
-msgstr "Salva come"
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:281
+msgid "Edit"
+msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:451
-msgid "samples"
-msgstr "esempi"
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:283
+msgid "Import/Export"
+msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:465
-msgid "save as HTML"
-msgstr "salva in HTML"
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:285
+msgid "Help"
+msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:473
-msgid "save Logo"
-msgstr "salva Logo"
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:425
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1079
+msgid "presentation"
+msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:481
-msgid "save as image"
-msgstr "salva come immagine"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:494
-msgid "load my block"
-msgstr "carica i miei blocchi"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:666
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:750
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:760
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:796
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:808
-msgid "hide palette"
-msgstr "nascondi tavolozza"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:675
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:789
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:806
-#: /home/walter/Desktop/turtleart-activity/svg/hideblocks.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:41
-msgid "hide blocks"
-msgstr "nascondi blocchi"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:689
-msgid "run"
-msgstr "esegui"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:698
-msgid "step"
-msgstr "passo"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:707
-msgid "stop turtle"
-msgstr "ferma la tartaruga"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:721
-#: /home/walter/Desktop/turtleart-activity/svg/clean.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:40
-msgid "clean"
-msgstr "pulisci"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:735
-msgid "fullscreen"
-msgstr "schermo intero"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:746
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:755
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:793
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:802
-msgid "show palette"
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:567
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:577
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:595
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:604
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1350
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1359
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1404
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1413
+#, fuzzy
+msgid "Show palette"
 msgstr "mostra tavolozza"
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:786
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:800
-msgid "show blocks"
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:588
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:602
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1397
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1411
+#, fuzzy
+msgid "Show blocks"
 msgstr "mostra blocchi"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:930
+msgid "Copy"
+msgstr "Copia"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:942
+msgid "Paste"
+msgstr "Incolla"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1007
+#, fuzzy
+msgid "Save Logo"
+msgstr "Salva come Logo"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1028
+#, fuzzy
+msgid "load my block"
+msgstr "Carica i miei blocchi"
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1340
+#, fuzzy
+msgid "<Alt>o"
+msgstr "<Alt>t"
 
 #: /home/walter/Desktop/turtleart-activity/svg/hat2.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:42
@@ -146,8 +649,13 @@ msgstr "stack 2"
 msgid "stack 1"
 msgstr "stack 1"
 
+#: /home/walter/Desktop/turtleart-activity/svg/hideblocks.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:41
+msgid "hide blocks"
+msgstr "nascondi blocchi"
+
 #: /home/walter/Desktop/turtleart-activity/svg/heading.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:54
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:55
 msgid "heading"
 msgstr "direzione"
 
@@ -157,7 +665,6 @@ msgid "start"
 msgstr "avvia"
 
 #: /home/walter/Desktop/turtleart-activity/svg/keyboard.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:40
 msgid "Keyboard"
 msgstr "Tastiera"
 
@@ -199,8 +706,8 @@ msgstr "altrimenti"
 
 #: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:47
 #: /home/walter/Desktop/turtleart-activity/svg/stopstack.py:40
-msgid "stop stack"
-msgstr "stop stack"
+msgid "stop action"
+msgstr ""
 
 #: /home/walter/Desktop/turtleart-activity/svg/print.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:45
@@ -290,7 +797,7 @@ msgid "mod"
 msgstr "mod"
 
 #: /home/walter/Desktop/turtleart-activity/svg/ycor.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:53
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:54
 msgid "ycor"
 msgstr "coordinata y"
 
@@ -304,20 +811,41 @@ msgstr "ombreggiatura"
 msgid "Templates"
 msgstr "Modelli"
 
-#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/sound.py:40
-msgid "sound"
-msgstr "suono"
-
 #: /home/walter/Desktop/turtleart-activity/svg/right.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:51
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:45
+#: /home/walter/Desktop/turtleart-activity/svg/rightpos.py:40
 msgid "right"
 msgstr "destra"
 
+#: /home/walter/Desktop/turtleart-activity/svg/storein.py:40
+msgid "store in"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/svg/textsize.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:53
+msgid "text size"
+msgstr ""
+
 #: /home/walter/Desktop/turtleart-activity/svg/forward.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:42
 msgid "forward"
 msgstr "avanti"
+
+#: /home/walter/Desktop/turtleart-activity/svg/scale.py:40
+msgid "scale"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/svg/leftpos.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:49
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/left.py:40
+msgid "left"
+msgstr "sinistra"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:40
+msgid "Extras"
+msgstr ""
 
 #: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:41
 #: /home/walter/Desktop/turtleart-activity/svg/kbinput.py:40
@@ -353,62 +881,97 @@ msgstr "vuota heap"
 msgid "push"
 msgstr "push"
 
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:42
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:50
+#: /home/walter/Desktop/turtleart-activity/svg/toppos.py:40
+msgid "top"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:52
+#: /home/walter/Desktop/turtleart-activity/svg/bottompos.py:40
+msgid "bottom"
+msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/svg/clean.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:41
+msgid "clean"
+msgstr "pulisci"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:43
 #: /home/walter/Desktop/turtleart-activity/svg/back.py:40
 msgid "back"
 msgstr "indietro"
 
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/left.py:40
-msgid "left"
-msgstr "sinistra"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:45
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:46
 #: /home/walter/Desktop/turtleart-activity/svg/arc.py:40
 msgid "arc"
 msgstr "arco"
 
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:46
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:47
 #: /home/walter/Desktop/turtleart-activity/svg/arc.py:41
 msgid "angle"
 msgstr "angolo"
 
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:47
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:48
 #: /home/walter/Desktop/turtleart-activity/svg/arc.py:42
 msgid "radius"
 msgstr "raggio"
 
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:48
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:49
 msgid "setyx"
 msgstr "setyx"
 
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:50
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:51
 #: /home/walter/Desktop/turtleart-activity/svg/setxy.py:42
 msgid "y"
 msgstr "y"
 
 #
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:51
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:52
 #: /home/walter/Desktop/turtleart-activity/svg/seth.py:40
 msgid "set heading"
 msgstr "seleziona direzione"
 
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:52
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:53
 #: /home/walter/Desktop/turtleart-activity/svg/xcor.py:40
 msgid "xcor"
 msgstr "coordinata x"
 
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:55
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:56
 msgid "Turtle"
 msgstr "Tartaruga"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:57
+#: /home/walter/Desktop/turtleart-activity/svg/show.py:40
+msgid "show"
+msgstr "mostra"
+
+#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:58
+#: /home/walter/Desktop/turtleart-activity/svg/setscale.py:40
+#, fuzzy
+msgid "set scale"
+msgstr "seleziona ombreggiatura"
+
+#: /home/walter/Desktop/turtleart-activity/svg/sound.py:40
+msgid "sound"
+msgstr "suono"
+
+#: /home/walter/Desktop/turtleart-activity/svg/textcolor.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:52
+msgid "text color"
+msgstr "colore testo"
 
 #: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:46
 msgid "fill screen"
 msgstr "riempi schermo"
 
-#: /home/walter/Desktop/turtleart-activity/svg/settextcolor.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/settextsize.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:50
+msgid "set text size"
+msgstr "seleziona dimensione testo"
+
+#: /home/walter/Desktop/turtleart-activity/svg/settextcolor.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:51
 msgid "set text color"
 msgstr "imposta colore del testo"
 
@@ -444,6 +1007,24 @@ msgstr "dimensione penna"
 #: /home/walter/Desktop/turtleart-activity/svg/setxy.py:40
 msgid "set xy"
 msgstr "seleziona xy"
+
+#~ msgid "hide palette"
+#~ msgstr "nascondi tavolozza"
+
+#~ msgid "stack"
+#~ msgstr "stack"
+
+#~ msgid "Save as"
+#~ msgstr "Salva come"
+
+#~ msgid "save Logo"
+#~ msgstr "salva Logo"
+
+#~ msgid "run"
+#~ msgstr "esegui"
+
+#~ msgid "stop stack"
+#~ msgstr "stop stack"
 
 #~ msgid "Blocks"
 #~ msgstr "Blocchi"
