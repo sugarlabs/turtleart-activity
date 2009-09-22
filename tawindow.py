@@ -589,7 +589,7 @@ def keypress_cb(area, event, tw):
     else:
         alt_mask = False
     results = key_press(tw, alt_mask, keyname, keyunicode)
-    if keyname is not None and \
+    if keyname is not None and hasattr(tw,"activity") and \
         hasattr(tw.activity, 'chattube') and tw.activity.chattube is not None:
         # print "key press"
         if alt_mask:
@@ -782,19 +782,19 @@ def xy(event):
     return map(int, event.get_coords())
 
 def showPopup(block_name,tw):
-    try:
-        label = _(block_name) + ": " + hover_dict[block_name]
-    except:
-        label = _(block_name)
-    try:
-        # Use new toolbar
-        tw.activity.hover_help_label.set_text(label)
-        tw.activity.hover_help_label.show()
-    except:
-        # Use old toolbar
-        tw.activity.helpToolbar.hover_help_label.set_text(label)
-        tw.activity.helpToolbar.hover_help_label.show()
-
+    if hasattr(tw,"activity"):
+        try:
+            label = _(block_name) + ": " + hover_dict[block_name]
+        except:
+            label = _(block_name)
+        try:
+            # Use new toolbar
+            tw.activity.hover_help_label.set_text(label)
+            tw.activity.hover_help_label.show()
+        except:
+            # Use old toolbar
+            tw.activity.helpToolbar.hover_help_label.set_text(label)
+            tw.activity.helpToolbar.hover_help_label.show()
     """
     i = popupHandler.getInvoker(block_name)
     if i:

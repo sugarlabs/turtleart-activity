@@ -166,10 +166,11 @@ def setup_cmd(lc, str):
 def start_eval(lc, list):
     icall(lc, evline, list); yield True
     # turn off stop icon when execution is finished
-    try:
-        lc.tw.activity.stop.set_icon("stopitoff")
-    except:
-        lc.tw.activity.projectToolbar.stop.set_icon("stopitoff")
+    if hasattr(lc.tw,"activity"):
+        try:
+            lc.tw.activity.stop.set_icon("stopitoff")
+        except:
+            lc.tw.activity.projectToolbar.stop.set_icon("stopitoff")
     yield False
 
 def evline(lc, list):
@@ -947,12 +948,13 @@ def hideblocks(lc):
     hideshow_button(lc.tw)
     for i in lc.tw.selbuttons:
         hide(i)
-    try:
-        # Use new toolbar design
-        lc.tw.activity.do_hide()
-    except:
-        # Use old toolbar design
-        lc.tw.activity.projectToolbar.do_hide()
+    if hasattr(lc.tw,"activity"):
+        try:
+            # Use new toolbar design
+            lc.tw.activity.do_hide()
+        except:
+            # Use old toolbar design
+            lc.tw.activity.projectToolbar.do_hide()
 
 def doevalstep(lc):
     starttime = millis()
