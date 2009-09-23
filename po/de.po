@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: turtleart-activity\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2009-09-23 16:45-0400\n"
+"PO-Revision-Date: 2009-09-23 18:26-0400\n"
 "Last-Translator: Markus Schlager <m.slg@gmx.de>\n"
 "Language-Team: OLPC-German <m.slg@gmx.de>\n"
 "Language: de\n"
@@ -69,7 +69,7 @@ msgstr "Turtle anhalten"
 
 #: TurtleArtActivity.py:236
 msgid "samples"
-msgstr "Muster"
+msgstr "Vorlagen"
 
 #: TurtleArtActivity.py:249
 msgid "save as HTML"
