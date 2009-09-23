@@ -44,8 +44,8 @@ def main():
  "hat1.py", \
  "hat2.py", \
  "heading.py", \
+ "height.py", \
  "hideblocks.py", \
- "hres.py", \
  "ifelse.py", \
  "if.py", \
  "kbinput.py", \
@@ -95,8 +95,8 @@ def main():
  "textsize.py", \
  "toppos.py", \
  "turtlegroup.py", \
- "vres.py", \
  "wait.py", \
+ "width.py", \
  "xcor.py", \
  "ycor.py" ]
 

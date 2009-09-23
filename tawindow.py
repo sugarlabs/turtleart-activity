@@ -184,7 +184,9 @@ def button_press(tw, mask, x, y, verbose=False):
     if verbose:
         print "processing remote button press: " + str(x) + " " + str(y)
     tw.block_operation = 'click'
-    if tw.selected_block!=None: unselect(tw)
+    if tw.selected_block!=None:
+        unselect(tw)
+    # hide status block
     setlayer(tw.status_spr,400)
     spr = findsprite(tw,(x,y))
     tw.dx = 0
@@ -214,12 +216,22 @@ def hideshow_palette(tw,state):
     if state is False:
         tw.palette == False
         if hasattr(tw,'activity'):
-            tw.activity.do_hidepalette()
+            try:
+                # Use new toolbar design
+                tw.activity.do_hidepalette()
+            except:
+                # Use old toolbar design
+                tw.activity.projectToolbar.do_hidepalette()                
         hide_palette(tw)
     else:
         tw.palette == True
         if hasattr(tw,'activity'):
-            tw.activity.do_showpalette()
+            try:
+                # Use new toolbar design
+                tw.activity.do_showpalette()
+            except:
+                # Use old toolbar design
+                tw.activity.projectToolbar.do_showpalette()                
         show_palette(tw)
 
 def show_palette(tw):
@@ -709,6 +721,8 @@ def runtool(tw, spr, cmd, *args):
     cmd(*(args))
 
 def eraser_button(tw):
+    # hide status block
+    setlayer(tw.status_spr,400)
     clear(tw.lc)
 
 def stop_button(tw):
@@ -769,16 +783,21 @@ def xy(event):
 
 def showPopup(block_name,tw):
     try:
-        label = block_name + ": " + hover_dict[block_name]
+        label = _(block_name) + ": " + hover_dict[block_name]
     except:
-        label = block_name
-    tw.activity.hover_help_label.set_text(label)
-    tw.activity.hover_help_label.show()
+        label = _(block_name)
+    try:
+        # Use new toolbar
+        tw.activity.hover_help_label.set_text(label)
+        tw.activity.hover_help_label.show()
+    except:
+        # Use old toolbar
+        tw.activity.helpToolbar.hover_help_label.set_text(label)
+        tw.activity.helpToolbar.hover_help_label.show()
+
     """
     i = popupHandler.getInvoker(block_name)
     if i:
         return gobject.timeout_add(500, i.showPopup, "")
     """
     return 0
-
-

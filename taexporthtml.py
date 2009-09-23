@@ -43,7 +43,7 @@ def save_html(self, tw, embed_flag=True):
         'doctype': ("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 \
 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n", ""),
         'html': ("<http>\n", "</http>\n"),
-        'head': ("<head>\n<!-- Created by Turtle Art Portfolio -->\n", \
+        'head': ("<head>\n<!-- Created by Turtle Art -->\n", \
              "</head>\n"),
         'meta': ("<meta http-equiv=\"content-type\" content=\"text/html; \
 charset=UTF-8\">\n", ""),
@@ -59,19 +59,24 @@ charset=UTF-8\">\n", ""),
              "\n</td>\n"),
         'img': ("<img width=\"400\" height=\"300\" alt=\"Image\" src=\"image",\
              ".png\" />\n"),
+        'img2': ("<img alt=\"Image\" src=\"image", ".png\" />\n"),
         'ul': ("<ul>\n", "</ul>\n"),
         'li': ("<li>", "</li>\n") }
 
     if embed_flag == True:
+        # store images in-line as base64
         html_glue['img'] = ("<img width=\"400\" height=\"300\" alt=\"Image\" \
 src=\"data:image/png;base64,\n", " \"/>\n")
+        html_glue['img2'] = ("<img alt=\"Image\" \
+src=\"data:image/png;base64,\n", " \"/>\n")
+
     bs = tawindow.blocks(tw)
     code = ""
     imagecount = 0
     slidecount = 0
     for b in bs:
          this_stack = ""
-         data = walk_stack(self,tw, b)
+         data = walk_stack(self, tw, b)
          show = 0
          onepic = 0
          twopic = 0
@@ -83,47 +88,56 @@ src=\"data:image/png;base64,\n", " \"/>\n")
              if type(d) is float:
                  continue
              else:
-                 # transalate some TA terms into html
-                 # ignores most turtle gr
-                 # print d
+                 # transalate some Turtle Art blocks into HTML
+                 #     show and template blocks
+                 # ignores most turtle graphics
                  if d == "show":
                      show = 1
                  elif d == "container":
                      show = 2
-                 elif show == 1 and d[0:2] == '#s':
-                     # show a string
-                     this_stack += d[2:]
-                     show = 0
-                 elif show == 2:
-                     # show an image
-                     if d[8:] != None:
-                         try:
-                             dsobject = datastore.get(d[8:])
-                             pixbuf = get_pixbuf_from_journal(dsobject,400,300)
+                 elif show > 0:
+                     if show == 1:
+                         try: # is it media or a string?
+                             tmp = d[0:8]
                          except:
-                             pixbuf = None
-                         if pixbuf != None:
-                             filename = os.path.join(datapath, 'image' + \
-                                 str(imagecount) + ".png")
-                             pixbuf.save(filename, "png")
-                             # if the embed flag is True
-                             # embed base64 into the html
-                             if embed_flag == True:
-                                 base64 = os.path.join(datapath, 'base64tmp')
-                                 cmd = "base64 <" + filename + " >" + base64
-                                 subprocess.check_call(cmd, shell=True)
-                                 f = open( base64, 'r')
-                                 imgdata = f.read()
-                                 f.close()
-                             tmp = html_glue['img'][0]
-                             if embed_flag == True:
-                                 tmp = tmp + imgdata
-                             else:
-                                 tmp = tmp + str(imagecount)
-                                 imagecount += 1
-                             tmp = tmp + html_glue['img'][1]
-                             this_stack += tmp
-                     show = 0
+                             tmp = ""
+                         if tmp == '#smedia_': # show media
+                             show = 2
+                         else:  # show a string
+                             this_stack += d[2:]
+                             show = 0
+                     if show == 2:
+                         # show an image
+                         if d[8:] != None:
+                             try:
+                                 dsobject = datastore.get(d[8:])
+                                 pixbuf = \
+                                     get_pixbuf_from_journal(dsobject,400,300)
+                             except:
+                                 pixbuf = None
+                             if pixbuf != None:
+                                 filename = os.path.join(datapath, 'image' + \
+                                            str(imagecount) + ".png")
+                                 pixbuf.save(filename, "png")
+                                 # if the embed flag is True
+                                 # embed base64 into the html
+                                 if embed_flag == True:
+                                     base64 = \
+                                         os.path.join(datapath, 'base64tmp')
+                                     cmd = "base64 <" + filename + " >" + base64
+                                     subprocess.check_call(cmd, shell=True)
+                                     f = open( base64, 'r')
+                                     imgdata = f.read()
+                                     f.close()
+                                 tmp = html_glue['img2'][0]
+                                 if embed_flag == True:
+                                     tmp = tmp + imgdata
+                                 else:
+                                     tmp = tmp + str(imagecount)
+                                     imagecount += 1
+                                 tmp = tmp + html_glue['img2'][1]
+                                 this_stack += tmp
+                         show = 0
                  elif d == "tp1" or d == 'tp8':
                      onepic = 1
                  elif d == "tp2" or d == 'tp6':
@@ -159,7 +173,6 @@ src=\"data:image/png;base64,\n", " \"/>\n")
                      # Need filename to copy it into instance directory
                      # if it is not an image, save the preview 
                      # save the description too.
-                     print str(onepic) + " " + str(twopic) + " " + str(fourpic)
                      if d[8:] != None:
                          try:
                              dsobject = datastore.get(d[8:])
@@ -224,13 +237,46 @@ src=\"data:image/png;base64,\n", " \"/>\n")
              this_stack += " "
          if len(data) > 0:
              code += this_stack
-    code = html_glue['doctype'][0] + html_glue['html'][0] + \
-        html_glue['head'][0] + \
-        html_glue['meta'][0] + html_glue['title'][0] + _("Turtle Art") + \
-        html_glue['title'][1] + html_glue['style'][0] + \
-        html_glue['style'][1] + \
-        html_glue['head'][1] + html_glue['body'][0] + code + \
-        html_glue['body'][1] + html_glue['html'][1]
+
+    # if no show or template blocks were present, we've got no slides,
+    # so save a screendump instead
+    if slidecount == 0:
+        # save a screen dump instead
+        filename = os.path.join(datapath, 'image.png')
+        tawindow.save_pict(self.tw,filename)
+        # if the embed flag is True
+        # embed base64 into the html
+        if embed_flag == True:
+            base64 = os.path.join(datapath, 'base64tmp')
+            cmd = "base64 <" + filename + " >" + base64
+            subprocess.check_call(cmd, shell=True)
+            f = open( base64, 'r')
+            imgdata = f.read()
+            f.close()
+            code = html_glue['img'][0] + \
+                   imgdata + \
+                   html_glue['img'][1]
+            for b in bs: # "show me the code"
+                code = code + html_glue['div'][0]
+                data = walk_stack(self, tw, b)
+                for d in data:
+                    code = code + str(d) + " "
+                code = code + html_glue['div'][1]
+
+    code = html_glue['doctype'][0] + \
+           html_glue['html'][0] + \
+           html_glue['head'][0] + \
+           html_glue['meta'][0] + \
+           html_glue['title'][0] + \
+           _("Turtle Art") + \
+           html_glue['title'][1] + \
+           html_glue['style'][0] + \
+           html_glue['style'][1] + \
+           html_glue['head'][1] + \
+           html_glue['body'][0] + \
+           code + \
+           html_glue['body'][1] + \
+           html_glue['html'][1]
     return code
 
 def walk_stack(self, tw, spr):
@@ -241,5 +287,4 @@ def walk_stack(self, tw, spr):
     else:
         # not top of stack, then return empty list
         return []
-
 

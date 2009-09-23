@@ -42,6 +42,8 @@ from taturtle import *
 from tagplay import *
 from tajail import *
 
+from gettext import gettext as _
+
 procstop = False
 
 class symbol:
@@ -164,7 +166,10 @@ def setup_cmd(lc, str):
 def start_eval(lc, list):
     icall(lc, evline, list); yield True
     # turn off stop icon when execution is finished
-    lc.tw.activity.stop.set_icon("stopitoff")
+    try:
+        lc.tw.activity.stop.set_icon("stopitoff")
+    except:
+        lc.tw.activity.projectToolbar.stop.set_icon("stopitoff")
     yield False
 
 def evline(lc, list):
@@ -268,7 +273,7 @@ def debug_trace(lc, token):
                 my_string += tmp
         shp = 'info'
         setshape(lc.tw.status_spr, lc.tw.status_shapes[shp])
-        setlabel(lc.tw.status_spr, my_string)
+        setlabel(lc.tw.status_spr, _(my_string))
         setlayer(lc.tw.status_spr, 710)
     return
 
@@ -282,7 +287,7 @@ def no_args_check(lc):
 
 def prim_wait(lc,time):
     setlayer(lc.tw.turtle.spr,630)
-    endtime = millis()+an_int(lc,time)*100
+    endtime = millis()+an_int(lc,time*1000)
     while millis()<endtime:
         yield True
     setlayer(lc.tw.turtle.spr,100)
@@ -942,7 +947,12 @@ def hideblocks(lc):
     hideshow_button(lc.tw)
     for i in lc.tw.selbuttons:
         hide(i)
-    lc.tw.activity.do_hide()
+    try:
+        # Use new toolbar design
+        lc.tw.activity.do_hide()
+    except:
+        # Use old toolbar design
+        lc.tw.activity.projectToolbar.do_hide()
 
 def doevalstep(lc):
     starttime = millis()
@@ -1008,14 +1018,29 @@ def kbinput(lc):
     lc.tw.keypress = ""
 
 def showlabel(lc,label):
-    if label=='#nostack': shp = 'nostack'; label=''
-    elif label=='#noinput': shp = 'noinput'; label=''
-    elif label=='#emptyheap': shp = 'emptyheap'; label=''
-    elif label=='#emptybox': shp = 'emptybox'; label='                    '+lc.nobox
-    elif label=='#nomedia': shp = 'nomedia'; label=''
-    elif label=='#nocode': shp = 'nocode'; label=''
-    elif label=='#syntaxerror': shp = 'syntaxerror'; label=''
-    else: shp = 'status'
+    if label=='#nostack':
+        shp = 'nostack'
+        label=''
+    elif label=='#noinput':
+        shp = 'noinput'
+        label=''
+    elif label=='#emptyheap':
+        shp = 'emptyheap'
+        label=''
+    elif label=='#emptybox':
+        shp = 'emptybox'
+        label='                    '+lc.nobox
+    elif label=='#nomedia':
+        shp = 'nomedia'
+        label=''
+    elif label=='#nocode':
+        shp = 'nocode'
+        label=''
+    elif label=='#syntaxerror':
+        shp = 'syntaxerror'
+        label=''
+    else:
+        shp = 'status'
     setshape(lc.tw.status_spr, lc.tw.status_shapes[shp])
     setlabel(lc.tw.status_spr, label)
     setlayer(lc.tw.status_spr, 710)

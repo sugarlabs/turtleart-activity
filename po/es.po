@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-21 21:00-0400\n"
-"Last-Translator: Rafael Ortiz <rafael@laptop.org>\n"
+"PO-Revision-Date: 2009-09-22 17:21-0400\n"
+"Last-Translator: Chema Q <jameson.quinn@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -268,7 +268,7 @@ msgstr "operador lógico de igualdad"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:71
 msgid "logical greater-than operator"
-msgstr "operador lógico mayor que "
+msgstr "operador lógico mayor que"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:72
 msgid "logical less-than operator"
@@ -678,9 +678,8 @@ msgstr "pila 2"
 #: /home/walter/Desktop/turtleart-activity/svg/stack1.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/hat1.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:41
-#, fuzzy
 msgid "stack 1"
-msgstr "acción 1"
+msgstr "pila 1"
 
 #: /home/walter/Desktop/turtleart-activity/svg/hideblocks.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:41
@@ -784,9 +783,8 @@ msgstr "mostrar pila"
 
 #: /home/walter/Desktop/turtleart-activity/svg/pendown.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:42
-#, fuzzy
 msgid "pen down"
-msgstr "cp"
+msgstr "bajar pluma"
 
 #: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:40
 msgid "Numbers"
@@ -1012,10 +1010,11 @@ msgstr "fijar el color del texto"
 msgid "Pen"
 msgstr "Pluma"
 
+# verbo
 #: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:41
 #: /home/walter/Desktop/turtleart-activity/svg/penup.py:40
 msgid "pen up"
-msgstr "pluma arriba"
+msgstr "subir pluma"
 
 #: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:43
 #: /home/walter/Desktop/turtleart-activity/svg/setpensize.py:40

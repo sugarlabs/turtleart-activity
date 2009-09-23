@@ -537,8 +537,7 @@ msgstr "<Alt>p"
 msgid "Hide blocks"
 msgstr "Masquer les blocs"
 
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:175
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1219
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:156
 msgid "<Alt>b"
 msgstr "<Alt>b"
 
@@ -642,6 +641,11 @@ msgid "Show blocks"
 msgstr "Afficher les blocs"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:930
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:212
+msgid "Move the cursor over the yellow palettes for help."
+msgstr "Passer le curseur sur les palettes jaunes pour afficher l'aide."
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:865
 msgid "Copy"
 msgstr "Copier"
 
@@ -955,6 +959,9 @@ msgstr "y"
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:52
 #: /home/walter/Desktop/turtleart-activity/svg/seth.py:40
 msgid "set heading"
+msgstr "seth"
+
+msgid "seth"
 msgstr "seth"
 
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:53

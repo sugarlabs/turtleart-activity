@@ -130,6 +130,15 @@ class TurtleArtActivity(activity.Activity):
             self.load_python.connect('clicked', self._do_loadpython_cb)
             self.load_python.show()
             activity_button.props.page.insert(self.load_python, -1)
+
+            # Open project from the Journal 
+            self.load_ta_project = ToolButton('load-from-journal')
+            self.load_ta_project.set_tooltip(\
+                                           _("Import project from the Journal"))
+            self.load_ta_project.connect('clicked', self._do_load_ta_project_cb)
+            self.load_ta_project.show()
+            activity_button.props.page.insert(self.load_ta_project, -1)
+
             toolbar_box.toolbar.insert(activity_button, 0)
             activity_button.show()
 
@@ -163,7 +172,7 @@ class TurtleArtActivity(activity.Activity):
             self.palette.set_tooltip(_('Hide palette'))
             self.palette.props.sensitive = True
             self.palette.connect('clicked', self._do_palette_cb)
-            self.palette.props.accelerator = _('<Alt>p')
+            self.palette.props.accelerator = _('<Ctrl>p')
             toolbar_box.toolbar.insert(self.palette, -1)
             self.palette.show()
 
@@ -172,7 +181,7 @@ class TurtleArtActivity(activity.Activity):
             self.blocks.set_tooltip(_('Hide blocks'))
             self.blocks.props.sensitive = True
             self.blocks.connect('clicked', self.do_hideshow)
-            self.blocks.props.accelerator = _('<Alt>b')
+            self.blocks.props.accelerator = _('<Ctrl>b')
             toolbar_box.toolbar.insert(self.blocks, -1)
             self.blocks.show()
 
@@ -181,7 +190,7 @@ class TurtleArtActivity(activity.Activity):
             self.eraser_button.set_tooltip(_('Clean'))
             self.eraser_button.props.sensitive = True
             self.eraser_button.connect('clicked', self._do_eraser_cb)
-            self.eraser_button.props.accelerator = _('<Alt>e')
+            self.eraser_button.props.accelerator = _('<Ctrl>e')
             toolbar_box.toolbar.insert(self.eraser_button, -1)
             self.eraser_button.show()
 
@@ -190,7 +199,7 @@ class TurtleArtActivity(activity.Activity):
             self.runproject.set_tooltip(_('Run'))
             self.runproject.props.sensitive = True
             self.runproject.connect('clicked', self._do_run_cb)
-            self.runproject.props.accelerator = _('<Alt>r')
+            self.runproject.props.accelerator = _('<Ctrl>r')
             toolbar_box.toolbar.insert(self.runproject, -1)
             self.runproject.show()
 
@@ -199,7 +208,7 @@ class TurtleArtActivity(activity.Activity):
             self.stepproject.set_tooltip(_('Step'))
             self.stepproject.props.sensitive = True
             self.stepproject.connect('clicked', self._do_step_cb)
-            self.stepproject.props.accelerator = _('<Alt>w')
+            self.stepproject.props.accelerator = _('<Ctrl>w')
             toolbar_box.toolbar.insert(self.stepproject, -1)
             self.stepproject.show()
 
@@ -217,7 +226,7 @@ class TurtleArtActivity(activity.Activity):
             self.stop.set_tooltip(_('Stop turtle'))
             self.stop.props.sensitive = True
             self.stop.connect('clicked', self._do_stop_cb)
-            self.stop.props.accelerator = _('<Alt>s')
+            self.stop.props.accelerator = _('<Ctrl>s')
             toolbar_box.toolbar.insert(self.stop, -1)
             self.stop.show()
 
@@ -422,7 +431,8 @@ class TurtleArtActivity(activity.Activity):
 
         # Write any metadata (here we specifically set the title of the file
         # and specify that this is a plain text file). 
-        dsobject.metadata['title'] = self.get_title() + " " + _("presentation")
+        dsobject.metadata['title'] = self.get_title() + " " + \
+                                     _("presentation")
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         if embed_flag == True:
             dsobject.metadata['mime_type'] = 'text/html'
@@ -478,6 +488,25 @@ class TurtleArtActivity(activity.Activity):
         self._import_py()
         gobject.timeout_add(250,self.load_python.set_icon, "pippy-openoff")
         return
+
+    def _do_load_ta_project_cb(self, button):
+        from sugar.graphics.objectchooser import ObjectChooser
+        chooser = ObjectChooser(_("Project"), None, gtk.DIALOG_MODAL | \
+            gtk.DIALOG_DESTROY_WITH_PARENT)
+        try:
+            result = chooser.run()
+            if result == gtk.RESPONSE_ACCEPT:
+                dsobject = chooser.get_selected_object()
+                try:
+                    _logger.debug("opening %s " % dsobject.file_path)
+                    self.read_file(dsobject.file_path, False)
+                except:
+                    _logger.debug("couldn't open %s" % dsobject.file_path)
+                dsobject.destroy()
+        finally:
+            chooser.destroy()
+            del chooser
+        return 
 
     # Import Python code from the Journal to load into "myblock"
     def _import_py(self):
@@ -633,7 +662,7 @@ class TurtleArtActivity(activity.Activity):
         self.debugproject.set_icon("debugon")
         self.stop.set_icon("stopiton")
         self.tw.lc.trace = 1
-        tawindow.runbutton(self.tw, 30)
+        tawindow.runbutton(self.tw, 6)
         gobject.timeout_add(1000,self.debugproject.set_icon,"debugoff")
 
     def _do_stop_cb(self, button):
@@ -644,8 +673,9 @@ class TurtleArtActivity(activity.Activity):
 
     """ Sample projects open dialog """
     def _do_samples_cb(self, button):
-        tawindow.load_file(self.tw)
+        tawindow.load_file(self.tw, True)
         # run the activity
+        self.stop.set_icon("stopiton")
         tawindow.runbutton(self.tw, 0)
 
     """
@@ -836,7 +866,7 @@ class TurtleArtActivity(activity.Activity):
     """
     Read a project in and then run it
     """
-    def read_file(self, file_path):
+    def read_file(self, file_path, run_it = True):
         import tarfile,os,tempfile,shutil
 
         if hasattr(self, 'tw'):
@@ -847,26 +877,30 @@ class TurtleArtActivity(activity.Activity):
                 tmpdir = tempfile.mkdtemp()
                 try:
                     # We'll get 'ta_code.ta' and possibly a 'ta_image.png'
+                    # but we will ignore the .png file
+                    # If run_it is True, we want to create a new project
                     tar_fd.extractall(tmpdir)
-                    tawindow.load_files(self.tw, os.path.join(tmpdir, \
-                        'ta_code.ta'), os.path.join(tmpdir, 'ta_image.png'))
+                    tawindow.load_files(self.tw, \
+                                        os.path.join(tmpdir,'ta_code.ta'), \
+                                        run_it) # create a new project flag
                 finally:
                     shutil.rmtree(tmpdir)
                     tar_fd.close()
             # Otherwise, assume it is a .ta file
             else:
                 print "trying to open a .ta file:" + file_path
-                tawindow.load_files(self.tw, file_path, "")
+                tawindow.load_files(self.tw, file_path, run_it)
   
             # run the activity
-            try:
-                # Use 0.86 toolbar design
-                self.stop.set_icon("stopiton")
-            except:
-                # Use pre-0.86 toolbar design
-                self.projectToolbar.stop.set_icon("stopiton")
+            if run_it:
+                try:
+                    # Use 0.86 toolbar design
+                    self.stop.set_icon("stopiton")
+                except:
+                    # Use pre-0.86 toolbar design
+                    self.projectToolbar.stop.set_icon("stopiton")
 
-            tawindow.runbutton(self.tw, 0)
+                tawindow.runbutton(self.tw, 0)
         else:
             _logger.debug("Deferring reading file %s" %  file_path)
 
@@ -1025,11 +1059,19 @@ class SaveAsToolbar(gtk.Toolbar):
 
         # Pippy load myblock source button
         self.loadmyblock = ToolButton( "pippy-openoff" )
-        self.loadmyblock.set_tooltip(_('load my block'))
+        self.loadmyblock.set_tooltip(_('Load my block'))
         self.loadmyblock.props.sensitive = True
         self.loadmyblock.connect('clicked', self.do_loadmyblock)
         self.insert(self.loadmyblock, -1)
         self.loadmyblock.show()
+
+        # Open TA project from the Journal 
+        self.load_ta_project = ToolButton('load-from-journal')
+        self.load_ta_project.set_tooltip(_("Import project from the Journal"))
+        self.load_ta_project.props.sensitive = True
+        self.load_ta_project.connect('clicked', self.do_load_ta_project_cb)
+        self.insert(self.load_ta_project, -1)
+        self.load_ta_project.show()
 
     def do_savehtml(self, button):
         # write html out to datastore
@@ -1076,7 +1118,7 @@ class SaveAsToolbar(gtk.Toolbar):
         # Write any metadata (here we specifically set the title of the file
         # and specify that this is a plain text file). 
         dsobject.metadata['title'] = self.activity.get_title() + " " + \
-                                     _("presentation")
+            _("presentation")
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         if embed_flag == True:
             dsobject.metadata['mime_type'] = 'text/html'
@@ -1138,6 +1180,25 @@ class SaveAsToolbar(gtk.Toolbar):
         self.import_py()
         gobject.timeout_add(250,self.loadmyblock.set_icon, "pippy-openoff")
         return
+
+    def do_load_ta_project_cb(self, button):
+        from sugar.graphics.objectchooser import ObjectChooser
+        chooser = ObjectChooser(_("Project"), None, gtk.DIALOG_MODAL | \
+            gtk.DIALOG_DESTROY_WITH_PARENT)
+        try:
+            result = chooser.run()
+            if result == gtk.RESPONSE_ACCEPT:
+                dsobject = chooser.get_selected_object()
+                try:
+                    _logger.debug("opening %s " % dsobject.file_path)
+                    self.activity.read_file(dsobject.file_path, False)
+                except:
+                    _logger.debug("couldn't open %s" % dsobject.file_path)
+                dsobject.destroy()
+        finally:
+            chooser.destroy()
+            del chooser
+        return 
 
     # Import Python code from the Journal to load into "myblock"
     def import_py(self):
@@ -1204,7 +1265,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.palette.props.sensitive = True
         self.palette.connect('clicked', self.do_palette)
         try:
-            self.palette.props.accelerator = _('<Alt>p')
+            self.palette.props.accelerator = _('<Ctrl>p')
         except:
             pass
         self.insert(self.palette, -1)
@@ -1216,7 +1277,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.blocks.props.sensitive = True
         self.blocks.connect('clicked', self.do_hideshow)
         try:
-            self.blocks.props.accelerator = _('<Alt>b')
+            self.blocks.props.accelerator = _('<Ctrl>b')
         except:
             pass
         self.insert(self.blocks, -1)
@@ -1233,7 +1294,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.runproject.props.sensitive = True
         self.runproject.connect('clicked', self.do_run)
         try:
-            self.runproject.props.accelerator = _('<Alt>r')
+            self.runproject.props.accelerator = _('<Ctrl>r')
         except:
             pass
         self.insert(self.runproject, -1)
@@ -1245,7 +1306,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.stepproject.props.sensitive = True
         self.stepproject.connect('clicked', self.do_step)
         try:
-            self.stepproject.props.accelerator = _('<Alt>w')
+            self.stepproject.props.accelerator = _('<Ctrl>w')
         except:
             pass
         self.insert(self.stepproject, -1)
@@ -1257,7 +1318,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.debugproject.props.sensitive = True
         self.debugproject.connect('clicked', self.do_debug)
         try:
-            self.debugproject.props.accelerator = _('<Alt>d')
+            self.debugproject.props.accelerator = _('<Ctrl>d')
         except:
             pass
         self.insert(self.debugproject, -1)
@@ -1269,7 +1330,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.stop.props.sensitive = True
         self.stop.connect('clicked', self.do_stop)
         try:
-            self.stop.props.accelerator = _('<Alt>s')
+            self.stop.props.accelerator = _('<Ctrl>s')
         except:
             pass
         self.insert(self.stop, -1)
@@ -1286,7 +1347,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.eraser.props.sensitive = True
         self.eraser.connect('clicked', self.do_eraser)
         try:
-            self.eraser.props.accelerator = _('<Alt>e')
+            self.eraser.props.accelerator = _('<Ctrl>e')
         except:
             pass
         self.insert(self.eraser, -1)
@@ -1337,7 +1398,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.sampb.props.sensitive = True
         self.sampb.connect('clicked', self.do_samples)
         try:
-             self.sampb.props.accelerator = _('<Alt>o')
+             self.sampb.props.accelerator = _('<Ctrl>o')
         except:
             pass
         self.insert(self.sampb, -1)
@@ -1381,7 +1442,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.debugproject.set_icon("debugon")
         self.stop.set_icon("stopiton")
         self.activity.tw.lc.trace = 1
-        tawindow.runbutton(self.activity.tw, 30)
+        tawindow.runbutton(self.activity.tw, 6)
         gobject.timeout_add(1000,self.debugproject.set_icon,"debugoff")
 
     def do_stop(self, button):
@@ -1429,8 +1490,9 @@ class ProjectToolbar(gtk.Toolbar):
         self.activity.recenter()
 
     def do_samples(self, button):
-        tawindow.load_file(self.activity.tw)
+        tawindow.load_file(self.activity.tw, True)
         # run the activity
+        self.stop.set_icon("stopiton")
         tawindow.runbutton(self.activity.tw, 0)
 
     def do_savesnapshot(self, button):
