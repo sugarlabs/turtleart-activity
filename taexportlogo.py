@@ -186,6 +186,9 @@ tasetshade :shade \r"
                      this_stack += "pencolor"
                  elif d == "nop":
                      this_stack += " "
+                 elif d == "start":
+                     this_stack += "to start\r"
+                     stack = 1
                  elif d == "nop1":
                      this_stack += "to stack1\r"
                      stack = 1
@@ -203,6 +206,8 @@ tasetshade :shade \r"
                      this_stack += "tasetxy"
                  elif d == "color":
                      this_stack += ":color"
+                 elif d == "plus":
+                     this_stack += "sum"
                  elif d == "setcolor":
                      setcolor = 1
                      this_stack += "tasetpencolor"
@@ -242,7 +247,7 @@ tasetshade :shade \r"
                  elif image == 2:
                      # skip this arg
                      image = 0
-                 elif d[0:1] == "#s":
+                 elif d[0:2] == "#s":
                      # output single characters as a string
                      if len(d[2:]) == 1:
                          this_stack += "\""
@@ -250,7 +255,7 @@ tasetshade :shade \r"
                      # make a sentence out of everything else
                      else:
                          this_stack += "sentence "
-                         this_stack += re.sub("\s"," \"",d[2:])
+                         this_stack += d[2:].replace("\s"," \"")
                          this_stack += "\r"
                  elif d == "write":
                      this_stack += "label"
@@ -285,9 +290,13 @@ tasetshade :shade \r"
     if minus: # minus only takes on arg
         code = "to taminus :y :x\routput sum :x minus :y\rend\r" + code
     if random: # to avoid negative numbers
-         code = "to tarandom :min :max\routput (random (:max - :min)) + :min\rend\r" + code
+         code = "to tarandom :min :max\r" + \
+                "output (random (:max - :min)) + :min\rend\r" +\
+                code
     if fillscreen: # set shade than background color
-         code = "to tasetbackground :color :shade\rtasetshade :shade\rsetbackground :color\rend\r" + code
+         code = "to tasetbackground :color :shade\r" + \
+                "tasetshade :shade\rsetbackground :color\rend" + \
+                code
     if setcolor: # load palette
          code = color_processing + code
     if pensize: # return only first argument
@@ -296,10 +305,11 @@ tasetshade :shade \r"
          code = "to tasetxy :x :y\rpenup\rsetxy :x :y\rpendown\rend\r" + code
     if arc: # need to redefine this one all together
          c = (2 * math.pi)/360
-         code = "to taarc :a :r\rrepeat round :a [right 1 forward (" + str(c) + " * :r)]\rend\r" + code
+         code = "to taarc :a :r\rrepeat round :a [right 1 forward (" +\
+                str(c) + " * :r)]\rend\r" + code
     if heap: # add psuedo push and pop
          code = "to tapush :foo\routput fput :foo :taheap\rend\r" + \
-             "to tapop\rif emptyp :taheap [stop]\rmake \"tmp first :taheap\r" + \
+             "to tapop\rif emptyp :taheap [stop]\rmake \"tmp first :taheap\r" +\
              "make \"taheap butfirst :taheap\routput :tmp\rend\r" + \
              "to taclearheap\rmake \"taheap []\rend\r" + \
              "to taprintheap \rprint :taheap\rend\r" + \
