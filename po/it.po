@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-24 06:38-0400\n"
+"PO-Revision-Date: 2009-09-24 10:51-0400\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -380,39 +380,39 @@ msgstr "non continuare ad eseguire l'azione corrente"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:97
 msgid "jog stack right"
-msgstr ""
+msgstr "sposta lo stack a destra"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:98
 msgid "jog stack down"
-msgstr ""
+msgstr "sposta lo stack in basso"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:99
 msgid "connects action to toolbar run buttons"
-msgstr ""
+msgstr "connette l'azione al pulsante \"esegui\" della barra dei comandi"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:100
 msgid "top of action 1 stack"
-msgstr ""
+msgstr "apice dello stack di azioni 1"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:101
 msgid "invoke action 1 stack"
-msgstr ""
+msgstr "invoca lo stack di azioni 1"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:102
 msgid "top of action 2 stack"
-msgstr ""
+msgstr "apice dello stack di azioni 2"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:103
 msgid "invoke action 2 stack"
-msgstr ""
+msgstr "invoca lo stack di azioni 2"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:104
 msgid "top of nameable action stack"
-msgstr ""
+msgstr "apice dello stack di azioni nominato"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:105
 msgid "invoke named action stack"
-msgstr ""
+msgstr "invoca lo stack di azioni 2"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:106
 msgid "store numeric value in variable 1"
