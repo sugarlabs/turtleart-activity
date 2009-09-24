@@ -510,7 +510,7 @@
        x="72.5"
        y="237"
        id="tspan122"
-       style="font-size:7px">azar</tspan>
+       style="font-size:7px">aleatorio</tspan>
   </text>
   <path
      d="M 131.00059,323.49992 L 13.110516,323.61103 L 9.9993735,324.49993 L 5.4437723,326.61106 L 2.9993033,328.72219 L 1.7770688,331.05555 L 1.5548444,331.94445 L 1.5548444,333.38891 L 2.4437422,334.94448 L 4.8882111,336.83339 L 7.777129,338.38896 L 10.554935,339.50008 L 13.221628,340.38898 L 131.44504,340.50009 L 135.6673,338.94452 L 139.55623,337.38895 L 142.0007,335.38893 L 143.33404,333.38891 L 143.44516,332.05556 L 142.77848,329.61109 L 140.33401,326.9444 L 137.00065,325.61105 L 134.00062,324.38882 L 131.00059,323.49992 z"
@@ -634,12 +634,12 @@
      id="path176"
      style="fill:url(#linearGradient3397);fill-opacity:1;stroke:#a000a0;stroke-width:1;stroke-opacity:1" />
   <text
-     x="-0.083335772"
+     x="-2.0833359"
      y="3.8805556"
      id="text178"
      style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Bitstream Vera Sans">
     <tspan
-       x="69.916664"
+       x="67.916664"
        y="454.88055"
        id="tspan180"
        style="font-size:11px;fill:#000000;fill-opacity:1">mostrar</tspan>
