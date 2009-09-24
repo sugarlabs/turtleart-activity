@@ -39,17 +39,26 @@
       style="font-size:18px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="37" 
-        y="27" 
+        y="21" 
         id="tspan14" 
-        style="font-size:18px">read</tspan> 
+        style="font-size:18px">lies</tspan> 
    </text> 
    <text 
       id="text16" 
       style="font-size:18px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="37" 
-        y="46" 
+        y="34" 
         id="tspan18" 
-        style="font-size:18px">key</tspan> 
+        style="font-size:18px">Taste</tspan> 
+   </text> 
+   <text 
+      id="text16" 
+      style="font-size:18px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
+     <tspan 
+        x="37" 
+        y="47" 
+        id="tspan18" 
+        style="font-size:18px">aus</tspan> 
    </text> 
  </svg> 

@@ -464,7 +464,7 @@
        x="72"
        y="55"
        id="tspan63"
-       style="font-size:12px">alles</tspan>
+       style="font-size:11px">löschen</tspan>
   </text>
   <path
      d="M 54,77 L 65,77 L 65,81 L 62,81 L 62,79 L 55,79"
@@ -479,14 +479,16 @@
      id="path69"
      style="fill:url(#linearGradient3333);fill-opacity:1;stroke:#00a000;stroke-width:1;stroke-opacity:1" />
   <text
-     y="4.8479857"
+     x="1.1153885"
+     y="4.7337747"
+     transform="scale(0.9764415,1.0241269)"
      id="text71"
-     style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">
+     style="font-size:9.76441479px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">
     <tspan
-       x="32"
-       y="94.847984"
+       x="32.361515"
+       y="92.61351"
        id="tspan73"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">vorwärts</tspan>
+       style="font-size:10.74085617px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">vorwärts</tspan>
   </text>
   <path
      d="M 126,77 L 137,77 L 137,81 L 134,81 L 134,79 L 127,79"
@@ -501,14 +503,16 @@
      id="path79"
      style="fill:url(#linearGradient3349);fill-opacity:1;stroke:#00a000;stroke-width:1;stroke-opacity:1" />
   <text
-     y="4.8675184"
+     x="18.84984"
+     y="4.4431357"
+     transform="scale(0.9128134,1.0955142)"
      id="text81"
-     style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">
+     style="font-size:9.12813377px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">
     <tspan
-       x="104"
-       y="94.867516"
+       x="113.78242"
+       y="86.596336"
        id="tspan83"
-       style="font-size:9.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">rückwärts</tspan>
+       style="font-size:10.04094696px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">rückwärts</tspan>
   </text>
   <path
      d="M 54,117 L 65,117 L 65,121 L 62,121 L 62,119 L 55,119"
@@ -530,7 +534,7 @@
        x="32"
        y="137"
        id="tspan93"
-       style="font-size:12px">links</tspan>
+       style="font-size:11px">links</tspan>
   </text>
   <path
      d="M 126,117 L 137,117 L 137,121 L 134,121 L 134,119 L 127,119"
@@ -553,7 +557,7 @@
        x="104.288"
        y="126.96795"
        id="tspan102"
-       style="font-size:12px">drehe</tspan>
+       style="font-size:11px">drehe</tspan>
   </text>
   <path
      d="M 89,181 L 100,181 L 100,185 L 98,185 L 98,183 L 91,183"
@@ -799,7 +803,7 @@
        x="38.5"
        y="305.20001"
        id="tspan199"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">anzeigen</tspan>
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">zeige</tspan>
   </text>
   <path
      d="M 60.5,327.6 L 71.5,327.6 L 71.5,331.6 L 68.5,331.6 L 68.5,329.6 L 61.5,329.6"
@@ -822,18 +826,19 @@
        x="38.5"
        y="334.60001"
        id="tspan211"
-       style="font-size:12px">setze</tspan>
+       style="font-size:11px">setze</tspan>
   </text>
   <text
-     x="-65.5"
-     y="98.599998"
+     x="-39.928219"
+     y="81.339188"
+     transform="scale(0.8249411,1.2122077)"
      id="text213"
-     style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+     style="font-size:6.59952879px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="38.5"
-       y="344.60001"
+       x="45.865658"
+       y="284.27469"
        id="tspan215"
-       style="font-size:12px">dicke</tspan>
+       style="font-size:9.89929295px">Skalierung</tspan>
   </text>
   <path
      d="M 64.07,364.3575 L 67.42,364.3575 L 67.42,366.87 L 72.11,366.87 L 72.11,349.45 L 129.73,349.45 L 129.73,392.33 L 72.11,392.33 L 72.11,373.905 L 67.42,373.905 L 67.42,376.585 L 64.07,376.585 L 64.07,364.3575 z"
@@ -883,7 +888,7 @@
        x="38.5"
        y="374"
        id="tspan2730"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">anzeigen</tspan>
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">zeige</tspan>
   </text>
   <path
      d="M 64.1,294.6 L 67.1,294.6 L 67.1,297.6 L 72.1,297.6 L 72.1,294.6 L 133.1,294.6 L 133.1,308.6 L 72.1,308.6 L 72.1,305.6 L 67.1,305.6 L 67.1,308.6 L 64.1,308.6 L 64.1,294.6 z"
@@ -891,14 +896,14 @@
      style="fill:url(#linearGradient2696);fill-opacity:1;stroke:#a0a000;stroke-width:1;stroke-opacity:1" />
   <text
      x="0.3073597"
-     y="-4.1479588"
+     y="-2.9397001"
      id="text2572"
      style="font-size:8px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Bitstream Vera Sans">
     <tspan
        x="72.307358"
-       y="44.852039"
+       y="46.060299"
        id="tspan2574"
-       style="font-size:12px">lösche</tspan>
+       style="font-size:11px">Alles</tspan>
   </text>
   <text
      x="1.3412042"
@@ -909,7 +914,7 @@
        x="33.341202"
        y="85.753494"
        id="tspan2578"
-       style="font-size:12px">gehe</tspan>
+       style="font-size:11px">gehe</tspan>
   </text>
   <text
      x="-0.64188606"
@@ -920,7 +925,7 @@
        x="103.35809"
        y="85.753494"
        id="tspan2582"
-       style="font-size:12px">gehe</tspan>
+       style="font-size:11px">gehe</tspan>
   </text>
   <text
      x="0.79724747"
@@ -931,7 +936,7 @@
        x="32.797245"
        y="126.90099"
        id="tspan2586"
-       style="font-size:12px">drehe</tspan>
+       style="font-size:11px">drehe</tspan>
   </text>
   <text
      x="0.22212328"
@@ -942,6 +947,6 @@
        x="104.22213"
        y="137.55713"
        id="tspan2590"
-       style="font-size:12px">rechts</tspan>
+       style="font-size:11px">rechts</tspan>
   </text>
 </svg>

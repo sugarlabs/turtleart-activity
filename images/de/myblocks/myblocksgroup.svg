@@ -271,11 +271,271 @@
        id="linearGradient3412"
        xlink:href="#linearGradient3239"
        gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="64"
+       y2="0"
+       id="linearGradient2540"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(34.404412,58.027574)" />
+    <linearGradient
+       id="linearGradient2504">
+      <stop
+         id="stop2506"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop2508"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="64"
+       y2="0"
+       id="linearGradient2510"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,4.96875)" />
+    <linearGradient
+       x1="210"
+       y1="10.5"
+       x2="0"
+       y2="10.5"
+       id="linearGradient2512"
+       xlink:href="#linearGradient3886"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient2514">
+      <stop
+         id="stop2516"
+         style="stop-color:#0000ff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop2518"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="210"
+       y1="10.5"
+       x2="0"
+       y2="10.5"
+       id="linearGradient2520"
+       xlink:href="#linearGradient3886"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="64"
+       y2="0"
+       id="linearGradient2522"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,4.96875)" />
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="104"
+       y2="21"
+       id="linearGradient2524"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,5.4999997)" />
+    <linearGradient
+       id="linearGradient2492">
+      <stop
+         id="stop2494"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop2496"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="104"
+       y2="21"
+       id="linearGradient2493"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient2486">
+      <stop
+         id="stop2488"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop2490"
+         style="stop-color:#0000ff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2509">
+      <stop
+         id="stop2511"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop2513"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="22"
+       x2="74"
+       y2="22"
+       id="linearGradient2515"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="0"
+       y1="22"
+       x2="128.68382"
+       y2="22"
+       id="linearGradient2608"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient2595">
+      <stop
+         id="stop2597"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop2599"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="22"
+       x2="74"
+       y2="22"
+       id="linearGradient2601"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient2473">
+      <stop
+         id="stop2475"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop2477"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="64"
+       y2="0"
+       id="linearGradient4238"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,4.96875)" />
+    <linearGradient
+       x1="210"
+       y1="10.5"
+       x2="0"
+       y2="10.5"
+       id="linearGradient4211"
+       xlink:href="#linearGradient3886"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3886">
+      <stop
+         id="stop3888"
+         style="stop-color:#0000ff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3890"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="210"
+       y1="10.5"
+       x2="0"
+       y2="10.5"
+       id="linearGradient2496"
+       xlink:href="#linearGradient3886"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="64"
+       y2="0"
+       id="linearGradient2501"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,4.96875)" />
+    <linearGradient
+       x1="0"
+       y1="22"
+       x2="128.68382"
+       y2="22"
+       id="linearGradient3172"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3166">
+      <stop
+         id="stop3168"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3170"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
   </defs>
   <path
      d="M 0.4344301,0.5 L 0.37211997,486.41023 L 3.4959793,493.14297 L 8.369839,497.1072 L 15.031388,499.50288 L 128.8563,499.50288 L 135.70478,496.93866 L 141.65403,492.04729 L 144.37788,483.79171 L 144.41557,0.5 L 0.4344301,0.5 z"
      id="path23"
      style="fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1px;stroke-opacity:1" />
+  <g
+     transform="matrix(0.5,0,0,0.5,37.154194,361.43212)"
+     id="g2757">
+    <g
+       transform="translate(59.878677,53.67647)"
+       id="g2533">
+      <path
+         d="M 64.871323,-38.92647 L 81.371323,-38.92647 L 81.371323,-32.92647 L 77.371323,-32.92647 L 77.371323,-35.92647 L 66.871323,-35.92647"
+         id="path2760"
+         style="fill:#e0e000;fill-opacity:1;stroke:#a08000;stroke-width:1.5;stroke-opacity:1" />
+      <path
+         d="M 64.871323,-11.42647 L 81.371323,-11.42647 L 81.371323,-17.42647 L 77.371323,-17.42647 L 77.371323,-14.42647 L 66.871323,-14.42647"
+         id="path2762"
+         style="fill:#e0e000;fill-opacity:1;stroke:#908000;stroke-width:1.5;stroke-opacity:1" />
+    </g>
+    <path
+       d="M 47,1 C 63,1 120,1 120,1 C 120,1 124.1318,3.4865526 125.5,5 C 126.89747,6.5458243 129,11 129,11 L 129,46 C 129,46 126.78295,49.693654 125.5,51 C 124.07044,52.455629 120,55 120,55 L 47,55 L 47,55 L 47,59 L 27,59 L 27,55 L 10,55 C 10,55 5.9295605,52.455629 4.5,51 C 3.2170498,49.693654 1,46 1,46 L 1,11 C 1,11 3.1025283,6.5458243 4.5,5 C 5.8682021,3.4865526 10,1 10,1 L 27,1 L 27,6 L 47,6 L 47,1 z"
+       id="path2764"
+       style="fill:url(#linearGradient3172);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1" />
+    <path
+       d="M 13,28 L 18,28 L 18,32 L 24.999999,32 L 24.999999,28 L 116.50001,28 L 116.50001,48 L 24.999999,48 L 24.999999,44 L 18,44 L 18,48 L 13,48 L 13,28 z"
+       id="path9"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-opacity:1" />
+    <text
+       x="28.035656"
+       y="-3.3128912"
+       id="text2593"
+       style="font-size:18px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+      <tspan
+         x="65.035652"
+         y="23.687109"
+         id="tspan2595"
+         style="font-size:18px">speichere in</tspan>
+    </text>
+  </g>
   <rect
      width="123.5"
      height="0.14"
@@ -334,20 +594,22 @@
      transform="translate(1.375,47.250977)"
      id="path39"
      style="fill:#ff4040;fill-opacity:1;stroke:#ff4040;stroke-width:1;stroke-opacity:1" />
-   <text 
-      style="font-size:12px;font-weight:bold;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"> 
-     <tspan 
-        x="72.5"
-        y="490"
-        style="font-size:12px">X</tspan> 
-   </text> 
+  <text
+     id="text45"
+     style="font-size:12px;font-weight:bold;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans">
+    <tspan
+       x="72.5"
+       y="490"
+       id="tspan47"
+       style="font-size:12px">X</tspan>
+  </text>
   <text
      id="text48"
      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="72.5"
        y="21"
-       id="tspan47"
+       id="tspan50"
        style="font-size:20px">Meine Blöcke</tspan>
   </text>
   <path
@@ -423,13 +685,14 @@
      id="path91"
      style="fill:url(#linearGradient3301);fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-opacity:1" />
   <text
+     y="2"
      id="text72"
      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="32"
-       y="284"
+       y="286"
        id="tspan95"
-       style="font-size:9px">in</tspan>
+       style="font-size:9px">speichere</tspan>
   </text>
   <text
      id="text75"
@@ -438,16 +701,17 @@
        x="32"
        y="294"
        id="tspan99"
-       style="font-size:9px">Variable1</tspan>
+       style="font-size:9px">in</tspan>
   </text>
   <text
+     y="-2"
      id="text78"
      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="32"
-       y="304"
+       y="302"
        id="tspan80"
-       style="font-size:9px">speichern</tspan>
+       style="font-size:9px">Rahmen 1</tspan>
   </text>
   <path
      d="M 70.522547,284.44247 L 73.856047,284.44247 L 73.856047,287.10927 L 78.522947,287.10927 L 78.522947,284.44247 L 139.526,284.44247 L 139.526,297.77647 L 78.522947,297.77647 L 78.522947,295.10967 L 73.856047,295.10967 L 73.856047,297.77647 L 70.522547,297.77647 L 70.522547,284.44247 z"
@@ -462,7 +726,7 @@
        x="108"
        y="294.84424"
        id="tspan105"
-       style="font-size:11px">Variable 1</tspan>
+       style="font-size:11px">Rahmen 1</tspan>
   </text>
   <g
      transform="matrix(0.6667,0,0,0.6667,7.4928819,323.36927)"
@@ -481,13 +745,14 @@
      id="path113"
      style="fill:url(#linearGradient3317);fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-opacity:1" />
   <text
+     y="2"
      id="text90"
      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="32"
-       y="330"
+       y="332"
        id="tspan117"
-       style="font-size:9px">in</tspan>
+       style="font-size:9px">speichere</tspan>
   </text>
   <text
      id="text93"
@@ -496,16 +761,17 @@
        x="32"
        y="340"
        id="tspan121"
-       style="font-size:9px">Variable 2</tspan>
+       style="font-size:9px">in</tspan>
   </text>
   <text
+     y="-2"
      id="text96"
      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="32"
-       y="350"
+       y="348"
        id="tspan98"
-       style="font-size:9px">speichern</tspan>
+       style="font-size:9px">Rahmen 2</tspan>
   </text>
   <path
      d="M 70.522547,330.86965 L 73.856047,330.86965 L 73.856047,333.53645 L 78.522947,333.53645 L 78.522947,330.86965 L 139.526,330.86965 L 139.526,344.20365 L 78.522947,344.20365 L 78.522947,341.53685 L 73.856047,341.53685 L 73.856047,344.20365 L 70.522547,344.20365 L 70.522547,330.86965 z"
@@ -520,24 +786,8 @@
        x="108"
        y="341.84424"
        id="tspan127"
-       style="font-size:11px">Variable 2</tspan>
+       style="font-size:11px">Rahmen 2</tspan>
   </text>
-  <path
-     d="M 99.4375,368.60313 L 107.6875,368.60313 L 107.6875,371.60313 L 105.6875,371.60313 L 105.6875,370.10313 L 100.4375,370.10313"
-     id="path2493"
-     style="fill:#e0e000;fill-opacity:1;stroke:#a08000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <path
-     d="M 99.4375,382.35313 L 107.6875,382.35313 L 107.6875,379.35313 L 105.6875,379.35313 L 105.6875,380.85313 L 100.4375,380.85313"
-     id="path2495"
-     style="fill:#e0e000;fill-opacity:1;stroke:#908000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <path
-     d="M 75.0625,365.97813 C 83.0625,365.97813 97.0625,365.97813 97.0625,365.97813 C 97.0625,365.97813 99.1284,367.22141 99.8125,367.97813 C 100.51123,368.75104 101.5625,370.97813 101.5625,370.97813 L 101.5625,380.47813 C 101.5625,380.47813 100.45397,382.32496 99.8125,382.97813 C 99.09772,383.70594 97.0625,384.97813 97.0625,384.97813 L 74.5625,384.97813 L 74.5625,384.97813 L 74.5625,386.97813 L 64.5625,386.97813 L 64.5625,384.97813 L 42.0625,384.97813 C 42.0625,384.97813 40.02728,383.70594 39.3125,382.97813 C 38.671025,382.32496 37.5625,380.47813 37.5625,380.47813 L 37.5625,370.97813 C 37.5625,370.97813 38.613764,368.75104 39.3125,367.97813 C 39.996601,367.22141 42.0625,365.97813 42.0625,365.97813 L 64.0625,365.97813 L 64.0625,368.47813 L 75.0625,368.47813 L 75.0625,365.97813 z"
-     id="path3067"
-     style="fill:url(#linearGradient3333);fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <path
-     d="M 43.524995,371.68299 L 46.024995,371.68299 L 46.024995,373.68299 L 49.524995,373.68299 L 49.524995,371.68299 L 95.275005,371.68299 L 95.275005,381.68299 L 49.524995,381.68299 L 49.524995,379.68299 L 46.024995,379.68299 L 46.024995,381.68299 L 43.524995,381.68299 L 43.524995,371.68299 z"
-     id="path3478"
-     style="fill:#ffffff;fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <path
      d="M 46.749995,216.9838 L 49.249995,216.9838 L 49.249995,218.9838 L 52.749995,218.9838 L 52.749995,216.9838 L 98.5,216.9838 L 98.5,226.9838 L 52.749995,226.9838 L 52.749995,224.9838 L 49.249995,224.9838 L 49.249995,226.9838 L 46.749995,226.9838 L 46.749995,216.9838 z"
      id="path3491"
@@ -579,5 +829,49 @@
        y="53.5"
        id="tspan89"
        style="font-size:11px">Start</tspan>
+  </text>
+  <text
+     x="39.824059"
+     y="33.31786"
+     id="text2769"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="71.824059"
+       y="383.31787"
+       id="tspan2771"
+       style="font-size:9px">Rahmen</tspan>
+  </text>
+  <text
+     x="43.714161"
+     y="59.332138"
+     id="text2773"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="75.714157"
+       y="409.33215"
+       id="tspan2775"
+       style="font-size:9px">Rahmen</tspan>
+  </text>
+  <text
+     x="42.82906"
+     y="-159.55952"
+     id="text2777"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="74.829063"
+       y="190.44049"
+       id="tspan2779"
+       style="font-size:9px">Aktion</tspan>
+  </text>
+  <text
+     x="43.23555"
+     y="-124.99769"
+     id="text2785"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="75.23555"
+       y="225.00232"
+       id="tspan2787"
+       style="font-size:9px">Aktion</tspan>
   </text>
 </svg>

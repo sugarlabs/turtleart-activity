@@ -33,14 +33,14 @@
       style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
        <tspan 
         x="37" 
-        y="19" 
-        style="font-size:16px;">ab-</tspan> 
+        y="20" 
+        style="font-size:16px;">Alles</tspan> 
    </text> 
    <text 
       style="font-size:11px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
        <tspan 
         x="37" 
-        y="33" 
-        style="font-size:16px;">wischen</tspan> 
+        y="34" 
+        style="font-size:16px;">löschen</tspan> 
    </text> 
  </svg>

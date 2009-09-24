@@ -309,14 +309,14 @@
        x="105"
        y="283"
        id="tspan79"
-       style="font-size:10px">Stop-</tspan>
+       style="font-size:10px">beende</tspan>
   </text>
   <text
      id="text81"
      style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="105"
-       y="294"
+       y="293"
        id="tspan83"
        style="font-size:10px">Aktion</tspan>
   </text>
@@ -328,7 +328,7 @@
      id="text87"
      style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="32"
+       x="33"
        y="314"
        id="tspan89"
        style="font-size:11px">wenn</tspan>
