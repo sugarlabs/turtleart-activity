@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 19:45+0000\n"
+"POT-Creation-Date: 2009-09-24 15:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgid "box"
 msgstr ""
 
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:144
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:47
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:49
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:59
 msgid "name"
 msgstr ""
@@ -645,15 +645,17 @@ msgstr ""
 msgid "<Ctrl>o"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/svg/hat2.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/stack2.py:40
+#. TRANS: Please use "action 2" to indicate an action is invoked
+#: /home/walter/Desktop/turtleart-activity/svg/hat2.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/stack2.py:41
 msgid "stack 2"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/svg/stack1.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/hat1.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:41
+#. TRANS: Please use "action 1" to indicate an action is invoked
+#: /home/walter/Desktop/turtleart-activity/svg/stack1.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/hat1.py:41
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:42
 msgid "stack 1"
 msgstr ""
 
@@ -662,13 +664,19 @@ msgstr ""
 msgid "hide blocks"
 msgstr ""
 
+#: /home/walter/Desktop/turtleart-activity/svg/width.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/hres.py:40
+msgid "width"
+msgstr ""
+
 #: /home/walter/Desktop/turtleart-activity/svg/heading.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:55
 msgid "heading"
 msgstr ""
 
 #: /home/walter/Desktop/turtleart-activity/svg/start.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:48
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:50
 msgid "start"
 msgstr ""
 
@@ -733,22 +741,22 @@ msgstr ""
 msgid "My Blocks"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:43
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:45
 #: /home/walter/Desktop/turtleart-activity/svg/storeinbox1.py:40
 msgid "store in box 1"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:44
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:46
 #: /home/walter/Desktop/turtleart-activity/svg/box1.py:40
 msgid "box 1"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:45
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:47
 #: /home/walter/Desktop/turtleart-activity/svg/storeinbox2.py:40
 msgid "store in box 2"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:46
+#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:48
 #: /home/walter/Desktop/turtleart-activity/svg/box2.py:40
 msgid "box 2"
 msgstr ""
@@ -861,13 +869,9 @@ msgstr ""
 msgid "read key"
 msgstr ""
 
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/hres.py:40
-msgid "width"
-msgstr ""
-
 #: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:44
 #: /home/walter/Desktop/turtleart-activity/svg/vres.py:40
+#: /home/walter/Desktop/turtleart-activity/svg/height.py:40
 msgid "height"
 msgstr ""
 
