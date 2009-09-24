@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-22 09:43-0400\n"
+"PO-Revision-Date: 2009-09-24 05:10-0400\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -228,65 +228,69 @@ msgstr "Utilizza come valore di ingresso per operatori matematici"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:61
 msgid "adds two numeric inputs"
-msgstr ""
+msgstr "aggiungi due campi di inserimento numerici"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:62
 msgid "subtracts bottom numeric input from top numeric input"
-msgstr ""
+msgstr "sottrai il valore del campo numerico inferiore da quello superiore"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:63
 msgid "multiplies two numeric inputs"
-msgstr ""
+msgstr "moltiplica fra loro i valori dei due campi"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:64
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
+"dividi il valore del campo numerico superiore (numeratore) per quello del "
+"campo inferiore (denominatore)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:65
 msgid "modular (remainder) operator"
-msgstr ""
+msgstr "operatore modulo (resto)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:66
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:67
 msgid "identity operator used for extending blocks"
-msgstr ""
+msgstr "opratore identità utilizzato per i blocchi programmabili"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:68
 msgid "calculate square root"
-msgstr ""
+msgstr "calcola la radice quadrata"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:69
 msgid "returns random number between minimum (left) and maximum (right) values"
 msgstr ""
+"ritorna un valore casuale compreso fra valori minimo (sinistra) e massimo "
+"(destra)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:70
 msgid "logical equal-to operator"
-msgstr ""
+msgstr "operatore logico di uguaglianza"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:71
 msgid "logical greater-than operator"
-msgstr ""
+msgstr "operatore logico maggiore di"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:72
 msgid "logical less-than operator"
-msgstr ""
+msgstr "operatore logico miniore di"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:73
 msgid "logical AND operator"
-msgstr ""
+msgstr "operatore logico AND"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:74
 msgid "logical OR operator"
-msgstr ""
+msgstr "operatore logico OR"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:75
 msgid "logical NOT operator"
-msgstr ""
+msgstr "operatore logico NOT"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:76
 msgid "prints value in status block at bottom of the screen"
-msgstr ""
+msgstr "stampa il valore nel blocco di stato in basso "
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:77
 msgid "query for keyboard input (results stored in keyboard block)"
