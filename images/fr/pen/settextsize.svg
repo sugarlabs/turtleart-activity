@@ -43,20 +43,20 @@
      <tspan 
         x="37" 
         y="20" 
-        style="font-size:16px;">définir la</tspan> 
+        style="font-size:16px;">fixe la</tspan> 
    </text> 
    <text 
       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="37" 
         y="35" 
-        style="font-size:16px;">épaisseur</tspan> 
+        style="font-size:16px;">taille</tspan> 
    </text> 
    <text 
       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
      <tspan 
         x="37" 
         y="50" 
-        style="font-size:16px;">du text</tspan> 
+        style="font-size:16px;">du texte</tspan> 
    </text> 
  </svg> 

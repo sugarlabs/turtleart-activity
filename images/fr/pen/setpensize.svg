@@ -38,36 +38,29 @@
   <path
      style="fill:url(#linearGradient3172);fill-opacity:1;stroke:#00a0a0;stroke-width:2;stroke-opacity:1"
      d="M 48,1 C 64,1 64,1 64,1 L 69.5,5 L 73,11 L 73,45 L 69.5,51 L 64,55 L 47,55 L 47,55 L 47,59 L 27,59 L 27,55 L 10,55 L 4.5,51 L 1,45 L 1,11 L 4.5,5 L 10,1 L 26,1 L 26,6 L 48,6 L 48,1 z" />
-  <path
-     style="fill:none;stroke:#ffffff;stroke-width:1;stroke-opacity:1"
-     d="M 49,2.5 L 63,2.5" />
-  <path
-     style="fill:none;stroke:#ffffff;stroke-width:1;stroke-opacity:1"
-     d="M 11,2.5 L 25,2.5" />
-  <path
-     style="fill:none;stroke:#006060;stroke-width:1;stroke-opacity:1"
-     d="M 10.5,55.5 L 26.5,55.5" />
-  <path
-     style="fill:none;stroke:#006060;stroke-width:1;stroke-opacity:1"
-     d="M 47.5,55.5 L 63.5,55.5" />
-  <path
-     style="fill:none;stroke:#006060;stroke-width:1;stroke-opacity:1"
-     d="M 26.5,59.5 L 47.5,59.5" />
-  <path
-     style="fill:none;stroke:#ffffff;stroke-width:1;stroke-opacity:1"
-     d="M 25,7.5 L 49,7.5" />
   <text
      style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <tspan
        x="37"
-       y="27"
+       y="21"
        style="font-size:16px;">fixe</tspan>
+  </text>
+  <text
+     x="8.383852"
+     transform="scale(0.8889038,1.1249811)"
+     id="text22"
+     style="font-size:16.00026703px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="41.273296"
+       y="30.222729"
+       id="tspan24"
+       style="font-size:14.22246075px">l'épaisseur</tspan>
   </text>
   <text
      style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
     <tspan
        x="37"
-       y="46"
-       style="font-size:16px;">épaisseur</tspan>
+       y="48"
+       style="font-size:16px;">du trait</tspan>
   </text>
 </svg>
