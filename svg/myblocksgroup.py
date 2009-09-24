@@ -38,7 +38,9 @@ def main():
     t.install()
 
     mystring1 = _("My Blocks")
+    # TRANS: Please use "action 1" to indicate an action is invoked
     mystring2 = _("stack 1")
+    # TRANS: Please use "action 2" to indicate an action is invoked
     mystring3 = _("stack 2")
     mystring4 = _("store in box 1")
     mystring5 = _("box 1")

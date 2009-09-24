@@ -37,6 +37,7 @@ def main():
     _ = t.ugettext
     t.install()
 
+    # TRANS: Please use "action 1" to indicate an action is invoked
     mystring = _("stack 1")
     mygroup = "myblocks"
 
