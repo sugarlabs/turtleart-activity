@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-24 05:36-0400\n"
+"PO-Revision-Date: 2009-09-24 06:18-0400\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -416,73 +416,75 @@ msgstr ""
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:106
 msgid "store numeric value in variable 1"
-msgstr ""
+msgstr "memorizza il valore numerico nella variabile 1"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:107
 msgid "variable 1 (numeric value)"
-msgstr ""
+msgstr "variabile 1 (valore numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:108
 msgid "store numeric value in variable 2"
-msgstr ""
+msgstr "memorizza il valore numerico nella variabile 2"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:109
 msgid "variable 2 (numeric value)"
-msgstr ""
+msgstr "variabile 2 (valore numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:110
 msgid "store numeric value in named variable"
-msgstr ""
+msgstr "memorizza il valore numerico nella variabile nominata"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:111
 msgid "named variable (numeric value)"
-msgstr ""
+msgstr "variabile con nome (valore numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:112
 msgid "string value"
-msgstr ""
+msgstr "valore stringa"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:113
 msgid "Sugar Journal media object"
-msgstr ""
+msgstr "oggetto multimediale del Diario di Sugar"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:114
 msgid "Sugar Journal audio object"
-msgstr ""
+msgstr "oggetto audio del Diario di Sugar"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:115
 msgid "Sugar Journal description field"
-msgstr ""
+msgstr "campo descrittivo del Diario di Sugar"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:116
 msgid "presentation template: select Journal object (with description)"
 msgstr ""
+"template di presentazione: selezione oggetto del Diario (con descrizione)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:117
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:118
 msgid "presentation template: select two Journal objects"
-msgstr ""
+msgstr "template di presentazione: seleziona due oggetti del Diario"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:119
 msgid "presentation template: select four Journal objects"
-msgstr ""
+msgstr "template di presentazione: seleziona quattro oggetti del Diario"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:120
 msgid "presentation template: select Journal object (no description)"
 msgstr ""
+"template di presentazione: selezione oggetto del Diario (senza descrizione)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:121
 msgid "presentation template: seven bullets"
-msgstr ""
+msgstr "template di presentazione: sette punti"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:122
 msgid "declutter canvas by hiding blocks"
-msgstr ""
+msgstr "riordina lo schermo nascondendo  i blocchi"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:97
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1319
 msgid "Save snapshot"
-msgstr ""
+msgstr "Salva snapshot"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:108
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:999
