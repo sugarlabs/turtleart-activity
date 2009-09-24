@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-24 05:10-0400\n"
+"PO-Revision-Date: 2009-09-24 05:36-0400\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -294,44 +294,46 @@ msgstr "stampa il valore nel blocco di stato in basso "
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:77
 msgid "query for keyboard input (results stored in keyboard block)"
-msgstr ""
+msgstr "interrogazione da tastiera (i risultati sono in blocco tastiera)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:78
 msgid "holds results of query-keyboard block"
-msgstr ""
+msgstr "conserva i risultati del blocco interrogazione da tastiera"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:79
 msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr ""
+msgstr "esegui il codice scritto nel modulo tamyblock.py prelevato dal Diario"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:80
 msgid ""
 "a programmable block: add your own math equation in the block, e.g., sin(x)"
 msgstr ""
+"blocco programmabile: inserisci la tua equazione matematica nel blocco, es. "
+"sin(x)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:81
 msgid "the canvas width"
-msgstr ""
+msgstr "larghezza canvas (sfondo)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:82
 msgid "the canvas height"
-msgstr ""
+msgstr "altezza canvas (sfondo)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:83
 msgid "xcor of left of screen"
-msgstr ""
+msgstr "ascissa (xcor) del bordo sinistro dello schermo"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:84
 msgid "ycor of top of screen"
-msgstr ""
+msgstr "ordinata (ycor) del bordo superiore dello schermo"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:85
 msgid "xcor of right of screen"
-msgstr ""
+msgstr "ascissa (xcor) del bordo destro dello schermo"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:86
 msgid "ycor of bottom of screen"
-msgstr ""
+msgstr "ordinata (ycor) del bordo inferiore dello schermo"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:87
 msgid "push value onto FILO (first-in last-out) heap"
@@ -355,23 +357,26 @@ msgstr ""
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:92
 msgid "loop forever"
-msgstr ""
+msgstr "ciclo infinito"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:93
 msgid "loop specified number of times"
-msgstr ""
+msgstr "ciclo ripetuto un numero definito di volte"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:94
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr ""
+"operatore if-then che utilizza operatori booleani del pannello dei Numeri"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:95
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr ""
+"operatore if-then-else che utilizza operatori booleani del pannello dei "
+"Numeri"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:96
 msgid "do not continue current action"
-msgstr ""
+msgstr "non continuare ad eseguire l'azione corrente"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:97
 msgid "jog stack right"
