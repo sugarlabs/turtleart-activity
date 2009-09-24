@@ -1,11 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="87"
    height="60"
-   version="1.0">
-  <defs>
+   version="1.0"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="storeinbox2.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata31">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:window-height="723"
+     inkscape:window-width="645"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showgrid="false"
+     inkscape:zoom="6.4022989"
+     inkscape:cx="45.552354"
+     inkscape:cy="30"
+     inkscape:window-x="1025"
+     inkscape:window-y="25"
+     inkscape:current-layer="svg2" />
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 30 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="87 : 30 : 1"
+       inkscape:persp3d-origin="43.5 : 20 : 1"
+       id="perspective33" />
     <linearGradient
        id="linearGradient3166">
       <stop
@@ -27,36 +76,50 @@
        gradientUnits="userSpaceOnUse" />
   </defs>
   <g
-     transform="translate(0,8.75)">
+     transform="translate(0,8.75)"
+     id="g10">
     <path
        d="M 70,6 L 86.5,6 L 86.5,12 L 82.5,12 L 82.5,9 L 72,9"
-       style="fill:#f0e000;fill-opacity:1;stroke:#a08000;stroke-width:1.5;stroke-opacity:1" />
+       style="fill:#f0e000;fill-opacity:1;stroke:#a08000;stroke-width:1.5;stroke-opacity:1"
+       id="path12" />
     <path
        d="M 70,33.5 L 86.5,33.5 L 86.5,27.5 L 82.5,27.5 L 82.5,30.5 L 72,30.5"
-       style="fill:#f0e000;fill-opacity:1;stroke:#a08000;stroke-width:1.5;stroke-opacity:1" />
+       style="fill:#f0e000;fill-opacity:1;stroke:#a08000;stroke-width:1.5;stroke-opacity:1"
+       id="path14" />
   </g>
   <path
      style="fill:url(#linearGradient3172);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1"
-     d="M 48,1 C 64,1 64,1 64,1 L 69.5,5 L 73,11 L 73,45 L 69.5,51 L 64,55 L 47,55 L 47,55 L 47,59 L 27,59 L 27,55 L 10,55 L 4.5,51 L 1,45 L 1,11 L 4.5,5 L 10,1 L 26,1 L 26,6 L 48,6 L 48,1 z" />
+     d="M 48,1 C 64,1 64,1 64,1 L 69.5,5 L 73,11 L 73,45 L 69.5,51 L 64,55 L 47,55 L 47,55 L 47,59 L 27,59 L 27,55 L 10,55 L 4.5,51 L 1,45 L 1,11 L 4.5,5 L 10,1 L 26,1 L 26,6 L 48,6 L 48,1 z"
+     id="path16" />
   <text
-       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     style="font-size:16.09140778px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"
+     id="text18"
+     x="8.3108845"
+     transform="scale(0.8939672,1.1186093)">
     <tspan
-       x="37"
-       y="22"
-       style="font-size:13px;">memorizza</tspan>
+       x="41.387669"
+       y="19.667278"
+       style="font-size:14.30347443px"
+       id="tspan20">memorizza</tspan>
   </text>
   <text
-       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"
+     id="text22">
     <tspan
        x="37"
        y="35"
-       style="font-size:16px;">nella</tspan>
+       style="font-size:16px;"
+       id="tspan24">nella</tspan>
   </text>
   <text
-       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     style="font-size:17.49229813px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"
+     id="text26"
+     x="2.5016735"
+     transform="scale(0.9717943,1.0290244)">
     <tspan
-       x="37"
-       y="48"
-       style="font-size:16px;">scatola2</tspan>
+       x="38.458061"
+       y="46.646126"
+       style="font-size:15.54870796px"
+       id="tspan28">scatola 2</tspan>
   </text>
 </svg>
