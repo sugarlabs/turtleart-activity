@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-24 06:24-0400\n"
+"PO-Revision-Date: 2009-09-24 06:38-0400\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -337,23 +337,23 @@ msgstr "ordinata (ycor) del bordo inferiore dello schermo"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:87
 msgid "push value onto FILO (first-in last-out) heap"
-msgstr ""
+msgstr "inserisci un valore nella heap FILO (first-in last-out)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:88
 msgid "pop value off FILO"
-msgstr ""
+msgstr "estrai un valore dalla heap FILO (first-in last-out)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:89
 msgid "show FILO in status block"
-msgstr ""
+msgstr "mostra la heap FILO nel blocco di stato"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:90
 msgid "empty FILO"
-msgstr ""
+msgstr "vuota la heap FILO"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:91
 msgid "wait specified number of seconds"
-msgstr ""
+msgstr "attendi per il numero specificato di secondi"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:92
 msgid "loop forever"
