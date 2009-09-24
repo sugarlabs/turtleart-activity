@@ -6,6 +6,7 @@
 * caught missing attribute when running from outside of Sugar
 * new translations/artwork for de, fr, es, it
 * added translator comments
+* fixed several bugs in export to Logo code
 
 68
 
