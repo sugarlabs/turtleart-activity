@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-24 06:18-0400\n"
+"PO-Revision-Date: 2009-09-24 06:24-0400\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -637,9 +637,8 @@ msgstr "mostra pannello"
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:602
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1397
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1411
-#, fuzzy
 msgid "Show blocks"
-msgstr "mostra blocchi"
+msgstr "Mostra blocchi"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:930
 msgid "Copy"
@@ -654,9 +653,8 @@ msgid "Save Logo"
 msgstr "Salva in Logo"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1028
-#, fuzzy
 msgid "load my block"
-msgstr "Carica i miei blocchi"
+msgstr "carica i miei blocchi"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1340
 msgid "<Alt>o"
@@ -732,7 +730,7 @@ msgstr "altrimenti"
 #: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:47
 #: /home/walter/Desktop/turtleart-activity/svg/stopstack.py:40
 msgid "stop action"
-msgstr ""
+msgstr "ferma azione"
 
 #: /home/walter/Desktop/turtleart-activity/svg/print.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:45
@@ -845,7 +843,7 @@ msgstr "destra"
 
 #: /home/walter/Desktop/turtleart-activity/svg/storein.py:40
 msgid "store in"
-msgstr ""
+msgstr "memorizza in"
 
 #: /home/walter/Desktop/turtleart-activity/svg/textsize.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:53
