@@ -4,6 +4,8 @@
 * added missing import gettext from talogo.py
 * renamed xo-man to xo-child
 * caught missing attribute when running from outside of Sugar
+* new translations/artwork for de, fr, es, it
+* added translator comments
 
 68
 
