@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-22 09:43-0400\n"
+"PO-Revision-Date: 2009-09-24 06:38-0400\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -228,146 +228,155 @@ msgstr "Utilizza come valore di ingresso per operatori matematici"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:61
 msgid "adds two numeric inputs"
-msgstr ""
+msgstr "aggiungi due campi di inserimento numerici"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:62
 msgid "subtracts bottom numeric input from top numeric input"
-msgstr ""
+msgstr "sottrai il valore del campo numerico inferiore da quello superiore"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:63
 msgid "multiplies two numeric inputs"
-msgstr ""
+msgstr "moltiplica fra loro i valori dei due campi"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:64
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
+"dividi il valore del campo numerico superiore (numeratore) per quello del "
+"campo inferiore (denominatore)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:65
 msgid "modular (remainder) operator"
-msgstr ""
+msgstr "operatore modulo (resto)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:66
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:67
 msgid "identity operator used for extending blocks"
-msgstr ""
+msgstr "opratore identità utilizzato per i blocchi programmabili"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:68
 msgid "calculate square root"
-msgstr ""
+msgstr "calcola la radice quadrata"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:69
 msgid "returns random number between minimum (left) and maximum (right) values"
 msgstr ""
+"ritorna un valore casuale compreso fra valori minimo (sinistra) e massimo "
+"(destra)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:70
 msgid "logical equal-to operator"
-msgstr ""
+msgstr "operatore logico di uguaglianza"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:71
 msgid "logical greater-than operator"
-msgstr ""
+msgstr "operatore logico maggiore di"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:72
 msgid "logical less-than operator"
-msgstr ""
+msgstr "operatore logico miniore di"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:73
 msgid "logical AND operator"
-msgstr ""
+msgstr "operatore logico AND"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:74
 msgid "logical OR operator"
-msgstr ""
+msgstr "operatore logico OR"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:75
 msgid "logical NOT operator"
-msgstr ""
+msgstr "operatore logico NOT"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:76
 msgid "prints value in status block at bottom of the screen"
-msgstr ""
+msgstr "stampa il valore nel blocco di stato in basso "
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:77
 msgid "query for keyboard input (results stored in keyboard block)"
-msgstr ""
+msgstr "interrogazione da tastiera (i risultati sono in blocco tastiera)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:78
 msgid "holds results of query-keyboard block"
-msgstr ""
+msgstr "conserva i risultati del blocco interrogazione da tastiera"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:79
 msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr ""
+msgstr "esegui il codice scritto nel modulo tamyblock.py prelevato dal Diario"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:80
 msgid ""
 "a programmable block: add your own math equation in the block, e.g., sin(x)"
 msgstr ""
+"blocco programmabile: inserisci la tua equazione matematica nel blocco, es. "
+"sin(x)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:81
 msgid "the canvas width"
-msgstr ""
+msgstr "larghezza canvas (sfondo)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:82
 msgid "the canvas height"
-msgstr ""
+msgstr "altezza canvas (sfondo)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:83
 msgid "xcor of left of screen"
-msgstr ""
+msgstr "ascissa (xcor) del bordo sinistro dello schermo"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:84
 msgid "ycor of top of screen"
-msgstr ""
+msgstr "ordinata (ycor) del bordo superiore dello schermo"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:85
 msgid "xcor of right of screen"
-msgstr ""
+msgstr "ascissa (xcor) del bordo destro dello schermo"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:86
 msgid "ycor of bottom of screen"
-msgstr ""
+msgstr "ordinata (ycor) del bordo inferiore dello schermo"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:87
 msgid "push value onto FILO (first-in last-out) heap"
-msgstr ""
+msgstr "inserisci un valore nella heap FILO (first-in last-out)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:88
 msgid "pop value off FILO"
-msgstr ""
+msgstr "estrai un valore dalla heap FILO (first-in last-out)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:89
 msgid "show FILO in status block"
-msgstr ""
+msgstr "mostra la heap FILO nel blocco di stato"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:90
 msgid "empty FILO"
-msgstr ""
+msgstr "vuota la heap FILO"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:91
 msgid "wait specified number of seconds"
-msgstr ""
+msgstr "attendi per il numero specificato di secondi"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:92
 msgid "loop forever"
-msgstr ""
+msgstr "ciclo infinito"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:93
 msgid "loop specified number of times"
-msgstr ""
+msgstr "ciclo ripetuto un numero definito di volte"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:94
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr ""
+"operatore if-then che utilizza operatori booleani del pannello dei Numeri"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:95
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr ""
+"operatore if-then-else che utilizza operatori booleani del pannello dei "
+"Numeri"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:96
 msgid "do not continue current action"
-msgstr ""
+msgstr "non continuare ad eseguire l'azione corrente"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:97
 msgid "jog stack right"
@@ -407,73 +416,75 @@ msgstr ""
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:106
 msgid "store numeric value in variable 1"
-msgstr ""
+msgstr "memorizza il valore numerico nella variabile 1"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:107
 msgid "variable 1 (numeric value)"
-msgstr ""
+msgstr "variabile 1 (valore numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:108
 msgid "store numeric value in variable 2"
-msgstr ""
+msgstr "memorizza il valore numerico nella variabile 2"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:109
 msgid "variable 2 (numeric value)"
-msgstr ""
+msgstr "variabile 2 (valore numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:110
 msgid "store numeric value in named variable"
-msgstr ""
+msgstr "memorizza il valore numerico nella variabile nominata"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:111
 msgid "named variable (numeric value)"
-msgstr ""
+msgstr "variabile con nome (valore numerico)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:112
 msgid "string value"
-msgstr ""
+msgstr "valore stringa"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:113
 msgid "Sugar Journal media object"
-msgstr ""
+msgstr "oggetto multimediale del Diario di Sugar"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:114
 msgid "Sugar Journal audio object"
-msgstr ""
+msgstr "oggetto audio del Diario di Sugar"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:115
 msgid "Sugar Journal description field"
-msgstr ""
+msgstr "campo descrittivo del Diario di Sugar"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:116
 msgid "presentation template: select Journal object (with description)"
 msgstr ""
+"template di presentazione: selezione oggetto del Diario (con descrizione)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:117
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:118
 msgid "presentation template: select two Journal objects"
-msgstr ""
+msgstr "template di presentazione: seleziona due oggetti del Diario"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:119
 msgid "presentation template: select four Journal objects"
-msgstr ""
+msgstr "template di presentazione: seleziona quattro oggetti del Diario"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:120
 msgid "presentation template: select Journal object (no description)"
 msgstr ""
+"template di presentazione: selezione oggetto del Diario (senza descrizione)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:121
 msgid "presentation template: seven bullets"
-msgstr ""
+msgstr "template di presentazione: sette punti"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:122
 msgid "declutter canvas by hiding blocks"
-msgstr ""
+msgstr "riordina lo schermo nascondendo  i blocchi"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:97
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1319
 msgid "Save snapshot"
-msgstr ""
+msgstr "Salva snapshot"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:108
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:999
@@ -626,9 +637,8 @@ msgstr "mostra pannello"
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:602
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1397
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1411
-#, fuzzy
 msgid "Show blocks"
-msgstr "mostra blocchi"
+msgstr "Mostra blocchi"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:930
 msgid "Copy"
@@ -643,9 +653,8 @@ msgid "Save Logo"
 msgstr "Salva in Logo"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1028
-#, fuzzy
 msgid "load my block"
-msgstr "Carica i miei blocchi"
+msgstr "carica i miei blocchi"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1340
 msgid "<Alt>o"
@@ -721,7 +730,7 @@ msgstr "altrimenti"
 #: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:47
 #: /home/walter/Desktop/turtleart-activity/svg/stopstack.py:40
 msgid "stop action"
-msgstr ""
+msgstr "ferma azione"
 
 #: /home/walter/Desktop/turtleart-activity/svg/print.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:45
@@ -834,7 +843,7 @@ msgstr "destra"
 
 #: /home/walter/Desktop/turtleart-activity/svg/storein.py:40
 msgid "store in"
-msgstr ""
+msgstr "memorizza in"
 
 #: /home/walter/Desktop/turtleart-activity/svg/textsize.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:53
