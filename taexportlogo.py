@@ -308,7 +308,7 @@ tasetshade :shade \r"
          code = "to taarc :a :r\rrepeat round :a [right 1 forward (" +\
                 str(c) + " * :r)]\rend\r" + code
     if heap: # add psuedo push and pop
-         code = "to tapush :foo\routput fput :foo :taheap\rend\r" + \
+         code = "to tapush :foo\rmake \"taheap fput :foo :taheap\rend\r" + \
              "to tapop\rif emptyp :taheap [stop]\rmake \"tmp first :taheap\r" +\
              "make \"taheap butfirst :taheap\routput :tmp\rend\r" + \
              "to taclearheap\rmake \"taheap []\rend\r" + \
