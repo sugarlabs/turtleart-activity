@@ -25,6 +25,7 @@ from sugar.datastore import datastore
 import os.path
 import subprocess
 from talogo import get_pixbuf_from_journal
+from tahoverhelp import *
 from gettext import gettext as _
 
 def save_html(self, tw, embed_flag=True):
@@ -238,8 +239,10 @@ src=\"data:image/png;base64,\n", " \"/>\n")
          if len(data) > 0:
              code += this_stack
 
-    # if no show or template blocks were present, we've got no slides,
-    # so save a screendump instead
+    """
+    if no show or template blocks were present, we've got no slides,
+    so save a screendump instead
+    """
     if slidecount == 0:
         # save a screen dump instead
         filename = os.path.join(datapath, 'image.png')
@@ -260,6 +263,20 @@ src=\"data:image/png;base64,\n", " \"/>\n")
                 code = code + html_glue['div'][0]
                 data = walk_stack(self, tw, b)
                 for d in data:
+                    if type(d) is not float:
+                        if d[0:2] == "#s":
+                            d = d[2:]
+                        elif d[0:3] == "nop":
+                            stack = {"nop" :"",\
+                                     "nop1":"stack1",\
+                                     "nop2":"stack2",\
+                                     "nop3":"stack"}
+                            d = stack[d]
+                        # translate block name if it is in the dictionary
+                        if d in blocks_dict:
+                            d = _(blocks_dict[d])
+                        else:
+                            d = _(d)
                     code = code + str(d) + " "
                 code = code + html_glue['div'][1]
 
