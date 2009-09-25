@@ -5,20 +5,97 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: 2009-02-26 02:40-0500\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2009-09-25 08:43-0400\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0rc2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 1.2.1\n"
 
 # Tên: không nên dịch
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
 msgstr "Turtle Art"
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "tựa đề"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "văn bản"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "đống"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "hộp"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "tên"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "Dự án"
+
+#:
+msgid "Save as"
+msgstr "Lưu dạng"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "ẩn bảng chọn"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "ẩn khối"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "chạy"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "bước"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "dừng rùa"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "mẫu lấy"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "lưu dạng HTML"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "lưu Logo"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "nạp khối của mình"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "hiện bảng chọn"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "hiện khối"
 
 #:
 msgid "Flow"
@@ -79,6 +156,14 @@ msgstr "lưu vào hộp 1"
 #:
 msgid "store in box 2"
 msgstr "lưu vào hộp 2"
+
+#:
+msgid "push"
+msgstr "đẩy"
+
+#:
+msgid "pop"
+msgstr "pop"
 
 #:
 msgid "Numbers"
@@ -161,6 +246,10 @@ msgid "set color"
 msgstr "đặt màu"
 
 #:
+msgid "set text color"
+msgstr "đặt màu chữ"
+
+#:
 msgid "Blocks"
 msgstr "Khối"
 
@@ -168,6 +257,10 @@ msgstr "Khối"
 #:
 msgid "Turtle"
 msgstr "Turtle"
+
+#:
+msgid "clean"
+msgstr "gột"
 
 #:
 msgid "forward"
@@ -201,13 +294,9 @@ msgstr "bán kính"
 msgid "heading"
 msgstr "tiêu đề"
 
-#:
+#
 msgid "set heading"
 msgstr "seth"
-
-#:
-msgid "clean"
-msgstr "gột"
 
 #:
 msgid "set xy"
@@ -228,89 +317,6 @@ msgstr "xcor"
 #:
 msgid "ycor"
 msgstr "ycor"
-
-#:
-msgid "Project"
-msgstr "Dự án"
-
-#:
-msgid "Samples"
-msgstr "Mẫu ví dụ"
-
-#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
-#: tasetup.py:53 tasetup.py:54
-msgid "title"
-msgstr "tựa đề"
-
-#: tasetup.py:66
-msgid "text"
-msgstr "văn bản"
-
-#:
-msgid "Save as"
-msgstr "Lưu dạng"
-
-#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
-#: TurtleArtActivity.py:293
-msgid "hide palette"
-msgstr "ẩn bảng chọn"
-
-#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
-msgid "hide blocks"
-msgstr "ẩn khối"
-
-#: TurtleArtActivity.py:194
-msgid "run"
-msgstr "chạy"
-
-#: TurtleArtActivity.py:202
-msgid "step"
-msgstr "bước"
-
-#: TurtleArtActivity.py:210
-msgid "stop turtle"
-msgstr "dừng rùa"
-
-#: TurtleArtActivity.py:249
-msgid "save as HTML"
-msgstr "lưu dạng HTML"
-
-#: TurtleArtActivity.py
-msgid "save Logo"
-msgstr "lưu Logo"
-
-#: TurtleArtActivity.py
-msgid "load my block"
-msgstr "nạp khối của mình"
-
-#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
-#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
-msgid "show palette"
-msgstr "hiện bảng chọn"
-
-#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
-msgid "show blocks"
-msgstr "hiện khối"
-
-#:
-msgid "start"
-msgstr "đầu"
-
-#:
-msgid "box"
-msgstr "hộp"
-
-#:
-msgid "stack"
-msgstr "đống"
-
-#:
-msgid "name"
-msgstr "tên"
-
-#:
-msgid "set text color"
-msgstr "đặt màu chữ"
 
 #:
 msgid "Sensors"
@@ -357,17 +363,11 @@ msgid "vres"
 msgstr "vres"
 
 #:
-msgid "push"
-msgstr "đẩy"
+msgid "start"
+msgstr "đầu"
 
-#:
-msgid "pop"
-msgstr "pop"
+#~ msgid "show heap"
+#~ msgstr "hiện miền nhớ"
 
-#:
-msgid "show heap"
-msgstr "hiện miền nhớ"
-
-#:
-msgid "empty heap"
-msgstr "miền nhớ trống"
+#~ msgid "empty heap"
+#~ msgstr "miền nhớ trống"
