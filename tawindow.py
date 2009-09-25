@@ -45,37 +45,8 @@ from taturtle import *
 from taproject import *
 from sugar.graphics.objectchooser import ObjectChooser
 
-from palettes import ContentInvoker
 from tahoverhelp import *
 from gettext import gettext as _
-
-class PopupHandler():
-
-    def __init__(self):
-        self.table = {}
-
-    def getInvoker(self, block_name):
-        if block_name in self.table:
-            return self.table[block_name]
-        
-        msg = self._getHelpMessage(block_name)
-        if msg != "":
-            self.table[block_name] = ContentInvoker(msg)
-            return self.table[block_name]
-
-        print("no invoker for " + block_name)
-        return None
-
-    def _getHelpMessage(self, block_name):
-        try:
-            return (hover_dict[block_name])
-        except:
-            print("no dictionary entry for " + block_name)
-            return("")
-
-popupHandler = PopupHandler()
-
-timeout_tag = [0]
 
 # dead key dictionaries
 dead_grave = {'A':192,'E':200,'I':204,'O':210,'U':217,'a':224,'e':232,'i':236,\
@@ -88,6 +59,10 @@ dead_tilde = {'A':195,'O':211,'N':209,'U':360,'a':227,'o':245,'n':241,'u':361}
 dead_diaeresis = {'A':196,'E':203,'I':207,'O':211,'U':218,'a':228,'e':235,\
                   'i':239,'o':245,'u':252}
 dead_abovering = {'A':197,'a':229}
+
+# Time out for triggering help
+timeout_tag = [0]
+
 
 #
 # Setup
@@ -783,10 +758,15 @@ def xy(event):
 
 def showPopup(block_name,tw):
     if hasattr(tw,"activity"):
+        if block_name in blocks_dict:
+            block_name_s = _(blocks_dict[block_name])
+        else:
+            block_name_s = _(block_name)
+        
         try:
-            label = _(block_name) + ": " + hover_dict[block_name]
+            label = block_name_s + ": " + hover_dict[block_name]
         except:
-            label = _(block_name)
+            label = block_name_s
         try:
             # Use new toolbar
             tw.activity.hover_help_label.set_text(label)
@@ -795,9 +775,4 @@ def showPopup(block_name,tw):
             # Use old toolbar
             tw.activity.helpToolbar.hover_help_label.set_text(label)
             tw.activity.helpToolbar.hover_help_label.show()
-    """
-    i = popupHandler.getInvoker(block_name)
-    if i:
-        return gobject.timeout_add(500, i.showPopup, "")
-    """
     return 0
