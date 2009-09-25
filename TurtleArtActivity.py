@@ -250,6 +250,7 @@ class TurtleArtActivity(activity.Activity):
 
             self.hover_help_label = \
               gtk.Label(_("Move the cursor over the orange palette for help."))
+            self.hover_help_label.set_line_wrap(True)
             self.hover_help_label.show()
             self.hover_toolitem = gtk.ToolItem()
             self.hover_toolitem.add(self.hover_help_label)
@@ -257,6 +258,7 @@ class TurtleArtActivity(activity.Activity):
             self.hover_toolitem.show()
 
             help_toolbar_button = ToolbarButton(
+                    label=_("Help"),
                     page=help_toolbar,
                     icon_name='help-toolbar')
             help_toolbar.show()
@@ -431,7 +433,7 @@ class TurtleArtActivity(activity.Activity):
 
         # Write any metadata (here we specifically set the title of the file
         # and specify that this is a plain text file). 
-        dsobject.metadata['title'] = self.get_title() + " " + \
+        dsobject.metadata['title'] = self.metadata['title'] + " " + \
                                      _("presentation")
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         if embed_flag == True:
@@ -461,7 +463,7 @@ class TurtleArtActivity(activity.Activity):
 
         # Write any metadata (here we specifically set the title of the file
         # and specify that this is a plain text file). 
-        dsobject.metadata['title'] = self.get_title() + ".lg"
+        dsobject.metadata['title'] = self.metadata['title'] + ".lg"
         dsobject.metadata['mime_type'] = 'text/plain'
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
 
@@ -547,7 +549,7 @@ class TurtleArtActivity(activity.Activity):
         dsobject = datastore.create()
 
         # Write metadata
-        dsobject.metadata['title'] = self.get_title() + " image"
+        dsobject.metadata['title'] = self.metadata['title'] + " " + _("image")
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         dsobject.metadata['mime_type'] = 'image/png'
         dsobject.set_file_path(file_path)
@@ -574,7 +576,8 @@ class TurtleArtActivity(activity.Activity):
         dsobject = datastore.create()
 
         # Write any metadata
-        dsobject.metadata['title'] = self.get_title() + " snapshot"
+        dsobject.metadata['title'] = self.metadata['title'] + " " + \
+                                     _("snapshot")
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         dsobject.metadata['mime_type'] = 'application/x-turtle-art'
         dsobject.metadata['activity'] = 'org.laptop.TurtleArtActivity'
@@ -1013,6 +1016,7 @@ class HelpToolbar(gtk.Toolbar):
         # Help label
         self.hover_help_label = \
           gtk.Label(_("Move the cursor over the orange palette for help."))
+        self.hover_help_label.set_line_wrap(True)
         self.hover_help_label.show()
         self.hover_toolitem = gtk.ToolItem()
         self.hover_toolitem.add(self.hover_help_label)
@@ -1239,7 +1243,8 @@ class SaveAsToolbar(gtk.Toolbar):
         dsobject = datastore.create()
 
         # Write metadata
-        dsobject.metadata['title'] = self.activity.get_title() + " image"
+        dsobject.metadata['title'] = self.activity.get_title() + " " + \
+                                     _("image")
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         dsobject.metadata['mime_type'] = 'image/png'
         dsobject.set_file_path(file_path)
@@ -1512,7 +1517,8 @@ class ProjectToolbar(gtk.Toolbar):
         dsobject = datastore.create()
 
         # Write any metadata
-        dsobject.metadata['title'] = self.activity.get_title() + " snapshot"
+        dsobject.metadata['title'] = self.activity.get_title() + " " + \
+                                     _("snapshot")
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         dsobject.metadata['mime_type'] = 'application/x-turtle-art'
         dsobject.metadata['activity'] = 'org.laptop.TurtleArtActivity'
