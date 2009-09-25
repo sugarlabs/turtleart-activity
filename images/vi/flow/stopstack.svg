@@ -33,9 +33,15 @@
       <tspan 
         sodipodi:role="line" 
         x="37" 
-        y="17.5" 
-        style="font-size:14px;text-anchor:middle">dừng</tspan><tspan 
+        y="19.5" 
+        style="font-size:14px;text-anchor:middle">dừng</tspan>
+   </text> 
+   <text 
+      style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
+      <tspan 
+        sodipodi:role="line" 
         x="37" 
-        y="35" 
-        style="font-size:14px;text-anchor:middle">đống</tspan></text> 
+        y="33" 
+        style="font-size:14px;text-anchor:middle">hành vi</tspan>
+   </text> 
  </svg> 

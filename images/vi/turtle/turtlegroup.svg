@@ -618,13 +618,26 @@
        id="path148"
        style="fill:url(#linearGradient3381);fill-opacity:1;stroke:#00a000;stroke-width:1;stroke-opacity:1" />
     <text
+       y="-4"
        id="text150"
        style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
       <tspan
          x="104"
-         y="241"
+         y="237"
          id="tspan152"
-         style="font-size:12px">seth</tspan>
+         style="font-size:12px">đặt</tspan>
+    </text>
+    <text
+       x="25.93841"
+       y="5.2788129"
+       transform="scale(0.8798022,1.1366191)"
+       id="text2534"
+       style="font-size:7.03841734px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+      <tspan
+         x="117.43783"
+         y="217.31113"
+         id="tspan2536"
+         style="font-size:10.55762577px">hướng về</tspan>
     </text>
   </g>
   <path
@@ -676,7 +689,7 @@
        x="72"
        y="19"
        id="tspan175"
-       style="font-size:20px">Turtle</tspan>
+       style="font-size:20px">Rùa</tspan>
   </text>
   <rect
      width="137.5"
@@ -744,7 +757,7 @@
          x="38.400002"
          y="305.20001"
          id="tspan199"
-         style="font-size:12px">show</tspan>
+         style="font-size:12px">hiện</tspan>
     </text>
   </g>
   <g
@@ -764,25 +777,25 @@
        style="fill:url(#linearGradient3533);fill-opacity:1;stroke:#00a000;stroke-width:1;stroke-opacity:1" />
     <text
        x="-66.599998"
-       y="99"
+       y="101"
        id="text209"
        style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
       <tspan
          x="37.400002"
-         y="335"
+         y="337"
          id="tspan211"
-         style="font-size:12px">set</tspan>
+         style="font-size:12px">đặt</tspan>
     </text>
     <text
        x="-66.599998"
-       y="99"
+       y="101"
        id="text213"
        style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
       <tspan
          x="37.400002"
-         y="345"
+         y="347"
          id="tspan215"
-         style="font-size:12px">scale</tspan>
+         style="font-size:12px">tỷ lệ</tspan>
     </text>
   </g>
   <path
@@ -840,11 +853,22 @@
          x="38.5"
          y="374"
          id="tspan2730"
-         style="font-size:12px">show</tspan>
+         style="font-size:12px">hiện</tspan>
     </text>
   </g>
   <path
      d="M 64.1,294.6 L 67.1,294.6 L 67.1,297.6 L 72.1,297.6 L 72.1,294.6 L 133.1,294.6 L 133.1,308.6 L 72.1,308.6 L 72.1,305.6 L 67.1,305.6 L 67.1,308.6 L 64.1,308.6 L 64.1,294.6 z"
      id="path2694"
      style="fill:url(#linearGradient2696);fill-opacity:1;stroke:#a0a000;stroke-width:1;stroke-opacity:1" />
+  <text
+     x="28.000002"
+     y="-131.10329"
+     id="text3529"
+     style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="100.00002"
+       y="305.89673"
+       id="tspan3531"
+       style="font-size:10.5px">tên</tspan>
+  </text>
 </svg>
