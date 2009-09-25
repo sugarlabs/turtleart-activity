@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-24 10:51-0400\n"
+"PO-Revision-Date: 2009-09-25 16:32-0400\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -380,11 +380,11 @@ msgstr "non continuare ad eseguire l'azione corrente"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:97
 msgid "jog stack right"
-msgstr "sposta lo stack a destra"
+msgstr "sposta la sequenza a destra"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:98
 msgid "jog stack down"
-msgstr "sposta lo stack in basso"
+msgstr "sposta la sequenza in basso"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:99
 msgid "connects action to toolbar run buttons"
@@ -392,27 +392,27 @@ msgstr "connette l'azione al pulsante \"esegui\" della barra dei comandi"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:100
 msgid "top of action 1 stack"
-msgstr "apice dello stack di azioni 1"
+msgstr "inizio della sequenza di azioni 1"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:101
 msgid "invoke action 1 stack"
-msgstr "invoca lo stack di azioni 1"
+msgstr "invoca la sequenza di azioni 1"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:102
 msgid "top of action 2 stack"
-msgstr "apice dello stack di azioni 2"
+msgstr "inizio della sequenza di azioni 2"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:103
 msgid "invoke action 2 stack"
-msgstr "invoca lo stack di azioni 2"
+msgstr "invoca la sequenza di azioni 2"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:104
 msgid "top of nameable action stack"
-msgstr "apice dello stack di azioni nominato"
+msgstr "inizio della sequenza di azioni con nome"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:105
 msgid "invoke named action stack"
-msgstr "invoca lo stack di azioni 2"
+msgstr "invoca la sequenza di azioni con nome"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:106
 msgid "store numeric value in variable 1"
@@ -479,7 +479,7 @@ msgstr "template di presentazione: sette punti"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:122
 msgid "declutter canvas by hiding blocks"
-msgstr "riordina lo schermo nascondendo  i blocchi"
+msgstr "riordina lo schermo nascondendo i blocchi"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:97
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1319
@@ -520,12 +520,12 @@ msgstr "Schermo intero"
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1407
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1419
 msgid "Hide palette"
-msgstr "Nascondi tavolozza"
+msgstr "Nascondi pannello"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:166
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1207
 msgid "<Alt>p"
-msgstr "<Alt>t"
+msgstr "<Alt>p"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:172
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:591
@@ -549,7 +549,7 @@ msgstr "Pulisci"
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:184
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1289
 msgid "<Alt>e"
-msgstr "<Alt>p"
+msgstr "<Alt>s"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:190
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1232
@@ -664,13 +664,13 @@ msgstr "<Alt>o"
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:42
 #: /home/walter/Desktop/turtleart-activity/svg/stack2.py:40
 msgid "stack 2"
-msgstr "stack 2"
+msgstr "sequenza 2"
 
 #: /home/walter/Desktop/turtleart-activity/svg/stack1.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/hat1.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:41
 msgid "stack 1"
-msgstr "stack 1"
+msgstr "sequenza 1"
 
 #: /home/walter/Desktop/turtleart-activity/svg/hideblocks.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:41
