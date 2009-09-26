@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007, Playful Invention Company
-#Copyright (c) 2008-9, Walter Bender
+#Copyright (c) 2008-9, Walter Bendera
 #Copyright (c) 2009, Raúl Gutiérrez Segalés
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,7 +43,10 @@ from tasprites import *
 from talogo import *
 from taturtle import *
 from taproject import *
-from sugar.graphics.objectchooser import ObjectChooser
+try:
+    from sugar.graphics.objectchooser import ObjectChooser
+except:
+    pass
 
 from tahoverhelp import *
 from gettext import gettext as _

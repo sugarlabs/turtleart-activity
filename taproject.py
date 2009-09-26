@@ -1,7 +1,7 @@
 #Copyright (c) 2007-8, Playful Invention Company.
 #Copyright (c) 2008-9, Walter Bender
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
+#Permission is hereby granted, free of chargae, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
 #in the Software without restriction, including without limitation the rights
 #to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
@@ -45,7 +45,10 @@ import os.path
 from tasprites import *
 from taturtle import *
 from talogo import stop_logo
-from sugar.datastore import datastore
+try:
+    from sugar.datastore import datastore
+except:
+    pass
 
 nolabel = ['audiooff', 'descriptionoff','journal']
 shape_dict = {'journal':'texton', \

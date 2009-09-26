@@ -329,7 +329,10 @@ def setup_selector(tw,name,y,blockdescriptions):
     return spr
 
 def load_image(path, dir, file):
-    from sugar.activity import activity
+    try:
+        from sugar.activity import activity
+    except:
+        pass
     
     try:
         datapath = os.path.join(activity.get_activity_root(), "data")
