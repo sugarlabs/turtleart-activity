@@ -187,12 +187,12 @@ blocks_dict = {
     'templates' : _('Templates'), 
     'hideblocks' : _('hide blocks'), 
     'journal' : _('journal'), 
-    'audiooff' : _('audiooff'), 
-    'descriptionoff' : _('descriptionoff'), 
-    'template1' : _('template1'), 
-    'template2' : _('template2'), 
-    'template3' : _('template3'),  
-    'template4' : _('template4'), 
-    'template6' : _('template6'), 
-    'template7' : _('template7')
+    'audiooff' : _('joournal'), 
+    'descriptionoff' : _('journal'), 
+    'template1' : _('template'), 
+    'template2' : _('template'), 
+    'template3' : _('template'),  
+    'template4' : _('template'), 
+    'template6' : _('template'), 
+    'template7' : _('template')
 }
