@@ -187,7 +187,7 @@ blocks_dict = {
     'templates' : _('Templates'), 
     'hideblocks' : _('hide blocks'), 
     'journal' : _('journal'), 
-    'audiooff' : _('joournal'), 
+    'audiooff' : _('journal'), 
     'descriptionoff' : _('journal'), 
     'template1' : _('template'), 
     'template2' : _('template'), 
