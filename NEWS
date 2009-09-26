@@ -5,6 +5,7 @@
 * added label to Help toolbar
 * new translations for it
 * caught some exceptions that prevented TA from running outside of Sugar
+* fixed bug preventing simple save to HTML for pre-086 systems
 
 69
 
