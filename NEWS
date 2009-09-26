@@ -1,7 +1,10 @@
 70
 
+* new translations/artwork for vi
 * added linewrap to help label (with rgs)
 * added label to Help toolbar
+* new translations for it
+* caught some exceptions that prevented TA from running outside of Sugar
 
 69
 
