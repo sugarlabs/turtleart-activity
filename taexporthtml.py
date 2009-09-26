@@ -246,7 +246,7 @@ src=\"data:image/png;base64,\n", " \"/>\n")
     if slidecount == 0:
         # save a screen dump instead
         filename = os.path.join(datapath, 'image.png')
-        tawindow.save_pict(self.tw,filename)
+        tawindow.save_pict(tw,filename)
         # if the embed flag is True
         # embed base64 into the html
         if embed_flag == True:
