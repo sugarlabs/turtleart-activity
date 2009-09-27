@@ -1,11 +1,11 @@
 70
 
-* new translations/artwork for vi
+* new translations/artwork for vi, it, fr
 * added linewrap to help label (with rgs)
-* added label to Help toolbar
-* new translations for it
+* added label to Help toolbar (to work around bug with small displays)
 * caught some exceptions that prevented TA from running outside of Sugar
 * fixed bug preventing simple save to HTML for pre-086 systems
+* added missing icon for Save from Journal
 
 69
 
