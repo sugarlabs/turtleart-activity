@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-27 09:33-0400\n"
+"PO-Revision-Date: 2009-09-29 18:17-0400\n"
 "Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: fr\n"
@@ -378,11 +378,11 @@ msgstr "ne pas continuer l'action courante"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:97
 msgid "jog stack right"
-msgstr "pousse la pile à droite"
+msgstr "pousse l'action à droite"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:98
 msgid "jog stack down"
-msgstr "pousse la pile en bas"
+msgstr "pousse l'action en bas"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:99
 msgid "connects action to toolbar run buttons"
@@ -390,27 +390,27 @@ msgstr "connecte l'action aux boutons exécuter de la barre d'outils"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:100
 msgid "top of action 1 stack"
-msgstr "haut de la pile d'action 1"
+msgstr "haut de l'action 1"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:101
 msgid "invoke action 1 stack"
-msgstr "invoque la pile d'action 1"
+msgstr "invoque l'action 1"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:102
 msgid "top of action 2 stack"
-msgstr "haut de la pile d'action 2"
+msgstr "haut de l'action 2"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:103
 msgid "invoke action 2 stack"
-msgstr "invoque la pile d'action 2"
+msgstr "invoque l'action 2"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:104
 msgid "top of nameable action stack"
-msgstr "haut de la pile d'action nommable"
+msgstr "haut de l'action nommable"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:105
 msgid "invoke named action stack"
-msgstr "invoque la pile d'action nommable"
+msgstr "invoque l'action nommable"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:106
 msgid "store numeric value in variable 1"
@@ -668,13 +668,13 @@ msgstr "<Alt>o"
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:42
 #: /home/walter/Desktop/turtleart-activity/svg/stack2.py:40
 msgid "stack 2"
-msgstr "pile 2"
+msgstr "action 2"
 
 #: /home/walter/Desktop/turtleart-activity/svg/stack1.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/hat1.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:41
 msgid "stack 1"
-msgstr "pile 1"
+msgstr "action 1"
 
 #: /home/walter/Desktop/turtleart-activity/svg/hideblocks.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:41
