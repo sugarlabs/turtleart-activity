@@ -78,5 +78,8 @@ def myblock(lc,x):
     # reallocate current color
     # lc.tw.fgcolor = lc.tw.cm.alloc_color(r<<8,g<<8,b<<8)
 
+    # save a screen- image in the journal
+    
+    # lc.tw.activity._do_saveimage_cb(lc.tw.activity)
     return
 
