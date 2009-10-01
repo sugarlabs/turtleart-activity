@@ -1,3 +1,9 @@
+71
+
+* updated fr translations
+* more sample Python code
+* limiting abs(number) to max of 1000000 to prevent OverflowErrors
+
 70
 
 * new translations/artwork for vi, it, fr
