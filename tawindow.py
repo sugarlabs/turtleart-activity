@@ -661,7 +661,13 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
 
 def unselect(tw):
     if tw.selected_block.label in ['-', '.', '-.']:
-        select_block.setlabel('0')
+        setlabel(tw.selected_block,'0')
+
+    # put an upperbound on numbers
+    i = int(tw.selected_block.label)
+    if i > 1000000:
+        setlabel(tw.selected_block,'0')
+
     hide(tw.select_mask)
     hide(tw.select_mask_string)
     tw.selected_block = None
