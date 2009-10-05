@@ -23,32 +23,40 @@
 # palette is selected. Some examples of how to use this block are included
 # below. Try uncommenting an example or write your own Python code.
 # 
-# To uncomment code, remove the """s before and after the block
+# To uncomment code, remove the #s before python code
 #
 
 def myblock(lc,x):
 
+    ###########################################################################
+    #
     # draw a dotted line of length x
+    #
+    ###########################################################################
 
-    # make sure x is a number
-    if type(x) != int and type(x) != float:
+    if type(x) != int and type(x) != float: # make sure x is a number
         return
+
+    pen = lc.tw.turtle.pendown              # save current turtle pen state
+
     dist = 0
-    # save current turtle pen state
-    pen = lc.tw.turtle.pendown
-    # repeat drawing dots
-    while dist+lc.tw.turtle.pensize < x:
+    while dist+lc.tw.turtle.pensize < x:    # repeat drawing dots
         setpen(lc.tw.turtle, True)
         forward(lc.tw.turtle, 1)
         setpen(lc.tw.turtle, False)
         forward(lc.tw.turtle, (lc.tw.turtle.pensize*2)-1)
         dist += (lc.tw.turtle.pensize*2)
-    # make sure we have moved exactly x
-    forward(lc.tw.turtle, x-dist)
-    # restore pen state
-    setpen(lc.tw.turtle, pen)
+    forward(lc.tw.turtle, x-dist)           # make sure we have moved x
 
+    setpen(lc.tw.turtle, pen)               # restore pen state
+
+
+    ###########################################################################
+    #
     # push an uppercase version of a string onto the heap
+    #
+    ###########################################################################
+
     # if type(x) != str:
     #     X = str(x).upper()
     # else:
@@ -56,19 +64,31 @@ def myblock(lc,x):
     # push result onto heap (use the pop block to use the new string)
     # lc.heap.append(X)
 
+
+    ###########################################################################
+    #
     # push hours, minutes, seconds onto the heap
     # use three pop blocks to retrieve the values
     # remember: the heap is a FILO (first in, last out)
     # the first value you will pop will be seconds
+    #
+    ###########################################################################
 
     # lc.heap.append(localtime().tm_hour)
     # lc.heap.append(localtime().tm_min)
     # lc.heap.append(localtime().tm_sec)
 
+
+    ###########################################################################
+    #
     # add a third dimension (gray) to the color model
     # calculate the value (brightness) of the current color
     # val = 0.3 * lc.tw.rgb[0] + 0.6 * lc.tw.rgb[1] + 0.1 * lc.tw.rgb[2]
     # make sure gray is in range from 0 to 100
+    #
+    ###########################################################################
+
+
     # if x != 100:
     #     x = int(x)%100
     # mix in gray
@@ -78,8 +98,14 @@ def myblock(lc,x):
     # reallocate current color
     # lc.tw.fgcolor = lc.tw.cm.alloc_color(r<<8,g<<8,b<<8)
 
+
+    ###########################################################################
+    #
     # save a screen- image in the journal
-    
-    # lc.tw.activity._do_saveimage_cb(lc.tw.activity)
+    #
+    ###########################################################################
+
+    # lc.tw.activity._do_save_image_cb(lc.tw.activity)
+
     return
 

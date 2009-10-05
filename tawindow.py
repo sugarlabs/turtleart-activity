@@ -194,22 +194,14 @@ def hideshow_palette(tw,state):
     if state is False:
         tw.palette == False
         if hasattr(tw,'activity'):
-            try:
-                # Use new toolbar design
-                tw.activity.do_hidepalette()
-            except:
-                # Use old toolbar design
-                tw.activity.projectToolbar.do_hidepalette()                
+            # Use new toolbar design
+            tw.activity.do_hidepalette()
         hide_palette(tw)
     else:
         tw.palette == True
         if hasattr(tw,'activity'):
-            try:
-                # Use new toolbar design
-                tw.activity.do_showpalette()
-            except:
-                # Use old toolbar design
-                tw.activity.projectToolbar.do_showpalette()                
+            # Use new toolbar design
+            tw.activity.do_showpalette()
         show_palette(tw)
 
 def show_palette(tw):
@@ -778,12 +770,7 @@ def showPopup(block_name,tw):
             label = block_name_s + ": " + hover_dict[block_name]
         except:
             label = block_name_s
-        try:
-            # Use new toolbar
-            tw.activity.hover_help_label.set_text(label)
-            tw.activity.hover_help_label.show()
-        except:
-            # Use old toolbar
-            tw.activity.helpToolbar.hover_help_label.set_text(label)
-            tw.activity.helpToolbar.hover_help_label.show()
+        # Use new toolbar
+        tw.activity.hover_help_label.set_text(label)
+        tw.activity.hover_help_label.show()
     return 0
