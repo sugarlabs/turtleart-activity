@@ -167,7 +167,7 @@ def start_eval(lc, list):
     icall(lc, evline, list); yield True
     # turn off stop icon when execution is finished
     if hasattr(lc.tw,"activity"):
-        lc.tw.activity.stop.set_icon("stopitoff")
+        lc.tw.activity.stop_button.set_icon("stopitoff")
     yield False
 
 def evline(lc, list):

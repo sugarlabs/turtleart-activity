@@ -120,7 +120,7 @@ class TurtleArtActivity(activity.Activity):
             # Save as image
             self.save_as_image = ToolButton('image-saveoff')
             self.save_as_image.set_tooltip(_("Save as image"))
-            self.save_as_image.connect('clicked', self._do_save_image_cb)
+            self.save_as_image.connect('clicked', self._do_save_as_image_cb)
             self.save_as_image.show()
             activity_button.props.page.insert(self.save_as_image, -1)
 
@@ -156,7 +156,7 @@ class TurtleArtActivity(activity.Activity):
             fullscreen_button = ToolButton('view-fullscreen')
             fullscreen_button.set_tooltip(_("Fullscreen"))
             fullscreen_button.props.accelerator = '<Alt>Enter'
-            fullscreen_button.connect('clicked', self.__fullscreen_cb)
+            fullscreen_button.connect('clicked', self._do_fullscreen_cb)
             view_toolbar.insert(fullscreen_button,-1)
             fullscreen_button.show()
 
@@ -532,7 +532,7 @@ class TurtleArtActivity(activity.Activity):
             chooser.destroy()
             del chooser
 
-    def _do_save_image_cb(self, button):
+    def _do_save_as_image_cb(self, button):
         self.save_as_image.set_icon("image-saveon")
         _logger.debug("saving image to journal")
 
@@ -694,7 +694,7 @@ class TurtleArtActivity(activity.Activity):
         vadj.set_value(0)
         self.sw.set_vadjustment(vadj)
 
-    def __fullscreen_cb(self, button):    
+    def _do_fullscreen_cb(self, button):    
         self.fullscreen()
         self.recenter()
 
@@ -1049,12 +1049,13 @@ class SaveAsToolbar(gtk.Toolbar):
         self.save_as_logo.show()
 
         # Save as image button
-        self.save_image = ToolButton( "image-saveoff" )
-        self.save_image.set_tooltip(_('Save as image'))
-        self.save_image.props.sensitive = True
-        self.save_image.connect('clicked', self.activity._do_save_image_cb)
-        self.insert(self.save_image, -1)
-        self.save_image.show()
+        self.save_as_image = ToolButton( "image-saveoff" )
+        self.save_as_image.set_tooltip(_('Save as image'))
+        self.save_as_image.props.sensitive = True
+        self.save_as_image.connect('clicked', \
+                                   self.activity._do_save_as_image_cb)
+        self.insert(self.save_as_image, -1)
+        self.save_as_image.show()
 
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
@@ -1112,7 +1113,7 @@ class ProjectToolbar(gtk.Toolbar):
             self.activity.blocks_button.props.accelerator = _('<Ctrl>b')
         except:
             pass
-        self.insert(self.activityblocks, -1)
+        self.insert(self.activity.blocks_button, -1)
         self.activity.blocks_button.show()
 
         separator = gtk.SeparatorToolItem()
@@ -1154,7 +1155,7 @@ class ProjectToolbar(gtk.Toolbar):
             self.activity.debug_button.props.accelerator = _('<Ctrl>d')
         except:
             pass
-        self.insert(self.debug_button, -1)
+        self.insert(self.activity.debug_button, -1)
         self.activity.debug_button.show()
 
         # stop button
@@ -1201,7 +1202,7 @@ class ProjectToolbar(gtk.Toolbar):
         except:
             pass
         self.activity.fullscreen_button.connect('clicked', \
-                                                self.activity.__fullscreen_cb)
+                                                self.activity._do_fullscreen_cb)
         self.insert(self.activity.fullscreen_button, -1)
         self.activity.fullscreen_button.show()
 
