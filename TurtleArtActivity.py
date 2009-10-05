@@ -1033,29 +1033,31 @@ class SaveAsToolbar(gtk.Toolbar):
         self.activity = pc
 
         # HTML save source button
-        self.save_as_html = ToolButton( "htmloff" )
-        self.save_as_html.set_tooltip(_('Save as HTML'))
-        self.save_as_html.props.sensitive = True
-        self.save_as_html.connect('clicked', self.activity._do_save_as_html_cb)
-        self.insert(self.save_as_html, -1)
-        self.save_as_html.show()
+        self.activity.save_as_html = ToolButton( "htmloff" )
+        self.activity.save_as_html.set_tooltip(_('Save as HTML'))
+        self.activity.save_as_html.props.sensitive = True
+        self.activity.save_as_html.connect('clicked', \
+                                           self.activity._do_save_as_html_cb)
+        self.insert(self.activity.save_as_html, -1)
+        self.activity.save_as_html.show()
 
         # Berkeley Logo save source button
-        self.save_as_logo = ToolButton( "logo-saveoff" )
-        self.save_as_logo.set_tooltip(_('Save Logo'))
-        self.save_as_logo.props.sensitive = True
-        self.save_as_logo.connect('clicked', self.activity._do_save_as_logo_cb)
-        self.insert(self.save_as_logo, -1)
-        self.save_as_logo.show()
+        self.activity.save_as_logo = ToolButton( "logo-saveoff" )
+        self.activity.save_as_logo.set_tooltip(_('Save Logo'))
+        self.activity.save_as_logo.props.sensitive = True
+        self.activity.save_as_logo.connect('clicked', \
+                                           self.activity._do_save_as_logo_cb)
+        self.insert(self.activity.save_as_logo, -1)
+        self.activity.save_as_logo.show()
 
         # Save as image button
-        self.save_as_image = ToolButton( "image-saveoff" )
-        self.save_as_image.set_tooltip(_('Save as image'))
-        self.save_as_image.props.sensitive = True
-        self.save_as_image.connect('clicked', \
+        self.activity.save_as_image = ToolButton( "image-saveoff" )
+        self.activity.save_as_image.set_tooltip(_('Save as image'))
+        self.activity.save_as_image.props.sensitive = True
+        self.activity.save_as_image.connect('clicked', \
                                    self.activity._do_save_as_image_cb)
-        self.insert(self.save_as_image, -1)
-        self.save_as_image.show()
+        self.insert(self.activity.save_as_image, -1)
+        self.activity.save_as_image.show()
 
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
@@ -1063,21 +1065,23 @@ class SaveAsToolbar(gtk.Toolbar):
         separator.show()
 
         # Pippy load myblock source button
-        self.load_python = ToolButton( "pippy-openoff" )
-        self.load_python.set_tooltip(_('Load my block'))
-        self.load_python.props.sensitive = True
-        self.load_python.connect('clicked', self.activity._do_load_python_cb)
-        self.insert(self.load_python, -1)
-        self.load_python.show()
+        self.activity.load_python = ToolButton( "pippy-openoff" )
+        self.activity.load_python.set_tooltip(_('Load my block'))
+        self.activity.load_python.props.sensitive = True
+        self.activity.load_python.connect('clicked', \
+                                          self.activity._do_load_python_cb)
+        self.insert(self.activity.load_python, -1)
+        self.activity.load_python.show()
 
         # Open TA project from the Journal 
-        self.load_ta_project = ToolButton('load-from-journal')
-        self.load_ta_project.set_tooltip(_("Import project from the Journal"))
-        self.load_ta_project.props.sensitive = True
-        self.load_ta_project.connect('clicked', \
+        self.activity.load_ta_project = ToolButton('load-from-journal')
+        self.activity.load_ta_project.set_tooltip(\
+                                  _("Import project from the Journal"))
+        self.activity.load_ta_project.props.sensitive = True
+        self.activity.load_ta_project.connect('clicked', \
                                      self.activity._do_load_ta_project_cb)
-        self.insert(self.load_ta_project, -1)
-        self.load_ta_project.show()
+        self.insert(self.activity.load_ta_project, -1)
+        self.activity.load_ta_project.show()
 
 
 """
