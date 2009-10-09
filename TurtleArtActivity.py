@@ -564,8 +564,17 @@ class TurtleArtActivity(activity.Activity):
         # Create a datastore object
         # save the current state of the project to the instance directory
 
-        import tempfile
-        tafd, tafile = tempfile.mkstemp(".ta")
+        # work-around Rainbow which doesn't seem to like tempfile.mkstemp
+        try:
+            tmppath = os.path.join(activity.get_activity_root(), "instance")
+        except:
+            # Early versions of Sugar (e.g., 656) didn't support
+            # get_activity_root()
+            tmppath = os.path.join( \
+                os.environ['HOME'], \
+                ".sugar/default/org.laptop.TurtleArtActivity/instance")
+
+        tafile = os.path.join(tmppath,"tmpfile.ta")
         print tafile
         try:
             tawindow.save_data(self.tw,tafile)
@@ -587,7 +596,6 @@ class TurtleArtActivity(activity.Activity):
         # Clean up
         dsobject.destroy()
         os.remove(tafile)
-        del tafd
         return
 
     """ Main toolbar button callbacks """

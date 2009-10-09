@@ -2,6 +2,10 @@
 
 * cleaned up code for pre-0.86 palettes
 * fixed keyboard shortcut bug in pre-0.86 palettes
+* fixed problem with int(None) in unselect
+* fixed problem with int(float) in unselect
+* fixed fence-post problem with searching off the end of blocks
+* work-around Rainbow problem with tmpfile
 
 71
 
