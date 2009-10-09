@@ -656,11 +656,15 @@ def unselect(tw):
         setlabel(tw.selected_block,'0')
 
     # put an upper and lower bound on numbers to prevent OverflowError
-    i = int(tw.selected_block.label)
-    if i > 1000000:
-        setlabel(tw.selected_block,'0')
-    elif i < -1000000:
-        setlabel(tw.selected_block,'0')
+    if tw.selected_block.label is not None:
+        try:
+            i = float(tw.selected_block.label)
+            if i > 1000000:
+                setlabel(tw.selected_block,'0')
+            elif i < -1000000:
+                setlabel(tw.selected_block,'0')
+        except ValueError:
+            pass
 
     hide(tw.select_mask)
     hide(tw.select_mask_string)
