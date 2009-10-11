@@ -1,3 +1,9 @@
+73
+
+* raise status flag when catching overflow error
+* clean up of de, it, fr, es artwork
+* fixed bug related to blocks running off the left edge
+
 72
 
 * cleaned up code for pre-0.86 palettes
