@@ -283,6 +283,7 @@ def setup_misc(tw):
     tw.status_shapes['emptybox'] = load_image(tw.path, '', 'emptybox')
     tw.status_shapes['nomedia'] = load_image(tw.path, '', 'nomedia')
     tw.status_shapes['nocode'] = load_image(tw.path, '', 'nocode')
+    tw.status_shapes['overflowerror'] = load_image, '', 'overflowerror')
     tw.status_shapes['syntaxerror'] = load_image(tw.path, '', 'syntaxerror')
     tw.status_spr = sprNew(tw,0,(tw.height-175), \
             tw.status_shapes['status'],True)
