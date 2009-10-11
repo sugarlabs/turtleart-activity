@@ -1014,8 +1014,6 @@ def kbinput(lc):
     lc.tw.keypress = ""
 
 def showlabel(lc,label):
-    print "showlabel: " + str(label)
-    print lc
     if label=='#nostack':
         shp = 'nostack'
         label=''
@@ -1042,7 +1040,6 @@ def showlabel(lc,label):
         label=''
     else:
         shp = 'status'
-    print shp
     setshape(lc.tw.status_spr, lc.tw.status_shapes[shp])
     setlabel(lc.tw.status_spr, label)
     setlayer(lc.tw.status_spr, 710)
