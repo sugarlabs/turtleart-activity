@@ -164,8 +164,8 @@ def button_press(tw, mask, x, y, verbose=False):
     tw.block_operation = 'click'
     if tw.selected_block!=None:
         unselect(tw)
-    # hide status block
-    setlayer(tw.status_spr,400)
+    else:
+        setlayer(tw.status_spr,400)
     spr = findsprite(tw,(x,y))
     tw.dx = 0
     tw.dy = 0
@@ -660,9 +660,11 @@ def unselect(tw):
         try:
             i = float(tw.selected_block.label)
             if i > 1000000:
-                setlabel(tw.selected_block,'0')
+                setlabel(tw.selected_block,'1')
+                showlabel(tw.lc,"#overflowerror")
             elif i < -1000000:
-                setlabel(tw.selected_block,'0')
+                setlabel(tw.selected_block,'-1')
+                showlabel(tw.lc,"#overflowerror")
         except ValueError:
             pass
 

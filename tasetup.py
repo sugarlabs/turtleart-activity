@@ -283,13 +283,14 @@ def setup_misc(tw):
     tw.status_shapes['emptybox'] = load_image(tw.path, '', 'emptybox')
     tw.status_shapes['nomedia'] = load_image(tw.path, '', 'nomedia')
     tw.status_shapes['nocode'] = load_image(tw.path, '', 'nocode')
-    tw.status_shapes['overflowerror'] = load_image, '', 'overflowerror')
+    tw.status_shapes['overflowerror'] = load_image(tw.path, '', 'overflowerror')
     tw.status_shapes['syntaxerror'] = load_image(tw.path, '', 'syntaxerror')
     tw.status_spr = sprNew(tw,0,(tw.height-175), \
             tw.status_shapes['status'],True)
     tw.status_spr.type = 'status'
     setlayer(tw.status_spr,400)
     # everything should be loaded at this point
+    # print tw.status_shapes
     tw.loaded = True
 
 def setup_selector(tw,name,y,blockdescriptions):

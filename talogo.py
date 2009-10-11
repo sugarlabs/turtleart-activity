@@ -627,9 +627,11 @@ def show_picture(lc, media, x, y, w, h):
             raise logoerror("#nomedia")
         # check to see if it is a movie
         print dsobject.file_path
+        print "object has file suffix of: " + dsobject.file_path[-4:]
         if dsobject.file_path[-4:] == '.ogv' or \
            dsobject.file_path[-4:] == '.vob' or \
            dsobject.file_path[-4:] == '.mp4' or \
+           dsobject.file_path[-4:] == '.wmv' or \
            dsobject.file_path[-4:] == '.mov':
             print "playing movie x:" + str(x) + " y:" + str(y) + " w:" \
                 + str(w) + " h:" + str(h)
@@ -1012,6 +1014,8 @@ def kbinput(lc):
     lc.tw.keypress = ""
 
 def showlabel(lc,label):
+    print "showlabel: " + str(label)
+    print lc
     if label=='#nostack':
         shp = 'nostack'
         label=''
@@ -1033,8 +1037,12 @@ def showlabel(lc,label):
     elif label=='#syntaxerror':
         shp = 'syntaxerror'
         label=''
+    elif label=='#overflowerror':
+        shp = 'overflowerror'
+        label=''
     else:
         shp = 'status'
+    print shp
     setshape(lc.tw.status_spr, lc.tw.status_shapes[shp])
     setlabel(lc.tw.status_spr, label)
     setlayer(lc.tw.status_spr, 710)
