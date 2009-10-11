@@ -496,13 +496,31 @@
          style="stop-color:#ffff00;stop-opacity:1"
          offset="1" />
     </linearGradient>
+    <linearGradient
+       x1="36.24942"
+       y1="341.4375"
+       x2="100.37442"
+       y2="341.4375"
+       id="linearGradient2543"
+       xlink:href="#linearGradient3239"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,64.88299)" />
+    <linearGradient
+       x1="37.495003"
+       y1="367.91702"
+       x2="107.84001"
+       y2="367.91702"
+       id="linearGradient2545"
+       xlink:href="#linearGradient3239"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,64.88299)" />
   </defs>
   <path
      d="M 0.4344301,0.5 L 0.37211997,486.41023 L 3.4959793,493.14297 L 8.369839,497.1072 L 15.031388,499.50288 L 128.8563,499.50288 L 135.70478,496.93866 L 141.65403,492.04729 L 144.37788,483.79171 L 144.41557,0.5 L 0.4344301,0.5 z"
      id="path23"
      style="fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1px;stroke-opacity:1" />
   <g
-     transform="matrix(0.5,0,0,0.5,37.154194,361.43212)"
+     transform="matrix(0.5,0,0,0.5,37.154194,374)"
      id="g2757">
     <g
        transform="translate(59.878677,53.67647)"
@@ -533,7 +551,7 @@
          x="65.035652"
          y="23.687109"
          id="tspan2595"
-         style="font-size:18px">speichere in</tspan>
+         style="font-size:18px">lege in</tspan>
     </text>
   </g>
   <rect
@@ -692,7 +710,7 @@
        x="32"
        y="286"
        id="tspan95"
-       style="font-size:9px">speichere</tspan>
+       style="font-size:9px">lege</tspan>
   </text>
   <text
      id="text75"
@@ -704,14 +722,16 @@
        style="font-size:9px">in</tspan>
   </text>
   <text
-     y="-2"
+     x="2.3480465"
+     y="-1.930431"
+     transform="scale(0.9652155,1.0360381)"
      id="text78"
-     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+     style="font-size:11.58258629px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="32"
-       y="302"
+       x="33.234943"
+       y="291.49509"
        id="tspan80"
-       style="font-size:9px">Rahmen 1</tspan>
+       style="font-size:8.68693924px">Schachtel1</tspan>
   </text>
   <path
      d="M 70.522547,284.44247 L 73.856047,284.44247 L 73.856047,287.10927 L 78.522947,287.10927 L 78.522947,284.44247 L 139.526,284.44247 L 139.526,297.77647 L 78.522947,297.77647 L 78.522947,295.10967 L 73.856047,295.10967 L 73.856047,297.77647 L 70.522547,297.77647 L 70.522547,284.44247 z"
@@ -726,7 +746,7 @@
        x="108"
        y="294.84424"
        id="tspan105"
-       style="font-size:11px">Rahmen 1</tspan>
+       style="font-size:10.5px">Schachtel1</tspan>
   </text>
   <g
      transform="matrix(0.6667,0,0,0.6667,7.4928819,323.36927)"
@@ -752,7 +772,7 @@
        x="32"
        y="332"
        id="tspan117"
-       style="font-size:9px">speichere</tspan>
+       style="font-size:9px">lege</tspan>
   </text>
   <text
      id="text93"
@@ -764,14 +784,16 @@
        style="font-size:9px">in</tspan>
   </text>
   <text
-     y="-2"
+     x="2.2501702"
+     y="-1.9414951"
+     transform="scale(0.9707476,1.0301339)"
      id="text96"
-     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+     style="font-size:11.64897156px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="32"
-       y="348"
+       x="33.314095"
+       y="337.82013"
        id="tspan98"
-       style="font-size:9px">Rahmen 2</tspan>
+       style="font-size:8.73672771px">Schachtel2</tspan>
   </text>
   <path
      d="M 70.522547,330.86965 L 73.856047,330.86965 L 73.856047,333.53645 L 78.522947,333.53645 L 78.522947,330.86965 L 139.526,330.86965 L 139.526,344.20365 L 78.522947,344.20365 L 78.522947,341.53685 L 73.856047,341.53685 L 73.856047,344.20365 L 70.522547,344.20365 L 70.522547,330.86965 z"
@@ -786,7 +808,7 @@
        x="108"
        y="341.84424"
        id="tspan127"
-       style="font-size:11px">Rahmen 2</tspan>
+       style="font-size:10.5px">Schachtel2</tspan>
   </text>
   <path
      d="M 46.749995,216.9838 L 49.249995,216.9838 L 49.249995,218.9838 L 52.749995,218.9838 L 52.749995,216.9838 L 98.5,216.9838 L 98.5,226.9838 L 52.749995,226.9838 L 52.749995,224.9838 L 49.249995,224.9838 L 49.249995,226.9838 L 46.749995,226.9838 L 46.749995,216.9838 z"
@@ -796,27 +818,23 @@
      d="M 46.124998,182.3588 L 48.624998,182.3588 L 48.624998,184.3588 L 52.124998,184.3588 L 52.124998,182.3588 L 97.875,182.3588 L 97.875,192.3588 L 52.124998,192.3588 L 52.124998,190.3588 L 48.624998,190.3588 L 48.624998,192.3588 L 46.124998,192.3588 L 46.124998,182.3588 z"
      id="path3499"
      style="fill:#ffffff;fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <path
-     d="M 37.995002,426.1 L 41.345002,426.1 L 41.345002,428.78 L 46.035002,428.78 L 46.035002,426.1 L 107.34001,426.1 L 107.34001,439.5 L 46.035002,439.5 L 46.035002,436.82 L 41.345002,436.82 L 41.345002,439.5 L 37.995002,439.5 L 37.995002,426.1 z"
-     id="path2709"
-     style="fill:url(#linearGradient3349);fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <text
-     id="text111"
-     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
-    <tspan
-       x="72.5"
-       y="437"
-       id="tspan155"
-       style="font-size:11px">Name</tspan>
-  </text>
-  <path
-     d="M 42.749422,398.75799 L 42.749422,403.25799 L 39.374422,403.25799 L 39.374422,401.25799 L 36.749422,401.25799 L 36.749422,411.25799 L 39.374422,411.25799 L 39.374422,409.25799 L 42.749422,409.25799 L 42.749422,413.88299 L 99.874422,413.75799 L 99.874422,398.75799 L 42.749422,398.75799 z"
-     id="path2718"
-     style="fill:url(#linearGradient3341);fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <path
-     d="M 45.874422,401.25799 L 48.374422,401.25799 L 48.374422,403.25799 L 51.874422,403.25799 L 51.874422,401.25799 L 97.624427,401.25799 L 97.624427,411.25799 L 51.874422,411.25799 L 51.874422,409.25799 L 48.374422,409.25799 L 48.374422,411.25799 L 45.874422,411.25799 L 45.874422,401.25799 z"
-     id="path2720"
-     style="fill:#ffffff;fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <g
+     transform="translate(0,12)"
+     id="g2538">
+    <path
+       d="M 37.995002,426.1 L 41.345002,426.1 L 41.345002,428.78 L 46.035002,428.78 L 46.035002,426.1 L 107.34001,426.1 L 107.34001,439.5 L 46.035002,439.5 L 46.035002,436.82 L 41.345002,436.82 L 41.345002,439.5 L 37.995002,439.5 L 37.995002,426.1 z"
+       id="path2709"
+       style="fill:url(#linearGradient2545);fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       id="text111"
+       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+      <tspan
+         x="72.5"
+         y="437"
+         id="tspan155"
+         style="font-size:11px">Name</tspan>
+    </text>
+  </g>
   <path
      d="M 97,50 C 97.09921,56.79081 77.5,62.5 77.5,62.5 L 77.5,62.5 L 77.5,64.5 L 67.5,64.5 L 67.5,62.5 C 67.5,62.5 47.90079,56.79081 48,50 C 48.12259,41.60893 64.10804,37.5 72.5,37.5 C 80.89196,37.5 96.87741,41.60893 97,50 z"
      id="path2715"
@@ -832,26 +850,38 @@
   </text>
   <text
      x="39.824059"
-     y="33.31786"
+     y="45.885738"
      id="text2769"
      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="71.824059"
-       y="383.31787"
+       y="395.88574"
        id="tspan2771"
-       style="font-size:9px">Rahmen</tspan>
+       style="font-size:9px">Schachtel</tspan>
   </text>
-  <text
-     x="43.714161"
-     y="59.332138"
-     id="text2773"
-     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
-    <tspan
-       x="75.714157"
-       y="409.33215"
-       id="tspan2775"
-       style="font-size:9px">Rahmen</tspan>
-  </text>
+  <g
+     transform="translate(4.188078,12.01701)"
+     id="g2532">
+    <path
+       d="M 42.749422,398.75799 L 42.749422,403.25799 L 39.374422,403.25799 L 39.374422,401.25799 L 36.749422,401.25799 L 36.749422,411.25799 L 39.374422,411.25799 L 39.374422,409.25799 L 42.749422,409.25799 L 42.749422,413.88299 L 99.874422,413.75799 L 99.874422,398.75799 L 42.749422,398.75799 z"
+       id="path2718"
+       style="fill:url(#linearGradient2543);fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       d="M 45.874422,401.25799 L 48.374422,401.25799 L 48.374422,403.25799 L 51.874422,403.25799 L 51.874422,401.25799 L 97.624427,401.25799 L 97.624427,411.25799 L 51.874422,411.25799 L 51.874422,409.25799 L 48.374422,409.25799 L 48.374422,411.25799 L 45.874422,411.25799 L 45.874422,401.25799 z"
+       id="path2720"
+       style="fill:#ffffff;fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       x="43.714161"
+       y="59.332138"
+       id="text2773"
+       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+      <tspan
+         x="75.714157"
+         y="409.33215"
+         id="tspan2775"
+         style="font-size:9px">Schachtel</tspan>
+    </text>
+  </g>
   <text
      x="42.82906"
      y="-159.55952"

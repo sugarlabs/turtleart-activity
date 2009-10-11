@@ -53,7 +53,7 @@
        x="37"
        y="20"
        id="tspan20"
-       style="font-size:14px">speichere</tspan>
+       style="font-size:14px">lege</tspan>
   </text>
   <text
      id="text22"
@@ -65,14 +65,14 @@
        style="font-size:14px">in</tspan>
   </text>
   <text
-     x="1.9078063"
-     transform="scale(0.9735221,1.0271981)"
+     x="6.7781653"
+     transform="scale(0.9143514,1.0936715)"
      id="text26"
-     style="font-size:17.52339745px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+     style="font-size:16.45832634px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="37.928123"
-       y="46.729061"
+       x="40.609169"
+       y="43.888866"
        id="tspan28"
-       style="font-size:13.62930965px">Rahmen 2</tspan>
+       style="font-size:12.80092049px">Schachtel 2</tspan>
   </text>
 </svg>

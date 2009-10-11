@@ -654,40 +654,44 @@
      id="path154"
      style="fill:url(#linearGradient3405);fill-opacity:1;stroke:#00a000;stroke-width:1;stroke-opacity:1" />
   <text
-     x="0.10390821"
-     y="24.727358"
+     x="9.2291288"
+     y="23.6712"
+     transform="scale(0.9572879,1.0446178)"
      id="text156"
-     style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+     style="font-size:7.65830326px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="72.103905"
-       y="414.72736"
+       x="78.153854"
+       y="397.01349"
        id="tspan159"
-       style="font-size:10.5px">coordinata x</tspan>
+       style="font-size:10.05152321px">coordinata x</tspan>
   </text>
   <path
      d="M 38,429 L 41,429 L 41,432 L 46,432 L 46,429 L 107,429 L 107,443 L 46,443 L 46,440 L 41,440 L 41,443 L 38,443 L 38,429 z"
      id="path161"
      style="fill:url(#linearGradient3413);fill-opacity:1;stroke:#00a000;stroke-width:1;stroke-opacity:1" />
   <text
-     y="26"
+     x="9.3407059"
+     y="24.863623"
+     transform="scale(0.9562932,1.0457044)"
      id="text163"
-     style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+     style="font-size:7.65034533px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="72"
-       y="439"
+       x="78.193817"
+       y="419.81268"
        id="tspan165"
-       style="font-size:10.5px">coordinata y</tspan>
+       style="font-size:10.04107857px">coordinata y</tspan>
   </text>
   <path
      d="M 38,453 L 41,453 L 41,456 L 46,456 L 46,453 L 107,453 L 107,467 L 46,467 L 46,464 L 41,464 L 41,467 L 38,467 L 38,453 z"
      id="path167"
      style="fill:url(#linearGradient3421);fill-opacity:1;stroke:#00a000;stroke-width:1;stroke-opacity:1" />
   <text
+     x="4"
      y="26"
      id="text169"
      style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="72"
+       x="76"
        y="463"
        id="tspan171"
        style="font-size:10.5px">direzione</tspan>

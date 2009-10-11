@@ -496,6 +496,32 @@
          style="stop-color:#ffff00;stop-opacity:1"
          offset="1" />
     </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="22"
+       x2="128.68382"
+       y2="22"
+       id="linearGradient2559"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="36.24942"
+       y1="341.4375"
+       x2="100.37442"
+       y2="341.4375"
+       id="linearGradient2561"
+       xlink:href="#linearGradient3239"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,64.88299)" />
+    <linearGradient
+       x1="37.495003"
+       y1="367.91702"
+       x2="107.84001"
+       y2="367.91702"
+       id="linearGradient2563"
+       xlink:href="#linearGradient3239"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-0.167506,64.88299)" />
   </defs>
   <path
      d="M 0.4344301,0.5 L 0.37211997,486.41023 L 3.4959793,493.14297 L 8.369839,497.1072 L 15.031388,499.50288 L 128.8563,499.50288 L 135.70478,496.93866 L 141.65403,492.04729 L 144.37788,483.79171 L 144.41557,0.5 L 0.4344301,0.5 z"
@@ -753,27 +779,23 @@
      d="M 46.124998,182.3588 L 48.624998,182.3588 L 48.624998,184.3588 L 52.124998,184.3588 L 52.124998,182.3588 L 97.875,182.3588 L 97.875,192.3588 L 52.124998,192.3588 L 52.124998,190.3588 L 48.624998,190.3588 L 48.624998,192.3588 L 46.124998,192.3588 L 46.124998,182.3588 z"
      id="path3499"
      style="fill:#ffffff;fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <path
-     d="M 37.827496,426.1 L 41.177496,426.1 L 41.177496,428.78 L 45.867496,428.78 L 45.867496,426.1 L 107.1725,426.1 L 107.1725,439.5 L 45.867496,439.5 L 45.867496,436.82 L 41.177496,436.82 L 41.177496,439.5 L 37.827496,439.5 L 37.827496,426.1 z"
-     id="path2709"
-     style="fill:url(#linearGradient3349);fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <text
-     id="text111"
-     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
-    <tspan
-       x="72.5"
-       y="437"
-       id="tspan155"
-       style="font-size:11px">nom</tspan>
-  </text>
-  <path
-     d="M 42.749422,398.75799 L 42.749422,403.25799 L 39.374422,403.25799 L 39.374422,401.25799 L 36.749422,401.25799 L 36.749422,411.25799 L 39.374422,411.25799 L 39.374422,409.25799 L 42.749422,409.25799 L 42.749422,413.88299 L 99.874422,413.75799 L 99.874422,398.75799 L 42.749422,398.75799 z"
-     id="path2718"
-     style="fill:url(#linearGradient3341);fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <path
-     d="M 45.874422,401.25799 L 48.374422,401.25799 L 48.374422,403.25799 L 51.874422,403.25799 L 51.874422,401.25799 L 97.624427,401.25799 L 97.624427,411.25799 L 51.874422,411.25799 L 51.874422,409.25799 L 48.374422,409.25799 L 48.374422,411.25799 L 45.874422,411.25799 L 45.874422,401.25799 z"
-     id="path2720"
-     style="fill:#ffffff;fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <g
+     transform="translate(0,12)"
+     id="g2554">
+    <path
+       d="M 37.827496,426.1 L 41.177496,426.1 L 41.177496,428.78 L 45.867496,428.78 L 45.867496,426.1 L 107.1725,426.1 L 107.1725,439.5 L 45.867496,439.5 L 45.867496,436.82 L 41.177496,436.82 L 41.177496,439.5 L 37.827496,439.5 L 37.827496,426.1 z"
+       id="path2709"
+       style="fill:url(#linearGradient2563);fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       id="text111"
+       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+      <tspan
+         x="72.5"
+         y="437"
+         id="tspan155"
+         style="font-size:11px">nom</tspan>
+    </text>
+  </g>
   <path
      d="M 97,50 C 97.09921,56.79081 77.5,62.5 77.5,62.5 L 77.5,62.5 L 77.5,64.5 L 67.5,64.5 L 67.5,62.5 C 67.5,62.5 47.90079,56.79081 48,50 C 48.12259,41.60893 64.10804,37.5 72.5,37.5 C 80.89196,37.5 96.87741,41.60893 97,50 z"
      id="path2715"
@@ -788,62 +810,78 @@
        style="font-size:8px">commencer</tspan>
   </text>
   <g
-     transform="matrix(0.5,0,0,0.5,35.89879,364.04453)"
-     id="g2700">
+     transform="translate(0,9.95547)"
+     id="g2536">
     <g
-       transform="translate(59.878677,53.67647)"
-       id="g2533">
+       transform="matrix(0.5,0,0,0.5,35.89879,364.04453)"
+       id="g2700">
+      <g
+         transform="translate(59.878677,53.67647)"
+         id="g2533">
+        <path
+           d="M 64.871323,-38.92647 L 81.371323,-38.92647 L 81.371323,-32.92647 L 77.371323,-32.92647 L 77.371323,-35.92647 L 66.871323,-35.92647"
+           id="path2703"
+           style="fill:#e0e000;fill-opacity:1;stroke:#a08000;stroke-width:1.5;stroke-opacity:1" />
+        <path
+           d="M 64.871323,-11.42647 L 81.371323,-11.42647 L 81.371323,-17.42647 L 77.371323,-17.42647 L 77.371323,-14.42647 L 66.871323,-14.42647"
+           id="path2705"
+           style="fill:#e0e000;fill-opacity:1;stroke:#908000;stroke-width:1.5;stroke-opacity:1" />
+      </g>
       <path
-         d="M 64.871323,-38.92647 L 81.371323,-38.92647 L 81.371323,-32.92647 L 77.371323,-32.92647 L 77.371323,-35.92647 L 66.871323,-35.92647"
-         id="path2703"
-         style="fill:#e0e000;fill-opacity:1;stroke:#a08000;stroke-width:1.5;stroke-opacity:1" />
+         d="M 47,1 C 63,1 120,1 120,1 C 120,1 124.1318,3.4865526 125.5,5 C 126.89747,6.5458243 129,11 129,11 L 129,46 C 129,46 126.78295,49.693654 125.5,51 C 124.07044,52.455629 120,55 120,55 L 47,55 L 47,55 L 47,59 L 27,59 L 27,55 L 10,55 C 10,55 5.9295605,52.455629 4.5,51 C 3.2170498,49.693654 1,46 1,46 L 1,11 C 1,11 3.1025283,6.5458243 4.5,5 C 5.8682021,3.4865526 10,1 10,1 L 27,1 L 27,6 L 47,6 L 47,1 z"
+         id="path2707"
+         style="fill:url(#linearGradient2559);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1" />
       <path
-         d="M 64.871323,-11.42647 L 81.371323,-11.42647 L 81.371323,-17.42647 L 77.371323,-17.42647 L 77.371323,-14.42647 L 66.871323,-14.42647"
-         id="path2705"
-         style="fill:#e0e000;fill-opacity:1;stroke:#908000;stroke-width:1.5;stroke-opacity:1" />
+         d="M 13,28 L 18,28 L 18,32 L 24.999999,32 L 24.999999,28 L 116.50001,28 L 116.50001,48 L 24.999999,48 L 24.999999,44 L 18,44 L 18,48 L 13,48 L 13,28 z"
+         id="path9"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-opacity:1" />
+      <text
+         x="28.035656"
+         y="-3.3128912"
+         id="text2593"
+         style="font-size:18px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+        <tspan
+           x="65.035652"
+           y="23.687109"
+           id="tspan2595"
+           style="font-size:18px">range dans la</tspan>
+      </text>
     </g>
-    <path
-       d="M 47,1 C 63,1 120,1 120,1 C 120,1 124.1318,3.4865526 125.5,5 C 126.89747,6.5458243 129,11 129,11 L 129,46 C 129,46 126.78295,49.693654 125.5,51 C 124.07044,52.455629 120,55 120,55 L 47,55 L 47,55 L 47,59 L 27,59 L 27,55 L 10,55 C 10,55 5.9295605,52.455629 4.5,51 C 3.2170498,49.693654 1,46 1,46 L 1,11 C 1,11 3.1025283,6.5458243 4.5,5 C 5.8682021,3.4865526 10,1 10,1 L 27,1 L 27,6 L 47,6 L 47,1 z"
-       id="path2707"
-       style="fill:url(#linearGradient3172);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1" />
-    <path
-       d="M 13,28 L 18,28 L 18,32 L 24.999999,32 L 24.999999,28 L 116.50001,28 L 116.50001,48 L 24.999999,48 L 24.999999,44 L 18,44 L 18,48 L 13,48 L 13,28 z"
-       id="path9"
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-opacity:1" />
     <text
-       x="28.035656"
-       y="-3.3128912"
-       id="text2593"
-       style="font-size:18px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+       x="40.312012"
+       y="36.737"
+       id="text2712"
+       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
       <tspan
-         x="65.035652"
-         y="23.687109"
-         id="tspan2595"
-         style="font-size:18px">range dans la</tspan>
+         x="72.312012"
+         y="386.737"
+         id="tspan2714"
+         style="font-size:10px">boîte</tspan>
     </text>
   </g>
-  <text
-     x="40.312012"
-     y="36.737"
-     id="text2712"
-     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
-    <tspan
-       x="72.312012"
-       y="386.737"
-       id="tspan2714"
-       style="font-size:10px">boîte</tspan>
-  </text>
-  <text
-     x="40.312012"
-     y="59.708038"
-     id="text2716"
-     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
-    <tspan
-       x="72.312012"
-       y="409.70804"
-       id="tspan2718"
-       style="font-size:10px">boîte</tspan>
-  </text>
+  <g
+     transform="translate(4.188078,12.01701)"
+     id="g2548">
+    <path
+       d="M 42.749422,398.75799 L 42.749422,403.25799 L 39.374422,403.25799 L 39.374422,401.25799 L 36.749422,401.25799 L 36.749422,411.25799 L 39.374422,411.25799 L 39.374422,409.25799 L 42.749422,409.25799 L 42.749422,413.88299 L 99.874422,413.75799 L 99.874422,398.75799 L 42.749422,398.75799 z"
+       id="path2718"
+       style="fill:url(#linearGradient2561);fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       d="M 45.874422,401.25799 L 48.374422,401.25799 L 48.374422,403.25799 L 51.874422,403.25799 L 51.874422,401.25799 L 97.624427,401.25799 L 97.624427,411.25799 L 51.874422,411.25799 L 51.874422,409.25799 L 48.374422,409.25799 L 48.374422,411.25799 L 45.874422,411.25799 L 45.874422,401.25799 z"
+       id="path2720"
+       style="fill:#ffffff;fill-opacity:1;stroke:#c0a000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       x="40.312012"
+       y="59.708038"
+       id="text2716"
+       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+      <tspan
+         x="72.312012"
+         y="409.70804"
+         id="tspan2718"
+         style="font-size:10px">boîte</tspan>
+    </text>
+  </g>
   <text
      x="35.312016"
      y="53.784298"
@@ -865,7 +903,7 @@
          x="-54.507545"
          y="111.43907"
          id="rect2728" /></flowRegion><flowPara
-       id="flowPara2730"></flowPara></flowRoot>  <text
+       id="flowPara2730" /></flowRoot>  <text
      x="35.312012"
      y="88.354309"
      id="text2732"

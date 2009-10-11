@@ -35,12 +35,14 @@
      id="path2664"
      style="fill:url(#linearGradient3172);fill-opacity:1;stroke:#00a0a0;stroke-width:2;stroke-opacity:1" />
   <text
+     x="11.323021"
+     transform="scale(0.9548771,1.0472552)"
      id="text2666"
-     style="font-size:16px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+     style="font-size:15.27803421px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="52"
-       y="15.5"
+       x="60.976631"
+       y="14.800595"
        id="tspan2668"
-       style="font-size:14px">taille du texte</tspan>
+       style="font-size:13.36827946px">taille du texte</tspan>
   </text>
 </svg>

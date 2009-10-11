@@ -244,6 +244,42 @@
        xlink:href="#linearGradient3876"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(0,-12)" />
+    <linearGradient
+       x1="37"
+       y1="312"
+       x2="107"
+       y2="312"
+       id="linearGradient2518"
+       xlink:href="#linearGradient3876"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,63)" />
+    <linearGradient
+       x1="37"
+       y1="337"
+       x2="107"
+       y2="337"
+       id="linearGradient2524"
+       xlink:href="#linearGradient3876"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,-2)" />
+    <linearGradient
+       x1="37"
+       y1="362"
+       x2="107"
+       y2="362"
+       id="linearGradient2529"
+       xlink:href="#linearGradient3876"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,-2)" />
+    <linearGradient
+       x1="37"
+       y1="337"
+       x2="107"
+       y2="337"
+       id="linearGradient2534"
+       xlink:href="#linearGradient3876"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,-2)" />
   </defs>
   <path
      d="M 0.5,0.5 L 0.5,486 L 3.6,492 L 8.5,496 L 15.2,499 L 129,499 L 135.8,496 L 141.8,492 L 144.5,486 L 144.5,0.5 L 0.5,0.5 z"
@@ -408,12 +444,12 @@
   </text>
   <text
      y="0"
-     id="text69"
+     id="text66"
      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="68"
        y="103"
-       id="tspan93"
+       id="tspan68"
        style="font-size:10.5px">dicke</tspan>
   </text>
   <path
@@ -541,44 +577,36 @@
          style="font-size:8px">Farbton</tspan>
     </text>
   </g>
-  <g
-     transform="translate(0,-2)"
-     id="g145">
-    <path
-       d="M 37,372 L 41,372 L 41,374 L 45,374 L 45,372 L 107,372 L 107,385 L 45,385 L 45,382 L 41,382 L 41,385 L 37,385 L 37,372 z"
-       id="path147"
-       style="fill:url(#linearGradient4878);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
-    <text
-       x="4"
-       y="65"
-       id="text149"
-       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
-      <tspan
-         x="76"
-         y="381"
-         id="tspan151"
-         style="font-size:10.5px">Stiftdicke</tspan>
-    </text>
-  </g>
-  <g
-     transform="translate(0,-2)"
-     id="g153">
-    <path
-       d="M 37,393 L 41,393 L 41,395 L 45,395 L 45,393 L 107,393 L 107,406 L 45,406 L 45,403 L 41,403 L 41,406 L 37,406 L 37,393 z"
-       id="path155"
-       style="fill:url(#linearGradient2633);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
-    <text
-       x="4"
-       y="61"
-       id="text157"
-       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
-      <tspan
-         x="76"
-         y="402"
-         id="tspan159"
-         style="font-size:10.5px">Farbe</tspan>
-    </text>
-  </g>
+  <path
+     d="M 37,370 L 41,370 L 41,372 L 45,372 L 45,370 L 107,370 L 107,383 L 45,383 L 45,380 L 41,380 L 41,383 L 37,383 L 37,370 z"
+     id="path147"
+     style="fill:url(#linearGradient2518);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+  <text
+     x="4"
+     y="64.414429"
+     id="text149"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="76"
+       y="380.41443"
+       id="tspan151"
+       style="font-size:10.5px">Stiftdicke</tspan>
+  </text>
+  <path
+     d="M 37,391 L 41,391 L 41,393 L 45,393 L 45,391 L 107,391 L 107,404 L 45,404 L 45,401 L 41,401 L 41,404 L 37,404 L 37,391 z"
+     id="path155"
+     style="fill:url(#linearGradient2524);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+  <text
+     x="4"
+     y="60.414429"
+     id="text157"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="76"
+       y="401.41443"
+       id="tspan159"
+       style="font-size:10.5px">Farbe</tspan>
+  </text>
   <g
      transform="translate(0,-1)"
      id="g161">
@@ -684,38 +712,33 @@
          style="font-size:10.5px">farbe</tspan>
     </text>
   </g>
-  <g
-     transform="translate(0,-2)"
-     id="g209">
-    <path
-       d="M 37,435 L 41,435 L 41,438 L 45,438 L 45,435 L 107,435 L 107,449 L 45,449 L 45,446 L 41,446 L 41,449 L 37,449 L 37,435 z"
-       id="path211"
-       style="fill:url(#linearGradient2629);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
-    <text
-       id="text213"
-       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
-      <tspan
-         x="76"
-         y="445"
-         id="tspan215"
-         style="font-size:10.5px">Schriftfarbe</tspan>
-    </text>
-  </g>
-  <g
-     transform="translate(0,-2)"
-     id="g217">
-    <path
-       d="M 37,456 L 41,456 L 41,459 L 45,459 L 45,456 L 107,456 L 107,470 L 45,470 L 45,467 L 41,467 L 41,470 L 37,470 L 37,456 z"
-       id="path219"
-       style="fill:url(#linearGradient2627);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
-    <text
-       id="text221"
-       style="font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
-      <tspan
-         x="76"
-         y="466"
-         id="tspan223"
-         style="font-size:10.5px">Schriftdicke</tspan>
-    </text>
-  </g>
+  <path
+     d="M 37,433 L 41,433 L 41,436 L 45,436 L 45,433 L 107,433 L 107,447 L 45,447 L 45,444 L 41,444 L 41,447 L 37,447 L 37,433 z"
+     id="path211"
+     style="fill:url(#linearGradient2534);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+  <text
+     y="-1.085575"
+     id="text213"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="76"
+       y="443.91443"
+       id="tspan215"
+       style="font-size:10.5px">Schriftfarbe</tspan>
+  </text>
+  <path
+     d="M 37,454 L 41,454 L 41,457 L 45,457 L 45,454 L 107,454 L 107,468 L 45,468 L 45,465 L 41,465 L 41,468 L 37,468 L 37,454 z"
+     id="path219"
+     style="fill:url(#linearGradient2529);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
+  <text
+     x="-0.2486535"
+     y="-1.0855794"
+     id="text221"
+     style="font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="75.751343"
+       y="464.91443"
+       id="tspan223"
+       style="font-size:10.5px">Schriftdicke</tspan>
+  </text>
 </svg>

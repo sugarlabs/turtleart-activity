@@ -694,11 +694,12 @@
      id="path154"
      style="fill:url(#linearGradient3405);fill-opacity:1;stroke:#00a000;stroke-width:1;stroke-opacity:1" />
   <text
+     x="2"
      y="26"
      id="text156"
      style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="72"
+       x="74"
        y="416"
        id="tspan159"
        style="font-size:10.5px">x-Wert</tspan>
@@ -708,11 +709,12 @@
      id="path161"
      style="fill:url(#linearGradient3413);fill-opacity:1;stroke:#00a000;stroke-width:1;stroke-opacity:1" />
   <text
+     x="2"
      y="26"
      id="text163"
      style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="72"
+       x="74"
        y="439"
        id="tspan165"
        style="font-size:10.5px">y-Wert</tspan>
@@ -722,11 +724,12 @@
      id="path167"
      style="fill:url(#linearGradient3421);fill-opacity:1;stroke:#00a000;stroke-width:1;stroke-opacity:1" />
   <text
+     x="4"
      y="26"
      id="text169"
      style="font-size:8px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="72"
+       x="76"
        y="463"
        id="tspan171"
        style="font-size:10.5px">Richtung</tspan>

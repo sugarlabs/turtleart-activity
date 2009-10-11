@@ -710,16 +710,16 @@
      id="path215"
      style="fill:url(#linearGradient2630);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
   <text
-     x="10.745234"
-     y="-1.8579415"
-     transform="scale(0.9289708,1.0764602)"
+     x="32.021378"
+     y="-1.2448984"
+     transform="scale(0.815623,1.2260566)"
      id="text217"
-     style="font-size:11.14764977px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+     style="font-size:9.78747749px;text-align:center;line-height:125%;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="79.489075"
-       y="411.53406"
+       x="92.377495"
+       y="361.70737"
        id="tspan219"
-       style="font-size:8.36073685px">couleur du texte</tspan>
+       style="font-size:9.21885014px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">couleur du texte</tspan>
   </text>
   <g
      transform="translate(0,-2)"
@@ -729,13 +729,15 @@
        id="path223"
        style="fill:url(#linearGradient2627);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1" />
     <text
+       x="16.042669"
+       transform="scale(0.9094267,1.0995938)"
        id="text225"
-       style="font-size:10px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+       style="font-size:9.09426689px;text-align:center;line-height:125%;text-anchor:middle;font-family:Bitstream Vera Sans">
       <tspan
-         x="74"
-         y="466"
+         x="83.34024"
+         y="423.79285"
          id="tspan227"
-         style="font-size:9px">taille du texte</tspan>
+         style="font-size:9.54898071px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans">taille du texte</tspan>
     </text>
   </g>
 </svg>
