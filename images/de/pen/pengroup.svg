@@ -392,7 +392,7 @@
      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="68"
-       y="87"
+       y="83"
        id="tspan90"
        style="font-size:10.5px">setze</tspan>
   </text>
@@ -402,9 +402,19 @@
      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="68"
-       y="99"
+       y="93"
        id="tspan93"
-       style="font-size:10.5px">Farbton</tspan>
+       style="font-size:10.5px">Stift-</tspan>
+  </text>
+  <text
+     y="0"
+     id="text69"
+     style="font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
+    <tspan
+       x="68"
+       y="103"
+       id="tspan93"
+       style="font-size:10.5px">dicke</tspan>
   </text>
   <path
      d="M 90,125 L 101,125 L 101,129 L 98,129 L 98,127 L 91,127"
