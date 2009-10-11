@@ -344,6 +344,11 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
             tw.draggroup = findgroup(find_top_block(spr))
         else:
             tw.draggroup = findgroup(spr)
+        # check to see if any block ends up with a negative x
+        for b in tw.draggroup:
+            if b.x+dx < 0:
+                dx += -(b.x+dx)
+        # move the stack
         for b in tw.draggroup:
             move(b,(b.x+dx, b.y+dy))
     elif spr.type=='turtle':
