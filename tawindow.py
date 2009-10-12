@@ -85,7 +85,6 @@ def twNew(win, path, lang, parent=None):
     tw.height = gtk.gdk.screen_height() 
     # starting from command line
     if parent is None:
-        win.set_size_request(tw.width, tw.height)
         win.show_all()
     # starting from Sugar
     else:

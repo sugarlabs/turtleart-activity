@@ -27,6 +27,7 @@ import gobject
 import os
 import os.path
 import locale
+from gettext import gettext as _
 
 from tawindow import *
 
@@ -50,47 +51,102 @@ Caveats:
     * no Sugar Journal access
     * no Sugar sharing
 """
-def main():
-    # make sure Sugar paths are present
-    tapath = os.path.join(os.environ['HOME'],'.sugar','default', \
-                          'org.laptop.TurtleArtActivity')
-    map (makepath, (os.path.join(tapath,'data/'), \
-                    os.path.join(tapath,'instance/')))
+class TurtleMain():
+    def __init__(self):
+        tw = None
+        # make sure Sugar paths are present
+        tapath = os.path.join(os.environ['HOME'],'.sugar','default', \
+                              'org.laptop.TurtleArtActivity')
+        map (makepath, (os.path.join(tapath,'data/'), \
+                        os.path.join(tapath,'instance/')))
 
-    """
-    Find closest match for the user's $LANG
-    """
-    lang = locale.getdefaultlocale()[0]
-    if not lang:
-        lang = 'en'
-    lang = lang[0:2]
+        """
+        Find closest match for the user's $LANG
+        """
+        lang = locale.getdefaultlocale()[0]
+        if not lang:
+            lang = 'en'
+        lang = lang[0:2]
     
-    # win = gtk.Window(gtk.WINDOW_TOPLEVEL)
-    win = gtk.Window()
-    win.set_has_frame(True)
-    win.set_decorated(True)
-    twNew(win, os.path.abspath('.'), lang)
-    win.connect("destroy", lambda w: gtk.main_quit())
+        win = gtk.Window(gtk.WINDOW_TOPLEVEL)
+        win.maximize()
+        win.set_title(_("Turtle Art"))
+        win.connect("delete_event", lambda w,e: gtk.main_quit())
+
+        menu = gtk.Menu()
+        """
+        menu_items = gtk.MenuItem(_("Hide palette"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_palette_cb)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Hide blocks"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_hideshow_cb)
+        menu_items.show()
+        """
+        menu_items = gtk.MenuItem(_("Clean"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_eraser_cb)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Run"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_run_cb)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Step"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_step_cb)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Stop"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_stop_cb)
+        menu_items.show()
+        project_menu = gtk.MenuItem("Tools")
+        project_menu.show()
+        project_menu.set_submenu(menu)
+
+        vbox = gtk.VBox(False, 0)
+        win.add(vbox)
+        vbox.show()
+
+        menu_bar = gtk.MenuBar()
+        vbox.pack_start(menu_bar, False, False, 2)
+        menu_bar.show()
+
+        canvas = gtk.DrawingArea()
+        vbox.pack_end(canvas, True, True)
+        canvas.show()
+
+        menu_bar.append(project_menu)
+
+        win.show_all()
+        self.tw = twNew(canvas, os.path.abspath('.'), lang)
+        self.tw.win = canvas
+
+    def _do_eraser_cb(self, widget):
+        eraser_button(self.tw)
+        return
+
+    def _do_run_cb(self, widget):
+        self.tw.lc.trace = 0
+        runbutton(self.tw, 0)
+        return
+
+    def _do_step_cb(self, widget):
+        self.tw.lc.trace = 0
+        runbutton(self.tw, 3)
+        return
+
+    def _do_stop_cb(self, widget):
+        self.tw.lc.trace = 0
+        stop_button(self.tw)
+        return
+
+
+def main():
     gtk.main()
     return 0
 
 if __name__ == "__main__":
+    TurtleMain()
     main()
 
-"""
---- sugar-turtleart-activity-46.orig/turtleart.py
-+++ sugar-turtleart-activity-46/turtleart.py
-@@ -57,7 +57,7 @@
-                    os.path.join(tapath,'instance/')))
-
-    win1 = gtk.Window(gtk.WINDOW_TOPLEVEL)
--    twNew(win1, os.path.abspath('.'),os.environ['LANG'])
-+    twNew(win1, os.path.abspath('.'),os.environ.get('LANG', 'C'))
-    win1.connect("destroy", lambda w: gtk.main_quit())
-    gtk.main()
-    return 0
-
-I suspect there are still problems left, as it seem to read the svg
-files from the build directory, and not from the installed files.
-Have not investiaged it yet.
-"""
