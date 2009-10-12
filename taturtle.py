@@ -292,3 +292,4 @@ def invalt(t,x,y,w,h):
     t.tw.area.invalidate_rect(rect, False)
 
 
+

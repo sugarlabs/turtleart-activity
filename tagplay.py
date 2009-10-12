@@ -35,7 +35,11 @@ import gobject
 import time
 gobject.threads_init()
 
-from sugar.datastore import datastore
+try:
+    from sugar.datastore import datastore
+except:
+    # probably launched from outside of Sugar
+    pass
 from talogo import *
 
 class Gplay:

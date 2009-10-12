@@ -95,7 +95,7 @@ def setlabel(spr,label):
 
 def inval(spr):
     spr.tw.area.invalidate_rect(gtk.gdk.Rectangle(spr.x,spr.y,spr.width, \
-                                                  spr.height), False)
+                                                      spr.height), False)
 
 def draw(spr):
     if isinstance(spr.image,gtk.gdk.Pixbuf):
@@ -111,22 +111,22 @@ def draw(spr):
             spr.draw_label(spr,str(spr.label))
 
 def hit(spr,pos):
-    x,y = pos
+    x, y = pos
     if x<spr.x: return False
-    if x>spr.x+spr.width: return False
+    if x>spr.x+spr.width-1: return False
     if y<spr.y: return False
-    if y>spr.y+spr.height: return False
+    if y>spr.y+spr.height-1: return False
     if isinstance(spr.image,gtk.gdk.Pixmap): return True
     if hasattr(spr, 'proto') and hasattr(spr.proto, 'name') and \
         spr.proto.name == 'journal':
             return True
-    dx,dy = x-spr.x, y-spr.y
+    dx, dy = x-spr.x, y-spr.y
     try:
         return ord(spr.image.get_pixels()[(dy*spr.width+dx)*4+3]) == 255
     except IndexError:
         if hasattr(spr, 'proto') and hasattr(spr.proto, 'name'):
             print spr.proto.name
-        print "IndexError: string index out of range" + str(dx) + " " \
+        print "IndexError: string index out of range: " + str(dx) + " " \
             + str(dy) + " " + str(spr.width) + " " + str(spr.height)
         return True
 
