@@ -3,6 +3,7 @@
 * raise status flag when catching overflow error
 * clean up of de, it, fr, es artwork
 * fixed bug related to blocks running off the left edge
+* cleaned up command-line code
 
 72
 
