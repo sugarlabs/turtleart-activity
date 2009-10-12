@@ -74,16 +74,30 @@ class TurtleMain():
         win.connect("delete_event", lambda w,e: gtk.main_quit())
 
         menu = gtk.Menu()
-        """
-        menu_items = gtk.MenuItem(_("Hide palette"))
+
+        menu_items = gtk.MenuItem(_("Open"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_open_cb)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Save"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_save_cb)
+        menu_items.show()
+        
+        activity_menu = gtk.MenuItem("File")
+        activity_menu.show()
+        activity_menu.set_submenu(menu)
+
+        menu = gtk.Menu()
+
+        menu_items = gtk.MenuItem(_("Palette"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_palette_cb)
         menu_items.show()
-        menu_items = gtk.MenuItem(_("Hide blocks"))
+        menu_items = gtk.MenuItem(_("Blocks"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_hideshow_cb)
         menu_items.show()
-        """
         menu_items = gtk.MenuItem(_("Clean"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_eraser_cb)
@@ -100,6 +114,7 @@ class TurtleMain():
         menu.append(menu_items)
         menu_items.connect("activate", self._do_stop_cb)
         menu_items.show()
+
         project_menu = gtk.MenuItem("Tools")
         project_menu.show()
         project_menu.set_submenu(menu)
@@ -116,11 +131,27 @@ class TurtleMain():
         vbox.pack_end(canvas, True, True)
         canvas.show()
 
+        menu_bar.append(activity_menu)
         menu_bar.append(project_menu)
 
         win.show_all()
         self.tw = twNew(canvas, os.path.abspath('.'), lang)
         self.tw.win = canvas
+
+    def _do_open_cb(self, widget):
+        load_file(self.tw, True)
+
+    def _do_save_cb(self, widget):
+        save_file(self.tw)
+
+    def _do_palette_cb(self, widget):
+        if self.tw.palette == True:
+            hideshow_palette(self.tw,False)
+        else:
+            hideshow_palette(self.tw,True)
+
+    def _do_hideshow_cb(self, widget):
+        hideshow_button(self.tw)
 
     def _do_eraser_cb(self, widget):
         eraser_button(self.tw)
