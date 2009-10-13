@@ -446,7 +446,7 @@ def import_from_journal(tw, spr):
                     load_image(tw, dsobject, spr)
                 elif spr.proto.name == 'audiooff':
                     setimage(spr,tw.media_shapes['audioon'])
-                elif:
+                else:
                     setimage(spr, tw.media_shapes['decson'])
                 spr.ds_id = dsobject.object_id
                 dsobject.destroy()
