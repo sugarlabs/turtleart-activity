@@ -103,7 +103,6 @@ def twNew(win, path, lang, parent=None):
     tw.dead_key = ""
     tw.area = win.window
     tw.gc = tw.area.new_gc()
-    # tw.window.textentry = gtk.Entry()
     # on an OLPC-XO-1, there is a scaling factor
     if os.path.exists('/sys/power/olpc-pm'):
         tw.lead = 1.6
@@ -425,12 +424,15 @@ def button_release(tw, x, y, verbose=False):
         elif tw.defdict.has_key(spr.proto.name):
             tw.selected_block = spr
             if spr.proto.name=='string':
-                # entry = gtk.Entry()
                 move(tw.select_mask_string, (spr.x-5,spr.y-5))
                 setlayer(tw.select_mask_string, 660)
                 tw.firstkey = True
             elif spr.proto.name in importblocks:
                 import_from_journal(tw, spr)
+        # if Python block is clicked before any code has been loaded
+        # initiate the chooser dialog
+        elif spr.proto.name=='nop' and tw.myblock==None:
+            tw.activity.import_py()
         else: run_stack(tw, spr)
 
 def import_from_journal(tw, spr):
@@ -773,17 +775,17 @@ def xy(event):
     return map(int, event.get_coords())
 
 def showPopup(block_name,tw):
-    if block_name in blocks_dict:
+    if blocks_dict.has_key(block_name):
         block_name_s = _(blocks_dict[block_name])
     else:
         block_name_s = _(block_name)
-    try:
+    if hover_dict.has_key(block_name):
         label = block_name_s + ": " + hover_dict[block_name]
-    except:
+    else:
         label = block_name_s
-    if hasattr(tw,"activity"):
+    if hasattr(tw, "activity"):
         tw.activity.hover_help_label.set_text(label)
         tw.activity.hover_help_label.show()
-    elif hasattr(tw,"win"):
+    elif hasattr(tw, "win"):
         tw.win.set_title(_("Turtle Art") + " — " + label)
     return 0

@@ -3,6 +3,7 @@
 * load start block for new projects
 * fixed bug with reloading descriptions from Journal
 * added hover help to command line version
+* initiate the import Python chooser when Python block is clicked
 
 73
 
