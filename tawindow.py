@@ -434,24 +434,27 @@ def button_release(tw, x, y, verbose=False):
         else: run_stack(tw, spr)
 
 def import_from_journal(tw, spr):
-    chooser = ObjectChooser('Choose image', None, gtk.DIALOG_MODAL | \
-        gtk.DIALOG_DESTROY_WITH_PARENT)
-    try:
-        result = chooser.run()
-        if result == gtk.RESPONSE_ACCEPT:
-            dsobject = chooser.get_selected_object()
-            # change block graphic to indicate that object is "loaded"
-            if spr.proto.name == 'journal':
-                load_image(tw, dsobject, spr)
-            elif spr.proto.name == 'audiooff':
-                setimage(spr,tw.media_shapes['audioon'])
-            else:
-                setimage(spr, tw.media_shapes['decson'])
-            spr.ds_id = dsobject.object_id
-            dsobject.destroy()
-    finally:
-        chooser.destroy()
-        del chooser
+    if hasattr(tw,"activity"):
+        chooser = ObjectChooser('Choose image', None,\
+                              gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+        try:
+            result = chooser.run()
+            if result == gtk.RESPONSE_ACCEPT:
+                dsobject = chooser.get_selected_object()
+                # change block graphic to indicate that object is "loaded"
+                if spr.proto.name == 'journal':
+                    load_image(tw, dsobject, spr)
+                elif spr.proto.name == 'audiooff':
+                    setimage(spr,tw.media_shapes['audioon'])
+                elif:
+                    setimage(spr, tw.media_shapes['decson'])
+                spr.ds_id = dsobject.object_id
+                dsobject.destroy()
+        finally:
+            chooser.destroy()
+            del chooser
+    else:
+        print "Journal Object Chooser unavailable from outside of Sugar"
 
 # Replace Journal block graphic with preview image
 def load_image(tw, picture, spr):
@@ -770,17 +773,17 @@ def xy(event):
     return map(int, event.get_coords())
 
 def showPopup(block_name,tw):
+    if block_name in blocks_dict:
+        block_name_s = _(blocks_dict[block_name])
+    else:
+        block_name_s = _(block_name)
+    try:
+        label = block_name_s + ": " + hover_dict[block_name]
+    except:
+        label = block_name_s
     if hasattr(tw,"activity"):
-        if block_name in blocks_dict:
-            block_name_s = _(blocks_dict[block_name])
-        else:
-            block_name_s = _(block_name)
-        
-        try:
-            label = block_name_s + ": " + hover_dict[block_name]
-        except:
-            label = block_name_s
-        # Use new toolbar
         tw.activity.hover_help_label.set_text(label)
         tw.activity.hover_help_label.show()
+    elif hasattr(tw,"win"):
+        tw.win.set_title(_("Turtle Art") + " — " + label)
     return 0

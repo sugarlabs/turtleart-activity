@@ -1,3 +1,9 @@
+74
+
+* load start block for new projects
+* fixed bug with reloading descriptions from Journal
+* added hover help to command line version
+
 73
 
 * raise status flag when catching overflow error

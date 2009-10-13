@@ -67,7 +67,7 @@ class TurtleMain():
         if not lang:
             lang = 'en'
         lang = lang[0:2]
-    
+        
         win = gtk.Window(gtk.WINDOW_TOPLEVEL)
         win.maximize()
         win.set_title(_("Turtle Art"))
@@ -136,7 +136,7 @@ class TurtleMain():
 
         win.show_all()
         self.tw = twNew(canvas, os.path.abspath('.'), lang)
-        self.tw.win = canvas
+        self.tw.win = win
 
     def _do_open_cb(self, widget):
         load_file(self.tw, True)
