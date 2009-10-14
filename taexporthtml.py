@@ -204,7 +204,6 @@ charset=UTF-8\">\n", ""),
                      if tp2 > 1: tp2 += 1
                      elif tp7 > 1: tp7 += 1
                  elif tp2 == 3:
-                     if tmp == "":
                      if d[0:8] == '#smedia_':
                          tmp += add_image(self,d)
                      elif d[0:8] == '#sdescr_':
