@@ -4,6 +4,8 @@
 * fixed bug with reloading descriptions from Journal
 * added hover help to command line version
 * initiate the import Python chooser when Python block is clicked
+* saving pastable code to html export
+* fixed some problems in export to HTML code
 
 73
 

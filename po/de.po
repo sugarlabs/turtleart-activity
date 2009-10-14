@@ -410,27 +410,27 @@ msgstr "Aufruf des Stapels einer benannten Aktion"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:106
 msgid "store numeric value in variable 1"
-msgstr "Zahlenwert in Variable 1 speichern"
+msgstr "Lege etwas in Schachtel 1"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:107
 msgid "variable 1 (numeric value)"
-msgstr "Variable 1 (Zahlenwert)"
+msgstr "Schachtel 1"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:108
 msgid "store numeric value in variable 2"
-msgstr "Zahlenwert in Variable 2 speichern"
+msgstr "Lege etwas in Schachtel 2"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:109
 msgid "variable 2 (numeric value)"
-msgstr "Variable 2 (Zahlenwert)"
+msgstr "Schachtel 2"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:110
 msgid "store numeric value in named variable"
-msgstr "Zahlenwert in benannter Variable speichern"
+msgstr "Lege etwas in eine Schachtel der du einen Namen gegeben hast."
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:111
 msgid "named variable (numeric value)"
-msgstr "benannte Variable (Zahlenwert)"
+msgstr "Schachtel der du einen Namen geben kannst."
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:112
 msgid "string value"
@@ -742,22 +742,22 @@ msgstr "Meine Blöcke"
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:43
 #: /home/walter/Desktop/turtleart-activity/svg/storeinbox1.py:40
 msgid "store in box 1"
-msgstr "speichere in Rahmen 1"
+msgstr "lege in Schachtel 1"
 
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:44
 #: /home/walter/Desktop/turtleart-activity/svg/box1.py:40
 msgid "box 1"
-msgstr "Rahmen 1"
+msgstr "Schachtel 1"
 
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:45
 #: /home/walter/Desktop/turtleart-activity/svg/storeinbox2.py:40
 msgid "store in box 2"
-msgstr "speichere in Rahmen 2"
+msgstr "lege in Schachtel 2"
 
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:46
 #: /home/walter/Desktop/turtleart-activity/svg/box2.py:40
 msgid "box 2"
-msgstr "Rahmen 2"
+msgstr "Schachtel 2"
 
 #: /home/walter/Desktop/turtleart-activity/svg/printheap.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:46
@@ -835,7 +835,7 @@ msgstr "drehe rechts"
 
 #: /home/walter/Desktop/turtleart-activity/svg/storein.py:40
 msgid "store in"
-msgstr "speichere in"
+msgstr "lege in"
 
 #: /home/walter/Desktop/turtleart-activity/svg/textsize.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:53

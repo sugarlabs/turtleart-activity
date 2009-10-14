@@ -689,7 +689,7 @@ msgstr "oculta los bloques"
 #: /home/walter/Desktop/turtleart-activity/svg/heading.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:55
 msgid "heading"
-msgstr "rumbo"
+msgstr "dirección"
 
 #: /home/walter/Desktop/turtleart-activity/svg/start.py:40
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:48
@@ -961,7 +961,7 @@ msgstr "y"
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:52
 #: /home/walter/Desktop/turtleart-activity/svg/seth.py:40
 msgid "set heading"
-msgstr "establecer la partida"
+msgstr "fijar dirección"
 
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:53
 #: /home/walter/Desktop/turtleart-activity/svg/xcor.py:40
@@ -1084,3 +1084,9 @@ msgstr "fijar xy"
 
 #~ msgid "vres"
 #~ msgstr "res v"
+
+
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:137
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1071
+msgid "Import project from the Journal"
+msgstr "Importar desde el Diario"

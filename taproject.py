@@ -45,12 +45,13 @@ import os.path
 from tasprites import *
 from taturtle import *
 from talogo import stop_logo
+from talogo import get_pixbuf_from_journal
 try:
     from sugar.datastore import datastore
 except:
     pass
 
-nolabel = ['audiooff', 'descriptionoff','journal']
+nolabel = ['audiooff', 'descriptionoff', 'journal']
 shape_dict = {'journal':'texton', \
               'descriptionoff':'decson', \
               'audiooff':'audioon'}
@@ -157,7 +158,7 @@ def load_spr(tw,b):
         btype, label = btype
     if btype == 'title':  # for backward compatibility
         btype = 'string'
-    if btype == 'journal' or btype == 'audiooff':
+    if btype == 'journal' or btype == 'audiooff' or btype == 'descriptionoff':
         media = label
         label = None
     proto = tw.protodict[btype]
@@ -173,7 +174,6 @@ def load_spr(tw,b):
             spr.ds_id = dsobject.object_id
             setimage(spr, tw.media_shapes[shape_dict[spr.proto.name]])
             if spr.proto.name == 'journal':
-                from talogo import get_pixbuf_from_journal
                 pixbuf = get_pixbuf_from_journal \
                     (dsobject,spr.width,spr.height)
                 if pixbuf is not None:
@@ -233,8 +233,8 @@ def save_data(tw,fname):
     f.close()
 
 # Used to send data across a shared session
-def save_string(tw):
-    data = assemble_data_to_save(tw)
+def save_string(tw,save_turtle=True):
+    data = assemble_data_to_save(tw,save_turtle)
     if _old_Sugar_system is True:
         text = json.write(data)
     else:
@@ -243,7 +243,7 @@ def save_string(tw):
         text = io.getvalue()
     return text
 
-def assemble_data_to_save(tw):
+def assemble_data_to_save(tw,save_turtle=True):
     bs = blocks(tw)
     data = []
     for i in range(len(bs)): bs[i].id=i
@@ -260,9 +260,10 @@ def assemble_data_to_save(tw):
             connections = None
         data.append((b.id,name,b.x-tw.turtle.canvas.x, \
                      b.y-tw.turtle.canvas.y,connections))
-    data.append((-1,'turtle',
-                 tw.turtle.xcor,tw.turtle.ycor,tw.turtle.heading,
-                 tw.turtle.color,tw.turtle.shade,tw.turtle.pensize))
+    if save_turtle is True:
+        data.append((-1,'turtle',
+                    tw.turtle.xcor,tw.turtle.ycor,tw.turtle.heading,
+                    tw.turtle.color,tw.turtle.shade,tw.turtle.pensize))
     return data
 
 # serialize a stack to save to the clipboard
@@ -279,7 +280,6 @@ def serialize_stack(tw):
 # find the stack under the cursor and serialize it
 def assemble_stack_to_clone(tw):
     (x,y) = tw.window.get_pointer()
-    # print x,y
     spr = findsprite(tw,(x,y))
     bs = findgroup(find_top_block(spr))
 
@@ -336,7 +336,12 @@ def findgroup(b):
 
 def find_top_block(spr):
     b = spr
-    while b.connections[0]!=None:
-        b=b.connections[0]
+    if hasattr(b,"connections"):
+        while b.connections[0]!=None:
+            b=b.connections[0]
     return b
+
+# start a new project with a start brick
+def load_start(tw):
+    clone_stack(tw,str("[[0,\"start\",250,30,[null,null]]]"))
 

@@ -359,3 +359,27 @@ msgstr ""
 #:
 msgid "start"
 msgstr ""
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:106
+msgid "store numeric value in variable 1"
+msgstr "put something in box 1"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:107
+msgid "variable 1 (numeric value)"
+msgstr "whatever is in box 1"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:108
+msgid "store numeric value in variable 2"
+msgstr "put something in box 2"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:109
+msgid "variable 2 (numeric value)"
+msgstr "whatever is in box 2"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:110
+msgid "store numeric value in named variable"
+msgstr "put something in a box that you name"
+
+#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:111
+msgid "named variable (numeric value)"
+msgstr "whatever is in the box that you named"
