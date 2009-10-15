@@ -618,23 +618,23 @@ def callmyfunc(lc, f, x):
 
 def show_picture(lc, media, x, y, w, h):
     if media == "" or media[6:] == "":
-#        raise logoerror("#nomedia")
-         print "no media"
+        # raise logoerror("#nomedia")
+        pass
     elif media[6:] != "None":
         try:
             dsobject = datastore.get(media[6:])
         except:
             raise logoerror("#nomedia")
         # check to see if it is a movie
-        print dsobject.file_path
-        print "object has file suffix of: " + dsobject.file_path[-4:]
+        # print dsobject.file_path
+        # print "object has file suffix of: " + dsobject.file_path[-4:]
         if dsobject.file_path[-4:] == '.ogv' or \
            dsobject.file_path[-4:] == '.vob' or \
            dsobject.file_path[-4:] == '.mp4' or \
            dsobject.file_path[-4:] == '.wmv' or \
            dsobject.file_path[-4:] == '.mov':
-            print "playing movie x:" + str(x) + " y:" + str(y) + " w:" \
-                + str(w) + " h:" + str(h)
+            # print "playing movie x:" + str(x) + " y:" + str(y) + " w:" + \
+            #       str(w) + " h:" + str(h)
             play_dsobject(lc, dsobject, int(x), int(y), int(w), int(h))
         else:
             pixbuf = get_pixbuf_from_journal(dsobject, int(w), int(h))
@@ -650,12 +650,11 @@ def get_pixbuf_from_journal(dsobject,w,h):
     except:
         try:
             # print "Trying preview..."
-            pixbufloader = gtk.gdk.pixbuf_loader_new_with_mime_type \
-                ('image/png')
+            pixbufloader = \
+                gtk.gdk.pixbuf_loader_new_with_mime_type('image/png')
             pixbufloader.set_size(min(300,int(w)),min(225,int(h)))
             pixbufloader.write(dsobject.metadata['preview'])
             pixbufloader.close()
-#            gtk.gdk_pixbuf_loader_close(pixbufloader)
             pixbuf = pixbufloader.get_pixbuf()
         except:
             # print "No preview"
@@ -664,8 +663,8 @@ def get_pixbuf_from_journal(dsobject,w,h):
 
 def show_description(lc, media, x, y, w, h):
     if media == "" or media[6:] == "":
-#        raise logoerror("#nomedia")
-        print "no media"
+        # raise logoerror("#nomedia")
+        pass
     elif media[6:] != "None":
         try:
             dsobject = datastore.get(media[6:])
@@ -678,7 +677,7 @@ def show_description(lc, media, x, y, w, h):
 
 def draw_title(lc,title,x,y):
     draw_text(lc.tw.turtle,title,int(x),int(y),lc.title_height, \
-        lc.tw.turtle.width-x)
+              lc.tw.turtle.width-x)
 
 def calc_position(lc,t):
     w,h,x,y,dx,dy = lc.templates[t]
@@ -1007,8 +1006,8 @@ def kbinput(lc):
     else:
         try:
             lc.keyboard = {'Escape': 27, 'space': 32, ' ': 32, 'Return': 13, \
-                'KP_Up': 2, 'KP_Down': 4, 'KP_Left': 1, 'KP_Right': 3,} \
-                [lc.tw.keypress]
+                           'KP_Up': 2, 'KP_Down': 4, 'KP_Left': 1, \
+                           'KP_Right': 3,}[lc.tw.keypress]
         except:
             lc.keyboard = 0
     lc.tw.keypress = ""

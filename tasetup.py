@@ -315,7 +315,7 @@ def setup_selector(tw,name,y,blockdescriptions):
         proto.name = bname
         proto.image = image
         proto.primname=primname
-        if primname=='':
+        if primname=='': # handle definable blocks differently
           tw.valdict[docktype]=bname
           tw.defdict[bname]=b[3]
           proto.eval=b[4]

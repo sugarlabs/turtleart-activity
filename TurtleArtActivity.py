@@ -375,6 +375,8 @@ class TurtleArtActivity(activity.Activity):
 
         if self._jobject and self._jobject.file_path:
             self.read_file(self._jobject.file_path)
+        else: # if new, load a start brick onto the canvas
+            tawindow.load_start(self.tw)
 
         """
         A simplistic sharing model: the sharer is the master;
@@ -487,7 +489,7 @@ class TurtleArtActivity(activity.Activity):
 
     def _do_load_python_cb(self, button):
         self.load_python.set_icon("pippy-openon")
-        self._import_py()
+        self.import_py()
         gobject.timeout_add(250,self.load_python.set_icon, "pippy-openoff")
         return
 
@@ -511,7 +513,7 @@ class TurtleArtActivity(activity.Activity):
         return 
 
     # Import Python code from the Journal to load into "myblock"
-    def _import_py(self):
+    def import_py(self):
         from sugar.graphics.objectchooser import ObjectChooser
         chooser = ObjectChooser('Python code', None, gtk.DIALOG_MODAL | \
             gtk.DIALOG_DESTROY_WITH_PARENT)
