@@ -314,6 +314,8 @@ class TurtleArtActivity(activity.Activity):
             # Add additional panels
             self.projectToolbar = ProjectToolbar(self)
             self.toolbox.add_toolbar( _('Project'), self.projectToolbar )
+            self.viewToolbar = ViewToolbar(self)
+            self.toolbox.add_toolbar(_('View'), self.viewToolbar)
             self.editToolbar = EditToolbar(self)
             self.toolbox.add_toolbar(_('Edit'), self.editToolbar)
             self.saveasToolbar = SaveAsToolbar(self)
@@ -1011,6 +1013,59 @@ class ChatTube(ExportedGObject):
         self.stack = text
 
 """
+View toolbar: fullscreen, Cartesian, polar, coordinates
+"""
+class ViewToolbar(gtk.Toolbar):
+    def __init__(self, pc):
+        gtk.Toolbar.__init__(self)
+        self.activity = pc
+
+        # full screen
+        self.activity.fullscreen_button = ToolButton( "view-fullscreen" )
+        self.activity.fullscreen_button.set_tooltip(_('Fullscreen'))
+        self.activity.fullscreen_button.props.sensitive = True
+        try:
+            self.activity.fullscreen_button.props.accelerator = '<Alt>Enter'
+        except:
+            pass
+        self.activity.fullscreen_button.connect('clicked', \
+                                                self.activity._do_fullscreen_cb)
+        self.insert(self.activity.fullscreen_button, -1)
+        self.activity.fullscreen_button.show()
+
+        # Cartesian coordinates
+        self.activity.Cartesian_button = ToolButton( "view-Cartesian" )
+        self.activity.Cartesian_button.set_tooltip(_('Cartesian'))
+        self.activity.Cartesian_button.props.sensitive = True
+        self.activity.Cartesian_button.connect('clicked', \
+                                                self.activity._do_Cartesian_cb)
+        self.insert(self.activity.Cartesian_button, -1)
+        self.activity.Cartesian_button.show()
+
+        # polar coordinates
+        self.activity.polar_button = ToolButton( "view-polar" )
+        self.activity.polar_button.set_tooltip(_('polar'))
+        self.activity.polar_button.props.sensitive = True
+        self.activity.polar_button.connect('clicked', \
+                                                self.activity._do_polar_cb)
+        self.insert(self.activity.polar_button, -1)
+        self.activity.polar_button.show()
+
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        self.insert(separator, -1)
+        separator.show()
+
+        # Coordinates label
+        self.activity.coordinates_label = \
+          gtk.Label(_("x") + " 0 " + _("y") + " 0 " + _("heading") + " 0")
+        self.activity.coordinates_label.show()
+        self.activity.coordinates_toolitem = gtk.ToolItem()
+        self.activity.coordinates_toolitem.add(self.activity.coordinates_label)
+        self.insert(self.activity.coordinates_toolitem,-1)
+        self.activity.coordinates_toolitem.show()
+
+"""
 Edit toolbar: copy and paste text and stacks
 """
 class EditToolbar(gtk.Toolbar):
@@ -1142,7 +1197,7 @@ class SaveAsToolbar(gtk.Toolbar):
 
 """
 Project toolbar: show/hide palettes; show/hide blocks; run; walk; stop; erase;
-                 load sample project; fullscreen
+                 save as snapshot
 """
 class ProjectToolbar(gtk.Toolbar):
 
@@ -1247,24 +1302,6 @@ class ProjectToolbar(gtk.Toolbar):
             pass
         self.insert(self.activity.eraser_button, -1)
         self.activity.eraser_button.show()
-
-        separator = gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        self.insert(separator, -1)
-        separator.show()
-
-        # full screen
-        self.activity.fullscreen_button = ToolButton( "view-fullscreen" )
-        self.activity.fullscreen_button.set_tooltip(_('Fullscreen'))
-        self.activity.fullscreen_button.props.sensitive = True
-        try:
-            self.activity.fullscreen_button.props.accelerator = '<Alt>Enter'
-        except:
-            pass
-        self.activity.fullscreen_button.connect('clicked', \
-                                                self.activity._do_fullscreen_cb)
-        self.insert(self.activity.fullscreen_button, -1)
-        self.activity.fullscreen_button.show()
 
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
