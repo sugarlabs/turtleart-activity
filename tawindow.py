@@ -137,6 +137,7 @@ def twNew(win, path, lang, parent=None):
     tw.dx = 0
     tw.dy = 0
     tw.Cartesian = False
+    tw.polar = False
     return tw
 
 #

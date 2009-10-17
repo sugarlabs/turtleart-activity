@@ -165,6 +165,12 @@ class TurtleArtActivity(activity.Activity):
             Cartesian_button.connect('clicked', self._do_Cartesian_cb)
             view_toolbar.insert(Cartesian_button,-1)
             Cartesian_button.show()
+
+            polar_button = ToolButton('view-polar')
+            polar_button.set_tooltip(_("polar coordinates"))
+            polar_button.connect('clicked', self._do_polar_cb)
+            view_toolbar.insert(polar_button,-1)
+            polar_button.show()
     
             separator = gtk.SeparatorToolItem()
             separator.props.draw = True
@@ -711,6 +717,14 @@ class TurtleArtActivity(activity.Activity):
         else:
             tawindow.setlayer(self.tw.Cartesian_coordinates_spr,700)
             self.tw.Cartesian = True
+
+    def _do_polar_cb(self, button):
+        if self.tw.polar is True:
+            tawindow.hide(self.tw.polar_coordinates_spr)
+            self.tw.polar = False
+        else:
+            tawindow.setlayer(self.tw.polar_coordinates_spr,700)
+            self.tw.polar = True
 
 
     """ Sample projects open dialog """
