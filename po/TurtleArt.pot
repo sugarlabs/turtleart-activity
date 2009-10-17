@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 16:50+0000\n"
+"POT-Creation-Date: 2009-10-17 16:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -845,10 +845,12 @@ msgid "Fullscreen"
 msgstr ""
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:164
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1038
 msgid "Cartesian coordinates"
 msgstr ""
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:170
+#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1047
 msgid "polar coordinates"
 msgstr ""
 
@@ -984,14 +986,6 @@ msgstr ""
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:658
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:672
 msgid "Show blocks"
-msgstr ""
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1038
-msgid "Cartesian"
-msgstr ""
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1047
-msgid "polar"
 msgstr ""
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1078

@@ -1035,7 +1035,7 @@ class ViewToolbar(gtk.Toolbar):
 
         # Cartesian coordinates
         self.activity.Cartesian_button = ToolButton( "view-Cartesian" )
-        self.activity.Cartesian_button.set_tooltip(_('Cartesian'))
+        self.activity.Cartesian_button.set_tooltip(_('Cartesian coordinates'))
         self.activity.Cartesian_button.props.sensitive = True
         self.activity.Cartesian_button.connect('clicked', \
                                                 self.activity._do_Cartesian_cb)
@@ -1044,7 +1044,7 @@ class ViewToolbar(gtk.Toolbar):
 
         # polar coordinates
         self.activity.polar_button = ToolButton( "view-polar" )
-        self.activity.polar_button.set_tooltip(_('polar'))
+        self.activity.polar_button.set_tooltip(_('polar coordinates'))
         self.activity.polar_button.props.sensitive = True
         self.activity.polar_button.connect('clicked', \
                                                 self.activity._do_polar_cb)
