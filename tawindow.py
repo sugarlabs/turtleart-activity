@@ -131,12 +131,13 @@ def twNew(win, path, lang, parent=None):
     tw.hide = False
     tw.palette = True
     select_category(tw, tw.selbuttons[0])
+    tw.coord_scale = 1
     tw.turtle = tNew(tw,tw.width,tw.height)
     tw.lc = lcNew(tw)
     tw.buddies = []
     tw.dx = 0
     tw.dy = 0
-    tw.Cartesian = False
+    tw.cartesian = False
     tw.polar = False
     return tw
 

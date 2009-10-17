@@ -84,6 +84,7 @@ def clearscreen(t):
     return None
 
 def forward(t, n):
+    n *= t.tw.coord_scale
     t.gc.set_foreground(t.tw.fgcolor)
     oldx, oldy = t.xcor, t.ycor
     try:
@@ -116,6 +117,7 @@ def right(t,n):
 
 def arc(t,a,r):
     t.gc.set_foreground(t.tw.fgcolor)
+    r *= t.tw.coord_scale
     try:
         if a<0: larc(t,-a,r)
         else: rarc(t,a,r)
@@ -132,7 +134,8 @@ def rarc(t,a,r):
     if t.pendown:
         t.canvas.image.draw_arc(t.gc,False,x,y,w,h, \
                                 int(180-t.heading-a)*64,int(a)*64)
-    invalt(t,x-t.pensize/2-3,y-t.pensize/2-3,w+t.pensize+6,h+t.pensize+6)
+    invalt(t,x-t.pensize*t.tw.coord_scale/2-3,y-t.pensize*t.tw.coord_scale/2-3,\
+             w+t.pensize*t.tw.coord_scale+6,h+t.pensize*t.tw.coord_scale+6)
     right(t,a)
     t.xcor=cx-r*cos(t.heading*DEGTOR)
     t.ycor=cy+r*sin(t.heading*DEGTOR)
@@ -145,12 +148,15 @@ def larc(t,a,r):
     if t.pendown:
         t.canvas.image.draw_arc(t.gc,False,x,y,w,h,int(360-t.heading)*64, \
                                 int(a)*64)
-    invalt(t,x-t.pensize/2-3,y-t.pensize/2-3,w+t.pensize+6,h+t.pensize+6)
+    invalt(t,x-t.pensize*t.tw.coord_scale/2-3,y-t.pensize*t.tw.coord_scale/2-3,\
+             w+t.pensize*t.tw.coord_scale+6,h+t.pensize*t.tw.coord_scale+6)
     right(t,-a)
     t.xcor=cx+r*cos(t.heading*DEGTOR)
     t.ycor=cy-r*sin(t.heading*DEGTOR)
 
 def setxy(t,x,y):
+    x *= t.tw.coord_scale
+    y *= t.tw.coord_scale
     try:
         t.xcor,t.ycor = x,y
     except:
@@ -164,7 +170,8 @@ def setpensize(t,ps):
         t.pensize = ps
     except:
         pass
-    t.gc.set_line_attributes(int(t.pensize),gtk.gdk.LINE_SOLID, \
+    t.gc.set_line_attributes(int(t.pensize*t.tw.coord_scale), \
+                             gtk.gdk.LINE_SOLID, \
                              gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
     return None
 
@@ -242,14 +249,17 @@ def setpen(t,bool):
     t.pendown = bool
 
 def draw_pixbuf(t,pixbuf,a,b,x,y,w,h):
+    w *= t.tw.coord_scale
+    h *= t.tw.coord_scale
     t.canvas.image.draw_pixbuf(t.gc, pixbuf, a, b, x, y)
     invalt(t,x,y,w,h)
 
 def draw_text(t, label, x, y, size, w):
+    w *= t.tw.coord_scale
     t.gc.set_foreground(t.tw.textcolor)
     fd = pango.FontDescription('Sans')
     try:
-        fd.set_size(int(size)*pango.SCALE)
+        fd.set_size(int(size*t.tw.coord_scale)*pango.SCALE)
     except:
         pass
     if type(label) == str or type(label) == unicode:
@@ -265,7 +275,6 @@ def draw_text(t, label, x, y, size, w):
     w,h = pl.get_pixel_size()
     invalt(t,x,y,w,h)
 
-
 def draw_line(t,x1,y1,x2,y2):
     x1,y1 = t.width/2+int(x1), t.height/2-int(y1)
     x2,y2 = t.width/2+int(x2), t.height/2-int(y2)
@@ -275,8 +284,10 @@ def draw_line(t,x1,y1,x2,y2):
     else: miny,maxy=y2,y1
     w,h=maxx-minx,maxy-miny
     t.canvas.image.draw_line(t.gc,x1,y1,x2,y2)
-    invalt(t,minx-t.pensize/2-3,miny-t.pensize/2-3,w+t.pensize+6, \
-           h+t.pensize+6)
+    invalt(t,minx-t.pensize*t.tw.coord_scale/2-3, \
+             miny-t.pensize*t.tw.coord_scale/2-3, \
+           w+t.pensize*t.tw.coord_scale+6, \
+           h+t.pensize*t.tw.coord_scale+6)
 
 def turn_turtle(t):
     setshape(t.spr, t.shapelist[(int(t.heading+5)%360)/10])

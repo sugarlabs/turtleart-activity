@@ -598,21 +598,25 @@ def lcNew(tw):
 def display_coordinates(tw):
     if hasattr(tw, "activity"):
         if hasattr(tw.activity, "coordinates_label"):
-            x = tw.turtle.xcor
-            if int(float(x)) == x:
-                xx = int(x)
-            else:
-                xx = int(float(x)*10)/10.
-            y = tw.turtle.ycor
-            if int(float(y)) == y:
-                yy = int(y)
-            else:
-                yy = int(float(y)*10)/10.
-            # print _("(x,y): ") + "(" + str(xx) + "," + str(yy) + ")"
-            tw.activity.coordinates_label.set_text(_("(x,y): ") + "(" + \
-                                                   str(xx) + "," + \
-                                                   str(yy) + ")")
+            x = round_int(tw.turtle.xcor/tw.coord_scale)
+            y = round_int(tw.turtle.ycor/tw.coord_scale)
+            h = round_int(tw.turtle.heading)
+            tw.activity.coordinates_label.set_text(_("xcor") + " = " + \
+                                                   str(x) + " " + \
+                                                   _("ycor") + " = " + \
+                                                   str(y) + " " + \
+                                                   _("heading") + " = " + \
+                                                   str(h))
             tw.activity.coordinates_label.show()
+
+def round_int(n):
+    if int(float(n)) == n:
+        return int(n)
+    else:
+        nn = int(float(n+0.05)*10)/10.
+        if int(float(nn)) == nn:
+            return int(nn)
+        return nn
 
 def box(lc,x):
     try:
@@ -939,10 +943,7 @@ def show(lc, string, center=False):
                 y -= lc.tw.textsize
             draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width-x)
     elif type(string) == float or type(string) == int:
-        if int(string) == string:
-            string = int(string)
-        else:
-            string = float(string*10.0/10.0)
+        string = round_int(string)
         if center == True:
             y -= lc.tw.textsize
         draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width-x)
@@ -1014,12 +1015,7 @@ def status_print(lc,n):
     elif type(n) == int:
         showlabel(lc,n)
     else:
-        if int(float(n)) == n:
-            # show no decimal for ints
-            showlabel(lc, int(n))
-        else:
-            # show one decimal for floats
-            showlabel(lc, int(float(n)*10)/10.)
+        showlabel(lc, round_int(n))
 
 def kbinput(lc):
     if len(lc.tw.keypress) == 1:

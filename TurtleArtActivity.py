@@ -160,11 +160,11 @@ class TurtleArtActivity(activity.Activity):
             view_toolbar.insert(fullscreen_button,-1)
             fullscreen_button.show()
 
-            Cartesian_button = ToolButton('view-Cartesian')
-            Cartesian_button.set_tooltip(_("Cartesian coordinates"))
-            Cartesian_button.connect('clicked', self._do_Cartesian_cb)
-            view_toolbar.insert(Cartesian_button,-1)
-            Cartesian_button.show()
+            cartesian_button = ToolButton('view-Cartesian')
+            cartesian_button.set_tooltip(_("Cartesian coordinates"))
+            cartesian_button.connect('clicked', self._do_cartesian_cb)
+            view_toolbar.insert(cartesian_button,-1)
+            cartesian_button.show()
 
             polar_button = ToolButton('view-polar')
             polar_button.set_tooltip(_("polar coordinates"))
@@ -178,7 +178,8 @@ class TurtleArtActivity(activity.Activity):
             separator.show()
 
             self.coordinates_label = \
-              gtk.Label(_("x") + " 0 " + _("y") + " 0 " + _("heading") + " 0")
+              gtk.Label(_("xcor") + " = 0 " + _("ycor") + " = 0 " + \
+                        _("heading") + " = 0")
             self.coordinates_label.set_line_wrap(True)
             self.coordinates_label.show()
             self.coordinates_toolitem = gtk.ToolItem()
@@ -192,6 +193,18 @@ class TurtleArtActivity(activity.Activity):
             view_toolbar.show()
             toolbar_box.toolbar.insert(view_toolbar_button, -1)
             view_toolbar_button.show()
+
+            separator = gtk.SeparatorToolItem()
+            separator.props.draw = False
+            separator.set_expand(True)
+            view_toolbar.insert(separator, -1)
+            separator.show()
+
+            self.rescale_button = ToolButton('expand-coordinates')
+            self.rescale_button.set_tooltip(_("Rescale coordinates up"))
+            self.rescale_button.connect('clicked', self._do_rescale_cb)
+            view_toolbar.insert(self.rescale_button,-1)
+            self.rescale_button.show()
 
             # palette button (blocks)
             self.palette_button = ToolButton( "blocksoff" )
@@ -739,13 +752,13 @@ class TurtleArtActivity(activity.Activity):
     """
     Display coordinate grids
     """
-    def _do_Cartesian_cb(self, button):
-        if self.tw.Cartesian is True:
-            tawindow.hide(self.tw.Cartesian_coordinates_spr)
-            self.tw.Cartesian = False
+    def _do_cartesian_cb(self, button):
+        if self.tw.cartesian is True:
+            tawindow.hide(self.tw.cartesian_coordinates_spr)
+            self.tw.cartesian = False
         else:
-            tawindow.setlayer(self.tw.Cartesian_coordinates_spr,610)
-            self.tw.Cartesian = True
+            tawindow.setlayer(self.tw.cartesian_coordinates_spr,610)
+            self.tw.cartesian = True
 
     def _do_polar_cb(self, button):
         if self.tw.polar is True:
@@ -755,6 +768,20 @@ class TurtleArtActivity(activity.Activity):
             tawindow.setlayer(self.tw.polar_coordinates_spr,610)
             self.tw.polar = True
 
+    """
+    Rescale coordinate system to 100 == height/2 or 100 == 100 pixels (default)
+    """
+    def _do_rescale_cb(self, button):
+        if self.tw.coord_scale == 1:
+            self.tw.coord_scale = self.tw.height/200
+            self.rescale_button.set_icon("contract-coordinates")
+            self.rescale_button.set_tooltip(_('Rescale coordinates down'))
+            tawindow.eraser_button(self.tw)
+        else:
+            self.tw.coord_scale = 1
+            self.rescale_button.set_icon("expand-coordinates")
+            self.rescale_button.set_tooltip(_('Rescale coordinates up'))
+            tawindow.eraser_button(self.tw)
 
     """
     Either set up initial share...
@@ -1034,20 +1061,20 @@ class ViewToolbar(gtk.Toolbar):
         self.activity.fullscreen_button.show()
 
         # Cartesian coordinates
-        self.activity.Cartesian_button = ToolButton( "view-Cartesian" )
-        self.activity.Cartesian_button.set_tooltip(_('Cartesian coordinates'))
-        self.activity.Cartesian_button.props.sensitive = True
-        self.activity.Cartesian_button.connect('clicked', \
-                                                self.activity._do_Cartesian_cb)
-        self.insert(self.activity.Cartesian_button, -1)
-        self.activity.Cartesian_button.show()
+        self.activity.cartesian_button = ToolButton( "view-Cartesian" )
+        self.activity.cartesian_button.set_tooltip(_('Cartesian coordinates'))
+        self.activity.cartesian_button.props.sensitive = True
+        self.activity.cartesian_button.connect('clicked', \
+                                                self.activity._do_cartesian_cb)
+        self.insert(self.activity.cartesian_button, -1)
+        self.activity.cartesian_button.show()
 
         # polar coordinates
         self.activity.polar_button = ToolButton( "view-polar" )
         self.activity.polar_button.set_tooltip(_('polar coordinates'))
         self.activity.polar_button.props.sensitive = True
         self.activity.polar_button.connect('clicked', \
-                                                self.activity._do_polar_cb)
+                                           self.activity._do_polar_cb)
         self.insert(self.activity.polar_button, -1)
         self.activity.polar_button.show()
 
@@ -1058,12 +1085,26 @@ class ViewToolbar(gtk.Toolbar):
 
         # Coordinates label
         self.activity.coordinates_label = \
-          gtk.Label(_("x") + " 0 " + _("y") + " 0 " + _("heading") + " 0")
+          gtk.Label(_("xcor") + "= 0 " + _("ycor") + "= 0 " + \
+                    _("heading") + "= 0")
         self.activity.coordinates_label.show()
         self.activity.coordinates_toolitem = gtk.ToolItem()
         self.activity.coordinates_toolitem.add(self.activity.coordinates_label)
         self.insert(self.activity.coordinates_toolitem,-1)
         self.activity.coordinates_toolitem.show()
+
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(False)
+        separator.set_expand(True)
+        self.insert(separator, -1)
+        separator.show()
+
+        self.activity.rescale_button = ToolButton('expand-coordinates')
+        self.activity.rescale_button.set_tooltip(_("Rescale coordinates up"))
+        self.activity.rescale_button.connect('clicked', \
+                                             self.activity._do_rescale_cb)
+        self.insert(self.activity.rescale_button,-1)
+        self.activity.rescale_button.show()
 
 """
 Edit toolbar: copy and paste text and stacks
