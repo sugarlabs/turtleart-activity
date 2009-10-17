@@ -178,7 +178,7 @@ class TurtleArtActivity(activity.Activity):
             separator.show()
 
             self.coordinates_label = \
-              gtk.Label(_("(x,y): ") + "(0,0)")
+              gtk.Label(_("x") + " 0 " + _("y") + " 0 " + _("heading") + " 0")
             self.coordinates_label.set_line_wrap(True)
             self.coordinates_label.show()
             self.coordinates_toolitem = gtk.ToolItem()
@@ -710,23 +710,6 @@ class TurtleArtActivity(activity.Activity):
         self.step_button.set_icon("run-slowoff")
         self.run_button.set_icon("run-fastoff")
 
-    def _do_Cartesian_cb(self, button):
-        if self.tw.Cartesian is True:
-            tawindow.hide(self.tw.Cartesian_coordinates_spr)
-            self.tw.Cartesian = False
-        else:
-            tawindow.setlayer(self.tw.Cartesian_coordinates_spr,700)
-            self.tw.Cartesian = True
-
-    def _do_polar_cb(self, button):
-        if self.tw.polar is True:
-            tawindow.hide(self.tw.polar_coordinates_spr)
-            self.tw.polar = False
-        else:
-            tawindow.setlayer(self.tw.polar_coordinates_spr,700)
-            self.tw.polar = True
-
-
     """ Sample projects open dialog """
     def _do_samples_cb(self, button):
         tawindow.load_file(self.tw, True)
@@ -750,6 +733,26 @@ class TurtleArtActivity(activity.Activity):
     def _do_fullscreen_cb(self, button):    
         self.fullscreen()
         self.recenter()
+
+    """
+    Display coordinate grids
+    """
+    def _do_Cartesian_cb(self, button):
+        if self.tw.Cartesian is True:
+            tawindow.hide(self.tw.Cartesian_coordinates_spr)
+            self.tw.Cartesian = False
+        else:
+            tawindow.setlayer(self.tw.Cartesian_coordinates_spr,610)
+            self.tw.Cartesian = True
+
+    def _do_polar_cb(self, button):
+        if self.tw.polar is True:
+            tawindow.hide(self.tw.polar_coordinates_spr)
+            self.tw.polar = False
+        else:
+            tawindow.setlayer(self.tw.polar_coordinates_spr,610)
+            self.tw.polar = True
+
 
     """
     Either set up initial share...

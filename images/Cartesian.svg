@@ -125,6 +125,7 @@
     <path
        d="M 100,440 L 100,460"
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-opacity:1" />
+<!--
     <text
        style="font-size:20px;font-style:normal;font-weight:normal;fill:#0000FF;fill-opacity:1;stroke:none;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"><tspan
          x="95"
@@ -205,5 +206,6 @@
        style="font-size:20px;font-style:normal;font-weight:normal;fill:#00AA00;fill-opacity:1;stroke:none;text-anchor:end;text-align:end;font-family:Bitstream Vera Sans"><tspan
          x="590"
          y="858">–400</tspan></text>
+-->
   </g>
 </svg>

@@ -274,15 +274,15 @@ def setup_misc(tw):
     tw.media_shapes['pythonloaded'] = \
         load_image(tw.path_lang, 'sensors', 'nop-loaded')
     # coordinare systems
-    tw.Cartesian_coordinates_spr = sprNew(tw, 0, 0, load_image(tw.path, '', \
-                                          "Cartesian"))
+    tw.Cartesian_coordinates_spr = sprNew(tw, tw.width/2-600, tw.height/2-450, \
+                                          load_image(tw.path, '', "Cartesian"))
     tw.Cartesian_coordinates_spr.type = 'coordinates'
-    setlayer(tw.Cartesian_coordinates_spr, 700)
+    setlayer(tw.Cartesian_coordinates_spr, 610)
     hide(tw.Cartesian_coordinates_spr)
-    tw.polar_coordinates_spr = sprNew(tw, 0, 0, load_image(tw.path, '', \
-                                          "polar"))
+    tw.polar_coordinates_spr = sprNew(tw, tw.width/2-600, tw.height/2-450, \
+                                      load_image(tw.path, '', "polar"))
     tw.polar_coordinates_spr.type = 'coordinates'
-    setlayer(tw.polar_coordinates_spr, 700)
+    setlayer(tw.polar_coordinates_spr, 610)
     hide(tw.polar_coordinates_spr)
     # status shapes get positioned at the bottom of the screen
     tw.status_shapes = {}
