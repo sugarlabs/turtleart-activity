@@ -404,6 +404,7 @@ def button_release(tw, x, y, verbose=False):
         tw.turtle.ycor = tw.turtle.canvas.height/2-tw.turtle.spr.y+ \
             tw.turtle.canvas.y-30
         move_turtle(tw.turtle)
+        display_coordinates(tw)
         tw.draggroup = None
         return
     if tw.block_operation=='move' and hit(tw.category_spr, (x,y)):

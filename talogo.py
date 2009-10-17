@@ -189,6 +189,7 @@ def evline(lc, list):
         raise logoerror(str(lc.iresult))
     lc.iline = oldiline
     ireturn(lc)
+    display_coordinates(lc.tw)
     yield True
 
 def eval(lc, infixarg=False):
@@ -247,15 +248,16 @@ def infixnext(lc):
 
 def debug_trace(lc, token):
     if lc.trace:
-        if token.name in ['forward', 'right', 'back', 'left', 'seth', 'setxy', 'arc', \
-                          'heading', 'xcor', 'ycor']:
+        if token.name in ['forward', 'right', 'back', 'left', 'seth', 'setxy', \
+                          'arc', 'heading', 'xcor', 'ycor']:
             my_string = token.name  +\
                         "\nxcor= " + str(int(lc.tw.turtle.xcor)) +\
                         "\nycor= " + str(int(lc.tw.turtle.ycor)) +\
                         "\nheading= " + str(int(lc.tw.turtle.heading)) +\
                         "\nscale= " + str(lc.scale)
-        elif token.name in ['penup', 'pendown', 'setcolor', 'setshade', 'fillscreen',\
-                           'settextcolor', 'settextsize', 'shade', 'color', 'pensize']:
+        elif token.name in ['penup', 'pendown', 'setcolor', 'setshade', \
+                            'settextcolor', 'settextsize', 'shade', 'color', \
+                            'fillscreen', 'pensize']:
             if lc.tw.turtle.pendown:
                 penstatus = "\npen down"
             else:
@@ -592,6 +594,25 @@ def lcNew(tw):
     lc.scale = 33
 
     return lc
+
+def display_coordinates(tw):
+    if hasattr(tw, "activity"):
+        if hasattr(tw.activity, "coordinates_label"):
+            x = tw.turtle.xcor
+            if int(float(x)) == x:
+                xx = int(x)
+            else:
+                xx = int(float(x)*10)/10.
+            y = tw.turtle.ycor
+            if int(float(y)) == y:
+                yy = int(y)
+            else:
+                yy = int(float(y)*10)/10.
+            # print _("(x,y): ") + "(" + str(xx) + "," + str(yy) + ")"
+            tw.activity.coordinates_label.set_text(_("(x,y): ") + "(" + \
+                                                   str(xx) + "," + \
+                                                   str(yy) + ")")
+            tw.activity.coordinates_label.show()
 
 def box(lc,x):
     try:

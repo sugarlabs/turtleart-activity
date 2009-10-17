@@ -165,6 +165,20 @@ class TurtleArtActivity(activity.Activity):
             Cartesian_button.connect('clicked', self._do_Cartesian_cb)
             view_toolbar.insert(Cartesian_button,-1)
             Cartesian_button.show()
+    
+            separator = gtk.SeparatorToolItem()
+            separator.props.draw = True
+            view_toolbar.insert(separator, -1)
+            separator.show()
+
+            self.coordinates_label = \
+              gtk.Label(_("(x,y): ") + "(0,0)")
+            self.coordinates_label.set_line_wrap(True)
+            self.coordinates_label.show()
+            self.coordinates_toolitem = gtk.ToolItem()
+            self.coordinates_toolitem.add(self.coordinates_label)
+            view_toolbar.insert(self.coordinates_toolitem,-1)
+            self.coordinates_toolitem.show()
 
             view_toolbar_button = ToolbarButton(
                     page=view_toolbar,
