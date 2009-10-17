@@ -720,6 +720,7 @@ def eraser_button(tw):
     # hide status block
     setlayer(tw.status_spr,400)
     clear(tw.lc)
+    display_coordinates(tw)
 
 def stop_button(tw):
     stop_logo(tw)
