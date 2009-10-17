@@ -101,21 +101,6 @@ selectors = (
      ('division','/','ari'),
      ('remainder','%','ari2'),
      ('plus','+','ari'))),
-  ('sensors', 55,
-    (('kbinput','kbinput','noarg2'),
-     ('keyboard','keyboard','num'),
-     ('nop','userdefined','onearg',100),
-     ('myfunc','myfunc','myfunc',_('x'),100),
-     ('push','push','onearg'),
-     ('pop','pop','num'),
-     ('printheap','heap','noarg2'),
-     ('clearheap','emptyheap','noarg2'),
-     ('leftpos','leftpos','num'),
-     ('toppos','toppos','num'),
-     ('rightpos','rightpos','num'),
-     ('bottompos','bottompos','num'),
-     ('hres','hres','num'),
-     ('vres','vres','num'))),
   ('flow', 55,
     (('wait','wait','onearg',1),
      ('forever','forever','forever'),
@@ -144,6 +129,21 @@ selectors = (
      ('string','','string',_('name'),str,strcheck),
      # not selectable, but here for backward compatability 
      ('storeinbox','storeinbox','1sarg',_('box'),100))),
+  ('sensors', 55,
+    (('kbinput','kbinput','noarg2'),
+     ('keyboard','keyboard','num'),
+     ('nop','userdefined','onearg',100),
+     ('myfunc','myfunc','myfunc',_('x'),100),
+     ('push','push','onearg'),
+     ('pop','pop','num'),
+     ('printheap','heap','noarg2'),
+     ('clearheap','emptyheap','noarg2'),
+     ('leftpos','leftpos','num'),
+     ('toppos','toppos','num'),
+     ('rightpos','rightpos','num'),
+     ('bottompos','bottompos','num'),
+     ('hres','hres','num'),
+     ('vres','vres','num'))),
   ('templates',55,
     (('journal','','media','','',''),
      ('audiooff','','audio','','',''),
@@ -274,11 +274,11 @@ def setup_misc(tw):
     tw.media_shapes['pythonloaded'] = \
         load_image(tw.path_lang, 'sensors', 'nop-loaded')
     # coordinare systems
-    tw.Cartesian_coordinates_spr = sprNew(tw, tw.width/2-600, tw.height/2-450, \
+    tw.cartesian_coordinates_spr = sprNew(tw, tw.width/2-600, tw.height/2-450, \
                                           load_image(tw.path, '', "Cartesian"))
-    tw.Cartesian_coordinates_spr.type = 'coordinates'
-    setlayer(tw.Cartesian_coordinates_spr, 610)
-    hide(tw.Cartesian_coordinates_spr)
+    tw.cartesian_coordinates_spr.type = 'coordinates'
+    setlayer(tw.cartesian_coordinates_spr, 610)
+    hide(tw.cartesian_coordinates_spr)
     tw.polar_coordinates_spr = sprNew(tw, tw.width/2-600, tw.height/2-450, \
                                       load_image(tw.path, '', "polar"))
     tw.polar_coordinates_spr.type = 'coordinates'
