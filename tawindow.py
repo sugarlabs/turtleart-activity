@@ -136,6 +136,7 @@ def twNew(win, path, lang, parent=None):
     tw.buddies = []
     tw.dx = 0
     tw.dy = 0
+    tw.Cartesian = False
     return tw
 
 #

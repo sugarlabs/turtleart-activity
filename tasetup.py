@@ -273,6 +273,12 @@ def setup_misc(tw):
     # media blocks that replace other blocks
     tw.media_shapes['pythonloaded'] = \
         load_image(tw.path_lang, 'sensors', 'nop-loaded')
+    # coordinare systems
+    tw.Cartesian_coordinates_spr = sprNew(tw, 0, 0, load_image(tw.path, '', \
+                                          "Cartesian"))
+    tw.Cartesian_coordinates_spr.type = 'coordinates'
+    setlayer(tw.Cartesian_coordinates_spr, 700)
+    hide(tw.Cartesian_coordinates_spr)
     # status shapes get positioned at the bottom of the screen
     tw.status_shapes = {}
     tw.status_shapes['status'] = load_image(tw.path, '', 'status')

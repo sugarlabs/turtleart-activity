@@ -151,7 +151,7 @@ class TurtleArtActivity(activity.Activity):
             toolbar_box.toolbar.insert(edit_toolbar_button, -1)
             edit_toolbar_button.show()
 
-            # The view toolbar -- just full screen
+            # The view toolbar
             view_toolbar = gtk.Toolbar()
             fullscreen_button = ToolButton('view-fullscreen')
             fullscreen_button.set_tooltip(_("Fullscreen"))
@@ -159,6 +159,12 @@ class TurtleArtActivity(activity.Activity):
             fullscreen_button.connect('clicked', self._do_fullscreen_cb)
             view_toolbar.insert(fullscreen_button,-1)
             fullscreen_button.show()
+
+            Cartesian_button = ToolButton('view-Cartesian')
+            Cartesian_button.set_tooltip(_("Cartesian coordinates"))
+            Cartesian_button.connect('clicked', self._do_Cartesian_cb)
+            view_toolbar.insert(Cartesian_button,-1)
+            Cartesian_button.show()
 
             view_toolbar_button = ToolbarButton(
                     page=view_toolbar,
@@ -683,6 +689,15 @@ class TurtleArtActivity(activity.Activity):
         tawindow.stop_button(self.tw)
         self.step_button.set_icon("run-slowoff")
         self.run_button.set_icon("run-fastoff")
+
+    def _do_Cartesian_cb(self, button):
+        if self.tw.Cartesian is True:
+            tawindow.hide(self.tw.Cartesian_coordinates_spr)
+            self.tw.Cartesian = False
+        else:
+            tawindow.setlayer(self.tw.Cartesian_coordinates_spr,700)
+            self.tw.Cartesian = True
+
 
     """ Sample projects open dialog """
     def _do_samples_cb(self, button):
