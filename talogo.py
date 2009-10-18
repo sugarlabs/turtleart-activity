@@ -473,12 +473,16 @@ def lcNew(tw):
     defprim(lc,'keyboard', 0, lambda lc: lc.keyboard)
     defprim(lc,'userdefined', 1, lambda lc,x: loadmyblock(lc,x))
     defprim(lc,'myfunc', 2, lambda lc,f,x: callmyfunc(lc, f, x))
-    defprim(lc,'hres', 0, lambda lc: lc.tw.turtle.width) # canvas width
-    defprim(lc,'vres', 0, lambda lc: lc.tw.turtle.height) # canvas height
-    defprim(lc,'leftpos', 0, lambda lc: -(lc.tw.turtle.width/2)) 
-    defprim(lc,'toppos', 0, lambda lc: lc.tw.turtle.height/2)
-    defprim(lc,'rightpos', 0, lambda lc: lc.tw.turtle.width/2) 
-    defprim(lc,'bottompos', 0, lambda lc: -(lc.tw.turtle.height/2))
+    defprim(lc,'hres', 0, lambda lc: lc.tw.turtle.width/lc.tw.coord_scale)
+    defprim(lc,'vres', 0, lambda lc: lc.tw.turtle.height/lc.tw.coord_scale)
+    defprim(lc,'leftpos', 0, lambda lc: \
+        -(lc.tw.turtle.width/(lc.tw.coord_scale*2)))
+    defprim(lc,'toppos', 0, lambda lc: \
+        lc.tw.turtle.height/(lc.tw.coord_scale*2))
+    defprim(lc,'rightpos', 0, lambda lc: \
+        lc.tw.turtle.width/(lc.tw.coord_scale*2)) 
+    defprim(lc,'bottompos', 0, lambda lc: \
+        -(lc.tw.turtle.height/(lc.tw.coord_scale*2)))
 
     # turtle primitives
     defprim(lc,'clean', 0, lambda lc: clear(lc))
@@ -495,8 +499,8 @@ def lcNew(tw):
     defprim(lc,'write',2,lambda lc, x,y: write(lc, x,y))
     defprim(lc,'insertimage', 1, lambda lc,x: insert_image(lc, x, False))
     defprim(lc,'arc', 2, lambda lc, x, y: arc(lc.tw.turtle, x, y))
-    defprim(lc,'xcor', 0, lambda lc: lc.tw.turtle.xcor)
-    defprim(lc,'ycor', 0, lambda lc: lc.tw.turtle.ycor)
+    defprim(lc,'xcor', 0, lambda lc: lc.tw.turtle.xcor/lc.tw.coord_scale)
+    defprim(lc,'ycor', 0, lambda lc: lc.tw.turtle.ycor/lc.tw.coord_scale)
 
     # pen primitives
     defprim(lc,'pendown', 0, lambda lc: setpen(lc.tw.turtle, True))
