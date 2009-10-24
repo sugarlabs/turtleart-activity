@@ -124,6 +124,7 @@ charset=UTF-8\">\n", ""),
                            d[2:] + \
                            self.html_glue['h1'][1] + \
                            self.html_glue['ul'][0]
+                     bullets = 6
                      slidecount += 1
                  elif d[2:] != "": # process bullets
                      tmp = self.html_glue['li'][0] + d[2:] + \
