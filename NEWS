@@ -1,9 +1,17 @@
+76
+
+* fixed import error in project
+* fixed bullets in exporthtml
+* added proper scaling for coordinate blocks
+* moved status layer forward
+
 75
 
 * Cartesian coordinates overlay
 * polar coordinates overlay
 * coordinate display on View Toolbar
-
+* Option to rescale coordinate system to 100x100 on View Toolbar
+* Reordered the palettes (moved misc. down)
 
 74
 

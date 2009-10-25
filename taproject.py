@@ -32,8 +32,8 @@ try:
 except (ImportError, AttributeError):
     try:
         import simplejson as json
-        from json import load as jload
-        from json import dump as jdump
+        from simplejson import load as jload
+        from simplejson import dump as jdump
     except:
         # use pickle on old systems
         _old_Sugar_system = True

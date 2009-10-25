@@ -339,7 +339,6 @@ class TurtleArtActivity(activity.Activity):
 
             # Set the project toolbar as the initial one selected
             self.toolbox.set_current_toolbar(1)
-            pass
 
         # Create a scrolled window to contain the turtle canvas
         self.sw = gtk.ScrolledWindow()
