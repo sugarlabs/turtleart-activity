@@ -418,6 +418,13 @@ class TurtleArtActivity(activity.Activity):
         else: # if new, load a start brick onto the canvas
             tawindow.load_start(self.tw)
 
+        # check to see if there is Python code to be loaded
+        try:
+            dsobject = datastore.get(self.metadata['python code'])
+            self._load_python(dsobject)
+        except:
+            pass
+
         """
         A simplistic sharing model: the sharer is the master;
         TODO: hand off role of master is sharer leaves
@@ -527,12 +534,6 @@ class TurtleArtActivity(activity.Activity):
         gobject.timeout_add(250,self.save_as_logo.set_icon, "logo-saveoff")
         return
 
-    def _do_load_python_cb(self, button):
-        self.load_python.set_icon("pippy-openon")
-        self.import_py()
-        gobject.timeout_add(250,self.load_python.set_icon, "pippy-openoff")
-        return
-
     def _do_load_ta_project_cb(self, button):
         from sugar.graphics.objectchooser import ObjectChooser
         chooser = ObjectChooser(_("Project"), None, gtk.DIALOG_MODAL | \
@@ -552,6 +553,12 @@ class TurtleArtActivity(activity.Activity):
             del chooser
         return 
 
+    def _do_load_python_cb(self, button):
+        self.load_python.set_icon("pippy-openon")
+        self.import_py()
+        gobject.timeout_add(250,self.load_python.set_icon, "pippy-openoff")
+        return
+
     # Import Python code from the Journal to load into "myblock"
     def import_py(self):
         from sugar.graphics.objectchooser import ObjectChooser
@@ -561,18 +568,23 @@ class TurtleArtActivity(activity.Activity):
             result = chooser.run()
             if result == gtk.RESPONSE_ACCEPT:
                 dsobject = chooser.get_selected_object()
-                try:
-                    _logger.debug("opening %s " % dsobject.file_path)
-                    FILE = open(dsobject.file_path, "r")
-                    self.tw.myblock = FILE.read()
-                    FILE.close()
-	            tawindow.set_userdefined(self.tw)
-                except:
-                    _logger.debug("couldn't open %s" % dsobject.file_path)
-                dsobject.destroy()
+                self._load_python(dsobject)
         finally:
             chooser.destroy()
             del chooser
+
+    def _load_python(self,dsobject):
+        try:
+            _logger.debug("opening %s " % dsobject.file_path)
+            FILE = open(dsobject.file_path, "r")
+            self.tw.myblock = FILE.read()
+            FILE.close()
+            tawindow.set_userdefined(self.tw)
+            # save reference to Pythin code in the project metadata
+            self.metadata['python code'] = dsobject.object_id
+        except:
+            _logger.debug("couldn't open %s" % dsobject.file_path)
+        dsobject.destroy()
 
     def _do_save_as_image_cb(self, button):
         self.save_as_image.set_icon("image-saveon")
