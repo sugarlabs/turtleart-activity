@@ -34,7 +34,9 @@ def myblock(lc,x):
     #
     ###########################################################################
 
-    if type(x) != int and type(x) != float: # make sure x is a number
+    try:  # make sure x is a number
+       x = float(x)
+    except:
         return
 
     pen = lc.tw.turtle.pendown              # save current turtle pen state
