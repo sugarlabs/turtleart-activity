@@ -300,6 +300,7 @@ def setup_misc(tw):
             tw.status_shapes['status'],True)
     tw.status_spr.type = 'status'
     setlayer(tw.status_spr,900)
+    hide(tw.status_spr)
     # everything should be loaded at this point
     # print tw.status_shapes
     tw.loaded = True
