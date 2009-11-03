@@ -48,8 +48,8 @@ def main():
     mystring9 = _("color")
     mystring10 = _("shade")
     mystring11 = _("set text size")
-    mystring12 = _("set text color")
-    mystring13 = _("text color")
+    # mystring12 = _("set text color")
+    # mystring13 = _("text color")
     mystring14 = _("text size")
     mygroup = "pen"
 
@@ -64,894 +64,882 @@ def main():
     print mystring9
     print mystring10
     print mystring11
-    print mystring12
-    print mystring13
+    # print mystring12
+    # print mystring13
     print mystring14
 
     data0 = \
-"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n \
-<!-- Created with Inkscape (http://www.inkscape.org/) -->\n \
-<svg\n \
-   xmlns:svg=\"http://www.w3.org/2000/svg\"\n \
-   xmlns=\"http://www.w3.org/2000/svg\"\n \
-   xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n \
-   version=\"1.0\"\n \
-   width=\"145\"\n \
-   height=\"500\"\n \
-   id=\"svg2\">\n \
-  <defs\n \
-     id=\"defs4\">\n \
-    <linearGradient\n \
-       id=\"linearGradient3876\">\n \
-      <stop\n \
-         id=\"stop3878\"\n \
-         style=\"stop-color:#ffffff;stop-opacity:1\"\n \
-         offset=\"0\" />\n \
-      <stop\n \
-         id=\"stop3880\"\n \
-         style=\"stop-color:#00ffff;stop-opacity:1\"\n \
-         offset=\"1\" />\n \
-    </linearGradient>\n \
-    <linearGradient\n \
-       x1=\"18\"\n \
-       y1=\"48\"\n \
-       x2=\"67\"\n \
-       y2=\"48\"\n \
-       id=\"linearGradient4830\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"77\"\n \
-       y1=\"48\"\n \
-       x2=\"126\"\n \
-       y2=\"48\"\n \
-       id=\"linearGradient4838\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"43\"\n \
-       y1=\"95\"\n \
-       x2=\"92\"\n \
-       y2=\"95\"\n \
-       id=\"linearGradient4846\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"43\"\n \
-       y1=\"147\"\n \
-       x2=\"92\"\n \
-       y2=\"147\"\n \
-       id=\"linearGradient4854\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"43\"\n \
-       y1=\"199\"\n \
-       x2=\"92\"\n \
-       y2=\"199\"\n \
-       id=\"linearGradient4862\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"43\"\n \
-       y1=\"258\"\n \
-       x2=\"92\"\n \
-       y2=\"258\"\n \
-       id=\"linearGradient4870\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"37\"\n \
-       y1=\"312\"\n \
-       x2=\"107\"\n \
-       y2=\"312\"\n \
-       id=\"linearGradient4878\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\"\n \
-       gradientTransform=\"translate(0,65)\" />\n \
-    <linearGradient\n \
-       x1=\"37\"\n \
-       y1=\"337\"\n \
-       x2=\"107\"\n \
-       y2=\"337\"\n \
-       id=\"linearGradient4886\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\"\n \
-       gradientTransform=\"translate(0,61)\" />\n \
-    <linearGradient\n \
-       x1=\"37\"\n \
-       y1=\"362\"\n \
-       x2=\"107\"\n \
-       y2=\"362\"\n \
-       id=\"linearGradient4894\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\"\n \
-       gradientTransform=\"translate(0,57)\" />\n \
-    <linearGradient\n \
-       x1=\"37\"\n \
-       y1=\"337\"\n \
-       x2=\"107\"\n \
-       y2=\"337\"\n \
-       id=\"linearGradient2501\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\"\n \
-       gradientTransform=\"translate(0,95)\" />\n \
-    <linearGradient\n \
-       x1=\"43\"\n \
-       y1=\"95\"\n \
-       x2=\"92\"\n \
-       y2=\"95\"\n \
-       id=\"linearGradient2560\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"43\"\n \
-       y1=\"147\"\n \
-       x2=\"92\"\n \
-       y2=\"147\"\n \
-       id=\"linearGradient2562\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"43\"\n \
-       y1=\"199\"\n \
-       x2=\"92\"\n \
-       y2=\"199\"\n \
-       id=\"linearGradient2580\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"43\"\n \
-       y1=\"199\"\n \
-       x2=\"92\"\n \
-       y2=\"199\"\n \
-       id=\"linearGradient2582\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"37\"\n \
-       y1=\"337\"\n \
-       x2=\"107\"\n \
-       y2=\"337\"\n \
-       id=\"linearGradient2584\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\"\n \
-       gradientTransform=\"translate(0,95)\" />\n \
-    <linearGradient\n \
-       x1=\"37\"\n \
-       y1=\"337\"\n \
-       x2=\"107\"\n \
-       y2=\"337\"\n \
-       id=\"linearGradient2598\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"37\"\n \
-       y1=\"362\"\n \
-       x2=\"107\"\n \
-       y2=\"362\"\n \
-       id=\"linearGradient2600\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"37\"\n \
-       y1=\"362\"\n \
-       x2=\"107\"\n \
-       y2=\"362\"\n \
-       id=\"linearGradient2627\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"37\"\n \
-       y1=\"337\"\n \
-       x2=\"107\"\n \
-       y2=\"337\"\n \
-       id=\"linearGradient2629\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"37\"\n \
-       y1=\"362\"\n \
-       x2=\"107\"\n \
-       y2=\"362\"\n \
-       id=\"linearGradient2631\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"37\"\n \
-       y1=\"337\"\n \
-       x2=\"107\"\n \
-       y2=\"337\"\n \
-       id=\"linearGradient2633\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"43\"\n \
-       y1=\"199\"\n \
-       x2=\"92\"\n \
-       y2=\"199\"\n \
-       id=\"linearGradient2521\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"43\"\n \
-       y1=\"199\"\n \
-       x2=\"92\"\n \
-       y2=\"199\"\n \
-       id=\"linearGradient2523\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"43\"\n \
-       y1=\"199\"\n \
-       x2=\"92\"\n \
-       y2=\"199\"\n \
-       id=\"linearGradient2530\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-    <linearGradient\n \
-       x1=\"43\"\n \
-       y1=\"199\"\n \
-       x2=\"92\"\n \
-       y2=\"199\"\n \
-       id=\"linearGradient2539\"\n \
-       xlink:href=\"#linearGradient3876\"\n \
-       gradientUnits=\"userSpaceOnUse\" />\n \
-  </defs>\n \
-  <path\n \
-     d=\"M 0.5,0.5 L 0.5,486 L 3.6,492 L 8.5,496 L 15.2,499 L 129,499 L 135.8,496 L 141.8,492 L 144.5,486 L 144.5,0.5 L 0.5,0.5 z\"\n \
-     style=\"fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1\" />\n \
-  <rect\n \
-     width=\"123.6\"\n \
-     height=\"0.14\"\n \
-     x=\"10.7\"\n \
-     y=\"363\"\n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1\" />\n \
-  <rect\n \
-     width=\"123.6\"\n \
-     height=\"0.14\"\n \
-     x=\"10.7\"\n \
-     y=\"364\"\n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1\" />\n \
-  <rect\n \
-     width=\"123.6\"\n \
-     height=\"0.14\"\n \
-     x=\"10.7\"\n \
-     y=\"365\"\n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#ffffc4;stroke-width:1;stroke-opacity:1\" />\n \
-  <rect\n \
-     width=\"137.5\"\n \
-     height=\"0.14\"\n \
-     x=\"3.7\"\n \
-     y=\"-29\"\n \
-     transform=\"scale(1,-1)\"\n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1\" />\n \
-  <rect\n \
-     width=\"137.5\"\n \
-     height=\"0.14\"\n \
-     x=\"3.7\"\n \
-     y=\"-27.799999\"\n \
-     transform=\"scale(1,-1)\"\n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1\" />\n \
-  <rect\n \
-     width=\"137.5\"\n \
-     height=\"0.14\"\n \
-     x=\"3.7\"\n \
-     y=\"-474.79999\"\n \
-     transform=\"scale(1,-1)\"\n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1\" />\n \
-  <rect\n \
-     width=\"137.5\"\n \
-     height=\"0.14\"\n \
-     x=\"3.7\"\n \
-     y=\"-473.5\"\n \
-     transform=\"scale(1,-1)\"\n \
-     style=\"opacity:1;fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1\" />\n \
-  <path\n \
-     d=\"M 80.9,486.4 C 80.9,490.9 77.1,494.5 72.5,494.5 C 67.9,494.5 64.1,490.09 64.1,486.4 C 64.1,481.9 67.9,478.3 72.5,478.3 C 77.1,478.3 80.9,481.9 80.9,486.4 L 80.9,486.4 z\"\n \
-     style=\"fill:#ff4040;fill-opacity:1;stroke:#ff4040;stroke-width:1;stroke-opacity:1\" />\n \
-  <text\n \
-     style=\"font-size:12px;font-weight:bold;fill:#ffffff;font-family:Bitstream Vera Sans\">\n \
-    <tspan\n \
-       x=\"68\"\n \
-       y=\"491\"\n \
-       style=\"font-size:12px;font-weight:bold;fill:#ffffff\">X</tspan>\n \
-  </text>\n \
-  <text\n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-    <tspan\n \
-       x=\"72.5\"\n \
-       y=\"21\"\n \
+"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n\
+<!-- Created with Inkscape (http://www.inkscape.org/) -->\n\
+\n\
+<svg\n\
+   xmlns:svg=\"http://www.w3.org/2000/svg\"\n\
+   xmlns=\"http://www.w3.org/2000/svg\"\n\
+   xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n\
+   version=\"1.0\"\n\
+   width=\"145\"\n\
+   height=\"500\"\n\
+   id=\"svg2\">\n\
+  <defs\n\
+     id=\"defs4\">\n\
+    <linearGradient\n\
+       id=\"linearGradient3876\">\n\
+      <stop\n\
+         id=\"stop3878\"\n\
+         style=\"stop-color:#ffffff;stop-opacity:1\"\n\
+         offset=\"0\" />\n\
+      <stop\n\
+         id=\"stop3880\"\n\
+         style=\"stop-color:#00ffff;stop-opacity:1\"\n\
+         offset=\"1\" />\n\
+    </linearGradient>\n\
+    <linearGradient\n\
+       x1=\"18\"\n\
+       y1=\"48\"\n\
+       x2=\"67\"\n\
+       y2=\"48\"\n\
+       id=\"linearGradient4830\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"77\"\n\
+       y1=\"48\"\n\
+       x2=\"126\"\n\
+       y2=\"48\"\n\
+       id=\"linearGradient4838\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"43\"\n\
+       y1=\"95\"\n\
+       x2=\"92\"\n\
+       y2=\"95\"\n\
+       id=\"linearGradient4846\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"43\"\n\
+       y1=\"147\"\n\
+       x2=\"92\"\n\
+       y2=\"147\"\n\
+       id=\"linearGradient4854\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"43\"\n\
+       y1=\"199\"\n\
+       x2=\"92\"\n\
+       y2=\"199\"\n\
+       id=\"linearGradient4862\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"43\"\n\
+       y1=\"258\"\n\
+       x2=\"92\"\n\
+       y2=\"258\"\n\
+       id=\"linearGradient4870\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"37\"\n\
+       y1=\"312\"\n\
+       x2=\"107\"\n\
+       y2=\"312\"\n\
+       id=\"linearGradient4878\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\"\n\
+       gradientTransform=\"translate(0,65)\" />\n\
+    <linearGradient\n\
+       x1=\"37\"\n\
+       y1=\"337\"\n\
+       x2=\"107\"\n\
+       y2=\"337\"\n\
+       id=\"linearGradient4886\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\"\n\
+       gradientTransform=\"translate(0,61)\" />\n\
+    <linearGradient\n\
+       x1=\"37\"\n\
+       y1=\"362\"\n\
+       x2=\"107\"\n\
+       y2=\"362\"\n\
+       id=\"linearGradient4894\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\"\n\
+       gradientTransform=\"translate(0,57)\" />\n\
+    <linearGradient\n\
+       x1=\"37\"\n\
+       y1=\"337\"\n\
+       x2=\"107\"\n\
+       y2=\"337\"\n\
+       id=\"linearGradient2501\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\"\n\
+       gradientTransform=\"translate(0,95)\" />\n\
+    <linearGradient\n\
+       x1=\"43\"\n\
+       y1=\"95\"\n\
+       x2=\"92\"\n\
+       y2=\"95\"\n\
+       id=\"linearGradient2560\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"43\"\n\
+       y1=\"147\"\n\
+       x2=\"92\"\n\
+       y2=\"147\"\n\
+       id=\"linearGradient2562\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"43\"\n\
+       y1=\"199\"\n\
+       x2=\"92\"\n\
+       y2=\"199\"\n\
+       id=\"linearGradient2580\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"43\"\n\
+       y1=\"199\"\n\
+       x2=\"92\"\n\
+       y2=\"199\"\n\
+       id=\"linearGradient2582\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"37\"\n\
+       y1=\"337\"\n\
+       x2=\"107\"\n\
+       y2=\"337\"\n\
+       id=\"linearGradient2584\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\"\n\
+       gradientTransform=\"translate(0,95)\" />\n\
+    <linearGradient\n\
+       x1=\"37\"\n\
+       y1=\"337\"\n\
+       x2=\"107\"\n\
+       y2=\"337\"\n\
+       id=\"linearGradient2598\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"37\"\n\
+       y1=\"362\"\n\
+       x2=\"107\"\n\
+       y2=\"362\"\n\
+       id=\"linearGradient2600\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"37\"\n\
+       y1=\"362\"\n\
+       x2=\"107\"\n\
+       y2=\"362\"\n\
+       id=\"linearGradient2627\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"37\"\n\
+       y1=\"337\"\n\
+       x2=\"107\"\n\
+       y2=\"337\"\n\
+       id=\"linearGradient2629\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"37\"\n\
+       y1=\"362\"\n\
+       x2=\"107\"\n\
+       y2=\"362\"\n\
+       id=\"linearGradient2631\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"37\"\n\
+       y1=\"337\"\n\
+       x2=\"107\"\n\
+       y2=\"337\"\n\
+       id=\"linearGradient2633\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"43\"\n\
+       y1=\"199\"\n\
+       x2=\"92\"\n\
+       y2=\"199\"\n\
+       id=\"linearGradient2521\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"43\"\n\
+       y1=\"199\"\n\
+       x2=\"92\"\n\
+       y2=\"199\"\n\
+       id=\"linearGradient2523\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"43\"\n\
+       y1=\"199\"\n\
+       x2=\"92\"\n\
+       y2=\"199\"\n\
+       id=\"linearGradient2530\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"43\"\n\
+       y1=\"199\"\n\
+       x2=\"92\"\n\
+       y2=\"199\"\n\
+       id=\"linearGradient2539\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       x1=\"37\"\n\
+       y1=\"337\"\n\
+       x2=\"107\"\n\
+       y2=\"337\"\n\
+       id=\"linearGradient2633-4\"\n\
+       xlink:href=\"#linearGradient3876-7\"\n\
+       gradientUnits=\"userSpaceOnUse\" />\n\
+    <linearGradient\n\
+       id=\"linearGradient3876-7\">\n\
+      <stop\n\
+         id=\"stop3878-6\"\n\
+         style=\"stop-color:#ffffff;stop-opacity:1\"\n\
+         offset=\"0\" />\n\
+      <stop\n\
+         id=\"stop3880-5\"\n\
+         style=\"stop-color:#00ffff;stop-opacity:1\"\n\
+         offset=\"1\" />\n\
+    </linearGradient>\n\
+    <linearGradient\n\
+       x1=\"77\"\n\
+       y1=\"48\"\n\
+       x2=\"126\"\n\
+       y2=\"48\"\n\
+       id=\"linearGradient4087\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\"\n\
+       gradientTransform=\"translate(2.054342,4)\" />\n\
+    <linearGradient\n\
+       x1=\"43\"\n\
+       y1=\"95\"\n\
+       x2=\"92\"\n\
+       y2=\"95\"\n\
+       id=\"linearGradient4096\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\"\n\
+       gradientTransform=\"translate(-33.8333,-2)\" />\n\
+    <linearGradient\n\
+       x1=\"18\"\n\
+       y1=\"48\"\n\
+       x2=\"67\"\n\
+       y2=\"48\"\n\
+       id=\"linearGradient4105\"\n\
+       xlink:href=\"#linearGradient3876\"\n\
+       gradientUnits=\"userSpaceOnUse\"\n\
+       gradientTransform=\"translate(-8,4)\" />\n\
+  </defs>\n\
+  <path\n\
+     d=\"m 0.5,0.5 0,485.5 3.1,6 4.9,4 6.7,3 113.8,0 6.8,-3 6,-4 2.7,-6 0,-485.5 -144,0 z\"\n\
+     id=\"path32\"\n\
+     style=\"fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1\" />\n\
+  <rect\n\
+     width=\"137.5\"\n\
+     height=\"0.14\"\n\
+     x=\"3.7\"\n\
+     y=\"-29\"\n\
+     transform=\"scale(1,-1)\"\n\
+     id=\"rect40\"\n\
+     style=\"fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1\" />\n\
+  <rect\n\
+     width=\"137.5\"\n\
+     height=\"0.14\"\n\
+     x=\"3.7\"\n\
+     y=\"-27.799999\"\n\
+     transform=\"scale(1,-1)\"\n\
+     id=\"rect42\"\n\
+     style=\"fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1\" />\n\
+  <rect\n\
+     width=\"137.5\"\n\
+     height=\"0.14\"\n\
+     x=\"3.7\"\n\
+     y=\"-474.79999\"\n\
+     transform=\"scale(1,-1)\"\n\
+     id=\"rect44\"\n\
+     style=\"fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1\" />\n\
+  <rect\n\
+     width=\"137.5\"\n\
+     height=\"0.14\"\n\
+     x=\"3.7\"\n\
+     y=\"-473.5\"\n\
+     transform=\"scale(1,-1)\"\n\
+     id=\"rect46\"\n\
+     style=\"fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1\" />\n\
+  <path\n\
+     d=\"m 80.9,486.4 c 0,4.5 -3.8,8.1 -8.4,8.1 -4.6,0 -8.4,-4.41 -8.4,-8.1 0,-4.5 3.8,-8.1 8.4,-8.1 4.6,0 8.4,3.6 8.4,8.1 l 0,0 z\"\n\
+     id=\"path48\"\n\
+     style=\"fill:#ff4040;fill-opacity:1;stroke:#ff4040;stroke-width:1;stroke-opacity:1\" />\n\
+  <text\n\
+     id=\"text50\"\n\
+     style=\"font-size:12px;font-weight:bold;fill:#ffffff;font-family:Bitstream Vera Sans\">\n\
+    <tspan\n\
+       x=\"68\"\n\
+       y=\"491\"\n\
+       id=\"tspan52\"\n\
+       style=\"font-size:12px;font-weight:bold;fill:#ffffff\">X</tspan>\n\
+  </text>\n\
+  <text\n\
+     id=\"text54\"\n\
+     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+    <tspan\n\
+       x=\"72.5\"\n\
+       y=\"21\"\n\
+       id=\"tspan56\"\n\
        style=\"font-size:20px\">"
 
     data1 = \
-"</tspan>\n \
-  </text>\n \
-  <g>\n \
-    <path\n \
-       d=\"M 50,34 C 60,34 60,34 60,34 L 64,37 L 66,41 L 66,53 L 64,57 L 60,59 L 49,59 L 49,59 L 49,62 L 36,62 L 36,59 L 24,59 L 21,57 L 18,53 L 18,41 L 21,37 L 24,34 L 35,34 L 35,37 L 50,37 L 50,34 z\"\n \
-       style=\"fill:url(#linearGradient4830);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n"
-
-    data2a = \
-"    <text\n \
-       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"43\"\n \
-         y=\"51.5\"\n \
-         style=\"font-size:11px\">"
-
-    data2b = \
-"  <text \n \
-     id=\"text49\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"43\" \n \
-       y=\"45\" \n \
+"</tspan>\n\
+  </text>\n\
+  <path\n\
+     d=\"m 42,38 c 10,0 10,0 10,0 0,0 2.932088,1.720414 4,3 0.95517,1.144497 2,4 2,4 l 0,12 c 0,0 -0.945907,2.945907 -2,4 -1.054093,1.054093 -4,2 -4,2 l -11,0 0,0 0,3 -13,0 0,-3 -12,0 c 0,0 -2.126911,-1.17407 -3,-2 -1.210756,-1.145359 -3,-4 -3,-4 l 0,-12 c 0,0 1.419631,-2.919267 2.470149,-4.132463 C 13.462488,39.721531 16,38 16,38 l 11,0 0,3 15,0 0,-3 z\"\n\
+     id=\"path60\"\n\
+     style=\"fill:url(#linearGradient4105);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n\
+  <text\n\
+     x=\"-8\"\n\
+     y=\"4\"\n\
+     id=\"text49\"\n\
+     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+    <tspan\n\
+       x=\"35\"\n\
+       y=\"49\"\n\
+       id=\"tspan63\"\n\
        style=\"font-size:10px\">"
 
-    data3b = \
-"</tspan> \n \
-  </text> \n \
-  <text \n \
-     id=\"text49\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"43\" \n \
-       y=\"55\" \n \
+    data2 = \
+"</tspan>\n\
+  </text>\n\
+  <text\n\
+     x=\"-8\"\n\
+     y=\"4\"\n\
+     id=\"text65\"\n\
+     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+    <tspan\n\
+       x=\"35\"\n\
+       y=\"59\"\n\
+       id=\"tspan67\"\n\
+       style=\"font-size:10px\">"
+
+    data3 = \
+"</tspan>\n\
+  </text>\n\
+  <path\n\
+     d=\"m 111.05434,38 c 11,0 11,0 11,0 0,0 2.45058,1.535538 3.39739,2.602612 C 126.58219,41.876671 128.05434,45 128.05434,45 l 0,12 c 0,0 -1.78924,2.854641 -3,4 -0.87309,0.82593 -3,2 -3,2 l -12,0 0,0 0,3 -12.999998,0 0,-3 -11,0 c 0,0 -2.945907,-0.945907 -4,-2 -1.054093,-1.054093 -2,-4 -2,-4 l 0,-12 2,-4 4,-3 10,0 0,3 14.999998,0 0,-3 z\"\n\
+     id=\"path71\"\n\
+     style=\"fill:url(#linearGradient4087);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none\" />\n\
+  <text\n\
+     x=\"2.054342\"\n\
+     y=\"4\"\n\
+     id=\"text55\"\n\
+     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+    <tspan\n\
+       x=\"103.05434\"\n\
+       y=\"49\"\n\
+       id=\"tspan74\"\n\
        style=\"font-size:10px\">"
 
     data4 = \
-"</tspan>\n \
-    </text>\n \
-  </g>\n \
-  <g>\n \
-    <path\n \
-       d=\"M 109,34 C 120,34 120,34 120,34 L 123,37 L 126,41 L 126,53 L 123,57 L 120,59 L 108,59 L 108,59 L 108,62 L 95,62 L 95,59 L 84,59 L 80,57 L 78,53 L 78,41 L 80,37 L 84,34 L 94,34 L 94,37 L 109,37 L 109,34 z\"\n \
-       style=\"fill:url(#linearGradient4838);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1\" />\n"
-
-    data5a = \
-"    <text\n \
-       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"101\"\n \
-         y=\"51.5\"\n \
-         style=\"font-size:11px\">"
-
-    data5b = \
-"  <text \n \
-     id=\"text55\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"101\" \n \
-       y=\"45\" \n \
+"</tspan>\n\
+  </text>\n\
+  <text\n\
+     x=\"2.054342\"\n\
+     y=\"4\"\n\
+     id=\"text76\"\n\
+     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+    <tspan\n\
+       x=\"103.05434\"\n\
+       y=\"59\"\n\
+       id=\"tspan78\"\n\
        style=\"font-size:10px\">"
 
-    data6b = \
-"</tspan> \n \
-  </text> \n \
-  <text \n \
-     id=\"text55\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"101\" \n \
-       y=\"55\" \n \
+    data5 = \
+"</tspan>\n\
+  </text>\n\
+  <path\n\
+     d=\"m 56.1667,83 11,0 0,4 -3,0 0,-2 -7,0\"\n\
+     id=\"path82\"\n\
+     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" />\n\
+  <path\n\
+     d=\"m 56.1667,101 11,0 0,-4 -3,0 0,2 -7,0\"\n\
+     id=\"path84\"\n\
+     style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" />\n\
+  <path\n\
+     d=\"m 41.1667,74 c 11,0 11,0 11,0 0,0 2.126911,1.17407 3,2 1.210756,1.145359 3,4 3,4 l 0,23 c 0,0 -1.643072,3.27076 -2.735075,4.52985 C 54.50503,108.59822 52.1667,110 52.1667,110 l -12,0 0,0 0,2 -13,0 0,-2 -11,0 c 0,0 -2.932088,-1.72041 -4,-3 -0.95517,-1.1445 -2,-4 -2,-4 l 0,-23 c 0,0 0.945907,-2.945907 2,-4 1.054093,-1.054093 4,-2 4,-2 l 10,0 0,3 15,0 0,-3 z\"\n\
+     id=\"path86\"\n\
+     style=\"fill:url(#linearGradient4096);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none\" />\n\
+  <text\n\
+     x=\"-33.833302\"\n\
+     y=\"-2\"\n\
+     id=\"text88\"\n\
+     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+    <tspan\n\
+       x=\"34.166698\"\n\
+       y=\"87\"\n\
+       id=\"tspan90\"\n\
+       style=\"font-size:10px\">"
+
+    data6 = \
+"</tspan>\n\
+  </text>\n\
+  <text\n\
+     x=\"-33.833302\"\n\
+     y=\"-2\"\n\
+     id=\"text69\"\n\
+     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+    <tspan\n\
+       x=\"34.166698\"\n\
+       y=\"96\"\n\
+       id=\"tspan93\"\n\
        style=\"font-size:10px\">"
 
     data7 = \
-"</tspan>\n \
-    </text>\n \
-  </g>\n \
-  <g\n \
-     transform=\"translate(0,-6)\">\n \
-    <path\n \
-       d=\"M 90,85 L 101,85 L 101,89 L 98,89 L 98,87 L 91,87\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 90,103 L 101,103 L 101,99 L 98,99 L 98,101 L 91,101\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.00004995;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 75,76 C 86,76 86,76 86,76 L 89,78 L 92,82 L 92,105 L 89,109 L 86,112 L 74,112 L 74,112 L 74,114 L 61,114 L 61,112 L 50,112 L 46,109 L 44,105 L 44,82 L 46,78 L 50,76 L 60,76 L 60,79 L 75,79 L 75,76 z\"\n \
-       style=\"fill:url(#linearGradient2560);fill-opacity:1;stroke:#00a0a0;stroke-width:1.33340001;stroke-opacity:1\" />\n"
+"</tspan>\n\
+  </text>\n\
+  <text\n\
+     x=\"-33.833302\"\n\
+     y=\"-2\"\n\
+     id=\"text95\"\n\
+     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+    <tspan\n\
+       x=\"34.166698\"\n\
+       y=\"106\"\n\
+       id=\"tspan97\"\n\
+       style=\"font-size:10px\">"
 
-    data8a = \
-"    <text\n \
-       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"68\"\n \
-         y=\"93\"\n \
+    data8 = \
+"</tspan>\n\
+  </text>\n\
+  <g\n\
+     transform=\"translate(-34,-8)\"\n\
+     id=\"g99\">\n\
+    <path\n\
+       d=\"m 90,137 11,0 0,4 -3,0 0,-2 -7,0\"\n\
+       id=\"path101\"\n\
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n\
+    <path\n\
+       d=\"m 90,155 11,0 0,-4 -3,0 0,2 -7,0\"\n\
+       id=\"path103\"\n\
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n\
+    <path\n\
+       d=\"m 75,128 c 11,0 11,0 11,0 0,0 2.126911,1.17407 3,2 1.210756,1.14536 3,4 3,4 l 0,23 c 0,0 -1.378146,3.1383 -2.470149,4.39739 C 88.603256,162.46576 86,164 86,164 l -12,0 0,0 0,2 -13,0 0,-2 -11,0 c 0,0 -2.932088,-1.72041 -4,-3 -0.95517,-1.1445 -2,-4 -2,-4 l 0,-23 c 0,0 0.945907,-2.94591 2,-4 1.054093,-1.05409 4,-2 4,-2 l 10,0 0,3 15,0 0,-3 z\"\n\
+       id=\"path105\"\n\
+       style=\"fill:url(#linearGradient2562);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n\
+    <text\n\
+       id=\"text79\"\n\
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"68\"\n\
+         y=\"145\"\n\
+         id=\"tspan108\"\n\
          style=\"font-size:11px\">"
 
-    data8b = \
-"  <text \n \
-     id=\"text65\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"93\" \n \
-       style=\"font-size:11px\">"
+    data9 = \
+"</tspan>\n\
+    </text>\n\
+    <text\n\
+       id=\"text83\"\n\
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"68\"\n\
+         y=\"158\"\n\
+         id=\"tspan111\"\n\
+         style=\"font-size:11px\">"
 
-    data8c = \
-"  <text \n \
-     id=\"text65\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"89\" \n \
-       style=\"font-size:10px\">"
-
-    data9b = \
-"</tspan> \n \
-  </text> \n \
-  <text \n \
-     id=\"text69\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"106\" \n \
-       style=\"font-size:11px\">"
-
-    data9c = \
-"</tspan> \n \
-  </text> \n \
-  <text \n \
-     id=\"text69\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"98\" \n \
-       style=\"font-size:10px\">"
-
-    data10c = \
-"</tspan> \n \
-  </text> \n \
-  <text \n \
-     id=\"text69\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"108\" \n \
-       style=\"font-size:10px\">"
+    data10 = \
+"</tspan>\n\
+    </text>\n\
+  </g>\n\
+  <g\n\
+     transform=\"translate(35.887642,-42)\"\n\
+     id=\"g113\">\n\
+    <path\n\
+       d=\"m 90,171 11,0 0,4 -3,0 0,-2 -7,0\"\n\
+       id=\"path115\"\n\
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n\
+    <path\n\
+       d=\"m 90,189 11,0 0,-4 -3,0 0,2 -7,0\"\n\
+       id=\"path117\"\n\
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n\
+    <path\n\
+       d=\"m 75,162 c 11,0 11,0 11,0 0,0 2.656762,1.439 3.529851,2.26493 C 90.740607,165.41029 92,168 92,168 l 0,23 c 0,0 -1.245683,3.40322 -2.337686,4.66231 C 88.735719,196.73068 86,198 86,198 l -12,0 0,0 0,2 -13,0 0,-2 -11,0 c 0,0 -2.932088,-1.72041 -4,-3 -0.95517,-1.1445 -2,-4 -2,-4 l 0,-23 c 0,0 0.945907,-2.94591 2,-4 1.054093,-1.05409 4,-2 4,-2 l 10,0 0,3 15,0 0,-3 z\"\n\
+       id=\"path119\"\n\
+       style=\"fill:url(#linearGradient2539);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n\
+    <text\n\
+       id=\"text93\"\n\
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"68\"\n\
+         y=\"177\"\n\
+         id=\"tspan95\"\n\
+         style=\"font-size:11px\">"
 
     data11 = \
-"</tspan>\n \
-    </text>\n \
-  </g>\n \
-  <g\n \
-     transform=\"translate(0,-12)\">\n \
-    <path\n \
-       d=\"M 90,137 L 101,137 L 101,141 L 98,141 L 98,139 L 91,139\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 90,155 L 101,155 L 101,151 L 98,151 L 98,153 L 91,153\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 75,128 C 86,128 86,128 86,128 L 89,130 L 92,134 L 92,157 L 89,161 L 86,164 L 74,164 L 74,164 L 74,166 L 61,166 L 61,164 L 50,164 L 46,161 L 44,157 L 44,134 L 46,130 L 50,128 L 60,128 L 60,131 L 75,131 L 75,128 z\"\n \
-       style=\"fill:url(#linearGradient2562);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n"
-
-    data12a = \
-"    <text\n \
-       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"68\"\n \
-         y=\"151\"\n \
+"</tspan>\n\
+    </text>\n\
+    <text\n\
+       id=\"text97\"\n\
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"68\"\n\
+         y=\"190\"\n\
+         id=\"tspan99\"\n\
          style=\"font-size:11px\">"
 
-    data12b = \
-"  <text \n \
-     id=\"text79\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"145\" \n \
-       style=\"font-size:11px\">"
+    data12 = \
+"</tspan>\n\
+    </text>\n\
+  </g>\n\
+  <g\n\
+     transform=\"translate(0,-66)\"\n\
+     id=\"g125\">\n\
+    <path\n\
+       d=\"m 89,260 11,0 0,4 -2,0 0,-2 -7,0\"\n\
+       id=\"path127\"\n\
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n\
+    <path\n\
+       d=\"m 89,278 11,0 0,-4 -2,0 0,2 -7,0\"\n\
+       id=\"path129\"\n\
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n\
+    <path\n\
+       d=\"m 90,235 11,0 0,4 -3,0 0,-2 -7,0\"\n\
+       id=\"path131\"\n\
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n\
+    <path\n\
+       d=\"m 90,253 11,0 0,-4 -3,0 0,2 -7,0\"\n\
+       id=\"path133\"\n\
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n\
+    <path\n\
+       d=\"m 75,232 c 11,0 11,0 11,0 l 3,2 3,4 0,38 -3,3 -3,3 -12,0 0,0 0,2 -13,0 0,-2 -11,0 -4,-3 -2,-3 0,-38 2,-4 4,-2 10,0 0,3 15,0 0,-3 z\"\n\
+       id=\"path135\"\n\
+       style=\"fill:url(#linearGradient4870);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n\
+    <text\n\
+       id=\"text111\"\n\
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"68\"\n\
+         y=\"255\"\n\
+         id=\"tspan113\"\n\
+         style=\"font-size:11px\">"
 
-    data13b =\
-"</tspan> \n \
-  </text> \n \
-  <text \n \
-     id=\"text83\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"158\" \n \
-       style=\"font-size:11px\">"
+    data13 = \
+"</tspan>\n\
+    </text>\n\
+    <text\n\
+       id=\"text115\"\n\
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"68\"\n\
+         y=\"268\"\n\
+         id=\"tspan117\"\n\
+         style=\"font-size:11px\">"
 
     data14 = \
-"</tspan>\n \
-    </text>\n \
-  </g>\n \
-  <g>\n \
-    <path\n \
-       d=\"M 90,171 L 101,171 L 101,175 L 98,175 L 98,173 L 91,173\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 90,189 L 101,189 L 101,185 L 98,185 L 98,187 L 91,187\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 75,162 C 86,162 86,162 86,162 L 89,164 L 92,168 L 92,191 L 89,195 L 86,198 L 74,198 L 74,198 L 74,200 L 61,200 L 61,198 L 50,198 L 46,195 L 44,191 L 44,168 L 46,164 L 50,162 L 60,162 L 60,165 L 75,165 L 75,162 z\"\n \
-       style=\"fill:url(#linearGradient2539);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n"
+"</tspan>\n\
+    </text>\n\
+    <text\n\
+       id=\"text119\"\n\
+       style=\"font-size:12px;text-align:end;text-anchor:end;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"91\"\n\
+         y=\"243\"\n\
+         id=\"tspan121\"\n\
+         style=\"font-size:8px\">"
 
-    data15a = \
-"    <text\n \
-       y=\"-18\"\n \
-       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"68\"\n \
-         y=\"184\"\n \
-         style=\"font-size:11px\">"
+    data15 = \
+"</tspan>\n\
+    </text>\n\
+    <text\n\
+       id=\"text123\"\n\
+       style=\"font-size:12px;text-align:end;text-anchor:end;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"91\"\n\
+         y=\"277\"\n\
+         id=\"tspan125\"\n\
+         style=\"font-size:8px\">"
 
-    data15b = \
-"  <text \n \
-     id=\"text93\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"177\" \n \
-       id=\"tspan95\" \n \
-       style=\"font-size:11px\">"
-
-    data16b = \
-"</tspan> \n \
-  </text> \n \
-  <text \n \
-     id=\"text97\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"190\" \n \
-       id=\"tspan99\" \n \
-       style=\"font-size:11px\">"
+    data16 = \
+"</tspan>\n\
+    </text>\n\
+  </g>\n\
+  <g\n\
+     transform=\"translate(0,-136)\"\n\
+     id=\"g145\">\n\
+    <path\n\
+       d=\"m 37,372 4,0 0,2 4,0 0,-2 62,0 0,13 -62,0 0,-3 -4,0 0,3 -4,0 0,-13 z\"\n\
+       id=\"path147\"\n\
+       style=\"fill:url(#linearGradient4878);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n\
+    <text\n\
+       x=\"4\"\n\
+       y=\"65\"\n\
+       id=\"text149\"\n\
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"76\"\n\
+         y=\"381\"\n\
+         id=\"tspan151\"\n\
+         style=\"font-size:10.5px\">"
 
     data17 = \
-"</tspan>\n \
-    </text>\n \
-  </g>\n \
-  <g\n \
-     transform=\"translate(0,-24)\">\n \
-    <path\n \
-       d=\"M 89,260 L 100,260 L 100,264 L 98,264 L 98,262 L 91,262\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 89,278 L 100,278 L 100,274 L 98,274 L 98,276 L 91,276\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 90,235 L 101,235 L 101,239 L 98,239 L 98,237 L 91,237\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 90,253 L 101,253 L 101,249 L 98,249 L 98,251 L 91,251\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 75,232 C 86,232 86,232 86,232 L 89,234 L 92,238 L 92,276 L 89,279 L 86,282 L 74,282 L 74,282 L 74,284 L 61,284 L 61,282 L 50,282 L 46,279 L 44,276 L 44,238 L 46,234 L 50,232 L 60,232 L 60,235 L 75,235 L 75,232 z\"\n \
-       style=\"fill:url(#linearGradient4870);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n \
-  <text \n \
-     id=\"text111\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"255\" \n \
-       id=\"tspan113\" \n \
-       style=\"font-size:11px\">"
+"</tspan>\n\
+    </text>\n\
+  </g>\n\
+  <g\n\
+     transform=\"translate(0,-136)\"\n\
+     id=\"g153\">\n\
+    <path\n\
+       d=\"m 37,393 4,0 0,2 4,0 0,-2 62,0 0,13 -62,0 0,-3 -4,0 0,3 -4,0 0,-13 z\"\n\
+       id=\"path155\"\n\
+       style=\"fill:url(#linearGradient2633);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n\
+    <text\n\
+       x=\"4\"\n\
+       y=\"61\"\n\
+       id=\"text157\"\n\
+       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"76\"\n\
+         y=\"402\"\n\
+         id=\"tspan159\"\n\
+         style=\"font-size:10.5px\">"
 
     data18 = \
-"</tspan> \n \
-  </text> \n \
-  <text \n \
-     id=\"text115\" \n \
-     style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"68\" \n \
-       y=\"268\" \n \
-       id=\"tspan117\" \n \
-       style=\"font-size:11px\">"
+"</tspan>\n\
+    </text>\n\
+  </g>\n\
+  <g\n\
+     transform=\"translate(0,-135)\"\n\
+     id=\"g161\">\n\
+    <path\n\
+       d=\"m 37,413 4,0 0,3 4,0 0,-3 62,0 0,14 -62,0 0,-3 -4,0 0,3 -4,0 0,-14 z\"\n\
+       id=\"path163\"\n\
+       style=\"fill:url(#linearGradient2631);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n\
+    <text\n\
+       x=\"4\"\n\
+       y=\"57\"\n\
+       id=\"text165\"\n\
+       style=\"font-size:10px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"76\"\n\
+         y=\"423\"\n\
+         id=\"tspan167\"\n\
+         style=\"font-size:10.5px\">"
 
     data19 = \
-"</tspan> \n \
-  </text> \n \
-  <text \n \
-     id=\"text119\" \n \
-     style=\"font-size:12px;text-align:end;text-anchor:end;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"91\" \n \
-       y=\"243\" \n \
-       id=\"tspan121\" \n \
-       style=\"font-size:8px\">"
+"</tspan>\n\
+    </text>\n\
+  </g>\n\
+  <g\n\
+     transform=\"translate(35.887642,-226.1667)\"\n\
+     id=\"g169\">\n\
+    <path\n\
+       d=\"m 90,309 11,0 0,4 -2,0 0,-2 -8,0\"\n\
+       id=\"path171\"\n\
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none\" />\n\
+    <path\n\
+       d=\"m 90,327 11,0 0,-4 -2,0 0,2 -8,0\"\n\
+       id=\"path173\"\n\
+       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none\" />\n\
+    <path\n\
+       d=\"m 75,300 c 11,0 11,0 11,0 0,0 2.945907,0.94591 4,2 1.054093,1.05409 2,4 2,4 l 0,23 c 0,0 -1.04483,2.8555 -2,4 -1.067912,1.27959 -4,3 -4,3 l -11,0 0,0 0,3 -14,0 0,-3 -11,0 c 0,0 -2.932088,-1.72041 -4,-3 -0.95517,-1.1445 -2,-4 -2,-4 l 0,-23 c 0,0 0.945907,-2.94591 2,-4 1.054093,-1.05409 4,-2 4,-2 l 11,0 0,3 14,0 0,-3 z\"\n\
+       id=\"path175\"\n\
+       style=\"fill:url(#linearGradient2584);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none\" />\n\
+    <text\n\
+       id=\"text177\"\n\
+       style=\"font-size:10px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"68\"\n\
+         y=\"314\"\n\
+         id=\"tspan179\"\n\
+         style=\"font-size:10.5px\">"
 
     data20 = \
-"</tspan> \n \
-  </text> \n \
-  <text \n \
-     id=\"text123\" \n \
-     style=\"font-size:12px;text-align:end;text-anchor:end;font-family:Bitstream Vera Sans\"> \n \
-    <tspan \n \
-       x=\"91\" \n \
-       y=\"277\" \n \
-       id=\"tspan125\" \n \
-       style=\"font-size:8px\">"
+"</tspan>\n\
+    </text>\n\
+    <text\n\
+       id=\"text181\"\n\
+       style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"68\"\n\
+         y=\"323\"\n\
+         id=\"tspan183\"\n\
+         style=\"font-size:10.5px\">"
 
     data21 = \
-"</tspan>\n \
-    </text>\n \
-  </g>\n \
-  <g\n \
-     transform=\"translate(0,-2)\">\n \
-    <path\n \
-       d=\"M 37,372 L 41,372 L 41,374 L 45,374 L 45,372 L 107,372 L 107,385 L 45,385 L 45,382 L 41,382 L 41,385 L 37,385 L 37,372 z\"\n \
-       style=\"fill:url(#linearGradient4878);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n \
-    <text\n \
-       x=\"4\"\n \
-       y=\"65\"\n \
-       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"76\"\n \
-         y=\"381\"\n \
-         style=\"font-size:10.5\">"
+"</tspan>\n\
+    </text>\n\
+    <text\n\
+       id=\"text185\"\n\
+       style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"68\"\n\
+         y=\"332\"\n\
+         id=\"tspan187\"\n\
+         style=\"font-size:10.5px\">"
 
     data22 = \
-"</tspan>\n \
-    </text>\n \
-  </g>\n \
-  <g\n \
-     transform=\"translate(0,-2)\">\n \
-    <path\n \
-       d=\"M 37,393 L 41,393 L 41,395 L 45,395 L 45,393 L 107,393 L 107,406 L 45,406 L 45,403 L 41,403 L 41,406 L 37,406 L 37,393 z\"\n \
-       style=\"fill:url(#linearGradient2633);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n \
-    <text\n \
-       x=\"4\"\n \
-       y=\"61\"\n \
-       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"76\"\n \
-         y=\"402\"\n \
-         style=\"font-size:10.5\">"
+"</tspan>\n\
+    </text>\n\
+  </g>\n\
+  <g\n\
+     transform=\"translate(0,-156)\"\n\
+     id=\"g217\">\n\
+    <path\n\
+       d=\"m 37,456 4,0 0,3 4,0 0,-3 62,0 0,14 -62,0 0,-3 -4,0 0,3 -4,0 0,-14 z\"\n\
+       id=\"path219\"\n\
+       style=\"fill:url(#linearGradient2627);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n\
+    <text\n\
+       id=\"text221\"\n\
+       style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n\
+      <tspan\n\
+         x=\"76\"\n\
+         y=\"466\"\n\
+         id=\"tspan223\"\n\
+         style=\"font-size:10.5px\">"
 
     data23 = \
-"</tspan>\n \
-    </text>\n \
-  </g>\n \
-  <g\n \
-     transform=\"translate(0,-1)\">\n \
-    <path\n \
-       d=\"M 37,413 L 41,413 L 41,416 L 45,416 L 45,413 L 107,413 L 107,427 L 45,427 L 45,424 L 41,424 L 41,427 L 37,427 L 37,413 z\"\n \
-       style=\"fill:url(#linearGradient2631);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n \
-    <text\n \
-       x=\"4\"\n \
-       y=\"57\"\n \
-       style=\"font-size:10px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"76\"\n \
-         y=\"423\"\n \
-         style=\"font-size:10.5\">"
-
-    data24 = \
-"</tspan>\n \
-    </text>\n \
-  </g>\n \
-  <g\n \
-     transform=\"translate(0,-30)\">\n \
-    <path\n \
-       d=\"M 90,309 L 101,309 L 101,313 L 99,313 L 99,311 L 91,311\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 90,327 L 101,327 L 101,323 L 99,323 L 99,325 L 91,325\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 75,300 C 86,300 86,300 86,300 L 90,302 L 92,306 L 92,329 L 90,333 L 86,336 L 75,336 L 75,336 L 75,339 L 61,339 L 61,336 L 50,336 L 46,333 L 44,329 L 44,306 L 46,302 L 50,300 L 61,300 L 61,303 L 75,303 L 75,300 z\"\n \
-       style=\"fill:url(#linearGradient2584);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" />\n \
-    <text\n \
-       style=\"font-size:10;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"68\"\n \
-         y=\"314\"\n \
-         style=\"font-size:10.5\">"
-
-    data25 = \
-"</tspan>\n \
-    </text>\n \
-    <text\n \
-       style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"68\"\n \
-         y=\"323\"\n \
-         style=\"font-size:10.5px\">"
-
-    data26 = \
-"</tspan>\n \
-    </text>\n \
-    <text\n \
-       style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"68\"\n \
-         y=\"332\"\n \
-         style=\"font-size:10.5px\">"
-
-    data27 = \
-"</tspan>\n \
-    </text>\n \
-  </g>\n \
-  <g\n \
-     transform=\"translate(0,18)\">\n \
-    <path\n \
-       d=\"M 90,309 L 101,309 L 101,313 L 99,313 L 99,311 L 91,311\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 90,327 L 101,327 L 101,323 L 99,323 L 99,325 L 91,325\"\n \
-       style=\"fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" />\n \
-    <path\n \
-       d=\"M 75,300 C 86,300 86,300 86,300 L 90,302 L 92,306 L 92,329 L 90,333 L 86,336 L 75,336 L 75,336 L 75,339 L 61,339 L 61,336 L 50,336 L 46,333 L 44,329 L 44,306 L 46,302 L 50,300 L 61,300 L 61,303 L 75,303 L 75,300 z\"\n \
-       style=\"fill:url(#linearGradient2501);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" />\n \
-    <text\n \
-       style=\"font-size:10.5;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"68\"\n \
-         y=\"314\"\n \
-         style=\"font-size:10.5\">"
-
-    data28 = \
-"</tspan>\n \
-    </text>\n \
-    <text\n \
-       style=\"font-size:10.5;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"68\"\n \
-         y=\"323\"\n \
-         style=\"font-size:10.5px\">"
-
-    data29 = \
-"</tspan>\n \
-    </text>\n \
-    <text\n \
-       style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"68\"\n \
-         y=\"332\"\n \
-         style=\"font-size:10.5px\">"
-
-    data30 = \
-"</tspan>\n \
-    </text>\n \
-  </g>\n \
-  <g\n \
-     transform=\"translate(0,-2)\">\n \
-    <path\n \
-       d=\"M 37,435 L 41,435 L 41,438 L 45,438 L 45,435 L 107,435 L 107,449 L 45,449 L 45,446 L 41,446 L 41,449 L 37,449 L 37,435 z\"\n \
-       style=\"fill:url(#linearGradient2629);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n \
-    <text\n \
-       style=\"font-size:12px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"76\"\n \
-         y=\"445\"\n \
-         style=\"font-size:10.5px\">"
-
-    data31 = \
-"</tspan>\n \
-    </text>\n \
-  </g>\n \
-  <g\n \
-     transform=\"translate(0,-2)\">\n \
-    <path\n \
-       d=\"M 37,456 L 41,456 L 41,459 L 45,459 L 45,456 L 107,456 L 107,470 L 45,470 L 45,467 L 41,467 L 41,470 L 37,470 L 37,456 z\"\n \
-       style=\"fill:url(#linearGradient2627);fill-opacity:1;stroke:#00a0a0;stroke-width:1;stroke-opacity:1\" />\n \
-    <text\n \
-       style=\"font-size:10.5px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans\">\n \
-      <tspan\n \
-         x=\"76\"\n \
-         y=\"466\"\n \
-         style=\"font-size:10.5\">"
-
-    data32 = \
-"</tspan> \n \
-  </text> \n \
-  </g>\n \
-</svg> \n "
-
+"</tspan>\n\
+    </text>\n\
+  </g>\n\
+  <path\n\
+     d=\"m 37.5,371.92597 4,0 0,2 4,0 0,-2 62,0 0,13 -62,0 0,-3 -4,0 0,3 -4,0 0,-13 z\"\n\
+     id=\"path155-9\"\n\
+     style=\"fill:#ffff00;fill-opacity:1;stroke:#ffff00;stroke-width:1;stroke-opacity:1\" />\n\
+  <path\n\
+     d=\"m 37.499995,391.09974 4,0 0,2 4,0 0,-2 62.000015,0 0,13 -62.000015,0 0,-3 -4,0 0,3 -4,0 0,-13 z\"\n\
+     id=\"path155-9-4\"\n\
+     style=\"fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-width:1;stroke-opacity:1\" />\n\
+  <path\n\
+     d=\"m 37.499995,411.12887 4,0 0,2 4,0 0,-2 62.000015,0 0,13 -62.000015,0 0,-3 -4,0 0,3 -4,0 0,-13 z\"\n\
+     id=\"path155-9-5\"\n\
+     style=\"fill:#00ffff;fill-opacity:1;stroke:#00ffff;stroke-width:1;stroke-opacity:1\" />\n\
+  <path\n\
+     d=\"m 37.499995,430.30264 4,0 0,2 4,0 0,-2 62.000015,0 0,13 -62.000015,0 0,-3 -4,0 0,3 -4,0 0,-13 z\"\n\
+     id=\"path155-9-4-2\"\n\
+     style=\"fill:#0000ff;fill-opacity:1;stroke:#0000ff;stroke-width:1;stroke-opacity:1\" />\n\
+  <path\n\
+     d=\"m 37.499995,450.84918 4,0 0,2 4,0 0,-2 62.000015,0 0,13 -62.000015,0 0,-3 -4,0 0,3 -4,0 0,-13 z\"\n\
+     id=\"path155-9-47\"\n\
+     style=\"fill:#ff00ff;fill-opacity:1;stroke:#ff00ff;stroke-width:1;stroke-opacity:1\" />\n\
+  <path\n\
+     d=\"m 37.5,331.07232 4,0 0,2 4,0 0,-2 62,0 0,13 -62,0 0,-3 -4,0 0,3 -4,0 0,-13 z\"\n\
+     id=\"path155-9-4-0\"\n\
+     style=\"fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:1;stroke-opacity:1\" />\n\
+  <path\n\
+     d=\"m 37.5,351.10145 4,0 0,2 4,0 0,-2 62,0 0,13 -62,0 0,-3 -4,0 0,3 -4,0 0,-13 z\"\n\
+     id=\"path155-9-5-7\"\n\
+     style=\"fill:#ff8000;fill-opacity:1;stroke:#ff8000;stroke-width:1;stroke-opacity:1\" />\n\
+  <rect\n\
+     width=\"137.5\"\n\
+     height=\"0.14\"\n\
+     x=\"3.75\"\n\
+     y=\"-323.66998\"\n\
+     transform=\"scale(1,-1)\"\n\
+     id=\"rect40-8\"\n\
+     style=\"fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1\" />\n\
+  <rect\n\
+     width=\"137.5\"\n\
+     height=\"0.14\"\n\
+     x=\"3.75\"\n\
+     y=\"-322.47\"\n\
+     transform=\"scale(1,-1)\"\n\
+     id=\"rect42-6\"\n\
+     style=\"fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1\" />\n\
+  <rect\n\
+     width=\"137.5\"\n\
+     height=\"0.14\"\n\
+     x=\"3.75\"\n\
+     y=\"-226.66998\"\n\
+     transform=\"scale(1,-1)\"\n\
+     id=\"rect40-8-9\"\n\
+     style=\"fill:#ffd000;fill-opacity:1;stroke:#e0a000;stroke-width:1;stroke-opacity:1\" />\n\
+  <rect\n\
+     width=\"137.5\"\n\
+     height=\"0.14\"\n\
+     x=\"3.75\"\n\
+     y=\"-225.47\"\n\
+     transform=\"scale(1,-1)\"\n\
+     id=\"rect42-6-2\"\n\
+     style=\"fill:#ffd000;fill-opacity:1;stroke:#fff080;stroke-width:1;stroke-opacity:1\" />\n\
+</svg>\n"
 
     FILE = open(os.path.join("../images", sys.argv[1], mygroup, myname + ".svg"), "w")
     FILE.write(data0)
     FILE.write(mystring1.encode("utf-8"))
     FILE.write(data1)
-    strings = mystring2.split(" ",3)
-    if len(strings) == 1:
-        FILE.write(data2a)
-        FILE.write(strings[0].encode("utf-8"))
-    else:
-        FILE.write(data2b)
-        FILE.write(strings[0].encode("utf-8"))
-        FILE.write(data3b)
+    strings = mystring2.split(" ",2)
+    FILE.write(strings[0].encode("utf-8"))
+    FILE.write(data2)
+    if len(strings) > 1:
         FILE.write(strings[1].encode("utf-8"))
+    FILE.write(data3)
+    strings = mystring3.split(" ",2)
+    FILE.write(strings[0].encode("utf-8"))
     FILE.write(data4)
-    strings = mystring3.split(" ",3)
-    if len(strings) == 1:
-        FILE.write(data5a)
-        FILE.write(strings[0].encode("utf-8"))
-    else:
-        FILE.write(data5b)
-        FILE.write(strings[0].encode("utf-8"))
-        FILE.write(data6b)
+    if len(strings) > 1:
+        FILE.write(strings[1].encode("utf-8"))
+    FILE.write(data5)
+    strings = mystring4.split(" ",3)
+    FILE.write(strings[0].encode("utf-8"))
+    FILE.write(data6)
+    if len(strings) > 1:
         FILE.write(strings[1].encode("utf-8"))
     FILE.write(data7)
-    strings = mystring4.split(" ",3)
-    if len(strings) == 1:
-        FILE.write(data8a)
-        FILE.write(strings[0].encode("utf-8"))
-    elif len(strings) == 2:
-        FILE.write(data8b)
-        FILE.write(strings[0].encode("utf-8"))
-        FILE.write(data9b)
-        FILE.write(strings[1].encode("utf-8"))
-    else:
-        FILE.write(data8c)
-        FILE.write(strings[0].encode("utf-8"))
-        FILE.write(data9c)
-        FILE.write(strings[1].encode("utf-8"))
-        FILE.write(data10c)
+    if len(strings) > 2:
         FILE.write(strings[2].encode("utf-8"))
-        if len(strings) > 3:
-            FILE.write(" " + strings[3].encode("utf-8"))
+    FILE.write(data8)
+    strings = mystring5.split(" ",2)
+    FILE.write(strings[0].encode("utf-8"))
+    FILE.write(data9)
+    if len(strings) > 1:
+        FILE.write(strings[1].encode("utf-8"))
+    FILE.write(data10)
+    strings = mystring6.split(" ",2)
+    FILE.write(strings[0].encode("utf-8"))
     FILE.write(data11)
-    strings = mystring5.split(" ",3)
-    if len(strings) == 1:
-        FILE.write(data12a)
-        FILE.write(strings[0].encode("utf-8"))
-    else:
-        FILE.write(data12b)
-        FILE.write(strings[0].encode("utf-8"))
-        FILE.write(data13b)
+    if len(strings) > 1:
         FILE.write(strings[1].encode("utf-8"))
-    if len(strings) > 2:
-        FILE.write(" " + strings[2].encode("utf-8"))
-    FILE.write(data14)
-    strings = mystring6.split(" ",3)
-    if len(strings) == 1:
-        FILE.write(data15a)
-        FILE.write(strings[0].encode("utf-8"))
-    else:
-        FILE.write(data15b)
-        FILE.write(strings[0].encode("utf-8"))
-        FILE.write(data16b)
-        FILE.write(strings[1].encode("utf-8"))
-    if len(strings) > 2:
-        FILE.write(" " + strings[2].encode("utf-8"))
-    FILE.write(data17)
+    FILE.write(data12)
     strings = mystring7.split(" ",2)
     FILE.write(strings[0].encode("utf-8"))
-    FILE.write(data18)
+    FILE.write(data13)
     if len(strings) > 1:
         FILE.write(strings[1].encode("utf-8"))
-    if len(strings) > 2:
-        FILE.write(" " + strings[2].encode("utf-8"))
-    FILE.write(data19)
+    FILE.write(data14)
     FILE.write(mystring9.encode("utf-8"))
-    FILE.write(data20)
+    FILE.write(data15)
     FILE.write(mystring10.encode("utf-8"))
-    FILE.write(data21)
+    FILE.write(data16)
     FILE.write(mystring8.encode("utf-8"))
-    FILE.write(data22)
+    FILE.write(data17)
+    FILE.write(mystring14.encode("utf-8"))
+    FILE.write(data18)
     FILE.write(mystring9.encode("utf-8"))
-    FILE.write(data23)
-    FILE.write(mystring10.encode("utf-8"))
-    FILE.write(data24)
+    FILE.write(data19)
     strings = mystring11.split(" ",3)
     FILE.write(strings[0].encode("utf-8"))
-    FILE.write(data25)
+    FILE.write(data20)
     if len(strings) > 1:
         FILE.write(strings[1].encode("utf-8"))
-    FILE.write(data26)
+    FILE.write(data21)
     if len(strings) > 2:
         FILE.write(strings[2].encode("utf-8"))
-    FILE.write(data27)
-    strings = mystring12.split(" ",3)
-    FILE.write(strings[0].encode("utf-8"))
-    FILE.write(data28)
-    if len(strings) > 1:
-        FILE.write(strings[1].encode("utf-8"))
-    FILE.write(data29)
-    if len(strings) > 2:
-        FILE.write(strings[2].encode("utf-8"))
-    FILE.write(data30)
-    FILE.write(mystring13.encode("utf-8"))
-    FILE.write(data31)
-    FILE.write(mystring14.encode("utf-8"))
-    FILE.write(data32)
+    FILE.write(data22)
+    FILE.write(mystring10.encode("utf-8"))
+    FILE.write(data23)
     FILE.close()
     return
 
