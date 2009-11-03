@@ -1,62 +1,135 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?> 
- <svg 
-    xmlns:svg="http://www.w3.org/2000/svg" 
-    xmlns="http://www.w3.org/2000/svg" 
-    width="87" 
-    height="60" 
-    version="1.0"> 
-   <defs> 
-     <linearGradient 
-        id="linearGradient3166"> 
-       <stop 
-          style="stop-color:#ffffff;stop-opacity:1;" 
-          offset="0" 
-          id="stop3168" /> 
-       <stop 
-          style="stop-color:#00ffff;stop-opacity:1;" 
-          offset="1" 
-          id="stop3170" /> 
-     </linearGradient> 
-     <linearGradient 
-        xlink:href="#linearGradient3166" 
-        id="linearGradient3172" 
-        x1="0" 
-        y1="22" 
-        x2="74" 
-        y2="22" 
-        gradientUnits="userSpaceOnUse" /> 
-   </defs> 
-   <g 
-      transform="translate(0,8.75)"> 
-     <path 
-        d="M 70,6 L 86.5,6 L 86.5,12 L 82.5,12 L 82.5,9 L 72,9" 
-        style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.5;stroke-opacity:1" /> 
-     <path 
-        d="M 70,33.5 L 86.5,33.5 L 86.5,27.5 L 82.5,27.5 L 82.5,30.5 L 72,30.5" 
-        style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.5;stroke-opacity:1" /> 
-   </g> 
-   <path 
-      style="fill:url(#linearGradient3172);fill-opacity:1;stroke:#00a0a0;stroke-width:2;stroke-opacity:1" 
-      d="M 48,1 C 64,1 64,1 64,1 L 69.5,5 L 73,11 L 73,45 L 69.5,51 L 64,55 L 47,55 L 47,55 L 47,59 L 27,59 L 27,55 L 10,55 L 4.5,51 L 1,45 L 1,11 L 4.5,5 L 10,1 L 26,1 L 26,6 L 48,6 L 48,1 z" /> 
-   <text 
-      style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
-     <tspan 
-        x="37" 
-        y="20" 
-        style="font-size:16px;">பேனையின்</tspan> 
-   </text> 
-   <text 
-      style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
-     <tspan 
-        x="37" 
-        y="35" 
-        style="font-size:16px;">அளவினை</tspan> 
-   </text> 
-   <text 
-      style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
-     <tspan 
-        x="37" 
-        y="50" 
-        style="font-size:16px;">ஒழுங்குபடுத்து</tspan> 
-   </text> 
- </svg> 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="87"
+   height="60"
+   version="1.0"
+   id="svg2"
+   inkscape:version="0.47pre4 r22446"
+   sodipodi:docname="setpensize.svg">
+  <metadata
+     id="metadata32">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="689"
+     inkscape:window-height="483"
+     id="namedview30"
+     showgrid="false"
+     inkscape:zoom="3.9333333"
+     inkscape:cx="43.5"
+     inkscape:cy="30"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 30 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="87 : 30 : 1"
+       inkscape:persp3d-origin="43.5 : 20 : 1"
+       id="perspective34" />
+    <linearGradient
+       id="linearGradient3166">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3168" />
+      <stop
+         style="stop-color:#00ffff;stop-opacity:1;"
+         offset="1"
+         id="stop3170" />
+    </linearGradient>
+    <linearGradient
+       href="#linearGradient3166"
+       id="linearGradient3172"
+       x1="0"
+       y1="22"
+       x2="74"
+       y2="22"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3166"
+       id="linearGradient3618"
+       x1="0"
+       y1="30"
+       x2="74"
+       y2="30"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     transform="translate(0,8.75)"
+     id="g10">
+    <path
+       d="M 70,6 L 86.5,6 L 86.5,12 L 82.5,12 L 82.5,9 L 72,9"
+       style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.5;stroke-opacity:1"
+       id="path12" />
+    <path
+       d="M 70,33.5 L 86.5,33.5 L 86.5,27.5 L 82.5,27.5 L 82.5,30.5 L 72,30.5"
+       style="fill:#00e0e0;fill-opacity:1;stroke:#008080;stroke-width:1.5;stroke-opacity:1"
+       id="path14" />
+  </g>
+  <path
+     style="fill:url(#linearGradient3618);fill-opacity:1.0;stroke:#00a0a0;stroke-width:2;stroke-opacity:1"
+     d="M 48,1 C 64,1 64,1 64,1 L 69.5,5 L 73,11 L 73,45 L 69.5,51 L 64,55 L 47,55 L 47,55 L 47,59 L 27,59 L 27,55 L 10,55 L 4.5,51 L 1,45 L 1,11 L 4.5,5 L 10,1 L 26,1 L 26,6 L 48,6 L 48,1 z"
+     id="path16" />
+  <text
+     style="font-size:16.15630531px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"
+     id="text18"
+     x="8.5085316"
+     transform="scale(0.89757259,1.114116)">
+    <tspan
+       x="41.718716"
+       y="17.95145"
+       style="font-size:14.36116123px"
+       id="tspan20">பேனையின்</tspan>
+  </text>
+  <text
+     style="font-size:16.58134842px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"
+     id="text22"
+     x="6.1044674"
+     transform="scale(0.92118603,1.0855571)">
+    <tspan
+       x="40.188351"
+       y="32.241508"
+       style="font-size:14.73897648px"
+       id="tspan24">அளவினை</tspan>
+  </text>
+  <text
+     style="font-size:13.47314739px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"
+     id="text26"
+     x="21.373121"
+     transform="scale(0.7485082,1.3359907)">
+    <tspan
+       x="49.067924"
+       y="37.425407"
+       style="font-size:11.97613049px"
+       id="tspan28">ஒழுங்குபடுத்து</tspan>
+  </text>
+</svg>
