@@ -518,6 +518,13 @@ def lcNew(tw):
     defprim(lc,'pensize', 0, lambda lc: lc.tw.turtle.pensize)
     defprim(lc,'textcolor', 0, lambda lc: lc.tw.turtle.textcolor)
     defprim(lc,'textsize', 0, lambda lc: lc.tw.textsize)
+    defprim(lc,'red', 0, lambda lc: 0)
+    defprim(lc,'orange', 0, lambda lc: 10)
+    defprim(lc,'yellow', 0, lambda lc: 20)
+    defprim(lc,'green', 0, lambda lc: 30)
+    defprim(lc,'cyan', 0, lambda lc: 50)
+    defprim(lc,'blue', 0, lambda lc: 70)
+    defprim(lc,'purple', 0, lambda lc: 90)
 
     # flow primitives
     defprim(lc,'wait', 1, prim_wait, True)
