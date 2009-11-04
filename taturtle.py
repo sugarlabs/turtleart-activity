@@ -178,9 +178,11 @@ def setpensize(t,ps):
 def setcolor(t,c):
     try:
         t.color = c
+        t.tcolor = c # using pen color for text color
     except:
         pass
     set_fgcolor(t)
+    set_textcolor(t)
     return None
 
 def settextcolor(t,c):
