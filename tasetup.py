@@ -32,6 +32,7 @@ from gettext import gettext as _
 from tasprites import *
 
 def numcheck(new, old):
+    if new is '': return "0"
     if new in ['-', '.', '-.']: return new
     if new=='.': return '0.'
     try: float(new); return new
@@ -265,45 +266,47 @@ def setup_misc(tw):
     tw.category_spr.type = 'category'
     setlayer(tw.category_spr,660)
     # masks get positioned on top of other blocks
-    tw.select_mask = sprNew(tw,100,100,load_image(tw.path, '', 'masknumber'))
+    tw.select_mask = sprNew(tw,100,100,\
+        load_image(tw, tw.path, '', 'masknumber'))
     tw.select_mask.type = 'selectmask'
-    tw.select_mask_string = sprNew(tw,100,100,load_image(tw.path, '', \
+    tw.select_mask_string = sprNew(tw,100,100,load_image(tw, tw.path, '', \
         'maskstring'))
     tw.select_mask_string.type = 'selectmask'
     # used to hide the palette
-    tw.hidden_palette_icon = load_image(tw.path, '','blocks-')
+    tw.hidden_palette_icon = load_image(tw, tw.path, '','blocks-')
     # media blocks get positioned into other blocks
     tw.media_shapes = {}
-    tw.media_shapes['audioon'] = load_image(tw.path, '', 'audioon')
-    tw.media_shapes['texton'] = load_image(tw.path, '', 'texton')
-    tw.media_shapes['journalon'] = load_image(tw.path, '', 'journalon')
-    tw.media_shapes['decson'] = load_image(tw.path, '', 'descriptionon')
+    tw.media_shapes['audioon'] = load_image(tw, tw.path, '', 'audioon')
+    tw.media_shapes['texton'] = load_image(tw, tw.path, '', 'texton')
+    tw.media_shapes['journalon'] = load_image(tw, tw.path, '', 'journalon')
+    tw.media_shapes['decson'] = load_image(tw, tw.path, '', 'descriptionon')
     # media blocks that replace other blocks
     tw.media_shapes['pythonloaded'] = \
-        load_image(tw.path_lang, 'sensors', 'nop-loaded')
+        load_image(tw, tw.path_lang, 'sensors', 'nop-loaded')
     # coordinare systems
     tw.cartesian_coordinates_spr = sprNew(tw, tw.width/2-600, tw.height/2-450, \
-                                          load_image(tw.path, '', "Cartesian"))
+                                      load_image(tw, tw.path, '', "Cartesian"))
     tw.cartesian_coordinates_spr.type = 'coordinates'
     setlayer(tw.cartesian_coordinates_spr, 610)
     hide(tw.cartesian_coordinates_spr)
     tw.polar_coordinates_spr = sprNew(tw, tw.width/2-600, tw.height/2-450, \
-                                      load_image(tw.path, '', "polar"))
+                                      load_image(tw, tw.path, '', "polar"))
     tw.polar_coordinates_spr.type = 'coordinates'
     setlayer(tw.polar_coordinates_spr, 610)
     hide(tw.polar_coordinates_spr)
     # status shapes get positioned at the bottom of the screen
     tw.status_shapes = {}
-    tw.status_shapes['status'] = load_image(tw.path, '', 'status')
-    tw.status_shapes['info'] = load_image(tw.path, '', 'info')
-    tw.status_shapes['nostack'] = load_image(tw.path, '', 'nostack')
-    tw.status_shapes['noinput'] = load_image(tw.path, '', 'noinput')
-    tw.status_shapes['emptyheap'] = load_image(tw.path, '', 'emptyheap')
-    tw.status_shapes['emptybox'] = load_image(tw.path, '', 'emptybox')
-    tw.status_shapes['nomedia'] = load_image(tw.path, '', 'nomedia')
-    tw.status_shapes['nocode'] = load_image(tw.path, '', 'nocode')
-    tw.status_shapes['overflowerror'] = load_image(tw.path, '', 'overflowerror')
-    tw.status_shapes['syntaxerror'] = load_image(tw.path, '', 'syntaxerror')
+    tw.status_shapes['status'] = load_image(tw, tw.path, '', 'status')
+    tw.status_shapes['info'] = load_image(tw, tw.path, '', 'info')
+    tw.status_shapes['nostack'] = load_image(tw, tw.path, '', 'nostack')
+    tw.status_shapes['noinput'] = load_image(tw, tw.path, '', 'noinput')
+    tw.status_shapes['emptyheap'] = load_image(tw, tw.path, '', 'emptyheap')
+    tw.status_shapes['emptybox'] = load_image(tw, tw.path, '', 'emptybox')
+    tw.status_shapes['nomedia'] = load_image(tw, tw.path, '', 'nomedia')
+    tw.status_shapes['nocode'] = load_image(tw, tw.path, '', 'nocode')
+    tw.status_shapes['overflowerror'] = \
+        load_image(tw, tw.path, '', 'overflowerror')
+    tw.status_shapes['syntaxerror'] = load_image(tw, tw.path, '', 'syntaxerror')
     tw.status_spr = sprNew(tw,0,(tw.height-175), \
             tw.status_shapes['status'],True)
     tw.status_spr.type = 'status'
@@ -315,22 +318,22 @@ def setup_misc(tw):
 
 def setup_selector(tw,name,y,blockdescriptions):
     # selector tabs
-    offshape = load_image(tw.path, 'palette', name+'off')
-    onshape = load_image(tw.path, 'palette', name+'on')
+    offshape = load_image(tw, tw.path, 'palette', name+'off')
+    onshape = load_image(tw, tw.path, 'palette', name+'on')
     spr = sprNew(tw,143,y,offshape)
     setlayer(spr,800)
     spr.offshape = offshape
     spr.onshape = onshape
     # print 'setting up selector ' + name
-    spr.group = load_image(tw.path_lang, name, name+'group')
-    spr.mask = load_image(tw.path, '', name+'mask')
+    spr.group = load_image(tw, tw.path_lang, name, name+'group')
+    spr.mask = load_image(tw, tw.path, '', name+'mask')
     spr.type = 'selbutton'
     spr.name = name
     # block prototypes
     protos = []
     for b in blockdescriptions:
         bname,primname,docktype = b[0:3]
-        image = load_image(tw.path_lang, name, bname)
+        image = load_image(tw, tw.path_lang, name, bname)
         proto = taProto()
         proto.name = bname
         proto.image = image
@@ -350,7 +353,7 @@ def setup_selector(tw,name,y,blockdescriptions):
     spr.blockprotos = protos
     return spr
 
-def load_image(path, dir, file):
+def load_image(tw, path, dir, file):
     try:
         from sugar.activity import activity
     except:

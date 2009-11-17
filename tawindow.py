@@ -139,6 +139,7 @@ def twNew(win, path, lang, parent=None):
     tw.dy = 0
     tw.cartesian = False
     tw.polar = False
+    tw.spr = None
     return tw
 
 #
@@ -167,19 +168,19 @@ def button_press(tw, mask, x, y, verbose=False):
         unselect(tw)
     else:
         setlayer(tw.status_spr,400)
-    spr = findsprite(tw,(x,y))
+    tw.spr = findsprite(tw,(x,y))
     tw.dx = 0
     tw.dy = 0
-    if spr is None:
+    if tw.spr is None:
         # print "no spr found"
         return True
-    if spr.type == 'selbutton':
-        select_category(tw,spr)
-    elif spr.type == 'category':
+    if tw.spr.type == 'selbutton':
+        select_category(tw,tw.spr)
+    elif tw.spr.type == 'category':
         block_selector_pressed(tw,x,y)
-    elif spr.type == 'block':
-        block_pressed(tw,mask,x,y,spr)
-    elif spr.type == 'turtle':
+    elif tw.spr.type == 'block':
+        block_pressed(tw,mask,x,y,tw.spr)
+    elif tw.spr.type == 'turtle':
         turtle_pressed(tw,x,y)
 
 def block_selector_pressed(tw,x,y):
@@ -297,8 +298,8 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
         print "processing remote mouse move: " + str(x) + " " + str(y)
     if tw.draggroup is None:
         # popup help from RGS
-        spr = findsprite(tw,(x,y))
-        if spr and spr.type == 'category':
+        tw.spr = findsprite(tw,(x,y))
+        if tw.spr and tw.spr.type == 'category':
             proto = get_proto_from_category(tw,x,y)
             if proto and proto!='hide':
                 if timeout_tag[0] == 0:
@@ -311,9 +312,9 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
                         timeout_tag[0] = 0
                     except:
                         timeout_tag[0] = 0
-        elif spr and spr.type == 'selbutton':
+        elif tw.spr and tw.spr.type == 'selbutton':
             if timeout_tag[0] == 0:
-                timeout_tag[0] = showPopup(spr.name,tw)
+                timeout_tag[0] = showPopup(tw.spr.name,tw)
             else:
                 if timeout_tag[0] > 0:
                     try:
@@ -330,21 +331,21 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
                     timeout_tag[0] = 0
         return
     tw.block_operation = 'move'
-    spr = tw.draggroup[0]
-    if spr.type=='block':
+    tw.spr = tw.draggroup[0]
+    if tw.spr.type=='block':
         dragx, dragy = tw.dragpos
         if mdx != 0 or mdy != 0:
             dx,dy = mdx,mdy
         else:
-            dx,dy = x-dragx-spr.x,y-dragy-spr.y
+            dx,dy = x-dragx-tw.spr.x,y-dragy-tw.spr.y
         # skip if there was a move of 0,0
         if dx == 0 and dy == 0:
             return
         # drag entire stack if moving lock block
-        if spr.proto.name == 'lock':
-            tw.draggroup = findgroup(find_top_block(spr))
+        if tw.spr.proto.name == 'lock':
+            tw.draggroup = findgroup(find_top_block(tw.spr))
         else:
-            tw.draggroup = findgroup(spr)
+            tw.draggroup = findgroup(tw.spr)
         # check to see if any block ends up with a negative x
         for b in tw.draggroup:
             if b.x+dx < 0:
@@ -352,19 +353,19 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
         # move the stack
         for b in tw.draggroup:
             move(b,(b.x+dx, b.y+dy))
-    elif spr.type=='turtle':
+    elif tw.spr.type=='turtle':
         type,dragx,dragy = tw.dragpos
         if type == 'move':
             if mdx != 0 or mdy != 0:
                 dx,dy = mdx,mdy
             else:
-                dx,dy = x-dragx-spr.x,y-dragy-spr.y
-            move(spr, (spr.x+dx, spr.y+dy))
+                dx,dy = x-dragx-tw.spr.x,y-dragy-tw.spr.y
+            move(tw.spr, (tw.spr.x+dx, tw.spr.y+dy))
         else:
             if mdx != 0 or mdy != 0:
                 dx,dy = mdx,mdy
             else:
-                dx,dy = x-spr.x-30,y-spr.y-30
+                dx,dy = x-tw.spr.x-30,y-tw.spr.y-30
             seth(tw.turtle, int(dragx+atan2(dy,dx)/DEGTOR+5)/10*10)
     if mdx != 0 or mdy != 0:
         dx,dy = 0,0
@@ -399,8 +400,8 @@ def button_release(tw, x, y, verbose=False):
         print "processing remote button release: " + str(x) + " " + str(y)
     if tw.draggroup == None: 
         return
-    spr = tw.draggroup[0]
-    if spr.type == 'turtle':
+    tw.spr = tw.draggroup[0]
+    if tw.spr.type == 'turtle':
         tw.turtle.xcor = tw.turtle.spr.x-tw.turtle.canvas.x- \
             tw.turtle.canvas.width/2+30
         tw.turtle.ycor = tw.turtle.canvas.height/2-tw.turtle.spr.y+ \
@@ -420,24 +421,24 @@ def button_release(tw, x, y, verbose=False):
     for b in tw.draggroup: setlayer(b,650)
     tw.draggroup = None
     if tw.block_operation=='click':
-        if spr.proto.name=='number':
-            tw.selected_block = spr
-            move(tw.select_mask, (spr.x-5,spr.y-5))
+        if tw.spr.proto.name=='number':
+            tw.selected_block = tw.spr
+            move(tw.select_mask, (tw.spr.x-5,tw.spr.y-5))
             setlayer(tw.select_mask, 660)
             tw.firstkey = True
-        elif tw.defdict.has_key(spr.proto.name):
-            tw.selected_block = spr
-            if spr.proto.name=='string':
-                move(tw.select_mask_string, (spr.x-5,spr.y-5))
+        elif tw.defdict.has_key(tw.spr.proto.name):
+            tw.selected_block = tw.spr
+            if tw.spr.proto.name=='string':
+                move(tw.select_mask_string, (tw.spr.x-5,tw.spr.y-5))
                 setlayer(tw.select_mask_string, 660)
                 tw.firstkey = True
-            elif spr.proto.name in importblocks:
-                import_from_journal(tw, spr)
+            elif tw.spr.proto.name in importblocks:
+                import_from_journal(tw, tw.spr)
         # if Python block is clicked before any code has been loaded
         # initiate the chooser dialog
-        elif spr.proto.name=='nop' and tw.myblock==None:
+        elif tw.spr.proto.name=='nop' and tw.myblock==None:
             tw.activity.import_py()
-        else: run_stack(tw, spr)
+        else: run_stack(tw, tw.spr)
 
 def import_from_journal(tw, spr):
     if hasattr(tw,"activity"):
@@ -603,17 +604,42 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
         elif keyname=='q':
             exit()
         return True
-    if tw.selected_block==None:
-        return False
-    if tw.selected_block.proto.name == 'number':
+    if tw.selected_block is not None and \
+       tw.selected_block.proto.name == 'number':
         if keyname in ['minus', 'period']: 
             keyname = {'minus': '-', 'period': '.'}[keyname]
+        oldnum = tw.selected_block.label 
+        selblock=tw.selected_block.proto
+        if keyname == 'BackSpace':
+            if len(oldnum) > 1:
+                newnum = oldnum[:len(oldnum)-1]
+            else:
+                newnum = ''
+            setlabel(tw.selected_block, selblock.check(newnum,oldnum))
+            if len(newnum) > 0:
+                tw.firstkey = False
+            else:
+                tw.firstkey = True
         if len(keyname)>1:
             return True
     else: # gtk.keysyms.Left ...
-        if keyname in ['Escape', 'Return', \
+        if keyname in ['Escape', 'Return', 'j', 'k', 'h', 'l',
                        'KP_Up', 'KP_Down', 'KP_Left', 'KP_Right']:
+            # move blocks (except number and text blocks only with arrows)
+            # or click with Return
+            if tw.spr is not None and \
+               tw.spr.type == 'turtle': # jog turtle with arrow keys
+                if keyname == 'KP_Up' or keyname == 'j':
+                    jog_turtle(tw,0,10)
+                elif keyname == 'KP_Down' or keyname == 'k':
+                    jog_turtle(tw,0,-10)
+                elif keyname == 'KP_Left' or keyname == 'h':
+                    jog_turtle(tw,-10,0)
+                elif keyname == 'KP_Right' or keyname == 'l':
+                    jog_turtle(tw,10,0)
             return True
+    if tw.selected_block is None:
+        return False
     if keyname in ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', \
                    'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift']:
         keyname = ''
@@ -635,6 +661,8 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
         setlabel(tw.selected_block, selblock.check(newnum,oldnum))
         if len(newnum) > 0:
             tw.firstkey = False
+        else:
+            tw.firstkey = True
     elif keyname is not '':
         # Hack until I sort out input and unicode + dead keys
         if tw.dead_key == 'dead_grave':
@@ -669,7 +697,8 @@ def unselect(tw):
         setlabel(tw.selected_block,'0')
 
     # put an upper and lower bound on numbers to prevent OverflowError
-    if tw.selected_block.label is not None:
+    if tw.selected_block.proto.name == 'number' and \
+       tw.selected_block.label is not None:
         try:
             i = float(tw.selected_block.label)
             if i > 1000000:
@@ -684,6 +713,13 @@ def unselect(tw):
     hide(tw.select_mask)
     hide(tw.select_mask_string)
     tw.selected_block = None
+
+def jog_turtle(tw,dx,dy):
+    tw.turtle.xcor += dx
+    tw.turtle.ycor += dy
+    move_turtle(tw.turtle)
+    display_coordinates(tw)
+    tw.draggroup = None
 
 #
 # Block utilities

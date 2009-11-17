@@ -58,7 +58,7 @@ def tNew(tw,w,h):
     t.canvas.type = 'canvas'
     setlayer(t.canvas,600)
     t.shapelist = \
-        [load_image(tw.path, 'shapes','t'+str(i)) for i in range(36)]
+        [load_image(tw, tw.path, 'shapes','t'+str(i)) for i in range(36)]
     t.spr = sprNew(tw,100,100,t.shapelist[0])
     t.spr.type = 'turtle'
     setlayer(t.spr, 630)

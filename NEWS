@@ -1,3 +1,11 @@
+79
+
+* enable backspace on numbers
+* enable long numeric strings
+* fixed Python error in sample code
+* clean up of en artwork
+* fix bug in load_image
+
 78
 
 * new artwork for pen palette
