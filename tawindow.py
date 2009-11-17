@@ -140,6 +140,8 @@ def twNew(win, path, lang, parent=None):
     tw.cartesian = False
     tw.polar = False
     tw.spr = None
+    tw.x = 0
+    tw.y = 0
     return tw
 
 #
@@ -169,6 +171,7 @@ def button_press(tw, mask, x, y, verbose=False):
     else:
         setlayer(tw.status_spr,400)
     tw.spr = findsprite(tw,(x,y))
+    tw.x, tw.y = x,y
     tw.dx = 0
     tw.dy = 0
     if tw.spr is None:
@@ -299,6 +302,7 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
     if tw.draggroup is None:
         # popup help from RGS
         tw.spr = findsprite(tw,(x,y))
+        tw.x, tw.y = x,y
         if tw.spr and tw.spr.type == 'category':
             proto = get_proto_from_category(tw,x,y)
             if proto and proto!='hide':
@@ -401,6 +405,7 @@ def button_release(tw, x, y, verbose=False):
     if tw.draggroup == None: 
         return
     tw.spr = tw.draggroup[0]
+    tw.x, tw.y = x,y
     if tw.spr.type == 'turtle':
         tw.turtle.xcor = tw.turtle.spr.x-tw.turtle.canvas.x- \
             tw.turtle.canvas.width/2+30
@@ -623,20 +628,47 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
         if len(keyname)>1:
             return True
     else: # gtk.keysyms.Left ...
-        if keyname in ['Escape', 'Return', 'j', 'k', 'h', 'l',
-                       'KP_Up', 'KP_Down', 'KP_Left', 'KP_Right']:
+        if keyname in ['Escape', 'Return', 'j', 'k', 'h', 'l', 'KP_Page_Up',
+                       'Up', 'Down', 'Left', 'Right', 'KP_Home', 'KP_End',
+                       'KP_Up', 'KP_Down', 'KP_Left', 'KP_Right', 
+                       'KP_Page_Down']:
             # move blocks (except number and text blocks only with arrows)
             # or click with Return
-            if tw.spr is not None and \
-               tw.spr.type == 'turtle': # jog turtle with arrow keys
-                if keyname == 'KP_Up' or keyname == 'j':
-                    jog_turtle(tw,0,10)
-                elif keyname == 'KP_Down' or keyname == 'k':
-                    jog_turtle(tw,0,-10)
-                elif keyname == 'KP_Left' or keyname == 'h':
-                    jog_turtle(tw,-10,0)
-                elif keyname == 'KP_Right' or keyname == 'l':
-                    jog_turtle(tw,10,0)
+            if tw.spr is not None:
+                if tw.spr.type == 'turtle': # jog turtle with arrow keys
+                    if keyname == 'KP_Up' or keyname == 'j' or keyname == 'Up':
+                        jog_turtle(tw,0,10)
+                    elif keyname == 'KP_Down' or keyname == 'k' or \
+                         keyname == 'Down':
+                        jog_turtle(tw,0,-10)
+                    elif keyname == 'KP_Left' or keyname == 'h' or \
+                         keyname == 'Left':
+                        jog_turtle(tw,-10,0)
+                    elif keyname == 'KP_Right' or keyname == 'l' or \
+                         keyname == 'Right':
+                        jog_turtle(tw,10,0)
+                elif tw.spr.type == 'block':    
+                    if keyname == 'Return' or keyname == 'KP_End':
+                        click_block(tw)
+                    elif keyname == 'KP_Up' or keyname == 'j' or \
+                         keyname == 'Up':
+                        jog_block(tw,0,10)
+                    elif keyname == 'KP_Down' or keyname == 'k' or \
+                         keyname == 'Down':
+                        jog_block(tw,0,-10)
+                    elif keyname == 'KP_Left' or keyname == 'h' or \
+                         keyname == 'Left':
+                        jog_block(tw,-10,0)
+                    elif keyname == 'KP_Right' or keyname == 'l' or \
+                         keyname == 'Right':
+                        jog_block(tw,10,0)
+                elif tw.spr.type == 'selbutton':
+                    if keyname == 'Return' or keyname == 'KP_End':
+                        select_category(tw,tw.spr)
+                elif tw.spr.type == 'category':
+                    if keyname == 'Return' or keyname == 'KP_End':
+                        block_selector_pressed(tw,tw.x,tw.y)
+
             return True
     if tw.selected_block is None:
         return False
@@ -720,6 +752,40 @@ def jog_turtle(tw,dx,dy):
     move_turtle(tw.turtle)
     display_coordinates(tw)
     tw.draggroup = None
+
+def jog_block(tw,dx,dy):
+    # drag entire stack if moving lock block
+    if tw.spr.proto.name == 'lock':
+        tw.draggroup = findgroup(find_top_block(tw.spr))
+    else:
+        tw.draggroup = findgroup(tw.spr)
+    # check to see if any block ends up with a negative x
+    for b in tw.draggroup:
+        if b.x+dx < 0:
+            dx += -(b.x+dx)
+    # move the stack
+    for b in tw.draggroup:
+        move(b,(b.x+dx, b.y-dy))
+    snap_to_dock(tw)
+    tw.draggroup = None
+
+def click_block(tw):
+    if tw.spr.proto.name=='number':
+        tw.selected_block = tw.spr
+        move(tw.select_mask, (tw.spr.x-5,tw.spr.y-5))
+        setlayer(tw.select_mask, 660)
+        tw.firstkey = True
+    elif tw.defdict.has_key(tw.spr.proto.name):
+        tw.selected_block = tw.spr
+        if tw.spr.proto.name=='string':
+            move(tw.select_mask_string, (tw.spr.x-5,tw.spr.y-5))
+            setlayer(tw.select_mask_string, 660)
+            tw.firstkey = True
+        elif tw.spr.proto.name in importblocks:
+            import_from_journal(tw, tw.spr)
+    elif tw.spr.proto.name=='nop' and tw.myblock==None:
+        tw.activity.import_py()
+    else: run_stack(tw, tw.spr)
 
 #
 # Block utilities
