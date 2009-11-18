@@ -139,9 +139,7 @@ def twNew(win, path, lang, parent=None):
     tw.dy = 0
     tw.cartesian = False
     tw.polar = False
-    tw.spr = None
-    tw.x = 0
-    tw.y = 0
+    tw.spr = None # "currently selected spr"
     return tw
 
 #
@@ -302,7 +300,6 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
     if tw.draggroup is None:
         # popup help from RGS
         tw.spr = findsprite(tw,(x,y))
-        tw.x, tw.y = x,y
         if tw.spr and tw.spr.type == 'category':
             proto = get_proto_from_category(tw,x,y)
             if proto and proto!='hide':
@@ -405,7 +402,6 @@ def button_release(tw, x, y, verbose=False):
     if tw.draggroup == None: 
         return
     tw.spr = tw.draggroup[0]
-    tw.x, tw.y = x,y
     if tw.spr.type == 'turtle':
         tw.turtle.xcor = tw.turtle.spr.x-tw.turtle.canvas.x- \
             tw.turtle.canvas.width/2+30
@@ -439,8 +435,6 @@ def button_release(tw, x, y, verbose=False):
                 tw.firstkey = True
             elif tw.spr.proto.name in importblocks:
                 import_from_journal(tw, tw.spr)
-        # if Python block is clicked before any code has been loaded
-        # initiate the chooser dialog
         elif tw.spr.proto.name=='nop' and tw.myblock==None:
             tw.activity.import_py()
         else: run_stack(tw, tw.spr)
@@ -630,11 +624,13 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
     else: # gtk.keysyms.Left ...
         if keyname in ['Escape', 'Return', 'j', 'k', 'h', 'l', 'KP_Page_Up',
                        'Up', 'Down', 'Left', 'Right', 'KP_Home', 'KP_End',
-                       'KP_Up', 'KP_Down', 'KP_Left', 'KP_Right', 
+                       'KP_Up', 'KP_Down', 'KP_Left', 'KP_Right',
                        'KP_Page_Down']:
             # move blocks (except number and text blocks only with arrows)
             # or click with Return
-            if tw.spr is not None:
+            if keyname == 'KP_End':
+                run_button(tw, 0)
+            elif tw.spr is not None:
                 if tw.spr.type == 'turtle': # jog turtle with arrow keys
                     if keyname == 'KP_Up' or keyname == 'j' or keyname == 'Up':
                         jog_turtle(tw,0,10)
@@ -647,8 +643,10 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
                     elif keyname == 'KP_Right' or keyname == 'l' or \
                          keyname == 'Right':
                         jog_turtle(tw,10,0)
-                elif tw.spr.type == 'block':    
-                    if keyname == 'Return' or keyname == 'KP_End':
+                    elif keyname == 'KP_Home':
+                        jog_turtle(tw,-1,-1)
+                elif tw.spr.type == 'block':
+                    if keyname == 'Return' or keyname == 'KP_Page_Up':
                         click_block(tw)
                     elif keyname == 'KP_Up' or keyname == 'j' or \
                          keyname == 'Up':
@@ -662,13 +660,18 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
                     elif keyname == 'KP_Right' or keyname == 'l' or \
                          keyname == 'Right':
                         jog_block(tw,10,0)
+                    elif keyname == 'KP_Page_Down':
+                        if tw.draggroup == None:
+                            tw.draggroup = findgroup(tw.spr)
+                        for b in tw.draggroup: hide(b)
+                        tw.draggroup = None
                 elif tw.spr.type == 'selbutton':
-                    if keyname == 'Return' or keyname == 'KP_End':
+                    if keyname == 'Return' or keyname == 'KP_Page_Up':
                         select_category(tw,tw.spr)
                 elif tw.spr.type == 'category':
-                    if keyname == 'Return' or keyname == 'KP_End':
-                        block_selector_pressed(tw,tw.x,tw.y)
-
+                    if keyname == 'Return' or keyname == 'KP_Page_Up':
+                        (x,y) = tw.window.get_pointer()
+                        block_selector_pressed(tw,x,y)
             return True
     if tw.selected_block is None:
         return False
@@ -747,8 +750,12 @@ def unselect(tw):
     tw.selected_block = None
 
 def jog_turtle(tw,dx,dy):
-    tw.turtle.xcor += dx
-    tw.turtle.ycor += dy
+    if dx == -1 and dy == -1:
+        tw.turtle.xcor = 0
+        tw.turtle.ycor = 0
+    else:
+        tw.turtle.xcor += dx
+        tw.turtle.ycor += dy
     move_turtle(tw.turtle)
     display_coordinates(tw)
     tw.draggroup = None
@@ -828,7 +835,7 @@ def eraser_button(tw):
 def stop_button(tw):
     stop_logo(tw)
 
-def runbutton(tw, time):
+def run_button(tw, time):
     print "you better run, turtle, run!!"
     # look for the start block
     for b in blocks(tw):

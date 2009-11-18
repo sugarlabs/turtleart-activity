@@ -713,21 +713,21 @@ class TurtleArtActivity(activity.Activity):
         self.run_button.set_icon("run-faston")
         self.stop_button.set_icon("stopiton")
         self.tw.lc.trace = 0
-        tawindow.runbutton(self.tw, 0)
+        tawindow.run_button(self.tw, 0)
         gobject.timeout_add(1000,self.run_button.set_icon,"run-fastoff")
 
     def _do_step_cb(self, button):
         self.step_button.set_icon("run-slowon")
         self.stop_button.set_icon("stopiton")
         self.tw.lc.trace = 0
-        tawindow.runbutton(self.tw, 3)
+        tawindow.run_button(self.tw, 3)
         gobject.timeout_add(1000,self.step_button.set_icon,"run-slowoff")
 
     def _do_debug_cb(self, button):
         self.debug_button.set_icon("debugon")
         self.stop_button.set_icon("stopiton")
         self.tw.lc.trace = 1
-        tawindow.runbutton(self.tw, 6)
+        tawindow.run_button(self.tw, 6)
         gobject.timeout_add(1000,self.debug_button.set_icon,"debugoff")
 
     def _do_stop_cb(self, button):
@@ -741,7 +741,7 @@ class TurtleArtActivity(activity.Activity):
         tawindow.load_file(self.tw, True)
         # run the activity
         self.stop_button.set_icon("stopiton")
-        tawindow.runbutton(self.tw, 0)
+        tawindow.run_button(self.tw, 0)
 
     """
     Recenter scrolled window around canvas
@@ -999,7 +999,7 @@ class TurtleArtActivity(activity.Activity):
                     # Use pre-0.86 toolbar design
                     self.projectToolbar.stop.set_icon("stopiton")
 
-                tawindow.runbutton(self.tw, 0)
+                tawindow.run_button(self.tw, 0)
         else:
             _logger.debug("Deferring reading file %s" %  file_path)
 
