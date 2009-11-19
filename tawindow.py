@@ -190,7 +190,7 @@ def block_selector_pressed(tw,x,y):
     proto = get_proto_from_category(tw,x,y)
     if proto==None:
         return
-    if proto!='hide':
+    if proto is not 'hide':
         new_block_from_category(tw,proto,x,y)
     else:
         hideshow_palette(tw,False)
@@ -327,6 +327,17 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
                         timeout_tag[0] = 0
                     except:
                         timeout_tag[0] = 0
+        elif spr and spr.type == 'block':
+            if timeout_tag[0] == 0:
+                timeout_tag[0] = showPopup(spr.proto.name,tw)
+                tw.spr = spr
+            else:
+                if timeout_tag[0] > 0:
+                    try:
+                        gobject.source_remove(timeout_tag[0])
+                        timeout_tag[0] = 0
+                    except:
+                        timeout_tag[0] = 0
         else:
             if timeout_tag[0] > 0:
                 try:
@@ -337,7 +348,7 @@ def mouse_move(tw, x, y, verbose=False, mdx=0, mdy=0):
         return
     tw.block_operation = 'move'
     spr = tw.draggroup[0]
-    if spr.type=='block':
+    if spr.type == 'block':
         tw.spr = spr
         dragx, dragy = tw.dragpos
         if mdx != 0 or mdy != 0:
@@ -677,6 +688,9 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
                     if keyname == 'Return' or keyname == 'KP_Page_Up':
                         (x,y) = tw.window.get_pointer()
                         block_selector_pressed(tw,x,y)
+                        for b in tw.draggroup:
+                           move(b, (b.x+200, b.y))
+                        tw.draggroup = None
             return True
     if tw.selected_block is None:
         return False
