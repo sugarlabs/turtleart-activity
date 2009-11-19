@@ -107,7 +107,7 @@ def myblock(lc,x):
     #
     ###########################################################################
 
-    # lc.tw.activity._do_save_image_cb(lc.tw.activity)
+    # lc.tw.activity._do_save_as_image_cb(lc.tw.activity)
 
     return
 

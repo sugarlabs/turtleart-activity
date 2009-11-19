@@ -1153,7 +1153,8 @@ class EditToolbar(gtk.Toolbar):
         clipBoard = gtk.Clipboard()
         _logger.debug("serialize the project and copy to clipboard")
         text = tawindow.serialize_stack(self.activity.tw)
-        clipBoard.set_text(text)
+        if text is not None:
+            clipBoard.set_text(text)
 
     def _paste_cb(self, button):
         clipBoard = gtk.Clipboard()
