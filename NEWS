@@ -1,10 +1,14 @@
 79
 
-* enable backspace on numbers
-* enable long numeric strings
+* backspace enabled when entering numbers
+* arbitrarily long numeric strings enabled
 * fixed Python error in sample code
 * clean up of en artwork
 * fix bug in load_image
+* detecting XO 1.5 hardware for font-scaling problem
+* keyboard and gamepad navigation
+* expanded hover help
+* better logic for block seletion used by copy/paste
 
 78
 
