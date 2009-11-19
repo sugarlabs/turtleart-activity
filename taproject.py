@@ -269,6 +269,8 @@ def assemble_data_to_save(tw,save_turtle=True):
 # serialize a stack to save to the clipboard
 def serialize_stack(tw):
     data = assemble_stack_to_clone(tw)
+    if data == []:
+        return None
     if _old_Sugar_system is True:
         text = json.write(data)
     else:
@@ -279,25 +281,31 @@ def serialize_stack(tw):
 
 # find the stack under the cursor and serialize it
 def assemble_stack_to_clone(tw):
-    (x,y) = tw.window.get_pointer()
-    spr = findsprite(tw,(x,y))
-    bs = findgroup(find_top_block(spr))
-
+    if tw.spr is None or tw.spr.type is not "block":
+        (x,y) = tw.window.get_pointer()
+        spr = findsprite(tw,(x,y))
+        if spr is not None:
+            print "found block of type " + spr.type
+    else:
+        print "already selected block of type " + tw.spr.type
+        spr = tw.spr
     data = []
-    for i in range(len(bs)): bs[i].id=i
-    for b in bs:
-        name = b.proto.name
-        if tw.defdict.has_key(name) or name in nolabel:
-            if b.ds_id is not None:
-                name=(name,str(b.ds_id))
+    if spr is not None and spr.type == 'block':
+        bs = findgroup(find_top_block(spr))
+        for i in range(len(bs)): bs[i].id=i
+        for b in bs:
+            name = b.proto.name
+            if tw.defdict.has_key(name) or name in nolabel:
+                if b.ds_id is not None:
+                    name=(name,str(b.ds_id))
+                else:
+                    name=(name,b.label)
+            if hasattr(b,'connections'):
+                connections = [get_id(x) for x in b.connections]
             else:
-                name=(name,b.label)
-        if hasattr(b,'connections'):
-            connections = [get_id(x) for x in b.connections]
-        else:
-            connections = None
-        data.append((b.id,name,b.x-tw.turtle.canvas.x+20, \
-                     b.y-tw.turtle.canvas.y+20,connections))
+                connections = None
+            data.append((b.id,name,b.x-tw.turtle.canvas.x+20, \
+                         b.y-tw.turtle.canvas.y+20,connections))
     return data
 
 def save_pict(tw,fname):
