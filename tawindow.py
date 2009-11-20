@@ -104,7 +104,8 @@ def twNew(win, path, lang, parent=None):
     tw.area = win.window
     tw.gc = tw.area.new_gc()
     # on an OLPC-XO-1, there is a scaling factor
-    if os.path.exists('/etc/olpc-release'):
+    if os.path.exists('/etc/olpc-release') or \
+       os.path.exists('/sys/power/olpc-pm'):
         tw.lead = 1.6
         tw.scale = 1.0
     else:
