@@ -1,80 +1,79 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
+   xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
    width="87"
    height="60"
-   version="1.0">
-  <defs>
+   id="svg2">
+  <defs
+     id="defs4">
     <linearGradient
        id="linearGradient3166">
       <stop
-         style="stop-color:#ffffff;stop-opacity:1;"
-         offset="0"
-         id="stop3168" />
+         id="stop3168"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
       <stop
-         style="stop-color:#ffff00;stop-opacity:1;"
-         offset="1"
-         id="stop3170" />
+         id="stop3170"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
     </linearGradient>
     <linearGradient
-       xlink:href="#linearGradient3166"
-       id="linearGradient3172"
        x1="0"
        y1="22"
        x2="74"
        y2="22"
+       id="linearGradient3172"
+       xlink:href="#linearGradient3166"
        gradientUnits="userSpaceOnUse" />
   </defs>
   <g
-     transform="translate(0,8.75)">
+     transform="translate(0,8.75)"
+     id="g10">
     <path
-       d="M 70,6 L 86.5,6 L 86.5,12 L 82.5,12 L 82.5,9 L 72,9"
+       d="m 70,6 16.5,0 0,6 -4,0 0,-3 L 72,9"
+       id="path12"
        style="fill:#f0e000;fill-opacity:1;stroke:#a08000;stroke-width:1.5;stroke-opacity:1" />
     <path
-       d="M 70,33.5 L 86.5,33.5 L 86.5,27.5 L 82.5,27.5 L 82.5,30.5 L 72,30.5"
+       d="m 70,33.5 16.5,0 0,-6 -4,0 0,3 -10.5,0"
+       id="path14"
        style="fill:#f0e000;fill-opacity:1;stroke:#a08000;stroke-width:1.5;stroke-opacity:1" />
   </g>
   <path
-     style="fill:url(#linearGradient3172);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1"
-     d="M 48,1 C 64,1 64,1 64,1 L 69.5,5 L 73,11 L 73,45 L 69.5,51 L 64,55 L 47,55 L 47,55 L 47,59 L 27,59 L 27,55 L 10,55 L 4.5,51 L 1,45 L 1,11 L 4.5,5 L 10,1 L 26,1 L 26,6 L 48,6 L 48,1 z" />
-  <path
-     style="fill:none;stroke:#ffffff;stroke-width:1;stroke-opacity:1"
-     d="M 49,2.5 L 63,2.5" />
-  <path
-     style="fill:none;stroke:#ffffff;stroke-width:1;stroke-opacity:1"
-     d="M 11,2.5 L 25,2.5" />
-  <path
-     style="fill:none;stroke:#606000;stroke-width:1;stroke-opacity:1"
-     d="M 10.5,55.5 L 26.5,55.5" />
-  <path
-     style="fill:none;stroke:#606000;stroke-width:1;stroke-opacity:1"
-     d="M 47.5,55.5 L 63.5,55.5" />
-  <path
-     style="fill:none;stroke:#606000;stroke-width:1;stroke-opacity:1"
-     d="M 26.5,59.5 L 47.5,59.5" />
-  <path
-     style="fill:none;stroke:#ffffff;stroke-width:1;stroke-opacity:1"
-     d="M 25,7.5 L 49,7.5" />
+     d="m 48,1 c 16,0 16,0 16,0 l 5.5,4 3.5,6 0,34 -3.5,6 -5.5,4 -17,0 0,0 0,4 -20,0 0,-4 L 10,55 4.5,51 1,45 1,11 4.5,5 10,1 26,1 26,6 48,6 48,1 z"
+     id="path16"
+     style="fill:url(#linearGradient3172);fill-opacity:1;stroke:#c0a000;stroke-width:2;stroke-opacity:1" />
   <text
-       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     id="text18"
+     style="font-size:18px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="37"
-       y="18"
-       style="font-size:18px;">säilytä</tspan>
+       y="22"
+       id="tspan20"
+       style="font-size:16px">tallenna</tspan>
   </text>
   <text
-       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     x="7.0181828"
+     transform="scale(0.9132093,1.0950392)"
+     id="text22"
+     style="font-size:16.43776512px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
-       x="37"
-       y="34"
-       style="font-size:18px;">laati-</tspan>
+       x="40.806927"
+       y="31.962324"
+       id="tspan24"
+       style="font-size:14.61134815px">laatikkoon</tspan>
   </text>
   <text
-       style="font-size:18px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans">
+     id="text26"
+     style="font-size:18px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans">
     <tspan
        x="37"
-       y="50"
-       style="font-size:18px;">kossa2</tspan>
+       y="48"
+       id="tspan28"
+       style="font-size:16px">2</tspan>
   </text>
 </svg>

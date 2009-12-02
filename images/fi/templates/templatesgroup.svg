@@ -349,7 +349,7 @@
         x="22"
         y="21"
         id="tspan2796"
-        style="font-size:20px">Templates</tspan>
+        style="font-size:20px">Esityspohjat</tspan>
    </text>
    <path
       d="M 79,426 C 90,426 90,426 90,426 L 94,429 L 96,433 L 96,455 L 94,460 L 90,462 L 79,462 L 79,462 L 79,465 L 65,465 L 65,462 L 54,462 L 50,460 L 48,455 L 48,433 L 50,429 L 54,426 L 65,426 L 65,429 L 79,429 L 79,426 z"
@@ -362,7 +362,7 @@
         x="72"
         y="443"
         id="tspan2722"
-        style="font-size:12px">hide</tspan> 
+        style="font-size:12px">piilota</tspan> 
    </text> 
    <text 
       style="font-size:12.06000042px;text-align:center;text-anchor:middle;font-family:Bitstream Vera Sans"> 
@@ -370,7 +370,7 @@
         x="72" 
         y="456" 
         id="tspan2722" 
-        style="font-size:12px">blocks</tspan>
+        style="font-size:12px">blokki</tspan>
    </text>
    <rect
       width="123"

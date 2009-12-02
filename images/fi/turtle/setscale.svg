@@ -39,14 +39,14 @@
        <tspan 
         x="37" 
         y="20" 
-        style="font-size:16px;">set</tspan> 
+        style="font-size:16px;">aseta</tspan> 
    </text> 
    <text 
       style="font-size:12px;text-anchor:middle;text-align:center;font-family:Bitstream Vera Sans"> 
        <tspan 
         x="37" 
         y="33" 
-        style="font-size:16px;">scale</tspan> 
+        style="font-size:16px;">skaala</tspan> 
    </text> 
  </svg> 
  

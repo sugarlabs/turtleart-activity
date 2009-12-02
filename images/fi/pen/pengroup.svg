@@ -494,7 +494,7 @@
          x="68"
          y="190"
          id="tspan99"
-         style="font-size:11px">sävy</tspan>
+         style="font-size:11px">kuvio</tspan>
     </text>
   </g>
   <g
@@ -536,7 +536,7 @@
          x="68"
          y="268"
          id="tspan117"
-         style="font-size:11px">näyttö</tspan>
+         style="font-size:11px">ruutu</tspan>
     </text>
     <text
        id="text119"
@@ -554,7 +554,7 @@
          x="91"
          y="277"
          id="tspan125"
-         style="font-size:8px">sävy</tspan>
+         style="font-size:8px">kuvio</tspan>
     </text>
   </g>
   <g
@@ -592,7 +592,7 @@
          x="76"
          y="402"
          id="tspan159"
-         style="font-size:10.5px">text size</tspan>
+         style="font-size:10.5px">tekstin koko</tspan>
     </text>
   </g>
   <g
@@ -636,7 +636,7 @@
          x="68"
          y="314"
          id="tspan179"
-         style="font-size:10.5px">set</tspan>
+         style="font-size:10.5px">aseta</tspan>
     </text>
     <text
        id="text181"
@@ -645,7 +645,7 @@
          x="68"
          y="323"
          id="tspan183"
-         style="font-size:10.5px">text</tspan>
+         style="font-size:10.5px">tekstin</tspan>
     </text>
     <text
        id="text185"
@@ -654,7 +654,7 @@
          x="68"
          y="332"
          id="tspan187"
-         style="font-size:10.5px">size</tspan>
+         style="font-size:10.5px">koko</tspan>
     </text>
   </g>
   <g
@@ -671,7 +671,7 @@
          x="76"
          y="466"
          id="tspan223"
-         style="font-size:10.5px">sävy</tspan>
+         style="font-size:10.5px">kuvio</tspan>
     </text>
   </g>
   <path
