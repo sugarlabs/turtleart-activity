@@ -135,7 +135,7 @@ class TurtleMain():
         menu_bar.append(project_menu)
 
         win.show_all()
-        self.tw = twNew(canvas, os.path.abspath('.'), lang)
+        self.tw = TurtleArtWindow(canvas, os.path.abspath('.'), lang)
         self.tw.win = win
 
     def _do_open_cb(self, widget):
@@ -146,25 +146,25 @@ class TurtleMain():
 
     def _do_palette_cb(self, widget):
         if self.tw.palette == True:
-            hideshow_palette(self.tw,False)
+            self.tw.hideshow_palette(False)
         else:
-            hideshow_palette(self.tw,True)
+            self.tw.hideshow_palette(True)
 
     def _do_hideshow_cb(self, widget):
-        hideshow_button(self.tw)
+        self.tw.hideshow_button()
 
     def _do_eraser_cb(self, widget):
-        eraser_button(self.tw)
+        self.tw.eraser_button()
         return
 
     def _do_run_cb(self, widget):
         self.tw.lc.trace = 0
-        runbutton(self.tw, 0)
+        self.tw.runbutton(0)
         return
 
     def _do_step_cb(self, widget):
         self.tw.lc.trace = 0
-        runbutton(self.tw, 3)
+        self.tw.runbutton(3)
         return
 
     def _do_stop_cb(self, widget):

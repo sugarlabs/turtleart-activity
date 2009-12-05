@@ -226,7 +226,7 @@ class TurtleArtActivity(activity.Activity):
             FILE = open(dsobject.file_path, "r")
             self.tw.myblock = FILE.read()
             FILE.close()
-            tawindow.set_userdefined(self.tw)
+            self.tw.set_userdefined()
             # save reference to Pythin code in the project metadata
             self.metadata['python code'] = dsobject.object_id
         except:
@@ -244,6 +244,8 @@ class TurtleArtActivity(activity.Activity):
         # Write the file to the instance directory of this activity's root. 
         file_path = os.path.join(datapath, filename)
 
+        # FIXME: this was like this before refactoring, the save_pict
+        # belongs to taproject (not tawindow)
         tawindow.save_pict(self.tw,file_path)
 
         # Create a datastore object
@@ -278,6 +280,7 @@ class TurtleArtActivity(activity.Activity):
         tafile = os.path.join(tmppath,"tmpfile.ta")
         print tafile
         try:
+            # FIXME: encapsulation?
             tawindow.save_data(self.tw,tafile)
         except:
             _logger.debug("couldn't save snapshot to journal")
@@ -303,11 +306,11 @@ class TurtleArtActivity(activity.Activity):
     """ Show/hide palette """
     def _do_palette_cb(self, button):
         if self.tw.palette == True:
-            tawindow.hideshow_palette(self.tw,False)
+            self.tw.hideshow_palette(False)
             self.palette_button.set_icon("blockson")
             self.palette_button.set_tooltip(_('Show palette'))
         else:
-            tawindow.hideshow_palette(self.tw,True)
+            self.tw.hideshow_palette(True)
             self.palette_button.set_icon("blocksoff")
             self.palette_button.set_tooltip(_('Hide palette'))
 
@@ -323,7 +326,7 @@ class TurtleArtActivity(activity.Activity):
         self.palette_button.set_tooltip(_('Hide palette'))
 
     def _do_hideshow_cb(self, button):
-        tawindow.hideshow_button(self.tw)
+        self.tw.hideshow_button()
         if self.tw.hide == True: # we just hid the blocks
             self.blocks_button.set_icon("hideshowon")
             self.blocks_button.set_tooltip(_('Show blocks'))
@@ -353,42 +356,43 @@ class TurtleArtActivity(activity.Activity):
     def _do_eraser_cb(self, button):
         self.eraser_button.set_icon("eraseroff")
         self.recenter()
-        tawindow.eraser_button(self.tw)
+        self.tw.eraser_button()
         gobject.timeout_add(250,self.eraser_button.set_icon,"eraseron")
 
     def _do_run_cb(self, button):
         self.run_button.set_icon("run-faston")
         self.stop_button.set_icon("stopiton")
         self.tw.lc.trace = 0
-        tawindow.run_button(self.tw, 0)
+        self.tw.run_button(0)
         gobject.timeout_add(1000,self.run_button.set_icon,"run-fastoff")
 
     def _do_step_cb(self, button):
         self.step_button.set_icon("run-slowon")
         self.stop_button.set_icon("stopiton")
         self.tw.lc.trace = 0
-        tawindow.run_button(self.tw, 3)
+        self.tw.run_button(3)
         gobject.timeout_add(1000,self.step_button.set_icon,"run-slowoff")
 
     def _do_debug_cb(self, button):
         self.debug_button.set_icon("debugon")
         self.stop_button.set_icon("stopiton")
         self.tw.lc.trace = 1
-        tawindow.run_button(self.tw, 6)
+        self.tw.run_button(6)
         gobject.timeout_add(1000,self.debug_button.set_icon,"debugoff")
 
     def _do_stop_cb(self, button):
         self.stop_button.set_icon("stopitoff")
-        tawindow.stop_button(self.tw)
+        self.tw.stop_button()
         self.step_button.set_icon("run-slowoff")
         self.run_button.set_icon("run-fastoff")
 
     """ Sample projects open dialog """
     def _do_samples_cb(self, button):
+        # FIXME: encapsulation!
         tawindow.load_file(self.tw, True)
         # run the activity
         self.stop_button.set_icon("stopiton")
-        tawindow.run_button(self.tw, 0)
+        self.tw.run_button(0)
 
     """
     Recenter scrolled window around canvas
@@ -412,17 +416,21 @@ class TurtleArtActivity(activity.Activity):
     """
     def _do_cartesian_cb(self, button):
         if self.tw.cartesian is True:
+            # FIXME: encapsulation
             tawindow.hide(self.tw.cartesian_coordinates_spr)
             self.tw.cartesian = False
         else:
+            # FIXME: encapsulation
             tawindow.setlayer(self.tw.cartesian_coordinates_spr,610)
             self.tw.cartesian = True
 
     def _do_polar_cb(self, button):
         if self.tw.polar is True:
+            # FIXME: encapsulation
             tawindow.hide(self.tw.polar_coordinates_spr)
             self.tw.polar = False
         else:
+            # FIXME: encapsulation
             tawindow.setlayer(self.tw.polar_coordinates_spr,610)
             self.tw.polar = True
 
@@ -434,12 +442,12 @@ class TurtleArtActivity(activity.Activity):
             self.tw.coord_scale = self.tw.height/200
             self.rescale_button.set_icon("contract-coordinates")
             self.rescale_button.set_tooltip(_('Rescale coordinates down'))
-            tawindow.eraser_button(self.tw)
+            self.tw.eraser_button()
         else:
             self.tw.coord_scale = 1
             self.rescale_button.set_icon("expand-coordinates")
             self.rescale_button.set_tooltip(_('Rescale coordinates up'))
-            tawindow.eraser_button(self.tw)
+            self.tw.eraser_button()
 
     """
     Either set up initial share...
@@ -540,31 +548,31 @@ class TurtleArtActivity(activity.Activity):
             e,x,y,mask = re.split(":",text)
             # _logger.debug("receiving button press: "+x+" "+y+" "+mask)
             if mask == 'T':
-                tawindow.button_press(self.tw,True,int(x),int(y),False)
+                self.tw.button_press(True,int(x),int(y),False)
             else:
-                tawindow.button_press(self.tw,False,int(x),int(y),False)
+                self.tw.button_press(False,int(x),int(y),False)
         elif text[0] == 'r': # block release
             e,x,y = re.split(":",text)
             # _logger.debug("receiving button release: " + x + " " + y)
-            tawindow.button_release(self.tw,int(x),int(y),False)
+            self.tw.button_release(int(x),int(y),False)
         elif text[0] == 'm': # mouse move
             e,x,y = re.split(":",text)
             _logger.debug("receiving move: " + x + " " + y)
-            tawindow.mouse_move(self.tw,0,0,False,int(x),int(y))
+            self.tw.mouse_move(0,0,False,int(x),int(y))
         elif text[0] == 'k': # typing
             e,mask,keyname = re.split(":",text,3)
             # _logger.debug("recieving key press: " + mask + " " + keyname)
             if mask == 'T':
-                tawindow.key_press(self.tw,True,keyname,False)
+                self.tw.key_press(True,keyname,False)
             else:
-                tawindow.key_press(self.tw,False,keyname,False)
+                self.tw.key_press(False,keyname,False)
         elif text[0] == 'i': # request for current state
             # sharer should send current state to joiner
             if self.initiating is True:
                 _logger.debug("serialize the project and send to joiner")
                 text = tawindow.save_string(self.tw)
                 self._send_event("I:" + text)
-                tawindow.show_palette(self.tw)
+                self.tw.show_palette()
         elif text[0] == 'I': # receiving current state
             if self.waiting_for_blocks:
                 _logger.debug("receiving project from sharer")
@@ -870,8 +878,9 @@ class TurtleArtActivity(activity.Activity):
         self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.sw.show()
         canvas = gtk.DrawingArea()
-        canvas.set_size_request(gtk.gdk.screen_width()*2, \
-                                gtk.gdk.screen_height()*2)
+        width = gtk.gdk.screen_width() * 2
+        height = gtk.gdk.screen_height() * 2
+        canvas.set_size_request(width, height) 
         self.sw.add_with_viewport(canvas)
         canvas.show()
         return canvas
@@ -936,7 +945,7 @@ class TurtleArtActivity(activity.Activity):
     """
     def _setup_canvas(self, canvas, lang):
         bundle_path = activity.get_bundle_path()
-        self.tw = tawindow.twNew(canvas, bundle_path, lang, self)
+        self.tw = tawindow.TurtleArtWindow(canvas, bundle_path, lang, self)
         self.tw.activity = self
         self.tw.window.grab_focus()
         path = os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'], 'data')
@@ -1043,7 +1052,7 @@ class TurtleArtActivity(activity.Activity):
                     # Use pre-0.86 toolbar design
                     self.projectToolbar.stop.set_icon("stopiton")
 
-                tawindow.run_button(self.tw, 0)
+                self.tw.run_button(0)
         else:
             _logger.debug("Deferring reading file %s" %  file_path)
 
