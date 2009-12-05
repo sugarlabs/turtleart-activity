@@ -74,124 +74,20 @@ class TurtleArtActivity(activity.Activity):
 
         datapath = self._get_datapath()
         
-        # Notify when the visibility state changes
-        self.add_events(gtk.gdk.VISIBILITY_NOTIFY_MASK)
-        self.connect("visibility-notify-event", self.__visibility_notify_cb)
+        self._setup_visibility_handler()
 
         self._setup_toolbar()
 
-        # Create a scrolled window to contain the turtle canvas
-        self.sw = gtk.ScrolledWindow()
-        self.set_canvas(self.sw)
-        self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        self.sw.show()
-        canvas = gtk.DrawingArea()
-        canvas.set_size_request(gtk.gdk.screen_width()*2, \
-                                gtk.gdk.screen_height()*2)
-        self.sw.add_with_viewport(canvas)
-        canvas.show()
+        canvas = self._setup_scrolled_window()
 
-        """
-        To be replaced with date checking in tasetup.py; 
-        each language group should be stored in it's own sub-directory
-        """
-        # Check to see if the version or language has changed
-        try:
-            version = os.environ['SUGAR_BUNDLE_VERSION']
-        except:
-            version = " unknown"
+        lang = self._check_ver_lang_change(datapath)
 
-        lang = locale.getdefaultlocale()[0]
-        if not lang:
-            lang = 'en'
-        lang = lang[0:2]
-        if not os.path.isdir(os.path.join(activity.get_bundle_path(), \
-                             'images', lang)):
-            lang = 'en'
+        self._setup_canvas(canvas, lang)
 
-        # If either has changed, remove the old png files
-        filename = "version.dat"
-        versiondata = []
-        newversion = True
-        try:
-            FILE = open(os.path.join(datapath, filename), "r")
-            if FILE.readline() == lang + version:
-                newversion = False
-            else:
-                _logger.debug("out with the old, in with the new")
-                cmd = "rm " + os.path.join(datapath, '*.png')
-                subprocess.check_call(cmd, shell=True)
-        except:
-            _logger.debug("writing new version data")
-            _logger.debug("and creating a tamyblock.py Journal entry")
+        self._load_python_code()
 
-        """
-        Make sure there is a copy of tamyblock.py in the Journal
-        """
-        if newversion is True:
-            dsobject = datastore.create()
-            dsobject.metadata['title'] = 'tamyblock.py'
-            dsobject.metadata['icon-color'] = \
-                profile.get_color().to_string()
-            dsobject.metadata['mime_type'] = 'text/x-python'
-            dsobject.metadata['activity'] = 'org.laptop.Pippy'
-            dsobject.set_file_path(os.path.join( \
-                activity.get_bundle_path(), 'tamyblock.py'))
-            datastore.write(dsobject)
-            dsobject.destroy()
+        self._setup_sharing()
 
-        versiondata.append(lang + version)
-        FILE = open(os.path.join(datapath, filename), "w")
-        FILE.writelines(versiondata)
-        FILE.close()
-
-        # Initialize the turtle art canvas
-        self.tw = tawindow.twNew(canvas,activity.get_bundle_path(), \
-                                 lang, self)
-        self.tw.activity = self
-        self.tw.window.grab_focus()
-        self.tw.save_folder=os.path.join( \
-            os.environ['SUGAR_ACTIVITY_ROOT'], 'data')
-
-        if self._jobject and self._jobject.file_path:
-            self.read_file(self._jobject.file_path)
-        else: # if new, load a start brick onto the canvas
-            tawindow.load_start(self.tw)
-
-        # check to see if there is Python code to be loaded
-        try:
-            dsobject = datastore.get(self.metadata['python code'])
-            self._load_python(dsobject)
-        except:
-            pass
-
-        """
-        A simplistic sharing model: the sharer is the master;
-        TODO: hand off role of master is sharer leaves
-        """
-        # Get the Presence Service
-        self.pservice = presenceservice.get_instance()
-        self.initiating = None # sharing (True) or joining (False)
-
-        # Add my buddy object to the list
-        owner = self.pservice.get_owner()
-        self.owner = owner
-        self.tw.buddies.append(self.owner)
-        self._share = ""
-
-        self.connect('shared', self._shared_cb)
-        self.connect('joined', self._joined_cb)
-
-    def _get_datapath(self):
-        try:
-            datapath = os.path.join(activity.get_activity_root(), "data")
-        except:
-            # Early versions of Sugar (e.g., 656) didn't support
-            # get_activity_root()
-            datapath = os.path.join( \
-                os.environ['HOME'], \
-                    ".sugar/default/org.laptop.TurtleArtActivity/data")
-        return datapath
 
     """ Activity toolbar callbacks """
 
@@ -964,6 +860,142 @@ class TurtleArtActivity(activity.Activity):
 
             # Set the project toolbar as the initial one selected
             self.toolbox.set_current_toolbar(1)
+
+    """
+    Create a scrolled window to contain the turtle canvas
+    """
+    def _setup_scrolled_window(self):
+        self.sw = gtk.ScrolledWindow()
+        self.set_canvas(self.sw)
+        self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        self.sw.show()
+        canvas = gtk.DrawingArea()
+        canvas.set_size_request(gtk.gdk.screen_width()*2, \
+                                gtk.gdk.screen_height()*2)
+        self.sw.add_with_viewport(canvas)
+        canvas.show()
+        return canvas
+
+    """
+    To be replaced with date checking in tasetup.py; 
+    each language group should be stored in it's own sub-directory
+    """
+    def _check_ver_lang_change(self, datapath):
+        # Check to see if the version or language has changed
+        try:
+            version = os.environ['SUGAR_BUNDLE_VERSION']
+        except:
+            version = " unknown"
+
+        lang = locale.getdefaultlocale()[0]
+        if not lang:
+            lang = 'en'
+        lang = lang[0:2]
+        if not os.path.isdir(os.path.join(activity.get_bundle_path(), \
+                             'images', lang)):
+            lang = 'en'
+
+        # If either has changed, remove the old png files
+        filename = "version.dat"
+        versiondata = []
+        newversion = True
+        try:
+            FILE = open(os.path.join(datapath, filename), "r")
+            if FILE.readline() == lang + version:
+                newversion = False
+            else:
+                _logger.debug("out with the old, in with the new")
+                cmd = "rm " + os.path.join(datapath, '*.png')
+                subprocess.check_call(cmd, shell=True)
+        except:
+            _logger.debug("writing new version data")
+            _logger.debug("and creating a tamyblock.py Journal entry")
+
+        # Make sure there is a copy of tamyblock.py in the Journal
+        if newversion is True:
+            dsobject = datastore.create()
+            dsobject.metadata['title'] = 'tamyblock.py'
+            dsobject.metadata['icon-color'] = \
+                profile.get_color().to_string()
+            dsobject.metadata['mime_type'] = 'text/x-python'
+            dsobject.metadata['activity'] = 'org.laptop.Pippy'
+            dsobject.set_file_path(os.path.join( \
+                activity.get_bundle_path(), 'tamyblock.py'))
+            datastore.write(dsobject)
+            dsobject.destroy()
+
+        versiondata.append(lang + version)
+        FILE = open(os.path.join(datapath, filename), "w")
+        FILE.writelines(versiondata)
+        FILE.close()
+
+        return lang
+    
+    """
+    Initialize the turtle art canvas
+    """
+    def _setup_canvas(self, canvas, lang):
+        bundle_path = activity.get_bundle_path()
+        self.tw = tawindow.twNew(canvas, bundle_path, lang, self)
+        self.tw.activity = self
+        self.tw.window.grab_focus()
+        path = os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'], 'data')
+        self.tw.save_folder= path
+
+        if self._jobject and self._jobject.file_path:
+            self.read_file(self._jobject.file_path)
+        else: # if new, load a start brick onto the canvas
+            tawindow.load_start(self.tw)
+
+    """
+    Check to see if there is Python code to be loaded
+    """
+    def _load_python_code(self):
+        try:
+            dsobject = datastore.get(self.metadata['python code'])
+            self._load_python(dsobject)
+        except:
+            pass
+
+
+    """
+    A simplistic sharing model: the sharer is the master;
+    TODO: hand off role of master is sharer leaves
+    """
+    def _setup_sharing(self):
+        # Get the Presence Service
+        self.pservice = presenceservice.get_instance()
+        self.initiating = None # sharing (True) or joining (False)
+
+        # Add my buddy object to the list
+        owner = self.pservice.get_owner()
+        self.owner = owner
+        self.tw.buddies.append(self.owner)
+        self._share = ""
+
+        self.connect('shared', self._shared_cb)
+        self.connect('joined', self._joined_cb)
+
+    """
+    get datapath
+    """
+    def _get_datapath(self):
+        try:
+            datapath = os.path.join(activity.get_activity_root(), "data")
+        except:
+            # Early versions of Sugar (e.g., 656) didn't support
+            # get_activity_root()
+            datapath = os.path.join( \
+                os.environ['HOME'], \
+                    ".sugar/default/org.laptop.TurtleArtActivity/data")
+        return datapath
+
+    """
+    Notify when the visibility state changes
+    """
+    def _setup_visibility_handler(self):
+        self.add_events(gtk.gdk.VISIBILITY_NOTIFY_MASK)
+        self.connect("visibility-notify-event", self.__visibility_notify_cb)
 
 
     """
