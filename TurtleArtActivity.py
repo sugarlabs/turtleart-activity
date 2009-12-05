@@ -72,15 +72,8 @@ class TurtleArtActivity(activity.Activity):
     def __init__(self, handle):
         super(TurtleArtActivity,self).__init__(handle)
 
-        try:
-            datapath = os.path.join(activity.get_activity_root(), "data")
-        except:
-            # Early versions of Sugar (e.g., 656) didn't support
-            # get_activity_root()
-            datapath = os.path.join( \
-                os.environ['HOME'], \
-                ".sugar/default/org.laptop.TurtleArtActivity/data")
-
+        datapath = _get_datapath()
+            
         # Notify when the visibility state changes
         self.add_events(gtk.gdk.VISIBILITY_NOTIFY_MASK)
         self.connect("visibility-notify-event", self.__visibility_notify_cb)
@@ -88,7 +81,6 @@ class TurtleArtActivity(activity.Activity):
         try: 
             # Use 0.86 toolbar design
             toolbar_box = ToolbarBox()
-
             # Buttons added to the Activity toolbar
             activity_button = ActivityToolbarButton(self)
 
@@ -441,6 +433,17 @@ class TurtleArtActivity(activity.Activity):
 
         self.connect('shared', self._shared_cb)
         self.connect('joined', self._joined_cb)
+
+    def _get_datapath(self):
+        try:
+            datapath = os.path.join(activity.get_activity_root(), "data")
+        except:
+            # Early versions of Sugar (e.g., 656) didn't support
+            # get_activity_root()
+            datapath = os.path.join( \
+                os.environ['HOME'], \
+                    ".sugar/default/org.laptop.TurtleArtActivity/data")
+        return datapath
 
     """ Activity toolbar callbacks """
 
