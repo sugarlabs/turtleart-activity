@@ -639,7 +639,7 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
         if len(keyname)>1:
             return True
     else: # gtk.keysyms.Left ...
-        if keyname in ['Escape', 'Return', 'j', 'k', 'h', 'l', 'KP_Page_Up',
+        if keyname in ['Escape', 'Return', 'KP_Page_Up',
                        'Up', 'Down', 'Left', 'Right', 'KP_Home', 'KP_End',
                        'KP_Up', 'KP_Down', 'KP_Left', 'KP_Right',
                        'KP_Page_Down']:
@@ -649,33 +649,26 @@ def key_press(tw, alt_mask, keyname, keyunicode, verbose=False):
                 run_button(tw, 0)
             elif tw.spr is not None:
                 if tw.spr.type == 'turtle': # jog turtle with arrow keys
-                    if keyname == 'KP_Up' or keyname == 'j' or keyname == 'Up':
+                    if keyname == 'KP_Up' or keyname == 'Up':
                         jog_turtle(tw,0,10)
-                    elif keyname == 'KP_Down' or keyname == 'k' or \
-                         keyname == 'Down':
+                    elif keyname == 'KP_Down' or keyname == 'Down':
                         jog_turtle(tw,0,-10)
-                    elif keyname == 'KP_Left' or keyname == 'h' or \
-                         keyname == 'Left':
+                    elif keyname == 'KP_Left' or keyname == 'Left':
                         jog_turtle(tw,-10,0)
-                    elif keyname == 'KP_Right' or keyname == 'l' or \
-                         keyname == 'Right':
+                    elif keyname == 'KP_Right' or keyname == 'Right':
                         jog_turtle(tw,10,0)
                     elif keyname == 'KP_Home':
                         jog_turtle(tw,-1,-1)
                 elif tw.spr.type == 'block':
                     if keyname == 'Return' or keyname == 'KP_Page_Up':
                         click_block(tw)
-                    elif keyname == 'KP_Up' or keyname == 'j' or \
-                         keyname == 'Up':
+                    elif keyname == 'KP_Up' or keyname == 'Up':
                         jog_block(tw,0,10)
-                    elif keyname == 'KP_Down' or keyname == 'k' or \
-                         keyname == 'Down':
+                    elif keyname == 'KP_Down' or keyname == 'Down':
                         jog_block(tw,0,-10)
-                    elif keyname == 'KP_Left' or keyname == 'h' or \
-                         keyname == 'Left':
+                    elif keyname == 'KP_Left' or keyname == 'Left':
                         jog_block(tw,-10,0)
-                    elif keyname == 'KP_Right' or keyname == 'l' or \
-                         keyname == 'Right':
+                    elif keyname == 'KP_Right' or keyname == 'Right':
                         jog_block(tw,10,0)
                     elif keyname == 'KP_Page_Down':
                         if tw.draggroup == None:
