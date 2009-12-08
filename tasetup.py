@@ -262,14 +262,14 @@ def setup_selectors(tw,s):
     tw.selbuttons.append(cat)
 
 def setup_misc(tw):
-    tw.category_spr = sprNew(tw,0, 0, tw.selbuttons[0].group)
+    tw.category_spr = Sprite(tw,0, 0, tw.selbuttons[0].group)
     tw.category_spr.type = 'category'
-    setlayer(tw.category_spr,660)
+    tw.category_spr.setlayer(660)
     # masks get positioned on top of other blocks
-    tw.select_mask = sprNew(tw,100,100,\
+    tw.select_mask = Sprite(tw,100,100,\
         load_image(tw, tw.path, '', 'masknumber'))
     tw.select_mask.type = 'selectmask'
-    tw.select_mask_string = sprNew(tw,100,100,load_image(tw, tw.path, '', \
+    tw.select_mask_string = Sprite(tw,100,100,load_image(tw, tw.path, '', \
         'maskstring'))
     tw.select_mask_string.type = 'selectmask'
     # used to hide the palette
@@ -284,16 +284,16 @@ def setup_misc(tw):
     tw.media_shapes['pythonloaded'] = \
         load_image(tw, tw.path_lang, 'sensors', 'nop-loaded')
     # coordinare systems
-    tw.cartesian_coordinates_spr = sprNew(tw, tw.width/2-600, tw.height/2-450, \
+    tw.cartesian_coordinates_spr = Sprite(tw, tw.width/2-600, tw.height/2-450, \
                                       load_image(tw, tw.path, '', "Cartesian"))
     tw.cartesian_coordinates_spr.type = 'coordinates'
-    setlayer(tw.cartesian_coordinates_spr, 610)
-    hide(tw.cartesian_coordinates_spr)
-    tw.polar_coordinates_spr = sprNew(tw, tw.width/2-600, tw.height/2-450, \
+    tw.cartesian_coordinates_spr.setlayer(610)
+    tw.cartesian_coordinates_spr.hide()
+    tw.polar_coordinates_spr = Sprite(tw, tw.width/2-600, tw.height/2-450, \
                                       load_image(tw, tw.path, '', "polar"))
     tw.polar_coordinates_spr.type = 'coordinates'
-    setlayer(tw.polar_coordinates_spr, 610)
-    hide(tw.polar_coordinates_spr)
+    tw.polar_coordinates_spr.setlayer(610)
+    tw.polar_coordinates_spr.hide()
     # status shapes get positioned at the bottom of the screen
     tw.status_shapes = {}
     tw.status_shapes['status'] = load_image(tw, tw.path, '', 'status')
@@ -307,11 +307,11 @@ def setup_misc(tw):
     tw.status_shapes['overflowerror'] = \
         load_image(tw, tw.path, '', 'overflowerror')
     tw.status_shapes['syntaxerror'] = load_image(tw, tw.path, '', 'syntaxerror')
-    tw.status_spr = sprNew(tw,0,(tw.height-175), \
+    tw.status_spr = Sprite(tw,0,(tw.height-175), \
             tw.status_shapes['status'],True)
     tw.status_spr.type = 'status'
-    setlayer(tw.status_spr,900)
-    hide(tw.status_spr)
+    tw.status_spr.setlayer(900)
+    tw.status_spr.hide()
     # everything should be loaded at this point
     # print tw.status_shapes
     tw.loaded = True
@@ -320,8 +320,8 @@ def setup_selector(tw,name,y,blockdescriptions):
     # selector tabs
     offshape = load_image(tw, tw.path, 'palette', name+'off')
     onshape = load_image(tw, tw.path, 'palette', name+'on')
-    spr = sprNew(tw,143,y,offshape)
-    setlayer(spr,800)
+    spr = Sprite(tw,143,y,offshape)
+    spr.setlayer(800)
     spr.offshape = offshape
     spr.onshape = onshape
     # print 'setting up selector ' + name

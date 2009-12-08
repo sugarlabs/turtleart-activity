@@ -23,11 +23,10 @@
 
 
 # TODO:
-# - we need a method to know if we are running inside Sugar (vs. stand-alone)
-# - we need helper methods to discriminate what XO version we are using (if any)
-# - verbose flag should be in the scope of the object instance
 # - better comments! 
-#
+# - many methods could have their logic simplified! 
+# - we need a method to know if we are running inside Sugar (vs. stand-alone)
+# - verbose flag should be in the scope of the object instance
 
 
 import pygtk
@@ -38,10 +37,6 @@ import gobject
 import os
 import os.path
 import time
-
-# Import from Journal for these blocks 
-importblocks = ['audiooff', 'descriptionoff','journal']
-
 
 from math import atan2, pi
 DEGTOR = 2*pi/360
@@ -59,29 +54,41 @@ except:
 from tahoverhelp import *
 from gettext import gettext as _
 
-# dead key dictionaries
-dead_grave = {'A':192,'E':200,'I':204,'O':210,'U':217,'a':224,'e':232,'i':236,\
-              'o':242,'u':249}
-dead_acute = {'A':193,'E':201,'I':205,'O':211,'U':218,'a':225,'e':233,'i':237,\
-              'o':243,'u':250}
-dead_circumflex = {'A':194,'E':202,'I':206,'O':212,'U':219,'a':226,'e':234,\
-                   'i':238,'o':244,'u':251}
-dead_tilde = {'A':195,'O':211,'N':209,'U':360,'a':227,'o':245,'n':241,'u':361}
-dead_diaeresis = {'A':196,'E':203,'I':207,'O':211,'U':218,'a':228,'e':235,\
-                  'i':239,'o':245,'u':252}
-dead_abovering = {'A':197,'a':229}
-
-# Time out for triggering help
-timeout_tag = [0]
-
-
 
 """
 TurtleArt Window class abstraction 
 """
 class TurtleArtWindow():
 
+    # Import from Journal for these blocks 
+    importblocks = ['audiooff', 'descriptionoff','journal']
+
+    # dead key dictionaries
+    dead_grave = {'A':192,'E':200,'I':204,'O':210,'U':217,'a':224,'e':232,'i':236,\
+                  'o':242,'u':249}
+    dead_acute = {'A':193,'E':201,'I':205,'O':211,'U':218,'a':225,'e':233,'i':237,\
+                  'o':243,'u':250}
+    dead_circumflex = {'A':194,'E':202,'I':206,'O':212,'U':219,'a':226,'e':234,\
+                       'i':238,'o':244,'u':251}
+    dead_tilde = {'A':195,'O':211,'N':209,'U':360,'a':227,'o':245,'n':241,'u':361}
+    dead_diaeresis = {'A':196,'E':203,'I':207,'O':211,'U':218,'a':228,'e':235,\
+                      'i':239,'o':245,'u':252}
+    dead_abovering = {'A':197,'a':229}
+
+    # Time out for triggering help
+    timeout_tag = [0]
+
+
     def __init__(self, win, path, lang, parent=None):
+        self._setup_initial_values(win, path, lang, parent)
+        prep_selectors(self) # i wonder where this method belongs
+        for s in selectors:
+            setup_selectors(self,s)
+        setup_misc(self)
+        self._select_category(self.selbuttons[0])
+
+
+    def _setup_initial_values(self, win, path, lang, parent):
         self.window = win
         self.path = os.path.join(path,'images')
         self.path_lang = os.path.join(path,'images',lang)
@@ -89,13 +96,13 @@ class TurtleArtWindow():
         self.load_save_folder = os.path.join(path,'samples')
         self.save_folder = None
         self.save_file_name = None
-        win.set_flags(gtk.CAN_FOCUS)
+        self.window.set_flags(gtk.CAN_FOCUS)
         self.width = gtk.gdk.screen_width()
         self.height = gtk.gdk.screen_height() 
 
         # starting from command line
         if parent is None:
-            win.show_all()
+            self.window.show_all()
         # starting from Sugar
         else:
             parent.show_all()
@@ -108,8 +115,7 @@ class TurtleArtWindow():
         self.area = self.window.window
         self.gc = self.area.new_gc()
         # on an OLPC-XO-1, there is a scaling factor
-        if os.path.exists('/etc/olpc-release') or \
-           os.path.exists('/sys/power/olpc-pm'):
+        if self._is_XO_1():
             self.lead = 1.6
             self.scale = 1.0
         else:
@@ -125,17 +131,12 @@ class TurtleArtWindow():
         self.sprites = []
         self.selected_block = None
         self.draggroup = None
-        prep_selectors(self)
         self.myblock = None
         self.nop = 'nop'
         self.loaded = 0
-        for s in selectors:
-            setup_selectors(self,s)
-        setup_misc(self)
         self.step_time = 0
         self.hide = False
         self.palette = True
-        self._select_category(self.selbuttons[0])
         self.coord_scale = 1
         self.turtle = tNew(self,self.width,self.height)
         self.lc = lcNew(self)
@@ -145,7 +146,6 @@ class TurtleArtWindow():
         self.cartesian = False
         self.polar = False
         self.spr = None # "currently selected spr"
-
 
     """
     DEPRECATED
@@ -157,7 +157,7 @@ class TurtleArtWindow():
     eraser_button: hide status block
     """
     def eraser_button(self):
-        setlayer(self.status_spr,400)
+        self.status_spr.setlayer(400)
         clear(self.lc)
         display_coordinates(self)
 
@@ -166,7 +166,6 @@ class TurtleArtWindow():
     """
     def stop_button(self):
         stop_logo(self)
-
 
     """
     change the icon for user-defined blocks after Python code is loaded
@@ -178,19 +177,18 @@ class TurtleArtWindow():
                 setimage(spr,self.media_shapes['pythonloaded'])
         self.nop = 'pythonloaded'
 
-
     """
     hideshow button
     """
     def hideshow_button(self):
         if self.hide is False: 
-            for b in self._blocks(): setlayer(b,100)
+            for b in self._blocks(): b.setlayer(100)
             self._hide_palette() 
-            hide(self.select_mask)
-            hide(self.select_mask_string)
+            self.select_mask.hide()
+            self.select_mask_string.hide()
             self.hide = True
         else:
-            for b in self._blocks(): setlayer(b,650)
+            for b in self._blocks(): b.setlayer(650)
             self.show_palette()
             self.hide = False
         inval(self.turtle.canvas)
@@ -227,7 +225,7 @@ class TurtleArtWindow():
         if self.selected_block != None:
             self._unselect()
         else:
-            setlayer(self.status_spr,400)
+            self.status_spr.setlayer(400)
         spr = findsprite(self,(x,y))
         self.x, self.y = x,y
         self.dx = 0
@@ -245,7 +243,6 @@ class TurtleArtWindow():
         elif spr.type == 'turtle':
             self._turtle_pressed(x,y)
         self.spr = spr
-
 
     """
     hideshow_palette 
@@ -268,10 +265,12 @@ class TurtleArtWindow():
     show palette 
     """
     def show_palette(self):
-        for i in self.selbuttons: setlayer(i,800)
+        for i in self.selbuttons: i.setlayer(800)
         self._select_category(self.selbuttons[0])
         self.palette = True
 
+    def xy(self, event):
+        return map(int, event.get_coords())
 
     """
     unselect
@@ -294,29 +293,27 @@ class TurtleArtWindow():
             except ValueError:
                 pass
 
-        hide(self.select_mask)
-        hide(self.select_mask_string)
+        self.select_mask.hide()
+        self.select_mask_string.hide()
         self.selected_block = None
-
 
     """
     select category 
     """
     def _select_category(self, spr):
         if hasattr(self, 'current_category'):
-            setshape(self.current_category, self.current_category.offshape)
-        setshape(spr, spr.onshape)
+            self.current_category.setshape(self.current_category.offshape)
+        spr.setshape(spr.onshape)
         self.current_category = spr
-        setshape(self.category_spr,spr.group)
+        self.category_spr.setshape(spr.group)
 
     """
     hide palette 
     """
     def _hide_palette(self):
-        for i in self.selbuttons: hide(i)
-        setshape(self.category_spr, self.hidden_palette_icon)
+        for i in self.selbuttons: i.hide()
+        self.category_spr.setshape(self.hidden_palette_icon)
         self.palette = False
-
 
     """
     register the events we listen to 
@@ -332,9 +329,11 @@ class TurtleArtWindow():
         self.window.connect("motion-notify-event", self._move_cb)
         self.window.connect("key_press_event", self._keypress_cb)
 
-    def xy(self, event):
-        return map(int, event.get_coords())
-
+    """
+    XO-1 ?
+    """
+    def _is_XO_1(self):
+        return os.path.exists('/etc/olpc-release') or os.path.exists('/sys/power/olpc-pm')
 
     """
     find a stack to run (any stack without a hat)
@@ -375,7 +374,6 @@ class TurtleArtWindow():
                 ret = True
         return ret
 
-
     """
     Mouse move
     """
@@ -414,7 +412,7 @@ class TurtleArtWindow():
                     dx += -(b.x+dx)
             # move the stack
             for b in self.draggroup:
-                move(b,(b.x+dx, b.y+dy))
+                b.move((b.x+dx, b.y+dy))
         elif spr.type=='turtle':
             type,dragx,dragy = self.dragpos
             if type == 'move':
@@ -422,7 +420,7 @@ class TurtleArtWindow():
                     dx,dy = mdx,mdy
                 else:
                     dx,dy = x-dragx-spr.x,y-dragy-spr.y
-                move(spr, (spr.x+dx, spr.y+dy))
+                spr.move((spr.x+dx, spr.y+dy))
             else:
                 if mdx != 0 or mdy != 0:
                     dx,dy = mdx,mdy
@@ -440,7 +438,7 @@ class TurtleArtWindow():
     """
     def _get_proto_from_category(self, x, y):
         dx, dy = x-self.category_spr.x, y-self.category_spr.y,
-        pixel = getpixel(self.current_category.mask,dx,dy)
+        pixel = self.current_category.getpixel(self.current_category.mask,dx,dy)
         index = ((pixel%256)>>3)-1
         if index==0:
             return 'hide'
@@ -457,46 +455,46 @@ class TurtleArtWindow():
         if spr and spr.type == 'category':
             proto = self._get_proto_from_category(x, y)
             if proto and proto!='hide':
-                if timeout_tag[0] == 0:
-                    timeout_tag[0] = self._do_show_popup(proto.name)
+                if self.timeout_tag[0] == 0:
+                    self.timeout_tag[0] = self._do_show_popup(proto.name)
                     self.spr = spr
                     return
             else:
-                if timeout_tag[0] > 0:
+                if self.timeout_tag[0] > 0:
                     try:
-                        gobject.source_remove(timeout_tag[0])
-                        timeout_tag[0] = 0
+                        gobject.source_remove(self.timeout_tag[0])
+                        self.timeout_tag[0] = 0
                     except:
-                        timeout_tag[0] = 0
+                        self.timeout_tag[0] = 0
         elif spr and spr.type == 'selbutton':
-            if timeout_tag[0] == 0:
-                timeout_tag[0] = self._do_show_popup(spr.name)
+            if self.timeout_tag[0] == 0:
+                self.timeout_tag[0] = self._do_show_popup(spr.name)
                 self.spr = spr
             else:
-                if timeout_tag[0] > 0:
+                if self.timeout_tag[0] > 0:
                     try:
-                        gobject.source_remove(timeout_tag[0])
-                        timeout_tag[0] = 0
+                        gobject.source_remove(self.timeout_tag[0])
+                        self.timeout_tag[0] = 0
                     except:
-                        timeout_tag[0] = 0
+                        self.timeout_tag[0] = 0
         elif spr and spr.type == 'block':
-            if timeout_tag[0] == 0:
-                timeout_tag[0] = self._do_show_popup(spr.proto.name)
+            if self.timeout_tag[0] == 0:
+                self.timeout_tag[0] = self._do_show_popup(spr.proto.name)
                 self.spr = spr
             else:
-                if timeout_tag[0] > 0:
+                if self.timeout_tag[0] > 0:
                     try:
-                        gobject.source_remove(timeout_tag[0])
-                        timeout_tag[0] = 0
+                        gobject.source_remove(self.timeout_tag[0])
+                        self.timeout_tag[0] = 0
                     except:
-                        timeout_tag[0] = 0
+                        self.timeout_tag[0] = 0
         else:
-            if timeout_tag[0] > 0:
+            if self.timeout_tag[0] > 0:
                 try:
-                    gobject.source_remove(timeout_tag[0])
-                    timeout_tag[0] = 0
+                    gobject.source_remove(self.timeout_tag[0])
+                    self.timeout_tag[0] = 0
                 except:
-                    timeout_tag[0] = 0
+                    self.timeout_tag[0] = 0
 
     """
     fetch the help text and display it 
@@ -516,7 +514,6 @@ class TurtleArtWindow():
         elif hasattr(self, "win"):
             self.win.set_title(_("Turtle Art") + " — " + label)
         return 0
-
 
     """
     Keyboard
@@ -613,7 +610,7 @@ class TurtleArtWindow():
                         elif keyname == 'KP_Page_Down':
                             if self.draggroup == None:
                                 self.draggroup = findgroup(self.spr)
-                            for b in self.draggroup: hide(b)
+                            for b in self.draggroup: b.hide()
                             self.draggroup = None
                     elif self.spr.type == 'selbutton':
                         if keyname == 'Return' or keyname == 'KP_Page_Up':
@@ -623,7 +620,7 @@ class TurtleArtWindow():
                             (x,y) = self.window.get_pointer()
                             self._block_selector_pressed(x, y)
                             for b in self.draggroup:
-                               move(b, (b.x+200, b.y))
+                               b.move((b.x+200, b.y))
                             self.draggroup = None
                 return True
         if self.selected_block is None:
@@ -654,17 +651,17 @@ class TurtleArtWindow():
         elif keyname is not '':
             # Hack until I sort out input and unicode + dead keys
             if self.dead_key == 'dead_grave':
-                keyunicode = dead_grave[keyname]
+                keyunicode = self.dead_grave[keyname]
             elif self.dead_key == 'dead_acute':
-                keyunicode = dead_acute[keyname]
+                keyunicode = self.dead_acute[keyname]
             elif self.dead_key == 'dead_circumflex':
-                keyunicode = dead_circumflex[keyname]
+                keyunicode = self.dead_circumflex[keyname]
             elif self.dead_key == 'dead_tilde':
-                keyunicode = dead_tilde[keyname]
+                keyunicode = self.dead_tilde[keyname]
             elif self.dead_key == 'dead_diaeresis':
-                keyunicode = dead_diaeresis[keyname]
+                keyunicode = self.dead_diaeresis[keyname]
             elif self.dead_key == 'dead_abovering':
-                keyunicode = dead_abovering[keyname]
+                keyunicode = self.dead_abovering[keyname]
             self.dead_key = ""
             if self.firstkey:
                 newnum = selblock.check(unichr(keyunicode), \
@@ -679,9 +676,6 @@ class TurtleArtWindow():
             setlabel(self.selected_block, selblock.check(newnum,oldnum))
             self.firstkey = False
         return True
-
-
-
 
     """
     Button release
@@ -717,33 +711,36 @@ class TurtleArtWindow():
             display_coordinates(self)
             self.draggroup = None
             return
-        if self.block_operation=='move' and hit(self.category_spr, (x,y)):
-            for b in self.draggroup: hide(b)
+        if self.block_operation=='move' and self.category_spr.hit((x,y)):
+            for b in self.draggroup: b.hide()
             self.draggroup = None
             return
         if self.block_operation=='new':
             for b in self.draggroup:
-                move(b, (b.x+200, b.y))
+                b.move((b.x+200, b.y))
         self._snap_to_dock()
-        for b in self.draggroup: setlayer(b,650)
+        for b in self.draggroup: b.setlayer(650)
         self.draggroup = None
         if self.block_operation=='click':
             if self.spr.proto.name=='number':
                 self.selected_block = spr
-                move(self.select_mask, (spr.x-5,spr.y-5))
-                setlayer(self.select_mask, 660)
+                self.select_mask.move((spr.x-5,spr.y-5))
+                self.select_mask.setlayer(660)
                 self.firstkey = True
             elif self.defdict.has_key(spr.proto.name):
                 self.selected_block = spr
                 if self.spr.proto.name=='string':
-                    move(self.select_mask_string, (spr.x-5,spr.y-5))
-                    setlayer(self.select_mask_string, 660)
+                    self.select_mask_string.move((spr.x-5,spr.y-5))
+                    self.select_mask_string.setlayer(660)
                     self.firstkey = True
-                elif self.spr.proto.name in importblocks:
+                elif self.spr.proto.name in self.importblocks:
                     self._import_from_journal(spr)
             elif self.spr.proto.name=='nop' and self.myblock==None:
                 self.activity.import_py()
-            else: self._run_stack(spr)
+            else:
+                # TODO: mark block as selected
+                spr.set_selected(True)
+                self._run_stack(spr)
 
     """
     click block
@@ -751,16 +748,16 @@ class TurtleArtWindow():
     def _click_block(self):
         if self.spr.proto.name=='number':
             self.selected_block = self.spr
-            move(self.select_mask, (self.spr.x-5,self.spr.y-5))
-            setlayer(self.select_mask, 660)
+            self.select_mask.move((self.spr.x-5,self.spr.y-5))
+            self.select_mask.setlayer(660)
             self.firstkey = True
         elif self.defdict.has_key(self.spr.proto.name):
             self.selected_block = self.spr
             if self.spr.proto.name=='string':
-                move(self.select_mask_string, (self.spr.x-5,self.spr.y-5))
-                setlayer(self.select_mask_string, 660)
+                self.select_mask_string.move((self.spr.x-5,self.spr.y-5))
+                self.select_mask_string.setlayer(660)
                 self.firstkey = True
-            elif self.spr.proto.name in importblocks:
+            elif self.spr.proto.name in self.importblocks:
                 self._import_from_journal(self.spr)
         elif self.spr.proto.name=='nop' and self.myblock==None:
             self.activity.import_py()
@@ -770,7 +767,6 @@ class TurtleArtWindow():
     Repaint
     """
     def _expose_cb(self, win, event):
-        # FIXME
         redrawsprites(self)
         return True
 
@@ -790,7 +786,6 @@ class TurtleArtWindow():
             else:
                 self.activity._send_event("p:"+str(x)+":"+str(y)+":"+'F')
         return True
-
 
     """
     snap_to_dock
@@ -813,11 +808,11 @@ class TurtleArtWindow():
                     bestmydockn=mydockn
         if d<200:
             for b in self.draggroup:
-                move(b,(b.x+bestxy[0],b.y+bestxy[1]))
+                b.move((b.x+bestxy[0],b.y+bestxy[1]))
             blockindock=bestyou.connections[bestyourdockn]
             if blockindock!=None:
                 for b in findgroup(blockindock):
-                    hide(b)
+                    b.hide()
             bestyou.connections[bestyourdockn]=me
             me.connections[bestmydockn]=bestyou
 
@@ -875,19 +870,23 @@ class TurtleArtWindow():
         else:
             self.hideshow_palette(False)
 
-
     """
     new block from category
     """
     def _new_block_from_category(self, proto, x, y):
         if proto is None:
             return True
+
+        #
+        # Create new instance of the block
+        # 
+
         # load alternative image of nop block if python code is loaded
         if proto.name == 'nop' and self.nop == 'pythonloaded':
-            newspr = sprNew(self,x-20,y-20,self.media_shapes['pythonloaded'])
+            newspr = Sprite(self,x-20,y-20,self.media_shapes['pythonloaded'])
         else:
-            newspr = sprNew(self,x-20,y-20,proto.image)
-        setlayer(newspr,2000)
+            newspr = Sprite(self,x-20,y-20,proto.image)
+        newspr.setlayer(2000)
         self.dragpos = 20,20
         newspr.type = 'block'
         newspr.proto = proto
@@ -899,31 +898,31 @@ class TurtleArtWindow():
             argproto = self.protodict[self.valdict[dock[0]]]
             argdock = argproto.docks[0]
             nx,ny = newspr.x+dock[2]-argdock[2],newspr.y+dock[3]-argdock[3]
-            argspr = sprNew(self,nx,ny,argproto.image)
+            argspr = Sprite(self,nx,ny,argproto.image)
             argspr.type = 'block'
             argspr.proto = argproto
             argspr.label = str(proto.defaults[i])
-            setlayer(argspr,2000)
+            argspr.setlayer(2000)
             argspr.connections = [newspr,None]
             newspr.connections[i+1] = argspr
         self.draggroup = findgroup(newspr)
-        self.block_operation = 'new'
+        self.block_operation = 'new' 
 
 
     """
     block pressed
+    TODO: mark block as selected
     """
     def _block_pressed(self, mask, x, y, spr):
         if spr is not None:
             self.draggroup = findgroup(spr)
-            for b in self.draggroup: setlayer(b,2000)
+            for b in self.draggroup: b.setlayer(2000)
             if spr.connections[0] != None and spr.proto.name == 'lock':
                 b = self._find_top_block(spr)
                 self.dragpos = x-b.x,y-b.y
             else:
                 self.dragpos = x-spr.x,y-spr.y
                 self._disconnect(spr)
-
 
     """
     disconnect block
@@ -958,7 +957,6 @@ class TurtleArtWindow():
             setimage(spr, pixbuf)
         else:
             setimage(spr, self.media_shapes['texton'])
-
 
     """
     dock_dx_dy 
@@ -1037,12 +1035,9 @@ class TurtleArtWindow():
                 dx += -(b.x+dx)
         # move the stack
         for b in self.draggroup:
-            move(b,(b.x+dx, b.y-dy))
+            b.move((b.x+dx, b.y-dy))
         self._snap_to_dock()
         self.draggroup = None
-
-
-
 
 
 

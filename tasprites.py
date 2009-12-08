@@ -26,7 +26,7 @@ pygtk.require('2.0')
 import gtk
 import gobject
 import pango
-class taSprite: pass
+import tasetup
 
 # Don't display the label for these blocks 
 nolabel = ['audiooff', 'descriptionoff','journal']
@@ -35,140 +35,152 @@ def findsprite(tw,pos):
     list = tw.sprites[:]
     list.reverse()
     for s in list:
-        if hit(s,pos): return s
+        if s.hit(pos): return s
     return None
 
 def redrawsprites(tw):
-    for s in tw.sprites: draw(s)
+    for s in tw.sprites: s.draw()
 
-def sprNew(tw,x,y,image,altlabel=False):
-    spr = taSprite()
-    spr.tw, spr.x, spr.y = tw,x,y
-    setimage(spr,image)
-    spr.label = None
-    spr.ds_id = None
-    if altlabel:
-        spr.draw_label = draw_label2
-    else: spr.draw_label = draw_label1
-    return spr
 
-def setimage(spr,image):
-    spr.image = image
-    if isinstance(image,gtk.gdk.Pixbuf):
-        spr.width = image.get_width()
-        spr.height = image.get_height()
-    else: spr.width,spr.height=image.get_size()
+class Sprite():
 
-def move(spr,pos):
-    inval(spr)
-    spr.x,spr.y = pos
-    inval(spr)
+    def __init__(self, tw, x, y, image, altlabel=False):
+        self.tw, self.x, self.y = tw,x,y
+        self.setimage(image)
+        self.label = None
+        self.ds_id = None
+        if altlabel:
+            self.draw_label = self.draw_label2
+        else: self.draw_label = self.draw_label1
 
-def setshape(spr,image):
-    inval(spr)
-    setimage(spr,image)
-    inval(spr)
-
-def setshapex(spr):
-    inval(spr)
-
-def setlayer(spr, layer):
-    sprites = spr.tw.sprites
-    if spr in sprites: sprites.remove(spr)
-    spr.layer = layer
-    for i in range(len(sprites)):
-        if layer < sprites[i].layer:
-            sprites.insert(i, spr)
-            inval(spr)
-            return
-    sprites.append(spr)
-    inval(spr)
-
-def hide(spr):
-    if spr not in spr.tw.sprites: return
-    inval(spr)
-    spr.tw.sprites.remove(spr)
-
-def setlabel(spr,label):
-    spr.label = label
-    inval(spr)
-
-def inval(spr):
-    spr.tw.area.invalidate_rect(gtk.gdk.Rectangle(spr.x,spr.y,spr.width, \
-                                                      spr.height), False)
-
-def draw(spr):
-    if isinstance(spr.image,gtk.gdk.Pixbuf):
-        spr.tw.area.draw_pixbuf(spr.tw.gc, spr.image, 0, 0, spr.x, spr.y)
-    else:
-        spr.tw.area.draw_drawable(spr.tw.gc,spr.image,0,0,spr.x,spr.y,-1,-1)
-    if spr.label!=None:
-        if hasattr(spr, 'proto') and hasattr(spr.proto, 'name'):
-            name = spr.proto.name
+    '''
+    mark block as selected or un-selected 
+    FIXME: how we'll we create the images for selected blocks
+    '''
+    def set_selected(self, selected):
+        if selected:
+            img = tasetup.load_image(self.tw, self.tw.path, '', 'audioon')
         else:
-            name = ""
-        if name not in nolabel:
-            spr.draw_label(spr,str(spr.label))
+            img = tasetup.load_image(self.tw, self.tw.path, '', 'audioon')
+        self.setimage(img)
 
-def hit(spr,pos):
-    x, y = pos
-    if x<spr.x: return False
-    if x>spr.x+spr.width-1: return False
-    if y<spr.y: return False
-    if y>spr.y+spr.height-1: return False
-    if isinstance(spr.image,gtk.gdk.Pixmap): return True
-    if hasattr(spr, 'proto') and hasattr(spr.proto, 'name') and \
-        spr.proto.name == 'journal':
+    def setimage(self, image):
+        self.image = image
+        if isinstance(image,gtk.gdk.Pixbuf):
+            self.width = image.get_width()
+            self.height = image.get_height()
+        else: self.width,self.height=image.get_size()
+
+    def move(self, pos):
+        self.inval()
+        self.x,self.y = pos
+        self.inval()
+
+    def inval(self):
+        rect = gtk.gdk.Rectangle(self.x, self.y, self.width, self.height)
+        self.tw.area.invalidate_rect(rect, False)
+
+    def setshape(self, image):
+        self.inval()
+        self.setimage(image)
+        self.inval()
+
+    def setshapex(self):
+        self.inval()
+
+    def setlayer(self, layer):
+        sprites = self.tw.sprites
+        if self in sprites: sprites.remove(self)
+        self.layer = layer
+        for i in range(len(sprites)):
+            if layer < sprites[i].layer:
+                sprites.insert(i, self)
+                self.inval()
+                return
+        sprites.append(self)
+        self.inval()
+
+    def hide(self):
+        if self not in self.tw.sprites: return
+        self.inval()
+        self.tw.sprites.remove(self)
+
+    def setlabel(self, label):
+        self.label = label
+        self.inval()
+
+    def draw(self):
+        if isinstance(self.image,gtk.gdk.Pixbuf):
+            self.tw.area.draw_pixbuf(self.tw.gc, self.image, 0, 0, self.x, self.y)
+        else:
+            self.tw.area.draw_drawable(self.tw.gc,self.image,0,0,self.x,self.y,-1,-1)
+        if self.label!=None:
+            if hasattr(self, 'proto') and hasattr(self.proto, 'name'):
+                name = self.proto.name
+            else:
+                name = ""
+            if name not in nolabel:
+                self.draw_label1(str(self.label))
+
+    def hit(self, pos):
+        x, y = pos
+        if x<self.x: return False
+        if x>self.x+self.width-1: return False
+        if y<self.y: return False
+        if y>self.y+self.height-1: return False
+        if isinstance(self.image,gtk.gdk.Pixmap): return True
+        if hasattr(self, 'proto') and hasattr(self.proto, 'name') and \
+            self.proto.name == 'journal':
+                return True
+        dx, dy = x-self.x, y-self.y
+        try:
+            return ord(self.image.get_pixels()[(dy*self.width+dx)*4+3]) == 255
+        except IndexError:
+            if hasattr(spr, 'proto') and hasattr(self.proto, 'name'):
+                print self.proto.name
+            print "IndexError: string index out of range: " + str(dx) + " " \
+                + str(dy) + " " + str(self.width) + " " + str(self.height)
             return True
-    dx, dy = x-spr.x, y-spr.y
-    try:
-        return ord(spr.image.get_pixels()[(dy*spr.width+dx)*4+3]) == 255
-    except IndexError:
-        if hasattr(spr, 'proto') and hasattr(spr.proto, 'name'):
-            print spr.proto.name
-        print "IndexError: string index out of range: " + str(dx) + " " \
-            + str(dy) + " " + str(spr.width) + " " + str(spr.height)
-        return True
 
-def draw_label(spr, label, myscale, center_flag, truncate_flag):
-    fd = pango.FontDescription('Sans')
-    fd.set_size(int(myscale*spr.tw.scale*pango.SCALE))
-    if type(label) == str or type(label) == unicode:
-        mylabel = label.replace("\0"," ")
-        l = len(mylabel)
-        if truncate_flag and l > 8:
-            pl = spr.tw.window.create_pango_layout("..."+mylabel[l-8:])
+    def real_draw_label(self, label, myscale, center_flag, truncate_flag):
+        fd = pango.FontDescription('Sans')
+        fd.set_size(int(myscale*self.tw.scale*pango.SCALE))
+        if type(label) == str or type(label) == unicode:
+            mylabel = label.replace("\0"," ")
+            l = len(mylabel)
+            if truncate_flag and l > 8:
+                pl = self.tw.window.create_pango_layout("..."+mylabel[l-8:])
+            else:
+                pl = self.tw.window.create_pango_layout(mylabel)
+            pl.set_font_description(fd)
+            if center_flag:
+                swidth = pl.get_size()[0]/pango.SCALE
+                centerx = self.x+self.width/2
+                x = int(centerx-swidth/2)
+            else:
+                x = self.x+70
+            sheight = pl.get_size()[1]/pango.SCALE
+            centery = self.y+self.height/2
+            y = int(centery-sheight/2)
+            self.tw.gc.set_foreground(self.tw.msgcolor)
+            self.tw.area.draw_layout(self.tw.gc, x, y, pl)
         else:
-            pl = spr.tw.window.create_pango_layout(mylabel)
-        pl.set_font_description(fd)
-        if center_flag:
-            swidth = pl.get_size()[0]/pango.SCALE
-            centerx = spr.x+spr.width/2
-            x = int(centerx-swidth/2)
-        else:
-            x = spr.x+70
-        sheight = pl.get_size()[1]/pango.SCALE
-        centery = spr.y+spr.height/2
-        y = int(centery-sheight/2)
-        spr.tw.gc.set_foreground(spr.tw.msgcolor)
-        spr.tw.area.draw_layout(spr.tw.gc, x, y, pl)
-    else:
-        print type(label)
+            print type(label)
 
-# used for most things
-def draw_label1(spr, label):
-    draw_label(spr, label, 7, True, True)
+    # used for most things
+    def draw_label1(self, label):
+        self.real_draw_label(label, 7, True, True)
+        
+    # used for status blocks
+    def draw_label2(self, label):
+        self.real_draw_label(str(label), 9, False, False)
 
-# used for status blocks
-def draw_label2(spr, label):
-    draw_label(spr, str(label), 9, False, False)
-
-# used to get pixel value from mask for category selector
-def getpixel(image,x,y):
-    array = image.get_pixels()
-    offset = (y*image.get_width()+x)*4
-    r,g,b,a = ord(array[offset]),ord(array[offset+1]),ord(array[offset+2]), \
-        ord(array[offset+3])
-    return (a<<24)+(b<<16)+(g<<8)+r
+    # used to get pixel value from mask for category selector
+    def getpixel(self, image,x,y):
+        array = image.get_pixels()
+        offset = (y*image.get_width()+x)*4
+        r,g,b,a = ord(array[offset]),ord(array[offset+1]),ord(array[offset+2]), \
+            ord(array[offset+3])
+        return (a<<24)+(b<<16)+(g<<8)+r
 
 
