@@ -148,8 +148,11 @@ def play_audio(lc, audio):
             print dsobject.file_path
         except:
             print "Couldn't open id: " + str(audio[6:])
+        '''
         if lc.gplay == None:
             lc.gplay = Gplay()
+        '''
+        lc.gplay = Gplay()
         lc.gplay.setFile("file:///" + dsobject.file_path)
 
 def play_video(lc, media, x, y, w, h):
@@ -167,10 +170,10 @@ def play_video(lc, media, x, y, w, h):
 def play_dsobject(lc, dsobject, x, y, w, h):
     if lc.gplay == None:
         lc.gplay = Gplay()
+    # TODO:
     # wait for current movie to stop playing
     if lc.gplay.is_playing:
         print "already playing..."
-#        yield True
     lc.gplay.setFile("file:///" + dsobject.file_path)
     if lc.gplay.window == None:
         gplayWin = PlayVideoWindow()
@@ -190,7 +193,6 @@ def stop_media(lc):
     lc.gplay.stop()
     if lc.gplay.window != None:
         # We need to destroy the video window
-        # print dir(lc.gplay.window)
         lc.gplay.window.destroy()
         lc.gplay = None
 
