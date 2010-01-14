@@ -1,0 +1,365 @@
+# Turtle Art
+# Copyright (C) 2009 Sugar Labs
+# This file is distributed under the same license as the PACKAGE package.
+# Walter Bender <walter@sugarlabs.org>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2009-06-17 10:34-0400\n"
+"Last-Translator: Heroid Shehu <heroid@ayih.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: sq\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 1.2.1\n"
+
+#: activity/activity.info:2
+msgid "Turtle Art"
+msgstr "Arti i Breshkës"
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "titulli"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "teksti"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "qipi"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "kuti"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "emri"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "Projekti"
+
+#:
+msgid "Save as"
+msgstr "Ruaj si"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "fshihe paletën"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "fshihi blloqet"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "vrapo"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "hap"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "ndalo breshkën"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "shembujt"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "ruaj si HTML"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "ruaj Logon"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "mbushi blloqet e mija"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "shfaq paletën"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "shfaq blloqet"
+
+#:
+msgid "Flow"
+msgstr "Rrjedha"
+
+#:
+msgid "forever"
+msgstr "përgjithmonë"
+
+#:
+msgid "if"
+msgstr "nëse"
+
+#:
+msgid "then"
+msgstr "pastaj"
+
+#:
+msgid "else"
+msgstr "tjetër"
+
+#:
+msgid "repeat"
+msgstr "përsëri"
+
+#:
+msgid "stop stack"
+msgstr "ndalo qipin"
+
+#:
+msgid "wait"
+msgstr "prit"
+
+#:
+msgid "My Blocks"
+msgstr "Blloqet e Mia"
+
+#:
+msgid "box 1"
+msgstr "kutija 1"
+
+#:
+msgid "box 2"
+msgstr "kutija 2"
+
+#:
+msgid "stack 1"
+msgstr "qipi 1"
+
+#:
+msgid "stack 2"
+msgstr "qipi 2"
+
+#:
+msgid "store in box 1"
+msgstr "vendose në kutinë 1"
+
+#:
+msgid "store in box 2"
+msgstr "vendose në kutinë 2"
+
+#:
+msgid "push"
+msgstr "shtyj"
+
+#:
+msgid "pop"
+msgstr "shfaq"
+
+#:
+msgid "Numbers"
+msgstr "Numrat"
+
+#:
+msgid "number"
+msgstr "numër"
+
+#:
+msgid "and"
+msgstr "dhe"
+
+#:
+msgid "or"
+msgstr "ose"
+
+#:
+msgid "not"
+msgstr "jo"
+
+#:
+msgid "random"
+msgstr "e thjeshtë"
+
+#:
+msgid "min"
+msgstr "min"
+
+#:
+msgid "max"
+msgstr "maks"
+
+#:
+msgid "mod"
+msgstr "mes"
+
+#:
+msgid "print"
+msgstr "shtyp"
+
+#:
+msgid "Pen"
+msgstr "Laps"
+
+#:
+msgid "color"
+msgstr "ngjyrë"
+
+#:
+msgid "shade"
+msgstr "hije"
+
+#:
+msgid "fill screen"
+msgstr "mbushe ekranin"
+
+#:
+msgid "pen up"
+msgstr "lapsi lart"
+
+#:
+msgid "pen down"
+msgstr "lapsi poshtë"
+
+#:
+msgid "set pen size"
+msgstr "jepe madhësinë e lapsit"
+
+#:
+msgid "pen size"
+msgstr "madhësija e lapsit"
+
+#:
+msgid "set shade"
+msgstr "vëre hijen"
+
+#:
+msgid "set color"
+msgstr "vëre ngjyrën"
+
+#:
+msgid "set text color"
+msgstr "vëre ngjyrën e tekstit"
+
+#:
+msgid "Blocks"
+msgstr "Blloqet"
+
+#:
+msgid "Turtle"
+msgstr "Breshka"
+
+#:
+msgid "clean"
+msgstr "pastro"
+
+#:
+msgid "forward"
+msgstr "përpara"
+
+#:
+msgid "back"
+msgstr "prapa"
+
+#:
+msgid "right"
+msgstr "djathtas"
+
+#:
+msgid "left"
+msgstr "majtas"
+
+#:
+msgid "arc"
+msgstr "arc"
+
+#:
+msgid "angle"
+msgstr "këndi"
+
+#:
+msgid "radius"
+msgstr "rrezja"
+
+#:
+msgid "heading"
+msgstr "kreu"
+
+#
+msgid "set heading"
+msgstr "vendos kreun"
+
+#:
+msgid "set xy"
+msgstr "vendos xy"
+
+#:
+msgid "x"
+msgstr "x"
+
+#:
+msgid "y"
+msgstr "y"
+
+#:
+msgid "xcor"
+msgstr "xcor"
+
+#:
+msgid "ycor"
+msgstr "ycor"
+
+#:
+msgid "Sensors"
+msgstr "Senzorët"
+
+#:
+msgid "volume"
+msgstr "volumi"
+
+#:
+msgid "pitch"
+msgstr "niveli"
+
+#:
+msgid "voltage"
+msgstr "voltazhi"
+
+#:
+msgid "resistance"
+msgstr "rezistenca"
+
+#:
+msgid "Templates"
+msgstr "Shabllonët"
+
+#:
+msgid "Keyboard"
+msgstr "Tastatura"
+
+#:
+msgid "read key"
+msgstr "lexo tastin"
+
+#:
+msgid "sound"
+msgstr "zëri"
+
+#:
+msgid "hres"
+msgstr "hres"
+
+#:
+msgid "vres"
+msgstr "vres"
+
+#:
+msgid "start"
+msgstr "fillo"
