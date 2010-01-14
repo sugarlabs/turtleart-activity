@@ -1,0 +1,364 @@
+# Turtle Art
+# Copyright (C) 2009 Sugar Labs
+# This file is distributed under the same license as the PACKAGE package.
+# Walter Bender <walter@sugarlabs.org>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2009-11-19 03:50-0400\n"
+"Last-Translator: Jerome Gotangco <jerome@gotangco.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fil\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.2.1\n"
+
+#: activity/activity.info:2
+msgid "Turtle Art"
+msgstr "Turtle Art"
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "pamagat"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "teksto"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "stack"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "kahon"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "pangalan"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "Proyekto"
+
+#:
+msgid "Save as"
+msgstr "I-save bilang"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "Itago ang palette"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "Itago ang mga bloke"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "patakbuhin"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "hakbang"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "I-hinto ang pagong"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "mga halimbawa"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "I-save bilang HTML"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "I-save ang Logo"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "Ikarga ang aking bloke"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "Ipakita ang paleta"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "Ipakita ang mga bloke"
+
+#:
+msgid "Flow"
+msgstr "Daloy"
+
+#:
+msgid "forever"
+msgstr "magpakailanman"
+
+#:
+msgid "if"
+msgstr "kung"
+
+#:
+msgid "then"
+msgstr "tapos"
+
+#:
+msgid "else"
+msgstr "kung hindi"
+
+#:
+msgid "repeat"
+msgstr "ulitin"
+
+#:
+msgid "stop stack"
+msgstr "I-hinto ang stack"
+
+#:
+msgid "wait"
+msgstr "hintay"
+
+#:
+msgid "My Blocks"
+msgstr "Ang mga bloke ko"
+
+#:
+msgid "box 1"
+msgstr "kahon 1"
+
+#:
+msgid "box 2"
+msgstr "kahon 2"
+
+#:
+msgid "stack 1"
+msgstr "stack 1"
+
+#:
+msgid "stack 2"
+msgstr "stack 2"
+
+#:
+msgid "store in box 1"
+msgstr "Itago sa box 1"
+
+#:
+msgid "store in box 2"
+msgstr "Itago sa box 2"
+
+#:
+msgid "push"
+msgstr "itulak"
+
+#:
+msgid "pop"
+msgstr "pop"
+
+#:
+msgid "Numbers"
+msgstr "Mga bilang"
+
+#:
+msgid "number"
+msgstr "Bilang"
+
+#:
+msgid "and"
+msgstr "at"
+
+#:
+msgid "or"
+msgstr "o"
+
+#:
+msgid "not"
+msgstr "hindi"
+
+#:
+msgid "random"
+msgstr "random"
+
+#:
+msgid "min"
+msgstr "min"
+
+#:
+msgid "max"
+msgstr "max"
+
+#:
+msgid "mod"
+msgstr "mod"
+
+#:
+msgid "print"
+msgstr "print"
+
+#:
+msgid "Pen"
+msgstr "Pluma"
+
+#:
+msgid "color"
+msgstr "kulay"
+
+#:
+msgid "shade"
+msgstr "klase ng kulay"
+
+#:
+msgid "fill screen"
+msgstr "punuin ang screen"
+
+#:
+msgid "pen up"
+msgstr "pluma pataas"
+
+#:
+msgid "pen down"
+msgstr "pluma pababa"
+
+#:
+msgid "set pen size"
+msgstr "itakda ang laki ng pluma"
+
+#:
+msgid "pen size"
+msgstr "laki ng pluma"
+
+#:
+msgid "set shade"
+msgstr "itakda ang klase ng kulay"
+
+#:
+msgid "set color"
+msgstr "itakda ang kulay"
+
+#:
+msgid "set text color"
+msgstr "itakda ang kulay ng teksto"
+
+#:
+msgid "Blocks"
+msgstr "Mga bloke"
+
+#:
+msgid "Turtle"
+msgstr "Turtle"
+
+#:
+msgid "clean"
+msgstr "linisin"
+
+#:
+msgid "forward"
+msgstr "pasulong"
+
+#:
+msgid "back"
+msgstr "balik"
+
+#:
+msgid "right"
+msgstr "kanan"
+
+#:
+msgid "left"
+msgstr "kaliwa"
+
+#:
+msgid "arc"
+msgstr "arko"
+
+#:
+msgid "angle"
+msgstr "anggulo"
+
+#:
+msgid "radius"
+msgstr "radius"
+
+#:
+msgid "heading"
+msgstr "pamagat"
+
+#
+msgid "set heading"
+msgstr "itakda ang pamagat"
+
+#:
+msgid "set xy"
+msgstr "itakda ang xy"
+
+#:
+msgid "x"
+msgstr "x"
+
+#:
+msgid "y"
+msgstr "y"
+
+#:
+msgid "xcor"
+msgstr "xcor"
+
+#:
+msgid "ycor"
+msgstr "ycor"
+
+#:
+msgid "Sensors"
+msgstr "Sensors"
+
+#:
+msgid "volume"
+msgstr "lakas ng tunog"
+
+#:
+msgid "pitch"
+msgstr "tono"
+
+#:
+msgid "voltage"
+msgstr "boltahe"
+
+#:
+msgid "resistance"
+msgstr "resistance"
+
+#:
+msgid "Templates"
+msgstr "Mga template"
+
+#:
+msgid "Keyboard"
+msgstr "Keyboard"
+
+#:
+msgid "read key"
+msgstr "basahin ang susi"
+
+#:
+msgid "sound"
+msgstr "tunog"
+
+#:
+msgid "hres"
+msgstr "hres"
+
+#:
+msgid "vres"
+msgstr "vres"
+
+#:
+msgid "start"
+msgstr "Simulan"
