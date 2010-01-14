@@ -1,0 +1,370 @@
+# Turtle Art
+# Copyright (C) 2009 Sugar Labs
+# This file is distributed under the same license as the PACKAGE package.
+# Walter Bender <walter@sugarlabs.org>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2009-11-24 14:15-0400\n"
+"Last-Translator: Ny Menavazana <menavazana@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: mg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 1.2.1\n"
+
+#: activity/activity.info:2
+msgid "Turtle Art"
+msgstr "Zava-kanton'ny Sokatra (Turtle Art)"
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "lohateny"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "lahatsoratra"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "staka (stack)"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "boaty"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "anarana"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "Tetikasa"
+
+#:
+msgid "Save as"
+msgstr "Tehirizo ho"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "afeno ny andian-doko"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "afeno ny vongana"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "alefa"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "dingana"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "ajanony i sokatra"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "santionany"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "tehirizo ho HTML"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "tehirizo ny sary famantarana"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "alaivo ny bolongako"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "asehoy ny andian-doko"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "asehoy ireo bolongana"
+
+#:
+msgid "Flow"
+msgstr "Koriana"
+
+#:
+msgid "forever"
+msgstr "mandrakizay"
+
+#:
+msgid "if"
+msgstr "raha"
+
+#:
+msgid "then"
+msgstr "noho izany"
+
+#:
+msgid "else"
+msgstr "raha tsy izany"
+
+#:
+msgid "repeat"
+msgstr "avereno"
+
+#:
+msgid "stop stack"
+msgstr "ajanony ny andiany"
+
+#:
+msgid "wait"
+msgstr "andraso"
+
+#:
+msgid "My Blocks"
+msgstr "Ny bolongako"
+
+# can be 'boaty'<span class="translation-space"> </span>
+# 
+#:
+msgid "box 1"
+msgstr "vata 1"
+
+#:
+msgid "box 2"
+msgstr "vata 2"
+
+#:
+msgid "stack 1"
+msgstr "andiany 1"
+
+#:
+msgid "stack 2"
+msgstr "andiany 2"
+
+#:
+msgid "store in box 1"
+msgstr "ampidiro ao anaty vata 1"
+
+#:
+msgid "store in box 2"
+msgstr "ampidiro ao anaty vata 2"
+
+#:
+msgid "push"
+msgstr "atoseho"
+
+#:
+msgid "pop"
+msgstr "avoahay"
+
+#:
+msgid "Numbers"
+msgstr "Tarehimarika maromaro"
+
+#:
+msgid "number"
+msgstr "tarehimarika"
+
+#:
+msgid "and"
+msgstr "sy"
+
+#:
+msgid "or"
+msgstr "na"
+
+#:
+msgid "not"
+msgstr "tsy"
+
+#:
+msgid "random"
+msgstr "random"
+
+#:
+msgid "min"
+msgstr "farafahakeliny"
+
+#:
+msgid "max"
+msgstr "farafahabetsany"
+
+#:
+msgid "mod"
+msgstr "mod"
+
+#:
+msgid "print"
+msgstr "soraty masinina"
+
+#:
+msgid "Pen"
+msgstr "Penina"
+
+#:
+msgid "color"
+msgstr "loko"
+
+#:
+msgid "shade"
+msgstr "matroka"
+
+#:
+msgid "fill screen"
+msgstr "fenoy ny efi-jery"
+
+#:
+msgid "pen up"
+msgstr "aingao ny penina"
+
+#:
+msgid "pen down"
+msgstr "ampidino ny penina"
+
+#:
+msgid "set pen size"
+msgstr "omeo ny refin'ny penina"
+
+# pensily = penina
+#:
+msgid "pen size"
+msgstr "refin'ny penina"
+
+#:
+msgid "set shade"
+msgstr "asio tandindona"
+
+#:
+msgid "set color"
+msgstr "asio loko"
+
+#:
+msgid "set text color"
+msgstr "omeo ny loko'ny lahatsoratra"
+
+#:
+msgid "Blocks"
+msgstr "Bolongana"
+
+#:
+msgid "Turtle"
+msgstr "Sokatra"
+
+#:
+msgid "clean"
+msgstr "diovy"
+
+#:
+msgid "forward"
+msgstr "mandrosoa"
+
+# ou 'miverena'
+#:
+msgid "back"
+msgstr "mihemora"
+
+#:
+msgid "right"
+msgstr "ankavanana"
+
+#:
+msgid "left"
+msgstr "ankavia"
+
+#:
+msgid "arc"
+msgstr "faribolana"
+
+#:
+msgid "angle"
+msgstr "zoro"
+
+#:
+msgid "radius"
+msgstr "tana"
+
+# Title also was translated with the same word.
+#:
+msgid "heading"
+msgstr "lohateny"
+
+#
+msgid "set heading"
+msgstr "omeo lohateny"
+
+#:
+msgid "set xy"
+msgstr "omeo ny xy"
+
+#:
+msgid "x"
+msgstr "x"
+
+#:
+msgid "y"
+msgstr "y"
+
+#:
+msgid "xcor"
+msgstr "xcor"
+
+#:
+msgid "ycor"
+msgstr "ycor"
+
+#:
+msgid "Sensors"
+msgstr "Mpanambolo (Mpandray)"
+
+#:
+msgid "volume"
+msgstr "hadiry"
+
+#:
+msgid "pitch"
+msgstr "haavo"
+
+#:
+msgid "voltage"
+msgstr "voltazy"
+
+#:
+msgid "resistance"
+msgstr ""
+
+#:
+msgid "Templates"
+msgstr "Takila-modely"
+
+#:
+msgid "Keyboard"
+msgstr "Fitendry soratra (/Fitendry feo)"
+
+#:
+msgid "read key"
+msgstr "vakio ny fanalahidy"
+
+#:
+msgid "sound"
+msgstr "feo"
+
+#:
+msgid "hres"
+msgstr "hres"
+
+#:
+msgid "vres"
+msgstr "vres"
+
+#:
+msgid "start"
+msgstr "atomboy"
