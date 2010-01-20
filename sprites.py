@@ -134,19 +134,19 @@ class Sprite:
             self.labels[i] = new_label.replace("\0"," ")
         else:
             self.labels[i] = str(new_label)
-        if self.fd is None:
-            self.set_font('Sans')
-        if self.color is None:
-            self.color = self.sprites.cm.alloc_color('black')
         self.inval()
 
     def _extend_labels_array(self, i):
-         while len(self.labels) < i+1:
-            self.labels.append(" ")
-            self.scale.append(self.scale[0])
-            self.rescale.append(self.rescale[0])
-            self.horiz_align.append(self.horiz_align[0])
-            self.vert_align.append(self.vert_align[0])
+        if self.fd is None:
+           self.set_font('Sans')
+        if self.color is None:
+           self.color = self.sprites.cm.alloc_color('black')
+        while len(self.labels) < i+1:
+           self.labels.append(" ")
+           self.scale.append(self.scale[0])
+           self.rescale.append(self.rescale[0])
+           self.horiz_align.append(self.horiz_align[0])
+           self.vert_align.append(self.vert_align[0])
 
     def set_font(self, font):
         self.fd = pango.FontDescription(font)

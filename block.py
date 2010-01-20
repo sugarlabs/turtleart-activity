@@ -63,7 +63,7 @@ class Blocks:
 #
 class Block:
     def __init__(self, blocks, proto_name, x, y, labels=[], 
-                 colors=["#00A000","#00FF00"], scale=1.0):
+                 colors=["#00A000","#00FF00"], scale=2.0):
         self.blocks = blocks
         self.spr = None
         self._new_block_from_prototype(proto_name, labels, colors, scale, x, y)
@@ -79,7 +79,10 @@ class Block:
         # etc.
 
     def _new_block_from_prototype(self, name, labels, colors, scale, x, y):
-        print "%s %s (%d %d)" % (name, labels[0], x, y)
+        if len(labels) == 0:
+            print "%s (%d %d)" % (name, x, y)
+        else:
+            print "%s %s (%d %d)" % (name, labels[0], x, y)
         basic_style = ['forward', 'back', 'left', 'right']
         box_style = ['number']
         if name in basic_style:
@@ -92,9 +95,9 @@ class Block:
             svg.set_slot(True)
             svg.set_gradiant(True)
             svg.set_colors(colors)
-            print "creating new basic block"
             self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_block()))
+            print "created new basic block: %s" % (str(self.spr))
             self.spr.set_layer(2000)
             self.spr.draw()
             self.spr.set_label(labels[0])
@@ -106,9 +109,13 @@ class Block:
             svg.set_colors(colors)
             self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_box()))
-        
-        for l in labels:
-            self.spr.set_label(l, labels.index(l))
+            print "created new box block: %s" % (str(self.spr))
+        else:
+            print "don't know how to create a block for %s" % (name)
+            return
+
+        for label in labels:
+            self.spr.set_label(label, labels.index(label))
 
 #
 # Load pixbuf from SVG string
