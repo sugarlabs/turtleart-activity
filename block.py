@@ -78,8 +78,10 @@ class Block:
         # debug code
         # etc.
 
-    def _new_block_from_prototype(self, prototype_style, labels, colors, scale):
-        if prototype_style == 'forward':
+    def _new_block_from_prototype(self, proto_name, labels, colors, scale):
+        basic_style = ['forward', 'back', 'left', 'right']
+        box_style = ['number']
+        if proto_name in basic_style:
             svg = block_factory.SVG()
             svg.set_scale(scale)
             svg.expand(20,0)
@@ -89,8 +91,17 @@ class Block:
             svg.set_slot(True)
             svg.set_gradiant(True)
             svg.set_colors(colors)
-        self.spr = sprites.Sprite(self.blocks.sprites, 0, 0,
-                          svg_str_to_pixbuf(svg.basic_block()))
+            self.spr = sprites.Sprite(self.blocks.sprites, 0, 0,
+                                      svg_str_to_pixbuf(svg.basic_block()))
+        elif proto_name in number_style:
+            svg = block_factory.SVG()
+            svg.set_scale(scale)
+            svg.expand(20,0)
+            svg.set_gradiant(True)
+            svg.set_colors(colors)
+            self.spr = sprites.Sprite(self.blocks.sprites, 0, 0,
+                                      svg_str_to_pixbuf(svg.basic_box()))
+        
         for l in labels:
             self.spr.set_label(l, labels.index(l))
 

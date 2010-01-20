@@ -55,6 +55,9 @@ from tahoverhelp import *
 from gettext import gettext as _
 
 
+import sprites
+import block
+
 """
 TurtleArt Window class abstraction 
 """
@@ -86,7 +89,6 @@ class TurtleArtWindow():
             setup_selectors(self,s)
         setup_misc(self)
         self._select_category(self.selbuttons[0])
-
 
     def _setup_initial_values(self, win, path, lang, parent):
         self.window = win
@@ -146,6 +148,13 @@ class TurtleArtWindow():
         self.cartesian = False
         self.polar = False
         self.spr = None # "currently selected spr"
+
+        """
+        NEW SVG/BLOCK initializations
+        """
+        self.nsprites = sprites.Sprites(self.window)
+        self.blocks = block.Blocks(self.nsprites)
+
 
     """
     DEPRECATED
@@ -333,7 +342,8 @@ class TurtleArtWindow():
     XO-1 ?
     """
     def _is_XO_1(self):
-        return os.path.exists('/etc/olpc-release') or os.path.exists('/sys/power/olpc-pm')
+        return os.path.exists('/etc/olpc-release') or \
+               os.path.exists('/sys/power/olpc-pm')
 
     """
     find a stack to run (any stack without a hat)
@@ -524,16 +534,15 @@ class TurtleArtWindow():
 
         if event.get_state()&gtk.gdk.MOD1_MASK:
             alt_mask = True
+            alt_flag = 'T'
         else:
             alt_mask = False
+            alt_flag = 'F'
         results = self._key_press(alt_mask, keyname, keyunicode)
         if keyname is not None and self._sharing():
-            if alt_mask:
-                self.activity._send_event("k:"+'T'+":"+keyname+":"+str(keyunicode))
-            else:
-                self.activity._send_event("k:"+'F'+":"+keyname+":"+str(keyunicode))
+            self.activity._send_event("k:%s:%s:%s" % (alt_flag, keyname,
+                                                      str(keyunicode)))
         return keyname
-
 
     def _key_press(self, alt_mask, keyname, keyunicode, verbose=False):
         if keyname is None:
