@@ -87,7 +87,7 @@ class Sprite:
         self.y = y
         self.layer = 100
         self.labels = []
-        self.scale = [24]
+        self.scale = [12]
         self.rescale = [True]
         self.horiz_align = ["center"]
         self.vert_align = ["middle"]
@@ -246,3 +246,10 @@ class Sprite:
         r,g,b,a = ord(array[offset]),ord(array[offset+1]),ord(array[offset+2]),\
                   ord(array[offset+3])
         return (a<<24)+(b<<16)+(g<<8)+r
+
+    def set_selected(self, selected):
+        if selected:
+            return
+        else:
+            return
+

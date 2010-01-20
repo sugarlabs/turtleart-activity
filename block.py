@@ -54,9 +54,17 @@ class Blocks:
         else:
             self.list.insert(i, block)
 
-    def remove_from_list(self,block):
+    def remove_from_list(self, block):
         if block in self.list:
             self.list.remove(block)
+
+    #
+    # block and spr utilities
+    #
+    def spr_to_block(self, spr):
+        for b in self.list:
+            if spr = b.spr:
+                return b
 
 #
 # A class for the individual blocks
@@ -83,7 +91,7 @@ class Block:
             print "%s (%d %d)" % (name, x, y)
         else:
             print "%s %s (%d %d)" % (name, labels[0], x, y)
-        basic_style = ['forward', 'back', 'left', 'right']
+        basic_style = ['forward', 'back', 'left', 'right', 'seth']
         box_style = ['number']
         if name in basic_style:
             svg = block_factory.SVG()
@@ -104,7 +112,7 @@ class Block:
         elif name in box_style:
             svg = block_factory.SVG()
             svg.set_scale(scale)
-            svg.expand(20,0)
+            svg.expand(60,0)
             svg.set_gradiant(True)
             svg.set_colors(colors)
             self.spr = sprites.Sprite(self.blocks.sprites, x, y,

@@ -92,16 +92,16 @@ def blocks_to_code(lc,spr):
     else:
         if spr.proto.name=='number':
             try:
-                code.append(float(spr.label))
+                code.append(float(spr.labels[0]))
             except:
-                code.append(float(ord(spr.label[0])))
+                code.append(float(ord(spr.labels[0][0])))
         elif spr.proto.name=='string' or spr.proto.name=='title':
-            if type(spr.label) == float or type(spr.label) == int:
-                if int(spr.label) == spr.label:
-                    spr.label = int(spr.label)
-                code.append('#s'+str(spr.label))
+            if type(spr.labels[0]) == float or type(spr.labels[0]) == int:
+                if int(spr.labels[0]) == spr.labels[0]:
+                    spr.labels[0] = int(spr.labels[0])
+                code.append('#s'+str(spr.labels[0]))
             else:
-                code.append('#s'+spr.label)
+                code.append('#s'+spr.labels[0])
         elif spr.proto.name=='journal':
             if spr.ds_id != None:
                 code.append('#smedia_'+str(spr.ds_id))
