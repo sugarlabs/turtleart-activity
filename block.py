@@ -23,6 +23,7 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gobject
+from constants import *
 import block_factory
 import sprites
 
@@ -63,7 +64,7 @@ class Blocks:
     #
     def spr_to_block(self, spr):
         for b in self.list:
-            if spr = b.spr:
+            if spr == b.spr:
                 return b
 
 #
@@ -71,7 +72,7 @@ class Blocks:
 #
 class Block:
     def __init__(self, blocks, proto_name, x, y, labels=[], 
-                 colors=["#00A000","#00FF00"], scale=2.0):
+                 colors=["#00FF00","#00A000"], scale=2.0):
         self.blocks = blocks
         self.spr = None
         self._new_block_from_prototype(proto_name, labels, colors, scale, x, y)
@@ -91,9 +92,55 @@ class Block:
             print "%s (%d %d)" % (name, x, y)
         else:
             print "%s %s (%d %d)" % (name, labels[0], x, y)
-        basic_style = ['forward', 'back', 'left', 'right', 'seth']
-        box_style = ['number']
-        if name in basic_style:
+        if name in BASIC_STYLE:
+            svg = block_factory.SVG()
+            svg.set_scale(scale)
+            svg.expand(20,0)
+            svg.set_innie([False])
+            svg.set_outie(False)
+            svg.set_tab(True)
+            svg.set_slot(True)
+            svg.set_gradiant(True)
+            svg.set_colors(colors)
+            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
+                                      svg_str_to_pixbuf(svg.basic_block()))
+            print "created new basic block: %s" % (str(self.spr))
+            self.spr.set_layer(2000)
+            self.spr.draw()
+            self.spr.set_label(labels[0])
+        elif name in BASIC_STYLE_HEAD:
+            svg = block_factory.SVG()
+            svg.set_scale(scale)
+            svg.expand(20,0)
+            svg.set_innie([False])
+            svg.set_outie(False)
+            svg.set_tab(False)
+            svg.set_slot(True)
+            svg.set_gradiant(True)
+            svg.set_colors(colors)
+            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
+                                      svg_str_to_pixbuf(svg.basic_block()))
+            print "created new basic block: %s" % (str(self.spr))
+            self.spr.set_layer(2000)
+            self.spr.draw()
+            self.spr.set_label(labels[0])
+        elif name in BASIC_STYLE_TAIL:
+            svg = block_factory.SVG()
+            svg.set_scale(scale)
+            svg.expand(20,0)
+            svg.set_innie([False])
+            svg.set_outie(False)
+            svg.set_tab(True)
+            svg.set_slot(False)
+            svg.set_gradiant(True)
+            svg.set_colors(colors)
+            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
+                                      svg_str_to_pixbuf(svg.basic_block()))
+            print "created new basic block: %s" % (str(self.spr))
+            self.spr.set_layer(2000)
+            self.spr.draw()
+            self.spr.set_label(labels[0])
+        elif name in BASIC_STYLE_1ARG:
             svg = block_factory.SVG()
             svg.set_scale(scale)
             svg.expand(20,0)
@@ -109,7 +156,23 @@ class Block:
             self.spr.set_layer(2000)
             self.spr.draw()
             self.spr.set_label(labels[0])
-        elif name in box_style:
+        elif name in BASIC_STYLE_2ARG:
+            svg = block_factory.SVG()
+            svg.set_scale(scale)
+            svg.expand(20,0)
+            svg.set_innie([True,True])
+            svg.set_outie(False)
+            svg.set_tab(True)
+            svg.set_slot(True)
+            svg.set_gradiant(True)
+            svg.set_colors(colors)
+            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
+                                      svg_str_to_pixbuf(svg.basic_block()))
+            print "created new basic block: %s" % (str(self.spr))
+            self.spr.set_layer(2000)
+            self.spr.draw()
+            self.spr.set_label(labels[0])
+        elif name in BOX_STYLE:
             svg = block_factory.SVG()
             svg.set_scale(scale)
             svg.expand(60,0)
