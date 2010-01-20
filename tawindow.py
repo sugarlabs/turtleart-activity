@@ -40,9 +40,8 @@ import time
 
 from math import atan2, pi
 DEGTOR = 2*pi/360
-
+from constants import *
 from tasetup import *
-#from tasprites import *
 from talogo import *
 from taturtle import *
 from taproject import *
@@ -65,18 +64,6 @@ class TurtleArtWindow():
 
     # Import from Journal for these blocks 
     importblocks = ['audiooff', 'descriptionoff','journal']
-
-    # dead key dictionaries
-    dead_grave = {'A':192,'E':200,'I':204,'O':210,'U':217,'a':224,'e':232,'i':236,\
-                  'o':242,'u':249}
-    dead_acute = {'A':193,'E':201,'I':205,'O':211,'U':218,'a':225,'e':233,'i':237,\
-                  'o':243,'u':250}
-    dead_circumflex = {'A':194,'E':202,'I':206,'O':212,'U':219,'a':226,'e':234,\
-                       'i':238,'o':244,'u':251}
-    dead_tilde = {'A':195,'O':211,'N':209,'U':360,'a':227,'o':245,'n':241,'u':361}
-    dead_diaeresis = {'A':196,'E':203,'I':207,'O':211,'U':218,'a':228,'e':235,\
-                      'i':239,'o':245,'u':252}
-    dead_abovering = {'A':197,'a':229}
 
     # Time out for triggering help
     timeout_tag = [0]
@@ -645,8 +632,8 @@ class TurtleArtWindow():
             self.dead_key = keyname
             keyname = ''
             keyunicode = 0
-        if keyname == 'Tab':
-            keyunicode = 32 # substitute a space for a tab
+        if keyname in WHITE_SPACE:
+            keyunicode = 32
         oldnum = self.selected_block.label 
         selblock=self.selected_block.proto
         if keyname == 'BackSpace':
@@ -659,21 +646,11 @@ class TurtleArtWindow():
                 self.firstkey = False
             else:
                 self.firstkey = True
-        elif keyname is not '':
-            # Hack until I sort out input and unicode + dead keys
-            if self.dead_key == 'dead_grave':
-                keyunicode = self.dead_grave[keyname]
-            elif self.dead_key == 'dead_acute':
-                keyunicode = self.dead_acute[keyname]
-            elif self.dead_key == 'dead_circumflex':
-                keyunicode = self.dead_circumflex[keyname]
-            elif self.dead_key == 'dead_tilde':
-                keyunicode = self.dead_tilde[keyname]
-            elif self.dead_key == 'dead_diaeresis':
-                keyunicode = self.dead_diaeresis[keyname]
-            elif self.dead_key == 'dead_abovering':
-                keyunicode = self.dead_abovering[keyname]
-            self.dead_key = ""
+        else:
+            if self.dead_key is not '':
+                keyunicode =\
+                    DEAD_DICTS[DEAD_KEYS.index(self.dead_key[5:])][keyname]
+                self.dead_key = ""
             if self.firstkey:
                 newnum = selblock.check(unichr(keyunicode), \
                                         self.defdict[selblock.name])
