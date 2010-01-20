@@ -62,11 +62,11 @@ class Blocks:
 # A class for the individual blocks
 #
 class Block:
-    def __init__(self, blocks, prototype_style, labels=[], 
+    def __init__(self, blocks, proto_name, x, y, labels=[], 
                  colors=["#00A000","#00FF00"], scale=1.0):
         self.blocks = blocks
         self.spr = None
-        self._new_block_from_prototype(prototype_style, labels, colors, scale)
+        self._new_block_from_prototype(proto_name, labels, colors, scale, x, y)
         self.blocks.append_to_list(self)
         #
         # TODO:
@@ -78,10 +78,11 @@ class Block:
         # debug code
         # etc.
 
-    def _new_block_from_prototype(self, proto_name, labels, colors, scale):
+    def _new_block_from_prototype(self, name, labels, colors, scale, x, y):
+        print "%s %s (%d %d)" % (name, labels[0], x, y)
         basic_style = ['forward', 'back', 'left', 'right']
         box_style = ['number']
-        if proto_name in basic_style:
+        if name in basic_style:
             svg = block_factory.SVG()
             svg.set_scale(scale)
             svg.expand(20,0)
@@ -91,15 +92,19 @@ class Block:
             svg.set_slot(True)
             svg.set_gradiant(True)
             svg.set_colors(colors)
-            self.spr = sprites.Sprite(self.blocks.sprites, 0, 0,
+            print "creating new basic block"
+            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_block()))
-        elif proto_name in number_style:
+            self.spr.set_layer(2000)
+            self.spr.draw()
+            self.spr.set_label(labels[0])
+        elif name in box_style:
             svg = block_factory.SVG()
             svg.set_scale(scale)
             svg.expand(20,0)
             svg.set_gradiant(True)
             svg.set_colors(colors)
-            self.spr = sprites.Sprite(self.blocks.sprites, 0, 0,
+            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_box()))
         
         for l in labels:

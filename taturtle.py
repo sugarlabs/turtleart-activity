@@ -56,12 +56,12 @@ def tNew(tw,w,h):
     t.tw, t.width, t.height = tw, w, h
     t.canvas = Sprite(tw,0,0,gtk.gdk.Pixmap(tw.area,w,h,-1))
     t.canvas.type = 'canvas'
-    t.canvas.setlayer(600)
+    t.canvas.set_layer(600)
     t.shapelist = \
         [load_image(tw, tw.path, 'shapes','t'+str(i)) for i in range(36)]
     t.spr = Sprite(tw,100,100,t.shapelist[0])
     t.spr.type = 'turtle'
-    t.spr.setlayer(630)
+    t.spr.set_layer(630)
     t.gc = t.canvas.image.new_gc()
     t.shade = 0
     clearscreen(t)

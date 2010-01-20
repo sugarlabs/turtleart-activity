@@ -31,10 +31,14 @@ import pango
 # A class for the list of sprites and everything they share in common
 #
 class Sprites:
-    def __init__(self, canvas):
+    def __init__(self, canvas, area=None, gc=None):
         self.canvas = canvas
-        self.area = self.canvas.window
-        self.gc = self.area.new_gc()
+        if area == None:
+            self.area = self.canvas.window
+            self.gc = self.area.new_gc()
+        else:
+            self.area = area
+            self.gc = gc
         self.cm = self.gc.get_colormap()
         self.list = []
 

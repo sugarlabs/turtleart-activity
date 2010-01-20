@@ -59,7 +59,7 @@ shape_dict = {'journal':'texton', \
 def new_project(tw):
     stop_logo(tw)
     for b in blocks(tw): hide(b)
-    tw.turtle.canvas.setlayer(600)
+    tw.turtle.canvas.set_layer(600)
     clearscreen(tw.turtle)
     tw.save_file_name = None
 
@@ -181,7 +181,7 @@ def load_spr(tw,b):
             dsobject.destroy()
         except:
             print "couldn't open dsobject (" + str(spr.ds_id) + ")"
-    spr.setlayer(650)
+    spr.set_layer(650)
     return spr
 
 def load_turtle(tw,b):

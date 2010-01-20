@@ -152,7 +152,7 @@ class TurtleArtWindow():
         """
         NEW SVG/BLOCK initializations
         """
-        self.nsprites = sprites.Sprites(self.window)
+        self.nsprites = sprites.Sprites(self.window, self.area, self.gc)
         self.blocks = block.Blocks(self.nsprites)
 
 
@@ -166,7 +166,7 @@ class TurtleArtWindow():
     eraser_button: hide status block
     """
     def eraser_button(self):
-        self.status_spr.setlayer(400)
+        self.status_spr.set_layer(400)
         clear(self.lc)
         display_coordinates(self)
 
@@ -191,13 +191,13 @@ class TurtleArtWindow():
     """
     def hideshow_button(self):
         if self.hide is False: 
-            for b in self._blocks(): b.setlayer(100)
+            for b in self._blocks(): b.set_layer(100)
             self._hide_palette() 
             self.select_mask.hide()
             self.select_mask_string.hide()
             self.hide = True
         else:
-            for b in self._blocks(): b.setlayer(650)
+            for b in self._blocks(): b.set_layer(650)
             self.show_palette()
             self.hide = False
         inval(self.turtle.canvas)
@@ -234,7 +234,7 @@ class TurtleArtWindow():
         if self.selected_block != None:
             self._unselect()
         else:
-            self.status_spr.setlayer(400)
+            self.status_spr.set_layer(400)
         spr = findsprite(self,(x,y))
         self.x, self.y = x,y
         self.dx = 0
@@ -274,7 +274,7 @@ class TurtleArtWindow():
     show palette 
     """
     def show_palette(self):
-        for i in self.selbuttons: i.setlayer(800)
+        for i in self.selbuttons: i.set_layer(800)
         self._select_category(self.selbuttons[0])
         self.palette = True
 
@@ -588,7 +588,8 @@ class TurtleArtWindow():
                     self.run_button(0)
                 elif self.spr is not None:
                     if self.spr.type == 'turtle': # jog turtle with arrow keys
-                        if keyname == 'KP_Up' or keyname == 'j' or keyname == 'Up':
+                        if keyname == 'KP_Up' or keyname == 'j' \
+                                              or keyname == 'Up':
                             self._jog_turtle(0,10)
                         elif keyname == 'KP_Down' or keyname == 'k' or \
                              keyname == 'Down':
@@ -728,19 +729,19 @@ class TurtleArtWindow():
             for b in self.draggroup:
                 b.move((b.x+200, b.y))
         self._snap_to_dock()
-        for b in self.draggroup: b.setlayer(650)
+        for b in self.draggroup: b.set_layer(650)
         self.draggroup = None
         if self.block_operation=='click':
             if self.spr.proto.name=='number':
                 self.selected_block = spr
                 self.select_mask.move((spr.x-5,spr.y-5))
-                self.select_mask.setlayer(660)
+                self.select_mask.set_layer(660)
                 self.firstkey = True
             elif self.defdict.has_key(spr.proto.name):
                 self.selected_block = spr
                 if self.spr.proto.name=='string':
                     self.select_mask_string.move((spr.x-5,spr.y-5))
-                    self.select_mask_string.setlayer(660)
+                    self.select_mask_string.set_layer(660)
                     self.firstkey = True
                 elif self.spr.proto.name in self.importblocks:
                     self._import_from_journal(spr)
@@ -758,13 +759,13 @@ class TurtleArtWindow():
         if self.spr.proto.name=='number':
             self.selected_block = self.spr
             self.select_mask.move((self.spr.x-5,self.spr.y-5))
-            self.select_mask.setlayer(660)
+            self.select_mask.set_layer(660)
             self.firstkey = True
         elif self.defdict.has_key(self.spr.proto.name):
             self.selected_block = self.spr
             if self.spr.proto.name=='string':
                 self.select_mask_string.move((self.spr.x-5,self.spr.y-5))
-                self.select_mask_string.setlayer(660)
+                self.select_mask_string.set_layer(660)
                 self.firstkey = True
             elif self.spr.proto.name in self.importblocks:
                 self._import_from_journal(self.spr)
@@ -895,7 +896,10 @@ class TurtleArtWindow():
             newspr = Sprite(self,x-20,y-20,self.media_shapes['pythonloaded'])
         else:
             newspr = Sprite(self,x-20,y-20,proto.image)
-        newspr.setlayer(2000)
+        newblk = block.Block(self.blocks,proto.name,x-20,y-20,[proto.name])
+        newspr = newblk.spr
+
+        newspr.set_layer(2000)
         self.dragpos = 20,20
         newspr.type = 'block'
         newspr.proto = proto
@@ -911,7 +915,7 @@ class TurtleArtWindow():
             argspr.type = 'block'
             argspr.proto = argproto
             argspr.label = str(proto.defaults[i])
-            argspr.setlayer(2000)
+            argspr.set_layer(2000)
             argspr.connections = [newspr,None]
             newspr.connections[i+1] = argspr
         self.draggroup = findgroup(newspr)
@@ -925,7 +929,7 @@ class TurtleArtWindow():
     def _block_pressed(self, mask, x, y, spr):
         if spr is not None:
             self.draggroup = findgroup(spr)
-            for b in self.draggroup: b.setlayer(2000)
+            for b in self.draggroup: b.set_layer(2000)
             if spr.connections[0] != None and spr.proto.name == 'lock':
                 b = self._find_top_block(spr)
                 self.dragpos = x-b.x,y-b.y

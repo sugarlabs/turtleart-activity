@@ -31,6 +31,9 @@ from gettext import gettext as _
 
 from tasprites import *
 
+import block
+import sprites
+
 def numcheck(new, old):
     if new is '': return "0"
     if new in ['-', '.', '-.']: return new
@@ -264,7 +267,7 @@ def setup_selectors(tw,s):
 def setup_misc(tw):
     tw.category_spr = Sprite(tw,0, 0, tw.selbuttons[0].group)
     tw.category_spr.type = 'category'
-    tw.category_spr.setlayer(660)
+    tw.category_spr.set_layer(660)
     # masks get positioned on top of other blocks
     tw.select_mask = Sprite(tw,100,100,\
         load_image(tw, tw.path, '', 'masknumber'))
@@ -287,12 +290,12 @@ def setup_misc(tw):
     tw.cartesian_coordinates_spr = Sprite(tw, tw.width/2-600, tw.height/2-450, \
                                       load_image(tw, tw.path, '', "Cartesian"))
     tw.cartesian_coordinates_spr.type = 'coordinates'
-    tw.cartesian_coordinates_spr.setlayer(610)
+    tw.cartesian_coordinates_spr.set_layer(610)
     tw.cartesian_coordinates_spr.hide()
     tw.polar_coordinates_spr = Sprite(tw, tw.width/2-600, tw.height/2-450, \
                                       load_image(tw, tw.path, '', "polar"))
     tw.polar_coordinates_spr.type = 'coordinates'
-    tw.polar_coordinates_spr.setlayer(610)
+    tw.polar_coordinates_spr.set_layer(610)
     tw.polar_coordinates_spr.hide()
     # status shapes get positioned at the bottom of the screen
     tw.status_shapes = {}
@@ -310,7 +313,7 @@ def setup_misc(tw):
     tw.status_spr = Sprite(tw,0,(tw.height-175), \
             tw.status_shapes['status'],True)
     tw.status_spr.type = 'status'
-    tw.status_spr.setlayer(900)
+    tw.status_spr.set_layer(900)
     tw.status_spr.hide()
     # everything should be loaded at this point
     # print tw.status_shapes
@@ -321,7 +324,7 @@ def setup_selector(tw,name,y,blockdescriptions):
     offshape = load_image(tw, tw.path, 'palette', name+'off')
     onshape = load_image(tw, tw.path, 'palette', name+'on')
     spr = Sprite(tw,143,y,offshape)
-    spr.setlayer(800)
+    spr.set_layer(800)
     spr.offshape = offshape
     spr.onshape = onshape
     # print 'setting up selector ' + name
