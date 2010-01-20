@@ -23,8 +23,9 @@ import gtk
 from math import sin,cos,pi
 class taTurtle: pass
 
-from tasprites import *
+# from tasprites import *
 from tasetup import load_image
+import sprites
 
 colors = {}
 DEGTOR = 2*pi/360
@@ -54,12 +55,14 @@ color_table = (
 def tNew(tw,w,h):
     t = taTurtle()
     t.tw, t.width, t.height = tw, w, h
-    t.canvas = Sprite(tw,0,0,gtk.gdk.Pixmap(tw.area,w,h,-1))
+    # t.canvas = Sprite(tw,0,0,gtk.gdk.Pixmap(tw.area,w,h,-1))
+    t.canvas = sprites.Sprite(tw.sprites, 0, 0, gtk.gdk.Pixmap(tw.area,w,h,-1))
     t.canvas.type = 'canvas'
     t.canvas.set_layer(600)
     t.shapelist = \
         [load_image(tw, tw.path, 'shapes','t'+str(i)) for i in range(36)]
-    t.spr = Sprite(tw,100,100,t.shapelist[0])
+    # t.spr = Sprite(tw,100,100,t.shapelist[0])
+    t.spr = sprites.Sprite(tw.sprites, 100, 100, t.shapelist[0])
     t.spr.type = 'turtle'
     t.spr.set_layer(630)
     t.gc = t.canvas.image.new_gc()
@@ -292,7 +295,7 @@ def draw_line(t,x1,y1,x2,y2):
            h+t.pensize*t.tw.coord_scale+6)
 
 def turn_turtle(t):
-    t.spr.setshape(t.shapelist[(int(t.heading+5)%360)/10])
+    t.spr.set_shape(t.shapelist[(int(t.heading+5)%360)/10])
 
 def move_turtle(t):
     x,y = t.width/2+int(t.xcor), t.height/2-int(t.ycor)

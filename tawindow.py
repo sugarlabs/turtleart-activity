@@ -42,7 +42,7 @@ from math import atan2, pi
 DEGTOR = 2*pi/360
 
 from tasetup import *
-from tasprites import *
+#from tasprites import *
 from talogo import *
 from taturtle import *
 from taproject import *
@@ -130,7 +130,6 @@ class TurtleArtWindow():
         self.fgcolor = self.cm.alloc_color('red')
         self.textcolor = self.cm.alloc_color('blue')
         self.textsize = 32
-        self.sprites = []
         self.selected_block = None
         self.draggroup = None
         self.myblock = None
@@ -140,6 +139,13 @@ class TurtleArtWindow():
         self.hide = False
         self.palette = True
         self.coord_scale = 1
+        """
+        NEW SVG/BLOCK initializations
+        """
+        self.sprites = sprites.Sprites(self.window, self.area, self.gc)
+        self.blocks = block.Blocks(self.sprites)
+        """
+        """
         self.turtle = tNew(self,self.width,self.height)
         self.lc = lcNew(self)
         self.buddies = []
@@ -149,11 +155,6 @@ class TurtleArtWindow():
         self.polar = False
         self.spr = None # "currently selected spr"
 
-        """
-        NEW SVG/BLOCK initializations
-        """
-        self.nsprites = sprites.Sprites(self.window, self.area, self.gc)
-        self.blocks = block.Blocks(self.nsprites)
 
 
     """
@@ -180,7 +181,7 @@ class TurtleArtWindow():
     change the icon for user-defined blocks after Python code is loaded
     """
     def set_userdefined(self):
-        list = self.sprites[:]
+        list = self.sprites.list[:]
         for spr in list:
             if hasattr(spr,'proto') and spr.proto.name == 'nop':
                 setimage(spr,self.media_shapes['pythonloaded'])
@@ -235,7 +236,7 @@ class TurtleArtWindow():
             self._unselect()
         else:
             self.status_spr.set_layer(400)
-        spr = findsprite(self,(x,y))
+        spr = self.sprites.find_sprite((x,y))
         self.x, self.y = x,y
         self.dx = 0
         self.dy = 0
@@ -311,17 +312,17 @@ class TurtleArtWindow():
     """
     def _select_category(self, spr):
         if hasattr(self, 'current_category'):
-            self.current_category.setshape(self.current_category.offshape)
-        spr.setshape(spr.onshape)
+            self.current_category.set_shape(self.current_category.offshape)
+        spr.set_shape(spr.onshape)
         self.current_category = spr
-        self.category_spr.setshape(spr.group)
+        self.category_spr.set_shape(spr.group)
 
     """
     hide palette 
     """
     def _hide_palette(self):
         for i in self.selbuttons: i.hide()
-        self.category_spr.setshape(self.hidden_palette_icon)
+        self.category_spr.set_shape(self.hidden_palette_icon)
         self.palette = False
 
     """
@@ -448,7 +449,7 @@ class TurtleArtWindow():
     """
     def _get_proto_from_category(self, x, y):
         dx, dy = x-self.category_spr.x, y-self.category_spr.y,
-        pixel = self.current_category.getpixel(self.current_category.mask,dx,dy)
+        pixel = self.current_category.get_pixel(self.current_category.mask,dx,dy)
         index = ((pixel%256)>>3)-1
         if index==0:
             return 'hide'
@@ -461,7 +462,7 @@ class TurtleArtWindow():
     lets help our our user by displaying a little help
     """
     def _show_popup(self, x, y):
-        spr = findsprite(self, (x,y))
+        spr = self.sprites.find_sprite((x,y))
         if spr and spr.type == 'category':
             proto = self._get_proto_from_category(x, y)
             if proto and proto!='hide':
@@ -777,7 +778,7 @@ class TurtleArtWindow():
     Repaint
     """
     def _expose_cb(self, win, event):
-        redrawsprites(self)
+        self.sprites.redraw_sprites()
         return True
 
     """
@@ -866,7 +867,7 @@ class TurtleArtWindow():
     filter out blocks
     """
     def _blocks(self):
-        return [spr for spr in self.sprites if spr.type == 'block']
+        return [spr for spr in self.sprites.list if spr.type == 'block']
 
     """
     block selector pressed
@@ -893,11 +894,13 @@ class TurtleArtWindow():
 
         # load alternative image of nop block if python code is loaded
         if proto.name == 'nop' and self.nop == 'pythonloaded':
-            newspr = Sprite(self,x-20,y-20,self.media_shapes['pythonloaded'])
+            pass
+            # TODO: handle python-loaded case
+            # newspr = Sprite(self,x-20,y-20,self.media_shapes['pythonloaded'])
         else:
-            newspr = Sprite(self,x-20,y-20,proto.image)
-        newblk = block.Block(self.blocks,proto.name,x-20,y-20,[proto.name])
-        newspr = newblk.spr
+            # newspr = Sprite(self,x-20,y-20,proto.image)
+            newblk = block.Block(self.blocks,proto.name,x-20,y-20,[proto.name])
+            newspr = newblk.spr
 
         newspr.set_layer(2000)
         self.dragpos = 20,20
@@ -911,10 +914,12 @@ class TurtleArtWindow():
             argproto = self.protodict[self.valdict[dock[0]]]
             argdock = argproto.docks[0]
             nx,ny = newspr.x+dock[2]-argdock[2],newspr.y+dock[3]-argdock[3]
-            argspr = Sprite(self,nx,ny,argproto.image)
+            # argspr = Sprite(self,nx,ny,argproto.image)
+            argblk = block.Block(self.blocks,argproto.name,nx,ny)
+            argspr = argblk.spr
             argspr.type = 'block'
             argspr.proto = argproto
-            argspr.label = str(proto.defaults[i])
+            argspr.set_label(str(proto.defaults[i]))
             argspr.set_layer(2000)
             argspr.connections = [newspr,None]
             newspr.connections[i+1] = argspr

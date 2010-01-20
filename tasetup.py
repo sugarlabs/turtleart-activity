@@ -29,7 +29,7 @@ import time
 
 from gettext import gettext as _
 
-from tasprites import *
+# from tasprites import *
 
 import block
 import sprites
@@ -265,15 +265,18 @@ def setup_selectors(tw,s):
     tw.selbuttons.append(cat)
 
 def setup_misc(tw):
-    tw.category_spr = Sprite(tw,0, 0, tw.selbuttons[0].group)
+    # tw.category_spr = Sprite(tw, 0, 0, tw.selbuttons[0].group)
+    tw.category_spr = sprites.Sprite(tw.sprites, 0, 0, tw.selbuttons[0].group)
     tw.category_spr.type = 'category'
     tw.category_spr.set_layer(660)
     # masks get positioned on top of other blocks
-    tw.select_mask = Sprite(tw,100,100,\
+    # tw.select_mask = Sprite(tw,100,100,\
+    tw.select_mask = sprites.Sprite(tw.sprites, 100, 100,\
         load_image(tw, tw.path, '', 'masknumber'))
     tw.select_mask.type = 'selectmask'
-    tw.select_mask_string = Sprite(tw,100,100,load_image(tw, tw.path, '', \
-        'maskstring'))
+    # tw.select_mask_string = Sprite(tw,100,100,\
+    tw.select_mask_string = sprites.Sprite(tw.sprites, 100, 100,\
+                                load_image(tw, tw.path, '', 'maskstring'))
     tw.select_mask_string.type = 'selectmask'
     # used to hide the palette
     tw.hidden_palette_icon = load_image(tw, tw.path, '','blocks-')
@@ -287,12 +290,14 @@ def setup_misc(tw):
     tw.media_shapes['pythonloaded'] = \
         load_image(tw, tw.path_lang, 'sensors', 'nop-loaded')
     # coordinare systems
-    tw.cartesian_coordinates_spr = Sprite(tw, tw.width/2-600, tw.height/2-450, \
+    # tw.cartesian_coordinates_spr = Sprite(tw, tw.width/2-600, tw.height/2-450, \
+    tw.cartesian_coordinates_spr = sprites.Sprite(tw.sprites, tw.width/2-600, tw.height/2-450, \
                                       load_image(tw, tw.path, '', "Cartesian"))
     tw.cartesian_coordinates_spr.type = 'coordinates'
     tw.cartesian_coordinates_spr.set_layer(610)
     tw.cartesian_coordinates_spr.hide()
-    tw.polar_coordinates_spr = Sprite(tw, tw.width/2-600, tw.height/2-450, \
+    # tw.polar_coordinates_spr = Sprite(tw, tw.width/2-600, tw.height/2-450, \
+    tw.polar_coordinates_spr = sprites.Sprite(tw.sprites, tw.width/2-600, tw.height/2-450, \
                                       load_image(tw, tw.path, '', "polar"))
     tw.polar_coordinates_spr.type = 'coordinates'
     tw.polar_coordinates_spr.set_layer(610)
@@ -310,8 +315,10 @@ def setup_misc(tw):
     tw.status_shapes['overflowerror'] = \
         load_image(tw, tw.path, '', 'overflowerror')
     tw.status_shapes['syntaxerror'] = load_image(tw, tw.path, '', 'syntaxerror')
-    tw.status_spr = Sprite(tw,0,(tw.height-175), \
-            tw.status_shapes['status'],True)
+    # tw.status_spr = Sprite(tw,0,(tw.height-175), \
+    tw.status_spr = sprites.Sprite(tw.sprites, 0, (tw.height-175), \
+            tw.status_shapes['status'])
+    tw.status_spr.set_label_attributes(1.0, True, "left")
     tw.status_spr.type = 'status'
     tw.status_spr.set_layer(900)
     tw.status_spr.hide()
@@ -323,7 +330,8 @@ def setup_selector(tw,name,y,blockdescriptions):
     # selector tabs
     offshape = load_image(tw, tw.path, 'palette', name+'off')
     onshape = load_image(tw, tw.path, 'palette', name+'on')
-    spr = Sprite(tw,143,y,offshape)
+    # spr = Sprite(tw,143,y,offshape)
+    spr = sprites.Sprite(tw.sprites, 143, y, offshape)
     spr.set_layer(800)
     spr.offshape = offshape
     spr.onshape = onshape
