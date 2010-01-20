@@ -23,14 +23,16 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gobject
-import pango
+import block_factory
+import sprites
 
 #
 # A class for the list of blocks and everything they share in common
 #
 class Blocks:
-    def __init__(self):
+    def __init__(self, sprites):
         self.list = []
+        self.sprites = sprites
 
     def get_block(self, i):
         if i < 0 or i > len(self.list)-1:
@@ -41,31 +43,64 @@ class Blocks:
     def length_of_list(self):
         return(len(self.list))
 
-    def append_to_list(self,spr):
-        self.list.append(spr)
+    def append_to_list(self,block):
+        self.list.append(block)
 
-    def insert_in_list(self,spr,i):
+    def insert_in_list(self,block,i):
         if i < 0:
-            self.list.insert(0, spr)
+            self.list.insert(0, block)
         elif i > len(self.list)-1:
-            self.list.append(spr)
+            self.list.append(block)
         else:
-            self.list.insert(i, spr)
+            self.list.insert(i, block)
 
-    def remove_from_list(self,spr):
-        if spr in self.list:
-            self.list.remove(spr)
+    def remove_from_list(self,block):
+        if block in self.list:
+            self.list.remove(block)
 
 #
 # A class for the individual blocks
 #
 class Block:
-    def __init__(self, blocks, prototype_style, color=["#00A000","#00FF00"], scale=1.0):
+    def __init__(self, blocks, prototype_style, labels=[], 
+                 colors=["#00A000","#00FF00"], scale=1.0):
         self.blocks = blocks
-        self._new_block_from_prototype(prototype_style, color, scale)
+        self.spr = None
+        self._new_block_from_prototype(prototype_style, labels, colors, scale)
         self.blocks.append_to_list(self)
+        #
+        # TODO:
+        # save arguments
+        # dock and connection info
+        # highlight image
+        # Logo code
+        # HTML code
+        # debug code
+        # etc.
 
-    def _new_block_from_prototype(self, style, color, scale):
-        pass
+    def _new_block_from_prototype(self, prototype_style, labels, colors, scale):
+        if prototype_style == 'forward':
+            svg = block_factory.SVG()
+            svg.set_scale(scale)
+            svg.expand(20,0)
+            svg.set_innie([True])
+            svg.set_outie(False)
+            svg.set_tab(True)
+            svg.set_slot(True)
+            svg.set_gradiant(True)
+            svg.set_colors(colors)
+        self.spr = sprites.Sprite(self.blocks.sprites, 0, 0,
+                          svg_str_to_pixbuf(svg.basic_block()))
+        for l in labels:
+            self.spr.set_label(l, labels.index(l))
 
+#
+# Load pixbuf from SVG string
+#
+def svg_str_to_pixbuf(svg_string):
+    pl = gtk.gdk.PixbufLoader('svg')
+    pl.write(svg_string)
+    pl.close()
+    pixbuf = pl.get_pixbuf()
+    return pixbuf
 

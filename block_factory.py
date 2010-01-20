@@ -42,9 +42,10 @@ class SVG:
         self._innie_y1 = 3
         self._innie_x2 = 4
         self._innie_y2 = 4
-        self._innie_spacer = 0
+        self._innie_spacer = 9
         self._slot = True
         self._tab = True
+        self._bool = False
         self._slot_x = 12
         self._slot_y = 4
         self._porch = False
@@ -88,19 +89,112 @@ class SVG:
         svg += self._footer()
         return self._header() + svg
 
+    def basic_flow(self):
+        (x, y) = self._calculate_x_y()
+        svg = self._new_path(x, y)
+        svg += self._rarc_to(1, -1)
+        svg += self._do_slot()
+        svg += self._rline_to(self._expand_x, 0)
+        xx = self._x
+        svg += self._rarc_to(1, 1)
+        for i in range(len(self._innie)):
+            if self._innie[i] is True:
+                svg += self._do_innie()
+                svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
+        if self._bool is True:
+            svg += self._rline_to(0,self._radius/2.0)
+            svg += self._do_boolean()
+            svg += self._rline_to(0,self._radius/2.0)
+        svg += self._rline_to(self._radius+self._slot_x, 0)
+        svg += self._rarc_to(1,1)
+        svg += self._rline_to(-self._radius,0)
+        svg += self._do_tab()
+        svg += self._rline_to(-self._radius, 0)
+        svg += self._rline_to(0, self._expand_y)
+        svg += self._rarc_to(-1, 1)
+        svg += self._line_to(xx, self._y)
+        svg += self._rline_to(-self._expand_x, 0)
+        svg += self._do_tab()
+        svg += self._rarc_to(-1, -1)
+        svg += self._rline_to(0, -self._expand_y)
+        if True in self._innie:
+            svg += self._line_to(x,
+                                 self._radius+self._innie_y2+self._stroke_width)
+            svg += self._do_outie()
+        svg += self._close_path()
+        self._calculate_w_h()
+        svg += self._style()
+        svg += self._footer()
+        return self._header() + svg
+
     def basic_box(self):
         self.set_outie(True)
-        svg = self._new_path(self._stroke_width/2.0+self._innie_x1+\
-                             self._innie_x2, self._stroke_width/2.0)
+        x = self._stroke_width/2.0+self._innie_x1+self._innie_x2
+        svg = self._new_path(x, self._stroke_width/2.0)
         svg += self._rline_to(self._expand_x, 0)
-        svg += self._rline_to(0, 2*self._innie_y2+self._expand_y)
+        svg += self._rline_to(0, 2*self._radius+self._innie_y2+self._expand_y)
         svg += self._rline_to(-self._expand_x, 0)
-        svg += self._rline_to(0, -self._expand_y)
+        svg += self._line_to(x, self._radius+self._innie_y2+\
+                                self._stroke_width/2.0)
         svg += self._do_outie()
         svg += self._close_path()
         self._calculate_w_h()
         svg += self._style()
         svg += self._footer()
+        return self._header() + svg
+
+    def boolean_and_or(self):
+        svg = self._start_boolean(self._stroke_width/2.0,
+                                  self._radius*5.5+self._stroke_width/2.0+\
+                                  self._innie_y2+self._innie_spacer)
+        svg += self._rline_to(0,-self._radius*3.5-self._innie_y2-\
+                             self._innie_spacer-self._stroke_width)
+        svg += self._rarc_to(1, -1)
+        svg += self._rline_to(self._radius/2.0+self._expand_x, 0)
+        svg += self._rline_to(0,self._radius/2.0)
+        svg += self._do_boolean()
+        svg += self._rline_to(0,self._radius*1.5+self._innie_y2+\
+                                self._innie_spacer)
+        svg += self._do_boolean()
+        svg += self._rline_to(0,self._radius/2.0)
+        svg += self._end_boolean()
+        return self._header() + svg
+
+    def boolean_not(self):
+        svg = self._start_boolean(self._stroke_width/2.0,
+                                  self._radius*2.0+self._stroke_width/2.0)
+        svg += self._rline_to(0,-self._stroke_width)
+        svg += self._rarc_to(1, -1)
+        svg += self._rline_to(self._radius/2.0+self._expand_x, 0)
+        svg += self._rline_to(0,self._radius/2.0)
+        svg += self._do_boolean()
+        svg += self._rline_to(0,self._radius/2.0)
+        svg += self._end_boolean()
+        return self._header() + svg
+
+    def boolean_compare(self):
+        yoffset = self._radius*2+2*self._innie_y2+\
+                  self._innie_spacer+self._stroke_width/2.0
+        if self._porch is True:
+            yoffset += self._porch_y
+        svg = self._start_boolean(self._stroke_width/2.0, yoffset)
+        yoffset = -2*self._innie_y2-self._innie_spacer-self._stroke_width
+        if self._porch is True:
+            yoffset -= self._porch_y
+        svg += self._rline_to(0, yoffset)
+        svg += self._rarc_to(1, -1)
+        svg += self._rline_to(self._radius/2.0+self._expand_x, 0)
+        svg += self._rline_to(0,self._radius)
+        xx = self._x
+        svg += self._do_innie()
+        if self._porch is True:
+           svg += self._do_porch()
+        else:
+           svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
+        svg += self._do_innie()
+        svg += self._rline_to(0, self._radius)
+        svg += self._line_to(xx, self._y)
+        svg += self._end_boolean()
         return self._header() + svg
 
     #
@@ -139,6 +233,9 @@ class SVG:
 
     def set_porch(self, flag=False):
         self._porch = flag
+
+    def set_boolean(self, flag=False):
+        self._bool = flag
 
     #
     # Exotic methods
@@ -196,9 +293,9 @@ class SVG:
         "    <linearGradient\n       xlink:href=\"#linearGradient1234\"\n",
         "       id=\"linearGradient5678\"\n",
         "       x1=\"0\"\n",
-        "       y1=\"", self._max_y-self._min_y, "\"\n",
-        "       x2=\"", self._max_x-self._min_x, "\"\n",
-        "       y2=\"", self._max_y-self._min_y, "\"\n",
+        "       y1=\"", self._height/2.0, "\"\n",
+        "       x2=\"", self._width, "\"\n",
+        "       y2=\"", self._height/2.0, "\"\n",
         "       gradientUnits=\"userSpaceOnUse\" />\n  </defs>\n")
         else:
             return ""
@@ -247,23 +344,23 @@ class SVG:
         else:
             return self._line_to(self._x+dx, self._y+dy)
 
-    def _arc_to(self, x, y):
+    def _arc_to(self, x, y, a=90, l=0, s=1):
         if self._radius == 0:
             return self._line_to(x, y)
         else:
             self._x = x
             self._y = y
             self._check_min_max()
-            return "A %.1f %.1f 90 0 1 %.1f %.1f " % (
-                self._radius, self._radius, x, y)
+            return "A %.1f %.1f %.1f %d %d %.1f %.1f " % (
+                self._radius, self._radius, a, l, s, x, y)
 
-    def _rarc_to(self, sign_x, sign_y):
+    def _rarc_to(self, sign_x, sign_y, a=90, l=0, s=1):
         if self._radius == 0:
             return ""
         else:
             x = self._x + sign_x*self._radius
             y = self._y + sign_y*self._radius
-            return self._arc_to(x, y)
+            return self._arc_to(x, y, a, l, s)
 
     def _new_path(self, x, y):
         self._min_x = x
@@ -328,6 +425,28 @@ class SVG:
             self._rline_to(self._porch_x-self._radius, 0),
             self._rarc_to(1, 1))
 
+    def _start_boolean(self, xoffset, yoffset):
+        svg = self._new_path(xoffset, yoffset)
+        self._radius -= self._stroke_width
+        svg += self._rarc_to(1, -1)
+        self._radius += self._stroke_width
+        return svg + self._rline_to(self._stroke_width, 0)
+
+    def _do_boolean(self):
+        return self._rarc_to(-1, 1, 90, 0, 0) + self._rarc_to(1, 1, 90, 0, 0)
+
+    def _end_boolean(self):
+        svg = self._rline_to(-self._radius*1.5,0)
+        svg += self._rline_to(0, -self._stroke_width)
+        svg += self._rline_to(-self._stroke_width, 0)
+        self._radius -= self._stroke_width
+        svg += self._rarc_to(-1, -1)
+        self._radius += self._stroke_width
+        svg += self._close_path()
+        self._calculate_w_h()
+        svg += self._style()
+        return svg + self._footer()
+
     def _calculate_w_h(self):
         self._width = (self._max_x-self._min_x+self._stroke_width)*\
                       self._scale
@@ -352,22 +471,64 @@ def close_file(f):
     f.close()
 
 def generator(datapath):
-    svg = SVG()
-    f = open_file(datapath, "blob-test.svg")
-    svg.set_scale(1.5)
-    svg.expand(20,0)
-    svg.set_innie([True])
-    svg.set_gradiant(True)
-    svg_str = svg.basic_block()
+    svg0 = SVG()
+    f = open_file(datapath, "flow-test.svg")
+    svg0.set_scale(1)
+    svg0.expand(20,0)
+    # svg0.set_innie([True])
+    svg0.set_boolean(True)
+    svg0.set_tab(True)
+    svg0.set_gradiant(True)
+    svg_str = svg0.basic_flow()
     f.write(svg_str)
     close_file(f)
 
+    svg1 = SVG()
+    f = open_file(datapath, "blob-test.svg")
+    svg1.set_scale(1)
+    svg1.expand(20,0)
+    svg1.set_innie([True,True])
+    svg1.set_tab(False)
+    svg1.set_gradiant(True)
+    svg_str = svg1.basic_block()
+    f.write(svg_str)
+    close_file(f)
+
+    svg2 = SVG()
     f = open_file(datapath, "box-test.svg")
-    svg.set_scale(1.5)
-    svg.expand(20,10)
-    svg.set_colors(["#FFA000","#A08000"])
-    svg.set_gradiant(True)
-    svg_str = svg.basic_box()
+    svg2.set_scale(1)
+    svg2.expand(40,0)
+    svg2.set_colors(["#FFA000","#A08000"])
+    svg2.set_gradiant(True)
+    svg_str = svg2.basic_box()
+    f.write(svg_str)
+    close_file(f)
+
+    svg3 = SVG()
+    f = open_file(datapath, "compare-text.svg")
+    svg3.set_scale(1)
+    svg3.set_colors(["#0000FF","#0000A0"])
+    svg3.set_gradiant(True)
+    # svg3.set_porch(True)
+    svg_str = svg3.boolean_compare()
+    f.write(svg_str)
+    close_file(f)
+
+    svg4 = SVG()
+    f = open_file(datapath, "and-or-test.svg")
+    svg4.set_scale(1)
+    svg4.set_colors(["#00FFFF","#00A0A0"])
+    svg4.set_gradiant(True)
+    svg_str = svg4.boolean_and_or()
+    f.write(svg_str)
+    close_file(f)
+
+    svg5 = SVG()
+    f = open_file(datapath, "nor-test.svg")
+    svg5.set_scale(1)
+    svg5.set_colors(["#FF00FF","#A000A0"])
+    svg5.set_gradiant(True)
+    svg_str = svg5.boolean_not()
     f.write(svg_str)
     close_file(f)
 
