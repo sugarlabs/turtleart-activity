@@ -188,7 +188,7 @@ class TurtleArtWindow():
             for b in self._blocks(): b.set_layer(650)
             self.show_palette()
             self.hide = False
-        inval(self.turtle.canvas)
+        self.turtle.canvas.inval()
 
 
     """
@@ -273,19 +273,19 @@ class TurtleArtWindow():
     unselect
     """
     def _unselect(self):
-        if self.selected_block.label in ['-', '.', '-.']:
-            setlabel(self.selected_block,'0')
+        if self.selected_block.labels[0] in ['-', '.', '-.']:
+            self.selected_block.set_label('0')
 
         # put an upper and lower bound on numbers to prevent OverflowError
         if self.selected_block.proto.name == 'number' and \
-           self.selected_block.label is not None:
+           self.selected_block.labels[0] is not None:
             try:
-                i = float(self.selected_block.label)
+                i = float(self.selected_block.labels[0])
                 if i > 1000000:
-                    setlabel(self.selected_block,'1')
+                    self.selected_block.set_label('1')
                     showlabel(self.lc,"#overflowerror")
                 elif i < -1000000:
-                    setlabel(self.selected_block,'-1')
+                    self.selected_block.set_label('-1')
                     showlabel(self.lc,"#overflowerror")
             except ValueError:
                 pass
@@ -551,14 +551,14 @@ class TurtleArtWindow():
            self.selected_block.proto.name == 'number':
             if keyname in ['minus', 'period']: 
                 keyname = {'minus': '-', 'period': '.'}[keyname]
-            oldnum = self.selected_block.label 
+            oldnum = self.selected_block.labels[0] 
             selblock=self.selected_block.proto
             if keyname == 'BackSpace':
                 if len(oldnum) > 1:
                     newnum = oldnum[:len(oldnum)-1]
                 else:
                     newnum = ''
-                setlabel(self.selected_block, selblock.check(newnum,oldnum))
+                self.selected_block.set_label(selblock.check(newnum,oldnum))
                 if len(newnum) > 0:
                     self.firstkey = False
                 else:
@@ -634,14 +634,14 @@ class TurtleArtWindow():
             keyunicode = 0
         if keyname in WHITE_SPACE:
             keyunicode = 32
-        oldnum = self.selected_block.label 
+        oldnum = self.selected_block.labels[0]
         selblock=self.selected_block.proto
         if keyname == 'BackSpace':
             if len(oldnum) > 1:
                 newnum = oldnum[:len(oldnum)-1]
             else:
                 newnum = ''
-            setlabel(self.selected_block, selblock.check(newnum,oldnum))
+            self.selected_block.set_label(selblock.check(newnum,oldnum))
             if len(newnum) > 0:
                 self.firstkey = False
             else:
@@ -661,7 +661,7 @@ class TurtleArtWindow():
                     newnum = oldnum
             else:
                 newnum = ""
-            setlabel(self.selected_block, selblock.check(newnum,oldnum))
+            self.selected_block.set_label(selblock.check(newnum,oldnum))
             self.firstkey = False
         return True
 
@@ -884,7 +884,7 @@ class TurtleArtWindow():
         newspr.type = 'block'
         newspr.proto = proto
         if self.defdict.has_key(newspr.proto.name):
-            newspr.label=self.defdict[newspr.proto.name]
+            newspr.labels[0]=self.defdict[newspr.proto.name]
         newspr.connections = [None]*len(proto.docks)
         for i in range(len(proto.defaults)):
             dock = proto.docks[i+1]

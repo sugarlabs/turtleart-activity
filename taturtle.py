@@ -26,6 +26,7 @@ class taTurtle: pass
 # from tasprites import *
 from tasetup import load_image
 import sprites
+import pango
 
 colors = {}
 DEGTOR = 2*pi/360

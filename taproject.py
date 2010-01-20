@@ -42,7 +42,7 @@ except (ImportError, AttributeError):
 from StringIO import StringIO
 import os.path
 
-from tasprites import *
+# from tasprites import *
 from taturtle import *
 from talogo import stop_logo
 from talogo import get_pixbuf_from_journal
@@ -50,6 +50,7 @@ try:
     from sugar.datastore import datastore
 except:
     pass
+import sprites
 
 nolabel = ['audiooff', 'descriptionoff', 'journal']
 shape_dict = {'journal':'texton', \
@@ -58,7 +59,7 @@ shape_dict = {'journal':'texton', \
 
 def new_project(tw):
     stop_logo(tw)
-    for b in blocks(tw): hide(b)
+    for b in blocks(tw): b.hide()
     tw.turtle.canvas.set_layer(600)
     clearscreen(tw.turtle)
     tw.save_file_name = None
@@ -283,7 +284,7 @@ def serialize_stack(tw):
 def assemble_stack_to_clone(tw):
     if tw.spr is None or tw.spr.type is not "block":
         (x,y) = tw.window.get_pointer()
-        spr = findsprite(tw,(x,y))
+        spr = tw.sprites.find_sprite((x,y))
         if spr is not None:
             print "found block of type " + spr.type
     else:
@@ -334,7 +335,7 @@ def do_dialog(tw,dialog):
     dialog.destroy()
     return result
 
-def blocks(tw): return [spr for spr in tw.sprites if spr.type == 'block']
+def blocks(tw): return [spr for spr in tw.sprites.list if spr.type == 'block']
 
 def findgroup(b):
     group=[b]

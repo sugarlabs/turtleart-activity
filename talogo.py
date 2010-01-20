@@ -272,8 +272,8 @@ def debug_trace(lc, token):
                 tmp = k +":" + str(v) + "\n"
                 my_string += tmp
         shp = 'info'
-        setshape(lc.tw.status_spr, lc.tw.status_shapes[shp])
-        setlabel(lc.tw.status_spr, _(my_string))
+        lc.tw.status_spr.set_shape(lc.tw.status_shapes[shp])
+        lc.tw.status_spr.set_label(_(my_string))
         lc.tw.status_spr.set_layer(710)
     return
 
@@ -1067,8 +1067,8 @@ def showlabel(lc,label):
         label=''
     else:
         shp = 'status'
-    setshape(lc.tw.status_spr, lc.tw.status_shapes[shp])
-    setlabel(lc.tw.status_spr, label)
+    lc.tw.status_spr.set_shape(lc.tw.status_shapes[shp])
+    lc.tw.status_spr.set_label(label)
     lc.tw.status_spr.set_layer(710)
 
 def stop_logo(tw):

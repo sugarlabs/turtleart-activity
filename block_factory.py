@@ -47,7 +47,7 @@ class SVG:
         self._tab = True
         self._bool = False
         self._slot_x = 12
-        self._slot_y = 4
+        self._slot_y = 2
         self._porch = False
         self._porch_x = self._innie_x1+self._innie_x2+4*self._stroke_width
         self._porch_y = self._innie_y1+self._innie_y2+4*self._stroke_width

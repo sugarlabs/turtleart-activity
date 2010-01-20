@@ -110,6 +110,7 @@ class Sprite:
         self.inval()
         self.x,self.y = pos
         self.inval()
+        self.sprites.redraw_sprites()
 
     def set_shape(self, image):
         self.inval()
@@ -165,6 +166,7 @@ class Sprite:
     def hide(self):
         self.inval()
         self.sprites.remove_from_list(self)
+        self.sprites.redraw_sprites()
 
     def inval(self):
         self.sprites.area.invalidate_rect(

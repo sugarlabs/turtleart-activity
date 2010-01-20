@@ -45,7 +45,8 @@ def redrawsprites(tw):
 class Sprite():
 
     def __init__(self, tw, x, y, image, altlabel=False):
-        self.tw, self.x, self.y = tw,x,y
+        print "graphics context %s" % (str(tw.gc))
+        self.tw, self.x, self.y = tw, x, y
         self.setimage(image)
         self.label = None
         self.ds_id = None
@@ -88,7 +89,7 @@ class Sprite():
     def setshapex(self):
         self.inval()
 
-    def setlayer(self, layer):
+    def set_layer(self, layer):
         sprites = self.tw.sprites
         if self in sprites: sprites.remove(self)
         self.layer = layer

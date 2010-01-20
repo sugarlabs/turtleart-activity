@@ -57,7 +57,7 @@ selectors = (
      ('setxy','setxy','twoargs',0,0),
      ('seth','seth','onearg',0),
      ('show','show','onesarg',_('text')),
-     ('setscale','setscale','onearg',33),
+     ('set scale','setscale','onearg',33),
      ('show','show','onecarg','None'),
      ('xcor','xcor','num'),
      ('ycor','ycor','num'),
@@ -68,15 +68,15 @@ selectors = (
      ('image','insertimage','image','None'),
      ('write','write','1sarg',_('text'),32))),
   ('pen', 55,
-    (('penup','penup','noarg'),
-     ('pendown','pendown','noarg'),
-     ('setpensize','setpensize','1arg',5),
-     ('settextsize','settextsize','1arg',32),
-     ('setcolor','setcolor','1arg',0),
-     ('setshade','setshade','1arg',50),
-     ('fillscreen','fillscreen','twoargs',60,80),
-     ('pensize','pensize','num'),
-     ('textsize','textsize','num'),
+    (('pen up','penup','noarg'),
+     ('pen down','pendown','noarg'),
+     ('set pen size','setpensize','1arg',5),
+     ('set text size','settextsize','1arg',32),
+     ('set color','setcolor','1arg',0),
+     ('set shade','setshade','1arg',50),
+     ('fill screen','fillscreen','twoargs',60,80),
+     ('pen size','pensize','num'),
+     ('text_size','textsize','num'),
      ('color','color','num'),
      ('shade','shade','num'),
      ('red','red','num'),
@@ -87,8 +87,8 @@ selectors = (
      ('blue','blue','num'),
      ('purple','purple','num'),
      # not selectable, but here for backward compatability 
-     ('settextcolor','settextcolor','1arg',0),
-     ('textcolor','textcolor','num'))),
+     ('set_text_color','settextcolor','1arg',0),
+     ('text_color','textcolor','num'))),
   ('numbers', 55,
     (('number','','num',100,float,numcheck),
      ('plus2','plus','newari'),
@@ -118,8 +118,8 @@ selectors = (
      ('forever','forever','forever'),
      ('repeat','repeat','repeat',4),
      ('if','if','if'),
-     ('stopstack','stopstack','stop'),
-     ('ifelse','ifelse','ifelse'),
+     ('stop_stack','stopstack','stop'),
+     ('if else','ifelse','ifelse'),
      ('hspace','nop','hspace'),
      ('vspace','nop','vspace'),
      # not selectable, but here for backward compatability 
@@ -133,14 +133,14 @@ selectors = (
      ('hat','nop3','starts',_('action')),
      ('stack','stack','sarg',_('action')),
      ('storeinbox1','storeinbox1','1arg'),
-     ('box1','box1','num'),
+     ('box 1','box1','num'),
      ('storeinbox2','storeinbox2','1arg'),
-     ('box2','box2','num'),
-     ('storein','storeinbox','1varg',_('box'),100),
+     ('box 2','box2','num'),
+     ('store in','storeinbox','1varg',_('box'),100),
      ('box','box','nfuncs',_('box')),
      ('string','','string',_('name'),str,strcheck),
      # not selectable, but here for backward compatability 
-     ('storeinbox','storeinbox','1sarg',_('box'),100))),
+     ('store in box','storeinbox','1sarg',_('box'),100))),
   ('sensors', 55,
     (('kbinput','kbinput','noarg2'),
      ('keyboard','keyboard','num'),
@@ -318,7 +318,8 @@ def setup_misc(tw):
     # tw.status_spr = Sprite(tw,0,(tw.height-175), \
     tw.status_spr = sprites.Sprite(tw.sprites, 0, (tw.height-175), \
             tw.status_shapes['status'])
-    tw.status_spr.set_label_attributes(1.0, True, "left")
+    tw.status_spr.set_label("test")
+    # tw.status_spr.set_label_attributes(1.0, True, "left")
     tw.status_spr.type = 'status'
     tw.status_spr.set_layer(900)
     tw.status_spr.hide()
@@ -344,7 +345,8 @@ def setup_selector(tw,name,y,blockdescriptions):
     protos = []
     for b in blockdescriptions:
         bname,primname,docktype = b[0:3]
-        image = load_image(tw, tw.path_lang, name, bname)
+        # image = load_image(tw, tw.path_lang, name, bname)
+        image = None
         proto = taProto()
         proto.name = bname
         proto.image = image
