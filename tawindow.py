@@ -142,8 +142,6 @@ class TurtleArtWindow():
         self.polar = False
         self.spr = None # "currently selected spr"
 
-
-
     """
     DEPRECATED
     """
@@ -968,7 +966,7 @@ class TurtleArtWindow():
                 if block2.connections[dock2n] != None:
                     return (100,100)
             except IndexError:
-                print "Indec Error %s %s" % (str(dock1n),str(dock2n))
+                print "Index Error %s %s" % (str(dock1n),str(dock2n))
         if block1==block2: return (100,100)
         if d1type!=d2type:
             # some blocks can take strings or nums

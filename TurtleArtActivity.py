@@ -416,22 +416,18 @@ class TurtleArtActivity(activity.Activity):
     """
     def _do_cartesian_cb(self, button):
         if self.tw.cartesian is True:
-            # FIXME: encapsulation
-            tawindow.hide(self.tw.cartesian_coordinates_spr)
+            self.tw.cartesian_coordinates_spr.hide()
             self.tw.cartesian = False
         else:
-            # FIXME: encapsulation
-            tawindow.setlayer(self.tw.cartesian_coordinates_spr,610)
+            self.tw.cartesian_coordinates_spr.set_layer(610)
             self.tw.cartesian = True
 
     def _do_polar_cb(self, button):
         if self.tw.polar is True:
-            # FIXME: encapsulation
-            tawindow.hide(self.tw.polar_coordinates_spr)
+            self.tw.polar_coordinates_spr.hide()
             self.tw.polar = False
         else:
-            # FIXME: encapsulation
-            tawindow.setlayer(self.tw.polar_coordinates_spr,610)
+            self.tw.polar_coordinates_spr.set_layer(610)
             self.tw.polar = True
 
     """

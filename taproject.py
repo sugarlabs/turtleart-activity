@@ -50,6 +50,7 @@ try:
     from sugar.datastore import datastore
 except:
     pass
+import block
 import sprites
 
 nolabel = ['audiooff', 'descriptionoff', 'journal']
@@ -167,8 +168,13 @@ def load_spr(tw,b):
     except KeyError:
         print "swapping in a forward block for %s" % (btype)
         proto = tw.protodict['forward']
+    blk = block.Block(tw.blocks,proto.name,b[2]+tw.turtle.canvas.x,
+                             b[3]+tw.turtle.canvas.y)
+    spr = blk.spr
+    '''
     spr = sprites.Sprite(tw.sprites,b[2]+tw.turtle.canvas.x,
                              b[3]+tw.turtle.canvas.y, proto.image)
+    '''
     spr.type = 'block'
     spr.proto = proto
     if label is not None: spr.set_label(label)

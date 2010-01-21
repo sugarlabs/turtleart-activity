@@ -113,7 +113,6 @@ class Block:
             self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_block()))
             print "created new basic block: %s" % (str(self.spr))
-            self.spr.set_label(labels[0])
         elif name in BASIC_STYLE_HEAD:
             svg.expand(40,0)
             svg.set_innie([False])
@@ -123,7 +122,6 @@ class Block:
             self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_block()))
             print "created new basic block head: %s" % (str(self.spr))
-            self.spr.set_label(labels[0])
         elif name in BASIC_STYLE_TAIL:
             svg.expand(40,0)
             svg.set_innie([False])
@@ -133,7 +131,6 @@ class Block:
             self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_block()))
             print "created new basic block tail: %s" % (str(self.spr))
-            self.spr.set_label(labels[0])
         elif name in BASIC_STYLE_1ARG:
             svg.expand(20,0)
             svg.set_innie([True])
@@ -143,7 +140,6 @@ class Block:
             self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_block()))
             print "created new basic block 1 arg: %s" % (str(self.spr))
-            self.spr.set_label(labels[0])
         elif name in BASIC_STYLE_2ARG:
             svg.expand(20,0)
             svg.set_innie([True,True])
@@ -153,18 +149,23 @@ class Block:
             self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_block()))
             print "created new basic block 2 args: %s" % (str(self.spr))
-            self.spr.set_label(labels[0])
         elif name in BOX_STYLE:
             svg.expand(50,0)
             self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_box()))
             print "created new box block: %s" % (str(self.spr))
         else:
+            svg.expand(50,0)
+            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
+                                      svg_str_to_pixbuf(svg.basic_box()))
             print "don't know how to create a block for %s" % (name)
+
             return
 
-        for label in labels:
-            self.spr.set_label(label, labels.index(label))
+        if len(labels) > 0:
+            self.spr.set_label(labels[0])
+            for label in labels:
+                self.spr.set_label(label, labels.index(label))
 
 #
 # Load pixbuf from SVG string
