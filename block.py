@@ -31,9 +31,9 @@ import sprites
 # A class for the list of blocks and everything they share in common
 #
 class Blocks:
-    def __init__(self, sprites):
+    def __init__(self, sprite_list):
         self.list = []
-        self.sprites = sprites
+        self.sprites = sprite_list
 
     def get_block(self, i):
         if i < 0 or i > len(self.list)-1:
