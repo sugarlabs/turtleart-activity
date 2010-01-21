@@ -34,6 +34,7 @@ class SVG:
         self._width = 0
         self._height = 0
         self._scale = 1
+        self._orientation = 0
         self._radius = 8
         self._stroke_width = 1
         self._innie = [False]
@@ -197,12 +198,52 @@ class SVG:
         svg += self._end_boolean()
         return self._header() + svg
 
+    def turtle(self):
+        self._fill, self._stroke = "#D0D000", "none"
+        svg = self._rect(21, 21, 19.5, 18)
+        self._fill = "#808000"
+        svg += self._rect(3, 3, 30, 24)
+        svg += self._rect(3, 3, 24, 24)
+        svg += self._rect(3, 3, 30, 30)
+        svg += self._rect(3, 3, 24, 30)
+        svg += self._rect(3, 3, 27, 27)
+        svg += self._rect(3, 3, 21, 27)
+        svg += self._rect(3, 3, 33, 27)
+        svg += self._rect(3, 3, 27, 21)
+        svg += self._rect(3, 3, 21, 21)
+        svg += self._rect(3, 3, 33, 21)
+        svg += self._rect(3, 3, 27, 33)
+        svg += self._rect(3, 3, 21, 33)
+        svg += self._rect(3, 3, 33, 33)
+        svg += self._rect(3, 3, 30, 36)
+        svg += self._rect(3, 3, 24, 36)
+        svg += self._rect(3, 3, 30, 18)
+        svg += self._rect(3, 3, 24, 18)
+        svg += self._rect(3, 3, 36, 24)
+        svg += self._rect(3, 3, 36, 30)
+        svg += self._rect(3, 3, 36, 18)
+        svg += self._rect(3, 3, 36, 36)
+        self._fill, self._stroke = "#008000", "#008000"
+        svg += self._turtle_body()
+        self._fill, self._stroke = "#00a000", "#00a000"
+        svg += self._turtle_shell()
+        self._fill, self._stroke = "#000000", "#000000"
+        svg += self._circle(1.25,32.5,8)
+        svg += self._circle(1.25,27.5,8)
+        svg += self._footer()
+        self._width, self._height = 60, 60
+        # TODO: Add orientation
+        return self._header() + svg
+
     #
     # Utility methods
     #
 
     def set_scale(self, scale=1):
         self._scale = scale
+
+    def set_orientation(self, orientation=0):
+        self._orientation = orientation
 
     def expand(self, w=0, h=0):
         self._expand_x = w
@@ -318,6 +359,24 @@ class SVG:
                "stroke-width:",self._stroke_width,
                "stroke-linecap:square;",
                "stroke-opacity:1;\" />\n")
+
+    def _circle(self, r, cx, cy):
+        return "%s%s%s%s%s%f%s%f%s%f%s" % ("<circle style=\"fill:",
+             self._fill, ";stroke:", self._stroke, ";\" r=\"", r, "\" cx=\"",
+             cx, "\" cy=\"", cy, "\" />")
+
+    def _rect(self, w, h, x, y):
+        return "%s%s%s%s%s%f%s%f%s%f%s%f%s" % ("<rect style=\"fill:",
+               self._fill, ";stroke:", self._stroke, ";\" width=\"", w,
+               "\" height=\"", h,"\" x=\"", x, "\" y=\"", y, "\" />")
+
+    def _turtle_body(self):
+        return "%s%s%s%s%s" % ("<path style=\"", self._fill, ";stroke:",
+               self._stroke, "\" d=\"M 20,42 C 21,41 23,40 24,40 C 24,39 24,40 26,41 C 28,43 31,43 34,41 C 35,40 35,39 36,40 C 36,40 38,41 39,42 C 41,42 45,43 46,43 C 47,43 46,41 43,39 L 39,36 L 42,34 C 44,30 45,28 43,25 L 41,22 L 46,18 C 48,16 47.5,13.5 47,13 C 46.5,12.5 46,13 45,13 C 44,13 43.5,14 42.5,15 C 39.5,17 40,18 37,17 C 32,16 31.5,15 34.5,12 C 36.5,10 36,7 34,6 C 32,3 28,4 26,6 C 24,8 23,10 25,12 C 28,15 27,16 22,17 C 18,18 19,17 17,15 C 16,14 16,13 15,13 C 14,13 13,13 13,13 C 12,13 11,16 14,18 L 19,22 L 17,25 C 15,28 16,30 18,34 L 20,36 L 16,39 C 13,41 12,43 13,43 C 14,43 18,42 20,42 z M 30,18 C 32,18 36,19 38,20 C 40,22 39.5,25 39.5,28 C 39.5,30 40,32.5 38.5,35 C 37,36.5 36.5,37.5 35,38 C 33.5,38.5 31,39 30,39 C 28,39 26,39 25,38 C 23,37 22.5,37 21.5,35 C 20.5,33 20.5,30 20.5,28 C 20.5,25 20,22 22,20 C 24,19 27,18 30,18 z\" />")
+
+    def _turtle_shell(self):
+        return "%s%s%s%s%s" % ("<path style=\"", self._fill, ";stroke:",
+               self._stroke, "\" d=\"M 33,10 C 33,11 31.5,12 30,12 C 28,12 27,11 27,10 C 27,9 28,8 30,8 C 31.5,8 33,9 33,10 z\" />")
 
     def _check_min_max(self):
         if self._x < self._min_x:

@@ -13,6 +13,17 @@
 
 from gettext import gettext as _
 
+# sprite layers
+CANVAS_LAYER = 600
+TURTLE_LAYER = 630
+HIDE_LAYER = 100
+OVERLAY_LAYER = 615
+STATUS_LAYER = 710
+TOP_LAYER = 2000
+BLOCK_LAYER = 650
+CATEGORY_LAYER = 660
+TAB_LAYER = 670
+
 # block to proto tables
 BASIC_STYLE_HEAD = ['start', 'action 1', 'action 2']
 BASIC_STYLE_TAIL = ['stop action']

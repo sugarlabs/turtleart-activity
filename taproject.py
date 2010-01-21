@@ -52,6 +52,7 @@ except:
     pass
 import block
 import sprites
+from constants import *
 
 nolabel = ['audiooff', 'descriptionoff', 'journal']
 shape_dict = {'journal':'texton', \
@@ -192,7 +193,7 @@ def load_spr(tw,b):
         except:
             if hasattr(spr,"ds_id"):
                 print "couldn't open dsobject (" + str(spr.ds_id) + ")"
-    spr.set_layer(650)
+    spr.set_layer(BLOCK_LAYER)
     return spr
 
 def load_turtle(tw,b):

@@ -67,7 +67,7 @@ class Sprites:
             self.list.remove(spr)
 
     def find_sprite(self, pos):
-        list = self.list
+        list = self.list[:]
         list.reverse()
         for spr in list:
             if spr.hit(pos): return spr
@@ -171,10 +171,12 @@ class Sprite:
         self.sprites.remove_from_list(self)
 
     def inval(self):
+        # print "inval (%f,%f) (%f,%f)" % (self.x,self.y,self.width,self.height)
         self.sprites.area.invalidate_rect(
             gtk.gdk.Rectangle(self.x,self.y,self.width,self.height), False)
 
     def draw(self):
+        # print "draw (%f,%f)" % (self.x,self.y)
         if isinstance(self.image, gtk.gdk.Pixbuf):
             self.sprites.area.draw_pixbuf(
                 self.sprites.gc, self.image, 0, 0, self.x, self.y)
@@ -183,7 +185,6 @@ class Sprite:
                 self.sprites.gc, self.image, 0, 0, self.x, self.y, -1, -1)
         if len(self.labels) > 0:
             self.draw_label()
-        # self.inval()
 
     def hit(self, pos):
         x, y = pos

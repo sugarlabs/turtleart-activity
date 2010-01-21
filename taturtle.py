@@ -26,7 +26,10 @@ class taTurtle: pass
 # from tasprites import *
 from tasetup import load_image
 import sprites
+import block
 import pango
+
+from constants import *
 
 colors = {}
 DEGTOR = 2*pi/360
@@ -59,13 +62,15 @@ def tNew(tw,w,h):
     # t.canvas = Sprite(tw,0,0,gtk.gdk.Pixmap(tw.area,w,h,-1))
     t.canvas = sprites.Sprite(tw.sprites, 0, 0, gtk.gdk.Pixmap(tw.area,w,h,-1))
     t.canvas.type = 'canvas'
-    t.canvas.set_layer(600)
+    t.canvas.set_layer(CANVAS_LAYER)
     t.shapelist = \
         [load_image(tw, tw.path, 'shapes','t'+str(i)) for i in range(36)]
     # t.spr = Sprite(tw,100,100,t.shapelist[0])
-    t.spr = sprites.Sprite(tw.sprites, 100, 100, t.shapelist[0])
+    # t.spr = sprites.Sprite(tw.sprites, 100, 100, t.shapelist[0])
+    t.blk = block.Turtle(tw.blocks)
+    t.spr = t.blk.spr
     t.spr.type = 'turtle'
-    t.spr.set_layer(630)
+    t.spr.set_layer(TURTLE_LAYER)
     t.gc = t.canvas.image.new_gc()
     t.shade = 0
     clearscreen(t)
@@ -85,6 +90,7 @@ def clearscreen(t):
     t.pendown = True
     move_turtle(t)
     turn_turtle(t)
+    # t.tw.sprites.redraw_sprites()
     return None
 
 def forward(t, n):

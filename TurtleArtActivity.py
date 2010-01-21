@@ -63,6 +63,8 @@ from taexporthtml import *
 from taexportlogo import *
 import re
 
+from constants import *
+
 SERVICE = 'org.laptop.TurtleArtActivity'
 IFACE = SERVICE
 PATH = '/org/laptop/TurtleArtActivity'
@@ -419,7 +421,7 @@ class TurtleArtActivity(activity.Activity):
             self.tw.cartesian_coordinates_spr.hide()
             self.tw.cartesian = False
         else:
-            self.tw.cartesian_coordinates_spr.set_layer(610)
+            self.tw.cartesian_coordinates_spr.set_layer(OVERLAY_LAYER)
             self.tw.cartesian = True
 
     def _do_polar_cb(self, button):
@@ -427,7 +429,7 @@ class TurtleArtActivity(activity.Activity):
             self.tw.polar_coordinates_spr.hide()
             self.tw.polar = False
         else:
-            self.tw.polar_coordinates_spr.set_layer(610)
+            self.tw.polar_coordinates_spr.set_layer(OVERLAY_LAYER)
             self.tw.polar = True
 
     """

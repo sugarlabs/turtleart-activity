@@ -93,7 +93,7 @@ class Block:
         else:
             print "%s %s (%d %d)" % (name, labels[0], x, y)
 
-        svg = block_factory.SVG()
+        svg = sprite_factory.SVG()
         if name in TURTLE_PALETTE:
             svg.set_colors(TURTLE_COLORS)
         elif name in PEN_PALETTE:
@@ -166,6 +166,24 @@ class Block:
             self.spr.set_label(labels[0])
             for label in labels:
                 self.spr.set_label(label, labels.index(label))
+
+        self.type = 'block'
+
+class Turtle:
+    def __init__(self, blocks, orientation=0, scale=1.0):
+        self.blocks = blocks
+        self.spr = None
+        self._new_turtle_from_prototype(orientation, scale)
+        self.blocks.append_to_list(self)
+        self.orientation = orientation
+
+    def _new_turtle_from_prototype(self, orientation, scale):
+        svg = sprite_factory.SVG()
+        svg.set_scale(scale)
+        svg.set_orientation(orientation)
+        self.spr = sprites.Sprite(self.blocks.sprites, 0, 0,
+                                  svg_str_to_pixbuf(svg.turtle()))
+        self.type = 'turtle'
 
 #
 # Load pixbuf from SVG string
