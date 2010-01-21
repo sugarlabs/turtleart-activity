@@ -25,12 +25,11 @@ BASIC_STYLE_2ARG = ['arc', 'setxy', 'fill screen']
 BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pen size', 'color', 'shade'\
     'text color', 'text size', 'box 1', 'box 2', 'string']
 
-
 TURTLE_PALETTE = ['clean', 'forward', 'back', 'left', 'right', 'seth', 'show',\
     'set_scale', 'xcor', 'ycor', 'heading']
 PEN_PALETTE = ['pen up','pen down']
 NUMBER_PALETTE = ['number']
-BLOCKS_PALETTE = ['string']
+BLOCKS_PALETTE = ['start', 'string']
 
 TURTLE_COLORS = ["#00FF00","#00A000"]
 PEN_COLORS = ["#00FFFF","#00A0A0"]

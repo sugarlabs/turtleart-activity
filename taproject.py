@@ -144,7 +144,7 @@ def read_data(tw,data):
     for b in data:
         if b[1]=='turtle':
             load_turtle(tw,b)
-        else: spr = load_spr(tw,b); blocks.append(spr)
+        else: spr = load_spr(tw, b); blocks.append(spr)
     for i in range(len(blocks)):
         cons=[]
         for c in data[i][4]:
@@ -162,26 +162,30 @@ def load_spr(tw,b):
     if btype == 'journal' or btype == 'audiooff' or btype == 'descriptionoff':
         media = label
         label = None
-    proto = tw.protodict[btype]
-    spr = Sprite(tw,b[2]+tw.turtle.canvas.x,b[3]+tw.turtle.canvas.y, \
-                 proto.image)
+    try:
+        proto = tw.protodict[btype]
+    except KeyError:
+        print "swapping in a forward block for %s" % (btype)
+        proto = tw.protodict['forward']
+    spr = sprites.Sprite(tw.sprites,b[2]+tw.turtle.canvas.x,
+                             b[3]+tw.turtle.canvas.y, proto.image)
     spr.type = 'block'
     spr.proto = proto
-    if label is not None: spr.label=label
-    if media is not None and \
-        media not in nolabel:
+    if label is not None: spr.set_label(label)
+    if media is not None and media not in nolabel:
         try:
             dsobject = datastore.get(media)
             spr.ds_id = dsobject.object_id
             setimage(spr, tw.media_shapes[shape_dict[spr.proto.name]])
             if spr.proto.name == 'journal':
-                pixbuf = get_pixbuf_from_journal \
-                    (dsobject,spr.width,spr.height)
+                pixbuf = get_pixbuf_from_journal(dsobject,
+                                                 spr.width,spr.height)
                 if pixbuf is not None:
                     setimage(spr, pixbuf)
             dsobject.destroy()
         except:
-            print "couldn't open dsobject (" + str(spr.ds_id) + ")"
+            if hasattr(spr,"ds_id"):
+                print "couldn't open dsobject (" + str(spr.ds_id) + ")"
     spr.set_layer(650)
     return spr
 
@@ -207,11 +211,11 @@ def save_file(tw):
     tw.save_file_name = os.path.basename(fname)
 
 def get_save_name(tw):
-    dialog = gtk.FileChooserDialog("Save...", None, \
-                                   gtk.FILE_CHOOSER_ACTION_SAVE, \
-                                   (gtk.STOCK_CANCEL, \
-                                    gtk.RESPONSE_CANCEL, \
-                                    gtk.STOCK_SAVE, \
+    dialog = gtk.FileChooserDialog("Save...", None,
+                                   gtk.FILE_CHOOSER_ACTION_SAVE,
+                                   (gtk.STOCK_CANCEL,
+                                    gtk.RESPONSE_CANCEL,
+                                    gtk.STOCK_SAVE,
                                     gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
     if tw.save_file_name is not None:
@@ -251,16 +255,16 @@ def assemble_data_to_save(tw,save_turtle=True):
     for b in bs:
         name = b.proto.name
         if tw.defdict.has_key(name) or name in nolabel:
-            if b.ds_id != None:
-                name=(name,str(b.ds_id))
+            if hasattr(b,"ds_id") and b.ds_id != None:
+                name=(name, str(b.ds_id))
             else:
-                name=(name,b.label)
+                name=(name, b.labels[0])
         if hasattr(b,'connections'):
             connections = [get_id(x) for x in b.connections]
         else:
             connections = None
-        data.append((b.id,name,b.x-tw.turtle.canvas.x, \
-                     b.y-tw.turtle.canvas.y,connections))
+        data.append((b.id, name, b.x-tw.turtle.canvas.x,
+                     b.y-tw.turtle.canvas.y, connections))
     if save_turtle is True:
         data.append((-1,'turtle',
                     tw.turtle.xcor,tw.turtle.ycor,tw.turtle.heading,
@@ -297,10 +301,10 @@ def assemble_stack_to_clone(tw):
         for b in bs:
             name = b.proto.name
             if tw.defdict.has_key(name) or name in nolabel:
-                if b.ds_id is not None:
+                if hasattr(b, "ds_id") and b.ds_id is not None:
                     name=(name,str(b.ds_id))
                 else:
-                    name=(name,b.label)
+                    name=(name,b.labels[0])
             if hasattr(b,'connections'):
                 connections = [get_id(x) for x in b.connections]
             else:

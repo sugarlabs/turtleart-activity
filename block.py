@@ -118,21 +118,21 @@ class Block:
             svg.expand(40,0)
             svg.set_innie([False])
             svg.set_outie(False)
-            svg.set_tab(False)
-            svg.set_slot(True)
+            svg.set_tab(True)
+            svg.set_slot(False)
             self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_block()))
-            print "created new basic block: %s" % (str(self.spr))
+            print "created new basic block head: %s" % (str(self.spr))
             self.spr.set_label(labels[0])
         elif name in BASIC_STYLE_TAIL:
             svg.expand(40,0)
             svg.set_innie([False])
             svg.set_outie(False)
-            svg.set_tab(True)
-            svg.set_slot(False)
+            svg.set_tab(False)
+            svg.set_slot(True)
             self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_block()))
-            print "created new basic block: %s" % (str(self.spr))
+            print "created new basic block tail: %s" % (str(self.spr))
             self.spr.set_label(labels[0])
         elif name in BASIC_STYLE_1ARG:
             svg.expand(20,0)
@@ -142,7 +142,7 @@ class Block:
             svg.set_slot(True)
             self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_block()))
-            print "created new basic block: %s" % (str(self.spr))
+            print "created new basic block 1 arg: %s" % (str(self.spr))
             self.spr.set_label(labels[0])
         elif name in BASIC_STYLE_2ARG:
             svg.expand(20,0)
@@ -152,7 +152,7 @@ class Block:
             svg.set_slot(True)
             self.spr = sprites.Sprite(self.blocks.sprites, x, y,
                                       svg_str_to_pixbuf(svg.basic_block()))
-            print "created new basic block: %s" % (str(self.spr))
+            print "created new basic block 2 args: %s" % (str(self.spr))
             self.spr.set_label(labels[0])
         elif name in BOX_STYLE:
             svg.expand(50,0)

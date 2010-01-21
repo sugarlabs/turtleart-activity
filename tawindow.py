@@ -962,10 +962,13 @@ class TurtleArtWindow():
         d1type,d1dir,d1x,d1y=dock1[0:4]
         d2type,d2dir,d2x,d2y=dock2[0:4]
         if (d2type!='num') or (dock2n!=0):
-            if block1.connections[dock1n] != None:
-                return (100,100)
-            if block2.connections[dock2n] != None:
-                return (100,100)
+            try:
+                if block1.connections[dock1n] != None:
+                    return (100,100)
+                if block2.connections[dock2n] != None:
+                    return (100,100)
+            except IndexError:
+                print "Indec Error %s %s" % (str(dock1n),str(dock2n))
         if block1==block2: return (100,100)
         if d1type!=d2type:
             # some blocks can take strings or nums

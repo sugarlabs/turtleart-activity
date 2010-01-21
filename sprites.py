@@ -51,10 +51,10 @@ class Sprites:
     def length_of_list(self):
         return(len(self.list))
 
-    def append_to_list(self,spr):
+    def append_to_list(self, spr):
         self.list.append(spr)
 
-    def insert_in_list(self,spr,i):
+    def insert_in_list(self, spr, i):
         if i < 0:
             self.list.insert(0, spr)
         elif i > len(self.list)-1:
@@ -62,7 +62,7 @@ class Sprites:
         else:
             self.list.insert(i, spr)
 
-    def remove_from_list(self,spr):
+    def remove_from_list(self, spr):
         if spr in self.list:
             self.list.remove(spr)
 
@@ -99,8 +99,12 @@ class Sprite:
         self.sprites.append_to_list(self)
 
     def set_image(self, image):
+        if image is None:
+            self.width, self.height = 0,0
+            self.image = None
+            return
         self.image = image
-        if isinstance(self.image,gtk.gdk.Pixbuf):
+        if isinstance(self.image, gtk.gdk.Pixbuf):
             self.width = self.image.get_width()
             self.height = self.image.get_height()
         else:
@@ -110,7 +114,6 @@ class Sprite:
         self.inval()
         self.x,self.y = pos
         self.inval()
-        self.sprites.redraw_sprites()
 
     def set_shape(self, image):
         self.inval()
@@ -166,21 +169,21 @@ class Sprite:
     def hide(self):
         self.inval()
         self.sprites.remove_from_list(self)
-        self.sprites.redraw_sprites()
 
     def inval(self):
         self.sprites.area.invalidate_rect(
             gtk.gdk.Rectangle(self.x,self.y,self.width,self.height), False)
 
     def draw(self):
-        if isinstance(self.image,gtk.gdk.Pixbuf):
+        if isinstance(self.image, gtk.gdk.Pixbuf):
             self.sprites.area.draw_pixbuf(
                 self.sprites.gc, self.image, 0, 0, self.x, self.y)
-        else:
+        elif self.image is not None:
             self.sprites.area.draw_drawable(
                 self.sprites.gc, self.image, 0, 0, self.x, self.y, -1, -1)
         if len(self.labels) > 0:
             self.draw_label()
+        # self.inval()
 
     def hit(self, pos):
         x, y = pos
@@ -196,7 +199,7 @@ class Sprite:
 
     def draw_label(self):
         for i in range(len(self.labels)):
-            pl = self.sprites.canvas.create_pango_layout(self.labels[i])
+            pl = self.sprites.canvas.create_pango_layout(str(self.labels[i]))
             self.fd.set_size(int(self.scale[i]*pango.SCALE))
             pl.set_font_description(self.fd)
             w = pl.get_size()[0]/pango.SCALE
