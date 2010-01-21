@@ -168,8 +168,8 @@ def load_spr(tw,b):
     except KeyError:
         print "swapping in a forward block for %s" % (btype)
         proto = tw.protodict['forward']
-    blk = block.Block(tw.blocks,proto.name,b[2]+tw.turtle.canvas.x,
-                             b[3]+tw.turtle.canvas.y)
+    blk = block.Block(tw.blocks,btype,b[2]+tw.turtle.canvas.x,
+                             b[3]+tw.turtle.canvas.y, [btype])
     spr = blk.spr
     '''
     spr = sprites.Sprite(tw.sprites,b[2]+tw.turtle.canvas.x,
