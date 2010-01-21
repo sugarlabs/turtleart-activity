@@ -24,7 +24,7 @@ pygtk.require('2.0')
 import gtk
 import gobject
 from constants import *
-import block_factory
+import sprite_factory
 import sprites
 
 #
