@@ -17,15 +17,15 @@ from gettext import gettext as _
 # sprite layers
 #
 
-CANVAS_LAYER = 500
-TURTLE_LAYER = 550
 HIDE_LAYER = 100
+CANVAS_LAYER = 500
 OVERLAY_LAYER = 525
-STATUS_LAYER = 900
-TOP_LAYER = 1000
+TURTLE_LAYER = 2550
 BLOCK_LAYER = 600
 CATEGORY_LAYER = 700
 TAB_LAYER = 710
+STATUS_LAYER = 900
+TOP_LAYER = 1000
 
 #
 # block definitions
@@ -47,7 +47,7 @@ TURTLE_PALETTE = ['clean', 'forward', 'back', 'left', 'right', 'seth', 'show',\
     'set_scale', 'xcor', 'ycor', 'heading']
 PEN_PALETTE = ['pen up','pen down']
 NUMBER_PALETTE = ['number']
-BLOCKS_PALETTE = ['start', 'string']
+BLOCKS_PALETTE = ['start', 'string', 'store in box 1']
 FLOW_PALETTE = []
 MISC_PALETTE = []
 PORTFOLIO_PALETTE = []
@@ -67,11 +67,12 @@ SELECTED_STROKE_WIDTH = 2.0
 # default values
 #
 
-DEFAULTS = {'forward':100, 'back':100, 'left':90, 'set xy':(0,0), 
-            'arc':(90,100), 'seth':0, 'set scale':33, 'show':_('text'),
-            'set pen size':5, 'set text size':32, 'set color':0,
-            'set shade':50, 'fill screen':(60,80), 'number':100,
-            'random':(0,100), 'wait':1, 'repeat':4, 'store in':(_('box'),100)}
+DEFAULTS = {'forward':[100], 'back':[100], 'left':[90], 'right':[90], 
+            'arc':[90,100], 'seth':[0], 'set scale':[33], 'show':[_('text')],
+            'set pen size':[5], 'set text size':[32], 'set color':[0],
+            'set shade':[50], 'fill screen':[60,80], 'number':[100],
+            'random':[0,100], 'wait':[1], 'repeat':[4], 'set xy':[0,0], 
+            'store in':[_('box'),100]}
 #
 # 'dead key' Unicode dictionaries
 #

@@ -53,6 +53,7 @@ except:
 import block
 import sprites
 from constants import *
+from gettext import gettext as _
 
 nolabel = ['audiooff', 'descriptionoff', 'journal']
 shape_dict = {'journal':'texton', \
@@ -97,8 +98,8 @@ def load_files(tw, ta_file, create_new_project=True):
     read_data(tw,data)
 
 def get_load_name(tw):
-    dialog = gtk.FileChooserDialog("Load...", None, \
-        gtk.FILE_CHOOSER_ACTION_OPEN, \
+    dialog = gtk.FileChooserDialog("Load...", None, 
+        gtk.FILE_CHOOSER_ACTION_OPEN,
         (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,gtk.STOCK_OPEN, gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
     return do_dialog(tw,dialog)
@@ -122,9 +123,11 @@ def clone_stack(tw,text):
         io = StringIO(text)
         listdata = jload(io)
     data = tuplify(listdata) # json converts tuples to lists
-    read_stack(tw,data)
+    # read_stack(tw,data)
+    read_data(tw,data)
 
 # paste stack from the clipboard
+# TODO: rebase on read data 
 def read_stack(tw,data):
     clone = []
     for b in data:
@@ -142,22 +145,23 @@ def tuplify(t):
     return tuple(map(tuplify, t))
 
 def read_data(tw,data):
-    blocks = []
+    sprs = []
     for b in data:
         if b[1]=='turtle':
             load_turtle(tw,b)
-        else: spr = load_spr(tw, b); blocks.append(spr)
-    for i in range(len(blocks)):
+        else: spr = load_spr(tw, b); sprs.append(spr)
+    for i in range(len(sprs)):
         cons=[]
         for c in data[i][4]:
             if c==None: cons.append(None)
-            else: cons.append(blocks[c])
-        blocks[i].connections = cons
+            else: cons.append(sprs[c])
+        sprs[i].connections = cons # phasing out
+        tw.block_list.spr_to_block(sprs[i]).connections = cons
 
 def load_spr(tw,b):
     media = None
     btype, label = b[1],None
-    if type(btype)==type((1,2)): 
+    if type(btype) == type((1,2)): 
         btype, label = btype
     if btype == 'title':  # for backward compatibility
         btype = 'string'
@@ -169,16 +173,13 @@ def load_spr(tw,b):
     except KeyError:
         print "swapping in a forward block for %s" % (btype)
         proto = tw.protodict['forward']
-    blk = block.Block(tw.blocks,btype,b[2]+tw.turtle.canvas.x,
-                             b[3]+tw.turtle.canvas.y, [btype])
+    blk = block.Block(tw.block_list, tw.sprite_list, 
+                      btype, b[2]+tw.turtle.canvas.x,
+                      b[3]+tw.turtle.canvas.y, [label])
     spr = blk.spr
-    '''
-    spr = sprites.Sprite(tw.sprites,b[2]+tw.turtle.canvas.x,
-                             b[3]+tw.turtle.canvas.y, proto.image)
-    '''
-    spr.type = 'block'
-    spr.proto = proto
-    if label is not None: spr.set_label(label)
+    spr.type = 'block' # phasing out
+    spr.proto = proto  # phasing out
+    # if label is not None: spr.set_label(label) # phasing out
     if media is not None and media not in nolabel:
         try:
             dsobject = datastore.get(media)
@@ -256,22 +257,22 @@ def save_string(tw,save_turtle=True):
     return text
 
 def assemble_data_to_save(tw,save_turtle=True):
-    bs = blocks(tw)
     data = []
-    for i in range(len(bs)): bs[i].id=i
-    for b in bs:
-        name = b.proto.name
+    for i, b in enumerate(tw.block_list.list):
+         b.id = i
+    for b in tw.block_list.list:
+        name = (b.name, b.spr.labels[0])
         if tw.defdict.has_key(name) or name in nolabel:
             if hasattr(b,"ds_id") and b.ds_id != None:
                 name=(name, str(b.ds_id))
             else:
-                name=(name, b.labels[0])
+                name=(name, b.spr.labels[0])
         if hasattr(b,'connections'):
-            connections = [get_id(x) for x in b.connections]
+            connections = [get_id(tw.block_list, x) for x in b.connections]
         else:
             connections = None
-        data.append((b.id, name, b.x-tw.turtle.canvas.x,
-                     b.y-tw.turtle.canvas.y, connections))
+        data.append((b.id, name, b.spr.x-tw.turtle.canvas.x,
+                     b.spr.y-tw.turtle.canvas.y, connections))
     if save_turtle is True:
         data.append((-1,'turtle',
                     tw.turtle.xcor,tw.turtle.ycor,tw.turtle.heading,
@@ -292,10 +293,11 @@ def serialize_stack(tw):
     return text
 
 # find the stack under the cursor and serialize it
+# TODO: rebase on assemble data to save
 def assemble_stack_to_clone(tw):
     if tw.spr is None or tw.spr.type is not "block":
         (x,y) = tw.window.get_pointer()
-        spr = tw.sprites.find_sprite((x,y))
+        spr = tw.sprite_list.find_sprite((x,y))
         if spr is not None:
             print "found block of type " + spr.type
     else:
@@ -312,25 +314,25 @@ def assemble_stack_to_clone(tw):
                     name=(name,str(b.ds_id))
                 else:
                     name=(name,b.labels[0])
-            if hasattr(b,'connections'):
+            if hasattr(b,'connections') and b.connections is not None:
                 connections = [get_id(x) for x in b.connections]
             else:
                 connections = None
-            data.append((b.id,name,b.x-tw.turtle.canvas.x+20, \
+            data.append((b.id,name,b.x-tw.turtle.canvas.x+20,
                          b.y-tw.turtle.canvas.y+20,connections))
     return data
 
 def save_pict(tw,fname):
     tc = tw.turtle.canvas
-    pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, tc.width, \
+    pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, tc.width,
                             tc.height)
-    pixbuf.get_from_drawable(tc.image, tc.image.get_colormap(), 0, 0, 0, 0, \
+    pixbuf.get_from_drawable(tc.image, tc.image.get_colormap(), 0, 0, 0, 0,
                              tc.width, tc.height)
     pixbuf.save(fname, 'png')
 
-def get_id(x):
+def get_id(blocks, x):
     if x==None: return None
-    return x.id
+    return blocks.spr_to_block(x).id
 
 def do_dialog(tw,dialog):
     result = None
@@ -346,12 +348,14 @@ def do_dialog(tw,dialog):
     dialog.destroy()
     return result
 
-def blocks(tw): return [spr for spr in tw.sprites.list if spr.type == 'block']
+# phasing out
+def blocks(tw): return [spr for spr in tw.sprite_list.list \
+                        if spr.type == 'block']
 
 def findgroup(b):
     group=[b]
     for b2 in b.connections[1:]:
-        if b2!=None: group.extend(findgroup(b2))
+        if b2 is not None: group.extend(findgroup(b2))
     return group
 
 def find_top_block(spr):
@@ -363,5 +367,6 @@ def find_top_block(spr):
 
 # start a new project with a start brick
 def load_start(tw):
-    clone_stack(tw,str("[[0,\"start\",250,30,[null,null]]]"))
+    clone_stack(tw,"%s%s%s" % ("[[0,[\"start\",\"", _("start"),
+                               "\"],250,30,[null,null]]]"))
 

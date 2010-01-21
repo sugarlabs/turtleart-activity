@@ -20,6 +20,9 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
+import pygtk
+pygtk.require('2.0')
+import gtk
 import os
 from gettext import gettext as _
 
@@ -604,4 +607,14 @@ if __name__ == "__main__":
     generator(os.path.abspath('.'))
     main()
 
+
+#
+# Load pixbuf from SVG string
+#
+def svg_str_to_pixbuf(svg_string):
+    pl = gtk.gdk.PixbufLoader('svg')
+    pl.write(svg_string)
+    pl.close()
+    pixbuf = pl.get_pixbuf()
+    return pixbuf
 
