@@ -75,6 +75,8 @@ class Block:
                  colors=["#00FF00","#00A000"], scale=2.0):
         self.blocks = blocks
         self.spr = None
+        self.shape = None
+        self.selected_shape = None
         self._new_block_from_prototype(proto_name, labels, colors, scale, x, y)
         self.blocks.append_to_list(self)
         #
@@ -102,65 +104,65 @@ class Block:
             svg.set_colors(NUMBER_COLORS)
         elif name in BLOCKS_PALETTE:
             svg.set_colors(BLOCKS_COLORS)
+        elif name in MISC_PALETTE:
+            svg.set_colors(MISC_COLORS)
+        elif name in FLOW_PALETTE:
+            svg.set_colors(FLOW_COLORS)
+        elif name in PORTFOLIO_PALETTE:
+            svg.set_colors(PORTFOLIO_COLORS)
         svg.set_scale(scale)
         svg.set_gradiant(True)
+        svg.set_innie([False])
+        svg.set_outie(False)
+        svg.set_tab(True)
+        svg.set_slot(True)
         if name in BASIC_STYLE:
             svg.expand(40,0)
-            svg.set_innie([False])
-            svg.set_outie(False)
-            svg.set_tab(True)
-            svg.set_slot(True)
-            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
-                                      svg_str_to_pixbuf(svg.basic_block()))
+            self._make_basic_block(svg, x, y)
+            self.docks = (('flow',True,37,5),('flow',False,37,44))
             print "created new basic block: %s" % (str(self.spr))
         elif name in BASIC_STYLE_HEAD:
             svg.expand(40,0)
-            svg.set_innie([False])
-            svg.set_outie(False)
-            svg.set_tab(True)
             svg.set_slot(False)
-            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
-                                      svg_str_to_pixbuf(svg.basic_block()))
+            self._make_basic_block(svg, x, y)
+            self.docks = (('start',True,50,0), ('flow',False,49,55))
+            print "created new basic block head: %s" % (str(self.spr))
+        elif name in BASIC_STYLE_HEAD_1ARG:
+            svg.expand(40,0)
+            svg.set_slot(False)
+            self._make_basic_block(svg, x, y)
+            self.docks = (('start',True,50,0), ('string',False,21,38),
+                          ('flow',False,75,75))
             print "created new basic block head: %s" % (str(self.spr))
         elif name in BASIC_STYLE_TAIL:
             svg.expand(40,0)
-            svg.set_innie([False])
-            svg.set_outie(False)
             svg.set_tab(False)
-            svg.set_slot(True)
-            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
-                                      svg_str_to_pixbuf(svg.basic_block()))
+            self._make_basic_block(svg, x, y)
+            self.docks = (('flow',True,37,5),('unavailable',False,0,0))
             print "created new basic block tail: %s" % (str(self.spr))
         elif name in BASIC_STYLE_1ARG:
             svg.expand(20,0)
             svg.set_innie([True])
-            svg.set_outie(False)
-            svg.set_tab(True)
-            svg.set_slot(True)
-            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
-                                      svg_str_to_pixbuf(svg.basic_block()))
+            self._make_basic_block(svg, x, y)
+            self.docks = (('flow',True,37,5), ('num',False,74,21),
+                          ('flow',False,37,44))
             print "created new basic block 1 arg: %s" % (str(self.spr))
         elif name in BASIC_STYLE_2ARG:
             svg.expand(20,0)
             svg.set_innie([True,True])
-            svg.set_outie(False)
-            svg.set_tab(True)
-            svg.set_slot(True)
-            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
-                                      svg_str_to_pixbuf(svg.basic_block()))
+            self._make_basic_block(svg, x, y)
+            self.docks = (('flow',True,37,5), ('num',False,74,21),
+                          ('num',False,74,58), ('flow',False,37,81))
             print "created new basic block 2 args: %s" % (str(self.spr))
         elif name in BOX_STYLE:
             svg.expand(50,0)
-            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
-                                      svg_str_to_pixbuf(svg.basic_box()))
+            self._make_basic_box(svg, x, y)
+            self.docks = (('num',True,0,12),('numend',False,105,12))
             print "created new box block: %s" % (str(self.spr))
         else:
-            svg.expand(50,0)
-            self.spr = sprites.Sprite(self.blocks.sprites, x, y,
-                                      svg_str_to_pixbuf(svg.basic_box()))
+            svg.expand(40,0)
+            self._make_basic_block(svg, x, y)
             print "don't know how to create a block for %s" % (name)
-
-            return
 
         if len(labels) > 0:
             self.spr.set_label(labels[0])
@@ -168,6 +170,20 @@ class Block:
                 self.spr.set_label(label, labels.index(label))
 
         self.type = 'block'
+
+    def _make_basic_block(self, svg, x, y):
+        self.shape = svg_str_to_pixbuf(svg.basic_block())
+        svg.set_stroke_width(SELECTED_STROKE_WIDTH)
+        svg.set_stroke_color(SELECTED_COLOR)
+        self.selected_shape = svg_str_to_pixbuf(svg.basic_block())
+        self.spr = sprites.Sprite(self.blocks.sprites, x, y, self.shape)
+
+    def _make_basic_box(self, svg, x, y):
+        self.shape = svg_str_to_pixbuf(svg.basic_box())
+        svg.set_stroke_width(SELECTED_STROKE_WIDTH)
+        svg.set_stroke_color(SELECTED_COLOR)
+        self.selected_shape = svg_str_to_pixbuf(svg.basic_box())
+        self.spr = sprites.Sprite(self.blocks.sprites, x, y, self.shape)
 
 class Turtle:
     def __init__(self, blocks, orientation=0, scale=1.0):

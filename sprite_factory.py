@@ -257,6 +257,12 @@ class SVG:
         self._fill = colors[0]
         self._stroke = colors[1]
 
+    def set_fill_color(self, color="#00FF00"):
+        self._fill = color
+
+    def set_stroke_color(self, color="#00A000"):
+        self._stroke = color
+
     def set_gradiant(self, flag=False):
         self._gradiant = flag
 

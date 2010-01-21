@@ -13,26 +13,33 @@
 
 from gettext import gettext as _
 
+#
 # sprite layers
-CANVAS_LAYER = 600
-TURTLE_LAYER = 630
-HIDE_LAYER = 100
-OVERLAY_LAYER = 615
-STATUS_LAYER = 710
-TOP_LAYER = 2000
-BLOCK_LAYER = 650
-CATEGORY_LAYER = 660
-TAB_LAYER = 670
+#
 
-# block to proto tables
+CANVAS_LAYER = 500
+TURTLE_LAYER = 550
+HIDE_LAYER = 100
+OVERLAY_LAYER = 525
+STATUS_LAYER = 900
+TOP_LAYER = 1000
+BLOCK_LAYER = 600
+CATEGORY_LAYER = 700
+TAB_LAYER = 710
+
+#
+# block definitions
+#
+
 BASIC_STYLE_HEAD = ['start', 'action 1', 'action 2']
+BASIC_STYLE_HEAD_1ARG = []
 BASIC_STYLE_TAIL = ['stop action']
 BASIC_STYLE = ['clean', 'pen up', 'pen down', 'action 1', 'action 2', 'nop' ]
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',\
     'set scale', 'set pen size', 'set color', 'set shade'\
     'set text size', 'set text color', 'print', 'wait', 'store in box 1',\
     'store in box 2']
-BASIC_STYLE_2ARG = ['arc', 'setxy', 'fill screen']
+BASIC_STYLE_2ARG = ['arc', 'set xy', 'fill screen']
 BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pen size', 'color', 'shade'\
     'text color', 'text size', 'box 1', 'box 2', 'string']
 
@@ -41,13 +48,34 @@ TURTLE_PALETTE = ['clean', 'forward', 'back', 'left', 'right', 'seth', 'show',\
 PEN_PALETTE = ['pen up','pen down']
 NUMBER_PALETTE = ['number']
 BLOCKS_PALETTE = ['start', 'string']
+FLOW_PALETTE = []
+MISC_PALETTE = []
+PORTFOLIO_PALETTE = []
 
 TURTLE_COLORS = ["#00FF00","#00A000"]
 PEN_COLORS = ["#00FFFF","#00A0A0"]
 NUMBER_COLORS = ["#FF00FF","#A000A0"]
 BLOCKS_COLORS = ["#FFFF00","#A0A000"]
+FLOW_COLORS = ["#FFC000","#A08000"]
+MISC_COLORS = ["#FF0000","#A0000"]
+PORTFOLIO_COLORS = ["#0000FF","#0000FF"]
 
+SELECTED_COLOR = "#0000FF"
+SELECTED_STROKE_WIDTH = 2.0
+
+#
+# default values
+#
+
+DEFAULTS = {'forward':100, 'back':100, 'left':90, 'set xy':(0,0), 
+            'arc':(90,100), 'seth':0, 'set scale':33, 'show':_('text'),
+            'set pen size':5, 'set text size':32, 'set color':0,
+            'set shade':50, 'fill screen':(60,80), 'number':100,
+            'random':(0,100), 'wait':1, 'repeat':4, 'store in':(_('box'),100)}
+#
 # 'dead key' Unicode dictionaries
+#
+
 DEAD_KEYS = ['grave','acute','circumflex','tilde','diaeresis','abovering']
 DEAD_DICTS = [{'A':192,'E':200,'I':204,'O':210,'U':217,'a':224,'e':232,'i':236,\
                'o':242,'u':249},

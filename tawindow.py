@@ -292,6 +292,8 @@ class TurtleArtWindow():
 
         self.select_mask.hide()
         self.select_mask_string.hide()
+        self.selected_block.set_shape(
+                      self.blocks.spr_to_block(self.selected_block).shape)
         self.selected_block = None
 
     """
@@ -712,21 +714,31 @@ class TurtleArtWindow():
         if self.block_operation=='click':
             if self.spr.proto.name=='number':
                 self.selected_block = spr
-                self.select_mask.move((spr.x-5,spr.y-5))
-                self.select_mask.set_layer(MASK_LAYER)
+                self.selected_block.set_shape(
+                    self.blocks.spr_to_block(
+                        self.selected_block).selected_shape)
+                # self.select_mask.move((spr.x-5,spr.y-5))
+                # self.select_mask.set_layer(MASK_LAYER)
                 self.firstkey = True
             elif self.defdict.has_key(spr.proto.name):
                 self.selected_block = spr
                 if self.spr.proto.name=='string':
-                    self.select_mask_string.move((spr.x-5,spr.y-5))
-                    self.select_mask_string.set_layer(MASK_LAYER)
+                    self.selected_block.set_shape(
+                        self.blocks.spr_to_block(
+                            self.selected_block).selected_shape)
+                    # self.select_mask_string.move((spr.x-5,spr.y-5))
+                    # self.select_mask_string.set_layer(MASK_LAYER)
                     self.firstkey = True
                 elif self.spr.proto.name in self.importblocks:
                     self._import_from_journal(spr)
             elif self.spr.proto.name=='nop' and self.myblock==None:
                 self.activity.import_py()
             else:
-                # TODO: mark block as selected
+                # mark block as selected
+                self.selected_block = spr
+                self.selected_block.set_shape(
+                        self.blocks.spr_to_block(
+                            self.selected_block).selected_shape)
                 spr.set_selected(True)
                 self._run_stack(spr)
 
