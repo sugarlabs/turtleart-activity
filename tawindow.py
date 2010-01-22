@@ -341,7 +341,7 @@ class TurtleArtWindow():
     """
     def _find_block_to_run(self, spr):
         top = self._find_top_block(spr)
-        if spr == top and spr.proto.name[0:3] != 'hat':
+        if spr == top and self.block_list.spr_to_block(spr).name[0:3] != 'hat':
             return True
         else:
             return False
@@ -350,9 +350,10 @@ class TurtleArtWindow():
     find top block
     """
     def _find_top_block(self, spr):
-        b = spr
-        while b.connections[0]!=None:
-            b=b.connections[0]
+        blk = self.block_list.spr_to_block(spr)
+        b = blk.spr
+        while blk.connections[0]!=None:
+            b=blk.connections[0]
         return b
 
     """
@@ -790,9 +791,11 @@ class TurtleArtWindow():
     def _snap_to_dock(self):
         spr = self.draggroup[0]
         my_block = self.block_list.spr_to_block(spr)
+        print my_block.name
         d = 200
         for my_dockn in range(len(my_block.docks)):
             for your_block in self.block_list.list:
+                print your_block.name
                 # don't link to a block to which you're already connected
                 if your_block.spr in self.draggroup:
                     continue
@@ -803,6 +806,7 @@ class TurtleArtWindow():
                     if self._magnitude(this_xy) > d:
                         continue
                     print "found a match? %d" % (your_dockn)
+                    your_block.spr.set_shape(your_block.selected_shape)
                     d = self._magnitude(this_xy)
                     best_xy = this_xy
                     best_you = your_block
@@ -947,11 +951,13 @@ class TurtleArtWindow():
     disconnect block
     """
     def _disconnect(self, b):
-        if b.connections[0]==None:
+        blk = self.block_list.spr_to_block(b)
+        if blk.connections[0]==None:
             return
-        b2=b.connections[0]
-        b2.connections[b2.connections.index(b)] = None
-        b.connections[0] = None
+        b2=blk.connections[0]
+        blk2 = self.block_list.spr_to_block(b2)
+        blk2.connections[blk2.connections.index(b)] = None
+        blk.connections[0] = None
 
     """
     turtle pressed
@@ -985,6 +991,7 @@ class TurtleArtWindow():
         dock2 = block2.docks[dock2n]
         d1type, d1dir, d1x, d1y = dock1[0:4]
         d2type, d2dir, d2x, d2y = dock2[0:4]
+        '''
         if (d2type!='num') or (dock2n!=0):
             if block1.connections is not None and dock1n < block1.connections\
                 and block1.connections[dock1n] is not None:
@@ -992,8 +999,11 @@ class TurtleArtWindow():
             if block2.connections is not None and dock2n < block2.connections\
                 and block2.connections[dock2n] is not None:
                     return (100,100)
+        '''
         if block1 == block2:
+            print "block1 == block2"
             return (100,100)
+        '''
         if d1type != d2type:
             # some blocks can take strings or nums
             if block1.name in ('write', 'plus2', 'equal', 'less', 'greater',
@@ -1017,8 +1027,12 @@ class TurtleArtWindow():
                     pass
             else:
                 return (100,100)
+        '''
         if d1dir == d2dir:
+            print "d1dir == d2dir"
             return (100,100)
+        display_coordinates(self, (block1.spr.x+d1x)-(block2.spr.x+d2x),
+                (block1.spr.y+d1y)-(block2.spr.y+d2y), 0)
         return ((block1.spr.x+d1x)-(block2.spr.x+d2x),
                 (block1.spr.y+d1y)-(block2.spr.y+d2y))
 

@@ -609,12 +609,17 @@ def lcNew(tw):
 
     return lc
 
-def display_coordinates(tw):
+def display_coordinates(tw, a=-1, b=-1, d=-1):
     if hasattr(tw, "activity"):
         if hasattr(tw.activity, "coordinates_label"):
-            x = round_int(tw.turtle.xcor/tw.coord_scale)
-            y = round_int(tw.turtle.ycor/tw.coord_scale)
-            h = round_int(tw.turtle.heading)
+            if a==-1 and b==-1 and d == -1:
+                x = round_int(tw.turtle.xcor/tw.coord_scale)
+                y = round_int(tw.turtle.ycor/tw.coord_scale)
+                h = round_int(tw.turtle.heading)
+            else:
+                x = a
+                y = b
+                h = d
             tw.activity.coordinates_label.set_text(_("xcor") + " = " + \
                                                    str(x) + " " + \
                                                    _("ycor") + " = " + \

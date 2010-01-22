@@ -106,49 +106,49 @@ class Block:
         svg.set_outie(False)
         svg.set_tab(True)
         svg.set_slot(True)
+        xoff = INNIE*scale-2
+        yoff = SLOTY*scale-1
         if name in BASIC_STYLE:
             svg.expand(40,0)
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('flow',True,37,5),('flow',False,37,39))
+            self.docks = (('flow',True,0,2),('flow',False,0,self.height-yoff))
         elif name in BASIC_STYLE_HEAD:
             svg.expand(40,0)
             svg.set_slot(False)
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('start',True,37,0), ('flow',False,37,39))
+            self.docks = (('start',True,0,2),('flow',False,0,self.height-yoff))
         elif name in BASIC_STYLE_HEAD_1ARG:
             svg.expand(40,0)
             svg.set_slot(False)
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('start',True,37,0), ('string',False,42,12),
-                          ('flow',False,37,44))
+            self.docks = (('start',True,0,0), ('string',False,self.width,12),
+                          ('flow',False,0,self.height-yoff))
         elif name in BASIC_STYLE_TAIL:
             svg.expand(40,0)
             svg.set_tab(False)
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('flow',True,37,5),('unavailable',False,0,0))
+            self.docks = (('flow',True,0,2),('unavailable',False,0,0))
         elif name in BASIC_STYLE_1ARG:
-            ex = 25
-            ey = 0
-            svg.expand(ex,ey)
+            svg.expand(25,0)
             svg.set_innie([True])
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('flow',True,37,5), ('num',False,42+ex*scale,12),
-                          ('flow',False,37,44+ey))
+            self.docks = (('flow',True,0,2), ('num',False,self.width-xoff,12),
+                          ('flow',False,0,self.height-yoff))
         elif name in BASIC_STYLE_2ARG:
-            ex = 25
-            ey = 0
-            svg.expand(ex,ey)
+            svg.expand(25,0)
             svg.set_innie([True,True])
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('flow',True,37,5), ('num',False,42+ex*scale,12),
-                          ('num',False,42+ex*scale,54), ('flow',False,37,81))
+            self.docks = (('flow',True,0,2), ('num',False,self.width-xoff,12),
+                          ('num',False,self.width-xoff,54), 
+                          ('flow',False,0,self.height-yoff))
         elif name in BOX_STYLE:
-            svg.expand(50,0)
+            svg.expand(40,0)
             self._make_basic_box(sprite_list, svg, x, y)
-            self.docks = (('num',True,0,12),('unavailable',False,105,12))
+            self.docks = (('num',True,0,12),('unavailable',False,0,12))
         else:
             svg.expand(40,0)
             self._make_basic_block(sprite_list, svg, x, y)
+            self.docks = (('flow',True,0,2),('flow',False,0,self.height-yoff))
             print "don't know how to create a block for %s" % (name)
 
         if len(labels) > 0:
@@ -164,6 +164,8 @@ class Block:
 
     def _make_basic_block(self, sprite_list, svg, x, y):
         self.shape = sprite_factory.svg_str_to_pixbuf(svg.basic_block())
+        self.width = svg.get_width()
+        self.height = svg.get_height()
         svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         svg.set_stroke_color(SELECTED_COLOR)
         self.selected_shape =\
@@ -172,6 +174,8 @@ class Block:
 
     def _make_basic_box(self, sprite_list, svg, x, y):
         self.shape = sprite_factory.svg_str_to_pixbuf(svg.basic_box())
+        self.width = svg.get_width()
+        self.height = svg.get_height()
         svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         svg.set_stroke_color(SELECTED_COLOR)
         self.selected_shape = sprite_factory.svg_str_to_pixbuf(svg.basic_box())

@@ -24,6 +24,7 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import os
+from constants import SLOTY, INNIE, SPACER
 from gettext import gettext as _
 
 class SVG:
@@ -42,15 +43,15 @@ class SVG:
         self._stroke_width = 1
         self._innie = [False]
         self._outie = False
-        self._innie_x1 = 4
+        self._innie_x1 = (INNIE-self._stroke_width)/2
         self._innie_y1 = 3
-        self._innie_x2 = 4
-        self._innie_y2 = 4
-        self._innie_spacer = 9
+        self._innie_x2 = (INNIE-self._stroke_width)/2
+        self._innie_y2 = (INNIE-self._stroke_width)/2
+        self._innie_spacer = SPACER
         self._slot = True
         self._tab = True
         self._bool = False
-        self._slot_x = 12
+        self._slot_x = 10
         self._slot_y = 2
         self._porch = False
         self._porch_x = self._innie_x1+self._innie_x2+4*self._stroke_width
@@ -241,6 +242,11 @@ class SVG:
     #
     # Utility methods
     #
+    def get_width(self):
+        return self._width
+
+    def get_height(self):
+        return self._height
 
     def set_scale(self, scale=1):
         self._scale = scale

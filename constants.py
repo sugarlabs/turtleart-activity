@@ -14,6 +14,13 @@
 from gettext import gettext as _
 
 #
+# SVG constants
+#
+SLOTY = 2
+INNIE = 9
+SPACER = 9
+
+#
 # sprite layers
 #
 
