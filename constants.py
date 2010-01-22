@@ -38,26 +38,44 @@ TOP_LAYER = 1000
 # block definitions
 #
 
-BASIC_STYLE_HEAD = ['start', 'action 1', 'action 2']
-BASIC_STYLE_HEAD_1ARG = []
+BASIC_STYLE_HEAD = ['start', 'def action 1', 'def action 2']
+BASIC_STYLE_HEAD_1ARG = ['def action']
 BASIC_STYLE_TAIL = ['stop action']
-BASIC_STYLE = ['clean', 'pen up', 'pen down', 'action 1', 'action 2', 'nop' ]
-BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',\
-    'set scale', 'set pen size', 'set color', 'set shade'\
-    'set text size', 'set text color', 'print', 'wait', 'store in box 1',\
-    'store in box 2']
-BASIC_STYLE_2ARG = ['arc', 'set xy', 'fill screen']
-BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pen size', 'color', 'shade'\
-    'text color', 'text size', 'box 1', 'box 2', 'string']
-
-TURTLE_PALETTE = ['clean', 'forward', 'back', 'left', 'right', 'seth', 'show',\
+BASIC_STYLE = ['clean', 'pen up', 'pen down', 'action 1', 'action 2', 'vspace',
+    'hide blocks']
+BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
+    'set scale', 'set pen size', 'set color', 'set shade', 'print',
+    'set text size', 'set text color', 'print', 'wait', 'store in box 1',
+    'store in box 2', 'wait', 'action']
+BASIC_STYLE_2ARG = ['arc', 'set xy', 'fill screen', 'store in']
+BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pen size', 'color', 'shade',
+    'text color', 'text size', 'box 1', 'box 2', 'string', 'left pos', 
+    'top pos', 'right pos', 'bottom pos', 'width', 'height']
+NUMBER_STYLE = ['plus', 'multiply', 'random']
+NUMBER_STYLE_PORCH = ['minus', 'divide', 'mod']
+NUMBER_STYLE_1ARG = ['square root']
+COMPARE_STYLE = ['greater than', 'less than', 'equal to']
+BOOLEAN_STYLE = ['and', 'or']
+NOT_STYLE = ['not']
+FLOW_STYLE = ['forever', 'hspace']
+FLOW_STYLE_1ARG = ['repeat']
+FLOW_STYLE_BOOLEAN = ['if else']
+TURTLE_PALETTE = ['clean', 'forward', 'back', 'left', 'right', 'seth', 'show',
     'set_scale', 'xcor', 'ycor', 'heading']
-PEN_PALETTE = ['pen up','pen down']
-NUMBER_PALETTE = ['number']
-BLOCKS_PALETTE = ['start', 'string', 'store in box 1']
-FLOW_PALETTE = []
-MISC_PALETTE = []
-PORTFOLIO_PALETTE = []
+PEN_PALETTE = ['pen up','pen down', 'set pen size', 'set text size',
+    'set color', 'set shade', 'fill screen', 'pen size', 'text size', 'color',
+    'shade'] # shade?
+NUMBER_PALETTE = ['number', 'plus', 'minus', 'multiply',
+    'divide', 'mod', 'square root', 'random', 'greater than', 'less than',
+    'equal to', 'and', 'or', 'not', 'print']
+FLOW_PALETTE = ['wait', 'forever', 'repeat', 'if then', 'stop action', 'hspace'
+    'vspace'] # stop stack
+BLOCKS_PALETTE = ['start', 'def action 1', 'action 1', 'def action 2', 
+    'action 2', 'def action', 'action', 'store in box 1', 'box 1',
+    'store in box 2', 'box 2', 'store in', 'box', 'string'] # hat, stack...
+MISC_PALETTE = ['left pos', 'top pos', 'right pos', 'bottom pos', 'width', 
+    'height'] # hres, vres
+PORTFOLIO_PALETTE = ['hide blocks']
 
 TURTLE_COLORS = ["#00FF00","#00A000"]
 PEN_COLORS = ["#00FFFF","#00A0A0"]
@@ -71,35 +89,64 @@ SELECTED_COLOR = "#0000FF"
 SELECTED_STROKE_WIDTH = 2.0
 
 #
-# default values
+# block name dictionary
+#
+
+BLOCK_NAMES = {'clean':_('clean'), 'forward':_('forward'), 'back':_('back'),
+    'left':_('left'), 'right':_('right'), 'set heading':_('set heading'),
+    'show':_('show'), 'set_scale':_('set_scale'), 'xcor':_('xcor'),
+    'ycor':_('ycor'), 'heading':_('heading'), 'pen up':_('pen up'),
+    'pen down':_('pen down'), 'set pen size':_('set pen size'),
+    'set text size':_('set text size'), 'set color':_('set color'),
+    'set shade':_('set shade'), 'fill screen':_('fill screen'),
+    'pen size':_('pen size'), 'text size':_('text size'), 'color':_('color'),
+    'plus':'+', 'minus':'–', 'multiply':'×', 'divide':'/', 'mod':_('mod'), 
+    'random':_('random'), 'square root':'√', 'less than':'&lt;',
+    'greater than':'&gt;', 'equal to':'=', 'and':_('and'), 'or':_('or'),
+    'not':_('not'), 'print':_('print'), 'wait':_('wait'),
+    'forever':_('forever'), 'repeat':_('repeat'), 'if then':_('if then'),
+    'stop action':_('stop action'), 'hspace':_(''), 'vspace':_(''),
+    'start':_('start'), 'def action 1':_('action 1'), 'action 1':_('action 1'),
+    'def action 2':_('action 2'), 'action 2':_('action 2'),
+    'def action':_('action'), 'action':_('action'),
+    'store in box 1':_('store in box 1'), 'box 1':_('box 1'),
+    'store in box 2':_('store in box 2'), 'box 2':_('box 2'), 
+    'store in':_('store in'), 'box':_('box'), 'string':_('string'), 
+    'left pos':_('left'), 'top pos':_('top'), 'right pos':_('right'), 
+    'bottom pos':_('bottom'), 'width':_('width'), 'height':_('height'),
+    'hide blocks':_('hide blocks')}
+
+#
+# block default values
 #
 
 DEFAULTS = {'forward':[100], 'back':[100], 'left':[90], 'right':[90], 
-            'arc':[90,100], 'seth':[0], 'set scale':[33], 'show':[_('text')],
-            'set pen size':[5], 'set text size':[32], 'set color':[0],
-            'set shade':[50], 'fill screen':[60,80], 'number':[100],
-            'random':[0,100], 'wait':[1], 'repeat':[4], 'set xy':[0,0], 
-            'store in':[_('box'),100]}
+    'arc':[90,100], 'seth':[0], 'set scale':[33], 'show':[_('text')],
+    'set pen size':[5], 'set text size':[32], 'set color':[0],
+    'set shade':[50], 'fill screen':[60,80], 'number':[100],
+    'random':[0,100], 'wait':[1], 'repeat':[4], 'set xy':[0,0], 
+    'store in':[_('box'),100]}
+
 #
 # 'dead key' Unicode dictionaries
 #
 
 DEAD_KEYS = ['grave','acute','circumflex','tilde','diaeresis','abovering']
-DEAD_DICTS = [{'A':192,'E':200,'I':204,'O':210,'U':217,'a':224,'e':232,'i':236,\
+DEAD_DICTS = [{'A':192,'E':200,'I':204,'O':210,'U':217,'a':224,'e':232,'i':236,
                'o':242,'u':249},
-              {'A':193,'E':201,'I':205,'O':211,'U':218,'a':225,'e':233,'i':237,\
+              {'A':193,'E':201,'I':205,'O':211,'U':218,'a':225,'e':233,'i':237,
                'o':243,'u':250},
-              {'A':194,'E':202,'I':206,'O':212,'U':219,'a':226,'e':234,\
+              {'A':194,'E':202,'I':206,'O':212,'U':219,'a':226,'e':234,
                'i':238,'o':244,'u':251},
               {'A':195,'O':211,'N':209,'U':360,'a':227,'o':245,'n':241,'u':361},
-              {'A':196,'E':203,'I':207,'O':211,'U':218,'a':228,'e':235,\
+              {'A':196,'E':203,'I':207,'O':211,'U':218,'a':228,'e':235,
                'i':239,'o':245,'u':252},
               {'A':197,'a':229}]
-NOISE_KEYS = ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', 'Pause',\
-              'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift', 'KP_Divide',\
-              'Escape', 'Return', 'KP_Page_Up', 'Up', 'Down', 'Menu',\
-              'Left', 'Right', 'KP_Home', 'KP_End', 'KP_Up', 'Super_L',\
-              'KP_Down', 'KP_Left', 'KP_Right', 'KP_Page_Down', 'Scroll_Lock',\
+NOISE_KEYS = ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', 'Pause',
+              'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift', 'KP_Divide',
+              'Escape', 'Return', 'KP_Page_Up', 'Up', 'Down', 'Menu',
+              'Left', 'Right', 'KP_Home', 'KP_End', 'KP_Up', 'Super_L',
+              'KP_Down', 'KP_Left', 'KP_Right', 'KP_Page_Down', 'Scroll_Lock',
               'Page_Down', 'Page_Up']
 WHITE_SPACE = ['space','Tab']
 

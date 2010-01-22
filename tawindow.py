@@ -873,10 +873,10 @@ class TurtleArtWindow():
         gobject.idle_add(doevalstep, self.lc)
 
     """
-    # phased out
     filter out blocks
     """
     def _blocks(self):
+        print ">>>>>>>>>>>>>>>>>>> DEPRCIATED: _blocks()"
         return [spr for spr in self.sprite_list.list if spr.type == 'block']
 
     """

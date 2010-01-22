@@ -20,7 +20,7 @@
 #THE SOFTWARE.
 
 from constants import *
-import sprite_factory
+from sprite_factory import *
 import sprites
 from gettext import gettext as _
 
@@ -90,7 +90,7 @@ class Block:
         else:
             print "new block: %s %s (%d %d)" % (name, labels[0], x, y)
 
-        svg = sprite_factory.SVG()
+        svg = SVG()
         if name in TURTLE_PALETTE:
             svg.set_colors(TURTLE_COLORS)
         elif name in PEN_PALETTE:
@@ -147,9 +147,76 @@ class Block:
                           ('num',False,self.width-xoff,54), 
                           ('flow',False,0,self.height-yoff))
         elif name in BOX_STYLE:
-            svg.expand(40,0)
+            svg.expand(60,0)
             self._make_basic_box(sprite_list, svg, x, y)
             self.docks = (('num',True,0,12),('unavailable',False,0,12))
+        elif name in NUMBER_STYLE:
+            svg.expand(25,0)
+            svg.set_innie([True,True])
+            svg.set_outie(True)
+            svg.set_tab(False)
+            svg.set_slot(False)
+            self._make_basic_block(sprite_list, svg, x, y)
+            self.docks = (('num',True,0,12), ('num',False,self.width-xoff,12),
+                          ('num',False,self.width-xoff,54)) 
+        elif name in NUMBER_STYLE_1ARG:
+            svg.expand(25,0)
+            svg.set_innie([True])
+            svg.set_outie(True)
+            svg.set_tab(False)
+            svg.set_slot(False)
+            self._make_basic_block(sprite_list, svg, x, y)
+            self.docks = (('num',True,0,12),('num',False,self.width-xoff,12)) 
+        elif name in NUMBER_STYLE_PORCH:
+            svg.expand(25,0)
+            svg.set_innie([True,True])
+            svg.set_outie(True)
+            svg.set_tab(False)
+            svg.set_slot(False)
+            svg.set_porch(True)
+            self._make_basic_block(sprite_list, svg, x, y)
+            xoff += svg._porch
+            self.docks = (('num',True,0,12), ('num',False,self.width-xoff,12),
+                          ('num',False,self.width-xoff,54)) 
+        elif name in COMPARE_STYLE:
+            self._make_boolean_compare(sprite_list, svg, x, y)
+            self.docks = (('bool',True,0,self.height-12),
+                          ('num',False,self.width-xoff,12),
+                          ('num',False,self.width-xoff,54)) 
+        elif name in BOOLEAN_STYLE:
+            self._make_boolean_and_or(sprite_list, svg, x, y)
+            self.docks = (('bool',False,0,self.height-12),
+                          ('bool',False,self.width-xoff,12))
+        elif name in NOT_STYLE:
+            self._make_boolean_not(sprite_list, svg, x, y)
+            self.docks = (('bool',True,0,self.height-12),
+                          ('bool',False,self.width-xoff,12))
+        elif name in FLOW_STYLE:
+            svg.expand(25,0)
+            svg.set_slot(True)
+            self._make_basic_flow(sprite_list, svg, x, y)
+            self.docks = (('flow',True,0,2),
+                          ('flow',False,self.width/2, self.height-yoff))
+        elif name in FLOW_STYLE_1ARG:
+            svg.expand(25,0)
+            svg.set_slot(True)
+            svg.set_tab(True)
+            svg.set_innie([True])
+            self._make_basic_flow(sprite_list, svg, x, y)
+            self.docks = (('flow',True,0,2),
+                          ('num',False,self.width-xoff,12),
+                          ('flow',False, 0, self.height-yoff)
+                          ('flow',False,self.width/2, self.height-yoff))
+        elif name in FLOW_STYLE_BOOLEAN:
+            svg.expand(25,0)
+            svg.set_slot(True)
+            svg.set_tab(True)
+            svg.set_boolean(True)
+            self._make_basic_flow(sprite_list, svg, x, y)
+            self.docks = (('flow',True,0,2),
+                          ('bool',False,self.width-xoff,12),
+                          ('flow',False, 0, self.height-yoff)
+                          ('flow',False,self.width/2, self.height-yoff))
         else:
             svg.expand(40,0)
             self._make_basic_block(sprite_list, svg, x, y)
@@ -157,9 +224,11 @@ class Block:
             print "don't know how to create a block for %s" % (name)
 
         if len(labels) > 0:
-            self.spr.set_label(_(labels[0]))
-            for label in labels:
-                self.spr.set_label(label, labels.index(label))
+            if BLOCK_NAMES.has_key(name):
+                self.spr.set_label(BLOCK_NAMES[name])
+            for i, label in enumerate(labels):
+                if i > 0:
+                    self.spr.set_label(label, labels[i])
 
         self.type = 'block'
         if DEFAULTS.has_key(name):
@@ -168,21 +237,55 @@ class Block:
             self.defaults = []
 
     def _make_basic_block(self, sprite_list, svg, x, y):
-        self.shape = sprite_factory.svg_str_to_pixbuf(svg.basic_block())
+        self.shape = svg_str_to_pixbuf(svg.basic_block())
         self.width = svg.get_width()
         self.height = svg.get_height()
         svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         svg.set_stroke_color(SELECTED_COLOR)
-        self.selected_shape =\
-                     sprite_factory.svg_str_to_pixbuf(svg.basic_block())
+        self.selected_shape = svg_str_to_pixbuf(svg.basic_block())
         self.spr = sprites.Sprite(sprite_list, x, y, self.shape)
 
     def _make_basic_box(self, sprite_list, svg, x, y):
-        self.shape = sprite_factory.svg_str_to_pixbuf(svg.basic_box())
+        self.shape = svg_str_to_pixbuf(svg.basic_box())
         self.width = svg.get_width()
         self.height = svg.get_height()
         svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         svg.set_stroke_color(SELECTED_COLOR)
-        self.selected_shape = sprite_factory.svg_str_to_pixbuf(svg.basic_box())
+        self.selected_shape = svg_str_to_pixbuf(svg.basic_box())
         self.spr = sprites.Sprite(sprite_list, x, y, self.shape)
 
+    def _make_basic_flow(self, sprite_list, svg, x, y):
+        self.shape = svg_str_to_pixbuf(svg.basic_flow())
+        self.width = svg.get_width()
+        self.height = svg.get_height()
+        svg.set_stroke_width(SELECTED_STROKE_WIDTH)
+        svg.set_stroke_color(SELECTED_COLOR)
+        self.selected_shape = svg_str_to_pixbuf(svg.basic_flow())
+        self.spr = sprites.Sprite(sprite_list, x, y, self.shape)
+
+    def _make_boolean_compare(self, sprite_list, svg, x, y):
+        self.shape = svg_str_to_pixbuf(svg.boolean_compare())
+        self.width = svg.get_width()
+        self.height = svg.get_height()
+        svg.set_stroke_width(SELECTED_STROKE_WIDTH)
+        svg.set_stroke_color(SELECTED_COLOR)
+        self.selected_shape = svg_str_to_pixbuf(svg.boolean_compare())
+        self.spr = sprites.Sprite(sprite_list, x, y, self.shape)
+
+    def _make_boolean_and_or(self, sprite_list, svg, x, y):
+        self.shape = svg_str_to_pixbuf(svg.boolean_and_or())
+        self.width = svg.get_width()
+        self.height = svg.get_height()
+        svg.set_stroke_width(SELECTED_STROKE_WIDTH)
+        svg.set_stroke_color(SELECTED_COLOR)
+        self.selected_shape = svg_str_to_pixbuf(svg.boolean_and_or())
+        self.spr = sprites.Sprite(sprite_list, x, y, self.shape)
+
+    def _make_boolean_not(self, sprite_list, svg, x, y):
+        self.shape = svg_str_to_pixbuf(svg.boolean_not())
+        self.width = svg.get_width()
+        self.height = svg.get_height()
+        svg.set_stroke_width(SELECTED_STROKE_WIDTH)
+        svg.set_stroke_color(SELECTED_COLOR)
+        self.selected_shape = svg_str_to_pixbuf(svg.boolean_not())
+        self.spr = sprites.Sprite(sprite_list, x, y, self.shape)
