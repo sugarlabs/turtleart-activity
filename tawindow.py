@@ -102,6 +102,7 @@ class TurtleArtWindow():
         self.keypress = ""
         self.keyvalue = 0
         self.dead_key = ""
+        self.firstkey = True
         self.area = self.window.window
         self.gc = self.area.new_gc()
         # on an OLPC-XO-1, there is a scaling factor
@@ -168,9 +169,9 @@ class TurtleArtWindow():
     change the icon for user-defined blocks after Python code is loaded
     """
     def set_userdefined(self):
-        for spr in self.sprite_list.list:
-            if hasattr(spr,'proto') and spr.proto.name == 'nop':
-                setimage(spr,self.media_shapes['pythonloaded'])
+        for blk in self.block_list.list:
+            if blk.name == 'nop':
+                blk.set_image(self.media_shapes['pythonloaded'])
         self.nop = 'pythonloaded'
 
     """
@@ -178,11 +179,13 @@ class TurtleArtWindow():
     """
     def hideshow_button(self):
         if self.hide is False: 
-            for b in self._blocks(): b.set_layer(HIDE_LAYER)
+            for b in self.block_list.list:
+                b.spr.set_layer(HIDE_LAYER)
             self._hide_palette() 
             self.hide = True
         else:
-            for b in self._blocks(): b.set_layer(BLOCK_LAYER)
+            for b in self.block_list.list:
+                b.spr.set_layer(BLOCK_LAYER)
             self.show_palette()
             self.hide = False
         self.turtle.canvas.inval()
@@ -194,19 +197,19 @@ class TurtleArtWindow():
     def run_button(self, time):
         print "you better run, turtle, run!!"
         # look for the start block
-        for b in self._blocks():
-            if self._find_start_stack(b):
+        for b in self.block_list.list:
+            if self._find_start_stack(b.spr):
                 self.step_time = time
                 if hasattr(self, 'activity'):
                     self.activity.recenter()
-                self._run_stack(b)
+                self._run_stack(b.spr)
                 return
         # no start block, so run a stack that isn't a hat
-        for b in self._blocks():
-            if self._find_block_to_run(b):
-                print "running " + b.proto.name
+        for b in self.blocks_list.list:
+            if self._find_block_to_run(b.spr):
+                print "running " + b.name
                 self.step_time = time
-                self._run_stack(b)
+                self._run_stack(b.spr)
         return
 
     """
@@ -221,6 +224,7 @@ class TurtleArtWindow():
         else:
             self.status_spr.set_layer(HIDE_LAYER)
         spr = self.sprite_list.find_sprite((x,y))
+        blk = self.block_list.spr_to_block(spr)
         print "found %s at (%d,%d)" % (str(spr),x,y)
         self.x, self.y = x,y
         self.dx = 0
@@ -229,17 +233,17 @@ class TurtleArtWindow():
             return True
         if hasattr(spr, 'type'):
             print "type: %s" % (spr.type)
-        if spr.type == "canvas":
-            spr.set_layer(CANVAS_LAYER)
-            return True
-        elif spr.type == 'selbutton':
-            self._select_category(spr)
-        elif spr.type == 'category':
-            self._block_selector_pressed(x,y)
-        elif spr.type == 'block':
+            if spr.type == "canvas":
+                spr.set_layer(CANVAS_LAYER)
+                return True
+            elif spr.type == 'selbutton':
+                self._select_category(spr)
+            elif spr.type == 'category':
+                self._block_selector_pressed(x,y)
+            elif spr.type == 'turtle':
+                self._turtle_pressed(x,y)
+        elif blk is not None:
             self._block_pressed(mask,x,y,spr)
-        elif spr.type == 'turtle':
-            self._turtle_pressed(x,y)
         self.spr = spr
 
     """
@@ -361,7 +365,7 @@ class TurtleArtWindow():
     """
     def _find_start_stack(self, spr):
         top = self._find_top_block(spr)
-        if spr.proto.name == 'start':
+        if self.block_list.spr_to_block(top).name == 'start':
             return True
         else:
             return False
@@ -393,41 +397,48 @@ class TurtleArtWindow():
 
         self.block_operation = 'move'
         spr = self.draggroup[0]
-        if self.block_list.spr_to_block(spr) is not None:
+        blk = self.block_list.spr_to_block(spr)
+        if blk is not None:
             self.spr = spr
             dragx, dragy = self.dragpos
             if mdx != 0 or mdy != 0:
                 dx,dy = mdx,mdy
             else:
-                dx,dy = x-dragx-spr.x,y-dragy-spr.y
+                (sx,sy) = spr.get_xy()
+                dx,dy = x-dragx-sx,y-dragy-sy
             # skip if there was a move of 0,0
             if dx == 0 and dy == 0:
                 return
             # drag entire stack if moving lock block
-            if spr.proto.name == 'lock':
-                self.draggroup = findgroup(find_top_block(spr))
+            
+            if blk.name == 'lock':
+                self.draggroup = findgroup(self._find_top_block(spr),
+                                           self.block_list)
             else:
-                self.draggroup = findgroup(spr)
+                self.draggroup = findgroup(spr, self.block_list)
             # check to see if any block ends up with a negative x
             for b in self.draggroup:
-                if b.x+dx < 0:
-                    dx += -(b.x+dx)
+                (bx, by) = b.get_xy()
+                if bx+dx < 0:
+                    dx += -(bx+dx)
             # move the stack
             for b in self.draggroup:
-                b.move((b.x+dx, b.y+dy))
+                (bx, by) = b.get_xy()
+                b.move((bx+dx, by+dy))
         if self.turtle_list.spr_to_turtle(spr) is not None:
             type,dragx,dragy = self.dragpos
+            (sx,sy) = spr.get_xy()
             if type == 'move':
                 if mdx != 0 or mdy != 0:
                     dx,dy = mdx,mdy
                 else:
-                    dx,dy = x-dragx-spr.x,y-dragy-spr.y
-                spr.move((spr.x+dx, spr.y+dy))
+                    dx,dy = x-dragx-sx,y-dragy-sy
+                spr.move((sx+dx, sy+dy))
             else:
                 if mdx != 0 or mdy != 0:
                     dx,dy = mdx,mdy
                 else:
-                    dx,dy = x-spr.x-30,y-spr.y-30
+                    dx,dy = x-sx-30,y-sy-30
                 seth(self.turtle, int(dragx+atan2(dy,dx)/DEGTOR+5)/10*10)
         if mdx != 0 or mdy != 0:
             dx,dy = 0,0
@@ -439,9 +450,9 @@ class TurtleArtWindow():
     get_proto_from_category
     """
     def _get_proto_from_category(self, x, y):
+        (sx,sy) = self.category_spr.get_xy()
         pixel = self.current_category.get_pixel(self.current_category.mask,
-                                                x-self.category_spr.x,
-                                                y-self.category_spr.y)
+                                                x-sx, y-sy)
         index = ((pixel%256)>>3)-1
         if index==0:
             return 'hide'
@@ -456,7 +467,18 @@ class TurtleArtWindow():
     def _show_popup(self, x, y):
         spr = self.sprite_list.find_sprite((x,y))
         blk = self.block_list.spr_to_block(spr)
-        if spr and spr.type == 'category':
+        if spr and blk is not None:
+            if self.timeout_tag[0] == 0:
+                self.timeout_tag[0] = self._do_show_popup(blk.name)
+                self.spr = spr
+            else:
+                if self.timeout_tag[0] > 0:
+                    try:
+                        gobject.source_remove(self.timeout_tag[0])
+                        self.timeout_tag[0] = 0
+                    except:
+                        self.timeout_tag[0] = 0
+        elif spr and spr.type == 'category':
             proto = self._get_proto_from_category(x, y)
             if proto and proto!='hide':
                 if self.timeout_tag[0] == 0:
@@ -473,17 +495,6 @@ class TurtleArtWindow():
         elif spr and spr.type == 'selbutton':
             if self.timeout_tag[0] == 0:
                 self.timeout_tag[0] = self._do_show_popup(spr.name)
-                self.spr = spr
-            else:
-                if self.timeout_tag[0] > 0:
-                    try:
-                        gobject.source_remove(self.timeout_tag[0])
-                        self.timeout_tag[0] = 0
-                    except:
-                        self.timeout_tag[0] = 0
-        elif spr and blk is not None:
-            if self.timeout_tag[0] == 0:
-                self.timeout_tag[0] = self._do_show_popup(blk.name)
                 self.spr = spr
             else:
                 if self.timeout_tag[0] > 0:
@@ -613,7 +624,8 @@ class TurtleArtWindow():
                             self._jog_block(10,0)
                         elif keyname == 'KP_Page_Down':
                             if self.draggroup == None:
-                                self.draggroup = findgroup(self.spr)
+                                self.draggroup = findgroup(self.spr,
+                                                           self.block_list)
                             for b in self.draggroup: b.hide()
                             self.draggroup = None
                     elif self.spr.type == 'selbutton':
@@ -624,7 +636,8 @@ class TurtleArtWindow():
                             (x,y) = self.window.get_pointer()
                             self._block_selector_pressed(x, y)
                             for b in self.draggroup:
-                               b.move((b.x+200, b.y))
+                               (bx, by) = b.get_xy()
+                               b.move((bx+200, by))
                             self.draggroup = None
                 return True
         if self.selected_block is None:
@@ -698,10 +711,11 @@ class TurtleArtWindow():
         spr = self.draggroup[0]
         if self.turtle_list.spr_to_turtle(spr) is not None:
             print "clicked on a turtle"
-            self.turtle.xcor = self.turtle.spr.x-self.turtle.canvas.x- \
-                self.turtle.canvas.width/2+30
-            self.turtle.ycor = self.turtle.canvas.height/2-self.turtle.spr.y+ \
-                self.turtle.canvas.y-30
+            (tx, ty) = self.turtle.spr.get_xy()
+            self.turtle.xcor = tx-self.turtle.cx- \
+                self.turtle.canvas._width/2+30
+            self.turtle.ycor = self.turtle.canvas._height/2-ty+ \
+                self.turtle.cy-30
             move_turtle(self.turtle)
             display_coordinates(self)
             self.draggroup = None
@@ -713,34 +727,31 @@ class TurtleArtWindow():
             return
         if self.block_operation=='new':
             for b in self.draggroup:
-                b.move((b.x+200, b.y))
+                (bx, by) = b.get_xy()
+                b.move((bx+200, by))
         self._snap_to_dock()
         for b in self.draggroup: b.set_layer(BLOCK_LAYER)
         self.draggroup = None
         if self.block_operation=='click':
-            if self.spr.proto.name=='number':
+            blk = self.block_list.spr_to_block(self.spr)
+            if blk is not None and blk.name=='number':
                 self.selected_block = spr
-                self.selected_block.set_shape(
-                    self.block_list.spr_to_block(
-                        self.selected_block).selected_shape)
+                self.selected_block.set_shape(blk.selected_shape)
                 self.firstkey = True
-            elif self.defdict.has_key(spr.proto.name):
+            elif blk is not None and self.defdict.has_key(blk.name):
                 self.selected_block = spr
-                if self.spr.proto.name=='string':
-                    self.selected_block.set_shape(
-                        self.block_list.spr_to_block(
-                            self.selected_block).selected_shape)
+                if blk.name=='string':
+                    self.selected_block.set_shape(blk.selected_shape)
                     self.firstkey = True
-                elif self.spr.proto.name in self.importblocks:
+                elif blk.name in self.importblocks:
                     self._import_from_journal(spr)
-            elif self.spr.proto.name=='nop' and self.myblock==None:
+            elif blk is not None and blk.name=='nop' and self.myblock==None:
                 self.activity.import_py()
             else:
                 # mark block as selected
                 self.selected_block = spr
-                self.selected_block.set_shape(
-                        self.block_list.spr_to_block(
-                            self.selected_block).selected_shape)
+                if blk is not None:
+                    self.selected_block.set_shape(blk.selected_shape)
                 spr.set_selected(True)
                 self._run_stack(spr)
 
@@ -748,16 +759,17 @@ class TurtleArtWindow():
     click block
     """
     def _click_block(self):
-        if self.spr.proto.name=='number':
+        blk = self.block_list.spr_to_block(self.spr)
+        if blk is not None and blk.name=='number':
             self.selected_block = self.spr
             self.firstkey = True
-        elif self.defdict.has_key(self.spr.proto.name):
+        elif blk is not None and self.defdict.has_key(blk.name):
             self.selected_block = self.spr
-            if self.spr.proto.name=='string':
+            if blk.name=='string':
                 self.firstkey = True
-            elif self.spr.proto.name in self.importblocks:
+            elif blk.name in self.importblocks:
                 self._import_from_journal(self.spr)
-        elif self.spr.proto.name=='nop' and self.myblock==None:
+        elif blk is not None and blk.name=='nop' and self.myblock==None:
             self.activity.import_py()
         else: self._run_stack(self.spr)
 
@@ -815,10 +827,11 @@ class TurtleArtWindow():
                 break
         if d<200:
             for b in self.draggroup:
-                b.move((b.x+best_xy[0],b.y+best_xy[1]))
+                (bx, by) = b.get_xy()
+                b.move((bx+best_xy[0],by+best_xy[1]))
             block_in_dock = best_you.connections[best_your_dockn]
             if block_in_dock is not None:
-                for b in findgroup(block_in_dock):
+                for b in findgroup(block_in_dock, self.block_list):
                     b.hide()
             best_you.connections[best_your_dockn] = my_block.spr
             if my_block.connections is not None:
@@ -836,12 +849,13 @@ class TurtleArtWindow():
                 if result == gtk.RESPONSE_ACCEPT:
                     dsobject = chooser.get_selected_object()
                     # change block graphic to indicate that object is "loaded"
-                    if spr.proto.name == 'journal':
+                    blk = self.block_list.spr_to_block(spr)
+                    if blk.name == 'journal':
                         self._load_image(dsobject, spr)
-                    elif spr.proto.name == 'audiooff':
-                        setimage(spr,self.media_shapes['audioon'])
+                    elif blk.name == 'audiooff':
+                        spr.set_image(self.media_shapes['audioon'])
                     else:
-                        setimage(spr, self.media_shapes['decson'])
+                        spr.set_image(self.media_shapes['decson'])
                     spr.ds_id = dsobject.object_id
                     dsobject.destroy()
             finally:
@@ -856,10 +870,11 @@ class TurtleArtWindow():
     def _run_stack(self, spr):
         self.lc.ag = None
         top = self._find_top_block(spr)
-        run_blocks(self.lc, top, self._blocks(), True)
+        run_blocks(self.lc, top, self.block_list.list, True)
         gobject.idle_add(doevalstep, self.lc)
 
     """
+    # phased out
     filter out blocks
     """
     def _blocks(self):
@@ -900,37 +915,27 @@ class TurtleArtWindow():
 
         newspr.set_layer(TOP_LAYER)
         self.dragpos = 20,20
-        newspr.type = 'block' # phasing this out
-        newspr.proto = proto  # phasing this out
-        if self.defdict.has_key(newspr.proto.name):
+        newblk.primname = proto.primname
+        if self.defdict.has_key(newblk.name):
             newspr.labels[0]=self.defdict[newblk.name]
-        newspr.connections = [None]*len(proto.docks)  # phasing this out
         newblk.connections = [None]*len(newblk.docks)
-        print "new %s" % (newblk.connections)
+        print "%s: %s" % (newblk.name, newblk.connections)
         for i in range(len(newblk.defaults)):
             dock = newblk.docks[i+1]
-            print dock
             argproto = self.protodict[self.valdict[dock[0]]]
-            print argproto
             argdock = argproto.docks[0]
-            print argdock
-            nx,ny = newspr.x+dock[2]-argdock[2],newspr.y+dock[3]-argdock[3]
+            (sx, sy) = newspr.get_xy()
+            nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
             argblk = block.Block(self.block_list, self.sprite_list,
                                  argproto.name, nx, ny)
             argspr = argblk.spr
-            argspr.type = 'block'
-            argspr.proto = argproto
             argspr.set_label(str(newblk.defaults[i]))
             argspr.set_layer(TOP_LAYER)
-            argspr.connections = [newspr,None] # phasing this out
             argblk.connections = [newspr,None]
-            newspr.connections[i+1] = argspr # phasing this out
             newblk.connections[i+1] = argspr
-            print "%s %s" % (argblk.name, argblk.connections)
-            print "%s %s" % (newblk.name, newblk.connections)
-        self.draggroup = findgroup(newspr)
+            print "%s: %s" % (argblk.name, argblk.connections)
+        self.draggroup = findgroup(newspr, self.block_list)
         self.block_operation = 'new' 
-
 
     """
     block pressed
@@ -938,13 +943,16 @@ class TurtleArtWindow():
     """
     def _block_pressed(self, mask, x, y, spr):
         if spr is not None:
-            self.draggroup = findgroup(spr)
+            self.draggroup = findgroup(spr, self.block_list)
             for b in self.draggroup: b.set_layer(TOP_LAYER)
-            if spr.connections[0] != None and spr.proto.name == 'lock':
+            if self.block_list.spr_to_block(spr).connections[0] is not None and\
+                           self.block_list.spr_to_block(spr).name == 'lock':
                 b = self._find_top_block(spr)
-                self.dragpos = x-b.x,y-b.y
+                (bx, by) = b.get_xy()
+                self.dragpos = x-bx,y-by
             else:
-                self.dragpos = x-spr.x,y-spr.y
+                (sx, sy) = spr.get_xy()
+                self.dragpos = x-sx,y-sy
                 self._disconnect(spr)
 
     """
@@ -963,14 +971,13 @@ class TurtleArtWindow():
     turtle pressed
     """
     def _turtle_pressed(self, x, y):
-        dx,dy = x-self.turtle.spr.x-30,y-self.turtle.spr.y-30
+        (tx, ty) = self.turtle.spr.get_xy()
+        dx, dy = x-tx-30, y-ty-30
         if dx*dx+dy*dy > 200:
-            self.dragpos = ('turn', \
-            self.turtle.heading-atan2(dy,dx)/DEGTOR,0)
+            self.dragpos = ('turn', self.turtle.heading-atan2(dy,dx)/DEGTOR, 0)
         else:
-            self.dragpos = ('move', x-self.turtle.spr.x,y-self.turtle.spr.y)
+            self.dragpos = ('move', x-tx, y-ty)
         self.draggroup = [self.turtle.spr]
-
 
     """
     Replace Journal block graphic with preview image 
@@ -979,27 +986,29 @@ class TurtleArtWindow():
         from talogo import get_pixbuf_from_journal
         pixbuf = get_pixbuf_from_journal(picture,spr.width,spr.height)
         if pixbuf is not None:
-            setimage(spr, pixbuf)
+            spr.set_image(pixbuf)
         else:
-            setimage(spr, self.media_shapes['texton'])
+            spr.set_image(self.media_shapes['texton'])
 
     """
     dock_dx_dy 
     """
     def _dock_dx_dy(self, block1, dock1n, block2, dock2n):
+        print "comparing %s %d, %s %d" % (block1.name, dock1n,
+                                          block2.name, dock2n)
         dock1 = block1.docks[dock1n]
         dock2 = block2.docks[dock2n]
         d1type, d1dir, d1x, d1y = dock1[0:4]
         d2type, d2dir, d2x, d2y = dock2[0:4]
-        '''
-        if (d2type!='num') or (dock2n!=0):
+        print "%s %s %d %d" % (d1type, str(d1dir), d1x, d1y)
+        print "%s %s %d %d" % (d2type, str(d2dir), d2x, d2y)
+        if (d2type is not 'num') or (dock2n is not 0):
             if block1.connections is not None and dock1n < block1.connections\
                 and block1.connections[dock1n] is not None:
                     return (100,100)
             if block2.connections is not None and dock2n < block2.connections\
                 and block2.connections[dock2n] is not None:
                     return (100,100)
-        '''
         if block1 == block2:
             print "block1 == block2"
             return (100,100)
@@ -1031,10 +1040,12 @@ class TurtleArtWindow():
         if d1dir == d2dir:
             print "d1dir == d2dir"
             return (100,100)
-        display_coordinates(self, (block1.spr.x+d1x)-(block2.spr.x+d2x),
-                (block1.spr.y+d1y)-(block2.spr.y+d2y), 0)
-        return ((block1.spr.x+d1x)-(block2.spr.x+d2x),
-                (block1.spr.y+d1y)-(block2.spr.y+d2y))
+        (b1x, b1y) = block1.spr.get_xy()
+        (b2x, b2y) = block2.spr.get_xy()
+        display_coordinates(self, (b1x+d1x)-(b2x+d2x),
+                (b1y+d1y)-(b2y+d2y), 0)
+        return ((b1x+d1x)-(b2x+d2x),
+                (b1y+d1y)-(b2y+d2y))
 
     """
     magnitude 
@@ -1062,17 +1073,20 @@ class TurtleArtWindow():
     """
     def _jog_block(self,dx,dy):
         # drag entire stack if moving lock block
-        if self.spr.proto.name == 'lock':
-            self.draggroup = findgroup(self._find_top_block(self.spr))
+        if self.block_list.spr_to_block(spr).name == 'lock':
+            self.draggroup = findgroup(self._find_top_block(self.spr),
+                                       self.block_list)
         else:
-            self.draggroup = findgroup(self.spr)
+            self.draggroup = findgroup(self.spr, self.block_list)
         # check to see if any block ends up with a negative x
         for b in self.draggroup:
-            if b.x+dx < 0:
-                dx += -(b.x+dx)
+            (bx, by) = b.get_xy()
+            if bx+dx < 0:
+                dx += -(bx+dx)
         # move the stack
         for b in self.draggroup:
-            b.move((b.x+dx, b.y-dy))
+            (bx, by) = b.get_xy()
+            b.move((bx+dx, by-dy))
         self._snap_to_dock()
         self.draggroup = None
 

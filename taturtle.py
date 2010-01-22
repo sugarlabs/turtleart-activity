@@ -60,6 +60,7 @@ def tNew(tw,w,h):
     t.tw, t.width, t.height = tw, w, h
     t.canvas = sprites.Sprite(tw.sprite_list, 0, 0, 
                               gtk.gdk.Pixmap(tw.area,w,h,-1))
+    (t.cx,t.cy) = t.canvas.get_xy()
     t.canvas.type = 'canvas'
     t.canvas.set_layer(CANVAS_LAYER)
     t.shapelist = \
@@ -294,9 +295,9 @@ def draw_line(t,x1,y1,x2,y2):
     else: miny,maxy=y2,y1
     w,h=maxx-minx,maxy-miny
     t.canvas.image.draw_line(t.gc,x1,y1,x2,y2)
-    invalt(t,minx-t.pensize*t.tw.coord_scale/2-3, \
-             miny-t.pensize*t.tw.coord_scale/2-3, \
-           w+t.pensize*t.tw.coord_scale+6, \
+    invalt(t,minx-t.pensize*t.tw.coord_scale/2-3,
+             miny-t.pensize*t.tw.coord_scale/2-3,
+           w+t.pensize*t.tw.coord_scale+6,
            h+t.pensize*t.tw.coord_scale+6)
 
 def turn_turtle(t):
@@ -304,12 +305,11 @@ def turn_turtle(t):
 
 def move_turtle(t):
     x,y = t.width/2+int(t.xcor), t.height/2-int(t.ycor)
-    t.spr.move((t.canvas.x+x-30,t.canvas.y+y-30))
-    invalt(t,x-30,y-30,60,60)
+    t.spr.move((t.cx+x-30, t.cy+y-30))
+    invalt(t, x-30, y-30, 60, 60)
 
 def invalt(t,x,y,w,h):
-    rect = gtk.gdk.Rectangle(int(x+t.canvas.x),int(y+t.canvas.y), \
-                             int(w),int(h))
+    rect = gtk.gdk.Rectangle(int(x+t.cx), int(y+t.cy), int(w),int(h))
     t.tw.area.invalidate_rect(rect, False)
 
 

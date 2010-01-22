@@ -71,65 +71,68 @@ def run_blocks(lc, spr, blocks, run_flag):
     # two built-in stacks
     lc.stacks['stack1'] = None
     lc.stacks['stack2'] = None
-    for i in blocks:
-        if i.proto.name=='hat1':
-            lc.stacks['stack1']= readline(lc,blocks_to_code(lc,i))
-        if i.proto.name=='hat2':
-            lc.stacks['stack2']= readline(lc,blocks_to_code(lc,i))
-        if i.proto.name=='hat':
-            if (i.connections[1]!=None):
-                text=i.connections[1].label
-                lc.stacks['stack3'+text]= readline(lc,blocks_to_code(lc,i))
-    code = blocks_to_code(lc,spr)
+    for b in blocks:
+        if b.name=='hat1':
+            lc.stacks['stack1']= readline(lc,blocks_to_code(lc, b))
+        if b.name=='hat2':
+            lc.stacks['stack2']= readline(lc,blocks_to_code(lc, b))
+        if b.name=='hat':
+            if (b.connections[1]!=None):
+                text=b.connections[1].labels[0]
+                lc.stacks['stack3'+text]= readline(lc,blocks_to_code(lc, b))
+    code = blocks_to_code(lc, lc.tw.block_list.spr_to_block(spr))
     if run_flag == True:
         print code
         setup_cmd(lc, code)
     else: return code
 
-def blocks_to_code(lc,spr):
+def blocks_to_code(lc, blk):
+    spr = blk.spr
     if spr==None: return ['%nothing%']
     code = []
-    dock = spr.proto.docks[0]
+    dock = blk.docks[0]
     if len(dock)>4: code.append(dock[4])
-    if spr.proto.primname != '': code.append(spr.proto.primname)
+    if hasattr(blk, 'primname') and blk.primname is not '':
+        code.append(blk.primname)
     else:
-        if spr.proto.name=='number':
+        if blk.name=='number':
             try:
                 code.append(float(spr.labels[0]))
             except:
                 code.append(float(ord(spr.labels[0][0])))
-        elif spr.proto.name=='string' or spr.proto.name=='title':
+        elif blk.name=='string' or blk.name=='title':
             if type(spr.labels[0]) == float or type(spr.labels[0]) == int:
                 if int(spr.labels[0]) == spr.labels[0]:
                     spr.labels[0] = int(spr.labels[0])
                 code.append('#s'+str(spr.labels[0]))
             else:
                 code.append('#s'+spr.labels[0])
-        elif spr.proto.name=='journal':
-            if spr.ds_id != None:
+        elif blk.name=='journal':
+            if spr.ds_id != None: # TODO: put ds_id in blk
                 code.append('#smedia_'+str(spr.ds_id))
             else:
                 code.append('#smedia_None')
-        elif spr.proto.name=='descriptionoff' or \
-             spr.proto.name=='descriptionon':
+        elif blk.name=='descriptionoff' or \
+             blk.name=='descriptionon':
             if spr.ds_id != None:
                 code.append('#sdescr_'+str(spr.ds_id))
             else:
                 code.append('#sdescr_None')
-        elif spr.proto.name=='audiooff' or spr.proto.name=='audio':
+        elif blk.name=='audiooff' or blk.name=='audio':
             if spr.ds_id != None:
                 code.append('#saudio_'+str(spr.ds_id))
             else:
                 code.append('#saudio_None')
         else:
             return ['%nothing%']
-    for i in range(1,len(spr.connections)):
-        b = spr.connections[i]
-        dock = spr.proto.docks[i]
+    for i in range(1,len(blk.connections)):
+        s = blk.connections[i]
+        dock = blk.docks[i]
         if len(dock)>4:
             for c in dock[4]: code.append(c)
-        if b!=None: code.extend(blocks_to_code(lc,b))
-        elif spr.proto.docks[i][0] not in \
+        if s is not None: 
+            code.extend(blocks_to_code(lc, lc.tw.block_list.spr_to_block(s)))
+        elif blk.docks[i][0] not in \
             ['flow', 'numend', 'stringend', 'mediaend', \
             'audioend', 'unavailable', 'logi-']:
             code.append('%nothing%')

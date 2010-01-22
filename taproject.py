@@ -63,7 +63,7 @@ shape_dict = {'journal':'texton', \
 def new_project(tw):
     stop_logo(tw)
     for b in blocks(tw): b.hide()
-    tw.turtle.canvas.set_layer(600)
+    tw.turtle.canvas.set_layer(CANVAS_LAYER)
     clearscreen(tw.turtle)
     tw.save_file_name = None
 
@@ -174,8 +174,8 @@ def load_spr(tw,b):
         print "swapping in a forward block for %s" % (btype)
         proto = tw.protodict['forward']
     blk = block.Block(tw.block_list, tw.sprite_list, 
-                      btype, b[2]+tw.turtle.canvas.x,
-                      b[3]+tw.turtle.canvas.y, [label])
+                      btype, b[2]+tw.turtle.cx,
+                      b[3]+tw.turtle.cy, [label])
     spr = blk.spr
     spr.type = 'block' # phasing out
     spr.proto = proto  # phasing out
@@ -271,8 +271,9 @@ def assemble_data_to_save(tw,save_turtle=True):
             connections = [get_id(tw.block_list, x) for x in b.connections]
         else:
             connections = None
-        data.append((b.id, name, b.spr.x-tw.turtle.canvas.x,
-                     b.spr.y-tw.turtle.canvas.y, connections))
+        (sx, sy) = b.spr.get_xy()
+        data.append((b.id, name, sx-tw.turtle.cx,
+                     sy-tw.turtle.cy, connections))
     if save_turtle is True:
         data.append((-1,'turtle',
                     tw.turtle.xcor,tw.turtle.ycor,tw.turtle.heading,
@@ -305,7 +306,7 @@ def assemble_stack_to_clone(tw):
         spr = tw.spr
     data = []
     if spr is not None and spr.type == 'block':
-        bs = findgroup(find_top_block(spr))
+        bs = findgroup(find_top_block(spr, tw.block_list), tw.block_list)
         for i in range(len(bs)): bs[i].id=i
         for b in bs:
             name = b.proto.name
@@ -318,8 +319,9 @@ def assemble_stack_to_clone(tw):
                 connections = [get_id(x) for x in b.connections]
             else:
                 connections = None
-            data.append((b.id,name,b.x-tw.turtle.canvas.x+20,
-                         b.y-tw.turtle.canvas.y+20,connections))
+            (sx, sy) = b.get_xy()
+            data.append((b.id,name,sx-tw.turtle.cx+20,
+                         sy-tw.turtle.cy+20,connections))
     return data
 
 def save_pict(tw,fname):
@@ -352,18 +354,17 @@ def do_dialog(tw,dialog):
 def blocks(tw): return [spr for spr in tw.sprite_list.list \
                         if spr.type == 'block']
 
-def findgroup(b):
-    group=[b]
-    for b2 in b.connections[1:]:
-        if b2 is not None: group.extend(findgroup(b2))
+def findgroup(spr, block_list):
+    group=[spr]
+    for spr2 in block_list.spr_to_block(spr).connections[1:]:
+        if spr2 is not None: group.extend(findgroup(spr2, block_list))
     return group
 
-def find_top_block(spr):
-    b = spr
-    if hasattr(b,"connections"):
-        while b.connections[0]!=None:
-            b=b.connections[0]
-    return b
+def find_top_block(spr, block_list):
+    blk = block_list.spr_to_block(spr)
+    while blk.connections[0]!=None:
+        blk = block_list.spr_to_block(blk.connections[0])
+    return blk.spr
 
 # start a new project with a start brick
 def load_start(tw):
