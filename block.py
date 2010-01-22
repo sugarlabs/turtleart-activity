@@ -47,6 +47,11 @@ class Blocks:
         if block in self.list:
             self.list.remove(block)
 
+    def print_list(self):
+        for i, block in enumerate(self.list):
+            print "%d: %s" % (i, block.name)
+
+
     #
     # sprite utilities
     #

@@ -80,6 +80,7 @@ def run_blocks(lc, spr, blocks, run_flag):
             if (b.connections[1]!=None):
                 text=b.connections[1].labels[0]
                 lc.stacks['stack3'+text]= readline(lc,blocks_to_code(lc, b))
+    print "spr is %s" % (str(spr))
     code = blocks_to_code(lc, lc.tw.block_list.spr_to_block(spr))
     if run_flag == True:
         print code
@@ -87,7 +88,9 @@ def run_blocks(lc, spr, blocks, run_flag):
     else: return code
 
 def blocks_to_code(lc, blk):
+    print "blk is %s" % (str(blk))
     spr = blk.spr
+    print "spr is %s" % (str(spr))
     if spr==None: return ['%nothing%']
     code = []
     dock = blk.docks[0]

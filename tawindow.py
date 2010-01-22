@@ -119,7 +119,9 @@ class TurtleArtWindow():
         self.fgcolor = self.cm.alloc_color('red')
         self.textcolor = self.cm.alloc_color('blue')
         self.textsize = 32
-        self.selected_block = None
+        self.selected_spr = None
+        self.selected_blk = None
+        # self.selected_turtle = None # in anticipation of multiple turtles
         self.draggroup = None
         self.myblock = None
         self.nop = 'nop'
@@ -219,7 +221,7 @@ class TurtleArtWindow():
         if verbose:
             print "processing remote button press: " + str(x) + " " + str(y)
         self.block_operation = 'click'
-        if self.selected_block is not None:
+        if self.selected_spr is not None:
             self._unselect()
         else:
             self.status_spr.set_layer(HIDE_LAYER)
@@ -278,28 +280,26 @@ class TurtleArtWindow():
     unselect
     """
     def _unselect(self):
-        if self.selected_block.labels[0] in ['-', '.', '-.']:
-            self.selected_block.set_label('0')
+        if self.selected_spr.labels[0] in ['-', '.', '-.']:
+            self.selected_spr.set_label('0')
 
         # put an upper and lower bound on numbers to prevent OverflowError
-        if self.block_list.spr_to_block(self.selected_block).name == 'number'\
-            and self.selected_block.labels[0] is not None:
-        # if self.selected_block.proto.name == 'number' and \
-        #   self.selected_block.labels[0] is not None:
+        if self.block_list.spr_to_block(self.selected_spr).name == 'number'\
+            and self.selected_spr.labels[0] is not None:
             try:
-                i = float(self.selected_block.labels[0])
+                i = float(self.selected_spr.labels[0])
                 if i > 1000000:
-                    self.selected_block.set_label('1')
+                    self.selected_spr.set_label('1')
                     showlabel(self.lc,"#overflowerror")
                 elif i < -1000000:
-                    self.selected_block.set_label('-1')
+                    self.selected_spr.set_label('-1')
                     showlabel(self.lc,"#overflowerror")
             except ValueError:
                 pass
 
-        self.selected_block.set_shape(
-                      self.block_list.spr_to_block(self.selected_block).shape)
-        self.selected_block = None
+        self.selected_spr.set_shape(
+                      self.block_list.spr_to_block(self.selected_spr).shape)
+        self.selected_spr = None
 
     """
     select category 
@@ -555,7 +555,7 @@ class TurtleArtWindow():
         if verbose:
             print "processing remote key press: " + keyname
         self.keypress = keyname
-        if alt_mask is True and self.selected_block==None:
+        if alt_mask is True and self.selected_spr==None:
             if keyname=="i" and hasattr(self, 'activity'):
                 self.activity.waiting_for_blocks = True
                 self.activity._send_event("i") # request sync for sharing
@@ -564,18 +564,17 @@ class TurtleArtWindow():
             elif keyname=='q':
                 exit()
             return True
-        if self.selected_block is not None and \
-           self.selected_block.proto.name == 'number':
+        if self.selected_blk is not None and \
+           self.selected_blk.name == 'number':
             if keyname in ['minus', 'period']: 
                 keyname = {'minus': '-', 'period': '.'}[keyname]
-            oldnum = self.selected_block.labels[0] 
-            selblock=self.selected_block.proto
+            oldnum = self.selected_spr.labels[0] 
             if keyname == 'BackSpace':
                 if len(oldnum) > 1:
                     newnum = oldnum[:len(oldnum)-1]
                 else:
                     newnum = ''
-                self.selected_block.set_label(selblock.check(newnum,oldnum))
+                self.selected_spr.set_label(numcheck(newnum,oldnum))
                 if len(newnum) > 0:
                     self.firstkey = False
                 else:
@@ -640,7 +639,7 @@ class TurtleArtWindow():
                                b.move((bx+200, by))
                             self.draggroup = None
                 return True
-        if self.selected_block is None:
+        if self.selected_spr is None:
             return False
         if keyname in ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', \
                        'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift']:
@@ -653,14 +652,13 @@ class TurtleArtWindow():
             keyunicode = 0
         if keyname in WHITE_SPACE:
             keyunicode = 32
-        oldnum = self.selected_block.labels[0]
-        selblock=self.selected_block.proto
+        oldnum = self.selected_spr.labels[0]
         if keyname == 'BackSpace':
             if len(oldnum) > 1:
                 newnum = oldnum[:len(oldnum)-1]
             else:
                 newnum = ''
-            self.selected_block.set_label(selblock.check(newnum,oldnum))
+            self.selected_spr.set_label(strcheck(newnum,oldnum))
             if len(newnum) > 0:
                 self.firstkey = False
             else:
@@ -671,8 +669,7 @@ class TurtleArtWindow():
                     DEAD_DICTS[DEAD_KEYS.index(self.dead_key[5:])][keyname]
                 self.dead_key = ""
             if self.firstkey:
-                newnum = selblock.check(unichr(keyunicode), \
-                                        self.defdict[selblock.name])
+                newnum = strcheck(unichr(keyunicode), "")
             elif keyunicode > 0:
                 if unichr(keyunicode) is not '\x00':
                     newnum = oldnum+unichr(keyunicode)
@@ -680,7 +677,7 @@ class TurtleArtWindow():
                     newnum = oldnum
             else:
                 newnum = ""
-            self.selected_block.set_label(selblock.check(newnum,oldnum))
+            self.selected_spr.set_label(strcheck(newnum,oldnum))
             self.firstkey = False
         return True
 
@@ -735,13 +732,15 @@ class TurtleArtWindow():
         if self.block_operation=='click':
             blk = self.block_list.spr_to_block(self.spr)
             if blk is not None and blk.name=='number':
-                self.selected_block = spr
-                self.selected_block.set_shape(blk.selected_shape)
+                self.selected_spr = spr
+                self.selected_blk = blk
+                self.selected_spr.set_shape(blk.selected_shape)
                 self.firstkey = True
             elif blk is not None and self.defdict.has_key(blk.name):
-                self.selected_block = spr
+                self.selected_spr = spr
+                self.selected_blk = blk
                 if blk.name=='string':
-                    self.selected_block.set_shape(blk.selected_shape)
+                    self.selected_spr.set_shape(blk.selected_shape)
                     self.firstkey = True
                 elif blk.name in self.importblocks:
                     self._import_from_journal(spr)
@@ -749,9 +748,10 @@ class TurtleArtWindow():
                 self.activity.import_py()
             else:
                 # mark block as selected
-                self.selected_block = spr
+                self.selected_spr = spr
+                self.selected_blk = blk
                 if blk is not None:
-                    self.selected_block.set_shape(blk.selected_shape)
+                    self.selected_spr.set_shape(blk.selected_shape)
                 spr.set_selected(True)
                 self._run_stack(spr)
 
@@ -761,10 +761,12 @@ class TurtleArtWindow():
     def _click_block(self):
         blk = self.block_list.spr_to_block(self.spr)
         if blk is not None and blk.name=='number':
-            self.selected_block = self.spr
+            self.selected_spr = self.spr
+            self.selected_blk = blk
             self.firstkey = True
         elif blk is not None and self.defdict.has_key(blk.name):
-            self.selected_block = self.spr
+            self.selected_spr = self.spr
+            self.selected_blk = blk
             if blk.name=='string':
                 self.firstkey = True
             elif blk.name in self.importblocks:
@@ -803,11 +805,10 @@ class TurtleArtWindow():
     def _snap_to_dock(self):
         spr = self.draggroup[0]
         my_block = self.block_list.spr_to_block(spr)
-        print my_block.name
+        self.block_list.print_list()
         d = 200
         for my_dockn in range(len(my_block.docks)):
-            for your_block in self.block_list.list:
-                print your_block.name
+            for i, your_block in enumerate(self.block_list.list):
                 # don't link to a block to which you're already connected
                 if your_block.spr in self.draggroup:
                     continue
@@ -817,14 +818,12 @@ class TurtleArtWindow():
                                               my_block, my_dockn)
                     if self._magnitude(this_xy) > d:
                         continue
-                    print "found a match? %d" % (your_dockn)
                     your_block.spr.set_shape(your_block.selected_shape)
                     d = self._magnitude(this_xy)
                     best_xy = this_xy
                     best_you = your_block
                     best_your_dockn = your_dockn
                     best_my_dockn = my_dockn
-                break
         if d<200:
             for b in self.draggroup:
                 (bx, by) = b.get_xy()
@@ -943,6 +942,10 @@ class TurtleArtWindow():
     """
     def _block_pressed(self, mask, x, y, spr):
         if spr is not None:
+            blk = self.block_list.spr_to_block(spr)
+            if blk is not None:
+                print "in block_pressed: creating draggroup with %s" % (
+                      blk.name)
             self.draggroup = findgroup(spr, self.block_list)
             for b in self.draggroup: b.set_layer(TOP_LAYER)
             if self.block_list.spr_to_block(spr).connections[0] is not None and\
@@ -994,14 +997,10 @@ class TurtleArtWindow():
     dock_dx_dy 
     """
     def _dock_dx_dy(self, block1, dock1n, block2, dock2n):
-        print "comparing %s %d, %s %d" % (block1.name, dock1n,
-                                          block2.name, dock2n)
         dock1 = block1.docks[dock1n]
         dock2 = block2.docks[dock2n]
         d1type, d1dir, d1x, d1y = dock1[0:4]
         d2type, d2dir, d2x, d2y = dock2[0:4]
-        print "%s %s %d %d" % (d1type, str(d1dir), d1x, d1y)
-        print "%s %s %d %d" % (d2type, str(d2dir), d2x, d2y)
         if (d2type is not 'num') or (dock2n is not 0):
             if block1.connections is not None and dock1n < block1.connections\
                 and block1.connections[dock1n] is not None:
@@ -1010,9 +1009,7 @@ class TurtleArtWindow():
                 and block2.connections[dock2n] is not None:
                     return (100,100)
         if block1 == block2:
-            print "block1 == block2"
             return (100,100)
-        '''
         if d1type != d2type:
             # some blocks can take strings or nums
             if block1.name in ('write', 'plus2', 'equal', 'less', 'greater',
@@ -1036,16 +1033,11 @@ class TurtleArtWindow():
                     pass
             else:
                 return (100,100)
-        '''
         if d1dir == d2dir:
-            print "d1dir == d2dir"
             return (100,100)
         (b1x, b1y) = block1.spr.get_xy()
         (b2x, b2y) = block2.spr.get_xy()
-        display_coordinates(self, (b1x+d1x)-(b2x+d2x),
-                (b1y+d1y)-(b2y+d2y), 0)
-        return ((b1x+d1x)-(b2x+d2x),
-                (b1y+d1y)-(b2y+d2y))
+        return ((b1x+d1x)-(b2x+d2x), (b1y+d1y)-(b2y+d2y))
 
     """
     magnitude 
@@ -1091,5 +1083,18 @@ class TurtleArtWindow():
         self.draggroup = None
 
 
+#
+# utilities used for checking variable validity
+#
 
+def numcheck(new, old):
+    if new is '': return "0"
+    if new in ['-', '.', '-.']: return new
+    if new=='.': return '0.'
+    try: float(new); return new
+    except ValueError,e : return old
+
+def strcheck(new, old):
+    try: str(new); return new
+    except ValueError,e : return old
 

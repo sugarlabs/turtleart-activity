@@ -356,8 +356,10 @@ def blocks(tw): return [spr for spr in tw.sprite_list.list \
 
 def findgroup(spr, block_list):
     group=[spr]
-    for spr2 in block_list.spr_to_block(spr).connections[1:]:
-        if spr2 is not None: group.extend(findgroup(spr2, block_list))
+    blk = block_list.spr_to_block(spr)
+    for spr2 in blk.connections[1:]:
+        if spr2 is not None:
+            group.extend(findgroup(spr2, block_list))
     return group
 
 def find_top_block(spr, block_list):
