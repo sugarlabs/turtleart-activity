@@ -125,7 +125,7 @@ BLOCK_NAMES = {'clean':_('clean'), 'forward':_('forward'), 'back':_('back'),
 # Logo primitives
 #
 
-PRIMITIVES = {'clean':'clean', 'forward':'forward', 'back':'back',
+PRIMITIVES = {'clean':'clean', 'forward':'forward', 'back':'back', 'arc':'arc',
     'left':'left', 'right':'right', 'set heading':'seth', 'scale':'scale',
     'show':'show', 'set scale':'setscale', 'xcor':'xcor', 'set xy':'setxy',
     'ycor':'ycor', 'heading':'heading', 'pen up':'penup',
