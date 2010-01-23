@@ -37,6 +37,7 @@ class SVG:
         self._max_y = 0
         self._width = 0
         self._height = 0
+        self.docks = []
         self._scale = 1
         self._orientation = 0
         self._radius = 8
@@ -49,6 +50,7 @@ class SVG:
         self._innie_y2 = (INNIE-self._stroke_width)/2
         self._innie_spacer = SPACER
         self._slot = True
+        self._cap = False
         self._tab = True
         self._bool = False
         self._slot_x = 10
@@ -67,6 +69,7 @@ class SVG:
         svg = self._new_path(x, y)
         svg += self._rarc_to(1, -1)
         svg += self._do_slot()
+        svg += self._do_cap()
         svg += self._rline_to(self._expand_x, 0)
         xx = self._x
         svg += self._rarc_to(1, 1)
@@ -156,12 +159,14 @@ class SVG:
                              self._innie_spacer-self._stroke_width)
         svg += self._rarc_to(1, -1)
         svg += self._rline_to(self._radius/2.0+self._expand_x, 0)
+        xx = self._x
         svg += self._rline_to(0,self._radius/2.0)
         svg += self._do_boolean()
         svg += self._rline_to(0,self._radius*1.5+self._innie_y2+\
                                 self._innie_spacer)
         svg += self._do_boolean()
         svg += self._rline_to(0,self._radius/2.0)
+        svg += self._line_to(xx, self._y)
         svg += self._end_boolean()
         return self._header() + svg
 
@@ -171,9 +176,11 @@ class SVG:
         svg += self._rline_to(0,-self._stroke_width)
         svg += self._rarc_to(1, -1)
         svg += self._rline_to(self._radius/2.0+self._expand_x, 0)
+        xx = self._x
         svg += self._rline_to(0,self._radius/2.0)
         svg += self._do_boolean()
         svg += self._rline_to(0,self._radius/2.0)
+        svg += self._line_to(xx, self._y)
         svg += self._end_boolean()
         return self._header() + svg
 
@@ -283,6 +290,13 @@ class SVG:
 
     def set_slot(self, flag=True):
         self._slot = flag
+        if self._slot is True:
+            self._cap = False
+
+    def set_cap(self, flag=False):
+        self._cap = flag
+        if self._cap is True:
+            self._slot = False
 
     def set_tab(self, flag=True):
         self._tab = flag
@@ -450,6 +464,8 @@ class SVG:
 
     def _do_slot(self):
         if self._slot is True:
+            self.docks.append((int(self._x*self._scale),
+                               int(self._y*self._scale)))
             return "%s%s%s" % (
                 self._rline_to(0, self._slot_y),
                 self._rline_to(self._slot_x, 0),
@@ -457,18 +473,31 @@ class SVG:
         else:
             return self._rline_to(self._slot_x, 0)
 
+    def _do_cap(self):
+        if self._cap is True:
+            return "%s%s" % (
+                self._rline_to(self._slot_x/2.0, -self._slot_y*2.0),
+                self._rline_to(self._slot_x/2.0, self._slot_y*2.0))
+        else:
+            return ""
+
     def _do_tab(self):
         if self._tab is True:
-            return "%s%s%s%s%s" % (
+            s = "%s%s%s%s%s" % (
                 self._rline_to(-self._stroke_width, 0),
                 self._rline_to(0, self._slot_y),
                 self._rline_to(-self._slot_x+2*self._stroke_width, 0),
                 self._rline_to(0, -self._slot_y),
                 self._rline_to(-self._stroke_width, 0))
+            self.docks.append((int(self._x*self._scale),
+                               int(self._y*self._scale)))
+            return s
         else:
             return self._rline_to(-self._slot_x, 0)
 
     def _do_innie(self):
+        self.docks.append((int(self._x*self._scale),
+                           int((self._y+self._innie_y2)*self._scale)))
         return "%s%s%s%s%s%s%s" % (
             self._rline_to(-self._innie_x1, 0),
             self._rline_to(0, -self._innie_y1),
@@ -481,6 +510,7 @@ class SVG:
     def _do_outie(self):
         if self._outie is not True:
             return self._rline_to(0, -self._innie_y2)
+        self.docks.append((int(self._x*self._scale), int(self._y*self._scale)))
         return "%s%s%s%s%s%s%s%s%s" % (
             self._rline_to(0, -self._stroke_width),
             self._rline_to(-self._innie_x1-2*self._stroke_width, 0),
@@ -502,11 +532,14 @@ class SVG:
     def _start_boolean(self, xoffset, yoffset):
         svg = self._new_path(xoffset, yoffset)
         self._radius -= self._stroke_width
+        self.docks.append((int(self._x*self._scale), int(self._y*self._scale)))
         svg += self._rarc_to(1, -1)
         self._radius += self._stroke_width
         return svg + self._rline_to(self._stroke_width, 0)
 
     def _do_boolean(self):
+        self.docks.append((int((self._x-self._radius)*self._scale),
+                           int((self._y+self._radius)*self._scale)))
         return self._rarc_to(-1, 1, 90, 0, 0) + self._rarc_to(1, 1, 90, 0, 0)
 
     def _end_boolean(self):
@@ -528,11 +561,13 @@ class SVG:
                       self._scale
 
     def _calculate_x_y(self):
+        x = self._stroke_width/2.0
+        y = self._stroke_width/2.0+self._radius
         if self._outie is True:
-            return(self._stroke_width/2.0+self._innie_x1+self._innie_x2,
-                   self._radius+self._stroke_width/2.0)
-        else:
-            return(self._stroke_width/2.0, self._radius+self._stroke_width/2.0)
+            x += self._innie_x1+self._innie_x2
+        if self._cap is True:
+            y += self._slot_y*2.0
+        return(x, y)
 
 #
 # Command-line tools for testing

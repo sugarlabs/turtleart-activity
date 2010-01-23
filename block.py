@@ -119,43 +119,56 @@ class Block:
         if name in BASIC_STYLE:
             svg.expand(40,0)
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('flow',True,0,2),('flow',False,0,self.height-yoff))
+            self.docks = (('flow', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('flow', False,svg.docks[1][0], svg.docks[1][1]))
         elif name in BASIC_STYLE_HEAD:
             svg.expand(40,0)
             svg.set_slot(False)
+            svg.set_cap(True)
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('start',True,0,2),('flow',False,0,self.height-yoff))
+            self.docks = (('start', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('flow', False, svg.docks[1][0], svg.docks[1][1]))
         elif name in BASIC_STYLE_HEAD_1ARG:
             svg.expand(40,0)
             svg.set_innie([True])
             svg.set_slot(False)
+            svg.set_cap(True)
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('start',True,0,0), ('string',False,self.width,12),
-                          ('flow',False,0,self.height-yoff))
+            self.docks = (('start', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('string', False, svg.docks[1][0], svg.docks[1][1]),
+                          ('flow', False, svg.docks[2][0], svg.docks[2][1]))
         elif name in BASIC_STYLE_TAIL:
             svg.expand(40,0)
             svg.set_tab(False)
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('flow',True,0,2),('unavailable',False,0,0))
+            self.docks = (('flow', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('unavailable', False, 0, 0))
         elif name in BASIC_STYLE_1ARG:
             svg.expand(25,0)
             svg.set_innie([True])
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('flow',True,0,2),
-                          ('number',False,self.width-xoff,12),
-                          ('flow',False,0,self.height-yoff))
+            self.docks = (('flow', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('number', False, svg.docks[1][0], svg.docks[1][1]),
+                          ('flow', False, svg.docks[2][0], svg.docks[2][1]))
         elif name in BASIC_STYLE_2ARG:
             svg.expand(25,0)
             svg.set_innie([True,True])
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('flow',True,0,2),
-                          ('number',False,self.width-xoff,12),
-                          ('number',False,self.width-xoff,54), 
-                          ('flow',False,0,self.height-yoff))
+            self.docks = (('flow', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('number', False, svg.docks[1][0], svg.docks[1][1]),
+                          ('number', False, svg.docks[2][0], svg.docks[2][1]),
+                          ('flow', False, svg.docks[3][0], svg.docks[3][1]))
         elif name in BOX_STYLE:
             svg.expand(60,0)
             self._make_basic_box(sprite_list, svg, x, y)
-            self.docks = (('number',True,0,12),('unavailable',False,0,12))
+            self.docks = (('number', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('unavailable', False, 0, 0))
+        elif name in BOX_STYLE_1ARG:
+            svg.expand(60,0)
+            svg.set_innie([True])
+            self._make_basic_box(sprite_list, svg, x, y)
+            self.docks = (('number', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('string', False, svg.docks[1][0], svg.docks[1][1]))
         elif name in NUMBER_STYLE:
             svg.expand(25,0)
             svg.set_innie([True,True])
@@ -163,9 +176,14 @@ class Block:
             svg.set_tab(False)
             svg.set_slot(False)
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('number',True,0,12),
-                          ('number',False,self.width-xoff,12),
-                          ('number',False,self.width-xoff,54)) 
+            """
+            NOTE:
+            The "outie" is added last, so the dock order in the NUMBER_STYLE
+            needs to be modified.
+            """
+            self.docks = (('number', True, svg.docks[2][0], svg.docks[2][1]),
+                          ('number', False, svg.docks[0][0], svg.docks[0][1]),
+                          ('number', False, svg.docks[1][0], svg.docks[1][1])) 
         elif name in NUMBER_STYLE_1ARG:
             svg.expand(25,0)
             svg.set_innie([True])
@@ -173,8 +191,8 @@ class Block:
             svg.set_tab(False)
             svg.set_slot(False)
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('number',True,0,12),
-                          ('number',False,self.width-xoff,12)) 
+            self.docks = (('number', True, svg.docks[1][0], svg.docks[1][1]),
+                          ('number', False, svg.docks[0][0], svg.docks[0][1]))
         elif name in NUMBER_STYLE_PORCH:
             svg.expand(25,0)
             svg.set_innie([True,True])
@@ -184,56 +202,60 @@ class Block:
             svg.set_porch(True)
             self._make_basic_block(sprite_list, svg, x, y)
             xoff += svg._porch
-            self.docks = (('number',True,0,12),
-                          ('number',False,self.width-xoff-xoff,12),
-                          ('number',False,self.width-xoff,64)) 
+            self.docks = (('number', True, svg.docks[2][0], svg.docks[2][1]),
+                          ('number', False, svg.docks[0][0], svg.docks[0][1]),
+                          ('number', False, svg.docks[1][0], svg.docks[1][1])) 
         elif name in COMPARE_STYLE:
             self._make_boolean_compare(sprite_list, svg, x, y)
-            self.docks = (('bool',True,0,self.height-12),
-                          ('number',False,self.width-xoff,12),
-                          ('number',False,self.width-xoff,54)) 
+            self.docks = (('bool', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('number', False, svg.docks[1][0], svg.docks[1][1]),
+                          ('number', False, svg.docks[2][0], svg.docks[2][1])) 
         elif name in BOOLEAN_STYLE:
             svg.expand(15,0)
             self._make_boolean_and_or(sprite_list, svg, x, y)
-            self.docks = (('bool',True,0,self.height-12),
-                          ('bool',False,self.width-xoff,12),
-                          ('bool',False,self.width-xoff,54))
+            self.docks = (('bool', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('bool', False, svg.docks[1][0], svg.docks[1][1]),
+                          ('bool', False, svg.docks[2][0], svg.docks[2][1]))
         elif name in NOT_STYLE:
             svg.expand(15,0)
             self._make_boolean_not(sprite_list, svg, x, y)
-            self.docks = (('bool',True,0,self.height-12),
-                          ('bool',False,self.width-xoff,12))
+            self.docks = (('bool', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('bool', False, svg.docks[1][0], svg.docks[1][1]))
         elif name in FLOW_STYLE:
             svg.expand(25,0)
             svg.set_slot(True)
             self._make_basic_flow(sprite_list, svg, x, y)
-            self.docks = (('flow',True,0,2),
-                          ('flow',False,self.width/2, self.height-yoff))
+            self.docks = (('flow', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('flow', False, svg.docks[0][0], svg.docks[0][1]))
         elif name in FLOW_STYLE_1ARG:
             svg.expand(25,0)
             svg.set_slot(True)
             svg.set_tab(True)
             svg.set_innie([True])
             self._make_basic_flow(sprite_list, svg, x, y)
-            self.docks = (('flow',True,0,2),
-                          ('number',False,self.width-xoff,12),
-                          ('flow',False, 0, self.height-yoff),
-                          ('flow',False,self.width/2, self.height-yoff))
+            self.docks = (('flow', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('number', False, svg.docks[1][0], svg.docks[1][1]),
+                          ('flow', False, svg.docks[2][0], svg.docks[2][1]),
+                          ('flow', False, svg.docks[3][0], svg.docks[3][1]))
         elif name in FLOW_STYLE_BOOLEAN:
             svg.expand(25,0)
             svg.set_slot(True)
             svg.set_tab(True)
             svg.set_boolean(True)
             self._make_basic_flow(sprite_list, svg, x, y)
-            self.docks = (('flow',True,0,2),
-                          ('bool',False,self.width-xoff,12),
-                          ('flow',False, 0, self.height-yoff)
-                          ('flow',False,self.width/2, self.height-yoff))
+            self.docks = (('flow', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('bool', False, svg.docks[1][0], svg.docks[1][1]),
+                          ('flow', False, svg.docks[2][0], svg.docks[2][1]),
+                          ('flow', False, svg.docks[3][0], svg.docks[3][1]))
         else:
             svg.expand(40,0)
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('flow',True,0,2),('flow',False,0,self.height-yoff))
+            self.docks = (('flow', True, svg.docks[0][0], svg.docks[0][1]),
+                          ('flow', False,svg.docks[1][0], svg.docks[1][1]))
             print "don't know how to create a block for %s" % (name)
+
+        print self.docks
+        print "w %s h %s" % (svg._width, svg._height)
 
         # NEED TO PROCESS DEFAULTS
         if len(labels) > 0:
