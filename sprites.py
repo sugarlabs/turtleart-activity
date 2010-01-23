@@ -259,9 +259,4 @@ class Sprite:
                   ord(array[offset+3])
         return (a<<24)+(b<<16)+(g<<8)+r
 
-    def set_selected(self, selected):
-        if selected:
-            return
-        else:
-            return
 

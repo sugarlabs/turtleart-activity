@@ -119,11 +119,11 @@ class TurtleArtWindow():
         self.fgcolor = self.cm.alloc_color('red')
         self.textcolor = self.cm.alloc_color('blue')
         self.textsize = 32
-        self.selected_spr = None # do we need all three of these?
         self.spr = None # "currently selected spr"
         self.selected_blk = None
         # self.selected_turtle = None # in anticipation of multiple turtles
         self.draggroup = None
+        self.dragturtle = False
         self.myblock = None
         self.nop = 'nop'
         self.loaded = 0
@@ -200,16 +200,17 @@ class TurtleArtWindow():
         # look for the start block
         for blk in self.block_list.list:
             if self._find_start_stack(blk):
-                self.step_time = time
                 if hasattr(self, 'activity'):
                     self.activity.recenter()
+                self.step_time = time
+                print "running " + blk.name
                 self._run_stack(blk)
                 return
         # no start block, so run a stack that isn't a hat
         for blk in self.blocks_list.list:
             if self._find_block_to_run(blk):
-                print "running " + blk.name
                 self.step_time = time
+                print "running " + blk.name
                 self._run_stack(blk)
         return
 
@@ -224,6 +225,7 @@ class TurtleArtWindow():
             self._unselect()
         else: # always hide the status block on button press
             self.status_spr.set_layer(HIDE_LAYER)
+        self.dragturtle = False
         spr = self.sprite_list.find_sprite((x,y))
         self.x, self.y = x, y
         self.dx = 0
@@ -233,12 +235,12 @@ class TurtleArtWindow():
         # from the sprite at x, y, find the corresponding block
         blk = self.block_list.spr_to_block(spr)
         if blk is not None:
-            print "found %s at (%d,%d)" % (blk.name, x, y)
+            print "button press: found %s at (%d,%d)" % (blk.name, x, y)
             self.blk = blk # do we need to remember this?
             self._block_pressed(mask, x, y, blk)
         elif hasattr(spr, 'type'):
             # TODO: eliminate remaining dependencies on spr.type
-            print "type: %s" % (spr.type)
+            print "button press on spr type: %s" % (spr.type)
             if spr.type == "canvas":
                 spr.set_layer(CANVAS_LAYER)
                 return True
@@ -354,7 +356,7 @@ class TurtleArtWindow():
     """
     def _find_top_block(self, blk):
         while blk.connections[0]!=None:
-            blk=self.block_list.spr_to_block(blk.connections[0])
+            blk=blk.connections[0]
         return blk
 
     """
@@ -371,11 +373,10 @@ class TurtleArtWindow():
     find connected group of block in stack
     """
     def _findgroup(self, blk):
-        group=[blk.spr]
-        for spr2 in blk.connections[1:]:
-            if spr2 is not None:
-                group.extend(self._findgroup(
-                                        self.block_list.spr_to_block(spr2)))
+        group=[blk]
+        for blk2 in blk.connections[1:]:
+            if blk2 is not None:
+                group.extend(self._findgroup(blk2))
         return group
 
     """
@@ -405,30 +406,7 @@ class TurtleArtWindow():
             return
 
         self.block_operation = 'move'
-        spr = self.draggroup[0]
-        blk = self.block_list.spr_to_block(spr)
-        if blk is not None:
-            self.spr = spr
-            dragx, dragy = self.dragpos
-            if mdx != 0 or mdy != 0:
-                dx,dy = mdx,mdy
-            else:
-                (sx,sy) = spr.get_xy()
-                dx,dy = x-dragx-sx,y-dragy-sy
-            # skip if there was a move of 0,0
-            if dx == 0 and dy == 0:
-                return
-            self.draggroup = self._findgroup(blk)
-            # check to see if any block ends up with a negative x
-            for b in self.draggroup:
-                (bx, by) = b.get_xy()
-                if bx+dx < 0:
-                    dx += -(bx+dx)
-            # move the stack
-            for b in self.draggroup:
-                (bx, by) = b.get_xy()
-                b.move((bx+dx, by+dy))
-        if self.turtle_list.spr_to_turtle(spr) is not None:
+        if self.dragturtle is True:
             type,dragx,dragy = self.dragpos
             (sx,sy) = spr.get_xy()
             if type == 'move':
@@ -443,6 +421,28 @@ class TurtleArtWindow():
                 else:
                     dx,dy = x-sx-30,y-sy-30
                 seth(self.turtle, int(dragx+atan2(dy,dx)/DEGTOR+5)/10*10)
+        elif self.draggroup[0] is not None:
+            blk = self.draggroup[0]
+            self.spr = blk.spr
+            dragx, dragy = self.dragpos
+            if mdx != 0 or mdy != 0:
+                dx,dy = mdx,mdy
+            else:
+                (sx,sy) = blk.spr.get_xy()
+                dx,dy = x-dragx-sx,y-dragy-sy
+            # skip if there was a move of 0,0
+            if dx == 0 and dy == 0:
+                return
+            self.draggroup = self._findgroup(blk)
+            # check to see if any block ends up with a negative x
+            for b in self.draggroup:
+                (bx, by) = b.spr.get_xy()
+                if bx+dx < 0:
+                    dx += -(bx+dx)
+            # move the stack
+            for b in self.draggroup:
+                (bx, by) = b.spr.get_xy()
+                b.spr.move((bx+dx, by+dy))
         if mdx != 0 or mdy != 0:
             dx,dy = 0,0
         else:
@@ -558,7 +558,7 @@ class TurtleArtWindow():
         if verbose:
             print "processing remote key press: " + keyname
         self.keypress = keyname
-        if alt_mask is True and self.selected_spr==None:
+        if alt_mask is True and self.selected_blk==None:
             if keyname=="i" and hasattr(self, 'activity'):
                 self.activity.waiting_for_blocks = True
                 self.activity._send_event("i") # request sync for sharing
@@ -571,13 +571,13 @@ class TurtleArtWindow():
            self.selected_blk.name == 'number':
             if keyname in ['minus', 'period']: 
                 keyname = {'minus': '-', 'period': '.'}[keyname]
-            oldnum = self.selected_spr.labels[0] 
+            oldnum = self.selected_blk.spr.labels[0] 
             if keyname == 'BackSpace':
                 if len(oldnum) > 1:
                     newnum = oldnum[:len(oldnum)-1]
                 else:
                     newnum = ''
-                self.selected_spr.set_label(numcheck(newnum,oldnum))
+                self.selected_blk.spr.set_label(numcheck(newnum,oldnum))
                 if len(newnum) > 0:
                     self.firstkey = False
                 else:
@@ -613,7 +613,7 @@ class TurtleArtWindow():
                         elif keyname == 'KP_Page_Down':
                             if self.draggroup == None:
                                 self.draggroup = self._findgroup(blk)
-                            for b in self.draggroup: b.hide()
+                            for b in self.draggroup: b.spr.hide()
                             self.draggroup = None
                     elif self.spr.type == 'turtle': # jog turtle with arrow keys
                         if keyname == 'KP_Up' or keyname == 'j' \
@@ -638,11 +638,11 @@ class TurtleArtWindow():
                             (x,y) = self.window.get_pointer()
                             self._block_selector_pressed(x, y)
                             for b in self.draggroup:
-                               (bx, by) = b.get_xy()
-                               b.move((bx+200, by))
+                               (bx, by) = b.spr.get_xy()
+                               b.spr.move((bx+200, by))
                             self.draggroup = None
                 return True
-        if self.selected_spr is None:
+        if self.selected_blk is None:
             return False
         if keyname in ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', \
                        'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift']:
@@ -655,13 +655,13 @@ class TurtleArtWindow():
             keyunicode = 0
         if keyname in WHITE_SPACE:
             keyunicode = 32
-        oldnum = self.selected_spr.labels[0]
+        oldnum = self.selected_blk.spr.labels[0]
         if keyname == 'BackSpace':
             if len(oldnum) > 1:
                 newnum = oldnum[:len(oldnum)-1]
             else:
                 newnum = ''
-            self.selected_spr.set_label(strcheck(newnum,oldnum))
+            self.selected_blk.spr.set_label(strcheck(newnum,oldnum))
             if len(newnum) > 0:
                 self.firstkey = False
             else:
@@ -680,7 +680,7 @@ class TurtleArtWindow():
                     newnum = oldnum
             else:
                 newnum = ""
-            self.selected_spr.set_label(strcheck(newnum,oldnum))
+            self.selected_blk.spr.set_label(strcheck(newnum,oldnum))
             self.firstkey = False
         return True
 
@@ -706,10 +706,7 @@ class TurtleArtWindow():
 
         if verbose:
             print "processing remote button release: " + str(x) + " " + str(y)
-        if self.draggroup == None: 
-            return
-        spr = self.draggroup[0]
-        if self.turtle_list.spr_to_turtle(spr) is not None:
+        if self.dragturtle is True:
             print "clicked on a turtle"
             (tx, ty) = self.turtle.spr.get_xy()
             self.turtle.xcor = tx-self.turtle.cx- \
@@ -720,29 +717,31 @@ class TurtleArtWindow():
             display_coordinates(self)
             self.draggroup = None
             return
+        if self.draggroup == None: 
+            return
+        blk = self.draggroup[0]
         # remove block by dragging them onto the category palette
         if self.block_operation=='move' and self.category_spr.hit((x,y)):
-            for b in self.draggroup: b.hide()
+            for b in self.draggroup: b.spr.hide()
             self.draggroup = None
             return
         if self.block_operation=='new':
             for b in self.draggroup:
-                (bx, by) = b.get_xy()
-                b.move((bx+200, by))
+                (bx, by) = b.spr.get_xy()
+                b.spr.move((bx+200, by))
         self._snap_to_dock()
-        for b in self.draggroup: b.set_layer(BLOCK_LAYER)
+        for b in self.draggroup:
+            b.spr.set_layer(BLOCK_LAYER)
         self.draggroup = None
         if self.block_operation=='click':
             blk = self.block_list.spr_to_block(self.spr)
             if blk is not None and blk.name=='number':
-                self.selected_spr = spr
+                blk.spr.set_shape(blk.selected_shape)
                 self.selected_blk = blk
-                self.selected_spr.set_shape(blk.selected_shape)
                 self.firstkey = True
             elif blk is not None and blk.name=='string':
-                self.selected_spr = spr
                 self.selected_blk = blk
-                self.selected_spr.set_shape(blk.selected_shape)
+                blk.spr.set_shape(blk.selected_shape)
                 self.firstkey = True
                 '''
                 # need new strategy for media blocks
@@ -752,12 +751,9 @@ class TurtleArtWindow():
             elif blk is not None and blk.name=='nop' and self.myblock==None:
                 self.activity.import_py()
             else:
-                # mark block as selected
-                self.selected_spr = spr
-                self.selected_blk = blk
                 if blk is not None:
-                    self.selected_spr.set_shape(blk.selected_shape)
-                spr.set_selected(True)
+                    blk.spr.set_shape(blk.selected_shape)
+                self.selected_blk = blk
                 self._run_stack(blk)
 
     """
@@ -766,11 +762,9 @@ class TurtleArtWindow():
     def _click_block(self):
         blk = self.block_list.spr_to_block(self.spr)
         if blk is not None and blk.name=='number':
-            self.selected_spr = self.spr
             self.selected_blk = blk
             self.firstkey = True
         elif blk is not None and blk.name=='string':
-            self.selected_spr = self.spr
             self.selected_blk = blk
             self.firstkey = True
             '''
@@ -810,14 +804,12 @@ class TurtleArtWindow():
     snap_to_dock
     """
     def _snap_to_dock(self):
-        spr = self.draggroup[0]
-        my_block = self.block_list.spr_to_block(spr)
-        # self.block_list.print_list()
+        my_block = self.draggroup[0]
         d = 200
         for my_dockn in range(len(my_block.docks)):
             for i, your_block in enumerate(self.block_list.list):
                 # don't link to a block to which you're already connected
-                if your_block.spr in self.draggroup:
+                if your_block in self.draggroup:
                     continue
                 # check each dock of your_block for a possible connection
                 for your_dockn in range(len(your_block.docks)):
@@ -831,16 +823,21 @@ class TurtleArtWindow():
                     best_your_dockn = your_dockn
                     best_my_dockn = my_dockn
         if d<200:
-            for spr in self.draggroup:
-                (sx, sy) = spr.get_xy()
-                spr.move((sx+best_xy[0], sy+best_xy[1]))
-            spr_in_dock = best_you.connections[best_your_dockn]
-            if spr_in_dock is not None:
-                for spr in self._findgroup(spr_in_dock):
-                    spr.hide()
-            best_you.connections[best_your_dockn] = my_block.spr
+            for blk in self.draggroup:
+                (sx, sy) = blk.spr.get_xy()
+                blk.spr.move((sx+best_xy[0], sy+best_xy[1]))
+            blk_in_dock = best_you.connections[best_your_dockn]
+            if blk_in_dock is not None:
+                for blk in self._findgroup(blk_in_dock):
+                    print "hiding blk %s" % (blk.name)
+                    blk.spr.hide()
+            print "connecting %s to %s, position %d" %\
+                  (my_block.name, best_you.name, best_your_dockn)
+            best_you.connections[best_your_dockn] = my_block
             if my_block.connections is not None:
-                my_block.connections[best_my_dockn] = best_you.spr
+                print "connecting %s to %s, position %d" %\
+                      (best_you.name, my_block.name, best_my_dockn)
+                my_block.connections[best_my_dockn] = best_you
 
     """
     import from Journal
@@ -875,7 +872,7 @@ class TurtleArtWindow():
     def _run_stack(self, blk):
         self.lc.ag = None
         top = self._find_top_block(blk)
-        run_blocks(self.lc, top.spr, self.block_list.list, True)
+        run_blocks(self.lc, top, self.block_list.list, True)
         gobject.idle_add(doevalstep, self.lc)
 
     """
@@ -919,6 +916,8 @@ class TurtleArtWindow():
         for i in range(len(newblk.defaults)):
             dock = newblk.docks[i+1] # the first dock position is a connector
             argname = dock[0]
+            if argname == 'unavailable':
+                continue
             argvalue = newblk.defaults[i]
             if (type(argvalue) is str or type(argvalue) is unicode) and\
                argname == 'number':
@@ -931,9 +930,10 @@ class TurtleArtWindow():
             argblk.spr.move((nx, ny))
             argblk.spr.set_label(str(argvalue))
             argblk.spr.set_layer(TOP_LAYER)
-            argblk.connections = [newspr, None]
-            newblk.connections[i+1] = argblk.spr
-            print "%s connections are: %s" % (newblk.name, newblk.connections)
+            argblk.connections = [newblk, None]
+            newblk.connections[i+1] = argblk
+            print "%s connections are: %s" % (newblk.name, 
+                self._print_blk_list(newblk.connections))
         self.draggroup = self._findgroup(newblk)
         self.block_operation = 'new' 
 
@@ -945,22 +945,46 @@ class TurtleArtWindow():
         if blk is not None:
             print "in block_pressed: creating draggroup with %s" % (blk.name)
             self.draggroup = self._findgroup(blk)
-            for spr in self.draggroup:
-                spr.set_layer(TOP_LAYER)
-            (sx, sy) = spr.get_xy()
+            print "draggroup: %s" % (self._print_blk_list(self.draggroup))
+            for blk in self.draggroup:
+                blk.spr.set_layer(TOP_LAYER)
+            (sx, sy) = blk.spr.get_xy()
             self.dragpos = x-sx, y-sy
-            self._disconnect(spr)
+            # self._disconnect(blk)
+
+    """
+    debugging tools
+    """
+    def _print_spr_list(self, spr_list):
+        s = ""
+        for spr in spr_list:
+            if spr == None:
+                s+="None"
+            else:
+                s+=self.block_list.spr_to_block(spr).name
+            s += " "
+        return s
+
+    def _print_blk_list(self, blk_list):
+        s = ""
+        for blk in blk_list:
+            if blk == None:
+                s+="None"
+            else:
+                s+=blk.name
+            s += " "
+        return s
 
     """
     disconnect block
     """
-    def _disconnect(self, b):
-        blk = self.block_list.spr_to_block(b)
+    def _disconnect(self, blk):
         if blk.connections[0]==None:
             return
-        b2=blk.connections[0]
-        blk2 = self.block_list.spr_to_block(b2)
-        blk2.connections[blk2.connections.index(b)] = None
+        print "disconnecting %s" % (blk.name)
+        blk2=blk.connections[0]
+        print "from %s" % (blk2.name)
+        blk2.connections[blk2.connections.index(blk)] = None
         blk.connections[0] = None
 
     """
@@ -973,7 +997,7 @@ class TurtleArtWindow():
             self.dragpos = ('turn', self.turtle.heading-atan2(dy,dx)/DEGTOR, 0)
         else:
             self.dragpos = ('move', x-tx, y-ty)
-        self.draggroup = [self.turtle.spr]
+        self.dragturtle = True
 
     """
     Replace Journal block graphic with preview image 
@@ -1018,7 +1042,7 @@ class TurtleArtWindow():
             # some blocks can take strings, nums, or Journal
             elif block1.name in ('show', 'push', 'storein', 'storeinbox1',
                                  'storeinbox2'):
-                if d2type == 'number' or d2type == 'string' or d2type == 'journal':
+                if d2type in CONTENT_BLOCKS:
                     pass
             # some blocks can take media, audio, movies, of descriptions
             elif block1.name in ('containter'):
@@ -1051,7 +1075,7 @@ class TurtleArtWindow():
             self.turtle.ycor += dy
         move_turtle(self.turtle)
         display_coordinates(self)
-        self.draggroup = None
+        self.dragturtle = False
 
     """
     jog block
@@ -1060,14 +1084,14 @@ class TurtleArtWindow():
         # drag entire stack if moving lock block
         self.draggroup = self._findgroup(blk)
         # check to see if any block ends up with a negative x
-        for spr in self.draggroup:
-            (sx, sy) = spr.get_xy()
+        for blk in self.draggroup:
+            (sx, sy) = blk.spr.get_xy()
             if sx+dx < 0:
                 dx += -(sx+dx)
         # move the stack
-        for spr in self.draggroup:
-            (sx, sy) = spr.get_xy()
-            spr.move((sx+dx, sy-dy))
+        for blk in self.draggroup:
+            (sx, sy) = blk.spr.get_xy()
+            blk.spr.move((sx+dx, sy-dy))
         self._snap_to_dock()
         self.draggroup = None
 

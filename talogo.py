@@ -64,7 +64,7 @@ class logoerror(Exception):
     def __str__(self):
         return repr(self.value)
 
-def run_blocks(lc, spr, blocks, run_flag):
+def run_blocks(lc, blk, blocks, run_flag):
     # user-defined stacks
     for x in lc.stacks.keys():
         lc.stacks[x]= None
@@ -78,20 +78,18 @@ def run_blocks(lc, spr, blocks, run_flag):
             lc.stacks['stack2']= readline(lc,blocks_to_code(lc, b))
         if b.name=='hat':
             if (b.connections[1]!=None):
-                text=b.connections[1].labels[0]
+                text=b.connections[1].spr.labels[0]
                 lc.stacks['stack3'+text]= readline(lc,blocks_to_code(lc, b))
-    print "spr is %s" % (str(spr))
-    code = blocks_to_code(lc, lc.tw.block_list.spr_to_block(spr))
+    code = blocks_to_code(lc, blk)
     if run_flag == True:
-        print code
+        print "code: %s" % (code)
         setup_cmd(lc, code)
     else: return code
 
 def blocks_to_code(lc, blk):
-    print "blk is %s" % (str(blk))
+    if blk is None:
+        return ['%nothing%']
     spr = blk.spr
-    print "spr is %s" % (str(spr))
-    if spr==None: return ['%nothing%']
     code = []
     dock = blk.docks[0]
     if len(dock)>4: code.append(dock[4])
@@ -129,15 +127,13 @@ def blocks_to_code(lc, blk):
         else:
             return ['%nothing%']
     for i in range(1,len(blk.connections)):
-        s = blk.connections[i]
+        b = blk.connections[i]
         dock = blk.docks[i]
         if len(dock)>4:
             for c in dock[4]: code.append(c)
-        if s is not None: 
-            code.extend(blocks_to_code(lc, lc.tw.block_list.spr_to_block(s)))
-        elif blk.docks[i][0] not in \
-            ['flow', 'numend', 'stringend', 'mediaend', \
-            'audioend', 'unavailable', 'logi-']:
+        if b is not None: 
+            code.extend(blocks_to_code(lc, b))
+        elif blk.docks[i][0] not in ['flow', 'unavailable']:
             code.append('%nothing%')
     return code
 

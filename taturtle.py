@@ -278,7 +278,7 @@ def draw_text(t, label, x, y, size, w):
     elif type(label) == float or type(label) == int:
         pl = t.tw.window.create_pango_layout(str(label))
     else:
-        print type(label)
+        print "draw text: Type Error: %s" % (type(label))
         pl = t.tw.window.create_pango_layout(str(label))
     pl.set_font_description(fd)
     pl.set_width(int(w)*pango.SCALE)

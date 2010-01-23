@@ -89,7 +89,7 @@ def load_files(tw, ta_file, create_new_project=True):
         else:
             io = StringIO(text)
             listdata = jload(io)
-        print listdata
+        print "load files: %s" % (listdata)
         # listdata = jdecode(text)
         data = tuplify(listdata) # json converts tuples to lists
     f.close()
@@ -240,7 +240,7 @@ def save_data(tw,fname):
         io = StringIO()
         jdump(data,io)
         text = io.getvalue()
-        print text
+        print "save data: %s" % (text)
         # text = jencode(data)
         f.write(text)
     f.close()
@@ -356,12 +356,11 @@ def do_dialog(tw,dialog):
 def blocks(tw): return [spr for spr in tw.sprite_list.list \
                         if spr.type == 'block']
 
-def findgroup(spr, block_list):
-    group=[spr]
-    blk = block_list.spr_to_block(spr)
+def findgroup(blk, block_list):
+    group=[blk.spr]
     for spr2 in blk.connections[1:]:
         if spr2 is not None:
-            group.extend(findgroup(spr2, block_list))
+            group.extend(findgroup(block_list.spr_to_block(spr2), block_list))
     return group
 
 def find_top_block(blk, block_list):
