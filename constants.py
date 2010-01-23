@@ -163,7 +163,8 @@ DEFAULTS = {'forward':[100], 'back':[100], 'left':[90], 'right':[90],
     'set shade':[50], 'fill screen':[60,80], 'number':[100],
     'random':[0,100], 'wait':[1], 'repeat':[4], 'set xy':[0,0], 
     'store in':[_('my box'),100], 'box':[_('my box')],
-    'def action':[_('action')], 'action':[_('action')]}
+    'def action':[_('action')], 'action':[_('action')],
+    'store in box 1':[100], 'store in box 2':[100]}
 
 #
 # 'dead key' Unicode dictionaries

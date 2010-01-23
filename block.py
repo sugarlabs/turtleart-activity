@@ -116,7 +116,8 @@ class Block:
         self._make_block(name, 0, svg)
         self.spr = sprites.Sprite(sprite_list, x, y, self.shape)
 
-        self.spr.set_margins(self._left, 0, self._right, 0)
+        self.spr.set_margins(self._left, svg.get_slot_depth(), self._right,
+                             svg.get_slot_depth()*2)
 
         # if labels were passed, use them
         if len(labels) > 0:
@@ -145,10 +146,6 @@ class Block:
             self._make_block(name, e, svg)
             self.spr.set_shape(self.shape)
 
-        """
-        Do something with default values?
-        """
-
     def _make_block(self, name, e, svg):
         self._set_colors(name, svg)
         svg.set_stroke_width(STANDARD_STROKE_WIDTH)
@@ -164,7 +161,7 @@ class Block:
         elif name in BASIC_STYLE_1ARG:
             self._make_basic_style_1arg(e, svg)
         elif name in BASIC_STYLE_2ARG:
-            self._make_basic_style_1arg(e, svg)
+            self._make_basic_style_2arg(e, svg)
         elif name in BOX_STYLE:
             self._make_box_style(e, svg)
         elif name in NUMBER_STYLE:
@@ -187,11 +184,7 @@ class Block:
             self._make_flow_style_boolean(e, svg)
         else:
             self._make_basic_style(e, svg)
-            print "don't know how to create a block for %s" % (name)
-
-        print self.docks
-        print "w %d h %d" % (svg._width, svg._height)
-        print "l %d r %d" % (self._left, self._right)
+            print "don't know how to create a %s block" % (name)
 
     def _set_colors(self, name, svg):
         if name in TURTLE_PALETTE:
@@ -234,7 +227,7 @@ class Block:
         self.docks = (('start', True, 0, 0),
                       ('string', False, svg.docks[0][0], svg.docks[0][1]),
                       ('flow', False, svg.docks[1][0], svg.docks[1][1]))
-        self._left, self._right = 0, svg.get_innie_size()
+        self._left, self._right = 0, svg.get_innie_width()
 
     def _make_basic_style_tail(self, e, svg):
         svg.expand(40+e, 0)
@@ -250,7 +243,7 @@ class Block:
         self.docks = (('flow', True, svg.docks[0][0], svg.docks[0][1]),
                       ('number', False, svg.docks[1][0], svg.docks[1][1]),
                       ('flow', False, svg.docks[2][0], svg.docks[2][1]))
-        self._left, self._right = 0, svg.get_innie_size()
+        self._left, self._right = 0, svg.get_innie_width()
 
     def _make_basic_style_2arg(self, e, svg):
         svg.expand(25+e, 0)
@@ -260,7 +253,7 @@ class Block:
                       ('number', False, svg.docks[1][0], svg.docks[1][1]),
                       ('number', False, svg.docks[2][0], svg.docks[2][1]),
                       ('flow', False, svg.docks[3][0], svg.docks[3][1]))
-        self._left, self._right = 0, svg.get_width()-svg.docks[1][0]
+        self._left, self._right = 0, svg.get_innie_width()*1.5
 
     def _make_box_style(self, e, svg):
         svg.expand(60+e, 0)
@@ -308,7 +301,8 @@ class Block:
         self.docks = (('number', True, svg.docks[2][0], svg.docks[2][1]),
                       ('number', False, svg.docks[0][0], svg.docks[0][1]),
                       ('number', False, svg.docks[1][0], svg.docks[1][1])) 
-        self._left, self._right = svg.docks[2][0], svg.get_width()-svg.docks[0][0]
+        self._left = svg.docks[2][0]
+        self._right = svg.get_width()-svg.docks[0][0]
 
     def _make_compare_style(self, e, svg):
         svg.expand(10+e,0)

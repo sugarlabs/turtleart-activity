@@ -913,12 +913,15 @@ class TurtleArtWindow():
         self.dragpos = 20, 20
         newblk.connections = [None]*len(newblk.docks)
         print "new block %s" % (newblk.name)
-        for i in range(len(newblk.defaults)):
-            dock = newblk.docks[i+1] # the first dock position is a connector
+        print newblk.defaults
+        print newblk.docks
+        for i, argvalue in enumerate(newblk.defaults):
+            # skip the first dock position--it is always a connector
+            dock = newblk.docks[i+1]
             argname = dock[0]
+            print "adding block %s with value %s" % (argname, str(argvalue))
             if argname == 'unavailable':
                 continue
-            argvalue = newblk.defaults[i]
             if (type(argvalue) is str or type(argvalue) is unicode) and\
                argname == 'number':
                 argname = 'string'

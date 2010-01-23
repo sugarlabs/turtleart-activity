@@ -256,8 +256,11 @@ class SVG:
     def get_height(self):
         return self._height
 
-    def get_innie_size(self):
+    def get_innie_width(self):
         return (self._innie_x1+self._innie_x2)*self._scale
+
+    def get_slot_depth(self):
+        return self._slot_y*self._scale
 
     def clear_docks(self):
         self.docks = []
@@ -510,7 +513,8 @@ class SVG:
                 self._rline_to(0, -self._slot_y),
                 self._rline_to(-self._stroke_width, 0))
             self.docks.append((int(self._x*self._scale),
-                               int(self._y*self._scale)))
+                               int((self._y+self._stroke_width)*\
+                                   self._scale)))
             return s
         else:
             return self._rline_to(-self._slot_x, 0)
