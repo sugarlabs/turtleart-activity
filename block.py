@@ -103,10 +103,7 @@ class Block:
     def _new_block_from_factory(self, sprite_list, name, labels, colors,
                                 scale, x, y):
 
-        if len(labels) == 0:
-            print "new block: %s (%d %d)" % (name, x, y)
-        else:
-            print "new block: %s %s (%d %d)" % (name, labels[0], x, y)
+        print "new block: %s (%d %d)" % (name, x, y)
 
         svg = SVG()
         svg.set_scale(scale)
@@ -119,10 +116,27 @@ class Block:
         self._make_block(name, 0, svg)
         self.spr = sprites.Sprite(sprite_list, x, y, self.shape)
 
-
         self.spr.set_margins(self._left, 0, self._right, 0)
-        if BLOCK_NAMES.has_key(name):
-            self.spr.set_label(BLOCK_NAMES[name])
+
+        # if labels were passed, use them
+        if len(labels) > 0:
+            print labels
+            for i, l in enumerate(labels):
+                self.spr.set_label(l,i)
+                if i == 1: # top
+                    self.spr.set_label_attributes(9, True, "right", "top", i)
+                elif i == 2: # bottom
+                    self.spr.set_label_attributes(9, True, "right", "bottom", i)
+        # otherwise use default values
+        elif BLOCK_NAMES.has_key(name):
+            print BLOCK_NAMES[name]
+            for i, l in enumerate(BLOCK_NAMES[name]):
+                self.spr.set_label(l,i)
+                if i == 1: # top
+                    self.spr.set_label_attributes(9, True, "right", "top", i)
+                elif i == 2: # bottom
+                    self.spr.set_label_attributes(9, True, "right", "bottom", i)
+
         # make sure the label fits
         lw = self.spr.label_width()        
         lwh = self.spr.label_area_dimensions()
@@ -132,13 +146,7 @@ class Block:
             self.spr.set_shape(self.shape)
 
         """
-        # NEED TO ADD EXTRA LABELS
-        if len(labels) > 0:
-            if BLOCK_NAMES.has_key(name):
-                self.spr.set_label(BLOCK_NAMES[name])
-            for i, label in enumerate(labels):
-                if i > 0:
-                    self.spr.set_label(label, labels[i])
+        Do something with default values?
         """
 
     def _make_block(self, name, e, svg):

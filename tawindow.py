@@ -907,7 +907,7 @@ class TurtleArtWindow():
             # newspr = Sprite(self,x-20,y-20,self.media_shapes['pythonloaded'])
         else:
             newblk = block.Block(self.block_list, self.sprite_list, proto.name,
-                                 x-20, y-20, [proto.name])
+                                 x-20, y-20, [])
             newspr = newblk.spr
         newspr.set_layer(TOP_LAYER)
         self.dragpos = 20, 20
