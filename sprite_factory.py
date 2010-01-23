@@ -24,7 +24,6 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import os
-from constants import SLOTY, INNIE, SPACER
 from gettext import gettext as _
 
 class SVG:
@@ -44,11 +43,11 @@ class SVG:
         self._stroke_width = 1
         self._innie = [False]
         self._outie = False
-        self._innie_x1 = (INNIE-self._stroke_width)/2
+        self._innie_x1 = (9-self._stroke_width)/2
         self._innie_y1 = 3
-        self._innie_x2 = (INNIE-self._stroke_width)/2
-        self._innie_y2 = (INNIE-self._stroke_width)/2
-        self._innie_spacer = SPACER
+        self._innie_x2 = (9-self._stroke_width)/2
+        self._innie_y2 = (9-self._stroke_width)/2
+        self._innie_spacer = 9
         self._slot = True
         self._cap = False
         self._tab = True
@@ -67,12 +66,11 @@ class SVG:
     def basic_block(self):
         (x, y) = self._calculate_x_y()
         svg = self._new_path(x, y)
-        svg += self._rarc_to(1, -1)
+        svg += self._corner(1, -1)
         svg += self._do_slot()
-        svg += self._do_cap()
         svg += self._rline_to(self._expand_x, 0)
         xx = self._x
-        svg += self._rarc_to(1, 1)
+        svg += self._corner(1, 1)
         for i in range(len(self._innie)):
             if self._innie[i] is True:
                 svg += self._do_innie()
@@ -81,11 +79,11 @@ class SVG:
             elif len(self._innie)-1 > i:
                 svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
         svg += self._rline_to(0, self._expand_y)
-        svg += self._rarc_to(-1, 1)
+        svg += self._corner(-1, 1)
         svg += self._line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
         svg += self._do_tab()
-        svg += self._rarc_to(-1, -1)
+        svg += self._corner(-1, -1)
         svg += self._rline_to(0, -self._expand_y)
         if True in self._innie:
             svg += self._line_to(x,
@@ -167,6 +165,7 @@ class SVG:
         svg += self._do_boolean()
         svg += self._rline_to(0,self._radius/2.0)
         svg += self._line_to(xx, self._y)
+        svg += self._rline_to(-self._expand_x, 0)
         svg += self._end_boolean()
         return self._header() + svg
 
@@ -181,6 +180,7 @@ class SVG:
         svg += self._do_boolean()
         svg += self._rline_to(0,self._radius/2.0)
         svg += self._line_to(xx, self._y)
+        svg += self._rline_to(-self._expand_x, 0)
         svg += self._end_boolean()
         return self._header() + svg
 
@@ -206,6 +206,7 @@ class SVG:
         svg += self._do_innie()
         svg += self._rline_to(0, self._radius)
         svg += self._line_to(xx, self._y)
+        svg += self._rline_to(-self._expand_x, 0)
         svg += self._end_boolean()
         return self._header() + svg
 
@@ -432,15 +433,15 @@ class SVG:
         else:
             return self._line_to(self._x+dx, self._y+dy)
 
-    def _arc_to(self, x, y, a=90, l=0, s=1):
-        if self._radius == 0:
+    def _arc_to(self, x, y, r, a=90, l=0, s=1):
+        if r == 0:
             return self._line_to(x, y)
         else:
             self._x = x
             self._y = y
             self._check_min_max()
             return "A %.1f %.1f %.1f %d %d %.1f %.1f " % (
-                self._radius, self._radius, a, l, s, x, y)
+                r, r, a, l, s, x, y)
 
     def _rarc_to(self, sign_x, sign_y, a=90, l=0, s=1):
         if self._radius == 0:
@@ -448,7 +449,24 @@ class SVG:
         else:
             x = self._x + sign_x*self._radius
             y = self._y + sign_y*self._radius
-            return self._arc_to(x, y, a, l, s)
+            return self._arc_to(x, y, self._radius, a, l, s)
+
+    def _corner(self, sign_x, sign_y, a=90, l=0, s=1):
+        svg_str = ""
+        if self._radius > 0:
+            r2 = self._radius/2.0
+            if sign_x*sign_y == 1:
+                svg_str +=self._rline_to(sign_x*r2, 0)
+            else:
+                svg_str +=self._rline_to(0, sign_y*r2)
+            x = self._x + sign_x*r2
+            y = self._y + sign_y*r2
+            svg_str += self._arc_to(x, y, r2, a, l, s)
+            if sign_x*sign_y == 1:
+                svg_str +=self._rline_to(0, sign_y*r2)
+            else:
+                svg_str +=self._rline_to(sign_x*r2, 0)
+        return svg_str
 
     def _new_path(self, x, y):
         self._min_x = x
@@ -470,16 +488,12 @@ class SVG:
                 self._rline_to(0, self._slot_y),
                 self._rline_to(self._slot_x, 0),
                 self._rline_to(0, -self._slot_y))
-        else:
-            return self._rline_to(self._slot_x, 0)
-
-    def _do_cap(self):
-        if self._cap is True:
+        elif self._cap is True:
             return "%s%s" % (
                 self._rline_to(self._slot_x/2.0, -self._slot_y*2.0),
                 self._rline_to(self._slot_x/2.0, self._slot_y*2.0))
         else:
-            return ""
+            return self._rline_to(self._slot_x, 0)
 
     def _do_tab(self):
         if self._tab is True:
@@ -496,7 +510,7 @@ class SVG:
             return self._rline_to(-self._slot_x, 0)
 
     def _do_innie(self):
-        self.docks.append((int(self._x*self._scale),
+        self.docks.append((int((self._x+self._stroke_width)*self._scale),
                            int((self._y+self._innie_y2)*self._scale)))
         return "%s%s%s%s%s%s%s" % (
             self._rline_to(-self._innie_x1, 0),
@@ -527,7 +541,7 @@ class SVG:
          return "%s%s%s" % (
             self._rline_to(0, self._porch_y),
             self._rline_to(self._porch_x-self._radius, 0),
-            self._rarc_to(1, 1))
+            self._corner(1, 1))
 
     def _start_boolean(self, xoffset, yoffset):
         svg = self._new_path(xoffset, yoffset)
@@ -538,7 +552,8 @@ class SVG:
         return svg + self._rline_to(self._stroke_width, 0)
 
     def _do_boolean(self):
-        self.docks.append((int((self._x-self._radius)*self._scale),
+        self.docks.append(
+            (int((self._x-self._radius+self._stroke_width)*self._scale),
                            int((self._y+self._radius)*self._scale)))
         return self._rarc_to(-1, 1, 90, 0, 0) + self._rarc_to(1, 1, 90, 0, 0)
 

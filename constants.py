@@ -14,13 +14,6 @@
 from gettext import gettext as _
 
 #
-# SVG constants
-#
-SLOTY = 2
-INNIE = 9
-SPACER = 9
-
-#
 # sprite layers
 #
 
@@ -51,6 +44,7 @@ BASIC_STYLE_2ARG = ['arc', 'set xy', 'fill screen', 'store in']
 BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pen size', 'color', 'shade',
     'text color', 'text size', 'box 1', 'box 2', 'string', 'left pos', 'scale',
     'top pos', 'right pos', 'bottom pos', 'width', 'height']
+BOX_STYLE_1ARG = ['box']
 NUMBER_STYLE = ['plus', 'multiply', 'random']
 NUMBER_STYLE_PORCH = ['minus', 'divide', 'mod']
 NUMBER_STYLE_1ARG = ['square root']
@@ -59,7 +53,7 @@ BOOLEAN_STYLE = ['and', 'or']
 NOT_STYLE = ['not']
 FLOW_STYLE = ['forever', 'hspace']
 FLOW_STYLE_1ARG = ['repeat']
-FLOW_STYLE_BOOLEAN = ['if else']
+FLOW_STYLE_BOOLEAN = ['if then']
 TURTLE_PALETTE = ['clean', 'forward', 'back', 'left', 'right', 'seth', 'show',
     'set scale', 'arc', 'scale', 'xcor', 'ycor', 'heading']
 PEN_PALETTE = ['pen up','pen down', 'set pen size', 'set text size',
@@ -106,8 +100,8 @@ BLOCK_NAMES = {'clean':_('clean'), 'forward':_('forward'), 'back':_('back'),
     'set shade':_('set shade'), 'fill screen':_('fill screen'),
     'pen size':_('pen size'), 'text size':_('text size'), 'color':_('color'),
     'plus':'+', 'minus':'–', 'multiply':'×', 'divide':'/', 'mod':_('mod'), 
-    'random':_('random'), 'square root':'√', 'less than':'&lt;',
-    'greater than':'&gt;', 'equal to':'=', 'and':_('and'), 'or':_('or'),
+    'random':_('random'), 'square root':'√', 'less than':'<',
+    'greater than':">", 'equal to':'=', 'and':_('and'), 'or':_('or'),
     'not':_('not'), 'print':_('print'), 'wait':_('wait'),
     'forever':_('forever'), 'repeat':_('repeat'), 'if then':_('if then'),
     'stop action':_('stop action'), 'hspace':_(' '), 'vspace':_(' '),
@@ -159,7 +153,8 @@ DEFAULTS = {'forward':[100], 'back':[100], 'left':[90], 'right':[90],
     'set pen size':[5], 'set text size':[32], 'set color':[0],
     'set shade':[50], 'fill screen':[60,80], 'number':[100],
     'random':[0,100], 'wait':[1], 'repeat':[4], 'set xy':[0,0], 
-    'store in':[_('box'),100]}
+    'store in':[_('box'),100], 'box':[_('my box')], 'def action':[_('action')],
+    'action':[_('action')]}
 
 #
 # 'dead key' Unicode dictionaries
