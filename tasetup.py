@@ -53,7 +53,7 @@ selectors = (
      ('right','right','onearg',90),
      ('arc','arc','twoargs',90,100),
      ('set xy','setxy','twoargs',0,0),
-     ('seth','seth','onearg',0),
+     ('set heading','seth','onearg',0),
      ('show','show','onesarg',_('text')),
      ('set scale','setscale','onearg',33),
      ('show','show','onecarg','None'),

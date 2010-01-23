@@ -95,6 +95,7 @@ class Sprite:
         self._color = None
         self._width = 0
         self._height = 0
+        self._margins = [0,0,0,0]
         self.layer = 100
         self.labels = []
         self.set_image(image)
@@ -147,6 +148,9 @@ class Sprite:
         else:
             self.labels[i] = str(new_label)
         self.inval()
+
+    def set_margins(self, l=0, t=0, r=0, b=0):
+        self._margins = [l,t,r,b]
 
     def _extend_labels_array(self, i):
         if self._fd is None:
@@ -205,20 +209,22 @@ class Sprite:
         return True
 
     def draw_label(self):
+        my_width = self._width-self._margins[0]-self._margins[2]
+        my_height = self._height-self._margins[1]-self._margins[3]
         for i in range(len(self.labels)):
             pl = self._sprites.canvas.create_pango_layout(str(self.labels[i]))
             self._fd.set_size(int(self._scale[i]*pango.SCALE))
             pl.set_font_description(self._fd)
             w = pl.get_size()[0]/pango.SCALE
-            if w > self._width:
+            if w > my_width:
                 if self._rescale[i] is True:
-                    self._fd.set_size(int(self._scale[i]*pango.SCALE*\
-                                         self._width/w))
+                    self._fd.set_size(
+                                    int(self._scale[i]*pango.SCALE*my_width/w))
                     pl.set_font_description(self._fd)
                     w = pl.get_size()[0]/pango.SCALE
                 else:
                     j = len(self.labels[i])-1
-                    while(w > self._width and j > 0):
+                    while(w > my_width and j > 0):
                         pl = self._sprites.canvas.create_pango_layout(
                                  "…"+self.labels[i][len(self.labels[i])-j:])
                         self._fd.set_size(int(self._scale[i]*pango.SCALE))
@@ -226,18 +232,18 @@ class Sprite:
                         w = pl.get_size()[0]/pango.SCALE        
                         j -= 1
             if self._horiz_align[i] == "center":
-                x = int(self._x+(self._width-w)/2)
+                x = int(self._x+self._margins[0]+(my_width-w)/2)
             elif self._horiz_align[i] == 'left':
-                x = self._x
+                x = self._x+self._margins[0]
             else: # right
-                x = int(self._x+self._width-w)
+                x = int(self._x+self._width-w-self._margins[2])
             h = pl.get_size()[1]/pango.SCALE
             if self._vert_align[i] == "middle":
-                y = int(self._y+(self._height-h)/2)
+                y = int(self._y+self._margins[1]+(my_height-h)/2)
             elif self._vert_align[i] == "top":
-                y = self._y
+                y = self._y+self._margins[1]
             else: # bottom
-                y = int(self._y+self._height-h)
+                y = int(self._y+self._height-h-self._margins[3])
             self._sprites.gc.set_foreground(self._color)
             self._sprites.area.draw_layout(self._sprites.gc, x, y, pl)
 
@@ -252,11 +258,15 @@ class Sprite:
                 max = w
         return max
 
+    def label_area(self):
+        return((self._width-self._margin[0]-self._margin[2],
+                self._width-self._margin[1]-self._margin[3]))
+    
     def get_pixel(self, image, x, y):
         array = image.get_pixels()
-        offset = (y*image.get_width()+x)*4
-        r,g,b,a = ord(array[offset]),ord(array[offset+1]),ord(array[offset+2]),\
-                  ord(array[offset+3])
-        return (a<<24)+(b<<16)+(g<<8)+r
-
-
+        if array is not None:
+            offset = (y*image.get_width()+x)*4
+            r,g,b,a = ord(array[offset]), ord(array[offset+1]),\
+                      ord(array[offset+2]), ord(array[offset+3])
+            return (a<<24)+(b<<16)+(g<<8)+r
+        return 0

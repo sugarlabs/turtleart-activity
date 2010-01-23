@@ -72,11 +72,11 @@ def run_blocks(lc, blk, blocks, run_flag):
     lc.stacks['stack1'] = None
     lc.stacks['stack2'] = None
     for b in blocks:
-        if b.name=='hat1':
+        if b.name=='def action 1':
             lc.stacks['stack1']= readline(lc,blocks_to_code(lc, b))
-        if b.name=='hat2':
+        if b.name=='def action 2':
             lc.stacks['stack2']= readline(lc,blocks_to_code(lc, b))
-        if b.name=='hat':
+        if b.name=='def action':
             if (b.connections[1]!=None):
                 text=b.connections[1].spr.labels[0]
                 lc.stacks['stack3'+text]= readline(lc,blocks_to_code(lc, b))
@@ -169,7 +169,8 @@ def setup_cmd(lc, str):
     lc.step = start_eval(lc, list)
 
 def start_eval(lc, list):
-    icall(lc, evline, list); yield True
+    icall(lc, evline, list)
+    yield True
     # turn off stop icon when execution is finished
     if hasattr(lc.tw,"activity"):
         lc.tw.activity.stop_button.set_icon("stopitoff")
@@ -187,9 +188,12 @@ def evline(lc, list):
                 yield True
             lc.tw.turtle.spr.set_layer(HIDE_LAYER)
         token = lc.iline[0]
-        if token==lc.symopar: token=lc.iline[1]
-        icall(lc, eval); yield True
-        if lc.procstop: break
+        if token is lc.symopar:
+            token=lc.iline[1]
+        icall(lc, eval)
+        yield True
+        if lc.procstop:
+            break
         if lc.iresult==None: continue
         raise logoerror(str(lc.iresult))
     lc.iline = oldiline
@@ -199,7 +203,7 @@ def evline(lc, list):
 
 def eval(lc, infixarg=False):
     token = lc.iline.pop(0)
-    if type(token) == lc.symtype:
+    if type(token) is lc.symtype:
         icall(lc, evalsym, token); yield True
         res = lc.iresult
     else: res = token
@@ -215,23 +219,27 @@ def evalsym(lc, token):
     undefined_check(lc, token)
     oldcfun, oldarglist = lc.cfun, lc.arglist
     lc.cfun, lc.arglist = token, []
-    if token.nargs==None: raise logoerror("#noinput")
+    if token.nargs is None:
+        raise logoerror("#noinput")
     for i in range(token.nargs):
         no_args_check(lc)
-        icall(lc, eval); yield True
+        icall(lc, eval)
+        yield True
         lc.arglist.append(lc.iresult)
     if lc.cfun.rprim:
-        if type(lc.cfun.fcn)==lc.listtype:
-            icall(lc, ufuncall, cfun.fcn); yield True
+        if type(lc.cfun.fcn) is lc.listtype:
+            icall(lc, ufuncall, cfun.fcn)
+            yield True
         else:
-            icall(lc, lc.cfun.fcn, *lc.arglist); yield True
+            icall(lc, lc.cfun.fcn, *lc.arglist)
+            yield True
         result = None
     else: 
         result = lc.cfun.fcn(lc, *lc.arglist)
     lc.cfun, lc.arglist = oldcfun, oldarglist
-    if lc.arglist!=None and result==None:
-        raise logoerror("%s didn't output to %s" % \
-            (oldcfun.name, lc.cfun.name))
+    if lc.arglist is not None and result is None:
+        raise logoerror("%s didn't output to %s (arglist %s, result %s)" % \
+            (oldcfun.name, lc.cfun.name, str(lc.arglist), str(result)))
     ireturn(lc, result)
     yield True
 
@@ -240,15 +248,19 @@ def evalinfix(lc, firstarg):
     oldcfun, oldarglist = lc.cfun, lc.arglist
     lc.cfun, lc.arglist = token, [firstarg]
     no_args_check(lc)
-    icall(lc, eval,True); yield True
+    icall(lc, eval, True)
+    yield True
     lc.arglist.append(lc.iresult)
     result = lc.cfun.fcn(lc,*lc.arglist)
     lc.cfun, lc.arglist = oldcfun, oldarglist
-    ireturn (lc,result); yield True
+    ireturn (lc,result)
+    yield True
 
 def infixnext(lc):
-    if len(lc.iline)==0: return False
-    if type(lc.iline[0])!=lc.symtype: return False
+    if len(lc.iline)==0:
+        return False
+    if type(lc.iline[0]) is not lc.symtype:
+        return False
     return lc.iline[0].name in ['+', '-', '*', '/','%','and','or']
 
 def debug_trace(lc, token):
@@ -579,12 +591,13 @@ def lcNew(tw):
     lc.listtype = type([])
     lc.symnothing = intern(lc, '%nothing%')
     lc.symopar = intern(lc, '(')
+    lc.iline, lc.cfun, lc.arglist, lc.ufun = None, None, None, None
 
     lc.istack = []
     lc.stacks = {}
-    # lc.boxes = noKeyError({'box1': 0, 'box2': 0})
     lc.boxes = {'box1': 0, 'box2': 0}
     lc.heap = []
+
     lc.keyboard = 0
     lc.trace = 0 # flag for enabling debug output via showlabel
     lc.gplay = None
@@ -593,8 +606,6 @@ def lcNew(tw):
     lc.title_height = int((lc.tw.turtle.height/30)*lc.tw.scale)
     lc.body_height = int((lc.tw.turtle.height/60)*lc.tw.scale)
     lc.bullet_height = int((lc.tw.turtle.height/45)*lc.tw.scale)
-
-    lc.iline, lc.cfun, lc.arglist, lc.ufun = None, None, None, None
 
     # this dictionary is used to define the relative size and postion of 
     # template elements (w, h, x, y, dx, dy, dx1, dy1...)
