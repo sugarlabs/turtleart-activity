@@ -256,6 +256,12 @@ class SVG:
     def get_height(self):
         return self._height
 
+    def get_innie_size(self):
+        return (self._innie_x1+self._innie_x2)*self._scale
+
+    def clear_docks(self):
+        self.docks = []
+
     def set_scale(self, scale=1):
         self._scale = scale
 
