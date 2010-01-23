@@ -73,6 +73,9 @@ class Block:
         self.name = proto_name
         self.docks = None
         self.connections = None
+        self.defaults = []
+        self.content = None
+        self.primitive = None
         self._new_block_from_prototype(sprite_list, proto_name, labels, colors,
                                        scale, x, y)
         block_list.append_to_list(self)
@@ -124,6 +127,7 @@ class Block:
             self.docks = (('start',True,0,2),('flow',False,0,self.height-yoff))
         elif name in BASIC_STYLE_HEAD_1ARG:
             svg.expand(40,0)
+            svg.set_innie([True])
             svg.set_slot(False)
             self._make_basic_block(sprite_list, svg, x, y)
             self.docks = (('start',True,0,0), ('string',False,self.width,12),
@@ -137,19 +141,21 @@ class Block:
             svg.expand(25,0)
             svg.set_innie([True])
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('flow',True,0,2), ('num',False,self.width-xoff,12),
+            self.docks = (('flow',True,0,2),
+                          ('number',False,self.width-xoff,12),
                           ('flow',False,0,self.height-yoff))
         elif name in BASIC_STYLE_2ARG:
             svg.expand(25,0)
             svg.set_innie([True,True])
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('flow',True,0,2), ('num',False,self.width-xoff,12),
-                          ('num',False,self.width-xoff,54), 
+            self.docks = (('flow',True,0,2),
+                          ('number',False,self.width-xoff,12),
+                          ('number',False,self.width-xoff,54), 
                           ('flow',False,0,self.height-yoff))
         elif name in BOX_STYLE:
             svg.expand(60,0)
             self._make_basic_box(sprite_list, svg, x, y)
-            self.docks = (('num',True,0,12),('unavailable',False,0,12))
+            self.docks = (('number',True,0,12),('unavailable',False,0,12))
         elif name in NUMBER_STYLE:
             svg.expand(25,0)
             svg.set_innie([True,True])
@@ -157,8 +163,9 @@ class Block:
             svg.set_tab(False)
             svg.set_slot(False)
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('num',True,0,12), ('num',False,self.width-xoff,12),
-                          ('num',False,self.width-xoff,54)) 
+            self.docks = (('number',True,0,12),
+                          ('number',False,self.width-xoff,12),
+                          ('number',False,self.width-xoff,54)) 
         elif name in NUMBER_STYLE_1ARG:
             svg.expand(25,0)
             svg.set_innie([True])
@@ -166,7 +173,8 @@ class Block:
             svg.set_tab(False)
             svg.set_slot(False)
             self._make_basic_block(sprite_list, svg, x, y)
-            self.docks = (('num',True,0,12),('num',False,self.width-xoff,12)) 
+            self.docks = (('number',True,0,12),
+                          ('number',False,self.width-xoff,12)) 
         elif name in NUMBER_STYLE_PORCH:
             svg.expand(25,0)
             svg.set_innie([True,True])
@@ -176,18 +184,22 @@ class Block:
             svg.set_porch(True)
             self._make_basic_block(sprite_list, svg, x, y)
             xoff += svg._porch
-            self.docks = (('num',True,0,12), ('num',False,self.width-xoff,12),
-                          ('num',False,self.width-xoff,54)) 
+            self.docks = (('number',True,0,12),
+                          ('number',False,self.width-xoff-xoff,12),
+                          ('number',False,self.width-xoff,64)) 
         elif name in COMPARE_STYLE:
             self._make_boolean_compare(sprite_list, svg, x, y)
             self.docks = (('bool',True,0,self.height-12),
-                          ('num',False,self.width-xoff,12),
-                          ('num',False,self.width-xoff,54)) 
+                          ('number',False,self.width-xoff,12),
+                          ('number',False,self.width-xoff,54)) 
         elif name in BOOLEAN_STYLE:
+            svg.expand(15,0)
             self._make_boolean_and_or(sprite_list, svg, x, y)
-            self.docks = (('bool',False,0,self.height-12),
-                          ('bool',False,self.width-xoff,12))
+            self.docks = (('bool',True,0,self.height-12),
+                          ('bool',False,self.width-xoff,12),
+                          ('bool',False,self.width-xoff,54))
         elif name in NOT_STYLE:
+            svg.expand(15,0)
             self._make_boolean_not(sprite_list, svg, x, y)
             self.docks = (('bool',True,0,self.height-12),
                           ('bool',False,self.width-xoff,12))
@@ -204,8 +216,8 @@ class Block:
             svg.set_innie([True])
             self._make_basic_flow(sprite_list, svg, x, y)
             self.docks = (('flow',True,0,2),
-                          ('num',False,self.width-xoff,12),
-                          ('flow',False, 0, self.height-yoff)
+                          ('number',False,self.width-xoff,12),
+                          ('flow',False, 0, self.height-yoff),
                           ('flow',False,self.width/2, self.height-yoff))
         elif name in FLOW_STYLE_BOOLEAN:
             svg.expand(25,0)
@@ -223,6 +235,7 @@ class Block:
             self.docks = (('flow',True,0,2),('flow',False,0,self.height-yoff))
             print "don't know how to create a block for %s" % (name)
 
+        # NEED TO PROCESS DEFAULTS
         if len(labels) > 0:
             if BLOCK_NAMES.has_key(name):
                 self.spr.set_label(BLOCK_NAMES[name])
@@ -231,10 +244,15 @@ class Block:
                     self.spr.set_label(label, labels[i])
 
         self.type = 'block'
+
         if DEFAULTS.has_key(name):
             self.defaults = DEFAULTS[name]
-        else:
-            self.defaults = []
+
+        if name in CONTENT_BLOCKS:
+            self.content = name
+
+        if PRIMITIVES.has_key(name):
+            self.primitive = PRIMITIVES[name]
 
     def _make_basic_block(self, sprite_list, svg, x, y):
         self.shape = svg_str_to_pixbuf(svg.basic_block())

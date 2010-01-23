@@ -295,6 +295,7 @@ def serialize_stack(tw):
 
 # find the stack under the cursor and serialize it
 # TODO: rebase on assemble data to save
+# This code is broken
 def assemble_stack_to_clone(tw):
     if tw.spr is None or tw.spr.type is not "block":
         (x,y) = tw.window.get_pointer()
@@ -305,8 +306,9 @@ def assemble_stack_to_clone(tw):
         print "already selected block of type " + tw.spr.type
         spr = tw.spr
     data = []
-    if spr is not None and spr.type == 'block':
-        bs = findgroup(find_top_block(spr, tw.block_list), tw.block_list)
+    blk = tw.block_list.spr_to_block(spr)
+    if blk is not None:
+        bs = findgroup(find_top_block(blk, tw.block_list), tw.block_list)
         for i in range(len(bs)): bs[i].id=i
         for b in bs:
             name = b.proto.name
@@ -362,11 +364,10 @@ def findgroup(spr, block_list):
             group.extend(findgroup(spr2, block_list))
     return group
 
-def find_top_block(spr, block_list):
-    blk = block_list.spr_to_block(spr)
+def find_top_block(blk, block_list):
     while blk.connections[0]!=None:
         blk = block_list.spr_to_block(blk.connections[0])
-    return blk.spr
+    return blk
 
 # start a new project with a start brick
 def load_start(tw):

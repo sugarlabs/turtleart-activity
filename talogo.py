@@ -95,8 +95,8 @@ def blocks_to_code(lc, blk):
     code = []
     dock = blk.docks[0]
     if len(dock)>4: code.append(dock[4])
-    if hasattr(blk, 'primname') and blk.primname is not '':
-        code.append(blk.primname)
+    if blk.primitive is not None:
+        code.append(blk.primitive)
     else:
         if blk.name=='number':
             try:

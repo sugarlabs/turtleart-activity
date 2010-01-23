@@ -49,7 +49,7 @@ BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
     'store in box 2', 'wait', 'action']
 BASIC_STYLE_2ARG = ['arc', 'set xy', 'fill screen', 'store in']
 BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pen size', 'color', 'shade',
-    'text color', 'text size', 'box 1', 'box 2', 'string', 'left pos', 
+    'text color', 'text size', 'box 1', 'box 2', 'string', 'left pos', 'scale',
     'top pos', 'right pos', 'bottom pos', 'width', 'height']
 NUMBER_STYLE = ['plus', 'multiply', 'random']
 NUMBER_STYLE_PORCH = ['minus', 'divide', 'mod']
@@ -61,7 +61,7 @@ FLOW_STYLE = ['forever', 'hspace']
 FLOW_STYLE_1ARG = ['repeat']
 FLOW_STYLE_BOOLEAN = ['if else']
 TURTLE_PALETTE = ['clean', 'forward', 'back', 'left', 'right', 'seth', 'show',
-    'set_scale', 'xcor', 'ycor', 'heading']
+    'set scale', 'arc', 'scale', 'xcor', 'ycor', 'heading']
 PEN_PALETTE = ['pen up','pen down', 'set pen size', 'set text size',
     'set color', 'set shade', 'fill screen', 'pen size', 'text size', 'color',
     'shade'] # shade?
@@ -69,12 +69,12 @@ NUMBER_PALETTE = ['number', 'plus', 'minus', 'multiply',
     'divide', 'mod', 'square root', 'random', 'greater than', 'less than',
     'equal to', 'and', 'or', 'not', 'print']
 FLOW_PALETTE = ['wait', 'forever', 'repeat', 'if then', 'stop action', 'hspace'
-    'vspace'] # stop stack
+    'vspace']
 BLOCKS_PALETTE = ['start', 'def action 1', 'action 1', 'def action 2', 
     'action 2', 'def action', 'action', 'store in box 1', 'box 1',
-    'store in box 2', 'box 2', 'store in', 'box', 'string'] # hat, stack...
+    'store in box 2', 'box 2', 'store in', 'box', 'string']
 MISC_PALETTE = ['left pos', 'top pos', 'right pos', 'bottom pos', 'width', 
-    'height'] # hres, vres
+    'height']
 PORTFOLIO_PALETTE = ['hide blocks']
 
 TURTLE_COLORS = ["#00FF00","#00A000"]
@@ -89,14 +89,19 @@ SELECTED_COLOR = "#0000FF"
 SELECTED_STROKE_WIDTH = 2.0
 
 #
+# blocks that contain media
+#
+CONTENT_BLOCKS = ['number', 'string', 'media', 'audio', 'journal']
+
+#
 # block name dictionary
 #
 
 BLOCK_NAMES = {'clean':_('clean'), 'forward':_('forward'), 'back':_('back'),
     'left':_('left'), 'right':_('right'), 'set heading':_('set heading'),
-    'show':_('show'), 'set_scale':_('set_scale'), 'xcor':_('xcor'),
+    'show':_('show'), 'set scale':_('set scale'), 'xcor':_('xcor'),
     'ycor':_('ycor'), 'heading':_('heading'), 'pen up':_('pen up'),
-    'pen down':_('pen down'), 'set pen size':_('set pen size'),
+    'pen down':_('pen down'), 'set pen size':_('set pen size'), 'arc':_('arc'),
     'set text size':_('set text size'), 'set color':_('set color'),
     'set shade':_('set shade'), 'fill screen':_('fill screen'),
     'pen size':_('pen size'), 'text size':_('text size'), 'color':_('color'),
@@ -105,16 +110,45 @@ BLOCK_NAMES = {'clean':_('clean'), 'forward':_('forward'), 'back':_('back'),
     'greater than':'&gt;', 'equal to':'=', 'and':_('and'), 'or':_('or'),
     'not':_('not'), 'print':_('print'), 'wait':_('wait'),
     'forever':_('forever'), 'repeat':_('repeat'), 'if then':_('if then'),
-    'stop action':_('stop action'), 'hspace':_(''), 'vspace':_(''),
+    'stop action':_('stop action'), 'hspace':_(' '), 'vspace':_(' '),
     'start':_('start'), 'def action 1':_('action 1'), 'action 1':_('action 1'),
     'def action 2':_('action 2'), 'action 2':_('action 2'),
-    'def action':_('action'), 'action':_('action'),
+    'def action':_('action'), 'action':_('action'), 'number':'100',
     'store in box 1':_('store in box 1'), 'box 1':_('box 1'),
     'store in box 2':_('store in box 2'), 'box 2':_('box 2'), 
     'store in':_('store in'), 'box':_('box'), 'string':_('string'), 
     'left pos':_('left'), 'top pos':_('top'), 'right pos':_('right'), 
     'bottom pos':_('bottom'), 'width':_('width'), 'height':_('height'),
-    'hide blocks':_('hide blocks')}
+    'hide blocks':_('hide blocks'), 'set xy':_('set xy'), 'scale':_('scale')}
+
+#
+# Logo primitives
+#
+
+PRIMITIVES = {'clean':'clean', 'forward':'forward', 'back':'back',
+    'left':'left', 'right':'right', 'set heading':'seth', 'scale':'scale',
+    'show':'show', 'set scale':'setscale', 'xcor':'xcor', 'set xy':'setxy',
+    'ycor':'ycor', 'heading':'heading', 'pen up':'penup',
+    'pen down':'pendown', 'set pen size':'setpensize',
+    'set text size':'settextsize', 'set color':'setcolor',
+    'set shade':'setshade', 'fill screen':'fillscreen',
+    'pen size':'pensize', 'text size':'textsize', 'color':'color',
+    'plus':'plus', 'minus':'minus', 'multiply':'product',
+     'divide':'division', 'mod':'mod', 
+    'random':'random', 'square root':'sqrt', 'less than':'less?',
+    'greater than':'greater?', 'equal to':'equal?', 'and':'and', 'or':'or',
+    'not':'not', 'print':'print', 'wait':'wait',
+    'forever':'forever', 'repeat':'repeat', 'if then':'if', 'if else':'ifelse',
+    'stop action':'stopstack', 'hspace':'nop', 'vspace':'nop',
+    'start':'start', 'def action 1':'nop1', 'action 1':'stack1',
+    'def action 2':'nop2', 'action 2':'stack2',
+    'def action':'nop3', 'action':'stack',
+    'store in box 1':'storeinbox1', 'box 1':'box1',
+    'store in box 2':'storeinbox2', 'box 2':'box2', 
+    'store in':'storeinbox', 'box':'box',
+    'left pos':'leftpos', 'top pos':'toppos', 'right pos':'rightpos', 
+    'bottom pos':'bottompos', 'width':'hres', 'height':'vres',
+    'hide blocks':'hideblocks'}
 
 #
 # block default values
