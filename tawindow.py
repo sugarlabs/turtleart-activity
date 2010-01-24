@@ -102,10 +102,8 @@ class TurtleArtWindow():
         self.keypress = ""
         self.keyvalue = 0
         self.dead_key = ""
-        self.firstkey = True
         self.area = self.window.window
         self.gc = self.area.new_gc()
-        # On an OLPC XO 1, there is a scaling factor.
         if self._OLPC_XO_1():
             self.lead = 1.6
             self.scale = 1.0
@@ -429,6 +427,7 @@ class TurtleArtWindow():
             print "processing remote mouse move: " + str(x) + " " + str(y)
 
         self.block_operation = 'move'
+        # First, check to see if we are dragging or rotating a turtle.
         if self.selected_turtle is not None:
             type,dragx,dragy = self.dragpos
             (sx,sy) = self.selected_turtle.spr.get_xy()
@@ -444,10 +443,11 @@ class TurtleArtWindow():
                 else:
                     dx,dy = x-sx-30,y-sy-30
                 seth(self.turtle, int(dragx+atan2(dy,dx)/DEGTOR+5)/10*10)
-        # On hover, show popup help
+        # If we are hoving, show popup help.
         elif self.drag_group is None:
             self._show_popup(x, y)
             return
+        # If we have a stack of blocks selected, move them.
         elif self.drag_group[0] is not None:
             blk = self.drag_group[0]
             self.selected_spr = blk.spr
@@ -457,16 +457,16 @@ class TurtleArtWindow():
             else:
                 (sx,sy) = blk.spr.get_xy()
                 dx,dy = x-dragx-sx,y-dragy-sy
-            # skip if there was a move of 0,0
+            # Take no action if there was a move of 0,0.
             if dx == 0 and dy == 0:
                 return
             self.drag_group = self._find_group(blk)
-            # check to see if any block ends up with a negative x
+            # Check to see if any block ends up with a negative x.
             for b in self.drag_group:
                 (bx, by) = b.spr.get_xy()
                 if bx+dx < 0:
                     dx += -(bx+dx)
-            # move the stack
+            # Move the stack.
             for b in self.drag_group:
                 (bx, by) = b.spr.get_xy()
                 b.spr.move((bx+dx, by+dy))
@@ -477,7 +477,8 @@ class TurtleArtWindow():
             self.dy += dy
 
     """
-    get_proto_from_category
+    Get proto from category
+    TODO: move to toolbar
     """
     def _get_proto_from_category(self, x, y):
         (sx,sy) = self.category_spr.get_xy()
@@ -492,7 +493,7 @@ class TurtleArtWindow():
         return self.current_category.blockprotos[index]
 
     """
-    lets help our users by displaying a little help
+    Let's help our users by displaying a little help.
     """
     def _show_popup(self, x, y):
         spr = self.sprite_list.find_sprite((x,y))
@@ -542,7 +543,8 @@ class TurtleArtWindow():
                     self.timeout_tag[0] = 0
 
     """
-    fetch the help text and display it 
+    Fetch the help text and display it. 
+    TODO: if block selection moves to the toolbar, help will have to move
     """
     def _do_show_popup(self, block_name):
         if blocks_dict.has_key(block_name):
@@ -584,9 +586,12 @@ class TurtleArtWindow():
             return False
         if verbose:
             print "processing remote key press: " + keyname
+
         self.keypress = keyname
+
+        # First, process Alt keys.
         if alt_mask is True and self.selected_blk==None:
-            if keyname=="i" and self._running_sugar():
+            if keyname=="i" and self._sharing():
                 self.activity.waiting_for_blocks = True
                 self.activity._send_event("i") # request sync for sharing
             elif keyname=="p":
@@ -594,121 +599,127 @@ class TurtleArtWindow():
             elif keyname=='q':
                 exit()
             return True
-        if self.selected_blk is not None and \
+        # Process keyboard input for 'number' blocks
+        if self.selected_blk is not None and\
            self.selected_blk.name == 'number':
-            if keyname in ['minus', 'period']: 
-                keyname = {'minus': '-', 'period': '.'}[keyname]
-            oldnum = self.selected_blk.spr.labels[0] 
-            if keyname == 'BackSpace':
-                if len(oldnum) > 1:
-                    newnum = oldnum[:len(oldnum)-1]
-                else:
-                    newnum = ''
-                self.selected_blk.spr.set_label(numcheck(newnum,oldnum))
-                if len(newnum) > 0:
-                    self.firstkey = False
-                else:
-                    self.firstkey = True
-            if len(keyname)>1:
-                return True
-        else: # gtk.keysyms.Left ...
-            if keyname in ['Escape', 'Return', 'j', 'k', 'h', 'l', 'KP_Page_Up',
-                           'Up', 'Down', 'Left', 'Right', 'KP_Home', 'KP_End',
-                           'KP_Up', 'KP_Down', 'KP_Left', 'KP_Right',
-                           'KP_Page_Down']:
-                # move blocks (except number and text blocks only with arrows)
-                # or click with Return
-                if keyname == 'KP_End':
-                    self.run_button(0)
-                elif self.selected_spr is not None:
-                    blk = self.block_list.spr_to_block(self.selected_spr)
-                    if blk is not None:
-                        if keyname == 'Return' or keyname == 'KP_Page_Up':
-                            self._click_block()
-                        elif keyname == 'KP_Up' or keyname == 'j' or \
-                             keyname == 'Up':
-                            self._jog_block(blk, 0, 10)
-                        elif keyname == 'KP_Down' or keyname == 'k' or \
-                             keyname == 'Down':
-                            self._jog_block(blk, 0, -10)
-                        elif keyname == 'KP_Left' or keyname == 'h' or \
-                             keyname == 'Left':
-                            self._jog_block(blk, -10, 0)
-                        elif keyname == 'KP_Right' or keyname == 'l' or \
-                             keyname == 'Right':
-                            self._jog_block(blk, 10, 0)
-                        elif keyname == 'KP_Page_Down':
-                            if self.drag_group == None:
-                                self.drag_group = self._find_group(blk)
-                            for b in self.drag_group: b.spr.hide()
-                            self.drag_group = None
-                    elif self.selected_spr.type == 'turtle': # jog turtle with arrow keys
-                        if keyname == 'KP_Up' or keyname == 'j' \
-                                              or keyname == 'Up':
-                            self._jog_turtle(0,10)
-                        elif keyname == 'KP_Down' or keyname == 'k' or \
-                             keyname == 'Down':
-                            self._jog_turtle(0,-10)
-                        elif keyname == 'KP_Left' or keyname == 'h' or \
-                             keyname == 'Left':
-                            self._jog_turtle(-10,0)
-                        elif keyname == 'KP_Right' or keyname == 'l' or \
-                             keyname == 'Right':
-                            self._jog_turtle(10,0)
-                        elif keyname == 'KP_Home':
-                            self._jog_turtle(-1,-1)
-                    elif self.selected_spr.type == 'selbutton':
-                        if keyname == 'Return' or keyname == 'KP_Page_Up':
-                            self._select_category(self.selected_spr)
-                    elif self.selected_spr.type == 'category':
-                        if keyname == 'Return' or keyname == 'KP_Page_Up':
-                            (x,y) = self.window.get_pointer()
-                            self._block_selector_pressed(x, y)
-                            for b in self.drag_group:
-                               (bx, by) = b.spr.get_xy()
-                               b.spr.move((bx+200, by))
-                            self.drag_group = None
-                return True
+            self._process_numeric_input(keyname)
+            return True
+        # Process keyboard input for 'string' blocks
+        elif self.selected_blk is not None and\
+             self.selected_blk.name == 'string':
+            self._process_alphanumeric_input(keyname, keyunicode)
+            return True
+        # Otherwise, use keyboard input to move blocks or turtles
+        else:
+            self._process_keyboard_commands(keyname)
         if self.selected_blk is None:
             return False
-        if keyname in ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', \
+
+    '''
+    Make sure numeric input is valid.
+    '''
+    def _process_numeric_input(self, keyname):
+        oldnum = self.selected_blk.spr.labels[0] 
+        print "adding %s to %s" % (keyname, oldnum)
+        if len(oldnum) == 0:
+            oldnum = '0'
+        if keyname == 'minus':
+            if oldnum == '0':
+                newnum = '-'
+            elif oldnum[0] != '-':
+                newnum = '-' + oldnum
+        elif keyname == 'period' and '.' not in oldnum:
+            newnum = oldnum + '.'
+        elif keyname == 'BackSpace':
+            if len(oldnum) > 1:
+                newnum = oldnum[:len(oldnum)-1]
+            else:
+                newnum = ''
+        elif keyname in ['0','1','2','3','4','5','6','7','8','9']:
+            if oldnum == '0':
+                newnum = keyname
+            else:
+                newnum = oldnum + keyname
+        else:
+            newnum = oldnum
+        self.selected_blk.spr.set_label(numcheck(newnum,oldnum))
+
+    """
+    Make sure alphanumeric input is properly parsed.
+    """
+    def _process_alphanumeric_input(self, keyname, keyunicode):
+        oldstr = self.selected_blk.spr.labels[0]
+        if keyname in ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock',\
                        'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift']:
             keyname = ''
             keyunicode = 0
-        # Hack until I sort out input and unicode + dead keys
+        # Hack until I sort out input and unicode and dead keys,
         if keyname[0:5] == 'dead_':
             self.dead_key = keyname
             keyname = ''
             keyunicode = 0
         if keyname in WHITE_SPACE:
             keyunicode = 32
-        oldnum = self.selected_blk.spr.labels[0]
         if keyname == 'BackSpace':
-            if len(oldnum) > 1:
-                newnum = oldnum[:len(oldnum)-1]
+            if len(oldstr) > 1:
+                newstr = oldstr[:len(oldstr)-1]
             else:
-                newnum = ''
-            self.selected_blk.spr.set_label(strcheck(newnum,oldnum))
-            if len(newnum) > 0:
-                self.firstkey = False
-            else:
-                self.firstkey = True
+                newstr = ''
         else:
             if self.dead_key is not '':
                 keyunicode =\
                     DEAD_DICTS[DEAD_KEYS.index(self.dead_key[5:])][keyname]
-                self.dead_key = ""
-            if self.firstkey:
-                newnum = strcheck(unichr(keyunicode), "")
-            elif keyunicode > 0:
+                self.dead_key = ''
+            if keyunicode > 0:
                 if unichr(keyunicode) is not '\x00':
-                    newnum = oldnum+unichr(keyunicode)
+                    newstr = oldstr+unichr(keyunicode)
                 else:
-                    newnum = oldnum
+                    newstr = oldstr
             else:
-                newnum = ""
-            self.selected_blk.spr.set_label(strcheck(newnum,oldnum))
-            self.firstkey = False
+                newstr = ''
+        self.selected_blk.spr.set_label(strcheck(newstr,oldstr))
+
+    """
+    Use the keyboard to move blocks and turtle
+    """
+    def _process_keyboard_commands(self, keyname):
+        mov_dict = {'KP_Up':[0,10],'j':[0,10],'Up':[0,10],
+                    'KP_Down':[0,-10],'k':[0,-10],'Down':[0,-10],
+                    'KP_Left':[-10,0],'h':[-10,0],'Left':[-10,0],
+                    'KP_Right':[-10,0],'l':[-10,0],'Right':[-10,0],
+                    'KP_Page_Down':[0,0], 'KP_Page_Up':[0,0], 'KP_End':[0,0],
+                    'KP_Home':[-1,-1],'Return':[-1,-1], 'Esc':[0,0]}
+        if not mov_dict.has_key(keyname):
+            return
+        if keyname == 'KP_End':
+            self.run_button(0)
+        elif self.selected_spr is not None:
+            blk = self.block_list.spr_to_block(self.selected_spr)
+            tur = self.turtle_list.spr_to_turtle(self.selected_spr)
+            if blk is not None:
+                if keyname == 'Return' or keyname == 'KP_Page_Up':
+                    self._click_block()
+                elif keyname == 'KP_Page_Down':
+                    if self.drag_group == None:
+                        self.drag_group = self._find_group(blk)
+                    for b in self.drag_group: b.spr.hide()
+                    self.drag_group = None
+                else:
+                    self._jog_block(blk, mov_dict[keyname][0],
+                                         mov_dict[keyname][1])
+            elif tur is not None:
+                self._jog_turtle(mov_dict[keyname][0], mov_dict[keyname][1])
+            elif self.selected_spr.type == 'selbutton':
+                if keyname == 'Return' or keyname == 'KP_Page_Up':
+                    self._select_category(self.selected_spr)
+            elif self.selected_spr.type == 'category':
+                if keyname == 'Return' or keyname == 'KP_Page_Up':
+                    (x,y) = self.window.get_pointer()
+                    self._block_selector_pressed(x, y)
+                    for b in self.drag_group:
+                       (bx, by) = b.spr.get_xy()
+                       b.spr.move((bx+200, by))
+                    self.drag_group = None
         return True
 
     """
@@ -766,11 +777,9 @@ class TurtleArtWindow():
             if blk is not None and blk.name=='number':
                 blk.spr.set_shape(blk.selected_shape)
                 self.selected_blk = blk
-                self.firstkey = True
             elif blk is not None and blk.name=='string':
                 self.selected_blk = blk
                 blk.spr.set_shape(blk.selected_shape)
-                self.firstkey = True
                 '''
                 # need new strategy for media blocks
                 elif blk.name in self.importblocks:
@@ -791,10 +800,8 @@ class TurtleArtWindow():
         blk = self.block_list.spr_to_block(self.selected_spr)
         if blk is not None and blk.name=='number':
             self.selected_blk = blk
-            self.firstkey = True
         elif blk is not None and blk.name=='string':
             self.selected_blk = blk
-            self.firstkey = True
             '''
             elif blk.name in self.importblocks:
                 self._import_from_journal(self.selected_spr)
