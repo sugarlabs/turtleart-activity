@@ -263,10 +263,14 @@ class Sprite:
                 self._width-self._margins[1]-self._margins[3]))
     
     def get_pixel(self, image, x, y):
-        array = image.get_pixels()
-        if array is not None:
-            offset = (y*image.get_width()+x)*4
-            r,g,b,a = ord(array[offset]), ord(array[offset+1]),\
-                      ord(array[offset+2]), ord(array[offset+3])
-            return (a<<24)+(b<<16)+(g<<8)+r
-        return 0
+        try:
+            array = image.get_pixels()
+            if array is not None:
+                offset = (y*image.get_width()+x)*4
+                r,g,b,a = ord(array[offset]), ord(array[offset+1]),\
+                          ord(array[offset+2]), ord(array[offset+3])
+                return (a<<24)+(b<<16)+(g<<8)+r
+            return 0
+        except IndexError:
+            print "Index Error: %d %d" % (len(array), offset)
+            return 0

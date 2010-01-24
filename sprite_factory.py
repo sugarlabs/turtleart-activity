@@ -86,8 +86,8 @@ class SVG:
         svg += self._corner(-1, -1)
         svg += self._rline_to(0, -self._expand_y)
         if True in self._innie:
-            svg += self._line_to(x,
-                                 self._radius+self._innie_y2+self._stroke_width)
+            svg += self._line_to(x, self._radius+self._innie_y2+\
+                                    self._stroke_width/2.0)
             svg += self._do_outie()
         svg += self._close_path()
         self._calculate_w_h()
@@ -124,9 +124,8 @@ class SVG:
         svg += self._rarc_to(-1, -1)
         svg += self._rline_to(0, -self._expand_y)
         if True in self._innie:
-            svg += self._line_to(x,
-                                 self._radius+self._innie_y2+self._stroke_width)
-            svg += self._do_outie()
+            svg += self._line_to(x, self._radius+self._innie_y2+\
+                                    self._stroke_width)
         svg += self._close_path()
         self._calculate_w_h()
         svg += self._style()

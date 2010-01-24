@@ -1086,6 +1086,9 @@ def showlabel(lc,label):
     elif label=='#overflowerror':
         shp = 'overflowerror'
         label=''
+    elif label=='#notanumber':
+        shp = 'overflowerror'
+        label=''
     else:
         shp = 'status'
     lc.tw.status_spr.set_shape(lc.tw.status_shapes[shp])
