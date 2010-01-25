@@ -1009,8 +1009,15 @@ class TurtleArtWindow():
             return
         self.lc.ag = None
         top = self._find_top_block(blk)
-        run_blocks(self.lc, top, self.block_list.list, True)
+        run_blocks(self.lc, top, self._just_blocks(), True)
         gobject.idle_add(doevalstep, self.lc)
+
+    def _just_blocks(self):
+        just_blocks_list = []
+        for b in self.block_list.list:
+            if b.type == 'block':
+                just_blocks_list.append(b)
+        return just_blocks_list
 
     """
     Block selector pressed
