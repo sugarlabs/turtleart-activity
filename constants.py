@@ -36,8 +36,11 @@ PEN = 1
 NUMBER = 2
 FLOW = 3
 BLOCKS = 4
-MISC = 5
+EXTRAS = 5
 PORTFOLIO = 6
+
+PALETTE_NAMES = ['turtle', 'pen', 'number', 'flow', 'blocks', 'extras',
+                 'portfolio']
 
 PALETTES = [['clean', 'forward', 'back', 'left', 'right', 'arc', 'set xy',
      'show', 'set scale', 'set heading', 'scale', 'xcor', 'ycor', 'heading'],
@@ -46,13 +49,13 @@ PALETTES = [['clean', 'forward', 'back', 'left', 'right', 'arc', 'set xy',
      'shade'],
     ['number', 'plus', 'minus', 'multiply',
      'divide', 'mod', 'square root', 'random', 'greater than', 'less than',
-     'equal to', 'and', 'or', 'not', 'print'],
+     'equal to', 'and', 'or', 'not'],
     ['wait', 'forever', 'repeat', 'if then', 'stop action', 'hspace',
      'vspace'],
     ['start', 'def action 1', 'action 1', 'def action 2', 
      'action 2', 'def action', 'action', 'store in box 1', 'box 1',
      'store in box 2', 'box 2', 'store in', 'box', 'string'],
-    ['left pos', 'top pos', 'right pos', 'bottom pos', 'width', 
+    ['print', 'left pos', 'top pos', 'right pos', 'bottom pos', 'width', 
      'height'],
     ['hide blocks']]
 
@@ -64,6 +67,9 @@ COLORS = [["#00FF00","#00A000"], ["#00FFFF","#00A0A0"], ["#FF00FF","#A000A0"],
           ["#FFC000","#A08000"], ["#FFFF00","#A0A000"], ["#FF0000","#A0000"],
           ["#0000FF","#0000FF"]]
 
+
+PALETTE_HEIGHT = 175
+ICON_SIZE = 55
 SELECTED_COLOR = "#0000FF"
 SELECTED_STROKE_WIDTH = 1.5
 STANDARD_STROKE_WIDTH = 1.0
@@ -118,7 +124,8 @@ BLOCK_NAMES = {'clean':[_('clean')], 'forward':[_('forward')],
     'color':[_('color')],
     'plus':['+'], 'minus':['–'], 'multiply':['×'], 'divide':['/'],
     'mod':[_('mod')], 
-    'random':[_('random')], 'square root':['√'], 'less than':['<'],
+    'random':[_('random'),_('min'),_('max')], 'square root':['√'],
+    'less than':['<'],
     'greater than':[">"], 'equal to':['='], 'and':[_('and')], 'or':[_('or')],
     'not':[_('not')], 'print':[_('print')], 'wait':[_('wait')],
     'forever':[_('forever')], 'repeat':[_('repeat')], 'if then':[_('if then')],

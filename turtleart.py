@@ -91,13 +91,13 @@ class TurtleMain():
 
         menu = gtk.Menu()
 
-        menu_items = gtk.MenuItem(_("Turtle"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_turtle_cb)
-        menu_items.show()
         menu_items = gtk.MenuItem(_("Palette"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_palette_cb)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Hide Palette"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_hide_palette_cb)
         menu_items.show()
         menu_items = gtk.MenuItem(_("Blocks"))
         menu.append(menu_items)
@@ -149,17 +149,14 @@ class TurtleMain():
     def _do_save_cb(self, widget):
         save_file(self.tw)
 
-    def _do_turtle_cb(self, widget):
+    def _do_palette_cb(self, widget):
         self.tw.show_toolbar_palette(self.i)
         self.i += 1
-        if self.i > 6:
+        if self.i == len(self.tw.palettes):
             self.i = 0
 
-    def _do_palette_cb(self, widget):
-        if self.tw.palette == True:
-            self.tw.hideshow_palette(False)
-        else:
-            self.tw.hideshow_palette(True)
+    def _do_hide_palette_cb(self, widget):
+        self.tw.hide_toolbar_palette()
 
     def _do_hideshow_cb(self, widget):
         self.tw.hideshow_button()

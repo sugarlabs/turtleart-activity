@@ -73,11 +73,17 @@ class TurtleArtWindow():
 
     def __init__(self, win, path, lang, parent=None):
         self._setup_initial_values(win, path, lang, parent)
+        # TODO: most of this goes away
         prep_selectors(self) # i wonder where this method belongs
         for s in selectors:
             setup_selectors(self,s)
         setup_misc(self)
-        self._select_category(self.selbuttons[0])
+        # self._select_category(self.selbuttons[0])
+
+        # the new palette
+        self.show_toolbar_palette(0, False)
+        # hide the old palette
+        self._hide_palette()
 
     def _setup_initial_values(self, win, path, lang, parent):
         self.window = win
@@ -146,6 +152,9 @@ class TurtleArtWindow():
         self.palette_spr = None
         self.palettes = []
         self.selected_palette = None
+        self.selectors = []
+        self.selected_selector = None
+        self.selector_shapes = []
 
     #
     # Public methods are called from the activity class
@@ -155,7 +164,7 @@ class TurtleArtWindow():
     eraser_button: hide status block
     """
     def eraser_button(self):
-        self.status_spr.set_layer(400)
+        self.status_spr.set_layer(HIDE_LAYER)
         clear(self.lc)
         display_coordinates(self)
 
@@ -238,48 +247,78 @@ class TurtleArtWindow():
         return
 
     """
-    Show turtle palette
-    The new tasetup
-    Experiment with toolbar palette for block creation
+    Show/hide turtle palettes
     """
-    def show_toolbar_palette(self, n):
+    def hide_toolbar_palette(self, hide_palette_spr=True):
+        for i in range(len(PALETTES[self.selected_palette])):        
+            self.palettes[self.selected_palette][i].spr.set_layer(HIDE_LAYER)
+        if hide_palette_spr is True:
+            self.palette_spr.set_layer(HIDE_LAYER)
+            self.selected_palette = None
+
+    def show_toolbar_palette(self, n, init_only=False):
+        # TODO: make graphical selector buttons
+        if self.selectors == []:
+            svg = sprite_factory.SVG()
+            svg.set_scale(2.0)
+            svg.set_gradiant(True)
+            svg.set_innie([False])
+            svg.set_outie(False)
+            svg.set_tab(False)
+            svg.set_slot(False)
+            svg.expand(25)
+            x, y = 5, 5
+            for i, name in enumerate(PALETTE_NAMES):
+                svg.set_stroke_width(STANDARD_STROKE_WIDTH)
+                svg.set_colors(COLORS[i])
+                a = sprite_factory.svg_str_to_pixbuf(svg.basic_block())
+                svg.set_stroke_width(SELECTED_STROKE_WIDTH)
+                svg.set_stroke_color(SELECTED_COLOR)
+                b = sprite_factory.svg_str_to_pixbuf(svg.basic_block())
+                self.selector_shapes.append([a,b])
+                self.selectors.append(sprites.Sprite(self.sprite_list, x, y, a))
+                self.selectors[i].set_label(name)
+                self.selectors[i].type = 'selector'
+                self.selectors[i].set_layer(TAB_LAYER)
+                w, h = self.selectors[i].get_dimensions()
+                x += (w+5) 
         if self.palette_spr is None:
             svg = sprite_factory.SVG()
             self.palette_spr = sprites.Sprite(self.sprite_list, 0, 0,
-                sprite_factory.svg_str_to_pixbuf(svg.palette(self.width, 150)))
-            self.palette_spr.set_layer(CATEGORY_LAYER)
+                sprite_factory.svg_str_to_pixbuf(svg.palette(self.width,
+                                                             PALETTE_HEIGHT)))
             self.palette_spr.type = 'category'
+        self.palette_spr.set_layer(CATEGORY_LAYER)
         if len(self.palettes) == 0:
             for i in range(len(PALETTES)):
                 self.palettes.append([])
         
-        if n < 0 or n > len(PALETTES)-1:
+        if init_only is True:
             return
 
         if self.selected_palette is not None:
-            print "out with the old %d" % (self.selected_palette)
-            for i in range(len(PALETTES[self.selected_palette])):        
-                self.palettes[self.selected_palette][i].spr.set_layer(
-                                                                    HIDE_LAYER)
-            self.selected_palette = n
+            self.hide_toolbar_palette(False)
+        self.selected_palette = n
+        self.selectors[n].set_shape(self.selector_shapes[n][1])
+        self.selected_selector = self.selectors[n]
 
         if self.palettes[n] == []:
             for i, name in enumerate(PALETTES[n]):
                 self.palettes[n].append(block.Block(self.block_list,
                                                     self.sprite_list, name,
-                                                    0, 0, 'selector', [], 1.5))
+                                                    0, 0, 'proto', [], 1.5))
                 self.palettes[n][i].spr.set_layer(TAB_LAYER)
                 self.palettes[n][i].spr.set_shape(self.palettes[n][i].shapes[0])
             # simple packing algorithm
-            x, y, max_width = 10, 75, 0
+            x, y, max_width = 5, ICON_SIZE+5, 0
             for i in range(len(PALETTES[n])):
                 w, h = self.palettes[n][i].spr.get_dimensions()
-                if y+h > 150:
-                    y = 75
-                    x += (max_width+10)
+                if y+h > PALETTE_HEIGHT:
+                    y = ICON_SIZE+5
+                    x += (max_width+5)
                     max_width = 0
                 self.palettes[n][i].spr.move((int(x), int(y)))
-                y += h
+                y += (h+5)
                 if w > max_width:
                     max_width = w
         else:
@@ -331,11 +370,20 @@ class TurtleArtWindow():
     TODO: move to toolbar
     """
     def _select_category(self, spr):
+        i = self.selectors.index(spr)
+        spr.set_shape(self.selector_shapes[i][1])
+        if self.selected_selector is not None:
+            j = self.selectors.index(self.selected_selector)
+            self.selected_selector.set_shape(self.selector_shapes[j][0])
+        self.selected_selector = spr
+        self.show_toolbar_palette(i)
+        """
         if hasattr(self, 'current_category'):
             self.current_category.set_shape(self.current_category.offshape)
         spr.set_shape(spr.onshape)
         self.current_category = spr
         self.category_spr.set_shape(spr.group)
+        """
 
     """
     Hide the palette.
@@ -461,6 +509,8 @@ class TurtleArtWindow():
     TODO: move to toolbar
     """
     def _get_proto_from_category(self, x, y):
+        return
+
         (sx,sy) = self.category_spr.get_xy()
         pixel = self.current_category.get_pixel(self.current_category.mask,
                                                 x-sx, y-sy)
@@ -490,6 +540,8 @@ class TurtleArtWindow():
                     except:
                         self.timeout_tag[0] = 0
         elif spr and hasattr(spr,'type') and spr.type == 'category':
+            # TODO: reassign to new palettes
+            return
             proto = self._get_proto_from_category(x, y)
             if proto and proto!='hide':
                 if self.timeout_tag[0] == 0:
@@ -689,6 +741,7 @@ class TurtleArtWindow():
                                          mov_dict[keyname][1])
             elif tur is not None:
                 self._jog_turtle(mov_dict[keyname][0], mov_dict[keyname][1])
+            """
             elif self.selected_spr.type == 'selbutton':
                 if keyname == 'Return' or keyname == 'KP_Page_Up':
                     self._select_category(self.selected_spr)
@@ -700,6 +753,7 @@ class TurtleArtWindow():
                        (bx, by) = b.spr.get_xy()
                        b.spr.move((bx+200, by))
                     self.drag_group = None
+            """
         return True
 
     """
@@ -732,9 +786,9 @@ class TurtleArtWindow():
             if blk.type == 'block':
                 self.selected_blk = blk
                 self._block_pressed(mask, x, y, blk)
-            elif blk.type == 'selector':
+            elif blk.type == 'proto':
                 blk.spr.set_shape(blk.shapes[1])
-                self._new_block_from_category(blk.name, x, y+100)
+                self._new_block_from_category(blk.name, x, y+PALETTE_HEIGHT)
                 blk.spr.set_shape(blk.shapes[0])
             return True
 
@@ -753,10 +807,14 @@ class TurtleArtWindow():
             if spr.type == "canvas":
                 spr.set_layer(CANVAS_LAYER)
                 return True
+            elif spr.type == 'selector':
+                self._select_category(spr)
+            """
             elif spr.type == 'selbutton':
                 self._select_category(spr)
             elif spr.type == 'category':
                 self._block_selector_pressed(x,y)
+            """
 
     """
     Block pressed
@@ -839,11 +897,13 @@ class TurtleArtWindow():
 
         blk = self.drag_group[0]
         # Remove blocks by dragging them onto the category palette
-        # TODO: rethink when palette moves to toolbar
+        # TODO: rethink when palette moves to toolbar -- Trash can??
+        """
         if self.block_operation=='move' and self.category_spr.hit((x,y)):
             for b in self.drag_group: b.spr.hide()
             self.drag_group = None
             return
+        """
 
         # Pull a stack of new blocks off of the category palette.
         if self.block_operation=='new':

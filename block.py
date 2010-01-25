@@ -294,8 +294,7 @@ class Block:
         self.svg.set_slot(False)
         self._make_basic_block(svg)
         """
-        NOTE:
-        The "outie" is added last, so the dock order in the NUMBER_STYLE
+        NOTE: The "outie" is added last, so the dock order in the NUMBER_STYLE
         needs to be modified.
         """
         self.docks = (('number', True, self.svg.docks[2][0],
@@ -304,7 +303,8 @@ class Block:
                                         self.svg.docks[0][1]),
                       ('number', False, self.svg.docks[1][0],
                                         self.svg.docks[1][1])) 
-        self._left, self._right = self.svg.docks[2][0], 0
+        self._left = self.svg.docks[2][0]
+        self._right = self.svg.get_innie_width()*1.5
 
     def _make_number_style_1arg(self, e, svg):
         self.svg.expand(e, 0)
