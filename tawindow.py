@@ -608,6 +608,7 @@ class TurtleArtWindow():
         elif self.selected_blk is not None and\
              self.selected_blk.name == 'string':
             self._process_alphanumeric_input(keyname, keyunicode)
+            self.selected_blk.resize()
             return True
         # Otherwise, use keyboard input to move blocks or turtles
         else:
@@ -620,7 +621,6 @@ class TurtleArtWindow():
     '''
     def _process_numeric_input(self, keyname):
         oldnum = self.selected_blk.spr.labels[0] 
-        print "adding %s to %s" % (keyname, oldnum)
         if len(oldnum) == 0:
             oldnum = '0'
         if keyname == 'minus':
@@ -723,6 +723,23 @@ class TurtleArtWindow():
         return True
 
     """
+    Button Press
+    """
+    def _buttonpress_cb(self, win, event):
+        self.window.grab_focus()
+        x, y = self.xy(event)
+        self.button_press(event.get_state()&gtk.gdk.CONTROL_MASK, x, y)
+  
+        # if sharing, send button press
+        if self._sharing():
+            # print "sending button pressed"
+            if event.get_state()&gtk.gdk.CONTROL_MASK is True:
+                self.activity._send_event("p:"+str(x)+":"+str(y)+":"+'T')
+            else:
+                self.activity._send_event("p:"+str(x)+":"+str(y)+":"+'F')
+        return True
+
+    """
     Button release
     """
     def _buttonrelease_cb(self, win, event):
@@ -745,6 +762,7 @@ class TurtleArtWindow():
         print "button release"
         if verbose:
             print "processing remote button release: " + str(x) + " " + str(y)
+        # We may have been moving the turtle
         if self.selected_turtle is not None:
             print "clicked on a turtle"
             (tx, ty) = self.turtle.spr.get_xy()
@@ -756,57 +774,50 @@ class TurtleArtWindow():
             display_coordinates(self)
             self.selected_turtle = None
             return
+
+        # If we don't have a group of blocks, then there is nothing to do.
         if self.drag_group == None: 
             return
+
         blk = self.drag_group[0]
-        # remove block by dragging them onto the category palette
+        # Remove blocks by dragging them onto the category palette
         if self.block_operation=='move' and self.category_spr.hit((x,y)):
             for b in self.drag_group: b.spr.hide()
             self.drag_group = None
             return
+
+        # Pull a stack of new blocks off of the category palette.
+        # TODO: rethink when palette moves to toolbar
         if self.block_operation=='new':
             for b in self.drag_group:
                 (bx, by) = b.spr.get_xy()
                 b.spr.move((bx+200, by))
+
+        # Look to see if we can dock the current stack.
         self._snap_to_dock()
         for b in self.drag_group:
             b.spr.set_layer(BLOCK_LAYER)
         self.drag_group = None
+
+        # Find the block we clicked on and process it.
         if self.block_operation=='click':
-            blk = self.block_list.spr_to_block(self.selected_spr)
-            if blk is not None and blk.name=='number':
-                blk.spr.set_shape(blk.selected_shape)
-                self.selected_blk = blk
-            elif blk is not None and blk.name=='string':
-                self.selected_blk = blk
-                blk.spr.set_shape(blk.selected_shape)
-                '''
-                # need new strategy for media blocks
-                elif blk.name in self.importblocks:
-                    self._import_from_journal(spr)
-                '''
-            elif blk is not None and blk.name=='nop' and self.myblock==None:
-                self.activity.import_py()
-            else:
-                if blk is not None:
-                    blk.spr.set_shape(blk.selected_shape)
-                self.selected_blk = blk
-                self._run_stack(blk)
+            self._click_block()
 
     """
     click block
     """
     def _click_block(self):
         blk = self.block_list.spr_to_block(self.selected_spr)
-        if blk is not None and blk.name=='number':
-            self.selected_blk = blk
-        elif blk is not None and blk.name=='string':
-            self.selected_blk = blk
+        if blk is None:
+            return
+        self.selected_blk = blk
+        if  blk.name=='number' or blk.name=='string':
+            pass
             '''
             elif blk.name in self.importblocks:
                 self._import_from_journal(self.selected_spr)
             '''
-        elif blk is not None and blk.name=='nop' and self.myblock==None:
+        elif blk.name=='nop' and self.myblock==None:
             self.activity.import_py()
         else:
             self._run_stack(blk)
@@ -816,23 +827,6 @@ class TurtleArtWindow():
     """
     def _expose_cb(self, win, event):
         self.sprite_list.redraw_sprites()
-        return True
-
-    """
-    Button Press
-    """
-    def _buttonpress_cb(self, win, event):
-        self.window.grab_focus()
-        x, y = self.xy(event)
-        self.button_press(event.get_state()&gtk.gdk.CONTROL_MASK, x, y)
-  
-        # if sharing, send button press
-        if self._sharing():
-            # print "sending button pressed"
-            if event.get_state()&gtk.gdk.CONTROL_MASK is True:
-                self.activity._send_event("p:"+str(x)+":"+str(y)+":"+'T')
-            else:
-                self.activity._send_event("p:"+str(x)+":"+str(y)+":"+'F')
         return True
 
     """
@@ -902,20 +896,23 @@ class TurtleArtWindow():
             print "Journal Object Chooser unavailable from outside of Sugar"
 
     """
-    run stack
+    Run stack
     """
     def _run_stack(self, blk):
+        if blk is None:
+            return
         self.lc.ag = None
         top = self._find_top_block(blk)
         run_blocks(self.lc, top, self.block_list.list, True)
         gobject.idle_add(doevalstep, self.lc)
 
     """
-    block selector pressed
+    Block selector pressed
+    TODO: move to toolbar
     """
     def _block_selector_pressed(self, x, y):
         proto = self._get_proto_from_category(x, y)
-        if proto==None:
+        if proto is None:
             return
         if proto is not 'hide':
             self._new_block_from_category(proto, x, y)
@@ -923,7 +920,7 @@ class TurtleArtWindow():
             self.hideshow_palette(False)
 
     """
-    new block from category
+    Make a new block.
     """
     def _new_block_from_category(self, proto, x, y):
         if proto is None:
@@ -965,7 +962,7 @@ class TurtleArtWindow():
         self.block_operation = 'new' 
 
     """
-    debugging tools
+    Debugging tools
     """
     def _print_spr_list(self, spr_list):
         s = ""
@@ -988,7 +985,7 @@ class TurtleArtWindow():
         return s
 
     """
-    disconnect block
+    Disconnect block from stack above it.
     """
     def _disconnect(self, blk):
         if blk.connections[0]==None:
@@ -1000,7 +997,7 @@ class TurtleArtWindow():
         blk.connections[0] = None
 
     """
-    turtle pressed
+    Turtle pressed
     """
     def _turtle_pressed(self, x, y):
         (tx, ty) = self.turtle.spr.get_xy()
@@ -1012,6 +1009,7 @@ class TurtleArtWindow():
 
     """
     Replace Journal block graphic with preview image 
+    TODO: move to block
     """
     def _load_image(self, picture, spr):
         from talogo import get_pixbuf_from_journal
@@ -1022,7 +1020,7 @@ class TurtleArtWindow():
             spr.set_image(self.media_shapes['texton'])
 
     """
-    dock_dx_dy 
+    Find the distance between the dock points of two blocks.
     """
     def _dock_dx_dy(self, block1, dock1n, block2, dock2n):
         dock1 = block1.docks[dock1n]
@@ -1068,14 +1066,14 @@ class TurtleArtWindow():
         return ((b1x+d1x)-(b2x+d2x), (b1y+d1y)-(b2y+d2y))
 
     """
-    magnitude 
+    Magnitude 
     """
     def _magnitude(self, pos):
         x,y = pos
         return x*x+y*y
 
     """
-    jog turtle
+    Jog turtle
     """
     def _jog_turtle(self, dx, dy):
         if dx == -1 and dy == -1:
@@ -1089,7 +1087,7 @@ class TurtleArtWindow():
         self.selected_turtle = None
 
     """
-    jog block
+    Jog block
     """
     def _jog_block(self, blk, dx, dy):
         # drag entire stack if moving lock block
@@ -1107,7 +1105,7 @@ class TurtleArtWindow():
         self.drag_group = None
 
     """
-    make sure number block contains a number
+    Make sure a 'number' block contains a number.
     """
     def _number_check(self):
         if self.selected_blk.spr.labels[0] in ['-', '.', '-.']:
@@ -1126,7 +1124,7 @@ class TurtleArtWindow():
                 showlabel(self.lc, "#notanumber")
 
 #
-# utilities used for checking variable validity
+# Utilities used for checking variable validity
 #
 
 def numcheck(new, old):
