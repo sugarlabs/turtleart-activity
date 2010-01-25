@@ -41,11 +41,9 @@ class taLogo: pass
 from taturtle import *
 from tagplay import *
 from tajail import *
-
-from gettext import gettext as _
-
 from constants import *
 
+from gettext import gettext as _
 
 procstop = False
 
@@ -65,6 +63,14 @@ class logoerror(Exception):
         return repr(self.value)
 
 def run_blocks(lc, blk, blocks, run_flag):
+    print "run blocks %s" % (blk.name)
+    for b in blocks:
+        print "    %s" % (b.name)
+        for c in b.connections:
+            if c == None:
+                print "        None"
+            else:
+                print "        %s" % (c.name)
     # user-defined stacks
     for x in lc.stacks.keys():
         lc.stacks[x]= None
@@ -87,13 +93,14 @@ def run_blocks(lc, blk, blocks, run_flag):
     else: return code
 
 def blocks_to_code(lc, blk):
-    if blk is None:
+    if blk==None:
         return ['%nothing%']
     spr = blk.spr
     code = []
     dock = blk.docks[0]
-    if len(dock)>4: code.append(dock[4])
-    if blk.primitive is not None:
+    if len(dock)>4:
+        code.append(dock[4])
+    if blk.primitive != None:
         code.append(blk.primitive)
     else:
         if blk.name=='number':
@@ -130,10 +137,12 @@ def blocks_to_code(lc, blk):
         b = blk.connections[i]
         dock = blk.docks[i]
         if len(dock)>4:
-            for c in dock[4]: code.append(c)
-        if b is not None: 
+            for c in dock[4]:
+                code.append(c)
+        if b != None: 
             code.extend(blocks_to_code(lc, b))
         elif blk.docks[i][0] not in ['flow', 'unavailable']:
+            print "appending nothing"
             code.append('%nothing%')
     return code
 
@@ -169,8 +178,7 @@ def setup_cmd(lc, str):
     lc.step = start_eval(lc, list)
 
 def start_eval(lc, list):
-    icall(lc, evline, list)
-    yield True
+    icall(lc, evline, list); yield True
     # turn off stop icon when execution is finished
     if hasattr(lc.tw,"activity"):
         lc.tw.activity.stop_button.set_icon("stopitoff")
@@ -188,13 +196,13 @@ def evline(lc, list):
                 yield True
             lc.tw.turtle.spr.set_layer(HIDE_LAYER)
         token = lc.iline[0]
-        if token is lc.symopar:
-            token=lc.iline[1]
-        icall(lc, eval)
-        yield True
+        if token == lc.symopar:
+            token = lc.iline[1]
+        icall(lc, eval); yield True
         if lc.procstop:
             break
-        if lc.iresult==None: continue
+        if lc.iresult == None:
+            continue
         raise logoerror(str(lc.iresult))
     lc.iline = oldiline
     ireturn(lc)
@@ -203,7 +211,7 @@ def evline(lc, list):
 
 def eval(lc, infixarg=False):
     token = lc.iline.pop(0)
-    if type(token) is lc.symtype:
+    if type(token) == lc.symtype:
         icall(lc, evalsym, token); yield True
         res = lc.iresult
     else: res = token
@@ -219,25 +227,22 @@ def evalsym(lc, token):
     undefined_check(lc, token)
     oldcfun, oldarglist = lc.cfun, lc.arglist
     lc.cfun, lc.arglist = token, []
-    if token.nargs is None:
+    if token.nargs == None:
         raise logoerror("#noinput")
     for i in range(token.nargs):
         no_args_check(lc)
-        icall(lc, eval)
-        yield True
+        icall(lc, eval); yield True
         lc.arglist.append(lc.iresult)
     if lc.cfun.rprim:
-        if type(lc.cfun.fcn) is lc.listtype:
-            icall(lc, ufuncall, cfun.fcn)
-            yield True
+        if type(lc.cfun.fcn) == lc.listtype:
+            icall(lc, ufuncall, cfun.fcn); yield True
         else:
-            icall(lc, lc.cfun.fcn, *lc.arglist)
-            yield True
+            icall(lc, lc.cfun.fcn, *lc.arglist); yield True
         result = None
     else: 
         result = lc.cfun.fcn(lc, *lc.arglist)
     lc.cfun, lc.arglist = oldcfun, oldarglist
-    if lc.arglist is not None and result is None:
+    if lc.arglist != None and result == None:
         raise logoerror("%s didn't output to %s (arglist %s, result %s)" % \
             (oldcfun.name, lc.cfun.name, str(lc.arglist), str(result)))
     ireturn(lc, result)
@@ -248,18 +253,16 @@ def evalinfix(lc, firstarg):
     oldcfun, oldarglist = lc.cfun, lc.arglist
     lc.cfun, lc.arglist = token, [firstarg]
     no_args_check(lc)
-    icall(lc, eval, True)
-    yield True
+    icall(lc, eval, True); yield True
     lc.arglist.append(lc.iresult)
     result = lc.cfun.fcn(lc,*lc.arglist)
     lc.cfun, lc.arglist = oldcfun, oldarglist
-    ireturn (lc,result)
-    yield True
+    ireturn (lc,result); yield True
 
 def infixnext(lc):
     if len(lc.iline)==0:
         return False
-    if type(lc.iline[0]) is not lc.symtype:
+    if type(lc.iline[0]) != lc.symtype:
         return False
     return lc.iline[0].name in ['+', '-', '*', '/','%','and','or']
 
@@ -667,7 +670,7 @@ def loadmyblock(lc,x):
 
 def callmyfunc(lc, f, x):
     y = myfunc(lc, f, x)
-    if y is None:
+    if y == None:
         raise logoerror("#syntaxerror")
         stop_logo(lc.tw)
     else:

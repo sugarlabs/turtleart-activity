@@ -232,59 +232,6 @@ class TurtleArtWindow():
                 self._run_stack(blk)
         return
 
-    """
-    button_press
-    """
-    def button_press(self, mask, x, y, verbose=False):
-        if verbose:
-            print "processing remote button press: " + str(x) + " " + str(y)
-        self.block_operation = 'click'
-
-        # Unselect things that may have been selected earlier
-        if self.selected_blk is not None:
-            self._unselect_block()
-        self.selected_turtle = None
-        # Always hide the status layer on a click
-        self.status_spr.set_layer(HIDE_LAYER)
-
-        # Find out what was clicked
-        spr = self.sprite_list.find_sprite((x,y))
-        self.x, self.y = x, y
-        self.dx = 0
-        self.dy = 0
-        if spr is None:
-            return True
-        self.selected_spr = spr
-
-        # From the sprite at x, y, look for a corresponding block
-        blk = self.block_list.spr_to_block(spr)
-        if blk is not None:
-            print "button press: found %s at (%d,%d)" % (blk.name, x, y)
-            # TODO: we can check here for type block vs type proto
-            self.selected_blk = blk
-            self._block_pressed(mask, x, y, blk)
-            return True
-
-        # Next, look for a turtle
-        tur = self.turtle_list.spr_to_turtle(spr)
-        if tur is not None:
-            print "button press: found turtle at (%d,%d)" % (x, y)
-            self.selected_turtle = tur
-            self._turtle_pressed(x,y)
-            return True
-
-        # Finally, check for anything else
-        if hasattr(spr, 'type'):
-            # TODO: eliminate remaining dependencies on spr.type
-            print "button press on spr type: %s" % (spr.type)
-            if spr.type == "canvas":
-                spr.set_layer(CANVAS_LAYER)
-                return True
-            elif spr.type == 'selbutton':
-                self._select_category(spr)
-            elif spr.type == 'category':
-                self._block_selector_pressed(x,y)
-
     #
     # Internal methods
     #
@@ -304,6 +251,13 @@ class TurtleArtWindow():
         self.window.connect("key_press_event", self._keypress_cb)
 
     """
+    Repaint
+    """
+    def _expose_cb(self, win, event):
+        self.sprite_list.redraw_sprites()
+        return True
+
+    """
     Are we running from within Sugar?
     """
     def _running_sugar(self): 
@@ -317,34 +271,6 @@ class TurtleArtWindow():
     def _OLPC_XO_1(self):
         return os.path.exists('/etc/olpc-release') or \
                os.path.exists('/sys/power/olpc-pm')
-
-    """
-    Block pressed
-    """
-    def _block_pressed(self, mask, x, y, blk):
-        if blk is not None:
-            print "in block_pressed: %s" % (blk.name)
-            print "0. marking block %s as selected" % (blk.name)
-            blk.spr.set_shape(blk.selected_shape)
-            print "1. disconnecting block %s from those above it" % (blk.name)
-            self._disconnect(blk)
-            print "2. creating drag_group with %s" % (blk.name)
-            self.drag_group = self._find_group(blk)
-            print "drag_group: %s" % (self._print_blk_list(self.drag_group))
-            for blk in self.drag_group:
-                blk.spr.set_layer(TOP_LAYER)
-            (sx, sy) = blk.spr.get_xy()
-            self.dragpos = x-sx, y-sy
-
-    """
-    Unselect block
-    """
-    def _unselect_block(self):
-        # After unselecting a 'number' block, we need to check its value
-        if self.selected_blk.name == 'number':
-            self._number_check()
-        # Reset shape of the selected block
-        self.selected_blk.spr.set_shape(self.selected_blk.shape)
 
     """
     Select a category.
@@ -418,30 +344,30 @@ class TurtleArtWindow():
     Mouse move
     """
     def _move_cb(self, win, event):
-        x,y = self.xy(event)
+        x, y = self.xy(event)
         self._mouse_move(x, y)
         return True
 
     def _mouse_move(self, x, y, verbose=False, mdx=0, mdy=0):
         if verbose:
-            print "processing remote mouse move: " + str(x) + " " + str(y)
+            print "processing remote mouse move: %d, %d" % (x, y)
 
         self.block_operation = 'move'
         # First, check to see if we are dragging or rotating a turtle.
         if self.selected_turtle is not None:
             type,dragx,dragy = self.dragpos
-            (sx,sy) = self.selected_turtle.spr.get_xy()
+            (sx, sy) = self.selected_turtle.spr.get_xy()
             if type == 'move':
                 if mdx != 0 or mdy != 0:
-                    dx,dy = mdx,mdy
+                    dx, dy = mdx, mdy
                 else:
-                    dx,dy = x-dragx-sx,y-dragy-sy
+                    dx, dy = x-dragx-sx, y-dragy-sy
                 self.selected_turtle.spr.move((sx+dx, sy+dy))
             else:
                 if mdx != 0 or mdy != 0:
-                    dx,dy = mdx,mdy
+                    dx, dy = mdx, mdy
                 else:
-                    dx,dy = x-sx-30,y-sy-30
+                    dx, dy = x-sx-30, y-sy-30
                 seth(self.turtle, int(dragx+atan2(dy,dx)/DEGTOR+5)/10*10)
         # If we are hoving, show popup help.
         elif self.drag_group is None:
@@ -453,10 +379,10 @@ class TurtleArtWindow():
             self.selected_spr = blk.spr
             dragx, dragy = self.dragpos
             if mdx != 0 or mdy != 0:
-                dx,dy = mdx,mdy
+                dx, dy = mdx, mdy
             else:
                 (sx,sy) = blk.spr.get_xy()
-                dx,dy = x-dragx-sx,y-dragy-sy
+                dx, dy = x-dragx-sx, y-dragy-sy
             # Take no action if there was a move of 0,0.
             if dx == 0 and dy == 0:
                 return
@@ -471,7 +397,7 @@ class TurtleArtWindow():
                 (bx, by) = b.spr.get_xy()
                 b.spr.move((bx+dx, by+dy))
         if mdx != 0 or mdy != 0:
-            dx,dy = 0,0
+            dx, dy = 0, 0
         else:
             self.dx += dx
             self.dy += dy
@@ -585,7 +511,7 @@ class TurtleArtWindow():
         if keyname is None:
             return False
         if verbose:
-            print "processing remote key press: " + keyname
+            print "processing remote key press: %s" % (keyname)
 
         self.keypress = keyname
 
@@ -723,30 +649,107 @@ class TurtleArtWindow():
         return True
 
     """
+    button_press
+    """
+    def button_press(self, mask, x, y, verbose=False):
+        if verbose:
+            print "processing remote button press: %d, %d" % (x, y)
+        self.block_operation = 'click'
+
+        # Unselect things that may have been selected earlier
+        if self.selected_blk is not None:
+            self._unselect_block()
+        self.selected_turtle = None
+        # Always hide the status layer on a click
+        self.status_spr.set_layer(HIDE_LAYER)
+
+        # Find out what was clicked
+        spr = self.sprite_list.find_sprite((x,y))
+        self.dx = 0
+        self.dy = 0
+        if spr is None:
+            return True
+        self.selected_spr = spr
+
+        # From the sprite at x, y, look for a corresponding block
+        blk = self.block_list.spr_to_block(spr)
+        if blk is not None:
+            print "button press: found %s at (%d,%d)" % (blk.name, x, y)
+            # TODO: we can check here for type block vs type proto
+            self.selected_blk = blk
+            self._block_pressed(mask, x, y, blk)
+            return True
+
+        # Next, look for a turtle
+        tur = self.turtle_list.spr_to_turtle(spr)
+        if tur is not None:
+            print "button press: found turtle at (%d,%d)" % (x, y)
+            self.selected_turtle = tur
+            self._turtle_pressed(x, y)
+            return True
+
+        # Finally, check for anything else
+        if hasattr(spr, 'type'):
+            # TODO: eliminate remaining dependencies on spr.type
+            print "button press on spr type: %s" % (spr.type)
+            if spr.type == "canvas":
+                spr.set_layer(CANVAS_LAYER)
+                return True
+            elif spr.type == 'selbutton':
+                self._select_category(spr)
+            elif spr.type == 'category':
+                self._block_selector_pressed(x,y)
+
+    """
+    Block pressed
+    """
+    def _block_pressed(self, mask, x, y, blk):
+        if blk is not None:
+            print "in block_pressed: %s" % (blk.name)
+            print "0. marking block %s as selected" % (blk.name)
+            blk.spr.set_shape(blk.selected_shape)
+            print "1. disconnecting block %s from those above it" % (blk.name)
+            self._disconnect(blk)
+            print "2. creating drag_group with %s" % (blk.name)
+            self.drag_group = self._find_group(blk)
+            print "drag_group: %s" % (self._print_blk_list(self.drag_group))
+            for blk in self.drag_group:
+                blk.spr.set_layer(TOP_LAYER)
+            (sx, sy) = blk.spr.get_xy()
+            self.dragpos = x-sx, y-sy
+
+    """
+    Unselect block
+    """
+    def _unselect_block(self):
+        # After unselecting a 'number' block, we need to check its value
+        if self.selected_blk.name == 'number':
+            self._number_check()
+        # Reset shape of the selected block
+        self.selected_blk.spr.set_shape(self.selected_blk.shape)
+        self.selected_blk = None
+
+    """
     Button Press
     """
     def _buttonpress_cb(self, win, event):
         self.window.grab_focus()
         x, y = self.xy(event)
         self.button_press(event.get_state()&gtk.gdk.CONTROL_MASK, x, y)
-  
-        # if sharing, send button press
         if self._sharing():
-            # print "sending button pressed"
             if event.get_state()&gtk.gdk.CONTROL_MASK is True:
-                self.activity._send_event("p:"+str(x)+":"+str(y)+":"+'T')
+                self.activity._send_event("p:%d:%d:T" % (x, y))
             else:
-                self.activity._send_event("p:"+str(x)+":"+str(y)+":"+'F')
+                self.activity._send_event("p:%d:%d:F" % (x, y))
         return True
 
     """
     Button release
     """
     def _buttonrelease_cb(self, win, event):
-        x,y = self.xy(event)
+        x, y = self.xy(event)
         self.button_release(x, y)
         if self._sharing():
-            # print "sending release button"
             self.activity._send_event("r:"+str(x)+":"+str(y))
         return True
 
@@ -758,13 +761,10 @@ class TurtleArtWindow():
                 self.activity._send_event("m:%d:%d" % (self.dx, self.dy))
                 self.dx = 0
                 self.dy = 0
-
-        print "button release"
         if verbose:
-            print "processing remote button release: " + str(x) + " " + str(y)
+            print "processing remote button release: %d, %d" % (x, y)
         # We may have been moving the turtle
         if self.selected_turtle is not None:
-            print "clicked on a turtle"
             (tx, ty) = self.turtle.spr.get_xy()
             self.turtle.xcor = tx-self.turtle.cx- \
                 self.turtle.canvas._width/2+30
@@ -823,13 +823,6 @@ class TurtleArtWindow():
             self._run_stack(blk)
 
     """
-    Repaint
-    """
-    def _expose_cb(self, win, event):
-        self.sprite_list.redraw_sprites()
-        return True
-
-    """
     snap_to_dock
     """
     def _snap_to_dock(self):
@@ -858,14 +851,9 @@ class TurtleArtWindow():
             blk_in_dock = best_you.connections[best_your_dockn]
             if blk_in_dock is not None:
                 for blk in self._find_group(blk_in_dock):
-                    print "hiding blk %s" % (blk.name)
                     blk.spr.hide()
-            print "connecting %s to %s, position %d" %\
-                  (my_block.name, best_you.name, best_your_dockn)
             best_you.connections[best_your_dockn] = my_block
             if my_block.connections is not None:
-                print "connecting %s to %s, position %d" %\
-                      (best_you.name, my_block.name, best_my_dockn)
                 my_block.connections[best_my_dockn] = best_you
 
     """
@@ -937,8 +925,6 @@ class TurtleArtWindow():
         newspr.set_layer(TOP_LAYER)
         self.dragpos = 20, 20
         newblk.connections = [None]*len(newblk.docks)
-        print newblk.defaults
-        print newblk.docks
         for i, argvalue in enumerate(newblk.defaults):
             # skip the first dock position--it is always a connector
             dock = newblk.docks[i+1]
@@ -990,9 +976,7 @@ class TurtleArtWindow():
     def _disconnect(self, blk):
         if blk.connections[0]==None:
             return
-        print "disconnecting %s" % (blk.name)
         blk2=blk.connections[0]
-        print "from %s" % (blk2.name)
         blk2.connections[blk2.connections.index(blk)] = None
         blk.connections[0] = None
 
