@@ -28,9 +28,49 @@ STATUS_LAYER = 900
 TOP_LAYER = 1000
 
 #
-# block definitions
+# block palette categories
 #
 
+TURTLE = 0
+PEN = 1
+NUMBER = 2
+FLOW = 3
+BLOCKS = 4
+MISC = 5
+PORTFOLIO = 6
+
+PALETTES = [['clean', 'forward', 'back', 'left', 'right', 'arc', 'set xy',
+     'show', 'set scale', 'set heading', 'scale', 'xcor', 'ycor', 'heading'],
+    ['pen up','pen down', 'set pen size', 'set text size',
+     'set color', 'set shade', 'fill screen', 'pen size', 'text size', 'color',
+     'shade'],
+    ['number', 'plus', 'minus', 'multiply',
+     'divide', 'mod', 'square root', 'random', 'greater than', 'less than',
+     'equal to', 'and', 'or', 'not', 'print'],
+    ['wait', 'forever', 'repeat', 'if then', 'stop action', 'hspace',
+     'vspace'],
+    ['start', 'def action 1', 'action 1', 'def action 2', 
+     'action 2', 'def action', 'action', 'store in box 1', 'box 1',
+     'store in box 2', 'box 2', 'store in', 'box', 'string'],
+    ['left pos', 'top pos', 'right pos', 'bottom pos', 'width', 
+     'height'],
+    ['hide blocks']]
+
+#
+# block style attributes
+#
+
+COLORS = [["#00FF00","#00A000"], ["#00FFFF","#00A0A0"], ["#FF00FF","#A000A0"],
+          ["#FFC000","#A08000"], ["#FFFF00","#A0A000"], ["#FF0000","#A0000"],
+          ["#0000FF","#0000FF"]]
+
+SELECTED_COLOR = "#0000FF"
+SELECTED_STROKE_WIDTH = 1.5
+STANDARD_STROKE_WIDTH = 1.0
+
+#
+# block style definitions
+#
 BASIC_STYLE_HEAD = ['start', 'def action 1', 'def action 2']
 BASIC_STYLE_HEAD_1ARG = ['def action']
 BASIC_STYLE_TAIL = ['stop action']
@@ -53,34 +93,6 @@ NOT_STYLE = ['not']
 FLOW_STYLE = ['forever', 'hspace']
 FLOW_STYLE_1ARG = ['repeat']
 FLOW_STYLE_BOOLEAN = ['if then']
-TURTLE_PALETTE = ['clean', 'forward', 'back', 'left', 'right', 'set heading',
-    'show', 'set scale', 'arc', 'scale', 'xcor', 'ycor', 'heading']
-PEN_PALETTE = ['pen up','pen down', 'set pen size', 'set text size',
-    'set color', 'set shade', 'fill screen', 'pen size', 'text size', 'color',
-    'shade']
-NUMBER_PALETTE = ['number', 'plus', 'minus', 'multiply',
-    'divide', 'mod', 'square root', 'random', 'greater than', 'less than',
-    'equal to', 'and', 'or', 'not', 'print']
-FLOW_PALETTE = ['wait', 'forever', 'repeat', 'if then', 'stop action', 'hspace',
-    'vspace']
-BLOCKS_PALETTE = ['start', 'def action 1', 'action 1', 'def action 2', 
-    'action 2', 'def action', 'action', 'store in box 1', 'box 1',
-    'store in box 2', 'box 2', 'store in', 'box', 'string']
-MISC_PALETTE = ['left pos', 'top pos', 'right pos', 'bottom pos', 'width', 
-    'height']
-PORTFOLIO_PALETTE = ['hide blocks']
-
-TURTLE_COLORS = ["#00FF00","#00A000"]
-PEN_COLORS = ["#00FFFF","#00A0A0"]
-NUMBER_COLORS = ["#FF00FF","#A000A0"]
-BLOCKS_COLORS = ["#FFFF00","#A0A000"]
-FLOW_COLORS = ["#FFC000","#A08000"]
-MISC_COLORS = ["#FF0000","#A0000"]
-PORTFOLIO_COLORS = ["#0000FF","#0000FF"]
-
-SELECTED_COLOR = "#0000FF"
-SELECTED_STROKE_WIDTH = 2.0
-STANDARD_STROKE_WIDTH = 1.0
 
 #
 # blocks that contain media
@@ -187,5 +199,5 @@ NOISE_KEYS = ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', 'Pause',
               'Left', 'Right', 'KP_Home', 'KP_End', 'KP_Up', 'Super_L',
               'KP_Down', 'KP_Left', 'KP_Right', 'KP_Page_Down', 'Scroll_Lock',
               'Page_Down', 'Page_Up']
-WHITE_SPACE = ['space','Tab']
+WHITE_SPACE = ['space','Tab','Return']
 

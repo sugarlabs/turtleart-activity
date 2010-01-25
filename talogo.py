@@ -63,14 +63,6 @@ class logoerror(Exception):
         return repr(self.value)
 
 def run_blocks(lc, blk, blocks, run_flag):
-    print "run blocks %s" % (blk.name)
-    for b in blocks:
-        print "    %s" % (b.name)
-        for c in b.connections:
-            if c == None:
-                print "        None"
-            else:
-                print "        %s" % (c.name)
     # user-defined stacks
     for x in lc.stacks.keys():
         lc.stacks[x]= None
@@ -83,24 +75,24 @@ def run_blocks(lc, blk, blocks, run_flag):
         if b.name=='def action 2':
             lc.stacks['stack2']= readline(lc,blocks_to_code(lc, b))
         if b.name=='def action':
-            if (b.connections[1]!=None):
+            if (b.connections[1] is not None):
                 text=b.connections[1].spr.labels[0]
                 lc.stacks['stack3'+text]= readline(lc,blocks_to_code(lc, b))
     code = blocks_to_code(lc, blk)
-    if run_flag == True:
+    if run_flag is True:
         print "code: %s" % (code)
         setup_cmd(lc, code)
     else: return code
 
 def blocks_to_code(lc, blk):
-    if blk==None:
+    if blk is None:
         return ['%nothing%']
     spr = blk.spr
     code = []
     dock = blk.docks[0]
     if len(dock)>4:
         code.append(dock[4])
-    if blk.primitive != None:
+    if blk.primitive is not None:
         code.append(blk.primitive)
     else:
         if blk.name=='number':
@@ -116,18 +108,18 @@ def blocks_to_code(lc, blk):
             else:
                 code.append('#s'+spr.labels[0])
         elif blk.name=='journal':
-            if spr.ds_id != None: # TODO: put ds_id in blk
+            if spr.ds_id is not None: # TODO: put ds_id in blk
                 code.append('#smedia_'+str(spr.ds_id))
             else:
                 code.append('#smedia_None')
         elif blk.name=='descriptionoff' or \
              blk.name=='descriptionon':
-            if spr.ds_id != None:
+            if spr.ds_id is not None:
                 code.append('#sdescr_'+str(spr.ds_id))
             else:
                 code.append('#sdescr_None')
         elif blk.name=='audiooff' or blk.name=='audio':
-            if spr.ds_id != None:
+            if spr.ds_id is not None:
                 code.append('#saudio_'+str(spr.ds_id))
             else:
                 code.append('#saudio_None')
@@ -139,7 +131,7 @@ def blocks_to_code(lc, blk):
         if len(dock)>4:
             for c in dock[4]:
                 code.append(c)
-        if b != None: 
+        if b is not None: 
             code.extend(blocks_to_code(lc, b))
         elif blk.docks[i][0] not in ['flow', 'unavailable']:
             print "appending nothing"
@@ -242,7 +234,7 @@ def evalsym(lc, token):
     else: 
         result = lc.cfun.fcn(lc, *lc.arglist)
     lc.cfun, lc.arglist = oldcfun, oldarglist
-    if lc.arglist != None and result == None:
+    if lc.arglist is not None and result == None:
         raise logoerror("%s didn't output to %s (arglist %s, result %s)" % \
             (oldcfun.name, lc.cfun.name, str(lc.arglist), str(result)))
     ireturn(lc, result)
@@ -262,7 +254,7 @@ def evalinfix(lc, firstarg):
 def infixnext(lc):
     if len(lc.iline)==0:
         return False
-    if type(lc.iline[0]) != lc.symtype:
+    if type(lc.iline[0]) is not lc.symtype:
         return False
     return lc.iline[0].name in ['+', '-', '*', '/','%','and','or']
 
@@ -298,11 +290,11 @@ def debug_trace(lc, token):
     return
 
 def undefined_check(lc, token):
-    if token.fcn != None: return False
+    if token.fcn is not None: return False
     raise logoerror("I don't know how to %s" % token.name)
 
 def no_args_check(lc):
-    if lc.iline and lc.iline[0]!=lc.symnothing : return
+    if lc.iline and lc.iline[0] is not lc.symnothing : return
     raise logoerror("#noinput")
 
 def prim_wait(lc,time):
@@ -339,25 +331,25 @@ def prim_opar(lc,val):
     return val
 
 def prim_define(name, body):
-    if type(name) != symtype: name = intern(name)
+    if type(name) is not symtype: name = intern(name)
     name.nargs, name.fcn = 0, body
     name.rprim = True
 
 def prim_stack(lc,stri):
     if (not lc.stacks.has_key('stack3'+stri)) or \
-        lc.stacks['stack3'+stri]==None: raise logoerror("#nostack")
+        lc.stacks['stack3'+stri] is None: raise logoerror("#nostack")
     icall(lc, evline, lc.stacks['stack3'+stri][:]); yield True
     lc.procstop = False
     ireturn(lc); yield True
 
 def prim_stack1(lc):
-    if lc.stacks['stack1']==None: raise logoerror("#nostack")
+    if lc.stacks['stack1'] is None: raise logoerror("#nostack")
     icall(lc, evline, lc.stacks['stack1'][:]); yield True
     lc.procstop = False
     ireturn(lc); yield True
 
 def prim_stack2(lc):
-    if lc.stacks['stack2']==None: raise logoerror("#nostack")
+    if lc.stacks['stack2'] is None: raise logoerror("#nostack")
     icall(lc, evline, lc.stacks['stack2'][:]); yield True
     lc.procstop = False
     ireturn(lc); yield True
@@ -662,7 +654,7 @@ def box(lc,x):
 
 def loadmyblock(lc,x):
     # execute code inported from the Journal
-    if lc.tw.myblock != None:
+    if lc.tw.myblock is not None:
         y = myfunc_import(lc, lc.tw.myblock, x)
     else:
         raise logoerror("#nocode")
@@ -680,7 +672,7 @@ def show_picture(lc, media, x, y, w, h):
     if media == "" or media[6:] == "":
         # raise logoerror("#nomedia")
         pass
-    elif media[6:] != "None":
+    elif media[6:] is not "None":
         try:
             dsobject = datastore.get(media[6:])
         except:
@@ -698,7 +690,7 @@ def show_picture(lc, media, x, y, w, h):
             play_dsobject(lc, dsobject, int(x), int(y), int(w), int(h))
         else:
             pixbuf = get_pixbuf_from_journal(dsobject, int(w), int(h))
-            if pixbuf != None:
+            if pixbuf is not None:
                 draw_pixbuf(lc.tw.turtle, pixbuf, 0, 0, int(x), int(y), \
                             int(w), int(h))
         dsobject.destroy()
@@ -725,7 +717,7 @@ def show_description(lc, media, x, y, w, h):
     if media == "" or media[6:] == "":
         # raise logoerror("#nomedia")
         pass
-    elif media[6:] != "None":
+    elif media[6:] is not "None":
         try:
             dsobject = datastore.get(media[6:])
             draw_text(lc.tw.turtle, \
@@ -940,7 +932,7 @@ def insert_image(lc, media, center):
     # convert from Turtle coordinates to screen coordinates
     x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
     y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
-    if center == True:
+    if center is True:
         x -= w/2
         y -= h/2
     if media[0:5] == 'media':
@@ -974,12 +966,12 @@ def show(lc, string, center=False):
         elif string[0:6] == 'audio_':
             play_sound(lc, string)
         else:
-            if center == True:
+            if center is True:
                 y -= lc.tw.textsize
             draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width-x)
     elif type(string) == float or type(string) == int:
         string = round_int(string)
-        if center == True:
+        if center is True:
             y -= lc.tw.textsize
         draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width-x)
 

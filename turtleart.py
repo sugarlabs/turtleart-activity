@@ -53,6 +53,7 @@ Caveats:
 """
 class TurtleMain():
     def __init__(self):
+        self.i = 0
         tw = None
         # make sure Sugar paths are present
         tapath = os.path.join(os.environ['HOME'],'.sugar','default', \
@@ -90,6 +91,10 @@ class TurtleMain():
 
         menu = gtk.Menu()
 
+        menu_items = gtk.MenuItem(_("Turtle"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_turtle_cb)
+        menu_items.show()
         menu_items = gtk.MenuItem(_("Palette"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_palette_cb)
@@ -143,6 +148,12 @@ class TurtleMain():
 
     def _do_save_cb(self, widget):
         save_file(self.tw)
+
+    def _do_turtle_cb(self, widget):
+        self.tw.show_toolbar_palette(self.i)
+        self.i += 1
+        if self.i > 6:
+            self.i = 0
 
     def _do_palette_cb(self, widget):
         if self.tw.palette == True:

@@ -45,6 +45,7 @@ from tasetup import *
 from talogo import *
 from taturtle import *
 from taproject import *
+import sprite_factory
 try:
     from sugar.graphics.objectchooser import ObjectChooser
 except:
@@ -131,8 +132,6 @@ class TurtleArtWindow():
         self.sprite_list = sprites.Sprites(self.window, self.area, self.gc)
         self.selected_spr = None
         self.drag_group = None
-        """
-        """
         self.turtle = tNew(self,self.width,self.height)
         self.lc = lcNew(self)
         self.buddies = []
@@ -141,6 +140,12 @@ class TurtleArtWindow():
         self.cartesian = False
         self.polar = False
 
+        """
+        Selector-related stuff
+        """
+        self.palette_spr = None
+        self.palettes = []
+        self.selected_palette = None
 
     #
     # Public methods are called from the activity class
@@ -231,6 +236,55 @@ class TurtleArtWindow():
                 print "running stack starting from %s" % (blk.name)
                 self._run_stack(blk)
         return
+
+    """
+    Show turtle palette
+    The new tasetup
+    Experiment with toolbar palette for block creation
+    """
+    def show_toolbar_palette(self, n):
+        if self.palette_spr is None:
+            svg = sprite_factory.SVG()
+            self.palette_spr = sprites.Sprite(self.sprite_list, 0, 0,
+                sprite_factory.svg_str_to_pixbuf(svg.palette(self.width, 150)))
+            self.palette_spr.set_layer(CATEGORY_LAYER)
+            self.palette_spr.type = 'category'
+        if len(self.palettes) == 0:
+            for i in range(len(PALETTES)):
+                self.palettes.append([])
+        
+        if n < 0 or n > len(PALETTES)-1:
+            return
+
+        if self.selected_palette is not None:
+            print "out with the old %d" % (self.selected_palette)
+            for i in range(len(PALETTES[self.selected_palette])):        
+                self.palettes[self.selected_palette][i].spr.set_layer(
+                                                                    HIDE_LAYER)
+            self.selected_palette = n
+
+        if self.palettes[n] == []:
+            for i, name in enumerate(PALETTES[n]):
+                self.palettes[n].append(block.Block(self.block_list,
+                                                    self.sprite_list, name,
+                                                    0, 0, 'selector', [], 1.5))
+                self.palettes[n][i].spr.set_layer(TAB_LAYER)
+                self.palettes[n][i].spr.set_shape(self.palettes[n][i].shapes[0])
+            # simple packing algorithm
+            x, y, max_width = 10, 75, 0
+            for i in range(len(PALETTES[n])):
+                w, h = self.palettes[n][i].spr.get_dimensions()
+                if y+h > 150:
+                    y = 75
+                    x += (max_width+10)
+                    max_width = 0
+                self.palettes[n][i].spr.move((int(x), int(y)))
+                y += h
+                if w > max_width:
+                    max_width = w
+        else:
+            for blk in self.palettes[n]:
+                blk.spr.set_layer(CATEGORY_LAYER)
 
     #
     # Internal methods
@@ -675,9 +729,13 @@ class TurtleArtWindow():
         blk = self.block_list.spr_to_block(spr)
         if blk is not None:
             print "button press: found %s at (%d,%d)" % (blk.name, x, y)
-            # TODO: we can check here for type block vs type proto
-            self.selected_blk = blk
-            self._block_pressed(mask, x, y, blk)
+            if blk.type == 'block':
+                self.selected_blk = blk
+                self._block_pressed(mask, x, y, blk)
+            elif blk.type == 'selector':
+                blk.spr.set_shape(blk.shapes[1])
+                self._new_block_from_category(blk.name, x, y+100)
+                blk.spr.set_shape(blk.shapes[0])
             return True
 
         # Next, look for a turtle
@@ -707,7 +765,7 @@ class TurtleArtWindow():
         if blk is not None:
             print "in block_pressed: %s" % (blk.name)
             print "0. marking block %s as selected" % (blk.name)
-            blk.spr.set_shape(blk.selected_shape)
+            blk.spr.set_shape(blk.shapes[1])
             print "1. disconnecting block %s from those above it" % (blk.name)
             self._disconnect(blk)
             print "2. creating drag_group with %s" % (blk.name)
@@ -726,7 +784,7 @@ class TurtleArtWindow():
         if self.selected_blk.name == 'number':
             self._number_check()
         # Reset shape of the selected block
-        self.selected_blk.spr.set_shape(self.selected_blk.shape)
+        self.selected_blk.spr.set_shape(self.selected_blk.shapes[0])
         self.selected_blk = None
 
     """
@@ -781,13 +839,13 @@ class TurtleArtWindow():
 
         blk = self.drag_group[0]
         # Remove blocks by dragging them onto the category palette
+        # TODO: rethink when palette moves to toolbar
         if self.block_operation=='move' and self.category_spr.hit((x,y)):
             for b in self.drag_group: b.spr.hide()
             self.drag_group = None
             return
 
         # Pull a stack of new blocks off of the category palette.
-        # TODO: rethink when palette moves to toolbar
         if self.block_operation=='new':
             for b in self.drag_group:
                 (bx, by) = b.spr.get_xy()
@@ -903,24 +961,22 @@ class TurtleArtWindow():
         if proto is None:
             return
         if proto is not 'hide':
-            self._new_block_from_category(proto, x, y)
+            self._new_block_from_category(proto.name, x, y)
         else:
             self.hideshow_palette(False)
 
     """
     Make a new block.
     """
-    def _new_block_from_category(self, proto, x, y):
-        if proto is None:
-            return True
+    def _new_block_from_category(self, name, x, y):
         # load alternative image of nop block if python code is loaded
-        if proto.name == 'nop' and self.nop == 'pythonloaded':
+        if name == 'nop' and self.nop == 'pythonloaded':
             pass
             # TODO: handle python-loaded case
             # newspr = Sprite(self,x-20,y-20,self.media_shapes['pythonloaded'])
         else:
-            newblk = block.Block(self.block_list, self.sprite_list, proto.name,
-                                 x-20, y-20, [])
+            newblk = block.Block(self.block_list, self.sprite_list, name,
+                                 x-20, y-20, 'block', [])
             newspr = newblk.spr
         newspr.set_layer(TOP_LAYER)
         self.dragpos = 20, 20

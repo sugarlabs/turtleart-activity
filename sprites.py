@@ -121,6 +121,9 @@ class Sprite:
     def get_xy(self):
         return (self._x, self._y)
 
+    def get_dimensions(self):
+        return (self._width, self._height)
+
     def get_layer(self):
         return self.layer
 

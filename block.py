@@ -65,11 +65,10 @@ class Blocks:
 # A class for the individual blocks
 #
 class Block:
-    def __init__(self, block_list, sprite_list, name, x, y, labels=[], 
-                 colors=["#00FF00","#00A000"], scale=2.0):
+    def __init__(self, block_list, sprite_list, name, x, y, type='block',
+                 labels=[], scale=2.0, colors=["#00FF00","#00A000"]):
         self.spr = None
-        self.shape = None
-        self.selected_shape = None
+        self.shapes = []
         self.name = name
         self.colors = colors
         self.scale = scale
@@ -78,11 +77,15 @@ class Block:
         self.defaults = []
         self.content = None
         self.primitive = None
-        self._new_block_from_factory(sprite_list, labels, x, y)
-        self.type = 'block'
-
+        self.type = type
+        self._font_size = [6.0, 4.5]
         self._left = 0
         self._right = 0
+
+        for i in range(len(self._font_size)):
+            self._font_size[i] *= self.scale
+
+        self._new_block_from_factory(sprite_list, labels, x, y)
 
         if DEFAULTS.has_key(self.name):
             self.defaults = DEFAULTS[self.name]
@@ -101,15 +104,25 @@ class Block:
         # debug code
         # etc.
 
-    # We resize some blocks on the fly
+    # We need to resize some blocks on the fly.
     def resize(self):
         # make sure the label fits
         lw = self.spr.label_width()        
         lwh = self.spr.label_area_dimensions()
         if lw > lwh[0]:
-            e = lw-lwh[0]
+            e = (lw-lwh[0])
             self._make_block(e, self.svg)
-            self.spr.set_shape(self.selected_shape)
+            self.spr.set_shape(self.shapes[0])
+
+    # We may want to rescale blocks as well.
+    def rescale(self, scale):
+        for i in range(len(self._font_size)):
+            self._font_size[i] /= self.scale
+        self.scale = scale
+        for i in range(len(self._font_size)):
+            self._font_size[i] *= self.scale
+        self._make_block(e, self.svg)
+        self.spr.set_shape(self.shapes[0])
 
     def _new_block_from_factory(self, sprite_list, labels, x, y):
 
@@ -124,36 +137,41 @@ class Block:
         self.svg.set_slot(True)
 
         self._make_block(0, self.svg)
-        self.spr = sprites.Sprite(sprite_list, x, y, self.shape)
+        self.spr = sprites.Sprite(sprite_list, x, y, self.shapes[0])
 
         self.spr.set_margins(self._left, self.svg.get_slot_depth(), self._right,
                              self.svg.get_slot_depth()*2)
 
-        # if labels were passed, use them
+        # If labels were passed, use them;
         if len(labels) > 0:
             print labels
             for i, l in enumerate(labels):
-                self.spr.set_label(l,i)
-                if i == 1: # top
-                    self.spr.set_label_attributes(9, True, "right", "top", i)
-                elif i == 2: # bottom
-                    self.spr.set_label_attributes(9, True, "right", "bottom", i)
-        # otherwise use default values
+                self._set_labels(i, l)
+        # otherwise use default values;
         elif BLOCK_NAMES.has_key(self.name):
             print BLOCK_NAMES[self.name]
             for i, l in enumerate(BLOCK_NAMES[self.name]):
-                self.spr.set_label(l,i)
-                if i == 1: # top
-                    self.spr.set_label_attributes(9, True, "right", "top", i)
-                elif i == 2: # bottom
-                    self.spr.set_label_attributes(9, True, "right", "bottom", i)
-        # make sure labels fit
+                self._set_labels(i, l)
+        # and make sure the labels fit.
         self.resize()
+
+    def _set_labels(self, i, label):
+        if i == 1: # top
+            self.spr.set_label_attributes(int(self._font_size[1]+0.5), True,
+                                          "right", "top", i)
+        elif i == 2: # bottom
+            self.spr.set_label_attributes(int(self._font_size[1]+0.5), True,
+                                          "right", "bottom", i)
+        else:
+            self.spr.set_label_attributes(int(self._font_size[0]+0.5), True,
+                                          "center", "middle", i)
+        self.spr.set_label(label, i)
 
     def _make_block(self, e, svg):
         self._set_colors(svg)
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
         self.svg.clear_docks()
+        self.shapes = []
         if self.name in BASIC_STYLE:
             self._make_basic_style(e, svg)
         elif self.name in BASIC_STYLE_HEAD:
@@ -191,20 +209,9 @@ class Block:
             print "don't know how to create a %s block" % (self.name)
 
     def _set_colors(self, svg):
-        if self.name in TURTLE_PALETTE:
-            self.colors = TURTLE_COLORS
-        elif self.name in PEN_PALETTE:
-            self.colors = PEN_COLORS
-        elif self.name in NUMBER_PALETTE:
-            self.colors = NUMBER_COLORS
-        elif self.name in BLOCKS_PALETTE:
-            self.colors = BLOCKS_COLORS
-        elif self.name in MISC_PALETTE:
-            self.colors = MISC_COLORS
-        elif self.name in FLOW_PALETTE:
-            self.colors = FLOW_COLORS
-        elif self.name in PORTFOLIO_PALETTE:
-            self.colors = PORTFOLIO_COLORS
+        for p in range(len(PALETTES)):
+            if self.name in PALETTES[p]:
+                self.colors = COLORS[p]
         self.svg.set_colors(self.colors)
 
     def _make_basic_style(self, e, svg):
@@ -406,49 +413,49 @@ class Block:
         self._left, self._right = 0, self.svg.get_width()-self.svg.docks[1][0]
 
     def _make_basic_block(self, svg):
-        self.shape = svg_str_to_pixbuf(self.svg.basic_block())
+        self.shapes.append(svg_str_to_pixbuf(self.svg.basic_block()))
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.selected_shape = svg_str_to_pixbuf(self.svg.basic_block())
+        self.shapes.append(svg_str_to_pixbuf(self.svg.basic_block()))
 
     def _make_basic_box(self, svg):
-        self.shape = svg_str_to_pixbuf(self.svg.basic_box())
+        self.shapes.append(svg_str_to_pixbuf(self.svg.basic_box()))
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.selected_shape = svg_str_to_pixbuf(self.svg.basic_box())
+        self.shapes.append(svg_str_to_pixbuf(self.svg.basic_box()))
 
     def _make_basic_flow(self, svg):
-        self.shape = svg_str_to_pixbuf(self.svg.basic_flow())
+        self.shapes.append(svg_str_to_pixbuf(self.svg.basic_flow()))
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.selected_shape = svg_str_to_pixbuf(self.svg.basic_flow())
+        self.shapes.append(svg_str_to_pixbuf(self.svg.basic_flow()))
 
     def _make_boolean_compare(self, svg):
-        self.shape = svg_str_to_pixbuf(self.svg.boolean_compare())
+        self.shapes.append(svg_str_to_pixbuf(self.svg.boolean_compare()))
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.selected_shape = svg_str_to_pixbuf(self.svg.boolean_compare())
+        self.shapes.append(svg_str_to_pixbuf(self.svg.boolean_compare()))
 
     def _make_boolean_and_or(self, svg):
-        self.shape = svg_str_to_pixbuf(self.svg.boolean_and_or())
+        self.shapes.append(svg_str_to_pixbuf(self.svg.boolean_and_or()))
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.selected_shape = svg_str_to_pixbuf(self.svg.boolean_and_or())
+        self.shapes.append(svg_str_to_pixbuf(self.svg.boolean_and_or()))
 
     def _make_boolean_not(self, svg):
-        self.shape = svg_str_to_pixbuf(self.svg.boolean_not())
+        self.shapes.append(svg_str_to_pixbuf(self.svg.boolean_not()))
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.selected_shape = svg_str_to_pixbuf(self.svg.boolean_not())
+        self.shapes.append(svg_str_to_pixbuf(self.svg.boolean_not()))
