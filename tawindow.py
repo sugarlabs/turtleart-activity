@@ -323,12 +323,13 @@ class TurtleArtWindow():
             x, y = 5, 0
             for i, name in enumerate(PALETTE_NAMES):
                 a = self._load_sprite_from_file("%s/%soff.svg" % (self.path,
-                                                         PALETTE_NAMES[i]))
+                                                         name))
                 b = self._load_sprite_from_file("%s/%son.svg" % (self.path,
-                                                         PALETTE_NAMES[i]))
+                                                         name))
                 self.selector_shapes.append([a,b])
                 self.selectors.append(sprites.Sprite(self.sprite_list, x, y, a))
                 self.selectors[i].type = 'selector'
+                self.selectors[i].name = name
                 self.selectors[i].set_layer(TAB_LAYER)
                 w, h = self.selectors[i].get_dimensions()
                 x += int(w+5) 
@@ -501,24 +502,6 @@ class TurtleArtWindow():
             self.dy += dy
 
     """
-    Get proto from category
-    TODO: move to toolbar
-    """
-    def _get_proto_from_category(self, x, y):
-        return
-
-        (sx,sy) = self.category_spr.get_xy()
-        pixel = self.current_category.get_pixel(self.current_category.mask,
-                                                x-sx, y-sy)
-        index = ((pixel%256)>>3)-1
-        if index==0:
-            return 'hide'
-        index-=1
-        if index>len(self.current_category.blockprotos):
-            return None
-        return self.current_category.blockprotos[index]
-
-    """
     Let's help our users by displaying a little help.
     """
     def _show_popup(self, x, y):
@@ -535,23 +518,7 @@ class TurtleArtWindow():
                         self.timeout_tag[0] = 0
                     except:
                         self.timeout_tag[0] = 0
-        elif spr and hasattr(spr,'type') and spr.type == 'category':
-            # TODO: reassign to new palettes
-            return
-            proto = self._get_proto_from_category(x, y)
-            if proto and proto!='hide':
-                if self.timeout_tag[0] == 0:
-                    self.timeout_tag[0] = self._do_show_popup(proto.name)
-                    self.selected_spr = spr
-                    return
-            else:
-                if self.timeout_tag[0] > 0:
-                    try:
-                        gobject.source_remove(self.timeout_tag[0])
-                        self.timeout_tag[0] = 0
-                    except:
-                        self.timeout_tag[0] = 0
-        elif spr and hasattr(spr,'type') and spr.type == 'selbutton':
+        elif spr and hasattr(spr,'type') and spr.type == 'selector':
             if self.timeout_tag[0] == 0:
                 self.timeout_tag[0] = self._do_show_popup(spr.name)
                 self.selected_spr = spr
@@ -572,7 +539,6 @@ class TurtleArtWindow():
 
     """
     Fetch the help text and display it. 
-    TODO: if block selection moves to the toolbar, help will have to move
     """
     def _do_show_popup(self, block_name):
         if blocks_dict.has_key(block_name):
@@ -738,17 +704,9 @@ class TurtleArtWindow():
             elif tur is not None:
                 self._jog_turtle(mov_dict[keyname][0], mov_dict[keyname][1])
             """
-            elif self.selected_spr.type == 'selbutton':
+            elif self.selected_spr.type == 'selector':
                 if keyname == 'Return' or keyname == 'KP_Page_Up':
                     self._select_category(self.selected_spr)
-            elif self.selected_spr.type == 'category':
-                if keyname == 'Return' or keyname == 'KP_Page_Up':
-                    (x,y) = self.window.get_pointer()
-                    self._block_selector_pressed(x, y)
-                    for b in self.drag_group:
-                       (bx, by) = b.spr.get_xy()
-                       b.spr.move((bx+200, by))
-                    self.drag_group = None
             """
         return True
 
@@ -783,9 +741,12 @@ class TurtleArtWindow():
                 self.selected_blk = blk
                 self._block_pressed(mask, x, y, blk)
             elif blk.type == 'proto':
-                blk.spr.set_shape(blk.shapes[1])
-                self._new_block_from_category(blk.name, x, y+PALETTE_HEIGHT)
-                blk.spr.set_shape(blk.shapes[0])
+                if blk.name == 'restore':
+                    self._restore_from_trash()
+                else:
+                    blk.spr.set_shape(blk.shapes[1])
+                    self._new_block_from_category(blk.name, x, y+PALETTE_HEIGHT)
+                    blk.spr.set_shape(blk.shapes[0])
             return True
 
         # Next, look for a turtle
@@ -881,6 +842,7 @@ class TurtleArtWindow():
         # Remove blocks by dragging them onto the trash palette
         if self.block_operation=='move' and self._in_the_trash(x, y):
             for b in self.drag_group:
+                b.type = 'trash'
                 b.spr.hide()
             self.drag_group = None
             return
@@ -993,6 +955,17 @@ class TurtleArtWindow():
         gobject.idle_add(doevalstep, self.lc)
 
     """
+    Restore all the blocks in the trash can
+    """
+    def _restore_from_trash(self):
+        for b in self.block_list.list:
+            if b.type == 'trash':
+                b.spr.set_layer(BLOCK_LAYER)
+                x,y = b.spr.get_xy()
+                b.spr.move((x,y+200))
+                b.type = 'block'
+
+    """
     Is x,y over the trash can?
     """
     def _in_the_trash(self, x, y):
@@ -1009,19 +982,6 @@ class TurtleArtWindow():
             if b.type == 'block':
                 just_blocks_list.append(b)
         return just_blocks_list
-
-    """
-    Block selector pressed
-    TODO: move to toolbar
-    """
-    def _block_selector_pressed(self, x, y):
-        proto = self._get_proto_from_category(x, y)
-        if proto is None:
-            return
-        if proto is not 'hide':
-            self._new_block_from_category(proto.name, x, y)
-        else:
-            self.hideshow_palette(False)
 
     """
     Make a new block.

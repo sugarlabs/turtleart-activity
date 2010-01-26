@@ -61,7 +61,7 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
              'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
              'bottompos', 'height', 'print'],
             ['hideblocks'],
-            []]
+            ['restore']]
 
 #
 # block style attributes
@@ -69,7 +69,7 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
 
 COLORS = [["#00FF00","#00A000"], ["#00FFFF","#00A0A0"], ["#FF00FF","#A000A0"],
           ["#FFC000","#A08000"], ["#FFFF00","#A0A000"], ["#FF0000","#A0000"],
-          ["#0000FF","#0000FF"], ["#000000","#000000"]]
+          ["#0000FF","#0000FF"], ["#FFFF00","#A0A000"]]
 
 
 PALETTE_HEIGHT = 175
@@ -85,7 +85,7 @@ BASIC_STYLE_HEAD = ['start', 'hat1', 'hat2']
 BASIC_STYLE_HEAD_1ARG = ['hat']
 BASIC_STYLE_TAIL = ['stopstack']
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
-    'hideblocks', 'clearheap', 'printheap', 'kbinput']
+    'hideblocks', 'clearheap', 'printheap', 'kbinput', 'restore']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'setheading', 'show',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1',
@@ -148,7 +148,7 @@ BLOCK_NAMES = {'clean':[_('clean')], 'forward':[_('forward')],
     'push':[_('push')], 'pop':[_('pop')], 'kbinput':[_('query keyboard')],
     'myfunc':[_('python'), _('code'), _('value')], 'nop':[' '],
     'printheap':[_('show heap')],
-    'clearheap':[_('empty heap')]}
+    'clearheap':[_('empty heap')], 'restore':[_('restore')]}
 
 #
 # Legacy names
@@ -202,11 +202,10 @@ DEFAULTS = {'forward':[100], 'back':[100], 'left':[90], 'right':[90],
     'hat':[_('action')], 'stack':[_('action')], 'nop':[100],
     'storeinbox1':[100], 'storeinbox2':[100], 'myfunc':[_('x'),100]}
 
-
-
 #
 # Status blocks
 #
+
 MEDIA_SHAPES = ['audioon', 'texton', 'journalon', 'descon', 'pythonoff',
                 'pythonon']
 

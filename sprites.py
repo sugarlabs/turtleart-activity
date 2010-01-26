@@ -118,6 +118,12 @@ class Sprite:
         self._x,self._y = int(pos[0]),int(pos[1])
         self.inval()
 
+    def move_relative(self, pos):
+        self.inval()
+        self._x += int(pos[0])
+        self._y += int(pos[1])
+        self.inval()
+
     def get_xy(self):
         return (self._x, self._y)
 
