@@ -41,7 +41,6 @@ import time
 from math import atan2, pi
 DEGTOR = 2*pi/360
 from constants import *
-from tasetup import *
 from talogo import *
 from taturtle import *
 from taproject import *
@@ -74,16 +73,9 @@ class TurtleArtWindow():
     def __init__(self, win, path, lang, parent=None):
         self._setup_initial_values(win, path, lang, parent)
         # TODO: most of this goes away
-        prep_selectors(self) # i wonder where this method belongs
-        for s in selectors:
-            setup_selectors(self,s)
-        setup_misc(self)
-        # self._select_category(self.selbuttons[0])
-
+        self._setup_misc()
         # the new palette
         self.show_toolbar_palette(0, False)
-        # hide the old palette
-        self._hide_palette()
 
     def _setup_initial_values(self, win, path, lang, parent):
         self.window = win
@@ -131,34 +123,66 @@ class TurtleArtWindow():
         self.hide = False
         self.palette = True
         self.coord_scale = 1
-        self.block_list = block.Blocks()
-        self.selected_blk = None
-        self.turtle_list = turtlex.Turtles()
-        self.selected_turtle = None
-        self.sprite_list = sprites.Sprites(self.window, self.area, self.gc)
-        self.selected_spr = None
-        self.drag_group = None
-        self.turtle = tNew(self,self.width,self.height)
-        self.lc = lcNew(self)
         self.buddies = []
         self.dx = 0
         self.dy = 0
+        self.media_shapes = {}
         self.cartesian = False
         self.polar = False
-
-        """
-        Selector-related stuff
-        """
+        self.overlay_shapes = {}
+        self.status_spr = None
+        self.status_shapes = {}
         self.palette_spr = None
         self.palettes = []
         self.selected_palette = None
         self.selectors = []
         self.selected_selector = None
         self.selector_shapes = []
+        self.selected_blk = None
+        self.selected_spr = None
+        self.drag_group = None
+        self.block_list = block.Blocks()
+        self.sprite_list = sprites.Sprites(self.window, self.area, self.gc)
+        self.turtle_list = turtlex.Turtles()
+        self.selected_turtle = None
+        self.turtle = tNew(self,self.width,self.height)
+        self.lc = lcNew(self)
 
-    #
-    # Public methods are called from the activity class
-    #
+    """
+    Register the events we listen to.
+    """
+    def _setup_events(self):
+        self.window.add_events(gtk.gdk.BUTTON_PRESS_MASK)
+        self.window.add_events(gtk.gdk.BUTTON_RELEASE_MASK)
+        self.window.add_events(gtk.gdk.POINTER_MOTION_MASK)
+        self.window.add_events(gtk.gdk.KEY_PRESS_MASK)
+        self.window.connect("expose-event", self._expose_cb)
+        self.window.connect("button-press-event", self._buttonpress_cb)
+        self.window.connect("button-release-event", self._buttonrelease_cb)
+        self.window.connect("motion-notify-event", self._move_cb)
+        self.window.connect("key_press_event", self._keypress_cb)
+
+    """
+    Repaint
+    """
+    def _expose_cb(self, win, event):
+        self.sprite_list.redraw_sprites()
+        return True
+
+    """
+    Are we running from within Sugar?
+    """
+    def _running_sugar(self): 
+        if hasattr(self, 'activity'):
+            return True
+        return False
+
+    """
+    Is the an OLPC XO-1?
+    """
+    def _OLPC_XO_1(self):
+        return os.path.exists('/etc/olpc-release') or \
+               os.path.exists('/sys/power/olpc-pm')
 
     """
     eraser_button: hide status block
@@ -218,10 +242,19 @@ class TurtleArtWindow():
     show palette 
     """
     def show_palette(self):
-        for i in self.selbuttons: i.set_layer(TAB_LAYER)
-        self._select_category(self.selbuttons[0])
+        self.show_toolbar_palette(0)
         self.palette = True
 
+    """
+    Hide the palette.
+    """
+    def _hide_palette(self):
+        self.hide_toolbar_palette()
+        self.palette = False
+
+    """
+    Where is the mouse event?
+    """
     def xy(self, event):
         return map(int, event.get_coords())
 
@@ -247,6 +280,32 @@ class TurtleArtWindow():
         return
 
     """
+    Misc. sprites for status, overlays, etc.
+    """
+    def _setup_misc(self):
+        # media blocks get positioned into other blocks
+        for i, name in enumerate(MEDIA_SHAPES):
+            self.media_shapes[i] = sprites.Sprite(self.sprite_list, 0, 0,
+                self._load_sprite_from_file("%s/%s.svg" % (self.path, name)))
+            self.media_shapes[i].set_layer(HIDE_LAYER)
+            self.media_shapes[i].type = 'media'
+        for i, name in enumerate(STATUS_SHAPES):
+            self.status_shapes[i] = sprites.Sprite(self.sprite_list,
+                self.height-75, 0,
+                self._load_sprite_from_file("%s/%s.svg" % (self.path, name)))
+            self.status_shapes[i].set_layer(HIDE_LAYER)
+            self.status_shapes[i].type = 'status'
+        for i in enumerate(OVERLAY_SHAPES):
+            self.overlay_shapes[i] = sprites.Sprite(self.sprite_list, 0, 0,
+                self._load_sprite_from_file("%s/%s.svg" % (self.path, name)))
+            self.overlay_shapes[i].set_layer(HIDE_LAYER)
+            self.overlay_shapes[i].type = 'overlay'
+
+    def _load_sprite_from_file(self, name):
+        svg = sprite_factory.SVG()
+        return sprite_factory.svg_str_to_pixbuf(svg.from_file(name))
+
+    """
     Show/hide turtle palettes
     """
     def hide_toolbar_palette(self, hide_palette_spr=True):
@@ -259,19 +318,14 @@ class TurtleArtWindow():
             self.selectors[i].set_layer(HIDE_LAYER)
 
     def show_toolbar_palette(self, n, init_only=False):
-        # TODO: make graphical selector buttons
         if self.selectors == []:
             svg = sprite_factory.SVG()
             x, y = 5, 0
             for i, name in enumerate(PALETTE_NAMES):
-                svg.set_stroke_width(STANDARD_STROKE_WIDTH)
-                svg.set_colors(COLORS[i])
-                svg_path = "%s/palette/%soff.svg" % (self.path,
-                                                         PALETTE_NAMES[i])
-                a = sprite_factory.svg_str_to_pixbuf(svg.from_file(svg_path))
-                svg_path = "%s/palette/%son.svg" % (self.path,
-                                                         PALETTE_NAMES[i])
-                b = sprite_factory.svg_str_to_pixbuf(svg.from_file(svg_path))
+                a = self._load_sprite_from_file("%s/%soff.svg" % (self.path,
+                                                         PALETTE_NAMES[i]))
+                b = self._load_sprite_from_file("%s/%son.svg" % (self.path,
+                                                         PALETTE_NAMES[i]))
                 self.selector_shapes.append([a,b])
                 self.selectors.append(sprites.Sprite(self.sprite_list, x, y, a))
                 self.selectors[i].type = 'selector'
@@ -325,46 +379,6 @@ class TurtleArtWindow():
             for blk in self.palettes[n]:
                 blk.spr.set_layer(CATEGORY_LAYER)
 
-    #
-    # Internal methods
-    #
-
-    """
-    Register the events we listen to.
-    """
-    def _setup_events(self):
-        self.window.add_events(gtk.gdk.BUTTON_PRESS_MASK)
-        self.window.add_events(gtk.gdk.BUTTON_RELEASE_MASK)
-        self.window.add_events(gtk.gdk.POINTER_MOTION_MASK)
-        self.window.add_events(gtk.gdk.KEY_PRESS_MASK)
-        self.window.connect("expose-event", self._expose_cb)
-        self.window.connect("button-press-event", self._buttonpress_cb)
-        self.window.connect("button-release-event", self._buttonrelease_cb)
-        self.window.connect("motion-notify-event", self._move_cb)
-        self.window.connect("key_press_event", self._keypress_cb)
-
-    """
-    Repaint
-    """
-    def _expose_cb(self, win, event):
-        self.sprite_list.redraw_sprites()
-        return True
-
-    """
-    Are we running from within Sugar?
-    """
-    def _running_sugar(self): 
-        if hasattr(self, 'activity'):
-            return True
-        return False
-
-    """
-    Is the an OLPC XO-1?
-    """
-    def _OLPC_XO_1(self):
-        return os.path.exists('/etc/olpc-release') or \
-               os.path.exists('/sys/power/olpc-pm')
-
     """
     Select a category.
     """
@@ -376,16 +390,6 @@ class TurtleArtWindow():
             self.selected_selector.set_shape(self.selector_shapes[j][0])
         self.selected_selector = spr
         self.show_toolbar_palette(i)
-
-    """
-    Hide the palette.
-    TODO: move to toolbar
-    """
-    def _hide_palette(self):
-        for i in self.selbuttons:
-            i.hide()
-        self.category_spr.set_shape(self.hidden_palette_icon)
-        self.palette = False
 
     """
     Find a stack to run (any stack without a 'def action'on the top).
@@ -761,7 +765,8 @@ class TurtleArtWindow():
             self._unselect_block()
         self.selected_turtle = None
         # Always hide the status layer on a click
-        self.status_spr.set_layer(HIDE_LAYER)
+        if self.status_spr is not None:
+            self.status_spr.set_layer(HIDE_LAYER)
 
         # Find out what was clicked
         spr = self.sprite_list.find_sprite((x,y))

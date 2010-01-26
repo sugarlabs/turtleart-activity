@@ -193,6 +193,20 @@ DEFAULTS = {'forward':[100], 'back':[100], 'left':[90], 'right':[90],
     'hat':[_('action')], 'stack':[_('action')],
     'storeinbox1':[100], 'storeinbox2':[100]}
 
+
+
+#
+# Status blocks
+#
+MEDIA_SHAPES = ['audioon', 'texton', 'journalon', 'descon', 'pythonoff',
+                'pythonon']
+
+OVERLAY_SHAPES = ['Cartesian', 'polar']
+
+STATUS_SHAPES = ['status', 'info', 'nostack', 'noinput', 'emptyheap',
+                 'emptybox', 'nomedia', 'nocode', 'overflowerror',
+                 'syntaxerror']
+
 #
 # 'dead key' Unicode dictionaries
 #
