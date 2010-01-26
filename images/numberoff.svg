@@ -13,26 +13,26 @@
   <g
      transform="translate(6.1026134,-1.6740561)"
      id="g2392"
-     style="fill:#D000D0;fill-opacity:1">
+     style="fill:#d000d0;fill-opacity:1">
     <text
-       x="4.5171318"
+       x="2.3207264"
        y="26.866751"
        id="text2384"
        xml:space="preserve"
-       style="font-size:12px;fill:#D000D0;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"><tspan
-         x="4.5171318"
+       style="font-size:12px;fill:#d000d0;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"><tspan
+         x="2.3207264"
          y="26.866751"
          id="tspan2386"
-         style="font-size:18px;fill:#D000D0;fill-opacity:1">123</tspan></text>
+         style="font-size:18px;font-weight:bold;fill:#d000d0;fill-opacity:1;-inkscape-font-specification:AlArabiya Bold">123</tspan></text>
     <text
        x="1.8153553"
        y="44.840736"
        id="text2388"
        xml:space="preserve"
-       style="font-size:12px;fill:#D000D0;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"><tspan
+       style="font-size:12px;fill:#d000d0;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"><tspan
          x="1.8153553"
          y="44.840736"
          id="tspan2390"
-         style="font-size:18px;fill:#D000D0;fill-opacity:1">+–=</tspan></text>
+         style="font-size:18px;font-weight:bold;fill:#d000d0;fill-opacity:1;-inkscape-font-specification:AlArabiya Bold">+–=</tspan></text>
   </g>
 </svg>
