@@ -76,11 +76,11 @@ def run_blocks(lc, blk, blocks, run_flag):
     lc.stacks['stack1'] = None
     lc.stacks['stack2'] = None
     for b in blocks:
-        if b.name == 'def action 1':
+        if b.name == 'hat1':
             lc.stacks['stack1'] = readline(lc,blocks_to_code(lc, b))
-        if b.name=='def action 2':
+        if b.name=='hat2':
             lc.stacks['stack2'] = readline(lc,blocks_to_code(lc, b))
-        if b.name == 'def action':
+        if b.name == 'hat':
             if (b.connections[1] is not None):
                 text = b.connections[1].spr.labels[0]
                 lc.stacks['stack3'+text] = readline(lc,blocks_to_code(lc, b))
@@ -974,7 +974,8 @@ def show(lc, string, center=False):
         else:
             if center is True:
                 y -= lc.tw.textsize
-            draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width-x)
+            draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,
+                      lc.tw.turtle.width-x)
     elif type(string) == float or type(string) == int:
         string = round_int(string)
         if center is True:
@@ -1100,20 +1101,28 @@ def stop_logo(tw):
     tw.step_time = 0
     tw.lc.step = just_stop()
 
-def just_stop(): yield False
+def just_stop():
+    yield False
 
-def setbox(lc, name,val): lc.boxes[name]=val
+def setbox(lc, name,val):
+    lc.boxes[name]=val
 
-def push_heap(lc,val): lc.heap.append(val)
+def push_heap(lc,val):
+    lc.heap.append(val)
 
 def pop_heap(lc):
-    try: return lc.heap.pop(-1)
-    except: raise logoerror ("#emptyheap")
+    try:
+        return lc.heap.pop(-1)
+    except:
+        raise logoerror ("#emptyheap")
 
-def empty_heap(lc): lc.heap = []
+def empty_heap(lc):
+    lc.heap = []
 
-def tyo(n): print n
+def tyo(n):
+    print n
 
-def millis(): return int(clock()*1000)
+def millis():
+    return int(clock()*1000)
 
 
