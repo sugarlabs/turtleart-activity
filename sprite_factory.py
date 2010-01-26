@@ -247,11 +247,19 @@ class SVG:
         return self._header() + svg
 
     def palette(self, width, height):
-        self._fill, self._stroke = "#282828", "none"
         self._width, self._height = width, height
-        svg = self._rect(width, height, 0, 0)
+        self._fill, self._stroke = "#282828", "none"
+        svg = self._rect(width, 55, 0, 0)
+        self._fill, self._stroke = "#FFD000", "none"
+        svg += self._rect(width, height-55, 0, 55)
         svg += self._footer()
         return self._header() + svg
+
+    def from_file(self, pathname):
+        f = file(pathname, 'r')
+        svg = f.read()
+        f.close()
+        return(svg)
 
     #
     # Utility methods

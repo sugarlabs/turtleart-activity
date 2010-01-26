@@ -262,24 +262,18 @@ class TurtleArtWindow():
         # TODO: make graphical selector buttons
         if self.selectors == []:
             svg = sprite_factory.SVG()
-            svg.set_scale(2.0)
-            svg.set_gradiant(True)
-            svg.set_innie([False])
-            svg.set_outie(False)
-            svg.set_tab(False)
-            svg.set_slot(False)
-            svg.expand(25)
-            x, y = 5, 5
+            x, y = 5, 0
             for i, name in enumerate(PALETTE_NAMES):
                 svg.set_stroke_width(STANDARD_STROKE_WIDTH)
                 svg.set_colors(COLORS[i])
-                a = sprite_factory.svg_str_to_pixbuf(svg.basic_block())
-                svg.set_stroke_width(SELECTED_STROKE_WIDTH)
-                svg.set_stroke_color(SELECTED_COLOR)
-                b = sprite_factory.svg_str_to_pixbuf(svg.basic_block())
+                svg_path = "%s/palette/%soff.svg" % (self.path,
+                                                         PALETTE_NAMES[i])
+                a = sprite_factory.svg_str_to_pixbuf(svg.from_file(svg_path))
+                svg_path = "%s/palette/%son.svg" % (self.path,
+                                                         PALETTE_NAMES[i])
+                b = sprite_factory.svg_str_to_pixbuf(svg.from_file(svg_path))
                 self.selector_shapes.append([a,b])
                 self.selectors.append(sprites.Sprite(self.sprite_list, x, y, a))
-                self.selectors[i].set_label(name)
                 self.selectors[i].type = 'selector'
                 self.selectors[i].set_layer(TAB_LAYER)
                 w, h = self.selectors[i].get_dimensions()
