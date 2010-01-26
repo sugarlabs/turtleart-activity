@@ -144,6 +144,15 @@ BLOCK_NAMES = {'clean':[_('clean')], 'forward':[_('forward')],
     'scale':[_('scale')]}
 
 #
+# Legacy names
+#
+OLD_NAMES = {'setxy':'set xy', 'storeinbox1':'store in box 1',
+             'setpensize':'set pen size', 'setshade':'set shade',
+             'plus2':'plus', 'division2':'divide','box1':'box 1',
+             'box2':'box 2', 'storeinbox2':'store in box 2',
+             'division':'divide', 'setcolor':'set color'}
+
+#
 # Logo primitives
 #
 

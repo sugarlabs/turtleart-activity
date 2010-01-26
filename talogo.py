@@ -63,21 +63,27 @@ class logoerror(Exception):
         return repr(self.value)
 
 def run_blocks(lc, blk, blocks, run_flag):
+    print "run blocks: %s" % (blk.name)
+    for b in blocks:
+        if b is None:
+            print "    None"
+        else:
+            print "    %s" % b.name
     # user-defined stacks
     for x in lc.stacks.keys():
-        lc.stacks[x]= None
+        lc.stacks[x] = None
     # two built-in stacks
     lc.stacks['stack1'] = None
     lc.stacks['stack2'] = None
     for b in blocks:
-        if b.name=='def action 1':
-            lc.stacks['stack1']= readline(lc,blocks_to_code(lc, b))
+        if b.name == 'def action 1':
+            lc.stacks['stack1'] = readline(lc,blocks_to_code(lc, b))
         if b.name=='def action 2':
-            lc.stacks['stack2']= readline(lc,blocks_to_code(lc, b))
-        if b.name=='def action':
+            lc.stacks['stack2'] = readline(lc,blocks_to_code(lc, b))
+        if b.name == 'def action':
             if (b.connections[1] is not None):
-                text=b.connections[1].spr.labels[0]
-                lc.stacks['stack3'+text]= readline(lc,blocks_to_code(lc, b))
+                text = b.connections[1].spr.labels[0]
+                lc.stacks['stack3'+text] = readline(lc,blocks_to_code(lc, b))
     code = blocks_to_code(lc, blk)
     if run_flag is True:
         print "code: %s" % (code)

@@ -62,71 +62,71 @@ shape_dict = {'journal':'texton', \
 
 def new_project(tw):
     stop_logo(tw)
-    for b in blocks(tw): b.hide()
+    for b in tw._just_blocks():
+        b.spr.hide()
     tw.turtle.canvas.set_layer(CANVAS_LAYER)
     clearscreen(tw.turtle)
     tw.save_file_name = None
 
 def load_file(tw, create_new_project=True):
     fname = get_load_name(tw)
-    if fname==None: return
-    if fname[-3:]=='.ta': fname=fname[0:-3]
+    if fname==None:
+        return
+    if fname[-3:]=='.ta':
+        fname=fname[0:-3]
     load_files(tw,fname+'.ta', create_new_project)
     if create_new_project is True:
         tw.save_file_name = os.path.basename(fname)
 
+#
+# We try to maintain read-compatibility with all versions of Turtle Art.
+# Try pickle first; then two different versions of json.
+#
 def load_files(tw, ta_file, create_new_project=True):
-    # ignoring the png_file even if it is present
+    # Just open the .ta file, ignoring any .png file that might be present.
     f = open(ta_file, "r")
     try:
-        data = pickle.load(f) # old-style data format
+        data = pickle.load(f)
     except:
-        # print "reading saved json data"
-        f.seek(0) # rewind necessary because of pickle.load
+        # Rewind necessary because of failed pickle.load attempt
+        f.seek(0)
         text = f.read()
-        if _old_Sugar_system is True:
-            listdata = json.read(text)
-        else:
-            io = StringIO(text)
-            listdata = jload(io)
-        print "load files: %s" % (listdata)
-        # listdata = jdecode(text)
-        data = tuplify(listdata) # json converts tuples to lists
+        data = _json_read(text)
     f.close()
     if create_new_project is True:
         new_project(tw)
-    read_data(tw,data)
+    read_data(tw, data)
+
+def _json_read(text):
+    if _old_Sugar_system is True:
+        listdata = json.read(text)
+    else:
+        io = StringIO(text)
+        listdata = jload(io)
+    print "load files: %s" % (listdata)
+    # json converts tuples to lists, so we need to convert back,
+    return tuplify(listdata) 
 
 def get_load_name(tw):
-    dialog = gtk.FileChooserDialog("Load...", None, 
-        gtk.FILE_CHOOSER_ACTION_OPEN,
-        (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,gtk.STOCK_OPEN, gtk.RESPONSE_OK))
+    dialog = gtk.FileChooserDialog("Load...", None,
+                                   gtk.FILE_CHOOSER_ACTION_OPEN,
+                                   (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
+                                    gtk.STOCK_OPEN, gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
-    return do_dialog(tw,dialog)
+    return do_dialog(tw, dialog)
 
-# unpack serialized data sent across a share
-def load_string(tw,text):
-    if _old_Sugar_system is True:
-        listdata = json.read(text)
-    else:
-        io = StringIO(text)
-        listdata = jload(io)
-    data = tuplify(listdata) # json converts tuples to lists
+# Unpack serialized data sent across a share.
+def load_string(tw, text):
+    data = _json_read(text)
     new_project(tw)
-    read_data(tw,data)
+    read_data(tw, data)
 
-# unpack sserialized data from the clipboard
-def clone_stack(tw,text):
-    if _old_Sugar_system is True:
-        listdata = json.read(text)
-    else:
-        io = StringIO(text)
-        listdata = jload(io)
-    data = tuplify(listdata) # json converts tuples to lists
-    # read_stack(tw,data)
-    read_data(tw,data)
+# Unpack sserialized data from the clipboard.
+def clone_stack(tw, text):
+    data = _json_read(text)
+    read_data(tw, data)
 
-# paste stack from the clipboard
+# Paste stack from the clipboard.
 # TODO: rebase on read data 
 def read_stack(tw,data):
     clone = []
@@ -144,42 +144,67 @@ def tuplify(t):
         return t
     return tuple(map(tuplify, t))
 
-def read_data(tw,data):
-    sprs = []
+def read_data(tw, data):
+    print "data is %d elements long" % (len(data))
+    # First we create the blocks
+    blocks = []
+    t = 0
     for b in data:
-        if b[1]=='turtle':
-            load_turtle(tw,b)
-        else: spr = load_spr(tw, b); sprs.append(spr)
-    for i in range(len(sprs)):
+        print b
+        if b[1] == 'turtle':
+            load_turtle(tw, b)
+            print "we founf a turtle"
+            t = 1
+        else:
+            blk = load_block(tw, b); blocks.append(blk)
+    print "we have %d blocks and %d turtles" % (len(blocks), t)
+    # Then we make the connections
+    for i in range(len(blocks)):
+        print "connections for %s are:" % (blocks[i].name)
         cons=[]
         for c in data[i][4]:
-            if c==None: cons.append(None)
-            else: cons.append(sprs[c])
-        sprs[i].connections = cons # phasing out
-        tw.block_list.spr_to_block(sprs[i]).connections = cons
+            if c is None:
+                cons.append(None)
+                print "   None"
+            else:
+                cons.append(blocks[c])
+                print "   %s" % (blocks[c].name)
+        blocks[i].connections = cons
+    # Then we need to adjust the x,y positions, as block sizes may have changed
+    for b in blocks:
+        (sx, sy) = b.spr.get_xy()
+        for i, c in enumerate(b.connections):
+            if c is not None:
+                bdock = b.docks[i]
+                for j in range(len(c.docks)):
+                    if c.connections[j] == b:
+                        cdock = c.docks[j]
+                nx, ny = sx+bdock[2]-cdock[2], sy+bdock[3]-cdock[3]
+                c.spr.move((nx, ny))
 
-def load_spr(tw,b):
+def load_block(tw, b):
+    # A blook is saved as: (i, (btype, label), x, y, (c0,... cn))
     media = None
-    btype, label = b[1],None
+    btype, label = b[1], None
     if type(btype) == type((1,2)): 
         btype, label = btype
+    if label is None:
+        labels = []
+    else:
+        labels = [label]
+
+    print labels
+    """
     if btype == 'title':  # for backward compatibility
         btype = 'string'
     if btype == 'journal' or btype == 'audiooff' or btype == 'descriptionoff':
         media = label
         label = None
-    try:
-        proto = tw.protodict[btype]
-    except KeyError:
-        print "swapping in a forward block for %s" % (btype)
-        proto = tw.protodict['forward']
+    """
     blk = block.Block(tw.block_list, tw.sprite_list, 
                       btype, b[2]+tw.turtle.cx,
-                      b[3]+tw.turtle.cy, [label])
-    spr = blk.spr
-    spr.type = 'block' # phasing out
-    spr.proto = proto  # phasing out
-    # if label is not None: spr.set_label(label) # phasing out
+                      b[3]+tw.turtle.cy, 'block', labels)
+    """
     if media is not None and media not in nolabel:
         try:
             dsobject = datastore.get(media)
@@ -194,10 +219,11 @@ def load_spr(tw,b):
         except:
             if hasattr(spr,"ds_id"):
                 print "couldn't open dsobject (" + str(spr.ds_id) + ")"
-    spr.set_layer(BLOCK_LAYER)
-    return spr
+    """
+    blk.spr.set_layer(BLOCK_LAYER)
+    return blk
 
-def load_turtle(tw,b):
+def load_turtle(tw, b):
     id, name, xcor, ycor, heading, color, shade, pensize = b
     setxy(tw.turtle, xcor, ycor)
     seth(tw.turtle, heading)
@@ -205,10 +231,16 @@ def load_turtle(tw,b):
     setshade(tw.turtle, shade)
     setpensize(tw.turtle, pensize)
 
-def load_pict(tw,fname):
-    pict = gtk.gdk.pixbuf_new_from_file(fname)
-    tw.turtle.canvas.image.draw_pixbuf(tw.turtle.gc, pict, 0, 0, 0, 0)
+# start a new project with a start brick
+def load_start(tw):
+    clone_stack(tw,"%s%s%s" % ("[[0,[\"start\",\"", _("start"),
+                               "\"],250,30,[null,null]]]"))
 
+#
+# Everything below is suspect
+# mix and match of old and new
+# procced with caution
+#
 def save_file(tw):
     if tw.save_folder is not None: tw.load_save_folder = tw.save_folder
     fname = get_save_name(tw)
@@ -352,10 +384,6 @@ def do_dialog(tw,dialog):
     dialog.destroy()
     return result
 
-# phasing out
-def blocks(tw): return [spr for spr in tw.sprite_list.list \
-                        if spr.type == 'block']
-
 def findgroup(blk, block_list):
     group=[blk.spr]
     for spr2 in blk.connections[1:]:
@@ -368,8 +396,4 @@ def find_top_block(blk, block_list):
         blk = block_list.spr_to_block(blk.connections[0])
     return blk
 
-# start a new project with a start brick
-def load_start(tw):
-    clone_stack(tw,"%s%s%s" % ("[[0,[\"start\",\"", _("start"),
-                               "\"],250,30,[null,null]]]"))
 

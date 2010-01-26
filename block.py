@@ -47,10 +47,10 @@ class Blocks:
         if block in self.list:
             self.list.remove(block)
 
-    def print_list(self):
+    def print_list(self, block_type=None):
         for i, block in enumerate(self.list):
-            print "%d: %s" % (i, block.name)
-
+            if block_type is None or block_type == block.type:
+                print "%d: %s" % (i, block.name)
 
     #
     # sprite utilities
@@ -65,6 +65,12 @@ class Blocks:
 # A class for the individual blocks
 #
 class Block:
+    #
+    # TODO:
+    # Logo code
+    # HTML code
+    # debug code
+    # etc.
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
                  labels=[], scale=2.0, colors=["#00FF00","#00A000"]):
         self.spr = None
@@ -82,6 +88,9 @@ class Block:
         self._left = 0
         self._right = 0
 
+        if OLD_NAMES.has_key(self.name):
+            self.name = OLD_NAMES[self.name]
+
         for i in range(len(self._font_size)):
             self._font_size[i] *= self.scale
 
@@ -97,12 +106,6 @@ class Block:
             self.primitive = PRIMITIVES[self.name]
 
         block_list.append_to_list(self)
-        #
-        # TODO:
-        # Logo code
-        # HTML code
-        # debug code
-        # etc.
 
     # We need to resize some blocks on the fly.
     def resize(self):
@@ -126,7 +129,7 @@ class Block:
 
     def _new_block_from_factory(self, sprite_list, labels, x, y):
 
-        print "new block: %s (%d %d)" % (self.name, x, y)
+        # print "new block: %s (%d %d)" % (self.name, x, y)
 
         self.svg = SVG()
         self.svg.set_scale(self.scale)
@@ -144,12 +147,10 @@ class Block:
 
         # If labels were passed, use them;
         if len(labels) > 0:
-            print labels
             for i, l in enumerate(labels):
                 self._set_labels(i, l)
         # otherwise use default values;
         elif BLOCK_NAMES.has_key(self.name):
-            print BLOCK_NAMES[self.name]
             for i, l in enumerate(BLOCK_NAMES[self.name]):
                 self._set_labels(i, l)
         # and make sure the labels fit.
@@ -206,7 +207,7 @@ class Block:
             self._make_flow_style_boolean(e, svg)
         else:
             self._make_basic_style(e, svg)
-            print "don't know how to create a %s block" % (self.name)
+            print ">>>>> I don't know how to create a %s block" % (self.name)
 
     def _set_colors(self, svg):
         for p in range(len(PALETTES)):

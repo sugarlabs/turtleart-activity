@@ -237,14 +237,14 @@ class Sprite:
             if self._horiz_align[i] == "center":
                 x = int(self._x+self._margins[0]+(my_width-w)/2)
             elif self._horiz_align[i] == 'left':
-                x = self._x+self._margins[0]
+                x = int(self._x+self._margins[0])
             else: # right
                 x = int(self._x+self._width-w-self._margins[2])
             h = pl.get_size()[1]/pango.SCALE
             if self._vert_align[i] == "middle":
                 y = int(self._y+self._margins[1]+(my_height-h)/2)
             elif self._vert_align[i] == "top":
-                y = self._y+self._margins[1]
+                y = int(self._y+self._margins[1])
             else: # bottom
                 y = int(self._y+self._height-h-self._margins[3])
             self._sprites.gc.set_foreground(self._color)

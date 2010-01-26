@@ -178,7 +178,7 @@ class TurtleArtWindow():
     change the icon for user-defined blocks after Python code is loaded
     """
     def set_userdefined(self):
-        for blk in self.block_list.list:
+        for blk in self._just_blocks():
             if blk.name == 'nop':
                 blk.set_image(self.media_shapes['pythonloaded'])
         self.nop = 'pythonloaded'
@@ -188,12 +188,12 @@ class TurtleArtWindow():
     """
     def hideshow_button(self):
         if self.hide is False: 
-            for blk in self.block_list.list:
+            for blk in self._just_blocks():
                 blk.spr.set_layer(HIDE_LAYER)
             self._hide_palette() 
             self.hide = True
         else:
-            for blk in self.block_list.list:
+            for blk in self._just_blocks():
                 blk.spr.set_layer(BLOCK_LAYER)
             self.show_palette()
             self.hide = False
@@ -232,14 +232,14 @@ class TurtleArtWindow():
         if self._running_sugar():
             self.activity.recenter()
         # Look for a 'start' block
-        for blk in self.block_list.list:
+        for blk in self._just_blocks():
             if self._find_start_stack(blk):
                 self.step_time = time
                 print "running stack starting from %s" % (blk.name)
                 self._run_stack(blk)
                 return
         # If there is no 'start' block, run stacks that aren't 'def action'
-        for blk in self.blocks_list.list:
+        for blk in self._just_blocks():
             if self._find_block_to_run(blk):
                 self.step_time = time
                 print "running stack starting from %s" % (blk.name)
@@ -255,6 +255,8 @@ class TurtleArtWindow():
         if hide_palette_spr is True:
             self.palette_spr.set_layer(HIDE_LAYER)
             self.selected_palette = None
+        for i in range(len(PALETTES)):
+            self.selectors[i].set_layer(HIDE_LAYER)
 
     def show_toolbar_palette(self, n, init_only=False):
         # TODO: make graphical selector buttons
@@ -281,7 +283,7 @@ class TurtleArtWindow():
                 self.selectors[i].type = 'selector'
                 self.selectors[i].set_layer(TAB_LAYER)
                 w, h = self.selectors[i].get_dimensions()
-                x += (w+5) 
+                x += int(w+5) 
         if self.palette_spr is None:
             svg = sprite_factory.SVG()
             self.palette_spr = sprites.Sprite(self.sprite_list, 0, 0,
@@ -292,12 +294,16 @@ class TurtleArtWindow():
         if len(self.palettes) == 0:
             for i in range(len(PALETTES)):
                 self.palettes.append([])
-        
+
         if init_only is True:
             return
 
         if self.selected_palette is not None:
             self.hide_toolbar_palette(False)
+
+        for i in range(len(PALETTES)):
+            self.selectors[i].set_layer(TAB_LAYER)
+        
         self.selected_palette = n
         self.selectors[n].set_shape(self.selector_shapes[n][1])
         self.selected_selector = self.selectors[n]
@@ -315,10 +321,10 @@ class TurtleArtWindow():
                 w, h = self.palettes[n][i].spr.get_dimensions()
                 if y+h > PALETTE_HEIGHT:
                     y = ICON_SIZE+5
-                    x += (max_width+5)
+                    x += int(max_width+5)
                     max_width = 0
                 self.palettes[n][i].spr.move((int(x), int(y)))
-                y += (h+5)
+                y += int(h+5)
                 if w > max_width:
                     max_width = w
         else:
@@ -367,7 +373,6 @@ class TurtleArtWindow():
 
     """
     Select a category.
-    TODO: move to toolbar
     """
     def _select_category(self, spr):
         i = self.selectors.index(spr)
@@ -377,13 +382,6 @@ class TurtleArtWindow():
             self.selected_selector.set_shape(self.selector_shapes[j][0])
         self.selected_selector = spr
         self.show_toolbar_palette(i)
-        """
-        if hasattr(self, 'current_category'):
-            self.current_category.set_shape(self.current_category.offshape)
-        spr.set_shape(spr.onshape)
-        self.current_category = spr
-        self.category_spr.set_shape(spr.group)
-        """
 
     """
     Hide the palette.
@@ -457,7 +455,7 @@ class TurtleArtWindow():
         self.block_operation = 'move'
         # First, check to see if we are dragging or rotating a turtle.
         if self.selected_turtle is not None:
-            type,dragx,dragy = self.dragpos
+            type, dragx, dragy = self.dragpos
             (sx, sy) = self.selected_turtle.spr.get_xy()
             if type == 'move':
                 if mdx != 0 or mdy != 0:
@@ -809,30 +807,19 @@ class TurtleArtWindow():
                 return True
             elif spr.type == 'selector':
                 self._select_category(spr)
-            """
-            elif spr.type == 'selbutton':
-                self._select_category(spr)
-            elif spr.type == 'category':
-                self._block_selector_pressed(x,y)
-            """
 
     """
     Block pressed
     """
     def _block_pressed(self, mask, x, y, blk):
         if blk is not None:
-            print "in block_pressed: %s" % (blk.name)
-            print "0. marking block %s as selected" % (blk.name)
             blk.spr.set_shape(blk.shapes[1])
-            print "1. disconnecting block %s from those above it" % (blk.name)
             self._disconnect(blk)
-            print "2. creating drag_group with %s" % (blk.name)
             self.drag_group = self._find_group(blk)
-            print "drag_group: %s" % (self._print_blk_list(self.drag_group))
-            for blk in self.drag_group:
-                blk.spr.set_layer(TOP_LAYER)
             (sx, sy) = blk.spr.get_xy()
             self.dragpos = x-sx, y-sy
+            for blk in self.drag_group:
+                blk.spr.set_layer(TOP_LAYER)
 
     """
     Unselect block
@@ -947,7 +934,7 @@ class TurtleArtWindow():
         my_block = self.drag_group[0]
         d = 200
         for my_dockn in range(len(my_block.docks)):
-            for i, your_block in enumerate(self.block_list.list):
+            for i, your_block in enumerate(self._just_blocks()):
                 # don't link to a block to which you're already connected
                 if your_block in self.drag_group:
                     continue
@@ -1012,6 +999,9 @@ class TurtleArtWindow():
         run_blocks(self.lc, top, self._just_blocks(), True)
         gobject.idle_add(doevalstep, self.lc)
 
+    """
+    Filter out 'proto' blocks
+    """
     def _just_blocks(self):
         just_blocks_list = []
         for b in self.block_list.list:
