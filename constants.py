@@ -38,27 +38,30 @@ FLOW = 3
 BLOCKS = 4
 EXTRAS = 5
 PORTFOLIO = 6
+TRASH = 7
 
 PALETTE_NAMES = ['turtle', 'pen', 'number', 'flow', 'blocks', 'extras',
-                 'portfolio']
+                 'portfolio', 'trash']
 
-PALETTES = [['clean', 'forward', 'back', 'left', 'right', 'arc', 'setxy',
-     'show', 'setscale', 'setheading', 'scale', 'xcor', 'ycor', 'heading'],
-    ['penup','pendown', 'setpensize', 'settextsize',
-     'setcolor', 'setshade', 'fillscreen', 'pensize', 'textsize', 'color',
-     'shade'],
-    ['number', 'plus2', 'minus2', 'product2',
-     'division2', 'remainder2', 'sqrt', 'identity2',
-     'random', 'greater', 'less',
-     'equal', 'not', 'and', 'or'],
-    ['wait', 'forever', 'repeat', 'if', 'stopstack', 'hspace',
-     'vspace'],
-    ['start', 'hat1', 'stack1', 'hat2', 
-     'stack2', 'hat', 'stack', 'storeinbox1', 'box1',
-     'storeinbox2', 'box2', 'storeinbox', 'box', 'string'],
-    ['print', 'leftpos', 'toppos', 'rightpos', 'bottompos', 'width', 
-     'height'],
-    ['hideblocks']]
+PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show', 
+             'setheading', 'setxy', 'heading', 'xcor', 'ycor', 'setscale',
+              'arc', 'scale'],
+            ['penup','pendown', 'setpensize', 'fillscreen', 'pensize',
+             'settextsize', 'setcolor', 'setshade', 'textsize', 'color',
+             'shade'],
+            ['plus2', 'minus2', 'number', 'product2',
+             'division2', 'identity2', 'remainder2', 'sqrt', 
+             'random', 'greater', 'less', 'equal', 'not', 'and', 'or'],
+            ['wait', 'forever', 'repeat', 'if', 'hspace',
+             'vspace', 'stopstack'],
+            ['hat1', 'stack1', 'hat', 'hat2', 'stack2', 'stack',
+             'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2', 'box',
+             'storeinbox', 'start'],
+            ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
+             'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
+             'bottompos', 'height', 'print'],
+            ['hideblocks'],
+            []]
 
 #
 # block style attributes
@@ -66,7 +69,7 @@ PALETTES = [['clean', 'forward', 'back', 'left', 'right', 'arc', 'setxy',
 
 COLORS = [["#00FF00","#00A000"], ["#00FFFF","#00A0A0"], ["#FF00FF","#A000A0"],
           ["#FFC000","#A08000"], ["#FFFF00","#A0A000"], ["#FF0000","#A0000"],
-          ["#0000FF","#0000FF"]]
+          ["#0000FF","#0000FF"], ["#000000","#000000"]]
 
 
 PALETTE_HEIGHT = 175
@@ -82,15 +85,15 @@ BASIC_STYLE_HEAD = ['start', 'hat1', 'hat2']
 BASIC_STYLE_HEAD_1ARG = ['hat']
 BASIC_STYLE_TAIL = ['stopstack']
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
-    'hideblocks']
+    'hideblocks', 'clearheap', 'printheap', 'kbinput']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'setheading', 'show',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1',
-    'storeinbox2', 'wait', 'stack']
-BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storeinbox']
+    'storeinbox2', 'wait', 'stack', 'push', 'nop']
+BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storeinbox', 'myfunc']
 BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'textcolor', 'textsize', 'box1', 'box2', 'string', 'leftpos', 'scale',
-    'toppos', 'rightpos', 'bottompos', 'width', 'height']
+    'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard']
 NUMBER_STYLE = ['plus2', 'product2', 'random']
 NUMBER_STYLE_PORCH = ['minus2', 'division2', 'remainder2']
 NUMBER_STYLE_1ARG = ['sqrt', 'box', 'identity2']
@@ -140,8 +143,12 @@ BLOCK_NAMES = {'clean':[_('clean')], 'forward':[_('forward')],
     'leftpos':[_('left')], 'toppos':[_('top')], 'rightpos':[_('right')], 
     'bottompos':[_('bottom')], 'width':[_('width')], 'height':[_('height')],
     'hideblocks':[_('hide blocks')],
-    'setxy':[_('set xy'),_('x'),_('y')],
-    'scale':[_('scale')]}
+    'setxy':[_('set xy'), _('x'), _('y')],
+    'scale':[_('scale')], 'keyboard':[_('keyboard')],
+    'push':[_('push')], 'pop':[_('pop')], 'kbinput':[_('query keyboard')],
+    'myfunc':[_('python'), _('code'), _('value')], 'nop':[' '],
+    'printheap':[_('show heap')],
+    'clearheap':[_('empty heap')]}
 
 #
 # Legacy names
@@ -178,7 +185,9 @@ PRIMITIVES = {'clean':'clean', 'forward':'forward', 'back':'back', 'arc':'arc',
     'storeinbox':'storeinbox', 'box':'box',
     'leftpos':'leftpos', 'toppos':'toppos', 'rightpos':'rightpos', 
     'bottompos':'bottompos', 'width':'hres', 'height':'vres',
-    'hideblocks':'hideblocks'}
+    'hideblocks':'hideblocks', 'push':'push', 'pop':'pop',
+    'keyboard':'keyboard', 'kbinput':'kbinput', 'myfunc':'myfunc',
+    'nop':'nop', 'printheap':'printheap', 'clearheap':'clearheap'}
 
 #
 # block default values
@@ -190,8 +199,8 @@ DEFAULTS = {'forward':[100], 'back':[100], 'left':[90], 'right':[90],
     'setshade':[50], 'fillscreen':[60,80], 'number':[100],
     'random':[0,100], 'wait':[1], 'repeat':[4], 'setxy':[0,0], 
     'storeinbox':[_('my box'),100], 'box':[_('my box')],
-    'hat':[_('action')], 'stack':[_('action')],
-    'storeinbox1':[100], 'storeinbox2':[100]}
+    'hat':[_('action')], 'stack':[_('action')], 'nop':[100],
+    'storeinbox1':[100], 'storeinbox2':[100], 'myfunc':[_('x'),100]}
 
 
 

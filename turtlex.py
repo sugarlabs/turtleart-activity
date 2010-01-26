@@ -71,7 +71,6 @@ class Turtle:
                               sprite_factory.svg_str_to_pixbuf(svg.turtle()))
         self.type = 'turtle'
         turtle_list.append_to_list(self)
-        print "created turtle: %s" % (str(self.spr))
 
         #
         # TODO: generate orientations

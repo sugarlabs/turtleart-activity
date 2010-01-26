@@ -779,7 +779,6 @@ class TurtleArtWindow():
         # From the sprite at x, y, look for a corresponding block
         blk = self.block_list.spr_to_block(spr)
         if blk is not None:
-            print "button press: found %s at (%d,%d)" % (blk.name, x, y)
             if blk.type == 'block':
                 self.selected_blk = blk
                 self._block_pressed(mask, x, y, blk)
@@ -792,15 +791,12 @@ class TurtleArtWindow():
         # Next, look for a turtle
         tur = self.turtle_list.spr_to_turtle(spr)
         if tur is not None:
-            print "button press: found turtle at (%d,%d)" % (x, y)
             self.selected_turtle = tur
             self._turtle_pressed(x, y)
             return True
 
         # Finally, check for anything else
         if hasattr(spr, 'type'):
-            # TODO: eliminate remaining dependencies on spr.type
-            print "button press on spr type: %s" % (spr.type)
             if spr.type == "canvas":
                 spr.set_layer(CANVAS_LAYER)
                 return True
@@ -882,14 +878,12 @@ class TurtleArtWindow():
             return
 
         blk = self.drag_group[0]
-        # Remove blocks by dragging them onto the category palette
-        # TODO: rethink when palette moves to toolbar -- Trash can??
-        """
-        if self.block_operation=='move' and self.category_spr.hit((x,y)):
-            for b in self.drag_group: b.spr.hide()
+        # Remove blocks by dragging them onto the trash palette
+        if self.block_operation=='move' and self._in_the_trash(x, y):
+            for b in self.drag_group:
+                b.spr.hide()
             self.drag_group = None
             return
-        """
 
         # Pull a stack of new blocks off of the category palette.
         if self.block_operation=='new':
@@ -997,6 +991,14 @@ class TurtleArtWindow():
         top = self._find_top_block(blk)
         run_blocks(self.lc, top, self._just_blocks(), True)
         gobject.idle_add(doevalstep, self.lc)
+
+    """
+    Is x,y over the trash can?
+    """
+    def _in_the_trash(self, x, y):
+        if self.selected_palette == TRASH and self.palette_spr.hit((x,y)):
+            return True
+        return False
 
     """
     Filter out 'proto' blocks
