@@ -35,14 +35,11 @@ except (ImportError, AttributeError):
         from simplejson import load as jload
         from simplejson import dump as jdump
     except:
-        # use pickle on old systems
         _old_Sugar_system = True
-        # will try json.read and .write too
 
 from StringIO import StringIO
 import os.path
 
-# from tasprites import *
 from taturtle import *
 from talogo import stop_logo
 from talogo import get_pixbuf_from_journal
@@ -69,7 +66,7 @@ def new_project(tw):
     tw.save_file_name = None
 
 def load_file(tw, create_new_project=True):
-    fname = get_load_name(tw)
+    fname = _get_load_name(tw)
     if fname==None:
         return
     if fname[-3:]=='.ta':
@@ -91,13 +88,13 @@ def load_files(tw, ta_file, create_new_project=True):
         # Rewind necessary because of failed pickle.load attempt
         f.seek(0)
         text = f.read()
-        data = _json_read(text)
+        data = _json_load(text)
     f.close()
     if create_new_project is True:
         new_project(tw)
     read_data(tw, data)
 
-def _json_read(text):
+def _json_load(text):
     if _old_Sugar_system is True:
         listdata = json.read(text)
     else:
@@ -105,44 +102,31 @@ def _json_read(text):
         listdata = jload(io)
     print "load files: %s" % (listdata)
     # json converts tuples to lists, so we need to convert back,
-    return tuplify(listdata) 
+    return _tuplify(listdata) 
 
-def get_load_name(tw):
+def _get_load_name(tw):
     dialog = gtk.FileChooserDialog("Load...", None,
                                    gtk.FILE_CHOOSER_ACTION_OPEN,
                                    (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                                     gtk.STOCK_OPEN, gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
-    return do_dialog(tw, dialog)
+    return _do_dialog(tw, dialog)
 
 # Unpack serialized data sent across a share.
 def load_string(tw, text):
-    data = _json_read(text)
+    data = _json_load(text)
     new_project(tw)
     read_data(tw, data)
 
-# Unpack sserialized data from the clipboard.
+# Unpack serialized data from the clipboard.
 def clone_stack(tw, text):
-    data = _json_read(text)
+    data = _json_load(text)
     read_data(tw, data)
 
-# Paste stack from the clipboard.
-# TODO: rebase on read data 
-def read_stack(tw,data):
-    clone = []
-    for b in data:
-        spr = load_spr(tw,b); clone.append(spr)
-    for i in range(len(clone)):
-        cons=[]
-        for c in data[i][4]:
-            if c==None: cons.append(None)
-            else: cons.append(clone[c])
-        clone[i].connections = cons
-
-def tuplify(t):
+def _tuplify(t):
     if type(t) is not list:
         return t
-    return tuple(map(tuplify, t))
+    return tuple(map(_tuplify, t))
 
 def read_data(tw, data):
     print "data is %d elements long" % (len(data))
@@ -183,7 +167,8 @@ def read_data(tw, data):
                 c.spr.move((nx, ny))
 
 def load_block(tw, b):
-    # A blook is saved as: (i, (btype, label), x, y, (c0,... cn))
+    # TODO: optionally read blocks without x, y
+    # A block is saved as: (i, (btype, label), x, y, (c0,... cn))
     media = None
     btype, label = b[1], None
     if type(btype) == type((1,2)): 
@@ -195,8 +180,7 @@ def load_block(tw, b):
 
     print labels
     """
-    if btype == 'title':  # for backward compatibility
-        btype = 'string'
+    # TODO: handle media 
     if btype == 'journal' or btype == 'audiooff' or btype == 'descriptionoff':
         media = label
         label = None
@@ -234,7 +218,7 @@ def load_turtle(tw, b):
 # start a new project with a start brick
 def load_start(tw):
     clone_stack(tw,"%s%s%s" % ("[[0,[\"start\",\"", _("start"),
-                               "\"],250,30,[null,null]]]"))
+                               "\"],250,250,[null,null]]]"))
 
 #
 # Everything below is suspect
@@ -242,15 +226,17 @@ def load_start(tw):
 # procced with caution
 #
 def save_file(tw):
-    if tw.save_folder is not None: tw.load_save_folder = tw.save_folder
-    fname = get_save_name(tw)
-    if fname==None: return
-    if fname[-3:]=='.ta': fname=fname[0:-3]
+    if tw.save_folder is not None:
+        tw.load_save_folder = tw.save_folder
+    fname = _get_save_name(tw)
+    if fname is None:
+        return
+    if fname[-3:]=='.ta':
+        fname=fname[0:-3]
     save_data(tw,fname+".ta")
-    save_pict(tw,fname+".png")
     tw.save_file_name = os.path.basename(fname)
 
-def get_save_name(tw):
+def _get_save_name(tw):
     dialog = gtk.FileChooserDialog("Save...", None,
                                    gtk.FILE_CHOOSER_ACTION_SAVE,
                                    (gtk.STOCK_CANCEL,
@@ -260,117 +246,68 @@ def get_save_name(tw):
     dialog.set_default_response(gtk.RESPONSE_OK)
     if tw.save_file_name is not None:
         dialog.set_current_name(tw.save_file_name+'.ta')
-    return do_dialog(tw,dialog)
+    return _do_dialog(tw,dialog)
 
-def save_data(tw,fname):
+def save_data(tw, fname):
     f = file(fname, "w")
-    data = assemble_data_to_save(tw)
-    if _old_Sugar_system is True:
-        # use pickle here to maintain compatibility with TA 10
-        pickle.dump(data,f)
-    else:
-        io = StringIO()
-        jdump(data,io)
-        text = io.getvalue()
-        print "save data: %s" % (text)
-        # text = jencode(data)
-        f.write(text)
+    data = _assemble_data_to_save(tw)
+    f.write(_json_dump(data))
     f.close()
 
-# Used to send data across a shared session
-def save_string(tw,save_turtle=True):
-    data = assemble_data_to_save(tw,save_turtle)
+def _json_dump(data):
     if _old_Sugar_system is True:
-        text = json.write(data)
+        return json.write(data)
     else:
         io = StringIO()
         jdump(data,io)
-        text = io.getvalue()
-    return text
+        return io.getvalue()
 
-def assemble_data_to_save(tw,save_turtle=True):
+# Used to send data across a shared session
+def save_string(tw, save_turtle=True):
+    data = _assemble_data_to_save(tw, save_turtle)
+    return _json_dump(data)
+
+def _assemble_data_to_save(tw, save_turtle=True):
     data = []
-    for i, b in enumerate(tw.block_list.list):
+    for i, b in enumerate(tw._just_blocks()):
          b.id = i
-    for b in tw.block_list.list:
+    for b in tw._just_blocks():
+        print "saving: %d %s %s" % (b.id, b.name, b.spr.labels[0])
         name = (b.name, b.spr.labels[0])
+        """
         if tw.defdict.has_key(name) or name in nolabel:
             if hasattr(b,"ds_id") and b.ds_id != None:
                 name=(name, str(b.ds_id))
             else:
                 name=(name, b.spr.labels[0])
-        if hasattr(b,'connections'):
-            connections = [get_id(tw.block_list, x) for x in b.connections]
+        """
+        if hasattr(b, 'connections'):
+            connections = [get_id(c) for c in b.connections]
         else:
             connections = None
+        print connections
         (sx, sy) = b.spr.get_xy()
-        data.append((b.id, name, sx-tw.turtle.cx,
-                     sy-tw.turtle.cy, connections))
+        data.append((b.id, name, sx-tw.turtle.cx, sy-tw.turtle.cy, connections))
     if save_turtle is True:
         data.append((-1,'turtle',
                     tw.turtle.xcor,tw.turtle.ycor,tw.turtle.heading,
                     tw.turtle.color,tw.turtle.shade,tw.turtle.pensize))
     return data
 
-# serialize a stack to save to the clipboard
+# Serialize a stack to save to the clipboard
+# TODO: check to make sure just the stack and not the project is saved
 def serialize_stack(tw):
-    data = assemble_stack_to_clone(tw)
+    data = _assemble_data_to_save(tw, False)
     if data == []:
         return None
-    if _old_Sugar_system is True:
-        text = json.write(data)
-    else:
-        io = StringIO()
-        jdump(data,io)
-        text = io.getvalue()
-    return text
+    return _json_dump(data)
 
-# find the stack under the cursor and serialize it
-# TODO: rebase on assemble data to save
-# This code is broken
-def assemble_stack_to_clone(tw):
-    if tw.spr is None or tw.spr.type is not "block":
-        (x,y) = tw.window.get_pointer()
-        spr = tw.sprite_list.find_sprite((x,y))
-        if spr is not None:
-            print "found block of type " + spr.type
-    else:
-        print "already selected block of type " + tw.spr.type
-        spr = tw.spr
-    data = []
-    blk = tw.block_list.spr_to_block(spr)
-    if blk is not None:
-        bs = findgroup(find_top_block(blk, tw.block_list), tw.block_list)
-        for i in range(len(bs)): bs[i].id=i
-        for b in bs:
-            name = b.proto.name
-            if tw.defdict.has_key(name) or name in nolabel:
-                if hasattr(b, "ds_id") and b.ds_id is not None:
-                    name=(name,str(b.ds_id))
-                else:
-                    name=(name,b.labels[0])
-            if hasattr(b,'connections') and b.connections is not None:
-                connections = [get_id(x) for x in b.connections]
-            else:
-                connections = None
-            (sx, sy) = b.get_xy()
-            data.append((b.id,name,sx-tw.turtle.cx+20,
-                         sy-tw.turtle.cy+20,connections))
-    return data
+def get_id(c):
+    if c is None:
+        return None
+    return c.id
 
-def save_pict(tw,fname):
-    tc = tw.turtle.canvas
-    pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, tc.width,
-                            tc.height)
-    pixbuf.get_from_drawable(tc.image, tc.image.get_colormap(), 0, 0, 0, 0,
-                             tc.width, tc.height)
-    pixbuf.save(fname, 'png')
-
-def get_id(blocks, x):
-    if x==None: return None
-    return blocks.spr_to_block(x).id
-
-def do_dialog(tw,dialog):
+def _do_dialog(tw,dialog):
     result = None
     filter = gtk.FileFilter()
     filter.add_pattern("*.ta")
@@ -383,17 +320,4 @@ def do_dialog(tw,dialog):
         tw.load_save_folder = dialog.get_current_folder()
     dialog.destroy()
     return result
-
-def findgroup(blk, block_list):
-    group=[blk.spr]
-    for spr2 in blk.connections[1:]:
-        if spr2 is not None:
-            group.extend(findgroup(block_list.spr_to_block(spr2), block_list))
-    return group
-
-def find_top_block(blk, block_list):
-    while blk.connections[0]!=None:
-        blk = block_list.spr_to_block(blk.connections[0])
-    return blk
-
 
