@@ -997,11 +997,11 @@ def write(lc, string, fsize):
     draw_text(lc.tw.turtle,string,x,y-15,int(fsize),lc.tw.turtle.width)
 
 def hideblocks(lc):
-    from tawindow import hideshow_button
     lc.tw.hide = False # force hide
-    hideshow_button(lc.tw)
-    for i in lc.tw.selbuttons:
-        hide(i)
+    lc.tw.hideshow_button()
+    # TODO: how do we do this with the new toolbar?
+    #for i in lc.tw.selbuttons:
+    #    hide(i)
     if hasattr(lc.tw,"activity"):
         lc.tw.activity.do_hide()
 
