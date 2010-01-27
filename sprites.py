@@ -21,6 +21,57 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
+"""
+
+sprites.py is a simple sprites library for managing graphics objects,
+'sprites', on a canvas. It manages multiple sprites with methods such
+as move, hide, set_layer, etc.
+
+There are two classes:
+
+class Sprites maintains a collection of sprites.
+class Sprite manages individual sprites within the collection.
+
+Example usage:
+        # Import the classes into your program.
+        from sprites import Sprites Sprite
+
+        # Create a new sprite collection for a gtk Drawing Area.
+        my_drawing_area = gtk.DrawingArea()
+        self.sprite_list = Sprites(my_drawing_area)
+
+        # Create a "pixbuf" (in this example, from SVG).
+        my_pixbuf = svg_str_to_pixbuf("<svg>...some svg code...</svg>")
+
+        # Create a sprite at position x,y.
+        my_sprite = sprites.Sprite(self.sprite_list, x1, y1, my_pixbuf)
+
+        # Move the sprite to a new position.
+        my_sprite.move((x1+dx, y1+dy))
+
+        # Create another "pixbuf".
+        your_pixbuf = svg_str_to_pixbuf("<svg>...some svg code...</svg>")
+
+        # Create a sprite at position x2,y2.
+        your_sprite = sprites.Sprite(self.sprite_list, x2, y2, my_pixbuf)
+
+        # Assign the sprites to layers.
+        # In this example, your_sprite will be on top of my_sprite.
+        my_sprite.set_layer(100)
+        your_sprite.set_layer(200)
+
+        # Now put my_sprite on top of your_sprite.
+        my_sprite.set_layer(300)
+
+# method for converting SVG to a gtk pixbuf
+def svg_str_to_pixbuf(svg_string):
+    pl = gtk.gdk.PixbufLoader('svg')
+    pl.write(svg_string)
+    pl.close()
+    pixbuf = pl.get_pixbuf()
+    return pixbuf
+"""
+
 import pygtk
 pygtk.require('2.0')
 import gtk
@@ -30,6 +81,7 @@ import pango
 #
 # A class for the list of sprites and everything they share in common
 #
+
 class Sprites:
     def __init__(self, canvas, area=None, gc=None):
         self.canvas = canvas
