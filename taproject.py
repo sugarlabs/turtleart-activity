@@ -40,7 +40,7 @@ except (ImportError, AttributeError):
 from StringIO import StringIO
 import os.path
 
-from taturtle import *
+from tacanvas import *
 from talogo import stop_logo
 from talogo import get_pixbuf_from_journal
 try:

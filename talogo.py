@@ -38,7 +38,7 @@ class noKeyError(UserDict):
 
 class taLogo: pass
 
-from taturtle import *
+from tacanvas import *
 from tagplay import *
 from tajail import *
 from constants import *

@@ -42,7 +42,7 @@ from math import atan2, pi
 DEGTOR = 2*pi/360
 from constants import *
 from talogo import *
-from taturtle import *
+from tacanvas import *
 from taproject import *
 import sprite_factory
 try:
@@ -56,7 +56,7 @@ from gettext import gettext as _
 
 import sprites
 import block
-import turtlex
+import taturtle
 
 """
 TurtleArt Window class abstraction 
@@ -143,7 +143,7 @@ class TurtleArtWindow():
         self.drag_group = None
         self.block_list = block.Blocks()
         self.sprite_list = sprites.Sprites(self.window, self.area, self.gc)
-        self.turtle_list = turtlex.Turtles()
+        self.turtle_list = taturtle.Turtles()
         self.selected_turtle = None
         self.turtle = tNew(self,self.width,self.height)
         self.lc = lcNew(self)
@@ -290,12 +290,15 @@ class TurtleArtWindow():
                 self._load_sprite_from_file("%s/%s.svg" % (self.path, name)))
             self.media_shapes[i].set_layer(HIDE_LAYER)
             self.media_shapes[i].type = 'media'
+
         for i, name in enumerate(STATUS_SHAPES):
-            self.status_shapes[i] = sprites.Sprite(self.sprite_list,
-                self.height-75, 0,
-                self._load_sprite_from_file("%s/%s.svg" % (self.path, name)))
-            self.status_shapes[i].set_layer(HIDE_LAYER)
-            self.status_shapes[i].type = 'status'
+            self.status_shapes[name] =\
+                self._load_sprite_from_file("%s/%s.svg" % (self.path, name))
+        self.status_spr = sprites.Sprite(self.sprite_list, self.height-75, 0,
+                                         self.status_shapes['status'])
+        self.status_spr.set_layer(HIDE_LAYER)
+        self.status_spr.type = 'status'
+
         for i in enumerate(OVERLAY_SHAPES):
             self.overlay_shapes[i] = sprites.Sprite(self.sprite_list, 0, 0,
                 self._load_sprite_from_file("%s/%s.svg" % (self.path, name)))

@@ -81,11 +81,11 @@ STANDARD_STROKE_WIDTH = 1.0
 #
 # block style definitions
 #
-BASIC_STYLE_HEAD = ['start', 'hat1', 'hat2']
+BASIC_STYLE_HEAD = ['start', 'hat1', 'hat2', 'restore']
 BASIC_STYLE_HEAD_1ARG = ['hat']
 BASIC_STYLE_TAIL = ['stopstack']
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
-    'hideblocks', 'clearheap', 'printheap', 'kbinput', 'restore']
+    'hideblocks', 'clearheap', 'printheap', 'kbinput']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'setheading', 'show',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1',
@@ -163,7 +163,7 @@ OLD_NAMES = {'product':'product2',
 #
 
 PRIMITIVES = {'clean':'clean', 'forward':'forward', 'back':'back', 'arc':'arc',
-    'left':'left', 'right':'right', 'set heading':'seth', 'scale':'scale',
+    'left':'left', 'right':'right', 'setheading':'seth', 'scale':'scale',
     'show':'show', 'set scale':'setscale', 'xcor':'xcor', 'setxy':'setxy',
     'ycor':'ycor', 'heading':'heading', 'penup':'penup',
     'pendown':'pendown', 'setpensize':'setpensize',
