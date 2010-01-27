@@ -85,6 +85,9 @@ class Turtle:
         self.shapes = []
         self.type = 'turtle'
         self.heading = 0
+        self.color = 0
+        self.shade = 50
+        self.pen_size = 5
         _svg = SVG()
         _svg.set_scale(scale)
         self.spr = sprites.Sprite(turtle_list.sprite_list, self.x, self.y,
@@ -94,7 +97,7 @@ class Turtle:
             _svg.set_orientation(i*10)
             self.shapes.append(svg_str_to_pixbuf(_svg.turtle(colors)))
 
-    def rotate(self, heading):
+    def set_heading(self, heading):
         self.heading = heading        
         i = (int(self.heading+5)%360)/10
         try:
@@ -102,6 +105,15 @@ class Turtle:
         except IndexError:
             self.spr.set_shape(self.shapes[0])
             print "Turtle shape IndexError %f -> %d" % (heading, i)
+
+    def set_color(self, color):
+        self.color = color
+
+    def set_shade(self, shade):
+        self.shade = shade
+
+    def set_pen_size(self, pen_size):
+        self.pen_size = pen_size
 
     def hide(self):
         self.spr.set_layer(HIDE_LAYER)
@@ -118,3 +130,12 @@ class Turtle:
 
     def get_heading(self):
         return(self.heading)
+
+    def get_color(self):
+        return(self.color)
+
+    def get_shade(self):
+        return(self.shade)
+
+    def get_pen_size(self):
+        return(self.pen_size)

@@ -63,16 +63,8 @@ class logoerror(Exception):
         return repr(self.value)
 
 def run_blocks(lc, blk, blocks, run_flag):
-    print "run blocks: %s" % (blk.name)
-    for b in blocks:
-        if b is None:
-            print "    None"
-        else:
-            print "    %s" % b.name
-    # user-defined stacks
     for x in lc.stacks.keys():
         lc.stacks[x] = None
-    # two built-in stacks
     lc.stacks['stack1'] = None
     lc.stacks['stack2'] = None
     for b in blocks:
@@ -177,7 +169,6 @@ def setup_cmd(lc, str):
 
 def start_eval(lc, list):
     icall(lc, evline, list); yield True
-    # turn off stop icon when execution is finished
     if hasattr(lc.tw,"activity"):
         lc.tw.activity.stop_button.set_icon("stopitoff")
     yield False
@@ -981,7 +972,6 @@ def show(lc, string, center=False):
             y -= lc.tw.textsize
         lc.tw.canvas.draw_text(string,x,y,lc.tw.textsize,lc.tw.canvas.width-x)
 
-# audio only
 def play_sound(lc, audio):
     play_audio(lc, audio)
 

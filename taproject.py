@@ -61,8 +61,7 @@ def new_project(tw):
     stop_logo(tw)
     for b in tw._just_blocks():
         b.spr.hide()
-    tw.turtle.canvas.set_layer(CANVAS_LAYER)
-    clearscreen(tw.turtle)
+    tw.canvas.clearscreen()
     tw.save_file_name = None
 
 def load_file(tw, create_new_project=True):
@@ -186,8 +185,8 @@ def load_block(tw, b):
         label = None
     """
     blk = block.Block(tw.block_list, tw.sprite_list, 
-                      btype, b[2]+tw.turtle.cx,
-                      b[3]+tw.turtle.cy, 'block', labels)
+                      btype, b[2]+tw.canvas.cx,
+                      b[3]+tw.canvas.cy, 'block', labels)
     """
     if media is not None and media not in nolabel:
         try:
@@ -209,11 +208,11 @@ def load_block(tw, b):
 
 def load_turtle(tw, b):
     id, name, xcor, ycor, heading, color, shade, pensize = b
-    setxy(tw.turtle, xcor, ycor)
-    seth(tw.turtle, heading)
-    setcolor(tw.turtle, color)
-    setshade(tw.turtle, shade)
-    setpensize(tw.turtle, pensize)
+    tw.canvas.setxy(xcor, ycor)
+    tw.canvas.seth(heading)
+    tw.canvas.setcolor(color)
+    tw.canvas.setshade(shade)
+    tw.canvas.setpensize(pensize)
 
 # start a new project with a start brick
 def load_start(tw):
@@ -287,11 +286,11 @@ def _assemble_data_to_save(tw, save_turtle=True):
             connections = None
         print connections
         (sx, sy) = b.spr.get_xy()
-        data.append((b.id, name, sx-tw.turtle.cx, sy-tw.turtle.cy, connections))
+        data.append((b.id, name, sx-tw.canvas.cx, sy-tw.canvas.cy, connections))
     if save_turtle is True:
         data.append((-1,'turtle',
-                    tw.turtle.xcor,tw.turtle.ycor,tw.turtle.heading,
-                    tw.turtle.color,tw.turtle.shade,tw.turtle.pensize))
+                    tw.canvas.xcor,tw.canvas.ycor,tw.canvas.heading,
+                    tw.canvas.color,tw.canvas.shade,tw.canvas.pensize))
     return data
 
 # Serialize a stack to save to the clipboard
