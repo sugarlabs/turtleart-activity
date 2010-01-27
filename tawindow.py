@@ -185,21 +185,22 @@ class TurtleArtWindow():
                os.path.exists('/sys/power/olpc-pm')
 
     """
-    eraser_button: hide status block
+    Eraser_button: hide status block
     """
     def eraser_button(self):
-        self.status_spr.set_layer(HIDE_LAYER)
+        if self.status_spr is not None:
+            self.status_spr.set_layer(HIDE_LAYER)
         clear(self.lc)
         display_coordinates(self)
 
     """
-    stop button
+    Stop button
     """
     def stop_button(self):
         stop_logo(self)
 
     """
-    change the icon for user-defined blocks after Python code is loaded
+    Change the icon for user-defined blocks after Python code is loaded
     """
     def set_userdefined(self):
         for blk in self._just_blocks():
@@ -333,6 +334,7 @@ class TurtleArtWindow():
                 self.selectors[i].set_layer(TAB_LAYER)
                 w, h = self.selectors[i].get_dimensions()
                 x += int(w+5) 
+        # TODO: We should have one per palette that is only just wide enough
         if self.palette_spr is None:
             svg = sprite_factory.SVG()
             self.palette_spr = sprites.Sprite(self.sprite_list, 0, 0,
@@ -342,7 +344,7 @@ class TurtleArtWindow():
         self.palette_spr.set_layer(CATEGORY_LAYER)
         if len(self.palettes) == 0:
             for i in range(len(PALETTES)):
-                self.palettes.append([])
+                self.palettes.append([]);
 
         if init_only is True:
             return
@@ -680,7 +682,7 @@ class TurtleArtWindow():
         mov_dict = {'KP_Up':[0,10],'j':[0,10],'Up':[0,10],
                     'KP_Down':[0,-10],'k':[0,-10],'Down':[0,-10],
                     'KP_Left':[-10,0],'h':[-10,0],'Left':[-10,0],
-                    'KP_Right':[-10,0],'l':[-10,0],'Right':[10,0],
+                    'KP_Right':[10,0],'l':[10,0],'Right':[10,0],
                     'KP_Page_Down':[0,0], 'KP_Page_Up':[0,0], 'KP_End':[0,0],
                     'KP_Home':[-1,-1],'Return':[-1,-1], 'Esc':[0,0]}
         if not mov_dict.has_key(keyname):
@@ -840,6 +842,7 @@ class TurtleArtWindow():
 
         blk = self.drag_group[0]
         # Remove blocks by dragging them onto the trash palette
+        # TODO: Perhaps display the top block of the stack???
         if self.block_operation=='move' and self._in_the_trash(x, y):
             for b in self.drag_group:
                 b.type = 'trash'
