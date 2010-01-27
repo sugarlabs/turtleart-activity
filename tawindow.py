@@ -680,7 +680,7 @@ class TurtleArtWindow():
         mov_dict = {'KP_Up':[0,10],'j':[0,10],'Up':[0,10],
                     'KP_Down':[0,-10],'k':[0,-10],'Down':[0,-10],
                     'KP_Left':[-10,0],'h':[-10,0],'Left':[-10,0],
-                    'KP_Right':[-10,0],'l':[-10,0],'Right':[-10,0],
+                    'KP_Right':[-10,0],'l':[-10,0],'Right':[10,0],
                     'KP_Page_Down':[0,0], 'KP_Page_Up':[0,0], 'KP_End':[0,0],
                     'KP_Home':[-1,-1],'Return':[-1,-1], 'Esc':[0,0]}
         if not mov_dict.has_key(keyname):
