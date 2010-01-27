@@ -132,7 +132,7 @@ class TurtleArtWindow():
         self.overlay_shapes = {}
         self.status_spr = None
         self.status_shapes = {}
-        self.palette_spr = None
+        self.palette_sprs = []
         self.palettes = []
         self.selected_palette = None
         self.selectors = []
@@ -316,11 +316,11 @@ class TurtleArtWindow():
     def hide_toolbar_palette(self, hide_palette_spr=True):
         for i in range(len(PALETTES[self.selected_palette])):        
             self.palettes[self.selected_palette][i].spr.set_layer(HIDE_LAYER)
-        if hide_palette_spr is True:
-            self.palette_spr.set_layer(HIDE_LAYER)
-            self.selected_palette = None
         for i in range(len(PALETTES)):
             self.selectors[i].set_layer(HIDE_LAYER)
+            if self.palette_sprs[i] is not None:
+                self.palette_sprs[i].set_layer(HIDE_LAYER)
+        self.selected_palette = None
 
     def show_toolbar_palette(self, n, init_only=False):
         if self.selectors == []:
@@ -338,14 +338,8 @@ class TurtleArtWindow():
                 self.selectors[i].set_layer(TAB_LAYER)
                 w, h = self.selectors[i].get_dimensions()
                 x += int(w+5) 
-        # TODO: We should have one per palette that is only just wide enough
-        if self.palette_spr is None:
-            svg = sprite_factory.SVG()
-            self.palette_spr = sprites.Sprite(self.sprite_list, 0, 0,
-                sprite_factory.svg_str_to_pixbuf(svg.palette(self.width,
-                                                             PALETTE_HEIGHT)))
-            self.palette_spr.type = 'category'
-        self.palette_spr.set_layer(CATEGORY_LAYER)
+                self.palette_sprs.append(None)
+
         if len(self.palettes) == 0:
             for i in range(len(PALETTES)):
                 self.palettes.append([]);
@@ -355,6 +349,9 @@ class TurtleArtWindow():
 
         if self.selected_palette is not None:
             self.hide_toolbar_palette(False)
+
+        if self.palette_sprs[n] is not None:
+            self.palette_sprs[n].set_layer(CATEGORY_LAYER)
 
         for i in range(len(PALETTES)):
             self.selectors[i].set_layer(TAB_LAYER)
@@ -382,6 +379,16 @@ class TurtleArtWindow():
                 y += int(h+5)
                 if w > max_width:
                     max_width = w
+
+            svg = sprite_factory.SVG()
+            w = x+max_width+5
+            if w < len(PALETTES)*(SELECTOR_WIDTH+5) + 5:
+                w = len(PALETTES)*(SELECTOR_WIDTH+5) + 5
+            self.palette_sprs[n] = sprites.Sprite(self.sprite_list, 0, 0,
+                sprite_factory.svg_str_to_pixbuf(svg.palette(w, self.width,
+                                                             PALETTE_HEIGHT)))
+            self.palette_sprs[n].type = 'category'
+            self.palette_sprs[n].set_layer(CATEGORY_LAYER)
         else:
             for blk in self.palettes[n]:
                 blk.spr.set_layer(CATEGORY_LAYER)
