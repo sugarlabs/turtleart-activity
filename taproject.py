@@ -99,7 +99,6 @@ def _json_load(text):
     else:
         io = StringIO(text)
         listdata = jload(io)
-    print "load files: %s" % (listdata)
     # json converts tuples to lists, so we need to convert back,
     return _tuplify(listdata) 
 
@@ -128,30 +127,23 @@ def _tuplify(t):
     return tuple(map(_tuplify, t))
 
 def read_data(tw, data):
-    print "data is %d elements long" % (len(data))
     # First we create the blocks
     blocks = []
     t = 0
     for b in data:
-        print b
         if b[1] == 'turtle':
             load_turtle(tw, b)
-            print "we founf a turtle"
             t = 1
         else:
             blk = load_block(tw, b); blocks.append(blk)
-    print "we have %d blocks and %d turtles" % (len(blocks), t)
     # Then we make the connections
     for i in range(len(blocks)):
-        print "connections for %s are:" % (blocks[i].name)
         cons=[]
         for c in data[i][4]:
             if c is None:
                 cons.append(None)
-                print "   None"
             else:
                 cons.append(blocks[c])
-                print "   %s" % (blocks[c].name)
         blocks[i].connections = cons
     # Then we need to adjust the x,y positions, as block sizes may have changed
     for b in blocks:
@@ -177,7 +169,6 @@ def load_block(tw, b):
     else:
         labels = [label]
 
-    print labels
     """
     # TODO: handle media 
     if btype == 'journal' or btype == 'audiooff' or btype == 'descriptionoff':
@@ -271,7 +262,6 @@ def _assemble_data_to_save(tw, save_turtle=True):
     for i, b in enumerate(tw._just_blocks()):
          b.id = i
     for b in tw._just_blocks():
-        print "saving: %d %s %s" % (b.id, b.name, b.spr.labels[0])
         name = (b.name, b.spr.labels[0])
         """
         if tw.defdict.has_key(name) or name in nolabel:
@@ -284,7 +274,6 @@ def _assemble_data_to_save(tw, save_turtle=True):
             connections = [get_id(c) for c in b.connections]
         else:
             connections = None
-        print connections
         (sx, sy) = b.spr.get_xy()
         data.append((b.id, name, sx-tw.canvas.cx, sy-tw.canvas.cy, connections))
     if save_turtle is True:

@@ -315,9 +315,11 @@ class TurtleArtWindow():
     """
     Show/hide turtle palettes
     """
-    def hide_toolbar_palette(self, hide_palette_spr=True):
-        for i in range(len(PALETTES[self.selected_palette])):        
-            self.palettes[self.selected_palette][i].spr.set_layer(HIDE_LAYER)
+    def hide_toolbar_palette(self):
+        if self.selected_palette is not None:
+            for i in range(len(PALETTES[self.selected_palette])):        
+                self.palettes[self.selected_palette][i].spr.set_layer(
+                                                                     HIDE_LAYER)
         for i in range(len(PALETTES)):
             self.selectors[i].set_layer(HIDE_LAYER)
             if self.palette_sprs[i] is not None:
@@ -350,7 +352,7 @@ class TurtleArtWindow():
             return
 
         if self.selected_palette is not None:
-            self.hide_toolbar_palette(False)
+            self.hide_toolbar_palette()
 
         if self.palette_sprs[n] is not None:
             self.palette_sprs[n].set_layer(CATEGORY_LAYER)
