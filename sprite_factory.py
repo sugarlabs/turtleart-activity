@@ -243,7 +243,6 @@ class SVG:
         svg += self._circle(1.25,27.5,8)
         svg += self._footer()
         self._width, self._height = 60, 60
-        # TODO: Add orientation
         return self._header() + svg
 
     def palette(self, width, height):
@@ -395,11 +394,19 @@ class SVG:
             return ""
 
     def _transform(self):
-        return "%s%.1f%s%.1f%s" % (
-        "<g\n       transform=\"scale(",self._scale,",",self._scale,")\">\n")
+        if self._orientation != 0:
+            orientation = "<g\ntransform = \"rotate(%.1f %.1f %.1f)\">\n" % (
+                self._orientation, self._width/2.0, self._height/2.0)
+        else:
+            orientation = ""
+        return "<g\ntransform=\"scale(%.1f, %.1f)\">\n%s" % (
+                self._scale, self._scale, orientation )
 
     def _footer(self):
-        return "   </g>\n</svg>\n"
+        if self._orientation != 0:
+            return "   </g>\n</g>\n</svg>\n"
+        else:
+            return "   </g>\n</svg>\n"
 
     def _style(self):
         if self._gradiant is True:
@@ -620,8 +627,9 @@ def close_file(f):
 
 def generator(datapath):
     svg0 = SVG()
-    f = open_file(datapath, "palette-test.svg")
-    svg_str = svg0.palette(600,75)
+    svg0.set_orientation(180)
+    f = open_file(datapath, "turtle180.svg")
+    svg_str = svg0.turtle()
     f.write(svg_str)
     close_file(f)
 
@@ -638,7 +646,6 @@ def generator(datapath):
     svg_str = svg0.basic_flow()
     f.write(svg_str)
     close_file(f)
-    """
 
     svg1 = SVG()
     f = open_file(datapath, "blob-test.svg")
@@ -651,7 +658,6 @@ def generator(datapath):
     f.write(svg_str)
     close_file(f)
 
-    """
     svg2 = SVG()
     f = open_file(datapath, "box-test.svg")
     svg2.set_scale(1)
