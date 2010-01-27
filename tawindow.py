@@ -285,25 +285,26 @@ class TurtleArtWindow():
     """
     def _setup_misc(self):
         # media blocks get positioned into other blocks
-        for i, name in enumerate(MEDIA_SHAPES):
-            self.media_shapes[i] = sprites.Sprite(self.sprite_list, 0, 0,
+        for name in MEDIA_SHAPES:
+            self.media_shapes[name] = sprites.Sprite(self.sprite_list, 0, 0,
                 self._load_sprite_from_file("%s/%s.svg" % (self.path, name)))
-            self.media_shapes[i].set_layer(HIDE_LAYER)
-            self.media_shapes[i].type = 'media'
+            self.media_shapes[name].set_layer(HIDE_LAYER)
+            self.media_shapes[name].type = 'media'
 
         for i, name in enumerate(STATUS_SHAPES):
-            self.status_shapes[name] =\
-                self._load_sprite_from_file("%s/%s.svg" % (self.path, name))
+            self.status_shapes[name] = self._load_sprite_from_file(
+                                               "%s/%s.svg" % (self.path, name))
         self.status_spr = sprites.Sprite(self.sprite_list, self.height-75, 0,
                                          self.status_shapes['status'])
         self.status_spr.set_layer(HIDE_LAYER)
         self.status_spr.type = 'status'
 
-        for i in enumerate(OVERLAY_SHAPES):
-            self.overlay_shapes[i] = sprites.Sprite(self.sprite_list, 0, 0,
+        for name in OVERLAY_SHAPES:
+            self.overlay_shapes[name] = sprites.Sprite(self.sprite_list,
+                int(self.width/2-600), int(self.height/2-450),
                 self._load_sprite_from_file("%s/%s.svg" % (self.path, name)))
-            self.overlay_shapes[i].set_layer(HIDE_LAYER)
-            self.overlay_shapes[i].type = 'overlay'
+            self.overlay_shapes[name].set_layer(HIDE_LAYER)
+            self.overlay_shapes[name].type = 'overlay'
 
     def _load_sprite_from_file(self, name):
         svg = sprite_factory.SVG()

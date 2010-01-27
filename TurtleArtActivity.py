@@ -418,18 +418,18 @@ class TurtleArtActivity(activity.Activity):
     """
     def _do_cartesian_cb(self, button):
         if self.tw.cartesian is True:
-            self.tw.overlay_shapes[0].hide()
+            self.tw.overlay_shapes['Cartesian'].hide()
             self.tw.cartesian = False
         else:
-            self.tw.overlay_shapes[0].set_layer(OVERLAY_LAYER)
+            self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
             self.tw.cartesian = True
 
     def _do_polar_cb(self, button):
         if self.tw.polar is True:
-            self.tw.overlay_shapes[1].hide()
+            self.tw.overlay_shapes['polar'].hide()
             self.tw.polar = False
         else:
-            self.tw.overlay_shapes[1].set_layer(OVERLAY_LAYER)
+            self.tw.overlay_shapes['polar'].set_layer(OVERLAY_LAYER)
             self.tw.polar = True
 
     """

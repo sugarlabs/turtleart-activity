@@ -63,8 +63,9 @@ def tNew(tw,w,h):
     (t.cx,t.cy) = t.canvas.get_xy()
     t.canvas.type = 'canvas'
     t.canvas.set_layer(CANVAS_LAYER)
-    t.shapelist = []
-    t.t = taturtle.Turtle(tw.turtle_list, tw.sprite_list, ["#800000", "#A00000"])
+    # t.shapelist = []
+    t.t = taturtle.Turtle(tw.turtle_list, tw.sprite_list,
+                          ["#800000", "#A00000", "#D00000", "#800000"])
     t.spr = t.t.spr
     t.spr.type = 'turtle'
     t.spr.set_layer(TURTLE_LAYER)

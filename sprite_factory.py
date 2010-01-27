@@ -210,9 +210,9 @@ class SVG:
         return self._header() + svg
 
     def turtle(self, colors):
-        self._fill, self._stroke = "#D0D000", "none"
+        self._fill, self._stroke = colors[2], "none"
         svg = self._rect(21, 21, 19.5, 18)
-        self._fill = "#808000"
+        self._fill = colors[3]
         svg += self._rect(3, 3, 30, 24)
         svg += self._rect(3, 3, 24, 24)
         svg += self._rect(3, 3, 30, 30)

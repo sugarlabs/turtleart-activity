@@ -62,7 +62,8 @@ class Turtles:
 class Turtle:
     # The turtle is not a block, just a sprite with an orientation
     def __init__(self, turtle_list, sprite_list,
-                       colors=["#008000", "#00A000"], scale=1.0):
+                       colors=["#008000", "#00A000", "#D0D000", "#808000"],
+                       scale=1.0):
         self.shapes = []
         self.type = 'turtle'
         _svg = SVG()
