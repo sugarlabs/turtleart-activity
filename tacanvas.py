@@ -21,14 +21,22 @@
 
 import gtk
 from math import sin,cos,pi
-class taTurtle: pass
-
 from tasetup import load_image
 import sprites
 import taturtle
 import pango
 
 from constants import *
+
+def wrap100(n):
+    n = int(n)
+    n %= 200
+    if n>99: n=199-n
+    return n
+
+def calc_shade(c,s):
+    if s<0: return int(c*(1+s*.8))
+    return int(c+(65536-c)*s*.9)
 
 colors = {}
 DEGTOR = 2*pi/360
@@ -55,262 +63,266 @@ color_table = (
     0xFF00FF,0xFF00E6,0xFF00CC,0xFF00B3,0xFF0099,
     0xFF0080,0xFF0066,0xFF004D,0xFF0033,0xFF001A)
 
-def tNew(tw,w,h):
-    t = taTurtle()
-    t.tw, t.width, t.height = tw, w, h
-    t.canvas = sprites.Sprite(tw.sprite_list, 0, 0, 
-                              gtk.gdk.Pixmap(tw.area,w,h,-1))
-    (t.cx,t.cy) = t.canvas.get_xy()
-    t.canvas.type = 'canvas'
-    t.canvas.set_layer(CANVAS_LAYER)
-    # t.shapelist = []
-    t.t = taturtle.Turtle(tw.turtle_list, tw.sprite_list,
-                          ["#800000", "#A00000", "#D00000", "#800000"])
-    t.spr = t.t.spr
-    t.spr.type = 'turtle'
-    t.spr.set_layer(TURTLE_LAYER)
-    t.gc = t.canvas.image.new_gc()
-    t.shade = 0
-    clearscreen(t)
-    return t
+#
+# A class for the Turtle graphics canvas
+#
+class TurtleGraphics:
+    def __init__(self, tw, width, height):
+        self.tw = tw
+        self.width = width
+        self.height = height
+        self.canvas = sprites.Sprite(tw.sprite_list, 0, 0, 
+            gtk.gdk.Pixmap(self.tw.area, self.width, self.height, -1))
+        (self.cx, self.cy) = self.canvas.get_xy()
+        self.canvas.type = 'canvas'
+        self.canvas.set_layer(CANVAS_LAYER)
+        self.gc = self.canvas.image.new_gc()
+        self.tw.turtle.show()
+        self.shade = 0
+        self.clearscreen()
 
-def clearscreen(t):
-    t.xcor, t.ycor, t.heading = 0,0,0
-    rect = gtk.gdk.Rectangle(0,0,t.width,t.height)
-    t.gc.set_foreground(t.tw.bgcolor)
-    t.canvas.image.draw_rectangle(t.gc, True, *rect)
-    invalt(t,0,0,t.width,t.height)
-    setpensize(t,5)
-    setcolor(t,0)
-    settextcolor(t,70)
-    settextsize(t,32)
-    setshade(t,50)
-    t.pendown = True
-    move_turtle(t)
-    turn_turtle(t)
-    return None
+    def clearscreen(self):
+        rect = gtk.gdk.Rectangle(0, 0, self.width, self.height)
+        self.gc.set_foreground(self.tw.bgcolor)
+        self.canvas.image.draw_rectangle(self.gc, True, *rect)
+        self.invalt(0, 0, self.width, self.height)
+        self.setpensize(5)
+        self.setcolor(0)
+        self.settextcolor(70)
+        self.settextsize(32)
+        self.setshade(50)
+        self.pendown = True
+        for t in range(self.tw.turtle_list.turtle_count()):
+            self.set_turtle(t)
+            self.xcor, self.ycor, self.heading = 0, 0, 0
+            self.move_turtle()
+            self.turn_turtle()
 
-def forward(t, n):
-    n *= t.tw.coord_scale
-    t.gc.set_foreground(t.tw.fgcolor)
-    oldx, oldy = t.xcor, t.ycor
-    try:
-        t.xcor += n*sin(t.heading*DEGTOR)
-        t.ycor += n*cos(t.heading*DEGTOR)
-    except:
-        pass
-    if t.pendown:
-        draw_line(t,oldx,oldy,t.xcor,t.ycor)
-    move_turtle(t)
-    return None
+    def forward(self, n):
+        n *= self.tw.coord_scale
+        self.gc.set_foreground(self.tw.fgcolor)
+        oldx, oldy = self.xcor, self.ycor
+        try:
+            self.xcor += n*sin(self.heading*DEGTOR)
+            self.ycor += n*cos(self.heading*DEGTOR)
+        except:
+            pass
+        if self.pendown:
+            self.draw_line(oldx, oldy, self.xcor, self.ycor)
+        self.move_turtle()
 
-def seth(t,n):
-    try:
-        t.heading=n
-    except:
-        pass
-    t.heading%=360
-    turn_turtle(t)
-    return None
+    def seth(self, n):
+        try:
+             self.heading = n
+        except:
+            pass
+        self.heading%=360
+        self.turn_turtle()
 
-def right(t,n):
-    try:
-        t.heading+=n
-    except:
-        pass
-    t.heading%=360
-    turn_turtle(t)
-    return None
+    def right(self, n):
+        try:
+            self.heading += n
+        except:
+            pass
+        self.heading%=360
+        self.turn_turtle()
 
-def arc(t,a,r):
-    t.gc.set_foreground(t.tw.fgcolor)
-    r *= t.tw.coord_scale
-    try:
-        if a<0: larc(t,-a,r)
-        else: rarc(t,a,r)
-    except:
-        pass
-    move_turtle(t)
-    turn_turtle(t)
+    def arc(self,a,r):
+        self.gc.set_foreground(self.tw.fgcolor)
+        r *= self.tw.coord_scale
+        try:
+            if a<0:
+                self.larc(-a, r)
+            else:
+                self.rarc(a, r)
+        except:
+            pass
+        self.move_turtle()
+        self.turn_turtle()
 
-def rarc(t,a,r):
-    if r<0: r=-r; a=-a
-    cx = t.xcor+r*cos(t.heading*DEGTOR)
-    cy = t.ycor-r*sin(t.heading*DEGTOR)
-    x,y,w,h=t.width/2+int(cx-r),t.height/2-int(cy+r),int(2*r),int(2*r)
-    if t.pendown:
-        t.canvas.image.draw_arc(t.gc,False,x,y,w,h, \
-                                int(180-t.heading-a)*64,int(a)*64)
-    invalt(t,x-t.pensize*t.tw.coord_scale/2-3,y-t.pensize*t.tw.coord_scale/2-3,\
-             w+t.pensize*t.tw.coord_scale+6,h+t.pensize*t.tw.coord_scale+6)
-    right(t,a)
-    t.xcor=cx-r*cos(t.heading*DEGTOR)
-    t.ycor=cy+r*sin(t.heading*DEGTOR)
+    def rarc(self, a, r):
+        if r<0:
+             r=-r; a=-a
+        cx = self.xcor+r*cos(self.heading*DEGTOR)
+        cy = self.ycor-r*sin(self.heading*DEGTOR)
+        x,y = self.width/2+int(cx-r), self.height/2-int(cy+r)
+        w,h = int(2*r), int(2*r)
+        if self.pendown:
+            self.canvas.image.draw_arc(self.gc, False, x, y, w, h,
+                                int(180-self.heading-a)*64, int(a)*64)
+            self.invalt(x-self.pensize*self.tw.coord_scale/2-3,
+                        y-self.pensize*self.tw.coord_scale/2-3,
+                        w+self.pensize*self.tw.coord_scale+6,
+                        h+self.pensize*self.tw.coord_scale+6)
+        self.right(a)
+        self.xcor=cx-r*cos(self.heading*DEGTOR)
+        self.ycor=cy+r*sin(self.heading*DEGTOR)
 
-def larc(t,a,r):
-    if r<0: r=-r; a=-a
-    cx = t.xcor-r*cos(t.heading*DEGTOR)
-    cy = t.ycor+r*sin(t.heading*DEGTOR)
-    x,y,w,h=t.width/2+int(cx-r),t.height/2-int(cy+r),int(2*r),int(2*r)
-    if t.pendown:
-        t.canvas.image.draw_arc(t.gc,False,x,y,w,h,int(360-t.heading)*64, \
-                                int(a)*64)
-    invalt(t,x-t.pensize*t.tw.coord_scale/2-3,y-t.pensize*t.tw.coord_scale/2-3,\
-             w+t.pensize*t.tw.coord_scale+6,h+t.pensize*t.tw.coord_scale+6)
-    right(t,-a)
-    t.xcor=cx+r*cos(t.heading*DEGTOR)
-    t.ycor=cy-r*sin(t.heading*DEGTOR)
+    def larc(self, a, r):
+        if r<0:
+            r=-r; a=-a
+        cx = self.xcor-r*cos(self.heading*DEGTOR)
+        cy = self.ycor+r*sin(self.heading*DEGTOR)
+        x,y = self.width/2+int(cx-r), self.height/2-int(cy+r)
+        w,h = int(2*r), int(2*r)
+        if self.pendown:
+            self.canvas.image.draw_arc(self.gc,False, x, y, w, h,
+                                       int(360-self.heading)*64, int(a)*64)
+            self.invalt(x-self.pensize*self.tw.coord_scale/2-3,
+                        y-self.pensize*self.tw.coord_scale/2-3,
+                        w+self.pensize*self.tw.coord_scale+6,
+                        h+self.pensize*self.tw.coord_scale+6)
+        self.right(-a)
+        self.xcor=cx+r*cos(self.heading*DEGTOR)
+        self.ycor=cy-r*sin(self.heading*DEGTOR)
 
-def setxy(t,x,y):
-    x *= t.tw.coord_scale
-    y *= t.tw.coord_scale
-    try:
-        t.xcor,t.ycor = x,y
-    except:
-        pass
-    move_turtle(t)
+    def setxy(self, x, y):
+        x *= self.tw.coord_scale
+        y *= self.tw.coord_scale
+        try:
+            self.xcor,self.ycor = x,y
+        except:
+            pass
+        self.move_turtle()
 
-def setpensize(t,ps):
-    try:
-        if ps<0:
-            ps=0;
-        t.pensize = ps
-    except:
-        pass
-    t.gc.set_line_attributes(int(t.pensize*t.tw.coord_scale), \
-                             gtk.gdk.LINE_SOLID, \
-                             gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
-    return None
+    def setpensize(self,ps):
+        try:
+            if ps<0:
+                ps=0;
+            self.pensize = ps
+        except:
+            pass
+        self.gc.set_line_attributes(int(self.pensize*self.tw.coord_scale),
+                     gtk.gdk.LINE_SOLID, gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
 
-def setcolor(t,c):
-    try:
-        t.color = c
-        t.tcolor = c
-    except:
-        pass
-    set_fgcolor(t)
-    set_textcolor(t)
-    return None
+    def setcolor(self,c):
+        try:
+            self.color = c
+            self.tcolor = c
+        except:
+            pass
+        self.set_fgcolor()
+        self.set_textcolor()
 
-def settextcolor(t,c):
-    try:
-        t.tcolor = c
-    except:
-        pass
-    set_textcolor(t)
-    return None
+    def settextcolor(self,c):
+        try:
+            self.tcolor = c
+        except:
+            pass
+        self.set_textcolor()
 
-def settextsize(t,c):
-    try:
-        t.tw.textsize = c
-    except:
-        pass
-    return None
+    def settextsize(self,c):
+        try:
+            self.tw.textsize = c
+        except:
+            pass
 
-def setshade(t,s):
-    try:
-        t.shade = s
-    except:
-        pass
-    set_fgcolor(t)
-    set_textcolor(t)
-    return None
+    def setshade(self,s):
+        try:
+            self.shade = s
+        except:
+            pass
+        self.set_fgcolor()
+        self.set_textcolor()
 
-def fillscreen(t,c,s):
-    oldc, olds = t.color,t.shade
-    try:
-        setcolor(t,c); setshade(t,s)
-        rect = gtk.gdk.Rectangle(0,0,t.width,t.height)
-        t.gc.set_foreground(t.tw.fgcolor)
-        t.canvas.image.draw_rectangle(t.gc, True, *rect)
-        invalt(t,0,0,t.width,t.height)
-        setcolor(t,oldc); setshade(t,olds)
-    except:
-        pass
-    return None
+    def fillscreen(self,c,s):
+        oldc, olds = self.color,self.shade
+        try:
+            setcolor(self,c); setshade(self,s)
+            rect = gtk.gdk.Rectangle(0,0,self.width,self.height)
+            self.gc.set_foreground(self.tw.fgcolor)
+            self.canvas.image.draw_rectangle(self.gc, True, *rect)
+            self.invalt(0,0,self.width,self.height)
+            self.setcolor(oldc); self.setshade(olds)
+        except:
+            pass
 
-def set_fgcolor(t):
-    sh = (wrap100(t.shade)-50)/50.0
-    rgb = color_table[wrap100(t.color)]
-    r,g,b = (rgb>>8)&0xff00,rgb&0xff00,(rgb<<8)&0xff00
-    r,g,b = calc_shade(r,sh),calc_shade(g,sh),calc_shade(b,sh)
-    t.tw.rgb = [r>>8,g>>8,b>>8]
-    t.tw.fgcolor = t.tw.cm.alloc_color(r,g,b)
+    def set_fgcolor(self):
+        sh = (wrap100(self.shade)-50)/50.0
+        rgb = color_table[wrap100(self.color)]
+        r,g,b = (rgb>>8)&0xff00,rgb&0xff00,(rgb<<8)&0xff00
+        r,g,b = calc_shade(r,sh),calc_shade(g,sh),calc_shade(b,sh)
+        self.tw.rgb = [r>>8,g>>8,b>>8]
+        self.tw.fgcolor = self.tw.cm.alloc_color(r,g,b)
 
-def set_textcolor(t):
-    sh = (wrap100(t.shade)-50)/50.0
-    rgb = color_table[wrap100(t.tcolor)]
-    r,g,b = (rgb>>8)&0xff00,rgb&0xff00,(rgb<<8)&0xff00
-    r,g,b = calc_shade(r,sh),calc_shade(g,sh),calc_shade(b,sh)
-    t.tw.textcolor = t.tw.cm.alloc_color(r,g,b)
+    def set_textcolor(self):
+        sh = (wrap100(self.shade)-50)/50.0
+        rgb = color_table[wrap100(self.tcolor)]
+        r,g,b = (rgb>>8)&0xff00,rgb&0xff00,(rgb<<8)&0xff00
+        r,g,b = calc_shade(r,sh),calc_shade(g,sh),calc_shade(b,sh)
+        self.tw.textcolor = self.tw.cm.alloc_color(r,g,b)
 
-def wrap100(n):
-    n = int(n)
-    n %= 200
-    if n>99: n=199-n
-    return n
+    def setpen(self,bool):
+        self.pendown = bool
 
-def calc_shade(c,s):
-    if s<0: return int(c*(1+s*.8))
-    return int(c+(65536-c)*s*.9)
+    def draw_pixbuf(self,pixbuf,a,b,x,y,w,h):
+        w *= self.tw.coord_scale
+        h *= self.tw.coord_scale
+        self.canvas.image.draw_pixbuf(self.gc, pixbuf, a, b, x, y)
+        self.invalt(x,y,w,h)
 
-def setpen(t,bool):
-    t.pendown = bool
+    def draw_text(self, label, x, y, size, w):
+        w *= self.tw.coord_scale
+        self.gc.set_foreground(self.tw.textcolor)
+        fd = pango.FontDescription('Sans')
+        try:
+            fd.set_size(int(size*self.tw.coord_scale)*pango.SCALE)
+        except:
+            pass
+        if type(label) == str or type(label) == unicode:
+            pl = self.tw.window.create_pango_layout(label.replace("\0"," "))
+        elif type(label) == float or type(label) == int:
+            pl = self.tw.window.create_pango_layout(str(label))
+        else:
+            print "draw text: Type Error: %s" % (type(label))
+            pl = self.tw.window.create_pango_layout(str(label))
+        pl.set_font_description(fd)
+        pl.set_width(int(w)*pango.SCALE)
+        self.canvas.image.draw_layout(self.gc,int(x),int(y),pl)
+        w,h = pl.get_pixel_size()
+        self.invalt(x,y,w,h)
 
-def draw_pixbuf(t,pixbuf,a,b,x,y,w,h):
-    w *= t.tw.coord_scale
-    h *= t.tw.coord_scale
-    t.canvas.image.draw_pixbuf(t.gc, pixbuf, a, b, x, y)
-    invalt(t,x,y,w,h)
+    def draw_line(self,x1,y1,x2,y2):
+        x1,y1 = self.width/2+int(x1), self.height/2-int(y1)
+        x2,y2 = self.width/2+int(x2), self.height/2-int(y2)
+        if x1<x2: minx,maxx=x1,x2
+        else: minx,maxx=x2,x1
+        if y1<y2: miny,maxy=y1,y2
+        else: miny,maxy=y2,y1
+        w,h=maxx-minx,maxy-miny
+        self.canvas.image.draw_line(self.gc,x1,y1,x2,y2)
+        self.invalt(minx-self.pensize*self.tw.coord_scale/2-3,
+                    miny-self.pensize*self.tw.coord_scale/2-3,
+                    w+self.pensize*self.tw.coord_scale+6,
+                    h+self.pensize*self.tw.coord_scale+6)
 
-def draw_text(t, label, x, y, size, w):
-    w *= t.tw.coord_scale
-    t.gc.set_foreground(t.tw.textcolor)
-    fd = pango.FontDescription('Sans')
-    try:
-        fd.set_size(int(size*t.tw.coord_scale)*pango.SCALE)
-    except:
-        pass
-    if type(label) == str or type(label) == unicode:
-        pl = t.tw.window.create_pango_layout(label.replace("\0"," "))
-    elif type(label) == float or type(label) == int:
-        pl = t.tw.window.create_pango_layout(str(label))
-    else:
-        print "draw text: Type Error: %s" % (type(label))
-        pl = t.tw.window.create_pango_layout(str(label))
-    pl.set_font_description(fd)
-    pl.set_width(int(w)*pango.SCALE)
-    t.canvas.image.draw_layout(t.gc,int(x),int(y),pl)
-    w,h = pl.get_pixel_size()
-    invalt(t,x,y,w,h)
+    def turn_turtle(self):
+        self.tw.turtle.rotate(self.heading)
 
-def draw_line(t,x1,y1,x2,y2):
-    x1,y1 = t.width/2+int(x1), t.height/2-int(y1)
-    x2,y2 = t.width/2+int(x2), t.height/2-int(y2)
-    if x1<x2: minx,maxx=x1,x2
-    else: minx,maxx=x2,x1
-    if y1<y2: miny,maxy=y1,y2
-    else: miny,maxy=y2,y1
-    w,h=maxx-minx,maxy-miny
-    t.canvas.image.draw_line(t.gc,x1,y1,x2,y2)
-    invalt(t,minx-t.pensize*t.tw.coord_scale/2-3,
-             miny-t.pensize*t.tw.coord_scale/2-3,
-           w+t.pensize*t.tw.coord_scale+6,
-           h+t.pensize*t.tw.coord_scale+6)
+    def move_turtle(self):
+        x, y = self.width/2+int(self.xcor), self.height/2-int(self.ycor)
+        self.tw.turtle.move((self.cx+x-30, self.cy+y-30))
+        self.invalt(x-30,y-30,60,60)
 
-def turn_turtle(t):
-    # t.spr.set_shape(t.shapelist[(int(t.heading+5)%360)/10])
-    print "turning turtle to position %d" % ((int(t.heading+5)%360)/10)
-    t.t.rotate((int(t.heading+5)%360)/10)
+    def invalt(self, x, y, w, h):
+        rect = gtk.gdk.Rectangle(int(x+self.cx), int(y+self.cy), int(w),int(h))
+        self.tw.area.invalidate_rect(rect, False)
 
-def move_turtle(t):
-    x,y = t.width/2+int(t.xcor), t.height/2-int(t.ycor)
-    t.spr.move((t.cx+x-30, t.cy+y-30))
-    invalt(t, x-30, y-30, 60, 60)
-
-def invalt(t,x,y,w,h):
-    rect = gtk.gdk.Rectangle(int(x+t.cx), int(y+t.cy), int(w),int(h))
-    t.tw.area.invalidate_rect(rect, False)
-
-
-
+    def set_turtle(self, i):
+        # TODO: associate pen state with individual turtles
+        # TODO: reskin active turtle
+        print "switching to Turtle %d" % (i)
+        if i > self.tw.turtle_list.turtle_count()-1:
+            # if it is a new turtle, put it in the center of the screen
+            self.tw.turtle = self.tw.turtle_list.get_turtle(i, True)
+            self.xcor = 0
+            self.ycor = 0
+            self.heading = 0
+            self.tw.turtle.move_turtle()
+            self.tw.turtle.rotate(self.heading)
+        self.tw.turtle = self.tw.turtle_list.get_turtle(i, True)
+        tx, ty = self.tw.turtle.get_xy()
+        self.xcor = tx+30-self.width/2
+        self.ycor = self.height/2-ty-30
+        self.heading = self.tw.turtle.get_heading()
+        self.tw.turtle_list.show_all()

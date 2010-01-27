@@ -59,7 +59,7 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
              'storeinbox', 'start'],
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
-             'bottompos', 'height', 'print'],
+             'bottompos', 'height', 'turtle', 'print'],
             ['hideblocks'],
             ['restore']]
 
@@ -90,7 +90,7 @@ BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'setheading', 'show',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1',
-    'storeinbox2', 'wait', 'stack', 'push', 'nop']
+    'storeinbox2', 'wait', 'stack', 'push', 'nop', 'turtle']
 BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storeinbox', 'myfunc']
 BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'textcolor', 'textsize', 'box1', 'box2', 'string', 'leftpos', 'scale',
@@ -148,7 +148,7 @@ BLOCK_NAMES = {'clean':[_('clean')], 'forward':[_('forward')],
     'scale':[_('scale')], 'keyboard':[_('keyboard')],
     'push':[_('push')], 'pop':[_('pop')], 'kbinput':[_('query keyboard')],
     'myfunc':[_('python'), _('code'), _('value')], 'nop':[' '],
-    'printheap':[_('show heap')],
+    'printheap':[_('show heap')], 'turtle':[_('turtle')],
     'clearheap':[_('empty heap')], 'restore':[_('restore')]}
 
 #
@@ -180,7 +180,7 @@ PRIMITIVES = {'clean':'clean', 'forward':'forward', 'back':'back', 'arc':'arc',
     'stopstack':'stopstack', 'hspace':'nop', 'vspace':'nop',
     'start':'start', 'hat1':'nop1', 'stack1':'stack1',
     'hat2':'nop2', 'stack2':'stack2',
-    'hat':'nop3', 'action':'stack',
+    'hat':'nop3', 'action':'stack', 'turtle':'turtle',
     'storeinbox1':'storeinbox1', 'box1':'box1',
     'storeinbox2':'storeinbox2', 'box2':'box2', 
     'storeinbox':'storeinbox', 'box':'box',
@@ -196,7 +196,7 @@ PRIMITIVES = {'clean':'clean', 'forward':'forward', 'back':'back', 'arc':'arc',
 
 DEFAULTS = {'forward':[100], 'back':[100], 'left':[90], 'right':[90], 
     'arc':[90,100], 'setheading':[0], 'setscale':[33], 'show':[_('text')],
-    'setpensize':[5], 'settextsize':[32], 'setcolor':[0],
+    'setpensize':[5], 'settextsize':[32], 'setcolor':[0], 'turtle':[1],
     'setshade':[50], 'fillscreen':[60,80], 'number':[100],
     'random':[0,100], 'wait':[1], 'repeat':[4], 'setxy':[0,0], 
     'storeinbox':[_('my box'),100], 'box':[_('my box')],

@@ -143,9 +143,11 @@ class TurtleArtWindow():
         self.drag_group = None
         self.block_list = block.Blocks()
         self.sprite_list = sprites.Sprites(self.window, self.area, self.gc)
-        self.turtle_list = taturtle.Turtles()
+        self.turtle_list = taturtle.Turtles(self.sprite_list)
+        self.turtle = taturtle.Turtle(self.turtle_list)
         self.selected_turtle = None
-        self.turtle = tNew(self,self.width,self.height)
+        self.canvas = TurtleGraphics(self, self.width, self.height)
+
         self.lc = lcNew(self)
 
     """
@@ -222,7 +224,7 @@ class TurtleArtWindow():
                 blk.spr.set_layer(BLOCK_LAYER)
             self.show_palette()
             self.hide = False
-        self.turtle.canvas.inval()
+        self.canvas.canvas.inval()
 
     """
     hideshow_palette 
@@ -480,7 +482,7 @@ class TurtleArtWindow():
                     dx, dy = mdx, mdy
                 else:
                     dx, dy = x-sx-30, y-sy-30
-                seth(self.turtle, int(dragx+atan2(dy,dx)/DEGTOR+5)/10*10)
+                self.canvas.seth(int(dragx+atan2(dy,dx)/DEGTOR+5)/10*10)
         # If we are hoving, show popup help.
         elif self.drag_group is None:
             self._show_popup(x, y)
@@ -837,12 +839,12 @@ class TurtleArtWindow():
             print "processing remote button release: %d, %d" % (x, y)
         # We may have been moving the turtle
         if self.selected_turtle is not None:
-            (tx, ty) = self.turtle.spr.get_xy()
-            self.turtle.xcor = tx-self.turtle.cx- \
-                self.turtle.canvas._width/2+30
-            self.turtle.ycor = self.turtle.canvas._height/2-ty+ \
-                self.turtle.cy-30
-            move_turtle(self.turtle)
+            (tx, ty) = self.canvas.spr.get_xy()
+            self.canvas.xcor = tx-self.canvas.cx- \
+                self.canvas.canvas._width/2+30
+            self.canvas.ycor = self.canvas.canvas._height/2-ty+ \
+                self.canvas.cy-30
+            self.canvas.move_turtle()
             display_coordinates(self)
             self.selected_turtle = None
             return
@@ -983,7 +985,8 @@ class TurtleArtWindow():
     Is x,y over the trash can?
     """
     def _in_the_trash(self, x, y):
-        if self.selected_palette == TRASH and self.palette_spr.hit((x,y)):
+        if self.selected_palette == TRASH and \
+           self.palette_sprs[TRASH].hit((x,y)):
             return True
         return False
 
@@ -1072,10 +1075,10 @@ class TurtleArtWindow():
     Turtle pressed
     """
     def _turtle_pressed(self, x, y):
-        (tx, ty) = self.turtle.spr.get_xy()
+        (tx, ty) = self.canvas.spr.get_xy()
         dx, dy = x-tx-30, y-ty-30
         if dx*dx+dy*dy > 200:
-            self.dragpos = ('turn', self.turtle.heading-atan2(dy,dx)/DEGTOR, 0)
+            self.dragpos = ('turn', self.canvas.heading-atan2(dy,dx)/DEGTOR, 0)
         else:
             self.dragpos = ('move', x-tx, y-ty)
 
@@ -1149,12 +1152,12 @@ class TurtleArtWindow():
     """
     def _jog_turtle(self, dx, dy):
         if dx == -1 and dy == -1:
-            self.turtle.xcor = 0
-            self.turtle.ycor = 0
+            self.canvas.xcor = 0
+            self.canvas.ycor = 0
         else:
-            self.turtle.xcor += dx
-            self.turtle.ycor += dy
-        move_turtle(self.turtle)
+            self.canvas.xcor += dx
+            self.canvas.ycor += dy
+        self.canvas.move_turtle()
         display_coordinates(self)
         self.selected_turtle = None
 

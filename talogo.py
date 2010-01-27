@@ -170,7 +170,7 @@ def readline(lc, line):
     return res
 
 def setup_cmd(lc, str):
-    lc.tw.turtle.spr.set_layer(HIDE_LAYER) 
+    lc.tw.turtle.hide()
     lc.procstop=False
     list = readline(lc, str)
     lc.step = start_eval(lc, list)
@@ -188,11 +188,11 @@ def evline(lc, list):
     lc.arglist = None
     while lc.iline:
         if lc.tw.step_time > 0:
-            lc.tw.turtle.spr.set_layer(TURTLE_LAYER)
+            lc.tw.turtle.show()
             endtime = millis()+an_int(lc,lc.tw.step_time)*100
             while millis()<endtime:
                 yield True
-            lc.tw.turtle.spr.set_layer(HIDE_LAYER)
+            lc.tw.turtle.hide()
         token = lc.iline[0]
         if token == lc.symopar:
             token = lc.iline[1]
@@ -269,21 +269,21 @@ def debug_trace(lc, token):
         if token.name in ['forward', 'right', 'back', 'left', 'seth', 'setxy', \
                           'arc', 'heading', 'xcor', 'ycor']:
             my_string = token.name  +\
-                        "\nxcor= " + str(int(lc.tw.turtle.xcor)) +\
-                        "\nycor= " + str(int(lc.tw.turtle.ycor)) +\
-                        "\nheading= " + str(int(lc.tw.turtle.heading)) +\
+                        "\nxcor= " + str(int(lc.tw.canvas.xcor)) +\
+                        "\nycor= " + str(int(lc.tw.canvas.ycor)) +\
+                        "\nheading= " + str(int(lc.tw.canvas.heading)) +\
                         "\nscale= " + str(lc.scale)
         elif token.name in ['penup', 'pendown', 'setcolor', 'setshade', \
                             'settextcolor', 'settextsize', 'shade', 'color', \
                             'fillscreen', 'pensize']:
-            if lc.tw.turtle.pendown:
+            if lc.tw.canvas.pendown:
                 penstatus = "\npen down"
             else:
                 penstatus = "\npen up"
             my_string = token.name + penstatus +\
-                        "\ncolor= " + str(int(lc.tw.turtle.color)) +\
-                        "\nshade= " + str(lc.tw.turtle.shade) +\
-                        "\npen size= " + str(lc.tw.turtle.pensize)
+                        "\ncolor= " + str(int(lc.tw.canvas.color)) +\
+                        "\nshade= " + str(lc.tw.canvas.shade) +\
+                        "\npen size= " + str(lc.tw.canvas.pensize)
         else:
             my_string = token.name + "\nblocks status:\n"
             for k,v in lc.boxes.iteritems():
@@ -304,11 +304,11 @@ def no_args_check(lc):
     raise logoerror("#noinput")
 
 def prim_wait(lc,time):
-    lc.tw.turtle.spr.set_layer(TURTLE_LAYER)
+    lc.tw.turtle.show()
     endtime = millis()+an_int(lc,time*1000)
     while millis()<endtime:
         yield True
-    lc.tw.turtle.spr.set_layer(HIDE_LAYER)
+    lc.tw.turtle.hide()
     ireturn(lc); yield True
 
 def prim_repeat(lc, num, list):
@@ -491,50 +491,50 @@ def lcNew(tw):
     defprim(lc,'keyboard', 0, lambda lc: lc.keyboard)
     defprim(lc,'userdefined', 1, lambda lc,x: loadmyblock(lc,x))
     defprim(lc,'myfunc', 2, lambda lc,f,x: callmyfunc(lc, f, x))
-    defprim(lc,'hres', 0, lambda lc: lc.tw.turtle.width/lc.tw.coord_scale)
-    defprim(lc,'vres', 0, lambda lc: lc.tw.turtle.height/lc.tw.coord_scale)
+    defprim(lc,'hres', 0, lambda lc: lc.tw.canvas.width/lc.tw.coord_scale)
+    defprim(lc,'vres', 0, lambda lc: lc.tw.canvas.height/lc.tw.coord_scale)
     defprim(lc,'leftpos', 0, lambda lc: \
-        -(lc.tw.turtle.width/(lc.tw.coord_scale*2)))
+        -(lc.tw.canvas.width/(lc.tw.coord_scale*2)))
     defprim(lc,'toppos', 0, lambda lc: \
-        lc.tw.turtle.height/(lc.tw.coord_scale*2))
+        lc.tw.canvas.height/(lc.tw.coord_scale*2))
     defprim(lc,'rightpos', 0, lambda lc: \
-        lc.tw.turtle.width/(lc.tw.coord_scale*2)) 
+        lc.tw.canvas.width/(lc.tw.coord_scale*2)) 
     defprim(lc,'bottompos', 0, lambda lc: \
-        -(lc.tw.turtle.height/(lc.tw.coord_scale*2)))
+        -(lc.tw.canvas.height/(lc.tw.coord_scale*2)))
 
     # turtle primitives
     defprim(lc,'clean', 0, lambda lc: clear(lc))
-    defprim(lc,'forward', 1, lambda lc, x: forward(lc.tw.turtle, x))
-    defprim(lc,'back', 1, lambda lc,x: forward(lc.tw.turtle,-x))
-    defprim(lc,'seth', 1, lambda lc, x: seth(lc.tw.turtle, x))
-    defprim(lc,'right', 1, lambda lc, x: right(lc.tw.turtle, x))
-    defprim(lc,'left', 1, lambda lc,x: right(lc.tw.turtle,-x))
-    defprim(lc,'heading', 0, lambda lc: lc.tw.turtle.heading)
-    defprim(lc,'setxy', 2, lambda lc, x, y: setxy(lc.tw.turtle, x, y))
+    defprim(lc,'forward', 1, lambda lc, x: lc.tw.canvas.forward(x))
+    defprim(lc,'back', 1, lambda lc,x: lc.tw.canvas.forward(-x))
+    defprim(lc,'seth', 1, lambda lc, x: lc.tw.canvas.seth(x))
+    defprim(lc,'right', 1, lambda lc, x: lc.tw.canvas.right(x))
+    defprim(lc,'left', 1, lambda lc,x: lc.tw.canvas.right(-x))
+    defprim(lc,'heading', 0, lambda lc: lc.tw.canvas.heading)
+    defprim(lc,'setxy', 2, lambda lc, x, y: lc.tw.canvas.setxy(x, y))
     defprim(lc,'show',1,lambda lc, x: show(lc, x, True))
     defprim(lc,'setscale', 1, lambda lc,x: set_scale(lc, x))
     defprim(lc,'scale', 0, lambda lc: lc.scale)
     defprim(lc,'write',2,lambda lc, x,y: write(lc, x,y))
     defprim(lc,'insertimage', 1, lambda lc,x: insert_image(lc, x, False))
-    defprim(lc,'arc', 2, lambda lc, x, y: arc(lc.tw.turtle, x, y))
-    defprim(lc,'xcor', 0, lambda lc: lc.tw.turtle.xcor/lc.tw.coord_scale)
-    defprim(lc,'ycor', 0, lambda lc: lc.tw.turtle.ycor/lc.tw.coord_scale)
+    defprim(lc,'arc', 2, lambda lc, x, y: arc(lc.tw.canvas, x, y))
+    defprim(lc,'xcor', 0, lambda lc: lc.tw.canvas.xcor/lc.tw.coord_scale)
+    defprim(lc,'ycor', 0, lambda lc: lc.tw.canvas.ycor/lc.tw.coord_scale)
+    defprim(lc,'turtle', 1, lambda lc, x: lc.tw.canvas.set_turtle(int(x-1)))
 
     # pen primitives
-    defprim(lc,'pendown', 0, lambda lc: setpen(lc.tw.turtle, True))
-    defprim(lc,'penup', 0, lambda lc: setpen(lc.tw.turtle, False))
+    defprim(lc,'pendown', 0, lambda lc: lc.tw.canvas.setpen(True))
+    defprim(lc,'penup', 0, lambda lc: lc.tw.canvas.setpen(False))
     defprim(lc,'(', 1, lambda lc, x: prim_opar(lc,x))
-    defprim(lc,'setcolor', 1, lambda lc, x: setcolor(lc.tw.turtle, x))
-    defprim(lc,'settextcolor', 1, lambda lc, x: settextcolor(lc.tw.turtle, x))
-    defprim(lc,'settextsize', 1, lambda lc, x: settextsize(lc.tw.turtle, x))
-    defprim(lc,'setshade', 1, lambda lc, x: setshade(lc.tw.turtle, x))
-    defprim(lc,'setpensize', 1, lambda lc, x: setpensize(lc.tw.turtle, x))
-    defprim(lc,'fillscreen', 2, lambda lc, x, y: \
-        fillscreen(lc.tw.turtle, x, y))
-    defprim(lc,'color', 0, lambda lc: lc.tw.turtle.color)
-    defprim(lc,'shade', 0, lambda lc: lc.tw.turtle.shade)
-    defprim(lc,'pensize', 0, lambda lc: lc.tw.turtle.pensize)
-    defprim(lc,'textcolor', 0, lambda lc: lc.tw.turtle.textcolor)
+    defprim(lc,'setcolor', 1, lambda lc, x: lc.tw.canvas.setcolor(x))
+    defprim(lc,'settextcolor', 1, lambda lc, x: lc.tw.canvas.settextcolor(x))
+    defprim(lc,'settextsize', 1, lambda lc, x: lc.tw.canvas.settextsize(x))
+    defprim(lc,'setshade', 1, lambda lc, x: lc.tw.canvas.setshade(x))
+    defprim(lc,'setpensize', 1, lambda lc, x: lc.tw.canvas.setpensize(x))
+    defprim(lc,'fillscreen', 2, lambda lc, x, y: lc.tw.canvas.fillscreen(x, y))
+    defprim(lc,'color', 0, lambda lc: lc.tw.canvas.color)
+    defprim(lc,'shade', 0, lambda lc: lc.tw.canvas.shade)
+    defprim(lc,'pensize', 0, lambda lc: lc.tw.canvas.pensize)
+    defprim(lc,'textcolor', 0, lambda lc: lc.tw.canvas.textcolor)
     defprim(lc,'textsize', 0, lambda lc: lc.tw.textsize)
     defprim(lc,'red', 0, lambda lc: 0)
     defprim(lc,'orange', 0, lambda lc: 10)
@@ -604,9 +604,9 @@ def lcNew(tw):
     lc.gplay = None
     lc.ag = None
     lc.nobox = ""
-    lc.title_height = int((lc.tw.turtle.height/30)*lc.tw.scale)
-    lc.body_height = int((lc.tw.turtle.height/60)*lc.tw.scale)
-    lc.bullet_height = int((lc.tw.turtle.height/45)*lc.tw.scale)
+    lc.title_height = int((lc.tw.canvas.height/30)*lc.tw.scale)
+    lc.body_height = int((lc.tw.canvas.height/60)*lc.tw.scale)
+    lc.bullet_height = int((lc.tw.canvas.height/45)*lc.tw.scale)
 
     # this dictionary is used to define the relative size and postion of 
     # template elements (w, h, x, y, dx, dy, dx1, dy1...)
@@ -697,13 +697,13 @@ def show_picture(lc, media, x, y, w, h):
         else:
             pixbuf = get_pixbuf_from_journal(dsobject, int(w), int(h))
             if pixbuf is not None:
-                draw_pixbuf(lc.tw.turtle, pixbuf, 0, 0, int(x), int(y), \
-                            int(w), int(h))
+                lc.tw.canvas.draw_pixbuf(pixbuf, 0, 0, int(x), int(y),
+                                         int(w), int(h))
         dsobject.destroy()
 
 def get_pixbuf_from_journal(dsobject,w,h):
     try:
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path, \
+        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path,
                                                       int(w),int(h))
     except:
         try:
@@ -726,23 +726,22 @@ def show_description(lc, media, x, y, w, h):
     elif media[6:] is not "None":
         try:
             dsobject = datastore.get(media[6:])
-            draw_text(lc.tw.turtle, \
-                      dsobject.metadata['description'],int(x),int(y), \
-                      lc.body_height, int(w))
+            lc.tw.canvas.draw_text(dsobject.metadata['description'],
+                      int(x),int(y), lc.body_height, int(w))
             dsobject.destroy()
         except:
             print "no description?"
 
 def draw_title(lc,title,x,y):
-    draw_text(lc.tw.turtle,title,int(x),int(y),lc.title_height, \
-              lc.tw.turtle.width-x)
+    lc.tw.canvas.draw_text(title,int(x),int(y),lc.title_height,
+                                               lc.tw.canvas.width-x)
 
 def calc_position(lc,t):
     w,h,x,y,dx,dy = lc.templates[t]
-    x *= lc.tw.turtle.width
-    y *= lc.tw.turtle.height
-    w *= (lc.tw.turtle.width-x)
-    h *= (lc.tw.turtle.height-y)
+    x *= lc.tw.canvas.width
+    y *= lc.tw.canvas.height
+    w *= (lc.tw.canvas.width-x)
+    h *= (lc.tw.canvas.height-y)
     dx *= w
     dy *= h
     return(w,h,x,y,dx,dy)
@@ -750,194 +749,194 @@ def calc_position(lc,t):
 # title, one image, and description
 def show_template1(lc, title, media):
     w,h,xo,yo,dx,dy = calc_position(lc,'tp1')
-    x = -(lc.tw.turtle.width/2)+xo
-    y = lc.tw.turtle.height/2
-    setxy(lc.tw.turtle, x, y)
+    x = -(lc.tw.canvas.width/2)+xo
+    y = lc.tw.canvas.height/2
+    setxy(lc.tw.canvas, x, y)
     # save the text size so we can restore it later
     save_text_size = lc.tw.textsize
     # set title text
-    settextsize(lc.tw.turtle, lc.title_height)
+    settextsize(lc.tw.canvas, lc.title_height)
     show(lc,title)
     # calculate and set scale for media blocks
-    myscale = 45 * (lc.tw.turtle.height - lc.title_height*2) \
-                  / lc.tw.turtle.height
+    myscale = 45 * (lc.tw.canvas.height - lc.title_height*2) \
+                  / lc.tw.canvas.height
     set_scale(lc,myscale)
     # set body text size
-    settextsize(lc.tw.turtle, lc.body_height)
+    settextsize(lc.tw.canvas, lc.body_height)
     # render media object
     y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, media)
     x = 0
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, media.replace("media_","descr_"))
     # restore text size
-    settextsize(lc.tw.turtle, save_text_size)
+    lc.tw.canvas.settextsize(save_text_size)
 
 # title, two images (horizontal), two descriptions
 def show_template2(lc, title, media1, media2):
     w,h,xo,yo,dx,dy = calc_position(lc,'tp2')
-    x = -(lc.tw.turtle.width/2)+xo
-    y = lc.tw.turtle.height/2
-    setxy(lc.tw.turtle, x, y)
+    x = -(lc.tw.canvas.width/2)+xo
+    y = lc.tw.canvas.height/2
+    lc.tw.canvas.setxy(x, y)
     # save the text size so we can restore it later
     save_text_size = lc.tw.textsize
     # set title text
-    settextsize(lc.tw.turtle, lc.title_height)
+    lc.tw.canvas.settextsize(lc.title_height)
     show(lc,title)
     # calculate and set scale for media blocks
-    myscale = 45 * (lc.tw.turtle.height - lc.title_height*2)/lc.tw.turtle.height
-    set_scale(lc,myscale)
+    myscale = 45 * (lc.tw.canvas.height - lc.title_height*2)/lc.tw.canvas.height
+    set_scale(lc, myscale)
     # set body text size
-    settextsize(lc.tw.turtle, lc.body_height)
+    lc.tw.canvas.settextsize(lc.body_height)
     # render four quadrents
     y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, media1)
     x = 0
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, media2)
     y = -lc.title_height
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, media2.replace("media_","descr_"))
-    x = -(lc.tw.turtle.width/2)+xo
-    setxy(lc.tw.turtle, x, y)
+    x = -(lc.tw.canvas.width/2)+xo
+    lc.tw.canvas.setxy(x, y)
     show(lc, media1.replace("media_","descr_"))
     # restore text size
-    settextsize(lc.tw.turtle, save_text_size)
+    lc.tw.canvas.settextsize(save_text_size)
 
 # title and seven bullets
 def show_template3(lc, title, s1, s2, s3, s4, s5, s6, s7):
     w,h,xo,yo,dx,dy = calc_position(lc,'tp3')
-    x = -(lc.tw.turtle.width/2)+xo
-    y = lc.tw.turtle.height/2
-    setxy(lc.tw.turtle, x, y)
+    x = -(lc.tw.canvas.width/2)+xo
+    y = lc.tw.canvas.height/2
+    setxy(lc.tw.canvas, x, y)
     # save the text size so we can restore it later
     save_text_size = lc.tw.textsize
     # set title text
-    settextsize(lc.tw.turtle, lc.title_height)
+    lc.tw.canvas.settextsize(lc.title_height)
     show(lc,title)
     # set body text size
-    settextsize(lc.tw.turtle, lc.bullet_height)
+    lc.tw.canvas.settextsize(lc.bullet_height)
     y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, s1)
     y -= int(lc.bullet_height*2*lc.tw.lead)
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, s2)
     y -= int(lc.bullet_height*2*lc.tw.lead)
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, s3)
     y -= int(lc.bullet_height*2*lc.tw.lead)
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, s4)
     y -= int(lc.bullet_height*2*lc.tw.lead)
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, s5)
     y -= int(lc.bullet_height*2*lc.tw.lead)
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, s6)
     y -= int(lc.bullet_height*2*lc.tw.lead)
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, s7)
     # restore text size
-    settextsize(lc.tw.turtle, save_text_size)
+    settextsize(lc.tw.canvas, save_text_size)
 
 # title, two images (vertical), two desciptions
 def show_template6(lc, title, media1, media2):
     w,h,xo,yo,dx,dy = calc_position(lc,'tp6')
-    x = -(lc.tw.turtle.width/2)+xo
-    y = lc.tw.turtle.height/2
-    setxy(lc.tw.turtle, x, y)
+    x = -(lc.tw.canvas.width/2)+xo
+    y = lc.tw.canvas.height/2
+    lc.tw.canvas.setxy(x, y)
     # save the text size so we can restore it later
     save_text_size = lc.tw.textsize
     # set title text
-    settextsize(lc.tw.turtle, lc.title_height)
+    lc.tw.canvas.settextsize(lc.title_height)
     show(lc,title)
     # calculate and set scale for media blocks
-    myscale = 45 * (lc.tw.turtle.height - lc.title_height*2)/lc.tw.turtle.height
+    myscale = 45 * (lc.tw.canvas.height - lc.title_height*2)/lc.tw.canvas.height
     set_scale(lc,myscale)
     # set body text size
-    settextsize(lc.tw.turtle, lc.body_height)
+    lc.tw.canvas.settextsize(lc.body_height)
     # render four quadrents
     y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, media1)
     x = 0
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, media1.replace("media_","descr_"))
     y = -lc.title_height
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, media2.replace("media_","descr_"))
-    x = -(lc.tw.turtle.width/2)+xo
-    setxy(lc.tw.turtle, x, y)
+    x = -(lc.tw.canvas.width/2)+xo
+    lc.tw.canvas.setxy(x, y)
     show(lc, media2)
     # restore text size
-    settextsize(lc.tw.turtle, save_text_size)
+    lc.tw.canvas.settextsize(save_text_size)
 
 # title and four images
 def show_template7(lc, title, media1, media2, media3, media4):
     w,h,xo,yo,dx,dy = calc_position(lc,'tp7')
-    x = -(lc.tw.turtle.width/2)+xo
-    y = lc.tw.turtle.height/2
-    setxy(lc.tw.turtle, x, y)
+    x = -(lc.tw.canvas.width/2)+xo
+    y = lc.tw.canvas.height/2
+    lc.tw.canvas.setxy(x, y)
     # save the text size so we can restore it later
     save_text_size = lc.tw.textsize
     # set title text
-    settextsize(lc.tw.turtle, lc.title_height)
+    lc.tw.canvas.settextsize(lc.title_height)
     show(lc,title)
     # calculate and set scale for media blocks
-    myscale = 45 * (lc.tw.turtle.height - lc.title_height*2)/lc.tw.turtle.height
+    myscale = 45 * (lc.tw.canvas.height - lc.title_height*2)/lc.tw.canvas.height
     set_scale(lc,myscale)
     # set body text size
-    settextsize(lc.tw.turtle, lc.body_height)
+    lc.tw.canvas.settextsize(lc.body_height)
     # render four quadrents
     y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, media1)
     x = 0
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, media2)
     y = -lc.title_height
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, media4)
-    x = -(lc.tw.turtle.width/2)+xo
-    setxy(lc.tw.turtle, x, y)
+    x = -(lc.tw.canvas.width/2)+xo
+    lc.tw.canvas.setxy(x, y)
     show(lc, media3)
     # restore text size
-    settextsize(lc.tw.turtle, save_text_size)
+    settextsize(lc.tw.canvas, save_text_size)
 
 # title, one media object
 def show_template8(lc, title, media1):
     w,h,xo,yo,dx,dy = calc_position(lc,'tp7')
-    x = -(lc.tw.turtle.width/2)+xo
-    y = lc.tw.turtle.height/2
-    setxy(lc.tw.turtle, x, y)
+    x = -(lc.tw.canvas.width/2)+xo
+    y = lc.tw.canvas.height/2
+    lc.tw.canvas.setxy(x, y)
     # save the text size so we can restore it later
     save_text_size = lc.tw.textsize
     # set title text
-    settextsize(lc.tw.turtle, lc.title_height)
+    lc.tw.canvas.settextsize(lc.title_height)
     show(lc,title)
     # calculate and set scale for media blocks
-    myscale = 90 * (lc.tw.turtle.height - lc.title_height*2) \
-                  / lc.tw.turtle.height
+    myscale = 90 * (lc.tw.canvas.height - lc.title_height*2) \
+                  / lc.tw.canvas.height
     set_scale(lc,myscale)
     # set body text size
-    settextsize(lc.tw.turtle, lc.body_height)
+    lc.tw.canvas.settextsize(lc.body_height)
     # render media object
     y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
-    setxy(lc.tw.turtle, x, y)
+    lc.tw.canvas.setxy(x, y)
     show(lc, media1)
     # restore text size
-    settextsize(lc.tw.turtle, save_text_size)
+    lc.tw.canvas.settextsize(save_text_size)
 
 # image only (at current x,y)
 def insert_image(lc, media, center):
-    w = (lc.tw.turtle.width * lc.scale)/100
-    h = (lc.tw.turtle.height * lc.scale)/100
+    w = (lc.tw.canvas.width * lc.scale)/100
+    h = (lc.tw.canvas.height * lc.scale)/100
     # convert from Turtle coordinates to screen coordinates
-    x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
-    y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
+    x = lc.tw.canvas.width/2+int(lc.tw.canvas.xcor)
+    y = lc.tw.canvas.height/2-int(lc.tw.canvas.ycor)
     if center is True:
         x -= w/2
         y -= h/2
@@ -946,11 +945,11 @@ def insert_image(lc, media, center):
 
 # description text only (at current x,y)
 def insert_desc(lc, media):
-    w = (lc.tw.turtle.width * lc.scale)/100
-    h = (lc.tw.turtle.height * lc.scale)/100
+    w = (lc.tw.canvas.width * lc.scale)/100
+    h = (lc.tw.canvas.height * lc.scale)/100
     # convert from Turtle coordinates to screen coordinates
-    x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
-    y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
+    x = lc.tw.canvas.width/2+int(lc.tw.canvas.xcor)
+    y = lc.tw.canvas.height/2-int(lc.tw.canvas.ycor)
     if media[0:5] == 'descr':
         show_description(lc, media, x, y, w, h)
 
@@ -960,8 +959,8 @@ def set_scale(lc, x):
 # need to fix export logo to map show to write
 def show(lc, string, center=False):
     # convert from Turtle coordinates to screen coordinates
-    x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
-    y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
+    x = lc.tw.canvas.width/2+int(lc.tw.canvas.xcor)
+    y = lc.tw.canvas.height/2-int(lc.tw.canvas.ycor)
     if type(string) == str or type(string) == unicode:
         if string == "media_None":
             pass
@@ -974,13 +973,13 @@ def show(lc, string, center=False):
         else:
             if center is True:
                 y -= lc.tw.textsize
-            draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,
-                      lc.tw.turtle.width-x)
+            lc.tw.canvas.draw_text(string,x,y,lc.tw.textsize,
+                      lc.tw.canvas.width-x)
     elif type(string) == float or type(string) == int:
         string = round_int(string)
         if center is True:
             y -= lc.tw.textsize
-        draw_text(lc.tw.turtle,string,x,y,lc.tw.textsize,lc.tw.turtle.width-x)
+        lc.tw.canvas.draw_text(string,x,y,lc.tw.textsize,lc.tw.canvas.width-x)
 
 # audio only
 def play_sound(lc, audio):
@@ -988,13 +987,13 @@ def play_sound(lc, audio):
 
 def clear(lc):
     stop_media(lc)
-    clearscreen(lc.tw.turtle)
+    lc.tw.canvas.clearscreen()
 
 def write(lc, string, fsize):
     # convert from Turtle coordinates to screen coordinates
-    x = lc.tw.turtle.width/2+int(lc.tw.turtle.xcor)
-    y = lc.tw.turtle.height/2-int(lc.tw.turtle.ycor)
-    draw_text(lc.tw.turtle,string,x,y-15,int(fsize),lc.tw.turtle.width)
+    x = lc.tw.canvas.width/2+int(lc.tw.canvas.xcor)
+    y = lc.tw.canvas.height/2-int(lc.tw.canvas.ycor)
+    lc.tw.canvas.draw_text(string,x,y-15,int(fsize),lc.tw.canvas.width)
 
 def hideblocks(lc):
     lc.tw.hide = False # force hide
@@ -1012,11 +1011,11 @@ def doevalstep(lc):
             try:
                 lc.step.next()
             except StopIteration:
-                lc.tw.turtle.spr.set_layer(TURTLE_LAYER)
+                lc.tw.turtle.show()
                 return False
     except logoerror, e:
         showlabel(lc, str(e)[1:-1])
-        lc.tw.turtle.spr.set_layer(TURTLE_LAYER)
+        lc.tw.turtle.show()
         return False
     return True
 

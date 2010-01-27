@@ -28,24 +28,40 @@ from gettext import gettext as _
 # A class for the list of blocks and everything they share in common
 #
 class Turtles:
-    def __init__(self):
+    def __init__(self, sprite_list):
         self.list = []
+        self.sprite_list = sprite_list
 
-    def get_turtle(self, i):
-        if i < 0 or i > len(self.list)-1:
-            return(None)
+    def get_turtle(self, i, append=False):
+        print "get turtle %d (%d)" % (i, len(self.list))
+        if i < 0:
+            print "IndexError: Turtles %d" % (i)
+            return self.list[0]
+        elif i > len(self.list)-1:
+            if append is False:
+                print "IndexError: Turtles %d" % (i)
+                return self.list[0]
+            else:
+                print "Adding %d turtles" % (i-len(self.list)+1)
+                for t in range(i-len(self.list)+1):
+                    Turtle(self)
+                return(self.list[i])
         else:
             return(self.list[i])
 
-    def length_of_list(self):
+    def turtle_count(self):
         return(len(self.list))
 
     def append_to_list(self, turtle):
         self.list.append(turtle)
 
     def remove_from_list(self, turtle):
-        if block in self.list:
+        if turtle in self.list:
             self.list.remove(turtle)
+
+    def show_all(self):
+        for turtle in self.list:
+            turtle.show()
 
     #
     # sprite utilities
@@ -61,23 +77,44 @@ class Turtles:
 #
 class Turtle:
     # The turtle is not a block, just a sprite with an orientation
-    def __init__(self, turtle_list, sprite_list,
+    def __init__(self, turtle_list,
                        colors=["#008000", "#00A000", "#D0D000", "#808000"],
                        scale=1.0):
+        self.x = 0
+        self.y = 0
         self.shapes = []
         self.type = 'turtle'
+        self.heading = 0
         _svg = SVG()
         _svg.set_scale(scale)
-        self.spr = sprites.Sprite(sprite_list, 0, 0,
+        self.spr = sprites.Sprite(turtle_list.sprite_list, self.x, self.y,
                        svg_str_to_pixbuf(_svg.turtle(colors)))
         turtle_list.append_to_list(self)
         for i in range(36):
             _svg.set_orientation(i*10)
             self.shapes.append(svg_str_to_pixbuf(_svg.turtle(colors)))
 
-    def rotate(self, orientation):
+    def rotate(self, heading):
+        self.heading = heading        
+        i = (int(self.heading+5)%360)/10
         try:
-            self.spr.set_shape(self.shapes[orientation])
+            self.spr.set_shape(self.shapes[i])
         except IndexError:
             self.spr.set_shape(self.shapes[0])
-            print "Turtle shape IndexError %d" % orientation
+            print "Turtle shape IndexError %f -> %d" % (heading, i)
+
+    def hide(self):
+        self.spr.set_layer(HIDE_LAYER)
+
+    def show(self):
+        self.spr.set_layer(TURTLE_LAYER)
+
+    def move(self, pos):
+        self.x, self.y = pos[0], pos[1]
+        self.spr.move(pos)
+
+    def get_xy(self):
+        return(self.x, self.y)
+
+    def get_heading(self):
+        return(self.heading)
