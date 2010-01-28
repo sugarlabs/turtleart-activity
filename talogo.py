@@ -615,23 +615,18 @@ def lcNew(tw):
     return lc
 
 def display_coordinates(tw, a=-1, b=-1, d=-1):
-    if hasattr(tw, "activity"):
-        if hasattr(tw.activity, "coordinates_label"):
-            if a==-1 and b==-1 and d == -1:
-                x = round_int(tw.canvas.xcor/tw.coord_scale)
-                y = round_int(tw.canvas.ycor/tw.coord_scale)
-                h = round_int(tw.canvas.heading)
-            else:
-                x = a
-                y = b
-                h = d
-            tw.activity.coordinates_label.set_text(_("xcor") + " = " + \
-                                                   str(x) + " " + \
-                                                   _("ycor") + " = " + \
-                                                   str(y) + " " + \
-                                                   _("heading") + " = " + \
-                                                   str(h))
-            tw.activity.coordinates_label.show()
+    if a==-1 and b==-1 and d == -1:
+        x = round_int(tw.canvas.xcor/tw.coord_scale)
+        y = round_int(tw.canvas.ycor/tw.coord_scale)
+        h = round_int(tw.canvas.heading)
+    else:
+         x = a
+         y = b
+         h = d
+    if tw.running_sugar():
+        tw.activity.coordinates_label.set_text("%s: %d %s: %d %s: %d" % (
+                                   _("xcor"), x, _("ycor"), y, _("heading"), h))
+        tw.activity.coordinates_label.show()
 
 def round_int(n):
     if int(float(n)) == n:

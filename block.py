@@ -28,8 +28,9 @@ from gettext import gettext as _
 # A class for the list of blocks and everything they share in common
 #
 class Blocks:
-    def __init__(self):
+    def __init__(self, font_scale_factor = 1):
         self.list = []
+        self.font_scale_factor = font_scale_factor
 
     def get_block(self, i):
         if i < 0 or i > len(self.list)-1:
@@ -67,6 +68,7 @@ class Blocks:
 class Block:
     #
     # TODO:
+    # block data should be stored in block, not in block.spr.label
     # Logo code
     # HTML code
     # debug code
@@ -92,7 +94,7 @@ class Block:
             self.name = OLD_NAMES[self.name]
 
         for i in range(len(self._font_size)):
-            self._font_size[i] *= self.scale
+            self._font_size[i] *= self.scale*block_list.font_scale_factor
 
         self._new_block_from_factory(sprite_list, labels, x, y)
 

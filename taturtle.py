@@ -33,7 +33,6 @@ class Turtles:
         self.sprite_list = sprite_list
 
     def get_turtle(self, i, append=False):
-        print "get turtle %d (%d)" % (i, len(self.list))
         if i < 0:
             print "IndexError: Turtles %d" % (i)
             return self.list[0]
@@ -42,7 +41,6 @@ class Turtles:
                 print "IndexError: Turtles %d" % (i)
                 return self.list[0]
             else:
-                print "Adding %d turtles" % (i-len(self.list)+1)
                 for t in range(i-len(self.list)+1):
                     Turtle(self)
                 return(self.list[i])
@@ -88,6 +86,7 @@ class Turtle:
         self.color = 0
         self.shade = 50
         self.pen_size = 5
+        self.pen_state = True
         _svg = SVG()
         _svg.set_scale(scale)
         self.spr = sprites.Sprite(turtle_list.sprite_list, self.x, self.y,
@@ -115,6 +114,9 @@ class Turtle:
     def set_pen_size(self, pen_size):
         self.pen_size = pen_size
 
+    def set_pen_state(self, pen_state):
+        self.pen_state = pen_state
+
     def hide(self):
         self.spr.set_layer(HIDE_LAYER)
 
@@ -139,3 +141,6 @@ class Turtle:
 
     def get_pen_size(self):
         return(self.pen_size)
+
+    def get_pen_state(self):
+        return(self.pen_state)

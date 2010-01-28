@@ -25,7 +25,6 @@
 # TODO:
 # - better comments! 
 # - many methods could have their logic simplified! 
-# - we need a method to know if we are running inside Sugar (vs. stand-alone)
 # - verbose flag should be in the scope of the object instance
 
 
@@ -41,22 +40,20 @@ import time
 from math import atan2, pi
 DEGTOR = 2*pi/360
 from constants import *
-from talogo import *
-from tacanvas import *
-from taproject import *
-import sprite_factory
 try:
     from sugar.graphics.objectchooser import ObjectChooser
 except:
     pass
 
-from tahoverhelp import *
 from gettext import gettext as _
-
-
-import sprites
-import block
-import taturtle
+from tahoverhelp import *
+from taproject import *
+from sprite_factory import SVG, svg_str_to_pixbuf
+from talogo import lcNew, run_blocks, stop_logo, clear, doevalstep
+from tacanvas import TurtleGraphics
+from sprites import Sprites, Sprite
+from block import Blocks, Block
+from taturtle import Turtles, Turtle
 
 """
 TurtleArt Window class abstraction 
@@ -141,10 +138,10 @@ class TurtleArtWindow():
         self.selected_blk = None
         self.selected_spr = None
         self.drag_group = None
-        self.block_list = block.Blocks()
-        self.sprite_list = sprites.Sprites(self.window, self.area, self.gc)
-        self.turtle_list = taturtle.Turtles(self.sprite_list)
-        self.turtle = taturtle.Turtle(self.turtle_list)
+        self.block_list = Blocks(self.scale)
+        self.sprite_list = Sprites(self.window, self.area, self.gc)
+        self.turtle_list = Turtles(self.sprite_list)
+        self.turtle = Turtle(self.turtle_list)
         self.selected_turtle = None
         self.canvas = TurtleGraphics(self, self.width, self.height)
 
@@ -174,7 +171,7 @@ class TurtleArtWindow():
     """
     Are we running from within Sugar?
     """
-    def _running_sugar(self): 
+    def running_sugar(self): 
         if hasattr(self, 'activity'):
             return True
         return False
@@ -232,12 +229,12 @@ class TurtleArtWindow():
     def hideshow_palette(self, state):
         if state is False:
             self.palette == False
-            if self._running_sugar():
+            if self.running_sugar():
                 self.activity.do_hidepalette()
             self._hide_palette()
         else:
             self.palette == True
-            if self._running_sugar():
+            if self.running_sugar():
                 self.activity.do_showpalette()
             self.show_palette()
 
@@ -265,7 +262,7 @@ class TurtleArtWindow():
     run turtle!
     """
     def run_button(self, time):
-        if self._running_sugar():
+        if self.running_sugar():
             self.activity.recenter()
         # Look for a 'start' block
         for blk in self._just_blocks():
@@ -288,7 +285,7 @@ class TurtleArtWindow():
     def _setup_misc(self):
         # media blocks get positioned into other blocks
         for name in MEDIA_SHAPES:
-            self.media_shapes[name] = sprites.Sprite(self.sprite_list, 0, 0,
+            self.media_shapes[name] = Sprite(self.sprite_list, 0, 0,
                 self._load_sprite_from_file("%s/%s.svg" % (self.path, name)))
             self.media_shapes[name].set_layer(HIDE_LAYER)
             self.media_shapes[name].type = 'media'
@@ -296,21 +293,21 @@ class TurtleArtWindow():
         for i, name in enumerate(STATUS_SHAPES):
             self.status_shapes[name] = self._load_sprite_from_file(
                                                "%s/%s.svg" % (self.path, name))
-        self.status_spr = sprites.Sprite(self.sprite_list, self.height-75, 0,
+        self.status_spr = Sprite(self.sprite_list, self.height-75, 0,
                                          self.status_shapes['status'])
         self.status_spr.set_layer(HIDE_LAYER)
         self.status_spr.type = 'status'
 
         for name in OVERLAY_SHAPES:
-            self.overlay_shapes[name] = sprites.Sprite(self.sprite_list,
+            self.overlay_shapes[name] = Sprite(self.sprite_list,
                 int(self.width/2-600), int(self.height/2-450),
                 self._load_sprite_from_file("%s/%s.svg" % (self.path, name)))
             self.overlay_shapes[name].set_layer(HIDE_LAYER)
             self.overlay_shapes[name].type = 'overlay'
 
     def _load_sprite_from_file(self, name):
-        svg = sprite_factory.SVG()
-        return sprite_factory.svg_str_to_pixbuf(svg.from_file(name))
+        svg = SVG()
+        return svg_str_to_pixbuf(svg.from_file(name))
 
     """
     Show/hide turtle palettes
@@ -328,7 +325,7 @@ class TurtleArtWindow():
 
     def show_toolbar_palette(self, n, init_only=False):
         if self.selectors == []:
-            svg = sprite_factory.SVG()
+            svg = SVG()
             x, y = 5, 0
             for i, name in enumerate(PALETTE_NAMES):
                 a = self._load_sprite_from_file("%s/%soff.svg" % (self.path,
@@ -336,7 +333,7 @@ class TurtleArtWindow():
                 b = self._load_sprite_from_file("%s/%son.svg" % (self.path,
                                                          name))
                 self.selector_shapes.append([a,b])
-                self.selectors.append(sprites.Sprite(self.sprite_list, x, y, a))
+                self.selectors.append(Sprite(self.sprite_list, x, y, a))
                 self.selectors[i].type = 'selector'
                 self.selectors[i].name = name
                 self.selectors[i].set_layer(TAB_LAYER)
@@ -366,9 +363,9 @@ class TurtleArtWindow():
 
         if self.palettes[n] == []:
             for i, name in enumerate(PALETTES[n]):
-                self.palettes[n].append(block.Block(self.block_list,
-                                                    self.sprite_list, name,
-                                                    0, 0, 'proto', [], 1.5))
+                self.palettes[n].append(Block(self.block_list,
+                                              self.sprite_list, name,
+                                              0, 0, 'proto', [], 1.5))
                 self.palettes[n][i].spr.set_layer(TAB_LAYER)
                 self.palettes[n][i].spr.set_shape(self.palettes[n][i].shapes[0])
             # simple packing algorithm
@@ -384,13 +381,12 @@ class TurtleArtWindow():
                 if w > max_width:
                     max_width = w
 
-            svg = sprite_factory.SVG()
+            svg = SVG()
             w = x+max_width+5
             if w < len(PALETTES)*(SELECTOR_WIDTH+5) + 5:
                 w = len(PALETTES)*(SELECTOR_WIDTH+5) + 5
-            self.palette_sprs[n] = sprites.Sprite(self.sprite_list, 0, 0,
-                sprite_factory.svg_str_to_pixbuf(svg.palette(w, self.width,
-                                                             PALETTE_HEIGHT)))
+            self.palette_sprs[n] = Sprite(self.sprite_list, 0, 0,
+                svg_str_to_pixbuf(svg.palette(w, self.width, PALETTE_HEIGHT)))
             self.palette_sprs[n].type = 'category'
             self.palette_sprs[n].set_layer(CATEGORY_LAYER)
         else:
@@ -451,7 +447,7 @@ class TurtleArtWindow():
     Is a chattube available for sharing?
     """
     def _sharing(self):
-        if self._running_sugar() and hasattr(self.activity, 'chattube') and\
+        if self.running_sugar() and hasattr(self.activity, 'chattube') and\
             self.activity.chattube is not None:
                 return True
         return False
@@ -566,7 +562,7 @@ class TurtleArtWindow():
             label = block_name_s + ": " + hover_dict[block_name]
         else:
             label = block_name_s
-        if self._running_sugar():
+        if self.running_sugar():
             self.activity.hover_help_label.set_text(label)
             self.activity.hover_help_label.show()
         else:
@@ -847,7 +843,8 @@ class TurtleArtWindow():
             self.canvas.ycor = self.canvas.canvas._height/2-ty+ \
                 self.canvas.cy-30
             self.canvas.move_turtle()
-            display_coordinates(self)
+            if self.running_sugar():
+                display_coordinates(self)
             self.selected_turtle = None
             return
 
@@ -938,7 +935,7 @@ class TurtleArtWindow():
     import from Journal
     """
     def _import_from_journal(self, spr):
-        if self._running_sugar():
+        if self.running_sugar():
             chooser = ObjectChooser('Choose image', None,\
                        gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
             try:
@@ -1012,7 +1009,7 @@ class TurtleArtWindow():
             # TODO: handle python-loaded case
             # newspr = Sprite(self,x-20,y-20,self.media_shapes['pythonloaded'])
         else:
-            newblk = block.Block(self.block_list, self.sprite_list, name,
+            newblk = Block(self.block_list, self.sprite_list, name,
                                  x-20, y-20, 'block', [])
             newspr = newblk.spr
         newspr.set_layer(TOP_LAYER)
@@ -1028,7 +1025,7 @@ class TurtleArtWindow():
                argname == 'number':
                 argname = 'string'
             (sx, sy) = newspr.get_xy()
-            argblk = block.Block(self.block_list, self.sprite_list,
+            argblk = Block(self.block_list, self.sprite_list,
                                  argname, 0, 0)
             argdock = argblk.docks[0]
             nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]

@@ -92,8 +92,12 @@ class TurtleGraphics:
         self.settextsize(32)
         self.setshade(50)
         self.pendown = True
-        for t in range(self.tw.turtle_list.turtle_count()):
-            self.set_turtle(t)
+        for i, t in enumerate(self.tw.turtle_list.list):
+            self.set_turtle(i)
+            t.set_color(0)
+            t.set_shade(50)
+            t.set_pen_size(5)
+            t.set_pen_state(True)
             self.xcor, self.ycor, self.heading = 0, 0, 0
             self.move_turtle()
             self.turn_turtle()
@@ -313,9 +317,7 @@ class TurtleGraphics:
         self.tw.area.invalidate_rect(rect, False)
 
     def set_turtle(self, i):
-        # TODO: associate pen up/down state with individual turtles
         # TODO: reskin active turtle
-        print "switching to Turtle %d" % (i)
         if i > self.tw.turtle_list.turtle_count()-1:
             # if it is a new turtle, start it in the center of the screen
             self.tw.turtle = self.tw.turtle_list.get_turtle(i, True)
@@ -324,6 +326,7 @@ class TurtleGraphics:
             self.heading = 0
             self.move_turtle()
             self.turn_turtle()
+            self.tw.turtle.set_pen_state(True)
         self.tw.turtle = self.tw.turtle_list.get_turtle(i, True)
         tx, ty = self.tw.turtle.get_xy()
         self.xcor = tx+30-self.width/2
@@ -332,5 +335,6 @@ class TurtleGraphics:
         self.setcolor(self.tw.turtle.get_color())
         self.setshade(self.tw.turtle.get_shade())
         self.setpensize(self.tw.turtle.get_pen_size())
+        self.pendown = self.tw.turtle.get_pen_state()
         self.tw.turtle_list.show_all()
         
