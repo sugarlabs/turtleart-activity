@@ -390,7 +390,7 @@ class TurtleArtWindow():
             if w < len(PALETTES)*(SELECTOR_WIDTH+5) + 5:
                 w = len(PALETTES)*(SELECTOR_WIDTH+5) + 5
             self.palette_sprs[n] = Sprite(self.sprite_list, 0, 0,
-                svg_str_to_pixbuf(svg.palette(w, self.width, PALETTE_HEIGHT)))
+                svg_str_to_pixbuf(svg.palette(w, w, PALETTE_HEIGHT)))
             self.palette_sprs[n].type = 'category'
             self.palette_sprs[n].set_layer(CATEGORY_LAYER)
         else:
@@ -750,12 +750,10 @@ class TurtleArtWindow():
         if spr is None:
             return True
         self.selected_spr = spr
-        if hasattr(spr,'type'):
-            print "clicked on %s" % (spr.type)
+
         # From the sprite at x, y, look for a corresponding block
         blk = self.block_list.spr_to_block(spr)
         if blk is not None:
-            print "clicked on %s (type %s)" % (blk.name, blk.type)
             if blk.type == 'block':
                 self.selected_blk = blk
                 self._block_pressed(mask, x, y, blk)
@@ -771,7 +769,6 @@ class TurtleArtWindow():
         # Next, look for a turtle
         t = self.turtle_list.spr_to_turtle(spr)
         if t is not None:
-            print "clicked on turtle %d" % (self.turtle_list.list.index(t))
             self.selected_turtle = t
             self._turtle_pressed(x, y)
             return True
@@ -783,6 +780,8 @@ class TurtleArtWindow():
                 return True
             elif spr.type == 'selector':
                 self._select_category(spr)
+            elif spr.type == 'category':
+                pass
 
     """
     Block pressed
