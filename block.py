@@ -74,7 +74,7 @@ class Block:
     # debug code
     # etc.
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
-                 labels=[], scale=2.0, colors=["#00FF00","#00A000"]):
+                 values=[], scale=2.0, colors=["#00FF00","#00A000"]):
         self.spr = None
         self.shapes = []
         self.name = name
@@ -82,7 +82,7 @@ class Block:
         self.scale = scale
         self.docks = None
         self.connections = None
-        self.defaults = []
+        self.values = []
         self.content = None
         self.primitive = None
         self.type = type
@@ -96,13 +96,13 @@ class Block:
         for i in range(len(self._font_size)):
             self._font_size[i] *= self.scale*block_list.font_scale_factor
 
-        self._new_block_from_factory(sprite_list, labels, x, y)
+        self.values = values
 
-        if DEFAULTS.has_key(self.name):
-            self.defaults = DEFAULTS[self.name]
+        self._new_block_from_factory(sprite_list, x, y)
 
+        # TODO: add media block graphics here
         if name in CONTENT_BLOCKS:
-            self.content = self,name
+            self.content = self.name
 
         if PRIMITIVES.has_key(name):
             self.primitive = PRIMITIVES[self.name]
@@ -129,9 +129,10 @@ class Block:
         self._make_block(e, self.svg)
         self.spr.set_shape(self.shapes[0])
 
-    def _new_block_from_factory(self, sprite_list, labels, x, y):
+    def _new_block_from_factory(self, sprite_list, x, y):
 
-        # print "new block: %s (%d %d)" % (self.name, x, y)
+        if self.type == 'block':
+            print "new block: %s (%d %d)" % (self.name, x, y)
 
         self.svg = SVG()
         self.svg.set_scale(self.scale)
@@ -147,15 +148,14 @@ class Block:
         self.spr.set_margins(self._left, self.svg.get_slot_depth(), self._right,
                              self.svg.get_slot_depth()*2)
 
-        # If labels were passed, use them;
-        if len(labels) > 0:
-            for i, l in enumerate(labels):
-                self._set_labels(i, l)
-        # otherwise use default values;
+        if self.name in CONTENT_BLOCKS and len(self.values) > 0:
+            for i, v in enumerate(self.values):
+                self._set_labels(i, str(v))
         elif BLOCK_NAMES.has_key(self.name):
-            for i, l in enumerate(BLOCK_NAMES[self.name]):
-                self._set_labels(i, l)
-        # and make sure the labels fit.
+            for i, n in enumerate(BLOCK_NAMES[self.name]):
+                self._set_labels(i, n)
+
+        # Make sure the labels fit.
         self.resize()
 
     def _set_labels(self, i, label):
@@ -221,14 +221,14 @@ class Block:
         self.svg.set_colors(self.colors)
 
     def _make_basic_style(self, e, svg):
-        self.svg.expand(40+e, 0)
+        self.svg.expand(25+e, 0)
         self._make_basic_block(svg)
         self.docks = (('flow',True,self.svg.docks[0][0],self.svg.docks[0][1]),
                       ('flow',False,self.svg.docks[1][0],self.svg.docks[1][1]))
         self._left, self._right = 2, 2
 
     def _make_basic_style_head(self, e, svg):
-        self.svg.expand(40+e, 0)
+        self.svg.expand(25+e, 0)
         self.svg.set_slot(False)
         self.svg.set_cap(True)
         self._make_basic_block(svg)
@@ -238,7 +238,7 @@ class Block:
         self._left, self._right = 2, 2
 
     def _make_basic_style_head_1arg(self, e, svg):
-        self.svg.expand(40+e, 0)
+        self.svg.expand(25+e, 0)
         self.svg.set_innie([True])
         self.svg.set_slot(False)
         self.svg.set_cap(True)
@@ -251,7 +251,7 @@ class Block:
         self._left, self._right = 2, self.svg.get_innie_width()
 
     def _make_basic_style_tail(self, e, svg):
-        self.svg.expand(40+e, 0)
+        self.svg.expand(25+e, 0)
         self.svg.set_tab(False)
         self._make_basic_block(svg)
         self.docks = (('flow', True, self.svg.docks[0][0],

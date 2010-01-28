@@ -245,12 +245,17 @@ class SVG:
         self._width, self._height = 60, 60
         return self._header() + svg
 
-    def palette(self, width1, width2, height):
-        self._width, self._height = width2, height
-        self._fill, self._stroke = "#282828", "none"
-        svg = self._rect(width2, 55, 0, 0)
+    def palette(self, width, height):
+        self._width, self._height = width, height
         self._fill, self._stroke = "#FFD000", "none"
-        svg += self._rect(width1, height-55, 0, 55)
+        svg = self._rect(width, height, 0, 0)
+        svg += self._footer()
+        return self._header() + svg
+
+    def toolbar(self, width, height):
+        self._width, self._height = width, height
+        self._fill, self._stroke = "#282828", "none"
+        svg = self._rect(width, height, 0, 0)
         svg += self._footer()
         return self._header() + svg
 

@@ -33,23 +33,24 @@ TOP_LAYER = 1000
 
 TURTLE = 0
 PEN = 1
-NUMBER = 2
-FLOW = 3
-BLOCKS = 4
-EXTRAS = 5
-PORTFOLIO = 6
-TRASH = 7
+COLORS = 2
+NUMBER = 3
+FLOW = 4
+BLOCKS = 5
+EXTRAS = 6
+PORTFOLIO = 7
+TRASH = 8
 
-PALETTE_NAMES = ['turtle', 'pen', 'number', 'flow', 'blocks', 'extras',
-                 'portfolio', 'trash']
+PALETTE_NAMES = ['turtle', 'pen', 'colors', 'number', 'flow', 'blocks',
+                 'extras', 'portfolio', 'trash']
 
 PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show', 
              'seth', 'setxy', 'heading', 'xcor', 'ycor', 'setscale',
               'arc', 'scale'],
             ['penup','pendown', 'setpensize', 'fillscreen', 'pensize',
              'settextsize', 'setcolor', 'setshade', 'textsize', 'color',
-             'shade', 'red', 'orange', 'yellow', 'green', 'cyan', 'blue',
-             'purple'],
+             'shade'],
+            [ 'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple'],
             ['plus2', 'minus2', 'product2',
              'division2', 'identity2', 'remainder2', 'sqrt', 'random',
              'number', 'greater', 'less', 'equal', 'not', 'and', 'or'],
@@ -68,16 +69,16 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
 # block style attributes
 #
 
-COLORS = [["#00FF00","#00A000"], ["#00FFFF","#00A0A0"], ["#FF00FF","#A000A0"],
-          ["#FFC000","#A08000"], ["#FFFF00","#A0A000"], ["#FF0000","#A0000"],
-          ["#0000FF","#0000FF"], ["#FFFF00","#A0A000"]]
+COLORS = [["#00FF00","#00A000"], ["#00FFFF","#00A0A0"], ["#00FFFF","#00A0A0"],
+          ["#FF00FF","#A000A0"], ["#FFC000","#A08000"], ["#FFFF00","#A0A000"],
+          ["#FF0000","#A00000"], ["#0000FF","#0000FF"], ["#FFFF00","#A0A000"]]
 
 BOX_COLORS = {'red':["#FF0000","#A00000"],'orange':["#FFD000","#AA8000"],
               'yellow':["#FFFF00","#A0A000"],'green':["#00FF00","#008000"],
               'cyan':["#00FFFF","#00A0A0"],'blue':["#0000FF","#000080"],
               'purple':["#FF00FF","#A000A0"]}
 
-PALETTE_HEIGHT = 175
+PALETTE_HEIGHT = 120
 SELECTOR_WIDTH = 55
 ICON_SIZE = 55
 SELECTED_COLOR = "#0000FF"
@@ -130,7 +131,7 @@ BLOCK_NAMES = {'clean':[_('clean')], 'forward':[_('forward')],
     'settextsize':[_('set text size')], 'setcolor':[_('set color')],
     'setshade':[_('set shade')],
     'fillscreen':[_('fill screen'),_('color'),_('shade')],
-    'shade':[_('shade')],
+    'shade':[_('shade')], 'nop':[_('load Python code')],
     'pensize':[_('pen size')], 'textsize':[_('text size')],
     'color':[_('color')],
     'plus2':['+'], 'minus2':['–'], 'product2':['×'], 'division2':['/'],
@@ -153,7 +154,7 @@ BLOCK_NAMES = {'clean':[_('clean')], 'forward':[_('forward')],
     'setxy':[_('set xy'), _('x'), _('y')],
     'scale':[_('scale')], 'keyboard':[_('keyboard')],
     'push':[_('push')], 'pop':[_('pop')], 'kbinput':[_('query keyboard')],
-    'myfunc':[_('python'), _('code'), _('value')], 'nop':[' '],
+    'myfunc':[_('python'), _('code'), _('value')],
     'printheap':[_('show heap')], 'turtle':[_('turtle')],
     'clearheap':[_('empty heap')], 'restore':[_('restore')],
     'red':[_('red')], 'orange':[_('orange')], 'yellow':[_('yellow')],

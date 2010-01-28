@@ -129,6 +129,7 @@ class TurtleArtWindow():
         self.overlay_shapes = {}
         self.status_spr = None
         self.status_shapes = {}
+        self.toolbar_spr = None
         self.palette_sprs = []
         self.palettes = []
         self.selected_palette = None
@@ -206,7 +207,7 @@ class TurtleArtWindow():
     def set_userdefined(self):
         for blk in self._just_blocks():
             if blk.name == 'nop':
-                blk.set_image(self.media_shapes['pythonloaded'])
+                blk.spr.set_label('Python code', 0)
         self.nop = 'pythonloaded'
 
     """
@@ -326,11 +327,12 @@ class TurtleArtWindow():
             if self.palette_sprs[i] is not None:
                 self.palette_sprs[i].set_layer(HIDE_LAYER)
         self.selected_palette = None
+        self.toolbar_spr.set_layer(HIDE_LAYER)
 
     def show_toolbar_palette(self, n, init_only=False):
         if self.selectors == []:
             svg = SVG()
-            x, y = 5, 0
+            x, y = 25, 0
             for i, name in enumerate(PALETTE_NAMES):
                 a = self._load_sprite_from_file("%s/%soff.svg" % (self.path,
                                                          name))
@@ -365,7 +367,16 @@ class TurtleArtWindow():
         self.selectors[n].set_shape(self.selector_shapes[n][1])
         self.selected_selector = self.selectors[n]
 
+        if self.toolbar_spr == None:
+            self.toolbar_spr = Sprite(self.sprite_list, 0, 0,
+                svg_str_to_pixbuf(svg.toolbar(self.width, ICON_SIZE)))
+            self.toolbar_spr.type = 'toolbar'
+            self.toolbar_spr.set_layer(CATEGORY_LAYER)
+        else:
+            self.toolbar_spr.set_layer(CATEGORY_LAYER)
+
         if self.palettes[n] == []:
+            _min_width = len(PALETTES)*(SELECTOR_WIDTH+5) + 25
             for i, name in enumerate(PALETTES[n]):
                 self.palettes[n].append(Block(self.block_list,
                                               self.sprite_list, name,
@@ -373,24 +384,24 @@ class TurtleArtWindow():
                 self.palettes[n][i].spr.set_layer(TAB_LAYER)
                 self.palettes[n][i].spr.set_shape(self.palettes[n][i].shapes[0])
             # simple packing algorithm
-            x, y, max_width = 5, ICON_SIZE+5, 0
+            _x, _y, _max_width = 5, ICON_SIZE+5, 0
             for i in range(len(PALETTES[n])):
-                w, h = self.palettes[n][i].spr.get_dimensions()
-                if y+h > PALETTE_HEIGHT:
-                    y = ICON_SIZE+5
-                    x += int(max_width+5)
-                    max_width = 0
-                self.palettes[n][i].spr.move((int(x), int(y)))
-                y += int(h+5)
-                if w > max_width:
-                    max_width = w
+                _w, _h = self.palettes[n][i].spr.get_dimensions()
+                if _y+_h > PALETTE_HEIGHT+ICON_SIZE:
+                    _y = ICON_SIZE+5
+                    _x += int(_max_width+5)
+                    _max_width = 0
+                self.palettes[n][i].spr.move((int(_x), int(_y)))
+                _y += int(_h+5)
+                if _w > _max_width:
+                    _max_width = _w
 
             svg = SVG()
-            w = x+max_width+5
-            if w < len(PALETTES)*(SELECTOR_WIDTH+5) + 5:
-                w = len(PALETTES)*(SELECTOR_WIDTH+5) + 5
-            self.palette_sprs[n] = Sprite(self.sprite_list, 0, 0,
-                svg_str_to_pixbuf(svg.palette(w, w, PALETTE_HEIGHT)))
+            _w = _x+_max_width+25
+            if _w < _min_width:
+                _w = _min_width
+            self.palette_sprs[n] = Sprite(self.sprite_list, 0, ICON_SIZE,
+                svg_str_to_pixbuf(svg.palette(_w, PALETTE_HEIGHT)))
             self.palette_sprs[n].type = 'category'
             self.palette_sprs[n].set_layer(CATEGORY_LAYER)
         else:
@@ -956,7 +967,7 @@ class TurtleArtWindow():
                         spr.set_image(self.media_shapes['audioon'])
                     else:
                         spr.set_image(self.media_shapes['decson'])
-                    spr.ds_id = dsobject.object_id
+                    blk.values[0] = dsobject.object_id
                     dsobject.destroy()
             finally:
                 chooser.destroy()
@@ -1009,19 +1020,20 @@ class TurtleArtWindow():
     Make a new block.
     """
     def _new_block_from_category(self, name, x, y):
-        # load alternative image of nop block if python code is loaded
-        if name == 'nop' and self.nop == 'pythonloaded':
-            pass
-            # TODO: handle python-loaded case
-            # newspr = Sprite(self,x-20,y-20,self.media_shapes['pythonloaded'])
+        if name in CONTENT_BLOCKS:
+            newblk = Block(self.block_list, self.sprite_list, name,
+                           x-20, y-20, 'block', DEFAULTS[name])
         else:
             newblk = Block(self.block_list, self.sprite_list, name,
-                                 x-20, y-20, 'block', [])
-            newspr = newblk.spr
+                               x-20, y-20, 'block')
+        if name == 'nop' and self.nop == 'pythonloaded':
+            newblk.spr.set_label('Python code', 0)
+        newspr = newblk.spr
         newspr.set_layer(TOP_LAYER)
         self.drag_pos = 20, 20
         newblk.connections = [None]*len(newblk.docks)
-        for i, argvalue in enumerate(newblk.defaults):
+        print DEFAULTS[newblk.name]
+        for i, argvalue in enumerate(DEFAULTS[newblk.name]):
             # skip the first dock position--it is always a connector
             dock = newblk.docks[i+1]
             argname = dock[0]
@@ -1032,11 +1044,10 @@ class TurtleArtWindow():
                 argname = 'string'
             (sx, sy) = newspr.get_xy()
             argblk = Block(self.block_list, self.sprite_list,
-                                 argname, 0, 0)
+                                 argname, 0, 0, 'block', [argvalue])
             argdock = argblk.docks[0]
             nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
             argblk.spr.move((nx, ny))
-            argblk.spr.set_label(str(argvalue))
             argblk.spr.set_layer(TOP_LAYER)
             argblk.connections = [newblk, None]
             newblk.connections[i+1] = argblk

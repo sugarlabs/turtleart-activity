@@ -74,7 +74,7 @@ def run_blocks(lc, blk, blocks, run_flag):
             lc.stacks['stack2'] = readline(lc,blocks_to_code(lc, b))
         if b.name == 'hat':
             if (b.connections[1] is not None):
-                text = b.connections[1].spr.labels[0]
+                text = b.connections[1].values[0]
                 lc.stacks['stack3'+text] = readline(lc,blocks_to_code(lc, b))
     code = blocks_to_code(lc, blk)
     if run_flag is True:
@@ -85,7 +85,6 @@ def run_blocks(lc, blk, blocks, run_flag):
 def blocks_to_code(lc, blk):
     if blk is None:
         return ['%nothing%']
-    spr = blk.spr
     code = []
     dock = blk.docks[0]
     if len(dock)>4:
@@ -95,30 +94,29 @@ def blocks_to_code(lc, blk):
     else:
         if blk.name=='number':
             try:
-                code.append(float(spr.labels[0]))
-            except:
-                code.append(float(ord(spr.labels[0][0])))
+                code.append(float(blk.values[0]))
+            except ValueError:
+                code.append(float(ord(blk.values[0][0])))
         elif blk.name=='string' or blk.name=='title':
-            if type(spr.labels[0]) == float or type(spr.labels[0]) == int:
-                if int(spr.labels[0]) == spr.labels[0]:
-                    spr.labels[0] = int(spr.labels[0])
-                code.append('#s'+str(spr.labels[0]))
+            if type(blk.values[0]) == float or type(blk.values[0]) == int:
+                if int(blk.values[0]) == blk.values[0]:
+                    blk.values[0] = int(blk.values[0])
+                code.append('#s'+str(blk.values[0]))
             else:
-                code.append('#s'+spr.labels[0])
+                code.append('#s'+blk.values[0])
         elif blk.name=='journal':
-            if spr.ds_id is not None: # TODO: put ds_id in blk
-                code.append('#smedia_'+str(spr.ds_id))
+            if blk.values[0] is not None:
+                code.append('#smedia_'+str(blk.values[0]))
             else:
                 code.append('#smedia_None')
-        elif blk.name=='descriptionoff' or \
-             blk.name=='descriptionon':
-            if spr.ds_id is not None:
-                code.append('#sdescr_'+str(spr.ds_id))
+        elif blk.name=='descriptionoff' or blk.name=='descriptionon':
+            if blk.values[0] is not None:
+                code.append('#sdescr_'+str(blk.values[0]))
             else:
                 code.append('#sdescr_None')
         elif blk.name=='audiooff' or blk.name=='audio':
-            if spr.ds_id is not None:
-                code.append('#saudio_'+str(spr.ds_id))
+            if blk.values[0] is not None:
+                code.append('#saudio_'+str(blk.values[0]))
             else:
                 code.append('#saudio_None')
         else:

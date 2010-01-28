@@ -159,41 +159,38 @@ def read_data(tw, data):
 
 def load_block(tw, b):
     # TODO: optionally read blocks without x, y
-    # A block is saved as: (i, (btype, label), x, y, (c0,... cn))
+    # A block is saved as: (i, (btype, value), x, y, (c0,... cn))
     media = None
-    btype, label = b[1], None
+    btype, value = b[1], None
     if type(btype) == type((1,2)): 
-        btype, label = btype
-    if label is None:
-        labels = []
+        btype, value = btype
+    if btype in CONTENT_BLOCKS:
+        values = [value]
     else:
-        labels = [label]
+        values = []
 
-    """
-    # TODO: handle media 
     if btype == 'journal' or btype == 'audiooff' or btype == 'descriptionoff':
-        media = label
+        media = value
         label = None
-    """
     blk = block.Block(tw.block_list, tw.sprite_list, 
                       btype, b[2]+tw.canvas.cx,
-                      b[3]+tw.canvas.cy, 'block', labels)
-    """
+                      b[3]+tw.canvas.cy, 'block', values)
     if media is not None and media not in nolabel:
         try:
             dsobject = datastore.get(media)
-            spr.ds_id = dsobject.object_id
-            setimage(spr, tw.media_shapes[shape_dict[spr.proto.name]])
-            if spr.proto.name == 'journal':
+            blk.value[0] = dsobject.object_id
+            # TODO: handle media icons
+            # setimage(spr, tw.media_shapes[shape_dict[spr.proto.name]])
+            if blk.name == 'journal':
+                '''
                 pixbuf = get_pixbuf_from_journal(dsobject,
                                                  spr.width,spr.height)
                 if pixbuf is not None:
                     setimage(spr, pixbuf)
+                '''
             dsobject.destroy()
         except:
-            if hasattr(spr,"ds_id"):
-                print "couldn't open dsobject (" + str(spr.ds_id) + ")"
-    """
+            print "couldn't open dsobject (%s)" % (blk.values[0])
     blk.spr.set_layer(BLOCK_LAYER)
     return blk
 
@@ -262,14 +259,10 @@ def _assemble_data_to_save(tw, save_turtle=True):
     for i, b in enumerate(tw._just_blocks()):
          b.id = i
     for b in tw._just_blocks():
-        name = (b.name, b.spr.labels[0])
-        """
-        if tw.defdict.has_key(name) or name in nolabel:
-            if hasattr(b,"ds_id") and b.ds_id != None:
-                name=(name, str(b.ds_id))
-            else:
-                name=(name, b.spr.labels[0])
-        """
+        if b.name in CONTENT_BLOCKS:
+            name = (b.name, b.values[0])
+        else:
+            name = (b.name)
         if hasattr(b, 'connections'):
             connections = [get_id(c) for c in b.connections]
         else:
