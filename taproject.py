@@ -1,5 +1,5 @@
 #Copyright (c) 2007-8, Playful Invention Company.
-#Copyright (c) 2008-9, Walter Bender
+#Copyright (c) 2008-10, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal

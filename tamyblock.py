@@ -1,4 +1,4 @@
-#Copyright (c) 2009, Walter Bender
+#Copyright (c) 2009-10, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -36,21 +36,21 @@ def myblock(lc,x):
 
     try:  # make sure x is a number
        x = float(x)
-    except:
+    except ValueError:
         return
 
-    pen = lc.tw.turtle.pendown              # save current turtle pen state
+    pen = lc.tw.canvas.pendown              # save current turtle pen state
 
     dist = 0
-    while dist+lc.tw.turtle.pensize < x:    # repeat drawing dots
-        setpen(lc.tw.turtle, True)
-        forward(lc.tw.turtle, 1)
-        setpen(lc.tw.turtle, False)
-        forward(lc.tw.turtle, (lc.tw.turtle.pensize*2)-1)
-        dist += (lc.tw.turtle.pensize*2)
-    forward(lc.tw.turtle, x-dist)           # make sure we have moved x
+    while dist+lc.tw.canvas.pensize < x:    # repeat drawing dots
+        lc.tw.canvas.setpen(True)
+        lc.tw.canvas.forward(1)
+        lc.tw.canvas.setpen(False)
+        lc.tw.canvas.forward((lc.tw.canvas.pensize*2)-1)
+        dist += (lc.tw.canvas.pensize*2)
+    lc.tw.canvas.forward(x-dist)           # make sure we have moved x
 
-    setpen(lc.tw.turtle, pen)               # restore pen state
+    lc.tw.canvas.setpen(pen)               # restore pen state
 
 
     ###########################################################################
