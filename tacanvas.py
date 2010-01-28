@@ -77,7 +77,7 @@ class TurtleGraphics:
         self.canvas.type = 'canvas'
         self.canvas.set_layer(CANVAS_LAYER)
         self.gc = self.canvas.image.new_gc()
-        self.tw.turtle.show()
+        self.tw.active_turtle.show()
         self.shade = 0
         self.clearscreen()
 
@@ -102,6 +102,7 @@ class TurtleGraphics:
             self.move_turtle()
             self.turn_turtle()
         self.tw.turtle_list.show_all()
+        self.set_turtle(0)
 
     def forward(self, n):
         n *= self.tw.coord_scale
@@ -197,7 +198,7 @@ class TurtleGraphics:
             self.pensize = ps
         except:
             pass
-        self.tw.turtle.set_pen_size(ps)
+        self.tw.active_turtle.set_pen_size(ps)
         self.gc.set_line_attributes(int(self.pensize*self.tw.coord_scale),
                      gtk.gdk.LINE_SOLID, gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
 
@@ -207,7 +208,7 @@ class TurtleGraphics:
             self.tcolor = c
         except:
             pass
-        self.tw.turtle.set_color(c)
+        self.tw.active_turtle.set_color(c)
         self.set_fgcolor()
         self.set_textcolor()
 
@@ -229,7 +230,7 @@ class TurtleGraphics:
             self.shade = s
         except:
             pass
-        self.tw.turtle.set_shade(s)
+        self.tw.active_turtle.set_shade(s)
         self.set_fgcolor()
         self.set_textcolor()
 
@@ -305,11 +306,11 @@ class TurtleGraphics:
                     h+self.pensize*self.tw.coord_scale+6)
 
     def turn_turtle(self):
-        self.tw.turtle.set_heading(self.heading)
+        self.tw.active_turtle.set_heading(self.heading)
 
     def move_turtle(self):
         x, y = self.width/2+int(self.xcor), self.height/2-int(self.ycor)
-        self.tw.turtle.move((self.cx+x-30, self.cy+y-30))
+        self.tw.active_turtle.move((self.cx+x-30, self.cy+y-30))
         self.invalt(x-30,y-30,60,60)
 
     def invalt(self, x, y, w, h):
@@ -320,21 +321,21 @@ class TurtleGraphics:
         # TODO: reskin active turtle
         if i > self.tw.turtle_list.turtle_count()-1:
             # if it is a new turtle, start it in the center of the screen
-            self.tw.turtle = self.tw.turtle_list.get_turtle(i, True)
+            self.tw.active_turtle = self.tw.turtle_list.get_turtle(i, True)
             self.xcor = 0
             self.ycor = 0
             self.heading = 0
             self.move_turtle()
             self.turn_turtle()
-            self.tw.turtle.set_pen_state(True)
-        self.tw.turtle = self.tw.turtle_list.get_turtle(i, True)
-        tx, ty = self.tw.turtle.get_xy()
+            self.tw.active_turtle.set_pen_state(True)
+        self.tw.active_turtle = self.tw.turtle_list.get_turtle(i, True)
+        tx, ty = self.tw.active_turtle.get_xy()
         self.xcor = tx+30-self.width/2
         self.ycor = self.height/2-ty-30
-        self.heading = self.tw.turtle.get_heading()
-        self.setcolor(self.tw.turtle.get_color())
-        self.setshade(self.tw.turtle.get_shade())
-        self.setpensize(self.tw.turtle.get_pen_size())
-        self.pendown = self.tw.turtle.get_pen_state()
+        self.heading = self.tw.active_turtle.get_heading()
+        self.setcolor(self.tw.active_turtle.get_color())
+        self.setshade(self.tw.active_turtle.get_shade())
+        self.setpensize(self.tw.active_turtle.get_pen_size())
+        self.pendown = self.tw.active_turtle.get_pen_state()
         self.tw.turtle_list.show_all()
         

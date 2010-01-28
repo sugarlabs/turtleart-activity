@@ -65,9 +65,9 @@ class Turtles:
     # sprite utilities
     #
     def spr_to_turtle(self, spr):
-        for b in self.list:
-            if spr == b.spr:
-                return b
+        for turtle in self.list:
+            if spr == turtle.spr:
+                return turtle
         return None
 
 #

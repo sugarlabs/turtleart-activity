@@ -162,7 +162,7 @@ def readline(lc, line):
     return res
 
 def setup_cmd(lc, str):
-    lc.tw.turtle.hide()
+    lc.tw.active_turtle.hide()
     lc.procstop=False
     list = readline(lc, str)
     lc.step = start_eval(lc, list)
@@ -179,11 +179,11 @@ def evline(lc, list):
     lc.arglist = None
     while lc.iline:
         if lc.tw.step_time > 0:
-            lc.tw.turtle.show()
+            lc.tw.active_turtle.show()
             endtime = millis()+an_int(lc,lc.tw.step_time)*100
             while millis()<endtime:
                 yield True
-            lc.tw.turtle.hide()
+            lc.tw.active_turtle.hide()
         token = lc.iline[0]
         if token == lc.symopar:
             token = lc.iline[1]
@@ -295,11 +295,11 @@ def no_args_check(lc):
     raise logoerror("#noinput")
 
 def prim_wait(lc,time):
-    lc.tw.turtle.show()
+    lc.tw.active_turtle.show()
     endtime = millis()+an_int(lc,time*1000)
     while millis()<endtime:
         yield True
-    lc.tw.turtle.hide()
+    lc.tw.active_turtle.hide()
     ireturn(lc); yield True
 
 def prim_repeat(lc, num, list):
@@ -996,11 +996,11 @@ def doevalstep(lc):
             try:
                 lc.step.next()
             except StopIteration:
-                lc.tw.turtle.show()
+                lc.tw.active_turtle.show()
                 return False
     except logoerror, e:
         showlabel(lc, str(e)[1:-1])
-        lc.tw.turtle.show()
+        lc.tw.active_turtle.show()
         return False
     return True
 

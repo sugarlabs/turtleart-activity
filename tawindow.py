@@ -138,10 +138,12 @@ class TurtleArtWindow():
         self.selected_blk = None
         self.selected_spr = None
         self.drag_group = None
+        self.drag_turtle = 'move', 0, 0
+        self.drag_pos = 0, 0
         self.block_list = Blocks(self.scale)
         self.sprite_list = Sprites(self.window, self.area, self.gc)
         self.turtle_list = Turtles(self.sprite_list)
-        self.turtle = Turtle(self.turtle_list)
+        self.active_turtle = Turtle(self.turtle_list)
         self.selected_turtle = None
         self.canvas = TurtleGraphics(self, self.width, self.height)
 
@@ -293,7 +295,7 @@ class TurtleArtWindow():
         for i, name in enumerate(STATUS_SHAPES):
             self.status_shapes[name] = self._load_sprite_from_file(
                                                "%s/%s.svg" % (self.path, name))
-        self.status_spr = Sprite(self.sprite_list, self.height-75, 0,
+        self.status_spr = Sprite(self.sprite_list, 0, self.height-150,
                                          self.status_shapes['status'])
         self.status_spr.set_layer(HIDE_LAYER)
         self.status_spr.type = 'status'
@@ -317,6 +319,8 @@ class TurtleArtWindow():
             for i in range(len(PALETTES[self.selected_palette])):        
                 self.palettes[self.selected_palette][i].spr.set_layer(
                                                                      HIDE_LAYER)
+            self.selectors[self.selected_palette].set_shape(
+                self.selector_shapes[self.selected_palette][0])
         for i in range(len(PALETTES)):
             self.selectors[i].set_layer(HIDE_LAYER)
             if self.palette_sprs[i] is not None:
@@ -467,14 +471,14 @@ class TurtleArtWindow():
         self.block_operation = 'move'
         # First, check to see if we are dragging or rotating a turtle.
         if self.selected_turtle is not None:
-            type, dragx, dragy = self.dragpos
-            (sx, sy) = self.selected_turtle.spr.get_xy()
-            if type == 'move':
+            dtype, dragx, dragy = self.drag_turtle
+            (sx, sy) = self.selected_turtle.get_xy()
+            if dtype == 'move':
                 if mdx != 0 or mdy != 0:
                     dx, dy = mdx, mdy
                 else:
                     dx, dy = x-dragx-sx, y-dragy-sy
-                self.selected_turtle.spr.move((sx+dx, sy+dy))
+                self.selected_turtle.move((sx+dx, sy+dy))
             else:
                 if mdx != 0 or mdy != 0:
                     dx, dy = mdx, mdy
@@ -489,7 +493,7 @@ class TurtleArtWindow():
         elif self.drag_group[0] is not None:
             blk = self.drag_group[0]
             self.selected_spr = blk.spr
-            dragx, dragy = self.dragpos
+            dragx, dragy = self.drag_pos
             if mdx != 0 or mdy != 0:
                 dx, dy = mdx, mdy
             else:
@@ -746,10 +750,12 @@ class TurtleArtWindow():
         if spr is None:
             return True
         self.selected_spr = spr
-
+        if hasattr(spr,'type'):
+            print "clicked on %s" % (spr.type)
         # From the sprite at x, y, look for a corresponding block
         blk = self.block_list.spr_to_block(spr)
         if blk is not None:
+            print "clicked on %s (type %s)" % (blk.name, blk.type)
             if blk.type == 'block':
                 self.selected_blk = blk
                 self._block_pressed(mask, x, y, blk)
@@ -763,9 +769,10 @@ class TurtleArtWindow():
             return True
 
         # Next, look for a turtle
-        tur = self.turtle_list.spr_to_turtle(spr)
-        if tur is not None:
-            self.selected_turtle = tur
+        t = self.turtle_list.spr_to_turtle(spr)
+        if t is not None:
+            print "clicked on turtle %d" % (self.turtle_list.list.index(t))
+            self.selected_turtle = t
             self._turtle_pressed(x, y)
             return True
 
@@ -786,7 +793,7 @@ class TurtleArtWindow():
             self._disconnect(blk)
             self.drag_group = self._find_group(blk)
             (sx, sy) = blk.spr.get_xy()
-            self.dragpos = x-sx, y-sy
+            self.drag_pos = x-sx, y-sy
             for blk in self.drag_group:
                 blk.spr.set_layer(TOP_LAYER)
 
@@ -835,13 +842,13 @@ class TurtleArtWindow():
                 self.dy = 0
         if verbose:
             print "processing remote button release: %d, %d" % (x, y)
+
         # We may have been moving the turtle
         if self.selected_turtle is not None:
-            (tx, ty) = self.canvas.spr.get_xy()
-            self.canvas.xcor = tx-self.canvas.cx- \
-                self.canvas.canvas._width/2+30
-            self.canvas.ycor = self.canvas.canvas._height/2-ty+ \
-                self.canvas.cy-30
+            (tx, ty) = self.selected_turtle.get_xy()
+            (cx, cy) = self.canvas.canvas.get_xy()
+            self.canvas.xcor = tx-self.canvas.canvas._width/2+30-cx
+            self.canvas.ycor = self.canvas.canvas._height/2-ty-30+cy
             self.canvas.move_turtle()
             if self.running_sugar():
                 display_coordinates(self)
@@ -1013,7 +1020,7 @@ class TurtleArtWindow():
                                  x-20, y-20, 'block', [])
             newspr = newblk.spr
         newspr.set_layer(TOP_LAYER)
-        self.dragpos = 20, 20
+        self.drag_pos = 20, 20
         newblk.connections = [None]*len(newblk.docks)
         for i, argvalue in enumerate(newblk.defaults):
             # skip the first dock position--it is always a connector
@@ -1074,12 +1081,13 @@ class TurtleArtWindow():
     Turtle pressed
     """
     def _turtle_pressed(self, x, y):
-        (tx, ty) = self.canvas.spr.get_xy()
+        (tx, ty) = self.selected_turtle.get_xy()
         dx, dy = x-tx-30, y-ty-30
         if dx*dx+dy*dy > 200:
-            self.dragpos = ('turn', self.canvas.heading-atan2(dy,dx)/DEGTOR, 0)
+            self.drag_turtle = ('turn',
+                                self.canvas.heading-atan2(dy,dx)/DEGTOR, 0)
         else:
-            self.dragpos = ('move', x-tx, y-ty)
+            self.drag_turtle = ('move', x-tx, y-ty)
 
     """
     Replace Journal block graphic with preview image 
