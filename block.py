@@ -212,9 +212,12 @@ class Block:
             print ">>>>> I don't know how to create a %s block" % (self.name)
 
     def _set_colors(self, svg):
-        for p in range(len(PALETTES)):
-            if self.name in PALETTES[p]:
-                self.colors = COLORS[p]
+        if BOX_COLORS.has_key(self.name):
+            self.colors = BOX_COLORS[self.name]
+        else:
+            for p in range(len(PALETTES)):
+                if self.name in PALETTES[p]:
+                    self.colors = COLORS[p]
         self.svg.set_colors(self.colors)
 
     def _make_basic_style(self, e, svg):

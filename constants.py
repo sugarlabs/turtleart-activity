@@ -44,14 +44,15 @@ PALETTE_NAMES = ['turtle', 'pen', 'number', 'flow', 'blocks', 'extras',
                  'portfolio', 'trash']
 
 PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show', 
-             'setheading', 'setxy', 'heading', 'xcor', 'ycor', 'setscale',
+             'seth', 'setxy', 'heading', 'xcor', 'ycor', 'setscale',
               'arc', 'scale'],
             ['penup','pendown', 'setpensize', 'fillscreen', 'pensize',
              'settextsize', 'setcolor', 'setshade', 'textsize', 'color',
-             'shade'],
-            ['plus2', 'minus2', 'number', 'product2',
-             'division2', 'identity2', 'remainder2', 'sqrt', 
-             'random', 'greater', 'less', 'equal', 'not', 'and', 'or'],
+             'shade', 'red', 'orange', 'yellow', 'green', 'cyan', 'blue',
+             'purple'],
+            ['plus2', 'minus2', 'product2',
+             'division2', 'identity2', 'remainder2', 'sqrt', 'random',
+             'number', 'greater', 'less', 'equal', 'not', 'and', 'or'],
             ['wait', 'forever', 'repeat', 'if', 'hspace',
              'vspace', 'stopstack'],
             ['hat1', 'stack1', 'hat', 'hat2', 'stack2', 'stack',
@@ -71,6 +72,10 @@ COLORS = [["#00FF00","#00A000"], ["#00FFFF","#00A0A0"], ["#FF00FF","#A000A0"],
           ["#FFC000","#A08000"], ["#FFFF00","#A0A000"], ["#FF0000","#A0000"],
           ["#0000FF","#0000FF"], ["#FFFF00","#A0A000"]]
 
+BOX_COLORS = {'red':["#FF0000","#A00000"],'orange':["#FFD000","#AA8000"],
+              'yellow':["#FFFF00","#A0A000"],'green':["#00FF00","#008000"],
+              'cyan':["#00FFFF","#00A0A0"],'blue':["#0000FF","#000080"],
+              'purple':["#FF00FF","#A000A0"]}
 
 PALETTE_HEIGHT = 175
 SELECTOR_WIDTH = 55
@@ -87,15 +92,16 @@ BASIC_STYLE_HEAD_1ARG = ['hat']
 BASIC_STYLE_TAIL = ['stopstack']
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
     'hideblocks', 'clearheap', 'printheap', 'kbinput']
-BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'setheading', 'show',
+BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1',
     'storeinbox2', 'wait', 'stack', 'push', 'nop', 'turtle']
-BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storeinbox', 'myfunc']
+BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storeinbox']
 BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'textcolor', 'textsize', 'box1', 'box2', 'string', 'leftpos', 'scale',
-    'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard']
-NUMBER_STYLE = ['plus2', 'product2', 'random']
+    'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard',
+    'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple']
+NUMBER_STYLE = ['plus2', 'product2', 'random', 'myfunc']
 NUMBER_STYLE_PORCH = ['minus2', 'division2', 'remainder2']
 NUMBER_STYLE_1ARG = ['sqrt', 'box', 'identity2']
 COMPARE_STYLE = ['greater', 'less', 'equal']
@@ -116,7 +122,7 @@ CONTENT_BLOCKS = ['number', 'string', 'media', 'audio', 'journal']
 
 BLOCK_NAMES = {'clean':[_('clean')], 'forward':[_('forward')],
     'back':[_('back')],
-    'left':[_('left')], 'right':[_('right')], 'setheading':[_('set heading')],
+    'left':[_('left')], 'right':[_('right')], 'seth':[_('set heading')],
     'show':[_('show')], 'setscale':[_('set scale')], 'xcor':[_('xcor')],
     'ycor':[_('ycor')], 'heading':[_('heading')], 'penup':[_('pen up')],
     'pendown':[_('pen down')], 'setpensize':[_('set pen size')],
@@ -149,7 +155,10 @@ BLOCK_NAMES = {'clean':[_('clean')], 'forward':[_('forward')],
     'push':[_('push')], 'pop':[_('pop')], 'kbinput':[_('query keyboard')],
     'myfunc':[_('python'), _('code'), _('value')], 'nop':[' '],
     'printheap':[_('show heap')], 'turtle':[_('turtle')],
-    'clearheap':[_('empty heap')], 'restore':[_('restore')]}
+    'clearheap':[_('empty heap')], 'restore':[_('restore')],
+    'red':[_('red')], 'orange':[_('orange')], 'yellow':[_('yellow')],
+    'green':[_('green')], 'cyan':[_('cyan')], 'blue':[_('blue')],
+    'purple':[_('purple')]}
 
 #
 # Legacy names
@@ -164,7 +173,7 @@ OLD_NAMES = {'product':'product2',
 #
 
 PRIMITIVES = {'clean':'clean', 'forward':'forward', 'back':'back', 'arc':'arc',
-    'left':'left', 'right':'right', 'setheading':'seth', 'scale':'scale',
+    'left':'left', 'right':'right', 'seth':'seth', 'scale':'scale',
     'show':'show', 'set scale':'setscale', 'xcor':'xcor', 'setxy':'setxy',
     'ycor':'ycor', 'heading':'heading', 'penup':'penup',
     'pendown':'pendown', 'setpensize':'setpensize',
@@ -188,7 +197,10 @@ PRIMITIVES = {'clean':'clean', 'forward':'forward', 'back':'back', 'arc':'arc',
     'bottompos':'bottompos', 'width':'hres', 'height':'vres',
     'hideblocks':'hideblocks', 'push':'push', 'pop':'pop',
     'keyboard':'keyboard', 'kbinput':'kbinput', 'myfunc':'myfunc',
-    'nop':'nop', 'printheap':'printheap', 'clearheap':'clearheap'}
+    'nop':'nop', 'printheap':'printheap', 'clearheap':'clearheap',
+    'red':'red', 'orange':'orange', 'yellow':'yellow',
+    'green':'green', 'cyan':'cyan', 'blue':'blue',
+    'purple':'purple'}
 
 #
 # block default values

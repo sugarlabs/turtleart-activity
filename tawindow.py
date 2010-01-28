@@ -101,11 +101,11 @@ class TurtleArtWindow():
         self.area = self.window.window
         self.gc = self.area.new_gc()
         if self._OLPC_XO_1():
-            self.lead = 1.6
-            self.scale = 1.0
+            self.lead = 1.0
+            self.scale = 0.67
         else:
             self.lead = 1.0
-            self.scale = 1.6
+            self.scale = 1.0
         self.cm = self.gc.get_colormap()
         self.rgb = [255,0,0]
         self.bgcolor = self.cm.alloc_color('#fff8de')
