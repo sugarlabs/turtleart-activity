@@ -221,14 +221,14 @@ class Block:
         self.svg.set_colors(self.colors)
 
     def _make_basic_style(self, e, svg):
-        self.svg.expand(25+e, 0)
+        self.svg.expand(e, 0)
         self._make_basic_block(svg)
         self.docks = (('flow',True,self.svg.docks[0][0],self.svg.docks[0][1]),
                       ('flow',False,self.svg.docks[1][0],self.svg.docks[1][1]))
         self._left, self._right = 2, 2
 
     def _make_basic_style_head(self, e, svg):
-        self.svg.expand(25+e, 0)
+        self.svg.expand(10+e, 0)
         self.svg.set_slot(False)
         self.svg.set_cap(True)
         self._make_basic_block(svg)
@@ -238,7 +238,7 @@ class Block:
         self._left, self._right = 2, 2
 
     def _make_basic_style_head_1arg(self, e, svg):
-        self.svg.expand(25+e, 0)
+        self.svg.expand(10+e, 0)
         self.svg.set_innie([True])
         self.svg.set_slot(False)
         self.svg.set_cap(True)
@@ -248,10 +248,10 @@ class Block:
                                         self.svg.docks[0][1]),
                       ('flow', False, self.svg.docks[1][0],
                                       self.svg.docks[1][1]))
-        self._left, self._right = 2, self.svg.get_innie_width()
+        self._left, self._right = 2, self.svg.get_innie_width()*1.5
 
     def _make_basic_style_tail(self, e, svg):
-        self.svg.expand(25+e, 0)
+        self.svg.expand(10+e, 0)
         self.svg.set_tab(False)
         self._make_basic_block(svg)
         self.docks = (('flow', True, self.svg.docks[0][0],
@@ -259,7 +259,7 @@ class Block:
                       ('unavailable', False, 0, 0))
 
     def _make_basic_style_1arg(self, e, svg):
-        self.svg.expand(25+e, 0)
+        self.svg.expand(10+e, 0)
         self.svg.set_innie([True])
         self._make_basic_block(svg)
         self.docks = (('flow', True, self.svg.docks[0][0],
@@ -268,10 +268,10 @@ class Block:
                                         self.svg.docks[1][1]),
                       ('flow', False, self.svg.docks[2][0],
                                       self.svg.docks[2][1]))
-        self._left, self._right = 2, self.svg.get_innie_width()
+        self._left, self._right = 2, self.svg.get_innie_width()*1.5
 
     def _make_basic_style_2arg(self, e, svg):
-        self.svg.expand(25+e, 0)
+        self.svg.expand(10+e, 0)
         self.svg.set_innie([True,True])
         self._make_basic_block(svg)
         self.docks = (('flow', True, self.svg.docks[0][0],
@@ -393,7 +393,7 @@ class Block:
         self._left = self._right
 
     def _make_flow_style(self, e, svg):
-        self.svg.expand(25+e, 0)
+        self.svg.expand(e, 0)
         self.svg.set_slot(True)
         self._make_basic_flow(svg)
         self.docks = (('flow', True, self.svg.docks[0][0],
@@ -404,7 +404,7 @@ class Block:
         self._left, self._right = 0, self.svg.get_width()-self.svg.docks[1][0]
 
     def _make_flow_style_1arg(self, e, svg):
-        self.svg.expand(25+e, 0)
+        self.svg.expand(e, 0)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_innie([True])
@@ -422,7 +422,7 @@ class Block:
                       self.svg.get_innie_width()*1.5
 
     def _make_flow_style_boolean(self, e, svg):
-        self.svg.expand(25+e, 0)
+        self.svg.expand(e, 0)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_boolean(True)
@@ -438,7 +438,7 @@ class Block:
         self._left, self._right = 2, self.svg.get_width()-self.svg.docks[1][0]
 
     def _make_flow_style_else(self, e, svg):
-        self.svg.expand(25+e, 0)
+        self.svg.expand(e, 0)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_else(True)

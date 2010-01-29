@@ -263,7 +263,7 @@ class TurtleArtWindow():
         return map(int, event.get_coords())
 
     """
-    run turtle!
+    Run turtle!
     """
     def run_button(self, time):
         if self.running_sugar():
@@ -654,7 +654,6 @@ class TurtleArtWindow():
         elif keyname == 'period' and '.' not in oldnum:
             newnum = oldnum + '.'
         elif keyname == 'BackSpace':
-            print "backspace: %s -> %s" % (oldnum, oldnum[:len(oldnum)-1])
             if len(oldnum) > 1:
                 newnum = oldnum[:len(oldnum)-1]
             else:
@@ -666,7 +665,6 @@ class TurtleArtWindow():
                 newnum = oldnum + keyname
         else:
             newnum = oldnum
-        # Add a cursor
         self.selected_blk.spr.set_label("%s%s" % \
                                         (str(numcheck(newnum,oldnum)), CURSOR))
 
@@ -986,6 +984,7 @@ class TurtleArtWindow():
     Run stack
     """
     def _run_stack(self, blk):
+        # self.block_list.print_list('block')
         if blk is None:
             return
         self.lc.ag = None
