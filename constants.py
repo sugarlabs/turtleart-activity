@@ -180,7 +180,7 @@ PRIMITIVES = {'clean':'clean', 'forward':'forward', 'back':'back', 'arc':'arc',
     'stopstack':'stopstack', 'hspace':'nop', 'vspace':'nop',
     'start':'start', 'hat1':'nop1', 'stack1':'stack1',
     'hat2':'nop2', 'stack2':'stack2',
-    'hat':'nop3', 'action':'stack', 'turtle':'turtle',
+    'hat':'nop3', 'stack':'stack', 'turtle':'turtle',
     'storeinbox1':'storeinbox1', 'box1':'box1',
     'storeinbox2':'storeinbox2', 'box2':'box2', 
     'storeinbox':'storeinbox', 'box':'box',
@@ -242,3 +242,4 @@ NOISE_KEYS = ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', 'Pause',
               'Page_Down', 'Page_Up']
 WHITE_SPACE = ['space','Tab','Return']
 
+CURSOR = '█'

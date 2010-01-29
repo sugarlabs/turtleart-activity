@@ -130,10 +130,6 @@ class Block:
         self.spr.set_shape(self.shapes[0])
 
     def _new_block_from_factory(self, sprite_list, x, y):
-
-        if self.type == 'block':
-            print "new block: %s (%d %d)" % (self.name, x, y)
-
         self.svg = SVG()
         self.svg.set_scale(self.scale)
         self.svg.set_gradiant(True)

@@ -55,8 +55,10 @@ class symbol:
         self.nargs = None
         self.fcn = None
 
-    def __str__(self): return self.name
-    def __repr__(self): return '#'+self.name
+    def __str__(self):
+        return self.name
+    def __repr__(self):
+        return '#'+self.name
 
 class logoerror(Exception):
     def __init__(self, value):
@@ -332,24 +334,32 @@ def prim_define(name, body):
     name.nargs, name.fcn = 0, body
     name.rprim = True
 
-def prim_stack(lc,stri):
-    if (not lc.stacks.has_key('stack3'+stri)) or \
-        lc.stacks['stack3'+stri] is None: raise logoerror("#nostack")
-    icall(lc, evline, lc.stacks['stack3'+stri][:]); yield True
+def prim_stack(lc, str):
+    if (not lc.stacks.has_key('stack3'+str)) or lc.stacks['stack3'+str] is None:
+        raise logoerror("#nostack")
+    icall(lc, evline, lc.stacks['stack3'+str][:])
+    yield True
     lc.procstop = False
-    ireturn(lc); yield True
+    ireturn(lc)
+    yield True
 
 def prim_stack1(lc):
-    if lc.stacks['stack1'] is None: raise logoerror("#nostack")
-    icall(lc, evline, lc.stacks['stack1'][:]); yield True
+    if lc.stacks['stack1'] is None:
+        raise logoerror("#nostack")
+    icall(lc, evline, lc.stacks['stack1'][:])
+    yield True
     lc.procstop = False
-    ireturn(lc); yield True
+    ireturn(lc)
+    yield True
 
 def prim_stack2(lc):
-    if lc.stacks['stack2'] is None: raise logoerror("#nostack")
-    icall(lc, evline, lc.stacks['stack2'][:]); yield True
+    if lc.stacks['stack2'] is None:
+        raise logoerror("#nostack")
+    icall(lc, evline, lc.stacks['stack2'][:])
+    yield True
     lc.procstop = False
-    ireturn(lc); yield True
+    ireturn(lc)
+    yield True
 
 def prim_stopstack(lc):
     lc.procstop = True

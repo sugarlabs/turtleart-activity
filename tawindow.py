@@ -1039,27 +1039,27 @@ class TurtleArtWindow():
         newspr.set_layer(TOP_LAYER)
         self.drag_pos = 20, 20
         newblk.connections = [None]*len(newblk.docks)
-        print DEFAULTS[newblk.name]
-        for i, argvalue in enumerate(DEFAULTS[newblk.name]):
-            # skip the first dock position--it is always a connector
-            dock = newblk.docks[i+1]
-            argname = dock[0]
-            if argname == 'unavailable':
-                continue
-            if (type(argvalue) is str or type(argvalue) is unicode) and\
-               argname == 'number':
-                argname = 'string'
-            (sx, sy) = newspr.get_xy()
-            argblk = Block(self.block_list, self.sprite_list,
-                                 argname, 0, 0, 'block', [argvalue])
-            argdock = argblk.docks[0]
-            nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
-            argblk.spr.move((nx, ny))
-            argblk.spr.set_layer(TOP_LAYER)
-            argblk.connections = [newblk, None]
-            newblk.connections[i+1] = argblk
-        self.drag_group = self._find_group(newblk)
-        self.block_operation = 'new' 
+        if DEFAULTS.has_key(newblk.name):
+            for i, argvalue in enumerate(DEFAULTS[newblk.name]):
+                # skip the first dock position--it is always a connector
+                dock = newblk.docks[i+1]
+                argname = dock[0]
+                if argname == 'unavailable':
+                    continue
+                if (type(argvalue) is str or type(argvalue) is unicode) and\
+                   argname == 'number':
+                    argname = 'string'
+                (sx, sy) = newspr.get_xy()
+                argblk = Block(self.block_list, self.sprite_list,
+                               argname, 0, 0, 'block', [argvalue])
+                argdock = argblk.docks[0]
+                nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
+                argblk.spr.move((nx, ny))
+                argblk.spr.set_layer(TOP_LAYER)
+                argblk.connections = [newblk, None]
+                newblk.connections[i+1] = argblk
+            self.drag_group = self._find_group(newblk)
+            self.block_operation = 'new' 
 
     """
     Debugging tools
@@ -1140,7 +1140,7 @@ class TurtleArtWindow():
             if block1.name in ('write', 'plus', 'equal', 'less', 'greater',
                                'template1', 'template2', 'template3',
                                'template4', 'template6', 'template7', 'nop',
-                               'print', 'stack'):
+                               'print', 'stack', 'hat'):
                 if block1.name == 'write' and d1type == 'string':
                     if d2type == 'number' or d2type == 'string':
                         pass
