@@ -517,7 +517,7 @@ def lcNew(tw):
     defprim(lc,'scale', 0, lambda lc: lc.scale)
     defprim(lc,'write',2,lambda lc, x,y: write(lc, x,y))
     defprim(lc,'insertimage', 1, lambda lc,x: insert_image(lc, x, False))
-    defprim(lc,'arc', 2, lambda lc, x, y: arc(lc.tw.canvas, x, y))
+    defprim(lc,'arc', 2, lambda lc, x, y: lc.tw.canvas.arc(x, y))
     defprim(lc,'xcor', 0, lambda lc: lc.tw.canvas.xcor/lc.tw.coord_scale)
     defprim(lc,'ycor', 0, lambda lc: lc.tw.canvas.ycor/lc.tw.coord_scale)
     defprim(lc,'turtle', 1, lambda lc, x: lc.tw.canvas.set_turtle(int(x-1)))

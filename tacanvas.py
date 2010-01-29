@@ -236,15 +236,12 @@ class TurtleGraphics:
 
     def fillscreen(self,c,s):
         oldc, olds = self.color,self.shade
-        try:
-            setcolor(self,c); setshade(self,s)
-            rect = gtk.gdk.Rectangle(0,0,self.width,self.height)
-            self.gc.set_foreground(self.tw.fgcolor)
-            self.canvas.image.draw_rectangle(self.gc, True, *rect)
-            self.invalt(0,0,self.width,self.height)
-            self.setcolor(oldc); self.setshade(olds)
-        except:
-            pass
+        self.setcolor(c); self.setshade(s)
+        rect = gtk.gdk.Rectangle(0,0,self.width,self.height)
+        self.gc.set_foreground(self.tw.fgcolor)
+        self.canvas.image.draw_rectangle(self.gc, True, *rect)
+        self.invalt(0,0,self.width,self.height)
+        self.setcolor(oldc); self.setshade(olds)
 
     def set_fgcolor(self):
         sh = (wrap100(self.shade)-50)/50.0
