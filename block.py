@@ -205,6 +205,8 @@ class Block:
             self._make_flow_style_1arg(e, svg)
         elif self.name in FLOW_STYLE_BOOLEAN:
             self._make_flow_style_boolean(e, svg)
+        elif self.name in FLOW_STYLE_ELSE:
+            self._make_flow_style_else(e, svg)
         else:
             self._make_basic_style(e, svg)
             print ">>>>> I don't know how to create a %s block" % (self.name)
@@ -379,7 +381,7 @@ class Block:
                       ('bool', False, self.svg.docks[2][0],
                                       self.svg.docks[2][1]))
         self._left, self._right = self.svg.get_width()-self.svg.docks[1][0], 0
-
+ 
     def _make_not_style(self, e, svg):
         self.svg.expand(15+e, 0)
         self._make_boolean_not(svg)
@@ -415,7 +417,9 @@ class Block:
                                       self.svg.docks[2][1], '['),
                       ('flow', False, self.svg.docks[3][0],
                                       self.svg.docks[3][1], ']'))
-        self._left, self._right = 2, self.svg.get_width()-self.svg.docks[1][0]
+        self._left = 2
+        self._right = self.svg.get_width()-self.svg.docks[1][0]+ \
+                      self.svg.get_innie_width()*1.5
 
     def _make_flow_style_boolean(self, e, svg):
         self.svg.expand(25+e, 0)
@@ -431,6 +435,25 @@ class Block:
                                       self.svg.docks[2][1], '['),
                       ('flow', False, self.svg.docks[3][0],
                                       self.svg.docks[3][1], ']'))
+        self._left, self._right = 2, self.svg.get_width()-self.svg.docks[1][0]
+
+    def _make_flow_style_else(self, e, svg):
+        self.svg.expand(25+e, 0)
+        self.svg.set_slot(True)
+        self.svg.set_tab(True)
+        self.svg.set_else(True)
+        self.svg.set_boolean(True)
+        self._make_basic_flow(svg)
+        self.docks = (('flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]),
+                      ('bool', False, self.svg.docks[1][0],
+                                      self.svg.docks[1][1]),
+                      ('flow', False, self.svg.docks[3][0],
+                                      self.svg.docks[3][1], '['),
+                      ('flow', False, self.svg.docks[2][0],
+                                      self.svg.docks[2][1], ']['),
+                      ('flow', False, self.svg.docks[4][0],
+                                      self.svg.docks[4][1], ']'))
         self._left, self._right = 2, self.svg.get_width()-self.svg.docks[1][0]
 
     def _make_basic_block(self, svg):

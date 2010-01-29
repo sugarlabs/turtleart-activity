@@ -1218,7 +1218,6 @@ class TurtleArtWindow():
     """
     def _number_check(self):
         n = self.selected_blk.spr.labels[0].replace(CURSOR,'')
-        print "(%s, %s)" % (self.selected_blk.spr.labels[0], n)
         if n in ['-', '.', '-.']:
             n = 0
         if n is not None:
@@ -1248,7 +1247,6 @@ class TurtleArtWindow():
 #
 
 def numcheck(new, old):
-    print "old: %s, new: %s" % (str(old), str(new))
     n = new.replace(CURSOR,'')
     if n is '':
         return "0"

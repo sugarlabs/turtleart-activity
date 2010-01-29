@@ -174,7 +174,13 @@ def load_block(tw, b):
     if type(btype) == type((1,2)): 
         btype, value = btype
     if btype in CONTENT_BLOCKS:
-        values = [value]
+        if btype == 'number':
+            try:
+                values = [int(value)]
+            except ValueError:
+                values = [float(value)]
+        else:
+            values = [value]
     else:
         values = []
 

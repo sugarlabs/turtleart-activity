@@ -59,6 +59,7 @@ class SVG:
         self._porch_y = self._innie_y1+self._innie_y2+4*self._stroke_width
         self._expand_x = 0
         self._expand_y = 0
+        self._else = False
         self._fill = "#00FF00"
         self._stroke = "#00A000"
         self._gradiant = False
@@ -111,9 +112,15 @@ class SVG:
             svg += self._rline_to(0,self._radius/2.0)
             svg += self._do_boolean()
             svg += self._rline_to(0,self._radius/2.0)
-        svg += self._rline_to(self._radius+self._slot_x, 0)
+        if self._else:
+            svg += self._rline_to(self._radius*3+self._slot_x*2, 0)
+        else:
+            svg += self._rline_to(self._radius+self._slot_x, 0)
         svg += self._rarc_to(1,1)
         svg += self._rline_to(-self._radius,0)
+        if self._else:
+            svg += self._do_tab()
+            svg += self._rline_to(-self._radius*2, 0)
         svg += self._do_tab()
         svg += self._rline_to(-self._radius, 0)
         svg += self._rline_to(0, self._expand_y)
@@ -334,6 +341,9 @@ class SVG:
 
     def set_boolean(self, flag=False):
         self._bool = flag
+
+    def set_else(self, flag=False):
+        self._else = flag
 
     #
     # Exotic methods
@@ -631,15 +641,16 @@ def close_file(f):
     f.close()
 
 def generator(datapath):
-    svg0 = SVG()
-    svg0.set_orientation(180)
-    f = open_file(datapath, "turtle180.svg")
-    svg_str = svg0.turtle()
-    f.write(svg_str)
-    close_file(f)
-
 
     """
+    svgt = SVG()
+    svgt.set_orientation(180)
+    f = open_file(datapath, "turtle180.svg")
+    svg_str = svgt.turtle()
+    f.write(svg_str)
+    close_file(f)
+    """
+
     svg0 = SVG()
     f = open_file(datapath, "flow-test.svg")
     svg0.set_scale(1)
@@ -647,11 +658,13 @@ def generator(datapath):
     # svg0.set_innie([True])
     svg0.set_boolean(True)
     svg0.set_tab(True)
+    svg0.set_else(True)
     svg0.set_gradiant(True)
     svg_str = svg0.basic_flow()
     f.write(svg_str)
     close_file(f)
 
+    """
     svg1 = SVG()
     f = open_file(datapath, "blob-test.svg")
     svg1.set_scale(1)

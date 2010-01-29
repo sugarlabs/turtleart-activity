@@ -44,7 +44,7 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
             ['plus2', 'minus2', 'product2',
              'division2', 'identity2', 'remainder2', 'sqrt', 'random',
              'number', 'greater', 'less', 'equal', 'not', 'and', 'or'],
-            ['wait', 'forever', 'repeat', 'if', 'hspace',
+            ['wait', 'forever', 'repeat', 'if', 'ifelse', 'hspace',
              'vspace', 'stopstack'],
             ['hat1', 'stack1', 'hat', 'hat2', 'stack2', 'stack',
              'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2', 'box',
@@ -102,6 +102,7 @@ NOT_STYLE = ['not']
 FLOW_STYLE = ['forever', 'hspace']
 FLOW_STYLE_1ARG = ['repeat']
 FLOW_STYLE_BOOLEAN = ['if']
+FLOW_STYLE_ELSE = ['ifelse']
 
 #
 # blocks that contain media
@@ -124,13 +125,14 @@ BLOCK_NAMES = {'clean':[_('clean')], 'forward':[_('forward')],
     'fillscreen':[_('fill screen'),_('color'),_('shade')],
     'shade':[_('shade')], 'nop':[_('load Python code')],
     'pensize':[_('pen size')], 'textsize':[_('text size')],
-    'color':[_('color')],
+    'color':[_('color')], 'ifelse':['', _('if'), _('then else')],
     'plus2':['+'], 'minus2':['–'], 'product2':['×'], 'division2':['/'],
     'remainder2':[_('mod')], 'identity2':['←'],
     'random':[_('random'),_('min'),_('max')], 'sqrt':['√'],
     'less':['<'],'greater':[">"], 'equal':['='], 'and':[_('and')],
     'not':[_('not')], 'print':[_('print')], 'wait':[_('wait')], 'or':[_('or')],
-    'forever':[_('forever')], 'repeat':[_('repeat')], 'if':[_('if then')],
+    'forever':[_('forever')], 'repeat':['', _('repeat')],
+    'if':['', _('if'), _('then')],
     'stopstack':[_('stop action')], 'hspace':[' '], 'vspace':[' '],
     'start':[_('start')], 'hat1':[_('action 1')],
     'stack1':[_('action 1')],
