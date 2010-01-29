@@ -65,14 +65,23 @@ def new_project(tw):
     tw.save_file_name = None
 
 def load_file(tw, create_new_project=True):
-    fname = _get_load_name(tw)
+    fname = _get_load_name(tw, '.ta')
     if fname==None:
         return
-    if fname[-3:]=='.ta':
+    if fname[-3:] == '.ta':
         fname=fname[0:-3]
-    load_files(tw,fname+'.ta', create_new_project)
+    load_files(tw, fname+'.ta', create_new_project)
     if create_new_project is True:
         tw.save_file_name = os.path.basename(fname)
+
+# From Suger, we use the Journal, but from outside of Sugar, we load from a file
+def load_python_code(tw):
+    fname = _get_load_name(tw, '.py')
+    if fname==None:
+        return
+    f = open(fname, 'r')
+    tw.myblock = f.read()
+    f.close()
 
 #
 # We try to maintain read-compatibility with all versions of Turtle Art.
@@ -102,13 +111,13 @@ def _json_load(text):
     # json converts tuples to lists, so we need to convert back,
     return _tuplify(listdata) 
 
-def _get_load_name(tw):
+def _get_load_name(tw, suffix):
     dialog = gtk.FileChooserDialog("Load...", None,
                                    gtk.FILE_CHOOSER_ACTION_OPEN,
                                    (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                                     gtk.STOCK_OPEN, gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
-    return _do_dialog(tw, dialog)
+    return _do_dialog(tw, dialog, suffix)
 
 # Unpack serialized data sent across a share.
 def load_string(tw, text):
@@ -233,7 +242,7 @@ def _get_save_name(tw):
     dialog.set_default_response(gtk.RESPONSE_OK)
     if tw.save_file_name is not None:
         dialog.set_current_name(tw.save_file_name+'.ta')
-    return _do_dialog(tw,dialog)
+    return _do_dialog(tw, dialog, '.ta')
 
 def save_data(tw, fname):
     f = file(fname, "w")
@@ -288,10 +297,10 @@ def get_id(c):
         return None
     return c.id
 
-def _do_dialog(tw,dialog):
+def _do_dialog(tw, dialog, suffix):
     result = None
     filter = gtk.FileFilter()
-    filter.add_pattern("*.ta")
+    filter.add_pattern('*'+suffix)
     filter.set_name("Turtle Art")
     dialog.add_filter(filter)
     dialog.set_current_folder(tw.load_save_folder)

@@ -188,7 +188,7 @@ PRIMITIVES = {'clean':'clean', 'forward':'forward', 'back':'back', 'arc':'arc',
     'bottompos':'bottompos', 'width':'hres', 'height':'vres',
     'hideblocks':'hideblocks', 'push':'push', 'pop':'pop',
     'keyboard':'keyboard', 'kbinput':'kbinput', 'myfunc':'myfunc',
-    'nop':'nop', 'printheap':'printheap', 'clearheap':'clearheap',
+    'nop':'userdefined', 'printheap':'printheap', 'clearheap':'clearheap',
     'red':'red', 'orange':'orange', 'yellow':'yellow',
     'green':'green', 'cyan':'cyan', 'blue':'blue',
     'purple':'purple'}

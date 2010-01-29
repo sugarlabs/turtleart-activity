@@ -655,7 +655,7 @@ def box(lc,x):
         raise logoerror("#emptybox")
 
 def loadmyblock(lc,x):
-    # execute code inported from the Journal
+    # Execute code imported from the Journal
     if lc.tw.myblock is not None:
         y = myfunc_import(lc, lc.tw.myblock, x)
     else:

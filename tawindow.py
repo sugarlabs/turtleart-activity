@@ -917,7 +917,7 @@ class TurtleArtWindow():
                 self._import_from_journal(self.selected_spr)
             '''
         elif blk.name=='nop' and self.myblock==None:
-            self.activity.import_py()
+            self._import_py()
         else:
             self._run_stack(blk)
 
@@ -1202,6 +1202,16 @@ class TurtleArtWindow():
             blk.spr.move((sx+dx, sy-dy))
         self._snap_to_dock()
         self.drag_group = None
+
+    """
+    Import Python code into a block
+    """
+    def _import_py(self):
+        if self.running_sugar():
+            self.activity.import_py()
+        else:
+            load_python_code(self)
+            self.set_userdefined()
 
     """
     Make sure a 'number' block contains a number.
