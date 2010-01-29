@@ -31,16 +31,6 @@ TOP_LAYER = 1000
 # block palette categories
 #
 
-TURTLE = 0
-PEN = 1
-COLORS = 2
-NUMBER = 3
-FLOW = 4
-BLOCKS = 5
-EXTRAS = 6
-PORTFOLIO = 7
-TRASH = 8
-
 PALETTE_NAMES = ['turtle', 'pen', 'colors', 'number', 'flow', 'blocks',
                  'extras', 'portfolio', 'trash']
 

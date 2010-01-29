@@ -132,6 +132,7 @@ class TurtleArtWindow():
         self.toolbar_spr = None
         self.palette_sprs = []
         self.palettes = []
+        self.trash_index = PALETTE_NAMES.index('trash')
         self.selected_palette = None
         self.selectors = []
         self.selected_selector = None
@@ -332,7 +333,7 @@ class TurtleArtWindow():
     def show_toolbar_palette(self, n, init_only=False):
         if self.selectors == []:
             svg = SVG()
-            x, y = 25, 0
+            x, y = 50, 0
             for i, name in enumerate(PALETTE_NAMES):
                 a = self._load_sprite_from_file("%s/%soff.svg" % (self.path,
                                                          name))
@@ -344,7 +345,7 @@ class TurtleArtWindow():
                 self.selectors[i].name = name
                 self.selectors[i].set_layer(TAB_LAYER)
                 w, h = self.selectors[i].get_dimensions()
-                x += int(w+5) 
+                x += int(w) 
                 self.palette_sprs.append(None)
 
         if len(self.palettes) == 0:
@@ -376,7 +377,7 @@ class TurtleArtWindow():
             self.toolbar_spr.set_layer(CATEGORY_LAYER)
 
         if self.palettes[n] == []:
-            _min_width = len(PALETTES)*(SELECTOR_WIDTH+5) + 25
+            _min_width = (len(PALETTES)+1)*(SELECTOR_WIDTH)
             for i, name in enumerate(PALETTES[n]):
                 self.palettes[n].append(Block(self.block_list,
                                               self.sprite_list, name,
@@ -1001,8 +1002,8 @@ class TurtleArtWindow():
     Is x,y over the trash can?
     """
     def _in_the_trash(self, x, y):
-        if self.selected_palette == TRASH and \
-           self.palette_sprs[TRASH].hit((x,y)):
+        if self.selected_palette == self.trash_index and \
+           self.palette_sprs[self.trash_index].hit((x,y)):
             return True
         return False
 
