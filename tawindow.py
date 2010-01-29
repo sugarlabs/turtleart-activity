@@ -838,7 +838,9 @@ class TurtleArtWindow():
             elif spr.type == 'selector':
                 self._select_category(spr)
             elif spr.type == 'category':
-                pass
+                r,g,b,a = spr.get_pixel((x, y))
+                if (r == 255 and g == 0) or g == 255:
+                    self._hide_palette()
 
     """
     Block pressed
