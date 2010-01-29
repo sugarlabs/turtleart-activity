@@ -653,10 +653,12 @@ class TurtleArtWindow():
                 newnum = '-'
             elif oldnum[0] != '-':
                 newnum = '-' + oldnum
+            else:
+                newnum = oldnum
         elif keyname == 'period' and '.' not in oldnum:
             newnum = oldnum + '.'
         elif keyname == 'BackSpace':
-            if len(oldnum) > 1:
+            if len(oldnum) > 0:
                 newnum = oldnum[:len(oldnum)-1]
             else:
                 newnum = ''
@@ -665,10 +667,19 @@ class TurtleArtWindow():
                 newnum = keyname
             else:
                 newnum = oldnum + keyname
+        elif keyname == 'Return':
+            self._unselect_block()
+            return
         else:
             newnum = oldnum
-        self.selected_blk.spr.set_label("%s%s" % \
-                                        (str(numcheck(newnum,oldnum)), CURSOR))
+        if newnum == '.':
+            newnum = '0.'
+        if len(newnum) > 0 and newnum != '-':
+            try:
+                float(newnum)
+            except ValueError,e:
+                newnum = oldnum
+        self.selected_blk.spr.set_label(newnum + CURSOR)
 
     """
     Make sure alphanumeric input is properly parsed.
@@ -1275,28 +1286,4 @@ class TurtleArtWindow():
         self.selected_blk.spr.set_label(s)
         self.selected_blk.values[0] = s
 
-#
-# Utilities used for checking variable validity
-#
-
-def numcheck(new, old):
-    n = new.replace(CURSOR,'')
-    if n is '':
-        return "0"
-    if n in ['-', '.', '-.']:
-        return n
-    if n == '.':
-        return '0.'
-    try:
-        float(n);
-        return n
-    except ValueError,e:
-        return old.replace(CURSOR,'')
-
-def strcheck(new, old):
-    try:
-        str(new)
-        return new.replace(CURSOR,'')
-    except ValueError,e:
-        return old.replace(CURSOR,'')
 
