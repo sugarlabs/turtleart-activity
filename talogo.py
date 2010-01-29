@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #Copyright (c) 2007-8, Playful Invention Company.
 #Copyright (c) 2008-10, Walter Bender
 #Copyright (c) 2008-10, Raúl Gutiérrez Segalés
