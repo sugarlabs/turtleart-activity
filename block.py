@@ -407,8 +407,9 @@ class Block:
         self._left = self._right
 
     def _make_flow_style(self, e, svg):
-        self.svg.expand(e+self._ex, self._ey)
+        self.svg.expand(10+e+self._ex, self._ey)
         self.svg.set_slot(True)
+        self.svg.set_tab(False)
         self._make_basic_flow(svg)
         self.docks = (('flow', True, self.svg.docks[0][0],
                                      self.svg.docks[0][1]),

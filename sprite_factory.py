@@ -83,7 +83,10 @@ class SVG:
         svg += self._corner(-1, 1)
         svg += self._line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
-        svg += self._do_tab()
+        if self._tab:
+            svg += self._do_tab()
+        else:
+            svg += self._do_tail()
         svg += self._corner(-1, -1)
         svg += self._rline_to(0, -self._expand_y)
         if True in self._innie:
@@ -127,7 +130,10 @@ class SVG:
         svg += self._rarc_to(-1, 1)
         svg += self._line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
-        svg += self._do_tab()
+        if self._tab:
+            svg += self._do_tab()
+        else:
+            svg += self._do_tail()
         svg += self._rarc_to(-1, -1)
         svg += self._rline_to(0, -self._expand_y)
         if True in self._innie:
@@ -256,6 +262,10 @@ class SVG:
         self._width, self._height = width, height
         self._fill, self._stroke = "#FFD000", "none"
         svg = self._rect(width, height, 0, 0)
+        self._fill, self._stroke = "#FF0000", "#FF0000"
+        svg += self._circle(8, width-12, height-12)
+        self._fill, self._stroke = "#FFFFFF", "#FFFFFF"
+        svg += self._rect(10, 2, width-17, height-13)
         svg += self._footer()
         return self._header() + svg
 
@@ -540,20 +550,21 @@ class SVG:
         else:
             return self._rline_to(self._slot_x, 0)
 
+    def _do_tail(self):
+        return "%s%s" % (
+            self._rline_to(-self._slot_x/2.0, self._slot_y*2.0),
+            self._rline_to(-self._slot_x/2.0, -self._slot_y*2.0))
+
     def _do_tab(self):
-        if self._tab is True:
-            s = "%s%s%s%s%s" % (
-                self._rline_to(-self._stroke_width, 0),
-                self._rline_to(0, self._slot_y),
-                self._rline_to(-self._slot_x+2*self._stroke_width, 0),
-                self._rline_to(0, -self._slot_y),
-                self._rline_to(-self._stroke_width, 0))
-            self.docks.append((int(self._x*self._scale),
-                               int((self._y+self._stroke_width)*\
-                                   self._scale)))
-            return s
-        else:
-            return self._rline_to(-self._slot_x, 0)
+        s = "%s%s%s%s%s" % (
+            self._rline_to(-self._stroke_width, 0),
+            self._rline_to(0, self._slot_y),
+            self._rline_to(-self._slot_x+2*self._stroke_width, 0),
+            self._rline_to(0, -self._slot_y),
+            self._rline_to(-self._stroke_width, 0))
+        self.docks.append((int(self._x*self._scale),
+                           int((self._y+self._stroke_width)*self._scale)))
+        return s
 
     def _do_innie(self):
         self.docks.append((int((self._x+self._stroke_width)*self._scale),
