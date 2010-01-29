@@ -834,13 +834,13 @@ class TurtleArtWindow():
         if hasattr(spr, 'type'):
             if spr.type == "canvas":
                 spr.set_layer(CANVAS_LAYER)
-                return True
             elif spr.type == 'selector':
                 self._select_category(spr)
             elif spr.type == 'category':
                 r,g,b,a = spr.get_pixel((x, y))
                 if (r == 255 and g == 0) or g == 255:
                     self._hide_palette()
+            return True
 
     """
     Block pressed
@@ -961,6 +961,10 @@ class TurtleArtWindow():
             elif blk.name in self.importblocks:
                 self._import_from_journal(self.selected_spr)
             '''
+        elif blk.name=='vspace':
+            blk.expand_in_y(20)
+        elif blk.name=='hspace':
+            blk.expand_in_x(20)
         elif blk.name=='nop' and self.myblock==None:
             self._import_py()
         else:
