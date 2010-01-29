@@ -187,6 +187,8 @@ class Block:
             self._make_box_style(e, svg)
         elif self.name in NUMBER_STYLE:
             self._make_number_style(e, svg)
+        elif self.name in NUMBER_STYLE_BLOCK:
+            self._make_number_style_block(e, svg)
         elif self.name in NUMBER_STYLE_1ARG:
             self._make_number_style_1arg(e, svg)
         elif self.name in NUMBER_STYLE_PORCH:
@@ -305,6 +307,23 @@ class Block:
                                         self.svg.docks[0][1]),
                       ('number', False, self.svg.docks[1][0],
                                         self.svg.docks[1][1])) 
+        self._left = self.svg.docks[2][0]
+        self._right = self.svg.get_innie_width()*1.5
+
+    def _make_number_style_block(self, e, svg):
+        self.svg.expand(e, 0)
+        self.svg.set_innie([True,True])
+        self.svg.set_outie(True)
+        self.svg.set_tab(False)
+        self.svg.set_slot(False)
+        self._make_basic_block(svg)
+        self.docks = (('number', True, self.svg.docks[2][0],
+                                       self.svg.docks[2][1], '('),
+                      ('number', False, self.svg.docks[0][0],
+                                        self.svg.docks[0][1]),
+                      ('number', False, self.svg.docks[1][0],
+                                        self.svg.docks[1][1]),
+                      ('unavailable', False, 0, 0, ')'))
         self._left = self.svg.docks[2][0]
         self._right = self.svg.get_innie_width()*1.5
 

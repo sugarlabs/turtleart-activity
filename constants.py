@@ -48,7 +48,7 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
              'vspace', 'stopstack'],
             ['hat1', 'stack1', 'hat', 'hat2', 'stack2', 'stack',
              'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2', 'box',
-             'storeinbox', 'start'],
+             'storein', 'start'],
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
              'bottompos', 'height', 'turtle', 'print'],
@@ -87,12 +87,13 @@ BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1',
     'storeinbox2', 'wait', 'stack', 'push', 'nop', 'turtle']
-BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storeinbox']
+BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storein']
 BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'textcolor', 'textsize', 'box1', 'box2', 'string', 'leftpos', 'scale',
     'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple']
-NUMBER_STYLE = ['plus2', 'product2', 'random', 'myfunc']
+NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
+NUMBER_STYLE_BLOCK = ['random']
 NUMBER_STYLE_PORCH = ['minus2', 'division2', 'remainder2']
 NUMBER_STYLE_1ARG = ['sqrt', 'box', 'identity2']
 COMPARE_STYLE = ['greater', 'less', 'equal']
@@ -137,7 +138,7 @@ BLOCK_NAMES = {'clean':[_('clean')], 'forward':[_('forward')],
     'hat':[_('action')], 'stack':[_('action')], 'number':['100'],
     'storeinbox1':[_('store in box 1')], 'box1':[_('box 1')],
     'storeinbox2':[_('store in box 2')], 'box2':[_('box 2')], 
-    'storeinbox':[_('store in')], 'box':[_('box')], 'string':[_('string')], 
+    'storein':[_('store in')], 'box':[_('box')], 'string':[_('string')], 
     'leftpos':[_('left')], 'toppos':[_('top')], 'rightpos':[_('right')], 
     'bottompos':[_('bottom')], 'width':[_('width')], 'height':[_('height')],
     'hideblocks':[_('hide blocks')],
@@ -154,7 +155,7 @@ BLOCK_NAMES = {'clean':[_('clean')], 'forward':[_('forward')],
 #
 # Legacy names
 #
-OLD_NAMES = {'product':'product2',
+OLD_NAMES = {'product':'product2', 'storeinbox':'storein',
              'division':'division2', 'plus':'plus2',
              'remainder':'remainder2', 'identity':'identity2',
              'division':'division2', 'if else':'if'}
@@ -183,7 +184,7 @@ PRIMITIVES = {'clean':'clean', 'forward':'forward', 'back':'back', 'arc':'arc',
     'hat':'nop3', 'stack':'stack', 'turtle':'turtle',
     'storeinbox1':'storeinbox1', 'box1':'box1',
     'storeinbox2':'storeinbox2', 'box2':'box2', 
-    'storeinbox':'storeinbox', 'box':'box',
+    'storein':'storeinbox', 'box':'box',
     'leftpos':'leftpos', 'toppos':'toppos', 'rightpos':'rightpos', 
     'bottompos':'bottompos', 'width':'hres', 'height':'vres',
     'hideblocks':'hideblocks', 'push':'push', 'pop':'pop',
@@ -202,7 +203,7 @@ DEFAULTS = {'forward':[100], 'back':[100], 'left':[90], 'right':[90],
     'setpensize':[5], 'settextsize':[32], 'setcolor':[0], 'turtle':[1],
     'setshade':[50], 'fillscreen':[60,80], 'number':[100],
     'random':[0,100], 'wait':[1], 'repeat':[4], 'setxy':[0,0], 
-    'storeinbox':[_('my box'),100], 'box':[_('my box')],
+    'storein':[_('my box'),100], 'box':[_('my box')],
     'hat':[_('action')], 'stack':[_('action')], 'nop':[100],
     'storeinbox1':[100], 'storeinbox2':[100], 'myfunc':[_('x'),100]}
 
