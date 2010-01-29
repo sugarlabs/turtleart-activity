@@ -121,6 +121,7 @@ class TurtleArtWindow():
         self.palette = True
         self.coord_scale = 1
         self.buddies = []
+        self.saved_string = ''
         self.dx = 0
         self.dy = 0
         self.media_shapes = {}
@@ -631,7 +632,8 @@ class TurtleArtWindow():
         elif self.selected_blk is not None and\
              self.selected_blk.name == 'string':
             self._process_alphanumeric_input(keyname, keyunicode)
-            self.selected_blk.resize()
+            if self.selected_blk is not None:
+                self.selected_blk.resize()
             return True
         # Otherwise, use keyboard input to move blocks or turtles
         else:
@@ -672,7 +674,12 @@ class TurtleArtWindow():
     Make sure alphanumeric input is properly parsed.
     """
     def _process_alphanumeric_input(self, keyname, keyunicode):
-        oldstr = self.selected_blk.spr.labels[0].replace(CURSOR,'')
+        if len(self.selected_blk.spr.labels[0]) > 0:
+            oldleft, oldright =  self.selected_blk.spr.labels[0].split(CURSOR)
+        else:
+            oldleft = ''
+            oldright = ''
+        newleft = oldleft
         if keyname in ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock',\
                        'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift']:
             keyname = ''
@@ -685,10 +692,35 @@ class TurtleArtWindow():
         if keyname in WHITE_SPACE:
             keyunicode = 32
         if keyname == 'BackSpace':
-            if len(oldstr) > 1:
-                newstr = oldstr[:len(oldstr)-1]
+            if len(oldleft) > 1:
+                newleft = oldleft[:len(oldleft)-1]
             else:
-                newstr = ''
+                newleft = ''
+        elif keyname == 'Home':
+            print "saw a %s" % (keyname)
+            oldright = oldleft+oldright
+            newleft = ''
+        elif keyname == 'Left':
+            if len(oldleft) > 0:
+                oldright = oldleft[len(oldleft)-1:]+oldright
+                newleft = oldleft[:len(oldleft)-1]
+        elif keyname == 'Right':
+            if len(oldright) > 0:
+                newleft = oldleft + oldright[0]
+                oldright = oldright[1:]
+        elif keyname == 'End':
+            newleft = oldleft+oldright
+            oldright = ''
+        elif keyname == 'Return':
+            self._unselect_block()
+            return
+        elif keyname == 'Up': # Restore previous state
+            self.selected_blk.spr.set_label(self.saved_string)
+            self._unselect_block()
+            return
+        elif keyname == 'Down': # Erase entire string
+            self.selected_blk.spr.set_label('')
+            return
         else:
             if self.dead_key is not '':
                 keyunicode =\
@@ -696,13 +728,13 @@ class TurtleArtWindow():
                 self.dead_key = ''
             if keyunicode > 0:
                 if unichr(keyunicode) is not '\x00':
-                    newstr = oldstr+unichr(keyunicode)
+                    newleft = oldleft+unichr(keyunicode)
                 else:
-                    newstr = oldstr
+                    newleft = oldleft
             else:
-                newstr = ''
-        self.selected_blk.spr.set_label("%s%s" % \
-                                        (strcheck(newstr,oldstr), CURSOR))
+                newleft = ''
+        self.selected_blk.spr.set_label("%s%s%s" % \
+                                        (newleft, CURSOR, oldright))
 
     """
     Use the keyboard to move blocks and turtle
@@ -809,6 +841,7 @@ class TurtleArtWindow():
             self.drag_pos = x-sx, y-sy
             for blk in self.drag_group:
                 blk.spr.set_layer(TOP_LAYER)
+            self.saved_string = blk.spr.labels[0]
 
     """
     Unselect block
@@ -909,6 +942,7 @@ class TurtleArtWindow():
             return
         self.selected_blk = blk
         if  blk.name=='number' or blk.name=='string':
+            self.saved_string = blk.spr.labels[0]
             blk.spr.labels[0] += CURSOR
             '''
             elif blk.name in self.importblocks:
