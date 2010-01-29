@@ -411,11 +411,18 @@ class Block:
         self.svg.set_slot(True)
         self.svg.set_tab(False)
         self._make_basic_flow(svg)
-        self.docks = (('flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]),
-                      ('flow', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1], '['),
-                      ('unavailable', False, 0, 0, ']'))
+        # This is an ugly hack.
+        if self.name == 'forever':
+            self.docks = (('flow', True, self.svg.docks[0][0],
+                                         self.svg.docks[0][1]),
+                          ('flow', False, self.svg.docks[1][0],
+                                          self.svg.docks[1][1], '['),
+                          ('unavailable', False, 0, 0, ']'))
+        else:
+            self.docks = (('flow', True, self.svg.docks[0][0],
+                                         self.svg.docks[0][1]),
+                          ('flow', False, self.svg.docks[1][0],
+                                          self.svg.docks[1][1]))
         self._left, self._right = 0, self.svg.get_width()-self.svg.docks[1][0]
 
     def _make_flow_style_1arg(self, e, svg):
