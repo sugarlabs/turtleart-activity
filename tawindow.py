@@ -49,7 +49,7 @@ from gettext import gettext as _
 from tahoverhelp import *
 from taproject import *
 from sprite_factory import SVG, svg_str_to_pixbuf
-from talogo import lcNew, run_blocks, stop_logo, clear, doevalstep
+from talogo import lcNew, run_blocks, stop_logo, clear, doevalstep, showlabel
 from tacanvas import TurtleGraphics
 from sprites import Sprites, Sprite
 from block import Blocks, Block
@@ -643,7 +643,7 @@ class TurtleArtWindow():
     Make sure numeric input is valid.
     '''
     def _process_numeric_input(self, keyname):
-        oldnum = self.selected_blk.spr.labels[0] 
+        oldnum = self.selected_blk.spr.labels[0].replace(CURSOR,'')
         if len(oldnum) == 0:
             oldnum = '0'
         if keyname == 'minus':
@@ -654,6 +654,7 @@ class TurtleArtWindow():
         elif keyname == 'period' and '.' not in oldnum:
             newnum = oldnum + '.'
         elif keyname == 'BackSpace':
+            print "backspace: %s -> %s" % (oldnum, oldnum[:len(oldnum)-1])
             if len(oldnum) > 1:
                 newnum = oldnum[:len(oldnum)-1]
             else:
@@ -665,13 +666,15 @@ class TurtleArtWindow():
                 newnum = oldnum + keyname
         else:
             newnum = oldnum
-        self.selected_blk.spr.set_label(numcheck(newnum,oldnum))
+        # Add a cursor
+        self.selected_blk.spr.set_label("%s%s" % \
+                                        (str(numcheck(newnum,oldnum)), CURSOR))
 
     """
     Make sure alphanumeric input is properly parsed.
     """
     def _process_alphanumeric_input(self, keyname, keyunicode):
-        oldstr = self.selected_blk.spr.labels[0]
+        oldstr = self.selected_blk.spr.labels[0].replace(CURSOR,'')
         if keyname in ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock',\
                        'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift']:
             keyname = ''
@@ -700,7 +703,8 @@ class TurtleArtWindow():
                     newstr = oldstr
             else:
                 newstr = ''
-        self.selected_blk.spr.set_label(strcheck(newstr,oldstr))
+        self.selected_blk.spr.set_label("%s%s" % \
+                                        (strcheck(newstr,oldstr), CURSOR))
 
     """
     Use the keyboard to move blocks and turtle
@@ -815,6 +819,8 @@ class TurtleArtWindow():
         # After unselecting a 'number' block, we need to check its value
         if self.selected_blk.name == 'number':
             self._number_check()
+        elif self.selected_blk.name == 'string':
+            self._string_check()
         # Reset shape of the selected block
         self.selected_blk.spr.set_shape(self.selected_blk.shapes[0])
         self.selected_blk = None
@@ -905,7 +911,7 @@ class TurtleArtWindow():
             return
         self.selected_blk = blk
         if  blk.name=='number' or blk.name=='string':
-            pass
+            blk.spr.labels[0] += CURSOR
             '''
             elif blk.name in self.importblocks:
                 self._import_from_journal(self.selected_spr)
@@ -1201,33 +1207,55 @@ class TurtleArtWindow():
     Make sure a 'number' block contains a number.
     """
     def _number_check(self):
-        if self.selected_blk.spr.labels[0] in ['-', '.', '-.']:
-            self.selected_blk.spr.set_label('0')
-        if self.selected_blk.spr.labels[0] is not None:
+        n = self.selected_blk.spr.labels[0].replace(CURSOR,'')
+        print "(%s, %s)" % (self.selected_blk.spr.labels[0], n)
+        if n in ['-', '.', '-.']:
+            n = 0
+        if n is not None:
             try:
-                n = float(self.selected_blk.spr.labels[0])
-                if n > 1000000:
-                    self.selected_blk.spr.set_label('1')
+                f = float(n)
+                if f > 1000000:
+                    n = 1
                     showlabel(self.lc, "#overflowerror")
-                elif n < -1000000:
-                    self.selected_blk.spr.set_label('-1')
+                elif f < -1000000:
+                    n = -1
                     showlabel(self.lc, "#overflowerror")
             except ValueError:
-                self.selected_blk.spr.set_label('0')
+                n = 0
                 showlabel(self.lc, "#notanumber")
+        else:
+            n = 0
+        self.selected_blk.spr.set_label(n)
+        self.selected_blk.values[0] = n
+
+    def _string_check(self):
+        s = self.selected_blk.spr.labels[0].replace(CURSOR,'')
+        self.selected_blk.spr.set_label(s)
+        self.selected_blk.values[0] = s
 
 #
 # Utilities used for checking variable validity
 #
 
 def numcheck(new, old):
-    if new is '': return "0"
-    if new in ['-', '.', '-.']: return new
-    if new=='.': return '0.'
-    try: float(new); return new
-    except ValueError,e : return old
+    print "old: %s, new: %s" % (str(old), str(new))
+    n = new.replace(CURSOR,'')
+    if n is '':
+        return "0"
+    if n in ['-', '.', '-.']:
+        return n
+    if n == '.':
+        return '0.'
+    try:
+        float(n);
+        return n
+    except ValueError,e:
+        return old.replace(CURSOR,'')
 
 def strcheck(new, old):
-    try: str(new); return new
-    except ValueError,e : return old
+    try:
+        str(new)
+        return new.replace(CURSOR,'')
+    except ValueError,e:
+        return old.replace(CURSOR,'')
 
