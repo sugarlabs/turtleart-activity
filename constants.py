@@ -206,15 +206,6 @@ BLOCK_NAMES = {
     'yellow':[_('yellow')]}
 
 #
-# Legacy names
-#
-OLD_NAMES = {'product':'product2', 'storeinbox':'storein',
-             'division':'division2', 'plus':'plus2',
-             'remainder':'remainder2', 'identity':'identity2',
-             'division':'division2', 'if else':'if', 'audiooff':'audio',
-             'descriptionoff':'description'}
-
-#
 # Logo primitives
 #
 
@@ -279,7 +270,7 @@ PRIMITIVES = {
     'setcolor':'setcolor',
     'seth':'seth',
     'setpensize':'setpensize',
-    'set scale':'setscale',
+    'setscale':'setscale',
     'setshade':'setshade',
     'settextsize':'settextsize',
     'setxy':'setxy',
@@ -313,6 +304,7 @@ DEFAULTS = {
     'audio':[None],
     'back':[100],
     'box':[_('my box')],
+    'description':[None],
     'fillscreen':[60,80],
     'forward':[100],
     'hat':[_('action')],
@@ -355,6 +347,15 @@ OVERLAY_SHAPES = ['Cartesian', 'polar']
 STATUS_SHAPES = ['status', 'info', 'nostack', 'noinput', 'emptyheap',
                  'emptybox', 'nomedia', 'nocode', 'overflowerror',
                  'syntaxerror']
+
+#
+# Legacy names
+#
+OLD_NAMES = {'product':'product2', 'storeinbox':'storein',
+             'division':'division2', 'plus':'plus2',
+             'remainder':'remainder2', 'identity':'identity2',
+             'division':'division2', 'if else':'if', 'audiooff':'audio',
+             'descriptionoff':'description'}
 
 #
 # 'dead key' Unicode dictionaries

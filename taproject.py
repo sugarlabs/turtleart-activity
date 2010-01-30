@@ -41,8 +41,7 @@ from StringIO import StringIO
 import os.path
 
 from tacanvas import *
-from talogo import stop_logo
-from talogo import get_pixbuf_from_journal
+from talogo import stop_logo, get_pixbuf_from_journal, movie_media_type
 try:
     from sugar.datastore import datastore
 except:
@@ -184,29 +183,40 @@ def load_block(tw, b):
     blk = block.Block(tw.block_list, tw.sprite_list, 
                       btype, b[2]+tw.canvas.cx,
                       b[3]+tw.canvas.cy, 'block', values)
-
-    if btype in BOX_STYLE_MEDIA and blk.values[0] is not None:
-        if tw.running_sugar():
+    # Some blocks get a skin.
+    if btype == 'nop': 
+        if tw.nop == 'pythonloaded':
+            blk.spr.set_image(tw.media_shapes['pythonon'], 1, 17, 8)
+        else:
+            blk.spr.set_image(tw.media_shapes['pythonoff'], 1, 17, 8)
+        blk.spr.set_label(' ')
+    elif btype in BOX_STYLE_MEDIA and blk.values[0] is not None:
+        if btype == 'audio' or btype == 'description':
+            blk.spr.set_image(tw.media_shapes[btype+'on'], 1, 37, 6)
+        elif tw.running_sugar():
             try:
                 dsobject = datastore.get(blk.values[0])
-                blk.spr.set_image(tw.media_shapes[shape_dict[btype+'on']],
-                                  1, 17, 2)
-                if blk.name == 'journal':
+                if not movie_media_type(dsobject.file_path[-4:]):
                     pixbuf = get_pixbuf_from_journal(dsobject, 80, 60)
                     if pixbuf is not None:
                         blk.spr.set_image(pixbuf, 1, 17, 2)
                 dsobject.destroy()
             except:
+                blk.spr.set_image(tw.media_shapes['journalon'], 1, 37, 6)
                 print "couldn't open dsobject (%s)" % (blk.values[0])
         else:
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(blk.values[0], 80, 60)
-            if pixbuf is not None:
-                blk.spr.set_image(pixbuf, 1, 17, 2)
+            if not movie_media_type(blk.values[0][-4:]):
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(blk.values[0],
+                                                              80, 60)
+                if pixbuf is not None:
+                    blk.spr.set_image(pixbuf, 1, 37, 6)
             else:
-                blk.spr.set_image(self.media_shapes['journalon'], 1, 17, 2)
-                print "couldn't open media object (%s)" % (blk.values[0])
+                blk.spr.set_image(tw.media_shapes['journalon'], 1, 37, 6)
         blk.spr.set_label(' ')
         blk.resize()
+    elif btype in BOX_STYLE_MEDIA:
+        blk.spr.set_label(' ')
+        blk.spr.set_image(tw.media_shapes[btype+'off'], 1, 37, 6)
 
     blk.spr.set_layer(BLOCK_LAYER)
     return blk

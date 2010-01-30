@@ -49,6 +49,17 @@ from gettext import gettext as _
 
 procstop = False
 
+def movie_media_type(suffix):
+    if suffix.replace('.','') in ['ogv','vob','mp4','wmv','mov', 'mpeg']:
+        return True
+    return False
+
+def audio_media_type(suffix):
+    if suffix.replace('.','') in ['ogg', 'oga', 'm4a']:
+        return True
+    return False
+
+
 class symbol:
     def __init__(self, name):
         self.name = name
@@ -113,12 +124,12 @@ def blocks_to_code(lc, blk):
                 code.append('#smedia_'+str(blk.values[0]))
             else:
                 code.append('#smedia_None')
-        elif blk.name=='descriptionoff' or blk.name=='descriptionon':
+        elif blk.name=='description':
             if blk.values[0] is not None:
                 code.append('#sdescr_'+str(blk.values[0]))
             else:
                 code.append('#sdescr_None')
-        elif blk.name=='audiooff' or blk.name=='audio':
+        elif blk.name=='audio':
             if blk.values[0] is not None:
                 code.append('#saudio_'+str(blk.values[0]))
             else:
@@ -259,26 +270,24 @@ def infixnext(lc):
 
 def debug_trace(lc, token):
     if lc.trace:
-        if token.name in ['forward', 'right', 'back', 'left', 'seth', 'setxy', \
+        if token.name in ['forward', 'right', 'back', 'left', 'seth', 'setxy',
                           'arc', 'heading', 'xcor', 'ycor']:
-            my_string = token.name  +\
-                        "\nxcor= " + str(int(lc.tw.canvas.xcor)) +\
-                        "\nycor= " + str(int(lc.tw.canvas.ycor)) +\
-                        "\nheading= " + str(int(lc.tw.canvas.heading)) +\
-                        "\nscale= " + str(lc.scale)
-        elif token.name in ['penup', 'pendown', 'setcolor', 'setshade', \
-                            'settextcolor', 'settextsize', 'shade', 'color', \
+            my_string = "%s\nxcor=%d\nycor=%d\nheading=%d\nscale=%d" %\
+                        (token.name,int(lc.tw.canvas.xcor),
+                         int(lc.tw.canvas.ycor),int(lc.tw.canvas.heading),
+                         int(lc.scale))
+        elif token.name in ['penup', 'pendown', 'setcolor', 'setshade',
+                            'settextcolor', 'settextsize', 'shade', 'color',
                             'fillscreen', 'pensize']:
             if lc.tw.canvas.pendown:
-                penstatus = "\npen down"
+                penstatus = "pen down"
             else:
-                penstatus = "\npen up"
-            my_string = token.name + penstatus +\
-                        "\ncolor= " + str(int(lc.tw.canvas.color)) +\
-                        "\nshade= " + str(lc.tw.canvas.shade) +\
-                        "\npen size= " + str(lc.tw.canvas.pensize)
+                penstatus = "pen up"
+            my_string = "%s\n%s\ncolor=%d\nshade=%d\npensize=%.1f" %\
+                        (token.name, penstatus, int(lc.tw.canvas.color),
+                        int(lc.tw.canvas.shade), lc.tw.canvas.pensize)
         else:
-            my_string = token.name + "\nblocks status:\n"
+            my_string = "%s\nblocks status:\n" % (token.name)
             for k,v in lc.boxes.iteritems():
                 tmp = k +":" + str(v) + "\n"
                 my_string += tmp
@@ -674,24 +683,25 @@ def show_picture(lc, media, x, y, w, h):
     if media == "" or media[6:] == "":
         pass
     elif media[6:] is not "None":
+        pixbuf = None
         if lc.tw.running_sugar():
             try:
                 dsobject = datastore.get(media[6:])
             except:
                 raise logoerror("#nomedia")
-            # Check to see if it is a movie
-            if dsobject.file_path[-4:] == '.ogv' or \
-               dsobject.file_path[-4:] == '.vob' or \
-               dsobject.file_path[-4:] == '.mp4' or \
-               dsobject.file_path[-4:] == '.wmv' or \
-               dsobject.file_path[-4:] == '.mov':
-                play_dsobject(lc, dsobject, int(x), int(y), int(w), int(h))
+            if movie_media_type(dsobject.file_path[-4:]):
+                play_movie_from_file(lc, dsobject.file_path, int(x), int(y),
+                                                             int(w), int(h))
             else:
                 pixbuf = get_pixbuf_from_journal(dsobject, int(w), int(h))
             dsobject.destroy()
         else:
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(media[6:],
-                                                          int(w), int(h))
+            if movie_media_type(media[-4:]):
+                play_movie_from_file(lc, media[6:], int(x), int(y),
+                                                    int(w), int(h))
+            else:
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(media[6:],
+                                                              int(w), int(h))
         if pixbuf is not None:
             lc.tw.canvas.draw_pixbuf(pixbuf, 0, 0, int(x), int(y),
                                                    int(w), int(h))
@@ -702,7 +712,6 @@ def get_pixbuf_from_journal(dsobject,w,h):
                                                       int(w),int(h))
     except:
         try:
-            # print "Trying preview..."
             pixbufloader = \
                 gtk.gdk.pixbuf_loader_new_with_mime_type('image/png')
             pixbufloader.set_size(min(300,int(w)),min(225,int(h)))
@@ -710,22 +719,25 @@ def get_pixbuf_from_journal(dsobject,w,h):
             pixbufloader.close()
             pixbuf = pixbufloader.get_pixbuf()
         except:
-            # print "No preview"
             pixbuf = None
     return pixbuf
 
 def show_description(lc, media, x, y, w, h):
     if media == "" or media[6:] == "":
-        # raise logoerror("#nomedia")
         pass
     elif media[6:] is not "None":
-        try:
-            dsobject = datastore.get(media[6:])
-            lc.tw.canvas.draw_text(dsobject.metadata['description'],
-                      int(x),int(y), lc.body_height, int(w))
-            dsobject.destroy()
-        except:
-            print "no description?"
+        if lc.tw.running_sugar():
+            try:
+                dsobject = datastore.get(media[6:])
+                text = dsobject.metadata['description']
+                dsobject.destroy()
+            except:
+                print "no description?"
+        else:
+            f = open(media[6:], 'r')
+            text = f.read()
+            f.close()
+        lc.tw.canvas.draw_text(text, int(x), int(y), lc.body_height, int(w))
 
 def draw_title(lc,title,x,y):
     lc.tw.canvas.draw_text(title,int(x),int(y),lc.title_height,
@@ -977,7 +989,17 @@ def show(lc, string, center=False):
         lc.tw.canvas.draw_text(string,x,y,lc.tw.textsize,lc.tw.canvas.width-x)
 
 def play_sound(lc, audio):
-    play_audio(lc, audio)
+    if audio == "" or audio[6:] == "":
+        raise logoerror("#nomedia")
+    if lc.tw.running_sugar():
+        if audio[6:] != "None":
+            try:
+                dsobject = datastore.get(audio[6:])
+                play_audio(lc, dsobject.file_path)
+            except:
+                print "Couldn't open id: " + str(audio[6:])
+    else:
+        play_audio(lc, audio[6:])
 
 def clear(lc):
     stop_media(lc)

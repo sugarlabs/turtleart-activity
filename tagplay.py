@@ -136,21 +136,14 @@ class PlayVideoWindow(gtk.Window):
             del self.imagesink
 
         self.imagesink = sink
-        self.imagesink.set_xwindow_id(self.window.xid)
+        if self.window is not None:
+            self.imagesink.set_xwindow_id(self.window.xid)
 
-def play_audio(lc, audio):
-    print "loading audio id: " + str(audio)
-    if audio == "" or audio[6:] == "":
-        raise logoerror("#nomedia")
-    elif audio[6:] != "None":
-        try:
-            dsobject = datastore.get(audio[6:])
-            print dsobject.file_path
-        except:
-            print "Couldn't open id: " + str(audio[6:])
-        if lc.gplay == None:
-            lc.gplay = Gplay()
-        lc.gplay.setFile("file:///" + dsobject.file_path)
+def play_audio(lc, filepath):
+    print "loading audio id: " + filepath
+    if lc.gplay == None:
+        lc.gplay = Gplay()
+    lc.gplay.setFile("file:///" + filepath)
 
 def play_video(lc, media, x, y, w, h):
     print "loading media id: " + str(media)
@@ -164,20 +157,20 @@ def play_video(lc, media, x, y, w, h):
             print "Couldn't open id: " + str(media[6:])
     play_dsobject(lc, dsobject, x, y, w, h)
 
-def play_dsobject(lc, dsobject, x, y, w, h):
+def play_movie_from_file(lc, filepath, x, y, w, h):
     if lc.gplay == None:
         lc.gplay = Gplay()
     # wait for current movie to stop playing
     if lc.gplay.is_playing:
         print "already playing..."
-#        yield True
-    lc.gplay.setFile("file:///" + dsobject.file_path)
+    lc.gplay.setFile("file:///" + filepath)
     if lc.gplay.window == None:
         gplayWin = PlayVideoWindow()
     lc.gplay.window = gplayWin
     gplayWin.set_type_hint( gtk.gdk.WINDOW_TYPE_HINT_DIALOG )
     gplayWin.set_decorated( False )
-    gplayWin.set_transient_for( lc.tw.activity )
+    if lc.tw.running_sugar():
+        gplayWin.set_transient_for( lc.tw.activity )
     # y position is too high for some reason (toolbox?) adding offset
     gplayWin.move( x, y+108 )
     gplayWin.resize( w, h )

@@ -49,7 +49,9 @@ from gettext import gettext as _
 from tahoverhelp import *
 from taproject import *
 from sprite_factory import SVG, svg_str_to_pixbuf
-from talogo import lcNew, run_blocks, stop_logo, clear, doevalstep, showlabel
+from talogo import lcNew, run_blocks, stop_logo, clear, doevalstep, showlabel,\
+                   display_coordinates, movie_media_type, audio_media_type,\
+                   get_pixbuf_from_journal
 from tacanvas import TurtleGraphics
 from sprites import Sprites, Sprite
 from block import Blocks, Block
@@ -60,12 +62,8 @@ TurtleArt Window class abstraction
 """
 class TurtleArtWindow():
 
-    # Import from Journal for these blocks 
-    importblocks = ['audiooff', 'descriptionoff','journal']
-
     # Time out for triggering help
     timeout_tag = [0]
-
 
     def __init__(self, win, path, lang, parent=None):
         self._setup_initial_values(win, path, lang, parent)
@@ -290,8 +288,12 @@ class TurtleArtWindow():
     def _setup_misc(self):
         # media blocks get positioned into other blocks
         for name in MEDIA_SHAPES:
+            if name[0:7] == 'journal' and self.running_sugar() is False:
+                filename = 'file'+name[7:]
+            else:
+                filename = name
             self.media_shapes[name] = \
-                self._load_sprite_from_file("%s/%s.svg" % (self.path, name))
+                self._load_sprite_from_file("%s/%s.svg" % (self.path, filename))
 
         for i, name in enumerate(STATUS_SHAPES):
             self.status_shapes[name] = self._load_sprite_from_file(
@@ -1030,25 +1032,30 @@ class TurtleArtWindow():
                         self._load_image(dsobject, blk)
                     elif blk.name == 'audio':
                         blk.spr.set_image(self.media_shapes['audioon'],
-                                          1, 17, 2)
+                                          1, 37, 6)
                     else:
                         blk.spr.set_image(self.media_shapes['decsriptionon'],
-                                          1, 17, 2)
+                                          1, 37, 6)
                     blk.values[0] = dsobject.object_id
                     dsobject.destroy()
             finally:
                 chooser.destroy()
                 del chooser
         else:
-            from taproject import _get_load_name
             fname = _get_load_name(self, '.*')
             if fname is None:
                 return
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(fname, 80, 60)
-            if pixbuf is not None:
-                blk.spr.set_image(pixbuf, 1, 17, 2)
+            if movie_media_type(fname[-4:]):
+                blk.spr.set_image(self.media_shapes['journalon'], 1, 37, 6)
+            elif blk.name == 'audio' or audio_media_type(fname[-4:]):
+                blk.spr.set_image(self.media_shapes['audioon'], 1, 37, 6)
+                blk.name = 'audio'
+            elif blk.name == 'description':
+                blk.spr.set_image(self.media_shapes['descriptionon'], 1, 37, 6)
             else:
-                blk.spr.set_image(self.media_shapes['journalon'], 1, 17, 2)
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(fname, 80, 60)
+                if pixbuf is not None:
+                    blk.spr.set_image(pixbuf, 1, 37, 6)
             blk.values[0] = fname
         blk.spr.set_label(' ')
 
@@ -1056,12 +1063,11 @@ class TurtleArtWindow():
     Replace Journal block graphic with preview image 
     """
     def _load_image(self, picture, blk):
-        from talogo import get_pixbuf_from_journal
         pixbuf = get_pixbuf_from_journal(picture, 80, 60)
         if pixbuf is not None:
             blk.spr.set_image(pixbuf, 1, 17, 2)
         else:
-            blk.spr.set_image(self.media_shapes['descon'], 1, 17, 2)
+            blk.spr.set_image(self.media_shapes['descriptionon'], 1, 37, 6)
 
     """
     Run stack
@@ -1230,10 +1236,6 @@ class TurtleArtWindow():
             elif block1.name in ('show', 'push', 'storein', 'storeinbox1',
                                  'storeinbox2'):
                 if d2type in CONTENT_BLOCKS:
-                    pass
-            # some blocks can take media, audio, movies, of descriptions
-            elif block1.name in ('containter'):
-                if d1type == 'audiooff' or d1type == 'journal':
                     pass
             else:
                 return (100,100)
