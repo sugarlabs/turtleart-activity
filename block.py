@@ -98,7 +98,8 @@ class Block:
         for i in range(len(self._font_size)):
             self._font_size[i] *= self.scale*block_list.font_scale_factor
 
-        self.values = values
+        for v in (values):
+            self.values.append(v)
 
         self._new_block_from_factory(sprite_list, x, y)
 
