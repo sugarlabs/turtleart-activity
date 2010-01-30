@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.0"
-   width="75"
-   height="54"
+   width="34.5"
+   height="45.5"
    id="svg2">
   <defs
      id="defs5">
@@ -31,27 +32,23 @@
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.7083638,0,0,1.0012565,0.1338084,32.632067)" />
   </defs>
-  <path
-     d="M 0.84217214,0.84217214 L 74.157828,0.84217214 L 74.157828,53.157828 L 0.84217214,53.157828 L 0.84217214,0.84217214 z"
-     id="path9"
-     style="fill:url(#linearGradient3172);fill-opacity:1;fill-rule:nonzero;stroke:#c0a000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <rect
      width="30.999998"
      height="42"
-     x="22"
-     y="6"
+     x="1.75"
+     y="1.75"
      id="rect2391"
-     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
   <path
-     d="M 30.25,31 C 44.75,31 44.75,31 44.75,31"
+     d="m 10,26.75 c 14.5,0 14.5,0 14.5,0"
      id="path3163"
-     style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:3.49999976;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     style="fill:none;stroke:#ff0000;stroke-width:3.49999976;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
   <path
-     d="M 30.25,37 C 44.75,37 44.75,37 44.75,37"
+     d="m 10,32.75 c 14.5,0 14.5,0 14.5,0"
      id="path3165"
-     style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:3.49999976;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     style="fill:none;stroke:#ff0000;stroke-width:3.49999976;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
   <path
-     d="M 30.25,25 C 44.75,25 44.75,25 44.75,25"
+     d="m 10,20.75 c 14.5,0 14.5,0 14.5,0"
      id="path3167"
-     style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:3.49999976;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     style="fill:none;stroke:#ff0000;stroke-width:3.49999976;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
 </svg>

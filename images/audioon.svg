@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.0"
-   width="75"
-   height="54"
+   width="36"
+   height="45.999996"
    id="svg2">
   <defs
      id="defs5">
@@ -31,22 +32,18 @@
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.7750554,0,0,0.9997979,0.8784441,32.623865)" />
   </defs>
-  <path
-     d="M 1,0.88028324 L 74.119717,0.88028324 L 74.119717,53.119717 L 1,53.119717 L 1,0.88028324 z"
-     id="path9"
-     style="fill:url(#linearGradient3172);fill-opacity:1;fill-rule:nonzero;stroke:#c0a000;stroke-width:1.76100004;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <rect
      width="32.5"
      height="42.499996"
-     x="21.25"
-     y="5.7500038"
+     x="1.75"
+     y="1.75"
      id="rect2426"
-     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.5;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
   <g
-     transform="translate(-1.872241,-0.5)"
+     transform="translate(-21.372241,-4.5000038)"
      id="g3201">
     <path
-       d="M 36.843,39.696 C 36.332,38.239 33.633,38.623 32.433,39.626 C 30.033,41.635 32.009,44.022 34.757,42.903 C 36.321,42.265 37.353,41.155 36.843,39.696 z"
+       d="m 36.843,39.696 c -0.511,-1.457 -3.21,-1.073 -4.41,-0.07 -2.4,2.009 -0.424,4.396 2.324,3.277 1.564,-0.638 2.596,-1.748 2.086,-3.207 z"
        id="path2766"
        style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:3.5;stroke-opacity:1;display:inline" />
     <line
@@ -58,12 +55,12 @@
        display="inline"
        style="fill:none;stroke:#ff0000;stroke-width:2.25;stroke-opacity:1;display:inline" />
     <polygon
-       points="35.047,25.036 27.838,28.595 27.838,24.728 35.047,21.166 35.047,25.036 "
-       transform="translate(8.518,-1e-3)"
+       points="35.047,25.036 35.047,25.036 27.838,28.595 27.838,24.728 35.047,21.166 "
+       transform="translate(8.518,-0.001)"
        id="polygon2770"
        style="fill:#ff0000;fill-opacity:1;display:inline" />
     <path
-       d="M 47.25801,34.943896 C 46.74701,33.486896 44.04801,33.870896 42.84801,34.873896 C 40.44801,36.882896 42.42401,39.269896 45.17201,38.150896 C 46.73601,37.512896 47.76801,36.402896 47.25801,34.943896 z"
+       d="m 47.25801,34.943896 c -0.511,-1.457 -3.21,-1.073 -4.41,-0.07 -2.4,2.009 -0.424,4.396 2.324,3.277 1.564,-0.638 2.596,-1.748 2.086,-3.207 z"
        id="path2412"
        style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:3.5;stroke-opacity:1;display:inline" />
     <line
@@ -75,7 +72,7 @@
        display="inline"
        style="fill:none;stroke:#ff0000;stroke-width:2.25;stroke-opacity:1;display:inline" />
     <polygon
-       points="35.047,25.036 27.838,28.595 27.838,24.728 35.047,21.166 35.047,25.036 "
+       points="35.047,25.036 35.047,25.036 27.838,28.595 27.838,24.728 35.047,21.166 "
        transform="translate(13.73301,-2.653104)"
        id="polygon2416"
        style="fill:#ff0000;fill-opacity:1;display:inline" />
