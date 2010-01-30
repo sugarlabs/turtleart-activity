@@ -334,9 +334,9 @@ class Sprite:
         if y > self.images[i].get_height()-1:
             return (-1,-1,-1,-1)
         try:
-            array = self.image.get_pixels()
+            array = self.images[i].get_pixels()
             if array is not None:
-                offset = (y*self.image.get_width()+x)*4
+                offset = (y*self.images[i].get_width()+x)*4
                 r,g,b,a = ord(array[offset]), ord(array[offset+1]),\
                           ord(array[offset+2]), ord(array[offset+3])
                 return (r,g,b,a)
