@@ -76,7 +76,7 @@ class TurtleGraphics:
         (self.cx, self.cy) = self.canvas.get_xy()
         self.canvas.type = 'canvas'
         self.canvas.set_layer(CANVAS_LAYER)
-        self.gc = self.canvas.image.new_gc()
+        self.gc = self.canvas.images[0].new_gc()
         self.tw.active_turtle.show()
         self.shade = 0
         self.clearscreen()
@@ -84,7 +84,7 @@ class TurtleGraphics:
     def clearscreen(self):
         rect = gtk.gdk.Rectangle(0, 0, self.width, self.height)
         self.gc.set_foreground(self.tw.bgcolor)
-        self.canvas.image.draw_rectangle(self.gc, True, *rect)
+        self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
         self.invalt(0, 0, self.width, self.height)
         self.setpensize(5)
         self.setcolor(0)
@@ -154,7 +154,7 @@ class TurtleGraphics:
         x,y = self.width/2+int(cx-r), self.height/2-int(cy+r)
         w,h = int(2*r), int(2*r)
         if self.pendown:
-            self.canvas.image.draw_arc(self.gc, False, x, y, w, h,
+            self.canvas.images[0].draw_arc(self.gc, False, x, y, w, h,
                                 int(180-self.heading-a)*64, int(a)*64)
             self.invalt(x-self.pensize*self.tw.coord_scale/2-3,
                         y-self.pensize*self.tw.coord_scale/2-3,
@@ -172,7 +172,7 @@ class TurtleGraphics:
         x,y = self.width/2+int(cx-r), self.height/2-int(cy+r)
         w,h = int(2*r), int(2*r)
         if self.pendown:
-            self.canvas.image.draw_arc(self.gc,False, x, y, w, h,
+            self.canvas.images[0].draw_arc(self.gc,False, x, y, w, h,
                                        int(360-self.heading)*64, int(a)*64)
             self.invalt(x-self.pensize*self.tw.coord_scale/2-3,
                         y-self.pensize*self.tw.coord_scale/2-3,
@@ -239,7 +239,7 @@ class TurtleGraphics:
         self.setcolor(c); self.setshade(s)
         rect = gtk.gdk.Rectangle(0,0,self.width,self.height)
         self.gc.set_foreground(self.tw.fgcolor)
-        self.canvas.image.draw_rectangle(self.gc, True, *rect)
+        self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
         self.invalt(0,0,self.width,self.height)
         self.setcolor(oldc); self.setshade(olds)
 
@@ -264,7 +264,7 @@ class TurtleGraphics:
     def draw_pixbuf(self,pixbuf,a,b,x,y,w,h):
         w *= self.tw.coord_scale
         h *= self.tw.coord_scale
-        self.canvas.image.draw_pixbuf(self.gc, pixbuf, a, b, x, y)
+        self.canvas.images[0].draw_pixbuf(self.gc, pixbuf, a, b, x, y)
         self.invalt(x,y,w,h)
 
     def draw_text(self, label, x, y, size, w):
@@ -284,7 +284,7 @@ class TurtleGraphics:
             pl = self.tw.window.create_pango_layout(str(label))
         pl.set_font_description(fd)
         pl.set_width(int(w)*pango.SCALE)
-        self.canvas.image.draw_layout(self.gc,int(x),int(y),pl)
+        self.canvas.images[0].draw_layout(self.gc,int(x),int(y),pl)
         w,h = pl.get_pixel_size()
         self.invalt(x,y,w,h)
 
@@ -296,7 +296,7 @@ class TurtleGraphics:
         if y1<y2: miny,maxy=y1,y2
         else: miny,maxy=y2,y1
         w,h=maxx-minx,maxy-miny
-        self.canvas.image.draw_line(self.gc,x1,y1,x2,y2)
+        self.canvas.images[0].draw_line(self.gc,x1,y1,x2,y2)
         self.invalt(minx-self.pensize*self.tw.coord_scale/2-3,
                     miny-self.pensize*self.tw.coord_scale/2-3,
                     w+self.pensize*self.tw.coord_scale+6,

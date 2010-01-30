@@ -150,20 +150,23 @@ class Sprite:
         self._margins = [0,0,0,0]
         self.layer = 100
         self.labels = []
+        self.images = []
         self.set_image(image)
         self._sprites.append_to_list(self)
 
-    def set_image(self, image):
-        if image is None:
-            self._width, self._height = 0,0
-            self.image = None
-            return
-        self.image = image
-        if isinstance(self.image, gtk.gdk.Pixbuf):
-            self._width = self.image.get_width()
-            self._height = self.image.get_height()
+    def set_image(self, image, i=0):
+        while len(self.images) < i+1:
+           self.images.append(None)
+        self.images[i] = image
+        if isinstance(self.images[i], gtk.gdk.Pixbuf):
+            _w = self.images[i].get_width()
+            _h = self.images[i].get_height()
         else:
-            self._width, self._height = self.image.get_size()
+            _w, _h = self.images[i].get_size()
+        if _w > self._width:
+            self._width = _w
+        if _h > self._height:
+            self._height = _h
 
     def move(self, pos):
         self.inval()
@@ -185,9 +188,9 @@ class Sprite:
     def get_layer(self):
         return self.layer
 
-    def set_shape(self, image):
+    def set_shape(self, image, i=0):
         self.inval()
-        self.set_image(image)
+        self.set_image(image, i)
         self.inval()
 
     def set_layer(self, layer):
@@ -248,12 +251,13 @@ class Sprite:
             gtk.gdk.Rectangle(self._x,self._y,self._width,self._height), False)
 
     def draw(self):
-        if isinstance(self.image, gtk.gdk.Pixbuf):
-            self._sprites.area.draw_pixbuf(
-                self._sprites.gc, self.image, 0, 0, self._x, self._y)
-        elif self.image is not None:
-            self._sprites.area.draw_drawable(
-                self._sprites.gc, self.image, 0, 0, self._x, self._y, -1, -1)
+        for i in self.images:
+            if isinstance(i, gtk.gdk.Pixbuf):
+                self._sprites.area.draw_pixbuf(
+                    self._sprites.gc, i, 0, 0, self._x, self._y)
+            elif i is not None:
+                self._sprites.area.draw_drawable(
+                    self._sprites.gc, i, 0, 0, self._x, self._y, -1, -1)
         if len(self.labels) > 0:
             self.draw_label()
 
@@ -323,11 +327,11 @@ class Sprite:
         return((self._width-self._margins[0]-self._margins[2],
                 self._width-self._margins[1]-self._margins[3]))
     
-    def get_pixel(self, pos):
+    def get_pixel(self, pos, i=0):
         x, y = pos
         x = x-self._x
         y = y-self._y
-        if y > self.image.get_height()-1:
+        if y > self.images[i].get_height()-1:
             return (-1,-1,-1,-1)
         try:
             array = self.image.get_pixels()
