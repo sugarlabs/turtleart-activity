@@ -762,14 +762,14 @@ def show_template1(lc, title, media):
     # save the text size so we can restore it later
     save_text_size = lc.tw.textsize
     # set title text
-    settextsize(lc.tw.canvas, lc.title_height)
+    lc.tw.canvas.settextsize(lc.title_height)
     show(lc,title)
     # calculate and set scale for media blocks
     myscale = 45 * (lc.tw.canvas.height - lc.title_height*2) \
                   / lc.tw.canvas.height
     set_scale(lc,myscale)
     # set body text size
-    settextsize(lc.tw.canvas, lc.body_height)
+    lc.tw.canvas.settextsize(lc.body_height)
     # render media object
     y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
     lc.tw.canvas.setxy(x, y)
@@ -847,7 +847,7 @@ def show_template3(lc, title, s1, s2, s3, s4, s5, s6, s7):
     lc.tw.canvas.setxy(x, y)
     show(lc, s7)
     # restore text size
-    settextsize(lc.tw.canvas, save_text_size)
+    lc.tw.canvas.settextsize(save_text_size)
 
 # title, two images (vertical), two desciptions
 def show_template6(lc, title, media1, media2):
@@ -911,7 +911,7 @@ def show_template7(lc, title, media1, media2, media3, media4):
     lc.tw.canvas.setxy(x, y)
     show(lc, media3)
     # restore text size
-    settextsize(lc.tw.canvas, save_text_size)
+    lc.tw.canvas.settextsize(save_text_size)
 
 # title, one media object
 def show_template8(lc, title, media1):

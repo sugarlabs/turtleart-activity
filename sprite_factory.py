@@ -145,6 +145,39 @@ class SVG:
         svg += self._footer()
         return self._header() + svg
 
+    def portfolio(self):
+        (x, y) = self._calculate_x_y()
+        x += self._innie_x1+self._innie_x2
+        svg = self._new_path(x, y)
+        svg += self._rarc_to(1, -1)
+        svg += self._do_slot()
+        xx = self._x
+        svg += self._rline_to(self._expand_x, 0)
+        svg += self._rarc_to(1, 1)
+        for i in range(len(self._innie)):
+            if self._innie[i] is True:
+                svg += self._do_innie()
+                svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
+            else:
+                svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
+        svg += self._rline_to(0, self._expand_y)
+        svg += self._rarc_to(-1, 1)
+        svg += self._line_to(xx, self._y)
+        svg += self._do_tab()
+        svg += self._rarc_to(-1, -1)
+        svg += self._rline_to(0, -self._expand_y)
+        for i in range(len(self._innie)-1): # skip one for title
+            if self._innie[len(self._innie)-i-1] is True:
+                svg += self._rline_to(0, -2*self._innie_y2-self._innie_spacer)
+                svg += self._do_reverse_innie()
+            else:
+                svg += self._rline_to(0, -2*self._innie_y2-self._innie_spacer)
+        svg += self._close_path()
+        self._calculate_w_h()
+        svg += self._style()
+        svg += self._footer()
+        return self._header() + svg
+
     def basic_box(self):
         self.set_outie(True)
         x = self._stroke_width/2.0+self._innie_x1+self._innie_x2
@@ -578,6 +611,18 @@ class SVG:
             self._rline_to(0, -self._innie_y1),          
             self._rline_to(self._innie_x1, 0))
 
+    def _do_reverse_innie(self):
+        self.docks.append((int((self._x+self._stroke_width)*self._scale),
+                           int((self._y)*self._scale)))
+        return "%s%s%s%s%s%s%s" % (
+            self._rline_to(-self._innie_x1, 0),
+            self._rline_to(0, self._innie_y1),
+            self._rline_to(-self._innie_x2, 0),
+            self._rline_to(0, -self._innie_y2-2*self._innie_y1),
+            self._rline_to(self._innie_x2, 0),
+            self._rline_to(0, self._innie_y1),          
+            self._rline_to(self._innie_x1, 0))
+
     def _do_outie(self):
         if self._outie is not True:
             return self._rline_to(0, -self._innie_y2)
@@ -663,15 +708,14 @@ def generator(datapath):
     """
 
     svg0 = SVG()
-    f = open_file(datapath, "flow-test.svg")
+    f = open_file(datapath, "portfolio-test.svg")
     svg0.set_scale(1)
-    svg0.expand(20,0)
-    # svg0.set_innie([True])
-    svg0.set_boolean(True)
+    svg0.expand(40,0)
+    svg0.set_slot(True)
+    svg0.set_innie([True, True, False, False, True])
     svg0.set_tab(True)
-    svg0.set_else(True)
     svg0.set_gradiant(True)
-    svg_str = svg0.basic_flow()
+    svg_str = svg0.portfolio()
     f.write(svg_str)
     close_file(f)
 

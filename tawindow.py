@@ -380,9 +380,13 @@ class TurtleArtWindow():
         if self.palettes[n] == []:
             _min_width = (len(PALETTES)+1)*(SELECTOR_WIDTH)
             for i, name in enumerate(PALETTES[n]):
+                if name in PORTFOLIO_STYLE:
+                    scale = 1.0
+                else:
+                    scale = 1.5
                 self.palettes[n].append(Block(self.block_list,
                                               self.sprite_list, name,
-                                              0, 0, 'proto', [], 1.5))
+                                              0, 0, 'proto', [], scale))
                 self.palettes[n][i].spr.set_layer(TAB_LAYER)
                 self.palettes[n][i].spr.set_shape(self.palettes[n][i].shapes[0])
                 # Add a skin to some blocks
@@ -1042,7 +1046,7 @@ class TurtleArtWindow():
                 chooser.destroy()
                 del chooser
         else:
-            fname = _get_load_name(self, '.*')
+            fname = get_load_name(self, '.*')
             if fname is None:
                 return
             if movie_media_type(fname[-4:]):
@@ -1055,7 +1059,7 @@ class TurtleArtWindow():
             else:
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(fname, 80, 60)
                 if pixbuf is not None:
-                    blk.spr.set_image(pixbuf, 1, 37, 6)
+                    blk.spr.set_image(pixbuf, 1, 17, 2)
             blk.values[0] = fname
         blk.spr.set_label(' ')
 
@@ -1141,14 +1145,20 @@ class TurtleArtWindow():
                 argname = dock[0]
                 if argname == 'unavailable':
                     continue
-                if (type(argvalue) is str or type(argvalue) is unicode) and\
-                   argname == 'number':
+                if argname == 'media':
+                    argname = 'journal'
+                elif argname == 'number' and\
+                     (type(argvalue) is str or type(argvalue) is unicode):
                     argname = 'string'
                 (sx, sy) = newspr.get_xy()
                 argblk = Block(self.block_list, self.sprite_list,
                                argname, 0, 0, 'block', [argvalue])
                 argdock = argblk.docks[0]
                 nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
+                if argname == 'journal':
+                    argblk.spr.set_image(self.media_shapes['journaloff'],
+                                         1, 37, 6)
+                    argblk.spr.set_label(' ')
                 argblk.spr.move((nx, ny))
                 argblk.spr.set_layer(TOP_LAYER)
                 argblk.connections = [newblk, None]

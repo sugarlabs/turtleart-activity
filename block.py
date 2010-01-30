@@ -228,6 +228,8 @@ class Block:
             self._make_flow_style_boolean(svg)
         elif self.name in FLOW_STYLE_ELSE:
             self._make_flow_style_else(svg)
+        elif self.name in PORTFOLIO_STYLE:
+            self._make_portfolio_style(svg)
         else:
             self._make_basic_style(svg)
             print ">>>>> I don't know how to create a %s block" % (self.name)
@@ -507,6 +509,28 @@ class Block:
                                       self.svg.docks[4][1], ']'))
         self._left, self._right = 2, self.svg.get_width()-self.svg.docks[1][0]
 
+    def _make_portfolio_style(self, svg):
+        self.svg.expand(25+self._dx+self._ex, self._ey)
+        self.svg.set_slot(True)
+        self.svg.set_tab(True)
+        self.svg.set_innie([True, True, False, True])        
+        self._make_portfolio(svg)
+        self.docks = (('flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]),
+                      ('string', False, self.svg.docks[1][0],
+                                      self.svg.docks[1][1]),
+                      ('media', False, self.svg.docks[6][0],
+                                      self.svg.docks[6][1]),
+                      ('media', False, self.svg.docks[2][0],
+                                      self.svg.docks[2][1]),
+                      ('media', False, self.svg.docks[5][0],
+                                      self.svg.docks[5][1]),
+                      ('media', False, self.svg.docks[3][0],
+                                      self.svg.docks[3][1]),
+                      ('flow', False, self.svg.docks[4][0],
+                                      self.svg.docks[4][1]))
+        self._left, self._right = 2, self.svg.get_width()-self.svg.docks[1][0]
+
     def _make_basic_block(self, svg):
         self.shapes.append(svg_str_to_pixbuf(self.svg.basic_block()))
         self.width = self.svg.get_width()
@@ -522,6 +546,14 @@ class Block:
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
         self.shapes.append(svg_str_to_pixbuf(self.svg.basic_box()))
+
+    def _make_portfolio(self, svg):
+        self.shapes.append(svg_str_to_pixbuf(self.svg.portfolio()))
+        self.width = self.svg.get_width()
+        self.height = self.svg.get_height()
+        self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
+        self.svg.set_stroke_color(SELECTED_COLOR)
+        self.shapes.append(svg_str_to_pixbuf(self.svg.portfolio()))
 
     def _make_basic_flow(self, svg):
         self.shapes.append(svg_str_to_pixbuf(self.svg.basic_flow()))

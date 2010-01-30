@@ -59,7 +59,7 @@ def new_project(tw):
     tw.save_file_name = None
 
 def load_file(tw, create_new_project=True):
-    fname = _get_load_name(tw, '.ta')
+    fname = get_load_name(tw, '.ta')
     if fname==None:
         return
     if fname[-3:] == '.ta':
@@ -70,7 +70,7 @@ def load_file(tw, create_new_project=True):
 
 # From Suger, we use the Journal, but from outside of Sugar, we load from a file
 def load_python_code(tw):
-    fname = _get_load_name(tw, '.py')
+    fname = get_load_name(tw, '.py')
     if fname==None:
         return
     f = open(fname, 'r')
@@ -105,7 +105,7 @@ def _json_load(text):
     # json converts tuples to lists, so we need to convert back,
     return _tuplify(listdata) 
 
-def _get_load_name(tw, suffix):
+def get_load_name(tw, suffix):
     dialog = gtk.FileChooserDialog("Load...", None,
                                    gtk.FILE_CHOOSER_ACTION_OPEN,
                                    (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
@@ -209,7 +209,7 @@ def load_block(tw, b):
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(blk.values[0],
                                                               80, 60)
                 if pixbuf is not None:
-                    blk.spr.set_image(pixbuf, 1, 37, 6)
+                    blk.spr.set_image(pixbuf, 1, 17, 2)
             else:
                 blk.spr.set_image(tw.media_shapes['journalon'], 1, 37, 6)
         blk.spr.set_label(' ')

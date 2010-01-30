@@ -52,7 +52,7 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
              'bottompos', 'height', 'turtle', 'print'],
-            ['journal', 'audio', 'description', 'hideblocks'],
+            ['journal', 'audio', 'description', 'hideblocks', 'template7'],
             ['restore']]
 
 #
@@ -105,6 +105,7 @@ FLOW_STYLE = ['forever', 'hspace']
 FLOW_STYLE_1ARG = ['repeat']
 FLOW_STYLE_BOOLEAN = ['if']
 FLOW_STYLE_ELSE = ['ifelse']
+PORTFOLIO_STYLE = ['template7']
 
 #
 # blocks that contain media
@@ -195,6 +196,7 @@ BLOCK_NAMES = {
     'storeinbox1':[_('store in box 1')],
     'storeinbox2':[_('store in box 2')],
     'string':[_('text')],
+    'template7':[' '],
     'textsize':[_('text size')],
     'toppos':[_('top')],
     'turtle':[_('turtle')],
@@ -285,6 +287,7 @@ PRIMITIVES = {
     'storein':'storeinbox',
     'storeinbox1':'storeinbox1',
     'storeinbox2':'storeinbox2',
+    'template7':'tp7',
     'textsize':'textsize',
     'toppos':'toppos',
     'turtle':'turtle',
@@ -330,6 +333,7 @@ DEFAULTS = {
     'storeinbox2':[100],
     'storein':[_('my box'),100],
     'string':[_('text')],
+    'template7':[_('Title'), 'None', 'None', 'None', 'None'],
     'turtle':[1],
     'wait':[1]}
 
