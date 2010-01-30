@@ -151,13 +151,19 @@ class Sprite:
         self.layer = 100
         self.labels = []
         self.images = []
+        self._dx = []
+        self._dy = []
         self.set_image(image)
         self._sprites.append_to_list(self)
 
-    def set_image(self, image, i=0):
+    def set_image(self, image, i=0, dx=0, dy=0):
         while len(self.images) < i+1:
            self.images.append(None)
+           self._dx.append(0)
+           self._dy.append(0)
         self.images[i] = image
+        self._dx[i] = dx
+        self._dy[i] = dy
         if isinstance(self.images[i], gtk.gdk.Pixbuf):
             _w = self.images[i].get_width()
             _h = self.images[i].get_height()
@@ -251,13 +257,15 @@ class Sprite:
             gtk.gdk.Rectangle(self._x,self._y,self._width,self._height), False)
 
     def draw(self):
-        for i in self.images:
-            if isinstance(i, gtk.gdk.Pixbuf):
+        for i,img in enumerate(self.images):
+            if isinstance(img, gtk.gdk.Pixbuf):
                 self._sprites.area.draw_pixbuf(
-                    self._sprites.gc, i, 0, 0, self._x, self._y)
-            elif i is not None:
+                    self._sprites.gc, img, 0, 0, self._x+self._dx[i],
+                                                 self._y+self._dy[i])
+            elif img is not None:
                 self._sprites.area.draw_drawable(
-                    self._sprites.gc, i, 0, 0, self._x, self._y, -1, -1)
+                    self._sprites.gc, img, 0, 0, self._x+self._dx[i],
+                                                 self._y+self._dy[i], -1, -1)
         if len(self.labels) > 0:
             self.draw_label()
 

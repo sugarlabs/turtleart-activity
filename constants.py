@@ -52,7 +52,7 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
              'bottompos', 'height', 'turtle', 'print'],
-            ['hideblocks'],
+            ['journal', 'audio', 'description', 'hideblocks'],
             ['restore']]
 
 #
@@ -92,10 +92,12 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'textcolor', 'textsize', 'box1', 'box2', 'string', 'leftpos', 'scale',
     'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple']
+BOX_STYLE_MEDIA =  ['description', 'audio', 'journal']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
 NUMBER_STYLE_BLOCK = ['random']
 NUMBER_STYLE_PORCH = ['minus2', 'division2', 'remainder2']
-NUMBER_STYLE_1ARG = ['sqrt', 'box', 'identity2']
+NUMBER_STYLE_1ARG = ['sqrt', 'identity2']
+NUMBER_STYLE_1STRARG = ['box']
 COMPARE_STYLE = ['greater', 'less', 'equal']
 BOOLEAN_STYLE = ['and', 'or']
 NOT_STYLE = ['not']
@@ -107,7 +109,7 @@ FLOW_STYLE_ELSE = ['ifelse']
 #
 # blocks that contain media
 #
-CONTENT_BLOCKS = ['number', 'string', 'media', 'audio', 'journal']
+CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'journal']
 
 #
 # block name dictionary
@@ -116,6 +118,7 @@ CONTENT_BLOCKS = ['number', 'string', 'media', 'audio', 'journal']
 BLOCK_NAMES = {
     'and':[_('and')],
     'arc':[_('arc'),_('angle'),_('radius')],
+    'audio':[' '],
     'back':[_('back')],
     'blue':[_('blue')],
     'bottompos':[_('bottom')],
@@ -142,14 +145,15 @@ BLOCK_NAMES = {
     'identity2':['←'],
     'if':['',_('if'),_('then')],
     'ifelse':['',_('if'),_('then else')],
+    'journal':[' '],
     'kbinput':[_('query keyboard')],
     'keyboard':[_('keyboard')],
     'left':[_('left')],
     'leftpos':[_('left')],
     'less':['<'],'greater':[">"],
     'minus2':['–'],
-    'myfunc':[_('python'),_('code'),_('value')],
-    'nop':[_('load Python code')],
+    'myfunc':[_('Python'),_('code'),_('value')],
+    'nop':[_(' ')],
     'not':[_('not')],
     'number':['100'],
     'orange':[_('orange')],
@@ -207,7 +211,8 @@ BLOCK_NAMES = {
 OLD_NAMES = {'product':'product2', 'storeinbox':'storein',
              'division':'division2', 'plus':'plus2',
              'remainder':'remainder2', 'identity':'identity2',
-             'division':'division2', 'if else':'if'}
+             'division':'division2', 'if else':'if', 'audiooff':'audio',
+             'descriptionoff':'description'}
 
 #
 # Logo primitives
@@ -340,8 +345,10 @@ DEFAULTS = {
 # Status blocks
 #
 
-MEDIA_SHAPES = ['audioon', 'texton', 'journalon', 'descon', 'pythonoff',
-                'pythonon']
+MEDIA_SHAPES = ['audiooff', 'audioon', 'audiosmall',
+                'journaloff', 'journalon', 'journalsmall',
+                'descriptionoff', 'descriptionon', 'descriptionsmall',
+                'pythonoff', 'pythonon', 'pythonsmall']
 
 OVERLAY_SHAPES = ['Cartesian', 'polar']
 
@@ -370,6 +377,6 @@ NOISE_KEYS = ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', 'Pause',
               'Left', 'Right', 'KP_Home', 'KP_End', 'KP_Up', 'Super_L',
               'KP_Down', 'KP_Left', 'KP_Right', 'KP_Page_Down', 'Scroll_Lock',
               'Page_Down', 'Page_Up']
-WHITE_SPACE = ['space','Tab','Return']
+WHITE_SPACE = ['space','Tab']
 
 CURSOR = '█'

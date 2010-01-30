@@ -126,12 +126,12 @@ def blocks_to_code(lc, blk):
         else:
             return ['%nothing%']
     for i in range(1,len(blk.connections)):
-        b = blk.connections[i]
+        b = blk.connections[i]        
         dock = blk.docks[i]
         if len(dock)>4:
             for c in dock[4]:
                 code.append(c)
-        if b is not None: 
+        if b is not None:
             code.extend(blocks_to_code(lc, b))
         elif blk.docks[i][0] not in ['flow', 'unavailable']:
             print "appending nothing"

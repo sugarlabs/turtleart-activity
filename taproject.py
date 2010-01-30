@@ -160,11 +160,14 @@ def read_data(tw, data):
         for i, c in enumerate(b.connections):
             if c is not None:
                 bdock = b.docks[i]
-                for j in range(len(c.docks)):
-                    if c.connections[j] == b:
-                        cdock = c.docks[j]
-                nx, ny = sx+bdock[2]-cdock[2], sy+bdock[3]-cdock[3]
-                c.spr.move((nx, ny))
+                if len(c.docks) != len(c.connections):
+                    print "dock-connection mismatch %s %s" % (b.name, c.name)
+                else:
+                    for j in range(len(c.docks)):
+                        if c.connections[j] == b:
+                            cdock = c.docks[j]
+                    nx, ny = sx+bdock[2]-cdock[2], sy+bdock[3]-cdock[3]
+                    c.spr.move((nx, ny))
 
 def load_block(tw, b):
     # TODO: optionally read blocks without x, y

@@ -209,7 +209,7 @@ class TurtleArtWindow():
     def set_userdefined(self):
         for blk in self._just_blocks():
             if blk.name == 'nop':
-                blk.spr.set_label('Python code', 0)
+                blk.spr.set_image(self.media_shapes['pythonon'], 1, 15, 8)
         self.nop = 'pythonloaded'
 
     """
@@ -290,10 +290,8 @@ class TurtleArtWindow():
     def _setup_misc(self):
         # media blocks get positioned into other blocks
         for name in MEDIA_SHAPES:
-            self.media_shapes[name] = Sprite(self.sprite_list, 0, 0,
-                self._load_sprite_from_file("%s/%s.svg" % (self.path, name)))
-            self.media_shapes[name].set_layer(HIDE_LAYER)
-            self.media_shapes[name].type = 'media'
+            self.media_shapes[name] = \
+                self._load_sprite_from_file("%s/%s.svg" % (self.path, name))
 
         for i, name in enumerate(STATUS_SHAPES):
             self.status_shapes[name] = self._load_sprite_from_file(
@@ -385,6 +383,13 @@ class TurtleArtWindow():
                                               0, 0, 'proto', [], 1.5))
                 self.palettes[n][i].spr.set_layer(TAB_LAYER)
                 self.palettes[n][i].spr.set_shape(self.palettes[n][i].shapes[0])
+                # Add a skin to some blocks
+                if name in BOX_STYLE_MEDIA:
+                    self.palettes[n][i].spr.set_image(self.media_shapes[
+                                                      name+'small'], 1, 28, 7)
+                elif name == 'nop':
+                    self.palettes[n][i].spr.set_image(self.media_shapes[
+                                                      'pythonsmall'], 1, 10, 7)
             # simple packing algorithm
             _x, _y, _max_width = 5, ICON_SIZE+5, 0
             for i in range(len(PALETTES[n])):
@@ -838,6 +843,7 @@ class TurtleArtWindow():
                 self._select_category(spr)
             elif spr.type == 'category':
                 r,g,b,a = spr.get_pixel((x, y))
+                # print "%s %s %s %s" % (r,g,b,a)
                 if (r == 255 and g == 0) or g == 255:
                     self._hide_palette()
             return True
@@ -957,13 +963,18 @@ class TurtleArtWindow():
         if  blk.name=='number' or blk.name=='string':
             self.saved_string = blk.spr.labels[0]
             blk.spr.labels[0] += CURSOR
-            '''
-            elif blk.name in self.importblocks:
-                self._import_from_journal(self.selected_spr)
-            '''
+        elif blk.name in BOX_STYLE_MEDIA:
+            self._import_from_journal(self.selected_blk)
         elif blk.name=='vspace':
+            group = self._find_group(blk)
+            for b in group:
+                if b != blk:
+                    b.spr.move_relative((0, 20*blk.scale))
             blk.expand_in_y(20)
         elif blk.name=='hspace':
+            group = self._find_group(blk.connections[1])
+            for b in group:
+                b.spr.move_relative((20*blk.scale, 0))
             blk.expand_in_x(20)
         elif blk.name=='nop' and self.myblock==None:
             self._import_py()
@@ -1007,7 +1018,7 @@ class TurtleArtWindow():
     """
     import from Journal
     """
-    def _import_from_journal(self, spr):
+    def _import_from_journal(self, blk):
         if self.running_sugar():
             chooser = ObjectChooser('Choose image', None,\
                        gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
@@ -1015,21 +1026,42 @@ class TurtleArtWindow():
                 result = chooser.run()
                 if result == gtk.RESPONSE_ACCEPT:
                     dsobject = chooser.get_selected_object()
-                    # change block graphic to indicate that object is "loaded"
-                    blk = self.block_list.spr_to_block(spr)
                     if blk.name == 'journal':
-                        self._load_image(dsobject, spr)
-                    elif blk.name == 'audiooff':
-                        spr.set_image(self.media_shapes['audioon'])
+                        self._load_image(dsobject, blk)
+                    elif blk.name == 'audio':
+                        blk.spr.set_image(self.media_shapes['audioon'],
+                                          1, 17, 2)
                     else:
-                        spr.set_image(self.media_shapes['decson'])
+                        blk.spr.set_image(self.media_shapes['decsriptionon'],
+                                          1, 17, 2)
                     blk.values[0] = dsobject.object_id
                     dsobject.destroy()
             finally:
                 chooser.destroy()
                 del chooser
         else:
-            print "Journal Object Chooser unavailable from outside of Sugar"
+            from taproject import _get_load_name
+            fname = _get_load_name(self, '.*')
+            if fname is None:
+                return
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(fname, 80, 60)
+            if pixbuf is not None:
+                blk.spr.set_image(pixbuf, 1, 17, 2)
+            else:
+                blk.spr.set_image(self.media_shapes['journalon'], 1, 17, 2)
+            blk.values[0] = fname
+        blk.spr.set_label(' ')
+
+    """
+    Replace Journal block graphic with preview image 
+    """
+    def _load_image(self, picture, blk):
+        from talogo import get_pixbuf_from_journal
+        pixbuf = get_pixbuf_from_journal(picture, 80, 60)
+        if pixbuf is not None:
+            blk.spr.set_image(pixbuf, 1, 17, 2)
+        else:
+            blk.spr.set_image(self.media_shapes['descon'], 1, 17, 2)
 
     """
     Run stack
@@ -1083,8 +1115,15 @@ class TurtleArtWindow():
         else:
             newblk = Block(self.block_list, self.sprite_list, name,
                                x-20, y-20, 'block')
-        if name == 'nop' and self.nop == 'pythonloaded':
-            newblk.spr.set_label('Python code', 0)
+        # Add special skin to some blocks
+        if name == 'nop':
+            if self.nop == 'pythonloaded':
+                newblk.spr.set_image(self.media_shapes['pythonon'], 1, 17, 8)
+            else:
+                newblk.spr.set_image(self.media_shapes['pythonoff'], 1, 17, 8)
+        elif name in BOX_STYLE_MEDIA:
+            newblk.spr.set_image(self.media_shapes[name+'off'], 1, 27, 8)
+            newblk.spr.set_label(' ')
         newspr = newblk.spr
         newspr.set_layer(TOP_LAYER)
         self.drag_pos = 20, 20
@@ -1157,18 +1196,6 @@ class TurtleArtWindow():
             self.drag_turtle = ('move', x-tx, y-ty)
 
     """
-    Replace Journal block graphic with preview image 
-    TODO: move to block
-    """
-    def _load_image(self, picture, spr):
-        from talogo import get_pixbuf_from_journal
-        pixbuf = get_pixbuf_from_journal(picture,spr.width,spr.height)
-        if pixbuf is not None:
-            spr.set_image(pixbuf)
-        else:
-            spr.set_image(self.media_shapes['texton'])
-
-    """
     Find the distance between the dock points of two blocks.
     """
     def _dock_dx_dy(self, block1, dock1n, block2, dock2n):
@@ -1177,11 +1204,13 @@ class TurtleArtWindow():
         d1type, d1dir, d1x, d1y = dock1[0:4]
         d2type, d2dir, d2x, d2y = dock2[0:4]
         if (d2type is not 'number') or (dock2n is not 0):
-            if block1.connections is not None and dock1n < block1.connections\
-                and block1.connections[dock1n] is not None:
+            if block1.connections is not None and \
+                dock1n < len(block1.connections) and \
+                block1.connections[dock1n] is not None:
                     return (100,100)
-            if block2.connections is not None and dock2n < block2.connections\
-                and block2.connections[dock2n] is not None:
+            if block2.connections is not None and \
+                dock2n < len(block2.connections) and \
+                block2.connections[dock2n] is not None:
                     return (100,100)
         if block1 == block2:
             return (100,100)
