@@ -118,10 +118,11 @@ class Block:
         # make sure the label fits
         lw = self.spr.label_width()        
         lwh = self.spr.label_area_dimensions()
-        if lw > lwh[0]:
-            self._dx = (lw-lwh[0])
-            self._make_block(self.svg)
-            self.spr.set_shape(self.shapes[0])
+        self._dx = (lw-lwh[0])
+        if self._dx < 0:
+            self._dx = 0
+        self._make_block(self.svg)
+        self.spr.set_shape(self.shapes[0])
 
     # We may want to rescale blocks as well.
     def rescale(self, scale):

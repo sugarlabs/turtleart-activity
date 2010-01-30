@@ -171,7 +171,7 @@ def setup_cmd(lc, str):
 
 def start_eval(lc, list):
     icall(lc, evline, list); yield True
-    if hasattr(lc.tw,"activity"):
+    if lc.tw.running_sugar():
         lc.tw.activity.stop_button.set_icon("stopitoff")
     yield False
 
@@ -457,7 +457,7 @@ def identity(x):
 
 # recenter the canvas when the start block is clicked
 def start_stack(lc):
-    if hasattr(lc.tw,'activity'):
+    if lc.tw.running_sugar():
         lc.tw.activity.recenter()
 
 def lcNew(tw):
@@ -672,30 +672,29 @@ def callmyfunc(lc, f, x):
 
 def show_picture(lc, media, x, y, w, h):
     if media == "" or media[6:] == "":
-        # raise logoerror("#nomedia")
         pass
     elif media[6:] is not "None":
-        try:
-            dsobject = datastore.get(media[6:])
-        except:
-            raise logoerror("#nomedia")
-        # check to see if it is a movie
-        # print dsobject.file_path
-        # print "object has file suffix of: " + dsobject.file_path[-4:]
-        if dsobject.file_path[-4:] == '.ogv' or \
-           dsobject.file_path[-4:] == '.vob' or \
-           dsobject.file_path[-4:] == '.mp4' or \
-           dsobject.file_path[-4:] == '.wmv' or \
-           dsobject.file_path[-4:] == '.mov':
-            # print "playing movie x:" + str(x) + " y:" + str(y) + " w:" + \
-            #       str(w) + " h:" + str(h)
-            play_dsobject(lc, dsobject, int(x), int(y), int(w), int(h))
+        if lc.tw.running_sugar():
+            try:
+                dsobject = datastore.get(media[6:])
+            except:
+                raise logoerror("#nomedia")
+            # Check to see if it is a movie
+            if dsobject.file_path[-4:] == '.ogv' or \
+               dsobject.file_path[-4:] == '.vob' or \
+               dsobject.file_path[-4:] == '.mp4' or \
+               dsobject.file_path[-4:] == '.wmv' or \
+               dsobject.file_path[-4:] == '.mov':
+                play_dsobject(lc, dsobject, int(x), int(y), int(w), int(h))
+            else:
+                pixbuf = get_pixbuf_from_journal(dsobject, int(w), int(h))
+            dsobject.destroy()
         else:
-            pixbuf = get_pixbuf_from_journal(dsobject, int(w), int(h))
-            if pixbuf is not None:
-                lc.tw.canvas.draw_pixbuf(pixbuf, 0, 0, int(x), int(y),
-                                         int(w), int(h))
-        dsobject.destroy()
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(media[6:],
+                                                          int(w), int(h))
+        if pixbuf is not None:
+            lc.tw.canvas.draw_pixbuf(pixbuf, 0, 0, int(x), int(y),
+                                                   int(w), int(h))
 
 def get_pixbuf_from_journal(dsobject,w,h):
     try:
@@ -996,7 +995,7 @@ def hideblocks(lc):
     # TODO: how do we do this with the new toolbar?
     #for i in lc.tw.selbuttons:
     #    hide(i)
-    if hasattr(lc.tw,"activity"):
+    if lc.tw.running_sugar():
         lc.tw.activity.do_hide()
 
 def doevalstep(lc):

@@ -52,11 +52,6 @@ import sprites
 from constants import *
 from gettext import gettext as _
 
-nolabel = ['audiooff', 'descriptionoff', 'journal']
-shape_dict = {'journal':'texton', \
-              'descriptionoff':'decson', \
-              'audiooff':'audioon'}
-
 def new_project(tw):
     stop_logo(tw)
     for b in tw._just_blocks():
@@ -170,9 +165,8 @@ def read_data(tw, data):
                     c.spr.move((nx, ny))
 
 def load_block(tw, b):
-    # TODO: optionally read blocks without x, y
     # A block is saved as: (i, (btype, value), x, y, (c0,... cn))
-    media = None
+    # The x,y position is saved/loaded for backward compatibility reasons only 
     btype, value = b[1], None
     if type(btype) == type((1,2)): 
         btype, value = btype
@@ -187,28 +181,33 @@ def load_block(tw, b):
     else:
         values = []
 
-    if btype == 'journal' or btype == 'audiooff' or btype == 'descriptionoff':
-        media = value
-        label = None
     blk = block.Block(tw.block_list, tw.sprite_list, 
                       btype, b[2]+tw.canvas.cx,
                       b[3]+tw.canvas.cy, 'block', values)
-    if media is not None and media not in nolabel:
-        try:
-            dsobject = datastore.get(media)
-            blk.value[0] = dsobject.object_id
-            # TODO: handle media icons
-            # setimage(spr, tw.media_shapes[shape_dict[spr.proto.name]])
-            if blk.name == 'journal':
-                '''
-                pixbuf = get_pixbuf_from_journal(dsobject,
-                                                 spr.width,spr.height)
-                if pixbuf is not None:
-                    setimage(spr, pixbuf)
-                '''
-            dsobject.destroy()
-        except:
-            print "couldn't open dsobject (%s)" % (blk.values[0])
+
+    if btype in BOX_STYLE_MEDIA and blk.values[0] is not None:
+        if tw.running_sugar():
+            try:
+                dsobject = datastore.get(blk.values[0])
+                blk.spr.set_image(tw.media_shapes[shape_dict[btype+'on']],
+                                  1, 17, 2)
+                if blk.name == 'journal':
+                    pixbuf = get_pixbuf_from_journal(dsobject, 80, 60)
+                    if pixbuf is not None:
+                        blk.spr.set_image(pixbuf, 1, 17, 2)
+                dsobject.destroy()
+            except:
+                print "couldn't open dsobject (%s)" % (blk.values[0])
+        else:
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(blk.values[0], 80, 60)
+            if pixbuf is not None:
+                blk.spr.set_image(pixbuf, 1, 17, 2)
+            else:
+                blk.spr.set_image(self.media_shapes['journalon'], 1, 17, 2)
+                print "couldn't open media object (%s)" % (blk.values[0])
+        blk.spr.set_label(' ')
+        blk.resize()
+
     blk.spr.set_layer(BLOCK_LAYER)
     return blk
 
