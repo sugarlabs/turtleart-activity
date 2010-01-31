@@ -137,14 +137,33 @@ class Block:
     # We may want to grow a block vertically.
     def expand_in_y(self, dy):
         self._ey += dy
+        self.svg.set_hide(True)
         self._make_block(self.svg)
         self.spr.set_shape(self.shapes[0])
 
     # We may want to grow a block vertically.
     def expand_in_x(self, dx):
         self._ex += dx
+        self.svg.set_hide(True)
         self._make_block(self.svg)
         self.spr.set_shape(self.shapes[0])
+
+    # We may want to reset to the original size
+    def reset_x(self):
+        dx = -self._ex
+        self._ex = 0
+        self.svg.set_hide(False)
+        self._make_block(self.svg)
+        self.spr.set_shape(self.shapes[0])
+        return dx
+
+    def reset_y(self):
+        dy = -self._ey
+        self._ey = 0
+        self.svg.set_hide(False)
+        self._make_block(self.svg)
+        self.spr.set_shape(self.shapes[0])
+        return dy
 
     def _new_block_from_factory(self, sprite_list, x, y):
         self.svg = SVG()
@@ -200,6 +219,8 @@ class Block:
             self._make_basic_style_1arg(svg)
         elif self.name in BASIC_STYLE_2ARG:
             self._make_basic_style_2arg(svg)
+        elif self.name in BULLET_STYLE:
+            self._make_basic_style_8arg(svg)
         elif self.name in BOX_STYLE:
             self._make_box_style(svg)
         elif self.name in BOX_STYLE_MEDIA:
@@ -230,6 +251,8 @@ class Block:
             self._make_flow_style_else(svg)
         elif self.name in PORTFOLIO_STYLE:
             self._make_portfolio_style(svg)
+        elif self.name in PORTFOLIO_STYLE_2PIX:
+            self._make_portfolio_style_2pix(svg)
         else:
             self._make_basic_style(svg)
             print ">>>>> I don't know how to create a %s block" % (self.name)
@@ -305,6 +328,32 @@ class Block:
                                         self.svg.docks[2][1]),
                       ('flow', False, self.svg.docks[3][0],
                                       self.svg.docks[3][1]))
+        self._left, self._right = 2, self.svg.get_innie_width()*1.5
+
+    def _make_basic_style_8arg(self, svg):
+        self.svg.expand(10+self._dx+self._ex, self._ey)
+        self.svg.set_innie([True,True,True,True,True,True,True,True])
+        self._make_basic_block(svg)
+        self.docks = (('flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]),
+                      ('string', False, self.svg.docks[1][0],
+                                        self.svg.docks[1][1]),
+                      ('string', False, self.svg.docks[2][0],
+                                        self.svg.docks[2][1]),
+                      ('string', False, self.svg.docks[3][0],
+                                        self.svg.docks[3][1]),
+                      ('string', False, self.svg.docks[4][0],
+                                        self.svg.docks[4][1]),
+                      ('string', False, self.svg.docks[5][0],
+                                        self.svg.docks[5][1]),
+                      ('string', False, self.svg.docks[6][0],
+                                        self.svg.docks[6][1]),
+                      ('string', False, self.svg.docks[7][0],
+                                        self.svg.docks[7][1]),
+                      ('string', False, self.svg.docks[8][0],
+                                        self.svg.docks[8][1]),
+                      ('flow', False, self.svg.docks[9][0],
+                                      self.svg.docks[9][1]))
         self._left, self._right = 2, self.svg.get_innie_width()*1.5
 
     def _make_box_style(self, svg):
@@ -510,25 +559,43 @@ class Block:
         self._left, self._right = 2, self.svg.get_width()-self.svg.docks[1][0]
 
     def _make_portfolio_style(self, svg):
-        self.svg.expand(25+self._dx+self._ex, self._ey)
+        self.svg.expand(25+self._dx+self._ex, 10+self._ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_innie([True, True, False, True])        
         self._make_portfolio(svg)
         self.docks = (('flow', True, self.svg.docks[0][0],
                                      self.svg.docks[0][1]),
-                      ('string', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1]),
-                      ('media', False, self.svg.docks[6][0],
+                      ('string', False, self.svg.docks[6][0],
                                       self.svg.docks[6][1]),
-                      ('media', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1]),
                       ('media', False, self.svg.docks[5][0],
                                       self.svg.docks[5][1]),
+                      ('media', False, self.svg.docks[1][0],
+                                      self.svg.docks[1][1]),
+                      ('media', False, self.svg.docks[4][0],
+                                      self.svg.docks[4][1]),
+                      ('media', False, self.svg.docks[2][0],
+                                      self.svg.docks[2][1]),
+                      ('flow', False, self.svg.docks[3][0],
+                                      self.svg.docks[3][1]))
+        self._left, self._right = 2, self.svg.get_width()-self.svg.docks[1][0]
+
+    def _make_portfolio_style_2pix(self, svg):
+        self.svg.expand(25+self._dx+self._ex, 10+self._ey)
+        self.svg.set_slot(True)
+        self.svg.set_tab(True)
+        self.svg.set_innie([True, True])        
+        self._make_portfolio(svg)
+        self.docks = (('flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]),
+                      ('string', False, self.svg.docks[4][0],
+                                      self.svg.docks[4][1]),
                       ('media', False, self.svg.docks[3][0],
                                       self.svg.docks[3][1]),
-                      ('flow', False, self.svg.docks[4][0],
-                                      self.svg.docks[4][1]))
+                      ('media', False, self.svg.docks[1][0],
+                                      self.svg.docks[1][1]),
+                      ('flow', False, self.svg.docks[2][0],
+                                      self.svg.docks[2][1]))
         self._left, self._right = 2, self.svg.get_width()-self.svg.docks[1][0]
 
     def _make_basic_block(self, svg):

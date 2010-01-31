@@ -380,8 +380,10 @@ class TurtleArtWindow():
         if self.palettes[n] == []:
             _min_width = (len(PALETTES)+1)*(SELECTOR_WIDTH)
             for i, name in enumerate(PALETTES[n]):
-                if name in PORTFOLIO_STYLE:
+                if name in PORTFOLIO_STYLE or name in PORTFOLIO_STYLE_2PIX: 
                     scale = 1.0
+                elif name in BULLET_STYLE:
+                    scale = 0.67
                 else:
                     scale = 1.5
                 self.palettes[n].append(Block(self.block_list,
@@ -465,6 +467,8 @@ class TurtleArtWindow():
     Find the connected group of block in a stack.
     """
     def _find_group(self, blk):
+        if blk is None:
+            return []
         group=[blk]
         for blk2 in blk.connections[1:]:
             if blk2 is not None:
@@ -788,11 +792,6 @@ class TurtleArtWindow():
                                          mov_dict[keyname][1])
             elif tur is not None:
                 self._jog_turtle(mov_dict[keyname][0], mov_dict[keyname][1])
-            """
-            elif self.selected_spr.type == 'selector':
-                if keyname == 'Return' or keyname == 'KP_Page_Up':
-                    self._select_category(self.selected_spr)
-            """
         return True
 
     """
@@ -956,12 +955,12 @@ class TurtleArtWindow():
 
         # Find the block we clicked on and process it.
         if self.block_operation=='click':
-            self._click_block()
+            self._click_block(x, y)
 
     """
     click block
     """
-    def _click_block(self):
+    def _click_block(self, x, y):
         blk = self.block_list.spr_to_block(self.selected_spr)
         if blk is None:
             return
@@ -973,15 +972,25 @@ class TurtleArtWindow():
             self._import_from_journal(self.selected_blk)
         elif blk.name=='vspace':
             group = self._find_group(blk)
+            r,g,b,a = blk.spr.get_pixel((x, y))
+            if (r == 255 and g == 0) or g == 255:
+                dy = blk.reset_y()
+            else:
+                dy = 20
+                blk.expand_in_y(dy)
             for b in group:
                 if b != blk:
-                    b.spr.move_relative((0, 20*blk.scale))
-            blk.expand_in_y(20)
+                    b.spr.move_relative((0, dy*blk.scale))
         elif blk.name=='hspace':
             group = self._find_group(blk.connections[1])
+            r,g,b,a = blk.spr.get_pixel((x, y))
+            if (r == 255 and g == 0) or g == 255:
+                dx = blk.reset_x()
+            else:
+                dx = 20
+                blk.expand_in_x(dx)
             for b in group:
-                b.spr.move_relative((20*blk.scale, 0))
-            blk.expand_in_x(20)
+                b.spr.move_relative((dx*blk.scale, 0))
         elif blk.name=='nop' and self.myblock==None:
             self._import_py()
         else:

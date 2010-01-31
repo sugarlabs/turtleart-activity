@@ -60,6 +60,7 @@ class SVG:
         self._expand_x = 0
         self._expand_y = 0
         self._else = False
+        self._hide = False
         self._fill = "#00FF00"
         self._stroke = "#00A000"
         self._gradiant = False
@@ -93,9 +94,11 @@ class SVG:
             svg += self._line_to(x, self._radius+self._innie_y2+\
                                     self._stroke_width/2.0)
             svg += self._do_outie()
-        svg += self._close_path()
         self._calculate_w_h()
+        svg += self._close_path()
         svg += self._style()
+        if self._hide is True:
+            svg += self._hide_dot(self._width-12, self._height-12-self._slot_y)
         svg += self._footer()
         return self._header() + svg
 
@@ -119,6 +122,7 @@ class SVG:
             svg += self._rline_to(self._radius*3+self._slot_x*2, 0)
         else:
             svg += self._rline_to(self._radius+self._slot_x, 0)
+        hh = self._x
         svg += self._rarc_to(1,1)
         svg += self._rline_to(-self._radius,0)
         if self._else:
@@ -142,6 +146,9 @@ class SVG:
         svg += self._close_path()
         self._calculate_w_h()
         svg += self._style()
+        if self._hide is True:
+            svg += self._hide_dot(hh,
+                                  self._height-12-self._innie_y2-self._slot_y)
         svg += self._footer()
         return self._header() + svg
 
@@ -154,19 +161,18 @@ class SVG:
         xx = self._x
         svg += self._rline_to(self._expand_x, 0)
         svg += self._rarc_to(1, 1)
+        svg += self._rline_to(0, self._expand_y)
         for i in range(len(self._innie)):
-            if self._innie[i] is True:
+            if self._innie[i] is True and i > 0:
                 svg += self._do_innie()
                 svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
             else:
                 svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
-        svg += self._rline_to(0, self._expand_y)
         svg += self._rarc_to(-1, 1)
         svg += self._line_to(xx, self._y)
         svg += self._do_tab()
         svg += self._rarc_to(-1, -1)
-        svg += self._rline_to(0, -self._expand_y)
-        for i in range(len(self._innie)-1): # skip one for title
+        for i in range(len(self._innie)):
             if self._innie[len(self._innie)-i-1] is True:
                 svg += self._rline_to(0, -2*self._innie_y2-self._innie_spacer)
                 svg += self._do_reverse_innie()
@@ -295,10 +301,7 @@ class SVG:
         self._width, self._height = width, height
         self._fill, self._stroke = "#FFD000", "none"
         svg = self._rect(width, height, 0, 0)
-        self._fill, self._stroke = "#FF0000", "#FF0000"
-        svg += self._circle(8, width-12, height-12)
-        self._fill, self._stroke = "#FFFFFF", "#FFFFFF"
-        svg += self._rect(10, 2, width-17, height-13)
+        svg += self._hide_dot(width-12, height-12)
         svg += self._footer()
         return self._header() + svg
 
@@ -318,6 +321,9 @@ class SVG:
     #
     # Utility methods
     #
+    def set_hide(self, flag=False):
+        self._hide = flag
+
     def get_width(self):
         return self._width
 
@@ -568,6 +574,16 @@ class SVG:
     def _close_path(self):
         return "z\"\n"
 
+    def _hide_dot(self, x, y):
+        _saved_fill, _saved_stroke = self._fill, self._stroke
+        self._fill, self._stroke = "#FF0000", "#FF0000"
+        svg = "</g>/n<g>/n"
+        svg += self._circle(8, x, y)
+        self._fill, self._stroke = "#FFFFFF", "#FFFFFF"
+        svg += self._rect(10, 2, x-5, y-1)
+        self._fill, self._stroke = _saved_fill, _saved_stroke
+        return svg
+
     def _do_slot(self):
         if self._slot is True:
             self.docks.append((int(self._x*self._scale),
@@ -705,7 +721,6 @@ def generator(datapath):
     svg_str = svgt.turtle()
     f.write(svg_str)
     close_file(f)
-    """
 
     svg0 = SVG()
     f = open_file(datapath, "portfolio-test.svg")
@@ -722,15 +737,17 @@ def generator(datapath):
     """
     svg1 = SVG()
     f = open_file(datapath, "blob-test.svg")
-    svg1.set_scale(1)
-    svg1.expand(20,0)
-    svg1.set_innie([True,True])
-    svg1.set_tab(False)
+    svg1.set_scale(2)
+    svg1.expand(0,20)
+    svg1.set_tab(True)
+    svg1.set_slot(True)
     svg1.set_gradiant(True)
+    svg1.set_hide(True)
     svg_str = svg1.basic_block()
     f.write(svg_str)
     close_file(f)
 
+    """
     svg2 = SVG()
     f = open_file(datapath, "box-test.svg")
     svg2.set_scale(1)

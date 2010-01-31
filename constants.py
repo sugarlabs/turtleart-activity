@@ -52,7 +52,8 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
              'bottompos', 'height', 'turtle', 'print'],
-            ['journal', 'audio', 'description', 'hideblocks', 'template7'],
+            ['journal', 'audio', 'description', 'hideblocks', 'template7',
+             'template2', 'template3'],
             ['restore']]
 
 #
@@ -106,6 +107,9 @@ FLOW_STYLE_1ARG = ['repeat']
 FLOW_STYLE_BOOLEAN = ['if']
 FLOW_STYLE_ELSE = ['ifelse']
 PORTFOLIO_STYLE = ['template7']
+BULLET_STYLE = ['template3']
+PORTFOLIO_STYLE_1PIX = ['template1']
+PORTFOLIO_STYLE_2PIX = ['template2', 'template6']
 
 #
 # blocks that contain media
@@ -196,6 +200,10 @@ BLOCK_NAMES = {
     'storeinbox1':[_('store in box 1')],
     'storeinbox2':[_('store in box 2')],
     'string':[_('text')],
+    'template1':[' '],
+    'template2':[' '],
+    'template3':[' '],
+    'template6':[' '],
     'template7':[' '],
     'textsize':[_('text size')],
     'toppos':[_('top')],
@@ -287,6 +295,10 @@ PRIMITIVES = {
     'storein':'storeinbox',
     'storeinbox1':'storeinbox1',
     'storeinbox2':'storeinbox2',
+    'template1':'tp1',
+    'template2':'tp2',
+    'template3':'tp3',
+    'template6':'tp6',
     'template7':'tp7',
     'textsize':'textsize',
     'toppos':'toppos',
@@ -333,6 +345,10 @@ DEFAULTS = {
     'storeinbox2':[100],
     'storein':[_('my box'),100],
     'string':[_('text')],
+    'template1':[_('Title'), 'None'],
+    'template2':[_('Title'), 'None', 'None'],
+    'template3':[_('Title'), '∙ ', '∙ ', '∙ ', '∙ ', '∙ ', '∙ ', '∙ '],
+    'template6':[_('Title'), 'None', 'None'],
     'template7':[_('Title'), 'None', 'None', 'None', 'None'],
     'turtle':[1],
     'wait':[1]}

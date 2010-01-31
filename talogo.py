@@ -758,7 +758,7 @@ def show_template1(lc, title, media):
     w,h,xo,yo,dx,dy = calc_position(lc,'tp1')
     x = -(lc.tw.canvas.width/2)+xo
     y = lc.tw.canvas.height/2
-    setxy(lc.tw.canvas, x, y)
+    lc.tw.canvas.setxy(x, y)
     # save the text size so we can restore it later
     save_text_size = lc.tw.textsize
     # set title text
@@ -774,9 +774,10 @@ def show_template1(lc, title, media):
     y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
     lc.tw.canvas.setxy(x, y)
     show(lc, media)
-    x = 0
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media.replace("media_","descr_"))
+    if lc.tw.running_sugar():
+        x = 0
+        lc.tw.canvas.setxy(x, y)
+        show(lc, media.replace("media_","descr_"))
     # restore text size
     lc.tw.canvas.settextsize(save_text_size)
 
@@ -804,11 +805,12 @@ def show_template2(lc, title, media1, media2):
     lc.tw.canvas.setxy(x, y)
     show(lc, media2)
     y = -lc.title_height
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media2.replace("media_","descr_"))
-    x = -(lc.tw.canvas.width/2)+xo
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media1.replace("media_","descr_"))
+    if lc.tw.running_sugar():
+        lc.tw.canvas.setxy(x, y)
+        show(lc, media2.replace("media_","descr_"))
+        x = -(lc.tw.canvas.width/2)+xo
+        lc.tw.canvas.setxy(x, y)
+        show(lc, media1.replace("media_","descr_"))
     # restore text size
     lc.tw.canvas.settextsize(save_text_size)
 
@@ -817,7 +819,7 @@ def show_template3(lc, title, s1, s2, s3, s4, s5, s6, s7):
     w,h,xo,yo,dx,dy = calc_position(lc,'tp3')
     x = -(lc.tw.canvas.width/2)+xo
     y = lc.tw.canvas.height/2
-    setxy(lc.tw.canvas, x, y)
+    lc.tw.canvas.setxy(x, y)
     # save the text size so we can restore it later
     save_text_size = lc.tw.textsize
     # set title text
@@ -869,15 +871,16 @@ def show_template6(lc, title, media1, media2):
     y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
     lc.tw.canvas.setxy(x, y)
     show(lc, media1)
-    x = 0
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media1.replace("media_","descr_"))
-    y = -lc.title_height
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media2.replace("media_","descr_"))
-    x = -(lc.tw.canvas.width/2)+xo
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media2)
+    if lc.tw.running_sugar():
+        x = 0
+        lc.tw.canvas.setxy(x, y)
+        show(lc, media1.replace("media_","descr_"))
+        y = -lc.title_height
+        lc.tw.canvas.setxy(x, y)
+        show(lc, media2.replace("media_","descr_"))
+        x = -(lc.tw.canvas.width/2)+xo
+        lc.tw.canvas.setxy(x, y)
+        show(lc, media2)
     # restore text size
     lc.tw.canvas.settextsize(save_text_size)
 
