@@ -365,7 +365,7 @@ DEFAULTS = {
 # Blocks that can interchange strings and numbers for their arguments
 #
 STRING_OR_NUMBER_ARGS = ['plus2', 'equal', 'less', 'greater',
-                         'template1', 'template2', 'template3',
+                         'template1', 'template2', 'template7',
                          'template4', 'template6', 'list', 'nop',
                          'print', 'stack', 'hat']
 

@@ -100,9 +100,6 @@ def blocks_to_code(lc, blk):
     if blk is None:
         return ['%nothing%']
     code = []
-    print blk.name
-    print blk.docks
-    print blk.connections
     dock = blk.docks[0]
     if len(dock)>4:
         code.append(dock[4])
@@ -115,7 +112,6 @@ def blocks_to_code(lc, blk):
             except ValueError:
                 code.append(float(ord(blk.values[0][0])))
         elif blk.name=='string' or blk.name=='title':
-            print "%s %s" % (blk.name, blk.values[0])
             if type(blk.values[0]) == float or type(blk.values[0]) == int:
                 if int(blk.values[0]) == blk.values[0]:
                     blk.values[0] = int(blk.values[0])
@@ -834,7 +830,6 @@ def show_bullets(lc, title, sarray):
     lc.tw.canvas.settextsize(lc.bullet_height)
     y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
     for s in sarray:
-        print "bullet: %s" % (s)
         lc.tw.canvas.setxy(x, y)
         show(lc, s)
         y -= int(lc.bullet_height*2*lc.tw.lead)

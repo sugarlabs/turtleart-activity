@@ -180,10 +180,13 @@ def load_block(tw, b):
     else:
         values = []
 
+    if OLD_NAMES.has_key(btype):
+        btype = OLD_NAMES[btype]
+
     blk = block.Block(tw.block_list, tw.sprite_list, 
                       btype, b[2]+tw.canvas.cx,
                       b[3]+tw.canvas.cy, 'block', values)
-    # Some blocks get a skin.
+    # Some blocks t a skin.
     if btype == 'nop': 
         if tw.nop == 'pythonloaded':
             blk.spr.set_image(tw.media_shapes['pythonon'], 1, 17, 8)
@@ -195,6 +198,10 @@ def load_block(tw, b):
             blk.expand_in_y(value)
         elif btype == 'hspace':
             blk.expand_in_x(value)
+        elif btype == 'list':
+            for i in range(len(b[4])-4):
+                dy = blk.add_arg()
+            
     elif btype in BOX_STYLE_MEDIA and blk.values[0] is not None:
         if btype == 'audio' or btype == 'description':
             blk.spr.set_image(tw.media_shapes[btype+'on'], 1, 37, 6)

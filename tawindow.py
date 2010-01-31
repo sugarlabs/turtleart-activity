@@ -721,7 +721,6 @@ class TurtleArtWindow():
             else:
                 newleft = ''
         elif keyname == 'Home':
-            print "saw a %s" % (keyname)
             oldright = oldleft+oldright
             newleft = ''
         elif keyname == 'Left':
@@ -846,7 +845,6 @@ class TurtleArtWindow():
                 self._select_category(spr)
             elif spr.type == 'category':
                 r,g,b,a = spr.get_pixel((x, y))
-                # print "%s %s %s %s" % (r,g,b,a)
                 if (r == 255 and g == 0) or g == 255:
                     self._hide_palette()
             return True
@@ -1104,7 +1102,6 @@ class TurtleArtWindow():
     Run stack
     """
     def _run_stack(self, blk):
-        # self.block_list.print_list('block')
         if blk is None:
             return
         self.lc.ag = None
@@ -1196,16 +1193,6 @@ class TurtleArtWindow():
     """
     Debugging tools
     """
-    def _print_spr_list(self, spr_list):
-        s = ""
-        for spr in spr_list:
-            if spr == None:
-                s+="None"
-            else:
-                s+=self.block_list.spr_to_block(spr).name
-            s += " "
-        return s
-
     def _print_blk_list(self, blk_list):
         s = ""
         for blk in blk_list:
