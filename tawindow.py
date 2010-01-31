@@ -380,10 +380,9 @@ class TurtleArtWindow():
         if self.palettes[n] == []:
             _min_width = (len(PALETTES)+1)*(SELECTOR_WIDTH)
             for i, name in enumerate(PALETTES[n]):
-                if name in PORTFOLIO_STYLE or name in PORTFOLIO_STYLE_2PIX: 
-                    scale = 1.0
-                elif name in BULLET_STYLE:
-                    scale = 0.67
+                # Some blocks are too big to fit the palette.
+                if PALETTE_SCALE.has_key(name):
+                    scale = PALETTE_SCALE[name]
                 else:
                     scale = 1.5
                 self.palettes[n].append(Block(self.block_list,
@@ -391,14 +390,13 @@ class TurtleArtWindow():
                                               0, 0, 'proto', [], scale))
                 self.palettes[n][i].spr.set_layer(TAB_LAYER)
                 self.palettes[n][i].spr.set_shape(self.palettes[n][i].shapes[0])
-                # Add a skin to some blocks
+                # Some blocks get a skin.
                 if name in BOX_STYLE_MEDIA:
                     self.palettes[n][i].spr.set_image(self.media_shapes[
                                                       name+'small'], 1, 28, 7)
                 elif name == 'nop':
                     self.palettes[n][i].spr.set_image(self.media_shapes[
                                                       'pythonsmall'], 1, 10, 7)
-            # simple packing algorithm
             _x, _y, _max_width = 5, ICON_SIZE+5, 0
             for i in range(len(PALETTES[n])):
                 _w, _h = self.palettes[n][i].spr.get_dimensions()
@@ -991,6 +989,26 @@ class TurtleArtWindow():
                 blk.expand_in_x(dx)
             for b in group:
                 b.spr.move_relative((dx*blk.scale, 0))
+        elif blk.name=='list':
+            n = len(blk.connections)
+            group = self._find_group(blk.connections[n-1])
+            r,g,b,a = blk.spr.get_pixel((x, y))
+            dy = blk.add_arg()
+            for b in group:
+                b.spr.move_relative((0, dy))
+            blk.connections.append(blk.connections[n-1])
+            argname = blk.docks[n-1][0]
+            argvalue = DEFAULTS[blk.name][len(DEFAULTS[blk.name])-1]
+            argblk = Block(self.block_list, self.sprite_list, argname,
+                           0, 0, 'block', [argvalue])
+            argdock = argblk.docks[0]
+            (bx, by) = blk.spr.get_xy()
+            nx = bx+blk.docks[n-1][2]-argdock[2]
+            ny = by+blk.docks[n-1][3]-argdock[3]
+            argblk.spr.move((nx, ny))
+            argblk.spr.set_layer(TOP_LAYER)
+            argblk.connections = [blk, None]
+            blk.connections[n-1] = argblk
         elif blk.name=='nop' and self.myblock==None:
             self._import_py()
         else:
@@ -1228,6 +1246,8 @@ class TurtleArtWindow():
         dock2 = block2.docks[dock2n]
         d1type, d1dir, d1x, d1y = dock1[0:4]
         d2type, d2dir, d2x, d2y = dock2[0:4]
+        if block1 == block2:
+            return (100,100)
         if (d2type is not 'number') or (dock2n is not 0):
             if block1.connections is not None and \
                 dock1n < len(block1.connections) and \
@@ -1237,13 +1257,11 @@ class TurtleArtWindow():
                 dock2n < len(block2.connections) and \
                 block2.connections[dock2n] is not None:
                     return (100,100)
-        if block1 == block2:
-            return (100,100)
         if d1type != d2type:
             # some blocks can take strings or nums
             if block1.name in ('write', 'plus', 'equal', 'less', 'greater',
                                'template1', 'template2', 'template3',
-                               'template4', 'template6', 'template7', 'nop',
+                               'template4', 'template6', 'list', 'nop',
                                'print', 'stack', 'hat'):
                 if block1.name == 'write' and d1type == 'string':
                     if d2type == 'number' or d2type == 'string':

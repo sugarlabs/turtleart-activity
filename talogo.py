@@ -59,7 +59,6 @@ def audio_media_type(suffix):
         return True
     return False
 
-
 class symbol:
     def __init__(self, name):
         self.name = name
@@ -101,6 +100,9 @@ def blocks_to_code(lc, blk):
     if blk is None:
         return ['%nothing%']
     code = []
+    print blk.name
+    print blk.docks
+    print blk.connections
     dock = blk.docks[0]
     if len(dock)>4:
         code.append(dock[4])
@@ -113,6 +115,7 @@ def blocks_to_code(lc, blk):
             except ValueError:
                 code.append(float(ord(blk.values[0][0])))
         elif blk.name=='string' or blk.name=='title':
+            print "%s %s" % (blk.name, blk.values[0])
             if type(blk.values[0]) == float or type(blk.values[0]) == int:
                 if int(blk.values[0]) == blk.values[0]:
                     blk.values[0] = int(blk.values[0])
@@ -145,7 +148,6 @@ def blocks_to_code(lc, blk):
         if b is not None:
             code.extend(blocks_to_code(lc, b))
         elif blk.docks[i][0] not in ['flow', 'unavailable']:
-            print "appending nothing"
             code.append('%nothing%')
     return code
 
@@ -318,6 +320,10 @@ def prim_repeat(lc, num, list):
     for i in range(num):
         icall(lc, evline, list[:]); yield True
         if lc.procstop: break
+    ireturn(lc); yield True
+
+def prim_bullet(lc, title, list):
+    show_bullets(lc, title, list)
     ireturn(lc); yield True
 
 def prim_forever(lc, list):
@@ -588,8 +594,7 @@ def lcNew(tw):
     defprim(lc,'tp1', 2, lambda lc,x,y: show_template1(lc, x, y))
     defprim(lc,'tp8', 2, lambda lc,x,y: show_template8(lc, x, y))
     defprim(lc,'tp6', 3, lambda lc,x,y,z: show_template6(lc, x, y, z))
-    defprim(lc,'tp3', 8, lambda lc,x,y,z,a,b,c,d,e: \
-        show_template3(lc, x, y, z, a, b, c, d, e))
+    defprim(lc,'bullet', 2, prim_bullet, True)
     defprim(lc,'sound', 1, lambda lc,x: play_sound(lc, x))
     defprim(lc,'video', 1, lambda lc,x: play_movie(lc, x))
     defprim(lc,'tp2', 3, lambda lc,x,y,z: \
@@ -814,8 +819,8 @@ def show_template2(lc, title, media1, media2):
     # restore text size
     lc.tw.canvas.settextsize(save_text_size)
 
-# title and seven bullets
-def show_template3(lc, title, s1, s2, s3, s4, s5, s6, s7):
+# title and varible number of  bullets
+def show_bullets(lc, title, sarray):
     w,h,xo,yo,dx,dy = calc_position(lc,'tp3')
     x = -(lc.tw.canvas.width/2)+xo
     y = lc.tw.canvas.height/2
@@ -828,26 +833,11 @@ def show_template3(lc, title, s1, s2, s3, s4, s5, s6, s7):
     # set body text size
     lc.tw.canvas.settextsize(lc.bullet_height)
     y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
-    lc.tw.canvas.setxy(x, y)
-    show(lc, s1)
-    y -= int(lc.bullet_height*2*lc.tw.lead)
-    lc.tw.canvas.setxy(x, y)
-    show(lc, s2)
-    y -= int(lc.bullet_height*2*lc.tw.lead)
-    lc.tw.canvas.setxy(x, y)
-    show(lc, s3)
-    y -= int(lc.bullet_height*2*lc.tw.lead)
-    lc.tw.canvas.setxy(x, y)
-    show(lc, s4)
-    y -= int(lc.bullet_height*2*lc.tw.lead)
-    lc.tw.canvas.setxy(x, y)
-    show(lc, s5)
-    y -= int(lc.bullet_height*2*lc.tw.lead)
-    lc.tw.canvas.setxy(x, y)
-    show(lc, s6)
-    y -= int(lc.bullet_height*2*lc.tw.lead)
-    lc.tw.canvas.setxy(x, y)
-    show(lc, s7)
+    for s in sarray:
+        print "bullet: %s" % (s)
+        lc.tw.canvas.setxy(x, y)
+        show(lc, s)
+        y -= int(lc.bullet_height*2*lc.tw.lead)
     # restore text size
     lc.tw.canvas.settextsize(save_text_size)
 

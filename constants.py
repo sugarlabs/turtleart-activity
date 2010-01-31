@@ -53,7 +53,7 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
              'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
              'bottompos', 'height', 'turtle', 'print'],
             ['journal', 'audio', 'description', 'hideblocks', 'template7',
-             'template2', 'template3'],
+             'template2', 'list'],
             ['restore']]
 
 #
@@ -75,6 +75,9 @@ ICON_SIZE = 55
 SELECTED_COLOR = "#0000FF"
 SELECTED_STROKE_WIDTH = 1.5
 STANDARD_STROKE_WIDTH = 1.0
+
+PALETTE_SCALE = {'template7':1.0}
+
 
 #
 # block style definitions
@@ -107,14 +110,14 @@ FLOW_STYLE_1ARG = ['repeat']
 FLOW_STYLE_BOOLEAN = ['if']
 FLOW_STYLE_ELSE = ['ifelse']
 PORTFOLIO_STYLE = ['template7']
-BULLET_STYLE = ['template3']
+BULLET_STYLE = ['list']
 PORTFOLIO_STYLE_1PIX = ['template1']
 PORTFOLIO_STYLE_2PIX = ['template2', 'template6']
 
 #
 # blocks that are expandable
 #
-EXPANDABLE = ['vspace', 'hspace']
+EXPANDABLE = ['vspace', 'hspace', 'list']
 
 #
 # blocks that contain media
@@ -124,7 +127,6 @@ CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'journal']
 #
 # block name dictionary
 #
-
 BLOCK_NAMES = {
     'and':[_('and')],
     'arc':[_('arc'),_('angle'),_('radius')],
@@ -161,6 +163,7 @@ BLOCK_NAMES = {
     'left':[_('left')],
     'leftpos':[_('left')],
     'less':['<'],'greater':[">"],
+    'list':[_('list')],
     'minus2':['–'],
     'myfunc':[_('Python'),_('code'),_('value')],
     'nop':[_(' ')],
@@ -259,6 +262,7 @@ PRIMITIVES = {
     'left':'left',
     'leftpos':'leftpos',
     'less':'less?',
+    'list':'bullet',
     'minus2':'minus',
     'myfunc':'myfunc',
     'nop':'userdefined',
@@ -302,7 +306,6 @@ PRIMITIVES = {
     'storeinbox2':'storeinbox2',
     'template1':'tp1',
     'template2':'tp2',
-    'template3':'tp3',
     'template6':'tp6',
     'template7':'tp7',
     'textsize':'textsize',
@@ -330,6 +333,7 @@ DEFAULTS = {
     'hat':[_('action')],
     'journal':[None],
     'left':[90],
+    'list':[_('Title'), '∙ '],
     'media':[None],
     'myfunc':[_('x'),100],
     'nop':[100],
@@ -352,7 +356,6 @@ DEFAULTS = {
     'string':[_('text')],
     'template1':[_('Title'), 'None'],
     'template2':[_('Title'), 'None', 'None'],
-    'template3':[_('Title'), '∙ ', '∙ ', '∙ ', '∙ ', '∙ ', '∙ ', '∙ '],
     'template6':[_('Title'), 'None', 'None'],
     'template7':[_('Title'), 'None', 'None', 'None', 'None'],
     'turtle':[1],
@@ -380,7 +383,7 @@ OLD_NAMES = {'product':'product2', 'storeinbox':'storein',
              'division':'division2', 'plus':'plus2',
              'remainder':'remainder2', 'identity':'identity2',
              'division':'division2', 'if else':'if', 'audiooff':'audio',
-             'descriptionoff':'description'}
+             'descriptionoff':'description','template3':'list'}
 
 #
 # 'dead key' Unicode dictionaries

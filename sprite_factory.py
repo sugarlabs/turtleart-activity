@@ -744,13 +744,14 @@ def generator(datapath):
     svg_str = svgt.turtle()
     f.write(svg_str)
     close_file(f)
+    """
 
     svg0 = SVG()
     f = open_file(datapath, "portfolio-test.svg")
     svg0.set_scale(1)
-    svg0.expand(40,0)
+    svg0.expand(25,10)
     svg0.set_slot(True)
-    svg0.set_innie([True, True, False, False, True])
+    svg0.set_innie([True, True, False, True])
     svg0.set_tab(True)
     svg0.set_gradiant(True)
     svg_str = svg0.portfolio()
@@ -770,7 +771,6 @@ def generator(datapath):
     f.write(svg_str)
     close_file(f)
 
-    """
     svg2 = SVG()
     f = open_file(datapath, "box-test.svg")
     svg2.set_scale(1)
