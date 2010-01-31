@@ -52,8 +52,8 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
              'bottompos', 'height', 'turtle', 'print'],
-            ['journal', 'audio', 'description', 'hideblocks', 'template7',
-             'template2', 'list'],
+            ['journal', 'audio', 'description', 'hideblocks', 'template1x1',
+             'template1x2', 'template2x1', 'template2x2', 'list'],
             ['restore']]
 
 #
@@ -76,7 +76,7 @@ SELECTED_COLOR = "#0000FF"
 SELECTED_STROKE_WIDTH = 1.5
 STANDARD_STROKE_WIDTH = 1.0
 
-PALETTE_SCALE = {'template7':1.0}
+PALETTE_SCALE = {'template2x2':1.0, 'template1x2':1.0}
 
 
 #
@@ -109,10 +109,11 @@ FLOW_STYLE = ['forever', 'hspace']
 FLOW_STYLE_1ARG = ['repeat']
 FLOW_STYLE_BOOLEAN = ['if']
 FLOW_STYLE_ELSE = ['ifelse']
-PORTFOLIO_STYLE = ['template7']
+PORTFOLIO_STYLE_2x2 = ['template2x2']
 BULLET_STYLE = ['list']
-PORTFOLIO_STYLE_1PIX = ['template1']
-PORTFOLIO_STYLE_2PIX = ['template2', 'template6']
+PORTFOLIO_STYLE_1x1 = ['template1x1']
+PORTFOLIO_STYLE_2x1 = ['template2x1']
+PORTFOLIO_STYLE_1x2 = ['template1x2']
 
 #
 # blocks that are expandable
@@ -208,11 +209,10 @@ BLOCK_NAMES = {
     'storeinbox1':[_('store in box 1')],
     'storeinbox2':[_('store in box 2')],
     'string':[_('text')],
-    'template1':[' '],
-    'template2':[' '],
-    'template3':[' '],
-    'template6':[' '],
-    'template7':[' '],
+    'template1x1':[''],
+    'template1x2':[''],
+    'template2x1':[''],
+    'template2x2':[''],
     'textsize':[_('text size')],
     'toppos':[_('top')],
     'turtle':[_('turtle')],
@@ -304,10 +304,10 @@ PRIMITIVES = {
     'storein':'storeinbox',
     'storeinbox1':'storeinbox1',
     'storeinbox2':'storeinbox2',
-    'template1':'tp1',
-    'template2':'tp2',
-    'template6':'tp6',
-    'template7':'tp7',
+    'template1x1':'tp1',
+    'template1x2':'tp6',
+    'template2x1':'tp2',
+    'template2x2':'tp7',
     'textsize':'textsize',
     'toppos':'toppos',
     'turtle':'turtle',
@@ -354,10 +354,10 @@ DEFAULTS = {
     'storeinbox2':[100],
     'storein':[_('my box'),100],
     'string':[_('text')],
-    'template1':[_('Title'), 'None'],
-    'template2':[_('Title'), 'None', 'None'],
-    'template6':[_('Title'), 'None', 'None'],
-    'template7':[_('Title'), 'None', 'None', 'None', 'None'],
+    'template1x1':[_('Title'), 'None'],
+    'template1x2':[_('Title'), 'None', 'None'],
+    'template2x1':[_('Title'), 'None', 'None'],
+    'template2x2':[_('Title'), 'None', 'None', 'None', 'None'],
     'turtle':[1],
     'wait':[1]}
 
@@ -365,8 +365,8 @@ DEFAULTS = {
 # Blocks that can interchange strings and numbers for their arguments
 #
 STRING_OR_NUMBER_ARGS = ['plus2', 'equal', 'less', 'greater',
-                         'template1', 'template2', 'template7',
-                         'template4', 'template6', 'list', 'nop',
+                         'template1x1', 'template1x2', 'template2x1',
+                         'template2x2', 'list', 'nop',
                          'print', 'stack', 'hat']
 
 CONTENT_ARGS = ['show', 'push', 'storein', 'storeinbox1', 'storeinbox2']
@@ -393,7 +393,10 @@ OLD_NAMES = {'product':'product2', 'storeinbox':'storein',
              'division':'division2', 'plus':'plus2',
              'remainder':'remainder2', 'identity':'identity2',
              'division':'division2', 'if else':'if', 'audiooff':'audio',
-             'descriptionoff':'description','template3':'list'}
+             'descriptionoff':'description','template3':'list',
+             'template1':'template1x1', 'template2':'template2x1',
+             'template6':'template1x2', 'template7':'template2x2', 
+             'template8':'template1x1' }
 
 #
 # 'dead key' Unicode dictionaries

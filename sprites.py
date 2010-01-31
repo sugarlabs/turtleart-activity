@@ -283,6 +283,8 @@ class Sprite:
 
     def draw_label(self):
         my_width = self._width-self._margins[0]-self._margins[2]
+        if my_width < 0:
+            my_width = 0
         my_height = self._height-self._margins[1]-self._margins[3]
         for i in range(len(self.labels)):
             pl = self._sprites.canvas.create_pango_layout(str(self.labels[i]))

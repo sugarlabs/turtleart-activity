@@ -60,6 +60,7 @@ class SVG:
         self._expand_x = 0
         self._expand_y = 0
         self._else = False
+        self._draw_innies = True
         self._hide = False
         self._show = False
         self._fill = "#00FF00"
@@ -111,11 +112,11 @@ class SVG:
     def basic_flow(self):
         (x, y) = self._calculate_x_y()
         svg = self._new_path(x, y)
-        svg += self._rarc_to(1, -1)
+        svg += self._corner(1, -1)
         svg += self._do_slot()
         svg += self._rline_to(self._expand_x, 0)
         xx = self._x
-        svg += self._rarc_to(1, 1)
+        svg += self._corner(1, 1)
         for i in range(len(self._innie)):
             if self._innie[i] is True:
                 svg += self._do_innie()
@@ -129,7 +130,7 @@ class SVG:
         else:
             svg += self._rline_to(self._radius+self._slot_x, 0)
         hh = self._x
-        svg += self._rarc_to(1,1)
+        svg += self._corner(1, 1)
         svg += self._rline_to(-self._radius,0)
         if self._else:
             svg += self._do_tab()
@@ -137,14 +138,14 @@ class SVG:
         svg += self._do_tab()
         svg += self._rline_to(-self._radius, 0)
         svg += self._rline_to(0, self._expand_y)
-        svg += self._rarc_to(-1, 1)
+        svg += self._corner(-1, 1)
         svg += self._line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
         if self._tab:
             svg += self._do_tab()
         else:
             svg += self._do_tail()
-        svg += self._rarc_to(-1, -1)
+        svg += self._corner(-1, -1)
         svg += self._rline_to(0, -self._expand_y)
         if True in self._innie:
             svg += self._line_to(x, self._radius+self._innie_y2+\
@@ -165,22 +166,22 @@ class SVG:
         (x, y) = self._calculate_x_y()
         x += self._innie_x1+self._innie_x2
         svg = self._new_path(x, y)
-        svg += self._rarc_to(1, -1)
+        svg += self._corner(1, -1)
         svg += self._do_slot()
         xx = self._x
         svg += self._rline_to(self._expand_x, 0)
-        svg += self._rarc_to(1, 1)
+        svg += self._corner(1, 1)
         svg += self._rline_to(0, self._expand_y)
         for i in range(len(self._innie)):
-            if self._innie[i] is True and i > 0:
+            if self._innie[i] is True and i > 0 and self._draw_innies:
                 svg += self._do_innie()
                 svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
             else:
                 svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
-        svg += self._rarc_to(-1, 1)
+        svg += self._corner(-1, 1)
         svg += self._line_to(xx, self._y)
         svg += self._do_tab()
-        svg += self._rarc_to(-1, -1)
+        svg += self._corner(-1, -1)
         for i in range(len(self._innie)):
             if self._innie[len(self._innie)-i-1] is True:
                 svg += self._rline_to(0, -2*self._innie_y2-self._innie_spacer)
@@ -330,6 +331,9 @@ class SVG:
     #
     # Utility methods
     #
+    def set_draw_innies(self, flag=True):
+        self._draw_innies = flag
+
     def set_hide(self, flag=False):
         self._hide = flag
 
@@ -749,11 +753,12 @@ def generator(datapath):
     svg0 = SVG()
     f = open_file(datapath, "portfolio-test.svg")
     svg0.set_scale(1)
-    svg0.expand(25,10)
+    svg0.expand(25,15)
     svg0.set_slot(True)
     svg0.set_innie([True, True, False, True])
     svg0.set_tab(True)
     svg0.set_gradiant(True)
+    svg0.set_draw_innies(False)
     svg_str = svg0.portfolio()
     f.write(svg_str)
     close_file(f)
