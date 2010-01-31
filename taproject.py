@@ -190,6 +190,11 @@ def load_block(tw, b):
         else:
             blk.spr.set_image(tw.media_shapes['pythonoff'], 1, 17, 8)
         blk.spr.set_label(' ')
+    elif btype in EXPANDABLE:
+        if btype == 'vspace':
+            blk.expand_in_y(value)
+        elif btype == 'hspace':
+            blk.expand_in_x(value)
     elif btype in BOX_STYLE_MEDIA and blk.values[0] is not None:
         if btype == 'audio' or btype == 'description':
             blk.spr.set_image(tw.media_shapes[btype+'on'], 1, 37, 6)
@@ -288,6 +293,14 @@ def _assemble_data_to_save(tw, save_turtle=True):
     for b in tw._just_blocks():
         if b.name in CONTENT_BLOCKS:
             name = (b.name, b.values[0])
+        elif b.name in EXPANDABLE:
+            ex, ey = b.get_expand_x_y()
+            if ex > 0:
+                name = (b.name, ex)
+            elif ey > 0:
+                name = (b.name, ey)
+            else:
+                name = (b.name, 0)
         else:
             name = (b.name)
         if hasattr(b, 'connections'):
