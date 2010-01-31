@@ -112,6 +112,11 @@ PORTFOLIO_STYLE_1PIX = ['template1']
 PORTFOLIO_STYLE_2PIX = ['template2', 'template6']
 
 #
+# blocks that are expandable
+#
+EXPANDABLE = ['vspace', 'hspace']
+
+#
 # blocks that contain media
 #
 CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'journal']

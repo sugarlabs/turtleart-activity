@@ -138,6 +138,7 @@ class Block:
     def expand_in_y(self, dy):
         self._ey += dy
         self.svg.set_hide(True)
+        self.svg.set_show(True)
         self._make_block(self.svg)
         self.spr.set_shape(self.shapes[0])
 
@@ -145,6 +146,7 @@ class Block:
     def expand_in_x(self, dx):
         self._ex += dx
         self.svg.set_hide(True)
+        self.svg.set_show(True)
         self._make_block(self.svg)
         self.spr.set_shape(self.shapes[0])
 
@@ -153,6 +155,7 @@ class Block:
         dx = -self._ex
         self._ex = 0
         self.svg.set_hide(False)
+        self.svg.set_show(True)
         self._make_block(self.svg)
         self.spr.set_shape(self.shapes[0])
         return dx
@@ -161,6 +164,7 @@ class Block:
         dy = -self._ey
         self._ey = 0
         self.svg.set_hide(False)
+        self.svg.set_show(True)
         self._make_block(self.svg)
         self.spr.set_shape(self.shapes[0])
         return dy
@@ -173,6 +177,9 @@ class Block:
         self.svg.set_outie(False)
         self.svg.set_tab(True)
         self.svg.set_slot(True)
+
+        if self.name in EXPANDABLE and self.type == 'block':
+            self.svg.set_show(True)
 
         self._make_block(self.svg)
         self.spr = sprites.Sprite(sprite_list, x, y, self.shapes[0])

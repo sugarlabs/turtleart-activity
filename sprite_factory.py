@@ -61,6 +61,7 @@ class SVG:
         self._expand_y = 0
         self._else = False
         self._hide = False
+        self._show = False
         self._fill = "#00FF00"
         self._stroke = "#00A000"
         self._gradiant = False
@@ -97,8 +98,13 @@ class SVG:
         self._calculate_w_h()
         svg += self._close_path()
         svg += self._style()
+        if self._show is True:
+            svg += self._show_dot(12,
+                                  self._height-12-self._innie_y2-self._slot_y)
         if self._hide is True:
-            svg += self._hide_dot(self._width-12, self._height-12-self._slot_y)
+            svg += self._hide_dot(self._width-12,
+                                  self._height-12-self._innie_y2-self._slot_y)
+
         svg += self._footer()
         return self._header() + svg
 
@@ -148,6 +154,9 @@ class SVG:
         svg += self._style()
         if self._hide is True:
             svg += self._hide_dot(hh,
+                                  self._height-12-self._innie_y2-self._slot_y)
+        if self._show is True:
+            svg += self._show_dot(hh-24,
                                   self._height-12-self._innie_y2-self._slot_y)
         svg += self._footer()
         return self._header() + svg
@@ -323,6 +332,9 @@ class SVG:
     #
     def set_hide(self, flag=False):
         self._hide = flag
+
+    def set_show(self, flag=False):
+        self._show = flag
 
     def get_width(self):
         return self._width
@@ -581,6 +593,17 @@ class SVG:
         svg += self._circle(8, x, y)
         self._fill, self._stroke = "#FFFFFF", "#FFFFFF"
         svg += self._rect(10, 2, x-5, y-1)
+        self._fill, self._stroke = _saved_fill, _saved_stroke
+        return svg
+
+    def _show_dot(self, x, y):
+        _saved_fill, _saved_stroke = self._fill, self._stroke
+        self._fill, self._stroke = "#00FE00", "#00FE00"
+        svg = "</g>/n<g>/n"
+        svg += self._circle(8, x, y)
+        self._fill, self._stroke = "#FEFEFE", "#FEFEFE"
+        svg += self._rect(10, 2, x-5, y-1)
+        svg += self._rect(2, 10, x-1, y-5)
         self._fill, self._stroke = _saved_fill, _saved_stroke
         return svg
 
