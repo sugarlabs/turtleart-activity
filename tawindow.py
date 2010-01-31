@@ -1248,6 +1248,8 @@ class TurtleArtWindow():
         d2type, d2dir, d2x, d2y = dock2[0:4]
         if block1 == block2:
             return (100,100)
+        if d1dir == d2dir:
+            return (100,100)
         if (d2type is not 'number') or (dock2n is not 0):
             if block1.connections is not None and \
                 dock1n < len(block1.connections) and \
@@ -1258,26 +1260,14 @@ class TurtleArtWindow():
                 block2.connections[dock2n] is not None:
                     return (100,100)
         if d1type != d2type:
-            # some blocks can take strings or nums
-            if block1.name in ('write', 'plus', 'equal', 'less', 'greater',
-                               'template1', 'template2', 'template3',
-                               'template4', 'template6', 'list', 'nop',
-                               'print', 'stack', 'hat'):
-                if block1.name == 'write' and d1type == 'string':
-                    if d2type == 'number' or d2type == 'string':
-                        pass
-                else: 
-                    if d2type == 'number' or d2type == 'string':
-                        pass
-            # some blocks can take strings, nums, or Journal
-            elif block1.name in ('show', 'push', 'storein', 'storeinbox1',
-                                 'storeinbox2'):
+            if block1.name in STRING_OR_NUMBER_ARGS:
+                if d2type == 'number' or d2type == 'string':
+                    pass
+            elif block1.name in CONTENT_ARGS:
                 if d2type in CONTENT_BLOCKS:
                     pass
             else:
                 return (100,100)
-        if d1dir == d2dir:
-            return (100,100)
         (b1x, b1y) = block1.spr.get_xy()
         (b2x, b2y) = block2.spr.get_xy()
         return ((b1x+d1x)-(b2x+d2x), (b1y+d1y)-(b2y+d2y))

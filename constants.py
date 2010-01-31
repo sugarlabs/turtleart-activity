@@ -362,6 +362,16 @@ DEFAULTS = {
     'wait':[1]}
 
 #
+# Blocks that can interchange strings and numbers for their arguments
+#
+STRING_OR_NUMBER_ARGS = ['plus2', 'equal', 'less', 'greater',
+                         'template1', 'template2', 'template3',
+                         'template4', 'template6', 'list', 'nop',
+                         'print', 'stack', 'hat']
+
+CONTENT_ARGS = ['show', 'push', 'storein', 'storeinbox1', 'storeinbox2']
+
+#
 # Status blocks
 #
 
