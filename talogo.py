@@ -320,7 +320,7 @@ class LogoCode:
         self.defprim('forever', 1, self.prim_forever, True)
         self.defprim('if', 2, self.prim_if, True)
         self.defprim('ifelse', 3, self.prim_ifelse, True)
-        self.defprim('stopstack', 0, self.prim_stopstack, True)
+        self.defprim('stopstack', 0, self.prim_stopstack)
 
         # blocks primitives
         self.defprim('stack1', 0, self.prim_stack1, True)
@@ -354,7 +354,7 @@ class LogoCode:
         self.defprim('sound', 1, lambda self,x: self.play_sound(x))
         self.defprim('video', 1, lambda self,x: self.play_movie(x))
         self.defprim('t1x2', 3,
-                lambda self,x,y,z: self.show_template1z2(x, y, z))
+                lambda self,x,y,z: self.show_template1x2(x, y, z))
         self.defprim('t2x2', 5,
                 lambda self,x,y,z,a,b: self.show_template2x2(x, y, z, a, b))
         self.defprim('hideblocks', 0, lambda self: self.hideblocks())
@@ -378,9 +378,9 @@ class LogoCode:
         self.gplay = None
         self.ag = None
         self.nobox = ""
-        self.title_height = int((self.tw.canvas.height/30)*self.tw.scale)
-        self.body_height = int((self.tw.canvas.height/60)*self.tw.scale)
-        self.bullet_height = int((self.tw.canvas.height/45)*self.tw.scale)
+        self.title_height = int((self.tw.canvas.height/20)*self.tw.scale)
+        self.body_height = int((self.tw.canvas.height/40)*self.tw.scale)
+        self.bullet_height = int((self.tw.canvas.height/30)*self.tw.scale)
     
         self.scale = 33
 
@@ -549,8 +549,13 @@ class LogoCode:
                 self.icall(self.cfun.fcn, *self.arglist)
                 yield True
             result = None
-        else: 
-            result = self.cfun.fcn(self, *self.arglist)
+        else:
+            # TODO: find out why stopstack args are mismatched
+            if token.name == 'stopstack':
+                print "%s: %d" % (token.name, len(self.arglist))
+                result = self.cfun.fcn()
+            else:
+                result = self.cfun.fcn(self, *self.arglist)
         self.cfun, self.arglist = oldcfun, oldarglist
         if self.arglist is not None and result == None:
             raise logoerror("%s didn't output to %s (arglist %s, result %s)" % \
@@ -652,7 +657,7 @@ class LogoCode:
         self.ireturn()
         yield True
 
-    def prim_ifelse(self, bool, list1,list2):
+    def prim_ifelse(self, bool, list1, list2):
         if bool:
             self.ijmp(self.evline, list1[:])
             yield True
@@ -783,7 +788,7 @@ class LogoCode:
             if self.tw.running_sugar():
                 try:
                     dsobject = datastore.get(media[6:])
-                    text = dsobject.metadata['description']
+                    text = str(dsobject.metadata['description'])
                     dsobject.destroy()
                 except:
                     print "no description in %s" % (media[6:])
@@ -799,7 +804,7 @@ class LogoCode:
                 self.tw.canvas.draw_text(text, int(x), int(y),
                                          self.body_height, int(w))
     
-    def draw_title(self, title,x,y):
+    def draw_title(self, title, x, y):
         self.tw.canvas.draw_text(title,int(x),int(y),self.title_height,
                                                      self.tw.canvas.width-x)
 
@@ -817,18 +822,18 @@ class LogoCode:
         # calculate and set scale for media blocks
         myscale = 45 * (self.tw.canvas.height - self.title_height*2) \
                       / self.tw.canvas.height
-        set_scale(self,myscale)
+        self.set_scale(myscale)
         # set body text size
         self.tw.canvas.settextsize(self.body_height)
         # render media object
         # leave some space below the title
         y -= int(self.title_height*2*self.tw.lead)
         self.tw.canvas.setxy(x, y)
-        self.show( media)
+        self.show(media)
         if self.tw.running_sugar():
             x = 0
             self.tw.canvas.setxy(x, y)
-            self.show( media.replace("media_","descr_"))
+            self.show(media.replace("media_","descr_"))
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
     
@@ -846,24 +851,24 @@ class LogoCode:
         # calculate and set scale for media blocks
         myscale = 45 * (self.tw.canvas.height - self.title_height*2)/\
                   self.tw.canvas.height
-        self.set_scale( myscale)
+        self.set_scale(myscale)
         # set body text size
         self.tw.canvas.settextsize(self.body_height)
         # render four quadrents
         # leave some space below the title
         y -= int(self.title_height*2*self.tw.lead)
         self.tw.canvas.setxy(x, y)
-        self.show( media1)
+        self.show(media1)
         x = 0
         self.tw.canvas.setxy(x, y)
-        self.show( media2)
+        self.show(media2)
         y = -self.title_height
         if self.tw.running_sugar():
             self.tw.canvas.setxy(x, y)
-            self.show( media2.replace("media_","descr_"))
+            self.show(media2.replace("media_","descr_"))
             x = -(self.tw.canvas.width/2)+xo
             self.tw.canvas.setxy(x, y)
-            self.show( media1.replace("media_","descr_"))
+            self.show(media1.replace("media_","descr_"))
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
 
@@ -884,14 +889,14 @@ class LogoCode:
         y -= int(self.title_height*2*self.tw.lead)
         for s in sarray:
             self.tw.canvas.setxy(x, y)
-            self.show( s)
+            self.show(s)
             y -= int(self.bullet_height*2*self.tw.lead)
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
     
     # title, two images (vertical), two desciptions
     def show_template1x2(self, title, media1, media2):
-        w,h,xo,yo,dx,dy = self.calc_position('t1x2')
+        w,h,xo,yo,dx,dy = calc_position(self.tw, 't1x2')
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
@@ -910,23 +915,23 @@ class LogoCode:
         # leave some space below the title
         y -= int(self.title_height*2*self.tw.lead)
         self.tw.canvas.setxy(x, y)
-        self.show( media1)
+        self.show(media1)
         if self.tw.running_sugar():
             x = 0
             self.tw.canvas.setxy(x, y)
-            self.show( media1.replace("media_","descr_"))
+            self.show(media1.replace("media_","descr_"))
             y = -self.title_height
             self.tw.canvas.setxy(x, y)
-            self.show( media2.replace("media_","descr_"))
+            self.show(media2.replace("media_","descr_"))
             x = -(self.tw.canvas.width/2)+xo
             self.tw.canvas.setxy(x, y)
-            self.show( media2)
+            self.show(media2)
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
 
     # title and four images
     def show_template2x2(self, title, media1, media2, media3, media4):
-        w,h,xo,yo,dx,dy = self.calc_position('t2x2')
+        w,h,xo,yo,dx,dy = calc_position(self.tw, 't2x2')
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
@@ -945,16 +950,16 @@ class LogoCode:
         # leave some space below the title
         y -= int(self.title_height*2*self.tw.lead)
         self.tw.canvas.setxy(x, y)
-        self.show( media1)
+        self.show(media1)
         x = 0
         self.tw.canvas.setxy(x, y)
-        self.show( media2)
+        self.show(media2)
         y = -self.title_height
         self.tw.canvas.setxy(x, y)
-        self.show( media4)
+        self.show(media4)
         x = -(self.tw.canvas.width/2)+xo
         self.tw.canvas.setxy(x, y)
-        self.show( media3)
+        self.show(media3)
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
 
@@ -979,7 +984,7 @@ class LogoCode:
         # leave some space below the title
         y -= int(self.title_height*2*self.tw.lead)
         self.tw.canvas.setxy(x, y)
-        self.show( media1)
+        self.show(media1)
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
 
@@ -1072,7 +1077,11 @@ class LogoCode:
         try:
             while (millis()-starttime)<120:
                 try:
-                    self.step.next()
+                    if self.step is not None:
+                        self.step.next()
+                    else: # TODO: where is doevalstep getting called with None?
+                        print "step is None"
+                        return False
                 except StopIteration:
                     self.tw.active_turtle.show()
                     return False

@@ -207,14 +207,17 @@ def load_block(tw, b):
             blk.spr.set_image(tw.media_shapes[btype+'on'], 1, 37, 6)
         elif tw.running_sugar():
             try:
-                dsobject = datastore.get(blk.values[0])
-                if not movie_media_type(dsobject.file_path[-4:]):
-                    pixbuf = get_pixbuf_from_journal(dsobject, 80, 60)
-                    if pixbuf is not None:
-                        blk.spr.set_image(pixbuf, 1, 17, 2)
-                dsobject.destroy()
+                if blk.values[0] != 'None':
+                    dsobject = datastore.get(blk.values[0])
+                    if not movie_media_type(dsobject.file_path[-4:]):
+                        pixbuf = get_pixbuf_from_journal(dsobject, 80, 60)
+                        if pixbuf is not None:
+                            blk.spr.set_image(pixbuf, 1, 17, 2)
+                        else:
+                            blk.spr.set_image(tw.media_shapes['journalon'],
+                                              1, 37, 6)
+                    dsobject.destroy()
             except:
-                blk.spr.set_image(tw.media_shapes['journalon'], 1, 37, 6)
                 print "couldn't open dsobject (%s)" % (blk.values[0])
         else:
             if not movie_media_type(blk.values[0][-4:]):

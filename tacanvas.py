@@ -274,6 +274,7 @@ class TurtleGraphics:
         try:
             fd.set_size(int(size*self.tw.coord_scale)*pango.SCALE)
         except:
+            print "set size (%d) failed" % (int(size*self.tw.coord_scale))
             pass
         if type(label) == str or type(label) == unicode:
             pl = self.tw.window.create_pango_layout(label.replace("\0"," "))
