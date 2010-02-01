@@ -248,7 +248,7 @@ class TurtleArtActivity(activity.Activity):
 
         # FIXME: this was like this before refactoring, the save_pict
         # belongs to taproject (not tawindow)
-        tawindow.save_pict(self.tw,file_path)
+        self.tw.save_pict(file_path)
 
         # Create a datastore object
         dsobject = datastore.create()
@@ -283,7 +283,7 @@ class TurtleArtActivity(activity.Activity):
         print tafile
         try:
             # FIXME: encapsulation?
-            tawindow.save_data(self.tw,tafile)
+            self.tw.save_data(tafile)
         except:
             _logger.debug("couldn't save snapshot to journal")
 
@@ -391,7 +391,7 @@ class TurtleArtActivity(activity.Activity):
     """ Sample projects open dialog """
     def _do_samples_cb(self, button):
         # FIXME: encapsulation!
-        tawindow.load_file(self.tw, True)
+        self.tw.load_file(True)
         # run the activity
         self.stop_button.set_icon("stopiton")
         self.tw.run_button(0)
@@ -568,7 +568,7 @@ class TurtleArtActivity(activity.Activity):
             # sharer should send current state to joiner
             if self.initiating is True:
                 _logger.debug("serialize the project and send to joiner")
-                text = tawindow.save_string(self.tw)
+                text = self.tw.save_string()
                 self._send_event("I:" + text)
                 self.tw.show_palette()
         elif text[0] == 'I': # receiving current state
@@ -576,7 +576,7 @@ class TurtleArtActivity(activity.Activity):
                 _logger.debug("receiving project from sharer")
                 e,text = re.split(":",text,2)
                 # unpack data
-                tawindow.load_string(self.tw,text)
+                self.tw.load_string(text)
                 # all caught up
                 self.waiting_for_blocks = False
 
@@ -943,6 +943,7 @@ class TurtleArtActivity(activity.Activity):
     """
     def _setup_canvas(self, canvas, lang):
         bundle_path = activity.get_bundle_path()
+        print "turtle colors = %s" % (profile.get_color().to_string())
         self.tw = tawindow.TurtleArtWindow(canvas, bundle_path, lang, self)
         self.tw.activity = self
         self.tw.window.grab_focus()
@@ -952,7 +953,7 @@ class TurtleArtActivity(activity.Activity):
         if self._jobject and self._jobject.file_path:
             self.read_file(self._jobject.file_path)
         else: # if new, load a start brick onto the canvas
-            tawindow.load_start(self.tw)
+            self.tw.load_start()
 
     """
     Check to see if there is Python code to be loaded
@@ -1011,7 +1012,7 @@ class TurtleArtActivity(activity.Activity):
     def write_file(self, file_path):
         _logger.debug("Write file: %s" % file_path)
         self.metadata['mime_type'] = 'application/x-turtle-art'
-        tawindow.save_data(self.tw,file_path)
+        self.tw.save_data(file_path)
 
     """
     Read a project in and then run it
@@ -1030,8 +1031,7 @@ class TurtleArtActivity(activity.Activity):
                     # but we will ignore the .png file
                     # If run_it is True, we want to create a new project
                     tar_fd.extractall(tmpdir)
-                    tawindow.load_files(self.tw, \
-                                        os.path.join(tmpdir,'ta_code.ta'), \
+                    self.tw.load_files(os.path.join(tmpdir,'ta_code.ta'), \
                                         run_it) # create a new project flag
                 finally:
                     shutil.rmtree(tmpdir)
@@ -1039,7 +1039,7 @@ class TurtleArtActivity(activity.Activity):
             # Otherwise, assume it is a .ta file
             else:
                 print "trying to open a .ta file:" + file_path
-                tawindow.load_files(self.tw, file_path, run_it)
+                self.tw.load_files(file_path, run_it)
   
             # run the activity
             if run_it:

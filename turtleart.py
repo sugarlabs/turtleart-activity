@@ -144,10 +144,10 @@ class TurtleMain():
         self.tw.win = win
 
     def _do_open_cb(self, widget):
-        load_file(self.tw, True)
+        self.tw.load_file(True)
 
     def _do_save_cb(self, widget):
-        save_file(self.tw)
+        self.tw.save_file()
 
     def _do_palette_cb(self, widget):
         self.tw.show_toolbar_palette(self.i)
@@ -177,7 +177,7 @@ class TurtleMain():
 
     def _do_stop_cb(self, widget):
         self.tw.lc.trace = 0
-        stop_button(self.tw)
+        self.stop_button()
         return
 
 

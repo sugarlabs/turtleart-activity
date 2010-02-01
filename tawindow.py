@@ -47,7 +47,7 @@ except:
 
 from gettext import gettext as _
 from tahoverhelp import *
-from taproject import *
+from tautils import *
 from sprite_factory import SVG, svg_str_to_pixbuf
 from talogo import LogoCode, stop_logo, get_pixbuf_from_journal,\
                    display_coordinates, movie_media_type, audio_media_type
@@ -73,10 +73,8 @@ class TurtleArtWindow():
 
     def _setup_initial_values(self, win, path, lang, parent):
         self.window = win
-        self.path = os.path.join(path,'images')
-        self.path_lang = os.path.join(path,'images',lang)
-        self.path_en = os.path.join(path,'images/en') # en as fallback
-        self.load_save_folder = os.path.join(path,'samples')
+        self.path = os.path.join(path, 'images')
+        self.load_save_folder = os.path.join(path, 'samples')
         self.save_folder = None
         self.save_file_name = None
         self.window.set_flags(gtk.CAN_FOCUS)
@@ -1070,7 +1068,8 @@ class TurtleArtWindow():
                 chooser.destroy()
                 del chooser
         else:
-            fname = get_load_name(self, '.*')
+            fname, self.load_save_folder = get_load_name('.*',
+                                                         self.load_save_folder)
             if fname is None:
                 return
             if movie_media_type(fname[-4:]):
@@ -1304,7 +1303,7 @@ class TurtleArtWindow():
         if self.running_sugar():
             self.activity.import_py()
         else:
-            load_python_code(self)
+            self.load_python_code()
             self.set_userdefined()
 
     """
@@ -1336,4 +1335,241 @@ class TurtleArtWindow():
         self.selected_blk.spr.set_label(s)
         self.selected_blk.values[0] = s
 
-
+    def new_project(self):
+        stop_logo(self)
+        for b in self._just_blocks():
+            b.spr.hide()
+        self.canvas.clearscreen()
+        self.save_file_name = None
+    
+    def load_file(self, create_new_project=True):
+        fname, self.load_save_folder = get_load_name('.ta',
+                                                     self.load_save_folder)
+        if fname==None:
+            return
+        if fname[-3:] == '.ta':
+            fname=fname[0:-3]
+        self.load_files(fname+'.ta', create_new_project)
+        if create_new_project is True:
+            self.save_file_name = os.path.basename(fname)
+    
+    def load_python_code(self):
+        fname, self.load_save_folder = get_load_name('.py',
+                                                     self.load_save_folder)
+        if fname==None:
+            return
+        f = open(fname, 'r')
+        self.myblock = f.read()
+        f.close()
+    
+    def load_files(self, ta_file, create_new_project=True):
+        if create_new_project is True:
+            self.new_project()
+        self.read_data(data_from_file(ta_file))
+    
+    # Unpack serialized data sent across a share.
+    def load_string(self, text):
+        data = json_load(text)
+        self.new_project()
+        self.read_data(data)
+    
+    # Unpack serialized data from the clipboard.
+    def clone_stack(self, text):
+        data = json_load(text)
+        self.read_data(data)
+    
+    def read_data(self, data):
+        # Create the blocks.
+        blocks = []
+        t = 0
+        for b in data:
+            if b[1] == 'turtle':
+                self.load_turtle(b)
+                t = 1
+            else:
+                blk = self.load_block(b)
+                blocks.append(blk)
+        # Make the connections.
+        for i in range(len(blocks)):
+            cons=[]
+            for c in data[i][4]:
+                if c is None:
+                    cons.append(None)
+                else:
+                    cons.append(blocks[c])
+            blocks[i].connections = cons
+        # Adjust the x,y positions, as block sizes may have changed.
+        for b in blocks:
+            (sx, sy) = b.spr.get_xy()
+            for i, c in enumerate(b.connections):
+                if c is not None:
+                    bdock = b.docks[i]
+                    if len(c.docks) != len(c.connections):
+                        print "dock-conn mismatch %s %s" % (b.name, c.name)
+                    else:
+                        for j in range(len(c.docks)):
+                            if c.connections[j] == b:
+                                cdock = c.docks[j]
+                        nx, ny = sx+bdock[2]-cdock[2], sy+bdock[3]-cdock[3]
+                        c.spr.move((nx, ny))
+    
+    def load_block(self, b):
+        # A block is saved as: (i, (btype, value), x, y, (c0,... cn))
+        # The x,y position is saved/loaded for backward compatibility
+        btype, value = b[1], None
+        if type(btype) == type((1,2)): 
+            btype, value = btype
+        if btype in CONTENT_BLOCKS:
+            if btype == 'number':
+                try:
+                    values = [int(value)]
+                except ValueError:
+                    values = [float(value)]
+            else:
+                values = [value]
+        else:
+            values = []
+    
+        if OLD_NAMES.has_key(btype):
+            btype = OLD_NAMES[btype]
+    
+        blk = Block(self.block_list, self.sprite_list, 
+                    btype, b[2]+self.canvas.cx,
+                           b[3]+self.canvas.cy, 'block', values)
+        # Some blocks get a skin.
+        if btype == 'nop': 
+            if self.nop == 'pythonloaded':
+                blk.spr.set_image(self.media_shapes['pythonon'], 1, 17, 8)
+            else:
+                blk.spr.set_image(self.media_shapes['pythonoff'], 1, 17, 8)
+            blk.spr.set_label(' ')
+        elif btype in EXPANDABLE:
+            if btype == 'vspace':
+                blk.expand_in_y(value)
+            elif btype == 'hspace':
+                blk.expand_in_x(value)
+            elif btype == 'list':
+                for i in range(len(b[4])-4):
+                    dy = blk.add_arg()
+        elif btype in BOX_STYLE_MEDIA and len(blk.values)>0:
+            if btype == 'audio' or btype == 'description':
+                print "restoring %s to %s block" % (blk.values[0],blk.name)
+                blk.spr.set_image(self.media_shapes[btype+'on'], 1, 37, 6)
+            elif self.running_sugar():
+                try:
+                    if blk.values[0] != 'None':
+                        dsobject = datastore.get(blk.values[0])
+                        if not movie_media_type(dsobject.file_path[-4:]):
+                            pixbuf = get_pixbuf_from_journal(dsobject, 80, 60)
+                            if pixbuf is not None:
+                                blk.spr.set_image(pixbuf, 1, 17, 2)
+                            else:
+                                blk.spr.set_image(
+                                    self.media_shapes['journalon'], 1, 37, 6)
+                        dsobject.destroy()
+                except:
+                    print "couldn't open dsobject (%s)" % (blk.values[0])
+            else:
+                if not movie_media_type(blk.values[0][-4:]):
+                    pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(blk.values[0],
+                                                                  80, 60)
+                    if pixbuf is not None:
+                        blk.spr.set_image(pixbuf, 1, 17, 2)
+                else:
+                    blk.spr.set_image(self.media_shapes['journalon'], 1, 37, 6)
+            blk.spr.set_label(' ')
+            blk.resize()
+        elif btype in BOX_STYLE_MEDIA:
+            blk.spr.set_label(' ')
+            blk.spr.set_image(self.media_shapes[btype+'off'], 1, 37, 6)
+    
+        blk.spr.set_layer(BLOCK_LAYER)
+        return blk
+    
+    def load_turtle(self, b):
+        id, name, xcor, ycor, heading, color, shade, pensize = b
+        self.canvas.setxy(xcor, ycor)
+        self.canvas.seth(heading)
+        self.canvas.setcolor(color)
+        self.canvas.setshade(shade)
+        self.canvas.setpensize(pensize)
+    
+    # start a new project with a start brick
+    def load_start(self):
+        self.clone_stack("%s%s%s" % ("[[0,[\"start\",\"", _("start"),
+                                     "\"],250,250,[null,null]]]"))
+    
+    def save_file(self):
+        if self.save_folder is not None:
+            self.load_save_folder = self.save_folder
+        fname = self._get_save_name()
+        if fname is None:
+            return
+        if fname[-3:]=='.ta':
+            fname=fname[0:-3]
+        save_data(self,fname+".ta")
+        self.save_file_name = os.path.basename(fname)
+    
+    def _get_save_name(self):
+        dialog = gtk.FileChooserDialog("Save...", None,
+                                       gtk.FILE_CHOOSER_ACTION_SAVE,
+                                       (gtk.STOCK_CANCEL,
+                                        gtk.RESPONSE_CANCEL,
+                                        gtk.STOCK_SAVE,
+                                        gtk.RESPONSE_OK))
+        dialog.set_default_response(gtk.RESPONSE_OK)
+        if self.save_file_name is not None:
+            dialog.set_current_name(self.save_file_name+'.ta')
+        result, self.load_save_folder = self.do_dialog(dialog, '.ta')
+        return result
+    
+    def save_data(self, fname):
+        f = file(fname, "w")
+        data = self._assemble_data_to_save()
+        f.write(json_dump(data))
+        f.close()
+    
+    # Used to send data across a shared session
+    def save_string(self, save_turtle=True):
+        data = self._assemble_data_to_save(save_turtle)
+        return json_dump(data)
+    
+    def _assemble_data_to_save(self, save_turtle=True):
+        data = []
+        for i, b in enumerate(self._just_blocks()):
+             b.id = i
+        for b in self._just_blocks():
+            if b.name in CONTENT_BLOCKS:
+                name = (b.name, b.values[0])
+            elif b.name in EXPANDABLE:
+                ex, ey = b.get_expand_x_y()
+                if ex > 0:
+                    name = (b.name, ex)
+                elif ey > 0:
+                    name = (b.name, ey)
+                else:
+                    name = (b.name, 0)
+            else:
+                name = (b.name)
+            if hasattr(b, 'connections'):
+                connections = [get_id(c) for c in b.connections]
+            else:
+                connections = None
+            (sx, sy) = b.spr.get_xy()
+            data.append((b.id, name, sx-self.canvas.cx, sy-self.canvas.cy,
+                         connections))
+        if save_turtle is True:
+            data.append((-1,'turtle',
+                        self.canvas.xcor, self.canvas.ycor, self.canvas.heading,
+                        self.canvas.color, self.canvas.shade,
+                        self.canvas.pensize))
+        return data
+    
+    # Serialize a stack to save to the clipboard
+    # TODO: check to make sure just the stack and not the project is saved
+    def serialize_stack(self):
+        data = self._assemble_data_to_save(False)
+        if data == []:
+            return None
+        return json_dump(data)
+    

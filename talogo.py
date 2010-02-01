@@ -150,6 +150,10 @@ def tasqrt(x):
 def identity(x):
     return(x)
 
+def start_stack(tw):
+    if tw.running_sugar():
+        tw.activity.recenter()
+
 def display_coordinates(tw, a=-1, b=-1, d=-1):
     if a==-1 and b==-1 and d == -1:
         x = round_int(tw.canvas.xcor/tw.coord_scale)
@@ -300,7 +304,7 @@ class LogoCode:
         'stack1':[0, self.prim_stack1, True],
         'stack':[1, self.prim_stack, True],
         'stack2':[0, self.prim_stack2, True],
-        'start':[0, lambda self: self.start_stack()],
+        'start':[0, lambda self: start_stack(self.tw)],
         'stopstack':[0, self.prim_stopstack],
         'storeinbox1':[1, lambda self,x: self.setbox('box1',x)],
         'storeinbox2':[1, lambda self,x: self.setbox('box2',x)],
@@ -693,12 +697,8 @@ class LogoCode:
 
     def defprim(self, name, args, fcn, rprim=False):
         sym = self.intern(name)
-        sym.nargs, sym.fcn = args,fcn
+        sym.nargs, sym.fcn = args, fcn
         sym.rprim = rprim    
-
-    def start_stack(self):
-        if self.tw.running_sugar():
-            self.tw.activity.recenter()
 
     def box(self, x):
         try:

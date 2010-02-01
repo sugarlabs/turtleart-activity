@@ -627,9 +627,12 @@ class SVG:
             return self._rline_to(self._slot_x, 0)
 
     def _do_tail(self):
-        return "%s%s" % (
-            self._rline_to(-self._slot_x/2.0, self._slot_y*2.0),
-            self._rline_to(-self._slot_x/2.0, -self._slot_y*2.0))
+        if self._outie is True:
+            return self._rline_to(-self._slot_x, 0)
+        else:
+            return "%s%s" % (
+                self._rline_to(-self._slot_x/2.0, self._slot_y*2.0),
+                self._rline_to(-self._slot_x/2.0, -self._slot_y*2.0))
 
     def _do_tab(self):
         s = "%s%s%s%s%s" % (

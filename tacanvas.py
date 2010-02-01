@@ -20,10 +20,8 @@
 #THE SOFTWARE.
 
 import gtk
-from math import sin,cos,pi
-from tasetup import load_image
-import sprites
-import taturtle
+from math import sin, cos, pi
+from sprites import Sprite
 import pango
 
 from constants import *
@@ -71,7 +69,7 @@ class TurtleGraphics:
         self.tw = tw
         self.width = width
         self.height = height
-        self.canvas = sprites.Sprite(tw.sprite_list, 0, 0, 
+        self.canvas = Sprite(tw.sprite_list, 0, 0, 
             gtk.gdk.Pixmap(self.tw.area, self.width, self.height, -1))
         (self.cx, self.cy) = self.canvas.get_xy()
         self.canvas.type = 'canvas'
