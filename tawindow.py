@@ -84,9 +84,11 @@ class TurtleArtWindow():
         # Starting from command line
         if parent is None:
             self.window.show_all()
+            self.running_sugar = False
         # Starting from Sugar
         else:
             parent.show_all()
+            self.running_sugar = True
 
         self._setup_events()
 
@@ -169,14 +171,6 @@ class TurtleArtWindow():
         return True
 
     """
-    Are we running from within Sugar?
-    """
-    def running_sugar(self): 
-        if hasattr(self, 'activity'):
-            return True
-        return False
-
-    """
     Is the an OLPC XO-1?
     """
     def _OLPC_XO_1(self):
@@ -229,12 +223,12 @@ class TurtleArtWindow():
     def hideshow_palette(self, state):
         if state is False:
             self.palette == False
-            if self.running_sugar():
+            if self.running_sugar:
                 self.activity.do_hidepalette()
             self._hide_palette()
         else:
             self.palette == True
-            if self.running_sugar():
+            if self.running_sugar:
                 self.activity.do_showpalette()
             self.show_palette()
 
@@ -262,7 +256,7 @@ class TurtleArtWindow():
     Run turtle!
     """
     def run_button(self, time):
-        if self.running_sugar():
+        if self.running_sugar:
             self.activity.recenter()
         # Look for a 'start' block
         for blk in self._just_blocks():
@@ -285,7 +279,7 @@ class TurtleArtWindow():
     def _setup_misc(self):
         # media blocks get positioned into other blocks
         for name in MEDIA_SHAPES:
-            if name[0:7] == 'journal' and self.running_sugar() is False:
+            if name[0:7] == 'journal' and not self.running_sugar:
                 filename = 'file'+name[7:]
             else:
                 filename = name
@@ -474,7 +468,7 @@ class TurtleArtWindow():
     Is a chattube available for sharing?
     """
     def _sharing(self):
-        if self.running_sugar() and hasattr(self.activity, 'chattube') and\
+        if self.running_sugar and hasattr(self.activity, 'chattube') and\
             self.activity.chattube is not None:
                 return True
         return False
@@ -589,7 +583,7 @@ class TurtleArtWindow():
             label = block_name_s + ": " + hover_dict[block_name]
         else:
             label = block_name_s
-        if self.running_sugar():
+        if self.running_sugar:
             self.activity.hover_help_label.set_text(label)
             self.activity.hover_help_label.show()
         else:
@@ -915,7 +909,7 @@ class TurtleArtWindow():
             self.canvas.xcor = tx-self.canvas.canvas._width/2+30-cx
             self.canvas.ycor = self.canvas.canvas._height/2-ty-30+cy
             self.canvas.move_turtle()
-            if self.running_sugar():
+            if self.running_sugar:
                 display_coordinates(self)
             self.selected_turtle = None
             return
@@ -1047,7 +1041,7 @@ class TurtleArtWindow():
     import from Journal
     """
     def _import_from_journal(self, blk):
-        if self.running_sugar():
+        if self.running_sugar:
             chooser = ObjectChooser('Choose image', None,\
                        gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
             try:
@@ -1309,7 +1303,7 @@ class TurtleArtWindow():
     Import Python code into a block
     """
     def _import_py(self):
-        if self.running_sugar():
+        if self.running_sugar:
             self.activity.import_py()
         else:
             self.load_python_code()
@@ -1464,7 +1458,7 @@ class TurtleArtWindow():
             if btype == 'audio' or btype == 'description':
                 print "restoring %s to %s block" % (blk.values[0],blk.name)
                 blk.spr.set_image(self.media_shapes[btype+'on'], 1, 37, 6)
-            elif self.running_sugar():
+            elif self.running_sugar:
                 try:
                     if blk.values[0] != 'None':
                         dsobject = datastore.get(blk.values[0])

@@ -151,7 +151,7 @@ def identity(x):
     return(x)
 
 def start_stack(tw):
-    if tw.running_sugar():
+    if tw.running_sugar:
         tw.activity.recenter()
 
 def display_coordinates(tw, a=-1, b=-1, d=-1):
@@ -163,7 +163,7 @@ def display_coordinates(tw, a=-1, b=-1, d=-1):
         x = a
         y = b
         h = d
-    if tw.running_sugar():
+    if tw.running_sugar:
         tw.activity.coordinates_label.set_text("%s: %d %s: %d %s: %d" % (
                                    _("xcor"), x, _("ycor"), y, _("heading"), h))
         tw.activity.coordinates_label.show()
@@ -460,7 +460,7 @@ class LogoCode:
     def start_eval(self, list):
         self.icall(self.evline, list)
         yield True
-        if self.tw.running_sugar():
+        if self.tw.running_sugar:
             self.tw.activity.stop_button.set_icon("stopitoff")
         yield False
 
@@ -728,7 +728,7 @@ class LogoCode:
             pass
         elif media[6:] is not "None":
             pixbuf = None
-            if self.tw.running_sugar():
+            if self.tw.running_sugar:
                 try:
                     dsobject = datastore.get(media[6:])
                 except:
@@ -755,7 +755,7 @@ class LogoCode:
             pass
         elif media[6:] is not "None":
             text = None
-            if self.tw.running_sugar():
+            if self.tw.running_sugar:
                 try:
                     dsobject = datastore.get(media[6:])
                     text = str(dsobject.metadata['description'])
@@ -800,7 +800,7 @@ class LogoCode:
         y -= int(self.title_height*2*self.tw.lead)
         self.tw.canvas.setxy(x, y)
         self.show(media)
-        if self.tw.running_sugar():
+        if self.tw.running_sugar:
             x = 0
             self.tw.canvas.setxy(x, y)
             self.show(media.replace("media_","descr_"))
@@ -833,7 +833,7 @@ class LogoCode:
         self.tw.canvas.setxy(x, y)
         self.show(media2)
         y = -self.title_height
-        if self.tw.running_sugar():
+        if self.tw.running_sugar:
             self.tw.canvas.setxy(x, y)
             self.show(media2.replace("media_","descr_"))
             x = -(self.tw.canvas.width/2)+xo
@@ -886,7 +886,7 @@ class LogoCode:
         y -= int(self.title_height*2*self.tw.lead)
         self.tw.canvas.setxy(x, y)
         self.show(media1)
-        if self.tw.running_sugar():
+        if self.tw.running_sugar:
             x = 0
             self.tw.canvas.setxy(x, y)
             self.show(media1.replace("media_","descr_"))
@@ -1013,7 +1013,7 @@ class LogoCode:
     def play_sound(self, audio):
         if audio == "" or audio[6:] == "":
             raise logoerror("#nomedia")
-        if self.tw.running_sugar():
+        if self.tw.running_sugar:
             if audio[6:] != "None":
                 try:
                     dsobject = datastore.get(audio[6:])
@@ -1039,7 +1039,7 @@ class LogoCode:
         # TODO: how do we do this with the new toolbar?
         #for i in self.tw.selbuttons:
         #    hide(i)
-        if self.tw.running_sugar():
+        if self.tw.running_sugar:
             self.tw.activity.do_hide()
     
     def doevalstep(self):

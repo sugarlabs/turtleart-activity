@@ -66,7 +66,7 @@ class Gplay:
             return True
 
     def setFile(self, path):
-        uri = "file://" + str( path )
+        uri = "file://" + str(path)
         if (self.player.get_property('uri') == uri):
             self.seek(gst.SECOND*0)
             return
@@ -167,14 +167,14 @@ def play_movie_from_file(lc, filepath, x, y, w, h):
     if lc.gplay.window == None:
         gplayWin = PlayVideoWindow()
     lc.gplay.window = gplayWin
-    gplayWin.set_type_hint( gtk.gdk.WINDOW_TYPE_HINT_DIALOG )
-    gplayWin.set_decorated( False )
-    if lc.tw.running_sugar():
-        gplayWin.set_transient_for( lc.tw.activity )
+    gplayWin.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
+    gplayWin.set_decorated(False)
+    if lc.tw.running_sugar:
+        gplayWin.set_transient_for(lc.tw.activity)
     # y position is too high for some reason (toolbox?) adding offset
-    gplayWin.move( x, y+108 )
-    gplayWin.resize( w, h )
-    gplayWin.show_all( )
+    gplayWin.move(x, y+108)
+    gplayWin.resize(w, h)
+    gplayWin.show_all()
 
 
 def stop_media(lc):
