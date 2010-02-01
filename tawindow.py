@@ -1062,7 +1062,7 @@ class TurtleArtWindow():
                         blk.spr.set_image(self.media_shapes['audioon'],
                                           1, 37, 6)
                     else:
-                        blk.spr.set_image(self.media_shapes['decsriptionon'],
+                        blk.spr.set_image(self.media_shapes['descriptionon'],
                                           1, 37, 6)
                     blk.values[0] = dsobject.object_id
                     dsobject.destroy()

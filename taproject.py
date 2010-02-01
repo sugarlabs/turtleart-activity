@@ -186,7 +186,7 @@ def load_block(tw, b):
     blk = block.Block(tw.block_list, tw.sprite_list, 
                       btype, b[2]+tw.canvas.cx,
                       b[3]+tw.canvas.cy, 'block', values)
-    # Some blocks t a skin.
+    # Some blocks get a skin.
     if btype == 'nop': 
         if tw.nop == 'pythonloaded':
             blk.spr.set_image(tw.media_shapes['pythonon'], 1, 17, 8)
@@ -201,9 +201,9 @@ def load_block(tw, b):
         elif btype == 'list':
             for i in range(len(b[4])-4):
                 dy = blk.add_arg()
-            
-    elif btype in BOX_STYLE_MEDIA and blk.values[0] is not None:
+    elif btype in BOX_STYLE_MEDIA and len(blk.values)>0:
         if btype == 'audio' or btype == 'description':
+            print "restoring %s to %s block" % (blk.values[0],blk.name)
             blk.spr.set_image(tw.media_shapes[btype+'on'], 1, 37, 6)
         elif tw.running_sugar():
             try:

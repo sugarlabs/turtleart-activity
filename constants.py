@@ -78,7 +78,6 @@ STANDARD_STROKE_WIDTH = 1.0
 
 PALETTE_SCALE = {'template2x2':1.0, 'template1x2':1.0}
 
-
 #
 # block style definitions
 #
@@ -396,7 +395,19 @@ OLD_NAMES = {'product':'product2', 'storeinbox':'storein',
              'descriptionoff':'description','template3':'list',
              'template1':'template1x1', 'template2':'template2x1',
              'template6':'template1x2', 'template7':'template2x2', 
-             'template8':'template1x1' }
+             'template4':'template1x1', 'hres':'width', 'vres':'height' }
+
+#
+# Define the relative size and postion of media objects
+#                    (w,   h,   x,      y,     dx, dy)
+#
+TEMPLATES = {'t1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
+             't2z1': (0.5, 0.5, 0.0625, 0.125, 1.05, 1.05),
+             't1x2': (0.45, 0.45, 0.0625, 0.125, 1.05, 1.05),
+             't2x2': (0.45, 0.45, 0.0625, 0.125, 1.05, 1.05),
+             't1x1a': (0.9, 0.9, 0.0625, 0.125, 0, 0),
+             'bullet': (1, 1, 0.0625, 0.125, 0, 0.1),
+             'insertimage': (0.333, 0.333)}
 
 #
 # 'dead key' Unicode dictionaries

@@ -85,7 +85,7 @@ def careful_divide(x,y):
     except:
         return 0
 
-def taequal(self, x,y):
+def taequal(x,y):
     try:
         return float(x)==float(y)
     except:
@@ -99,7 +99,7 @@ def taequal(self, x,y):
             yy = y
         return xx==yy
     
-def taless(self, x, y):
+def taless(x, y):
     try:
         return float(x)<float(y)
     except:
@@ -189,6 +189,16 @@ def get_pixbuf_from_journal(dsobject, w, h):
             pixbuf = None
     return pixbuf
 
+def calc_position(tw, t):
+    w,h,x,y,dx,dy = TEMPLATES[t]
+    x *= tw.canvas.width
+    y *= tw.canvas.height
+    w *= (tw.canvas.width-x)
+    h *= (tw.canvas.height-y)
+    dx *= w
+    dy *= h
+    return(w,h,x,y,dx,dy)
+    
 def stop_logo(tw):
     tw.step_time = 0
     tw.lc.step = just_stop()
@@ -263,10 +273,10 @@ class LogoCode:
         self.defprim('left', 1, lambda self,x: self.tw.canvas.right(-x))
         self.defprim('heading', 0, lambda self: self.tw.canvas.heading)
         self.defprim('setxy', 2, lambda self, x, y: self.tw.canvas.setxy(x, y))
-        self.defprim('show',1,lambda self, x: show(self, x, True))
+        self.defprim('show',1,lambda self, x: self.show(x, True))
         self.defprim('setscale', 1, lambda self,x: self.set_scale(x))
         self.defprim('scale', 0, lambda self: self.scale)
-        self.defprim('write',2,lambda self, x,y: self.write(self, x,y))
+        self.defprim('write', 2, lambda self, x,y: self.write(self, x,y))
         self.defprim('insertimage', 1,
                 lambda self,x: self.insert_image(x, False))
         self.defprim('arc', 2, lambda self, x, y: self.tw.canvas.arc(x, y))
@@ -310,7 +320,7 @@ class LogoCode:
         self.defprim('forever', 1, self.prim_forever, True)
         self.defprim('if', 2, self.prim_if, True)
         self.defprim('ifelse', 3, self.prim_ifelse, True)
-        self.defprim('stopstack', 0, self.prim_stopstack)
+        self.defprim('stopstack', 0, self.prim_stopstack, True)
 
         # blocks primitives
         self.defprim('stack1', 0, self.prim_stack1, True)
@@ -318,7 +328,7 @@ class LogoCode:
         self.defprim('stack', 1, self.prim_stack, True)
         self.defprim('box1', 0, lambda self: self.boxes['box1'])
         self.defprim('box2', 0, lambda self: self.boxes['box2'])
-        self.defprim('box', 1, lambda self,x: box(self,x))
+        self.defprim('box', 1, lambda self,x: self.box(x))
         self.defprim('storeinbox1', 1, lambda self,x: self.setbox('box1',x))
         self.defprim('storeinbox2', 1, lambda self,x: self.setbox('box2',x))
         self.defprim('storeinbox', 2,
@@ -372,17 +382,6 @@ class LogoCode:
         self.body_height = int((self.tw.canvas.height/60)*self.tw.scale)
         self.bullet_height = int((self.tw.canvas.height/45)*self.tw.scale)
     
-        # This dictionary is used to define the relative size and postion of 
-        # template elements (w, h, x, y, dx, dy, dx1, dy1...).
-        self.templates = {
-                 't1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
-                 't2z1': (0.5, 0.5, 0.0625, 0.125, 1.05, 1.05),
-                 'bullet': (1, 1, 0.0625, 0.125, 0, 0.1),
-                 't1x2': (0.45, 0.45, 0.0625, 0.125, 1.05, 1.05),
-                 't2x2': (0.45, 0.45, 0.0625, 0.125, 1.05, 1.05),
-                 't1x1a': (0.9, 0.9, 0.0625, 0.125, 0, 0),
-                 'insertimage': (0.333, 0.333)
-                }
         self.scale = 33
 
     def run_blocks(self, blk, blocks, run_flag):
@@ -566,7 +565,7 @@ class LogoCode:
         no_args_check(self)
         self.icall(self.eval, True); yield True
         self.arglist.append(self.iresult)
-        result = self.cfun.fcn(self,*self.arglist)
+        result = self.cfun.fcn(self, *self.arglist)
         self.cfun, self.arglist = oldcfun, oldarglist
         self.ireturn(result)
         yield True
@@ -780,37 +779,33 @@ class LogoCode:
         if media == "" or media[6:] == "":
             pass
         elif media[6:] is not "None":
+            text = None
             if self.tw.running_sugar():
                 try:
                     dsobject = datastore.get(media[6:])
                     text = dsobject.metadata['description']
                     dsobject.destroy()
                 except:
-                    print "no description?"
+                    print "no description in %s" % (media[6:])
             else:
-                f = open(media[6:], 'r')
-                text = f.read()
-                f.close()
-            self.tw.canvas.draw_text(text, int(x), int(y),
-                                           self.body_height, int(w))
+                try:
+                    f = open(media[6:], 'r')
+                    text = f.read()
+                    f.close()
+                except:
+                    print "no text in %s?" % (media[6:])
+            if text is not None:
+                print "text: %s" % (text)
+                self.tw.canvas.draw_text(text, int(x), int(y),
+                                         self.body_height, int(w))
     
     def draw_title(self, title,x,y):
         self.tw.canvas.draw_text(title,int(x),int(y),self.title_height,
                                                      self.tw.canvas.width-x)
 
-    def calc_position(self, t):
-        w,h,x,y,dx,dy = self.templates[t]
-        x *= self.tw.canvas.width
-        y *= self.tw.canvas.height
-        w *= (self.tw.canvas.width-x)
-        h *= (self.tw.canvas.height-y)
-        dx *= w
-        dy *= h
-        return(w,h,x,y,dx,dy)
-    
     # title, one image, and description
     def show_template1x1(self, title, media):
-        w,h,xo,yo,dx,dy = self.calc_position('t1x1')
+        w,h,xo,yo,dx,dy = calc_position(self.tw, 't1x1')
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
@@ -839,7 +834,7 @@ class LogoCode:
     
     # title, two images (horizontal), two descriptions
     def show_template2x1(self, title, media1, media2):
-        w,h,xo,yo,dx,dy = self.calc_position('t2x1')
+        w,h,xo,yo,dx,dy = calc_position(self.tw, 't2x1')
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
@@ -874,7 +869,7 @@ class LogoCode:
 
     # title and varible number of  bullets
     def show_bullets(self, title, sarray):
-        w,h,xo,yo,dx,dy = self.calc_position('bullet')
+        w,h,xo,yo,dx,dy = calc_position(self.tw, 'bullet')
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
@@ -965,7 +960,7 @@ class LogoCode:
 
     # title, one media object
     def show_template1x1a(self, title, media1):
-        w,h,xo,yo,dx,dy = self.calc_position('t1x1a')
+        w,h,xo,yo,dx,dy = calc_position(self.tw, 't1x1a')
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
@@ -999,7 +994,7 @@ class LogoCode:
             x -= w/2
             y -= h/2
         if media[0:5] == 'media':
-            show_picture(self, media, x, y, w, h)
+            self.show_picture(media, x, y, w, h)
     
     # description text only (at current x,y)
     def insert_desc(self, media):
@@ -1009,7 +1004,7 @@ class LogoCode:
         x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
         y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
         if media[0:5] == 'descr':
-            show_description(self, media, x, y, w, h)
+            self.show_description(media, x, y, w, h)
     
     def set_scale(self, x):
         self.scale = x

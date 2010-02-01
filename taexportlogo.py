@@ -19,7 +19,6 @@
 #THE SOFTWARE.
 
 import tawindow
-import talogo
 import math
 try:
     from sugar.datastore import datastore
@@ -322,7 +321,7 @@ def walk_stack(self, tw, spr):
     top = tawindow.find_top_block(spr)
     if spr == top:
         # only walk the stack if the block is the top block
-        code = talogo.run_blocks(tw.lc, top, tw.block_list.list, False)
+        code = tw.lc.run_blocks(top, tw.block_list.list, False)
         return code
     else:
         # not top of stack, then return empty list
