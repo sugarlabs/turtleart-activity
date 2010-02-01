@@ -209,12 +209,6 @@ def just_stop():
 def millis():
     return int(clock()*1000)
 
-"""
-def parseline(str):
-    split = re.split(r"\s|([\[\]()])", str)
-    return [x for x in split if x and x != ""]
-"""
- 
 #
 # A class for parsing Logo Code
 #
@@ -224,140 +218,116 @@ class LogoCode:
         self.tw = tw
         self.oblist = {}
 
-        # math primitives
-        self.defprim('print', 1, lambda self,x: self.status_print(x))
-        self.defprim('+', None, lambda self,x,y: x+y)
-        self.defprim('plus', 2, lambda self,x,y: taplus(x,y))
-        self.defprim('-', None, lambda self,x,y: x-y)
-        self.defprim('minus', 2, lambda self,x,y: taminus(x,y))
-        self.defprim('*', None, lambda self,x,y: x*y)
-        self.defprim('product', 2, lambda self,x,y: taproduct(x,y))
-        self.defprim('/', None, lambda self,x,y: careful_divide(x,y))
-        self.defprim('division', 2, lambda self,x,y: careful_divide(x,y))
-        self.defprim('random', 2, lambda self,x,y: int(random.uniform(x,y)))
-        self.defprim('greater?', 2, lambda self,x,y: tamore(x,y))
-        self.defprim('less?', 2, lambda self,x,y: taless(x,y))
-        self.defprim('equal?', 2, lambda self,x,y: taequal(x,y))
-        self.defprim('and', None, lambda self,x,y: x&y)
-        self.defprim('or', None, lambda self,x,y: x|y)
-        self.defprim('not', 1, lambda self,x:not x)
-        self.defprim('%', None, lambda self,x,y: x%y)
-        self.defprim('mod', 2, lambda self,x,y: tamod(x,y))
-        self.defprim('sqrt', 1, lambda self,x: sqrt(x))
-        self.defprim('id',1, lambda self,x: identity(x))
-        
-        # keyboard, sensor, and misc. primitives
-        self.defprim('kbinput', 0, lambda self: self.kbinput())
-        self.defprim('keyboard', 0, lambda self: self.keyboard)
-        self.defprim('userdefined', 1, lambda self,x: self.loadmyblock(x))
-        self.defprim('myfunc', 2, lambda self,f,x: self.callmyfunc(f, x))
-        self.defprim('hres', 0,
-                lambda self: self.tw.canvas.width/self.tw.coord_scale)
-        self.defprim('vres', 0,
-                lambda self: self.tw.canvas.height/self.tw.coord_scale)
-        self.defprim('leftpos', 0,
-                lambda self: -(self.tw.canvas.width/(self.tw.coord_scale*2)))
-        self.defprim('toppos', 0,
-                lambda self: self.tw.canvas.height/(self.tw.coord_scale*2))
-        self.defprim('rightpos', 0,
-                lambda self: self.tw.canvas.width/(self.tw.coord_scale*2)) 
-        self.defprim('bottompos', 0,
-                lambda self: -(self.tw.canvas.height/(self.tw.coord_scale*2)))
+        DEFPRIM = {
+        '(':[1, lambda self, x: self.prim_opar(x)],
+        '/':[None, lambda self,x,y: careful_divide(x,y)],
+        '-':[None, lambda self,x,y: x-y],
+        '*':[None, lambda self,x,y: x*y],
+        '%':[None, lambda self,x,y: x%y],
+        '+':[None, lambda self,x,y: x+y],
+        'and':[None, lambda self,x,y: x&y],
+        'arc':[2, lambda self, x, y: self.tw.canvas.arc(x, y)],
+        'back':[1, lambda self,x: self.tw.canvas.forward(-x)],
+        'blue':[0, lambda self: 70],
+        'bpos':[0, lambda self: -self.tw.canvas.height/(self.tw.coord_scale*2)],
+        'box1':[0, lambda self: self.boxes['box1']],
+        'box':[1, lambda self,x: self.box(x)],
+        'box2':[0, lambda self: self.boxes['box2']],
+        'bullet':[2, self.prim_bullet, True],
+        'clean':[0, lambda self: self.clear()],
+        'color':[0, lambda self: self.tw.canvas.color],
+        'container':[1, lambda self,x: x],
+        'cyan':[0, lambda self: 50],
+        'define':[2, self.prim_define],
+        'division':[2, lambda self,x,y: careful_divide(x,y)],
+        'emptyheap':[0, lambda self: self.empty_heap()],
+        'equal?':[2, lambda self,x,y: taequal(x,y)],
+        'fillscreen':[2, lambda self, x, y: self.tw.canvas.fillscreen(x, y)],
+        'forever':[1, self.prim_forever, True],
+        'forward':[1, lambda self, x: self.tw.canvas.forward(x)],
+        'greater?':[2, lambda self,x,y: tamore(x,y)],
+        'green':[0, lambda self: 30],
+        'heading':[0, lambda self: self.tw.canvas.heading],
+        'heap':[0, lambda self: self.heap_print()],
+        'hideblocks':[0, lambda self: self.hideblocks()],
+        'hres':[0, lambda self: self.tw.canvas.width/self.tw.coord_scale],
+        'id':[1, lambda self,x: identity(x)],
+        'if':[2, self.prim_if, True],
+        'ifelse':[3, self.prim_ifelse, True],
+        'insertimage':[1, lambda self,x: self.insert_image(x, False)],
+        'kbinput':[0, lambda self: self.kbinput()],
+        'keyboard':[0, lambda self: self.keyboard],
+        'left':[1, lambda self,x: self.tw.canvas.right(-x)],
+        'lpos':[0, lambda self: -self.tw.canvas.width/(self.tw.coord_scale*2)],
+        'less?':[2, lambda self,x,y: taless(x,y)],
+        'minus':[2, lambda self,x,y: taminus(x,y)],
+        'mod':[2, lambda self,x,y: tamod(x,y)],
+        'myfunc':[2, lambda self,f,x: self.callmyfunc(f, x)],
+        'nop':[0, lambda self: None],
+        'nop1':[0, lambda self: None],
+        'nop2':[0, lambda self: None],
+        'nop3':[1, lambda self,x: None],
+        'not':[1, lambda self,x:not x],
+        'orange':[0, lambda self: 10],
+        'or':[None, lambda self,x,y: x|y],
+        'pendown':[0, lambda self: self.tw.canvas.setpen(True)],
+        'pensize':[0, lambda self: self.tw.canvas.pensize],
+        'penup':[0, lambda self: self.tw.canvas.setpen(False)],
+        'plus':[2, lambda self,x,y: taplus(x,y)],
+        'pop':[0, lambda self: self.pop_heap()],
+        'print':[1, lambda self,x: self.status_print(x)],
+        'product':[2, lambda self,x,y: taproduct(x,y)],
+        'purple':[0, lambda self: 90],
+        'push':[1, lambda self,x: self.push_heap(x)],
+        'random':[2, lambda self,x,y: int(random.uniform(x,y))],
+        'red':[0, lambda self: 0],
+        'repeat':[2, self.prim_repeat, True],
+        'right':[1, lambda self, x: self.tw.canvas.right(x)],
+        'rpos':[0, lambda self: self.tw.canvas.width/(self.tw.coord_scale*2)],
+        'scale':[0, lambda self: self.scale],
+        'setcolor':[1, lambda self, x: self.tw.canvas.setcolor(x)],
+        'seth':[1, lambda self, x: self.tw.canvas.seth(x)],
+        'setpensize':[1, lambda self, x: self.tw.canvas.setpensize(x)],
+        'setscale':[1, lambda self,x: self.set_scale(x)],
+        'setshade':[1, lambda self, x: self.tw.canvas.setshade(x)],
+        'settextcolor':[1, lambda self, x: self.tw.canvas.settextcolor(x)],
+        'settextsize':[1, lambda self, x: self.tw.canvas.settextsize(x)],
+        'setxy':[2, lambda self, x, y: self.tw.canvas.setxy(x, y)],
+        'shade':[0, lambda self: self.tw.canvas.shade],
+        'show':[1,lambda self, x: self.show(x, True)],
+        'sound':[1, lambda self,x: self.play_sound(x)],
+        'sqrt':[1, lambda self,x: sqrt(x)],
+        'stack1':[0, self.prim_stack1, True],
+        'stack':[1, self.prim_stack, True],
+        'stack2':[0, self.prim_stack2, True],
+        'start':[0, lambda self: self.start_stack()],
+        'stopstack':[0, self.prim_stopstack],
+        'storeinbox1':[1, lambda self,x: self.setbox('box1',x)],
+        'storeinbox2':[1, lambda self,x: self.setbox('box2',x)],
+        'storeinbox':[2, lambda self,x,y: self.setbox('box3'+str(x),y)],
+        't1x1':[2, lambda self,x,y: self.show_template1x1(x, y)],
+        't1x1a':[2, lambda self,x,y: self.show_template1x1a(x, y)],
+        't1x2':[3, lambda self,x,y,z: self.show_template1x2(x, y, z)],
+        't2x1':[3, lambda self,x,y,z: self.show_template2x1(x, y, z)],
+        't2x2':[5, lambda self,x,y,z,a,b: self.show_template2x2(x, y, z, a, b)],
+        'textcolor':[0, lambda self: self.tw.canvas.textcolor],
+        'textsize':[0, lambda self: self.tw.textsize],
+        'tpos':[0, lambda self: self.tw.canvas.height/(self.tw.coord_scale*2)],
+        'turtle':[1, lambda self, x: self.tw.canvas.set_turtle(int(x-1))],
+        'userdefined':[1, lambda self,x: self.loadmyblock(x)],
+        'video':[1, lambda self,x: self.play_movie(x)],
+        'vres':[0, lambda self: self.tw.canvas.height/self.tw.coord_scale],
+        'wait':[1, self.prim_wait, True],
+        'write':[2, lambda self, x,y: self.write(self, x,y)],
+        'xcor':[0, lambda self: self.tw.canvas.xcor/self.tw.coord_scale],
+        'ycor':[0, lambda self: self.tw.canvas.ycor/self.tw.coord_scale],
+        'yellow':[0, lambda self: 20]}
 
-        # turtle primitives
-        self.defprim('clean', 0, lambda self: self.clear())
-        self.defprim('forward', 1, lambda self, x: self.tw.canvas.forward(x))
-        self.defprim('back', 1, lambda self,x: self.tw.canvas.forward(-x))
-        self.defprim('seth', 1, lambda self, x: self.tw.canvas.seth(x))
-        self.defprim('right', 1, lambda self, x: self.tw.canvas.right(x))
-        self.defprim('left', 1, lambda self,x: self.tw.canvas.right(-x))
-        self.defprim('heading', 0, lambda self: self.tw.canvas.heading)
-        self.defprim('setxy', 2, lambda self, x, y: self.tw.canvas.setxy(x, y))
-        self.defprim('show',1,lambda self, x: self.show(x, True))
-        self.defprim('setscale', 1, lambda self,x: self.set_scale(x))
-        self.defprim('scale', 0, lambda self: self.scale)
-        self.defprim('write', 2, lambda self, x,y: self.write(self, x,y))
-        self.defprim('insertimage', 1,
-                lambda self,x: self.insert_image(x, False))
-        self.defprim('arc', 2, lambda self, x, y: self.tw.canvas.arc(x, y))
-        self.defprim('xcor', 0,
-                lambda self: self.tw.canvas.xcor/self.tw.coord_scale)
-        self.defprim('ycor', 0,
-                lambda self: self.tw.canvas.ycor/self.tw.coord_scale)
-        self.defprim('turtle', 1,
-                lambda self, x: self.tw.canvas.set_turtle(int(x-1)))
-    
-        # pen primitives
-        self.defprim('pendown', 0, lambda self: self.tw.canvas.setpen(True))
-        self.defprim('penup', 0, lambda self: self.tw.canvas.setpen(False))
-        self.defprim('(', 1, lambda self, x: self.prim_opar(x))
-        self.defprim('setcolor', 1, lambda self, x: self.tw.canvas.setcolor(x))
-        self.defprim('settextcolor', 1,
-                lambda self, x: self.tw.canvas.settextcolor(x))
-        self.defprim('settextsize', 1,
-                lambda self, x: self.tw.canvas.settextsize(x))
-        self.defprim('setshade', 1, lambda self, x: self.tw.canvas.setshade(x))
-        self.defprim('setpensize', 1,
-                lambda self, x: self.tw.canvas.setpensize(x))
-        self.defprim('fillscreen', 2,
-                lambda self, x, y: self.tw.canvas.fillscreen(x, y))
-        self.defprim('color', 0, lambda self: self.tw.canvas.color)
-        self.defprim('shade', 0, lambda self: self.tw.canvas.shade)
-        self.defprim('pensize', 0, lambda self: self.tw.canvas.pensize)
-        self.defprim('textcolor', 0, lambda self: self.tw.canvas.textcolor)
-        self.defprim('textsize', 0, lambda self: self.tw.textsize)
-        self.defprim('red', 0, lambda self: 0)
-        self.defprim('orange', 0, lambda self: 10)
-        self.defprim('yellow', 0, lambda self: 20)
-        self.defprim('green', 0, lambda self: 30)
-        self.defprim('cyan', 0, lambda self: 50)
-        self.defprim('blue', 0, lambda self: 70)
-        self.defprim('purple', 0, lambda self: 90)
-
-        # flow primitives
-        self.defprim('wait', 1, self.prim_wait, True)
-        self.defprim('repeat', 2, self.prim_repeat, True)
-        self.defprim('forever', 1, self.prim_forever, True)
-        self.defprim('if', 2, self.prim_if, True)
-        self.defprim('ifelse', 3, self.prim_ifelse, True)
-        self.defprim('stopstack', 0, self.prim_stopstack)
-
-        # blocks primitives
-        self.defprim('stack1', 0, self.prim_stack1, True)
-        self.defprim('stack2', 0, self.prim_stack2, True)
-        self.defprim('stack', 1, self.prim_stack, True)
-        self.defprim('box1', 0, lambda self: self.boxes['box1'])
-        self.defprim('box2', 0, lambda self: self.boxes['box2'])
-        self.defprim('box', 1, lambda self,x: self.box(x))
-        self.defprim('storeinbox1', 1, lambda self,x: self.setbox('box1',x))
-        self.defprim('storeinbox2', 1, lambda self,x: self.setbox('box2',x))
-        self.defprim('storeinbox', 2,
-                lambda self,x,y: self.setbox('box3'+str(x),y))
-        self.defprim('push', 1, lambda self,x: self.push_heap(x))
-        self.defprim('pop', 0, lambda self: self.pop_heap())
-        self.defprim('heap', 0, lambda self: self.heap_print())
-        self.defprim('emptyheap', 0, lambda self: self.empty_heap())
-        self.defprim('start', 0, lambda self: self.start_stack())
-        self.defprim('define', 2, self.prim_define)
-        self.defprim('nop', 0, lambda self: None)
-        self.defprim('nop1', 0, lambda self: None)
-        self.defprim('nop2', 0, lambda self: None)
-        self.defprim('nop3', 1, lambda self,x: None)
-    
-        # templates primitives
-        self.defprim('container', 1, lambda self,x: x)
-        self.defprim('t1x1', 2, lambda self,x,y: self.show_template1x1(x, y))
-        self.defprim('t1x1a', 2, lambda self,x,y: self.show_template1x1a(x, y))
-        self.defprim('t2x1', 3,
-                lambda self,x,y,z: self.show_template2x1(x, y, z))
-        self.defprim('bullet', 2, self.prim_bullet, True)
-        self.defprim('sound', 1, lambda self,x: self.play_sound(x))
-        self.defprim('video', 1, lambda self,x: self.play_movie(x))
-        self.defprim('t1x2', 3,
-                lambda self,x,y,z: self.show_template1x2(x, y, z))
-        self.defprim('t2x2', 5,
-                lambda self,x,y,z,a,b: self.show_template2x2(x, y, z, a, b))
-        self.defprim('hideblocks', 0, lambda self: self.hideblocks())
+        for p in iter(DEFPRIM):
+            if len(DEFPRIM[p]) == 2:
+                self.defprim(p, DEFPRIM[p][0], DEFPRIM[p][1])
+            else:
+                self.defprim(p, DEFPRIM[p][0], DEFPRIM[p][1], DEFPRIM[p][2])
     
         self.symtype = type(self.intern('print'))
         self.listtype = type([])
