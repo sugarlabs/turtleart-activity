@@ -1172,19 +1172,28 @@ class TurtleArtWindow():
                 elif argname == 'number' and\
                      (type(argvalue) is str or type(argvalue) is unicode):
                     argname = 'string'
+                elif argname == 'bool':
+                    argname = argvalue
+                elif argname == 'flow':
+                    argname = argvalue
                 (sx, sy) = newspr.get_xy()
-                argblk = Block(self.block_list, self.sprite_list,
-                               argname, 0, 0, 'block', [argvalue])
-                argdock = argblk.docks[0]
-                nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
-                if argname == 'journal':
-                    argblk.spr.set_image(self.media_shapes['journaloff'],
-                                         1, 37, 6)
-                    argblk.spr.set_label(' ')
-                argblk.spr.move((nx, ny))
-                argblk.spr.set_layer(TOP_LAYER)
-                argblk.connections = [newblk, None]
-                newblk.connections[i+1] = argblk
+                if argname is not None:
+                    if argname in CONTENT_BLOCKS:
+                        argblk = Block(self.block_list, self.sprite_list,
+                                       argname, 0, 0, 'block', [argvalue])
+                    else:
+                        argblk = Block(self.block_list, self.sprite_list,
+                                       argname, 0, 0, 'block')
+                    argdock = argblk.docks[0]
+                    nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
+                    if argname == 'journal':
+                        argblk.spr.set_image(self.media_shapes['journaloff'],
+                                             1, 37, 6)
+                        argblk.spr.set_label(' ')
+                    argblk.spr.move((nx, ny))
+                    argblk.spr.set_layer(TOP_LAYER)
+                    argblk.connections = [newblk, None]
+                    newblk.connections[i+1] = argblk
             self.drag_group = self._find_group(newblk)
             self.block_operation = 'new' 
 
