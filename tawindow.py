@@ -49,9 +49,8 @@ from gettext import gettext as _
 from tahoverhelp import *
 from taproject import *
 from sprite_factory import SVG, svg_str_to_pixbuf
-from talogo import lcNew, run_blocks, stop_logo, clear, doevalstep, showlabel,\
-                   display_coordinates, movie_media_type, audio_media_type,\
-                   get_pixbuf_from_journal
+from talogo import LogoCode, stop_logo, get_pixbuf_from_journal,\
+                   display_coordinates, movie_media_type, audio_media_type
 from tacanvas import TurtleGraphics
 from sprites import Sprites, Sprite
 from block import Blocks, Block
@@ -148,7 +147,7 @@ class TurtleArtWindow():
         self.selected_turtle = None
         self.canvas = TurtleGraphics(self, self.width, self.height)
 
-        self.lc = lcNew(self)
+        self.lc = LogoCode(self)
 
     """
     Register the events we listen to.
@@ -192,7 +191,7 @@ class TurtleArtWindow():
     def eraser_button(self):
         if self.status_spr is not None:
             self.status_spr.set_layer(HIDE_LAYER)
-        clear(self.lc)
+        self.lc.clear()
         display_coordinates(self)
 
     """
@@ -1106,8 +1105,8 @@ class TurtleArtWindow():
             return
         self.lc.ag = None
         top = self._find_top_block(blk)
-        run_blocks(self.lc, top, self._just_blocks(), True)
-        gobject.idle_add(doevalstep, self.lc)
+        self.lc.run_blocks(top, self._just_blocks(), True)
+        gobject.idle_add(self.lc.doevalstep)
 
     """
     Restore all the blocks in the trash can
@@ -1320,13 +1319,13 @@ class TurtleArtWindow():
                 f = float(n)
                 if f > 1000000:
                     n = 1
-                    showlabel(self.lc, "#overflowerror")
+                    self.lc.showlabel("#overflowerror")
                 elif f < -1000000:
                     n = -1
-                    showlabel(self.lc, "#overflowerror")
+                    self.lc.showlabel("#overflowerror")
             except ValueError:
                 n = 0
-                showlabel(self.lc, "#notanumber")
+                self.lc.showlabel("#notanumber")
         else:
             n = 0
         self.selected_blk.spr.set_label(n)

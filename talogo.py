@@ -35,29 +35,17 @@ try:
 except:
     pass
 
-class noKeyError(UserDict):
-    __missing__=lambda x,y: 0
-
-class taLogo: pass
-
-from tacanvas import *
-from tagplay import *
-from tajail import *
 from constants import *
+from tacanvas import *
+from tagplay import play_audio, play_movie_from_file, stop_media
+from tajail import myfunc, myfunc_import
 
 from gettext import gettext as _
 
 procstop = False
 
-def movie_media_type(suffix):
-    if suffix.replace('.','') in ['ogv','vob','mp4','wmv','mov', 'mpeg']:
-        return True
-    return False
-
-def audio_media_type(suffix):
-    if suffix.replace('.','') in ['ogg', 'oga', 'm4a']:
-        return True
-    return False
+class noKeyError(UserDict):
+    __missing__=lambda x,y: 0
 
 class symbol:
     def __init__(self, name):
@@ -76,332 +64,28 @@ class logoerror(Exception):
     def __str__(self):
         return repr(self.value)
 
-def run_blocks(lc, blk, blocks, run_flag):
-    for x in lc.stacks.keys():
-        lc.stacks[x] = None
-    lc.stacks['stack1'] = None
-    lc.stacks['stack2'] = None
-    for b in blocks:
-        if b.name == 'hat1':
-            lc.stacks['stack1'] = readline(lc,blocks_to_code(lc, b))
-        if b.name=='hat2':
-            lc.stacks['stack2'] = readline(lc,blocks_to_code(lc, b))
-        if b.name == 'hat':
-            if (b.connections[1] is not None):
-                text = b.connections[1].values[0]
-                lc.stacks['stack3'+text] = readline(lc,blocks_to_code(lc, b))
-    code = blocks_to_code(lc, blk)
-    if run_flag is True:
-        print "code: %s" % (code)
-        setup_cmd(lc, code)
-    else: return code
+#
+# Utility functions
+#
+def movie_media_type(suffix):
+    if suffix.replace('.','') in ['ogv','vob','mp4','wmv','mov', 'mpeg']:
+        return True
+    return False
 
-def blocks_to_code(lc, blk):
-    if blk is None:
-        return ['%nothing%']
-    code = []
-    dock = blk.docks[0]
-    if len(dock)>4:
-        code.append(dock[4])
-    if blk.primitive is not None:
-        code.append(blk.primitive)
-    else:
-        if blk.name=='number':
-            try:
-                code.append(float(blk.values[0]))
-            except ValueError:
-                code.append(float(ord(blk.values[0][0])))
-        elif blk.name=='string' or blk.name=='title':
-            if type(blk.values[0]) == float or type(blk.values[0]) == int:
-                if int(blk.values[0]) == blk.values[0]:
-                    blk.values[0] = int(blk.values[0])
-                code.append('#s'+str(blk.values[0]))
-            else:
-                code.append('#s'+blk.values[0])
-        elif blk.name=='journal':
-            if blk.values[0] is not None:
-                code.append('#smedia_'+str(blk.values[0]))
-            else:
-                code.append('#smedia_None')
-        elif blk.name=='description':
-            if blk.values[0] is not None:
-                code.append('#sdescr_'+str(blk.values[0]))
-            else:
-                code.append('#sdescr_None')
-        elif blk.name=='audio':
-            if blk.values[0] is not None:
-                code.append('#saudio_'+str(blk.values[0]))
-            else:
-                code.append('#saudio_None')
-        else:
-            return ['%nothing%']
-    for i in range(1,len(blk.connections)):
-        b = blk.connections[i]        
-        dock = blk.docks[i]
-        if len(dock)>4:
-            for c in dock[4]:
-                code.append(c)
-        if b is not None:
-            code.extend(blocks_to_code(lc, b))
-        elif blk.docks[i][0] not in ['flow', 'unavailable']:
-            code.append('%nothing%')
-    return code
-
-def intern(lc, str):
-    if str in lc.oblist: return lc.oblist[str]
-    sym = symbol(str)
-    lc.oblist[str] = sym
-    return sym
-
-def parseline(str):
-    split = re.split(r"\s|([\[\]()])", str)
-    return [x for x in split if x and x != ""]
-
-def readline(lc, line):
-    res = []
-    while line:
-        token = line.pop(0)
-        if isNumberType(token): res.append(token)
-        elif token.isdigit(): res.append(float(token))
-        elif token[0]=='-' and token[1:].isdigit():
-            res.append(-float(token[1:]))
-        elif token[0] == '"': res.append(token[1:])
-        elif token[0:2] == "#s": res.append(token[2:])
-        elif token == '[': res.append(readline(lc,line))
-        elif token == ']': return res
-        else: res.append(intern(lc, token))
-    return res
-
-def setup_cmd(lc, str):
-    lc.tw.active_turtle.hide()
-    lc.procstop=False
-    list = readline(lc, str)
-    lc.step = start_eval(lc, list)
-
-def start_eval(lc, list):
-    icall(lc, evline, list); yield True
-    if lc.tw.running_sugar():
-        lc.tw.activity.stop_button.set_icon("stopitoff")
-    yield False
-
-def evline(lc, list):
-    oldiline = lc.iline
-    lc.iline = list[:]
-    lc.arglist = None
-    while lc.iline:
-        if lc.tw.step_time > 0:
-            lc.tw.active_turtle.show()
-            endtime = millis()+an_int(lc,lc.tw.step_time)*100
-            while millis()<endtime:
-                yield True
-            lc.tw.active_turtle.hide()
-        token = lc.iline[0]
-        if token == lc.symopar:
-            token = lc.iline[1]
-        icall(lc, eval); yield True
-        if lc.procstop:
-            break
-        if lc.iresult == None:
-            continue
-        raise logoerror(str(lc.iresult))
-    lc.iline = oldiline
-    ireturn(lc)
-    display_coordinates(lc.tw)
-    yield True
-
-def eval(lc, infixarg=False):
-    token = lc.iline.pop(0)
-    if type(token) == lc.symtype:
-        icall(lc, evalsym, token); yield True
-        res = lc.iresult
-    else: res = token
-    if not infixarg:
-        while infixnext(lc):
-            icall(lc, evalinfix, res); yield True
-            res = lc.iresult
-    ireturn(lc, res)
-    yield True
-
-def evalsym(lc, token):
-    debug_trace(lc, token)
-    undefined_check(lc, token)
-    oldcfun, oldarglist = lc.cfun, lc.arglist
-    lc.cfun, lc.arglist = token, []
-    if token.nargs == None:
-        raise logoerror("#noinput")
-    for i in range(token.nargs):
-        no_args_check(lc)
-        icall(lc, eval); yield True
-        lc.arglist.append(lc.iresult)
-    if lc.cfun.rprim:
-        if type(lc.cfun.fcn) == lc.listtype:
-            icall(lc, ufuncall, cfun.fcn); yield True
-        else:
-            icall(lc, lc.cfun.fcn, *lc.arglist); yield True
-        result = None
-    else: 
-        result = lc.cfun.fcn(lc, *lc.arglist)
-    lc.cfun, lc.arglist = oldcfun, oldarglist
-    if lc.arglist is not None and result == None:
-        raise logoerror("%s didn't output to %s (arglist %s, result %s)" % \
-            (oldcfun.name, lc.cfun.name, str(lc.arglist), str(result)))
-    ireturn(lc, result)
-    yield True
-
-def evalinfix(lc, firstarg):
-    token = lc.iline.pop(0)
-    oldcfun, oldarglist = lc.cfun, lc.arglist
-    lc.cfun, lc.arglist = token, [firstarg]
-    no_args_check(lc)
-    icall(lc, eval, True); yield True
-    lc.arglist.append(lc.iresult)
-    result = lc.cfun.fcn(lc,*lc.arglist)
-    lc.cfun, lc.arglist = oldcfun, oldarglist
-    ireturn (lc,result); yield True
-
-def infixnext(lc):
-    if len(lc.iline)==0:
-        return False
-    if type(lc.iline[0]) is not lc.symtype:
-        return False
-    return lc.iline[0].name in ['+', '-', '*', '/','%','and','or']
-
-def debug_trace(lc, token):
-    if lc.trace:
-        if token.name in ['forward', 'right', 'back', 'left', 'seth', 'setxy',
-                          'arc', 'heading', 'xcor', 'ycor']:
-            my_string = "%s\nxcor=%d\nycor=%d\nheading=%d\nscale=%d" %\
-                        (token.name,int(lc.tw.canvas.xcor),
-                         int(lc.tw.canvas.ycor),int(lc.tw.canvas.heading),
-                         int(lc.scale))
-        elif token.name in ['penup', 'pendown', 'setcolor', 'setshade',
-                            'settextcolor', 'settextsize', 'shade', 'color',
-                            'fillscreen', 'pensize']:
-            if lc.tw.canvas.pendown:
-                penstatus = "pen down"
-            else:
-                penstatus = "pen up"
-            my_string = "%s\n%s\ncolor=%d\nshade=%d\npensize=%.1f" %\
-                        (token.name, penstatus, int(lc.tw.canvas.color),
-                        int(lc.tw.canvas.shade), lc.tw.canvas.pensize)
-        else:
-            my_string = "%s\nblocks status:\n" % (token.name)
-            for k,v in lc.boxes.iteritems():
-                tmp = k +":" + str(v) + "\n"
-                my_string += tmp
-        shp = 'info'
-        lc.tw.status_spr.set_shape(lc.tw.status_shapes[shp])
-        lc.tw.status_spr.set_label(_(my_string))
-        lc.tw.status_spr.set_layer(STATUS_LAYER)
-    return
-
-def undefined_check(lc, token):
-    if token.fcn is not None: return False
-    raise logoerror("I don't know how to %s" % token.name)
-
-def no_args_check(lc):
-    if lc.iline and lc.iline[0] is not lc.symnothing : return
-    raise logoerror("#noinput")
-
-def prim_wait(lc,time):
-    lc.tw.active_turtle.show()
-    endtime = millis()+an_int(lc,time*1000)
-    while millis()<endtime:
-        yield True
-    lc.tw.active_turtle.hide()
-    ireturn(lc); yield True
-
-def prim_repeat(lc, num, list):
-    num = an_int(lc, num)
-    for i in range(num):
-        icall(lc, evline, list[:]); yield True
-        if lc.procstop: break
-    ireturn(lc); yield True
-
-def prim_bullet(lc, title, list):
-    show_bullets(lc, title, list)
-    ireturn(lc); yield True
-
-def prim_forever(lc, list):
-    while True:
-        icall(lc,evline, list[:]); yield True
-        if lc.procstop: break
-    ireturn(lc); yield True
-
-def prim_if(lc, bool, list):
-    if bool: icall(lc, evline, list[:]); yield True
-    ireturn(lc); yield True
-
-def prim_ifelse(lc, bool, list1,list2):
-    if bool: ijmp(lc, evline, list1[:]); yield True
-    else: ijmp(lc, evline, list2[:]); yield True
-
-def prim_opar(lc,val):
-    lc.iline.pop(0)
-    return val
-
-def prim_define(name, body):
-    if type(name) is not symtype: name = intern(name)
-    name.nargs, name.fcn = 0, body
-    name.rprim = True
-
-def prim_stack(lc, str):
-    if (not lc.stacks.has_key('stack3'+str)) or lc.stacks['stack3'+str] is None:
-        raise logoerror("#nostack")
-    icall(lc, evline, lc.stacks['stack3'+str][:])
-    yield True
-    lc.procstop = False
-    ireturn(lc)
-    yield True
-
-def prim_stack1(lc):
-    if lc.stacks['stack1'] is None:
-        raise logoerror("#nostack")
-    icall(lc, evline, lc.stacks['stack1'][:])
-    yield True
-    lc.procstop = False
-    ireturn(lc)
-    yield True
-
-def prim_stack2(lc):
-    if lc.stacks['stack2'] is None:
-        raise logoerror("#nostack")
-    icall(lc, evline, lc.stacks['stack2'][:])
-    yield True
-    lc.procstop = False
-    ireturn(lc)
-    yield True
-
-def prim_stopstack(lc):
-    lc.procstop = True
+def audio_media_type(suffix):
+    if suffix.replace('.','') in ['ogg', 'oga', 'm4a']:
+        return True
+    return False
 
 def careful_divide(x,y):
     try:
-        if y==0: return 0
+        if y==0:
+            return 0
         return x/y
     except:
         return 0
 
-def ufuncall(body):
-    ijmp(evline, body); yield True
-
-def an_int(lc, n):
-    if type(n) == int:
-        return n
-    elif type(n) == float:
-        return int(n)
-    elif type(n) == str:
-        return int(ord(n[0]))
-    else:
-        raise logoerror("%s doesn't like %s as input" \
-            % (lc.cfun.name, str(n)))
-
-def defprim(lc, name, args, fcn, rprim=False):
-    sym = intern(lc, name)
-    sym.nargs, sym.fcn = args,fcn
-    sym.rprim = rprim
-
-def taequal(x,y):
+def taequal(self, x,y):
     try:
         return float(x)==float(y)
     except:
@@ -414,8 +98,8 @@ def taequal(x,y):
         else:
             yy = y
         return xx==yy
-
-def taless(x,y):
+    
+def taless(self, x, y):
     try:
         return float(x)<float(y)
     except:
@@ -428,211 +112,43 @@ def taless(x,y):
         else:
             yy = y
         return xx<yy
+    
+def tamore(x, y):
+    return taless(y, x)
 
-def tamore(x,y):
-    return taless(y,x)
-
-def taplus(x,y):
+def taplus(x, y):
     if (type(x) == int or type(x) == float) and \
         (type(y) == int or type(y) == float):
         return(x+y)
     else:
         return(str(x) + str(y))
-
-def taminus(x,y):
+    
+def taminus(x, y):
     try:
         return(x-y)
     except:
         raise logoerror("#syntaxerror")
-
-def taproduct(x,y):
+    
+def taproduct(x, y):
     try:
         return(x*y)
     except:
         raise logoerror("#syntaxerror")
-
-def tamod(x,y):
+    
+def tamod(x, y):
     try:
         return(x%y)
     except:
         raise logoerror("#syntaxerror")
-
+    
 def tasqrt(x):
     try:
         return sqrt(x)
     except:
         raise logoerror("#syntaxerror")
-
+    
 def identity(x):
     return(x)
-
-# recenter the canvas when the start block is clicked
-def start_stack(lc):
-    if lc.tw.running_sugar():
-        lc.tw.activity.recenter()
-
-def lcNew(tw):
-    lc = taLogo()
-    lc.tw = tw
-    lc.oblist = {}
-
-    # math primitives
-    defprim(lc,'print', 1, lambda lc,x: status_print(lc,x))
-    defprim(lc,'+', None, lambda lc,x,y:x+y)
-    defprim(lc,'plus', 2, lambda lc,x,y:taplus(x,y))
-    defprim(lc,'-', None, lambda lc,x,y:x-y)
-    defprim(lc,'minus', 2, lambda lc,x,y:taminus(x,y))
-    defprim(lc,'*', None, lambda lc,x,y:x*y)
-    defprim(lc,'product', 2, lambda lc,x,y:taproduct(x,y))
-    defprim(lc,'/', None, lambda lc,x,y:careful_divide(x,y))
-    defprim(lc,'division', 2, lambda lc,x,y:careful_divide(x,y))
-    defprim(lc,'random', 2, lambda lc,x,y: int(random.uniform(x,y)))
-    defprim(lc,'greater?', 2, lambda lc,x,y: tamore(x,y))
-    defprim(lc,'less?', 2, lambda lc,x,y: taless(x,y))
-    defprim(lc,'equal?', 2, lambda lc,x,y: taequal(x,y))
-    defprim(lc,'and', None, lambda lc,x,y:x&y)
-    defprim(lc,'or', None, lambda lc,x,y:x|y)
-    defprim(lc,'not', 1, lambda lc,x:not x)
-    defprim(lc,'%', None, lambda lc,x,y:x%y)
-    defprim(lc,'mod', 2, lambda lc,x,y:tamod(x,y))
-    defprim(lc,'sqrt', 1, lambda lc,x: sqrt(x))
-    defprim(lc,'id',1, lambda lc,x: identity(x))
-    
-    # keyboard, sensor, and misc. primitives
-    defprim(lc,'kbinput', 0, lambda lc: kbinput(lc))
-    defprim(lc,'keyboard', 0, lambda lc: lc.keyboard)
-    defprim(lc,'userdefined', 1, lambda lc,x: loadmyblock(lc,x))
-    defprim(lc,'myfunc', 2, lambda lc,f,x: callmyfunc(lc, f, x))
-    defprim(lc,'hres', 0, lambda lc: lc.tw.canvas.width/lc.tw.coord_scale)
-    defprim(lc,'vres', 0, lambda lc: lc.tw.canvas.height/lc.tw.coord_scale)
-    defprim(lc,'leftpos', 0, lambda lc: \
-        -(lc.tw.canvas.width/(lc.tw.coord_scale*2)))
-    defprim(lc,'toppos', 0, lambda lc: \
-        lc.tw.canvas.height/(lc.tw.coord_scale*2))
-    defprim(lc,'rightpos', 0, lambda lc: \
-        lc.tw.canvas.width/(lc.tw.coord_scale*2)) 
-    defprim(lc,'bottompos', 0, lambda lc: \
-        -(lc.tw.canvas.height/(lc.tw.coord_scale*2)))
-
-    # turtle primitives
-    defprim(lc,'clean', 0, lambda lc: clear(lc))
-    defprim(lc,'forward', 1, lambda lc, x: lc.tw.canvas.forward(x))
-    defprim(lc,'back', 1, lambda lc,x: lc.tw.canvas.forward(-x))
-    defprim(lc,'seth', 1, lambda lc, x: lc.tw.canvas.seth(x))
-    defprim(lc,'right', 1, lambda lc, x: lc.tw.canvas.right(x))
-    defprim(lc,'left', 1, lambda lc,x: lc.tw.canvas.right(-x))
-    defprim(lc,'heading', 0, lambda lc: lc.tw.canvas.heading)
-    defprim(lc,'setxy', 2, lambda lc, x, y: lc.tw.canvas.setxy(x, y))
-    defprim(lc,'show',1,lambda lc, x: show(lc, x, True))
-    defprim(lc,'setscale', 1, lambda lc,x: set_scale(lc, x))
-    defprim(lc,'scale', 0, lambda lc: lc.scale)
-    defprim(lc,'write',2,lambda lc, x,y: write(lc, x,y))
-    defprim(lc,'insertimage', 1, lambda lc,x: insert_image(lc, x, False))
-    defprim(lc,'arc', 2, lambda lc, x, y: lc.tw.canvas.arc(x, y))
-    defprim(lc,'xcor', 0, lambda lc: lc.tw.canvas.xcor/lc.tw.coord_scale)
-    defprim(lc,'ycor', 0, lambda lc: lc.tw.canvas.ycor/lc.tw.coord_scale)
-    defprim(lc,'turtle', 1, lambda lc, x: lc.tw.canvas.set_turtle(int(x-1)))
-
-    # pen primitives
-    defprim(lc,'pendown', 0, lambda lc: lc.tw.canvas.setpen(True))
-    defprim(lc,'penup', 0, lambda lc: lc.tw.canvas.setpen(False))
-    defprim(lc,'(', 1, lambda lc, x: prim_opar(lc,x))
-    defprim(lc,'setcolor', 1, lambda lc, x: lc.tw.canvas.setcolor(x))
-    defprim(lc,'settextcolor', 1, lambda lc, x: lc.tw.canvas.settextcolor(x))
-    defprim(lc,'settextsize', 1, lambda lc, x: lc.tw.canvas.settextsize(x))
-    defprim(lc,'setshade', 1, lambda lc, x: lc.tw.canvas.setshade(x))
-    defprim(lc,'setpensize', 1, lambda lc, x: lc.tw.canvas.setpensize(x))
-    defprim(lc,'fillscreen', 2, lambda lc, x, y: lc.tw.canvas.fillscreen(x, y))
-    defprim(lc,'color', 0, lambda lc: lc.tw.canvas.color)
-    defprim(lc,'shade', 0, lambda lc: lc.tw.canvas.shade)
-    defprim(lc,'pensize', 0, lambda lc: lc.tw.canvas.pensize)
-    defprim(lc,'textcolor', 0, lambda lc: lc.tw.canvas.textcolor)
-    defprim(lc,'textsize', 0, lambda lc: lc.tw.textsize)
-    defprim(lc,'red', 0, lambda lc: 0)
-    defprim(lc,'orange', 0, lambda lc: 10)
-    defprim(lc,'yellow', 0, lambda lc: 20)
-    defprim(lc,'green', 0, lambda lc: 30)
-    defprim(lc,'cyan', 0, lambda lc: 50)
-    defprim(lc,'blue', 0, lambda lc: 70)
-    defprim(lc,'purple', 0, lambda lc: 90)
-
-    # flow primitives
-    defprim(lc,'wait', 1, prim_wait, True)
-    defprim(lc,'repeat', 2, prim_repeat, True)
-    defprim(lc,'forever', 1, prim_forever, True)
-    defprim(lc,'if', 2, prim_if, True)
-    defprim(lc,'ifelse', 3, prim_ifelse, True)
-    defprim(lc,'stopstack', 0, prim_stopstack)
-
-    # blocks primitives
-    defprim(lc,'stack1', 0, prim_stack1, True)
-    defprim(lc,'stack2', 0, prim_stack2, True)
-    defprim(lc,'stack', 1, prim_stack, True)
-    defprim(lc,'box1', 0, lambda lc: lc.boxes['box1'])
-    defprim(lc,'box2', 0, lambda lc: lc.boxes['box2'])
-    defprim(lc,'box', 1, lambda lc,x: box(lc,x))
-    defprim(lc,'storeinbox1', 1, lambda lc,x: setbox(lc, 'box1',x))
-    defprim(lc,'storeinbox2', 1, lambda lc,x: setbox(lc, 'box2',x))
-    defprim(lc,'storeinbox', 2, lambda lc,x,y: setbox(lc, 'box3'+str(x),y))
-    defprim(lc,'push', 1, lambda lc,x: push_heap(lc,x))
-    defprim(lc,'pop', 0, lambda lc: pop_heap(lc))
-    defprim(lc,'heap', 0, lambda lc: heap_print(lc))
-    defprim(lc,'emptyheap', 0, lambda lc: empty_heap(lc))
-    defprim(lc,'start', 0, lambda lc: start_stack(lc))
-    defprim(lc,'define', 2, prim_define)
-    defprim(lc,'nop', 0, lambda lc: None)
-    defprim(lc,'nop1', 0, lambda lc: None)
-    defprim(lc,'nop2', 0, lambda lc: None)
-    defprim(lc,'nop3', 1, lambda lc,x: None)
-
-    # templates primitives
-    defprim(lc,'container', 1, lambda lc,x: x)
-    defprim(lc,'tp1', 2, lambda lc,x,y: show_template1(lc, x, y))
-    defprim(lc,'tp8', 2, lambda lc,x,y: show_template8(lc, x, y))
-    defprim(lc,'tp6', 3, lambda lc,x,y,z: show_template6(lc, x, y, z))
-    defprim(lc,'bullet', 2, prim_bullet, True)
-    defprim(lc,'sound', 1, lambda lc,x: play_sound(lc, x))
-    defprim(lc,'video', 1, lambda lc,x: play_movie(lc, x))
-    defprim(lc,'tp2', 3, lambda lc,x,y,z: \
-        show_template2(lc, x, y, z))
-    defprim(lc,'tp7', 5, lambda lc,x,y,z,a,b: \
-        show_template7(lc, x, y, z, a, b))
-    defprim(lc,'hideblocks', 0, lambda lc: hideblocks(lc))
-
-    lc.symtype = type(intern(lc, 'print'))
-    lc.listtype = type([])
-    lc.symnothing = intern(lc, '%nothing%')
-    lc.symopar = intern(lc, '(')
-    lc.iline, lc.cfun, lc.arglist, lc.ufun = None, None, None, None
-
-    lc.istack = []
-    lc.stacks = {}
-    lc.boxes = {'box1': 0, 'box2': 0}
-    lc.heap = []
-
-    lc.keyboard = 0
-    lc.trace = 0 # flag for enabling debug output via showlabel
-    lc.gplay = None
-    lc.ag = None
-    lc.nobox = ""
-    lc.title_height = int((lc.tw.canvas.height/30)*lc.tw.scale)
-    lc.body_height = int((lc.tw.canvas.height/60)*lc.tw.scale)
-    lc.bullet_height = int((lc.tw.canvas.height/45)*lc.tw.scale)
-
-    # this dictionary is used to define the relative size and postion of 
-    # template elements (w, h, x, y, dx, dy, dx1, dy1...)
-    lc.templates = {
-             'tp1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
-             'tp2': (0.5, 0.5, 0.0625, 0.125, 1.05, 1.05),
-             'tp3': (1, 1, 0.0625, 0.125, 0, 0.1),
-             'tp6': (0.45, 0.45, 0.0625, 0.125, 1.05, 1.05),
-             'tp7': (0.45, 0.45, 0.0625, 0.125, 1.05, 1.05),
-             'tp8': (0.9, 0.9, 0.0625, 0.125, 0, 0),
-             'insertimage': (0.333, 0.333)
-            }
-    lc.scale = 33
-
-    return lc
 
 def display_coordinates(tw, a=-1, b=-1, d=-1):
     if a==-1 and b==-1 and d == -1:
@@ -640,14 +156,14 @@ def display_coordinates(tw, a=-1, b=-1, d=-1):
         y = round_int(tw.canvas.ycor/tw.coord_scale)
         h = round_int(tw.canvas.heading)
     else:
-         x = a
-         y = b
-         h = d
+        x = a
+        y = b
+        h = d
     if tw.running_sugar():
         tw.activity.coordinates_label.set_text("%s: %d %s: %d %s: %d" % (
                                    _("xcor"), x, _("ycor"), y, _("heading"), h))
         tw.activity.coordinates_label.show()
-
+    
 def round_int(n):
     if int(float(n)) == n:
         return int(n)
@@ -657,57 +173,7 @@ def round_int(n):
             return int(nn)
         return nn
 
-def box(lc,x):
-    try:
-        return lc.boxes['box3'+str(x)]
-    except:
-        lc.nobox = str(x)
-        raise logoerror("#emptybox")
-
-def loadmyblock(lc,x):
-    # Execute code imported from the Journal
-    if lc.tw.myblock is not None:
-        y = myfunc_import(lc, lc.tw.myblock, x)
-    else:
-        raise logoerror("#nocode")
-    return
-
-def callmyfunc(lc, f, x):
-    y = myfunc(lc, f, x)
-    if y == None:
-        raise logoerror("#syntaxerror")
-        stop_logo(lc.tw)
-    else:
-        return y
-
-def show_picture(lc, media, x, y, w, h):
-    if media == "" or media[6:] == "":
-        pass
-    elif media[6:] is not "None":
-        pixbuf = None
-        if lc.tw.running_sugar():
-            try:
-                dsobject = datastore.get(media[6:])
-            except:
-                raise logoerror("#nomedia")
-            if movie_media_type(dsobject.file_path[-4:]):
-                play_movie_from_file(lc, dsobject.file_path, int(x), int(y),
-                                                             int(w), int(h))
-            else:
-                pixbuf = get_pixbuf_from_journal(dsobject, int(w), int(h))
-            dsobject.destroy()
-        else:
-            if movie_media_type(media[-4:]):
-                play_movie_from_file(lc, media[6:], int(x), int(y),
-                                                    int(w), int(h))
-            else:
-                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(media[6:],
-                                                              int(w), int(h))
-        if pixbuf is not None:
-            lc.tw.canvas.draw_pixbuf(pixbuf, 0, 0, int(x), int(y),
-                                                   int(w), int(h))
-
-def get_pixbuf_from_journal(dsobject,w,h):
+def get_pixbuf_from_journal(dsobject, w, h):
     try:
         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path,
                                                       int(w),int(h))
@@ -723,409 +189,993 @@ def get_pixbuf_from_journal(dsobject,w,h):
             pixbuf = None
     return pixbuf
 
-def show_description(lc, media, x, y, w, h):
-    if media == "" or media[6:] == "":
-        pass
-    elif media[6:] is not "None":
-        if lc.tw.running_sugar():
-            try:
-                dsobject = datastore.get(media[6:])
-                text = dsobject.metadata['description']
-                dsobject.destroy()
-            except:
-                print "no description?"
-        else:
-            f = open(media[6:], 'r')
-            text = f.read()
-            f.close()
-        lc.tw.canvas.draw_text(text, int(x), int(y), lc.body_height, int(w))
-
-def draw_title(lc,title,x,y):
-    lc.tw.canvas.draw_text(title,int(x),int(y),lc.title_height,
-                                               lc.tw.canvas.width-x)
-
-def calc_position(lc,t):
-    w,h,x,y,dx,dy = lc.templates[t]
-    x *= lc.tw.canvas.width
-    y *= lc.tw.canvas.height
-    w *= (lc.tw.canvas.width-x)
-    h *= (lc.tw.canvas.height-y)
-    dx *= w
-    dy *= h
-    return(w,h,x,y,dx,dy)
-
-# title, one image, and description
-def show_template1(lc, title, media):
-    w,h,xo,yo,dx,dy = calc_position(lc,'tp1')
-    x = -(lc.tw.canvas.width/2)+xo
-    y = lc.tw.canvas.height/2
-    lc.tw.canvas.setxy(x, y)
-    # save the text size so we can restore it later
-    save_text_size = lc.tw.textsize
-    # set title text
-    lc.tw.canvas.settextsize(lc.title_height)
-    show(lc,title)
-    # calculate and set scale for media blocks
-    myscale = 45 * (lc.tw.canvas.height - lc.title_height*2) \
-                  / lc.tw.canvas.height
-    set_scale(lc,myscale)
-    # set body text size
-    lc.tw.canvas.settextsize(lc.body_height)
-    # render media object
-    y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media)
-    if lc.tw.running_sugar():
-        x = 0
-        lc.tw.canvas.setxy(x, y)
-        show(lc, media.replace("media_","descr_"))
-    # restore text size
-    lc.tw.canvas.settextsize(save_text_size)
-
-# title, two images (horizontal), two descriptions
-def show_template2(lc, title, media1, media2):
-    w,h,xo,yo,dx,dy = calc_position(lc,'tp2')
-    x = -(lc.tw.canvas.width/2)+xo
-    y = lc.tw.canvas.height/2
-    lc.tw.canvas.setxy(x, y)
-    # save the text size so we can restore it later
-    save_text_size = lc.tw.textsize
-    # set title text
-    lc.tw.canvas.settextsize(lc.title_height)
-    show(lc,title)
-    # calculate and set scale for media blocks
-    myscale = 45 * (lc.tw.canvas.height - lc.title_height*2)/lc.tw.canvas.height
-    set_scale(lc, myscale)
-    # set body text size
-    lc.tw.canvas.settextsize(lc.body_height)
-    # render four quadrents
-    y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media1)
-    x = 0
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media2)
-    y = -lc.title_height
-    if lc.tw.running_sugar():
-        lc.tw.canvas.setxy(x, y)
-        show(lc, media2.replace("media_","descr_"))
-        x = -(lc.tw.canvas.width/2)+xo
-        lc.tw.canvas.setxy(x, y)
-        show(lc, media1.replace("media_","descr_"))
-    # restore text size
-    lc.tw.canvas.settextsize(save_text_size)
-
-# title and varible number of  bullets
-def show_bullets(lc, title, sarray):
-    w,h,xo,yo,dx,dy = calc_position(lc,'tp3')
-    x = -(lc.tw.canvas.width/2)+xo
-    y = lc.tw.canvas.height/2
-    lc.tw.canvas.setxy(x, y)
-    # save the text size so we can restore it later
-    save_text_size = lc.tw.textsize
-    # set title text
-    lc.tw.canvas.settextsize(lc.title_height)
-    show(lc,title)
-    # set body text size
-    lc.tw.canvas.settextsize(lc.bullet_height)
-    y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
-    for s in sarray:
-        lc.tw.canvas.setxy(x, y)
-        show(lc, s)
-        y -= int(lc.bullet_height*2*lc.tw.lead)
-    # restore text size
-    lc.tw.canvas.settextsize(save_text_size)
-
-# title, two images (vertical), two desciptions
-def show_template6(lc, title, media1, media2):
-    w,h,xo,yo,dx,dy = calc_position(lc,'tp6')
-    x = -(lc.tw.canvas.width/2)+xo
-    y = lc.tw.canvas.height/2
-    lc.tw.canvas.setxy(x, y)
-    # save the text size so we can restore it later
-    save_text_size = lc.tw.textsize
-    # set title text
-    lc.tw.canvas.settextsize(lc.title_height)
-    show(lc,title)
-    # calculate and set scale for media blocks
-    myscale = 45 * (lc.tw.canvas.height - lc.title_height*2)/lc.tw.canvas.height
-    set_scale(lc,myscale)
-    # set body text size
-    lc.tw.canvas.settextsize(lc.body_height)
-    # render four quadrents
-    y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media1)
-    if lc.tw.running_sugar():
-        x = 0
-        lc.tw.canvas.setxy(x, y)
-        show(lc, media1.replace("media_","descr_"))
-        y = -lc.title_height
-        lc.tw.canvas.setxy(x, y)
-        show(lc, media2.replace("media_","descr_"))
-        x = -(lc.tw.canvas.width/2)+xo
-        lc.tw.canvas.setxy(x, y)
-        show(lc, media2)
-    # restore text size
-    lc.tw.canvas.settextsize(save_text_size)
-
-# title and four images
-def show_template7(lc, title, media1, media2, media3, media4):
-    w,h,xo,yo,dx,dy = calc_position(lc,'tp7')
-    x = -(lc.tw.canvas.width/2)+xo
-    y = lc.tw.canvas.height/2
-    lc.tw.canvas.setxy(x, y)
-    # save the text size so we can restore it later
-    save_text_size = lc.tw.textsize
-    # set title text
-    lc.tw.canvas.settextsize(lc.title_height)
-    show(lc,title)
-    # calculate and set scale for media blocks
-    myscale = 45 * (lc.tw.canvas.height - lc.title_height*2)/lc.tw.canvas.height
-    set_scale(lc,myscale)
-    # set body text size
-    lc.tw.canvas.settextsize(lc.body_height)
-    # render four quadrents
-    y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media1)
-    x = 0
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media2)
-    y = -lc.title_height
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media4)
-    x = -(lc.tw.canvas.width/2)+xo
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media3)
-    # restore text size
-    lc.tw.canvas.settextsize(save_text_size)
-
-# title, one media object
-def show_template8(lc, title, media1):
-    w,h,xo,yo,dx,dy = calc_position(lc,'tp7')
-    x = -(lc.tw.canvas.width/2)+xo
-    y = lc.tw.canvas.height/2
-    lc.tw.canvas.setxy(x, y)
-    # save the text size so we can restore it later
-    save_text_size = lc.tw.textsize
-    # set title text
-    lc.tw.canvas.settextsize(lc.title_height)
-    show(lc,title)
-    # calculate and set scale for media blocks
-    myscale = 90 * (lc.tw.canvas.height - lc.title_height*2) \
-                  / lc.tw.canvas.height
-    set_scale(lc,myscale)
-    # set body text size
-    lc.tw.canvas.settextsize(lc.body_height)
-    # render media object
-    y -= int(lc.title_height*2*lc.tw.lead) # leave some space below the title
-    lc.tw.canvas.setxy(x, y)
-    show(lc, media1)
-    # restore text size
-    lc.tw.canvas.settextsize(save_text_size)
-
-# image only (at current x,y)
-def insert_image(lc, media, center):
-    w = (lc.tw.canvas.width * lc.scale)/100
-    h = (lc.tw.canvas.height * lc.scale)/100
-    # convert from Turtle coordinates to screen coordinates
-    x = lc.tw.canvas.width/2+int(lc.tw.canvas.xcor)
-    y = lc.tw.canvas.height/2-int(lc.tw.canvas.ycor)
-    if center is True:
-        x -= w/2
-        y -= h/2
-    if media[0:5] == 'media':
-        show_picture(lc, media, x, y, w, h)
-
-# description text only (at current x,y)
-def insert_desc(lc, media):
-    w = (lc.tw.canvas.width * lc.scale)/100
-    h = (lc.tw.canvas.height * lc.scale)/100
-    # convert from Turtle coordinates to screen coordinates
-    x = lc.tw.canvas.width/2+int(lc.tw.canvas.xcor)
-    y = lc.tw.canvas.height/2-int(lc.tw.canvas.ycor)
-    if media[0:5] == 'descr':
-        show_description(lc, media, x, y, w, h)
-
-def set_scale(lc, x):
-    lc.scale = x
-
-# need to fix export logo to map show to write
-def show(lc, string, center=False):
-    # convert from Turtle coordinates to screen coordinates
-    x = lc.tw.canvas.width/2+int(lc.tw.canvas.xcor)
-    y = lc.tw.canvas.height/2-int(lc.tw.canvas.ycor)
-    if type(string) == str or type(string) == unicode:
-        if string == "media_None":
-            pass
-        elif string[0:6] == 'media_':
-            insert_image(lc, string, center)
-        elif string[0:6] == 'descr_':
-            insert_desc(lc, string)
-        elif string[0:6] == 'audio_':
-            play_sound(lc, string)
-        else:
-            if center is True:
-                y -= lc.tw.textsize
-            lc.tw.canvas.draw_text(string,x,y,lc.tw.textsize,
-                      lc.tw.canvas.width-x)
-    elif type(string) == float or type(string) == int:
-        string = round_int(string)
-        if center is True:
-            y -= lc.tw.textsize
-        lc.tw.canvas.draw_text(string,x,y,lc.tw.textsize,lc.tw.canvas.width-x)
-
-def play_sound(lc, audio):
-    if audio == "" or audio[6:] == "":
-        raise logoerror("#nomedia")
-    if lc.tw.running_sugar():
-        if audio[6:] != "None":
-            try:
-                dsobject = datastore.get(audio[6:])
-                play_audio(lc, dsobject.file_path)
-            except:
-                print "Couldn't open id: " + str(audio[6:])
-    else:
-        play_audio(lc, audio[6:])
-
-def clear(lc):
-    stop_media(lc)
-    lc.tw.canvas.clearscreen()
-
-def write(lc, string, fsize):
-    # convert from Turtle coordinates to screen coordinates
-    x = lc.tw.canvas.width/2+int(lc.tw.canvas.xcor)
-    y = lc.tw.canvas.height/2-int(lc.tw.canvas.ycor)
-    lc.tw.canvas.draw_text(string,x,y-15,int(fsize),lc.tw.canvas.width)
-
-def hideblocks(lc):
-    lc.tw.hide = False # force hide
-    lc.tw.hideshow_button()
-    # TODO: how do we do this with the new toolbar?
-    #for i in lc.tw.selbuttons:
-    #    hide(i)
-    if lc.tw.running_sugar():
-        lc.tw.activity.do_hide()
-
-def doevalstep(lc):
-    starttime = millis()
-    try:
-        while (millis()-starttime)<120:
-            try:
-                lc.step.next()
-            except StopIteration:
-                lc.tw.active_turtle.show()
-                return False
-    except logoerror, e:
-        showlabel(lc, str(e)[1:-1])
-        lc.tw.active_turtle.show()
-        return False
-    return True
-
-def icall(lc, fcn, *args):
-    lc.istack.append(lc.step)
-    lc.step = fcn(lc, *(args))
-
-def ireturn(lc, res=None):
-    lc.step = lc.istack.pop()
-    lc.iresult = res
-
-def ijmp(lc, fcn, *args):
-    lc.step = fcn(lc,*(args))
-
-def heap_print(lc):
-    showlabel(lc,lc.heap)
-
-def status_print(lc,n):
-    if type(n) == str or type(n) == unicode:
-        # show title for Journal entries
-        if n[0:6] == 'media_':
-            try:
-                dsobject = datastore.get(n[6:])
-                showlabel(lc, dsobject.metadata['title'])
-                dsobject.destroy()
-            except:
-                showlabel(lc,n)
-        else:
-            showlabel(lc,n)
-    elif type(n) == int:
-        showlabel(lc,n)
-    else:
-        showlabel(lc, round_int(n))
-
-def kbinput(lc):
-    if len(lc.tw.keypress) == 1:
-        lc.keyboard = ord(lc.tw.keypress[0])
-    else:
-        try:
-            lc.keyboard = {'Escape': 27, 'space': 32, ' ': 32, 'Return': 13, \
-                           'KP_Up': 2, 'KP_Down': 4, 'KP_Left': 1, \
-                           'KP_Right': 3,}[lc.tw.keypress]
-        except:
-            lc.keyboard = 0
-    lc.tw.keypress = ""
-
-def showlabel(lc,label):
-    if label=='#nostack':
-        shp = 'nostack'
-        label=''
-    elif label=='#noinput':
-        shp = 'noinput'
-        label=''
-    elif label=='#emptyheap':
-        shp = 'emptyheap'
-        label=''
-    elif label=='#emptybox':
-        shp = 'emptybox'
-        label='                    '+lc.nobox
-    elif label=='#nomedia':
-        shp = 'nomedia'
-        label=''
-    elif label=='#nocode':
-        shp = 'nocode'
-        label=''
-    elif label=='#syntaxerror':
-        shp = 'syntaxerror'
-        label=''
-    elif label=='#overflowerror':
-        shp = 'overflowerror'
-        label=''
-    elif label=='#notanumber':
-        shp = 'overflowerror'
-        label=''
-    else:
-        shp = 'status'
-    lc.tw.status_spr.set_shape(lc.tw.status_shapes[shp])
-    lc.tw.status_spr.set_label(label)
-    lc.tw.status_spr.set_layer(STATUS_LAYER)
-
 def stop_logo(tw):
     tw.step_time = 0
     tw.lc.step = just_stop()
-
+    
 def just_stop():
     yield False
-
-def setbox(lc, name,val):
-    lc.boxes[name]=val
-
-def push_heap(lc,val):
-    lc.heap.append(val)
-
-def pop_heap(lc):
-    try:
-        return lc.heap.pop(-1)
-    except:
-        raise logoerror ("#emptyheap")
-
-def empty_heap(lc):
-    lc.heap = []
-
-def tyo(n):
-    print n
 
 def millis():
     return int(clock()*1000)
 
+"""
+def parseline(str):
+    split = re.split(r"\s|([\[\]()])", str)
+    return [x for x in split if x and x != ""]
+"""
+ 
+#
+# A class for parsing Logo Code
+#
+class LogoCode:
+    def __init__(self, tw):
 
+        self.tw = tw
+        self.oblist = {}
+
+        # math primitives
+        self.defprim('print', 1, lambda self,x: self.status_print(x))
+        self.defprim('+', None, lambda self,x,y: x+y)
+        self.defprim('plus', 2, lambda self,x,y: taplus(x,y))
+        self.defprim('-', None, lambda self,x,y: x-y)
+        self.defprim('minus', 2, lambda self,x,y: taminus(x,y))
+        self.defprim('*', None, lambda self,x,y: x*y)
+        self.defprim('product', 2, lambda self,x,y: taproduct(x,y))
+        self.defprim('/', None, lambda self,x,y: careful_divide(x,y))
+        self.defprim('division', 2, lambda self,x,y: careful_divide(x,y))
+        self.defprim('random', 2, lambda self,x,y: int(random.uniform(x,y)))
+        self.defprim('greater?', 2, lambda self,x,y: tamore(x,y))
+        self.defprim('less?', 2, lambda self,x,y: taless(x,y))
+        self.defprim('equal?', 2, lambda self,x,y: taequal(x,y))
+        self.defprim('and', None, lambda self,x,y: x&y)
+        self.defprim('or', None, lambda self,x,y: x|y)
+        self.defprim('not', 1, lambda self,x:not x)
+        self.defprim('%', None, lambda self,x,y: x%y)
+        self.defprim('mod', 2, lambda self,x,y: tamod(x,y))
+        self.defprim('sqrt', 1, lambda self,x: sqrt(x))
+        self.defprim('id',1, lambda self,x: identity(x))
+        
+        # keyboard, sensor, and misc. primitives
+        self.defprim('kbinput', 0, lambda self: self.kbinput())
+        self.defprim('keyboard', 0, lambda self: self.keyboard)
+        self.defprim('userdefined', 1, lambda self,x: self.loadmyblock(x))
+        self.defprim('myfunc', 2, lambda self,f,x: self.callmyfunc(f, x))
+        self.defprim('hres', 0,
+                lambda self: self.tw.canvas.width/self.tw.coord_scale)
+        self.defprim('vres', 0,
+                lambda self: self.tw.canvas.height/self.tw.coord_scale)
+        self.defprim('leftpos', 0,
+                lambda self: -(self.tw.canvas.width/(self.tw.coord_scale*2)))
+        self.defprim('toppos', 0,
+                lambda self: self.tw.canvas.height/(self.tw.coord_scale*2))
+        self.defprim('rightpos', 0,
+                lambda self: self.tw.canvas.width/(self.tw.coord_scale*2)) 
+        self.defprim('bottompos', 0,
+                lambda self: -(self.tw.canvas.height/(self.tw.coord_scale*2)))
+
+        # turtle primitives
+        self.defprim('clean', 0, lambda self: self.clear())
+        self.defprim('forward', 1, lambda self, x: self.tw.canvas.forward(x))
+        self.defprim('back', 1, lambda self,x: self.tw.canvas.forward(-x))
+        self.defprim('seth', 1, lambda self, x: self.tw.canvas.seth(x))
+        self.defprim('right', 1, lambda self, x: self.tw.canvas.right(x))
+        self.defprim('left', 1, lambda self,x: self.tw.canvas.right(-x))
+        self.defprim('heading', 0, lambda self: self.tw.canvas.heading)
+        self.defprim('setxy', 2, lambda self, x, y: self.tw.canvas.setxy(x, y))
+        self.defprim('show',1,lambda self, x: show(self, x, True))
+        self.defprim('setscale', 1, lambda self,x: self.set_scale(x))
+        self.defprim('scale', 0, lambda self: self.scale)
+        self.defprim('write',2,lambda self, x,y: self.write(self, x,y))
+        self.defprim('insertimage', 1,
+                lambda self,x: self.insert_image(x, False))
+        self.defprim('arc', 2, lambda self, x, y: self.tw.canvas.arc(x, y))
+        self.defprim('xcor', 0,
+                lambda self: self.tw.canvas.xcor/self.tw.coord_scale)
+        self.defprim('ycor', 0,
+                lambda self: self.tw.canvas.ycor/self.tw.coord_scale)
+        self.defprim('turtle', 1,
+                lambda self, x: self.tw.canvas.set_turtle(int(x-1)))
+    
+        # pen primitives
+        self.defprim('pendown', 0, lambda self: self.tw.canvas.setpen(True))
+        self.defprim('penup', 0, lambda self: self.tw.canvas.setpen(False))
+        self.defprim('(', 1, lambda self, x: self.prim_opar(x))
+        self.defprim('setcolor', 1, lambda self, x: self.tw.canvas.setcolor(x))
+        self.defprim('settextcolor', 1,
+                lambda self, x: self.tw.canvas.settextcolor(x))
+        self.defprim('settextsize', 1,
+                lambda self, x: self.tw.canvas.settextsize(x))
+        self.defprim('setshade', 1, lambda self, x: self.tw.canvas.setshade(x))
+        self.defprim('setpensize', 1,
+                lambda self, x: self.tw.canvas.setpensize(x))
+        self.defprim('fillscreen', 2,
+                lambda self, x, y: self.tw.canvas.fillscreen(x, y))
+        self.defprim('color', 0, lambda self: self.tw.canvas.color)
+        self.defprim('shade', 0, lambda self: self.tw.canvas.shade)
+        self.defprim('pensize', 0, lambda self: self.tw.canvas.pensize)
+        self.defprim('textcolor', 0, lambda self: self.tw.canvas.textcolor)
+        self.defprim('textsize', 0, lambda self: self.tw.textsize)
+        self.defprim('red', 0, lambda self: 0)
+        self.defprim('orange', 0, lambda self: 10)
+        self.defprim('yellow', 0, lambda self: 20)
+        self.defprim('green', 0, lambda self: 30)
+        self.defprim('cyan', 0, lambda self: 50)
+        self.defprim('blue', 0, lambda self: 70)
+        self.defprim('purple', 0, lambda self: 90)
+
+        # flow primitives
+        self.defprim('wait', 1, self.prim_wait, True)
+        self.defprim('repeat', 2, self.prim_repeat, True)
+        self.defprim('forever', 1, self.prim_forever, True)
+        self.defprim('if', 2, self.prim_if, True)
+        self.defprim('ifelse', 3, self.prim_ifelse, True)
+        self.defprim('stopstack', 0, self.prim_stopstack)
+
+        # blocks primitives
+        self.defprim('stack1', 0, self.prim_stack1, True)
+        self.defprim('stack2', 0, self.prim_stack2, True)
+        self.defprim('stack', 1, self.prim_stack, True)
+        self.defprim('box1', 0, lambda self: self.boxes['box1'])
+        self.defprim('box2', 0, lambda self: self.boxes['box2'])
+        self.defprim('box', 1, lambda self,x: box(self,x))
+        self.defprim('storeinbox1', 1, lambda self,x: self.setbox('box1',x))
+        self.defprim('storeinbox2', 1, lambda self,x: self.setbox('box2',x))
+        self.defprim('storeinbox', 2,
+                lambda self,x,y: self.setbox('box3'+str(x),y))
+        self.defprim('push', 1, lambda self,x: self.push_heap(x))
+        self.defprim('pop', 0, lambda self: self.pop_heap())
+        self.defprim('heap', 0, lambda self: self.heap_print())
+        self.defprim('emptyheap', 0, lambda self: self.empty_heap())
+        self.defprim('start', 0, lambda self: self.start_stack())
+        self.defprim('define', 2, self.prim_define)
+        self.defprim('nop', 0, lambda self: None)
+        self.defprim('nop1', 0, lambda self: None)
+        self.defprim('nop2', 0, lambda self: None)
+        self.defprim('nop3', 1, lambda self,x: None)
+    
+        # templates primitives
+        self.defprim('container', 1, lambda self,x: x)
+        self.defprim('t1x1', 2, lambda self,x,y: self.show_template1x1(x, y))
+        self.defprim('t1x1a', 2, lambda self,x,y: self.show_template1x1a(x, y))
+        self.defprim('t2x1', 3,
+                lambda self,x,y,z: self.show_template2x1(x, y, z))
+        self.defprim('bullet', 2, self.prim_bullet, True)
+        self.defprim('sound', 1, lambda self,x: self.play_sound(x))
+        self.defprim('video', 1, lambda self,x: self.play_movie(x))
+        self.defprim('t1x2', 3,
+                lambda self,x,y,z: self.show_template1z2(x, y, z))
+        self.defprim('t2x2', 5,
+                lambda self,x,y,z,a,b: self.show_template2x2(x, y, z, a, b))
+        self.defprim('hideblocks', 0, lambda self: self.hideblocks())
+    
+        self.symtype = type(self.intern('print'))
+        self.listtype = type([])
+        self.symnothing = self.intern('%nothing%')
+        self.symopar = self.intern('(')
+        self.iline = None
+        self.cfun = None
+        self.arglist = None
+        self.ufun = None
+    
+        self.istack = []
+        self.stacks = {}
+        self.boxes = {'box1': 0, 'box2': 0}
+        self.heap = []
+
+        self.keyboard = 0
+        self.trace = 0
+        self.gplay = None
+        self.ag = None
+        self.nobox = ""
+        self.title_height = int((self.tw.canvas.height/30)*self.tw.scale)
+        self.body_height = int((self.tw.canvas.height/60)*self.tw.scale)
+        self.bullet_height = int((self.tw.canvas.height/45)*self.tw.scale)
+    
+        # This dictionary is used to define the relative size and postion of 
+        # template elements (w, h, x, y, dx, dy, dx1, dy1...).
+        self.templates = {
+                 't1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
+                 't2z1': (0.5, 0.5, 0.0625, 0.125, 1.05, 1.05),
+                 'bullet': (1, 1, 0.0625, 0.125, 0, 0.1),
+                 't1x2': (0.45, 0.45, 0.0625, 0.125, 1.05, 1.05),
+                 't2x2': (0.45, 0.45, 0.0625, 0.125, 1.05, 1.05),
+                 't1x1a': (0.9, 0.9, 0.0625, 0.125, 0, 0),
+                 'insertimage': (0.333, 0.333)
+                }
+        self.scale = 33
+
+    def run_blocks(self, blk, blocks, run_flag):
+        for x in self.stacks.keys():
+            self.stacks[x] = None
+        self.stacks['stack1'] = None
+        self.stacks['stack2'] = None
+        for b in blocks:
+            if b.name == 'hat1':
+                self.stacks['stack1'] = self.readline(self.blocks_to_code(b))
+            if b.name=='hat2':
+                self.stacks['stack2'] = self.readline(self.blocks_to_code(b))
+            if b.name == 'hat':
+                if (b.connections[1] is not None):
+                    text = b.connections[1].values[0]
+                    self.stacks['stack3'+text] =\
+                        self.readline(self.blocks_to_code(b))
+        code = self.blocks_to_code(blk)
+        if run_flag is True:
+            print "code: %s" % (code)
+            self.setup_cmd(code)
+        else: return code
+
+    def blocks_to_code(self, blk):
+        if blk is None:
+            return ['%nothing%']
+        code = []
+        dock = blk.docks[0]
+        if len(dock)>4:
+            code.append(dock[4])
+        if blk.primitive is not None:
+            code.append(blk.primitive)
+        else:
+            if blk.name=='number':
+                try:
+                    code.append(float(blk.values[0]))
+                except ValueError:
+                    code.append(float(ord(blk.values[0][0])))
+            elif blk.name=='string' or blk.name=='title':
+                if type(blk.values[0]) == float or type(blk.values[0]) == int:
+                    if int(blk.values[0]) == blk.values[0]:
+                        blk.values[0] = int(blk.values[0])
+                    code.append('#s'+str(blk.values[0]))
+                else:
+                    code.append('#s'+blk.values[0])
+            elif blk.name=='journal':
+                if blk.values[0] is not None:
+                    code.append('#smedia_'+str(blk.values[0]))
+                else:
+                    code.append('#smedia_None')
+            elif blk.name=='description':
+                if blk.values[0] is not None:
+                    code.append('#sdescr_'+str(blk.values[0]))
+                else:
+                    code.append('#sdescr_None')
+            elif blk.name=='audio':
+                if blk.values[0] is not None:
+                    code.append('#saudio_'+str(blk.values[0]))
+                else:
+                    code.append('#saudio_None')
+            else:
+                return ['%nothing%']
+        for i in range(1,len(blk.connections)):
+            b = blk.connections[i]        
+            dock = blk.docks[i]
+            if len(dock)>4:
+                for c in dock[4]:
+                    code.append(c)
+            if b is not None:
+                code.extend(self.blocks_to_code(b))
+            elif blk.docks[i][0] not in ['flow', 'unavailable']:
+                code.append('%nothing%')
+        return code
+    
+    def intern(self, str):
+        if str in self.oblist: return self.oblist[str]
+        sym = symbol(str)
+        self.oblist[str] = sym
+        return sym
+    
+    def readline(self, line):
+        res = []
+        while line:
+            token = line.pop(0)
+            if isNumberType(token): res.append(token)
+            elif token.isdigit(): res.append(float(token))
+            elif token[0]=='-' and token[1:].isdigit():
+                res.append(-float(token[1:]))
+            elif token[0] == '"': res.append(token[1:])
+            elif token[0:2] == "#s": res.append(token[2:])
+            elif token == '[': res.append(self.readline(line))
+            elif token == ']': return res
+            else: res.append(self.intern(token))
+        return res
+
+    def setup_cmd(self, str):
+        self.tw.active_turtle.hide()
+        self.procstop=False
+        list = self.readline(str)
+        self.step = self.start_eval(list)
+
+    def start_eval(self, list):
+        self.icall(self.evline, list)
+        yield True
+        if self.tw.running_sugar():
+            self.tw.activity.stop_button.set_icon("stopitoff")
+        yield False
+
+    def evline(self, list):
+        oldiline = self.iline
+        self.iline = list[:]
+        self.arglist = None
+        while self.iline:
+            if self.tw.step_time > 0:
+                self.tw.active_turtle.show()
+                endtime = millis()+self.an_int(self.tw.step_time)*100
+                while millis()<endtime:
+                    yield True
+                self.tw.active_turtle.hide()
+            token = self.iline[0]
+            if token == self.symopar:
+                token = self.iline[1]
+            self.icall(self.eval)
+            yield True
+            if self.procstop:
+                break
+            if self.iresult == None:
+                continue
+            raise logoerror(str(self.iresult))
+        self.iline = oldiline
+        self.ireturn()
+        display_coordinates(self.tw)
+        yield True
+    
+    def eval(self, infixarg=False):
+        token = self.iline.pop(0)
+        if type(token) == self.symtype:
+            self.icall(self.evalsym, token); yield True
+            res = self.iresult
+        else: res = token
+        if not infixarg:
+            while self.infixnext():
+                self.icall(self.evalinfix, res); yield True
+                res = self.iresult
+        self.ireturn(res)
+        yield True
+
+    def evalsym(self, token):
+        self.debug_trace(token)
+        self.undefined_check(token)
+        oldcfun, oldarglist = self.cfun, self.arglist
+        self.cfun, self.arglist = token, []
+        if token.nargs == None:
+            raise logoerror("#noinput")
+        for i in range(token.nargs):
+            self.no_args_check()
+            self.icall(self.eval)
+            yield True
+            self.arglist.append(self.iresult)
+        if self.cfun.rprim:
+            if type(self.cfun.fcn) == self.listtype:
+                self.icall(self.ufuncall, self.cfun.fcn)
+                yield True
+            else:
+                self.icall(self.cfun.fcn, *self.arglist)
+                yield True
+            result = None
+        else: 
+            result = self.cfun.fcn(self, *self.arglist)
+        self.cfun, self.arglist = oldcfun, oldarglist
+        if self.arglist is not None and result == None:
+            raise logoerror("%s didn't output to %s (arglist %s, result %s)" % \
+                (oldcfun.name, self.cfun.name, str(self.arglist), str(result)))
+        self.ireturn(result)
+        yield True
+
+    def evalinfix(self, firstarg):
+        token = self.iline.pop(0)
+        oldcfun, oldarglist = self.cfun, self.arglist
+        self.cfun, self.arglist = token, [firstarg]
+        no_args_check(self)
+        self.icall(self.eval, True); yield True
+        self.arglist.append(self.iresult)
+        result = self.cfun.fcn(self,*self.arglist)
+        self.cfun, self.arglist = oldcfun, oldarglist
+        self.ireturn(result)
+        yield True
+    
+    def infixnext(self):
+        if len(self.iline)==0:
+            return False
+        if type(self.iline[0]) is not self.symtype:
+            return False
+        return self.iline[0].name in ['+', '-', '*', '/','%','and','or']
+
+    def debug_trace(self, token):
+        if self.trace:
+            if token.name in PALETTES[PALETTE_NAMES.index('turtle')]:
+                my_string = "%s\nxcor=%d\nycor=%d\nheading=%d\nscale=%d" %\
+                    (token.name,int(self.tw.canvas.xcor),
+                     int(self.tw.canvas.ycor),int(self.tw.canvas.heading),
+                     int(self.scale))
+            elif token.name in PALETTES[PALETTE_NAMES.index('pen')]:
+                if self.tw.canvas.pendown:
+                    penstatus = "pen down"
+                else:
+                    penstatus = "pen up"
+                my_string = "%s\n%s\ncolor=%d\nshade=%d\npensize=%.1f" %\
+                    (token.name, penstatus, int(self.tw.canvas.color),
+                     int(self.tw.canvas.shade), self.tw.canvas.pensize)
+            else:
+                my_string = "%s\nblocks status:\n" % (token.name)
+                for k,v in self.boxes.iteritems():
+                    tmp = k +":" + str(v) + "\n"
+                    my_string += tmp
+            shp = 'info'
+            self.tw.status_spr.set_shape(self.tw.status_shapes[shp])
+            self.tw.status_spr.set_label(_(my_string))
+            self.tw.status_spr.set_layer(STATUS_LAYER)
+        return
+    
+    def undefined_check(self, token):
+        if token.fcn is not None:
+            return False
+        raise logoerror("%s %s" % (_("I don't know how to"), token.name))
+    
+    def no_args_check(self):
+        if self.iline and self.iline[0] is not self.symnothing : return
+        raise logoerror("#noinput")
+    
+    def prim_wait(self, time):
+        self.tw.active_turtle.show()
+        endtime = millis()+self.an_int(time*1000)
+        while millis()<endtime:
+            yield True
+        self.tw.active_turtle.hide()
+        self.ireturn()
+        yield True
+    
+    def prim_repeat(self, num, list):
+        num = self.an_int(num)
+        for i in range(num):
+            self.icall(self.evline, list[:])
+            yield True
+            if self.procstop:
+                break
+        self.ireturn()
+        yield True
+
+    def prim_bullet(self, title, list):
+        self.show_bullets(title, list)
+        self.ireturn()
+        yield True
+
+    def prim_forever(self, list):
+        while True:
+            self.icall(self.evline, list[:])
+            yield True
+            if self.procstop:
+                break
+        self.ireturn()
+        yield True
+
+    def prim_if(self, bool, list):
+        if bool:
+            self.icall(self.evline, list[:])
+            yield True
+        self.ireturn()
+        yield True
+
+    def prim_ifelse(self, bool, list1,list2):
+        if bool:
+            self.ijmp(self.evline, list1[:])
+            yield True
+        else:
+            self.ijmp(self.evline, list2[:])
+            yield True
+
+    def prim_opar(self, val):
+        self.iline.pop(0)
+        return val
+
+    def prim_define(self, name, body):
+        if type(name) is not symtype:
+            name = self.intern(name)
+        name.nargs, name.fcn = 0, body
+        name.rprim = True
+    
+    def prim_stack(self, str):
+        if (not self.stacks.has_key('stack3'+str)) or\
+           self.stacks['stack3'+str] is None:
+            raise logoerror("#nostack")
+        self.icall(self.evline, self.stacks['stack3'+str][:])
+        yield True
+        self.procstop = False
+        self.ireturn()
+        yield True
+
+    def prim_stack1(self):
+        if self.stacks['stack1'] is None:
+            raise logoerror("#nostack")
+        self.icall(self.evline, self.stacks['stack1'][:])
+        yield True
+        self.procstop = False
+        self.ireturn()
+        yield True
+    
+    def prim_stack2(self):
+        if self.stacks['stack2'] is None:
+            raise logoerror("#nostack")
+        self.icall(self.evline, self.stacks['stack2'][:])
+        yield True
+        self.procstop = False
+        self.ireturn()
+        yield True
+
+    def prim_stopstack(self):
+        self.procstop = True
+    
+    def ufuncall(self, body):
+        ijmp(self.evline, body)
+        yield True
+    
+    def an_int(self, n):
+        if type(n) == int:
+            return n
+        elif type(n) == float:
+            return int(n)
+        elif type(n) == str:
+            return int(ord(n[0]))
+        else:
+            raise logoerror("%s doesn't like %s as input" \
+                % (self.cfun.name, str(n)))
+
+    def defprim(self, name, args, fcn, rprim=False):
+        sym = self.intern(name)
+        sym.nargs, sym.fcn = args,fcn
+        sym.rprim = rprim    
+
+    def start_stack(self):
+        if self.tw.running_sugar():
+            self.tw.activity.recenter()
+
+    def box(self, x):
+        try:
+            return self.boxes['box3'+str(x)]
+        except:
+            self.nobox = str(x)
+            raise logoerror("#emptybox")
+    
+    def loadmyblock(self, x):
+        # Execute code imported from the Journal
+        if self.tw.myblock is not None:
+            y = myfunc_import(self, self.tw.myblock, x)
+        else:
+            raise logoerror("#nocode")
+        return
+    
+    def callmyfunc(self, f, x):
+        y = myfunc(self, f, x)
+        if y == None:
+            raise logoerror("#syntaxerror")
+            stop_logo(self.tw)
+        else:
+            return y
+    
+    def show_picture(self, media, x, y, w, h):
+        if media == "" or media[6:] == "":
+            pass
+        elif media[6:] is not "None":
+            pixbuf = None
+            if self.tw.running_sugar():
+                try:
+                    dsobject = datastore.get(media[6:])
+                except:
+                    raise logoerror("#nomedia")
+                if movie_media_type(dsobject.file_path[-4:]):
+                    play_movie_from_file(self,
+                        dsobject.file_path, int(x), int(y), int(w), int(h))
+                else:
+                    pixbuf = get_pixbuf_from_journal(dsobject, int(w), int(h))
+                dsobject.destroy()
+            else:
+                if movie_media_type(media[-4:]):
+                    play_movie_from_file(self, media[6:], int(x), int(y),
+                                                          int(w), int(h))
+                else:
+                    pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                                 media[6:], int(w), int(h))
+            if pixbuf is not None:
+                self.tw.canvas.draw_pixbuf(pixbuf, 0, 0, int(x), int(y),
+                                                         int(w), int(h))
+
+    def show_description(self, media, x, y, w, h):
+        if media == "" or media[6:] == "":
+            pass
+        elif media[6:] is not "None":
+            if self.tw.running_sugar():
+                try:
+                    dsobject = datastore.get(media[6:])
+                    text = dsobject.metadata['description']
+                    dsobject.destroy()
+                except:
+                    print "no description?"
+            else:
+                f = open(media[6:], 'r')
+                text = f.read()
+                f.close()
+            self.tw.canvas.draw_text(text, int(x), int(y),
+                                           self.body_height, int(w))
+    
+    def draw_title(self, title,x,y):
+        self.tw.canvas.draw_text(title,int(x),int(y),self.title_height,
+                                                     self.tw.canvas.width-x)
+
+    def calc_position(self, t):
+        w,h,x,y,dx,dy = self.templates[t]
+        x *= self.tw.canvas.width
+        y *= self.tw.canvas.height
+        w *= (self.tw.canvas.width-x)
+        h *= (self.tw.canvas.height-y)
+        dx *= w
+        dy *= h
+        return(w,h,x,y,dx,dy)
+    
+    # title, one image, and description
+    def show_template1x1(self, title, media):
+        w,h,xo,yo,dx,dy = self.calc_position('t1x1')
+        x = -(self.tw.canvas.width/2)+xo
+        y = self.tw.canvas.height/2
+        self.tw.canvas.setxy(x, y)
+        # save the text size so we can restore it later
+        save_text_size = self.tw.textsize
+        # set title text
+        self.tw.canvas.settextsize(self.title_height)
+        self.show(title)
+        # calculate and set scale for media blocks
+        myscale = 45 * (self.tw.canvas.height - self.title_height*2) \
+                      / self.tw.canvas.height
+        set_scale(self,myscale)
+        # set body text size
+        self.tw.canvas.settextsize(self.body_height)
+        # render media object
+        # leave some space below the title
+        y -= int(self.title_height*2*self.tw.lead)
+        self.tw.canvas.setxy(x, y)
+        self.show( media)
+        if self.tw.running_sugar():
+            x = 0
+            self.tw.canvas.setxy(x, y)
+            self.show( media.replace("media_","descr_"))
+        # restore text size
+        self.tw.canvas.settextsize(save_text_size)
+    
+    # title, two images (horizontal), two descriptions
+    def show_template2x1(self, title, media1, media2):
+        w,h,xo,yo,dx,dy = self.calc_position('t2x1')
+        x = -(self.tw.canvas.width/2)+xo
+        y = self.tw.canvas.height/2
+        self.tw.canvas.setxy(x, y)
+        # save the text size so we can restore it later
+        save_text_size = self.tw.textsize
+        # set title text
+        self.tw.canvas.settextsize(self.title_height)
+        self.show(title)
+        # calculate and set scale for media blocks
+        myscale = 45 * (self.tw.canvas.height - self.title_height*2)/\
+                  self.tw.canvas.height
+        self.set_scale( myscale)
+        # set body text size
+        self.tw.canvas.settextsize(self.body_height)
+        # render four quadrents
+        # leave some space below the title
+        y -= int(self.title_height*2*self.tw.lead)
+        self.tw.canvas.setxy(x, y)
+        self.show( media1)
+        x = 0
+        self.tw.canvas.setxy(x, y)
+        self.show( media2)
+        y = -self.title_height
+        if self.tw.running_sugar():
+            self.tw.canvas.setxy(x, y)
+            self.show( media2.replace("media_","descr_"))
+            x = -(self.tw.canvas.width/2)+xo
+            self.tw.canvas.setxy(x, y)
+            self.show( media1.replace("media_","descr_"))
+        # restore text size
+        self.tw.canvas.settextsize(save_text_size)
+
+    # title and varible number of  bullets
+    def show_bullets(self, title, sarray):
+        w,h,xo,yo,dx,dy = self.calc_position('bullet')
+        x = -(self.tw.canvas.width/2)+xo
+        y = self.tw.canvas.height/2
+        self.tw.canvas.setxy(x, y)
+        # save the text size so we can restore it later
+        save_text_size = self.tw.textsize
+        # set title text
+        self.tw.canvas.settextsize(self.title_height)
+        self.show(title)
+        # set body text size
+        self.tw.canvas.settextsize(self.bullet_height)
+        # leave some space below the title
+        y -= int(self.title_height*2*self.tw.lead)
+        for s in sarray:
+            self.tw.canvas.setxy(x, y)
+            self.show( s)
+            y -= int(self.bullet_height*2*self.tw.lead)
+        # restore text size
+        self.tw.canvas.settextsize(save_text_size)
+    
+    # title, two images (vertical), two desciptions
+    def show_template1x2(self, title, media1, media2):
+        w,h,xo,yo,dx,dy = self.calc_position('t1x2')
+        x = -(self.tw.canvas.width/2)+xo
+        y = self.tw.canvas.height/2
+        self.tw.canvas.setxy(x, y)
+        # save the text size so we can restore it later
+        save_text_size = self.tw.textsize
+        # set title text
+        self.tw.canvas.settextsize(self.title_height)
+        self.show(title)
+        # calculate and set scale for media blocks
+        myscale = 45 * (self.tw.canvas.height - self.title_height*2)/\
+                 self.tw.canvas.height
+        self.set_scale(myscale)
+        # set body text size
+        self.tw.canvas.settextsize(self.body_height)
+        # render four quadrents
+        # leave some space below the title
+        y -= int(self.title_height*2*self.tw.lead)
+        self.tw.canvas.setxy(x, y)
+        self.show( media1)
+        if self.tw.running_sugar():
+            x = 0
+            self.tw.canvas.setxy(x, y)
+            self.show( media1.replace("media_","descr_"))
+            y = -self.title_height
+            self.tw.canvas.setxy(x, y)
+            self.show( media2.replace("media_","descr_"))
+            x = -(self.tw.canvas.width/2)+xo
+            self.tw.canvas.setxy(x, y)
+            self.show( media2)
+        # restore text size
+        self.tw.canvas.settextsize(save_text_size)
+
+    # title and four images
+    def show_template2x2(self, title, media1, media2, media3, media4):
+        w,h,xo,yo,dx,dy = self.calc_position('t2x2')
+        x = -(self.tw.canvas.width/2)+xo
+        y = self.tw.canvas.height/2
+        self.tw.canvas.setxy(x, y)
+        # save the text size so we can restore it later
+        save_text_size = self.tw.textsize
+        # set title text
+        self.tw.canvas.settextsize(self.title_height)
+        self.show(title)
+        # calculate and set scale for media blocks
+        myscale = 45 * (self.tw.canvas.height - self.title_height*2)/\
+                  self.tw.canvas.height
+        self.set_scale(myscale)
+        # set body text size
+        self.tw.canvas.settextsize(self.body_height)
+        # render four quadrents
+        # leave some space below the title
+        y -= int(self.title_height*2*self.tw.lead)
+        self.tw.canvas.setxy(x, y)
+        self.show( media1)
+        x = 0
+        self.tw.canvas.setxy(x, y)
+        self.show( media2)
+        y = -self.title_height
+        self.tw.canvas.setxy(x, y)
+        self.show( media4)
+        x = -(self.tw.canvas.width/2)+xo
+        self.tw.canvas.setxy(x, y)
+        self.show( media3)
+        # restore text size
+        self.tw.canvas.settextsize(save_text_size)
+
+    # title, one media object
+    def show_template1x1a(self, title, media1):
+        w,h,xo,yo,dx,dy = self.calc_position('t1x1a')
+        x = -(self.tw.canvas.width/2)+xo
+        y = self.tw.canvas.height/2
+        self.tw.canvas.setxy(x, y)
+        # save the text size so we can restore it later
+        save_text_size = self.tw.textsize
+        # set title text
+        self.tw.canvas.settextsize(self.title_height)
+        self.show(title)
+        # calculate and set scale for media blocks
+        myscale = 90 * (self.tw.canvas.height - self.title_height*2) /\
+                       self.tw.canvas.height
+        self.set_scale(myscale)
+        # set body text size
+        self.tw.canvas.settextsize(self.body_height)
+        # render media object
+        # leave some space below the title
+        y -= int(self.title_height*2*self.tw.lead)
+        self.tw.canvas.setxy(x, y)
+        self.show( media1)
+        # restore text size
+        self.tw.canvas.settextsize(save_text_size)
+
+    # image only (at current x,y)
+    def insert_image(self, media, center):
+        w = (self.tw.canvas.width * self.scale)/100
+        h = (self.tw.canvas.height * self.scale)/100
+        # convert from Turtle coordinates to screen coordinates
+        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
+        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
+        if center is True:
+            x -= w/2
+            y -= h/2
+        if media[0:5] == 'media':
+            show_picture(self, media, x, y, w, h)
+    
+    # description text only (at current x,y)
+    def insert_desc(self, media):
+        w = (self.tw.canvas.width * self.scale)/100
+        h = (self.tw.canvas.height * self.scale)/100
+        # convert from Turtle coordinates to screen coordinates
+        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
+        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
+        if media[0:5] == 'descr':
+            show_description(self, media, x, y, w, h)
+    
+    def set_scale(self, x):
+        self.scale = x
+
+    # need to fix export logo to map show to write
+    def show(self, string, center=False):
+        # convert from Turtle coordinates to screen coordinates
+        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
+        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
+        if type(string) == str or type(string) == unicode:
+            if string == "media_None":
+                pass
+            elif string[0:6] == 'media_':
+                self.insert_image(string, center)
+            elif string[0:6] == 'descr_':
+                self.insert_desc(string)
+            elif string[0:6] == 'audio_':
+                self.play_sound(string)
+            else:
+                if center is True:
+                    y -= self.tw.textsize
+                self.tw.canvas.draw_text(string,x,y,self.tw.textsize,
+                          self.tw.canvas.width-x)
+        elif type(string) == float or type(string) == int:
+            string = round_int(string)
+            if center is True:
+                y -= self.tw.textsize
+            self.tw.canvas.draw_text(string, x, y, self.tw.textsize,
+                                     self.tw.canvas.width-x)
+    
+    def play_sound(self, audio):
+        if audio == "" or audio[6:] == "":
+            raise logoerror("#nomedia")
+        if self.tw.running_sugar():
+            if audio[6:] != "None":
+                try:
+                    dsobject = datastore.get(audio[6:])
+                    play_audio(self, dsobject.file_path)
+                except:
+                    print "Couldn't open id: " + str(audio[6:])
+        else:
+            play_audio(self, audio[6:])
+
+    def clear(self):
+        stop_media(self)
+        self.tw.canvas.clearscreen()
+
+    def write(self, string, fsize):
+        # convert from Turtle coordinates to screen coordinates
+        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
+        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
+        self.tw.canvas.draw_text(string,x,y-15,int(fsize),self.tw.canvas.width)
+
+    def hideblocks(self):
+        self.tw.hide = False # force hide
+        self.tw.hideshow_button()
+        # TODO: how do we do this with the new toolbar?
+        #for i in self.tw.selbuttons:
+        #    hide(i)
+        if self.tw.running_sugar():
+            self.tw.activity.do_hide()
+    
+    def doevalstep(self):
+        starttime = millis()
+        try:
+            while (millis()-starttime)<120:
+                try:
+                    self.step.next()
+                except StopIteration:
+                    self.tw.active_turtle.show()
+                    return False
+        except logoerror, e:
+            showlabel(self, str(e)[1:-1])
+            self.tw.active_turtle.show()
+            return False
+        return True
+
+    def icall(self, fcn, *args):
+        self.istack.append(self.step)
+        self.step = fcn(*(args))
+
+    def ireturn(self, res=None):
+        self.step = self.istack.pop()
+        self.iresult = res
+
+    def ijmp(self, fcn, *args):
+        self.step = fcn(*(args))
+    
+    def heap_print(self):
+        self.showlabel(self.heap)
+
+    def status_print(self, n):
+        if type(n) == str or type(n) == unicode:
+            # show title for Journal entries
+            if n[0:6] == 'media_':
+                try:
+                    dsobject = datastore.get(n[6:])
+                    self.showlabel(dsobject.metadata['title'])
+                    dsobject.destroy()
+                except:
+                    self.showlabel(n)
+            else:
+                self.showlabel(n)
+        elif type(n) == int:
+            self.showlabel(n)
+        else:
+            self.showlabel(round_int(n))
+    
+    def kbinput(self):
+        if len(self.tw.keypress) == 1:
+            self.keyboard = ord(self.tw.keypress[0])
+        else:
+            try:
+                self.keyboard = {'Escape': 27, 'space': 32, ' ': 32,
+                                 'Return': 13, \
+                                 'KP_Up': 2, 'KP_Down': 4, 'KP_Left': 1, \
+                                 'KP_Right': 3,}[self.tw.keypress]
+            except:
+                self.keyboard = 0
+        self.tw.keypress = ""
+    
+    def showlabel(self, label):
+        if label=='#nostack':
+            shp = 'nostack'
+            label=''
+        elif label=='#noinput':
+            shp = 'noinput'
+            label=''
+        elif label=='#emptyheap':
+            shp = 'emptyheap'
+            label=''
+        elif label=='#emptybox':
+            shp = 'emptybox'
+            label='                    '+self.nobox
+        elif label=='#nomedia':
+            shp = 'nomedia'
+            label=''
+        elif label=='#nocode':
+            shp = 'nocode'
+            label=''
+        elif label=='#syntaxerror':
+            shp = 'syntaxerror'
+            label=''
+        elif label=='#overflowerror':
+            shp = 'overflowerror'
+            label=''
+        elif label=='#notanumber':
+            shp = 'overflowerror'
+            label=''
+        else:
+            shp = 'status'
+        self.tw.status_spr.set_shape(self.tw.status_shapes[shp])
+        self.tw.status_spr.set_label(label)
+        self.tw.status_spr.set_layer(STATUS_LAYER)
+
+    def setbox(self, name,val):
+        self.boxes[name]=val
+    
+    def push_heap(self, val):
+        self.heap.append(val)
+
+    def pop_heap(self):
+        try:
+            return self.heap.pop(-1)
+        except:
+            raise logoerror ("#emptyheap")
+
+    def empty_heap(self):
+        self.heap = []
