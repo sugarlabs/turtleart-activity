@@ -1622,9 +1622,8 @@ class TurtleArtWindow():
     #
     # Start a new project with a 'start' brick
     #
-    def load_start(self):
-        self.clone_stack("%s%s%s" % ("[[0,[\"start\",\"", _("start"),
-                                     "\"],250,250,[null,null]]]"))
+    def load_start(self): 
+       self.process_data([[0, "start", 218, 224, [None, None]]])
     
     #
     # Start a project to a file
