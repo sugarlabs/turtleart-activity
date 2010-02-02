@@ -66,7 +66,6 @@ def json_dump(data):
         return io.getvalue()
 
 def get_load_name(suffix, load_save_folder):
-    print "get_load_name: %s %s" % (suffix, load_save_folder)
     dialog = gtk.FileChooserDialog("Load...", None,
                                    gtk.FILE_CHOOSER_ACTION_OPEN,
                                    (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
@@ -74,9 +73,21 @@ def get_load_name(suffix, load_save_folder):
     dialog.set_default_response(gtk.RESPONSE_OK)
     return do_dialog(dialog, suffix, load_save_folder)
     
+def get_save_name(suffix, load_save_folder, save_file_name):
+    dialog = gtk.FileChooserDialog("Save...", None,
+                                   gtk.FILE_CHOOSER_ACTION_SAVE,
+                                   (gtk.STOCK_CANCEL,
+                                    gtk.RESPONSE_CANCEL,
+                                    gtk.STOCK_SAVE,
+                                    gtk.RESPONSE_OK))
+    dialog.set_default_response(gtk.RESPONSE_OK)
+    if save_file_name is not None:
+        dialog.set_current_name(save_file_name+suffix)
+    return do_dialog(dialog, suffix, load_save_folder)
+
 #
 # We try to maintain read-compatibility with all versions of Turtle Art.
-# Try pickle first; then selfo different versions of json.
+# Try pickle first; then different versions of json.
 #
 def data_from_file(ta_file):
     # Just open the .ta file, ignoring any .png file that might be present.
@@ -91,8 +102,15 @@ def data_from_file(ta_file):
     f.close()
     return data
 
+def data_to_file(data, ta_file):
+    f = file(ta_file, "w")
+    f.write(json_dump(data))
+    f.close()
+
+def data_to_string(data):
+    return json_dump(data)
+
 def do_dialog(dialog, suffix, load_save_folder):
-    print "do_dialog: %s %s" % (suffix, load_save_folder)
     result = None
     filter = gtk.FileFilter()
     filter.add_pattern('*'+suffix)

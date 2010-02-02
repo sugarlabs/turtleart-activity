@@ -371,8 +371,9 @@ class TurtleArtWindow():
         if self.palette_sprs[n][self.palette_orientation] is not None:
             self.palette_sprs[n][self.palette_orientation].set_layer(
                                                                 CATEGORY_LAYER)
-            self.palette_sprs[n][1-self.palette_orientation].set_layer(
-                                                                HIDE_LAYER)
+            if self.palette_sprs[n][1-self.palette_orientation] is not None:
+               self.palette_sprs[n][1-self.palette_orientation].set_layer(
+                                                                    HIDE_LAYER)
 
         for i in range(len(PALETTES)):
             self.selectors[i].set_layer(TAB_LAYER)
@@ -390,13 +391,12 @@ class TurtleArtWindow():
             self.toolbar_spr.set_layer(CATEGORY_LAYER)
 
         if self.palettes[n] == []:
-            print "%d: %d" % (n,self.palette_orientation)
             for i, name in enumerate(PALETTES[n]):
                 # Some blocks are too big to fit the palette.
                 if PALETTE_SCALE.has_key(name):
                     scale = PALETTE_SCALE[name]
                 else:
-                    scale = 1.5
+                    scale = PALETTE_DEFAULT_SCALE
                 self.palettes[n].append(Block(self.block_list,
                                               self.sprite_list, name,
                                               0, 0, 'proto', [], scale))
@@ -405,10 +405,12 @@ class TurtleArtWindow():
                 # Some blocks get a skin.
                 if name in BOX_STYLE_MEDIA:
                     self.palettes[n][i].spr.set_image(self.media_shapes[
-                                                      name+'small'], 1, 28, 7)
+                        name+'small'], 1, int(MEDIA_X*scale/BLOCK_SCALE),
+                                          int(MEDIA_Y*scale/BLOCK_SCALE))
                 elif name == 'nop':
                     self.palettes[n][i].spr.set_image(self.media_shapes[
-                                                      'pythonsmall'], 1, 10, 7)
+                        'pythonsmall'], 1, int(PYTHON_X*scale/BLOCK_SCALE),
+                                           int(PYTHON_Y*scale/BLOCK_SCALE))
         self._layout_palette(n)
         for blk in self.palettes[n]:
             blk.spr.set_layer(CATEGORY_LAYER)
@@ -1102,10 +1104,10 @@ class TurtleArtWindow():
                         self._load_image(dsobject, blk)
                     elif blk.name == 'audio':
                         blk.spr.set_image(self.media_shapes['audioon'],
-                                          1, 37, 6)
+                                          1, MEDIA_X, MEDIA_Y)
                     else:
                         blk.spr.set_image(self.media_shapes['descriptionon'],
-                                          1, 37, 6)
+                                          1, MEDIA_X, MEDIA_Y)
                     if len(blk.values)>0:
                         blk.values[0] = dsobject.object_id
                     else:
@@ -1120,16 +1122,16 @@ class TurtleArtWindow():
             if fname is None:
                 return
             if movie_media_type(fname[-4:]):
-                blk.spr.set_image(self.media_shapes['journalon'], 1, 37, 6)
+                blk.spr.set_image(self.media_shapes['journalon'], 1, MEDIA_X, MEDIA_Y)
             elif blk.name == 'audio' or audio_media_type(fname[-4:]):
-                blk.spr.set_image(self.media_shapes['audioon'], 1, 37, 6)
+                blk.spr.set_image(self.media_shapes['audioon'], 1, MEDIA_X, MEDIA_Y)
                 blk.name = 'audio'
             elif blk.name == 'description':
-                blk.spr.set_image(self.media_shapes['descriptionon'], 1, 37, 6)
+                blk.spr.set_image(self.media_shapes['descriptionon'], 1, MEDIA_X, MEDIA_Y)
             else:
-                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(fname, 80, 60)
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(fname, THUMB_W, THUMB_H)
                 if pixbuf is not None:
-                    blk.spr.set_image(pixbuf, 1, 17, 2)
+                    blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
             blk.values[0] = fname
         blk.spr.set_label(' ')
 
@@ -1137,11 +1139,11 @@ class TurtleArtWindow():
     Replace Journal block graphic with preview image 
     """
     def _load_image(self, picture, blk):
-        pixbuf = get_pixbuf_from_journal(picture, 80, 60)
+        pixbuf = get_pixbuf_from_journal(picture, THUMB_W, THUMB_H)
         if pixbuf is not None:
-            blk.spr.set_image(pixbuf, 1, 17, 2)
+            blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
         else:
-            blk.spr.set_image(self.media_shapes['descriptionon'], 1, 37, 6)
+            blk.spr.set_image(self.media_shapes['descriptionon'], 1, MEDIA_X, MEDIA_Y)
 
     """
     Run stack
@@ -1170,7 +1172,8 @@ class TurtleArtWindow():
     """
     def _in_the_trash(self, x, y):
         if self.selected_palette == self.trash_index and \
-           self.palette_sprs[self.trash_index].hit((x,y)):
+           self.palette_sprs[self.trash_index][self.palette_orientation].hit(
+                                                                         (x,y)):
             return True
         return False
 
@@ -1197,11 +1200,11 @@ class TurtleArtWindow():
         # Add special skin to some blocks
         if name == 'nop':
             if self.nop == 'pythonloaded':
-                newblk.spr.set_image(self.media_shapes['pythonon'], 1, 17, 8)
+                newblk.spr.set_image(self.media_shapes['pythonon'], 1, PYTHON_X, PYTHON_Y)
             else:
-                newblk.spr.set_image(self.media_shapes['pythonoff'], 1, 17, 8)
+                newblk.spr.set_image(self.media_shapes['pythonoff'], 1, PYTHON_X, PYTHON_Y)
         elif name in BOX_STYLE_MEDIA:
-            newblk.spr.set_image(self.media_shapes[name+'off'], 1, 27, 8)
+            newblk.spr.set_image(self.media_shapes[name+'off'], 1, MEDIA_X, MEDIA_Y)
             newblk.spr.set_label(' ')
         newspr = newblk.spr
         newspr.set_layer(TOP_LAYER)
@@ -1235,7 +1238,7 @@ class TurtleArtWindow():
                     nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
                     if argname == 'journal':
                         argblk.spr.set_image(self.media_shapes['journaloff'],
-                                             1, 37, 6)
+                                             1, MEDIA_X, MEDIA_Y)
                         argblk.spr.set_label(' ')
                     argblk.spr.move((nx, ny))
                     argblk.spr.set_layer(TOP_LAYER)
@@ -1496,9 +1499,9 @@ class TurtleArtWindow():
         # Some blocks get a skin.
         if btype == 'nop': 
             if self.nop == 'pythonloaded':
-                blk.spr.set_image(self.media_shapes['pythonon'], 1, 17, 8)
+                blk.spr.set_image(self.media_shapes['pythonon'], 1, PYTHON_X, PYTHON_Y)
             else:
-                blk.spr.set_image(self.media_shapes['pythonoff'], 1, 17, 8)
+                blk.spr.set_image(self.media_shapes['pythonoff'], 1, PYTHON_X, PYTHON_Y)
             blk.spr.set_label(' ')
         elif btype in EXPANDABLE:
             if btype == 'vspace':
@@ -1510,40 +1513,40 @@ class TurtleArtWindow():
                     dy = blk.add_arg()
         elif btype in BOX_STYLE_MEDIA and len(blk.values)>0:
             if blk.values[0] == 'None':
-                blk.spr.set_image(self.media_shapes[btype+'off'], 1, 37, 6)
+                blk.spr.set_image(self.media_shapes[btype+'off'], 1, MEDIA_X, MEDIA_Y)
             elif btype == 'audio' or btype == 'description':
-                blk.spr.set_image(self.media_shapes[btype+'on'], 1, 37, 6)
+                blk.spr.set_image(self.media_shapes[btype+'on'], 1, MEDIA_X, MEDIA_Y)
             elif self.running_sugar:
                 try:
                     dsobject = datastore.get(blk.values[0])
                     if not movie_media_type(dsobject.file_path[-4:]):
-                        pixbuf = get_pixbuf_from_journal(dsobject, 80, 60)
+                        pixbuf = get_pixbuf_from_journal(dsobject, THUMB_W, THUMB_H)
                         if pixbuf is not None:
-                            blk.spr.set_image(pixbuf, 1, 17, 2)
+                            blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
                         else:
                             blk.spr.set_image(
-                                self.media_shapes['journalon'], 1, 37, 6)
+                                self.media_shapes['journalon'], 1, MEDIA_X, MEDIA_Y)
                     dsobject.destroy()
                 except:
                     print "couldn't open dsobject (%s)" % (blk.values[0])
                     blk.spr.set_image(self.media_shapes['journaloff'],
-                                      1, 37, 6)
+                                      1, MEDIA_X, MEDIA_Y)
             else:
                 if not movie_media_type(blk.values[0][-4:]):
                     try:
                         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
-                                     blk.values[0], 80, 60)
-                        blk.spr.set_image(pixbuf, 1, 17, 2)
+                                     blk.values[0], THUMB_W, THUMB_H)
+                        blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
                     except:
                         blk.spr.set_image(self.media_shapes['journaloff'],
-                                          1, 37, 6)
+                                          1, MEDIA_X, MEDIA_Y)
                 else:
-                    blk.spr.set_image(self.media_shapes['journalon'], 1, 37, 6)
+                    blk.spr.set_image(self.media_shapes['journalon'], 1, MEDIA_X, MEDIA_Y)
             blk.spr.set_label(' ')
             blk.resize()
         elif btype in BOX_STYLE_MEDIA:
             blk.spr.set_label(' ')
-            blk.spr.set_image(self.media_shapes[btype+'off'], 1, 37, 6)
+            blk.spr.set_image(self.media_shapes[btype+'off'], 1, MEDIA_X, MEDIA_Y)
     
         blk.spr.set_layer(BLOCK_LAYER)
         return blk
@@ -1564,45 +1567,23 @@ class TurtleArtWindow():
     def save_file(self):
         if self.save_folder is not None:
             self.load_save_folder = self.save_folder
-        fname = self._get_save_name()
+        fname, self.load_save_folder = get_save_name('.ta',
+                                                     self.load_save_folder,
+                                                     self.save_file_name)
         if fname is None:
             return
         if fname[-3:]=='.ta':
             fname=fname[0:-3]
-        save_data(self,fname+".ta")
+        data = self.assemble_data_to_save()
+        data_to_file(data, fname+'.ta')
         self.save_file_name = os.path.basename(fname)
     
-    def _get_save_name(self):
-        dialog = gtk.FileChooserDialog("Save...", None,
-                                       gtk.FILE_CHOOSER_ACTION_SAVE,
-                                       (gtk.STOCK_CANCEL,
-                                        gtk.RESPONSE_CANCEL,
-                                        gtk.STOCK_SAVE,
-                                        gtk.RESPONSE_OK))
-        dialog.set_default_response(gtk.RESPONSE_OK)
-        if self.save_file_name is not None:
-            dialog.set_current_name(self.save_file_name+'.ta')
-        result, self.load_save_folder = self.do_dialog(dialog, '.ta')
-        return result
-    
-    def save_data(self, fname):
-        f = file(fname, "w")
-        data = self._assemble_data_to_save()
-        f.write(json_dump(data))
-        f.close()
-    
-    # Used to send data across a shared session
-    def save_string(self, save_turtle=True):
-        data = self._assemble_data_to_save(save_turtle)
-        return json_dump(data)
-    
-    def _assemble_data_to_save(self, save_turtle=True):
+    def assemble_data_to_save(self, save_turtle=True, save_project=True):
+        # TODO: if save_project is False: just the current stack
         data = []
         for i, b in enumerate(self._just_blocks()):
              b.id = i
         for b in self._just_blocks():
-            if b.type is not 'block':
-                continue
             if b.name in CONTENT_BLOCKS:
                 if len(b.values)>0:
                     name = (b.name, b.values[0])
@@ -1632,12 +1613,4 @@ class TurtleArtWindow():
                         self.canvas.color, self.canvas.shade,
                         self.canvas.pensize))
         return data
-    
-    # Serialize a stack to save to the clipboard
-    # TODO: check to make sure just the stack and not the project is saved
-    def serialize_stack(self):
-        data = self._assemble_data_to_save(False)
-        if data == []:
-            return None
-        return json_dump(data)
     

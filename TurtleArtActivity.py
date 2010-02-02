@@ -568,7 +568,8 @@ class TurtleArtActivity(activity.Activity):
             # sharer should send current state to joiner
             if self.initiating is True:
                 _logger.debug("serialize the project and send to joiner")
-                text = self.tw.save_string()
+                data = self.tw.assemble_data_to_save(True, True)
+                text = data_to_string(data)
                 self._send_event("I:" + text)
                 self.tw.show_palette()
         elif text[0] == 'I': # receiving current state
@@ -1203,8 +1204,9 @@ class EditToolbar(gtk.Toolbar):
     def _copy_cb(self, button):
         clipBoard = gtk.Clipboard()
         _logger.debug("serialize the project and copy to clipboard")
-        text = tawindow.serialize_stack(self.activity.tw)
-        if text is not None:
+        data = self.activity.tw.assemble_data_to_save(False, False)
+        if data is not []:
+            text = data_to_string(data)
             clipBoard.set_text(text)
 
     def _paste_cb(self, button):
