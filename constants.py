@@ -43,7 +43,7 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
             [ 'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple'],
             ['plus2', 'minus2', 'product2',
              'division2', 'identity2', 'remainder2', 'sqrt', 'random',
-             'number', 'greater', 'less', 'equal', 'not', 'and', 'or'],
+             'number', 'greater2', 'less2', 'equal2', 'not', 'and2', 'or2'],
             ['wait', 'forever', 'repeat', 'if', 'ifelse', 'hspace',
              'vspace', 'stopstack'],
             ['hat1', 'stack1', 'hat', 'hat2', 'stack2', 'stack',
@@ -111,8 +111,8 @@ NUMBER_STYLE_BLOCK = ['random']
 NUMBER_STYLE_PORCH = ['minus2', 'division2', 'remainder2']
 NUMBER_STYLE_1ARG = ['sqrt', 'identity2']
 NUMBER_STYLE_1STRARG = ['box']
-COMPARE_STYLE = ['greater', 'less', 'equal']
-BOOLEAN_STYLE = ['and', 'or']
+COMPARE_STYLE = ['greater2', 'less2', 'equal2']
+BOOLEAN_STYLE = ['and2', 'or2']
 NOT_STYLE = ['not']
 FLOW_STYLE = ['forever', 'hspace']
 FLOW_STYLE_1ARG = ['repeat']
@@ -130,6 +130,11 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
 EXPANDABLE = ['vspace', 'hspace', 'list']
 
 #
+# Old block styles that need dock adjustments
+#
+OLD_DOCK = ['and', 'or']
+
+#
 # blocks that contain media
 #
 CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'journal']
@@ -138,7 +143,7 @@ CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'journal']
 # block name dictionary
 #
 BLOCK_NAMES = {
-    'and':[_('and')],
+    'and2':[_('and')],
     'arc':[_('arc'),_('angle'),_('radius')],
     'audio':[' '],
     'back':[_('back')],
@@ -152,10 +157,11 @@ BLOCK_NAMES = {
     'color':[_('color')],
     'cyan':[_('cyan')],
     'division2':['/'],
-    'equal':['='],
+    'equal2':['='],
     'fillscreen':[_('fill screen'),_('color'),_('shade')],
     'forever':[_('forever')],
     'forward':[_('forward')],
+    'greater2':[">"],
     'green':[_('green')],
     'hat':[_('action')],
     'hat1':[_('action 1')],
@@ -172,7 +178,7 @@ BLOCK_NAMES = {
     'keyboard':[_('keyboard')],
     'left':[_('left')],
     'leftpos':[_('left')],
-    'less':['<'],'greater':[">"],
+    'less2':['<'],
     'list':[_('list')],
     'minus2':['–'],
     'myfunc':[_('Python'),_('code'),_('value')],
@@ -180,7 +186,7 @@ BLOCK_NAMES = {
     'not':[_('not')],
     'number':['100'],
     'orange':[_('orange')],
-    'or':[_('or')],
+    'or2':[_('or')],
     'pendown':[_('pen down')],
     'pensize':[_('pen size')],
     'penup':[_('pen up')],
@@ -237,7 +243,7 @@ BLOCK_NAMES = {
 #
 
 PRIMITIVES = {
-    'and':'and',
+    'and2':'and',
     'arc':'arc',
     'back':'back',
     'blue':'blue',
@@ -250,11 +256,11 @@ PRIMITIVES = {
     'color':'color',
     'cyan':'cyan',
     'division2':'division',
-    'equal':'equal?',
+    'equal2':'equal?',
     'fillscreen':'fillscreen',
     'forever':'forever',
     'forward':'forward',
-    'greater':'greater?',
+    'greater2':'greater?',
     'green':'green',
     'hat':'nop3',
     'hat1':'nop1',
@@ -270,14 +276,14 @@ PRIMITIVES = {
     'keyboard':'keyboard',
     'left':'left',
     'leftpos':'lpos',
-    'less':'less?',
+    'less2':'less?',
     'list':'bullet',
     'minus2':'minus',
     'myfunc':'myfunc',
     'nop':'userdefined',
     'not':'not',
     'orange':'orange',
-    'or':'or',
+    'or2':'or',
     'pendown':'pendown',
     'pensize':'pensize',
     'penup':'penup',
@@ -376,7 +382,7 @@ DEFAULTS = {
 #
 # Blocks that can interchange strings and numbers for their arguments
 #
-STRING_OR_NUMBER_ARGS = ['plus2', 'equal', 'less', 'greater',
+STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2',
                          'template1x1', 'template1x2', 'template2x1',
                          'template2x2', 'list', 'nop',
                          'print', 'stack', 'hat']
@@ -402,7 +408,8 @@ STATUS_SHAPES = ['status', 'info', 'nostack', 'noinput', 'emptyheap',
 # Legacy names
 #
 OLD_NAMES = {'product':'product2', 'storeinbox':'storein',
-             'division':'division2', 'plus':'plus2',
+             'division':'division2', 'plus':'plus2', 'and':'and2', 'or':'or2',
+             'less':'less2', 'greater':'greater2', 'equal':'equal2',
              'remainder':'remainder2', 'identity':'identity2',
              'division':'division2', 'if else':'if', 'audiooff':'audio',
              'descriptionoff':'description','template3':'list',

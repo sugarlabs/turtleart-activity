@@ -328,6 +328,8 @@ class TurtleArtWindow():
                                                                      HIDE_LAYER)
         self.selected_palette = None
         self.toolbar_spr.set_layer(HIDE_LAYER)
+        self.palette_button[self.palette_orientation].set_layer(HIDE_LAYER)
+        self.palette_button[1-self.palette_orientation].set_layer(HIDE_LAYER)
 
     def show_toolbar_palette(self, n, init_only=False):
         if self.selectors == []:
@@ -375,6 +377,8 @@ class TurtleArtWindow():
                self.palette_sprs[n][1-self.palette_orientation].set_layer(
                                                                     HIDE_LAYER)
 
+        self.palette_button[self.palette_orientation].set_layer(TAB_LAYER)
+
         for i in range(len(PALETTES)):
             self.selectors[i].set_layer(TAB_LAYER)
         
@@ -417,6 +421,7 @@ class TurtleArtWindow():
 
 
     def _layout_palette(self, n):
+        if n is not None:
             _x, _y, _max = 5, ICON_SIZE+5, 0
             if self.palette_orientation == 0:
                 for i in range(len(PALETTES[n])):
@@ -1402,12 +1407,35 @@ class TurtleArtWindow():
         self.selected_blk.spr.set_label(s)
         self.selected_blk.values[0] = s
 
+    """
+    Load Python code from a file
+    """
+    def load_python_code(self):
+        fname, self.load_save_folder = get_load_name('.py',
+                                                     self.load_save_folder)
+        if fname==None:
+            return
+        f = open(fname, 'r')
+        self.myblock = f.read()
+        f.close()
+    
+    """
+    Start a new project
+    """
     def new_project(self):
         stop_logo(self)
         for b in self._just_blocks():
             b.spr.hide()
         self.canvas.clearscreen()
         self.save_file_name = None
+    
+    """
+    Load a project from a file
+    """
+    def load_files(self, ta_file, create_new_project=True):
+        if create_new_project is True:
+            self.new_project()
+        self.process_data(data_from_file(ta_file))
     
     def load_file(self, create_new_project=True):
         fname, self.load_save_folder = get_load_name('.ta',
@@ -1420,20 +1448,9 @@ class TurtleArtWindow():
         if create_new_project is True:
             self.save_file_name = os.path.basename(fname)
     
-    def load_python_code(self):
-        fname, self.load_save_folder = get_load_name('.py',
-                                                     self.load_save_folder)
-        if fname==None:
-            return
-        f = open(fname, 'r')
-        self.myblock = f.read()
-        f.close()
-    
-    def load_files(self, ta_file, create_new_project=True):
-        if create_new_project is True:
-            self.new_project()
-        self.process_data(data_from_file(ta_file))
-    
+    """
+    Process data (from a file or clipboard) into blocks
+    """
     def process_data(self, data):
         # Create the blocks.
         blocks = []
@@ -1448,12 +1465,46 @@ class TurtleArtWindow():
         # Make the connections.
         for i in range(len(blocks)):
             cons=[]
-            for c in data[i][4]:
-                if c is None:
-                    cons.append(None)
-                else:
-                    cons.append(blocks[c])
-            blocks[i].connections = cons
+            # Ugly corner case of old-style booleans
+            if blocks[i].connections == 'check':
+                print "WARNING: ugly corner case for %s" % (blocks[i].name)
+                print "adding an extra connection"
+                cons.append(None) # 'and' or 'or' not be connected to 'if'
+                for c in data[i][4]:
+                    if c is None:
+                        cons.append(None)
+                    else:
+                        cons.append(blocks[c])
+                if data[i][4][0] is not None:
+                    print "WARNING: patching %s connection" %\
+                          (blocks[i].name)
+                    c = data[i][4][0]
+                    cons[0] = blocks[data[c][4][0]]
+                    c0 = data[c][4][0]
+                    print "WARNING: patching %s connection" %\
+                          (blocks[c0].name)
+                    for j, cj in enumerate(data[c0][4]):
+                        if cj == c:
+                            print "found a match in dock position %d" % (j)
+                            blocks[c0].connections[j] = blocks[i]
+                    if c<i:
+                        print "WARNING: patching %s connections" %\
+                              (blocks[c].name)
+                        blocks[c].connections[0] = blocks[i]
+                        blocks[c].connections[3] = None
+                    else:
+                        print "WARNING: could not look into the future"
+                print cons
+                print "%s: %d docks and %d connections" % (blocks[i].name,
+                      len(blocks[i].docks), len(cons))
+            # Normally, it is simply a matter of copying the connections
+            else:
+                for c in data[i][4]:
+                    if c is None:
+                        cons.append(None)
+                    else:
+                        cons.append(blocks[c])
+            blocks[i].connections = cons[:]
         # Adjust the x,y positions, as block sizes may have changed.
         for b in blocks:
             (sx, sy) = b.spr.get_xy()
@@ -1468,7 +1519,10 @@ class TurtleArtWindow():
                                 cdock = c.docks[j]
                         nx, ny = sx+bdock[2]-cdock[2], sy+bdock[3]-cdock[3]
                         c.spr.move((nx, ny))
-    
+
+    #
+    # Restore individual blocks from saved state
+    #
     def load_block(self, b):
         # A block is saved as: (i, (btype, value), x, y, (c0,... cn))
         # The x,y position is saved/loaded for backward compatibility
@@ -1486,48 +1540,61 @@ class TurtleArtWindow():
         else:
             values = []
     
+        if btype in OLD_DOCK:
+            check_dock = True
+            print "WARNING: will need to preform dock check"
+        else:
+            check_dock = False
         if OLD_NAMES.has_key(btype):
             print "%s -> %s" % (btype, OLD_NAMES[btype])
             btype = OLD_NAMES[btype]
-    
+        else:
+            print "%s" % (btype)
         blk = Block(self.block_list, self.sprite_list, 
                     btype, b[2]+self.canvas.cx,
                            b[3]+self.canvas.cy, 'block', values)
-        # Some blocks get a skin.
+        # Some blocks get transformed.
         if btype == 'nop': 
             if self.nop == 'pythonloaded':
-                blk.spr.set_image(self.media_shapes['pythonon'], 1, PYTHON_X, PYTHON_Y)
+                blk.spr.set_image(self.media_shapes['pythonon'], 1,
+                                  PYTHON_X, PYTHON_Y)
             else:
-                blk.spr.set_image(self.media_shapes['pythonoff'], 1, PYTHON_X, PYTHON_Y)
+                blk.spr.set_image(self.media_shapes['pythonoff'], 1,
+                                  PYTHON_X, PYTHON_Y)
             blk.spr.set_label(' ')
         elif btype in EXPANDABLE:
             if btype == 'vspace':
-                blk.expand_in_y(value)
+                if value is not None:
+                    blk.expand_in_y(value)
             elif btype == 'hspace':
-                blk.expand_in_x(value)
+                if value is not None:
+                    blk.expand_in_x(value)
             elif btype == 'list':
                 for i in range(len(b[4])-4):
                     dy = blk.add_arg()
         elif btype in BOX_STYLE_MEDIA and len(blk.values)>0:
             if blk.values[0] == 'None':
-                blk.spr.set_image(self.media_shapes[btype+'off'], 1, MEDIA_X, MEDIA_Y)
+                blk.spr.set_image(self.media_shapes[btype+'off'], 1,
+                                  MEDIA_X, MEDIA_Y)
             elif btype == 'audio' or btype == 'description':
-                blk.spr.set_image(self.media_shapes[btype+'on'], 1, MEDIA_X, MEDIA_Y)
+                blk.spr.set_image(self.media_shapes[btype+'on'], 1,
+                                  MEDIA_X, MEDIA_Y)
             elif self.running_sugar:
                 try:
                     dsobject = datastore.get(blk.values[0])
                     if not movie_media_type(dsobject.file_path[-4:]):
-                        pixbuf = get_pixbuf_from_journal(dsobject, THUMB_W, THUMB_H)
+                        pixbuf = get_pixbuf_from_journal(dsobject,
+                                                         THUMB_W, THUMB_H)
                         if pixbuf is not None:
                             blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
                         else:
-                            blk.spr.set_image(
-                                self.media_shapes['journalon'], 1, MEDIA_X, MEDIA_Y)
+                            blk.spr.set_image(self.media_shapes['journalon'], 1,
+                                              MEDIA_X, MEDIA_Y)
                     dsobject.destroy()
                 except:
                     print "couldn't open dsobject (%s)" % (blk.values[0])
-                    blk.spr.set_image(self.media_shapes['journaloff'],
-                                      1, MEDIA_X, MEDIA_Y)
+                    blk.spr.set_image(self.media_shapes['journaloff'], 1,
+                                      MEDIA_X, MEDIA_Y)
             else:
                 if not movie_media_type(blk.values[0][-4:]):
                     try:
@@ -1538,16 +1605,23 @@ class TurtleArtWindow():
                         blk.spr.set_image(self.media_shapes['journaloff'],
                                           1, MEDIA_X, MEDIA_Y)
                 else:
-                    blk.spr.set_image(self.media_shapes['journalon'], 1, MEDIA_X, MEDIA_Y)
+                    blk.spr.set_image(self.media_shapes['journalon'], 1,
+                                      MEDIA_X, MEDIA_Y)
             blk.spr.set_label(' ')
             blk.resize()
         elif btype in BOX_STYLE_MEDIA:
             blk.spr.set_label(' ')
-            blk.spr.set_image(self.media_shapes[btype+'off'], 1, MEDIA_X, MEDIA_Y)
+            blk.spr.set_image(self.media_shapes[btype+'off'], 1,
+                              MEDIA_X, MEDIA_Y)
     
         blk.spr.set_layer(BLOCK_LAYER)
+        if check_dock is True:
+            blk.connections = 'check'
         return blk
-    
+
+    #
+    # Restore a turtle from its saved state
+    #
     def load_turtle(self, b):
         id, name, xcor, ycor, heading, color, shade, pensize = b
         self.canvas.setxy(xcor, ycor)
@@ -1556,11 +1630,16 @@ class TurtleArtWindow():
         self.canvas.setshade(shade)
         self.canvas.setpensize(pensize)
     
-    # start a new project with a start brick
+    #
+    # Start a new project with a 'start' brick
+    #
     def load_start(self):
         self.clone_stack("%s%s%s" % ("[[0,[\"start\",\"", _("start"),
                                      "\"],250,250,[null,null]]]"))
     
+    #
+    # Start a project to a file
+    #
     def save_file(self):
         if self.save_folder is not None:
             self.load_save_folder = self.save_folder
@@ -1575,6 +1654,9 @@ class TurtleArtWindow():
         data_to_file(data, fname+'.ta')
         self.save_file_name = os.path.basename(fname)
     
+    #
+    # Pack the project (or stack) into a data stream to be serialized
+    #
     def assemble_data_to_save(self, save_turtle=True, save_project=True):
         # TODO: if save_project is False: just the current stack
         data = []

@@ -417,8 +417,10 @@ class LogoCode:
                 else:
                     code.append('#saudio_None')
             else:
+                print "%s had nothing as a value" % (blk.name)
                 return ['%nothing%']
         else:
+            print "%s had no value" % (blk.name)
             return ['%nothing%']
         for i in range(1,len(blk.connections)):
             b = blk.connections[i]        
@@ -561,21 +563,23 @@ class LogoCode:
     def debug_trace(self, token):
         if self.trace:
             if token.name in PALETTES[PALETTE_NAMES.index('turtle')]:
-                my_string = "%s\nxcor=%d\nycor=%d\nheading=%d\nscale=%d" %\
-                    (token.name,int(self.tw.canvas.xcor),
-                     int(self.tw.canvas.ycor),int(self.tw.canvas.heading),
-                     int(self.scale))
+                my_string = "%s\n%s=%d\n%s=%d\n%s=%d\n%s=%d" %\
+                    (token.name, _('xcor'), int(self.tw.canvas.xcor),
+                     _('ycor'), int(self.tw.canvas.ycor), _('heading'),
+                     int(self.tw.canvas.heading), _('scale'), int(self.scale))
             elif token.name in PALETTES[PALETTE_NAMES.index('pen')]:
                 if self.tw.canvas.pendown:
-                    penstatus = "pen down"
+                    penstatus = _('pen down')
                 else:
-                    penstatus = "pen up"
-                my_string = "%s\n%s\ncolor=%d\nshade=%d\npensize=%.1f" %\
-                    (token.name, penstatus, int(self.tw.canvas.color),
-                     int(self.tw.canvas.shade), self.tw.canvas.pensize)
+                    penstatus = _('pen up')
+                my_string = "%s\n%s\n%s=%d\n%s=%d\n%s=%.1f" %\
+                    (token.name, penstatus, _('color'),
+                     int(self.tw.canvas.color), _('shade'),
+                     int(self.tw.canvas.shade), _('pen size'),
+                     self.tw.canvas.pensize)
             else:
-                my_string = "%s\nblocks status:\n" % (token.name)
-                for k,v in self.boxes.iteritems():
+                my_string = "%s\n%s:\n" % (token.name, _('box'))
+                for k, v in self.boxes.iteritems():
                     tmp = k +":" + str(v) + "\n"
                     my_string += tmp
             shp = 'info'
@@ -590,7 +594,8 @@ class LogoCode:
         raise logoerror("%s %s" % (_("I don't know how to"), token.name))
     
     def no_args_check(self):
-        if self.iline and self.iline[0] is not self.symnothing : return
+        if self.iline and self.iline[0] is not self.symnothing:
+            return
         raise logoerror("#noinput")
     
     def prim_wait(self, time):

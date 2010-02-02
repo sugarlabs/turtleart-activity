@@ -20,9 +20,6 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-import tawindow
-import talogo
-
 import pygtk
 pygtk.require('2.0')
 import gtk
@@ -59,11 +56,14 @@ import os.path
 import subprocess
 import tarfile
 import sys
-from taexporthtml import *
-from taexportlogo import *
 import re
 
 from constants import *
+from taexporthtml import *
+from taexportlogo import *
+from tautils import *
+import tawindow
+import talogo
 
 SERVICE = 'org.laptop.TurtleArtActivity'
 IFACE = SERVICE
@@ -283,7 +283,7 @@ class TurtleArtActivity(activity.Activity):
         print tafile
         try:
             # FIXME: encapsulation?
-            self.tw.save_data(tafile)
+            data_to_file(self.tw.assemble_data_to_save(), tafile)
         except:
             _logger.debug("couldn't save snapshot to journal")
 
@@ -568,8 +568,7 @@ class TurtleArtActivity(activity.Activity):
             # sharer should send current state to joiner
             if self.initiating is True:
                 _logger.debug("serialize the project and send to joiner")
-                data = self.tw.assemble_data_to_save(True, True)
-                text = data_to_string(data)
+                text = data_to_string(self.tw.assemble_data_to_save(True, True))
                 self._send_event("I:" + text)
                 self.tw.show_palette()
         elif text[0] == 'I': # receiving current state
@@ -1014,7 +1013,7 @@ class TurtleArtActivity(activity.Activity):
     def write_file(self, file_path):
         _logger.debug("Write file: %s" % file_path)
         self.metadata['mime_type'] = 'application/x-turtle-art'
-        self.tw.save_data(file_path)
+        data_to_file(self.tw.assemble_data_to_save(), file_path+'.ta')
 
     """
     Read a project in and then run it

@@ -43,7 +43,7 @@ Example usage:
         # Create a "pixbuf" (in this example, from SVG).
         my_pixbuf = svg_str_to_pixbuf("<svg>...some svg code...</svg>")
 
-        # Create a sprite at position x,y.
+        # Create a sprite at position x1, y1.
         my_sprite = sprites.Sprite(self.sprite_list, x1, y1, my_pixbuf)
 
         # Move the sprite to a new position.
@@ -52,7 +52,7 @@ Example usage:
         # Create another "pixbuf".
         your_pixbuf = svg_str_to_pixbuf("<svg>...some svg code...</svg>")
 
-        # Create a sprite at position x2,y2.
+        # Create a sprite at position x2, y2.
         your_sprite = sprites.Sprite(self.sprite_list, x2, y2, my_pixbuf)
 
         # Assign the sprites to layers.
