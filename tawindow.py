@@ -131,6 +131,8 @@ class TurtleArtWindow():
         self.toolbar_spr = None
         self.palette_sprs = []
         self.palettes = []
+        self.palette_button = []
+        self.palette_orientation = 0
         self.trash_index = PALETTE_NAMES.index('trash')
         self.selected_palette = None
         self.selectors = []
@@ -321,8 +323,9 @@ class TurtleArtWindow():
                 self.selector_shapes[self.selected_palette][0])
         for i in range(len(PALETTES)):
             self.selectors[i].set_layer(HIDE_LAYER)
-            if self.palette_sprs[i] is not None:
-                self.palette_sprs[i].set_layer(HIDE_LAYER)
+            if self.palette_sprs[i][self.palette_orientation] is not None:
+                self.palette_sprs[i][self.palette_orientation].set_layer(
+                                                                     HIDE_LAYER)
         self.selected_palette = None
         self.toolbar_spr.set_layer(HIDE_LAYER)
 
@@ -342,7 +345,18 @@ class TurtleArtWindow():
                 self.selectors[i].set_layer(TAB_LAYER)
                 w, h = self.selectors[i].get_dimensions()
                 x += int(w) 
-                self.palette_sprs.append(None)
+                self.palette_sprs.append([None,None])
+            self.palette_button.append(Sprite(self.sprite_list, 0, 0,
+                                            self._load_sprite_from_file(
+                                     "%s/palettehorizontal.svg" % (self.path))))
+            self.palette_button.append(Sprite(self.sprite_list, 0, 0,
+                                            self._load_sprite_from_file(
+                                     "%s/palettevertical.svg" % (self.path))))
+            self.palette_button[0].type = 'palette'
+            self.palette_button[1].type = 'palette'
+            self.palette_button[self.palette_orientation].set_layer(TAB_LAYER)
+            self.palette_button[1-self.palette_orientation].set_layer(
+                                                                    HIDE_LAYER)
 
         if len(self.palettes) == 0:
             for i in range(len(PALETTES)):
@@ -354,8 +368,11 @@ class TurtleArtWindow():
         if self.selected_palette is not None:
             self.hide_toolbar_palette()
 
-        if self.palette_sprs[n] is not None:
-            self.palette_sprs[n].set_layer(CATEGORY_LAYER)
+        if self.palette_sprs[n][self.palette_orientation] is not None:
+            self.palette_sprs[n][self.palette_orientation].set_layer(
+                                                                CATEGORY_LAYER)
+            self.palette_sprs[n][1-self.palette_orientation].set_layer(
+                                                                HIDE_LAYER)
 
         for i in range(len(PALETTES)):
             self.selectors[i].set_layer(TAB_LAYER)
@@ -373,7 +390,7 @@ class TurtleArtWindow():
             self.toolbar_spr.set_layer(CATEGORY_LAYER)
 
         if self.palettes[n] == []:
-            _min_width = (len(PALETTES)+1)*(SELECTOR_WIDTH)
+            print "%d: %d" % (n,self.palette_orientation)
             for i, name in enumerate(PALETTES[n]):
                 # Some blocks are too big to fit the palette.
                 if PALETTE_SCALE.has_key(name):
@@ -392,29 +409,50 @@ class TurtleArtWindow():
                 elif name == 'nop':
                     self.palettes[n][i].spr.set_image(self.media_shapes[
                                                       'pythonsmall'], 1, 10, 7)
-            _x, _y, _max_width = 5, ICON_SIZE+5, 0
-            for i in range(len(PALETTES[n])):
-                _w, _h = self.palettes[n][i].spr.get_dimensions()
-                if _y+_h > PALETTE_HEIGHT+ICON_SIZE:
-                    _y = ICON_SIZE+5
-                    _x += int(_max_width+5)
-                    _max_width = 0
-                self.palettes[n][i].spr.move((int(_x), int(_y)))
-                _y += int(_h+5)
-                if _w > _max_width:
-                    _max_width = _w
+        self._layout_palette(n)
+        for blk in self.palettes[n]:
+            blk.spr.set_layer(CATEGORY_LAYER)
 
-            svg = SVG()
-            _w = _x+_max_width+25
-            if _w < _min_width:
-                _w = _min_width
-            self.palette_sprs[n] = Sprite(self.sprite_list, 0, ICON_SIZE,
-                svg_str_to_pixbuf(svg.palette(_w, PALETTE_HEIGHT)))
-            self.palette_sprs[n].type = 'category'
-            self.palette_sprs[n].set_layer(CATEGORY_LAYER)
-        else:
-            for blk in self.palettes[n]:
-                blk.spr.set_layer(CATEGORY_LAYER)
+
+    def _layout_palette(self, n):
+            _x, _y, _max = 5, ICON_SIZE+5, 0
+            if self.palette_orientation == 0:
+                for i in range(len(PALETTES[n])):
+                    _w, _h = self.palettes[n][i].spr.get_dimensions()
+                    if _y+_h > PALETTE_HEIGHT+ICON_SIZE:
+                        _y = ICON_SIZE+5
+                        _x += int(_max+5)
+                        _max = 0
+                    self.palettes[n][i].spr.move((int(_x), int(_y)))
+                    _y += int(_h+5)
+                    if _w > _max:
+                        _max = _w
+                svg = SVG()
+                _w = _x+_max+25
+                if self.palette_sprs[n][self.palette_orientation] is None:
+                    self.palette_sprs[n][self.palette_orientation] =\
+                        Sprite(self.sprite_list, 0, ICON_SIZE,
+                            svg_str_to_pixbuf(svg.palette(_w, PALETTE_HEIGHT)))
+            else: # TODO: center horizontally
+                for i in range(len(PALETTES[n])):
+                    _w, _h = self.palettes[n][i].spr.get_dimensions()
+                    if _x+_w > PALETTE_WIDTH:
+                        _y += int(_max+5)
+                        _x = 5
+                        _max = 0
+                    self.palettes[n][i].spr.move((int(_x), int(_y)))
+                    _x += int(_w+5)
+                    if _h > _max:
+                        _max = _h
+                svg = SVG()
+                _h = _y+_max+5
+                if self.palette_sprs[n][self.palette_orientation] is None:
+                    self.palette_sprs[n][self.palette_orientation] =\
+                        Sprite(self.sprite_list, 0, ICON_SIZE,
+                            svg_str_to_pixbuf(svg.palette(PALETTE_WIDTH, _h)))
+            self.palette_sprs[n][self.palette_orientation].type = 'category'
+            self.palette_sprs[n][self.palette_orientation].set_layer(
+                                                                CATEGORY_LAYER)
 
     """
     Select a category.
@@ -842,6 +880,14 @@ class TurtleArtWindow():
                 r,g,b,a = spr.get_pixel((x, y))
                 if (r == 255 and g == 0) or g == 255:
                     self._hide_palette()
+            elif spr.type == 'palette':
+               self.palette_orientation = 1-self.palette_orientation
+               self.palette_button[self.palette_orientation].set_layer(
+                                                                      TAB_LAYER)
+               self.palette_button[1-self.palette_orientation].set_layer(
+                                                                     HIDE_LAYER)
+               self._layout_palette(self.selected_palette)
+               self.show_toolbar_palette(self.selected_palette)
             return True
 
     """
@@ -1060,7 +1106,10 @@ class TurtleArtWindow():
                     else:
                         blk.spr.set_image(self.media_shapes['descriptionon'],
                                           1, 37, 6)
-                    blk.values[0] = dsobject.object_id
+                    if len(blk.values)>0:
+                        blk.values[0] = dsobject.object_id
+                    else:
+                        blk.values.append(dsobject.object_id)
                     dsobject.destroy()
             finally:
                 chooser.destroy()
@@ -1438,6 +1487,7 @@ class TurtleArtWindow():
             values = []
     
         if OLD_NAMES.has_key(btype):
+            print "%s -> %s" % (btype, OLD_NAMES[btype])
             btype = OLD_NAMES[btype]
     
         blk = Block(self.block_list, self.sprite_list, 
@@ -1551,8 +1601,14 @@ class TurtleArtWindow():
         for i, b in enumerate(self._just_blocks()):
              b.id = i
         for b in self._just_blocks():
+            if b.type is not 'block':
+                continue
             if b.name in CONTENT_BLOCKS:
-                name = (b.name, b.values[0])
+                if len(b.values)>0:
+                    name = (b.name, b.values[0])
+                else:
+                    name = (b.name)
+                    print "content block %s had no associated value" % (b.name)
             elif b.name in EXPANDABLE:
                 ex, ey = b.get_expand_x_y()
                 if ex > 0:

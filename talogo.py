@@ -734,7 +734,8 @@ class LogoCode:
                 try:
                     dsobject = datastore.get(media[6:])
                 except:
-                    raise logoerror("#nomedia")
+                    # raise logoerror("#nomedia")
+                    print "Couldn't open media object %s" % (media[6:])
                 if movie_media_type(dsobject.file_path[-4:]):
                     play_movie_from_file(self,
                         dsobject.file_path, int(x), int(y), int(w), int(h))
