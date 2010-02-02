@@ -36,7 +36,6 @@ except:
     pass
 
 from constants import *
-from tacanvas import *
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 

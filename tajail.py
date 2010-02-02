@@ -25,7 +25,6 @@ try:
     from numpy import *
 except ImportError:
     pass
-from tacanvas import *
 
 def myfunc(lc, f, x):
     # check to make sure no import calls are made

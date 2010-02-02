@@ -37,10 +37,8 @@ gobject.threads_init()
 
 try:
     from sugar.datastore import datastore
-except:
-    # probably launched from outside of Sugar
+except ImportError:
     pass
-from talogo import *
 
 class Gplay:
 
@@ -144,18 +142,6 @@ def play_audio(lc, filepath):
     if lc.gplay == None:
         lc.gplay = Gplay()
     lc.gplay.setFile("file:///" + filepath)
-
-def play_video(lc, media, x, y, w, h):
-    print "loading media id: " + str(media)
-    if media == "" or media[6:] == "":
-        raise logoerror("#nomedia")
-    elif media[6:] != "None":
-        try:
-            dsobject = datastore.get(media[6:])
-            print dsobject.file_path
-        except:
-            print "Couldn't open id: " + str(media[6:])
-    play_dsobject(lc, dsobject, x, y, w, h)
 
 def play_movie_from_file(lc, filepath, x, y, w, h):
     if lc.gplay == None:

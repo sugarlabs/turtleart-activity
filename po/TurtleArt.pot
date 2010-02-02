@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-26 18:39+0000\n"
+"POT-Creation-Date: 2010-02-01 22:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,209 +20,41 @@ msgstr ""
 #: /home/walter/Desktop/ta-refactoring/tawindow.py:590
 #: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:125
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:74
-#: /home/walter/Desktop/ta-refactoring/taexporthtml.py:285
+#: /home/walter/Desktop/ta-refactoring/taexporthtml.py:284
 msgid "Turtle Art"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/constants.py:114
-msgid "clean"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:114
-msgid "forward"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:115
-msgid "back"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:116
-#: /home/walter/Desktop/ta-refactoring/constants.py:141
-msgid "left"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:116
-#: /home/walter/Desktop/ta-refactoring/constants.py:141
-msgid "right"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:116
-msgid "set heading"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:117
-msgid "show"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:117
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:129
-msgid "set scale"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:117
-#: /home/walter/Desktop/ta-refactoring/talogo.py:637
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:708
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1150
-msgid "xcor"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:118
-#: /home/walter/Desktop/ta-refactoring/talogo.py:639
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:708
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1150
-msgid "ycor"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:118
-#: /home/walter/Desktop/ta-refactoring/talogo.py:641
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:709
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1151
-msgid "heading"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:118
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:133
-msgid "pen up"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:119
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:132
-msgid "pen down"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:119
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:134
-msgid "set pen size"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:120
-msgid "arc"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:120
-msgid "angle"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:120
-msgid "radius"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:121
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:140
-msgid "set text size"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:121
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:135
-msgid "set color"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:122
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:136
-msgid "set shade"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:123
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:130
-msgid "fill screen"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:123
-#: /home/walter/Desktop/ta-refactoring/constants.py:126
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:142
-msgid "color"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:123
-#: /home/walter/Desktop/ta-refactoring/constants.py:124
-msgid "shade"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:125
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:137
-msgid "pen size"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:125
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:138
-msgid "text size"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:128
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:149
-msgid "mod"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:129
-msgid "random"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:129
-msgid "min"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:129
-msgid "max"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:130
+#: /home/walter/Desktop/ta-refactoring/constants.py:131
 msgid "and"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/constants.py:131
-msgid "not"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:131
-msgid "print"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:131
-msgid "wait"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:131
-msgid "or"
+#: /home/walter/Desktop/ta-refactoring/constants.py:132
+msgid "arc"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/constants.py:132
-msgid "forever"
+msgid "angle"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/constants.py:132
-msgid "repeat"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:132
-msgid "if then"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:133
-msgid "stop action"
+msgid "radius"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/constants.py:134
-#: /home/walter/Desktop/ta-refactoring/taproject.py:220
-msgid "start"
+msgid "back"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/constants.py:134
 #: /home/walter/Desktop/ta-refactoring/constants.py:135
-msgid "action 1"
+msgid "blue"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/constants.py:136
-msgid "action 2"
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:169
+msgid "bottom"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/constants.py:137
-#: /home/walter/Desktop/ta-refactoring/constants.py:200
-msgid "action"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:138
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:178
-msgid "store in box 1"
+msgid "box"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/constants.py:138
@@ -231,114 +63,344 @@ msgid "box 1"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/constants.py:139
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:180
-msgid "store in box 2"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:139
 #: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:181
 msgid "box 2"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/constants.py:140
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:182
-msgid "store in"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:140
-msgid "box"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:140
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:160
-msgid "string"
+msgid "clean"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/constants.py:141
-msgid "top"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:142
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:169
-msgid "bottom"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:142
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:168
-msgid "width"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:142
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:167
-msgid "height"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:143
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:188
-msgid "hide blocks"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:144
-#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:127
-msgid "set xy"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:144
-#: /home/walter/Desktop/ta-refactoring/constants.py:201
-msgid "x"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:144
-msgid "y"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:145
-msgid "scale"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:145
-msgid "keyboard"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:146
-msgid "push"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:146
-msgid "pop"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:146
-msgid "query keyboard"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:147
-msgid "python"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:147
-msgid "code"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:147
-msgid "value"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:148
-msgid "show heap"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/constants.py:149
 #: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:163
 msgid "empty heap"
 msgstr ""
 
+#: /home/walter/Desktop/ta-refactoring/constants.py:142
+#: /home/walter/Desktop/ta-refactoring/constants.py:146
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:142
+msgid "color"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:143
+msgid "cyan"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:146
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:130
+msgid "fill screen"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:146
+#: /home/walter/Desktop/ta-refactoring/constants.py:199
+msgid "shade"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:147
+msgid "forever"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:148
+msgid "forward"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:149
+msgid "green"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:150
+#: /home/walter/Desktop/ta-refactoring/constants.py:202
+#: /home/walter/Desktop/ta-refactoring/constants.py:332
+#: /home/walter/Desktop/ta-refactoring/constants.py:353
+msgid "action"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:151
+#: /home/walter/Desktop/ta-refactoring/constants.py:203
+msgid "action 1"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:152
+#: /home/walter/Desktop/ta-refactoring/constants.py:204
+msgid "action 2"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:153
+#: /home/walter/Desktop/ta-refactoring/talogo.py:168
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:709
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1151
+msgid "heading"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:154
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:167
+msgid "height"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:155
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:188
+msgid "hide blocks"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:158
+#: /home/walter/Desktop/ta-refactoring/constants.py:159
+msgid "if"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:158
+msgid "then"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:159
+msgid "then else"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:161
+msgid "query keyboard"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:162
+msgid "keyboard"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:163
+#: /home/walter/Desktop/ta-refactoring/constants.py:164
+msgid "left"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:166
+msgid "list"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:168
+msgid "Python"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:168
+msgid "code"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:168
+msgid "value"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:169
+msgid " "
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:170
+msgid "not"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:172
+msgid "orange"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:173
+msgid "or"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:174
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:132
+msgid "pen down"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:175
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:137
+msgid "pen size"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:176
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:133
+msgid "pen up"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:178
+msgid "pop"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:179
+msgid "show heap"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:180
+msgid "print"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:182
+msgid "purple"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:183
+msgid "push"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:184
+msgid "random"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:184
+msgid "min"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:184
+msgid "max"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:185
+msgid "red"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:186
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:149
+msgid "mod"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:187
+msgid "repeat"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:188
+msgid "restore"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:189
+#: /home/walter/Desktop/ta-refactoring/constants.py:190
+msgid "right"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:191
+msgid "scale"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:192
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:135
+msgid "set color"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:193
+msgid "set heading"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:194
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:134
+msgid "set pen size"
+msgstr ""
+
 #: /home/walter/Desktop/ta-refactoring/constants.py:195
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:129
+msgid "set scale"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:196
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:136
+msgid "set shade"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:197
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:140
+msgid "set text size"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:198
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:127
+msgid "set xy"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:198
+#: /home/walter/Desktop/ta-refactoring/constants.py:339
+msgid "x"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:198
+msgid "y"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:200
+msgid "show"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:205
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:1502
+msgid "start"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:206
+msgid "stop action"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:207
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:182
+msgid "store in"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:208
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:178
+msgid "store in box 1"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:209
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:180
+msgid "store in box 2"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:210
+#: /home/walter/Desktop/ta-refactoring/constants.py:352
+#: /home/walter/Desktop/ta-refactoring/constants.py:357
 msgid "text"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/constants.py:199
+#: /home/walter/Desktop/ta-refactoring/constants.py:215
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:138
+msgid "text size"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:216
+msgid "top"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:217
+msgid "turtle"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:219
+msgid "wait"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:220
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:168
+msgid "width"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:221
+#: /home/walter/Desktop/ta-refactoring/talogo.py:168
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:708
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1150
+msgid "xcor"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:222
+#: /home/walter/Desktop/ta-refactoring/talogo.py:168
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:708
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1150
+msgid "ycor"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:223
+msgid "yellow"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:328
+#: /home/walter/Desktop/ta-refactoring/constants.py:356
 msgid "my box"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/constants.py:337
+#: /home/walter/Desktop/ta-refactoring/constants.py:358
+#: /home/walter/Desktop/ta-refactoring/constants.py:359
+#: /home/walter/Desktop/ta-refactoring/constants.py:360
+#: /home/walter/Desktop/ta-refactoring/constants.py:361
+msgid "Title"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:26
@@ -816,6 +878,10 @@ msgstr ""
 msgid "stopstack"
 msgstr ""
 
+#: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:160
+msgid "string"
+msgstr ""
+
 #: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:161
 msgid "Extras"
 msgstr ""
@@ -901,6 +967,10 @@ msgstr ""
 #: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:196
 #: /home/walter/Desktop/ta-refactoring/tahoverhelp.py:197
 msgid "template"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:588
+msgid "I don't know how to"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:135

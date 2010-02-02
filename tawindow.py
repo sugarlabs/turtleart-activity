@@ -47,7 +47,6 @@ except:
     pass
 
 from gettext import gettext as _
-from tahoverhelp import *
 from tautils import *
 from sprite_factory import SVG, svg_str_to_pixbuf
 from talogo import LogoCode, stop_logo, get_pixbuf_from_journal,\
@@ -354,6 +353,8 @@ class TurtleArtWindow():
             self.palette_button.append(Sprite(self.sprite_list, 0, 0,
                                             self._load_sprite_from_file(
                                      "%s/palettevertical.svg" % (self.path))))
+            self.palette_button[0].name = 'orientation'
+            self.palette_button[1].name = 'orientation'
             self.palette_button[0].type = 'palette'
             self.palette_button[1].type = 'palette'
             self.palette_button[self.palette_orientation].set_layer(TAB_LAYER)
@@ -601,7 +602,8 @@ class TurtleArtWindow():
                         self.timeout_tag[0] = 0
                     except:
                         self.timeout_tag[0] = 0
-        elif spr and hasattr(spr,'type') and spr.type == 'selector':
+        elif spr and hasattr(spr,'type') and (spr.type == 'selector' or\
+                                              spr.type == 'palette'):
             if self.timeout_tag[0] == 0:
                 self.timeout_tag[0] = self._do_show_popup(spr.name)
                 self.selected_spr = spr
@@ -624,12 +626,14 @@ class TurtleArtWindow():
     Fetch the help text and display it. 
     """
     def _do_show_popup(self, block_name):
-        if blocks_dict.has_key(block_name):
-            block_name_s = _(blocks_dict[block_name])
+        if SPECIAL_NAMES.has_key(block_name):
+            block_name_s = SPECIAL_NAMES[block_name]
+        elif BLOCK_NAMES.has_key(block_name):
+            block_name_s = BLOCK_NAMES[block_name][0]
         else:
             block_name_s = _(block_name)
-        if hover_dict.has_key(block_name):
-            label = block_name_s + ": " + hover_dict[block_name]
+        if HELP_STRINGS.has_key(block_name):
+            label = block_name_s + ": " + HELP_STRINGS[block_name]
         else:
             label = block_name_s
         if self.running_sugar:
@@ -1467,7 +1471,7 @@ class TurtleArtWindow():
             cons=[]
             # Ugly corner case to support old-style booleans
             if blocks[i].connections == 'check':
-                cons.append(None) # add an extra connection
+                cons.append(None) # Add an extra connection.
                 for c in data[i][4]:
                     if c is None:
                         cons.append(None)
@@ -1485,7 +1489,7 @@ class TurtleArtWindow():
                         blocks[c].connections[3] = None
                     else:
                         print "WARNING: could not look into the future"
-            # Normally, it is simply a matter of copying the connections
+            # Normally, it is simply a matter of copying the connections.
             else:
                 for c in data[i][4]:
                     if c is None:
@@ -1493,7 +1497,7 @@ class TurtleArtWindow():
                     else:
                         cons.append(blocks[c])
             blocks[i].connections = cons[:]
-        # Adjust the x,y positions, as block sizes may have changed.
+        # Adjust the x,y positions, as block sizes and shapes may have changed.
         for b in blocks:
             (sx, sy) = b.spr.get_xy()
             for i, c in enumerate(b.connections):
