@@ -1465,38 +1465,26 @@ class TurtleArtWindow():
         # Make the connections.
         for i in range(len(blocks)):
             cons=[]
-            # Ugly corner case of old-style booleans
+            # Ugly corner case to support old-style booleans
             if blocks[i].connections == 'check':
-                print "WARNING: ugly corner case for %s" % (blocks[i].name)
-                print "adding an extra connection"
-                cons.append(None) # 'and' or 'or' not be connected to 'if'
+                cons.append(None) # add an extra connection
                 for c in data[i][4]:
                     if c is None:
                         cons.append(None)
                     else:
                         cons.append(blocks[c])
                 if data[i][4][0] is not None:
-                    print "WARNING: patching %s connection" %\
-                          (blocks[i].name)
                     c = data[i][4][0]
                     cons[0] = blocks[data[c][4][0]]
                     c0 = data[c][4][0]
-                    print "WARNING: patching %s connection" %\
-                          (blocks[c0].name)
                     for j, cj in enumerate(data[c0][4]):
                         if cj == c:
-                            print "found a match in dock position %d" % (j)
                             blocks[c0].connections[j] = blocks[i]
                     if c<i:
-                        print "WARNING: patching %s connections" %\
-                              (blocks[c].name)
                         blocks[c].connections[0] = blocks[i]
                         blocks[c].connections[3] = None
                     else:
                         print "WARNING: could not look into the future"
-                print cons
-                print "%s: %d docks and %d connections" % (blocks[i].name,
-                      len(blocks[i].docks), len(cons))
             # Normally, it is simply a matter of copying the connections
             else:
                 for c in data[i][4]:
@@ -1509,16 +1497,13 @@ class TurtleArtWindow():
         for b in blocks:
             (sx, sy) = b.spr.get_xy()
             for i, c in enumerate(b.connections):
-                if c is not None:
+                if i>0 and c is not None:
                     bdock = b.docks[i]
-                    if len(c.docks) != len(c.connections):
-                        print "dock-conn mismatch %s %s" % (b.name, c.name)
-                    else:
-                        for j in range(len(c.docks)):
-                            if c.connections[j] == b:
-                                cdock = c.docks[j]
-                        nx, ny = sx+bdock[2]-cdock[2], sy+bdock[3]-cdock[3]
-                        c.spr.move((nx, ny))
+                    for j in range(len(c.docks)):
+                        if c.connections[j] == b:
+                            cdock = c.docks[j]
+                            nx, ny = sx+bdock[2]-cdock[2], sy+bdock[3]-cdock[3]
+                            c.spr.move((nx, ny))
 
     #
     # Restore individual blocks from saved state
