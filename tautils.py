@@ -38,6 +38,10 @@ except (ImportError, AttributeError):
 from StringIO import StringIO
 import os.path
 
+def magnitude(pos):
+    x, y = pos
+    return x*x+y*y
+
 def json_load(text):
     if _old_Sugar_system is True:
         listdata = json.read(text)
@@ -98,13 +102,16 @@ def data_from_file(ta_file):
         # Rewind necessary because of failed pickle.load attempt
         f.seek(0)
         text = f.read()
-        data = json_load(text)
+        data = data_from_string(text)
     f.close()
     return data
 
+def data_from_string(text):
+    return json_load(text)
+
 def data_to_file(data, ta_file):
     f = file(ta_file, "w")
-    f.write(json_dump(data))
+    f.write(data_to_string(data))
     f.close()
 
 def data_to_string(data):

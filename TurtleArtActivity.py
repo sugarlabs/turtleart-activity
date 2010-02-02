@@ -576,8 +576,9 @@ class TurtleArtActivity(activity.Activity):
             if self.waiting_for_blocks:
                 _logger.debug("receiving project from sharer")
                 e,text = re.split(":",text,2)
-                # unpack data
-                self.tw.load_string(text)
+                if len(text) > 0:
+                    self.tw.new_project()
+                    self.tw.process_data(data_from_string(text))
                 # all caught up
                 self.waiting_for_blocks = False
 
@@ -1214,7 +1215,7 @@ class EditToolbar(gtk.Toolbar):
         _logger.debug("paste to the project")
         text = clipBoard.wait_for_text()
         if text is not None:
-            tawindow.clone_stack(self.activity.tw,text)
+            self.activity.tw.process_data(data_from_string(text))
 
 """
 Help toolbar: Just an icon and a label for displaying hover help

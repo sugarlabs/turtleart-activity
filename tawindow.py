@@ -827,7 +827,7 @@ class TurtleArtWindow():
         return True
 
     """
-    button_press
+    Button press
     """
     def button_press(self, mask, x, y, verbose=False):
         if verbose:
@@ -920,7 +920,7 @@ class TurtleArtWindow():
         self.selected_blk = None
 
     """
-    Button Press
+    Button press
     """
     def _buttonpress_cb(self, win, event):
         self.window.grab_focus()
@@ -997,7 +997,7 @@ class TurtleArtWindow():
             self._click_block(x, y)
 
     """
-    click block
+    Click block
     """
     def _click_block(self, x, y):
         blk = self.block_list.spr_to_block(self.selected_spr)
@@ -1056,7 +1056,7 @@ class TurtleArtWindow():
             self._run_stack(blk)
 
     """
-    snap_to_dock
+    Snap a block to the dock of another block
     """
     def _snap_to_dock(self):
         my_block = self.drag_group[0]
@@ -1070,9 +1070,9 @@ class TurtleArtWindow():
                 for your_dockn in range(len(your_block.docks)):
                     this_xy = self._dock_dx_dy(your_block, your_dockn,
                                               my_block, my_dockn)
-                    if self._magnitude(this_xy) > d:
+                    if magnitude(this_xy) > d:
                         continue
-                    d = self._magnitude(this_xy)
+                    d = magnitude(this_xy)
                     best_xy = this_xy
                     best_you = your_block
                     best_your_dockn = your_dockn
@@ -1090,18 +1090,18 @@ class TurtleArtWindow():
                 my_block.connections[best_my_dockn] = best_you
 
     """
-    import from Journal
+    Import a file from the Sugar Journal
     """
     def _import_from_journal(self, blk):
         if self.running_sugar:
-            chooser = ObjectChooser('Choose image', None,\
+            chooser = ObjectChooser('Choose image', None,
                        gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
             try:
                 result = chooser.run()
                 if result == gtk.RESPONSE_ACCEPT:
                     dsobject = chooser.get_selected_object()
                     if blk.name == 'journal':
-                        self._load_image(dsobject, blk)
+                        self._load_image_thumb(dsobject, blk)
                     elif blk.name == 'audio':
                         blk.spr.set_image(self.media_shapes['audioon'],
                                           1, MEDIA_X, MEDIA_Y)
@@ -1122,14 +1122,18 @@ class TurtleArtWindow():
             if fname is None:
                 return
             if movie_media_type(fname[-4:]):
-                blk.spr.set_image(self.media_shapes['journalon'], 1, MEDIA_X, MEDIA_Y)
+                blk.spr.set_image(self.media_shapes['journalon'], 1, MEDIA_X,
+                                                                     MEDIA_Y)
             elif blk.name == 'audio' or audio_media_type(fname[-4:]):
-                blk.spr.set_image(self.media_shapes['audioon'], 1, MEDIA_X, MEDIA_Y)
+                blk.spr.set_image(self.media_shapes['audioon'], 1, MEDIA_X,
+                                                                   MEDIA_Y)
                 blk.name = 'audio'
             elif blk.name == 'description':
-                blk.spr.set_image(self.media_shapes['descriptionon'], 1, MEDIA_X, MEDIA_Y)
+                blk.spr.set_image(self.media_shapes['descriptionon'], 1,
+                                  MEDIA_X, MEDIA_Y)
             else:
-                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(fname, THUMB_W, THUMB_H)
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(fname, THUMB_W,
+                                                                     THUMB_H)
                 if pixbuf is not None:
                     blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
             blk.values[0] = fname
@@ -1138,12 +1142,13 @@ class TurtleArtWindow():
     """
     Replace Journal block graphic with preview image 
     """
-    def _load_image(self, picture, blk):
+    def _load_image_thumb(self, picture, blk):
         pixbuf = get_pixbuf_from_journal(picture, THUMB_W, THUMB_H)
         if pixbuf is not None:
             blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
         else:
-            blk.spr.set_image(self.media_shapes['descriptionon'], 1, MEDIA_X, MEDIA_Y)
+            blk.spr.set_image(self.media_shapes['descriptionon'], 1, MEDIA_X,
+                                                                     MEDIA_Y)
 
     """
     Run stack
@@ -1173,7 +1178,7 @@ class TurtleArtWindow():
     def _in_the_trash(self, x, y):
         if self.selected_palette == self.trash_index and \
            self.palette_sprs[self.trash_index][self.palette_orientation].hit(
-                                                                         (x,y)):
+           (x,y)):
             return True
         return False
 
@@ -1186,6 +1191,13 @@ class TurtleArtWindow():
             if b.type == 'block':
                 just_blocks_list.append(b)
         return just_blocks_list
+
+
+    """
+    Macro
+    """
+    # TODO: load a 'macro' stack of blocks
+
 
     """
     Make a new block.
@@ -1200,11 +1212,14 @@ class TurtleArtWindow():
         # Add special skin to some blocks
         if name == 'nop':
             if self.nop == 'pythonloaded':
-                newblk.spr.set_image(self.media_shapes['pythonon'], 1, PYTHON_X, PYTHON_Y)
+                newblk.spr.set_image(self.media_shapes['pythonon'], 1,
+                                     PYTHON_X, PYTHON_Y)
             else:
-                newblk.spr.set_image(self.media_shapes['pythonoff'], 1, PYTHON_X, PYTHON_Y)
+                newblk.spr.set_image(self.media_shapes['pythonoff'], 1,
+                                     PYTHON_X, PYTHON_Y)
         elif name in BOX_STYLE_MEDIA:
-            newblk.spr.set_image(self.media_shapes[name+'off'], 1, MEDIA_X, MEDIA_Y)
+            newblk.spr.set_image(self.media_shapes[name+'off'], 1,
+                                 MEDIA_X, MEDIA_Y)
             newblk.spr.set_label(' ')
         newspr = newblk.spr
         newspr.set_layer(TOP_LAYER)
@@ -1317,13 +1332,6 @@ class TurtleArtWindow():
         return ((b1x+d1x)-(b2x+d2x), (b1y+d1y)-(b2y+d2y))
 
     """
-    Magnitude 
-    """
-    def _magnitude(self, pos):
-        x,y = pos
-        return x*x+y*y
-
-    """
     Jog turtle
     """
     def _jog_turtle(self, dx, dy):
@@ -1424,20 +1432,9 @@ class TurtleArtWindow():
     def load_files(self, ta_file, create_new_project=True):
         if create_new_project is True:
             self.new_project()
-        self.read_data(data_from_file(ta_file))
+        self.process_data(data_from_file(ta_file))
     
-    # Unpack serialized data sent across a share.
-    def load_string(self, text):
-        data = json_load(text)
-        self.new_project()
-        self.read_data(data)
-    
-    # Unpack serialized data from the clipboard.
-    def clone_stack(self, text):
-        data = json_load(text)
-        self.read_data(data)
-    
-    def read_data(self, data):
+    def process_data(self, data):
         # Create the blocks.
         blocks = []
         t = 0
