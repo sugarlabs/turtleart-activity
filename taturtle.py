@@ -83,18 +83,28 @@ class Turtle:
         self.shapes = []
         self.type = 'turtle'
         self.heading = 0
-        self.color = 0
-        self.shade = 50
+        self.pen_shade = 50
+        self.pen_color = 0
         self.pen_size = 5
         self.pen_state = True
+
+        if len(colors) == 2:
+            _colors = colors[:]
+            _colors.append(colors[0])
+            _colors.append(colors[1])
+        elif len(colors) == 4:
+            _colors=colors[:]
+        else:
+            _colors=["#008000", "#00A000", "#D0D000", "#808000"]
+
         _svg = SVG()
         _svg.set_scale(scale)
         self.spr = sprites.Sprite(turtle_list.sprite_list, self.x, self.y,
-                       svg_str_to_pixbuf(_svg.turtle(colors)))
+                       svg_str_to_pixbuf(_svg.turtle(_colors)))
         turtle_list.append_to_list(self)
         for i in range(36):
             _svg.set_orientation(i*10)
-            self.shapes.append(svg_str_to_pixbuf(_svg.turtle(colors)))
+            self.shapes.append(svg_str_to_pixbuf(_svg.turtle(_colors)))
 
     def set_heading(self, heading):
         self.heading = heading        
@@ -106,10 +116,10 @@ class Turtle:
             print "Turtle shape IndexError %f -> %d" % (heading, i)
 
     def set_color(self, color):
-        self.color = color
+        self.pen_color = color
 
     def set_shade(self, shade):
-        self.shade = shade
+        self.pen_shade = shade
 
     def set_pen_size(self, pen_size):
         self.pen_size = pen_size
@@ -134,10 +144,10 @@ class Turtle:
         return(self.heading)
 
     def get_color(self):
-        return(self.color)
+        return(self.pen_color)
 
     def get_shade(self):
-        return(self.shade)
+        return(self.pen_shade)
 
     def get_pen_size(self):
         return(self.pen_size)

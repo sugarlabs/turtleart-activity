@@ -177,7 +177,7 @@ class TurtleMain():
 
     def _do_stop_cb(self, widget):
         self.tw.lc.trace = 0
-        self.stop_button()
+        self.tw.stop_button()
         return
 
 

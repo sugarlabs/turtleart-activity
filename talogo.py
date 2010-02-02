@@ -22,12 +22,12 @@
 #THE SOFTWARE.
 
 import re
-from time import *
+from time import clock
 import gobject
 from operator import isNumberType
-import random
+from random import uniform
 import audioop
-from math import *
+from math import sqrt
 import subprocess
 from UserDict import UserDict
 try:
@@ -283,7 +283,7 @@ class LogoCode:
         'product':[2, lambda self,x,y: taproduct(x,y)],
         'purple':[0, lambda self: 90],
         'push':[1, lambda self,x: self.push_heap(x)],
-        'random':[2, lambda self,x,y: int(random.uniform(x,y))],
+        'random':[2, lambda self,x,y: int(uniform(x,y))],
         'red':[0, lambda self: 0],
         'repeat':[2, self.prim_repeat, True],
         'right':[1, lambda self, x: self.tw.canvas.right(x)],
@@ -375,7 +375,7 @@ class LogoCode:
                         self.readline(self.blocks_to_code(b))
         code = self.blocks_to_code(blk)
         if run_flag is True:
-            print "code: %s" % (code)
+            print "running code: %s" % (code)
             self.setup_cmd(code)
         else: return code
 
@@ -388,7 +388,7 @@ class LogoCode:
             code.append(dock[4])
         if blk.primitive is not None:
             code.append(blk.primitive)
-        else:
+        elif len(blk.values)>0:
             if blk.name=='number':
                 try:
                     code.append(float(blk.values[0]))
@@ -418,6 +418,8 @@ class LogoCode:
                     code.append('#saudio_None')
             else:
                 return ['%nothing%']
+        else:
+            return ['%nothing%']
         for i in range(1,len(blk.connections)):
             b = blk.connections[i]        
             dock = blk.docks[i]
@@ -740,12 +742,15 @@ class LogoCode:
                     pixbuf = get_pixbuf_from_journal(dsobject, int(w), int(h))
                 dsobject.destroy()
             else:
-                if movie_media_type(media[-4:]):
-                    play_movie_from_file(self, media[6:], int(x), int(y),
-                                                          int(w), int(h))
-                else:
-                    pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
-                                 media[6:], int(w), int(h))
+                try:
+                    if movie_media_type(media[-4:]):
+                        play_movie_from_file(self, media[6:], int(x), int(y),
+                                                              int(w), int(h))
+                    else:
+                        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                                     media[6:], int(w), int(h))
+                except:
+                    print "Couldn't open media object %s" % (media[6:])
             if pixbuf is not None:
                 self.tw.canvas.draw_pixbuf(pixbuf, 0, 0, int(x), int(y),
                                                          int(w), int(h))
@@ -1056,7 +1061,7 @@ class LogoCode:
                     self.tw.active_turtle.show()
                     return False
         except logoerror, e:
-            showlabel(self, str(e)[1:-1])
+            self.showlabel(str(e)[1:-1])
             self.tw.active_turtle.show()
             return False
         return True

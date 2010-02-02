@@ -42,6 +42,7 @@ DEGTOR = 2*pi/360
 from constants import *
 try:
     from sugar.graphics.objectchooser import ObjectChooser
+    from sugar.datastore import datastore
 except:
     pass
 
@@ -64,14 +65,14 @@ class TurtleArtWindow():
     # Time out for triggering help
     timeout_tag = [0]
 
-    def __init__(self, win, path, lang, parent=None):
-        self._setup_initial_values(win, path, lang, parent)
+    def __init__(self, win, path, lang, parent=None, mycolors=None):
+        self._setup_initial_values(win, path, lang, parent, mycolors)
         # TODO: most of this goes away
         self._setup_misc()
         # the new palette
         self.show_toolbar_palette(0, False)
 
-    def _setup_initial_values(self, win, path, lang, parent):
+    def _setup_initial_values(self, win, path, lang, parent, mycolors):
         self.window = win
         self.path = os.path.join(path, 'images')
         self.load_save_folder = os.path.join(path, 'samples')
@@ -143,7 +144,10 @@ class TurtleArtWindow():
         self.block_list = Blocks(self.scale)
         self.sprite_list = Sprites(self.window, self.area, self.gc)
         self.turtle_list = Turtles(self.sprite_list)
-        self.active_turtle = Turtle(self.turtle_list)
+        if mycolors == None:
+            self.active_turtle = Turtle(self.turtle_list)
+        else:
+            self.active_turtle = Turtle(self.turtle_list, mycolors.split(','))
         self.selected_turtle = None
         self.canvas = TurtleGraphics(self, self.width, self.height)
 
@@ -1455,29 +1459,34 @@ class TurtleArtWindow():
                 for i in range(len(b[4])-4):
                     dy = blk.add_arg()
         elif btype in BOX_STYLE_MEDIA and len(blk.values)>0:
-            if btype == 'audio' or btype == 'description':
-                print "restoring %s to %s block" % (blk.values[0],blk.name)
+            if blk.values[0] == 'None':
+                blk.spr.set_image(self.media_shapes[btype+'off'], 1, 37, 6)
+            elif btype == 'audio' or btype == 'description':
                 blk.spr.set_image(self.media_shapes[btype+'on'], 1, 37, 6)
             elif self.running_sugar:
                 try:
-                    if blk.values[0] != 'None':
-                        dsobject = datastore.get(blk.values[0])
-                        if not movie_media_type(dsobject.file_path[-4:]):
-                            pixbuf = get_pixbuf_from_journal(dsobject, 80, 60)
-                            if pixbuf is not None:
-                                blk.spr.set_image(pixbuf, 1, 17, 2)
-                            else:
-                                blk.spr.set_image(
-                                    self.media_shapes['journalon'], 1, 37, 6)
-                        dsobject.destroy()
+                    dsobject = datastore.get(blk.values[0])
+                    if not movie_media_type(dsobject.file_path[-4:]):
+                        pixbuf = get_pixbuf_from_journal(dsobject, 80, 60)
+                        if pixbuf is not None:
+                            blk.spr.set_image(pixbuf, 1, 17, 2)
+                        else:
+                            blk.spr.set_image(
+                                self.media_shapes['journalon'], 1, 37, 6)
+                    dsobject.destroy()
                 except:
                     print "couldn't open dsobject (%s)" % (blk.values[0])
+                    blk.spr.set_image(self.media_shapes['journaloff'],
+                                      1, 37, 6)
             else:
                 if not movie_media_type(blk.values[0][-4:]):
-                    pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(blk.values[0],
-                                                                  80, 60)
-                    if pixbuf is not None:
+                    try:
+                        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                                     blk.values[0], 80, 60)
                         blk.spr.set_image(pixbuf, 1, 17, 2)
+                    except:
+                        blk.spr.set_image(self.media_shapes['journaloff'],
+                                          1, 37, 6)
                 else:
                     blk.spr.set_image(self.media_shapes['journalon'], 1, 37, 6)
             blk.spr.set_label(' ')

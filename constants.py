@@ -291,6 +291,7 @@ PRIMITIVES = {
     'setscale':'setscale',
     'setshade':'setshade',
     'settextsize':'settextsize',
+    'settextcolor':'settextcolor',
     'setxy':'setxy',
     'shade':'shade',
     'show':'show',

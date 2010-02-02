@@ -943,8 +943,8 @@ class TurtleArtActivity(activity.Activity):
     """
     def _setup_canvas(self, canvas, lang):
         bundle_path = activity.get_bundle_path()
-        print "turtle colors = %s" % (profile.get_color().to_string())
-        self.tw = tawindow.TurtleArtWindow(canvas, bundle_path, lang, self)
+        self.tw = tawindow.TurtleArtWindow(canvas, bundle_path, lang, self,
+                                           profile.get_color().to_string())
         self.tw.activity = self
         self.tw.window.grab_focus()
         path = os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'], 'data')
