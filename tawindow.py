@@ -49,8 +49,7 @@ except:
 from gettext import gettext as _
 from tautils import *
 from sprite_factory import SVG, svg_str_to_pixbuf
-from talogo import LogoCode, stop_logo, get_pixbuf_from_journal,\
-                   display_coordinates, movie_media_type, audio_media_type
+from talogo import LogoCode, stop_logo
 from tacanvas import TurtleGraphics
 from sprites import Sprites, Sprite
 from block import Blocks, Block
@@ -189,7 +188,7 @@ class TurtleArtWindow():
         if self.status_spr is not None:
             self.status_spr.set_layer(HIDE_LAYER)
         self.lc.clear()
-        display_coordinates(self)
+        self.display_coordinates()
 
     """
     Stop button
@@ -198,16 +197,17 @@ class TurtleArtWindow():
         stop_logo(self)
 
     """
-    Change the icon for user-defined blocks after Python code is loaded
+    Change the icon for user-defined blocks after Python code is loaded.
     """
     def set_userdefined(self):
         for blk in self.just_blocks():
             if blk.name == 'nop':
-                blk.spr.set_image(self.media_shapes['pythonon'], 1, 15, 8)
+                blk.spr.set_image(self.media_shapes['pythonon'], 1,
+                                  PYTHON_X, PYTHON_Y)
         self.nop = 'pythonloaded'
 
     """
-    hideshow button
+    Hide/show button
     """
     def hideshow_button(self):
         if self.hide is False: 
@@ -223,7 +223,7 @@ class TurtleArtWindow():
         self.canvas.canvas.inval()
 
     """
-    hideshow_palette 
+    Hide or show palette 
     """
     def hideshow_palette(self, state):
         if state is False:
@@ -238,7 +238,7 @@ class TurtleArtWindow():
             self.show_palette()
 
     """
-    show palette 
+    Show palette 
     """
     def show_palette(self):
         self.show_toolbar_palette(0)
@@ -250,6 +250,15 @@ class TurtleArtWindow():
     def _hide_palette(self):
         self.hide_toolbar_palette()
         self.palette = False
+
+    """
+    Callback from 'hide blocks' block
+    """
+    def hideblocks(self):
+        self.hide = False
+        self.hideshow_button()
+        if self.running_sugar:
+            self.activity.do_hide()
 
     """
     Where is the mouse event?
@@ -973,7 +982,7 @@ class TurtleArtWindow():
             self.canvas.ycor = self.canvas.canvas._height/2-ty-30+cy
             self.canvas.move_turtle()
             if self.running_sugar:
-                display_coordinates(self)
+                self.display_coordinates()
             self.selected_turtle = None
             return
 
@@ -1347,7 +1356,7 @@ class TurtleArtWindow():
             self.canvas.xcor += dx
             self.canvas.ycor += dy
         self.canvas.move_turtle()
-        display_coordinates(self)
+        self.display_coordinates()
         self.selected_turtle = None
 
     """
@@ -1461,7 +1470,7 @@ class TurtleArtWindow():
     Process data (from a file or clipboard) into blocks
     """
     def process_data(self, data):
-        # Create the blocks.
+        # Create the blocks (or turtle).
         blocks = []
         t = 0
         for b in data:
@@ -1474,14 +1483,22 @@ class TurtleArtWindow():
         # Make the connections.
         for i in range(len(blocks)):
             cons=[]
-            # Ugly corner case to support old-style booleans
-            if blocks[i].connections == 'check':
+            # Normally, it is simply a matter of copying the connections.
+            if blocks[i].connections == None:
+                for c in data[i][4]:
+                    if c is None:
+                        cons.append(None)
+                    else:
+                        cons.append(blocks[c])
+            elif blocks[i].connections == 'check':
+                # Ugly corner case is to convert old-style booleans op.
                 cons.append(None) # Add an extra connection.
                 for c in data[i][4]:
                     if c is None:
                         cons.append(None)
                     else:
                         cons.append(blocks[c])
+                # If the boolean op was connected, readjust the plumbing.
                 if data[i][4][0] is not None:
                     c = data[i][4][0]
                     cons[0] = blocks[data[c][4][0]]
@@ -1493,30 +1510,34 @@ class TurtleArtWindow():
                         blocks[c].connections[0] = blocks[i]
                         blocks[c].connections[3] = None
                     else:
-                        print "WARNING: could not look into the future"
-            # Normally, it is simply a matter of copying the connections.
+                        # Connection was to a block we haven't seen yet.
+                        print "WARNING: dock check couldn't see the future"
             else:
-                for c in data[i][4]:
-                    if c is None:
-                        cons.append(None)
-                    else:
-                        cons.append(blocks[c])
+                print "WARNING: unknown connection state %s" %\
+                      (str(blocks[i].connections))
             blocks[i].connections = cons[:]
-        # Adjust the x,y positions, as block sizes and shapes may have changed.
+        # Block sizes and shapes may have changed.
         for b in blocks:
-            (sx, sy) = b.spr.get_xy()
-            for i, c in enumerate(b.connections):
-                if i>0 and c is not None:
-                    bdock = b.docks[i]
-                    for j in range(len(c.docks)):
-                        if c.connections[j] == b:
-                            cdock = c.docks[j]
-                            nx, ny = sx+bdock[2]-cdock[2], sy+bdock[3]-cdock[3]
-                            c.spr.move((nx, ny))
+            self._adjust_dock_positions(b)
 
-    #
-    # Restore individual blocks from saved state
-    #
+    """
+    Adjust the dock x,y positions
+    """
+    def _adjust_dock_positions(self, blk):
+        (sx, sy) = blk.spr.get_xy()
+        for i, c in enumerate(blk.connections):
+            if i>0 and c is not None:
+                bdock = blk.docks[i]
+                for j in range(len(c.docks)):
+                    if c.connections[j] == blk:
+                        cdock = c.docks[j]
+                        nx, ny = sx+bdock[2]-cdock[2], sy+bdock[3]-cdock[3]
+                        c.spr.move((nx, ny))
+                self._adjust_dock_positions(c)
+
+    """
+    Restore individual blocks from saved state
+    """
     def load_block(self, b):
         # A block is saved as: (i, (btype, value), x, y, (c0,... cn))
         # The x,y position is saved/loaded for backward compatibility
@@ -1538,14 +1559,10 @@ class TurtleArtWindow():
     
         if btype in OLD_DOCK:
             check_dock = True
-            print "WARNING: will need to preform dock check"
         else:
             check_dock = False
         if OLD_NAMES.has_key(btype):
-            print "%s -> %s" % (btype, OLD_NAMES[btype])
             btype = OLD_NAMES[btype]
-        else:
-            print "%s" % (btype)
         blk = Block(self.block_list, self.sprite_list, 
                     btype, b[2]+self.canvas.cx,
                            b[3]+self.canvas.cy, 'block', values)
@@ -1615,9 +1632,9 @@ class TurtleArtWindow():
             blk.connections = 'check'
         return blk
 
-    #
-    # Restore a turtle from its saved state
-    #
+    """
+    Restore a turtle from its saved state
+    """
     def load_turtle(self, b):
         id, name, xcor, ycor, heading, color, shade, pensize = b
         self.canvas.setxy(xcor, ycor)
@@ -1626,15 +1643,15 @@ class TurtleArtWindow():
         self.canvas.setshade(shade)
         self.canvas.setpensize(pensize)
     
-    #
-    # Start a new project with a 'start' brick
-    #
+    """
+    Start a new project with a 'start' brick
+    """
     def load_start(self): 
        self.process_data([[0, "start", 218, 224, [None, None]]])
     
-    #
-    # Start a project to a file
-    #
+    """
+    Start a project to a file
+    """
     def save_file(self):
         if self.save_folder is not None:
             self.load_save_folder = self.save_folder
@@ -1649,9 +1666,9 @@ class TurtleArtWindow():
         data_to_file(data, fname+'.ta')
         self.save_file_name = os.path.basename(fname)
     
-    #
-    # Pack the project (or stack) into a data stream to be serialized
-    #
+    """
+    Pack the project (or stack) into a data stream to be serialized
+    """
     def assemble_data_to_save(self, save_turtle=True, save_project=True):
         # TODO: if save_project is False: just the current stack
         data = []
@@ -1689,3 +1706,17 @@ class TurtleArtWindow():
                         self.canvas.pensize))
         return data
     
+    """
+    Display the coordinates of the current turtle
+    """
+    def display_coordinates(self):
+        x = round_int(self.canvas.xcor/self.coord_scale)
+        y = round_int(self.canvas.ycor/self.coord_scale)
+        h = round_int(self.canvas.heading)
+        if self.running_sugar:
+            self.activity.coordinates_label.set_text("%s: %d %s: %d %s: %d" % (
+                                   _("xcor"), x, _("ycor"), y, _("heading"), h))
+            self.activity.coordinates_label.show()
+        else:
+            self.win.set_title("%s — %s: %d %s: %d %s: %d" % (_("Turtle Art"),
+                                   _("xcor"), x, _("ycor"), y, _("heading"), h))

@@ -139,3 +139,38 @@ def save_picture(canvas, fname):
                              0, 0, 0, 0, canvas.width, canvas.height)
     pixbuf.save(fname, 'png')
 
+
+def get_pixbuf_from_journal(dsobject, w, h):
+    try:
+        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path,
+                                                      int(w),int(h))
+    except:
+        try:
+            pixbufloader = \
+                gtk.gdk.pixbuf_loader_new_with_mime_type('image/png')
+            pixbufloader.set_size(min(300,int(w)),min(225,int(h)))
+            pixbufloader.write(dsobject.metadata['preview'])
+            pixbufloader.close()
+            pixbuf = pixbufloader.get_pixbuf()
+        except:
+            pixbuf = None
+    return pixbuf
+
+def movie_media_type(suffix):
+    if suffix.replace('.','') in ['ogv','vob','mp4','wmv','mov', 'mpeg']:
+        return True
+    return False
+
+def audio_media_type(suffix):
+    if suffix.replace('.','') in ['ogg', 'oga', 'm4a']:
+        return True
+    return False
+
+def round_int(n):
+    if int(float(n)) == n:
+        return int(n)
+    else:
+        nn = int(float(n+0.05)*10)/10.
+        if int(float(nn)) == nn:
+            return int(nn)
+        return nn

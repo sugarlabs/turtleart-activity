@@ -83,7 +83,6 @@ class Block:
         self.docks = None
         self.connections = None
         self.values = []
-        self.content = None
         self.primitive = None
         self.type = type
         self._dx = 0
@@ -104,10 +103,6 @@ class Block:
             self.values.append(v)
 
         self._new_block_from_factory(sprite_list, x, y)
-
-        # TODO: add media block graphics here
-        if name in CONTENT_BLOCKS:
-            self.content = self.name
 
         if PRIMITIVES.has_key(name):
             self.primitive = PRIMITIVES[self.name]

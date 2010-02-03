@@ -38,7 +38,8 @@ except:
 from constants import *
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
-
+from tautils import get_pixbuf_from_journal, movie_media_type,\
+                    audio_media_type, round_int
 from gettext import gettext as _
 
 procstop = False
@@ -63,18 +64,9 @@ class logoerror(Exception):
     def __str__(self):
         return repr(self.value)
 
-#
-# Utility functions
-#
-def movie_media_type(suffix):
-    if suffix.replace('.','') in ['ogv','vob','mp4','wmv','mov', 'mpeg']:
-        return True
-    return False
-
-def audio_media_type(suffix):
-    if suffix.replace('.','') in ['ogg', 'oga', 'm4a']:
-        return True
-    return False
+"""
+Utility functions
+"""
 
 def careful_divide(x,y):
     try:
@@ -153,45 +145,6 @@ def start_stack(tw):
     if tw.running_sugar:
         tw.activity.recenter()
 
-def display_coordinates(tw, a=-1, b=-1, d=-1):
-    if a==-1 and b==-1 and d == -1:
-        x = round_int(tw.canvas.xcor/tw.coord_scale)
-        y = round_int(tw.canvas.ycor/tw.coord_scale)
-        h = round_int(tw.canvas.heading)
-    else:
-        x = a
-        y = b
-        h = d
-    if tw.running_sugar:
-        tw.activity.coordinates_label.set_text("%s: %d %s: %d %s: %d" % (
-                                   _("xcor"), x, _("ycor"), y, _("heading"), h))
-        tw.activity.coordinates_label.show()
-    
-def round_int(n):
-    if int(float(n)) == n:
-        return int(n)
-    else:
-        nn = int(float(n+0.05)*10)/10.
-        if int(float(nn)) == nn:
-            return int(nn)
-        return nn
-
-def get_pixbuf_from_journal(dsobject, w, h):
-    try:
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path,
-                                                      int(w),int(h))
-    except:
-        try:
-            pixbufloader = \
-                gtk.gdk.pixbuf_loader_new_with_mime_type('image/png')
-            pixbufloader.set_size(min(300,int(w)),min(225,int(h)))
-            pixbufloader.write(dsobject.metadata['preview'])
-            pixbufloader.close()
-            pixbuf = pixbufloader.get_pixbuf()
-        except:
-            pixbuf = None
-    return pixbuf
-
 def calc_position(tw, t):
     w,h,x,y,dx,dy = TEMPLATES[t]
     x *= tw.canvas.width
@@ -212,9 +165,9 @@ def just_stop():
 def millis():
     return int(clock()*1000)
 
-#
-# A class for parsing Logo Code
-#
+"""
+A class for parsing Logo Code
+"""
 class LogoCode:
     def __init__(self, tw):
 
@@ -228,7 +181,7 @@ class LogoCode:
         '*':[None, lambda self,x,y: x*y],
         '%':[None, lambda self,x,y: x%y],
         '+':[None, lambda self,x,y: x+y],
-        'and':[None, lambda self,x,y: x&y],
+        'and':[2, lambda self,x,y: x&y],
         'arc':[2, lambda self, x, y: self.tw.canvas.arc(x, y)],
         'back':[1, lambda self,x: self.tw.canvas.forward(-x)],
         'blue':[0, lambda self: 70],
@@ -252,7 +205,7 @@ class LogoCode:
         'green':[0, lambda self: 30],
         'heading':[0, lambda self: self.tw.canvas.heading],
         'heap':[0, lambda self: self.heap_print()],
-        'hideblocks':[0, lambda self: self.hideblocks()],
+        'hideblocks':[0, lambda self: self.tw.hideblocks()],
         'hres':[0, lambda self: self.tw.canvas.width/self.tw.coord_scale],
         'id':[1, lambda self,x: identity(x)],
         'if':[2, self.prim_if, True],
@@ -272,7 +225,7 @@ class LogoCode:
         'nop3':[1, lambda self,x: None],
         'not':[1, lambda self,x:not x],
         'orange':[0, lambda self: 10],
-        'or':[None, lambda self,x,y: x|y],
+        'or':[2, lambda self,x,y: x|y],
         'pendown':[0, lambda self: self.tw.canvas.setpen(True)],
         'pensize':[0, lambda self: self.tw.canvas.pensize],
         'penup':[0, lambda self: self.tw.canvas.setpen(False)],
@@ -357,9 +310,12 @@ class LogoCode:
     
         self.scale = 33
 
+    """
+    Given a block to run...
+    """
     def run_blocks(self, blk, blocks, run_flag):
-        for x in self.stacks.keys():
-            self.stacks[x] = None
+        for k in self.stacks.keys():
+            self.stacks[k] = None
         self.stacks['stack1'] = None
         self.stacks['stack2'] = None
         for b in blocks:
@@ -368,26 +324,29 @@ class LogoCode:
             if b.name=='hat2':
                 self.stacks['stack2'] = self.readline(self.blocks_to_code(b))
             if b.name == 'hat':
-                if (b.connections[1] is not None):
-                    text = b.connections[1].values[0]
-                    self.stacks['stack3'+text] =\
+                if b.connections[1] is not None:
+                    self.stacks['stack3'+b.connections[1].values[0]] =\
                         self.readline(self.blocks_to_code(b))
         code = self.blocks_to_code(blk)
         if run_flag is True:
             print "running code: %s" % (code)
             self.setup_cmd(code)
-        else: return code
+        else:
+            return code
 
+    """
+    Convert a stack of blocks to pseudocode.
+    """
     def blocks_to_code(self, blk):
         if blk is None:
             return ['%nothing%']
         code = []
         dock = blk.docks[0]
         if len(dock)>4:
-            code.append(dock[4])
+            code.append(dock[4]) # There could be a '(' or '['.
         if blk.primitive is not None:
             code.append(blk.primitive)
-        elif len(blk.values)>0:
+        elif len(blk.values)>0:  # Extract the value from content blocks.
             if blk.name=='number':
                 try:
                     code.append(float(blk.values[0]))
@@ -416,12 +375,12 @@ class LogoCode:
                 else:
                     code.append('#saudio_None')
             else:
-                print "%s had nothing as a value" % (blk.name)
+                print "%s had no primitive." % (blk.name)
                 return ['%nothing%']
         else:
-            print "%s had no value" % (blk.name)
+            print "%s had no value." % (blk.name)
             return ['%nothing%']
-        for i in range(1,len(blk.connections)):
+        for i in range(1, len(blk.connections)):
             b = blk.connections[i]        
             dock = blk.docks[i]
             if len(dock)>4:
@@ -433,33 +392,54 @@ class LogoCode:
                 code.append('%nothing%')
         return code
     
-    def intern(self, str):
-        if str in self.oblist: return self.oblist[str]
-        sym = symbol(str)
-        self.oblist[str] = sym
-        return sym
-    
+    """
+    Execute the psuedocode.
+    """
+    def setup_cmd(self, str):
+        self.tw.active_turtle.hide() # Hide the turtle while we are running.
+        self.procstop = False
+        list = self.readline(str)
+        # print list
+        self.step = self.start_eval(list)
+
+    """
+    Convert the pseudocode into a list of commands.
+    """
     def readline(self, line):
         res = []
         while line:
             token = line.pop(0)
-            if isNumberType(token): res.append(token)
-            elif token.isdigit(): res.append(float(token))
+            if isNumberType(token):
+                res.append(token)
+            elif token.isdigit():
+                res.append(float(token))
             elif token[0]=='-' and token[1:].isdigit():
                 res.append(-float(token[1:]))
-            elif token[0] == '"': res.append(token[1:])
-            elif token[0:2] == "#s": res.append(token[2:])
-            elif token == '[': res.append(self.readline(line))
-            elif token == ']': return res
-            else: res.append(self.intern(token))
+            elif token[0] == '"':
+                res.append(token[1:])
+            elif token[0:2] == "#s":
+                res.append(token[2:])
+            elif token == '[':
+                res.append(self.readline(line))
+            elif token == ']':
+                return res
+            else:
+                res.append(self.intern(token))
         return res
 
-    def setup_cmd(self, str):
-        self.tw.active_turtle.hide()
-        self.procstop=False
-        list = self.readline(str)
-        self.step = self.start_eval(list)
-
+    """
+    Add the object to the object list.
+    """
+    def intern(self, str):
+        if str in self.oblist:
+            return self.oblist[str]
+        sym = symbol(str)
+        self.oblist[str] = sym
+        return sym
+    
+    """
+    Step through the list.
+    """
     def start_eval(self, list):
         self.icall(self.evline, list)
         yield True
@@ -467,12 +447,23 @@ class LogoCode:
             self.tw.activity.stop_button.set_icon("stopitoff")
         yield False
 
+    """
+    Add a function to the program stack.
+    """
+    def icall(self, fcn, *args):
+        self.istack.append(self.step)
+        self.step = fcn(*(args))
+
+    """
+    Evaluate a line of code from the list.
+    """
     def evline(self, list):
         oldiline = self.iline
         self.iline = list[:]
         self.arglist = None
+        # print "evline: %s" % (self.iline)
         while self.iline:
-            if self.tw.step_time > 0:
+            if self.tw.step_time > 0: # show the turtle during idle time
                 self.tw.active_turtle.show()
                 endtime = millis()+self.an_int(self.tw.step_time)*100
                 while millis()<endtime:
@@ -490,27 +481,38 @@ class LogoCode:
             raise logoerror(str(self.iresult))
         self.iline = oldiline
         self.ireturn()
-        display_coordinates(self.tw)
+        self.tw.display_coordinates()
         yield True
     
+    """
+    Evaluate the next token on the line.
+    """
     def eval(self, infixarg=False):
         token = self.iline.pop(0)
+        # print "eval: %s" % (str(token))
         if type(token) == self.symtype:
-            self.icall(self.evalsym, token); yield True
+            self.icall(self.evalsym, token)
+            yield True
             res = self.iresult
-        else: res = token
+        else:
+            res = token
         if not infixarg:
             while self.infixnext():
-                self.icall(self.evalinfix, res); yield True
+                self.icall(self.evalinfix, res)
+                yield True
                 res = self.iresult
         self.ireturn(res)
         yield True
 
+    """
+    Process symbols.
+    """
     def evalsym(self, token):
         self.debug_trace(token)
         self.undefined_check(token)
         oldcfun, oldarglist = self.cfun, self.arglist
         self.cfun, self.arglist = token, []
+        # print "   evalsym: %s %s" % (str(self.cfun), str(self.arglist))
         if token.nargs == None:
             raise logoerror("#noinput")
         for i in range(token.nargs):
@@ -558,6 +560,36 @@ class LogoCode:
         if type(self.iline[0]) is not self.symtype:
             return False
         return self.iline[0].name in ['+', '-', '*', '/','%','and','or']
+
+    def ufuncall(self, body):
+        ijmp(self.evline, body)
+        yield True
+    
+    def doevalstep(self):
+        starttime = millis()
+        try:
+            while (millis()-starttime)<120:
+                try:
+                    if self.step is not None:
+                        self.step.next()
+                    else: # TODO: where is doevalstep getting called with None?
+                        print "step is None"
+                        return False
+                except StopIteration:
+                    self.tw.active_turtle.show()
+                    return False
+        except logoerror, e:
+            self.showlabel(str(e)[1:-1])
+            self.tw.active_turtle.show()
+            return False
+        return True
+
+    def ireturn(self, res=None):
+        self.step = self.istack.pop()
+        self.iresult = res
+
+    def ijmp(self, fcn, *args):
+        self.step = fcn(*(args))
 
     def debug_trace(self, token):
         if self.trace:
@@ -686,10 +718,9 @@ class LogoCode:
     def prim_stopstack(self):
         self.procstop = True
     
-    def ufuncall(self, body):
-        ijmp(self.evline, body)
-        yield True
-    
+    def heap_print(self):
+        self.showlabel(self.heap)
+
     def an_int(self, n):
         if type(n) == int:
             return n
@@ -729,6 +760,89 @@ class LogoCode:
         else:
             return y
     
+    def status_print(self, n):
+        if type(n) == str or type(n) == unicode:
+            # show title for Journal entries
+            if n[0:6] == 'media_':
+                try:
+                    dsobject = datastore.get(n[6:])
+                    self.showlabel(dsobject.metadata['title'])
+                    dsobject.destroy()
+                except:
+                    self.showlabel(n)
+            else:
+                self.showlabel(n)
+        elif type(n) == int:
+            self.showlabel(n)
+        else:
+            self.showlabel(round_int(n))
+    
+    def kbinput(self):
+        if len(self.tw.keypress) == 1:
+            self.keyboard = ord(self.tw.keypress[0])
+        else:
+            try:
+                self.keyboard = {'Escape': 27, 'space': 32, ' ': 32,
+                                 'Return': 13, \
+                                 'KP_Up': 2, 'KP_Down': 4, 'KP_Left': 1, \
+                                 'KP_Right': 3,}[self.tw.keypress]
+            except:
+                self.keyboard = 0
+        self.tw.keypress = ""
+    
+    def showlabel(self, label):
+        if label=='#nostack':
+            shp = 'nostack'
+            label=''
+        elif label=='#noinput':
+            shp = 'noinput'
+            label=''
+        elif label=='#emptyheap':
+            shp = 'emptyheap'
+            label=''
+        elif label=='#emptybox':
+            shp = 'emptybox'
+            label='                    '+self.nobox
+        elif label=='#nomedia':
+            shp = 'nomedia'
+            label=''
+        elif label=='#nocode':
+            shp = 'nocode'
+            label=''
+        elif label=='#syntaxerror':
+            shp = 'syntaxerror'
+            label=''
+        elif label=='#overflowerror':
+            shp = 'overflowerror'
+            label=''
+        elif label=='#notanumber':
+            shp = 'overflowerror'
+            label=''
+        else:
+            shp = 'status'
+        self.tw.status_spr.set_shape(self.tw.status_shapes[shp])
+        self.tw.status_spr.set_label(label)
+        self.tw.status_spr.set_layer(STATUS_LAYER)
+
+    def setbox(self, name,val):
+        self.boxes[name]=val
+    
+    def push_heap(self, val):
+        self.heap.append(val)
+
+    def pop_heap(self):
+        try:
+            return self.heap.pop(-1)
+        except:
+            raise logoerror ("#emptyheap")
+
+    def empty_heap(self):
+        self.heap = []
+
+    """
+    Everything below is related to multimedia commands
+    """
+
     def show_picture(self, media, x, y, w, h):
         if media == "" or media[6:] == "":
             pass
@@ -738,7 +852,6 @@ class LogoCode:
                 try:
                     dsobject = datastore.get(media[6:])
                 except:
-                    # raise logoerror("#nomedia")
                     print "Couldn't open media object %s" % (media[6:])
                 if movie_media_type(dsobject.file_path[-4:]):
                     play_movie_from_file(self,
@@ -1043,123 +1156,3 @@ class LogoCode:
         y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
         self.tw.canvas.draw_text(string,x,y-15,int(fsize),self.tw.canvas.width)
 
-    def hideblocks(self):
-        self.tw.hide = False # force hide
-        self.tw.hideshow_button()
-        # TODO: how do we do this with the new toolbar?
-        #for i in self.tw.selbuttons:
-        #    hide(i)
-        if self.tw.running_sugar:
-            self.tw.activity.do_hide()
-    
-    def doevalstep(self):
-        starttime = millis()
-        try:
-            while (millis()-starttime)<120:
-                try:
-                    if self.step is not None:
-                        self.step.next()
-                    else: # TODO: where is doevalstep getting called with None?
-                        print "step is None"
-                        return False
-                except StopIteration:
-                    self.tw.active_turtle.show()
-                    return False
-        except logoerror, e:
-            self.showlabel(str(e)[1:-1])
-            self.tw.active_turtle.show()
-            return False
-        return True
-
-    def icall(self, fcn, *args):
-        self.istack.append(self.step)
-        self.step = fcn(*(args))
-
-    def ireturn(self, res=None):
-        self.step = self.istack.pop()
-        self.iresult = res
-
-    def ijmp(self, fcn, *args):
-        self.step = fcn(*(args))
-    
-    def heap_print(self):
-        self.showlabel(self.heap)
-
-    def status_print(self, n):
-        if type(n) == str or type(n) == unicode:
-            # show title for Journal entries
-            if n[0:6] == 'media_':
-                try:
-                    dsobject = datastore.get(n[6:])
-                    self.showlabel(dsobject.metadata['title'])
-                    dsobject.destroy()
-                except:
-                    self.showlabel(n)
-            else:
-                self.showlabel(n)
-        elif type(n) == int:
-            self.showlabel(n)
-        else:
-            self.showlabel(round_int(n))
-    
-    def kbinput(self):
-        if len(self.tw.keypress) == 1:
-            self.keyboard = ord(self.tw.keypress[0])
-        else:
-            try:
-                self.keyboard = {'Escape': 27, 'space': 32, ' ': 32,
-                                 'Return': 13, \
-                                 'KP_Up': 2, 'KP_Down': 4, 'KP_Left': 1, \
-                                 'KP_Right': 3,}[self.tw.keypress]
-            except:
-                self.keyboard = 0
-        self.tw.keypress = ""
-    
-    def showlabel(self, label):
-        if label=='#nostack':
-            shp = 'nostack'
-            label=''
-        elif label=='#noinput':
-            shp = 'noinput'
-            label=''
-        elif label=='#emptyheap':
-            shp = 'emptyheap'
-            label=''
-        elif label=='#emptybox':
-            shp = 'emptybox'
-            label='                    '+self.nobox
-        elif label=='#nomedia':
-            shp = 'nomedia'
-            label=''
-        elif label=='#nocode':
-            shp = 'nocode'
-            label=''
-        elif label=='#syntaxerror':
-            shp = 'syntaxerror'
-            label=''
-        elif label=='#overflowerror':
-            shp = 'overflowerror'
-            label=''
-        elif label=='#notanumber':
-            shp = 'overflowerror'
-            label=''
-        else:
-            shp = 'status'
-        self.tw.status_spr.set_shape(self.tw.status_shapes[shp])
-        self.tw.status_spr.set_label(label)
-        self.tw.status_spr.set_layer(STATUS_LAYER)
-
-    def setbox(self, name,val):
-        self.boxes[name]=val
-    
-    def push_heap(self, val):
-        self.heap.append(val)
-
-    def pop_heap(self):
-        try:
-            return self.heap.pop(-1)
-        except:
-            raise logoerror ("#emptyheap")
-
-    def empty_heap(self):
-        self.heap = []
