@@ -868,9 +868,11 @@ class TurtleArtWindow():
             elif blk.type == 'proto':
                 if blk.name == 'restore':
                     self._restore_from_trash()
+                elif MACROS.has_key(blk.name):
+                    self._new_macro(blk.name, x, y+PALETTE_HEIGHT)
                 else:
                     blk.spr.set_shape(blk.shapes[1])
-                    self._new_block_from_category(blk.name, x, y+PALETTE_HEIGHT)
+                    self._new_block(blk.name, x, y+PALETTE_HEIGHT)
                     blk.spr.set_shape(blk.shapes[0])
             return True
 
@@ -1211,7 +1213,7 @@ class TurtleArtWindow():
     """
     Make a new block.
     """
-    def _new_block_from_category(self, name, x, y):
+    def _new_block(self, name, x, y):
         if name in CONTENT_BLOCKS:
             newblk = Block(self.block_list, self.sprite_list, name,
                            x-20, y-20, 'block', DEFAULTS[name])
@@ -1453,6 +1455,15 @@ class TurtleArtWindow():
             self.save_file_name = os.path.basename(fname)
     
     """
+    Create a "macro" (predefined stack of blocks)
+    """
+    def _new_macro(self, name, x, y):
+        macro = MACROS[name]
+        macro[0][2] = x
+        macro[0][3] = y
+        self.process_data(macro)
+
+    """
     Process data (from a file or clipboard) into blocks
     """
     def process_data(self, data):
@@ -1518,6 +1529,8 @@ class TurtleArtWindow():
         btype, value = b[1], None
         if type(btype) == type((1,2)): 
             btype, value = btype
+        elif type(btype) == type([1,2]): 
+            btype, value = btype[0], btype[1]
         if btype in CONTENT_BLOCKS:
             if btype == 'number':
                 try:
@@ -1648,6 +1661,7 @@ class TurtleArtWindow():
     def assemble_data_to_save(self, save_turtle=True, save_project=True):
         # TODO: if save_project is False: just the current stack
         data = []
+        
         for i, b in enumerate(self._just_blocks()):
              b.id = i
         for b in self._just_blocks():

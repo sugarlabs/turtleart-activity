@@ -124,6 +124,24 @@ PORTFOLIO_STYLE_1x1 = ['template1x1']
 PORTFOLIO_STYLE_2x1 = ['template2x1']
 PORTFOLIO_STYLE_1x2 = ['template1x2']
 
+
+#
+# Macros (groups of blocks)
+#
+MACROS = {
+    'kbinput':[[0, 'forever', 0, 0, [None, 1, None]],
+               [1, 'kbinput', 0, 0, [0, 2]],
+               [2, 'vspace', 0, 0, [1, 3]],
+               [3, 'if', 0, 0, [2, 4, 7, 8]],
+               [4, 'greater2', 0, 0, [3, 5, 6, None]],
+               [5, 'keyboard', 0, 0, [4, None]],
+               [6, ['number', '0'], 0, 0, [4, None]],
+               [7, 'stopstack', 0, 0, [3, None]],
+               [8, 'vspace', 0, 0, [3, 9]],
+               [9, 'wait', 0, 0, [8, 10, None]],
+               [10, ['number', '1'], 0, 0, [9, None]]]
+         }
+
 #
 # blocks that are expandable
 #
