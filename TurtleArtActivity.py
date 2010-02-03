@@ -58,12 +58,11 @@ import tarfile
 import sys
 import re
 
-from constants import *
+from taconstants import *
 from taexporthtml import save_html
 from taexportlogo import save_logo
-from tautils import *
-import tawindow
-import talogo
+from tautils import data_to_file, data_to_string, data_from_string
+from tawindow import TurtleArtWindow
 
 SERVICE = 'org.laptop.TurtleArtActivity'
 IFACE = SERVICE
@@ -940,8 +939,8 @@ class TurtleArtActivity(activity.Activity):
     """
     def _setup_canvas(self, canvas, lang):
         bundle_path = activity.get_bundle_path()
-        self.tw = tawindow.TurtleArtWindow(canvas, bundle_path, lang, self,
-                                           profile.get_color().to_string())
+        self.tw = TurtleArtWindow(canvas, bundle_path, lang, self,
+                                  profile.get_color().to_string())
         self.tw.activity = self
         self.tw.window.grab_focus()
         path = os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'], 'data')

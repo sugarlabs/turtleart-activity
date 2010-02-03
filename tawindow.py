@@ -36,24 +36,25 @@ import gobject
 import os
 import os.path
 import time
-
 from math import atan2, pi
 DEGTOR = 2*pi/360
-from constants import *
+from gettext import gettext as _
+
 try:
     from sugar.graphics.objectchooser import ObjectChooser
     from sugar.datastore import datastore
 except:
     pass
 
-from gettext import gettext as _
-from tautils import *
-from sprite_factory import SVG, svg_str_to_pixbuf
+from taconstants import *
 from talogo import LogoCode, stop_logo
 from tacanvas import TurtleGraphics
-from sprites import Sprites, Sprite
-from block import Blocks, Block
+from tablock import Blocks, Block
 from taturtle import Turtles, Turtle
+from tautils import magnitude, get_load_name, get_save_name, data_from_file,\
+                    data_to_file, round_int, get_id, get_pixbuf_from_journal
+from sprite_factory import SVG, svg_str_to_pixbuf
+from sprites import Sprites, Sprite
 
 """
 TurtleArt Window class abstraction 

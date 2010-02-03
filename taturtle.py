@@ -19,7 +19,7 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-from constants import *
+from taconstants import *
 from sprite_factory import SVG, svg_str_to_pixbuf
 import sprites
 from gettext import gettext as _

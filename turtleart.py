@@ -29,7 +29,7 @@ import os.path
 import locale
 from gettext import gettext as _
 
-from tawindow import *
+from tawindow import TurtleArtWindow
 
 """
 Make a path if it doesn't previously exist

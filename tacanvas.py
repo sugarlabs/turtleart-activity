@@ -24,7 +24,7 @@ from math import sin, cos, pi
 from sprites import Sprite
 import pango
 
-from constants import *
+from taconstants import *
 
 def wrap100(n):
     n = int(n)

@@ -35,7 +35,7 @@ try:
 except:
     pass
 
-from constants import *
+from taconstants import *
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, movie_media_type,\
