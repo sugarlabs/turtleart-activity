@@ -59,8 +59,8 @@ import sys
 import re
 
 from constants import *
-from taexporthtml import *
-from taexportlogo import *
+from taexporthtml import save_html
+from taexportlogo import save_logo
 from tautils import *
 import tawindow
 import talogo
@@ -245,10 +245,7 @@ class TurtleArtActivity(activity.Activity):
 
         # Write the file to the instance directory of this activity's root. 
         file_path = os.path.join(datapath, filename)
-
-        # FIXME: this was like this before refactoring, the save_pict
-        # belongs to taproject (not tawindow)
-        self.tw.save_pict(file_path)
+        save_picture(self.tw.canvas, file_path)
 
         # Create a datastore object
         dsobject = datastore.create()

@@ -201,7 +201,7 @@ class TurtleArtWindow():
     Change the icon for user-defined blocks after Python code is loaded
     """
     def set_userdefined(self):
-        for blk in self._just_blocks():
+        for blk in self.just_blocks():
             if blk.name == 'nop':
                 blk.spr.set_image(self.media_shapes['pythonon'], 1, 15, 8)
         self.nop = 'pythonloaded'
@@ -211,12 +211,12 @@ class TurtleArtWindow():
     """
     def hideshow_button(self):
         if self.hide is False: 
-            for blk in self._just_blocks():
+            for blk in self.just_blocks():
                 blk.spr.set_layer(HIDE_LAYER)
             self._hide_palette() 
             self.hide = True
         else:
-            for blk in self._just_blocks():
+            for blk in self.just_blocks():
                 blk.spr.set_layer(BLOCK_LAYER)
             self.show_palette()
             self.hide = False
@@ -264,14 +264,14 @@ class TurtleArtWindow():
         if self.running_sugar:
             self.activity.recenter()
         # Look for a 'start' block
-        for blk in self._just_blocks():
+        for blk in self.just_blocks():
             if self._find_start_stack(blk):
                 self.step_time = time
                 print "running stack starting from %s" % (blk.name)
                 self._run_stack(blk)
                 return
         # If there is no 'start' block, run stacks that aren't 'def action'
-        for blk in self._just_blocks():
+        for blk in self.just_blocks():
             if self._find_block_to_run(blk):
                 self.step_time = time
                 print "running stack starting from %s" % (blk.name)
@@ -487,7 +487,7 @@ class TurtleArtWindow():
     """
     Find the top block in a stack.
     """
-    def _find_top_block(self, blk):
+    def find_top_block(self, blk):
         while blk.connections[0] is not None:
             blk = blk.connections[0]
         return blk
@@ -496,7 +496,7 @@ class TurtleArtWindow():
     Find a stack with a 'start' block on top.
     """
     def _find_start_stack(self, blk):
-        top = self._find_top_block(blk)
+        top = self.find_top_block(blk)
         if top.name == 'start':
             return True
         else:
@@ -1073,7 +1073,7 @@ class TurtleArtWindow():
         my_block = self.drag_group[0]
         d = 200
         for my_dockn in range(len(my_block.docks)):
-            for i, your_block in enumerate(self._just_blocks()):
+            for i, your_block in enumerate(self.just_blocks()):
                 # don't link to a block to which you're already connected
                 if your_block in self.drag_group:
                     continue
@@ -1168,8 +1168,8 @@ class TurtleArtWindow():
         if blk is None:
             return
         self.lc.ag = None
-        top = self._find_top_block(blk)
-        self.lc.run_blocks(top, self._just_blocks(), True)
+        top = self.find_top_block(blk)
+        self.lc.run_blocks(top, self.just_blocks(), True)
         gobject.idle_add(self.lc.doevalstep)
 
     """
@@ -1196,18 +1196,12 @@ class TurtleArtWindow():
     """
     Filter out 'proto' blocks
     """
-    def _just_blocks(self):
+    def just_blocks(self):
         just_blocks_list = []
         for b in self.block_list.list:
             if b.type == 'block':
                 just_blocks_list.append(b)
         return just_blocks_list
-
-
-    """
-    Macro
-    """
-    # TODO: load a 'macro' stack of blocks
 
 
     """
@@ -1430,7 +1424,7 @@ class TurtleArtWindow():
     """
     def new_project(self):
         stop_logo(self)
-        for b in self._just_blocks():
+        for b in self.just_blocks():
             b.spr.hide()
         self.canvas.clearscreen()
         self.save_file_name = None
@@ -1662,9 +1656,9 @@ class TurtleArtWindow():
         # TODO: if save_project is False: just the current stack
         data = []
         
-        for i, b in enumerate(self._just_blocks()):
+        for i, b in enumerate(self.just_blocks()):
              b.id = i
-        for b in self._just_blocks():
+        for b in self.just_blocks():
             if b.name in CONTENT_BLOCKS:
                 if len(b.values)>0:
                     name = (b.name, b.values[0])

@@ -18,13 +18,12 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-import tawindow
 from sugar.activity import activity
 from sugar.datastore import datastore
 import os.path
 import subprocess
 from talogo import get_pixbuf_from_journal
-from tahoverhelp import *
+from tautils import data_to_string, save_picture
 from gettext import gettext as _
 
 def save_html(self, tw, embed_flag=True):
@@ -69,7 +68,7 @@ charset=UTF-8\">\n", ""),
         self.html_glue['img'] = ("<img width=\"400\" height=\"300\" alt=\"Image\" src=\"data:image/png;base64,\n", " \"/>\n")
         self.html_glue['img2'] = ("<img alt=\"Image\" src=\"data:image/png;base64,\n", " \"/>\n")
 
-    bs = tawindow.blocks(tw)
+    bs = tw.just_blocks()
     code = ""
     self.imagecount = 0 # incremented for each image
     slidecount = 0 # incremented for each template (slide)
@@ -101,17 +100,17 @@ charset=UTF-8\">\n", ""),
                          this_stack += d
                  show = 0
              # process slide templates
-             elif d == "tp1":
+             elif d == "t1x1":
                  tp1 = 1
-             elif d == "tp2":
+             elif d == "t2x1":
                  tp2 = 1
-             elif d == "tp3":
+             elif d == "list":
                  tp3 = 8
-             elif d == 'tp8':
+             elif d == 't1x1a':
                  tp8 = 1
-             elif d == "tp6":
+             elif d == "t1x2":
                  tp6 = 1
-             elif d == "tp7":
+             elif d == "t2x2":
                  tp7 = 1
              elif tp3 > 0: # bullets
                  if tp3 == 8: # title comes first
@@ -259,7 +258,7 @@ charset=UTF-8\">\n", ""),
     if slidecount == 0:
         # save a screen dump instead
         filename = os.path.join(self.datapath, 'image.png')
-        tawindow.save_pict(tw,filename)
+        save_picture(tw.canvas, filename)
         # if the embed_images flag is True
         # embed_images base64 into the html
         if self.embed_images == True:
@@ -274,7 +273,8 @@ charset=UTF-8\">\n", ""),
                         self.html_glue['img'][1])
             code += (self.html_glue['div'][0])
             # get a json dump of the code
-            code += (tawindow.save_string(tw,False))
+            code += data_to_string(tw.assemble_data_to_save(False, True))
+            code += data_to_string(tw.assemble_data_to_save(False, True))
             code += (self.html_glue['div'][1])
     code = self.html_glue['doctype'][0] + \
            self.html_glue['html'][0] + \
@@ -292,9 +292,9 @@ charset=UTF-8\">\n", ""),
            self.html_glue['html'][1]
     return code
 
-def walk_stack(self, tw, spr):
-    top = tawindow.find_top_block(spr)
-    if spr == top:
+def walk_stack(self, tw, blk):
+    top = tw.find_top_block(blk)
+    if blk == top:
         # only walk the stack if the block is the top block
         return tw.lc.run_blocks(top, tw.block_list.list, False)
     else:

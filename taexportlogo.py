@@ -18,7 +18,6 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-import tawindow
 import math
 try:
     from sugar.datastore import datastore
@@ -87,7 +86,7 @@ make \"colors [ \
 make \"shade 50 \r\
 tasetshade :shade \r"
 
-    bs = tawindow.blocks(tw)
+    bs = tw.just_blocks()
     code = ""
     # these flags are used to trigger the prepending of additional procedures
     random = 0
@@ -166,7 +165,7 @@ tasetshade :shade \r"
                      refstack = 1
                  elif d == "box":
                      refbox = 1
-                 elif d == "storeinbox":
+                 elif d == "storein":
                      namedbox = 1
                  elif d == "storeinbox1":
                      this_stack += "make \"box1"
@@ -265,7 +264,7 @@ tasetshade :shade \r"
                  elif d == "container":
                      if show == 1:
                          show = 2
-                 elif d == "minus":
+                 elif d == "minus2":
                      this_stack == "taminus"
                      minus = 1
                  elif d == "hideblocks":
@@ -317,9 +316,9 @@ tasetshade :shade \r"
 #    print code
     return code
 
-def walk_stack(self, tw, spr):
-    top = tawindow.find_top_block(spr)
-    if spr == top:
+def walk_stack(self, tw, blk):
+    top = tw.find_top_block(blk)
+    if blk == top:
         # only walk the stack if the block is the top block
         code = tw.lc.run_blocks(top, tw.block_list.list, False)
         return code
