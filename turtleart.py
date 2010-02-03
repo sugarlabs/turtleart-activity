@@ -54,6 +54,7 @@ Caveats:
 class TurtleMain():
     def __init__(self):
         self.i = 0
+        self.scale=2.0
         tw = None
         # make sure Sugar paths are present
         tapath = os.path.join(os.environ['HOME'],'.sugar','default', \
@@ -83,6 +84,14 @@ class TurtleMain():
         menu_items = gtk.MenuItem(_("Save"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_save_cb)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Lerger"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_resize_cb, 1.5)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Reset"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_resize_cb, -1)
         menu_items.show()
         
         activity_menu = gtk.MenuItem("File")
@@ -148,6 +157,13 @@ class TurtleMain():
 
     def _do_save_cb(self, widget):
         self.tw.save_file()
+
+    def _do_resize_cb(self, widget, factor):
+        if factor == -1:
+            self.scale = 2.0     
+        else:
+            self.scale *= factor
+        self.tw.resize(self.scale)
 
     def _do_palette_cb(self, widget):
         self.tw.show_toolbar_palette(self.i)

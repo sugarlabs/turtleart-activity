@@ -103,6 +103,7 @@ class TurtleArtWindow():
         else:
             self.lead = 1.0
             self.scale = 1.0
+        self.block_scale = BLOCK_SCALE
         self.cm = self.gc.get_colormap()
         self.rgb = [255,0,0]
         self.bgcolor = self.cm.alloc_color('#fff8de')
@@ -167,6 +168,16 @@ class TurtleArtWindow():
         self.window.connect("button-release-event", self._buttonrelease_cb)
         self.window.connect("motion-notify-event", self._move_cb)
         self.window.connect("key_press_event", self._keypress_cb)
+
+    """
+    Resize all of the blocks
+    """
+    def resize(self, scale):
+        self.block_scale = scale
+        for b in self.just_blocks():
+            b.rescale(self.block_scale)
+        for b in self.just_blocks():
+            self._adjust_dock_positions(b)
 
     """
     Repaint
@@ -429,16 +440,16 @@ class TurtleArtWindow():
                 # Some blocks get a skin.
                 if name in BOX_STYLE_MEDIA:
                     self.palettes[n][i].spr.set_image(self.media_shapes[
-                        name+'small'], 1, int(MEDIA_X*scale/BLOCK_SCALE),
-                                          int(MEDIA_Y*scale/BLOCK_SCALE))
+                        name+'small'], 1, int(MEDIA_X*scale/self.block_scale),
+                                          int(MEDIA_Y*scale/self.block_scale))
                 elif name[:8] == 'template':
                     self.palettes[n][i].spr.set_image(self.media_shapes[
-                        name[8:]], 1, int(TEMPLATE_X*scale/BLOCK_SCALE),
-                                          int(TEMPLATE_Y*scale/BLOCK_SCALE))
+                        name[8:]], 1, int(TEMPLATE_X*scale/self.block_scale),
+                                      int(TEMPLATE_Y*scale/self.block_scale))
                 elif name == 'nop':
                     self.palettes[n][i].spr.set_image(self.media_shapes[
-                        'pythonsmall'], 1, int(PYTHON_X*scale/BLOCK_SCALE),
-                                           int(PYTHON_Y*scale/BLOCK_SCALE))
+                        'pythonsmall'], 1, int(PYTHON_X*scale/self.block_scale),
+                                           int(PYTHON_Y*scale/self.block_scale))
         self._layout_palette(n)
         for blk in self.palettes[n]:
             blk.spr.set_layer(CATEGORY_LAYER)
@@ -892,10 +903,10 @@ class TurtleArtWindow():
                 if blk.name == 'restore':
                     self._restore_from_trash()
                 elif MACROS.has_key(blk.name):
-                    self._new_macro(blk.name, x, y+PALETTE_HEIGHT)
+                    self._new_macro(blk.name, x+PALETTE_WIDTH, y+PALETTE_HEIGHT)
                 else:
                     blk.spr.set_shape(blk.shapes[1])
-                    self._new_block(blk.name, x, y+PALETTE_HEIGHT)
+                    self._new_block(blk.name, x+PALETTE_WIDTH, y+PALETTE_HEIGHT)
                     blk.spr.set_shape(blk.shapes[0])
             return True
 
@@ -1215,7 +1226,7 @@ class TurtleArtWindow():
             if b.type == 'trash':
                 b.spr.set_layer(BLOCK_LAYER)
                 x,y = b.spr.get_xy()
-                b.spr.move((x,y+200))
+                b.spr.move((x+PALETTE_WIDTH,y+PALETTE_HEIGHT))
                 b.type = 'block'
 
     """
@@ -1244,11 +1255,11 @@ class TurtleArtWindow():
     """
     def _new_block(self, name, x, y):
         if name in CONTENT_BLOCKS:
-            newblk = Block(self.block_list, self.sprite_list, name,
-                           x-20, y-20, 'block', DEFAULTS[name])
+            newblk = Block(self.block_list, self.sprite_list, name, x-20, y-20,
+                           'block', DEFAULTS[name], self.block_scale)
         else:
-            newblk = Block(self.block_list, self.sprite_list, name,
-                               x-20, y-20, 'block')
+            newblk = Block(self.block_list, self.sprite_list, name, x-20, y-20,
+                           'block', [], self.block_scale)
         # Add special skin to some blocks
         if name == 'nop':
             if self.nop == 'pythonloaded':
@@ -1285,10 +1296,12 @@ class TurtleArtWindow():
                 if argname is not None:
                     if argname in CONTENT_BLOCKS:
                         argblk = Block(self.block_list, self.sprite_list,
-                                       argname, 0, 0, 'block', [argvalue])
+                                       argname, 0, 0, 'block', [argvalue],
+                                       self.block_scale)
                     else:
                         argblk = Block(self.block_list, self.sprite_list,
-                                       argname, 0, 0, 'block')
+                                       argname, 0, 0, 'block', [],
+                                       self.block_scale)
                     argdock = argblk.docks[0]
                     nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
                     if argname == 'journal':

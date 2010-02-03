@@ -53,6 +53,12 @@ class Blocks:
             if block_type is None or block_type == block.type:
                 print "%d: %s" % (i, block.name)
 
+    def set_scale(self, scale):
+        for b in self.list:
+            for i in range(len(b._font_size)):
+                b._font_size[i] *= b.scale*scale/self.font_scale_factor
+        self.font_scale_factor = scale
+
     #
     # sprite utilities
     #
@@ -124,11 +130,24 @@ class Block:
     def rescale(self, scale):
         for i in range(len(self._font_size)):
             self._font_size[i] /= self.scale
+        self._dx /= self.scale
+        self._ex /= self.scale
+        self._ey /= self.scale
         self.scale = scale
         for i in range(len(self._font_size)):
             self._font_size[i] *= self.scale
+        self._dx *= self.scale
+        self._ex *= self.scale
+        self._ey *= self.scale
+        for i in range(len(self.spr.labels)):
+            if i == 0:
+                self.spr.set_label_attributes(int(self._font_size[0]+0.5))
+            else:
+                self.spr.set_label_attributes(int(self._font_size[1]+0.5))
+        self.svg.set_scale(self.scale)
         self._make_block(self.svg)
         self.spr.set_shape(self.shapes[0])
+        self.spr.draw()
 
     # We may want to add "innies"
     def add_arg(self):
