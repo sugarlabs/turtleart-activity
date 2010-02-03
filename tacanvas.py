@@ -99,7 +99,6 @@ class TurtleGraphics:
             self.xcor, self.ycor, self.heading = 0, 0, 0
             self.move_turtle()
             self.turn_turtle()
-        self.tw.turtle_list.show_all()
         self.set_turtle(0)
 
     def forward(self, n):
@@ -307,14 +306,13 @@ class TurtleGraphics:
     def move_turtle(self):
         x, y = self.width/2+int(self.xcor), self.height/2-int(self.ycor)
         self.tw.active_turtle.move((self.cx+x-30, self.cy+y-30))
-        self.invalt(x-30,y-30,60,60)
+        # self.invalt(x-30,y-30,60,60)
 
     def invalt(self, x, y, w, h):
         rect = gtk.gdk.Rectangle(int(x+self.cx), int(y+self.cy), int(w),int(h))
         self.tw.area.invalidate_rect(rect, False)
 
     def set_turtle(self, i):
-        # TODO: reskin active turtle
         if i > self.tw.turtle_list.turtle_count()-1:
             # if it is a new turtle, start it in the center of the screen
             self.tw.active_turtle = self.tw.turtle_list.get_turtle(i, True)
@@ -333,5 +331,3 @@ class TurtleGraphics:
         self.setshade(self.tw.active_turtle.get_shade())
         self.setpensize(self.tw.active_turtle.get_pen_size())
         self.pendown = self.tw.active_turtle.get_pen_state()
-        self.tw.turtle_list.show_all()
-        

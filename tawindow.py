@@ -1606,11 +1606,11 @@ class TurtleArtWindow():
             elif btype == 'hspace' or btype == 'identity2':
                 if value is not None:
                     blk.expand_in_x(value)
-            elif btype == 'list':
+            elif btype == 'templatelist':
                 for i in range(len(b[4])-4):
                     dy = blk.add_arg()
         elif btype in BOX_STYLE_MEDIA and len(blk.values)>0:
-            if blk.values[0] == 'None':
+            if blk.values[0] == 'None' or blk.values[0] == None:
                 blk.spr.set_image(self.media_shapes[btype+'off'], 1,
                                   MEDIA_X, MEDIA_Y)
             elif btype == 'audio' or btype == 'description':

@@ -158,7 +158,8 @@ def calc_position(tw, t):
 def stop_logo(tw):
     tw.step_time = 0
     tw.lc.step = just_stop()
-    
+    tw.turtle_list.show_all()
+
 def just_stop():
     yield False
 
@@ -400,8 +401,8 @@ class LogoCode:
         self.tw.active_turtle.hide() # Hide the turtle while we are running.
         self.procstop = False
         list = self.readline(str)
-        # print list
         self.step = self.start_eval(list)
+        # self.tw.turtle_list.show_all()
 
     """
     Convert the pseudocode into a list of commands.
@@ -462,7 +463,6 @@ class LogoCode:
         oldiline = self.iline
         self.iline = list[:]
         self.arglist = None
-        # print "evline: %s" % (self.iline)
         while self.iline:
             if self.tw.step_time > 0: # show the turtle during idle time
                 self.tw.active_turtle.show()
@@ -490,7 +490,6 @@ class LogoCode:
     """
     def eval(self, infixarg=False):
         token = self.iline.pop(0)
-        # print "eval: %s" % (str(token))
         if type(token) == self.symtype:
             self.icall(self.evalsym, token)
             yield True
@@ -513,7 +512,6 @@ class LogoCode:
         self.undefined_check(token)
         oldcfun, oldarglist = self.cfun, self.arglist
         self.cfun, self.arglist = token, []
-        # print "   evalsym: %s %s" % (str(self.cfun), str(self.arglist))
         if token.nargs == None:
             raise logoerror("#noinput")
         for i in range(token.nargs):
@@ -532,7 +530,6 @@ class LogoCode:
         else:
             # TODO: find out why stopstack args are mismatched
             if token.name == 'stopstack':
-                print "%s: %d" % (token.name, len(self.arglist))
                 result = self.cfun.fcn()
             else:
                 result = self.cfun.fcn(self, *self.arglist)

@@ -80,6 +80,7 @@ class Turtle:
                        scale=1.0):
         self.x = 0
         self.y = 0
+        self.hidden = False
         self.shapes = []
         self.type = 'turtle'
         self.heading = 0
@@ -110,9 +111,11 @@ class Turtle:
         self.heading = heading        
         i = (int(self.heading+5)%360)/10
         try:
-            self.spr.set_shape(self.shapes[i])
+            if self.hidden is False:
+                self.spr.set_shape(self.shapes[i])
         except IndexError:
-            self.spr.set_shape(self.shapes[0])
+            if self.hidden is False:
+                self.spr.set_shape(self.shapes[0])
             print "Turtle shape IndexError %f -> %d" % (heading, i)
 
     def set_color(self, color):
@@ -129,13 +132,18 @@ class Turtle:
 
     def hide(self):
         self.spr.set_layer(HIDE_LAYER)
+        self.hidden = True
 
     def show(self):
         self.spr.set_layer(TURTLE_LAYER)
+        self.hidden = False
+        self.move((self.x, self.y))
+        self.set_heading(self.heading)
 
     def move(self, pos):
         self.x, self.y = pos[0], pos[1]
-        self.spr.move(pos)
+        if self.hidden is False:
+            self.spr.move(pos)
 
     def get_xy(self):
         return(self.x, self.y)
