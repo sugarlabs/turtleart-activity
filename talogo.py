@@ -402,7 +402,6 @@ class LogoCode:
         self.procstop = False
         list = self.readline(str)
         self.step = self.start_eval(list)
-        # self.tw.turtle_list.show_all()
 
     """
     Convert the pseudocode into a list of commands.
@@ -574,11 +573,11 @@ class LogoCode:
                         print "step is None"
                         return False
                 except StopIteration:
-                    self.tw.active_turtle.show()
+                    self.tw.turtle_list.show_all()
                     return False
         except logoerror, e:
             self.showlabel(str(e)[1:-1])
-            self.tw.active_turtle.show()
+            self.tw.turtle_list.show_all()
             return False
         return True
 

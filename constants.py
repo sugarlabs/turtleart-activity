@@ -51,7 +51,7 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
              'storein', 'start'],
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
-             'bottompos', 'height', 'turtle', 'print'],
+             'bottompos', 'height', 'addturtle', 'print'],
             ['journal', 'audio', 'description', 'templatelist', 'template1x1a',
              'template1x1', 'template1x2', 'template2x1', 'template2x2',
              'hideblocks', 'showblocks'],
@@ -102,7 +102,7 @@ BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1',
-    'storeinbox2', 'wait', 'stack', 'push', 'nop', 'turtle']
+    'storeinbox2', 'wait', 'stack', 'push', 'nop', 'addturtle']
 BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storein']
 BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'textcolor', 'textsize', 'box1', 'box2', 'string', 'leftpos', 'scale',
@@ -164,6 +164,7 @@ CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'journal']
 # block name dictionary used for labels
 #
 BLOCK_NAMES = {
+    'addturtle':[_('turtle')],
     'and2':[_('and')],
     'arc':[_('arc'),_('angle'),_('radius')],
     'audio':[' '],
@@ -266,6 +267,7 @@ BLOCK_NAMES = {
 #
 
 PRIMITIVES = {
+    'addturtle':'turtle',
     'and2':'and',
     'arc':'arc',
     'back':'back',
@@ -351,7 +353,6 @@ PRIMITIVES = {
     'template2x2':'t2x2',
     'textsize':'textsize',
     'toppos':'tpos',
-    'turtle':'turtle',
     'vspace':'nop',
     'wait':'wait',
     'width':'hres',
@@ -364,6 +365,7 @@ PRIMITIVES = {
 #
 
 DEFAULTS = {
+    'addturtle':[1],
     'arc':[90,100],
     'audio':[None],
     'back':[100],
@@ -402,7 +404,6 @@ DEFAULTS = {
     'template2x1':[_('Title'), 'None', 'None'],
     'template2x2':[_('Title'), 'None', 'None', 'None', 'None'],
     'templatelist':[_('Title'), '∙ '],
-    'turtle':[1],
     'wait':[1]}
 
 #
@@ -490,6 +491,7 @@ SPECIAL_NAMES = {
 # Help messages
 #
 HELP_STRINGS = {
+    'addturtle':_("choose which turtle to command"),
     'and2':_("logical AND operator"),
     'arc':_("move turtle along an arc"),
     'audio':_("Sugar Journal audio object"),

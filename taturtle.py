@@ -47,6 +47,9 @@ class Turtles:
         else:
             return(self.list[i])
 
+    def get_turtle_index(self, turtle):
+        return(self.list.index(turtle))
+
     def turtle_count(self):
         return(len(self.list))
 
@@ -110,13 +113,12 @@ class Turtle:
     def set_heading(self, heading):
         self.heading = heading        
         i = (int(self.heading+5)%360)/10
-        try:
-            if self.hidden is False:
+        if self.hidden is False:
+            try:
                 self.spr.set_shape(self.shapes[i])
-        except IndexError:
-            if self.hidden is False:
+            except IndexError:
                 self.spr.set_shape(self.shapes[0])
-            print "Turtle shape IndexError %f -> %d" % (heading, i)
+                print "Turtle shape IndexError %f -> %d" % (heading, i)
 
     def set_color(self, color):
         self.pen_color = color

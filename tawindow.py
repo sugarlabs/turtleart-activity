@@ -902,6 +902,7 @@ class TurtleArtWindow():
         t = self.turtle_list.spr_to_turtle(spr)
         if t is not None:
             self.selected_turtle = t
+            self.canvas.set_turtle(self.turtle_list.get_turtle_index(t))
             self._turtle_pressed(x, y)
             return True
 
@@ -1499,8 +1500,8 @@ class TurtleArtWindow():
         t = 0
         for b in data:
             if b[1] == 'turtle':
-                self.load_turtle(b)
-                t = 1
+                self.load_turtle(b, t)
+                t += 1
             else:
                 blk = self.load_block(b)
                 blocks.append(blk)
@@ -1659,8 +1660,9 @@ class TurtleArtWindow():
     """
     Restore a turtle from its saved state
     """
-    def load_turtle(self, b):
+    def load_turtle(self, b, i=0):
         id, name, xcor, ycor, heading, color, shade, pensize = b
+        self.canvas.set_turtle(i)
         self.canvas.setxy(xcor, ycor)
         self.canvas.seth(heading)
         self.canvas.setcolor(color)
@@ -1724,10 +1726,13 @@ class TurtleArtWindow():
             data.append((b.id, name, sx-self.canvas.cx, sy-self.canvas.cy,
                          connections))
         if save_turtle is True:
-            data.append((-1,'turtle',
-                        self.canvas.xcor, self.canvas.ycor, self.canvas.heading,
-                        self.canvas.color, self.canvas.shade,
-                        self.canvas.pensize))
+            for t in range(self.turtle_list.turtle_count()):
+                self.canvas.set_turtle(t)
+                data.append((-1,'turtle',
+                             self.canvas.xcor, self.canvas.ycor,
+                             self.canvas.heading,
+                             self.canvas.color, self.canvas.shade,
+                             self.canvas.pensize))
         return data
     
     """
