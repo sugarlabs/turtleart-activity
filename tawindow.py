@@ -261,6 +261,15 @@ class TurtleArtWindow():
             self.activity.do_hide()
 
     """
+    Callback from 'show blocks' block
+    """
+    def showblocks(self):
+        self.hide = True
+        self.hideshow_button()
+        if self.running_sugar:
+            self.activity.do_show()
+
+    """
     Where is the mouse event?
     """
     def xy(self, event):

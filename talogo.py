@@ -251,6 +251,7 @@ class LogoCode:
         'setxy':[2, lambda self, x, y: self.tw.canvas.setxy(x, y)],
         'shade':[0, lambda self: self.tw.canvas.shade],
         'show':[1,lambda self, x: self.show(x, True)],
+        'showblocks':[0, lambda self: self.tw.showblocks()],
         'sound':[1, lambda self,x: self.play_sound(x)],
         'sqrt':[1, lambda self,x: sqrt(x)],
         'stack1':[0, self.prim_stack1, True],

@@ -52,8 +52,9 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
              'bottompos', 'height', 'turtle', 'print'],
-            ['journal', 'audio', 'description', 'hideblocks', 'template1x1',
-             'template1x2', 'template2x1', 'template2x2', 'list'],
+            ['journal', 'audio', 'description', 'list', 'template1x1',
+             'template1x2', 'template2x1', 'template2x2',
+             'hideblocks', 'showblocks'],
             ['restore']]
 
 #
@@ -95,7 +96,7 @@ BASIC_STYLE_HEAD = ['start', 'hat1', 'hat2', 'restore']
 BASIC_STYLE_HEAD_1ARG = ['hat']
 BASIC_STYLE_TAIL = ['stopstack']
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
-    'hideblocks', 'clearheap', 'printheap', 'kbinput']
+    'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1',
@@ -232,6 +233,7 @@ BLOCK_NAMES = {
     'setxy':[_('set xy'),_('x'),_('y')],
     'shade':[_('shade')],
     'show':[_('show')],
+    'showblocks':[_('show blocks')],
     'sqrt':['√'],
     'stack':[_('action')],
     'stack1':[_('action 1')],
@@ -329,6 +331,7 @@ PRIMITIVES = {
     'setxy':'setxy',
     'shade':'shade',
     'show':'show',
+    'showblocks':'showblocks',
     'sqrt':'sqrt',
     'stack':'stack',
     'stack1':'stack1',
@@ -553,6 +556,7 @@ HELP_STRINGS = {
     'setxy':_("move turtle to position xcor, ycor; (0, 0) is in the center of the screen."),
     'shade':_("holds current pen shade (can be used in place of a number block)"),
     'show':_("draw text or show media from the Journal"),
+    'showblocks':_("restores hidden blocks"),
     'sqrt':_("calculate square root"),
     'stack1':_("invoke action 1 stack"),
     'stack2':_("invoke action 2 stack"),
