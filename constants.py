@@ -52,8 +52,8 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
              'bottompos', 'height', 'turtle', 'print'],
-            ['journal', 'audio', 'description', 'list', 'template1x1',
-             'template1x2', 'template2x1', 'template2x2',
+            ['journal', 'audio', 'description', 'templatelist', 'template1x1a',
+             'template1x1', 'template1x2', 'template2x1', 'template2x2',
              'hideblocks', 'showblocks'],
             ['restore']]
 
@@ -83,6 +83,8 @@ PYTHON_X = 17
 PYTHON_Y = 8
 MEDIA_X = 37
 MEDIA_Y = 6
+TEMPLATE_X = 24
+TEMPLATE_Y = 18
 PIXBUF_X = 17
 PIXBUF_Y = 2
 BLOCK_SCALE = 2.0
@@ -120,8 +122,8 @@ FLOW_STYLE_1ARG = ['repeat']
 FLOW_STYLE_BOOLEAN = ['if']
 FLOW_STYLE_ELSE = ['ifelse']
 PORTFOLIO_STYLE_2x2 = ['template2x2']
-BULLET_STYLE = ['list']
-PORTFOLIO_STYLE_1x1 = ['template1x1']
+BULLET_STYLE = ['templatelist']
+PORTFOLIO_STYLE_1x1 = ['template1x1', 'template1x1a']
 PORTFOLIO_STYLE_2x1 = ['template2x1']
 PORTFOLIO_STYLE_1x2 = ['template1x2']
 
@@ -146,7 +148,7 @@ MACROS = {
 #
 # blocks that are expandable
 #
-EXPANDABLE = ['vspace', 'hspace', 'list']
+EXPANDABLE = ['vspace', 'hspace', 'templatelist', 'identity2']
 
 #
 # Old block styles that need dock adjustments
@@ -198,7 +200,6 @@ BLOCK_NAMES = {
     'left':[_('left')],
     'leftpos':[_('left')],
     'less2':['<'],
-    'list':[_('list')],
     'minus2':['–'],
     'myfunc':[_('Python'),_('code'),_('value')],
     'nop':[_(' ')],
@@ -245,9 +246,11 @@ BLOCK_NAMES = {
     'storeinbox2':[_('store in box 2')],
     'string':[_('text')],
     'template1x1':[' '],
+    'template1x1a':[' '],
     'template1x2':[' '],
     'template2x1':[' '],
     'template2x2':[' '],
+    'templatelist':[' '],
     'textsize':[_('text size')],
     'toppos':[_('top')],
     'turtle':[_('turtle')],
@@ -297,7 +300,7 @@ PRIMITIVES = {
     'left':'left',
     'leftpos':'lpos',
     'less2':'less?',
-    'list':'bullet',
+    'templatelist':'bullet',
     'minus2':'minus',
     'myfunc':'myfunc',
     'nop':'userdefined',
@@ -342,6 +345,7 @@ PRIMITIVES = {
     'storeinbox1':'storeinbox1',
     'storeinbox2':'storeinbox2',
     'template1x1':'t1x1',
+    'template1x1a':'t1x1a',
     'template1x2':'t1x2',
     'template2x1':'t2x1',
     'template2x2':'t2x2',
@@ -372,7 +376,6 @@ DEFAULTS = {
     'ifelse':[None,'vspace', None, 'vspace'],
     'journal':[None],
     'left':[90],
-    'list':[_('Title'), '∙ '],
     'media':[None],
     'myfunc':[_('x'),100],
     'nop':[100],
@@ -394,9 +397,11 @@ DEFAULTS = {
     'storein':[_('my box'),100],
     'string':[_('text')],
     'template1x1':[_('Title'), 'None'],
+    'template1x1a':[_('Title'), 'None'],
     'template1x2':[_('Title'), 'None', 'None'],
     'template2x1':[_('Title'), 'None', 'None'],
     'template2x2':[_('Title'), 'None', 'None', 'None', 'None'],
+    'templatelist':[_('Title'), '∙ '],
     'turtle':[1],
     'wait':[1]}
 
@@ -405,7 +410,7 @@ DEFAULTS = {
 #
 STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2',
                          'template1x1', 'template1x2', 'template2x1',
-                         'template2x2', 'list', 'nop',
+                         'template2x2', 'template1x1a', 'templatelist', 'nop',
                          'print', 'stack', 'hat']
 
 CONTENT_ARGS = ['show', 'push', 'storein', 'storeinbox1', 'storeinbox2']
@@ -417,7 +422,8 @@ CONTENT_ARGS = ['show', 'push', 'storein', 'storeinbox1', 'storeinbox2']
 MEDIA_SHAPES = ['audiooff', 'audioon', 'audiosmall',
                 'journaloff', 'journalon', 'journalsmall',
                 'descriptionoff', 'descriptionon', 'descriptionsmall',
-                'pythonoff', 'pythonon', 'pythonsmall']
+                'pythonoff', 'pythonon', 'pythonsmall',
+                'list', '1x1', '1x1a', '2x1', '1x2', '2x2']
 
 OVERLAY_SHAPES = ['Cartesian', 'polar']
 
@@ -433,7 +439,7 @@ OLD_NAMES = {'product':'product2', 'storeinbox':'storein',
              'less':'less2', 'greater':'greater2', 'equal':'equal2',
              'remainder':'remainder2', 'identity':'identity2',
              'division':'division2', 'if else':'if', 'audiooff':'audio',
-             'descriptionoff':'description','template3':'list',
+             'descriptionoff':'description','template3':'templatelist',
              'template1':'template1x1', 'template2':'template2x1',
              'template6':'template1x2', 'template7':'template2x2', 
              'template4':'template1x1a', 'hres':'width', 'vres':'height' }
@@ -472,9 +478,11 @@ SPECIAL_NAMES = {
     'product2':_('multiply'),
     'sqrt':_('square root'),
     'template1x1':_('presentation 1x1'),
+    'template1x1a':_('presentation 1x1'),
     'template1x2':_('presentation 1x2'),
     'template2x1':_('presentation 2x1'),
     'template2x2':_('presentation 2x2'),
+    'templatelist':_('presentation bulleted list'),
     'textsize':_('text size'),
     'vspace':_('vertical space')}
 
@@ -568,11 +576,11 @@ HELP_STRINGS = {
     'storein':_("store numeric value in named variable"),
     'string':_("string value"),
     'template1x1':_("presentation template: select Journal object (with description)"),
-    'template2x1':_("presentation template: select two Journal objects"),
-    'list':_("presentation template: list of bullets"),
     'template1x1a':_("presentation template: select Journal object (no description)"),
     'template1x2':_("presentation template: select two Journal objects"),
+    'template2x1':_("presentation template: select two Journal objects"),
     'template2x2':_("presentation template: select four Journal objects"),
+    'templatelist':_("presentation template: list of bullets"),
     'textcolor':_("holds current text color (can be used in place of a number block)"),
     'textsize':_("holds current text size (can be used in place of a number block)"),
     'toppos':_("ycor of top of screen"),

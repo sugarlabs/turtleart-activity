@@ -430,6 +430,10 @@ class TurtleArtWindow():
                     self.palettes[n][i].spr.set_image(self.media_shapes[
                         name+'small'], 1, int(MEDIA_X*scale/BLOCK_SCALE),
                                           int(MEDIA_Y*scale/BLOCK_SCALE))
+                elif name[:8] == 'template':
+                    self.palettes[n][i].spr.set_image(self.media_shapes[
+                        name[8:]], 1, int(TEMPLATE_X*scale/BLOCK_SCALE),
+                                          int(TEMPLATE_Y*scale/BLOCK_SCALE))
                 elif name == 'nop':
                     self.palettes[n][i].spr.set_image(self.media_shapes[
                         'pythonsmall'], 1, int(PYTHON_X*scale/BLOCK_SCALE),
@@ -1038,6 +1042,17 @@ class TurtleArtWindow():
             blk.spr.labels[0] += CURSOR
         elif blk.name in BOX_STYLE_MEDIA:
             self._import_from_journal(self.selected_blk)
+        elif blk.name=='identity2':
+            group = self._find_group(blk)
+            r,g,b,a = blk.spr.get_pixel((x, y))
+            if (r == 255 and g == 0) or g == 255:
+                dx = blk.reset_x()
+            else:
+                dx = 20
+                blk.expand_in_x(dx)
+            for b in group:
+                if b != blk:
+                    b.spr.move_relative((dx*blk.scale, 0))
         elif blk.name=='vspace':
             group = self._find_group(blk)
             r,g,b,a = blk.spr.get_pixel((x, y))
@@ -1588,7 +1603,7 @@ class TurtleArtWindow():
             if btype == 'vspace':
                 if value is not None:
                     blk.expand_in_y(value)
-            elif btype == 'hspace':
+            elif btype == 'hspace' or btype == 'identity2':
                 if value is not None:
                     blk.expand_in_x(value)
             elif btype == 'list':

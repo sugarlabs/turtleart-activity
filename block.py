@@ -571,7 +571,7 @@ class Block:
         self._left, self._right = 2, self.svg.get_width()-self.svg.docks[1][0]
 
     def _make_portfolio_style_2x2(self, svg):
-        self.svg.expand(25+self._dx+self._ex, 10+self._ey)
+        self.svg.expand(30+self._dx+self._ex, 10+self._ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_innie([True, True, False, True])        
@@ -593,7 +593,7 @@ class Block:
         self._left, self._right = 2, self.svg.get_width()-2
 
     def _make_portfolio_style_2x1(self, svg):
-        self.svg.expand(25+self._dx+self._ex, 10+self._ey)
+        self.svg.expand(30+self._dx+self._ex, 10+self._ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_innie([True, True])        
@@ -611,7 +611,7 @@ class Block:
         self._left, self._right = 2, self.svg.get_width()-2
 
     def _make_portfolio_style_1x2(self, svg):
-        self.svg.expand(self._dx+self._ex, 15+self._ey)
+        self.svg.expand(30+self._dx+self._ex, 15+self._ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_innie([True, True, False, True])
@@ -631,7 +631,7 @@ class Block:
 
 
     def _make_portfolio_style_1x1(self, svg):
-        self.svg.expand(self._dx+self._ex, 15+self._ey)
+        self.svg.expand(30+self._dx+self._ex, 15+self._ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_innie([True, True])  

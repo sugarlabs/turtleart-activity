@@ -21,13 +21,13 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-import re
-from time import clock
+import gtk
 import gobject
-from operator import isNumberType
-from random import uniform
-import audioop
+from time import clock
 from math import sqrt
+from random import uniform
+from operator import isNumberType
+import audioop
 import subprocess
 from UserDict import UserDict
 try:
@@ -853,7 +853,7 @@ class LogoCode:
                 try:
                     dsobject = datastore.get(media[6:])
                 except:
-                    print "Couldn't open media object %s" % (media[6:])
+                    print "Couldn't open Journal object %s" % (media[6:])
                 if movie_media_type(dsobject.file_path[-4:]):
                     play_movie_from_file(self,
                         dsobject.file_path, int(x), int(y), int(w), int(h))
