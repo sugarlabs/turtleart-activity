@@ -279,7 +279,6 @@ class TurtleArtActivity(activity.Activity):
         tafile = os.path.join(tmppath,"tmpfile.ta")
         print tafile
         try:
-            # FIXME: encapsulation?
             data_to_file(self.tw.assemble_data_to_save(), tafile)
         except:
             _logger.debug("couldn't save snapshot to journal")
@@ -1010,7 +1009,7 @@ class TurtleArtActivity(activity.Activity):
     def write_file(self, file_path):
         _logger.debug("Write file: %s" % file_path)
         self.metadata['mime_type'] = 'application/x-turtle-art'
-        data_to_file(self.tw.assemble_data_to_save(), file_path+'.ta')
+        data_to_file(self.tw.assemble_data_to_save(), file_path)
 
     """
     Read a project in and then run it
