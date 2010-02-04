@@ -436,7 +436,7 @@ PRIMITIVES = {
 #
 
 DEFAULTS = {
-    'addturtle':['1'],
+    'addturtle':[1],
     'arc':[90,100],
     'audio':[None],
     'back':[100],

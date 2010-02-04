@@ -149,10 +149,10 @@ class TurtleArtWindow():
         self.sprite_list = Sprites(self.window, self.area, self.gc)
         self.turtles = Turtles(self.sprite_list)
         if mycolors == None:
-            Turtle(self.turtles, '1')
+            Turtle(self.turtles, 1)
         else:
-            Turtle(self.turtles, '1', mycolors.split(','))
-        self.active_turtle = self.turtles.get_turtle('1')
+            Turtle(self.turtles, 1, mycolors.split(','))
+        self.active_turtle = self.turtles.get_turtle(1)
         self.selected_turtle = None
         self.canvas = TurtleGraphics(self, self.width, self.height)
 

@@ -99,7 +99,7 @@ class TurtleGraphics:
             self.xcor, self.ycor, self.heading = 0, 0, 0
             self.move_turtle()
             self.turn_turtle()
-        self.set_turtle('1') # default turtle has key '1'
+        self.set_turtle(1) # default turtle has key 1
 
     def forward(self, n):
         n *= self.tw.coord_scale
