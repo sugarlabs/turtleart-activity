@@ -147,11 +147,12 @@ class TurtleArtWindow():
         self.drag_pos = 0, 0
         self.block_list = Blocks(self.scale)
         self.sprite_list = Sprites(self.window, self.area, self.gc)
-        self.turtle_list = Turtles(self.sprite_list)
+        self.turtles = Turtles(self.sprite_list)
         if mycolors == None:
-            self.active_turtle = Turtle(self.turtle_list)
+            Turtle(self.turtles, '1')
         else:
-            self.active_turtle = Turtle(self.turtle_list, mycolors.split(','))
+            Turtle(self.turtles, '1', mycolors.split(','))
+        self.active_turtle = self.turtles.get_turtle('1')
         self.selected_turtle = None
         self.canvas = TurtleGraphics(self, self.width, self.height)
 
@@ -865,7 +866,7 @@ class TurtleArtWindow():
             self.run_button(0)
         elif self.selected_spr is not None:
             blk = self.block_list.spr_to_block(self.selected_spr)
-            tur = self.turtle_list.spr_to_turtle(self.selected_spr)
+            tur = self.turtles.spr_to_turtle(self.selected_spr)
             if blk is not None:
                 if keyname == 'Return' or keyname == 'KP_Page_Up':
                     (x, y) = blk.spr.get_xy()
@@ -924,10 +925,10 @@ class TurtleArtWindow():
             return True
 
         # Next, look for a turtle
-        t = self.turtle_list.spr_to_turtle(spr)
+        t = self.turtles.spr_to_turtle(spr)
         if t is not None:
             self.selected_turtle = t
-            self.canvas.set_turtle(self.turtle_list.get_turtle_index(t))
+            self.canvas.set_turtle(self.turtles.get_turtle_key(t))
             self._turtle_pressed(x, y)
             return True
 
@@ -1750,8 +1751,8 @@ class TurtleArtWindow():
             data.append((b.id, name, sx-self.canvas.cx, sy-self.canvas.cy,
                          connections))
         if save_turtle is True:
-            for t in range(self.turtle_list.turtle_count()):
-                self.canvas.set_turtle(t)
+            for k in iter(self.turtles.dict):
+                self.canvas.set_turtle(k)
                 data.append((-1,'turtle',
                              self.canvas.xcor, self.canvas.ycor,
                              self.canvas.heading,

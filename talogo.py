@@ -158,7 +158,7 @@ def calc_position(tw, t):
 def stop_logo(tw):
     tw.step_time = 0
     tw.lc.step = just_stop()
-    tw.turtle_list.show_all()
+    tw.turtles.show_all()
 
 def just_stop():
     yield False
@@ -271,7 +271,7 @@ class LogoCode:
         'textcolor':[0, lambda self: self.tw.canvas.textcolor],
         'textsize':[0, lambda self: self.tw.textsize],
         'tpos':[0, lambda self: self.tw.canvas.height/(self.tw.coord_scale*2)],
-        'turtle':[1, lambda self, x: self.tw.canvas.set_turtle(int(x-1))],
+        'turtle':[1, lambda self, x: self.tw.canvas.set_turtle(x)],
         'userdefined':[1, lambda self,x: self.loadmyblock(x)],
         'video':[1, lambda self,x: self.play_movie(x)],
         'vres':[0, lambda self: self.tw.canvas.height/self.tw.coord_scale],
@@ -573,11 +573,11 @@ class LogoCode:
                         print "step is None"
                         return False
                 except StopIteration:
-                    self.tw.turtle_list.show_all()
+                    self.tw.turtles.show_all()
                     return False
         except logoerror, e:
             self.showlabel(str(e)[1:-1])
-            self.tw.turtle_list.show_all()
+            self.tw.turtles.show_all()
             return False
         return True
 

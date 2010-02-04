@@ -90,16 +90,16 @@ class TurtleGraphics:
         self.settextsize(32)
         self.setshade(50)
         self.pendown = True
-        for i, t in enumerate(self.tw.turtle_list.list):
-            self.set_turtle(i)
-            t.set_color(0)
-            t.set_shade(50)
-            t.set_pen_size(5)
-            t.set_pen_state(True)
+        for turtle_key in iter(self.tw.turtles.dict):
+            self.set_turtle(turtle_key)
+            self.tw.active_turtle.set_color(0)
+            self.tw.active_turtle.set_shade(50)
+            self.tw.active_turtle.set_pen_size(5)
+            self.tw.active_turtle.set_pen_state(True)
             self.xcor, self.ycor, self.heading = 0, 0, 0
             self.move_turtle()
             self.turn_turtle()
-        self.set_turtle(0)
+        self.set_turtle('1') # default turtle has key '1'
 
     def forward(self, n):
         n *= self.tw.coord_scale
@@ -312,17 +312,17 @@ class TurtleGraphics:
         rect = gtk.gdk.Rectangle(int(x+self.cx), int(y+self.cy), int(w),int(h))
         self.tw.area.invalidate_rect(rect, False)
 
-    def set_turtle(self, i):
-        if i > self.tw.turtle_list.turtle_count()-1:
+    def set_turtle(self, k):
+        if not self.tw.turtles.dict.has_key(k):
             # if it is a new turtle, start it in the center of the screen
-            self.tw.active_turtle = self.tw.turtle_list.get_turtle(i, True)
+            self.tw.active_turtle = self.tw.turtles.get_turtle(k, True)
             self.xcor = 0
             self.ycor = 0
             self.heading = 0
             self.move_turtle()
             self.turn_turtle()
             self.tw.active_turtle.set_pen_state(True)
-        self.tw.active_turtle = self.tw.turtle_list.get_turtle(i, True)
+        self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
         tx, ty = self.tw.active_turtle.get_xy()
         self.xcor = tx+30-self.width/2
         self.ycor = self.height/2-ty-30
