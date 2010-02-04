@@ -160,10 +160,10 @@ class TurtleMain():
 
     def _do_resize_cb(self, widget, factor):
         if factor == -1:
-            self.scale = 2.0     
+            self.tw.block_scale = 2.0     
         else:
-            self.scale *= factor
-        self.tw.resize_blocks(self.scale)
+            self.tw.block_scale *= factor
+        self.tw.resize_blocks()
 
     def _do_palette_cb(self, widget):
         self.tw.show_toolbar_palette(self.i)

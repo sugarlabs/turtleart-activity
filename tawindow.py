@@ -175,8 +175,7 @@ class TurtleArtWindow():
     """
     Resize all of the blocks
     """
-    def resize_blocks(self, scale):
-        self.block_scale = scale
+    def resize_blocks(self):
         for b in self.just_blocks():
             b.rescale(self.block_scale)
         for b in self.just_blocks():

@@ -407,6 +407,10 @@ class TurtleArtActivity(activity.Activity):
         self.fullscreen()
         self.recenter()
 
+    def _do_resize_blocks_cb(self, button, scale_factor):
+        self.tw.block_scale *= scale_factor
+        self.tw.resize_blocks()
+
     """
     Display coordinate grids
     """
@@ -727,6 +731,20 @@ class TurtleArtActivity(activity.Activity):
             self.rescale_button.connect('clicked', self._do_rescale_cb)
             view_toolbar.insert(self.rescale_button,-1)
             self.rescale_button.show()
+
+            self.resize_up_button = ToolButton('resize+')
+            self.resize_up_button.set_tooltip(_("Grow blocks"))
+            self.resize_up_button.connect('clicked',
+                                          self._do_resize_blocks_cb, 1.5)
+            view_toolbar.insert(self.resize_up_button,-1)
+            self.resize_up_button.show()
+
+            self.resize_down_button = ToolButton('resize-')
+            self.resize_down_button.set_tooltip(_("Shrink blocks"))
+            self.resize_down_button.connect('clicked',
+                                            self._do_resize_blocks_cb, 0.667)
+            view_toolbar.insert(self.resize_down_button,-1)
+            self.resize_down_button.show()
 
             # palette button (blocks)
             self.palette_button = ToolButton( "blocksoff" )
