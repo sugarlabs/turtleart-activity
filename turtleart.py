@@ -28,7 +28,7 @@ import os
 import os.path
 import locale
 from gettext import gettext as _
-
+from tautils import data_to_string, data_from_string
 from tawindow import TurtleArtWindow
 
 """
@@ -85,7 +85,14 @@ class TurtleMain():
         menu.append(menu_items)
         menu_items.connect("activate", self._do_save_cb)
         menu_items.show()
-        menu_items = gtk.MenuItem(_("Lerger"))
+
+        activity_menu = gtk.MenuItem("File")
+        activity_menu.show()
+        activity_menu.set_submenu(menu)
+
+        menu = gtk.Menu()
+
+        menu_items = gtk.MenuItem(_("Larger"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_resize_cb, 1.5)
         menu_items.show()
@@ -94,9 +101,24 @@ class TurtleMain():
         menu_items.connect("activate", self._do_resize_cb, -1)
         menu_items.show()
         
-        activity_menu = gtk.MenuItem("File")
-        activity_menu.show()
-        activity_menu.set_submenu(menu)
+        view_menu = gtk.MenuItem("View")
+        view_menu.show()
+        view_menu.set_submenu(menu)
+
+        menu = gtk.Menu()
+
+        menu_items = gtk.MenuItem(_("Copy"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_copy_cb)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Paste"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_paste_cb)
+        menu_items.show()
+        
+        edit_menu = gtk.MenuItem("Edit")
+        edit_menu.show()
+        edit_menu.set_submenu(menu)
 
         menu = gtk.Menu()
 
@@ -112,6 +134,13 @@ class TurtleMain():
         menu.append(menu_items)
         menu_items.connect("activate", self._do_hideshow_cb)
         menu_items.show()
+
+        tool_menu = gtk.MenuItem("Tools")
+        tool_menu.show()
+        tool_menu.set_submenu(menu)
+
+        menu = gtk.Menu()
+
         menu_items = gtk.MenuItem(_("Clean"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_eraser_cb)
@@ -129,9 +158,9 @@ class TurtleMain():
         menu_items.connect("activate", self._do_stop_cb)
         menu_items.show()
 
-        project_menu = gtk.MenuItem("Tools")
-        project_menu.show()
-        project_menu.set_submenu(menu)
+        turtle_menu = gtk.MenuItem("Turtle")
+        turtle_menu.show()
+        turtle_menu.set_submenu(menu)
 
         vbox = gtk.VBox(False, 0)
         win.add(vbox)
@@ -146,7 +175,10 @@ class TurtleMain():
         canvas.show()
 
         menu_bar.append(activity_menu)
-        menu_bar.append(project_menu)
+        menu_bar.append(edit_menu)
+        menu_bar.append(view_menu)
+        menu_bar.append(tool_menu)
+        menu_bar.append(turtle_menu)
 
         win.show_all()
         self.tw = TurtleArtWindow(canvas, os.path.abspath('.'), lang)
@@ -196,6 +228,18 @@ class TurtleMain():
         self.tw.stop_button()
         return
 
+    def _do_copy_cb(self, button):
+        clipBoard = gtk.Clipboard()
+        data = self.tw.assemble_data_to_save(False, False)
+        if data is not []:
+            text = data_to_string(data)
+            clipBoard.set_text(text)
+
+    def _do_paste_cb(self, button):
+        clipBoard = gtk.Clipboard()
+        text = clipBoard.wait_for_text()
+        if text is not None:
+            self.tw.process_data(data_from_string(text))
 
 def main():
     gtk.main()

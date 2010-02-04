@@ -1802,12 +1802,17 @@ class TurtleArtWindow():
     Pack the project (or stack) into a data stream to be serialized
     """
     def assemble_data_to_save(self, save_turtle=True, save_project=True):
-        # TODO: if save_project is False: just the current stack
         data = []
+        blks = []
+
+        if save_project is True:
+            blks = self.just_blocks()
+        else:
+            blks = self._find_group(self.find_top_block(self.selected_blk))
         
-        for i, b in enumerate(self.just_blocks()):
+        for i, b in enumerate(blks):
              b.id = i
-        for b in self.just_blocks():
+        for b in blks:
             if b.name in CONTENT_BLOCKS:
                 if len(b.values)>0:
                     name = (b.name, b.values[0])
@@ -1829,6 +1834,10 @@ class TurtleArtWindow():
             else:
                 connections = None
             (sx, sy) = b.spr.get_xy()
+            # Add a slight offset for copy/paste
+            if save_project is False:
+                sx+=20
+                sy+=20
             data.append((b.id, name, sx-self.canvas.cx, sy-self.canvas.cy,
                          connections))
         if save_turtle is True:
