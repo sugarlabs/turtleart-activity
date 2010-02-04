@@ -11,6 +11,77 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
+"""
+This file contains the constants that by-in-large determine the
+behavior of Turtle Art. Noteably, the block palettes are defined
+below. If you want to add a new block to Turtle Art, it is generally a
+matter of modifying some tables below and then adding the primitive to
+talogo.py. For example, if we want to add a new turtle command,
+'uturn', we'd make the following changes:
+
+(1) We'd add 'uturn' to the PALETTES list of lists:
+
+PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'uturn', 'show', 
+             'seth', 'setxy', 'heading', 'xcor', 'ycor', 'setscale',
+              'arc', 'scale'],
+            ['penup','pendown', 'setpensize', 'fillscreen', 'pensize',...
+
+(2) Then we'd add it to one of the block-style definitions. Since it takes
+no arguments, we'd add it here:
+
+BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
+    'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput', 'uturn']
+
+(3) Then we give it a name (Note the syntax _('string to be translated')
+used by the language-internationalization system):
+
+BLOCK_NAMES = {
+...
+    'uturn':[_('u-turn')],
+...
+              }
+
+(4) and a help-menu entry:
+
+HELP_STRINGS = {
+...
+    'uturn':_('change the heading of the turtle 180 degrees'),
+...
+               }
+
+(5) Next, we need to define it as a primitive for the Logo command
+parser (generally just the same name):
+
+PRIMITIVES = {
+...
+    'uturn':'uturn',
+...
+             }
+
+(6) Since there are no default arguments, we don't need to do anything
+else here. But we do need to define the actual function in talogo.py
+
+DEFPRIM = {
+...
+    'uturn':[0, lambda self: self.tw.canvas.seth(self.tw.canvas.heading+180)],
+...
+          }
+
+That's it. When you next run Turtle Art, you will have a 'uturn' block
+on the Turtle Palette.
+
+Adding a new palette is simply a matter of: (1) adding an additional
+entry to PALETTE_NAMES; (2) new list of blocks to PALETTES; and (3) an
+additional entry in COLORS. However you will have to: (4) create icons
+for the palette-selector buttons. These are kept in the images
+subdirectory. You need two icons: yourpalettenameoff.svg and
+yourpalettenameon.svg, where yourpalettename is the same string as the
+entry you added to the PALETTE_NAMES list. Note that the icons should
+be the same size (55x55) as the others. This is the default icon size
+for Sugar toolbars.
+
+"""
+
 from gettext import gettext as _
 
 #
@@ -412,7 +483,7 @@ DEFAULTS = {
 STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
                          'template1x1', 'template1x2', 'template2x1',
                          'template2x2', 'template1x1a', 'templatelist', 'nop',
-                         'print', 'stack', 'hat']
+                         'print', 'stack', 'hat', 'addturtle']
 
 CONTENT_ARGS = ['show', 'push', 'storein', 'storeinbox1', 'storeinbox2']
 
