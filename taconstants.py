@@ -409,7 +409,7 @@ DEFAULTS = {
 #
 # Blocks that can interchange strings and numbers for their arguments
 #
-STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2',
+STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
                          'template1x1', 'template1x2', 'template2x1',
                          'template2x2', 'template1x1a', 'templatelist', 'nop',
                          'print', 'stack', 'hat']
@@ -542,14 +542,14 @@ HELP_STRINGS = {
     'pen':_("palette of pen commands"),
     'pensize':_("holds current pen size (can be used in place of a number block)"),
     'penup':_("turtle will not draw when moved"),
-    'plus2':_("adds two numeric inputs"),
+    'plus2':_("adds two alphanumeric inputs"),
     'pop':_("pop value off FILO"),
     'portfolio':_("palette of presentation templates"),
     'print':_("prints value in status block at bottom of the screen"),
     'printheap':_("show FILO in status block"),
     'product2':_("multiplies two numeric inputs"),
     'push':_("push value onto FILO (first-in last-out) heap"),
-    'random':_("returns random number between minimum (left) and maximum (right) values"),
+    'random':_("returns random number between minimum (top) and maximum (bottom) values"),
     'remainder2':_("modular (remainder) operator"),
     'repeat':_("loop specified number of times"),
     'restore':_("restore blocks from trash"),
