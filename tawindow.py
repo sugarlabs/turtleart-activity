@@ -135,8 +135,10 @@ class TurtleArtWindow():
         self.palette_orientation = 0
         self.trash_index = PALETTE_NAMES.index('trash')
         self.selected_palette = None
+        self.previous_palette = None
         self.selectors = []
         self.selected_selector = None
+        self.previous_selector = None
         self.selector_shapes = []
         self.selected_blk = None
         self.selected_spr = None
@@ -194,7 +196,7 @@ class TurtleArtWindow():
                os.path.exists('/sys/power/olpc-pm')
 
     """
-    Eraser_button: hide status block
+    Eraser_button (Always hide status block when clearing the screen.)
     """
     def eraser_button(self):
         if self.status_spr is not None:
@@ -324,7 +326,7 @@ class TurtleArtWindow():
         for i, name in enumerate(STATUS_SHAPES):
             self.status_shapes[name] = self._load_sprite_from_file(
                                                "%s/%s.svg" % (self.path, name))
-        self.status_spr = Sprite(self.sprite_list, 0, self.height-150,
+        self.status_spr = Sprite(self.sprite_list, 0, self.height-200,
                                          self.status_shapes['status'])
         self.status_spr.set_layer(HIDE_LAYER)
         self.status_spr.type = 'status'
@@ -341,26 +343,31 @@ class TurtleArtWindow():
         return svg_str_to_pixbuf(svg.from_file(name))
 
     """
-    Show/hide turtle palettes
+    Hide turtle palettes
     """
     def hide_toolbar_palette(self):
-        if self.selected_palette is not None:
-            for i in range(len(PALETTES[self.selected_palette])):        
-                self.palettes[self.selected_palette][i].spr.set_layer(
-                                                                     HIDE_LAYER)
-            self.selectors[self.selected_palette].set_shape(
-                self.selector_shapes[self.selected_palette][0])
+        self.hide_previous_palette()
+        # Hide the selectors
         for i in range(len(PALETTES)):
             self.selectors[i].set_layer(HIDE_LAYER)
-            if self.palette_sprs[i][self.palette_orientation] is not None:
-                self.palette_sprs[i][self.palette_orientation].set_layer(
-                                                                     HIDE_LAYER)
         self.selected_palette = None
+        self.previous_palette = None
         self.toolbar_spr.set_layer(HIDE_LAYER)
         self.palette_button[self.palette_orientation].set_layer(HIDE_LAYER)
-        self.palette_button[1-self.palette_orientation].set_layer(HIDE_LAYER)
+
+    def hide_previous_palette(self):
+        # Hide previous palette
+        if self.previous_palette is not None:
+            for i in range(len(PALETTES[self.previous_palette])):        
+                self.palettes[self.previous_palette][i].spr.set_layer(
+                                                                     HIDE_LAYER)
+            self.palette_sprs[self.previous_palette][
+                              self.palette_orientation].set_layer(HIDE_LAYER)
+            self.selectors[self.previous_palette].set_shape(
+                self.selector_shapes[self.previous_palette][0])
 
     def show_toolbar_palette(self, n, init_only=False):
+        # Create the selectors the first time through.
         if self.selectors == []:
             svg = SVG()
             x, y = 50, 0
@@ -377,6 +384,8 @@ class TurtleArtWindow():
                 w, h = self.selectors[i].get_dimensions()
                 x += int(w) 
                 self.palette_sprs.append([None,None])
+
+            # Create the palette orientation button
             self.palette_button.append(Sprite(self.sprite_list, 0, 0,
                                             self._load_sprite_from_file(
                                      "%s/palettehorizontal.svg" % (self.path))))
@@ -390,40 +399,40 @@ class TurtleArtWindow():
             self.palette_button[self.palette_orientation].set_layer(TAB_LAYER)
             self.palette_button[1-self.palette_orientation].set_layer(
                                                                     HIDE_LAYER)
-
-        if len(self.palettes) == 0:
-            for i in range(len(PALETTES)):
-                self.palettes.append([]);
-
-        if init_only is True:
-            return
-
-        if self.selected_palette is not None:
-            self.hide_toolbar_palette()
-
-        if self.palette_sprs[n][self.palette_orientation] is not None:
-            self.palette_sprs[n][self.palette_orientation].set_layer(
-                                                                CATEGORY_LAYER)
-            if self.palette_sprs[n][1-self.palette_orientation] is not None:
-               self.palette_sprs[n][1-self.palette_orientation].set_layer(
-                                                                    HIDE_LAYER)
-
-        self.palette_button[self.palette_orientation].set_layer(TAB_LAYER)
-
-        for i in range(len(PALETTES)):
-            self.selectors[i].set_layer(TAB_LAYER)
-        
-        self.selected_palette = n
-        self.selectors[n].set_shape(self.selector_shapes[n][1])
-        self.selected_selector = self.selectors[n]
-
-        if self.toolbar_spr == None:
+            # Create the toolbar background
             self.toolbar_spr = Sprite(self.sprite_list, 0, 0,
                 svg_str_to_pixbuf(svg.toolbar(self.width, ICON_SIZE)))
             self.toolbar_spr.type = 'toolbar'
             self.toolbar_spr.set_layer(CATEGORY_LAYER)
-        else:
-            self.toolbar_spr.set_layer(CATEGORY_LAYER)
+
+            # Create the empty palettes
+            if len(self.palettes) == 0:
+                for i in range(len(PALETTES)):
+                    self.palettes.append([]);
+
+        if init_only is True:
+            return
+
+        # Hide the previously displayed palette
+        self.hide_previous_palette()
+
+        self.selected_palette = n
+        self.previous_palette = self.selected_palette        
+        self.selected_selector = self.selectors[n]
+
+        # Make sure all of the selectors are visible.
+        self.selectors[n].set_shape(self.selector_shapes[n][1])
+        for i in range(len(PALETTES)):
+            self.selectors[i].set_layer(TAB_LAYER)
+
+        # Show the palette with the current orientation.
+        if self.palette_sprs[n][self.palette_orientation] is not None:
+            self.palette_sprs[n][self.palette_orientation].set_layer(
+                                                                CATEGORY_LAYER)
+        # move to hide/show
+        self.palette_button[self.palette_orientation].set_layer(TAB_LAYER)
+        # move to hide/show
+        self.toolbar_spr.set_layer(CATEGORY_LAYER)
 
         if self.palettes[n] == []:
             for i, name in enumerate(PALETTES[n]):
@@ -505,6 +514,7 @@ class TurtleArtWindow():
         if self.selected_selector is not None:
             j = self.selectors.index(self.selected_selector)
             self.selected_selector.set_shape(self.selector_shapes[j][0])
+        self.previous_selector = self.selected_selector
         self.selected_selector = spr
         self.show_toolbar_palette(i)
 
@@ -512,7 +522,7 @@ class TurtleArtWindow():
     Find a stack to run (any stack without a 'def action'on the top).
     """
     def _find_block_to_run(self, blk):
-        top = self._find_top_block(blk)
+        top = self.find_top_block(blk)
         if blk == top and blk.name[0:3] is not 'def':
             return True
         else:
@@ -925,15 +935,16 @@ class TurtleArtWindow():
             elif spr.type == 'selector':
                 self._select_category(spr)
             elif spr.type == 'category':
-                r,g,b,a = spr.get_pixel((x, y))
-                if (r == 255 and g == 0) or g == 255:
-                    self._hide_palette()
+                if self._hide_button_hit(spr, x, y):
+                    self.hideshow_palette(False)
             elif spr.type == 'palette':
                self.palette_orientation = 1-self.palette_orientation
                self.palette_button[self.palette_orientation].set_layer(
                                                                       TAB_LAYER)
                self.palette_button[1-self.palette_orientation].set_layer(
                                                                      HIDE_LAYER)
+               self.palette_sprs[self.selected_palette][
+                               1-self.palette_orientation].set_layer(HIDE_LAYER)
                self._layout_palette(self.selected_palette)
                self.show_toolbar_palette(self.selected_palette)
             return True
@@ -1057,8 +1068,7 @@ class TurtleArtWindow():
             self._import_from_journal(self.selected_blk)
         elif blk.name=='identity2':
             group = self._find_group(blk)
-            r,g,b,a = blk.spr.get_pixel((x, y))
-            if (r == 255 and g == 0) or g == 255:
+            if self._hide_button_hit(blk.spr, x, y):
                 dx = blk.reset_x()
             else:
                 dx = 20
@@ -1068,8 +1078,7 @@ class TurtleArtWindow():
                     b.spr.move_relative((dx*blk.scale, 0))
         elif blk.name=='vspace':
             group = self._find_group(blk)
-            r,g,b,a = blk.spr.get_pixel((x, y))
-            if (r == 255 and g == 0) or g == 255:
+            if self._hide_button_hit(blk.spr, x, y):
                 dy = blk.reset_y()
             else:
                 dy = 20
@@ -1079,8 +1088,7 @@ class TurtleArtWindow():
                     b.spr.move_relative((0, dy*blk.scale))
         elif blk.name=='hspace':
             group = self._find_group(blk.connections[1])
-            r,g,b,a = blk.spr.get_pixel((x, y))
-            if (r == 255 and g == 0) or g == 255:
+            if self._hide_button_hit(blk.spr, x, y):
                 dx = blk.reset_x()
             else:
                 dx = 20
@@ -1090,7 +1098,6 @@ class TurtleArtWindow():
         elif blk.name=='list':
             n = len(blk.connections)
             group = self._find_group(blk.connections[n-1])
-            r,g,b,a = blk.spr.get_pixel((x, y))
             dy = blk.add_arg()
             for b in group:
                 b.spr.move_relative((0, dy))
@@ -1763,3 +1770,23 @@ class TurtleArtWindow():
         else:
             self.win.set_title("%s — %s: %d %s: %d %s: %d" % (_("Turtle Art"),
                                    _("xcor"), x, _("ycor"), y, _("heading"), h))
+
+    """
+    Did the sprite's hide (contract) button get hit?
+    """
+    def _hide_button_hit(self, spr, x, y):
+        r,g,b,a = spr.get_pixel((x, y))
+        if (r == 255 and g == 0) or g == 255:
+            return True
+        else:
+            return False
+
+    """
+    Did the sprite's show (expand) button get hit?
+    """
+    def _show_button_hit(self, spr, x, y):
+        r,g,b,a = spr.get_pixel((x, y))
+        if (r == 255 and g == 0) or g == 255:
+            return False
+        else:
+            return True
