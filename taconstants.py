@@ -32,8 +32,10 @@ no arguments, we'd add it here:
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
     'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput', 'uturn']
 
-(3) Then we give it a name (Note the syntax _('string to be translated')
-used by the language-internationalization system):
+(3) Then we give it a name (Note the syntax _('string to be
+translated') used by the language-internationalization system; also
+note that the name is an array, as some blocks contain multiple
+strings.):
 
 BLOCK_NAMES = {
 ...
@@ -126,7 +128,7 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
             ['journal', 'audio', 'description', 'templatelist', 'template1x1a',
              'template1x1', 'template1x2', 'template2x1', 'template2x2',
              'hideblocks', 'showblocks'],
-            ['restore']]
+            ['empty', 'restoreall']]
 
 #
 # block style attributes
@@ -165,9 +167,9 @@ PALETTE_SCALE = {'template2x2':1.0, 'template1x2':1.0}
 #
 # block style definitions
 #
-BASIC_STYLE_HEAD = ['start', 'hat1', 'hat2', 'restore']
+BASIC_STYLE_HEAD = ['start', 'hat1', 'hat2', 'restore', 'restoreall']
 BASIC_STYLE_HEAD_1ARG = ['hat']
-BASIC_STYLE_TAIL = ['stopstack']
+BASIC_STYLE_TAIL = ['stopstack', 'empty']
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
     'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
@@ -250,6 +252,7 @@ BLOCK_NAMES = {
     'color':[_('color')],
     'cyan':[_('cyan')],
     'division2':['/'],
+    'empty':[_('empty trash')],
     'equal2':['='],
     'fillscreen':[_('fill screen'),_('color'),_('shade')],
     'forever':[_('forever')],
@@ -293,7 +296,8 @@ BLOCK_NAMES = {
     'red':[_('red')],
     'remainder2':[_('mod')],
     'repeat':[' ',_('repeat')],
-    'restore':[_('restore')],
+    'restore':[_('restore last')],
+    'restoreall':[_('restore all')],
     'rightpos':[_('right')],
     'right':[_('right')],
     'scale':[_('scale')],
@@ -457,7 +461,7 @@ DEFAULTS = {
     'repeat':[4, None, 'vspace'],
     'right':[90],
     'setcolor':[0],
-    'setheading':[0],
+    'seth':[0],
     'setpensize':[5],
     'setscale':[33],
     'setshade':[50],
@@ -578,6 +582,7 @@ HELP_STRINGS = {
     'colors':_("a palette of pen colors"),
     'description':_("Sugar Journal description field"),
     'division2':_("divides top numeric input (numerator) by bottom numeric input (denominator)"),
+    'empty':_('permanently deletes items in trash'),
     'equal2':_("logical equal-to operator"),
     'extras':_("palette of extra options"),
     'fillscreen':_("fills the background with (color, shade)"),
@@ -623,7 +628,8 @@ HELP_STRINGS = {
     'random':_("returns random number between minimum (top) and maximum (bottom) values"),
     'remainder2':_("modular (remainder) operator"),
     'repeat':_("loop specified number of times"),
-    'restore':_("restore blocks from trash"),
+    'restore':_("restore most recent blocks from trash"),
+    'restoreall':_("restore all blocks from trash"),
     'rightpos':_("xcor of right of screen"),
     'right':_("turn turtle clockwise (angle in degrees)"),
     'scale':_("holds current scale value (can be used in place of a number block)"),
