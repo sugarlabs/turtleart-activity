@@ -140,7 +140,7 @@ class Turtle:
         self.pen_state = pen_state
 
     def hide(self):
-        self.spr.set_layer(HIDE_LAYER)
+        self.spr.hide()
         self.hidden = True
 
     def show(self):

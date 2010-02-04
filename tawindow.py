@@ -200,7 +200,7 @@ class TurtleArtWindow():
     """
     def eraser_button(self):
         if self.status_spr is not None:
-            self.status_spr.set_layer(HIDE_LAYER)
+            self.status_spr.hide()
         self.lc.clear()
         self.display_coordinates()
 
@@ -226,7 +226,7 @@ class TurtleArtWindow():
     def hideshow_button(self):
         if self.hide is False: 
             for blk in self.just_blocks():
-                blk.spr.set_layer(HIDE_LAYER)
+                blk.spr.hide()
             self._hide_palette() 
             self.hide = True
         else:
@@ -328,14 +328,14 @@ class TurtleArtWindow():
                                                "%s/%s.svg" % (self.path, name))
         self.status_spr = Sprite(self.sprite_list, 0, self.height-200,
                                          self.status_shapes['status'])
-        self.status_spr.set_layer(HIDE_LAYER)
+        self.status_spr.hide()
         self.status_spr.type = 'status'
 
         for name in OVERLAY_SHAPES:
             self.overlay_shapes[name] = Sprite(self.sprite_list,
                 int(self.width/2-600), int(self.height/2-450),
                 self._load_sprite_from_file("%s/%s.svg" % (self.path, name)))
-            self.overlay_shapes[name].set_layer(HIDE_LAYER)
+            self.overlay_shapes[name].hide()
             self.overlay_shapes[name].type = 'overlay'
 
     def _load_sprite_from_file(self, name):
@@ -349,20 +349,19 @@ class TurtleArtWindow():
         self.hide_previous_palette()
         # Hide the selectors
         for i in range(len(PALETTES)):
-            self.selectors[i].set_layer(HIDE_LAYER)
+            self.selectors[i].hide()
         self.selected_palette = None
         self.previous_palette = None
-        self.toolbar_spr.set_layer(HIDE_LAYER)
-        self.palette_button[self.palette_orientation].set_layer(HIDE_LAYER)
+        self.toolbar_spr.hide()
+        self.palette_button[self.palette_orientation].hide()
 
     def hide_previous_palette(self):
         # Hide previous palette
         if self.previous_palette is not None:
             for i in range(len(PALETTES[self.previous_palette])):        
-                self.palettes[self.previous_palette][i].spr.set_layer(
-                                                                     HIDE_LAYER)
+                self.palettes[self.previous_palette][i].spr.hide()
             self.palette_sprs[self.previous_palette][
-                              self.palette_orientation].set_layer(HIDE_LAYER)
+                              self.palette_orientation].hide()
             self.selectors[self.previous_palette].set_shape(
                 self.selector_shapes[self.previous_palette][0])
 
@@ -397,8 +396,7 @@ class TurtleArtWindow():
             self.palette_button[0].type = 'palette'
             self.palette_button[1].type = 'palette'
             self.palette_button[self.palette_orientation].set_layer(TAB_LAYER)
-            self.palette_button[1-self.palette_orientation].set_layer(
-                                                                    HIDE_LAYER)
+            self.palette_button[1-self.palette_orientation].hide()
             # Create the toolbar background
             self.toolbar_spr = Sprite(self.sprite_list, 0, 0,
                 svg_str_to_pixbuf(svg.toolbar(self.width, ICON_SIZE)))
@@ -513,7 +511,8 @@ class TurtleArtWindow():
         spr.set_shape(self.selector_shapes[i][1])
         if self.selected_selector is not None:
             j = self.selectors.index(self.selected_selector)
-            self.selected_selector.set_shape(self.selector_shapes[j][0])
+            if j != i:
+                self.selected_selector.set_shape(self.selector_shapes[j][0])
         self.previous_selector = self.selected_selector
         self.selected_selector = spr
         self.show_toolbar_palette(i)
@@ -896,7 +895,7 @@ class TurtleArtWindow():
         self.selected_turtle = None
         # Always hide the status layer on a click
         if self.status_spr is not None:
-            self.status_spr.set_layer(HIDE_LAYER)
+            self.status_spr.hide()
 
         # Find out what was clicked
         spr = self.sprite_list.find_sprite((x,y))
@@ -944,10 +943,9 @@ class TurtleArtWindow():
                self.palette_orientation = 1-self.palette_orientation
                self.palette_button[self.palette_orientation].set_layer(
                                                                       TAB_LAYER)
-               self.palette_button[1-self.palette_orientation].set_layer(
-                                                                     HIDE_LAYER)
+               self.palette_button[1-self.palette_orientation].hide()
                self.palette_sprs[self.selected_palette][
-                               1-self.palette_orientation].set_layer(HIDE_LAYER)
+                               1-self.palette_orientation].hide()
                self._layout_palette(self.selected_palette)
                self.show_toolbar_palette(self.selected_palette)
             return True
@@ -1521,12 +1519,8 @@ class TurtleArtWindow():
     def process_data(self, data):
         # Create the blocks (or turtle).
         blocks = []
-        t = 0
         for b in data:
-            if b[1] == 'turtle':
-                self.load_turtle(b, t)
-                t += 1
-            else:
+            if self._found_a_turtle(b) is False:
                 blk = self.load_block(b)
                 blocks.append(blk)
         # Make the connections.
@@ -1568,6 +1562,23 @@ class TurtleArtWindow():
         # Block sizes and shapes may have changed.
         for b in blocks:
             self._adjust_dock_positions(b)
+
+    """
+    Turtles are either [-1, 'turtle', ...] or [-1, ['turtle', key], ...]
+    """
+    def _found_a_turtle(self, b):
+        if b[1] == 'turtle':
+            self.load_turtle(b)
+            return True
+        elif type(b[1]) == type([1,2]) and b[1][0] == 'turtle': 
+            self.load_turtle(b, b[1][1])
+            return True
+        elif type(b[1]) == type((1,2)):
+            btype, key = b[1]
+            if btype == 'turtle':
+                self.load_turtle(b, key)
+                return True
+        return False
 
     """
     Adjust the dock x,y positions
@@ -1684,9 +1695,9 @@ class TurtleArtWindow():
     """
     Restore a turtle from its saved state
     """
-    def load_turtle(self, b, i=0):
+    def load_turtle(self, b, key=1):
         id, name, xcor, ycor, heading, color, shade, pensize = b
-        self.canvas.set_turtle(i)
+        self.canvas.set_turtle(key)
         self.canvas.setxy(xcor, ycor)
         self.canvas.seth(heading)
         self.canvas.setcolor(color)
@@ -1752,7 +1763,7 @@ class TurtleArtWindow():
         if save_turtle is True:
             for k in iter(self.turtles.dict):
                 self.canvas.set_turtle(k)
-                data.append((-1,'turtle',
+                data.append((-1,['turtle', k],
                              self.canvas.xcor, self.canvas.ycor,
                              self.canvas.heading,
                              self.canvas.color, self.canvas.shade,
