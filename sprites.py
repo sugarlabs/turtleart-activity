@@ -169,10 +169,14 @@ class Sprite:
             _h = self.images[i].get_height()
         else:
             _w, _h = self.images[i].get_size()
-        if _w > self._width:
+        if len(self.images) == 1:
             self._width = _w
-        if _h > self._height:
             self._height = _h
+        else: # TODO: fix this calculation
+            if _w > self._width:
+                self._width = _w
+            if _h > self._height:
+                self._height = _h
 
     def move(self, pos):
         self.inval()

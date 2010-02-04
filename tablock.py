@@ -120,7 +120,7 @@ class Block:
         # make sure the label fits
         lw = self.spr.label_width()        
         lwh = self.spr.label_area_dimensions()
-        self._dx = (lw-lwh[0])
+        self._dx += (lw-lwh[0])
         if self._dx < 0:
             self._dx = 0
         self._make_block(self.svg)
@@ -292,7 +292,7 @@ class Block:
             self._make_portfolio_style_1x2(svg)
         else:
             self._make_basic_style(svg)
-            print ">>>>> I don't know how to create a %s block" % (self.name)
+            print "WARNING: I don't know how to create a %s block" % (self.name)
 
     def _set_colors(self, svg):
         if BOX_COLORS.has_key(self.name):

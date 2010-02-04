@@ -174,7 +174,7 @@ class TurtleArtWindow():
     """
     Resize all of the blocks
     """
-    def resize(self, scale):
+    def resize_blocks(self, scale):
         self.block_scale = scale
         for b in self.just_blocks():
             b.rescale(self.block_scale)
@@ -796,6 +796,7 @@ class TurtleArtWindow():
                        'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift']:
             keyname = ''
             keyunicode = 0
+            print "saw a noise key: %s" % (keyname)
         # Hack until I sort out input and unicode and dead keys,
         if keyname[0:5] == 'dead_':
             self.dead_key = keyname
@@ -803,6 +804,7 @@ class TurtleArtWindow():
             keyunicode = 0
         if keyname in WHITE_SPACE:
             keyunicode = 32
+        print "preparing to process [%s:%s] (%s)" % (oldleft, oldright, keyname)
         if keyname == 'BackSpace':
             if len(oldleft) > 1:
                 newleft = oldleft[:len(oldleft)-1]
@@ -822,15 +824,12 @@ class TurtleArtWindow():
         elif keyname == 'End':
             newleft = oldleft+oldright
             oldright = ''
-        elif keyname == 'Return':
+        elif keyname == 'Return' or keyname == 'Down':
             self._unselect_block()
             return
-        elif keyname == 'Up': # Restore previous state
+        elif keyname == 'Up' or keyname == 'Escape': # Restore previous state
             self.selected_blk.spr.set_label(self.saved_string)
             self._unselect_block()
-            return
-        elif keyname == 'Down': # Erase entire string
-            self.selected_blk.spr.set_label('')
             return
         else:
             if self.dead_key is not '':
@@ -842,8 +841,11 @@ class TurtleArtWindow():
                     newleft = oldleft+unichr(keyunicode)
                 else:
                     newleft = oldleft
+            '''
             else:
+                print "setting new left to ''"
                 newleft = ''
+                '''
         self.selected_blk.spr.set_label("%s%s%s" % \
                                         (newleft, CURSOR, oldright))
 
@@ -866,7 +868,8 @@ class TurtleArtWindow():
             tur = self.turtle_list.spr_to_turtle(self.selected_spr)
             if blk is not None:
                 if keyname == 'Return' or keyname == 'KP_Page_Up':
-                    self._click_block()
+                    (x, y) = blk.spr.get_xy()
+                    self._click_block(x, y)
                 elif keyname == 'KP_Page_Down':
                     if self.drag_group == None:
                         self.drag_group = self._find_group(blk)
