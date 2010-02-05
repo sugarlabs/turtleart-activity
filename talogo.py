@@ -77,20 +77,6 @@ def careful_divide(x,y):
     except:
         return 0
 
-def taequal(x,y):
-    try:
-        return float(x)==float(y)
-    except:
-        if type(x) == str or type(x) == unicode:
-            xx = ord(x[0])
-        else:
-            xx = x
-        if type(y) == str or type(y) == unicode:
-            yy = ord(y[0])
-        else:
-            yy = y
-        return xx==yy
-    
 def taless(x, y):
     try:
         return float(x)<float(y)
@@ -191,7 +177,7 @@ class LogoCode:
         'cyan':[0, lambda self: 50],
         'define':[2, self.prim_define],
         'division':[2, lambda self,x,y: careful_divide(x,y)],
-        'equal?':[2, lambda self,x,y: taequal(x,y)],
+        'equal?':[2, lambda self,x,y: self.prim_equal(x,y)],
         'fillscreen':[2, lambda self, x, y: self.prim_fillscreen(x, y)],
         'forever':[1, self.prim_forever, True],
         'forward':[1, lambda self, x: self.prim_forward(x)],
@@ -285,8 +271,11 @@ class LogoCode:
         self.symnothing = self.intern('%nothing%')
         self.symopar = self.intern('(')
         self.iline = None
+        self.biline = None
         self.cfun = None
+        self.bcfun = None
         self.arglist = None
+        self.barglist = None
         self.ufun = None
     
         self.istack = []
@@ -328,12 +317,12 @@ class LogoCode:
     """
     def run_blocks(self, blk, blocks, run_flag):
         self.blk_index = [] # Maintain a correlation between blocks and code
-        self.bi = 0 # and a counter as you walk through the code
-        self.bis = {'stack1':0, 'stack2':0}
         for k in self.stacks.keys():
             self.stacks[k] = None
         self.stacks['stack1'] = None
         self.stacks['stack2'] = None
+
+        # TODO: add tuple processing to stacks...
         for b in blocks:
             if b.name == 'hat1':
                 self.bis['stack1'] = len(self.blk_index)
@@ -347,18 +336,18 @@ class LogoCode:
                 if b.connections[1] is not None:
                     self.stacks['stack3'+b.connections[1].values[0]] =\
                         self.readline(self.blocks_to_code(b))
-        self.bi = len(self.blk_index)
+
         code = self.blocks_to_code(blk)
         if run_flag is True:
             print "running code: %s" % (code)
             print "block index is: %s" % (self.blk_index)
-            print "step time is: %d" % (self.tw.step_time)
             self.setup_cmd(code)
         else:
             return code
 
     """
     Convert a stack of blocks to pseudocode.
+    Maintains a parallel datastructure for backpointers to blocks.
     """
     def blocks_to_code(self, blk):
         if blk is None:
@@ -367,6 +356,7 @@ class LogoCode:
         dock = blk.docks[0]
         if len(dock)>4: # There could be a '(', ')', '[' or ']'.
             code.append(dock[4])
+            self.blk_index.append(dock[4])
         if blk.primitive is not None:
             code.append(blk.primitive)
             if blk.name not in BOX_STYLE:
@@ -404,6 +394,7 @@ class LogoCode:
             else:
                 print "%s had no primitive." % (blk.name)
                 return ['%nothing%']
+            self.blk_index.append(-1)
         else:
             print "%s had no value." % (blk.name)
             return ['%nothing%']
@@ -413,6 +404,7 @@ class LogoCode:
             if len(dock)>4: # There could be a '(', ')', '[' or ']'.
                 for c in dock[4]:
                     code.append(c)
+                    self.blk_index.append(c)
             if b is not None:
                 code.extend(self.blocks_to_code(b))
             elif blk.docks[i][0] not in ['flow', 'unavailable']:
@@ -425,16 +417,20 @@ class LogoCode:
     def setup_cmd(self, str):
         self.tw.active_turtle.hide() # Hide the turtle while we are running.
         self.procstop = False
-        list = self.readline(str)
+        list = self.readline(str, self.blk_index)
+        print list
         self.step = self.start_eval(list)
 
     """
     Convert the pseudocode into a list of commands.
+        The block associated with the command is stored as the second element
+        in a tuple, e.g., (#forward, 16)
     """
-    def readline(self, line):
+    def readline(self, line, bline):
         res = []
         while line:
             token = line.pop(0)
+            btoken = bline.pop(0)
             if isNumberType(token):
                 res.append(token)
             elif token.isdigit():
@@ -446,11 +442,11 @@ class LogoCode:
             elif token[0:2] == "#s":
                 res.append(token[2:])
             elif token == '[':
-                res.append(self.readline(line))
+                res.append(self.readline(line, bline))
             elif token == ']':
                 return res
             else:
-                res.append(self.intern(token))
+                res.append((self.intern(token),btoken))
         return res
 
     """
@@ -478,22 +474,34 @@ class LogoCode:
         self.iline = list[:]
         self.arglist = None
         while self.iline:
+            token = self.iline[0]
+            btoken = None
+            if type(token) == type((1,2)):
+                (token, btoken) = self.iline[0]
 
             if self.tw.step_time > 0:
-                b = self.tw.block_list.list[self.blk_index[self.bi]]
-                b.highlight()
+                if btoken is not None and type(btoken) is int:
+                    self.tw.block_list.list[btoken].highlight()
                 self.tw.active_turtle.show()
                 endtime = millis()+self.an_int(self.tw.step_time)*100
                 while millis()<endtime:
                     yield True
                 self.tw.active_turtle.hide()
-                self.bi += 1
 
-            token = self.iline[0]
             if token == self.symopar:
                 token = self.iline[1]
+                if type(token) == type((1,2)):
+                    (token, btoken) = self.iline[1]
+                print "token-symopar: %s (%s)" % (token, btoken)
+            else:
+                print "evline: token: %s (%s)" % (token, btoken)
             self.icall(self.eval)
             yield True
+
+            if self.tw.step_time > 0:
+                if btoken is not None and type(btoken) is int:
+                    self.tw.block_list.list[btoken].unhighlight()
+
             if self.procstop:
                 break
             if self.iresult == None:
@@ -509,14 +517,21 @@ class LogoCode:
     """
     def eval(self, infixarg=False):
         token = self.iline.pop(0)
+        btoken = None
+        if type(token) == type((1,2)):
+            (token, btoken) = token
         if type(token) == self.symtype:
+            print "eval: token %s (%s) is a symtype" % (token, btoken)
             self.icall(self.evalsym, token)
             yield True
             res = self.iresult
         else:
+            if btoken is not None:
+                print "eval: token %s (%s) is a token" % (token, btoken)
             res = token
         if not infixarg:
             while self.infixnext():
+                # print "evalinfix %s" % (res)
                 self.icall(self.evalinfix, res)
                 yield True
                 res = self.iresult
@@ -527,31 +542,44 @@ class LogoCode:
     Processing flow (vertical)
     """
     def evalsym(self, token):
+        btoken = None
+        if type(token) == type((1,2)):
+            (token, btoken) = token
         self.debug_trace(token)
         self.undefined_check(token)
         oldcfun, oldarglist = self.cfun, self.arglist
         self.cfun, self.arglist = token, []
+        if btoken is not None:
+            print "evalsym: %s (%s)" % (token, btoken)
+        # self.tw.block_list.list[btoken].highlight()
+
         if token.nargs == None:
             raise logoerror("#noinput")
         for i in range(token.nargs):
             self.no_args_check()
+            # print "evalsym: calling eval %s" % (str(i))
             self.icall(self.eval)
             yield True
             self.arglist.append(self.iresult)
         if self.cfun.rprim:
             if type(self.cfun.fcn) == self.listtype:
+                # print "evalsym: rprim listtype"
                 self.icall(self.ufuncall, self.cfun.fcn)
                 yield True
             else:
+                # print "evalsym: rprim"
                 self.icall(self.cfun.fcn, *self.arglist)
                 yield True
             result = None
         else:
+            # print "evalsym: not an rprim??"
             # TODO: find out why stopstack args are mismatched
             if token.name == 'stopstack':
                 result = self.cfun.fcn()
+                # print result
             else:
                 result = self.cfun.fcn(self, *self.arglist)
+                # print result
         self.cfun, self.arglist = oldcfun, oldarglist
         if self.arglist is not None and result == None:
             raise logoerror("%s didn't output to %s (arglist %s, result %s)" % \
@@ -564,6 +592,10 @@ class LogoCode:
     #
     def evalinfix(self, firstarg):
         token = self.iline.pop(0)
+        btoken = None
+        if type(token) == type((1,2)):
+            (token, btoken) = token
+        # print "evalinfix %s" % (token)
         oldcfun, oldarglist = self.cfun, self.arglist
         self.cfun, self.arglist = token, [firstarg]
         no_args_check(self)
@@ -749,14 +781,14 @@ class LogoCode:
     def prim_repeat(self, num, list):
         num = self.an_int(num)
         self.highlighter("repeat")
-        bi = self.bi
+        # bi = self.bi
         for i in range(num):
-            self.bi = bi
+            # self.bi = bi
             self.icall(self.evline, list[:])
             yield True
             if self.procstop:
                 break
-        self.bi = bi
+        # self.bi = bi
         self.unhighlight("repeat")
         self.ireturn()
         yield True
@@ -770,41 +802,57 @@ class LogoCode:
 
     def prim_forever(self, list):
         self.highlighter("forever")
-        bi = self.bi
+        # bi = self.bi
         while True:
-            self.bi = bi
+            # self.bi = bi
             self.icall(self.evline, list[:])
             yield True
             if self.procstop:
                 break
-        self.bi = bi
+        # self.bi = bi
         self.unhighlight("forever")
         self.ireturn()
         yield True
 
     def prim_if(self, bool, list):
         self.highlighter("if")
-        bi = self.bi
+        # bi = self.bi
         if bool:
             self.icall(self.evline, list[:])
             yield True
-        self.bi = bi
+        # self.bi = bi
         self.unhighlight("if")
         self.ireturn()
         yield True
 
     def prim_ifelse(self, bool, list1, list2):
         self.highlighter("ifelse")
-        bi = self.bi
+        # bi = self.bi
         if bool:
             self.ijmp(self.evline, list1[:])
             yield True
         else:
             self.ijmp(self.evline, list2[:])
             yield True
-        self.bi = bi
+        # self.bi = bi
         self.unhighlight("ifelse")
 
+    def prim_equal(self, x, y):
+        self.highlighter("equal")
+        self.unhighlight("equal")
+        try:
+            return float(x)==float(y)
+        except:
+            if type(x) == str or type(x) == unicode:
+                xx = ord(x[0])
+            else:
+                xx = x
+            if type(y) == str or type(y) == unicode:
+                yy = ord(y[0])
+            else:
+                yy = y
+            return xx==yy
+    
     def prim_opar(self, val):
         self.iline.pop(0)
         return val
@@ -816,42 +864,42 @@ class LogoCode:
         name.rprim = True
     
     def prim_stack(self, str):
-        self.highlighter("stack")
-        self.bi = self.bis['stack3'+str]
+        # self.highlighter("stack")
+        # self.bi = self.bis['stack3'+str]
         if (not self.stacks.has_key('stack3'+str)) or\
            self.stacks['stack3'+str] is None:
             raise logoerror("#nostack")
         self.icall(self.evline, self.stacks['stack3'+str][:])
         yield True
         self.procstop = False
-        self.bi = bi
+        # self.bi = bi
         self.ireturn()
         yield True
 
     def prim_stack1(self):
         self.highlighter("stack1")
-        bi = self.bi
-        self.bi = self.bis['stack1']
+        # bi = self.bi
+        # self.bi = self.bis['stack1']
         if self.stacks['stack1'] is None:
             raise logoerror("#nostack")
         self.icall(self.evline, self.stacks['stack1'][:])
         yield True
         self.procstop = False
-        self.bi = bi
+        # self.bi = bi
         self.unhighlight("stack1")
         self.ireturn()
         yield True
     
     def prim_stack2(self):
         self.highlighter("stack2")
-        bi = self.bi
-        self.bi = self.bis['stack2']
+        # bi = self.bi
+        # self.bi = self.bis['stack2']
         if self.stacks['stack2'] is None:
             raise logoerror("#nostack")
         self.icall(self.evline, self.stacks['stack2'][:])
         yield True
         self.procstop = False
-        self.bi = bi
+        # self.bi = bi
         self.unhighlight("stack2")
         self.ireturn()
         yield True
@@ -925,7 +973,6 @@ class LogoCode:
     
     def kbinput(self):
         self.highlighter("kbinput")
-        self.bi += 1
         if len(self.tw.keypress) == 1:
             self.keyboard = ord(self.tw.keypress[0])
         else:
@@ -999,17 +1046,14 @@ class LogoCode:
     def highlighter(self, name):
         if self.tw.step_time == 0:
             return
-        b = self.tw.block_list.list[self.blk_index[self.bi-1]]
-        print ">>> block %s: (%d: %s)" % (name, self.bi, b.name)
+        # b = self.tw.block_list.list[self.blk_index[self.bi-1]]
+        # print ">>> block %s: (%d: %s)" % (name, self.bi, b.name)
         return
 
     def unhighlight(self, name):
         if self.tw.step_time == 0:
             return
-        if self.bi > 0:
-            b = self.tw.block_list.list[self.blk_index[self.bi-1]]
-            b.unhighlight()
-            print "<<< block %s: (%d: %s)" % (name, self.bi, b.name)
+
 
     """
     Everything below is related to multimedia commands
