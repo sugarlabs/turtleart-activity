@@ -151,7 +151,7 @@ class Sprite:
         self.layer = 100
         self.labels = []
         self.images = []
-        self._dx = []
+        self._dx = [] # image offsets
         self._dy = []
         self.set_image(image)
         self._sprites.append_to_list(self)
@@ -172,11 +172,17 @@ class Sprite:
         if len(self.images) == 1:
             self._width = _w
             self._height = _h
-        else: # TODO: fix this calculation
-            if _w > self._width:
-                self._width = _w
-            if _h > self._height:
-                self._height = _h
+        else:
+            for img in self.images:
+                if isinstance(self.images[i], gtk.gdk.Pixbuf):
+                    _w = self.images[i].get_width()
+                    _h = self.images[i].get_height()
+                else:
+                    _w, _h = self.images[i].get_size()
+                if _w > self._width:
+                    self._width = _w
+                if _h > self._height:
+                    self._height = _h
 
     def move(self, pos):
         self.inval()

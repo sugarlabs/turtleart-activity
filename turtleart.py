@@ -220,7 +220,7 @@ class TurtleMain():
 
     def _do_step_cb(self, widget):
         self.tw.lc.trace = 0
-        self.tw.run_button(3)
+        self.tw.run_button(6)
         return
 
     def _do_stop_cb(self, widget):

@@ -202,7 +202,7 @@ class TurtleArtWindow():
     def eraser_button(self):
         if self.status_spr is not None:
             self.status_spr.hide()
-        self.lc.clear()
+        self.lc.prim_clear()
         self.display_coordinates()
 
     """

@@ -115,6 +115,14 @@ class Block:
 
         block_list.append_to_list(self)
 
+    # We may want to highlight a block...
+    def highlight(self):
+        self.spr.set_shape(self.shapes[1])
+
+    # Or unhighlight it.
+    def unhighlight(self):
+        self.spr.set_shape(self.shapes[0])
+
     # We need to resize some blocks on the fly.
     def resize(self):
         # make sure the label fits

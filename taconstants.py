@@ -176,7 +176,7 @@ BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1',
     'storeinbox2', 'wait', 'stack', 'push', 'nop', 'addturtle']
-BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storein']
+BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storein', 'write']
 BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'textcolor', 'textsize', 'box1', 'box2', 'string', 'leftpos', 'scale',
     'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard',
@@ -431,6 +431,7 @@ PRIMITIVES = {
     'vspace':'nop',
     'wait':'wait',
     'width':'hres',
+    'write':'write',
     'xcor':'xcor',
     'ycor':'ycor',
     'yellow':'yellow'}
@@ -441,23 +442,23 @@ PRIMITIVES = {
 
 DEFAULTS = {
     'addturtle':[1],
-    'arc':[90,100],
+    'arc':[90, 100],
     'audio':[None],
     'back':[100],
     'box':[_('my box')],
     'description':[None],
-    'fillscreen':[60,80],
+    'fillscreen':[60, 80],
     'forward':[100],
     'hat':[_('action')],
     'if':[None, None, 'vspace'],
-    'ifelse':[None,'vspace', None, 'vspace'],
+    'ifelse':[None, 'vspace', None, 'vspace'],
     'journal':[None],
     'left':[90],
     'media':[None],
-    'myfunc':[_('x'),100],
+    'myfunc':[_('x'), 100],
     'nop':[100],
     'number':[100],
-    'random':[0,100],
+    'random':[0, 100],
     'repeat':[4, None, 'vspace'],
     'right':[90],
     'setcolor':[0],
@@ -466,12 +467,12 @@ DEFAULTS = {
     'setscale':[33],
     'setshade':[50],
     'settextsize':[32],
-    'setxy':[0,0],
+    'setxy':[0, 0],
     'show':[_('text')],
     'stack':[_('action')],
     'storeinbox1':[100],
     'storeinbox2':[100],
-    'storein':[_('my box'),100],
+    'storein':[_('my box'), 100],
     'string':[_('text')],
     'template1x1':[_('Title'), 'None'],
     'template1x1a':[_('Title'), 'None'],
@@ -479,7 +480,8 @@ DEFAULTS = {
     'template2x1':[_('Title'), 'None', 'None'],
     'template2x2':[_('Title'), 'None', 'None', 'None', 'None'],
     'templatelist':[_('Title'), '∙ '],
-    'wait':[1]}
+    'wait':[1],
+    'write':[_('text'), 32]}
 
 #
 # Blocks that can interchange strings and numbers for their arguments
