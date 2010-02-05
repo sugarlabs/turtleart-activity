@@ -239,7 +239,7 @@ class LogoCode:
         'seth':[1, lambda self, x: self.prim_setheading(x)],
         'setpensize':[1, lambda self, x: self.prim_setpensize(x)],
         'setscale':[1, lambda self,x: self.set_scale(x)],
-        'setshade':[1, lambda self, x: self.tw.canvas.setshade(x)],
+        'setshade':[1, lambda self, x: self.prim_setshade(x)],
         'settextcolor':[1, lambda self, x: self.tw.canvas.settextcolor(x)],
         'settextsize':[1, lambda self, x: self.tw.canvas.settextsize(x)],
         'setxy':[2, lambda self, x, y: self.prim_setxy(x, y)],
@@ -371,6 +371,8 @@ class LogoCode:
             code.append(blk.primitive)
             if blk.name not in BOX_STYLE:
                 self.blk_index.append(self.tw.block_list.list.index(blk))
+            else:
+                print "skipping %s" % (blk.name)
         elif len(blk.values)>0:  # Extract the value from content blocks.
             if blk.name=='number':
                 try:
@@ -667,12 +669,9 @@ class LogoCode:
             return(str(x) + str(y))
     
     def prim_clear(self):
-        print ">>>>>>>>>>>>>>>>>>>>> in the clear"
         self.highlighter("clear")
-        print "after call to highlight"
         stop_media(self)
         self.tw.canvas.clearscreen()
-        print "unhighlighting"
         self.unhighlight("plus")
 
     def prim_fillscreen(self):
@@ -726,9 +725,9 @@ class LogoCode:
         self.unhighlight("setcolor")
 
     def prim_setshade(self, x):
-        self.highlighter("setcolor")
+        self.highlighter("setshade")
         self.tw.canvas.setshade(x)
-        self.unhighlight("setcolor")
+        self.unhighlight("setshade")
 
     def prim_start(self):
         self.highlighter("start")
@@ -825,6 +824,7 @@ class LogoCode:
         self.icall(self.evline, self.stacks['stack3'+str][:])
         yield True
         self.procstop = False
+        self.bi = bi
         self.ireturn()
         yield True
 
@@ -837,6 +837,7 @@ class LogoCode:
         self.icall(self.evline, self.stacks['stack1'][:])
         yield True
         self.procstop = False
+        self.bi = bi
         self.unhighlight("stack1")
         self.ireturn()
         yield True
@@ -850,6 +851,7 @@ class LogoCode:
         self.icall(self.evline, self.stacks['stack2'][:])
         yield True
         self.procstop = False
+        self.bi = bi
         self.unhighlight("stack2")
         self.ireturn()
         yield True
@@ -995,18 +997,19 @@ class LogoCode:
         self.unhighlight("empty")
 
     def highlighter(self, name):
+        if self.tw.step_time == 0:
+            return
         b = self.tw.block_list.list[self.blk_index[self.bi-1]]
-        print "entering block %s: (%d: %s)" % (name, self.bi, b.name)
+        print ">>> block %s: (%d: %s)" % (name, self.bi, b.name)
         return
 
     def unhighlight(self, name):
-        print "in unhighlight"
         if self.tw.step_time == 0:
             return
         if self.bi > 0:
             b = self.tw.block_list.list[self.blk_index[self.bi-1]]
             b.unhighlight()
-            print "exiting block %s: (%d: %s)" % (name, self.bi, b.name)
+            print "<<< block %s: (%d: %s)" % (name, self.bi, b.name)
 
     """
     Everything below is related to multimedia commands
