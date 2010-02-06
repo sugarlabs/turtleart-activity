@@ -502,7 +502,7 @@ MEDIA_SHAPES = ['audiooff', 'audioon', 'audiosmall',
                 'pythonoff', 'pythonon', 'pythonsmall',
                 'list', '1x1', '1x1a', '2x1', '1x2', '2x2']
 
-OVERLAY_SHAPES = ['Cartesian', 'polar']
+OVERLAY_SHAPES = ['Cartesian', 'Cartesian_labeled', 'polar']
 
 STATUS_SHAPES = ['status', 'info', 'nostack', 'noinput', 'emptyheap',
                  'emptybox', 'nomedia', 'nocode', 'overflowerror',

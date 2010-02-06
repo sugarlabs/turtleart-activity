@@ -220,10 +220,17 @@ class TurtleMain():
 
     def _do_cartesian_cb(self, button):
         if self.tw.cartesian is True:
-            self.tw.overlay_shapes['Cartesian'].hide()
+            if self.tw.coord_scale == 1:
+                self.tw.overlay_shapes['Cartesian_labeled'].hide()
+            else:
+                self.tw.overlay_shapes['Cartesian'].hide()
             self.tw.cartesian = False
         else:
-            self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
+            if self.tw.coord_scale == 1:
+                self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
+                                                              OVERLAY_LAYER)
+            else:
+                self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
             self.tw.cartesian = True
 
     def _do_polar_cb(self, button):
@@ -233,6 +240,21 @@ class TurtleMain():
         else:
             self.tw.overlay_shapes['polar'].set_layer(OVERLAY_LAYER)
             self.tw.polar = True
+
+    def _do_rescale_cb(self, button):
+        if self.tw.coord_scale == 1:
+            self.tw.coord_scale = self.tw.height/200
+            self.tw.eraser_button()
+            if self.tw.cartesian is True:
+                self.tw.overlay_shapes['Cartesian_labeled'].hide()
+                self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
+        else:
+            self.tw.coord_scale = 1
+            self.tw.eraser_button()
+            if self.tw.cartesian is True:
+                self.tw.overlay_shapes['Cartesian'].hide()
+                self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
+                                                              OVERLAY_LAYER)
 
     def _do_palette_cb(self, widget):
         self.tw.show_palette(self.i)
@@ -282,14 +304,6 @@ class TurtleMain():
         text = clipBoard.wait_for_text()
         if text is not None:
             self.tw.process_data(data_from_string(text))
-
-    def _do_rescale_cb(self, button):
-        if self.tw.coord_scale == 1:
-            self.tw.coord_scale = self.tw.height/200
-            self.tw.eraser_button()
-        else:
-            self.tw.coord_scale = 1
-            self.tw.eraser_button()
 
 def main():
     gtk.main()

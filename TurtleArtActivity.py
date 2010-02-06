@@ -416,10 +416,17 @@ class TurtleArtActivity(activity.Activity):
     """
     def _do_cartesian_cb(self, button):
         if self.tw.cartesian is True:
-            self.tw.overlay_shapes['Cartesian'].hide()
+            if self.tw.coord_scale == 1:
+                self.tw.overlay_shapes['Cartesian_labeled'].hide()
+            else:
+                self.tw.overlay_shapes['Cartesian'].hide()
             self.tw.cartesian = False
         else:
-            self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
+            if self.tw.coord_scale == 1:
+                self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
+                                                              OVERLAY_LAYER)
+            else:
+                self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
             self.tw.cartesian = True
 
     def _do_polar_cb(self, button):
@@ -439,11 +446,18 @@ class TurtleArtActivity(activity.Activity):
             self.rescale_button.set_icon("contract-coordinates")
             self.rescale_button.set_tooltip(_('Rescale coordinates down'))
             self.tw.eraser_button()
+            if self.tw.cartesian is True:
+                self.tw.overlay_shapes['Cartesian_labeled'].hide()
+                self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
         else:
             self.tw.coord_scale = 1
             self.rescale_button.set_icon("expand-coordinates")
             self.rescale_button.set_tooltip(_('Rescale coordinates up'))
             self.tw.eraser_button()
+            if self.tw.cartesian is True:
+                self.tw.overlay_shapes['Cartesian'].hide()
+                self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
+                                                              OVERLAY_LAYER)
 
     """
     Either set up initial share...
