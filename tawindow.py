@@ -552,21 +552,6 @@ class TurtleArtWindow():
                             svg_str_to_pixbuf(svg.palette(PALETTE_WIDTH, _h)))
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
-
-    """
-    Select a category from the toolbar.
-    """
-    def _select_category(self, spr):
-        i = self.selectors.index(spr)
-        spr.set_shape(self.selector_shapes[i][1])
-        if self.selected_selector is not None:
-            j = self.selectors.index(self.selected_selector)
-            if j != i:
-                self.selected_selector.set_shape(self.selector_shapes[j][0])
-        self.previous_selector = self.selected_selector
-        self.selected_selector = spr
-        self.show_palette(i)
-
     """
     Button press
     """
@@ -621,10 +606,10 @@ class TurtleArtWindow():
                 elif blk.name == 'empty':
                     self._empty_trash()
                 elif MACROS.has_key(blk.name):
-                    self._new_macro(blk.name, x+PALETTE_WIDTH, y+PALETTE_HEIGHT)
+                    self._new_macro(blk.name, x, y)
                 else:
                     blk.highlight()
-                    self._new_block(blk.name, x+PALETTE_WIDTH, y+PALETTE_HEIGHT)
+                    self._new_block(blk.name, x, y)
                     blk.unhighlight()
             return True
 
@@ -639,7 +624,8 @@ class TurtleArtWindow():
         # Finally, check for anything else
         if hasattr(spr, 'type'):
             if spr.type == "canvas":
-                spr.set_layer(CANVAS_LAYER)
+                pass
+                # spr.set_layer(CANVAS_LAYER)
             elif spr.type == 'selector':
                 self._select_category(spr)
             elif spr.type == 'category':
@@ -655,6 +641,20 @@ class TurtleArtWindow():
                self.show_palette(self.selected_palette)
             return True
 
+    """
+    Select a category from the toolbar.
+    """
+    def _select_category(self, spr):
+        i = self.selectors.index(spr)
+        spr.set_shape(self.selector_shapes[i][1])
+        if self.selected_selector is not None:
+            j = self.selectors.index(self.selected_selector)
+            if i == j:
+                return
+            self.selected_selector.set_shape(self.selector_shapes[j][0])
+        self.previous_selector = self.selected_selector
+        self.selected_selector = spr
+        self.show_palette(i)
 
     """
     Restore all the blocks in the trash can
@@ -788,8 +788,8 @@ class TurtleArtWindow():
                     argblk.spr.set_layer(TOP_LAYER)
                     argblk.connections = [newblk, None]
                     newblk.connections[i+1] = argblk
-            self.drag_group = self._find_group(newblk)
-            self.block_operation = 'new' 
+        self.drag_group = self._find_group(newblk)
+        self.block_operation = 'new' 
 
     """
     Create a "macro" (predefined stack of blocks)
