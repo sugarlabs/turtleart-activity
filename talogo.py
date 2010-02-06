@@ -490,9 +490,6 @@ class LogoCode:
                 token = self.iline[1]
                 if type(token) == type((1,2)):
                     (token, btoken) = self.iline[1]
-                print "token-symopar: %s (%s)" % (token, btoken)
-            else:
-                print "evline: token: %s (%s)" % (token, btoken)
             self.icall(self.eval)
             yield True
 
@@ -519,17 +516,15 @@ class LogoCode:
         if type(token) == type((1,2)):
             (token, btoken) = token
         if type(token) == self.symtype:
-            print "eval: token %s (%s) is a symtype" % (token, btoken)
+            self.tw.block_list.list[btoken].highlight()
             self.icall(self.evalsym, token)
             yield True
+            self.tw.block_list.list[btoken].unhighlight()
             res = self.iresult
         else:
-            if btoken is not None:
-                print "eval: token %s (%s) is a token" % (token, btoken)
             res = token
         if not infixarg:
             while self.infixnext():
-                # print "evalinfix %s" % (res)
                 self.icall(self.evalinfix, res)
                 yield True
                 res = self.iresult
@@ -543,12 +538,11 @@ class LogoCode:
         btoken = None
         if type(token) == type((1,2)):
             (token, btoken) = token
+            print "found a tuple in evalsym (%s, %s)?" % (token, btoken)
         self.debug_trace(token)
         self.undefined_check(token)
         oldcfun, oldarglist = self.cfun, self.arglist
         self.cfun, self.arglist = token, []
-        if btoken is not None:
-            print "evalsym: %s (%s)" % (token, btoken)
 
         if token.nargs == None:
             raise logoerror("#noinput")
@@ -586,7 +580,7 @@ class LogoCode:
         btoken = None
         if type(token) == type((1,2)):
             (token, btoken) = token
-        # print "evalinfix %s" % (token)
+        print ">>>>>>>>>>>evalinfix %s %s" % (token, str(btoken))
         oldcfun, oldarglist = self.cfun, self.arglist
         self.cfun, self.arglist = token, [firstarg]
         no_args_check(self)
