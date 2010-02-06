@@ -612,7 +612,7 @@ class TurtleArtActivity(activity.Activity):
     """
     def _setup_toolbar(self):
 
-        try: 
+        try:
             # Use 0.86 toolbar design
             toolbar_box = ToolbarBox()
             # Buttons added to the Activity toolbar
@@ -1018,7 +1018,6 @@ class TurtleArtActivity(activity.Activity):
         self.add_events(gtk.gdk.VISIBILITY_NOTIFY_MASK)
         self.connect("visibility-notify-event", self.__visibility_notify_cb)
 
-
     """
     Write the project to the Journal
     """
@@ -1173,6 +1172,20 @@ class ViewToolbar(gtk.Toolbar):
         separator.set_expand(True)
         self.insert(separator, -1)
         separator.show()
+
+        self.activity.resize_up_button = ToolButton('resize+')
+        self.activity.resize_up_button.set_tooltip(_("Grow blocks"))
+        self.activity.resize_up_button.connect('clicked',
+                                      self.activity._do_resize_blocks_cb, 1.5)
+        self.insert(self.activity.resize_up_button,-1)
+        self.activity.resize_up_button.show()
+
+        self.activity.resize_down_button = ToolButton('resize-')
+        self.activity.resize_down_button.set_tooltip(_("Shrink blocks"))
+        self.activity.resize_down_button.connect('clicked',
+                                 self.activity._do_resize_blocks_cb, 0.667)
+        self.insert(self.activity.resize_down_button,-1)
+        self.activity.resize_down_button.show()
 
         self.activity.rescale_button = ToolButton('expand-coordinates')
         self.activity.rescale_button.set_tooltip(_("Rescale coordinates up"))

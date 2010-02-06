@@ -228,7 +228,7 @@ class TurtleArtWindow():
         if self.hide is False: 
             for blk in self.just_blocks():
                 blk.spr.hide()
-            self._hide_palette() 
+            self.hide_palette() 
             self.hide = True
         else:
             for blk in self.just_blocks():
@@ -245,7 +245,7 @@ class TurtleArtWindow():
             self.palette == False
             if self.running_sugar:
                 self.activity.do_hidepalette()
-            self._hide_palette()
+            self.hide_palette()
         else:
             self.palette == True
             if self.running_sugar:
@@ -255,8 +255,8 @@ class TurtleArtWindow():
     """
     Show palette 
     """
-    def show_palette(self):
-        self.show_toolbar_palette(0)
+    def show_palette(self, n=0):
+        self.show_toolbar_palette(n)
         self.palette_button[self.orientation].set_layer(TAB_LAYER)
         self.toolbar_spr.set_layer(CATEGORY_LAYER)
         self.palette = True
@@ -264,7 +264,7 @@ class TurtleArtWindow():
     """
     Hide the palette.
     """
-    def _hide_palette(self):
+    def hide_palette(self):
         self.hide_toolbar_palette()
         self.palette_button[self.orientation].hide()
         self.toolbar_spr.hide()
@@ -556,7 +556,7 @@ class TurtleArtWindow():
                 self.selected_selector.set_shape(self.selector_shapes[j][0])
         self.previous_selector = self.selected_selector
         self.selected_selector = spr
-        self.show_toolbar_palette(i)
+        self.show_palette(i)
 
     """
     Find a stack to run (any stack without a 'def action'on the top).
@@ -965,9 +965,9 @@ class TurtleArtWindow():
                 elif MACROS.has_key(blk.name):
                     self._new_macro(blk.name, x+PALETTE_WIDTH, y+PALETTE_HEIGHT)
                 else:
-                    blk.spr.set_shape(blk.shapes[1])
+                    blk.highlight()
                     self._new_block(blk.name, x+PALETTE_WIDTH, y+PALETTE_HEIGHT)
-                    blk.spr.set_shape(blk.shapes[0])
+                    blk.unhighlight()
             return True
 
         # Next, look for a turtle
@@ -994,7 +994,7 @@ class TurtleArtWindow():
                self.palette_sprs[self.selected_palette][
                                1-self.orientation].hide()
                self._layout_palette(self.selected_palette)
-               self.show_toolbar_palette(self.selected_palette)
+               self.show_palette(self.selected_palette)
             return True
 
     """
@@ -1002,7 +1002,7 @@ class TurtleArtWindow():
     """
     def _block_pressed(self, mask, x, y, blk):
         if blk is not None:
-            blk.spr.set_shape(blk.shapes[1])
+            blk.highlight()
             self._disconnect(blk)
             self.drag_group = self._find_group(blk)
             (sx, sy) = blk.spr.get_xy()
@@ -1020,8 +1020,7 @@ class TurtleArtWindow():
             self._number_check()
         elif self.selected_blk.name == 'string':
             self._string_check()
-        # Reset shape of the selected block
-        self.selected_blk.spr.set_shape(self.selected_blk.shapes[0])
+        self.selected_blk.unhighlight()
         self.selected_blk = None
 
     """
@@ -1083,7 +1082,7 @@ class TurtleArtWindow():
                 b.type = 'trash'
                 b.spr.hide()
             self.drag_group = None
-            self.show_toolbar_palette(PALETTE_NAMES.index('trash'))
+            self.show_palette(PALETTE_NAMES.index('trash'))
             return
 
         # Pull a stack of new blocks off of the category palette.
@@ -1898,6 +1897,10 @@ class TurtleArtWindow():
         self.status_spr.set_shape(self.status_shapes[shp])
         self.status_spr.set_label(label)
         self.status_spr.set_layer(STATUS_LAYER)
+        if shp == 'info':
+            self.status_spr.move((PALETTE_WIDTH, self.height-300))
+        else:
+            self.status_spr.move((PALETTE_WIDTH, self.height-200))
 
     def calc_position(self, t):
         w,h,x,y,dx,dy = TEMPLATES[t]

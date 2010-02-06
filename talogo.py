@@ -35,8 +35,7 @@ try:
 except:
     pass
 
-from taconstants import PRIMITIVES, PALETTES, PALETTE_NAMES, STATUS_LAYER,\
-                        BOX_STYLE
+from taconstants import PALETTES, PALETTE_NAMES, BOX_STYLE
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, movie_media_type,\
@@ -175,7 +174,7 @@ class LogoCode:
         '+':[None, lambda self,x,y: x+y],
         'and':[2, lambda self,x,y: x&y],
         'arc':[2, lambda self, x, y: self.tw.canvas.arc(x, y)],
-        'back':[1, lambda self,x: self.prim_forward(-x)],
+        'back':[1, lambda self,x: self.tw.canvas.forward(-x)],
         'blue':[0, lambda self: 70],
         'bpos':[0, lambda self: -self.tw.canvas.height/(self.tw.coord_scale*2)],
         'box1':[0, lambda self: self.boxes['box1']],
@@ -204,7 +203,7 @@ class LogoCode:
         'insertimage':[1, lambda self,x: self.insert_image(x, False)],
         'kbinput':[0, lambda self: self.prim_kbinput()],
         'keyboard':[0, lambda self: self.keyboard],
-        'left':[1, lambda self,x: self.prim_right(-x)],
+        'left':[1, lambda self,x: self.tw.canvas.right(-x)],
         'lpos':[0, lambda self: -self.tw.canvas.width/(self.tw.coord_scale*2)],
         'less?':[2, lambda self,x,y: taless(x,y)],
         'minus':[2, lambda self,x,y: taminus(x,y)],

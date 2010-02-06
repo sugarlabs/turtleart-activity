@@ -28,6 +28,7 @@ import os
 import os.path
 import locale
 from gettext import gettext as _
+from taconstants import OVERLAY_LAYER
 from tautils import data_to_string, data_from_string
 from tawindow import TurtleArtWindow
 
@@ -92,9 +93,21 @@ class TurtleMain():
 
         menu = gtk.Menu()
 
+        menu_items = gtk.MenuItem(_("Cartesian"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_cartesian_cb)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Polar"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_polar_cb)
+        menu_items.show()
         menu_items = gtk.MenuItem(_("Larger"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_resize_cb, 1.5)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Smaller"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_resize_cb, 0.667)
         menu_items.show()
         menu_items = gtk.MenuItem(_("Reset"))
         menu.append(menu_items)
@@ -153,6 +166,10 @@ class TurtleMain():
         menu.append(menu_items)
         menu_items.connect("activate", self._do_step_cb)
         menu_items.show()
+        menu_items = gtk.MenuItem(_("Trace"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_trace_cb)
+        menu_items.show()
         menu_items = gtk.MenuItem(_("Stop"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_stop_cb)
@@ -197,14 +214,30 @@ class TurtleMain():
             self.tw.block_scale *= factor
         self.tw.resize_blocks()
 
+    def _do_cartesian_cb(self, button):
+        if self.tw.cartesian is True:
+            self.tw.overlay_shapes['Cartesian'].hide()
+            self.tw.cartesian = False
+        else:
+            self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
+            self.tw.cartesian = True
+
+    def _do_polar_cb(self, button):
+        if self.tw.polar is True:
+            self.tw.overlay_shapes['polar'].hide()
+            self.tw.polar = False
+        else:
+            self.tw.overlay_shapes['polar'].set_layer(OVERLAY_LAYER)
+            self.tw.polar = True
+
     def _do_palette_cb(self, widget):
-        self.tw.show_toolbar_palette(self.i)
+        self.tw.show_palette(self.i)
         self.i += 1
         if self.i == len(self.tw.palettes):
             self.i = 0
 
     def _do_hide_palette_cb(self, widget):
-        self.tw.hide_toolbar_palette()
+        self.tw.hide_palette()
 
     def _do_hideshow_cb(self, widget):
         self.tw.hideshow_button()
@@ -220,6 +253,11 @@ class TurtleMain():
 
     def _do_step_cb(self, widget):
         self.tw.lc.trace = 0
+        self.tw.run_button(3)
+        return
+
+    def _do_trace_cb(self, widget):
+        self.tw.lc.trace = 1
         self.tw.run_button(6)
         return
 
