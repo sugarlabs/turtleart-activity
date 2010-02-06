@@ -126,8 +126,7 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
              'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
              'bottompos', 'height', 'addturtle', 'print'],
             ['journal', 'audio', 'description', 'templatelist', 'template1x1a',
-             'template1x1', 'template1x2', 'template2x1', 'template2x2',
-             'hideblocks', 'showblocks'],
+             'template2x2', 'hideblocks', 'showblocks'],
             ['empty', 'restoreall']]
 
 #

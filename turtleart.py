@@ -87,34 +87,38 @@ class TurtleMain():
         menu_items.connect("activate", self._do_save_cb)
         menu_items.show()
 
-        activity_menu = gtk.MenuItem("File")
+        activity_menu = gtk.MenuItem(_("File"))
         activity_menu.show()
         activity_menu.set_submenu(menu)
 
         menu = gtk.Menu()
 
-        menu_items = gtk.MenuItem(_("Cartesian"))
+        menu_items = gtk.MenuItem(_("Cartesian coordinates"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_cartesian_cb)
         menu_items.show()
-        menu_items = gtk.MenuItem(_("Polar"))
+        menu_items = gtk.MenuItem(_("Polar coordinates"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_polar_cb)
         menu_items.show()
-        menu_items = gtk.MenuItem(_("Larger"))
+        menu_items = gtk.MenuItem(_('Rescale coordinates'))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_rescale_cb)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Grow blocks"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_resize_cb, 1.5)
         menu_items.show()
-        menu_items = gtk.MenuItem(_("Smaller"))
+        menu_items = gtk.MenuItem(_("Shrink blocks"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_resize_cb, 0.667)
         menu_items.show()
-        menu_items = gtk.MenuItem(_("Reset"))
+        menu_items = gtk.MenuItem(_("Reset block size"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_resize_cb, -1)
         menu_items.show()
         
-        view_menu = gtk.MenuItem("View")
+        view_menu = gtk.MenuItem(_("View"))
         view_menu.show()
         view_menu.set_submenu(menu)
 
@@ -129,26 +133,26 @@ class TurtleMain():
         menu_items.connect("activate", self._do_paste_cb)
         menu_items.show()
         
-        edit_menu = gtk.MenuItem("Edit")
+        edit_menu = gtk.MenuItem(_("Edit"))
         edit_menu.show()
         edit_menu.set_submenu(menu)
 
         menu = gtk.Menu()
 
-        menu_items = gtk.MenuItem(_("Palette"))
+        menu_items = gtk.MenuItem(_("Show palette"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_palette_cb)
         menu_items.show()
-        menu_items = gtk.MenuItem(_("Hide Palette"))
+        menu_items = gtk.MenuItem(_("Hide palette"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_hide_palette_cb)
         menu_items.show()
-        menu_items = gtk.MenuItem(_("Blocks"))
+        menu_items = gtk.MenuItem(_("Show/hide blocks"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_hideshow_cb)
         menu_items.show()
 
-        tool_menu = gtk.MenuItem("Tools")
+        tool_menu = gtk.MenuItem(_("Tools"))
         tool_menu.show()
         tool_menu.set_submenu(menu)
 
@@ -166,7 +170,7 @@ class TurtleMain():
         menu.append(menu_items)
         menu_items.connect("activate", self._do_step_cb)
         menu_items.show()
-        menu_items = gtk.MenuItem(_("Trace"))
+        menu_items = gtk.MenuItem(_("Debug"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_trace_cb)
         menu_items.show()
@@ -175,7 +179,7 @@ class TurtleMain():
         menu_items.connect("activate", self._do_stop_cb)
         menu_items.show()
 
-        turtle_menu = gtk.MenuItem("Turtle")
+        turtle_menu = gtk.MenuItem(_("Turtle"))
         turtle_menu.show()
         turtle_menu.set_submenu(menu)
 
@@ -278,6 +282,14 @@ class TurtleMain():
         text = clipBoard.wait_for_text()
         if text is not None:
             self.tw.process_data(data_from_string(text))
+
+    def _do_rescale_cb(self, button):
+        if self.tw.coord_scale == 1:
+            self.tw.coord_scale = self.tw.height/200
+            self.tw.eraser_button()
+        else:
+            self.tw.coord_scale = 1
+            self.tw.eraser_button()
 
 def main():
     gtk.main()

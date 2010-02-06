@@ -693,7 +693,7 @@ class TurtleArtActivity(activity.Activity):
             cartesian_button.show()
 
             polar_button = ToolButton('view-polar')
-            polar_button.set_tooltip(_("polar coordinates"))
+            polar_button.set_tooltip(_("Polar coordinates"))
             polar_button.connect('clicked', self._do_polar_cb)
             view_toolbar.insert(polar_button,-1)
             polar_button.show()
@@ -1145,7 +1145,7 @@ class ViewToolbar(gtk.Toolbar):
 
         # polar coordinates
         self.activity.polar_button = ToolButton( "view-polar" )
-        self.activity.polar_button.set_tooltip(_('polar coordinates'))
+        self.activity.polar_button.set_tooltip(_('Polar coordinates'))
         self.activity.polar_button.props.sensitive = True
         self.activity.polar_button.connect('clicked', \
                                            self.activity._do_polar_cb)

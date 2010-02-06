@@ -1885,7 +1885,6 @@ class TurtleArtWindow():
             return True
 
     def showlabel(self, shp, label=''):
-        print "shp: %s, label: %s" % (shp, label)
         if shp == 'syntaxerror' and label != '':
             shp = label[1:]
             label = ''
