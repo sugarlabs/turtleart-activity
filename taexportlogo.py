@@ -113,6 +113,8 @@ tasetshade :shade \r"
          refbox = 0
          myvar = ""
          for d in data:
+             if type(d) == type((1,2)):
+                 (d,b) = d
              if type(d) is float:
                  if namedbox == 1:
                      myvar += str(d)

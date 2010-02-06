@@ -78,6 +78,8 @@ charset=UTF-8\">\n", ""),
          show = 0
          tp1, tp2, tp3, tp8, tp6, tp7 = 0,0,0,0,0,0
          for d in data:
+             if type(d) == type((1,2)):
+                 (d,b) = d
              if type(d) is float or type(d) is int:
                  d = str(d) # convert floats and ints to strings
              # transalate some Turtle Art blocks into HTML
