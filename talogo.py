@@ -36,7 +36,7 @@ except:
     pass
 
 from taconstants import PRIMITIVES, PALETTES, PALETTE_NAMES, STATUS_LAYER,\
-                        TEMPLATES, BOX_STYLE
+                        BOX_STYLE
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, movie_media_type,\
@@ -77,6 +77,20 @@ def careful_divide(x,y):
     except:
         return 0
 
+def taequal(x, y):
+    try:
+        return float(x)==float(y)
+    except:
+        if type(x) == str or type(x) == unicode:
+            xx = ord(x[0])
+        else:
+            xx = x
+        if type(y) == str or type(y) == unicode:
+            yy = ord(y[0])
+        else:
+            yy = y
+        return xx==yy
+    
 def taless(x, y):
     try:
         return float(x)<float(y)
@@ -94,6 +108,13 @@ def taless(x, y):
 def tamore(x, y):
     return taless(y, x)
 
+def taplus(x, y):
+    if (type(x) == int or type(x) == float) and \
+        (type(y) == int or type(y) == float):
+        return(x+y)
+    else:
+        return(str(x) + str(y))
+    
 def taminus(x, y):
     try:
         return(x-y)
@@ -121,15 +142,6 @@ def tasqrt(x):
 def identity(x):
     return(x)
 
-def calc_position(tw, t):
-    w,h,x,y,dx,dy = TEMPLATES[t]
-    x *= tw.canvas.width
-    y *= tw.canvas.height
-    w *= (tw.canvas.width-x)
-    h *= (tw.canvas.height-y)
-    dx *= w
-    dy *= h
-    return(w,h,x,y,dx,dy)
     
 """
 Stop_logo is called from the Stop button on the toolbar
@@ -162,7 +174,7 @@ class LogoCode:
         '%':[None, lambda self,x,y: x%y],
         '+':[None, lambda self,x,y: x+y],
         'and':[2, lambda self,x,y: x&y],
-        'arc':[2, lambda self, x, y: self.prim_arc(x, y)],
+        'arc':[2, lambda self, x, y: self.tw.canvas.arc(x, y)],
         'back':[1, lambda self,x: self.prim_forward(-x)],
         'blue':[0, lambda self: 70],
         'bpos':[0, lambda self: -self.tw.canvas.height/(self.tw.coord_scale*2)],
@@ -177,10 +189,10 @@ class LogoCode:
         'cyan':[0, lambda self: 50],
         'define':[2, self.prim_define],
         'division':[2, lambda self,x,y: careful_divide(x,y)],
-        'equal?':[2, lambda self,x,y: self.prim_equal(x,y)],
-        'fillscreen':[2, lambda self, x, y: self.prim_fillscreen(x, y)],
+        'equal?':[2, lambda self,x,y: taequal(x,y)],
+        'fillscreen':[2, lambda self, x, y: self.tw.canvas.fillscreen(x, y)],
         'forever':[1, self.prim_forever, True],
-        'forward':[1, lambda self, x: self.prim_forward(x)],
+        'forward':[1, lambda self, x: self.tw.canvas.forward(x)],
         'greater?':[2, lambda self,x,y: tamore(x,y)],
         'green':[0, lambda self: 30],
         'heading':[0, lambda self: self.tw.canvas.heading],
@@ -190,7 +202,7 @@ class LogoCode:
         'if':[2, self.prim_if, True],
         'ifelse':[3, self.prim_ifelse, True],
         'insertimage':[1, lambda self,x: self.insert_image(x, False)],
-        'kbinput':[0, lambda self: self.kbinput()],
+        'kbinput':[0, lambda self: self.prim_kbinput()],
         'keyboard':[0, lambda self: self.keyboard],
         'left':[1, lambda self,x: self.prim_right(-x)],
         'lpos':[0, lambda self: -self.tw.canvas.width/(self.tw.coord_scale*2)],
@@ -198,17 +210,17 @@ class LogoCode:
         'minus':[2, lambda self,x,y: taminus(x,y)],
         'mod':[2, lambda self,x,y: tamod(x,y)],
         'myfunc':[2, lambda self,f,x: self.prim_myfunc(f, x)],
-        'nop':[0, lambda self: self.prim_none()],
-        'nop1':[0, lambda self: self.prim_none(1)],
-        'nop2':[0, lambda self: self.prim_none(2)],
-        'nop3':[1, lambda self,x: self.prim_none(x)],
+        'nop':[0, lambda self: None],
+        'nop1':[0, lambda self: None],
+        'nop2':[0, lambda self: None],
+        'nop3':[1, lambda self,x: None],
         'not':[1, lambda self,x:not x],
         'orange':[0, lambda self: 10],
         'or':[2, lambda self,x,y: x|y],
-        'pendown':[0, lambda self: self.prim_setpen(True)],
+        'pendown':[0, lambda self: self.tw.canvas.setpen(True)],
         'pensize':[0, lambda self: self.tw.canvas.pensize],
-        'penup':[0, lambda self:  self.prim_setpen(False)],
-        'plus':[2, lambda self,x,y: self.prim_plus(x,y)],
+        'penup':[0, lambda self: self.tw.canvas.setpen(False)],
+        'plus':[2, lambda self,x,y: taplus(x,y)],
         'pop':[0, lambda self: self.prim_pop()],
         'print':[1, lambda self,x: self.prim_print(x)],
         'printheap':[0, lambda self: self.prim_print_heap()],
@@ -218,19 +230,19 @@ class LogoCode:
         'random':[2, lambda self,x,y: int(uniform(x,y))],
         'red':[0, lambda self: 0],
         'repeat':[2, self.prim_repeat, True],
-        'right':[1, lambda self, x: self.prim_right(x)],
+        'right':[1, lambda self, x: self.tw.canvas.right(x)],
         'rpos':[0, lambda self: self.tw.canvas.width/(self.tw.coord_scale*2)],
         'scale':[0, lambda self: self.scale],
-        'setcolor':[1, lambda self, x: self.prim_setcolor(x)],
-        'seth':[1, lambda self, x: self.prim_setheading(x)],
-        'setpensize':[1, lambda self, x: self.prim_setpensize(x)],
+        'setcolor':[1, lambda self, x: self.tw.canvas.setcolor(x)],
+        'seth':[1, lambda self, x: self.tw.canvas.seth(x)],
+        'setpensize':[1, lambda self, x: self.tw.canvas.setpensize(x)],
         'setscale':[1, lambda self,x: self.set_scale(x)],
-        'setshade':[1, lambda self, x: self.prim_setshade(x)],
+        'setshade':[1, lambda self, x: self.tw.canvas.setshade(x)],
         'settextcolor':[1, lambda self, x: self.tw.canvas.settextcolor(x)],
         'settextsize':[1, lambda self, x: self.tw.canvas.settextsize(x)],
-        'setxy':[2, lambda self, x, y: self.prim_setxy(x, y)],
+        'setxy':[2, lambda self, x, y: self.tw.canvas.setxy(x, y)],
         'shade':[0, lambda self: self.tw.canvas.shade],
-        'show':[1,lambda self, x: self.prim_show(x, True)],
+        'show':[1,lambda self, x: self.show(x, True)],
         'showblocks':[0, lambda self: self.tw.showblocks()],
         'sound':[1, lambda self,x: self.play_sound(x)],
         'sqrt':[1, lambda self,x: sqrt(x)],
@@ -285,7 +297,6 @@ class LogoCode:
         self.trace = 0
         self.gplay = None
         self.ag = None
-        self.nobox = ""
         self.title_height = int((self.tw.canvas.height/20)*self.tw.scale)
         self.body_height = int((self.tw.canvas.height/40)*self.tw.scale)
         self.bullet_height = int((self.tw.canvas.height/30)*self.tw.scale)
@@ -320,6 +331,7 @@ class LogoCode:
         self.stacks['stack2'] = None
 
         for b in blocks:
+            b.unhighlight()
             if b.name == 'hat1':
                 self.blocks = []
                 code = self.blocks_to_code(b)
@@ -551,35 +563,28 @@ class LogoCode:
         self.cfun, self.arglist = token, []
         if btoken is not None:
             print "evalsym: %s (%s)" % (token, btoken)
-        # self.tw.block_list.list[btoken].highlight()
 
         if token.nargs == None:
             raise logoerror("#noinput")
         for i in range(token.nargs):
             self.no_args_check()
-            # print "evalsym: calling eval %s" % (str(i))
             self.icall(self.eval)
             yield True
             self.arglist.append(self.iresult)
         if self.cfun.rprim:
             if type(self.cfun.fcn) == self.listtype:
-                # print "evalsym: rprim listtype"
                 self.icall(self.ufuncall, self.cfun.fcn)
                 yield True
             else:
-                # print "evalsym: rprim"
                 self.icall(self.cfun.fcn, *self.arglist)
                 yield True
             result = None
         else:
-            # print "evalsym: not an rprim??"
             # TODO: find out why stopstack args are mismatched
             if token.name == 'stopstack':
                 result = self.cfun.fcn()
-                # print result
             else:
                 result = self.cfun.fcn(self, *self.arglist)
-                # print result
         self.cfun, self.arglist = oldcfun, oldarglist
         if self.arglist is not None and result == None:
             raise logoerror("%s didn't output to %s (arglist %s, result %s)" % \
@@ -632,7 +637,7 @@ class LogoCode:
                     self.tw.turtles.show_all()
                     return False
         except logoerror, e:
-            self.showlabel(str(e)[1:-1])
+            self.tw.showlabel(str(e)[1:-1])
             self.tw.turtles.show_all()
             return False
         return True
@@ -666,10 +671,7 @@ class LogoCode:
                 for k, v in self.boxes.iteritems():
                     tmp = k +":" + str(v) + "\n"
                     my_string += tmp
-            shp = 'info'
-            self.tw.status_spr.set_shape(self.tw.status_shapes[shp])
-            self.tw.status_spr.set_label(_(my_string))
-            self.tw.status_spr.set_layer(STATUS_LAYER)
+            self.tw.showlabel('#trace',my_string)
         return
     
     def undefined_check(self, token):
@@ -686,173 +688,62 @@ class LogoCode:
     # Primitives
     #
 
-    def prim_none(self, x=None):
-        self.highlighter("nop"+str(x))
-        self.unhighlight("nop"+str(x))
-        return None
-
-    def prim_plus(self, x, y):
-        self.highlighter("plus")
-        self.unhighlight("plus")
-        if (type(x) == int or type(x) == float) and \
-            (type(y) == int or type(y) == float):
-            return(x+y)
-        else:
-            return(str(x) + str(y))
-    
     def prim_clear(self):
-        self.highlighter("clear")
         stop_media(self)
         self.tw.canvas.clearscreen()
-        self.unhighlight("plus")
-
-    def prim_fillscreen(self, x, y):
-        self.highlighter("clear")
-        self.tw.canvas.fillscreen(x, y)
-        self.unhighlight("clear")
-
-    def prim_right(self, x):
-        self.highlighter("left/right")
-        self.tw.canvas.right(x)
-        self.unhighlight("left/right")
-
-    def prim_forward(self, x):
-        self.highlighter("back/forward")
-        self.tw.canvas.forward(x)
-        self.unhighlight("back/forward")
-
-    def prim_setheading(self, x):
-        self.highlighter("seth")
-        self.tw.canvas.seth(x)
-        self.unhighlight("seth")
-
-    def prim_arc(self, x, y):
-        self.highlighter("arc")
-        self.tw.canvas.arc(x, y)
-        self.unhighlight("arc")
-
-    def prim_setxy(self, x, y):
-        self.highlighter("setxy")
-        self.tw.canvas.setxy(x, y)
-        self.unhighlight("setxy")
-
-    def prim_show(self, x, y):
-        self.highlighter("show")
-        self.show(x, True)
-        self.unhighlight("show")
-
-    def prim_setpen(self, x):
-        self.highlighter("pendown/up")
-        self.tw.canvas.setpen(x)
-        self.unhighlight("pendown/up")
-
-    def prim_setpensize(self, x): 
-        self.highlighter("setpensize")
-        self.tw.canvas.setpensize(x)
-        self.unhighlight("setpensize")
-
-    def prim_setcolor(self, x):
-        self.highlighter("setcolor")
-        self.tw.canvas.setcolor(x)
-        self.unhighlight("setcolor")
-
-    def prim_setshade(self, x):
-        self.highlighter("setshade")
-        self.tw.canvas.setshade(x)
-        self.unhighlight("setshade")
 
     def prim_start(self):
-        self.highlighter("start")
         if self.tw.running_sugar:
             self.tw.activity.recenter()
-        self.unhighlight("start")
 
     def prim_wait(self, time):
-        self.highlighter("wait")
         self.tw.active_turtle.show()
         endtime = millis()+self.an_int(time*1000)
         while millis()<endtime:
             yield True
         self.tw.active_turtle.hide()
-        self.unhighlight("wait")
         self.ireturn()
         yield True
     
     def prim_repeat(self, num, list):
         num = self.an_int(num)
-        self.highlighter("repeat")
-        # bi = self.bi
         for i in range(num):
-            # self.bi = bi
             self.icall(self.evline, list[:])
             yield True
             if self.procstop:
                 break
-        # self.bi = bi
-        self.unhighlight("repeat")
         self.ireturn()
         yield True
 
     def prim_bullet(self, title, list):
-        self.highlighter("bullet")
         self.show_bullets(title, list)
-        self.unhighlight("bullet")
         self.ireturn()
         yield True
 
     def prim_forever(self, list):
-        self.highlighter("forever")
-        # bi = self.bi
         while True:
-            # self.bi = bi
             self.icall(self.evline, list[:])
             yield True
             if self.procstop:
                 break
-        # self.bi = bi
-        self.unhighlight("forever")
         self.ireturn()
         yield True
 
     def prim_if(self, bool, list):
-        self.highlighter("if")
-        # bi = self.bi
         if bool:
             self.icall(self.evline, list[:])
             yield True
-        # self.bi = bi
-        self.unhighlight("if")
         self.ireturn()
         yield True
 
     def prim_ifelse(self, bool, list1, list2):
-        self.highlighter("ifelse")
-        # bi = self.bi
         if bool:
             self.ijmp(self.evline, list1[:])
             yield True
         else:
             self.ijmp(self.evline, list2[:])
             yield True
-        # self.bi = bi
-        self.unhighlight("ifelse")
 
-    def prim_equal(self, x, y):
-        self.highlighter("equal")
-        self.unhighlight("equal")
-        try:
-            return float(x)==float(y)
-        except:
-            if type(x) == str or type(x) == unicode:
-                xx = ord(x[0])
-            else:
-                xx = x
-            if type(y) == str or type(y) == unicode:
-                yy = ord(y[0])
-            else:
-                yy = y
-            return xx==yy
-    
     def prim_opar(self, val):
         self.iline.pop(0)
         return val
@@ -864,55 +755,38 @@ class LogoCode:
         name.rprim = True
     
     def prim_stack(self, str):
-        # self.highlighter("stack")
-        # self.bi = self.bis['stack3'+str]
         if (not self.stacks.has_key('stack3'+str)) or\
            self.stacks['stack3'+str] is None:
             raise logoerror("#nostack")
         self.icall(self.evline, self.stacks['stack3'+str][:])
         yield True
         self.procstop = False
-        # self.bi = bi
         self.ireturn()
         yield True
 
     def prim_stack1(self):
-        self.highlighter("stack1")
-        # bi = self.bi
-        # self.bi = self.bis['stack1']
         if self.stacks['stack1'] is None:
             raise logoerror("#nostack")
         self.icall(self.evline, self.stacks['stack1'][:])
         yield True
         self.procstop = False
-        # self.bi = bi
-        self.unhighlight("stack1")
         self.ireturn()
         yield True
     
     def prim_stack2(self):
-        self.highlighter("stack2")
-        # bi = self.bi
-        # self.bi = self.bis['stack2']
         if self.stacks['stack2'] is None:
             raise logoerror("#nostack")
         self.icall(self.evline, self.stacks['stack2'][:])
         yield True
         self.procstop = False
-        # self.bi = bi
-        self.unhighlight("stack2")
         self.ireturn()
         yield True
 
     def prim_stopstack(self):
-        self.highlighter("stopstack")
         self.procstop = True
-        self.unhighlight("stopstack")
     
     def prim_print_heap(self):
-        self.highlighter("heap")
-        self.showlabel(self.heap)
-        self.unhighlight("heap")
+        self.tw.showlabel(self.heap)
 
     def an_int(self, n):
         if type(n) == int:
@@ -926,27 +800,20 @@ class LogoCode:
                 % (self.cfun.name, str(n)))
 
     def box(self, x):
-        self.highlighter("box")
-        self.unhighlight("box")
         try:
             return self.boxes['box3'+str(x)]
         except:
-            self.nobox = str(x)
             raise logoerror("#emptybox")
     
     def prim_myblock(self, x):
-        self.highlighter("myblock")
         if self.tw.myblock is not None:
             y = myfunc_import(self, self.tw.myblock, x)
         else:
             raise logoerror("#nocode")
-        self.unhighlight("myblock")
         return
     
     def prim_myfunc(self, f, x):
-        self.highlighter("myfunc")
         y = myfunc(self, f, x)
-        self.unhighlight("myfunc")
         if y == None:
             raise logoerror("#syntaxerror")
             stop_logo(self.tw)
@@ -954,25 +821,22 @@ class LogoCode:
             return y
     
     def prim_print(self, n):
-        self.highlighter("print")
         if type(n) == str or type(n) == unicode:
             if n[0:6] == 'media_':
                 try:
                     dsobject = datastore.get(n[6:])
-                    self.showlabel(dsobject.metadata['title'])
+                    self.tw.showlabel(dsobject.metadata['title'])
                     dsobject.destroy()
                 except:
-                    self.showlabel(n)
+                    self.tw.showlabel(n)
             else:
-                self.showlabel(n)
+                self.tw.showlabel(n)
         elif type(n) == int:
-            self.showlabel(n)
+            self.tw.showlabel(n)
         else:
-            self.showlabel(round_int(n))
-        self.unhighlight("print")
+            self.tw.showlabel(round_int(n))
     
-    def kbinput(self):
-        self.highlighter("kbinput")
+    def prim_kbinput(self):
         if len(self.tw.keypress) == 1:
             self.keyboard = ord(self.tw.keypress[0])
         else:
@@ -984,76 +848,21 @@ class LogoCode:
             except:
                 self.keyboard = 0
         self.tw.keypress = ""
-        self.unhighlight("kbinput")
-
-    def showlabel(self, label):
-        if label=='#nostack':
-            shp = 'nostack'
-            label=''
-        elif label=='#noinput':
-            shp = 'noinput'
-            label=''
-        elif label=='#emptyheap':
-            shp = 'emptyheap'
-            label=''
-        elif label=='#emptybox':
-            shp = 'emptybox'
-            label='                    '+self.nobox
-        elif label=='#nomedia':
-            shp = 'nomedia'
-            label=''
-        elif label=='#nocode':
-            shp = 'nocode'
-            label=''
-        elif label=='#syntaxerror':
-            shp = 'syntaxerror'
-            label=''
-        elif label=='#overflowerror':
-            shp = 'overflowerror'
-            label=''
-        elif label=='#notanumber':
-            shp = 'overflowerror'
-            label=''
-        else:
-            shp = 'status'
-        self.tw.status_spr.set_shape(self.tw.status_shapes[shp])
-        self.tw.status_spr.set_label(label)
-        self.tw.status_spr.set_layer(STATUS_LAYER)
 
     def prim_setbox(self, name, val):
-        self.highlighter("setbox"+name)
         self.boxes[name]=val
-        self.unhighlight("setbox"+name)
 
     def prim_push(self, val):
-        self.highlighter("push")
         self.heap.append(val)
-        self.unhighlight("push")
 
     def prim_pop(self):
-        self.highlighter("pop")
-        self.unhighlight("pop")
         try:
             return self.heap.pop(-1)
         except:
             raise logoerror ("#emptyheap")
 
     def empty_heap(self):
-        self.highlighter("empty")
         self.heap = []
-        self.unhighlight("empty")
-
-    def highlighter(self, name):
-        if self.tw.step_time == 0:
-            return
-        # b = self.tw.block_list.list[self.blk_index[self.bi-1]]
-        # print ">>> block %s: (%d: %s)" % (name, self.bi, b.name)
-        return
-
-    def unhighlight(self, name):
-        if self.tw.step_time == 0:
-            return
-
 
     """
     Everything below is related to multimedia commands
@@ -1119,9 +928,7 @@ class LogoCode:
 
     # title, one image, and description
     def show_template1x1(self, title, media):
-        print "entering tp1x1 %d" % (self.bi)
-        self.bi += 1
-        w,h,xo,yo,dx,dy = calc_position(self.tw, 't1x1')
+        w,h,xo,yo,dx,dy = self.tw.calc_position('t1x1')
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
@@ -1150,9 +957,7 @@ class LogoCode:
     
     # title, two images (horizontal), two descriptions
     def show_template2x1(self, title, media1, media2):
-        print "entering tp2x1 %d" % (self.bi)
-        self.bi += 1
-        w,h,xo,yo,dx,dy = calc_position(self.tw, 't2x1')
+        w,h,xo,yo,dx,dy = self.tw.calc_position('t2x1')
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
@@ -1187,7 +992,7 @@ class LogoCode:
 
     # title and varible number of  bullets
     def show_bullets(self, title, sarray):
-        w,h,xo,yo,dx,dy = calc_position(self.tw, 'bullet')
+        w,h,xo,yo,dx,dy = self.tw.calc_position('bullet')
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
@@ -1209,9 +1014,7 @@ class LogoCode:
     
     # title, two images (vertical), two desciptions
     def show_template1x2(self, title, media1, media2):
-        print "entering tp1x2 %d" % (self.bi)
-        self.bi += 1
-        w,h,xo,yo,dx,dy = calc_position(self.tw, 't1x2')
+        w,h,xo,yo,dx,dy = self.tw.calc_position('t1x2')
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
@@ -1246,9 +1049,7 @@ class LogoCode:
 
     # title and four images
     def show_template2x2(self, title, media1, media2, media3, media4):
-        print "entering tp2x2 %d" % (self.bi)
-        self.bi += 1
-        w,h,xo,yo,dx,dy = calc_position(self.tw, 't2x2')
+        w,h,xo,yo,dx,dy = self.tw.calc_position('t2x2')
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
@@ -1282,9 +1083,7 @@ class LogoCode:
 
     # title, one media object
     def show_template1x1a(self, title, media1):
-        print "entering tp1x1a %d" % (self.bi)
-        self.bi += 1
-        w,h,xo,yo,dx,dy = calc_position(self.tw, 't1x1a')
+        w,h,xo,yo,dx,dy = self.tw.calc_position('t1x1a')
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
@@ -1331,8 +1130,6 @@ class LogoCode:
             self.show_description(media, x, y, w, h)
     
     def set_scale(self, x):
-        self.highlighter("set")
-        self.bi += 1
         self.scale = x
 
     # need to fix export logo to map show to write
@@ -1375,9 +1172,7 @@ class LogoCode:
             play_audio(self, audio[6:])
 
     def write(self, string, fsize):
-        self.highlighter("write")
         # convert from Turtle coordinates to screen coordinates
         x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
         y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
         self.tw.canvas.draw_text(string,x,y-15,int(fsize),self.tw.canvas.width)
-        self.unhighlight("write")

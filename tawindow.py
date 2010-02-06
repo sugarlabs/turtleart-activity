@@ -1884,3 +1884,50 @@ class TurtleArtWindow():
             return False
         else:
             return True
+
+    def showlabel(self, label, str=''):
+        if label=='#nostack':
+            shp = 'nostack'
+            label=''
+        elif label=='#noinput':
+            shp = 'noinput'
+            label=''
+        elif label=='#emptyheap':
+            shp = 'emptyheap'
+            label=''
+        elif label=='#emptybox':
+            shp = 'emptybox'
+            label=''
+        elif label=='#nomedia':
+            shp = 'nomedia'
+            label=''
+        elif label=='#nocode':
+            shp = 'nocode'
+            label=''
+        elif label=='#syntaxerror':
+            shp = 'syntaxerror'
+            label=''
+        elif label=='#overflowerror':
+            shp = 'overflowerror'
+            label=''
+        elif label=='#notanumber':
+            shp = 'overflowerror'
+            label=''
+        elif label=='#trace':
+            shp = 'info'
+            label = str
+        else:
+            shp = 'status'
+        self.status_spr.set_shape(self.status_shapes[shp])
+        self.status_spr.set_label(label)
+        self.status_spr.set_layer(STATUS_LAYER)
+
+    def calc_position(self, t):
+        w,h,x,y,dx,dy = TEMPLATES[t]
+        x *= self.canvas.width
+        y *= self.canvas.height
+        w *= (self.canvas.width-x)
+        h *= (self.canvas.height-y)
+        dx *= w
+        dy *= h
+        return(w,h,x,y,dx,dy)
