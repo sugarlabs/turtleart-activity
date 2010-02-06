@@ -53,7 +53,7 @@ from tablock import Blocks, Block
 from taturtle import Turtles, Turtle
 from tautils import magnitude, get_load_name, get_save_name, data_from_file,\
                     data_to_file, round_int, get_id, get_pixbuf_from_journal
-from sprite_factory import SVG, svg_str_to_pixbuf
+from sprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
 """
@@ -69,7 +69,7 @@ class TurtleArtWindow():
         # TODO: most of this goes away
         self._setup_misc()
         # the new palette
-        self.show_toolbar_palette(0, False)
+        self._show_toolbar_palette(0, False)
 
     def _setup_initial_values(self, win, path, lang, parent, mycolors):
         self.window = win
@@ -174,20 +174,43 @@ class TurtleArtWindow():
         self.window.connect("key_press_event", self._keypress_cb)
 
     """
-    Resize all of the blocks
+    Misc. sprites for status, overlays, etc.
     """
-    def resize_blocks(self):
-        for b in self.just_blocks():
-            b.rescale(self.block_scale)
-        for b in self.just_blocks():
-            self._adjust_dock_positions(b)
+    def _setup_misc(self):
+        # media blocks get positioned into other blocks
+        for name in MEDIA_SHAPES:
+            if name[0:7] == 'journal' and not self.running_sugar:
+                filename = 'file'+name[7:]
+            else:
+                filename = name
+            self.media_shapes[name] = \
+                svg_str_to_pixbuf(svg_from_file("%s/%s.svg" % (
+                                                self.path, filename)))
+
+        for i, name in enumerate(STATUS_SHAPES):
+            self.status_shapes[name] = svg_str_to_pixbuf(svg_from_file(
+                                               "%s/%s.svg" % (self.path, name)))
+        self.status_spr = Sprite(self.sprite_list, 0, self.height-200,
+                                         self.status_shapes['status'])
+        self.status_spr.hide()
+        self.status_spr.type = 'status'
+
+        for name in OVERLAY_SHAPES:
+            self.overlay_shapes[name] = Sprite(self.sprite_list,
+                int(self.width/2-600), int(self.height/2-450),
+                svg_str_to_pixbuf(svg_from_file(
+                                              "%s/%s.svg" % (self.path, name))))
+            self.overlay_shapes[name].hide()
+            self.overlay_shapes[name].type = 'overlay'
 
     """
-    Repaint
+    Is a chattube available for sharing?
     """
-    def _expose_cb(self, win, event):
-        self.sprite_list.redraw_sprites()
-        return True
+    def _sharing(self):
+        if self.running_sugar and hasattr(self.activity, 'chattube') and\
+            self.activity.chattube is not None:
+                return True
+        return False
 
     """
     Is the an OLPC XO-1?
@@ -197,6 +220,14 @@ class TurtleArtWindow():
                os.path.exists('/sys/power/olpc-pm')
 
     """
+    Repaint
+    """
+    def _expose_cb(self, win, event):
+        self.sprite_list.redraw_sprites()
+        return True
+
+
+    """
     Eraser_button (Always hide status block when clearing the screen.)
     """
     def eraser_button(self):
@@ -204,6 +235,27 @@ class TurtleArtWindow():
             self.status_spr.hide()
         self.lc.prim_clear()
         self.display_coordinates()
+
+    """
+    Run turtle!
+    """
+    def run_button(self, time):
+        if self.running_sugar:
+            self.activity.recenter()
+        # Look for a 'start' block
+        for blk in self.just_blocks():
+            if self._find_start_stack(blk):
+                self.step_time = time
+                print "running stack starting from %s" % (blk.name)
+                self._run_stack(blk)
+                return
+        # If there is no 'start' block, run stacks that aren't 'def action'
+        for blk in self.just_blocks():
+            if self._find_block_to_run(blk):
+                self.step_time = time
+                print "running stack starting from %s" % (blk.name)
+                self._run_stack(blk)
+        return
 
     """
     Stop button
@@ -256,7 +308,7 @@ class TurtleArtWindow():
     Show palette 
     """
     def show_palette(self, n=0):
-        self.show_toolbar_palette(n)
+        self._show_toolbar_palette(n)
         self.palette_button[self.orientation].set_layer(TAB_LAYER)
         self.toolbar_spr.set_layer(CATEGORY_LAYER)
         self.palette = True
@@ -265,7 +317,7 @@ class TurtleArtWindow():
     Hide the palette.
     """
     def hide_palette(self):
-        self.hide_toolbar_palette()
+        self._hide_toolbar_palette()
         self.palette_button[self.orientation].hide()
         self.toolbar_spr.hide()
         self.palette = False
@@ -289,98 +341,27 @@ class TurtleArtWindow():
             self.activity.do_show()
 
     """
-    Where is the mouse event?
+    Resize all of the blocks
     """
-    def xy(self, event):
-        return map(int, event.get_coords())
-
-    """
-    Run turtle!
-    """
-    def run_button(self, time):
-        if self.running_sugar:
-            self.activity.recenter()
-        # Look for a 'start' block
-        for blk in self.just_blocks():
-            if self._find_start_stack(blk):
-                self.step_time = time
-                print "running stack starting from %s" % (blk.name)
-                self._run_stack(blk)
-                return
-        # If there is no 'start' block, run stacks that aren't 'def action'
-        for blk in self.just_blocks():
-            if self._find_block_to_run(blk):
-                self.step_time = time
-                print "running stack starting from %s" % (blk.name)
-                self._run_stack(blk)
-        return
+    def resize_blocks(self):
+        for b in self.just_blocks():
+            b.rescale(self.block_scale)
+        for b in self.just_blocks():
+            self._adjust_dock_positions(b)
 
     """
-    Misc. sprites for status, overlays, etc.
+    Show the toolbar palettes, creating them on init_only
     """
-    def _setup_misc(self):
-        # media blocks get positioned into other blocks
-        for name in MEDIA_SHAPES:
-            if name[0:7] == 'journal' and not self.running_sugar:
-                filename = 'file'+name[7:]
-            else:
-                filename = name
-            self.media_shapes[name] = \
-                self._load_sprite_from_file("%s/%s.svg" % (self.path, filename))
-
-        for i, name in enumerate(STATUS_SHAPES):
-            self.status_shapes[name] = self._load_sprite_from_file(
-                                               "%s/%s.svg" % (self.path, name))
-        self.status_spr = Sprite(self.sprite_list, 0, self.height-200,
-                                         self.status_shapes['status'])
-        self.status_spr.hide()
-        self.status_spr.type = 'status'
-
-        for name in OVERLAY_SHAPES:
-            self.overlay_shapes[name] = Sprite(self.sprite_list,
-                int(self.width/2-600), int(self.height/2-450),
-                self._load_sprite_from_file("%s/%s.svg" % (self.path, name)))
-            self.overlay_shapes[name].hide()
-            self.overlay_shapes[name].type = 'overlay'
-
-    def _load_sprite_from_file(self, name):
-        svg = SVG()
-        return svg_str_to_pixbuf(svg.from_file(name))
-
-    """
-    Hide turtle palettes
-    """
-    def hide_toolbar_palette(self):
-        self.hide_previous_palette()
-        # Hide the selectors
-        for i in range(len(PALETTES)):
-            self.selectors[i].hide()
-        self.selected_palette = None
-        self.previous_palette = None
-
-    def hide_previous_palette(self):
-        # Hide previous palette
-        if self.previous_palette is not None:
-            for i in range(len(PALETTES[self.previous_palette])):        
-                self.palettes[self.previous_palette][i].spr.hide()
-            self.palette_sprs[self.previous_palette][
-                              self.orientation].hide()
-            self.selectors[self.previous_palette].set_shape(
-                self.selector_shapes[self.previous_palette][0])
-            if self.previous_palette == PALETTE_NAMES.index('trash'):
-                for b in self.trash_stack:
-                    b.spr.hide()
-
-    def show_toolbar_palette(self, n, init_only=False):
+    def _show_toolbar_palette(self, n, init_only=False):
         # Create the selectors the first time through.
         if self.selectors == []:
             svg = SVG()
             x, y = 50, 0
             for i, name in enumerate(PALETTE_NAMES):
-                a = self._load_sprite_from_file("%s/%soff.svg" % (self.path,
-                                                         name))
-                b = self._load_sprite_from_file("%s/%son.svg" % (self.path,
-                                                         name))
+                a = svg_str_to_pixbuf(svg_from_file("%s/%soff.svg" % (
+                                                    self.path, name)))
+                b = svg_str_to_pixbuf(svg_from_file("%s/%son.svg" % (
+                                                    self.path, name)))
                 self.selector_shapes.append([a,b])
                 self.selectors.append(Sprite(self.sprite_list, x, y, a))
                 self.selectors[i].type = 'selector'
@@ -392,11 +373,11 @@ class TurtleArtWindow():
 
             # Create the palette orientation button
             self.palette_button.append(Sprite(self.sprite_list, 0, 0,
-                                            self._load_sprite_from_file(
-                                     "%s/palettehorizontal.svg" % (self.path))))
+                                      svg_str_to_pixbuf(svg_from_file(
+                                     "%s/palettehorizontal.svg" %(self.path)))))
             self.palette_button.append(Sprite(self.sprite_list, 0, 0,
-                                            self._load_sprite_from_file(
-                                     "%s/palettevertical.svg" % (self.path))))
+                                      svg_str_to_pixbuf(svg_from_file(
+                                     "%s/palettevertical.svg" % (self.path)))))
             self.palette_button[0].name = 'orientation'
             self.palette_button[1].name = 'orientation'
             self.palette_button[0].type = 'palette'
@@ -418,7 +399,7 @@ class TurtleArtWindow():
             return
 
         # Hide the previously displayed palette
-        self.hide_previous_palette()
+        self._hide_previous_palette()
 
         self.selected_palette = n
         self.previous_palette = self.selected_palette        
@@ -464,6 +445,33 @@ class TurtleArtWindow():
         if n == PALETTE_NAMES.index('trash'):
             for blk in self.trash_stack:
                 blk.spr.set_layer(TAB_LAYER)
+
+    """
+    Hide the toolbar palettes
+    """
+    def _hide_toolbar_palette(self):
+        self._hide_previous_palette()
+        # Hide the selectors
+        for i in range(len(PALETTES)):
+            self.selectors[i].hide()
+        self.selected_palette = None
+        self.previous_palette = None
+
+    """
+    Hide just the previously viewed toolbar palette
+    """
+    def _hide_previous_palette(self):
+        # Hide previous palette
+        if self.previous_palette is not None:
+            for i in range(len(PALETTES[self.previous_palette])):        
+                self.palettes[self.previous_palette][i].spr.hide()
+            self.palette_sprs[self.previous_palette][
+                              self.orientation].hide()
+            self.selectors[self.previous_palette].set_shape(
+                self.selector_shapes[self.previous_palette][0])
+            if self.previous_palette == PALETTE_NAMES.index('trash'):
+                for b in self.trash_stack:
+                    b.spr.hide()
 
     def _horizontal_layout(self, x, y, max, blocks):
         for b in blocks:
@@ -544,8 +552,9 @@ class TurtleArtWindow():
                             svg_str_to_pixbuf(svg.palette(PALETTE_WIDTH, _h)))
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
+
     """
-    Select a category.
+    Select a category from the toolbar.
     """
     def _select_category(self, spr):
         i = self.selectors.index(spr)
@@ -559,60 +568,320 @@ class TurtleArtWindow():
         self.show_palette(i)
 
     """
-    Find a stack to run (any stack without a 'def action'on the top).
+    Button press
     """
-    def _find_block_to_run(self, blk):
-        top = self.find_top_block(blk)
-        if blk == top and blk.name[0:3] is not 'def':
+    def _buttonpress_cb(self, win, event):
+        self.window.grab_focus()
+        x, y = self._xy(event)
+        self.button_press(event.get_state()&gtk.gdk.CONTROL_MASK, x, y)
+        if self._sharing():
+            if event.get_state()&gtk.gdk.CONTROL_MASK is True:
+                self.activity._send_event("p:%d:%d:T" % (x, y))
+            else:
+                self.activity._send_event("p:%d:%d:F" % (x, y))
+        return True
+
+    """
+    Button press
+    """
+    def button_press(self, mask, x, y, verbose=False):
+        if verbose:
+            print "processing remote button press: %d, %d" % (x, y)
+        self.block_operation = 'click'
+
+        # Unselect things that may have been selected earlier
+        if self.selected_blk is not None:
+            self._unselect_block()
+        self.selected_turtle = None
+        # Always hide the status layer on a click
+        if self.status_spr is not None:
+            self.status_spr.hide()
+
+        # Find out what was clicked
+        spr = self.sprite_list.find_sprite((x,y))
+        self.dx = 0
+        self.dy = 0
+        if spr is None:
             return True
-        else:
-            return False
+        self.selected_spr = spr
 
-    """
-    Find the top block in a stack.
-    """
-    def find_top_block(self, blk):
-        while blk.connections[0] is not None:
-            blk = blk.connections[0]
-        return blk
-
-    """
-    Find a stack with a 'start' block on top.
-    """
-    def _find_start_stack(self, blk):
-        top = self.find_top_block(blk)
-        if top.name == 'start':
+        # From the sprite at x, y, look for a corresponding block
+        blk = self.block_list.spr_to_block(spr)
+        if blk is not None:
+            if blk.type == 'block':
+                self.selected_blk = blk
+                self._block_pressed(mask, x, y, blk)
+            elif blk.type == 'trash':
+                self._restore_from_trash(blk)
+            elif blk.type == 'proto':
+                if blk.name == 'restoreall':
+                    self._restore_all_from_trash()
+                elif blk.name == 'restore':
+                    self._restore_latest_from_trash()
+                elif blk.name == 'empty':
+                    self._empty_trash()
+                elif MACROS.has_key(blk.name):
+                    self._new_macro(blk.name, x+PALETTE_WIDTH, y+PALETTE_HEIGHT)
+                else:
+                    blk.highlight()
+                    self._new_block(blk.name, x+PALETTE_WIDTH, y+PALETTE_HEIGHT)
+                    blk.unhighlight()
             return True
-        else:
-            return False
+
+        # Next, look for a turtle
+        t = self.turtles.spr_to_turtle(spr)
+        if t is not None:
+            self.selected_turtle = t
+            self.canvas.set_turtle(self.turtles.get_turtle_key(t))
+            self._turtle_pressed(x, y)
+            return True
+
+        # Finally, check for anything else
+        if hasattr(spr, 'type'):
+            if spr.type == "canvas":
+                spr.set_layer(CANVAS_LAYER)
+            elif spr.type == 'selector':
+                self._select_category(spr)
+            elif spr.type == 'category':
+                if self._hide_button_hit(spr, x, y):
+                    self.hideshow_palette(False)
+            elif spr.type == 'palette':
+               self.orientation = 1-self.orientation
+               self.palette_button[self.orientation].set_layer(TAB_LAYER)
+               self.palette_button[1-self.orientation].hide()
+               self.palette_sprs[self.selected_palette][
+                               1-self.orientation].hide()
+               self._layout_palette(self.selected_palette)
+               self.show_palette(self.selected_palette)
+            return True
+
 
     """
-    Find the connected group of block in a stack.
+    Restore all the blocks in the trash can
     """
-    def _find_group(self, blk):
-        if blk is None:
-            return []
-        group=[blk]
-        if blk.connections is not None:
-            for blk2 in blk.connections[1:]:
-                if blk2 is not None:
-                    group.extend(self._find_group(blk2))
-        return group
+    def _restore_all_from_trash(self):
+        for b in self.block_list.list:
+            if b.type == 'trash':
+                self._restore_from_trash(b)
 
     """
-    Is a chattube available for sharing?
+    Restore latest blocks from the trash can
     """
-    def _sharing(self):
-        if self.running_sugar and hasattr(self.activity, 'chattube') and\
-            self.activity.chattube is not None:
-                return True
+    def _restore_latest_from_trash(self):
+        if len(self.trash_stack) == 0:
+            return
+        self._restore_from_trash(self.trash_stack[len(self.trash_stack)-1])
+
+    def _restore_from_trash(self, blk):
+        group = self._find_group(blk)
+        for b in group:
+            b.spr.set_layer(BLOCK_LAYER)
+            x,y = b.spr.get_xy()
+            b.spr.move((x+PALETTE_WIDTH,y+PALETTE_HEIGHT))
+            b.type = 'block'
+        self.trash_stack.remove(blk)
+
+    """
+    Permanently remove blocks in the trash can
+    """
+    def _empty_trash(self):
+        for b in self.block_list.list:
+            if b.type == 'trash':
+                b.type = 'deleted'
+                b.spr.hide()
+        self.trash_stack = []
+
+    """
+    Is x,y over the trash can?
+    """
+    def _in_the_trash(self, x, y):
+        if self.selected_palette == self.trash_index and \
+           self.palette_sprs[self.trash_index][self.orientation].hit((x,y)):
+            return True
         return False
+
+    """
+    Block pressed
+    """
+    def _block_pressed(self, mask, x, y, blk):
+        if blk is not None:
+            blk.highlight()
+            self._disconnect(blk)
+            self.drag_group = self._find_group(blk)
+            (sx, sy) = blk.spr.get_xy()
+            self.drag_pos = x-sx, y-sy
+            for blk in self.drag_group:
+                blk.spr.set_layer(TOP_LAYER)
+            self.saved_string = blk.spr.labels[0]
+
+    """
+    Unselect block
+    """
+    def _unselect_block(self):
+        # After unselecting a 'number' block, we need to check its value
+        if self.selected_blk.name == 'number':
+            self._number_check()
+        elif self.selected_blk.name == 'string':
+            self._string_check()
+        self.selected_blk.unhighlight()
+        self.selected_blk = None
+
+    """
+    Make a new block.
+    """
+    def _new_block(self, name, x, y):
+        if name in CONTENT_BLOCKS:
+            newblk = Block(self.block_list, self.sprite_list, name, x-20, y-20,
+                           'block', DEFAULTS[name], self.block_scale)
+        else:
+            newblk = Block(self.block_list, self.sprite_list, name, x-20, y-20,
+                           'block', [], self.block_scale)
+        # Add special skin to some blocks
+        if name == 'nop':
+            if self.nop == 'pythonloaded':
+                newblk.spr.set_image(self.media_shapes['pythonon'], 1,
+                                     PYTHON_X, PYTHON_Y)
+            else:
+                newblk.spr.set_image(self.media_shapes['pythonoff'], 1,
+                                     PYTHON_X, PYTHON_Y)
+        elif name in BOX_STYLE_MEDIA:
+            newblk.spr.set_image(self.media_shapes[name+'off'], 1,
+                                 MEDIA_X, MEDIA_Y)
+            newblk.spr.set_label(' ')
+        newspr = newblk.spr
+        newspr.set_layer(TOP_LAYER)
+        self.drag_pos = 20, 20
+        newblk.connections = [None]*len(newblk.docks)
+        if DEFAULTS.has_key(newblk.name):
+            for i, argvalue in enumerate(DEFAULTS[newblk.name]):
+                # skip the first dock position--it is always a connector
+                dock = newblk.docks[i+1]
+                argname = dock[0]
+                if argname == 'unavailable':
+                    continue
+                if argname == 'media':
+                    argname = 'journal'
+                elif argname == 'number' and\
+                     (type(argvalue) is str or type(argvalue) is unicode):
+                    argname = 'string'
+                elif argname == 'bool':
+                    argname = argvalue
+                elif argname == 'flow':
+                    argname = argvalue
+                (sx, sy) = newspr.get_xy()
+                if argname is not None:
+                    if argname in CONTENT_BLOCKS:
+                        argblk = Block(self.block_list, self.sprite_list,
+                                       argname, 0, 0, 'block', [argvalue],
+                                       self.block_scale)
+                    else:
+                        argblk = Block(self.block_list, self.sprite_list,
+                                       argname, 0, 0, 'block', [],
+                                       self.block_scale)
+                    argdock = argblk.docks[0]
+                    nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
+                    if argname == 'journal':
+                        argblk.spr.set_image(self.media_shapes['journaloff'],
+                                             1, MEDIA_X, MEDIA_Y)
+                        argblk.spr.set_label(' ')
+                    argblk.spr.move((nx, ny))
+                    argblk.spr.set_layer(TOP_LAYER)
+                    argblk.connections = [newblk, None]
+                    newblk.connections[i+1] = argblk
+            self.drag_group = self._find_group(newblk)
+            self.block_operation = 'new' 
+
+    """
+    Create a "macro" (predefined stack of blocks)
+    """
+    def _new_macro(self, name, x, y):
+        macro = MACROS[name]
+        macro[0][2] = x
+        macro[0][3] = y
+        self.process_data(macro)
+
+    """
+    Process data (from a macro, a file, or the clipboard) into blocks.
+    """
+    def process_data(self, data):
+        # Create the blocks (or turtle).
+        blocks = []
+        for b in data:
+            if self._found_a_turtle(b) is False:
+                blk = self.load_block(b)
+                blocks.append(blk)
+        # Make the connections.
+        for i in range(len(blocks)):
+            cons=[]
+            # Normally, it is simply a matter of copying the connections.
+            if blocks[i].connections == None:
+                for c in data[i][4]:
+                    if c is None:
+                        cons.append(None)
+                    else:
+                        cons.append(blocks[c])
+            elif blocks[i].connections == 'check':
+                # Ugly corner case is to convert old-style booleans op.
+                cons.append(None) # Add an extra connection.
+                for c in data[i][4]:
+                    if c is None:
+                        cons.append(None)
+                    else:
+                        cons.append(blocks[c])
+                # If the boolean op was connected, readjust the plumbing.
+                if data[i][4][0] is not None:
+                    c = data[i][4][0]
+                    cons[0] = blocks[data[c][4][0]]
+                    c0 = data[c][4][0]
+                    for j, cj in enumerate(data[c0][4]):
+                        if cj == c:
+                            blocks[c0].connections[j] = blocks[i]
+                    if c<i:
+                        blocks[c].connections[0] = blocks[i]
+                        blocks[c].connections[3] = None
+                    else:
+                        # Connection was to a block we haven't seen yet.
+                        print "WARNING: dock check couldn't see the future"
+            else:
+                print "WARNING: unknown connection state %s" %\
+                      (str(blocks[i].connections))
+            blocks[i].connections = cons[:]
+        # Block sizes and shapes may have changed.
+        for b in blocks:
+            self._adjust_dock_positions(b)
+
+    """
+    Adjust the dock x,y positions
+    """
+    def _adjust_dock_positions(self, blk):
+        (sx, sy) = blk.spr.get_xy()
+        for i, c in enumerate(blk.connections):
+            if i>0 and c is not None:
+                bdock = blk.docks[i]
+                for j in range(len(c.docks)):
+                    if c.connections[j] == blk:
+                        cdock = c.docks[j]
+                        nx, ny = sx+bdock[2]-cdock[2], sy+bdock[3]-cdock[3]
+                        c.spr.move((nx, ny))
+                self._adjust_dock_positions(c)
+
+    """
+    Turtle pressed
+    """
+    def _turtle_pressed(self, x, y):
+        (tx, ty) = self.selected_turtle.get_xy()
+        dx, dy = x-tx-30, y-ty-30
+        if dx*dx+dy*dy > 200:
+            self.drag_turtle = ('turn',
+                                self.canvas.heading-atan2(dy,dx)/DEGTOR, 0)
+        else:
+            self.drag_turtle = ('move', x-tx, y-ty)
 
     """
     Mouse move
     """
     def _move_cb(self, win, event):
-        x, y = self.xy(event)
+        x, y = self._xy(event)
         self._mouse_move(x, y)
         return True
 
@@ -727,6 +996,307 @@ class TurtleArtWindow():
         else:
             self.win.set_title(_("Turtle Art") + " — " + label)
         return 0
+
+    """
+    Button release
+    """
+    def _buttonrelease_cb(self, win, event):
+        x, y = self._xy(event)
+        self.button_release(x, y)
+        if self._sharing():
+            self.activity._send_event("r:"+str(x)+":"+str(y))
+        return True
+
+    def button_release(self, x, y, verbose=False):
+        if self.dx != 0 or self.dy != 0:
+            if self._sharing():
+                if verbose:
+                    print "processing move: %d %d" % (self.dx, self.dy)
+                self.activity._send_event("m:%d:%d" % (self.dx, self.dy))
+                self.dx = 0
+                self.dy = 0
+        if verbose:
+            print "processing remote button release: %d, %d" % (x, y)
+
+        # We may have been moving the turtle
+        if self.selected_turtle is not None:
+            (tx, ty) = self.selected_turtle.get_xy()
+            (cx, cy) = self.canvas.canvas.get_xy()
+            self.canvas.xcor = tx-self.canvas.canvas._width/2+30-cx
+            self.canvas.ycor = self.canvas.canvas._height/2-ty-30+cy
+            self.canvas.move_turtle()
+            if self.running_sugar:
+                self.display_coordinates()
+            self.selected_turtle = None
+            return
+
+        # If we don't have a group of blocks, then there is nothing to do.
+        if self.drag_group == None: 
+            return
+
+        blk = self.drag_group[0]
+        # Remove blocks by dragging them onto the trash palette
+        if self.block_operation=='move' and self._in_the_trash(x, y):
+            self.trash_stack.append(blk)
+            for b in self.drag_group:
+                b.type = 'trash'
+                b.spr.hide()
+            self.drag_group = None
+            self.show_palette(PALETTE_NAMES.index('trash'))
+            return
+
+        # Pull a stack of new blocks off of the category palette.
+        if self.block_operation=='new':
+            for b in self.drag_group:
+                (bx, by) = b.spr.get_xy()
+                b.spr.move((bx+200, by))
+
+        # Look to see if we can dock the current stack.
+        self._snap_to_dock()
+        for b in self.drag_group:
+            b.spr.set_layer(BLOCK_LAYER)
+        self.drag_group = None
+
+        # Find the block we clicked on and process it.
+        if self.block_operation=='click':
+            self._click_block(x, y)
+
+    """
+    Click block
+    """
+    def _click_block(self, x, y):
+        blk = self.block_list.spr_to_block(self.selected_spr)
+        if blk is None:
+            return
+        self.selected_blk = blk
+        if  blk.name=='number' or blk.name=='string':
+            self.saved_string = blk.spr.labels[0]
+            blk.spr.labels[0] += CURSOR
+        elif blk.name in BOX_STYLE_MEDIA:
+            self._import_from_journal(self.selected_blk)
+        elif blk.name=='identity2':
+            group = self._find_group(blk)
+            if self._hide_button_hit(blk.spr, x, y):
+                dx = blk.reset_x()
+            else:
+                dx = 20
+                blk.expand_in_x(dx)
+            for b in group:
+                if b != blk:
+                    b.spr.move_relative((dx*blk.scale, 0))
+        elif blk.name=='vspace':
+            group = self._find_group(blk)
+            if self._hide_button_hit(blk.spr, x, y):
+                dy = blk.reset_y()
+            else:
+                dy = 20
+                blk.expand_in_y(dy)
+            for b in group:
+                if b != blk:
+                    b.spr.move_relative((0, dy*blk.scale))
+        elif blk.name=='hspace':
+            group = self._find_group(blk.connections[1])
+            if self._hide_button_hit(blk.spr, x, y):
+                dx = blk.reset_x()
+            else:
+                dx = 20
+                blk.expand_in_x(dx)
+            for b in group:
+                b.spr.move_relative((dx*blk.scale, 0))
+        elif blk.name=='list':
+            n = len(blk.connections)
+            group = self._find_group(blk.connections[n-1])
+            dy = blk.add_arg()
+            for b in group:
+                b.spr.move_relative((0, dy))
+            blk.connections.append(blk.connections[n-1])
+            argname = blk.docks[n-1][0]
+            argvalue = DEFAULTS[blk.name][len(DEFAULTS[blk.name])-1]
+            argblk = Block(self.block_list, self.sprite_list, argname,
+                           0, 0, 'block', [argvalue])
+            argdock = argblk.docks[0]
+            (bx, by) = blk.spr.get_xy()
+            nx = bx+blk.docks[n-1][2]-argdock[2]
+            ny = by+blk.docks[n-1][3]-argdock[3]
+            argblk.spr.move((nx, ny))
+            argblk.spr.set_layer(TOP_LAYER)
+            argblk.connections = [blk, None]
+            blk.connections[n-1] = argblk
+        elif blk.name=='nop' and self.myblock==None:
+            self._import_py()
+        else:
+            self._run_stack(blk)
+
+    """
+    Run a stack of blocks.
+    """
+    def _run_stack(self, blk):
+        if blk is None:
+            return
+        self.lc.ag = None
+        top = self.find_top_block(blk)
+        self.lc.run_blocks(top, self.just_blocks(), True)
+        gobject.idle_add(self.lc.doevalstep)
+
+    """
+    Did the sprite's hide (contract) button get hit?
+    """
+    def _hide_button_hit(self, spr, x, y):
+        r,g,b,a = spr.get_pixel((x, y))
+        if (r == 255 and g == 0) or g == 255:
+            return True
+        else:
+            return False
+
+    """
+    Did the sprite's show (expand) button get hit?
+    """
+    def _show_button_hit(self, spr, x, y):
+        r,g,b,a = spr.get_pixel((x, y))
+        if (r == 255 and g == 0) or g == 255:
+            return False
+        else:
+            return True
+
+    """
+    Snap a block to the dock of another block.
+    """
+    def _snap_to_dock(self):
+        my_block = self.drag_group[0]
+        d = 200
+        for my_dockn in range(len(my_block.docks)):
+            for i, your_block in enumerate(self.just_blocks()):
+                # don't link to a block to which you're already connected
+                if your_block in self.drag_group:
+                    continue
+                # check each dock of your_block for a possible connection
+                for your_dockn in range(len(your_block.docks)):
+                    this_xy = self._dock_dx_dy(your_block, your_dockn,
+                                              my_block, my_dockn)
+                    if magnitude(this_xy) > d:
+                        continue
+                    d = magnitude(this_xy)
+                    best_xy = this_xy
+                    best_you = your_block
+                    best_your_dockn = your_dockn
+                    best_my_dockn = my_dockn
+        if d<200:
+            for blk in self.drag_group:
+                (sx, sy) = blk.spr.get_xy()
+                blk.spr.move((sx+best_xy[0], sy+best_xy[1]))
+            blk_in_dock = best_you.connections[best_your_dockn]
+            if blk_in_dock is not None:
+                for blk in self._find_group(blk_in_dock):
+                    blk.spr.hide()
+            best_you.connections[best_your_dockn] = my_block
+            if my_block.connections is not None:
+                my_block.connections[best_my_dockn] = best_you
+
+    """
+    Import a file from the Sugar Journal
+    """
+    def _import_from_journal(self, blk):
+        if self.running_sugar:
+            chooser = ObjectChooser('Choose image', None,
+                       gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+            try:
+                result = chooser.run()
+                if result == gtk.RESPONSE_ACCEPT:
+                    dsobject = chooser.get_selected_object()
+                    if blk.name == 'journal':
+                        self._load_image_thumb(dsobject, blk)
+                    elif blk.name == 'audio':
+                        blk.spr.set_image(self.media_shapes['audioon'],
+                                          1, MEDIA_X, MEDIA_Y)
+                    else:
+                        blk.spr.set_image(self.media_shapes['descriptionon'],
+                                          1, MEDIA_X, MEDIA_Y)
+                    if len(blk.values)>0:
+                        blk.values[0] = dsobject.object_id
+                    else:
+                        blk.values.append(dsobject.object_id)
+                    dsobject.destroy()
+            finally:
+                chooser.destroy()
+                del chooser
+        else:
+            fname, self.load_save_folder = get_load_name('.*',
+                                                         self.load_save_folder)
+            if fname is None:
+                return
+            if movie_media_type(fname[-4:]):
+                blk.spr.set_image(self.media_shapes['journalon'], 1, MEDIA_X,
+                                                                     MEDIA_Y)
+            elif blk.name == 'audio' or audio_media_type(fname[-4:]):
+                blk.spr.set_image(self.media_shapes['audioon'], 1, MEDIA_X,
+                                                                   MEDIA_Y)
+                blk.name = 'audio'
+            elif blk.name == 'description':
+                blk.spr.set_image(self.media_shapes['descriptionon'], 1,
+                                  MEDIA_X, MEDIA_Y)
+            else:
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(fname, THUMB_W,
+                                                                     THUMB_H)
+                if pixbuf is not None:
+                    blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
+            blk.values[0] = fname
+        blk.spr.set_label(' ')
+
+    """
+    Replace Journal block graphic with preview image 
+    """
+    def _load_image_thumb(self, picture, blk):
+        pixbuf = get_pixbuf_from_journal(picture, THUMB_W, THUMB_H)
+        if pixbuf is not None:
+            blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
+        else:
+            blk.spr.set_image(self.media_shapes['descriptionon'], 1, MEDIA_X,
+                                                                     MEDIA_Y)
+
+    """
+    Disconnect block from stack above it.
+    """
+    def _disconnect(self, blk):
+        if blk.connections[0]==None:
+            return
+        blk2=blk.connections[0]
+        blk2.connections[blk2.connections.index(blk)] = None
+        blk.connections[0] = None
+
+    """
+    Find the distance between the dock points of two blocks.
+    """
+    def _dock_dx_dy(self, block1, dock1n, block2, dock2n):
+        dock1 = block1.docks[dock1n]
+        dock2 = block2.docks[dock2n]
+        d1type, d1dir, d1x, d1y = dock1[0:4]
+        d2type, d2dir, d2x, d2y = dock2[0:4]
+        if block1 == block2:
+            return (100,100)
+        if d1dir == d2dir:
+            return (100,100)
+        if (d2type is not 'number') or (dock2n is not 0):
+            if block1.connections is not None and \
+                dock1n < len(block1.connections) and \
+                block1.connections[dock1n] is not None:
+                    return (100,100)
+            if block2.connections is not None and \
+                dock2n < len(block2.connections) and \
+                block2.connections[dock2n] is not None:
+                    return (100,100)
+        if d1type != d2type:
+            if block1.name in STRING_OR_NUMBER_ARGS:
+                if d2type == 'number' or d2type == 'string':
+                    pass
+            elif block1.name in CONTENT_ARGS:
+                if d2type in CONTENT_BLOCKS:
+                    pass
+            else:
+                return (100,100)
+        (b1x, b1y) = block1.spr.get_xy()
+        (b2x, b2y) = block2.spr.get_xy()
+        return ((b1x+d1x)-(b2x+d2x), (b1y+d1y)-(b2y+d2y))
+
 
     """
     Keyboard
@@ -924,545 +1494,6 @@ class TurtleArtWindow():
         return True
 
     """
-    Button press
-    """
-    def button_press(self, mask, x, y, verbose=False):
-        if verbose:
-            print "processing remote button press: %d, %d" % (x, y)
-        self.block_operation = 'click'
-
-        # Unselect things that may have been selected earlier
-        if self.selected_blk is not None:
-            self._unselect_block()
-        self.selected_turtle = None
-        # Always hide the status layer on a click
-        if self.status_spr is not None:
-            self.status_spr.hide()
-
-        # Find out what was clicked
-        spr = self.sprite_list.find_sprite((x,y))
-        self.dx = 0
-        self.dy = 0
-        if spr is None:
-            return True
-        self.selected_spr = spr
-
-        # From the sprite at x, y, look for a corresponding block
-        blk = self.block_list.spr_to_block(spr)
-        if blk is not None:
-            if blk.type == 'block':
-                self.selected_blk = blk
-                self._block_pressed(mask, x, y, blk)
-            elif blk.type == 'trash':
-                self._restore_from_trash(blk)
-            elif blk.type == 'proto':
-                if blk.name == 'restoreall':
-                    self._restore_all_from_trash()
-                elif blk.name == 'restore':
-                    self._restore_latest_from_trash()
-                elif blk.name == 'empty':
-                    self._empty_trash()
-                elif MACROS.has_key(blk.name):
-                    self._new_macro(blk.name, x+PALETTE_WIDTH, y+PALETTE_HEIGHT)
-                else:
-                    blk.highlight()
-                    self._new_block(blk.name, x+PALETTE_WIDTH, y+PALETTE_HEIGHT)
-                    blk.unhighlight()
-            return True
-
-        # Next, look for a turtle
-        t = self.turtles.spr_to_turtle(spr)
-        if t is not None:
-            self.selected_turtle = t
-            self.canvas.set_turtle(self.turtles.get_turtle_key(t))
-            self._turtle_pressed(x, y)
-            return True
-
-        # Finally, check for anything else
-        if hasattr(spr, 'type'):
-            if spr.type == "canvas":
-                spr.set_layer(CANVAS_LAYER)
-            elif spr.type == 'selector':
-                self._select_category(spr)
-            elif spr.type == 'category':
-                if self._hide_button_hit(spr, x, y):
-                    self.hideshow_palette(False)
-            elif spr.type == 'palette':
-               self.orientation = 1-self.orientation
-               self.palette_button[self.orientation].set_layer(TAB_LAYER)
-               self.palette_button[1-self.orientation].hide()
-               self.palette_sprs[self.selected_palette][
-                               1-self.orientation].hide()
-               self._layout_palette(self.selected_palette)
-               self.show_palette(self.selected_palette)
-            return True
-
-    """
-    Block pressed
-    """
-    def _block_pressed(self, mask, x, y, blk):
-        if blk is not None:
-            blk.highlight()
-            self._disconnect(blk)
-            self.drag_group = self._find_group(blk)
-            (sx, sy) = blk.spr.get_xy()
-            self.drag_pos = x-sx, y-sy
-            for blk in self.drag_group:
-                blk.spr.set_layer(TOP_LAYER)
-            self.saved_string = blk.spr.labels[0]
-
-    """
-    Unselect block
-    """
-    def _unselect_block(self):
-        # After unselecting a 'number' block, we need to check its value
-        if self.selected_blk.name == 'number':
-            self._number_check()
-        elif self.selected_blk.name == 'string':
-            self._string_check()
-        self.selected_blk.unhighlight()
-        self.selected_blk = None
-
-    """
-    Button press
-    """
-    def _buttonpress_cb(self, win, event):
-        self.window.grab_focus()
-        x, y = self.xy(event)
-        self.button_press(event.get_state()&gtk.gdk.CONTROL_MASK, x, y)
-        if self._sharing():
-            if event.get_state()&gtk.gdk.CONTROL_MASK is True:
-                self.activity._send_event("p:%d:%d:T" % (x, y))
-            else:
-                self.activity._send_event("p:%d:%d:F" % (x, y))
-        return True
-
-    """
-    Button release
-    """
-    def _buttonrelease_cb(self, win, event):
-        x, y = self.xy(event)
-        self.button_release(x, y)
-        if self._sharing():
-            self.activity._send_event("r:"+str(x)+":"+str(y))
-        return True
-
-    def button_release(self, x, y, verbose=False):
-        if self.dx != 0 or self.dy != 0:
-            if self._sharing():
-                if verbose:
-                    print "processing move: %d %d" % (self.dx, self.dy)
-                self.activity._send_event("m:%d:%d" % (self.dx, self.dy))
-                self.dx = 0
-                self.dy = 0
-        if verbose:
-            print "processing remote button release: %d, %d" % (x, y)
-
-        # We may have been moving the turtle
-        if self.selected_turtle is not None:
-            (tx, ty) = self.selected_turtle.get_xy()
-            (cx, cy) = self.canvas.canvas.get_xy()
-            self.canvas.xcor = tx-self.canvas.canvas._width/2+30-cx
-            self.canvas.ycor = self.canvas.canvas._height/2-ty-30+cy
-            self.canvas.move_turtle()
-            if self.running_sugar:
-                self.display_coordinates()
-            self.selected_turtle = None
-            return
-
-        # If we don't have a group of blocks, then there is nothing to do.
-        if self.drag_group == None: 
-            return
-
-        blk = self.drag_group[0]
-        # Remove blocks by dragging them onto the trash palette
-        if self.block_operation=='move' and self._in_the_trash(x, y):
-            self.trash_stack.append(blk)
-            for b in self.drag_group:
-                b.type = 'trash'
-                b.spr.hide()
-            self.drag_group = None
-            self.show_palette(PALETTE_NAMES.index('trash'))
-            return
-
-        # Pull a stack of new blocks off of the category palette.
-        if self.block_operation=='new':
-            for b in self.drag_group:
-                (bx, by) = b.spr.get_xy()
-                b.spr.move((bx+200, by))
-
-        # Look to see if we can dock the current stack.
-        self._snap_to_dock()
-        for b in self.drag_group:
-            b.spr.set_layer(BLOCK_LAYER)
-        self.drag_group = None
-
-        # Find the block we clicked on and process it.
-        if self.block_operation=='click':
-            self._click_block(x, y)
-
-    """
-    Click block
-    """
-    def _click_block(self, x, y):
-        blk = self.block_list.spr_to_block(self.selected_spr)
-        if blk is None:
-            return
-        self.selected_blk = blk
-        if  blk.name=='number' or blk.name=='string':
-            self.saved_string = blk.spr.labels[0]
-            blk.spr.labels[0] += CURSOR
-        elif blk.name in BOX_STYLE_MEDIA:
-            self._import_from_journal(self.selected_blk)
-        elif blk.name=='identity2':
-            group = self._find_group(blk)
-            if self._hide_button_hit(blk.spr, x, y):
-                dx = blk.reset_x()
-            else:
-                dx = 20
-                blk.expand_in_x(dx)
-            for b in group:
-                if b != blk:
-                    b.spr.move_relative((dx*blk.scale, 0))
-        elif blk.name=='vspace':
-            group = self._find_group(blk)
-            if self._hide_button_hit(blk.spr, x, y):
-                dy = blk.reset_y()
-            else:
-                dy = 20
-                blk.expand_in_y(dy)
-            for b in group:
-                if b != blk:
-                    b.spr.move_relative((0, dy*blk.scale))
-        elif blk.name=='hspace':
-            group = self._find_group(blk.connections[1])
-            if self._hide_button_hit(blk.spr, x, y):
-                dx = blk.reset_x()
-            else:
-                dx = 20
-                blk.expand_in_x(dx)
-            for b in group:
-                b.spr.move_relative((dx*blk.scale, 0))
-        elif blk.name=='list':
-            n = len(blk.connections)
-            group = self._find_group(blk.connections[n-1])
-            dy = blk.add_arg()
-            for b in group:
-                b.spr.move_relative((0, dy))
-            blk.connections.append(blk.connections[n-1])
-            argname = blk.docks[n-1][0]
-            argvalue = DEFAULTS[blk.name][len(DEFAULTS[blk.name])-1]
-            argblk = Block(self.block_list, self.sprite_list, argname,
-                           0, 0, 'block', [argvalue])
-            argdock = argblk.docks[0]
-            (bx, by) = blk.spr.get_xy()
-            nx = bx+blk.docks[n-1][2]-argdock[2]
-            ny = by+blk.docks[n-1][3]-argdock[3]
-            argblk.spr.move((nx, ny))
-            argblk.spr.set_layer(TOP_LAYER)
-            argblk.connections = [blk, None]
-            blk.connections[n-1] = argblk
-        elif blk.name=='nop' and self.myblock==None:
-            self._import_py()
-        else:
-            self._run_stack(blk)
-
-    """
-    Snap a block to the dock of another block
-    """
-    def _snap_to_dock(self):
-        my_block = self.drag_group[0]
-        d = 200
-        for my_dockn in range(len(my_block.docks)):
-            for i, your_block in enumerate(self.just_blocks()):
-                # don't link to a block to which you're already connected
-                if your_block in self.drag_group:
-                    continue
-                # check each dock of your_block for a possible connection
-                for your_dockn in range(len(your_block.docks)):
-                    this_xy = self._dock_dx_dy(your_block, your_dockn,
-                                              my_block, my_dockn)
-                    if magnitude(this_xy) > d:
-                        continue
-                    d = magnitude(this_xy)
-                    best_xy = this_xy
-                    best_you = your_block
-                    best_your_dockn = your_dockn
-                    best_my_dockn = my_dockn
-        if d<200:
-            for blk in self.drag_group:
-                (sx, sy) = blk.spr.get_xy()
-                blk.spr.move((sx+best_xy[0], sy+best_xy[1]))
-            blk_in_dock = best_you.connections[best_your_dockn]
-            if blk_in_dock is not None:
-                for blk in self._find_group(blk_in_dock):
-                    blk.spr.hide()
-            best_you.connections[best_your_dockn] = my_block
-            if my_block.connections is not None:
-                my_block.connections[best_my_dockn] = best_you
-
-    """
-    Import a file from the Sugar Journal
-    """
-    def _import_from_journal(self, blk):
-        if self.running_sugar:
-            chooser = ObjectChooser('Choose image', None,
-                       gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
-            try:
-                result = chooser.run()
-                if result == gtk.RESPONSE_ACCEPT:
-                    dsobject = chooser.get_selected_object()
-                    if blk.name == 'journal':
-                        self._load_image_thumb(dsobject, blk)
-                    elif blk.name == 'audio':
-                        blk.spr.set_image(self.media_shapes['audioon'],
-                                          1, MEDIA_X, MEDIA_Y)
-                    else:
-                        blk.spr.set_image(self.media_shapes['descriptionon'],
-                                          1, MEDIA_X, MEDIA_Y)
-                    if len(blk.values)>0:
-                        blk.values[0] = dsobject.object_id
-                    else:
-                        blk.values.append(dsobject.object_id)
-                    dsobject.destroy()
-            finally:
-                chooser.destroy()
-                del chooser
-        else:
-            fname, self.load_save_folder = get_load_name('.*',
-                                                         self.load_save_folder)
-            if fname is None:
-                return
-            if movie_media_type(fname[-4:]):
-                blk.spr.set_image(self.media_shapes['journalon'], 1, MEDIA_X,
-                                                                     MEDIA_Y)
-            elif blk.name == 'audio' or audio_media_type(fname[-4:]):
-                blk.spr.set_image(self.media_shapes['audioon'], 1, MEDIA_X,
-                                                                   MEDIA_Y)
-                blk.name = 'audio'
-            elif blk.name == 'description':
-                blk.spr.set_image(self.media_shapes['descriptionon'], 1,
-                                  MEDIA_X, MEDIA_Y)
-            else:
-                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(fname, THUMB_W,
-                                                                     THUMB_H)
-                if pixbuf is not None:
-                    blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
-            blk.values[0] = fname
-        blk.spr.set_label(' ')
-
-    """
-    Replace Journal block graphic with preview image 
-    """
-    def _load_image_thumb(self, picture, blk):
-        pixbuf = get_pixbuf_from_journal(picture, THUMB_W, THUMB_H)
-        if pixbuf is not None:
-            blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
-        else:
-            blk.spr.set_image(self.media_shapes['descriptionon'], 1, MEDIA_X,
-                                                                     MEDIA_Y)
-
-    """
-    Run stack
-    """
-    def _run_stack(self, blk):
-        if blk is None:
-            return
-        self.lc.ag = None
-        top = self.find_top_block(blk)
-        self.lc.run_blocks(top, self.just_blocks(), True)
-        gobject.idle_add(self.lc.doevalstep)
-
-    """
-    Restore all the blocks in the trash can
-    """
-    def _restore_all_from_trash(self):
-        for b in self.block_list.list:
-            if b.type == 'trash':
-                self._restore_from_trash(b)
-
-    """
-    Restore latest blocks from the trash can
-    """
-    def _restore_latest_from_trash(self):
-        if len(self.trash_stack) == 0:
-            return
-        self._restore_from_trash(self.trash_stack[len(self.trash_stack)-1])
-
-    def _restore_from_trash(self, blk):
-        group = self._find_group(blk)
-        for b in group:
-            b.spr.set_layer(BLOCK_LAYER)
-            x,y = b.spr.get_xy()
-            b.spr.move((x+PALETTE_WIDTH,y+PALETTE_HEIGHT))
-            b.type = 'block'
-        self.trash_stack.remove(blk)
-
-    """
-    Permanently remove blocks in the trash can
-    """
-    def _empty_trash(self):
-        for b in self.block_list.list:
-            if b.type == 'trash':
-                b.type = 'deleted'
-                b.spr.hide()
-        self.trash_stack = []
-
-    """
-    Is x,y over the trash can?
-    """
-    def _in_the_trash(self, x, y):
-        if self.selected_palette == self.trash_index and \
-           self.palette_sprs[self.trash_index][self.orientation].hit((x,y)):
-            return True
-        return False
-
-    """
-    Filter out 'proto' blocks
-    """
-    def just_blocks(self):
-        just_blocks_list = []
-        for b in self.block_list.list:
-            if b.type == 'block':
-                just_blocks_list.append(b)
-        return just_blocks_list
-
-
-    """
-    Make a new block.
-    """
-    def _new_block(self, name, x, y):
-        if name in CONTENT_BLOCKS:
-            newblk = Block(self.block_list, self.sprite_list, name, x-20, y-20,
-                           'block', DEFAULTS[name], self.block_scale)
-        else:
-            newblk = Block(self.block_list, self.sprite_list, name, x-20, y-20,
-                           'block', [], self.block_scale)
-        # Add special skin to some blocks
-        if name == 'nop':
-            if self.nop == 'pythonloaded':
-                newblk.spr.set_image(self.media_shapes['pythonon'], 1,
-                                     PYTHON_X, PYTHON_Y)
-            else:
-                newblk.spr.set_image(self.media_shapes['pythonoff'], 1,
-                                     PYTHON_X, PYTHON_Y)
-        elif name in BOX_STYLE_MEDIA:
-            newblk.spr.set_image(self.media_shapes[name+'off'], 1,
-                                 MEDIA_X, MEDIA_Y)
-            newblk.spr.set_label(' ')
-        newspr = newblk.spr
-        newspr.set_layer(TOP_LAYER)
-        self.drag_pos = 20, 20
-        newblk.connections = [None]*len(newblk.docks)
-        if DEFAULTS.has_key(newblk.name):
-            for i, argvalue in enumerate(DEFAULTS[newblk.name]):
-                # skip the first dock position--it is always a connector
-                dock = newblk.docks[i+1]
-                argname = dock[0]
-                if argname == 'unavailable':
-                    continue
-                if argname == 'media':
-                    argname = 'journal'
-                elif argname == 'number' and\
-                     (type(argvalue) is str or type(argvalue) is unicode):
-                    argname = 'string'
-                elif argname == 'bool':
-                    argname = argvalue
-                elif argname == 'flow':
-                    argname = argvalue
-                (sx, sy) = newspr.get_xy()
-                if argname is not None:
-                    if argname in CONTENT_BLOCKS:
-                        argblk = Block(self.block_list, self.sprite_list,
-                                       argname, 0, 0, 'block', [argvalue],
-                                       self.block_scale)
-                    else:
-                        argblk = Block(self.block_list, self.sprite_list,
-                                       argname, 0, 0, 'block', [],
-                                       self.block_scale)
-                    argdock = argblk.docks[0]
-                    nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
-                    if argname == 'journal':
-                        argblk.spr.set_image(self.media_shapes['journaloff'],
-                                             1, MEDIA_X, MEDIA_Y)
-                        argblk.spr.set_label(' ')
-                    argblk.spr.move((nx, ny))
-                    argblk.spr.set_layer(TOP_LAYER)
-                    argblk.connections = [newblk, None]
-                    newblk.connections[i+1] = argblk
-            self.drag_group = self._find_group(newblk)
-            self.block_operation = 'new' 
-
-    """
-    Debugging tools
-    """
-    def _print_blk_list(self, blk_list):
-        s = ""
-        for blk in blk_list:
-            if blk == None:
-                s+="None"
-            else:
-                s+=blk.name
-            s += " "
-        return s
-
-    """
-    Disconnect block from stack above it.
-    """
-    def _disconnect(self, blk):
-        if blk.connections[0]==None:
-            return
-        blk2=blk.connections[0]
-        blk2.connections[blk2.connections.index(blk)] = None
-        blk.connections[0] = None
-
-    """
-    Turtle pressed
-    """
-    def _turtle_pressed(self, x, y):
-        (tx, ty) = self.selected_turtle.get_xy()
-        dx, dy = x-tx-30, y-ty-30
-        if dx*dx+dy*dy > 200:
-            self.drag_turtle = ('turn',
-                                self.canvas.heading-atan2(dy,dx)/DEGTOR, 0)
-        else:
-            self.drag_turtle = ('move', x-tx, y-ty)
-
-    """
-    Find the distance between the dock points of two blocks.
-    """
-    def _dock_dx_dy(self, block1, dock1n, block2, dock2n):
-        dock1 = block1.docks[dock1n]
-        dock2 = block2.docks[dock2n]
-        d1type, d1dir, d1x, d1y = dock1[0:4]
-        d2type, d2dir, d2x, d2y = dock2[0:4]
-        if block1 == block2:
-            return (100,100)
-        if d1dir == d2dir:
-            return (100,100)
-        if (d2type is not 'number') or (dock2n is not 0):
-            if block1.connections is not None and \
-                dock1n < len(block1.connections) and \
-                block1.connections[dock1n] is not None:
-                    return (100,100)
-            if block2.connections is not None and \
-                dock2n < len(block2.connections) and \
-                block2.connections[dock2n] is not None:
-                    return (100,100)
-        if d1type != d2type:
-            if block1.name in STRING_OR_NUMBER_ARGS:
-                if d2type == 'number' or d2type == 'string':
-                    pass
-            elif block1.name in CONTENT_ARGS:
-                if d2type in CONTENT_BLOCKS:
-                    pass
-            else:
-                return (100,100)
-        (b1x, b1y) = block1.spr.get_xy()
-        (b2x, b2y) = block2.spr.get_xy()
-        return ((b1x+d1x)-(b2x+d2x), (b1y+d1y)-(b2y+d2y))
-
-    """
     Jog turtle
     """
     def _jog_turtle(self, dx, dy):
@@ -1493,16 +1524,6 @@ class TurtleArtWindow():
             blk.spr.move((sx+dx, sy-dy))
         self._snap_to_dock()
         self.drag_group = None
-
-    """
-    Import Python code into a block
-    """
-    def _import_py(self):
-        if self.running_sugar:
-            self.activity.import_py()
-        else:
-            self.load_python_code()
-            self.set_userdefined()
 
     """
     Make sure a 'number' block contains a number.
@@ -1546,12 +1567,28 @@ class TurtleArtWindow():
         f.close()
     
     """
+    Import Python code into a block
+    """
+    def _import_py(self):
+        if self.running_sugar:
+            self.activity.import_py()
+        else:
+            self.load_python_code()
+            self.set_userdefined()
+
+    """
     Start a new project
     """
     def new_project(self):
         stop_logo(self)
-        for b in self.just_blocks():
-            b.spr.hide()
+        # Put current project in the trash.
+        while len(self.just_blocks()) > 0:
+            b = self.just_blocks()[0]
+            top = self.find_top_block(b)
+            self.trash_stack.append(top)
+            for b in self._find_group(top):
+                b.type = 'trash'
+                b.spr.hide()
         self.canvas.clearscreen()
         self.save_file_name = None
     
@@ -1573,65 +1610,6 @@ class TurtleArtWindow():
         self.load_files(fname+'.ta', create_new_project)
         if create_new_project is True:
             self.save_file_name = os.path.basename(fname)
-    
-    """
-    Create a "macro" (predefined stack of blocks)
-    """
-    def _new_macro(self, name, x, y):
-        macro = MACROS[name]
-        macro[0][2] = x
-        macro[0][3] = y
-        self.process_data(macro)
-
-    """
-    Process data (from a file or clipboard) into blocks
-    """
-    def process_data(self, data):
-        # Create the blocks (or turtle).
-        blocks = []
-        for b in data:
-            if self._found_a_turtle(b) is False:
-                blk = self.load_block(b)
-                blocks.append(blk)
-        # Make the connections.
-        for i in range(len(blocks)):
-            cons=[]
-            # Normally, it is simply a matter of copying the connections.
-            if blocks[i].connections == None:
-                for c in data[i][4]:
-                    if c is None:
-                        cons.append(None)
-                    else:
-                        cons.append(blocks[c])
-            elif blocks[i].connections == 'check':
-                # Ugly corner case is to convert old-style booleans op.
-                cons.append(None) # Add an extra connection.
-                for c in data[i][4]:
-                    if c is None:
-                        cons.append(None)
-                    else:
-                        cons.append(blocks[c])
-                # If the boolean op was connected, readjust the plumbing.
-                if data[i][4][0] is not None:
-                    c = data[i][4][0]
-                    cons[0] = blocks[data[c][4][0]]
-                    c0 = data[c][4][0]
-                    for j, cj in enumerate(data[c0][4]):
-                        if cj == c:
-                            blocks[c0].connections[j] = blocks[i]
-                    if c<i:
-                        blocks[c].connections[0] = blocks[i]
-                        blocks[c].connections[3] = None
-                    else:
-                        # Connection was to a block we haven't seen yet.
-                        print "WARNING: dock check couldn't see the future"
-            else:
-                print "WARNING: unknown connection state %s" %\
-                      (str(blocks[i].connections))
-            blocks[i].connections = cons[:]
-        # Block sizes and shapes may have changed.
-        for b in blocks:
-            self._adjust_dock_positions(b)
 
     """
     Turtles are either [-1, 'turtle', ...] or [-1, ['turtle', key], ...]
@@ -1651,19 +1629,16 @@ class TurtleArtWindow():
         return False
 
     """
-    Adjust the dock x,y positions
+    Restore a turtle from its saved state
     """
-    def _adjust_dock_positions(self, blk):
-        (sx, sy) = blk.spr.get_xy()
-        for i, c in enumerate(blk.connections):
-            if i>0 and c is not None:
-                bdock = blk.docks[i]
-                for j in range(len(c.docks)):
-                    if c.connections[j] == blk:
-                        cdock = c.docks[j]
-                        nx, ny = sx+bdock[2]-cdock[2], sy+bdock[3]-cdock[3]
-                        c.spr.move((nx, ny))
-                self._adjust_dock_positions(c)
+    def load_turtle(self, b, key=1):
+        id, name, xcor, ycor, heading, color, shade, pensize = b
+        self.canvas.set_turtle(key)
+        self.canvas.setxy(xcor, ycor)
+        self.canvas.seth(heading)
+        self.canvas.setcolor(color)
+        self.canvas.setshade(shade)
+        self.canvas.setpensize(pensize)
 
     """
     Restore individual blocks from saved state
@@ -1761,18 +1736,6 @@ class TurtleArtWindow():
         if check_dock is True:
             blk.connections = 'check'
         return blk
-
-    """
-    Restore a turtle from its saved state
-    """
-    def load_turtle(self, b, key=1):
-        id, name, xcor, ycor, heading, color, shade, pensize = b
-        self.canvas.set_turtle(key)
-        self.canvas.setxy(xcor, ycor)
-        self.canvas.seth(heading)
-        self.canvas.setcolor(color)
-        self.canvas.setshade(shade)
-        self.canvas.setpensize(pensize)
     
     """
     Start a new project with a 'start' brick
@@ -1848,7 +1811,7 @@ class TurtleArtWindow():
                              self.canvas.color, self.canvas.shade,
                              self.canvas.pensize))
         return data
-    
+
     """
     Display the coordinates of the current turtle
     """
@@ -1863,26 +1826,6 @@ class TurtleArtWindow():
         else:
             self.win.set_title("%s — %s: %d %s: %d %s: %d" % (_("Turtle Art"),
                                    _("xcor"), x, _("ycor"), y, _("heading"), h))
-
-    """
-    Did the sprite's hide (contract) button get hit?
-    """
-    def _hide_button_hit(self, spr, x, y):
-        r,g,b,a = spr.get_pixel((x, y))
-        if (r == 255 and g == 0) or g == 255:
-            return True
-        else:
-            return False
-
-    """
-    Did the sprite's show (expand) button get hit?
-    """
-    def _show_button_hit(self, spr, x, y):
-        r,g,b,a = spr.get_pixel((x, y))
-        if (r == 255 and g == 0) or g == 255:
-            return False
-        else:
-            return True
 
     def showlabel(self, shp, label=''):
         if shp == 'syntaxerror' and label != '':
@@ -1901,6 +1844,9 @@ class TurtleArtWindow():
         else:
             self.status_spr.move((PALETTE_WIDTH, self.height-200))
 
+    """
+    Relative placement of portfolio objects
+    """
     def calc_position(self, t):
         w,h,x,y,dx,dy = TEMPLATES[t]
         x *= self.canvas.width
@@ -1910,3 +1856,61 @@ class TurtleArtWindow():
         dx *= w
         dy *= h
         return(w,h,x,y,dx,dy)
+
+    """
+    Where is the mouse event?
+    """
+    def _xy(self, event):
+        return map(int, event.get_coords())
+
+    """
+    Find a stack to run (any stack without a 'def action'on the top).
+    """
+    def _find_block_to_run(self, blk):
+        top = self.find_top_block(blk)
+        if blk == top and blk.name[0:3] is not 'def':
+            return True
+        else:
+            return False
+
+    """
+    Find the top block in a stack.
+    """
+    def find_top_block(self, blk):
+        while blk.connections[0] is not None:
+            blk = blk.connections[0]
+        return blk
+
+    """
+    Find a stack with a 'start' block on top.
+    """
+    def _find_start_stack(self, blk):
+        top = self.find_top_block(blk)
+        if top.name == 'start':
+            return True
+        else:
+            return False
+
+    """
+    Find the connected group of block in a stack.
+    """
+    def _find_group(self, blk):
+        if blk is None:
+            return []
+        group=[blk]
+        if blk.connections is not None:
+            for blk2 in blk.connections[1:]:
+                if blk2 is not None:
+                    group.extend(self._find_group(blk2))
+        return group
+
+    """
+    Filter out 'proto', 'trash', and 'deleted' blocks
+    """
+    def just_blocks(self):
+        just_blocks_list = []
+        for b in self.block_list.list:
+            if b.type == 'block':
+                just_blocks_list.append(b)
+        return just_blocks_list
+
