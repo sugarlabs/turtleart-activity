@@ -52,7 +52,8 @@ from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
 from taturtle import Turtles, Turtle
 from tautils import magnitude, get_load_name, get_save_name, data_from_file,\
-                    data_to_file, round_int, get_id, get_pixbuf_from_journal
+                    data_to_file, round_int, get_id, get_pixbuf_from_journal,\
+                    movie_media_type, audio_media_type, image_media_type
 from sprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
@@ -1203,55 +1204,62 @@ class TurtleArtWindow():
                 result = chooser.run()
                 if result == gtk.RESPONSE_ACCEPT:
                     dsobject = chooser.get_selected_object()
-                    if blk.name == 'journal':
-                        self._load_image_thumb(dsobject, blk)
-                    elif blk.name == 'audio':
-                        blk.spr.set_image(self.media_shapes['audioon'],
-                                          1, MEDIA_X, MEDIA_Y)
-                    else:
-                        blk.spr.set_image(self.media_shapes['descriptionon'],
-                                          1, MEDIA_X, MEDIA_Y)
-                    if len(blk.values)>0:
-                        blk.values[0] = dsobject.object_id
-                    else:
-                        blk.values.append(dsobject.object_id)
+                    self._update_media_icon(blk, dsobject, dsobject.object_id)
                     dsobject.destroy()
             finally:
                 chooser.destroy()
                 del chooser
         else:
-            fname, self.load_save_folder = get_load_name('.*',
-                                                         self.load_save_folder)
+            fname, self.load_save_folder = \
+                             get_load_name('.*', self.load_save_folder)
             if fname is None:
                 return
-            if movie_media_type(fname[-4:]):
-                blk.spr.set_image(self.media_shapes['journalon'], 1, MEDIA_X,
-                                                                     MEDIA_Y)
-            elif blk.name == 'audio' or audio_media_type(fname[-4:]):
-                blk.spr.set_image(self.media_shapes['audioon'], 1, MEDIA_X,
-                                                                   MEDIA_Y)
-                blk.name = 'audio'
-            elif blk.name == 'description':
-                blk.spr.set_image(self.media_shapes['descriptionon'], 1,
-                                  MEDIA_X, MEDIA_Y)
-            else:
-                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(fname, THUMB_W,
-                                                                     THUMB_H)
-                if pixbuf is not None:
-                    blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
-            blk.values[0] = fname
+            self._update_media_icon(blk, fname)
+
+    """
+    Update the icon on a 'loaded' media block.
+    """
+    def _update_media_icon(self, blk, name, value=''):
+        if blk.name == 'journal':
+            self._load_image_thumb(name, blk)
+        elif blk.name == 'audio':
+            blk.spr.set_image(self.media_shapes['audioon'], 1, MEDIA_X, MEDIA_Y)
+        else:
+            blk.spr.set_image(self.media_shapes['descriptionon'], 1,
+                              MEDIA_X, MEDIA_Y)
+        if value == '':
+            value = name
+        if len(blk.values)>0:
+            blk.values[0] = value
+        else:
+            blk.values.append(value)
         blk.spr.set_label(' ')
 
     """
-    Replace Journal block graphic with preview image 
+    Replace icon with a preview image.
     """
     def _load_image_thumb(self, picture, blk):
-        pixbuf = get_pixbuf_from_journal(picture, THUMB_W, THUMB_H)
+        pixbuf = None
+        blk.spr.set_image(self.media_shapes['descriptionon'], 1, MEDIA_X,
+                                                                 MEDIA_Y)
+        if self.running_sugar:
+            pixbuf = get_pixbuf_from_journal(picture, THUMB_W, THUMB_H)
+        else:
+            print picture[-4:]
+            if movie_media_type(picture[-4:]):
+                blk.spr.set_image(self.media_shapes['journalon'], 1, MEDIA_X,
+                                                                     MEDIA_Y)
+            elif audio_media_type(picture[-4:]):
+                blk.spr.set_image(self.media_shapes['audioon'], 1, MEDIA_X,
+                                                                   MEDIA_Y)
+                blk.name = 'audio'
+            elif image_media_type(picture[-4:]):
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(picture, THUMB_W,
+                                                                       THUMB_H)
+            else:
+                blk.name = 'description'
         if pixbuf is not None:
             blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
-        else:
-            blk.spr.set_image(self.media_shapes['descriptionon'], 1, MEDIA_X,
-                                                                     MEDIA_Y)
 
     """
     Disconnect block from stack above it.
