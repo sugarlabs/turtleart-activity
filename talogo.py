@@ -290,7 +290,6 @@ class LogoCode:
         self.stacks = {}
         self.boxes = {'box1': 0, 'box2': 0}
         self.heap = []
-        self.blocks = []
 
         self.keyboard = 0
         self.trace = 0
@@ -332,26 +331,21 @@ class LogoCode:
         for b in blocks:
             b.unhighlight()
             if b.name == 'hat1':
-                self.blocks = []
                 code = self.blocks_to_code(b)
-                self.stacks['stack1'] = self.readline(code, self.blocks[:])
+                self.stacks['stack1'] = self.readline(code)
             if b.name=='hat2':
-                self.blocks = []
                 code = self.blocks_to_code(b)
-                self.stacks['stack2'] = self.readline(code, self.blocks[:])
+                self.stacks['stack2'] = self.readline(code)
             if b.name == 'hat':
                 if b.connections[1] is not None:
-                    self.blocks = []
                     code = self.blocks_to_code(b)
                     self.stacks['stack3'+b.connections[1].values[0]] =\
-                        self.readline(code, self.blocks[:])
+                        self.readline(code)
 
-        self.blocks = []
         code = self.blocks_to_code(blk)
         if run_flag is True:
             print "running code: %s" % (code)
-            print "block index is: %s" % (self.blocks)
-            self.setup_cmd(code, self.blocks)
+            self.setup_cmd(code)
         else:
             return code
 
@@ -366,13 +360,8 @@ class LogoCode:
         dock = blk.docks[0]
         if len(dock)>4: # There could be a '(', ')', '[' or ']'.
             code.append(dock[4])
-            self.blocks.append(dock[4])
-        if blk.primitive is not None:
-            code.append(blk.primitive)
-            if blk.name not in BOX_STYLE:
-                self.blocks.append(self.tw.block_list.list.index(blk))
-            else: # TODO: Decide what to do with these blocks
-                self.blocks.append(self.tw.block_list.list.index(blk))
+        if blk.primitive is not None: # make a tuple (prim, blk)
+            code.append((blk.primitive, self.tw.block_list.list.index(blk)))
         elif len(blk.values)>0:  # Extract the value from content blocks.
             if blk.name=='number':
                 try:
@@ -404,7 +393,6 @@ class LogoCode:
             else:
                 print "%s had no primitive." % (blk.name)
                 return ['%nothing%']
-            self.blocks.append(-1)
         else:
             print "%s had no value." % (blk.name)
             return ['%nothing%']
@@ -414,21 +402,19 @@ class LogoCode:
             if len(dock)>4: # There could be a '(', ')', '[' or ']'.
                 for c in dock[4]:
                     code.append(c)
-                    self.blocks.append(c)
             if b is not None:
                 code.extend(self.blocks_to_code(b))
             elif blk.docks[i][0] not in ['flow', 'unavailable']:
                 code.append('%nothing%')
-                self.blocks.append('%nothing%')
         return code
     
     """
     Execute the psuedocode.
     """
-    def setup_cmd(self, str, blk):
+    def setup_cmd(self, str):
         self.tw.active_turtle.hide() # Hide the turtle while we are running.
         self.procstop = False
-        list = self.readline(str, blk)
+        list = self.readline(str)
         print list
         self.step = self.start_eval(list)
 
@@ -437,11 +423,12 @@ class LogoCode:
         The block associated with the command is stored as the second element
         in a tuple, e.g., (#forward, 16)
     """
-    def readline(self, line, bline):
+    def readline(self, line):
         res = []
         while line:
             token = line.pop(0)
-            btoken = bline.pop(0)
+            if type(token) == type((1,2)):
+                 (token, btoken) = token
             if isNumberType(token):
                 res.append(token)
             elif token.isdigit():
@@ -453,7 +440,7 @@ class LogoCode:
             elif token[0:2] == "#s":
                 res.append(token[2:])
             elif token == '[':
-                res.append(self.readline(line, bline))
+                res.append(self.readline(line))
             elif token == ']':
                 return res
             else:
