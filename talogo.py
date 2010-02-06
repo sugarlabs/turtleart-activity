@@ -271,17 +271,15 @@ class LogoCode:
         self.symnothing = self.intern('%nothing%')
         self.symopar = self.intern('(')
         self.iline = None
-        self.biline = None
         self.cfun = None
-        self.bcfun = None
         self.arglist = None
-        self.barglist = None
         self.ufun = None
     
         self.istack = []
         self.stacks = {}
         self.boxes = {'box1': 0, 'box2': 0}
         self.heap = []
+        self.blocks = []
 
         self.keyboard = 0
         self.trace = 0
@@ -316,32 +314,33 @@ class LogoCode:
     Given a block to run...
     """
     def run_blocks(self, blk, blocks, run_flag):
-        self.blk_index = [] # Maintain a correlation between blocks and code
         for k in self.stacks.keys():
             self.stacks[k] = None
         self.stacks['stack1'] = None
         self.stacks['stack2'] = None
 
-        # TODO: add tuple processing to stacks...
         for b in blocks:
             if b.name == 'hat1':
-                self.bis['stack1'] = len(self.blk_index)
-                self.stacks['stack1'] = self.readline(self.blocks_to_code(b))
+                self.blocks = []
+                code = self.blocks_to_code(b)
+                self.stacks['stack1'] = self.readline(code, self.blocks[:])
             if b.name=='hat2':
-                self.bis['stack2'] = len(self.blk_index)
-                self.stacks['stack2'] = self.readline(self.blocks_to_code(b))
+                self.blocks = []
+                code = self.blocks_to_code(b)
+                self.stacks['stack2'] = self.readline(code, self.blocks[:])
             if b.name == 'hat':
-                self.bis['stack3'+b.connections[1].values[0]] =\
-                    len(self.blk_index)
                 if b.connections[1] is not None:
+                    self.blocks = []
+                    code = self.blocks_to_code(b)
                     self.stacks['stack3'+b.connections[1].values[0]] =\
-                        self.readline(self.blocks_to_code(b))
+                        self.readline(code, self.blocks[:])
 
+        self.blocks = []
         code = self.blocks_to_code(blk)
         if run_flag is True:
             print "running code: %s" % (code)
-            print "block index is: %s" % (self.blk_index)
-            self.setup_cmd(code)
+            print "block index is: %s" % (self.blocks)
+            self.setup_cmd(code, self.blocks)
         else:
             return code
 
@@ -351,18 +350,18 @@ class LogoCode:
     """
     def blocks_to_code(self, blk):
         if blk is None:
-            return ['%nothing%']
+            return ['%nothing%', '%nothing%']
         code = []
         dock = blk.docks[0]
         if len(dock)>4: # There could be a '(', ')', '[' or ']'.
             code.append(dock[4])
-            self.blk_index.append(dock[4])
+            self.blocks.append(dock[4])
         if blk.primitive is not None:
             code.append(blk.primitive)
             if blk.name not in BOX_STYLE:
-                self.blk_index.append(self.tw.block_list.list.index(blk))
-            else:
-                print "skipping %s" % (blk.name)
+                self.blocks.append(self.tw.block_list.list.index(blk))
+            else: # TODO: Decide what to do with these blocks
+                self.blocks.append(self.tw.block_list.list.index(blk))
         elif len(blk.values)>0:  # Extract the value from content blocks.
             if blk.name=='number':
                 try:
@@ -394,7 +393,7 @@ class LogoCode:
             else:
                 print "%s had no primitive." % (blk.name)
                 return ['%nothing%']
-            self.blk_index.append(-1)
+            self.blocks.append(-1)
         else:
             print "%s had no value." % (blk.name)
             return ['%nothing%']
@@ -404,20 +403,21 @@ class LogoCode:
             if len(dock)>4: # There could be a '(', ')', '[' or ']'.
                 for c in dock[4]:
                     code.append(c)
-                    self.blk_index.append(c)
+                    self.blocks.append(c)
             if b is not None:
                 code.extend(self.blocks_to_code(b))
             elif blk.docks[i][0] not in ['flow', 'unavailable']:
                 code.append('%nothing%')
+                self.blocks.append('%nothing%')
         return code
     
     """
     Execute the psuedocode.
     """
-    def setup_cmd(self, str):
+    def setup_cmd(self, str, blk):
         self.tw.active_turtle.hide() # Hide the turtle while we are running.
         self.procstop = False
-        list = self.readline(str, self.blk_index)
+        list = self.readline(str, blk)
         print list
         self.step = self.start_eval(list)
 
@@ -706,7 +706,7 @@ class LogoCode:
         self.tw.canvas.clearscreen()
         self.unhighlight("plus")
 
-    def prim_fillscreen(self):
+    def prim_fillscreen(self, x, y):
         self.highlighter("clear")
         self.tw.canvas.fillscreen(x, y)
         self.unhighlight("clear")
