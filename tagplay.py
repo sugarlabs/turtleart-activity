@@ -59,6 +59,8 @@ class Gplay:
         if message.structure is None:
             return True
         if message.structure.get_name() == 'prepare-xwindow-id':
+            if self.window is None:
+                return True
             self.window.set_sink(message.src)
             message.src.set_property('force-aspect-ratio', True)
             return True
