@@ -501,6 +501,9 @@ class LogoCode:
                 break
             if self.iresult == None:
                 continue
+
+            if btoken is not None and type(btoken) is int:
+                    self.tw.block_list.list[btoken].highlight()
             raise logoerror(str(self.iresult))
         self.iline = oldiline
         self.ireturn()
