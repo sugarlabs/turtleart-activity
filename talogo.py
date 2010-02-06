@@ -637,7 +637,7 @@ class LogoCode:
                     self.tw.turtles.show_all()
                     return False
         except logoerror, e:
-            self.tw.showlabel(str(e)[1:-1])
+            self.tw.showlabel('syntaxerror', str(e)[1:-1])
             self.tw.turtles.show_all()
             return False
         return True
@@ -671,13 +671,17 @@ class LogoCode:
                 for k, v in self.boxes.iteritems():
                     tmp = k +":" + str(v) + "\n"
                     my_string += tmp
-            self.tw.showlabel('#trace',my_string)
+            self.tw.showlabel('info',my_string)
         return
     
     def undefined_check(self, token):
         if token.fcn is not None:
             return False
-        raise logoerror("%s %s" % (_("I don't know how to"), token.name))
+        if token.name == '%nothing%':
+            errormsg = ''
+        else:
+            errormsg = "%s %s" % (_("I don't know how to"), _(token.name))
+        raise logoerror(errormsg)
     
     def no_args_check(self):
         if self.iline and self.iline[0] is not self.symnothing:
@@ -786,7 +790,7 @@ class LogoCode:
         self.procstop = True
     
     def prim_print_heap(self):
-        self.tw.showlabel(self.heap)
+        self.tw.showlabel('status', self.heap)
 
     def an_int(self, n):
         if type(n) == int:
@@ -807,7 +811,10 @@ class LogoCode:
     
     def prim_myblock(self, x):
         if self.tw.myblock is not None:
-            y = myfunc_import(self, self.tw.myblock, x)
+            try:
+                y = myfunc_import(self, self.tw.myblock, x)
+            except:
+                raise logoerror("#nocode")
         else:
             raise logoerror("#nocode")
         return
@@ -824,17 +831,20 @@ class LogoCode:
         if type(n) == str or type(n) == unicode:
             if n[0:6] == 'media_':
                 try:
-                    dsobject = datastore.get(n[6:])
-                    self.tw.showlabel(dsobject.metadata['title'])
-                    dsobject.destroy()
+                    if self.tw.running_sugar:
+                        dsobject = datastore.get(n[6:])
+                        self.tw.showlabel('status', dsobject.metadata['title'])
+                        dsobject.destroy()
+                    else:
+                        self.tw.showlabel('status', n[6:])
                 except:
-                    self.tw.showlabel(n)
+                    self.tw.showlabel('status', n)
             else:
-                self.tw.showlabel(n)
+                self.tw.showlabel('status', n)
         elif type(n) == int:
-            self.tw.showlabel(n)
+            self.tw.showlabel('status', n)
         else:
-            self.tw.showlabel(round_int(n))
+            self.tw.showlabel('status', round_int(n))
     
     def prim_kbinput(self):
         if len(self.tw.keypress) == 1:
@@ -900,7 +910,7 @@ class LogoCode:
 
     def show_description(self, media, x, y, w, h):
         if media == "" or media[6:] == "":
-            pass
+            return
         elif media[6:] is not "None":
             text = None
             if self.tw.running_sugar:

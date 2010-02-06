@@ -1517,13 +1517,13 @@ class TurtleArtWindow():
                 f = float(n)
                 if f > 1000000:
                     n = 1
-                    self.lc.showlabel("#overflowerror")
+                    self.showlabel("#overflowerror")
                 elif f < -1000000:
                     n = -1
-                    self.lc.showlabel("#overflowerror")
+                    self.showlabel("#overflowerror")
             except ValueError:
                 n = 0
-                self.lc.showlabel("#notanumber")
+                self.showlabel("#notanumber")
         else:
             n = 0
         self.selected_blk.spr.set_label(n)
@@ -1885,39 +1885,16 @@ class TurtleArtWindow():
         else:
             return True
 
-    def showlabel(self, label, str=''):
-        if label=='#nostack':
-            shp = 'nostack'
-            label=''
-        elif label=='#noinput':
-            shp = 'noinput'
-            label=''
-        elif label=='#emptyheap':
-            shp = 'emptyheap'
-            label=''
-        elif label=='#emptybox':
-            shp = 'emptybox'
-            label=''
-        elif label=='#nomedia':
-            shp = 'nomedia'
-            label=''
-        elif label=='#nocode':
-            shp = 'nocode'
-            label=''
-        elif label=='#syntaxerror':
-            shp = 'syntaxerror'
-            label=''
-        elif label=='#overflowerror':
+    def showlabel(self, shp, label=''):
+        print "shp: %s, label: %s" % (shp, label)
+        if shp == 'syntaxerror' and label != '':
+            shp = label[1:]
+            label = ''
+        elif shp[0] == '#':
+            shp = shp[1:]
+            label = ''
+        if shp=='notanumber':
             shp = 'overflowerror'
-            label=''
-        elif label=='#notanumber':
-            shp = 'overflowerror'
-            label=''
-        elif label=='#trace':
-            shp = 'info'
-            label = str
-        else:
-            shp = 'status'
         self.status_spr.set_shape(self.status_shapes[shp])
         self.status_spr.set_label(label)
         self.status_spr.set_layer(STATUS_LAYER)
