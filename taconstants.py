@@ -506,7 +506,7 @@ OVERLAY_SHAPES = ['Cartesian', 'Cartesian_labeled', 'polar']
 
 STATUS_SHAPES = ['status', 'info', 'nostack', 'noinput', 'emptyheap',
                  'emptybox', 'nomedia', 'nocode', 'overflowerror',
-                 'syntaxerror']
+                 'syntaxerror', 'nofile', 'nojournal']
 
 #
 # Legacy names

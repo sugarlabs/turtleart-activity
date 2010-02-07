@@ -888,6 +888,7 @@ class LogoCode:
                 try:
                     dsobject = datastore.get(media[6:])
                 except:
+                    self.tw.showlabel('nojournal', media[6:]) 
                     print "Couldn't open Journal object %s" % (media[6:])
                 if movie_media_type(dsobject.file_path):
                     play_movie_from_file(self,
@@ -904,6 +905,7 @@ class LogoCode:
                         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
                                      media[6:], int(w), int(h))
                 except:
+                    self.tw.showlabel('nofile', media[6:]) 
                     print "Couldn't open media object %s" % (media[6:])
             if pixbuf is not None:
                 self.tw.canvas.draw_pixbuf(pixbuf, 0, 0, int(x), int(y),
