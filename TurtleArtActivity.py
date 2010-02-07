@@ -36,7 +36,9 @@ try: # 0.86 toolbar widgets
     from sugar.activity.widgets import StopButton
     from sugar.graphics.toolbarbox import ToolbarBox
     from sugar.graphics.toolbarbox import ToolbarButton
+    _new_sugar_system = True
 except ImportError:
+    _new_sugar_system = False
     pass
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.menuitem import MenuItem
@@ -76,7 +78,7 @@ class TurtleArtActivity(activity.Activity):
         
         self._setup_visibility_handler()
 
-        self._setup_toolbar()
+        self._setup_toolbar(_new_sugar_system)
 
         canvas = self._setup_scrolled_window()
 
@@ -555,22 +557,22 @@ class TurtleArtActivity(activity.Activity):
         # maybe we can use a stack to share events to new-comers?
         # self._share += "text + "\n"
         if text[0] == 'p': # button press
-            e,x,y,mask = text.split(":")
+            e,x,y,mask = text.rsplit(":")
             # _logger.debug("receiving button press: "+x+" "+y+" "+mask)
             if mask == 'T':
                 self.tw.button_press(True,int(x),int(y),False)
             else:
                 self.tw.button_press(False,int(x),int(y),False)
         elif text[0] == 'r': # block release
-            e,x,y = text.split(":")
+            e,x,y = text.rsplit(":")
             # _logger.debug("receiving button release: " + x + " " + y)
             self.tw.button_release(int(x),int(y),False)
         elif text[0] == 'm': # mouse move
-            e,x,y = text.split(":")
+            e,x,y = text.rsplit(":")
             _logger.debug("receiving move: " + x + " " + y)
             self.tw.mouse_move(0,0,False,int(x),int(y))
         elif text[0] == 'k': # typing
-            e,mask,keyname = text.split(":",3)
+            e,mask,keyname = text.rsplit(":",3)
             # _logger.debug("recieving key press: " + mask + " " + keyname)
             if mask == 'T':
                 self.tw.key_press(True,keyname,False)
@@ -586,7 +588,7 @@ class TurtleArtActivity(activity.Activity):
         elif text[0] == 'I': # receiving current state
             if self.waiting_for_blocks:
                 _logger.debug("receiving project from sharer")
-                e,text = text.split(":",2)
+                e,text = text.rsplit(":",2)
                 if len(text) > 0:
                     self.tw.new_project()
                     self.tw.process_data(data_from_string(text))
@@ -624,9 +626,9 @@ class TurtleArtActivity(activity.Activity):
     """
     Setup toolbar according to Sugar version
     """
-    def _setup_toolbar(self):
+    def _setup_toolbar(self, new_sugar_system):
 
-        try:
+        if new_sugar_system:
             # Use 0.86 toolbar design
             toolbar_box = ToolbarBox()
             # Buttons added to the Activity toolbar
@@ -873,7 +875,7 @@ class TurtleArtActivity(activity.Activity):
             self.set_toolbar_box(toolbar_box)
             toolbar_box.show()
 
-        except NameError:
+        else:
             # Use pre-0.86 toolbar design
             self.toolbox = activity.ActivityToolbox(self)
             self.set_toolbox(self.toolbox)

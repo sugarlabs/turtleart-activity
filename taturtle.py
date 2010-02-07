@@ -20,7 +20,7 @@
 #THE SOFTWARE.
 
 from taconstants import *
-from sprite_factory import SVG, svg_str_to_pixbuf
+from tasprite_factory import SVG, svg_str_to_pixbuf
 from sprites import Sprite
 from gettext import gettext as _
 

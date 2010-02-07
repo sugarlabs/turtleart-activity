@@ -20,7 +20,7 @@
 #THE SOFTWARE.
 
 from taconstants import *
-from sprite_factory import SVG, svg_str_to_pixbuf
+from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
 from gettext import gettext as _
 
@@ -98,6 +98,8 @@ class Block:
         self._font_size = [6.0, 4.5]
         self._left = 2
         self._right = 2
+
+        print name
 
         if OLD_NAMES.has_key(self.name):
             self.name = OLD_NAMES[self.name]
@@ -218,8 +220,8 @@ class Block:
         self._make_block(self.svg)
         self.spr = sprites.Sprite(sprite_list, x, y, self.shapes[0])
 
-        self.spr.set_margins(self._left, self.svg.get_slot_depth(), self._right,
-                             self.svg.get_slot_depth()*2)
+        self.spr.set_margins(self._left, self.svg.get_slot_depth()*2,
+                             self._right,self.svg.get_slot_depth()*3)
 
         if self.name in CONTENT_BLOCKS and len(self.values) > 0:
             for i, v in enumerate(self.values):
@@ -316,7 +318,9 @@ class Block:
         self._make_basic_block(svg)
         self.docks = [['flow',True,self.svg.docks[0][0],self.svg.docks[0][1]],
                       ['flow',False,self.svg.docks[1][0],self.svg.docks[1][1]]]
-        self._left, self._right = 2, 2
+        # self._left, self._right = 2, 2
+        self._left = self.svg.margins[0]
+        self._right = self.svg.margins[2]
 
     def _make_basic_style_head(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -326,7 +330,9 @@ class Block:
         self.docks = [['start', True, 0, 0],
                       ['flow', False, self.svg.docks[0][0],
                                       self.svg.docks[0][1]]]
-        self._left, self._right = 2, 2
+        # self._left, self._right = 2, 2
+        self._left = self.svg.margins[0]
+        self._right = self.svg.margins[2]
 
     def _make_basic_style_head_1arg(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -339,7 +345,9 @@ class Block:
                                         self.svg.docks[0][1]],
                       ['flow', False, self.svg.docks[1][0],
                                       self.svg.docks[1][1]]]
-        self._left, self._right = 2, self.svg.get_innie_width()*1.5
+        # self._left, self._right = 2, self.svg.get_innie_width()*1.5
+        self._left = self.svg.margins[0]
+        self._right = self.svg.margins[2]
 
     def _make_basic_style_tail(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -348,6 +356,8 @@ class Block:
         self.docks = [['flow', True, self.svg.docks[0][0],
                                      self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
+        self._left = self.svg.margins[0]
+        self._right = self.svg.margins[2]
 
     def _make_basic_style_1arg(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -359,7 +369,9 @@ class Block:
                                         self.svg.docks[1][1]],
                       ['flow', False, self.svg.docks[2][0],
                                       self.svg.docks[2][1]]]
-        self._left, self._right = 2, self.svg.get_innie_width()*1.5
+        # self._left, self._right = 2, self.svg.get_innie_width()*1.5
+        self._left = self.svg.margins[0]
+        self._right = self.svg.margins[2]
 
     def _make_basic_style_2arg(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -373,7 +385,9 @@ class Block:
                                         self.svg.docks[2][1]],
                       ['flow', False, self.svg.docks[3][0],
                                       self.svg.docks[3][1]]]
-        self._left, self._right = 2, self.svg.get_innie_width()*1.5
+        # self._left, self._right = 2, self.svg.get_innie_width()*1.5
+        self._left = self.svg.margins[0]
+        self._right = self.svg.margins[2]
 
     def _make_basic_style_var_arg(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -393,7 +407,9 @@ class Block:
                                                 self.svg.docks[i+3][1]])
         self.docks.append(['flow', False, self.svg.docks[self._ei+3][0],
                                       self.svg.docks[self._ei+3][1], ']'])
-        self._left, self._right = 2, self.svg.get_innie_width()*1.5
+        # self._left, self._right = 2, self.svg.get_innie_width()*1.5
+        self._left = self.svg.margins[0]
+        self._right = self.svg.margins[2]
 
     def _make_box_style(self, svg):
         self.svg.expand(60+self._dx+self._ex, self._ey)

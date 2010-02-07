@@ -316,7 +316,7 @@ BLOCK_NAMES = {
     'stack2':[_('action 2')],
     'start':[_('start')],
     'stopstack':[_('stop action')],
-    'storein':[_('store in')],
+    'storein':[_('store in'),_('box'),_('value')],
     'storeinbox1':[_('store in box 1')],
     'storeinbox2':[_('store in box 2')],
     'string':[_('text')],
