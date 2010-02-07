@@ -415,7 +415,6 @@ class LogoCode:
         self.tw.active_turtle.hide() # Hide the turtle while we are running.
         self.procstop = False
         list = self.readline(str)
-        print list
         self.step = self.start_eval(list)
 
     """
@@ -427,7 +426,8 @@ class LogoCode:
         res = []
         while line:
             token = line.pop(0)
-            if type(token) == type((1,2)):
+            btoken = None
+            if type(token) == tuple:
                  (token, btoken) = token
             if isNumberType(token):
                 res.append(token)
@@ -443,6 +443,8 @@ class LogoCode:
                 res.append(self.readline(line))
             elif token == ']':
                 return res
+            elif btoken is None:
+                res.append(self.intern(token))
             else:
                 res.append((self.intern(token),btoken))
         return res
@@ -474,7 +476,7 @@ class LogoCode:
         while self.iline:
             token = self.iline[0]
             btoken = None
-            if type(token) == type((1,2)):
+            if type(token) == tuple:
                 (token, btoken) = self.iline[0]
 
             if self.tw.step_time > 0:
@@ -488,7 +490,7 @@ class LogoCode:
 
             if token == self.symopar:
                 token = self.iline[1]
-                if type(token) == type((1,2)):
+                if type(token) == tuple:
                     (token, btoken) = self.iline[1]
             self.icall(self.eval)
             yield True
@@ -516,13 +518,15 @@ class LogoCode:
     def eval(self, infixarg=False):
         token = self.iline.pop(0)
         btoken = None
-        if type(token) == type((1,2)):
+        if type(token) == tuple:
             (token, btoken) = token
         if type(token) == self.symtype:
-            self.tw.block_list.list[btoken].highlight()
+            if btoken is not None:
+                self.tw.block_list.list[btoken].highlight()
             self.icall(self.evalsym, token)
             yield True
-            self.tw.block_list.list[btoken].unhighlight()
+            if btoken is not None:
+                self.tw.block_list.list[btoken].unhighlight()
             res = self.iresult
         else:
             res = token
@@ -539,7 +543,7 @@ class LogoCode:
     """
     def evalsym(self, token):
         btoken = None
-        if type(token) == type((1,2)):
+        if type(token) == tuple:
             (token, btoken) = token
             print "found a tuple in evalsym (%s, %s)?" % (token, btoken)
         self.debug_trace(token)
@@ -581,7 +585,7 @@ class LogoCode:
     def evalinfix(self, firstarg):
         token = self.iline.pop(0)
         btoken = None
-        if type(token) == type((1,2)):
+        if type(token) == tuple:
             (token, btoken) = token
         print ">>>>>>>>>>>evalinfix %s %s" % (token, str(btoken))
         oldcfun, oldarglist = self.cfun, self.arglist
