@@ -96,10 +96,6 @@ class Block:
         self._ex = 0
         self._ey = 0
         self._font_size = [6.0, 4.5]
-        self._left = 0
-        self._top = 0
-        self._right = 0
-        self._bottom = 0
 
         if OLD_NAMES.has_key(self.name):
             self.name = OLD_NAMES[self.name]
@@ -137,18 +133,14 @@ class Block:
 
     # We may want to rescale blocks as well.
     def rescale(self, scale):
-        print "old font sizes:"
         for i in range(len(self._font_size)):
-            print self._font_size[i]
             self._font_size[i] /= self.scale
         self._dx /= self.scale
         self._ex /= self.scale
         self._ey /= self.scale
         self.scale = scale
-        print "new font sizes:"
         for i in range(len(self._font_size)):
             self._font_size[i] *= self.scale
-            print self._font_size[i]
         self._dx *= self.scale
         self._ex *= self.scale
         self._ey *= self.scale
@@ -159,7 +151,7 @@ class Block:
         self.spr.set_shape(self.shapes[0])
         self.spr.draw()
 
-    # We may want to add "innies"
+    # We may want to add additional slots for arguments ("innies").
     def add_arg(self):
         h = self.svg.get_height()
         self._ei += 1
@@ -289,6 +281,10 @@ class Block:
         self.spr.set_label(label, i)
 
     def _make_block(self, svg):
+        self._left = 0
+        self._top = 0
+        self._right = 0
+        self._bottom = 0
         self._set_colors(svg)
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
         self.svg.clear_docks()

@@ -118,6 +118,7 @@ class SVG:
             svg += self._hide_dot(x,self._height-12-self._innie_y2-self._slot_y)
 
         svg += self._footer()
+        print "margins: ", self.margins
         return self._header() + svg
 
     def basic_flow(self):
@@ -669,7 +670,10 @@ class SVG:
             self.margins[1] = int(self._y*self._scale)
             self.margins[2] = int((self._x-self._innie_x1-self._innie_x2-\
                                   self._stroke_width*2)*self._scale)
+            print "resetting top and right to: %d, %d" % (self.margins[1],
+                                                          self.margins[2])
         self.margins[3] = int((self._y+self._innie_y2)*self._scale)
+        print "setting bottom to %d" % int((self._y+self._innie_y2)*self._scale)
         # print "x: %d (%d, %d)" % (self._x, self._innie_x1, self._innie_x2)
         return "%s%s%s%s%s%s%s" % (
             self._rline_to(-self._innie_x1, 0),
