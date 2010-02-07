@@ -43,9 +43,8 @@ from gettext import gettext as _
 try:
     from sugar.graphics.objectchooser import ObjectChooser
     from sugar.datastore import datastore
-    _running_sugar = True
 except ImportError:
-    _running_sugar = False
+    pass
 
 from taconstants import *
 from talogo import LogoCode, stop_logo
@@ -67,16 +66,11 @@ class TurtleArtWindow():
     timeout_tag = [0]
 
     def __init__(self, win, path, lang, parent=None, mycolors=None):
-        self._setup_initial_values(win, path, lang, parent, mycolors,
-                                   _running_sugar)
-        # TODO: most of this goes away
+        self._setup_initial_values(win, path, lang, parent, mycolors)
         self._setup_misc()
-        # the new palette
         self._show_toolbar_palette(0, False)
 
-    def _setup_initial_values(self, win, path, lang, parent, mycolors,
-                              _running_sugar):
-        self.running_sugar = _running_sugar
+    def _setup_initial_values(self, win, path, lang, parent, mycolors):
         self.window = win
         self.path = os.path.join(path, 'images')
         self.load_save_folder = os.path.join(path, 'samples')
@@ -85,11 +79,12 @@ class TurtleArtWindow():
         self.window.set_flags(gtk.CAN_FOCUS)
         self.width = gtk.gdk.screen_width()
         self.height = gtk.gdk.screen_height() 
-        if self.running_sugar:
+        if parent is not None:
             parent.show_all()
+            self.running_sugar = True
         else:
             self.window.show_all()
-
+            self.running_sugar = False
         self._setup_events()
         self.keypress = ""
         self.keyvalue = 0
