@@ -74,7 +74,7 @@ class SVG:
         self.margins[0] = int(x+2*self._stroke_width+0.5)
         self.margins[1] = int(y+self._stroke_width+0.5+self._slot_y)
         self.margins[2] = 0
-        self.margins[3] = int(self._stroke_width+0.5+self._slot_y*2)
+        self.margins[3] = 0
         svg = self._new_path(x, y)
         svg += self._corner(1, -1)
         svg += self._do_slot()
@@ -124,6 +124,10 @@ class SVG:
 
     def basic_flow(self):
         (x, y) = self._calculate_x_y()
+        self.margins[0] = int(x+2*self._stroke_width+0.5)
+        self.margins[1] = int(y+self._stroke_width+0.5+self._slot_y)
+        self.margins[2] = 0
+        self.margins[3] = 0
         svg = self._new_path(x, y)
         svg += self._corner(1, -1)
         svg += self._do_slot()
@@ -177,6 +181,10 @@ class SVG:
 
     def portfolio(self):
         (x, y) = self._calculate_x_y()
+        self.margins[0] = int(x+2*self._stroke_width+0.5)
+        self.margins[1] = int(y+self._stroke_width+0.5+self._slot_y)
+        self.margins[2] = 0
+        self.margins[3] = 0
         x += self._innie_x1+self._innie_x2
         svg = self._new_path(x, y)
         svg += self._corner(1, -1)
@@ -210,6 +218,10 @@ class SVG:
     def basic_box(self):
         self.set_outie(True)
         x = self._stroke_width/2.0+self._innie_x1+self._innie_x2
+        self.margins[0] = int(x+2*self._stroke_width+0.5)
+        self.margins[1] = int(self._stroke_width+0.5+self._slot_y)
+        self.margins[2] = 0
+        self.margins[3] = 0
         svg = self._new_path(x, self._stroke_width/2.0)
         svg += self._rline_to(self._expand_x, 0)
         svg += self._rline_to(0, 2*self._radius+self._innie_y2+self._expand_y)
@@ -733,9 +745,6 @@ class SVG:
     def _calculate_w_h(self):
         self._width = (self._max_x-self._min_x+self._stroke_width)*\
                       self._scale
-        # print "width is %d, x is %d, right is %d" % (self._width,
-                                                     self.margins[2],
-                                            int(self._width - self.margins[2]))
         if self.margins[2] == 0:
             self.margins[2] = int(self._stroke_width*2+0.5)
         else:
