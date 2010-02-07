@@ -98,6 +98,7 @@ class TurtleArtWindow():
             self.lead = 1.0
             self.scale = 1.0
         self.block_scale = BLOCK_SCALE
+        self.trash_scale = 0.5
         self.cm = self.gc.get_colormap()
         self.rgb = [255,0,0]
         self.bgcolor = self.cm.alloc_color('#fff8de')
@@ -469,7 +470,7 @@ class TurtleArtWindow():
 
     def _horizontal_layout(self, x, y, max, blocks):
         for b in blocks:
-            _w, _h = b.spr.get_dimensions()
+            _w, _h = self._width_and_height(b)
             if y+_h > PALETTE_HEIGHT+ICON_SIZE:
                 y = ICON_SIZE+5
                 x += int(max+5)
@@ -486,7 +487,7 @@ class TurtleArtWindow():
 
     def _vertical_layout(self, x, y, max, blocks):
         for b in blocks:
-            _w, _h = b.spr.get_dimensions()
+            _w, _h = self._width_and_height(b)
             if x+_w > PALETTE_WIDTH:
                 x = 5
                 y += int(max+5)
@@ -591,7 +592,7 @@ class TurtleArtWindow():
                 self.selected_blk = blk
                 self._block_pressed(mask, x, y, blk)
             elif blk.type == 'trash':
-                self._restore_from_trash(blk)
+                self._restore_from_trash(self.find_top_block(blk))
             elif blk.type == 'proto':
                 if blk.name == 'restoreall':
                     self._restore_all_from_trash()
@@ -669,10 +670,13 @@ class TurtleArtWindow():
     def _restore_from_trash(self, blk):
         group = self._find_group(blk)
         for b in group:
+            b.rescale(self.block_scale)
             b.spr.set_layer(BLOCK_LAYER)
             x,y = b.spr.get_xy()
             b.spr.move((x+PALETTE_WIDTH,y+PALETTE_HEIGHT))
             b.type = 'block'
+        for b in group:
+            self._adjust_dock_positions(b)
         self.trash_stack.remove(blk)
 
     """
@@ -1034,7 +1038,11 @@ class TurtleArtWindow():
             self.trash_stack.append(blk)
             for b in self.drag_group:
                 b.type = 'trash'
-                b.spr.hide()
+                b.rescale(self.trash_scale)
+                # b.spr.hide()
+            blk.spr.move((x,y))
+            for b in self.drag_group:
+                self._adjust_dock_positions(b)
             self.drag_group = None
             self.show_palette(PALETTE_NAMES.index('trash'))
             return
@@ -1827,7 +1835,6 @@ class TurtleArtWindow():
                                    _("xcor"), x, _("ycor"), y, _("heading"), h))
 
     def showlabel(self, shp, label=''):
-        print "showlabel: ", shp, label
         if shp == 'syntaxerror' and label != '':
             if label == 'True' or label == 'False':
                 shp = 'status'
@@ -1917,3 +1924,24 @@ class TurtleArtWindow():
                 just_blocks_list.append(b)
         return just_blocks_list
 
+
+    """
+    What are the width and height of a stack?
+    """
+    def _width_and_height(self, blk):
+        minx = 10000
+        miny = 10000
+        maxx = -10000
+        maxy = -10000
+        for b in self._find_group(blk):
+            (x, y) = b.spr.get_xy()
+            w, h = b.spr.get_dimensions()
+            if x<minx:
+                minx = x
+            if y<miny:
+                miny = y
+            if x+w>maxx:
+                maxx = x+w
+            if y+h>maxy:
+                maxy = y+h
+        return(maxx-minx, maxy-miny)
