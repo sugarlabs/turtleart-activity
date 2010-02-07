@@ -156,15 +156,14 @@ def get_pixbuf_from_journal(dsobject, w, h):
             pixbuf = None
     return pixbuf
 
-def movie_media_type(suffix):
-    if suffix.replace('.','') in ['ogv','vob','mp4','wmv','mov', 'mpeg']:
-        return True
-    return False
+def movie_media_type(name):
+    return name.endswith(('.ogv','.vob','.mp4','.wmv','.mov', '.mpeg'))
 
-def audio_media_type(suffix):
-    if suffix.replace('.','') in ['ogg', 'oga', 'm4a']:
-        return True
-    return False
+def audio_media_type(name): 
+    return name.endswith(('.ogg', '.oga', '.m4a'))
+
+def image_media_type(name):
+    return name.endswith(('.png', '.jpg', '.jpeg', '.gif', '.tiff', '.tif'))
 
 def round_int(n):
     if int(float(n)) == n:
