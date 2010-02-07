@@ -43,8 +43,9 @@ from gettext import gettext as _
 try:
     from sugar.graphics.objectchooser import ObjectChooser
     from sugar.datastore import datastore
-except:
-    pass
+    _running_sugar = True
+except ImportError:
+    _running_sugar = False
 
 from taconstants import *
 from talogo import LogoCode, stop_logo
@@ -54,7 +55,7 @@ from taturtle import Turtles, Turtle
 from tautils import magnitude, get_load_name, get_save_name, data_from_file,\
                     data_to_file, round_int, get_id, get_pixbuf_from_journal,\
                     movie_media_type, audio_media_type, image_media_type
-from sprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
+from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
 """
@@ -66,13 +67,16 @@ class TurtleArtWindow():
     timeout_tag = [0]
 
     def __init__(self, win, path, lang, parent=None, mycolors=None):
-        self._setup_initial_values(win, path, lang, parent, mycolors)
+        self._setup_initial_values(win, path, lang, parent, mycolors,
+                                   _running_sugar)
         # TODO: most of this goes away
         self._setup_misc()
         # the new palette
         self._show_toolbar_palette(0, False)
 
-    def _setup_initial_values(self, win, path, lang, parent, mycolors):
+    def _setup_initial_values(self, win, path, lang, parent, mycolors,
+                              _running_sugar):
+        self.running_sugar = _running_sugar
         self.window = win
         self.path = os.path.join(path, 'images')
         self.load_save_folder = os.path.join(path, 'samples')
@@ -81,18 +85,12 @@ class TurtleArtWindow():
         self.window.set_flags(gtk.CAN_FOCUS)
         self.width = gtk.gdk.screen_width()
         self.height = gtk.gdk.screen_height() 
-
-        # Starting from command line
-        if parent is None:
-            self.window.show_all()
-            self.running_sugar = False
-        # Starting from Sugar
-        else:
+        if self.running_sugar:
             parent.show_all()
-            self.running_sugar = True
+        else:
+            self.window.show_all()
 
         self._setup_events()
-
         self.keypress = ""
         self.keyvalue = 0
         self.dead_key = ""
