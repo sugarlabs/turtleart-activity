@@ -821,7 +821,7 @@ class TurtleArtWindow():
                     else:
                         cons.append(blocks[c])
             elif blocks[i].connections == 'check':
-                # Ugly corner case is to convert old-style booleans op.
+                # Corner case to convert old-style boolean and arithmetic blocks
                 cons.append(None) # Add an extra connection.
                 for c in data[i][4]:
                     if c is None:
@@ -829,19 +829,34 @@ class TurtleArtWindow():
                     else:
                         cons.append(blocks[c])
                 # If the boolean op was connected, readjust the plumbing.
-                if data[i][4][0] is not None:
-                    c = data[i][4][0]
-                    cons[0] = blocks[data[c][4][0]]
-                    c0 = data[c][4][0]
-                    for j, cj in enumerate(data[c0][4]):
-                        if cj == c:
-                            blocks[c0].connections[j] = blocks[i]
-                    if c<i:
-                        blocks[c].connections[0] = blocks[i]
-                        blocks[c].connections[3] = None
-                    else:
-                        # Connection was to a block we haven't seen yet.
-                        print "WARNING: dock check couldn't see the future"
+                if blocks[i].name in BOOLEAN_STYLE:
+                    if data[i][4][0] is not None:
+                        c = data[i][4][0]
+                        cons[0] = blocks[data[c][4][0]]
+                        c0 = data[c][4][0]
+                        for j, cj in enumerate(data[c0][4]):
+                            if cj == c:
+                                blocks[c0].connections[j] = blocks[i]
+                        if c<i:
+                            blocks[c].connections[0] = blocks[i]
+                            blocks[c].connections[3] = None
+                        else:
+                            # Connection was to a block we haven't seen yet.
+                            print "WARNING: dock check couldn't see the future"
+                else:
+                    if data[i][4][0] is not None:
+                        c = data[i][4][0]
+                        cons[0] = blocks[data[c][4][0]]
+                        c0 = data[c][4][0]
+                        for j, cj in enumerate(data[c0][4]):
+                            if cj == c:
+                                blocks[c0].connections[j] = blocks[i]
+                        if c<i:
+                            blocks[c].connections[0] = blocks[i]
+                            blocks[c].connections[1] = None
+                        else:
+                            # Connection was to a block we haven't seen yet.
+                            print "WARNING: dock check couldn't see the future"
             else:
                 print "WARNING: unknown connection state %s" %\
                       (str(blocks[i].connections))
