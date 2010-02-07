@@ -439,7 +439,8 @@ class TurtleArtWindow():
             blk.spr.set_layer(TAB_LAYER)
         if n == PALETTE_NAMES.index('trash'):
             for blk in self.trash_stack:
-                blk.spr.set_layer(TAB_LAYER)
+                for b in self._find_group(blk):
+                    b.spr.set_layer(TAB_LAYER)
 
     """
     Hide the toolbar palettes
@@ -466,7 +467,8 @@ class TurtleArtWindow():
                 self.selector_shapes[self.previous_palette][0])
             if self.previous_palette == PALETTE_NAMES.index('trash'):
                 for b in self.trash_stack:
-                    b.spr.hide()
+                    for bb in self._find_group(b):
+                        bb.spr.hide()
 
     def _horizontal_layout(self, x, y, max, blocks):
         for b in blocks:
