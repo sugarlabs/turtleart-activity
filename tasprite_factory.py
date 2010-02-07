@@ -118,13 +118,10 @@ class SVG:
             svg += self._hide_dot(x,self._height-12-self._innie_y2-self._slot_y)
 
         svg += self._footer()
-        print "margins: ", self.margins
         return self._header() + svg
 
     def basic_flow(self):
         (x, y) = self._calculate_x_y()
-        self.margins[0] = int(x+2*self._stroke_width+0.5)
-        self.margins[1] = int(y+self._stroke_width+0.5+self._slot_y)
         self.margins[2] = 0
         self.margins[3] = 0
         svg = self._new_path(x, y)
@@ -137,6 +134,9 @@ class SVG:
             if self._innie[i] is True:
                 svg += self._do_innie()
                 svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
+            else:
+                self.margins[2] =\
+                    int((self._x-self._stroke_width+0.5)*self._scale)
         if self._bool is True:
             svg += self._rline_to(0,self._radius/2.0)
             svg += self._do_boolean()
@@ -217,8 +217,8 @@ class SVG:
     def basic_box(self):
         self.set_outie(True)
         x = self._stroke_width/2.0+self._innie_x1+self._innie_x2
-        self.margins[0] = int(x+2*self._stroke_width+0.5)
-        self.margins[1] = int(self._stroke_width+0.5+self._slot_y)
+        self.margins[0] = int((x+self._stroke_width+0.5)*self._scale)
+        self.margins[1] = int((self._stroke_width+0.5)*self._scale)
         self.margins[2] = 0
         self.margins[3] = 0
         svg = self._new_path(x, self._stroke_width/2.0)
@@ -252,6 +252,10 @@ class SVG:
         svg += self._line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
         svg += self._end_boolean()
+        self.margins[0] = int((self._radius+self._stroke_width+0.5)*self._scale)
+        self.margins[1] = int(self._stroke_width*self._scale)
+        self.margins[2] = int(self._stroke_width*self._scale)
+        self.margins[3] = int(self._stroke_width*self._scale)
         return self._header() + svg
 
     def boolean_not(self):
@@ -267,6 +271,10 @@ class SVG:
         svg += self._line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
         svg += self._end_boolean()
+        self.margins[0] = int((self._radius+self._stroke_width+0.5)*self._scale)
+        self.margins[1] = int(self._stroke_width*self._scale)
+        self.margins[2] = int((self._radius+self._stroke_width+0.5)*self._scale)
+        self.margins[3] = int(self._stroke_width*self._scale)
         return self._header() + svg
 
     def boolean_compare(self):
@@ -293,6 +301,10 @@ class SVG:
         svg += self._line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
         svg += self._end_boolean()
+        self.margins[0] = int((self._radius+self._stroke_width)*self._scale)
+        self.margins[1] = int(self._stroke_width*self._scale)
+        self.margins[2] = int(self._stroke_width*self._scale)
+        self.margins[3] = int(self._stroke_width*self._scale)
         return self._header() + svg
 
     def turtle(self, colors):
@@ -667,14 +679,11 @@ class SVG:
         self.docks.append((int((self._x+self._stroke_width)*self._scale),
                            int((self._y+self._innie_y2)*self._scale)))
         if self.margins[2] == 0:
-            self.margins[1] = int(self._y*self._scale)
+            self.margins[1] = int((self._y-self._innie_y1)*self._scale)
             self.margins[2] = int((self._x-self._innie_x1-self._innie_x2-\
                                   self._stroke_width*2)*self._scale)
-            print "resetting top and right to: %d, %d" % (self.margins[1],
-                                                          self.margins[2])
-        self.margins[3] = int((self._y+self._innie_y2)*self._scale)
-        print "setting bottom to %d" % int((self._y+self._innie_y2)*self._scale)
-        # print "x: %d (%d, %d)" % (self._x, self._innie_x1, self._innie_x2)
+        self.margins[3] =\
+            int((self._y+self._innie_y2+self._innie_y1)*self._scale)
         return "%s%s%s%s%s%s%s" % (
             self._rline_to(-self._innie_x1, 0),
             self._rline_to(0, -self._innie_y1),
@@ -730,6 +739,8 @@ class SVG:
         self.docks.append(
             (int((self._x-self._radius+self._stroke_width)*self._scale),
                            int((self._y+self._radius)*self._scale)))
+        self.margins[2] =\
+            int((self._x-self._radius-self._stroke_width)*self._scale)
         return self._rarc_to(-1, 1, 90, 0, 0) + self._rarc_to(1, 1, 90, 0, 0)
 
     def _end_boolean(self):
@@ -754,7 +765,12 @@ class SVG:
         self._height = (self._max_y-self._min_y+self._stroke_width)*\
                       self._scale
         if self.margins[3] == 0:
-            self.margins[3] = int((self._stroke_width+0.5)*self._scale)
+            if self._tab:
+                self.margins[3] =\
+                    int((self._slot_y+self._stroke_width+0.5)*self._scale)
+            else:
+                self.margins[3] =\
+                    int((self._slot_y*2+self._stroke_width+0.5)*self._scale)
         else:
             self.margins[3] = int(self._height - self.margins[3])
 

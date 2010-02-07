@@ -255,14 +255,10 @@ class Block:
             self._right = self.svg.margins[2]
         if self._bottom == 0:
             self._bottom = self.svg.margins[3]
-        print "margins for block %s: %d,%d %d,%d" % (self.name, self._left,
-            self._top, self._right, self._bottom)
-        # self.spr.set_margins(self._left, self.svg.get_slot_depth()*2,
-        #                      self._right,self.svg.get_slot_depth()*3)
         self.spr.set_margins(self._left, self._top, self._right, self._bottom)
 
     def _set_label_attributes(self):
-        if self.name in CONTENT_BLOCKS and len(self.values) > 0:
+        if self.name in CONTENT_BLOCKS:
             n = len(self.values)
         else:
             n = len(BLOCK_NAMES[self.name])
