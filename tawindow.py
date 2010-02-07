@@ -1246,14 +1246,14 @@ class TurtleArtWindow():
             pixbuf = get_pixbuf_from_journal(picture, THUMB_W, THUMB_H)
         else:
             print picture[-4:]
-            if movie_media_type(picture[-4:]):
+            if movie_media_type(picture):
                 blk.spr.set_image(self.media_shapes['journalon'], 1, MEDIA_X,
                                                                      MEDIA_Y)
-            elif audio_media_type(picture[-4:]):
+            elif audio_media_type(picture):
                 blk.spr.set_image(self.media_shapes['audioon'], 1, MEDIA_X,
                                                                    MEDIA_Y)
                 blk.name = 'audio'
-            elif image_media_type(picture[-4:]):
+            elif image_media_type(picture):
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(picture, THUMB_W,
                                                                        THUMB_H)
             else:
@@ -1406,7 +1406,12 @@ class TurtleArtWindow():
     """
     def _process_alphanumeric_input(self, keyname, keyunicode):
         if len(self.selected_blk.spr.labels[0]) > 0:
-            oldleft, oldright =  self.selected_blk.spr.labels[0].split(CURSOR)
+            if self.selected_blk.spr.labels[0].count(CURSOR) == -1:
+                oldleft = self.selected_blk.spr.labels[0]
+                oldright = ''
+            else:
+                oldleft, oldright =\
+                    self.selected_blk.spr.labels[0].rsplit(CURSOR)
         else:
             oldleft = ''
             oldright = ''
@@ -1626,10 +1631,10 @@ class TurtleArtWindow():
         if b[1] == 'turtle':
             self.load_turtle(b)
             return True
-        elif type(b[1]) == type([1,2]) and b[1][0] == 'turtle': 
+        elif type(b[1]) == list and b[1][0] == 'turtle': 
             self.load_turtle(b, b[1][1])
             return True
-        elif type(b[1]) == type((1,2)):
+        elif type(b[1]) == tuple:
             btype, key = b[1]
             if btype == 'turtle':
                 self.load_turtle(b, key)
@@ -1655,9 +1660,9 @@ class TurtleArtWindow():
         # A block is saved as: (i, (btype, value), x, y, (c0,... cn))
         # The x,y position is saved/loaded for backward compatibility
         btype, value = b[1], None
-        if type(btype) == type((1,2)): 
+        if type(btype) == tuple: 
             btype, value = btype
-        elif type(btype) == type([1,2]): 
+        elif type(btype) == list:
             btype, value = btype[0], btype[1]
         if btype in CONTENT_BLOCKS:
             if btype == 'number':
@@ -1836,9 +1841,13 @@ class TurtleArtWindow():
                                    _("xcor"), x, _("ycor"), y, _("heading"), h))
 
     def showlabel(self, shp, label=''):
+        print "showlabel: ", shp, label
         if shp == 'syntaxerror' and label != '':
-            shp = label[1:]
-            label = ''
+            if label == 'True' or label == 'False':
+                shp = 'status'
+            else:
+                shp = label[1:]
+                label = ''
         elif shp[0] == '#':
             shp = shp[1:]
             label = ''
