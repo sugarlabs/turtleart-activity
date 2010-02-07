@@ -1413,7 +1413,6 @@ class TurtleArtWindow():
                        'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift']:
             keyname = ''
             keyunicode = 0
-            print "saw a noise key: %s" % (keyname)
         # Hack until I sort out input and unicode and dead keys,
         if keyname[0:5] == 'dead_':
             self.dead_key = keyname
@@ -1421,7 +1420,6 @@ class TurtleArtWindow():
             keyunicode = 0
         if keyname in WHITE_SPACE:
             keyunicode = 32
-        print "preparing to process [%s:%s] (%s)" % (oldleft, oldright, keyname)
         if keyname == 'BackSpace':
             if len(oldleft) > 1:
                 newleft = oldleft[:len(oldleft)-1]
@@ -1458,11 +1456,6 @@ class TurtleArtWindow():
                     newleft = oldleft+unichr(keyunicode)
                 else:
                     newleft = oldleft
-            '''
-            else:
-                print "setting new left to ''"
-                newleft = ''
-                '''
         self.selected_blk.spr.set_label("%s%s%s" % \
                                         (newleft, CURSOR, oldright))
 

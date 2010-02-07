@@ -343,9 +343,8 @@ class Sprite:
                 max = w
         return max
 
-    def label_area_dimensions(self):
-        return((self._width-self._margins[0]-self._margins[2],
-                self._width-self._margins[1]-self._margins[3]))
+    def label_safe_width(self):
+        return self._width-self._margins[0]-self._margins[2]
     
     def get_pixel(self, pos, i=0):
         x, y = pos

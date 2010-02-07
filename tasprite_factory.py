@@ -71,8 +71,6 @@ class SVG:
 
     def basic_block(self):
         (x, y) = self._calculate_x_y()
-        self.margins[0] = int(x+2*self._stroke_width+0.5)
-        self.margins[1] = int(y+self._stroke_width+0.5+self._slot_y)
         self.margins[2] = 0
         self.margins[3] = 0
         svg = self._new_path(x, y)
@@ -668,7 +666,7 @@ class SVG:
         self.docks.append((int((self._x+self._stroke_width)*self._scale),
                            int((self._y+self._innie_y2)*self._scale)))
         if self.margins[2] == 0:
-            self.margins[1] = int((self._y+self._innie_y2)*self._scale)
+            self.margins[1] = int(self._y*self._scale)
             self.margins[2] = int((self._x-self._innie_x1-self._innie_x2-\
                                   self._stroke_width*2)*self._scale)
         self.margins[3] = int((self._y+self._innie_y2)*self._scale)
@@ -746,23 +744,31 @@ class SVG:
         self._width = (self._max_x-self._min_x+self._stroke_width)*\
                       self._scale
         if self.margins[2] == 0:
-            self.margins[2] = int(self._stroke_width*2+0.5)
+            self.margins[2] = int((self._stroke_width+0.5)*self._scale)
         else:
             self.margins[2] = int(self._width - self.margins[2])
-        if self.margins[3] == 0:
-            self.margins[3] = int(self._stroke_width*2+0.5)
-        else:
-            self.margins[3] = int(self._height - self.margins[3])
         self._height = (self._max_y-self._min_y+self._stroke_width)*\
                       self._scale
+        if self.margins[3] == 0:
+            self.margins[3] = int((self._stroke_width+0.5)*self._scale)
+        else:
+            self.margins[3] = int(self._height - self.margins[3])
 
     def _calculate_x_y(self):
         x = self._stroke_width/2.0
         y = self._stroke_width/2.0+self._radius
+        self.margins[0] = int(x+self._stroke_width+0.5)
+        self.margins[1] = int(self._stroke_width+0.5)
         if self._outie is True:
             x += self._innie_x1+self._innie_x2
+            self.margins[0] += self._innie_x1+self._innie_x2
         if self._cap is True:
             y += self._slot_y*2.0
+            self.margins[1] += self._slot_y*2.0
+        elif self._slot is True:
+            self.margins[1] += self._slot_y
+        self.margins[0] *= self._scale
+        self.margins[1] *= self._scale
         return(x, y)
 
 #
