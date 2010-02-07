@@ -80,30 +80,44 @@ def taequal(x, y):
     try:
         return float(x)==float(y)
     except:
+        typex, typey = False, False
         if type(x) == str or type(x) == unicode:
-            xx = ord(x[0])
+            typex = True
+        if type(y) == str or type(y) == unicode:
+            typey = True
+        if typex and typey:
+            return x == y
+        if typex and len(x) == 1:
+           xx = ord(x[0])
         else:
             xx = x
-        if type(y) == str or type(y) == unicode:
+        if typey and len(y) == 1:
             yy = ord(y[0])
         else:
             yy = y
         return xx==yy
-    
+
 def taless(x, y):
     try:
         return float(x)<float(y)
     except:
+        typex, typey = False, False
         if type(x) == str or type(x) == unicode:
-            xx = ord(x[0])
+            typex = True
+        if type(y) == str or type(y) == unicode:
+            typey = True
+        if typex and typey:
+            return x < y
+        if typex and len(x) == 1:
+           xx = ord(x[0])
         else:
             xx = x
-        if type(y) == str or type(y) == unicode:
+        if typey and len(y) == 1:
             yy = ord(y[0])
         else:
             yy = y
         return xx<yy
-    
+
 def tamore(x, y):
     return taless(y, x)
 
@@ -875,7 +889,7 @@ class LogoCode:
                     dsobject = datastore.get(media[6:])
                 except:
                     print "Couldn't open Journal object %s" % (media[6:])
-                if movie_media_type(dsobject.file_path[-4:]):
+                if movie_media_type(dsobject.file_path):
                     play_movie_from_file(self,
                         dsobject.file_path, int(x), int(y), int(w), int(h))
                 else:
@@ -883,7 +897,7 @@ class LogoCode:
                 dsobject.destroy()
             else:
                 try:
-                    if movie_media_type(media[-4:]):
+                    if movie_media_type(media):
                         play_movie_from_file(self, media[6:], int(x), int(y),
                                                               int(w), int(h))
                     else:
