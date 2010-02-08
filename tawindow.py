@@ -1130,7 +1130,7 @@ class TurtleArtWindow():
                 blk.expand_in_x(dx)
             for b in group:
                 b.spr.move_relative((dx*blk.scale, 0))
-        elif blk.name=='list':
+        elif blk.name=='templatelist':
             n = len(blk.connections)
             group = self._find_group(blk.connections[n-1])
             dy = blk.add_arg()
