@@ -68,7 +68,16 @@ class logoerror(Exception):
 Utility functions
 """
 
-def careful_divide(x,y):
+def char_to_ord(x, y):
+    xx = x
+    yy = y
+    if type(x) == str or type(x) == unicode and len(x) == 1:
+        xx = ord(x[0])
+    if type(y) == str or type(y) == unicode and len(y) == 1:
+        yy = ord(y[0])
+    return xx, yy
+
+def careful_divide(x, y):
     try:
         if y==0:
             return 0
@@ -87,14 +96,7 @@ def taequal(x, y):
             typey = True
         if typex and typey:
             return x == y
-        if typex and len(x) == 1:
-           xx = ord(x[0])
-        else:
-            xx = x
-        if typey and len(y) == 1:
-            yy = ord(y[0])
-        else:
-            yy = y
+        xx, yy = char_to_ord(x, y)
         return xx==yy
 
 def taless(x, y):
@@ -108,14 +110,7 @@ def taless(x, y):
             typey = True
         if typex and typey:
             return x < y
-        if typex and len(x) == 1:
-           xx = ord(x[0])
-        else:
-            xx = x
-        if typey and len(y) == 1:
-            yy = ord(y[0])
-        else:
-            yy = y
+        xx, yy = char_to_ord(x, y)
         return xx<yy
 
 def tamore(x, y):
@@ -129,32 +124,60 @@ def taplus(x, y):
         return(str(x) + str(y))
     
 def taminus(x, y):
-    try:
+    if (type(x) == int or type(x) == float) and \
+        (type(y) == int or type(y) == float):
         return(x-y)
+    try:
+        xx, yy = char_to_ord(x, y)
+        return xx-yy
     except:
         raise logoerror("#syntaxerror")
     
 def taproduct(x, y):
-    try:
+    if (type(x) == int or type(x) == float) and \
+        (type(y) == int or type(y) == float):
         return(x*y)
+    try:
+        xx, yy = char_to_ord(x, y)
+        return xx*yy
     except:
         raise logoerror("#syntaxerror")
-    
+
 def tamod(x, y):
+    if (type(x) == int or type(x) == float) and \
+        (type(y) == int or type(y) == float):
+        return(x%y)
     try:
+        xx, yy = char_to_ord(x, y)
         return(x%y)
     except:
         raise logoerror("#syntaxerror")
     
 def tasqrt(x):
-    try:
+    if (type(x) == int or type(x) == float):
         return sqrt(x)
+    try:
+        xx, yy = char_to_ord(x, 0)
+        return sqrt(xx)
     except:
         raise logoerror("#syntaxerror")
-    
+
+def tarandom(x, y):
+    if (type(x) == int or type(x) == float) and \
+        (type(y) == int or type(y) == float):
+        return(int(uniform(x,y)))
+    try:
+        xx, yy = char_to_ord(x, y)
+        if ((type(x) == str or type(x) == unicode) and len(x) == 1) and\
+           ((type(y) == str or type(y) == unicode) and len(y) == 1):
+            return chr(int(uniform(xx,yy)))
+        else:
+            return(int(uniform(xx,yy)))
+    except:
+        raise logoerror("#syntaxerror")
+
 def identity(x):
     return(x)
-
     
 """
 Stop_logo is called from the Stop button on the toolbar
@@ -241,7 +264,7 @@ class LogoCode:
         'product':[2, lambda self,x,y: taproduct(x,y)],
         'purple':[0, lambda self: 90],
         'push':[1, lambda self,x: self.prim_push(x)],
-        'random':[2, lambda self,x,y: int(uniform(x,y))],
+        'random':[2, lambda self,x,y: tarandom(x,y)],
         'red':[0, lambda self: 0],
         'repeat':[2, self.prim_repeat, True],
         'right':[1, lambda self, x: self.tw.canvas.right(x)],
