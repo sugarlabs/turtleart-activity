@@ -359,7 +359,7 @@ class Block:
         self.svg.set_slot(False)
         self.svg.set_cap(True)
         self._make_basic_block(svg)
-        self.docks = [['start', True, 0, 0],
+        self.docks = [['unavailable', False, 0, 0],
                       ['flow', False, self.svg.docks[0][0],
                                       self.svg.docks[0][1]]]
 
@@ -369,7 +369,7 @@ class Block:
         self.svg.set_slot(False)
         self.svg.set_cap(True)
         self._make_basic_block(svg)
-        self.docks = [['start', True, 0, 0],
+        self.docks = [['unavailable', False, 0, 0],
                       ['string', False, self.svg.docks[0][0],
                                         self.svg.docks[0][1]],
                       ['flow', False, self.svg.docks[1][0],
