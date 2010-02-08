@@ -214,6 +214,7 @@ class LogoCode:
         'back':[1, lambda self,x: self.tw.canvas.forward(-x)],
         'blue':[0, lambda self: 70],
         'bpos':[0, lambda self: -self.tw.canvas.height/(self.tw.coord_scale*2)],
+        'boty':[0, lambda self: self.tw.bottomy],
         'box1':[0, lambda self: self.boxes['box1']],
         'box':[1, lambda self,x: self.box(x)],
         'box2':[0, lambda self: self.boxes['box2']],
@@ -242,6 +243,7 @@ class LogoCode:
         'kbinput':[0, lambda self: self.prim_kbinput()],
         'keyboard':[0, lambda self: self.keyboard],
         'left':[1, lambda self,x: self.tw.canvas.right(-x)],
+        'leftx':[0, lambda self: self.tw.leftx],
         'lpos':[0, lambda self: -self.tw.canvas.width/(self.tw.coord_scale*2)],
         'less?':[2, lambda self,x,y: taless(x,y)],
         'minus':[2, lambda self,x,y: taminus(x,y)],
@@ -268,6 +270,7 @@ class LogoCode:
         'red':[0, lambda self: 0],
         'repeat':[2, self.prim_repeat, True],
         'right':[1, lambda self, x: self.tw.canvas.right(x)],
+        'rightx':[0, lambda self: self.tw.rightx],
         'rpos':[0, lambda self: self.tw.canvas.width/(self.tw.coord_scale*2)],
         'scale':[0, lambda self: self.scale],
         'setcolor':[1, lambda self, x: self.tw.canvas.setcolor(x)],
@@ -298,6 +301,9 @@ class LogoCode:
         't2x2':[5, lambda self,x,y,z,a,b: self.show_template2x2(x, y, z, a, b)],
         'textcolor':[0, lambda self: self.tw.canvas.textcolor],
         'textsize':[0, lambda self: self.tw.textsize],
+        'titlex':[0, lambda self: self.tw.titlex],
+        'titley':[0, lambda self: self.tw.titley],
+        'topy':[0, lambda self: self.tw.topy],
         'tpos':[0, lambda self: self.tw.canvas.height/(self.tw.coord_scale*2)],
         'turtle':[1, lambda self, x: self.tw.canvas.set_turtle(x)],
         'userdefined':[1, lambda self,x: self.prim_myblock(x)],
@@ -517,9 +523,11 @@ class LogoCode:
             if type(token) == tuple:
                 (token, btoken) = self.iline[0]
 
+            if self.tw.hide is False\
+               and btoken is not None and type(btoken) is int:
+                self.tw.block_list.list[btoken].highlight()
+
             if self.tw.step_time > 0:
-                if btoken is not None and type(btoken) is int:
-                    self.tw.block_list.list[btoken].highlight()
                 self.tw.active_turtle.show()
                 endtime = millis()+self.an_int(self.tw.step_time)*100
                 while millis()<endtime:
@@ -533,9 +541,9 @@ class LogoCode:
             self.icall(self.eval)
             yield True
 
-            if self.tw.step_time > 0:
-                if btoken is not None and type(btoken) is int:
-                    self.tw.block_list.list[btoken].unhighlight()
+            if self.tw.hide is False\
+               and btoken is not None and type(btoken) is int:
+                self.tw.block_list.list[btoken].unhighlight()
 
             if self.procstop:
                 break
@@ -543,11 +551,12 @@ class LogoCode:
                 continue
 
             if btoken is not None and type(btoken) is int:
-                    self.tw.block_list.list[btoken].highlight()
+                self.tw.block_list.list[btoken].highlight()
             raise logoerror(str(self.iresult))
         self.iline = oldiline
         self.ireturn()
-        self.tw.display_coordinates()
+        if self.tw.hide is False:
+            self.tw.display_coordinates()
         yield True
     
     """
@@ -559,11 +568,11 @@ class LogoCode:
         if type(token) == tuple:
             (token, btoken) = token
         if type(token) == self.symtype:
-            if btoken is not None:
+            if self.tw.hide is False and btoken is not None:
                 self.tw.block_list.list[btoken].highlight()
             self.icall(self.evalsym, token)
             yield True
-            if btoken is not None:
+            if self.tw.hide is False and btoken is not None:
                 self.tw.block_list.list[btoken].unhighlight()
             res = self.iresult
         else:
