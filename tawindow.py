@@ -1208,6 +1208,8 @@ class TurtleArtWindow():
                     best_your_dockn = your_dockn
                     best_my_dockn = my_dockn
         if d<200:
+            if self._arithmetic_check(my_block, best_you) is False:
+                return
             for blk in self.drag_group:
                 (sx, sy) = blk.spr.get_xy()
                 blk.spr.move((sx+best_xy[0], sy+best_xy[1]))
@@ -1218,6 +1220,25 @@ class TurtleArtWindow():
             best_you.connections[best_your_dockn] = my_block
             if my_block.connections is not None:
                 my_block.connections[best_my_dockn] = best_you
+
+    """
+    Additional docking check for arithmetic blocks
+    """
+    def _arithmetic_check(self, b1, b2):
+        if b1 == None or b2 == None:
+            return True
+        if b1.name in ['sqrt', 'number'] and b2.name in ['sqrt', 'number']:
+            if b1.name == 'number' and float(b1.values[0]) < 0:
+                return False
+            elif b2.name == 'number' and float(b2.values[0]) < 0:
+                return False
+        elif b1.name in ['division2', 'number'] and\
+             b2.name in ['division2', 'number']:
+            if b1.name == 'number' and float(b1.values[0]) == 0:
+                return False
+            elif b2.name == 'number' and float(b2.values[0]) == 0:
+                return False
+        return True
 
     """
     Import a file from the Sugar Journal
@@ -1860,19 +1881,19 @@ class TurtleArtWindow():
                                    _("xcor"), x, _("ycor"), y, _("heading"), h))
 
     def showlabel(self, shp, label=''):
-        if shp == 'syntaxerror' and label != '':
-            if label == 'True' or label == 'False':
-                shp = 'status'
-            else:
-                shp = label[1:]
+        if shp == 'syntaxerror' and str(label) != '':
+            if self.status_shapes.has_key(str(label)[1:]):
+                shp = str(label)[1:]
                 label = ''
+            else:
+                shp = 'status'
         elif shp[0] == '#':
             shp = shp[1:]
             label = ''
         if shp=='notanumber':
             shp = 'overflowerror'
         self.status_spr.set_shape(self.status_shapes[shp])
-        self.status_spr.set_label(label)
+        self.status_spr.set_label(str(label))
         self.status_spr.set_layer(STATUS_LAYER)
         if shp == 'info':
             self.status_spr.move((PALETTE_WIDTH, self.height-300))
