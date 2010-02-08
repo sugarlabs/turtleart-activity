@@ -109,7 +109,8 @@ PALETTE_NAMES = ['turtle', 'pen', 'colors', 'numbers', 'flow', 'blocks',
 
 PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show', 
              'seth', 'setxy', 'heading', 'xcor', 'ycor', 'setscale',
-              'arc', 'scale'],
+             'arc', 'scale', 'width', 'height', 'leftpos', 'toppos', 'rightpos',
+             'bottompos'],
             ['penup','pendown', 'setpensize', 'fillscreen', 'pensize',
              'settextsize', 'setcolor', 'setshade', 'textsize', 'color',
              'shade'],
@@ -123,10 +124,9 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
              'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2', 'box',
              'storein', 'start'],
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
-             'myfunc',  'nop', 'leftpos', 'toppos', 'width', 'rightpos',
-             'bottompos', 'height', 'addturtle', 'print'],
+             'myfunc',  'nop', 'addturtle', 'print'],
             ['journal', 'audio', 'description', 'templatelist', 'template1x1a',
-             'template2x2', 'hideblocks', 'showblocks'],
+             'template2x2', 'hideblocks', 'showblocks', 'fullscreen'],
             ['empty', 'restoreall']]
 
 #
@@ -225,7 +225,7 @@ EXPANDABLE = ['vspace', 'hspace', 'templatelist', 'identity2']
 #
 # Old block styles that need dock adjustments
 #
-OLD_DOCK = ['and', 'or']
+OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
 
 #
 # blocks that contain media
@@ -256,6 +256,7 @@ BLOCK_NAMES = {
     'fillscreen':[_('fill screen'),_('color'),_('shade')],
     'forever':[_('forever')],
     'forward':[_('forward')],
+    'fullscreen':[_('full screen')],
     'greater2':[">"],
     'green':[_('green')],
     'hat':[_('action')],
@@ -359,6 +360,7 @@ PRIMITIVES = {
     'fillscreen':'fillscreen',
     'forever':'forever',
     'forward':'forward',
+    'fullscreen':'fullscreen',
     'greater2':'greater?',
     'green':'green',
     'hat':'nop3',
@@ -511,11 +513,11 @@ STATUS_SHAPES = ['status', 'info', 'nostack', 'noinput', 'emptyheap',
 #
 # Legacy names
 #
-OLD_NAMES = {'product':'product2', 'storeinbox':'storein',
+OLD_NAMES = {'product':'product2', 'storeinbox':'storein', 'minus':'minus2',
              'division':'division2', 'plus':'plus2', 'and':'and2', 'or':'or2',
              'less':'less2', 'greater':'greater2', 'equal':'equal2',
              'remainder':'remainder2', 'identity':'identity2',
-             'division':'division2', 'if else':'if', 'audiooff':'audio',
+             'division':'division2', 'audiooff':'audio',
              'descriptionoff':'description','template3':'templatelist',
              'template1':'template1x1', 'template2':'template2x1',
              'template6':'template1x2', 'template7':'template2x2', 
@@ -583,13 +585,14 @@ HELP_STRINGS = {
     'colors':_("a palette of pen colors"),
     'description':_("Sugar Journal description field"),
     'division2':_("divides top numeric input (numerator) by bottom numeric input (denominator)"),
-    'empty':_('permanently deletes items in trash'),
+    'empty':_("permanently deletes items in trash"),
     'equal2':_("logical equal-to operator"),
     'extras':_("palette of extra options"),
     'fillscreen':_("fills the background with (color, shade)"),
     'flow':_("palette of flow operators"),
     'forever':_("loop forever"),
     'forward':_("move turtle forward"),
+    'fullscreen':_("hide the Sugar toolbars"),
     'greater2':_("logical greater-than operator"),
     'hat1':_("top of action 1 stack"),
     'hat2':_("top of action 2 stack"),

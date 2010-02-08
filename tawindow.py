@@ -269,6 +269,14 @@ class TurtleArtWindow():
         self.nop = 'pythonloaded'
 
     """
+    Enter fulscreen mode
+    """
+    def set_fullscreen(self):
+        if self.running_sugar:
+            self.activity.fullscreen()
+            self.activity.recenter()
+
+    """
     Hide/show button
     """
     def hideshow_button(self):

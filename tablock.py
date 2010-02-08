@@ -353,7 +353,6 @@ class Block:
         self._make_basic_block(svg)
         self.docks = [['flow',True,self.svg.docks[0][0],self.svg.docks[0][1]],
                       ['flow',False,self.svg.docks[1][0],self.svg.docks[1][1]]]
-        # self._left, self._right = 2, 2
 
     def _make_basic_style_head(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -363,7 +362,6 @@ class Block:
         self.docks = [['start', True, 0, 0],
                       ['flow', False, self.svg.docks[0][0],
                                       self.svg.docks[0][1]]]
-        # self._left, self._right = 2, 2
 
     def _make_basic_style_head_1arg(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -376,7 +374,6 @@ class Block:
                                         self.svg.docks[0][1]],
                       ['flow', False, self.svg.docks[1][0],
                                       self.svg.docks[1][1]]]
-        # self._left, self._right = 2, self.svg.get_innie_width()*1.5
 
     def _make_basic_style_tail(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -396,7 +393,6 @@ class Block:
                                         self.svg.docks[1][1]],
                       ['flow', False, self.svg.docks[2][0],
                                       self.svg.docks[2][1]]]
-        # self._left, self._right = 2, self.svg.get_innie_width()*1.5
 
     def _make_basic_style_2arg(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -410,7 +406,6 @@ class Block:
                                         self.svg.docks[2][1]],
                       ['flow', False, self.svg.docks[3][0],
                                       self.svg.docks[3][1]]]
-        # self._left, self._right = 2, self.svg.get_innie_width()*1.5
 
     def _make_basic_style_var_arg(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -430,7 +425,6 @@ class Block:
                                                 self.svg.docks[i+3][1]])
         self.docks.append(['flow', False, self.svg.docks[self._ei+3][0],
                                       self.svg.docks[self._ei+3][1], ']'])
-        # self._left, self._right = 2, self.svg.get_innie_width()*1.5
 
     def _make_box_style(self, svg):
         self.svg.expand(60+self._dx+self._ex, self._ey)
@@ -438,7 +432,6 @@ class Block:
         self.docks = [['number', True, self.svg.docks[0][0],
                                        self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
-        # self._left, self._right = self.svg.docks[1][0], 1
 
     def _make_media_style(self, svg):
         self.svg.expand(40+self._dx+self._ex, 10+self._ey)
@@ -446,7 +439,6 @@ class Block:
         self.docks = [['number', True, self.svg.docks[0][0],
                                        self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
-        # self._left, self._right = self.svg.docks[1][0], 1
 
     def _make_number_style(self, svg):
         self.svg.expand(self._dx+self._ex, self._ey)
@@ -465,8 +457,6 @@ class Block:
                                         self.svg.docks[0][1]],
                       ['number', False, self.svg.docks[1][0],
                                         self.svg.docks[1][1]]] 
-        # self._left = self.svg.docks[2][0]
-        # self._right = self.svg.get_innie_width()*1.5
 
     def _make_number_style_block(self, svg):
         self.svg.expand(self._dx+self._ex, self._ey)
@@ -482,8 +472,6 @@ class Block:
                       ['number', False, self.svg.docks[1][0],
                                         self.svg.docks[1][1]],
                       ['unavailable', False, 0, 0, ')']]
-        # self._left = self.svg.docks[2][0]
-        # self._right = self.svg.get_innie_width()*1.5
 
     def _make_number_style_1arg(self, svg):
         self.svg.expand(self._dx+self._ex, self._ey)
@@ -496,7 +484,6 @@ class Block:
                                        self.svg.docks[1][1]],
                       ['number', False, self.svg.docks[0][0],
                                         self.svg.docks[0][1]]]
-        # self._left, self._right = self.svg.docks[1][0], self.svg.docks[1][0]
 
     def _make_number_style_1strarg(self, svg):
         self.svg.expand(self._dx+self._ex, self._ey)
@@ -510,7 +497,6 @@ class Block:
                       ['string', False, self.svg.docks[0][0],
                                         self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
-        # self._left, self._right = self.svg.docks[1][0], self.svg.docks[1][0]
 
     def _make_number_style_porch(self, svg):
         self.svg.expand(self._dx+self._ex, self._ey)
@@ -526,8 +512,6 @@ class Block:
                                         self.svg.docks[0][1]],
                       ['number', False, self.svg.docks[1][0],
                                         self.svg.docks[1][1]]] 
-        # self._left = self.svg.docks[2][0]
-        # self._right = self.svg.get_width()-self.svg.docks[0][0]
 
     def _make_compare_style(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -539,7 +523,6 @@ class Block:
                       ['number', False, self.svg.docks[2][0],
                                         self.svg.docks[2][1]],
                       ['unavailable', False, 0, 0, ')']]
-        self._left, self._right = self.svg.get_width()-self.svg.docks[2][0], 0
 
     def _make_boolean_style(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -550,7 +533,6 @@ class Block:
                                       self.svg.docks[1][1]],
                       ['bool', False, self.svg.docks[2][0],
                                       self.svg.docks[2][1]]]
-        self._left, self._right = self.svg.get_width()-self.svg.docks[1][0], 0
  
     def _make_not_style(self, svg):
         self.svg.expand(15+self._dx+self._ex, self._ey)
@@ -559,8 +541,6 @@ class Block:
                                      self.svg.docks[0][1]],
                       ['bool', False, self.svg.docks[1][0],
                                       self.svg.docks[1][1]]]
-        self._right = self.svg.get_width()-self.svg.docks[1][0]
-        self._left = self._right
 
     def _make_flow_style(self, svg):
         self.svg.expand(10+self._dx+self._ex, self._ey)
@@ -579,7 +559,6 @@ class Block:
                                          self.svg.docks[0][1]],
                           ['flow', False, self.svg.docks[1][0],
                                           self.svg.docks[1][1]]]
-        # self._left, self._right = 0, self.svg.get_width()-self.svg.docks[1][0]
 
     def _make_flow_style_1arg(self, svg):
         self.svg.expand(self._dx+self._ex, self._ey)
@@ -595,9 +574,6 @@ class Block:
                                       self.svg.docks[2][1], '['],
                       ['flow', False, self.svg.docks[3][0],
                                       self.svg.docks[3][1], ']']]
-        # self._left = 2
-        # self._right = self.svg.get_width()-self.svg.docks[1][0]+ \
-        #              self.svg.get_innie_width()*1.5
 
     def _make_flow_style_boolean(self, svg):
         self.svg.expand(self._dx+self._ex, self._ey)
@@ -613,7 +589,6 @@ class Block:
                                       self.svg.docks[2][1], '['],
                       ['flow', False, self.svg.docks[3][0],
                                       self.svg.docks[3][1], ']']]
-        # self._left, self._right = 2, self.svg.get_width()-self.svg.docks[1][0]
 
     def _make_flow_style_else(self, svg):
         self.svg.expand(self._dx+self._ex, self._ey)
@@ -632,7 +607,6 @@ class Block:
                                       self.svg.docks[2][1], ']['],
                       ['flow', False, self.svg.docks[4][0],
                                       self.svg.docks[4][1], ']']]
-        # self._left, self._right = 2, self.svg.get_width()-self.svg.docks[1][0]
 
     def _make_portfolio_style_2x2(self, svg):
         self.svg.expand(30+self._dx+self._ex, 10+self._ey)
@@ -654,7 +628,6 @@ class Block:
                                       self.svg.docks[2][1]],
                       ['flow', False, self.svg.docks[3][0],
                                       self.svg.docks[3][1]]]
-        # self._left, self._right = 2, self.svg.get_width()-2
 
     def _make_portfolio_style_2x1(self, svg):
         self.svg.expand(30+self._dx+self._ex, 10+self._ey)
@@ -672,7 +645,6 @@ class Block:
                                       self.svg.docks[1][1]],
                       ['flow', False, self.svg.docks[2][0],
                                       self.svg.docks[2][1]]]
-        # self._left, self._right = 2, self.svg.get_width()-2
 
     def _make_portfolio_style_1x2(self, svg):
         self.svg.expand(30+self._dx+self._ex, 15+self._ey)
@@ -691,7 +663,6 @@ class Block:
                                       self.svg.docks[2][1]],
                       ['flow', False, self.svg.docks[1][0],
                                       self.svg.docks[1][1]]]
-        # self._left, self._right = 2, self.svg.get_width()-2
 
     def _make_portfolio_style_1x1(self, svg):
         self.svg.expand(30+self._dx+self._ex, 15+self._ey)
@@ -708,7 +679,6 @@ class Block:
                                       self.svg.docks[2][1]],
                       ['flow', False, self.svg.docks[1][0],
                                       self.svg.docks[1][1]]]
-        # self._left, self._right = 2,  self.svg.get_width()-2
 
     def _make_basic_block(self, svg):
         self.shapes.append(svg_str_to_pixbuf(self.svg.basic_block()))

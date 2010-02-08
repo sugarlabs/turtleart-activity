@@ -206,6 +206,7 @@ class LogoCode:
         'fillscreen':[2, lambda self, x, y: self.tw.canvas.fillscreen(x, y)],
         'forever':[1, self.prim_forever, True],
         'forward':[1, lambda self, x: self.tw.canvas.forward(x)],
+        'fullscreen':[0, lambda self: self.tw.set_fullscreen()],
         'greater?':[2, lambda self,x,y: tamore(x,y)],
         'green':[0, lambda self: 30],
         'heading':[0, lambda self: self.tw.canvas.heading],
