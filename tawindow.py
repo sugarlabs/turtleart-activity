@@ -1083,7 +1083,7 @@ class TurtleArtWindow():
         if self.block_operation=='new':
             for b in self.drag_group:
                 (bx, by) = b.spr.get_xy()
-                b.spr.move((bx+200, by))
+                b.spr.move((bx+200, by+120))
 
         # Look to see if we can dock the current stack.
         self._snap_to_dock()
@@ -1108,11 +1108,11 @@ class TurtleArtWindow():
             blk.spr.labels[0] += CURSOR
         elif blk.name in BOX_STYLE_MEDIA:
             self._import_from_journal(self.selected_blk)
-        elif blk.name=='identity2':
+        elif blk.name=='identity2' or blk.name=='hspace':
             group = self._find_group(blk)
             if self._hide_button_hit(blk.spr, x, y):
                 dx = blk.reset_x()
-            else:
+            elif self._show_button_hit(blk.spr, x, y):
                 dx = 20
                 blk.expand_in_x(dx)
             for b in group:
@@ -1122,40 +1122,34 @@ class TurtleArtWindow():
             group = self._find_group(blk)
             if self._hide_button_hit(blk.spr, x, y):
                 dy = blk.reset_y()
-            else:
+            elif self._show_button_hit(blk.spr, x, y):
                 dy = 20
                 blk.expand_in_y(dy)
             for b in group:
                 if b != blk:
                     b.spr.move_relative((0, dy*blk.scale))
-        elif blk.name=='hspace':
-            group = self._find_group(blk.connections[1])
-            if self._hide_button_hit(blk.spr, x, y):
-                dx = blk.reset_x()
+        elif blk.name in EXPANDABLE:
+            if self._show_button_hit(blk.spr, x, y):
+                n = len(blk.connections)
+                group = self._find_group(blk.connections[n-1])
+                dy = blk.add_arg()
+                for b in group:
+                    b.spr.move_relative((0, dy))
+                blk.connections.append(blk.connections[n-1])
+                argname = blk.docks[n-1][0]
+                argvalue = DEFAULTS[blk.name][len(DEFAULTS[blk.name])-1]
+                argblk = Block(self.block_list, self.sprite_list, argname,
+                               0, 0, 'block', [argvalue])
+                argdock = argblk.docks[0]
+                (bx, by) = blk.spr.get_xy()
+                nx = bx+blk.docks[n-1][2]-argdock[2]
+                ny = by+blk.docks[n-1][3]-argdock[3]
+                argblk.spr.move((nx, ny))
+                argblk.spr.set_layer(TOP_LAYER)
+                argblk.connections = [blk, None]
+                blk.connections[n-1] = argblk
             else:
-                dx = 20
-                blk.expand_in_x(dx)
-            for b in group:
-                b.spr.move_relative((dx*blk.scale, 0))
-        elif blk.name=='templatelist':
-            n = len(blk.connections)
-            group = self._find_group(blk.connections[n-1])
-            dy = blk.add_arg()
-            for b in group:
-                b.spr.move_relative((0, dy))
-            blk.connections.append(blk.connections[n-1])
-            argname = blk.docks[n-1][0]
-            argvalue = DEFAULTS[blk.name][len(DEFAULTS[blk.name])-1]
-            argblk = Block(self.block_list, self.sprite_list, argname,
-                           0, 0, 'block', [argvalue])
-            argdock = argblk.docks[0]
-            (bx, by) = blk.spr.get_xy()
-            nx = bx+blk.docks[n-1][2]-argdock[2]
-            ny = by+blk.docks[n-1][3]-argdock[3]
-            argblk.spr.move((nx, ny))
-            argblk.spr.set_layer(TOP_LAYER)
-            argblk.connections = [blk, None]
-            blk.connections[n-1] = argblk
+                self._run_stack(blk)
         elif blk.name=='nop' and self.myblock==None:
             self._import_py()
         else:
@@ -1187,10 +1181,10 @@ class TurtleArtWindow():
     """
     def _show_button_hit(self, spr, x, y):
         r,g,b,a = spr.get_pixel((x, y))
-        if (r == 255 and g == 0) or g == 255:
-            return False
-        else:
+        if g == 254:
             return True
+        else:
+            return False
 
     """
     Snap a block to the dock of another block.
@@ -1755,7 +1749,7 @@ class TurtleArtWindow():
             elif btype == 'hspace' or btype == 'identity2':
                 if value is not None:
                     blk.expand_in_x(value)
-            elif btype == 'templatelist':
+            elif btype == 'templatelist' or btype == 'list':
                 for i in range(len(b[4])-4):
                     dy = blk.add_arg()
         elif btype in BOX_STYLE_MEDIA and len(blk.values)>0:
@@ -1881,7 +1875,7 @@ class TurtleArtWindow():
         return data
 
     """
-    Display the coordinates of the current turtle
+    Display the coordinates of the current turtle on the toolbar
     """
     def display_coordinates(self):
         x = round_int(self.canvas.xcor/self.coord_scale)
@@ -1895,6 +1889,9 @@ class TurtleArtWindow():
             self.win.set_title("%s — %s: %d %s: %d %s: %d" % (_("Turtle Art"),
                                    _("xcor"), x, _("ycor"), y, _("heading"), h))
 
+    """
+    Display a message on a status block
+    """
     def showlabel(self, shp, label=''):
         if shp == 'syntaxerror' and str(label) != '':
             if self.status_shapes.has_key(str(label)[1:]):
@@ -1916,7 +1913,7 @@ class TurtleArtWindow():
             self.status_spr.move((PALETTE_WIDTH, self.height-200))
 
     """
-    Relative placement of portfolio objects
+    Relative placement of portfolio objects (used by depreciated blocks)
     """
     def calc_position(self, t):
         w,h,x,y,dx,dy = TEMPLATES[t]
