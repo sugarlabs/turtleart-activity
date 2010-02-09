@@ -219,9 +219,11 @@ class LogoCode:
         'box':[1, lambda self,x: self.box(x)],
         'box2':[0, lambda self: self.boxes['box2']],
         'bullet':[2, self.prim_bullet, True],
+        'bulletlist':[1, self.prim_list, True],
         'clean':[0, lambda self: self.prim_clear()],
         'clearheap':[0, lambda self: self.empty_heap()],
         'color':[0, lambda self: self.tw.canvas.color],
+        'comment':[1, lambda self,x: self.prim_print(x, True)],
         'container':[1, lambda self,x: x],
         'cyan':[0, lambda self: 50],
         'define':[2, self.prim_define],
@@ -261,7 +263,7 @@ class LogoCode:
         'penup':[0, lambda self: self.tw.canvas.setpen(False)],
         'plus':[2, lambda self,x,y: taplus(x,y)],
         'pop':[0, lambda self: self.prim_pop()],
-        'print':[1, lambda self,x: self.prim_print(x)],
+        'print':[1, lambda self,x: self.prim_print(x, False)],
         'printheap':[0, lambda self: self.prim_print_heap()],
         'product':[2, lambda self,x,y: taproduct(x,y)],
         'purple':[0, lambda self: 90],
@@ -760,6 +762,11 @@ class LogoCode:
         self.ireturn()
         yield True
 
+    def prim_list(self, list):
+        self.show_list(list)
+        self.ireturn()
+        yield True
+
     def prim_forever(self, list):
         while True:
             self.icall(self.evline, list[:])
@@ -863,7 +870,9 @@ class LogoCode:
         else:
             return y
     
-    def prim_print(self, n):
+    def prim_print(self, n, flag):
+        if flag and self.tw.hide:
+            return
         if type(n) == str or type(n) == unicode:
             if n[0:6] == 'media_':
                 try:
@@ -913,9 +922,55 @@ class LogoCode:
     def save_picture(self, name):
         self.tw.save_as_image(name)
 
-    """
-    Everything below is related to multimedia commands
-    """
+    def show_list(self, sarray):
+        x = self.tw.canvas.xcor/self.tw.coord_scale
+        y = self.tw.canvas.ycor/self.tw.coord_scale
+        for s in sarray:
+            self.tw.canvas.setxy(x, y)
+            self.show(s)
+            y -= int(self.bullet_height*2*self.tw.lead)
+
+    def set_scale(self, x):
+        self.scale = x
+
+    # need to fix export logo to map show to write
+    def show(self, string, center=False):
+        # convert from Turtle coordinates to screen coordinates
+        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
+        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
+        if type(string) == str or type(string) == unicode:
+            if string == "media_None":
+                pass
+            elif string[0:6] == 'media_':
+                self.insert_image(string, center)
+            elif string[0:6] == 'descr_':
+                self.insert_desc(string)
+            elif string[0:6] == 'audio_':
+                self.play_sound(string)
+            else:
+                if center is True:
+                    y -= self.tw.textsize
+                self.tw.canvas.draw_text(string,x,y,self.tw.textsize,
+                          self.tw.canvas.width-x)
+        elif type(string) == float or type(string) == int:
+            string = round_int(string)
+            if center is True:
+                y -= self.tw.textsize
+            self.tw.canvas.draw_text(string, x, y, self.tw.textsize,
+                                     self.tw.canvas.width-x)
+    
+    def play_sound(self, audio):
+        if audio == "" or audio[6:] == "":
+            raise logoerror("#nomedia")
+        if self.tw.running_sugar:
+            if audio[6:] != "None":
+                try:
+                    dsobject = datastore.get(audio[6:])
+                    play_audio(self, dsobject.file_path)
+                except:
+                    print "Couldn't open id: " + str(audio[6:])
+        else:
+            play_audio(self, audio[6:])
 
     def show_picture(self, media, x, y, w, h):
         if media == "" or media[6:] == "":
@@ -976,7 +1031,32 @@ class LogoCode:
     def draw_title(self, title, x, y):
         self.tw.canvas.draw_text(title,int(x),int(y),self.title_height,
                                                      self.tw.canvas.width-x)
+    # image only (at current x,y)
+    def insert_image(self, media, center):
+        w = (self.tw.canvas.width * self.scale)/100
+        h = (self.tw.canvas.height * self.scale)/100
+        # convert from Turtle coordinates to screen coordinates
+        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
+        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
+        if center is True:
+            x -= w/2
+            y -= h/2
+        if media[0:5] == 'media':
+            self.show_picture(media, x, y, w, h)
+    
+    # description text only (at current x,y)
+    def insert_desc(self, media):
+        w = (self.tw.canvas.width * self.scale)/100
+        h = (self.tw.canvas.height * self.scale)/100
+        # convert from Turtle coordinates to screen coordinates
+        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
+        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
+        if media[0:5] == 'descr':
+            self.show_description(media, x, y, w, h)
 
+    """
+    Depreciated block methods
+    """
     # title, one image, and description
     def show_template1x1(self, title, media):
         w,h,xo,yo,dx,dy = self.tw.calc_position('t1x1')
@@ -1156,71 +1236,6 @@ class LogoCode:
         self.show(media1)
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
-
-    # image only (at current x,y)
-    def insert_image(self, media, center):
-        w = (self.tw.canvas.width * self.scale)/100
-        h = (self.tw.canvas.height * self.scale)/100
-        # convert from Turtle coordinates to screen coordinates
-        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
-        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
-        if center is True:
-            x -= w/2
-            y -= h/2
-        if media[0:5] == 'media':
-            self.show_picture(media, x, y, w, h)
-    
-    # description text only (at current x,y)
-    def insert_desc(self, media):
-        w = (self.tw.canvas.width * self.scale)/100
-        h = (self.tw.canvas.height * self.scale)/100
-        # convert from Turtle coordinates to screen coordinates
-        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
-        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
-        if media[0:5] == 'descr':
-            self.show_description(media, x, y, w, h)
-    
-    def set_scale(self, x):
-        self.scale = x
-
-    # need to fix export logo to map show to write
-    def show(self, string, center=False):
-        # convert from Turtle coordinates to screen coordinates
-        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
-        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
-        if type(string) == str or type(string) == unicode:
-            if string == "media_None":
-                pass
-            elif string[0:6] == 'media_':
-                self.insert_image(string, center)
-            elif string[0:6] == 'descr_':
-                self.insert_desc(string)
-            elif string[0:6] == 'audio_':
-                self.play_sound(string)
-            else:
-                if center is True:
-                    y -= self.tw.textsize
-                self.tw.canvas.draw_text(string,x,y,self.tw.textsize,
-                          self.tw.canvas.width-x)
-        elif type(string) == float or type(string) == int:
-            string = round_int(string)
-            if center is True:
-                y -= self.tw.textsize
-            self.tw.canvas.draw_text(string, x, y, self.tw.textsize,
-                                     self.tw.canvas.width-x)
-    
-    def play_sound(self, audio):
-        if audio == "" or audio[6:] == "":
-            raise logoerror("#nomedia")
-        if self.tw.running_sugar:
-            if audio[6:] != "None":
-                try:
-                    dsobject = datastore.get(audio[6:])
-                    play_audio(self, dsobject.file_path)
-                except:
-                    print "Couldn't open id: " + str(audio[6:])
-        else:
-            play_audio(self, audio[6:])
 
     def write(self, string, fsize):
         # convert from Turtle coordinates to screen coordinates
