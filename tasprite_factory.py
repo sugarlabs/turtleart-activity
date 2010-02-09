@@ -63,6 +63,10 @@ class SVG:
         self._draw_innies = True
         self._hide = False
         self._show = False
+        self._show_x = 0
+        self._show_y = 0
+        self._hide_x = 0
+        self._hide_y = 0
         self._dot_radius = 8
         self._fill = "#00FF00"
         self._stroke = "#00A000"
@@ -104,18 +108,9 @@ class SVG:
         svg += self._close_path()
         svg += self._style()
         if self._show is True:
-            if self._outie is True:
-                x = self._innie_x1 + 2*self._innie_x2 + 2*self._dot_radius
-            else:
-                x = 12
-            svg += self._show_dot(x,self._height-12-self._innie_y2-self._slot_y)
+            svg += self._show_dot()
         if self._hide is True:
-            if True in self._innie:
-                x = self._width - (self._innie_x1 + 2*self._innie_x2 +\
-                                   2*self._dot_radius)
-            else:
-                x = self._width-12
-            svg += self._hide_dot(x,self._height-12-self._innie_y2-self._slot_y)
+            svg += self._hide_dot()
 
         svg += self._footer()
         return self._header() + svg
@@ -170,11 +165,9 @@ class SVG:
         self._calculate_w_h()
         svg += self._style()
         if self._hide is True:
-            svg += self._hide_dot(hh,
-                                  self._height-12-self._innie_y2-self._slot_y)
+            svg += self._hide_dot()
         if self._show is True:
-            svg += self._show_dot(hh-24,
-                                  self._height-12-self._innie_y2-self._slot_y)
+            svg += self._show_dot()
         svg += self._footer()
         return self._header() + svg
 
@@ -347,7 +340,9 @@ class SVG:
         self._width, self._height = width, height
         self._fill, self._stroke = "#FFD000", "none"
         svg = self._rect(width, height, 0, 0)
-        svg += self._hide_dot(width-12, height-12)
+        self._hide_x = (width-self._radius*1.5)/2
+        self._hide_y = (height-self._radius*1.5)/2
+        svg += self._hide_dot(True)
         svg += self._footer()
         return self._header() + svg
 
@@ -593,6 +588,12 @@ class SVG:
 
     def _corner(self, sign_x, sign_y, a=90, l=0, s=1):
         svg_str = ""
+        if sign_x == -1 and sign_y == 1:
+            self._hide_x = self._x - self._radius/2 - self._stroke_width
+            self._hide_y = self._y + self._radius/2 - self._stroke_width
+        if sign_x == -1 and sign_y == -1:
+            self._show_x = self._x - self._radius/2 + self._stroke_width
+            self._show_y = self._y - self._radius/2 - self._stroke_width
         if self._radius > 0:
             r2 = self._radius/2.0
             if sign_x*sign_y == 1:
@@ -620,24 +621,39 @@ class SVG:
     def _close_path(self):
         return "z\"\n"
 
-    def _hide_dot(self, x, y):
+    def _hide_dot(self, noscale=False):
         _saved_fill, _saved_stroke = self._fill, self._stroke
         self._fill, self._stroke = "#FF0000", "#FF0000"
         svg = "</g>/n<g>/n"
-        svg += self._circle(self._dot_radius, x, y)
+        if noscale:
+            scale = 2.0
+        else:
+            scale = self._scale
+        scale2 = scale/2
+        svg += self._circle(self._dot_radius*scale2, self._hide_x*scale,
+                                                    self._hide_y*scale)
         self._fill, self._stroke = "#FFFFFF", "#FFFFFF"
-        svg += self._rect(10, 2, x-5, y-1)
+        svg += self._rect(10*scale2, 2*scale2, self._hide_x*scale-5*scale2,
+                                             self._hide_y*scale-scale)
         self._fill, self._stroke = _saved_fill, _saved_stroke
         return svg
 
-    def _show_dot(self, x, y):
+    def _show_dot(self, noscale=False):
         _saved_fill, _saved_stroke = self._fill, self._stroke
         self._fill, self._stroke = "#00FE00", "#00FE00"
         svg = "</g>/n<g>/n"
-        svg += self._circle(self._dot_radius, x, y)
+        if noscale:
+            scale = 2.0
+        else:
+            scale = self._scale
+        scale2 = scale/2
+        svg += self._circle(self._dot_radius*scale2, self._show_x*scale,
+                                                    self._show_y*scale)
         self._fill, self._stroke = "#FEFEFE", "#FEFEFE"
-        svg += self._rect(10, 2, x-5, y-1)
-        svg += self._rect(2, 10, x-1, y-5)
+        svg += self._rect(10*scale2, 2*scale2, self._show_x*scale-5*scale2,
+                                             self._show_y*scale-scale)
+        svg += self._rect(2*scale2, 10*scale2, self._show_x*scale-scale,
+                                             self._show_y*scale-5*scale2)
         self._fill, self._stroke = _saved_fill, _saved_stroke
         return svg
 
