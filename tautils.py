@@ -132,7 +132,7 @@ def do_dialog(dialog, suffix, load_save_folder):
     return result, load_save_folder
 
 def save_picture(canvas, fname):
-    pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, canvas.width, \
+    pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, canvas.width,
                             canvas.height)
     pixbuf.get_from_drawable(canvas.canvas.images[0],
                              canvas.canvas.images[0].get_colormap(),

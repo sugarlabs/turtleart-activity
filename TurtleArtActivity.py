@@ -239,25 +239,7 @@ class TurtleArtActivity(activity.Activity):
         self.save_as_image.set_icon("image-saveon")
         _logger.debug("saving image to journal")
 
-        filename = "ta.png"
-        # save the image to the instance directory
-        datapath = os.path.join(activity.get_activity_root(), "instance")
-
-        # Write the file to the instance directory of this activity's root. 
-        file_path = os.path.join(datapath, filename)
-        save_picture(self.tw.canvas, file_path)
-
-        # Create a datastore object
-        dsobject = datastore.create()
-
-        # Write metadata
-        dsobject.metadata['title'] = self.metadata['title'] + " " + _("image")
-        dsobject.metadata['icon-color'] = profile.get_color().to_string()
-        dsobject.metadata['mime_type'] = 'image/png'
-        dsobject.set_file_path(file_path)
-
-        datastore.write(dsobject)
-        dsobject.destroy()
+        self.tw.save_as_image()
         gobject.timeout_add(250,self.save_as_image.set_icon, "image-saveoff")
         return
 

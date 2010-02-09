@@ -125,8 +125,9 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
              'storein', 'start'],
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc',  'nop', 'addturtle', 'print'],
-            ['journal', 'audio', 'description', 'templatelist', 'template1x1a',
-             'template2x2', 'hideblocks', 'showblocks', 'fullscreen'],
+            ['journal', 'audio', 'description', 'templatelist', 
+             'hideblocks', 'showblocks', 'fullscreen',
+             'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2', 'savepix'],
             ['empty', 'restoreall']]
 
 #
@@ -170,16 +171,18 @@ BASIC_STYLE_HEAD = ['start', 'hat1', 'hat2', 'restore', 'restoreall']
 BASIC_STYLE_HEAD_1ARG = ['hat']
 BASIC_STYLE_TAIL = ['stopstack', 'empty']
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
-    'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput']
+    'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput',
+    'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2', 'fullscreen']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
-    'setscale', 'setpensize', 'setcolor', 'setshade', 'print',
-    'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1',
+    'setscale', 'setpensize', 'setcolor', 'setshade', 'print', 'showaligned',
+    'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1', 'savepix',
     'storeinbox2', 'wait', 'stack', 'push', 'nop', 'addturtle']
 BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storein', 'write']
 BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'textcolor', 'textsize', 'box1', 'box2', 'string', 'leftpos', 'scale',
     'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard',
-    'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple']
+    'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple',
+    'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy']
 BOX_STYLE_MEDIA =  ['description', 'audio', 'journal']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
 NUMBER_STYLE_BLOCK = ['random']
@@ -199,7 +202,6 @@ PORTFOLIO_STYLE_1x1 = ['template1x1', 'template1x1a']
 PORTFOLIO_STYLE_2x1 = ['template2x1']
 PORTFOLIO_STYLE_1x2 = ['template1x2']
 
-
 #
 # Macros (groups of blocks)
 #
@@ -214,7 +216,104 @@ MACROS = {
                [7, 'stopstack', 0, 0, [3, None]],
                [8, 'vspace', 0, 0, [3, 9]],
                [9, 'wait', 0, 0, [8, 10, None]],
-               [10, ['number', '1'], 0, 0, [9, None]]]
+               [10, ['number', '1'], 0, 0, [9, None]]],
+    'picture1x1':
+              [[0, 'setxy', 0, 0, [None, 1, 2, 3]],
+               [1, 'titlex', 0, 0, [0, None]],
+               [2, 'titley', 0, 0, [0, None]],
+               [3, 'show', 0, 0, [0, 4, 5]],
+               [4, ['string',_('Title')], 0, 0, [3, None]],
+               [5, 'setscale', 0, 0, [3, 6, 7]],
+               [6, ['number', '90'], 0, 0, [5, None]],
+               [7, 'setxy', 0, 0, [5, 8, 9, 10]],
+               [8, 'leftx', 0, 0, [7, None]],
+               [9, 'topy', 0, 0, [7, None]],
+               [10, 'showaligned', 0, 0, [7, 11, None]],
+               [11, 'journal', 0, 0, [10, None]]],
+    'picture2x2':
+              [[0, 'setxy', 0, 0, [None, 1, 2, 3]],
+               [1, 'titlex', 0, 0, [0, None]],
+               [2, 'titley', 0, 0, [0, None]],
+               [3, 'show', 0, 0, [0, 4, 5]],
+               [4, ['string',_('Title')], 0, 0, [3, None]],
+               [5, 'setscale', 0, 0, [3, 6, 7]],
+               [6, ['number', '45'], 0, 0, [5, None]],
+               [7, 'setxy', 0, 0, [5, 8, 9, 10]],
+               [8, 'leftx', 0, 0, [7, None]],
+               [9, 'topy', 0, 0, [7, None]],
+               [10, 'showaligned', 0, 0, [7, 11, 12]],
+               [11, 'journal', 0, 0, [10, None]],
+               [12, 'setxy', 0, 0, [10, 13, 14, 15]],
+               [13, 'rightx', 0, 0, [12, None]],
+               [14, 'topy', 0, 0, [12, None]],
+               [15, 'showaligned', 0, 0, [12, 16, 17]],
+               [16, 'journal', 0, 0, [15, None]],
+               [17, 'setxy', 0, 0, [15, 18, 19, 20]],
+               [18, 'leftx', 0, 0, [17, None]],
+               [19, 'bottomy', 0, 0, [17, None]],
+               [20, 'showaligned', 0, 0, [17, 21, 22]],
+               [21, 'journal', 0, 0, [20, None]],
+               [22, 'setxy', 0, 0, [20, 23, 24, 25]],
+               [23, 'rightx', 0, 0, [22, None]],
+               [24, 'bottomy', 0, 0, [22, None]],
+               [25, 'showaligned', 0, 0, [22, 26, None]],
+               [26, 'journal', 0, 0, [25, None]]],
+    'picture2x1':
+              [[0, 'setxy', 0, 0, [None, 1, 2, 3]],
+               [1, 'titlex', 0, 0, [0, None]],
+               [2, 'titley', 0, 0, [0, None]],
+               [3, 'show', 0, 0, [0, 4, 5]],
+               [4, ['string',_('Title')], 0, 0, [3, None]],
+               [5, 'setscale', 0, 0, [3, 6, 7]],
+               [6, ['number', '45'], 0, 0, [5, None]],
+               [7, 'setxy', 0, 0, [5, 8, 9, 10]],
+               [8, 'leftx', 0, 0, [7, None]],
+               [9, 'topy', 0, 0, [7, None]],
+               [10, 'showaligned', 0, 0, [7, 11, 12]],
+               [11, 'journal', 0, 0, [10, None]],
+               [12, 'setxy', 0, 0, [10, 13, 14, 15]],
+               [13, 'rightx', 0, 0, [12, None]],
+               [14, 'topy', 0, 0, [12, None]],
+               [15, 'showaligned', 0, 0, [12, 16, 17]],
+               [16, 'journal', 0, 0, [15, None]],
+               [17, 'setxy', 0, 0, [15, 18, 19, 20]],
+               [18, 'leftx', 0, 0, [17, None]],
+               [19, 'bottomy', 0, 0, [17, None]],
+               [20, 'showaligned', 0, 0, [17, 21, 22]],
+               [21, 'description', 0, 0, [20, None]],
+               [22, 'setxy', 0, 0, [20, 23, 24, 25]],
+               [23, 'rightx', 0, 0, [22, None]],
+               [24, 'bottomy', 0, 0, [22, None]],
+               [25, 'showaligned', 0, 0, [22, 26, None]],
+               [26, 'description', 0, 0, [25, None]]],
+    'picture1x2':
+              [[0, 'setxy', 0, 0, [None, 1, 2, 3]],
+               [1, 'titlex', 0, 0, [0, None]],
+               [2, 'titley', 0, 0, [0, None]],
+               [3, 'show', 0, 0, [0, 4, 5]],
+               [4, ['string',_('Title')], 0, 0, [3, None]],
+               [5, 'setscale', 0, 0, [3, 6, 7]],
+               [6, ['number', '45'], 0, 0, [5, None]],
+               [7, 'setxy', 0, 0, [5, 8, 9, 10]],
+               [8, 'leftx', 0, 0, [7, None]],
+               [9, 'topy', 0, 0, [7, None]],
+               [10, 'showaligned', 0, 0, [7, 11, 12]],
+               [11, 'journal', 0, 0, [10, None]],
+               [12, 'setxy', 0, 0, [10, 13, 14, 15]],
+               [13, 'rightx', 0, 0, [12, None]],
+               [14, 'topy', 0, 0, [12, None]],
+               [15, 'showaligned', 0, 0, [12, 16, 17]],
+               [16, 'description', 0, 0, [15, None]],
+               [17, 'setxy', 0, 0, [15, 18, 19, 20]],
+               [18, 'leftx', 0, 0, [17, None]],
+               [19, 'bottomy', 0, 0, [17, None]],
+               [20, 'showaligned', 0, 0, [17, 21, 22]],
+               [21, 'journal', 0, 0, [20, None]],
+               [22, 'setxy', 0, 0, [20, 23, 24, 25]],
+               [23, 'rightx', 0, 0, [22, None]],
+               [24, 'bottomy', 0, 0, [22, None]],
+               [25, 'showaligned', 0, 0, [22, 26, None]],
+               [26, 'description', 0, 0, [25, None]]]
          }
 
 #
@@ -243,6 +342,7 @@ BLOCK_NAMES = {
     'back':[_('back')],
     'blue':[_('blue')],
     'bottompos':[_('bottom')],
+    'bottomy':[_('picture bottom')],
     'box':[_('box')],
     'box1':[_('box 1')],
     'box2':[_('box 2')],
@@ -274,6 +374,7 @@ BLOCK_NAMES = {
     'keyboard':[_('keyboard')],
     'left':[_('left')],
     'leftpos':[_('left')],
+    'leftx':[_('picture left')],
     'less2':['<'],
     'minus2':['–'],
     'myfunc':[_('Python'),_('code'),_('value')],
@@ -285,6 +386,10 @@ BLOCK_NAMES = {
     'pendown':[_('pen down')],
     'pensize':[_('pen size')],
     'penup':[_('pen up')],
+    'picture1x1':[_('picture1x1')],
+    'picture2x2':[_('picture2x2')],
+    'picture2x1':[_('picture2x1')],
+    'picture1x2':[_('picture1x2')],
     'plus2':['+'],
     'pop':[_('pop')],
     'printheap':[_('show heap')],
@@ -298,8 +403,10 @@ BLOCK_NAMES = {
     'repeat':[' ',_('repeat')],
     'restore':[_('restore last')],
     'restoreall':[_('restore all')],
-    'rightpos':[_('right')],
     'right':[_('right')],
+    'rightpos':[_('right')],
+    'rightx':[_('picture right')],
+    'savepix':[_('save picture')],
     'scale':[_('scale')],
     'setcolor':[_('set color')],
     'seth':[_('set heading')],
@@ -311,6 +418,7 @@ BLOCK_NAMES = {
     'shade':[_('shade')],
     'show':[_('show')],
     'showblocks':[_('show blocks')],
+    'showaligned':[_('show aligned')],
     'sqrt':['√'],
     'stack':[_('action')],
     'stack1':[_('action 1')],
@@ -328,7 +436,10 @@ BLOCK_NAMES = {
     'template2x2':[' '],
     'templatelist':[' '],
     'textsize':[_('text size')],
+    'titlex':[_('title xcor')],
+    'titley':[_('title ycor')],
     'toppos':[_('top')],
+    'topy':[_('picture top')],
     'turtle':[_('turtle')],
     'vspace':[' '],
     'wait':[_('wait')],
@@ -348,6 +459,7 @@ PRIMITIVES = {
     'back':'back',
     'blue':'blue',
     'bottompos':'bpos',
+    'bottomy':'boty',
     'box1':'box1',
     'box2':'box2',
     'box':'box',
@@ -377,6 +489,7 @@ PRIMITIVES = {
     'keyboard':'keyboard',
     'left':'left',
     'leftpos':'lpos',
+    'leftx':'leftx',
     'less2':'less?',
     'templatelist':'bullet',
     'minus2':'minus',
@@ -399,8 +512,10 @@ PRIMITIVES = {
     'red':'red',
     'remainder2':'mod',
     'repeat':'repeat',
-    'rightpos':'rpos',
     'right':'right',
+    'rightpos':'rpos',
+    'rightx':'rightx',
+    'savepix':'savepix',
     'scale':'scale',
     'setcolor':'setcolor',
     'seth':'seth',
@@ -413,6 +528,7 @@ PRIMITIVES = {
     'shade':'shade',
     'show':'show',
     'showblocks':'showblocks',
+    'showaligned':'showaligned',
     'sqrt':'sqrt',
     'stack':'stack',
     'stack1':'stack1',
@@ -428,7 +544,10 @@ PRIMITIVES = {
     'template2x1':'t2x1',
     'template2x2':'t2x2',
     'textsize':'textsize',
+    'titlex':'titlex',
+    'titley':'titley',
     'toppos':'tpos',
+    'topy':'topy',
     'vspace':'nop',
     'wait':'wait',
     'width':'hres',
@@ -462,6 +581,7 @@ DEFAULTS = {
     'random':[0, 100],
     'repeat':[4, None, 'vspace'],
     'right':[90],
+    'savepix':[_('picture name')],
     'setcolor':[0],
     'seth':[0],
     'setpensize':[5],
@@ -470,6 +590,7 @@ DEFAULTS = {
     'settextsize':[32],
     'setxy':[0, 0],
     'show':[_('text')],
+    'showaligned':[_('text')],
     'stack':[_('action')],
     'storeinbox1':[100],
     'storeinbox2':[100],
@@ -492,7 +613,8 @@ STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
                          'template2x2', 'template1x1a', 'templatelist', 'nop',
                          'print', 'stack', 'hat', 'addturtle']
 
-CONTENT_ARGS = ['show', 'push', 'storein', 'storeinbox1', 'storeinbox2']
+CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
+                'storeinbox2']
 
 #
 # Status blocks
@@ -527,6 +649,8 @@ OLD_NAMES = {'product':'product2', 'storeinbox':'storein', 'minus':'minus2',
 # Define the relative size and postion of media objects
 #                    (w,   h,   x,      y,     dx, dy)
 #
+TITLEXY = (0.9375, 0.875)
+
 TEMPLATES = {'t1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
              't2z1': (0.5, 0.5, 0.0625, 0.125, 1.05, 1.05),
              't1x2': (0.45, 0.45, 0.0625, 0.125, 1.05, 1.05),
@@ -636,6 +760,7 @@ HELP_STRINGS = {
     'restoreall':_("restore all blocks from trash"),
     'rightpos':_("xcor of right of screen"),
     'right':_("turn turtle clockwise (angle in degrees)"),
+    'savepix':_("saves a picture to the Sugar Journal"),
     'scale':_("holds current scale value (can be used in place of a number block)"),
     'setcolor':_("set color of the line drawn by the turtle"),
     'seth':_("set the heading of the turtle (0 is towards the top of the screen.)"),

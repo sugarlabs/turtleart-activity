@@ -272,6 +272,7 @@ class LogoCode:
         'right':[1, lambda self, x: self.tw.canvas.right(x)],
         'rightx':[0, lambda self: self.tw.rightx],
         'rpos':[0, lambda self: self.tw.canvas.width/(self.tw.coord_scale*2)],
+        'savepix':[1, lambda self, x: self.save_picture(x)],
         'scale':[0, lambda self: self.scale],
         'setcolor':[1, lambda self, x: self.tw.canvas.setcolor(x)],
         'seth':[1, lambda self, x: self.tw.canvas.seth(x)],
@@ -283,6 +284,7 @@ class LogoCode:
         'setxy':[2, lambda self, x, y: self.tw.canvas.setxy(x, y)],
         'shade':[0, lambda self: self.tw.canvas.shade],
         'show':[1,lambda self, x: self.show(x, True)],
+        'showaligned':[1,lambda self, x: self.show(x, False)],
         'showblocks':[0, lambda self: self.tw.showblocks()],
         'sound':[1, lambda self,x: self.play_sound(x)],
         'sqrt':[1, lambda self,x: sqrt(x)],
@@ -290,7 +292,7 @@ class LogoCode:
         'stack':[1, self.prim_stack, True],
         'stack2':[0, self.prim_stack2, True],
         'start':[0, lambda self: self.prim_start()],
-        'stopstack':[0, self.prim_stopstack],
+        'stopstack':[0, lambda self: self.prim_stopstack()],
         'storeinbox1':[1, lambda self,x: self.prim_setbox('box1',x)],
         'storeinbox2':[1, lambda self,x: self.prim_setbox('box2',x)],
         'storeinbox':[2, lambda self,x,y: self.prim_setbox('box3'+str(x),y)],
@@ -907,6 +909,9 @@ class LogoCode:
 
     def empty_heap(self):
         self.heap = []
+
+    def save_picture(self, name):
+        self.tw.save_as_image(name)
 
     """
     Everything below is related to multimedia commands

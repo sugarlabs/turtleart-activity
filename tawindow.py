@@ -43,6 +43,7 @@ from gettext import gettext as _
 try:
     from sugar.graphics.objectchooser import ObjectChooser
     from sugar.datastore import datastore
+    from sugar import profile
 except ImportError:
     pass
 
@@ -53,7 +54,8 @@ from tablock import Blocks, Block
 from taturtle import Turtles, Turtle
 from tautils import magnitude, get_load_name, get_save_name, data_from_file,\
                     data_to_file, round_int, get_id, get_pixbuf_from_journal,\
-                    movie_media_type, audio_media_type, image_media_type
+                    movie_media_type, audio_media_type, image_media_type,\
+                    save_picture
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
@@ -151,7 +153,12 @@ class TurtleArtWindow():
         self.active_turtle = self.turtles.get_turtle(1)
         self.selected_turtle = None
         self.canvas = TurtleGraphics(self, self.width, self.height)
-
+        self.titlex = -(self.canvas.width*TITLEXY[0])/(self.coord_scale*2)
+        self.leftx = -(self.canvas.width*TITLEXY[0])/(self.coord_scale*2)
+        self.rightx = 0
+        self.titley = (self.canvas.height*TITLEXY[1])/(self.coord_scale*2)
+        self.topy = (self.canvas.height*(TITLEXY[1]-0.125))/(self.coord_scale*2)
+        self.bottomy = 0
         self.lc = LogoCode(self)
 
     """
@@ -1999,3 +2006,33 @@ class TurtleArtWindow():
             if y+h>maxy:
                 maxy = y+h
         return(maxx-minx, maxy-miny)
+
+    """
+    Grab the current canvas and save it.
+    """
+    def save_as_image(self, name=""):
+        if len(name) == 0:
+            filename = "ta.png"
+        else:
+            filename = name+".png"
+
+        if self.running_sugar:
+            datapath = os.path.join(self.activity.get_activity_root(),
+                                    "instance")
+        else:
+            datapath = os.getcwd()
+        file_path = os.path.join(datapath, filename)
+        save_picture(self.canvas, file_path)
+
+        if self.running_sugar:
+            dsobject = datastore.create()
+            if len(name) == 0:
+                dsobject.metadata['title'] = "%s %s" % (self.metadata['title'],
+                                                        _("image"))
+            else:
+                dsobject.metadata['title'] = name
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.metadata['mime_type'] = 'image/png'
+            dsobject.set_file_path(file_path)
+            datastore.write(dsobject)
+            dsobject.destroy()
