@@ -1132,7 +1132,14 @@ class TurtleArtWindow():
             if self._show_button_hit(blk.spr, x, y):
                 n = len(blk.connections)
                 group = self._find_group(blk.connections[n-1])
-                dy = blk.add_arg()
+                if blk.name == 'myfunc' and n == 4:
+                    blk.spr.labels[1] = 'f(x,y)'
+                    blk.spr.labels[2] = ' '
+                if blk.name == 'myfunc' and n == 5:
+                    blk.spr.labels[1] = 'f(x,y,z)'
+                    dy = blk.add_arg(False)
+                else:
+                    dy = blk.add_arg()
                 for b in group:
                     b.spr.move_relative((0, dy))
                 blk.connections.append(blk.connections[n-1])
@@ -1462,12 +1469,20 @@ class TurtleArtWindow():
     """
     def _process_alphanumeric_input(self, keyname, keyunicode):
         if len(self.selected_blk.spr.labels[0]) > 0:
-            if self.selected_blk.spr.labels[0].count(CURSOR) == -1:
+            if self.selected_blk.spr.labels[0].count(CURSOR) == 0:
                 oldleft = self.selected_blk.spr.labels[0]
                 oldright = ''
-            else:
-                oldleft, oldright =\
-                    self.selected_blk.spr.labels[0].rsplit(CURSOR)
+            elif len(self.selected_blk.spr.labels[0]) == 1:
+                oldleft = ''
+                oldright = ''
+            else: # Why are getting a ValueError on occasion?
+                try:
+                    oldleft, oldright =\
+                        self.selected_blk.spr.labels[0].rsplit(CURSOR)
+                except ValueError:
+                    print "[%s]" % self.selected_blk.spr.labels[0]
+                    oldleft = self.selected_blk.spr.labels[0]
+                    oldright = ''
         else:
             oldleft = ''
             oldright = ''

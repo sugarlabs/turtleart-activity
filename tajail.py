@@ -26,15 +26,32 @@ try:
 except ImportError:
     pass
 
-def myfunc(lc, f, x):
+def myfunc(f, args):
     # check to make sure no import calls are made
-    myf = "def f(x): return " + f.replace("import","")
-    userdefined = {}
-    try:
-        exec myf in globals(), userdefined
-        return userdefined.values()[0](x)
-    except:
-        return None
+    if len(args) == 1:
+        myf = "def f(x): return " + f.replace("import","")
+        userdefined = {}
+        try:
+            exec myf in globals(), userdefined
+            return userdefined.values()[0](args[0])
+        except:
+            return None
+    elif len(args) == 2:
+        myf = "def f(x,y): return " + f.replace("import","")
+        userdefined = {}
+        try:
+            exec myf in globals(), userdefined
+            return userdefined.values()[0](args[0],args[1])
+        except:
+            return None
+    elif len(args) == 3:
+        myf = "def f(x,y,z): return " + f.replace("import","")
+        userdefined = {}
+        try:
+            exec myf in globals(), userdefined
+            return userdefined.values()[0](args[0],args[1],args[2])
+        except:
+            return None
 
 def myfunc_import(lc, f, x):
     userdefined = {}

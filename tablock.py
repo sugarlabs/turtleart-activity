@@ -152,10 +152,10 @@ class Block:
         self.spr.draw()
 
     # We may want to add additional slots for arguments ("innies").
-    def add_arg(self):
+    def add_arg(self, keep_expanding=True):
         h = self.svg.get_height()
         self._ei += 1
-        if self.type == 'block':
+        if self.type == 'block' and keep_expanding:
             self.svg.set_show(True)
         else:
             self.svg.set_show(False)
@@ -307,6 +307,8 @@ class Block:
             self._make_number_style(svg)
         elif self.name in NUMBER_STYLE_BLOCK:
             self._make_number_style_block(svg)
+        elif self.name in NUMBER_STYLE_VAR_ARG:
+            self._make_number_style_var_arg(svg)
         elif self.name in NUMBER_STYLE_1ARG:
             self._make_number_style_1arg(svg)
         elif self.name in NUMBER_STYLE_1STRARG:
@@ -457,6 +459,26 @@ class Block:
                                         self.svg.docks[0][1]],
                       ['number', False, self.svg.docks[1][0],
                                         self.svg.docks[1][1]]] 
+
+    def _make_number_style_var_arg(self, svg):
+        self.svg.expand(self._dx+self._ex, self._ey)
+        innie = [True]
+        for i in range(self._ei+1):
+            innie.append(True)
+        self.svg.set_innie(innie)
+        self.svg.set_outie(True)
+        self.svg.set_tab(False)
+        self.svg.set_slot(False)
+        self._make_basic_block(svg)
+        self.docks = [['number', True, self.svg.docks[2+self._ei][0],
+                                       self.svg.docks[2+self._ei][1]],
+                      ['number', False, self.svg.docks[0][0],
+                                        self.svg.docks[0][1], '[']]
+        for i in range(self._ei+1):
+            self.docks.append(['number', False, self.svg.docks[i+1][0],
+                                                self.svg.docks[i+1][1]])
+        self.docks.append(['unavailable', False, 0, 0, ']'])
+        print self.docks
 
     def _make_number_style_block(self, svg):
         self.svg.expand(self._dx+self._ex, self._ey)

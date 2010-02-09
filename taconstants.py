@@ -184,7 +184,8 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple',
     'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy']
 BOX_STYLE_MEDIA =  ['description', 'audio', 'journal']
-NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
+NUMBER_STYLE = ['plus2', 'product2']
+NUMBER_STYLE_VAR_ARG = ['myfunc']
 NUMBER_STYLE_BLOCK = ['random']
 NUMBER_STYLE_PORCH = ['minus2', 'division2', 'remainder2']
 NUMBER_STYLE_1ARG = ['sqrt', 'identity2']
@@ -319,7 +320,7 @@ MACROS = {
 #
 # blocks that are expandable
 #
-EXPANDABLE = ['vspace', 'hspace', 'templatelist', 'list', 'identity2']
+EXPANDABLE = ['vspace', 'hspace', 'templatelist', 'list', 'identity2', 'myfunc']
 
 #
 # Old block styles that need dock adjustments
@@ -379,7 +380,7 @@ BLOCK_NAMES = {
     'less2':['<'],
     'list':['list'],
     'minus2':['–'],
-    'myfunc':[_('Python'),_('code'),_('value')],
+    'myfunc':[_('Python'),'f(x)',_('x')],
     'nop':[_(' ')],
     'not':[_('not')],
     'number':['100'],
@@ -657,6 +658,9 @@ OLD_NAMES = {'product':'product2', 'storeinbox':'storein', 'minus':'minus2',
 #
 TITLEXY = (0.9375, 0.875)
 
+#
+# Relative placement of portfolio objects (used by depreciated blocks)
+#
 TEMPLATES = {'t1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
              't2z1': (0.5, 0.5, 0.0625, 0.125, 1.05, 1.05),
              't1x2': (0.45, 0.45, 0.0625, 0.125, 1.05, 1.05),

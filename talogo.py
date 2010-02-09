@@ -250,7 +250,8 @@ class LogoCode:
         'less?':[2, lambda self,x,y: taless(x,y)],
         'minus':[2, lambda self,x,y: taminus(x,y)],
         'mod':[2, lambda self,x,y: tamod(x,y)],
-        'myfunc':[2, lambda self,f,x: self.prim_myfunc(f, x)],
+        'myfunc':[1, self.prim_myfunc, True],
+        'myfunction':[1, lambda self, x: self.myfunction(x)],
         'nop':[0, lambda self: None],
         'nop1':[0, lambda self: None],
         'nop2':[0, lambda self: None],
@@ -767,6 +768,22 @@ class LogoCode:
         self.ireturn()
         yield True
 
+    def prim_myfunc(self, list):
+        new_list = [self.intern('myfunction')]
+        new_list.append(list)
+        self.icall(self.evline, new_list)
+        yield True
+        self.ireturn()
+        yield True
+
+    def myfunction(self, list):
+        y = myfunc(list[0], list[1:])
+        if y == None:
+            raise logoerror("#syntaxerror")
+            stop_logo(self.tw)
+        else:
+            return y
+
     def prim_forever(self, list):
         while True:
             self.icall(self.evline, list[:])
@@ -861,14 +878,6 @@ class LogoCode:
         else:
             raise logoerror("#nocode")
         return
-    
-    def prim_myfunc(self, f, x):
-        y = myfunc(self, f, x)
-        if y == None:
-            raise logoerror("#syntaxerror")
-            stop_logo(self.tw)
-        else:
-            return y
     
     def prim_print(self, n, flag):
         if flag and self.tw.hide:
