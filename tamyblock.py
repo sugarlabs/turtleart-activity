@@ -23,14 +23,15 @@
 # palette is selected. Some examples of how to use this block are included
 # below. Try uncommenting an example or write your own Python code.
 # 
-# To uncomment code, remove the #s before python code
+# To uncomment code, remove the '# ' in the Python code. Take care to preserve
+# the proper indentations.
 #
 
 def myblock(lc,x):
 
     ###########################################################################
     #
-    # draw a dotted line of length x
+    # Draw a dotted line of length x.
     #
     ###########################################################################
 
@@ -55,7 +56,8 @@ def myblock(lc,x):
 
     ###########################################################################
     #
-    # push an uppercase version of a string onto the heap
+    # Push an uppercase version of a string onto the heap.
+    # Use a 'pop' block to use the new string.
     #
     ###########################################################################
 
@@ -63,16 +65,15 @@ def myblock(lc,x):
     #     X = str(x).upper()
     # else:
     #     X = x.upper()
-    # push result onto heap (use the pop block to use the new string)
     # lc.heap.append(X)
 
 
     ###########################################################################
     #
-    # push hours, minutes, seconds onto the heap
-    # use three pop blocks to retrieve the values
-    # remember: the heap is a FILO (first in, last out)
-    # the first value you will pop will be seconds
+    # Push hours, minutes, seconds onto the FILO.
+    # Use three 'pop' blocks to retrieve these values.
+    # Note: because we use a FILO (first in, last out heap),
+    # the first value you will pop will be seconds.
     #
     ###########################################################################
 
@@ -83,17 +84,13 @@ def myblock(lc,x):
 
     ###########################################################################
     #
-    # add a third dimension (gray) to the color model
-    # calculate the value (brightness) of the current color
-    # val = 0.3 * lc.tw.rgb[0] + 0.6 * lc.tw.rgb[1] + 0.1 * lc.tw.rgb[2]
-    # make sure gray is in range from 0 to 100
+    # Add a third dimension (gray) to the color model.
     #
     ###########################################################################
 
-
+    # val = 0.3 * lc.tw.rgb[0] + 0.6 * lc.tw.rgb[1] + 0.1 * lc.tw.rgb[2]
     # if x != 100:
     #     x = int(x)%100
-    # mix in gray
     # r = int((val*(100-x) + lc.tw.rgb[0]*x)/100)
     # g = int((val*(100-x) + lc.tw.rgb[1]*x)/100)
     # b = int((val*(100-x) + lc.tw.rgb[2]*x)/100)
@@ -103,11 +100,11 @@ def myblock(lc,x):
 
     ###########################################################################
     #
-    # save a screen- image in the journal
+    # Save an image named x to the Sugar Journal.
     #
     ###########################################################################
 
-    # lc.tw.activity._do_save_as_image_cb(lc.tw.activity)
+    # lc.tw.save_as_image(str(x))
 
     return
 
