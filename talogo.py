@@ -218,7 +218,7 @@ class LogoCode:
         'box1':[0, lambda self: self.boxes['box1']],
         'box':[1, lambda self,x: self.box(x)],
         'box2':[0, lambda self: self.boxes['box2']],
-        'bullet':[2, self.prim_bullet, True],
+        'bullet':[1, self.prim_bullet, True],
         'bulletlist':[1, self.prim_list, True],
         'clean':[0, lambda self: self.prim_clear()],
         'clearheap':[0, lambda self: self.empty_heap()],
@@ -757,8 +757,8 @@ class LogoCode:
         self.ireturn()
         yield True
 
-    def prim_bullet(self, title, list):
-        self.show_bullets(title, list)
+    def prim_bullet(self, list):
+        self.show_bullets(list)
         self.ireturn()
         yield True
 
@@ -1122,7 +1122,7 @@ class LogoCode:
         self.tw.canvas.settextsize(save_text_size)
 
     # title and varible number of  bullets
-    def show_bullets(self, title, sarray):
+    def show_bullets(self, sarray):
         w,h,xo,yo,dx,dy = self.tw.calc_position('bullet')
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
@@ -1131,12 +1131,12 @@ class LogoCode:
         save_text_size = self.tw.textsize
         # set title text
         self.tw.canvas.settextsize(self.title_height)
-        self.show(title)
+        self.show(sarray[0])
         # set body text size
         self.tw.canvas.settextsize(self.bullet_height)
         # leave some space below the title
         y -= int(self.title_height*2*self.tw.lead)
-        for s in sarray:
+        for s in sarray[1:]:
             self.tw.canvas.setxy(x, y)
             self.show(s)
             y -= int(self.bullet_height*2*self.tw.lead)

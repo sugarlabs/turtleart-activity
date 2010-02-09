@@ -417,9 +417,9 @@ class Block:
         self.docks = [['flow', True, self.svg.docks[0][0],
                                      self.svg.docks[0][1]],
                       ['string', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]],
+                                        self.svg.docks[1][1], '['],
                       ['string', False, self.svg.docks[2][0],
-                                        self.svg.docks[2][1], '[']]
+                                        self.svg.docks[2][1]]]
         for i in range(self._ei):
             self.docks.append(['string', False, self.svg.docks[i+3][0],
                                                 self.svg.docks[i+3][1]])
