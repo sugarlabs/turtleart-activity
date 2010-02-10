@@ -698,8 +698,7 @@ class TurtleArtWindow():
             b.type = 'block'
         for b in group:
             self._adjust_dock_positions(b)
-            if b.name == 'sandwichbottom' and\
-               len(b.values) == 1 and b.values[0] != 0:
+            if self._collapsed(b):
                 b.spr.move_relative((0, b.values[0]))
         self.trash_stack.remove(blk)
 
@@ -890,6 +889,10 @@ class TurtleArtWindow():
         # Block sizes and shapes may have changed.
         for b in blocks:
             self._adjust_dock_positions(b)
+        # Look for any stacks that need to be collapsed.
+        for b in blocks:
+            if self._collapsed(b):
+                self._collapse_stack(self._find_sandwich_top(b))
         return blocks[0]
 
     """
@@ -955,9 +958,8 @@ class TurtleArtWindow():
         # If we have a stack of blocks selected, move them.
         elif self.drag_group[0] is not None:
             blk = self.drag_group[0]
-            # Don't move a sandwichbottom is the stack is collapsed
-            if blk.name == 'sandwichbottom' and\
-               len(blk.values) == 1 and blk.values[0] != 0:
+            # Don't move a bottom blk is the stack is collapsed
+            if self._collapsed(blk):
                 return
 
             self.selected_spr = blk.spr
@@ -1107,8 +1109,8 @@ class TurtleArtWindow():
         # Look to see if we can dock the current stack.
         self._snap_to_dock()
         # When a sandwich bottom is docked, mark it as collapsable
-        if blk.name == 'sandwichbottom':
-            if len(blk.values) == 1 and blk.values[0] != 0:
+        if blk.name in COLLAPSIBLE:
+            if self._collapsed(blk):
                 blk.svg.set_show(True)
                 blk.svg.set_hide(False)
             else:
@@ -1217,12 +1219,12 @@ class TurtleArtWindow():
 
     def _collapse_stack(self, top):
         group = self._find_group(top.connections[len(top.connections)-1])
-        if group[0].name == 'sandwichbottom':
+        if group[0].name in COLLAPSIBLE:
             return
         (x, y) = group[0].spr.get_xy()
         dy = 0
         for b in group:
-            if b.name == 'sandwichbottom':
+            if b.name in COLLAPSIBLE:
                 (bx, by) = b.spr.get_xy()
                 dy = y-by
                 if len(b.values) == 0:
@@ -1239,7 +1241,7 @@ class TurtleArtWindow():
         group = self._find_group(top.connections[len(top.connections)-1])
         dy = 0
         for b in group:
-            if b.name == 'sandwichbottom':
+            if b.name in COLLAPSIBLE:
                 dy = b.values[0]
                 b.values[0] = 0
             if dy == 0:
@@ -1247,6 +1249,12 @@ class TurtleArtWindow():
                 b.status = None
             else:
                 b.spr.move_relative((0,-dy))
+
+    def _collapsed(self, blk):
+        if blk.name in COLLAPSIBLE and\
+           len(blk.values) == 1 and blk.values[0] != 0:
+            return True
+        return False
 
     """
     Run a stack of blocks.
@@ -1415,8 +1423,7 @@ class TurtleArtWindow():
     def _disconnect(self, blk):
         if blk.connections[0]==None:
             return
-        if blk.name == 'sandwichbottom' and\
-           len(blk.values) == 1 and blk.values[0] != 0:
+        if self._collapsed(blk):
             return
         blk2=blk.connections[0]
         blk2.connections[blk2.connections.index(blk)] = None
@@ -1676,7 +1683,7 @@ class TurtleArtWindow():
     Jog block
     """
     def _jog_block(self, blk, dx, dy):
-        if blk.name == 'sandwichbottom' and\
+        if blk.name in COLLAPSIBLE and\
            len(blk.values) == 1 and blk.values[0] != 0:
             return
         self.drag_group = self._find_group(blk)
@@ -1819,12 +1826,17 @@ class TurtleArtWindow():
             btype, value = btype
         elif type(btype) == list:
             btype, value = btype[0], btype[1]
-        if btype in CONTENT_BLOCKS:
+        if btype in CONTENT_BLOCKS or btype in COLLAPSIBLE:
             if btype == 'number':
                 try:
                     values = [int(value)]
                 except ValueError:
                     values = [float(value)]
+            elif btype in COLLAPSIBLE:
+                if value is not None:
+                    values = [int(value)]
+                else:
+                    values = []
             else:
                 values = [value]
         else:
@@ -1928,7 +1940,6 @@ class TurtleArtWindow():
         data_to_file(data, fname+'.ta')
         self.save_file_name = os.path.basename(fname)
 
-    # TODO: handle collapsed blocks    
     """
     Pack the project (or stack) into a data stream to be serialized
     """
@@ -1944,12 +1955,11 @@ class TurtleArtWindow():
         for i, b in enumerate(blks):
              b.id = i
         for b in blks:
-            if b.name in CONTENT_BLOCKS:
+            if b.name in CONTENT_BLOCKS or b.name in COLLAPSIBLE:
                 if len(b.values)>0:
                     name = (b.name, b.values[0])
                 else:
                     name = (b.name)
-                    print "content block %s had no associated value" % (b.name)
             elif b.name in EXPANDABLE:
                 ex, ey = b.get_expand_x_y()
                 if ex > 0:
