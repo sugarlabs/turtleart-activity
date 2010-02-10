@@ -1,19 +1,32 @@
 83
 
-* MAJOR REFACTORING
-** multiple turtles
-** expandable blocks
-** trash palette
-** 90% smaller download bundle-size
-** faster first-time launch
-** easier i18n maintenance
-** variable-length string blocks
-** editable strings
-** easier to add new blocks and palettes
+* added new user-interface features
+ o support for multiple turtles
+ o expandable blocks
+ o collapsible stacks
+ o runtime block highlighting
+ o error highlighting
+ o trash palette (with restore)
+ o palette better integrated into Sugar toolbar
+ o variable-length string blocks
+ o editable string blocks
+ o new boolean logic UI
+ o showblock to compliment hideblock
+ o fullscreen block
+ o editible macros (used for presentation blocks)
+ o labels on coordinate-grid overlays
+ o more complete support in non-Sugar environments
+ o new (and improved) sample code
+
+* completed a major refactoring of the code
+ o 90% smaller download bundle-size
+ o faster first-time launch
+ o greatly simplified i18n maintenance
+ o easier to extend with new blocks and palettes 
 
 82
 
-* minor updates to Spanish translations
+* minor ubpdates to Spanish translations
 
 81
 
