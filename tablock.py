@@ -321,6 +321,10 @@ class Block:
             self._make_flow_style_boolean(svg)
         elif self.name in FLOW_STYLE_ELSE:
             self._make_flow_style_else(svg)
+        elif self.name in COLLAPSIBLE_TOP:
+            self._make_collapsible_style_top(svg)
+        elif self.name in COLLAPSIBLE_BOTTOM:
+            self._make_collapsible_style_bottom(svg)
         elif self.name in PORTFOLIO_STYLE_2x2:
             self._make_portfolio_style_2x2(svg)
         elif self.name in PORTFOLIO_STYLE_2x1:
@@ -622,6 +626,22 @@ class Block:
                       ['flow', False, self.svg.docks[4][0],
                                       self.svg.docks[4][1], ']']]
 
+    def _make_collapsible_style_top(self, svg):
+        self.svg.expand(self._dx+self._ex, self._ey)
+        self._make_collapsible_top_block(svg)
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['number', False, self.svg.docks[1][0],
+                                        self.svg.docks[1][1]],
+                      ['flow', False, self.svg.docks[2][0],
+                                      self.svg.docks[2][1]]]
+
+    def _make_collapsible_style_bottom(self, svg):
+        self.svg.expand(self._dx+self._ex, self._ey)
+        self._make_collapsible_bottom_block(svg)
+        self.docks = [['flow',True,self.svg.docks[0][0],self.svg.docks[0][1]],
+                      ['flow',False,self.svg.docks[1][0],self.svg.docks[1][1]]]
+
     # Depreciated block styles
     def _make_portfolio_style_2x2(self, svg):
         self.svg.expand(30+self._dx+self._ex, 10+self._ey)
@@ -702,6 +722,22 @@ class Block:
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
         self.shapes.append(svg_str_to_pixbuf(self.svg.basic_block()))
+
+    def _make_collapsible_top_block(self, svg):
+        self.shapes.append(svg_str_to_pixbuf(self.svg.sandwich_top()))
+        self.width = self.svg.get_width()
+        self.height = self.svg.get_height()
+        self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
+        self.svg.set_stroke_color(SELECTED_COLOR)
+        self.shapes.append(svg_str_to_pixbuf(self.svg.sandwich_top()))
+
+    def _make_collapsible_bottom_block(self, svg):
+        self.shapes.append(svg_str_to_pixbuf(self.svg.sandwich_bottom()))
+        self.width = self.svg.get_width()
+        self.height = self.svg.get_height()
+        self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
+        self.svg.set_stroke_color(SELECTED_COLOR)
+        self.shapes.append(svg_str_to_pixbuf(self.svg.sandwich_bottom()))
 
     def _make_basic_box(self, svg):
         self.shapes.append(svg_str_to_pixbuf(self.svg.basic_box()))

@@ -360,10 +360,21 @@ class SVG:
         svg += self._corner(1, -1)
         svg += self._rline_to(self._radius+self._stroke_width, 0)
         svg += self._do_slot()
+        #
+        svg += self._rline_to(self._expand_x, 0)
+        xx = self._x
         svg += self._corner(1, 1)
-        svg += self._rline_to(-self._radius,0)
+        svg += self._do_innie()
+        svg += self._corner(-1, 1)
+        svg += self._line_to(xx, self._y)
+        svg += self._rline_to(-self._expand_x, 0)
+        #
+        # svg += self._corner(1, 1)
+        # svg += self._rline_to(-self._radius,0)
+        #
         svg += self._do_tab()
         svg += self._inverse_corner(-1, 1, 90, 0, 0)
+        svg += self._rline_to(0, self._expand_y)
         svg += self._rline_to(-self._radius, 0)
         svg += self._close_path()
         self._calculate_w_h()
@@ -376,6 +387,7 @@ class SVG:
         y = self._stroke_width/2.0
         svg = self._new_path(x, y)
         svg += self._rline_to(self._radius, 0)
+        svg += self._rline_to(0, self._expand_y)
         svg += self._inverse_corner(1, 1, 90, 0, 0)
         svg += self._do_slot()
         svg += self._rline_to(self._radius, 0)
@@ -891,6 +903,7 @@ def generator(datapath):
     svg0.set_slot(True)
     svg0.set_hide(True)
     svg0.set_show(True)
+    svg0.expand(0,40)
     svg_str = svg0.sandwich_bottom()
     f.write(svg_str)
     close_file(f)
@@ -902,11 +915,12 @@ def generator(datapath):
     svg0.set_slot(True)
     svg0.set_hide(True)
     svg0.set_show(True)
+    svg0.expand(0,40)
     svg_str = svg0.sandwich_top()
     f.write(svg_str)
     close_file(f)
 
-
+    """
     svg2 = SVG()
     f = open_file(datapath, "box-test.svg")
     svg2.set_scale(1)
@@ -927,7 +941,6 @@ def generator(datapath):
     f.write(svg_str)
     close_file(f)
 
-    """
     svg3 = SVG()
     f = open_file(datapath, "compare-text.svg")
     svg3.set_scale(1)

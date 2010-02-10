@@ -691,15 +691,17 @@ class TurtleArtWindow():
         group = self._find_group(blk)
         for b in group:
             b.rescale(self.block_scale)
-            if blk.status != 'collapsed':
-                b.spr.set_layer(BLOCK_LAYER)
+            b.spr.set_layer(BLOCK_LAYER)
             x,y = b.spr.get_xy()
             b.spr.move((x+PALETTE_WIDTH,y+PALETTE_HEIGHT))
             b.type = 'block'
         for b in group:
             self._adjust_dock_positions(b)
+        # If the stack had been collapsed before going into the trash,
+        # collapse it again now.
+        for b in group:
             if self._collapsed(b):
-                b.spr.move_relative((0, b.values[0]))
+                self._collapse_stack(self._find_sandwich_top(b))
         self.trash_stack.remove(blk)
 
     """
@@ -1085,12 +1087,17 @@ class TurtleArtWindow():
 
         blk = self.drag_group[0]
         # Remove blocks by dragging them onto the trash palette.
-        # Collapsed stacks are restored as they are moved to the trash.
         if self.block_operation=='move' and self._in_the_trash(x, y):
             self.trash_stack.append(blk)
             for b in self.drag_group:
+                # Collapsed stacks are restored as they are moved to the trash,
                 if b.status == 'collapsed':
-                    self._restore_stack(self._find_sandwich_top(b))
+                    bot = self._find_sandwich_bottom(b)
+                    if self._collapsed(bot):
+                        dy = bot.values[0]
+                        self._restore_stack(self._find_sandwich_top(b))
+                        # but we note that they were collapsed.
+                        bot.values[0] = dy
                 b.type = 'trash'
                 b.rescale(self.trash_scale)
             blk.spr.move((x,y))
@@ -1217,6 +1224,15 @@ class TurtleArtWindow():
             b = b.connections[0]
         return None
 
+    def _find_sandwich_bottom(self, blk):
+        # TODO: Add nesting; detect branches (e.g., if, ifelse, repeat)
+        b = blk.connections[0]
+        while b is not None:
+            if b.name == 'sandwichbottom':
+                return b
+            b = b.connections[0]
+        return None
+
     def _collapse_stack(self, top):
         group = self._find_group(top.connections[len(top.connections)-1])
         if group[0].name in COLLAPSIBLE:
@@ -1251,7 +1267,7 @@ class TurtleArtWindow():
                 b.spr.move_relative((0,-dy))
 
     def _collapsed(self, blk):
-        if blk.name in COLLAPSIBLE and\
+        if blk is not None and blk.name in COLLAPSIBLE and\
            len(blk.values) == 1 and blk.values[0] != 0:
             return True
         return False
