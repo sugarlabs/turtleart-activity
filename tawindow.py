@@ -371,6 +371,10 @@ class TurtleArtWindow():
         for b in self.just_blocks():
             if self._collapsed(b):
                 self._collapse_stack(self._find_sandwich_top(b))
+        for b in self.just_blocks():
+            if b.name == 'sandwichtop':
+                print "in resize: %d" % (self.block_scale)
+                self._grow_stack_arm(b)
 
     """
     Show the toolbar palettes, creating them on init_only
@@ -1196,7 +1200,7 @@ class TurtleArtWindow():
                 argname = blk.docks[n-1][0]
                 argvalue = DEFAULTS[blk.name][len(DEFAULTS[blk.name])-1]
                 argblk = Block(self.block_list, self.sprite_list, argname,
-                               0, 0, 'block', [argvalue])
+                               0, 0, 'block', [argvalue], self.block_scale)
                 argdock = argblk.docks[0]
                 (bx, by) = blk.spr.get_xy()
                 nx = bx+blk.docks[n-1][2]-argdock[2]
@@ -1272,7 +1276,6 @@ class TurtleArtWindow():
                 b._ey = 0
                 b.spr.set_label(_('click to open'))
                 b.resize()
-                b.resize()
 
                 # Redock to sandwich top in group
                 you = self._find_sandwich_top(b)
@@ -1340,19 +1343,22 @@ class TurtleArtWindow():
 
     def _reset_stack_arm(self, top):
         if top is not None and top.name == 'sandwichtop':
-            top.reset_y()
+            if top.ey > 0:
+                top.reset_y()
 
     def _grow_stack_arm(self, top):
         if top is not None and top.name == 'sandwichtop':
             bot = self._find_sandwich_bottom(top)
             if bot is None:
                 return
+            if top.ey > 0:
+                top.reset_y()
             (tx, ty) = top.spr.get_xy()
             (tw, th) = top.spr.get_dimensions()
             (bx, by) = bot.spr.get_xy()
             dy = by-(ty+th)
             if dy > 0:
-                top.expand_in_y(dy/self.block_scale)
+                top.expand_in_y(dy/top.scale)
 
     def _check_collapsibles(self, blk):
         group = self._find_group(blk)
@@ -1982,8 +1988,8 @@ class TurtleArtWindow():
         if OLD_NAMES.has_key(btype):
             btype = OLD_NAMES[btype]
         blk = Block(self.block_list, self.sprite_list, 
-                    btype, b[2]+self.canvas.cx,
-                           b[3]+self.canvas.cy, 'block', values)
+                    btype, b[2]+self.canvas.cx, b[3]+self.canvas.cy, 'block',
+                    values, self.block_scale)
         # Some blocks get transformed.
         if btype == 'nop': 
             if self.nop == 'pythonloaded':
