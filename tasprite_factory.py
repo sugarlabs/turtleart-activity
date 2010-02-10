@@ -356,8 +356,8 @@ class SVG:
     def sandwich_top(self):
         x = self._stroke_width/2.0
         y = self._stroke_width/2.0+self._radius
-        self.margins[0] = int(x+self._stroke_width+0.5)
-        self.margins[1] = int(self._stroke_width+0.5)
+        self.margins[0] = int((x+self._stroke_width+0.5)*self._scale)
+        self.margins[1] = int((self._stroke_width+0.5)*self._scale)
         self.margins[2] = 0
         self.margins[3] = 0
         svg = self._new_path(x, y)
@@ -384,8 +384,8 @@ class SVG:
     def sandwich_bottom(self):
         x = self._stroke_width/2.0
         y = self._stroke_width/2.0
-        self.margins[0] = int(self._stroke_width+0.5)
-        self.margins[1] = int(self._stroke_width+0.5)
+        self.margins[0] = int((x+self._stroke_width+0.5)*self._scale)
+        self.margins[1] = int((self._stroke_width+0.5)*self._scale)
         self.margins[2] = 0
         self.margins[3] = 0
         svg = self._new_path(x, y)
