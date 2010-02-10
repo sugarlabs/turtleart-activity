@@ -688,7 +688,6 @@ class TurtleArtWindow():
         self._restore_from_trash(self.trash_stack[len(self.trash_stack)-1])
 
     def _restore_from_trash(self, blk):
-        # TODO: Collapsed stacks will have been restored before moving to trash.
         group = self._find_group(blk)
         for b in group:
             b.rescale(self.block_scale)
@@ -1083,18 +1082,16 @@ class TurtleArtWindow():
             return
 
         blk = self.drag_group[0]
-        # Remove blocks by dragging them onto the trash palette
-        # TODO: Restore collapsed stacks before moving to trash.
+        # Remove blocks by dragging them onto the trash palette.
+        # Collapsed stacks are restored as they are moved to the trash.
         if self.block_operation=='move' and self._in_the_trash(x, y):
             self.trash_stack.append(blk)
             for b in self.drag_group:
-                if b.type == 'collapsed':
-                    self._restore_stack(self._find_top_of_sandwich(b))
-                """
+                if b.status == 'collapsed':
+                    self._restore_stack(self._find_sandwich_top(b))
                 b.type = 'trash'
                 b.rescale(self.trash_scale)
             blk.spr.move((x,y))
-            """
             for b in self.drag_group:
                 self._adjust_dock_positions(b)
             self.drag_group = None
@@ -1134,7 +1131,6 @@ class TurtleArtWindow():
         blk = self.block_list.spr_to_block(self.selected_spr)
         if blk is None:
             return
-        print blk.name
         self.selected_blk = blk
         if  blk.name=='number' or blk.name=='string':
             self.saved_string = blk.spr.labels[0]
@@ -1191,11 +1187,9 @@ class TurtleArtWindow():
             else:
                 self._run_stack(blk)
         elif blk.name=='sandwichbottom':
-            print "clicked on sandwich bottom"
             if self._hide_button_hit(blk.spr, x, y):
                 top = self._find_sandwich_top(blk)
                 if top is not None:
-                    print "collapsing stack"
                     blk.svg.set_show(True)
                     blk.svg.set_hide(False)
                     blk.refresh()
@@ -1203,7 +1197,6 @@ class TurtleArtWindow():
             elif self._show_button_hit(blk.spr, x, y):
                 top = self._find_sandwich_top(blk)
                 if top is not None:
-                    print "restoring stack"
                     blk.svg.set_show(False)
                     blk.svg.set_hide(True)
                     blk.refresh()
@@ -1253,7 +1246,6 @@ class TurtleArtWindow():
                 b.spr.set_layer(BLOCK_LAYER)
                 b.status = None
             else:
-                print "restoring %s" % (b.name)
                 b.spr.move_relative((0,-dy))
 
     """
@@ -1402,7 +1394,6 @@ class TurtleArtWindow():
         if self.running_sugar:
             pixbuf = get_pixbuf_from_journal(picture, THUMB_W, THUMB_H)
         else:
-            print picture[-4:]
             if movie_media_type(picture):
                 blk.spr.set_image(self.media_shapes['journalon'], 1, MEDIA_X,
                                                                      MEDIA_Y)
