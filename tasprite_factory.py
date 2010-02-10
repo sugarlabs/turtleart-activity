@@ -532,7 +532,7 @@ class SVG:
         "       id=\"linearGradient5678\"\n",
         "       x1=\"0\"\n",
         "       y1=\"", self._height/2.0, "\"\n",
-        "       x2=\"", self._width, "\"\n",
+        "       x2=\"", self._width/self._scale, "\"\n",
         "       y2=\"", self._height/2.0, "\"\n",
         "       gradientUnits=\"userSpaceOnUse\" />\n  </defs>\n")
         else:
@@ -906,7 +906,7 @@ def generator(datapath):
     f.write(svg_str)
     close_file(f)
 
-    """
+
     svg2 = SVG()
     f = open_file(datapath, "box-test.svg")
     svg2.set_scale(1)
@@ -917,6 +917,17 @@ def generator(datapath):
     f.write(svg_str)
     close_file(f)
 
+    svg2 = SVG()
+    f = open_file(datapath, "box-test2.svg")
+    svg2.set_scale(4)
+    svg2.expand(40,0)
+    svg2.set_colors(["#FFA000","#A08000"])
+    svg2.set_gradiant(True)
+    svg_str = svg2.basic_box()
+    f.write(svg_str)
+    close_file(f)
+
+    """
     svg3 = SVG()
     f = open_file(datapath, "compare-text.svg")
     svg3.set_scale(1)
