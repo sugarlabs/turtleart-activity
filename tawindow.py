@@ -1163,6 +1163,8 @@ class TurtleArtWindow():
             elif self._show_button_hit(blk.spr, x, y):
                 dy = 20
                 blk.expand_in_y(dy)
+            else:
+                dy = 0
             for b in group:
                 if b != blk:
                     b.spr.move_relative((0, dy*blk.scale))
@@ -1195,7 +1197,7 @@ class TurtleArtWindow():
                 blk.connections[n-1] = argblk
             else:
                 self._run_stack(blk)
-        elif blk.name=='sandwichbottom':
+        elif blk.name in COLLAPSIBLE:
             if self._hide_button_hit(blk.spr, x, y):
                 top = self._find_sandwich_top(blk)
                 if top is not None:
@@ -1228,7 +1230,7 @@ class TurtleArtWindow():
         # TODO: Add nesting; detect branches (e.g., if, ifelse, repeat)
         b = blk.connections[0]
         while b is not None:
-            if b.name == 'sandwichbottom':
+            if b.name in COLLAPSIBLE:
                 return b
             b = b.connections[0]
         return None
@@ -1247,6 +1249,14 @@ class TurtleArtWindow():
                     b.values.append(dy)
                 else:
                     b.values[0] = dy
+                b.name = 'sandwichcollapsed'
+                b.svg.set_show(True)
+                b.svg.set_hide(False)
+                dx = b.docks[0][2]
+                b._dx = 0
+                b.spr.set_label(_('click to open'))
+                b.resize()
+                b.spr.move_relative((dx-b.docks[0][2],0))
             if dy == 0:
                 b.spr.set_layer(HIDE_LAYER)
                 b.status = 'collapsed'
@@ -1260,6 +1270,20 @@ class TurtleArtWindow():
             if b.name in COLLAPSIBLE:
                 dy = b.values[0]
                 b.values[0] = 0
+                b.name = 'sandwichbottom'
+                b.spr.set_label(' ')
+                b.svg.set_show(False)
+                b.svg.set_hide(True)
+                dx = b.docks[0][2]
+                b.refresh()
+                b.spr.move_relative((dx-b.docks[0][2],0))
+                '''
+                #TODO: grow left edge of the sandwich along the stack
+                # this will connect the bottom to the top...
+                b.expand_in_y(-dy/self.block_scale)
+                b.refresh()
+                b.spr.move_relative((0,dy))
+                '''
             if dy == 0:
                 b.spr.set_layer(BLOCK_LAYER)
                 b.status = None
@@ -1830,7 +1854,6 @@ class TurtleArtWindow():
         self.canvas.setshade(shade)
         self.canvas.setpensize(pensize)
 
-    # TODO: handle collapsed blocks
     """
     Restore individual blocks from saved state
     """

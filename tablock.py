@@ -124,8 +124,9 @@ class Block:
 
     # We need to resize some blocks on the fly so that the labels fit.
     def resize(self):
-        self._dx += (self.spr.label_width()-self.spr.label_safe_width())
-        if self._dx != 0:
+        dx = (self.spr.label_width()-self.spr.label_safe_width())/self.scale
+        if dx !=0:
+            self._dx += dx
             if self._dx < 0:
                 self._dx = 0
             self.refresh()

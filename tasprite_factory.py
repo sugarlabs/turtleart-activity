@@ -356,11 +356,14 @@ class SVG:
     def sandwich_top(self):
         x = self._stroke_width/2.0
         y = self._stroke_width/2.0+self._radius
+        self.margins[0] = int(x+self._stroke_width+0.5)
+        self.margins[1] = int(self._stroke_width+0.5)
+        self.margins[2] = 0
+        self.margins[3] = 0
         svg = self._new_path(x, y)
         svg += self._corner(1, -1)
         svg += self._rline_to(self._radius+self._stroke_width, 0)
         svg += self._do_slot()
-        #
         svg += self._rline_to(self._expand_x, 0)
         xx = self._x
         svg += self._corner(1, 1)
@@ -368,10 +371,6 @@ class SVG:
         svg += self._corner(-1, 1)
         svg += self._line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
-        #
-        # svg += self._corner(1, 1)
-        # svg += self._rline_to(-self._radius,0)
-        #
         svg += self._do_tab()
         svg += self._inverse_corner(-1, 1, 90, 0, 0)
         svg += self._rline_to(0, self._expand_y)
@@ -385,6 +384,10 @@ class SVG:
     def sandwich_bottom(self):
         x = self._stroke_width/2.0
         y = self._stroke_width/2.0
+        self.margins[0] = int(self._stroke_width+0.5)
+        self.margins[1] = int(self._stroke_width+0.5)
+        self.margins[2] = 0
+        self.margins[3] = 0
         svg = self._new_path(x, y)
         svg += self._rline_to(self._radius, 0)
         svg += self._rline_to(0, self._expand_y)

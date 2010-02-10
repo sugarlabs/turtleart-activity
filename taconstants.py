@@ -174,7 +174,7 @@ BASIC_STYLE_TAIL = ['stopstack', 'empty']
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
     'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput',
     'picturelist', 'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2',
-    'fullscreen']
+    'fullscreen', 'sandwichcollapsed']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print', 'showaligned',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1', 'savepix',
@@ -359,7 +359,7 @@ EXPANDABLE = ['vspace', 'hspace', 'templatelist', 'list', 'identity2', 'myfunc']
 #
 # Blocks that are 'collapsible'
 #
-COLLAPSIBLE = ['sandwichbottom']
+COLLAPSIBLE = ['sandwichbottom', 'sandwichcollapsed']
 
 #
 # Depreciated block styles that need dock adjustments
@@ -451,8 +451,9 @@ BLOCK_NAMES = {
     'rightx':[_('picture right')],
     'savepix':[_('save picture')],
     'scale':[_('scale')],
-    'sandwichtop':['top of stack'],
     'sandwichbottom':[''],
+    'sandwichcollapsed':[_('click to open')],
+    'sandwichtop':['top of stack'],
     'setcolor':[_('set color')],
     'seth':[_('set heading')],
     'setpensize':[_('set pen size')],
