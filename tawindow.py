@@ -355,10 +355,22 @@ class TurtleArtWindow():
     Resize all of the blocks
     """
     def resize_blocks(self):
+        # We need to restore collapsed stacks before resizing.
+        for b in self.just_blocks():
+            if b.status == 'collapsed':
+                bot = self._find_sandwich_bottom(b)
+                if self._collapsed(bot):
+                    dy = bot.values[0]
+                    self._restore_stack(self._find_sandwich_top(b))
+                    bot.values[0] = dy
         for b in self.just_blocks():
             b.rescale(self.block_scale)
         for b in self.just_blocks():
             self._adjust_dock_positions(b)
+        # We need to re-collapsed stacks after resizing.
+        for b in self.just_blocks():
+            if self._collapsed(b):
+                self._collapse_stack(self._find_sandwich_top(b))
 
     """
     Show the toolbar palettes, creating them on init_only
@@ -697,10 +709,10 @@ class TurtleArtWindow():
             b.type = 'block'
         for b in group:
             self._adjust_dock_positions(b)
-        # If the stack had been collapsed before going into the trash,
-        # collapse it again now.
         for b in group:
             if self._collapsed(b):
+                # If the stack had been collapsed before going into the trash,
+                # collapse it again now.
                 self._collapse_stack(self._find_sandwich_top(b))
         self.trash_stack.remove(blk)
 
@@ -1090,19 +1102,24 @@ class TurtleArtWindow():
         if self.block_operation=='move' and self._in_the_trash(x, y):
             self.trash_stack.append(blk)
             for b in self.drag_group:
-                # Collapsed stacks are restored as they are moved to the trash,
                 if b.status == 'collapsed':
+                    # Collapsed stacks are restored for rescaling
+                    # and then recollapsed after they are moved to the trash.
                     bot = self._find_sandwich_bottom(b)
                     if self._collapsed(bot):
                         dy = bot.values[0]
                         self._restore_stack(self._find_sandwich_top(b))
-                        # but we note that they were collapsed.
                         bot.values[0] = dy
                 b.type = 'trash'
                 b.rescale(self.trash_scale)
             blk.spr.move((x,y))
             for b in self.drag_group:
                 self._adjust_dock_positions(b)
+            # Re-collapsing any stacks we had restored for scaling
+            for b in self.drag_group:
+                if self._collapsed(b):
+                    self._collapse_stack(self._find_sandwich_top(b))
+
             self.drag_group = None
             self.show_palette(PALETTE_NAMES.index('trash'))
             return
@@ -1198,27 +1215,24 @@ class TurtleArtWindow():
             else:
                 self._run_stack(blk)
         elif blk.name in COLLAPSIBLE:
-            if self._hide_button_hit(blk.spr, x, y):
-                top = self._find_sandwich_top(blk)
-                if top is not None:
-                    blk.svg.set_show(True)
-                    blk.svg.set_hide(False)
-                    blk.refresh()
-                    self._collapse_stack(top)
-            elif self._show_button_hit(blk.spr, x, y):
-                top = self._find_sandwich_top(blk)
-                if top is not None:
-                    blk.svg.set_show(False)
-                    blk.svg.set_hide(True)
-                    blk.refresh()
-                    self._restore_stack(top)
+            top = self._find_sandwich_top(blk)
+            print "%s clicked with top of %s" % (blk.name, str(top))
+            if self._collapsed(blk):
+                print "calling restore %s" % (blk.name)
+                self._restore_stack(top)
+            elif top is not None:
+                print "calling collapse %s" % (blk.name)
+                self._collapse_stack(top)
         elif blk.name=='nop' and self.myblock==None:
             self._import_py()
         else:
             self._run_stack(blk)
 
+    """
+    Find the sandwich top above this block.
+    # TODO: Add nesting; detect branches (e.g., if, ifelse, repeat)
+    """
     def _find_sandwich_top(self, blk):
-        # TODO: Add nesting; detect branches (e.g., if, ifelse, repeat)
         b = blk.connections[0]
         while b is not None:
             if b.name == 'sandwichtop':
@@ -1226,69 +1240,97 @@ class TurtleArtWindow():
             b = b.connections[0]
         return None
 
+    """
+    Find the sandwich bottom below this block.
+    # TODO: Add nesting; detect branches (e.g., if, ifelse, repeat)
+    """
     def _find_sandwich_bottom(self, blk):
         # TODO: Add nesting; detect branches (e.g., if, ifelse, repeat)
-        b = blk.connections[0]
+        b = blk.connections[len(blk.connections)-1]
         while b is not None:
             if b.name in COLLAPSIBLE:
                 return b
-            b = b.connections[0]
+            b = b.connections[len(blk.connections)-1]
         return None
 
+    """
+    Hide all the blocks between the sandwich top and sandwich bottom.
+    """
     def _collapse_stack(self, top):
+        print "calling _collapse from %s" % (top.name)
         group = self._find_group(top.connections[len(top.connections)-1])
+        print "top of group is %s" % (group[0].name)
         if group[0].name in COLLAPSIBLE:
+            print "nothing to do"
             return
-        (x, y) = group[0].spr.get_xy()
-        dy = 0
+        # (x, y) = group[0].spr.get_xy()
+        # dy = 0
         for b in group:
             if b.name in COLLAPSIBLE:
-                (bx, by) = b.spr.get_xy()
-                dy = y-by
+                # We had to...
+                # b.spr.move_relative((0,-dy))
+
+                # Replace 'sandwichbottom' shape with 'sandwichcollapsed' shape
+                # (bx, by) = b.spr.get_xy()
+                # dy = y-by
+                dy = 1
                 if len(b.values) == 0:
                     b.values.append(dy)
                 else:
                     b.values[0] = dy
+                print "collapsing: dy=%d, myscale=%f scale=%f" %\
+                      (dy, b.scale, self.block_scale)
                 b.name = 'sandwichcollapsed'
                 b.svg.set_show(True)
                 b.svg.set_hide(False)
                 dx = b.docks[0][2]
                 b._dx = 0
+                b._ey = 0
                 b.spr.set_label(_('click to open'))
                 b.resize()
-                b.spr.move_relative((dx-b.docks[0][2],0))
-            if dy == 0:
+                b.resize()
+                # Redock to sandwich top in group
+                you = self._find_sandwich_top(b)
+                (yx, yy) = you.spr.get_xy()
+                yd = you.docks[len(you.docks)-1]
+                print "%s (%d,%d) (%d,%d)" % (you.name, yx, yy, yd[2], yd[3])
+                b.spr.move((yx+yd[2]-b.docks[0][2],yy+yd[3]-b.docks[0][3]))
+            else:
                 b.spr.set_layer(HIDE_LAYER)
                 b.status = 'collapsed'
-            else:
-                b.spr.move_relative((0,dy))
 
+    """
+    Restore all the blocks between the sandwich top and sandwich bottom.
+    """
     def _restore_stack(self, top):
+        print "calling _restore from %s" % (top)
         group = self._find_group(top.connections[len(top.connections)-1])
-        dy = 0
+        print "top of group is %s" % (group[0].name)
+        # dy = 0
         for b in group:
             if b.name in COLLAPSIBLE:
-                dy = b.values[0]
+                # dy = b.values[0]
+                print "restoring: dy=%d, myscale=%f scale=%f" %\
+                      (b.values[0], b.scale, self.block_scale)
                 b.values[0] = 0
                 b.name = 'sandwichbottom'
                 b.spr.set_label(' ')
                 b.svg.set_show(False)
                 b.svg.set_hide(True)
-                dx = b.docks[0][2]
                 b.refresh()
-                b.spr.move_relative((dx-b.docks[0][2],0))
-                '''
-                #TODO: grow left edge of the sandwich along the stack
-                # this will connect the bottom to the top...
-                b.expand_in_y(-dy/self.block_scale)
-                b.refresh()
-                b.spr.move_relative((0,dy))
-                '''
-            if dy == 0:
+                # Grow the left edge of the sandwich along the stack
+                # to connect the bottom to the top.
+                # b.expand_in_y(-dy/self.block_scale)
+                # b.refresh()
+                # Redock to previous block in group
+                you = b.connections[0]
+                (yx, yy) = you.spr.get_xy()
+                yd = you.docks[len(you.docks)-1]
+                print "%s (%d,%d) (%d,%d)" % (you.name, yx, yy, yd[2], yd[3])
+                b.spr.move((yx+yd[2]-b.docks[0][2],yy+yd[3]-b.docks[0][3]))
+            else:
                 b.spr.set_layer(BLOCK_LAYER)
                 b.status = None
-            else:
-                b.spr.move_relative((0,-dy))
 
     def _collapsed(self, blk):
         if blk is not None and blk.name in COLLAPSIBLE and\
