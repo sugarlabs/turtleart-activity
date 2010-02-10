@@ -294,7 +294,8 @@ class TurtleArtWindow():
             self.hide = True
         else:
             for blk in self.just_blocks():
-                blk.spr.set_layer(BLOCK_LAYER)
+                if blk.status != 'collapsed':
+                    blk.spr.set_layer(BLOCK_LAYER)
             self.show_palette()
             self.hide = False
         self.canvas.canvas.inval()
@@ -424,6 +425,7 @@ class TurtleArtWindow():
         if self.palette_sprs[n][self.orientation] is not None:
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
+        # TODO: use block margins to compute sizes dynamically
         if self.palettes[n] == []:
             for i, name in enumerate(PALETTES[n]):
                 # Some blocks are too big to fit the palette.
@@ -455,7 +457,8 @@ class TurtleArtWindow():
         if n == PALETTE_NAMES.index('trash'):
             for blk in self.trash_stack:
                 for b in self._find_group(blk):
-                    b.spr.set_layer(TAB_LAYER)
+                    if b.status != 'collapsed':
+                        b.spr.set_layer(TAB_LAYER)
 
     """
     Hide the toolbar palettes
@@ -618,7 +621,7 @@ class TurtleArtWindow():
                 elif blk.name == 'empty':
                     self._empty_trash()
                 elif MACROS.has_key(blk.name):
-                    self._new_macro(blk.name, x, y)
+                    self._new_macro(blk.name, x+100, y+100)
                 else:
                     blk.highlight()
                     self._new_block(blk.name, x, y)
@@ -685,15 +688,20 @@ class TurtleArtWindow():
         self._restore_from_trash(self.trash_stack[len(self.trash_stack)-1])
 
     def _restore_from_trash(self, blk):
+        # TODO: Collapsed stacks will have been restored before moving to trash.
         group = self._find_group(blk)
         for b in group:
             b.rescale(self.block_scale)
-            b.spr.set_layer(BLOCK_LAYER)
+            if blk.status != 'collapsed':
+                b.spr.set_layer(BLOCK_LAYER)
             x,y = b.spr.get_xy()
             b.spr.move((x+PALETTE_WIDTH,y+PALETTE_HEIGHT))
             b.type = 'block'
         for b in group:
             self._adjust_dock_positions(b)
+            if b.name == 'sandwichbottom' and\
+               len(b.values) == 1 and b.values[0] != 0:
+                b.spr.move_relative((0, b.values[0]))
         self.trash_stack.remove(blk)
 
     """
@@ -726,7 +734,8 @@ class TurtleArtWindow():
             (sx, sy) = blk.spr.get_xy()
             self.drag_pos = x-sx, y-sy
             for blk in self.drag_group:
-                blk.spr.set_layer(TOP_LAYER)
+                if blk.status != 'collapsed':
+                    blk.spr.set_layer(TOP_LAYER)
             self.saved_string = blk.spr.labels[0]
 
     """
@@ -752,6 +761,7 @@ class TurtleArtWindow():
             newblk = Block(self.block_list, self.sprite_list, name, x-20, y-20,
                            'block', [], self.block_scale)
         # Add special skin to some blocks
+        # TODO: use block margins to compute sizes dynamically
         if name == 'nop':
             if self.nop == 'pythonloaded':
                 newblk.spr.set_image(self.media_shapes['pythonon'], 1,
@@ -813,7 +823,9 @@ class TurtleArtWindow():
         macro = MACROS[name]
         macro[0][2] = x
         macro[0][3] = y
-        self.process_data(macro)
+        top = self.process_data(macro)
+        self.block_operation = 'new' 
+        self.drag_group = self._find_group(top)
 
     """
     Process data (from a macro, a file, or the clipboard) into blocks.
@@ -879,6 +891,7 @@ class TurtleArtWindow():
         # Block sizes and shapes may have changed.
         for b in blocks:
             self._adjust_dock_positions(b)
+        return blocks[0]
 
     """
     Adjust the dock x,y positions
@@ -943,6 +956,11 @@ class TurtleArtWindow():
         # If we have a stack of blocks selected, move them.
         elif self.drag_group[0] is not None:
             blk = self.drag_group[0]
+            # Don't move a sandwichbottom is the stack is collapsed
+            if blk.name == 'sandwichbottom' and\
+               len(blk.values) == 1 and blk.values[0] != 0:
+                return
+
             self.selected_spr = blk.spr
             dragx, dragy = self.drag_pos
             if mdx != 0 or mdy != 0:
@@ -1066,13 +1084,17 @@ class TurtleArtWindow():
 
         blk = self.drag_group[0]
         # Remove blocks by dragging them onto the trash palette
+        # TODO: Restore collapsed stacks before moving to trash.
         if self.block_operation=='move' and self._in_the_trash(x, y):
             self.trash_stack.append(blk)
             for b in self.drag_group:
+                if b.type == 'collapsed':
+                    self._restore_stack(self._find_top_of_sandwich(b))
+                """
                 b.type = 'trash'
                 b.rescale(self.trash_scale)
-                # b.spr.hide()
             blk.spr.move((x,y))
+            """
             for b in self.drag_group:
                 self._adjust_dock_positions(b)
             self.drag_group = None
@@ -1083,12 +1105,22 @@ class TurtleArtWindow():
         if self.block_operation=='new':
             for b in self.drag_group:
                 (bx, by) = b.spr.get_xy()
-                b.spr.move((bx+200, by+120))
+                b.spr.move((bx+100, by+100))
 
         # Look to see if we can dock the current stack.
         self._snap_to_dock()
+        # When a sandwich bottom is docked, mark it as collapsable
+        if blk.name == 'sandwichbottom':
+            if len(blk.values) == 1 and blk.values[0] != 0:
+                blk.svg.set_show(True)
+                blk.svg.set_hide(False)
+            else:
+                blk.svg.set_hide(True)
+                blk.svg.set_show(False)
+            blk.refresh()
         for b in self.drag_group:
-            b.spr.set_layer(BLOCK_LAYER)
+            if b.status != 'collapsed':
+                b.spr.set_layer(BLOCK_LAYER)
         self.drag_group = None
 
         # Find the block we clicked on and process it.
@@ -1102,6 +1134,7 @@ class TurtleArtWindow():
         blk = self.block_list.spr_to_block(self.selected_spr)
         if blk is None:
             return
+        print blk.name
         self.selected_blk = blk
         if  blk.name=='number' or blk.name=='string':
             self.saved_string = blk.spr.labels[0]
@@ -1157,10 +1190,71 @@ class TurtleArtWindow():
                 blk.connections[n-1] = argblk
             else:
                 self._run_stack(blk)
+        elif blk.name=='sandwichbottom':
+            print "clicked on sandwich bottom"
+            if self._hide_button_hit(blk.spr, x, y):
+                top = self._find_sandwich_top(blk)
+                if top is not None:
+                    print "collapsing stack"
+                    blk.svg.set_show(True)
+                    blk.svg.set_hide(False)
+                    blk.refresh()
+                    self._collapse_stack(top)
+            elif self._show_button_hit(blk.spr, x, y):
+                top = self._find_sandwich_top(blk)
+                if top is not None:
+                    print "restoring stack"
+                    blk.svg.set_show(False)
+                    blk.svg.set_hide(True)
+                    blk.refresh()
+                    self._restore_stack(top)
         elif blk.name=='nop' and self.myblock==None:
             self._import_py()
         else:
             self._run_stack(blk)
+
+    def _find_sandwich_top(self, blk):
+        # TODO: Add nesting; detect branches (e.g., if, ifelse, repeat)
+        b = blk.connections[0]
+        while b is not None:
+            if b.name == 'sandwichtop':
+                return b
+            b = b.connections[0]
+        return None
+
+    def _collapse_stack(self, top):
+        group = self._find_group(top.connections[len(top.connections)-1])
+        if group[0].name == 'sandwichbottom':
+            return
+        (x, y) = group[0].spr.get_xy()
+        dy = 0
+        for b in group:
+            if b.name == 'sandwichbottom':
+                (bx, by) = b.spr.get_xy()
+                dy = y-by
+                if len(b.values) == 0:
+                    b.values.append(dy)
+                else:
+                    b.values[0] = dy
+            if dy == 0:
+                b.spr.set_layer(HIDE_LAYER)
+                b.status = 'collapsed'
+            else:
+                b.spr.move_relative((0,dy))
+
+    def _restore_stack(self, top):
+        group = self._find_group(top.connections[len(top.connections)-1])
+        dy = 0
+        for b in group:
+            if b.name == 'sandwichbottom':
+                dy = b.values[0]
+                b.values[0] = 0
+            if dy == 0:
+                b.spr.set_layer(BLOCK_LAYER)
+                b.status = None
+            else:
+                print "restoring %s" % (b.name)
+                b.spr.move_relative((0,-dy))
 
     """
     Run a stack of blocks.
@@ -1329,6 +1423,9 @@ class TurtleArtWindow():
     """
     def _disconnect(self, blk):
         if blk.connections[0]==None:
+            return
+        if blk.name == 'sandwichbottom' and\
+           len(blk.values) == 1 and blk.values[0] != 0:
             return
         blk2=blk.connections[0]
         blk2.connections[blk2.connections.index(blk)] = None
@@ -1588,7 +1685,9 @@ class TurtleArtWindow():
     Jog block
     """
     def _jog_block(self, blk, dx, dy):
-        # drag entire stack if moving lock block
+        if blk.name == 'sandwichbottom' and\
+           len(blk.values) == 1 and blk.values[0] != 0:
+            return
         self.drag_group = self._find_group(blk)
         # check to see if any block ends up with a negative x
         for blk in self.drag_group:
@@ -1675,7 +1774,7 @@ class TurtleArtWindow():
     def load_files(self, ta_file, create_new_project=True):
         if create_new_project is True:
             self.new_project()
-        self.process_data(data_from_file(ta_file))
+        top = self.process_data(data_from_file(ta_file))
     
     def load_file(self, create_new_project=True):
         fname, self.load_save_folder = get_load_name('.ta',
@@ -1717,6 +1816,7 @@ class TurtleArtWindow():
         self.canvas.setshade(shade)
         self.canvas.setpensize(pensize)
 
+    # TODO: handle collapsed blocks
     """
     Restore individual blocks from saved state
     """
@@ -1818,7 +1918,7 @@ class TurtleArtWindow():
     Start a new project with a 'start' brick
     """
     def load_start(self): 
-       self.process_data([[0, "start", 218, 224, [None, None]]])
+       top = self.process_data([[0, "start", 218, 224, [None, None]]])
     
     """
     Start a project to a file
@@ -1836,7 +1936,8 @@ class TurtleArtWindow():
         data = self.assemble_data_to_save()
         data_to_file(data, fname+'.ta')
         self.save_file_name = os.path.basename(fname)
-    
+
+    # TODO: handle collapsed blocks    
     """
     Pack the project (or stack) into a data stream to be serialized
     """

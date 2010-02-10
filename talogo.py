@@ -880,7 +880,7 @@ class LogoCode:
         return
     
     def prim_print(self, n, flag):
-        if flag and self.tw.hide:
+        if flag and (self.tw.hide or self.tw.step_time == 0):
             return
         if type(n) == str or type(n) == unicode:
             if n[0:6] == 'media_':

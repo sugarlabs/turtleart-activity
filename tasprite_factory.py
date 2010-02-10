@@ -353,6 +353,46 @@ class SVG:
         svg += self._footer()
         return self._header() + svg
 
+    def sandwich_top(self):
+        x = self._stroke_width/2.0
+        y = self._stroke_width/2.0+self._radius
+        svg = self._new_path(x, y)
+        svg += self._corner(1, -1)
+        svg += self._rline_to(self._radius+self._stroke_width, 0)
+        svg += self._do_slot()
+        svg += self._corner(1, 1)
+        svg += self._rline_to(-self._radius,0)
+        svg += self._do_tab()
+        svg += self._inverse_corner(-1, 1, 90, 0, 0)
+        svg += self._rline_to(-self._radius, 0)
+        svg += self._close_path()
+        self._calculate_w_h()
+        svg += self._style()
+        svg += self._footer()
+        return self._header() + svg
+
+    def sandwich_bottom(self):
+        x = self._stroke_width/2.0
+        y = self._stroke_width/2.0
+        svg = self._new_path(x, y)
+        svg += self._rline_to(self._radius, 0)
+        svg += self._inverse_corner(1, 1, 90, 0, 0)
+        svg += self._do_slot()
+        svg += self._rline_to(self._radius, 0)
+        svg += self._corner(-1, 1)
+        svg += self._do_tab()
+        svg += self._rline_to(-self._radius-self._stroke_width,0)
+        svg += self._corner(-1, -1)
+        svg += self._close_path()
+        self._calculate_w_h()
+        svg += self._style()
+        if self._hide is True:
+            svg += self._hide_dot()
+        if self._show is True:
+            svg += self._show_dot()
+        svg += self._footer()
+        return self._header() + svg
+
     #
     # Utility methods
     #
@@ -586,14 +626,30 @@ class SVG:
             y = self._y + sign_y*self._radius
             return self._arc_to(x, y, self._radius, a, l, s)
 
+    def _inverse_corner(self, sign_x, sign_y, a=90, l=0, s=1):
+        r2 = self._stroke_width+self._radius/2.0
+        if sign_x*sign_y == -1:
+            svg_str =self._rline_to(sign_x*(r2-self._stroke_width), 0)
+        else:
+            svg_str =self._rline_to(0, sign_y*+(r2-self._stroke_width))
+        x = self._x + sign_x*r2
+        y = self._y + sign_y*r2
+        svg_str += self._arc_to(x, y, r2, a, l, s)
+        # svg += self._rarc_to(sign_x, sign_y, 90, 0, 0)
+        if sign_x*sign_y == -1:
+            svg_str +=self._rline_to(0, sign_y*(r2-self._stroke_width))
+        else:
+            svg_str +=self._rline_to(sign_x*(r2-self._stroke_width), 0)
+        return svg_str
+
     def _corner(self, sign_x, sign_y, a=90, l=0, s=1):
         svg_str = ""
         if sign_x == -1 and sign_y == 1:
-            self._hide_x = self._x - self._radius/2 - self._stroke_width
-            self._hide_y = self._y + self._radius/2 - self._stroke_width
+            self._hide_x = self._x - self._radius/2
+            self._hide_y = self._y + self._radius/2
         if sign_x == -1 and sign_y == -1:
-            self._show_x = self._x - self._radius/2 + self._stroke_width
-            self._show_y = self._y - self._radius/2 - self._stroke_width
+            self._show_x = self._x - self._radius/2
+            self._show_y = self._y - self._radius/2
         if self._radius > 0:
             r2 = self._radius/2.0
             if sign_x*sign_y == 1:
@@ -634,7 +690,7 @@ class SVG:
                                                     self._hide_y*scale)
         self._fill, self._stroke = "#FFFFFF", "#FFFFFF"
         svg += self._rect(10*scale2, 2*scale2, self._hide_x*scale-5*scale2,
-                                             self._hide_y*scale-scale)
+                                             self._hide_y*scale-scale+scale2)
         self._fill, self._stroke = _saved_fill, _saved_stroke
         return svg
 
@@ -651,8 +707,8 @@ class SVG:
                                                     self._show_y*scale)
         self._fill, self._stroke = "#FEFEFE", "#FEFEFE"
         svg += self._rect(10*scale2, 2*scale2, self._show_x*scale-5*scale2,
-                                             self._show_y*scale-scale)
-        svg += self._rect(2*scale2, 10*scale2, self._show_x*scale-scale,
+                                             self._show_y*scale-scale+scale2)
+        svg += self._rect(2*scale2, 10*scale2, self._show_x*scale-scale+scale2,
                                              self._show_y*scale-5*scale2)
         self._fill, self._stroke = _saved_fill, _saved_stroke
         return svg
@@ -829,31 +885,28 @@ def generator(datapath):
     """
 
     svg0 = SVG()
-    f = open_file(datapath, "portfolio-test.svg")
-    svg0.set_scale(1)
-    svg0.expand(25,15)
-    svg0.set_slot(True)
-    svg0.set_innie([True, True, False, True])
+    f = open_file(datapath, "sandwich_test2.svg")
+    svg0.set_scale(2)
     svg0.set_tab(True)
-    svg0.set_gradiant(True)
-    svg0.set_draw_innies(False)
-    svg_str = svg0.portfolio()
+    svg0.set_slot(True)
+    svg0.set_hide(True)
+    svg0.set_show(True)
+    svg_str = svg0.sandwich_bottom()
+    f.write(svg_str)
+    close_file(f)
+
+    svg0 = SVG()
+    f = open_file(datapath, "sandwich_test.svg")
+    svg0.set_scale(2)
+    svg0.set_tab(True)
+    svg0.set_slot(True)
+    svg0.set_hide(True)
+    svg0.set_show(True)
+    svg_str = svg0.sandwich_top()
     f.write(svg_str)
     close_file(f)
 
     """
-    svg1 = SVG()
-    f = open_file(datapath, "blob-test.svg")
-    svg1.set_scale(2)
-    svg1.expand(0,20)
-    svg1.set_tab(True)
-    svg1.set_slot(True)
-    svg1.set_gradiant(True)
-    svg1.set_hide(True)
-    svg_str = svg1.basic_block()
-    f.write(svg_str)
-    close_file(f)
-
     svg2 = SVG()
     f = open_file(datapath, "box-test.svg")
     svg2.set_scale(1)

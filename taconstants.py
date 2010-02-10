@@ -87,7 +87,7 @@ for Sugar toolbars.
 from gettext import gettext as _
 
 #
-# sprite layers
+# Sprite layers
 #
 
 HIDE_LAYER = 100
@@ -101,7 +101,7 @@ STATUS_LAYER = 900
 TOP_LAYER = 1000
 
 #
-# block palette categories
+# Block-palette categories
 #
 
 PALETTE_NAMES = ['turtle', 'pen', 'colors', 'numbers', 'flow', 'blocks',
@@ -124,14 +124,15 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
              'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2', 'box',
              'storein', 'start'],
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
-             'myfunc',  'nop', 'addturtle', 'print', 'comment'],
-            ['journal', 'audio', 'description', 'list', 
+             'myfunc',  'nop', 'sandwichtop', 'sandwichbottom',
+             'addturtle', 'print', 'comment'],
+            ['journal', 'audio', 'description', 'picturelist', 
              'hideblocks', 'showblocks', 'fullscreen',
              'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2', 'savepix'],
             ['empty', 'restoreall']]
 
 #
-# block style attributes
+# Block-style attributes
 #
 
 COLORS = [["#00FF00","#00A000"], ["#00FFFF","#00A0A0"], ["#00FFFF","#00A0A0"],
@@ -165,14 +166,15 @@ PALETTE_DEFAULT_SCALE = 1.5
 PALETTE_SCALE = {'template2x2':1.0, 'template1x2':1.0}
 
 #
-# block style definitions
+# Block-style definitions
 #
 BASIC_STYLE_HEAD = ['start', 'hat1', 'hat2', 'restore', 'restoreall']
 BASIC_STYLE_HEAD_1ARG = ['hat']
 BASIC_STYLE_TAIL = ['stopstack', 'empty']
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
     'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput',
-    'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2', 'fullscreen']
+    'picturelist', 'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2',
+    'fullscreen', 'sandwichtop', 'sandwichbottom']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print', 'showaligned',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1', 'savepix',
@@ -197,11 +199,14 @@ FLOW_STYLE = ['forever', 'hspace']
 FLOW_STYLE_1ARG = ['repeat']
 FLOW_STYLE_BOOLEAN = ['if']
 FLOW_STYLE_ELSE = ['ifelse']
+
+# Depreciated block styles
 PORTFOLIO_STYLE_2x2 = ['template2x2']
 BULLET_STYLE = ['templatelist', 'list']
 PORTFOLIO_STYLE_1x1 = ['template1x1', 'template1x1a']
 PORTFOLIO_STYLE_2x1 = ['template2x1']
 PORTFOLIO_STYLE_1x2 = ['template1x2']
+
 
 #
 # Macros (groups of blocks)
@@ -218,122 +223,154 @@ MACROS = {
                [8, 'vspace', 0, 0, [3, 9]],
                [9, 'wait', 0, 0, [8, 10, None]],
                [10, ['number', '1'], 0, 0, [9, None]]],
+    'picturelist':
+              [[0, 'comment', 0, 0, [None, 1, 2]],
+               [1, ['string', _('bulleted list')], 0, 0, [0, None]],
+               [2, 'sandwichtop', 0, 0, [0, 3]],
+               [3, 'setxy', 0, 0, [2, 4, 5, 6]],
+               [4, 'titlex', 0, 0, [3, None]],
+               [5, 'titley', 0, 0, [3, None]],
+               [6, 'show', 0, 0, [3, 7, 8]],
+               [7, ['string',_('Title')], 0, 0, [6, None]],
+               [8, 'setxy', 0, 0, [6, 9, 10, 11]],
+               [9, 'leftx', 0, 0, [8, None]],
+               [10, 'topy', 0, 0, [8, None]],
+               [11, 'list', 0, 0, [8, 12, 13, 14]],
+               [12, ['string','∙ '], 0, 0, [11, None]],
+               [13, ['string','∙ '], 0, 0, [11, None]],
+               [14, 'sandwichbottom', 0, 0, [11, None]]],
     'picture1x1':
-              [[0, 'setxy', 0, 0, [None, 1, 2, 3]],
-               [1, 'titlex', 0, 0, [0, None]],
-               [2, 'titley', 0, 0, [0, None]],
-               [3, 'show', 0, 0, [0, 4, 5]],
-               [4, ['string',_('Title')], 0, 0, [3, None]],
-               [5, 'setscale', 0, 0, [3, 6, 7]],
-               [6, ['number', '90'], 0, 0, [5, None]],
-               [7, 'setxy', 0, 0, [5, 8, 9, 10]],
-               [8, 'leftx', 0, 0, [7, None]],
-               [9, 'topy', 0, 0, [7, None]],
-               [10, 'showaligned', 0, 0, [7, 11, None]],
-               [11, 'journal', 0, 0, [10, None]]],
+              [[0, 'comment', 0, 0, [None, 1, 2]],
+               [1, ['string', _('picture')], 0, 0, [0, None]],
+               [2, 'sandwichtop', 0, 0, [0, 3]],
+               [3, 'setxy', 0, 0, [2, 4, 5, 6]],
+               [4, 'titlex', 0, 0, [3, None]],
+               [5, 'titley', 0, 0, [3, None]],
+               [6, 'show', 0, 0, [3, 7, 8]],
+               [7, ['string',_('Title')], 0, 0, [6, None]],
+               [8, 'setscale', 0, 0, [6, 9, 10]],
+               [9, ['number', '90'], 0, 0, [8, None]],
+               [10, 'setxy', 0, 0, [8, 11, 12, 13]],
+               [11, 'leftx', 0, 0, [10, None]],
+               [12, 'topy', 0, 0, [10, None]],
+               [13, 'showaligned', 0, 0, [10, 14, 15]],
+               [14, 'journal', 0, 0, [13, None]],
+               [15, 'sandwichbottom', 0, 0, [13, None]]],
     'picture2x2':
-              [[0, 'setxy', 0, 0, [None, 1, 2, 3]],
-               [1, 'titlex', 0, 0, [0, None]],
-               [2, 'titley', 0, 0, [0, None]],
-               [3, 'show', 0, 0, [0, 4, 5]],
-               [4, ['string',_('Title')], 0, 0, [3, None]],
-               [5, 'setscale', 0, 0, [3, 6, 7]],
-               [6, ['number', '45'], 0, 0, [5, None]],
-               [7, 'setxy', 0, 0, [5, 8, 9, 10]],
-               [8, 'leftx', 0, 0, [7, None]],
-               [9, 'topy', 0, 0, [7, None]],
-               [10, 'showaligned', 0, 0, [7, 11, 12]],
-               [11, 'journal', 0, 0, [10, None]],
-               [12, 'setxy', 0, 0, [10, 13, 14, 15]],
-               [13, 'rightx', 0, 0, [12, None]],
-               [14, 'topy', 0, 0, [12, None]],
-               [15, 'showaligned', 0, 0, [12, 16, 17]],
-               [16, 'journal', 0, 0, [15, None]],
-               [17, 'setxy', 0, 0, [15, 18, 19, 20]],
-               [18, 'leftx', 0, 0, [17, None]],
-               [19, 'bottomy', 0, 0, [17, None]],
-               [20, 'showaligned', 0, 0, [17, 21, 22]],
-               [21, 'journal', 0, 0, [20, None]],
-               [22, 'setxy', 0, 0, [20, 23, 24, 25]],
-               [23, 'rightx', 0, 0, [22, None]],
-               [24, 'bottomy', 0, 0, [22, None]],
-               [25, 'showaligned', 0, 0, [22, 26, None]],
-               [26, 'journal', 0, 0, [25, None]]],
+              [[0, 'comment', 0, 0, [None, 1, 2]],
+               [1, ['string', _('2×2 pictures')], 0, 0, [0, None]],
+               [2, 'sandwichtop', 0, 0, [0, 3]],
+               [3, 'setxy', 0, 0, [2, 4, 5, 6]],
+               [4, 'titlex', 0, 0, [3, None]],
+               [5, 'titley', 0, 0, [3, None]],
+               [6, 'show', 0, 0, [3, 7, 8]],
+               [7, ['string',_('Title')], 0, 0, [6, None]],
+               [8, 'setscale', 0, 0, [6, 9, 10]],
+               [9, ['number', '45'], 0, 0, [8, None]],
+               [10, 'setxy', 0, 0, [8, 11, 12, 13]],
+               [11, 'leftx', 0, 0, [10, None]],
+               [12, 'topy', 0, 0, [10, None]],
+               [13, 'showaligned', 0, 0, [10, 14, 15]],
+               [14, 'journal', 0, 0, [13, None]],
+               [15, 'setxy', 0, 0, [13, 16, 17, 18]],
+               [16, 'rightx', 0, 0, [15, None]],
+               [17, 'topy', 0, 0, [15, None]],
+               [18, 'showaligned', 0, 0, [15, 19, 20]],
+               [19, 'journal', 0, 0, [18, None]],
+               [20, 'setxy', 0, 0, [18, 21, 22, 23]],
+               [21, 'leftx', 0, 0, [20, None]],
+               [22, 'bottomy', 0, 0, [20, None]],
+               [23, 'showaligned', 0, 0, [20, 24, 25]],
+               [24, 'journal', 0, 0, [23, None]],
+               [25, 'setxy', 0, 0, [23, 26, 27, 28]],
+               [26, 'rightx', 0, 0, [25, None]],
+               [27, 'bottomy', 0, 0, [25, None]],
+               [28, 'showaligned', 0, 0, [25, 29, 30]],
+               [29, 'journal', 0, 0, [28, None]],
+               [30, 'sandwichbottom', 0, 0, [28, None]]],
     'picture2x1':
-              [[0, 'setxy', 0, 0, [None, 1, 2, 3]],
-               [1, 'titlex', 0, 0, [0, None]],
-               [2, 'titley', 0, 0, [0, None]],
-               [3, 'show', 0, 0, [0, 4, 5]],
-               [4, ['string',_('Title')], 0, 0, [3, None]],
-               [5, 'setscale', 0, 0, [3, 6, 7]],
-               [6, ['number', '45'], 0, 0, [5, None]],
-               [7, 'setxy', 0, 0, [5, 8, 9, 10]],
-               [8, 'leftx', 0, 0, [7, None]],
-               [9, 'topy', 0, 0, [7, None]],
-               [10, 'showaligned', 0, 0, [7, 11, 12]],
-               [11, 'journal', 0, 0, [10, None]],
-               [12, 'setxy', 0, 0, [10, 13, 14, 15]],
-               [13, 'rightx', 0, 0, [12, None]],
-               [14, 'topy', 0, 0, [12, None]],
-               [15, 'showaligned', 0, 0, [12, 16, 17]],
-               [16, 'journal', 0, 0, [15, None]],
-               [17, 'setxy', 0, 0, [15, 18, 19, 20]],
-               [18, 'leftx', 0, 0, [17, None]],
-               [19, 'bottomy', 0, 0, [17, None]],
-               [20, 'showaligned', 0, 0, [17, 21, 22]],
-               [21, 'description', 0, 0, [20, None]],
-               [22, 'setxy', 0, 0, [20, 23, 24, 25]],
-               [23, 'rightx', 0, 0, [22, None]],
-               [24, 'bottomy', 0, 0, [22, None]],
-               [25, 'showaligned', 0, 0, [22, 26, None]],
-               [26, 'description', 0, 0, [25, None]]],
+              [[0, 'comment', 0, 0, [None, 1, 2]],
+               [1, ['string', _('2×1 pictures')], 0, 0, [0, None]],
+               [2, 'sandwichtop', 0, 0, [0, 3]],
+               [3, 'setxy', 0, 0, [2, 4, 5, 6]],
+               [4, 'titlex', 0, 0, [3, None]],
+               [5, 'titley', 0, 0, [3, None]],
+               [6, 'show', 0, 0, [3, 7, 8]],
+               [7, ['string',_('Title')], 0, 0, [6, None]],
+               [8, 'setscale', 0, 0, [6, 9, 10]],
+               [9, ['number', '45'], 0, 0, [8, None]],
+               [10, 'setxy', 0, 0, [8, 11, 12, 13]],
+               [11, 'leftx', 0, 0, [10, None]],
+               [12, 'topy', 0, 0, [10, None]],
+               [13, 'showaligned', 0, 0, [10, 14, 15]],
+               [14, 'journal', 0, 0, [13, None]],
+               [15, 'setxy', 0, 0, [13, 16, 17, 18]],
+               [16, 'rightx', 0, 0, [15, None]],
+               [17, 'topy', 0, 0, [15, None]],
+               [18, 'showaligned', 0, 0, [15, 19, 20]],
+               [19, 'journal', 0, 0, [18, None]],
+               [20, 'setxy', 0, 0, [18, 21, 22, 23]],
+               [21, 'leftx', 0, 0, [20, None]],
+               [22, 'bottomy', 0, 0, [20, None]],
+               [23, 'showaligned', 0, 0, [20, 24, 25]],
+               [24, 'description', 0, 0, [23, None]],
+               [25, 'setxy', 0, 0, [23, 26, 27, 28]],
+               [26, 'rightx', 0, 0, [25, None]],
+               [27, 'bottomy', 0, 0, [25, None]],
+               [28, 'showaligned', 0, 0, [25, 29, 30]],
+               [29, 'description', 0, 0, [28, None]],
+               [30, 'sandwichbottom', 0, 0, [28, None]]],
     'picture1x2':
-              [[0, 'setxy', 0, 0, [None, 1, 2, 3]],
-               [1, 'titlex', 0, 0, [0, None]],
-               [2, 'titley', 0, 0, [0, None]],
-               [3, 'show', 0, 0, [0, 4, 5]],
-               [4, ['string',_('Title')], 0, 0, [3, None]],
-               [5, 'setscale', 0, 0, [3, 6, 7]],
-               [6, ['number', '45'], 0, 0, [5, None]],
-               [7, 'setxy', 0, 0, [5, 8, 9, 10]],
-               [8, 'leftx', 0, 0, [7, None]],
-               [9, 'topy', 0, 0, [7, None]],
-               [10, 'showaligned', 0, 0, [7, 11, 12]],
-               [11, 'journal', 0, 0, [10, None]],
-               [12, 'setxy', 0, 0, [10, 13, 14, 15]],
-               [13, 'rightx', 0, 0, [12, None]],
-               [14, 'topy', 0, 0, [12, None]],
-               [15, 'showaligned', 0, 0, [12, 16, 17]],
-               [16, 'description', 0, 0, [15, None]],
-               [17, 'setxy', 0, 0, [15, 18, 19, 20]],
-               [18, 'leftx', 0, 0, [17, None]],
-               [19, 'bottomy', 0, 0, [17, None]],
-               [20, 'showaligned', 0, 0, [17, 21, 22]],
-               [21, 'journal', 0, 0, [20, None]],
-               [22, 'setxy', 0, 0, [20, 23, 24, 25]],
-               [23, 'rightx', 0, 0, [22, None]],
-               [24, 'bottomy', 0, 0, [22, None]],
-               [25, 'showaligned', 0, 0, [22, 26, None]],
-               [26, 'description', 0, 0, [25, None]]]
+              [[0, 'comment', 0, 0, [None, 1, 2]],
+               [1, ['string', _('1×2 pictures')], 0, 0, [0, None]],
+               [2, 'sandwichtop', 0, 0, [0, 3]],
+               [3, 'setxy', 0, 0, [2, 4, 5, 6]],
+               [4, 'titlex', 0, 0, [3, None]],
+               [5, 'titley', 0, 0, [3, None]],
+               [6, 'show', 0, 0, [3, 7, 8]],
+               [7, ['string',_('Title')], 0, 0, [6, None]],
+               [8, 'setscale', 0, 0, [6, 9, 10]],
+               [9, ['number', '45'], 0, 0, [8, None]],
+               [10, 'setxy', 0, 0, [8, 11, 12, 13]],
+               [11, 'leftx', 0, 0, [10, None]],
+               [12, 'topy', 0, 0, [10, None]],
+               [13, 'showaligned', 0, 0, [10, 14, 15]],
+               [14, 'journal', 0, 0, [13, None]],
+               [15, 'setxy', 0, 0, [13, 16, 17, 18]],
+               [16, 'rightx', 0, 0, [15, None]],
+               [17, 'topy', 0, 0, [15, None]],
+               [18, 'showaligned', 0, 0, [15, 19, 20]],
+               [19, 'description', 0, 0, [18, None]],
+               [20, 'setxy', 0, 0, [18, 21, 22, 23]],
+               [21, 'leftx', 0, 0, [20, None]],
+               [22, 'bottomy', 0, 0, [20, None]],
+               [23, 'showaligned', 0, 0, [20, 24, 25]],
+               [24, 'journal', 0, 0, [23, None]],
+               [25, 'setxy', 0, 0, [23, 26, 27, 28]],
+               [26, 'rightx', 0, 0, [25, None]],
+               [27, 'bottomy', 0, 0, [25, None]],
+               [28, 'showaligned', 0, 0, [25, 29, 30]],
+               [29, 'description', 0, 0, [28, None]],
+               [30, 'sandwichbottom', 0, 0, [28, None]]]
          }
 
 #
-# blocks that are expandable
+# Blocks that are expandable
 #
 EXPANDABLE = ['vspace', 'hspace', 'templatelist', 'list', 'identity2', 'myfunc']
 
 #
-# Old block styles that need dock adjustments
+# Depreciated block styles that need dock adjustments
 #
 OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
 
 #
-# blocks that contain media
+# Blocks that contain media
 #
 CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'journal']
 
 #
-# block name dictionary used for labels
+# Block-name dictionary used for labels
 #
 BLOCK_NAMES = {
     'addturtle':[_('turtle')],
@@ -389,10 +426,11 @@ BLOCK_NAMES = {
     'pendown':[_('pen down')],
     'pensize':[_('pen size')],
     'penup':[_('pen up')],
-    'picture1x1':[_('picture1x1')],
-    'picture2x2':[_('picture2x2')],
-    'picture2x1':[_('picture2x1')],
-    'picture1x2':[_('picture1x2')],
+    'picturelist':[_('bulleted list')],
+    'picture1x1':[_('1×1 picture')],
+    'picture2x2':[_('2×2 pictures')],
+    'picture2x1':[_('2×1 pictures')],
+    'picture1x2':[_('1×2 pictures')],
     'plus2':['+'],
     'pop':[_('pop')],
     'printheap':[_('show heap')],
@@ -411,6 +449,8 @@ BLOCK_NAMES = {
     'rightx':[_('picture right')],
     'savepix':[_('save picture')],
     'scale':[_('scale')],
+    'sandwichtop':[_('top of stack')],
+    'sandwichbottom':[_('bottom of stack')],
     'setcolor':[_('set color')],
     'seth':[_('set heading')],
     'setpensize':[_('set pen size')],
@@ -519,6 +559,8 @@ PRIMITIVES = {
     'right':'right',
     'rightpos':'rpos',
     'rightx':'rightx',
+    'sandwichtop':'nop',
+    'sandwichbottom':'nop',
     'savepix':'savepix',
     'scale':'scale',
     'setcolor':'setcolor',

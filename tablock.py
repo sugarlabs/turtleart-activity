@@ -80,7 +80,7 @@ class Block:
     # debug code
     # etc.
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
-                 values=[], scale=BLOCK_SCALE, colors=["#00FF00","#00A000"]):
+                 values=[], scale=BLOCK_SCALE, colors=["#0000FF","#0000A0"]):
         self.spr = None
         self.shapes = []
         self.name = name
@@ -88,6 +88,7 @@ class Block:
         self.scale = scale
         self.docks = None
         self.connections = None
+        self.status = None
         self.values = []
         self.primitive = None
         self.type = type
@@ -127,9 +128,7 @@ class Block:
         if self._dx != 0:
             if self._dx < 0:
                 self._dx = 0
-            self._make_block(self.svg)
-            self._set_margins()
-            self.spr.set_shape(self.shapes[0])
+            self.refresh()
 
     # We may want to rescale blocks as well.
     def rescale(self, scale):
@@ -146,10 +145,13 @@ class Block:
         self._ey *= self.scale
         self._set_label_attributes()
         self.svg.set_scale(self.scale)
+        self.refresh()
+        self.spr.draw()
+
+    def refresh(self):
         self._make_block(self.svg)
         self._set_margins()
         self.spr.set_shape(self.shapes[0])
-        self.spr.draw()
 
     # We may want to add additional slots for arguments ("innies").
     def add_arg(self, keep_expanding=True):
@@ -159,9 +161,7 @@ class Block:
             self.svg.set_show(True)
         else:
             self.svg.set_show(False)
-        self._make_block(self.svg)
-        self._set_margins()
-        self.spr.set_shape(self.shapes[0])
+        self.refresh()
         return self.svg.get_height()-h
 
     # We may want to grow a block vertically.
@@ -173,9 +173,7 @@ class Block:
         else:
             self.svg.set_hide(False)
             self.svg.set_show(False)
-        self._make_block(self.svg)
-        self._set_margins()
-        self.spr.set_shape(self.shapes[0])
+        self.refresh()
 
     # We may want to grow a block horizontally.
     def expand_in_x(self, dx):
@@ -186,9 +184,7 @@ class Block:
         else:
             self.svg.set_hide(False)
             self.svg.set_show(False)
-        self._make_block(self.svg)
-        self._set_margins()
-        self.spr.set_shape(self.shapes[0])
+        self.refresh()
 
     def reset_x(self):
         dx = -self._ex
@@ -198,9 +194,7 @@ class Block:
             self.svg.set_show(True)
         else:
             self.svg.set_show(False)
-        self._make_block(self.svg)
-        self._set_margins()
-        self.spr.set_shape(self.shapes[0])
+        self.refresh()
         return dx
 
     def reset_y(self):
@@ -211,9 +205,7 @@ class Block:
             self.svg.set_show(True)
         else:
             self.svg.set_show(False)
-        self._make_block(self.svg)
-        self._set_margins()
-        self.spr.set_shape(self.shapes[0])
+        self.refresh()
         return dy
 
     def get_expand_x_y(self):
@@ -630,6 +622,7 @@ class Block:
                       ['flow', False, self.svg.docks[4][0],
                                       self.svg.docks[4][1], ']']]
 
+    # Depreciated block styles
     def _make_portfolio_style_2x2(self, svg):
         self.svg.expand(30+self._dx+self._ex, 10+self._ey)
         self.svg.set_slot(True)
