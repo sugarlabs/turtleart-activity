@@ -791,7 +791,7 @@ class TurtleArtWindow():
         newblk.connections = [None]*len(newblk.docks)
         if DEFAULTS.has_key(newblk.name):
             for i, argvalue in enumerate(DEFAULTS[newblk.name]):
-                # skip the first dock position--it is always a connector
+                # skip the first dock position since it is always a connector
                 dock = newblk.docks[i+1]
                 argname = dock[0]
                 if argname == 'unavailable':
@@ -837,6 +837,7 @@ class TurtleArtWindow():
         macro[0][3] = y
         top = self.process_data(macro)
         self.block_operation = 'new' 
+        self._check_collapsibles(top)
         self.drag_group = self._find_group(top)
 
     """
@@ -1132,15 +1133,7 @@ class TurtleArtWindow():
 
         # Look to see if we can dock the current stack.
         self._snap_to_dock()
-        # When a sandwich bottom is docked, mark it as collapsable
-        if blk.name in COLLAPSIBLE:
-            if self._collapsed(blk):
-                blk.svg.set_show(True)
-                blk.svg.set_hide(False)
-            else:
-                blk.svg.set_hide(True)
-                blk.svg.set_show(False)
-            blk.refresh()
+        self._check_collapsibles(blk)
         for b in self.drag_group:
             if b.status != 'collapsed':
                 b.spr.set_layer(BLOCK_LAYER)
@@ -1216,12 +1209,9 @@ class TurtleArtWindow():
                 self._run_stack(blk)
         elif blk.name in COLLAPSIBLE:
             top = self._find_sandwich_top(blk)
-            print "%s clicked with top of %s" % (blk.name, str(top))
             if self._collapsed(blk):
-                print "calling restore %s" % (blk.name)
                 self._restore_stack(top)
             elif top is not None:
-                print "calling collapse %s" % (blk.name)
                 self._collapse_stack(top)
         elif blk.name=='nop' and self.myblock==None:
             self._import_py()
@@ -1257,29 +1247,17 @@ class TurtleArtWindow():
     Hide all the blocks between the sandwich top and sandwich bottom.
     """
     def _collapse_stack(self, top):
-        print "calling _collapse from %s" % (top.name)
         group = self._find_group(top.connections[len(top.connections)-1])
-        print "top of group is %s" % (group[0].name)
         if group[0].name in COLLAPSIBLE:
-            print "nothing to do"
             return
-        # (x, y) = group[0].spr.get_xy()
-        # dy = 0
         for b in group:
             if b.name in COLLAPSIBLE:
-                # We had to...
-                # b.spr.move_relative((0,-dy))
-
                 # Replace 'sandwichbottom' shape with 'sandwichcollapsed' shape
-                # (bx, by) = b.spr.get_xy()
-                # dy = y-by
                 dy = 1
                 if len(b.values) == 0:
                     b.values.append(dy)
                 else:
                     b.values[0] = dy
-                print "collapsing: dy=%d, myscale=%f scale=%f" %\
-                      (dy, b.scale, self.block_scale)
                 b.name = 'sandwichcollapsed'
                 b.svg.set_show(True)
                 b.svg.set_hide(False)
@@ -1293,7 +1271,6 @@ class TurtleArtWindow():
                 you = self._find_sandwich_top(b)
                 (yx, yy) = you.spr.get_xy()
                 yd = you.docks[len(you.docks)-1]
-                print "%s (%d,%d) (%d,%d)" % (you.name, yx, yy, yd[2], yd[3])
                 b.spr.move((yx+yd[2]-b.docks[0][2],yy+yd[3]-b.docks[0][3]))
             else:
                 b.spr.set_layer(HIDE_LAYER)
@@ -1303,16 +1280,11 @@ class TurtleArtWindow():
     Restore all the blocks between the sandwich top and sandwich bottom.
     """
     def _restore_stack(self, top):
-        print "calling _restore from %s" % (top)
         group = self._find_group(top.connections[len(top.connections)-1])
-        print "top of group is %s" % (group[0].name)
-        # dy = 0
         for b in group:
             if b.name in COLLAPSIBLE:
-                # dy = b.values[0]
-                print "restoring: dy=%d, myscale=%f scale=%f" %\
-                      (b.values[0], b.scale, self.block_scale)
                 b.values[0] = 0
+                # Replace 'sandwichcollapsed' shape with 'sandwichbottom' shape
                 b.name = 'sandwichbottom'
                 b.spr.set_label(' ')
                 b.svg.set_show(False)
@@ -1326,17 +1298,38 @@ class TurtleArtWindow():
                 you = b.connections[0]
                 (yx, yy) = you.spr.get_xy()
                 yd = you.docks[len(you.docks)-1]
-                print "%s (%d,%d) (%d,%d)" % (you.name, yx, yy, yd[2], yd[3])
                 b.spr.move((yx+yd[2]-b.docks[0][2],yy+yd[3]-b.docks[0][3]))
             else:
                 b.spr.set_layer(BLOCK_LAYER)
                 b.status = None
+
+    def _check_collapsibles(self, blk):
+        group = self._find_group(blk)
+        for b in group:
+            if b.name in COLLAPSIBLE:
+                if self._collapsed(b):
+                    b.svg.set_show(True)
+                    b.svg.set_hide(False)
+                elif self._collapsible(b):
+                    b.svg.set_hide(True)
+                    b.svg.set_show(False)
+                else:
+                    b.svg.set_hide(False)
+                    b.svg.set_show(False)
+                b.refresh()
 
     def _collapsed(self, blk):
         if blk is not None and blk.name in COLLAPSIBLE and\
            len(blk.values) == 1 and blk.values[0] != 0:
             return True
         return False
+
+    def _collapsible(self, blk):
+        if blk is None or blk.name not in COLLAPSIBLE:
+            return False
+        if self._find_sandwich_top(blk) is None:
+            return False
+        return True
 
     """
     Run a stack of blocks.
@@ -1765,8 +1758,7 @@ class TurtleArtWindow():
     Jog block
     """
     def _jog_block(self, blk, dx, dy):
-        if blk.name in COLLAPSIBLE and\
-           len(blk.values) == 1 and blk.values[0] != 0:
+        if self._collapsed(blk):
             return
         self.drag_group = self._find_group(blk)
         # check to see if any block ends up with a negative x
