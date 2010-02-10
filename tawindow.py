@@ -1225,6 +1225,9 @@ class TurtleArtWindow():
     def _find_sandwich_top(self, blk):
         b = blk.connections[0]
         while b is not None:
+            if b.name in COLLAPSIBLE:
+                print "nesting detected..."
+                return None
             if b.name == 'sandwichtop':
                 return b
             b = b.connections[0]
@@ -1247,43 +1250,64 @@ class TurtleArtWindow():
     Hide all the blocks between the sandwich top and sandwich bottom.
     """
     def _collapse_stack(self, top):
+        hit_bottom = False
         group = self._find_group(top.connections[len(top.connections)-1])
         if group[0].name in COLLAPSIBLE:
             return
         for b in group:
             if b.name in COLLAPSIBLE:
+                hit_bottom = True
+
                 # Replace 'sandwichbottom' shape with 'sandwichcollapsed' shape
-                dy = 1
                 if len(b.values) == 0:
-                    b.values.append(dy)
+                    b.values.append(1)
                 else:
-                    b.values[0] = dy
+                    b.values[0] = 1
+                olddx = b.docks[1][2]
+                olddy = b.docks[1][3]
                 b.name = 'sandwichcollapsed'
                 b.svg.set_show(True)
                 b.svg.set_hide(False)
-                dx = b.docks[0][2]
                 b._dx = 0
                 b._ey = 0
                 b.spr.set_label(_('click to open'))
                 b.resize()
                 b.resize()
+
                 # Redock to sandwich top in group
                 you = self._find_sandwich_top(b)
                 (yx, yy) = you.spr.get_xy()
                 yd = you.docks[len(you.docks)-1]
-                b.spr.move((yx+yd[2]-b.docks[0][2],yy+yd[3]-b.docks[0][3]))
+                (bx, by) = b.spr.get_xy()
+                dx = yx+yd[2]-b.docks[0][2]-bx
+                dy = yy+yd[3]-b.docks[0][3]-by
+                b.spr.move_relative((dx, dy))
+
+                # Since the shapes have changed, the dock positions have too.
+                newdx = b.docks[1][2]
+                newdy = b.docks[1][3]
+                dx += newdx-olddx
+                dy += newdy-olddy
             else:
-                b.spr.set_layer(HIDE_LAYER)
-                b.status = 'collapsed'
+                if not hit_bottom:
+                    b.spr.set_layer(HIDE_LAYER)
+                    b.status = 'collapsed'
+                else:
+                    b.spr.move_relative((dx, dy))
 
     """
     Restore all the blocks between the sandwich top and sandwich bottom.
     """
     def _restore_stack(self, top):
         group = self._find_group(top.connections[len(top.connections)-1])
+        hit_bottom = False
         for b in group:
             if b.name in COLLAPSIBLE:
+                hit_bottom = True
+
                 b.values[0] = 0
+                olddx = b.docks[1][2]
+                olddy = b.docks[1][3]
                 # Replace 'sandwichcollapsed' shape with 'sandwichbottom' shape
                 b.name = 'sandwichbottom'
                 b.spr.set_label(' ')
@@ -1294,14 +1318,27 @@ class TurtleArtWindow():
                 # to connect the bottom to the top.
                 # b.expand_in_y(-dy/self.block_scale)
                 # b.refresh()
+
                 # Redock to previous block in group
                 you = b.connections[0]
                 (yx, yy) = you.spr.get_xy()
                 yd = you.docks[len(you.docks)-1]
-                b.spr.move((yx+yd[2]-b.docks[0][2],yy+yd[3]-b.docks[0][3]))
+                (bx, by) = b.spr.get_xy()
+                dx = yx+yd[2]-b.docks[0][2]-bx
+                dy = yy+yd[3]-b.docks[0][3]-by
+                b.spr.move_relative((dx, dy))
+
+                # Since the shapes have changed, the dock positions have too.
+                newdx = b.docks[1][2]
+                newdy = b.docks[1][3]
+                dx += newdx-olddx
+                dy += newdy-olddy
             else:
-                b.spr.set_layer(BLOCK_LAYER)
-                b.status = None
+                if not hit_bottom:
+                    b.spr.set_layer(BLOCK_LAYER)
+                    b.status = None
+                else:
+                    b.spr.move_relative((dx, dy))
 
     def _check_collapsibles(self, blk):
         group = self._find_group(blk)

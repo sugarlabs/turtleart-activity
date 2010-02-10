@@ -475,7 +475,6 @@ class Block:
             self.docks.append(['number', False, self.svg.docks[i+1][0],
                                                 self.svg.docks[i+1][1]])
         self.docks.append(['unavailable', False, 0, 0, ']'])
-        print self.docks
 
     def _make_number_style_block(self, svg):
         self.svg.expand(self._dx+self._ex, self._ey)
