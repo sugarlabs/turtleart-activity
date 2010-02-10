@@ -1220,13 +1220,12 @@ class TurtleArtWindow():
 
     """
     Find the sandwich top above this block.
-    # TODO: Add nesting; detect branches (e.g., if, ifelse, repeat)
+    # TODO: Detect branches (e.g., if, ifelse, repeat)
     """
     def _find_sandwich_top(self, blk):
         b = blk.connections[0]
         while b is not None:
             if b.name in COLLAPSIBLE:
-                print "nesting detected..."
                 return None
             if b.name == 'sandwichtop':
                 return b
@@ -1235,15 +1234,16 @@ class TurtleArtWindow():
 
     """
     Find the sandwich bottom below this block.
-    # TODO: Add nesting; detect branches (e.g., if, ifelse, repeat)
+    # TODO: Detect branches (e.g., if, ifelse, repeat)
     """
     def _find_sandwich_bottom(self, blk):
-        # TODO: Add nesting; detect branches (e.g., if, ifelse, repeat)
         b = blk.connections[len(blk.connections)-1]
         while b is not None:
+            if b.name == 'sandwichtop':
+                return None
             if b.name in COLLAPSIBLE:
                 return b
-            b = b.connections[len(blk.connections)-1]
+            b = b.connections[len(b.connections)-1]
         return None
 
     """
@@ -1255,7 +1255,7 @@ class TurtleArtWindow():
         if group[0].name in COLLAPSIBLE:
             return
         for b in group:
-            if b.name in COLLAPSIBLE:
+            if not hit_bottom and b.name in COLLAPSIBLE:
                 hit_bottom = True
 
                 # Replace 'sandwichbottom' shape with 'sandwichcollapsed' shape
@@ -1294,6 +1294,7 @@ class TurtleArtWindow():
                     b.status = 'collapsed'
                 else:
                     b.spr.move_relative((dx, dy))
+        self._reset_stack_arm(top)
 
     """
     Restore all the blocks between the sandwich top and sandwich bottom.
@@ -1302,7 +1303,7 @@ class TurtleArtWindow():
         group = self._find_group(top.connections[len(top.connections)-1])
         hit_bottom = False
         for b in group:
-            if b.name in COLLAPSIBLE:
+            if not hit_bottom and b.name in COLLAPSIBLE:
                 hit_bottom = True
 
                 b.values[0] = 0
@@ -1314,10 +1315,6 @@ class TurtleArtWindow():
                 b.svg.set_show(False)
                 b.svg.set_hide(True)
                 b.refresh()
-                # Grow the left edge of the sandwich along the stack
-                # to connect the bottom to the top.
-                # b.expand_in_y(-dy/self.block_scale)
-                # b.refresh()
 
                 # Redock to previous block in group
                 you = b.connections[0]
@@ -1339,6 +1336,23 @@ class TurtleArtWindow():
                     b.status = None
                 else:
                     b.spr.move_relative((dx, dy))
+        self._grow_stack_arm(top)
+
+    def _reset_stack_arm(self, top):
+        if top is not None and top.name == 'sandwichtop':
+            top.reset_y()
+
+    def _grow_stack_arm(self, top):
+        if top is not None and top.name == 'sandwichtop':
+            bot = self._find_sandwich_bottom(top)
+            if bot is None:
+                return
+            (tx, ty) = top.spr.get_xy()
+            (tw, th) = top.spr.get_dimensions()
+            (bx, by) = bot.spr.get_xy()
+            dy = by-(ty+th)
+            if dy > 0:
+                top.expand_in_y(dy/self.block_scale)
 
     def _check_collapsibles(self, blk):
         group = self._find_group(blk)
@@ -1347,12 +1361,21 @@ class TurtleArtWindow():
                 if self._collapsed(b):
                     b.svg.set_show(True)
                     b.svg.set_hide(False)
+                    self._reset_stack_arm(self._find_sandwich_top(b))
                 elif self._collapsible(b):
                     b.svg.set_hide(True)
                     b.svg.set_show(False)
+                    self._grow_stack_arm(self._find_sandwich_top(b))
                 else:
                     b.svg.set_hide(False)
                     b.svg.set_show(False)
+                    # Ouch: When you tear off the sandwich bottom, you
+                    # no longer have access to the group with the sandwich top
+                    # so check them all.
+                    for bb in self.just_blocks():
+                        if bb.name == 'sandwichtop':
+                            if self._find_sandwich_bottom(bb) is None:
+                                self._reset_stack_arm(bb)
                 b.refresh()
 
     def _collapsed(self, blk):
