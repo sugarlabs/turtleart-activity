@@ -1231,8 +1231,12 @@ class TurtleArtWindow():
         while b is not None:
             if b.name in COLLAPSIBLE:
                 return None
+            if b.name in ['repeat', 'if', 'ifelse']:
+                if blk != b.connections[len(b.connections)-1]:
+                    return None
             if b.name == 'sandwichtop':
                 return b
+            blk = b
             b = b.connections[0]
         return None
 
