@@ -401,6 +401,8 @@ class SVG:
         svg += self._close_path()
         self._calculate_w_h()
         svg += self._style()
+        self._hide_x = x + self._radius/2
+        self._hide_y = y + self._radius/2
         if self._hide is True:
             svg += self._hide_dot()
         if self._show is True:
@@ -650,7 +652,6 @@ class SVG:
         x = self._x + sign_x*r2
         y = self._y + sign_y*r2
         svg_str += self._arc_to(x, y, r2, a, l, s)
-        # svg += self._rarc_to(sign_x, sign_y, 90, 0, 0)
         if sign_x*sign_y == -1:
             svg_str +=self._rline_to(0, sign_y*(r2-self._stroke_width))
         else:
@@ -659,12 +660,15 @@ class SVG:
 
     def _corner(self, sign_x, sign_y, a=90, l=0, s=1):
         svg_str = ""
+        if sign_x == 1 and sign_y == -1:
+            self._hide_x = self._x + self._radius/2
+            self._hide_y = self._y - self._radius/2
         if sign_x == -1 and sign_y == 1:
-            self._hide_x = self._x - self._radius/2
-            self._hide_y = self._y + self._radius/2
-        if sign_x == -1 and sign_y == -1:
             self._show_x = self._x - self._radius/2
-            self._show_y = self._y - self._radius/2
+            self._show_y = self._y + self._radius/2
+            if True in self._innie:
+                self._show_x -= (self._innie_x1+self._innie_x2)
+                self._show_y -= (self._innie_y1+self._innie_y2)
         if self._radius > 0:
             r2 = self._radius/2.0
             if sign_x*sign_y == 1:
