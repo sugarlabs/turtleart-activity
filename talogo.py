@@ -295,7 +295,7 @@ class LogoCode:
         'stack':[1, self.prim_stack, True],
         'stack2':[0, self.prim_stack2, True],
         'start':[0, lambda self: self.prim_start()],
-        'stopstack':[0, lambda self: self.prim_stopstack()],
+        'stopstack':[0, self.prim_stopstack],
         'storeinbox1':[1, lambda self,x: self.prim_setbox('box1',x)],
         'storeinbox2':[1, lambda self,x: self.prim_setbox('box2',x)],
         'storeinbox':[2, lambda self,x,y: self.prim_setbox('box3'+str(x),y)],
