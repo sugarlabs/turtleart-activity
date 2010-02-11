@@ -445,13 +445,9 @@ class TurtleArtWindow():
         if self.palettes[n] == []:
             for i, name in enumerate(PALETTES[n]):
                 # Some blocks are too big to fit the palette.
-                if PALETTE_SCALE.has_key(name):
-                    scale = PALETTE_SCALE[name]
-                else:
-                    scale = PALETTE_DEFAULT_SCALE
                 self.palettes[n].append(Block(self.block_list,
                                               self.sprite_list, name,
-                                              0, 0, 'proto', [], scale))
+                                              0, 0, 'proto', [], PALETTE_SCALE))
                 self.palettes[n][i].spr.set_layer(TAB_LAYER)
                 self.palettes[n][i].spr.set_shape(self.palettes[n][i].shapes[0])
                 # Some blocks get a skin.

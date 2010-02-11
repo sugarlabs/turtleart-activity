@@ -346,6 +346,12 @@ class Sprite:
     def label_safe_width(self):
         return self._width-self._margins[0]-self._margins[2]
     
+    def label_safe_height(self):
+        return self._height-self._margins[1]-self._margins[3]
+    
+    def label_left_top(self):
+        return (self._margins[0], self._margins[1])
+
     def get_pixel(self, pos, i=0):
         x, y = pos
         x = x-self._x

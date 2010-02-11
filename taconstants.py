@@ -126,8 +126,8 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc',  'nop', 'sandwichtop', 'sandwichbottom',
              'addturtle', 'print', 'comment', 'width', 'height'],
-            ['journal', 'audio', 'description', 'savepix',
-             'hideblocks', 'showblocks', 'fullscreen', 'picturelist',
+            ['journal', 'audio', 'description', 'savepix', 'hideblocks',
+             'showblocks', 'fullscreen', 'picturelist', 'picture1x1a',
              'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2'],
             ['empty', 'restoreall']]
 
@@ -151,19 +151,8 @@ ICON_SIZE = 55
 SELECTED_COLOR = "#0000FF"
 SELECTED_STROKE_WIDTH = 1.5
 STANDARD_STROKE_WIDTH = 1.0
-THUMB_W = 80
-THUMB_H = 60
-PYTHON_X = 17
-PYTHON_Y = 8
-MEDIA_X = 37
-MEDIA_Y = 6
-TEMPLATE_X = 24
-TEMPLATE_Y = 18
-PIXBUF_X = 17
-PIXBUF_Y = 2
 BLOCK_SCALE = 2.0
-PALETTE_DEFAULT_SCALE = 1.5
-PALETTE_SCALE = {'template2x2':1.0, 'template1x2':1.0}
+PALETTE_SCALE = 1.5
 
 #
 # Block-style definitions
@@ -173,8 +162,9 @@ BASIC_STYLE_HEAD_1ARG = ['hat']
 BASIC_STYLE_TAIL = ['stopstack', 'empty']
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
     'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput',
-    'picturelist', 'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2',
     'fullscreen', 'sandwichcollapsed']
+BASIC_STYLE_EXTENDED = ['picturelist', 'picture1x1', 'picture2x2',
+    'picture2x1', 'picture1x2', 'picture1x1a']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print', 'showaligned',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1', 'savepix',
@@ -240,7 +230,7 @@ MACROS = {
                [11, ['string','∙ '], 0, 0, [10, None]],
                [12, ['string','∙ '], 0, 0, [10, None]],
                [13, 'sandwichbottom', 0, 0, [10, None]]],
-    'picture1x1':
+    'picture1x1a':
               [[0, 'sandwichtop', 0, 0, [None, 1, 2]],
                [1, ['string', _('picture')], 0, 0, [0, None]],
                [2, 'setxy', 0, 0, [0, 3, 4, 5]],
@@ -265,7 +255,7 @@ MACROS = {
                [5, 'show', 0, 0, [2, 6, 7]],
                [6, ['string',_('Title')], 0, 0, [5, None]],
                [7, 'setscale', 0, 0, [5, 8, 9]],
-               [8, ['number', '90'], 0, 0, [7, None]],
+               [8, ['number', '45'], 0, 0, [7, None]],
                [9, 'setxy', 0, 0, [7, 10, 11, 12]],
                [10, 'leftx', 0, 0, [9, None]],
                [11, 'topy', 0, 0, [9, None]],
@@ -296,7 +286,7 @@ MACROS = {
                [5, 'show', 0, 0, [2, 6, 7]],
                [6, ['string',_('Title')], 0, 0, [5, None]],
                [7, 'setscale', 0, 0, [5, 8, 9]],
-               [8, ['number', '90'], 0, 0, [7, None]],
+               [8, ['number', '45'], 0, 0, [7, None]],
                [9, 'setxy', 0, 0, [7, 10, 11, 12]],
                [10, 'leftx', 0, 0, [9, None]],
                [11, 'topy', 0, 0, [9, None]],
@@ -327,7 +317,7 @@ MACROS = {
                [5, 'show', 0, 0, [2, 6, 7]],
                [6, ['string',_('Title')], 0, 0, [5, None]],
                [7, 'setscale', 0, 0, [5, 8, 9]],
-               [8, ['number', '90'], 0, 0, [7, None]],
+               [8, ['number', '45'], 0, 0, [7, None]],
                [9, 'setxy', 0, 0, [7, 10, 11, 12]],
                [10, 'leftx', 0, 0, [9, None]],
                [11, 'topy', 0, 0, [9, None]],
@@ -348,7 +338,28 @@ MACROS = {
                [26, 'bottomy', 0, 0, [24, None]],
                [27, 'showaligned', 0, 0, [24, 28, 29]],
                [28, 'description', 0, 0, [27, None]],
-               [29, 'sandwichbottom', 0, 0, [27, None]]]
+               [29, 'sandwichbottom', 0, 0, [27, None]]],
+    'picture1x1':
+              [[0, 'sandwichtop', 0, 0, [None, 1, 2]],
+               [1, ['string', _('1×1 picture')], 0, 0, [0, None]],
+               [2, 'setxy', 0, 0, [0, 3, 4, 5]],
+               [3, 'titlex', 0, 0, [2, None]],
+               [4, 'titley', 0, 0, [2, None]],
+               [5, 'show', 0, 0, [2, 6, 7]],
+               [6, ['string',_('Title')], 0, 0, [5, None]],
+               [7, 'setscale', 0, 0, [5, 8, 9]],
+               [8, ['number', '45'], 0, 0, [7, None]],
+               [9, 'setxy', 0, 0, [7, 10, 11, 12]],
+               [10, 'leftx', 0, 0, [9, None]],
+               [11, 'topy', 0, 0, [9, None]],
+               [12, 'showaligned', 0, 0, [9, 13, 14]],
+               [13, 'journal', 0, 0, [12, None]],
+               [14, 'setxy', 0, 0, [12, 15, 16, 17]],
+               [15, 'rightx', 0, 0, [14, None]],
+               [16, 'topy', 0, 0, [14, None]],
+               [17, 'showaligned', 0, 0, [14, 18, 19]],
+               [18, 'description', 0, 0, [17, None]],
+               [19, 'sandwichbottom', 0, 0, [17, None]]]
          }
 
 #
@@ -428,11 +439,12 @@ BLOCK_NAMES = {
     'pendown':[_('pen down')],
     'pensize':[_('pen size')],
     'penup':[_('pen up')],
-    'picturelist':[_('bulleted list')],
-    'picture1x1':[_('1×1 picture')],
-    'picture2x2':[_('2×2 pictures')],
-    'picture2x1':[_('2×1 pictures')],
-    'picture1x2':[_('1×2 pictures')],
+    'picturelist':[' '],
+    'picture1x1':[' '],
+    'picture1x1a':[' '],
+    'picture2x2':[' '],
+    'picture2x1':[' '],
+    'picture1x2':[' '],
     'plus2':['+'],
     'pop':[_('pop')],
     'printheap':[_('show heap')],
@@ -803,6 +815,12 @@ HELP_STRINGS = {
     'pen':_("palette of pen commands"),
     'pensize':_("holds current pen size (can be used in place of a number block)"),
     'penup':_("Turtle will not draw when moved."),
+    'picture1x1':_("presentation template: select Journal object (with description)"),
+    'picture1x1a':_("presentation template: select Journal object (no description)"),
+    'picture1x2':_("presentation template: select two Journal objects"),
+    'picture2x1':_("presentation template: select two Journal objects"),
+    'picture2x2':_("presentation template: select four Journal objects"),
+    'picturelist':_("presentation template: list of bullets"),
     'plus2':_("adds two alphanumeric inputs"),
     'pop':_("pops value off FILO (first-in last-out heap)"),
     'portfolio':_("palette of presentation templates"),
