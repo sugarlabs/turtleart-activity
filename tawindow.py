@@ -512,22 +512,22 @@ class TurtleArtWindow():
     Position prototypes in a horizontal palette.
     """
     def _horizontal_layout(self, x, y, blocks):
-        _max = 0
+        _max_w = 0
         for b in blocks:
             _w, _h = self._width_and_height(b)
             if y+_h > PALETTE_HEIGHT+ICON_SIZE:
-                x += int(_max+5)
+                x += int(_max_w+5)
                 y = ICON_SIZE+5
-                _max = 0
+                _max_w = 0
             (_bx, _by) = b.spr.get_xy()
             _dx = x-_bx
             _dy = y-_by
             for g in self._find_group(b):
                 g.spr.move_relative((int(_dx), int(_dy)))
             y += int(_h+5)
-            if _w > _max:
-                _max = _w
-        return x, y, _max
+            if _w > _max_w:
+                _max_w = _w
+        return x, y, _max_w
 
     """
     Position prototypes in a vertical palette.
@@ -535,7 +535,7 @@ class TurtleArtWindow():
     def _vertical_layout(self, x, y, blocks):
         _row = []
         _row_w = 0
-        _max = 0
+        _max_h = 0
         for _b in blocks:
             _w, _h = self._width_and_height(_b)
             if x+_w > PALETTE_WIDTH:
@@ -543,12 +543,12 @@ class TurtleArtWindow():
                 _dx = int((PALETTE_WIDTH-_row_w)/2)
                 for _r in _row:
                     for _g in self._find_group(_r):
-                        _g.spr.move_relative((_dx, 0))
+                       _g.spr.move_relative((_dx, 0))
                 _row = []
                 _row_w = 0
                 x = 5
-                y += int(_max+5)
-                _max = 0
+                y += int(_max_h+5)
+                _max_h = 0
             _row.append(_b)
             _row_w += (5+_w)
             (_bx, _by) = _b.spr.get_xy()
@@ -557,14 +557,14 @@ class TurtleArtWindow():
             for _g in self._find_group(_b):
                 _g.spr.move_relative((_dx, _dy))
             x += int(_w+5)
-            if _h > _max:
-                _max = _h
+            if _h > _max_h:
+                _max_h = _h
         # Recenter last row.
         _dx = int((PALETTE_WIDTH-_row_w)/2)
         for _r in _row:
             for _g in self._find_group(_r):
                 _g.spr.move_relative((_dx, 0))
-        return x, y, _max
+        return x, y, _max_h
 
     """
     Layout prototypes in a palette.

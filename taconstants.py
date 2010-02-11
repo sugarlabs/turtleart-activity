@@ -107,7 +107,7 @@ TOP_LAYER = 1000
 PALETTE_NAMES = ['turtle', 'pen', 'colors', 'numbers', 'flow', 'blocks',
                  'extras', 'portfolio', 'trash']
 
-PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show', 
+PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'seth', 'setxy', 'heading', 'xcor', 'ycor', 'setscale',
              'arc', 'scale', 'leftpos', 'toppos', 'rightpos',
              'bottompos'],
@@ -145,7 +145,7 @@ BOX_COLORS = {'red':["#FF0000","#A00000"],'orange':["#FFD000","#AA8000"],
               'purple':["#FF00FF","#A000A0"]}
 
 PALETTE_HEIGHT = 120
-PALETTE_WIDTH = 180
+PALETTE_WIDTH = 175
 SELECTOR_WIDTH = 55
 ICON_SIZE = 55
 SELECTED_COLOR = "#0000FF"
