@@ -1237,7 +1237,13 @@ class EditToolbar(gtk.Toolbar):
         _logger.debug("paste to the project")
         text = clipBoard.wait_for_text()
         if text is not None:
-            self.activity.tw.process_data(data_from_string(text))
+            if self.activity.tw.selected_blk is not None and\
+               self.activity.tw.selected_blk.name == 'string':
+                for i in text:
+                    self.activity.tw.process_alphanumeric_input(i, -1)
+                self.activity.tw.selected_blk.resize()
+            else:
+                self.activity.tw.process_data(data_from_string(text))
 
 """
 Help toolbar: Just an icon and a label for displaying hover help

@@ -1654,7 +1654,7 @@ class TurtleArtWindow():
         # Process keyboard input for 'string' blocks
         elif self.selected_blk is not None and\
              self.selected_blk.name == 'string':
-            self._process_alphanumeric_input(keyname, keyunicode)
+            self.process_alphanumeric_input(keyname, keyunicode)
             if self.selected_blk is not None:
                 self.selected_blk.resize()
             return True
@@ -1707,7 +1707,7 @@ class TurtleArtWindow():
     """
     Make sure alphanumeric input is properly parsed.
     """
-    def _process_alphanumeric_input(self, keyname, keyunicode):
+    def process_alphanumeric_input(self, keyname, keyunicode):
         if len(self.selected_blk.spr.labels[0]) > 0:
             c = self.selected_blk.spr.labels[0].count(CURSOR) 
             if c == 0:
@@ -1775,6 +1775,8 @@ class TurtleArtWindow():
                     newleft = oldleft+unichr(keyunicode)
                 else:
                     newleft = oldleft
+            elif keyunicode == -1: # clipboard text
+                newleft = oldleft+keyname
         self.selected_blk.spr.set_label("%s%s%s" % \
                                         (newleft, CURSOR, oldright))
 
