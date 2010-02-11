@@ -122,20 +122,23 @@ class SVG:
         svg = self._new_path(x, y)
         svg += self._corner(1, -1)
         svg += self._do_slot()
-        svg += self._rline_to(self._expand_x, 0)
         xx = self._x
-        svg += self._corner(1, 1)
+        svg += self._rline_to(self._expand_x, 0)
+        if self._bool:
+            svg += self._corner(1, 1, 90, 0, 1, True, False)
+        elif True in self._innie:
+            svg += self._corner(1, 1)
         for i in range(len(self._innie)):
             if self._innie[i] is True:
                 svg += self._do_innie()
-                svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
+                svg += self._rline_to(0, self._innie_spacer)
             else:
                 self.margins[2] =\
                     int((self._x-self._stroke_width+0.5)*self._scale)
         if self._bool is True:
             svg += self._rline_to(0,self._radius/2.0)
             svg += self._do_boolean()
-            svg += self._rline_to(0,self._radius/2.0)
+            svg += self._rline_to(0,self._stroke_width)
         if self._else:
             svg += self._rline_to(self._radius*3+self._slot_x*2, 0)
         else:
@@ -147,11 +150,10 @@ class SVG:
             svg += self._do_tab()
             svg += self._rline_to(-self._radius*2, 0)
         svg += self._do_tab()
-        svg += self._rline_to(-self._radius, 0)
+        svg += self._inverse_corner(-1, 1, 90, 0, 0, True, False)
         svg += self._rline_to(0, self._expand_y)
-        svg += self._corner(-1, 1)
+        svg += self._corner(-1, 1, 90, 0, 1, False, True)
         svg += self._line_to(xx, self._y)
-        svg += self._rline_to(-self._expand_x, 0)
         if self._tab:
             svg += self._do_tab()
         else:
@@ -643,22 +645,25 @@ class SVG:
             y = self._y + sign_y*self._radius
             return self._arc_to(x, y, self._radius, a, l, s)
 
-    def _inverse_corner(self, sign_x, sign_y, a=90, l=0, s=1):
+    def _inverse_corner(self, sign_x, sign_y, a=90, l=0, s=1, start=True,
+                                                                 end=True):
         r2 = self._stroke_width+self._radius/2.0
-        if sign_x*sign_y == -1:
-            svg_str =self._rline_to(sign_x*(r2-self._stroke_width), 0)
-        else:
-            svg_str =self._rline_to(0, sign_y*+(r2-self._stroke_width))
+        if start:
+            if sign_x*sign_y == -1:
+                svg_str =self._rline_to(sign_x*(r2-self._stroke_width), 0)
+            else:
+                svg_str =self._rline_to(0, sign_y*+(r2-self._stroke_width))
         x = self._x + sign_x*r2
         y = self._y + sign_y*r2
         svg_str += self._arc_to(x, y, r2, a, l, s)
-        if sign_x*sign_y == -1:
-            svg_str +=self._rline_to(0, sign_y*(r2-self._stroke_width))
-        else:
-            svg_str +=self._rline_to(sign_x*(r2-self._stroke_width), 0)
+        if end:
+            if sign_x*sign_y == -1:
+                svg_str +=self._rline_to(0, sign_y*(r2-self._stroke_width))
+            else:
+                svg_str +=self._rline_to(sign_x*(r2-self._stroke_width), 0)
         return svg_str
 
-    def _corner(self, sign_x, sign_y, a=90, l=0, s=1):
+    def _corner(self, sign_x, sign_y, a=90, l=0, s=1, start=True, end=True):
         svg_str = ""
         if sign_x == 1 and sign_y == -1:
             self._hide_x = self._x + self._radius/2
@@ -671,17 +676,19 @@ class SVG:
                 self._show_y -= (self._innie_y1+self._innie_y2)
         if self._radius > 0:
             r2 = self._radius/2.0
-            if sign_x*sign_y == 1:
-                svg_str +=self._rline_to(sign_x*r2, 0)
-            else:
-                svg_str +=self._rline_to(0, sign_y*r2)
+            if start:
+                if sign_x*sign_y == 1:
+                    svg_str +=self._rline_to(sign_x*r2, 0)
+                else:
+                    svg_str +=self._rline_to(0, sign_y*r2)
             x = self._x + sign_x*r2
             y = self._y + sign_y*r2
             svg_str += self._arc_to(x, y, r2, a, l, s)
-            if sign_x*sign_y == 1:
-                svg_str +=self._rline_to(0, sign_y*r2)
-            else:
-                svg_str +=self._rline_to(sign_x*r2, 0)
+            if end:
+                if sign_x*sign_y == 1:
+                    svg_str +=self._rline_to(0, sign_y*r2)
+                else:
+                    svg_str +=self._rline_to(sign_x*r2, 0)
         return svg_str
 
     def _new_path(self, x, y):
@@ -904,26 +911,12 @@ def generator(datapath):
     """
 
     svg0 = SVG()
-    f = open_file(datapath, "sandwich_test2.svg")
+    f = open_file(datapath, "flow_test2.svg")
     svg0.set_scale(2)
-    svg0.set_tab(True)
+    svg0.expand(10,0)
+    svg0.set_tab(False)
     svg0.set_slot(True)
-    svg0.set_hide(True)
-    svg0.set_show(True)
-    svg0.expand(0,40)
-    svg_str = svg0.sandwich_bottom()
-    f.write(svg_str)
-    close_file(f)
-
-    svg0 = SVG()
-    f = open_file(datapath, "sandwich_test.svg")
-    svg0.set_scale(2)
-    svg0.set_tab(True)
-    svg0.set_slot(True)
-    svg0.set_hide(True)
-    svg0.set_show(True)
-    svg0.expand(0,40)
-    svg_str = svg0.sandwich_top()
+    svg_str = svg0.basic_flow()
     f.write(svg_str)
     close_file(f)
 
