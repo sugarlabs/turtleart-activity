@@ -92,10 +92,10 @@ class Block:
         self.values = []
         self.primitive = None
         self.type = type
-        self._dx = 0
+        self.dx = 0
+        self.ex = 0
+        self.ey = 0
         self._ei = 0
-        self._ex = 0
-        self._ey = 0
         self._font_size = [6.0, 4.5]
 
         if OLD_NAMES.has_key(self.name):
@@ -126,24 +126,24 @@ class Block:
     def resize(self):
         dx = (self.spr.label_width()-self.spr.label_safe_width())/self.scale
         if dx !=0:
-            self._dx += dx
-            if self._dx < 0:
-                self._dx = 0
+            self.dx += dx
+            if self.dx < 0:
+                self.dx = 0
             self.refresh()
 
     # We may want to rescale blocks as well.
     def rescale(self, scale):
         for i in range(len(self._font_size)):
             self._font_size[i] /= self.scale
-        self._dx /= self.scale
-        self._ex /= self.scale
-        self._ey /= self.scale
+        self.dx /= self.scale
+        self.ex /= self.scale
+        self.ey /= self.scale
         self.scale = scale
         for i in range(len(self._font_size)):
             self._font_size[i] *= self.scale
-        self._dx *= self.scale
-        self._ex *= self.scale
-        self._ey *= self.scale
+        self.dx *= self.scale
+        self.ex *= self.scale
+        self.ey *= self.scale
         self._set_label_attributes()
         self.svg.set_scale(self.scale)
         self.refresh()
@@ -167,7 +167,7 @@ class Block:
 
     # We may want to grow a block vertically.
     def expand_in_y(self, dy):
-        self._ey += dy
+        self.ey += dy
         if self.type == 'block':
             self.svg.set_hide(True)
             self.svg.set_show(True)
@@ -178,7 +178,7 @@ class Block:
 
     # We may want to grow a block horizontally.
     def expand_in_x(self, dx):
-        self._ex += dx
+        self.ex += dx
         if self.type == 'block':
             self.svg.set_hide(True)
             self.svg.set_show(True)
@@ -188,8 +188,8 @@ class Block:
         self.refresh()
 
     def reset_x(self):
-        dx = -self._ex
-        self._ex = 0
+        dx = -self.ex
+        self.ex = 0
         self.svg.set_hide(False)
         if self.type == 'block':
             self.svg.set_show(True)
@@ -199,8 +199,8 @@ class Block:
         return dx
 
     def reset_y(self):
-        dy = -self._ey
-        self._ey = 0
+        dy = -self.ey
+        self.ey = 0
         self.svg.set_hide(False)
         if self.type == 'block':
             self.svg.set_show(True)
@@ -210,7 +210,7 @@ class Block:
         return dy
 
     def get_expand_x_y(self):
-        return (self._ex, self._ey)
+        return (self.ex, self.ey)
 
     def _new_block_from_factory(self, sprite_list, x, y):
         self.svg = SVG()
@@ -348,13 +348,13 @@ class Block:
         self.svg.set_colors(self.colors)
 
     def _make_basic_style(self, svg):
-        self.svg.expand(self._dx+self._ex, self._ey)
+        self.svg.expand(self.dx+self.ex, self.ey)
         self._make_basic_block(svg)
         self.docks = [['flow',True,self.svg.docks[0][0],self.svg.docks[0][1]],
                       ['flow',False,self.svg.docks[1][0],self.svg.docks[1][1]]]
 
     def _make_basic_style_head(self, svg):
-        self.svg.expand(10+self._dx+self._ex, self._ey)
+        self.svg.expand(10+self.dx+self.ex, self.ey)
         self.svg.set_slot(False)
         self.svg.set_cap(True)
         self._make_basic_block(svg)
@@ -363,7 +363,7 @@ class Block:
                                       self.svg.docks[0][1]]]
 
     def _make_basic_style_head_1arg(self, svg):
-        self.svg.expand(10+self._dx+self._ex, self._ey)
+        self.svg.expand(10+self.dx+self.ex, self.ey)
         self.svg.set_innie([True])
         self.svg.set_slot(False)
         self.svg.set_cap(True)
@@ -375,7 +375,7 @@ class Block:
                                       self.svg.docks[1][1]]]
 
     def _make_basic_style_tail(self, svg):
-        self.svg.expand(10+self._dx+self._ex, self._ey)
+        self.svg.expand(10+self.dx+self.ex, self.ey)
         self.svg.set_tab(False)
         self._make_basic_block(svg)
         self.docks = [['flow', True, self.svg.docks[0][0],
@@ -383,7 +383,7 @@ class Block:
                       ['unavailable', False, 0, 0]]
 
     def _make_basic_style_1arg(self, svg):
-        self.svg.expand(10+self._dx+self._ex, self._ey)
+        self.svg.expand(10+self.dx+self.ex, self.ey)
         self.svg.set_innie([True])
         self._make_basic_block(svg)
         self.docks = [['flow', True, self.svg.docks[0][0],
@@ -394,7 +394,7 @@ class Block:
                                       self.svg.docks[2][1]]]
 
     def _make_basic_style_2arg(self, svg):
-        self.svg.expand(10+self._dx+self._ex, self._ey)
+        self.svg.expand(10+self.dx+self.ex, self.ey)
         self.svg.set_innie([True,True])
         self._make_basic_block(svg)
         self.docks = [['flow', True, self.svg.docks[0][0],
@@ -407,7 +407,7 @@ class Block:
                                       self.svg.docks[3][1]]]
 
     def _make_basic_style_var_arg(self, svg):
-        self.svg.expand(10+self._dx+self._ex, self._ey)
+        self.svg.expand(10+self.dx+self.ex, self.ey)
         innie = [True, True]
         for i in range(self._ei):
             innie.append(True)
@@ -426,21 +426,21 @@ class Block:
                                       self.svg.docks[self._ei+3][1], ']'])
 
     def _make_box_style(self, svg):
-        self.svg.expand(60+self._dx+self._ex, self._ey)
+        self.svg.expand(60+self.dx+self.ex, self.ey)
         self._make_basic_box(svg)
         self.docks = [['number', True, self.svg.docks[0][0],
                                        self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
 
     def _make_media_style(self, svg):
-        self.svg.expand(40+self._dx+self._ex, 10+self._ey)
+        self.svg.expand(40+self.dx+self.ex, 10+self.ey)
         self._make_basic_box(svg)
         self.docks = [['number', True, self.svg.docks[0][0],
                                        self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
 
     def _make_number_style(self, svg):
-        self.svg.expand(self._dx+self._ex, self._ey)
+        self.svg.expand(self.dx+self.ex, self.ey)
         self.svg.set_innie([True,True])
         self.svg.set_outie(True)
         self.svg.set_tab(False)
@@ -458,7 +458,7 @@ class Block:
                                         self.svg.docks[1][1]]] 
 
     def _make_number_style_var_arg(self, svg):
-        self.svg.expand(self._dx+self._ex, self._ey)
+        self.svg.expand(self.dx+self.ex, self.ey)
         innie = [True]
         for i in range(self._ei+1):
             innie.append(True)
@@ -477,7 +477,7 @@ class Block:
         self.docks.append(['unavailable', False, 0, 0, ']'])
 
     def _make_number_style_block(self, svg):
-        self.svg.expand(self._dx+self._ex, self._ey)
+        self.svg.expand(self.dx+self.ex, self.ey)
         self.svg.set_innie([True,True])
         self.svg.set_outie(True)
         self.svg.set_tab(False)
@@ -492,7 +492,7 @@ class Block:
                       ['unavailable', False, 0, 0, ')']]
 
     def _make_number_style_1arg(self, svg):
-        self.svg.expand(self._dx+self._ex, self._ey)
+        self.svg.expand(self.dx+self.ex, self.ey)
         self.svg.set_innie([True])
         self.svg.set_outie(True)
         self.svg.set_tab(False)
@@ -504,7 +504,7 @@ class Block:
                                         self.svg.docks[0][1]]]
 
     def _make_number_style_1strarg(self, svg):
-        self.svg.expand(self._dx+self._ex, self._ey)
+        self.svg.expand(self.dx+self.ex, self.ey)
         self.svg.set_innie([True])
         self.svg.set_outie(True)
         self.svg.set_tab(False)
@@ -517,7 +517,7 @@ class Block:
                       ['unavailable', False, 0, 0]]
 
     def _make_number_style_porch(self, svg):
-        self.svg.expand(self._dx+self._ex, self._ey)
+        self.svg.expand(self.dx+self.ex, self.ey)
         self.svg.set_innie([True,True])
         self.svg.set_outie(True)
         self.svg.set_tab(False)
@@ -532,7 +532,7 @@ class Block:
                                         self.svg.docks[1][1]]] 
 
     def _make_compare_style(self, svg):
-        self.svg.expand(10+self._dx+self._ex, self._ey)
+        self.svg.expand(10+self.dx+self.ex, self.ey)
         self._make_boolean_compare(svg)
         self.docks = [['bool', True, self.svg.docks[0][0],
                                      self.svg.docks[0][1], '('],
@@ -543,7 +543,7 @@ class Block:
                       ['unavailable', False, 0, 0, ')']]
 
     def _make_boolean_style(self, svg):
-        self.svg.expand(10+self._dx+self._ex, self._ey)
+        self.svg.expand(10+self.dx+self.ex, self.ey)
         self._make_boolean_and_or(svg)
         self.docks = [['bool', True, self.svg.docks[0][0],
                                      self.svg.docks[0][1]],
@@ -553,7 +553,7 @@ class Block:
                                       self.svg.docks[2][1]]]
  
     def _make_not_style(self, svg):
-        self.svg.expand(15+self._dx+self._ex, self._ey)
+        self.svg.expand(15+self.dx+self.ex, self.ey)
         self._make_boolean_not(svg)
         self.docks = [['bool', True, self.svg.docks[0][0],
                                      self.svg.docks[0][1]],
@@ -561,7 +561,7 @@ class Block:
                                       self.svg.docks[1][1]]]
 
     def _make_flow_style(self, svg):
-        self.svg.expand(10+self._dx+self._ex, self._ey)
+        self.svg.expand(10+self.dx+self.ex, self.ey)
         self.svg.set_slot(True)
         self.svg.set_tab(False)
         self._make_basic_flow(svg)
@@ -579,7 +579,7 @@ class Block:
                                           self.svg.docks[1][1]]]
 
     def _make_flow_style_1arg(self, svg):
-        self.svg.expand(self._dx+self._ex, self._ey)
+        self.svg.expand(self.dx+self.ex, self.ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_innie([True])
@@ -594,7 +594,7 @@ class Block:
                                       self.svg.docks[3][1], ']']]
 
     def _make_flow_style_boolean(self, svg):
-        self.svg.expand(self._dx+self._ex, self._ey)
+        self.svg.expand(self.dx+self.ex, self.ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_boolean(True)
@@ -609,7 +609,7 @@ class Block:
                                       self.svg.docks[3][1], ']']]
 
     def _make_flow_style_else(self, svg):
-        self.svg.expand(self._dx+self._ex, self._ey)
+        self.svg.expand(self.dx+self.ex, self.ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_else(True)
@@ -627,7 +627,7 @@ class Block:
                                       self.svg.docks[4][1], ']']]
 
     def _make_collapsible_style_top(self, svg):
-        self.svg.expand(self._dx+self._ex, self._ey)
+        self.svg.expand(self.dx+self.ex, self.ey)
         self._make_collapsible_top_block(svg)
         self.docks = [['flow', True, self.svg.docks[0][0],
                                      self.svg.docks[0][1]],
@@ -637,14 +637,14 @@ class Block:
                                       self.svg.docks[2][1]]]
 
     def _make_collapsible_style_bottom(self, svg):
-        self.svg.expand(self._dx+self._ex, self._ey)
+        self.svg.expand(self.dx+self.ex, self.ey)
         self._make_collapsible_bottom_block(svg)
         self.docks = [['flow',True,self.svg.docks[0][0],self.svg.docks[0][1]],
                       ['flow',False,self.svg.docks[1][0],self.svg.docks[1][1]]]
 
     # Depreciated block styles
     def _make_portfolio_style_2x2(self, svg):
-        self.svg.expand(30+self._dx+self._ex, 10+self._ey)
+        self.svg.expand(30+self.dx+self.ex, 10+self.ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_innie([True, True, False, True])        
@@ -665,7 +665,7 @@ class Block:
                                       self.svg.docks[3][1]]]
 
     def _make_portfolio_style_2x1(self, svg):
-        self.svg.expand(30+self._dx+self._ex, 10+self._ey)
+        self.svg.expand(30+self.dx+self.ex, 10+self.ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_innie([True, True])        
@@ -682,7 +682,7 @@ class Block:
                                       self.svg.docks[2][1]]]
 
     def _make_portfolio_style_1x2(self, svg):
-        self.svg.expand(30+self._dx+self._ex, 15+self._ey)
+        self.svg.expand(30+self.dx+self.ex, 15+self.ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_innie([True, True, False, True])
@@ -700,7 +700,7 @@ class Block:
                                       self.svg.docks[1][1]]]
 
     def _make_portfolio_style_1x1(self, svg):
-        self.svg.expand(30+self._dx+self._ex, 15+self._ey)
+        self.svg.expand(30+self.dx+self.ex, 15+self.ey)
         self.svg.set_slot(True)
         self.svg.set_tab(True)
         self.svg.set_innie([True, True])  
