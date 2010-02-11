@@ -109,7 +109,7 @@ PALETTE_NAMES = ['turtle', 'pen', 'colors', 'numbers', 'flow', 'blocks',
 
 PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show', 
              'seth', 'setxy', 'heading', 'xcor', 'ycor', 'setscale',
-             'arc', 'scale', 'width', 'height', 'leftpos', 'toppos', 'rightpos',
+             'arc', 'scale', 'leftpos', 'toppos', 'rightpos',
              'bottompos'],
             ['penup','pendown', 'setpensize', 'fillscreen', 'pensize',
              'settextsize', 'setcolor', 'setshade', 'textsize', 'color',
@@ -125,10 +125,10 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'show',
              'storein', 'start'],
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc',  'nop', 'sandwichtop', 'sandwichbottom',
-             'addturtle', 'print', 'comment'],
-            ['journal', 'audio', 'description', 'picturelist', 
-             'hideblocks', 'showblocks', 'fullscreen',
-             'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2', 'savepix'],
+             'addturtle', 'print', 'comment', 'width', 'height'],
+            ['journal', 'audio', 'description', 'savepix',
+             'hideblocks', 'showblocks', 'fullscreen', 'picturelist',
+             'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2'],
             ['empty', 'restoreall']]
 
 #

@@ -539,22 +539,22 @@ class TurtleArtActivity(activity.Activity):
         # maybe we can use a stack to share events to new-comers?
         # self._share += "text + "\n"
         if text[0] == 'p': # button press
-            e,x,y,mask = text.rsplit(":")
+            e,x,y,mask = text.split(":")
             # _logger.debug("receiving button press: "+x+" "+y+" "+mask)
             if mask == 'T':
                 self.tw.button_press(True,int(x),int(y),False)
             else:
                 self.tw.button_press(False,int(x),int(y),False)
         elif text[0] == 'r': # block release
-            e,x,y = text.rsplit(":")
+            e,x,y = text.split(":")
             # _logger.debug("receiving button release: " + x + " " + y)
             self.tw.button_release(int(x),int(y),False)
         elif text[0] == 'm': # mouse move
-            e,x,y = text.rsplit(":")
+            e,x,y = text.split(":")
             _logger.debug("receiving move: " + x + " " + y)
             self.tw.mouse_move(0,0,False,int(x),int(y))
         elif text[0] == 'k': # typing
-            e,mask,keyname = text.rsplit(":",3)
+            e,mask,keyname = text.split(":",3)
             # _logger.debug("recieving key press: " + mask + " " + keyname)
             if mask == 'T':
                 self.tw.key_press(True,keyname,False)
@@ -570,7 +570,7 @@ class TurtleArtActivity(activity.Activity):
         elif text[0] == 'I': # receiving current state
             if self.waiting_for_blocks:
                 _logger.debug("receiving project from sharer")
-                e,text = text.rsplit(":",2)
+                e,text = text.split(":",2)
                 if len(text) > 0:
                     self.tw.new_project()
                     self.tw.process_data(data_from_string(text))

@@ -1709,16 +1709,17 @@ class TurtleArtWindow():
     """
     def _process_alphanumeric_input(self, keyname, keyunicode):
         if len(self.selected_blk.spr.labels[0]) > 0:
-            if self.selected_blk.spr.labels[0].count(CURSOR) == 0:
+            c = self.selected_blk.spr.labels[0].count(CURSOR) 
+            if c == 0:
                 oldleft = self.selected_blk.spr.labels[0]
                 oldright = ''
             elif len(self.selected_blk.spr.labels[0]) == 1:
                 oldleft = ''
                 oldright = ''
-            else: # Why are getting a ValueError on occasion?
-                try:
+            else:
+                try:  # Why are getting a ValueError on occasion?
                     oldleft, oldright =\
-                        self.selected_blk.spr.labels[0].rsplit(CURSOR)
+                        self.selected_blk.spr.labels[0].split(CURSOR)
                 except ValueError:
                     print "[%s]" % self.selected_blk.spr.labels[0]
                     oldleft = self.selected_blk.spr.labels[0]
