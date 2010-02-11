@@ -6,8 +6,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.0"
-   width="55.096272"
-   height="30.031462"
+   width="36.914501"
+   height="20.12108"
    id="svg2">
   <defs
      id="defs5">
@@ -53,7 +53,7 @@
     </linearGradient>
   </defs>
   <g
-     transform="matrix(0.67030561,0,0,0.64489065,-3.7989548,-2.7187621)"
+     transform="matrix(0.44910476,0,0,0.43207674,-2.5452997,-1.8215706)"
      id="activity-journal"
      style="stroke:#000000;stroke-opacity:1;display:block">
     <path
@@ -81,7 +81,7 @@
        style="fill:none;stroke:#000000;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1" />
   </g>
   <g
-     transform="matrix(0.67,0,0,0.65934066,31.990636,0.02217029)"
+     transform="matrix(0.4489,0,0,0.44175824,21.433726,0.01485409)"
      id="g2823">
     <path
        d="m 1.75,43.75 0,-42 21,0 10,11 0,31 -31,0 z"
