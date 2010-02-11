@@ -441,7 +441,6 @@ class TurtleArtWindow():
         if self.palette_sprs[n][self.orientation] is not None:
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
-        # TODO: use block margins to compute sizes dynamically
         if self.palettes[n] == []:
             for i, name in enumerate(PALETTES[n]):
                 # Some blocks are too big to fit the palette.
@@ -509,83 +508,102 @@ class TurtleArtWindow():
                     for bb in self._find_group(b):
                         bb.spr.hide()
 
-    def _horizontal_layout(self, x, y, max, blocks):
+    """
+    Position prototypes in a horizontal palette.
+    """
+    def _horizontal_layout(self, x, y, blocks):
+        _max = 0
         for b in blocks:
             _w, _h = self._width_and_height(b)
             if y+_h > PALETTE_HEIGHT+ICON_SIZE:
+                x += int(_max+5)
                 y = ICON_SIZE+5
-                x += int(max+5)
-                max = 0
+                _max = 0
             (_bx, _by) = b.spr.get_xy()
             _dx = x-_bx
             _dy = y-_by
             for g in self._find_group(b):
                 g.spr.move_relative((int(_dx), int(_dy)))
             y += int(_h+5)
-            if _w > max:
-                max = _w
-        return x, y, max
+            if _w > _max:
+                _max = _w
+        return x, y, _max
 
-    def _vertical_layout(self, x, y, max, blocks):
-        for b in blocks:
-            _w, _h = self._width_and_height(b)
+    """
+    Position prototypes in a vertical palette.
+    """
+    def _vertical_layout(self, x, y, blocks):
+        _row = []
+        _row_w = 0
+        _max = 0
+        for _b in blocks:
+            _w, _h = self._width_and_height(_b)
             if x+_w > PALETTE_WIDTH:
+                # Recenter row.
+                _dx = int((PALETTE_WIDTH-_row_w)/2)
+                for _r in _row:
+                    for _g in self._find_group(_r):
+                        _g.spr.move_relative((_dx, 0))
+                _row = []
+                _row_w = 0
                 x = 5
-                y += int(max+5)
-                max = 0
-            (_bx, _by) = b.spr.get_xy()
-            _dx = x-_bx
-            _dy = y-_by
-            for g in self._find_group(b):
-                g.spr.move_relative((int(_dx), int(_dy)))
+                y += int(_max+5)
+                _max = 0
+            _row.append(_b)
+            _row_w += (5+_w)
+            (_bx, _by) = _b.spr.get_xy()
+            _dx = int(x-_bx)
+            _dy = int(y-_by)
+            for _g in self._find_group(_b):
+                _g.spr.move_relative((_dx, _dy))
             x += int(_w+5)
-            if _h > max:
-                max = _h
-        return x, y, max
+            if _h > _max:
+                _max = _h
+        # Recenter last row.
+        _dx = int((PALETTE_WIDTH-_row_w)/2)
+        for _r in _row:
+            for _g in self._find_group(_r):
+                _g.spr.move_relative((_dx, 0))
+        return x, y, _max
 
+    """
+    Layout prototypes in a palette.
+    """
     def _layout_palette(self, n):
         if n is not None:
-            _x, _y, _max = 5, ICON_SIZE+5, 0
+            _x, _y = 5, ICON_SIZE+5
             if self.orientation == 0:
-                _x, _y, _max = self._horizontal_layout(_x, _y, _max,
-                                                       self.palettes[n])
+                _x, _y, _max = self._horizontal_layout(_x, _y, self.palettes[n])
                 if n == PALETTE_NAMES.index('trash'):
-                    _x, _y, _max = self._horizontal_layout(_x, _y, _max,
+                    _x, _y, _max = self._horizontal_layout(_x+_max, _y,
                                                            self.trash_stack)
+                _w = _x+_max+25
                 if self.palette_sprs[n][self.orientation] is None:
                     svg = SVG()
-                    _w = _x+_max+25
                     self.palette_sprs[n][self.orientation] = Sprite(
                             self.sprite_list, 0, ICON_SIZE,
                             svg_str_to_pixbuf(svg.palette(_w, PALETTE_HEIGHT)))
                     self.palette_sprs[n][self.orientation].type = 'category'
                 if n == PALETTE_NAMES.index('trash'):
-                    _w = _x+_max+25
-                    if self.palette_sprs[n][
-                       self.orientation].get_dimensions()[0] < _w:
-                        svg = SVG()
-                        self.palette_sprs[n][self.orientation].set_shape(
-                            svg_str_to_pixbuf(svg.palette(_w, PALETTE_HEIGHT)))
-            else: # TODO: center horizontally
-                _x, _y, _max = self._vertical_layout(_x, _y, _max,
-                                                     self.palettes[n])
+                    svg = SVG()
+                    self.palette_sprs[n][self.orientation].set_shape(
+                        svg_str_to_pixbuf(svg.palette(_w, PALETTE_HEIGHT)))
+            else:
+                _x, _y, _max = self._vertical_layout(_x, _y, self.palettes[n])
                 if n == PALETTE_NAMES.index('trash'):
-                    _x, _y, _max = self._vertical_layout(_x, _y, _max,
-                                                           self.trash_stack)
+                    _x, _y, _max = self._vertical_layout(_x, _y+_max,
+                                                         self.trash_stack)
+                _h = _y+_max+25-ICON_SIZE
                 if self.palette_sprs[n][self.orientation] is None:
                     svg = SVG()
-                    _h = _y+_max+5
                     self.palette_sprs[n][self.orientation] =\
                         Sprite(self.sprite_list, 0, ICON_SIZE,
                             svg_str_to_pixbuf(svg.palette(PALETTE_WIDTH, _h)))
                     self.palette_sprs[n][self.orientation].type = 'category'
                 if n == PALETTE_NAMES.index('trash'):
-                    _h = _y+_max+5
-                    if self.palette_sprs[n][
-                       self.orientation].get_dimensions()[0] < _h:
-                        svg = SVG()
-                        self.palette_sprs[n][self.orientation].set_shape(
-                            svg_str_to_pixbuf(svg.palette(PALETTE_WIDTH, _h)))
+                    svg = SVG()
+                    self.palette_sprs[n][self.orientation].set_shape(
+                        svg_str_to_pixbuf(svg.palette(PALETTE_WIDTH, _h)))
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
     """
@@ -602,9 +620,6 @@ class TurtleArtWindow():
                 self.activity._send_event("p:%d:%d:F" % (x, y))
         return True
 
-    """
-    Button press
-    """
     def button_press(self, mask, x, y, verbose=False):
         if verbose:
             print "processing remote button press: %d, %d" % (x, y)
@@ -782,7 +797,6 @@ class TurtleArtWindow():
             newblk = Block(self.block_list, self.sprite_list, name, x-20, y-20,
                            'block', [], self.block_scale)
         # Add special skin to some blocks
-        # TODO: use block margins to compute sizes dynamically
         if name == 'nop':
             if self.nop == 'pythonloaded':
                 x, y = self._calc_image_offset('pythonon',newblk.spr)
@@ -1232,7 +1246,6 @@ class TurtleArtWindow():
 
     """
     Find the sandwich top above this block.
-    # TODO: Detect branches (e.g., if, ifelse, repeat)
     """
     def _find_sandwich_top(self, blk):
         b = blk.connections[0]
@@ -1250,7 +1263,6 @@ class TurtleArtWindow():
 
     """
     Find the sandwich bottom below this block.
-    # TODO: Detect branches (e.g., if, ifelse, repeat)
     """
     def _find_sandwich_bottom(self, blk):
         b = blk.connections[len(blk.connections)-1]
@@ -1353,11 +1365,17 @@ class TurtleArtWindow():
                     b.spr.move_relative((dx, dy))
         self._grow_stack_arm(top)
 
+    """
+    When we undock, retract the 'arm' that extends down from 'sandwichtop'.
+    """
     def _reset_stack_arm(self, top):
         if top is not None and top.name == 'sandwichtop':
             if top.ey > 0:
                 top.reset_y()
 
+    """
+    When we dock, grow an 'arm' the length of the stack from 'sandwichtop'.
+    """
     def _grow_stack_arm(self, top):
         if top is not None and top.name == 'sandwichtop':
             bot = self._find_sandwich_bottom(top)
@@ -1372,6 +1390,9 @@ class TurtleArtWindow():
             if dy > 0:
                 top.expand_in_y(dy/top.scale)
 
+    """
+    Check the state of collapsible blocks upon change in dock state.
+    """
     def _check_collapsibles(self, blk):
         group = self._find_group(blk)
         for b in group:
@@ -1396,12 +1417,18 @@ class TurtleArtWindow():
                                 self._reset_stack_arm(bb)
                 b.refresh()
 
+    """
+    Is this stack collapsed?
+    """
     def _collapsed(self, blk):
         if blk is not None and blk.name in COLLAPSIBLE and\
            len(blk.values) == 1 and blk.values[0] != 0:
             return True
         return False
 
+    """
+    Can this stack be collapsed?
+    """
     def _collapsible(self, blk):
         if blk is None or blk.name not in COLLAPSIBLE:
             return False
@@ -2315,6 +2342,9 @@ class TurtleArtWindow():
 
     """
     Calculate the postion for placing an image onto a sprite.
+    TODO: Rescale images?
+        # if iw > w or ih > h:
+        #    print "WARNING: need to recale image"
     """
     def _calc_image_offset(self, name, spr, iw=0, ih=0):
         l, t = spr.label_left_top()
@@ -2325,8 +2355,6 @@ class TurtleArtWindow():
         if iw == 0:
             iw = self.media_shapes[name].get_width()
             ih = self.media_shapes[name].get_height()
-        if iw > w or ih > h:
-            print "WARNING: need to recale image"
         return int(l+(w-iw)/2), int(t+(h-ih)/2)
 
     """
