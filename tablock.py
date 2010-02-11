@@ -228,6 +228,7 @@ class Block:
         self.spr = sprites.Sprite(sprite_list, x, y, self.shapes[0])
         self._set_margins()
         self._set_label_attributes()
+
         if self.name in CONTENT_BLOCKS and len(self.values) > 0:
             for i, v in enumerate(self.values):
                 self._set_labels(i, str(v))
@@ -253,6 +254,8 @@ class Block:
     def _set_label_attributes(self):
         if self.name in CONTENT_BLOCKS:
             n = len(self.values)
+            if n == 0:
+                n = 1 # Force a scale to be set, even if there is no value.
         else:
             n = len(BLOCK_NAMES[self.name])
         for i in range(n):
