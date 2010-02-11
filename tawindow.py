@@ -271,8 +271,8 @@ class TurtleArtWindow():
     def set_userdefined(self):
         for blk in self.just_blocks():
             if blk.name == 'nop':
-                blk.spr.set_image(self.media_shapes['pythonon'], 1,
-                                  PYTHON_X, PYTHON_Y)
+                x, y = self._calc_image_offset('pythonon', blk.spr)
+                blk.spr.set_image(self.media_shapes['pythonon'], 1, x, y)
         self.nop = 'pythonloaded'
 
     """
@@ -456,17 +456,26 @@ class TurtleArtWindow():
                 self.palettes[n][i].spr.set_shape(self.palettes[n][i].shapes[0])
                 # Some blocks get a skin.
                 if name in BOX_STYLE_MEDIA:
+                    x, y = self._calc_image_offset(name+'small',
+                                                   self.palettes[n][i].spr)
                     self.palettes[n][i].spr.set_image(self.media_shapes[
-                        name+'small'], 1, int(MEDIA_X*scale/self.block_scale),
-                                          int(MEDIA_Y*scale/self.block_scale))
+                                                      name+'small'], 1, x, y)
                 elif name[:8] == 'template':
+                    x, y = self._calc_image_offset(name[8:],
+                                                   self.palettes[n][i].spr)
                     self.palettes[n][i].spr.set_image(self.media_shapes[
-                        name[8:]], 1, int(TEMPLATE_X*scale/self.block_scale),
-                                      int(TEMPLATE_Y*scale/self.block_scale))
+                                                      name[8:]], 1, x, y)
+                elif name[:7] == 'picture':
+                    x, y = self._calc_image_offset(name[7:],
+                                                   self.palettes[n][i].spr)
+                    self.palettes[n][i].spr.set_image(self.media_shapes[
+                                                      name[7:]], 1, x, y)
                 elif name == 'nop':
+                    x, y = self._calc_image_offset('pythonsmall',
+                                                   self.palettes[n][i].spr)
                     self.palettes[n][i].spr.set_image(self.media_shapes[
-                        'pythonsmall'], 1, int(PYTHON_X*scale/self.block_scale),
-                                           int(PYTHON_Y*scale/self.block_scale))
+                                                      'pythonsmall'], 1, x, y)
+
         self._layout_palette(n)
         for blk in self.palettes[n]:
             blk.spr.set_layer(TAB_LAYER)
@@ -780,14 +789,14 @@ class TurtleArtWindow():
         # TODO: use block margins to compute sizes dynamically
         if name == 'nop':
             if self.nop == 'pythonloaded':
-                newblk.spr.set_image(self.media_shapes['pythonon'], 1,
-                                     PYTHON_X, PYTHON_Y)
+                x, y = self._calc_image_offset('pythonon',newblk.spr)
+                newblk.spr.set_image(self.media_shapes['pythonon'], 1, x, y)
             else:
-                newblk.spr.set_image(self.media_shapes['pythonoff'], 1,
-                                     PYTHON_X, PYTHON_Y)
+                x, y = self._calc_image_offset('pythonoff',newblk.spr)
+                newblk.spr.set_image(self.media_shapes['pythonoff'], 1, x, y)
         elif name in BOX_STYLE_MEDIA:
-            newblk.spr.set_image(self.media_shapes[name+'off'], 1,
-                                 MEDIA_X, MEDIA_Y)
+            x, y = self._calc_image_offset(name+'off',newblk.spr)
+            newblk.spr.set_image(self.media_shapes[name+'off'], 1, x, y)
             newblk.spr.set_label(' ')
         newspr = newblk.spr
         newspr.set_layer(TOP_LAYER)
@@ -822,8 +831,9 @@ class TurtleArtWindow():
                     argdock = argblk.docks[0]
                     nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
                     if argname == 'journal':
+                        x, y = self._calc_image_offset('journaloff',argblk.spr)
                         argblk.spr.set_image(self.media_shapes['journaloff'],
-                                             1, MEDIA_X, MEDIA_Y)
+                                             1, x, y)
                         argblk.spr.set_label(' ')
                     argblk.spr.move((nx, ny))
                     argblk.spr.set_layer(TOP_LAYER)
@@ -1182,6 +1192,7 @@ class TurtleArtWindow():
             for b in group:
                 if b != blk:
                     b.spr.move_relative((0, dy*blk.scale))
+            self._grow_stack_arm(self._find_sandwich_top(blk))
         elif blk.name in EXPANDABLE:
             if self._show_button_hit(blk.spr, x, y):
                 n = len(blk.connections)
@@ -1209,6 +1220,7 @@ class TurtleArtWindow():
                 argblk.spr.set_layer(TOP_LAYER)
                 argblk.connections = [blk, None]
                 blk.connections[n-1] = argblk
+                self._grow_stack_arm(self._find_sandwich_top(blk))
             else:
                 self._run_stack(blk)
         elif blk.name in COLLAPSIBLE:
@@ -1525,10 +1537,11 @@ class TurtleArtWindow():
         if blk.name == 'journal':
             self._load_image_thumb(name, blk)
         elif blk.name == 'audio':
-            blk.spr.set_image(self.media_shapes['audioon'], 1, MEDIA_X, MEDIA_Y)
+            x, y = self._calc_image_offset('audioon', blk.spr)
+            blk.spr.set_image(self.media_shapes['audioon'], 1, x, y)
         else:
-            blk.spr.set_image(self.media_shapes['descriptionon'], 1,
-                              MEDIA_X, MEDIA_Y)
+            x, y = self._calc_image_offset('descriptionon', blk.spr)
+            blk.spr.set_image(self.media_shapes['descriptionon'], 1, x, y)
         if value == '':
             value = name
         if len(blk.values)>0:
@@ -1542,25 +1555,27 @@ class TurtleArtWindow():
     """
     def _load_image_thumb(self, picture, blk):
         pixbuf = None
-        blk.spr.set_image(self.media_shapes['descriptionon'], 1, MEDIA_X,
-                                                                 MEDIA_Y)
+        x, y = self._calc_image_offset('descriptionon', blk.spr)
+        blk.spr.set_image(self.media_shapes['descriptionon'], 1, x, y)
         if self.running_sugar:
-            pixbuf = get_pixbuf_from_journal(picture, THUMB_W, THUMB_H)
+            w, h = self._calc_image_size(blk.spr)
+            pixbuf = get_pixbuf_from_journal(picture, w, h)
         else:
             if movie_media_type(picture):
-                blk.spr.set_image(self.media_shapes['journalon'], 1, MEDIA_X,
-                                                                     MEDIA_Y)
+                x, y = self._calc_image_offset('journalon', blk.spr)
+                blk.spr.set_image(self.media_shapes['journalon'], 1, x, y)
             elif audio_media_type(picture):
-                blk.spr.set_image(self.media_shapes['audioon'], 1, MEDIA_X,
-                                                                   MEDIA_Y)
+                x, y = self._calc_image_offset('audioon', blk.spr)
+                blk.spr.set_image(self.media_shapes['audioon'], 1, x, y)
                 blk.name = 'audio'
             elif image_media_type(picture):
-                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(picture, THUMB_W,
-                                                                       THUMB_H)
+                w, h = self._calc_image_size(blk.spr)
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(picture, w, h)
             else:
                 blk.name = 'description'
         if pixbuf is not None:
-            blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
+            x, y = self._calc_image_offset('', blk.spr)
+            blk.spr.set_image(pixbuf, 1, x, y)
 
     """
     Disconnect block from stack above it.
@@ -2000,11 +2015,11 @@ class TurtleArtWindow():
         # Some blocks get transformed.
         if btype == 'nop': 
             if self.nop == 'pythonloaded':
-                blk.spr.set_image(self.media_shapes['pythonon'], 1,
-                                  PYTHON_X, PYTHON_Y)
+                x, y = self._calc_image_offset('pythonon', blk.spr)
+                blk.spr.set_image(self.media_shapes['pythonon'], 1, x, y)
             else:
-                blk.spr.set_image(self.media_shapes['pythonoff'], 1,
-                                  PYTHON_X, PYTHON_Y)
+                x, y = self._calc_image_offset('pythonoff', blk.spr)
+                blk.spr.set_image(self.media_shapes['pythonoff'], 1, x, y)
             blk.spr.set_label(' ')
         elif btype in EXPANDABLE:
             if btype == 'vspace':
@@ -2018,45 +2033,50 @@ class TurtleArtWindow():
                     dy = blk.add_arg()
         elif btype in BOX_STYLE_MEDIA and len(blk.values)>0:
             if blk.values[0] == 'None' or blk.values[0] == None:
-                blk.spr.set_image(self.media_shapes[btype+'off'], 1,
-                                  MEDIA_X, MEDIA_Y)
+                x, y = self._calc_image_offset(btype+'off', blk.spr)
+                blk.spr.set_image(self.media_shapes[btype+'off'], 1, x, y)
             elif btype == 'audio' or btype == 'description':
-                blk.spr.set_image(self.media_shapes[btype+'on'], 1,
-                                  MEDIA_X, MEDIA_Y)
+                x, y = self._calc_image_offset(btype+'on', blk.spr)
+                blk.spr.set_image(self.media_shapes[btype+'on'], 1, x, y)
             elif self.running_sugar:
                 try:
                     dsobject = datastore.get(blk.values[0])
                     if not movie_media_type(dsobject.file_path[-4:]):
-                        pixbuf = get_pixbuf_from_journal(dsobject,
-                                                         THUMB_W, THUMB_H)
+                        w, h, = self._calc_image_size(blk.spr)
+                        pixbuf = get_pixbuf_from_journal(dsobject, w, h)
                         if pixbuf is not None:
-                            blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
+                            x, y = self._calc_image_offset('', blk.spr)
+                            blk.spr.set_image(pixbuf, 1, x, y)
                         else:
+                            x, y = self._calc_image_offset('journalon', blk.spr)
                             blk.spr.set_image(self.media_shapes['journalon'], 1,
-                                              MEDIA_X, MEDIA_Y)
+                                              x, y)
                     dsobject.destroy()
                 except:
-                    print "couldn't open dsobject (%s)" % (blk.values[0])
-                    blk.spr.set_image(self.media_shapes['journaloff'], 1,
-                                      MEDIA_X, MEDIA_Y)
+                    print "Warning: Couldn't open dsobject (%s)" %\
+                          (blk.values[0])
+                    x, y = self._calc_image_offset('journaloff', blk.spr)
+                    blk.spr.set_image(self.media_shapes['journaloff'], 1, x, y)
             else:
                 if not movie_media_type(blk.values[0][-4:]):
                     try:
+                        w, h, = self._calc_image_size(blk.spr)
                         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
-                                     blk.values[0], THUMB_W, THUMB_H)
-                        blk.spr.set_image(pixbuf, 1, PIXBUF_X, PIXBUF_Y)
+                                     blk.values[0], w, h)
+                        x, y = self._calc_image_offset('', blk.spr)
+                        blk.spr.set_image(pixbuf, 1, x, y)
                     except:
-                        blk.spr.set_image(self.media_shapes['journaloff'],
-                                          1, MEDIA_X, MEDIA_Y)
+                        x, y = self._calc_image_offset('journaloff', blk.spr)
+                        blk.spr.set_image(self.media_shapes['journaloff'],1,x,y)
                 else:
-                    blk.spr.set_image(self.media_shapes['journalon'], 1,
-                                      MEDIA_X, MEDIA_Y)
+                    x, y = self._calc_image_offset('journalon', blk.spr)
+                    blk.spr.set_image(self.media_shapes['journalon'], 1, x, y)
             blk.spr.set_label(' ')
             blk.resize()
         elif btype in BOX_STYLE_MEDIA:
             blk.spr.set_label(' ')
-            blk.spr.set_image(self.media_shapes[btype+'off'], 1,
-                              MEDIA_X, MEDIA_Y)
+            x, y = self._calc_image_offset(btype+'off', blk.spr)
+            blk.spr.set_image(self.media_shapes[btype+'off'], 1, x, y)
     
         blk.spr.set_layer(BLOCK_LAYER)
         if check_dock is True:
@@ -2296,3 +2316,27 @@ class TurtleArtWindow():
             dsobject.set_file_path(file_path)
             datastore.write(dsobject)
             dsobject.destroy()
+
+    """
+    Calculate the postion for placing an image onto a sprite.
+    """
+    def _calc_image_offset(self, name, spr, iw=0, ih=0):
+        l, t = spr.label_left_top()
+        if name == '':
+            return (l, t)
+        w = spr.label_safe_width()
+        h = spr.label_safe_height()
+        if iw == 0:
+            iw = self.media_shapes[name].get_width()
+            ih = self.media_shapes[name].get_height()
+        if iw > w or ih > h:
+            print "WARNING: need to recale image"
+        return int(l+(w-iw)/2), int(t+(h-ih)/2)
+
+    """
+    Calculate the maximum size for placing an image onto a sprite.
+    """
+    def _calc_image_size(self, spr):
+        w = spr.label_safe_width()
+        h = spr.label_safe_height()
+        return (w, h)
