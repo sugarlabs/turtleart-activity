@@ -373,7 +373,6 @@ class TurtleArtWindow():
                 self._collapse_stack(self._find_sandwich_top(b))
         for b in self.just_blocks():
             if b.name == 'sandwichtop':
-                print "in resize: %d" % (self.block_scale)
                 self._grow_stack_arm(b)
 
     """
@@ -442,13 +441,13 @@ class TurtleArtWindow():
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
         if self.palettes[n] == []:
+            # Create 'proto' blocks for each palette entry
             for i, name in enumerate(PALETTES[n]):
-                # Some blocks are too big to fit the palette.
                 self.palettes[n].append(Block(self.block_list,
                                               self.sprite_list, name,
                                               0, 0, 'proto', [], PALETTE_SCALE))
                 self.palettes[n][i].spr.set_layer(TAB_LAYER)
-                self.palettes[n][i].spr.set_shape(self.palettes[n][i].shapes[0])
+                self.palettes[n][i].unhighlight()
                 # Some blocks get a skin.
                 if name in BOX_STYLE_MEDIA:
                     x, y = self._calc_image_offset(name+'small',
@@ -2251,6 +2250,8 @@ class TurtleArtWindow():
     Find the top block in a stack.
     """
     def find_top_block(self, blk):
+        if len(blk.connections) == 0:
+            return blk
         while blk.connections[0] is not None:
             blk = blk.connections[0]
         return blk
