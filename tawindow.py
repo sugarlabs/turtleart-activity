@@ -1489,7 +1489,8 @@ class TurtleArtWindow():
                     best_your_dockn = your_dockn
                     best_my_dockn = my_dockn
         if d<200:
-            if self._arithmetic_check(my_block, best_you) is False:
+            if self._arithmetic_check(my_block, best_you, best_my_dockn,
+                                      best_your_dockn) is False:
                 return
             for blk in self.drag_group:
                 (sx, sy) = blk.spr.get_xy()
@@ -1505,7 +1506,7 @@ class TurtleArtWindow():
     """
     Additional docking check for arithmetic blocks
     """
-    def _arithmetic_check(self, b1, b2):
+    def _arithmetic_check(self, b1, b2, d1, d2):
         if b1 == None or b2 == None:
             return True
         if b1.name in ['sqrt', 'number'] and b2.name in ['sqrt', 'number']:
@@ -1515,9 +1516,9 @@ class TurtleArtWindow():
                 return False
         elif b1.name in ['division2', 'number'] and\
              b2.name in ['division2', 'number']:
-            if b1.name == 'number' and float(b1.values[0]) == 0:
+            if b1.name == 'number' and float(b1.values[0]) == 0 and d2 == 2:
                 return False
-            elif b2.name == 'number' and float(b2.values[0]) == 0:
+            elif b2.name == 'number' and float(b2.values[0]) == 0 and d1 == 2:
                 return False
         elif b1.name in ['product2', 'minus2', 'sqrt', 'division2', 'random',
                          'remainder2', 'string'] and\
