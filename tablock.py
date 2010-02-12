@@ -80,7 +80,7 @@ class Block:
     # debug code
     # etc.
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
-                 values=[], scale=BLOCK_SCALE, colors=["#0000FF","#0000A0"]):
+                 values=[], scale=BLOCK_SCALE, colors=["#FF0000","#A00000"]):
         self.spr = None
         self.shapes = []
         self.name = name
