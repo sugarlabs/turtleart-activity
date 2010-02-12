@@ -359,7 +359,7 @@ class Block:
                       ['flow',False,self.svg.docks[1][0],self.svg.docks[1][1]]]
 
     def _make_basic_style_extended(self, svg):
-        self.svg.expand(self.dx+15+self.ex, 15+self.ey)
+        self.svg.expand(self.dx+16+self.ex, 16+self.ey)
         self._make_basic_block(svg)
         self.docks = [['flow',True,self.svg.docks[0][0],self.svg.docks[0][1]],
                       ['flow',False,self.svg.docks[1][0],self.svg.docks[1][1]]]
