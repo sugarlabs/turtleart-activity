@@ -137,7 +137,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
 
 COLORS = [["#00FF00","#00A000"], ["#00FFFF","#00A0A0"], ["#00FFFF","#00A0A0"],
           ["#FF00FF","#A000A0"], ["#FFC000","#A08000"], ["#FFFF00","#A0A000"],
-          ["#FF0000","#A00000"], ["#0000FF","#0000FF"], ["#FFFF00","#A0A000"]]
+          ["#FF0000","#A00000"], ["#0000FF","#0000A0"], ["#FFFF00","#A0A000"]]
 
 BOX_COLORS = {'red':["#FF0000","#A00000"],'orange':["#FFD000","#AA8000"],
               'yellow':["#FFFF00","#A0A000"],'green':["#00FF00","#008000"],
@@ -149,7 +149,7 @@ PALETTE_WIDTH = 175
 SELECTOR_WIDTH = 55
 ICON_SIZE = 55
 SELECTED_COLOR = "#0000FF"
-SELECTED_STROKE_WIDTH = 1.5
+SELECTED_STROKE_WIDTH = 1.0
 STANDARD_STROKE_WIDTH = 1.0
 BLOCK_SCALE = 2.0
 PALETTE_SCALE = 1.5
@@ -471,6 +471,7 @@ BLOCK_NAMES = {
     'setpensize':[_('set pen size')],
     'setscale':[_('set scale')],
     'setshade':[_('set shade')],
+    'settextcolor':[_('set text color')],
     'settextsize':[_('set text size')],
     'setxy':[_('set xy'),_('x'),_('y')],
     'shade':[_('shade')],
@@ -576,6 +577,7 @@ PRIMITIVES = {
     'rightx':'rightx',
     'sandwichtop':'comment',
     'sandwichbottom':'nop',
+    'sandwichcollapsed':'nop',
     'savepix':'savepix',
     'scale':'scale',
     'setcolor':'setcolor',
@@ -653,6 +655,7 @@ DEFAULTS = {
     'setscale':[33],
     'setshade':[50],
     'settextsize':[32],
+    'settextcolor':[0],
     'setxy':[0, 0],
     'show':[_('text')],
     'showaligned':[_('text')],
