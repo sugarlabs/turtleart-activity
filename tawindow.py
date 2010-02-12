@@ -1253,7 +1253,13 @@ class TurtleArtWindow():
             self._run_stack(blk)
 
     """
-    From the top, find and uncollapse any collapsible stacks on forks.
+    Collapsible stacks live between 'sandwichtop' and 'sandwichbottom' blocks
+    What follows are a number of utilities for managing collapsible stacks.
+    Alas, corner-cases abound.
+    """
+
+    """
+    From the top, find and restore any collapsible stacks on forks.
     """
     def _uncollapse_forks(self, top, looping=False):
         if top == None:
@@ -1314,7 +1320,7 @@ class TurtleArtWindow():
         return None
 
     """
-    Find the sandwich bottom below this block.
+    Find the sandwich top below this block.
     """
     def _find_sandwich_top_below(self, blk):
         if blk.name == 'sandwichtop':
@@ -1340,7 +1346,6 @@ class TurtleArtWindow():
             if not hit_bottom and b == bot:
                 hit_bottom = True
 
-                print "collapsing stack from %s" % (str(b))
                 # Replace 'sandwichbottom' shape with 'sandwichcollapsed' shape
                 if len(b.values) == 0:
                     b.values.append(1)
