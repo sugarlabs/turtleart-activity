@@ -170,19 +170,18 @@ class Sprite:
         else:
             _w, _h = self.images[i].get_size()
         if len(self.images) == 1:
-            self._width = _w
-            self._height = _h
+            self._width = _w + self._dx[0]
+            self._height = _h + self._dy[0]
         else:
-            for img in self.images:
-                if isinstance(self.images[i], gtk.gdk.Pixbuf):
-                    _w = self.images[i].get_width()
-                    _h = self.images[i].get_height()
-                else:
-                    _w, _h = self.images[i].get_size()
-                if _w > self._width:
-                    self._width = _w
-                if _h > self._height:
-                    self._height = _h
+            if isinstance(self.images[i], gtk.gdk.Pixbuf):
+                _w = self.images[i].get_width()
+                _h = self.images[i].get_height()
+            else:
+                _w, _h = self.images[i].get_size()
+            if _w + dx > self._width:
+                self._width = _w + dx
+            if _h + dy > self._height:
+                self._height = _h + dy
 
     def move(self, pos):
         self.inval()
