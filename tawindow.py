@@ -1525,9 +1525,15 @@ class TurtleArtWindow():
              b2.name in ['product2', 'minus2', 'sqrt', 'division2', 'random',
                          'remainder2', 'string']:
             if b1.name == 'string' and len(b1.values[0]) != 1:
-                return False
+                try:
+                    float(b1.values[0])
+                except ValueError:
+                    return False
             elif b2.name == 'string' and len(b2.values[0]) != 1:
-                return False
+                try:
+                    float(b2.values[0])
+                except ValueError:
+                    return False
         return True
 
     """

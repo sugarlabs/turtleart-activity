@@ -68,13 +68,19 @@ class logoerror(Exception):
 Utility functions
 """
 
-def char_to_ord(x, y):
-    xx = x
-    yy = y
-    if type(x) == str or type(x) == unicode and len(x) == 1:
-        xx = ord(x[0])
-    if type(y) == str or type(y) == unicode and len(y) == 1:
-        yy = ord(y[0])
+def char_to_num(x, y):
+    try:
+        xx = float(x)
+    except ValueError:
+        xx = x
+    if type(xx) == str or type(xx) == unicode and len(xx) == 1:
+        xx = ord(xx[0])
+    try:
+        yy = float(y)
+    except ValueError:
+        yy = y
+    if type(yy) == str or type(yy) == unicode and len(yy) == 1:
+        yy = ord(yy[0])
     return xx, yy
 
 def careful_divide(x, y):
@@ -96,7 +102,7 @@ def taequal(x, y):
             typey = True
         if typex and typey:
             return x == y
-        xx, yy = char_to_ord(x, y)
+        xx, yy = char_to_num(x, y)
         return xx==yy
 
 def taless(x, y):
@@ -110,7 +116,7 @@ def taless(x, y):
             typey = True
         if typex and typey:
             return x < y
-        xx, yy = char_to_ord(x, y)
+        xx, yy = char_to_num(x, y)
         return xx<yy
 
 def tamore(x, y):
@@ -128,7 +134,7 @@ def taminus(x, y):
         (type(y) == int or type(y) == float):
         return(x-y)
     try:
-        xx, yy = char_to_ord(x, y)
+        xx, yy = char_to_num(x, y)
         return xx-yy
     except:
         raise logoerror("#syntaxerror")
@@ -138,7 +144,7 @@ def taproduct(x, y):
         (type(y) == int or type(y) == float):
         return(x*y)
     try:
-        xx, yy = char_to_ord(x, y)
+        xx, yy = char_to_num(x, y)
         return xx*yy
     except:
         raise logoerror("#syntaxerror")
@@ -148,7 +154,7 @@ def tamod(x, y):
         (type(y) == int or type(y) == float):
         return(x%y)
     try:
-        xx, yy = char_to_ord(x, y)
+        xx, yy = char_to_num(x, y)
         return(x%y)
     except:
         raise logoerror("#syntaxerror")
@@ -157,7 +163,7 @@ def tasqrt(x):
     if (type(x) == int or type(x) == float):
         return sqrt(x)
     try:
-        xx, yy = char_to_ord(x, 0)
+        xx, yy = char_to_num(x, 0)
         return sqrt(xx)
     except:
         raise logoerror("#syntaxerror")
@@ -167,7 +173,7 @@ def tarandom(x, y):
         (type(y) == int or type(y) == float):
         return(int(uniform(x,y)))
     try:
-        xx, yy = char_to_ord(x, y)
+        xx, yy = char_to_num(x, y)
         if ((type(x) == str or type(x) == unicode) and len(x) == 1) and\
            ((type(y) == str or type(y) == unicode) and len(y) == 1):
             return chr(int(uniform(xx,yy)))
@@ -639,7 +645,6 @@ class LogoCode:
         btoken = None
         if type(token) == tuple:
             (token, btoken) = token
-        print ">>>>>>>>>>>evalinfix %s %s" % (token, str(btoken))
         oldcfun, oldarglist = self.cfun, self.arglist
         self.cfun, self.arglist = token, [firstarg]
         no_args_check(self)
@@ -758,7 +763,7 @@ class LogoCode:
         self.ireturn()
         yield True
 
-    def prim_bullet(self, list):
+    def prim_bullet(self, list): # Depreciated block style
         self.show_bullets(list)
         self.ireturn()
         yield True
