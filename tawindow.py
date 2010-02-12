@@ -707,6 +707,34 @@ class TurtleArtWindow():
         self.show_palette(i)
 
     """
+    Put a group fo blocks into the trash.
+    """
+    def _put_in_trash(self, blk, x=0, y=0):
+        self.trash_stack.append(blk)
+        group = self._find_group(blk)
+        for b in group:
+            if b.status == 'collapsed':
+                # Collapsed stacks are restored for rescaling
+                # and then recollapsed after they are moved to the trash.
+                bot = self._find_sandwich_bottom(b)
+                if self._collapsed(bot):
+                    dy = bot.values[0]
+                    self._restore_stack(self._find_sandwich_top(b))
+                    bot.values[0] = dy
+            b.type = 'trash'
+            b.rescale(self.trash_scale)
+        blk.spr.move((x,y))
+        for b in group:
+            self._adjust_dock_positions(b)
+
+        # Re-collapsing any stacks we had restored for scaling
+        for b in group:
+            if self._collapsed(b):
+                self._collapse_stack(self._find_sandwich_top(b))
+
+        self.show_palette(PALETTE_NAMES.index('trash'))
+
+    """
     Restore all the blocks in the trash can
     """
     def _restore_all_from_trash(self):
@@ -1132,29 +1160,8 @@ class TurtleArtWindow():
         blk = self.drag_group[0]
         # Remove blocks by dragging them onto the trash palette.
         if self.block_operation=='move' and self._in_the_trash(x, y):
-            self.trash_stack.append(blk)
-            for b in self.drag_group:
-                if b.status == 'collapsed':
-                    # Collapsed stacks are restored for rescaling
-                    # and then recollapsed after they are moved to the trash.
-                    bot = self._find_sandwich_bottom(b)
-                    if self._collapsed(bot):
-                        dy = bot.values[0]
-                        self._restore_stack(self._find_sandwich_top(b))
-                        bot.values[0] = dy
-                b.type = 'trash'
-                b.rescale(self.trash_scale)
-            blk.spr.move((x,y))
-            for b in self.drag_group:
-                self._adjust_dock_positions(b)
-
-            # Re-collapsing any stacks we had restored for scaling
-            for b in self.drag_group:
-                if self._collapsed(b):
-                    self._collapse_stack(self._find_sandwich_top(b))
-
+            self._put_in_trash(blk, x, y)
             self.drag_group = None
-            self.show_palette(PALETTE_NAMES.index('trash'))
             return
 
         # Pull a stack of new blocks off of the category palette.
@@ -1559,10 +1566,13 @@ class TurtleArtWindow():
             for blk in self.drag_group:
                 (sx, sy) = blk.spr.get_xy()
                 blk.spr.move((sx+best_xy[0], sy+best_xy[1]))
+
+            # If there was already a block docked there, move it to the trash.
             blk_in_dock = best_you.connections[best_your_dockn]
             if blk_in_dock is not None:
-                for blk in self._find_group(blk_in_dock):
-                    blk.spr.hide()
+                blk_in_dock.connections[0] = None
+                self._put_in_trash(blk_in_dock)
+
             best_you.connections[best_your_dockn] = my_block
             if my_block.connections is not None:
                 my_block.connections[best_my_dockn] = best_you
@@ -2014,10 +2024,7 @@ class TurtleArtWindow():
         while len(self.just_blocks()) > 0:
             b = self.just_blocks()[0]
             top = self.find_top_block(b)
-            self.trash_stack.append(top)
-            for b in self._find_group(top):
-                b.type = 'trash'
-                b.spr.hide()
+            self._put_in_trash(top)
         self.canvas.clearscreen()
         self.save_file_name = None
     
