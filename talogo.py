@@ -68,20 +68,51 @@ class logoerror(Exception):
 Utility functions
 """
 
-def char_to_num(x, y):
+'''
+The strategy for mixing numbers and strings is to first try
+converting the string to a float; then if the string is a single
+character, try converting it to an ord; finally, just treat it as a
+string. Numbers appended to strings are first trreated as ints, then
+floats.
+'''
+def convert(x, fn):
     try:
-        xx = float(x)
+        return fn(x)
     except ValueError:
-        xx = x
-    if type(xx) == str or type(xx) == unicode and len(xx) == 1:
-        xx = ord(xx[0])
-    try:
-        yy = float(y)
-    except ValueError:
-        yy = y
-    if type(yy) == str or type(yy) == unicode and len(yy) == 1:
-        yy = ord(yy[0])
-    return xx, yy
+        return x
+
+def numtype(x):
+    if type(x) == int:
+        return True
+    if type(x) == float:
+        return True
+    return False
+
+def strtype(x):
+    if type(x) == str:
+        return True
+    if type(x) == unicode:
+        return True
+    return False
+
+def str_to_num(x):
+    xx = convert(x, float)
+    if type(xx) is float:
+        return xx
+    else:
+        xx, xflag = chr_to_ord(x)
+        if xflag:
+            return xx
+        else:
+            raise logoerror("#syntaxerror")
+
+def chr_to_ord(x):
+    if strtype(x) and len(x) == 1:
+        try:
+            return ord(x[0]), True
+        except ValueError:
+            return x, False
+    return x, False
 
 def careful_divide(x, y):
     try:
@@ -94,100 +125,96 @@ def careful_divide(x, y):
 def taequal(x, y):
     try:
         return float(x)==float(y)
-    except:
+    except TypeError:
         typex, typey = False, False
-        if type(x) == str or type(x) == unicode:
+        if strtype(x):
             typex = True
-        if type(y) == str or type(y) == unicode:
+        if strtype(y):
             typey = True
         if typex and typey:
             return x == y
-        xx, yy = char_to_num(x, y)
-        return xx==yy
+        return str_to_num(x) == str_to_num(y)
 
 def taless(x, y):
     try:
         return float(x)<float(y)
-    except:
+    except TypeError:
         typex, typey = False, False
-        if type(x) == str or type(x) == unicode:
+        if strtype(x):
             typex = True
-        if type(y) == str or type(y) == unicode:
+        if strtype(y):
             typey = True
         if typex and typey:
             return x < y
-        xx, yy = char_to_num(x, y)
-        return xx<yy
+        return str_to_num(x) < str_to_num(y)
 
 def tamore(x, y):
     return taless(y, x)
 
 def taplus(x, y):
-    if (type(x) == int or type(x) == float) and \
-        (type(y) == int or type(y) == float):
+    if numtype(x) and numtype(y):
         return(x+y)
     else:
-        try:
-            xx = round_int(x)
-        except ValueError:
+        if numtype(x):
+            xx = str(round_int(x))
+        else:
             xx = x
-        try:
-            yy = round_int(y)
-        except ValueError:
+        if numtype(y):
+            yy = str(round_int(y))
+        else:
             yy = y
-        return(str(xx) + str(yy))
+        return(xx+yy)
     
 def taminus(x, y):
-    if (type(x) == int or type(x) == float) and \
-        (type(y) == int or type(y) == float):
+    if numtype(x) and numtype(y):
         return(x-y)
     try:
-        xx, yy = char_to_num(x, y)
-        return xx-yy
-    except:
+        return str_to_num(x) - str_to_num(y)
+    except TypeError:
         raise logoerror("#syntaxerror")
     
 def taproduct(x, y):
-    if (type(x) == int or type(x) == float) and \
-        (type(y) == int or type(y) == float):
+    if numtype(x) and numtype(y):
         return(x*y)
     try:
-        xx, yy = char_to_num(x, y)
-        return xx*yy
-    except:
+        return str_to_num(x) * str_to_num(y)
+    except TypeError:
         raise logoerror("#syntaxerror")
 
 def tamod(x, y):
-    if (type(x) == int or type(x) == float) and \
-        (type(y) == int or type(y) == float):
+    if numtype(x) and numtype(y):
         return(x%y)
     try:
-        xx, yy = char_to_num(x, y)
-        return(x%y)
-    except:
+        return str_to_num(x) % str_to_num(y)
+    except TypeError:
         raise logoerror("#syntaxerror")
     
 def tasqrt(x):
-    if (type(x) == int or type(x) == float):
+    if numtype(x):
         return sqrt(x)
     try:
-        xx, yy = char_to_num(x, 0)
-        return sqrt(xx)
+        return sqrt(str_to_num(x))
     except:
         raise logoerror("#syntaxerror")
 
 def tarandom(x, y):
-    if (type(x) == int or type(x) == float) and \
-        (type(y) == int or type(y) == float):
+    if numtype(x) and numtype(y):
+        print "trying floats %f, %f" % (x,y)
         return(int(uniform(x,y)))
+    xx, xflag = chr_to_ord(x)
+    yy, yflag = chr_to_ord(y)
+    print xx, xflag, yy, yflag
+    if xflag and yflag:
+        print "trying chr %d, %d" % (xx,yy)
+        return chr(int(uniform(xx,yy)))
+    if not xflag:
+        xx = str_to_num(x)
+    if not yflag:
+        yy = str_to_num(y)
     try:
-        xx, yy = char_to_num(x, y)
-        if ((type(x) == str or type(x) == unicode) and len(x) == 1) and\
-           ((type(y) == str or type(y) == unicode) and len(y) == 1):
-            return chr(int(uniform(xx,yy)))
-        else:
-            return(int(uniform(xx,yy)))
-    except:
+        print "trying str %s, %s" % (str(xx),str(yy))
+        return(int(uniform(xx,yy)))
+    except TypeError:
         raise logoerror("#syntaxerror")
 
 def identity(x):
