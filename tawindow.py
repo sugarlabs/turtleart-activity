@@ -795,7 +795,8 @@ class TurtleArtWindow():
         else:
             newblk = Block(self.block_list, self.sprite_list, name, x-20, y-20,
                            'block', [], self.block_scale)
-        # Add special skin to some blocks
+
+        # Add a 'skin' to some blocks
         if name == 'nop':
             if self.nop == 'pythonloaded':
                 x, y = self._calc_image_offset('pythonon',newblk.spr)
@@ -807,6 +808,7 @@ class TurtleArtWindow():
             x, y = self._calc_image_offset(name+'off',newblk.spr)
             newblk.spr.set_image(self.media_shapes[name+'off'], 1, x, y)
             newblk.spr.set_label(' ')
+
         newspr = newblk.spr
         newspr.set_layer(TOP_LAYER)
         self.drag_pos = 20, 20
@@ -873,6 +875,7 @@ class TurtleArtWindow():
             if self._found_a_turtle(b) is False:
                 blk = self.load_block(b)
                 blocks.append(blk)
+
         # Make the connections.
         for i in range(len(blocks)):
             cons=[]
@@ -924,9 +927,11 @@ class TurtleArtWindow():
                 print "WARNING: unknown connection state %s" %\
                       (str(blocks[i].connections))
             blocks[i].connections = cons[:]
+
         # Block sizes and shapes may have changed.
         for b in blocks:
             self._adjust_dock_positions(b)
+
         # Look for any stacks that need to be collapsed.
         for b in blocks:
             if self._collapsed(b):
@@ -1007,15 +1012,18 @@ class TurtleArtWindow():
             else:
                 (sx,sy) = blk.spr.get_xy()
                 dx, dy = x-dragx-sx, y-dragy-sy
+
             # Take no action if there was a move of 0,0.
             if dx == 0 and dy == 0:
                 return
             self.drag_group = self._find_group(blk)
+
             # Check to see if any block ends up with a negative x.
             for b in self.drag_group:
                 (bx, by) = b.spr.get_xy()
                 if bx+dx < 0:
                     dx += -(bx+dx)
+
             # Move the stack.
             for b in self.drag_group:
                 (bx, by) = b.spr.get_xy()
@@ -1139,6 +1147,7 @@ class TurtleArtWindow():
             blk.spr.move((x,y))
             for b in self.drag_group:
                 self._adjust_dock_positions(b)
+
             # Re-collapsing any stacks we had restored for scaling
             for b in self.drag_group:
                 if self._collapsed(b):
@@ -1244,9 +1253,39 @@ class TurtleArtWindow():
             self._run_stack(blk)
 
     """
+    From the top, find and uncollapse any collapsible stacks on forks.
+    """
+    def _uncollapse_forks(self, top, looping=False):
+        if top == None:
+            return
+        if looping and top.name == 'sandwichtop':
+            self._restore_stack(top)
+            return 
+        if len(top.connections) == 0:
+            return
+        b = top.connections[len(top.connections)-1]
+        while b is not None:
+            if b.name in COLLAPSIBLE:
+                return
+            if b.name == 'sandwichtop':
+                self._restore_stack(b)            
+                return
+            # Follow a fork
+            if b.name in ['repeat', 'if', 'ifelse']:
+               top = self._find_sandwich_top_below(b.connections[2])
+               if top is not None:
+                   self._uncollapse_forks(top, True)
+               if b.name == 'ifelse':
+                   top = self._find_sandwich_top_below(b.connections[3])
+                   self._uncollapse_forks(top, True)
+            b = b.connections[len(b.connections)-1]
+        return
+
+    """
     Find the sandwich top above this block.
     """
     def _find_sandwich_top(self, blk):
+        # Always follow the main branch of a flow: the first connection.
         b = blk.connections[0]
         while b is not None:
             if b.name in COLLAPSIBLE:
@@ -1264,6 +1303,7 @@ class TurtleArtWindow():
     Find the sandwich bottom below this block.
     """
     def _find_sandwich_bottom(self, blk):
+        # Always follow the main branch of a flow: the last connection.
         b = blk.connections[len(blk.connections)-1]
         while b is not None:
             if b.name == 'sandwichtop':
@@ -1274,17 +1314,33 @@ class TurtleArtWindow():
         return None
 
     """
+    Find the sandwich bottom below this block.
+    """
+    def _find_sandwich_top_below(self, blk):
+        if blk.name == 'sandwichtop':
+            return blk
+        # Always follow the main branch of a flow: the last connection.
+        b = blk.connections[len(blk.connections)-1]
+        while b is not None:
+            if b.name == 'sandwichtop':
+                return b
+            b = b.connections[len(b.connections)-1]
+        return None
+
+    """
     Hide all the blocks between the sandwich top and sandwich bottom.
     """
     def _collapse_stack(self, top):
+        # First uncollapse any nested stacks
+        self._uncollapse_forks(top)
         hit_bottom = False
+        bot = self._find_sandwich_bottom(top)
         group = self._find_group(top.connections[len(top.connections)-1])
-        if group[0].name in COLLAPSIBLE:
-            return
         for b in group:
-            if not hit_bottom and b.name in COLLAPSIBLE:
+            if not hit_bottom and b == bot:
                 hit_bottom = True
 
+                print "collapsing stack from %s" % (str(b))
                 # Replace 'sandwichbottom' shape with 'sandwichcollapsed' shape
                 if len(b.values) == 0:
                     b.values.append(1)
@@ -1328,11 +1384,14 @@ class TurtleArtWindow():
     def _restore_stack(self, top):
         group = self._find_group(top.connections[len(top.connections)-1])
         hit_bottom = False
+        bot = self._find_sandwich_bottom(top)
         for b in group:
-            if not hit_bottom and b.name in COLLAPSIBLE:
+            if not hit_bottom and b == bot:
                 hit_bottom = True
-
-                b.values[0] = 0
+                if len(b.values) == 0:
+                    b.values.append(0)
+                else:
+                    b.values[0] = 0
                 olddx = b.docks[1][2]
                 olddy = b.docks[1][3]
                 # Replace 'sandwichcollapsed' shape with 'sandwichbottom' shape
