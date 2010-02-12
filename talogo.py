@@ -127,7 +127,15 @@ def taplus(x, y):
         (type(y) == int or type(y) == float):
         return(x+y)
     else:
-        return(str(x) + str(y))
+        try:
+            xx = round_int(x)
+        except ValueError:
+            xx = x
+        try:
+            yy = round_int(y)
+        except ValueError:
+            yy = y
+        return(str(xx) + str(yy))
     
 def taminus(x, y):
     if (type(x) == int or type(x) == float) and \
