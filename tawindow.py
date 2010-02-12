@@ -1964,6 +1964,7 @@ class TurtleArtWindow():
         if create_new_project is True:
             self.new_project()
         top = self.process_data(data_from_file(ta_file))
+        self._check_collapsibles(top)
     
     def load_file(self, create_new_project=True):
         fname, self.load_save_folder = get_load_name('.ta',
