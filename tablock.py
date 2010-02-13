@@ -73,13 +73,6 @@ class Blocks:
 # A class for the individual blocks
 #
 class Block:
-    #
-    # TODO:
-    # block data should be stored in block, not in block.spr.label
-    # Logo code
-    # HTML code
-    # debug code
-    # etc.
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
                  values=[], scale=BLOCK_SCALE, colors=["#FF0000","#A00000"]):
         self.spr = None
@@ -246,7 +239,8 @@ class Block:
 
         if self.name in CONTENT_BLOCKS and len(self.values) > 0:
             for i, v in enumerate(self.values):
-                self._set_labels(i, str(v))
+                if v is not None:
+                    self._set_labels(i, str(v))
         elif BLOCK_NAMES.has_key(self.name):
             for i, n in enumerate(BLOCK_NAMES[self.name]):
                 self._set_labels(i, n)
