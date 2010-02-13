@@ -457,27 +457,16 @@ class TurtleArtWindow():
                                               0, 0, 'proto', [], PALETTE_SCALE))
                 self.palettes[n][i].spr.set_layer(TAB_LAYER)
                 self.palettes[n][i].unhighlight()
-                # Some blocks get a skin.
+
+                # Some proto blocks get a skin.
                 if name in BOX_STYLE_MEDIA:
-                    x, y = self._calc_image_offset(name+'small',
-                                                      self.palettes[n][i].spr)
-                    self.palettes[n][i].spr.set_image(self.media_shapes[
-                                                      name+'small'], 1, x, y)
+                    self._proto_skin(name+'small', n, i)
                 elif name[:8] == 'template':
-                    x, y = self._calc_image_offset(name[8:],
-                                                      self.palettes[n][i].spr)
-                    self.palettes[n][i].spr.set_image(self.media_shapes[
-                                                      name[8:]], 1, x, y)
+                    self._proto_skin(name[8:], n, i)
                 elif name[:7] == 'picture':
-                    x, y = self._calc_image_offset(name[7:],
-                                                      self.palettes[n][i].spr)
-                    self.palettes[n][i].spr.set_image(self.media_shapes[
-                                                      name[7:]], 1, x, y)
+                    self._proto_skin(name[7:], n, i)
                 elif name == 'nop':
-                    x, y = self._calc_image_offset('pythonsmall',
-                                                      self.palettes[n][i].spr)
-                    self.palettes[n][i].spr.set_image(self.media_shapes[
-                                                      'pythonsmall'], 1, x, y)
+                    self._proto_skin('pythonsmall', n, i)
 
         self._layout_palette(n)
         for blk in self.palettes[n]:
@@ -487,6 +476,13 @@ class TurtleArtWindow():
                 for b in self._find_group(blk):
                     if b.status != 'collapsed':
                         b.spr.set_layer(TAB_LAYER)
+
+    """
+    Utility for calculating proto skin images
+    """
+    def _proto_skin(self, name, n, i):
+        x, y = self._calc_image_offset(name, self.palettes[n][i].spr)
+        self.palettes[n][i].spr.set_image(self.media_shapes[name], 1, x, y)
 
     """
     Hide the toolbar palettes
@@ -846,17 +842,11 @@ class TurtleArtWindow():
         # Add a 'skin' to some blocks
         if name == 'nop':
             if self.nop == 'pythonloaded':
-                x, y = self._calc_image_offset('pythonon',newblk.spr)
-                newblk.set_image(self.media_shapes['pythonon'], x, y)
+                self._block_skin('pythonon', newblk)
             else:
-                x, y = self._calc_image_offset('pythonoff',newblk.spr)
-                newblk.set_image(self.media_shapes['pythonoff'], x, y)
-            self._resize_skin(newblk)
+                self._block_skin('pythonoff', newblk)
         elif name in BOX_STYLE_MEDIA:
-            x, y = self._calc_image_offset(name+'off',newblk.spr)
-            newblk.set_image(self.media_shapes[name+'off'], x, y)
-            newblk.spr.set_label(' ')
-            self._resize_skin(newblk)
+            self._block_skin(name+'off', newblk)
 
         newspr = newblk.spr
         newspr.set_layer(TOP_LAYER)
@@ -891,18 +881,21 @@ class TurtleArtWindow():
                     argdock = argblk.docks[0]
                     nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
                     if argname == 'journal':
-                        x, y = self._calc_image_offset('journaloff',
-                                                          argblk.spr)
-                        argblk.set_image(self.media_shapes['journaloff'],
-                                             x, y)
-                        argblk.spr.set_label(' ')
-                        self._resize_skin(argblk)
+                        self._block_skin('journaloff', argblk)
                     argblk.spr.move((nx, ny))
                     argblk.spr.set_layer(TOP_LAYER)
                     argblk.connections = [newblk, None]
                     newblk.connections[i+1] = argblk
         self.drag_group = self._find_group(newblk)
         self.block_operation = 'new' 
+
+    """
+    Some blocks get a skin
+    """
+    def _block_skin(self, name, blk):
+        x, y = self._calc_image_offset(name, blk.spr)
+        blk.set_image(self.media_shapes[name], x, y)
+        self._resize_skin(blk)
 
     """
     Create a "macro" (predefined stack of blocks)
@@ -1684,13 +1677,9 @@ class TurtleArtWindow():
         if blk.name == 'journal':
             self._load_image_thumb(name, blk)
         elif blk.name == 'audio':
-            x, y = self._calc_image_offset('audioon', blk.spr)
-            blk.set_image(self.media_shapes['audioon'], x, y)
-            self._resize_skin(blk)
+            self._block_skin('audioon', blk)
         else:
-            x, y = self._calc_image_offset('descriptionon', blk.spr)
-            blk.set_image(self.media_shapes['descriptionon'], x, y) 
-            self._resize_skin(blk)
+            self._block_skin('descriptionon', blk)
         if value == '':
             value = name
         if len(blk.values)>0:
@@ -1704,22 +1693,16 @@ class TurtleArtWindow():
     """
     def _load_image_thumb(self, picture, blk):
         pixbuf = None
-        x, y = self._calc_image_offset('descriptionon', blk.spr)
-        blk.set_image(self.media_shapes['descriptionon'], x, y)
-        self._resize_skin(blk)
+        self._block_skin('descriptionon', blk)
 
         if self.running_sugar:
             w, h = calc_image_size(blk.spr)
             pixbuf = get_pixbuf_from_journal(picture, w, h)
         else:
             if movie_media_type(picture):
-                x, y = self._calc_image_offset('journalon', blk.spr)
-                blk.set_image(self.media_shapes['journalon'], x, y)
-                self._resize_skin(blk)
+                self._block_skin('journalon', blk)
             elif audio_media_type(picture):
-                x, y = self._calc_image_offset('audioon', blk.spr)
-                blk.set_image(self.media_shapes['audioon'], x, y)
-                self._resize_skin(blk)
+                self._block_skin('audioon', blk)
                 blk.name = 'audio'
             elif image_media_type(picture):
                 w, h = calc_image_size(blk.spr)
@@ -2167,14 +2150,9 @@ class TurtleArtWindow():
         # Some blocks get transformed.
         if btype == 'nop': 
             if self.nop == 'pythonloaded':
-                x, y = self._calc_image_offset('pythonon', blk.spr)
-                blk.set_image(self.media_shapes['pythonon'], x, y)
-                self._resize_skin(blk)
+                self._block_skin('pythonon', blk)
             else:
-                x, y = self._calc_image_offset('pythonoff', blk.spr)
-                blk.set_image(self.media_shapes['pythonoff'], x, y)
-                self._resize_skin(blk)
-            blk.spr.set_label(' ')
+                self._block_skin('pythonoff', blk)
         elif btype in EXPANDABLE:
             if btype == 'vspace':
                 if value is not None:
@@ -2185,15 +2163,12 @@ class TurtleArtWindow():
             elif btype == 'templatelist' or btype == 'list':
                 for i in range(len(b[4])-4):
                     dy = blk.add_arg()
-        elif btype in BOX_STYLE_MEDIA and len(blk.values)>0:
-            if blk.values[0] == 'None' or blk.values[0] == None:
-                x, y = self._calc_image_offset(btype+'off', blk.spr)
-                blk.set_image(self.media_shapes[btype+'off'], x, y)
-                self._resize_skin(blk)
+        elif btype in BOX_STYLE_MEDIA:
+            if len(blk.values) == 0 or blk.values[0] == 'None' or\
+               blk.values[0] == None:
+                self._block_skin(btype+'off', blk)
             elif btype == 'audio' or btype == 'description':
-                x, y = self._calc_image_offset(btype+'on', blk.spr)
-                blk.set_image(self.media_shapes[btype+'on'], x, y)
-                self._resize_skin(blk)
+                self._block_skin(btype+'on', blk)
             elif self.running_sugar:
                 try:
                     dsobject = datastore.get(blk.values[0])
@@ -2204,17 +2179,12 @@ class TurtleArtWindow():
                             x, y = self._calc_image_offset('', blk.spr)
                             blk.set_image(pixbuf, x, y)
                         else:
-                            x, y = self._calc_image_offset('journalon',
-                                                              blk.spr)
-                            blk.set_image(self.media_shapes['journalon'], x, y)
-                            self._resize_skin(blk)
+                            self._block_skin('journalon', blk)
                     dsobject.destroy()
                 except:
                     print "Warning: Couldn't open dsobject (%s)" %\
                           (blk.values[0])
-                    x, y = self._calc_image_offset('journaloff', blk.spr)
-                    blk.set_image(self.media_shapes['journaloff'], x, y)
-                    self._resize_skin(blk)
+                    self._block_skin('journaloff', blk)
             else:
                 if not movie_media_type(blk.values[0][-4:]):
                     try:
@@ -2224,20 +2194,11 @@ class TurtleArtWindow():
                         x, y = self._calc_image_offset('', blk.spr)
                         blk.set_image(pixbuf, x, y)
                     except:
-                        x, y = self._calc_image_offset('journaloff', blk.spr)
-                        blk.set_image(self.media_shapes['journaloff'], x, y)
-                        self._resize_skin(blk)
+                        self._block_skin('journaloff', blk)
                 else:
-                    x, y = self._calc_image_offset('journalon', blk.spr)
-                    blk.set_image(self.media_shapes['journalon'], x, y)
-                    self._resize_skin(blk)
+                    self._block_skin('journalon', blk)
             blk.spr.set_label(' ')
             blk.resize()
-        elif btype in BOX_STYLE_MEDIA:
-            blk.spr.set_label(' ')
-            x, y = self._calc_image_offset(btype+'off', blk.spr)
-            blk.set_image(self.media_shapes[btype+'off'], x, y)
-            self._resize_skin(blk)
 
         blk.spr.set_layer(BLOCK_LAYER)
         if check_dock is True:
@@ -2248,7 +2209,8 @@ class TurtleArtWindow():
     Start a new project with a 'start' brick
     """
     def load_start(self): 
-       top = self.process_data([[0, "start", 218, 224, [None, None]]])
+       top = self.process_data([[0, "start", PALETTE_WIDTH+20,
+                                 ICON_SIZE+PALETTE_HEIGHT+20, [None, None]]])
     
     """
     Start a project to a file
