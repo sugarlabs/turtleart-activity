@@ -6,8 +6,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.0"
-   width="41.983002"
-   height="46.5"
+   width="60"
+   height="45"
    id="svg2">
   <defs
      id="defs5">
@@ -33,7 +33,7 @@
        gradientTransform="matrix(0.7083638,0,0,1.0012565,0.1338084,32.632067)" />
   </defs>
   <g
-     transform="translate(-5.634,-4.25)"
+     transform="translate(3.3745,-5)"
      id="activity-journal"
      style="stroke:#000000;stroke-opacity:1;display:block">
     <path

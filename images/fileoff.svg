@@ -6,8 +6,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.0"
-   width="41.983002"
-   height="46.5"
+   width="60"
+   height="45"
    id="svg2">
   <defs
      id="defs5">
@@ -53,7 +53,7 @@
     </linearGradient>
   </defs>
   <g
-     transform="matrix(1.33,0,0,1.33,2.3715009,1.0988486)"
+     transform="matrix(1.33,0,0,1.33,11.38,0.3488486)"
      id="g3675">
     <path
        d="m 27,27.08073 c 0,1.68237 -1.12132,3.074271 -3,3.074271 l -23,0 0,-26.9999999 8.8039216,0 1.6960784,2 15.5,0 0,21.9257289 0,0 z"

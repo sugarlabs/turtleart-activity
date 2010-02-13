@@ -6,8 +6,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.0"
-   width="36.386002"
-   height="46.326"
+   width="60"
+   height="45"
    id="svg2">
   <defs
      id="defs5">
@@ -33,7 +33,7 @@
        gradientTransform="matrix(0.7750554,0,0,0.9997979,0.8784441,32.623865)" />
   </defs>
   <g
-     transform="translate(-9.182,-4.338)"
+     transform="translate(2.625,-5.001)"
      id="clipping-audio"
      style="display:block">
     <g
@@ -42,7 +42,7 @@
       <g
          id="g2760">
         <polygon
-           points="10.932,48.914 10.932,6.088 10.932,6.088 31.874,6.088 43.818,18.027 43.818,48.914 "
+           points="31.874,6.088 43.818,18.027 43.818,48.914 10.932,48.914 10.932,6.088 10.932,6.088 "
            id="polygon2762"
            style="fill:#ffffff;stroke:#010101;stroke-width:3.5" />
         <polyline
@@ -64,7 +64,7 @@
        display="inline"
        style="fill:none;stroke:#010101;stroke-width:2.25;display:inline" />
     <polygon
-       points="35.047,25.036 35.047,25.036 27.838,28.595 27.838,24.728 35.047,21.166 "
+       points="35.047,21.166 35.047,25.036 35.047,25.036 27.838,28.595 27.838,24.728 "
        id="polygon2770"
        style="fill:#010101;display:inline" />
   </g>
