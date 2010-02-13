@@ -185,7 +185,8 @@ NUMBER_STYLE_1STRARG = ['box']
 COMPARE_STYLE = ['greater2', 'less2', 'equal2']
 BOOLEAN_STYLE = ['and2', 'or2']
 NOT_STYLE = ['not']
-FLOW_STYLE = ['forever', 'hspace']
+FLOW_STYLE = ['forever']
+FLOW_STYLE_TAIL = ['hspace']
 FLOW_STYLE_1ARG = ['repeat']
 FLOW_STYLE_BOOLEAN = ['if']
 FLOW_STYLE_ELSE = ['ifelse']
@@ -638,6 +639,7 @@ DEFAULTS = {
     'comment':[_('comment')],
     'description':[None],
     'fillscreen':[60, 80],
+    'forever':[None, 'vspace'],
     'forward':[100],
     'hat':[_('action')],
     'if':[None, None, 'vspace'],
@@ -702,8 +704,8 @@ MEDIA_SHAPES = ['audiooff', 'audioon', 'audiosmall',
 OVERLAY_SHAPES = ['Cartesian', 'Cartesian_labeled', 'polar']
 
 STATUS_SHAPES = ['status', 'info', 'nostack', 'noinput', 'emptyheap',
-                 'emptybox', 'nomedia', 'nocode', 'overflowerror',
-                 'syntaxerror', 'nofile', 'nojournal']
+                 'emptybox', 'nomedia', 'nocode', 'overflowerror', 'negroot',
+                 'syntaxerror', 'nofile', 'nojournal', 'zerodivide']
 
 #
 # Legacy names

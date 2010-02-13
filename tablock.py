@@ -329,6 +329,8 @@ class Block:
             self._make_not_style(svg)
         elif self.name in FLOW_STYLE:
             self._make_flow_style(svg)
+        elif self.name in FLOW_STYLE_TAIL:
+            self._make_flow_style_tail(svg)
         elif self.name in FLOW_STYLE_1ARG:
             self._make_flow_style_1arg(svg)
         elif self.name in FLOW_STYLE_BOOLEAN:
@@ -582,20 +584,24 @@ class Block:
     def _make_flow_style(self, svg):
         self.svg.expand(10+self.dx+self.ex, self.ey)
         self.svg.set_slot(True)
+        self.svg.set_tab(True)
+        self._make_basic_flow(svg)
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['flow', False, self.svg.docks[1][0],
+                                      self.svg.docks[1][1], '['],
+                      ['flow', False, self.svg.docks[2][0],
+                                      self.svg.docks[2][1], ']']]
+
+    def _make_flow_style_tail(self, svg):
+        self.svg.expand(10+self.dx+self.ex, self.ey)
+        self.svg.set_slot(True)
         self.svg.set_tab(False)
         self._make_basic_flow(svg)
-        # This is an ugly hack.
-        if self.name == 'forever':
-            self.docks = [['flow', True, self.svg.docks[0][0],
-                                         self.svg.docks[0][1]],
-                          ['flow', False, self.svg.docks[1][0],
-                                          self.svg.docks[1][1], '['],
-                          ['unavailable', False, 0, 0, ']']]
-        else:
-            self.docks = [['flow', True, self.svg.docks[0][0],
-                                         self.svg.docks[0][1]],
-                          ['flow', False, self.svg.docks[1][0],
-                                          self.svg.docks[1][1]]]
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['flow', False, self.svg.docks[1][0],
+                                      self.svg.docks[1][1]]]
 
     def _make_flow_style_1arg(self, svg):
         self.svg.expand(self.dx+self.ex, self.ey)

@@ -48,7 +48,7 @@ except ImportError:
     pass
 
 from taconstants import *
-from talogo import LogoCode, stop_logo
+from talogo import LogoCode, stop_logo, convert, str_to_num
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
 from taturtle import Turtles, Turtle
@@ -1307,13 +1307,16 @@ class TurtleArtWindow():
                 self._restore_stack(b)            
                 return
             # Follow a fork
-            if b.name in ['repeat', 'if', 'ifelse']:
-               top = self._find_sandwich_top_below(b.connections[2])
+            if b.name in ['repeat', 'if', 'ifelse', 'forever']:
+               top = self._find_sandwich_top_below(
+                                            b.connections[len(b.connections)-2])
                if top is not None:
                    self._uncollapse_forks(top, True)
                if b.name == 'ifelse':
-                   top = self._find_sandwich_top_below(b.connections[3])
-                   self._uncollapse_forks(top, True)
+                   top = self._find_sandwich_top_below(
+                                            b.connections[len(b.connections)-3])
+                   if top is not None:
+                       self._uncollapse_forks(top, True)
             b = b.connections[len(b.connections)-1]
         return
 
@@ -1326,7 +1329,7 @@ class TurtleArtWindow():
         while b is not None:
             if b.name in COLLAPSIBLE:
                 return None
-            if b.name in ['repeat', 'if', 'ifelse']:
+            if b.name in ['repeat', 'if', 'ifelse', 'forever']:
                 if blk != b.connections[len(b.connections)-1]:
                     return None
             if b.name == 'sandwichtop':
@@ -1621,16 +1624,34 @@ class TurtleArtWindow():
                          'remainder2', 'string'] and\
              b2.name in ['product2', 'minus2', 'sqrt', 'division2', 'random',
                          'remainder2', 'string']:
-            if b1.name == 'string' and len(b1.values[0]) != 1:
-                try:
-                    float(b1.values[0])
-                except ValueError:
+            if b1.name == 'string':
+                if type(convert(str_to_num(b1.values[0]),float)) is not float:
                     return False
-            elif b2.name == 'string' and len(b2.values[0]) != 1:
-                try:
-                    float(b2.values[0])
-                except ValueError:
+            elif b2.name == 'string':
+                if type(convert(str_to_num(b2.values[0]),float)) is not float:
                     return False
+        elif b1.name in ['greater2', 'less2'] and b2.name == 'string':
+            if d1 == 1 and b1.connections[2] is not None:
+                if b1.connections[2].name == 'number':
+                    if type(convert(str_to_num(b2.values[0]),float))\
+                       is not float:
+                        return False
+            elif d1 == 2 and b1.connections[1] is not None:
+                if b1.connections[1].name == 'number':
+                    if type(convert(str_to_num(b2.values[0]),float))\
+                       is not float:
+                        return False
+        elif b2.name in ['greater2', 'less2'] and b1.name == 'string':
+            if d1 == 1 and b2.connections[2] is not None:
+                if b2.connections[2].name == 'number':
+                    if type(convert(str_to_num(b1.values[0]),float))\
+                       is not float:
+                        return False
+            elif d1 == 2 and b2.connections[1] is not None:
+                if b2.connections[1].name == 'number':
+                    if type(convert(str_to_num(b1.values[0]),float))\
+                       is not float:
+                        return False
         return True
 
     """
