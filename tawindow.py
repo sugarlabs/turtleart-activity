@@ -60,6 +60,27 @@ from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
 """
+Dock tests
+"""
+
+def numeric_arg(value):
+    if type(convert(value, float)) is float:
+        return True
+    return False
+
+def zero_arg(value):
+    if numeric_arg(value):
+        if convert(value, float) == 0:
+            return True
+    return False
+
+def neg_arg(value):
+    if numeric_arg(value):
+        if convert(value, float) < 0:
+            return True
+    return False
+
+"""
 TurtleArt Window class abstraction 
 """
 class TurtleArtWindow():
@@ -1597,53 +1618,79 @@ class TurtleArtWindow():
                 my_block.connections[best_my_dockn] = best_you
 
     """
-    Additional docking check for arithmetic blocks
+    Additional docking check for arithmetic blocks: dock strings only if they
+    convert to numbers. Also, avoid /0 and root(-1)
     """
     def _arithmetic_check(self, b1, b2, d1, d2):
         if b1 == None or b2 == None:
             return True
-        if b1.name in ['sqrt', 'number'] and b2.name in ['sqrt', 'number']:
-            if b1.name == 'number' and float(b1.values[0]) < 0:
-                return False
-            elif b2.name == 'number' and float(b2.values[0]) < 0:
-                return False
-        elif b1.name in ['division2', 'number'] and\
-             b2.name in ['division2', 'number']:
-            if b1.name == 'number' and float(b1.values[0]) == 0 and d2 == 2:
-                return False
-            elif b2.name == 'number' and float(b2.values[0]) == 0 and d1 == 2:
-                return False
-        elif b1.name in ['product2', 'minus2', 'sqrt', 'division2', 'random',
-                         'remainder2', 'string'] and\
-             b2.name in ['product2', 'minus2', 'sqrt', 'division2', 'random',
-                         'remainder2', 'string']:
-            if b1.name == 'string':
-                if type(convert(str_to_num(b1.values[0]),float)) is not float:
+        if b1.name in ['sqrt', 'number', 'string'] and\
+           b2.name in ['sqrt', 'number', 'string']:
+            if b1.name == 'number' or b1.name == 'string':
+                if not numeric_arg(b1.values[0]) or neg_arg(b1.values[0]):
                     return False
-            elif b2.name == 'string':
-                if type(convert(str_to_num(b2.values[0]),float)) is not float:
+            elif b2.name == 'number' or b2.name == 'string':
+                if not numeric_arg(b2.values[0]) or neg_arg(b2.values[0]):
+                    return False
+        elif b1.name in ['division2', 'number', 'string'] and\
+             b2.name in ['division2', 'number', 'string']:
+            if b1.name == 'number' or b1.name == 'string':
+                if not numeric_arg(b1.values[0]):
+                    return False
+                if d2 == 2 and zero_arg(b1.values[0]):
+                    return False
+            elif b2.name == 'number' or b2.name == 'string':
+                if not numeric_arg(b2.values[0]):
+                    return False
+                if d1 == 2 and zero_arg(b2.values[0]):
+                    return False
+        elif b1.name in ['product2', 'minus2', 'random', 'remainder2',
+                         'string'] and\
+             b2.name in ['product2', 'minus2', 'random', 'remainder2',
+                         'string']:
+            if b1.name == 'string':
+                if not numeric_arg(b1.values[0]):
+                    return False
+            elif b1.name == 'string':
+                if not numeric_arg(b2.values[0]):
                     return False
         elif b1.name in ['greater2', 'less2'] and b2.name == 'string':
+            # Non-numeric stings are OK if only both args are strings;
+            # Lots of test conditions...
             if d1 == 1 and b1.connections[2] is not None:
                 if b1.connections[2].name == 'number':
-                    if type(convert(str_to_num(b2.values[0]),float))\
-                       is not float:
+                    if not numeric_arg(b2.values[0]):
                         return False
             elif d1 == 2 and b1.connections[1] is not None:
                 if b1.connections[1].name == 'number':
-                    if type(convert(str_to_num(b2.values[0]),float))\
-                       is not float:
+                    if not numeric_arg(b2.values[0]):
                         return False
         elif b2.name in ['greater2', 'less2'] and b1.name == 'string':
-            if d1 == 1 and b2.connections[2] is not None:
+            if d2 == 1 and b2.connections[2] is not None:
                 if b2.connections[2].name == 'number':
-                    if type(convert(str_to_num(b1.values[0]),float))\
-                       is not float:
+                    if not numeric_arg(b1.values[0]):
                         return False
-            elif d1 == 2 and b2.connections[1] is not None:
+            elif d2 == 2 and b2.connections[1] is not None:
                 if b2.connections[1].name == 'number':
-                    if type(convert(str_to_num(b1.values[0]),float))\
-                       is not float:
+                    if not numeric_arg(b1.values[0]):
+                        return False
+        elif b1.name in ['greater2', 'less2'] and b2.name == 'number':
+            if d1 == 1 and b1.connections[2] is not None:
+                if b1.connections[2].name == 'string':
+                    if not numeric_arg(b1.connections[2].values[0]):
+                        return False
+            elif d1 == 2 and b1.connections[1] is not None:
+                if b1.connections[1].name == 'string':
+                    if not numeric_arg(b1.connections[1].values[0]):
+                        return False
+        elif b2.name in ['greater2', 'less2'] and b1.name == 'number':
+            if d2 == 1 and b2.connections[2] is not None:
+                if b2.connections[2].name == 'string':
+                    if not numeric_arg(b2.connections[2].values[0]):
+                        return False
+            elif d2 == 2 and b2.connections[1] is not None:
+                if b2.connections[1].name == 'string':
+                    if not numeric_arg(b2.connections[1].values[0]):
                         return False
         return True
 

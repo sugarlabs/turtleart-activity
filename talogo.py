@@ -79,6 +79,9 @@ def convert(x, fn):
     try:
         return fn(x)
     except ValueError:
+        xx, flag = chr_to_ord(x)
+        if flag:
+            return fn(xx)
         return x
 
 def numtype(x):
