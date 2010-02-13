@@ -86,6 +86,8 @@ def numtype(x):
         return True
     if type(x) == float:
         return True
+    if type(x) == ord:
+        return True
     return False
 
 def strtype(x):
@@ -116,11 +118,11 @@ def chr_to_ord(x):
 
 def careful_divide(x, y):
     try:
-        if y==0:
-            return 0
         return x/y
-    except:
-        return 0
+    except ZeroDivisionError:
+        raise logoerror("#zerodivide")
+    except TypeError:
+        raise logoerror("#syntaxerror")
 
 def taequal(x, y):
     try:
@@ -133,12 +135,15 @@ def taequal(x, y):
             typey = True
         if typex and typey:
             return x == y
-        return str_to_num(x) == str_to_num(y)
+        try:
+            return str_to_num(x) == str_to_num(y)
+        except ValueError:
+            raise logoerror("#syntaxerror")
 
 def taless(x, y):
     try:
         return float(x)<float(y)
-    except TypeError:
+    except ValueError:
         typex, typey = False, False
         if strtype(x):
             typex = True
@@ -146,7 +151,10 @@ def taless(x, y):
             typey = True
         if typex and typey:
             return x < y
-        return str_to_num(x) < str_to_num(y)
+        try:
+            return str_to_num(x) < str_to_num(y)
+        except TypeError:
+            raise logoerror("#syntaxerror")
 
 def tamore(x, y):
     return taless(y, x)
@@ -188,13 +196,19 @@ def tamod(x, y):
         return str_to_num(x) % str_to_num(y)
     except TypeError:
         raise logoerror("#syntaxerror")
+    except ValueError:
+        raise logoerror("#syntaxerror")
     
 def tasqrt(x):
     if numtype(x):
+        if x < 0:
+            raise logoerror("#negroot")        
         return sqrt(x)
     try:
         return sqrt(str_to_num(x))
-    except:
+    except ValueError:
+        raise logoerror("#negroot")
+    except TypeError:
         raise logoerror("#syntaxerror")
 
 def tarandom(x, y):
@@ -331,7 +345,7 @@ class LogoCode:
         'showaligned':[1,lambda self, x: self.show(x, False)],
         'showblocks':[0, lambda self: self.tw.showblocks()],
         'sound':[1, lambda self,x: self.play_sound(x)],
-        'sqrt':[1, lambda self,x: sqrt(x)],
+        'sqrt':[1, lambda self,x: tasqrt(x)],
         'stack1':[0, self.prim_stack1, True],
         'stack':[1, self.prim_stack, True],
         'stack2':[0, self.prim_stack2, True],
