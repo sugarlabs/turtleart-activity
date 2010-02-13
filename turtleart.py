@@ -204,6 +204,7 @@ class TurtleMain():
         win.show_all()
         self.tw = TurtleArtWindow(canvas, os.path.abspath('.'), lang)
         self.tw.win = win
+        self.tw.load_start()
 
     def _do_open_cb(self, widget):
         self.tw.load_file(True)
