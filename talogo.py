@@ -75,13 +75,14 @@ character, try converting it to an ord; finally, just treat it as a
 string. Numbers appended to strings are first trreated as ints, then
 floats.
 '''
-def convert(x, fn):
+def convert(x, fn, try_ord=True):
     try:
         return fn(x)
     except ValueError:
-        xx, flag = chr_to_ord(x)
-        if flag:
-            return fn(xx)
+        if try_ord:
+            xx, flag = chr_to_ord(x)
+            if flag:
+                return fn(xx)
         return x
 
 def numtype(x):
@@ -354,9 +355,9 @@ class LogoCode:
         'stack2':[0, self.prim_stack2, True],
         'start':[0, lambda self: self.prim_start()],
         'stopstack':[0, self.prim_stopstack],
-        'storeinbox1':[1, lambda self,x: self.prim_setbox('box1',x)],
-        'storeinbox2':[1, lambda self,x: self.prim_setbox('box2',x)],
-        'storeinbox':[2, lambda self,x,y: self.prim_setbox('box3'+str(x),y)],
+        'storeinbox1':[1, lambda self,x: self.prim_setbox('box1', None ,x)],
+        'storeinbox2':[1, lambda self,x: self.prim_setbox('box2', None, x)],
+        'storeinbox':[2, lambda self,x,y: self.prim_setbox('box3', x, y)],
         't1x1':[2, lambda self,x,y: self.show_template1x1(x, y)],
         't1x1a':[2, lambda self,x,y: self.show_template1x1a(x, y)],
         't1x2':[3, lambda self,x,y,z: self.show_template1x2(x, y, z)],
@@ -921,6 +922,9 @@ class LogoCode:
                 % (self.cfun.name, str(n)))
 
     def box(self, x):
+        if type(convert(x, float, False)) == float:
+            if int(float(x)) == x:
+                x = int(x)
         try:
             return self.boxes['box3'+str(x)]
         except:
@@ -970,8 +974,14 @@ class LogoCode:
                 self.keyboard = 0
         self.tw.keypress = ""
 
-    def prim_setbox(self, name, val):
-        self.boxes[name]=val
+    def prim_setbox(self, name, x, val):
+        if x is None:
+            self.boxes[name]=val
+        else:
+            if type(convert(x, float, False)) == type(float):
+                if int(float(x)) == x:
+                    x = int(x)
+            self.boxes[name+str(x)]=val
 
     def prim_push(self, val):
         self.heap.append(val)
