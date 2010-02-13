@@ -126,7 +126,12 @@ def careful_divide(x, y):
     except ZeroDivisionError:
         raise logoerror("#zerodivide")
     except TypeError:
-        raise logoerror("#syntaxerror")
+        try:
+            return str_to_num(x) / str_to_num(y)
+        except ZeroDivisionError:
+            raise logoerror("#zerodivide")
+        except ValueError:
+            raise logoerror("#syntaxerror")
 
 def taequal(x, y):
     try:
