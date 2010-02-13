@@ -55,7 +55,7 @@ from taturtle import Turtles, Turtle
 from tautils import magnitude, get_load_name, get_save_name, data_from_file,\
                     data_to_file, round_int, get_id, get_pixbuf_from_journal,\
                     movie_media_type, audio_media_type, image_media_type,\
-                    save_picture
+                    save_picture, calc_image_size
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
@@ -272,7 +272,8 @@ class TurtleArtWindow():
         for blk in self.just_blocks():
             if blk.name == 'nop':
                 x, y = self._calc_image_offset('pythonon', blk.spr)
-                blk.spr.set_image(self.media_shapes['pythonon'], 1, x, y)
+                blk.set_image(self.media_shapes['pythonon'], x, y)
+                self._resize_skin(blk)
         self.nop = 'pythonloaded'
 
     """
@@ -363,17 +364,25 @@ class TurtleArtWindow():
                     dy = bot.values[0]
                     self._restore_stack(self._find_sandwich_top(b))
                     bot.values[0] = dy
+
+        # Do the resizing.
         for b in self.just_blocks():
             b.rescale(self.block_scale)
         for b in self.just_blocks():
             self._adjust_dock_positions(b)
-        # We need to re-collapsed stacks after resizing.
+
+        # Re-collapsed stacks after resizing.
         for b in self.just_blocks():
             if self._collapsed(b):
                 self._collapse_stack(self._find_sandwich_top(b))
         for b in self.just_blocks():
             if b.name == 'sandwichtop':
                 self._grow_stack_arm(b)
+
+        # Resize the skins on some blocks: media content and Python
+        for b in self.just_blocks():
+            if b.name in BLOCKS_WITH_SKIN:
+                self._resize_skin(b)
 
     """
     Show the toolbar palettes, creating them on init_only
@@ -451,22 +460,22 @@ class TurtleArtWindow():
                 # Some blocks get a skin.
                 if name in BOX_STYLE_MEDIA:
                     x, y = self._calc_image_offset(name+'small',
-                                                   self.palettes[n][i].spr)
+                                                      self.palettes[n][i].spr)
                     self.palettes[n][i].spr.set_image(self.media_shapes[
                                                       name+'small'], 1, x, y)
                 elif name[:8] == 'template':
                     x, y = self._calc_image_offset(name[8:],
-                                                   self.palettes[n][i].spr)
+                                                      self.palettes[n][i].spr)
                     self.palettes[n][i].spr.set_image(self.media_shapes[
                                                       name[8:]], 1, x, y)
                 elif name[:7] == 'picture':
                     x, y = self._calc_image_offset(name[7:],
-                                                   self.palettes[n][i].spr)
+                                                      self.palettes[n][i].spr)
                     self.palettes[n][i].spr.set_image(self.media_shapes[
                                                       name[7:]], 1, x, y)
                 elif name == 'nop':
                     x, y = self._calc_image_offset('pythonsmall',
-                                                   self.palettes[n][i].spr)
+                                                      self.palettes[n][i].spr)
                     self.palettes[n][i].spr.set_image(self.media_shapes[
                                                       'pythonsmall'], 1, x, y)
 
@@ -732,6 +741,11 @@ class TurtleArtWindow():
             if self._collapsed(b):
                 self._collapse_stack(self._find_sandwich_top(b))
 
+        # And resize any skins.
+        for b in group:
+            if b.name in BLOCKS_WITH_SKIN:
+                self._resize_skin(b)
+
         self.show_palette(PALETTE_NAMES.index('trash'))
 
     """
@@ -760,11 +774,16 @@ class TurtleArtWindow():
             b.type = 'block'
         for b in group:
             self._adjust_dock_positions(b)
+        # If the stack had been collapsed before going into the trash,
+        # collapse it again now.
         for b in group:
             if self._collapsed(b):
-                # If the stack had been collapsed before going into the trash,
-                # collapse it again now.
                 self._collapse_stack(self._find_sandwich_top(b))
+        # And resize any skins.
+        for b in group:
+            if b.name in BLOCKS_WITH_SKIN:
+                self._resize_skin(b)
+
         self.trash_stack.remove(blk)
 
     """
@@ -828,14 +847,16 @@ class TurtleArtWindow():
         if name == 'nop':
             if self.nop == 'pythonloaded':
                 x, y = self._calc_image_offset('pythonon',newblk.spr)
-                newblk.spr.set_image(self.media_shapes['pythonon'], 1, x, y)
+                newblk.set_image(self.media_shapes['pythonon'], x, y)
             else:
                 x, y = self._calc_image_offset('pythonoff',newblk.spr)
-                newblk.spr.set_image(self.media_shapes['pythonoff'], 1, x, y)
+                newblk.set_image(self.media_shapes['pythonoff'], x, y)
+            self._resize_skin(newblk)
         elif name in BOX_STYLE_MEDIA:
             x, y = self._calc_image_offset(name+'off',newblk.spr)
-            newblk.spr.set_image(self.media_shapes[name+'off'], 1, x, y)
+            newblk.set_image(self.media_shapes[name+'off'], x, y)
             newblk.spr.set_label(' ')
+            self._resize_skin(newblk)
 
         newspr = newblk.spr
         newspr.set_layer(TOP_LAYER)
@@ -870,10 +891,12 @@ class TurtleArtWindow():
                     argdock = argblk.docks[0]
                     nx, ny = sx+dock[2]-argdock[2], sy+dock[3]-argdock[3]
                     if argname == 'journal':
-                        x, y = self._calc_image_offset('journaloff',argblk.spr)
-                        argblk.spr.set_image(self.media_shapes['journaloff'],
-                                             1, x, y)
+                        x, y = self._calc_image_offset('journaloff',
+                                                          argblk.spr)
+                        argblk.set_image(self.media_shapes['journaloff'],
+                                             x, y)
                         argblk.spr.set_label(' ')
+                        self._resize_skin(argblk)
                     argblk.spr.move((nx, ny))
                     argblk.spr.set_layer(TOP_LAYER)
                     argblk.connections = [newblk, None]
@@ -1641,10 +1664,12 @@ class TurtleArtWindow():
             self._load_image_thumb(name, blk)
         elif blk.name == 'audio':
             x, y = self._calc_image_offset('audioon', blk.spr)
-            blk.spr.set_image(self.media_shapes['audioon'], 1, x, y)
+            blk.set_image(self.media_shapes['audioon'], x, y)
+            self._resize_skin(blk)
         else:
             x, y = self._calc_image_offset('descriptionon', blk.spr)
-            blk.spr.set_image(self.media_shapes['descriptionon'], 1, x, y)
+            blk.set_image(self.media_shapes['descriptionon'], x, y) 
+            self._resize_skin(blk)
         if value == '':
             value = name
         if len(blk.values)>0:
@@ -1659,26 +1684,31 @@ class TurtleArtWindow():
     def _load_image_thumb(self, picture, blk):
         pixbuf = None
         x, y = self._calc_image_offset('descriptionon', blk.spr)
-        blk.spr.set_image(self.media_shapes['descriptionon'], 1, x, y)
+        blk.set_image(self.media_shapes['descriptionon'], x, y)
+        self._resize_skin(blk)
+
         if self.running_sugar:
-            w, h = self._calc_image_size(blk.spr)
+            w, h = calc_image_size(blk.spr)
             pixbuf = get_pixbuf_from_journal(picture, w, h)
         else:
             if movie_media_type(picture):
                 x, y = self._calc_image_offset('journalon', blk.spr)
-                blk.spr.set_image(self.media_shapes['journalon'], 1, x, y)
+                blk.set_image(self.media_shapes['journalon'], x, y)
+                self._resize_skin(blk)
             elif audio_media_type(picture):
                 x, y = self._calc_image_offset('audioon', blk.spr)
-                blk.spr.set_image(self.media_shapes['audioon'], 1, x, y)
+                blk.set_image(self.media_shapes['audioon'], x, y)
+                self._resize_skin(blk)
                 blk.name = 'audio'
             elif image_media_type(picture):
-                w, h = self._calc_image_size(blk.spr)
+                w, h = calc_image_size(blk.spr)
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(picture, w, h)
             else:
                 blk.name = 'description'
         if pixbuf is not None:
             x, y = self._calc_image_offset('', blk.spr)
-            blk.spr.set_image(pixbuf, 1, x, y)
+            blk.set_image(pixbuf, x, y)
+            self._resize_skin(blk)
 
     """
     Disconnect block from stack above it.
@@ -2117,10 +2147,12 @@ class TurtleArtWindow():
         if btype == 'nop': 
             if self.nop == 'pythonloaded':
                 x, y = self._calc_image_offset('pythonon', blk.spr)
-                blk.spr.set_image(self.media_shapes['pythonon'], 1, x, y)
+                blk.set_image(self.media_shapes['pythonon'], x, y)
+                self._resize_skin(blk)
             else:
                 x, y = self._calc_image_offset('pythonoff', blk.spr)
-                blk.spr.set_image(self.media_shapes['pythonoff'], 1, x, y)
+                blk.set_image(self.media_shapes['pythonoff'], x, y)
+                self._resize_skin(blk)
             blk.spr.set_label(' ')
         elif btype in EXPANDABLE:
             if btype == 'vspace':
@@ -2135,50 +2167,57 @@ class TurtleArtWindow():
         elif btype in BOX_STYLE_MEDIA and len(blk.values)>0:
             if blk.values[0] == 'None' or blk.values[0] == None:
                 x, y = self._calc_image_offset(btype+'off', blk.spr)
-                blk.spr.set_image(self.media_shapes[btype+'off'], 1, x, y)
+                blk.set_image(self.media_shapes[btype+'off'], x, y)
+                self._resize_skin(blk)
             elif btype == 'audio' or btype == 'description':
                 x, y = self._calc_image_offset(btype+'on', blk.spr)
-                blk.spr.set_image(self.media_shapes[btype+'on'], 1, x, y)
+                blk.set_image(self.media_shapes[btype+'on'], x, y)
+                self._resize_skin(blk)
             elif self.running_sugar:
                 try:
                     dsobject = datastore.get(blk.values[0])
                     if not movie_media_type(dsobject.file_path[-4:]):
-                        w, h, = self._calc_image_size(blk.spr)
+                        w, h, = calc_image_size(blk.spr)
                         pixbuf = get_pixbuf_from_journal(dsobject, w, h)
                         if pixbuf is not None:
                             x, y = self._calc_image_offset('', blk.spr)
-                            blk.spr.set_image(pixbuf, 1, x, y)
+                            blk.set_image(pixbuf, x, y)
                         else:
-                            x, y = self._calc_image_offset('journalon', blk.spr)
-                            blk.spr.set_image(self.media_shapes['journalon'], 1,
-                                              x, y)
+                            x, y = self._calc_image_offset('journalon',
+                                                              blk.spr)
+                            blk.set_image(self.media_shapes['journalon'], x, y)
+                            self._resize_skin(blk)
                     dsobject.destroy()
                 except:
                     print "Warning: Couldn't open dsobject (%s)" %\
                           (blk.values[0])
                     x, y = self._calc_image_offset('journaloff', blk.spr)
-                    blk.spr.set_image(self.media_shapes['journaloff'], 1, x, y)
+                    blk.set_image(self.media_shapes['journaloff'], x, y)
+                    self._resize_skin(blk)
             else:
                 if not movie_media_type(blk.values[0][-4:]):
                     try:
-                        w, h, = self._calc_image_size(blk.spr)
+                        w, h, = calc_image_size(blk.spr)
                         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
                                      blk.values[0], w, h)
                         x, y = self._calc_image_offset('', blk.spr)
-                        blk.spr.set_image(pixbuf, 1, x, y)
+                        blk.set_image(pixbuf, x, y)
                     except:
                         x, y = self._calc_image_offset('journaloff', blk.spr)
-                        blk.spr.set_image(self.media_shapes['journaloff'],1,x,y)
+                        blk.set_image(self.media_shapes['journaloff'], x, y)
+                        self._resize_skin(blk)
                 else:
                     x, y = self._calc_image_offset('journalon', blk.spr)
-                    blk.spr.set_image(self.media_shapes['journalon'], 1, x, y)
+                    blk.set_image(self.media_shapes['journalon'], x, y)
+                    self._resize_skin(blk)
             blk.spr.set_label(' ')
             blk.resize()
         elif btype in BOX_STYLE_MEDIA:
             blk.spr.set_label(' ')
             x, y = self._calc_image_offset(btype+'off', blk.spr)
-            blk.spr.set_image(self.media_shapes[btype+'off'], 1, x, y)
-    
+            blk.set_image(self.media_shapes[btype+'off'], x, y)
+            self._resize_skin(blk)
+
         blk.spr.set_layer(BLOCK_LAYER)
         if check_dock is True:
             blk.connections = 'check'
@@ -2422,25 +2461,54 @@ class TurtleArtWindow():
 
     """
     Calculate the postion for placing an image onto a sprite.
-    TODO: Rescale images?
-        # if iw > w or ih > h:
-        #    print "WARNING: need to recale image"
     """
     def _calc_image_offset(self, name, spr, iw=0, ih=0):
-        l, t = spr.label_left_top()
+        _l, _t = spr.label_left_top()
         if name == '':
-            return (l, t)
-        w = spr.label_safe_width()
-        h = spr.label_safe_height()
+            return _l, _t
+        _w = spr.label_safe_width()
+        _h = spr.label_safe_height()
         if iw == 0:
             iw = self.media_shapes[name].get_width()
             ih = self.media_shapes[name].get_height()
-        return int(l+(w-iw)/2), int(t+(h-ih)/2)
+        return int(_l+(_w-iw)/2), int(_t+(_h-ih)/2)
 
     """
-    Calculate the maximum size for placing an image onto a sprite.
+    Calculate new image size
     """
-    def _calc_image_size(self, spr):
-        w = spr.label_safe_width()
-        h = spr.label_safe_height()
-        return (w, h)
+    def _calc_w_h(self, name, spr):
+        target_w = spr.label_safe_width()
+        target_h = spr.label_safe_height()
+        if name == '':
+            return target_w, target_h
+        image_w = self.media_shapes[name].get_width()
+        image_h = self.media_shapes[name].get_height()
+        if image_w > target_w or image_h > target_h:
+            scale_factor = float(target_w)/image_w
+            new_w = target_w
+            new_h = image_h*scale_factor
+            if new_h > target_h:
+                scale_factor = float(target_h)/new_h
+                new_h = target_h
+                new_w = target_w*scale_factor
+            return int(new_w), int(new_h)
+        return int(target_w), int(target_h)
+
+    """
+    Resize the 'skin' when block scale changes.
+    """
+    def _resize_skin(self, b):
+        if b.name == 'nop':
+            w, h = self._calc_w_h('pythonoff', b.spr)
+            x, y = self._calc_image_offset('pythonoff', b.spr, w, h)
+        elif b.name == 'journal':
+            if len(b.values) == 1 and b.values[0] is not None:
+                w, h = self._calc_w_h('', b.spr)
+                x, y = self._calc_image_offset('journaloff', b.spr, w, h)
+            else:
+                w, h = self._calc_w_h('journaloff', b.spr)
+                x, y = self._calc_image_offset('journaloff', b.spr, w, h)
+        else:
+            w, h = self._calc_w_h('descriptionoff', b.spr)
+            x, y = self._calc_image_offset('descriptionoff', b.spr, w, h)
+        b.scale_image(x, y, w, h)

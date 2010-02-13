@@ -173,3 +173,12 @@ def round_int(n):
         if int(float(nn)) == nn:
             return int(nn)
         return nn
+
+"""
+Calculate the maximum size for placing an image onto a sprite.
+"""
+def calc_image_size(spr):
+    w = spr.label_safe_width()
+    h = spr.label_safe_height()
+    return w, h
+

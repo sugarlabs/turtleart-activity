@@ -19,6 +19,7 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
+import gtk
 from taconstants import *
 from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
@@ -97,6 +98,7 @@ class Block:
         self.ey = 0
         self._ei = 0
         self._font_size = [6.0, 4.5]
+        self._image = None
 
         if OLD_NAMES.has_key(self.name):
             self.name = OLD_NAMES[self.name]
@@ -130,6 +132,19 @@ class Block:
             if self.dx < 0:
                 self.dx = 0
             self.refresh()
+
+    # Some blocks get a skin.
+    def set_image(self, image, x, y):
+        self._image = image
+        self.spr.set_image(image, 1, x, y)
+
+    # The skin might need scaling.
+    # Keep the original here, the scaled version stays with the sprite.
+    def scale_image(self, x, y, w, h):
+        if self._image is not None:
+            tmp = self._image.scale_simple(w, h,
+                                   gtk.gdk.INTERP_NEAREST)
+            self.spr.set_image(tmp, 1, x, y)
 
     # We may want to rescale blocks as well.
     def rescale(self, scale):
@@ -241,15 +256,8 @@ class Block:
             self.resize()
 
     def _set_margins(self):
-        if self._left == 0:
-            self._left = self.svg.margins[0]
-        if self._top == 0:
-            self._top = self.svg.margins[1]
-        if self._right == 0:
-            self._right = self.svg.margins[2]
-        if self._bottom == 0:
-            self._bottom = self.svg.margins[3]
-        self.spr.set_margins(self._left, self._top, self._right, self._bottom)
+        self.spr.set_margins(self.svg.margins[0], self.svg.margins[1],
+                             self.svg.margins[2], self.svg.margins[3])
 
     def _set_label_attributes(self):
         if self.name in CONTENT_BLOCKS:

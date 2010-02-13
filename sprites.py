@@ -169,15 +169,10 @@ class Sprite:
             _h = self.images[i].get_height()
         else:
             _w, _h = self.images[i].get_size()
-        if len(self.images) == 1:
-            self._width = _w + self._dx[0]
-            self._height = _h + self._dy[0]
+        if i == 0: # Always reset width and height when base image changes.
+            self._width = _w + dx
+            self._height = _h + dy
         else:
-            if isinstance(self.images[i], gtk.gdk.Pixbuf):
-                _w = self.images[i].get_width()
-                _h = self.images[i].get_height()
-            else:
-                _w, _h = self.images[i].get_size()
             if _w + dx > self._width:
                 self._width = _w + dx
             if _h + dy > self._height:

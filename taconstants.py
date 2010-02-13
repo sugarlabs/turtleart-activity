@@ -104,7 +104,7 @@ TOP_LAYER = 1000
 # Block-palette categories
 #
 
-PALETTE_NAMES = ['turtle', 'pen', 'colors', 'numbers', 'flow', 'blocks',
+PALETTE_NAMES = ['turtle', 'pen', 'numbers', 'flow', 'blocks',
                  'extras', 'portfolio', 'trash']
 
 PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
@@ -113,8 +113,8 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'bottompos'],
             ['penup','pendown', 'setpensize', 'fillscreen', 'pensize',
              'settextsize', 'setcolor', 'setshade', 'textsize', 'color',
-             'shade'],
-            [ 'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple'],
+             'shade', 'red', 'orange', 'yellow', 'green', 'cyan', 'blue',
+             'purple'],
             ['plus2', 'minus2', 'product2',
              'division2', 'identity2', 'remainder2', 'sqrt', 'random',
              'number', 'greater2', 'less2', 'equal2', 'not', 'and2', 'or2'],
@@ -124,8 +124,8 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2', 'box',
              'storein', 'start'],
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
-             'myfunc',  'nop', 'sandwichtop', 'sandwichbottom',
-             'addturtle', 'print', 'comment', 'width', 'height'],
+             'myfunc',  'nop', 'addturtle', 'comment', 'print', 'width',
+             'height','sandwichtop', 'sandwichbottom'],
             ['journal', 'audio', 'description', 'savepix', 'hideblocks',
              'showblocks', 'fullscreen', 'picturelist', 'picture1x1a',
              'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2'],
@@ -135,7 +135,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
 # Block-style attributes
 #
 
-COLORS = [["#00FF00","#00A000"], ["#00FFFF","#00A0A0"], ["#00FFFF","#00A0A0"],
+COLORS = [["#00FF00","#00A000"], ["#00FFFF","#00A0A0"],
           ["#FF00FF","#A000A0"], ["#FFC000","#A08000"], ["#FFFF00","#A0A000"],
           ["#FF0000","#A00000"], ["#0000FF","#0000A0"], ["#FFFF00","#A0A000"]]
 
@@ -381,6 +381,11 @@ OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
 # Blocks that contain media
 #
 CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'journal']
+
+#
+# These blocks get a special skin
+#
+BLOCKS_WITH_SKIN = ['journal', 'audio', 'description', 'nop']
 
 #
 # Block-name dictionary used for labels
