@@ -452,8 +452,11 @@ class LogoCode:
             if b.name == 'hat':
                 if b.connections[1] is not None:
                     code = self.blocks_to_code(b)
-                    self.stacks['stack3'+b.connections[1].values[0]] =\
-                        self.readline(code)
+                    x = b.connections[1].values[0]
+                    if type(convert(x, float, False)) == type(float):
+                        if int(float(x)) == x:
+                            x = int(x)
+                    self.stacks['stack3'+str(x)] = self.readline(code)
 
         code = self.blocks_to_code(blk)
         if run_flag is True:
@@ -881,11 +884,14 @@ class LogoCode:
         name.nargs, name.fcn = 0, body
         name.rprim = True
     
-    def prim_stack(self, str):
-        if (not self.stacks.has_key('stack3'+str)) or\
-           self.stacks['stack3'+str] is None:
+    def prim_stack(self, x):
+        if type(convert(x, float, False)) == type(float):
+            if int(float(x)) == x:
+                x = int(x)
+        if (not self.stacks.has_key('stack3'+str(x))) or\
+           self.stacks['stack3'+str(x)] is None:
             raise logoerror("#nostack")
-        self.icall(self.evline, self.stacks['stack3'+str][:])
+        self.icall(self.evline, self.stacks['stack3'+str(x)][:])
         yield True
         self.procstop = False
         self.ireturn()
