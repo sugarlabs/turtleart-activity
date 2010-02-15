@@ -428,10 +428,10 @@ class TurtleArtWindow():
                 self.palette_sprs.append([None,None])
 
             # Create the palette orientation button
-            self.palette_button.append(Sprite(self.sprite_list, 0, 0,
+            self.palette_button.append(Sprite(self.sprite_list, 1, ICON_SIZE+1,
                                       svg_str_to_pixbuf(svg_from_file(
                                      "%s/palettehorizontal.svg" %(self.path)))))
-            self.palette_button.append(Sprite(self.sprite_list, 0, 0,
+            self.palette_button.append(Sprite(self.sprite_list, 1, ICON_SIZE+1,
                                       svg_str_to_pixbuf(svg_from_file(
                                      "%s/palettevertical.svg" % (self.path)))))
             self.palette_button[0].name = 'orientation'
@@ -596,8 +596,8 @@ class TurtleArtWindow():
     """
     def _layout_palette(self, n):
         if n is not None:
-            _x, _y = 5, ICON_SIZE+5
             if self.orientation == 0:
+                _x, _y = 20, ICON_SIZE+5
                 _x, _y, _max = self._horizontal_layout(_x, _y, self.palettes[n])
                 if n == PALETTE_NAMES.index('trash'):
                     _x, _y, _max = self._horizontal_layout(_x+_max, _y,
@@ -614,6 +614,7 @@ class TurtleArtWindow():
                     self.palette_sprs[n][self.orientation].set_shape(
                         svg_str_to_pixbuf(svg.palette(_w, PALETTE_HEIGHT)))
             else:
+                _x, _y = 5, ICON_SIZE+15
                 _x, _y, _max = self._vertical_layout(_x, _y, self.palettes[n])
                 if n == PALETTE_NAMES.index('trash'):
                     _x, _y, _max = self._vertical_layout(_x, _y+_max,
@@ -682,7 +683,7 @@ class TurtleArtWindow():
                 elif blk.name == 'empty':
                     self._empty_trash()
                 elif MACROS.has_key(blk.name):
-                    self._new_macro(blk.name, x+100, y+100)
+                    self._new_macro(blk.name, x+20, y+20)
                 else:
                     blk.highlight()
                     self._new_block(blk.name, x, y)
@@ -733,7 +734,7 @@ class TurtleArtWindow():
         self.show_palette(i)
 
     """
-    Put a group fo blocks into the trash.
+    Put a group of blocks into the trash.
     """
     def _put_in_trash(self, blk, x=0, y=0):
         self.trash_stack.append(blk)
@@ -787,7 +788,10 @@ class TurtleArtWindow():
             b.rescale(self.block_scale)
             b.spr.set_layer(BLOCK_LAYER)
             x,y = b.spr.get_xy()
-            b.spr.move((x+PALETTE_WIDTH,y+PALETTE_HEIGHT))
+            if self.orientation == 0:
+                b.spr.move((x,y+PALETTE_HEIGHT+ICON_SIZE))
+            else:
+                b.spr.move((x+PALETTE_WIDTH,y))
             b.type = 'block'
         for b in group:
             self._adjust_dock_positions(b)
@@ -1083,11 +1087,20 @@ class TurtleArtWindow():
                 return
             self.drag_group = self._find_group(blk)
 
-            # Check to see if any block ends up with a negative x.
+            # Prevent blocks from ending up with a negative x...
             for b in self.drag_group:
                 (bx, by) = b.spr.get_xy()
                 if bx+dx < 0:
                     dx += -(bx+dx)
+                # ...or under the palette.
+                if self.selected_palette is not None and\
+                   self.selected_palette != self.trash_index:
+                    if self.orientation == 0:
+                        if by+dy < ICON_SIZE+PALETTE_HEIGHT:
+                            dy +=  -(by+dy)+ICON_SIZE+PALETTE_HEIGHT
+                    else:
+                        if bx+dx < PALETTE_WIDTH:
+                            dx += -(bx+dx)+PALETTE_WIDTH
 
             # Move the stack.
             for b in self.drag_group:
@@ -1205,7 +1218,10 @@ class TurtleArtWindow():
         if self.block_operation=='new':
             for b in self.drag_group:
                 (bx, by) = b.spr.get_xy()
-                b.spr.move((bx+100, by+100))
+                if self.orientation == 0:
+                    b.spr.move((bx+20, by+PALETTE_HEIGHT+ICON_SIZE))
+                else:
+                    b.spr.move((bx+PALETTE_WIDTH, by+20))
 
         # Look to see if we can dock the current stack.
         self._snap_to_dock()
@@ -1321,7 +1337,7 @@ class TurtleArtWindow():
                 self._restore_stack(b)            
                 return
             # Follow a fork
-            if b.name in ['repeat', 'if', 'ifelse', 'forever']:
+            if b.name in ['repeat', 'if', 'ifelse', 'forever', 'while']:
                top = self._find_sandwich_top_below(
                                             b.connections[len(b.connections)-2])
                if top is not None:
@@ -1343,7 +1359,7 @@ class TurtleArtWindow():
         while b is not None:
             if b.name in COLLAPSIBLE:
                 return None
-            if b.name in ['repeat', 'if', 'ifelse', 'forever']:
+            if b.name in ['repeat', 'if', 'ifelse', 'forever', 'while']:
                 if blk != b.connections[len(b.connections)-1]:
                     return None
             if b.name == 'sandwichtop':
