@@ -2232,9 +2232,16 @@ class TurtleArtWindow():
                             self._block_skin('journalon', blk)
                     dsobject.destroy()
                 except:
-                    print "Warning: Couldn't open dsobject (%s)" %\
-                          (blk.values[0])
-                    self._block_skin('journaloff', blk)
+                    try:
+                        w, h, = calc_image_size(blk.spr)
+                        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                                     blk.values[0], w, h)
+                        x, y = self._calc_image_offset('', blk.spr)
+                        blk.set_image(pixbuf, x, y)
+                    except:
+                        print "Warning: Couldn't open dsobject (%s)" %\
+                              (blk.values[0])
+                        self._block_skin('journaloff', blk)
             else:
                 if not movie_media_type(blk.values[0][-4:]):
                     try:

@@ -1035,15 +1035,21 @@ class LogoCode:
             if self.tw.running_sugar:
                 try:
                     dsobject = datastore.get(media[6:])
+                    if movie_media_type(dsobject.file_path):
+                        play_movie_from_file(self, dsobject.file_path,
+                                             int(x), int(y), int(w), int(h))
+                    else:
+                        pixbuf = get_pixbuf_from_journal(dsobject,
+                                                         int(w), int(h))
+                    dsobject.destroy()
                 except:
-                    self.tw.showlabel('nojournal', media[6:]) 
-                    print "Couldn't open Journal object %s" % (media[6:])
-                if movie_media_type(dsobject.file_path):
-                    play_movie_from_file(self,
-                        dsobject.file_path, int(x), int(y), int(w), int(h))
-                else:
-                    pixbuf = get_pixbuf_from_journal(dsobject, int(w), int(h))
-                dsobject.destroy()
+                    # Maybe it is a pathname instead.
+                    try:
+                        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                                                   media[6:], int(w), int(h))
+                    except:
+                        self.tw.showlabel('nojournal', media[6:]) 
+                        print "Couldn't open Journal object %s" % (media[6:])
             else:
                 try:
                     if movie_media_type(media):
