@@ -118,7 +118,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
             ['plus2', 'minus2', 'product2',
              'division2', 'identity2', 'remainder2', 'sqrt', 'random',
              'number', 'greater2', 'less2', 'equal2', 'not', 'and2', 'or2'],
-            ['wait', 'forever', 'repeat', 'if', 'ifelse', 'hspace',
+            ['wait', 'forever', 'while', 'repeat', 'if', 'ifelse', 'hspace',
              'vspace', 'stopstack'],
             ['hat1', 'stack1', 'hat', 'hat2', 'stack2', 'stack',
              'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2', 'box',
@@ -188,7 +188,7 @@ NOT_STYLE = ['not']
 FLOW_STYLE = ['forever']
 FLOW_STYLE_TAIL = ['hspace']
 FLOW_STYLE_1ARG = ['repeat']
-FLOW_STYLE_BOOLEAN = ['if']
+FLOW_STYLE_BOOLEAN = ['if', 'while', 'until']
 FLOW_STYLE_ELSE = ['ifelse']
 COLLAPSIBLE_TOP = ['sandwichtop']
 COLLAPSIBLE_BOTTOM = ['sandwichbottom']
@@ -205,7 +205,19 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
 # Macros (groups of blocks)
 #
 MACROS = {
-    'kbinput':[[0, 'forever', 0, 0, [None, 1, None]],
+    'until':
+              [[0, 'forever', 0, 0, [None, 1, None]],
+               [1, 'if', 0, 0, [0, None, 2, 3]],
+               [2, 'stopstack', 0, 0, [1, None]],
+               [3, 'vspace', 0, 0, [1, None]]],
+    'while':
+              [[0, 'forever', 0, 0, [None, 2, 1]],
+               [1, 'vspace', 0, 0, [0, None]],
+               [2, 'if', 0, 0, [0, None, None, 3]],
+               [3, 'vspace', 0, 0, [2, 4]],
+               [4, 'stopstack', 0, 0, [3, None]]],
+    'kbinput':
+              [[0, 'forever', 0, 0, [None, 1, None]],
                [1, 'kbinput', 0, 0, [0, 2]],
                [2, 'vspace', 0, 0, [1, 3]],
                [3, 'if', 0, 0, [2, 4, 7, 8]],
@@ -394,7 +406,7 @@ BLOCKS_WITH_SKIN = ['journal', 'audio', 'description', 'nop']
 BLOCK_NAMES = {
     'addturtle':[_('turtle')],
     'and2':[_('and')],
-    'arc':[_('arc'),_('angle'),_('radius')],
+    'arc':[_('arc'), _('angle'), _('radius')],
     'audio':[' '],
     'back':[_('back')],
     'blue':[_('blue')],
@@ -408,10 +420,11 @@ BLOCK_NAMES = {
     'color':[_('color')],
     'comment':[_('comment')],
     'cyan':[_('cyan')],
+    'decription':[' '],
     'division2':['/'],
     'empty':[_('empty trash')],
     'equal2':['='],
-    'fillscreen':[_('fill screen'),_('color'),_('shade')],
+    'fillscreen':[_('fill screen'), _('color'), _('shade')],
     'forever':[_('forever')],
     'forward':[_('forward')],
     'fullscreen':[_('full screen')],
@@ -425,8 +438,8 @@ BLOCK_NAMES = {
     'hideblocks':[_('hide blocks')],
     'hspace':[' '],
     'identity2':['←'],
-    'if':[' ',_('if'),_('then')],
-    'ifelse':[' ',_('if'),_('then else')],
+    'if':[' ', _('if'), _('then')],
+    'ifelse':[' ', _('if'), _('then else')],
     'journal':[' '],
     'kbinput':[_('query keyboard')],
     'keyboard':[_('keyboard')],
@@ -436,7 +449,7 @@ BLOCK_NAMES = {
     'less2':['<'],
     'list':['list'],
     'minus2':['–'],
-    'myfunc':[_('Python'),'f(x)','x'],
+    'myfunc':[_('Python'), 'f(x)', 'x'],
     'nop':[_(' ')],
     'not':[_('not')],
     'number':['100'],
@@ -458,7 +471,7 @@ BLOCK_NAMES = {
     'product2':['×'],
     'purple':[_('purple')],
     'push':[_('push')],
-    'random':[_('random'),_('min'),_('max')],
+    'random':[_('random'), _('min'), _('max')],
     'red':[_('red')],
     'remainder2':[_('mod')],
     'repeat':[' ',_('repeat')],
@@ -479,7 +492,7 @@ BLOCK_NAMES = {
     'setshade':[_('set shade')],
     'settextcolor':[_('set text color')],
     'settextsize':[_('set text size')],
-    'setxy':[_('set xy'),_('x'),_('y')],
+    'setxy':[_('set xy'), _('x'), _('y')],
     'shade':[_('shade')],
     'show':[_('show')],
     'showblocks':[_('show blocks')],
@@ -490,7 +503,7 @@ BLOCK_NAMES = {
     'stack2':[_('action 2')],
     'start':[_('start')],
     'stopstack':[_('stop action')],
-    'storein':[_('store in'),_('box'),_('value')],
+    'storein':[_('store in'), _('box'), _('value')],
     'storeinbox1':[_('store in box 1')],
     'storeinbox2':[_('store in box 2')],
     'string':[_('text')],
@@ -506,8 +519,10 @@ BLOCK_NAMES = {
     'toppos':[_('top')],
     'topy':[_('picture top')],
     'turtle':[_('turtle')],
+    'until':[' ', _('until')],
     'vspace':[' '],
     'wait':[_('wait')],
+    'while':[' ', _('while')],
     'width':[_('width')],
     'xcor':[_('xcor')],
     'ycor':[_('ycor')],
@@ -618,7 +633,9 @@ PRIMITIVES = {
     'titley':'titley',
     'toppos':'tpos',
     'topy':'topy',
+    'until':'until',
     'vspace':'nop',
+    'while':'while',
     'wait':'wait',
     'width':'hres',
     'write':'write',
@@ -802,7 +819,7 @@ HELP_STRINGS = {
     'hat':_("top of nameable action stack"),
     'heading':_("holds current heading value of the turtle (can be used in place of a number block)"),
     'hideblocks':_("declutters canvas by hiding blocks"),
-    'width':_("the canvas width"),
+    'height':_("the canvas height"),
     'hspace':_("jogs stack right"),
     'identity2':_("identity operator used for extending blocks"),
     'ifelse':_("if-then-else operator that uses boolean operators from Numbers palette"),
@@ -879,9 +896,11 @@ HELP_STRINGS = {
     'toppos':_("ycor of top of screen"),
     'trash':_("a place to throw away blocks"),
     'turtle':_("palette of turtle commands"),
-    'height':_("the canvas height"),
+    'until':_("do-until-True operator that uses boolean operators from Numbers palette"),
     'vspace':_("jogs stack down"),
     'wait':_("pauses program execution a specified number of seconds"),
+    'while':_("do-while-True operator that uses boolean operators from Numbers palette"),
+    'width':_("the canvas width"),
     'xcor':_("holds current x-coordinate value of the turtle (can be used in place of a number block)"),
     'ycor':_("holds current y-coordinate value of the turtle (can be used in place of a number block)")}
 
