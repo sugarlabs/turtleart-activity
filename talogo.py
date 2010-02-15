@@ -42,8 +42,6 @@ from tautils import get_pixbuf_from_journal, movie_media_type,\
                     audio_media_type, round_int
 from gettext import gettext as _
 
-procstop = False
-
 class noKeyError(UserDict):
     __missing__=lambda x,y: 0
 
@@ -119,6 +117,12 @@ def chr_to_ord(x):
         except ValueError:
             return x, False
     return x, False
+
+def taand(x, y):
+    return x&y
+
+def taor(x, y):
+    return x|y
 
 def careful_divide(x, y):
     try:
@@ -222,20 +226,17 @@ def tasqrt(x):
 
 def tarandom(x, y):
     if numtype(x) and numtype(y):
-        print "trying floats %f, %f" % (x,y)
         return(int(uniform(x,y)))
     xx, xflag = chr_to_ord(x)
     yy, yflag = chr_to_ord(y)
     print xx, xflag, yy, yflag
     if xflag and yflag:
-        print "trying chr %d, %d" % (xx,yy)
         return chr(int(uniform(xx,yy)))
     if not xflag:
         xx = str_to_num(x)
     if not yflag:
         yy = str_to_num(y)
     try:
-        print "trying str %s, %s" % (str(xx),str(yy))
         return(int(uniform(xx,yy)))
     except TypeError:
         raise logoerror("#syntaxerror")
@@ -268,12 +269,7 @@ class LogoCode:
 
         DEFPRIM = {
         '(':[1, lambda self, x: self.prim_opar(x)],
-        '/':[None, lambda self,x,y: careful_divide(x,y)],
-        '-':[None, lambda self,x,y: x-y],
-        '*':[None, lambda self,x,y: x*y],
-        '%':[None, lambda self,x,y: x%y],
-        '+':[None, lambda self,x,y: x+y],
-        'and':[2, lambda self,x,y: x&y],
+        'and':[2, lambda self,x,y: taand(x,y)],
         'arc':[2, lambda self, x, y: self.tw.canvas.arc(x, y)],
         'back':[1, lambda self,x: self.tw.canvas.forward(-x)],
         'blue':[0, lambda self: 70],
@@ -322,7 +318,7 @@ class LogoCode:
         'nop3':[1, lambda self,x: None],
         'not':[1, lambda self,x:not x],
         'orange':[0, lambda self: 10],
-        'or':[2, lambda self,x,y: x|y],
+        'or':[2, lambda self,x,y: taor(x,y)],
         'pendown':[0, lambda self: self.tw.canvas.setpen(True)],
         'pensize':[0, lambda self: self.tw.canvas.pensize],
         'penup':[0, lambda self: self.tw.canvas.setpen(False)],
@@ -350,7 +346,7 @@ class LogoCode:
         'settextsize':[1, lambda self, x: self.tw.canvas.settextsize(x)],
         'setxy':[2, lambda self, x, y: self.tw.canvas.setxy(x, y)],
         'shade':[0, lambda self: self.tw.canvas.shade],
-        'show':[1,lambda self, x: self.show(x, True)],
+        'show':[1, lambda self, x: self.show(x, True)],
         'showaligned':[1,lambda self, x: self.show(x, False)],
         'showblocks':[0, lambda self: self.tw.showblocks()],
         'sound':[1, lambda self,x: self.play_sound(x)],
@@ -359,7 +355,7 @@ class LogoCode:
         'stack':[1, self.prim_stack, True],
         'stack2':[0, self.prim_stack2, True],
         'start':[0, lambda self: self.prim_start()],
-        'stopstack':[0, self.prim_stopstack],
+        'stopstack':[0, lambda self: self.prim_stopstack()],
         'storeinbox1':[1, lambda self,x: self.prim_setbox('box1', None ,x)],
         'storeinbox2':[1, lambda self,x: self.prim_setbox('box2', None, x)],
         'storeinbox':[2, lambda self,x,y: self.prim_setbox('box3', x, y)],
@@ -398,7 +394,8 @@ class LogoCode:
         self.cfun = None
         self.arglist = None
         self.ufun = None
-    
+        self.procstop = False
+        self.running = False
         self.istack = []
         self.stacks = {}
         self.boxes = {'box1': 0, 'box2': 0}
@@ -507,10 +504,8 @@ class LogoCode:
                 else:
                     code.append('#saudio_None')
             else:
-                print "%s had no primitive." % (blk.name)
                 return ['%nothing%']
         else:
-            print "%s had no value." % (blk.name)
             return ['%nothing%']
         for i in range(1, len(blk.connections)):
             b = blk.connections[i]        
@@ -542,9 +537,9 @@ class LogoCode:
         res = []
         while line:
             token = line.pop(0)
-            btoken = None
+            bindex = None
             if type(token) == tuple:
-                 (token, btoken) = token
+                 (token, bindex) = token
             if isNumberType(token):
                 res.append(token)
             elif token.isdigit():
@@ -559,21 +554,25 @@ class LogoCode:
                 res.append(self.readline(line))
             elif token == ']':
                 return res
-            elif btoken is None:
+            elif bindex is None or type(bindex) is not int:
                 res.append(self.intern(token))
             else:
-                res.append((self.intern(token),btoken))
+                res.append((self.intern(token), bindex))
         return res
 
     """
     Step through the list.
     """
     def start_eval(self, list):
+        if self.tw.running_sugar:
+            self.tw.activity.stop_button.set_icon("stopiton")
+        self.running = True
         self.icall(self.evline, list)
         yield True
         if self.tw.running_sugar:
             self.tw.activity.stop_button.set_icon("stopitoff")
         yield False
+        self.running = False
 
     """
     Add a function and its arguments to the program stack.
@@ -591,14 +590,15 @@ class LogoCode:
         self.arglist = None
         while self.iline:
             token = self.iline[0]
-            btoken = None
+            bindex = None
             if type(token) == tuple:
-                (token, btoken) = self.iline[0]
+                (token, bindex) = self.iline[0]
 
-            if self.tw.hide is False\
-               and btoken is not None and type(btoken) is int:
-                self.tw.block_list.list[btoken].highlight()
+            # If the blocks are visible, highlight the current block.
+            if not self.tw.hide and bindex is not None:
+                self.tw.block_list.list[bindex].highlight()
 
+            # In debugging modes, we pause between steps and show the turtle.
             if self.tw.step_time > 0:
                 self.tw.active_turtle.show()
                 endtime = millis()+self.an_int(self.tw.step_time)*100
@@ -606,24 +606,27 @@ class LogoCode:
                     yield True
                 self.tw.active_turtle.hide()
 
+            # 'Stand-alone' booleans are handled here.
             if token == self.symopar:
                 token = self.iline[1]
                 if type(token) == tuple:
-                    (token, btoken) = self.iline[1]
+                    (token, bindex) = self.iline[1]
+
+            # Process the token and any arguments.
             self.icall(self.eval)
             yield True
 
-            if self.tw.hide is False\
-               and btoken is not None and type(btoken) is int:
-                self.tw.block_list.list[btoken].unhighlight()
+            # Time to unhighlight the current block.
+            if not self.tw.hide and bindex is not None:
+                self.tw.block_list.list[bindex].unhighlight()
 
             if self.procstop:
                 break
             if self.iresult == None:
                 continue
 
-            if btoken is not None and type(btoken) is int:
-                self.tw.block_list.list[btoken].highlight()
+            if bindex is not None:
+                self.tw.block_list.list[bindex].highlight()
             raise logoerror(str(self.iresult))
         self.iline = oldiline
         self.ireturn()
@@ -632,39 +635,35 @@ class LogoCode:
         yield True
     
     """
-    Evaluate the next token on the line.
+    Evaluate the next token on the line of code we are processing.
     """
-    def eval(self, infixarg=False):
+    def eval(self):
         token = self.iline.pop(0)
-        btoken = None
+        bindex = None
         if type(token) == tuple:
-            (token, btoken) = token
+            (token, bindex) = token
+
+        # Either we are processing a symbol or a value.
         if type(token) == self.symtype:
-            if self.tw.hide is False and btoken is not None:
-                self.tw.block_list.list[btoken].highlight()
+            # We highlight blocks here in case an error occurs...
+            if not self.tw.hide and bindex is not None:
+                self.tw.block_list.list[bindex].highlight()
             self.icall(self.evalsym, token)
             yield True
-            if self.tw.hide is False and btoken is not None:
-                self.tw.block_list.list[btoken].unhighlight()
+            # and unhighlight if everything was OK.
+            if not self.tw.hide and bindex is not None:
+                self.tw.block_list.list[bindex].unhighlight()
             res = self.iresult
         else:
             res = token
-        if not infixarg:
-            while self.infixnext():
-                self.icall(self.evalinfix, res)
-                yield True
-                res = self.iresult
+
         self.ireturn(res)
         yield True
 
     """
-    Processing flow (vertical)
+    Process primitive associated with symbol token
     """
     def evalsym(self, token):
-        btoken = None
-        if type(token) == tuple:
-            (token, btoken) = token
-            print "found a tuple in evalsym (%s, %s)?" % (token, btoken)
         self.debug_trace(token)
         self.undefined_check(token)
         oldcfun, oldarglist = self.cfun, self.arglist
@@ -686,43 +685,13 @@ class LogoCode:
                 yield True
             result = None
         else:
-            # TODO: find out why stopstack args are mismatched
-            if token.name == 'stopstack':
-                result = self.cfun.fcn()
-            else:
-                result = self.cfun.fcn(self, *self.arglist)
+            result = self.cfun.fcn(self, *self.arglist)
         self.cfun, self.arglist = oldcfun, oldarglist
         if self.arglist is not None and result == None:
             raise logoerror("%s didn't output to %s (arglist %s, result %s)" % \
                 (oldcfun.name, self.cfun.name, str(self.arglist), str(result)))
         self.ireturn(result)
         yield True
-
-    #
-    # Processing assignments (horizontal)
-    #
-    def evalinfix(self, firstarg):
-        token = self.iline.pop(0)
-        btoken = None
-        if type(token) == tuple:
-            (token, btoken) = token
-        oldcfun, oldarglist = self.cfun, self.arglist
-        self.cfun, self.arglist = token, [firstarg]
-        no_args_check(self)
-        self.icall(self.eval, True)
-        yield True
-        self.arglist.append(self.iresult)
-        result = self.cfun.fcn(self, *self.arglist)
-        self.cfun, self.arglist = oldcfun, oldarglist
-        self.ireturn(result)
-        yield True
-    
-    def infixnext(self):
-        if len(self.iline)==0:
-            return False
-        if type(self.iline[0]) is not self.symtype:
-            return False
-        return self.iline[0].name in ['+', '-', '*', '/','%','and','or']
 
     def ufuncall(self, body):
         ijmp(self.evline, body)
@@ -736,7 +705,6 @@ class LogoCode:
                     if self.step is not None:
                         self.step.next()
                     else:
-                        print "step is None"
                         return False
                 except StopIteration:
                     self.tw.turtles.show_all()
