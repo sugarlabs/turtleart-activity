@@ -428,10 +428,10 @@ class TurtleArtWindow():
                 self.palette_sprs.append([None,None])
 
             # Create the palette orientation button
-            self.palette_button.append(Sprite(self.sprite_list, 1, ICON_SIZE+1,
+            self.palette_button.append(Sprite(self.sprite_list, 0, ICON_SIZE,
                                       svg_str_to_pixbuf(svg_from_file(
                                      "%s/palettehorizontal.svg" %(self.path)))))
-            self.palette_button.append(Sprite(self.sprite_list, 1, ICON_SIZE+1,
+            self.palette_button.append(Sprite(self.sprite_list, 0, ICON_SIZE,
                                       svg_str_to_pixbuf(svg_from_file(
                                      "%s/palettevertical.svg" % (self.path)))))
             self.palette_button[0].name = 'orientation'
@@ -497,13 +497,6 @@ class TurtleArtWindow():
                 for b in self._find_group(blk):
                     if b.status != 'collapsed':
                         b.spr.set_layer(TAB_LAYER)
-
-    """
-    Utility for calculating proto skin images
-    """
-    def _proto_skin(self, name, n, i):
-        x, y = self._calc_image_offset(name, self.palettes[n][i].spr)
-        self.palettes[n][i].spr.set_image(self.media_shapes[name], 1, x, y)
 
     """
     Hide the toolbar palettes
@@ -915,14 +908,6 @@ class TurtleArtWindow():
         self.block_operation = 'new' 
 
     """
-    Some blocks get a skin
-    """
-    def _block_skin(self, name, blk):
-        x, y = self._calc_image_offset(name, blk.spr)
-        blk.set_image(self.media_shapes[name], x, y)
-        self._resize_skin(blk)
-
-    """
     Create a "macro" (predefined stack of blocks)
     """
     def _new_macro(self, name, x, y):
@@ -1095,11 +1080,13 @@ class TurtleArtWindow():
                 # ...or under the palette.
                 if self.selected_palette is not None and\
                    self.selected_palette != self.trash_index:
+                    w, h = self.palette_sprs[self.selected_palette][
+                                             self.orientation].get_dimensions()
                     if self.orientation == 0:
-                        if by+dy < ICON_SIZE+PALETTE_HEIGHT:
+                        if bx < w and by+dy < ICON_SIZE+PALETTE_HEIGHT:
                             dy +=  -(by+dy)+ICON_SIZE+PALETTE_HEIGHT
                     else:
-                        if bx+dx < PALETTE_WIDTH:
+                        if by < h+ICON_SIZE and bx+dx < PALETTE_WIDTH:
                             dx += -(bx+dx)+PALETTE_WIDTH
 
             # Move the stack.
@@ -1874,7 +1861,7 @@ class TurtleArtWindow():
                 self.selected_blk.resize()
             return True
         # Otherwise, use keyboard input to move blocks or turtles
-        else:
+        elif not self.lc.running:
             self._process_keyboard_commands(keyname)
         if self.selected_blk is None:
             return False
@@ -2395,10 +2382,44 @@ class TurtleArtWindow():
         return(w,h,x,y,dx,dy)
 
     """
+    Grab the current canvas and save it.
+    """
+    def save_as_image(self, name=""):
+        if len(name) == 0:
+            filename = "ta.png"
+        else:
+            filename = name+".png"
+
+        if self.running_sugar:
+            datapath = os.path.join(self.activity.get_activity_root(),
+                                    "instance")
+        else:
+            datapath = os.getcwd()
+        file_path = os.path.join(datapath, filename)
+        save_picture(self.canvas, file_path)
+
+        if self.running_sugar:
+            dsobject = datastore.create()
+            if len(name) == 0:
+                dsobject.metadata['title'] = "%s %s" % (self.metadata['title'],
+                                                        _("image"))
+            else:
+                dsobject.metadata['title'] = name
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.metadata['mime_type'] = 'image/png'
+            dsobject.set_file_path(file_path)
+            datastore.write(dsobject)
+            dsobject.destroy()
+
+    """
     Where is the mouse event?
     """
     def _xy(self, event):
         return map(int, event.get_coords())
+
+    """
+    Utilities related to finding blocks in stacks.
+    """
 
     """
     Find a stack to run (any stack without a 'def action'on the top).
@@ -2453,7 +2474,6 @@ class TurtleArtWindow():
                 just_blocks_list.append(b)
         return just_blocks_list
 
-
     """
     What are the width and height of a stack?
     """
@@ -2476,34 +2496,8 @@ class TurtleArtWindow():
         return(maxx-minx, maxy-miny)
 
     """
-    Grab the current canvas and save it.
+    Utilities related to putting a image 'skin' on a block
     """
-    def save_as_image(self, name=""):
-        if len(name) == 0:
-            filename = "ta.png"
-        else:
-            filename = name+".png"
-
-        if self.running_sugar:
-            datapath = os.path.join(self.activity.get_activity_root(),
-                                    "instance")
-        else:
-            datapath = os.getcwd()
-        file_path = os.path.join(datapath, filename)
-        save_picture(self.canvas, file_path)
-
-        if self.running_sugar:
-            dsobject = datastore.create()
-            if len(name) == 0:
-                dsobject.metadata['title'] = "%s %s" % (self.metadata['title'],
-                                                        _("image"))
-            else:
-                dsobject.metadata['title'] = name
-            dsobject.metadata['icon-color'] = profile.get_color().to_string()
-            dsobject.metadata['mime_type'] = 'image/png'
-            dsobject.set_file_path(file_path)
-            datastore.write(dsobject)
-            dsobject.destroy()
 
     """
     Calculate the postion for placing an image onto a sprite.
@@ -2539,6 +2533,21 @@ class TurtleArtWindow():
                 new_w = target_w*scale_factor
             return int(new_w), int(new_h)
         return int(target_w), int(target_h)
+
+    """
+    Utility for calculating proto skin images
+    """
+    def _proto_skin(self, name, n, i):
+        x, y = self._calc_image_offset(name, self.palettes[n][i].spr)
+        self.palettes[n][i].spr.set_image(self.media_shapes[name], 1, x, y)
+
+    """
+    Some blocks get a skin
+    """
+    def _block_skin(self, name, blk):
+        x, y = self._calc_image_offset(name, blk.spr)
+        blk.set_image(self.media_shapes[name], x, y)
+        self._resize_skin(blk)
 
     """
     Resize the 'skin' when block scale changes.
