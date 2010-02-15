@@ -341,21 +341,18 @@ class TurtleArtActivity(activity.Activity):
 
     def _do_run_cb(self, button):
         self.run_button.set_icon("run-faston")
-        self.stop_button.set_icon("stopiton")
         self.tw.lc.trace = 0
         self.tw.run_button(0)
         gobject.timeout_add(1000,self.run_button.set_icon,"run-fastoff")
 
     def _do_step_cb(self, button):
         self.step_button.set_icon("run-slowon")
-        self.stop_button.set_icon("stopiton")
         self.tw.lc.trace = 0
         self.tw.run_button(3)
         gobject.timeout_add(1000,self.step_button.set_icon,"run-slowoff")
 
     def _do_debug_cb(self, button):
         self.debug_button.set_icon("debugon")
-        self.stop_button.set_icon("stopiton")
         self.tw.lc.trace = 1
         self.tw.run_button(6)
         gobject.timeout_add(1000,self.debug_button.set_icon,"debugoff")
