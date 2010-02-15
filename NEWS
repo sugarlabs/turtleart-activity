@@ -10,6 +10,7 @@
  o palette better integrated into Sugar toolbar
  o variable-length string blocks
  o editable string blocks
+ o paste text from Sugar clipboard to string blocks
  o new boolean logic UI
  o showblock to compliment hideblock
  o fullscreen block
