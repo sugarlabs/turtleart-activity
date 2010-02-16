@@ -1861,7 +1861,7 @@ class TurtleArtWindow():
                 self.selected_blk.resize()
             return True
         # Otherwise, use keyboard input to move blocks or turtles
-        elif not self.lc.running:
+        else:
             self._process_keyboard_commands(keyname)
         if self.selected_blk is None:
             return False
@@ -1979,8 +1979,7 @@ class TurtleArtWindow():
                     newleft = oldleft
             elif keyunicode == -1: # clipboard text
                 newleft = oldleft+keyname
-        self.selected_blk.spr.set_label("%s%s%s" % \
-                                        (newleft, CURSOR, oldright))
+        self.selected_blk.spr.set_label("%s%s%s" % (newleft, CURSOR, oldright))
 
     """
     Use the keyboard to move blocks and turtle
@@ -1999,7 +1998,7 @@ class TurtleArtWindow():
         elif self.selected_spr is not None:
             blk = self.block_list.spr_to_block(self.selected_spr)
             tur = self.turtles.spr_to_turtle(self.selected_spr)
-            if blk is not None:
+            if not self.lc.running and blk is not None:
                 if keyname == 'Return' or keyname == 'KP_Page_Up':
                     (x, y) = blk.spr.get_xy()
                     self._click_block(x, y)
