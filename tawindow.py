@@ -1262,10 +1262,10 @@ class TurtleArtWindow():
             if self._show_button_hit(blk.spr, x, y):
                 n = len(blk.connections)
                 group = self._find_group(blk.connections[n-1])
-                if blk.name == 'myfunc' and n == 4:
+                if blk.name == 'myfunc2' and n == 4:
                     blk.spr.labels[1] = 'f(x,y)'
                     blk.spr.labels[2] = ' '
-                if blk.name == 'myfunc' and n == 5:
+                if blk.name == 'myfunc2' and n == 5:
                     blk.spr.labels[1] = 'f(x,y,z)'
                     dy = blk.add_arg(False)
                 else:

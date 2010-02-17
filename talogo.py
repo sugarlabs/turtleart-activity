@@ -678,18 +678,21 @@ class LogoCode:
             self.arglist.append(self.iresult)
         if self.cfun.rprim:
             if type(self.cfun.fcn) == self.listtype:
+                print "evalsym rprim list: ", token
                 self.icall(self.ufuncall, self.cfun.fcn)
                 yield True
             else:
+                print "evalsym rprim: ", token
                 self.icall(self.cfun.fcn, *self.arglist)
                 yield True
             result = None
         else:
+            print "evalsym: ", token
             result = self.cfun.fcn(self, *self.arglist)
         self.cfun, self.arglist = oldcfun, oldarglist
         if self.arglist is not None and result == None:
-            raise logoerror("%s didn't output to %s (arglist %s, result %s)" % \
-                (oldcfun.name, self.cfun.name, str(self.arglist), str(result)))
+            raise logoerror("%s %s %s" % \
+                (oldcfun.name, _("did not output to"), self.cfun.name))
         self.ireturn(result)
         yield True
 
@@ -803,9 +806,18 @@ class LogoCode:
         yield True
 
     def prim_myfunc(self, list):
+        """
         new_list = [self.intern('myfunction')]
         new_list.append(list)
-        self.icall(self.evline, new_list)
+        # self.icall(self.evline, new_list)
+        self.icall(self.eval, new_list)
+        yield True
+        self.ireturn()
+        yield True
+        """
+        new_list = [self.intern('myfunction')]
+        new_list.append(list)
+        self.evline(new_list)
         yield True
         self.ireturn()
         yield True
@@ -897,8 +909,8 @@ class LogoCode:
         elif type(n) == str:
             return int(ord(n[0]))
         else:
-            raise logoerror("%s doesn't like %s as input" \
-                % (self.cfun.name, str(n)))
+            raise logoerror("%s %s %s %s" \
+                % (self.cfun.name,  _("doesn't like"), str(n), _("as input")))
 
     def box(self, x):
         if type(convert(x, float, False)) == float:

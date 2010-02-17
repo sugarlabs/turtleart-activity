@@ -178,7 +178,7 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
 BOX_STYLE_MEDIA =  ['description', 'audio', 'journal']
 NUMBER_STYLE = ['plus2', 'product2']
 NUMBER_STYLE_VAR_ARG = ['myfunc']
-NUMBER_STYLE_BLOCK = ['random']
+NUMBER_STYLE_BLOCK = ['random', 'myfunc2']
 NUMBER_STYLE_PORCH = ['minus2', 'division2', 'remainder2']
 NUMBER_STYLE_1ARG = ['sqrt', 'identity2']
 NUMBER_STYLE_1STRARG = ['box']
@@ -203,7 +203,8 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
 #
 # Blocks that are expandable
 #
-EXPANDABLE = ['vspace', 'hspace', 'templatelist', 'list', 'identity2', 'myfunc']
+EXPANDABLE = ['vspace', 'hspace', 'templatelist', 'list', 'identity2',
+              'myfunc2']
 
 #
 # Blocks that are 'collapsible'
@@ -275,6 +276,7 @@ BLOCK_NAMES = {
     'list':['list'],
     'minus2':['–'],
     'myfunc':[_('Python'), 'f(x)', 'x'],
+    'myfunc2':[_('Python'), 'f(x)', 'x'],
     'nop':[_(' ')],
     'not':[_('not')],
     'number':['100'],
@@ -399,7 +401,8 @@ PRIMITIVES = {
     'less2':'less?',
     'list':'bulletlist',
     'minus2':'minus',
-    'myfunc':'myfunc',
+    'myfunc':'myfunction',
+    'myfunc2':'myfunc',
     'nop':'userdefined',
     'not':'not',
     'orange':'orange',
@@ -489,6 +492,7 @@ DEFAULTS = {
     'list':['∙ ', '∙ '],
     'media':[None],
     'myfunc':[_('x'), 100],
+    'myfunc2':[_('x'), 100],
     'nop':[100],
     'number':[100],
     'random':[0, 100],
@@ -592,7 +596,6 @@ SPECIAL_NAMES = {
     'journal':_('journal'),
     'less2':_('less than'),
     'minus2':_('minus'),
-    'myfunc':_('Python code'),
     'nop':_('Python code'),
     'number':_('number'),
     'plus2':_('plus'),
@@ -655,6 +658,7 @@ HELP_STRINGS = {
     'less2':_("logical less-than operator"),
     'minus2':_("subtracts bottom numeric input from top numeric input"),
     'myfunc':_("a programmable block: used to add advanced math equations, e.g., sin(x)"),
+    'myfunc2':_("a programmable block: used to add advanced math equations, e.g., sin(x)"),
     'nop':_("runs code found in the tamyblock.py module found in the Journal"),
     'not':_("logical NOT operator"),
     'numbers':_("palette of numeric operators"),
