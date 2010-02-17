@@ -11,7 +11,7 @@
  o variable-length string blocks
  o editable string blocks
  o paste text from Sugar clipboard to string blocks
- o new boolean logic UI
+ o new prefix boolean logic
  o showblock to compliment hideblock
  o fullscreen block
  o editible macros (used for presentation blocks)
