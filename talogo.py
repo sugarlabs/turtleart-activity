@@ -678,16 +678,16 @@ class LogoCode:
             self.arglist.append(self.iresult)
         if self.cfun.rprim:
             if type(self.cfun.fcn) == self.listtype:
-                print "evalsym rprim list: ", token
+                # print "evalsym rprim list: ", token
                 self.icall(self.ufuncall, self.cfun.fcn)
                 yield True
             else:
-                print "evalsym rprim: ", token
+                # print "evalsym rprim: ", token
                 self.icall(self.cfun.fcn, *self.arglist)
                 yield True
             result = None
         else:
-            print "evalsym: ", token
+            # print "evalsym: ", token
             result = self.cfun.fcn(self, *self.arglist)
         self.cfun, self.arglist = oldcfun, oldarglist
         if self.arglist is not None and result == None:
