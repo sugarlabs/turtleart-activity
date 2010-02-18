@@ -1080,7 +1080,7 @@ class LogoCode:
     def show_description(self, media, x, y, w, h):
         if media == "" or media[6:] == "":
             return
-        elif media[6:] is not "None":
+        elif media[6:] != "None":
             text = None
             if self.tw.running_sugar:
                 try:
@@ -1097,7 +1097,6 @@ class LogoCode:
                 except:
                     print "no text in %s?" % (media[6:])
             if text is not None:
-                print "text: %s" % (text)
                 self.tw.canvas.draw_text(text, int(x), int(y),
                                          self.body_height, int(w))
     
