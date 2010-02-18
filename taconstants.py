@@ -756,6 +756,7 @@ NOISE_KEYS = ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', 'Pause',
 WHITE_SPACE = ['space','Tab']
 
 CURSOR = '█'
+RETURN = '⏎'
 
 
 #

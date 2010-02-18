@@ -1939,8 +1939,10 @@ class TurtleArtWindow():
             self.dead_key = keyname
             keyname = ''
             keyunicode = 0
-        if keyname in WHITE_SPACE:
+        if keyname == 'space':
             keyunicode = 32
+        elif keyname == 'Tab':
+            keyunicode = 9
         if keyname == 'BackSpace':
             if len(oldleft) > 1:
                 newleft = oldleft[:len(oldleft)-1]
@@ -1960,7 +1962,9 @@ class TurtleArtWindow():
         elif keyname == 'End':
             newleft = oldleft+oldright
             oldright = ''
-        elif keyname == 'Return' or keyname == 'Down':
+        elif keyname == 'Return':
+            newleft = oldleft+RETURN
+        elif keyname == 'Down':
             self._unselect_block()
             return
         elif keyname == 'Up' or keyname == 'Escape': # Restore previous state
@@ -1973,12 +1977,15 @@ class TurtleArtWindow():
                     DEAD_DICTS[DEAD_KEYS.index(self.dead_key[5:])][keyname]
                 self.dead_key = ''
             if keyunicode > 0:
-                if unichr(keyunicode) is not '\x00':
+                if unichr(keyunicode) != '\x00':
                     newleft = oldleft+unichr(keyunicode)
                 else:
                     newleft = oldleft
             elif keyunicode == -1: # clipboard text
-                newleft = oldleft+keyname
+                if keyname == '\n':
+                    newleft = oldleft+RETURN
+                else:
+                    newleft = oldleft+keyname
         self.selected_blk.spr.set_label("%s%s%s" % (newleft, CURSOR, oldright))
 
     """
@@ -2074,7 +2081,7 @@ class TurtleArtWindow():
     def _string_check(self):
         s = self.selected_blk.spr.labels[0].replace(CURSOR,'')
         self.selected_blk.spr.set_label(s)
-        self.selected_blk.values[0] = s
+        self.selected_blk.values[0] = s.replace(RETURN,"\12")
 
     """
     Load Python code from a file
@@ -2197,7 +2204,9 @@ class TurtleArtWindow():
                     btype, b[2]+self.canvas.cx, b[3]+self.canvas.cy, 'block',
                     values, self.block_scale)
         # Some blocks get transformed.
-        if btype == 'nop': 
+        if btype == 'string':
+            blk.spr.set_label(blk.values[0].replace('\n', RETURN))
+        elif btype == 'nop': 
             if self.nop == 'pythonloaded':
                 self._block_skin('pythonon', blk)
             else:
