@@ -95,7 +95,7 @@ class TurtleArtWindow():
 
     def _setup_initial_values(self, win, path, lang, parent, mycolors):
         self.window = win
-        self.path = os.path.join(path, 'images')
+        self.path = path
         self.load_save_folder = os.path.join(path, 'samples')
         self.save_folder = None
         self.save_file_name = None
@@ -144,6 +144,7 @@ class TurtleArtWindow():
         self.cartesian = False
         self.polar = False
         self.overlay_shapes = {}
+        self.toolbar_shapes = {}
         self.status_spr = None
         self.status_shapes = {}
         self.toolbar_spr = None
@@ -207,12 +208,12 @@ class TurtleArtWindow():
             else:
                 filename = name
             self.media_shapes[name] = \
-                svg_str_to_pixbuf(svg_from_file("%s/%s.svg" % (
+                svg_str_to_pixbuf(svg_from_file("%s/images/%s.svg" % (
                                                 self.path, filename)))
 
         for i, name in enumerate(STATUS_SHAPES):
             self.status_shapes[name] = svg_str_to_pixbuf(svg_from_file(
-                                               "%s/%s.svg" % (self.path, name)))
+                                        "%s/images/%s.svg" % (self.path, name)))
         self.status_spr = Sprite(self.sprite_list, 0, self.height-200,
                                          self.status_shapes['status'])
         self.status_spr.hide()
@@ -222,9 +223,21 @@ class TurtleArtWindow():
             self.overlay_shapes[name] = Sprite(self.sprite_list,
                 int(self.width/2-600), int(self.height/2-450),
                 svg_str_to_pixbuf(svg_from_file(
-                                              "%s/%s.svg" % (self.path, name))))
+                                       "%s/images/%s.svg" % (self.path, name))))
             self.overlay_shapes[name].hide()
             self.overlay_shapes[name].type = 'overlay'
+
+        if not self.running_sugar:
+            o = self.width-55*len(TOOLBAR_SHAPES)
+            for i, name in enumerate(TOOLBAR_SHAPES):
+                self.toolbar_shapes[name] = Sprite(self.sprite_list, i*55+o, 0,
+                    svg_str_to_pixbuf(svg_from_file(
+                                        "%s/icons/%s.svg" % (self.path, name))))
+                self.toolbar_shapes[name].set_layer(TAB_LAYER)
+                self.toolbar_shapes[name].name = name
+                self.toolbar_shapes[name].type = 'toolbar'
+            self.toolbar_shapes['stopiton'].hide()
+
 
     """
     Is a chattube available for sharing?
@@ -309,7 +322,7 @@ class TurtleArtWindow():
     Hide/show button
     """
     def hideshow_button(self):
-        if self.hide is False: 
+        if not self.hide: 
             for blk in self.just_blocks():
                 blk.spr.hide()
             self.hide_palette() 
@@ -326,7 +339,7 @@ class TurtleArtWindow():
     Hide or show palette 
     """
     def hideshow_palette(self, state):
-        if state is False:
+        if not state:
             self.palette == False
             if self.running_sugar:
                 self.activity.do_hidepalette()
@@ -414,9 +427,9 @@ class TurtleArtWindow():
             svg = SVG()
             x, y = 50, 0
             for i, name in enumerate(PALETTE_NAMES):
-                a = svg_str_to_pixbuf(svg_from_file("%s/%soff.svg" % (
+                a = svg_str_to_pixbuf(svg_from_file("%s/images/%soff.svg" % (
                                                     self.path, name)))
-                b = svg_str_to_pixbuf(svg_from_file("%s/%son.svg" % (
+                b = svg_str_to_pixbuf(svg_from_file("%s/images/%son.svg" % (
                                                     self.path, name)))
                 self.selector_shapes.append([a,b])
                 self.selectors.append(Sprite(self.sprite_list, x, y, a))
@@ -430,10 +443,10 @@ class TurtleArtWindow():
             # Create the palette orientation button
             self.palette_button.append(Sprite(self.sprite_list, 0, ICON_SIZE,
                                       svg_str_to_pixbuf(svg_from_file(
-                                     "%s/palettehorizontal.svg" %(self.path)))))
+                              "%s/images/palettehorizontal.svg" %(self.path)))))
             self.palette_button.append(Sprite(self.sprite_list, 0, ICON_SIZE,
                                       svg_str_to_pixbuf(svg_from_file(
-                                     "%s/palettevertical.svg" % (self.path)))))
+                               "%s/images/palettevertical.svg" % (self.path)))))
             self.palette_button[0].name = 'orientation'
             self.palette_button[1].name = 'orientation'
             self.palette_button[0].type = 'palette'
@@ -451,7 +464,7 @@ class TurtleArtWindow():
                 for i in range(len(PALETTES)):
                     self.palettes.append([]);
 
-        if init_only is True:
+        if init_only:
             return
 
         # Hide the previously displayed palette
@@ -633,7 +646,7 @@ class TurtleArtWindow():
         x, y = self._xy(event)
         self.button_press(event.get_state()&gtk.gdk.CONTROL_MASK, x, y)
         if self._sharing():
-            if event.get_state()&gtk.gdk.CONTROL_MASK is True:
+            if event.get_state()&gtk.gdk.CONTROL_MASK:
                 self.activity._send_event("p:%d:%d:T" % (x, y))
             else:
                 self.activity._send_event("p:%d:%d:F" % (x, y))
@@ -709,6 +722,8 @@ class TurtleArtWindow():
                                1-self.orientation].hide()
                self._layout_palette(self.selected_palette)
                self.show_palette(self.selected_palette)
+            elif spr.type == 'toolbar':
+               self._select_toolbar_button(spr)
             return True
 
     """
@@ -725,6 +740,27 @@ class TurtleArtWindow():
         self.previous_selector = self.selected_selector
         self.selected_selector = spr
         self.show_palette(i)
+
+    """
+    Select a toolbar button (when not running Sugar)
+    """
+    def _select_toolbar_button(self, spr):
+        if spr.name == 'run-fastoff':
+            self.lc.trace = 0
+            self.run_button(0)
+        elif spr.name == 'run-slowoff':
+            self.lc.trace = 0
+            self.run_button(3)
+        elif spr.name == 'debugoff':
+            self.lc.trace = 1
+            self.run_button(6)
+        elif spr.name == 'stopiton':
+            self.stop_button()
+            self.toolbar_shapes['stopiton'].hide()
+        elif spr.name == 'eraseron':
+            self.eraser_button()
+        elif spr.name == 'hideshowoff':
+            self.hideshow_button()
 
     """
     Put a group of blocks into the trash.
@@ -926,7 +962,7 @@ class TurtleArtWindow():
         # Create the blocks (or turtle).
         blocks = []
         for b in data:
-            if self._found_a_turtle(b) is False:
+            if not self._found_a_turtle(b):
                 blk = self.load_block(b)
                 blocks.append(blk)
 
@@ -1603,8 +1639,8 @@ class TurtleArtWindow():
                     best_your_dockn = your_dockn
                     best_my_dockn = my_dockn
         if d<200:
-            if self._arithmetic_check(my_block, best_you, best_my_dockn,
-                                      best_your_dockn) is False:
+            if not self._arithmetic_check(my_block, best_you, best_my_dockn,
+                                          best_your_dockn):
                 return
             for blk in self.drag_group:
                 (sx, sy) = blk.spr.get_xy()
@@ -1839,7 +1875,7 @@ class TurtleArtWindow():
         self.keypress = keyname
 
         # First, process Alt keys.
-        if alt_mask is True and self.selected_blk==None:
+        if alt_mask and self.selected_blk is not None:
             if keyname=="i" and self._sharing():
                 self.activity.waiting_for_blocks = True
                 self.activity._send_event("i") # request sync for sharing
@@ -2122,7 +2158,7 @@ class TurtleArtWindow():
     Load a project from a file
     """
     def load_files(self, ta_file, create_new_project=True):
-        if create_new_project is True:
+        if create_new_project:
             self.new_project()
         top = self.process_data(data_from_file(ta_file))
         self._check_collapsibles(top)
@@ -2135,7 +2171,7 @@ class TurtleArtWindow():
         if fname[-3:] == '.ta':
             fname=fname[0:-3]
         self.load_files(fname+'.ta', create_new_project)
-        if create_new_project is True:
+        if create_new_project:
             self.save_file_name = os.path.basename(fname)
 
     """
@@ -2266,7 +2302,7 @@ class TurtleArtWindow():
             blk.resize()
 
         blk.spr.set_layer(BLOCK_LAYER)
-        if check_dock is True:
+        if check_dock:
             blk.connections = 'check'
         return blk
     
@@ -2301,7 +2337,7 @@ class TurtleArtWindow():
         data = []
         blks = []
 
-        if save_project is True:
+        if save_project:
             blks = self.just_blocks()
         else:
             blks = self._find_group(self.find_top_block(self.selected_blk))
@@ -2330,12 +2366,12 @@ class TurtleArtWindow():
                 connections = None
             (sx, sy) = b.spr.get_xy()
             # Add a slight offset for copy/paste
-            if save_project is False:
+            if not save_project:
                 sx+=20
                 sy+=20
             data.append((b.id, name, sx-self.canvas.cx, sy-self.canvas.cy,
                          connections))
-        if save_turtle is True:
+        if save_turtle:
             for k in iter(self.turtles.dict):
                 self.canvas.set_turtle(k)
                 data.append((-1,['turtle', k],
@@ -2379,7 +2415,7 @@ class TurtleArtWindow():
         self.status_spr.set_label(str(label))
         self.status_spr.set_layer(STATUS_LAYER)
         if shp == 'info':
-            self.status_spr.move((PALETTE_WIDTH, self.height-300))
+            self.status_spr.move((PALETTE_WIDTH, self.height-400))
         else:
             self.status_spr.move((PALETTE_WIDTH, self.height-200))
 

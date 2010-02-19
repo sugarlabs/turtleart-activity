@@ -551,6 +551,12 @@ STATUS_SHAPES = ['status', 'info', 'nostack', 'noinput', 'emptyheap',
                  'emptybox', 'nomedia', 'nocode', 'overflowerror', 'negroot',
                  'syntaxerror', 'nofile', 'nojournal', 'zerodivide']
 
+# 
+# Emulate Sugar toolbar when running from outside of Sugar
+#
+TOOLBAR_SHAPES = ['hideshowoff', 'eraseron', 'run-fastoff',
+                  'run-slowoff', 'debugoff', 'stopiton']
+
 #
 # Legacy names
 #

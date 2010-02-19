@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.0"
-   width="767"
-   height="160"
+   width="277"
+   height="360"
    id="svg2">
   <defs
      id="defs27" />
   <path
-     d="M 15.507829,158.97219 C 12.012652,158.97219 8.517475,147.01146 6.0209201,136.43294 C 3.5243653,125.85441 1.0278107,111.04448 1.0278107,96.234539 L 1.0278107,62.383259 C 1.0278107,48.631174 3.5243653,26.41627 6.0209201,17.953449 C 8.517475,9.4906294 12.012652,1.0278084 15.507829,1.0278084 L 750.99286,1.0278084 C 753.48942,1.0278084 757.98321,5.2592194 761.4784,17.953449 C 764.97356,29.589828 765.97219,49.689027 765.97219,62.383259 L 765.97219,96.234539 C 765.97219,111.04448 763.97494,125.85441 761.4784,136.43294 C 758.98184,147.01146 754.98736,158.97219 750.99286,158.97219 L 15.507829,158.97219 z"
+     d="m 15.507831,358.97219 c -3.49518,0 -6.9903604,-11.96073 -9.4869104,-22.53925 -2.49655,-10.57853 -4.99311,-25.38846 -4.99311,-40.1984 l 0,-233.851279 c 0,-13.752085 2.49656,-35.966989 4.99311,-44.42981 C 8.5174706,9.4906316 12.012651,1.0278106 15.507831,1.0278106 l 245.485029,0 c 2.49656,0 6.99035,4.231411 10.48554,16.9256404 3.49516,11.636379 4.49379,31.735578 4.49379,44.42981 l 0,233.851279 c 0,14.80994 -1.99725,29.61987 -4.49379,40.1984 -2.49656,10.57852 -6.49104,22.53925 -10.48554,22.53925 l -245.485029,0 z"
      id="path4"
      style="fill:#ffd000;fill-opacity:1;fill-rule:evenodd;stroke:#e0a000;stroke-width:2.05562115px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
   <g
-     transform="translate(648,66.625)"
+     transform="translate(158,66.625002)"
      id="g6">
     <path
-       d="M 79.5,438.5 C 79.5,443 75.75,446.5 71,446.5 C 66.5,446.5 62.75,443 62.75,438.5 C 62.75,434 66.5,430.25 71,430.25 C 75.75,430.25 79.5,434 79.5,438.5 L 79.5,438.5 z"
+       d="m 79.5,438.5 c 0,4.5 -3.75,8 -8.5,8 -4.5,0 -8.25,-3.5 -8.25,-8 0,-4.5 3.75,-8.25 8.25,-8.25 4.75,0 8.5,3.75 8.5,8.25 l 0,0 z"
        transform="translate(24,-485)"
        id="path8"
-       style="fill:#ff4040;fill-opacity:1;fill-rule:nonzero;stroke:#ff4040;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="fill:#ff4040;fill-opacity:1;fill-rule:nonzero;stroke:#ff4040;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     <text
        id="text10"
        style="font-size:12px;font-weight:bold;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans">
@@ -31,34 +32,4 @@
          style="font-size:12px">X</tspan>
     </text>
   </g>
-  <g
-     transform="translate(5.5,1)"
-     id="g14">
-    <path
-       d="M 44,15 L 10.5,15 L 27.5,-14 L 44,15 z"
-       transform="translate(-4,20)"
-       id="path16"
-       style="opacity:1;fill:#404040;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       d="M 44,15 L 10.5,15 L 27.5,-14 L 44,15 z"
-       transform="translate(1,17)"
-       id="path18"
-       style="opacity:1;fill:#e0e0e0;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       d="M 44,15 L 10.5,15 L 27.5,-14 L 44,15 z"
-       transform="translate(-1,18)"
-       id="path20"
-       style="opacity:1;fill:#ffe000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  </g>
-  <text
-     x="5.5"
-     y="1"
-     id="text22"
-     style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans">
-    <tspan
-       x="26.5"
-       y="30"
-       id="tspan24"
-       style="font-size:24px">!</tspan>
-  </text>
 </svg>

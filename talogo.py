@@ -35,7 +35,7 @@ try:
 except:
     pass
 
-from taconstants import PALETTES, PALETTE_NAMES, BOX_STYLE
+from taconstants import PALETTES, PALETTE_NAMES, BOX_STYLE, TAB_LAYER
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, movie_media_type,\
@@ -566,11 +566,15 @@ class LogoCode:
     def start_eval(self, list):
         if self.tw.running_sugar:
             self.tw.activity.stop_button.set_icon("stopiton")
+        else:
+            self.tw.toolbar_shapes['stopiton'].set_layer(TAB_LAYER)
         self.running = True
         self.icall(self.evline, list)
         yield True
         if self.tw.running_sugar:
             self.tw.activity.stop_button.set_icon("stopitoff")
+        else:
+            self.tw.toolbar_shapes['stopiton'].hide()
         yield False
         self.running = False
 
