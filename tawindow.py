@@ -1153,7 +1153,8 @@ class TurtleArtWindow():
                     except:
                         self.timeout_tag[0] = 0
         elif spr and hasattr(spr,'type') and (spr.type == 'selector' or\
-                                              spr.type == 'palette'):
+                                              spr.type == 'palette' or\
+                                              spr.type == 'toolbar'):
             if self.timeout_tag[0] == 0:
                 self.timeout_tag[0] = self._do_show_popup(spr.name)
                 self.selected_spr = spr
@@ -1180,10 +1181,15 @@ class TurtleArtWindow():
             block_name_s = SPECIAL_NAMES[block_name]
         elif BLOCK_NAMES.has_key(block_name):
             block_name_s = BLOCK_NAMES[block_name][0]
+        elif block_name in TOOLBAR_SHAPES:
+            block_name_s = ''
         else:
             block_name_s = _(block_name)
         if HELP_STRINGS.has_key(block_name):
-            label = block_name_s + ": " + HELP_STRINGS[block_name]
+            if block_name_s == '':
+                label = HELP_STRINGS[block_name]
+            else:
+                label = block_name_s + ": " + HELP_STRINGS[block_name]
         else:
             label = block_name_s
         if self.running_sugar:

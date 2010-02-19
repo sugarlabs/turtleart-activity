@@ -635,9 +635,11 @@ HELP_STRINGS = {
     'color':_("holds current pen color (can be used in place of a number block)"),
     'colors':_("a palette of pen colors"),
     'comment':_("places a comment in your code"),
+    'debugoff':_("Debug"),
     'description':_("Sugar Journal description field"),
     'division2':_("divides top numeric input (numerator) by bottom numeric input (denominator)"),
     'empty':_("permanently deletes items in trash"),
+    'eraseron':_("Clean"),
     'equal2':_("logical equal-to operator"),
     'extras':_("palette of extra options"),
     'fillscreen':_("fills the background with (color, shade)"),
@@ -650,8 +652,9 @@ HELP_STRINGS = {
     'hat2':_("top of Action 2 stack"),
     'hat':_("top of nameable action stack"),
     'heading':_("holds current heading value of the turtle (can be used in place of a number block)"),
-    'hideblocks':_("declutters canvas by hiding blocks"),
     'height':_("the canvas height"),
+    'hideblocks':_("declutters canvas by hiding blocks"),
+    'hideshowoff':_("Hide blocks"),
     'hspace':_("jogs stack right"),
     'identity2':_("identity operator used for extending blocks"),
     'ifelse':_("if-then-else operator that uses boolean operators from Numbers palette"),
@@ -695,6 +698,8 @@ HELP_STRINGS = {
     'restoreall':_("restore all blocks from trash"),
     'rightpos':_("xcor of right of screen"),
     'right':_("turns turtle clockwise (angle in degrees)"),
+    'run-fastoff':_("Run"),
+    'run-slowoff':_("Step"),
     'savepix':_("saves a picture to the Sugar Journal"),
     'scale':_("holds current scale value"),
     'setcolor':_("sets color of the line drawn by the turtle"),
@@ -713,6 +718,7 @@ HELP_STRINGS = {
     'stack2':_("invokes Action 2 stack"),
     'stack':_("invokes named action stack"),
     'start':_("connects action to toolbar run buttons"),
+    'stopiton':_("Stop turtle"),
     'stopstack':_("stops current action"),
     'storeinbox1':_("stores numeric value in Variable 1"),
     'storeinbox2':_("stores numeric value in Variable 2"),
@@ -736,7 +742,6 @@ HELP_STRINGS = {
     'width':_("the canvas width"),
     'xcor':_("holds current x-coordinate value of the turtle (can be used in place of a number block)"),
     'ycor':_("holds current y-coordinate value of the turtle (can be used in place of a number block)")}
-
 
 #
 # 'dead key' Unicode dictionaries
