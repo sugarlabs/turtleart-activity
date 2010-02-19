@@ -534,15 +534,15 @@ class TurtleArtWindow():
         for b in blocks:
             _w, _h = self._width_and_height(b)
             if y+_h > PALETTE_HEIGHT+ICON_SIZE:
-                x += int(_max_w+5)
-                y = ICON_SIZE+5
+                x += int(_max_w+3)
+                y = ICON_SIZE+3
                 _max_w = 0
             (_bx, _by) = b.spr.get_xy()
             _dx = x-_bx
             _dy = y-_by
             for g in self._find_group(b):
                 g.spr.move_relative((int(_dx), int(_dy)))
-            y += int(_h+5)
+            y += int(_h+3)
             if _w > _max_w:
                 _max_w = _w
         return x, y, _max_w
@@ -564,17 +564,17 @@ class TurtleArtWindow():
                        _g.spr.move_relative((_dx, 0))
                 _row = []
                 _row_w = 0
-                x = 5
-                y += int(_max_h+5)
+                x = 4
+                y += int(_max_h+3)
                 _max_h = 0
             _row.append(_b)
-            _row_w += (5+_w)
+            _row_w += (4+_w)
             (_bx, _by) = _b.spr.get_xy()
             _dx = int(x-_bx)
             _dy = int(y-_by)
             for _g in self._find_group(_b):
                 _g.spr.move_relative((_dx, _dy))
-            x += int(_w+5)
+            x += int(_w+4)
             if _h > _max_h:
                 _max_h = _h
         # Recenter last row.
