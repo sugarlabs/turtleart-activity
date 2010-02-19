@@ -747,10 +747,9 @@ class LogoCode:
                      int(self.tw.canvas.shade), _('pen size'),
                      self.tw.canvas.pensize)
             else:
-                my_string = "%s\n%s:\n" % (token.name, _('box'))
+                my_string = "%s\n" % (token.name)
                 for k, v in self.boxes.iteritems():
-                    tmp = k +":" + str(v) + "\n"
-                    my_string += tmp
+                    my_string += "%s: %s\n" % (k, str(v))
             self.tw.showlabel('info',my_string)
         return
     
