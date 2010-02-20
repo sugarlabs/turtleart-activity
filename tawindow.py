@@ -944,7 +944,7 @@ class TurtleArtWindow():
         self.block_operation = 'new' 
 
     """
-    Create a "macro" (predefined stack of blocks)
+    Create a "macro" (predefined stack of blocks).
     """
     def _new_macro(self, name, x, y):
         macro = MACROS[name]
@@ -2458,8 +2458,8 @@ class TurtleArtWindow():
         if self.running_sugar:
             dsobject = datastore.create()
             if len(name) == 0:
-                dsobject.metadata['title'] = "%s %s" % (self.metadata['title'],
-                                                        _("image"))
+                dsobject.metadata['title'] = "%s %s" % (
+                                    self.activity.metadata['title'], _("image"))
             else:
                 dsobject.metadata['title'] = name
             dsobject.metadata['icon-color'] = profile.get_color().to_string()

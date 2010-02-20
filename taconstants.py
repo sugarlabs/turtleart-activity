@@ -162,7 +162,7 @@ BASIC_STYLE_HEAD_1ARG = ['hat']
 BASIC_STYLE_TAIL = ['stopstack', 'empty']
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
     'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput',
-    'fullscreen', 'sandwichcollapsed', 'while', 'until']
+    'fullscreen', 'sandwichcollapsed']
 BASIC_STYLE_EXTENDED = ['picturelist', 'picture1x1', 'picture2x2',
     'picture2x1', 'picture1x2', 'picture1x1a']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
@@ -188,7 +188,7 @@ NOT_STYLE = ['not']
 FLOW_STYLE = ['forever']
 FLOW_STYLE_TAIL = ['hspace']
 FLOW_STYLE_1ARG = ['repeat']
-FLOW_STYLE_BOOLEAN = ['if']
+FLOW_STYLE_BOOLEAN = ['if', 'while', 'until']
 FLOW_STYLE_ELSE = ['ifelse']
 COLLAPSIBLE_TOP = ['sandwichtop']
 COLLAPSIBLE_BOTTOM = ['sandwichbottom']

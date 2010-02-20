@@ -1,81 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-<svg
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   version="1.0"
-   width="55"
-   height="55"
-   viewBox="0 0 55 55"
-   id="svg2"
-   xml:space="preserve"><defs
-   id="defs29" />
-<g
-   transform="translate(-0.25,-1.75)"
-   id="g4">
-  <line
-   style="fill:none;stroke:#ffffff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-   y2="5"
-   y1="16"
-   x2="52.5"
-   x1="41"
-   id="line6" />
-  <polyline
-   style="fill:none;stroke:#ffffff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-   points="51.5,15.5 41,16 42,5.75"
-   id="polyline8" />
-</g>
-   <polygon
-   points="10.932,6.088 31.874,6.088 43.818,18.027 43.818,48.914 10.932,48.914 10.932,6.088 "
-   transform="translate(-5.182,3.336)"
-   id="polygon10"
-   style="fill:none;stroke:#ffffff;stroke-width:3.5" />
-   <polyline
-   points="43.818,18.027 31.874,18.027 31.874,6.088    "
-   id="polyline12"
-   transform="translate(-5.182,3.336)"
-   style="fill:none;stroke:#ffffff;stroke-width:3.5" />
-   
-   
-   
-   
-   
-   
-   <circle
-   cx="27.375"
-   cy="33.5"
-   r="9.9510002"
-   transform="translate(-5.1815003,1.7989998)"
-   id="circle14"
-   style="fill:#ffffff;fill-opacity:1" /><path
-   d="M 22.1945,25.348 C 22.1945,25.348 16.5915,29.545 16.5915,35.336 C 16.5915,41.127 22.1945,45.25 22.1945,45.25"
-   id="path16"
-   style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.5" /><path
-   d="M 22.1945,25.348 C 22.1945,25.348 27.7265,29.918 27.7265,35.336 C 27.7265,40.755 22.1945,45.25 22.1945,45.25"
-   id="path18"
-   style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.5" /><line
-   style="fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:1.5"
-   x1="22.1945"
-   x2="22.1945"
-   y1="25.348"
-   y2="45.25"
-   id="line20" /><line
-   style="fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:1.5"
-   x1="22.1945"
-   x2="22.1945"
-   y1="25.348"
-   y2="45.25"
-   id="line22" /><line
-   style="fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:1.5"
-   x1="22.1945"
-   x2="22.1945"
-   y1="25.348"
-   y2="45.25"
-   id="line24" /><line
-   style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.5;stroke-opacity:1"
-   x1="12.2415"
-   x2="32.144501"
-   y1="35.299"
-   y2="35.299"
-   id="line26" />
-</svg>
+<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd' [
+	<!ENTITY stroke_color "#010101">
+	<!ENTITY fill_color "#666666">
+]><svg enable-background="new 0 0 58.5 55" height="55px" version="1.1" viewBox="0 0 58.5 55" width="58.5px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><g display="block" id="transfer-from-url">
+	<g>
+		<polygon fill="&fill_color;" points="50.056,32.715 50.056,2 8.433,2     8.433,32.715 1.75,34.542 29.252,52.581 56.75,34.543   " stroke="&stroke_color;" stroke-linejoin="round" stroke-width="3.5"/>
+	</g>
+	<g>
+		<g>
+			<polygon fill="#ffffff" points="18.435,10.583 32.046,10.583 39.811,18.343 39.811,38.42      18.435,38.42    " stroke="&fill_color;" stroke-width="2.275"/>
+			<polyline fill="none" points="39.811,18.343 32.046,18.343 32.046,10.583    " stroke="&fill_color;" stroke-width="2.275"/>
+		</g>
+	</g>
+	<g>
+		<circle cx="29.123" cy="28.4" fill="&fill_color;" r="6.469"/>
+		<g>
+			<path d="M29.124,21.932c0,0,3.596,2.971,3.596,6.492     c0,3.523-3.596,6.445-3.596,6.445" fill="none" stroke="#ffffff" stroke-width="0.975"/>
+			<path d="M29.124,21.932c0,0-3.642,2.728-3.642,6.492     c0,3.765,3.642,6.445,3.642,6.445" fill="none" stroke="#ffffff" stroke-width="0.975"/>
+			<line fill="none" stroke="#ffffff" stroke-width="0.975" x1="29.124" x2="29.124" y1="21.932" y2="34.869"/>
+			<line fill="none" stroke="#ffffff" stroke-width="0.975" x1="22.654" x2="35.591" y1="28.4" y2="28.4"/>
+		</g>
+	</g>
+</g></svg>

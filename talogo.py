@@ -456,7 +456,7 @@ class LogoCode:
                     self.stacks['stack3'+str(x)] = self.readline(code)
 
         code = self.blocks_to_code(blk)
-        if run_flag is True:
+        if run_flag:
             print "running code: %s" % (code)
             self.setup_cmd(code)
         else:
@@ -464,7 +464,6 @@ class LogoCode:
 
     """
     Convert a stack of blocks to pseudocode.
-    Maintains a parallel datastructure for backpointers to blocks.
     """
     def blocks_to_code(self, blk):
         if blk is None:
@@ -650,6 +649,7 @@ class LogoCode:
         # Either we are processing a symbol or a value.
         if type(token) == self.symtype:
             # We highlight blocks here in case an error occurs...
+            # print "> ", token
             if not self.tw.hide and bindex is not None:
                 self.tw.block_list.list[bindex].highlight()
             self.icall(self.evalsym, token)
@@ -659,6 +659,7 @@ class LogoCode:
                 self.tw.block_list.list[bindex].unhighlight()
             res = self.iresult
         else:
+            # print ": ", token
             res = token
 
         self.ireturn(res)
@@ -701,6 +702,7 @@ class LogoCode:
         yield True
 
     def ufuncall(self, body):
+        print "ufuncall: ", self.evline, body
         ijmp(self.evline, body)
         yield True
     
@@ -724,9 +726,11 @@ class LogoCode:
 
     def ireturn(self, res=None):
         self.step = self.istack.pop()
+        # print "ireturn: ", self.step
         self.iresult = res
 
     def ijmp(self, fcn, *args):
+        # print "ijmp: ", fcn, args
         self.step = fcn(*(args))
 
     def debug_trace(self, token):
@@ -1018,13 +1022,13 @@ class LogoCode:
             elif string[0:6] == 'audio_':
                 self.play_sound(string)
             else:
-                if center is True:
+                if center:
                     y -= self.tw.textsize
                 self.tw.canvas.draw_text(string,x,y,self.tw.textsize,
                           self.tw.canvas.width-x)
         elif type(string) == float or type(string) == int:
             string = round_int(string)
-            if center is True:
+            if center:
                 y -= self.tw.textsize
             self.tw.canvas.draw_text(string, x, y, self.tw.textsize,
                                      self.tw.canvas.width-x)
@@ -1113,7 +1117,7 @@ class LogoCode:
         # convert from Turtle coordinates to screen coordinates
         x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
         y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
-        if center is True:
+        if center:
             x -= w/2
             y -= h/2
         if media[0:5] == 'media':
