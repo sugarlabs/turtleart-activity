@@ -1155,7 +1155,7 @@ class TurtleArtWindow():
         elif spr and hasattr(spr,'type') and (spr.type == 'selector' or\
                                               spr.type == 'palette' or\
                                               spr.type == 'toolbar'):
-            if self.timeout_tag[0] == 0:
+            if self.timeout_tag[0] == 0 and hasattr(spr, 'name'):
                 self.timeout_tag[0] = self._do_show_popup(spr.name)
                 self.selected_spr = spr
             else:

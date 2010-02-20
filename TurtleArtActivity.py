@@ -619,10 +619,6 @@ class TurtleArtActivity(activity.Activity):
             self.keep_button.connect('clicked', self._do_keep_cb)
             self.keep_button.show()
             activity_button.props.page.insert(self.keep_button, -1)
-            separator = gtk.SeparatorToolItem()
-            separator.props.draw = True
-            activity_button.props.page.insert(separator, -1)
-            separator.show()
 
             # Save as HTML
             self.save_as_html = ToolButton('htmloff')
@@ -1470,5 +1466,6 @@ class ProjectToolbar(gtk.Toolbar):
             pass
         self.insert(self.activity.samples_button, -1)
         self.activity.samples_button.show()
+
 
 
