@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-21 13:33+0000\n"
+"POT-Creation-Date: 2010-02-21 23:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,46 +17,56 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: activity/activity.info:2
-#: /home/walter/Desktop/ta-refactoring/tawindow.py:1229
-#: /home/walter/Desktop/ta-refactoring/tawindow.py:2432
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:1290
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2494
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:76
 #: /home/walter/Desktop/ta-refactoring/taexporthtml.py:286
 msgid "Turtle Art"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/tawindow.py:1483
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:507
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:508
+msgid "orientation"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:518
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:786
+msgid "next"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:1544
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:315
 msgid "click to open"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/tawindow.py:2429
-#: /home/walter/Desktop/ta-refactoring/tawindow.py:2433
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2491
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2495
 #: /home/walter/Desktop/ta-refactoring/talogo.py:742
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:687
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1142
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:709
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1200
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:356
 msgid "xcor"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/tawindow.py:2429
-#: /home/walter/Desktop/ta-refactoring/tawindow.py:2433
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2491
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2495
 #: /home/walter/Desktop/ta-refactoring/talogo.py:743
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:687
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1142
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:709
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1200
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:357
 msgid "ycor"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/tawindow.py:2429
-#: /home/walter/Desktop/ta-refactoring/tawindow.py:2433
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2491
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2495
 #: /home/walter/Desktop/ta-refactoring/talogo.py:743
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:688
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1143
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:710
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1201
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:263
 msgid "heading"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/tawindow.py:2492
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2554
 msgid "image"
 msgstr ""
 
@@ -108,234 +118,235 @@ msgstr ""
 msgid "as input"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:135
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:136
 msgid "presentation"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:188
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:849
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:189
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:894
 msgid "Project"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:273
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:274
 msgid "snapshot"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:291
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:301
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:319
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:328
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:292
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:317
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:334
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:343
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:142
 msgid "Show palette"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:295
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:306
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:322
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:334
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:731
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1327
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:299
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:312
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:321
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:337
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:349
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:773
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1385
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:146
 msgid "Hide palette"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:312
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:326
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:327
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:341
 msgid "Show blocks"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:315
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:332
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:740
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1340
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:330
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:347
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:677
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1151
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:662
 msgid "Hide blocks"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:417
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:430
 msgid "Rescale coordinates down"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:425
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:710
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1171
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:438
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:725
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1229
 msgid "Rescale coordinates up"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:607
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1430
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:620
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1475
 msgid "Save snapshot"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:614
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1265
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:627
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1323
 msgid "Save as HTML"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:621
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:634
 msgid "Save as Logo"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:628
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1283
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:641
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1341
 msgid "Save as image"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:635
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1297
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:648
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1355
 msgid "Load my block"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:643
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1307
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:656
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1365
 msgid "Import project from the Journal"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:663
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1106
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:680
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1156
+msgid "<Ctrl>b"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:685
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1164
 msgid "Fullscreen"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:670
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1119
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:692
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1177
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:96
 msgid "Cartesian coordinates"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:676
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1128
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:698
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1186
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:100
 msgid "Polar coordinates"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:716
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1157
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:731
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1215
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:108
 msgid "Grow blocks"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:723
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1164
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:738
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1222
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:112
 msgid "Shrink blocks"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:734
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1332
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:776
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1390
 msgid "<Ctrl>p"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:743
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1345
-msgid "<Ctrl>b"
-msgstr ""
-
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:749
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1412
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:794
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1457
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:161
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:647
 msgid "Clean"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:752
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1417
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:797
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1462
 msgid "<Ctrl>e"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:758
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1358
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:803
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1403
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:165
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:707
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:708
 msgid "Run"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:761
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1362
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:806
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1407
 msgid "<Ctrl>r"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:767
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1370
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:812
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1415
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:169
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:708
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:709
 msgid "Step"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:770
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1374
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:815
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1419
 msgid "<Ctrl>w"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:776
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1382
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:821
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1427
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:173
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:643
 msgid "Debug"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:779
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:824
 msgid "<Alt>d"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:785
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1395
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:727
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:830
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1440
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:728
 msgid "Stop turtle"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:788
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1399
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:833
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1444
 msgid "<Ctrl>s"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:800
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1448
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:845
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1493
 msgid "Samples"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:811
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1246
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:856
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1304
 msgid "Move the cursor over the orange palette for help."
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:820
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:857
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:865
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:902
 msgid "Help"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:851
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:896
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:121
 msgid "View"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:853
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:898
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:136
 msgid "Edit"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:855
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:900
 msgid "Import/Export"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1187
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1245
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:127
 msgid "Copy"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1199
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1257
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:131
 msgid "Paste"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1274
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1332
 msgid "Save Logo"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1387
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1432
 msgid "<Ctrl>d"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1453
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1498
 msgid "<Ctrl>o"
 msgstr ""
 
@@ -761,12 +772,12 @@ msgstr ""
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:525
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:526
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:527
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:814
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:829
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:845
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:876
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:907
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:938
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:815
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:830
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:846
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:877
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:908
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:939
 msgid "Title"
 msgstr ""
 
@@ -880,7 +891,7 @@ msgid "moves turtle backward"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:632
-msgid "palette of variable blocks"
+msgid "Palette of variable blocks"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:633
@@ -916,7 +927,7 @@ msgid "holds current pen color (can be used in place of a number block)"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:641
-msgid "a palette of pen colors"
+msgid "Palette of pen colors"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:642
@@ -941,7 +952,7 @@ msgid "logical equal-to operator"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:649
-msgid "palette of extra options"
+msgid "Palette of extra options"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:650
@@ -949,7 +960,7 @@ msgid "fills the background with (color, shade)"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:651
-msgid "palette of flow operators"
+msgid "Palette of flow operators"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:652
@@ -1044,297 +1055,301 @@ msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:676
-msgid "runs code found in the tamyblock.py module found in the Journal"
+msgid "displays next palette"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:677
-msgid "logical NOT operator"
+msgid "runs code found in the tamyblock.py module found in the Journal"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:678
-msgid "palette of numeric operators"
+msgid "logical NOT operator"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:679
-msgid "used as numeric input in mathematic operators"
+msgid "Palette of numeric operators"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:680
-msgid "logical OR operator"
+msgid "used as numeric input in mathematic operators"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:681
-msgid "changes the orientation of the palette of blocks"
+msgid "logical OR operator"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:682
-msgid "Turtle will draw when moved."
+msgid "changes the orientation of the palette of blocks"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:683
-msgid "palette of pen commands"
+msgid "Turtle will draw when moved."
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:684
-msgid "holds current pen size (can be used in place of a number block)"
+msgid "Palette of pen commands"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:685
-msgid "Turtle will not draw when moved."
+msgid "holds current pen size (can be used in place of a number block)"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:686
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:733
-msgid "presentation template: select Journal object (with description)"
+msgid "Turtle will not draw when moved."
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:687
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:734
-msgid "presentation template: select Journal object (no description)"
+msgid "presentation template: select Journal object (with description)"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:688
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:689
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:735
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:736
-msgid "presentation template: select two Journal objects"
+msgid "presentation template: select Journal object (no description)"
 msgstr ""
 
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:689
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:690
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:736
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:737
-msgid "presentation template: select four Journal objects"
+msgid "presentation template: select two Journal objects"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:691
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:738
-msgid "presentation template: list of bullets"
+msgid "presentation template: select four Journal objects"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:692
-msgid "adds two alphanumeric inputs"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:739
+msgid "presentation template: list of bullets"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:693
-msgid "displays polar coordinates"
+msgid "adds two alphanumeric inputs"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:694
-msgid "pops value off FILO (first-in last-out heap)"
+msgid "displays polar coordinates"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:695
-msgid "palette of presentation templates"
+msgid "pops value off FILO (first-in last-out heap)"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:696
-msgid "prints value in status block at bottom of the screen"
+msgid "Palette of presentation templates"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:697
-msgid "shows values in FILO (first-in last-out heap)"
+msgid "prints value in status block at bottom of the screen"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:698
-msgid "multiplies two numeric inputs"
+msgid "shows values in FILO (first-in last-out heap)"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:699
-msgid "pushes value onto FILO (first-in last-out heap)"
+msgid "multiplies two numeric inputs"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:700
-msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgid "pushes value onto FILO (first-in last-out heap)"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:701
-msgid "modular (remainder) operator"
+msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:702
-msgid "loops specified number of times"
+msgid "modular (remainder) operator"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:703
-msgid "restores most recent blocks from trash"
+msgid "loops specified number of times"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:704
-msgid "restore all blocks from trash"
+msgid "restores most recent blocks from trash"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:705
-msgid "xcor of right of screen"
+msgid "restore all blocks from trash"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:706
+msgid "xcor of right of screen"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:707
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:709
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:710
 msgid "saves a picture to the Sugar Journal"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:710
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:711
 msgid "holds current scale value"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:711
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:712
 msgid "sets color of the line drawn by the turtle"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:712
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:713
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:713
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:714
 msgid "sets size of the line drawn by the turtle"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:714
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:715
 msgid "sets the scale of media"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:715
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:716
 msgid "sets shade of the line drawn by the turtle"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:716
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:717
 msgid "sets color of text drawn by the turtle"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:717
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:718
 msgid "sets size of text drawn by turtle"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:718
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:719
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:719
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:720
 msgid "holds current pen shade"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:720
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:721
 msgid "draws text or show media from the Journal"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:721
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:722
 msgid "restores hidden blocks"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:722
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:723
 msgid "calculates square root"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:723
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:724
 msgid "invokes Action 1 stack"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:724
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:725
 msgid "invokes Action 2 stack"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:725
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:726
 msgid "invokes named action stack"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:726
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:727
 msgid "connects action to toolbar run buttons"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:728
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:729
 msgid "stops current action"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:729
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:730
 msgid "stores numeric value in Variable 1"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:730
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:731
 msgid "stores numeric value in Variable 2"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:731
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:732
 msgid "stores numeric value in named variable"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:732
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:733
 msgid "string value"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:739
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:740
 msgid "holds current text color (can be used in place of a number block)"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:740
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:741
 msgid "holds current text size (can be used in place of a number block)"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:741
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:742
 msgid "ycor of top of screen"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:742
-msgid "a place to throw away blocks"
-msgstr ""
-
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:743
-msgid "palette of turtle commands"
+msgid "Trashcan"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:744
-msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgid "Palette of turtle commands"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:745
-msgid "jogs stack down"
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:746
-msgid "pauses program execution a specified number of seconds"
+msgid "jogs stack down"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:747
-msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgid "pauses program execution a specified number of seconds"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:748
-msgid "the canvas width"
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:749
+msgid "the canvas width"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:750
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:750
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:751
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:809
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:810
 msgid "bulleted list"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:824
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:825
 msgid "picture"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:840
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:841
 msgid "2×2 pictures"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:871
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:872
 msgid "2×1 pictures"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:902
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:903
 msgid "1×2 pictures"
 msgstr ""
 
-#: /home/walter/Desktop/ta-refactoring/taconstants.py:933
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:934
 msgid "1×1 picture"
 msgstr ""

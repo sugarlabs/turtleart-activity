@@ -673,6 +673,7 @@ HELP_STRINGS = {
     'minus2':_("subtracts bottom numeric input from top numeric input"),
     'myfunc':_("a programmable block: used to add advanced math equations, e.g., sin(x)"),
     'myfunc2':_("a programmable block: used to add advanced math equations, e.g., sin(x)"),
+    'next':_('displays next palette'),
     'nop':_("runs code found in the tamyblock.py module found in the Journal"),
     'not':_("logical NOT operator"),
     'numbers':_("Palette of numeric operators"),

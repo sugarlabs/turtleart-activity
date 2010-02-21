@@ -929,12 +929,11 @@ def generator(datapath):
     """
 
     svg0 = SVG()
-    f = open_file(datapath, "flow_test2.svg")
+    f = open_file(datapath, "basic.svg")
     svg0.set_scale(2)
-    svg0.expand(10,0)
-    svg0.set_tab(False)
+    svg0.set_tab(True)
     svg0.set_slot(True)
-    svg_str = svg0.basic_flow()
+    svg_str = svg0.basic_block()
     f.write(svg_str)
     close_file(f)
 

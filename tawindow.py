@@ -504,8 +504,8 @@ class TurtleArtWindow():
             self.palette_button.append(Sprite(self.sprite_list, 0,
                            self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
                                "%s/images/palettevertical.svg" % (self.path)))))
-            self.palette_button[0].name = 'orientation'
-            self.palette_button[1].name = 'orientation'
+            self.palette_button[0].name = _('orientation')
+            self.palette_button[1].name = _('orientation')
             self.palette_button[0].type = 'palette'
             self.palette_button[1].type = 'palette'
             self.palette_button[self.orientation].set_layer(TAB_LAYER)
@@ -515,7 +515,7 @@ class TurtleArtWindow():
             self.palette_button.append(Sprite(self.sprite_list, 16,
                            self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
                               "%s/images/palettenext.svg" %(self.path)))))
-            self.palette_button[2].name = 'next'
+            self.palette_button[2].name = _('next')
             self.palette_button[2].type = 'palette'
             self.palette_button[2].set_layer(TAB_LAYER)
 
@@ -783,7 +783,7 @@ class TurtleArtWindow():
                 if self._hide_button_hit(spr, x, y):
                     self.hideshow_palette(False)
             elif spr.type == 'palette':
-               if spr.name == 'next':
+               if spr.name == _('next'):
                    i = self.selected_palette+1
                    if i == len(PALETTE_NAMES):
                        i = 0
@@ -826,7 +826,7 @@ class TurtleArtWindow():
         self.show_palette(i)
 
     """
-    Select a toolbar button (when not running Sugar)
+    Select a toolbar button (Used when not running Sugar).
     """
     def _select_toolbar_button(self, spr):
         if spr.name == 'run-fastoff':
@@ -879,7 +879,7 @@ class TurtleArtWindow():
         self.show_palette(PALETTE_NAMES.index('trash'))
 
     """
-    Restore all the blocks in the trash can
+    Restore all the blocks in the trash can.
     """
     def _restore_all_from_trash(self):
         for b in self.block_list.list:
@@ -887,7 +887,7 @@ class TurtleArtWindow():
                 self._restore_from_trash(b)
 
     """
-    Restore latest blocks from the trash can
+    Restore most recent blocks from the trash can.
     """
     def _restore_latest_from_trash(self):
         if len(self.trash_stack) == 0:
@@ -920,7 +920,7 @@ class TurtleArtWindow():
         self.trash_stack.remove(blk)
 
     """
-    Permanently remove blocks in the trash can
+    Permanently remove all blocks presently in the trash can.
     """
     def _empty_trash(self):
         for b in self.block_list.list:
@@ -933,8 +933,13 @@ class TurtleArtWindow():
     Is x,y over the trash can?
     """
     def _in_the_trash(self, x, y):
+        """
         if self.selected_palette == self.trash_index and \
            self.palette_sprs[self.trash_index][self.orientation].hit((x,y)):
+            return True
+        """
+        if self.palette_sprs[self.selected_palette][self.orientation].hit(
+                                                                         (x,y)):
             return True
         return False
 
@@ -1196,6 +1201,7 @@ class TurtleArtWindow():
                 (bx, by) = b.spr.get_xy()
                 if bx+dx < 0:
                     dx += -(bx+dx)
+                """
                 # ...or under the palette.
                 if self.selected_palette is not None and\
                    self.selected_palette != self.trash_index:
@@ -1208,6 +1214,7 @@ class TurtleArtWindow():
                     else:
                         if by < h+self.toolbar_offset and bx+dx < PALETTE_WIDTH:
                             dx += -(bx+dx)+PALETTE_WIDTH
+                """
 
             # Move the stack.
             for b in self.drag_group:

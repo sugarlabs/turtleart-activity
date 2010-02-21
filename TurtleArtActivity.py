@@ -784,6 +784,11 @@ class TurtleArtActivity(activity.Activity):
             toolbar_box.toolbar.insert(palette_toolbar_button, -1)
             palette_toolbar_button.show()
 
+            separator = gtk.SeparatorToolItem()
+            separator.set_draw(True)
+            toolbar_box.toolbar.insert(separator, -1)
+            separator.show()
+
             # eraser button
             self.eraser_button = ToolButton( "eraseron" )
             self.eraser_button.set_tooltip(_('Clean'))
