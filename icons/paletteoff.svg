@@ -10,27 +10,19 @@
    id="svg2">
   <defs
      id="defs13" />
-  <g
-     transform="translate(0,-8)"
-     id="g2823">
-    <path
-       d="m 0.5,44.5 c 0.25,-9 0,-27 0,-27 l 44,0 0,27 -44,0 z"
-       id="path3"
-       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:1px;stroke-opacity:1" />
-    <path
-       d="m 30.875,30.999999 c 0,4.62493 -3.74962,8.374182 -8.375,8.374182 -4.62538,0 -8.375,-3.749252 -8.375,-8.374182 0,-4.624929 3.74962,-8.374182 8.375,-8.374182 4.62538,0 8.375,3.749253 8.375,8.374182 l 0,0 z"
-       id="path5"
-       style="fill:#404040;fill-opacity:1;stroke:#404040;stroke-width:1px;stroke-opacity:1" />
-    <text
-       x="0"
-       y="0"
-       id="text7"
-       style="font-size:12px;font-weight:bold;font-family:Bitstream Vera Sans">
-      <tspan
-         x="18.299999"
-         y="35"
-         id="tspan9"
-         style="font-size:12px;font-weight:bold;fill:#ffffff">X</tspan>
-    </text>
-  </g>
+  <path
+     d="m 0.5,36.5 c 0.25,-9 0,-27 0,-27 l 44,0 0,27 -44,0 z"
+     id="path3"
+     style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:1px;stroke-opacity:1" />
+  <path
+     d="m 30.875,22.999999 c 0,4.62493 -3.74962,8.374182 -8.375,8.374182 -4.62538,0 -8.375,-3.749252 -8.375,-8.374182 0,-4.624929 3.74962,-8.374182 8.375,-8.374182 4.62538,0 8.375,3.749253 8.375,8.374182 l 0,0 z"
+     id="path5"
+     style="fill:#404040;fill-opacity:1;stroke:#404040;stroke-width:1px;stroke-opacity:1" />
+  <rect
+     width="10"
+     height="2"
+     x="17.5"
+     y="21.5"
+     id="rect2844"
+     style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
 </svg>

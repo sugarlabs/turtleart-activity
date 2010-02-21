@@ -18,15 +18,19 @@
      d="m 30.875,22.999999 c 0,4.62493 -3.74962,8.374182 -8.375,8.374182 -4.62538,0 -8.375,-3.749252 -8.375,-8.374182 0,-4.624929 3.74962,-8.374182 8.375,-8.374182 4.62538,0 8.375,3.749253 8.375,8.374182 l 0,0 z"
      id="path5"
      style="fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-width:1px;stroke-opacity:1" />
-  <text
-     x="-0.82734299"
-     y="-8"
-     id="text7"
-     style="font-size:12px;font-weight:bold;font-family:Bitstream Vera Sans">
-    <tspan
-       x="17.472656"
-       y="27"
-       id="tspan9"
-       style="font-size:12px;font-weight:bold;fill:#ffffff">+</tspan>
-  </text>
+  <rect
+     width="10"
+     height="2"
+     x="17.5"
+     y="21.5"
+     id="rect2844"
+     style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  <rect
+     width="10"
+     height="2"
+     x="-27.5"
+     y="21.5"
+     transform="matrix(0,-1,1,0,0,0)"
+     id="rect2844-4"
+     style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
 </svg>
