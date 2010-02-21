@@ -396,27 +396,16 @@ class TurtleArtActivity(activity.Activity):
     Display coordinate grids
     """
     def _do_cartesian_cb(self, button):
-        if self.tw.cartesian is True:
-            if self.tw.coord_scale == 1:
-                self.tw.overlay_shapes['Cartesian_labeled'].hide()
-            else:
-                self.tw.overlay_shapes['Cartesian'].hide()
-            self.tw.cartesian = False
+        if self.tw.cartesian:
+            self.tw.set_cartesian(False)
         else:
-            if self.tw.coord_scale == 1:
-                self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
-                                                              OVERLAY_LAYER)
-            else:
-                self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
-            self.tw.cartesian = True
+            self.tw.set_cartesian(True)
 
     def _do_polar_cb(self, button):
-        if self.tw.polar is True:
-            self.tw.overlay_shapes['polar'].hide()
-            self.tw.polar = False
+        if self.tw.polar:
+            self.tw.set_polar(False)
         else:
-            self.tw.overlay_shapes['polar'].set_layer(OVERLAY_LAYER)
-            self.tw.polar = True
+            self.tw.set_polar(True)
 
     """
     Rescale coordinate system to 100 == height/2 or 100 == 100 pixels (default)
@@ -427,7 +416,7 @@ class TurtleArtActivity(activity.Activity):
             self.rescale_button.set_icon("contract-coordinates")
             self.rescale_button.set_tooltip(_('Rescale coordinates down'))
             self.tw.eraser_button()
-            if self.tw.cartesian is True:
+            if self.tw.cartesian:
                 self.tw.overlay_shapes['Cartesian_labeled'].hide()
                 self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
         else:
@@ -435,7 +424,7 @@ class TurtleArtActivity(activity.Activity):
             self.rescale_button.set_icon("expand-coordinates")
             self.rescale_button.set_tooltip(_('Rescale coordinates up'))
             self.tw.eraser_button()
-            if self.tw.cartesian is True:
+            if self.tw.cartesian:
                 self.tw.overlay_shapes['Cartesian'].hide()
                 self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
                                                               OVERLAY_LAYER)
@@ -522,7 +511,7 @@ class TurtleArtActivity(activity.Activity):
                 self.event_received_cb)
 
             # now that we have the tube, we can ask for an initialization
-            if self.waiting_for_blocks is True:
+            if self.waiting_for_blocks:
                 self._send_event("i")
 
     """
@@ -559,7 +548,7 @@ class TurtleArtActivity(activity.Activity):
                 self.tw.key_press(False,keyname,False)
         elif text[0] == 'i': # request for current state
             # sharer should send current state to joiner
-            if self.initiating is True:
+            if self.initiating:
                 _logger.debug("serialize the project and send to joiner")
                 text = data_to_string(self.tw.assemble_data_to_save(True, True))
                 self._send_event("I:" + text)
@@ -923,7 +912,7 @@ class TurtleArtActivity(activity.Activity):
             _logger.debug("and creating a tamyblock.py Journal entry")
 
         # Make sure there is a copy of tamyblock.py in the Journal
-        if newversion is True:
+        if newversion:
             dsobject = datastore.create()
             dsobject.metadata['title'] = 'tamyblock.py'
             dsobject.metadata['icon-color'] = \

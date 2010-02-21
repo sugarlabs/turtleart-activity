@@ -310,13 +310,43 @@ class TurtleArtWindow():
                 self._resize_skin(blk)
         self.nop = 'pythonloaded'
 
+
     """
-    Enter fulscreen mode
+    Enter fullscreen mode
     """
     def set_fullscreen(self):
         if self.running_sugar:
             self.activity.fullscreen()
             self.activity.recenter()
+
+    """
+    Turn on/off Cartesian coordinates
+    """
+    def set_cartesian(self, flag):
+        if flag:
+            if self.coord_scale == 1:
+                self.overlay_shapes['Cartesian_labeled'].set_layer(
+                                                              OVERLAY_LAYER)
+            else:
+                self.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
+            self.cartesian = True
+        else:
+            if self.coord_scale == 1:
+                self.overlay_shapes['Cartesian_labeled'].hide()
+            else:
+                self.overlay_shapes['Cartesian'].hide()
+            self.cartesian = False
+
+    """
+    Turn on/off polar coordinates
+    """
+    def set_polar(self, flag):
+        if flag:
+            self.overlay_shapes['polar'].set_layer(OVERLAY_LAYER)
+            self.polar = True
+        else:
+            self.overlay_shapes['polar'].hide()
+            self.polar = False
 
     """
     Hide/show button

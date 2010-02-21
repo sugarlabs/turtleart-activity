@@ -125,7 +125,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'storein', 'start'],
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc',  'nop', 'addturtle', 'comment', 'print', 'width',
-             'height','sandwichtop', 'sandwichbottom'],
+             'height','sandwichtop', 'sandwichbottom', 'cartesian', 'polar'],
             ['journal', 'audio', 'description', 'savepix', 'hideblocks',
              'showblocks', 'fullscreen', 'picturelist', 'picture1x1a',
              'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2'],
@@ -162,7 +162,7 @@ BASIC_STYLE_HEAD_1ARG = ['hat']
 BASIC_STYLE_TAIL = ['stopstack', 'empty']
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
     'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput',
-    'fullscreen', 'sandwichcollapsed']
+    'fullscreen', 'sandwichcollapsed', 'cartesian', 'polar']
 BASIC_STYLE_EXTENDED = ['picturelist', 'picture1x1', 'picture2x2',
     'picture2x1', 'picture1x2', 'picture1x1a']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
@@ -176,9 +176,9 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple',
     'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy']
 BOX_STYLE_MEDIA =  ['description', 'audio', 'journal']
-NUMBER_STYLE = ['plus2', 'product2']
-NUMBER_STYLE_VAR_ARG = ['myfunc']
-NUMBER_STYLE_BLOCK = ['random', 'myfunc2']
+NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
+NUMBER_STYLE_VAR_ARG = ['myfunc2']
+NUMBER_STYLE_BLOCK = ['random']
 NUMBER_STYLE_PORCH = ['minus2', 'division2', 'remainder2']
 NUMBER_STYLE_1ARG = ['sqrt', 'identity2']
 NUMBER_STYLE_1STRARG = ['box']
@@ -241,6 +241,7 @@ BLOCK_NAMES = {
     'box':[_('box')],
     'box1':[_('box 1')],
     'box2':[_('box 2')],
+    'cartesian':[_('Cartesian')],
     'clean':[_(' clean ')],
     'clearheap':[_('empty heap')],
     'color':[_('color')],
@@ -292,6 +293,7 @@ BLOCK_NAMES = {
     'picture2x1':[' '],
     'picture1x2':[' '],
     'plus2':['+'],
+    'polar':[_('polar')],
     'pop':[_('pop')],
     'printheap':[_('show heap')],
     'print':[_('print')],
@@ -370,6 +372,7 @@ PRIMITIVES = {
     'box1':'box1',
     'box2':'box2',
     'box':'box',
+    'cartesian':'cartesian',
     'clean':'clean',
     'clearheap':'clearheap',
     'color':'color',
@@ -411,6 +414,7 @@ PRIMITIVES = {
     'pensize':'pensize',
     'penup':'penup',
     'plus2':'plus',
+    'polar':'polar',
     'pop':'pop',
     'printheap':'printheap',
     'print':'print',
@@ -630,6 +634,7 @@ HELP_STRINGS = {
     'box1':_("Variable 1 (numeric value)"),
     'box2':_("Variable 2 (numeric value)"),
     'box':_("named variable (numeric value)"),
+    'cartesian':_("displays Cartesian coordinates"),
     'clean':_("clears the screen and reset the turtle"),
     'clearheap':_("emptys FILO (first-in-last-out heap)"),
     'color':_("holds current pen color (can be used in place of a number block)"),
@@ -685,6 +690,7 @@ HELP_STRINGS = {
     'picture2x2':_("presentation template: select four Journal objects"),
     'picturelist':_("presentation template: list of bullets"),
     'plus2':_("adds two alphanumeric inputs"),
+    'polar':_("displays polar coordinates"),
     'pop':_("pops value off FILO (first-in last-out heap)"),
     'portfolio':_("palette of presentation templates"),
     'print':_("prints value in status block at bottom of the screen"),

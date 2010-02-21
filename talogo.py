@@ -280,6 +280,7 @@ class LogoCode:
         'box2':[0, lambda self: self.boxes['box2']],
         'bullet':[1, self.prim_bullet, True],
         'bulletlist':[1, self.prim_list, True],
+        'cartesian':[0, lambda self: self.tw.set_cartesian(True)],
         'clean':[0, lambda self: self.prim_clear()],
         'clearheap':[0, lambda self: self.empty_heap()],
         'color':[0, lambda self: self.tw.canvas.color],
@@ -311,7 +312,7 @@ class LogoCode:
         'minus':[2, lambda self,x,y: taminus(x,y)],
         'mod':[2, lambda self,x,y: tamod(x,y)],
         'myfunc':[1, self.prim_myfunc, True],
-        'myfunction':[1, lambda self, x: self.myfunction(x)],
+        'myfunction':[2, lambda self, f, x: self.myfunction(f, x)],
         'nop':[0, lambda self: None],
         'nop1':[0, lambda self: None],
         'nop2':[0, lambda self: None],
@@ -323,6 +324,7 @@ class LogoCode:
         'pensize':[0, lambda self: self.tw.canvas.pensize],
         'penup':[0, lambda self: self.tw.canvas.setpen(False)],
         'plus':[2, lambda self,x,y: taplus(x,y)],
+        'polar':[0, lambda self: self.tw.set_polar(True)],
         'pop':[0, lambda self: self.prim_pop()],
         'print':[1, lambda self,x: self.prim_print(x, False)],
         'printheap':[0, lambda self: self.prim_print_heap()],
@@ -829,8 +831,8 @@ class LogoCode:
         self.ireturn()
         yield True
 
-    def myfunction(self, list):
-        y = myfunc(list[0], list[1:])
+    def myfunction(self, f, x):
+        y = myfunc(f, [x])
         if y == None:
             raise logoerror("#syntaxerror")
             stop_logo(self.tw)
