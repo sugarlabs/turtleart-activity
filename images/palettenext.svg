@@ -18,9 +18,13 @@
   <rect
      width="5.3145914"
      height="11.314592"
-     x="-10.657295"
-     y="2.3427038"
-     transform="matrix(0,-1,1,0,0,0)"
+     x="5.3427043"
+     y="-11.314592"
+     transform="matrix(0,1,-1,0,0,0)"
      id="rect5"
-     style="fill:#ffd000;fill-opacity:1;stroke:none" />
+     style="fill:#00fe00;fill-opacity:1;stroke:none" />
+  <path
+     d="M 15.5,8 L 10,2 10,14 15.5,8 z"
+     id="path2816"
+     style="fill:#00fe00;fill-opacity:1;stroke:#00fe00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
 </svg>

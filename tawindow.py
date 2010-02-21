@@ -391,6 +391,7 @@ class TurtleArtWindow():
     def show_palette(self, n=0):
         self._show_toolbar_palette(n)
         self.palette_button[self.orientation].set_layer(TAB_LAYER)
+        self.palette_button[2].set_layer(TAB_LAYER)
         if self.activity is None or not self.activity.new_sugar_system:
             self.toolbar_spr.set_layer(CATEGORY_LAYER)
         self.palette = True
@@ -401,6 +402,7 @@ class TurtleArtWindow():
     def hide_palette(self):
         self._hide_toolbar_palette()
         self.palette_button[self.orientation].hide()
+        self.palette_button[2].hide()
         if self.activity is None or not self.activity.new_sugar_system:
             self.toolbar_spr.hide()
         self.palette = False
@@ -508,6 +510,14 @@ class TurtleArtWindow():
             self.palette_button[1].type = 'palette'
             self.palette_button[self.orientation].set_layer(TAB_LAYER)
             self.palette_button[1-self.orientation].hide()
+
+            # Create the palette next button
+            self.palette_button.append(Sprite(self.sprite_list, 16,
+                           self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
+                              "%s/images/palettenext.svg" %(self.path)))))
+            self.palette_button[2].name = 'next'
+            self.palette_button[2].type = 'palette'
+            self.palette_button[2].set_layer(TAB_LAYER)
 
         if init_only:
             return
@@ -674,13 +684,14 @@ class TurtleArtWindow():
                     svg = SVG()
                     self.palette_sprs[n][self.orientation].set_shape(
                         svg_str_to_pixbuf(svg.palette(_w, PALETTE_HEIGHT)))
+                self.palette_button[2].move((_w-20, 0))
             else:
                 _x, _y = 5, self.toolbar_offset+15
                 _x, _y, _max = self._vertical_layout(_x, _y, self.palettes[n])
                 if n == PALETTE_NAMES.index('trash'):
                     _x, _y, _max = self._vertical_layout(_x, _y+_max,
                                                          self.trash_stack)
-                _h = _y+_max+25-ICON_SIZE
+                _h = _y+_max+25-self.toolbar_offset
                 if self.palette_sprs[n][self.orientation] is None:
                     svg = SVG()
                     self.palette_sprs[n][self.orientation] =\
@@ -691,6 +702,7 @@ class TurtleArtWindow():
                     svg = SVG()
                     self.palette_sprs[n][self.orientation].set_shape(
                         svg_str_to_pixbuf(svg.palette(PALETTE_WIDTH, _h)))
+                self.palette_button[2].move((PALETTE_WIDTH-20, 0))
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
     """
@@ -770,13 +782,29 @@ class TurtleArtWindow():
                 if self._hide_button_hit(spr, x, y):
                     self.hideshow_palette(False)
             elif spr.type == 'palette':
-               self.orientation = 1-self.orientation
-               self.palette_button[self.orientation].set_layer(TAB_LAYER)
-               self.palette_button[1-self.orientation].hide()
-               self.palette_sprs[self.selected_palette][
-                               1-self.orientation].hide()
-               self._layout_palette(self.selected_palette)
-               self.show_palette(self.selected_palette)
+               if spr.name == 'next':
+                   i = self.selected_palette+1
+                   if i == len(PALETTE_NAMES):
+                       i = 0
+                   if self.activity is None or\
+                      not self.activity.new_sugar_system:
+                       self._select_category(self.selectors[i])
+                   else:
+                       if self.selected_palette is not None:
+                           self.activity.palette_buttons[
+                               self.selected_palette].set_icon(
+                                   PALETTE_NAMES[self.selected_palette]+'off')
+                       self.activity.palette_buttons[i].set_icon(
+                                   PALETTE_NAMES[i]+'on')
+                       self.show_palette(i)
+               else:
+                   self.orientation = 1-self.orientation
+                   self.palette_button[self.orientation].set_layer(TAB_LAYER)
+                   self.palette_button[1-self.orientation].hide()
+                   self.palette_sprs[self.selected_palette][
+                                   1-self.orientation].hide()
+                   self._layout_palette(self.selected_palette)
+                   self.show_palette(self.selected_palette)
             elif spr.type == 'toolbar':
                self._select_toolbar_button(spr)
             return True
