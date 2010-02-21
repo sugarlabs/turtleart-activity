@@ -457,9 +457,9 @@ class TurtleArtWindow():
             svg = SVG()
             x, y = 50, 0
             for i, name in enumerate(PALETTE_NAMES):
-                a = svg_str_to_pixbuf(svg_from_file("%s/images/%soff.svg" % (
+                a = svg_str_to_pixbuf(svg_from_file("%s/icons/%soff.svg" % (
                                                     self.path, name)))
-                b = svg_str_to_pixbuf(svg_from_file("%s/images/%son.svg" % (
+                b = svg_str_to_pixbuf(svg_from_file("%s/icons/%son.svg" % (
                                                     self.path, name)))
                 self.selector_shapes.append([a,b])
                 self.selectors.append(Sprite(self.sprite_list, x, y, a))

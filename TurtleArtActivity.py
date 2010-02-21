@@ -287,22 +287,22 @@ class TurtleArtActivity(activity.Activity):
     def _do_palette_cb(self, button):
         if self.tw.palette == True:
             self.tw.hideshow_palette(False)
-            self.palette_button.set_icon("blockson")
+            self.palette_button.set_icon("paletteon")
             self.palette_button.set_tooltip(_('Show palette'))
         else:
             self.tw.hideshow_palette(True)
-            self.palette_button.set_icon("blocksoff")
+            self.palette_button.set_icon("paletteoff")
             self.palette_button.set_tooltip(_('Hide palette'))
 
-    """ These methods are called both from buttons and blocks """
+    """ These methods are called both from buttons and palette """
     def do_hidepalette(self):
         # print "in do_hidepalette"
-        self.palette_button.set_icon("blockson")
+        self.palette_button.set_icon("paletteon")
         self.palette_button.set_tooltip(_('Show palette'))
 
     def do_showpalette(self):
         # print "in do_showpalette"
-        self.palette_button.set_icon("blocksoff")
+        self.palette_button.set_icon("paletteoff")
         self.palette_button.set_tooltip(_('Hide palette'))
 
     def _do_hideshow_cb(self, button):
@@ -315,22 +315,22 @@ class TurtleArtActivity(activity.Activity):
             self.blocks_button.set_tooltip(_('Hide blocks'))
         # update palette buttons too
         if self.tw.palette == False: 
-            self.palette_button.set_icon("blockson")
+            self.palette_button.set_icon("paletteon")
             self.palette_button.set_tooltip(_('Show palette'))
         else:
-            self.palette_button.set_icon("blocksoff")
+            self.palette_button.set_icon("paletteoff")
             self.palette_button.set_tooltip(_('Hide palette'))
 
     def do_hide(self):
         self.blocks_button.set_icon("hideshowon")
         self.blocks_button.set_tooltip(_('Show blocks'))
-        self.palette_button.set_icon("blockson")
+        self.palette_button.set_icon("paletteon")
         self.palette_button.set_tooltip(_('Show palette'))
 
     def do_show(self):
         self.blocks_button.set_icon("hideshowoff")
         self.blocks_button.set_tooltip(_('Hide blocks'))
-        self.palette_button.set_icon("blocksoff")
+        self.palette_button.set_icon("paletteoff")
         self.palette_button.set_tooltip(_('Hide palette'))
 
     def _do_eraser_cb(self, button):
@@ -666,6 +666,14 @@ class TurtleArtActivity(activity.Activity):
             view_toolbar.insert(fullscreen_button,-1)
             fullscreen_button.show()
 
+            self.blocks_button = ToolButton( "hideshowoff" )
+            self.blocks_button.set_tooltip(_('Hide blocks'))
+            self.blocks_button.props.sensitive = True
+            self.blocks_button.connect('clicked', self._do_hideshow_cb)
+            self.blocks_button.props.accelerator = _('<Ctrl>b')
+            view_toolbar.insert(self.blocks_button, -1)
+            self.blocks_button.show()
+
             cartesian_button = ToolButton('view-Cartesian')
             cartesian_button.set_tooltip(_("Cartesian coordinates"))
             cartesian_button.connect('clicked', self._do_cartesian_cb)
@@ -727,22 +735,13 @@ class TurtleArtActivity(activity.Activity):
             self.resize_down_button.show()
 
             # palette button (blocks)
-            self.palette_button = ToolButton( "blocksoff" )
+            self.palette_button = ToolButton( "paletteoff" )
             self.palette_button.set_tooltip(_('Hide palette'))
             self.palette_button.props.sensitive = True
             self.palette_button.connect('clicked', self._do_palette_cb)
             self.palette_button.props.accelerator = _('<Ctrl>p')
             toolbar_box.toolbar.insert(self.palette_button, -1)
             self.palette_button.show()
-
-            # blocks button (hideshow)
-            self.blocks_button = ToolButton( "hideshowoff" )
-            self.blocks_button.set_tooltip(_('Hide blocks'))
-            self.blocks_button.props.sensitive = True
-            self.blocks_button.connect('clicked', self._do_hideshow_cb)
-            self.blocks_button.props.accelerator = _('<Ctrl>b')
-            toolbar_box.toolbar.insert(self.blocks_button, -1)
-            self.blocks_button.show()
 
             # eraser button
             self.eraser_button = ToolButton( "eraseron" )
@@ -1323,7 +1322,7 @@ class ProjectToolbar(gtk.Toolbar):
         self.activity = pc
 
         # palette button (blocks)
-        self.activity.palette_button = ToolButton( "blocksoff" )
+        self.activity.palette_button = ToolButton( "paletteoff" )
         self.activity.palette_button.set_tooltip(_('Hide palette'))
         self.activity.palette_button.props.sensitive = True
         self.activity.palette_button.connect('clicked', \
