@@ -8,19 +8,25 @@
    width="45"
    height="45"
    id="svg2">
+  <defs
+     id="defs13" />
   <path
-     d="M 0.5,44.5 C 0.75,35.5 0.5,17.5 0.5,17.5 l 44,0 0,27 -44,0 z"
-     style="fill:#FFD000;fill-opacity:1;stroke:#A08000;stroke-width:1px;stroke-opacity:1" />
+     d="m 0.5,36.5 c 0.25,-9 0,-27 0,-27 l 44,0 0,27 -44,0 z"
+     id="path3"
+     style="fill:#ffd000;fill-opacity:1;stroke:#a08000;stroke-width:1px;stroke-opacity:1" />
   <path
-     d="m 30.875,30.999999 c 0,4.62493 -3.74962,8.374182 -8.375,8.374182 -4.62538,0 -8.375,-3.749252 -8.375,-8.374182 0,-4.624929 3.74962,-8.374182 8.375,-8.374182 4.62538,0 8.375,3.749253 8.375,8.374182 l 0,0 z"
-     style="fill:#00FF00;fill-opacity:1;stroke:#00FF00;stroke-width:1px;stroke-opacity:1" />
+     d="m 30.875,22.999999 c 0,4.62493 -3.74962,8.374182 -8.375,8.374182 -4.62538,0 -8.375,-3.749252 -8.375,-8.374182 0,-4.624929 3.74962,-8.374182 8.375,-8.374182 4.62538,0 8.375,3.749253 8.375,8.374182 l 0,0 z"
+     id="path5"
+     style="fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-width:1px;stroke-opacity:1" />
   <text
-     x="0"
-     y="0"
+     x="-0.82734299"
+     y="-8"
+     id="text7"
      style="font-size:12px;font-weight:bold;font-family:Bitstream Vera Sans">
     <tspan
-       x="18.3"
-       y="35"
-       style="font-size:12px;font-weight:bold;fill:#FFFFFF">+</tspan>
+       x="17.472656"
+       y="27"
+       id="tspan9"
+       style="font-size:12px;font-weight:bold;fill:#ffffff">+</tspan>
   </text>
 </svg>

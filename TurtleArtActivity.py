@@ -78,7 +78,8 @@ class TurtleArtActivity(activity.Activity):
         
         self._setup_visibility_handler()
 
-        self._setup_toolbar(_new_sugar_system)
+        self.new_sugar_system = _new_sugar_system
+        self._setup_toolbar()
 
         canvas = self._setup_scrolled_window()
 
@@ -289,19 +290,33 @@ class TurtleArtActivity(activity.Activity):
             self.tw.hideshow_palette(False)
             self.palette_button.set_icon("paletteon")
             self.palette_button.set_tooltip(_('Show palette'))
+            if self.new_sugar_system and self.tw.selected_palette is not None:
+                self.palette_buttons[self.tw.selected_palette].set_icon(
+                    PALETTE_NAMES[self.tw.selected_palette]+'off')
         else:
             self.tw.hideshow_palette(True)
             self.palette_button.set_icon("paletteoff")
             self.palette_button.set_tooltip(_('Hide palette'))
+            if self.new_sugar_system:
+                self.palette_buttons[0].set_icon(PALETTE_NAMES[0]+'on')
+
+    """ Palette selector buttons """
+    def _do_palette_buttons_cb(self, button, i):
+        if self.tw.selected_palette is not None:
+            if self.tw.selected_palette != i:
+                self.palette_buttons[self.tw.selected_palette].set_icon(
+                    PALETTE_NAMES[self.tw.selected_palette]+'off')
+        self.palette_buttons[i].set_icon(PALETTE_NAMES[i]+'on')
+        self.tw.show_palette(i)
+        self.palette_button.set_icon("paletteoff")
+        self.palette_button.set_tooltip(_('Hide palette'))
 
     """ These methods are called both from buttons and palette """
     def do_hidepalette(self):
-        # print "in do_hidepalette"
         self.palette_button.set_icon("paletteon")
         self.palette_button.set_tooltip(_('Show palette'))
 
     def do_showpalette(self):
-        # print "in do_showpalette"
         self.palette_button.set_icon("paletteoff")
         self.palette_button.set_tooltip(_('Hide palette'))
 
@@ -376,11 +391,9 @@ class TurtleArtActivity(activity.Activity):
     """
     def recenter(self):
         hadj = self.sw.get_hadjustment()
-        # print hadj
         hadj.set_value(0)
         self.sw.set_hadjustment(hadj)
         vadj = self.sw.get_vadjustment()
-        # print vadj
         vadj.set_value(0)
         self.sw.set_vadjustment(vadj)
 
@@ -594,9 +607,9 @@ class TurtleArtActivity(activity.Activity):
     """
     Setup toolbar according to Sugar version
     """
-    def _setup_toolbar(self, new_sugar_system):
+    def _setup_toolbar(self):
 
-        if new_sugar_system:
+        if self.new_sugar_system:
             # Use 0.86 toolbar design
             toolbar_box = ToolbarBox()
             # Buttons added to the Activity toolbar
@@ -659,12 +672,6 @@ class TurtleArtActivity(activity.Activity):
 
             # The view toolbar
             view_toolbar = gtk.Toolbar()
-            fullscreen_button = ToolButton('view-fullscreen')
-            fullscreen_button.set_tooltip(_("Fullscreen"))
-            fullscreen_button.props.accelerator = '<Alt>Enter'
-            fullscreen_button.connect('clicked', self._do_fullscreen_cb)
-            view_toolbar.insert(fullscreen_button,-1)
-            fullscreen_button.show()
 
             self.blocks_button = ToolButton( "hideshowoff" )
             self.blocks_button.set_tooltip(_('Hide blocks'))
@@ -673,6 +680,13 @@ class TurtleArtActivity(activity.Activity):
             self.blocks_button.props.accelerator = _('<Ctrl>b')
             view_toolbar.insert(self.blocks_button, -1)
             self.blocks_button.show()
+
+            fullscreen_button = ToolButton('view-fullscreen')
+            fullscreen_button.set_tooltip(_("Fullscreen"))
+            fullscreen_button.props.accelerator = '<Alt>Enter'
+            fullscreen_button.connect('clicked', self._do_fullscreen_cb)
+            view_toolbar.insert(fullscreen_button,-1)
+            fullscreen_button.show()
 
             cartesian_button = ToolButton('view-Cartesian')
             cartesian_button.set_tooltip(_("Cartesian coordinates"))
@@ -701,13 +715,6 @@ class TurtleArtActivity(activity.Activity):
             view_toolbar.insert(self.coordinates_toolitem,-1)
             self.coordinates_toolitem.show()
 
-            view_toolbar_button = ToolbarButton(
-                    page=view_toolbar,
-                    icon_name='toolbar-view')
-            view_toolbar.show()
-            toolbar_box.toolbar.insert(view_toolbar_button, -1)
-            view_toolbar_button.show()
-
             separator = gtk.SeparatorToolItem()
             separator.props.draw = False
             separator.set_expand(True)
@@ -734,14 +741,48 @@ class TurtleArtActivity(activity.Activity):
             view_toolbar.insert(self.resize_down_button,-1)
             self.resize_down_button.show()
 
-            # palette button (blocks)
+            view_toolbar_button = ToolbarButton(
+                    page=view_toolbar,
+                    icon_name='toolbar-view')
+            view_toolbar.show()
+            toolbar_box.toolbar.insert(view_toolbar_button, -1)
+            view_toolbar_button.show()
+
+            # palette toolbar
+            palette_toolbar = gtk.Toolbar()
+            self.palette_buttons = []
+            for i, name in enumerate(PALETTE_NAMES):
+                if i > 0:
+                    self.palette_buttons.append(ToolButton(name+'off'))
+                else:
+                    self.palette_buttons.append(ToolButton(name+'on'))
+                self.palette_buttons[i].set_tooltip(HELP_STRINGS[name])
+                self.palette_buttons[i].props.sensitive = True
+                self.palette_buttons[i].connect('clicked',
+                                                self._do_palette_buttons_cb, i)
+                palette_toolbar.insert(self.palette_buttons[i], -1)
+                self.palette_buttons[i].show()
+
+            separator = gtk.SeparatorToolItem()
+            separator.props.draw = False
+            separator.set_expand(True)
+            palette_toolbar.insert(separator, -1)
+            separator.show()
+
             self.palette_button = ToolButton( "paletteoff" )
             self.palette_button.set_tooltip(_('Hide palette'))
             self.palette_button.props.sensitive = True
             self.palette_button.connect('clicked', self._do_palette_cb)
             self.palette_button.props.accelerator = _('<Ctrl>p')
-            toolbar_box.toolbar.insert(self.palette_button, -1)
+            palette_toolbar.insert(self.palette_button, -1)
             self.palette_button.show()
+
+            palette_toolbar_button = ToolbarButton(
+                    page=palette_toolbar,
+                    icon_name='paletteoff')
+            palette_toolbar.show()
+            toolbar_box.toolbar.insert(palette_toolbar_button, -1)
+            palette_toolbar_button.show()
 
             # eraser button
             self.eraser_button = ToolButton( "eraseron" )
@@ -937,7 +978,7 @@ class TurtleArtActivity(activity.Activity):
         bundle_path = activity.get_bundle_path()
         self.tw = TurtleArtWindow(canvas, bundle_path, lang, self,
                                   profile.get_color().to_string())
-        self.tw.activity = self
+        # self.tw.activity = self
         self.tw.window.grab_focus()
         path = os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'], 'data')
         self.tw.save_folder= path
@@ -1099,6 +1140,19 @@ class ViewToolbar(gtk.Toolbar):
     def __init__(self, pc):
         gtk.Toolbar.__init__(self)
         self.activity = pc
+
+        # blocks button (hideshow)
+        self.activity.blocks_button = ToolButton( "hideshowoff" )
+        self.activity.blocks_button.set_tooltip(_('Hide blocks'))
+        self.activity.blocks_button.props.sensitive = True
+        self.activity.blocks_button.connect('clicked', \
+                                            self.activity._do_hideshow_cb)
+        try:
+            self.activity.blocks_button.props.accelerator = _('<Ctrl>b')
+        except:
+            pass
+        self.insert(self.activity.blocks_button, -1)
+        self.activity.blocks_button.show()
 
         # full screen
         self.activity.fullscreen_button = ToolButton( "view-fullscreen" )
@@ -1333,19 +1387,6 @@ class ProjectToolbar(gtk.Toolbar):
             pass
         self.insert(self.activity.palette_button, -1)
         self.activity.palette_button.show()
-
-        # blocks button (hideshow)
-        self.activity.blocks_button = ToolButton( "hideshowoff" )
-        self.activity.blocks_button.set_tooltip(_('Hide blocks'))
-        self.activity.blocks_button.props.sensitive = True
-        self.activity.blocks_button.connect('clicked', \
-                                            self.activity._do_hideshow_cb)
-        try:
-            self.activity.blocks_button.props.accelerator = _('<Ctrl>b')
-        except:
-            pass
-        self.insert(self.activity.blocks_button, -1)
-        self.activity.blocks_button.show()
 
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
