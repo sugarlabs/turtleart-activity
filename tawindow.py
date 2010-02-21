@@ -684,7 +684,7 @@ class TurtleArtWindow():
                     svg = SVG()
                     self.palette_sprs[n][self.orientation].set_shape(
                         svg_str_to_pixbuf(svg.palette(_w, PALETTE_HEIGHT)))
-                self.palette_button[2].move((_w-20, 0))
+                self.palette_button[2].move((_w-20, self.toolbar_offset))
             else:
                 _x, _y = 5, self.toolbar_offset+15
                 _x, _y, _max = self._vertical_layout(_x, _y, self.palettes[n])
@@ -702,7 +702,8 @@ class TurtleArtWindow():
                     svg = SVG()
                     self.palette_sprs[n][self.orientation].set_shape(
                         svg_str_to_pixbuf(svg.palette(PALETTE_WIDTH, _h)))
-                self.palette_button[2].move((PALETTE_WIDTH-20, 0))
+                self.palette_button[2].move((PALETTE_WIDTH-20,
+                                             self.toolbar_offset))
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
     """
