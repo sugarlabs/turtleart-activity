@@ -46,7 +46,11 @@ def json_load(text):
     if _old_Sugar_system is True:
         listdata = json.read(text)
     else:
-        io = StringIO(text)
+        # strip out leading and trailing whitespace, nulls, and newlines
+        text = text.lstrip()
+        text = text.replace('\12','')
+        text = text.replace('\00','')
+        io = StringIO(text.rstrip())
         listdata = jload(io)
     # json converts tuples to lists, so we need to convert back,
     return _tuplify(listdata) 
