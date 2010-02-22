@@ -303,39 +303,22 @@ class SVG:
         return self._header() + svg
 
     def turtle(self, colors):
-        self._fill, self._stroke = colors[2], "none"
-        svg = self._rect(21, 21, 19.5, 18)
-        self._fill = colors[3]
-        svg += self._rect(3, 3, 30, 24)
-        svg += self._rect(3, 3, 24, 24)
-        svg += self._rect(3, 3, 30, 30)
-        svg += self._rect(3, 3, 24, 30)
-        svg += self._rect(3, 3, 27, 27)
-        svg += self._rect(3, 3, 21, 27)
-        svg += self._rect(3, 3, 33, 27)
-        svg += self._rect(3, 3, 27, 21)
-        svg += self._rect(3, 3, 21, 21)
-        svg += self._rect(3, 3, 33, 21)
-        svg += self._rect(3, 3, 27, 33)
-        svg += self._rect(3, 3, 21, 33)
-        svg += self._rect(3, 3, 33, 33)
-        svg += self._rect(3, 3, 30, 36)
-        svg += self._rect(3, 3, 24, 36)
-        svg += self._rect(3, 3, 30, 18)
-        svg += self._rect(3, 3, 24, 18)
-        svg += self._rect(3, 3, 36, 24)
-        svg += self._rect(3, 3, 36, 30)
-        svg += self._rect(3, 3, 36, 18)
-        svg += self._rect(3, 3, 36, 36)
-        self._fill, self._stroke = colors[0], colors[0]
-        svg += self._turtle_body()
-        self._fill, self._stroke = colors[1], colors[1]
-        svg += self._turtle_shell()
-        self._fill, self._stroke = "#000000", "#000000"
-        svg += self._circle(1.25,32.5,8)
-        svg += self._circle(1.25,27.5,8)
+        self._fill, self._stroke = colors[0], colors[1]
+        svg = "  <path d=\"M 27.497 48.279 C 26.944 48.279 26.398 48.244 25.86 48.179 L 27.248 50.528 L 28.616 48.215 C 28.245 48.245 27.875 48.279 27.497 48.279 Z\" stroke_width=\"3.5\" fill=\"" + self._fill + ";\" stroke=\"" + self._stroke + "\" />\n"
+        svg += "   <path d=\"M 40.16 11.726 C 37.996 11.726 36.202 13.281 35.817 15.333 C 37.676 16.678 39.274 18.448 40.492 20.541 C 42.777 20.369 44.586 18.48 44.586 16.151 C 44.586 13.707 42.604 11.726 40.16 11.726 Z\" stroke_width=\"3.5\" fill=\"" + self._fill + ";\" stroke=\"" + self._stroke + "\" />\n"
+        svg += "   <path d=\"M 40.713 39.887 C 39.489 42.119 37.853 44.018 35.916 45.443 C 36.437 47.307 38.129 48.682 40.16 48.682 C 42.603 48.682 44.586 46.702 44.586 44.258 C 44.586 42.003 42.893 40.162 40.713 39.887 Z\" stroke_width=\"3.5\" fill=\"" + self._fill + ";\" stroke=\"" + self._stroke + "\" />\n"
+        svg += "   <path d=\"M 14.273 39.871 C 12.02 40.077 10.249 41.95 10.249 44.258 C 10.249 46.701 12.229 48.682 14.673 48.682 C 16.737 48.682 18.457 47.262 18.945 45.35 C 17.062 43.934 15.47 42.061 14.273 39.871 Z\" stroke_width=\"3.5\" fill=\"" + self._fill + ";\" stroke=\"" + self._stroke + "\" />\n"
+        svg += "   <path d=\"M 19.026 15.437 C 18.683 13.334 16.872 11.726 14.673 11.726 C 12.229 11.726 10.249 13.707 10.249 16.15 C 10.249 18.532 12.135 20.46 14.494 20.556 C 15.68 18.513 17.226 16.772 19.026 15.437 Z\" stroke_width=\"3.5\" fill=\"" + self._fill + ";\" stroke=\"" + self._stroke + "\" />\n"
+        svg += "  <path d=\"M 27.497 12.563 C 29.405 12.563 31.225 12.974 32.915 13.691 C 33.656 12.615 34.093 11.314 34.093 9.908 C 34.093 6.221 31.104 3.231 27.416 3.231 C 23.729 3.231 20.74 6.221 20.74 9.908 C 20.74 11.336 21.192 12.657 21.956 13.742 C 23.68 12.993 25.543 12.563 27.497 12.563 Z\" stroke_width=\"3.5\" fill=\"" + self._fill + ";\" stroke=\"" + self._stroke + "\" />\n"
+        svg += "   <path d=\"M 43.102 30.421 C 43.102 35.1554 41.4568 39.7008 38.5314 43.0485 C 35.606 46.3963 31.6341 48.279 27.497 48.279 C 23.3599 48.279 19.388 46.3963 16.4626 43.0485 C 13.5372 39.7008 11.892 35.1554 11.892 30.421 C 11.892 20.6244 18.9364 12.563 27.497 12.563 C 36.0576 12.563 43.102 20.6244 43.102 30.421 Z\" stroke_width=\"3.5\" fill=\"" + self._fill + ";\" stroke=\"" + self._stroke + "\" />\n"
+        svg += "   <path d=\"M 25.875 33.75 L 24.333 29.125 L 27.497 26.538 L 31.112 29.164 L 29.625 33.833 Z\" stroke_width=\"3.5\" fill=\"" + self._stroke + ";\" stroke=\"none\" />\n"
+        svg += "   <path d=\"M 27.501 41.551 C 23.533 41.391 21.958 39.542 21.958 39.542 L 25.528 35.379 L 29.993 35.547 L 33.125 39.667 C 33.125 39.667 30.235 41.661 27.501 41.551 Z\" stroke_width=\"3.5\" fill=\"" + self._stroke + ";\" stroke=\"none\" />\n"
+        svg += "   <path d=\"M 18.453 33.843 C 17.604 30.875 18.625 26.959 18.625 26.959 L 22.625 29.126 L 24.118 33.755 L 20.536 37.988 C 20.536 37.987 19.071 35.998 18.453 33.843 Z\" stroke_width=\"3.5\" fill=\"" + self._stroke + ";\" stroke=\"none\" />\n"
+        svg += "   <path d=\"M 19.458 25.125 C 19.458 25.125 19.958 23.167 22.497 21.303 C 24.734 19.66 26.962 19.583 26.962 19.583 L 26.925 24.564 L 23.404 27.314 L 19.458 25.125 Z\" stroke_width=\"3.5\" fill=\"" + self._stroke + ";\" stroke=\"none\" />\n"
+        svg += "   <path d=\"M 32.084 27.834 L 28.625 24.959 L 29 19.75 C 29 19.75 30.834 19.708 32.959 21.417 C 35.187 23.208 36.321 26.4 36.321 26.4 L 32.084 27.834 Z\" stroke_width=\"3.5\" fill=\"" + self._stroke + ";\" stroke=\"none\" />\n"
+        svg += "   <path d=\"M 31.292 34.042 L 32.605 29.578 L 36.792 28.042 C 36.792 28.042 37.469 30.705 36.75 33.709 C 36.21 35.965 34.666 38.07 34.666 38.07 L 31.292 34.042 Z\" stroke_width=\"3.5\" fill=\"" + self._stroke + ";\" stroke=\"none\" />\n"
+        self._width, self._height = 55, 55
         svg += self._footer()
-        self._width, self._height = 60, 60
         return self._header() + svg
 
     def palette(self, width, height):
@@ -593,32 +576,6 @@ class SVG:
         return "%s%s%s%s%s%f%s%f%s%f%s%f%s" % ("<rect style=\"fill:",
                self._fill, ";stroke:", self._stroke, ";\" width=\"", w,
                "\" height=\"", h,"\" x=\"", x, "\" y=\"", y, "\" />\n")
-
-    def _turtle_body(self):
-        return "%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" % (
-               "<path style=\"", self._fill, ";stroke:",
-               self._stroke, "\" d=\"M 20,42 C 21,41 23,40 24,40 ",
-               "C 24,39 24,40 26,41 C 28,43 31,43 34,41 C 35,40 35,39 36,40 ",
-               "C 36,40 38,41 39,42 C 41,42 45,43 46,43 C 47,43 46,41 43,39 ",
-               "L 39,36 L 42,34 C 44,30 45,28 43,25 L 41,22 L 46,18 ",
-               "C 48,16 47.5,13.5 47,13 C 46.5,12.5 46,13 45,13 ",
-               "C 44,13 43.5,14 42.5,15 C 39.5,17 40,18 37,17 ",
-               "C 32,16 31.5,15 34.5,12 C 36.5,10 36,7 34,6 C 32,3 28,4 26,6 ",
-               "C 24,8 23,10 25,12 C 28,15 27,16 22,17 C 18,18 19,17 17,15 ",
-               "C 16,14 16,13 15,13 C 14,13 13,13 13,13 C 12,13 11,16 14,18 ",
-               "L 19,22 L 17,25 C 15,28 16,30 18,34 L 20,36 L 16,39 ",
-               "C 13,41 12,43 13,43 C 14,43 18,42 20,42 z M 30,18 ",
-               "C 32,18 36,19 38,20 C 40,22 39.5,25 39.5,28 ",
-               "C 39.5,30 40,32.5 38.5,35 C 37,36.5 36.5,37.5 35,38 ",
-               "C 33.5,38.5 31,39 30,39 C 28,39 26,39 25,38 ",
-               "C 23,37 22.5,37 21.5,35 C 20.5,33 20.5,30 20.5,28 ",
-               "C 20.5,25 20,22 22,20 C 24,19 27,18 30,18 z\" />\n")
-
-    def _turtle_shell(self):
-        return "%s%s%s%s%s%s%s" % ("<path style=\"", self._fill, ";stroke:",
-               self._stroke, "\" d=\"M 33,10 C 33,11 31.5,12 30,12 ",
-               "C 28,12 27,11 27,10 C 27,9 28,8 30,8 ",
-               "C 31.5,8 33,9 33,10 z\" />\n")
 
     def _check_min_max(self):
         if self._x < self._min_x:
@@ -919,15 +876,14 @@ def close_file(f):
 
 def generator(datapath):
 
-    """
     svgt = SVG()
     svgt.set_orientation(180)
     f = open_file(datapath, "turtle180.svg")
-    svg_str = svgt.turtle()
+    svg_str = svgt.turtle(["#FF0000","#00FF00"])
     f.write(svg_str)
     close_file(f)
-    """
 
+    """
     svg0 = SVG()
     f = open_file(datapath, "basic.svg")
     svg0.set_scale(2)
@@ -937,7 +893,6 @@ def generator(datapath):
     f.write(svg_str)
     close_file(f)
 
-    """
     svg2 = SVG()
     f = open_file(datapath, "box-test.svg")
     svg2.set_scale(1)
