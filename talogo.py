@@ -311,8 +311,9 @@ class LogoCode:
         'less?':[2, lambda self,x,y: taless(x,y)],
         'minus':[2, lambda self,x,y: taminus(x,y)],
         'mod':[2, lambda self,x,y: tamod(x,y)],
-        'myfunc':[1, self.prim_myfunc, True],
-        'myfunction':[2, lambda self, f, x: self.myfunction(f, x)],
+        'myfunction':[2, lambda self,f,x: self.myfunction(f, [x])],
+        'myfunction2':[3, lambda self,f,x,y: self.myfunction(f, [x, y])],
+        'myfunction3':[4, lambda self,f,x,y,z: self.myfunction(f, [x, y, z])],
         'nop':[0, lambda self: None],
         'nop1':[0, lambda self: None],
         'nop2':[0, lambda self: None],
@@ -814,25 +815,8 @@ class LogoCode:
         self.ireturn()
         yield True
 
-    def prim_myfunc(self, list):
-        """
-        new_list = [self.intern('myfunction')]
-        new_list.append(list)
-        # self.icall(self.evline, new_list)
-        self.icall(self.eval, new_list)
-        yield True
-        self.ireturn()
-        yield True
-        """
-        new_list = [self.intern('myfunction')]
-        new_list.append(list)
-        self.evline(new_list)
-        yield True
-        self.ireturn()
-        yield True
-
     def myfunction(self, f, x):
-        y = myfunc(f, [x])
+        y = myfunc(f, x)
         if y == None:
             raise logoerror("#syntaxerror")
             stop_logo(self.tw)

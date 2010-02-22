@@ -124,7 +124,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2', 'box',
              'storein', 'start'],
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
-             'myfunc',  'nop', 'addturtle', 'comment', 'print', 'cartesian',
+             'myfunc2',  'nop', 'addturtle', 'comment', 'print', 'cartesian',
              'width','height', 'polar', 'sandwichtop', 'sandwichbottom'],
             ['journal', 'audio', 'description', 'savepix', 'hideblocks',
              'showblocks', 'fullscreen', 'picturelist', 'picture1x1a',
@@ -408,7 +408,7 @@ PRIMITIVES = {
     'list':'bulletlist',
     'minus2':'minus',
     'myfunc':'myfunction',
-    'myfunc2':'myfunc',
+    'myfunc2':'myfunction',
     'nop':'userdefined',
     'not':'not',
     'orange':'orange',
@@ -537,7 +537,8 @@ DEFAULTS = {
 STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
                          'template1x1', 'template1x2', 'template2x1', 'list',
                          'template2x2', 'template1x1a', 'templatelist', 'nop',
-                         'print', 'stack', 'hat', 'addturtle', 'myfunc']
+                         'print', 'stack', 'hat', 'addturtle', 'myfunc',
+                         'myfunc2']
 
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
                 'storeinbox2']

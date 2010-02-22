@@ -1401,9 +1401,11 @@ class TurtleArtWindow():
                 if blk.name == 'myfunc2' and n == 4:
                     blk.spr.labels[1] = 'f(x,y)'
                     blk.spr.labels[2] = ' '
+                    blk.primitive = 'myfunction2'
                 if blk.name == 'myfunc2' and n == 5:
                     blk.spr.labels[1] = 'f(x,y,z)'
                     dy = blk.add_arg(False)
+                    blk.primitive = 'myfunction3'
                 else:
                     dy = blk.add_arg()
                 for b in group:
