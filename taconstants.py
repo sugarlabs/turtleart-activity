@@ -165,7 +165,7 @@ BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
     'fullscreen', 'sandwichcollapsed', 'cartesian', 'polar']
 BASIC_STYLE_EXTENDED = ['picturelist', 'picture1x1', 'picture2x2',
     'picture2x1', 'picture1x2', 'picture1x1a']
-BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
+BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show', 'image',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print', 'showaligned',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1', 'savepix',
     'storeinbox2', 'wait', 'stack', 'push', 'nop', 'addturtle', 'comment']
@@ -267,6 +267,7 @@ BLOCK_NAMES = {
     'identity2':['←'],
     'if':[' ', _('if'), _('then')],
     'ifelse':[' ', _('if'), _('then else')],
+    'image':[_('show')],
     'journal':[' '],
     'kbinput':[_('query keyboard')],
     'keyboard':[_('keyboard')],
@@ -353,6 +354,7 @@ BLOCK_NAMES = {
     'wait':[_('wait')],
     'while':[_('while')],
     'width':[_('width')],
+    'write':[_('write')],
     'xcor':[_('xcor')],
     'ycor':[_('ycor')],
     'yellow':[_('yellow')]}
@@ -396,6 +398,7 @@ PRIMITIVES = {
     'identity2':'id',
     'if':'if',
     'ifelse':'ifelse',
+    'image':'show',
     'kbinput':'kbinput',
     'keyboard':'keyboard',
     'left':'left',
