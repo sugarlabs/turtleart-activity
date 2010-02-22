@@ -276,7 +276,6 @@ charset=UTF-8\">\n", ""),
             code += (self.html_glue['div'][0])
             # get a json dump of the code
             code += data_to_string(tw.assemble_data_to_save(False, True))
-            code += data_to_string(tw.assemble_data_to_save(False, True))
             code += (self.html_glue['div'][1])
     code = self.html_glue['doctype'][0] + \
            self.html_glue['html'][0] + \
