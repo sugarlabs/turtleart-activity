@@ -938,7 +938,8 @@ class TurtleArtWindow():
            self.palette_sprs[self.trash_index][self.orientation].hit((x,y)):
             return True
         """
-        if self.palette_sprs[self.selected_palette][self.orientation].hit(
+        if self.selected_palette is not None and\
+           self.palette_sprs[self.selected_palette][self.orientation].hit(
                                                                          (x,y)):
             return True
         return False
@@ -1375,6 +1376,8 @@ class TurtleArtWindow():
             elif self._show_button_hit(blk.spr, x, y):
                 dx = 20
                 blk.expand_in_x(dx)
+            else:
+                dx = 0
             for b in group:
                 if b != blk:
                     b.spr.move_relative((dx*blk.scale, 0))
