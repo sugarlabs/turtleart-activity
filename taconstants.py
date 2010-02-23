@@ -192,6 +192,7 @@ FLOW_STYLE_BOOLEAN = ['if', 'while', 'until']
 FLOW_STYLE_WHILE = ['while2']
 FLOW_STYLE_ELSE = ['ifelse']
 COLLAPSIBLE_TOP = ['sandwichtop']
+COLLAPSIBLE_TOP_NO_ARM = ['sandwichtop2']
 COLLAPSIBLE_BOTTOM = ['sandwichbottom']
 
 # Depreciated block styles
@@ -315,9 +316,10 @@ BLOCK_NAMES = {
     'rightx':[_('picture right')],
     'savepix':[_('save picture')],
     'scale':[_('scale')],
-    'sandwichbottom':[''],
+    'sandwichbottom':[' '],
     'sandwichcollapsed':[_('click to open')],
-    'sandwichtop':['top of stack'],
+    'sandwichtop':[_('top of stack')],
+    'sandwichtop2':[_('top of stack')],
     'setcolor':[_('set color')],
     'seth':[_('set heading')],
     'setpensize':[_('set pen size')],
@@ -438,6 +440,7 @@ PRIMITIVES = {
     'rightpos':'rpos',
     'rightx':'rightx',
     'sandwichtop':'comment',
+    'sandwichtop2':'comment',
     'sandwichbottom':'nop',
     'sandwichcollapsed':'nop',
     'savepix':'savepix',
@@ -515,6 +518,7 @@ DEFAULTS = {
     'repeat':[4, None, 'vspace'],
     'right':[90],
     'sandwichtop':[_('label')],
+    'sandwichtop2':[_('label')],
     'savepix':[_('picture name')],
     'setcolor':[0],
     'seth':[0],
@@ -547,7 +551,8 @@ STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
                          'template1x1', 'template1x2', 'template2x1', 'list',
                          'template2x2', 'template1x1a', 'templatelist', 'nop',
                          'print', 'stack', 'hat', 'addturtle', 'myfunc',
-                         'myfunc1arg', 'myfunc2arg', 'myfunc3arg']
+                         'myfunc1arg', 'myfunc2arg', 'myfunc3arg', 'comment',
+                         'sandwichtop', 'sandwichtop2']
 
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
                 'storeinbox2']
@@ -722,6 +727,10 @@ HELP_STRINGS = {
     'right':_("turns turtle clockwise (angle in degrees)"),
     'run-fastoff':_("Run"),
     'run-slowoff':_("Step"),
+    'sandwichbottom':_("bottom block in a collapsibe stack: click to collapse"),
+    'sandwichcollapsed':_("bottom block in a collapsed stack: click to open"),
+    'sandwichtop':_("top of a collapsible stack"),
+    'sandwichtop2':_("top of a collapsed stack"),
     'savepix':_("saves a picture to the Sugar Journal"),
     'scale':_("holds current scale value"),
     'setcolor':_("sets color of the line drawn by the turtle"),

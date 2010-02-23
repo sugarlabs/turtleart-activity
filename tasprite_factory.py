@@ -59,6 +59,7 @@ class SVG:
         self._porch_y = self._innie_y1+self._innie_y2+4*self._stroke_width
         self._expand_x = 0
         self._expand_y = 0
+        self._no_arm = False
         self._else = False
         self._draw_innies = True
         self._hide = False
@@ -417,9 +418,13 @@ class SVG:
         svg += self._line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
         svg += self._do_tab()
-        svg += self._inverse_corner(-1, 1, 90, 0, 0)
-        svg += self._rline_to(0, self._expand_y)
-        svg += self._rline_to(-self._radius, 0)
+        if self._no_arm:
+            svg += self._rline_to(-self._radius-self._stroke_width, 0)
+            svg += self._corner(-1, -1)
+        else:
+            svg += self._inverse_corner(-1, 1, 90, 0, 0)
+            svg += self._rline_to(0, self._expand_y)
+            svg += self._rline_to(-self._radius, 0)
         svg += self._close_path()
         self._calculate_w_h()
         svg += self._style()
@@ -536,6 +541,9 @@ class SVG:
 
     def set_else(self, flag=False):
         self._else = flag
+
+    def set_no_arm(self, flag=True):
+        self._no_arm = flag
 
     #
     # Exotic methods
@@ -936,6 +944,17 @@ def close_file(f):
 
 def generator(datapath):
 
+    svg0 = SVG()
+    f = open_file(datapath, "basic.svg")
+    svg0.set_scale(2)
+    svg0.set_tab(True)
+    svg0.set_slot(True)
+    svg0.set_no_arm(True)
+    svg_str = svg0.sandwich_top()
+    f.write(svg_str)
+    close_file(f)
+
+    """
     svgt = SVG()
     svgt.set_orientation(180)
     f = open_file(datapath, "turtle180.svg")
@@ -943,15 +962,6 @@ def generator(datapath):
     f.write(svg_str)
     close_file(f)
 
-    """
-    svg0 = SVG()
-    f = open_file(datapath, "basic.svg")
-    svg0.set_scale(2)
-    svg0.set_tab(True)
-    svg0.set_slot(True)
-    svg_str = svg0.basic_block()
-    f.write(svg_str)
-    close_file(f)
 
     svg2 = SVG()
     f = open_file(datapath, "box-test.svg")

@@ -288,7 +288,7 @@ class Block:
         elif self.name in BASIC_STYLE_HEAD:
             self._make_basic_style_head(svg)
         elif self.name in BASIC_STYLE_EXTENDED:
-            self._make_basic_style_extended(svg)
+            self._make_basic_style(svg, 16)
         elif self.name in BASIC_STYLE_HEAD_1ARG:
             self._make_basic_style_head_1arg(svg)
         elif self.name in BASIC_STYLE_TAIL:
@@ -335,6 +335,8 @@ class Block:
             self._make_flow_style_else(svg)
         elif self.name in COLLAPSIBLE_TOP:
             self._make_collapsible_style_top(svg)
+        elif self.name in COLLAPSIBLE_TOP_NO_ARM:
+            self._make_collapsible_style_top(svg, True)
         elif self.name in COLLAPSIBLE_BOTTOM:
             self._make_collapsible_style_bottom(svg)
         elif self.name in PORTFOLIO_STYLE_2x2:
@@ -358,14 +360,8 @@ class Block:
                     self.colors = COLORS[p]
         self.svg.set_colors(self.colors)
 
-    def _make_basic_style(self, svg):
-        self.svg.expand(self.dx+self.ex, self.ey)
-        self._make_basic_block(svg)
-        self.docks = [['flow',True,self.svg.docks[0][0],self.svg.docks[0][1]],
-                      ['flow',False,self.svg.docks[1][0],self.svg.docks[1][1]]]
-
-    def _make_basic_style_extended(self, svg):
-        self.svg.expand(self.dx+16+self.ex, 16+self.ey)
+    def _make_basic_style(self, svg, extension=0):
+        self.svg.expand(self.dx+self.ex+extension, self.ey+extension)
         self._make_basic_block(svg)
         self.docks = [['flow',True,self.svg.docks[0][0],self.svg.docks[0][1]],
                       ['flow',False,self.svg.docks[1][0],self.svg.docks[1][1]]]
@@ -464,8 +460,8 @@ class Block:
         self.svg.set_slot(False)
         self._make_basic_block(svg)
         """
-        NOTE: The "outie" is added last, so the dock order in the NUMBER_STYLE
-        needs to be modified.
+        NOTE: The "outie" is added last, so the dock order in NUMBER_STYLE
+              blocks needs to be modified.
         """
         self.docks = [['number', True, self.svg.docks[2][0],
                                        self.svg.docks[2][1]],
@@ -662,8 +658,9 @@ class Block:
                       ['flow', False, self.svg.docks[4][0],
                                       self.svg.docks[4][1], ']']]
 
-    def _make_collapsible_style_top(self, svg):
+    def _make_collapsible_style_top(self, svg, no_arm=False):
         self.svg.expand(self.dx+self.ex, self.ey)
+        self.svg.set_no_arm(no_arm)
         self._make_collapsible_top_block(svg)
         self.docks = [['flow', True, self.svg.docks[0][0],
                                      self.svg.docks[0][1]],

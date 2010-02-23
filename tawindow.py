@@ -1450,7 +1450,7 @@ class TurtleArtWindow():
     def _uncollapse_forks(self, top, looping=False):
         if top == None:
             return
-        if looping and top.name == 'sandwichtop':
+        if looping and top.name == 'sandwichtop' or top.name == 'sandwichtop2':
             self._restore_stack(top)
             return 
         if len(top.connections) == 0:
@@ -1459,11 +1459,11 @@ class TurtleArtWindow():
         while b is not None:
             if b.name in COLLAPSIBLE:
                 return
-            if b.name == 'sandwichtop':
+            if b.name == 'sandwichtop' or b.name == 'sandwichtop2':
                 self._restore_stack(b)            
                 return
             # Follow a fork
-            if b.name in ['repeat', 'if', 'ifelse', 'forever', 'while']:
+            if b.name in ['repeat','if','ifelse','forever','while','until']:
                top = self._find_sandwich_top_below(
                                             b.connections[len(b.connections)-2])
                if top is not None:
@@ -1488,7 +1488,7 @@ class TurtleArtWindow():
             if b.name in ['repeat', 'if', 'ifelse', 'forever', 'while']:
                 if blk != b.connections[len(b.connections)-1]:
                     return None
-            if b.name == 'sandwichtop':
+            if b.name == 'sandwichtop' or b.name == 'sandwichtop2':
                 return b
             blk = b
             b = b.connections[0]
@@ -1501,7 +1501,7 @@ class TurtleArtWindow():
         # Always follow the main branch of a flow: the last connection.
         b = blk.connections[len(blk.connections)-1]
         while b is not None:
-            if b.name == 'sandwichtop':
+            if b.name == 'sandwichtop' or b.name == 'sandwichtop2':
                 return None
             if b.name in COLLAPSIBLE:
                 return b
@@ -1512,12 +1512,12 @@ class TurtleArtWindow():
     Find the sandwich top below this block.
     """
     def _find_sandwich_top_below(self, blk):
-        if blk.name == 'sandwichtop':
+        if blk.name == 'sandwichtop' or blk.name == 'sandwichtop2':
             return blk
         # Always follow the main branch of a flow: the last connection.
         b = blk.connections[len(blk.connections)-1]
         while b is not None:
-            if b.name == 'sandwichtop':
+            if b.name == 'sandwichtop' or b.name == 'sandwichtop2':
                 return b
             b = b.connections[len(b.connections)-1]
         return None
@@ -1570,7 +1570,10 @@ class TurtleArtWindow():
                     b.status = 'collapsed'
                 else:
                     b.spr.move_relative((dx, dy))
-        self._reset_stack_arm(top)
+        # Remove 'sandwichtop' arm
+        top.name = 'sandwichtop2'
+        top.refresh()
+        # self._reset_stack_arm(top)
 
     """
     Restore all the blocks between the sandwich top and sandwich bottom.
@@ -1615,6 +1618,10 @@ class TurtleArtWindow():
                     b.status = None
                 else:
                     b.spr.move_relative((dx, dy))
+
+        # Add 'sandwichtop' arm
+        top.name = 'sandwichtop'
+        top.refresh()
         self._grow_stack_arm(top)
 
     """

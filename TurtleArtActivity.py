@@ -779,7 +779,7 @@ class TurtleArtActivity(activity.Activity):
 
             palette_toolbar_button = ToolbarButton(
                     page=palette_toolbar,
-                    icon_name='paletteoff')
+                    icon_name='palette')
             palette_toolbar.show()
             toolbar_box.toolbar.insert(palette_toolbar_button, -1)
             palette_toolbar_button.show()
