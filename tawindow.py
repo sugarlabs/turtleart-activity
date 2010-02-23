@@ -1398,16 +1398,17 @@ class TurtleArtWindow():
             if self._show_button_hit(blk.spr, x, y):
                 n = len(blk.connections)
                 group = self._find_group(blk.connections[n-1])
-                if blk.name == 'myfunc2' and n == 4:
+                if blk.name == 'myfunc1arg':
                     blk.spr.labels[1] = 'f(x,y)'
                     blk.spr.labels[2] = ' '
+                    dy = blk.add_arg()
                     blk.primitive = 'myfunction2'
-                if blk.name == 'myfunc2' and n == 5:
+                    blk.name = 'myfunc2arg'
+                elif blk.name == 'myfunc2arg':
                     blk.spr.labels[1] = 'f(x,y,z)'
                     dy = blk.add_arg(False)
                     blk.primitive = 'myfunction3'
-                else:
-                    dy = blk.add_arg()
+                    blk.name = 'myfunc3arg'
                 for b in group:
                     b.spr.move_relative((0, dy))
                 blk.connections.append(blk.connections[n-1])
@@ -2359,6 +2360,10 @@ class TurtleArtWindow():
             elif btype == 'templatelist' or btype == 'list':
                 for i in range(len(b[4])-4):
                     dy = blk.add_arg()
+            elif btype == 'myfunc2arg' or btype == 'myfunc3arg':
+                    dy = blk.add_arg()
+            if btype == 'myfunc3arg':
+                    dy = blk.add_arg(False)
         elif btype in BOX_STYLE_MEDIA:
             if len(blk.values) == 0 or blk.values[0] == 'None' or\
                blk.values[0] == None:

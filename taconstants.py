@@ -124,7 +124,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2', 'box',
              'storein', 'start'],
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
-             'myfunc2',  'nop', 'addturtle', 'comment', 'print', 'cartesian',
+             'myfunc1arg',  'nop', 'addturtle', 'comment', 'print', 'cartesian',
              'width','height', 'polar', 'sandwichtop', 'sandwichbottom'],
             ['journal', 'audio', 'description', 'savepix', 'hideblocks',
              'showblocks', 'fullscreen', 'picturelist', 'picture1x1a',
@@ -177,7 +177,7 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy']
 BOX_STYLE_MEDIA =  ['description', 'audio', 'journal']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
-NUMBER_STYLE_VAR_ARG = ['myfunc2']
+NUMBER_STYLE_VAR_ARG = ['myfunc1arg', 'myfunc2arg', 'myfunc3arg']
 NUMBER_STYLE_BLOCK = ['random']
 NUMBER_STYLE_PORCH = ['minus2', 'division2', 'remainder2']
 NUMBER_STYLE_1ARG = ['sqrt', 'identity2']
@@ -205,7 +205,7 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
 # Blocks that are expandable
 #
 EXPANDABLE = ['vspace', 'hspace', 'templatelist', 'list', 'identity2',
-              'myfunc2']
+              'myfunc1arg', 'myfunc2arg', 'myfunc3arg']
 
 #
 # Blocks that are 'collapsible'
@@ -279,7 +279,9 @@ BLOCK_NAMES = {
     'list':['list'],
     'minus2':['–'],
     'myfunc':[_('Python'), 'f(x)', 'x'],
-    'myfunc2':[_('Python'), 'f(x)', 'x'],
+    'myfunc1arg':[_('Python'), 'f(x)', 'x'],
+    'myfunc2arg':[_('Python'), 'f(x,y)', ' '],
+    'myfunc3arg':[_('Python'), 'f(x,y,z)', ' '],
     'nop':[_(' ')],
     'not':[_('not')],
     'number':['100'],
@@ -410,7 +412,9 @@ PRIMITIVES = {
     'list':'bulletlist',
     'minus2':'minus',
     'myfunc':'myfunction',
-    'myfunc2':'myfunction',
+    'myfunc1arg':'myfunction',
+    'myfunc2arg':'myfunction2',
+    'myfunc3arg':'myfunction3',
     'nop':'userdefined',
     'not':'not',
     'orange':'orange',
@@ -501,8 +505,10 @@ DEFAULTS = {
     'left':[90],
     'list':['∙ ', '∙ '],
     'media':[None],
-    'myfunc':[_('x'), 100],
-    'myfunc2':[_('x'), 100],
+    'myfunc':['x', 100],
+    'myfunc1arg':['x', 100],
+    'myfunc2arg':['x+y', 100, 100],
+    'myfunc3arg':['x+y+z', 100, 100, 100],
     'nop':[100],
     'number':[100],
     'random':[0, 100],
@@ -541,7 +547,7 @@ STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
                          'template1x1', 'template1x2', 'template2x1', 'list',
                          'template2x2', 'template1x1a', 'templatelist', 'nop',
                          'print', 'stack', 'hat', 'addturtle', 'myfunc',
-                         'myfunc2']
+                         'myfunc1arg', 'myfunc2arg', 'myfunc3arg']
 
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
                 'storeinbox2']
@@ -679,7 +685,9 @@ HELP_STRINGS = {
     'less2':_("logical less-than operator"),
     'minus2':_("subtracts bottom numeric input from top numeric input"),
     'myfunc':_("a programmable block: used to add advanced math equations, e.g., sin(x)"),
-    'myfunc2':_("a programmable block: used to add advanced math equations, e.g., sin(x)"),
+    'myfunc1arg':_("a programmable block: used to add advanced single-valriable math equations, e.g., sin(x)"),
+    'myfunc2arg':_("a programmable block: used to add advanced multi-variable math equations, e.g., sqrt(x*x+y*y)"),
+    'myfunc3arg':_("a programmable block: used to add advanced multi-varialble math equations, e.g., sin(x+y+z)"),
     'next':_('displays next palette'),
     'nop':_("runs code found in the tamyblock.py module found in the Journal"),
     'not':_("logical NOT operator"),
