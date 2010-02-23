@@ -83,7 +83,7 @@ class Turtles:
     def get_pixbufs(self):
         if self.default_pixbufs == []:
              self.default_pixbufs = generate_turtle_pixbufs(
-                                  ["#008000", "#00A000", "#D0D000", "#808000"])
+                                  ["#008000", "#00A000"])
         return(self.default_pixbufs)
 
 #
@@ -106,12 +106,7 @@ class Turtle:
         if colors is None:
             self.shapes = turtles.get_pixbufs()
         else:
-            if len(colors) == 2:
-                self.colors = colors[:]
-                self.colors.append(colors[0])
-                self.colors.append(colors[1])
-            elif len(colors) == 4:
-                self.colors=colors[:]
+            self.colors = colors[:]
             self.shapes = generate_turtle_pixbufs(self.colors)
 
         self.spr = Sprite(turtles.sprite_list, 0, 0, self.shapes[0])

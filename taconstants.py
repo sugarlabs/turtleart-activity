@@ -189,6 +189,7 @@ FLOW_STYLE = ['forever']
 FLOW_STYLE_TAIL = ['hspace']
 FLOW_STYLE_1ARG = ['repeat']
 FLOW_STYLE_BOOLEAN = ['if', 'while', 'until']
+FLOW_STYLE_WHILE = ['while2']
 FLOW_STYLE_ELSE = ['ifelse']
 COLLAPSIBLE_TOP = ['sandwichtop']
 COLLAPSIBLE_BOTTOM = ['sandwichbottom']
@@ -353,6 +354,7 @@ BLOCK_NAMES = {
     'vspace':[' '],
     'wait':[_('wait')],
     'while':[_('while')],
+    'while2':[_('while')],
     'width':[_('width')],
     'write':[_('write')],
     'xcor':[_('xcor')],
@@ -470,6 +472,7 @@ PRIMITIVES = {
     'topy':'topy',
     'vspace':'nop',
     'wait':'wait',
+    'while2':'while',
     'width':'hres',
     'write':'write',
     'xcor':'xcor',

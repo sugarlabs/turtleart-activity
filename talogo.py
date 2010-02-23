@@ -378,6 +378,7 @@ class LogoCode:
         'video':[1, lambda self,x: self.play_movie(x)],
         'vres':[0, lambda self: self.tw.canvas.height/self.tw.coord_scale],
         'wait':[1, self.prim_wait, True],
+        # 'while':[2, self.prim_while, True],
         'write':[2, lambda self, x,y: self.write(self, x,y)],
         'xcor':[0, lambda self: self.tw.canvas.xcor/self.tw.coord_scale],
         'ycor':[0, lambda self: self.tw.canvas.ycor/self.tw.coord_scale],
@@ -686,7 +687,7 @@ class LogoCode:
             self.arglist.append(self.iresult)
         if self.cfun.rprim:
             if type(self.cfun.fcn) == self.listtype:
-                # print "evalsym rprim list: ", token
+                print "evalsym rprim list: ", token
                 self.icall(self.ufuncall, self.cfun.fcn)
                 yield True
             else:
@@ -831,6 +832,18 @@ class LogoCode:
                 break
         self.ireturn()
         yield True
+
+    '''
+    def prim_while(self, list1, list2):
+        list = [self.intern('if')]
+        for i in list1:
+            list.append(i)
+        list.append(list2)
+        while self.icall(self.evline, list[:]):
+            yield True
+        self.ireturn()
+        yield True
+    '''
 
     def prim_if(self, bool, list):
         if bool:
