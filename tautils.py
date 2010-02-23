@@ -167,7 +167,8 @@ def audio_media_type(name):
     return name.endswith(('.ogg', '.oga', '.m4a'))
 
 def image_media_type(name):
-    return name.endswith(('.png', '.jpg', '.jpeg', '.gif', '.tiff', '.tif'))
+    return name.endswith(('.png', '.jpg', '.jpeg', '.gif', '.tiff', '.tif',
+                          '.svg'))
 
 def round_int(n):
     if int(float(n)) == n:
