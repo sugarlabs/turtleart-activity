@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-29 18:17-0400\n"
+"PO-Revision-Date: 2010-02-24 23:17+0200\n"
 "Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: fr\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Pootle 1.2.1\n"
+"X-Generator: Pootle 2.0.1\n"
 
 #: activity/activity.info:2
 #: /home/walter/Desktop/turtleart-activity/taexporthtml.py:229
@@ -112,7 +112,7 @@ msgid ""
 "move turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr ""
 "déplacer la tortue sur la position xcor, ycor; (0, 0) correspond au centre "
-"de l'écran"
+"de l'écran."
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:40
 msgid "set the heading of the turtle (0 is towards the top of the screen.)"
@@ -652,7 +652,6 @@ msgid "Paste"
 msgstr "Coller"
 
 #: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1007
-#, fuzzy
 msgid "Save Logo"
 msgstr "Enregistrer en Logo"
 
@@ -871,9 +870,8 @@ msgid "left"
 msgstr "gauche"
 
 #: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:40
-#, fuzzy
 msgid "Extras"
-msgstr "Outils"
+msgstr "Extras"
 
 #: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:41
 #: /home/walter/Desktop/turtleart-activity/svg/kbinput.py:40
