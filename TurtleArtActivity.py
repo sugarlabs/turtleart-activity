@@ -782,6 +782,7 @@ class TurtleArtActivity(activity.Activity):
                     icon_name='palette')
             palette_toolbar.show()
             toolbar_box.toolbar.insert(palette_toolbar_button, -1)
+            palette_toolbar_button.set_expanded(True)
             palette_toolbar_button.show()
 
             separator = gtk.SeparatorToolItem()
