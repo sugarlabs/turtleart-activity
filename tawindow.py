@@ -1549,6 +1549,8 @@ class TurtleArtWindow():
                 b.svg.set_hide(False)
                 b._dx = 0
                 b._ey = 0
+                b.spr.set_label(' ')
+                b.resize()
                 b.spr.set_label(_('click to open'))
                 b.resize()
 
