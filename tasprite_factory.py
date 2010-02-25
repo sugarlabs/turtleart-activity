@@ -78,7 +78,7 @@ class SVG:
         (x, y) = self._calculate_x_y()
         self.margins[2] = 0
         self.margins[3] = 0
-        svg = self._new_path(x, y)
+        svg = self.new_path(x, y)
         svg += self._corner(1, -1)
         svg += self._do_slot()
         svg += self._rline_to(self._expand_x, 0)
@@ -93,7 +93,7 @@ class SVG:
                 svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
         svg += self._rline_to(0, self._expand_y)
         svg += self._corner(-1, 1)
-        svg += self._line_to(xx, self._y)
+        svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
         if self._tab:
             svg += self._do_tab()
@@ -102,12 +102,12 @@ class SVG:
         svg += self._corner(-1, -1)
         svg += self._rline_to(0, -self._expand_y)
         if True in self._innie:
-            svg += self._line_to(x, self._radius+self._innie_y2+\
+            svg += self.line_to(x, self._radius+self._innie_y2+\
                                     self._stroke_width/2.0)
             svg += self._do_outie()
         self._calculate_w_h()
         svg += self._close_path()
-        svg += self._style()
+        svg += self.style()
         if self._show is True:
             svg += self._show_dot()
         if self._hide is True:
@@ -120,7 +120,7 @@ class SVG:
         (x, y) = self._calculate_x_y()
         self.margins[2] = 0
         self.margins[3] = 0
-        svg = self._new_path(x, y)
+        svg = self.new_path(x, y)
         svg += self._corner(1, -1)
         svg += self._do_slot()
         xx = self._x
@@ -154,7 +154,7 @@ class SVG:
         svg += self._inverse_corner(-1, 1, 90, 0, 0, True, False)
         svg += self._rline_to(0, self._expand_y)
         svg += self._corner(-1, 1, 90, 0, 1, False, True)
-        svg += self._line_to(xx, self._y)
+        svg += self.line_to(xx, self._y)
         if self._tab:
             svg += self._do_tab()
         else:
@@ -162,11 +162,11 @@ class SVG:
         svg += self._corner(-1, -1)
         svg += self._rline_to(0, -self._expand_y)
         if True in self._innie:
-            svg += self._line_to(x, self._radius+self._innie_y2+\
+            svg += self.line_to(x, self._radius+self._innie_y2+\
                                     self._stroke_width)
         svg += self._close_path()
         self._calculate_w_h()
-        svg += self._style()
+        svg += self.style()
         if self._hide is True:
             svg += self._hide_dot()
         if self._show is True:
@@ -181,7 +181,7 @@ class SVG:
         self.margins[2] = 0
         self.margins[3] = 0
         x += self._innie_x1+self._innie_x2
-        svg = self._new_path(x, y)
+        svg = self.new_path(x, y)
         svg += self._corner(1, -1)
         svg += self._do_slot()
         xx = self._x
@@ -195,7 +195,7 @@ class SVG:
             else:
                 svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
         svg += self._corner(-1, 1)
-        svg += self._line_to(xx, self._y)
+        svg += self.line_to(xx, self._y)
         svg += self._do_tab()
         svg += self._corner(-1, -1)
         for i in range(len(self._innie)):
@@ -206,7 +206,7 @@ class SVG:
                 svg += self._rline_to(0, -2*self._innie_y2-self._innie_spacer)
         svg += self._close_path()
         self._calculate_w_h()
-        svg += self._style()
+        svg += self.style()
         svg += self._footer()
         return self._header() + svg
 
@@ -217,16 +217,16 @@ class SVG:
         self.margins[1] = int((self._stroke_width+0.5)*self._scale)
         self.margins[2] = 0
         self.margins[3] = 0
-        svg = self._new_path(x, self._stroke_width/2.0)
+        svg = self.new_path(x, self._stroke_width/2.0)
         svg += self._rline_to(self._expand_x, 0)
         svg += self._rline_to(0, 2*self._radius+self._innie_y2+self._expand_y)
         svg += self._rline_to(-self._expand_x, 0)
-        svg += self._line_to(x, self._radius+self._innie_y2+\
+        svg += self.line_to(x, self._radius+self._innie_y2+\
                                 self._stroke_width/2.0)
         svg += self._do_outie()
         svg += self._close_path()
         self._calculate_w_h()
-        svg += self._style()
+        svg += self.style()
         svg += self._footer()
         return self._header() + svg
 
@@ -245,7 +245,7 @@ class SVG:
                                 self._innie_spacer)
         svg += self._do_boolean()
         svg += self._rline_to(0,self._radius/2.0)
-        svg += self._line_to(xx, self._y)
+        svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
         svg += self._end_boolean()
         self.margins[0] = int((self._radius+self._stroke_width+0.5)*self._scale)
@@ -264,7 +264,7 @@ class SVG:
         svg += self._rline_to(0,self._radius/2.0)
         svg += self._do_boolean()
         svg += self._rline_to(0,self._radius/2.0)
-        svg += self._line_to(xx, self._y)
+        svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
         svg += self._end_boolean()
         self.margins[0] = int((self._radius+self._stroke_width+0.5)*self._scale)
@@ -294,7 +294,7 @@ class SVG:
            svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
         svg += self._do_innie()
         svg += self._rline_to(0, self._radius)
-        svg += self._line_to(xx, self._y)
+        svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
         svg += self._end_boolean()
         self.margins[0] = int((self._radius+self._stroke_width)*self._scale)
@@ -406,7 +406,7 @@ class SVG:
         self.margins[1] = int((self._stroke_width+0.5)*self._scale)
         self.margins[2] = 0
         self.margins[3] = 0
-        svg = self._new_path(x, y)
+        svg = self.new_path(x, y)
         svg += self._corner(1, -1)
         svg += self._rline_to(self._radius+self._stroke_width, 0)
         svg += self._do_slot()
@@ -415,7 +415,7 @@ class SVG:
         svg += self._corner(1, 1)
         svg += self._do_innie()
         svg += self._corner(-1, 1)
-        svg += self._line_to(xx, self._y)
+        svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
         svg += self._do_tab()
         if self._no_arm:
@@ -427,7 +427,7 @@ class SVG:
             svg += self._rline_to(-self._radius, 0)
         svg += self._close_path()
         self._calculate_w_h()
-        svg += self._style()
+        svg += self.style()
         svg += self._footer()
         return self._header() + svg
 
@@ -438,7 +438,7 @@ class SVG:
         self.margins[1] = int((self._stroke_width+0.5)*self._scale)
         self.margins[2] = 0
         self.margins[3] = 0
-        svg = self._new_path(x, y)
+        svg = self.new_path(x, y)
         svg += self._rline_to(self._radius, 0)
         svg += self._rline_to(0, self._expand_y)
         svg += self._inverse_corner(1, 1, 90, 0, 0)
@@ -450,7 +450,7 @@ class SVG:
         svg += self._corner(-1, -1)
         svg += self._close_path()
         self._calculate_w_h()
-        svg += self._style()
+        svg += self.style()
         self._hide_x = x + self._radius/2
         self._hide_y = y + self._radius/2
         if self._hide is True:
@@ -623,7 +623,7 @@ class SVG:
         else:
             return "   </g>\n</svg>\n"
 
-    def _style(self):
+    def style(self):
         if self._gradiant is True:
             fill = "url(#linearGradient5678)"
         else:
@@ -655,7 +655,7 @@ class SVG:
         if self._y > self._max_y:
             self._max_y = self._y
 
-    def _line_to(self, x, y):
+    def line_to(self, x, y):
         if self._x == x and self._y == y:
             return ""
         else:
@@ -668,11 +668,11 @@ class SVG:
         if dx == 0 and dy == 0:
             return ""
         else:
-            return self._line_to(self._x+dx, self._y+dy)
+            return self.line_to(self._x+dx, self._y+dy)
 
-    def _arc_to(self, x, y, r, a=90, l=0, s=1):
+    def arc_to(self, x, y, r, a=90, l=0, s=1):
         if r == 0:
-            return self._line_to(x, y)
+            return self.line_to(x, y)
         else:
             self._x = x
             self._y = y
@@ -686,7 +686,7 @@ class SVG:
         else:
             x = self._x + sign_x*self._radius
             y = self._y + sign_y*self._radius
-            return self._arc_to(x, y, self._radius, a, l, s)
+            return self.arc_to(x, y, self._radius, a, l, s)
 
     def _inverse_corner(self, sign_x, sign_y, a=90, l=0, s=1, start=True,
                                                                  end=True):
@@ -698,7 +698,7 @@ class SVG:
                 svg_str =self._rline_to(0, sign_y*+(r2-self._stroke_width))
         x = self._x + sign_x*r2
         y = self._y + sign_y*r2
-        svg_str += self._arc_to(x, y, r2, a, l, s)
+        svg_str += self.arc_to(x, y, r2, a, l, s)
         if end:
             if sign_x*sign_y == -1:
                 svg_str +=self._rline_to(0, sign_y*(r2-self._stroke_width))
@@ -726,7 +726,7 @@ class SVG:
                     svg_str +=self._rline_to(0, sign_y*r2)
             x = self._x + sign_x*r2
             y = self._y + sign_y*r2
-            svg_str += self._arc_to(x, y, r2, a, l, s)
+            svg_str += self.arc_to(x, y, r2, a, l, s)
             if end:
                 if sign_x*sign_y == 1:
                     svg_str +=self._rline_to(0, sign_y*r2)
@@ -734,7 +734,7 @@ class SVG:
                     svg_str +=self._rline_to(sign_x*r2, 0)
         return svg_str
 
-    def _new_path(self, x, y):
+    def new_path(self, x, y):
         self._min_x = x
         self._min_y = y
         self._max_x = x
@@ -869,7 +869,7 @@ class SVG:
             self._corner(1, 1))
 
     def _start_boolean(self, xoffset, yoffset):
-        svg = self._new_path(xoffset, yoffset)
+        svg = self.new_path(xoffset, yoffset)
         self._radius -= self._stroke_width
         self.docks.append((int(self._x*self._scale), int(self._y*self._scale)))
         svg += self._rarc_to(1, -1)
@@ -893,7 +893,7 @@ class SVG:
         self._radius += self._stroke_width
         svg += self._close_path()
         self._calculate_w_h()
-        svg += self._style()
+        svg += self.style()
         return svg + self._footer()
 
     def _calculate_w_h(self):

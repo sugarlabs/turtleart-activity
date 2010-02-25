@@ -237,7 +237,8 @@ class Block:
         self._set_margins()
         self._set_label_attributes()
 
-        if self.name in CONTENT_BLOCKS and len(self.values) > 0:
+        if (self.name == 'number' or self.name == 'string') and\
+           len(self.values) > 0:
             for i, v in enumerate(self.values):
                 if v is not None:
                     self._set_labels(i, str(v))

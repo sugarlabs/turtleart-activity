@@ -22,9 +22,10 @@
 import gtk
 from math import sin, cos, pi
 from sprites import Sprite
+# from tasprite_factory import SVG
 import pango
 
-from taconstants import *
+from taconstants import CANVAS_LAYER, DEFAULT_TURTLE
 
 def wrap100(n):
     n = int(n)
@@ -77,6 +78,11 @@ class TurtleGraphics:
         self.gc = self.canvas.images[0].new_gc()
         self.tw.active_turtle.show()
         self.shade = 0
+        """
+        self.svg = SVG()
+        self.svg.set_fill_color('none')
+        self.svgstr = ''
+        """
         self.clearscreen()
 
     def clearscreen(self):
@@ -99,7 +105,11 @@ class TurtleGraphics:
             self.xcor, self.ycor, self.heading = 0, 0, 0
             self.move_turtle()
             self.turn_turtle()
-        self.set_turtle(1) # default turtle has key 1
+        self.set_turtle(DEFAULT_TURTLE)
+        """
+        print self.svgstr
+        self.svgstr = ''
+        """
 
     def forward(self, n):
         n *= self.tw.coord_scale
@@ -113,6 +123,11 @@ class TurtleGraphics:
         if self.pendown:
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
         self.move_turtle()
+        """
+        self.svgstr += self.svg.new_path(oldx, oldy)
+        self.svgstr += self.svg.line_to(self.xcor, self.ycor)
+        self.svgstr += self.svg.style()
+        """
 
     def seth(self, n):
         try:
@@ -198,6 +213,9 @@ class TurtleGraphics:
         self.tw.active_turtle.set_pen_size(ps)
         self.gc.set_line_attributes(int(self.pensize*self.tw.coord_scale),
                      gtk.gdk.LINE_SOLID, gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
+        """
+        self.svg.set_stroke_width(self.pensize)
+        """
 
     def setcolor(self,c):
         try:
@@ -239,6 +257,9 @@ class TurtleGraphics:
         self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
         self.invalt(0,0,self.width,self.height)
         self.setcolor(oldc); self.setshade(olds)
+        """
+        self.svgstr = ''
+        """
 
     def set_fgcolor(self):
         sh = (wrap100(self.shade)-50)/50.0
@@ -247,6 +268,11 @@ class TurtleGraphics:
         r,g,b = calc_shade(r,sh),calc_shade(g,sh),calc_shade(b,sh)
         self.tw.rgb = [r>>8,g>>8,b>>8]
         self.tw.fgcolor = self.tw.cm.alloc_color(r,g,b)
+        """
+        self.svg.set_stroke_color("#%02x%02x%02x" % (self.tw.rgb[0],
+                                                     self.tw.rgb[1],
+                                                     self.tw.rgb[2]))
+        """
 
     def set_textcolor(self):
         sh = (wrap100(self.shade)-50)/50.0

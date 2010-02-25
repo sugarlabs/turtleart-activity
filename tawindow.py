@@ -1372,6 +1372,8 @@ class TurtleArtWindow():
             blk.spr.labels[0] += CURSOR
         elif blk.name in BOX_STYLE_MEDIA:
             self._import_from_journal(self.selected_blk)
+            if blk.name == 'journal' and self.running_sugar:
+                self._load_description_block(blk)
         elif blk.name=='identity2' or blk.name=='hspace':
             group = self._find_group(blk)
             if self._hide_button_hit(blk.spr, x, y):
@@ -1872,6 +1874,32 @@ class TurtleArtWindow():
             if fname is None:
                 return
             self._update_media_icon(blk, fname)
+
+    """
+    When we load a journal block, look for a corresponding description block
+    """
+    def _load_description_block(self, blk):
+        if blk == None or blk.name != 'journal' or len(blk.values) == 0 or\
+           blk.connections[0] is None:
+            return
+        cblk = blk.connections[0]
+        dblk = self._find_blk_below(cblk, 'description')
+        # Only autoupdate the block if it is empty
+        if dblk != None and (len(dblk.values) == 0 or dblk.values[0] == None):
+            # Copy the dsobject id and update the icon
+            self._update_media_icon(dblk, None, blk.values[0])
+
+    """
+    Find a specific block below this block.
+    """
+    def _find_blk_below(self, blk, name):
+        if blk == None or len(blk.connections) == 0:
+            return
+        group = self._find_group(blk)
+        for b in group:
+            if b.name == name:
+                return b
+        return None
 
     """
     Update the icon on a 'loaded' media block.
