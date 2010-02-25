@@ -144,6 +144,9 @@ BOX_COLORS = {'red':["#FF0000","#A00000"],'orange':["#FFD000","#AA8000"],
               'cyan':["#00FFFF","#00A0A0"],'blue':["#0000FF","#000080"],
               'purple':["#FF00FF","#A000A0"]}
 
+#
+# Misc. parameters
+#
 PALETTE_HEIGHT = 120
 PALETTE_WIDTH = 175
 SELECTOR_WIDTH = 55
@@ -153,6 +156,7 @@ SELECTED_STROKE_WIDTH = 1.0
 STANDARD_STROKE_WIDTH = 1.0
 BLOCK_SCALE = 2.0
 PALETTE_SCALE = 1.5
+DEFAULT_TURTLE = 1
 
 #
 # Block-style definitions
@@ -206,7 +210,7 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
 # Blocks that are expandable
 #
 EXPANDABLE = ['vspace', 'hspace', 'templatelist', 'list', 'identity2',
-              'myfunc1arg', 'myfunc2arg', 'myfunc3arg']
+              'myfunc1arg', 'myfunc2arg']
 
 #
 # Blocks that are 'collapsible'

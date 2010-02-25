@@ -1409,6 +1409,8 @@ class TurtleArtWindow():
                     dy = blk.add_arg(False)
                     blk.primitive = 'myfunction3'
                     blk.name = 'myfunc3arg'
+                else:
+                    dy = blk.add_arg()
                 for b in group:
                     b.spr.move_relative((0, dy))
                 blk.connections.append(blk.connections[n-1])
