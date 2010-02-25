@@ -1115,7 +1115,10 @@ class TurtleArtWindow():
         for b in blocks:
             if self._collapsed(b):
                 self._collapse_stack(self._find_sandwich_top(b))
-        return blocks[0]
+        if len(blocks) > 0:
+            return blocks[0]
+        else:
+            return None
 
     """
     Adjust the dock x,y positions
