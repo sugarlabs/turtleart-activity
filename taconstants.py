@@ -210,7 +210,7 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
 # Blocks that are expandable
 #
 EXPANDABLE = ['vspace', 'hspace', 'templatelist', 'list', 'identity2',
-              'myfunc1arg', 'myfunc2arg']
+              'myfunc1arg', 'myfunc2arg', 'myfunc3arg']
 
 #
 # Blocks that are 'collapsible'
