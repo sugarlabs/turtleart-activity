@@ -1111,10 +1111,16 @@ class TurtleArtWindow():
         for b in blocks:
             self._adjust_dock_positions(b)
 
-        # Look for any stacks that need to be collapsed.
+        # Look for any stacks that need to be collapsed or sandwiched
         for b in blocks:
             if self._collapsed(b):
                 self._collapse_stack(self._find_sandwich_top(b))
+            elif b.name == 'sandwichbottom' and self._collapsible(b):
+                b.svg.set_hide(True)
+                b.svg.set_show(False)
+                b.refresh()
+                self._grow_stack_arm(self._find_sandwich_top(b))
+
         if len(blocks) > 0:
             return blocks[0]
         else:
