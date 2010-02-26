@@ -35,7 +35,23 @@ def myblock(lc, x):
     #
     ###########################################################################
 
-    # lc.tw.fgcolor = lc.tw.cm.alloc_color(x[0],x[1],x[2])
+    # r = int(x[0])
+    # while r < 0:
+    #     r += 256
+    # while r > 255:
+    #     r -= 256
+    # g = int(x[1])
+    # while g < 0:
+    #     g += 256
+    # while g > 255:
+    #     g -= 256
+    # b = int(x[0])
+    # while b < 0:
+    #     b += 256
+    # while b > 255:
+    #     b -= 256
+    # rgb = "#%02x%02x%02x" % (r,g,b)
+    # lc.tw.fgcolor = lc.tw.cm.alloc_color(rgb)
     # return
 
     ###########################################################################
@@ -45,22 +61,22 @@ def myblock(lc, x):
     ###########################################################################
 
     try:  # make sure x is a number
-       x = float(x)
+        x = float(x)
     except ValueError:
         return
-
-    pen = lc.tw.canvas.pendown              # save current turtle pen state
-
-    dist = 0
-    while dist+lc.tw.canvas.pensize < x:    # repeat drawing dots
+    if lc.tw.canvas.pendown:
+        dist = 0
+        while dist+lc.tw.canvas.pensize < x:   # repeat drawing dots
+            lc.tw.canvas.setpen(True)
+            lc.tw.canvas.forward(1)
+            lc.tw.canvas.setpen(False)
+            lc.tw.canvas.forward((lc.tw.canvas.pensize*2)-1)
+            dist += (lc.tw.canvas.pensize*2)
+        lc.tw.canvas.forward(x-dist)           # make sure we have moved exactly x
         lc.tw.canvas.setpen(True)
-        lc.tw.canvas.forward(1)
-        lc.tw.canvas.setpen(False)
-        lc.tw.canvas.forward((lc.tw.canvas.pensize*2)-1)
-        dist += (lc.tw.canvas.pensize*2)
-    lc.tw.canvas.forward(x-dist)           # make sure we have moved x
-
-    lc.tw.canvas.setpen(pen)               # restore pen state
+    else:
+        lc.tw.canvas.forward(x)
+    return
 
     ###########################################################################
     #
@@ -74,7 +90,7 @@ def myblock(lc, x):
     # else:
     #     X = x.upper()
     # lc.heap.append(X)
-
+    # return
 
     ###########################################################################
     #
@@ -88,7 +104,7 @@ def myblock(lc, x):
     # lc.heap.append(localtime().tm_hour)
     # lc.heap.append(localtime().tm_min)
     # lc.heap.append(localtime().tm_sec)
-
+    # return
 
     ###########################################################################
     #
@@ -103,8 +119,9 @@ def myblock(lc, x):
     # g = int((val*(100-x) + lc.tw.rgb[1]*x)/100)
     # b = int((val*(100-x) + lc.tw.rgb[2]*x)/100)
     # reallocate current color
-    # lc.tw.fgcolor = lc.tw.cm.alloc_color(r<<8,g<<8,b<<8)
-
+    # rgb = "#%02x%02x%02x" % (r,g,b)
+    # lc.tw.fgcolor = lc.tw.cm.alloc_color(rgb)
+    # return
 
     ###########################################################################
     #
@@ -113,6 +130,6 @@ def myblock(lc, x):
     ###########################################################################
 
     # lc.tw.save_as_image(str(x))
+    # return
 
-    return
 
