@@ -307,7 +307,7 @@ class TurtleArtWindow():
     """
     def set_userdefined(self):
         for blk in self.just_blocks():
-            if blk.name == 'nop':
+            if blk.name in PYTHON_SKIN:
                 x, y = self._calc_image_offset('pythonon', blk.spr)
                 blk.set_image(self.media_shapes['pythonon'], x, y)
                 self._resize_skin(blk)
@@ -555,7 +555,7 @@ class TurtleArtWindow():
                     self._proto_skin(name[8:], n, i)
                 elif name[:7] == 'picture':
                     self._proto_skin(name[7:], n, i)
-                elif name == 'nop':
+                elif name in PYTHON_SKIN:
                     self._proto_skin('pythonsmall', n, i)
 
         self._layout_palette(n)
@@ -983,7 +983,7 @@ class TurtleArtWindow():
                            'block', [], self.block_scale)
 
         # Add a 'skin' to some blocks
-        if name == 'nop':
+        if name in PYTHON_SKIN:
             if self.nop == 'pythonloaded':
                 self._block_skin('pythonon', newblk)
             else:
@@ -1405,7 +1405,7 @@ class TurtleArtWindow():
                 if b != blk:
                     b.spr.move_relative((0, dy*blk.scale))
             self._grow_stack_arm(self._find_sandwich_top(blk))
-        elif blk.name in EXPANDABLE:
+        elif blk.name in EXPANDABLE or blk.name == 'nop':
             if self._show_button_hit(blk.spr, x, y):
                 n = len(blk.connections)
                 group = self._find_group(blk.connections[n-1])
@@ -1420,6 +1420,14 @@ class TurtleArtWindow():
                     dy = blk.add_arg(False)
                     blk.primitive = 'myfunction3'
                     blk.name = 'myfunc3arg'
+                elif blk.name == 'userdefined':
+                    dy = blk.add_arg()
+                    blk.primitive = 'userdefined2'
+                    blk.name = 'userdefined2args'
+                elif blk.name == 'userdefined2args':
+                    dy = blk.add_arg(False)
+                    blk.primitive = 'userdefined3'
+                    blk.name = 'userdefined3args'
                 else:
                     dy = blk.add_arg()
                 for b in group:
@@ -1438,6 +1446,8 @@ class TurtleArtWindow():
                 argblk.connections = [blk, None]
                 blk.connections[n-1] = argblk
                 self._grow_stack_arm(self._find_sandwich_top(blk))
+            elif blk.name in PYTHON_SKIN and self.myblock==None:
+                self._import_py()
             else:
                 self._run_stack(blk)
         elif blk.name in COLLAPSIBLE:
@@ -1446,8 +1456,6 @@ class TurtleArtWindow():
                 self._restore_stack(top)
             elif top is not None:
                 self._collapse_stack(top)
-        elif blk.name=='nop' and self.myblock==None:
-            self._import_py()
         else:
             self._run_stack(blk)
 
@@ -2393,12 +2401,7 @@ class TurtleArtWindow():
         # Some blocks get transformed.
         if btype == 'string':
             blk.spr.set_label(blk.values[0].replace('\n', RETURN))
-        elif btype == 'nop': 
-            if self.nop == 'pythonloaded':
-                self._block_skin('pythonon', blk)
-            else:
-                self._block_skin('pythonoff', blk)
-        elif btype in EXPANDABLE:
+        elif btype in EXPANDABLE or btype == 'nop':
             if btype == 'vspace':
                 if value is not None:
                     blk.expand_in_y(value)
@@ -2408,10 +2411,16 @@ class TurtleArtWindow():
             elif btype == 'templatelist' or btype == 'list':
                 for i in range(len(b[4])-4):
                     dy = blk.add_arg()
-            elif btype == 'myfunc2arg' or btype == 'myfunc3arg':
+            elif btype == 'myfunc2arg' or btype == 'myfunc3arg' or\
+                 btype == 'userdefined2args' or btype == 'userdefined3args':
                     dy = blk.add_arg()
-            if btype == 'myfunc3arg':
+            if btype == 'myfunc3arg' or btype == 'userdefined3args':
                     dy = blk.add_arg(False)
+            if btype in PYTHON_SKIN:
+                if self.nop == 'pythonloaded':
+                    self._block_skin('pythonon', blk)
+                else:
+                    self._block_skin('pythonoff', blk)
         elif btype in BOX_STYLE_MEDIA:
             if len(blk.values) == 0 or blk.values[0] == 'None' or\
                blk.values[0] == None:
@@ -2730,16 +2739,14 @@ class TurtleArtWindow():
             return target_w, target_h
         image_w = self.media_shapes[name].get_width()
         image_h = self.media_shapes[name].get_height()
-        if image_w > target_w or image_h > target_h:
-            scale_factor = float(target_w)/image_w
-            new_w = target_w
-            new_h = image_h*scale_factor
-            if new_h > target_h:
-                scale_factor = float(target_h)/new_h
-                new_h = target_h
-                new_w = target_w*scale_factor
-            return int(new_w), int(new_h)
-        return int(target_w), int(target_h)
+        scale_factor = float(target_w)/image_w
+        new_w = target_w
+        new_h = image_h*scale_factor
+        if new_h > target_h:
+            scale_factor = float(target_h)/new_h
+            new_h = target_h
+            new_w = target_w*scale_factor
+        return int(new_w), int(new_h)
 
     """
     Utility for calculating proto skin images
@@ -2760,7 +2767,7 @@ class TurtleArtWindow():
     Resize the 'skin' when block scale changes.
     """
     def _resize_skin(self, b):
-        if b.name == 'nop':
+        if b.name in PYTHON_SKIN:
             w, h = self._calc_w_h('pythonoff', b.spr)
             x, y = self._calc_image_offset('pythonoff', b.spr, w, h)
         elif b.name == 'journal':

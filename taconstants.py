@@ -124,8 +124,9 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2', 'box',
              'storein', 'start'],
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
-             'myfunc1arg',  'nop', 'addturtle', 'comment', 'print', 'cartesian',
-             'width','height', 'polar', 'sandwichtop', 'sandwichbottom'],
+             'myfunc1arg',  'userdefined', 'addturtle', 'comment', 'print',
+             'cartesian', 'width', 'height', 'polar', 'sandwichtop',
+             'sandwichbottom'],
             ['journal', 'audio', 'description', 'savepix', 'hideblocks',
              'showblocks', 'fullscreen', 'picturelist', 'picture1x1a',
              'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2'],
@@ -174,6 +175,8 @@ BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show', 'image',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1', 'savepix',
     'storeinbox2', 'wait', 'stack', 'push', 'nop', 'addturtle', 'comment',
     'savesvg']
+BASIC_STYLE_VAR_ARG = ['userdefined', 'userdefined2args', 'userdefined3args']
+BULLET_STYLE = ['templatelist', 'list']
 BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storein', 'write']
 BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'textcolor', 'textsize', 'box1', 'box2', 'string', 'leftpos', 'scale',
@@ -203,7 +206,6 @@ COLLAPSIBLE_BOTTOM = ['sandwichbottom']
 
 # Depreciated block styles
 PORTFOLIO_STYLE_2x2 = ['template2x2']
-BULLET_STYLE = ['templatelist', 'list']
 PORTFOLIO_STYLE_1x1 = ['template1x1', 'template1x1a']
 PORTFOLIO_STYLE_2x1 = ['template2x1']
 PORTFOLIO_STYLE_1x2 = ['template1x2']
@@ -212,7 +214,8 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
 # Blocks that are expandable
 #
 EXPANDABLE = ['vspace', 'hspace', 'templatelist', 'list', 'identity2',
-              'myfunc1arg', 'myfunc2arg', 'myfunc3arg']
+              'myfunc1arg', 'myfunc2arg', 'myfunc3arg', 'userdefined',
+              'userdefined2args', 'userdefined3args']
 
 #
 # Blocks that are 'collapsible'
@@ -232,7 +235,10 @@ CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'journal']
 #
 # These blocks get a special skin
 #
-BLOCKS_WITH_SKIN = ['journal', 'audio', 'description', 'nop']
+BLOCKS_WITH_SKIN = ['journal', 'audio', 'description', 'nop', 'userdefined',
+                    'userdefined2args', 'userdefined3args']
+
+PYTHON_SKIN = ['nop', 'userdefined', 'userdefined2args', 'userdefined3args']
 
 #
 # Block-name dictionary used for labels
@@ -364,6 +370,9 @@ BLOCK_NAMES = {
     'topy':[_('picture top')],
     'turtle':[_('turtle')],
     'until':[_('until')],
+    'userdefined':[_(' ')],
+    'userdefined2args':[_(' ')],
+    'userdefined3args':[_(' ')],
     'voltage':[_('voltage')],
     'volume':[_('volume')],
     'vspace':[' '],
@@ -491,6 +500,9 @@ PRIMITIVES = {
     'titley':'titley',
     'toppos':'tpos',
     'topy':'topy',
+    'userdefined':'userdefined',
+    'userdefined2args':'userdefined2',
+    'userdefined3args':'userdefined3',
     'voltage':'voltage',
     'volume':'volume',
     'vspace':'nop',
@@ -558,6 +570,9 @@ DEFAULTS = {
     'template2x1':[_('Title'), 'None', 'None'],
     'template2x2':[_('Title'), 'None', 'None', 'None', 'None'],
     'templatelist':[_('Title'), '∙ '],
+    'userdefined':[100],
+    'userdefined2args':[100,100],
+    'userdefined3args':[100,100,100],
     'wait':[1],
     'write':[_('text'), 32]}
 
@@ -569,7 +584,8 @@ STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
                          'template2x2', 'template1x1a', 'templatelist', 'nop',
                          'print', 'stack', 'hat', 'addturtle', 'myfunc',
                          'myfunc1arg', 'myfunc2arg', 'myfunc3arg', 'comment',
-                         'sandwichtop', 'sandwichtop2']
+                         'sandwichtop', 'sandwichtop2', 'userdefined',
+                         'userdefined2args','userdefined3args']
 
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
                 'storeinbox2']
@@ -787,6 +803,9 @@ HELP_STRINGS = {
     'trash':_("Trashcan"),
     'turtle':_("Palette of turtle commands"),
     'until':_("do-until-True operator that uses boolean operators from Numbers palette"),
+    'userdefined':_("runs code found in the tamyblock.py module found in the Journal"),
+    'userdefined2args':_("runs code found in the tamyblock.py module found in the Journal"),
+    'userdefined3args':_("runs code found in the tamyblock.py module found in the Journal"),
     'voltage':_("sensor voltage"),
     'volume':_("microphone input volume"),
     'vspace':_("jogs stack down"),

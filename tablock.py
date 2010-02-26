@@ -298,8 +298,10 @@ class Block:
             self._make_basic_style_1arg(svg)
         elif self.name in BASIC_STYLE_2ARG:
             self._make_basic_style_2arg(svg)
-        elif self.name in BULLET_STYLE:
+        elif self.name in BASIC_STYLE_VAR_ARG:
             self._make_basic_style_var_arg(svg)
+        elif self.name in BULLET_STYLE:
+            self._make_bullet_style(svg)
         elif self.name in BOX_STYLE:
             self._make_box_style(svg)
         elif self.name in BOX_STYLE_MEDIA:
@@ -421,6 +423,23 @@ class Block:
                                       self.svg.docks[3][1]]]
 
     def _make_basic_style_var_arg(self, svg):
+        self.svg.expand(10+self.dx+self.ex, self.ey)
+        innie = [True]
+        for i in range(self._ei):
+            innie.append(True)
+        self.svg.set_innie(innie)
+        self._make_basic_block(svg)
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['number', False, self.svg.docks[1][0],
+                                        self.svg.docks[1][1]]]
+        for i in range(self._ei):
+            self.docks.append(['number', False, self.svg.docks[i+2][0],
+                                                self.svg.docks[i+2][1]])
+        self.docks.append(['flow', False, self.svg.docks[self._ei+2][0],
+                                      self.svg.docks[self._ei+2][1]])
+
+    def _make_bullet_style(self, svg):
         self.svg.expand(10+self.dx+self.ex, self.ey)
         innie = [True, True]
         for i in range(self._ei):

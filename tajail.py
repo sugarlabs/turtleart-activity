@@ -56,5 +56,5 @@ def myfunc(f, args):
 def myfunc_import(lc, f, x):
     userdefined = {}
     exec f in globals(), userdefined
-    return userdefined['myblock'](lc,x)
+    return userdefined['myblock'](lc, x)
 

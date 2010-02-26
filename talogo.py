@@ -374,7 +374,9 @@ class LogoCode:
         'topy':[0, lambda self: self.tw.topy],
         'tpos':[0, lambda self: self.tw.canvas.height/(self.tw.coord_scale*2)],
         'turtle':[1, lambda self, x: self.tw.canvas.set_turtle(x)],
-        'userdefined':[1, lambda self,x: self.prim_myblock(x)],
+        'userdefined':[1, lambda self,x: self.prim_myblock([x])],
+        'userdefined2':[2, lambda self,x,y: self.prim_myblock([x,y])],
+        'userdefined3':[3, lambda self,x,y,z: self.prim_myblock([x,y,z])],
         'video':[1, lambda self,x: self.play_movie(x)],
         'vres':[0, lambda self: self.tw.canvas.height/self.tw.coord_scale],
         'wait':[1, self.prim_wait, True],
@@ -930,7 +932,10 @@ class LogoCode:
     def prim_myblock(self, x):
         if self.tw.myblock is not None:
             try:
-                y = myfunc_import(self, self.tw.myblock, x)
+                if len(x) == 1:
+                    y = myfunc_import(self, self.tw.myblock, x[0])
+                else:
+                    y = myfunc_import(self, self.tw.myblock, x)
             except:
                 raise logoerror("#nocode")
         else:
