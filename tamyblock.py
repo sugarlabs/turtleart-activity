@@ -27,7 +27,16 @@
 # the proper indentations.
 #
 
-def myblock(lc,x):
+def myblock(lc, x):
+
+    ###########################################################################
+    #
+    # Set rgb color
+    #
+    ###########################################################################
+
+    # lc.tw.fgcolor = lc.tw.cm.alloc_color(x[0],x[1],x[2])
+    # return
 
     ###########################################################################
     #
@@ -52,7 +61,6 @@ def myblock(lc,x):
     lc.tw.canvas.forward(x-dist)           # make sure we have moved x
 
     lc.tw.canvas.setpen(pen)               # restore pen state
-
 
     ###########################################################################
     #
