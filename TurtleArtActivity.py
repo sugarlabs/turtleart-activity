@@ -443,6 +443,25 @@ class TurtleArtActivity(activity.Activity):
                                                               OVERLAY_LAYER)
 
     """
+    View logo code as part of view source.
+    """
+    def get_document_path(self, async_cb, async_err_cb):
+        logo_code_path = self._dump_logo_code()
+        async_cb(logo_code_path)
+
+    def _dump_logo_code(self):
+        import tempfile
+        tafd, tafile = tempfile.mkstemp(".ta")
+        try:
+            code = save_logo(self, self.tw)
+            f = file(tafile, "w")
+            f.write(code)
+            f.close()
+        except Exception as e:
+            print("couldn't dump code to view source: " + str(e))
+        return tafile
+
+    """
     Either set up initial share...
     """
     def _shared_cb(self, activity):
@@ -673,14 +692,6 @@ class TurtleArtActivity(activity.Activity):
             # The view toolbar
             view_toolbar = gtk.Toolbar()
 
-            self.blocks_button = ToolButton( "hideshowoff" )
-            self.blocks_button.set_tooltip(_('Hide blocks'))
-            self.blocks_button.props.sensitive = True
-            self.blocks_button.connect('clicked', self._do_hideshow_cb)
-            self.blocks_button.props.accelerator = _('<Ctrl>b')
-            view_toolbar.insert(self.blocks_button, -1)
-            self.blocks_button.show()
-
             fullscreen_button = ToolButton('view-fullscreen')
             fullscreen_button.set_tooltip(_("Fullscreen"))
             fullscreen_button.props.accelerator = '<Alt>Enter'
@@ -776,6 +787,14 @@ class TurtleArtActivity(activity.Activity):
             self.palette_button.props.accelerator = _('<Ctrl>p')
             palette_toolbar.insert(self.palette_button, -1)
             self.palette_button.show()
+
+            self.blocks_button = ToolButton( "hideshowoff" )
+            self.blocks_button.set_tooltip(_('Hide blocks'))
+            self.blocks_button.props.sensitive = True
+            self.blocks_button.connect('clicked', self._do_hideshow_cb)
+            self.blocks_button.props.accelerator = _('<Ctrl>b')
+            palette_toolbar.insert(self.blocks_button, -1)
+            self.blocks_button.show()
 
             palette_toolbar_button = ToolbarButton(
                     page=palette_toolbar,
