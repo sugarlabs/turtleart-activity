@@ -130,7 +130,7 @@ class TurtleArtWindow():
         self.msgcolor = self.cm.alloc_color('black')
         self.fgcolor = self.cm.alloc_color('red')
         self.textcolor = self.cm.alloc_color('blue')
-        self.textsize = 32
+        self.textsize = 48
         self.myblock = None
         self.nop = 'nop'
         self.loaded = 0

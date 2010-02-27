@@ -13,7 +13,7 @@
 
 """
 This file contains the constants that by-in-large determine the
-behavior of Turtle Art. Noteably, the block palettes are defined
+behavior of Turtle Art. Notably, the block palettes are defined
 below. If you want to add a new block to Turtle Art, it is generally a
 matter of modifying some tables below and then adding the primitive to
 talogo.py. For example, if we want to add a new turtle command,
@@ -75,7 +75,7 @@ on the Turtle Palette.
 Adding a new palette is simply a matter of: (1) adding an additional
 entry to PALETTE_NAMES; (2) new list of blocks to PALETTES; and (3) an
 additional entry in COLORS. However you will have to: (4) create icons
-for the palette-selector buttons. These are kept in the images
+for the palette-selector buttons. These are kept in the icons
 subdirectory. You need two icons: yourpalettenameoff.svg and
 yourpalettenameon.svg, where yourpalettename is the same string as the
 entry you added to the PALETTE_NAMES list. Note that the icons should
@@ -554,7 +554,7 @@ DEFAULTS = {
     'setpensize':[5],
     'setscale':[33],
     'setshade':[50],
-    'settextsize':[32],
+    'settextsize':[48],
     'settextcolor':[0],
     'setxy':[0, 0],
     'show':[_('text')],

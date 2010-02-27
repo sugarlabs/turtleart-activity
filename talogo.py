@@ -1028,13 +1028,15 @@ class LogoCode:
             else:
                 if center:
                     y -= self.tw.textsize
-                self.tw.canvas.draw_text(string,x,y,self.tw.textsize,
-                          self.tw.canvas.width-x)
+                self.tw.canvas.draw_text(string, x, y,
+                                         int(self.tw.textsize*self.scale/100),
+                                         self.tw.canvas.width-x)
         elif type(string) == float or type(string) == int:
             string = round_int(string)
             if center:
                 y -= self.tw.textsize
-            self.tw.canvas.draw_text(string, x, y, self.tw.textsize,
+            self.tw.canvas.draw_text(string, x, y,
+                                     int(self.tw.textsize*self.scale/100),
                                      self.tw.canvas.width-x)
     
     def play_sound(self, audio):
