@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: turtleart-activity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-23 18:42-0400\n"
-"Last-Translator: Markus Schlager <m.slg@gmx.de>\n"
+"PO-Revision-Date: 2010-02-26 04:37+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: OLPC-German <m.slg@gmx.de>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 1.2.1\n"
+"X-Generator: Pootle 2.0.1\n"
 
 #: activity/activity.info:2
 #: /home/walter/Desktop/turtleart-activity/taexporthtml.py:229
@@ -21,7 +21,7 @@ msgstr "Turtle-Kunst"
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:55
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:65
 msgid "text"
-msgstr "Text"
+msgstr "text"
 
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:108
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:50
@@ -32,19 +32,19 @@ msgstr "x"
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:136
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:137
 msgid "action"
-msgstr "Aktion"
+msgstr "aktion"
 
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:142
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:143
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:146
 msgid "box"
-msgstr "Variable"
+msgstr "variable"
 
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:144
 #: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:47
 #: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:59
 msgid "name"
-msgstr "Name"
+msgstr "name"
 
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:151
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:152
@@ -53,39 +53,39 @@ msgstr "Name"
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:155
 #: /home/walter/Desktop/turtleart-activity/tasetup.py:156
 msgid "title"
-msgstr "Titel"
+msgstr "titel"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:26
 msgid "palette of turtle commands"
-msgstr "Palette der Turtle-Befehle"
+msgstr "palette der Turtle-Befehle"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:27
 msgid "palette of pen commands"
-msgstr "Palette der Stiftbefehle"
+msgstr "palette der Stiftbefehle"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:28
 msgid "palette of numeric operators"
-msgstr "Palette der mathematischen Operatoren"
+msgstr "palette der mathematischen Operatoren"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:29
 msgid "palette of extra options"
-msgstr "Palette der weiteren Optionen"
+msgstr "palette der weiteren Optionen"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:30
 msgid "palette of flow operators"
-msgstr "Palette der Flussoperatoren"
+msgstr "palette der Flussoperatoren"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:31
 msgid "palette of variable blocks"
-msgstr "Palette der Variablenblöcke"
+msgstr "palette der Variablenblöcke"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:32
 msgid "palette of presentation templates"
-msgstr "Palette der Präsentationsvorlagen"
+msgstr "palette der Präsentationsvorlagen"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:33
 msgid "clear the screen and reset the turtle"
-msgstr "Bildschirm leeren und Turtle zurücksetzen"
+msgstr "bildschirm leeren und Turtle zurücksetzen"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:34
 msgid "move turtle forward"
@@ -118,7 +118,7 @@ msgstr "Richtung der Turtle setzen (0 zeigt zum oberen Bildschirmrand.)"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:41
 msgid "draw text or show media from the Journal"
-msgstr "Text zeichnen oder Medien aus dem Journal anzeigen"
+msgstr "text zeichnen oder Medien aus dem Journal anzeigen"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:42
 msgid "set the scale of media"
@@ -164,23 +164,23 @@ msgstr "Turtle zeichnet bei Bewegung"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:49
 msgid "set size of the line drawn by the turtle"
-msgstr "Breite der von der Turtle gezeichneten Linie setzen"
+msgstr "breite der von der Turtle gezeichneten Linie setzen"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:50
 msgid "set color of the line drawn by the turtle"
-msgstr "Farbe der von der Turtle gezeichneten Linie setzen"
+msgstr "farbe der von der Turtle gezeichneten Linie setzen"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:51
 msgid "set shade of the line drawn by the turtle"
-msgstr "Farbton der von der Turtle gezeichneten Linie setzen"
+msgstr "farbton der von der Turtle gezeichneten Linie setzen"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:52
 msgid "set color of text drawn by the turtle"
-msgstr "Farbe des von der Turtle gezeichneten Textes setzen"
+msgstr "farbe des von der Turtle gezeichneten Textes setzen"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:53
 msgid "set size of text drawn by turtle"
-msgstr "Größe des von der Turtle gezeichneten Textes setzen"
+msgstr "größe des von der Turtle gezeichneten Textes setzen"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:54
 msgid "fills the background with (color, shade)"
@@ -244,7 +244,7 @@ msgstr "Modulo-Operator (Divisionsrest)"
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:66
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:67
 msgid "identity operator used for extending blocks"
-msgstr "Identitätsoperator, um Blöcke zu erweitern"
+msgstr "identitätsoperator, um Blöcke zu erweitern"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:68
 msgid "calculate square root"
@@ -346,7 +346,7 @@ msgstr "FILO-Stapel leeren"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:91
 msgid "wait specified number of seconds"
-msgstr "angegebene Dauer in Sekunden warten "
+msgstr "angegebene Dauer in Sekunden warten"
 
 #: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:92
 msgid "loop forever"
