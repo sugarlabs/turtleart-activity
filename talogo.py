@@ -411,6 +411,8 @@ class LogoCode:
         self.trace = 0
         self.gplay = None
         self.ag = None
+
+        # Scale factors for depreciated portfolio blocks
         self.title_height = int((self.tw.canvas.height/20)*self.tw.scale)
         self.body_height = int((self.tw.canvas.height/40)*self.tw.scale)
         self.bullet_height = int((self.tw.canvas.height/30)*self.tw.scale)
@@ -1006,7 +1008,7 @@ class LogoCode:
         for s in sarray:
             self.tw.canvas.setxy(x, y)
             self.show(s)
-            y -= int(self.bullet_height*2*self.tw.lead)
+            y -= int(self.tw.textsize*self.tw.lead)
 
     def set_scale(self, x):
         self.scale = x
@@ -1114,8 +1116,9 @@ class LogoCode:
                                          self.body_height, int(w))
     
     def draw_title(self, title, x, y):
-        self.tw.canvas.draw_text(title,int(x),int(y),self.title_height,
-                                                     self.tw.canvas.width-x)
+        self.tw.canvas.draw_text(title, int(x), int(y),
+                                 self.title_height,
+                                 self.tw.canvas.width-x)
     # image only (at current x,y)
     def insert_image(self, media, center):
         w = (self.tw.canvas.width * self.scale)/100
