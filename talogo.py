@@ -39,7 +39,7 @@ from taconstants import PALETTES, PALETTE_NAMES, BOX_STYLE, TAB_LAYER
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, movie_media_type,\
-                    audio_media_type, round_int
+                    audio_media_type, text_media_type, round_int
 from gettext import gettext as _
 
 class noKeyError(UserDict):
@@ -1013,7 +1013,11 @@ class LogoCode:
     def set_scale(self, x):
         self.scale = x
 
-    # need to fix export logo to map show to write
+    """
+    Show is the general-purpose media-rendering block. It will draw text
+    strings, render media objects from the Journal, play sounds and movies.
+    """
+    # TODO: need to fix export logo to map show to write
     def show(self, string, center=False):
         # convert from Turtle coordinates to screen coordinates
         x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
@@ -1041,6 +1045,29 @@ class LogoCode:
                                      int(self.tw.textsize*self.scale/100),
                                      self.tw.canvas.width-x)
     
+    # Image only (at current x,y)
+    def insert_image(self, media, center):
+        w = (self.tw.canvas.width * self.scale)/100
+        h = (self.tw.canvas.height * self.scale)/100
+        # convert from Turtle coordinates to screen coordinates
+        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
+        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
+        if center:
+            x -= w/2
+            y -= h/2
+        if media[0:5] == 'media':
+            self.show_picture(media, x, y, w, h)
+    
+    # Description text only (at current x,y)
+    def insert_desc(self, media):
+        w = (self.tw.canvas.width * self.scale)/100
+        h = (self.tw.canvas.height * self.scale)/100
+        # convert from Turtle coordinates to screen coordinates
+        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
+        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
+        if media[0:5] == 'descr':
+            self.show_description(media, x, y, w, h)
+
     def play_sound(self, audio):
         if audio == "" or audio[6:] == "":
             raise logoerror("#nomedia")
@@ -1100,7 +1127,13 @@ class LogoCode:
             if self.tw.running_sugar:
                 try:
                     dsobject = datastore.get(media[6:])
-                    text = str(dsobject.metadata['description'])
+                    # TODO: handle rtf, pdf, etc. (See #893)
+                    if text_media_type(dsobject.file_path):
+                        f = open(dsobject.file_path, 'r')
+                        text = f.read()
+                        f.close()
+                    else:
+                        text = str(dsobject.metadata['description'])
                     dsobject.destroy()
                 except:
                     print "no description in %s" % (media[6:])
@@ -1115,36 +1148,15 @@ class LogoCode:
                 self.tw.canvas.draw_text(text, int(x), int(y),
                                          self.body_height, int(w))
     
+    """
+    Depreciated block methods
+    """
+    # slide title
     def draw_title(self, title, x, y):
         self.tw.canvas.draw_text(title, int(x), int(y),
                                  self.title_height,
                                  self.tw.canvas.width-x)
-    # image only (at current x,y)
-    def insert_image(self, media, center):
-        w = (self.tw.canvas.width * self.scale)/100
-        h = (self.tw.canvas.height * self.scale)/100
-        # convert from Turtle coordinates to screen coordinates
-        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
-        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
-        if center:
-            x -= w/2
-            y -= h/2
-        if media[0:5] == 'media':
-            self.show_picture(media, x, y, w, h)
-    
-    # description text only (at current x,y)
-    def insert_desc(self, media):
-        w = (self.tw.canvas.width * self.scale)/100
-        h = (self.tw.canvas.height * self.scale)/100
-        # convert from Turtle coordinates to screen coordinates
-        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
-        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
-        if media[0:5] == 'descr':
-            self.show_description(media, x, y, w, h)
 
-    """
-    Depreciated block methods
-    """
     # title, one image, and description
     def show_template1x1(self, title, media):
         w,h,xo,yo,dx,dy = self.tw.calc_position('t1x1')
