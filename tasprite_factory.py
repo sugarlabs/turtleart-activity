@@ -56,7 +56,8 @@ class SVG:
         self._slot_y = 2
         self._porch = False
         self._porch_x = self._innie_x1+self._innie_x2+4*self._stroke_width
-        self._porch_y = self._innie_y1+self._innie_y2+4*self._stroke_width
+        # self._porch_y = self._innie_y1+self._innie_y2+4*self._stroke_width
+        self._porch_y = self._innie_y2
         self._expand_x = 0
         self._expand_y = 0
         self._no_arm = False
@@ -88,7 +89,7 @@ class SVG:
             if self._innie[i] is True:
                 svg += self._do_innie()
             if i==0 and self._porch is True:
-                svg += self._do_porch()
+                svg += self._do_porch(False)
             elif len(self._innie)-1 > i:
                 svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
         svg += self._rline_to(0, self._expand_y)
@@ -645,6 +646,16 @@ class SVG:
                "stroke-linecap:square;",
                "stroke-opacity:1;\" />\n")
 
+    def text(self, x, y, size, string):
+        self._x = x
+        self._y = y
+        self._check_min_max()
+        return "        %s%.1f%s%s%s%.1f%s%.1f%s%.1f%s%s%s" % (
+               "<text style=\"font-size:", size, ":px;fill=", self._stroke,
+               ";font-family:Sans;\">\n           <tspan x=\"", x, "\" y=\"", y,
+               "\" style=\"font-size:", size, "px\">", string,
+               "</tspan>\n        </text>\n")
+
     def _circle(self, r, cx, cy):
         return "%s%s%s%s%s%f%s%f%s%f%s" % ("<circle style=\"fill:",
              self._fill, ";stroke:", self._stroke, ";\" r=\"", r, "\" cx=\"",
@@ -874,11 +885,18 @@ class SVG:
             self._rline_to(self._innie_x1+2*self._stroke_width, 0),
             self._rline_to(0, -self._stroke_width))
 
-    def _do_porch(self):
-         return "%s%s%s" % (
-            self._rline_to(0, self._porch_y),
-            self._rline_to(self._porch_x-self._radius, 0),
-            self._corner(1, 1))
+    def _do_porch(self, flag=True):
+        if flag:
+            return "%s%s%s" % (
+                self._rline_to(0, self._porch_y+self._innie_y1),
+                self._rline_to(self._porch_x-self._radius, 0),
+                self._corner(1, 1))
+        else:
+            return "%s%s%s" % (
+                self._rline_to(0,
+                               self._porch_y-self._innie_y1+self._stroke_width),
+                self._rline_to(self._porch_x-self._radius, 0),
+                self._corner(1, 1))
 
     def _start_boolean(self, xoffset, yoffset):
         svg = self.new_path(xoffset, yoffset)
