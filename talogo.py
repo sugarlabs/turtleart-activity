@@ -339,6 +339,7 @@ class LogoCode:
         'rightx':[0, lambda self: self.tw.rightx],
         'rpos':[0, lambda self: self.tw.canvas.width/(self.tw.coord_scale*2)],
         'savepix':[1, lambda self, x: self.save_picture(x)],
+        'savesvg':[1, lambda self, x: self.save_svg(x)],
         'scale':[0, lambda self: self.scale],
         'setcolor':[1, lambda self, x: self.tw.canvas.setcolor(x)],
         'seth':[1, lambda self, x: self.tw.canvas.seth(x)],
@@ -445,6 +446,7 @@ class LogoCode:
             self.stacks[k] = None
         self.stacks['stack1'] = None
         self.stacks['stack2'] = None
+        self.tw.saving_svg = False
 
         for b in blocks:
             b.unhighlight()
@@ -480,6 +482,8 @@ class LogoCode:
         dock = blk.docks[0]
         if len(dock)>4: # There could be a '(', ')', '[' or ']'.
             code.append(dock[4])
+        if blk.name == 'savesvg':
+            self.tw.saving_svg = True
         if blk.primitive is not None: # make a tuple (prim, blk)
             code.append((blk.primitive, self.tw.block_list.list.index(blk)))
         elif len(blk.values)>0:  # Extract the value from content blocks.
@@ -1001,6 +1005,10 @@ class LogoCode:
 
     def save_picture(self, name):
         self.tw.save_as_image(name)
+
+    def save_svg(self, name):
+        self.tw.canvas.svg_close()
+        self.tw.save_as_image(name, True)
 
     def show_list(self, sarray):
         x = self.tw.canvas.xcor/self.tw.coord_scale

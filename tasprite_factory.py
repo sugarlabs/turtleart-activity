@@ -30,10 +30,10 @@ class SVG:
     def __init__(self):
         self._x = 0
         self._y = 0
-        self._min_x = 0
-        self._min_y = 0
-        self._max_x = 0
-        self._max_y = 0
+        self._min_x = 10000
+        self._min_y = 10000
+        self._max_x = -10000
+        self._max_y = -10000
         self._width = 0
         self._height = 0
         self.docks = []
@@ -545,6 +545,12 @@ class SVG:
     def set_no_arm(self, flag=True):
         self._no_arm = flag
 
+    def reset_min_max(self):
+        self._min_x = 10000
+        self._min_y = 10000
+        self._max_x = -10000
+        self._max_y = -10000
+
     #
     # Exotic methods
     #
@@ -574,7 +580,7 @@ class SVG:
     # SVG helper methods
     #
 
-    def _header(self):
+    def _header(self, center=False):
         return "%s%s%s%s%s%s%s%s%.1f%s%s%.1f%s%s%s" % (
             "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n",
             "<!-- Created with Python -->\n",
@@ -586,7 +592,7 @@ class SVG:
             "   width=\"", self._width, "\"\n",
             "   height=\"", self._height, "\">\n",
             self._defs(),
-            self._transform())
+            self._transform(center))
 
     def _defs(self):
         if self._gradiant is True:
@@ -608,14 +614,18 @@ class SVG:
         else:
             return ""
 
-    def _transform(self):
+    def _transform(self, center):
         if self._orientation != 0:
             orientation = "<g\ntransform = \"rotate(%.1f %.1f %.1f)\">\n" % (
                 self._orientation, self._width/2.0, self._height/2.0)
         else:
             orientation = ""
-        return "<g\ntransform=\"scale(%.1f, %.1f)\">\n%s" % (
-                self._scale, self._scale, orientation )
+        if center:
+            return "<g\ntransform=\"translate(%.1f, %.1f)\">\n" % (
+                    -self._min_x, -self._min_y)
+        else:
+            return "<g\ntransform=\"scale(%.1f, %.1f)\">\n%s" % (
+                    self._scale, self._scale, orientation )
 
     def _footer(self):
         if self._orientation != 0:
@@ -735,10 +745,12 @@ class SVG:
         return svg_str
 
     def new_path(self, x, y):
+        """
         self._min_x = x
         self._min_y = y
         self._max_x = x
         self._max_y = y
+        """
         self._x = x
         self._y = y
         return "      <path d=\"m%.1f %.1f " % (x, y)

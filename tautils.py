@@ -143,6 +143,10 @@ def save_picture(canvas, fname):
                              0, 0, 0, 0, canvas.width, canvas.height)
     pixbuf.save(fname, 'png')
 
+def save_svg(string, fname):
+    f = file(fname, "w")
+    f.write(string)
+    f.close()
 
 def get_pixbuf_from_journal(dsobject, w, h):
     try:

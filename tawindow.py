@@ -55,7 +55,7 @@ from taturtle import Turtles, Turtle
 from tautils import magnitude, get_load_name, get_save_name, data_from_file,\
                     data_to_file, round_int, get_id, get_pixbuf_from_journal,\
                     movie_media_type, audio_media_type, image_media_type,\
-                    save_picture, calc_image_size
+                    save_picture, save_svg, calc_image_size
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
@@ -176,6 +176,8 @@ class TurtleArtWindow():
         else:
             Turtle(self.turtles, 1, mycolors.split(','))
         self.active_turtle = self.turtles.get_turtle(1)
+        self.saving_svg = False
+        self.svg_string = ''
         self.selected_turtle = None
         self.canvas = TurtleGraphics(self, self.width, self.height)
         self.titlex = -(self.canvas.width*TITLEXY[0])/(self.coord_scale*2)
@@ -2600,11 +2602,17 @@ class TurtleArtWindow():
     """
     Grab the current canvas and save it.
     """
-    def save_as_image(self, name=""):
-        if len(name) == 0:
-            filename = "ta.png"
+    def save_as_image(self, name="", svg=False):
+        if svg:
+            if len(name) == 0:
+                filename = "ta.svg"
+            else:
+                filename = name+".svg"
         else:
-            filename = name+".png"
+            if len(name) == 0:
+                filename = "ta.png"
+            else:
+                filename = name+".png"
 
         if self.running_sugar:
             datapath = os.path.join(self.activity.get_activity_root(),
@@ -2612,7 +2620,11 @@ class TurtleArtWindow():
         else:
             datapath = os.getcwd()
         file_path = os.path.join(datapath, filename)
-        save_picture(self.canvas, file_path)
+        if svg:
+            save_svg(self.svg_string, file_path)
+            self.svg_string = ''
+        else:
+            save_picture(self.canvas, file_path)
 
         if self.running_sugar:
             dsobject = datastore.create()
@@ -2622,7 +2634,10 @@ class TurtleArtWindow():
             else:
                 dsobject.metadata['title'] = name
             dsobject.metadata['icon-color'] = profile.get_color().to_string()
-            dsobject.metadata['mime_type'] = 'image/png'
+            if svg:
+                dsobject.metadata['mime_type'] = 'image/svg'
+            else:
+                dsobject.metadata['mime_type'] = 'image/png'
             dsobject.set_file_path(file_path)
             datastore.write(dsobject)
             dsobject.destroy()
