@@ -134,10 +134,11 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc1arg',  'userdefined', 'addturtle', 'comment', 'print',
              'cartesian', 'width', 'height', 'polar', 'sandwichtop',
-             'sandwichbottom', 'savesvg'],
-            ['journal', 'audio', 'description', 'savepix', 'hideblocks',
-             'showblocks', 'fullscreen', 'picturelist', 'picture1x1a',
-             'picture1x1', 'picture2x2', 'picture2x1', 'picture1x2'],
+             'sandwichbottom'],
+            ['journal', 'audio', 'description', 'hideblocks', 'showblocks',
+             'fullscreen', 'savepix', 'savesvg', 'picturelist',
+             'picture1x1a', 'picture1x1', 'picture2x2', 'picture2x1',
+             'picture1x2'],
             ['empty', 'restoreall']]
 
 #

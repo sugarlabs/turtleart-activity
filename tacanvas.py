@@ -22,7 +22,7 @@
 import gtk
 from math import sin, cos, pi
 from sprites import Sprite
-# from tasprite_factory import SVG
+from tasprite_factory import SVG
 import pango
 
 from taconstants import CANVAS_LAYER, DEFAULT_TURTLE
@@ -78,11 +78,9 @@ class TurtleGraphics:
         self.gc = self.canvas.images[0].new_gc()
         self.tw.active_turtle.show()
         self.shade = 0
-        """
         self.svg = SVG()
         self.svg.set_fill_color('none')
-        self.svgstr = ''
-        """
+        self.tw.svg_string = ''
         self.clearscreen()
 
     def clearscreen(self):
@@ -93,7 +91,7 @@ class TurtleGraphics:
         self.setpensize(5)
         self.setcolor(0)
         self.settextcolor(70)
-        self.settextsize(32)
+        self.settextsize(48)
         self.setshade(50)
         self.pendown = True
         for turtle_key in iter(self.tw.turtles.dict):
@@ -106,10 +104,8 @@ class TurtleGraphics:
             self.move_turtle()
             self.turn_turtle()
         self.set_turtle(DEFAULT_TURTLE)
-        """
-        print self.svgstr
-        self.svgstr = ''
-        """
+        self.tw.svg_string = ''
+        self.svg.reset_min_max()
 
     def forward(self, n):
         n *= self.tw.coord_scale
@@ -123,11 +119,12 @@ class TurtleGraphics:
         if self.pendown:
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
         self.move_turtle()
-        """
-        self.svgstr += self.svg.new_path(oldx, oldy)
-        self.svgstr += self.svg.line_to(self.xcor, self.ycor)
-        self.svgstr += self.svg.style()
-        """
+        if self.tw.saving_svg:
+            self.tw.svg_string += self.svg.new_path(oldx, self.height/2-oldy)
+            self.tw.svg_string += self.svg.line_to(self.xcor,
+                                                   self.height/2-self.ycor)
+            self.tw.svg_string += "\"\n"
+            self.tw.svg_string += self.svg.style()
 
     def seth(self, n):
         try:
@@ -145,7 +142,7 @@ class TurtleGraphics:
         self.heading%=360
         self.turn_turtle()
 
-    def arc(self,a,r):
+    def arc(self, a, r):
         self.gc.set_foreground(self.tw.fgcolor)
         r *= self.tw.coord_scale
         try:
@@ -161,6 +158,7 @@ class TurtleGraphics:
     def rarc(self, a, r):
         if r<0:
              r=-r; a=-a
+        oldx, oldy = self.xcor, self.ycor
         cx = self.xcor+r*cos(self.heading*DEGTOR)
         cy = self.ycor-r*sin(self.heading*DEGTOR)
         x,y = self.width/2+int(cx-r), self.height/2-int(cy+r)
@@ -175,10 +173,18 @@ class TurtleGraphics:
         self.right(a)
         self.xcor=cx-r*cos(self.heading*DEGTOR)
         self.ycor=cy+r*sin(self.heading*DEGTOR)
+        if self.tw.saving_svg:
+            self.tw.svg_string += self.svg.new_path(oldx, self.height/2-oldy)
+            self.tw.svg_string += self.svg.arc_to(self.xcor,
+                                                  self.height/2-self.ycor, r, a,
+                                                  0, 1)
+            self.tw.svg_string += "\"\n"
+            self.tw.svg_string += self.svg.style()
 
     def larc(self, a, r):
         if r<0:
             r=-r; a=-a
+        oldx, oldy = self.xcor, self.ycor
         cx = self.xcor-r*cos(self.heading*DEGTOR)
         cy = self.ycor+r*sin(self.heading*DEGTOR)
         x,y = self.width/2+int(cx-r), self.height/2-int(cy+r)
@@ -193,12 +199,19 @@ class TurtleGraphics:
         self.right(-a)
         self.xcor=cx+r*cos(self.heading*DEGTOR)
         self.ycor=cy-r*sin(self.heading*DEGTOR)
+        if self.tw.saving_svg:
+            self.tw.svg_string += self.svg.new_path(oldx, self.height/2-oldy)
+            self.tw.svg_string += self.svg.arc_to(self.xcor,
+                                                  self.height/2-self.ycor, r, a,
+                                                  0, 0)
+            self.tw.svg_string += "\"\n"
+            self.tw.svg_string += self.svg.style()
 
     def setxy(self, x, y):
         x *= self.tw.coord_scale
         y *= self.tw.coord_scale
         try:
-            self.xcor,self.ycor = x,y
+            self.xcor,self.ycor = x, y
         except:
             pass
         self.move_turtle()
@@ -213,9 +226,7 @@ class TurtleGraphics:
         self.tw.active_turtle.set_pen_size(ps)
         self.gc.set_line_attributes(int(self.pensize*self.tw.coord_scale),
                      gtk.gdk.LINE_SOLID, gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
-        """
         self.svg.set_stroke_width(self.pensize)
-        """
 
     def setcolor(self,c):
         try:
@@ -234,13 +245,13 @@ class TurtleGraphics:
             pass
         self.set_textcolor()
 
-    def settextsize(self,c):
+    def settextsize(self, c):
         try:
             self.tw.textsize = c
         except:
             pass
 
-    def setshade(self,s):
+    def setshade(self, s):
         try:
             self.shade = s
         except:
@@ -249,7 +260,7 @@ class TurtleGraphics:
         self.set_fgcolor()
         self.set_textcolor()
 
-    def fillscreen(self,c,s):
+    def fillscreen(self, c, s):
         oldc, olds = self.color,self.shade
         self.setcolor(c); self.setshade(s)
         rect = gtk.gdk.Rectangle(0,0,self.width,self.height)
@@ -257,9 +268,8 @@ class TurtleGraphics:
         self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
         self.invalt(0,0,self.width,self.height)
         self.setcolor(oldc); self.setshade(olds)
-        """
-        self.svgstr = ''
-        """
+        self.svg_string = ''
+        self.svg.reset_min_max()
 
     def set_fgcolor(self):
         sh = (wrap100(self.shade)-50)/50.0
@@ -268,11 +278,9 @@ class TurtleGraphics:
         r,g,b = calc_shade(r,sh),calc_shade(g,sh),calc_shade(b,sh)
         self.tw.rgb = [r>>8,g>>8,b>>8]
         self.tw.fgcolor = self.tw.cm.alloc_color(r,g,b)
-        """
         self.svg.set_stroke_color("#%02x%02x%02x" % (self.tw.rgb[0],
                                                      self.tw.rgb[1],
                                                      self.tw.rgb[2]))
-        """
 
     def set_textcolor(self):
         sh = (wrap100(self.shade)-50)/50.0
@@ -311,6 +319,10 @@ class TurtleGraphics:
         self.canvas.images[0].draw_layout(self.gc,int(x),int(y),pl)
         w,h = pl.get_pixel_size()
         self.invalt(x,y,w,h)
+        if self.tw.saving_svg:
+            self.tw.svg_string += self.svg.text(x-self.width/2,
+                                                y,
+                                                size, label)
 
     def draw_line(self,x1,y1,x2,y2):
         x1,y1 = self.width/2+int(x1), self.height/2-int(y1)
@@ -357,3 +369,9 @@ class TurtleGraphics:
         self.setshade(self.tw.active_turtle.get_shade())
         self.setpensize(self.tw.active_turtle.get_pen_size())
         self.pendown = self.tw.active_turtle.get_pen_state()
+
+    def svg_close(self):
+        self.svg._calculate_w_h()
+        self.tw.svg_string = "%s%s%s" % (self.svg._header(True),
+                                         self.tw.svg_string,
+                                         self.svg._footer())
