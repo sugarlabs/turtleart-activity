@@ -643,7 +643,7 @@ class SVG:
                "       style=\"fill:",fill,
                "fill-opacity:1;stroke:",self._stroke,
                "stroke-width:",self._stroke_width,
-               "stroke-linecap:square;",
+               "stroke-linecap:round;",
                "stroke-opacity:1;\" />\n")
 
     def text(self, x, y, size, string):
