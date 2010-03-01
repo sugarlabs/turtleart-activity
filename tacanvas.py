@@ -119,7 +119,7 @@ class TurtleGraphics:
         if self.pendown:
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
         self.move_turtle()
-        if self.tw.saving_svg:
+        if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.new_path(oldx, self.height/2-oldy)
             self.tw.svg_string += self.svg.line_to(self.xcor,
                                                    self.height/2-self.ycor)
@@ -173,7 +173,7 @@ class TurtleGraphics:
         self.right(a)
         self.xcor=cx-r*cos(self.heading*DEGTOR)
         self.ycor=cy+r*sin(self.heading*DEGTOR)
-        if self.tw.saving_svg:
+        if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.new_path(oldx, self.height/2-oldy)
             self.tw.svg_string += self.svg.arc_to(self.xcor,
                                                   self.height/2-self.ycor, r, a,
@@ -199,7 +199,7 @@ class TurtleGraphics:
         self.right(-a)
         self.xcor=cx+r*cos(self.heading*DEGTOR)
         self.ycor=cy-r*sin(self.heading*DEGTOR)
-        if self.tw.saving_svg:
+        if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.new_path(oldx, self.height/2-oldy)
             self.tw.svg_string += self.svg.arc_to(self.xcor,
                                                   self.height/2-self.ycor, r, a,
@@ -319,7 +319,7 @@ class TurtleGraphics:
         self.canvas.images[0].draw_layout(self.gc,int(x),int(y),pl)
         w,h = pl.get_pixel_size()
         self.invalt(x,y,w,h)
-        if self.tw.saving_svg:
+        if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.text(x-self.width/2,
                                                 y,
                                                 size, label)
