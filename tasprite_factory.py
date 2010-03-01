@@ -106,7 +106,7 @@ class SVG:
             svg += self.line_to(x, self._radius+self._innie_y2+\
                                     self._stroke_width/2.0)
             svg += self._do_outie()
-        self._calculate_w_h()
+        self.calc_w_h()
         svg += self._close_path()
         svg += self.style()
         if self._show is True:
@@ -114,8 +114,8 @@ class SVG:
         if self._hide is True:
             svg += self._hide_dot()
 
-        svg += self._footer()
-        return self._header() + svg
+        svg += self.footer()
+        return self.header() + svg
 
     def basic_flow(self):
         (x, y) = self._calculate_x_y()
@@ -166,14 +166,14 @@ class SVG:
             svg += self.line_to(x, self._radius+self._innie_y2+\
                                     self._stroke_width)
         svg += self._close_path()
-        self._calculate_w_h()
+        self.calc_w_h()
         svg += self.style()
         if self._hide is True:
             svg += self._hide_dot()
         if self._show is True:
             svg += self._show_dot()
-        svg += self._footer()
-        return self._header() + svg
+        svg += self.footer()
+        return self.header() + svg
 
     def portfolio(self):
         (x, y) = self._calculate_x_y()
@@ -206,10 +206,10 @@ class SVG:
             else:
                 svg += self._rline_to(0, -2*self._innie_y2-self._innie_spacer)
         svg += self._close_path()
-        self._calculate_w_h()
+        self.calc_w_h()
         svg += self.style()
-        svg += self._footer()
-        return self._header() + svg
+        svg += self.footer()
+        return self.header() + svg
 
     def basic_box(self):
         self.set_outie(True)
@@ -226,10 +226,10 @@ class SVG:
                                 self._stroke_width/2.0)
         svg += self._do_outie()
         svg += self._close_path()
-        self._calculate_w_h()
+        self.calc_w_h()
         svg += self.style()
-        svg += self._footer()
-        return self._header() + svg
+        svg += self.footer()
+        return self.header() + svg
 
     def boolean_and_or(self):
         svg = self._start_boolean(self._stroke_width/2.0,
@@ -253,7 +253,7 @@ class SVG:
         self.margins[1] = int(self._stroke_width*self._scale)
         self.margins[2] = int(self._stroke_width*self._scale)
         self.margins[3] = int(self._stroke_width*self._scale)
-        return self._header() + svg
+        return self.header() + svg
 
     def boolean_not(self):
         svg = self._start_boolean(self._stroke_width/2.0,
@@ -272,7 +272,7 @@ class SVG:
         self.margins[1] = int(self._stroke_width*self._scale)
         self.margins[2] = int((self._radius+self._stroke_width+0.5)*self._scale)
         self.margins[3] = int(self._stroke_width*self._scale)
-        return self._header() + svg
+        return self.header() + svg
 
     def boolean_compare(self):
         yoffset = self._radius*2+2*self._innie_y2+\
@@ -302,7 +302,7 @@ class SVG:
         self.margins[1] = int(self._stroke_width*self._scale)
         self.margins[2] = int(self._stroke_width*self._scale)
         self.margins[3] = int(self._stroke_width*self._scale)
-        return self._header() + svg
+        return self.header() + svg
 
     def turtle(self, colors):
         self._fill, self._stroke = colors[0], colors[1]
@@ -380,8 +380,8 @@ class SVG:
               "stroke_width=\"3.5\" fill=\"", self._stroke,
               ";\" stroke=\"none\" />\n")
         self._width, self._height = 55, 55
-        svg += self._footer()
-        return self._header() + svg
+        svg += self.footer()
+        return self.header() + svg
 
     def palette(self, width, height):
         self._width, self._height = width, height
@@ -390,15 +390,15 @@ class SVG:
         self._hide_x = (width-self._radius*1.5)/2
         self._hide_y = (height-self._radius*1.5)/2
         svg += self._hide_dot(True)
-        svg += self._footer()
-        return self._header() + svg
+        svg += self.footer()
+        return self.header() + svg
 
     def toolbar(self, width, height):
         self._width, self._height = width, height
         self._fill, self._stroke = "#282828", "none"
         svg = self._rect(width, height, 0, 0)
-        svg += self._footer()
-        return self._header() + svg
+        svg += self.footer()
+        return self.header() + svg
 
     def sandwich_top(self):
         x = self._stroke_width/2.0
@@ -427,10 +427,10 @@ class SVG:
             svg += self._rline_to(0, self._expand_y)
             svg += self._rline_to(-self._radius, 0)
         svg += self._close_path()
-        self._calculate_w_h()
+        self.calc_w_h()
         svg += self.style()
-        svg += self._footer()
-        return self._header() + svg
+        svg += self.footer()
+        return self.header() + svg
 
     def sandwich_bottom(self):
         x = self._stroke_width/2.0
@@ -450,7 +450,7 @@ class SVG:
         svg += self._rline_to(-self._radius-self._stroke_width,0)
         svg += self._corner(-1, -1)
         svg += self._close_path()
-        self._calculate_w_h()
+        self.calc_w_h()
         svg += self.style()
         self._hide_x = x + self._radius/2
         self._hide_y = y + self._radius/2
@@ -458,8 +458,8 @@ class SVG:
             svg += self._hide_dot()
         if self._show is True:
             svg += self._show_dot()
-        svg += self._footer()
-        return self._header() + svg
+        svg += self.footer()
+        return self.header() + svg
 
     #
     # Utility methods
@@ -581,7 +581,7 @@ class SVG:
     # SVG helper methods
     #
 
-    def _header(self, center=False):
+    def header(self, center=False):
         return "%s%s%s%s%s%s%s%s%.1f%s%s%.1f%s%s%s" % (
             "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n",
             "<!-- Created with Python -->\n",
@@ -628,7 +628,7 @@ class SVG:
             return "<g\ntransform=\"scale(%.1f, %.1f)\">\n%s" % (
                     self._scale, self._scale, orientation )
 
-    def _footer(self):
+    def footer(self):
         if self._orientation != 0:
             return "   </g>\n</g>\n</svg>\n"
         else:
@@ -665,6 +665,12 @@ class SVG:
         return "%s%s%s%s%s%f%s%f%s%f%s%f%s" % ("<rect style=\"fill:",
                self._fill, ";stroke:", self._stroke, ";\" width=\"", w,
                "\" height=\"", h,"\" x=\"", x, "\" y=\"", y, "\" />\n")
+
+    def background(self, fill):
+        return "%s%s%s%s%s%f%s%f%s%f%s%f%s" % ("<rect style=\"fill:",
+               fill, ";stroke:", fill, ";\" width=\"", self._max_x-self._min_x,
+               "\" height=\"", self._max_y-self._min_y,"\" x=\"",
+               self._min_x, "\" y=\"", self._min_y, "\" />\n")
 
     def _check_min_max(self):
         if self._x < self._min_x:
@@ -922,19 +928,25 @@ class SVG:
         svg += self._rarc_to(-1, -1)
         self._radius += self._stroke_width
         svg += self._close_path()
-        self._calculate_w_h()
+        self.calc_w_h()
         svg += self.style()
-        return svg + self._footer()
+        return svg + self.footer()
 
-    def _calculate_w_h(self):
-        self._width = (self._max_x-self._min_x+self._stroke_width)*\
-                      self._scale
+    def calc_w_h(self, add_stroke_width=True):
+        if add_stroke_width:
+            self._width = (self._max_x-self._min_x+self._stroke_width)*\
+                          self._scale
+        else:
+            self._width = (self._max_x-self._min_x)*self._scale
         if self.margins[2] == 0:
             self.margins[2] = int((self._stroke_width+0.5)*self._scale)
         else:
             self.margins[2] = int(self._width - self.margins[2])
-        self._height = (self._max_y-self._min_y+self._stroke_width)*\
-                      self._scale
+        if add_stroke_width:
+            self._height = (self._max_y-self._min_y+self._stroke_width)*\
+                           self._scale
+        else:
+            self._height = (self._max_y-self._min_y)*self._scale
         if self.margins[3] == 0:
             if self._tab:
                 self.margins[3] =\

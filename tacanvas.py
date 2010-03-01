@@ -78,6 +78,7 @@ class TurtleGraphics:
         self.gc = self.canvas.images[0].new_gc()
         self.tw.active_turtle.show()
         self.shade = 0
+        self.bgcolor = self.tw.bgcolor
         self.svg = SVG()
         self.svg.set_fill_color('none')
         self.tw.svg_string = ''
@@ -265,6 +266,9 @@ class TurtleGraphics:
         self.setcolor(c); self.setshade(s)
         rect = gtk.gdk.Rectangle(0,0,self.width,self.height)
         self.gc.set_foreground(self.tw.fgcolor)
+        self.bgcolor = "#%02x%02x%02x" % (self.tw.rgb[0],
+                                          self.tw.rgb[1],
+                                          self.tw.rgb[2])
         self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
         self.invalt(0,0,self.width,self.height)
         self.setcolor(oldc); self.setshade(olds)
@@ -371,7 +375,8 @@ class TurtleGraphics:
         self.pendown = self.tw.active_turtle.get_pen_state()
 
     def svg_close(self):
-        self.svg._calculate_w_h()
-        self.tw.svg_string = "%s%s%s" % (self.svg._header(True),
+        self.svg.calc_w_h(False)
+        self.tw.svg_string = "%s%s%s%s" % (self.svg.header(True),
+                                         self.svg.background(self.bgcolor),
                                          self.tw.svg_string,
-                                         self.svg._footer())
+                                         self.svg.footer())
