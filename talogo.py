@@ -412,6 +412,7 @@ class LogoCode:
         self.trace = 0
         self.gplay = None
         self.ag = None
+        self.filepath = None
 
         # Scale factors for depreciated portfolio blocks
         self.title_height = int((self.tw.canvas.height/20)*self.tw.scale)
@@ -1096,6 +1097,7 @@ class LogoCode:
             pass
         elif media[6:] is not "None":
             pixbuf = None
+            self.filepath = None
             if self.tw.running_sugar:
                 try:
                     dsobject = datastore.get(media[6:])
@@ -1103,15 +1105,18 @@ class LogoCode:
                         play_movie_from_file(self, dsobject.file_path,
                                              int(x), int(y), int(w), int(h))
                     else:
+                        self.filepath = dsobject.file_path
                         pixbuf = get_pixbuf_from_journal(dsobject,
                                                          int(w), int(h))
                     dsobject.destroy()
                 except:
                     # Maybe it is a pathname instead.
                     try:
+                        self.filepath = media[6:0]
                         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
                                                    media[6:], int(w), int(h))
                     except:
+                        self.filepath = None
                         self.tw.showlabel('nojournal', media[6:]) 
                         print "Couldn't open Journal object %s" % (media[6:])
             else:
@@ -1120,14 +1125,17 @@ class LogoCode:
                         play_movie_from_file(self, media[6:], int(x), int(y),
                                                               int(w), int(h))
                     else:
+                        self.filepath = media[6:]
                         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
                                      media[6:], int(w), int(h))
                 except:
+                    self.filepath = None
                     self.tw.showlabel('nofile', media[6:]) 
                     print "Couldn't open media object %s" % (media[6:])
             if pixbuf is not None:
                 self.tw.canvas.draw_pixbuf(pixbuf, 0, 0, int(x), int(y),
-                                                         int(w), int(h))
+                                                         int(w), int(h),
+                                           self.filepath)
 
     def show_description(self, media, x, y, w, h):
         if media == "" or media[6:] == "":

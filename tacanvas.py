@@ -300,11 +300,13 @@ class TurtleGraphics:
     def setpen(self,bool):
         self.pendown = bool
 
-    def draw_pixbuf(self,pixbuf,a,b,x,y,w,h):
+    def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path):
         w *= self.tw.coord_scale
         h *= self.tw.coord_scale
         self.canvas.images[0].draw_pixbuf(self.gc, pixbuf, a, b, x, y)
-        self.invalt(x,y,w,h)
+        self.invalt(x, y, w, h)
+        if self.tw.saving_svg:
+            self.tw.svg_string += self.svg.image(x-self.width/2, y, w, h, path)
 
     def draw_text(self, label, x, y, size, w):
         w *= self.tw.coord_scale

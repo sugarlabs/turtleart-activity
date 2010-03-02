@@ -669,7 +669,7 @@ class SVG:
         return "        %s%.1f%s%.1f%s%.1f%s%.1f%s%s%s" % (
                "<image x=\"", x, "\" y=\"", y,
                "\" width=\"", w, "\" height=\"", h, 
-               "\" xlink:href=\"", path, "\">\n")
+               "\" xlink:href=\"file://", path, "\"/>\n")
 
 
     def _circle(self, r, cx, cy):
