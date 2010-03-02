@@ -556,7 +556,7 @@ class TurtleArtWindow():
         self._layout_palette(n)
         for blk in self.palettes[n]:
             blk.spr.set_layer(TAB_LAYER)
-        if n == PALETTE_NAMES.index('trash'):
+        if n == self.trash_index:
             for blk in self.trash_stack:
                 for b in self._find_group(blk):
                     if b.status != 'collapsed':
@@ -594,7 +594,7 @@ class TurtleArtWindow():
                  self.previous_palette != self.selected_palette:
                 self.activity.palette_buttons[self.previous_palette].set_icon(
                     PALETTE_NAMES[self.previous_palette]+'off')
-            if self.previous_palette == PALETTE_NAMES.index('trash'):
+            if self.previous_palette == self.trash_index:
                 for b in self.trash_stack:
                     for bb in self._find_group(b):
                         bb.spr.hide()
@@ -665,7 +665,7 @@ class TurtleArtWindow():
             if self.orientation == 0:
                 _x, _y = 20, self.toolbar_offset+5
                 _x, _y, _max = self._horizontal_layout(_x, _y, self.palettes[n])
-                if n == PALETTE_NAMES.index('trash'):
+                if n == self.trash_index:
                     _x, _y, _max = self._horizontal_layout(_x+_max, _y,
                                                            self.trash_stack)
                 _w = _x+_max+25
@@ -871,7 +871,12 @@ class TurtleArtWindow():
         for b in group:
             if b.name in BLOCKS_WITH_SKIN:
                 self._resize_skin(b)
-        self.show_palette(PALETTE_NAMES.index('trash'))
+        
+        # self.show_palette(self.trash_index)
+        if self.selected_palette != self.trash_index:
+            for b in group:
+                b.spr.hide()
+
 
     """
     Restore all the blocks in the trash can.
