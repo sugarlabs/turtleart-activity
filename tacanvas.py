@@ -76,9 +76,15 @@ class TurtleGraphics:
         self.canvas.type = 'canvas'
         self.canvas.set_layer(CANVAS_LAYER)
         self.gc = self.canvas.images[0].new_gc()
+        self.cm = self.gc.get_colormap()
+        self.fgrgb = [255,0,0]
+        self.fgcolor = self.cm.alloc_color('red')
+        self.bgrgb = [255,248,222]
+        self.bgcolor = self.cm.alloc_color('#fff8de')
+        self.textsize = 48
+        self.textcolor = self.cm.alloc_color('blue')
         self.tw.active_turtle.show()
         self.shade = 0
-        self.bgcolor = self.tw.bgcolor
         self.svg = SVG()
         self.svg.set_fill_color('none')
         self.tw.svg_string = ''
@@ -86,7 +92,7 @@ class TurtleGraphics:
 
     def clearscreen(self):
         rect = gtk.gdk.Rectangle(0, 0, self.width, self.height)
-        self.gc.set_foreground(self.tw.bgcolor)
+        self.gc.set_foreground(self.bgcolor)
         self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
         self.invalt(0, 0, self.width, self.height)
         self.setpensize(5)
@@ -110,7 +116,7 @@ class TurtleGraphics:
 
     def forward(self, n):
         n *= self.tw.coord_scale
-        self.gc.set_foreground(self.tw.fgcolor)
+        self.gc.set_foreground(self.fgcolor)
         oldx, oldy = self.xcor, self.ycor
         try:
             self.xcor += n*sin(self.heading*DEGTOR)
@@ -144,7 +150,7 @@ class TurtleGraphics:
         self.turn_turtle()
 
     def arc(self, a, r):
-        self.gc.set_foreground(self.tw.fgcolor)
+        self.gc.set_foreground(self.fgcolor)
         r *= self.tw.coord_scale
         try:
             if a<0:
@@ -265,10 +271,8 @@ class TurtleGraphics:
         oldc, olds = self.color,self.shade
         self.setcolor(c); self.setshade(s)
         rect = gtk.gdk.Rectangle(0,0,self.width,self.height)
-        self.gc.set_foreground(self.tw.fgcolor)
-        self.bgcolor = "#%02x%02x%02x" % (self.tw.rgb[0],
-                                          self.tw.rgb[1],
-                                          self.tw.rgb[2])
+        self.gc.set_foreground(self.fgcolor)
+        self.bgrgb = self.fgrgb[:]
         self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
         self.invalt(0,0,self.width,self.height)
         self.setcolor(oldc); self.setshade(olds)
@@ -280,18 +284,18 @@ class TurtleGraphics:
         rgb = color_table[wrap100(self.color)]
         r,g,b = (rgb>>8)&0xff00,rgb&0xff00,(rgb<<8)&0xff00
         r,g,b = calc_shade(r,sh),calc_shade(g,sh),calc_shade(b,sh)
-        self.tw.rgb = [r>>8,g>>8,b>>8]
-        self.tw.fgcolor = self.tw.cm.alloc_color(r,g,b)
-        self.svg.set_stroke_color("#%02x%02x%02x" % (self.tw.rgb[0],
-                                                     self.tw.rgb[1],
-                                                     self.tw.rgb[2]))
+        self.fgrgb = [r>>8,g>>8,b>>8]
+        self.fgcolor = self.cm.alloc_color(r,g,b)
+        self.svg.set_stroke_color("#%02x%02x%02x" % (self.fgrgb[0],
+                                                     self.fgrgb[1],
+                                                     self.fgrgb[2]))
 
     def set_textcolor(self):
         sh = (wrap100(self.shade)-50)/50.0
         rgb = color_table[wrap100(self.tcolor)]
         r,g,b = (rgb>>8)&0xff00,rgb&0xff00,(rgb<<8)&0xff00
         r,g,b = calc_shade(r,sh),calc_shade(g,sh),calc_shade(b,sh)
-        self.tw.textcolor = self.tw.cm.alloc_color(r,g,b)
+        self.tw.textcolor = self.cm.alloc_color(r,g,b)
 
     def setpen(self,bool):
         self.pendown = bool
@@ -379,6 +383,6 @@ class TurtleGraphics:
             return
         self.svg.calc_w_h(False)
         self.tw.svg_string = "%s%s%s%s" % (self.svg.header(True),
-                                         self.svg.background(self.bgcolor),
-                                         self.tw.svg_string,
-                                         self.svg.footer())
+                              self.svg.background("#%02x%02x%02x" %\
+                              (self.bgrgb[0], self.bgrgb[1], self.bgrgb[2])),
+                              self.tw.svg_string, self.svg.footer())

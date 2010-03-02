@@ -34,7 +34,7 @@ class Sprite manages individual sprites within the collection.
 
 Example usage:
         # Import the classes into your program.
-        from sprites import Sprites Sprite
+        from sprites import Sprites, Sprite
 
         # Create a new sprite collection for a gtk Drawing Area.
         my_drawing_area = gtk.DrawingArea()
@@ -364,3 +364,4 @@ class Sprite:
         except IndexError:
             print "Index Error: %d %d" % (len(array), offset)
             return (-1,-1,-1,-1)
+

@@ -118,27 +118,27 @@
          id="path3258"
          style="fill:none;stroke:#000000;stroke-width:0.75545591;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
       <path
-         d="M 26.988213,20.231746 25.8722,15.229742 22.062204,17.274526"
+         d="M 26.988213,20.231746 L 25.8722,15.229742 22.062204,17.274526"
          id="path3260"
          style="fill:none;stroke:#000000;stroke-width:1.51091182px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
-         d="m 33.361036,23.684723 3.584614,-0.929858 2.882681,3.70167"
+         d="m 33.361036,23.684723 l 3.584614,-0.929858 2.882681,3.70167"
          id="path3262"
          style="fill:none;stroke:#000000;stroke-width:1.51091182px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
-         d="m 23.851158,22.042526 -1.097622,-3.067217 -8.164934,2.756268"
+         d="m 23.851158,22.042526 l -1.097622,-3.067217 -8.164934,2.756268"
          id="path3264"
          style="fill:none;stroke:#000000;stroke-width:1.51091182px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
-         d="m 33.777334,27.207476 3.47402,-0.42778 0.497902,7.4182"
+         d="m 33.777334,27.207476 l 3.47402,-0.42778 0.497902,7.4182"
          id="path3266"
          style="fill:none;stroke:#000000;stroke-width:1.51091182px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
-         d="M 20.388485,25.668558 19.349188,23.00868 12.485021,29.515384"
+         d="M 20.388485,25.668558 L 19.349188,23.00868 12.485021,29.515384"
          id="path3268"
          style="fill:none;stroke:#000000;stroke-width:1.51091182px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
-         d="m 32.410841,31.851473 2.920057,-0.91739 -2.027798,9.412169"
+         d="m 32.410841,31.851473 l 2.920057,-0.91739 -2.027798,9.412169"
          id="path3270"
          style="fill:none;stroke:#000000;stroke-width:1.51091182px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>

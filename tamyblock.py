@@ -51,7 +51,7 @@ def myblock(lc, x):
     # while b > 255:
     #     b -= 256
     # rgb = "#%02x%02x%02x" % (r,g,b)
-    # lc.tw.fgcolor = lc.tw.cm.alloc_color(rgb)
+    # lc.tw.canvas.fgcolor = lc.tw.canvas.cm.alloc_color(rgb)
     # return
 
     ###########################################################################
@@ -120,7 +120,7 @@ def myblock(lc, x):
     # b = int((val*(100-x) + lc.tw.rgb[2]*x)/100)
     # reallocate current color
     # rgb = "#%02x%02x%02x" % (r,g,b)
-    # lc.tw.fgcolor = lc.tw.cm.alloc_color(rgb)
+    # lc.tw.canvas.fgcolor = lc.tw.canvas.cm.alloc_color(rgb)
     # return
 
     ###########################################################################

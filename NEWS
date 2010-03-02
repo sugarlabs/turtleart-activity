@@ -18,6 +18,7 @@
  o labels on coordinate-grid overlays
  o more complete support in non-Sugar environments
  o new (and improved) sample code
+ o Logo code for project added to View Source
 
 * completed a major refactoring of the code
  o 90% smaller download bundle-size

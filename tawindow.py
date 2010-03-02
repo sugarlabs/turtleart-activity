@@ -124,13 +124,6 @@ class TurtleArtWindow():
             self.scale = 1.0
         self.block_scale = BLOCK_SCALE
         self.trash_scale = 0.5
-        self.cm = self.gc.get_colormap()
-        self.rgb = [255,0,0]
-        self.bgcolor = self.cm.alloc_color('#fff8de')
-        self.msgcolor = self.cm.alloc_color('black')
-        self.fgcolor = self.cm.alloc_color('red')
-        self.textcolor = self.cm.alloc_color('blue')
-        self.textsize = 48
         self.myblock = None
         self.nop = 'nop'
         self.loaded = 0
@@ -2637,7 +2630,7 @@ class TurtleArtWindow():
                 dsobject.metadata['title'] = name
             dsobject.metadata['icon-color'] = profile.get_color().to_string()
             if svg:
-                dsobject.metadata['mime_type'] = 'image/svg'
+                dsobject.metadata['mime_type'] = 'image/svg+xml'
             else:
                 dsobject.metadata['mime_type'] = 'image/png'
             dsobject.set_file_path(file_path)

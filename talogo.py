@@ -1016,7 +1016,7 @@ class LogoCode:
         for s in sarray:
             self.tw.canvas.setxy(x, y)
             self.show(s)
-            y -= int(self.tw.textsize*self.tw.lead)
+            y -= int(self.tw.canvas.textsize*self.tw.lead)
 
     def set_scale(self, x):
         self.scale = x
@@ -1041,16 +1041,18 @@ class LogoCode:
                 self.play_sound(string)
             else:
                 if center:
-                    y -= self.tw.textsize
+                    y -= self.tw.canvas.textsize
                 self.tw.canvas.draw_text(string, x, y,
-                                         int(self.tw.textsize*self.scale/100),
+                                         int(self.tw.canvas.textsize*\
+                                             self.scale/100),
                                          self.tw.canvas.width-x)
         elif type(string) == float or type(string) == int:
             string = round_int(string)
             if center:
-                y -= self.tw.textsize
+                y -= self.tw.canvas.textsize
             self.tw.canvas.draw_text(string, x, y,
-                                     int(self.tw.textsize*self.scale/100),
+                                     int(self.tw.canvas.textsize*\
+                                         self.scale/100),
                                      self.tw.canvas.width-x)
     
     # Image only (at current x,y)
@@ -1172,7 +1174,7 @@ class LogoCode:
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
         # save the text size so we can restore it later
-        save_text_size = self.tw.textsize
+        save_text_size = self.tw.canvas.textsize
         # set title text
         self.tw.canvas.settextsize(self.title_height)
         self.show(title)
@@ -1201,7 +1203,7 @@ class LogoCode:
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
         # save the text size so we can restore it later
-        save_text_size = self.tw.textsize
+        save_text_size = self.tw.canvas.textsize
         # set title text
         self.tw.canvas.settextsize(self.title_height)
         self.show(title)
@@ -1236,7 +1238,7 @@ class LogoCode:
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
         # save the text size so we can restore it later
-        save_text_size = self.tw.textsize
+        save_text_size = self.tw.canvas.textsize
         # set title text
         self.tw.canvas.settextsize(self.title_height)
         self.show(sarray[0])
@@ -1258,7 +1260,7 @@ class LogoCode:
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
         # save the text size so we can restore it later
-        save_text_size = self.tw.textsize
+        save_text_size = self.tw.canvas.textsize
         # set title text
         self.tw.canvas.settextsize(self.title_height)
         self.show(title)
@@ -1293,7 +1295,7 @@ class LogoCode:
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
         # save the text size so we can restore it later
-        save_text_size = self.tw.textsize
+        save_text_size = self.tw.canvas.textsize
         # set title text
         self.tw.canvas.settextsize(self.title_height)
         self.show(title)
@@ -1327,7 +1329,7 @@ class LogoCode:
         y = self.tw.canvas.height/2
         self.tw.canvas.setxy(x, y)
         # save the text size so we can restore it later
-        save_text_size = self.tw.textsize
+        save_text_size = self.tw.canvas.textsize
         # set title text
         self.tw.canvas.settextsize(self.title_height)
         self.show(title)
