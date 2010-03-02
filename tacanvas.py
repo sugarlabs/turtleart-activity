@@ -375,6 +375,8 @@ class TurtleGraphics:
         self.pendown = self.tw.active_turtle.get_pen_state()
 
     def svg_close(self):
+        if self.tw.svg_string == '':
+            return
         self.svg.calc_w_h(False)
         self.tw.svg_string = "%s%s%s%s" % (self.svg.header(True),
                                          self.svg.background(self.bgcolor),

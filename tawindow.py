@@ -2621,6 +2621,8 @@ class TurtleArtWindow():
             datapath = os.getcwd()
         file_path = os.path.join(datapath, filename)
         if svg:
+            if self.svg_string == '':
+                return
             save_svg(self.svg_string, file_path)
             self.svg_string = ''
         else:
