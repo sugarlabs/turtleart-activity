@@ -646,15 +646,31 @@ class SVG:
                "stroke-linecap:round;",
                "stroke-opacity:1;\" />\n")
 
-    def text(self, x, y, size, string):
+    def text(self, x, y, size, width, string):
         self._x = x
         self._y = y
+        self._check_min_max()
+        self._x = x+width
+        self._y = y-size
         self._check_min_max()
         return "        %s%.1f%s%s%s%.1f%s%.1f%s%.1f%s%s%s%s%s" % (
                "<text style=\"font-size:", size, "px;fill:", self._stroke,
                ";font-family:Sans\">\n           <tspan x=\"", x, "\" y=\"", y,
                "\" style=\"font-size:", size, "px;fill:", self._stroke, "\">",
                string, "</tspan>\n        </text>\n")
+
+    def image(self, x, y, w, h, path):
+        self._x = x
+        self._y = y
+        self._check_min_max()
+        self._x = x+w
+        self._y = y+h
+        self._check_min_max()
+        return "        %s%.1f%s%.1f%s%.1f%s%.1f%s%s%s" % (
+               "<image x=\"", x, "\" y=\"", y,
+               "\" width=\"", w, "\" height=\"", h, 
+               "\" xlink:href=\"", path, "\">\n")
+
 
     def _circle(self, r, cx, cy):
         return "%s%s%s%s%s%f%s%f%s%f%s" % ("<circle style=\"fill:",
@@ -683,6 +699,7 @@ class SVG:
             self._max_y = self._y
 
     def line_to(self, x, y):
+        self._check_min_max()
         if self._x == x and self._y == y:
             return ""
         else:
@@ -698,6 +715,7 @@ class SVG:
             return self.line_to(self._x+dx, self._y+dy)
 
     def arc_to(self, x, y, r, a=90, l=0, s=1):
+        self._check_min_max()
         if r == 0:
             return self.line_to(x, y)
         else:

@@ -330,7 +330,7 @@ class TurtleGraphics:
         if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.text(x-self.width/2,
                                                 y+size,
-                                                size, label)
+                                                size, w, label)
 
     def draw_line(self,x1,y1,x2,y2):
         x1,y1 = self.width/2+int(x1), self.height/2-int(y1)
