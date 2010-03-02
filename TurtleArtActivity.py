@@ -465,7 +465,7 @@ class TurtleArtActivity(activity.Activity):
             f = file(tafile, "w")
             f.write(code)
             f.close()
-        except Exception as e:
+        except Exception, e:
             print("couldn't dump code to view source: " + str(e))
         return tafile
 
@@ -1174,19 +1174,6 @@ class ViewToolbar(gtk.Toolbar):
         gtk.Toolbar.__init__(self)
         self.activity = pc
 
-        # blocks button (hideshow)
-        self.activity.blocks_button = ToolButton( "hideshowoff" )
-        self.activity.blocks_button.set_tooltip(_('Hide blocks'))
-        self.activity.blocks_button.props.sensitive = True
-        self.activity.blocks_button.connect('clicked', \
-                                            self.activity._do_hideshow_cb)
-        try:
-            self.activity.blocks_button.props.accelerator = _('<Ctrl>b')
-        except:
-            pass
-        self.insert(self.activity.blocks_button, -1)
-        self.activity.blocks_button.show()
-
         # full screen
         self.activity.fullscreen_button = ToolButton( "view-fullscreen" )
         self.activity.fullscreen_button.set_tooltip(_('Fullscreen'))
@@ -1420,6 +1407,19 @@ class ProjectToolbar(gtk.Toolbar):
             pass
         self.insert(self.activity.palette_button, -1)
         self.activity.palette_button.show()
+
+        # blocks button (hideshow)
+        self.activity.blocks_button = ToolButton( "hideshowoff" )
+        self.activity.blocks_button.set_tooltip(_('Hide blocks'))
+        self.activity.blocks_button.props.sensitive = True
+        self.activity.blocks_button.connect('clicked', \
+                                            self.activity._do_hideshow_cb)
+        try:
+            self.activity.blocks_button.props.accelerator = _('<Ctrl>b')
+        except:
+            pass
+        self.insert(self.activity.blocks_button, -1)
+        self.activity.blocks_button.show()
 
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
