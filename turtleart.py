@@ -86,6 +86,10 @@ class TurtleMain():
         menu.append(menu_items)
         menu_items.connect("activate", self._do_save_cb)
         menu_items.show()
+        menu_items = gtk.MenuItem(_("Save Picture"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_save_picture_cb)
+        menu_items.show()
 
         activity_menu = gtk.MenuItem(_("File"))
         activity_menu.show()
@@ -211,6 +215,9 @@ class TurtleMain():
 
     def _do_save_cb(self, widget):
         self.tw.save_file()
+
+    def _do_save_picture_cb(self, widget):
+        self.tw.save_as_image()
 
     def _do_resize_cb(self, widget, factor):
         if factor == -1:

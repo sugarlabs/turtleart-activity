@@ -2601,22 +2601,42 @@ class TurtleArtWindow():
     Grab the current canvas and save it.
     """
     def save_as_image(self, name="", svg=False):
-        if svg:
-            if len(name) == 0:
-                filename = "ta.svg"
-            else:
-                filename = name+".svg"
-        else:
-            if len(name) == 0:
-                filename = "ta.png"
-            else:
-                filename = name+".png"
 
         if self.running_sugar:
+            if svg:
+                if len(name) == 0:
+                    filename = "ta.svg"
+                else:
+                    filename = name+".svg"
+            else:
+                if len(name) == 0:
+                    filename = "ta.png"
+                else:
+                    filename = name+".png"
             datapath = os.path.join(self.activity.get_activity_root(),
                                     "instance")
+        elif len(name) == 0:
+            name = "ta"
+            if self.save_folder is not None:
+                self.load_save_folder = self.save_folder
+            if svg:
+                filename, self.load_save_folder = get_save_name('.svg',
+                                                     self.load_save_folder,
+                                                     name)
+            else:
+                filename, self.load_save_folder = get_save_name('.png',
+                                                     self.load_save_folder,
+                                                     name)
+            datapath = self.load_save_folder
         else:
             datapath = os.getcwd()
+            if svg:
+                filename = name+".svg"
+            else:
+                filename = name+".png"
+        if filename is None:
+            return
+
         file_path = os.path.join(datapath, filename)
         if svg:
             if self.svg_string == '':
