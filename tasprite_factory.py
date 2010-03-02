@@ -652,7 +652,7 @@ class SVG:
         self._check_min_max()
         return "        %s%.1f%s%s%s%.1f%s%.1f%s%.1f%s%s%s%s%s" % (
                "<text style=\"font-size:", size, "px;fill:", self._stroke,
-               ";font-family:Sans;\">\n           <tspan x=\"", x, "\" y=\"", y,
+               ";font-family:Sans\">\n           <tspan x=\"", x, "\" y=\"", y,
                "\" style=\"font-size:", size, "px;fill:", self._stroke, "\">",
                string, "</tspan>\n        </text>\n")
 
