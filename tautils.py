@@ -21,6 +21,7 @@
 
 import gtk
 import pickle
+import subprocess
 try:
     _old_Sugar_system = False
     import json
@@ -163,6 +164,25 @@ def get_pixbuf_from_journal(dsobject, w, h):
         except:
             pixbuf = None
     return pixbuf
+
+def get_path(activity, subpath ):
+    try:
+        return(os.path.join(activity.get_activity_root(), subpath))
+    except:
+        # Early versions of Sugar didn't support get_activity_root()
+        return(os.path.join(os.environ['HOME'], ".sugar/default",
+                            "org.laptop.TurtleArtActivity", subpath))
+
+def image_to_base64(pixbuf, activity):
+    filename = os.path.join(get_path(activity, 'instance'), 'imagetmp.png')
+    pixbuf.save(filename, "png")
+    base64 = os.path.join(get_path(activity, 'instance'), 'base64tmp')
+    cmd = "base64 <" + filename + " >" + base64
+    subprocess.check_call(cmd, shell=True)
+    f = open( base64, 'r')
+    data = f.read()
+    f.close()
+    return data
 
 def movie_media_type(name):
     return name.endswith(('.ogv','.vob','.mp4','.wmv','.mov', '.mpeg'))

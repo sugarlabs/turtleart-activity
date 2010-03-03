@@ -671,17 +671,23 @@ class SVG:
                "\" style=\"font-size:", size, "px;fill:", self._stroke, "\">",
                string, "</tspan>\n        </text>\n")
 
-    def image(self, x, y, w, h, path):
+    def image(self, x, y, w, h, path, image_data=None):
         self._x = x
         self._y = y
         self._check_min_max()
         self._x = x+w
         self._y = y+h
         self._check_min_max()
-        return "        %s%.1f%s%.1f%s%.1f%s%.1f%s%s%s" % (
-               "<image x=\"", x, "\" y=\"", y,
-               "\" width=\"", w, "\" height=\"", h, 
-               "\" xlink:href=\"file://", path, "\"/>\n")
+        if image_data == None:
+            return "        %s%.1f%s%.1f%s%.1f%s%.1f%s%s%s" % (
+                   "<image x=\"", x, "\" y=\"", y,
+                   "\" width=\"", w, "\" height=\"", h, 
+                   "\" xlink:href=\"file://", path, "\"/>\n")
+        else:
+            return "        %s%.1f%s%.1f%s%.1f%s%.1f%s%s%s" % (
+                   "<image x=\"", x, "\" y=\"", y,
+                   "\" width=\"", w, "\" height=\"", h, 
+                   "\" xlink:href=\"data:image/png;base64,", image_data, "\"/>\n")
 
 
     def _circle(self, r, cx, cy):

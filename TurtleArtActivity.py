@@ -62,7 +62,7 @@ import sys
 from taconstants import *
 from taexporthtml import save_html
 from taexportlogo import save_logo
-from tautils import data_to_file, data_to_string, data_from_string
+from tautils import data_to_file, data_to_string, data_from_string, get_path
 from tawindow import TurtleArtWindow
 
 SERVICE = 'org.laptop.TurtleArtActivity'
@@ -72,9 +72,9 @@ PATH = '/org/laptop/TurtleArtActivity'
 class TurtleArtActivity(activity.Activity):
 
     def __init__(self, handle):
-        super(TurtleArtActivity,self).__init__(handle)
+        super(TurtleArtActivity, self).__init__(handle)
 
-        datapath = self._get_datapath()
+        datapath = get_path(activity, 'data')
         
         self._setup_visibility_handler()
 
@@ -107,7 +107,7 @@ class TurtleArtActivity(activity.Activity):
             return
 
         # save the html code to the instance directory
-        datapath = os.path.join(activity.get_activity_root(), "instance")
+        datapath = get_path(activity, 'instance')
 
         html_file = os.path.join(datapath, "portfolio.html")
         f = file(html_file, "w")
@@ -167,7 +167,7 @@ class TurtleArtActivity(activity.Activity):
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
 
         # save the html code to the instance directory
-        datapath = os.path.join(activity.get_activity_root(), "instance")
+        datapath = get_path(activity, 'instance')
 
         # Write the file to the data directory of this activity's root. 
         file_path = os.path.join(datapath, filename)
@@ -247,19 +247,9 @@ class TurtleArtActivity(activity.Activity):
     """ Save snapshot """
     def _do_keep_cb(self, button):
         # Create a datastore object
-        # save the current state of the project to the instance directory
+        datapath = get_path(activity, 'instance')
 
-        # work-around Rainbow which doesn't seem to like tempfile.mkstemp
-        try:
-            tmppath = os.path.join(activity.get_activity_root(), "instance")
-        except:
-            # Early versions of Sugar (e.g., 656) didn't support
-            # get_activity_root()
-            tmppath = os.path.join( \
-                os.environ['HOME'], \
-                ".sugar/default/org.laptop.TurtleArtActivity/instance")
-
-        tafile = os.path.join(tmppath,"tmpfile.ta")
+        tafile = os.path.join(datapath,"tmpfile.ta")
         print tafile
         try:
             data_to_file(self.tw.assemble_data_to_save(), tafile)
@@ -450,16 +440,8 @@ class TurtleArtActivity(activity.Activity):
         async_cb(logo_code_path)
 
     def _dump_logo_code(self):
-        # work-around Rainbow which doesn't seem to like tempfile.mkstemp
-        try:
-            tmppath = os.path.join(activity.get_activity_root(), "instance")
-        except:
-            # Early versions of Sugar (e.g., 656) didn't support
-            # get_activity_root()
-            tmppath = os.path.join( \
-                os.environ['HOME'], \
-                ".sugar/default/org.laptop.TurtleArtActivity/instance")
-        tafile = os.path.join(tmppath,"tmpfile.ta")
+        datapath = get_path(activity, 'instance')
+        tafile = os.path.join(datapath,"tmpfile.ta")
         try:
             code = save_logo(self, self.tw)
             f = file(tafile, "w")
@@ -1050,19 +1032,6 @@ class TurtleArtActivity(activity.Activity):
         self.connect('shared', self._shared_cb)
         self.connect('joined', self._joined_cb)
 
-    """
-    get datapath
-    """
-    def _get_datapath(self):
-        try:
-            datapath = os.path.join(activity.get_activity_root(), "data")
-        except:
-            # Early versions of Sugar (e.g., 656) didn't support
-            # get_activity_root()
-            datapath = os.path.join( \
-                os.environ['HOME'], \
-                    ".sugar/default/org.laptop.TurtleArtActivity/data")
-        return datapath
 
     """
     Notify when the visibility state changes

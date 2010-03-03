@@ -23,6 +23,7 @@ import gtk
 from math import sin, cos, pi
 from sprites import Sprite
 from tasprite_factory import SVG
+from tautils import image_to_base64
 import pango
 
 from taconstants import CANVAS_LAYER, DEFAULT_TURTLE
@@ -306,7 +307,13 @@ class TurtleGraphics:
         self.canvas.images[0].draw_pixbuf(self.gc, pixbuf, a, b, x, y)
         self.invalt(x, y, w, h)
         if self.tw.saving_svg:
-            self.tw.svg_string += self.svg.image(x-self.width/2, y, w, h, path)
+            if self.tw.running_sugar:
+                # In Sugar, we need to embed the images inside the SVG
+                self.tw.svg_string += self.svg.image(x-self.width/2, y, w, h,
+                    path, image_to_base64(pixbuf, self.tw.activity))
+            else:
+                self.tw.svg_string += self.svg.image(x-self.width/2, y, w, h,
+                                                     path)
 
     def draw_text(self, label, x, y, size, w):
         w *= self.tw.coord_scale
