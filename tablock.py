@@ -76,7 +76,7 @@ class Block:
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
                  values=[], scale=BLOCK_SCALE, colors=["#FF0000","#A00000"]):
         self.spr = None
-        self.shapes = []
+        self.shapes = [None, None]
         self.name = name
         self.colors = colors
         self.scale = scale
@@ -212,7 +212,7 @@ class Block:
         self.svg.set_hide(False)
         if self.type == 'block':
             self.svg.set_show(True)
-        else:
+        else: # 'proto'
             self.svg.set_show(False)
         self.refresh()
         return dy
@@ -283,7 +283,6 @@ class Block:
         self._set_colors(svg)
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
         self.svg.clear_docks()
-        self.shapes = []
         if self.name in BASIC_STYLE:
             self._make_basic_style(svg)
         elif self.name in BASIC_STYLE_HEAD:
@@ -769,73 +768,73 @@ class Block:
                                       self.svg.docks[1][1]]]
 
     def _make_basic_block(self, svg):
-        self.shapes.append(svg_str_to_pixbuf(self.svg.basic_block()))
+        self.shapes[0] = svg_str_to_pixbuf(self.svg.basic_block())
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.shapes.append(svg_str_to_pixbuf(self.svg.basic_block()))
+        self.shapes[1] = svg_str_to_pixbuf(self.svg.basic_block())
 
     def _make_collapsible_top_block(self, svg):
-        self.shapes.append(svg_str_to_pixbuf(self.svg.sandwich_top()))
+        self.shapes[0] = svg_str_to_pixbuf(self.svg.sandwich_top())
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.shapes.append(svg_str_to_pixbuf(self.svg.sandwich_top()))
+        self.shapes[1] = svg_str_to_pixbuf(self.svg.sandwich_top())
 
     def _make_collapsible_bottom_block(self, svg):
-        self.shapes.append(svg_str_to_pixbuf(self.svg.sandwich_bottom()))
+        self.shapes[0] = svg_str_to_pixbuf(self.svg.sandwich_bottom())
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.shapes.append(svg_str_to_pixbuf(self.svg.sandwich_bottom()))
+        self.shapes[1] = svg_str_to_pixbuf(self.svg.sandwich_bottom())
 
     def _make_basic_box(self, svg):
-        self.shapes.append(svg_str_to_pixbuf(self.svg.basic_box()))
+        self.shapes[0] = svg_str_to_pixbuf(self.svg.basic_box())
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.shapes.append(svg_str_to_pixbuf(self.svg.basic_box()))
+        self.shapes[1] = svg_str_to_pixbuf(self.svg.basic_box())
 
     def _make_portfolio(self, svg):
-        self.shapes.append(svg_str_to_pixbuf(self.svg.portfolio()))
+        self.shapes[0] = svg_str_to_pixbuf(self.svg.portfolio())
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.shapes.append(svg_str_to_pixbuf(self.svg.portfolio()))
+        self.shapes[1] = svg_str_to_pixbuf(self.svg.portfolio())
 
     def _make_basic_flow(self, svg):
-        self.shapes.append(svg_str_to_pixbuf(self.svg.basic_flow()))
+        self.shapes[0] = svg_str_to_pixbuf(self.svg.basic_flow())
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.shapes.append(svg_str_to_pixbuf(self.svg.basic_flow()))
+        self.shapes[1] = svg_str_to_pixbuf(self.svg.basic_flow())
 
     def _make_boolean_compare(self, svg):
-        self.shapes.append(svg_str_to_pixbuf(self.svg.boolean_compare()))
+        self.shapes[0] = svg_str_to_pixbuf(self.svg.boolean_compare())
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.shapes.append(svg_str_to_pixbuf(self.svg.boolean_compare()))
+        self.shapes[1] = svg_str_to_pixbuf(self.svg.boolean_compare())
 
     def _make_boolean_and_or(self, svg):
-        self.shapes.append(svg_str_to_pixbuf(self.svg.boolean_and_or()))
+        self.shapes[0] = svg_str_to_pixbuf(self.svg.boolean_and_or())
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.shapes.append(svg_str_to_pixbuf(self.svg.boolean_and_or()))
+        self.shapes[1] = svg_str_to_pixbuf(self.svg.boolean_and_or())
 
     def _make_boolean_not(self, svg):
-        self.shapes.append(svg_str_to_pixbuf(self.svg.boolean_not()))
+        self.shapes[0] = svg_str_to_pixbuf(self.svg.boolean_not())
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.shapes.append(svg_str_to_pixbuf(self.svg.boolean_not()))
+        self.shapes[1] = svg_str_to_pixbuf(self.svg.boolean_not())

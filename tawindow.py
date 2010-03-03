@@ -1663,14 +1663,18 @@ class TurtleArtWindow():
             bot = self._find_sandwich_bottom(top)
             if bot is None:
                 return
+            """
             if top.ey > 0:
+                print "reseting arm"
                 top.reset_y()
-            (tx, ty) = top.spr.get_xy()
-            (tw, th) = top.spr.get_dimensions()
-            (bx, by) = bot.spr.get_xy()
+            """
+            tx, ty = top.spr.get_xy()
+            tw, th = top.spr.get_dimensions()
+            bx, by = bot.spr.get_xy()
             dy = by-(ty+th)
             if dy > 0:
                 top.expand_in_y(dy/top.scale)
+                top.refresh()
 
     """
     Check the state of collapsible blocks upon change in dock state.

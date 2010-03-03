@@ -76,6 +76,7 @@ class SVG:
         self.margins = [0, 0, 0, 0]
 
     def basic_block(self):
+        self.reset_min_max()
         (x, y) = self._calculate_x_y()
         self.margins[2] = 0
         self.margins[3] = 0
@@ -118,6 +119,7 @@ class SVG:
         return self.header() + svg
 
     def basic_flow(self):
+        self.reset_min_max()
         (x, y) = self._calculate_x_y()
         self.margins[2] = 0
         self.margins[3] = 0
@@ -176,6 +178,7 @@ class SVG:
         return self.header() + svg
 
     def portfolio(self):
+        self.reset_min_max()
         (x, y) = self._calculate_x_y()
         self.margins[0] = int(x+2*self._stroke_width+0.5)
         self.margins[1] = int(y+self._stroke_width+0.5+self._slot_y)
@@ -212,6 +215,7 @@ class SVG:
         return self.header() + svg
 
     def basic_box(self):
+        self.reset_min_max()
         self.set_outie(True)
         x = self._stroke_width/2.0+self._innie_x1+self._innie_x2
         self.margins[0] = int((x+self._stroke_width+0.5)*self._scale)
@@ -232,6 +236,7 @@ class SVG:
         return self.header() + svg
 
     def boolean_and_or(self):
+        self.reset_min_max()
         svg = self._start_boolean(self._stroke_width/2.0,
                                   self._radius*5.5+self._stroke_width/2.0+\
                                   self._innie_y2+self._innie_spacer)
@@ -256,6 +261,7 @@ class SVG:
         return self.header() + svg
 
     def boolean_not(self):
+        self.reset_min_max()
         svg = self._start_boolean(self._stroke_width/2.0,
                                   self._radius*2.0+self._stroke_width/2.0)
         svg += self._rline_to(0,-self._stroke_width)
@@ -275,6 +281,7 @@ class SVG:
         return self.header() + svg
 
     def boolean_compare(self):
+        self.reset_min_max()
         yoffset = self._radius*2+2*self._innie_y2+\
                   self._innie_spacer+self._stroke_width/2.0
         if self._porch is True:
@@ -305,6 +312,7 @@ class SVG:
         return self.header() + svg
 
     def turtle(self, colors):
+        self.reset_min_max()
         self._fill, self._stroke = colors[0], colors[1]
         svg = "%s%s%s%s%s%s%s%s" % ("  <path d=\"M 27.5 48.3 ",
               "C 26.9 48.3 26.4 48.2 25.9 48.2 L 27.2 50.5 L 28.6 48.2 ",
@@ -384,6 +392,7 @@ class SVG:
         return self.header() + svg
 
     def palette(self, width, height):
+        self.reset_min_max()
         self._width, self._height = width, height
         self._fill, self._stroke = "#FFD000", "none"
         svg = self._rect(width, height, 0, 0)
@@ -394,6 +403,7 @@ class SVG:
         return self.header() + svg
 
     def toolbar(self, width, height):
+        self.reset_min_max()
         self._width, self._height = width, height
         self._fill, self._stroke = "#282828", "none"
         svg = self._rect(width, height, 0, 0)
@@ -401,6 +411,7 @@ class SVG:
         return self.header() + svg
 
     def sandwich_top(self):
+        self.reset_min_max()
         x = self._stroke_width/2.0
         y = self._stroke_width/2.0+self._radius
         self.margins[0] = int((x+self._stroke_width+0.5)*self._scale)
@@ -433,6 +444,7 @@ class SVG:
         return self.header() + svg
 
     def sandwich_bottom(self):
+        self.reset_min_max()
         x = self._stroke_width/2.0
         y = self._stroke_width/2.0
         self.margins[0] = int((x+self._stroke_width+0.5)*self._scale)
