@@ -258,7 +258,7 @@ BLOCK_NAMES = {
     'arc':[_('arc'), _('angle'), _('radius')],
     'audio':[' '],
     'back':[_('back')],
-    'blue':[_('blue')],
+    'blue':[_('blue')+' = 70'],
     'bottompos':[_('bottom')],
     'bottomy':[_('picture bottom')],
     'box':[_('box')],
@@ -269,7 +269,7 @@ BLOCK_NAMES = {
     'clearheap':[_('empty heap')],
     'color':[_('color')],
     'comment':[_('comment')],
-    'cyan':[_('cyan')],
+    'cyan':[_('cyan')+' = 50'],
     'decription':[' '],
     'division2':['/'],
     'empty':[_('empty trash')],
@@ -279,7 +279,7 @@ BLOCK_NAMES = {
     'forward':[_('forward')],
     'fullscreen':[_('full screen')],
     'greater2':[">"],
-    'green':[_('green')],
+    'green':[_('green')+' = 30'],
     'hat':[_('action')],
     'hat1':[_('action 1')],
     'hat2':[_('action 2')],
@@ -307,7 +307,7 @@ BLOCK_NAMES = {
     'nop':[_(' ')],
     'not':[_('not')],
     'number':['100'],
-    'orange':[_('orange')],
+    'orange':[_('orange')+' = 10'],
     'or2':[_('or')],
     'pendown':[_('pen down')],
     'pensize':[_('pen size')],
@@ -325,10 +325,10 @@ BLOCK_NAMES = {
     'printheap':[_('show heap')],
     'print':[_('print')],
     'product2':['×'],
-    'purple':[_('purple')],
+    'purple':[_('purple')+' = 90'],
     'push':[_('push')],
     'random':[_('random'), _('min'), _('max')],
-    'red':[_('red')],
+    'red':[_('red')+' = 0'],
     'remainder2':[_('mod')],
     'repeat':[' ',_('repeat')],
     'resistance':[_('resistance')],
@@ -392,7 +392,7 @@ BLOCK_NAMES = {
     'write':[_('write')],
     'xcor':[_('xcor')],
     'ycor':[_('ycor')],
-    'yellow':[_('yellow')]}
+    'yellow':[_('yellow')+' = 20']}
 
 #
 # Logo primitives
