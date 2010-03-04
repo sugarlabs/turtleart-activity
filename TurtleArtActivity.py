@@ -102,7 +102,7 @@ class TurtleArtActivity(activity.Activity):
         embed_flag = True
 
         # grab code from stacks
-        html = save_html(self,self.tw, embed_flag)
+        html = save_html(self, self.tw, embed_flag)
         if len(html) == 0:
             return
 
@@ -166,7 +166,7 @@ class TurtleArtActivity(activity.Activity):
         dsobject.metadata['mime_type'] = 'text/plain'
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
 
-        # save the html code to the instance directory
+        # save the Logo code to the instance directory
         datapath = get_path(activity, 'instance')
 
         # Write the file to the data directory of this activity's root. 
