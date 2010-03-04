@@ -19,6 +19,7 @@
  o more complete support in non-Sugar environments
  o new (and improved) sample code
  o Logo code for project added to View Source
+ o save SVG block lets you generate SVG with Turtle Art
 
 * completed a major refactoring of the code
  o 90% smaller download bundle-size

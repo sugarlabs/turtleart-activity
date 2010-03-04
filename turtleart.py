@@ -29,8 +29,10 @@ import os.path
 import locale
 from gettext import gettext as _
 from taconstants import OVERLAY_LAYER
-from tautils import data_to_string, data_from_string
+from tautils import data_to_string, data_from_string, get_save_name
+
 from tawindow import TurtleArtWindow
+from taexporthtml import save_html
 
 """
 Make a path if it doesn't previously exist
@@ -86,9 +88,13 @@ class TurtleMain():
         menu.append(menu_items)
         menu_items.connect("activate", self._do_save_cb)
         menu_items.show()
-        menu_items = gtk.MenuItem(_("Save Picture"))
+        menu_items = gtk.MenuItem(_("Save as image"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_save_picture_cb)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Save as HTML"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_save_html_cb)
         menu_items.show()
 
         activity_menu = gtk.MenuItem(_("File"))
@@ -218,6 +224,16 @@ class TurtleMain():
 
     def _do_save_picture_cb(self, widget):
         self.tw.save_as_image()
+
+    def _do_save_html_cb(self, widget):
+        html = save_html(self, self.tw, False)
+        if len(html) == 0:
+            return
+        filename, self.tw.load_save_folder = get_save_name('.html',
+                      self.tw.load_save_folder, 'portfolio')
+        f = file(filename, "w")
+        f.write(html)
+        f.close()
 
     def _do_resize_cb(self, widget, factor):
         if factor == -1:

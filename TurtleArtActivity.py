@@ -1,6 +1,6 @@
 #Copyright (c) 2007, Playful Invention Company
-#Copyright (c) 2008-9, Walter Bender
-#Copyright (c) 2009, Raul Gutierrez Segales
+#Copyright (c) 2008-10, Walter Bender
+#Copyright (c) 2009,10 Raul Gutierrez Segales
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -98,11 +98,11 @@ class TurtleArtActivity(activity.Activity):
         # write html out to datastore
         self.save_as_html.set_icon("htmlon")
         _logger.debug("saving html code")
-        # until we expose the option to choose, always embed images
+        # until we have URLs for datastore objects, always embed images
         embed_flag = True
 
         # grab code from stacks
-        html = save_html(self,self.tw,embed_flag)
+        html = save_html(self,self.tw, embed_flag)
         if len(html) == 0:
             return
 
