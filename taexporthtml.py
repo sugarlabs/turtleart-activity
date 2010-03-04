@@ -21,21 +21,13 @@
 from sugar.activity import activity
 from sugar.datastore import datastore
 import os.path
-import subprocess
 from talogo import get_pixbuf_from_journal
-from tautils import data_to_string, save_picture
+from tautils import data_to_string, save_picture, image_to_base64, get_path
 from gettext import gettext as _
 
 def save_html(self, tw, embed_flag=True):
 
     self.embed_images = embed_flag
-    try:
-        self.datapath = os.path.join(activity.get_activity_root(), "instance")
-    except:
-        # early versions of Sugar (656) didn't support get_activity_root()
-        self.datapath = os.path.join( \
-            os.environ['HOME'], \
-            ".sugar/default/org.laptop.TurtleArtActivity/instance")
 
     # dictionary defines the html wrappers around template elements
     # start of block, end of block
@@ -92,9 +84,9 @@ charset=UTF-8\">\n", ""),
              elif show > 0: # process the argument to show or container
                  if show == 1: # could be media or a string
                      if d[0:8] == '#smedia_': # show media
-                         this_stack += add_image(self,d)
+                         this_stack += add_image(self, tw, d)
                      elif d[0:8] == '#sdescr_': # show description
-                         this_stack += add_description(self,d)
+                         this_stack += add_description(self, tw, d)
                      elif d[0:2] == '#s': # show a string
                          this_stack += d[2:]
                          show = 0
@@ -155,14 +147,14 @@ charset=UTF-8\">\n", ""),
                  tmp = self.html_glue['tr'][0] + \
                        self.html_glue['td'][0]
                  if d[0:8] == '#smedia_':
-                     tmp += (add_image(self,d) + \
+                     tmp += (add_image(self, tw, d) + \
                              self.html_glue['td'][1] + \
                              self.html_glue['td'][0] + \
-                             add_description(self,d) + \
+                             add_description(self, tw, d) + \
                              self.html_glue['td'][1] + \
                              self.html_glue['tr'][1])
                  elif d[0:8] == '#sdescr_':
-                     tmp += (add_description(self,d) + \
+                     tmp += (add_description(self, tw, d) + \
                              self.html_glue['td'][1] + \
                              self.html_glue['tr'][1])
                  if tp1 > 1 or tp6 > 2:
@@ -177,11 +169,11 @@ charset=UTF-8\">\n", ""),
                  tmp = self.html_glue['tr'][0] + \
                        self.html_glue['td'][0]
                  if d[0:8] == '#smedia_':
-                     tmp += (add_image(self,d) + \
+                     tmp += (add_image(self, tw, d) + \
                              self.html_glue['td'][1] + \
                              self.html_glue['tr'][1])
                  elif d[0:8] == '#sdescr_':
-                     tmp += (add_description(self,d) + \
+                     tmp += (add_description(self, tw, d) + \
                              self.html_glue['td'][1] + \
                              self.html_glue['tr'][1])
                  this_stack += (tmp + self.html_glue['table'][1] + \
@@ -194,21 +186,21 @@ charset=UTF-8\">\n", ""),
                  else:
                      tmp += self.html_glue['td'][0]
                  if tp2 == 2:
-                     saved_description = add_description(self,d)
+                     saved_description = add_description(self, tw, d)
                  if tp2 == 2 or tp7 == 2:
                      if d[0:8] == '#smedia_':
                          tmp += (add_image(self,d) + \
                                  self.html_glue['td'][1])
                      elif d[0:8] == '#sdescr_':
-                         tmp += (add_description(self,d) + \
+                         tmp += (add_description(self, tw, d) + \
                                  self.html_glue['td'][1])
                      if tp2 > 1: tp2 += 1
                      elif tp7 > 1: tp7 += 1
                  elif tp2 == 3:
                      if d[0:8] == '#smedia_':
-                         tmp += add_image(self,d)
+                         tmp += add_image(self, tw, d)
                      elif d[0:8] == '#sdescr_':
-                         tmp += add_description(self,d)
+                         tmp += add_description(self, tw, d)
                      tmp += (self.html_glue['td'][1] + \
                              self.html_glue['tr'][1] + \
                              self.html_glue['tr'][0] + \
@@ -225,25 +217,25 @@ charset=UTF-8\">\n", ""),
                      tp2 = 0
                  elif tp7 == 3:
                      if d[0:8] == '#smedia_':
-                         tmp += add_image(self,d)
+                         tmp += add_image(self, tw, d)
                      elif d[0:8] == '#sdescr_':
-                         tmp += add_description(self,d)
+                         tmp += add_description(self, tw, d)
                      tmp += (self.html_glue['td'][1] + \
                              self.html_glue['tr'][1] + \
                              self.html_glue['tr'][0])
                      tp7 += 1
                  elif tp7 == 4:
                      if d[0:8] == '#smedia_':
-                         tmp += add_image(self,d)
+                         tmp += add_image(self, tw, d)
                      elif d[0:8] == '#sdescr_':
-                         tmp += add_description(self,d)
+                         tmp += add_description(self, tw, d)
                      tmp += (self.html_glue['td'][1])
                      tp7 += 1
                  elif tp7 == 5:
                      if d[0:8] == '#smedia_':
-                         tmp += add_image(self,d)
+                         tmp += add_image(self, tw, d)
                      elif d[0:8] == '#sdescr_':
-                         tmp += add_description(self,d)
+                         tmp += add_description(self, tw, d)
                      tmp += (self.html_glue['td'][1] + \
                              self.html_glue['tr'][1])
                      this_stack += (tmp + self.html_glue['table'][1] + \
@@ -258,25 +250,18 @@ charset=UTF-8\">\n", ""),
     so save a screendump instead
     """
     if slidecount == 0:
-        # save a screen dump instead
-        filename = os.path.join(self.datapath, 'image.png')
-        save_picture(tw.canvas, filename)
-        # if the embed_images flag is True
-        # embed_images base64 into the html
         if self.embed_images == True:
-            base64 = os.path.join(self.datapath, 'base64tmp')
-            cmd = "base64 <" + filename + " >" + base64
-            subprocess.check_call(cmd, shell=True)
-            f = open( base64, 'r')
-            imgdata = f.read()
-            f.close()
-            code += (self.html_glue['img'][0] + \
-                        imgdata + \
-                        self.html_glue['img'][1])
-            code += (self.html_glue['div'][0])
-            # get a json dump of the code
-            code += data_to_string(tw.assemble_data_to_save(False, True))
-            code += (self.html_glue['div'][1])
+            imgdata = image_to_base64(save_picture(self.tw.canvas), tw.activity)
+        else:
+            imgdata = os.path.join(self.load_save_folder, 'image.png')
+            self.tw.save_as_image(filepath)
+        code += (self.html_glue['img'][0] + imgdata + \
+                 self.html_glue['img'][1])
+        code += self.html_glue['div'][0]
+        # get a json dump of the code
+        code += data_to_string(tw.assemble_data_to_save(False, True))
+        code += self.html_glue['div'][1]
+           
     code = self.html_glue['doctype'][0] + \
            self.html_glue['html'][0] + \
            self.html_glue['head'][0] + \
@@ -302,36 +287,32 @@ def walk_stack(self, tw, blk):
         # not top of stack, then return empty list
         return []
 
-def add_image(self, d):
+def add_image(self, tw, d):
     if d[8:] != "None":
-        try:
-            dsobject = datastore.get(d[8:])
-            pixbuf = get_pixbuf_from_journal(dsobject,400,300)
-            filename = os.path.join(self.datapath, 'image' + \
-                                    str(self.imagecount) + ".png")
-            pixbuf.save(filename, "png")
-            # if the embed_images flag is True
-            # embed images base64 into the html
-            if self.embed_images == True:
-                base64 = os.path.join(self.datapath, 'base64tmp')
-                cmd = "base64 <" + filename + " >" + base64
-                subprocess.check_call(cmd, shell=True)
-                f = open( base64, 'r')
-                imgdata = f.read()
-                f.close()
-            tmp = self.html_glue['img2'][0]
-            if self.embed_images == True:
-                tmp += imgdata
-            else:
-                tmp += str(self.imagecount)
-            self.imagecount += 1
-            tmp += self.html_glue['img2'][1]
-            return tmp
-        except:
-            return ""
+        if self.embed_images == True:
+            try:
+                dsobject = datastore.get(d[8:])
+                pixbuf = get_pixbuf_from_journal(dsobject,400,300)
+                imgdata = image_to_base64(pixbuf, tw.activity)
+            except:
+                imgdata = ""
+        elif tw.running_sugar:
+            try:
+                dsobject = datastore.get(d[8:])
+                imgdata = dsobject.file_path
+            except:
+                imgdata = ""
+        else:
+            imgdata = d[8:]
+
+        tmp = self.html_glue['img2'][0]
+        tmp += imgdata
+        tmp += self.html_glue['img2'][1]
+        self.imagecount += 1
+        return tmp
     return ""
 
-def add_description(self, d):
+def add_description(self, tw, d):
     # show description
     if d[8:] != "None":
         try:

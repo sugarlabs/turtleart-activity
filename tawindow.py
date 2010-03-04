@@ -55,7 +55,7 @@ from taturtle import Turtles, Turtle
 from tautils import magnitude, get_load_name, get_save_name, data_from_file,\
                     data_to_file, round_int, get_id, get_pixbuf_from_journal,\
                     movie_media_type, audio_media_type, image_media_type,\
-                    save_picture, save_svg, calc_image_size
+                    save_picture, save_svg, calc_image_size, get_path
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
@@ -2615,8 +2615,7 @@ class TurtleArtWindow():
                     filename = "ta.png"
                 else:
                     filename = name+".png"
-            datapath = os.path.join(self.activity.get_activity_root(),
-                                    "instance")
+            datapath = get_path(self.activity, 'instance')
         elif len(name) == 0:
             name = "ta"
             if self.save_folder is not None:

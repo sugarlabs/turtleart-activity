@@ -136,13 +136,15 @@ def do_dialog(dialog, suffix, load_save_folder):
     dialog.destroy()
     return result, load_save_folder
 
-def save_picture(canvas, fname):
+def save_picture(canvas, fname=''):
     pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, canvas.width,
                             canvas.height)
     pixbuf.get_from_drawable(canvas.canvas.images[0],
                              canvas.canvas.images[0].get_colormap(),
                              0, 0, 0, 0, canvas.width, canvas.height)
-    pixbuf.save(fname, 'png')
+    if fname != '':
+        pixbuf.save(fname, 'png')
+    return pixbuf
 
 def save_svg(string, fname):
     f = file(fname, "w")
@@ -175,7 +177,8 @@ def get_path(activity, subpath ):
 
 def image_to_base64(pixbuf, activity):
     filename = os.path.join(get_path(activity, 'instance'), 'imagetmp.png')
-    pixbuf.save(filename, "png")
+    if pixbuf != None:
+        pixbuf.save(filename, "png")
     base64 = os.path.join(get_path(activity, 'instance'), 'base64tmp')
     cmd = "base64 <" + filename + " >" + base64
     subprocess.check_call(cmd, shell=True)
