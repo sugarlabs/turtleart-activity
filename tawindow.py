@@ -258,8 +258,8 @@ class TurtleArtWindow():
     """
     def _expose_cb(self, win, event):
         self.sprite_list.redraw_sprites()
+        # self.canvas.cr_expose(event)
         return True
-
 
     """
     Eraser_button (Always hide status block when clearing the screen.)
@@ -824,6 +824,8 @@ class TurtleArtWindow():
     Select a toolbar button (Used when not running Sugar).
     """
     def _select_toolbar_button(self, spr):
+        if not hasattr(spr, 'name'):
+            return
         if spr.name == 'run-fastoff':
             self.lc.trace = 0
             self.run_button(0)
@@ -1664,7 +1666,6 @@ class TurtleArtWindow():
             if bot is None:
                 return
             if top.ey > 0:
-                print "reseting arm"
                 top.reset_y()
             tx, ty = top.spr.get_xy()
             tw, th = top.spr.get_dimensions()
