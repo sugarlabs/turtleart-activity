@@ -470,6 +470,8 @@ class LogoCode:
         if run_flag:
             print "running code: %s" % (code)
             self.setup_cmd(code)
+            if self.tw.hide is False:
+                self.tw.display_coordinates()
         else:
             return code
 
@@ -646,7 +648,7 @@ class LogoCode:
             raise logoerror(str(self.iresult))
         self.iline = oldiline
         self.ireturn()
-        if self.tw.hide is False:
+        if self.tw.hide is False and self.tw.step_time > 0:
             self.tw.display_coordinates()
         yield True
     
