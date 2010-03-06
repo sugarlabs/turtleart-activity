@@ -119,11 +119,11 @@ class TurtleArtWindow():
         if self._OLPC_XO_1():
             self.lead = 1.0
             self.scale = 0.67
-            self.orientation = 1
+            self.orientation = VERTICAL_PALETTE
         else:
             self.lead = 1.0
             self.scale = 1.0
-            self.orientation = 0
+            self.orientation = HORIZONTAL_PALETTE
         self.block_scale = BLOCK_SCALE
         self.trash_scale = 0.5
         self.myblock = None
@@ -248,7 +248,7 @@ class TurtleArtWindow():
         return False
 
     """
-    Is the an OLPC XO-1?
+    Is the an OLPC XO-1 or XO-1.5?
     """
     def _OLPC_XO_1(self):
         return os.path.exists('/etc/olpc-release') or \
