@@ -119,9 +119,11 @@ class TurtleArtWindow():
         if self._OLPC_XO_1():
             self.lead = 1.0
             self.scale = 0.67
+            self.orientation = 1
         else:
             self.lead = 1.0
             self.scale = 1.0
+            self.orientation = 0
         self.block_scale = BLOCK_SCALE
         self.trash_scale = 0.5
         self.myblock = None
@@ -147,7 +149,6 @@ class TurtleArtWindow():
         self.palette_sprs = []
         self.palettes = []
         self.palette_button = []
-        self.orientation = 0
         self.trash_index = PALETTE_NAMES.index('trash')
         self.trash_stack = []
         self.selected_palette = None
