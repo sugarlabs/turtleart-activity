@@ -116,14 +116,15 @@ class TurtleArtWindow():
         self.dead_key = ""
         self.area = self.window.window
         self.gc = self.area.new_gc()
+        self.orientation = HORIZONTAL_PALETTE
         if self._OLPC_XO_1():
             self.lead = 1.0
             self.scale = 0.67
-            self.orientation = VERTICAL_PALETTE
+            if self.running_sugar and not self.activity.new_sugar_system:
+                self.orientation = VERTICAL_PALETTE
         else:
             self.lead = 1.0
             self.scale = 1.0
-            self.orientation = HORIZONTAL_PALETTE
         self.block_scale = BLOCK_SCALE
         self.trash_scale = 0.5
         self.myblock = None
@@ -663,7 +664,7 @@ class TurtleArtWindow():
     """
     def _layout_palette(self, n):
         if n is not None:
-            if self.orientation == 0:
+            if self.orientation == HORIZONTAL_PALETTE:
                 _x, _y = 20, self.toolbar_offset+5
                 _x, _y, _max = self._horizontal_layout(_x, _y, self.palettes[n])
                 if n == self.trash_index:
@@ -1220,7 +1221,7 @@ class TurtleArtWindow():
                    self.selected_palette != self.trash_index:
                     w, h = self.palette_sprs[self.selected_palette][
                                              self.orientation].get_dimensions()
-                    if self.orientation == 0:
+                    if self.orientation == HORIZONTAL_PALETTE:
                         if bx < w and\
                            by+dy < self.toolbar_offset+PALETTE_HEIGHT:
                             dy +=  -(by+dy)+self.toolbar_offset+PALETTE_HEIGHT
