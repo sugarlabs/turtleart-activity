@@ -212,7 +212,14 @@ class TurtleMain():
         menu_bar.append(turtle_menu)
 
         win.show_all()
-        self.tw = TurtleArtWindow(canvas, os.path.abspath('.'), lang)
+
+        if os.path.exists('/usr/share/turtleart'):
+            self.tw = TurtleArtWindow(canvas, '/usr/share/turtleart', lang)
+        elif os.path.exists('/usr/local/share/turtleart'):
+            self.tw = TurtleArtWindow(canvas, '/usr/local/share/turtleart',
+                                      lang)
+        else:
+            self.tw = TurtleArtWindow(canvas, os.path.abspath('.'), lang)
         self.tw.win = win
         self.tw.load_start()
 
@@ -229,11 +236,16 @@ class TurtleMain():
         html = save_html(self, self.tw, False)
         if len(html) == 0:
             return
-        filename, self.tw.load_save_folder = get_save_name('.html',
+        save_type = '.html'
+        if len(self.tw.saved_pictures) > 0:
+            if self.tw.saved_pictures[0].endswith(('.svg')):
+                save_type = '.xml'
+        filename, self.tw.load_save_folder = get_save_name(save_type,
                       self.tw.load_save_folder, 'portfolio')
         f = file(filename, "w")
         f.write(html)
         f.close()
+        self.tw.saved_pictures = []
 
     def _do_resize_cb(self, widget, factor):
         if factor == -1:

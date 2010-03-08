@@ -592,11 +592,8 @@ class SVG:
     #
     # SVG helper methods
     #
-
     def header(self, center=False):
-        return "%s%s%s%s%s%s%s%s%.1f%s%s%.1f%s%s%s" % (
-            "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n",
-            "<!-- Created with Python -->\n",
+        return "%s%s%s%s%s%s%.1f%s%s%.1f%s%s%s" % (
             "<svg\n",
             "   xmlns:svg=\"http://www.w3.org/2000/svg\"\n",
             "   xmlns=\"http://www.w3.org/2000/svg\"\n",

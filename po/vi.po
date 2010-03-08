@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 12:07+0000\n"
-"PO-Revision-Date: 2009-09-25 08:10-0400\n"
+"POT-Creation-Date: 2010-02-25 17:04+0000\n"
+"PO-Revision-Date: 2010-03-08 13:27+0200\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: vi\n"
@@ -15,137 +15,1020 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 1.2.1\n"
+"X-Generator: Pootle 2.0.1\n"
 
 # Tên: không nên dịch
 #: activity/activity.info:2
-#: /home/walter/Desktop/turtleart-activity/taexporthtml.py:229
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:1300
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2552
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:76
+#: /home/walter/Desktop/ta-refactoring/taexporthtml.py:285
 msgid "Turtle Art"
 msgstr "Turtle Art"
 
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:55
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:65
-msgid "text"
-msgstr "văn bản"
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:507
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:508
+msgid "orientation"
+msgstr "hướng"
 
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:108
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:50
-#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:41
-msgid "x"
-msgstr "x"
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:518
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:786
+msgid "next"
+msgstr "tiếp"
 
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:136
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:137
-msgid "action"
-msgstr "hành vi"
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:1565
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:328
+msgid "click to open"
+msgstr "nhấn để mở"
 
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:142
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:143
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:146
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2549
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2553
+#: /home/walter/Desktop/ta-refactoring/talogo.py:744
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:709
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1201
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:375
+msgid "xcor"
+msgstr "xcor"
+
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2549
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2553
+#: /home/walter/Desktop/ta-refactoring/talogo.py:745
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:709
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1201
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:376
+msgid "ycor"
+msgstr "ycor"
+
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2549
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2553
+#: /home/walter/Desktop/ta-refactoring/talogo.py:745
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:710
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1202
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:271
+msgid "heading"
+msgstr "tiêu đề"
+
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2612
+msgid "image"
+msgstr "ảnh"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:704
+msgid "did not output to"
+msgstr "đã không xuất tới"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:746
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:331
+msgid "scale"
+msgstr "co giãn"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:749
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:297
+msgid "pen down"
+msgstr "bút xuống"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:751
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:299
+msgid "pen up"
+msgstr "bút lên"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:753
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:255
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:262
+msgid "color"
+msgstr "màu"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:754
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:262
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:340
+msgid "shade"
+msgstr "sắc màu"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:755
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:298
+msgid "pen size"
+msgstr "kích cỡ bút"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:770
+msgid "I don't know how to"
+msgstr "Tôi chưa biết cách"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:919
+msgid "doesn't like"
+msgstr "không thích"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:919
+msgid "as input"
+msgstr "làm đầu vào"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:136
+msgid "presentation"
+msgstr "trình diễn"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:189
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:895
+msgid "Project"
+msgstr "Dự án"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:274
+msgid "snapshot"
+msgstr "hiện trạng"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:292
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:317
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:334
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:343
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:142
+msgid "Show palette"
+msgstr "Hiện bảng chọn"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:299
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:312
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:321
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:337
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:349
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:773
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1386
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:146
+msgid "Hide palette"
+msgstr "Ẩn bảng chọn"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:327
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:341
+msgid "Show blocks"
+msgstr "Hiện khối"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:330
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:347
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:677
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1152
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:697
+msgid "Hide blocks"
+msgstr "Ẩn khối"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:430
+msgid "Rescale coordinates down"
+msgstr "Giảm toạ độ theo tỷ lệ"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:438
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:725
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1230
+msgid "Rescale coordinates up"
+msgstr "Tăng toạ độ theo tỷ lệ"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:620
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1476
+msgid "Save snapshot"
+msgstr "Lưu ảnh chụp"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:627
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1324
+msgid "Save as HTML"
+msgstr "Lưu dạng HTML"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:634
+msgid "Save as Logo"
+msgstr "Lưu dạng Biểu hình"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:641
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1342
+msgid "Save as image"
+msgstr "Lưu dạng ảnh"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:648
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1356
+msgid "Load my block"
+msgstr "Nạp khối của mình"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:656
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1366
+msgid "Import project from the Journal"
+msgstr "Nhập dự án từ Nhật ký"
+
+# Phím tắt này tương ứng với hành động nào?
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:680
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1157
+msgid "<Ctrl>b"
+msgstr "<Ctrl>b"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:685
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1165
+msgid "Fullscreen"
+msgstr "Toàn màn hình"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:692
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1178
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:96
+msgid "Cartesian coordinates"
+msgstr "Toạ độ thuyết Đê-các-tơ"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:698
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1187
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:100
+msgid "Polar coordinates"
+msgstr "Toạ độ cực"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:731
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1216
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:108
+msgid "Grow blocks"
+msgstr "Khối lớn hơn"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:738
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1223
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:112
+msgid "Shrink blocks"
+msgstr "Khối nhỏ hơn"
+
+# Phím tắt này tương ứng với hành động nào?
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:776
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1391
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:795
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1458
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:161
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:682
+msgid "Clean"
+msgstr "Làm sạch"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:798
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1463
+msgid "<Ctrl>e"
+msgstr "<Ctrl>s"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:804
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1404
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:165
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:747
+msgid "Run"
+msgstr "Chạy"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:807
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1408
+msgid "<Ctrl>r"
+msgstr "<Ctrl>y"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:813
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1416
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:169
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:748
+msgid "Step"
+msgstr "Bước"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:816
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1420
+msgid "<Ctrl>w"
+msgstr "<Ctrl>b"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:822
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1428
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:173
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:678
+msgid "Debug"
+msgstr "Gỡ lỗi"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:825
+msgid "<Alt>d"
+msgstr "<Alt>g"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:831
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1441
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:772
+msgid "Stop turtle"
+msgstr "Dừng rùa"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:834
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1445
+msgid "<Ctrl>s"
+msgstr "<Ctrl>d"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:846
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1494
+msgid "Samples"
+msgstr "Mẫu lấy"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:857
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1305
+msgid "Move the cursor over the orange palette for help."
+msgstr "Di chuyển con trỏ trên bảng chọn màu cam để thấy trợ giúp."
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:866
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:903
+msgid "Help"
+msgstr "Trợ giúp"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:897
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:121
+msgid "View"
+msgstr "Xem"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:899
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:136
+msgid "Edit"
+msgstr "Sửa"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:901
+msgid "Import/Export"
+msgstr "Nhập/Xuất"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1246
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:127
+msgid "Copy"
+msgstr "Chép"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1258
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:131
+msgid "Paste"
+msgstr "Dán"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1333
+msgid "Save Logo"
+msgstr "Lưu Biểu hình"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1433
+msgid "<Ctrl>d"
+msgstr "<Ctrl>b"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1499
+msgid "<Ctrl>o"
+msgstr "<Ctrl>m"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:81
+msgid "Open"
+msgstr "Mở"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:85
+msgid "Save"
+msgstr "Lưu"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:90
+msgid "File"
+msgstr "Tập tin"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:104
+msgid "Rescale coordinates"
+msgstr "Đặt lại tỷ lệ toạ độ"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:116
+msgid "Reset block size"
+msgstr "Đặt lại kích cỡ khối"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:150
+msgid "Show/hide blocks"
+msgstr "Hiện/ẩn khối"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:155
+msgid "Tools"
+msgstr "Công cụ"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:177
+msgid "Stop"
+msgstr "Dừng"
+
+# Tên: không nên dịch
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:182
+msgid "Turtle"
+msgstr "Rùa"
+
+# Tên: không nên dịch
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:241
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:365
+msgid "turtle"
+msgstr "rùa"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:242
+msgid "and"
+msgstr "và"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:243
+msgid "arc"
+msgstr "cung"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:243
+msgid "angle"
+msgstr "góc"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:243
+msgid "radius"
+msgstr "bán kính"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:245
+msgid "back"
+msgstr "lùi"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:246
+msgid "blue"
+msgstr "xanh"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:247
+msgid "bottom"
+msgstr "dưới"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:248
+msgid "picture bottom"
+msgstr "dưới ảnh"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:249
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:350
 msgid "box"
 msgstr "hộp"
 
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:144
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:47
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:59
-msgid "name"
-msgstr "tên"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:250
+msgid "box 1"
+msgstr "hộp 1"
 
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:151
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:152
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:153
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:154
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:155
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:156
-msgid "title"
-msgstr "tựa đề"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:251
+msgid "box 2"
+msgstr "hộp 2"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:26
-msgid "palette of turtle commands"
-msgstr "bảng chọn lệnh turtle"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:252
+msgid "Cartesian"
+msgstr "thuyết Đê-các-tơ"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:27
-msgid "palette of pen commands"
-msgstr "bảng chọn lệnh bút"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:253
+msgid " clean "
+msgstr " làm sạch "
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:28
-msgid "palette of numeric operators"
-msgstr "bảng chọn toán tử thuộc số"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:254
+msgid "empty heap"
+msgstr "miền nhớ trống"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:29
-msgid "palette of extra options"
-msgstr "bảng chọn tuỳ chọn bổ sung"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:256
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:515
+msgid "comment"
+msgstr "ghi chú"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:30
-msgid "palette of flow operators"
-msgstr "bảng chọn toán tử luồng"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:257
+msgid "cyan"
+msgstr "lục lam"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:31
-msgid "palette of variable blocks"
-msgstr "bảng chọn khối biến đổi"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:260
+msgid "empty trash"
+msgstr "đổ rác"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:32
-msgid "palette of presentation templates"
-msgstr "bảng chọn mẫu trình diễn"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:262
+msgid "fill screen"
+msgstr "đầy màn hình"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:33
-msgid "clear the screen and reset the turtle"
-msgstr "xoá màn hình và đặt lại turtle"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:263
+msgid "forever"
+msgstr "hẳn"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:34
-msgid "move turtle forward"
-msgstr "cho rùa đi tới"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:264
+msgid "forward"
+msgstr "tiếp"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:35
-msgid "move turtle backward"
-msgstr "cho rùa đi lùi"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:265
+msgid "full screen"
+msgstr "toàn màn hình"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:36
-msgid "turn turtle counterclockwise (angle in degrees)"
-msgstr "quay rùa theo ngược chiều kim đồng hồ (góc theo độ)"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:267
+msgid "green"
+msgstr "lục"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:37
-msgid "turn turtle clockwise (angle in degrees)"
-msgstr "quay rùa theo chiều kim đồng hồ (góc theo độ)"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:268
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:345
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:520
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:550
+msgid "action"
+msgstr "hành vi"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:38
-msgid "move turtle along an arc"
-msgstr "cho rùa theo một hình cung"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:269
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:346
+msgid "action 1"
+msgstr "hành vi 1"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:39
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:270
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:347
+msgid "action 2"
+msgstr "hành vi 2"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:272
+msgid "height"
+msgstr "độ cao"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:273
+msgid "hide blocks"
+msgstr "ẩn khối"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:276
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:277
+msgid "if"
+msgstr "nếu"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:276
+msgid "then"
+msgstr "thì"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:277
+msgid "then else"
+msgstr "không thì"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:278
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:341
+msgid "show"
+msgstr "hiện"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:280
+msgid "query keyboard"
+msgstr "hỏi bàn phím"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:281
+msgid "keyboard"
+msgstr "bàn phím"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:282
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:283
+msgid "left"
+msgstr "trái"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:284
+msgid "picture left"
+msgstr "bên trái ảnh"
+
+# Tên ngôn ngữ lập trình: đừng dịch
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:288
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:289
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:290
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:291
+msgid "Python"
+msgstr "Python"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:293
+msgid "not"
+msgstr "không phải"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:295
+msgid "orange"
+msgstr "cam"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:296
+msgid "or"
+msgstr "hoặc"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:306
+msgid "pitch"
+msgstr "âm vực"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:308
+msgid "polar"
+msgstr "cực"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:309
+msgid "pop"
+msgstr "pop"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:310
+msgid "show heap"
+msgstr "hiện miền nhớ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:311
+msgid "print"
+msgstr "in"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:313
+msgid "purple"
+msgstr "tím"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:314
+msgid "push"
+msgstr "đẩy"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:315
+msgid "random"
+msgstr "ngẫu nhiên"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:315
+msgid "min"
+msgstr "tiểu"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:315
+msgid "max"
+msgstr "đại"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:316
+msgid "red"
+msgstr "đỏ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:317
+msgid "mod"
+msgstr "sửa"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:318
+msgid "repeat"
+msgstr "lặp lại"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:319
+msgid "resistance"
+msgstr "điện trở"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:320
+msgid "restore last"
+msgstr "phục hồi cái cuối"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:321
+msgid "restore all"
+msgstr "phục hồi tất cả"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:322
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:323
+msgid "right"
+msgstr "phải"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:324
+msgid "picture right"
+msgstr "bên phải ảnh"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:325
+msgid "save picture"
+msgstr "lưu ảnh"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:326
+msgid "save SVG"
+msgstr "lưu SVG"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:329
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:330
+msgid "top of stack"
+msgstr "đầu đống"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:332
+msgid "set color"
+msgstr "đặt màu"
+
+#
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:333
+msgid "set heading"
+msgstr "đặt hướng về"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:334
+msgid "set pen size"
+msgstr "đặt kích cỡ bút"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:335
+msgid "set scale"
+msgstr "đặt tỷ lệ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:336
+msgid "set shade"
+msgstr "đặt sắc màu"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:337
+msgid "set text color"
+msgstr "đặt màu chữ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:338
+msgid "set text size"
+msgstr "đặt kích cỡ chữ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:339
+msgid "set xy"
+msgstr "đặt xy"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:339
+msgid "x"
+msgstr "x"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:339
+msgid "y"
+msgstr "y"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:342
+msgid "show blocks"
+msgstr "hiện khối"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:343
+msgid "show aligned"
+msgstr "hiện sắp hàng"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:348
+msgid "start"
+msgstr "đầu"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:349
+msgid "stop action"
+msgstr "dừng hành vi"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:350
+msgid "store in"
+msgstr "lưu vào"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:350
+msgid "value"
+msgstr "giá trị"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:351
+msgid "store in box 1"
+msgstr "lưu vào hộp 1"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:352
+msgid "store in box 2"
+msgstr "lưu vào hộp 2"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:353
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:548
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:549
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:554
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:562
+msgid "text"
+msgstr "văn bản"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:360
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:655
+msgid "text size"
+msgstr "kích cỡ chữ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:361
+msgid "title x"
+msgstr "tiêu đề x"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:362
+msgid "title y"
+msgstr "tiêu đề y"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:363
+msgid "top"
+msgstr "trên"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:364
+msgid "picture top"
+msgstr "trên ảnh"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:366
+msgid "until"
+msgstr "đến khi"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:367
+msgid "voltage"
+msgstr "điện áp"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:368
+msgid "volume"
+msgstr "âm lượng"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:370
+msgid "wait"
+msgstr "đợi"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:371
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:372
+msgid "while"
+msgstr "trong khi"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:373
+msgid "width"
+msgstr "rộng"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:374
+msgid "write"
+msgstr "viết"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:377
+msgid "yellow"
+msgstr "vàng"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:514
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:553
+msgid "my box"
+msgstr "hộp mình"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:536
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:537
+msgid "label"
+msgstr "nhãn"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:538
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:539
+msgid "picture name"
+msgstr "tên ảnh"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:555
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:556
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:557
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:558
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:559
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:560
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:861
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:876
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:892
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:923
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:954
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:985
+msgid "Title"
+msgstr "Tiêu đề"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:633
+msgid "audio"
+msgstr "âm thanh"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:634
+msgid "divide"
+msgstr "chia"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:635
+msgid "equal"
+msgstr "bằng"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:636
+msgid "greater than"
+msgstr "lớn hơn"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:637
+msgid "horizontal space"
+msgstr "khoảng nằm ngang"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:638
+msgid "identity"
+msgstr "nhận dạng"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:639
+msgid "if then"
+msgstr "nếu thì"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:640
+msgid "if then else"
+msgstr "nếu thì không thì"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:641
+msgid "journal"
+msgstr "nhật ký"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:642
+msgid "less than"
+msgstr "nhỏ hơn"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:643
+msgid "minus"
+msgstr "trừ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:644
+msgid "Python code"
+msgstr "mã Python"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:645
+msgid "number"
+msgstr "số"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:646
+msgid "plus"
+msgstr "cộng"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:647
+msgid "multiply"
+msgstr "nhân"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:648
+msgid "square root"
+msgstr "căn bậc hai"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:649
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:650
+msgid "presentation 1x1"
+msgstr "trình diễn 1×1"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:651
+msgid "presentation 1x2"
+msgstr "trình diễn 1×2"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:652
+msgid "presentation 2x1"
+msgstr "trình diễn 2×1"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:653
+msgid "presentation 2x2"
+msgstr "trình diễn 2×2"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:654
+msgid "presentation bulleted list"
+msgstr "trình diễn danh sách nút"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:656
+msgid "vertical space"
+msgstr "khoảng nằm dọc"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:662
+msgid "chooses which turtle to command"
+msgstr "chọn con rùa nào cần điều khiển"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:663
+msgid "logical AND operator"
+msgstr "toán tử VÀ lôgic"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:664
+msgid "moves turtle along an arc"
+msgstr "chuyển rùa theo một hình cung"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:665
+msgid "Sugar Journal audio object"
+msgstr "đối tượng âm thanh Nhật ký Sugar"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:666
+msgid "moves turtle backward"
+msgstr "chuyển rùa đi lùi"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:667
+msgid "Palette of variable blocks"
+msgstr "Bảng chọn khối biến đổi"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:668
+msgid "ycor of bottom of screen"
+msgstr "ycor bên dưới màn hình"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:669
+msgid "Variable 1 (numeric value)"
+msgstr "Biến 1 (giá trị thuộc số)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:670
+msgid "Variable 2 (numeric value)"
+msgstr "Biến 2 (giá trị thuộc số)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:671
+msgid "named variable (numeric value)"
+msgstr "biến đặt tên (giá trị thuộc số)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:672
+msgid "displays Cartesian coordinates"
+msgstr "hiển thị toạ độ thuyết Đê-các-tơ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:673
+msgid "clears the screen and reset the turtle"
+msgstr "xoá màn hình và đặt lại rùa"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:674
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "đổ FILO (miền nhớ kiểu vào trước, ra sau)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:675
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr "giữ màu bút hiện thời (cũng có thể dùng để thay thế một khối con số)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:676
+msgid "Palette of pen colors"
+msgstr "Bảng chọn màu sắc bút"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:677
+msgid "places a comment in your code"
+msgstr "đặt một ghi chú vào mã nguồn của bạn"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:679
+msgid "Sugar Journal description field"
+msgstr "trường mô tả Nhật ký Sugar"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:680
 msgid ""
-"move turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-msgstr "cho rùa đi tới vị trí xcor, ycor; (0, 0) là trung tâm của màn hình."
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr "chia đầu vào thuộc số trên (tử số) cho đầu vào thuộc số dưới (mẫu số)"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:40
-msgid "set the heading of the turtle (0 is towards the top of the screen.)"
-msgstr "đặt sự hướng về của rùa (0 là hướng về đầu màn hình)"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:681
+msgid "permanently deletes items in trash"
+msgstr "xoá hẳn các mục trong sọt rác"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:41
-msgid "draw text or show media from the Journal"
-msgstr "vẽ văn bản hoặc hiển thị ảnh/nhạc từ Nhật ký"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:683
+msgid "logical equal-to operator"
+msgstr "toán tử bằng-với lôgic"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:42
-msgid "set the scale of media"
-msgstr "đặt tỷ lệ của ảnh/nhạc"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:684
+msgid "Palette of extra options"
+msgstr "Bảng chọn tuỳ chọn bổ sung"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:43
-msgid ""
-"holds current x-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr ""
-"giữ giá trị đồ hoạ X hiện thời của rùa (cũng có thể được sử dụng để thay thế "
-"một khối con số)"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:685
+msgid "fills the background with (color, shade)"
+msgstr "tô đầy nền bằng (màu, sắc)"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:44
-msgid ""
-"holds current y-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr ""
-"giữ giá trị đồ hoạ Y hiện thời của rùa (cũng có thể được sử dụng để thay thế "
-"một khối con số)"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:686
+msgid "Palette of flow operators"
+msgstr "Bảng chọn toán tử luồng"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:45
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:687
+msgid "loops forever"
+msgstr "lặp lại vô hạn"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:688
+msgid "moves turtle forward"
+msgstr "chuyển rùa đi tới"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:689
+msgid "hides the Sugar toolbars"
+msgstr "ẩn các thanh công cụ Sugar"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:690
+msgid "logical greater-than operator"
+msgstr "toán tử lớn-hơn lôgic"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:691
+msgid "top of Action 1 stack"
+msgstr "đầu của đống Hành vi 1"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:692
+msgid "top of Action 2 stack"
+msgstr "đầu của đống Hành vi 2"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:693
+msgid "top of nameable action stack"
+msgstr "đầu của đống hành vi có thể đặt tên"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:694
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
@@ -153,869 +1036,534 @@ msgstr ""
 "giữ hướng về hiện thời của rùa (cũng có thể được sử dụng để thay thế một "
 "khối con số)"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:46
-msgid "holds current scale value (can be used in place of a number block)"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:695
+msgid "the canvas height"
+msgstr "chiều cao vùng vẽ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:696
+msgid "declutters canvas by hiding blocks"
+msgstr "làm sạch sẽ vùng vẽ bằng cách ẩn các khối"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:698
+msgid "jogs stack right"
+msgstr "đẩy nhẹ đống qua phải"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:699
+msgid "identity operator used for extending blocks"
+msgstr "toán tử nhận diện dùng để mở rộng khối"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:700
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr "toán tử nếu-thì-không_thì mà sử dụng toán tử lôgic từ bảng chọn Số"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:701
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr "toán tử nếu-thì mà sử dụng toán tử lôgic từ bảng chọn Số"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:702
+msgid "Sugar Journal media object"
+msgstr "đối tượng ảnh/nhạc Nhật ký Sugar"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:703
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr "yêu cầu đầu vào bàn phím (kết quả được lưu vào khối bàn phím)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:704
+msgid "holds results of query-keyboard block"
+msgstr "giữ kết quả của khối yêu-cầu-bàn-phím"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:705
+msgid "xcor of left of screen"
+msgstr "xcor bên trái màn hình"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:706
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "quay rùa theo ngược chiều kim đồng hồ (góc theo độ)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:707
+msgid "logical less-than operator"
+msgstr "toán tử nhỏ hơn lôgic"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:708
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "trừ đầu vào thuộc số dưới từ đầu vào thuộc số trên"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:709
+msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
 msgstr ""
-"giữ giá trị tỷ lệ hiện thời của rùa (cũng có thể được sử dụng để thay thế "
-"một khối con số)"
+"một khối có thể lập trình: dùng để thêm phương trình toán học cấp cao, v.d. "
+"sin(x)"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:47
-msgid "turtle will not draw when moved"
-msgstr "cho rùa đi thì nó không vẽ"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:710
+msgid ""
+"a programmable block: used to add advanced single-valriable math equations, "
+"e.g., sin(x)"
+msgstr ""
+"một khối có thể lập trình: dùng để thêm phương trình toán học biến đơn cấp "
+"cao, v.d. sin (x)"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:48
-msgid "turtle will draw when moved"
-msgstr "cho rùa đi thì nó vẽ"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:711
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+"một khối có thể lập trình: dùng để thêm phương trình toán học đa biến cấp "
+"cao, v.d. sqrt(x*x+y*y)"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:49
-msgid "set size of the line drawn by the turtle"
-msgstr "đặt kích cỡ của đường được rùa vẽ"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:712
+msgid ""
+"a programmable block: used to add advanced multi-varialble math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+"một khối có thể lập trình: dùng để thêm phương trình toán học đa biến cấp "
+"cao, v.d. sin(x+y+z)"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:50
-msgid "set color of the line drawn by the turtle"
-msgstr "đặt màu của đường được rùa vẽ"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:713
+msgid "displays next palette"
+msgstr "hiển thị bảng chọn kế tiếp"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:51
-msgid "set shade of the line drawn by the turtle"
-msgstr "đặt sắc màu của đường được rùa vẽ"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:714
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr "chạy mã nguồn được tìm trong mô-đun tamyblock.py có trong Nhật ký"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:52
-msgid "set color of text drawn by the turtle"
-msgstr "đặt màu của các chữ được rùa vẽ"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:715
+msgid "logical NOT operator"
+msgstr "toán tử KHÔNG_PHẢI lôgic"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:53
-msgid "set size of text drawn by turtle"
-msgstr "đặt kích cỡ của các chữ được rùa vẽ"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:716
+msgid "Palette of numeric operators"
+msgstr "Bảng chọn toán tử thuộc số"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:54
-msgid "fills the background with (color, shade)"
-msgstr "tô đầy nền bằng (màu, sắc)"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:717
+msgid "used as numeric input in mathematic operators"
+msgstr "dùng để nhập thuộc số trong toán tử toán học"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:55
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:718
+msgid "logical OR operator"
+msgstr "toán tử HOẶC lôgic"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:719
+msgid "changes the orientation of the palette of blocks"
+msgstr "thay đổi hướng của bảng chọn khối"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:720
+msgid "Turtle will draw when moved."
+msgstr "Con rùa sẽ vẽ khi được di chuyển."
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:721
+msgid "Palette of pen commands"
+msgstr "Bảng chọn lệnh bút"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:722
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr ""
 "giữ kích cỡ bút hiện thời (cũng có thể dùng để thay thế một khối con số)"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:56
-msgid "holds current pen color (can be used in place of a number block)"
-msgstr "giữ màu bút hiện thời (cũng có thể dùng để thay thế một khối con số)"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:723
+msgid "Turtle will not draw when moved."
+msgstr "Con rùa sẽ không vẽ khi được di chuyển."
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:57
-msgid "holds current pen shade (can be used in place of a number block)"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:724
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:778
+msgid "presentation template: select Journal object (with description)"
+msgstr "mẫu trình diễn: chọn đối tượng Nhật ký (với mô tả)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:725
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:779
+msgid "presentation template: select Journal object (no description)"
+msgstr "mẫu trình diễn: chọn đối tượng Nhật ký (không mô tả)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:726
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:727
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:780
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:781
+msgid "presentation template: select two Journal objects"
+msgstr "mẫu trình diễn: chọn 2 đối tượng Nhật ký"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:728
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:782
+msgid "presentation template: select four Journal objects"
+msgstr "mẫu trình diễn: chọn 4 đối tượng Nhật ký"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:729
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:783
+msgid "presentation template: list of bullets"
+msgstr "mẫu trình diễn: danh sách chấm điểm"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:730
+msgid "microphone input pitch"
+msgstr "âm vực đầu vào máy vi âm"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:731
+msgid "adds two alphanumeric inputs"
+msgstr "thêm hai đầu vào chữ số, chử cái"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:732
+msgid "displays polar coordinates"
+msgstr "hiển thị toạ độ cực"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:733
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "đẩy giá trị ra miền nhớ FILO (vào trước thì ra sau)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:734
+msgid "Palette of presentation templates"
+msgstr "Bảng chọn mẫu trình diễn"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:735
+msgid "prints value in status block at bottom of the screen"
+msgstr "in ra giá trị trong khối trạng thái ở dưới màn hình"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:736
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "hiển thị các giá trị trong miền nhớ FILO (vào trước thì ra sau)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:737
+msgid "multiplies two numeric inputs"
+msgstr "nhân lên nhau hai đầu vào thuộc số"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:738
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "đẩy giá trị vào miền nhớ FILO (vào trước thì ra sau)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:739
+msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
-"giữ sắc màu bút hiện thời (cũng có thể dùng để thay thế một khối con số)"
+"trả lại một số ngẫu nhiên nằm giữa hai giá trị là tối thiểu (bên trên) và "
+"tối đa (bên dưới)"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:58
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:740
+msgid "modular (remainder) operator"
+msgstr "toán tử đơn thể (phần dư)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:741
+msgid "loops specified number of times"
+msgstr "lặp lại một số lần được ghi rõ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:742
+msgid "sensor input resistance"
+msgstr "điện trở đầu vào máy nhạy"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:743
+msgid "restores most recent blocks from trash"
+msgstr "phục hồi từ sọt rác các khối vừa đặt"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:744
+msgid "restore all blocks from trash"
+msgstr "phục hồi từ sọt rác tất cả các khối"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:745
+msgid "xcor of right of screen"
+msgstr "xcor bên phải màn hình"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:746
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "quay rùa theo chiều kim đồng hồ (góc theo độ)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:749
+msgid "bottom block in a collapsibe stack: click to collapse"
+msgstr "khối dưới trong một đống có thể thu gọn: nhấn để thu gọn"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:750
+msgid "bottom block in a collapsed stack: click to open"
+msgstr "khối dưới trong một đống đã thu gọn: nhấn để mở lại"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:751
+msgid "top of a collapsible stack"
+msgstr "đầu của một đống có thể thu gọn"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:752
+msgid "top of a collapsed stack"
+msgstr "đầu của một đống đã thu gọn"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:753
+msgid "saves a picture to the Sugar Journal"
+msgstr "lưu một ảnh vào Nhật ký Sugar"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:754
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr "lưu đồ họa rùa dưới dạng một tập tin SVG trong Nhật ký Sugar"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:755
+msgid "holds current scale value"
+msgstr "giữ giá trị tỷ lệ hiện thời"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:756
+msgid "sets color of the line drawn by the turtle"
+msgstr "đặt màu của đường được rùa vẽ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:757
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "đặt sự hướng về của rùa (0 là hướng về đầu màn hình)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:758
+msgid "sets size of the line drawn by the turtle"
+msgstr "đặt kích cỡ của đường được rùa vẽ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:759
+msgid "sets the scale of media"
+msgstr "đặt tỷ lệ của ảnh/nhạc"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:760
+msgid "sets shade of the line drawn by the turtle"
+msgstr "đặt sắc màu của đường được rùa vẽ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:761
+msgid "sets color of text drawn by the turtle"
+msgstr "đặt màu của các chữ được rùa vẽ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:762
+msgid "sets size of text drawn by turtle"
+msgstr "đặt kích cỡ của các chữ được rùa vẽ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:763
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr "di chuyển rùa tới vị trí xcor, ycor; (0, 0) là trung tâm của màn hình."
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:764
+msgid "holds current pen shade"
+msgstr "giữ sắc màu bút hiện thời"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:765
+msgid "draws text or show media from the Journal"
+msgstr "vẽ văn bản hoặc hiển thị ảnh/nhạc từ Nhật ký"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:766
+msgid "restores hidden blocks"
+msgstr "phục hồi các khối bị ẩn"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:767
+msgid "calculates square root"
+msgstr "tính căn bậc hai"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:768
+msgid "invokes Action 1 stack"
+msgstr "gọi đống Hành vi 1"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:769
+msgid "invokes Action 2 stack"
+msgstr "gọi đống Hành vi 2"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:770
+msgid "invokes named action stack"
+msgstr "gọi đống hành vi đặt tên"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:771
+msgid "connects action to toolbar run buttons"
+msgstr "kết nối hành vi đến nút chạy thanh công cụ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:773
+msgid "stops current action"
+msgstr "dừng hành vi đang làm"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:774
+msgid "stores numeric value in Variable 1"
+msgstr "cất giữ giá trị thuộc số trong Biến 1"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:775
+msgid "stores numeric value in Variable 2"
+msgstr "cất giữ giá trị thuộc số trong Biến 2"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:776
+msgid "stores numeric value in named variable"
+msgstr "cất giữ giá trị thuộc số trong biến đặt tên"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:777
+msgid "string value"
+msgstr "giá trị chuỗi"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:784
+msgid "holds current text color (can be used in place of a number block)"
+msgstr "giữ màu chữ hiện thời (cũng có thể dùng để thay thế một khối con số)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:785
 msgid "holds current text size (can be used in place of a number block)"
 msgstr ""
 "giữ kích cỡ chữ hiện thời (cũng có thể dùng để thay thế một khối con số)"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:59
-msgid "holds current text color (can be used in place of a number block)"
-msgstr "giữ màu chữ hiện thời (cũng có thể dùng để thay thế một khối con số)"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:60
-msgid "used as numeric input in mathematic operators"
-msgstr "dùng để nhập thuộc số trong toán tử toán học"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:61
-msgid "adds two numeric inputs"
-msgstr "thêm hai đầu vào thuộc số"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:62
-msgid "subtracts bottom numeric input from top numeric input"
-msgstr "trừ đầu vào thuộc số dưới từ đầu vào thuộc số trên"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:63
-msgid "multiplies two numeric inputs"
-msgstr "nhân lên nhau hai đầu vào thuộc số"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:64
-msgid ""
-"divides top numeric input (numerator) by bottom numeric input (denominator)"
-msgstr "chia đầu vào thuộc số trên (tử số) cho đầu vào thuộc số dưới (mẫu số)"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:65
-msgid "modular (remainder) operator"
-msgstr "toán tử đơn thể (phần dư)"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:66
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:67
-msgid "identity operator used for extending blocks"
-msgstr "toán tử nhận diện dùng để mở rộng khối"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:68
-msgid "calculate square root"
-msgstr "tính căn bậc hai"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:69
-msgid "returns random number between minimum (left) and maximum (right) values"
-msgstr ""
-"trả lại một số ngẫu nhiên nằm giữa hai giá trị là tối thiểu (bên trái) và "
-"tối đa (bên phải)"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:70
-msgid "logical equal-to operator"
-msgstr "toán tử bằng-với lôgic"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:71
-msgid "logical greater-than operator"
-msgstr "toán tử lớn-hơn lôgic"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:72
-msgid "logical less-than operator"
-msgstr "toán tử nhỏ hơn lôgic"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:73
-msgid "logical AND operator"
-msgstr "toán tử VÀ lôgic"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:74
-msgid "logical OR operator"
-msgstr "toán tử HOẶC lôgic"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:75
-msgid "logical NOT operator"
-msgstr "toán tử KHÔNG_PHẢI lôgic"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:76
-msgid "prints value in status block at bottom of the screen"
-msgstr "in ra giá trị trong khối trạng thái ở dưới màn hình"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:77
-msgid "query for keyboard input (results stored in keyboard block)"
-msgstr "yêu cầu đầu vào bàn phím (kết quả được lưu vào khối bàn phím)"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:78
-msgid "holds results of query-keyboard block"
-msgstr "giữ kết quả của khối yêu-cầu-bàn-phím"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:79
-msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr "chạy mã nguồn được tìm trong mô-đun tamyblock.py có trong Nhật ký"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:80
-msgid ""
-"a programmable block: add your own math equation in the block, e.g., sin(x)"
-msgstr ""
-"một khối có thể lập trình: hãy thêm vào khối phương trình toán tử của mình, "
-"v.d. sin(x)"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:81
-msgid "the canvas width"
-msgstr "chiều rộng vùng vẽ"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:82
-msgid "the canvas height"
-msgstr "chiều cao vùng vẽ"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:83
-msgid "xcor of left of screen"
-msgstr "xcor bên trái màn hình"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:84
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:786
 msgid "ycor of top of screen"
 msgstr "ycor bên trên màn hình"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:85
-msgid "xcor of right of screen"
-msgstr "xcor bên phải màn hình"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:787
+msgid "Trashcan"
+msgstr "Sọt Rác"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:86
-msgid "ycor of bottom of screen"
-msgstr "ycor bên dưới màn hình"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:788
+msgid "Palette of turtle commands"
+msgstr "Bảng chọn lệnh rùa"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:87
-msgid "push value onto FILO (first-in last-out) heap"
-msgstr "đẩy giá trị vào miền nhớ FILO (vào trước thì ra sau)"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:789
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr "toán tử làm-đến-khi-Đúng mà sử dụng toán tử lôgic từ bảng chọn Số"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:88
-msgid "pop value off FILO"
-msgstr "bỏ giá trị ra FILO"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:790
+msgid "sensor voltage"
+msgstr "điện áp máy nhạy"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:89
-msgid "show FILO in status block"
-msgstr "hiện FILO trong khối trạng thái"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:791
+msgid "microphone input volume"
+msgstr "âm lượng đầu vào máy vi âm"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:90
-msgid "empty FILO"
-msgstr "đổ FILO"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:91
-msgid "wait specified number of seconds"
-msgstr "đợi trong một số giây được ghi rõ"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:92
-msgid "loop forever"
-msgstr "lặp lại vô hạn"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:93
-msgid "loop specified number of times"
-msgstr "lặp lại một số lần được ghi rõ"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:94
-msgid "if-then operator that uses boolean operators from Numbers palette"
-msgstr "toán tử nếu-thì mà sử dụng toán tử lôgic từ bảng chọn Số"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:95
-msgid "if-then-else operator that uses boolean operators from Numbers palette"
-msgstr "toán tử nếu-thì-không_thì mà sử dụng toán tử lôgic từ bảng chọn Số"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:96
-msgid "do not continue current action"
-msgstr "không tiếp tục hành vi đang làm"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:97
-msgid "jog stack right"
-msgstr "đẩy nhẹ đống qua phải"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:98
-msgid "jog stack down"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:792
+msgid "jogs stack down"
 msgstr "đẩy nhẹ đống xuống dưới"
 
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:99
-msgid "connects action to toolbar run buttons"
-msgstr "kết nối hành vi đến nút chạy thanh công cụ"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:100
-msgid "top of action 1 stack"
-msgstr "đầu của đống hành vi 1"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:101
-msgid "invoke action 1 stack"
-msgstr "gọi đống hành vi 1"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:102
-msgid "top of action 2 stack"
-msgstr "đầu của đống hành vi 2"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:103
-msgid "invoke action 2 stack"
-msgstr "gọi đống hành vi 2"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:104
-msgid "top of nameable action stack"
-msgstr "đầu của đống hành vi có thể đặt tên"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:105
-msgid "invoke named action stack"
-msgstr "gọi đống hành vi đặt tên"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:106
-msgid "store numeric value in variable 1"
-msgstr "cất giữ giá trị thuộc số trong biến 1"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:107
-msgid "variable 1 (numeric value)"
-msgstr "biến 1 (giá trị thuộc số)"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:108
-msgid "store numeric value in variable 2"
-msgstr "cất giữ giá trị thuộc số trong biến 2"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:109
-msgid "variable 2 (numeric value)"
-msgstr "biến 2 (giá trị thuộc số)"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:110
-msgid "store numeric value in named variable"
-msgstr "cất giữ giá trị thuộc số trong biến đặt tên"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:111
-msgid "named variable (numeric value)"
-msgstr "biến đặt tên (giá trị thuộc số)"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:112
-msgid "string value"
-msgstr "giá trị chuỗi"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:113
-msgid "Sugar Journal media object"
-msgstr "đối tượng ảnh/nhạc Nhật ký Sugar"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:114
-msgid "Sugar Journal audio object"
-msgstr "đối tượng âm thanh Nhật ký Sugar"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:115
-msgid "Sugar Journal description field"
-msgstr "trường mô tả Nhật ký Sugar"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:116
-msgid "presentation template: select Journal object (with description)"
-msgstr "mẫu trình diễn: chọn đối tượng Nhật ký (với mô tả)"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:117
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:118
-msgid "presentation template: select two Journal objects"
-msgstr "mẫu trình diễn: chọn 2 đối tượng Nhật ký"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:119
-msgid "presentation template: select four Journal objects"
-msgstr "mẫu trình diễn: chọn 4 đối tượng Nhật ký"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:120
-msgid "presentation template: select Journal object (no description)"
-msgstr "mẫu trình diễn: chọn đối tượng Nhật ký (không mô tả)"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:121
-msgid "presentation template: seven bullets"
-msgstr "mẫu trình diễn: bảy chấm điểm"
-
-#: /home/walter/Desktop/turtleart-activity/tahoverhelp.py:122
-msgid "declutter canvas by hiding blocks"
-msgstr "làm sạch vùng vẽ bằng cách ẩn các khối"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:97
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1319
-msgid "Save snapshot"
-msgstr "Lưu ảnh chụp"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:108
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:999
-msgid "Save as HTML"
-msgstr "Lưu dạng HTML"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:115
-msgid "Save as Logo"
-msgstr "Lưu dạng Biểu hình"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:122
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1015
-msgid "Save as image"
-msgstr "Lưu dạng ảnh"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:129
-msgid "Load my block"
-msgstr "Nạp khối của mình"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:148
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1302
-msgid "Fullscreen"
-msgstr "Toàn màn hình"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:163
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:571
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:582
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:598
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:610
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1203
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1354
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1364
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1407
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1419
-msgid "Hide palette"
-msgstr "Ẩn bảng chọn"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:166
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1207
-msgid "<Alt>p"
-msgstr "<Alt>p"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:172
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:591
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:608
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1215
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1400
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1417
-msgid "Hide blocks"
-msgstr "Ẩn khối"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:175
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1219
-msgid "<Alt>b"
-msgstr "<Alt>b"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:181
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1285
-msgid "Clean"
-msgstr "Sạch"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:184
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1289
-msgid "<Alt>e"
-msgstr "<Alt>e"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:190
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1232
-msgid "Run"
-msgstr "Chạy"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:193
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1236
-msgid "<Alt>r"
-msgstr "<Alt>r"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:199
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1244
-msgid "Step"
-msgstr "Bước"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:202
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1248
-msgid "<Alt>w"
-msgstr "<Alt>w"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:208
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1256
-msgid "Debug"
-msgstr "Gỡ lỗi"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:211
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1260
-msgid "<Alt>d"
-msgstr "<Alt>d"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:217
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1268
-msgid "Stop turtle"
-msgstr "Dừng rùa"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:220
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1272
-msgid "<Alt>s"
-msgstr "<Alt>s"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:232
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1336
-msgid "Samples"
-msgstr "Mẫu lấy"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:243
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:981
-msgid "Move the cursor over the orange palette for help."
-msgstr "Di chuyển con trỏ trên bảng chọn màu cam để thấy trợ giúp."
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:279
-msgid "Project"
-msgstr "Dự án"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:281
-msgid "Edit"
-msgstr "Sửa"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:283
-msgid "Import/Export"
-msgstr "Nhập/Xuất"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:285
-msgid "Help"
-msgstr "Trợ giúp"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:425
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1079
-msgid "presentation"
-msgstr "trình diễn"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:567
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:577
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:595
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:604
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1350
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1359
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1404
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1413
-msgid "Show palette"
-msgstr "Hiện bảng chọn"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:588
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:602
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1397
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1411
-msgid "Show blocks"
-msgstr "Hiện khối"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:930
-msgid "Copy"
-msgstr "Chép"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:942
-msgid "Paste"
-msgstr "Dán"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1007
-msgid "Save Logo"
-msgstr "Lưu Biểu hình"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1028
-msgid "load my block"
-msgstr "nạp khối của mình"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:1340
-msgid "<Alt>o"
-msgstr "<Alt>o"
-
-#: /home/walter/Desktop/turtleart-activity/svg/hat2.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/stack2.py:40
-msgid "stack 2"
-msgstr "đống 2"
-
-#: /home/walter/Desktop/turtleart-activity/svg/stack1.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/hat1.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:41
-msgid "stack 1"
-msgstr "đống 1"
-
-#: /home/walter/Desktop/turtleart-activity/svg/hideblocks.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:41
-msgid "hide blocks"
-msgstr "ẩn khối"
-
-#: /home/walter/Desktop/turtleart-activity/svg/heading.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:55
-msgid "heading"
-msgstr "tiêu đề"
-
-#: /home/walter/Desktop/turtleart-activity/svg/start.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:48
-msgid "start"
-msgstr "đầu"
-
-#: /home/walter/Desktop/turtleart-activity/svg/keyboard.py:40
-msgid "Keyboard"
-msgstr "Bàn phím"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:40
-msgid "Flow"
-msgstr "Chảy"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/wait.py:40
-msgid "wait"
-msgstr "đợi"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/forever.py:40
-msgid "forever"
-msgstr "hẳn"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/repeat.py:40
-msgid "repeat"
-msgstr "lặp lại"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/if.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:40
-msgid "if"
-msgstr "nếu"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/if.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:41
-msgid "then"
-msgstr "thì"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:46
-#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:42
-msgid "else"
-msgstr "không thì"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:47
-#: /home/walter/Desktop/turtleart-activity/svg/stopstack.py:40
-msgid "stop action"
-msgstr "dừng hành vi"
-
-#: /home/walter/Desktop/turtleart-activity/svg/print.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:45
-msgid "print"
-msgstr "in"
-
-#: /home/walter/Desktop/turtleart-activity/svg/color.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:48
-msgid "color"
-msgstr "màu"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:40
-msgid "My Blocks"
-msgstr "Khối của mình"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/storeinbox1.py:40
-msgid "store in box 1"
-msgstr "lưu vào hộp 1"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/box1.py:40
-msgid "box 1"
-msgstr "hộp 1"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/storeinbox2.py:40
-msgid "store in box 2"
-msgstr "lưu vào hộp 2"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:46
-#: /home/walter/Desktop/turtleart-activity/svg/box2.py:40
-msgid "box 2"
-msgstr "hộp 2"
-
-#: /home/walter/Desktop/turtleart-activity/svg/printheap.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:46
-msgid "show heap"
-msgstr "hiện miền nhớ"
-
-#: /home/walter/Desktop/turtleart-activity/svg/pendown.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:42
-msgid "pen down"
-msgstr "bút xuống"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:40
-msgid "Numbers"
-msgstr "Số"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/random.py:40
-msgid "random"
-msgstr "ngẫu nhiên"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/and.py:41
-msgid "and"
-msgstr "và"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/or.py:40
-msgid "or"
-msgstr "hoặc"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/not.py:40
-msgid "not"
-msgstr "không phải"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:46
-msgid "number"
-msgstr "số"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:47
-msgid "min"
-msgstr "tiểu"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:48
-msgid "max"
-msgstr "đại"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:49
-#: /home/walter/Desktop/turtleart-activity/svg/remainder2.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/remainder.py:40
-msgid "mod"
-msgstr "sửa"
-
-#: /home/walter/Desktop/turtleart-activity/svg/ycor.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:54
-msgid "ycor"
-msgstr "ycor"
-
-#: /home/walter/Desktop/turtleart-activity/svg/shade.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:49
-msgid "shade"
-msgstr "sắc màu"
-
-#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:40
-msgid "Templates"
-msgstr "Mẫu"
-
-#: /home/walter/Desktop/turtleart-activity/svg/right.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:51
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/rightpos.py:40
-msgid "right"
-msgstr "phải"
-
-#: /home/walter/Desktop/turtleart-activity/svg/storein.py:40
-msgid "store in"
-msgstr "lưu vào"
-
-#: /home/walter/Desktop/turtleart-activity/svg/textsize.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:53
-msgid "text size"
-msgstr "kích cỡ chữ"
-
-#: /home/walter/Desktop/turtleart-activity/svg/forward.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:42
-msgid "forward"
-msgstr "tiếp"
-
-#: /home/walter/Desktop/turtleart-activity/svg/scale.py:40
-msgid "scale"
-msgstr "co giãn"
-
-#: /home/walter/Desktop/turtleart-activity/svg/leftpos.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:49
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/left.py:40
-msgid "left"
-msgstr "trái"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:40
-msgid "Extras"
-msgstr "Bổ sung"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/kbinput.py:40
-msgid "read key"
-msgstr "đọc phím"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:42
-msgid "keyboard"
-msgstr "bàn phím"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/hres.py:40
-msgid "width"
-msgstr "rộng"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/vres.py:40
-msgid "height"
-msgstr "cao"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/pop.py:40
-msgid "pop"
-msgstr "pop"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:47
-#: /home/walter/Desktop/turtleart-activity/svg/clearheap.py:40
-msgid "empty heap"
-msgstr "miền nhớ trống"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:48
-#: /home/walter/Desktop/turtleart-activity/svg/push.py:40
-msgid "push"
-msgstr "đẩy"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:50
-#: /home/walter/Desktop/turtleart-activity/svg/toppos.py:40
-msgid "top"
-msgstr "trên"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:52
-#: /home/walter/Desktop/turtleart-activity/svg/bottompos.py:40
-msgid "bottom"
-msgstr "dưới"
-
-#: /home/walter/Desktop/turtleart-activity/svg/clean.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:41
-msgid "clean"
-msgstr "gột"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/back.py:40
-msgid "back"
-msgstr "lùi"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:46
-#: /home/walter/Desktop/turtleart-activity/svg/arc.py:40
-msgid "arc"
-msgstr "cung"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:47
-#: /home/walter/Desktop/turtleart-activity/svg/arc.py:41
-msgid "angle"
-msgstr "góc"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:48
-#: /home/walter/Desktop/turtleart-activity/svg/arc.py:42
-msgid "radius"
-msgstr "bán kính"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:793
+msgid "pauses program execution a specified number of seconds"
+msgstr "tạm dừng thực hiện chương trình trong một số giây đưa ra"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:794
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr "toán tử làm_trong_khi_Đúng mà sử dụng toán tử lôgic từ bảng chọn Số"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:795
+msgid "the canvas width"
+msgstr "chiều rộng vùng vẽ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:796
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"giữ giá trị đồ hoạ X hiện thời của rùa (cũng có thể được sử dụng để thay thế "
+"một khối con số)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:797
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"giữ giá trị đồ hoạ Y hiện thời của rùa (cũng có thể được sử dụng để thay thế "
+"một khối con số)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:856
+msgid "bulleted list"
+msgstr "danh sách nút"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:871
+msgid "picture"
+msgstr "ảnh"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:887
+msgid "2×2 pictures"
+msgstr "ảnh 2×2"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:918
+msgid "2×1 pictures"
+msgstr "ảnh 2×1"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:949
+msgid "1×2 pictures"
+msgstr "ảnh 1×2"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:980
+msgid "1×1 picture"
+msgstr "ảnh 1×1"
+
+#~ msgid "name"
+#~ msgstr "tên"
+
+#~ msgid "holds current scale value (can be used in place of a number block)"
+#~ msgstr ""
+#~ "giữ giá trị tỷ lệ hiện thời của rùa (cũng có thể được sử dụng để thay thế "
+#~ "một khối con số)"
+
+#~ msgid "holds current pen shade (can be used in place of a number block)"
+#~ msgstr ""
+#~ "giữ sắc màu bút hiện thời (cũng có thể dùng để thay thế một khối con số)"
+
+#~ msgid ""
+#~ "a programmable block: add your own math equation in the block, e.g., sin(x)"
+#~ msgstr ""
+#~ "một khối có thể lập trình: hãy thêm vào khối phương trình toán tử của mình, "
+#~ "v.d. sin(x)"
+
+#~ msgid "pop value off FILO"
+#~ msgstr "bỏ giá trị ra FILO"
+
+#~ msgid "show FILO in status block"
+#~ msgstr "hiện FILO trong khối trạng thái"
+
+#~ msgid "empty FILO"
+#~ msgstr "đổ FILO"
+
+#~ msgid "wait specified number of seconds"
+#~ msgstr "đợi trong một số giây được ghi rõ"
+
+#~ msgid "do not continue current action"
+#~ msgstr "không tiếp tục hành vi đang làm"
+
+#~ msgid "<Alt>p"
+#~ msgstr "<Alt>p"
+
+#~ msgid "<Alt>b"
+#~ msgstr "<Alt>b"
+
+#~ msgid "<Alt>e"
+#~ msgstr "<Alt>e"
+
+#~ msgid "<Alt>r"
+#~ msgstr "<Alt>r"
+
+#~ msgid "<Alt>w"
+#~ msgstr "<Alt>w"
+
+#~ msgid "<Alt>s"
+#~ msgstr "<Alt>s"
+
+#~ msgid "load my block"
+#~ msgstr "nạp khối của mình"
+
+#~ msgid "<Alt>o"
+#~ msgstr "<Alt>o"
+
+#~ msgid "stack 2"
+#~ msgstr "đống 2"
+
+#~ msgid "stack 1"
+#~ msgstr "đống 1"
+
+#~ msgid "Keyboard"
+#~ msgstr "Bàn phím"
+
+#~ msgid "Flow"
+#~ msgstr "Chảy"
+
+#~ msgid "else"
+#~ msgstr "không thì"
+
+#~ msgid "My Blocks"
+#~ msgstr "Khối của mình"
+
+#~ msgid "Numbers"
+#~ msgstr "Số"
+
+#~ msgid "Templates"
+#~ msgstr "Mẫu"
+
+#~ msgid "Extras"
+#~ msgstr "Bổ sung"
+
+#~ msgid "read key"
+#~ msgstr "đọc phím"
+
+#~ msgid "clean"
+#~ msgstr "gột"
 
 # Cần dịch hay không?
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:49
-msgid "setyx"
-msgstr "setyx"
+#~ msgid "setyx"
+#~ msgstr "setyx"
 
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:51
-#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:42
-msgid "y"
-msgstr "y"
+#~ msgid "sound"
+#~ msgstr "âm thanh"
 
-#
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:52
-#: /home/walter/Desktop/turtleart-activity/svg/seth.py:40
-msgid "set heading"
-msgstr "đặt hướng về"
+#~ msgid "text color"
+#~ msgstr "màu chữ"
 
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:53
-#: /home/walter/Desktop/turtleart-activity/svg/xcor.py:40
-msgid "xcor"
-msgstr "xcor"
-
-# Tên: không nên dịch
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:56
-msgid "Turtle"
-msgstr "Rùa"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:57
-#: /home/walter/Desktop/turtleart-activity/svg/show.py:40
-msgid "show"
-msgstr "hiện"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:58
-#: /home/walter/Desktop/turtleart-activity/svg/setscale.py:40
-msgid "set scale"
-msgstr "đặt tỷ lệ"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sound.py:40
-msgid "sound"
-msgstr "âm thanh"
-
-#: /home/walter/Desktop/turtleart-activity/svg/textcolor.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:52
-msgid "text color"
-msgstr "màu chữ"
-
-#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:46
-msgid "fill screen"
-msgstr "toàn màn hình"
-
-#: /home/walter/Desktop/turtleart-activity/svg/settextsize.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:50
-msgid "set text size"
-msgstr "đặt kích cỡ chữ"
-
-#: /home/walter/Desktop/turtleart-activity/svg/settextcolor.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:51
-msgid "set text color"
-msgstr "đặt màu chữ"
-
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:40
-msgid "Pen"
-msgstr "Bút"
-
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/penup.py:40
-msgid "pen up"
-msgstr "bút lên"
-
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/setpensize.py:40
-msgid "set pen size"
-msgstr "đặt kích cỡ bút"
-
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/setcolor.py:40
-msgid "set color"
-msgstr "đặt màu"
-
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/setshade.py:40
-msgid "set shade"
-msgstr "đặt sắc màu"
-
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:47
-#: /home/walter/Desktop/turtleart-activity/svg/pensize.py:40
-msgid "pen size"
-msgstr "kích cỡ bút"
-
-#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:40
-msgid "set xy"
-msgstr "đặt xy"
+#~ msgid "Pen"
+#~ msgstr "Bút"
 
 #~ msgid "hide palette"
 #~ msgstr "ẩn bảng chọn"
@@ -1040,18 +1588,6 @@ msgstr "đặt xy"
 
 #~ msgid "Sensors"
 #~ msgstr "Máy nhạy"
-
-#~ msgid "volume"
-#~ msgstr "âm lượng"
-
-#~ msgid "pitch"
-#~ msgstr "âm vực"
-
-#~ msgid "voltage"
-#~ msgstr "điện áp"
-
-#~ msgid "resistance"
-#~ msgstr "điện trở"
 
 #~ msgid "hres"
 #~ msgstr "hres"

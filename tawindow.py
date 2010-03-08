@@ -182,6 +182,7 @@ class TurtleArtWindow():
         self.topy = (self.canvas.height*(TITLEXY[1]-0.125))/(self.coord_scale*2)
         self.bottomy = 0
         self.lc = LogoCode(self)
+        self.saved_pictures = []
 
     """
     Register the events we listen to.
@@ -2649,6 +2650,9 @@ class TurtleArtWindow():
             self.svg_string = ''
         else:
             save_picture(self.canvas, file_path)
+
+        # keep a log of the saved pictures for export to HTML
+        self.saved_pictures.append(file_path)
 
         if self.running_sugar:
             dsobject = datastore.create()

@@ -109,7 +109,12 @@ class TurtleArtActivity(activity.Activity):
         # save the html code to the instance directory
         datapath = get_path(activity, 'instance')
 
-        html_file = os.path.join(datapath, "portfolio.html")
+        save_type = '.html'
+        if len(self.tw.saved_pictures) > 0:
+            if self.tw.saved_pictures[0].endswith(('.svg')):
+                save_type = '.xml'
+
+        html_file = os.path.join(datapath, "portfolio" + save_type)
         f = file(html_file, "w")
         f.write(html)
         f.close()
@@ -136,7 +141,10 @@ class TurtleArtActivity(activity.Activity):
                                      _("presentation")
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         if embed_flag == True:
-            dsobject.metadata['mime_type'] = 'text/html'
+            if save_type == '.xml':
+                dsobject.metadata['mime_type'] = 'text/xhtml'
+            else:
+                dsobject.metadata['mime_type'] = 'text/html'
             dsobject.set_file_path(html_file)
         else:
             dsobject.metadata['mime_type'] = 'application/x-tar'
@@ -146,6 +154,8 @@ class TurtleArtActivity(activity.Activity):
         datastore.write(dsobject)
         dsobject.destroy()
         gobject.timeout_add(250,self.save_as_html.set_icon, "htmloff")
+
+        self.tw.saved_pictures = []
         return
 
     def _do_save_as_logo_cb(self, button):
