@@ -142,7 +142,7 @@ class TurtleArtActivity(activity.Activity):
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
         if embed_flag == True:
             if save_type == '.xml':
-                dsobject.metadata['mime_type'] = 'text/xhtml'
+                dsobject.metadata['mime_type'] = 'application/xml'
             else:
                 dsobject.metadata['mime_type'] = 'text/html'
             dsobject.set_file_path(html_file)
