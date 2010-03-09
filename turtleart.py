@@ -74,6 +74,21 @@ class TurtleMain():
         lang = lang[0:2]
         
         win = gtk.Window(gtk.WINDOW_TOPLEVEL)
+        try:
+            data_file = open('.turtleartrc', 'r')
+        except IOError:
+            data_file = open('.turtleartrc', 'a+')
+            data_file.write(str(50)+'\n')
+            data_file.write(str(50)+'\n')
+            data_file.write(str(800)+'\n')
+            data_file.write(str(550)+'\n')
+            data_file.seek(0)
+        self.x = int(data_file.readline())
+        self.y = int(data_file.readline())
+        self.width = int(data_file.readline())
+        self.height = int(data_file.readline())
+        win.set_default_size(self.width, self.height)
+        win.move(self.x,self.y)
         win.maximize()
         win.set_title(_("Turtle Art"))
         win.connect("delete_event", lambda w,e: gtk.main_quit())
@@ -340,6 +355,14 @@ class TurtleMain():
         text = clipBoard.wait_for_text()
         if text is not None:
             self.tw.process_data(data_from_string(text))
+
+    def _window_event(self, event, data):
+        data_file = open('.turtleartrc', 'w')
+        data_file.write(str(data.x)+'\n')
+        data_file.write(str(data.y)+'\n')
+        data_file.write(str(data.width)+'\n')
+        data_file.write(str(data.height)+'\n')
+
 
 def main():
     gtk.main()
