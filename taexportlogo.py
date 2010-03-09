@@ -18,7 +18,8 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-IGNORE = ["hideblocks", "showblocks", "fullscreen", "savesvg", "savepicture"]
+IGNORE = ["hideblocks", "showblocks", "fullscreen", "polar", "cartesian",
+          "sandwichbottom"]
 
 import math
 try:
