@@ -176,6 +176,9 @@ class TurtleGraphics:
         if r < 0:
             r = -r
             a = -a
+            s = 0
+        else:
+            s = 1
         oldx, oldy = self.xcor, self.ycor
         cx = self.xcor + r*cos(self.heading*DEGTOR)
         cy = self.ycor - r*sin(self.heading*DEGTOR)
@@ -197,7 +200,7 @@ class TurtleGraphics:
             self.tw.svg_string += self.svg.new_path(oldx, self.height/2-oldy)
             self.tw.svg_string += self.svg.arc_to(self.xcor,
                                                   self.height/2-self.ycor, r, a,
-                                                  0, 1)
+                                                  0, s)
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
 
@@ -205,6 +208,9 @@ class TurtleGraphics:
         if r < 0:
             r = -r
             a = -a
+            s = 1
+        else:
+            s = 0
         oldx, oldy = self.xcor, self.ycor
         cx = self.xcor - r*cos(self.heading*DEGTOR)
         cy = self.ycor + r*sin(self.heading*DEGTOR)
@@ -226,7 +232,7 @@ class TurtleGraphics:
             self.tw.svg_string += self.svg.new_path(oldx, self.height/2-oldy)
             self.tw.svg_string += self.svg.arc_to(self.xcor,
                                                   self.height/2-self.ycor, r, a,
-                                                  0, 0)
+                                                  0, s)
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
 
