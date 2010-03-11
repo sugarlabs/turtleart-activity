@@ -31,11 +31,13 @@ from taconstants import CANVAS_LAYER, DEFAULT_TURTLE
 def wrap100(n):
     n = int(n)
     n %= 200
-    if n>99: n=199-n
+    if n > 99:
+        n = 199-n
     return n
 
-def calc_shade(c,s):
-    if s<0: return int(c*(1+s*.8))
+def calc_shade(c, s):
+    if s < 0:
+        return int(c*(1+s*.8))
     return int(c+(65536-c)*s*.9)
 
 colors = {}
@@ -78,14 +80,21 @@ class TurtleGraphics:
         self.canvas.set_layer(CANVAS_LAYER)
         self.gc = self.canvas.images[0].new_gc()
         self.cm = self.gc.get_colormap()
-        self.fgrgb = [255,0,0]
+        self.fgrgb = [255, 0, 0]
         self.fgcolor = self.cm.alloc_color('red')
-        self.bgrgb = [255,248,222]
+        self.bgrgb = [255, 248, 222]
         self.bgcolor = self.cm.alloc_color('#fff8de')
         self.textsize = 48
         self.textcolor = self.cm.alloc_color('blue')
         self.tw.active_turtle.show()
         self.shade = 0
+        self.pendown = True
+        self.xcor = 0
+        self.ycor = 0
+        self.heading = 0
+        self.pensize = 5
+        self.tcolor = 0
+        self.color = 0
         self.svg = SVG()
         self.svg.set_fill_color('none')
         self.tw.svg_string = ''
@@ -136,10 +145,10 @@ class TurtleGraphics:
 
     def seth(self, n):
         try:
-             self.heading = n
+            self.heading = n
         except:
             pass
-        self.heading%=360
+        self.heading %= 360
         self.turn_turtle()
 
     def right(self, n):
@@ -147,14 +156,14 @@ class TurtleGraphics:
             self.heading += n
         except:
             pass
-        self.heading%=360
+        self.heading %= 360
         self.turn_turtle()
 
     def arc(self, a, r):
         self.gc.set_foreground(self.fgcolor)
         r *= self.tw.coord_scale
         try:
-            if a<0:
+            if a < 0:
                 self.larc(-a, r)
             else:
                 self.rarc(a, r)
@@ -164,23 +173,26 @@ class TurtleGraphics:
         self.turn_turtle()
 
     def rarc(self, a, r):
-        if r<0:
-             r=-r; a=-a
+        if r < 0:
+            r = -r
+            a = -a
         oldx, oldy = self.xcor, self.ycor
-        cx = self.xcor+r*cos(self.heading*DEGTOR)
-        cy = self.ycor-r*sin(self.heading*DEGTOR)
-        x,y = self.width/2+int(cx-r), self.height/2-int(cy+r)
-        w,h = int(2*r), int(2*r)
+        cx = self.xcor + r*cos(self.heading*DEGTOR)
+        cy = self.ycor - r*sin(self.heading*DEGTOR)
+        x = self.width/2 + int(cx-r)
+        y = self.height/2 - int(cy+r)
+        w = int(2*r)
+        h = w
         if self.pendown:
             self.canvas.images[0].draw_arc(self.gc, False, x, y, w, h,
-                                int(180-self.heading-a)*64, int(a)*64)
-            self.invalt(x-self.pensize*self.tw.coord_scale/2-3,
-                        y-self.pensize*self.tw.coord_scale/2-3,
-                        w+self.pensize*self.tw.coord_scale+6,
-                        h+self.pensize*self.tw.coord_scale+6)
+                                int(180 - self.heading - a)*64, int(a)*64)
+            self.invalt(x - self.pensize*self.tw.coord_scale/2 - 3,
+                        y - self.pensize*self.tw.coord_scale/2 - 3,
+                        w + self.pensize*self.tw.coord_scale + 6,
+                        h + self.pensize*self.tw.coord_scale + 6)
         self.right(a)
-        self.xcor=cx-r*cos(self.heading*DEGTOR)
-        self.ycor=cy+r*sin(self.heading*DEGTOR)
+        self.xcor = cx - r*cos(self.heading*DEGTOR)
+        self.ycor = cy + r*sin(self.heading*DEGTOR)
         if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.new_path(oldx, self.height/2-oldy)
             self.tw.svg_string += self.svg.arc_to(self.xcor,
@@ -190,23 +202,26 @@ class TurtleGraphics:
             self.tw.svg_string += self.svg.style()
 
     def larc(self, a, r):
-        if r<0:
-            r=-r; a=-a
+        if r < 0:
+            r = -r
+            a = -a
         oldx, oldy = self.xcor, self.ycor
-        cx = self.xcor-r*cos(self.heading*DEGTOR)
-        cy = self.ycor+r*sin(self.heading*DEGTOR)
-        x,y = self.width/2+int(cx-r), self.height/2-int(cy+r)
-        w,h = int(2*r), int(2*r)
+        cx = self.xcor - r*cos(self.heading*DEGTOR)
+        cy = self.ycor + r*sin(self.heading*DEGTOR)
+        x = self.width/2 + int(cx-r)
+        y = self.height/2 - int(cy+r)
+        w = int(2*r)
+        h = w
         if self.pendown:
-            self.canvas.images[0].draw_arc(self.gc,False, x, y, w, h,
+            self.canvas.images[0].draw_arc(self.gc, False, x, y, w, h,
                                        int(360-self.heading)*64, int(a)*64)
-            self.invalt(x-self.pensize*self.tw.coord_scale/2-3,
-                        y-self.pensize*self.tw.coord_scale/2-3,
-                        w+self.pensize*self.tw.coord_scale+6,
-                        h+self.pensize*self.tw.coord_scale+6)
+            self.invalt(x - self.pensize*self.tw.coord_scale/2 - 3,
+                        y - self.pensize*self.tw.coord_scale/2 - 3,
+                        w + self.pensize*self.tw.coord_scale + 6,
+                        h + self.pensize*self.tw.coord_scale + 6)
         self.right(-a)
-        self.xcor=cx+r*cos(self.heading*DEGTOR)
-        self.ycor=cy-r*sin(self.heading*DEGTOR)
+        self.xcor = cx + r*cos(self.heading*DEGTOR)
+        self.ycor = cy - r*sin(self.heading*DEGTOR)
         if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.new_path(oldx, self.height/2-oldy)
             self.tw.svg_string += self.svg.arc_to(self.xcor,
@@ -219,15 +234,15 @@ class TurtleGraphics:
         x *= self.tw.coord_scale
         y *= self.tw.coord_scale
         try:
-            self.xcor,self.ycor = x, y
+            self.xcor, self.ycor = x, y
         except:
             pass
         self.move_turtle()
 
-    def setpensize(self,ps):
+    def setpensize(self, ps):
         try:
-            if ps<0:
-                ps=0;
+            if ps < 0:
+                ps = 0
             self.pensize = ps
         except:
             pass
@@ -236,7 +251,7 @@ class TurtleGraphics:
                      gtk.gdk.LINE_SOLID, gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
         self.svg.set_stroke_width(self.pensize)
 
-    def setcolor(self,c):
+    def setcolor(self, c):
         try:
             self.color = c
             self.tcolor = c
@@ -246,7 +261,7 @@ class TurtleGraphics:
         self.set_fgcolor()
         self.set_textcolor()
 
-    def settextcolor(self,c):
+    def settextcolor(self, c):
         try:
             self.tcolor = c
         except:
@@ -269,36 +284,36 @@ class TurtleGraphics:
         self.set_textcolor()
 
     def fillscreen(self, c, s):
-        oldc, olds = self.color,self.shade
+        oldc, olds = self.color, self.shade
         self.setcolor(c); self.setshade(s)
-        rect = gtk.gdk.Rectangle(0,0,self.width,self.height)
+        rect = gtk.gdk.Rectangle(0, 0, self.width, self.height)
         self.gc.set_foreground(self.fgcolor)
         self.bgrgb = self.fgrgb[:]
         self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
-        self.invalt(0,0,self.width,self.height)
+        self.invalt(0, 0, self.width, self.height)
         self.setcolor(oldc); self.setshade(olds)
-        self.svg_string = ''
+        self.tw.svg_string = ''
         self.svg.reset_min_max()
 
     def set_fgcolor(self):
-        sh = (wrap100(self.shade)-50)/50.0
+        sh = (wrap100(self.shade) - 50)/50.0
         rgb = color_table[wrap100(self.color)]
-        r,g,b = (rgb>>8)&0xff00,rgb&0xff00,(rgb<<8)&0xff00
-        r,g,b = calc_shade(r,sh),calc_shade(g,sh),calc_shade(b,sh)
-        self.fgrgb = [r>>8,g>>8,b>>8]
-        self.fgcolor = self.cm.alloc_color(r,g,b)
+        r, g, b = (rgb>>8)&0xff00, rgb&0xff00, (rgb<<8)&0xff00
+        r, g, b = calc_shade(r, sh), calc_shade(g, sh), calc_shade(b, sh)
+        self.fgrgb = [r>>8, g>>8, b>>8]
+        self.fgcolor = self.cm.alloc_color(r, g, b)
         self.svg.set_stroke_color("#%02x%02x%02x" % (self.fgrgb[0],
                                                      self.fgrgb[1],
                                                      self.fgrgb[2]))
 
     def set_textcolor(self):
-        sh = (wrap100(self.shade)-50)/50.0
+        sh = (wrap100(self.shade) - 50)/50.0
         rgb = color_table[wrap100(self.tcolor)]
-        r,g,b = (rgb>>8)&0xff00,rgb&0xff00,(rgb<<8)&0xff00
-        r,g,b = calc_shade(r,sh),calc_shade(g,sh),calc_shade(b,sh)
-        self.tw.textcolor = self.cm.alloc_color(r,g,b)
+        r, g, b = (rgb>>8)&0xff00, rgb&0xff00, (rgb<<8)&0xff00
+        r, g, b = calc_shade(r, sh), calc_shade(g, sh), calc_shade(b, sh)
+        self.tw.textcolor = self.cm.alloc_color(r, g, b)
 
-    def setpen(self,bool):
+    def setpen(self, bool):
         self.pendown = bool
 
     def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path):
@@ -322,49 +337,51 @@ class TurtleGraphics:
         try:
             fd.set_size(int(size*self.tw.coord_scale)*pango.SCALE)
         except:
-            print "set size (%d) failed" % (int(size*self.tw.coord_scale))
             pass
         if type(label) == str or type(label) == unicode:
             pl = self.tw.window.create_pango_layout(label.replace("\0"," "))
         elif type(label) == float or type(label) == int:
             pl = self.tw.window.create_pango_layout(str(label))
         else:
-            print "draw text: Type Error: %s" % (type(label))
             pl = self.tw.window.create_pango_layout(str(label))
         pl.set_font_description(fd)
-        pl.set_width(int(w)*pango.SCALE)
-        self.canvas.images[0].draw_layout(self.gc,int(x),int(y),pl)
-        w,h = pl.get_pixel_size()
-        self.invalt(x,y,w,h)
+        pl.set_width(int(w) * pango.SCALE)
+        self.canvas.images[0].draw_layout(self.gc, int(x), int(y), pl)
+        w, h = pl.get_pixel_size()
+        self.invalt(x, y, w, h)
         if self.tw.saving_svg and self.pendown:
-            self.tw.svg_string += self.svg.text(x-self.width/2,
-                                                y+size,
+            self.tw.svg_string += self.svg.text(x - self.width/2,
+                                                y + size,
                                                 size, w, label)
 
-    def draw_line(self,x1,y1,x2,y2):
-        x1,y1 = self.width/2+int(x1), self.height/2-int(y1)
-        x2,y2 = self.width/2+int(x2), self.height/2-int(y2)
-        if x1<x2: minx,maxx=x1,x2
-        else: minx,maxx=x2,x1
-        if y1<y2: miny,maxy=y1,y2
-        else: miny,maxy=y2,y1
-        w,h=maxx-minx,maxy-miny
-        self.canvas.images[0].draw_line(self.gc,x1,y1,x2,y2)
-        self.invalt(minx-self.pensize*self.tw.coord_scale/2-3,
-                    miny-self.pensize*self.tw.coord_scale/2-3,
-                    w+self.pensize*self.tw.coord_scale+6,
-                    h+self.pensize*self.tw.coord_scale+6)
+    def draw_line(self, x1, y1, x2, y2):
+        x1, y1 = self.width/2 + int(x1), self.height/2 - int(y1)
+        x2, y2 = self.width/2 + int(x2), self.height/2 - int(y2)
+        if x1 < x2:
+            minx, maxx = x1, x2
+        else:
+            minx, maxx = x2, x1
+        if y1 < y2:
+            miny, maxy = y1, y2
+        else:
+            miny, maxy = y2, y1
+        w, h = maxx-minx, maxy-miny
+        self.canvas.images[0].draw_line(self.gc, x1, y1, x2, y2)
+        self.invalt(minx - self.pensize*self.tw.coord_scale/2 - 3,
+                    miny - self.pensize*self.tw.coord_scale/2 - 3,
+                    w + self.pensize*self.tw.coord_scale + 6,
+                    h + self.pensize*self.tw.coord_scale + 6)
 
     def turn_turtle(self):
         self.tw.active_turtle.set_heading(self.heading)
 
     def move_turtle(self):
-        x, y = self.width/2+int(self.xcor), self.height/2-int(self.ycor)
-        self.tw.active_turtle.move((self.cx+x-30, self.cy+y-30))
-        # self.invalt(x-30,y-30,60,60)
+        x, y = self.width/2 + int(self.xcor), self.height/2 - int(self.ycor)
+        self.tw.active_turtle.move((self.cx + x - 30, self.cy + y - 30))
 
     def invalt(self, x, y, w, h):
-        rect = gtk.gdk.Rectangle(int(x+self.cx), int(y+self.cy), int(w),int(h))
+        rect = gtk.gdk.Rectangle(int(x+self.cx), int(y+self.cy), int(w),
+                                 int(h))
         self.tw.area.invalidate_rect(rect, False)
 
     def set_turtle(self, k):
@@ -379,8 +396,8 @@ class TurtleGraphics:
             self.tw.active_turtle.set_pen_state(True)
         self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
         tx, ty = self.tw.active_turtle.get_xy()
-        self.xcor = tx+30-self.width/2
-        self.ycor = self.height/2-ty-30
+        self.xcor = tx + 30 - self.width/2
+        self.ycor = self.height/2 - ty - 30
         self.heading = self.tw.active_turtle.get_heading()
         self.setcolor(self.tw.active_turtle.get_color())
         self.setshade(self.tw.active_turtle.get_shade())

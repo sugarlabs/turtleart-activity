@@ -23,10 +23,8 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
-import gobject
 import os
 import os.path
-import locale
 from gettext import gettext as _
 from taconstants import OVERLAY_LAYER
 from tautils import data_to_string, data_from_string, get_save_name
@@ -34,45 +32,27 @@ from tautils import data_to_string, data_from_string, get_save_name
 from tawindow import TurtleArtWindow
 from taexporthtml import save_html
 
-"""
-Make a path if it doesn't previously exist
-"""
 def makepath(path):
-
+    """ Make a path if it doesn't previously exist """
     from os import makedirs
     from os.path import normpath, dirname, exists
 
     dpath = normpath(dirname(path))
-    if not exists(dpath): makedirs(dpath)
+    if not exists(dpath):
+        makedirs(dpath)
 
-"""
-Launch Turtle Art from outside of Sugar
-$ python turtleart.py
-
-Caveats:
-    * no Sugar toolbars
-    * no Sugar Journal access
-    * no Sugar sharing
-"""
 class TurtleMain():
     def __init__(self):
+        """ Launch Turtle Art from outside of Sugar """
         self.i = 0
-        self.scale=2.0
-        tw = None
+        self.scale = 2.0
+        self.tw = None
         # make sure Sugar paths are present
-        tapath = os.path.join(os.environ['HOME'],'.sugar','default', \
+        tapath = os.path.join(os.environ['HOME'], '.sugar', 'default', \
                               'org.laptop.TurtleArtActivity')
-        map (makepath, (os.path.join(tapath,'data/'), \
-                        os.path.join(tapath,'instance/')))
+        map (makepath, (os.path.join(tapath, 'data/'), \
+                        os.path.join(tapath, 'instance/')))
 
-        """
-        Find closest match for the user's $LANG
-        """
-        lang = locale.getdefaultlocale()[0]
-        if not lang:
-            lang = 'en'
-        lang = lang[0:2]
-        
         win = gtk.Window(gtk.WINDOW_TOPLEVEL)
         try:
             data_file = open('.turtleartrc', 'r')
@@ -88,10 +68,10 @@ class TurtleMain():
         self.width = int(data_file.readline())
         self.height = int(data_file.readline())
         win.set_default_size(self.width, self.height)
-        win.move(self.x,self.y)
+        win.move(self.x, self.y)
         win.maximize()
         win.set_title(_("Turtle Art"))
-        win.connect("delete_event", lambda w,e: gtk.main_quit())
+        win.connect("delete_event", lambda w, e: gtk.main_quit())
 
         menu = gtk.Menu()
 
@@ -229,25 +209,28 @@ class TurtleMain():
         win.show_all()
 
         if os.path.exists('/usr/share/turtleart'):
-            self.tw = TurtleArtWindow(canvas, '/usr/share/turtleart', lang)
+            self.tw = TurtleArtWindow(canvas, '/usr/share/turtleart')
         elif os.path.exists('/usr/local/share/turtleart'):
-            self.tw = TurtleArtWindow(canvas, '/usr/local/share/turtleart',
-                                      lang)
+            self.tw = TurtleArtWindow(canvas, '/usr/local/share/turtleart')
         else:
-            self.tw = TurtleArtWindow(canvas, os.path.abspath('.'), lang)
+            self.tw = TurtleArtWindow(canvas, os.path.abspath('.'))
         self.tw.win = win
         self.tw.load_start()
 
     def _do_open_cb(self, widget):
+        """ Callback for open project. """
         self.tw.load_file(True)
 
     def _do_save_cb(self, widget):
+        """ Callback for save project. """
         self.tw.save_file()
 
     def _do_save_picture_cb(self, widget):
+        """ Callback for save canvas. """
         self.tw.save_as_image()
 
     def _do_save_html_cb(self, widget):
+        """ Callback for save project to HTML. """
         html = save_html(self, self.tw, False)
         if len(html) == 0:
             return
@@ -263,6 +246,7 @@ class TurtleMain():
         self.tw.saved_pictures = []
 
     def _do_resize_cb(self, widget, factor):
+        """ Callback to resize blocks. """
         if factor == -1:
             self.tw.block_scale = 2.0     
         else:
@@ -270,6 +254,7 @@ class TurtleMain():
         self.tw.resize_blocks()
 
     def _do_cartesian_cb(self, button):
+        """ Callback to display/hide Cartesian coordinate overlay. """
         if self.tw.cartesian is True:
             if self.tw.coord_scale == 1:
                 self.tw.overlay_shapes['Cartesian_labeled'].hide()
@@ -285,6 +270,7 @@ class TurtleMain():
             self.tw.cartesian = True
 
     def _do_polar_cb(self, button):
+        """ Callback to display/hide Polar coordinate overlay. """
         if self.tw.polar is True:
             self.tw.overlay_shapes['polar'].hide()
             self.tw.polar = False
@@ -293,6 +279,7 @@ class TurtleMain():
             self.tw.polar = True
 
     def _do_rescale_cb(self, button):
+        """ Callback to rescale coordinate space. """
         if self.tw.coord_scale == 1:
             self.tw.coord_scale = self.tw.height/200
             self.tw.eraser_button()
@@ -308,42 +295,51 @@ class TurtleMain():
                                                               OVERLAY_LAYER)
 
     def _do_palette_cb(self, widget):
+        """ Callback to show/hide palette of blocks. """
         self.tw.show_palette(self.i)
         self.i += 1
         if self.i == len(self.tw.palettes):
             self.i = 0
 
     def _do_hide_palette_cb(self, widget):
+        """ Hide the palette of blocks. """
         self.tw.hide_palette()
 
     def _do_hideshow_cb(self, widget):
+        """ Hide/show the blocks. """
         self.tw.hideshow_button()
 
     def _do_eraser_cb(self, widget):
+        """ Callback for eraser button. """
         self.tw.eraser_button()
         return
 
     def _do_run_cb(self, widget):
+        """ Callback for run button (rabbit). """
         self.tw.lc.trace = 0
         self.tw.run_button(0)
         return
 
     def _do_step_cb(self, widget):
+        """ Callback for step button (turtle). """
         self.tw.lc.trace = 0
         self.tw.run_button(3)
         return
 
     def _do_trace_cb(self, widget):
+        """ Callback for debug button (bug). """
         self.tw.lc.trace = 1
         self.tw.run_button(6)
         return
 
     def _do_stop_cb(self, widget):
+        """ Callback for stop button. """
         self.tw.lc.trace = 0
         self.tw.stop_button()
         return
 
     def _do_copy_cb(self, button):
+        """ Callback for copy button. """
         clipBoard = gtk.Clipboard()
         data = self.tw.assemble_data_to_save(False, False)
         if data is not []:
@@ -351,20 +347,22 @@ class TurtleMain():
             clipBoard.set_text(text)
 
     def _do_paste_cb(self, button):
+        """ Callback for paste button. """
         clipBoard = gtk.Clipboard()
         text = clipBoard.wait_for_text()
         if text is not None:
             self.tw.process_data(data_from_string(text))
 
     def _window_event(self, event, data):
+        """ Callback for resize event. """
         data_file = open('.turtleartrc', 'w')
         data_file.write(str(data.x)+'\n')
         data_file.write(str(data.y)+'\n')
         data_file.write(str(data.width)+'\n')
         data_file.write(str(data.height)+'\n')
 
-
 def main():
+    """ python turtleart.py """
     gtk.main()
     return 0
 

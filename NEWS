@@ -14,12 +14,16 @@
  o new prefix boolean logic
  o showblock to compliment hideblock
  o fullscreen block
+ o Cartesian and polor coordinate blocks
+ o color blocks
  o editible macros (used for presentation blocks)
  o labels on coordinate-grid overlays
  o more complete support in non-Sugar environments
  o new (and improved) sample code
  o Logo code for project added to View Source
  o save SVG block lets you generate SVG with Turtle Art
+ o improved export-to-HTML logic
+ o new translations
 
 * completed a major refactoring of the code
  o 90% smaller download bundle-size
