@@ -155,25 +155,25 @@ class TurtleGraphics:
             self.tw.activity.send_event("r|%s" % \
                 (data_to_string([self.tw.nick, int(self.heading)])))
 
-    def right(self, n):
+    def right(self, n, share=True):
         try:
             self.heading += n
         except:
             pass
         self.heading %= 360
         self.turn_turtle()
-        if self.tw.sharing():
+        if self.tw.sharing() and share:
             self.tw.activity.send_event("r|%s" % \
                 (data_to_string([self.tw.nick, int(self.heading)])))
 
     def arc(self, a, r, share=True):
         self.gc.set_foreground(self.fgcolor)
-        r *= self.tw.coord_scale
+        rr = r*self.tw.coord_scale
         try:
             if a < 0:
-                self.larc(-a, r)
+                self.larc(-a, rr, share)
             else:
-                self.rarc(a, r)
+                self.rarc(a, rr, share)
         except:
             pass
         self.move_turtle()
@@ -182,7 +182,7 @@ class TurtleGraphics:
             self.tw.activity.send_event("a|%s" % \
                 (data_to_string([self.tw.nick, [int(a),int(r)]])))
 
-    def rarc(self, a, r):
+    def rarc(self, a, r, share=True):
         if r < 0:
             r = -r
             a = -a
@@ -203,7 +203,7 @@ class TurtleGraphics:
                         y - self.pensize*self.tw.coord_scale/2 - 3,
                         w + self.pensize*self.tw.coord_scale + 6,
                         h + self.pensize*self.tw.coord_scale + 6)
-        self.right(a)
+        self.right(a, share)
         self.xcor = cx - r*cos(self.heading*DEGTOR)
         self.ycor = cy + r*sin(self.heading*DEGTOR)
         if self.tw.saving_svg and self.pendown:
@@ -214,7 +214,7 @@ class TurtleGraphics:
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
 
-    def larc(self, a, r):
+    def larc(self, a, r, share=True):
         if r < 0:
             r = -r
             a = -a
@@ -235,7 +235,7 @@ class TurtleGraphics:
                         y - self.pensize*self.tw.coord_scale/2 - 3,
                         w + self.pensize*self.tw.coord_scale + 6,
                         h + self.pensize*self.tw.coord_scale + 6)
-        self.right(-a)
+        self.right(-a, share)
         self.xcor = cx + r*cos(self.heading*DEGTOR)
         self.ycor = cy - r*sin(self.heading*DEGTOR)
         if self.tw.saving_svg and self.pendown:
