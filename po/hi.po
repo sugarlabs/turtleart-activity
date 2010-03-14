@@ -1,237 +1,1609 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2010-02-25 17:04+0000\n"
+"PO-Revision-Date: 2009-02-20 14:16-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"X-Generator: Pootle 1.1.0rc2\n"
 
-#: 
+#: activity/activity.info:2
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:1300
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2552
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:76
+#: /home/walter/Desktop/ta-refactoring/taexporthtml.py:285
 msgid "Turtle Art"
+msgstr "टर्टल आर्ट"
+
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:507
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:508
+#, fuzzy
+msgid "orientation"
+msgstr "प्रस्तुतिकरण"
+
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:518
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:786
+#, fuzzy
+msgid "next"
+msgstr "पाठ"
+
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:1565
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:328
+msgid "click to open"
 msgstr ""
 
-#:
-msgid "Flow"
-msgstr ""
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2549
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2553
+#: /home/walter/Desktop/ta-refactoring/talogo.py:744
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:709
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1201
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:375
+msgid "xcor"
+msgstr "एक्स निर्देशांक"
 
-#:
-msgid "forever"
-msgstr ""
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2549
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2553
+#: /home/walter/Desktop/ta-refactoring/talogo.py:745
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:709
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1201
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:376
+msgid "ycor"
+msgstr "वाय निर्देशांक"
 
-#:
-msgid "if"
-msgstr ""
-
-#:
-msgid "then"
-msgstr ""
-
-#:
-msgid "else"
-msgstr ""
-
-#:
-msgid "repeat"
-msgstr ""
-
-#:
-msgid "stop stack"
-msgstr ""
-
-#:
-msgid "wait"
-msgstr ""
-
-#:
-msgid "My Blocks"
-msgstr ""
-
-#:
-msgid "box 1"
-msgstr ""
-
-#:
-msgid "box 2"
-msgstr ""
-
-#:
-msgid "stack 1"
-msgstr ""
-
-#:
-msgid "stack 2"
-msgstr ""
-
-#:
-msgid "store in box 1"
-msgstr ""
-
-#:
-msgid "store in box 2"
-msgstr ""
-
-#:
-msgid "Numbers"
-msgstr ""
-
-#:
-msgid "number"
-msgstr ""
-
-#:
-msgid "and"
-msgstr ""
-
-#:
-msgid "or"
-msgstr ""
-
-#:
-msgid "not"
-msgstr ""
-
-#:
-msgid "random"
-msgstr ""
-
-#:
-msgid "min"
-msgstr ""
-
-#:
-msgid "max"
-msgstr ""
-
-#:
-msgid "mod"
-msgstr ""
-
-#:
-msgid "print"
-msgstr ""
-
-#:
-msgid "Pen"
-msgstr ""
-
-#:
-msgid "color"
-msgstr ""
-
-#:
-msgid "shade"
-msgstr ""
-
-#:
-msgid "fill screen"
-msgstr ""
-
-#:
-msgid "pen up"
-msgstr ""
-
-#:
-msgid "pen down"
-msgstr ""
-
-#:
-msgid "set pen size"
-msgstr ""
-
-#:
-msgid "pen size"
-msgstr ""
-
-#:
-msgid "set shade"
-msgstr ""
-
-#:
-msgid "set color"
-msgstr ""
-
-#:
-msgid "Blocks"
-msgstr ""
-
-#:
-msgid "Turtle"
-msgstr ""
-
-#:
-msgid "forward"
-msgstr ""
-
-#:
-msgid "back"
-msgstr ""
-
-#:
-msgid "right"
-msgstr ""
-
-#:
-msgid "left"
-msgstr ""
-
-#:
-msgid "arc"
-msgstr ""
-
-#:
-msgid "angle"
-msgstr ""
-
-#:
-msgid "radius"
-msgstr ""
-
-#:
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2549
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2553
+#: /home/walter/Desktop/ta-refactoring/talogo.py:745
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:710
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1202
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:271
 msgid "heading"
+msgstr "शीर्षक"
+
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2612
+msgid "image"
 msgstr ""
 
-#:
+#: /home/walter/Desktop/ta-refactoring/talogo.py:704
+msgid "did not output to"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:746
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:331
+msgid "scale"
+msgstr "स्केल"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:749
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:297
+msgid "pen down"
+msgstr "पेन नीचे"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:751
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:299
+msgid "pen up"
+msgstr "पेन ऊपर"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:753
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:255
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:262
+msgid "color"
+msgstr "रंग"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:754
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:262
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:340
+msgid "shade"
+msgstr "छाया"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:755
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:298
+msgid "pen size"
+msgstr "पेन आकार"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:770
+msgid "I don't know how to"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:919
+msgid "doesn't like"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:919
+msgid "as input"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:136
+msgid "presentation"
+msgstr "प्रस्तुतिकरण"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:189
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:895
+msgid "Project"
+msgstr "परियोजना"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:274
+msgid "snapshot"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:292
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:317
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:334
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:343
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:142
+msgid "Show palette"
+msgstr "रंगपट्टिका दिखाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:299
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:312
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:321
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:337
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:349
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:773
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1386
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:146
+msgid "Hide palette"
+msgstr "रंगपट्टिका छुपाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:327
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:341
+msgid "Show blocks"
+msgstr "खण्ड दिखाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:330
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:347
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:677
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1152
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:697
+msgid "Hide blocks"
+msgstr "खण्ड छुपाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:430
+msgid "Rescale coordinates down"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:438
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:725
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1230
+msgid "Rescale coordinates up"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:620
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1476
+msgid "Save snapshot"
+msgstr "स्नेपशॉट सहेजें"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:627
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1324
+msgid "Save as HTML"
+msgstr "एचटीएमएल रूप में सहेजें"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:634
+msgid "Save as Logo"
+msgstr "लोगो के रूप में सहेजें"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:641
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1342
+msgid "Save as image"
+msgstr "फ़ोटो के रूप में सहेजें"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:648
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1356
+msgid "Load my block"
+msgstr "मेरा वाला खण्ड लोड करें"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:656
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1366
+msgid "Import project from the Journal"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:680
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1157
+msgid "<Ctrl>b"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:685
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1165
+msgid "Fullscreen"
+msgstr "पूर्ण स्क्रीन"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:692
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1178
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:96
+msgid "Cartesian coordinates"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:698
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1187
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:100
+msgid "Polar coordinates"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:731
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1216
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:108
+#, fuzzy
+msgid "Grow blocks"
+msgstr "खण्ड दिखाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:738
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1223
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:112
+msgid "Shrink blocks"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:776
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1391
+msgid "<Ctrl>p"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:795
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1458
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:161
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:682
+msgid "Clean"
+msgstr "साफ"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:798
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1463
+msgid "<Ctrl>e"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:804
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1404
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:165
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:747
+msgid "Run"
+msgstr "चलाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:807
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1408
+msgid "<Ctrl>r"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:813
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1416
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:169
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:748
+msgid "Step"
+msgstr "चरण"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:816
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1420
+msgid "<Ctrl>w"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:822
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1428
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:173
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:678
+msgid "Debug"
+msgstr "दोषसुधार"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:825
+msgid "<Alt>d"
+msgstr "<Alt>d"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:831
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1441
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:772
+msgid "Stop turtle"
+msgstr "टर्टल बन्द करें"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:834
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1445
+msgid "<Ctrl>s"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:846
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1494
+msgid "Samples"
+msgstr "नमूने"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:857
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1305
+msgid "Move the cursor over the orange palette for help."
+msgstr "मदद के लिए संकेतक को नारंगी पैलेट पर ले जाएँ."
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:866
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:903
+msgid "Help"
+msgstr "मदद"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:897
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:121
+msgid "View"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:899
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:136
+msgid "Edit"
+msgstr "संपादन"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:901
+msgid "Import/Export"
+msgstr "आयात/निर्यात"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1246
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:127
+msgid "Copy"
+msgstr "नक़ल"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1258
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:131
+msgid "Paste"
+msgstr "चिपकाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1333
+msgid "Save Logo"
+msgstr "लोगो सहेजें"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1433
+msgid "<Ctrl>d"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1499
+msgid "<Ctrl>o"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:81
+msgid "Open"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:85
+msgid "Save"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:90
+msgid "File"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:104
+msgid "Rescale coordinates"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:116
+msgid "Reset block size"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:150
+msgid "Show/hide blocks"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:155
+msgid "Tools"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:177
+#, fuzzy
+msgid "Stop"
+msgstr "शीर्ष"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:182
+msgid "Turtle"
+msgstr "टर्टल"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:241
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:365
+#, fuzzy
+msgid "turtle"
+msgstr "टर्टल"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:242
+msgid "and"
+msgstr "और"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:243
+msgid "arc"
+msgstr "चाप"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:243
+msgid "angle"
+msgstr "कोण"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:243
+msgid "radius"
+msgstr "त्रिज्या"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:245
+msgid "back"
+msgstr "पीछे"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:246
+msgid "blue"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:247
+msgid "bottom"
+msgstr "तल"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:248
+msgid "picture bottom"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:249
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:350
+msgid "box"
+msgstr "बक्सा"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:250
+msgid "box 1"
+msgstr "बक्सा 1"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:251
+msgid "box 2"
+msgstr "बक्सा 2"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:252
+msgid "Cartesian"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:253
+msgid " clean "
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:254
+msgid "empty heap"
+msgstr "रिक्त ढेर"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:256
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:515
+msgid "comment"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:257
+msgid "cyan"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:260
+msgid "empty trash"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:262
+msgid "fill screen"
+msgstr "स्क्रीन भरें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:263
+msgid "forever"
+msgstr "हमेशा के लिए"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:264
+msgid "forward"
+msgstr "आगे"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:265
+#, fuzzy
+msgid "full screen"
+msgstr "स्क्रीन भरें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:267
+msgid "green"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:268
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:345
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:520
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:550
+msgid "action"
+msgstr "क्रिया"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:269
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:346
+#, fuzzy
+msgid "action 1"
+msgstr "क्रिया"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:270
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:347
+#, fuzzy
+msgid "action 2"
+msgstr "क्रिया"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:272
+msgid "height"
+msgstr "ऊँचाई"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:273
+msgid "hide blocks"
+msgstr "खण्ड छुपाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:276
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:277
+msgid "if"
+msgstr "यदि"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:276
+msgid "then"
+msgstr "तब"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:277
+msgid "then else"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:278
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:341
+msgid "show"
+msgstr "दिखाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:280
+msgid "query keyboard"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:281
+msgid "keyboard"
+msgstr "कुंजीपट"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:282
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:283
+msgid "left"
+msgstr "बायाँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:284
+msgid "picture left"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:288
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:289
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:290
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:291
+msgid "Python"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:293
+msgid "not"
+msgstr "नहीं"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:295
+msgid "orange"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:296
+msgid "or"
+msgstr "या"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:306
+msgid "pitch"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:308
+msgid "polar"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:309
+msgid "pop"
+msgstr "पॉप"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:310
+msgid "show heap"
+msgstr "ढेर दिखाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:311
+msgid "print"
+msgstr "छापें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:313
+msgid "purple"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:314
+msgid "push"
+msgstr "दबाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:315
+msgid "random"
+msgstr "बेतरतीब"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:315
+msgid "min"
+msgstr "न्यून."
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:315
+msgid "max"
+msgstr "अधि."
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:316
+msgid "red"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:317
+msgid "mod"
+msgstr "मॉड"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:318
+msgid "repeat"
+msgstr "दोहराएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:319
+msgid "resistance"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:320
+msgid "restore last"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:321
+msgid "restore all"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:322
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:323
+msgid "right"
+msgstr "दायाँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:324
+msgid "picture right"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:325
+msgid "save picture"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:326
+msgid "save SVG"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:329
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:330
+msgid "top of stack"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:332
+msgid "set color"
+msgstr "रंग सेट करें"
+
+#
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:333
 msgid "set heading"
 msgstr "seth"
 
-#:
-msgid "clean"
-msgstr ""
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:334
+msgid "set pen size"
+msgstr "पेन आकार सेट करें"
 
-#:
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:335
+msgid "set scale"
+msgstr "स्केल सेट करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:336
+msgid "set shade"
+msgstr "छाया सेट करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:337
+msgid "set text color"
+msgstr "पाठ रंग सेट करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:338
+msgid "set text size"
+msgstr "पाठ आकार सेट करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:339
 msgid "set xy"
-msgstr ""
+msgstr "xy सेट करें"
 
-#:
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:339
 msgid "x"
-msgstr ""
+msgstr "एक्स"
 
-#:
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:339
 msgid "y"
+msgstr "वाई"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:342
+#, fuzzy
+msgid "show blocks"
+msgstr "खण्ड दिखाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:343
+msgid "show aligned"
 msgstr ""
 
-#:
-msgid "xcor"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:348
+msgid "start"
+msgstr "प्रारंभ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:349
+msgid "stop action"
+msgstr "कार्य रोकें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:350
+msgid "store in"
+msgstr "में भंडारित करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:350
+msgid "value"
 msgstr ""
 
-#:
-msgid "ycor"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:351
+msgid "store in box 1"
+msgstr "बक्सा 1 में भंडारित करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:352
+msgid "store in box 2"
+msgstr "बक्सा 2 में भंडारित करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:353
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:548
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:549
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:554
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:562
+msgid "text"
+msgstr "पाठ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:360
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:655
+msgid "text size"
+msgstr "पाठ आकार"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:361
+msgid "title x"
 msgstr ""
 
-#:
-msgid "Project"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:362
+msgid "title y"
 msgstr ""
 
-#:
-msgid "Samples"
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:363
+msgid "top"
+msgstr "शीर्ष"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:364
+msgid "picture top"
 msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:366
+msgid "until"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:367
+msgid "voltage"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:368
+msgid "volume"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:370
+msgid "wait"
+msgstr "इंतजार करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:371
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:372
+msgid "while"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:373
+msgid "width"
+msgstr "चौड़ाई"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:374
+msgid "write"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:377
+msgid "yellow"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:514
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:553
+msgid "my box"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:536
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:537
+msgid "label"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:538
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:539
+msgid "picture name"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:555
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:556
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:557
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:558
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:559
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:560
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:861
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:876
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:892
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:923
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:954
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:985
+#, fuzzy
+msgid "Title"
+msgstr "शीर्षक"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:633
+msgid "audio"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:634
+msgid "divide"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:635
+msgid "equal"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:636
+msgid "greater than"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:637
+msgid "horizontal space"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:638
+msgid "identity"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:639
+msgid "if then"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:640
+msgid "if then else"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:641
+msgid "journal"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:642
+msgid "less than"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:643
+msgid "minus"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:644
+msgid "Python code"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:645
+msgid "number"
+msgstr "संख्या"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:646
+msgid "plus"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:647
+msgid "multiply"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:648
+msgid "square root"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:649
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:650
+#, fuzzy
+msgid "presentation 1x1"
+msgstr "प्रस्तुतिकरण"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:651
+#, fuzzy
+msgid "presentation 1x2"
+msgstr "प्रस्तुतिकरण"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:652
+#, fuzzy
+msgid "presentation 2x1"
+msgstr "प्रस्तुतिकरण"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:653
+#, fuzzy
+msgid "presentation 2x2"
+msgstr "प्रस्तुतिकरण"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:654
+msgid "presentation bulleted list"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:656
+msgid "vertical space"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:662
+msgid "chooses which turtle to command"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:663
+msgid "logical AND operator"
+msgstr "लॉजिकल एंड ऑपरेटर"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:664
+#, fuzzy
+msgid "moves turtle along an arc"
+msgstr "चाप के साथ-साथ टर्टल को खिसकाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:665
+msgid "Sugar Journal audio object"
+msgstr "सुगर दैनिकी ऑडियो वस्तु"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:666
+#, fuzzy
+msgid "moves turtle backward"
+msgstr "टर्टल को पीछे खिसकाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:667
+#, fuzzy
+msgid "Palette of variable blocks"
+msgstr "चर खण्डों के पैलेट"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:668
+msgid "ycor of bottom of screen"
+msgstr "स्क्रीन के तल का वाय निर्देशांक"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:669
+#, fuzzy
+msgid "Variable 1 (numeric value)"
+msgstr "चर 1 (अंकीय मान)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:670
+#, fuzzy
+msgid "Variable 2 (numeric value)"
+msgstr "चर 2 (अंकीय मान)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:671
+msgid "named variable (numeric value)"
+msgstr "नामित चर (अंकीय मान)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:672
+msgid "displays Cartesian coordinates"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:673
+#, fuzzy
+msgid "clears the screen and reset the turtle"
+msgstr "स्क्रीन को साफ करें व टर्टल को रीसेट करें "
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:674
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:675
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr "वर्तमान पेन रंग रखता है (संख्या खण्ड की जगह प्रयोग में लिया जा सकता है)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:676
+msgid "Palette of pen colors"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:677
+msgid "places a comment in your code"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:679
+msgid "Sugar Journal description field"
+msgstr "सुगर दैनिकी वर्णन क्षेत्र"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:680
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr "शीर्ष अंकीय इनपुट (अंश) को तल अंकीय इनपुट (हर) से विभाजित करता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:681
+msgid "permanently deletes items in trash"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:683
+msgid "logical equal-to operator"
+msgstr "लॉजिकल इक्वल-टू ऑपरेटर"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:684
+#, fuzzy
+msgid "Palette of extra options"
+msgstr "अतिरिक्त विकल्प के पैलेट"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:685
+msgid "fills the background with (color, shade)"
+msgstr "पृष्ठभूमि को (रंग, छाया) से भरता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:686
+#, fuzzy
+msgid "Palette of flow operators"
+msgstr "फ्लो ऑपरेटर्स के पैलेट"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:687
+#, fuzzy
+msgid "loops forever"
+msgstr "हमेशा के लिए लूप करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:688
+#, fuzzy
+msgid "moves turtle forward"
+msgstr "टर्टल को आगे खिसकाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:689
+msgid "hides the Sugar toolbars"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:690
+msgid "logical greater-than operator"
+msgstr "लॉजिकल ग्रेटर-दैन ऑपरेटर"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:691
+#, fuzzy
+msgid "top of Action 1 stack"
+msgstr "कार्य स्टैक 1 का शीर्ष"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:692
+#, fuzzy
+msgid "top of Action 2 stack"
+msgstr "कार्य 2 स्टैक का शीर्ष"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:693
+msgid "top of nameable action stack"
+msgstr "नामित योग्य कार्य स्टैक का शीर्ष"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:694
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+"टर्टल का वर्तमान शीर्ष मान रखता है (संख्या खण्ड की जगह प्रयोग में लिया जा "
+"सकता है)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:695
+msgid "the canvas height"
+msgstr "केनवस की ऊँचाई"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:696
+#, fuzzy
+msgid "declutters canvas by hiding blocks"
+msgstr "खण्डों को छुपाकर कैनवास को व्यवस्थित करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:698
+#, fuzzy
+msgid "jogs stack right"
+msgstr "ढेर ऊपर ले जाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:699
+msgid "identity operator used for extending blocks"
+msgstr ""
+"वर्तमान खण्डों के विस्तार के लिए प्रयोग में लाए जाने वाले आइडेंटिटी ऑपरेटर"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:700
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr "यदि-तब-अन्यथा ऑपरेटर जो संख्या पैलेट से बूलिएं ऑपरेटर प्रयोग करता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:701
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr "यदि-तब ऑपरेटर जो संख्या पैलेट से बूलिएं ऑपरेटर प्रयोग करता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:702
+msgid "Sugar Journal media object"
+msgstr "सुगर दैनिकी मीडिया वस्तु"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:703
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr "कुंजीपट इनपुट के लिए क्वैरी (कुंजीपट खण्ड में परिणाम भंडारित होते हैं)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:704
+msgid "holds results of query-keyboard block"
+msgstr "क्वैरी-कुंजीपट खण्ड के परिणाम रखता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:705
+msgid "xcor of left of screen"
+msgstr "स्क्रीन के बाएँ का एक्स निर्देशांक"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:706
+#, fuzzy
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "टर्टल को घड़ी के विपरीत दिशा में घुमाएँ (कोण डिग्री में)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:707
+msgid "logical less-than operator"
+msgstr "लॉजिकल लेस-दैन ऑपरेटर"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:708
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "निम्न अंकीय इनपुट को शीर्ष अंकीय इनपुट से घटाता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:709
+msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:710
+msgid ""
+"a programmable block: used to add advanced single-valriable math equations, "
+"e.g., sin(x)"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:711
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:712
+msgid ""
+"a programmable block: used to add advanced multi-varialble math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:713
+msgid "displays next palette"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:714
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr "जर्नल में tamyblock.py मॉड्यूल में निहित कोड को चलाता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:715
+msgid "logical NOT operator"
+msgstr "लॉजिकल नॉट ऑपरेटर"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:716
+#, fuzzy
+msgid "Palette of numeric operators"
+msgstr "अंकीय ऑपरेटर्स के पैलेट"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:717
+msgid "used as numeric input in mathematic operators"
+msgstr "गणितीय ऑपरेटरों में अंकीय इनपुट के रूप में प्रयोग में आता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:718
+msgid "logical OR operator"
+msgstr "लॉजिकल ऑर ऑपरेटर"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:719
+msgid "changes the orientation of the palette of blocks"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:720
+#, fuzzy
+msgid "Turtle will draw when moved."
+msgstr "जब टर्टल को खिसकाया जाएगा तो ड्राइंग बनाएगा"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:721
+#, fuzzy
+msgid "Palette of pen commands"
+msgstr "पेन कमांडों के पैलेट"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:722
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+"वर्तमान पेन आकार रखता है (संख्या खण्ड की जगह प्रयोग में लिया जा सकता है)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:723
+#, fuzzy
+msgid "Turtle will not draw when moved."
+msgstr "जब टर्टल को खिसकाया जाएगा तो ड्राइंग नहीं बनाएगा"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:724
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:778
+msgid "presentation template: select Journal object (with description)"
+msgstr "प्रेजेंटेशन टैम्प्लेट: दैनिकी वस्तु चुनें (वर्णन सहित)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:725
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:779
+msgid "presentation template: select Journal object (no description)"
+msgstr "प्रेजेंटेशन टैम्प्लेट: दैनिकी वस्तु चुनें (वर्णन रहित)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:726
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:727
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:780
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:781
+msgid "presentation template: select two Journal objects"
+msgstr "प्रेजेंटेशन टैम्प्लेट: दो दैनिकी वस्तु चुनें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:728
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:782
+msgid "presentation template: select four Journal objects"
+msgstr "प्रेजेंटेशन टैम्प्लेट: चार दैनिकी वस्तु चुनें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:729
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:783
+#, fuzzy
+msgid "presentation template: list of bullets"
+msgstr "प्रेजेंटेशन टैम्प्लेट: सेवन बुलेट्स"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:730
+msgid "microphone input pitch"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:731
+#, fuzzy
+msgid "adds two alphanumeric inputs"
+msgstr "दो अंकीय इनपुट को जोड़ता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:732
+msgid "displays polar coordinates"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:733
+#, fuzzy
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "मूल्य को एफ़आईएलओ (फर्स्ट-इन लास्ट-आउट) ढेर में पुश करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:734
+#, fuzzy
+msgid "Palette of presentation templates"
+msgstr "प्रेजेन्टेशन टैम्प्लेटों के पैलेट"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:735
+msgid "prints value in status block at bottom of the screen"
+msgstr "स्क्रीन के तल में स्थिति खण्ड में  मूल्य छापता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:736
+#, fuzzy
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "मूल्य को एफ़आईएलओ (फर्स्ट-इन लास्ट-आउट) ढेर में पुश करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:737
+msgid "multiplies two numeric inputs"
+msgstr "दो अंकीय इनपुट का गुणन करता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:738
+#, fuzzy
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "मूल्य को एफ़आईएलओ (फर्स्ट-इन लास्ट-आउट) ढेर में पुश करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:739
+#, fuzzy
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+"न्यूनतम (बाएँ) तथा अधिकतम (दाएँ) मूल्यों के बीच रेंडम (बेतरतीब) संख्या "
+"लौटाता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:740
+msgid "modular (remainder) operator"
+msgstr "मॉड्यूलर (बाकी) आपरेटर"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:741
+#, fuzzy
+msgid "loops specified number of times"
+msgstr "निर्दिष्ट संख्या तक लूप करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:742
+msgid "sensor input resistance"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:743
+msgid "restores most recent blocks from trash"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:744
+msgid "restore all blocks from trash"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:745
+msgid "xcor of right of screen"
+msgstr "स्क्रीन के दाएँ का एक्स निर्देशांक"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:746
+#, fuzzy
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "टर्टल को घड़ी की दिशा में घुमाएँ (कोण डिग्री में)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:749
+msgid "bottom block in a collapsibe stack: click to collapse"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:750
+msgid "bottom block in a collapsed stack: click to open"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:751
+msgid "top of a collapsible stack"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:752
+msgid "top of a collapsed stack"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:753
+msgid "saves a picture to the Sugar Journal"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:754
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:755
+msgid "holds current scale value"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:756
+#, fuzzy
+msgid "sets color of the line drawn by the turtle"
+msgstr "टर्टल द्वारा लिखे जाने वाले लाइन का रंग सेट करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:757
+#, fuzzy
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "टर्टल का शीर्षक सेट करें (0 स्क्रीन के शीर्ष की तरफ है.)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:758
+#, fuzzy
+msgid "sets size of the line drawn by the turtle"
+msgstr "टर्टल द्वारा लिखे जाने वाले लाइन का आकार सेट करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:759
+#, fuzzy
+msgid "sets the scale of media"
+msgstr "मीडिया का स्केल सेट करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:760
+#, fuzzy
+msgid "sets shade of the line drawn by the turtle"
+msgstr "टर्टल द्वारा लिखे जाने वाले लाइन की छाया सेट करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:761
+#, fuzzy
+msgid "sets color of text drawn by the turtle"
+msgstr "टर्टल द्वारा लिखे जाने वाले पाठ का रंग सेट करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:762
+#, fuzzy
+msgid "sets size of text drawn by turtle"
+msgstr "टर्टल द्वारा लिखे जाने वाले पाठ का आकार सेट करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:763
+#, fuzzy
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+"टर्टल को एक्स निर्देशांक, वाय निर्देशांक; (0, 0) पर खिसकाता है जो कि स्क्रीन "
+"के केंद्र में है."
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:764
+msgid "holds current pen shade"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:765
+#, fuzzy
+msgid "draws text or show media from the Journal"
+msgstr "दैनिकी से पाठ ड्रा करें या मीडिया दिखाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:766
+msgid "restores hidden blocks"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:767
+#, fuzzy
+msgid "calculates square root"
+msgstr "वर्ग मूल गणना करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:768
+#, fuzzy
+msgid "invokes Action 1 stack"
+msgstr "कार्य 1 स्टैक को बुलाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:769
+#, fuzzy
+msgid "invokes Action 2 stack"
+msgstr "कार्य 2 स्टैक को बुलाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:770
+#, fuzzy
+msgid "invokes named action stack"
+msgstr "नामित कार्य स्टैक को बुलाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:771
+msgid "connects action to toolbar run buttons"
+msgstr "कार्य को औजारपट्टी बटनों से कनेक्ट करता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:773
+msgid "stops current action"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:774
+#, fuzzy
+msgid "stores numeric value in Variable 1"
+msgstr "अंकीय मान को चर 1 में भंडारित करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:775
+#, fuzzy
+msgid "stores numeric value in Variable 2"
+msgstr "अंकीय मान को चर 2 में भंडारित करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:776
+#, fuzzy
+msgid "stores numeric value in named variable"
+msgstr "अंकीय मान को नामित चर में भंडारित करें"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:777
+msgid "string value"
+msgstr "स्ट्रिंग मान"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:784
+msgid "holds current text color (can be used in place of a number block)"
+msgstr "वर्तमान पाठ रंग रखता है (संख्या खण्ड की जगह प्रयोग में लिया जा सकता है)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:785
+msgid "holds current text size (can be used in place of a number block)"
+msgstr ""
+"वर्तमान पाठ आकार रखता है (संख्या खण्ड की जगह प्रयोग में लिया जा सकता है)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:786
+msgid "ycor of top of screen"
+msgstr "स्क्रीन के शीर्ष का वाय निर्देशांक"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:787
+msgid "Trashcan"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:788
+#, fuzzy
+msgid "Palette of turtle commands"
+msgstr "टर्टल कमांडों के पैलेट"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:789
+#, fuzzy
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr "यदि-तब-अन्यथा ऑपरेटर जो संख्या पैलेट से बूलिएं ऑपरेटर प्रयोग करता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:790
+msgid "sensor voltage"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:791
+msgid "microphone input volume"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:792
+#, fuzzy
+msgid "jogs stack down"
+msgstr "ढेर नीचे ले जाएँ"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:793
+msgid "pauses program execution a specified number of seconds"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:794
+#, fuzzy
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr "यदि-तब-अन्यथा ऑपरेटर जो संख्या पैलेट से बूलिएं ऑपरेटर प्रयोग करता है"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:795
+msgid "the canvas width"
+msgstr "केनवस की चौड़ाई"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:796
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"टर्टल का एक्स-निर्देशांक रखता है (संख्या खण्ड की जगह प्रयोग में लिया जा सकता "
+"है)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:797
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"टर्टल का एक्स-निर्देशांक रखता है (संख्या खण्ड की जगह प्रयोग में लिया जा सकता "
+"है)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:856
+msgid "bulleted list"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:871
+msgid "picture"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:887
+msgid "2×2 pictures"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:918
+msgid "2×1 pictures"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:949
+msgid "1×2 pictures"
+msgstr ""
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:980
+msgid "1×1 picture"
+msgstr ""
+
+#~ msgid "name"
+#~ msgstr "नाम"
+
+#~ msgid "holds current scale value (can be used in place of a number block)"
+#~ msgstr ""
+#~ "टर्टल का वर्तमान स्केल मान रखता है (संख्या खण्ड की जगह प्रयोग में लिया जा "
+#~ "सकता है)"
+
+#~ msgid "holds current pen shade (can be used in place of a number block)"
+#~ msgstr "वर्तमान पेन शेड रखता है (संख्या खण्ड की जगह प्रयोग में लिया जा सकता है)"
+
+#~ msgid ""
+#~ "a programmable block: add your own math equation in the block, e.g., sin(x)"
+#~ msgstr ""
+#~ "प्रोग्राम किया जाने वाला खण्ड: खण्ड में अपना स्वयं का गणित समीकरण जोडें, "
+#~ "जैसे कि, sin(x)"
+
+#~ msgid "pop value off FILO"
+#~ msgstr "एफआईएलओ का मूल्य पॉप करें"
+
+#~ msgid "show FILO in status block"
+#~ msgstr "स्थिति खण्ड में एफ़आईएलओ दिखाएँ"
+
+#~ msgid "empty FILO"
+#~ msgstr "रिक्त एफ़आईएलओ"
+
+#~ msgid "wait specified number of seconds"
+#~ msgstr "निर्धारित सेकण्डों तक इंतजार करें"
+
+#~ msgid "do not continue current action"
+#~ msgstr "वर्तमान क्रिया को जारी न रखें"
+
+#~ msgid "<Alt>p"
+#~ msgstr "<Alt>p"
+
+#~ msgid "<Alt>b"
+#~ msgstr "<Alt>b"
+
+#~ msgid "<Alt>e"
+#~ msgstr "<Alt>e"
+
+#~ msgid "<Alt>r"
+#~ msgstr "<Alt>r"
+
+#~ msgid "<Alt>w"
+#~ msgstr "<Alt>w"
+
+#~ msgid "<Alt>s"
+#~ msgstr "<Alt>s"
+
+#~ msgid "load my block"
+#~ msgstr "मेरा वाला खण्ड लोड करें"
+
+#~ msgid "<Alt>o"
+#~ msgstr "<Alt>o"
+
+#~ msgid "stack 2"
+#~ msgstr "स्टेक 2"
+
+#~ msgid "stack 1"
+#~ msgstr "स्टेक 1"
+
+#~ msgid "Keyboard"
+#~ msgstr "कुंजीपट"
+
+#~ msgid "Flow"
+#~ msgstr "प्रवाह"
+
+#~ msgid "else"
+#~ msgstr "अन्यथा"
+
+#~ msgid "My Blocks"
+#~ msgstr "मेरे खण्डों"
+
+#~ msgid "Numbers"
+#~ msgstr "संख्याएँ"
+
+#~ msgid "Templates"
+#~ msgstr "टैम्प्लेट"
+
+#~ msgid "Extras"
+#~ msgstr "अतिरिक्त"
+
+#~ msgid "read key"
+#~ msgstr "कुंजी पढ़ें"
+
+#~ msgid "clean"
+#~ msgstr "साफ"
+
+#~ msgid "setyx"
+#~ msgstr "सेटyx"
+
+#~ msgid "sound"
+#~ msgstr "ध्वनि"
+
+#~ msgid "text color"
+#~ msgstr "पाठ रंग"
+
+#~ msgid "Pen"
+#~ msgstr "पेन"
