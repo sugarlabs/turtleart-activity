@@ -512,16 +512,17 @@ class LogoCode:
                 return ['%nothing%']
         else:
             return ['%nothing%']
-        for i in range(1, len(blk.connections)):
-            b = blk.connections[i]        
-            dock = blk.docks[i]
-            if len(dock)>4: # There could be a '(', ')', '[' or ']'.
-                for c in dock[4]:
-                    code.append(c)
-            if b is not None:
-                code.extend(self.blocks_to_code(b))
-            elif blk.docks[i][0] not in ['flow', 'unavailable']:
-                code.append('%nothing%')
+        if blk.connections is not None and len(blk.connections) > 0:
+            for i in range(1, len(blk.connections)):
+                b = blk.connections[i]        
+                dock = blk.docks[i]
+                if len(dock)>4: # There could be a '(', ')', '[' or ']'.
+                    for c in dock[4]:
+                        code.append(c)
+                if b is not None:
+                    code.extend(self.blocks_to_code(b))
+                elif blk.docks[i][0] not in ['flow', 'unavailable']:
+                    code.append('%nothing%')
         return code
     
     def setup_cmd(self, string):
