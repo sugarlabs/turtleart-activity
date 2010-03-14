@@ -56,6 +56,7 @@ from taexporthtml import save_html
 from taexportlogo import save_logo
 from tautils import data_to_file, data_to_string, data_from_string, get_path
 from tawindow import TurtleArtWindow
+from taturtle import Turtle
 
 SERVICE = 'org.laptop.TurtleArtActivity'
 IFACE = SERVICE
@@ -460,7 +461,7 @@ class TurtleArtActivity(activity.Activity):
             f.write(code)
             f.close()
         except Exception, e:
-            print("Couldn't dump code to view source: " + str(e))
+            _logger.error("Couldn't dump code to view source: " + str(e))
         return tafile
 
     # Sharing-related callbacks
@@ -473,7 +474,9 @@ class TurtleArtActivity(activity.Activity):
             return
 
         self.initiating = True
-        self.waiting_for_blocks = False
+        self.waiting_for_turtles = False
+        self.turtle_dictionary = \
+            {profile.get_nick_name():profile.get_color().to_string()}
         _logger.debug('I am sharing...')
 
         self.conn = self._shared_activity.telepathy_conn
@@ -496,8 +499,6 @@ class TurtleArtActivity(activity.Activity):
             return
 
         self.initiating = False
-        _logger.debug('I joined a shared activity.')
-
         self.conn = self._shared_activity.telepathy_conn
         self.tubes_chan = self._shared_activity.telepathy_tubes_chan
         self.text_chan = self._shared_activity.telepathy_text_chan
@@ -511,8 +512,8 @@ class TurtleArtActivity(activity.Activity):
             reply_handler=self._list_tubes_reply_cb, 
             error_handler=self._list_tubes_error_cb)
 
-        # joiner should request current state from sharer
-        self.waiting_for_blocks = True
+        # Joiner should request current state from sharer.
+        self.waiting_for_turtles = True
 
     def _list_tubes_reply_cb(self, tubes):
         for tube_info in tubes:
@@ -536,75 +537,137 @@ class TurtleArtActivity(activity.Activity):
                 self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES], id, \
                 group_iface=self.text_chan[telepathy.CHANNEL_INTERFACE_GROUP])
 
-            # we'll use a chat tube to send serialized stacks back and forth
+            # We'll use a chat tube to send serialized stacks back and forth.
             self.chattube = ChatTube(tube_conn, self.initiating, \
                 self.event_received_cb)
 
-            # now that we have the tube, we can ask for an initialization
-            if self.waiting_for_blocks:
-                self.send_event("i")
+            # Now that we have the tube, we can ask for the turtle dictionary.
+            if self.waiting_for_turtles:
+                _logger.debug("Sending a request for the turtle dictionary")
+                # we need to send our own nick and colors
+                colors =  profile.get_color().to_string()
+                _logger.debug("t|"+data_to_string([self.tw.nick,colors]))
+                self.send_event("t|%s" % \
+                                (data_to_string([self.tw.nick,colors])))
 
     def event_received_cb(self, text):
         """ Handle the receiving of events in share """
+        _logger.debug(text)
 
-        """ DEPRECIATED
-        Events are sent as a tuple
-            cmd:data
-        where cmd is a mouse or keyboard event and data are x,y coordinates
-        or a keysroke
         """
-        # maybe we can use a stack to share events to new-comers?
-        # self._share += "text + "\n"
-        if text[0] == 'p': # button press
-            e, x, y, mask = text.split(":")
-            # _logger.debug("receiving button press: "+x+" "+y+" "+mask)
-            if mask == 'T':
-                self.tw.button_press(True, int(x), int(y), False)
-            else:
-                self.tw.button_press(False, int(x), int(y), False)
-        elif text[0] == 'r': # block release
-            e, x, y = text.split(":")
-            # _logger.debug("receiving button release: " + x + " " + y)
-            self.tw.button_release(int(x), int(y), False)
-        elif text[0] == 'm': # mouse move
-            e, x, y = text.split(":")
-            _logger.debug("receiving move: " + x + " " + y)
-            self.tw.mouse_move(0, 0, False, int(x), int(y))
-        elif text[0] == 'k': # typing
-            e, mask, keyname = text.split(":", 3)
-            # _logger.debug("recieving key press: " + mask + " " + keyname)
-            if mask == 'T':
-                self.tw.key_press(True, keyname, False)
-            else:
-                self.tw.key_press(False, keyname, False)
-        elif text[0] == 'i': # request for current state
-            # sharer should send current state to joiner
+        Events are sent as a tuple, nick|cmd, where nick is a turle name
+        and cmd is a turtle event. Everyone gets the turtle dictionary from
+        the sharer and watches for 't' events, which indicate that a new
+        turtle has joined.
+        
+        """
+        # Save active Turtle
+        save_active_turtle = self.tw.active_turtle
+        if text[0] == 't': # request for turtle dictionary
+            e = text.split("|", 2)
+            text = e[1]
+            if text > 0:
+                [nick, colors] = data_from_string(text)
+                if nick != self.tw.nick:
+                    # There may not be a turtle dictionary.
+                    if hasattr(self, "turtle_dictionary"):
+                        self.turtle_dictionary[nick] = colors
+                    else:
+                        self.turtle_dictionary = {nick:colors}
+                    # Add new turtle for the joiner.
+                    self.tw.canvas.set_turtle(nick, colors)
+            # Sharer should send turtle dictionary.
             if self.initiating:
-                _logger.debug("serialize the project and send to joiner")
-                text = data_to_string(self.tw.assemble_data_to_save(True, True))
-                self.send_event("I:" + text)
-                self.tw.show_palette()
-        elif text[0] == 'I': # receiving current state
-            if self.waiting_for_blocks:
-                _logger.debug("receiving project from sharer")
-                e, text = text.split(":", 2)
+                text = data_to_string(self.turtle_dictionary)
+                self.send_event("T|" + text)
+        elif text[0] == 'T': # Receiving the turtle dictionary.
+            if self.waiting_for_turtles:
+                e = text.split("|", 2)
+                text = e[1]
                 if len(text) > 0:
-                    self.tw.new_project()
-                    self.tw.process_data(data_from_string(text))
-                # all caught up
-                self.waiting_for_blocks = False
+                    self.turtle_dictionary = data_from_string(text)
+                    for nick in self.turtle_dictionary:
+                        if nick != self.tw.nick:
+                            colors = self.turtle_dictionary[nick]
+                            # add new turtle for the joiner
+                            self.tw.canvas.set_turtle(nick, colors)
+                self.waiting_for_turtles = False
+        elif text[0] == 'f': # move a turtle forward
+            e = text.split("|", 2)
+            text = e[1]
+            if len(text) > 0:
+                 [nick, x] = data_from_string(text)
+                 if nick != self.tw.nick:
+                     self.tw.canvas.set_turtle(nick)
+                     self.tw.canvas.forward(x, False)
+        elif text[0] == 'a': # move a turtle in an arc
+            e = text.split("|", 2)
+            text = e[1]
+            if len(text) > 0:
+                 [nick, [a, r]] = data_from_string(text)
+                 if nick != self.tw.nick:
+                     self.tw.canvas.set_turtle(nick)
+                     self.tw.canvas.arc(a, r, False)
+        elif text[0] == 'r': # rotate turtle
+            e = text.split("|", 2)
+            text = e[1]
+            if len(text) > 0:
+                 [nick, h] = data_from_string(text)
+                 if nick != self.tw.nick:
+                     self.tw.canvas.set_turtle(nick)
+                     self.tw.canvas.seth(h, False)
+        elif text[0] == 'x': # set turtle xy position
+            e = text.split("|", 2)
+            text = e[1]
+            if len(text) > 0:
+                 [nick, [x, y]] = data_from_string(text)
+                 if nick != self.tw.nick:
+                     self.tw.canvas.set_turtle(nick)
+                     self.tw.canvas.setxy(x, y, False)
+        elif text[0] == 'c': # set turtle pen color
+            e = text.split("|", 2)
+            text = e[1]
+            if len(text) > 0:
+                 [nick, x] = data_from_string(text)
+                 if nick != self.tw.nick:
+                     self.tw.canvas.set_turtle(nick)
+                     self.tw.canvas.setcolor(x, False)
+        elif text[0] == 's': # set turtle pen shade
+            e = text.split("|", 2)
+            text = e[1]
+            if len(text) > 0:
+                 [nick, x] = data_from_string(text)
+                 if nick != self.tw.nick:
+                     self.tw.canvas.set_turtle(nick)
+                     self.tw.canvas.setshade(x, False)
+        elif text[0] == 'w': # set turtle pen width
+            e = text.split("|", 2)
+            text = e[1]
+            if len(text) > 0:
+                 [nick, x] = data_from_string(text)
+                 if nick != self.tw.nick:
+                     self.tw.canvas.set_turtle(nick)
+                     self.tw.canvas.setpensize(x, False)
+        elif text[0] == 'p': # set turtle pen state
+            e = text.split("|", 2)
+            text = e[1]
+            if len(text) > 0:
+                 [nick, x] = data_from_string(text)
+                 if nick != self.tw.nick:
+                     self.tw.canvas.set_turtle(nick)
+                     self.tw.canvas.setpen(x, False)
+        # Restore active Turtle
+        self.tw.canvas.set_turtle(self.tw.turtles.get_turtle_key(
+                                                           save_active_turtle))
 
     def send_event(self, entry):
         """ Send event through the tube. """
-        # nick = profile.get_nick_name()
-        # nick = nick.upper()
         if hasattr(self, 'chattube') and self.chattube is not None:
             self.chattube.SendText(entry)
 
     def __visibility_notify_cb(self, window, event):
         """ Callback method for when the activity's visibility changes. """
         if event.state == gtk.gdk.VISIBILITY_FULLY_OBSCURED:
-            # _logger.debug("I am not visible so I should free the audio")
             self.tw.lc.ag = None
         elif event.state in \
             [gtk.gdk.VISIBILITY_UNOBSCURED, gtk.gdk.VISIBILITY_PARTIAL]:
@@ -949,8 +1012,7 @@ class TurtleArtActivity(activity.Activity):
             if FILE.readline() == version:
                 newversion = False
         except:
-            _logger.debug("Writing new version data...")
-            _logger.debug("...and creating a tamyblock.py Journal entry")
+            _logger.debug("Creating a tamyblock.py Journal entry")
 
         # Make sure there is a copy of tamyblock.py in the Journal
         if newversion:
@@ -1044,7 +1106,7 @@ class TurtleArtActivity(activity.Activity):
                     tar_fd.close()
             # Otherwise, assume it is a .ta file
             else:
-                print "trying to open a .ta file:" + file_path
+                _logger.debug("trying to open a .ta file:" + file_path)
                 self.tw.load_files(file_path, run_it)
   
             # run the activity

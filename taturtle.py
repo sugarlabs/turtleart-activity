@@ -43,14 +43,17 @@ class Turtles:
         self.sprite_list = sprite_list
         self.default_pixbufs = []
 
-    def get_turtle(self, k, append=False):
+    def get_turtle(self, k, append=False, colors=None):
         """ Find a turtle """
         if self.dict.has_key(k):
             return self.dict[k]
         elif append is False:
             return None
         else:
-            Turtle(self, k)
+            if colors == None:
+                Turtle(self, k)
+            else:
+                Turtle(self, k, colors.split(','))
             return self.dict[k]
 
     def get_turtle_key(self, turtle):

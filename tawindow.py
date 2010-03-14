@@ -84,10 +84,12 @@ class TurtleArtWindow():
             parent.show_all()
             self.running_sugar = True
             self.activity = parent
+            self.nick = profile.get_nick_name()
         else:
             self.window.show_all()
             self.running_sugar = False
             self.activity = None
+            self.nick = None
         self._setup_events()
         self.keypress = ""
         self.keyvalue = 0
@@ -217,7 +219,7 @@ class TurtleArtWindow():
                 self.toolbar_shapes[_name].type = 'toolbar'
             self.toolbar_shapes['stopiton'].hide()
 
-    def _sharing(self):
+    def sharing(self):
         """ Is a chattube available for sharing? """
         if self.running_sugar and hasattr(self.activity, 'chattube') and\
            self.activity.chattube is not None:
@@ -635,11 +637,6 @@ class TurtleArtWindow():
         self.window.grab_focus()
         x, y = xy(event)
         self.button_press(event.get_state()&gtk.gdk.CONTROL_MASK, x, y)
-        if self._sharing():
-            if event.get_state()&gtk.gdk.CONTROL_MASK:
-                self.activity.send_event("p:%d:%d:T" % (x, y))
-            else:
-                self.activity.send_event("p:%d:%d:F" % (x, y))
         return True
 
     def button_press(self, mask, x, y, verbose=False):
@@ -1206,21 +1203,9 @@ class TurtleArtWindow():
         """ Button release """
         x, y = xy(event)
         self.button_release(x, y)
-        if self._sharing():
-            self.activity.send_event("r:" + str(x) + ":" + str(y))
         return True
 
     def button_release(self, x, y, verbose=False):
-        if self.dx != 0 or self.dy != 0:
-            if self._sharing():
-                if verbose:
-                    print "processing move: %d %d" % (self.dx, self.dy)
-                self.activity.send_event("m:%d:%d" % (self.dx, self.dy))
-                self.dx = 0
-                self.dy = 0
-        if verbose:
-            print "processing remote button release: %d, %d" % (x, y)
-
         # We may have been moving the turtle
         if self.selected_turtle is not None:
             (tx, ty) = self.selected_turtle.get_xy()
@@ -1526,9 +1511,6 @@ class TurtleArtWindow():
             alt_mask = False
             alt_flag = 'F'
         self._key_press(alt_mask, keyname, keyunicode)
-        if keyname is not None and self._sharing():
-            self.activity.send_event("k:%s:%s:%s" % (alt_flag, keyname,
-                                                      str(keyunicode)))
         return keyname
 
     def _key_press(self, alt_mask, keyname, keyunicode, verbose=False):
@@ -1541,10 +1523,7 @@ class TurtleArtWindow():
 
         # First, process Alt keys.
         if alt_mask and self.selected_blk is not None:
-            if keyname == "i" and self._sharing():
-                self.activity.waiting_for_blocks = True
-                self.activity.send_event("i") # request sync for sharing
-            elif keyname == "p":
+            if keyname == "p":
                 self.hideshow_button()
             elif keyname == 'q':
                 exit()

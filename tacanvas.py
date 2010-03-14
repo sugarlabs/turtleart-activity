@@ -23,9 +23,8 @@ import gtk
 from math import sin, cos, pi
 from sprites import Sprite
 from tasprite_factory import SVG
-from tautils import image_to_base64
+from tautils import image_to_base64, data_to_string
 import pango
-
 from taconstants import CANVAS_LAYER, DEFAULT_TURTLE
 
 def wrap100(n):
@@ -98,39 +97,38 @@ class TurtleGraphics:
         self.svg = SVG()
         self.svg.set_fill_color('none')
         self.tw.svg_string = ''
-        self.clearscreen()
+        self.clearscreen(False)
 
-    def clearscreen(self):
+    def clearscreen(self, share=True):
         rect = gtk.gdk.Rectangle(0, 0, self.width, self.height)
         self.gc.set_foreground(self.bgcolor)
         self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
         self.invalt(0, 0, self.width, self.height)
-        self.setpensize(5)
-        self.setcolor(0)
+        self.setpensize(5, share)
+        self.setcolor(0, share)
         self.settextcolor(70)
         self.settextsize(48)
-        self.setshade(50)
-        self.pendown = True
+        self.setshade(50, share)
+        self.setpen(True, share)
         for turtle_key in iter(self.tw.turtles.dict):
             self.set_turtle(turtle_key)
             self.tw.active_turtle.set_color(0)
             self.tw.active_turtle.set_shade(50)
             self.tw.active_turtle.set_pen_size(5)
             self.tw.active_turtle.set_pen_state(True)
-            self.xcor, self.ycor, self.heading = 0, 0, 0
-            self.move_turtle()
-            self.turn_turtle()
+            self.seth(0, share)
+            self.setxy(0, 0, share)
         self.set_turtle(DEFAULT_TURTLE)
         self.tw.svg_string = ''
         self.svg.reset_min_max()
 
-    def forward(self, n):
-        n *= self.tw.coord_scale
+    def forward(self, n, share=True):
+        nn = n*self.tw.coord_scale
         self.gc.set_foreground(self.fgcolor)
         oldx, oldy = self.xcor, self.ycor
         try:
-            self.xcor += n*sin(self.heading*DEGTOR)
-            self.ycor += n*cos(self.heading*DEGTOR)
+            self.xcor += nn*sin(self.heading*DEGTOR)
+            self.ycor += nn*cos(self.heading*DEGTOR)
         except:
             pass
         if self.pendown:
@@ -142,14 +140,20 @@ class TurtleGraphics:
                                                    self.height/2-self.ycor)
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
+        if self.tw.sharing() and share:
+            self.tw.activity.send_event("f|%s" % \
+                (data_to_string([self.tw.nick, int(n)])))
 
-    def seth(self, n):
+    def seth(self, n, share=True):
         try:
             self.heading = n
         except:
             pass
         self.heading %= 360
         self.turn_turtle()
+        if self.tw.sharing() and share:
+            self.tw.activity.send_event("r|%s" % \
+                (data_to_string([self.tw.nick, int(self.heading)])))
 
     def right(self, n):
         try:
@@ -158,8 +162,11 @@ class TurtleGraphics:
             pass
         self.heading %= 360
         self.turn_turtle()
+        if self.tw.sharing():
+            self.tw.activity.send_event("r|%s" % \
+                (data_to_string([self.tw.nick, int(self.heading)])))
 
-    def arc(self, a, r):
+    def arc(self, a, r, share=True):
         self.gc.set_foreground(self.fgcolor)
         r *= self.tw.coord_scale
         try:
@@ -171,6 +178,9 @@ class TurtleGraphics:
             pass
         self.move_turtle()
         self.turn_turtle()
+        if self.tw.sharing() and share:
+            self.tw.activity.send_event("a|%s" % \
+                (data_to_string([self.tw.nick, [int(a),int(r)]])))
 
     def rarc(self, a, r):
         if r < 0:
@@ -236,7 +246,7 @@ class TurtleGraphics:
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
 
-    def setxy(self, x, y):
+    def setxy(self, x, y, share=True):
         x *= self.tw.coord_scale
         y *= self.tw.coord_scale
         try:
@@ -244,8 +254,11 @@ class TurtleGraphics:
         except:
             pass
         self.move_turtle()
+        if self.tw.sharing() and share:
+            self.tw.activity.send_event("x|%s" % \
+                (data_to_string([self.tw.nick, [int(x), int(y)]])))
 
-    def setpensize(self, ps):
+    def setpensize(self, ps, share=True):
         try:
             if ps < 0:
                 ps = 0
@@ -256,8 +269,11 @@ class TurtleGraphics:
         self.gc.set_line_attributes(int(self.pensize*self.tw.coord_scale),
                      gtk.gdk.LINE_SOLID, gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
         self.svg.set_stroke_width(self.pensize)
+        if self.tw.sharing() and share:
+            self.tw.activity.send_event("w|%s" % \
+                (data_to_string([self.tw.nick, int(ps)])))
 
-    def setcolor(self, c):
+    def setcolor(self, c, share=True):
         try:
             self.color = c
             self.tcolor = c
@@ -266,6 +282,9 @@ class TurtleGraphics:
         self.tw.active_turtle.set_color(c)
         self.set_fgcolor()
         self.set_textcolor()
+        if self.tw.sharing() and share:
+            self.tw.activity.send_event("c|%s" % \
+                (data_to_string([self.tw.nick, int(c)])))
 
     def settextcolor(self, c):
         try:
@@ -280,7 +299,7 @@ class TurtleGraphics:
         except:
             pass
 
-    def setshade(self, s):
+    def setshade(self, s, share=True):
         try:
             self.shade = s
         except:
@@ -288,16 +307,21 @@ class TurtleGraphics:
         self.tw.active_turtle.set_shade(s)
         self.set_fgcolor()
         self.set_textcolor()
+        if self.tw.sharing() and share:
+            self.tw.activity.send_event("s|%s" % \
+                (data_to_string([self.tw.nick, int(s)])))
 
     def fillscreen(self, c, s):
         oldc, olds = self.color, self.shade
-        self.setcolor(c); self.setshade(s)
+        self.setcolor(c, False)
+        self.setshade(s, False)
         rect = gtk.gdk.Rectangle(0, 0, self.width, self.height)
         self.gc.set_foreground(self.fgcolor)
         self.bgrgb = self.fgrgb[:]
         self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
         self.invalt(0, 0, self.width, self.height)
-        self.setcolor(oldc); self.setshade(olds)
+        self.setcolor(oldc, False)
+        self.setshade(olds, False)
         self.tw.svg_string = ''
         self.svg.reset_min_max()
 
@@ -319,8 +343,11 @@ class TurtleGraphics:
         r, g, b = calc_shade(r, sh), calc_shade(g, sh), calc_shade(b, sh)
         self.tw.textcolor = self.cm.alloc_color(r, g, b)
 
-    def setpen(self, bool):
+    def setpen(self, bool, share=True):
         self.pendown = bool
+        if self.tw.sharing() and share:
+            self.tw.activity.send_event("p|%s" % \
+                (data_to_string([self.tw.nick, bool])))
 
     def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path):
         w *= self.tw.coord_scale
@@ -390,25 +417,22 @@ class TurtleGraphics:
                                  int(h))
         self.tw.area.invalidate_rect(rect, False)
 
-    def set_turtle(self, k):
+    def set_turtle(self, k, colors=None):
         if not self.tw.turtles.dict.has_key(k):
             # if it is a new turtle, start it in the center of the screen
-            self.tw.active_turtle = self.tw.turtles.get_turtle(k, True)
-            self.xcor = 0
-            self.ycor = 0
-            self.heading = 0
-            self.move_turtle()
-            self.turn_turtle()
+            self.tw.active_turtle = self.tw.turtles.get_turtle(k, True, colors)
+            self.seth(0, False)
+            self.setxy(0, 0, False)
             self.tw.active_turtle.set_pen_state(True)
         self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
         tx, ty = self.tw.active_turtle.get_xy()
         self.xcor = tx + 30 - self.width/2
         self.ycor = self.height/2 - ty - 30
         self.heading = self.tw.active_turtle.get_heading()
-        self.setcolor(self.tw.active_turtle.get_color())
-        self.setshade(self.tw.active_turtle.get_shade())
-        self.setpensize(self.tw.active_turtle.get_pen_size())
-        self.pendown = self.tw.active_turtle.get_pen_state()
+        self.setcolor(self.tw.active_turtle.get_color(), False)
+        self.setshade(self.tw.active_turtle.get_shade(), False)
+        self.setpensize(self.tw.active_turtle.get_pen_size(), False)
+        self.setpen(self.tw.active_turtle.get_pen_state(), False)
 
     def svg_close(self):
         if self.tw.svg_string == '':
