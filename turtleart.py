@@ -201,9 +201,16 @@ class TurtleMain():
         vbox.pack_start(menu_bar, False, False, 2)
         menu_bar.show()
 
+        sw = gtk.ScrolledWindow()
+        sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        sw.show()
         canvas = gtk.DrawingArea()
-        vbox.pack_end(canvas, True, True)
+        width = gtk.gdk.screen_width() * 2
+        height = gtk.gdk.screen_height() * 2
+        canvas.set_size_request(width, height) 
+        sw.add_with_viewport(canvas)
         canvas.show()
+        vbox.pack_end(sw, True, True)
 
         menu_bar.append(activity_menu)
         menu_bar.append(edit_menu)
