@@ -19,7 +19,7 @@
 #THE SOFTWARE.
 
 IGNORE = ["hideblocks", "showblocks", "fullscreen", "polar", "cartesian",
-          "sandwichbottom"]
+          "sandwichbottom", "id"]
 
 import math
 from tautils import walk_stack
@@ -40,9 +40,9 @@ make \"g (:g * :s) \r\
 make \"b (:b * :s) \r\
 ] [ \
 make \"s (:s * 0.9) \r\
-make \"r (:r + ((100-:r) * :s)) \r\
-make \"g (:g + ((100-:g) * :s)) \r\
-make \"b (:b + ((100-:b) * :s)) \r\
+make \"r (:r + ((99-:r) * :s)) \r\
+make \"g (:g + ((99-:g) * :s)) \r\
+make \"b (:b + ((99-:b) * :s)) \r\
 ] \
 setpalette :i (list :r :g :b) \r\
 end \r\
@@ -78,27 +78,27 @@ setpencolor :color + 8 \r\
 end \r\
 \
 make \"colors [ \
-100 0 0 100 5 0 100 10 0 100 15 0 100 20 0 \
-100 25 0 100 30 0 100 35 0 100 40 0 100 45 0 \
-100 50 0 100 55 0 100 60 0 100 65 0 100 70 0 \
-100 75 0 100 80 0 100 85 0 100 90 0 100 95 0 \
-100 100 0 90 100 0 80 100 0 70 100 0 60 100 0 \
-50 100 0 40 100 0 30 100 0 20 100 0 10 100 0 \
-0 100 0 0 100 5 0 100 10 0 100 15 0 100 20 0 \
-100 25 0 100 30 0 100 35 0 100 40 0 100 45 \
-0 100 50 0 100 55 0 100 60 0 100 65 0 100 70 \
-0 100 75 0 100 80 0 100 85 0 100 90 0 100 95 \
-0 100 100 0 95 100 0 90 100 0 85 100 0 80 100 \
-0 75 100 0 70 100 0 65 100 0 60 100 0 55 100 \
-0 50 100 0 45 100 0 40 100 0 35 100 0 30 100 \
-0 25 100 0 20 100 0 15 100 0 10 100 0 5 100 \
-0 0 100 5 0 100 10 0 100 15 0 100 20 0 100 25 \
-0 100 30 0 100 35 0 100 40 0 100 45 0 100 \
-50 0 100 55 0 100 60 0 100 65 0 100 70 0 100 \
-75 0 100 80 0 100 85 0 100 90 0 100 95 0 100 \
-100 0 100 100 0 90 100 0 80 100 0 70 100 0 60 \
-100 0 50 100 0 40 100 0 30 100 0 20 100 0 10] \r\
-make \"shade 50 \r\
+99  0  0 99  5  0 99 10  0 99 15  0 99 20  0 \
+99 25  0 99 30  0 99 35  0 99 40  0 99 45  0 \
+99 50  0 99 55  0 99 60  0 99 65  0 99 70  0 \
+99 75  0 99 80  0 99 85  0 99 90  0 99 95  0 \
+99 99  0 90 99  0 80 99  0 70 99  0 60 99  0 \
+50 99  0 40 99  0 30 99  0 20 99  0 10 99  0 \
+ 0 99  0  0 99  5  0 99 10  0 99 15  0 99 20 \
+ 0 99 25  0 99 30  0 99 35  0 99 40  0 99 45 \
+ 0 99 50  0 99 55  0 99 60  0 99 65  0 99 70 \
+ 0 99 75  0 99 80  0 99 85  0 99 90  0 99 95 \
+ 0 99 99  0 95 99  0 90 99  0 85 99  0 80 99 \
+ 0 75 99  0 70 99  0 65 99  0 60 99  0 55 99 \
+ 0 50 99  0 45 99  0 40 99  0 35 99  0 30 99 \
+ 0 25 99  0 20 99  0 15 99  0 10 99  0  5 99 \
+ 0  0 99  5  0 99 10  0 99 15  0 99 20  0 99 \
+25  0 99 30  0 99 35  0 99 40  0 99 45  0 99 \
+50  0 99 55  0 99 60  0 99 65  0 99 70  0 99 \
+75  0 99 80  0 99 85  0 99 90  0 99 95  0 99 \
+99  0 99 99  0 90 99  0 80 99  0 70 99  0 60 \
+99  0 50 99  0 40 99  0 30 99  0 20 99  0 10] \r\
+make \"shade  50 \r\
 tasetshade :shade \r"
 
     bs = tw.just_blocks()
@@ -112,10 +112,12 @@ tasetshade :shade \r"
     setcolor = False
     setxy = False
     pensize = False
+    setpensize = False
     arc = False
     heap = False
     write = False
     minus = False
+    division = False
     image = False
 
     """
@@ -240,6 +242,9 @@ tasetshade :shade \r"
                 elif d == "pensize":
                     pensize = True
                     this_stack += "tapensize"
+                elif d == "setpensize":
+                    setpensize = True
+                    this_stack += "tasetpensize"
                 elif d == "arc":
                     arc = True
                     this_stack += "taarc"
@@ -284,8 +289,18 @@ tasetshade :shade \r"
                     this_stack += "label"
                     show = 1
                 elif d == "minus2":
-                    this_stack == "taminus"
+                    this_stack += "taminus"
                     minus = True
+                elif d == "division":
+                    this_stack += "quotient"
+                elif d == "lpos":
+                    this_stack += str(-tw.canvas.width/(tw.coord_scale*2))
+                elif d == "rpos":
+                    this_stack += str(tw.canvas.width/(tw.coord_scale*2))
+                elif d == "bpos":
+                    this_stack += str(-tw.canvas.height/(tw.coord_scale*2))
+                elif d == "tpos":
+                    this_stack += str(tw.canvas.height/(tw.coord_scale*2))
                 elif d in IGNORE:
                     this_stack += " "
                 elif show == 1 and d[0:2] == "#s":
@@ -315,6 +330,8 @@ tasetshade :shade \r"
                "tasetshade :shade\rsetbackground :color\rend\r" + code
     if setcolor: # Load the Turtle Art color palette.
         code = color_processing + code
+    if setpensize: # Set int of pensize
+        code = "to tasetpensize :a\rsetpensize round :a\rend\r" + code
     if pensize: # Return only the first argument.
         code = "to tapensize\routput first round pensize\rend\r" + code
     if setxy: # Swap and round arguments

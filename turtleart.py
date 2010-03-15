@@ -31,6 +31,7 @@ from tautils import data_to_string, data_from_string, get_save_name
 
 from tawindow import TurtleArtWindow
 from taexporthtml import save_html
+from taexportlogo import save_logo
 
 def makepath(path):
     """ Make a path if it doesn't previously exist """
@@ -90,6 +91,10 @@ class TurtleMain():
         menu_items = gtk.MenuItem(_("Save as HTML"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_save_html_cb)
+        menu_items.show()
+        menu_items = gtk.MenuItem(_("Save as Logo"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_save_logo_cb)
         menu_items.show()
 
         activity_menu = gtk.MenuItem(_("File"))
@@ -244,6 +249,18 @@ class TurtleMain():
         f.write(html)
         f.close()
         self.tw.saved_pictures = []
+
+    def _do_save_logo_cb(self, widget):
+        """ Callback for save project to Logo. """
+        logocode = save_logo(self.tw)
+        if len(logocode) == 0:
+            return
+        save_type = '.lg'
+        filename, self.tw.load_save_folder = get_save_name(save_type,
+                      self.tw.load_save_folder, 'logosession')
+        f = file(filename, "w")
+        f.write(logocode)
+        f.close()
 
     def _do_resize_cb(self, widget, factor):
         """ Callback to resize blocks. """
