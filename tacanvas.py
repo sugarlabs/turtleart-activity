@@ -26,6 +26,8 @@ from tasprite_factory import SVG
 from tautils import image_to_base64, data_to_string
 import pango
 from taconstants import CANVAS_LAYER, DEFAULT_TURTLE
+import logging
+_logger = logging.getLogger('turtleart-activity')
 
 def wrap100(n):
     n = int(n)
@@ -171,18 +173,18 @@ class TurtleGraphics:
         rr = r*self.tw.coord_scale
         try:
             if a < 0:
-                self.larc(-a, rr, share)
+                self.larc(-a, rr)
             else:
-                self.rarc(a, rr, share)
+                self.rarc(a, rr)
         except:
             pass
+        # _logger.debug("moving to %f %f" % (self.xcor, self.ycor))
         self.move_turtle()
-        self.turn_turtle()
         if self.tw.sharing() and share:
             self.tw.activity.send_event("a|%s" % \
-                (data_to_string([self.tw.nick, [int(a),int(r)]])))
+                (data_to_string([self.tw.nick, [a, r]])))
 
-    def rarc(self, a, r, share=True):
+    def rarc(self, a, r):
         if r < 0:
             r = -r
             a = -a
@@ -203,7 +205,7 @@ class TurtleGraphics:
                         y - self.pensize*self.tw.coord_scale/2 - 3,
                         w + self.pensize*self.tw.coord_scale + 6,
                         h + self.pensize*self.tw.coord_scale + 6)
-        self.right(a, share)
+        self.right(a, False)
         self.xcor = cx - r*cos(self.heading*DEGTOR)
         self.ycor = cy + r*sin(self.heading*DEGTOR)
         if self.tw.saving_svg and self.pendown:
@@ -214,7 +216,7 @@ class TurtleGraphics:
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
 
-    def larc(self, a, r, share=True):
+    def larc(self, a, r):
         if r < 0:
             r = -r
             a = -a
@@ -235,7 +237,7 @@ class TurtleGraphics:
                         y - self.pensize*self.tw.coord_scale/2 - 3,
                         w + self.pensize*self.tw.coord_scale + 6,
                         h + self.pensize*self.tw.coord_scale + 6)
-        self.right(-a, share)
+        self.right(-a, False)
         self.xcor = cx + r*cos(self.heading*DEGTOR)
         self.ycor = cy - r*sin(self.heading*DEGTOR)
         if self.tw.saving_svg and self.pendown:
@@ -410,7 +412,7 @@ class TurtleGraphics:
 
     def move_turtle(self):
         x, y = self.width/2 + int(self.xcor), self.height/2 - int(self.ycor)
-        self.tw.active_turtle.move((self.cx + x - 30, self.cy + y - 30))
+        self.tw.active_turtle.move((self.cx + x - 28, self.cy + y - 30))
 
     def invalt(self, x, y, w, h):
         rect = gtk.gdk.Rectangle(int(x+self.cx), int(y+self.cy), int(w),
@@ -426,7 +428,7 @@ class TurtleGraphics:
             self.tw.active_turtle.set_pen_state(True)
         self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
         tx, ty = self.tw.active_turtle.get_xy()
-        self.xcor = tx + 30 - self.width/2
+        self.xcor = -self.width/2 + tx + 28
         self.ycor = self.height/2 - ty - 30
         self.heading = self.tw.active_turtle.get_heading()
         self.setcolor(self.tw.active_turtle.get_color(), False)
