@@ -14,9 +14,9 @@
  o new prefix boolean logic
  o showblock to compliment hideblock
  o fullscreen block
- o Cartesian and polor coordinate blocks
+ o Cartesian and polar coordinate blocks
  o color blocks
- o editible macros (used for presentation blocks)
+ o editable macros (used for presentation blocks)
  o labels on coordinate-grid overlays
  o more complete support in non-Sugar environments
  o new (and improved) sample code
