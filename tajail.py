@@ -19,12 +19,15 @@
 #THE SOFTWARE.
 
 # A naive approach to running myfunc in a jail
+import logging
+_logger = logging.getLogger('turtleart-activity')
+import traceback
 from time import *
 from math import *
 try:
     from numpy import *
 except ImportError:
-    pass
+    _logger.error("could not import numpy")
 
 def myfunc(f, args):
     # check to make sure no import calls are made
@@ -35,6 +38,7 @@ def myfunc(f, args):
             exec myf in globals(), userdefined
             return userdefined.values()[0](args[0])
         except:
+            traceback.print_exc()
             return None
     elif len(args) == 2:
         myf = "def f(x,y): return " + f.replace("import","")
@@ -43,6 +47,7 @@ def myfunc(f, args):
             exec myf in globals(), userdefined
             return userdefined.values()[0](args[0],args[1])
         except:
+            traceback.print_exc()
             return None
     elif len(args) == 3:
         myf = "def f(x,y,z): return " + f.replace("import","")
@@ -51,10 +56,14 @@ def myfunc(f, args):
             exec myf in globals(), userdefined
             return userdefined.values()[0](args[0],args[1],args[2])
         except:
+            traceback.print_exc()
             return None
 
 def myfunc_import(lc, f, x):
     userdefined = {}
-    exec f in globals(), userdefined
-    return userdefined['myblock'](lc, x)
-
+    try:
+        exec f in globals(), userdefined
+        return userdefined['myblock'](lc, x)
+    except:
+        traceback.print_exc()
+        return None
