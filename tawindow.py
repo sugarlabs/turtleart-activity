@@ -1950,6 +1950,8 @@ class TurtleArtWindow():
             _file_name = _file_name[0:-3]
         data_to_file(self.assemble_data_to_save(), _file_name + '.ta')
         self.save_file_name = os.path.basename(_file_name)
+        if not self.running_sugar:
+            self.save_folder = self.load_save_folder
 
     def assemble_data_to_save(self, save_turtle=True, save_project=True):
         """ Pack the project (or stack) into a data stream to be serialized """

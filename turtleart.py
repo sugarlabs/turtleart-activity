@@ -84,6 +84,10 @@ class TurtleMain():
         menu.append(menu_items)
         menu_items.connect("activate", self._do_save_cb)
         menu_items.show()
+        menu_items = gtk.MenuItem(_("Save As"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_save_as_cb)
+        menu_items.show()
         menu_items = gtk.MenuItem(_("Save as image"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_save_picture_cb)
@@ -232,6 +236,7 @@ class TurtleMain():
             self.tw = TurtleArtWindow(canvas, os.path.abspath('.'))
         self.tw.win = win
         self.tw.load_start()
+        self.tw.save_folder = os.path.expanduser("~")
 
     def _do_open_cb(self, widget):
         """ Callback for open project. """
@@ -239,6 +244,11 @@ class TurtleMain():
 
     def _do_save_cb(self, widget):
         """ Callback for save project. """
+        self.tw.save_file()
+
+    def _do_save_as_cb(self, widget):
+        """ Callback for save-as project. """
+        self.tw.save_file_name = None
         self.tw.save_file()
 
     def _do_save_picture_cb(self, widget):
