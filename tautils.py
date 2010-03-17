@@ -64,6 +64,23 @@ def convert(x, fn, try_ord=True):
                 return fn(xx)
         return x
 
+def chr_to_ord(x):
+    """ Try to comvert a string to an ord """
+    if strtype(x) and len(x) == 1:
+        try:
+            return ord(x[0]), True
+        except ValueError:
+            return x, False
+    return x, False
+
+def strtype(x):
+    """ Is x a string type? """
+    if type(x) == str:
+        return True
+    if type(x) == unicode:
+        return True
+    return False
+
 def magnitude(pos):
     """ Calculate the magnitude of the distance between to blocks. """
     x, y = pos

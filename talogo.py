@@ -36,7 +36,7 @@ from taconstants import PALETTES, PALETTE_NAMES, TAB_LAYER
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
-                    audio_media_type, text_media_type, round_int
+                    audio_media_type, text_media_type, round_int, chr_to_ord, strtype
 from gettext import gettext as _
 
 class noKeyError(UserDict):
@@ -71,14 +71,6 @@ def numtype(x):
         return True
     return False
 
-def strtype(x):
-    """ Is x a string type? """
-    if type(x) == str:
-        return True
-    if type(x) == unicode:
-        return True
-    return False
-
 def str_to_num(x):
     """ Try to comvert a string to a number """
     xx = convert(x, float)
@@ -90,15 +82,6 @@ def str_to_num(x):
             return xx
         else:
             raise logoerror("#syntaxerror")
-
-def chr_to_ord(x):
-    """ Try to comvert a string to an ord """
-    if strtype(x) and len(x) == 1:
-        try:
-            return ord(x[0]), True
-        except ValueError:
-            return x, False
-    return x, False
 
 def taand(x, y):
     """ Logical and """
