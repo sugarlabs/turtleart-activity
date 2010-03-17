@@ -37,10 +37,8 @@ gobject.threads_init()
 
 try:
     from sugar.datastore import datastore
-except:
-    # probably launched from outside of Sugar
+except ImportError:
     pass
-from talogo import *
 
 class Gplay:
 
@@ -61,12 +59,14 @@ class Gplay:
         if message.structure is None:
             return True
         if message.structure.get_name() == 'prepare-xwindow-id':
+            if self.window is None:
+                return True
             self.window.set_sink(message.src)
             message.src.set_property('force-aspect-ratio', True)
             return True
 
     def setFile(self, path):
-        uri = "file://" + str( path )
+        uri = "file://" + str(path)
         if (self.player.get_property('uri') == uri):
             self.seek(gst.SECOND*0)
             return
@@ -136,55 +136,33 @@ class PlayVideoWindow(gtk.Window):
             del self.imagesink
 
         self.imagesink = sink
-        self.imagesink.set_xwindow_id(self.window.xid)
+        if self.window is not None:
+            self.imagesink.set_xwindow_id(self.window.xid)
 
-def play_audio(lc, audio):
-    print "loading audio id: " + str(audio)
-    if audio == "" or audio[6:] == "":
-        raise logoerror("#nomedia")
-    elif audio[6:] != "None":
-        try:
-            dsobject = datastore.get(audio[6:])
-            print dsobject.file_path
-        except:
-            print "Couldn't open id: " + str(audio[6:])
-        '''
-        if lc.gplay == None:
-            lc.gplay = Gplay()
-        '''
-        lc.gplay = Gplay()
-        lc.gplay.setFile("file:///" + dsobject.file_path)
-
-def play_video(lc, media, x, y, w, h):
-    print "loading media id: " + str(media)
-    if media == "" or media[6:] == "":
-        raise logoerror("#nomedia")
-    elif media[6:] != "None":
-        try:
-            dsobject = datastore.get(media[6:])
-            print dsobject.file_path
-        except:
-            print "Couldn't open id: " + str(media[6:])
-    play_dsobject(lc, dsobject, x, y, w, h)
-
-def play_dsobject(lc, dsobject, x, y, w, h):
+def play_audio(lc, filepath):
+    print "loading audio id: " + filepath
     if lc.gplay == None:
         lc.gplay = Gplay()
-    # TODO:
+    lc.gplay.setFile("file:///" + filepath)
+
+def play_movie_from_file(lc, filepath, x, y, w, h):
+    if lc.gplay == None:
+        lc.gplay = Gplay()
     # wait for current movie to stop playing
     if lc.gplay.is_playing:
         print "already playing..."
-    lc.gplay.setFile("file:///" + dsobject.file_path)
+    lc.gplay.setFile("file:///" + filepath)
     if lc.gplay.window == None:
         gplayWin = PlayVideoWindow()
     lc.gplay.window = gplayWin
-    gplayWin.set_type_hint( gtk.gdk.WINDOW_TYPE_HINT_DIALOG )
-    gplayWin.set_decorated( False )
-    gplayWin.set_transient_for( lc.tw.activity )
+    gplayWin.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
+    gplayWin.set_decorated(False)
+    if lc.tw.running_sugar:
+        gplayWin.set_transient_for(lc.tw.activity)
     # y position is too high for some reason (toolbox?) adding offset
-    gplayWin.move( x, y+108 )
-    gplayWin.resize( w, h )
-    gplayWin.show_all( )
+    gplayWin.move(x, y+108)
+    gplayWin.resize(w, h)
+    gplayWin.show_all()
 
 
 def stop_media(lc):
@@ -193,6 +171,7 @@ def stop_media(lc):
     lc.gplay.stop()
     if lc.gplay.window != None:
         # We need to destroy the video window
+        # print dir(lc.gplay.window)
         lc.gplay.window.destroy()
         lc.gplay = None
 

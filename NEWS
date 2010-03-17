@@ -1,3 +1,43 @@
+<<<<<<< HEAD:NEWS
+=======
+83
+
+* added new user-interface features
+ o support for multiple turtles
+ o expandable blocks
+ o collapsible stacks
+ o runtime block highlighting
+ o error highlighting
+ o trash palette (with restore)
+ o palette better integrated into Sugar toolbar
+ o variable-length string blocks
+ o editable string blocks
+ o paste text from Sugar clipboard to string blocks
+ o new prefix boolean logic
+ o showblock to compliment hideblock
+ o fullscreen block
+ o Cartesian and polar coordinate blocks
+ o color blocks
+ o editable macros (used for presentation blocks)
+ o labels on coordinate-grid overlays
+ o more complete support in non-Sugar environments
+ o new (and improved) sample code
+ o Logo code for project added to View Source
+ o save SVG block lets you generate SVG with Turtle Art
+ o improved export-to-HTML logic
+ o new translations
+
+* completed a major refactoring of the code
+ o 90% smaller download bundle-size
+ o faster first-time launch
+ o greatly simplified i18n maintenance
+ o easier to extend with new blocks and palettes 
+
+82
+
+* minor updates to Spanish translations
+
+>>>>>>> f1d5ed75c29961a718eb3c59fde1663c184f20cf:NEWS
 81
 
 * fixed keyboard input bug introduced in v79

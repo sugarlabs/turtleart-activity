@@ -1,6 +1,10 @@
 [Activity]
 name = Turtle Art
+<<<<<<< HEAD:activity/activity.info
 activity_version = 81
+=======
+activity_version = 83
+>>>>>>> f1d5ed75c29961a718eb3c59fde1663c184f20cf:activity/activity.info
 license = MIT
 bundle_id = org.laptop.TurtleArtActivity
 exec = sugar-activity TurtleArtActivity.TurtleArtActivity

@@ -1,4 +1,4 @@
-#Copyright (c) 2009, Walter Bender (on behalf of Sugar Labs)
+#Copyright (c) 2009-10, Walter Bender (on behalf of Sugar Labs)
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -18,27 +18,52 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-# a naive approach to running myfun in a jail
+# A naive approach to running myfunc in a jail
+import logging
+_logger = logging.getLogger('turtleart-activity')
+import traceback
 from time import *
 from math import *
 try:
     from numpy import *
-except:
-    pass
-from taturtle import *
+except ImportError:
+    _logger.error("could not import numpy")
 
-def myfunc(lc, f, x):
+def myfunc(f, args):
     # check to make sure no import calls are made
-    myf = "def f(x): return " + f.replace("import","")
-    userdefined = {}
-    try:
-        exec myf in globals(), userdefined
-        return userdefined.values()[0](x)
-    except:
-        return None
+    if len(args) == 1:
+        myf = "def f(x): return " + f.replace("import","")
+        userdefined = {}
+        try:
+            exec myf in globals(), userdefined
+            return userdefined.values()[0](args[0])
+        except:
+            traceback.print_exc()
+            return None
+    elif len(args) == 2:
+        myf = "def f(x,y): return " + f.replace("import","")
+        userdefined = {}
+        try:
+            exec myf in globals(), userdefined
+            return userdefined.values()[0](args[0],args[1])
+        except:
+            traceback.print_exc()
+            return None
+    elif len(args) == 3:
+        myf = "def f(x,y,z): return " + f.replace("import","")
+        userdefined = {}
+        try:
+            exec myf in globals(), userdefined
+            return userdefined.values()[0](args[0],args[1],args[2])
+        except:
+            traceback.print_exc()
+            return None
 
 def myfunc_import(lc, f, x):
     userdefined = {}
-    exec f in globals(), userdefined
-    return userdefined['myblock'](lc,x)
-
+    try:
+        exec f in globals(), userdefined
+        return userdefined['myblock'](lc, x)
+    except:
+        traceback.print_exc()
+        return None

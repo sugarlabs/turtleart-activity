@@ -1,5 +1,5 @@
-#Copyright (c) 2007-8, Playful Invention Company.
-#Copyright (c) 2008-9, Walter Bender
+# -*- coding: utf-8 -*-
+#Copyright (c) 2010 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -19,290 +19,177 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-import gtk
-from math import sin,cos,pi
-class taTurtle: pass
+from taconstants import TURTLE_LAYER
+from tasprite_factory import SVG, svg_str_to_pixbuf
+from sprites import Sprite
 
-from tasprites import *
-from tasetup import load_image
+def generate_turtle_pixbufs(colors):
+    """ Generate pixbufs for generic turtles """
+    shapes = []
+    svg = SVG()
+    svg.set_scale(1.0)
+    for i in range(36):
+        svg.set_orientation(i*10)
+        shapes.append(svg_str_to_pixbuf(svg.turtle(colors)))
+    return shapes
 
-colors = {}
-DEGTOR = 2*pi/360
+#
+# A class for the list of blocks and everything they share in common
+#
+class Turtles:
+    def __init__(self, sprite_list):
+        """ Class to hold turtles """
+        self.dict = dict()
+        self.sprite_list = sprite_list
+        self.default_pixbufs = []
 
-color_table = (
-    0xFF0000,0xFF0D00,0xFF1A00,0xFF2600,0xFF3300,
-    0xFF4000,0xFF4D00,0xFF5900,0xFF6600,0xFF7300,
-    0xFF8000,0xFF8C00,0xFF9900,0xFFA600,0xFFB300,
-    0xFFBF00,0xFFCC00,0xFFD900,0xFFE600,0xFFF200,
-    0xFFFF00,0xE6FF00,0xCCFF00,0xB3FF00,0x99FF00,
-    0x80FF00,0x66FF00,0x4DFF00,0x33FF00,0x1AFF00,
-    0x00FF00,0x00FF0D,0x00FF1A,0x00FF26,0x00FF33,
-    0x00FF40,0x00FF4D,0x00FF59,0x00FF66,0x00FF73,
-    0x00FF80,0x00FF8C,0x00FF99,0x00FFA6,0x00FFB3,
-    0x00FFBF,0x00FFCC,0x00FFD9,0x00FFE6,0x00FFF2,
-    0x00FFFF,0x00F2FF,0x00E6FF,0x00D9FF,0x00CCFF,
-    0x00BFFF,0x00B3FF,0x00A6FF,0x0099FF,0x008CFF,
-    0x0080FF,0x0073FF,0x0066FF,0x0059FF,0x004DFF,
-    0x0040FF,0x0033FF,0x0026FF,0x001AFF,0x000DFF,
-    0x0000FF,0x0D00FF,0x1A00FF,0x2600FF,0x3300FF,
-    0x4000FF,0x4D00FF,0x5900FF,0x6600FF,0x7300FF,
-    0x8000FF,0x8C00FF,0x9900FF,0xA600FF,0xB300FF,
-    0xBF00FF,0xCC00FF,0xD900FF,0xE600FF,0xF200FF,
-    0xFF00FF,0xFF00E6,0xFF00CC,0xFF00B3,0xFF0099,
-    0xFF0080,0xFF0066,0xFF004D,0xFF0033,0xFF001A)
+    def get_turtle(self, k, append=False, colors=None):
+        """ Find a turtle """
+        if self.dict.has_key(k):
+            return self.dict[k]
+        elif append is False:
+            return None
+        else:
+            if colors == None:
+                Turtle(self, k)
+            else:
+                Turtle(self, k, colors.split(','))
+            return self.dict[k]
 
-def tNew(tw,w,h):
-    t = taTurtle()
-    t.tw, t.width, t.height = tw, w, h
-    t.canvas = sprNew(tw,0,0,gtk.gdk.Pixmap(tw.area,w,h,-1))
-    t.canvas.type = 'canvas'
-    setlayer(t.canvas,600)
-    t.shapelist = \
-        [load_image(tw, tw.path, 'shapes','t'+str(i)) for i in range(36)]
-    t.spr = sprNew(tw,100,100,t.shapelist[0])
-    t.spr.type = 'turtle'
-    setlayer(t.spr, 630)
-    t.gc = t.canvas.image.new_gc()
-    t.shade = 0
-    clearscreen(t)
-    return t
+    def get_turtle_key(self, turtle):
+        """ Find a turtle's name """
+        for k in iter(self.dict):
+            if self.dict[k] == turtle:
+                return k
+        return None
 
-def clearscreen(t):
-    t.xcor, t.ycor, t.heading = 0,0,0
-    rect = gtk.gdk.Rectangle(0,0,t.width,t.height)
-    t.gc.set_foreground(t.tw.bgcolor)
-    t.canvas.image.draw_rectangle(t.gc, True, *rect)
-    invalt(t,0,0,t.width,t.height)
-    setpensize(t,5)
-    setcolor(t,0)
-    settextcolor(t,70)
-    settextsize(t,32)
-    setshade(t,50)
-    t.pendown = True
-    move_turtle(t)
-    turn_turtle(t)
-    return None
+    def turtle_count(self):
+        """ How many turtles are there? """
+        return(len(self.dict))
 
-def forward(t, n):
-    n *= t.tw.coord_scale
-    t.gc.set_foreground(t.tw.fgcolor)
-    oldx, oldy = t.xcor, t.ycor
-    try:
-        t.xcor += n*sin(t.heading*DEGTOR)
-        t.ycor += n*cos(t.heading*DEGTOR)
-    except:
-        pass
-    if t.pendown:
-        draw_line(t,oldx,oldy,t.xcor,t.ycor)
-    move_turtle(t)
-    return None
+    def add_to_dict(self, k, turtle):
+        """ Add a new turtle """
+        self.dict[k] = turtle   
 
-def seth(t,n):
-    try:
-        t.heading=n
-    except:
-        pass
-    t.heading%=360
-    turn_turtle(t)
-    return None
+    def remove_from_dict(self, k):
+        """ Delete a turtle """
+        if self.dict.has_key(k):
+            del(self.dict[k])
 
-def right(t,n):
-    try:
-        t.heading+=n
-    except:
-        pass
-    t.heading%=360
-    turn_turtle(t)
-    return None
+    def show_all(self):
+        """ Make all turtles visible """
+        for k in iter(self.dict):
+            self.dict[k].show()
 
-def arc(t,a,r):
-    t.gc.set_foreground(t.tw.fgcolor)
-    r *= t.tw.coord_scale
-    try:
-        if a<0: larc(t,-a,r)
-        else: rarc(t,a,r)
-    except:
-        pass
-    move_turtle(t)
-    turn_turtle(t)
+    #
+    # sprite utilities
+    #
+    def spr_to_turtle(self, spr):
+        """ Find the turtle that corresponds to sprite spr. """
+        for k in iter(self.dict):
+            if spr == self.dict[k].spr:
+                return self.dict[k]
+        return None
 
-def rarc(t,a,r):
-    if r<0: r=-r; a=-a
-    cx = t.xcor+r*cos(t.heading*DEGTOR)
-    cy = t.ycor-r*sin(t.heading*DEGTOR)
-    x,y,w,h=t.width/2+int(cx-r),t.height/2-int(cy+r),int(2*r),int(2*r)
-    if t.pendown:
-        t.canvas.image.draw_arc(t.gc,False,x,y,w,h, \
-                                int(180-t.heading-a)*64,int(a)*64)
-    invalt(t,x-t.pensize*t.tw.coord_scale/2-3,y-t.pensize*t.tw.coord_scale/2-3,\
-             w+t.pensize*t.tw.coord_scale+6,h+t.pensize*t.tw.coord_scale+6)
-    right(t,a)
-    t.xcor=cx-r*cos(t.heading*DEGTOR)
-    t.ycor=cy+r*sin(t.heading*DEGTOR)
+    def get_pixbufs(self):
+        """ Get the pixbufs for the default turtle shapes. """
+        if self.default_pixbufs == []:
+            self.default_pixbufs = generate_turtle_pixbufs(
+                                                         ["#008000", "#00A000"])
+        return(self.default_pixbufs)
 
-def larc(t,a,r):
-    if r<0: r=-r; a=-a
-    cx = t.xcor-r*cos(t.heading*DEGTOR)
-    cy = t.ycor+r*sin(t.heading*DEGTOR)
-    x,y,w,h=t.width/2+int(cx-r),t.height/2-int(cy+r),int(2*r),int(2*r)
-    if t.pendown:
-        t.canvas.image.draw_arc(t.gc,False,x,y,w,h,int(360-t.heading)*64, \
-                                int(a)*64)
-    invalt(t,x-t.pensize*t.tw.coord_scale/2-3,y-t.pensize*t.tw.coord_scale/2-3,\
-             w+t.pensize*t.tw.coord_scale+6,h+t.pensize*t.tw.coord_scale+6)
-    right(t,-a)
-    t.xcor=cx+r*cos(t.heading*DEGTOR)
-    t.ycor=cy-r*sin(t.heading*DEGTOR)
+#
+# A class for the individual turtles
+#
+class Turtle:
+    def __init__(self, turtles, key, colors=None):
+        """ The turtle is not a block, just a sprite with an orientation """
+        self.x = 0
+        self.y = 0
+        self.hidden = False
+        self.shapes = []
+        self.type = 'turtle'
+        self.heading = 0
+        self.pen_shade = 50
+        self.pen_color = 0
+        self.pen_size = 5
+        self.pen_state = True
 
-def setxy(t,x,y):
-    x *= t.tw.coord_scale
-    y *= t.tw.coord_scale
-    try:
-        t.xcor,t.ycor = x,y
-    except:
-        pass
-    move_turtle(t)
+        if colors is None:
+            self.shapes = turtles.get_pixbufs()
+        else:
+            self.colors = colors[:]
+            self.shapes = generate_turtle_pixbufs(self.colors)
 
-def setpensize(t,ps):
-    try:
-        if ps<0:
-            ps=0;
-        t.pensize = ps
-    except:
-        pass
-    t.gc.set_line_attributes(int(t.pensize*t.tw.coord_scale), \
-                             gtk.gdk.LINE_SOLID, \
-                             gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
-    return None
+        self.spr = Sprite(turtles.sprite_list, 0, 0, self.shapes[0])
+        turtles.add_to_dict(key, self)
 
-def setcolor(t,c):
-    try:
-        t.color = c
-        t.tcolor = c # using pen color for text color
-    except:
-        pass
-    set_fgcolor(t)
-    set_textcolor(t)
-    return None
+    def set_heading(self, heading):
+        """ Set the turtle heading (and shape: one per 10 degrees) """
+        self.heading = heading        
+        i = (int(self.heading+5)%360)/10
+        if self.hidden is False:
+            try:
+                self.spr.set_shape(self.shapes[i])
+            except IndexError:
+                self.spr.set_shape(self.shapes[0])
+                print "Turtle shape IndexError %f -> %d" % (heading, i)
 
-def settextcolor(t,c):
-    try:
-        t.tcolor = c
-    except:
-        pass
-    set_textcolor(t)
-    return None
+    def set_color(self, color):
+        """ Set the pen color for this turtle. """
+        self.pen_color = color
 
-def settextsize(t,c):
-    try:
-        t.tw.textsize = c
-    except:
-        pass
-    return None
+    def set_shade(self, shade):
+        """ Set the pen shade for this turtle. """
+        self.pen_shade = shade
 
-def setshade(t,s):
-    try:
-        t.shade = s
-    except:
-        pass
-    set_fgcolor(t)
-    set_textcolor(t)
-    return None
+    def set_pen_size(self, pen_size):
+        """ Set the pen size for this turtle. """
+        self.pen_size = pen_size
 
-def fillscreen(t,c,s):
-    oldc, olds = t.color,t.shade
-    try:
-        setcolor(t,c); setshade(t,s)
-        rect = gtk.gdk.Rectangle(0,0,t.width,t.height)
-        t.gc.set_foreground(t.tw.fgcolor)
-        t.canvas.image.draw_rectangle(t.gc, True, *rect)
-        invalt(t,0,0,t.width,t.height)
-        setcolor(t,oldc); setshade(t,olds)
-    except:
-        pass
-    return None
+    def set_pen_state(self, pen_state):
+        """ Set the pen state (down==True) for this turtle. """
+        self.pen_state = pen_state
 
-def set_fgcolor(t):
-    sh = (wrap100(t.shade)-50)/50.0
-    rgb = color_table[wrap100(t.color)]
-    r,g,b = (rgb>>8)&0xff00,rgb&0xff00,(rgb<<8)&0xff00
-    r,g,b = calc_shade(r,sh),calc_shade(g,sh),calc_shade(b,sh)
-    t.tw.rgb = [r>>8,g>>8,b>>8]
-    t.tw.fgcolor = t.tw.cm.alloc_color(r,g,b)
+    def hide(self):
+        """ Hide the turtle. """
+        self.spr.hide()
+        self.hidden = True
 
-def set_textcolor(t):
-    sh = (wrap100(t.shade)-50)/50.0
-    rgb = color_table[wrap100(t.tcolor)]
-    r,g,b = (rgb>>8)&0xff00,rgb&0xff00,(rgb<<8)&0xff00
-    r,g,b = calc_shade(r,sh),calc_shade(g,sh),calc_shade(b,sh)
-    t.tw.textcolor = t.tw.cm.alloc_color(r,g,b)
+    def show(self):
+        """ Show the turtle. """
+        self.spr.set_layer(TURTLE_LAYER)
+        self.hidden = False
+        self.move((self.x, self.y))
+        self.set_heading(self.heading)
 
-def wrap100(n):
-    n = int(n)
-    n %= 200
-    if n>99: n=199-n
-    return n
+    def move(self, pos):
+        """ Move the turtle. """
+        self.x, self.y = pos[0], pos[1]
+        if self.hidden is False:
+            self.spr.move(pos)
+        return(self.x, self.y)
 
-def calc_shade(c,s):
-    if s<0: return int(c*(1+s*.8))
-    return int(c+(65536-c)*s*.9)
+    def get_xy(self):
+        """ Return the turtle's x, y coordinates. """
+        return(self.x, self.y)
 
-def setpen(t,bool):
-    t.pendown = bool
+    def get_heading(self):
+        """ Return the turtle's heading. """
+        return(self.heading)
 
-def draw_pixbuf(t,pixbuf,a,b,x,y,w,h):
-    w *= t.tw.coord_scale
-    h *= t.tw.coord_scale
-    t.canvas.image.draw_pixbuf(t.gc, pixbuf, a, b, x, y)
-    invalt(t,x,y,w,h)
+    def get_color(self):
+        """ Return the turtle's color. """
+        return(self.pen_color)
 
-def draw_text(t, label, x, y, size, w):
-    w *= t.tw.coord_scale
-    t.gc.set_foreground(t.tw.textcolor)
-    fd = pango.FontDescription('Sans')
-    try:
-        fd.set_size(int(size*t.tw.coord_scale)*pango.SCALE)
-    except:
-        pass
-    if type(label) == str or type(label) == unicode:
-        pl = t.tw.window.create_pango_layout(label.replace("\0"," "))
-    elif type(label) == float or type(label) == int:
-        pl = t.tw.window.create_pango_layout(str(label))
-    else:
-        print type(label)
-        pl = t.tw.window.create_pango_layout(str(label))
-    pl.set_font_description(fd)
-    pl.set_width(int(w)*pango.SCALE)
-    t.canvas.image.draw_layout(t.gc,int(x),int(y),pl)
-    w,h = pl.get_pixel_size()
-    invalt(t,x,y,w,h)
+    def get_shade(self):
+        """ Return the turtle's shade. """
+        return(self.pen_shade)
 
-def draw_line(t,x1,y1,x2,y2):
-    x1,y1 = t.width/2+int(x1), t.height/2-int(y1)
-    x2,y2 = t.width/2+int(x2), t.height/2-int(y2)
-    if x1<x2: minx,maxx=x1,x2
-    else: minx,maxx=x2,x1
-    if y1<y2: miny,maxy=y1,y2
-    else: miny,maxy=y2,y1
-    w,h=maxx-minx,maxy-miny
-    t.canvas.image.draw_line(t.gc,x1,y1,x2,y2)
-    invalt(t,minx-t.pensize*t.tw.coord_scale/2-3, \
-             miny-t.pensize*t.tw.coord_scale/2-3, \
-           w+t.pensize*t.tw.coord_scale+6, \
-           h+t.pensize*t.tw.coord_scale+6)
+    def get_pen_size(self):
+        """ Return the turtle's pen size. """
+        return(self.pen_size)
 
-def turn_turtle(t):
-    setshape(t.spr, t.shapelist[(int(t.heading+5)%360)/10])
-
-def move_turtle(t):
-    x,y = t.width/2+int(t.xcor), t.height/2-int(t.ycor)
-    move(t.spr, (t.canvas.x+x-30,t.canvas.y+y-30))
-    invalt(t,x-30,y-30,60,60)
-
-def invalt(t,x,y,w,h):
-    rect = gtk.gdk.Rectangle(int(x+t.canvas.x),int(y+t.canvas.y), \
-                             int(w),int(h))
-    t.tw.area.invalidate_rect(rect, False)
-
-
-
+    def get_pen_state(self):
+        """ Return the turtle's pen state. """
+        return(self.pen_state)
