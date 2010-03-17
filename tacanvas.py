@@ -23,7 +23,7 @@ import gtk
 from math import sin, cos, pi
 from sprites import Sprite
 from tasprite_factory import SVG
-from tautils import image_to_base64, data_to_string
+from tautils import image_to_base64, data_to_string, round_int
 import pango
 from taconstants import CANVAS_LAYER, DEFAULT_TURTLE
 import logging
@@ -155,7 +155,7 @@ class TurtleGraphics:
         self.turn_turtle()
         if self.tw.sharing() and share:
             self.tw.activity.send_event("r|%s" % \
-                (data_to_string([self.tw.nick, int(self.heading)])))
+                (data_to_string([self.tw.nick, round_int(self.heading)])))
 
     def right(self, n, share=True):
         try:
@@ -166,7 +166,7 @@ class TurtleGraphics:
         self.turn_turtle()
         if self.tw.sharing() and share:
             self.tw.activity.send_event("r|%s" % \
-                (data_to_string([self.tw.nick, int(self.heading)])))
+                (data_to_string([self.tw.nick, round_int(self.heading)])))
 
     def arc(self, a, r, share=True):
         self.gc.set_foreground(self.fgcolor)
@@ -182,7 +182,7 @@ class TurtleGraphics:
         self.move_turtle()
         if self.tw.sharing() and share:
             self.tw.activity.send_event("a|%s" % \
-                (data_to_string([self.tw.nick, [a, r]])))
+                (data_to_string([self.tw.nick, [round_int(a), round_int(r)]])))
 
     def rarc(self, a, r):
         if r < 0:
@@ -258,7 +258,7 @@ class TurtleGraphics:
         self.move_turtle()
         if self.tw.sharing() and share:
             self.tw.activity.send_event("x|%s" % \
-                (data_to_string([self.tw.nick, [int(x), int(y)]])))
+                (data_to_string([self.tw.nick, [round_int(x), round_int(y)]])))
 
     def setpensize(self, ps, share=True):
         try:
@@ -273,7 +273,7 @@ class TurtleGraphics:
         self.svg.set_stroke_width(self.pensize)
         if self.tw.sharing() and share:
             self.tw.activity.send_event("w|%s" % \
-                (data_to_string([self.tw.nick, int(ps)])))
+                (data_to_string([self.tw.nick, round_int(ps)])))
 
     def setcolor(self, c, share=True):
         try:
@@ -286,7 +286,7 @@ class TurtleGraphics:
         self.set_textcolor()
         if self.tw.sharing() and share:
             self.tw.activity.send_event("c|%s" % \
-                (data_to_string([self.tw.nick, int(c)])))
+                (data_to_string([self.tw.nick, round_int(c)])))
 
     def settextcolor(self, c):
         try:
@@ -311,7 +311,7 @@ class TurtleGraphics:
         self.set_textcolor()
         if self.tw.sharing() and share:
             self.tw.activity.send_event("s|%s" % \
-                (data_to_string([self.tw.nick, int(s)])))
+                (data_to_string([self.tw.nick, round_int(s)])))
 
     def fillscreen(self, c, s):
         oldc, olds = self.color, self.shade
