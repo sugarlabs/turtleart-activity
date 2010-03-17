@@ -1797,6 +1797,8 @@ class TurtleArtWindow():
         self.load_files(_file_name+'.ta', create_new_project)
         if create_new_project:
             self.save_file_name = os.path.basename(_file_name)
+        if self.running_sugar:
+            self.activity.metadata['title'] = os.path.split(_file_name)[1]
 
     def _found_a_turtle(self, blk):
         """ Either [-1, 'turtle', ...] or [-1, ['turtle', key], ...] """
