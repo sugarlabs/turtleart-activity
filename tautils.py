@@ -41,6 +41,11 @@ from StringIO import StringIO
 import os.path
 from gettext import gettext as _
 
+class logoerror(Exception):
+    def __init__(self, value):
+        self.value = value
+    def __str__(self):
+        return repr(self.value)
 
 '''
 The strategy for mixing numbers and strings is to first try
@@ -241,6 +246,11 @@ def text_media_type(name):
 
 def round_int(num):
     """ Remove trailing decimal places if number is an int """
+    try:
+        float(num)
+    except TypeError:
+        raise logoerror("#syntaxerror")
+
     if int(float(num)) == num:
         return int(num)
     else:
