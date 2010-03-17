@@ -1,5 +1,7 @@
-<<<<<<< HEAD:NEWS
-=======
+84
+
+* merge with mainline
+
 83
 
 * added new user-interface features
@@ -26,9 +28,11 @@
  o save SVG block lets you generate SVG with Turtle Art
  o improved export-to-HTML logic
  o new translations
+ o multi-variable in-line Python-code blocks
+ o traceback for checking errors in in-line Python code
 
 * completed a major refactoring of the code
- o 90% smaller download bundle-size
+ o download bundle-size is only 40% of previous versions
  o faster first-time launch
  o greatly simplified i18n maintenance
  o easier to extend with new blocks and palettes 
@@ -37,7 +41,6 @@
 
 * minor updates to Spanish translations
 
->>>>>>> f1d5ed75c29961a718eb3c59fde1663c184f20cf:NEWS
 81
 
 * fixed keyboard input bug introduced in v79
