@@ -96,6 +96,10 @@ class TurtleMain():
         menu.append(menu_items)
         menu_items.connect("activate", self._do_save_logo_cb)
         menu_items.show()
+        menu_items = gtk.MenuItem(_("Quit"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self.destroy)
+        menu_items.show()
 
         activity_menu = gtk.MenuItem(_("File"))
         activity_menu.show()
@@ -384,6 +388,10 @@ class TurtleMain():
         data_file.write(str(data.y)+'\n')
         data_file.write(str(data.width)+'\n')
         data_file.write(str(data.height)+'\n')
+
+    def destroy(self, event, data=None):
+        """ Callback for destroy event. """
+        gtk.main_quit()
 
 def main():
     """ python turtleart.py """
