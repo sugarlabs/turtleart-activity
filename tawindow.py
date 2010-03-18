@@ -1837,9 +1837,9 @@ class TurtleArtWindow():
         if btype in CONTENT_BLOCKS or btype in COLLAPSIBLE:
             if btype == 'number':
                 try:
-                    values = [int(value)]
+                    values = [round_int(value)]
                 except ValueError:
-                    values = [float(value)]
+                    values = [0]
             elif btype in COLLAPSIBLE:
                 if value is not None:
                     values = [int(value)]

@@ -40,8 +40,10 @@ from taconstants import STRING_OR_NUMBER_ARGS, HIDE_LAYER, CONTENT_ARGS, \
 from StringIO import StringIO
 import os.path
 from gettext import gettext as _
+import logging
+_logger = logging.getLogger('turtleart-activity')
 
-class logoerror(Exception):
+class pythonerror(Exception):
     def __init__(self, value):
         self.value = value
     def __str__(self):
@@ -266,12 +268,16 @@ def round_int(num):
     try:
         float(num)
     except TypeError:
-        raise logoerror("#syntaxerror")
+        _logger.debug("error trying to convert %s to number" % (str(num)))
+        raise pythonerror("#syntaxerror")
 
     if int(float(num)) == num:
         return int(num)
     else:
-        _nn = int(float(num+0.05)*10)/10.
+        if float(num)<0:
+            _nn = int((float(num)-0.005)*100)/100.
+        else:
+            _nn = int((float(num)+0.005)*100)/100.
         if int(float(_nn)) == _nn:
             return int(_nn)
         return _nn
