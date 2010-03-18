@@ -76,6 +76,10 @@ class TurtleMain():
 
         menu = gtk.Menu()
 
+        menu_items = gtk.MenuItem(_("New"))
+        menu.append(menu_items)
+        menu_items.connect("activate", self._do_new_cb)
+        menu_items.show()
         menu_items = gtk.MenuItem(_("Open"))
         menu.append(menu_items)
         menu_items.connect("activate", self._do_open_cb)
@@ -237,6 +241,11 @@ class TurtleMain():
         self.tw.win = win
         self.tw.load_start()
         self.tw.save_folder = os.path.expanduser("~")
+
+    def _do_new_cb(self, widget):
+        """ Callback for new project. """
+        self.tw.new_project()
+        self.tw.load_start()
 
     def _do_open_cb(self, widget):
         """ Callback for open project. """
