@@ -438,7 +438,7 @@ class LogoCode:
                 if b.connections[1] is not None:
                     code = self.blocks_to_code(b)
                     x = b.connections[1].values[0]
-                    if type(convert(x, float, False)) == type(float):
+                    if type(convert(x, float, False)) == float:
                         if int(float(x)) == x:
                             x = int(x)
                     self.stacks['stack3'+str(x)] = self.readline(code)
@@ -862,7 +862,7 @@ class LogoCode:
     
     def prim_stack(self, x):
         """ Process a named stack """
-        if type(convert(x, float, False)) == type(float):
+        if type(convert(x, float, False)) == float:
             if int(float(x)) == x:
                 x = int(x)
         if (not self.stacks.has_key('stack3'+str(x))) or\
