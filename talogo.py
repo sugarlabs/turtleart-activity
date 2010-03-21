@@ -36,7 +36,8 @@ from taconstants import PALETTES, PALETTE_NAMES, TAB_LAYER
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
-                    audio_media_type, text_media_type, round_int, chr_to_ord, strtype
+                    audio_media_type, text_media_type, round_int, chr_to_ord, \
+                    strtype
 from gettext import gettext as _
 
 class noKeyError(UserDict):
@@ -978,10 +979,11 @@ class LogoCode:
         if x is None:
             self.boxes[name] = val
         else:
-            if type(convert(x, float, False)) == type(float):
+            if type(convert(x, float, False)) == float:
                 if int(float(x)) == x:
                     x = int(x)
             self.boxes[name+str(x)] = val
+        print self.boxes
 
     def prim_push(self, val):
         """ Push value onto FILO """
