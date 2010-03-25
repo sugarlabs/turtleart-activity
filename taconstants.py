@@ -120,8 +120,8 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'arc', 'scale', 'leftpos', 'toppos', 'rightpos',
              'bottompos'],
             ['penup','pendown', 'setpensize', 'fillscreen', 'pensize',
-             'settextsize', 'setcolor', 'setshade', 'textsize', 'color',
-             'shade'],
+             'setcolor', 'setshade', 'startfill', 'color', 'shade',
+             'stopfill'],
             [ 'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple'],
             ['plus2', 'minus2', 'product2',
              'division2', 'identity2', 'remainder2', 'sqrt', 'random',
@@ -178,7 +178,8 @@ BASIC_STYLE_HEAD_1ARG = ['hat']
 BASIC_STYLE_TAIL = ['stopstack', 'empty']
 BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
     'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput',
-    'fullscreen', 'sandwichcollapsed', 'cartesian', 'polar']
+    'fullscreen', 'sandwichcollapsed', 'cartesian', 'polar', 'startfill',
+    'stopfill']
 BASIC_STYLE_EXTENDED = ['picturelist', 'picture1x1', 'picture2x2',
     'picture2x1', 'picture1x2', 'picture1x1a']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show', 'image',
@@ -363,6 +364,8 @@ BLOCK_NAMES = {
     'stack1':[_('action 1')],
     'stack2':[_('action 2')],
     'start':[_('start')],
+    'startfill':[_('start fill')],
+    'stopfill':[_('stop fill')],
     'stopstack':[_('stop action')],
     'storein':[_('store in'), _('box'), _('value')],
     'storeinbox1':[_('store in box 1')],
@@ -496,6 +499,8 @@ PRIMITIVES = {
     'stack1':'stack1',
     'stack2':'stack2',
     'start':'start',
+    'startfill':'startfill',
+    'stopfill':'stopfill',
     'stopstack':'stopstack',
     'storein':'storeinbox',
     'storeinbox1':'storeinbox1',
@@ -596,7 +601,7 @@ STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
                          'print', 'stack', 'hat', 'addturtle', 'myfunc',
                          'myfunc1arg', 'myfunc2arg', 'myfunc3arg', 'comment',
                          'sandwichtop', 'sandwichtop2', 'userdefined',
-                         'userdefined2args','userdefined3args']
+                         'userdefined2args', 'userdefined3args', 'storein']
 
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
                 'storeinbox2']
@@ -796,6 +801,8 @@ HELP_STRINGS = {
     'stack2':_("invokes Action 2 stack"),
     'stack':_("invokes named action stack"),
     'start':_("connects action to toolbar run buttons"),
+    'startfill':_("starts filled polygon (used with end fill block)"),
+    'stopfill':_("completes filled polygon (used with start fill block)"),
     'stopiton':_("Stop turtle"),
     'stopstack':_("stops current action"),
     'storeinbox1':_("stores numeric value in Variable 1"),

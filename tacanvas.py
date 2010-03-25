@@ -96,10 +96,42 @@ class TurtleGraphics:
         self.pensize = 5
         self.tcolor = 0
         self.color = 0
+        self.fill = False
+        self.poly_points = []
         self.svg = SVG()
         self.svg.set_fill_color('none')
         self.tw.svg_string = ''
         self.clearscreen(False)
+
+    def start_fill(self):
+        self.fill = True
+        self.poly_points = []
+
+    def stop_fill(self):
+        self.fill = False
+        if len(self.poly_points) == 0:
+            return
+        minx = self.poly_points[0][0]
+        miny = self.poly_points[0][1]
+        maxx = minx
+        maxy = miny
+        for p in self.poly_points:
+            if p[0] < minx:
+                minx = p[0]
+            elif p[0] > maxx:
+                maxx = p[0]
+            if p[1] < miny:
+                miny = p[1]
+            elif p[1] > maxy:
+                maxy = p[1]
+        w = maxx-minx
+        h = maxy-miny
+        self.canvas.images[0].draw_polygon(self.gc, True, self.poly_points)
+        self.invalt(minx - self.pensize*self.tw.coord_scale/2 - 3,
+                    miny - self.pensize*self.tw.coord_scale/2 - 3,
+                    w + self.pensize*self.tw.coord_scale + 6,
+                    h + self.pensize*self.tw.coord_scale + 6)
+        self.poly_points = []
 
     def clearscreen(self, share=True):
         rect = gtk.gdk.Rectangle(0, 0, self.width, self.height)
@@ -123,6 +155,8 @@ class TurtleGraphics:
         self.set_turtle(DEFAULT_TURTLE)
         self.tw.svg_string = ''
         self.svg.reset_min_max()
+        self.fill = False
+        self.poly_points = []
 
     def forward(self, n, share=True):
         nn = n*self.tw.coord_scale
@@ -326,6 +360,8 @@ class TurtleGraphics:
         self.setshade(olds, False)
         self.tw.svg_string = ''
         self.svg.reset_min_max()
+        self.fill = False
+        self.poly_points = []
 
     def set_fgcolor(self):
         sh = (wrap100(self.shade) - 50)/50.0
@@ -402,6 +438,10 @@ class TurtleGraphics:
             miny, maxy = y2, y1
         w, h = maxx-minx, maxy-miny
         self.canvas.images[0].draw_line(self.gc, x1, y1, x2, y2)
+        if self.fill and self.poly_points == []:
+            self.poly_points.append((x1, y1))
+        if self.fill:
+            self.poly_points.append((x2, y2))
         self.invalt(minx - self.pensize*self.tw.coord_scale/2 - 3,
                     miny - self.pensize*self.tw.coord_scale/2 - 3,
                     w + self.pensize*self.tw.coord_scale + 6,
