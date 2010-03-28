@@ -1,9 +1,17 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: turtleart-activity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-25 17:04+0000\n"
-"PO-Revision-Date: 2010-03-14 18:59+0200\n"
+"PO-Revision-Date: 2010-03-29 01:34+0200\n"
 "Last-Translator: Markus <m.slg@gmx.de>\n"
 "Language-Team: OLPC-German <m.slg@gmx.de>\n"
 "Language: de\n"
@@ -74,7 +82,7 @@ msgstr "keine Ausgabe erfolgt"
 #: /home/walter/Desktop/ta-refactoring/talogo.py:746
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:331
 msgid "scale"
-msgstr "skaliere"
+msgstr "Skalierung"
 
 #: /home/walter/Desktop/ta-refactoring/talogo.py:749
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:297
@@ -96,7 +104,7 @@ msgstr "Farbe"
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:262
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:340
 msgid "shade"
-msgstr "Farbton"
+msgstr "Schattierung"
 
 #: /home/walter/Desktop/ta-refactoring/talogo.py:755
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:298
@@ -104,18 +112,15 @@ msgid "pen size"
 msgstr "Stiftdicke"
 
 #: /home/walter/Desktop/ta-refactoring/talogo.py:770
-#, fuzzy
 msgid "I don't know how to"
 msgstr "Ich weiß nicht wie"
 
 # (Markus S.) 'mag kein'?
 #: /home/walter/Desktop/ta-refactoring/talogo.py:919
-#, fuzzy
 msgid "doesn't like"
 msgstr "mag nicht"
 
 #: /home/walter/Desktop/ta-refactoring/talogo.py:919
-#, fuzzy
 msgid "as input"
 msgstr "als Eingabe"
 
@@ -129,7 +134,6 @@ msgid "Project"
 msgstr "Projekt"
 
 #: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:274
-#, fuzzy
 msgid "snapshot"
 msgstr "Momentaufnahme"
 
@@ -202,7 +206,7 @@ msgstr "Meinen Block laden"
 #: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:656
 #: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1366
 msgid "Import project from the Journal"
-msgstr "Objekt aus dem Journal importieren"
+msgstr "Objekt aus dem Tagebuch importieren"
 
 #: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:680
 #: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1157
@@ -230,17 +234,15 @@ msgstr "Polarkoordinaten"
 #: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:731
 #: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1216
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:108
-#, fuzzy
 msgid "Grow blocks"
-msgstr "Blöcke anzeigen"
+msgstr "Blöcke vergrößern"
 
 # (Markus S.) 'Blöcke verkleinern'?
 #: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:738
 #: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1223
 #: /home/walter/Desktop/ta-refactoring/turtleart.py:112
-#, fuzzy
 msgid "Shrink blocks"
-msgstr "Blöcke ausblenden"
+msgstr "Blöcke verkleinern"
 
 #: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:776
 #: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1391
@@ -431,31 +433,26 @@ msgstr "Unterer Bildrand"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:249
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:350
-#, fuzzy
 msgid "box"
-msgstr "Variable"
+msgstr "Box"
 
 # (Markus S.) 'Variable' war 'Rahmen'
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:250
-#, fuzzy
 msgid "box 1"
-msgstr "Variable 1"
+msgstr "Box 1"
 
 # (Markus S.) 'Variable' war 'Rahmen'
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:251
-#, fuzzy
 msgid "box 2"
-msgstr "Variable 2"
+msgstr "Box 2"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:252
-#, fuzzy
 msgid "Cartesian"
 msgstr "Kartesisch"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:253
-#, fuzzy
 msgid " clean "
-msgstr " leer "
+msgstr " lösche alles "
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:254
 msgid "empty heap"
@@ -463,7 +460,6 @@ msgstr "leerer Stapel"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:256
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:515
-#, fuzzy
 msgid "comment"
 msgstr "Bemerkung"
 
@@ -549,7 +545,7 @@ msgstr "Tastatur"
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:282
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:283
 msgid "left"
-msgstr "drehe links"
+msgstr "links"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:284
 msgid "picture left"
@@ -561,6 +557,10 @@ msgstr "Linker Bildrand"
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:291
 msgid "Python"
 msgstr "Python"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:292
+msgid " "
+msgstr " "
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:293
 msgid "not"
@@ -580,7 +580,6 @@ msgstr "Tonhöhe"
 
 # (Markus S.) Vergleiche 'Cartesian'
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:308
-#, fuzzy
 msgid "polar"
 msgstr "Polar"
 
@@ -643,7 +642,7 @@ msgstr "Alles rückgängig"
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:322
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:323
 msgid "right"
-msgstr "drehe rechts"
+msgstr "rechts"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:324
 msgid "picture right"
@@ -659,9 +658,8 @@ msgstr "Als SVG speichern"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:329
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:330
-#, fuzzy
 msgid "top of stack"
-msgstr "Anfang des Stapels"
+msgstr "Stapelanfang"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:332
 msgid "set color"
@@ -682,7 +680,7 @@ msgstr "setze Skalierung"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:336
 msgid "set shade"
-msgstr "setze Farbton"
+msgstr "setze Schattierung"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:337
 msgid "set text color"
@@ -709,7 +707,6 @@ msgid "show blocks"
 msgstr "Blöcke anzeigen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:343
-#, fuzzy
 msgid "show aligned"
 msgstr "Ausgerichtet anzeigen"
 
@@ -731,15 +728,13 @@ msgstr "Wert"
 
 # (Markus S.) 'Variable' war 'Rahmen'
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:351
-#, fuzzy
 msgid "store in box 1"
-msgstr "speichere in Variable 1"
+msgstr "speichere in Box 1"
 
 # (Markus S.) 'Variable' war 'Rahmen'
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:352
-#, fuzzy
 msgid "store in box 2"
-msgstr "speichere in Variable 2"
+msgstr "speichere in Box 2"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:353
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:548
@@ -755,12 +750,10 @@ msgid "text size"
 msgstr "Schriftgröße"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:361
-#, fuzzy
 msgid "title x"
 msgstr "Titel: x"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:362
-#, fuzzy
 msgid "title y"
 msgstr "Titel: y"
 
@@ -803,14 +796,13 @@ msgstr "schreibe"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:377
 msgid "yellow"
-msgstr "Gelb"
+msgstr "gelb"
 
 # (Markus S.) 'Rahmen'?
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:514
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:553
-#, fuzzy
 msgid "my box"
-msgstr "Meine Variable"
+msgstr "Meine Box"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:536
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:537
@@ -842,9 +834,8 @@ msgid "audio"
 msgstr "Audio"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:634
-#, fuzzy
 msgid "divide"
-msgstr "geteilt"
+msgstr "geteilt durch"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:635
 msgid "equal"
@@ -855,15 +846,13 @@ msgid "greater than"
 msgstr "größer als"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:637
-#, fuzzy
 msgid "horizontal space"
 msgstr "horizontaler Zwischenraum"
 
 # (Markus S.) 'Gleichheit'?
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:638
-#, fuzzy
 msgid "identity"
-msgstr "Identität"
+msgstr "Gleichheit"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:639
 msgid "if then"
@@ -875,14 +864,13 @@ msgstr "wenn dann sonst"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:641
 msgid "journal"
-msgstr "Journal"
+msgstr "Tagebuch"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:642
 msgid "less than"
 msgstr "kleiner als"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:643
-#, fuzzy
 msgid "minus"
 msgstr "minus"
 
@@ -895,12 +883,10 @@ msgid "number"
 msgstr "Zahl"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:646
-#, fuzzy
 msgid "plus"
 msgstr "plus"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:647
-#, fuzzy
 msgid "multiply"
 msgstr "mal"
 
@@ -930,32 +916,28 @@ msgid "presentation bulleted list"
 msgstr "Darstellung als Spiegelstrichliste"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:656
-#, fuzzy
 msgid "vertical space"
 msgstr "Vertikaler Zwischenraum"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:662
-#, fuzzy
 msgid "chooses which turtle to command"
-msgstr "Die zu steuernde Turtle wählen"
+msgstr "Die zu steuernde Schildkröte wählen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:663
 msgid "logical AND operator"
 msgstr "Logischer UND-Operator"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:664
-#, fuzzy
 msgid "moves turtle along an arc"
-msgstr "Turtle entlang eines Kreisbogens bewegen"
+msgstr "Schildkröte entlang eines Kreisbogens bewegen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:665
 msgid "Sugar Journal audio object"
-msgstr "Audioobjekt aus dem Sugar-Journal"
+msgstr "Audioobjekt aus dem Sugar-Tagebuch"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:666
-#, fuzzy
 msgid "moves turtle backward"
-msgstr "Turtle rückwärts bewegen"
+msgstr "Schildkröte rückwärts bewegen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:667
 msgid "Palette of variable blocks"
@@ -983,11 +965,11 @@ msgstr "Kartesische Koordinaten anzeigen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:673
 msgid "clears the screen and reset the turtle"
-msgstr "Bildschirm leeren und Turtle zurücksetzen"
+msgstr "Bildschirm leeren und Schildkröte zurücksetzen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:674
 msgid "emptys FILO (first-in-last-out heap)"
-msgstr "Stapel leeren (FILO - first in, last out)"
+msgstr "FILO-Stapel leeren (first in, last out)"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:675
 msgid "holds current pen color (can be used in place of a number block)"
@@ -999,13 +981,12 @@ msgid "Palette of pen colors"
 msgstr "Palette der Stiftfarben"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:677
-#, fuzzy
 msgid "places a comment in your code"
 msgstr "Kommentar in dein Programm einfügen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:679
 msgid "Sugar Journal description field"
-msgstr "Beschreibungsfeld zum Sugar-Journal"
+msgstr "Beschreibungsfeld im Sugar-Tagebuch"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:680
 msgid ""
@@ -1026,7 +1007,7 @@ msgstr "Palette der erweiterten Optionen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:685
 msgid "fills the background with (color, shade)"
-msgstr "Den Hintergrund mit (Farbe, Farbton) füllen"
+msgstr "Den Hintergrund mit (Farbe, Schattierung) füllen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:686
 msgid "Palette of flow operators"
@@ -1038,7 +1019,7 @@ msgstr "Endlos wiederholen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:688
 msgid "moves turtle forward"
-msgstr "Turtle vorwärts bewegen"
+msgstr "Schildkröte vorwärts bewegen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:689
 msgid "hides the Sugar toolbars"
@@ -1050,23 +1031,23 @@ msgstr "Logischer Größer-als-Operator"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:691
 msgid "top of Action 1 stack"
-msgstr "Anfang des Stapels von Aktion 1"
+msgstr "Stapelanfang von Aktion 1"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:692
 msgid "top of Action 2 stack"
-msgstr "Anfang des Stapels von Aktion 2"
+msgstr "Stapelanfang von Aktion 2"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:693
 msgid "top of nameable action stack"
-msgstr "Anfang des Stapels einer benennbaren Aktion"
+msgstr "Stapelanfang einer benennbaren Aktion"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:694
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
 msgstr ""
-"Die aktuelle Richtung der Turtle (kann an Stelle eines Zahlenblocks benutzt "
-"werden)"
+"Die aktuelle Richtung der Schildkröte (kann an Stelle eines Zahlenblocks "
+"benutzt werden)"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:695
 msgid "the canvas height"
@@ -1077,7 +1058,6 @@ msgid "declutters canvas by hiding blocks"
 msgstr "Fenster durch Verbergen der Blöcke aufräumen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:698
-#, fuzzy
 msgid "jogs stack right"
 msgstr "Stapel nach rechts versetzen"
 
@@ -1099,7 +1079,7 @@ msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:702
 msgid "Sugar Journal media object"
-msgstr "Medienobjekt aus dem Sugar-Journal"
+msgstr "Medienobjekt aus dem Sugar-Tagebuch"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:703
 msgid "query for keyboard input (results stored in keyboard block)"
@@ -1116,7 +1096,7 @@ msgstr "x-Koordinate des linken Bildschirmrandes"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:706
 msgid "turns turtle counterclockwise (angle in degrees)"
-msgstr "Turtle gegen den Uhrzeigersinn drehen (Winkel in Grad)"
+msgstr "Schildkröte gegen den Uhrzeigersinn drehen (Winkel in Grad)"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:707
 msgid "logical less-than operator"
@@ -1162,7 +1142,7 @@ msgstr "Nächste Palette anzeigen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:714
 msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr "Code aus dem Modul tamyblock.py aus dem Journal ausführen"
+msgstr "Code aus dem Modul tamyblock.py aus dem Tagebuch ausführen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:715
 msgid "logical NOT operator"
@@ -1181,13 +1161,12 @@ msgid "logical OR operator"
 msgstr "Logischer ODER-Operator"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:719
-#, fuzzy
 msgid "changes the orientation of the palette of blocks"
-msgstr "Orientierung der Block-Palette ändern"
+msgstr "Die Ausrichtung der Block-Palette ändern"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:720
 msgid "Turtle will draw when moved."
-msgstr "Turtle zeichnet bei Bewegung"
+msgstr "Die Bewegung der Schildkröte wird aufgezeichnet."
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:721
 msgid "Palette of pen commands"
@@ -1200,29 +1179,29 @@ msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:723
 msgid "Turtle will not draw when moved."
-msgstr "Turtle zeichnet nicht bei Bewegung"
+msgstr "Die Bewegung der Schildkröte wird nicht aufgezeichnet."
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:724
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:778
 msgid "presentation template: select Journal object (with description)"
-msgstr "Präsentationsvorlage: ein Journal-Objekt (mit Beschreibung)"
+msgstr "Präsentationsvorlage: ein Tagebuch-Objekt (mit Beschreibung)"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:725
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:779
 msgid "presentation template: select Journal object (no description)"
-msgstr "Präsentationsvorlage: ein Journal-Objekt (ohne Beschreibung)"
+msgstr "Präsentationsvorlage: ein Tagebuch-Objekt (ohne Beschreibung)"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:726
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:727
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:780
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:781
 msgid "presentation template: select two Journal objects"
-msgstr "Präsentationsvorlage: zwei Journal-Objekte"
+msgstr "Präsentationsvorlage: zwei Tagebuch-Objekte"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:728
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:782
 msgid "presentation template: select four Journal objects"
-msgstr "Präsentationsvorlage: vier Journal-Objekte"
+msgstr "Präsentationsvorlage: vier Tagebuch-Objekte"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:729
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:783
@@ -1243,7 +1222,7 @@ msgstr "Polarkoordinaten anzeigen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:733
 msgid "pops value off FILO (first-in last-out heap)"
-msgstr "Wert aus FILO-Stapel (first in, last out) entfernen: pop"
+msgstr "Wert aus FILO-Stapel (first in, last out) entfernen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:734
 msgid "Palette of presentation templates"
@@ -1254,7 +1233,6 @@ msgid "prints value in status block at bottom of the screen"
 msgstr "Wert im Statusblock am unteren Bildschirmrand anzeigen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:736
-#, fuzzy
 msgid "shows values in FILO (first-in last-out heap)"
 msgstr "Werte im FILO-Stapel (first in, last out) anzeigen"
 
@@ -1264,7 +1242,7 @@ msgstr "Zwei Zahleneingaben multiplizieren"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:738
 msgid "pushes value onto FILO (first-in last-out heap)"
-msgstr "Wert in FILO-Stapel (first in, last out) schreiben: push"
+msgstr "Wert in FILO-Stapel (first in, last out) schreiben"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:739
 msgid "returns random number between minimum (top) and maximum (bottom) values"
@@ -1296,7 +1274,7 @@ msgstr "x-Koordinate des rechten Bildschirmrandes"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:746
 msgid "turns turtle clockwise (angle in degrees)"
-msgstr "Turtle im Uhrzeigersinn drehen (Winkel in Grad)"
+msgstr "Schildkröte im Uhrzeigersinn drehen (Winkel in Grad)"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:749
 msgid "bottom block in a collapsibe stack: click to collapse"
@@ -1316,27 +1294,27 @@ msgstr "Anfang eines zugeklappten Stapels"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:753
 msgid "saves a picture to the Sugar Journal"
-msgstr "Ein Bild ins Sugar-Journal speichern"
+msgstr "Ein Bild ins Sugar-Tagebuch speichern"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:754
 msgid "saves turtle graphics as an SVG file in the Sugar Journal"
-msgstr "Eine Turtle-Grafik als SVG ins Sugar-Journal speichern"
+msgstr "Eine Schildkröten-Grafik als SVG ins Sugar-Tagebuch speichern"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:755
 msgid "holds current scale value"
-msgstr "Aktueller Skalierungswert"
+msgstr "Aktueller Skalierungsfaktor"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:756
 msgid "sets color of the line drawn by the turtle"
-msgstr "Farbe der von der Turtle gezeichneten Linie setzen"
+msgstr "Farbe der Schildkrötenspur festlegen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:757
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
-msgstr "Richtung der Turtle setzen (0 zeigt zum oberen Bildschirmrand.)"
+msgstr "Richtung der Schildkröte festlegen (0 zeigt zum oberen Bildschirmrand.)"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:758
 msgid "sets size of the line drawn by the turtle"
-msgstr "Breite der von der Turtle gezeichneten Linie setzen"
+msgstr "Breite der Schildkrötenspur festlegen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:759
 msgid "sets the scale of media"
@@ -1344,28 +1322,28 @@ msgstr "Skalierung der Medien setzen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:760
 msgid "sets shade of the line drawn by the turtle"
-msgstr "Farbton der von der Turtle gezeichneten Linie setzen"
+msgstr "Schattierung der Schildkrötenspur festlegen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:761
 msgid "sets color of text drawn by the turtle"
-msgstr "Farbe des von der Turtle gezeichneten Textes setzen"
+msgstr "Farbe des Textes festlegen, den die Schildkröte zeichnet"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:762
 msgid "sets size of text drawn by turtle"
-msgstr "Größe des von der Turtle gezeichneten Textes setzen"
+msgstr "Größe des Textes festlegen, den die Schildkröte zeichnet"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:763
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-msgstr "Turtle zur Position x,y bewegen; (0,0) liegt in Bildschirmmitte."
+msgstr "Schildkröte zur Position x,y bewegen; (0,0) liegt in Bildschirmmitte."
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:764
 msgid "holds current pen shade"
-msgstr "Aktueller Farbton des Stiftes"
+msgstr "Aktuelle Schattierung des Stiftes"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:765
 msgid "draws text or show media from the Journal"
-msgstr "Text zeichnen oder Medien aus dem Journal anzeigen"
+msgstr "Text zeichnen oder Medien aus dem Tagebuch anzeigen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:766
 msgid "restores hidden blocks"
@@ -1377,15 +1355,15 @@ msgstr "Quadratwurzel berechnen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:768
 msgid "invokes Action 1 stack"
-msgstr "Aufruf des Stapels von Aktion 1"
+msgstr "Stapel von Aktion 1 afurufen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:769
 msgid "invokes Action 2 stack"
-msgstr "Aufruf des Stapels von Aktion 2"
+msgstr "Stapel von Aktion 2 aufrufen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:770
 msgid "invokes named action stack"
-msgstr "Aufruf des Stapels einer benannten Aktion"
+msgstr "Stapel einer benannten Aktion aufrufen"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:771
 msgid "connects action to toolbar run buttons"
@@ -1393,7 +1371,7 @@ msgstr "Aktion mit Startknöpfen in der Werkzeugleiste verbinden"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:773
 msgid "stops current action"
-msgstr "Aktuelle Aktion anhalten"
+msgstr "Aktuelle Aktion beenden"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:774
 msgid "stores numeric value in Variable 1"
@@ -1405,7 +1383,7 @@ msgstr "Zahlenwert in Variable 2 speichern"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:776
 msgid "stores numeric value in named variable"
-msgstr "Zahlenwert in benannter Variable speichern"
+msgstr "Zahlenwert in benannte Variable speichern"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:777
 msgid "string value"
@@ -1414,14 +1392,12 @@ msgstr "Zeichenkette"
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:784
 msgid "holds current text color (can be used in place of a number block)"
 msgstr ""
-"beinhaltet die aktuelle Schriftfarbe (kann an Stelle eines Zahlenblocks "
-"benutzt werden)"
+"die aktuelle Schriftfarbe (kann an Stelle eines Zahlenblocks benutzt werden)"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:785
 msgid "holds current text size (can be used in place of a number block)"
 msgstr ""
-"beinhaltet die aktuelle Schriftgröße (kann an Stelle eines Zahlenblocks "
-"benutzt werden)"
+"die aktuelle Schriftgröße (kann an Stelle eines Zahlenblocks benutzt werden)"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:786
 msgid "ycor of top of screen"
@@ -1433,7 +1409,7 @@ msgstr "Mülleimer"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:788
 msgid "Palette of turtle commands"
-msgstr "Palette der Turtle-Befehle"
+msgstr "Palette der Schildkröten-Befehle"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:789
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
@@ -1450,7 +1426,6 @@ msgid "microphone input volume"
 msgstr "Mikrofoneingangslautstärke"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:792
-#, fuzzy
 msgid "jogs stack down"
 msgstr "Stapel nach unten versetzen"
 
@@ -1473,16 +1448,16 @@ msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
-"beinhaltet den aktuellen x-Wert der Turtle-Position (kann an Stelle eines "
-"Zahlenblocks benutzt werden)"
+"der aktuelle x-Wert der Turtle-Position (kann an Stelle eines Zahlenblocks "
+"benutzt werden)"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:797
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
-"beinhaltet den aktuellen y-Wert der Turtle-Position (kann an Stelle eines "
-"Zahlenblocks benutzt werden)"
+"der aktuelle y-Wert der Turtle-Position (kann an Stelle eines Zahlenblocks "
+"benutzt werden)"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:856
 msgid "bulleted list"
