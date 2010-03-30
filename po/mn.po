@@ -37,8 +37,10 @@ msgid "name"
 msgstr "нэр"
 
 #:
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:189
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:895
 msgid "Project"
-msgstr ""
+msgstr "Төсөл"
 
 #:
 msgid "Save as"
@@ -50,8 +52,9 @@ msgid "hide palette"
 msgstr ""
 
 #: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:273
 msgid "hide blocks"
-msgstr ""
+msgstr "Блок нуух"
 
 #: TurtleArtActivity.py:194
 msgid "run"
@@ -87,8 +90,9 @@ msgid "show palette"
 msgstr ""
 
 #: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:342
 msgid "show blocks"
-msgstr ""
+msgstr "Блокыг харуул"
 
 #:
 msgid "Flow"
@@ -151,12 +155,14 @@ msgid "store in box 2"
 msgstr "богц 2-д хадгал"
 
 #:
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:314
 msgid "push"
-msgstr ""
+msgstr "өг"
 
 #:
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:309
 msgid "pop"
-msgstr ""
+msgstr "ав"
 
 #:
 msgid "Numbers"
@@ -175,24 +181,28 @@ msgid "or"
 msgstr "эсвэл"
 
 #:
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:293
 msgid "not"
-msgstr ""
+msgstr "үгүйсгэ"
 
 #:
 msgid "random"
 msgstr "тохиолдлын"
 
 #:
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:315
 msgid "min"
-msgstr ""
+msgstr "МИН"
 
 #:
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:315
 msgid "max"
-msgstr ""
+msgstr "МАКС"
 
 #:
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:317
 msgid "mod"
-msgstr ""
+msgstr "үлдэгдэл"
 
 #:
 msgid "print"
@@ -239,8 +249,9 @@ msgid "set color"
 msgstr "өнгө"
 
 #:
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:337
 msgid "set text color"
-msgstr ""
+msgstr "Үсгэнд өнгө өг"
 
 #:
 msgid "Blocks"
@@ -357,4 +368,3 @@ msgstr ""
 #:
 msgid "start"
 msgstr "эхлүүлэх"
-
