@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-25 17:04+0000\n"
-"PO-Revision-Date: 2010-03-26 18:39+0200\n"
+"PO-Revision-Date: 2010-03-30 11:51+0200\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -1282,65 +1282,56 @@ msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:753
 msgid "saves a picture to the Sugar Journal"
-msgstr ""
+msgstr "Salva una immagine nel Diario di Sugar"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:754
 msgid "saves turtle graphics as an SVG file in the Sugar Journal"
-msgstr ""
+msgstr "salva i disegni della tartaruga come file SVG nel Diario"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:755
 msgid "holds current scale value"
-msgstr ""
+msgstr "mantiene il valore di scala corrente"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:756
-#, fuzzy
 msgid "sets color of the line drawn by the turtle"
 msgstr "seleziona il colore della linea disegnata dalla tartaruga"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:757
-#, fuzzy
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
-msgstr "modifica la direzione della tartaruga (0 è verso l'alto)"
+msgstr "seleziona la direzione della tartaruga (0 è verso l'alto)"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:758
-#, fuzzy
 msgid "sets size of the line drawn by the turtle"
 msgstr "seleziona la larghezza della linea disegnata dalla tartaruga"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:759
-#, fuzzy
 msgid "sets the scale of media"
 msgstr "seleziona la scala di visualizzazione del contributo"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:760
-#, fuzzy
 msgid "sets shade of the line drawn by the turtle"
 msgstr "seleziona l'ombreggiatura della linea disegnata dalla tartaruga"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:761
-#, fuzzy
 msgid "sets color of text drawn by the turtle"
 msgstr "seleziona il colore del testo disegnato dalla tartaruga"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:762
-#, fuzzy
 msgid "sets size of text drawn by turtle"
 msgstr "seleziona la dimensione del testo disegnato dalla tartaruga"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:763
-#, fuzzy
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr ""
-"muovi la tartaruga alle coordinate xcor, ycor; (0,0) è il centro dello "
+"muove la tartaruga alle coordinate xcor, ycor; (0,0) è il centro dello "
 "schermo."
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:764
 msgid "holds current pen shade"
-msgstr ""
+msgstr "mantiene l'ombreggiatura corrente della penna"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:765
-#, fuzzy
 msgid "draws text or show media from the Journal"
 msgstr "disegna un testo o mostra un contenuto multimediale dal Diario"
 
@@ -1349,22 +1340,18 @@ msgid "restores hidden blocks"
 msgstr ""
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:767
-#, fuzzy
 msgid "calculates square root"
 msgstr "calcola la radice quadrata"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:768
-#, fuzzy
 msgid "invokes Action 1 stack"
-msgstr "invoca la sequenza di azioni 1"
+msgstr "invoca la sequenza Azione 1"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:769
-#, fuzzy
 msgid "invokes Action 2 stack"
-msgstr "invoca la sequenza di azioni 2"
+msgstr "invoca la sequenza Azione 2"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:770
-#, fuzzy
 msgid "invokes named action stack"
 msgstr "invoca la sequenza di azioni con nome"
 
