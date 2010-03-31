@@ -3,13 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: 2009-02-17 16:34-0500\n"
-"Last-Translator: Odontsetseg Bat-Erdene <obat-erdene@suffolk.edu>\n"
+"PO-Revision-Date: 2010-03-31 20:52+0200\n"
+"Last-Translator: Cris Anderson <anderson861@gmail.com>\n"
 "Language-Team: Mongolian\n"
+"Language: mn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0rc2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.3\n"
 
 #: 
 msgid "Turtle Art"
@@ -116,7 +118,7 @@ msgstr "эсвэл"
 
 #:
 msgid "repeat"
-msgstr "дabtax"
+msgstr "дaвтax"
 
 #:
 msgid "stop stack"
@@ -226,11 +228,11 @@ msgstr "дзлгзц"
 
 #:
 msgid "pen up"
-msgstr "зур"
+msgstr "бүү зур"
 
 #:
 msgid "pen down"
-msgstr "бүү зур"
+msgstr "зур"
 
 #:
 msgid "set pen size"
@@ -291,7 +293,7 @@ msgstr "ѳнцѳг"
 
 #:
 msgid "radius"
-msgstr "радмус"
+msgstr "радиус"
 
 #:
 msgid "heading"
@@ -299,7 +301,7 @@ msgstr "чиг"
 
 #:
 msgid "set heading"
-msgstr "seth"
+msgstr "чиглэл"
 
 #:
 msgid "set xy"
@@ -335,7 +337,7 @@ msgstr "өндөр"
 
 #:
 msgid "voltage"
-msgstr "цахилгааны хүчдэл"
+msgstr "цахилгаан хүчдэл"
 
 #:
 msgid "resistance"
@@ -367,4 +369,4 @@ msgstr ""
 
 #:
 msgid "start"
-msgstr "эхлүүлэх"
+msgstr "эхэл"
