@@ -1036,12 +1036,10 @@ msgid "the canvas height"
 msgstr "la altura del lienzo"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:696
-#, fuzzy
 msgid "declutters canvas by hiding blocks"
 msgstr "ordena el lienzo ocultando bloques"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:698
-#, fuzzy
 msgid "jogs stack right"
 msgstr "desplaza la pila a la derecha"
 
@@ -1077,7 +1075,6 @@ msgid "xcor of left of screen"
 msgstr "xcor de la izquierda de la pantalla"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:706
-#, fuzzy
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "gira la tortuga en sentido anti-horario (ángulo en grados)"
 
@@ -1199,7 +1196,6 @@ msgid "microphone input pitch"
 msgstr "campo de entrada de micrófono"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:731
-#, fuzzy
 msgid "adds two alphanumeric inputs"
 msgstr "suma dos entradas alfanuméricas"
 
@@ -1208,7 +1204,6 @@ msgid "displays polar coordinates"
 msgstr "muestra las coordenadas polares"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:733
-#, fuzzy
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr "saca el valor de la pila FILO (primero en entrar, último en salir)"
 
@@ -1312,27 +1307,22 @@ msgid "sets size of the line drawn by the turtle"
 msgstr "fija el ancho de la línea que la tortuga dibuja"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:759
-#, fuzzy
 msgid "sets the scale of media"
 msgstr "fijar la escala de medios"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:760
-#, fuzzy
 msgid "sets shade of the line drawn by the turtle"
 msgstr "fijar la oscuridad de la linea que la tortuga dibuja"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:761
-#, fuzzy
 msgid "sets color of text drawn by the turtle"
 msgstr "fijar el color del texto que la tortuga dibuja"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:762
-#, fuzzy
 msgid "sets size of text drawn by turtle"
 msgstr "fijar el tamaño del texto que la tortuga dibuja"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:763
-#, fuzzy
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr ""
@@ -1344,7 +1334,6 @@ msgid "holds current pen shade"
 msgstr "tiene color actual de la pluma"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:765
-#, fuzzy
 msgid "draws text or show media from the Journal"
 msgstr "dibujar texto o mostrar medios desde el Diario"
 
@@ -1353,22 +1342,18 @@ msgid "restores hidden blocks"
 msgstr "restaura bloques ocultos"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:767
-#, fuzzy
 msgid "calculates square root"
 msgstr "calcular la raíz cuadrada"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:768
-#, fuzzy
 msgid "invokes Action 1 stack"
 msgstr "invocar la pila de acción 1"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:769
-#, fuzzy
 msgid "invokes Action 2 stack"
 msgstr "invocar la pila de acción 2"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:770
-#, fuzzy
 msgid "invokes named action stack"
 msgstr "invocar la pila de acción nombrado"
 
@@ -1382,17 +1367,14 @@ msgid "stops current action"
 msgstr "detiene la acción actual"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:774
-#, fuzzy
 msgid "stores numeric value in Variable 1"
 msgstr "guardar valor numérico en variable 1"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:775
-#, fuzzy
 msgid "stores numeric value in Variable 2"
 msgstr "guardar valor numérico en variable 2"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:776
-#, fuzzy
 msgid "stores numeric value in named variable"
 msgstr "guardar valor numérico en variable nombrado"
 
@@ -1421,12 +1403,10 @@ msgid "Trashcan"
 msgstr "bote de basura"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:788
-#, fuzzy
 msgid "Palette of turtle commands"
 msgstr "paleta de comandos de la tortuga"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:789
-#, fuzzy
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 "operador si-entonces-otro que usa operadores lógicos de la paleta de Números"
@@ -1440,7 +1420,6 @@ msgid "microphone input volume"
 msgstr "volumen de entrada de micrófono"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:792
-#, fuzzy
 msgid "jogs stack down"
 msgstr "desplazar la pila abajo"
 
@@ -1449,7 +1428,6 @@ msgid "pauses program execution a specified number of seconds"
 msgstr "detiene la ejecución del programa por número determinado de segundos"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:794
-#, fuzzy
 msgid "do-while-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 "operador si-entonces-otro que usa operadores lógicos de la paleta de Números"
@@ -1498,145 +1476,3 @@ msgstr "dibujos 1x2"
 msgid "1×1 picture"
 msgstr "dibujos 1x1"
 
-#~ msgid "name"
-#~ msgstr "nombre"
-
-#~ msgid "holds current scale value (can be used in place of a number block)"
-#~ msgstr ""
-#~ "contiene el valor actual de la escala (se puede usar en vez de un bloque de "
-#~ "número)"
-
-#~ msgid "holds current pen shade (can be used in place of a number block)"
-#~ msgstr ""
-#~ "contiene la oscuridad actual de la pluma (se puede usar en vez de un bloque "
-#~ "de número)"
-
-#~ msgid ""
-#~ "a programmable block: add your own math equation in the block, e.g., sin(x)"
-#~ msgstr ""
-#~ "bloque programable: añade tu ecuación matemática en el bloque, por ejemplo, "
-#~ "sin(x)"
-
-#~ msgid "pop value off FILO"
-#~ msgstr "depilar valor desde FILO"
-
-#~ msgid "show FILO in status block"
-#~ msgstr "mostrar FILO en bloque de estado"
-
-#~ msgid "empty FILO"
-#~ msgstr "vaciar FILO"
-
-#~ msgid "wait specified number of seconds"
-#~ msgstr "esperar el número de segundos especificado"
-
-#~ msgid "do not continue current action"
-#~ msgstr "no continuar la acción actual"
-
-#, fuzzy
-#~ msgid "<Alt>p"
-#~ msgstr "<Alt>p"
-
-#, fuzzy
-#~ msgid "<Alt>b"
-#~ msgstr "<Alt>b"
-
-#, fuzzy
-#~ msgid "<Alt>e"
-#~ msgstr "<Alt>l"
-
-#, fuzzy
-#~ msgid "<Alt>r"
-#~ msgstr "<Alt>e"
-
-#, fuzzy
-#~ msgid "<Alt>w"
-#~ msgstr "<Alt>d"
-
-#, fuzzy
-#~ msgid "<Alt>s"
-#~ msgstr "<Alt>t"
-
-#~ msgid "load my block"
-#~ msgstr "cargar mi bloque"
-
-#, fuzzy
-#~ msgid "<Alt>o"
-#~ msgstr "<Alt>c"
-
-#~ msgid "stack 2"
-#~ msgstr "pila 2"
-
-#~ msgid "stack 1"
-#~ msgstr "pila 1"
-
-#~ msgid "Keyboard"
-#~ msgstr "Teclado"
-
-#~ msgid "Flow"
-#~ msgstr "Flujo"
-
-#~ msgid "else"
-#~ msgstr "si no"
-
-#~ msgid "My Blocks"
-#~ msgstr "Mis bloques"
-
-#~ msgid "Numbers"
-#~ msgstr "Números"
-
-#~ msgid "Templates"
-#~ msgstr "Plantillas"
-
-#~ msgid "Extras"
-#~ msgstr "Extras"
-
-#~ msgid "read key"
-#~ msgstr "leer tecla"
-
-#~ msgid "clean"
-#~ msgstr "limpiar"
-
-#~ msgid "setyx"
-#~ msgstr "setyx"
-
-#~ msgid "sound"
-#~ msgstr "sonido"
-
-#~ msgid "text color"
-#~ msgstr "color del texto"
-
-#~ msgid "Pen"
-#~ msgstr "Pluma"
-
-#~ msgid "hide palette"
-#~ msgstr "oculta los palettes"
-
-#~ msgid "stack"
-#~ msgstr "acción"
-
-#~ msgid "Save as"
-#~ msgstr "Guardar a/abrir de"
-
-#~ msgid "samples"
-#~ msgstr "ejemplos"
-
-#~ msgid "save Logo"
-#~ msgstr "Guardar  Logo"
-
-#~ msgid "run"
-#~ msgstr "correr"
-
-#~ msgid "stop stack"
-#~ msgstr "detener acción"
-
-#~ msgid "Blocks"
-#~ msgstr "Bloques"
-
-#~ msgid "Sensors"
-#~ msgstr "Sensores"
-
-#~ msgid "hres"
-#~ msgstr "res h"
-
-#~ msgid "vres"
-#~ msgstr "res v"
