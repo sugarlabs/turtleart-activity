@@ -1,3 +1,9 @@
+85
+
+* Fixed bug loading floating point numbers from saved projects
+* 'store in box' accepts strings and numbers as labels
+* New es translations
+
 84
 
 * merge with mainline
