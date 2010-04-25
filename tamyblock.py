@@ -46,7 +46,7 @@
 # Blocks, Block		tablock.py	block_list	tawindow.py
 # 
 # 
-# Class TurtleArtWindow – useful properties and methods (from within
+# Class TurtleArtWindow -- useful properties and methods (from within
 # tamyblock.py, lc.tw is the class instance)
 # 
 # Methods and data attributes	Example
@@ -64,7 +64,7 @@
 # Note: The active turtle instance
 # 
 # 
-# Class TurtleGraphics – useful properties and methods (from within
+# Class TurtleGraphics -- useful properties and methods (from within
 # tamyblock.py, lc.tw.canvas is the class instance)
 # 
 # Methods and data attributes	Example
