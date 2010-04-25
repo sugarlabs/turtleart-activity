@@ -169,7 +169,7 @@ def myblock(lc, x):
             lc.tw.canvas.setpen(False)
             lc.tw.canvas.forward((lc.tw.canvas.pensize*2)-1)
             dist += (lc.tw.canvas.pensize*2)
-        lc.tw.canvas.forward(x-dist)           # make sure we have moved exactly x
+        lc.tw.canvas.forward(x-dist)  # make sure we have moved exactly x
         lc.tw.canvas.setpen(True)
     else:
         lc.tw.canvas.forward(x)
@@ -229,4 +229,17 @@ def myblock(lc, x):
     # lc.tw.save_as_image(str(x))
     # return
 
+    ###########################################################################
+    #
+    # Push mouse event to stack
+    #
+    ###########################################################################
 
+    # if lc.tw.mouse_flag == 1:
+    #     lc.heap.append(lc.tw.mouse_y)
+    #     lc.heap.append(lc.tw.mouse_x)
+    #     lc.heap.append(1) # mouse event
+    #     lc.tw.mouseflag = 0
+    # else:
+    #     lc.heap.append(0) # no mouse event
+    # return

@@ -94,6 +94,9 @@ class TurtleArtWindow():
         self.keypress = ""
         self.keyvalue = 0
         self.dead_key = ""
+        self.mouse_flag = 0
+        self.mouse_x = 0
+        self.mouse_y = 0
         self.area = self.window.window
         self.gc = self.area.new_gc()
         self.orientation = HORIZONTAL_PALETTE
@@ -636,6 +639,9 @@ class TurtleArtWindow():
         """ Button press """
         self.window.grab_focus()
         x, y = xy(event)
+        self.mouse_flag = 1
+        self.mouse_x = x
+        self.mouse_y = y
         self.button_press(event.get_state()&gtk.gdk.CONTROL_MASK, x, y)
         return True
 
