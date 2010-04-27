@@ -120,7 +120,8 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'arc', 'scale', 'leftpos', 'toppos', 'rightpos',
              'bottompos'],
             ['penup','pendown', 'setpensize', 'fillscreen', 'pensize',
-             'setcolor', 'setshade', 'color', 'shade'],
+             'setcolor', 'setshade', 'setgray', 'color', 'shade',
+             'gray', 'startfill', 'stopfill' ],
             [ 'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple'],
             ['plus2', 'minus2', 'product2',
              'division2', 'identity2', 'remainder2', 'sqrt', 'random',
@@ -185,7 +186,7 @@ BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show', 'image',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print', 'showaligned',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1', 'savepix',
     'storeinbox2', 'wait', 'stack', 'push', 'nop', 'addturtle', 'comment',
-    'savesvg']
+    'savesvg', 'setgray']
 BASIC_STYLE_VAR_ARG = ['userdefined', 'userdefined2args', 'userdefined3args']
 BULLET_STYLE = ['templatelist', 'list']
 BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storein', 'write']
@@ -194,7 +195,7 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple',
     'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy',
-    'volume', 'pitch', 'voltage', 'resistance']
+    'volume', 'pitch', 'voltage', 'resistance', 'gray']
 BOX_STYLE_MEDIA =  ['description', 'audio', 'journal']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
 NUMBER_STYLE_VAR_ARG = ['myfunc1arg', 'myfunc2arg', 'myfunc3arg']
@@ -280,6 +281,7 @@ BLOCK_NAMES = {
     'forever':[_('forever')],
     'forward':[_('forward')],
     'fullscreen':[_('full screen')],
+    'gray':[_('gray')],
     'greater2':[">"],
     'green':[_('green')+' = 30'],
     'hat':[_('action')],
@@ -347,6 +349,7 @@ BLOCK_NAMES = {
     'sandwichtop2':[_('top of stack')],
     'scale':[_('scale')],
     'setcolor':[_('set color')],
+    'setgray':[_('set gray')],
     'seth':[_('set heading')],
     'setpensize':[_('set pen size')],
     'setscale':[_('set scale')],
@@ -425,6 +428,7 @@ PRIMITIVES = {
     'forever':'forever',
     'forward':'forward',
     'fullscreen':'fullscreen',
+    'gray':'gray',
     'greater2':'greater?',
     'green':'green',
     'hat':'nop3',
@@ -482,6 +486,7 @@ PRIMITIVES = {
     'savesvg':'savesvg',
     'scale':'scale',
     'setcolor':'setcolor',
+    'setgray':'setgray',
     'seth':'seth',
     'setpensize':'setpensize',
     'setscale':'setscale',
@@ -565,6 +570,7 @@ DEFAULTS = {
     'savepix':[_('picture name')],
     'savesvg':[_('picture name')],
     'setcolor':[0],
+    'setgray':[100],
     'seth':[0],
     'setpensize':[5],
     'setscale':[33],
@@ -718,6 +724,7 @@ HELP_STRINGS = {
     'forever':_("loops forever"),
     'forward':_("moves turtle forward"),
     'fullscreen':_("hides the Sugar toolbars"),
+    'gray':_("holds current gray level (can be used in place of a number block)"),
     'greater2':_("logical greater-than operator"),
     'hat1':_("top of Action 1 stack"),
     'hat2':_("top of Action 2 stack"),
@@ -785,6 +792,7 @@ HELP_STRINGS = {
     'savesvg':_("saves turtle graphics as an SVG file in the Sugar Journal"),
     'scale':_("holds current scale value"),
     'setcolor':_("sets color of the line drawn by the turtle"),
+    'setgray':_("sets gray level of the line drawn by the turtle"),
     'seth':_("sets the heading of the turtle (0 is towards the top of the screen.)"),
     'setpensize':_("sets size of the line drawn by the turtle"),
     'setscale':_("sets the scale of media"),

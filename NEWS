@@ -1,8 +1,11 @@
 87
 
+* added fill block
+* added gray block
 * fixed typo in sample code
 * added mouse support to sample code (See
   http://tonyforster.blogspot.com/2010/03/mouse-support-in-turtleart.html)
+
 
 86
 

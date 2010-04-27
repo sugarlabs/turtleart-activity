@@ -112,6 +112,7 @@ class Turtle:
         self.heading = 0
         self.pen_shade = 50
         self.pen_color = 0
+        self.pen_gray = 100
         self.pen_size = 5
         self.pen_state = True
 
@@ -138,6 +139,10 @@ class Turtle:
     def set_color(self, color):
         """ Set the pen color for this turtle. """
         self.pen_color = color
+
+    def set_gray(self, gray):
+        """ Set the pen gray level for this turtle. """
+        self.pen_gray = gray
 
     def set_shade(self, shade):
         """ Set the pen shade for this turtle. """
@@ -181,6 +186,10 @@ class Turtle:
     def get_color(self):
         """ Return the turtle's color. """
         return(self.pen_color)
+
+    def get_gray(self):
+        """ Return the turtle's gray level. """
+        return(self.pen_gray)
 
     def get_shade(self):
         """ Return the turtle's shade. """

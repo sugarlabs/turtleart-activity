@@ -41,6 +41,11 @@ def calc_shade(c, s):
         return int(c*(1+s*.8))
     return int(c+(65536-c)*s*.9)
 
+def calc_gray(c, g):
+    if g == 100:
+        return c
+    return int(((c*g)+(32768*(100-g)))/100)
+
 colors = {}
 DEGTOR = 2*pi/360
 
@@ -96,6 +101,7 @@ class TurtleGraphics:
         self.pensize = 5
         self.tcolor = 0
         self.color = 0
+        self.gray = 100
         self.fill = False
         self.poly_points = []
         self.svg = SVG()
@@ -139,6 +145,7 @@ class TurtleGraphics:
         self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
         self.invalt(0, 0, self.width, self.height)
         self.setpensize(5, share)
+        self.setgray(100, share)
         self.setcolor(0, share)
         self.settextcolor(70)
         self.settextsize(48)
@@ -322,6 +329,22 @@ class TurtleGraphics:
             self.tw.activity.send_event("c|%s" % \
                 (data_to_string([self.tw.nick, round_int(c)])))
 
+    def setgray(self, g, share=True):
+        try:
+            self.gray = g
+        except:
+            pass
+        if self.gray < 0:
+            self.gray = 0
+        if self.gray > 100:
+            self.gray = 100
+        self.set_fgcolor()
+        self.set_textcolor()
+        self.tw.active_turtle.set_gray(self.gray)
+        if self.tw.sharing() and share:
+            self.tw.activity.send_event("g|%s" % \
+                (data_to_string([self.tw.nick, round_int(self.gray)])))
+
     def settextcolor(self, c):
         try:
             self.tcolor = c
@@ -367,6 +390,8 @@ class TurtleGraphics:
         sh = (wrap100(self.shade) - 50)/50.0
         rgb = color_table[wrap100(self.color)]
         r, g, b = (rgb>>8)&0xff00, rgb&0xff00, (rgb<<8)&0xff00
+        r, g, b = calc_gray(r, self.gray), calc_gray(g, self.gray),\
+                  calc_gray(b, self.gray)
         r, g, b = calc_shade(r, sh), calc_shade(g, sh), calc_shade(b, sh)
         self.fgrgb = [r>>8, g>>8, b>>8]
         self.fgcolor = self.cm.alloc_color(r, g, b)
@@ -472,6 +497,7 @@ class TurtleGraphics:
         self.ycor = self.height/2 - ty - 30
         self.heading = self.tw.active_turtle.get_heading()
         self.setcolor(self.tw.active_turtle.get_color(), False)
+        self.setgray(self.tw.active_turtle.get_gray(), False)
         self.setshade(self.tw.active_turtle.get_shade(), False)
         self.setpensize(self.tw.active_turtle.get_pen_size(), False)
         self.setpen(self.tw.active_turtle.get_pen_state(), False)
