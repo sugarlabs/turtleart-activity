@@ -632,6 +632,14 @@ class TurtleArtActivity(activity.Activity):
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.setcolor(x, False)
+        elif text[0] == 'g': # set turtle pen gray level
+            e = text.split("|", 2)
+            text = e[1]
+            if len(text) > 0:
+                 [nick, x] = data_from_string(text)
+                 if nick != self.tw.nick:
+                     self.tw.canvas.set_turtle(nick)
+                     self.tw.canvas.setgray(x, False)
         elif text[0] == 's': # set turtle pen shade
             e = text.split("|", 2)
             text = e[1]
@@ -681,7 +689,6 @@ class TurtleArtActivity(activity.Activity):
     def _keep_clicked_cb(self, button):
         """ Keep button clicked. """
         self.jobject_new_patch()
-
 
     def _setup_toolbar(self):
         """ Setup toolbar according to Sugar version """
