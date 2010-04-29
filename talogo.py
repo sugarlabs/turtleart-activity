@@ -987,7 +987,6 @@ class LogoCode:
                 if int(float(x)) == x:
                     x = int(x)
             self.boxes[name+str(x)] = val
-        print self.boxes
 
     def prim_push(self, val):
         """ Push value onto FILO """
