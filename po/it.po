@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-25 17:04+0000\n"
-"PO-Revision-Date: 2010-03-30 11:51+0200\n"
+"PO-Revision-Date: 2010-05-13 12:05+0200\n"
 "Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -1266,19 +1266,19 @@ msgstr "ruota tartaruga in senso orario (in gradi)"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:749
 msgid "bottom block in a collapsibe stack: click to collapse"
-msgstr ""
+msgstr "blocco inferiore di una catasta comprimibile: clicca per comprimere"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:750
 msgid "bottom block in a collapsed stack: click to open"
-msgstr ""
+msgstr "blocco inferiore di una catasta compressa: clicca per aprire"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:751
 msgid "top of a collapsible stack"
-msgstr ""
+msgstr "apice di una catasta comprimibile"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:752
 msgid "top of a collapsed stack"
-msgstr ""
+msgstr "apice di una catasta compressa"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:753
 msgid "saves a picture to the Sugar Journal"
@@ -1337,7 +1337,7 @@ msgstr "disegna un testo o mostra un contenuto multimediale dal Diario"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:766
 msgid "restores hidden blocks"
-msgstr ""
+msgstr "recupera i blocchi nascosti"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:767
 msgid "calculates square root"
