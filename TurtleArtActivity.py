@@ -191,8 +191,8 @@ class TurtleArtActivity(activity.Activity):
     def do_load_ta_project_cb(self, button):
         """ Load a project from the Journal """
         from sugar.graphics.objectchooser import ObjectChooser
-        chooser = ObjectChooser(_("Project"), None, gtk.DIALOG_MODAL | \
-            gtk.DIALOG_DESTROY_WITH_PARENT)
+        chooser = ObjectChooser(_("Project"), self,
+                              gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
         try:
             result = chooser.run()
             if result == gtk.RESPONSE_ACCEPT:
@@ -218,8 +218,8 @@ class TurtleArtActivity(activity.Activity):
     def import_py(self):
         """ Import Python code from the Journal to load into 'myblock'. """
         from sugar.graphics.objectchooser import ObjectChooser
-        chooser = ObjectChooser('Python code', None, gtk.DIALOG_MODAL | \
-            gtk.DIALOG_DESTROY_WITH_PARENT)
+        chooser = ObjectChooser('Python code', self,
+                              gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
         try:
             result = chooser.run()
             if result == gtk.RESPONSE_ACCEPT:

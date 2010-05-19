@@ -73,6 +73,7 @@ class TurtleArtWindow():
     def __init__(self, win, path, parent=None, mycolors=None):
         self.win = None
         self.window = win
+        self.parent = parent
         self.path = path
         self.load_save_folder = os.path.join(path, 'samples')
         self.save_folder = None
@@ -1426,8 +1427,8 @@ class TurtleArtWindow():
     def _import_from_journal(self, blk):
         """ Import a file from the Sugar Journal """
         if self.running_sugar:
-            chooser = ObjectChooser('Choose image', None,
-                       gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+            chooser = ObjectChooser('Choose image', tw.parent,
+                              gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
             try:
                 result = chooser.run()
                 if result == gtk.RESPONSE_ACCEPT:
