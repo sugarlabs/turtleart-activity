@@ -1427,7 +1427,7 @@ class TurtleArtWindow():
     def _import_from_journal(self, blk):
         """ Import a file from the Sugar Journal """
         if self.running_sugar:
-            chooser = ObjectChooser('Choose image', tw.parent,
+            chooser = ObjectChooser('Choose image', self.parent,
                               gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
             try:
                 result = chooser.run()
