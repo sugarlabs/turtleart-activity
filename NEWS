@@ -1,3 +1,8 @@
+89
+
+* added non-interactive mode (with help from Jamie Boisture)
+* fix problem with icon in F13
+
 88
 
 * alsroot fixed ObjectChooser bug (#2002)
