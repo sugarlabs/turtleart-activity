@@ -1972,9 +1972,9 @@ class TurtleArtWindow():
             blk.connections = 'check'
         return blk
     
-    def load_start(self, ta_file=""):
+    def load_start(self, ta_file=None):
         """ Start a new project with a 'start' brick """
-        if self.interactive_mode:
+        if ta_file is None:
             self.process_data([[0, "start", PALETTE_WIDTH + 20,
                                 self.toolbar_offset+PALETTE_HEIGHT + 20,
                                 [None, None]]])

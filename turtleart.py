@@ -23,6 +23,7 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
+import sys
 import os
 import os.path
 from gettext import gettext as _
@@ -32,6 +33,8 @@ from tautils import data_to_string, data_from_string, get_save_name
 from tawindow import TurtleArtWindow
 from taexporthtml import save_html
 from taexportlogo import save_logo
+
+HELP_MSG = "turtleart.py: usage is\nturtleart.py project.ta --output_png\n"
 
 def makepath(path):
     """ Make a path if it doesn't previously exist """
@@ -45,6 +48,33 @@ def makepath(path):
 class TurtleMain():
     def __init__(self):
         """ Launch Turtle Art from outside of Sugar """
+
+        self.ta_file = None
+        self.output_png = False
+
+        # Parse command line
+        if len(sys.argv) > 3:
+                print HELP_MSG
+                return
+        for i in range(len(sys.argv)-1):
+            if sys.argv[i+1] == '-o' or sys.argv[i+1] == '--output_png':
+                self.output_png = True
+            elif sys.argv[i+1] == '-h' or sys.argv[i+1] == '--help':
+                print HELP_MSG
+                return
+            else:
+                self.ta_file = sys.argv[i+1]
+        if self.output_png and self.ta_file is None:
+            print HELP_MSG
+            return
+
+        if self.ta_file is not None:
+            if not self.ta_file.endswith(('.ta')):
+                self.ta_file += '.ta'
+            if not os.path.exists(self.ta_file):
+                print("%s: file not found" % (self.ta_file))
+                return
+
         self.i = 0
         self.scale = 2.0
         self.tw = None
@@ -54,183 +84,190 @@ class TurtleMain():
         map (makepath, (os.path.join(tapath, 'data/'), \
                         os.path.join(tapath, 'instance/')))
 
-        win = gtk.Window(gtk.WINDOW_TOPLEVEL)
-        try:
-            data_file = open('.turtleartrc', 'r')
-        except IOError:
-            data_file = open('.turtleartrc', 'a+')
-            data_file.write(str(50)+'\n')
-            data_file.write(str(50)+'\n')
-            data_file.write(str(800)+'\n')
-            data_file.write(str(550)+'\n')
-            data_file.seek(0)
-        self.x = int(data_file.readline())
-        self.y = int(data_file.readline())
-        self.width = int(data_file.readline())
-        self.height = int(data_file.readline())
-        win.set_default_size(self.width, self.height)
-        win.move(self.x, self.y)
-        win.maximize()
-        win.set_title(_("Turtle Art"))
-        win.connect("delete_event", lambda w, e: gtk.main_quit())
+        if self.output_png:
+            pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8,
+                gtk.gdk.screen_width(), gtk.gdk.screen_height())
+            canvas, mask  = pixbuf.render_pixmap_and_mask()
+        else:
+            win = gtk.Window(gtk.WINDOW_TOPLEVEL)
 
-        menu = gtk.Menu()
+            try:
+                data_file = open('.turtleartrc', 'r')
+            except IOError:
+                data_file = open('.turtleartrc', 'a+')
+                data_file.write(str(50)+'\n')
+                data_file.write(str(50)+'\n')
+                data_file.write(str(800)+'\n')
+                data_file.write(str(550)+'\n')
+                data_file.seek(0)
+            self.x = int(data_file.readline())
+            self.y = int(data_file.readline())
+            self.width = int(data_file.readline())
+            self.height = int(data_file.readline())
 
-        menu_items = gtk.MenuItem(_("New"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_new_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Open"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_open_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Save"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_save_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Save As"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_save_as_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Save as image"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_save_picture_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Save as HTML"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_save_html_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Save as Logo"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_save_logo_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Quit"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self.destroy)
-        menu_items.show()
+            win.set_default_size(self.width, self.height)
+            win.move(self.x, self.y)
+            win.maximize()
+            win.set_title(_("Turtle Art"))
+            win.connect("delete_event", lambda w, e: gtk.main_quit())
 
-        activity_menu = gtk.MenuItem(_("File"))
-        activity_menu.show()
-        activity_menu.set_submenu(menu)
+            menu = gtk.Menu()
 
-        menu = gtk.Menu()
+            menu_items = gtk.MenuItem(_("New"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_new_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Open"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_open_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Save"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_save_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Save As"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_save_as_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Save as image"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_save_picture_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Save as HTML"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_save_html_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Save as Logo"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_save_logo_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Quit"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self.destroy)
+            menu_items.show()
 
-        menu_items = gtk.MenuItem(_("Cartesian coordinates"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_cartesian_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Polar coordinates"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_polar_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_('Rescale coordinates'))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_rescale_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Grow blocks"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_resize_cb, 1.5)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Shrink blocks"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_resize_cb, 0.667)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Reset block size"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_resize_cb, -1)
-        menu_items.show()
+            activity_menu = gtk.MenuItem(_("File"))
+            activity_menu.show()
+            activity_menu.set_submenu(menu)
+
+            menu = gtk.Menu()
+
+            menu_items = gtk.MenuItem(_("Cartesian coordinates"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_cartesian_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Polar coordinates"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_polar_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_('Rescale coordinates'))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_rescale_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Grow blocks"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_resize_cb, 1.5)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Shrink blocks"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_resize_cb, 0.667)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Reset block size"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_resize_cb, -1)
+            menu_items.show()
         
-        view_menu = gtk.MenuItem(_("View"))
-        view_menu.show()
-        view_menu.set_submenu(menu)
+            view_menu = gtk.MenuItem(_("View"))
+            view_menu.show()
+            view_menu.set_submenu(menu)
 
-        menu = gtk.Menu()
+            menu = gtk.Menu()
 
-        menu_items = gtk.MenuItem(_("Copy"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_copy_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Paste"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_paste_cb)
-        menu_items.show()
+            menu_items = gtk.MenuItem(_("Copy"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_copy_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Paste"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_paste_cb)
+            menu_items.show()
         
-        edit_menu = gtk.MenuItem(_("Edit"))
-        edit_menu.show()
-        edit_menu.set_submenu(menu)
+            edit_menu = gtk.MenuItem(_("Edit"))
+            edit_menu.show()
+            edit_menu.set_submenu(menu)
 
-        menu = gtk.Menu()
+            menu = gtk.Menu()
 
-        menu_items = gtk.MenuItem(_("Show palette"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_palette_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Hide palette"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_hide_palette_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Show/hide blocks"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_hideshow_cb)
-        menu_items.show()
+            menu_items = gtk.MenuItem(_("Show palette"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_palette_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Hide palette"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_hide_palette_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Show/hide blocks"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_hideshow_cb)
+            menu_items.show()
 
-        tool_menu = gtk.MenuItem(_("Tools"))
-        tool_menu.show()
-        tool_menu.set_submenu(menu)
+            tool_menu = gtk.MenuItem(_("Tools"))
+            tool_menu.show()
+            tool_menu.set_submenu(menu)
 
-        menu = gtk.Menu()
+            menu = gtk.Menu()
 
-        menu_items = gtk.MenuItem(_("Clean"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_eraser_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Run"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_run_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Step"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_step_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Debug"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_trace_cb)
-        menu_items.show()
-        menu_items = gtk.MenuItem(_("Stop"))
-        menu.append(menu_items)
-        menu_items.connect("activate", self._do_stop_cb)
-        menu_items.show()
+            menu_items = gtk.MenuItem(_("Clean"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_eraser_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Run"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_run_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Step"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_step_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Debug"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_trace_cb)
+            menu_items.show()
+            menu_items = gtk.MenuItem(_("Stop"))
+            menu.append(menu_items)
+            menu_items.connect("activate", self._do_stop_cb)
+            menu_items.show()
 
-        turtle_menu = gtk.MenuItem(_("Turtle"))
-        turtle_menu.show()
-        turtle_menu.set_submenu(menu)
+            turtle_menu = gtk.MenuItem(_("Turtle"))
+            turtle_menu.show()
+            turtle_menu.set_submenu(menu)
 
-        vbox = gtk.VBox(False, 0)
-        win.add(vbox)
-        vbox.show()
+            vbox = gtk.VBox(False, 0)
+            win.add(vbox)
+            vbox.show()
 
-        menu_bar = gtk.MenuBar()
-        vbox.pack_start(menu_bar, False, False, 2)
-        menu_bar.show()
+            menu_bar = gtk.MenuBar()
+            vbox.pack_start(menu_bar, False, False, 2)
+            menu_bar.show()
 
-        sw = gtk.ScrolledWindow()
-        sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        sw.show()
-        canvas = gtk.DrawingArea()
-        width = gtk.gdk.screen_width() * 2
-        height = gtk.gdk.screen_height() * 2
-        canvas.set_size_request(width, height) 
-        sw.add_with_viewport(canvas)
-        canvas.show()
-        vbox.pack_end(sw, True, True)
+            sw = gtk.ScrolledWindow()
+            sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+            sw.show()
+            canvas = gtk.DrawingArea()
+            width = gtk.gdk.screen_width() * 2
+            height = gtk.gdk.screen_height() * 2
+            canvas.set_size_request(width, height) 
+            sw.add_with_viewport(canvas)
+            canvas.show()
+            vbox.pack_end(sw, True, True)
 
-        menu_bar.append(activity_menu)
-        menu_bar.append(edit_menu)
-        menu_bar.append(view_menu)
-        menu_bar.append(tool_menu)
-        menu_bar.append(turtle_menu)
+            menu_bar.append(activity_menu)
+            menu_bar.append(edit_menu)
+            menu_bar.append(view_menu)
+            menu_bar.append(tool_menu)
+            menu_bar.append(turtle_menu)
 
-        win.show_all()
+            win.show_all()
 
         if os.path.exists('/usr/share/turtleart'):
             self.tw = TurtleArtWindow(canvas, '/usr/share/turtleart')
@@ -238,9 +275,26 @@ class TurtleMain():
             self.tw = TurtleArtWindow(canvas, '/usr/local/share/turtleart')
         else:
             self.tw = TurtleArtWindow(canvas, os.path.abspath('.'))
-        self.tw.win = win
-        self.tw.load_start()
+
         self.tw.save_folder = os.path.expanduser("~")
+
+        if not self.output_png:
+            self.tw.win = win
+            if self.ta_file is None:
+                self.tw.load_start()
+            else:
+                print self.ta_file
+                self.tw.load_start(self.ta_file)
+                self.tw.lc.trace = 0
+                self.tw.run_button(0)
+
+            gtk.main()
+
+        else:
+            self.tw.load_start(self.ta_file)
+            self.tw.lc.trace = 0
+            self.tw.run_button(0)
+            self.tw.save_as_image(self.ta_file, canvas)
 
     def _do_new_cb(self, widget):
         """ Callback for new project. """
@@ -412,12 +466,6 @@ class TurtleMain():
         """ Callback for destroy event. """
         gtk.main_quit()
 
-def main():
-    """ python turtleart.py """
-    gtk.main()
-    return 0
-
 if __name__ == "__main__":
     TurtleMain()
-    main()
 
