@@ -34,7 +34,8 @@ from tawindow import TurtleArtWindow
 from taexporthtml import save_html
 from taexportlogo import save_logo
 
-HELP_MSG = "turtleart.py: usage is\nturtleart.py project.ta --output_png\n"
+HELP_MSG = "turtleart.py: " + _("usage is") +\
+           "\n\tturtleart.py project.ta --output_png"
 
 def makepath(path):
     """ Make a path if it doesn't previously exist """
@@ -72,7 +73,7 @@ class TurtleMain():
             if not self.ta_file.endswith(('.ta')):
                 self.ta_file += '.ta'
             if not os.path.exists(self.ta_file):
-                print("%s: file not found" % (self.ta_file))
+                print("%s: %s" % (self.ta_file, _("file not found")))
                 return
 
         self.i = 0
