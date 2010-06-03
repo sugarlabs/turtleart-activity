@@ -122,14 +122,17 @@ class Turtle:
             self.colors = colors[:]
             self.shapes = generate_turtle_pixbufs(self.colors)
 
-        self.spr = Sprite(turtles.sprite_list, 0, 0, self.shapes[0])
+        if turtles.sprite_list is not None:
+            self.spr = Sprite(turtles.sprite_list, 0, 0, self.shapes[0])
+        else:
+            self.spr = None
         turtles.add_to_dict(key, self)
 
     def set_heading(self, heading):
         """ Set the turtle heading (and shape: one per 10 degrees) """
         self.heading = heading        
         i = (int(self.heading+5)%360)/10
-        if self.hidden is False:
+        if self.hidden is False and self.spr is not None:
             try:
                 self.spr.set_shape(self.shapes[i])
             except IndexError:
@@ -158,20 +161,22 @@ class Turtle:
 
     def hide(self):
         """ Hide the turtle. """
-        self.spr.hide()
+        if self.spr is not None:
+            self.spr.hide()
         self.hidden = True
 
     def show(self):
         """ Show the turtle. """
-        self.spr.set_layer(TURTLE_LAYER)
-        self.hidden = False
+        if self.spr is not None:
+            self.spr.set_layer(TURTLE_LAYER)
+            self.hidden = False
         self.move((self.x, self.y))
         self.set_heading(self.heading)
 
     def move(self, pos):
         """ Move the turtle. """
         self.x, self.y = pos[0], pos[1]
-        if self.hidden is False:
+        if self.hidden is False and self.spr is not None:
             self.spr.move(pos)
         return(self.x, self.y)
 

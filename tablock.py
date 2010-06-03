@@ -111,14 +111,18 @@ class Block:
 
     # We may want to highlight a block...
     def highlight(self):
-        self.spr.set_shape(self.shapes[1])
+        if self.spr is not None:
+            self.spr.set_shape(self.shapes[1])
 
     # Or unhighlight it.
     def unhighlight(self):
-        self.spr.set_shape(self.shapes[0])
+        if self.spr is not None:
+            self.spr.set_shape(self.shapes[0])
 
     # We need to resize some blocks on the fly so that the labels fit.
     def resize(self):
+        if not self.spr is not None:
+            return
         dx = (self.spr.label_width()-self.spr.label_safe_width())/self.scale
         if dx !=0:
             self.dx += dx
@@ -128,12 +132,16 @@ class Block:
 
     # Some blocks get a skin.
     def set_image(self, image, x, y):
+        if not self.spr is not None:
+            return
         self._image = image
         self.spr.set_image(image, 1, x, y)
 
     # The skin might need scaling.
     # Keep the original here, the scaled version stays with the sprite.
     def scale_image(self, x, y, w, h):
+        if not self.spr is not None:
+            return
         if self._image is not None:
             tmp = self._image.scale_simple(w, h,
                                    gtk.gdk.INTERP_NEAREST)
@@ -141,6 +149,8 @@ class Block:
 
     # We may want to rescale blocks as well.
     def rescale(self, scale):
+        if not self.spr is not None:
+            return
         for i in range(len(self._font_size)):
             self._font_size[i] /= self.scale
         self.dx /= self.scale
@@ -158,12 +168,16 @@ class Block:
         self.spr.draw()
 
     def refresh(self):
+        if not self.spr is not None:
+            return
         self._make_block(self.svg)
         self._set_margins()
         self.spr.set_shape(self.shapes[0])
 
     # We may want to add additional slots for arguments ("innies").
     def add_arg(self, keep_expanding=True):
+        if not self.spr is not None:
+            return
         h = self.svg.get_height()
         self._ei += 1
         if self.type == 'block' and keep_expanding:
@@ -175,6 +189,8 @@ class Block:
 
     # We may want to grow a block vertically.
     def expand_in_y(self, dy):
+        if not self.spr is not None:
+            return
         self.ey += dy
         if self.type == 'block':
             self.svg.set_hide(True)
@@ -186,6 +202,8 @@ class Block:
 
     # We may want to grow a block horizontally.
     def expand_in_x(self, dx):
+        if not self.spr is not None:
+            return
         self.ex += dx
         if self.type == 'block':
             self.svg.set_hide(True)
@@ -196,6 +214,8 @@ class Block:
         self.refresh()
 
     def reset_x(self):
+        if not self.spr is not None:
+            return 0
         dx = -self.ex
         self.ex = 0
         self.svg.set_hide(False)
@@ -207,6 +227,8 @@ class Block:
         return dx
 
     def reset_y(self):
+        if not self.spr is not None:
+            return 0
         dy = -self.ey
         self.ey = 0
         self.svg.set_hide(False)
@@ -218,6 +240,8 @@ class Block:
         return dy
 
     def get_expand_x_y(self):
+        if not self.spr is not None:
+            return(0, 0)
         return (self.ex, self.ey)
 
     def _new_block_from_factory(self, sprite_list, x, y):
@@ -233,22 +257,23 @@ class Block:
             self.svg.set_show(True)
 
         self._make_block(self.svg)
-        self.spr = sprites.Sprite(sprite_list, x, y, self.shapes[0])
-        self._set_margins()
-        self._set_label_attributes()
+        if sprite_list is not None:
+            self.spr = sprites.Sprite(sprite_list, x, y, self.shapes[0])
+            self._set_margins()
+            self._set_label_attributes()
 
-        if (self.name == 'number' or self.name == 'string') and\
-           len(self.values) > 0:
-            for i, v in enumerate(self.values):
-                if v is not None:
-                    self._set_labels(i, str(v))
-        elif BLOCK_NAMES.has_key(self.name):
-            for i, n in enumerate(BLOCK_NAMES[self.name]):
-                self._set_labels(i, n)
+            if (self.name == 'number' or self.name == 'string') and\
+               len(self.values) > 0:
+                for i, v in enumerate(self.values):
+                    if v is not None:
+                        self._set_labels(i, str(v))
+            elif BLOCK_NAMES.has_key(self.name):
+                for i, n in enumerate(BLOCK_NAMES[self.name]):
+                    self._set_labels(i, n)
 
-        # Make sure the labels fit.
-        if self.spr.label_width() > self.spr.label_safe_width():
-            self.resize()
+            # Make sure the labels fit.
+            if self.spr.label_width() > self.spr.label_safe_width():
+                self.resize()
 
     def _set_margins(self):
         self.spr.set_margins(self.svg.margins[0], self.svg.margins[1],

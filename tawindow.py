@@ -66,40 +66,58 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
+import logging
+_logger = logging.getLogger('turtleart-activity')
+
 class TurtleArtWindow():
     """ TurtleArt Window class abstraction  """
     timeout_tag = [0]
 
     def __init__(self, win, path, parent=None, mycolors=None):
         self.win = None
-        self.window = win
         self.parent = parent
+        if type(win) == gtk.DrawingArea:
+            self.interactive_mode = True
+            self.window = win
+            self.window.set_flags(gtk.CAN_FOCUS)
+            if self.parent is not None:
+                self.parent.show_all()
+                self.running_sugar = True
+            else:
+                self.window.show_all()
+                self.running_sugar = False
+            self.area = self.window.window
+            self.gc = self.area.new_gc()
+            self._setup_events()
+        elif type(win) == gtk.gdk.Pixmap:
+            self.interactive_mode = False
+            self.window = win
+            self.running_sugar = False
+            self.gc = self.window.new_gc()
+        else:
+            _logger.debug("bad win type %s" % (type(win)))
+
+        if self.running_sugar:
+            self.activity = parent
+            self.nick = profile.get_nick_name()
+        else:
+            self.activity = None
+            self.nick = None
+
         self.path = path
         self.load_save_folder = os.path.join(path, 'samples')
         self.save_folder = None
         self.save_file_name = None
-        self.window.set_flags(gtk.CAN_FOCUS)
         self.width = gtk.gdk.screen_width()
         self.height = gtk.gdk.screen_height() 
-        if parent is not None:
-            parent.show_all()
-            self.running_sugar = True
-            self.activity = parent
-            self.nick = profile.get_nick_name()
-        else:
-            self.window.show_all()
-            self.running_sugar = False
-            self.activity = None
-            self.nick = None
-        self._setup_events()
+
         self.keypress = ""
         self.keyvalue = 0
         self.dead_key = ""
         self.mouse_flag = 0
         self.mouse_x = 0
         self.mouse_y = 0
-        self.area = self.window.window
-        self.gc = self.area.new_gc()
+
         self.orientation = HORIZONTAL_PALETTE
         if olpc_xo_1():
             self.lead = 1.0
@@ -148,7 +166,10 @@ class TurtleArtWindow():
         self.drag_turtle = 'move', 0, 0
         self.drag_pos = 0, 0
         self.block_list = Blocks(self.scale)
-        self.sprite_list = Sprites(self.window, self.area, self.gc)
+        if self.interactive_mode:
+            self.sprite_list = Sprites(self.window, self.area, self.gc)
+        else:
+            self.sprite_list = None # Sprites(self.window, None, self.gc)
         self.turtles = Turtles(self.sprite_list)
         if mycolors == None:
             Turtle(self.turtles, 1)
@@ -168,8 +189,9 @@ class TurtleArtWindow():
         self.lc = LogoCode(self)
         self.saved_pictures = []
 
-        self._setup_misc()
-        self._show_toolbar_palette(0, False)
+        if self.interactive_mode:
+            self._setup_misc()
+            self._show_toolbar_palette(0, False)
         self.block_operation = ''
 
     def _setup_events(self):
@@ -357,6 +379,8 @@ class TurtleArtWindow():
 
     def hideblocks(self):
         """ Callback from 'hide blocks' block """
+        if not self.interactive_mode:
+            return
         self.hide = False
         self.hideshow_button()
         if self.running_sugar:
@@ -364,6 +388,8 @@ class TurtleArtWindow():
 
     def showblocks(self):
         """ Callback from 'show blocks' block """
+        if not self.interactive_mode:
+            return
         self.hide = True
         self.hideshow_button()
         if self.running_sugar:
@@ -1036,6 +1062,8 @@ class TurtleArtWindow():
 
     def _adjust_dock_positions(self, blk):
         """ Adjust the dock x, y positions """
+        if not self.interactive_mode:
+            return
         (sx, sy) = blk.spr.get_xy()
         for i, c in enumerate(blk.connections):
             if i > 0 and c is not None:
@@ -1203,7 +1231,8 @@ class TurtleArtWindow():
             self.activity.hover_help_label.set_text(label)
             self.activity.hover_help_label.show()
         else:
-            self.win.set_title(_("Turtle Art") + " — " + label)
+            if self.interactive_mode:
+                self.win.set_title(_("Turtle Art") + " — " + label)
         return 0
 
     def _buttonrelease_cb(self, win, event):
@@ -1384,7 +1413,11 @@ class TurtleArtWindow():
         self.lc.ag = None
         top = find_top_block(blk)
         self.lc.run_blocks(top, self.just_blocks(), True)
-        gobject.idle_add(self.lc.doevalstep)
+        if self.interactive_mode:
+            gobject.idle_add(self.lc.doevalstep)
+        else:
+            while self.lc.doevalstep():
+                pass
 
     def _snap_to_dock(self):
         """ Snap a block to the dock of another block. """
@@ -1867,7 +1900,7 @@ class TurtleArtWindow():
                     btype, b[2] + self.canvas.cx, b[3] + self.canvas.cy,
                     'block', values, self.block_scale)
         # Some blocks get transformed.
-        if btype == 'string':
+        if btype == 'string' and blk.spr is not None:
             blk.spr.set_label(blk.values[0].replace('\n', RETURN))
         elif btype in EXPANDABLE or btype == 'nop':
             if btype == 'vspace':
@@ -1889,7 +1922,7 @@ class TurtleArtWindow():
                     self._block_skin('pythonon', blk)
                 else:
                     self._block_skin('pythonoff', blk)
-        elif btype in BOX_STYLE_MEDIA:
+        elif btype in BOX_STYLE_MEDIA and blk.spr is not None:
             if len(blk.values) == 0 or blk.values[0] == 'None' or\
                blk.values[0] == None:
                 self._block_skin(btype+'off', blk)
@@ -1933,16 +1966,20 @@ class TurtleArtWindow():
             blk.spr.set_label(' ')
             blk.resize()
 
-        blk.spr.set_layer(BLOCK_LAYER)
+        if self.interactive_mode:
+            blk.spr.set_layer(BLOCK_LAYER)
         if check_dock:
             blk.connections = 'check'
         return blk
     
-    def load_start(self):
+    def load_start(self, ta_file=""):
         """ Start a new project with a 'start' brick """
-        self.process_data([[0, "start", PALETTE_WIDTH + 20,
-                            self.toolbar_offset+PALETTE_HEIGHT + 20,
-                            [None, None]]])
+        if self.interactive_mode:
+            self.process_data([[0, "start", PALETTE_WIDTH + 20,
+                                self.toolbar_offset+PALETTE_HEIGHT + 20,
+                                [None, None]]])
+        else:
+            self.process_data(data_from_file(ta_file))
     
     def save_file(self):
         """ Start a project to a file """
@@ -2018,12 +2055,15 @@ class TurtleArtWindow():
             self.activity.coordinates_label.set_text("%s: %d %s: %d %s: %d" % (
                                    _("xcor"), x, _("ycor"), y, _("heading"), h))
             self.activity.coordinates_label.show()
-        else:
+        elif self.interactive_mode:
             self.win.set_title("%s — %s: %d %s: %d %s: %d" % (_("Turtle Art"),
                                    _("xcor"), x, _("ycor"), y, _("heading"), h))
 
     def showlabel(self, shp, label = ''):
         """ Display a message on a status block """
+        if not self.interactive_mode:
+            print label
+            return
         if shp == 'syntaxerror' and str(label) != '':
             if self.status_shapes.has_key(str(label)[1:]):
                 shp = str(label)[1:]
@@ -2054,8 +2094,20 @@ class TurtleArtWindow():
         dy *= h
         return(w, h, x, y, dx, dy)
 
-    def save_as_image(self, name="", svg=False):
+    def save_as_image(self, name="", svg=False, pixbuf=None):
         """ Grab the current canvas and save it. """
+
+        if not self.interactive_mode:
+            print name
+            save_picture(self.canvas, name[:-3] + ".png")
+            return
+            """
+            self.color_map = self.window.get_colormap()
+            new_pix = pixbuf.get_from_drawable(self.window, self.color_map,
+                                               0, 0, 0, 0,
+                                               self.width, self.height)
+            new_pix.save(name[:-3] + ".png", "png")
+            """
 
         if self.running_sugar:
             if svg:

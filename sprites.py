@@ -85,7 +85,7 @@ import pango
 class Sprites:
     def __init__(self, canvas, area=None, gc=None):
         self.canvas = canvas
-        if area == None:
+        if gc == None:
             self.area = self.canvas.window
             self.gc = self.area.new_gc()
         else:
@@ -154,7 +154,8 @@ class Sprite:
         self._dx = [] # image offsets
         self._dy = []
         self.set_image(image)
-        self._sprites.append_to_list(self)
+        if self._sprites is not None:
+            self._sprites.append_to_list(self)
 
     def set_image(self, image, i=0, dx=0, dy=0):
         while len(self.images) < i+1:
@@ -204,6 +205,8 @@ class Sprite:
         self.inval()
 
     def set_layer(self, layer):
+        if self._sprites is None:
+            return
         self._sprites.remove_from_list(self)
         self.layer = layer
         for i in range(self._sprites.length_of_list()):
@@ -257,8 +260,9 @@ class Sprite:
         self._sprites.remove_from_list(self)
 
     def inval(self):
-        self._sprites.area.invalidate_rect(
-            gtk.gdk.Rectangle(self._x,self._y,self._width,self._height), False)
+        if self._sprites.area is not None:
+            self._sprites.area.invalidate_rect(gtk.gdk.Rectangle(self._x,
+                                    self._y, self._width, self._height), False)
 
     def draw(self):
         for i,img in enumerate(self.images):

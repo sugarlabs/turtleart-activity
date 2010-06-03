@@ -556,14 +556,14 @@ class LogoCode:
         """ Step through the list. """
         if self.tw.running_sugar:
             self.tw.activity.stop_button.set_icon("stopiton")
-        else:
+        elif self.tw.interactive_mode:
             self.tw.toolbar_shapes['stopiton'].set_layer(TAB_LAYER)
         self.running = True
         self.icall(self.evline, blklist)
         yield True
         if self.tw.running_sugar:
             self.tw.activity.stop_button.set_icon("stopitoff")
-        else:
+        elif self.tw.interactive_mode:
             self.tw.toolbar_shapes['stopiton'].hide()
         yield False
         self.running = False

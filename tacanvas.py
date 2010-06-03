@@ -25,6 +25,7 @@ from sprites import Sprite
 from tasprite_factory import SVG
 from tautils import image_to_base64, data_to_string, round_int
 import pango
+import cairo
 from taconstants import CANVAS_LAYER, DEFAULT_TURTLE
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -79,11 +80,14 @@ class TurtleGraphics:
         self.tw = tw
         self.width = width
         self.height = height
-        self.canvas = Sprite(tw.sprite_list, 0, 0, 
-            gtk.gdk.Pixmap(self.tw.area, self.width, self.height, -1))
+        if self.tw.interactive_mode:
+            self.canvas = Sprite(tw.sprite_list, 0, 0, 
+                gtk.gdk.Pixmap(self.tw.area, self.width, self.height, -1))
+        else:
+            self.canvas = Sprite(None, 0, 0, self.tw.window)
+        self.canvas.set_layer(CANVAS_LAYER)
         (self.cx, self.cy) = self.canvas.get_xy()
         self.canvas.type = 'canvas'
-        self.canvas.set_layer(CANVAS_LAYER)
         self.gc = self.canvas.images[0].new_gc()
         self.cm = self.gc.get_colormap()
         self.fgrgb = [255, 0, 0]
@@ -434,17 +438,27 @@ class TurtleGraphics:
             fd.set_size(int(size*self.tw.coord_scale)*pango.SCALE)
         except:
             pass
-        if type(label) == str or type(label) == unicode:
-            pl = self.tw.window.create_pango_layout(label.replace("\0"," "))
-        elif type(label) == float or type(label) == int:
-            pl = self.tw.window.create_pango_layout(str(label))
-        else:
-            pl = self.tw.window.create_pango_layout(str(label))
-        pl.set_font_description(fd)
-        pl.set_width(int(w) * pango.SCALE)
-        self.canvas.images[0].draw_layout(self.gc, int(x), int(y), pl)
-        w, h = pl.get_pixel_size()
-        self.invalt(x, y, w, h)
+        if self.tw.interactive_mode:
+            if type(label) == str or type(label) == unicode:
+                pl = self.tw.window.create_pango_layout(label.replace("\0"," "))
+            elif type(label) == float or type(label) == int:
+                pl = self.tw.window.create_pango_layout(str(label))
+            else:
+                pl = self.tw.window.create_pango_layout(str(label))
+            pl.set_font_description(fd)
+            pl.set_width(int(w) * pango.SCALE)
+            self.canvas.images[0].draw_layout(self.gc, int(x), int(y), pl)
+            w, h = pl.get_pixel_size()
+            self.invalt(x, y, w, h)
+        else: # pixmap doesn't support pango
+            message = str(label).replace("\0"," ")
+            context = self.canvas.images[0].cairo_create()
+            context.set_font_size(size)
+            q, k, w, h = context.text_extents(message)[:4]
+            context.set_source_rgb(0, 0, 0)
+            context.move_to(x, y+h)
+            context.show_text(message)
+
         if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.text(x - self.width/2,
                                                 y + size,
@@ -480,9 +494,9 @@ class TurtleGraphics:
         self.tw.active_turtle.move((self.cx + x - 28, self.cy + y - 30))
 
     def invalt(self, x, y, w, h):
-        rect = gtk.gdk.Rectangle(int(x+self.cx), int(y+self.cy), int(w),
-                                 int(h))
-        self.tw.area.invalidate_rect(rect, False)
+        if self.tw.interactive_mode:
+            self.tw.area.invalidate_rect(gtk.gdk.Rectangle(int(x+self.cx),
+                                         int(y+self.cy), int(w), int(h)), False)
 
     def set_turtle(self, k, colors=None):
         if not self.tw.turtles.dict.has_key(k):
