@@ -23,7 +23,7 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
-import sys
+import getopt, sys
 import os
 import os.path
 from gettext import gettext as _
@@ -35,7 +35,7 @@ from taexporthtml import save_html
 from taexportlogo import save_logo
 
 HELP_MSG = "turtleart.py: " + _("usage is") +\
-           "\n\tturtleart.py project.ta --output_png"
+           "\n\tturtleart.py --taproject project.ta --output_png"
 
 def makepath(path):
     """ Make a path if it doesn't previously exist """
@@ -54,27 +54,34 @@ class TurtleMain():
         self.output_png = False
 
         # Parse command line
-        if len(sys.argv) > 3:
-                print HELP_MSG
-                return
-        for i in range(len(sys.argv)-1):
-            if sys.argv[i+1] == '-o' or sys.argv[i+1] == '--output_png':
+        try:
+            opts, args = getopt.getopt(sys.argv[1:], "hot:v", ["taproject=",
+                                                     "help", "output_png"])
+        except getopt.GetoptError, err:
+            print str(err)
+            print HELP_MSG
+            sys.exit(2)
+
+        for o, a in opts:
+            if o in ('-o', '--output_png'):
                 self.output_png = True
-            elif sys.argv[i+1] == '-h' or sys.argv[i+1] == '--help':
+            elif o in ('-h', '--help'):
                 print HELP_MSG
-                return
+                sys.exit()
+            elif o in ('-t', 'taproject'):
+                self.ta_file = a
             else:
-                self.ta_file = sys.argv[i+1]
+                assert False, 'unhandled option'
+
         if self.output_png and self.ta_file is None:
             print HELP_MSG
-            return
+            sys.exit()
 
         if self.ta_file is not None:
             if not self.ta_file.endswith(('.ta')):
                 self.ta_file += '.ta'
             if not os.path.exists(self.ta_file):
-                print("%s: %s" % (self.ta_file, _("file not found")))
-                return
+                assert False, ("%s: %s" % (self.ta_file, _("file not found")))
 
         self.i = 0
         self.scale = 2.0
