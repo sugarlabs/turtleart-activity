@@ -324,7 +324,7 @@ class TurtleMain():
         dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
                                 buttons=gtk.BUTTONS_OK_CANCEL,
                                 message_format =\
-           _("You have un-saved work. Would you like to save before quitting?"))
+           _("You have unsaved work. Would you like to save before quitting?"))
         dlg.set_title(_("Save project?"))
         dlg.set_property("skip-taskbar-hint", False)
 
