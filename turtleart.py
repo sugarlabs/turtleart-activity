@@ -309,14 +309,11 @@ class TurtleMain():
         """ Save changes on exit """
         project_empty = self.tw.is_project_empty()
         if not project_empty:
-            print "loaded_project = " + self.tw._loaded_project
             if self.tw.is_new_project():
                 self._show_save_dialog(True)
             else:
                 if self.tw.project_has_changes():
                     self._show_save_dialog(False)
-                else:
-                    print "nothing to save..."
         gtk.main_quit()
 
     def _show_save_dialog(self, new_project = True):
