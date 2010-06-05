@@ -117,8 +117,8 @@ class TurtleMain():
             win.move(self.x, self.y)
             win.maximize()
             win.set_title(_("Turtle Art"))
-            win.connect("delete_event", lambda w, e: gtk.main_quit())
-
+            # win.connect("delete_event", lambda w, e: gtk.main_quit())
+            win.connect("delete_event", self._quit_ta)
             menu = gtk.Menu()
 
             menu_items = gtk.MenuItem(_("New"))
@@ -151,7 +151,8 @@ class TurtleMain():
             menu_items.show()
             menu_items = gtk.MenuItem(_("Quit"))
             menu.append(menu_items)
-            menu_items.connect("activate", self.destroy)
+            # menu_items.connect("activate", self.destroy)
+            menu_items.connect("activate", self._quit_ta)
             menu_items.show()
 
             activity_menu = gtk.MenuItem(_("File"))
@@ -304,6 +305,37 @@ class TurtleMain():
             self.tw.run_button(0)
             self.tw.save_as_image(self.ta_file, canvas)
 
+    def _quit_ta(self, widget = None, e = None):
+        """ Save changes on exit """
+        project_empty = self.tw.is_project_empty()
+        if not project_empty:
+            print "loaded_project = " + self.tw._loaded_project
+            if self.tw.is_new_project():
+                self._show_save_dialog(True)
+            else:
+                if self.tw.project_has_changes():
+                    self._show_save_dialog(False)
+                else:
+                    print "nothing to save..."
+        gtk.main_quit()
+
+    def _show_save_dialog(self, new_project = True):
+        """ Dialog for save project """
+        dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
+                                buttons=gtk.BUTTONS_OK_CANCEL,
+                                message_format =\
+           _("You have un-saved work. Would you like to save before quitting?"))
+        dlg.set_title(_("Save project?"))
+        dlg.set_property("skip-taskbar-hint", False)
+
+        resp = dlg.run()
+        dlg.destroy()
+        if resp == gtk.RESPONSE_OK:
+            if new_project:
+                self._save_as()
+            else:
+                self._save_changes()
+
     def _do_new_cb(self, widget):
         """ Callback for new project. """
         self.tw.new_project()
@@ -319,8 +351,17 @@ class TurtleMain():
 
     def _do_save_as_cb(self, widget):
         """ Callback for save-as project. """
+        self._save_as()
+
+    def _save_as(self):
+        """ Save as is called from callback and quit """
         self.tw.save_file_name = None
         self.tw.save_file()
+
+    def _save_changes(self):
+        """ Save changes to current project """
+        self.tw.save_file_name = None
+        self.tw.save_file(self.tw._loaded_project)
 
     def _do_save_picture_cb(self, widget):
         """ Callback for save canvas. """

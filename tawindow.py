@@ -62,7 +62,7 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
                     collapsed, collapsible, hide_button_hit, show_button_hit, \
                     arithmetic_check, xy, find_block_to_run, find_top_block, \
                     find_start_stack, find_group, find_blk_below, olpc_xo_1, \
-                    dock_dx_dy
+                    dock_dx_dy, data_to_string
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
@@ -74,6 +74,7 @@ class TurtleArtWindow():
     timeout_tag = [0]
 
     def __init__(self, win, path, parent=None, mycolors=None):
+        self._loaded_project = ""
         self.win = None
         self.parent = parent
         if type(win) == gtk.DrawingArea:
@@ -251,6 +252,10 @@ class TurtleArtWindow():
            self.activity.chattube is not None:
             return True
         return False
+
+    def is_project_empty(self):
+        """ Check to see if project has any blocks in use """
+        return len(self.just_blocks()) == 1
 
     def _expose_cb(self, win, event):
         """ Repaint """
@@ -1813,6 +1818,7 @@ class TurtleArtWindow():
     def new_project(self):
         """ Start a new project """
         stop_logo(self)
+        self._loaded_project = ""
         # Put current project in the trash.
         while len(self.just_blocks()) > 0:
             blk = self.just_blocks()[0]
@@ -1821,11 +1827,30 @@ class TurtleArtWindow():
         self.canvas.clearscreen()
         self.save_file_name = None
     
+    def is_new_project(self):
+        """ Is this a new project or was a old project loaded from a file? """
+        return self._loaded_project == ""
+
+    def project_has_changed(self):
+        """ WARNING: do we have any assurance that the JSON serialized data will have some predictable order? """
+        try:
+            f = open(self._loaded_project, 'r')
+            saved_project_data = f.read()
+            f.close()        
+        except:
+            print "problem loading saved project data from %s" %\
+                  (self._loaded_project)
+            saved_project_data = ""
+        current_project_data = data_to_string(self.assemble_data_to_save())
+
+        return saved_project_data != current_project_data
+
     def load_files(self, ta_file, create_new_project=True):
         """ Load a project from a file """
         if create_new_project:
             self.new_project()
         self._check_collapsibles(self.process_data(data_from_file(ta_file)))
+        self._loaded_prokect = ta_file
     
     def load_file(self, create_new_project=True):
         _file_name, self.load_save_folder = get_load_name('.ta',
@@ -1981,13 +2006,13 @@ class TurtleArtWindow():
         else:
             self.process_data(data_from_file(ta_file))
     
-    def save_file(self):
+    def save_file(self, _file_name=None):
         """ Start a project to a file """
         if self.save_folder is not None:
             self.load_save_folder = self.save_folder
-        _file_name, self.load_save_folder = get_save_name('.ta',
-                                                     self.load_save_folder,
-                                                     self.save_file_name)
+        if _file_name is None:
+            _file_name, self.load_save_folder = get_save_name('.ta',
+                                     self.load_save_folder, self.save_file_name)
         if _file_name is None:
             return
         if _file_name[-3:] == '.ta':
