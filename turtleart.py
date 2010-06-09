@@ -55,21 +55,23 @@ class TurtleMain():
 
         # Parse command line
         try:
-            opts, args = getopt.getopt(sys.argv[1:], "hot:v", ["taproject=",
+            opts, args = getopt.getopt(sys.argv[1:], "hot:v", ["taproject",
                                                      "help", "output_png"])
         except getopt.GetoptError, err:
             print str(err)
             print HELP_MSG
             sys.exit(2)
-
         for o, a in opts:
             if o in ('-o', '--output_png'):
                 self.output_png = True
+                self.ta_file = args[0]
             elif o in ('-h', '--help'):
                 print HELP_MSG
                 sys.exit()
-            elif o in ('-t', 'taproject'):
+            elif o in ('-t'):
                 self.ta_file = a
+            elif o in ('--taproject'):
+                self.ta_file = args[0]
             else:
                 assert False, 'unhandled option'
 
