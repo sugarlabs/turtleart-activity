@@ -1060,6 +1060,9 @@ class TurtleArtWindow():
                 blk.refresh()
                 grow_stack_arm(find_sandwich_top(blk))
 
+        # Resize blocks to current scale
+        self.resize_blocks()
+
         if len(blocks) > 0:
             return blocks[0]
         else:
@@ -1832,7 +1835,7 @@ class TurtleArtWindow():
         return self._loaded_project == ""
 
     def project_has_changed(self):
-        """ WARNING: do we have any assurance that the JSON serialized data will have some predictable order? """
+        """ WARNING: order of JSON serialized data may have changed. """
         try:
             f = open(self._loaded_project, 'r')
             saved_project_data = f.read()
@@ -1927,6 +1930,9 @@ class TurtleArtWindow():
         # Some blocks get transformed.
         if btype == 'string' and blk.spr is not None:
             blk.spr.set_label(blk.values[0].replace('\n', RETURN))
+        elif btype == 'start': # block size is saved in start block
+            if value is not None:
+                self.block_scale = value
         elif btype in EXPANDABLE or btype == 'nop':
             if btype == 'vspace':
                 if value is not None:
@@ -2048,6 +2054,8 @@ class TurtleArtWindow():
                     _name = (_blk.name, _ey)
                 else:
                     _name = (_blk.name, 0)
+            elif _blk.name == 'start': # save block_size in start block
+                _name = (_blk.name, self.block_scale)
             else:
                 _name = (_blk.name)
             if hasattr(_blk, 'connections'):
