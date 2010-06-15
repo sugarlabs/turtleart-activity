@@ -2,6 +2,7 @@
 
 * added non-interactive mode (with help from Jamie Boisture)
 * fix problem with icon in F13
+* block scale saved between sessions
 
 88
 
