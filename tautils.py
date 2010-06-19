@@ -429,6 +429,8 @@ def uncollapse_forks(top, looping=False):
 def collapse_stack(top):
     """ Hide all the blocks between the sandwich top and sandwich bottom. """
     # First uncollapse any nested stacks
+    if top.spr == None:
+        return
     uncollapse_forks(top)
     _hit_bottom = False
     _bot = find_sandwich_bottom(top)
@@ -650,6 +652,8 @@ def find_block_to_run(blk):
 
 def find_top_block(blk):
     """ Find the top block in a stack. """
+    if blk is None:
+        return None
     if len(blk.connections) == 0:
         return blk
     while blk.connections[0] is not None:
@@ -658,6 +662,8 @@ def find_top_block(blk):
 
 def find_start_stack(blk):
     """ Find a stack with a 'start' block on top. """
+    if blk is None:
+        return False
     if find_top_block(blk).name == 'start':
         return True
     else:
