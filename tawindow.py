@@ -166,6 +166,7 @@ class TurtleArtWindow():
         self.drag_group = None
         self.drag_turtle = 'move', 0, 0
         self.drag_pos = 0, 0
+        self.paste_offset = 20
         self.block_list = Blocks(self.scale)
         if self.interactive_mode:
             self.sprite_list = Sprites(self.window, self.area, self.gc)
@@ -986,13 +987,15 @@ class TurtleArtWindow():
         self._check_collapsibles(top)
         self.drag_group = find_group(top)
 
-    def process_data(self, data):
+    def process_data(self, data, offset=0):
         """ Process data (from a macro, a file, or the clipboard). """
+        if offset != 0:
+            _logger.debug("offset is %d" % (offset))
         # Create the blocks (or turtle).
         blocks = []
         for blk in data:
             if not self._found_a_turtle(blk):
-                blocks.append(self.load_block(blk))
+                blocks.append(self.load_block(blk, offset))
 
         # Make the connections.
         for i in range(len(blocks)):
@@ -1893,7 +1896,7 @@ class TurtleArtWindow():
         self.canvas.setshade(shade)
         self.canvas.setpensize(pensize)
 
-    def load_block(self, b):
+    def load_block(self, b, offset=0):
         """ Restore individual blocks from saved state """
         # A block is saved as: (i, (btype, value), x, y, (c0,... cn))
         # The x, y position is saved/loaded for backward compatibility
@@ -1924,8 +1927,9 @@ class TurtleArtWindow():
             check_dock = False
         if OLD_NAMES.has_key(btype):
             btype = OLD_NAMES[btype]
-        blk = Block(self.block_list, self.sprite_list, 
-                    btype, b[2] + self.canvas.cx, b[3] + self.canvas.cy,
+        blk = Block(self.block_list, self.sprite_list, btype,
+                    b[2] + self.canvas.cx + offset,
+                    b[3] + self.canvas.cy + offset,
                     'block', values, self.block_scale)
         # Some blocks get transformed.
         if btype == 'string' and blk.spr is not None:
