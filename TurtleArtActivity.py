@@ -61,6 +61,16 @@ SERVICE = 'org.laptop.TurtleArtActivity'
 IFACE = SERVICE
 PATH = '/org/laptop/TurtleArtActivity'
 
+def _add_label(string, toolbar):
+    label = gtk.Label(string)
+    label.set_line_wrap(True)
+    label.show()
+    toolitem = gtk.ToolItem()
+    toolitem.add(label)
+    toolbar.insert(toolitem, -1)
+    toolitem.show()
+    return label
+
 def _add_separator(toolbar, expand=False):
     separator = gtk.SeparatorToolItem()
     separator.props.draw = True
@@ -76,7 +86,7 @@ def _add_button(name, tooltip, callback, toolbar, accelerator=None):
     if accelerator is not None:
         button.props.accelerator = accelerator
     button.show()
-    try:
+    try: # toolbar_button
         toolbar.props.page.insert(button, -1)
     except AttributeError:
         toolbar.insert(button, -1)
@@ -589,11 +599,13 @@ class TurtleArtActivity(activity.Activity):
         turtle has joined.
         
         """
+        if len(text) == 0:
+            return
         # Save active Turtle
         save_active_turtle = self.tw.active_turtle
+        e = text.split("|", 2)
+        text = e[1]
         if text[0] == 't': # request for turtle dictionary
-            e = text.split("|", 2)
-            text = e[1]
             if text > 0:
                 [nick, colors] = data_from_string(text)
                 if nick != self.tw.nick:
@@ -610,8 +622,6 @@ class TurtleArtActivity(activity.Activity):
                 self.send_event("T|" + text)
         elif text[0] == 'T': # Receiving the turtle dictionary.
             if self.waiting_for_turtles:
-                e = text.split("|", 2)
-                text = e[1]
                 if len(text) > 0:
                     self.turtle_dictionary = data_from_string(text)
                     for nick in self.turtle_dictionary:
@@ -621,72 +631,54 @@ class TurtleArtActivity(activity.Activity):
                             self.tw.canvas.set_turtle(nick, colors)
                 self.waiting_for_turtles = False
         elif text[0] == 'f': # move a turtle forward
-            e = text.split("|", 2)
-            text = e[1]
             if len(text) > 0:
                  [nick, x] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.forward(x, False)
         elif text[0] == 'a': # move a turtle in an arc
-            e = text.split("|", 2)
-            text = e[1]
             if len(text) > 0:
                  [nick, [a, r]] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.arc(a, r, False)
         elif text[0] == 'r': # rotate turtle
-            e = text.split("|", 2)
-            text = e[1]
             if len(text) > 0:
                  [nick, h] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.seth(h, False)
         elif text[0] == 'x': # set turtle xy position
-            e = text.split("|", 2)
-            text = e[1]
             if len(text) > 0:
                  [nick, [x, y]] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.setxy(x, y, False)
         elif text[0] == 'c': # set turtle pen color
-            e = text.split("|", 2)
-            text = e[1]
             if len(text) > 0:
                  [nick, x] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.setcolor(x, False)
         elif text[0] == 'g': # set turtle pen gray level
-            e = text.split("|", 2)
-            text = e[1]
             if len(text) > 0:
                  [nick, x] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.setgray(x, False)
         elif text[0] == 's': # set turtle pen shade
-            e = text.split("|", 2)
-            text = e[1]
             if len(text) > 0:
                  [nick, x] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.setshade(x, False)
         elif text[0] == 'w': # set turtle pen width
-            e = text.split("|", 2)
-            text = e[1]
             if len(text) > 0:
                  [nick, x] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.setpensize(x, False)
         elif text[0] == 'p': # set turtle pen state
-            e = text.split("|", 2)
-            text = e[1]
             if len(text) > 0:
                  [nick, x] = data_from_string(text)
                  if nick != self.tw.nick:
@@ -784,16 +776,10 @@ class TurtleArtActivity(activity.Activity):
                                             view_toolbar_button)
 
             _add_separator(view_toolbar)
-
-            self.coordinates_label = \
-              gtk.Label(_("xcor") + " = 0 " + _("ycor") + " = 0 " + \
-                        _("heading") + " = 0")
-            self.coordinates_label.set_line_wrap(True)
-            self.coordinates_label.show()
-            self.coordinates_toolitem = gtk.ToolItem()
-            self.coordinates_toolitem.add(self.coordinates_label)
-            view_toolbar.insert(self.coordinates_toolitem, -1)
-            self.coordinates_toolitem.show()
+            self.coordinates_label = _add_label(_("xcor") + "  = 0 " +\
+                                                _("ycor") + " = 0 "  + \
+                                                _("heading") + " = 0",
+                                                view_toolbar)
 
             _add_separator(view_toolbar, True)
 
@@ -880,16 +866,12 @@ class TurtleArtActivity(activity.Activity):
             self.samples_button = _add_button("stock-open", _('Samples'),
                                               self.do_samples_cb,
                                               help_toolbar_button)
-            _add_separator(toolbar_box.toolbar)
+            _add_separator(help_toolbar)
 
-            self.hover_help_label = \
-              gtk.Label(_("Move the cursor over the orange palette for help."))
-            self.hover_help_label.set_line_wrap(True)
-            self.hover_help_label.show()
-            self.hover_toolitem = gtk.ToolItem()
-            self.hover_toolitem.add(self.hover_help_label)
-            help_toolbar.insert(self.hover_toolitem, -1)
-            self.hover_toolitem.show()
+            
+            self.hover_help_label = _add_label(
+                         _("Move the cursor over the orange palette for help."),
+                                               help_toolbar)
             help_toolbar.show()
             toolbar_box.toolbar.insert(help_toolbar_button, -1)
             help_toolbar_button.show()
