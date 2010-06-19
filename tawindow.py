@@ -2036,6 +2036,8 @@ class TurtleArtWindow():
         if save_project:
             _blks = self.just_blocks()
         else:
+            if self.selected_blk is None:
+                return []
             _blks = find_group(find_top_block(self.selected_blk))
         
         for _i, _blk in enumerate(_blks):
