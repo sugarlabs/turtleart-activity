@@ -62,6 +62,7 @@ IFACE = SERVICE
 PATH = '/org/laptop/TurtleArtActivity'
 
 def _add_label(string, toolbar):
+    """ add a label to a toolbar """
     label = gtk.Label(string)
     label.set_line_wrap(True)
     label.show()
@@ -72,27 +73,31 @@ def _add_label(string, toolbar):
     return label
 
 def _add_separator(toolbar, expand=False):
+    """ add a separator to a toolbar """
     separator = gtk.SeparatorToolItem()
     separator.props.draw = True
     separator.set_expand(expand)
     toolbar.insert(separator, -1)
     separator.show()
 
-def _add_button(name, tooltip, callback, toolbar, accelerator=None):
+def _add_button(name, tooltip, callback, toolbar, accelerator=None, arg=None):
     """ add a button to a toolbar """
     button = ToolButton(name)
     button.set_tooltip(tooltip)
-    button.connect('clicked', callback)
+    if arg is None:
+        button.connect('clicked', callback)
+    else:
+        button.connect('clicked', callback, arg)
     if accelerator is not None:
         try:
             button.props.accelerator = accelerator
         except AttributeError:
             pass
     button.show()
-    try: # toolbar_button
-        toolbar.props.page.insert(button, -1)
-    except AttributeError:
+    if hasattr(toolbar, 'insert'): # the main toolbar
         toolbar.insert(button, -1)
+    else:  # or a secondary toolbar
+        toolbar.props.page.insert(button, -1)
     return button
 
 class TurtleArtActivity(activity.Activity):
@@ -753,8 +758,9 @@ class TurtleArtActivity(activity.Activity):
                                      edit_toolbar_button, '<Ctrl>c')
             self.paste = _add_button('edit-paste', _('Paste'), self._paste_cb,
                                      edit_toolbar_button, '<Ctrl>v')
-            toolbar_box.toolbar.insert(edit_toolbar_button, -1)
             edit_toolbar_button.show()
+            edit_toolbar.show()
+            toolbar_box.toolbar.insert(edit_toolbar_button, -1)
  
             # The view toolbar
             view_toolbar = gtk.Toolbar()
@@ -763,7 +769,7 @@ class TurtleArtActivity(activity.Activity):
                                                 icon_name='toolbar-view')
             fullscreen_button = _add_button('view-fullscreen', _("Fullscreen"),
                                             self.do_fullscreen_cb,
-                                            view_toolbar_button, '<Alt>Enter')
+                                            view_toolbar_button, '<Alt>Return')
             cartesian_button = _add_button('view-Cartesian',
                                             _("Cartesian coordinates"),
                                             self.do_cartesian_cb,
@@ -801,16 +807,14 @@ class TurtleArtActivity(activity.Activity):
             self.palette_buttons = []
             for i, name in enumerate(PALETTE_NAMES):
                 if i > 0:
-                    self.palette_buttons.append(ToolButton(name+'off'))
+                    suffix = 'off'
                 else:
-                    self.palette_buttons.append(ToolButton(name+'on'))
-                self.palette_buttons[i].set_tooltip(HELP_STRINGS[name])
-                self.palette_buttons[i].props.sensitive = True
-                self.palette_buttons[i].connect('clicked',
-                                                self.do_palette_buttons_cb, i)
-                palette_toolbar.insert(self.palette_buttons[i], -1)
-                self.palette_buttons[i].show()
-
+                    suffix = 'on'
+                self.palette_buttons.append(_add_button(name+suffix,
+                                                        HELP_STRINGS[name],
+                                                     self.do_palette_buttons_cb,
+                                                        palette_toolbar_button,
+                                                        None, i))
             _add_separator(palette_toolbar, True)
             self.palette_button = _add_button("paletteoff", _('Hide palette'),
                                               self.do_palette_cb,
@@ -820,7 +824,6 @@ class TurtleArtActivity(activity.Activity):
                                              self.do_hideshow_cb,
                                              palette_toolbar_button,
                                              _('<Ctrl>b'))
-
             palette_toolbar.show()
             toolbar_box.toolbar.insert(palette_toolbar_button, -1)
             palette_toolbar_button.set_expanded(True)
