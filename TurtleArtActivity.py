@@ -110,7 +110,7 @@ class TurtleArtActivity(activity.Activity):
         
         self._setup_visibility_handler()
 
-        self.new_sugar_system = NEW_SUGAR_SYSTEM
+        self.new_sugar_system = not NEW_SUGAR_SYSTEM
         self._setup_toolbar()
 
         canvas = self._setup_scrolled_window()
@@ -122,7 +122,6 @@ class TurtleArtActivity(activity.Activity):
         self._load_python_code()
 
         self._setup_sharing()
-
 
     # Activity toolbar callbacks
 
@@ -418,7 +417,7 @@ class TurtleArtActivity(activity.Activity):
 
     def do_stop_cb(self, button):
         """ Callback for stop button. """
-        self.stop_button.set_icon("stopitoff")
+        self.stop_turtle_button.set_icon("stopitoff")
         self.tw.stop_button()
         self.step_button.set_icon("run-slowoff")
         self.run_button.set_icon("run-fastoff")
@@ -428,7 +427,7 @@ class TurtleArtActivity(activity.Activity):
         # FIXME: encapsulation!
         self.tw.load_file(True)
         # run the activity
-        self.stop_button.set_icon("stopiton")
+        self.stop_turtle_button.set_icon("stopiton")
         self.tw.run_button(0)
 
     def recenter(self):
@@ -722,88 +721,141 @@ class TurtleArtActivity(activity.Activity):
         """ Setup toolbar according to Sugar version """
         if self.new_sugar_system:
             # Use 0.86 toolbar design
-            toolbar_box = ToolbarBox()
+            # Create toolbox and secondary toolbars
+            toolbox = ToolbarBox()
 
-            # Buttons added to the Activity toolbar
             activity_toolbar_button = ActivityToolbarButton(self)
-            self.keep_button = _add_button('filesave',_("Save snapshot"),
-                                           self.do_keep_cb,
-                                           activity_toolbar_button)
-            self.save_as_html = _add_button('htmloff',_("Save as HTML"),
-                                            self.do_save_as_html_cb,
-                                            activity_toolbar_button)
-            self.save_as_logo = _add_button('logo-saveoff',_("Save as Logo"),
-                                            self.do_save_as_logo_cb,
-                                            activity_toolbar_button)
-            self.save_as_image = _add_button('image-saveoff',_("Save as image"),
-                                            self.do_save_as_image_cb,
-                                            activity_toolbar_button)
-            self.load_python = _add_button('pippy-openoff',
-                                           _("Load my block"),
-                                           self.do_load_python_cb,
-                                           activity_toolbar_button)
-            self.load_ta_project = _add_button('load-from-journal',
-                                           _("Import project from the Journal"),
-                                               self.do_load_ta_project_cb,
-                                               activity_toolbar_button)
-            activity_toolbar_button.show()
-            toolbar_box.toolbar.insert(activity_toolbar_button, -1)
 
-            # The edit toolbar -- copy and paste
             edit_toolbar = gtk.Toolbar()
             edit_toolbar_button = ToolbarButton(label=_('Edit'),
                                                 page=edit_toolbar,
                                                 icon_name='toolbar-edit')
-            self.copy = _add_button('edit-copy', _('Copy'), self._copy_cb,
-                                     edit_toolbar_button, '<Ctrl>c')
-            self.paste = _add_button('edit-paste', _('Paste'), self._paste_cb,
-                                     edit_toolbar_button, '<Ctrl>v')
-            edit_toolbar_button.show()
-            edit_toolbar.show()
-            toolbar_box.toolbar.insert(edit_toolbar_button, -1)
- 
-            # The view toolbar
             view_toolbar = gtk.Toolbar()
             view_toolbar_button = ToolbarButton(label=_('View'),
                                                 page=view_toolbar,
                                                 icon_name='toolbar-view')
-            fullscreen_button = _add_button('view-fullscreen', _("Fullscreen"),
-                                            self.do_fullscreen_cb,
-                                            view_toolbar_button, '<Alt>Return')
-            cartesian_button = _add_button('view-Cartesian',
-                                            _("Cartesian coordinates"),
-                                            self.do_cartesian_cb,
-                                            view_toolbar_button)
-            polar_button = _add_button('view-polar', _("Polar coordinates"),
-                                       self.do_polar_cb,
-                                       view_toolbar_button)
-
-            _add_separator(view_toolbar)
-            self.coordinates_label = _add_label(_("xcor") + "  = 0 " +\
-                                                _("ycor") + " = 0 "  + \
-                                                _("heading") + " = 0",
-                                                view_toolbar)
-
-            _add_separator(view_toolbar, True)
-
-            self.rescale_button = _add_button('expand-coordinates',
-                                              _("Rescale coordinates up"),
-                                              self.do_rescale_cb,
-                                              view_toolbar_button)
-            self.resize_up_button = _add_button('resize+', _("Grow blocks"),
-                                                self.do_grow_blocks_cb,
-                                                view_toolbar_button)
-            self.resize_down_button = _add_button('resize-', _("Shrink blocks"),
-                                                  self.do_shrink_blocks_cb,
-                                                  view_toolbar_button)
-            view_toolbar_button.show()
-            view_toolbar.show()
-            toolbar_box.toolbar.insert(view_toolbar_button, -1)
-
-            # palette toolbar
             palette_toolbar = gtk.Toolbar()
             palette_toolbar_button = ToolbarButton(page=palette_toolbar,
                                                    icon_name='palette')
+            help_toolbar = gtk.Toolbar()
+            help_toolbar_button = ToolbarButton(label=_("Help"),
+                                                page=help_toolbar,
+                                                icon_name='help-toolbar')
+
+            # Add the toolbars and buttons to the toolbox
+            activity_toolbar_button.show()
+            toolbox.toolbar.insert(activity_toolbar_button, -1)
+            edit_toolbar_button.show()
+            toolbox.toolbar.insert(edit_toolbar_button, -1)
+            view_toolbar_button.show()
+            toolbox.toolbar.insert(view_toolbar_button, -1)
+            toolbox.toolbar.insert(palette_toolbar_button, -1)
+            palette_toolbar_button.show()
+
+            _add_separator(toolbox.toolbar)
+
+            self._make_project_buttons(toolbox.toolbar)
+
+            _add_separator(toolbox.toolbar)
+
+            toolbox.toolbar.insert(help_toolbar_button, -1)
+            help_toolbar_button.show()
+
+            _add_separator(toolbox.toolbar, True)
+
+            stop_button = StopButton(self)
+            stop_button.props.accelerator = '<Ctrl>Q'
+            toolbox.toolbar.insert(stop_button, -1)
+            stop_button.show()
+
+        else:
+            # Use pre-0.86 toolbar design
+            toolbox = activity.ActivityToolbox(self)
+            self.set_toolbox(toolbox)
+
+            project_toolbar = gtk.Toolbar()
+            toolbox.add_toolbar( _('Project'), project_toolbar )
+            
+            view_toolbar = gtk.Toolbar()
+            toolbox.add_toolbar(_('View'), view_toolbar)
+            view_toolbar_button = view_toolbar
+            edit_toolbar = gtk.Toolbar()
+            toolbox.add_toolbar(_('Edit'), edit_toolbar)
+            edit_toolbar_button = edit_toolbar
+            save_toolbar = gtk.Toolbar()
+            toolbox.add_toolbar( _('Import/Export'), save_toolbar )
+            activity_toolbar_button = save_toolbar
+            help_toolbar = gtk.Toolbar()
+            toolbox.add_toolbar(_('Help'), help_toolbar)
+            help_toolbar_button = help_toolbar
+
+            self._make_palette_buttons(project_toolbar)
+
+            _add_separator(project_toolbar)
+
+            self._make_project_buttons(project_toolbar)
+
+        self.keep_button = _add_button('filesave',_("Save snapshot"),
+                                       self.do_keep_cb,
+                                       activity_toolbar_button)
+        self.save_as_html = _add_button('htmloff',_("Save as HTML"),
+                                        self.do_save_as_html_cb,
+                                        activity_toolbar_button)
+        self.save_as_logo = _add_button('logo-saveoff',_("Save as Logo"),
+                                        self.do_save_as_logo_cb,
+                                        activity_toolbar_button)
+        self.save_as_image = _add_button('image-saveoff',_("Save as image"),
+                                         self.do_save_as_image_cb,
+                                         activity_toolbar_button)
+        self.load_python = _add_button('pippy-openoff',
+                                       _("Load my block"),
+                                       self.do_load_python_cb,
+                                       activity_toolbar_button)
+        self.load_ta_project = _add_button('load-from-journal',
+                                           _("Import project from the Journal"),
+                                           self.do_load_ta_project_cb,
+                                           activity_toolbar_button)
+        copy = _add_button('edit-copy', _('Copy'), self._copy_cb,
+                                edit_toolbar_button, '<Ctrl>c')
+        paste = _add_button('edit-paste', _('Paste'), self._paste_cb,
+                                 edit_toolbar_button, '<Ctrl>v')
+        fullscreen_button = _add_button('view-fullscreen', _("Fullscreen"),
+                                        self.do_fullscreen_cb,
+                                        view_toolbar_button, '<Alt>Return')
+        cartesian_button = _add_button('view-Cartesian',
+                                       _("Cartesian coordinates"),
+                                       self.do_cartesian_cb,
+                                       view_toolbar_button)
+        polar_button = _add_button('view-polar', _("Polar coordinates"),
+                                   self.do_polar_cb,
+                                   view_toolbar_button)
+        _add_separator(view_toolbar)
+        self.coordinates_label = _add_label(_("xcor") + "  = 0 " +\
+                                            _("ycor") + " = 0 "  + \
+                                            _("heading") + " = 0",
+                                            view_toolbar)
+        _add_separator(view_toolbar, True)
+        self.rescale_button = _add_button('expand-coordinates',
+                                          _("Rescale coordinates up"),
+                                          self.do_rescale_cb,
+                                          view_toolbar_button)
+        self.resize_up_button = _add_button('resize+', _("Grow blocks"),
+                                            self.do_grow_blocks_cb,
+                                            view_toolbar_button)
+        self.resize_down_button = _add_button('resize-', _("Shrink blocks"),
+                                              self.do_shrink_blocks_cb,
+                                              view_toolbar_button)
+
+        self.samples_button = _add_button("stock-open", _('Samples'),
+                                          self.do_samples_cb,
+                                          help_toolbar_button)
+        _add_separator(help_toolbar)
+        self.hover_help_label = _add_label(
+                         _("Move the cursor over the orange palette for help."),
+                         help_toolbar)
+
+        # The palette toolbar is only used with 0.86+
+        if self.new_sugar_system:
             self.palette_buttons = []
             for i, name in enumerate(PALETTE_NAMES):
                 if i > 0:
@@ -816,88 +868,50 @@ class TurtleArtActivity(activity.Activity):
                                                         palette_toolbar_button,
                                                         None, i))
             _add_separator(palette_toolbar, True)
-            self.palette_button = _add_button("paletteoff", _('Hide palette'),
-                                              self.do_palette_cb,
-                                              palette_toolbar_button,
-                                              _('<Ctrl>p'))
-            self.blocks_button = _add_button("hideshowoff", _('Hide blocks'),
-                                             self.do_hideshow_cb,
-                                             palette_toolbar_button,
-                                             _('<Ctrl>b'))
+
+            self._make_palette_buttons(palette_toolbar_button)
+
+            self.set_toolbar_box(toolbox)
             palette_toolbar.show()
-            toolbar_box.toolbar.insert(palette_toolbar_button, -1)
+
+        edit_toolbar.show()
+        view_toolbar.show()
+        help_toolbar.show()
+        toolbox.show()
+
+        if self.new_sugar_system:
             palette_toolbar_button.set_expanded(True)
-            palette_toolbar_button.show()
-
-            _add_separator(toolbar_box.toolbar)
-
-            self.eraser_button = _add_button("eraseron", _('Clean'),
-                                             self.do_eraser_cb,
-                                             toolbar_box.toolbar, _('<Ctrl>e'))
-            self.run_button = _add_button("run-fastoff", _('Run'),
-                                          self.do_run_cb, toolbar_box.toolbar,
-                                          _('<Ctrl>r'))
-            self.step_button = _add_button("run-slowoff", _('Step'),
-                                           self.do_step_cb, toolbar_box.toolbar,
-                                           _('<Ctrl>w'))
-            self.debug_button = _add_button("debugoff", _('Debug'),
-                                            self.do_debug_cb,
-                                            toolbar_box.toolbar, _('<Ctrl>d'))
-            self.stop_button = _add_button("stopitoff", _('Stop turtle'),
-                                           self.do_stop_cb, toolbar_box.toolbar,
-                                           _('<Ctrl>s'))
-            _add_separator(toolbar_box.toolbar)
-
-            # The Help toolbar -- sample code and hover help
-            help_toolbar = gtk.Toolbar()
-            help_toolbar_button = ToolbarButton(label=_("Help"),
-                                                page=help_toolbar,
-                                                icon_name='help-toolbar')
-            self.samples_button = _add_button("stock-open", _('Samples'),
-                                              self.do_samples_cb,
-                                              help_toolbar_button)
-            _add_separator(help_toolbar)
-
-            
-            self.hover_help_label = _add_label(
-                         _("Move the cursor over the orange palette for help."),
-                                               help_toolbar)
-            help_toolbar.show()
-            toolbar_box.toolbar.insert(help_toolbar_button, -1)
-            help_toolbar_button.show()
-
-            _add_separator(toolbar_box.toolbar, True)
-
-            # The ever-present Stop Button
-            stop_button = StopButton(self)
-            stop_button.props.accelerator = '<Ctrl>Q'
-            toolbar_box.toolbar.insert(stop_button, -1)
-            stop_button.show()
-
-            self.set_toolbar_box(toolbar_box)
-            # self.set_toolbox(toolbar_box)
-            toolbar_box.show()
-
         else:
-            # Use pre-0.86 toolbar design
-            self.toolbox = activity.ActivityToolbox(self)
-            self.set_toolbox(self.toolbox)
+            toolbox.set_current_toolbar(1)
 
-            # Add additional panels
-            self.projectToolbar = ProjectToolbar(self)
-            self.toolbox.add_toolbar( _('Project'), self.projectToolbar )
-            self.viewToolbar = ViewToolbar(self)
-            self.toolbox.add_toolbar(_('View'), self.viewToolbar)
-            self.editToolbar = EditToolbar84(self)
-            self.toolbox.add_toolbar(_('Edit'), self.editToolbar)
-            self.saveasToolbar = SaveAsToolbar(self)
-            self.toolbox.add_toolbar( _('Import/Export'), self.saveasToolbar )
-            self.helpToolbar = HelpToolbar(self)
-            self.toolbox.add_toolbar(_('Help'), self.helpToolbar)
-            self.toolbox.show()
+    def _make_palette_buttons(self, toolbar):
+        """ Creates the palette and block buttons for both toolbar types"""
+        self.palette_button = _add_button( "paletteoff",
+                                           _('Hide palette'),
+                                           self.do_palette_cb,
+                                           toolbar, _('<Ctrl>p'))
+        self.blocks_button = _add_button( "hideshowoff",
+                                          _('Hide blocks'),
+                                          self.do_hideshow_cb,
+                                          toolbar, _('<Ctrl>b'))
 
-            # Set the project toolbar as the initial one selected
-            self.toolbox.set_current_toolbar(1)
+    def _make_project_buttons(self, toolbar):
+        """ Creates the turtle buttons for both toolbar types"""
+        self.eraser_button = _add_button("eraseron", _('Clean'),
+                                         self.do_eraser_cb,
+                                         toolbar, _('<Ctrl>e'))
+        self.run_button = _add_button("run-fastoff", _('Run'),
+                                      self.do_run_cb, toolbar,
+                                      _('<Ctrl>r'))
+        self.step_button = _add_button("run-slowoff", _('Step'),
+                                       self.do_step_cb, toolbar,
+                                       _('<Ctrl>w'))
+        self.debug_button = _add_button("debugoff", _('Debug'),
+                                        self.do_debug_cb,
+                                        toolbar, _('<Ctrl>d'))
+        self.stop_turtle_button = _add_button("stopitoff", _('Stop turtle'),
+                                              self.do_stop_cb, toolbar,
+                                              _('<Ctrl>s'))
 
     def _setup_scrolled_window(self):
         """ Create a scrolled window to contain the turtle canvas. """
@@ -989,7 +1003,6 @@ class TurtleArtActivity(activity.Activity):
         self.connect('shared', self._shared_cb)
         self.connect('joined', self._joined_cb)
 
-
     def _setup_visibility_handler(self):
         """ Notify when the visibility state changes """
         self.add_events(gtk.gdk.VISIBILITY_NOTIFY_MASK)
@@ -1028,10 +1041,7 @@ class TurtleArtActivity(activity.Activity):
   
             # run the activity
             if run_it:
-                if self.new_sugar_system:
-                    self.stop_button.set_icon("stopiton")
-                else:
-                    self.projectToolbar.stop.set_icon("stopiton")
+                self.stop_turtle_button.set_icon("stopiton")
                 self.tw.run_button(0)
         else:
             _logger.debug("Deferring reading file %s" %  file_path)
@@ -1102,142 +1112,3 @@ class ChatTube(ExportedGObject):
     @signal(dbus_interface=IFACE, signature='s')
     def SendText(self, text):
         self.stack = text
-
-class ViewToolbar(gtk.Toolbar):
-    def __init__(self, pc):
-        """ View toolbar: fullscreen, Cartesian, polar, coordinates """
-        gtk.Toolbar.__init__(self)
-        self.activity = pc
-
-        self.activity.fullscreen_button = _add_button( "view-fullscreen",
-                                                       _('Fullscreen'),
-                                                 self.activity.do_fullscreen_cb,
-                                                       self, '<Alt>Return')
-        self.activity.cartesian_button = _add_button( "view-Cartesian",
-                                                     _('Cartesian coordinates'),
-                                                  self.activity.do_cartesian_cb,
-                                                      self)
-        self.activity.polar_button = _add_button( "view-polar",
-                                                  _('Polar coordinates'),
-                                                  self.activity.do_polar_cb,
-                                                  self)
-        _add_separator(self)
-        self.activity.coordinates_label = _add_label(_("xcor") + "= 0 " +\
-                                                     _("ycor") + "= 0 " + \
-                                                     _("heading") + "= 0", self)
-
-        _add_separator(self, True)
-        self.activity.resize_up_button = _add_button('resize+',
-                                                     _("Grow blocks"),
-                                                self.activity.do_grow_blocks_cb,
-                                                     self)
-        self.activity.resize_down_button = _add_button('resize-',
-                                                       _("Shrink blocks"),
-                                              self.activity.do_shrink_blocks_cb,
-                                                       self)
-        self.activity.rescale_button = _add_button('expand-coordinates',
-                                                   _("Rescale coordinates up"),
-                                                   self.activity.do_rescale_cb,
-                                                   self)
-
-class EditToolbar84(gtk.Toolbar):
-    def __init__(self, pc):
-        """ Edit toolbar: copy and paste text and stacks """
-        gtk.Toolbar.__init__(self)
-        self.activity = pc
-
-        self.copy = _add_button("edit-copy", _('Copy'), self.activity._copy_cb,
-                                self, '<Ctrl>c')
-        self.paste = _add_button("edit-paste", _('Paste'),
-                                 self.activity._paste_cb, self, '<Ctrl>v')
-
-class HelpToolbar(gtk.Toolbar):
-    def __init__(self, pc):
-        """ Help toolbar: Just an icon and a label for displaying hover help """
-        gtk.Toolbar.__init__(self)
-        self.activity = pc
-
-        self.help = ToolButton( "help-toolbar" )
-        self.help.props.sensitive = False
-        self.insert(self.help, -1)
-        self.help.show()
-        self.activity.hover_help_label = _add_label(
-                   _("Move the cursor over the orange palette for help."), self)
-
-class SaveAsToolbar(gtk.Toolbar):
-    def __init__(self, pc):
-        """ SaveAs toolbar """
-        gtk.Toolbar.__init__(self)
-        self.activity = pc
-
-        self.activity.save_as_html = _add_button( "htmloff",
-                                                  _('Save as HTML'),
-                                               self.activity.do_save_as_html_cb,
-                                                  self)
-        self.activity.save_as_logo = _add_button( "logo-saveoff",
-                                                  _('Save Logo'),
-                                               self.activity.do_save_as_logo_cb,
-                                                  self)
-        self.activity.save_as_image = _add_button( "image-saveoff",
-                                                   _('Save as image'),
-                                              self.activity.do_save_as_image_cb,
-                                                   self)
-        _add_separator(self)
-        self.activity.load_python = _add_button( "pippy-openoff",
-                                                 _('Load my block'),
-                                                self.activity.do_load_python_cb,
-                                                 self)
-        self.activity.load_ta_project = _add_button('load-from-journal',
-                                           _("Import project from the Journal"),
-                                            self.activity.do_load_ta_project_cb,
-                                                    self)
-
-class ProjectToolbar(gtk.Toolbar):
-    def __init__(self, pc):
-        """ Project toolbar """
-        gtk.Toolbar.__init__(self)
-        self.activity = pc
-
-        self.activity.palette_button = _add_button( "paletteoff",
-                                                    _('Hide palette'),
-                                                    self.activity.do_palette_cb,
-                                                    self, _('<Ctrl>p'))
-        self.activity.blocks_button = _add_button( "hideshowoff",
-                                                   _('Hide blocks'),
-                                                   self.activity.do_hideshow_cb,
-                                                   self, _('<Ctrl>b'))
-        _add_separator(self)
-        self.activity.run_button = _add_button( "run-fastoff",
-                                                _('Run'),
-                                                self.activity.do_run_cb,
-                                                self, _('<Ctrl>r'))
-        self.activity.step_button = _add_button( "run-slowoff",
-                                                 _('Step'),
-                                                 self.activity.do_step_cb,
-                                                 self, _('<Ctrl>w'))
-        self.activity.debug_button = _add_button( "debugoff",
-                                                  _('Debug'),
-                                                  self.activity.do_debug_cb,
-                                                  self, _('<Ctrl>d'))
-        self.activity.stop_button = _add_button( "stopitoff",
-                                                 _('Stop turtle'),
-                                                 self.activity.do_stop_cb,
-                                                 self, _('<Ctrl>s'))
-        _add_separator(self)
-        self.activity.eraser_button = _add_button( "eraseron",
-                                                   _('Clean'),
-                                                   self.activity.do_eraser_cb,
-                                                   self, _('<Ctrl>e'))
-        _add_separator(self)
-        self.activity.keep_button = _add_button( "filesave",
-                                                 _('Save snapshot'),
-                                                 self.activity.do_keep_cb,
-                                                 self, '<Alt>S')
-        _add_separator(self)
-        self.activity.samples_button = _add_button( "stock-open",
-                                                    _('Samples'),
-                                                    self.activity.do_samples_cb,
-                                                    self, _('<Ctrl>o'))
-
-
-
