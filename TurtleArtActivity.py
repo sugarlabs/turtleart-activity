@@ -1112,7 +1112,7 @@ class ViewToolbar(gtk.Toolbar):
         self.activity.fullscreen_button = _add_button( "view-fullscreen",
                                                        _('Fullscreen'),
                                                  self.activity.do_fullscreen_cb,
-                                                       self, '<Alt>Enter')
+                                                       self, '<Alt>Return')
         self.activity.cartesian_button = _add_button( "view-Cartesian",
                                                      _('Cartesian coordinates'),
                                                   self.activity.do_cartesian_cb,
