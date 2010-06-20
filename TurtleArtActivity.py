@@ -110,7 +110,7 @@ class TurtleArtActivity(activity.Activity):
         
         self._setup_visibility_handler()
 
-        self.new_sugar_system = not NEW_SUGAR_SYSTEM
+        self.new_sugar_system = NEW_SUGAR_SYSTEM
         self._setup_toolbar()
 
         canvas = self._setup_scrolled_window()
