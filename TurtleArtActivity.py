@@ -763,6 +763,7 @@ class TurtleArtActivity(activity.Activity):
 
             _add_separator(toolbox.toolbar, True)
 
+            # Sugar Stop Button
             stop_button = StopButton(self)
             stop_button.props.accelerator = '<Ctrl>Q'
             toolbox.toolbar.insert(stop_button, -1)
@@ -774,7 +775,7 @@ class TurtleArtActivity(activity.Activity):
             self.set_toolbox(toolbox)
 
             project_toolbar = gtk.Toolbar()
-            toolbox.add_toolbar( _('Project'), project_toolbar )
+            toolbox.add_toolbar(_('Project'), project_toolbar)
             
             view_toolbar = gtk.Toolbar()
             toolbox.add_toolbar(_('View'), view_toolbar)
@@ -783,7 +784,7 @@ class TurtleArtActivity(activity.Activity):
             toolbox.add_toolbar(_('Edit'), edit_toolbar)
             edit_toolbar_button = edit_toolbar
             save_toolbar = gtk.Toolbar()
-            toolbox.add_toolbar( _('Import/Export'), save_toolbar )
+            toolbox.add_toolbar(_('Import/Export'), save_toolbar)
             activity_toolbar_button = save_toolbar
             help_toolbar = gtk.Toolbar()
             toolbox.add_toolbar(_('Help'), help_toolbar)
@@ -795,20 +796,19 @@ class TurtleArtActivity(activity.Activity):
 
             self._make_project_buttons(project_toolbar)
 
-        self.keep_button = _add_button('filesave',_("Save snapshot"),
+        self.keep_button = _add_button('filesave', _("Save snapshot"),
                                        self.do_keep_cb,
                                        activity_toolbar_button)
-        self.save_as_html = _add_button('htmloff',_("Save as HTML"),
+        self.save_as_html = _add_button('htmloff', _("Save as HTML"),
                                         self.do_save_as_html_cb,
                                         activity_toolbar_button)
-        self.save_as_logo = _add_button('logo-saveoff',_("Save as Logo"),
+        self.save_as_logo = _add_button('logo-saveoff', _("Save as Logo"),
                                         self.do_save_as_logo_cb,
                                         activity_toolbar_button)
-        self.save_as_image = _add_button('image-saveoff',_("Save as image"),
+        self.save_as_image = _add_button('image-saveoff', _("Save as image"),
                                          self.do_save_as_image_cb,
                                          activity_toolbar_button)
-        self.load_python = _add_button('pippy-openoff',
-                                       _("Load my block"),
+        self.load_python = _add_button('pippy-openoff', _("Load my block"),
                                        self.do_load_python_cb,
                                        activity_toolbar_button)
         self.load_ta_project = _add_button('load-from-journal',
@@ -816,9 +816,9 @@ class TurtleArtActivity(activity.Activity):
                                            self.do_load_ta_project_cb,
                                            activity_toolbar_button)
         copy = _add_button('edit-copy', _('Copy'), self._copy_cb,
-                                edit_toolbar_button, '<Ctrl>c')
+                           edit_toolbar_button, '<Ctrl>c')
         paste = _add_button('edit-paste', _('Paste'), self._paste_cb,
-                                 edit_toolbar_button, '<Ctrl>v')
+                            edit_toolbar_button, '<Ctrl>v')
         fullscreen_button = _add_button('view-fullscreen', _("Fullscreen"),
                                         self.do_fullscreen_cb,
                                         view_toolbar_button, '<Alt>Return')
@@ -827,8 +827,7 @@ class TurtleArtActivity(activity.Activity):
                                        self.do_cartesian_cb,
                                        view_toolbar_button)
         polar_button = _add_button('view-polar', _("Polar coordinates"),
-                                   self.do_polar_cb,
-                                   view_toolbar_button)
+                                   self.do_polar_cb, view_toolbar_button)
         _add_separator(view_toolbar)
         self.coordinates_label = _add_label(_("xcor") + "  = 0 " +\
                                             _("ycor") + " = 0 "  + \
@@ -845,7 +844,6 @@ class TurtleArtActivity(activity.Activity):
         self.resize_down_button = _add_button('resize-', _("Shrink blocks"),
                                               self.do_shrink_blocks_cb,
                                               view_toolbar_button)
-
         self.samples_button = _add_button("stock-open", _('Samples'),
                                           self.do_samples_cb,
                                           help_toolbar_button)
@@ -886,29 +884,24 @@ class TurtleArtActivity(activity.Activity):
 
     def _make_palette_buttons(self, toolbar):
         """ Creates the palette and block buttons for both toolbar types"""
-        self.palette_button = _add_button( "paletteoff",
-                                           _('Hide palette'),
-                                           self.do_palette_cb,
-                                           toolbar, _('<Ctrl>p'))
-        self.blocks_button = _add_button( "hideshowoff",
-                                          _('Hide blocks'),
-                                          self.do_hideshow_cb,
-                                          toolbar, _('<Ctrl>b'))
+        self.palette_button = _add_button( "paletteoff", _('Hide palette'),
+                                           self.do_palette_cb, toolbar,
+                                           _('<Ctrl>p'))
+        self.blocks_button = _add_button( "hideshowoff", _('Hide blocks'),
+                                          self.do_hideshow_cb, toolbar,
+                                          _('<Ctrl>b'))
 
     def _make_project_buttons(self, toolbar):
         """ Creates the turtle buttons for both toolbar types"""
         self.eraser_button = _add_button("eraseron", _('Clean'),
-                                         self.do_eraser_cb,
-                                         toolbar, _('<Ctrl>e'))
-        self.run_button = _add_button("run-fastoff", _('Run'),
-                                      self.do_run_cb, toolbar,
-                                      _('<Ctrl>r'))
+                                         self.do_eraser_cb, toolbar,
+                                         _('<Ctrl>e'))
+        self.run_button = _add_button("run-fastoff", _('Run'), self.do_run_cb,
+                                      toolbar, _('<Ctrl>r'))
         self.step_button = _add_button("run-slowoff", _('Step'),
-                                       self.do_step_cb, toolbar,
-                                       _('<Ctrl>w'))
+                                       self.do_step_cb, toolbar, _('<Ctrl>w'))
         self.debug_button = _add_button("debugoff", _('Debug'),
-                                        self.do_debug_cb,
-                                        toolbar, _('<Ctrl>d'))
+                                        self.do_debug_cb, toolbar, _('<Ctrl>d'))
         self.stop_turtle_button = _add_button("stopitoff", _('Stop turtle'),
                                               self.do_stop_cb, toolbar,
                                               _('<Ctrl>s'))
@@ -933,7 +926,7 @@ class TurtleArtActivity(activity.Activity):
         try:
             version = os.environ['SUGAR_BUNDLE_VERSION']
         except:
-            version = " unknown"
+            version = "unknown"
 
         filename = "version.dat"
         versiondata = []
