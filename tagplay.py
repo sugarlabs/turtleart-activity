@@ -32,7 +32,6 @@ pygst.require('0.10')
 import gst
 import gst.interfaces
 import gobject
-import time
 gobject.threads_init()
 
 try:
