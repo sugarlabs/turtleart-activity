@@ -24,6 +24,7 @@ import gtk
 import os.path
 from tautils import data_to_string, save_picture, image_to_base64
 from gettext import gettext as _
+from cgi import escape
 
 def save_html(self, tw, embed_flag=True):
     """ Either: Save canvas and code or pictures to HTML """
@@ -114,7 +115,7 @@ def save_html(self, tw, embed_flag=True):
         code += (self.html_glue['img'][0] + imgdata + \
                  self.html_glue['img'][1])
         code += self.html_glue['div'][0]
-        code += data_to_string(tw.assemble_data_to_save(False, True))
+        code += escape(data_to_string(tw.assemble_data_to_save(False, True)))
         code += self.html_glue['div'][1]
 
     if tw.running_sugar:
