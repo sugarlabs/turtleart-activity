@@ -1,3 +1,9 @@
+91
+
+* added black and white blocks
+* fixed cgi escape bug (#1854)
+* fixed bug with overzealous block resizing
+
 90
 
 * fixed problem with keyboard accelerators: Ctrl-C, Ctrl-V, and Alt-Return
@@ -19,7 +25,6 @@
 * fixed typo in sample code
 * added mouse support to sample code (See
   http://tonyforster.blogspot.com/2010/03/mouse-support-in-turtleart.html)
-
 
 86
 
