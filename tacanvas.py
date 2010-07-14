@@ -26,7 +26,7 @@ from tasprite_factory import SVG
 from tautils import image_to_base64, data_to_string, round_int
 import pango
 import cairo
-from taconstants import CANVAS_LAYER, DEFAULT_TURTLE
+from taconstants import CANVAS_LAYER, DEFAULT_TURTLE, BLACK, WHITE
 import logging
 _logger = logging.getLogger('turtleart-activity')
 
@@ -391,12 +391,26 @@ class TurtleGraphics:
         self.poly_points = []
 
     def set_fgcolor(self):
-        sh = (wrap100(self.shade) - 50)/50.0
-        rgb = color_table[wrap100(self.color)]
-        r, g, b = (rgb>>8)&0xff00, rgb&0xff00, (rgb<<8)&0xff00
-        r, g, b = calc_gray(r, self.gray), calc_gray(g, self.gray),\
-                  calc_gray(b, self.gray)
-        r, g, b = calc_shade(r, sh), calc_shade(g, sh), calc_shade(b, sh)
+        if self.color == WHITE or self.shade == WHITE:
+            r = 0xFF00
+            g = 0xFF00
+            b = 0xFF00
+        elif self.color == BLACK or self.shade == BLACK:
+            r = 0x0000
+            g = 0x0000
+            b = 0x0000
+        else:
+            sh = (wrap100(self.shade) - 50)/50.0
+            rgb = color_table[wrap100(self.color)]
+            r = (rgb>>8)&0xff00
+            r = calc_gray(r, self.gray)
+            r = calc_shade(r, sh)
+            g = rgb&0xff00
+            g = calc_gray(g, self.gray)
+            g = calc_shade(g, sh)
+            b = (rgb<<8)&0xff00
+            b = calc_gray(b, self.gray)
+            b = calc_shade(b, sh)
         self.fgrgb = [r>>8, g>>8, b>>8]
         self.fgcolor = self.cm.alloc_color(r, g, b)
         self.svg.set_stroke_color("#%02x%02x%02x" % (self.fgrgb[0],

@@ -122,7 +122,8 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
             ['penup','pendown', 'setpensize', 'fillscreen', 'pensize',
              'setcolor', 'setshade', 'setgray', 'color', 'shade',
              'gray', 'startfill', 'stopfill' ],
-            [ 'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple'],
+            [ 'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple',
+              'white', 'black'],
             ['plus2', 'minus2', 'product2',
              'division2', 'identity2', 'remainder2', 'sqrt', 'random',
              'number', 'greater2', 'less2', 'equal2', 'not', 'and2', 'or2'],
@@ -152,7 +153,8 @@ COLORS = [["#00FF00","#00A000"], ["#00FFFF","#00A0A0"], ["#00FFFF","#00A0A0"],
 BOX_COLORS = {'red':["#FF0000","#A00000"],'orange':["#FFD000","#AA8000"],
               'yellow':["#FFFF00","#A0A000"],'green':["#00FF00","#008000"],
               'cyan':["#00FFFF","#00A0A0"],'blue':["#0000FF","#000080"],
-              'purple':["#FF00FF","#A000A0"]}
+              'purple':["#FF00FF","#A000A0"], 'white':["#FFFFFF", "#A0A0A0"],
+              'black':["#000000", "#000000"]}
 
 #
 # Misc. parameters
@@ -169,6 +171,8 @@ PALETTE_SCALE = 1.5
 DEFAULT_TURTLE = 1
 HORIZONTAL_PALETTE = 0
 VERTICAL_PALETTE = 1
+BLACK = 0xFFFFFFFF
+WHITE = 0xFFFFFFFE
 
 #
 # Block-style definitions
@@ -193,8 +197,8 @@ BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storein', 'write']
 BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'textcolor', 'textsize', 'box1', 'box2', 'string', 'leftpos', 'scale',
     'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard',
-    'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple',
-    'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy',
+    'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'white',
+    'black', 'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy',
     'volume', 'pitch', 'voltage', 'resistance', 'gray']
 BOX_STYLE_MEDIA =  ['description', 'audio', 'journal']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
@@ -261,6 +265,7 @@ BLOCK_NAMES = {
     'arc':[_('arc'), _('angle'), _('radius')],
     'audio':[' '],
     'back':[_('back')],
+    'black':[_('black')],
     'blue':[_('blue')+' = 70'],
     'bottompos':[_('bottom')],
     'bottomy':[_('picture bottom')],
@@ -395,6 +400,7 @@ BLOCK_NAMES = {
     'wait':[_('wait')],
     'while':[_('while')],
     'while2':[_('while')],
+    'white':[_('white')],
     'width':[_('width')],
     'write':[_('write')],
     'xcor':[_('xcor')],
@@ -410,6 +416,7 @@ PRIMITIVES = {
     'and2':'and',
     'arc':'arc',
     'back':'back',
+    'black':'black',
     'blue':'blue',
     'bottompos':'bpos',
     'bottomy':'boty',
@@ -528,6 +535,7 @@ PRIMITIVES = {
     'vspace':'nop',
     'wait':'wait',
     'while2':'while',
+    'white':'white',
     'width':'hres',
     'write':'write',
     'xcor':'xcor',

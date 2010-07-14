@@ -32,7 +32,7 @@ try:
 except:
     pass
 
-from taconstants import PALETTES, PALETTE_NAMES, TAB_LAYER
+from taconstants import PALETTES, PALETTE_NAMES, TAB_LAYER, BLACK, WHITE
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
@@ -251,6 +251,7 @@ class LogoCode:
         'and':[2, lambda self, x, y: taand(x, y)],
         'arc':[2, lambda self, x, y: self.tw.canvas.arc(x, y)],
         'back':[1, lambda self, x: self.tw.canvas.forward(-x)],
+        'black':[0, lambda self: BLACK],
         'blue':[0, lambda self: 70],
         'bpos':[0, lambda self: -self.tw.canvas.height/(self.tw.coord_scale*2)],
         'boty':[0, lambda self: self.tw.bottomy],
@@ -367,6 +368,7 @@ class LogoCode:
         'vres':[0, lambda self: self.tw.canvas.height/self.tw.coord_scale],
         'wait':[1, self.prim_wait, True],
         # 'while':[2, self.prim_while, True],
+        'white':[0, lambda self: WHITE],
         'write':[2, lambda self, x, y: self.write(self, x, y)],
         'xcor':[0, lambda self: self.tw.canvas.xcor/self.tw.coord_scale],
         'ycor':[0, lambda self: self.tw.canvas.ycor/self.tw.coord_scale],
@@ -1167,7 +1169,6 @@ class LogoCode:
             if text is not None:
                 self.tw.canvas.draw_text(text, int(x), int(y),
                                          self.body_height, int(w))
-    
 
     # Depreciated block methods
 
