@@ -23,19 +23,22 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
-import getopt, sys
+import getopt
+import sys
 import os
 import os.path
+
 from gettext import gettext as _
+
 from taconstants import OVERLAY_LAYER
 from tautils import data_to_string, data_from_string, get_save_name
-
 from tawindow import TurtleArtWindow
 from taexporthtml import save_html
 from taexportlogo import save_logo
 
 HELP_MSG = "turtleart.py: " + _("usage is") +\
            "\n\tturtleart.py --taproject project.ta --output_png"
+
 
 def _make_sub_menu(menu, name):
     """ add a new submenu to the toolbar """
@@ -65,9 +68,12 @@ def makepath(path):
     if not exists(dpath):
         makedirs(dpath)
 
+
 class TurtleMain():
+    """ Launch Turtle Art from outside of Sugar """
+
     def __init__(self):
-        """ Launch Turtle Art from outside of Sugar """
+        """ Parse command-line options and initialize class """
 
         self.ta_file = None
         self.output_png = False
@@ -81,15 +87,15 @@ class TurtleMain():
             print HELP_MSG
             sys.exit(2)
         for o, a in opts:
-            if o in ('-o', '--output_png'):
+            if o in ['-o', '--output_png']:
                 self.output_png = True
                 self.ta_file = args[0]
-            elif o in ('-h', '--help'):
+            elif o in ['-h', '--help']:
                 print HELP_MSG
                 sys.exit()
-            elif o in ('-t'):
+            elif o in ['-t']:
                 self.ta_file = a
-            elif o in ('--taproject'):
+            elif o in ['--taproject']:
                 self.ta_file = args[0]
             else:
                 assert False, 'unhandled option'
@@ -99,24 +105,25 @@ class TurtleMain():
             sys.exit()
 
         if self.ta_file is not None:
-            if not self.ta_file.endswith(('.ta')):
+            if not self.ta_file.endswith(['.ta']):
                 self.ta_file += '.ta'
             if not os.path.exists(self.ta_file):
-                assert False, ("%s: %s" % (self.ta_file, _("file not found")))
+                assert False, "%s: %s" % (self.ta_file, _("file not found"))
 
         self.i = 0
         self.scale = 2.0
         self.tw = None
         # make sure Sugar paths are present
-        tapath = os.path.join(os.environ['HOME'], '.sugar', 'default', \
+        tapath = os.path.join(os.environ['HOME'], '.sugar', 'default',
                               'org.laptop.TurtleArtActivity')
-        map (makepath, (os.path.join(tapath, 'data/'), \
+        map (makepath, (os.path.join(tapath, 'data/'),
                         os.path.join(tapath, 'instance/')))
 
         if self.output_png:
             pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8,
-                gtk.gdk.screen_width(), gtk.gdk.screen_height())
-            canvas, mask  = pixbuf.render_pixmap_and_mask()
+                                    gtk.gdk.screen_width(),
+                                    gtk.gdk.screen_height())
+            canvas, mask = pixbuf.render_pixmap_and_mask()
         else:
             win = gtk.Window(gtk.WINDOW_TOPLEVEL)
 
@@ -124,10 +131,10 @@ class TurtleMain():
                 data_file = open('.turtleartrc', 'r')
             except IOError:
                 data_file = open('.turtleartrc', 'a+')
-                data_file.write(str(50)+'\n')
-                data_file.write(str(50)+'\n')
-                data_file.write(str(800)+'\n')
-                data_file.write(str(550)+'\n')
+                data_file.write(str(50) + '\n')
+                data_file.write(str(50) + '\n')
+                data_file.write(str(800) + '\n')
+                data_file.write(str(550) + '\n')
                 data_file.seek(0)
             self.x = int(data_file.readline())
             self.y = int(data_file.readline())
@@ -155,10 +162,13 @@ class TurtleMain():
             _make_menu_item(menu, _("Cartesian coordinates"),
                            self._do_cartesian_cb)
             _make_menu_item(menu, _("Polar coordinates"), self._do_polar_cb)
-            _make_menu_item(menu, _('Rescale coordinates'), self._do_rescale_cb)
+            _make_menu_item(menu, _('Rescale coordinates'),
+                            self._do_rescale_cb)
             _make_menu_item(menu, _("Grow blocks"), self._do_resize_cb, 1.5)
-            _make_menu_item(menu, _("Shrink blocks"), self._do_resize_cb, 0.667)
-            _make_menu_item(menu, _("Reset block size"), self._do_resize_cb, -1)
+            _make_menu_item(menu, _("Shrink blocks"),
+                            self._do_resize_cb, 0.667)
+            _make_menu_item(menu, _("Reset block size"),
+                            self._do_resize_cb, -1)
             view_menu = _make_sub_menu(menu, _("View"))
 
             menu = gtk.Menu()
@@ -194,7 +204,7 @@ class TurtleMain():
             canvas = gtk.DrawingArea()
             width = gtk.gdk.screen_width() * 2
             height = gtk.gdk.screen_height() * 2
-            canvas.set_size_request(width, height) 
+            canvas.set_size_request(width, height)
             sw.add_with_viewport(canvas)
             canvas.show()
             vbox.pack_end(sw, True, True)
@@ -234,7 +244,7 @@ class TurtleMain():
             self.tw.run_button(0)
             self.tw.save_as_image(self.ta_file, canvas)
 
-    def _quit_ta(self, widget = None, e = None):
+    def _quit_ta(self, widget=None, e=None):
         """ Save changes on exit """
         project_empty = self.tw.is_project_empty()
         if not project_empty:
@@ -245,11 +255,11 @@ class TurtleMain():
                     self._show_save_dialog(False)
         gtk.main_quit()
 
-    def _show_save_dialog(self, new_project = True):
+    def _show_save_dialog(self, new_project=True):
         """ Dialog for save project """
         dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
                                 buttons=gtk.BUTTONS_OK_CANCEL,
-                                message_format =\
+                                message_format=\
            _("You have unsaved work. Would you like to save before quitting?"))
         dlg.set_title(_("Save project?"))
         dlg.set_property("skip-taskbar-hint", False)
@@ -324,7 +334,7 @@ class TurtleMain():
     def _do_resize_cb(self, widget, factor):
         """ Callback to resize blocks. """
         if factor == -1:
-            self.tw.block_scale = 2.0     
+            self.tw.block_scale = 2.0
         else:
             self.tw.block_scale *= factor
         self.tw.resize_blocks()
@@ -357,7 +367,7 @@ class TurtleMain():
     def _do_rescale_cb(self, button):
         """ Callback to rescale coordinate space. """
         if self.tw.coord_scale == 1:
-            self.tw.coord_scale = self.tw.height/200
+            self.tw.coord_scale = self.tw.height / 200
             self.tw.eraser_button()
             if self.tw.cartesian is True:
                 self.tw.overlay_shapes['Cartesian_labeled'].hide()
@@ -440,10 +450,10 @@ class TurtleMain():
     def _window_event(self, event, data):
         """ Callback for resize event. """
         data_file = open('.turtleartrc', 'w')
-        data_file.write(str(data.x)+'\n')
-        data_file.write(str(data.y)+'\n')
-        data_file.write(str(data.width)+'\n')
-        data_file.write(str(data.height)+'\n')
+        data_file.write(str(data.x) + '\n')
+        data_file.write(str(data.y) + '\n')
+        data_file.write(str(data.width) + '\n')
+        data_file.write(str(data.height) + '\n')
 
     def destroy(self, event, data=None):
         """ Callback for destroy event. """
@@ -451,4 +461,3 @@ class TurtleMain():
 
 if __name__ == "__main__":
     TurtleMain()
-
