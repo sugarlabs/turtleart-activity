@@ -401,10 +401,13 @@ class TurtleArtWindow():
         if self.running_sugar:
             self.activity.do_show()
 
-    def resize_blocks(self):
-        """ Resize all of the blocks """
+    def resize_blocks(self, blocks=None):
+        """ Resize blocks or if blocks is None, all of the blocks """
+        if blocks is None:
+            blocks = self.just_blocks()
+
         # We need to restore collapsed stacks before resizing.
-        for blk in self.just_blocks():
+        for blk in blocks:
             if blk.status == 'collapsed':
                 bot = find_sandwich_bottom(blk)
                 if collapsed(bot):
@@ -413,21 +416,21 @@ class TurtleArtWindow():
                     bot.values[0] = dy
 
         # Do the resizing.
-        for blk in self.just_blocks():
+        for blk in blocks:
             blk.rescale(self.block_scale)
-        for blk in self.just_blocks():
+        for blk in blocks:
             self._adjust_dock_positions(blk)
 
         # Re-collapsed stacks after resizing.
-        for blk in self.just_blocks():
+        for blk in blocks:
             if collapsed(blk):
                 collapse_stack(find_sandwich_top(blk))
-        for blk in self.just_blocks():
+        for blk in blocks:
             if blk.name == 'sandwichtop':
                 grow_stack_arm(blk)
 
         # Resize the skins on some blocks: media content and Python
-        for blk in self.just_blocks():
+        for blk in blocks:
             if blk.name in BLOCKS_WITH_SKIN:
                 self._resize_skin(blk)
 
@@ -987,13 +990,13 @@ class TurtleArtWindow():
         self._check_collapsibles(top)
         self.drag_group = find_group(top)
 
-    def process_data(self, data, offset=0):
-        """ Process data (from a macro, a file, or the clipboard). """
+    def process_data(self, block_data, offset=0):
+        """ Process block_data (from a macro, a file, or the clipboard). """
         if offset != 0:
             _logger.debug("offset is %d" % (offset))
         # Create the blocks (or turtle).
         blocks = []
-        for blk in data:
+        for blk in block_data:
             if not self._found_a_turtle(blk):
                 blocks.append(self.load_block(blk, offset))
 
@@ -1002,7 +1005,7 @@ class TurtleArtWindow():
             cons = []
             # Normally, it is simply a matter of copying the connections.
             if blocks[i].connections == None:
-                for c in data[i][4]:
+                for c in block_data[i][4]:
                     if c is None:
                         cons.append(None)
                     else:
@@ -1010,18 +1013,18 @@ class TurtleArtWindow():
             elif blocks[i].connections == 'check':
                 # Corner case to convert old-style boolean and arithmetic blocks
                 cons.append(None) # Add an extra connection.
-                for c in data[i][4]:
+                for c in block_data[i][4]:
                     if c is None:
                         cons.append(None)
                     else:
                         cons.append(blocks[c])
                 # If the boolean op was connected, readjust the plumbing.
                 if blocks[i].name in BOOLEAN_STYLE:
-                    if data[i][4][0] is not None:
-                        c = data[i][4][0]
-                        cons[0] = blocks[data[c][4][0]]
-                        c0 = data[c][4][0]
-                        for j, cj in enumerate(data[c0][4]):
+                    if block_data[i][4][0] is not None:
+                        c = block_data[i][4][0]
+                        cons[0] = blocks[block_data[c][4][0]]
+                        c0 = block_data[c][4][0]
+                        for j, cj in enumerate(block_data[c0][4]):
                             if cj == c:
                                 blocks[c0].connections[j] = blocks[i]
                         if c < i:
@@ -1031,11 +1034,11 @@ class TurtleArtWindow():
                             # Connection was to a block we haven't seen yet.
                             print "WARNING: dock check couldn't see the future"
                 else:
-                    if data[i][4][0] is not None:
-                        c = data[i][4][0]
-                        cons[0] = blocks[data[c][4][0]]
-                        c0 = data[c][4][0]
-                        for j, cj in enumerate(data[c0][4]):
+                    if block_data[i][4][0] is not None:
+                        c = block_data[i][4][0]
+                        cons[0] = blocks[block_data[c][4][0]]
+                        c0 = block_data[c][4][0]
+                        for j, cj in enumerate(block_data[c0][4]):
                             if cj == c:
                                 blocks[c0].connections[j] = blocks[i]
                         if c < i:
@@ -1064,7 +1067,7 @@ class TurtleArtWindow():
                 grow_stack_arm(find_sandwich_top(blk))
 
         # Resize blocks to current scale
-        self.resize_blocks()
+        self.resize_blocks(blocks)
 
         if len(blocks) > 0:
             return blocks[0]
