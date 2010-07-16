@@ -260,7 +260,9 @@ class TurtleArtWindow():
 
     def _expose_cb(self, win, event):
         """ Repaint """
-        self.sprite_list.redraw_sprites()
+        # TODO: send event GDK_EXPOSE area to redraw
+        # print event.area
+        self.sprite_list.redraw_sprites(event.area)
         # self.canvas.cr_expose(event)
         return True
 

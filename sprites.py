@@ -78,6 +78,7 @@ import gtk
 import gobject
 import pango
 
+
 #
 # A class for the list of sprites and everything they share in common
 #
@@ -125,9 +126,15 @@ class Sprites:
             if spr.hit(pos): return spr
         return None
 
-    def redraw_sprites(self):
+    def redraw_sprites(self, area=None):
         for spr in self.list:
-            spr.draw()
+            if area == None:
+                spr.draw()
+            else:
+                intersection = spr.rect.intersect(area)
+                if intersection.width > 0 or intersection.height > 0:
+                    spr.draw()
+
 
 #
 # A class for the individual sprites
@@ -153,9 +160,14 @@ class Sprite:
         self.images = []
         self._dx = [] # image offsets
         self._dy = []
+        self.rect = None
         self.set_image(image)
         if self._sprites is not None:
             self._sprites.append_to_list(self)
+
+    def set_rect(self):
+        self.rect = gtk.gdk.Rectangle(self._x, self._y, self._width,
+                                      self._height)
 
     def set_image(self, image, i=0, dx=0, dy=0):
         while len(self.images) < i+1:
@@ -178,16 +190,21 @@ class Sprite:
                 self._width = _w + dx
             if _h + dy > self._height:
                 self._height = _h + dy
+        self.set_rect()
 
     def move(self, pos):
         self.inval()
         self._x,self._y = int(pos[0]),int(pos[1])
+        self.rect.x = self._x
+        self.rect.y = self._y
         self.inval()
 
     def move_relative(self, pos):
         self.inval()
         self._x += int(pos[0])
         self._y += int(pos[1])
+        self.rect.x = self._x
+        self.rect.y = self._y
         self.inval()
 
     def get_xy(self):
