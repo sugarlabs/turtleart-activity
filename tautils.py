@@ -429,7 +429,7 @@ def uncollapse_forks(top, looping=False):
 def collapse_stack(top):
     """ Hide all the blocks between the sandwich top and sandwich bottom. """
     # First uncollapse any nested stacks
-    if top.spr == None:
+    if top == None or top.spr == None:
         return
     uncollapse_forks(top)
     _hit_bottom = False
