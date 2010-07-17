@@ -248,7 +248,7 @@ class TurtleArtWindow():
             self.toolbar_shapes['stopiton'].hide()
 
     def sharing(self):
-        """ Is a chattube available for sharing? """
+        """ Is a chattube available for share? """
         if self.running_sugar and hasattr(self.activity, 'chattube') and\
            self.activity.chattube is not None:
             return True
@@ -260,7 +260,7 @@ class TurtleArtWindow():
 
     def _expose_cb(self, win, event):
         """ Repaint """
-        self.sprite_list.redraw_sprites(event.area)
+        self.sprite_list.refresh(event)
         # self.canvas.cr_expose(event)
         return True
 

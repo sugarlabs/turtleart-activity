@@ -36,6 +36,11 @@ Example usage:
         # Import the classes into your program.
         from sprites import Sprites Sprite
 
+        # In your expose callback event handler, call refresh
+        def _expose_cb(self, win, event):
+            self.sprite_list.refresh(event)
+            return True
+
         # Create a new sprite collection for a gtk Drawing Area.
         my_drawing_area = gtk.DrawingArea()
         self.sprite_list = Sprites(my_drawing_area)
@@ -130,6 +135,10 @@ class Sprites:
             if spr.hit(pos):
                 return spr
         return None
+
+    def refresh(self, event):
+        """ Handle expose event refresh """
+        self.redraw_sprites(event.area)
 
     def redraw_sprites(self, area=None):
         """ Redraw the sprites that intersect area. """
