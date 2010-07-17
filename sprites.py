@@ -34,7 +34,7 @@ class Sprite manages individual sprites within the collection.
 
 Example usage:
         # Import the classes into your program.
-        from sprites import Sprites, Sprite
+        from sprites import Sprites Sprite
 
         # Create a new sprite collection for a gtk Drawing Area.
         my_drawing_area = gtk.DrawingArea()
@@ -75,18 +75,16 @@ def svg_str_to_pixbuf(svg_string):
 import pygtk
 pygtk.require('2.0')
 import gtk
-import gobject
 import pango
 
 
-#
-# A class for the list of sprites and everything they share in common
-#
-
 class Sprites:
+    """ A class for the list of sprites and everything they share in common """
+
     def __init__(self, canvas, area=None, gc=None):
+        """ Initialize an empty array of sprites """
         self.canvas = canvas
-        if gc == None:
+        if area == None:
             self.area = self.canvas.window
             self.gc = self.area.new_gc()
         else:
@@ -96,37 +94,45 @@ class Sprites:
         self.list = []
 
     def get_sprite(self, i):
+        """ Return a sprint from the array """
         if i < 0 or i > len(self.list)-1:
             return(None)
         else:
             return(self.list[i])
 
     def length_of_list(self):
+        """ How many sprites are there? """
         return(len(self.list))
 
     def append_to_list(self, spr):
+        """ Append a new sprite to the end of the list. """
         self.list.append(spr)
 
     def insert_in_list(self, spr, i):
+        """ Insert a sprite at position i. """
         if i < 0:
             self.list.insert(0, spr)
-        elif i > len(self.list)-1:
+        elif i > len(self.list) - 1:
             self.list.append(spr)
         else:
             self.list.insert(i, spr)
 
     def remove_from_list(self, spr):
+        """ Remove a sprite from the list. """
         if spr in self.list:
             self.list.remove(spr)
 
     def find_sprite(self, pos):
+        """ Search based on (x, y) position. Return the 'top/first' one. """
         list = self.list[:]
         list.reverse()
         for spr in list:
-            if spr.hit(pos): return spr
+            if spr.hit(pos):
+                return spr
         return None
 
     def redraw_sprites(self, area=None):
+        """ Redraw the sprites that intersect area. """
         for spr in self.list:
             if area == None:
                 spr.draw()
@@ -136,14 +142,13 @@ class Sprites:
                     spr.draw()
 
 
-#
-# A class for the individual sprites
-#
 class Sprite:
+    """ A class for the individual sprites """
+
     def __init__(self, sprites, x, y, image):
+        """ Initialize an individual sprite """
         self._sprites = sprites
-        self._x = int(x)
-        self._y = int(y)
+        self.rect = gtk.gdk.Rectangle(int(x), int(y), 0, 0)
         self._scale = [12]
         self._rescale = [True]
         self._horiz_align = ["center"]
@@ -152,78 +157,71 @@ class Sprite:
         self._bold = False
         self._italic = False
         self._color = None
-        self._width = 0
-        self._height = 0
-        self._margins = [0,0,0,0]
+        self._margins = [0, 0, 0, 0]
         self.layer = 100
         self.labels = []
         self.images = []
-        self._dx = [] # image offsets
+        self._dx = []  # image offsets
         self._dy = []
-        self.rect = None
         self.set_image(image)
-        if self._sprites is not None:
-            self._sprites.append_to_list(self)
-
-    def set_rect(self):
-        self.rect = gtk.gdk.Rectangle(self._x, self._y, self._width,
-                                      self._height)
+        self._sprites.append_to_list(self)
 
     def set_image(self, image, i=0, dx=0, dy=0):
-        while len(self.images) < i+1:
-           self.images.append(None)
-           self._dx.append(0)
-           self._dy.append(0)
+        """ Add an image to the sprite. """
+        while len(self.images) < i + 1:
+            self.images.append(None)
+            self._dx.append(0)
+            self._dy.append(0)
         self.images[i] = image
         self._dx[i] = dx
         self._dy[i] = dy
-        if isinstance(image, gtk.gdk.Pixbuf):
-            _w = image.get_width()
-            _h = image.get_height()
+        if isinstance(self.images[i], gtk.gdk.Pixbuf):
+            w = self.images[i].get_width()
+            h = self.images[i].get_height()
         else:
-            _w, _h = image.get_size()
-        if i == 0: # Always reset width and height when base image changes.
-            self._width = _w + dx
-            self._height = _h + dy
+            w, h = self.images[i].get_size()
+        if i == 0:  # Always reset width and height when base image changes.
+            self.rect.width = w + dx
+            self.rect.height = h + dy
         else:
-            if _w + dx > self._width:
-                self._width = _w + dx
-            if _h + dy > self._height:
-                self._height = _h + dy
-        self.set_rect()
+            if w + dx > self.rect.width:
+                self.rect.width = w + dx
+            if h + dy > self.rect.height:
+                self.rect.height = h + dy
 
     def move(self, pos):
+        """ Move to new (x, y) position """
         self.inval()
-        self._x,self._y = int(pos[0]),int(pos[1])
-        self.rect.x = self._x
-        self.rect.y = self._y
+        self.rect.x, self.rect.y = int(pos[0]), int(pos[1])
         self.inval()
 
     def move_relative(self, pos):
+        """ Move to new (x+dx, y+dy) position """
         self.inval()
-        self._x += int(pos[0])
-        self._y += int(pos[1])
-        self.rect.x = self._x
-        self.rect.y = self._y
+        self.rect.x += int(pos[0])
+        self.rect.y += int(pos[1])
         self.inval()
 
     def get_xy(self):
-        return (self._x, self._y)
+        """ Return current (x, y) position """
+        return (self.rect.x, self.rect.y)
 
     def get_dimensions(self):
-        return (self._width, self._height)
+        """ Return current size """
+        return (self.rect.width, self.rect.height)
 
     def get_layer(self):
+        """ Return current layer """
         return self.layer
 
     def set_shape(self, image, i=0):
+        """ Set the current image associated with the sprite """
         self.inval()
         self.set_image(image, i)
         self.inval()
 
     def set_layer(self, layer):
-        if self._sprites is None:
-            return
+        """ Set the layer for a sprite """
         self._sprites.remove_from_list(self)
         self.layer = layer
         for i in range(self._sprites.length_of_list()):
@@ -235,37 +233,43 @@ class Sprite:
         self.inval()
 
     def set_label(self, new_label, i=0):
+        """ Set the label drawn on the sprite """
         self._extend_labels_array(i)
         if type(new_label) is str or type(new_label) is unicode:
             # pango doesn't like nulls
-            self.labels[i] = new_label.replace("\0"," ")
+            self.labels[i] = new_label.replace("\0", " ")
         else:
             self.labels[i] = str(new_label)
         self.inval()
 
     def set_margins(self, l=0, t=0, r=0, b=0):
-        self._margins = [l,t,r,b]
+        """ Set the margins for drawing the label """
+        self._margins = [l, t, r, b]
 
     def _extend_labels_array(self, i):
+        """ Append to the labels attribute list """
         if self._fd is None:
-           self.set_font('Sans')
+            self.set_font('Sans')
         if self._color is None:
-           self._color = self._sprites.cm.alloc_color('black')
-        while len(self.labels) < i+1:
-           self.labels.append(" ")
-           self._scale.append(self._scale[0])
-           self._rescale.append(self._rescale[0])
-           self._horiz_align.append(self._horiz_align[0])
-           self._vert_align.append(self._vert_align[0])
+            self._color = self._sprites.cm.alloc_color('black')
+        while len(self.labels) < i + 1:
+            self.labels.append(" ")
+            self._scale.append(self._scale[0])
+            self._rescale.append(self._rescale[0])
+            self._horiz_align.append(self._horiz_align[0])
+            self._vert_align.append(self._vert_align[0])
 
     def set_font(self, font):
+        """ Set the font for a label """
         self._fd = pango.FontDescription(font)
 
     def set_label_color(self, rgb):
+        """ Set the font color for a label """
         self._color = self._sprites.cm.alloc_color(rgb)
 
     def set_label_attributes(self, scale, rescale=True, horiz_align="center",
                              vert_align="middle", i=0):
+        """ Set the various label attributes """
         self._extend_labels_array(i)
         self._scale[i] = scale
         self._rescale[i] = rescale
@@ -273,116 +277,124 @@ class Sprite:
         self._vert_align[i] = vert_align
 
     def hide(self):
+        """ Hide a sprite """
         self.inval()
         self._sprites.remove_from_list(self)
 
     def inval(self):
-        if self._sprites.area is not None:
-            self._sprites.area.invalidate_rect(gtk.gdk.Rectangle(self._x,
-                                    self._y, self._width, self._height), False)
+        """ Force a region redraw by gtk """
+        self._sprites.area.invalidate_rect(self.rect, False)
 
     def draw(self):
-        for i,img in enumerate(self.images):
+        """ Draw the sprite (and label) """
+        for i, img in enumerate(self.images):
             if isinstance(img, gtk.gdk.Pixbuf):
-                self._sprites.area.draw_pixbuf(
-                    self._sprites.gc, img, 0, 0, self._x+self._dx[i],
-                                                 self._y+self._dy[i])
+                self._sprites.area.draw_pixbuf(self._sprites.gc, img, 0, 0,
+                                               self.rect.x + self._dx[i],
+                                               self.rect.y + self._dy[i])
             elif img is not None:
-                self._sprites.area.draw_drawable(
-                    self._sprites.gc, img, 0, 0, self._x+self._dx[i],
-                                                 self._y+self._dy[i], -1, -1)
+                self._sprites.area.draw_drawable(self._sprites.gc, img, 0, 0,
+                                                 self.rect.x + self._dx[i],
+                                                 self.rect.y + self._dy[i],
+                                                 -1, -1)
         if len(self.labels) > 0:
             self.draw_label()
 
     def hit(self, pos):
+        """ Is (x, y) on top of the sprite? """
         x, y = pos
-        if x < self._x:
+        if x < self.rect.x:
             return False
-        if x > self._x+self._width:
+        if x > self.rect.x + self.rect.width:
             return False
-        if y < self._y:
+        if y < self.rect.y:
             return False
-        if y > self._y+self._height:
+        if y > self.rect.y + self.rect.height:
             return False
         return True
 
     def draw_label(self):
-        my_width = self._width-self._margins[0]-self._margins[2]
+        """ Draw the label based on its attributes """
+        my_width = self.rect.width - self._margins[0] - self._margins[2]
         if my_width < 0:
             my_width = 0
-        my_height = self._height-self._margins[1]-self._margins[3]
+        my_height = self.rect.height - self._margins[1] - self._margins[3]
         for i in range(len(self.labels)):
             pl = self._sprites.canvas.create_pango_layout(str(self.labels[i]))
-            self._fd.set_size(int(self._scale[i]*pango.SCALE))
+            self._fd.set_size(int(self._scale[i] * pango.SCALE))
             pl.set_font_description(self._fd)
-            w = pl.get_size()[0]/pango.SCALE
+            w = pl.get_size()[0] / pango.SCALE
             if w > my_width:
-                if self._rescale[i] is True:
+                if self._rescale[i]:
                     self._fd.set_size(
-                                    int(self._scale[i]*pango.SCALE*my_width/w))
+                            int(self._scale[i] * pango.SCALE * my_width / w))
                     pl.set_font_description(self._fd)
-                    w = pl.get_size()[0]/pango.SCALE
+                    w = pl.get_size()[0] / pango.SCALE
                 else:
-                    j = len(self.labels[i])-1
+                    j = len(self.labels[i]) - 1
                     while(w > my_width and j > 0):
                         pl = self._sprites.canvas.create_pango_layout(
-                                 "…"+self.labels[i][len(self.labels[i])-j:])
-                        self._fd.set_size(int(self._scale[i]*pango.SCALE))
+                              "…" + self.labels[i][len(self.labels[i]) - j:])
+                        self._fd.set_size(int(self._scale[i] * pango.SCALE))
                         pl.set_font_description(self._fd)
-                        w = pl.get_size()[0]/pango.SCALE        
+                        w = pl.get_size()[0] / pango.SCALE
                         j -= 1
             if self._horiz_align[i] == "center":
-                x = int(self._x+self._margins[0]+(my_width-w)/2)
+                x = int(self.rect.x + self._margins[0] + (my_width - w) / 2)
             elif self._horiz_align[i] == 'left':
-                x = int(self._x+self._margins[0])
+                x = int(self.rect.x + self._margins[0])
             else: # right
-                x = int(self._x+self._width-w-self._margins[2])
-            h = pl.get_size()[1]/pango.SCALE
+                x = int(self.rect.x + self.rect.width - w - self._margins[2])
+            h = pl.get_size()[1] / pango.SCALE
             if self._vert_align[i] == "middle":
-                y = int(self._y+self._margins[1]+(my_height-h)/2)
+                y = int(self.rect.y + self._margins[1] + (my_height - h) / 2)
             elif self._vert_align[i] == "top":
-                y = int(self._y+self._margins[1])
+                y = int(self.rect.y + self._margins[1])
             else: # bottom
-                y = int(self._y+self._height-h-self._margins[3])
+                y = int(self.rect.y + self.rect.height - h - self._margins[3])
             self._sprites.gc.set_foreground(self._color)
             self._sprites.area.draw_layout(self._sprites.gc, x, y, pl)
 
     def label_width(self):
+        """ Calculate the width of a label """
         max = 0
         for i in range(len(self.labels)):
             pl = self._sprites.canvas.create_pango_layout(self.labels[i])
-            self._fd.set_size(int(self._scale[i]*pango.SCALE))
+            self._fd.set_size(int(self._scale[i] * pango.SCALE))
             pl.set_font_description(self._fd)
-            w = pl.get_size()[0]/pango.SCALE
+            w = pl.get_size()[0] / pango.SCALE
             if w > max:
                 max = w
         return max
 
     def label_safe_width(self):
-        return self._width-self._margins[0]-self._margins[2]
-    
+        """ Return maximum width for a label """
+        return self.rect.width - self._margins[0] - self._margins[2]
+
     def label_safe_height(self):
-        return self._height-self._margins[1]-self._margins[3]
-    
+        """ Return maximum height for a label """
+        return self.rect.height - self._margins[1] - self._margins[3]
+
     def label_left_top(self):
-        return (self._margins[0], self._margins[1])
+        """ Return the upper-left corner of the label safe zone """
+        return(self._margins[0], self._margins[1])
 
     def get_pixel(self, pos, i=0):
+        """ Return the pixl at (x, y) """
         x, y = pos
-        x = x-self._x
-        y = y-self._y
-        if y > self.images[i].get_height()-1:
-            return (-1,-1,-1,-1)
+        x = x - self.rect.x
+        y = y - self.rect.y
+        if y > self.images[i].get_height() - 1:
+            return(-1, -1, -1, -1)
         try:
             array = self.images[i].get_pixels()
             if array is not None:
-                offset = (y*self.images[i].get_width()+x)*4
-                r,g,b,a = ord(array[offset]), ord(array[offset+1]),\
-                          ord(array[offset+2]), ord(array[offset+3])
-                return (r,g,b,a)
+                offset = (y * self.images[i].get_width() + x) * 4
+                r, g, b, a = ord(array[offset]), ord(array[offset + 1]),\
+                             ord(array[offset + 2]), ord(array[offset + 3])
+                return(r, g, b, a)
             else:
-                return (-1,-1,-1,-1)
+                return(-1, -1, -1, -1)
         except IndexError:
             print "Index Error: %d %d" % (len(array), offset)
-            return (-1,-1,-1,-1)
-
+            return(-1, -1, -1, -1)
