@@ -597,7 +597,7 @@ class TurtleArtActivity(activity.Activity):
 
     def event_received_cb(self, text):
         """ Handle the receiving of events in share """
-        _logger.debug(text)
+        # _logger.debug(text)
 
         """
         Events are sent as a tuple, nick|cmd, where nick is a turle name
@@ -612,7 +612,7 @@ class TurtleArtActivity(activity.Activity):
         save_active_turtle = self.tw.active_turtle
         e = text.split("|", 2)
         text = e[1]
-        if text[0] == 't': # request for turtle dictionary
+        if e[0] == 't': # request for turtle dictionary
             if text > 0:
                 [nick, colors] = data_from_string(text)
                 if nick != self.tw.nick:
@@ -627,7 +627,7 @@ class TurtleArtActivity(activity.Activity):
             if self.initiating:
                 text = data_to_string(self.turtle_dictionary)
                 self.send_event("T|" + text)
-        elif text[0] == 'T': # Receiving the turtle dictionary.
+        elif e[0] == 'T': # Receiving the turtle dictionary.
             if self.waiting_for_turtles:
                 if len(text) > 0:
                     self.turtle_dictionary = data_from_string(text)
@@ -637,55 +637,55 @@ class TurtleArtActivity(activity.Activity):
                             # add new turtle for the joiner
                             self.tw.canvas.set_turtle(nick, colors)
                 self.waiting_for_turtles = False
-        elif text[0] == 'f': # move a turtle forward
+        elif e[0] == 'f': # move a turtle forward
             if len(text) > 0:
                  [nick, x] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.forward(x, False)
-        elif text[0] == 'a': # move a turtle in an arc
+        elif e[0] == 'a': # move a turtle in an arc
             if len(text) > 0:
                  [nick, [a, r]] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.arc(a, r, False)
-        elif text[0] == 'r': # rotate turtle
+        elif e[0] == 'r': # rotate turtle
             if len(text) > 0:
                  [nick, h] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.seth(h, False)
-        elif text[0] == 'x': # set turtle xy position
+        elif e[0] == 'x': # set turtle xy position
             if len(text) > 0:
                  [nick, [x, y]] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.setxy(x, y, False)
-        elif text[0] == 'c': # set turtle pen color
+        elif e[0] == 'c': # set turtle pen color
             if len(text) > 0:
                  [nick, x] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.setcolor(x, False)
-        elif text[0] == 'g': # set turtle pen gray level
+        elif e[0] == 'g': # set turtle pen gray level
             if len(text) > 0:
                  [nick, x] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.setgray(x, False)
-        elif text[0] == 's': # set turtle pen shade
+        elif e[0] == 's': # set turtle pen shade
             if len(text) > 0:
                  [nick, x] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.setshade(x, False)
-        elif text[0] == 'w': # set turtle pen width
+        elif e[0] == 'w': # set turtle pen width
             if len(text) > 0:
                  [nick, x] = data_from_string(text)
                  if nick != self.tw.nick:
                      self.tw.canvas.set_turtle(nick)
                      self.tw.canvas.setpensize(x, False)
-        elif text[0] == 'p': # set turtle pen state
+        elif e[0] == 'p': # set turtle pen state
             if len(text) > 0:
                  [nick, x] = data_from_string(text)
                  if nick != self.tw.nick:
