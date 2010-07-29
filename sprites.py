@@ -173,7 +173,8 @@ class Sprite:
         self._dx = []  # image offsets
         self._dy = []
         self.set_image(image)
-        self._sprites.append_to_list(self)
+        if self._sprites is not None:
+            self._sprites.append_to_list(self)
 
     def set_image(self, image, i=0, dx=0, dy=0):
         """ Add an image to the sprite. """
@@ -231,6 +232,8 @@ class Sprite:
 
     def set_layer(self, layer):
         """ Set the layer for a sprite """
+        if self._sprites is None:
+            return
         self._sprites.remove_from_list(self)
         self.layer = layer
         for i in range(self._sprites.length_of_list()):
@@ -287,15 +290,21 @@ class Sprite:
 
     def hide(self):
         """ Hide a sprite """
+        if self._sprites is None:
+            return
         self.inval()
         self._sprites.remove_from_list(self)
 
     def inval(self):
         """ Force a region redraw by gtk """
+        if self._sprites is None:
+            return
         self._sprites.area.invalidate_rect(self.rect, False)
 
     def draw(self):
         """ Draw the sprite (and label) """
+        if self._sprites is None:
+            return
         for i, img in enumerate(self.images):
             if isinstance(img, gtk.gdk.Pixbuf):
                 self._sprites.area.draw_pixbuf(self._sprites.gc, img, 0, 0,
@@ -324,6 +333,8 @@ class Sprite:
 
     def draw_label(self):
         """ Draw the label based on its attributes """
+        if self._sprites is None:
+            return
         my_width = self.rect.width - self._margins[0] - self._margins[2]
         if my_width < 0:
             my_width = 0
