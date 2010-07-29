@@ -1,8 +1,14 @@
+92
+
+* fixed sharing bug introduced in v91
+* cleaned up cmdline processing
+
 91
 
 * added black and white blocks
 * fixed cgi escape bug (#1854)
-* fixed bug with overzealous block resizing
+* fixed bug with overzealous block resizing (#2092)
+* speed up of refresh code (expose_cb handling)
 
 90
 
