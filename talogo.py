@@ -152,11 +152,11 @@ def taplus(x, y):
         if numtype(x):
             xx = str(round_int(x))
         else:
-            xx = x
+            xx = str(x)
         if numtype(y):
             yy = str(round_int(y))
         else:
-            yy = y
+            yy = str(y)
         return(xx+yy)
     
 def taminus(x, y):
