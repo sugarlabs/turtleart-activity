@@ -23,10 +23,14 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
+
 import getopt
 import sys
 import os
 import os.path
+
+argv = sys.argv[:]  # Workaround for import behavior of gst in tagplay
+sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 
 from gettext import gettext as _
 
@@ -36,8 +40,11 @@ from tawindow import TurtleArtWindow
 from taexporthtml import save_html
 from taexportlogo import save_logo
 
-HELP_MSG = "turtleart.py: " + _("usage is") +\
-           "\n\tturtleart.py --taproject project.ta --output_png"
+HELP_MSG = 'turtleart.py: ' + _('usage is') + """
+ \tturtleart.py 
+ \tturtleart.py project.ta
+ \tturtleart.py --output_png project.ta
+ \tturtleart.py -o project"""
 
 
 def _make_sub_menu(menu, name):
@@ -80,35 +87,32 @@ class TurtleMain():
 
         # Parse command line
         try:
-            opts, args = getopt.getopt(sys.argv[1:], "hot:v", ["taproject",
-                                                     "help", "output_png"])
+            opts, args = getopt.getopt(argv[1:], 'ho',
+                                       ['help', 'output_png'])
         except getopt.GetoptError, err:
             print str(err)
             print HELP_MSG
             sys.exit(2)
         for o, a in opts:
-            if o in ['-o', '--output_png']:
-                self.output_png = True
-                self.ta_file = args[0]
-            elif o in ['-h', '--help']:
+            if o in ('-h', '--help'):
                 print HELP_MSG
                 sys.exit()
-            elif o in ['-t']:
-                self.ta_file = a
-            elif o in ['--taproject']:
-                self.ta_file = args[0]
+            if o in ('-o', '--output_png'):
+                self.output_png = True
             else:
-                assert False, 'unhandled option'
+                assert False, 'No option action for ' + o
+        if args:
+            self.ta_file = args[0]
 
-        if self.output_png and self.ta_file is None:
+        if len(args) > 1 or self.output_png and self.ta_file is None:
             print HELP_MSG
             sys.exit()
 
         if self.ta_file is not None:
-            if not self.ta_file.endswith(['.ta']):
+            if not self.ta_file.endswith(('.ta')):
                 self.ta_file += '.ta'
             if not os.path.exists(self.ta_file):
-                assert False, "%s: %s" % (self.ta_file, _("file not found"))
+                assert False, ('%s: %s' % (self.ta_file, _('file not found')))
 
         self.i = 0
         self.scale = 2.0
