@@ -2162,6 +2162,16 @@ class TurtleArtWindow():
         dy *= h
         return(w, h, x, y, dx, dy)
 
+    def save_for_upload(self, _file_name):
+        """ Grab the current canvas and save it for upload """
+        if _file_name[-3:] == '.ta':
+            _file_name = _file_name[0:-3]
+        data_to_file(self.assemble_data_to_save(), _file_name + '.ta')
+        save_picture(self.canvas, _file_name + '.png')
+        ta_file = _file_name + '.ta'
+        image_file = _file_name + '.png'
+        return ta_file, image_file
+
     def save_as_image(self, name="", svg=False, pixbuf=None):
         """ Grab the current canvas and save it. """
 

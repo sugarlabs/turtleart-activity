@@ -29,6 +29,9 @@ import sys
 import os
 import os.path
 
+import pycurl
+import xmlrpclib
+
 argv = sys.argv[:]  # Workaround for import behavior of gst in tagplay
 sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 
@@ -60,9 +63,9 @@ def _make_menu_item(menu, tooltip, callback, arg=None):
     menu_items = gtk.MenuItem(tooltip)
     menu.append(menu_items)
     if arg is None:
-        menu_items.connect("activate", callback)
+        menu_items.connect('activate', callback)
     else:
-        menu_items.connect("activate", callback, arg)
+        menu_items.connect('activate', callback, arg)
     menu_items.show()
 
 
@@ -84,6 +87,7 @@ class TurtleMain():
 
         self.ta_file = None
         self.output_png = False
+        self.uploading = False
 
         # Parse command line
         try:
@@ -100,7 +104,7 @@ class TurtleMain():
             if o in ('-o', '--output_png'):
                 self.output_png = True
             else:
-                assert False, 'No option action for ' + o
+                assert False, _('No option action:') + ' ' + o
         if args:
             self.ta_file = args[0]
 
@@ -112,7 +116,7 @@ class TurtleMain():
             if not self.ta_file.endswith(('.ta')):
                 self.ta_file += '.ta'
             if not os.path.exists(self.ta_file):
-                assert False, ('%s: %s' % (self.ta_file, _('file not found')))
+                assert False, ('%s: %s' % (self.ta_file, _('File not found')))
 
         self.i = 0
         self.scale = 2.0
@@ -148,52 +152,53 @@ class TurtleMain():
             win.set_default_size(self.width, self.height)
             win.move(self.x, self.y)
             win.maximize()
-            win.set_title(_("Turtle Art"))
-            win.set_icon_from_file("images/turtle.png")
-            win.connect("delete_event", self._quit_ta)
+            win.set_title(_('Turtle Art'))
+            win.set_icon_from_file('images/turtle.png')
+            win.connect('delete_event', self._quit_ta)
 
             menu = gtk.Menu()
-            _make_menu_item(menu, _("New"), self._do_new_cb)
-            _make_menu_item(menu, _("Open"), self._do_open_cb)
-            _make_menu_item(menu, _("Save"), self._do_save_cb)
-            _make_menu_item(menu, _("Save As"), self._do_save_as_cb)
-            _make_menu_item(menu, _("Save as image"), self._do_save_picture_cb)
-            _make_menu_item(menu, _("Save as HTML"), self._do_save_html_cb)
-            _make_menu_item(menu, _("Save as Logo"), self._do_save_logo_cb)
-            _make_menu_item(menu, _("Quit"), self.destroy)
-            activity_menu = _make_sub_menu(menu, _("File"))
+            _make_menu_item(menu, _('New'), self._do_new_cb)
+            _make_menu_item(menu, _('Open'), self._do_open_cb)
+            _make_menu_item(menu, _('Save'), self._do_save_cb)
+            _make_menu_item(menu, _('Save As'), self._do_save_as_cb)
+            _make_menu_item(menu, _('Save as image'), self._do_save_picture_cb)
+            _make_menu_item(menu, _('Save as HTML'), self._do_save_html_cb)
+            _make_menu_item(menu, _('Save as Logo'), self._do_save_logo_cb)
+            _make_menu_item(menu, _('Upload to Web'), self._do_upload_to_web)
+            _make_menu_item(menu, _('Quit'), self.destroy)
+            activity_menu = _make_sub_menu(menu, _('File'))
 
             menu = gtk.Menu()
-            _make_menu_item(menu, _("Cartesian coordinates"),
+            _make_menu_item(menu, _('Cartesian coordinates'),
                            self._do_cartesian_cb)
-            _make_menu_item(menu, _("Polar coordinates"), self._do_polar_cb)
+            _make_menu_item(menu, _('Polar coordinates'), self._do_polar_cb)
             _make_menu_item(menu, _('Rescale coordinates'),
                             self._do_rescale_cb)
-            _make_menu_item(menu, _("Grow blocks"), self._do_resize_cb, 1.5)
-            _make_menu_item(menu, _("Shrink blocks"),
+            _make_menu_item(menu, _('Grow blocks'), self._do_resize_cb, 1.5)
+            _make_menu_item(menu, _('Shrink blocks'),
                             self._do_resize_cb, 0.667)
-            _make_menu_item(menu, _("Reset block size"),
+            _make_menu_item(menu, _('Reset block size'),
                             self._do_resize_cb, -1)
-            view_menu = _make_sub_menu(menu, _("View"))
+            view_menu = _make_sub_menu(menu, _('View'))
 
             menu = gtk.Menu()
-            _make_menu_item(menu, _("Copy"), self._do_copy_cb)
-            _make_menu_item(menu, _("Paste"), self._do_paste_cb)
-            edit_menu = _make_sub_menu(menu, _("Edit"))
+            _make_menu_item(menu, _('Copy'), self._do_copy_cb)
+            _make_menu_item(menu, _('Paste'), self._do_paste_cb)
+            edit_menu = _make_sub_menu(menu, _('Edit'))
 
             menu = gtk.Menu()
-            _make_menu_item(menu, _("Show palette"), self._do_palette_cb)
-            _make_menu_item(menu, _("Hide palette"), self._do_hide_palette_cb)
-            _make_menu_item(menu, _("Show/hide blocks"), self._do_hideshow_cb)
-            tool_menu = _make_sub_menu(menu, _("Tools"))
+            _make_menu_item(menu, _('Show palette'), self._do_palette_cb)
+            _make_menu_item(menu, _('Hide palette'), self._do_hide_palette_cb)
+            _make_menu_item(menu, _('Show/hide blocks'), self._do_hideshow_cb)
+            tool_menu = _make_sub_menu(menu, _('Tools'))
 
             menu = gtk.Menu()
-            _make_menu_item(menu, _("Clean"), self._do_eraser_cb)
-            _make_menu_item(menu, _("Run"), self._do_run_cb)
-            _make_menu_item(menu, _("Step"), self._do_step_cb)
-            _make_menu_item(menu, _("Debug"), self._do_trace_cb)
-            _make_menu_item(menu, _("Stop"), self._do_stop_cb)
-            turtle_menu = _make_sub_menu(menu, _("Turtle"))
+            _make_menu_item(menu, _('Clean'), self._do_eraser_cb)
+            _make_menu_item(menu, _('Run'), self._do_run_cb)
+            _make_menu_item(menu, _('Step'), self._do_step_cb)
+            _make_menu_item(menu, _('Debug'), self._do_trace_cb)
+            _make_menu_item(menu, _('Stop'), self._do_stop_cb)
+            turtle_menu = _make_sub_menu(menu, _('Turtle'))
 
             vbox = gtk.VBox(False, 0)
             win.add(vbox)
@@ -229,10 +234,10 @@ class TurtleMain():
         else:
             self.tw = TurtleArtWindow(canvas, os.path.abspath('.'))
 
-        self.tw.save_folder = os.path.expanduser("~")
+        self.tw.save_folder = os.path.expanduser('~')
 
         if not self.output_png:
-            win.connect("configure_event", self.tw.update_overlay_position)
+            win.connect('configure_event', self.tw.update_overlay_position)
             self.tw.win = win
             if self.ta_file is None:
                 self.tw.load_start()
@@ -266,9 +271,9 @@ class TurtleMain():
         dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
                                 buttons=gtk.BUTTONS_OK_CANCEL,
                                 message_format=\
-           _("You have unsaved work. Would you like to save before quitting?"))
-        dlg.set_title(_("Save project?"))
-        dlg.set_property("skip-taskbar-hint", False)
+           _('You have unsaved work. Would you like to save before quitting?'))
+        dlg.set_title(_('Save project?'))
+        dlg.set_property('skip-taskbar-hint', False)
 
         resp = dlg.run()
         dlg.destroy()
@@ -320,7 +325,7 @@ class TurtleMain():
                 save_type = '.xml'
         filename, self.tw.load_save_folder = get_save_name(save_type,
                       self.tw.load_save_folder, 'portfolio')
-        f = file(filename, "w")
+        f = file(filename, 'w')
         f.write(html)
         f.close()
         self.tw.saved_pictures = []
@@ -333,7 +338,7 @@ class TurtleMain():
         save_type = '.lg'
         filename, self.tw.load_save_folder = get_save_name(save_type,
                       self.tw.load_save_folder, 'logosession')
-        f = file(filename, "w")
+        f = file(filename, 'w')
         f.write(logocode)
         f.close()
 
@@ -464,6 +469,114 @@ class TurtleMain():
     def destroy(self, event, data=None):
         """ Callback for destroy event. """
         gtk.main_quit()
+
+    def _do_upload_to_web(self, widget):
+        """ Create dialog for uploading current project to the Web """
+        if not self.uploading:
+            self.uploading = True
+            self.pop_up = gtk.Window()
+            self.pop_up.set_default_size(600, 400)
+            self.pop_up.connect('delete_event', self._stop_uploading)
+            table = gtk.Table(False, 1, 8)
+            self.pop_up.add(table)
+            login_label = gtk.Label(_('You must have an account at \
+http://turtleartsite.sugarlabs.org to upload your project.'))
+            table.attach(login_label, 0, 1, 0, 1)
+            self.login_message = gtk.Label('')
+            table.attach(self.login_message, 0, 1, 1, 2)
+
+            self.Hbox1 = gtk.HBox()
+            table.attach(self.Hbox1, 0, 1, 2, 3)
+            self.username_entry = gtk.Entry()
+            username_label = gtk.Label(_('Username:') + ' ')
+            username_label.set_size_request(150, 25)
+            self.username_entry.set_size_request(450, 25)
+            self.Hbox1.add(username_label)
+            self.Hbox1.add(self.username_entry)
+
+            self.Hbox2 = gtk.HBox()
+            table.attach(self.Hbox2, 0, 1, 3, 4)
+            self.password_entry = gtk.Entry()
+            password_label = gtk.Label(_('Password:') + ' ')
+            self.password_entry.set_visibility(False)
+            password_label.set_size_request(150, 25)
+            self.password_entry.set_size_request(450, 25)
+            self.Hbox2.add(password_label)
+            self.Hbox2.add(self.password_entry)
+
+            self.Hbox3 = gtk.HBox()
+            table.attach(self.Hbox3, 0, 1, 4, 5)
+            self.title_entry = gtk.Entry()
+            title_label = gtk.Label(_('Title:') + ' ')
+            title_label.set_size_request(150, 25)
+            self.title_entry.set_size_request(450, 25)
+            self.Hbox3.add(title_label)
+            self.Hbox3.add(self.title_entry)
+
+            self.Hbox4 = gtk.HBox()
+            table.attach(self.Hbox4, 0, 1, 5, 6)
+            self.description_entry = gtk.TextView()
+            description_label = gtk.Label(_('Description:') + ' ')
+            description_label.set_size_request(150, 25)
+            self.description_entry.set_wrap_mode(gtk.WRAP_WORD)
+            self.description_entry.set_size_request(450, 25)
+            self.Hbox4.add(description_label)
+            self.Hbox4.add(self.description_entry)
+
+            self.submit_button = gtk.Button(_('Submit to Web'))
+            self.submit_button.set_size_request(600, 25)
+            self.submit_button.connect('pressed', self._do_remote_logon)
+            table.attach(self.submit_button, 0, 1, 6, 7)
+            self.pop_up.show_all()
+            
+    def _stop_uploading(self, widget, event):
+        """ Hide the popup when the upload is complte """
+        self.uploading = False
+        self.pop_up.hide()
+
+    def _do_remote_logon(self, widget):
+        """ Log into the upload server """
+        username = self.username_entry.get_text()
+        password = self.password_entry.get_text()
+        server=xmlrpclib.ServerProxy(
+            'http://turtleartsite.appspot.com/call/xmlrpc')
+        logged_in = server.login_remote(username,password)
+        if logged_in: 
+            upload_key = logged_in
+            self._do_submit_to_web(upload_key)
+        else:
+            self.login_message.set_text(_('Login failed'))
+
+    def _do_submit_to_web(self, key):
+        """ Submit project to the server """
+        title = self.title_entry.get_text()
+        description = self.description_entry.get_buffer().get_text(
+            *self.description_entry.get_buffer().get_bounds())
+        tafile, imagefile = self.tw.save_for_upload(title)
+
+        c = pycurl.Curl()
+        c.setopt(c.POST, 1)
+        c.setopt(c.FOLLOWLOCATION, 1)
+        c.setopt(c.URL, 'http://turtleartsite.appspot.com/upload')
+        c.setopt(c.HTTPHEADER, ["Expect:"])
+        c.setopt(c.HTTPPOST, [('file', (c.FORM_FILE, tafile)),
+                              ('newimage', (c.FORM_FILE, imagefile)),
+                              ('small_image', (c.FORM_FILE, imagefile)),
+                              ('title', title),
+                              ('description', description),
+                              ('upload_key',key), ('_formname',
+                                                   'image_create')])
+        c.perform()
+        error_code = c.getinfo(c.HTTP_CODE)
+        c.close
+        os.remove(imagefile)
+        os.remove(tafile)
+        if error_code == 400:
+            self.login_message.set_text(_('Failed to upload!'))
+        else:
+            self.pop_up.hide()
+            self.uploading = False
+
 
 if __name__ == "__main__":
     TurtleMain()
