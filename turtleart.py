@@ -231,6 +231,7 @@ class TurtleMain():
         self.tw.save_folder = os.path.expanduser("~")
 
         if not self.output_png:
+            win.connect("configure_event", self.tw.update_overlay_position)
             self.tw.win = win
             if self.ta_file is None:
                 self.tw.load_start()

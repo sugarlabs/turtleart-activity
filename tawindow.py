@@ -334,6 +334,32 @@ class TurtleArtWindow():
             self.overlay_shapes['polar'].hide()
             self.polar = False
 
+    def update_overlay_position(self, widget, event):
+        """ Reposition the overlays when window size changes """
+        self.width = event.width
+        self.height = event.height
+        for _name in OVERLAY_SHAPES:
+            shape = self.overlay_shapes[_name]
+            showing = False
+            if shape in shape._sprites.list:
+                shape.hide()
+                showing = True
+            self.overlay_shapes[_name] = Sprite(self.sprite_list,
+                                                int(self.width / 2 - 600),
+                                                int(self.height / 2 - 450),
+                                                svg_str_to_pixbuf(
+                    svg_from_file("%s/images/%s.svg" % (self.path, _name))))
+            if showing:
+                self.overlay_shapes[_name].set_layer(OVERLAY_LAYER)
+            else:
+                self.overlay_shapes[_name].hide()
+            self.overlay_shapes[_name].type = 'overlay'
+        self.cartesian = False
+        self.polar = False
+        self.canvas.width = self.width
+        self.canvas.height = self.height
+        self.canvas.move_turtle()
+
     def hideshow_button(self):
         """ Hide/show button """
         if not self.hide: 
@@ -2140,7 +2166,7 @@ class TurtleArtWindow():
         """ Grab the current canvas and save it. """
 
         if not self.interactive_mode:
-            print name
+            # print name
             save_picture(self.canvas, name[:-3] + ".png")
             return
             """
