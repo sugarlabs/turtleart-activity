@@ -477,7 +477,7 @@ class TurtleMain():
             self.pop_up = gtk.Window()
             self.pop_up.set_default_size(600, 400)
             self.pop_up.connect('delete_event', self._stop_uploading)
-            table = gtk.Table(False, 1, 8)
+            table = gtk.Table(1, 8, False)
             self.pop_up.add(table)
             login_label = gtk.Label(_('You must have an account at \
 http://turtleartsite.sugarlabs.org to upload your project.'))
