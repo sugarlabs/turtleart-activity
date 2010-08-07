@@ -1,3 +1,7 @@
+# Turtle Art
+# Copyright (C) 2009 Sugar Labs
+# This file is distributed under the same license as the PACKAGE package.
+# Walter Bender <walter@sugarlabs.org>, 2009.
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
@@ -7,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2009-05-21 02:35-0400\n"
+"PO-Revision-Date: 2010-08-07 21:37+0200\n"
 "Last-Translator: Myckel Habets <myckel@sdf.lonestar.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -15,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 1.2.1\n"
+"X-Generator: Pootle 2.0.3\n"
 
 #: activity/activity.info:2
 msgid "Turtle Art"
@@ -81,7 +85,7 @@ msgstr "opslaan als HTML"
 
 #: TurtleArtActivity.py
 msgid "save Logo"
-msgstr "Logo opslaan"
+msgstr "sla Logo op"
 
 #: TurtleArtActivity.py
 msgid "load my block"
@@ -292,9 +296,8 @@ msgstr "straal"
 msgid "heading"
 msgstr "richting"
 
-#
 msgid "set heading"
-msgstr "richting instellen"
+msgstr "kop instellen"
 
 #:
 msgid "set xy"
