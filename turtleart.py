@@ -153,7 +153,13 @@ class TurtleMain():
             win.move(self.x, self.y)
             win.maximize()
             win.set_title(_('Turtle Art'))
-            win.set_icon_from_file('images/turtle.png')
+            if os.path.exists('/usr/share/turtleart/images/turtle.png'):
+                win.set_icon_from_file('/usr/share/turtleart/images/turtle.png')
+            else:
+                try:
+                    win.set_icon_from_file('images/turtle.png')
+                except IOError:
+                    pass
             win.connect('delete_event', self._quit_ta)
 
             menu = gtk.Menu()
