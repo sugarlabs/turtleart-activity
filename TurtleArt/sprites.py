@@ -400,21 +400,30 @@ class Sprite:
         return(self._margins[0], self._margins[1])
 
     def get_pixel(self, pos, i=0):
-        """ Return the pixl at (x, y) """
+        """ Return the pixel at (x, y) """
         x, y = pos
         x = x - self.rect.x
         y = y - self.rect.y
-        if y > self.images[i].get_height() - 1:
-            return(-1, -1, -1, -1)
-        try:
+        if isinstance(self.images[i], gtk.gdk.Pixbuf):
+            if y > self.images[i].get_height() - 1:
+                return(-1, -1, -1, -1)
             array = self.images[i].get_pixels()
             if array is not None:
                 offset = (y * self.images[i].get_width() + x) * 4
-                r, g, b, a = ord(array[offset]), ord(array[offset + 1]),\
-                             ord(array[offset + 2]), ord(array[offset + 3])
-                return(r, g, b, a)
-            else:
-                return(-1, -1, -1, -1)
-        except IndexError:
-            print "Index Error: %d %d" % (len(array), offset)
+                try:
+                    r, g, b, a = ord(array[offset]), ord(array[offset + 1]), \
+                        ord(array[offset + 2]), ord(array[offset + 3])
+                    return(r, g, b, a)
+                except IndexError:
+                    print "Index Error: %d %d" % (len(array), offset)
             return(-1, -1, -1, -1)
+        else:
+            w, h = self.images[i].get_size()
+            if x < 0 or x > (w - 1) or y < 0 or y > (h - 1):
+                return(-1, -1, -1, -1)
+            image = self.images[i].get_image(x, y, 1, 1)
+            pixel = image.get_pixel(0, 0)
+            r = int((pixel & 0xff0000) >> 16)
+            g = int((pixel & 0x00ff00) >> 8)
+            b = int((pixel & 0x0000ff))
+            return(r, g, b, 0)
