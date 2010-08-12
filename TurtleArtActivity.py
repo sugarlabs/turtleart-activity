@@ -948,7 +948,7 @@ class TurtleArtActivity(activity.Activity):
             dsobject.metadata['mime_type'] = 'text/x-python'
             dsobject.metadata['activity'] = 'org.laptop.Pippy'
             dsobject.set_file_path(os.path.join( \
-                activity.get_bundle_path(), 'tamyblock.py'))
+                activity.get_bundle_path(), 'TurtleArt/tamyblock.py'))
             datastore.write(dsobject)
             dsobject.destroy()
 
