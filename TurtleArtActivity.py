@@ -50,12 +50,13 @@ from gettext import gettext as _
 import os.path
 import tarfile
 
-from taconstants import PALETTE_NAMES, OVERLAY_LAYER, HELP_STRINGS
-from taexporthtml import save_html
-from taexportlogo import save_logo
-from tautils import data_to_file, data_to_string, data_from_string, get_path
-from tawindow import TurtleArtWindow
-from taturtle import Turtle
+from TurtleArt.taconstants import PALETTE_NAMES, OVERLAY_LAYER, HELP_STRINGS
+from TurtleArt.taexporthtml import save_html
+from TurtleArt.taexportlogo import save_logo
+from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
+                              get_path
+from TurtleArt.tawindow import TurtleArtWindow
+from TurtleArt.taturtle import Turtle
 
 SERVICE = 'org.laptop.TurtleArtActivity'
 IFACE = SERVICE

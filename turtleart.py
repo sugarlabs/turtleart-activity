@@ -37,17 +37,19 @@ sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 
 from gettext import gettext as _
 
-from taconstants import OVERLAY_LAYER
-from tautils import data_to_string, data_from_string, get_save_name
-from tawindow import TurtleArtWindow
-from taexporthtml import save_html
-from taexportlogo import save_logo
+from TurtleArt.taconstants import OVERLAY_LAYER
+from TurtleArt.tautils import data_to_string, data_from_string, get_save_name
+from TurtleArt.tawindow import TurtleArtWindow
+from TurtleArt.taexporthtml import save_html
+from TurtleArt.taexportlogo import save_logo
 
-HELP_MSG = 'turtleart.py: ' + _('usage is') + """
+_HELP_MSG = 'turtleart.py: ' + _('usage is') + """
  \tturtleart.py 
  \tturtleart.py project.ta
  \tturtleart.py --output_png project.ta
  \tturtleart.py -o project"""
+
+_MAX_FILE_SIZE = 950000
 
 
 def _make_sub_menu(menu, name):
@@ -95,11 +97,11 @@ class TurtleMain():
                                        ['help', 'output_png'])
         except getopt.GetoptError, err:
             print str(err)
-            print HELP_MSG
+            print _HELP_MSG
             sys.exit(2)
         for o, a in opts:
             if o in ('-h', '--help'):
-                print HELP_MSG
+                print _HELP_MSG
                 sys.exit()
             if o in ('-o', '--output_png'):
                 self.output_png = True
@@ -109,7 +111,7 @@ class TurtleMain():
             self.ta_file = args[0]
 
         if len(args) > 1 or self.output_png and self.ta_file is None:
-            print HELP_MSG
+            print _HELP_MSG
             sys.exit()
 
         if self.ta_file is not None:
@@ -571,6 +573,16 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
         description = self.description_entry.get_buffer().get_text(
             *self.description_entry.get_buffer().get_bounds())
         tafile, imagefile = self.tw.save_for_upload(title)
+
+        # Set a maximum file size for image to be uploaded.
+        if int(os.path.getsize(imagefile)) > _MAX_FILE_SIZE:
+            import Image
+            while int(os.path.getsize(imagefile)) > _MAX_FILE_SIZE:
+                big_file = Image.open(imagefile)
+                smaller_file = big_file.resize(int(0.9 * big_file.size[0]),
+                                               int(0.9 * big_file.size[1]),
+                                               Image.ANTIALIAS)
+                smaller_file.save(imagefile, quality = 100)
 
         c = pycurl.Curl()
         c.setopt(c.POST, 1)
