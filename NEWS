@@ -2,6 +2,10 @@
 
 * updated license for sample images
 * updated nl translation
+* fixed path problem with Exec in desktop file (Matthew Gallagher)
+* fixed path problem with icon in turtleart.py (Matthew Gallagher)
+* moved modules to TurtleArt subdirectory
+* limit size of upload file (Jamie Boisture)
 
 93
 
