@@ -566,10 +566,11 @@ class TurtleGraphics:
                                                            int(w), int(h)),
                                          False)
 
-    def read_pixel(self, x, y):
+    def get_pixel(self):
         """ Read the pixel at x, y """
         if self.tw.interactive_mode:
-            return self.canvas.get_pixel((x, y))
+            return self.canvas.get_pixel((self.width / 2 + int(self.xcor),
+                                          self.height / 2 - int(self.ycor)))
         else:
             return(-1, -1, -1, -1)
 

@@ -315,6 +315,7 @@ class LogoCode:
         'purple':[0, lambda self: 90],
         'push':[1, lambda self, x: self.prim_push(x)],
         'random':[2, lambda self, x, y: tarandom(x, y)],
+        'readpixel':[0, lambda self: self.read_pixel()],
         'red':[0, lambda self: 0],
         'repeat':[2, self.prim_repeat, True],
         'right':[1, lambda self, x: self.tw.canvas.right(x)],
@@ -1169,6 +1170,13 @@ class LogoCode:
             if text is not None:
                 self.tw.canvas.draw_text(text, int(x), int(y),
                                          self.body_height, int(w))
+
+    def read_pixel(self):
+        """ Read r, g, b, a from the canvas and push b, g, r to the stack """
+        r, g, b, a = self.tw.canvas.get_pixel()
+        self.heap.append(b)
+        self.heap.append(g)
+        self.heap.append(r)
 
     # Depreciated block methods
 
