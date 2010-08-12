@@ -936,7 +936,7 @@ class TurtleArtActivity(activity.Activity):
             FILE = open(os.path.join(datapath, filename), "r")
             if FILE.readline() == version:
                 newversion = False
-        except:
+        except IOError:
             _logger.debug("Creating a tamyblock.py Journal entry")
 
         # Make sure there is a copy of tamyblock.py in the Journal
@@ -949,7 +949,12 @@ class TurtleArtActivity(activity.Activity):
             dsobject.metadata['activity'] = 'org.laptop.Pippy'
             dsobject.set_file_path(os.path.join( \
                 activity.get_bundle_path(), 'TurtleArt/tamyblock.py'))
-            datastore.write(dsobject)
+            try:
+                datastore.write(dsobject)
+            except IOError:
+                _logger.error("Error copying %s to the datastore" % \
+                                  (os.path.join(activity.get_bundle_path(),
+                                                'TurtleArt/tamyblock.py'))
             dsobject.destroy()
 
         versiondata.append(version)
