@@ -954,7 +954,7 @@ class TurtleArtActivity(activity.Activity):
             except IOError:
                 _logger.error("Error copying %s to the datastore" % \
                                   (os.path.join(activity.get_bundle_path(),
-                                                'TurtleArt/tamyblock.py'))
+                                                'TurtleArt/tamyblock.py')))
             dsobject.destroy()
 
         versiondata.append(version)
