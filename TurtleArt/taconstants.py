@@ -135,7 +135,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc1arg',  'userdefined', 'addturtle', 'comment', 'print',
              'cartesian', 'width', 'height', 'polar', 'sandwichtop',
-             'sandwichbottom', 'readpixel'],
+             'sandwichbottom', 'readpixel', 'see'],
             ['journal', 'audio', 'description', 'hideblocks', 'showblocks',
              'fullscreen', 'savepix', 'savesvg', 'picturelist',
              'picture1x1a', 'picture1x1', 'picture2x2', 'picture2x1',
@@ -199,7 +199,7 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'white',
     'black', 'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy',
-    'volume', 'pitch', 'voltage', 'resistance', 'gray']
+    'volume', 'pitch', 'voltage', 'resistance', 'gray', 'see']
 BOX_STYLE_MEDIA =  ['description', 'audio', 'journal']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
 NUMBER_STYLE_VAR_ARG = ['myfunc1arg', 'myfunc2arg', 'myfunc3arg']
@@ -354,6 +354,7 @@ BLOCK_NAMES = {
     'sandwichtop':[_('top of stack')],
     'sandwichtop2':[_('top of stack')],
     'scale':[_('scale')],
+    'see':[_('turtle sees')],
     'setcolor':[_('set color')],
     'setgray':[_('set gray')],
     'seth':[_('set heading')],
@@ -493,6 +494,7 @@ PRIMITIVES = {
     'sandwichcollapsed':'nop',
     'savepix':'savepix',
     'savesvg':'savesvg',
+    'see':'see',
     'scale':'scale',
     'setcolor':'setcolor',
     'setgray':'setgray',
@@ -802,6 +804,7 @@ HELP_STRINGS = {
     'savepix':_("saves a picture to the Sugar Journal"),
     'savesvg':_("saves turtle graphics as an SVG file in the Sugar Journal"),
     'scale':_("holds current scale value"),
+    'see':_('returns the color that the turtle "sees"'),
     'setcolor':_("sets color of the line drawn by the turtle"),
     'setgray':_("sets gray level of the line drawn by the turtle"),
     'seth':_("sets the heading of the turtle (0 is towards the top of the screen.)"),

@@ -566,6 +566,24 @@ class TurtleGraphics:
                                                            int(w), int(h)),
                                          False)
 
+    def get_color_index(self, r, g, b, a=0):
+        """ Find the closest palette entry to the rgb triplet """
+        # TODO: Take into account gray and shade levels
+        min_distance = 1000000
+        closest_color = -1
+        for i, c in enumerate(color_table):
+            cr = int((c & 0xff0000) >> 16)
+            cg = int((c & 0x00ff00) >> 8)
+            cb = int((c & 0x0000ff))
+            distance_squared = ((cr - r) ** 2) + ((cg - g) ** 2) + \
+                ((cb - b) ** 2)
+            if distance_squared == 0:
+                return i
+            if distance_squared < min_distance:
+                min_distance = distance_squared
+                closest_color = i
+        return closest_color
+
     def get_pixel(self):
         """ Read the pixel at x, y """
         if self.tw.interactive_mode:

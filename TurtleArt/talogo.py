@@ -324,6 +324,7 @@ class LogoCode:
         'savepix':[1, lambda self, x: self.save_picture(x)],
         'savesvg':[1, lambda self, x: self.save_svg(x)],
         'scale':[0, lambda self: self.scale],
+        'see':[0, lambda self: self.see()],
         'setcolor':[1, lambda self, x: self.tw.canvas.setcolor(x)],
         'setgray':[1, lambda self, x: self.tw.canvas.setgray(x)],
         'seth':[1, lambda self, x: self.tw.canvas.seth(x)],
@@ -1170,6 +1171,12 @@ class LogoCode:
             if text is not None:
                 self.tw.canvas.draw_text(text, int(x), int(y),
                                          self.body_height, int(w))
+
+    def see(self):
+        """ Read r, g, b from the canvas and return a corresponding palette
+        color """
+        r, g, b, a = self.tw.canvas.get_pixel()
+        return self.tw.canvas.get_color_index(r, g, b)
 
     def read_pixel(self):
         """ Read r, g, b, a from the canvas and push b, g, r to the stack """
