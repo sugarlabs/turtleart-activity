@@ -2,12 +2,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-01 18:07+0000\n"
-"PO-Revision-Date: 2009-07-31 16:12-0400\n"
+"POT-Creation-Date: 2010-04-28 15:38+0000\n"
+"PO-Revision-Date: 2010-08-07 22:03+0200\n"
 "Last-Translator: Myckel Habets <myckel@sdf.lonestar.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -15,453 +19,1580 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 1.2.1\n"
+"X-Generator: Pootle 2.0.3\n"
 
 #: activity/activity.info:2
-#: /home/walter/Desktop/turtleart-activity/taexporthtml.py:189
+#: /home/walter/Desktop/mainline-turtleart/tawindow.py:1205
+#: /home/walter/Desktop/mainline-turtleart/tawindow.py:2021
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:74
+#: /home/walter/Desktop/mainline-turtleart/taexporthtml.py:121
+#: /home/walter/Desktop/mainline-turtleart/taexporthtml.py:123
 msgid "Turtle Art"
 msgstr "Schildpad Kunst"
 
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:55
-msgid "text"
-msgstr "tekst"
-
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:99
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:49
-#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:41
-msgid "x"
-msgstr "x"
-
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:122
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:123
-msgid "stack"
-msgstr "stapel"
-
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:128
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:129
-msgid "box"
-msgstr "doos"
-
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:130
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:47
-msgid "name"
-msgstr "naam"
-
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:133
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:134
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:135
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:136
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:137
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:138
-msgid "title"
-msgstr "titel"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:83
-msgid "Project"
-msgstr "Project"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:85
-msgid "Save as"
-msgstr "Opslaan als"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:451
-msgid "samples"
-msgstr "voorbeelden"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:465
-msgid "save as HTML"
-msgstr "opslaan als HTML"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:473
-msgid "save Logo"
-msgstr "Logo opslaan"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:481
-msgid "save as image"
-msgstr "opslaan als afbeelding"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:494
-msgid "load my block"
-msgstr "laad mijn blok"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:666
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:750
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:760
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:796
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:808
-msgid "hide palette"
-msgstr "palet verbergen"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:675
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:789
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:806
-#: /home/walter/Desktop/turtleart-activity/svg/hideblocks.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:41
-msgid "hide blocks"
-msgstr "blokken verbergen"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:689
-msgid "run"
-msgstr "start"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:698
-msgid "step"
-msgstr "stap"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:707
-msgid "stop turtle"
-msgstr "schildpad stoppen"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:721
-#: /home/walter/Desktop/turtleart-activity/svg/clean.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:40
-msgid "clean"
-msgstr "wissen"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:735
-msgid "fullscreen"
-msgstr "schermvullend"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:746
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:755
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:793
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:802
-msgid "show palette"
-msgstr "palet weergeven"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:786
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:800
-msgid "show blocks"
-msgstr "blokken weergeven"
-
-#: /home/walter/Desktop/turtleart-activity/svg/hat2.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/stack2.py:40
-msgid "stack 2"
-msgstr "stapel 2"
-
-#: /home/walter/Desktop/turtleart-activity/svg/stack1.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/hat1.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:41
-msgid "stack 1"
-msgstr "stapel 1"
-
-#: /home/walter/Desktop/turtleart-activity/svg/heading.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:54
-msgid "heading"
-msgstr "richting"
-
-#: /home/walter/Desktop/turtleart-activity/svg/start.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:48
-msgid "start"
-msgstr "begin"
-
-#: /home/walter/Desktop/turtleart-activity/svg/keyboard.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:40
-msgid "Keyboard"
-msgstr "Toetsenbord"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:40
-msgid "Flow"
-msgstr "Vloeien"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/wait.py:40
-msgid "wait"
-msgstr "wacht"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/forever.py:40
-msgid "forever"
-msgstr "altijd"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/repeat.py:40
-msgid "repeat"
-msgstr "herhaal"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/if.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:40
-msgid "if"
-msgstr "als"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/if.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:41
-msgid "then"
-msgstr "dan"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:46
-#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:42
-msgid "else"
-msgstr "anders"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:47
-#: /home/walter/Desktop/turtleart-activity/svg/stopstack.py:40
-msgid "stop stack"
-msgstr "stop stapel"
-
-#: /home/walter/Desktop/turtleart-activity/svg/print.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:45
-msgid "print"
-msgstr "print"
-
-#: /home/walter/Desktop/turtleart-activity/svg/color.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:48
-msgid "color"
-msgstr "kleur"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:40
-msgid "My Blocks"
-msgstr "Mijn blokken"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/storeinbox1.py:40
-msgid "store in box 1"
-msgstr "opslaan in doos 1"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/box1.py:40
-msgid "box 1"
-msgstr "doos 1"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/storeinbox2.py:40
-msgid "store in box 2"
-msgstr "opslaan in doos 2"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:46
-#: /home/walter/Desktop/turtleart-activity/svg/box2.py:40
-msgid "box 2"
-msgstr "doos 2"
-
-#: /home/walter/Desktop/turtleart-activity/svg/printheap.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:46
-msgid "show heap"
-msgstr "stapel weergeven"
-
-#: /home/walter/Desktop/turtleart-activity/svg/pendown.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:42
-msgid "pen down"
-msgstr "pen omlaag"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:40
-msgid "Numbers"
-msgstr "Nummers"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/random.py:40
-msgid "random"
-msgstr "willekeurig"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/and.py:41
-msgid "and"
-msgstr "en"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/or.py:40
-msgid "or"
-msgstr "of"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/not.py:40
-msgid "not"
-msgstr "niet"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:46
-msgid "number"
-msgstr "nummer"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:47
-msgid "min"
-msgstr "min"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:48
-msgid "max"
-msgstr "max"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:49
-#: /home/walter/Desktop/turtleart-activity/svg/remainder2.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/remainder.py:40
-msgid "mod"
-msgstr "mod"
-
-#: /home/walter/Desktop/turtleart-activity/svg/ycor.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:53
-msgid "ycor"
-msgstr "ycor"
-
-#: /home/walter/Desktop/turtleart-activity/svg/shade.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:49
-msgid "shade"
-msgstr "schaduw"
-
-#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:40
-msgid "Templates"
-msgstr "Sjablonen"
-
-#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/sound.py:40
-msgid "sound"
-msgstr "geluid"
-
-#: /home/walter/Desktop/turtleart-activity/svg/right.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:44
-msgid "right"
-msgstr "rechts"
-
-#: /home/walter/Desktop/turtleart-activity/svg/forward.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:41
-msgid "forward"
-msgstr "vooruit"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/kbinput.py:40
-msgid "read key"
-msgstr "lees toets"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:42
-msgid "keyboard"
-msgstr "toetsenbord"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/hres.py:40
-msgid "width"
-msgstr "breedte"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/vres.py:40
-msgid "height"
-msgstr "hoogte"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/pop.py:40
-msgid "pop"
-msgstr "afnemen"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:47
-#: /home/walter/Desktop/turtleart-activity/svg/clearheap.py:40
-msgid "empty heap"
-msgstr "stapel wissen"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:48
-#: /home/walter/Desktop/turtleart-activity/svg/push.py:40
-msgid "push"
-msgstr "neerleggen"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/back.py:40
-msgid "back"
-msgstr "terug"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/left.py:40
-msgid "left"
-msgstr "links"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/arc.py:40
-msgid "arc"
-msgstr "boog"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:46
-#: /home/walter/Desktop/turtleart-activity/svg/arc.py:41
-msgid "angle"
-msgstr "hoek"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:47
-#: /home/walter/Desktop/turtleart-activity/svg/arc.py:42
-msgid "radius"
-msgstr "straal"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:48
-msgid "setyx"
-msgstr "setyx"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:50
-#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:42
-msgid "y"
-msgstr "y"
-
-#
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:51
-#: /home/walter/Desktop/turtleart-activity/svg/seth.py:40
-msgid "set heading"
-msgstr "richting instellen"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:52
-#: /home/walter/Desktop/turtleart-activity/svg/xcor.py:40
+#: /home/walter/Desktop/mainline-turtleart/tawindow.py:446
+#: /home/walter/Desktop/mainline-turtleart/tawindow.py:447
+msgid "orientation"
+msgstr "oriëntatie"
+
+#: /home/walter/Desktop/mainline-turtleart/tawindow.py:457
+#: /home/walter/Desktop/mainline-turtleart/tawindow.py:711
+msgid "next"
+msgstr "volgende"
+
+#: /home/walter/Desktop/mainline-turtleart/tawindow.py:2018
+#: /home/walter/Desktop/mainline-turtleart/tawindow.py:2022
+#: /home/walter/Desktop/mainline-turtleart/talogo.py:725
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:776
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1211
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:400
 msgid "xcor"
 msgstr "xcor"
 
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:55
-msgid "Turtle"
-msgstr "Schildpad"
+#: /home/walter/Desktop/mainline-turtleart/tawindow.py:2018
+#: /home/walter/Desktop/mainline-turtleart/tawindow.py:2022
+#: /home/walter/Desktop/mainline-turtleart/talogo.py:726
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:776
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1211
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:401
+msgid "ycor"
+msgstr "ycor"
 
-#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:46
-msgid "fill screen"
-msgstr "vul scherm"
+#: /home/walter/Desktop/mainline-turtleart/tawindow.py:2018
+#: /home/walter/Desktop/mainline-turtleart/tawindow.py:2022
+#: /home/walter/Desktop/mainline-turtleart/talogo.py:726
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:777
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1212
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:290
+msgid "heading"
+msgstr "richting"
 
-#: /home/walter/Desktop/turtleart-activity/svg/settextcolor.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:50
-msgid "set text color"
-msgstr "zet tekstkleur"
+#: /home/walter/Desktop/mainline-turtleart/tawindow.py:2109
+msgid "image"
+msgstr "afbeelding"
 
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:40
-msgid "Pen"
-msgstr "Pen"
+#: /home/walter/Desktop/mainline-turtleart/tautils.py:453
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:347
+msgid "click to open"
+msgstr "klik om te openen"
 
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/penup.py:40
+#: /home/walter/Desktop/mainline-turtleart/talogo.py:683
+msgid "did not output to"
+msgstr "gaf geen uitvoer naar"
+
+#: /home/walter/Desktop/mainline-turtleart/talogo.py:727
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:350
+msgid "scale"
+msgstr "schaal"
+
+#: /home/walter/Desktop/mainline-turtleart/talogo.py:730
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:316
+msgid "pen down"
+msgstr "pen omlaag"
+
+#: /home/walter/Desktop/mainline-turtleart/talogo.py:732
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:318
 msgid "pen up"
 msgstr "pen omhoog"
 
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/setpensize.py:40
-msgid "set pen size"
-msgstr "zet pen dikte"
+#: /home/walter/Desktop/mainline-turtleart/talogo.py:734
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:273
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:280
+msgid "color"
+msgstr "kleur"
 
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/setcolor.py:40
-msgid "set color"
-msgstr "zet kleur"
+#: /home/walter/Desktop/mainline-turtleart/talogo.py:735
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:280
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:360
+msgid "shade"
+msgstr "schaduw"
 
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/setshade.py:40
-msgid "set shade"
-msgstr "zet schaduw"
-
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:47
-#: /home/walter/Desktop/turtleart-activity/svg/pensize.py:40
+#: /home/walter/Desktop/mainline-turtleart/talogo.py:736
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:317
 msgid "pen size"
 msgstr "pen dikte"
 
-#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:40
+#: /home/walter/Desktop/mainline-turtleart/talogo.py:752
+msgid "I don't know how to"
+msgstr "Ik weet niet hoe"
+
+#: /home/walter/Desktop/mainline-turtleart/talogo.py:919
+msgid "doesn't like"
+msgstr "houdt niet van"
+
+#: /home/walter/Desktop/mainline-turtleart/talogo.py:919
+msgid "as input"
+msgstr "als invoer"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:135
+msgid "presentation"
+msgstr "presentatie"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:194
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:970
+msgid "Project"
+msgstr "Project"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:269
+msgid "snapshot"
+msgstr "foto"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:288
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:315
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:334
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:344
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:164
+msgid "Show palette"
+msgstr "Toon palet"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:295
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:308
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:320
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:337
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:351
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:840
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1386
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:168
+msgid "Hide palette"
+msgstr "Verberg palet"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:327
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:342
+msgid "Show blocks"
+msgstr "Toon blokken"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:330
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:349
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:848
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1399
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:735
+msgid "Hide blocks"
+msgstr "Verberg blokken"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:434
+msgid "Rescale coordinates down"
+msgstr "Herschaal coördinaten neer"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:442
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:792
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1240
+msgid "Rescale coordinates up"
+msgstr "Herschaal coördinaten op"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:695
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1489
+msgid "Save snapshot"
+msgstr "Bewaar foto"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:702
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1327
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:99
+msgid "Save as HTML"
+msgstr "Opslaan als HTML"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:709
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:103
+msgid "Save as Logo"
+msgstr "Bewaar als Logo"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:716
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1345
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:95
+msgid "Save as image"
+msgstr "Opslaan als afbeelding"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:723
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1359
+msgid "Load my block"
+msgstr "Laad mijn blok"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:731
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1369
+msgid "Import project from the Journal"
+msgstr "Importeer project van het Dagboek"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:752
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1175
+msgid "Fullscreen"
+msgstr "Schermvullend"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:759
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1188
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:118
+msgid "Cartesian coordinates"
+msgstr "Cartesische coördinaten"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:765
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1197
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:122
+msgid "Polar coordinates"
+msgstr "Polaire coördinaten"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:798
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1226
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:130
+msgid "Grow blocks"
+msgstr "Vergroot blokken"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:805
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1233
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:134
+msgid "Shrink blocks"
+msgstr "Verklein blokken"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:843
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1391
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:851
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1404
+msgid "<Ctrl>b"
+msgstr "<Ctrl>b"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:870
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1471
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:183
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:719
+msgid "Clean"
+msgstr "Wissen"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:873
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1476
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:879
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1417
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:187
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:785
+msgid "Run"
+msgstr "Draai"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:882
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1421
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:888
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1429
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:191
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:786
+msgid "Step"
+msgstr "Stap"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:891
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1433
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:897
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1441
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:195
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:715
+msgid "Debug"
+msgstr "Debug"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:900
+msgid "<Alt>d"
+msgstr "<Alt>d"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:906
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1454
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:813
+msgid "Stop turtle"
+msgstr "Stop schildpad"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:909
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1458
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:921
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1507
+msgid "Samples"
+msgstr "Voorbeelden"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:932
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1311
+msgid "Move the cursor over the orange palette for help."
+msgstr "Beweeg de cursor over het oranje palet voor hulp."
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:941
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:978
+msgid "Help"
+msgstr "Help"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:972
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:143
+msgid "View"
+msgstr "Bekijk"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:974
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:158
+msgid "Edit"
+msgstr "Bewerk"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:976
+msgid "Import/Export"
+msgstr "Importeer/Exporteer"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1254
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:149
+msgid "Copy"
+msgstr "Kopieer"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1266
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:153
+msgid "Paste"
+msgstr "Plak"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1336
+msgid "Save Logo"
+msgstr "Logo Opslaan"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1446
+msgid "<Ctrl>d"
+msgstr "<Ctrl>d"
+
+#: /home/walter/Desktop/mainline-turtleart/TurtleArtActivity.py:1512
+msgid "<Ctrl>o"
+msgstr "<Ctrl>o"
+
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:79
+msgid "New"
+msgstr "Nieuw"
+
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:83
+msgid "Open"
+msgstr "Open"
+
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:87
+msgid "Save"
+msgstr "Bewaar"
+
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:91
+msgid "Save As"
+msgstr "Opslaan als"
+
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:107
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:112
+msgid "File"
+msgstr "Bestand"
+
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:126
+msgid "Rescale coordinates"
+msgstr "Herschaal coördinaten"
+
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:138
+msgid "Reset block size"
+msgstr "Herstel blokgrootte"
+
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:172
+msgid "Show/hide blocks"
+msgstr "Toon/verberg blokken"
+
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:177
+msgid "Tools"
+msgstr "Werktuigen"
+
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:199
+msgid "Stop"
+msgstr "Stop"
+
+#: /home/walter/Desktop/mainline-turtleart/turtleart.py:204
+msgid "Turtle"
+msgstr "Schildpad"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:259
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:387
+msgid "turtle"
+msgstr "schildpad"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:260
+msgid "and"
+msgstr "en"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:261
+msgid "arc"
+msgstr "boog"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:261
+msgid "angle"
+msgstr "hoek"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:261
+msgid "radius"
+msgstr "straal"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:263
+msgid "back"
+msgstr "terug"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:264
+msgid "blue"
+msgstr "blauw"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:265
+msgid "bottom"
+msgstr "onderkant"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:266
+msgid "picture bottom"
+msgstr "afbeelding onderkant"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:267
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:372
+msgid "box"
+msgstr "doos"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:268
+msgid "box 1"
+msgstr "doos 1"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:269
+msgid "box 2"
+msgstr "doos 2"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:270
+msgid "Cartesian"
+msgstr "Cartesisch"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:271
+msgid " clean "
+msgstr " schoon "
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:272
+msgid "empty heap"
+msgstr "stapel wissen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:274
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:547
+msgid "comment"
+msgstr "commentaar"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:275
+msgid "cyan"
+msgstr "cyaan"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:278
+msgid "empty trash"
+msgstr "leeg afval"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:280
+msgid "fill screen"
+msgstr "vul scherm"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:281
+msgid "forever"
+msgstr "altijd"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:282
+msgid "forward"
+msgstr "vooruit"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:283
+msgid "full screen"
+msgstr "volledig scherm"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:284
+msgid "gray"
+msgstr "grijs"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:286
+msgid "green"
+msgstr "groen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:287
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:365
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:552
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:583
+msgid "action"
+msgstr "actie"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:288
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:366
+msgid "action 1"
+msgstr "actie 1"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:289
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:367
+msgid "action 2"
+msgstr "actie 2"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:291
+msgid "height"
+msgstr "hoogte"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:292
+msgid "hide blocks"
+msgstr "blokken verbergen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:295
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:296
+msgid "if"
+msgstr "als"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:295
+msgid "then"
+msgstr "dan"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:296
+msgid "then else"
+msgstr "dan anders"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:297
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:361
+msgid "show"
+msgstr "toon"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:299
+msgid "query keyboard"
+msgstr "vraag toetsenbord uit"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:300
+msgid "keyboard"
+msgstr "toetsenbord"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:301
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:302
+msgid "left"
+msgstr "links"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:303
+msgid "picture left"
+msgstr "afbeelding links"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:307
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:308
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:309
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:310
+msgid "Python"
+msgstr "Python"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:311
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:389
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:390
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:391
+msgid " "
+msgstr " "
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:312
+msgid "not"
+msgstr "niet"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:314
+msgid "orange"
+msgstr "oranje"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:315
+msgid "or"
+msgstr "of"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:325
+msgid "pitch"
+msgstr "toonhoogte"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:327
+msgid "polar"
+msgstr "polair"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:328
+msgid "pop"
+msgstr "afnemen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:329
+msgid "show heap"
+msgstr "stapel weergeven"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:330
+msgid "print"
+msgstr "druk af"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:332
+msgid "purple"
+msgstr "paars"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:333
+msgid "push"
+msgstr "neerleggen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:334
+msgid "random"
+msgstr "willekeurig"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:334
+msgid "min"
+msgstr "min"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:334
+msgid "max"
+msgstr "max"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:335
+msgid "red"
+msgstr "rood"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:336
+msgid "mod"
+msgstr "mod"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:337
+msgid "repeat"
+msgstr "herhaal"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:338
+msgid "resistance"
+msgstr "weerstand"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:339
+msgid "restore last"
+msgstr "herlaad laatste"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:340
+msgid "restore all"
+msgstr "herlaad alles"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:341
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:342
+msgid "right"
+msgstr "rechts"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:343
+msgid "picture right"
+msgstr "afbeelding rechts"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:344
+msgid "save picture"
+msgstr "bewaar afbeelding"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:345
+msgid "save SVG"
+msgstr "bewaar SVG"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:348
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:349
+msgid "top of stack"
+msgstr "bovenop de stapel"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:351
+msgid "set color"
+msgstr "zet kleur"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:352
+msgid "set gray"
+msgstr "zet grijs"
+
+#
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:353
+msgid "set heading"
+msgstr "richting instellen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:354
+msgid "set pen size"
+msgstr "zet pen dikte"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:355
+msgid "set scale"
+msgstr "stel schaal in"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:356
+msgid "set shade"
+msgstr "zet schaduw"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:357
+msgid "set text color"
+msgstr "zet tekstkleur"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:358
+msgid "set text size"
+msgstr "stel tekstgrootte in"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:359
 msgid "set xy"
 msgstr "zet xy"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:359
+msgid "x"
+msgstr "x"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:359
+msgid "y"
+msgstr "y"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:362
+msgid "show blocks"
+msgstr "blokken weergeven"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:363
+msgid "show aligned"
+msgstr "toon uitgelijnd"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:368
+msgid "start"
+msgstr "begin"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:369
+msgid "start fill"
+msgstr "begin met vullen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:370
+msgid "end fill"
+msgstr "stop met vullen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:371
+msgid "stop action"
+msgstr "stop actie"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:372
+msgid "store in"
+msgstr "sla op in"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:372
+msgid "value"
+msgstr "waarde"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:373
+msgid "store in box 1"
+msgstr "opslaan in doos 1"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:374
+msgid "store in box 2"
+msgstr "opslaan in doos 2"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:375
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:581
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:582
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:587
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:598
+msgid "text"
+msgstr "tekst"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:382
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:692
+msgid "text size"
+msgstr "tekstgrootte"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:383
+msgid "title x"
+msgstr "titel x"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:384
+msgid "title y"
+msgstr "titel y"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:385
+msgid "top"
+msgstr "bovenin"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:386
+msgid "picture top"
+msgstr "afbeelding bovenin"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:388
+msgid "until"
+msgstr "totdat"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:392
+msgid "voltage"
+msgstr "spanning"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:393
+msgid "volume"
+msgstr "volume"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:395
+msgid "wait"
+msgstr "wacht"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:396
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:397
+msgid "while"
+msgstr "zolang"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:398
+msgid "width"
+msgstr "breedte"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:399
+msgid "write"
+msgstr "schrijf"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:402
+msgid "yellow"
+msgstr "geel"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:546
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:586
+msgid "my box"
+msgstr "mijn vakje"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:568
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:569
+msgid "label"
+msgstr "label"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:570
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:571
+msgid "picture name"
+msgstr "afbeeldingnaam"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:588
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:589
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:590
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:591
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:592
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:593
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:907
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:926
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:944
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:977
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:1010
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:1043
+msgid "Title"
+msgstr "Titel"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:670
+msgid "audio"
+msgstr "audio"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:671
+msgid "divide"
+msgstr "gedeeld door"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:672
+msgid "equal"
+msgstr "gelijk aan"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:673
+msgid "greater than"
+msgstr "groter dan"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:674
+msgid "horizontal space"
+msgstr "horizontale ruimte"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:675
+msgid "identity"
+msgstr "identiteit"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:676
+msgid "if then"
+msgstr "als dan"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:677
+msgid "if then else"
+msgstr "als dan anders"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:678
+msgid "journal"
+msgstr "dagboek"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:679
+msgid "less than"
+msgstr "kleiner dan"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:680
+msgid "minus"
+msgstr "min"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:681
+msgid "Python code"
+msgstr "Python code"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:682
+msgid "number"
+msgstr "nummer"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:683
+msgid "plus"
+msgstr "getal"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:684
+msgid "multiply"
+msgstr "vermenigvuldig"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:685
+msgid "square root"
+msgstr "vierkantswortel"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:686
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:687
+msgid "presentation 1x1"
+msgstr "presentatie 1x1"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:688
+msgid "presentation 1x2"
+msgstr "presentatie 1x2"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:689
+msgid "presentation 2x1"
+msgstr "presentatie 2x1"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:690
+msgid "presentation 2x2"
+msgstr "presentatie 2x2"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:691
+msgid "presentation bulleted list"
+msgstr "presentatiepuntenlijst"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:693
+msgid "vertical space"
+msgstr "verticale ruimte"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:699
+msgid "chooses which turtle to command"
+msgstr "kies welk schildpad te besturen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:700
+msgid "logical AND operator"
+msgstr "logische AND bewerker"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:701
+msgid "moves turtle along an arc"
+msgstr "beweegt schildpad langs een boog"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:702
+msgid "Sugar Journal audio object"
+msgstr "Sugar Dagboek geluidsvoorwerp"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:703
+msgid "moves turtle backward"
+msgstr "beweegt schildpad achteruit"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:704
+msgid "Palette of variable blocks"
+msgstr "Palet van variabele blokken"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:705
+msgid "ycor of bottom of screen"
+msgstr "ycor voor onderkant van scherm"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:706
+msgid "Variable 1 (numeric value)"
+msgstr "Variabele 1 (getalswaarde)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:707
+msgid "Variable 2 (numeric value)"
+msgstr "Variabele 2 (getalswaarde)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:708
+msgid "named variable (numeric value)"
+msgstr "benoemde variabele (getalswaarde)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:709
+msgid "displays Cartesian coordinates"
+msgstr "toont Cartesische coördinaten"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:710
+msgid "clears the screen and reset the turtle"
+msgstr "schoont het scherm en herstelt het schildpad"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:711
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "leegt FILO (eerste-in-laatste-uit hoop)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:712
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr "houdt deze penkleur (kan gebruikt worden in plaats van een nummerblok)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:713
+msgid "Palette of pen colors"
+msgstr "Palet van penkleuren"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:714
+msgid "places a comment in your code"
+msgstr "plaatst een commentaar in je code"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:716
+msgid "Sugar Journal description field"
+msgstr "Sugar Dagboek beschrijvingveld"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:717
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr "deelt bovenste getalinvoer (teller) door onderste getalinvoer (noemer)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:718
+msgid "permanently deletes items in trash"
+msgstr "verwijdert items uit afval voorgoed"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:720
+msgid "logical equal-to operator"
+msgstr "logische gelijk-aan operator"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:721
+msgid "Palette of extra options"
+msgstr "Palet van extra opties"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:722
+msgid "fills the background with (color, shade)"
+msgstr "vult de achtergrond met (kleur, schaduw)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:723
+msgid "Palette of flow operators"
+msgstr "Palet van stroom operators"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:724
+msgid "loops forever"
+msgstr "lust voor altijd"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:725
+msgid "moves turtle forward"
+msgstr "beweeg schildpad vooruit"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:726
+msgid "hides the Sugar toolbars"
+msgstr "verbergt de Sugar werkbalken"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:727
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr "houdt dit grijsniveau (wordt gebruikt ipv een nummerblok)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:728
+msgid "logical greater-than operator"
+msgstr "logische groter-dan operator"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:729
+msgid "top of Action 1 stack"
+msgstr "bovenste van Actie 1 stapel"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:730
+msgid "top of Action 2 stack"
+msgstr "bovenste van Actie 2 stapel"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:731
+msgid "top of nameable action stack"
+msgstr "bovenste van benoembare actie stapel"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:732
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+"houdt deze richtingwaarde van het schildpad vast (kan worden gebruikt in "
+"plaats van nummerblok)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:733
+msgid "the canvas height"
+msgstr "de schlderijhoogte"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:734
+msgid "declutters canvas by hiding blocks"
+msgstr "ontwar schilderij door blokken te verbergen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:736
+msgid "jogs stack right"
+msgstr "schudt stapel rechts"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:737
+msgid "identity operator used for extending blocks"
+msgstr "identiteit operator gebruikt voor uitbreiding blokken"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:738
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+"als-dan-anders operator die gebruikt booleaanse operators van Getallen palet"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:739
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr "als-dan operator die gebruikt booleaanse operators van Getallen palet"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:740
+msgid "Sugar Journal media object"
+msgstr "Sugar Dagboek media voorwerp"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:741
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr ""
+"uitvraging van toetsenbord invoer (resultaten opgeslagen in toetsenbordblok)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:742
+msgid "holds results of query-keyboard block"
+msgstr "bevat resultaten van uitvraging-toetsnebordblok"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:743
+msgid "xcor of left of screen"
+msgstr "xcor van linkerkant van scherm"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:744
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "draait schildpad tegen de klok in (hoek in graden)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:745
+msgid "logical less-than operator"
+msgstr "logische kleiner-dan operator"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:746
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "trekt onderste getalsinvoer af van bovenste getalsinvoer"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:747
+msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
+msgstr ""
+"een programmeerbaar blok: gebruikt om geavanceerde wisk vergelijkingen toe "
+"te voegen, zoals sin(x)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:748
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+"een programmeerbaar blok: gebruikt om geavanceerde enkele-variabele "
+"wiskundige vergelijkingen toe te voegen, zoals sin(x)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:749
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+"een programmeerbaar blok: gebruikt om geavanceerde meer-variabelen wisk "
+"vergelijkingen toe te voegen, zoals sqrt(x*x+y*y)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:750
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+"een programmeerbaar blok: gebruikt om geavanceerde meer-variabelen "
+"wiskundige vergelijkingen toe te voegen, zoals sin(x+y+z)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:751
+msgid "displays next palette"
+msgstr "toont volgende palet"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:752
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:831
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:832
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:833
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr "draait code gevonden in tamyblock.py module gevonden in het Dagboek"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:753
+msgid "logical NOT operator"
+msgstr "logische NIET operator"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:754
+msgid "Palette of numeric operators"
+msgstr "Palet van getals operator"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:755
+msgid "used as numeric input in mathematic operators"
+msgstr "gebruikt als getalsinvoer in wiskundige opetatoren"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:756
+msgid "logical OR operator"
+msgstr "logische OF operator"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:757
+msgid "changes the orientation of the palette of blocks"
+msgstr "wijzigt de richting van het blokkenpalet"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:758
+msgid "Turtle will draw when moved."
+msgstr "Schildpad tekent als die beweegt."
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:759
+msgid "Palette of pen commands"
+msgstr "Palet van pencommando's"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:760
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr "houdt deze pengrootte (wordt gebruikt ipv een nummerblok)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:761
+msgid "Turtle will not draw when moved."
+msgstr "Schildpad tekent niet als die beweegt."
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:762
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:819
+msgid "presentation template: select Journal object (with description)"
+msgstr "presentatie sjabloon: selecteer Dagboek voorwerp (met beschrijving)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:763
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:820
+msgid "presentation template: select Journal object (no description)"
+msgstr "presentatie sjabloon: selecteer Dagboek voorwerp (zonder beschrijving)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:764
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:765
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:821
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:822
+msgid "presentation template: select two Journal objects"
+msgstr "presentatie sjabloon: selecteer twee Dagboek voorwerpen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:766
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:823
+msgid "presentation template: select four Journal objects"
+msgstr "presentatie sjabloon: selecteer vier Dagboek voorwerpen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:767
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:824
+msgid "presentation template: list of bullets"
+msgstr "presentatie sjabloon: puntenlijst"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:768
+msgid "microphone input pitch"
+msgstr "microfoon invoer toonhoogte"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:769
+msgid "adds two alphanumeric inputs"
+msgstr "voegt twee alfanumerieke invoer toe"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:770
+msgid "displays polar coordinates"
+msgstr "toont polaire coördinaten"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:771
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "duwt waarde van FILO (eerst-in-laatst-uit hoop)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:772
+msgid "Palette of presentation templates"
+msgstr "Palet van presentatie sjablonen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:773
+msgid "prints value in status block at bottom of the screen"
+msgstr "drukt waarde af in status blok bij de onderkant van het scherm"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:774
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "toont waarden in FILO (eerst-in-laatst-uit hoop)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:775
+msgid "multiplies two numeric inputs"
+msgstr "vermenigvuldigt twee getallen invoer"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:776
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "duwt waarde op FILO (eerst-in-laatst-uit hoop)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:777
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+"geeft waarde terug tussen minimum (bovenste) en maximum (onderste) waarden"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:778
+msgid "modular (remainder) operator"
+msgstr "modulair (restwaarde) operator"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:779
+msgid "loops specified number of times"
+msgstr "lust een aangegeven aantal keren"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:780
+msgid "sensor input resistance"
+msgstr "voeler invoer weerstand"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:781
+msgid "restores most recent blocks from trash"
+msgstr "herlaad nieuwste blokken van afval"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:782
+msgid "restore all blocks from trash"
+msgstr "herlaad alle blokken van afval"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:783
+msgid "xcor of right of screen"
+msgstr "xcor van rechterkant van scherm"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:784
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "draait schildpad met de klok mee (hoek in graden)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:787
+msgid "bottom block in a collapsibe stack: click to collapse"
+msgstr "onderste blok in een inklapbare stapel: klik om in te klappen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:788
+msgid "bottom block in a collapsed stack: click to open"
+msgstr "onderste blok in een ingeklapte stapel: klik om te openen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:789
+msgid "top of a collapsible stack"
+msgstr "bovenkant van een inklapbare stapel"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:790
+msgid "top of a collapsed stack"
+msgstr "bovenkant van een ingeklapte stapel"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:791
+msgid "saves a picture to the Sugar Journal"
+msgstr "bewaart een afbeelding in het Sugar Dagboek"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:792
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr "bewaart een schikdpad plaatje als een SVG bestand in het Sugar Dagboek"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:793
+msgid "holds current scale value"
+msgstr "houdt deze schaalwaarde"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:794
+msgid "sets color of the line drawn by the turtle"
+msgstr "stelt kleur in van de lijn die getekend is door het schildpad"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:795
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "stelt het grijsniveau van de lijn in getekend door de schildpad"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:796
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr ""
+"stelt de richting in van het schildpad (0 is naar de bovenkant van het "
+"scherm.)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:797
+msgid "sets size of the line drawn by the turtle"
+msgstr "stelt de grootte van de lijn in getekend door het schildpad"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:798
+msgid "sets the scale of media"
+msgstr "stelt de schaal van de media in"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:799
+msgid "sets shade of the line drawn by the turtle"
+msgstr "stelt de schaduw van de lijn in getekend door het schildpad"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:800
+msgid "sets color of text drawn by the turtle"
+msgstr "stelt de kleur van tekst in getekend door het schildpad"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:801
+msgid "sets size of text drawn by turtle"
+msgstr "stelt grootte van tekst in getekend door schildpad"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:802
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+"beweegt schildpad naar positie xcor, ycor; (0, 0) is in het midden van het "
+"scherm."
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:803
+msgid "holds current pen shade"
+msgstr "behoudt deze pen schaduw"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:804
+msgid "draws text or show media from the Journal"
+msgstr "tekent tekst of toont media uit het Dagboek"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:805
+msgid "restores hidden blocks"
+msgstr "herlaad verborgen blokken"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:806
+msgid "calculates square root"
+msgstr "berekent vierkantswortel"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:807
+msgid "invokes Action 1 stack"
+msgstr "roept Actie 1 stapel aan"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:808
+msgid "invokes Action 2 stack"
+msgstr "roept Actie 2 stapel aan"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:809
+msgid "invokes named action stack"
+msgstr "roept benoemde actie stapel aan"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:810
+msgid "connects action to toolbar run buttons"
+msgstr "verbindt actie aan werkbalk start knoppen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:811
+msgid "starts filled polygon (used with end fill block)"
+msgstr "Begint met een gevuld vlak (gebruik met eindig vullen van blok)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:812
+msgid "completes filled polygon (used with start fill block)"
+msgstr "eindigt met vullen van vlak (gebruik met begin met een gevuld vlak)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:814
+msgid "stops current action"
+msgstr "stop deze actie"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:815
+msgid "stores numeric value in Variable 1"
+msgstr "slaat getalswaarde op in Variabele 1"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:816
+msgid "stores numeric value in Variable 2"
+msgstr "slaat getalswaarde op in Variabele 2"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:817
+msgid "stores numeric value in named variable"
+msgstr "slaat getalswaarde op in benoemde variabele"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:818
+msgid "string value"
+msgstr "rijwaarde"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:825
+msgid "holds current text color (can be used in place of a number block)"
+msgstr ""
+"behoudt deze tekst kleur (kan worden gebruikt in plaats van een nummerblok)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:826
+msgid "holds current text size (can be used in place of a number block)"
+msgstr ""
+"behoudt deze tekstgrootte (kan worden gebruikt in plaats van een nummerblok)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:827
+msgid "ycor of top of screen"
+msgstr "ycor van bovenkant van het scherm"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:828
+msgid "Trashcan"
+msgstr "Afvalbak"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:829
+msgid "Palette of turtle commands"
+msgstr "Palet van schildpadcommando's"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:830
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"doe-totdat-Waar operator die gebruik maakt van booleaanse operators van "
+"Getal palet"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:834
+msgid "sensor voltage"
+msgstr "voeler spanning"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:835
+msgid "microphone input volume"
+msgstr "microfoon invoer volume"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:836
+msgid "jogs stack down"
+msgstr "stoot stapel neer"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:837
+msgid "pauses program execution a specified number of seconds"
+msgstr "pauzeert programmauitvoering een aangegeven aantal seconden"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:838
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"do-zolang-Waar operator die booleaanse operators gebruikt van Getal palet"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:839
+msgid "the canvas width"
+msgstr "de schilderij breedte"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:840
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"behoudt deze x-coördinaat waarde voor schildpad (kan worden gebruikt in "
+"plaats van nummerblok)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:841
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"behoudt deze y-coördinaat waarde voor schildpad (kan worden gebruikt in "
+"plaats van nummerblok)"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:900
+msgid "bulleted list"
+msgstr "puntenlijst"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:919
+msgid "picture"
+msgstr "afbeelding"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:937
+msgid "2×2 pictures"
+msgstr "2x2 afbeeldingen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:970
+msgid "2×1 pictures"
+msgstr "2x1 afbeeldingen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:1003
+msgid "1×2 pictures"
+msgstr "1x2 afbeeldingen"
+
+#: /home/walter/Desktop/mainline-turtleart/taconstants.py:1036
+msgid "1×1 pictures"
+msgstr "1x1 afbeeldingen"
+
+#~ msgid "name"
+#~ msgstr "naam"
+
+#, fuzzy
+#~ msgid "load my block"
+#~ msgstr "laad mijn blok"
+
+#~ msgid "stack 2"
+#~ msgstr "stapel 2"
+
+#~ msgid "stack 1"
+#~ msgstr "stapel 1"
+
+#~ msgid "Keyboard"
+#~ msgstr "Toetsenbord"
+
+#~ msgid "Flow"
+#~ msgstr "Vloeien"
+
+#~ msgid "else"
+#~ msgstr "anders"
+
+#~ msgid "My Blocks"
+#~ msgstr "Mijn blokken"
+
+#~ msgid "Numbers"
+#~ msgstr "Nummers"
+
+#~ msgid "Templates"
+#~ msgstr "Sjablonen"
+
+#~ msgid "read key"
+#~ msgstr "lees toets"
+
+#~ msgid "clean"
+#~ msgstr "wissen"
+
+#~ msgid "setyx"
+#~ msgstr "setyx"
+
+#~ msgid "sound"
+#~ msgstr "geluid"
+
+#, fuzzy
+#~ msgid "text color"
+#~ msgstr "zet kleur"
+
+#~ msgid "Pen"
+#~ msgstr "Pen"
+
+#~ msgid "hide palette"
+#~ msgstr "palet verbergen"
+
+#~ msgid "stack"
+#~ msgstr "stapel"
+
+#~ msgid "run"
+#~ msgstr "start"
+
+#~ msgid "stop stack"
+#~ msgstr "stop stapel"
 
 #~ msgid "Blocks"
 #~ msgstr "Blokken"
 
 #~ msgid "Sensors"
 #~ msgstr "Sensors"
-
-#~ msgid "volume"
-#~ msgstr "volume"
-
-#~ msgid "pitch"
-#~ msgstr "toonhoogte"
-
-#~ msgid "voltage"
-#~ msgstr "voltage"
-
-#~ msgid "resistance"
-#~ msgstr "weerstand"
 
 #~ msgid "hres"
 #~ msgstr "hres"
