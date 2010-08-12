@@ -566,6 +566,13 @@ class TurtleGraphics:
                                                            int(w), int(h)),
                                          False)
 
+    def read_pixel(self, x, y):
+        """ Read the pixel at x, y """
+        if self.tw.interactive_mode:
+            return self.canvas.get_pixel((x, y))
+        else:
+            return(-1, -1, -1, -1)
+
     def set_turtle(self, k, colors=None):
         """ Select the current turtle and associated pen status """
         if not self.tw.turtles.dict.has_key(k):
