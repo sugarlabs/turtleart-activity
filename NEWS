@@ -1,5 +1,8 @@
 94
 
+* added "turtle sees" block
+* added read_pixel block
+* updated sample images (smaller file sizes)
 * updated license for sample images
 * updated nl translation
 * fixed path problem with Exec in desktop file (Matthew Gallagher)
