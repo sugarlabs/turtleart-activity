@@ -399,7 +399,7 @@ class Sprite:
         """ Return the upper-left corner of the label safe zone """
         return(self._margins[0], self._margins[1])
 
-    def get_pixel(self, pos, i=0):
+    def get_pixel(self, pos, i=0, mode='888'):
         """ Return the pixel at (x, y) """
         x, y = pos
         x = x - self.rect.x
@@ -423,7 +423,12 @@ class Sprite:
                 return(-1, -1, -1, -1)
             image = self.images[i].get_image(x, y, 1, 1)
             pixel = image.get_pixel(0, 0)
-            r = int((pixel & 0xff0000) >> 16)
-            g = int((pixel & 0x00ff00) >> 8)
-            b = int((pixel & 0x0000ff))
+            if mode == '565':
+                r = int(((pixel >> 11) & 0x1f) < 3)
+                g = int(((pixel >> 5) & 0x3f) < 2)
+                b = int((pixel & 0x1f) < 3)
+            else:
+                r = int((pixel & 0xff0000) >> 16)
+                g = int((pixel & 0x00ff00) >> 8)
+                b = int((pixel & 0x0000ff))
             return(r, g, b, 0)

@@ -588,7 +588,8 @@ class TurtleGraphics:
         """ Read the pixel at x, y """
         if self.tw.interactive_mode:
             return self.canvas.get_pixel((self.width / 2 + int(self.xcor),
-                                          self.height / 2 - int(self.ycor)))
+                                          self.height / 2 - int(self.ycor)),
+                                         0, self.tw.color_mode)
         else:
             return(-1, -1, -1, -1)
 
