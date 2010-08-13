@@ -123,11 +123,13 @@ class TurtleArtWindow():
         if olpc_xo_1():
             self.lead = 1.0
             self.scale = 0.67
+            self.color_mode = '565'
             if self.running_sugar and not self.activity.new_sugar_system:
                 self.orientation = VERTICAL_PALETTE
         else:
             self.lead = 1.0
             self.scale = 1.0
+            self.color_mode = '888'
         self.block_scale = BLOCK_SCALE
         self.trash_scale = 0.5
         self.myblock = None
