@@ -423,12 +423,13 @@ class Sprite:
                 return(-1, -1, -1, -1)
             image = self.images[i].get_image(x, y, 1, 1)
             pixel = image.get_pixel(0, 0)
+            visual = self.images[i].get_visual()
+            r = int((pixel & visual.red_mask) >> visual.red_shift)
+            g = int((pixel & visual.green_mask) >> visual.green_shift)
+            b = int((pixel & visual.blue_mask) >> visual.blue_shift)
+            # Rescale to 8 bits
             if mode == '565':
-                r = int(((pixel >> 11) & 0x1f) < 3)
-                g = int(((pixel >> 5) & 0x3f) < 2)
-                b = int((pixel & 0x1f) < 3)
-            else:
-                r = int((pixel & 0xff0000) >> 16)
-                g = int((pixel & 0x00ff00) >> 8)
-                b = int((pixel & 0x0000ff))
+                r = r << 3
+                g = g << 2
+                b = b << 3
             return(r, g, b, 0)
