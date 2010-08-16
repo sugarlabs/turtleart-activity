@@ -1,10 +1,10 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=TurtleArt
 Name[nb]=Skilpaddekunst
 GenericName=Sugar TurtleArt activity
 GenericName[nb]=Sugar Skilpaddekunst-aktivitet
 Exec=/usr/bin/turtleart
+Icon=turtleart
 Type=Application
 Comment=A Logo programming environment
 Comment[nb]=Et miljø for Logo-programmering
