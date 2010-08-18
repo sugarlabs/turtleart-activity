@@ -129,7 +129,7 @@ class TurtleArtWindow():
         else:
             self.lead = 1.0
             self.scale = 1.0
-            self.color_mode = '888'
+            self.color_mode = '888' # TODO: Read visual mode from gtk image
         self.block_scale = BLOCK_SCALE
         self.trash_scale = 0.5
         self.myblock = None
@@ -1119,7 +1119,6 @@ class TurtleArtWindow():
                 self._adjust_dock_positions(c)
 
     def _turtle_pressed(self, x, y):
-        """ Turtle pressed """
         (tx, ty) = self.selected_turtle.get_xy()
         dx = x - tx - 30
         dy = y - ty - 30
@@ -1130,55 +1129,45 @@ class TurtleArtWindow():
             self.drag_turtle = ('move', x - tx, y - ty)
 
     def _move_cb(self, win, event):
-        """ Mouse move """
         x, y = xy(event)
         self._mouse_move(x, y)
         return True
 
-    def _mouse_move(self, x, y, verbose=False, mdx=0, mdy=0):
-        if verbose:
-            print "processing remote mouse move: %d, %d" % (x, y)
-
+    def _mouse_move(self, x, y):
+        """ Process mouse movements """
         self.block_operation = 'move'
+
         # First, check to see if we are dragging or rotating a turtle.
         if self.selected_turtle is not None:
             dtype, dragx, dragy = self.drag_turtle
             (sx, sy) = self.selected_turtle.get_xy()
             if dtype == 'move':
-                if mdx != 0 or mdy != 0:
-                    dx, dy = mdx, mdy
-                else:
-                    dx = x - dragx - sx
-                    dy = y - dragy - sy
+                dx = x - dragx - sx
+                dy = y - dragy - sy
                 self.selected_turtle.move((sx + dx, sy + dy))
             else:
-                if mdx != 0 or mdy != 0:
-                    dx = mdx
-                    dy = mdy
-                else:
-                    dx = x - sx - 30
-                    dy = y - sy - 30
+                dx = x - sx - 30
+                dy = y - sy - 30
                 self.canvas.seth(int(dragx + atan2(dy, dx)/DEGTOR + 5)/10 * 10)
+
         # If we are hoving, show popup help.
         elif self.drag_group is None:
             self._show_popup(x, y)
             return
+
         # If we have a stack of blocks selected, move them.
         elif self.drag_group[0] is not None:
             blk = self.drag_group[0]
-            # Don't move a bottom blk is the stack is collapsed
+
+            # Don't move a bottom blk if the stack is collapsed
             if collapsed(blk):
                 return
 
             self.selected_spr = blk.spr
             dragx, dragy = self.drag_pos
-            if mdx != 0 or mdy != 0:
-                dx = mdx
-                dy = mdy
-            else:
-                (sx, sy) = blk.spr.get_xy()
-                dx = x - dragx - sx
-                dy = y - dragy - sy
+            (sx, sy) = blk.spr.get_xy()
+            dx = x - dragx - sx
+            dy = y - dragy - sy
 
             # Take no action if there was a move of 0,0.
             if dx == 0 and dy == 0:
@@ -1186,35 +1175,17 @@ class TurtleArtWindow():
             self.drag_group = find_group(blk)
 
             # Prevent blocks from ending up with a negative x...
-            for gblk in self.drag_group:
-                (bx, by) = gblk.spr.get_xy()
+            for blk in self.drag_group:
+                (bx, by) = blk.spr.get_xy()
                 if bx + dx < 0:
-                    dx += -(bx + dx)
-                """
-                # ...or under the palette.
-                if self.selected_palette is not None and\
-                   self.selected_palette != self.trash_index:
-                    w, h = self.palette_sprs[self.selected_palette][
-                                             self.orientation].get_dimensions()
-                    if self.orientation == HORIZONTAL_PALETTE:
-                        if bx < w and\
-                           by+dy < self.toolbar_offset+PALETTE_HEIGHT:
-                            dy +=  -(by+dy)+self.toolbar_offset+PALETTE_HEIGHT
-                    else:
-                        if by < h+self.toolbar_offset and bx+dx < PALETTE_WIDTH:
-                            dx += -(bx+dx)+PALETTE_WIDTH
-                """
+                    dx = -bx
 
             # Move the stack.
-            for gblk in self.drag_group:
-                (bx, by) = gblk.spr.get_xy()
-                gblk.spr.move((bx + dx, by + dy))
-        if mdx != 0 or mdy != 0:
-            dx = 0
-            dy = 0
-        else:
-            self.dx += dx
-            self.dy += dy
+            for blk in self.drag_group:
+                (bx, by) = blk.spr.get_xy()
+                blk.spr.move((bx + dx, by + dy), blk.status)
+        self.dx += dx
+        self.dy += dy
 
     def _show_popup(self, x, y):
         """ Let's help our users by displaying a little help. """

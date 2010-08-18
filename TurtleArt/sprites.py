@@ -199,11 +199,13 @@ class Sprite:
             if h + dy > self.rect.height:
                 self.rect.height = h + dy
 
-    def move(self, pos):
+    def move(self, pos, status=None):
         """ Move to new (x, y) position """
-        self.inval()
+        if status is None:
+            self.inval()
         self.rect.x, self.rect.y = int(pos[0]), int(pos[1])
-        self.inval()
+        if status is None:
+            self.inval()
 
     def move_relative(self, pos):
         """ Move to new (x+dx, y+dy) position """
