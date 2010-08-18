@@ -1,3 +1,9 @@
+95
+
+* some performance enhancements (block creation and stack dragging)
+* removed depreciated field from desktop file (Luke Farone)
+* fixed problem with setup.py in non-Sugar environments (Luke Farone)
+
 94
 
 * added "turtle sees" block
