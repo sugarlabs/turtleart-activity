@@ -254,8 +254,15 @@ class Block:
 
     def _new_block_from_factory(self, sprite_list, x, y, copy_block=None):
 
+        self.svg = SVG()
+        self.svg.set_scale(self.scale)
+        self.svg.set_gradiant(True)
+        self.svg.set_innie([False])
+        self.svg.set_outie(False)
+        self.svg.set_tab(True)
+        self.svg.set_slot(True)
+
         if copy_block is not None:
-            self.svg = copy_block.svg
             self._left = copy_block._left
             self._top = copy_block._top
             self._right = copy_block._right
@@ -272,14 +279,6 @@ class Block:
                 self.shapes[1] = copy_block.shapes[1]
             self.docks = copy_block.docks[:]
         else:
-            self.svg = SVG()
-            self.svg.set_scale(self.scale)
-            self.svg.set_gradiant(True)
-            self.svg.set_innie([False])
-            self.svg.set_outie(False)
-            self.svg.set_tab(True)
-            self.svg.set_slot(True)
-
             if self.name in EXPANDABLE and self.type == 'block':
                 self.svg.set_show(True)
 
