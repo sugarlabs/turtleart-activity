@@ -709,9 +709,7 @@ class TurtleArtWindow():
         self.button_press(event.get_state()&gtk.gdk.CONTROL_MASK, x, y)
         return True
 
-    def button_press(self, mask, x, y, verbose=False):
-        if verbose:
-            print "processing remote button press: %d, %d" % (x, y)
+    def button_press(self, mask, x, y):
         self.block_operation = 'click'
 
         # Unselect things that may have been selected earlier
@@ -1137,6 +1135,8 @@ class TurtleArtWindow():
         """ Process mouse movements """
         self.block_operation = 'move'
 
+
+
         # First, check to see if we are dragging or rotating a turtle.
         if self.selected_turtle is not None:
             dtype, dragx, dragy = self.drag_turtle
@@ -1184,8 +1184,10 @@ class TurtleArtWindow():
             for blk in self.drag_group:
                 (bx, by) = blk.spr.get_xy()
                 blk.spr.move((bx + dx, by + dy), blk.status)
+
         self.dx += dx
         self.dy += dy
+
 
     def _show_popup(self, x, y):
         """ Let's help our users by displaying a little help. """
@@ -1254,7 +1256,7 @@ class TurtleArtWindow():
         self.button_release(x, y)
         return True
 
-    def button_release(self, x, y, verbose=False):
+    def button_release(self, x, y):
         # We may have been moving the turtle
         if self.selected_turtle is not None:
             (tx, ty) = self.selected_turtle.get_xy()
@@ -1566,11 +1568,9 @@ class TurtleArtWindow():
         self._key_press(alt_mask, keyname, keyunicode)
         return keyname
 
-    def _key_press(self, alt_mask, keyname, keyunicode, verbose=False):
+    def _key_press(self, alt_mask, keyname, keyunicode):
         if keyname is None:
             return False
-        if verbose:
-            print "processing remote key press: %s" % (keyname)
 
         self.keypress = keyname
 
