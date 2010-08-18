@@ -260,6 +260,9 @@ class Block:
             self._top = copy_block._top
             self._right = copy_block._right
             self._bottom = copy_block._bottom
+            self.dx = copy_block.dx
+            self.ex = copy_block.ex
+            self.ey = copy_block.ey
             self.width = copy_block.width
             self.height = copy_block.height
             self.shapes[0] = copy_block.shapes[0]
