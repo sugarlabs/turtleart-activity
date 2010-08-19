@@ -1180,12 +1180,11 @@ class TurtleArtWindow():
                     dx = -bx
 
             # Move the stack
-            # Calculate a bounding box and only invalidate once.
-            """
             for blk in self.drag_group:
                 (bx, by) = blk.spr.get_xy()
-                blk.spr.move((bx + dx, by + dy), blk.status=='collapsed')
+                blk.spr.move((bx + dx, by + dy), not blk.status=='collapsed')
             """
+            # Calculate a bounding box and only invalidate once.
             maxx = blk.spr.rect.x
             maxy = blk.spr.rect.x + blk.spr.rect.width
             minx = blk.spr.rect.y
@@ -1217,6 +1216,7 @@ class TurtleArtWindow():
             self.rect.width = maxx - minx
             self.rect.height = maxy - miny
             self.sprite_list.area.invalidate_rect(self.rect, False)
+            """
 
         self.dx += dx
         self.dy += dy
