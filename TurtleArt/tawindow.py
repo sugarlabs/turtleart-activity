@@ -111,6 +111,7 @@ class TurtleArtWindow():
         self.save_file_name = None
         self.width = gtk.gdk.screen_width()
         self.height = gtk.gdk.screen_height() 
+        self.rect = gtk.gdk.Rectangle(0, 0, 0, 0)
 
         self.keypress = ""
         self.keyvalue = 0
@@ -1135,8 +1136,6 @@ class TurtleArtWindow():
         """ Process mouse movements """
         self.block_operation = 'move'
 
-
-
         # First, check to see if we are dragging or rotating a turtle.
         if self.selected_turtle is not None:
             dtype, dragx, dragy = self.drag_turtle
@@ -1180,10 +1179,43 @@ class TurtleArtWindow():
                 if bx + dx < 0:
                     dx = -bx
 
-            # Move the stack.
+            # Move the stack
+            # Calculate a bounding box and only invalidate once.
+            """
             for blk in self.drag_group:
                 (bx, by) = blk.spr.get_xy()
                 blk.spr.move((bx + dx, by + dy), blk.status)
+            """
+            maxx = -1
+            maxy = -1
+            minx = 10000
+            miny = 10000
+            for blk in self.drag_group:
+                if blk.spr.rect.x < minx:
+                    minx = blk.spr.rect.x
+                elif blk.spr.rect.x + blk.spr.rect.width > maxx:
+                    maxx = blk.spr.rect.x + blk.spr.rect.width
+                if blk.spr.rect.y < miny:
+                    miny = blk.spr.rect.y
+                elif blk.spr.rect.y + blk.spr.rect.height > maxy:
+                    maxy = blk.spr.rect.y + blk.spr.rect.height
+                blk.spr.rect.x += dx
+                blk.spr.rect.y += dy
+
+            if dx < 0:
+                minx += dx
+            else:
+                maxx += dx
+            if dy < 0:
+                miny += dy
+            else:
+                maxy += dy
+
+            self.rect.x = minx
+            self.rect.y = miny
+            self.rect.width = maxx - minx
+            self.rect.height = maxy - miny
+            self.sprite_list.area.invalidate_rect(self.rect, False)
 
         self.dx += dx
         self.dy += dy
