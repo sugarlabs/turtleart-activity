@@ -237,6 +237,9 @@ def millis():
     """ Current time in milliseconds """
     return int(clock()*1000)
 
+
+_DEFAULT_SCALE = 33
+
 """
 A class for parsing Logo Code
 """
@@ -410,7 +413,7 @@ class LogoCode:
         self.body_height = int((self.tw.canvas.height/40)*self.tw.scale)
         self.bullet_height = int((self.tw.canvas.height/30)*self.tw.scale)
     
-        self.scale = 33
+        self.scale = _DEFAULT_SCALE
 
     def defprim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
@@ -770,6 +773,7 @@ class LogoCode:
         """ Clear screen """
         stop_media(self)
         self.tw.canvas.clearscreen()
+        self.scale = _DEFAULT_SCALE
 
     def prim_start(self):
         """ Start block: recenter """
