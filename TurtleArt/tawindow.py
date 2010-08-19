@@ -1184,12 +1184,13 @@ class TurtleArtWindow():
             """
             for blk in self.drag_group:
                 (bx, by) = blk.spr.get_xy()
-                blk.spr.move((bx + dx, by + dy), blk.status)
+                blk.spr.move((bx + dx, by + dy), blk.status=='collapsed')
             """
-            maxx = -1
-            maxy = -1
-            minx = 10000
-            miny = 10000
+            maxx = blk.spr.rect.x
+            maxy = blk.spr.rect.x + blk.spr.rect.width
+            minx = blk.spr.rect.y
+            miny = blk.spr.rect.y + blk.spr.rect.height
+
             for blk in self.drag_group:
                 if blk.spr.rect.x < minx:
                     minx = blk.spr.rect.x
