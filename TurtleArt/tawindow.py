@@ -1180,6 +1180,7 @@ class TurtleArtWindow():
                     dx = -bx
 
             # Move the stack
+            """
             for blk in self.drag_group:
                 (bx, by) = blk.spr.get_xy()
                 blk.spr.move((bx + dx, by + dy), not blk.status=='collapsed')
@@ -1189,6 +1190,12 @@ class TurtleArtWindow():
             maxy = blk.spr.rect.x + blk.spr.rect.width
             minx = blk.spr.rect.y
             miny = blk.spr.rect.y + blk.spr.rect.height
+
+            self.rect.x = minx
+            self.rect.y = miny
+            self.rect.width = maxx - minx
+            self.rect.height = maxy - miny
+            self.sprite_list.area.invalidate_rect(self.rect, False)
 
             for blk in self.drag_group:
                 if blk.spr.rect.x < minx:
@@ -1216,7 +1223,6 @@ class TurtleArtWindow():
             self.rect.width = maxx - minx
             self.rect.height = maxy - miny
             self.sprite_list.area.invalidate_rect(self.rect, False)
-            """
 
         self.dx += dx
         self.dy += dy
