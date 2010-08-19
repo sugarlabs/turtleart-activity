@@ -1171,6 +1171,7 @@ class TurtleArtWindow():
             # Take no action if there was a move of 0,0.
             if dx == 0 and dy == 0:
                 return
+
             self.drag_group = find_group(blk)
 
             # Prevent blocks from ending up with a negative x...
@@ -1186,16 +1187,10 @@ class TurtleArtWindow():
                 blk.spr.move((bx + dx, by + dy), not blk.status=='collapsed')
             """
             # Calculate a bounding box and only invalidate once.
-            maxx = blk.spr.rect.x
-            maxy = blk.spr.rect.x + blk.spr.rect.width
-            minx = blk.spr.rect.y
-            miny = blk.spr.rect.y + blk.spr.rect.height
-
-            self.rect.x = minx
-            self.rect.y = miny
-            self.rect.width = maxx - minx
-            self.rect.height = maxy - miny
-            self.sprite_list.area.invalidate_rect(self.rect, False)
+            minx = blk.spr.rect.x
+            miny = blk.spr.rect.y
+            maxx = blk.spr.rect.x + blk.spr.rect.width
+            maxy = blk.spr.rect.y + blk.spr.rect.height
 
             for blk in self.drag_group:
                 if blk.spr.rect.x < minx:
