@@ -3,8 +3,11 @@
 * some performance enhancements (block creation and stack dragging)
 * removed depreciated field from desktop file (Luke Farone)
 * fixed problem with setup.py in non-Sugar environments (Luke Farone)
-* new example program: maze
+* new example program for turtle sees block
 * fixed broken clock example
+* catch import error for upload (#2194)
+* rescaling of read pixel values (#2188)
+* turtle sees block takes into account gray and shade (#2188)
 
 94
 
