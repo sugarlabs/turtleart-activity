@@ -28,6 +28,7 @@ import getopt
 import sys
 import os
 import os.path
+import errno
 
 try:
     import pycurl
@@ -64,6 +65,14 @@ _HELP_MSG = 'turtleart.py: ' + _('usage is') + """
 
 _MAX_FILE_SIZE = 950000
 
+def mkdir_p(path):
+    '''Create a directory in a fashion similar to `mkdir -p`'''
+    try:
+        os.makedirs(path)
+    except OSError as exc:
+        if exc.errno == errno.EEXIST:
+            pass
+        else: raise
 
 def _make_sub_menu(menu, name):
     """ add a new submenu to the toolbar """
@@ -153,6 +162,9 @@ class TurtleMain():
             try:
                 data_file = open(os.path.join(CONFIG_HOME, 'turtleartrc'), 'r')
             except IOError:
+                # Opening the config file failed
+                # We'll assume it needs to be created
+                mkdir_p(CONFIG_HOME)
                 data_file = open(os.path.join(CONFIG_HOME, 'turtleartrc'), 'a+')
                 data_file.write(str(50) + '\n')
                 data_file.write(str(50) + '\n')
