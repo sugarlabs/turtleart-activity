@@ -29,8 +29,13 @@ import sys
 import os
 import os.path
 
-import pycurl
-import xmlrpclib
+try:
+    import pycurl
+    import xmlrpclib
+    _UPLOAD_AVAILABLE = True
+except ImportError, e:
+    print "Import Error: %s. Project upload is disabled." % (e)
+    _UPLOAD_AVAILABLE = False
 
 argv = sys.argv[:]  # Workaround for import behavior of gst in tagplay
 sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
@@ -172,7 +177,9 @@ class TurtleMain():
             _make_menu_item(menu, _('Save as image'), self._do_save_picture_cb)
             _make_menu_item(menu, _('Save as HTML'), self._do_save_html_cb)
             _make_menu_item(menu, _('Save as Logo'), self._do_save_logo_cb)
-            _make_menu_item(menu, _('Upload to Web'), self._do_upload_to_web)
+            if _UPLOAD_AVAILABLE:
+                _make_menu_item(menu, _('Upload to Web'),
+                                self._do_upload_to_web)
             _make_menu_item(menu, _('Quit'), self.destroy)
             activity_menu = _make_sub_menu(menu, _('File'))
 
