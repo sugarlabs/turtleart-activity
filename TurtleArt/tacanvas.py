@@ -42,18 +42,29 @@ def wrap100(n):
     return n
 
 
-def calc_shade(c, s):
+def calc_shade(c, s, invert=False):
     """ Convert a color to the current shade (lightness/darkness). """
-    if s < 0:
-        return int(c * (1 + s * 0.8))
-    return int(c + (65536 - c) * s * 0.9)
+    # Assumes 16 bit input values
+    if invert:
+        if s < 0:
+            return int(c / (1 + s * 0.8))
+        return int((c - 65536 * s * 0.9) / (1 - (s * 0.9)))
+    else:
+        if s < 0:
+            return int(c * (1 + s * 0.8))
+        return int(c + (65536 - c) * s * 0.9)
 
 
-def calc_gray(c, g):
+def calc_gray(c, g, invert=False):
     """ Gray is a psuedo saturation calculation. """
+    # Assumes 16 bit input values
     if g == 100:
         return c
-    return int(((c * g) + (32768 * (100 - g))) / 100)
+    if invert:
+        return int(((c * 100) - (32768 * (100 - g))) / g)
+    else:
+        return int(((c * g) + (32768 * (100 - g))) / 100)
+
 
 colors = {}
 DEGTOR = 2 * pi / 360
@@ -568,7 +579,22 @@ class TurtleGraphics:
 
     def get_color_index(self, r, g, b, a=0):
         """ Find the closest palette entry to the rgb triplet """
-        # TODO: Take into account gray and shade levels
+        if self.shade != 50 or self.gray != 100:
+            r <<= 8
+            g <<= 8
+            b <<= 8
+            if self.shade != 50:
+                sh = (wrap100(self.shade) - 50) / 50.0
+                r = calc_shade(r, sh, True)
+                g = calc_shade(g, sh, True)
+                b = calc_shade(b, sh, True)
+            if self.gray != 100:
+                r = calc_gray(r, self.gray, True)
+                g = calc_gray(g, self.gray, True)
+                b = calc_gray(b, self.gray, True)
+            r >>= 8
+            g >>= 8
+            b >>= 8
         min_distance = 1000000
         closest_color = -1
         for i, c in enumerate(color_table):
