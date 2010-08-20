@@ -37,6 +37,14 @@ except ImportError, e:
     print "Import Error: %s. Project upload is disabled." % (e)
     _UPLOAD_AVAILABLE = False
 
+try: 
+    # Try to use XDG Base Directory standard for config files
+    import xdg.BaseDirectory
+    CONFIG_HOME = os.path.join(xdg.BaseDirectory.xdg_config_home, 'turtleart')
+except ImportError, e:
+    # Default to `.config` per the spec. 
+    CONFIG_HOME = os.path.expanduser(os.path.join('~', '.config', 'turtleart'))
+
 argv = sys.argv[:]  # Workaround for import behavior of gst in tagplay
 sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 
@@ -143,9 +151,9 @@ class TurtleMain():
             win = gtk.Window(gtk.WINDOW_TOPLEVEL)
 
             try:
-                data_file = open('.turtleartrc', 'r')
+                data_file = open(os.path.join(CONFIG_HOME, 'turtleartrc'), 'r')
             except IOError:
-                data_file = open('.turtleartrc', 'a+')
+                data_file = open(os.path.join(CONFIG_HOME, 'turtleartrc'), 'a+')
                 data_file.write(str(50) + '\n')
                 data_file.write(str(50) + '\n')
                 data_file.write(str(800) + '\n')
