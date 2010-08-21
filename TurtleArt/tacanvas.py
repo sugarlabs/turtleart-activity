@@ -175,17 +175,18 @@ class TurtleGraphics:
         self.setgray(100, share)
         self.setcolor(0, share)
         self.settextcolor(70)
-        # self.settextsize(48) # depreciated
         self.setshade(50, share)
         self.setpen(True, share)
         for turtle_key in iter(self.tw.turtles.dict):
             self.set_turtle(turtle_key)
             self.tw.active_turtle.set_color(0)
             self.tw.active_turtle.set_shade(50)
+            self.tw.active_turtle.set_gray(100)
             self.tw.active_turtle.set_pen_size(5)
             self.tw.active_turtle.set_pen_state(True)
             self.seth(0, share)
             self.setxy(0, 0, share)
+            self.tw.active_turtle.hide()
         self.set_turtle(DEFAULT_TURTLE)
         self.tw.svg_string = ''
         self.svg.reset_min_max()
@@ -628,6 +629,7 @@ class TurtleGraphics:
             self.setxy(0, 0, False)
             self.tw.active_turtle.set_pen_state(True)
         self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
+        self.tw.active_turtle.show()
         tx, ty = self.tw.active_turtle.get_xy()
         self.xcor = -self.width / 2 + tx + 28
         self.ycor = self.height / 2 - ty - 30

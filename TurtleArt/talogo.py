@@ -458,7 +458,7 @@ class LogoCode:
         if run_flag:
             print "running code: %s" % (code)
             self.setup_cmd(code)
-            if self.tw.hide is False:
+            if not self.tw.hide:
                 self.tw.display_coordinates()
         else:
             return code
@@ -627,7 +627,7 @@ class LogoCode:
             raise logoerror(str(self.iresult))
         self.iline = oldiline
         self.ireturn()
-        if self.tw.hide is False and self.tw.step_time > 0:
+        if not self.tw.hide and self.tw.step_time > 0:
             self.tw.display_coordinates()
         yield True
     
@@ -708,6 +708,7 @@ class LogoCode:
                         return False
                 except StopIteration:
                     self.tw.turtles.show_all()
+                    # self.tw.active_turtle.show()
                     return False
         except logoerror, e:
             self.tw.showlabel('syntaxerror', str(e)[1:-1])
@@ -774,6 +775,8 @@ class LogoCode:
         stop_media(self)
         self.tw.canvas.clearscreen()
         self.scale = _DEFAULT_SCALE
+        self.tw.set_polar(False)
+        self.tw.set_cartesian(False)
 
     def prim_start(self):
         """ Start block: recenter """

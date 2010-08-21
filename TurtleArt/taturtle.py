@@ -47,7 +47,7 @@ class Turtles:
         """ Find a turtle """
         if self.dict.has_key(k):
             return self.dict[k]
-        elif append is False:
+        elif not append:
             return None
         else:
             if colors == None:
@@ -132,7 +132,7 @@ class Turtle:
         """ Set the turtle heading (and shape: one per 10 degrees) """
         self.heading = heading        
         i = (int(self.heading+5)%360)/10
-        if self.hidden is False and self.spr is not None:
+        if not self.hidden and self.spr is not None:
             try:
                 self.spr.set_shape(self.shapes[i])
             except IndexError:
@@ -176,7 +176,7 @@ class Turtle:
     def move(self, pos):
         """ Move the turtle. """
         self.x, self.y = pos[0], pos[1]
-        if self.hidden is False and self.spr is not None:
+        if not self.hidden and self.spr is not None:
             self.spr.move(pos)
         return(self.x, self.y)
 
