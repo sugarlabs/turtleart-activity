@@ -227,7 +227,8 @@ def stop_logo(tw):
     """ Stop logo is called from the Stop button on the toolbar """
     tw.step_time = 0
     tw.lc.step = just_stop()
-    tw.turtles.show_all()
+    # tw.turtles.show_all()
+    tw.active_turtle.show()
 
 def just_stop():
     """ yield False to stop stack """
@@ -402,6 +403,8 @@ class LogoCode:
         self.iresults = None
         self.step = None
 
+        self.hidden_turtle = None
+
         self.keyboard = 0
         self.trace = 0
         self.gplay = None
@@ -522,7 +525,8 @@ class LogoCode:
     
     def setup_cmd(self, string):
         """ Execute the psuedocode. """
-        self.tw.active_turtle.hide() # Hide the turtle while we are running.
+        self.hidden_turtle = self.tw.active_turtle
+        self.hidden_turtle.hide() # Hide the turtle while we are running.
         self.procstop = False
         blklist = self.readline(string)
         self.step = self.start_eval(blklist)
@@ -707,8 +711,12 @@ class LogoCode:
                     else:
                         return False
                 except StopIteration:
-                    self.tw.turtles.show_all()
-                    # self.tw.active_turtle.show()
+                    # self.tw.turtles.show_all()
+                    if self.hidden_turtle is not None:
+                        self.hidden_turtle.show()
+                        self.hidden_turtle = None
+                    else:
+                        self.tw.active_turtle.show()
                     return False
         except logoerror, e:
             self.tw.showlabel('syntaxerror', str(e)[1:-1])
@@ -777,6 +785,7 @@ class LogoCode:
         self.scale = _DEFAULT_SCALE
         self.tw.set_polar(False)
         self.tw.set_cartesian(False)
+        self.hidden_turtle = None
 
     def prim_start(self):
         """ Start block: recenter """
