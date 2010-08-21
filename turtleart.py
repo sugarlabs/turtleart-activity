@@ -172,6 +172,7 @@ class TurtleMain():
                     # We can't write to the configuration file, use 
                     # a faux file that will persist for the length of 
                     # the session.
+                    print 'Configuration directory not writable.'
                     data_file = cStringIO.StringIO()
                 data_file.write(str(50) + '\n')
                 data_file.write(str(50) + '\n')
