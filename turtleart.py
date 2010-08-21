@@ -66,6 +66,12 @@ _HELP_MSG = 'turtleart.py: ' + _('usage is') + """
 
 _MAX_FILE_SIZE = 950000
 
+_INSTALL_PATH = '/usr/share/turtleart'
+_ALTERNATE_INSTALL_PATH = '/usr/local/share/turtleart'
+_ICON_SUBPATH = 'images/turtle.png'
+_UPLOAD_SERVER = 'http://turtleartsite.appspot.com'
+
+
 def mkdir_p(path):
     '''Create a directory in a fashion similar to `mkdir -p`'''
     try:
@@ -146,6 +152,7 @@ class TurtleMain():
         self.i = 0
         self.scale = 2.0
         self.tw = None
+
         # make sure Sugar paths are present
         tapath = os.path.join(os.environ['HOME'], '.sugar', 'default',
                               'org.laptop.TurtleArtActivity')
@@ -167,12 +174,13 @@ class TurtleMain():
                 # We'll assume it needs to be created
                 try: 
                     mkdir_p(CONFIG_HOME)
-                    data_file = open(os.path.join(CONFIG_HOME, 'turtleartrc'), 'a+')
-                except IOError:
+                    data_file = open(os.path.join(CONFIG_HOME, 'turtleartrc'),
+                                     'a+')
+                except IOError, e:
                     # We can't write to the configuration file, use 
                     # a faux file that will persist for the length of 
                     # the session.
-                    print 'Configuration directory not writable.'
+                    print 'Configuration directory not writable: %s' % (e)
                     data_file = cStringIO.StringIO()
                 data_file.write(str(50) + '\n')
                 data_file.write(str(50) + '\n')
@@ -188,11 +196,12 @@ class TurtleMain():
             win.move(self.x, self.y)
             win.maximize()
             win.set_title(_('Turtle Art'))
-            if os.path.exists('/usr/share/turtleart/images/turtle.png'):
-                win.set_icon_from_file('/usr/share/turtleart/images/turtle.png')
+            if os.path.exists(os.path.join(_INSTALL_PATH, _ICON_SUBPATH)):
+                win.set_icon_from_file(os.path.join(_INSTALL_PATH,
+                                                    _ICON_SUBPATH))
             else:
                 try:
-                    win.set_icon_from_file('images/turtle.png')
+                    win.set_icon_from_file(_ICON_SUBPATH)
                 except IOError:
                     pass
             win.connect('delete_event', self._quit_ta)
@@ -270,10 +279,10 @@ class TurtleMain():
 
             win.show_all()
 
-        if os.path.exists('/usr/share/turtleart'):
-            self.tw = TurtleArtWindow(canvas, '/usr/share/turtleart')
-        elif os.path.exists('/usr/local/share/turtleart'):
-            self.tw = TurtleArtWindow(canvas, '/usr/local/share/turtleart')
+        if os.path.exists(_INSTALL_PATH):
+            self.tw = TurtleArtWindow(canvas, _INSTALL_PATH)
+        elif os.path.exists(_ALTERNATE_INSTALL_PATH):
+            self.tw = TurtleArtWindow(canvas, _ALTERNATE_INSTALL_PATH)
         else:
             self.tw = TurtleArtWindow(canvas, os.path.abspath('.'))
 
@@ -593,8 +602,7 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
         """ Log into the upload server """
         username = self.username_entry.get_text()
         password = self.password_entry.get_text()
-        server=xmlrpclib.ServerProxy(
-            'http://turtleartsite.appspot.com/call/xmlrpc')
+        server=xmlrpclib.ServerProxy(_UPLOAD_SERVER + '/call/xmlrpc')
         logged_in = server.login_remote(username,password)
         if logged_in: 
             upload_key = logged_in
@@ -622,7 +630,7 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
         c = pycurl.Curl()
         c.setopt(c.POST, 1)
         c.setopt(c.FOLLOWLOCATION, 1)
-        c.setopt(c.URL, 'http://turtleartsite.appspot.com/upload')
+        c.setopt(c.URL, _UPLOAD_SERVER + '/upload')
         c.setopt(c.HTTPHEADER, ["Expect:"])
         c.setopt(c.HTTPPOST, [('file', (c.FORM_FILE, tafile)),
                               ('newimage', (c.FORM_FILE, imagefile)),
