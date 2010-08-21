@@ -48,7 +48,8 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
                         CURSOR, EXPANDABLE, COLLAPSIBLE, RETURN, \
                         DEAD_DICTS, DEAD_KEYS, TEMPLATES, PYTHON_SKIN, \
                         PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, OLD_NAMES, \
-                        BOOLEAN_STYLE, BLOCK_NAMES
+                        BOOLEAN_STYLE, BLOCK_NAMES, DEFAULT_TURTLE, \
+                        TURTLE_LAYER
 from talogo import LogoCode, stop_logo
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
@@ -177,10 +178,10 @@ class TurtleArtWindow():
             self.sprite_list = None # Sprites(self.window, None, self.gc)
         self.turtles = Turtles(self.sprite_list)
         if mycolors == None:
-            Turtle(self.turtles, 1)
+            Turtle(self.turtles, DEFAULT_TURTLE)
         else:
-            Turtle(self.turtles, 1, mycolors.split(','))
-        self.active_turtle = self.turtles.get_turtle(1)
+            Turtle(self.turtles, DEFAULT_TURTLE, mycolors.split(','))
+        self.active_turtle = self.turtles.get_turtle(DEFAULT_TURTLE)
         self.saving_svg = False
         self.svg_string = ''
         self.selected_turtle = None
@@ -717,6 +718,7 @@ class TurtleArtWindow():
         if self.selected_blk is not None:
             self._unselect_block()
         self.selected_turtle = None
+
         # Always hide the status layer on a click
         if self.status_spr is not None:
             self.status_spr.hide()
@@ -1143,6 +1145,7 @@ class TurtleArtWindow():
             if dtype == 'move':
                 dx = x - dragx - sx
                 dy = y - dragy - sy
+                self.selected_turtle.spr.set_layer(TOP_LAYER)
                 self.selected_turtle.move((sx + dx, sy + dy))
             else:
                 dx = x - sx - 30
@@ -1294,14 +1297,20 @@ class TurtleArtWindow():
         # We may have been moving the turtle
         if self.selected_turtle is not None:
             (tx, ty) = self.selected_turtle.get_xy()
-            (cx, cy) = self.canvas.canvas.get_xy()
-            # self.canvas.xcor = tx - self.canvas.canvas._width/2 + 30 - cx
-            # self.canvas.ycor = self.canvas.canvas._height/2 - ty - 30 + cy
-            self.canvas.xcor = tx - self.canvas.width/2 + 30 - cx
-            self.canvas.ycor = self.canvas.height/2 - ty - 30 + cy
-            self.canvas.move_turtle()
-            if self.running_sugar:
-                self.display_coordinates()
+            k = self.turtles.get_turtle_key(self.selected_turtle)
+
+            # Remove turtles by dragging them onto the trash palette.
+            if k != DEFAULT_TURTLE and self._in_the_trash(tx, ty):
+                self.selected_turtle.hide()
+                self.turtles.remove_from_dict(k)
+            else:
+                (cx, cy) = self.canvas.canvas.get_xy()
+                self.canvas.xcor = tx - self.canvas.width/2 + 30 - cx
+                self.canvas.ycor = self.canvas.height/2 - ty - 30 + cy
+                self.canvas.move_turtle()
+                if self.running_sugar:
+                    self.display_coordinates()
+                    self.selected_turtle.spr.set_layer(TURTLE_LAYER)
             self.selected_turtle = None
             return
 
