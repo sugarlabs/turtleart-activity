@@ -8,6 +8,9 @@
 * catch import error for upload (#2194)
 * rescaling of read pixel values (#2188)
 * turtle sees block takes into account gray and shade (#2188)
+* hide extra turtles on clean (#2191)
+* hide coordinate overlays on clean (#2191)
+* reset scale, gray on clean (#2191)
 
 94
 
