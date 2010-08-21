@@ -28,6 +28,8 @@ import getopt
 import sys
 import os
 import os.path
+import cStringIO
+import errno
 
 try:
     import pycurl
@@ -36,6 +38,14 @@ try:
 except ImportError, e:
     print "Import Error: %s. Project upload is disabled." % (e)
     _UPLOAD_AVAILABLE = False
+
+try: 
+    # Try to use XDG Base Directory standard for config files
+    import xdg.BaseDirectory
+    CONFIG_HOME = os.path.join(xdg.BaseDirectory.xdg_config_home, 'turtleart')
+except ImportError, e:
+    # Default to `.config` per the spec. 
+    CONFIG_HOME = os.path.expanduser(os.path.join('~', '.config', 'turtleart'))
 
 argv = sys.argv[:]  # Workaround for import behavior of gst in tagplay
 sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
@@ -56,6 +66,14 @@ _HELP_MSG = 'turtleart.py: ' + _('usage is') + """
 
 _MAX_FILE_SIZE = 950000
 
+def mkdir_p(path):
+    '''Create a directory in a fashion similar to `mkdir -p`'''
+    try:
+        os.makedirs(path)
+    except OSError as exc:
+        if exc.errno == errno.EEXIST:
+            pass
+        else: raise
 
 def _make_sub_menu(menu, name):
     """ add a new submenu to the toolbar """
@@ -143,9 +161,19 @@ class TurtleMain():
             win = gtk.Window(gtk.WINDOW_TOPLEVEL)
 
             try:
-                data_file = open('.turtleartrc', 'r')
+                data_file = open(os.path.join(CONFIG_HOME, 'turtleartrc'), 'r')
             except IOError:
-                data_file = open('.turtleartrc', 'a+')
+                # Opening the config file failed
+                # We'll assume it needs to be created
+                try: 
+                    mkdir_p(CONFIG_HOME)
+                    data_file = open(os.path.join(CONFIG_HOME, 'turtleartrc'), 'a+')
+                except IOError:
+                    # We can't write to the configuration file, use 
+                    # a faux file that will persist for the length of 
+                    # the session.
+                    print 'Configuration directory not writable.'
+                    data_file = cStringIO.StringIO()
                 data_file.write(str(50) + '\n')
                 data_file.write(str(50) + '\n')
                 data_file.write(str(800) + '\n')
