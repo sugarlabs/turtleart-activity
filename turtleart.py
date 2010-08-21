@@ -28,6 +28,7 @@ import getopt
 import sys
 import os
 import os.path
+import cStringIO
 import errno
 
 try:
@@ -164,8 +165,14 @@ class TurtleMain():
             except IOError:
                 # Opening the config file failed
                 # We'll assume it needs to be created
-                mkdir_p(CONFIG_HOME)
-                data_file = open(os.path.join(CONFIG_HOME, 'turtleartrc'), 'a+')
+                try: 
+                    mkdir_p(CONFIG_HOME)
+                    data_file = open(os.path.join(CONFIG_HOME, 'turtleartrc'), 'a+')
+                except IOError:
+                    # We can't write to the configuration file, use 
+                    # a faux file that will persist for the length of 
+                    # the session.
+                    data_file = cStringIO.StringIO()
                 data_file.write(str(50) + '\n')
                 data_file.write(str(50) + '\n')
                 data_file.write(str(800) + '\n')
