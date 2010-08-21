@@ -9,8 +9,11 @@
 * rescaling of read pixel values (#2188)
 * turtle sees block takes into account gray and shade (#2188)
 * hide extra turtles on clean (#2191)
+* delete extra turtles when dragged onto the palette (#2191)
 * hide coordinate overlays on clean (#2191)
 * reset scale, gray on clean (#2191)
+* work-around to c-c/c-v toolbar bug (Raul Gutierrez #2050)
+* writing config file in config directory (Luke Farone #2193)
 
 94
 
