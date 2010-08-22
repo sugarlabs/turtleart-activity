@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:41-0400\n"
+"POT-Creation-Date: 2010-08-22 09:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,9 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: activity/activity.info:2 /home/walter/Desktop/turtleblocks/turtleart.py:157
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:1275
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2127
+#: activity/activity.info:2 /home/walter/Desktop/turtleblocks/turtleart.py:198
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:1287
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2143
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taexporthtml.py:122
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taexporthtml.py:124
 msgid "Turtle Art"
@@ -41,7 +41,7 @@ msgstr ""
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:353
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:372
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:382
-#: /home/walter/Desktop/turtleblocks/turtleart.py:198
+#: /home/walter/Desktop/turtleblocks/turtleart.py:242
 msgid "Show palette"
 msgstr ""
 
@@ -50,8 +50,8 @@ msgstr ""
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:358
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:375
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:389
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:888
-#: /home/walter/Desktop/turtleblocks/turtleart.py:199
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:892
+#: /home/walter/Desktop/turtleblocks/turtleart.py:243
 msgid "Hide palette"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:368
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:387
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:891
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:895
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:747
 msgid "Hide blocks"
 msgstr ""
@@ -78,13 +78,13 @@ msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:731
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:785
-#: /home/walter/Desktop/turtleblocks/turtleart.py:195
+#: /home/walter/Desktop/turtleblocks/turtleart.py:239
 msgid "Edit"
 msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:735
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:782
-#: /home/walter/Desktop/turtleblocks/turtleart.py:190
+#: /home/walter/Desktop/turtleblocks/turtleart.py:234
 msgid "View"
 msgstr ""
 
@@ -102,17 +102,17 @@ msgid "Save snapshot"
 msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:803
-#: /home/walter/Desktop/turtleblocks/turtleart.py:173
+#: /home/walter/Desktop/turtleblocks/turtleart.py:215
 msgid "Save as HTML"
 msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:806
-#: /home/walter/Desktop/turtleblocks/turtleart.py:174
+#: /home/walter/Desktop/turtleblocks/turtleart.py:216
 msgid "Save as Logo"
 msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:809
-#: /home/walter/Desktop/turtleblocks/turtleart.py:172
+#: /home/walter/Desktop/turtleblocks/turtleart.py:214
 msgid "Save as image"
 msgstr ""
 
@@ -125,12 +125,12 @@ msgid "Import project from the Journal"
 msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:819
-#: /home/walter/Desktop/turtleblocks/turtleart.py:193
+#: /home/walter/Desktop/turtleblocks/turtleart.py:237
 msgid "Copy"
 msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:821
-#: /home/walter/Desktop/turtleblocks/turtleart.py:194
+#: /home/walter/Desktop/turtleblocks/turtleart.py:238
 msgid "Paste"
 msgstr ""
 
@@ -139,46 +139,46 @@ msgid "Fullscreen"
 msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:827
-#: /home/walter/Desktop/turtleblocks/turtleart.py:180
+#: /home/walter/Desktop/turtleblocks/turtleart.py:224
 msgid "Cartesian coordinates"
 msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:830
-#: /home/walter/Desktop/turtleblocks/turtleart.py:182
+#: /home/walter/Desktop/turtleblocks/turtleart.py:226
 msgid "Polar coordinates"
 msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:833
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2124
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2128
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:729
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2140
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2144
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:741
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:408
 msgid "xcor"
 msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:834
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2124
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2128
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:730
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2140
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2144
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:742
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:409
 msgid "ycor"
 msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:835
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2124
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2128
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:730
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2140
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2144
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:742
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:295
 msgid "heading"
 msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:842
-#: /home/walter/Desktop/turtleblocks/turtleart.py:185
+#: /home/walter/Desktop/turtleblocks/turtleart.py:229
 msgid "Grow blocks"
 msgstr ""
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:845
-#: /home/walter/Desktop/turtleblocks/turtleart.py:186
+#: /home/walter/Desktop/turtleblocks/turtleart.py:230
 msgid "Shrink blocks"
 msgstr ""
 
@@ -190,184 +190,189 @@ msgstr ""
 msgid "Move the cursor over the orange palette for help."
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:890
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:894
 msgid "<Ctrl>p"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:893
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:897
 msgid "<Ctrl>b"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:897
-#: /home/walter/Desktop/turtleblocks/turtleart.py:204
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:901
+#: /home/walter/Desktop/turtleblocks/turtleart.py:248
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:731
 msgid "Clean"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:899
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:903
 msgid "<Ctrl>e"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:900
-#: /home/walter/Desktop/turtleblocks/turtleart.py:205
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:904
+#: /home/walter/Desktop/turtleblocks/turtleart.py:249
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:798
 msgid "Run"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:901
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:905
 msgid "<Ctrl>r"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:902
-#: /home/walter/Desktop/turtleblocks/turtleart.py:206
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:906
+#: /home/walter/Desktop/turtleblocks/turtleart.py:250
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:799
 msgid "Step"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:903
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:907
 msgid "<Ctrl>w"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:904
-#: /home/walter/Desktop/turtleblocks/turtleart.py:207
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:908
+#: /home/walter/Desktop/turtleblocks/turtleart.py:251
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:727
 msgid "Debug"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:905
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:909
 msgid "<Ctrl>d"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:906
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:910
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:827
 msgid "Stop turtle"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:908
+#: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:912
 msgid "<Ctrl>s"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:46
+#: /home/walter/Desktop/turtleblocks/turtleart.py:61
 msgid "usage is"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:109
+#: /home/walter/Desktop/turtleblocks/turtleart.py:138
 msgid "No option action:"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:121
+#: /home/walter/Desktop/turtleblocks/turtleart.py:150
 msgid "File not found"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:168
+#: /home/walter/Desktop/turtleblocks/turtleart.py:183
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr ""
+
+#: /home/walter/Desktop/turtleblocks/turtleart.py:210
 msgid "New"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:169
+#: /home/walter/Desktop/turtleblocks/turtleart.py:211
 msgid "Open"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:170
+#: /home/walter/Desktop/turtleblocks/turtleart.py:212
 msgid "Save"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:171
+#: /home/walter/Desktop/turtleblocks/turtleart.py:213
 msgid "Save As"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:175
+#: /home/walter/Desktop/turtleblocks/turtleart.py:218
 msgid "Upload to Web"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:176
+#: /home/walter/Desktop/turtleblocks/turtleart.py:220
 msgid "Quit"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:177
+#: /home/walter/Desktop/turtleblocks/turtleart.py:221
 msgid "File"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:183
+#: /home/walter/Desktop/turtleblocks/turtleart.py:227
 msgid "Rescale coordinates"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:188
+#: /home/walter/Desktop/turtleblocks/turtleart.py:232
 msgid "Reset block size"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:200
+#: /home/walter/Desktop/turtleblocks/turtleart.py:244
 msgid "Show/hide blocks"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:201
+#: /home/walter/Desktop/turtleblocks/turtleart.py:245
 msgid "Tools"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:208
+#: /home/walter/Desktop/turtleblocks/turtleart.py:252
 msgid "Stop"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:209
+#: /home/walter/Desktop/turtleblocks/turtleart.py:253
 msgid "Turtle"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:282
+#: /home/walter/Desktop/turtleblocks/turtleart.py:326
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:283
+#: /home/walter/Desktop/turtleblocks/turtleart.py:327
 msgid "Save project?"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:491
+#: /home/walter/Desktop/turtleblocks/turtleart.py:535
 msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:500
+#: /home/walter/Desktop/turtleblocks/turtleart.py:544
 msgid "Username:"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:510
+#: /home/walter/Desktop/turtleblocks/turtleart.py:554
 msgid "Password:"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:521
+#: /home/walter/Desktop/turtleblocks/turtleart.py:565
 msgid "Title:"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:531
+#: /home/walter/Desktop/turtleblocks/turtleart.py:575
 msgid "Description:"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:541
+#: /home/walter/Desktop/turtleblocks/turtleart.py:585
 msgid "Submit to Web"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:545
+#: /home/walter/Desktop/turtleblocks/turtleart.py:589
 msgid "Cancel"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:568
+#: /home/walter/Desktop/turtleblocks/turtleart.py:611
 msgid "Login failed"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/turtleart.py:605
+#: /home/walter/Desktop/turtleblocks/turtleart.py:648
 msgid "Failed to upload!"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:508
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:509
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:512
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:513
 msgid "orientation"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:519
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:773
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:523
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:776
 msgid "next"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2240
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2256
 msgid "image"
 msgstr ""
 
@@ -376,51 +381,51 @@ msgstr ""
 msgid "click to open"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:687
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:694
 msgid "did not output to"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:731
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:743
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:356
 msgid "scale"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:734
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:746
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:321
 msgid "pen down"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:736
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:748
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:323
 msgid "pen up"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:738
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:750
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:278
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:285
 msgid "color"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:739
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:751
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:285
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:367
 msgid "shade"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:740
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:752
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:322
 msgid "pen size"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:756
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:768
 msgid "I don't know how to"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:923
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:939
 msgid "doesn't like"
 msgstr ""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:923
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:939
 msgid "as input"
 msgstr ""
 
