@@ -21,6 +21,7 @@
 
 from taconstants import TURTLE_LAYER
 from tasprite_factory import SVG, svg_str_to_pixbuf
+from tacanvas import wrap100, color_table
 from sprites import Sprite
 
 def generate_turtle_pixbufs(colors):
@@ -102,7 +103,7 @@ class Turtles:
 # A class for the individual turtles
 #
 class Turtle:
-    def __init__(self, turtles, key, colors=None):
+    def __init__(self, turtles, key, turtle_colors=None):
         """ The turtle is not a block, just a sprite with an orientation """
         self.x = 0
         self.y = 0
@@ -116,11 +117,25 @@ class Turtle:
         self.pen_size = 5
         self.pen_state = True
 
-        if colors is None:
-            self.shapes = turtles.get_pixbufs()
-        else:
-            self.colors = colors[:]
+        # If the turtle key is an int, we'll use a palette color as the
+        # turtle color
+        try:
+            int_key = int(key)
+            use_color_table = True
+        except ValueError:
+            use_color_table = False
+
+        if turtle_colors is not None:
+            self.colors = turtle_colors[:]
             self.shapes = generate_turtle_pixbufs(self.colors)
+        elif use_color_table:
+            fill = wrap100(int_key)
+            stroke = wrap100(fill + 10)
+            self.colors = ['#%06x' % (color_table[fill]),
+                           '#%06x' % (color_table[stroke])]
+            self.shapes = generate_turtle_pixbufs(self.colors)
+        else:
+            self.shapes = turtles.get_pixbufs()
 
         if turtles.sprite_list is not None:
             self.spr = Sprite(turtles.sprite_list, 0, 0, self.shapes[0])
