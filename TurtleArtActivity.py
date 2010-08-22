@@ -879,6 +879,10 @@ class TurtleArtActivity(activity.Activity):
         toolbox.show()
 
         if self.new_sugar_system:
+            # Hack as a workaround for #2050
+            edit_toolbar_button.set_expanded(True) 
+            edit_toolbar_button.set_expanded(False)
+
             palette_toolbar_button.set_expanded(True)
         else:
             toolbox.set_current_toolbar(1)
