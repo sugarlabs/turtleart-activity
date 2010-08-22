@@ -971,7 +971,8 @@ class TurtleArtActivity(activity.Activity):
         """ Initialize the turtle art canvas. """
         bundle_path = activity.get_bundle_path()
         self.tw = TurtleArtWindow(canvas, bundle_path, self,
-                                  profile.get_color().to_string())
+                                  profile.get_color().to_string(),
+                                  profile.get_nick_name())
         # self.tw.activity = self
         self.tw.window.grab_focus()
         path = os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'], 'data')

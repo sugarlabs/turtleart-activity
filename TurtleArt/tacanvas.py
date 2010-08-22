@@ -27,7 +27,7 @@ import cairo
 from sprites import Sprite
 from tasprite_factory import SVG
 from tautils import image_to_base64, data_to_string, round_int
-from taconstants import CANVAS_LAYER, DEFAULT_TURTLE, BLACK, WHITE
+from taconstants import CANVAS_LAYER, BLACK, WHITE
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -187,7 +187,7 @@ class TurtleGraphics:
             self.seth(0, share)
             self.setxy(0, 0, share)
             self.tw.active_turtle.hide()
-        self.set_turtle(DEFAULT_TURTLE)
+        self.set_turtle(self.tw.default_turtle_name)
         self.tw.svg_string = ''
         self.svg.reset_min_max()
         self.fill = False

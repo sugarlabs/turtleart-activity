@@ -74,7 +74,7 @@ class TurtleArtWindow():
     """ TurtleArt Window class abstraction  """
     timeout_tag = [0]
 
-    def __init__(self, win, path, parent=None, mycolors=None):
+    def __init__(self, win, path, parent=None, mycolors=None, mynick=None):
         self._loaded_project = ""
         self.win = None
         self.parent = parent
@@ -175,13 +175,18 @@ class TurtleArtWindow():
         if self.interactive_mode:
             self.sprite_list = Sprites(self.window, self.area, self.gc)
         else:
-            self.sprite_list = None # Sprites(self.window, None, self.gc)
+            self.sprite_list = None
         self.turtles = Turtles(self.sprite_list)
-        if mycolors == None:
-            Turtle(self.turtles, DEFAULT_TURTLE)
+        if mynick is None:
+            self.default_turtle_name = DEFAULT_TURTLE
         else:
-            Turtle(self.turtles, DEFAULT_TURTLE, mycolors.split(','))
-        self.active_turtle = self.turtles.get_turtle(DEFAULT_TURTLE)
+            self.default_turtle_name = mynick
+        print self.default_turtle_name
+        if mycolors is None:
+            Turtle(self.turtles, self.default_turtle_name)
+        else:
+            Turtle(self.turtles, self.default_turtle_name, mycolors.split(','))
+        self.active_turtle = self.turtles.get_turtle(self.default_turtle_name)
         self.saving_svg = False
         self.svg_string = ''
         self.selected_turtle = None
@@ -1300,7 +1305,7 @@ class TurtleArtWindow():
             k = self.turtles.get_turtle_key(self.selected_turtle)
 
             # Remove turtles by dragging them onto the trash palette.
-            if k != DEFAULT_TURTLE and self._in_the_trash(tx, ty):
+            if k != self.default_turtle_name and self._in_the_trash(tx, ty):
                 self.selected_turtle.hide()
                 self.turtles.remove_from_dict(k)
             else:
