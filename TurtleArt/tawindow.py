@@ -1198,11 +1198,11 @@ class TurtleArtWindow():
             for blk in self.drag_group:
                 if blk.spr.rect.x < minx:
                     minx = blk.spr.rect.x
-                elif blk.spr.rect.x + blk.spr.rect.width > maxx:
+                if blk.spr.rect.x + blk.spr.rect.width > maxx:
                     maxx = blk.spr.rect.x + blk.spr.rect.width
                 if blk.spr.rect.y < miny:
                     miny = blk.spr.rect.y
-                elif blk.spr.rect.y + blk.spr.rect.height > maxy:
+                if blk.spr.rect.y + blk.spr.rect.height > maxy:
                     maxy = blk.spr.rect.y + blk.spr.rect.height
                 blk.spr.rect.x += dx
                 blk.spr.rect.y += dy
