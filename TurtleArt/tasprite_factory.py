@@ -1022,71 +1022,14 @@ def generator(datapath):
 
     svg0 = SVG()
     f = open_file(datapath, "basic.svg")
+    svg0.set_innie([True,True])
     svg0.set_scale(2)
     svg0.set_tab(True)
     svg0.set_slot(True)
     svg0.set_no_arm(True)
-    svg_str = svg0.sandwich_top()
+    svg_str = svg0.basic_block()
     f.write(svg_str)
     close_file(f)
-
-    """
-    svgt = SVG()
-    svgt.set_orientation(180)
-    f = open_file(datapath, "turtle180.svg")
-    svg_str = svgt.turtle(["#FF0000","#00FF00"])
-    f.write(svg_str)
-    close_file(f)
-
-
-    svg2 = SVG()
-    f = open_file(datapath, "box-test.svg")
-    svg2.set_scale(1)
-    svg2.expand(40,0)
-    svg2.set_colors(["#FFA000","#A08000"])
-    svg2.set_gradiant(True)
-    svg_str = svg2.basic_box()
-    f.write(svg_str)
-    close_file(f)
-
-    svg2 = SVG()
-    f = open_file(datapath, "box-test2.svg")
-    svg2.set_scale(4)
-    svg2.expand(40,0)
-    svg2.set_colors(["#FFA000","#A08000"])
-    svg2.set_gradiant(True)
-    svg_str = svg2.basic_box()
-    f.write(svg_str)
-    close_file(f)
-
-    svg3 = SVG()
-    f = open_file(datapath, "compare-text.svg")
-    svg3.set_scale(1)
-    svg3.set_colors(["#0000FF","#0000A0"])
-    svg3.set_gradiant(True)
-    # svg3.set_porch(True)
-    svg_str = svg3.boolean_compare()
-    f.write(svg_str)
-    close_file(f)
-
-    svg4 = SVG()
-    f = open_file(datapath, "and-or-test.svg")
-    svg4.set_scale(1)
-    svg4.set_colors(["#00FFFF","#00A0A0"])
-    svg4.set_gradiant(True)
-    svg_str = svg4.boolean_and_or()
-    f.write(svg_str)
-    close_file(f)
-
-    svg5 = SVG()
-    f = open_file(datapath, "nor-test.svg")
-    svg5.set_scale(1)
-    svg5.set_colors(["#FF00FF","#A000A0"])
-    svg5.set_gradiant(True)
-    svg_str = svg5.boolean_not()
-    f.write(svg_str)
-    close_file(f)
-    """
 
 def main():
     return 0
@@ -1106,6 +1049,12 @@ def svg_str_to_pixbuf(svg_string):
     pixbuf = pl.get_pixbuf()
     return pixbuf
 
+#
+# Load pixmap from SVG string
+#
+def svg_str_to_pixmap(svg_string):
+    (pixmap, mask) = svg_str_to_pixbuf(svg_string).render_pixmap_and_mask()
+    return pixmap
 
 #
 # Read SVG string from a file

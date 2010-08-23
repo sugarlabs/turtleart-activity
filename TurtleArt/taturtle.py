@@ -152,7 +152,6 @@ class Turtle:
                 self.spr.set_shape(self.shapes[i])
             except IndexError:
                 self.spr.set_shape(self.shapes[0])
-                print "Turtle shape IndexError %f -> %d" % (heading, i)
 
     def set_color(self, color):
         """ Set the pen color for this turtle. """

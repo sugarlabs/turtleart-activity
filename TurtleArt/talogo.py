@@ -227,7 +227,6 @@ def stop_logo(tw):
     """ Stop logo is called from the Stop button on the toolbar """
     tw.step_time = 0
     tw.lc.step = just_stop()
-    # tw.turtles.show_all()
     tw.active_turtle.show()
 
 def just_stop():
