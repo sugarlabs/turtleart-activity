@@ -132,6 +132,7 @@ class TurtleArtWindow():
             self.lead = 1.0
             self.scale = 1.0
             self.color_mode = '888' # TODO: Read visual mode from gtk image
+
         self.block_scale = BLOCK_SCALE
         self.trash_scale = 0.5
         self.myblock = None
@@ -171,38 +172,47 @@ class TurtleArtWindow():
         self.drag_turtle = 'move', 0, 0
         self.drag_pos = 0, 0
         self.paste_offset = 20
+
         self.block_list = Blocks(self.scale)
         if self.interactive_mode:
             self.sprite_list = Sprites(self.window, self.area, self.gc)
         else:
             self.sprite_list = None
+
         self.turtles = Turtles(self.sprite_list)
         if mynick is None:
             self.default_turtle_name = DEFAULT_TURTLE
         else:
             self.default_turtle_name = mynick
-        print self.default_turtle_name
         if mycolors is None:
             Turtle(self.turtles, self.default_turtle_name)
         else:
             Turtle(self.turtles, self.default_turtle_name, mycolors.split(','))
         self.active_turtle = self.turtles.get_turtle(self.default_turtle_name)
+
         self.saving_svg = False
         self.svg_string = ''
         self.selected_turtle = None
         self.canvas = TurtleGraphics(self, self.width, self.height)
-        self.titlex = -(self.canvas.width*TITLEXY[0])/(self.coord_scale*2)
-        self.leftx = -(self.canvas.width*TITLEXY[0])/(self.coord_scale*2)
+
+        self.titlex = -(self.canvas.width * TITLEXY[0]) / \
+            (self.coord_scale * 2)
+        self.leftx = -(self.canvas.width * TITLEXY[0]) / \
+            (self.coord_scale * 2)
         self.rightx = 0
-        self.titley = (self.canvas.height*TITLEXY[1])/(self.coord_scale*2)
-        self.topy = (self.canvas.height*(TITLEXY[1]-0.125))/(self.coord_scale*2)
+        self.titley = (self.canvas.height * TITLEXY[1]) / \
+            (self.coord_scale * 2)
+        self.topy = (self.canvas.height*(TITLEXY[1] - 0.125)) / \
+            (self.coord_scale * 2)
         self.bottomy = 0
+
         self.lc = LogoCode(self)
         self.saved_pictures = []
 
         if self.interactive_mode:
             self._setup_misc()
             self._show_toolbar_palette(0, False)
+
         self.block_operation = ''
 
     def _setup_events(self):
@@ -222,25 +232,26 @@ class TurtleArtWindow():
         # media blocks get positioned into other blocks
         for _name in MEDIA_SHAPES:
             if _name[0:7] == 'journal' and not self.running_sugar:
-                file_name = 'file'+_name[7:]
+                file_name = 'file' + _name[7:]
             else:
                 file_name = _name
             self.media_shapes[_name] = svg_str_to_pixbuf(svg_from_file(
-                                   "%s/images/%s.svg" % (self.path, file_name)))
+                    "%s/images/%s.svg" % (self.path, file_name)))
 
         for i, _name in enumerate(STATUS_SHAPES):
             self.status_shapes[_name] = svg_str_to_pixbuf(svg_from_file(
-                                       "%s/images/%s.svg" % (self.path, _name)))
+                    "%s/images/%s.svg" % (self.path, _name)))
         self.status_spr = Sprite(self.sprite_list, 0, self.height-200,
-                                         self.status_shapes['status'])
+                                 self.status_shapes['status'])
         self.status_spr.hide()
         self.status_spr.type = 'status'
 
         for _name in OVERLAY_SHAPES:
             self.overlay_shapes[_name] = Sprite(self.sprite_list,
-                                int(self.width/2-600), int(self.height/2-450),
-                                svg_str_to_pixbuf(svg_from_file(
-                                      "%s/images/%s.svg" % (self.path, _name))))
+                                                int(self.width/2-600),
+                                                int(self.height/2-450),
+                                                svg_str_to_pixbuf(
+                    svg_from_file("%s/images/%s.svg" % (self.path, _name))))
             self.overlay_shapes[_name].hide()
             self.overlay_shapes[_name].type = 'overlay'
 
@@ -248,9 +259,9 @@ class TurtleArtWindow():
             offset = self.width-55*len(TOOLBAR_SHAPES)
             for i, _name in enumerate(TOOLBAR_SHAPES):
                 self.toolbar_shapes[_name] = Sprite(self.sprite_list,
-                                                    i*55+offset, 0,
+                                                    i * 55 + offset, 0,
                                                     svg_str_to_pixbuf(
-                         svg_from_file("%s/icons/%s.svg" % (self.path, _name))))
+                        svg_from_file("%s/icons/%s.svg" % (self.path, _name))))
                 self.toolbar_shapes[_name].set_layer(TAB_LAYER)
                 self.toolbar_shapes[_name].name = _name
                 self.toolbar_shapes[_name].type = 'toolbar'
@@ -270,7 +281,6 @@ class TurtleArtWindow():
     def _expose_cb(self, win, event):
         """ Repaint """
         self.sprite_list.refresh(event)
-        # self.canvas.cr_expose(event)
         return True
 
     def eraser_button(self):
@@ -284,18 +294,20 @@ class TurtleArtWindow():
         """ Run turtle! """
         if self.running_sugar:
             self.activity.recenter()
+
         # Look for a 'start' block
         for blk in self.just_blocks():
             if find_start_stack(blk):
                 self.step_time = time
-                print "running stack starting from %s" % (blk.name)
+                _logger.debug("running stack starting from %s" % (blk.name))
                 self._run_stack(blk)
                 return
+
         # If there is no 'start' block, run stacks that aren't 'def action'
         for blk in self.just_blocks():
             if find_block_to_run(blk):
                 self.step_time = time
-                print "running stack starting from %s" % (blk.name)
+                _logger.debug("running stack starting from %s" % (blk.name))
                 self._run_stack(blk)
         return
 
@@ -323,7 +335,7 @@ class TurtleArtWindow():
         if flag:
             if self.coord_scale == 1:
                 self.overlay_shapes['Cartesian_labeled'].set_layer(
-                                                              OVERLAY_LAYER)
+                    OVERLAY_LAYER)
             else:
                 self.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
             self.cartesian = True
@@ -1066,7 +1078,7 @@ class TurtleArtWindow():
                             blocks[c].connections[3] = None
                         else:
                             # Connection was to a block we haven't seen yet.
-                            print "WARNING: dock check couldn't see the future"
+                            _logger.debug("Warning: dock to the future")
                 else:
                     if block_data[i][4][0] is not None:
                         c = block_data[i][4][0]
@@ -1080,10 +1092,10 @@ class TurtleArtWindow():
                             blocks[c].connections[1] = None
                         else:
                             # Connection was to a block we haven't seen yet.
-                            print "WARNING: dock check couldn't see the future"
+                            _logger.debug("Warning: dock to the future")
             else:
-                print "WARNING: unknown connection state %s" % \
-                      (str(blocks[i].connections))
+                _logger.debug("Warning: unknown connection state %s" % \
+                                  (str(blocks[i].connections)))
             blocks[i].connections = cons[:]
 
         # Block sizes and shapes may have changed.
@@ -1315,8 +1327,10 @@ class TurtleArtWindow():
                 self.canvas.move_turtle()
                 if self.running_sugar:
                     self.display_coordinates()
-                    self.selected_turtle.spr.set_layer(TURTLE_LAYER)
+                self.selected_turtle.spr.set_layer(TURTLE_LAYER)
             self.selected_turtle = None
+            self.active_turtle = self.turtles.get_turtle(
+                self.default_turtle_name)
             return
 
         # If we don't have a group of blocks, then there is nothing to do.
@@ -1700,7 +1714,7 @@ class TurtleArtWindow():
                     oldleft, oldright = \
                         self.selected_blk.spr.labels[0].split(CURSOR)
                 except ValueError:
-                    print "[%s]" % self.selected_blk.spr.labels[0]
+                    _logger.debug("[%s]" % self.selected_blk.spr.labels[0])
                     oldleft = self.selected_blk.spr.labels[0]
                     oldright = ''
         else:
@@ -1894,8 +1908,8 @@ class TurtleArtWindow():
             saved_project_data = f.read()
             f.close()        
         except:
-            print "problem loading saved project data from %s" %\
-                  (self._loaded_project)
+            _logger.debug("problem loading saved project data from %s" %\
+                              (self._loaded_project))
             saved_project_data = ""
         current_project_data = data_to_string(self.assemble_data_to_save())
 
@@ -1981,6 +1995,7 @@ class TurtleArtWindow():
                     b[2] + self.canvas.cx + offset,
                     b[3] + self.canvas.cy + offset,
                     'block', values, self.block_scale)
+
         # Some blocks get transformed.
         if btype == 'string' and blk.spr is not None:
             blk.spr.set_label(blk.values[0].replace('\n', RETURN))
@@ -2033,8 +2048,8 @@ class TurtleArtWindow():
                         x, y = self._calc_image_offset('', blk.spr)
                         blk.set_image(pixbuf, x, y)
                     except:
-                        print "Warning: Couldn't open dsobject (%s)" % \
-                              (blk.values[0])
+                        _logger.debug("Warning: Couldn't open dsobject (%s)" % \
+                              (blk.values[0]))
                         self._block_skin('journaloff', blk)
             else:
                 if not movie_media_type(blk.values[0][-4:]):
@@ -2151,7 +2166,7 @@ class TurtleArtWindow():
     def showlabel(self, shp, label = ''):
         """ Display a message on a status block """
         if not self.interactive_mode:
-            print label
+            _logger.debug(label)
             return
         if shp == 'syntaxerror' and str(label) != '':
             if self.status_shapes.has_key(str(label)[1:]):
@@ -2197,7 +2212,6 @@ class TurtleArtWindow():
         """ Grab the current canvas and save it. """
 
         if not self.interactive_mode:
-            # print name
             save_picture(self.canvas, name[:-3] + ".png")
             return
             """
