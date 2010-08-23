@@ -1317,17 +1317,15 @@ class TurtleArtWindow():
             k = self.turtles.get_turtle_key(self.selected_turtle)
 
             # Remove turtles by dragging them onto the trash palette.
-            if k != self.default_turtle_name and self._in_the_trash(tx, ty):
-                self.selected_turtle.hide()
-                self.turtles.remove_from_dict(k)
+            if self._in_the_trash(tx, ty):
+                if k == self.default_turtle_name:
+                    self._move_turtle(0, 0)
+                else:
+                    self.selected_turtle.hide()
+                    self.turtles.remove_from_dict(k)
             else:
-                (cx, cy) = self.canvas.canvas.get_xy()
-                self.canvas.xcor = tx - self.canvas.width/2 + 30 - cx
-                self.canvas.ycor = self.canvas.height/2 - ty - 30 + cy
-                self.canvas.move_turtle()
-                if self.running_sugar:
-                    self.display_coordinates()
-                self.selected_turtle.spr.set_layer(TURTLE_LAYER)
+                self._move_turtle(tx - self.canvas.width / 2 + 30,
+                                  self.canvas.height / 2 - ty - 30)
             self.selected_turtle = None
             self.active_turtle = self.turtles.get_turtle(
                 self.default_turtle_name)
@@ -1365,6 +1363,16 @@ class TurtleArtWindow():
         # Find the block we clicked on and process it.
         if self.block_operation == 'click':
             self._click_block(x, y)
+
+    def _move_turtle(self, x, y):
+        """ Move the selected turtle to (x, y). """       
+        (cx, cy) = self.canvas.canvas.get_xy()
+        self.canvas.xcor = x - cx
+        self.canvas.ycor = y + cy
+        self.canvas.move_turtle()
+        if self.running_sugar:
+            self.display_coordinates()
+            self.selected_turtle.spr.set_layer(TURTLE_LAYER)
 
     def _click_block(self, x, y):
         """ Click block """
