@@ -116,6 +116,10 @@ class TurtleMain():
     def __init__(self):
         """ Parse command-line options and initialize class """
 
+        # If we are invoked to start a project from Gnome, we should make 
+        # sure our current directory is TA's source dir. 
+        os.chdir(os.path.dirname(__file__))
+
         self.ta_file = None
         self.output_png = False
         self.uploading = False
