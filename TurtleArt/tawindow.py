@@ -473,7 +473,7 @@ class TurtleArtWindow():
             if collapsed(blk):
                 collapse_stack(find_sandwich_top(blk))
         for blk in blocks:
-            if blk.name == 'sandwichtop':
+            if blk.name in ['sandwichtop', 'sandwichtop_no_label']:
                 grow_stack_arm(blk)
 
         # Resize the skins on some blocks: media content and Python
@@ -1318,8 +1318,11 @@ class TurtleArtWindow():
 
             # Remove turtles by dragging them onto the trash palette.
             if self._in_the_trash(tx, ty):
+                # If it is the default turtle, just recenter it.
                 if k == self.default_turtle_name:
                     self._move_turtle(0, 0)
+                    self.canvas.heading = 0
+                    self.canvas.turn_turtle()
                 else:
                     self.selected_turtle.hide()
                     self.turtles.remove_from_dict(k)
@@ -1486,7 +1489,7 @@ class TurtleArtWindow():
                     # no longer have access to the group with the sandwich top
                     # so check them all.
                     for b in self.just_blocks():
-                        if b.name == 'sandwichtop':
+                        if b.name  in ['sandwichtop', 'sandwichtop_no_label']:
                             if find_sandwich_bottom(b) is None:
                                 reset_stack_arm(b)
                 gblk.refresh()

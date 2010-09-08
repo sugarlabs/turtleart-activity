@@ -411,7 +411,7 @@ class SVG:
         svg += self.footer()
         return self.header() + svg
 
-    def sandwich_top(self):
+    def sandwich_top(self, innie_flag=True):
         self.reset_min_max()
         x = self._stroke_width/2.0
         y = self._stroke_width/2.0+self._radius
@@ -426,7 +426,8 @@ class SVG:
         svg += self._rline_to(self._expand_x, 0)
         xx = self._x
         svg += self._corner(1, 1)
-        svg += self._do_innie()
+        if innie_flag:
+            svg += self._do_innie()
         svg += self._corner(-1, 1)
         svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)

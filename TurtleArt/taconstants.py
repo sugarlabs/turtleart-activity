@@ -134,7 +134,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'storein', 'start'],
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc1arg',  'userdefined', 'addturtle', 'comment', 'print',
-             'cartesian', 'width', 'height', 'polar', 'sandwichtop',
+             'cartesian', 'width', 'height', 'polar', 'sandwichtop_no_label',
              'sandwichbottom', 'readpixel', 'see'],
             ['journal', 'audio', 'description', 'hideblocks', 'showblocks',
              'fullscreen', 'savepix', 'savesvg', 'picturelist',
@@ -217,7 +217,9 @@ FLOW_STYLE_BOOLEAN = ['if', 'while', 'until']
 FLOW_STYLE_WHILE = ['while2']
 FLOW_STYLE_ELSE = ['ifelse']
 COLLAPSIBLE_TOP = ['sandwichtop']
-COLLAPSIBLE_TOP_NO_ARM = ['sandwichtop2']
+COLLAPSIBLE_TOP_NO_ARM = ['sandwichtop_no_arm']
+COLLAPSIBLE_TOP_NO_LABEL = ['sandwichtop_no_label']
+COLLAPSIBLE_TOP_NO_ARM_NO_LABEL = ['sandwichtop_no_arm_no_label']
 COLLAPSIBLE_BOTTOM = ['sandwichbottom']
 
 # Depreciated block styles
@@ -352,7 +354,9 @@ BLOCK_NAMES = {
     'sandwichbottom':[' '],
     'sandwichcollapsed':[_('click to open')],
     'sandwichtop':[_('top of stack')],
-    'sandwichtop2':[_('top of stack')],
+    'sandwichtop_no_label':[' '],
+    'sandwichtop_no_arm':[_('top of stack')],
+    'sandwichtop_no_arm_no_label':[' '],
     'scale':[_('scale')],
     'see':[_('turtle sees')],
     'setcolor':[_('set color')],
@@ -489,7 +493,9 @@ PRIMITIVES = {
     'rightpos':'rpos',
     'rightx':'rightx',
     'sandwichtop':'comment',
-    'sandwichtop2':'comment',
+    'sandwichtop_no_arm':'comment',
+    'sandwichtop_no_label':'nop',
+    'sandwichtop_no_arm_no_label':'nop',
     'sandwichbottom':'nop',
     'sandwichcollapsed':'nop',
     'savepix':'savepix',
@@ -578,7 +584,7 @@ DEFAULTS = {
     'repeat':[4, None, 'vspace'],
     'right':[90],
     'sandwichtop':[_('label')],
-    'sandwichtop2':[_('label')],
+    'sandwichtop_no_arm':[_('label')],
     'savepix':[_('picture name')],
     'savesvg':[_('picture name')],
     'setcolor':[0],
@@ -617,7 +623,7 @@ STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
                          'template2x2', 'template1x1a', 'templatelist', 'nop',
                          'print', 'stack', 'hat', 'addturtle', 'myfunc',
                          'myfunc1arg', 'myfunc2arg', 'myfunc3arg', 'comment',
-                         'sandwichtop', 'sandwichtop2', 'userdefined',
+                         'sandwichtop', 'sandwichtop_no_arm', 'userdefined',
                          'userdefined2args', 'userdefined3args', 'storein']
 
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
@@ -656,7 +662,8 @@ OLD_NAMES = {'product':'product2', 'storeinbox':'storein', 'minus':'minus2',
              'descriptionoff':'description','template3':'templatelist',
              'template1':'template1x1', 'template2':'template2x1',
              'template6':'template1x2', 'template7':'template2x2', 
-             'template4':'template1x1a', 'hres':'width', 'vres':'height' }
+             'template4':'template1x1a', 'hres':'width', 'vres':'height',
+             'sandwichtop2':'sandwichtop_no_arm'}
 
 #
 # Define the relative size and postion of media objects
@@ -800,7 +807,9 @@ HELP_STRINGS = {
     'sandwichbottom':_("bottom block in a collapsibe stack: click to collapse"),
     'sandwichcollapsed':_("bottom block in a collapsed stack: click to open"),
     'sandwichtop':_("top of a collapsible stack"),
-    'sandwichtop2':_("top of a collapsed stack"),
+    'sandwichtop_no_label':_("top of a collapsed stack"),
+    'sandwichtop_no_arm':_("top of a collapsible stack"),
+    'sandwichtop_no_arm_no_label':_("top of a collapsed stack"),
     'savepix':_("saves a picture to the Sugar Journal"),
     'savesvg':_("saves turtle graphics as an SVG file in the Sugar Journal"),
     'scale':_("holds current scale value"),

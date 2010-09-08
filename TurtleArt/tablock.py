@@ -105,7 +105,7 @@ class Block:
         # If there is already a block with the same name, reuse it
         copy_block = None
         if self.name not in EXPANDABLE and \
-           self.name not in ['string', 'sandwichtop']:
+           self.name not in ['string', 'sandwichtop', 'sandwichtop_no_label']:
             for b in block_list.list:
                 if b.scale == self.scale and b.name == self.name:
                     copy_block = b
@@ -390,7 +390,11 @@ class Block:
         elif self.name in COLLAPSIBLE_TOP:
             self._make_collapsible_style_top(svg)
         elif self.name in COLLAPSIBLE_TOP_NO_ARM:
-            self._make_collapsible_style_top(svg, True)
+            self._make_collapsible_style_top(svg, no_arm=True)
+        elif self.name in COLLAPSIBLE_TOP_NO_LABEL:
+            self._make_collapsible_style_top(svg, label=False)
+        elif self.name in COLLAPSIBLE_TOP_NO_ARM_NO_LABEL:
+            self._make_collapsible_style_top(svg, no_arm=True, label=False)
         elif self.name in COLLAPSIBLE_BOTTOM:
             self._make_collapsible_style_bottom(svg)
         elif self.name in PORTFOLIO_STYLE_2x2:
@@ -729,16 +733,22 @@ class Block:
                       ['flow', False, self.svg.docks[4][0],
                                       self.svg.docks[4][1], ']']]
 
-    def _make_collapsible_style_top(self, svg, no_arm=False):
+    def _make_collapsible_style_top(self, svg, no_arm=False, label=True):
         self.svg.expand(self.dx+self.ex, self.ey)
         self.svg.set_no_arm(no_arm)
-        self._make_block_graphics(svg, self.svg.sandwich_top)
-        self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
-                      ['number', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]],
-                      ['flow', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1]]]
+        self._make_block_graphics(svg, self.svg.sandwich_top, label)
+        if label:
+            self.docks = [['flow', True, self.svg.docks[0][0],
+                           self.svg.docks[0][1]],
+                          ['number', False, self.svg.docks[1][0],
+                           self.svg.docks[1][1]],
+                          ['flow', False, self.svg.docks[2][0],
+                           self.svg.docks[2][1]]]
+        else:
+            self.docks = [['flow', True, self.svg.docks[0][0],
+                           self.svg.docks[0][1]],
+                          ['flow', False, self.svg.docks[1][0],
+                           self.svg.docks[1][1]]]
 
     def _make_collapsible_style_bottom(self, svg):
         self.svg.expand(self.dx+self.ex, self.ey)
@@ -819,11 +829,16 @@ class Block:
                       ['flow', False, self.svg.docks[1][0],
                                       self.svg.docks[1][1]]]
 
-    def _make_block_graphics(self, svg, function):
-        self.shapes[0] = svg_str_to_pixbuf(function())
+    def _make_block_graphics(self, svg, function, arg=None):
+        if arg is None:
+            self.shapes[0] = svg_str_to_pixbuf(function())
+        else:
+            self.shapes[0] = svg_str_to_pixbuf(function(arg))
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
         self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
         self.svg.set_stroke_color(SELECTED_COLOR)
-        self.shapes[1] = svg_str_to_pixbuf(function())
-
+        if arg is None:
+            self.shapes[1] = svg_str_to_pixbuf(function())
+        else:
+            self.shapes[1] = svg_str_to_pixbuf(function(arg))

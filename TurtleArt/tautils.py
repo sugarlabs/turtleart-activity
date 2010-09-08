@@ -292,13 +292,13 @@ def calc_image_size(spr):
 
 def reset_stack_arm(top):
     """ When we undock, retract the 'arm' that extends from 'sandwichtop'. """
-    if top is not None and top.name == 'sandwichtop':
+    if top is not None and top.name in ['sandwichtop', 'sandwichtop_no_label']:
         if top.ey > 0:
             top.reset_y()
 
 def grow_stack_arm(top):
     """ When we dock, grow an 'arm' from 'sandwichtop'. """
-    if top is not None and top.name == 'sandwichtop':
+    if top is not None and top.name in ['sandwichtop', 'sandwichtop_no_label']:
         _bot = find_sandwich_bottom(top)
         if _bot is None:
             return
@@ -322,7 +322,8 @@ def find_sandwich_top(blk):
         if _blk.name in ['repeat', 'if', 'ifelse', 'forever', 'while']:
             if blk != _blk.connections[len(_blk.connections) - 1]:
                 return None
-        if _blk.name == 'sandwichtop' or _blk.name == 'sandwichtop2':
+        if _blk.name in ['sandwichtop', 'sandwichtop_no_label',
+                         'sandwichtop_no_arm', 'sandwichtop_no_arm_no_label']:
             return _blk
         blk = _blk
         _blk = _blk.connections[0]
@@ -333,7 +334,8 @@ def find_sandwich_bottom(blk):
     # Always follow the main branch of a flow: the last connection.
     _blk = blk.connections[len(blk.connections) - 1]
     while _blk is not None:
-        if _blk.name == 'sandwichtop' or _blk.name == 'sandwichtop2':
+        if _blk.name in ['sandwichtop', 'sandwichtop_no_label',
+                         'sandwichtop_no_arm', 'sandwichtop_no_arm_no_label']:
             return None
         if _blk.name in COLLAPSIBLE:
             return _blk
@@ -342,12 +344,14 @@ def find_sandwich_bottom(blk):
 
 def find_sandwich_top_below(blk):
     """ Find the sandwich top below this block. """
-    if blk.name == 'sandwichtop' or blk.name == 'sandwichtop2':
+    if blk.name in ['sandwichtop', 'sandwichtop_no_label', 'sandwichtop_no_arm',
+                    'sandwichtop_no_arm_no_label']:
         return blk
     # Always follow the main branch of a flow: the last connection.
     _blk = blk.connections[len(blk.connections) - 1]
     while _blk is not None:
-        if _blk.name == 'sandwichtop' or _blk.name == 'sandwichtop2':
+        if _blk.name in ['sandwichtop', 'sandwichtop_no_label',
+                         'sandwichtop_no_arm', 'sandwichtop_no_arm_no_label']:
             return _blk
         _blk = _blk.connections[len(_blk.connections) - 1]
     return None
@@ -372,7 +376,7 @@ def restore_stack(top):
             _blk.svg.set_show(False)
             _blk.svg.set_hide(True)
             _blk.refresh()
-             # Redock to previous block in group
+            # Redock to previous block in group
             _you = _blk.connections[0]
             (_yx, _yy) = _you.spr.get_xy()
             _yd = _you.docks[len(_you.docks) - 1]
@@ -380,7 +384,7 @@ def restore_stack(top):
             _dx = _yx + _yd[2] - _blk.docks[0][2] - _bx
             _dy = _yy + _yd[3] - _blk.docks[0][3] - _by
             _blk.spr.move_relative((_dx, _dy))
-             # Since the shapes have changed, the dock positions have too.
+            # Since the shapes have changed, the dock positions have too.
             _newdx = _blk.docks[1][2]
             _newdy = _blk.docks[1][3]
             _dx += _newdx - _olddx
@@ -391,8 +395,11 @@ def restore_stack(top):
                 _blk.status = None
             else:
                 _blk.spr.move_relative((_dx, _dy))
-     # Add 'sandwichtop' arm
-    top.name = 'sandwichtop'
+    # Add 'sandwichtop' arm
+    if top.name == 'sandwichtop_no_arm':
+        top.name = 'sandwichtop'
+    else:
+        top.name = 'sandwichtop_no_label'
     top.refresh()
     grow_stack_arm(top)
 
@@ -400,7 +407,8 @@ def uncollapse_forks(top, looping=False):
     """ From the top, find and restore any collapsible stacks on forks. """
     if top == None:
         return
-    if looping and top.name == 'sandwichtop' or top.name == 'sandwichtop2':
+    if looping and top.name in ['sandwichtop_no_arm',
+                                'sandwichtop_no_arm_no_label']:
         restore_stack(top)
         return 
     if len(top.connections) == 0:
@@ -409,7 +417,7 @@ def uncollapse_forks(top, looping=False):
     while _blk is not None:
         if _blk.name in COLLAPSIBLE:
             return
-        if _blk.name == 'sandwichtop' or _blk.name == 'sandwichtop2':
+        if _blk.name in ['sandwichtop_no_arm', 'sandwichtop_no_arm_no_label']:
             restore_stack(_blk)            
             return
         # Follow a fork
@@ -438,7 +446,7 @@ def collapse_stack(top):
     for _blk in _group:
         if not _hit_bottom and _blk == _bot:
             _hit_bottom = True
-             # Replace 'sandwichbottom' shape with 'sandwichcollapsed' shape
+            # Replace 'sandwichbottom' shape with 'sandwichcollapsed' shape
             if len(_blk.values) == 0:
                 _blk.values.append(1)
             else:
@@ -454,7 +462,7 @@ def collapse_stack(top):
             _blk.resize()
             _blk.spr.set_label(_('click to open'))
             _blk.resize()
-             # Redock to sandwich top in group
+            # Redock to sandwich top in group
             _you = find_sandwich_top(_blk)
             (_yx, _yy) = _you.spr.get_xy()
             _yd = _you.docks[len(_you.docks) - 1]
@@ -462,7 +470,7 @@ def collapse_stack(top):
             _dx = _yx + _yd[2] - _blk.docks[0][2] - _bx
             _dy = _yy + _yd[3] - _blk.docks[0][3] - _by
             _blk.spr.move_relative((_dx, _dy))
-             # Since the shapes have changed, the dock positions have too.
+            # Since the shapes have changed, the dock positions have too.
             _newdx = _blk.docks[1][2]
             _newdy = _blk.docks[1][3]
             _dx += _newdx - _olddx
@@ -474,7 +482,10 @@ def collapse_stack(top):
             else:
                 _blk.spr.move_relative((_dx, _dy))
     # Remove 'sandwichtop' arm
-    top.name = 'sandwichtop2'
+    if top.name == 'sandwichtop':
+        top.name = 'sandwichtop_no_arm'
+    else:
+        top.name = 'sandwichtop_no_arm_no_label'
     top.refresh()
 
 def collapsed(blk):
