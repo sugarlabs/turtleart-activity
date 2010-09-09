@@ -127,13 +127,14 @@ class Sprites:
         if spr in self.list:
             self.list.remove(spr)
 
-    def find_sprite(self, pos):
+    def find_sprite(self, pos, alpha=True):
         """ Search based on (x, y) position. Return the 'top/first' one. """
         list = self.list[:]
         list.reverse()
         for spr in list:
             if spr.hit(pos):
-                return spr
+                if not alpha or spr.get_pixel(pos)[3] == 255:
+                    return spr
         return None
 
     def refresh(self, event):
