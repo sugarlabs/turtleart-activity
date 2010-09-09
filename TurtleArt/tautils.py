@@ -372,7 +372,7 @@ def restore_stack(top):
             _olddy = _blk.docks[1][3]
             # Replace 'sandwichcollapsed' shape with 'sandwichbottom' shape
             _blk.name = 'sandwichbottom'
-            _blk.spr.set_label(' ')
+            _blk.spr.set_label(' ', 1)
             _blk.svg.set_show(False)
             _blk.svg.set_hide(True)
             _blk.refresh()
@@ -458,9 +458,9 @@ def collapse_stack(top):
             _blk.svg.set_hide(False)
             _blk._dx = 0
             _blk._ey = 0
-            _blk.spr.set_label(' ')
+            _blk.spr.set_label(' ', 1)
             _blk.resize()
-            _blk.spr.set_label(_('click to open'))
+            _blk.spr.set_label(_('click to open'), 1)
             _blk.resize()
             # Redock to sandwich top in group
             _you = find_sandwich_top(_blk)
