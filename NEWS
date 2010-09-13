@@ -1,6 +1,16 @@
+97
+
+* recenter default turtle when dragged onto palette
+* removed comment label from collapsible stacks
+* made font smaller on the bottom-of-collapsible-stack block (#2305)
+* rgs fixed resume problem in GNOME version (#2293)
+* checking alpha value to block 'hit' detection (fixes problem with
+  selecting the wrong block when blocks wrap around each other).
+* trap and display math errors in python block (#2313)
+
 96
 
-* fixed deleted-turtle ghst bug
+* fixed deleted-turtle ghost bug
 
 95
 
