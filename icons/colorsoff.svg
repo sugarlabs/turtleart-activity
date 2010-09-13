@@ -10,6 +10,13 @@
    id="svg2">
   <defs
      id="defs5" />
+  <rect
+     width="55"
+     height="55"
+     x="0"
+     y="0"
+     id="rect3269"
+     style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
   <path
      d="m 17.245763,13.050847 a 2.9131355,3.0296609 0 1 1 -5.826271,0 2.9131355,3.0296609 0 1 1 5.826271,0 z"
      transform="matrix(1.2080617,0,0,1.1615978,-2.8452066,0.4706725)"
