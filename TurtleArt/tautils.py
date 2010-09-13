@@ -458,6 +458,7 @@ def collapse_stack(top):
             _blk.svg.set_hide(False)
             _blk._dx = 0
             _blk._ey = 0
+            _blk.spr.set_label(' ')
             _blk.spr.set_label(' ', 1)
             _blk.resize()
             _blk.spr.set_label(_('click to open'), 1)

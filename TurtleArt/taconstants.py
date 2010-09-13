@@ -351,7 +351,7 @@ BLOCK_NAMES = {
     'rightx':[_('picture right')],
     'savepix':[_('save picture')],
     'savesvg':[_('save SVG')],
-    'sandwichbottom':[' '],
+    'sandwichbottom':[' ', ' '],
     'sandwichcollapsed':[' ', _('click to open')],
     'sandwichtop':[_('top of stack')],
     'sandwichtop_no_label':[' '],
