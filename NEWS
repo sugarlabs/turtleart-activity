@@ -1,3 +1,7 @@
+98
+
+* fixed palette selection bug introduced by alpha-value checking
+
 97
 
 * recenter default turtle when dragged onto palette
