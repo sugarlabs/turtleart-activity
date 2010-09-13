@@ -27,6 +27,7 @@ from math import sqrt
 from random import uniform
 from operator import isNumberType
 from UserDict import UserDict
+
 try:
     from sugar.datastore import datastore
 except:
@@ -39,6 +40,10 @@ from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
                     audio_media_type, text_media_type, round_int, chr_to_ord, \
                     strtype
 from gettext import gettext as _
+
+import logging
+_logger = logging.getLogger('turtleart-activity')
+
 
 class noKeyError(UserDict):
     __missing__ = lambda x, y: 0
@@ -105,6 +110,8 @@ def careful_divide(x, y):
             raise logoerror("#zerodivide")
         except ValueError:
             raise logoerror("#syntaxerror")
+        except TypeError:
+            raise logoerror("#notanumber")
 
 def taequal(x, y):
     """ Numeric and logical equal """
@@ -138,7 +145,7 @@ def taless(x, y):
         try:
             return str_to_num(x) < str_to_num(y)
         except TypeError:
-            raise logoerror("#syntaxerror")
+            raise logoerror("#notanumber")
 
 def tamore(x, y):
     """ Compare numbers and strings """
@@ -166,7 +173,7 @@ def taminus(x, y):
     try:
         return str_to_num(x) - str_to_num(y)
     except TypeError:
-        raise logoerror("#syntaxerror")
+        raise logoerror("#notanumber")
     
 def taproduct(x, y):
     """ Numerical multiplication """
@@ -175,7 +182,7 @@ def taproduct(x, y):
     try:
         return str_to_num(x) * str_to_num(y)
     except TypeError:
-        raise logoerror("#syntaxerror")
+        raise logoerror("#notanumber")
 
 def tamod(x, y):
     """ Numerical mod """
@@ -184,7 +191,7 @@ def tamod(x, y):
     try:
         return str_to_num(x) % str_to_num(y)
     except TypeError:
-        raise logoerror("#syntaxerror")
+        raise logoerror("#notanumber")
     except ValueError:
         raise logoerror("#syntaxerror")
     
@@ -199,7 +206,7 @@ def tasqrt(x):
     except ValueError:
         raise logoerror("#negroot")
     except TypeError:
-        raise logoerror("#syntaxerror")
+        raise logoerror("#notanumber")
 
 def tarandom(x, y):
     """ Random integer """
@@ -217,7 +224,7 @@ def tarandom(x, y):
     try:
         return(int(uniform(xx, yy)))
     except TypeError:
-        raise logoerror("#syntaxerror")
+        raise logoerror("#notanumber")
 
 def identity(x):
     """ Identity function """
@@ -826,12 +833,34 @@ class LogoCode:
 
     def myfunction(self, f, x):
         """ Programmable block """
-        y = myfunc(f, x)
-        if y == None:
+        try:
+            y = myfunc(f, x)
+            if str(y) == 'nan':
+                _logger.debug("python function returned nan")
+                stop_logo(self.tw)
+                raise logoerror("#notanumber")
+            else:
+                return y
+        except ZeroDivisionError:
+            _logger.debug("ZeroDivisionError")
+            stop_logo(self.tw)
+            raise logoerror("#zerodivide")
+        except ValueError:
+            _logger.debug("ValueError")
             stop_logo(self.tw)
             raise logoerror("#syntaxerror")
-        else:
-            return y
+        except NameError:
+            _logger.debug("NameError")
+            stop_logo(self.tw)
+            raise logoerror("#syntaxerror")
+        except OverflowError:
+            _logger.debug("OverflowError")
+            stop_logo(self.tw)
+            raise logoerror("#overflowerror")
+        except TypeError:
+            _logger.debug("TypeError")
+            stop_logo(self.tw)
+            raise logoerror("#notanumber")
 
     def prim_forever(self, blklist):
         """ Do list forever """
@@ -956,7 +985,7 @@ class LogoCode:
                 else:
                     y = myfunc_import(self, self.tw.myblock, x)
             except:
-                raise logoerror("#nocode")
+                raise logoerror("#syntaxerror")
         else:
             raise logoerror("#nocode")
         return

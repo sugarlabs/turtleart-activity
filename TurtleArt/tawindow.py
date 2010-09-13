@@ -2188,8 +2188,6 @@ class TurtleArtWindow():
         elif shp[0] == '#':
             shp = shp[1:]
             label = ''
-        if shp == 'notanumber':
-            shp = 'overflowerror'
         self.status_spr.set_shape(self.status_shapes[shp])
         self.status_spr.set_label(str(label))
         self.status_spr.set_layer(STATUS_LAYER)
