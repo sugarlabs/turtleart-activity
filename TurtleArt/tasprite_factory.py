@@ -89,11 +89,13 @@ class SVG:
         for i in range(len(self._innie)):
             if self._innie[i] is True:
                 svg += self._do_innie()
+            if i==0:
+                svg += self._rline_to(0, self._expand_y)
             if i==0 and self._porch is True:
                 svg += self._do_porch(False)
             elif len(self._innie)-1 > i:
                 svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
-        svg += self._rline_to(0, self._expand_y)
+        # svg += self._rline_to(0, self._expand_y)
         svg += self._corner(-1, 1)
         svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
