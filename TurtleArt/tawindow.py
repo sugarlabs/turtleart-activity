@@ -1379,7 +1379,7 @@ class TurtleArtWindow():
             self.selected_turtle.spr.set_layer(TURTLE_LAYER)
 
     def _click_block(self, x, y):
-        """ Click block """
+        """ Click block: lots of special cases to handle... """
         blk = self.block_list.spr_to_block(self.selected_spr)
         if blk is None:
             return
@@ -1423,6 +1423,8 @@ class TurtleArtWindow():
                 dy = 20
                 blk.expand_in_y(dy)
             else:
+                # since we are not expanding or contracting, run the stack
+                self._run_stack(blk)
                 dy = 0
             if blk.connections[1] is not None:
                 group = find_group(blk.connections[1])
