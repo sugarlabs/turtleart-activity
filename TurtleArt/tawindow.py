@@ -49,7 +49,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
                         DEAD_DICTS, DEAD_KEYS, TEMPLATES, PYTHON_SKIN, \
                         PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, OLD_NAMES, \
                         BOOLEAN_STYLE, BLOCK_NAMES, DEFAULT_TURTLE, \
-                        TURTLE_LAYER
+                        TURTLE_LAYER, EXPANDABLE_MATH
 from talogo import LogoCode, stop_logo
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
@@ -1415,6 +1415,23 @@ class TurtleArtWindow():
                 if gblk != blk:
                     gblk.spr.move_relative((0, dy * blk.scale))
             grow_stack_arm(find_sandwich_top(blk))
+        elif blk.name in EXPANDABLE_MATH:
+            if hide_button_hit(blk.spr, x, y):
+                dy = blk.reset_y()
+            elif show_button_hit(blk.spr, x, y):
+                dy = 20
+                blk.expand_in_y(dy)
+            else:
+                dy = 0
+            if blk.connections[1] is not None:
+                group = find_group(blk.connections[1])
+                group.append(blk)
+            else:
+                group = [blk]
+            for gblk in find_group(blk):
+                if gblk not in group:
+                    gblk.spr.move_relative((0, dy * blk.scale))
+            grow_stack_arm(find_sandwich_top(blk))
         elif blk.name in EXPANDABLE or blk.name == 'nop':
             if show_button_hit(blk.spr, x, y):
                 n = len(blk.connections)
@@ -2014,7 +2031,7 @@ class TurtleArtWindow():
             if value is not None:
                 self.block_scale = value
         elif btype in EXPANDABLE or btype == 'nop':
-            if btype == 'vspace':
+            if btype == 'vspace' or btype in EXPANDABLE_MATH:
                 if value is not None:
                     blk.expand_in_y(value)
             elif btype == 'hspace' or btype == 'identity2':

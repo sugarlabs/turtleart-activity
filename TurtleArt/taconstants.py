@@ -233,7 +233,11 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
 #
 EXPANDABLE = ['vspace', 'hspace', 'templatelist', 'list', 'identity2',
               'myfunc1arg', 'myfunc2arg', 'myfunc3arg', 'userdefined',
-              'userdefined2args', 'userdefined3args']
+              'userdefined2args', 'userdefined3args', 'plus2', 'minus2',
+              'division2', 'remainder2', 'product2', 'random']
+
+EXPANDABLE_MATH = ['plus2', 'minus2','division2', 'remainder2', 'product2',
+                   'random']
 
 #
 # Blocks that are 'collapsible'
