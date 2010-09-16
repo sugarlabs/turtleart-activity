@@ -849,6 +849,10 @@ class LogoCode:
             _logger.debug("ValueError")
             stop_logo(self.tw)
             raise logoerror("#syntaxerror")
+        except SyntaxError:
+            _logger.debug("SyntaxError")
+            stop_logo(self.tw)
+            raise logoerror("#syntaxerror")
         except NameError:
             _logger.debug("NameError")
             stop_logo(self.tw)
