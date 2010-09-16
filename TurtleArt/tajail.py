@@ -24,10 +24,7 @@ _logger = logging.getLogger('turtleart-activity')
 import traceback
 from time import *
 from math import *
-try:
-    from numpy import *
-except ImportError:
-    _logger.error("could not import numpy")
+
 
 def myfunc(f, args):
     # check to make sure no import calls are made
@@ -46,6 +43,7 @@ def myfunc(f, args):
         userdefined = {}
         exec myf in globals(), userdefined
         return userdefined.values()[0](args[0],args[1],args[2])
+
 
 def myfunc_import(lc, f, x):
     userdefined = {}
