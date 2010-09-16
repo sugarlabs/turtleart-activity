@@ -6,440 +6,1537 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-01 18:07+0000\n"
-"PO-Revision-Date: 2009-06-20 02:00-0400\n"
-"Last-Translator: Deependra Ariyadewa <deependra@gmail.com>\n"
+"POT-Creation-Date: 2010-02-25 17:04+0000\n"
+"PO-Revision-Date: 2010-08-06 08:21+0200\n"
+"Last-Translator: தங்கமணி <thangam.arunx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 1.2.1\n"
+"X-Generator: Pootle 2.0.3\n"
 
 #: activity/activity.info:2
-#: /home/walter/Desktop/turtleart-activity/taexporthtml.py:189
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:1300
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2552
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:76
+#: /home/walter/Desktop/ta-refactoring/taexporthtml.py:285
 msgid "Turtle Art"
 msgstr "ஆமைச்சித்திரம்"
 
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:55
-msgid "text"
-msgstr "உரை"
-
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:99
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:49
-#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:41
-msgid "x"
-msgstr "எக்ஸ்"
-
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:122
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:123
-msgid "stack"
-msgstr "குவி"
-
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:128
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:129
-msgid "box"
-msgstr "பெட்டி"
-
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:130
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:47
-msgid "name"
-msgstr "பெயர்"
-
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:133
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:134
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:135
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:136
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:137
-#: /home/walter/Desktop/turtleart-activity/tasetup.py:138
-msgid "title"
-msgstr "தலைப்பு"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:83
-msgid "Project"
-msgstr "செயற்றிட்டம்"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:85
-msgid "Save as"
-msgstr "சேமி"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:451
-msgid "samples"
-msgstr "மாதிரி"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:465
-msgid "save as HTML"
-msgstr "மாற்றி சேமி"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:473
-msgid "save Logo"
-msgstr "அடையாளத்தை சேமி"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:481
-msgid "save as image"
-msgstr "படமாக சேமி"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:494
-msgid "load my block"
-msgstr "எனது தொகுதியை  நிரப்பு"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:666
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:750
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:760
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:796
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:808
-msgid "hide palette"
-msgstr "குறை ஒளிந்துள்ளது"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:675
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:789
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:806
-#: /home/walter/Desktop/turtleart-activity/svg/hideblocks.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:41
-msgid "hide blocks"
-msgstr "மறைந்துள்ள தொகுதி"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:689
-msgid "run"
-msgstr "ஓடு"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:698
-msgid "step"
-msgstr "படி"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:707
-msgid "stop turtle"
-msgstr "ஆமையை நிறுத்து "
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:721
-#: /home/walter/Desktop/turtleart-activity/svg/clean.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:40
-msgid "clean"
-msgstr "சுத்தம்"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:735
-msgid "fullscreen"
-msgstr "முழுத்திரை"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:746
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:755
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:793
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:802
-msgid "show palette"
-msgstr "காட்டு"
-
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:786
-#: /home/walter/Desktop/turtleart-activity/TurtleArtActivity.py:800
-msgid "show blocks"
-msgstr "தொகுதியைக்காட்டு"
-
-#: /home/walter/Desktop/turtleart-activity/svg/hat2.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/stack2.py:40
-msgid "stack 2"
-msgstr "இரண்டாவது குவியல்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/stack1.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/hat1.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:41
-msgid "stack 1"
-msgstr "முதற்  குவியல்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/heading.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:54
-msgid "heading"
-msgstr "தலைப்பு"
-
-#: /home/walter/Desktop/turtleart-activity/svg/start.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:48
-msgid "start"
-msgstr "ஆரம்பி"
-
-#: /home/walter/Desktop/turtleart-activity/svg/keyboard.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:40
-msgid "Keyboard"
-msgstr "விசைப்பலகை"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:40
-msgid "Flow"
-msgstr "தொடருங்கள்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/wait.py:40
-msgid "wait"
-msgstr "பொறு"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/forever.py:40
-msgid "forever"
-msgstr "எப்போதும்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/repeat.py:40
-msgid "repeat"
-msgstr ", திருப்பிச்செய்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/if.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:40
-msgid "if"
-msgstr "எனின்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/if.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:41
-msgid "then"
-msgstr "அதன்பின்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:46
-#: /home/walter/Desktop/turtleart-activity/svg/ifelse.py:42
-msgid "else"
-msgstr "வேறு"
-
-#: /home/walter/Desktop/turtleart-activity/svg/flowgroup.py:47
-#: /home/walter/Desktop/turtleart-activity/svg/stopstack.py:40
-msgid "stop stack"
-msgstr "குவியலை நிறுத்து"
-
-#: /home/walter/Desktop/turtleart-activity/svg/print.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:45
-msgid "print"
-msgstr "அச்சு"
-
-#: /home/walter/Desktop/turtleart-activity/svg/color.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:48
-msgid "color"
-msgstr "நிறம்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:40
-msgid "My Blocks"
-msgstr "எனது தொகுதி"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/storeinbox1.py:40
-msgid "store in box 1"
-msgstr "முதலாவது பெட்டியில் சேமி"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/box1.py:40
-msgid "box 1"
-msgstr "முதலாவது பெட்டி"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/storeinbox2.py:40
-msgid "store in box 2"
-msgstr "இரண்டாவது பெட்டியில் சேமி"
-
-#: /home/walter/Desktop/turtleart-activity/svg/myblocksgroup.py:46
-#: /home/walter/Desktop/turtleart-activity/svg/box2.py:40
-msgid "box 2"
-msgstr "இரண்டாவது பெட்டி"
-
-#: /home/walter/Desktop/turtleart-activity/svg/printheap.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:46
-msgid "show heap"
-msgstr "குவியலைக்காட்டு"
-
-#: /home/walter/Desktop/turtleart-activity/svg/pendown.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:42
-msgid "pen down"
-msgstr "பேனை கீழே"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:40
-msgid "Numbers"
-msgstr "எண்கள்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/random.py:40
-msgid "random"
-msgstr "எழுமாறாக"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/and.py:41
-msgid "and"
-msgstr "உடன்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/or.py:40
-msgid "or"
-msgstr "அல்லது"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/not.py:40
-msgid "not"
-msgstr "இல்லை"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:46
-msgid "number"
-msgstr "எண்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:47
-msgid "min"
-msgstr "மிகக்குறைய"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:48
-msgid "max"
-msgstr "மிகக்கூடிய"
-
-#: /home/walter/Desktop/turtleart-activity/svg/numbersgroup.py:49
-#: /home/walter/Desktop/turtleart-activity/svg/remainder2.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/remainder.py:40
-msgid "mod"
-msgstr "புதுப்பி"
-
-#: /home/walter/Desktop/turtleart-activity/svg/ycor.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:53
-msgid "ycor"
-msgstr "வை கோ"
-
-#: /home/walter/Desktop/turtleart-activity/svg/shade.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:49
-msgid "shade"
-msgstr "நிழல்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:40
-msgid "Templates"
-msgstr "தூண்டு"
-
-#: /home/walter/Desktop/turtleart-activity/svg/templatesgroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/sound.py:40
-msgid "sound"
-msgstr "சத்தம்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/right.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:44
-msgid "right"
-msgstr "வலது"
-
-#: /home/walter/Desktop/turtleart-activity/svg/forward.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:41
-msgid "forward"
-msgstr "முன்னோக்கி அனுப்பு"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/kbinput.py:40
-msgid "read key"
-msgstr "சாவியை வாசி"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:42
-msgid "keyboard"
-msgstr "விசைப்பலகை"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/hres.py:40
-msgid "width"
-msgstr "அகலம்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/vres.py:40
-msgid "height"
-msgstr "உயரம்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/pop.py:40
-msgid "pop"
-msgstr "வரல்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:47
-#: /home/walter/Desktop/turtleart-activity/svg/clearheap.py:40
-msgid "empty heap"
-msgstr "வெற்றுக்குவியல்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/sensorsgroup.py:48
-#: /home/walter/Desktop/turtleart-activity/svg/push.py:40
-msgid "push"
-msgstr "தள்ளு"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:42
-#: /home/walter/Desktop/turtleart-activity/svg/back.py:40
-msgid "back"
-msgstr "பின்னால்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/left.py:40
-msgid "left"
-msgstr "இடது"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/arc.py:40
-msgid "arc"
-msgstr "வில்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:46
-#: /home/walter/Desktop/turtleart-activity/svg/arc.py:41
-msgid "angle"
-msgstr "கோணம்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:47
-#: /home/walter/Desktop/turtleart-activity/svg/arc.py:42
-msgid "radius"
-msgstr "குறை"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:48
-msgid "setyx"
-msgstr "        ஒழுங்கு செய்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:50
-#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:42
-msgid "y"
-msgstr "y"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:51
-#: /home/walter/Desktop/turtleart-activity/svg/seth.py:40
-msgid "set heading"
-msgstr "தலைப்பை ஒழுங்கு செய்"
-
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:52
-#: /home/walter/Desktop/turtleart-activity/svg/xcor.py:40
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:507
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:508
+msgid "orientation"
+msgstr "ஒத்தமைவு"
+
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:518
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:786
+msgid "next"
+msgstr "அடுத்து"
+
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:1565
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:328
+msgid "click to open"
+msgstr "திறப்பதற்கு சொடுக்கவும்"
+
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2549
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2553
+#: /home/walter/Desktop/ta-refactoring/talogo.py:744
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:709
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1201
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:375
 msgid "xcor"
 msgstr "xcor"
 
-#: /home/walter/Desktop/turtleart-activity/svg/turtlegroup.py:55
-msgid "Turtle"
-msgstr "ஆமை"
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2549
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2553
+#: /home/walter/Desktop/ta-refactoring/talogo.py:745
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:709
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1201
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:376
+msgid "ycor"
+msgstr "வை கோ"
 
-#: /home/walter/Desktop/turtleart-activity/svg/fillscreen.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:46
-msgid "fill screen"
-msgstr "முழுத்திரை"
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2549
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2553
+#: /home/walter/Desktop/ta-refactoring/talogo.py:745
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:710
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1202
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:271
+msgid "heading"
+msgstr "தலைப்பு"
 
-#: /home/walter/Desktop/turtleart-activity/svg/settextcolor.py:40
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:50
-msgid "set text color"
-msgstr "உரைக்கான நிறத்தை தெரிவு செய்"
+#: /home/walter/Desktop/ta-refactoring/tawindow.py:2612
+msgid "image"
+msgstr "படம்"
 
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:40
-msgid "Pen"
-msgstr "பேனை"
+#: /home/walter/Desktop/ta-refactoring/talogo.py:704
+msgid "did not output to"
+msgstr "வெளியீடு வெளியீடி இல்லவே இல்லை"
 
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:41
-#: /home/walter/Desktop/turtleart-activity/svg/penup.py:40
+#: /home/walter/Desktop/ta-refactoring/talogo.py:746
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:331
+msgid "scale"
+msgstr "அளவீடு"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:749
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:297
+msgid "pen down"
+msgstr "பேனை கீழே"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:751
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:299
 msgid "pen up"
 msgstr "பேனை மேலே "
 
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:43
-#: /home/walter/Desktop/turtleart-activity/svg/setpensize.py:40
-msgid "set pen size"
-msgstr "பேனையின் அளவினை ஒழுங்குபடுத்து"
+#: /home/walter/Desktop/ta-refactoring/talogo.py:753
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:255
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:262
+msgid "color"
+msgstr "நிறம்"
 
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:44
-#: /home/walter/Desktop/turtleart-activity/svg/setcolor.py:40
-msgid "set color"
-msgstr "நிறத்தை  ஒழுங்கு படுத்து"
+#: /home/walter/Desktop/ta-refactoring/talogo.py:754
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:262
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:340
+msgid "shade"
+msgstr "நிழல்"
 
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:45
-#: /home/walter/Desktop/turtleart-activity/svg/setshade.py:40
-msgid "set shade"
-msgstr "நிழலை ஒழுங்கு படுத்து"
-
-#: /home/walter/Desktop/turtleart-activity/svg/pengroup.py:47
-#: /home/walter/Desktop/turtleart-activity/svg/pensize.py:40
+#: /home/walter/Desktop/ta-refactoring/talogo.py:755
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:298
 msgid "pen size"
 msgstr "பேனை அளவு"
 
-#: /home/walter/Desktop/turtleart-activity/svg/setxy.py:40
+#: /home/walter/Desktop/ta-refactoring/talogo.py:770
+msgid "I don't know how to"
+msgstr "எப்படி என்று எனக்கு தெறியாது"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:919
+msgid "doesn't like"
+msgstr "பிடிக்காது"
+
+#: /home/walter/Desktop/ta-refactoring/talogo.py:919
+msgid "as input"
+msgstr "உள்ளீடாக"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:136
+msgid "presentation"
+msgstr "அளிக்கை"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:189
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:895
+msgid "Project"
+msgstr "செயற்றிட்டம்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:274
+msgid "snapshot"
+msgstr "மாதிறி எடுத்தல்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:292
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:317
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:334
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:343
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:142
+msgid "Show palette"
+msgstr "நிறப்பட்டையை காட்டு "
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:299
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:312
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:321
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:337
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:349
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:773
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1386
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:146
+msgid "Hide palette"
+msgstr "நிறப்பட்டையை மறை"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:327
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:341
+msgid "Show blocks"
+msgstr "தொகுதிகளைக்காட்டு"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:330
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:347
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:677
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1152
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:697
+msgid "Hide blocks"
+msgstr "தொகுதிகளை மறை"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:430
+msgid "Rescale coordinates down"
+msgstr "கீழ் நோக்கிய இணைப்புள்ளிகளை மறுஅளவீடவும்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:438
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:725
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1230
+msgid "Rescale coordinates up"
+msgstr "மேழ் நோக்கிய இணைப்புள்ளிகளை மறுஅளவீடவும்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:620
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1476
+msgid "Save snapshot"
+msgstr "எடுத்த மாதிறியை சேமிக்கவும்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:627
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1324
+msgid "Save as HTML"
+msgstr "எச்டிஎம்எல்(HTML) ஆக சேமி"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:634
+msgid "Save as Logo"
+msgstr "சிறிய படமாக சேமி"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:641
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1342
+msgid "Save as image"
+msgstr "படமாக சேமி"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:648
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1356
+msgid "Load my block"
+msgstr "எனது தொகுதியை ஏற்று"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:656
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1366
+msgid "Import project from the Journal"
+msgstr "படைப்பை சஞ்சிகையிலிருந்து இரக்கவும்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:680
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1157
+msgid "<Ctrl>b"
+msgstr "<Ctrl>b"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:685
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1165
+msgid "Fullscreen"
+msgstr "முழுத்திரை"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:692
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1178
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:96
+msgid "Cartesian coordinates"
+msgstr "கார்டீஷியன் இணைப்புள்ளிகள்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:698
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1187
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:100
+msgid "Polar coordinates"
+msgstr "போலார் இணைப்புள்ளிகள்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:731
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1216
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:108
+msgid "Grow blocks"
+msgstr "தொகுதியை வளர்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:738
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1223
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:112
+msgid "Shrink blocks"
+msgstr "தொகுதியை சுருக்கு"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:776
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1391
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:795
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1458
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:161
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:682
+msgid "Clean"
+msgstr "சுத்தமக்கு"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:798
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1463
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:804
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1404
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:165
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:747
+msgid "Run"
+msgstr "இயக்கு"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:807
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1408
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:813
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1416
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:169
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:748
+msgid "Step"
+msgstr "படி"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:816
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1420
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:822
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1428
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:173
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:678
+msgid "Debug"
+msgstr "வலு கண்டுபிடி"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:825
+msgid "<Alt>d"
+msgstr "<Alt>d"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:831
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1441
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:772
+msgid "Stop turtle"
+msgstr "ஆமையை நிறுத்து "
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:834
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1445
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:846
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1494
+msgid "Samples"
+msgstr "மாதிரிகள்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:857
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1305
+msgid "Move the cursor over the orange palette for help."
+msgstr "உதவி வேண்டுமானால் சுட்டியை ஆரஞ்சு நிறப்பட்டை மேல் நகர்த்தவும்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:866
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:903
+msgid "Help"
+msgstr "உதவி"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:897
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:121
+msgid "View"
+msgstr "பார்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:899
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:136
+msgid "Edit"
+msgstr "திருத்து"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:901
+msgid "Import/Export"
+msgstr "எற்றல்/இறக்கல்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1246
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:127
+msgid "Copy"
+msgstr "பிரதி செய்"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1258
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:131
+msgid "Paste"
+msgstr "ஒட்டு"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1333
+msgid "Save Logo"
+msgstr "அடையாளத்தை சேமி"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1433
+msgid "<Ctrl>d"
+msgstr "<Ctrl>d"
+
+#: /home/walter/Desktop/ta-refactoring/TurtleArtActivity.py:1499
+msgid "<Ctrl>o"
+msgstr "<Ctrl>o"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:81
+msgid "Open"
+msgstr "திற"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:85
+msgid "Save"
+msgstr "சேமி"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:90
+msgid "File"
+msgstr "கோப்பு"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:104
+msgid "Rescale coordinates"
+msgstr "இணைப்புள்ளிகளை மறு அளவீடு"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:116
+msgid "Reset block size"
+msgstr "பட்டை அளவை மீழச்செய்"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:150
+msgid "Show/hide blocks"
+msgstr "பிரிவுகளை காட்டு/மறை "
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:155
+msgid "Tools"
+msgstr "கருவிகள்"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:177
+msgid "Stop"
+msgstr "நிறுத்து"
+
+#: /home/walter/Desktop/ta-refactoring/turtleart.py:182
+msgid "Turtle"
+msgstr "ஆமை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:241
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:365
+msgid "turtle"
+msgstr "ஆமை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:242
+msgid "and"
+msgstr "உடன்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:243
+msgid "arc"
+msgstr "வில்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:243
+msgid "angle"
+msgstr "கோணம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:243
+msgid "radius"
+msgstr "குறை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:245
+msgid "back"
+msgstr "பின்னால்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:246
+msgid "blue"
+msgstr "நீலம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:247
+msgid "bottom"
+msgstr "அடிப்பகுதி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:248
+msgid "picture bottom"
+msgstr "படத்தின் அடிப்பகுதி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:249
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:350
+msgid "box"
+msgstr "பெட்டி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:250
+msgid "box 1"
+msgstr "முதலாவது பெட்டி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:251
+msgid "box 2"
+msgstr "இரண்டாவது பெட்டி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:252
+msgid "Cartesian"
+msgstr "கார்டீஷியன்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:253
+msgid " clean "
+msgstr "சுத்தம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:254
+msgid "empty heap"
+msgstr "வெற்றுக்குவியல்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:256
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:515
+msgid "comment"
+msgstr "கருத்து தெறிவி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:257
+msgid "cyan"
+msgstr "ஆகாய நிறம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:260
+msgid "empty trash"
+msgstr "குப்பையை துய்மையாக்கு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:262
+msgid "fill screen"
+msgstr "முழுத்திரை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:263
+msgid "forever"
+msgstr "எப்போதும்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:264
+msgid "forward"
+msgstr "முன்னோக்கி அனுப்பு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:265
+msgid "full screen"
+msgstr "முழுத்திரை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:267
+msgid "green"
+msgstr "பச்சை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:268
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:345
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:520
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:550
+msgid "action"
+msgstr "செயற்படு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:269
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:346
+msgid "action 1"
+msgstr "செயற்படு 1"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:270
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:347
+msgid "action 2"
+msgstr "செயற்படு 2"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:272
+msgid "height"
+msgstr "உயரம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:273
+msgid "hide blocks"
+msgstr "மறைந்துள்ள தொகுதி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:276
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:277
+msgid "if"
+msgstr "எனின்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:276
+msgid "then"
+msgstr "அதன்பின்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:277
+msgid "then else"
+msgstr "பிறகு என்ன"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:278
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:341
+msgid "show"
+msgstr "காட்டு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:280
+msgid "query keyboard"
+msgstr "விசைப்பலகை கேள்வி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:281
+msgid "keyboard"
+msgstr "விசைப்பலகை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:282
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:283
+msgid "left"
+msgstr "இடது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:284
+msgid "picture left"
+msgstr "இடப்பக்க படம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:288
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:289
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:290
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:291
+msgid "Python"
+msgstr "பைத்தன்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:293
+msgid "not"
+msgstr "இல்லை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:295
+msgid "orange"
+msgstr "ஆரஞ்சு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:296
+msgid "or"
+msgstr "அல்லது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:306
+msgid "pitch"
+msgstr "சுருதி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:308
+msgid "polar"
+msgstr "போலார்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:309
+msgid "pop"
+msgstr "வரல்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:310
+msgid "show heap"
+msgstr "குவியலைக்காட்டு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:311
+msgid "print"
+msgstr "அச்சு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:313
+msgid "purple"
+msgstr "பழுப்பு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:314
+msgid "push"
+msgstr "தள்ளு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:315
+msgid "random"
+msgstr "எழுமாறாக"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:315
+msgid "min"
+msgstr "மிகக்குறைய"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:315
+msgid "max"
+msgstr "மிகக்கூடிய"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:316
+msgid "red"
+msgstr "சிவப்பு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:317
+msgid "mod"
+msgstr "புதுப்பி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:318
+msgid "repeat"
+msgstr ", திருப்பிச்செய்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:319
+msgid "resistance"
+msgstr "எதிர்ப்பு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:320
+msgid "restore last"
+msgstr "கடைசியை சேமி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:321
+msgid "restore all"
+msgstr "எல்லாத்தையும் சேமி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:322
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:323
+msgid "right"
+msgstr "வலது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:324
+msgid "picture right"
+msgstr "வலது படம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:325
+msgid "save picture"
+msgstr "படத்தை சேமி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:326
+msgid "save SVG"
+msgstr "SVG ஆக சேமி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:329
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:330
+msgid "top of stack"
+msgstr "அடுக்கின் உச்சியில்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:332
+msgid "set color"
+msgstr "நிறத்தை  ஒழுங்கு படுத்து"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:333
+msgid "set heading"
+msgstr "தலைப்பை ஒழுங்கு செய்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:334
+msgid "set pen size"
+msgstr "பேனையின் அளவினை ஒழுங்குபடுத்து"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:335
+msgid "set scale"
+msgstr "அளவீடுகளை ஒழுங்கு படுத்து"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:336
+msgid "set shade"
+msgstr "நிழலை ஒழுங்கு படுத்து"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:337
+msgid "set text color"
+msgstr "உரைக்கான நிறத்தை தெரிவு செய்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:338
+msgid "set text size"
+msgstr "உரை அளவினை ஒழுங்குபடுத்து"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:339
 msgid "set xy"
 msgstr "ஒழுங்கு  படுத்துக"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:339
+msgid "x"
+msgstr "எக்ஸ்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:339
+msgid "y"
+msgstr "y"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:342
+msgid "show blocks"
+msgstr "தொகுதியைக்காட்டு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:343
+msgid "show aligned"
+msgstr "ஒத்தமைவை காண்பி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:348
+msgid "start"
+msgstr "ஆரம்பி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:349
+msgid "stop action"
+msgstr "செயலை நிறுத்து"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:350
+msgid "store in"
+msgstr "சேமிப்புக்கலனில்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:350
+msgid "value"
+msgstr "மதிப்பு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:351
+msgid "store in box 1"
+msgstr "முதலாவது பெட்டியில் சேமி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:352
+msgid "store in box 2"
+msgstr "இரண்டாவது பெட்டியில் சேமி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:353
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:548
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:549
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:554
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:562
+msgid "text"
+msgstr "உரை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:360
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:655
+msgid "text size"
+msgstr "உரை அளவு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:361
+msgid "title x"
+msgstr "x தலைப்பு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:362
+msgid "title y"
+msgstr "y தலைப்பு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:363
+msgid "top"
+msgstr "உச்சி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:364
+msgid "picture top"
+msgstr "படத்தின் உச்சி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:366
+msgid "until"
+msgstr "இதுவரை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:367
+msgid "voltage"
+msgstr "மின்னழுத்தம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:368
+msgid "volume"
+msgstr "சத்தத்தினளவு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:370
+msgid "wait"
+msgstr "பொறு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:371
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:372
+msgid "while"
+msgstr "நிகழும்போது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:373
+msgid "width"
+msgstr "அகலம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:374
+msgid "write"
+msgstr "எழுது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:377
+msgid "yellow"
+msgstr "மஞ்சள்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:514
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:553
+msgid "my box"
+msgstr "என் பெட்டி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:536
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:537
+msgid "label"
+msgstr "சிறுதாள்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:538
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:539
+msgid "picture name"
+msgstr "படத்தின் தலைப்பு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:555
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:556
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:557
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:558
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:559
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:560
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:861
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:876
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:892
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:923
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:954
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:985
+msgid "Title"
+msgstr "தலைப்பு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:633
+msgid "audio"
+msgstr "ஒலி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:634
+msgid "divide"
+msgstr "பிரி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:635
+msgid "equal"
+msgstr "சமம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:636
+msgid "greater than"
+msgstr "இதைவிட அதிகம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:637
+msgid "horizontal space"
+msgstr "கிடைமட்ட வெளி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:638
+msgid "identity"
+msgstr "அடையாளம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:639
+msgid "if then"
+msgstr "இப்படியானால்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:640
+msgid "if then else"
+msgstr "இப்படியானால் என்ன"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:641
+msgid "journal"
+msgstr "சஞ்சிகை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:642
+msgid "less than"
+msgstr "இதற்க்கு குறைவாக"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:643
+msgid "minus"
+msgstr "கழித்தல்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:644
+msgid "Python code"
+msgstr "பைத்தன் குறி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:645
+msgid "number"
+msgstr "எண்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:646
+msgid "plus"
+msgstr "கூட்டல்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:647
+msgid "multiply"
+msgstr "பெருக்கல்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:648
+msgid "square root"
+msgstr "இரட்டிப்பு வீதம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:649
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:650
+msgid "presentation 1x1"
+msgstr "அளிக்கை 1x1"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:651
+msgid "presentation 1x2"
+msgstr "அளிக்கை 1x2"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:652
+msgid "presentation 2x1"
+msgstr "அளிக்கை 2x1"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:653
+msgid "presentation 2x2"
+msgstr "அளிக்கை 2x2"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:654
+msgid "presentation bulleted list"
+msgstr "அளைக்கை புள்ளி பட்டியலில்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:656
+msgid "vertical space"
+msgstr "நெடு வெளி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:662
+msgid "chooses which turtle to command"
+msgstr "தெரிவுசெய் எந்த ஆமைக்கு கட்டளையிடுவதென்று"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:663
+msgid "logical AND operator"
+msgstr "சரியான அன்டு இயக்குனர்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:664
+msgid "moves turtle along an arc"
+msgstr "ஆமையானது வளைவு கோட்டை ஒட்டி நகர்கிறது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:665
+msgid "Sugar Journal audio object"
+msgstr "சுகர் சஞ்சிகையின் ஒலி பொருள்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:666
+msgid "moves turtle backward"
+msgstr "ஆமையை பின் நகர்த்து"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:667
+msgid "Palette of variable blocks"
+msgstr "மாறிலிகளின் தொகுதி பட்டை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:668
+msgid "ycor of bottom of screen"
+msgstr "ycor அடிமட்ட திரை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:669
+msgid "Variable 1 (numeric value)"
+msgstr "மாறிலி 1 (எண்மதிப்பு)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:670
+msgid "Variable 2 (numeric value)"
+msgstr "மாறிலி 2 (எண்மதிப்பு)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:671
+msgid "named variable (numeric value)"
+msgstr "பெயர்களின் மாறிலி(எண்மதிப்பு)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:672
+msgid "displays Cartesian coordinates"
+msgstr "கார்டீஷியன் இணைப்புள்ளிகளை தெறியப்படுத்து"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:673
+msgid "clears the screen and reset the turtle"
+msgstr "திரையை தூய்மைப்படுத்து மற்றும் ஆமையை பாழையதாக்கு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:674
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "காலியான FILO(முதலில் வந்தது கடைசியில் போகும் அடுக்கி)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:675
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr ""
+"இப்பொழுதுள்ள எழுதுகோளின் நிறம்(எண் தொகுதியின் இடத்தில் பயன்படுத்தலாம்)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:676
+msgid "Palette of pen colors"
+msgstr "பட்டைகளாக எழுதுகொளின் நிறம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:677
+msgid "places a comment in your code"
+msgstr "உங்களின் குறிகளில் கருத்துக்களை இடு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:679
+msgid "Sugar Journal description field"
+msgstr "சுகர் சஞ்சிகை விரிவாக்க புலம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:680
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+"அடியிலுள்ள(கீழெண்) எண்ணிலக்கத்தை உச்சி(மேலெண்) எண்ணிலக்கத்தை கொண்டு பிரி "
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:681
+msgid "permanently deletes items in trash"
+msgstr "குப்பையில் உள்ள உருப்படிகளை நிரந்திரமாள அழி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:683
+msgid "logical equal-to operator"
+msgstr "லாஜிக்கல் சமநிலை செயலி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:684
+msgid "Palette of extra options"
+msgstr "பட்டைகளின் அதிகமான விருப்பங்கள்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:685
+msgid "fills the background with (color, shade)"
+msgstr "பின் பக்கத்தை உடன்(நிறம், நிழல்) நிரப்பு "
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:686
+msgid "Palette of flow operators"
+msgstr "செயலிகள் செல்லும் பட்டை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:687
+msgid "loops forever"
+msgstr "எப்பொழுதும் தொடர்படுத்து"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:688
+msgid "moves turtle forward"
+msgstr "ஆமையை முன்னோக்கி நகர்த்து"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:689
+msgid "hides the Sugar toolbars"
+msgstr "சுகர் கருவிபட்டைகளை மறை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:690
+msgid "logical greater-than operator"
+msgstr "லாஜிக்கல் மிகை எண்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:691
+msgid "top of Action 1 stack"
+msgstr "உச்சி செயல் 1ன் அடுக்கு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:692
+msgid "top of Action 2 stack"
+msgstr "உச்சி செயல் 2ன் அடுக்கு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:693
+msgid "top of nameable action stack"
+msgstr "பெயற்சொல்லும் செயலின் உச்சி அடுக்கு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:694
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+"தற்ப்போதுள்ள ஆமையின் தலைப்பை பிடித்துவை(எண் தொகுதியின் இடத்தில் "
+"பயன்படுத்தலாம்)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:695
+msgid "the canvas height"
+msgstr "சாளர உயரம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:696
+msgid "declutters canvas by hiding blocks"
+msgstr "தொகுதிகளை மறைப்பதினால் சாளரத்தை வெட்டாத"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:698
+msgid "jogs stack right"
+msgstr "இடது அடுக்கின் ஜாக்ஸ்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:699
+msgid "identity operator used for extending blocks"
+msgstr "அடையாள இயக்குனர் தொகுதிகளை நீட்டிக்க பயன்படுகிறார்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:700
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+"if-then-else இயக்குனர் பூலியன் இயக்குனரை பட்டை எண்களிலிருந்து "
+"பயன்படுத்திகிறார்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:701
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr ""
+"if-then இயக்குனர் பூலியன் இயக்குனரை பட்டை எண்களிலிருந்து பயன்படுத்திகிறார்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:702
+msgid "Sugar Journal media object"
+msgstr "சுகர் சஞ்சிகை ஊடகப்பொருள்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:703
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr ""
+"விசைப்பலகையை உள்ளீடுக்காக கேள் (முடிவுகள் விசைப்பலகை தொகுதியில் "
+"சேமிக்கப்பட்டுள்ளது)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:704
+msgid "holds results of query-keyboard block"
+msgstr "முடிவுகள் விசைப்பலகை தொகுதியில் அடக்கப்பட்டுள்ளது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:705
+msgid "xcor of left of screen"
+msgstr "இடது திரையின் xcor"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:706
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "ஆமையை கடிகார சுழற்சியில் திரும்பியது (கோணம் டிகிரி அளவில்)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:707
+msgid "logical less-than operator"
+msgstr "லாஜிக்கல் less-than இயக்கி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:708
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr ""
+"மேல் மட்ட உள்ளீட்டு எண்ணிலிருந்து கீழ் அடிமட்ட உள்ளீட்டு எண்ணானது "
+"கழிக்கப்படுகிறது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:709
+msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
+msgstr ""
+"ஒரு நிரலாக்கத்தொகுதி: முன்னேரிய கணித வாய்ப்பாடுகளை சேர்க்கப்பயன்படுகிறது, "
+"எ.கா. sin(x)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:710
+msgid ""
+"a programmable block: used to add advanced single-valriable math equations, "
+"e.g., sin(x)"
+msgstr ""
+"ஒரு நிரலாக்கத்தொகுதி: முன்னேரிய தனித்த-மாறிலி கணித வாய்ப்பாடுகளை "
+"சேர்க்கப்பயன்படுகிறது, எ.கா. sin(x)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:711
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+"ஒரு நிரலாக்கத்தொகுதி: முன்னேரிய பன்-மாறிலி கணித வாய்ப்பாடுகளை "
+"சேர்க்கப்பயன்படுகிறது, எ.கா. sqrt(x*x+y*y)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:712
+msgid ""
+"a programmable block: used to add advanced multi-varialble math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+"ஒரு நிரலாக்கத்தொகுதி: முன்னேரிய பன்-மாறிலி கணித வாய்ப்பாடுகளை "
+"சேர்க்கப்பயன்படுகிறது, எ.கா. sin(x+y+z)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:713
+msgid "displays next palette"
+msgstr "அடுத்த நிறப்பட்டையை தெறியப்படுத்து"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:714
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr ""
+"இயக்க குறி tamyblock.py லும் படிமம் சஞ்சிகையிலிருந்தும் கண்டுபிடிக்கப்பட்டன"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:715
+msgid "logical NOT operator"
+msgstr "லாஜிக்கல் இயக்கி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:716
+msgid "Palette of numeric operators"
+msgstr "பட்டை எண்ணியக்கிகள்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:717
+msgid "used as numeric input in mathematic operators"
+msgstr "கணித இயக்கிகளில் எண்ணிலக்கங்கள் உள்ளீடாக பயன்படுத்தப்படுகிறது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:718
+msgid "logical OR operator"
+msgstr "லாஜிக்கல் NOT இயக்கி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:719
+msgid "changes the orientation of the palette of blocks"
+msgstr "நிறப்பட்டைகளின் தொகுதி ஒத்தமைந்த மாற்றங்கள்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:720
+msgid "Turtle will draw when moved."
+msgstr "ஆமை நகர்ந்த பிறகு வரையும்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:721
+msgid "Palette of pen commands"
+msgstr "நிறப்பட்டை எழுதுகோளின் கட்டளைகள்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:722
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+"தற்ப்போது எழுதுகோளின் அளவை வைத்திருக்கிறது (எண்ணிலக்க தொகுதி இடத்தில் "
+"பயன்படுத்திக்கொள்ள முடியும்)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:723
+msgid "Turtle will not draw when moved."
+msgstr "ஆமை நகர்ந்த பிறகு வரையாது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:724
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:778
+msgid "presentation template: select Journal object (with description)"
+msgstr "அளிக்கை மாதிரி: சஞ்சிகை பொருளை தெரிவு செய் (விரிவாக்கத்துடன்)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:725
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:779
+msgid "presentation template: select Journal object (no description)"
+msgstr "அளிக்கை மாதிரி: சஞ்சிகை பொருளை தெரிவு செய் (விரிவாக்கமில்லாமல்)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:726
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:727
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:780
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:781
+msgid "presentation template: select two Journal objects"
+msgstr "அளிக்கை மாதிரி: இரண்டு சஞ்சிகை பொருட்களை தெரிவு செய்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:728
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:782
+msgid "presentation template: select four Journal objects"
+msgstr "அளிக்கை மாதிரி: நான்கு சஞ்சிகை பொருட்களை தெரிவு செய்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:729
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:783
+msgid "presentation template: list of bullets"
+msgstr "அளிக்கை மாதிரி: புள்ளிப்பட்டியல்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:730
+msgid "microphone input pitch"
+msgstr "ஒலி வாங்கியின் உள்ளீட்டு சுருதி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:731
+msgid "adds two alphanumeric inputs"
+msgstr "இரண்டு ஆஃல்பா எண்ணிலக்க உள்ளீடுகள் சேர்க்கப்படுகிறது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:732
+msgid "displays polar coordinates"
+msgstr "போலார் இணைப்புள்ளிகளை தெறியப்படுத்து"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:733
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr ""
+"பில்லோ(முதல்-சென்று கடைசி-வெளிவரும் அடுக்க முறை) மதிப்பை வெளிவாங்குகிறது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:734
+msgid "Palette of presentation templates"
+msgstr "அளிக்கை மாதிரிகளின் நிறப்பட்டை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:735
+msgid "prints value in status block at bottom of the screen"
+msgstr "திரையின் அடிப்பக்க தொகுதியில் நிலைமாறலின் மதிப்ப அச்சடிக்கப்படுகிறது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:736
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr ""
+"பில்லோ(முதல்-சென்று கடைசி-வெளிவரும் அடுக்க முறை)வின் மதிப்புகளை காட்டுகிறது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:737
+msgid "multiplies two numeric inputs"
+msgstr "இரட்டிப்பகளில் இரண்டு எண்ணிலக்க உள்ளீடுகள்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:738
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr ""
+"பில்லோ(முதல்-சென்று கடைசி-வெளிவரும் அடுக்க முறை)வில் மதிப்புகள் "
+"தள்ளப்படுகின்றன."
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:739
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr "மிக-அதிக மற்றும் மிக-குறைவு எண்களுக்கிடையே எழுமாறான எண் கிடைக்ப்பெறும்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:740
+msgid "modular (remainder) operator"
+msgstr "மாறும்(மீதமுள்ள) இயக்கி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:741
+msgid "loops specified number of times"
+msgstr "தொடர்படுத்தல் எத்தனை மறை என்பது குறிப்பிடப்படுகின்றது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:742
+msgid "sensor input resistance"
+msgstr "உணர்வு உள்ளீட்டு எதிர்ப்பு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:743
+msgid "restores most recent blocks from trash"
+msgstr "குப்பையிலிருந்து அன்மையில் வந்த தொகுதிகளை திரும்பச்சேமி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:744
+msgid "restore all blocks from trash"
+msgstr "குப்பையிலிருந்து அனைத்து தொகுதிகளையும் திரும்பச்சேமி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:745
+msgid "xcor of right of screen"
+msgstr "வலது திரையின் xcor"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:746
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "ஆமையானது கடிகார திசையில் திரும்புகிறது (கோணம் டிகிரியில்)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:749
+msgid "bottom block in a collapsibe stack: click to collapse"
+msgstr "களையும் அடுக்கில் அடிமட்ட தொகுதி: களைய வேண்டுமாயின் இங்கே சொடுக்கவும்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:750
+msgid "bottom block in a collapsed stack: click to open"
+msgstr ""
+"களைந்த அடுக்கில் அடிமட்ட தொகுதி: திறக்க வேண்டுமாயின் இங்கே சொடுக்கவும்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:751
+msgid "top of a collapsible stack"
+msgstr "களையும் அடுக்கின் உச்சி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:752
+msgid "top of a collapsed stack"
+msgstr "களைந்த அடுக்கின் உச்சி"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:753
+msgid "saves a picture to the Sugar Journal"
+msgstr "சுகர் சஞ்சிகைக்கு ஒரு படத்தை சேமிக்கவும்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:754
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr "சுகர் சஞ்சிகையில் ஆமை வரைபடத்தை SVG கோப்பாக சேமித்து வைக்கவும்."
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:755
+msgid "holds current scale value"
+msgstr "தற்ப்போதைய அளவீடு மதிப்பை வைத்துள்ளது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:756
+msgid "sets color of the line drawn by the turtle"
+msgstr "ஆமையால் வரையப்பட்ட கோட்டுக்கு நிறத்தை அமைக்கவும்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:757
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "ஆமையின் தலைப்பை வை (0 ஆனது திரையின் உச்சை நேக்குகிறது.)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:758
+msgid "sets size of the line drawn by the turtle"
+msgstr "ஆமையால் வரையப்பட்ட கோட்டுக்கு அளவை அமைக்கவும்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:759
+msgid "sets the scale of media"
+msgstr "ஊடகத்தின் அளவை அமை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:760
+msgid "sets shade of the line drawn by the turtle"
+msgstr "ஆமையால் வரையப்பட்ட கோட்டடின் நிழலை அமைக்கவும்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:761
+msgid "sets color of text drawn by the turtle"
+msgstr "ஆமையால் வரையப்பட்ட உரையின் நிறத்தை அமைத்தது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:762
+msgid "sets size of text drawn by turtle"
+msgstr "ஆமையால் வரையப்பட்ட உரையின் அளவை அமைத்தது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:763
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr "xcor,ycor:(0,0) நிலைக்கு ஆமை நகர்கிறது. இது திரையின் மையப்பகுதியாகும்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:764
+msgid "holds current pen shade"
+msgstr "தற்ப்போதுள்ள எழுதுகோளின் நிழலை வைத்துள்ளது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:765
+msgid "draws text or show media from the Journal"
+msgstr "உரையை வரை (அ) சஞ்சிகையிலிருந்து உடகத்தைக் காட்டு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:766
+msgid "restores hidden blocks"
+msgstr "மறைந்துள்ள தொகுதிகளைக் திரும்ப வை"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:767
+msgid "calculates square root"
+msgstr "இரட்டை வீத்தை கணிக்கவும்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:768
+msgid "invokes Action 1 stack"
+msgstr "செயல் அடுக்கு 1 தூண்டல்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:769
+msgid "invokes Action 2 stack"
+msgstr "செயல் அடுக்கு 2 தூண்டல்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:770
+msgid "invokes named action stack"
+msgstr "பெயருள்ள செயல் அடுக்கை தூண்டுகிறது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:771
+msgid "connects action to toolbar run buttons"
+msgstr "பொத்தான்களை இயக்கி கருவிப்பட்டைக்கு செயல்களை இணைக்கிறது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:773
+msgid "stops current action"
+msgstr "தற்ப்போது செயலை நுறுத்துகிறது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:774
+msgid "stores numeric value in Variable 1"
+msgstr "மாறிலி 1 ல் எண்ணிலக்க மதிப்பு சேமிக்கப்படுகின்றன."
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:775
+msgid "stores numeric value in Variable 2"
+msgstr "மாறிலி 2 ல் எண்ணிலக்க மதிப்பு சேமிக்கப்படுகின்றன."
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:776
+msgid "stores numeric value in named variable"
+msgstr "பெயரிடப்பட்ட மாறிலியில் எண்ணிலக்க மதிப்பு சேமிக்கப்படுகின்றன."
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:777
+msgid "string value"
+msgstr "வார்த்தை மதிப்பு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:784
+msgid "holds current text color (can be used in place of a number block)"
+msgstr ""
+"தற்ப்போதைய உரை நிறத்தைக்கொண்டுள்ளது (ஒரு எண் தொகுதியின் இடத்தில் "
+"பயன்படுத்த முடியும்)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:785
+msgid "holds current text size (can be used in place of a number block)"
+msgstr ""
+"தற்ப்போதைய உரை அளவைக்கொண்டுள்ளது (ஒரு எண் தொகுதியின் இடத்தில் பயன்படுத்த "
+"முடியும்)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:786
+msgid "ycor of top of screen"
+msgstr "திரையின் உச்சம் ycor"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:787
+msgid "Trashcan"
+msgstr "குப்பையில் தேடு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:788
+msgid "Palette of turtle commands"
+msgstr "ஆமை நிறப்பட்டையின் கட்டளைகள்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:789
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"எண்கள் நிறப்பட்டையிலிருந்து பூலியன் இயக்கிகளை பயன்படுத்தும் இயக்கி do-until-"
+"True "
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:790
+msgid "sensor voltage"
+msgstr "உணரும் மின்னழுத்தம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:791
+msgid "microphone input volume"
+msgstr "ஒலிவாங்கியில் உள்ளீடு சத்தத்தினளவு"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:792
+msgid "jogs stack down"
+msgstr "ஜேகஸ் அடுக்கு கீழே"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:793
+msgid "pauses program execution a specified number of seconds"
+msgstr "ஒரு குறிப்பிட்ட வினாடிகளுக்கு நிரலின் இயக்கமானது இடைநிறுத்தப்படுகிறது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:794
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"எண்கள் நிறப்பட்டையிலிருந்து பூலியன் இயக்கிகளை பயன்படுத்தும் இயக்கி do-while-"
+"True எனப்படுகிறது"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:795
+msgid "the canvas width"
+msgstr "சாளர அகலம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:796
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"தற்ப்போது ஆமையின் x-coordinate மதிப்பைக் கொண்டுள்ளது (எண் மாறிலி தொகுதி "
+"இடத்தில் பயன்படுத்தலாம்)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:797
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"தற்ப்போது ஆமையின் ல-coordinate மதிப்பைக் கொண்டுள்ளது (எண் மாறிலி தொகுதி "
+"இடத்தில் பயன்படுத்தலாம்)"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:856
+msgid "bulleted list"
+msgstr "புள்ளி பட்டியல்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:871
+msgid "picture"
+msgstr "படம்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:887
+msgid "2×2 pictures"
+msgstr "2x2 படங்கள்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:918
+msgid "2×1 pictures"
+msgstr "2x1 படங்கள்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:949
+msgid "1×2 pictures"
+msgstr "1x2 படங்கள்"
+
+#: /home/walter/Desktop/ta-refactoring/taconstants.py:980
+msgid "1×1 picture"
+msgstr "1x1 படங்கள்"
+
+#~ msgid "name"
+#~ msgstr "பெயர்"
+
+#, fuzzy
+#~ msgid "load my block"
+#~ msgstr "எனது தொகுதியை  நிரப்பு"
+
+#~ msgid "stack 2"
+#~ msgstr "இரண்டாவது குவியல்"
+
+#~ msgid "stack 1"
+#~ msgstr "முதற்  குவியல்"
+
+#~ msgid "Keyboard"
+#~ msgstr "விசைப்பலகை"
+
+#~ msgid "Flow"
+#~ msgstr "தொடருங்கள்"
+
+#~ msgid "else"
+#~ msgstr "வேறு"
+
+#~ msgid "My Blocks"
+#~ msgstr "எனது தொகுதி"
+
+#~ msgid "Numbers"
+#~ msgstr "எண்கள்"
+
+#~ msgid "Templates"
+#~ msgstr "தூண்டு"
+
+#~ msgid "read key"
+#~ msgstr "சாவியை வாசி"
+
+#~ msgid "clean"
+#~ msgstr "சுத்தம்"
+
+#~ msgid "setyx"
+#~ msgstr "        ஒழுங்கு செய்"
+
+#~ msgid "sound"
+#~ msgstr "சத்தம்"
+
+#, fuzzy
+#~ msgid "text color"
+#~ msgstr "நிறத்தை  ஒழுங்கு படுத்து"
+
+#~ msgid "Pen"
+#~ msgstr "பேனை"
+
+#~ msgid "hide palette"
+#~ msgstr "குறை ஒளிந்துள்ளது"
+
+#~ msgid "stack"
+#~ msgstr "குவி"
+
+#~ msgid "Save as"
+#~ msgstr "சேமி"
+
+#~ msgid "run"
+#~ msgstr "ஓடு"
+
+#~ msgid "stop stack"
+#~ msgstr "குவியலை நிறுத்து"
