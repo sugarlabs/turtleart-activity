@@ -49,7 +49,8 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
                         DEAD_DICTS, DEAD_KEYS, TEMPLATES, PYTHON_SKIN, \
                         PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, OLD_NAMES, \
                         BOOLEAN_STYLE, BLOCK_NAMES, DEFAULT_TURTLE, \
-                        TURTLE_LAYER, EXPANDABLE_MATH
+                        TURTLE_LAYER, EXPANDABLE_MATH, COMPARE_STYLE, \
+                        BOOLEAN_STYLE
 from talogo import LogoCode, stop_logo
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
@@ -1431,6 +1432,9 @@ class TurtleArtWindow():
             for gblk in find_group(blk):
                 if gblk not in group:
                     gblk.spr.move_relative((0, dy * blk.scale))
+            if blk.name in COMPARE_STYLE or blk.name in BOOLEAN_STYLE:
+                for gblk in find_group(blk):
+                    gblk.spr.move_relative((0, -dy * blk.scale))
             grow_stack_arm(find_sandwich_top(blk))
         elif blk.name in EXPANDABLE or blk.name == 'nop':
             if show_button_hit(blk.spr, x, y):

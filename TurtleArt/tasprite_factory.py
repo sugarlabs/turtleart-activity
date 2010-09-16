@@ -95,6 +95,7 @@ class SVG:
                 svg += self._do_porch(False)
             elif len(self._innie)-1 > i:
                 svg += self._rline_to(0, 2*self._innie_y2+self._innie_spacer)
+        # moved expand_y to just after first innie above
         # svg += self._rline_to(0, self._expand_y)
         svg += self._corner(-1, 1)
         svg += self.line_to(xx, self._y)
@@ -241,9 +242,14 @@ class SVG:
         self.reset_min_max()
         svg = self._start_boolean(self._stroke_width/2.0,
                                   self._radius*5.5+self._stroke_width/2.0+\
-                                  self._innie_y2+self._innie_spacer)
+                                  self._innie_y2+self._innie_spacer +\
+                                  self._expand_y)
         svg += self._rline_to(0,-self._radius*3.5-self._innie_y2-\
                              self._innie_spacer-self._stroke_width)
+
+        self._hide_x = self._x + self._radius/2
+        self._hide_y = self._y - self._radius/2
+
         svg += self._rarc_to(1, -1)
         svg += self._rline_to(self._radius/2.0+self._expand_x, 0)
         xx = self._x
@@ -251,8 +257,17 @@ class SVG:
         svg += self._do_boolean()
         svg += self._rline_to(0,self._radius*1.5+self._innie_y2+\
                                 self._innie_spacer)
+
+        svg += self._rline_to(0, self._expand_y)
+
         svg += self._do_boolean()
         svg += self._rline_to(0,self._radius/2.0)
+
+        self._show_x = self._x - self._radius/2
+        self._show_x -= (self._innie_x1+self._innie_x2)
+        self._show_y = self._y + self._radius/2
+        self._show_y -= (self._innie_y1+self._innie_y2*2)
+
         svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
         svg += self._end_boolean()
@@ -285,7 +300,7 @@ class SVG:
     def boolean_compare(self):
         self.reset_min_max()
         yoffset = self._radius*2+2*self._innie_y2+\
-                  self._innie_spacer+self._stroke_width/2.0
+                  self._innie_spacer+self._stroke_width/2.0 + self._expand_y
         if self._porch is True:
             yoffset += self._porch_y
         svg = self._start_boolean(self._stroke_width/2.0, yoffset)
@@ -293,11 +308,16 @@ class SVG:
         if self._porch is True:
             yoffset -= self._porch_y
         svg += self._rline_to(0, yoffset)
+
+        self._hide_x = self._x + self._radius/2
+        self._hide_y = self._y - self._radius/2
+
         svg += self._rarc_to(1, -1)
         svg += self._rline_to(self._radius/2.0+self._expand_x, 0)
         svg += self._rline_to(0,self._radius)
         xx = self._x
         svg += self._do_innie()
+        svg += self._rline_to(0, self._expand_y)
         if self._porch is True:
            svg += self._do_porch()
         else:
@@ -306,6 +326,11 @@ class SVG:
         svg += self._rline_to(0, self._radius)
         svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
+
+        self._show_x = self._x - self._radius/2
+        self._show_y = self._y + self._radius/2
+        self._show_y -= (self._innie_y1+self._innie_y2*2)
+
         svg += self._end_boolean()
         self.margins[0] = int((self._radius+self._stroke_width)*self._scale)
         self.margins[1] = int(self._stroke_width*self._scale)
@@ -947,7 +972,9 @@ class SVG:
         self.docks.append((int(self._x*self._scale), int(self._y*self._scale)))
         svg += self._rarc_to(1, -1)
         self._radius += self._stroke_width
-        return svg + self._rline_to(self._stroke_width, 0)
+        svg += self._rline_to(self._stroke_width, 0)
+        svg += self._rline_to(0, -self._expand_y)
+        return svg
 
     def _do_boolean(self):
         self.docks.append(
@@ -955,7 +982,8 @@ class SVG:
                            int((self._y+self._radius)*self._scale)))
         self.margins[2] =\
             int((self._x-self._radius-self._stroke_width)*self._scale)
-        return self._rarc_to(-1, 1, 90, 0, 0) + self._rarc_to(1, 1, 90, 0, 0)
+        svg = self._rarc_to(-1, 1, 90, 0, 0) + self._rarc_to(1, 1, 90, 0, 0)
+        return svg
 
     def _end_boolean(self):
         svg = self._rline_to(-self._radius*1.5,0)
@@ -967,6 +995,10 @@ class SVG:
         svg += self._close_path()
         self.calc_w_h()
         svg += self.style()
+        if self._show is True:
+            svg += self._show_dot()
+        if self._hide is True:
+            svg += self._hide_dot()
         return svg + self.footer()
 
     def calc_w_h(self, add_stroke_width=True):
