@@ -842,27 +842,21 @@ class LogoCode:
             else:
                 return y
         except ZeroDivisionError:
-            _logger.debug("ZeroDivisionError")
             stop_logo(self.tw)
             raise logoerror("#zerodivide")
-        except ValueError:
-            _logger.debug("ValueError")
+        except ValueError, e:
             stop_logo(self.tw)
-            raise logoerror("#syntaxerror")
-        except SyntaxError:
-            _logger.debug("SyntaxError")
+            raise logoerror('#' + str(e))
+        except SyntaxError, e:
             stop_logo(self.tw)
-            raise logoerror("#syntaxerror")
+            raise logoerror('#' + str(e))
         except NameError:
-            _logger.debug("NameError")
             stop_logo(self.tw)
-            raise logoerror("#syntaxerror")
+            raise logoerror('#' + str(e))
         except OverflowError:
-            _logger.debug("OverflowError")
             stop_logo(self.tw)
             raise logoerror("#overflowerror")
         except TypeError:
-            _logger.debug("TypeError")
             stop_logo(self.tw)
             raise logoerror("#notanumber")
 
