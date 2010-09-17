@@ -20,7 +20,21 @@
 #THE SOFTWARE.
 
 import gtk
-from taconstants import *
+from taconstants import EXPANDABLE, EXPANDABLE_BLOCKS, EXPANDABLE_ARGS, \
+    PRIMITIVES, OLD_NAMES, BLOCK_SCALE, BLOCK_NAMES, CONTENT_BLOCKS, \
+    PALETTES, COLORS, BASIC_STYLE_HEAD, BASIC_STYLE_HEAD_1ARG, \
+    BASIC_STYLE_TAIL, BASIC_STYLE, BASIC_STYLE_EXTENDED, BASIC_STYLE_1ARG, \
+    BASIC_STYLE_VAR_ARG, BULLET_STYLE, BASIC_STYLE_2ARG, BOX_STYLE, \
+    BOX_STYLE_MEDIA, NUMBER_STYLE, NUMBER_STYLE_VAR_ARG, NUMBER_STYLE_BLOCK, \
+    NUMBER_STYLE_PORCH, NUMBER_STYLE_1ARG, NUMBER_STYLE_1STRARG, \
+    COMPARE_STYLE, BOOLEAN_STYLE, NOT_STYLE, FLOW_STYLE, FLOW_STYLE_TAIL, \
+    FLOW_STYLE_1ARG, FLOW_STYLE_BOOLEAN, FLOW_STYLE_WHILE, FLOW_STYLE_ELSE, \
+    COLLAPSIBLE_TOP, COLLAPSIBLE_TOP_NO_ARM, COLLAPSIBLE_TOP_NO_LABEL, \
+    COLLAPSIBLE_TOP_NO_ARM_NO_LABEL, COLLAPSIBLE_BOTTOM, PORTFOLIO_STYLE_2x2, \
+    PORTFOLIO_STYLE_1x1, PORTFOLIO_STYLE_2x1, PORTFOLIO_STYLE_1x2, BOX_COLORS, \
+    STANDARD_STROKE_WIDTH, SELECTED_STROKE_WIDTH, SELECTED_COLOR
+
+
 from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
 from gettext import gettext as _
@@ -105,6 +119,8 @@ class Block:
         # If there is already a block with the same name, reuse it
         copy_block = None
         if self.name not in EXPANDABLE and \
+           self.name not in EXPANDABLE_BLOCKS and \
+           self.name not in EXPANDABLE_ARGS and \
            self.name not in ['string', 'sandwichtop', 'sandwichtop_no_label']:
             for b in block_list.list:
                 if b.scale == self.scale and b.name == self.name:
@@ -279,7 +295,10 @@ class Block:
                 self.shapes[1] = copy_block.shapes[1]
             self.docks = copy_block.docks[:]
         else:
-            if self.name in EXPANDABLE and self.type == 'block':
+            if (self.name in EXPANDABLE or \
+                self.name in EXPANDABLE_BLOCKS or \
+                self.name in EXPANDABLE_ARGS) and \
+               self.type == 'block':
                 self.svg.set_show(True)
 
             self._make_block(self.svg)

@@ -49,8 +49,8 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
                         DEAD_DICTS, DEAD_KEYS, TEMPLATES, PYTHON_SKIN, \
                         PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, OLD_NAMES, \
                         BOOLEAN_STYLE, BLOCK_NAMES, DEFAULT_TURTLE, \
-                        TURTLE_LAYER, EXPANDABLE_MATH, COMPARE_STYLE, \
-                        BOOLEAN_STYLE
+                        TURTLE_LAYER, EXPANDABLE_BLOCKS, COMPARE_STYLE, \
+                        BOOLEAN_STYLE, EXPANDABLE_ARGS
 from talogo import LogoCode, stop_logo
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
@@ -1416,7 +1416,7 @@ class TurtleArtWindow():
                 if gblk != blk:
                     gblk.spr.move_relative((0, dy * blk.scale))
             grow_stack_arm(find_sandwich_top(blk))
-        elif blk.name in EXPANDABLE_MATH:
+        elif blk.name in EXPANDABLE_BLOCKS:
             if hide_button_hit(blk.spr, x, y):
                 dy = blk.reset_y()
             elif show_button_hit(blk.spr, x, y):
@@ -1438,7 +1438,7 @@ class TurtleArtWindow():
                 for gblk in find_group(blk):
                     gblk.spr.move_relative((0, -dy * blk.scale))
             grow_stack_arm(find_sandwich_top(blk))
-        elif blk.name in EXPANDABLE or blk.name == 'nop':
+        elif blk.name in EXPANDABLE_ARGS or blk.name == 'nop':
             if show_button_hit(blk.spr, x, y):
                 n = len(blk.connections)
                 group = find_group(blk.connections[n-1])
@@ -2036,8 +2036,9 @@ class TurtleArtWindow():
         elif btype == 'start': # block size is saved in start block
             if value is not None:
                 self.block_scale = value
-        elif btype in EXPANDABLE or btype == 'nop':
-            if btype == 'vspace' or btype in EXPANDABLE_MATH:
+        elif btype in EXPANDABLE or btype in EXPANDABLE_BLOCKS or \
+             btype in EXPANDABLE_ARGS or btype == 'nop':
+            if btype == 'vspace' or btype in EXPANDABLE_BLOCKS:
                 if value is not None:
                     blk.expand_in_y(value)
             elif btype == 'hspace' or btype == 'identity2':
@@ -2151,7 +2152,8 @@ class TurtleArtWindow():
                     _name = (_blk.name, _blk.values[0])
                 else:
                     _name = (_blk.name)
-            elif _blk.name in EXPANDABLE:
+            elif _blk.name in EXPANDABLE or _blk.name in EXPANDABLE_BLOCKS or \
+                 _blk.name in EXPANDABLE_ARGS:
                 _ex, _ey = _blk.get_expand_x_y()
                 if _ex > 0:
                     _name = (_blk.name, _ex)
