@@ -247,8 +247,9 @@ class SVG:
         svg += self._rline_to(0,-self._radius*3.5-self._innie_y2-\
                              self._innie_spacer-self._stroke_width)
 
-        self._hide_x = self._x + self._radius/2
-        self._hide_y = self._y - self._radius/2
+        self._hide_x = self._x + self._radius/2 + self._stroke_width
+        self._hide_y = self._y - self._radius/2 + self._stroke_width
+        self._show_x = self._x + self._radius/2 + self._stroke_width
 
         svg += self._rarc_to(1, -1)
         svg += self._rline_to(self._radius/2.0+self._expand_x, 0)
@@ -263,10 +264,8 @@ class SVG:
         svg += self._do_boolean()
         svg += self._rline_to(0,self._radius/2.0)
 
-        self._show_x = self._x - self._radius/2
-        self._show_x -= (self._innie_x1+self._innie_x2)
         self._show_y = self._y + self._radius/2
-        self._show_y -= (self._innie_y1+self._innie_y2*2)
+        self._show_y -= (self._innie_y1+self._innie_y2+self._stroke_width)
 
         svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
@@ -309,8 +308,9 @@ class SVG:
             yoffset -= self._porch_y
         svg += self._rline_to(0, yoffset)
 
-        self._hide_x = self._x + self._radius/2
-        self._hide_y = self._y - self._radius/2
+        self._hide_x = self._x + self._radius/2 + self._stroke_width
+        self._hide_y = self._y - self._radius/2 + self._stroke_width
+        self._show_x = self._x + self._radius/2 + self._stroke_width
 
         svg += self._rarc_to(1, -1)
         svg += self._rline_to(self._radius/2.0+self._expand_x, 0)
@@ -327,9 +327,8 @@ class SVG:
         svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
 
-        self._show_x = self._x - self._radius/2
         self._show_y = self._y + self._radius/2
-        self._show_y -= (self._innie_y1+self._innie_y2*2)
+        self._show_y -= (self._innie_y1+self._innie_y2+self._stroke_width)
 
         svg += self._end_boolean()
         self.margins[0] = int((self._radius+self._stroke_width)*self._scale)
@@ -798,14 +797,11 @@ class SVG:
     def _corner(self, sign_x, sign_y, a=90, l=0, s=1, start=True, end=True):
         svg_str = ""
         if sign_x == 1 and sign_y == -1:
-            self._hide_x = self._x + self._radius/2
-            self._hide_y = self._y - self._radius/2
+            self._hide_x = self._x + self._radius/2 + self._stroke_width
+            self._hide_y = self._y - self._radius/2 + self._stroke_width
+            self._show_x = self._x + self._radius/2 + self._stroke_width
         if sign_x == -1 and sign_y == 1:
-            self._show_x = self._x - self._radius/2
-            self._show_y = self._y + self._radius/2
-            if True in self._innie:
-                self._show_x -= (self._innie_x1+self._innie_x2)
-                self._show_y -= (self._innie_y1+self._innie_y2)
+            self._show_y = self._y + self._radius/2 - self._stroke_width
         if self._radius > 0:
             r2 = self._radius/2.0
             if start:
