@@ -675,7 +675,7 @@ OLD_NAMES = {'product':'product2', 'storeinbox':'storein', 'minus':'minus2',
              'template1':'template1x1', 'template2':'template2x1',
              'template6':'template1x2', 'template7':'template2x2', 
              'template4':'template1x1a', 'hres':'width', 'vres':'height',
-             'sandwichtop2':'sandwichtop_no_arm'}
+             'sandwichtop2':'sandwichtop'}
 
 #
 # Define the relative size and postion of media objects
