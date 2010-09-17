@@ -26,6 +26,7 @@ import gtk
 import os
 from gettext import gettext as _
 
+from taconstants import HIT_RED, HIT_GREEN, HIDE_WHITE, SHOW_WHITE
 class SVG:
     def __init__(self):
         self._x = 0
@@ -835,7 +836,7 @@ class SVG:
 
     def _hide_dot(self, noscale=False):
         _saved_fill, _saved_stroke = self._fill, self._stroke
-        self._fill, self._stroke = "#FF0000", "#FF0000"
+        self._fill, self._stroke = HIT_RED, HIT_RED
         svg = "</g>/n<g>/n"
         if noscale:
             scale = 2.0
@@ -844,7 +845,7 @@ class SVG:
         scale2 = scale/2
         svg += self._circle(self._dot_radius*scale2, self._hide_x*scale,
                                                     self._hide_y*scale)
-        self._fill, self._stroke = "#FFFFFF", "#FFFFFF"
+        self._fill, self._stroke = HIDE_WHITE, HIDE_WHITE
         svg += self._rect(10*scale2, 2*scale2, self._hide_x*scale-5*scale2,
                                              self._hide_y*scale-scale+scale2)
         self._fill, self._stroke = _saved_fill, _saved_stroke
@@ -852,7 +853,7 @@ class SVG:
 
     def _show_dot(self, noscale=False):
         _saved_fill, _saved_stroke = self._fill, self._stroke
-        self._fill, self._stroke = "#00FE00", "#00FE00"
+        self._fill, self._stroke = HIT_GREEN, HIT_GREEN
         svg = "</g>/n<g>/n"
         if noscale:
             scale = 2.0
@@ -861,7 +862,7 @@ class SVG:
         scale2 = scale/2
         svg += self._circle(self._dot_radius*scale2, self._show_x*scale,
                                                     self._show_y*scale)
-        self._fill, self._stroke = "#FEFEFE", "#FEFEFE"
+        self._fill, self._stroke = SHOW_WHITE, SHOW_WHITE
         svg += self._rect(10*scale2, 2*scale2, self._show_x*scale-5*scale2,
                                              self._show_y*scale-scale+scale2)
         svg += self._rect(2*scale2, 10*scale2, self._show_x*scale-scale+scale2,

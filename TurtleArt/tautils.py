@@ -36,7 +36,8 @@ except (ImportError, AttributeError):
     except:
         OLD_SUGAR_SYSTEM = True
 from taconstants import STRING_OR_NUMBER_ARGS, HIDE_LAYER, CONTENT_ARGS, \
-                        COLLAPSIBLE, BLOCK_LAYER, CONTENT_BLOCKS
+                        COLLAPSIBLE, BLOCK_LAYER, CONTENT_BLOCKS, HIT_HIDE, \
+                        HIT_SHOW
 from StringIO import StringIO
 import os.path
 from gettext import gettext as _
@@ -507,7 +508,8 @@ def collapsible(blk):
 def hide_button_hit(spr, x, y):
     """ Did the sprite's hide (contract) button get hit? """
     _red, _green, _blue, _alpha = spr.get_pixel((x, y))
-    if (_red == 255 and _green == 0) or _green == 255:
+    print _red, _green, _blue
+    if _red == HIT_HIDE:
         return True
     else:
         return False
@@ -515,7 +517,8 @@ def hide_button_hit(spr, x, y):
 def show_button_hit(spr, x, y):
     """ Did the sprite's show (expand) button get hit? """
     _red, _green, _blue, _alpha = spr.get_pixel((x, y))
-    if _green == 254:
+    print _red, _green, _blue
+    if _green == HIT_SHOW:
         return True
     else:
         return False
