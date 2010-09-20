@@ -1617,7 +1617,6 @@ class TurtleArtWindow():
                     for gblk in find_group(best_destination):
                         gblk.spr.move_relative(
                             (0, -dy * best_destination.scale))
-                    grow_stack_arm(find_sandwich_top(best_destination))
 
     def _import_from_journal(self, blk):
         """ Import a file from the Sugar Journal """
