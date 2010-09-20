@@ -217,7 +217,10 @@ class Block:
             return
         self.ey += dy
         if self.type == 'block':
-            self.svg.set_hide(True)
+            if self.ey > 0:
+                self.svg.set_hide(True)
+            else:
+                self.svg.set_hide(False)
             self.svg.set_show(True)
         else:
             self.svg.set_hide(False)
