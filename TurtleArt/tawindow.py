@@ -1417,6 +1417,11 @@ class TurtleArtWindow():
                     gblk.spr.move_relative((0, dy * blk.scale))
             grow_stack_arm(find_sandwich_top(blk))
         elif blk.name in EXPANDABLE_BLOCKS:
+            # Connection may be lost during expansion, so store it...
+            blk0 = blk.connections[0]
+            if blk0 is not None:
+                dock0 = blk0.connections.index(blk)
+
             if hide_button_hit(blk.spr, x, y):
                 dy = blk.reset_y()
             elif show_button_hit(blk.spr, x, y):
@@ -1427,7 +1432,12 @@ class TurtleArtWindow():
                 return
 
             self._expand_expandable(blk, blk.connections[1], dy)
-            self._cascade_expandable(blk, flag=True)
+            # and restore it...
+            if blk0 is not None:
+                blk.connections[0] = blk0
+                blk0.connections[dock0] = blk
+                self._cascade_expandable(blk)
+
             grow_stack_arm(find_sandwich_top(blk))
 
         elif blk.name in EXPANDABLE_ARGS or blk.name == 'nop':
@@ -1505,22 +1515,15 @@ class TurtleArtWindow():
             for gblk in find_group(blk):
                 gblk.spr.move_relative((0, -dy * blk.scale))
 
-    def _cascade_expandable(self, blk, flag=False):
+    def _cascade_expandable(self, blk):
         """ If expanding/shrinking a block, cascade. """
-        if flag:
-            print "cascading", blk.name
         while blk.name in NUMBER_STYLE or \
                 blk.name in NUMBER_STYLE_PORCH or \
-                blk.name in NUMBER_STYLE_BLOCK or \
-                (flag and blk.name in COMPARE_STYLE):
+                blk.name in NUMBER_STYLE_BLOCK:
             if blk.connections[0] is None:
-                if flag:
-                    print "connections[0] is None"
                 break
             if blk.connections[0].name in EXPANDABLE_BLOCKS:
                 blk = blk.connections[0]
-                if flag:
-                    print "expanding", blk.name
                 dy = 20 + blk.connections[1].ey - blk.ey
                 blk.expand_in_y(dy)
                 if dy != 0:
@@ -1529,13 +1532,9 @@ class TurtleArtWindow():
                     for gblk in find_group(blk):
                         if gblk not in group:
                             gblk.spr.move_relative((0, dy * blk.scale))
-                            if flag:
-                                print "moving", gblk.name, dy
                     if blk.name in COMPARE_STYLE:
                         for gblk in find_group(blk):
                             gblk.spr.move_relative((0, -dy * blk.scale))
-                            if flag:
-                                print "moving", gblk.name, -dy
 
     def _check_collapsibles(self, blk):
         """ Check the state of collapsible blocks upon change in dock state. """
@@ -1576,12 +1575,13 @@ class TurtleArtWindow():
                 pass
 
     def _snap_to_dock(self):
-        """ Snap a block (dragged_block) to the dock of another block
+        """ Snap a block (selected_block) to the dock of another block
             (destination_block).
         """
-        dragged_block = self.drag_group[0]
+        selected_block = self.drag_group[0]
+        best_destination = None
         d = 200
-        for dragged_block_dockn in range(len(dragged_block.docks)):
+        for selected_block_dockn in range(len(selected_block.docks)):
             for destination_block in self.just_blocks():
                 # Don't link to a block to which you're already connected
                 if destination_block in self.drag_group:
@@ -1589,17 +1589,17 @@ class TurtleArtWindow():
                 # Check each dock of destination for a possible connection
                 for destination_dockn in range(len(destination_block.docks)):
                     this_xy = dock_dx_dy(destination_block, destination_dockn,
-                                          dragged_block, dragged_block_dockn)
+                                          selected_block, selected_block_dockn)
                     if magnitude(this_xy) > d:
                         continue
                     d = magnitude(this_xy)
                     best_xy = this_xy
                     best_destination = destination_block
                     best_destination_dockn = destination_dockn
-                    best_dragged_block_dockn = dragged_block_dockn
+                    best_selected_block_dockn = selected_block_dockn
         if d < 200:
-            if not arithmetic_check(dragged_block, best_destination,
-                                    best_dragged_block_dockn,
+            if not arithmetic_check(selected_block, best_destination,
+                                    best_selected_block_dockn,
                                     best_destination_dockn):
                 return
             for blk in self.drag_group:
@@ -1612,30 +1612,57 @@ class TurtleArtWindow():
                 blk_in_dock.connections[0] = None
                 self._put_in_trash(blk_in_dock)
 
-            best_destination.connections[best_destination_dockn] = dragged_block
-            if dragged_block.connections is not None:
-                dragged_block.connections[best_dragged_block_dockn] = \
+            best_destination.connections[best_destination_dockn] = \
+                selected_block
+            if selected_block.connections is not None:
+                selected_block.connections[best_selected_block_dockn] = \
                     best_destination
 
             if best_destination.name in BOOLEAN_STYLE:
                 if best_destination_dockn == 2 and \
-                   dragged_block.name in COMPARE_STYLE:
-                    dy = dragged_block.ey - best_destination.ey
+                   selected_block.name in COMPARE_STYLE:
+                    dy = selected_block.ey - best_destination.ey
                     best_destination.expand_in_y(dy)
-                    self._expand_boolean(best_destination, dragged_block, dy)
+                    self._expand_boolean(best_destination, selected_block, dy)
             elif best_destination.name in EXPANDABLE_BLOCKS and \
                  best_destination_dockn == 1:
                 dy = 0
-                if dragged_block.name in EXPANDABLE_BLOCKS:
-                    dy = 20 + dragged_block.ey - best_destination.ey
+                if selected_block.name in EXPANDABLE_BLOCKS:
+                    dy = 20 + selected_block.ey - best_destination.ey
                     best_destination.expand_in_y(dy)
                 else:
                     if best_destination.ey > 0:
                         dy = best_destination.reset_y()
                 if dy != 0:
-                    self._expand_expandable(best_destination, dragged_block, dy)
+                    self._expand_expandable(best_destination, selected_block,
+                                            dy)
                 self._cascade_expandable(best_destination)
                 grow_stack_arm(find_sandwich_top(best_destination))
+
+    def _disconnect(self, blk):
+        """ Disconnect block from stack above it. """
+        if blk.connections[0] == None:
+            return
+        if collapsed(blk):
+            return
+        blk2 = blk.connections[0]
+        c = blk2.connections.index(blk)
+        blk2.connections[c] = None
+
+        if blk2.name in BOOLEAN_STYLE:
+            if c == 2 and blk2.ey > 0:
+                dy = -blk2.ey
+                blk2.expand_in_y(dy)
+                self._expand_boolean(blk2, blk, dy)
+        elif blk2.name in EXPANDABLE_BLOCKS and c == 1:
+            if blk2.ey > 0:
+                dy = blk2.reset_y()
+                if dy != 0:
+                    self._expand_expandable(blk2, blk, dy)
+                self._cascade_expandable(blk2)
+                grow_stack_arm(find_sandwich_top(blk2))
+
+        blk.connections[0] = None
 
     def _import_from_journal(self, blk):
         """ Import a file from the Sugar Journal """
@@ -1708,31 +1735,6 @@ class TurtleArtWindow():
             x, y = self._calc_image_offset('', blk.spr)
             blk.set_image(pixbuf, x, y)
             self._resize_skin(blk)
-
-    def _disconnect(self, blk):
-        """ Disconnect block from stack above it. """
-        if blk.connections[0] == None:
-            return
-        if collapsed(blk):
-            return
-        blk2 = blk.connections[0]
-        c = blk2.connections.index(blk)
-        blk2.connections[c] = None
-
-        if blk2.name in BOOLEAN_STYLE:
-            if c == 2 and blk2.ey > 0:
-                dy = -blk2.ey
-                blk2.expand_in_y(dy)
-                self._expand_boolean(blk2, blk, dy)
-        elif blk2.name in EXPANDABLE_BLOCKS and c == 1:
-            if blk2.ey > 0:
-                dy = blk2.reset_y()
-                if dy != 0:
-                    self._expand_expandable(blk2, blk, dy)
-                self._cascade_expandable(blk2)
-                grow_stack_arm(find_sandwich_top(blk2))
-
-        blk.connections[0] = None
 
     def _keypress_cb(self, area, event):
         """ Keyboard """
