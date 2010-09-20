@@ -508,7 +508,6 @@ def collapsible(blk):
 def hide_button_hit(spr, x, y):
     """ Did the sprite's hide (contract) button get hit? """
     _red, _green, _blue, _alpha = spr.get_pixel((x, y))
-    print _red, _green, _blue
     if _red == HIT_HIDE:
         return True
     else:
@@ -517,7 +516,6 @@ def hide_button_hit(spr, x, y):
 def show_button_hit(spr, x, y):
     """ Did the sprite's show (expand) button get hit? """
     _red, _green, _blue, _alpha = spr.get_pixel((x, y))
-    print _red, _green, _blue
     if _green == HIT_SHOW:
         return True
     else:
