@@ -1587,8 +1587,7 @@ class TurtleArtWindow():
                         for gblk in find_group(best_you):
                             gblk.spr.move_relative((0, -dy * best_you.scale))
                     grow_stack_arm(find_sandwich_top(best_you))
-
-            if best_you.name in BOOLEAN_STYLE and best_your_dockn == 2:
+            elif best_you.name in BOOLEAN_STYLE and best_your_dockn == 2:
                 dy = 0
                 if my_block.name in EXPANDABLE_BLOCKS and my_block.ey > 0:
                     dy = my_block.ey - best_you.ey
