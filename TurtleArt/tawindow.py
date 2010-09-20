@@ -1423,43 +1423,11 @@ class TurtleArtWindow():
                 dy = 20
                 blk.expand_in_y(dy)
             else:
-                # since we are not expanding or contracting, run the stack
                 self._run_stack(blk)
                 return
 
-            if blk.connections[1] is not None:
-                group = find_group(blk.connections[1])
-                group.append(blk)
-            else:
-                group = [blk]
-            for gblk in find_group(blk):
-                if gblk not in group:
-                    gblk.spr.move_relative((0, dy * blk.scale))
-            if blk.name in COMPARE_STYLE or blk.name in BOOLEAN_STYLE:
-                for gblk in find_group(blk):
-                    gblk.spr.move_relative((0, -dy * blk.scale))
-
-            # Cascade
-            while blk.name in NUMBER_STYLE or \
-                  blk.name in NUMBER_STYLE_PORCH or \
-                  blk.name in NUMBER_STYLE_BLOCK:
-                if blk.connections[0] is None:
-                    break
-                if blk.connections[0] is not None and \
-                   blk.connections[0].name in EXPANDABLE_BLOCKS:
-                    blk = blk.connections[0]
-                    dy = 20 + blk.connections[1].ey - blk.ey
-                    blk.expand_in_y(dy)
-                    if dy != 0:
-                        group = find_group(blk.connections[1])
-                        group.append(blk)
-                        for gblk in find_group(blk):
-                            if gblk not in group:
-                                gblk.spr.move_relative((0, dy * blk.scale))
-                        if blk.name in COMPARE_STYLE:
-                            for gblk in find_group(blk):
-                                gblk.spr.move_relative((0, -dy * blk.scale))
-
+            self._expand_expandable(blk, blk.connections[1], dy)
+            self._cascade_expandable(blk, flag=True)
             grow_stack_arm(find_sandwich_top(blk))
 
         elif blk.name in EXPANDABLE_ARGS or blk.name == 'nop':
@@ -1515,6 +1483,59 @@ class TurtleArtWindow():
                 collapse_stack(top)
         else:
             self._run_stack(blk)
+
+    def _expand_boolean(self, blk, blk2, dy):
+        """ Expand a boolean blk if blk2 is too big to fit. """
+        group = find_group(blk2)
+        for gblk in find_group(blk):
+            if gblk not in group:
+                gblk.spr.move_relative((0, -dy * blk.scale))
+
+    def _expand_expandable(self, blk, blk2, dy):
+        """ Expand an expandable blk if blk2 is too big to fit. """
+        if blk2 is None:
+            group = [blk]
+        else:
+            group = find_group(blk2)
+            group.append(blk)
+        for gblk in find_group(blk):
+            if gblk not in group:
+                gblk.spr.move_relative((0, dy * blk.scale))
+        if blk.name in COMPARE_STYLE:
+            for gblk in find_group(blk):
+                gblk.spr.move_relative((0, -dy * blk.scale))
+
+    def _cascade_expandable(self, blk, flag=False):
+        """ If expanding/shrinking a block, cascade. """
+        if flag:
+            print "cascading", blk.name
+        while blk.name in NUMBER_STYLE or \
+                blk.name in NUMBER_STYLE_PORCH or \
+                blk.name in NUMBER_STYLE_BLOCK or \
+                (flag and blk.name in COMPARE_STYLE):
+            if blk.connections[0] is None:
+                if flag:
+                    print "connections[0] is None"
+                break
+            if blk.connections[0].name in EXPANDABLE_BLOCKS:
+                blk = blk.connections[0]
+                if flag:
+                    print "expanding", blk.name
+                dy = 20 + blk.connections[1].ey - blk.ey
+                blk.expand_in_y(dy)
+                if dy != 0:
+                    group = find_group(blk.connections[1])
+                    group.append(blk)
+                    for gblk in find_group(blk):
+                        if gblk not in group:
+                            gblk.spr.move_relative((0, dy * blk.scale))
+                            if flag:
+                                print "moving", gblk.name, dy
+                    if blk.name in COMPARE_STYLE:
+                        for gblk in find_group(blk):
+                            gblk.spr.move_relative((0, -dy * blk.scale))
+                            if flag:
+                                print "moving", gblk.name, -dy
 
     def _check_collapsibles(self, blk):
         """ Check the state of collapsible blocks upon change in dock state. """
@@ -1596,9 +1617,14 @@ class TurtleArtWindow():
                 dragged_block.connections[best_dragged_block_dockn] = \
                     best_destination
 
-            if best_destination.name not in BOOLEAN_STYLE and \
-               best_destination.name in EXPANDABLE_BLOCKS and \
-               best_destination_dockn == 1:
+            if best_destination.name in BOOLEAN_STYLE:
+                if best_destination_dockn == 2 and \
+                   dragged_block.name in COMPARE_STYLE:
+                    dy = dragged_block.ey - best_destination.ey
+                    best_destination.expand_in_y(dy)
+                    self._expand_boolean(best_destination, dragged_block, dy)
+            elif best_destination.name in EXPANDABLE_BLOCKS and \
+                 best_destination_dockn == 1:
                 dy = 0
                 if dragged_block.name in EXPANDABLE_BLOCKS:
                     dy = 20 + dragged_block.ey - best_destination.ey
@@ -1607,40 +1633,9 @@ class TurtleArtWindow():
                     if best_destination.ey > 0:
                         dy = best_destination.reset_y()
                 if dy != 0:
-                    group = find_group(dragged_block)
-                    group.append(best_destination)
-                    for gblk in find_group(best_destination):
-                        if gblk not in group:
-                            gblk.spr.move_relative(
-                                (0, dy * best_destination.scale))
-                    if best_destination.name in COMPARE_STYLE:
-                        for gblk in find_group(best_destination):
-                            gblk.spr.move_relative(
-                                (0, -dy * best_destination.scale))
-                    grow_stack_arm(find_sandwich_top(best_destination))
-            elif best_destination.name in BOOLEAN_STYLE and \
-                    best_destination_dockn == 2:
-                dy = 0
-                if dragged_block.name in EXPANDABLE_BLOCKS and \
-                        dragged_block.ey > 0:
-                    dy = dragged_block.ey - best_destination.ey
-                    best_destination.expand_in_y(dy)
-                else:
-                    if best_destination.ey > 0:
-                        dy = best_destination.reset_y()
-                if dy != 0:
-                    if best_destination.connections[1] is not None:
-                        group = find_group(best_destination.connections[1])
-                        group.append(best_destination)
-                    else:
-                        group = [best_destination]
-                    for gblk in find_group(best_destination):
-                        if gblk not in group:
-                            gblk.spr.move_relative(
-                                (0, dy * best_destination.scale))
-                    for gblk in find_group(best_destination):
-                        gblk.spr.move_relative(
-                            (0, -dy * best_destination.scale))
+                    self._expand_expandable(best_destination, dragged_block, dy)
+                self._cascade_expandable(best_destination)
+                grow_stack_arm(find_sandwich_top(best_destination))
 
     def _import_from_journal(self, blk):
         """ Import a file from the Sugar Journal """
@@ -1724,24 +1719,18 @@ class TurtleArtWindow():
         c = blk2.connections.index(blk)
         blk2.connections[c] = None
 
-        print "disconnecting", blk.name, "from", blk2.name
-        if blk2.name in EXPANDABLE_BLOCKS and c == 1:
+        if blk2.name in BOOLEAN_STYLE:
+            if c == 2 and blk2.ey > 0:
+                dy = -blk2.ey
+                blk2.expand_in_y(dy)
+                self._expand_boolean(blk2, blk, dy)
+        elif blk2.name in EXPANDABLE_BLOCKS and c == 1:
             if blk2.ey > 0:
-                print "shrinking ", blk2.name
                 dy = blk2.reset_y()
-
                 if dy != 0:
-                    group = find_group(blk)
-                    group.append(blk2)
-                    for gblk in find_group(blk2):
-                        if gblk not in group:
-                            gblk.spr.move_relative(
-                                (0, dy * blk2.scale))
-                    if blk2.name in COMPARE_STYLE:
-                        for gblk in find_group(blk2):
-                            gblk.spr.move_relative(
-                                (0, -dy * blk2.scale))
-                    grow_stack_arm(find_sandwich_top(blk2))
+                    self._expand_expandable(blk2, blk, dy)
+                self._cascade_expandable(blk2)
+                grow_stack_arm(find_sandwich_top(blk2))
 
         blk.connections[0] = None
 
