@@ -135,7 +135,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc1arg',  'userdefined', 'addturtle', 'comment', 'print',
              'cartesian', 'width', 'height', 'polar', 'sandwichtop_no_label',
-             'sandwichbottom', 'readpixel', 'see'],
+             'sandwichbottom', 'readpixel', 'see', 'skin'],
             ['journal', 'audio', 'description', 'hideblocks', 'showblocks',
              'fullscreen', 'savepix', 'savesvg', 'picturelist',
              'picture1x1a', 'picture1x1', 'picture2x2', 'picture2x1',
@@ -196,7 +196,7 @@ BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show', 'image',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print', 'showaligned',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1', 'savepix',
     'storeinbox2', 'wait', 'stack', 'push', 'nop', 'addturtle', 'comment',
-    'savesvg', 'setgray']
+    'savesvg', 'setgray', 'skin']
 BASIC_STYLE_VAR_ARG = ['userdefined', 'userdefined2args', 'userdefined3args']
 BULLET_STYLE = ['templatelist', 'list']
 BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storein', 'write']
@@ -383,6 +383,7 @@ BLOCK_NAMES = {
     'show':[_('show')],
     'showblocks':[_('show blocks')],
     'showaligned':[_('show aligned')],
+    'skin':[_('turtle shell')],
     'sqrt':['√'],
     'stack':[_('action')],
     'stack1':[_('action 1')],
@@ -526,6 +527,7 @@ PRIMITIVES = {
     'show':'show',
     'showblocks':'showblocks',
     'showaligned':'showaligned',
+    'skin':'skin',
     'sqrt':'sqrt',
     'stack':'stack',
     'stack1':'stack1',
@@ -609,6 +611,7 @@ DEFAULTS = {
     'setxy':[0, 0],
     'show':[_('text')],
     'showaligned':[_('text')],
+    'skin':[None],
     'stack':[_('action')],
     'storeinbox1':[100],
     'storeinbox2':[100],
@@ -638,7 +641,7 @@ STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
                          'userdefined2args', 'userdefined3args', 'storein']
 
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
-                'storeinbox2']
+                'storeinbox2', 'skin']
 
 #
 # Status blocks
@@ -838,6 +841,7 @@ HELP_STRINGS = {
     'shade':_("holds current pen shade"),
     'show':_("draws text or show media from the Journal"),
     'showblocks':_("restores hidden blocks"),
+    'skin':_("put a shell on the turtle"),
     'sqrt':_("calculates square root"),
     'stack1':_("invokes Action 1 stack"),
     'stack2':_("invokes Action 2 stack"),

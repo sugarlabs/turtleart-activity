@@ -348,6 +348,7 @@ class LogoCode:
         'show':[1, lambda self, x: self.show(x, True)],
         'showaligned':[1,lambda self, x: self.show(x, False)],
         'showblocks':[0, lambda self: self.tw.showblocks()],
+        'skin':[1, lambda self, x: self.reskin(x)],
         'sound':[1, lambda self, x: self.play_sound(x)],
         'sqrt':[1, lambda self, x: tasqrt(x)],
         'stack1':[0, self.prim_stack1, True],
@@ -1071,6 +1072,14 @@ class LogoCode:
         """ Set scale used by media object display """
         self.scale = x
 
+    def reskin(self, media):
+        """ Reskin the turtle with an image from a file """
+        w = int(self.scale)
+        h = int(self.scale)
+        pixbuf = self.show_picture(media, 0, 0, w, h, False)
+        if pixbuf is not None:
+            self.tw.active_turtle.set_shapes([pixbuf])
+
     def show(self, string, center=False):
         """ Show is the general-purpose media-rendering block. """
         # convert from Turtle coordinates to screen coordinates
@@ -1138,7 +1147,7 @@ class LogoCode:
         else:
             play_audio(self, audio[6:])
 
-    def show_picture(self, media, x, y, w, h):
+    def show_picture(self, media, x, y, w, h, show=True):
         """ Image file from Journal """
         if media == "" or media[6:] == "":
             pass
@@ -1179,10 +1188,12 @@ class LogoCode:
                     self.filepath = None
                     self.tw.showlabel('nofile', media[6:]) 
                     print "Couldn't open media object %s" % (media[6:])
-            if pixbuf is not None:
+            if pixbuf is not None and show:
                 self.tw.canvas.draw_pixbuf(pixbuf, 0, 0, int(x), int(y),
                                                          int(w), int(h),
                                            self.filepath)
+            else:
+                return pixbuf
 
     def show_description(self, media, x, y, w, h):
         """ Description field from Journal """

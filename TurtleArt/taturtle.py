@@ -24,12 +24,19 @@ from tasprite_factory import SVG, svg_str_to_pixbuf
 from tacanvas import wrap100, color_table
 from sprites import Sprite
 
+import logging
+_logger = logging.getLogger('turtleart-activity')
+
+
+SHAPES = 36
+
+
 def generate_turtle_pixbufs(colors):
     """ Generate pixbufs for generic turtles """
     shapes = []
     svg = SVG()
     svg.set_scale(1.0)
-    for i in range(36):
+    for i in range(SHAPES):
         svg.set_orientation(i*10)
         shapes.append(svg_str_to_pixbuf(svg.turtle(colors)))
     return shapes
@@ -143,10 +150,25 @@ class Turtle:
             self.spr = None
         turtles.add_to_dict(key, self)
 
+    def set_shapes(self, shapes):
+        """ Reskin the turtle """
+        n = len(shapes)
+        if n == SHAPES:
+            self.shapes = shapes[:]
+        else:
+            if n != 1:
+                _logger.debug("%d images passed to set_shapes: ignoring" % (n))
+            images = [shapes[0]]
+            for i in range(3):
+                images.append(images[i].rotate_simple(90))
+            for i in range(SHAPES):
+                j = (i + 4) % SHAPES
+                self.shapes[j] = images[int(j/9) % 4]
+
     def set_heading(self, heading):
-        """ Set the turtle heading (and shape: one per 10 degrees) """
+        """ Set the turtle heading (one shape per 360/SHAPES degrees) """
         self.heading = heading        
-        i = (int(self.heading+5)%360)/10
+        i = (int(self.heading+5)%360)/(360 / SHAPES)
         if not self.hidden and self.spr is not None:
             try:
                 self.spr.set_shape(self.shapes[i])
