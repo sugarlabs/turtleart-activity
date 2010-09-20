@@ -50,7 +50,8 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
                         PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, OLD_NAMES, \
                         BOOLEAN_STYLE, BLOCK_NAMES, DEFAULT_TURTLE, \
                         TURTLE_LAYER, EXPANDABLE_BLOCKS, COMPARE_STYLE, \
-                        BOOLEAN_STYLE, EXPANDABLE_ARGS
+                        BOOLEAN_STYLE, EXPANDABLE_ARGS, NUMBER_STYLE, \
+                        NUMBER_STYLE_PORCH, NUMBER_STYLE_BLOCK
 from talogo import LogoCode, stop_logo
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
@@ -1243,7 +1244,6 @@ class TurtleArtWindow():
         self.dx += dx
         self.dy += dy
 
-
     def _show_popup(self, x, y):
         """ Let's help our users by displaying a little help. """
         spr = self.sprite_list.find_sprite((x, y))
@@ -1425,7 +1425,8 @@ class TurtleArtWindow():
             else:
                 # since we are not expanding or contracting, run the stack
                 self._run_stack(blk)
-                dy = 0
+                return
+
             if blk.connections[1] is not None:
                 group = find_group(blk.connections[1])
                 group.append(blk)
@@ -1437,7 +1438,38 @@ class TurtleArtWindow():
             if blk.name in COMPARE_STYLE or blk.name in BOOLEAN_STYLE:
                 for gblk in find_group(blk):
                     gblk.spr.move_relative((0, -dy * blk.scale))
+
+            # Cascade
+            while blk.name in NUMBER_STYLE or \
+                  blk.name in NUMBER_STYLE_PORCH or \
+                  blk.name in NUMBER_STYLE_BLOCK:
+                print blk.name
+                if blk.connections[0] is not None:
+                    print blk.connections[0].name
+                else:
+                    print blk.name, " has no connection 0"
+                    break
+                if blk.connections[0] is not None and \
+                   blk.connections[0].name in EXPANDABLE_BLOCKS:
+                    print "cascading to ", blk.connections[0].name
+                    print blk.name, blk.ey
+                    blk = blk.connections[0]
+                    print blk.name, blk.ey
+                    dy = 20 + blk.connections[1].ey - blk.ey
+                    print "expanding", dy
+                    blk.expand_in_y(dy)
+                    if dy != 0:
+                        group = find_group(blk.connections[1])
+                        group.append(blk)
+                        for gblk in find_group(blk):
+                            if gblk not in group:
+                                gblk.spr.move_relative((0, dy * blk.scale))
+                        if blk.name in COMPARE_STYLE:
+                            for gblk in find_group(blk):
+                                gblk.spr.move_relative((0, -dy * blk.scale))
+
             grow_stack_arm(find_sandwich_top(blk))
+
         elif blk.name in EXPANDABLE_ARGS or blk.name == 'nop':
             if show_button_hit(blk.spr, x, y):
                 n = len(blk.connections)
