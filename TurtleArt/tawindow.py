@@ -1721,7 +1721,28 @@ class TurtleArtWindow():
         if collapsed(blk):
             return
         blk2 = blk.connections[0]
-        blk2.connections[blk2.connections.index(blk)] = None
+        c = blk2.connections.index(blk)
+        blk2.connections[c] = None
+
+        print "disconnecting", blk.name, "from", blk2.name
+        if blk2.name in EXPANDABLE_BLOCKS and c == 1:
+            if blk2.ey > 0:
+                print "shrinking ", blk2.name
+                dy = blk2.reset_y()
+
+                if dy != 0:
+                    group = find_group(blk)
+                    group.append(blk2)
+                    for gblk in find_group(blk2):
+                        if gblk not in group:
+                            gblk.spr.move_relative(
+                                (0, dy * blk2.scale))
+                    if blk2.name in COMPARE_STYLE:
+                        for gblk in find_group(blk2):
+                            gblk.spr.move_relative(
+                                (0, -dy * blk2.scale))
+                    grow_stack_arm(find_sandwich_top(blk2))
+
         blk.connections[0] = None
 
     def _keypress_cb(self, area, event):
