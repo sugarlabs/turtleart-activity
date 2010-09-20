@@ -1531,84 +1531,93 @@ class TurtleArtWindow():
                 pass
 
     def _snap_to_dock(self):
-        """ Snap a block to the dock of another block. """
-        my_block = self.drag_group[0]
+        """ Snap a block (dragged_block) to the dock of another block
+            (destination_block).
+        """
+        dragged_block = self.drag_group[0]
         d = 200
-        for my_dockn in range(len(my_block.docks)):
-            for your_block in self.just_blocks():
-                # don't link to a block to which you're already connected
-                if your_block in self.drag_group:
+        for dragged_block_dockn in range(len(dragged_block.docks)):
+            for destination_block in self.just_blocks():
+                # Don't link to a block to which you're already connected
+                if destination_block in self.drag_group:
                     continue
-                # check each dock of your_block for a possible connection
-                for your_dockn in range(len(your_block.docks)):
-                    this_xy = dock_dx_dy(your_block, your_dockn,
-                                          my_block, my_dockn)
+                # Check each dock of destination for a possible connection
+                for destination_dockn in range(len(destination_block.docks)):
+                    this_xy = dock_dx_dy(destination_block, destination_dockn,
+                                          dragged_block, dragged_block_dockn)
                     if magnitude(this_xy) > d:
                         continue
                     d = magnitude(this_xy)
                     best_xy = this_xy
-                    best_you = your_block
-                    best_your_dockn = your_dockn
-                    best_my_dockn = my_dockn
+                    best_destination = destination_block
+                    best_destination_dockn = destination_dockn
+                    best_dragged_block_dockn = dragged_block_dockn
         if d < 200:
-            if not arithmetic_check(my_block, best_you, best_my_dockn,
-                                     best_your_dockn):
+            if not arithmetic_check(dragged_block, best_destination,
+                                    best_dragged_block_dockn,
+                                    best_destination_dockn):
                 return
             for blk in self.drag_group:
                 (sx, sy) = blk.spr.get_xy()
                 blk.spr.move((sx + best_xy[0], sy + best_xy[1]))
 
             # If there was already a block docked there, move it to the trash.
-            blk_in_dock = best_you.connections[best_your_dockn]
+            blk_in_dock = best_destination.connections[best_destination_dockn]
             if blk_in_dock is not None:
                 blk_in_dock.connections[0] = None
                 self._put_in_trash(blk_in_dock)
 
-            best_you.connections[best_your_dockn] = my_block
-            if my_block.connections is not None:
-                my_block.connections[best_my_dockn] = best_you
+            best_destination.connections[best_destination_dockn] = dragged_block
+            if dragged_block.connections is not None:
+                dragged_block.connections[best_dragged_block_dockn] = \
+                    best_destination
 
-            if best_you.name not in BOOLEAN_STYLE and \
-               best_you.name in EXPANDABLE_BLOCKS and best_your_dockn == 1:
+            if best_destination.name not in BOOLEAN_STYLE and \
+               best_destination.name in EXPANDABLE_BLOCKS and \
+               best_destination_dockn == 1:
                 dy = 0
-                if my_block.name in EXPANDABLE_BLOCKS:
-                    dy = 20 + my_block.ey - best_you.ey
-                    best_you.expand_in_y(dy)
+                if dragged_block.name in EXPANDABLE_BLOCKS:
+                    dy = 20 + dragged_block.ey - best_destination.ey
+                    best_destination.expand_in_y(dy)
                 else:
-                    if best_you.ey > 0:
-                        dy = best_you.reset_y()
+                    if best_destination.ey > 0:
+                        dy = best_destination.reset_y()
                 if dy != 0:
-                    group = find_group(my_block)
-                    group.append(best_you)
-                    for gblk in find_group(best_you):
+                    group = find_group(dragged_block)
+                    group.append(best_destination)
+                    for gblk in find_group(best_destination):
                         if gblk not in group:
-                            gblk.spr.move_relative((0, dy * best_you.scale))
-                    if best_you.name in COMPARE_STYLE:
-                        for gblk in find_group(best_you):
-                            gblk.spr.move_relative((0, -dy * best_you.scale))
-                    grow_stack_arm(find_sandwich_top(best_you))
-            elif best_you.name in BOOLEAN_STYLE and best_your_dockn == 2:
+                            gblk.spr.move_relative(
+                                (0, dy * best_destination.scale))
+                    if best_destination.name in COMPARE_STYLE:
+                        for gblk in find_group(best_destination):
+                            gblk.spr.move_relative(
+                                (0, -dy * best_destination.scale))
+                    grow_stack_arm(find_sandwich_top(best_destination))
+            elif best_destination.name in BOOLEAN_STYLE and \
+                    best_destination_dockn == 2:
                 dy = 0
-                if my_block.name in EXPANDABLE_BLOCKS and my_block.ey > 0:
-                    dy = my_block.ey - best_you.ey
-                    best_you.expand_in_y(dy)
+                if dragged_block.name in EXPANDABLE_BLOCKS and \
+                        dragged_block.ey > 0:
+                    dy = dragged_block.ey - best_destination.ey
+                    best_destination.expand_in_y(dy)
                 else:
-                    if best_you.ey > 0:
-                        dy = best_you.reset_y()
+                    if best_destination.ey > 0:
+                        dy = best_destination.reset_y()
                 if dy != 0:
-                    if best_you.connections[1] is not None:
-                        group = find_group(best_you.connections[1])
-                        group.append(best_you)
+                    if best_destination.connections[1] is not None:
+                        group = find_group(best_destination.connections[1])
+                        group.append(best_destination)
                     else:
-                        group = [best_you]
-
-                    for gblk in find_group(best_you):
+                        group = [best_destination]
+                    for gblk in find_group(best_destination):
                         if gblk not in group:
-                            gblk.spr.move_relative((0, dy * best_you.scale))
-                    for gblk in find_group(best_you):
-                        gblk.spr.move_relative((0, -dy * best_you.scale))
-
-                    grow_stack_arm(find_sandwich_top(best_you))
+                            gblk.spr.move_relative(
+                                (0, dy * best_destination.scale))
+                    for gblk in find_group(best_destination):
+                        gblk.spr.move_relative(
+                            (0, -dy * best_destination.scale))
+                    grow_stack_arm(find_sandwich_top(best_destination))
 
     def _import_from_journal(self, blk):
         """ Import a file from the Sugar Journal """
