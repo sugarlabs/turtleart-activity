@@ -1570,26 +1570,23 @@ class TurtleArtWindow():
 
             if best_you.name not in BOOLEAN_STYLE and \
                best_you.name in EXPANDABLE_BLOCKS and best_your_dockn == 1:
+                dy = 0
                 if my_block.name in EXPANDABLE_BLOCKS:
                     dy = 20 + my_block.ey - best_you.ey
-                    if dy != 0:
-                        best_you.expand_in_y(dy)
-                        group = find_group(my_block)
-                        group.append(best_you)
-                        for gblk in find_group(best_you):
-                            if gblk not in group:
-                                gblk.spr.move_relative((0, dy * best_you.scale))
-                        if best_you.name in COMPARE_STYLE:
-                            for gblk in find_group(best_you):
-                                gblk.spr.move_relative((0,
-                                                        -dy * best_you.scale))
+                    best_you.expand_in_y(dy)
                 else:
                     if best_you.ey > 0:
                         dy = best_you.reset_y()
-                        if best_you.name in COMPARE_STYLE:
-                            for gblk in find_group(best_you):
-                                gblk.spr.move_relative((0,
-                                                        -dy * best_you.scale))
+                if dy != 0:
+                    group = find_group(my_block)
+                    group.append(best_you)
+                    for gblk in find_group(best_you):
+                        if gblk not in group:
+                            gblk.spr.move_relative((0, dy * best_you.scale))
+                    if best_you.name in COMPARE_STYLE:
+                        for gblk in find_group(best_you):
+                            gblk.spr.move_relative((0, -dy * best_you.scale))
+                    grow_stack_arm(find_sandwich_top(best_you))
 
     def _import_from_journal(self, blk):
         """ Import a file from the Sugar Journal """
