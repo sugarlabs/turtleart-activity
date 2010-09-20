@@ -1443,20 +1443,12 @@ class TurtleArtWindow():
             while blk.name in NUMBER_STYLE or \
                   blk.name in NUMBER_STYLE_PORCH or \
                   blk.name in NUMBER_STYLE_BLOCK:
-                print blk.name
-                if blk.connections[0] is not None:
-                    print blk.connections[0].name
-                else:
-                    print blk.name, " has no connection 0"
+                if blk.connections[0] is None:
                     break
                 if blk.connections[0] is not None and \
                    blk.connections[0].name in EXPANDABLE_BLOCKS:
-                    print "cascading to ", blk.connections[0].name
-                    print blk.name, blk.ey
                     blk = blk.connections[0]
-                    print blk.name, blk.ey
                     dy = 20 + blk.connections[1].ey - blk.ey
-                    print "expanding", dy
                     blk.expand_in_y(dy)
                     if dy != 0:
                         group = find_group(blk.connections[1])
