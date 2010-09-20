@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: turtleart-activity\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2009-09-23 18:26-0400\n"
-"Last-Translator: Markus Schlager <m.slg@gmx.de>\n"
+"PO-Revision-Date: 2010-02-26 04:46+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: OLPC-German <m.slg@gmx.de>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 1.2.1\n"
+"X-Generator: Pootle 2.0.1\n"
 
 #: activity/activity.info:2
 msgid "Turtle Art"
@@ -20,23 +20,23 @@ msgstr "Turtle-Kunst"
 #: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
 #: tasetup.py:53 tasetup.py:54
 msgid "title"
-msgstr "Titel"
+msgstr "titel"
 
 #: tasetup.py:66
 msgid "text"
-msgstr "Text"
+msgstr "text"
 
 #: tasetup.py:119 tasetup.py:120
 msgid "stack"
-msgstr "Stapel"
+msgstr "stapel"
 
 #: tasetup.py:125 tasetup.py:126
 msgid "box"
-msgstr "Rahmen"
+msgstr "rahmen"
 
 #: tasetup.py:127
 msgid "name"
-msgstr "Name"
+msgstr "name"
 
 #: TurtleArtActivity.py:48
 msgid "Project"
@@ -49,11 +49,11 @@ msgstr "Speichern unter"
 #: TurtleArtActivity.py:173 TurtleArtActivity.py:262
 #: TurtleArtActivity.py:293
 msgid "hide palette"
-msgstr "Palette verbergen"
+msgstr "palette verbergen"
 
 #: TurtleArtActivity.py:181 TurtleArtActivity.py:286
 msgid "hide blocks"
-msgstr "Blöcke verbergen"
+msgstr "blöcke verbergen"
 
 #: TurtleArtActivity.py:194
 msgid "run"
@@ -61,7 +61,7 @@ msgstr "ausführen"
 
 #: TurtleArtActivity.py:202
 msgid "step"
-msgstr "Einzelschritt"
+msgstr "einzelschritt"
 
 #: TurtleArtActivity.py:210
 msgid "stop turtle"
@@ -69,11 +69,11 @@ msgstr "Turtle anhalten"
 
 #: TurtleArtActivity.py:236
 msgid "samples"
-msgstr "Vorlagen"
+msgstr "vorlagen"
 
 #: TurtleArtActivity.py:249
 msgid "save as HTML"
-msgstr "Als HTML speichern"
+msgstr "als HTML speichern"
 
 #: TurtleArtActivity.py
 msgid "save Logo"
@@ -81,16 +81,16 @@ msgstr "Logo speichern"
 
 #: TurtleArtActivity.py
 msgid "load my block"
-msgstr "Meinen Block laden"
+msgstr "meinen block laden"
 
 #: TurtleArtActivity.py:259 TurtleArtActivity.py:267
 #: TurtleArtActivity.py:290 TurtleArtActivity.py:299
 msgid "show palette"
-msgstr "Palette anzeigen"
+msgstr "palette anzeigen"
 
 #: TurtleArtActivity.py:283 TurtleArtActivity.py:297
 msgid "show blocks"
-msgstr "Blöcke anzeigen"
+msgstr "blöcke anzeigen"
 
 #:
 msgid "Flow"
@@ -118,7 +118,7 @@ msgstr "wiederhole"
 
 #:
 msgid "stop stack"
-msgstr "Stapel anhalten"
+msgstr "stapel anhalten"
 
 #:
 msgid "wait"
@@ -130,19 +130,19 @@ msgstr "Meine Blöcke"
 
 #:
 msgid "box 1"
-msgstr "Rahmen 1"
+msgstr "rahmen 1"
 
 #:
 msgid "box 2"
-msgstr "Rahmen 2"
+msgstr "rahmen 2"
 
 #:
 msgid "stack 1"
-msgstr "Stapel 1"
+msgstr "stapel 1"
 
 #:
 msgid "stack 2"
-msgstr "Stapel 2"
+msgstr "stapel 2"
 
 #:
 msgid "store in box 1"
@@ -166,7 +166,7 @@ msgstr "Zahlen"
 
 #:
 msgid "number"
-msgstr "Zahl"
+msgstr "zahl"
 
 #:
 msgid "and"
@@ -182,7 +182,7 @@ msgstr "nicht"
 
 #:
 msgid "random"
-msgstr "Zufall"
+msgstr "zufall"
 
 #:
 msgid "min"
@@ -206,11 +206,11 @@ msgstr "Stift"
 
 #:
 msgid "color"
-msgstr "Farbe"
+msgstr "farbe"
 
 #:
 msgid "shade"
-msgstr "Farbton"
+msgstr "farbton"
 
 #:
 msgid "fill screen"
@@ -230,7 +230,7 @@ msgstr "setze Stiftdicke"
 
 #:
 msgid "pen size"
-msgstr "Stiftdicke"
+msgstr "stiftdicke"
 
 #:
 msgid "set shade"
@@ -274,19 +274,19 @@ msgstr "dreh dich links"
 
 #:
 msgid "arc"
-msgstr "Kreisbogen"
+msgstr "kreisbogen"
 
 #:
 msgid "angle"
-msgstr "Winkel"
+msgstr "winkel"
 
 #:
 msgid "radius"
-msgstr "Radius"
+msgstr "radius"
 
 #:
 msgid "heading"
-msgstr "Richtung"
+msgstr "richtung"
 
 #
 msgid "set heading"
@@ -318,19 +318,19 @@ msgstr "Sensoren"
 
 #:
 msgid "volume"
-msgstr "Lautstärke"
+msgstr "lautstärke"
 
 #:
 msgid "pitch"
-msgstr "Tonhöhe"
+msgstr "tonhöhe"
 
 #:
 msgid "voltage"
-msgstr "Spannung"
+msgstr "spannung"
 
 #:
 msgid "resistance"
-msgstr "Widerstand"
+msgstr "widerstand"
 
 #:
 msgid "Templates"
@@ -346,7 +346,7 @@ msgstr "lies Taste aus"
 
 #:
 msgid "sound"
-msgstr "Klang"
+msgstr "klang"
 
 #:
 msgid "hres"
@@ -358,4 +358,4 @@ msgstr "vert. Auflösung"
 
 #:
 msgid "start"
-msgstr "Start"
+msgstr "start"
