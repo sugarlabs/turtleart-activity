@@ -159,16 +159,20 @@ class Turtle:
             if n != 1:
                 _logger.debug("%d images passed to set_shapes: ignoring" % (n))
             images = [shapes[0]]
-            for i in range(3):
-                images.append(images[i].rotate_simple(90))
-            for i in range(SHAPES):
-                j = (i + 4) % SHAPES
-                self.shapes[j] = images[int(j/9) % 4]
+            if self.heading == 0:
+                for i in range(3):
+                    images.append(images[i].rotate_simple(90))
+                for i in range(SHAPES):
+                    j = (i + 4) % SHAPES
+                    self.shapes[j] = images[int(j/9) % 4]
+            else:
+                j = int(self.heading+5)%360 / (360 / SHAPES)
+                self.shapes[j] = images[0]
 
     def set_heading(self, heading):
         """ Set the turtle heading (one shape per 360/SHAPES degrees) """
         self.heading = heading        
-        i = (int(self.heading+5)%360)/(360 / SHAPES)
+        i = (int(self.heading + 5) % 360) / (360 / SHAPES)
         if not self.hidden and self.spr is not None:
             try:
                 self.spr.set_shape(self.shapes[i])
