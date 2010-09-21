@@ -1089,5 +1089,5 @@ MACROS = {
                [19, 'description', 0, 0, [18, None]],
                [20, 'sandwichbottom', 0, 0, [18, None]]],
     'reskin':
-              [[0, 'skin', 0, 0, [None, 1]],
+              [[0, 'skin', 0, 0, [None, 1, None]],
                [1, 'journal', 0, 0, [0, None]]] }
