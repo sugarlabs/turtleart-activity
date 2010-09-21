@@ -161,7 +161,7 @@ class Turtle:
             images = [shapes[0]]
             if self.heading == 0:
                 for i in range(3):
-                    images.append(images[i].rotate_simple(90))
+                    images.append(images[i].rotate_simple(270))
                 for i in range(SHAPES):
                     j = (i + 4) % SHAPES
                     self.shapes[j] = images[int(j/9) % 4]
