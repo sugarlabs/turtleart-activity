@@ -622,7 +622,7 @@ class TurtleGraphics:
 
     def set_turtle(self, k, colors=None):
         """ Select the current turtle and associated pen status """
-        if not self.tw.turtles.dict.has_key(k):
+        if k not in self.tw.turtles.dict:
             # if it is a new turtle, start it in the center of the screen
             self.tw.active_turtle = self.tw.turtles.get_turtle(k, True, colors)
             self.seth(0, False)

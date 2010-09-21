@@ -916,10 +916,10 @@ class LogoCode:
         if type(convert(x, float, False)) == float:
             if int(float(x)) == x:
                 x = int(x)
-        if (not self.stacks.has_key('stack3'+str(x))) or\
-           self.stacks['stack3'+str(x)] is None:
+        if 'stack3' + str(x) not in self.stacks or\
+           self.stacks['stack3' + str(x)] is None:
             raise logoerror("#nostack")
-        self.icall(self.evline, self.stacks['stack3'+str(x)][:])
+        self.icall(self.evline, self.stacks['stack3' + str(x)][:])
         yield True
         self.procstop = False
         self.ireturn()

@@ -107,7 +107,7 @@ class Block:
         self._font_size = [6.0, 4.5]
         self._image = None
 
-        if OLD_NAMES.has_key(self.name):
+        if self.name in OLD_NAMES:
             self.name = OLD_NAMES[self.name]
 
         for i in range(len(self._font_size)):
@@ -128,7 +128,7 @@ class Block:
                     break
         self._new_block_from_factory(sprite_list, x, y, copy_block)
 
-        if PRIMITIVES.has_key(name):
+        if name in PRIMITIVES:
             self.primitive = PRIMITIVES[self.name]
 
         block_list.append_to_list(self)
@@ -316,7 +316,7 @@ class Block:
             for i, v in enumerate(self.values):
                 if v is not None:
                     self._set_labels(i, str(v))
-        elif BLOCK_NAMES.has_key(self.name):
+        elif self.name in BLOCK_NAMES:
             for i, n in enumerate(BLOCK_NAMES[self.name]):
                 self._set_labels(i, n)
             
@@ -432,7 +432,7 @@ class Block:
             print "WARNING: I don't know how to create a %s block" % (self.name)
 
     def _set_colors(self, svg):
-        if BOX_COLORS.has_key(self.name):
+        if self.name in BOX_COLORS:
             self.colors = BOX_COLORS[self.name]
         else:
             for p in range(len(PALETTES)):

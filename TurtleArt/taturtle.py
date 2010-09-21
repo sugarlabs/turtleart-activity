@@ -53,7 +53,7 @@ class Turtles:
 
     def get_turtle(self, k, append=False, colors=None):
         """ Find a turtle """
-        if self.dict.has_key(k):
+        if k in self.dict:
             return self.dict[k]
         elif not append:
             return None
@@ -81,7 +81,7 @@ class Turtles:
 
     def remove_from_dict(self, k):
         """ Delete a turtle """
-        if self.dict.has_key(k):
+        if k in self.dict:
             del(self.dict[k])
 
     def show_all(self):
@@ -164,9 +164,9 @@ class Turtle:
                     images.append(images[i].rotate_simple(270))
                 for i in range(SHAPES):
                     j = (i + 4) % SHAPES
-                    self.shapes[j] = images[int(j/9) % 4]
+                    self.shapes[j] = images[int(j / 9)]
             else:
-                j = int(self.heading+5)%360 / (360 / SHAPES)
+                j = int(self.heading + 5) % 360 / (360 / SHAPES)
                 self.shapes[j] = images[0]
 
     def set_heading(self, heading):

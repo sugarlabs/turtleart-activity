@@ -765,7 +765,7 @@ class TurtleArtWindow():
                     self._restore_latest_from_trash()
                 elif blk.name == 'empty':
                     self._empty_trash()
-                elif MACROS.has_key(blk.name):
+                elif blk.name in MACROS:
                     self._new_macro(blk.name, x + 20, y + 20)
                 else:
                     blk.highlight()
@@ -990,7 +990,7 @@ class TurtleArtWindow():
         newspr.set_layer(TOP_LAYER)
         self.drag_pos = 20, 20
         newblk.connections = [None]*len(newblk.docks)
-        if DEFAULTS.has_key(newblk.name):
+        if newblk.name in DEFAULTS:
             for i, argvalue in enumerate(DEFAULTS[newblk.name]):
                 # skip the first dock position since it is always a connector
                 dock = newblk.docks[i + 1]
@@ -1282,15 +1282,15 @@ class TurtleArtWindow():
 
     def _do_show_popup(self, block_name):
         """ Fetch the help text and display it.  """
-        if SPECIAL_NAMES.has_key(block_name):
+        if block_name in SPECIAL_NAMES:
             block_name_s = SPECIAL_NAMES[block_name]
-        elif BLOCK_NAMES.has_key(block_name):
+        elif block_name in BLOCK_NAMES:
             block_name_s = BLOCK_NAMES[block_name][0]
         elif block_name in TOOLBAR_SHAPES:
             block_name_s = ''
         else:
             block_name_s = _(block_name)
-        if HELP_STRINGS.has_key(block_name):
+        if block_name in HELP_STRINGS:
             if block_name_s == '':
                 label = HELP_STRINGS[block_name]
             else:
@@ -1907,7 +1907,7 @@ class TurtleArtWindow():
                     'KP_Right':[10, 0], 'l':[10, 0], 'Right':[10, 0],
                     'KP_Page_Down':[0, 0], 'KP_Page_Up':[0, 0], 'KP_End':[0, 0],
                     'KP_Home':[-1, -1], 'Return':[-1, -1], 'Esc':[0, 0]}
-        if not mov_dict.has_key(keyname):
+        if keyname not in mov_dict:
             return
         if keyname == 'KP_End':
             self.run_button(0)
@@ -2109,7 +2109,7 @@ class TurtleArtWindow():
             check_dock = True
         else:
             check_dock = False
-        if OLD_NAMES.has_key(btype):
+        if btype in OLD_NAMES:
             btype = OLD_NAMES[btype]
         blk = Block(self.block_list, self.sprite_list, btype,
                     b[2] + self.canvas.cx + offset,
@@ -2291,7 +2291,7 @@ class TurtleArtWindow():
             _logger.debug(label)
             return
         if shp == 'syntaxerror' and str(label) != '':
-            if self.status_shapes.has_key(str(label)[1:]):
+            if str(label)[1:] in self.status_shapes:
                 shp = str(label)[1:]
                 label = ''
             else:
