@@ -135,7 +135,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
             ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc1arg',  'userdefined', 'addturtle', 'comment', 'print',
              'cartesian', 'width', 'height', 'polar', 'sandwichtop_no_label',
-             'sandwichbottom', 'readpixel', 'see', 'skin'],
+             'sandwichbottom', 'readpixel', 'see', 'reskin'],
             ['journal', 'audio', 'description', 'hideblocks', 'showblocks',
              'fullscreen', 'savepix', 'savesvg', 'picturelist',
              'picture1x1a', 'picture1x1', 'picture2x2', 'picture2x1',
@@ -196,7 +196,7 @@ BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show', 'image',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print', 'showaligned',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1', 'savepix',
     'storeinbox2', 'wait', 'stack', 'push', 'nop', 'addturtle', 'comment',
-    'savesvg', 'setgray', 'skin']
+    'savesvg', 'setgray', 'skin', 'reskin']
 BASIC_STYLE_VAR_ARG = ['userdefined', 'userdefined2args', 'userdefined3args']
 BULLET_STYLE = ['templatelist', 'list']
 BASIC_STYLE_2ARG = ['arc', 'setxy', 'fillscreen', 'storein', 'write']
@@ -354,6 +354,7 @@ BLOCK_NAMES = {
     'red':[_('red')+' = 0'],
     'remainder2':[_('mod')],
     'repeat':[' ',_('repeat')],
+    'reskin':[_('turtle shell')],
     'resistance':[_('resistance')],
     'restore':[_('restore last')],
     'restoreall':[_('restore all')],
@@ -611,7 +612,6 @@ DEFAULTS = {
     'setxy':[0, 0],
     'show':[_('text')],
     'showaligned':[_('text')],
-    'skin':[None],
     'stack':[_('action')],
     'storeinbox1':[100],
     'storeinbox2':[100],
@@ -813,6 +813,7 @@ HELP_STRINGS = {
     'remainder2':_("modular (remainder) operator"),
     'repeat':_("loops specified number of times"),
     'resistance':_("sensor input resistance"),
+    'reskin':_("put a custom 'shell' on the turtle"),
     'restore':_("restores most recent blocks from trash"),
     'restoreall':_("restore all blocks from trash"),
     'rightpos':_("xcor of right of screen"),
@@ -841,7 +842,7 @@ HELP_STRINGS = {
     'shade':_("holds current pen shade"),
     'show':_("draws text or show media from the Journal"),
     'showblocks':_("restores hidden blocks"),
-    'skin':_("put a shell on the turtle"),
+    'skin':_("put a custom 'shell' on the turtle"),
     'sqrt':_("calculates square root"),
     'stack1':_("invokes Action 1 stack"),
     'stack2':_("invokes Action 2 stack"),
@@ -1087,4 +1088,6 @@ MACROS = {
                [18, 'showaligned', 0, 0, [15, 19, 20]],
                [19, 'description', 0, 0, [18, None]],
                [20, 'sandwichbottom', 0, 0, [18, None]]],
-         }
+    'reskin':
+              [[0, 'skin', 0, 0, [None, 1]],
+               [1, 'journal', 0, 0, [0, None]]] }
