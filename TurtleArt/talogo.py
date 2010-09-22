@@ -33,7 +33,8 @@ try:
 except:
     pass
 
-from taconstants import PALETTES, PALETTE_NAMES, TAB_LAYER, BLACK, WHITE
+from taconstants import PALETTES, PALETTE_NAMES, TAB_LAYER, BLACK, WHITE, \
+    DEFAULT_SCALE, ICON_SIZE
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
@@ -245,8 +246,6 @@ def millis():
     return int(clock()*1000)
 
 
-_DEFAULT_SCALE = 33
-
 """
 A class for parsing Logo Code
 """
@@ -423,7 +422,7 @@ class LogoCode:
         self.body_height = int((self.tw.canvas.height/40)*self.tw.scale)
         self.bullet_height = int((self.tw.canvas.height/30)*self.tw.scale)
     
-        self.scale = _DEFAULT_SCALE
+        self.scale = DEFAULT_SCALE
 
     def defprim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
@@ -1074,9 +1073,8 @@ class LogoCode:
 
     def reskin(self, media):
         """ Reskin the turtle with an image from a file """
-        w = int(self.scale)
-        h = int(self.scale)
-        pixbuf = self.show_picture(media, 0, 0, w, h, False)
+        scale = int(ICON_SIZE * float(self.scale) / DEFAULT_SCALE)
+        pixbuf = self.show_picture(media, 0, 0, scale, scale, False)
         if pixbuf is not None:
             self.tw.active_turtle.set_shapes([pixbuf])
 

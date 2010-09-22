@@ -179,6 +179,7 @@ HIT_RED = "#F80000"
 HIT_GREEN = "#00F000"
 HIDE_WHITE = "#F8F8F8"
 SHOW_WHITE = "#F0F0F0"
+DEFAULT_SCALE = 33
 
 #
 # Block-style definitions
@@ -1090,4 +1091,5 @@ MACROS = {
                [20, 'sandwichbottom', 0, 0, [18, None]]],
     'reskin':
               [[0, 'skin', 0, 0, [None, 1, None]],
-               [1, 'journal', 0, 0, [0, None]]] }
+               [1, 'journal', 0, 0, [0, None]]]
+    }

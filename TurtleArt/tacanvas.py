@@ -569,7 +569,10 @@ class TurtleGraphics:
     def move_turtle(self):
         """ Move the turtle """
         x, y = self.width / 2 + int(self.xcor), self.height / 2 - int(self.ycor)
-        self.tw.active_turtle.move((self.cx + x - 28, self.cy + y - 30))
+        self.tw.active_turtle.move((self.cx + x - \
+                                    self.tw.active_turtle.spr.rect.width/2,
+                                    self.cy + y - \
+                                    self.tw.active_turtle.spr.rect.height/2,))
 
     def invalt(self, x, y, w, h):
         """ Mark a region for refresh """
