@@ -51,7 +51,8 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
                         BOOLEAN_STYLE, BLOCK_NAMES, DEFAULT_TURTLE, \
                         TURTLE_LAYER, EXPANDABLE_BLOCKS, COMPARE_STYLE, \
                         BOOLEAN_STYLE, EXPANDABLE_ARGS, NUMBER_STYLE, \
-                        NUMBER_STYLE_PORCH, NUMBER_STYLE_BLOCK
+                        NUMBER_STYLE_PORCH, NUMBER_STYLE_BLOCK, \
+                        NUMBER_STYLE_VAR_ARG
 from talogo import LogoCode, stop_logo
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
@@ -1435,6 +1436,7 @@ class TurtleArtWindow():
                 self._expand_boolean(blk, blk.connections[1], dy)
             else:
                 self._expand_expandable(blk, blk.connections[1], dy)
+
             # and restore it...
             if blk0 is not None:
                 blk.connections[0] = blk0
@@ -1483,6 +1485,8 @@ class TurtleArtWindow():
                 argblk.spr.set_layer(TOP_LAYER)
                 argblk.connections = [blk, None]
                 blk.connections[n - 1] = argblk
+                if blk.name in NUMBER_STYLE_VAR_ARG:
+                    self._cascade_expandable(blk)
                 grow_stack_arm(find_sandwich_top(blk))
             elif blk.name in PYTHON_SKIN and self.myblock == None:
                 self._import_py()
@@ -1520,16 +1524,25 @@ class TurtleArtWindow():
 
     def _cascade_expandable(self, blk):
         """ If expanding/shrinking a block, cascade. """
+        print blk.name
+        if blk.connections[0] is not None:
+            print blk.connections[0].name
         while blk.name in NUMBER_STYLE or \
                 blk.name in NUMBER_STYLE_PORCH or \
-                blk.name in NUMBER_STYLE_BLOCK:
+                blk.name in NUMBER_STYLE_BLOCK or \
+                blk.name in NUMBER_STYLE_VAR_ARG:
             if blk.connections[0] is None:
                 break
             if blk.connections[0].name in EXPANDABLE_BLOCKS:
                 if blk.connections[0].connections.index(blk) != 1:
                     break
                 blk = blk.connections[0]
-                dy = 20 + blk.connections[1].ey - blk.ey
+                if blk.connections[1].name == 'myfunc2arg':
+                    dy = 40 + blk.connections[1].ey - blk.ey
+                elif blk.connections[1].name == 'myfunc3arg':
+                    dy = 60 + blk.connections[1].ey - blk.ey
+                else:
+                    dy = 20 + blk.connections[1].ey - blk.ey
                 blk.expand_in_y(dy)
                 if dy != 0:
                     group = find_group(blk.connections[1])
@@ -1632,8 +1645,14 @@ class TurtleArtWindow():
             elif best_destination.name in EXPANDABLE_BLOCKS and \
                  best_destination_dockn == 1:
                 dy = 0
-                if selected_block.name in EXPANDABLE_BLOCKS:
-                    dy = 20 + selected_block.ey - best_destination.ey
+                if (selected_block.name in EXPANDABLE_BLOCKS or
+                    selected_block.name in NUMBER_STYLE_VAR_ARG):
+                    if selected_block.name == 'myfunc2arg':
+                        dy = 40 + selected_block.ey - best_destination.ey
+                    elif selected_block.name == 'myfunc3arg':
+                        dy = 60 + selected_block.ey - best_destination.ey
+                    else:
+                        dy = 20 + selected_block.ey - best_destination.ey
                     best_destination.expand_in_y(dy)
                 else:
                     if best_destination.ey > 0:
