@@ -1431,7 +1431,10 @@ class TurtleArtWindow():
                 self._run_stack(blk)
                 return
 
-            self._expand_expandable(blk, blk.connections[1], dy)
+            if blk.name in BOOLEAN_STYLE:
+                self._expand_boolean(blk, blk.connections[1], dy)
+            else:
+                self._expand_expandable(blk, blk.connections[1], dy)
             # and restore it...
             if blk0 is not None:
                 blk.connections[0] = blk0
