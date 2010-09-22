@@ -1523,6 +1523,8 @@ class TurtleArtWindow():
             if blk.connections[0] is None:
                 break
             if blk.connections[0].name in EXPANDABLE_BLOCKS:
+                if blk.connections[0].connections.index(blk) != 1:
+                    break
                 blk = blk.connections[0]
                 dy = 20 + blk.connections[1].ey - blk.ey
                 blk.expand_in_y(dy)
@@ -1647,6 +1649,7 @@ class TurtleArtWindow():
             return
         blk2 = blk.connections[0]
         c = blk2.connections.index(blk)
+        print "disconnecting ", blk.name, "from", blk2.name, "dock", c
         blk2.connections[c] = None
 
         if blk2.name in BOOLEAN_STYLE:
