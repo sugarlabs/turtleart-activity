@@ -779,6 +779,7 @@ class TurtleArtWindow():
         if t is not None:
             self.selected_turtle = t
             self.canvas.set_turtle(self.turtles.get_turtle_key(t))
+            print "turtle pressed", x, y
             self._turtle_pressed(x, y)
             return True
 
@@ -1553,6 +1554,8 @@ class TurtleArtWindow():
                     if blk.name in COMPARE_STYLE:
                         for gblk in find_group(blk):
                             gblk.spr.move_relative((0, -dy * blk.scale))
+            else:
+                break
 
     def _check_collapsibles(self, blk):
         """ Check the state of collapsible blocks upon change in dock state. """
