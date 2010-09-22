@@ -184,6 +184,7 @@ class TurtleGraphics:
             self.tw.active_turtle.set_gray(100)
             self.tw.active_turtle.set_pen_size(5)
             self.tw.active_turtle.set_pen_state(True)
+            self.tw.active_turtle.reset_shapes()
             self.seth(0, share)
             self.setxy(0, 0, share)
             self.tw.active_turtle.hide()

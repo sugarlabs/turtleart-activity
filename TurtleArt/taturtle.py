@@ -116,6 +116,7 @@ class Turtle:
         self.y = 0
         self.hidden = False
         self.shapes = []
+        self.custom_shapes = False
         self.type = 'turtle'
         self.heading = 0
         self.pen_shade = 50
@@ -168,6 +169,13 @@ class Turtle:
             else:
                 j = int(self.heading + 5) % 360 / (360 / SHAPES)
                 self.shapes[j] = images[0]
+        self.custom_shapes = True
+
+    def reset_shapes(self):
+        """ Reset the shapes to the standard turtle """
+        if self.custom_shapes:
+            self.shapes = generate_turtle_pixbufs(self.colors)
+            self.custom_shapes = False
 
     def set_heading(self, heading):
         """ Set the turtle heading (one shape per 360/SHAPES degrees) """
