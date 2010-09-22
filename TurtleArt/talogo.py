@@ -788,7 +788,7 @@ class LogoCode:
         """ Clear screen """
         stop_media(self)
         self.tw.canvas.clearscreen()
-        self.scale = _DEFAULT_SCALE
+        self.scale = DEFAULT_SCALE
         self.tw.set_polar(False)
         self.tw.set_cartesian(False)
         self.hidden_turtle = None
