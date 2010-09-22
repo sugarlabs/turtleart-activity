@@ -1077,6 +1077,7 @@ class LogoCode:
         pixbuf = self.show_picture(media, 0, 0, scale, scale, False)
         if pixbuf is not None:
             self.tw.active_turtle.set_shapes([pixbuf])
+            self.tw.canvas.forward(0)
 
     def show(self, string, center=False):
         """ Show is the general-purpose media-rendering block. """

@@ -170,6 +170,7 @@ class Turtle:
                 j = int(self.heading + 5) % 360 / (360 / SHAPES)
                 self.shapes[j] = images[0]
         self.custom_shapes = True
+        self.show()
 
     def reset_shapes(self):
         """ Reset the shapes to the standard turtle """
