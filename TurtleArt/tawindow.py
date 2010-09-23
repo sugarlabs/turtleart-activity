@@ -2100,7 +2100,7 @@ class TurtleArtWindow():
         """ Restore a turtle from its saved state """
         tid, name, xcor, ycor, heading, color, shade, pensize = blk
         self.canvas.set_turtle(key)
-        self.canvas.setxy(xcor, ycor)
+        self.canvas.setxy(xcor, ycor, pendown=False)
         self.canvas.seth(heading)
         self.canvas.setcolor(color)
         self.canvas.setshade(shade)
