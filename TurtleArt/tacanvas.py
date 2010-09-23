@@ -331,7 +331,7 @@ class TurtleGraphics:
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
 
-    def setxy(self, x, y, share=True):
+    def setxy(self, x, y, share=True, pendown=True):
         """ Move turtle to position x,y """
         oldx, oldy = self.xcor, self.ycor
         x *= self.tw.coord_scale
@@ -342,7 +342,7 @@ class TurtleGraphics:
             _logger.debug("bad value sent to %s" % (__name__))
             return
 
-        if self.pendown:
+        if self.pendown and pendown:
             self.gc.set_foreground(self.fgcolor)
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
 
