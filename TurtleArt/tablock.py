@@ -36,7 +36,7 @@ from taconstants import EXPANDABLE, EXPANDABLE_BLOCKS, EXPANDABLE_ARGS, \
     COLLAPSIBLE_TOP_NO_ARM_NO_LABEL, COLLAPSIBLE_BOTTOM, PORTFOLIO_STYLE_2x2, \
     PORTFOLIO_STYLE_1x1, PORTFOLIO_STYLE_2x1, PORTFOLIO_STYLE_1x2, BOX_COLORS, \
     STANDARD_STROKE_WIDTH, SELECTED_STROKE_WIDTH, SELECTED_COLOR, \
-    BASIC_STYLE_EXTENDED_SMALL
+    BASIC_STYLE_EXTENDED_VERTICAL
 from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
 
@@ -361,7 +361,7 @@ class Block:
             self._make_basic_style_head(svg)
         elif self.name in BASIC_STYLE_EXTENDED:
             self._make_basic_style(svg, 16, 16)
-        elif self.name in BASIC_STYLE_EXTENDED_SMALL:
+        elif self.name in BASIC_STYLE_EXTENDED_VERTICAL:
             self._make_basic_style(svg, 0, 4)
         elif self.name in BASIC_STYLE_HEAD_1ARG:
             self._make_basic_style_head_1arg(svg)
