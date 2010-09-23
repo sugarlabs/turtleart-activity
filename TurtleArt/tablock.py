@@ -360,9 +360,9 @@ class Block:
         elif self.name in BASIC_STYLE_HEAD:
             self._make_basic_style_head(svg)
         elif self.name in BASIC_STYLE_EXTENDED:
-            self._make_basic_style(svg, 16)
+            self._make_basic_style(svg, 16, 16)
         elif self.name in BASIC_STYLE_EXTENDED_SMALL:
-            self._make_basic_style(svg, 4)
+            self._make_basic_style(svg, 0, 4)
         elif self.name in BASIC_STYLE_HEAD_1ARG:
             self._make_basic_style_head_1arg(svg)
         elif self.name in BASIC_STYLE_TAIL:
@@ -441,8 +441,8 @@ class Block:
                     self.colors = COLORS[p]
         self.svg.set_colors(self.colors)
 
-    def _make_basic_style(self, svg, extension=0):
-        self.svg.expand(self.dx+self.ex+extension, self.ey+extension)
+    def _make_basic_style(self, svg, extend_x=0, extend_y=0):
+        self.svg.expand(self.dx+self.ex+extend_x, self.ey+extend_y)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow',True,self.svg.docks[0][0],self.svg.docks[0][1]],
                       ['flow',False,self.svg.docks[1][0],self.svg.docks[1][1]]]
