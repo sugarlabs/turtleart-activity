@@ -145,7 +145,7 @@ class Block:
 
     # We need to resize some blocks on the fly so that the labels fit.
     def resize(self):
-        if not self.spr is not None:
+        if self.spr is None:
             return
         dx = (self.spr.label_width()-self.spr.label_safe_width())/self.scale
         if dx !=0:
@@ -156,7 +156,7 @@ class Block:
 
     # Some blocks get a skin.
     def set_image(self, image, x, y):
-        if not self.spr is not None:
+        if self.spr is None:
             return
         self._image = image
         self.spr.set_image(image, 1, x, y)
@@ -164,7 +164,7 @@ class Block:
     # The skin might need scaling.
     # Keep the original here, the scaled version stays with the sprite.
     def scale_image(self, x, y, w, h):
-        if not self.spr is not None:
+        if self.spr is None:
             return
         if self._image is not None:
             tmp = self._image.scale_simple(w, h,
@@ -173,7 +173,7 @@ class Block:
 
     # We may want to rescale blocks as well.
     def rescale(self, scale):
-        if not self.spr is not None:
+        if self.spr is None:
             return
         for i in range(len(self._font_size)):
             self._font_size[i] /= self.scale
@@ -192,7 +192,7 @@ class Block:
         self.spr.draw()
 
     def refresh(self):
-        if not self.spr is not None:
+        if self.spr is None:
             return
         self._make_block(self.svg)
         self._set_margins()
@@ -200,7 +200,7 @@ class Block:
 
     # We may want to add additional slots for arguments ("innies").
     def add_arg(self, keep_expanding=True):
-        if not self.spr is not None:
+        if self.spr is None:
             return
         h = self.svg.get_height()
         self._ei += 1
@@ -213,7 +213,7 @@ class Block:
 
     # We may want to grow a block vertically.
     def expand_in_y(self, dy):
-        if not self.spr is not None:
+        if self.spr is None:
             return
         self.ey += dy
         if self.type == 'block':
@@ -229,7 +229,7 @@ class Block:
 
     # We may want to grow a block horizontally.
     def expand_in_x(self, dx):
-        if not self.spr is not None:
+        if self.spr is None:
             return
         self.ex += dx
         if self.type == 'block':
@@ -241,7 +241,7 @@ class Block:
         self.refresh()
 
     def reset_x(self):
-        if not self.spr is not None:
+        if self.spr is None:
             return 0
         dx = -self.ex
         self.ex = 0
@@ -254,7 +254,7 @@ class Block:
         return dx
 
     def reset_y(self):
-        if not self.spr is not None:
+        if self.spr is None:
             return 0
         dy = -self.ey
         self.ey = 0
@@ -267,7 +267,7 @@ class Block:
         return dy
 
     def get_expand_x_y(self):
-        if not self.spr is not None:
+        if self.spr is None:
             return(0, 0)
         return (self.ex, self.ey)
 
