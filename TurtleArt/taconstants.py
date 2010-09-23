@@ -187,12 +187,13 @@ DEFAULT_SCALE = 33
 BASIC_STYLE_HEAD = ['start', 'hat1', 'hat2', 'restore', 'restoreall']
 BASIC_STYLE_HEAD_1ARG = ['hat']
 BASIC_STYLE_TAIL = ['stopstack', 'empty']
-BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
+BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2',
     'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput',
     'fullscreen', 'sandwichcollapsed', 'cartesian', 'polar', 'startfill',
     'stopfill', 'readpixel']
 BASIC_STYLE_EXTENDED = ['picturelist', 'picture1x1', 'picture2x2',
     'picture2x1', 'picture1x2', 'picture1x1a']
+BASIC_STYLE_EXTENDED_SMALL = ['vspace']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show', 'image',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print', 'showaligned',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1', 'savepix',
