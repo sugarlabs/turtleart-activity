@@ -779,7 +779,6 @@ class TurtleArtWindow():
         if t is not None:
             self.selected_turtle = t
             self.canvas.set_turtle(self.turtles.get_turtle_key(t))
-            print "turtle pressed", x, y
             self._turtle_pressed(x, y)
             return True
 
@@ -1142,9 +1141,9 @@ class TurtleArtWindow():
 
     def _turtle_pressed(self, x, y):
         (tx, ty) = self.selected_turtle.get_xy()
-        dx = x - tx - 30
-        dy = y - ty - 30
-        if (dx * dx) + (dy * dy) > 200:
+        dx = x - tx - self.active_turtle.spr.rect.width/2
+        dy = y - ty - self.active_turtle.spr.rect.height/2
+        if not self.active_turtle.custom_shapes and (dx * dx) + (dy * dy) > 200:
             self.drag_turtle = ('turn',
                                 self.canvas.heading - atan2(dy, dx)/DEGTOR, 0)
         else:
@@ -1525,9 +1524,6 @@ class TurtleArtWindow():
 
     def _cascade_expandable(self, blk):
         """ If expanding/shrinking a block, cascade. """
-        print blk.name
-        if blk.connections[0] is not None:
-            print blk.connections[0].name
         while blk.name in NUMBER_STYLE or \
                 blk.name in NUMBER_STYLE_PORCH or \
                 blk.name in NUMBER_STYLE_BLOCK or \
@@ -1674,7 +1670,6 @@ class TurtleArtWindow():
             return
         blk2 = blk.connections[0]
         c = blk2.connections.index(blk)
-        print "disconnecting ", blk.name, "from", blk2.name, "dock", c
         blk2.connections[c] = None
 
         if blk2.name in BOOLEAN_STYLE:
