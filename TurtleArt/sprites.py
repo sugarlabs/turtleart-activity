@@ -414,13 +414,23 @@ class Sprite:
                 return(-1, -1, -1, -1)
             array = self.images[i].get_pixels()
             if array is not None:
-                offset = (y * self.images[i].get_width() + x) * 4
                 try:
-                    r, g, b, a = ord(array[offset]), ord(array[offset + 1]), \
-                        ord(array[offset + 2]), ord(array[offset + 3])
+                    if self.images[i].get_has_alpha():
+                        offset = (y * self.images[i].get_width() + x) * 4
+                        a = ord(array[offset + 3])
+                    else:
+                        offset = (y * self.images[i].get_width() + x) * 3
+                        a = 255
+                    r = ord(array[offset])
+                    g = ord(array[offset + 1])
+                    b = ord(array[offset + 2])
                     return(r, g, b, a)
                 except IndexError:
-                    print "Index Error: %d %d" % (len(array), offset)
+                    print "Index Error: %d %d (%d, %d) (w: %d, h: %d) (%dx%d)"\
+                            % (len(array), offset, x, y,
+                               self.images[i].get_width(),
+                               self.images[i].get_height(),
+                               self.rect.width, self.rect.height)
             return(-1, -1, -1, -1)
         else:
             w, h = self.images[i].get_size()
