@@ -111,6 +111,7 @@ tasetshade :shade \r"
     fillscreen = False
     setcolor = False
     setxy = False
+    setxy2 = False
     pensize = False
     setpensize = False
     arc = False
@@ -224,6 +225,9 @@ tasetshade :shade \r"
                     this_stack += "clearscreen"
                 elif d == "setxy":
                     setxy = True
+                    this_stack += "tasetxypenup"
+                elif d == "setxy2":
+                    setxy2 = True
                     this_stack += "tasetxy"
                 elif d == "color":
                     this_stack += ":color"
@@ -334,7 +338,9 @@ tasetshade :shade \r"
         code = "to tasetpensize :a\rsetpensize round :a\rend\r" + code
     if pensize: # Return only the first argument.
         code = "to tapensize\routput first round pensize\rend\r" + code
-    if setxy: # Swap and round arguments
+    if setxy2: # Swap and round arguments
+        code = "to tasetxy :x :y\rsetxy :x :y\rend\r" + code
+    if setxy: # Swap and round arguments and add pen up/down
         code = "to tasetxy :x :y\rpenup\rsetxy :x :y\rpendown\rend\r" + code
     if arc: # Turtle Art 'arc' needs to be redefined.
         c = (2 * math.pi)/360
