@@ -118,7 +118,7 @@ class TurtleGraphics:
         self.textcolor = self.cm.alloc_color('blue')
         self.tw.active_turtle.show()
         self.shade = 0
-        self.pendown = True
+        self.pendown = False
         self.xcor = 0
         self.ycor = 0
         self.heading = 0
@@ -176,17 +176,17 @@ class TurtleGraphics:
         self.setcolor(0, share)
         self.settextcolor(70)
         self.setshade(50, share)
-        self.setpen(True, share)
         for turtle_key in iter(self.tw.turtles.dict):
             self.set_turtle(turtle_key)
             self.tw.active_turtle.set_color(0)
             self.tw.active_turtle.set_shade(50)
             self.tw.active_turtle.set_gray(100)
             self.tw.active_turtle.set_pen_size(5)
-            self.tw.active_turtle.set_pen_state(True)
             self.tw.active_turtle.reset_shapes()
             self.seth(0, share)
+            self.setpen(False, share)
             self.setxy(0, 0, share)
+            self.setpen(True, share)
             self.tw.active_turtle.hide()
         self.set_turtle(self.tw.default_turtle_name)
         self.tw.svg_string = ''
@@ -487,6 +487,7 @@ class TurtleGraphics:
     def setpen(self, bool, share=True):
         """ Lower or raise the pen """
         self.pendown = bool
+        self.tw.active_turtle.set_pen_state(bool)
         if self.tw.sharing() and share:
             self.tw.activity.send_event("p|%s" % \
                 (data_to_string([self.tw.nick, bool])))
