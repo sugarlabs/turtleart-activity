@@ -1400,7 +1400,7 @@ class TurtleArtWindow():
             if hide_button_hit(blk.spr, x, y):
                 dx = blk.reset_x()
             elif show_button_hit(blk.spr, x, y):
-                dx = 20
+                dx = 24
                 blk.expand_in_x(dx)
             else:
                 dx = 0
@@ -1538,11 +1538,11 @@ class TurtleArtWindow():
                     break
                 blk = blk.connections[0]
                 if blk.connections[1].name == 'myfunc2arg':
-                    dy = 20 * self.block_scale + blk.connections[1].ey - blk.ey
+                    dy = 40 + blk.connections[1].ey - blk.ey
                 elif blk.connections[1].name == 'myfunc3arg':
-                    dy = 30 * self.block_scale + blk.connections[1].ey - blk.ey
+                    dy = 60 + blk.connections[1].ey - blk.ey
                 else:
-                    dy = 10 * self.block_scale + blk.connections[1].ey - blk.ey
+                    dy = 20 + blk.connections[1].ey - blk.ey
                 blk.expand_in_y(dy)
                 if dy != 0:
                     group = find_group(blk.connections[1])
@@ -1650,14 +1650,11 @@ class TurtleArtWindow():
                 if (selected_block.name in EXPANDABLE_BLOCKS or
                     selected_block.name in NUMBER_STYLE_VAR_ARG):
                     if selected_block.name == 'myfunc2arg':
-                        dy = 20 * self.block_scale + selected_block.ey - \
-                            best_destination.ey
+                        dy = 40 + selected_block.ey - best_destination.ey
                     elif selected_block.name == 'myfunc3arg':
-                        dy = 30 * self.block_scale + selected_block.ey - \
-                            best_destination.ey
+                        dy = 60 + selected_block.ey - best_destination.ey
                     else:
-                        dy = 10 * self.block_scale + selected_block.ey - \
-                            best_destination.ey
+                        dy = 20 + selected_block.ey - best_destination.ey
                     best_destination.expand_in_y(dy)
                 else:
                     if best_destination.ey > 0:
