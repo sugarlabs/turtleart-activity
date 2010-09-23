@@ -1065,9 +1065,7 @@ class LogoCode:
         x = self.tw.canvas.xcor/self.tw.coord_scale
         y = self.tw.canvas.ycor/self.tw.coord_scale
         for s in sarray:
-            self.tw.canvas.setpen(False)
-            self.tw.canvas.setxy(x, y)
-            self.tw.canvas.setpen(True)
+            self.tw.canvas.setxy(x, y, pendown=False)
             self.show(s)
             y -= int(self.tw.canvas.textsize*self.tw.lead)
 
@@ -1254,9 +1252,7 @@ class LogoCode:
         xo = self.tw.calc_position('t1x1')[2]
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         # save the text size so we can restore it later
         save_text_size = self.tw.canvas.textsize
         # set title text
@@ -1271,15 +1267,11 @@ class LogoCode:
         # render media object
         # leave some space below the title
         y -= int(self.title_height*2*self.tw.lead)
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         self.show(media)
         if self.tw.running_sugar:
             x = 0
-            self.tw.canvas.setpen(False)
-            self.tw.canvas.setxy(x, y)
-            self.tw.canvas.setpen(True)
+            self.tw.canvas.setxy(x, y, pendown=False)
             self.show(media.replace("media_","descr_"))
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
@@ -1289,9 +1281,7 @@ class LogoCode:
         xo = self.tw.calc_position('t2x1')[2]
         x = -(self.tw.canvas.width/2)+xo
         y = self.tw.canvas.height/2
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         # save the text size so we can restore it later
         save_text_size = self.tw.canvas.textsize
         # set title text
@@ -1306,25 +1296,17 @@ class LogoCode:
         # render four quadrents
         # leave some space below the title
         y -= int(self.title_height*2*self.tw.lead)
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         self.show(media1)
         x = 0
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         self.show(media2)
         y = -self.title_height
         if self.tw.running_sugar:
-            self.tw.canvas.setpen(False)
-            self.tw.canvas.setxy(x, y)
-            self.tw.canvas.setpen(True)
+            self.tw.canvas.setxy(x, y, pendown=False)
             self.show(media2.replace("media_","descr_"))
             x = -(self.tw.canvas.width/2) + xo
-            self.tw.canvas.setpen(False)
-            self.tw.canvas.setxy(x, y)
-            self.tw.canvas.setpen(True)
+            self.tw.canvas.setxy(x, y, pendown=False)
             self.show(media1.replace("media_","descr_"))
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
@@ -1334,9 +1316,7 @@ class LogoCode:
         xo = self.tw.calc_position('bullet')[2]
         x = -(self.tw.canvas.width/2) + xo
         y = self.tw.canvas.height/2
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         # save the text size so we can restore it later
         save_text_size = self.tw.canvas.textsize
         # set title text
@@ -1347,9 +1327,7 @@ class LogoCode:
         # leave some space below the title
         y -= int(self.title_height*2*self.tw.lead)
         for s in sarray[1:]:
-            self.tw.canvas.setpen(False)
-            self.tw.canvas.setxy(x, y)
-            self.tw.canvas.setpen(True)
+            self.tw.canvas.setxy(x, y, pendown=False)
             self.show(s)
             y -= int(self.bullet_height*2*self.tw.lead)
         # restore text size
@@ -1360,9 +1338,7 @@ class LogoCode:
         xo = self.tw.calc_position('t1x2')[2]
         x = -(self.tw.canvas.width/2) + xo
         y = self.tw.canvas.height/2
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         # save the text size so we can restore it later
         save_text_size = self.tw.canvas.textsize
         # set title text
@@ -1377,25 +1353,17 @@ class LogoCode:
         # render four quadrents
         # leave some space below the title
         y -= int(self.title_height*2*self.tw.lead)
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         self.show(media1)
         if self.tw.running_sugar:
             x = 0
-            self.tw.canvas.setpen(False)
-            self.tw.canvas.setxy(x, y)
-            self.tw.canvas.setpen(True)
+            self.tw.canvas.setxy(x, y, pendown=False)
             self.show(media1.replace("media_","descr_"))
             y = -self.title_height
-            self.tw.canvas.setpen(False)
-            self.tw.canvas.setxy(x, y)
-            self.tw.canvas.setpen(True)
+            self.tw.canvas.setxy(x, y, pendown=False)
             self.show(media2.replace("media_","descr_"))
             x = -(self.tw.canvas.width/2) + xo
-            self.tw.canvas.setpen(False)
-            self.tw.canvas.setxy(x, y)
-            self.tw.canvas.setpen(True)
+            self.tw.canvas.setxy(x, y, pendown=False)
             self.show(media2)
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
@@ -1405,9 +1373,7 @@ class LogoCode:
         xo = self.tw.calc_position('t2x2')[2]
         x = -(self.tw.canvas.width/2) + xo
         y = self.tw.canvas.height/2
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         # save the text size so we can restore it later
         save_text_size = self.tw.canvas.textsize
         # set title text
@@ -1422,24 +1388,16 @@ class LogoCode:
         # render four quadrents
         # leave some space below the title
         y -= int(self.title_height*2*self.tw.lead)
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         self.show(media1)
         x = 0
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         self.show(media2)
         y = -self.title_height
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         self.show(media4)
         x = -(self.tw.canvas.width/2) + xo
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         self.show(media3)
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
@@ -1449,9 +1407,7 @@ class LogoCode:
         xo = self.tw.calc_position('t1x1a')[2]
         x = -(self.tw.canvas.width/2) + xo
         y = self.tw.canvas.height/2
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         # save the text size so we can restore it later
         save_text_size = self.tw.canvas.textsize
         # set title text
@@ -1466,9 +1422,7 @@ class LogoCode:
         # render media object
         # leave some space below the title
         y -= int(self.title_height*2*self.tw.lead)
-        self.tw.canvas.setpen(False)
-        self.tw.canvas.setxy(x, y)
-        self.tw.canvas.setpen(True)
+        self.tw.canvas.setxy(x, y, pendown=False)
         self.show(media1)
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
