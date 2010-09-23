@@ -410,13 +410,13 @@ class Block:
         elif self.name in FLOW_STYLE_ELSE:
             self._make_flow_style_else(svg)
         elif self.name in COLLAPSIBLE_TOP:
-            self._make_collapsible_style_top(svg)
+            self._make_collapsible_style_top(svg, arm=True, label=True)
         elif self.name in COLLAPSIBLE_TOP_NO_ARM:
-            self._make_collapsible_style_top(svg, no_arm=True)
+            self._make_collapsible_style_top(svg, arm=False, label=True)
         elif self.name in COLLAPSIBLE_TOP_NO_LABEL:
-            self._make_collapsible_style_top(svg, label=False)
+            self._make_collapsible_style_top(svg, arm=True, label=False)
         elif self.name in COLLAPSIBLE_TOP_NO_ARM_NO_LABEL:
-            self._make_collapsible_style_top(svg, no_arm=True, label=False)
+            self._make_collapsible_style_top(svg, arm=False, label=False)
         elif self.name in COLLAPSIBLE_BOTTOM:
             self._make_collapsible_style_bottom(svg)
         elif self.name in PORTFOLIO_STYLE_2x2:
@@ -756,9 +756,9 @@ class Block:
                       ['flow', False, self.svg.docks[4][0],
                                       self.svg.docks[4][1], ']']]
 
-    def _make_collapsible_style_top(self, svg, no_arm=False, label=True):
+    def _make_collapsible_style_top(self, svg, arm=True, label=True):
         self.svg.expand(self.dx+self.ex, self.ey)
-        self.svg.set_no_arm(no_arm)
+        self.svg.set_arm(arm)
         self._make_block_graphics(svg, self.svg.sandwich_top, label)
         if label:
             self.docks = [['flow', True, self.svg.docks[0][0],

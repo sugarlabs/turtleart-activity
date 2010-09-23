@@ -243,7 +243,7 @@ EXPANDABLE = ['vspace', 'hspace', 'identity2']
 
 EXPANDABLE_BLOCKS = ['plus2', 'minus2','division2', 'remainder2', 'product2',
                    'random', 'equal2', 'greater2', 'less2', 'and2', 'or2',
-                   'arc', 'setxy', 'fillscreen', 'storein', 'write']
+                   'arc', 'setxy', 'setxy2', 'fillscreen', 'storein', 'write']
 
 EXPANDABLE_ARGS = ['templatelist', 'list', 'myfunc1arg', 'myfunc2arg',
                    'myfunc3arg', 'userdefined', 'userdefined2args',

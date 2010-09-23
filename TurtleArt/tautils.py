@@ -484,7 +484,7 @@ def collapse_stack(top):
             else:
                 _blk.spr.move_relative((_dx, _dy))
     # Remove 'sandwichtop' arm
-    if top.name == 'sandwichtop':
+    if top.name == 'sandwichtop' or top.name == 'sandwichtop_no_arm':
         top.name = 'sandwichtop_no_arm'
     else:
         top.name = 'sandwichtop_no_arm_no_label'

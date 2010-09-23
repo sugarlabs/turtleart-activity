@@ -1400,7 +1400,7 @@ class TurtleArtWindow():
             if hide_button_hit(blk.spr, x, y):
                 dx = blk.reset_x()
             elif show_button_hit(blk.spr, x, y):
-                dx = 24
+                dx = 20
                 blk.expand_in_x(dx)
             else:
                 dx = 0
@@ -2137,6 +2137,7 @@ class TurtleArtWindow():
             check_dock = False
         if btype in OLD_NAMES:
             btype = OLD_NAMES[btype]
+
         blk = Block(self.block_list, self.sprite_list, btype,
                     b[2] + self.canvas.cx + offset,
                     b[3] + self.canvas.cy + offset,

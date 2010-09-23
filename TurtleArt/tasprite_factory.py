@@ -57,11 +57,10 @@ class SVG:
         self._slot_y = 2
         self._porch = False
         self._porch_x = self._innie_x1+self._innie_x2+4*self._stroke_width
-        # self._porch_y = self._innie_y1+self._innie_y2+4*self._stroke_width
         self._porch_y = self._innie_y2
         self._expand_x = 0
         self._expand_y = 0
-        self._no_arm = False
+        self._arm = True
         self._else = False
         self._draw_innies = True
         self._hide = False
@@ -459,13 +458,13 @@ class SVG:
         svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
         svg += self._do_tab()
-        if self._no_arm:
-            svg += self._rline_to(-self._radius-self._stroke_width, 0)
-            svg += self._corner(-1, -1)
-        else:
+        if self._arm:
             svg += self._inverse_corner(-1, 1, 90, 0, 0)
             svg += self._rline_to(0, self._expand_y)
             svg += self._rline_to(-self._radius, 0)
+        else:
+            svg += self._rline_to(-self._radius-self._stroke_width, 0)
+            svg += self._corner(-1, -1)
         svg += self._close_path()
         self.calc_w_h()
         svg += self.style()
@@ -584,8 +583,8 @@ class SVG:
     def set_else(self, flag=False):
         self._else = flag
 
-    def set_no_arm(self, flag=True):
-        self._no_arm = flag
+    def set_arm(self, flag=True):
+        self._arm = flag
 
     def reset_min_max(self):
         self._min_x = 10000
@@ -1058,7 +1057,7 @@ def generator(datapath):
     svg0.set_scale(2)
     svg0.set_tab(True)
     svg0.set_slot(True)
-    svg0.set_no_arm(True)
+    svg0.set_arm(True)
     svg_str = svg0.basic_block()
     f.write(svg_str)
     close_file(f)
