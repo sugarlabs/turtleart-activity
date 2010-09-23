@@ -177,15 +177,9 @@ class Block:
             return
         for i in range(len(self._font_size)):
             self._font_size[i] /= self.scale
-        self.dx /= self.scale
-        self.ex /= self.scale
-        self.ey /= self.scale
         self.scale = scale
         for i in range(len(self._font_size)):
             self._font_size[i] *= self.scale
-        self.dx *= self.scale
-        self.ex *= self.scale
-        self.ey *= self.scale
         self._set_label_attributes()
         self.svg.set_scale(self.scale)
         self.refresh()
