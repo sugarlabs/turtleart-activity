@@ -1141,9 +1141,12 @@ class TurtleArtWindow():
 
     def _turtle_pressed(self, x, y):
         (tx, ty) = self.selected_turtle.get_xy()
-        dx = x - tx - self.active_turtle.spr.rect.width/2
-        dy = y - ty - self.active_turtle.spr.rect.height/2
-        if not self.active_turtle.custom_shapes and (dx * dx) + (dy * dy) > 200:
+        w = self.active_turtle.spr.rect.width/2
+        h = self.active_turtle.spr.rect.height/2
+        dx = x - tx - w
+        dy = y - ty - h
+        # if x, y is near the edge, rotate
+        if (dx * dx) + (dy * dy) > ((w * w) + (h * h)) / 6:
             self.drag_turtle = ('turn',
                                 self.canvas.heading - atan2(dy, dx)/DEGTOR, 0)
         else:
