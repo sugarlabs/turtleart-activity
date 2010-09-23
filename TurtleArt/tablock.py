@@ -20,6 +20,9 @@
 #THE SOFTWARE.
 
 import gtk
+
+from gettext import gettext as _
+
 from taconstants import EXPANDABLE, EXPANDABLE_BLOCKS, EXPANDABLE_ARGS, \
     PRIMITIVES, OLD_NAMES, BLOCK_SCALE, BLOCK_NAMES, CONTENT_BLOCKS, \
     PALETTES, COLORS, BASIC_STYLE_HEAD, BASIC_STYLE_HEAD_1ARG, \
@@ -34,11 +37,11 @@ from taconstants import EXPANDABLE, EXPANDABLE_BLOCKS, EXPANDABLE_ARGS, \
     PORTFOLIO_STYLE_1x1, PORTFOLIO_STYLE_2x1, PORTFOLIO_STYLE_1x2, BOX_COLORS, \
     STANDARD_STROKE_WIDTH, SELECTED_STROKE_WIDTH, SELECTED_COLOR, \
     BASIC_STYLE_EXTENDED_SMALL
-
-
 from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
-from gettext import gettext as _
+
+import logging
+_logger = logging.getLogger('turtleart-activity')
 
 #
 # A class for the list of blocks and everything they share in common
@@ -426,7 +429,8 @@ class Block:
             self._make_portfolio_style_1x2(svg)
         else:
             self._make_basic_style(svg)
-            print "WARNING: I don't know how to create a %s block" % (self.name)
+            _logger.debug("WARNING: I don't know how to create a %s block" % \
+                              (self.name))
 
     def _set_colors(self, svg):
         if self.name in BOX_COLORS:
