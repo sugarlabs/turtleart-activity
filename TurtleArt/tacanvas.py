@@ -333,6 +333,7 @@ class TurtleGraphics:
 
     def setxy(self, x, y, share=True):
         """ Move turtle to position x,y """
+        oldx, oldy = self.xcor, self.ycor
         x *= self.tw.coord_scale
         y *= self.tw.coord_scale
         try:
@@ -340,6 +341,11 @@ class TurtleGraphics:
         except TypeError, ValueError:
             _logger.debug("bad value sent to %s" % (__name__))
             return
+
+        if self.pendown:
+            self.gc.set_foreground(self.fgcolor)
+            self.draw_line(oldx, oldy, self.xcor, self.ycor)
+
         self.move_turtle()
         if self.tw.sharing() and share:
             self.tw.activity.send_event("x|%s" % \
