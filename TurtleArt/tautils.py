@@ -573,6 +573,16 @@ def dock_dx_dy(block1, dock1n, block2, dock2n):
     (_b2x, _b2y) = block2.spr.get_xy()
     return ((_b1x + _d1x) - (_b2x + _d2x), (_b1y + _d1y) - (_b2y + _d2y))
 
+def journal_check(blk1, blk2, dock1, dock2):
+    """ Dock blocks only if arg is Journal block """
+    if blk1 == None or blk2 == None:
+        return True
+    if (blk1.name == 'skin' and dock1 == 1) and blk2.name != 'journal':
+        return False
+    if (blk2.name == 'skin' and dock2 == 1) and blk1.name != 'journal':
+        return False
+    return True
+
 def arithmetic_check(blk1, blk2, dock1, dock2):
     """ Dock strings only if they convert to numbers. Avoid /0 and root(-1)"""
     if blk1 == None or blk2 == None:

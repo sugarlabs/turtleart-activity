@@ -66,7 +66,7 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
                     collapsed, collapsible, hide_button_hit, show_button_hit, \
                     arithmetic_check, xy, find_block_to_run, find_top_block, \
                     find_start_stack, find_group, find_blk_below, olpc_xo_1, \
-                    dock_dx_dy, data_to_string
+                    dock_dx_dy, data_to_string, journal_check
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
@@ -1619,6 +1619,10 @@ class TurtleArtWindow():
                     best_selected_block_dockn = selected_block_dockn
         if d < 200:
             if not arithmetic_check(selected_block, best_destination,
+                                    best_selected_block_dockn,
+                                    best_destination_dockn):
+                return
+            if not journal_check(selected_block, best_destination,
                                     best_selected_block_dockn,
                                     best_destination_dockn):
                 return

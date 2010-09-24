@@ -646,7 +646,7 @@ STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
                          'userdefined2args', 'userdefined3args', 'storein']
 
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
-                'storeinbox2', 'skin']
+                'storeinbox2']
 
 #
 # Status blocks
