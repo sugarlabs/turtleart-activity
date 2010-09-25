@@ -400,6 +400,9 @@ class TurtleArtWindow():
                 self.activity.palette_buttons[0].set_icon(
                                                        PALETTE_NAMES[0] + 'on')
             self.hide = False
+            if self.running_sugar:
+                self.activity.recenter()
+
         self.canvas.canvas.inval()
 
     def hideshow_palette(self, state):
@@ -413,6 +416,7 @@ class TurtleArtWindow():
             self.palette = True
             if self.running_sugar:
                 self.activity.do_showpalette()
+                self.activity.recenter()
             self.show_palette()
 
     def show_palette(self, n=0):
