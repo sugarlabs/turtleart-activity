@@ -852,7 +852,7 @@ class LogoCode:
         except SyntaxError, e:
             stop_logo(self.tw)
             raise logoerror('#' + str(e))
-        except NameError:
+        except NameError, e:
             stop_logo(self.tw)
             raise logoerror('#' + str(e))
         except OverflowError:
