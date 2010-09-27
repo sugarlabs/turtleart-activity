@@ -212,18 +212,18 @@ def tasqrt(x):
 def tarandom(x, y):
     """ Random integer """
     if numtype(x) and numtype(y):
-        return(int(uniform(x, y)))
+        return(int(round(uniform(x, y),0)))
     xx, xflag = chr_to_ord(x)
     yy, yflag = chr_to_ord(y)
     print xx, xflag, yy, yflag
     if xflag and yflag:
-        return chr(int(uniform(xx, yy)))
+        return chr(int(round(uniform(xx, yy),0)))
     if not xflag:
         xx = str_to_num(x)
     if not yflag:
         yy = str_to_num(y)
     try:
-        return(int(uniform(xx, yy)))
+        return(int(round(uniform(xx, yy),0)))
     except TypeError:
         raise logoerror("#notanumber")
 
