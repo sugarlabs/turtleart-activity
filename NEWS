@@ -1,3 +1,14 @@
+99
+
+* reskinable turtle (#2353)
+* setxy honors pen up/pen down (#2358)
+* updated Tamil, Spanish (#2359), and German translations
+* expandable two-argument blocks (#2330, #2336)
+* updated samples to take advantage of #2330 and removed extra turtles
+* removed import numpy to fix #2313 and #2314
+* fixed rounding error that prevented max value from being returned by
+  random (#2380)
+
 98
 
 * fixed palette selection bug introduced by alpha-value checking
