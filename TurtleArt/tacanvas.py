@@ -637,7 +637,7 @@ class TurtleGraphics:
             # if it is a new turtle, start it in the center of the screen
             self.tw.active_turtle = self.tw.turtles.get_turtle(k, True, colors)
             self.seth(0, False)
-            self.setxy(0, 0, False)
+            self.setxy(0, 0, False, pendown=False)
             self.tw.active_turtle.set_pen_state(True)
         self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
         self.tw.active_turtle.show()
