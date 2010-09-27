@@ -642,8 +642,10 @@ class TurtleGraphics:
         self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
         self.tw.active_turtle.show()
         tx, ty = self.tw.active_turtle.get_xy()
-        self.xcor = -self.width / 2 + tx + 28
-        self.ycor = self.height / 2 - ty - 30
+        self.xcor = -self.width / 2 + tx + \
+            self.tw.active_turtle.spr.rect.width/2
+        self.ycor = self.height / 2 - ty - \
+            self.tw.active_turtle.spr.rect.height/2
         self.heading = self.tw.active_turtle.get_heading()
         self.setcolor(self.tw.active_turtle.get_color(), False)
         self.setgray(self.tw.active_turtle.get_gray(), False)

@@ -1175,8 +1175,8 @@ class TurtleArtWindow():
                 self.selected_turtle.spr.set_layer(TOP_LAYER)
                 self.selected_turtle.move((sx + dx, sy + dy))
             else:
-                dx = x - sx - 30
-                dy = y - sy - 30
+                dx = x - sx - self.active_turtle.spr.rect.width/2
+                dy = y - sy - self.active_turtle.spr.rect.height/2
                 self.canvas.seth(int(dragx + atan2(dy, dx)/DEGTOR + 5)/10 * 10)
 
         # If we are hoving, show popup help.
@@ -1336,8 +1336,10 @@ class TurtleArtWindow():
                     self.selected_turtle.hide()
                     self.turtles.remove_from_dict(k)
             else:
-                self._move_turtle(tx - self.canvas.width / 2 + 30,
-                                  self.canvas.height / 2 - ty - 30)
+                self._move_turtle(tx - self.canvas.width / 2 + \
+                                      self.active_turtle.spr.rect.width/2,
+                                  self.canvas.height / 2 - ty - \
+                                      self.active_turtle.spr.rect.height/2)
             self.selected_turtle = None
             self.active_turtle = self.turtles.get_turtle(
                 self.default_turtle_name)
