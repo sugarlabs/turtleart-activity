@@ -29,6 +29,8 @@ import os
 import os.path
 from math import atan2, pi
 DEGTOR = 2*pi/360
+
+import locale
 from gettext import gettext as _
 
 try:
@@ -124,6 +126,8 @@ class TurtleArtWindow():
         self.mouse_x = 0
         self.mouse_y = 0
 
+        self.decimal_point = locale.localeconv()['decimal_point']
+
         self.orientation = HORIZONTAL_PALETTE
         if olpc_xo_1():
             self.lead = 1.0
@@ -176,7 +180,8 @@ class TurtleArtWindow():
         self.drag_pos = 0, 0
         self.paste_offset = 20
 
-        self.block_list = Blocks(self.scale)
+        self.block_list = Blocks(font_scale_factor=self.scale,
+                                 decimal_point=self.decimal_point)
         if self.interactive_mode:
             self.sprite_list = Sprites(self.window, self.area, self.gc)
         else:
@@ -1829,7 +1834,11 @@ class TurtleArtWindow():
                 newnum = '-' + oldnum
             else:
                 newnum = oldnum
-        elif keyname == 'period' and '.' not in oldnum:
+        elif keyname == 'comma' and self.decimal_point == ',' and \
+                ',' not in oldnum:
+            newnum = oldnum + ','
+        elif keyname == 'period' and self.decimal_point == '.' and \
+                '.' not in oldnum:
             newnum = oldnum + '.'
         elif keyname == 'BackSpace':
             if len(oldnum) > 0:
@@ -1848,9 +1857,11 @@ class TurtleArtWindow():
             newnum = oldnum
         if newnum == '.':
             newnum = '0.'
+        if newnum == ',':
+            newnum = '0,'
         if len(newnum) > 0 and newnum != '-':
             try:
-                float(newnum)
+                float(newnum.replace(self.decimal_point, '.'))
             except ValueError, e:
                 newnum = oldnum
         self.selected_blk.spr.set_label(newnum + CURSOR)
@@ -1999,11 +2010,11 @@ class TurtleArtWindow():
     def _number_check(self):
         """ Make sure a 'number' block contains a number. """
         n = self.selected_blk.spr.labels[0].replace(CURSOR, '')
-        if n in ['-', '.', '-.']:
+        if n in ['-', '.', '-.', ',']:
             n = 0
-        if n is not None:
+        elif n is not None:
             try:
-                f = float(n)
+                f = float(n.replace(self.decimal_point, '.'))
                 if f > 1000000:
                     n = 1
                     self.showlabel("#overflowerror")
@@ -2016,7 +2027,7 @@ class TurtleArtWindow():
         else:
             n = 0
         self.selected_blk.spr.set_label(n)
-        self.selected_blk.values[0] = n
+        self.selected_blk.values[0] = n.replace(self.decimal_point, '.')
 
     def _string_check(self):
         s = self.selected_blk.spr.labels[0].replace(CURSOR, '')

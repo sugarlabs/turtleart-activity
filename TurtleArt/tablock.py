@@ -47,9 +47,10 @@ _logger = logging.getLogger('turtleart-activity')
 # A class for the list of blocks and everything they share in common
 #
 class Blocks:
-    def __init__(self, font_scale_factor = 1):
+    def __init__(self, font_scale_factor=1, decimal_point='.'):
         self.list = []
         self.font_scale_factor = font_scale_factor
+        self.decimal_point = decimal_point
 
     def get_block(self, i):
         if i < 0 or i > len(self.list)-1:
@@ -93,6 +94,7 @@ class Blocks:
 class Block:
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
                  values=[], scale=BLOCK_SCALE, colors=["#FF0000","#A00000"]):
+        self.block_list = block_list
         self.spr = None
         self.shapes = [None, None]
         self.name = name
@@ -115,7 +117,7 @@ class Block:
             self.name = OLD_NAMES[self.name]
 
         for i in range(len(self._font_size)):
-            self._font_size[i] *= self.scale*block_list.font_scale_factor
+            self._font_size[i] *= self.scale*self.block_list.font_scale_factor
 
         for v in (values):
             self.values.append(v)
@@ -126,7 +128,7 @@ class Block:
            self.name not in EXPANDABLE_BLOCKS and \
            self.name not in EXPANDABLE_ARGS and \
            self.name not in ['string', 'sandwichtop', 'sandwichtop_no_label']:
-            for b in block_list.list:
+            for b in self.block_list.list:
                 if b.scale == self.scale and b.name == self.name:
                     copy_block = b
                     break
@@ -135,7 +137,7 @@ class Block:
         if name in PRIMITIVES:
             self.primitive = PRIMITIVES[self.name]
 
-        block_list.append_to_list(self)
+        self.block_list.append_to_list(self)
 
     # We may want to highlight a block...
     def highlight(self):
@@ -313,7 +315,11 @@ class Block:
                 len(self.values) > 0:
             for i, v in enumerate(self.values):
                 if v is not None:
-                    self._set_labels(i, str(v))
+                    if self.name == 'number':
+                        self._set_labels(i,
+                           str(v).replace('.', self.block_list.decimal_point))
+                    else:
+                        self._set_labels(i, str(v))
         elif self.name in BLOCK_NAMES:
             for i, n in enumerate(BLOCK_NAMES[self.name]):
                 self._set_labels(i, n)

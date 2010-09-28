@@ -80,7 +80,7 @@ def numtype(x):
 
 def str_to_num(x):
     """ Try to comvert a string to a number """
-    xx = convert(x, float)
+    xx = convert(x.replace(self.tw.decimal_point,'.'), float)
     if type(xx) is float:
         return xx
     else:
@@ -215,7 +215,6 @@ def tarandom(x, y):
         return(int(round(uniform(x, y),0)))
     xx, xflag = chr_to_ord(x)
     yy, yflag = chr_to_ord(y)
-    print xx, xflag, yy, yflag
     if xflag and yflag:
         return chr(int(round(uniform(xx, yy),0)))
     if not xflag:
@@ -1010,7 +1009,8 @@ class LogoCode:
         elif type(n) == int:
             self.tw.showlabel('status', n)
         else:
-            self.tw.showlabel('status', round_int(n))
+            self.tw.showlabel('status',
+                str(round_int(n)).replace('.', self.tw.decimal_point))
     
     def prim_kbinput(self):
         """ Query keyboard """
