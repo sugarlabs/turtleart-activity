@@ -80,7 +80,7 @@ class TurtleArtWindow():
     timeout_tag = [0]
 
     def __init__(self, win, path, parent=None, mycolors=None, mynick=None):
-        self._loaded_project = ""
+        self._loaded_project = ''
         self.win = None
         self.parent = parent
         if type(win) == gtk.DrawingArea:
@@ -119,14 +119,20 @@ class TurtleArtWindow():
         self.height = gtk.gdk.screen_height() 
         self.rect = gtk.gdk.Rectangle(0, 0, 0, 0)
 
-        self.keypress = ""
+        self.keypress = ''
         self.keyvalue = 0
-        self.dead_key = ""
+        self.dead_key = ''
         self.mouse_flag = 0
         self.mouse_x = 0
         self.mouse_y = 0
 
+        lang = os.environ['LANG']
+        if lang != '' and lang is not None:
+            locale.setlocale(locale.LC_NUMERIC, lang)
         self.decimal_point = locale.localeconv()['decimal_point']
+        if self.decimal_point == '' or self.decimal_point is None:
+            self.decimal_point = '.'
+        print self.decimal_point, os.environ['LANG']
 
         self.orientation = HORIZONTAL_PALETTE
         if olpc_xo_1():
