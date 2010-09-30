@@ -1418,7 +1418,6 @@ msgid "microphone input volume"
 msgstr "volume ingresso microfono"
 
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:792
-#, fuzzy
 msgid "jogs stack down"
 msgstr "sposta la sequenza in basso"
 
