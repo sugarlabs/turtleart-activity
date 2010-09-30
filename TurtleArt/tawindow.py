@@ -126,13 +126,10 @@ class TurtleArtWindow():
         self.mouse_x = 0
         self.mouse_y = 0
 
-        lang = os.environ['LANG']
-        if lang != '' and lang is not None:
-            locale.setlocale(locale.LC_NUMERIC, lang)
+        locale.setlocale(locale.LC_NUMERIC, '')
         self.decimal_point = locale.localeconv()['decimal_point']
         if self.decimal_point == '' or self.decimal_point is None:
             self.decimal_point = '.'
-        print self.decimal_point, os.environ['LANG']
 
         self.orientation = HORIZONTAL_PALETTE
         if olpc_xo_1():
