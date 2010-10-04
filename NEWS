@@ -8,6 +8,7 @@
 * removed import numpy to fix #2313 and #2314
 * fixed rounding error that prevented max value from being returned by
   random (#2380)
+* added locale support for decimal_point rendering
 
 98
 
