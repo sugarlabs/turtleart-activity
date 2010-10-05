@@ -285,9 +285,8 @@ def round_int(num):
 
 def calc_image_size(spr):
     """ Calculate the maximum size for placing an image onto a sprite. """
-    return spr.label_safe_width(), spr.label_safe_height()
-
-
+    return int(max(spr.label_safe_width(), 1)), \
+           int(max(spr.label_safe_height(), 1))
 
 # Collapsible stacks live between 'sandwichtop' and 'sandwichbottom' blocks
 
