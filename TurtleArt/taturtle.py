@@ -224,7 +224,7 @@ class Turtle:
 
     def move(self, pos):
         """ Move the turtle. """
-        self.x, self.y = pos[0], pos[1]
+        self.x, self.y = int(pos[0]), int(pos[1])
         if not self.hidden and self.spr is not None:
             self.spr.move(pos)
         return(self.x, self.y)

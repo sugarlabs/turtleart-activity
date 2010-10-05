@@ -1062,12 +1062,12 @@ class LogoCode:
 
     def show_list(self, sarray):
         """ Display list of media objects """
-        x = self.tw.canvas.xcor/self.tw.coord_scale
-        y = self.tw.canvas.ycor/self.tw.coord_scale
+        x = self.tw.canvas.xcor / self.tw.coord_scale
+        y = self.tw.canvas.ycor / self.tw.coord_scale
         for s in sarray:
             self.tw.canvas.setxy(x, y, pendown=False)
             self.show(s)
-            y -= int(self.tw.canvas.textsize*self.tw.lead)
+            y -= int(self.tw.canvas.textsize * self.tw.lead)
 
     def set_scale(self, x):
         """ Set scale used by media object display """
@@ -1079,13 +1079,18 @@ class LogoCode:
         pixbuf = self.show_picture(media, 0, 0, scale, scale, False)
         if pixbuf is not None:
             self.tw.active_turtle.set_shapes([pixbuf])
+            pen_state = self.tw.active_turtle.get_pen_state()
+            if pen_state:
+                self.tw.canvas.setpen(False)
             self.tw.canvas.forward(0)
+            if pen_state:
+                self.tw.canvas.setpen(True)
 
     def show(self, string, center=False):
         """ Show is the general-purpose media-rendering block. """
         # convert from Turtle coordinates to screen coordinates
-        x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
-        y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
+        x = int(self.tw.canvas.width / 2) + int(self.tw.canvas.xcor)
+        y = int(self.tw.canvas.height / 2) - int(self.tw.canvas.ycor)
         if type(string) == str or type(string) == unicode:
             if string == "media_None":
                 pass
@@ -1099,35 +1104,35 @@ class LogoCode:
                 if center:
                     y -= self.tw.canvas.textsize
                 self.tw.canvas.draw_text(string, x, y,
-                                         int(self.tw.canvas.textsize*\
-                                             self.scale/100),
-                                         self.tw.canvas.width-x)
+                                         int(self.tw.canvas.textsize * \
+                                             self.scale / 100.),
+                                         self.tw.canvas.width - x)
         elif type(string) == float or type(string) == int:
             string = round_int(string)
             if center:
                 y -= self.tw.canvas.textsize
             self.tw.canvas.draw_text(string, x, y,
-                                     int(self.tw.canvas.textsize*\
-                                         self.scale/100),
-                                     self.tw.canvas.width-x)
+                                     int(self.tw.canvas.textsize * \
+                                         self.scale / 100.),
+                                     self.tw.canvas.width - x)
     
     def insert_image(self, media, center):
         """ Image only (at current x, y) """
-        w = (self.tw.canvas.width * self.scale)/100
-        h = (self.tw.canvas.height * self.scale)/100
+        w = int((self.tw.canvas.width * self.scale) / 100.)
+        h = int((self.tw.canvas.height * self.scale) / 100.)
         # convert from Turtle coordinates to screen coordinates
         x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
         y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
         if center:
-            x -= w/2
-            y -= h/2
+            x -= int(w / 2.)
+            y -= int(h / 2.)
         if media[0:5] == 'media':
             self.show_picture(media, x, y, w, h)
     
     def insert_desc(self, media):
         """ Description text only (at current x, y) """
-        w = (self.tw.canvas.width * self.scale)/100
-        h = (self.tw.canvas.height * self.scale)/100
+        w = int((self.tw.canvas.width * self.scale) / 100.)
+        h = int((self.tw.canvas.height * self.scale) / 100.)
         # convert from Turtle coordinates to screen coordinates
         x = self.tw.canvas.width/2+int(self.tw.canvas.xcor)
         y = self.tw.canvas.height/2-int(self.tw.canvas.ycor)
@@ -1150,11 +1155,13 @@ class LogoCode:
 
     def show_picture(self, media, x, y, w, h, show=True):
         """ Image file from Journal """
+        if w < 1 or h < 1:
+            return None
         if media == "" or media[6:] == "":
-            pass
+            return None
         elif media[6:] is not "None":
-            pixbuf = None
             self.filepath = None
+            pixbuf = None
             if self.tw.running_sugar:
                 try:
                     dsobject = datastore.get(media[6:])
@@ -1175,7 +1182,8 @@ class LogoCode:
                     except:
                         self.filepath = None
                         self.tw.showlabel('nojournal', media[6:]) 
-                        print "Couldn't open Journal object %s" % (media[6:])
+                        _logger.debug("Couldn't open Journal object %s" % \
+                                         (media[6:]))
             else:
                 try:
                     if movie_media_type(media):
@@ -1188,7 +1196,7 @@ class LogoCode:
                 except:
                     self.filepath = None
                     self.tw.showlabel('nofile', media[6:]) 
-                    print "Couldn't open media object %s" % (media[6:])
+                    _logger.debug("Couldn't open media object %s" % (media[6:]))
             if pixbuf is not None and show:
                 self.tw.canvas.draw_pixbuf(pixbuf, 0, 0, int(x), int(y),
                                                          int(w), int(h),
