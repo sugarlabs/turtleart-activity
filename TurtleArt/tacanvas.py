@@ -102,7 +102,7 @@ class TurtleGraphics:
         self.height = height
         if self.tw.interactive_mode:
             self.canvas = Sprite(tw.sprite_list, 0, 0,
-                gtk.gdk.Pixmap(self.tw.area, self.width, self.height, -1))
+                gtk.gdk.Pixmap(self.tw.area, self.width * 2, self.height * 2, -1))
         else:
             self.canvas = Sprite(None, 0, 0, self.tw.window)
         self.canvas.set_layer(CANVAS_LAYER)
