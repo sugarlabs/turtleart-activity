@@ -193,11 +193,9 @@ class TurtleArtActivity(activity.Activity):
     def do_save_as_logo_cb(self, button):
         """ Write logo code out to datastore. """
         self.save_as_logo.set_icon("logo-saveon")
-        # grab code from stacks
-        logocode = save_logo(self.tw)
-        if len(logocode) == 0:
+        logo_code_path = self._dump_logo_code()
+        if logo_code_path is None:
             return
-        filename = "logosession.lg"
 
         # Create a datastore object
         dsobject = datastore.create()
@@ -208,19 +206,8 @@ class TurtleArtActivity(activity.Activity):
         dsobject.metadata['mime_type'] = 'text/plain'
         dsobject.metadata['icon-color'] = profile.get_color().to_string()
 
-        # save the Logo code to the instance directory
-        datapath = get_path(activity, 'instance')
-
-        # Write the file to the data directory of this activity's root. 
-        file_path = os.path.join(datapath, filename)
-        f = open(file_path, 'w')
-        try:
-            f.write(logocode)
-        finally:
-            f.close()
-
         # Set the file_path in the datastore.
-        dsobject.set_file_path(file_path)
+        dsobject.set_file_path(logo_code_path)
 
         datastore.write(dsobject)
         gobject.timeout_add(250, self.save_as_logo.set_icon, "logo-saveoff")
@@ -229,8 +216,13 @@ class TurtleArtActivity(activity.Activity):
     def do_load_ta_project_cb(self, button):
         """ Load a project from the Journal """
         from sugar.graphics.objectchooser import ObjectChooser
-        chooser = ObjectChooser(_("Project"), self,
-                              gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+        """
+        chooser = ObjectChooser(_('Project'), self,
+            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
+            what_filter='application/x-turtle-art')
+        """
+        chooser = ObjectChooser(parent=self, what_filter='application/x-turtle-art')
+
         try:
             result = chooser.run()
             if result == gtk.RESPONSE_ACCEPT:
@@ -256,8 +248,10 @@ class TurtleArtActivity(activity.Activity):
     def import_py(self):
         """ Import Python code from the Journal to load into 'myblock'. """
         from sugar.graphics.objectchooser import ObjectChooser
-        chooser = ObjectChooser('Python code', self,
-                              gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+        chooser = ObjectChooser(_('Python code'), self,
+            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
+            what_filter='text/x-python')
+
         try:
             result = chooser.run()
             if result == gtk.RESPONSE_ACCEPT:
@@ -495,20 +489,24 @@ class TurtleArtActivity(activity.Activity):
     def get_document_path(self, async_cb, async_err_cb):
         """  View Logo code as part of view source.  """
         logo_code_path = self._dump_logo_code()
-        async_cb(logo_code_path)
+        if logo_code_path is not None:
+            async_cb(logo_code_path)
 
     def _dump_logo_code(self):
-        """  Save Logo code to Journal. """
+        """  Save Logo code to temporary file. """
         datapath = get_path(activity, 'instance')
-        tafile = os.path.join(datapath,"tmpfile.ta")
+        tmpfile = os.path.join(datapath, 'tmpfile.lg')
+        code = save_logo(self.tw)
+        if len(code) == 0:
+            _logger.debug('save_logo returned None')
+            return None
         try:
-            code = save_logo(self.tw)
-            f = file(tafile, "w")
+            f = file(tmpfile, "w")
             f.write(code)
             f.close()
         except Exception, e:
             _logger.error("Couldn't dump code to view source: " + str(e))
-        return tafile
+        return tmpfile
 
     # Sharing-related callbacks
 
