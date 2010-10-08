@@ -1820,7 +1820,8 @@ class TurtleArtWindow():
                 self.selected_blk.resize()
             return True
         # Otherwise, use keyboard input to move blocks or turtles
-        else:
+        # but not proto blocks
+        elif self.selected_blk.name != 'proto':
             self._process_keyboard_commands(keyname)
         if self.selected_blk is None:
             return False
