@@ -79,14 +79,40 @@ class Blocks:
                 b._font_size[i] *= b.scale*scale/self.font_scale_factor
         self.font_scale_factor = scale
 
-    #
-    # sprite utilities
-    #
     def spr_to_block(self, spr):
         for b in self.list:
             if spr == b.spr:
                 return b
         return None
+
+    def get_next_block(self, block):
+        if block is None:
+            return None
+        try:
+            i = self.list.index(block)
+        except ValueError:
+            return None
+        i += 1
+        if i < len(self.list):
+            return self.list[i]
+        else:
+            return self.list[0]
+
+    def get_next_block_of_same_type(self, block):
+        if block is None:
+            return None
+        type = block.type
+        i = 0
+        while block is not None:
+            block = self.get_next_block(block)
+            if block is not None:
+                if block.type == type:
+                    return block
+            if i == len(self.list):
+                break
+            i += 1
+        return None
+        
 
 #
 # A class for the individual blocks
