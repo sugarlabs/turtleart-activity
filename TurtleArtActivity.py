@@ -216,12 +216,8 @@ class TurtleArtActivity(activity.Activity):
     def do_load_ta_project_cb(self, button):
         """ Load a project from the Journal """
         from sugar.graphics.objectchooser import ObjectChooser
-        """
-        chooser = ObjectChooser(_('Project'), self,
-            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
-            what_filter='application/x-turtle-art')
-        """
-        chooser = ObjectChooser(parent=self, what_filter='application/x-turtle-art')
+        chooser = ObjectChooser(parent=self,
+                                what_filter='org.laptop.TurtleArtActivity')
 
         try:
             result = chooser.run()
@@ -248,9 +244,8 @@ class TurtleArtActivity(activity.Activity):
     def import_py(self):
         """ Import Python code from the Journal to load into 'myblock'. """
         from sugar.graphics.objectchooser import ObjectChooser
-        chooser = ObjectChooser(_('Python code'), self,
-            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
-            what_filter='text/x-python')
+        chooser = ObjectChooser(parent=self,
+                                what_filter='org.laptop.Pippy')
 
         try:
             result = chooser.run()
@@ -286,28 +281,23 @@ class TurtleArtActivity(activity.Activity):
 
     def do_keep_cb(self, button):
         """ Save a snapshot of the project to the Journal. """
-        datapath = get_path(activity, 'instance')
-        tafile = os.path.join(datapath,"tmpfile.ta")
-        try:
-            data_to_file(self.tw.assemble_data_to_save(), tafile)
-        except:
-            _logger.debug("couldn't save snapshot to journal")
+        tmpfile = self._dump_ta_code()
+        if tmpfile is not None:
+            # Create a datastore object
+            dsobject = datastore.create()
 
-        # Create a datastore object
-        dsobject = datastore.create()
+            # Write any metadata
+            dsobject.metadata['title'] = self.metadata['title'] + " " + \
+                _("snapshot")
+            dsobject.metadata['icon-color'] = profile.get_color().to_string()
+            dsobject.metadata['mime_type'] = 'application/x-turtle-art'
+            dsobject.metadata['activity'] = 'org.laptop.TurtleArtActivity'
+            dsobject.set_file_path(tmpfile)
+            datastore.write(dsobject)
 
-        # Write any metadata
-        dsobject.metadata['title'] = self.metadata['title'] + " " + \
-                                     _("snapshot")
-        dsobject.metadata['icon-color'] = profile.get_color().to_string()
-        dsobject.metadata['mime_type'] = 'application/x-turtle-art'
-        dsobject.metadata['activity'] = 'org.laptop.TurtleArtActivity'
-        dsobject.set_file_path(tafile)
-        datastore.write(dsobject)
-
-        # Clean up
-        dsobject.destroy()
-        os.remove(tafile)
+            # Clean up
+            dsobject.destroy()
+            os.remove(tmpfile)
         return
 
     # Main toolbar button callbacks 
@@ -487,10 +477,11 @@ class TurtleArtActivity(activity.Activity):
                                                               OVERLAY_LAYER)
 
     def get_document_path(self, async_cb, async_err_cb):
-        """  View Logo code as part of view source.  """
-        logo_code_path = self._dump_logo_code()
-        if logo_code_path is not None:
-            async_cb(logo_code_path)
+        """  View TA code as part of view source.  """
+        ta_code_path = self._dump_ta_code()
+        if ta_code_path is not None:
+            async_cb(ta_code_path)
+            os.remove(tmpfile)
 
     def _dump_logo_code(self):
         """  Save Logo code to temporary file. """
@@ -506,6 +497,17 @@ class TurtleArtActivity(activity.Activity):
             f.close()
         except Exception, e:
             _logger.error("Couldn't dump code to view source: " + str(e))
+        return tmpfile
+
+    def _dump_ta_code(self):
+        """  Save TA code to temporary file. """
+        datapath = get_path(activity, 'instance')
+        tmpfile = os.path.join(datapath, 'tmpfile.ta')
+        try:
+            data_to_file(self.tw.assemble_data_to_save(), tmpfile)
+        except:
+            _logger.debug("couldn't save snapshot to journal")
+            tmpfile = None
         return tmpfile
 
     # Sharing-related callbacks
