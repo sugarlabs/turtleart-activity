@@ -1821,7 +1821,8 @@ class TurtleArtWindow():
             return True
         # Otherwise, use keyboard input to move blocks or turtles
         # but not proto blocks
-        elif self.selected_blk.name != 'proto':
+        elif self.selected_blk is not None and \
+             self.selected_blk.name != 'proto':
             self._process_keyboard_commands(keyname)
         if self.selected_blk is None:
             return False
