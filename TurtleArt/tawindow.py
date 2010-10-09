@@ -1973,8 +1973,7 @@ class TurtleArtWindow():
                 elif keyname == 'KP_Page_Down':
                     if self.drag_group == None:
                         self.drag_group = find_group(blk)
-                    for gblk in self.drag_group:
-                        gblk.spr.hide()
+                    self._put_in_trash(blk)
                     self.drag_group = None
                 else:
                     self._jog_block(blk, mov_dict[keyname][0],
