@@ -1065,7 +1065,7 @@ class TurtleArtWindow():
         for i in range(len(blocks)):
             cons = []
             # Normally, it is simply a matter of copying the connections.
-            if blocks[i].connections == None:
+            if blocks[i].connections is None:
                 for c in block_data[i][4]:
                     if c is None:
                         cons.append(None)
@@ -1354,7 +1354,7 @@ class TurtleArtWindow():
             return
 
         # If we don't have a group of blocks, then there is nothing to do.
-        if self.drag_group == None: 
+        if self.drag_group is None: 
             return
 
         blk = self.drag_group[0]
@@ -1505,7 +1505,7 @@ class TurtleArtWindow():
                 if blk.name in NUMBER_STYLE_VAR_ARG:
                     self._cascade_expandable(blk)
                 grow_stack_arm(find_sandwich_top(blk))
-            elif blk.name in PYTHON_SKIN and self.myblock == None:
+            elif blk.name in PYTHON_SKIN and self.myblock is None:
                 self._import_py()
             else:
                 self._run_stack(blk)
@@ -1646,7 +1646,7 @@ class TurtleArtWindow():
 
             # If there was already a block docked there, move it to the trash.
             blk_in_dock = best_destination.connections[best_destination_dockn]
-            if blk_in_dock is not None:
+            if blk_in_dock is not None and blk_in_dock != selected_block:
                 blk_in_dock.connections[0] = None
                 self._put_in_trash(blk_in_dock)
 
@@ -1685,7 +1685,7 @@ class TurtleArtWindow():
 
     def _disconnect(self, blk):
         """ Disconnect block from stack above it. """
-        if blk.connections[0] == None:
+        if blk.connections[0] is None:
             return
         if collapsed(blk):
             return
@@ -1731,13 +1731,13 @@ class TurtleArtWindow():
 
     def _load_description_block(self, blk):
         """ Look for a corresponding description block """
-        if blk == None or blk.name != 'journal' or len(blk.values) == 0 or\
+        if blk is None or blk.name != 'journal' or len(blk.values) == 0 or\
            blk.connections[0] is None:
             return
         _blk = blk.connections[0]
         dblk = find_blk_below(_blk, 'description')
         # Autoupdate the block if it is empty
-        if dblk != None and (len(dblk.values) == 0 or dblk.values[0] == None):
+        if dblk != None and (len(dblk.values) == 0 or dblk.values[0] is None):
             self._update_media_icon(dblk, None, blk.values[0])
 
     def _update_media_icon(self, blk, name, value=''):
@@ -1800,32 +1800,26 @@ class TurtleArtWindow():
 
         self.keypress = keyname
 
-        # First, process Alt keys.
-        if alt_mask and self.selected_blk is not None:
+        if alt_mask:
             if keyname == "p":
                 self.hideshow_button()
             elif keyname == 'q':
                 exit()
-            return True
-        # Process keyboard input for 'number' blocks
-        if self.selected_blk is not None and \
-           self.selected_blk.name == 'number':
-            self._process_numeric_input(keyname)
-            return True
-        # Process keyboard input for 'string' blocks
-        elif self.selected_blk is not None and \
-             self.selected_blk.name == 'string':
-            self.process_alphanumeric_input(keyname, keyunicode)
-            if self.selected_blk is not None:
-                self.selected_blk.resize()
-            return True
-        # Otherwise, use keyboard input to move blocks or turtles
-        # but not proto blocks
-        elif self.selected_blk is not None and \
-             self.selected_blk.name != 'proto':
-            self._process_keyboard_commands(keyname)
-        if self.selected_blk is None:
-            return False
+        
+        elif self.selected_blk is not None:
+            if self.selected_blk.name == 'number':
+                self._process_numeric_input(keyname)
+            elif self.selected_blk.name == 'string':
+                self.process_alphanumeric_input(keyname, keyunicode)
+                if self.selected_blk is not None:
+                    self.selected_blk.resize()
+            elif self.selected_blk.name != 'proto':
+                self._process_keyboard_commands(keyname, block_flag=True)
+
+        elif self.turtles.spr_to_turtle(self.selected_spr) is not None:
+            self._process_keyboard_commands(keyname, block_flag=False)
+
+        return True
 
     def _process_numeric_input(self, keyname):
         ''' Make sure numeric input is valid. '''
@@ -1951,34 +1945,48 @@ class TurtleArtWindow():
                     newleft = oldleft+keyname
         self.selected_blk.spr.set_label("%s%s%s" % (newleft, CURSOR, oldright))
 
-    def _process_keyboard_commands(self, keyname):
+    def _process_keyboard_commands(self, keyname, block_flag=True):
         """ Use the keyboard to move blocks and turtle """
-        mov_dict = {'KP_Up':[0, 10], 'j':[0, 10], 'Up':[0, 10],
-                    'KP_Down':[0, -10], 'k':[0, -10], 'Down':[0, -10],
-                    'KP_Left':[-10, 0], 'h':[-10, 0], 'Left':[-10, 0],
-                    'KP_Right':[10, 0], 'l':[10, 0], 'Right':[10, 0],
-                    'KP_Page_Down':[0, 0], 'KP_Page_Up':[0, 0], 'KP_End':[0, 0],
-                    'KP_Home':[-1, -1], 'Return':[-1, -1], 'Esc':[0, 0]}
+        mov_dict = {'KP_Up': [0, 20], 'j': [0, 20], 'Up': [0, 20],
+                    'KP_Down': [0, -20], 'k': [0, -20], 'Down': [0, -20],
+                    'KP_Left': [-20, 0], 'h': [-20, 0], 'Left': [-20, 0],
+                    'KP_Right': [20, 0], 'l': [20, 0], 'Right': [20, 0],
+                    'KP_Page_Down': [-1, -1], 'Page_Down': [-1, -1],
+                    'KP_Page_Up': [-1, -1], 'Page_Up': [-1, -1],
+                    'KP_End': [0, 0], 'End': [0, 0],
+                    'KP_Home': [0, 0], 'Home': [0, 0], 'space': [0, 0],
+                    'Return': [-1, -1], 'Esc': [-1, -1]}
+
         if keyname not in mov_dict:
-            return
-        if keyname == 'KP_End':
+            return True
+
+        if keyname in ['KP_End', 'End']:
             self.run_button(0)
         elif self.selected_spr is not None:
-            blk = self.block_list.spr_to_block(self.selected_spr)
-            tur = self.turtles.spr_to_turtle(self.selected_spr)
-            if not self.lc.running and blk is not None:
-                if keyname == 'Return' or keyname == 'KP_Page_Up':
+            if not self.lc.running and block_flag:
+                blk = self.block_list.spr_to_block(self.selected_spr)
+                if keyname in ['Return', 'KP_Page_Up', 'Page_Up', 'Esc']:
                     (x, y) = blk.spr.get_xy()
                     self._click_block(x, y)
-                elif keyname == 'KP_Page_Down':
-                    if self.drag_group == None:
+                elif keyname in ['KP_Page_Down', 'Page_Down']:
+                    if self.drag_group is None:
                         self.drag_group = find_group(blk)
                     self._put_in_trash(blk)
                     self.drag_group = None
+                elif keyname in ['KP_Home', 'Home', 'space']:
+                    block = self.block_list.spr_to_block(self.selected_spr)
+                    if block is None:
+                        return True
+                    block.unhighlight()
+                    block = self.block_list.get_next_block_of_same_type(
+                                block)
+                    if block is not None:
+                        self.selected_spr = block.spr
+                        block.highlight()
                 else:
                     self._jog_block(blk, mov_dict[keyname][0],
                                          mov_dict[keyname][1])
-            elif tur is not None:
+            elif not block_flag:
                 self._jog_turtle(mov_dict[keyname][0], mov_dict[keyname][1])
         return True
 
@@ -1990,24 +1998,30 @@ class TurtleArtWindow():
         else:
             self.canvas.xcor += dx
             self.canvas.ycor += dy
+        self.active_turtle = self.turtles.spr_to_turtle(self.selected_spr)
         self.canvas.move_turtle()
         self.display_coordinates()
         self.selected_turtle = None
 
     def _jog_block(self, blk, dx, dy):
         """ Jog block """
+        if blk.type == 'proto':
+            return
         if collapsed(blk):
             return
+
+        self._disconnect(blk)
         self.drag_group = find_group(blk)
-        # check to see if any block ends up with a negative x
+
         for blk in self.drag_group:
             (sx, sy) = blk.spr.get_xy()
             if sx+dx < 0:
                 dx += -(sx + dx)
-        # move the stack
+
         for blk in self.drag_group:
             (sx, sy) = blk.spr.get_xy()
             blk.spr.move((sx + dx, sy - dy))
+
         self._snap_to_dock()
         self.drag_group = None
 
@@ -2042,7 +2056,7 @@ class TurtleArtWindow():
         """ Load Python code from a file """
         fname, self.load_save_folder = get_load_name('.py',
                                                      self.load_save_folder)
-        if fname == None:
+        if fname is None:
             return
         f = open(fname, 'r')
         self.myblock = f.read()
@@ -2096,7 +2110,7 @@ class TurtleArtWindow():
     def load_file(self, create_new_project=True):
         _file_name, self.load_save_folder = get_load_name('.ta',
                                                      self.load_save_folder)
-        if _file_name == None:
+        if _file_name is None:
             return
         if _file_name[-3:] == '.ta':
             _file_name = _file_name[0:-3]
@@ -2197,7 +2211,7 @@ class TurtleArtWindow():
                     self._block_skin('pythonoff', blk)
         elif btype in BOX_STYLE_MEDIA and blk.spr is not None:
             if len(blk.values) == 0 or blk.values[0] == 'None' or\
-               blk.values[0] == None:
+               blk.values[0] is None:
                 self._block_skin(btype+'off', blk)
             elif btype == 'audio' or btype == 'description':
                 self._block_skin(btype+'on', blk)
