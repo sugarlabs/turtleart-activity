@@ -165,7 +165,7 @@ def data_from_file(ta_file):
 
 def data_from_string(text):
     """ JSON load data from a string. """
-    return json_load(text)
+    return json_load(text.replace(']],\n', ']], '))
 
 def data_to_file(data, ta_file):
     """ Write data to a file. """
@@ -175,7 +175,7 @@ def data_to_file(data, ta_file):
 
 def data_to_string(data):
     """ JSON dump a string. """
-    return json_dump(data)
+    return json_dump(data).replace(']], ', ']],\n')
 
 def do_dialog(dialog, suffix, load_save_folder):
     """ Open a file dialog. """
