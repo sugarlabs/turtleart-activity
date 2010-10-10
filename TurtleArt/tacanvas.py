@@ -102,7 +102,8 @@ class TurtleGraphics:
         self.height = height
         if self.tw.interactive_mode:
             self.canvas = Sprite(tw.sprite_list, 0, 0,
-                gtk.gdk.Pixmap(self.tw.area, self.width * 2, self.height * 2, -1))
+                gtk.gdk.Pixmap(self.tw.area, self.width * 2,
+                               self.height * 2, -1))
         else:
             self.canvas = Sprite(None, 0, 0, self.tw.window)
         self.canvas.set_layer(CANVAS_LAYER)
@@ -217,8 +218,7 @@ class TurtleGraphics:
             self.tw.svg_string += self.svg.style()
         if self.tw.sharing() and share:
             self.tw.activity.send_event("f|%s" % \
-                                            (data_to_string([self.tw.nick,
-                                                             int(n)])))
+                (data_to_string([self.tw.nick, int(n)])))
 
     def seth(self, n, share=True):
         """ Set the turtle heading. """
@@ -292,8 +292,7 @@ class TurtleGraphics:
             self.tw.svg_string += self.svg.new_path(oldx,
                                                     self.height / 2 - oldy)
             self.tw.svg_string += self.svg.arc_to(self.xcor,
-                                                  self.height / 2 - self.ycor,
-                                                  r, a, 0, s)
+                self.height / 2 - self.ycor, r, a, 0, s)
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
 
@@ -308,8 +307,8 @@ class TurtleGraphics:
         oldx, oldy = self.xcor, self.ycor
         cx = self.xcor - r * cos(self.heading * DEGTOR)
         cy = self.ycor + r * sin(self.heading * DEGTOR)
-        x = self.width / 2 + int(cx-r)
-        y = self.height / 2 - int(cy+r)
+        x = self.width / 2 + int(cx - r)
+        y = self.height / 2 - int(cy + r)
         w = int(2 * r)
         h = w
         if self.pendown:
@@ -324,9 +323,10 @@ class TurtleGraphics:
         self.xcor = cx + r * cos(self.heading * DEGTOR)
         self.ycor = cy - r * sin(self.heading * DEGTOR)
         if self.tw.saving_svg and self.pendown:
-            self.tw.svg_string += self.svg.new_path(oldx, self.height / 2-oldy)
+            self.tw.svg_string += self.svg.new_path(oldx,
+                                                    self.height / 2 - oldy)
             self.tw.svg_string += self.svg.arc_to(self.xcor,
-                                                  self.height / 2-self.ycor,
+                                                  self.height / 2 - self.ycor,
                                                   r, a, 0, s)
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
@@ -361,7 +361,7 @@ class TurtleGraphics:
             _logger.debug("bad value sent to %s" % (__name__))
             return
         self.tw.active_turtle.set_pen_size(ps)
-        self.gc.set_line_attributes(int(self.pensize*self.tw.coord_scale),
+        self.gc.set_line_attributes(int(self.pensize * self.tw.coord_scale),
                      gtk.gdk.LINE_SOLID, gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
         self.svg.set_stroke_width(self.pensize)
         if self.tw.sharing() and share:
@@ -502,9 +502,7 @@ class TurtleGraphics:
             if self.tw.running_sugar:
                 # In Sugar, we need to embed the images inside the SVG
                 self.tw.svg_string += self.svg.image(x - self.width / 2,
-                                                     y, w, h, path,
-                                                     image_to_base64(pixbuf,
-                                                             self.tw.activity))
+                    y, w, h, path, image_to_base64(pixbuf, self.tw.activity))
             else:
                 self.tw.svg_string += self.svg.image(x - self.width / 2,
                                                      y, w, h, path)
@@ -521,8 +519,8 @@ class TurtleGraphics:
             return
         if self.tw.interactive_mode:
             if type(label) == str or type(label) == unicode:
-                pl = self.tw.window.create_pango_layout(label.replace("\0", 
-                                                                      " "))
+                pl = self.tw.window.create_pango_layout(
+                    label.replace('\0', ' '))
             elif type(label) == float or type(label) == int:
                 pl = self.tw.window.create_pango_layout(str(label))
             else:
@@ -533,7 +531,7 @@ class TurtleGraphics:
             w, h = pl.get_pixel_size()
             self.invalt(x, y, w, h)
         else: # pixmap doesn't support pango
-            message = str(label).replace("\0"," ")
+            message = str(label).replace('\0', ' ')
             context = self.canvas.images[0].cairo_create()
             context.set_font_size(size)
             q, k, w, h = context.text_extents(message)[:4]
@@ -543,8 +541,7 @@ class TurtleGraphics:
 
         if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.text(x - self.width / 2,
-                                                y + size,
-                                                size, w, label)
+                                                y + size, size, w, label)
 
     def draw_line(self, x1, y1, x2, y2):
         """ Draw a line """
@@ -575,19 +572,18 @@ class TurtleGraphics:
 
     def move_turtle(self):
         """ Move the turtle """
-        x, y = self.width / 2 + int(self.xcor), self.height / 2 - int(self.ycor)
-        self.tw.active_turtle.move((self.cx + x - \
-                                    self.tw.active_turtle.spr.rect.width/2,
-                                    self.cy + y - \
-                                    self.tw.active_turtle.spr.rect.height/2,))
+        x, y = self.width / 2 + int(self.xcor), \
+               self.height / 2 - int(self.ycor)
+        self.tw.active_turtle.move(
+            (self.cx + x - self.tw.active_turtle.spr.rect.width/2,
+             self.cy + y - self.tw.active_turtle.spr.rect.height/2))
 
     def invalt(self, x, y, w, h):
         """ Mark a region for refresh """
         if self.tw.interactive_mode:
-            self.tw.area.invalidate_rect(gtk.gdk.Rectangle(int(x + self.cx),
-                                                           int(y + self.cy),
-                                                           int(w), int(h)),
-                                         False)
+            self.tw.area.invalidate_rect(
+                gtk.gdk.Rectangle(int(x + self.cx), int(y + self.cy),
+                                  int(w), int(h)), False)
 
     def get_color_index(self, r, g, b, a=0):
         """ Find the closest palette entry to the rgb triplet """
@@ -613,8 +609,8 @@ class TurtleGraphics:
             cr = int((c & 0xff0000) >> 16)
             cg = int((c & 0x00ff00) >> 8)
             cb = int((c & 0x0000ff))
-            distance_squared = ((cr - r) ** 2) + ((cg - g) ** 2) + \
-                ((cb - b) ** 2)
+            distance_squared = \
+                ((cr - r) ** 2) + ((cg - g) ** 2) + ((cb - b) ** 2)
             if distance_squared == 0:
                 return i
             if distance_squared < min_distance:
@@ -625,9 +621,9 @@ class TurtleGraphics:
     def get_pixel(self):
         """ Read the pixel at x, y """
         if self.tw.interactive_mode:
-            return self.canvas.get_pixel((self.width / 2 + int(self.xcor),
-                                          self.height / 2 - int(self.ycor)),
-                                         0, self.tw.color_mode)
+            return self.canvas.get_pixel(
+                (self.width / 2 + int(self.xcor),
+                 self.height / 2 - int(self.ycor)), 0, self.tw.color_mode)
         else:
             return(-1, -1, -1, -1)
 
@@ -643,9 +639,9 @@ class TurtleGraphics:
         self.tw.active_turtle.show()
         tx, ty = self.tw.active_turtle.get_xy()
         self.xcor = -self.width / 2 + tx + \
-            self.tw.active_turtle.spr.rect.width/2
+            self.tw.active_turtle.spr.rect.width / 2
         self.ycor = self.height / 2 - ty - \
-            self.tw.active_turtle.spr.rect.height/2
+            self.tw.active_turtle.spr.rect.height / 2
         self.heading = self.tw.active_turtle.get_heading()
         self.setcolor(self.tw.active_turtle.get_color(), False)
         self.setgray(self.tw.active_turtle.get_gray(), False)
@@ -659,6 +655,6 @@ class TurtleGraphics:
             return
         self.svg.calc_w_h(False)
         self.tw.svg_string = "%s%s%s%s" % (self.svg.header(True),
-                              self.svg.background("#%02x%02x%02x" %\
+                              self.svg.background("#%02x%02x%02x" % \
                               (self.bgrgb[0], self.bgrgb[1], self.bgrgb[2])),
                               self.tw.svg_string, self.svg.footer())

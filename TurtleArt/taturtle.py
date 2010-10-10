@@ -37,14 +37,13 @@ def generate_turtle_pixbufs(colors):
     svg = SVG()
     svg.set_scale(1.0)
     for i in range(SHAPES):
-        svg.set_orientation(i*10)
+        svg.set_orientation(i * 10)
         shapes.append(svg_str_to_pixbuf(svg.turtle(colors)))
     return shapes
 
-#
-# A class for the list of blocks and everything they share in common
-#
+
 class Turtles:
+
     def __init__(self, sprite_list):
         """ Class to hold turtles """
         self.dict = dict()
@@ -77,7 +76,7 @@ class Turtles:
 
     def add_to_dict(self, k, turtle):
         """ Add a new turtle """
-        self.dict[k] = turtle   
+        self.dict[k] = turtle
 
     def remove_from_dict(self, k):
         """ Delete a turtle """
@@ -89,9 +88,6 @@ class Turtles:
         for k in iter(self.dict):
             self.dict[k].show()
 
-    #
-    # sprite utilities
-    #
     def spr_to_turtle(self, spr):
         """ Find the turtle that corresponds to sprite spr. """
         for k in iter(self.dict):
@@ -103,13 +99,12 @@ class Turtles:
         """ Get the pixbufs for the default turtle shapes. """
         if self.default_pixbufs == []:
             self.default_pixbufs = generate_turtle_pixbufs(
-                                                         ["#008000", "#00A000"])
+                ["#008000", "#00A000"])
         return(self.default_pixbufs)
 
-#
-# A class for the individual turtles
-#
+
 class Turtle:
+
     def __init__(self, turtles, key, turtle_colors=None):
         """ The turtle is not a block, just a sprite with an orientation """
         self.x = 0
@@ -180,7 +175,7 @@ class Turtle:
 
     def set_heading(self, heading):
         """ Set the turtle heading (one shape per 360/SHAPES degrees) """
-        self.heading = heading        
+        self.heading = heading
         i = (int(self.heading + 5) % 360) / (360 / SHAPES)
         if not self.hidden and self.spr is not None:
             try:

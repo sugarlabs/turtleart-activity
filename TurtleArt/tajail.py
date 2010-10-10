@@ -37,12 +37,12 @@ def myfunc(f, args):
         myf = "def f(x,y): return " + f.replace("import","")
         userdefined = {}
         exec myf in globals(), userdefined
-        return userdefined.values()[0](args[0],args[1])
+        return userdefined.values()[0](args[0], args[1])
     elif len(args) == 3:
         myf = "def f(x,y,z): return " + f.replace("import","")
         userdefined = {}
         exec myf in globals(), userdefined
-        return userdefined.values()[0](args[0],args[1],args[2])
+        return userdefined.values()[0](args[0], args[1], args[2])
 
 
 def myfunc_import(lc, f, x):

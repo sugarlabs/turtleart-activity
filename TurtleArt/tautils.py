@@ -44,20 +44,24 @@ from gettext import gettext as _
 import logging
 _logger = logging.getLogger('turtleart-activity')
 
+
 class pythonerror(Exception):
+
     def __init__(self, value):
         self.value = value
+
     def __str__(self):
         return repr(self.value)
 
-'''
-The strategy for mixing numbers and strings is to first try
-converting the string to a float; then if the string is a single
-character, try converting it to an ord; finally, just treat it as a
-string. Numbers appended to strings are first trreated as ints, then
-floats.
-'''
+
 def convert(x, fn, try_ord=True):
+    '''
+    The strategy for mixing numbers and strings is to first try
+    converting the string to a float; then if the string is a single
+    character, try converting it to an ord; finally, just treat it as a
+    string. Numbers appended to strings are first trreated as ints, then
+    floats.
+    '''
     try:
         return fn(x)
     except ValueError:
@@ -66,6 +70,7 @@ def convert(x, fn, try_ord=True):
             if flag:
                 return fn(xx)
         return x
+
 
 def chr_to_ord(x):
     """ Try to comvert a string to an ord """
@@ -76,6 +81,7 @@ def chr_to_ord(x):
             return x, False
     return x, False
 
+
 def strtype(x):
     """ Is x a string type? """
     if type(x) == str:
@@ -84,10 +90,12 @@ def strtype(x):
         return True
     return False
 
+
 def magnitude(pos):
     """ Calculate the magnitude of the distance between to blocks. """
     x, y = pos
-    return x*x+y*y
+    return x * x + y * y
+
 
 def json_load(text):
     """ Load JSON data using what ever resources are available. """
@@ -96,12 +104,13 @@ def json_load(text):
     else:
         # strip out leading and trailing whitespace, nulls, and newlines
         text = text.lstrip()
-        text = text.replace('\12','')
-        text = text.replace('\00','')
+        text = text.replace('\12', '')
+        text = text.replace('\00', '')
         _io = StringIO(text.rstrip())
         _listdata = jload(_io)
     # json converts tuples to lists, so we need to convert back,
-    return _tuplify(_listdata) 
+    return _tuplify(_listdata)
+
 
 def _tuplify(tup):
     """ Convert to tuples """
@@ -109,11 +118,13 @@ def _tuplify(tup):
         return tup
     return tuple(map(_tuplify, tup))
 
+
 def get_id(connection):
     """ Get a connection block ID. """
     if connection is None:
         return None
     return connection.id
+
 
 def json_dump(data):
     """ Save data using available JSON tools. """
@@ -124,35 +135,34 @@ def json_dump(data):
         jdump(data, _io)
         return _io.getvalue()
 
+
 def get_load_name(suffix, load_save_folder):
     """ Open a load file dialog. """
     _dialog = gtk.FileChooserDialog("Load...", None,
-                                    gtk.FILE_CHOOSER_ACTION_OPEN,
-                                    (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
-                                     gtk.STOCK_OPEN, gtk.RESPONSE_OK))
+        gtk.FILE_CHOOSER_ACTION_OPEN, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
+                                       gtk.STOCK_OPEN, gtk.RESPONSE_OK))
     _dialog.set_default_response(gtk.RESPONSE_OK)
     return do_dialog(_dialog, suffix, load_save_folder)
-    
+
+
 def get_save_name(suffix, load_save_folder, save_file_name):
     """ Open a save file dialog. """
     _dialog = gtk.FileChooserDialog("Save...", None,
-                                    gtk.FILE_CHOOSER_ACTION_SAVE,
-                                    (gtk.STOCK_CANCEL,
-                                     gtk.RESPONSE_CANCEL,
-                                     gtk.STOCK_SAVE,
-                                     gtk.RESPONSE_OK))
+        gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
+                                       gtk.STOCK_SAVE, gtk.RESPONSE_OK))
     _dialog.set_default_response(gtk.RESPONSE_OK)
     if save_file_name is not None:
-        _dialog.set_current_name(save_file_name+suffix)
+        _dialog.set_current_name(save_file_name + suffix)
     return do_dialog(_dialog, suffix, load_save_folder)
 
-#
-# We try to maintain read-compatibility with all versions of Turtle Art.
-# Try pickle first; then different versions of json.
-#
+
 def data_from_file(ta_file):
     """ Open the .ta file, ignoring any .png file that might be present. """
     file_handle = open(ta_file, "r")
+    #
+    # We try to maintain read-compatibility with all versions of Turtle Art.
+    # Try pickle first; then different versions of json.
+    #
     try:
         _data = pickle.load(file_handle)
     except:
@@ -163,9 +173,11 @@ def data_from_file(ta_file):
     file_handle.close()
     return _data
 
+
 def data_from_string(text):
     """ JSON load data from a string. """
     return json_load(text.replace(']],\n', ']], '))
+
 
 def data_to_file(data, ta_file):
     """ Write data to a file. """
@@ -173,15 +185,17 @@ def data_to_file(data, ta_file):
     file_handle.write(data_to_string(data))
     file_handle.close()
 
+
 def data_to_string(data):
     """ JSON dump a string. """
     return json_dump(data).replace(']], ', ']],\n')
+
 
 def do_dialog(dialog, suffix, load_save_folder):
     """ Open a file dialog. """
     _result = None
     file_filter = gtk.FileFilter()
-    file_filter.add_pattern('*'+suffix)
+    file_filter.add_pattern('*' + suffix)
     file_filter.set_name("Turtle Art")
     dialog.add_filter(file_filter)
     dialog.set_current_folder(load_save_folder)
@@ -191,6 +205,7 @@ def do_dialog(dialog, suffix, load_save_folder):
         load_save_folder = dialog.get_current_folder()
     dialog.destroy()
     return _result, load_save_folder
+
 
 def save_picture(canvas, file_name=''):
     """ Save the canvas to a file. """
@@ -203,11 +218,13 @@ def save_picture(canvas, file_name=''):
         _pixbuf.save(file_name, 'png')
     return _pixbuf
 
+
 def save_svg(string, file_name):
     """ Write a string to a file. """
     file_handle = file(file_name, "w")
     file_handle.write(string)
     file_handle.close()
+
 
 def get_pixbuf_from_journal(dsobject, w, h):
     """ Load a pixbuf from a Journal object. """
@@ -226,7 +243,8 @@ def get_pixbuf_from_journal(dsobject, w, h):
             _pixbuf = None
     return _pixbuf
 
-def get_path(activity, subpath ):
+
+def get_path(activity, subpath):
     """ Find a Rainbow-approved place for temporary files. """
     try:
         return(os.path.join(activity.get_activity_root(), subpath))
@@ -234,6 +252,7 @@ def get_path(activity, subpath ):
         # Early versions of Sugar didn't support get_activity_root()
         return(os.path.join(os.environ['HOME'], ".sugar/default",
                             "org.laptop.TurtleArtActivity", subpath))
+
 
 def image_to_base64(pixbuf, activity):
     """ Convert an image to base64 """
@@ -248,21 +267,27 @@ def image_to_base64(pixbuf, activity):
     _file_handle.close()
     return _data
 
+
 def movie_media_type(name):
     """ Is it movie media? """
     return name.endswith(('.ogv', '.vob', '.mp4', '.wmv', '.mov', '.mpeg'))
 
-def audio_media_type(name): 
+
+def audio_media_type(name):
     """ Is it audio media? """
     return name.endswith(('.ogg', '.oga', '.m4a'))
+
 
 def image_media_type(name):
     """ Is it image media? """
     return name.endswith(('.png', '.jpg', '.jpeg', '.gif', '.tiff', '.tif',
                           '.svg'))
+
+
 def text_media_type(name):
     """ Is it text media? """
     return name.endswith(('.txt', '.py', '.lg', '.doc', '.rtf'))
+
 
 def round_int(num):
     """ Remove trailing decimal places if number is an int """
@@ -275,13 +300,14 @@ def round_int(num):
     if int(float(num)) == num:
         return int(num)
     else:
-        if float(num)<0:
-            _nn = int((float(num)-0.005)*100)/100.
+        if float(num) < 0:
+            _nn = int((float(num) - 0.005) * 100) / 100.
         else:
-            _nn = int((float(num)+0.005)*100)/100.
+            _nn = int((float(num) + 0.005) * 100) / 100.
         if int(float(_nn)) == _nn:
             return int(_nn)
         return _nn
+
 
 def calc_image_size(spr):
     """ Calculate the maximum size for placing an image onto a sprite. """
@@ -290,11 +316,13 @@ def calc_image_size(spr):
 
 # Collapsible stacks live between 'sandwichtop' and 'sandwichbottom' blocks
 
+
 def reset_stack_arm(top):
     """ When we undock, retract the 'arm' that extends from 'sandwichtop'. """
     if top is not None and top.name in ['sandwichtop', 'sandwichtop_no_label']:
         if top.ey > 0:
             top.reset_y()
+
 
 def grow_stack_arm(top):
     """ When we dock, grow an 'arm' from 'sandwichtop'. """
@@ -307,10 +335,11 @@ def grow_stack_arm(top):
         _ty = top.spr.get_xy()[1]
         _th = top.spr.get_dimensions()[1]
         _by = _bot.spr.get_xy()[1]
-        _dy = _by-(_ty + _th)
+        _dy = _by - (_ty + _th)
         if _dy > 0:
-            top.expand_in_y(_dy/top.scale)
+            top.expand_in_y(_dy / top.scale)
             top.refresh()
+
 
 def find_sandwich_top(blk):
     """ Find the sandwich top above this block. """
@@ -329,6 +358,7 @@ def find_sandwich_top(blk):
         _blk = _blk.connections[0]
     return None
 
+
 def find_sandwich_bottom(blk):
     """ Find the sandwich bottom below this block. """
     # Always follow the main branch of a flow: the last connection.
@@ -342,10 +372,11 @@ def find_sandwich_bottom(blk):
         _blk = _blk.connections[len(_blk.connections) - 1]
     return None
 
+
 def find_sandwich_top_below(blk):
     """ Find the sandwich top below this block. """
-    if blk.name in ['sandwichtop', 'sandwichtop_no_label', 'sandwichtop_no_arm',
-                    'sandwichtop_no_arm_no_label']:
+    if blk.name in ['sandwichtop', 'sandwichtop_no_label',
+                    'sandwichtop_no_arm', 'sandwichtop_no_arm_no_label']:
         return blk
     # Always follow the main branch of a flow: the last connection.
     _blk = blk.connections[len(blk.connections) - 1]
@@ -355,6 +386,7 @@ def find_sandwich_top_below(blk):
             return _blk
         _blk = _blk.connections[len(_blk.connections) - 1]
     return None
+
 
 def restore_stack(top):
     """ Restore the blocks between the sandwich top and sandwich bottom. """
@@ -403,6 +435,7 @@ def restore_stack(top):
     top.refresh()
     grow_stack_arm(top)
 
+
 def uncollapse_forks(top, looping=False):
     """ From the top, find and restore any collapsible stacks on forks. """
     if top == None:
@@ -410,7 +443,7 @@ def uncollapse_forks(top, looping=False):
     if looping and top.name in ['sandwichtop_no_arm',
                                 'sandwichtop_no_arm_no_label']:
         restore_stack(top)
-        return 
+        return
     if len(top.connections) == 0:
         return
     _blk = top.connections[len(top.connections) - 1]
@@ -418,21 +451,23 @@ def uncollapse_forks(top, looping=False):
         if _blk.name in COLLAPSIBLE:
             return
         if _blk.name in ['sandwichtop_no_arm', 'sandwichtop_no_arm_no_label']:
-            restore_stack(_blk)            
+            restore_stack(_blk)
             return
         # Follow a fork
-        if _blk.name in ['repeat', 'if', 'ifelse', 'forever', 'while', 'until']:
+        if _blk.name in ['repeat', 'if', 'ifelse', 'forever', 'while',
+                         'until']:
             top = find_sandwich_top_below(
-                                    _blk.connections[len(_blk.connections) - 2])
+                _blk.connections[len(_blk.connections) - 2])
             if top is not None:
                 uncollapse_forks(top, True)
             if _blk.name == 'ifelse':
                 top = find_sandwich_top_below(
-                                    _blk.connections[len(_blk.connections) - 3])
+                    _blk.connections[len(_blk.connections) - 3])
                 if top is not None:
                     uncollapse_forks(top, True)
         _blk = _blk.connections[len(_blk.connections) - 1]
     return
+
 
 def collapse_stack(top):
     """ Hide all the blocks between the sandwich top and sandwich bottom. """
@@ -489,12 +524,14 @@ def collapse_stack(top):
         top.name = 'sandwichtop_no_arm_no_label'
     top.refresh()
 
+
 def collapsed(blk):
     """ Is this stack collapsed? """
     if blk is not None and blk.name in COLLAPSIBLE and\
        len(blk.values) == 1 and blk.values[0] != 0:
         return True
     return False
+
 
 def collapsible(blk):
     """ Can this stack be collapsed? """
@@ -504,6 +541,7 @@ def collapsible(blk):
         return False
     return True
 
+
 def hide_button_hit(spr, x, y):
     """ Did the sprite's hide (contract) button get hit? """
     _red, _green, _blue, _alpha = spr.get_pixel((x, y))
@@ -511,6 +549,7 @@ def hide_button_hit(spr, x, y):
         return True
     else:
         return False
+
 
 def show_button_hit(spr, x, y):
     """ Did the sprite's show (expand) button get hit? """
@@ -520,11 +559,13 @@ def show_button_hit(spr, x, y):
     else:
         return False
 
+
 def numeric_arg(value):
     """ Dock test: looking for a numeric value """
     if type(convert(value, float)) is float:
         return True
     return False
+
 
 def zero_arg(value):
     """ Dock test: looking for a zero argument """
@@ -533,12 +574,14 @@ def zero_arg(value):
             return True
     return False
 
+
 def neg_arg(value):
     """ Dock test: looking for a negative argument """
     if numeric_arg(value):
         if convert(value, float) < 0:
             return True
     return False
+
 
 def dock_dx_dy(block1, dock1n, block2, dock2n):
     """ Find the distance between the dock points of two blocks. """
@@ -572,6 +615,7 @@ def dock_dx_dy(block1, dock1n, block2, dock2n):
     (_b2x, _b2y) = block2.spr.get_xy()
     return ((_b1x + _d1x) - (_b2x + _d2x), (_b1y + _d1y) - (_b2y + _d2y))
 
+
 def journal_check(blk1, blk2, dock1, dock2):
     """ Dock blocks only if arg is Journal block """
     if blk1 == None or blk2 == None:
@@ -581,6 +625,7 @@ def journal_check(blk1, blk2, dock1, dock2):
     if (blk2.name == 'skin' and dock2 == 1) and blk1.name != 'journal':
         return False
     return True
+
 
 def arithmetic_check(blk1, blk2, dock1, dock2):
     """ Dock strings only if they convert to numbers. Avoid /0 and root(-1)"""
@@ -656,6 +701,7 @@ def arithmetic_check(blk1, blk2, dock1, dock2):
                     return False
     return True
 
+
 def xy(event):
     """ Where is the mouse event? """
     return map(int, event.get_coords())
@@ -664,6 +710,7 @@ def xy(event):
 Utilities related to finding blocks in stacks.
 """
 
+
 def find_block_to_run(blk):
     """ Find a stack to run (any stack without a 'def action'on the top). """
     _top = find_top_block(blk)
@@ -671,6 +718,7 @@ def find_block_to_run(blk):
         return True
     else:
         return False
+
 
 def find_top_block(blk):
     """ Find the top block in a stack. """
@@ -682,6 +730,7 @@ def find_top_block(blk):
         blk = blk.connections[0]
     return blk
 
+
 def find_start_stack(blk):
     """ Find a stack with a 'start' block on top. """
     if blk is None:
@@ -690,6 +739,7 @@ def find_start_stack(blk):
         return True
     else:
         return False
+
 
 def find_group(blk):
     """ Find the connected group of block in a stack. """
@@ -702,6 +752,7 @@ def find_group(blk):
                 _group.extend(find_group(_blk2))
     return _group
 
+
 def find_blk_below(blk, name):
     """ Find a specific block below this block. """
     if blk == None or len(blk.connections) == 0:
@@ -712,10 +763,12 @@ def find_blk_below(blk, name):
             return _gblk
     return None
 
+
 def olpc_xo_1():
     """ Is the an OLPC XO-1 or XO-1.5? """
     return os.path.exists('/etc/olpc-release') or \
            os.path.exists('/sys/power/olpc-pm')
+
 
 def walk_stack(tw, blk):
     """ Convert blocks to logo psuedocode. """
