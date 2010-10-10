@@ -1,3 +1,14 @@
+100
+
+* fixed problem with turtle reskin when scale <= 1 (#2353)
+* fixed problems with keyboard commands (#2426)
+* documented keyboard shortcuts (Thanks to Tony Forster) See
+      http://wiki.sugarlabs.org/go/Activities/TurtleArt#Keyboard_shortcuts
+* view source shows project code instead of Logo code (#2204)
+* project code has improved formatting for readability (#2204)
+* chooser limits choices appropriately, e.g., when looking for Python code,
+  it only shows you .py files.
+
 99
 
 * reskinable turtle (#2353)
