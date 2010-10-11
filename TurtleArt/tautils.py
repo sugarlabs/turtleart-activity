@@ -156,6 +156,28 @@ def get_save_name(suffix, load_save_folder, save_file_name):
     return do_dialog(_dialog, suffix, load_save_folder)
 
 
+def chooser(caller, filter, action):
+    """ Choose an object from the datastore and take some action """
+    from sugar.graphics.objectchooser import ObjectChooser
+
+    _chooser = None
+    try:
+        _chooser = ObjectChooser(parent=caller, what_filter=filter)
+    except TypeError:
+        _chooser = ObjectChooser(None, caller,
+            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+    if _chooser is not None:
+        try:
+            result = _chooser.run()
+            if result == gtk.RESPONSE_ACCEPT:
+                dsobject = _chooser.get_selected_object()
+                action(dsobject)
+                dsobject.destroy()
+        finally:
+            _chooser.destroy()
+            del _chooser
+
+
 def data_from_file(ta_file):
     """ Open the .ta file, ignoring any .png file that might be present. """
     file_handle = open(ta_file, "r")

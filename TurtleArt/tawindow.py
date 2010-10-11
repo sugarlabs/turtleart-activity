@@ -68,7 +68,7 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
                     collapsed, collapsible, hide_button_hit, show_button_hit, \
                     arithmetic_check, xy, find_block_to_run, find_top_block, \
                     find_start_stack, find_group, find_blk_below, olpc_xo_1, \
-                    dock_dx_dy, data_to_string, journal_check
+                    dock_dx_dy, data_to_string, journal_check, chooser
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
@@ -1713,16 +1713,7 @@ class TurtleArtWindow():
     def _import_from_journal(self, blk):
         """ Import a file from the Sugar Journal """
         if self.running_sugar:
-            chooser = ObjectChooser(parent=self.parent)
-            try:
-                result = chooser.run()
-                if result == gtk.RESPONSE_ACCEPT:
-                    dsobject = chooser.get_selected_object()
-                    self._update_media_icon(blk, dsobject, dsobject.object_id)
-                    dsobject.destroy()
-            finally:
-                chooser.destroy()
-                del chooser
+            chooser(self.parent, '', self._update_media_blk)
         else:
             fname, self.load_save_folder = get_load_name('.*',
                                                          self.load_save_folder)
@@ -1740,6 +1731,11 @@ class TurtleArtWindow():
         # Autoupdate the block if it is empty
         if dblk != None and (len(dblk.values) == 0 or dblk.values[0] is None):
             self._update_media_icon(dblk, None, blk.values[0])
+
+    def _update_media_blk(self, dsobject):
+        """ Called from the chooser to load a media block """
+        self._update_media_icon(self.selected_blk, dsobject,
+                                dsobject.object_id)
 
     def _update_media_icon(self, blk, name, value=''):
         """ Update the icon on a 'loaded' media block. """

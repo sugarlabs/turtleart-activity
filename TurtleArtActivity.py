@@ -54,7 +54,7 @@ from TurtleArt.taconstants import PALETTE_NAMES, OVERLAY_LAYER, HELP_STRINGS
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
-                              get_path
+                              get_path, chooser
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taturtle import Turtle
 
@@ -219,46 +219,25 @@ class TurtleArtActivity(activity.Activity):
 
     def do_load_ta_project_cb(self, button):
         """ Load a project from the Journal """
-        from sugar.graphics.objectchooser import ObjectChooser
-        chooser = ObjectChooser(parent=self,
-                                what_filter='org.laptop.TurtleArtActivity')
+        chooser(self, SERVICE, self._load_ta_project)
 
+    def _load_ta_project(self, dsobject):
+        """ Load a ta project from the datastore """
         try:
-            result = chooser.run()
-            if result == gtk.RESPONSE_ACCEPT:
-                dsobject = chooser.get_selected_object()
-                try:
-                    _logger.debug("opening %s " % dsobject.file_path)
-                    self.read_file(dsobject.file_path, False)
-                except:
-                    _logger.debug("couldn't open %s" % dsobject.file_path)
-                dsobject.destroy()
-        finally:
-            chooser.destroy()
-            del chooser
-        return
+            _logger.debug("opening %s " % dsobject.file_path)
+            self.read_file(dsobject.file_path, False)
+        except:
+            _logger.debug("couldn't open %s" % dsobject.file_path)
 
     def do_load_python_cb(self, button):
         """ Load Python code from the Journal. """
         self.load_python.set_icon("pippy-openon")
         self.import_py()
         gobject.timeout_add(250, self.load_python.set_icon, "pippy-openoff")
-        return
 
     def import_py(self):
         """ Import Python code from the Journal to load into 'myblock'. """
-        from sugar.graphics.objectchooser import ObjectChooser
-        chooser = ObjectChooser(parent=self,
-                                what_filter='org.laptop.Pippy')
-
-        try:
-            result = chooser.run()
-            if result == gtk.RESPONSE_ACCEPT:
-                dsobject = chooser.get_selected_object()
-                self._load_python(dsobject)
-        finally:
-            chooser.destroy()
-            del chooser
+        chooser(self, 'org.laptop.Pippy', self._load_python)
 
     def _load_python(self, dsobject):
         """ Read the Python code from the Journal object """
@@ -272,7 +251,6 @@ class TurtleArtActivity(activity.Activity):
             self.metadata['python code'] = dsobject.object_id
         except:
             _logger.debug("couldn't open %s" % dsobject.file_path)
-        dsobject.destroy()
 
     def do_save_as_image_cb(self, button):
         """ Save the canvas to the Journal. """
