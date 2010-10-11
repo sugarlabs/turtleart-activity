@@ -156,15 +156,15 @@ def get_save_name(suffix, load_save_folder, save_file_name):
     return do_dialog(_dialog, suffix, load_save_folder)
 
 
-def chooser(caller, filter, action):
+def chooser(parent_window, filter, action):
     """ Choose an object from the datastore and take some action """
     from sugar.graphics.objectchooser import ObjectChooser
 
     _chooser = None
     try:
-        _chooser = ObjectChooser(parent=caller, what_filter=filter)
+        _chooser = ObjectChooser(parent=parent_window, what_filter=filter)
     except TypeError:
-        _chooser = ObjectChooser(None, caller,
+        _chooser = ObjectChooser(None, parent_window,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
     if _chooser is not None:
         try:
