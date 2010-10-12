@@ -26,6 +26,7 @@ from tautils import data_to_string, save_picture, image_to_base64
 from gettext import gettext as _
 from cgi import escape
 
+
 def save_html(self, tw, embed_flag=True):
     """ Either: Save canvas and code or pictures to HTML """
     self.embed_images = embed_flag
@@ -39,7 +40,7 @@ def save_html(self, tw, embed_flag=True):
                      "</html>\n"),
         'head': ("<head>\n<!-- Created by Turtle Art -->\n", "</head>\n"),
         'meta': "<meta http-equiv=\"content-type\" content=\"text/html; " + \
-                "charset=UTF-8\"/>\n",
+            "charset=UTF-8\"/>\n",
         'title': ("<title>", "</title>\n"),
         'style': ("<style type=\"text/css\">\n<!--\n", "-->\n</style>\n"),
         'body': ("<body>\n", "\n</body>\n"),
@@ -55,19 +56,19 @@ def save_html(self, tw, embed_flag=True):
         'img2': ("<img alt=\"Image\" src=\"image", ".png\" />\n"),
         'img3': ("<img alt=\"Image\" src=\"file://", "\" />\n"),
         'ul': ("<table>\n", "</table>\n"),
-        'li': ("<tr><td>", "</td></tr>\n") }
+        'li': ("<tr><td>", "</td></tr>\n")}
 
     comment = "<!--\n\
 <!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\" [\n\
-	<!ENTITY ns_svg \"http://www.w3.org/2000/svg\">\n\
-	<!ENTITY ns_xlink \"http://www.w3.org/1999/xlink\">\n\
+    <!ENTITY ns_svg \"http://www.w3.org/2000/svg\">\n\
+    <!ENTITY ns_xlink \"http://www.w3.org/1999/xlink\">\n\
 ]>\n\
 -->\n"
     if self.embed_images == True:
-        self.html_glue['img'] = ("<img width=\"400\" height=\"300\" alt="+ \
+        self.html_glue['img'] = ("<img width=\"400\" height=\"300\" alt=" + \
                                  "\"Image\" src=\"data:image/png;base64,\n",
                                  " \"/>\n")
-        self.html_glue['img2'] = ("<img alt=\"Image\" src=\"data:image/png;"+ \
+        self.html_glue['img2'] = ("<img alt=\"Image\" src=\"data:image/png;" + \
                                   "base64,\n", " \"/>\n")
 
     """
@@ -90,7 +91,7 @@ def save_html(self, tw, embed_flag=True):
                 else:
                     pixbuf = gtk.gdk.pixbuf_new_from_file(p)
                     imgdata = image_to_base64(pixbuf, tw.activity)
-                    tmp =  self.html_glue['img2'][0]
+                    tmp = self.html_glue['img2'][0]
                     tmp += imgdata
                     tmp += self.html_glue['img2'][1]
             else:

@@ -28,8 +28,9 @@ try:
 except:
     pass
 
+
 def save_logo(tw):
-    """ We need to set up the Turtle Art color palette and color processing. """
+    """ Set up the Turtle Art color palette and color processing. """
     color_processing = "\
 to tasetpalette :i :r :g :b :myshade \r\
 make \"s ((:myshade - 50) / 50) \r\
@@ -163,27 +164,27 @@ tasetshade :shade \r"
                 # Translate some Turtle Art primitives into UCB Logo
                 if namedstack:
                     this_stack += "to "
-                    this_stack += d[2:].replace(" ","_")
+                    this_stack += d[2:].replace(' ', '_')
                     this_stack += "\r"
                     stack = True
                     namedstack = False
                 elif namedbox:
                     if d[0:2] == "#s":
                         this_stack += "make \""
-                        this_stack += d[2:].replace(" ","_")
-                        this_stack += " " 
-                        this_stack += myvar 
+                        this_stack += d[2:].replace(' ', '_')
+                        this_stack += " "
+                        this_stack += myvar
                         namedbox = False
                         myvar = ""
                     else:
                         myvar += d
                 elif refstack:
-                    this_stack += d[2:].replace(" ","_")
+                    this_stack += d[2:].replace(' ', '_')
                     this_stack += " "
                     refstack = False
                 elif refbox:
-                    this_stack += ":" 
-                    this_stack += d[2:].replace(" ","_")
+                    this_stack += ":"
+                    this_stack += d[2:].replace(' ', '_')
                     refbox = False
                 elif d == "stack":
                     refstack = True
@@ -284,7 +285,7 @@ tasetshade :shade \r"
                     # make a sentence out of everything else
                     else:
                         this_stack += "sentence "
-                        this_stack += d[2:].replace("\s"," \"")
+                        this_stack += d[2:].replace("\s", " \"")
                         this_stack += "\r"
                 elif d == "write":
                     this_stack += "label"
@@ -298,15 +299,15 @@ tasetshade :shade \r"
                 elif d == "division":
                     this_stack += "quotient"
                 elif d == "lpos":
-                    this_stack += str(-tw.canvas.width/(tw.coord_scale*2))
+                    this_stack += str(-tw.canvas.width / (tw.coord_scale * 2))
                 elif d == "rpos":
-                    this_stack += str(tw.canvas.width/(tw.coord_scale*2))
+                    this_stack += str(tw.canvas.width / (tw.coord_scale * 2))
                 elif d == "bpos":
-                    this_stack += str(-tw.canvas.height/(tw.coord_scale*2))
+                    this_stack += str(-tw.canvas.height / (tw.coord_scale * 2))
                 elif d == "tpos":
-                    this_stack += str(tw.canvas.height/(tw.coord_scale*2))
+                    this_stack += str(tw.canvas.height / (tw.coord_scale * 2))
                 elif d in IGNORE:
-                    this_stack += " "
+                    this_stack += ' '
                 elif show == 1 and d[0:2] == "#s":
                     this_stack += d[2:]
                 # We don't handle depreciated 'template' blocks
@@ -355,5 +356,3 @@ tasetshade :shade \r"
             "make \"taheap []\r" + code
     code = "window\r" + code
     return code
-
-
