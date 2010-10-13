@@ -1214,18 +1214,14 @@ class TurtleArtWindow():
 
             self.drag_group = find_group(blk)
 
-            # Prevent blocks from ending up with a negative x...
+            # Prevent blocks from ending up with a negative x or y
             for blk in self.drag_group:
                 (bx, by) = blk.spr.get_xy()
                 if bx + dx < 0:
                     dx = -bx
+                if by + dy < 0:
+                    dy = -by
 
-            # Move the stack
-            """
-            for blk in self.drag_group:
-                (bx, by) = blk.spr.get_xy()
-                blk.spr.move((bx + dx, by + dy), not blk.status=='collapsed')
-            """
             # Calculate a bounding box and only invalidate once.
             minx = blk.spr.rect.x
             miny = blk.spr.rect.y
@@ -2014,6 +2010,8 @@ class TurtleArtWindow():
             (sx, sy) = blk.spr.get_xy()
             if sx + dx < 0:
                 dx += -(sx + dx)
+            if sy + dy < 0:
+                dy += -(sy + dy)
 
         for blk in self.drag_group:
             (sx, sy) = blk.spr.get_xy()
