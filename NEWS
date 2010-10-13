@@ -8,6 +8,7 @@
 * project code has improved formatting for readability (#2204)
 * chooser limits choices appropriately, e.g., when looking for Python code,
   it only shows you .py files.
+* fixed math Name error problem with imported Python code (#2313)
 
 99
 
