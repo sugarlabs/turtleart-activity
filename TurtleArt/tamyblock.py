@@ -239,7 +239,7 @@ def myblock(lc, x):
     #     lc.heap.append(lc.tw.mouse_y)
     #     lc.heap.append(lc.tw.mouse_x)
     #     lc.heap.append(1) # mouse event
-    #     lc.tw.mouseflag = 0
+    #     lc.tw.mouse_flag = 0
     # else:
     #     lc.heap.append(0) # no mouse event
     # return
