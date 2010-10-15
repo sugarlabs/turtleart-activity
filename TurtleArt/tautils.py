@@ -121,10 +121,9 @@ def _tuplify(tup):
 
 def get_id(connection):
     """ Get a connection block ID. """
-    if connection is None:
-        return None
-    return connection.id
-
+    if connection is not None and hasattr(connection, 'id'):
+        return connection.id
+    return None
 
 def json_dump(data):
     """ Save data using available JSON tools. """

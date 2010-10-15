@@ -367,7 +367,7 @@ class Block:
                 n = len(BLOCK_NAMES[self.name])
             else:
                 _logger.debug("WARNING: unknown block name %s" % (self.name))
-            n = 0
+                n = 0
         for i in range(n):
             if i == 1: # top
                 self.spr.set_label_attributes(int(self._font_size[1] + 0.5),

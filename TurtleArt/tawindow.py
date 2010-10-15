@@ -1067,11 +1067,15 @@ class TurtleArtWindow():
             cons = []
             # Normally, it is simply a matter of copying the connections.
             if blocks[i].connections is None:
-                for c in block_data[i][4]:
-                    if c is None:
-                        cons.append(None)
-                    else:
-                        cons.append(blocks[c])
+                if block_data[i][4] is not None:
+                    for c in block_data[i][4]:
+                        if c is None or c > (len(blocks) - 1):
+                            cons.append(None)
+                        else:
+                            cons.append(blocks[c])
+                else:
+                    _logger.debug("connection error %s" % (str(block_data[i])))
+                    cons.append(None)
             elif blocks[i].connections == 'check':
                 # Convert old-style boolean and arithmetic blocks
                 cons.append(None) # Add an extra connection.
@@ -1145,7 +1149,7 @@ class TurtleArtWindow():
             if i > 0 and c is not None:
                 bdock = blk.docks[i]
                 for j in range(len(c.docks)):
-                    if c.connections[j] == blk:
+                    if j < len(c.connections) and c.connections[j] == blk:
                         cdock = c.docks[j]
                         nx = sx + bdock[2] - cdock[2]
                         ny = sy + bdock[3] - cdock[3]
@@ -1651,8 +1655,9 @@ class TurtleArtWindow():
             best_destination.connections[best_destination_dockn] = \
                 selected_block
             if selected_block.connections is not None:
-                selected_block.connections[best_selected_block_dockn] = \
-                    best_destination
+                if best_selected_block_dockn < len(selected_block.connections):
+                    selected_block.connections[best_selected_block_dockn] = \
+                        best_destination
 
             if best_destination.name in BOOLEAN_STYLE:
                 if best_destination_dockn == 2 and \
@@ -1688,8 +1693,9 @@ class TurtleArtWindow():
         if collapsed(blk):
             return
         blk2 = blk.connections[0]
-        c = blk2.connections.index(blk)
-        blk2.connections[c] = None
+        if blk in blk2.connections:
+            c = blk2.connections.index(blk)
+            blk2.connections[c] = None
 
         if blk2.name in BOOLEAN_STYLE:
             if c == 2 and blk2.ey > 0:
@@ -2312,7 +2318,7 @@ class TurtleArtWindow():
                 _name = (_blk.name, self.block_scale)
             else:
                 _name = (_blk.name)
-            if hasattr(_blk, 'connections'):
+            if hasattr(_blk, 'connections') and _blk.connections is not None:
                 connections = [get_id(_cblk) for _cblk in _blk.connections]
             else:
                 connections = None
