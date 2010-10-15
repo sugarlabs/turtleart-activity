@@ -477,12 +477,8 @@ class TurtleGraphics:
                                                      self.fgrgb[2]))
 
     def set_textcolor(self):
-        """ Set the text color """
-        sh = (wrap100(self.shade) - 50) / 50.0
-        rgb = color_table[wrap100(self.tcolor)]
-        r, g, b = (rgb >> 8) & 0xff00, rgb & 0xff00, (rgb << 8) & 0xff00
-        r, g, b = calc_shade(r, sh), calc_shade(g, sh), calc_shade(b, sh)
-        self.tw.textcolor = self.cm.alloc_color(r, g, b)
+        """ Set the text color to foreground color. """
+        self.tw.textcolor = self.fgcolor
 
     def setpen(self, bool, share=True):
         """ Lower or raise the pen """
