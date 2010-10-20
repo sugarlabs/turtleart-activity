@@ -113,6 +113,12 @@ class Blocks:
             i += 1
         return None
 
+    def get_block_of_same_type_and_name(self, type, name):
+        for block in self.list:
+            if block.type == type and block.name == name:
+                return block
+        return None
+
 
 class Block:
     """ A class for the individual blocks """

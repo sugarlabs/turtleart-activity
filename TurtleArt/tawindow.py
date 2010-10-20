@@ -782,6 +782,11 @@ class TurtleArtWindow():
                 elif blk.name in MACROS:
                     self._new_macro(blk.name, x + 20, y + 20)
                 else:
+                    # You can only have one instance of some blocks
+                    if blk.name in ['start', 'hat1', 'hat2']:
+                        if self.block_list.get_block_of_same_type_and_name(
+                            'block', blk.name) is not None:
+                            return True
                     blk.highlight()
                     self._new_block(blk.name, x, y)
                     blk.unhighlight()
