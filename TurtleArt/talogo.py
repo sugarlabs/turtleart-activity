@@ -34,7 +34,7 @@ except:
     pass
 
 from taconstants import PALETTES, PALETTE_NAMES, TAB_LAYER, BLACK, WHITE, \
-    DEFAULT_SCALE, ICON_SIZE
+    DEFAULT_SCALE, ICON_SIZE, BLOCK_NAMES
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
@@ -268,6 +268,24 @@ def just_stop():
 def millis():
     """ Current time in milliseconds """
     return int(clock() * 1000)
+
+
+def update_label_value(tw, name, value=None):
+    """ Update the label of value blocks to reflect current value """
+    if tw.hide or not tw.interactive_mode:
+        return
+    list = tw.block_list.get_all_blocks_of_same_type_and_name(
+        'block', name)
+    if value is None:
+        for block in list:
+            block.spr.set_label(BLOCK_NAMES[name][0])
+    else:
+        if type(value) == float:
+            valstring = str(round_int(value)).replace('.', tw.decimal_point)
+        else:
+            valstring = str(value)
+        for block in list:
+            block.spr.set_label(BLOCK_NAMES[name][0] + ' = ' + valstring)
 
 
 class LogoCode:
@@ -822,6 +840,8 @@ class LogoCode:
         self.tw.set_polar(False)
         self.tw.set_cartesian(False)
         self.hidden_turtle = None
+        for name in ['box1', 'box2']:
+            update_label_value(self.tw, name)
 
     def prim_start(self):
         """ Start block: recenter """
@@ -1057,13 +1077,15 @@ class LogoCode:
 
     def prim_setbox(self, name, x, val):
         """ Define value of named box """
-        if x is None:
-            self.boxes[name] = val
-        else:
+        if x is not None:
             if type(convert(x, float, False)) == float:
                 if int(float(x)) == x:
                     x = int(x)
             self.boxes[name + str(x)] = val
+            return
+
+        self.boxes[name] = val
+        update_label_value(self.tw, name, val)
 
     def prim_push(self, val):
         """ Push value onto FILO """

@@ -119,6 +119,13 @@ class Blocks:
                 return block
         return None
 
+    def get_all_blocks_of_same_type_and_name(self, type, name):
+        block_list = []
+        for block in self.list:
+            if block.type == type and block.name == name:
+                block_list.append(block)
+        return block_list
+
 
 class Block:
     """ A class for the individual blocks """
