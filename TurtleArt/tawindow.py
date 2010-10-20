@@ -784,8 +784,7 @@ class TurtleArtWindow():
                 else:
                     # You can only have one instance of some blocks
                     if blk.name in ['start', 'hat1', 'hat2']:
-                        if self.block_list.get_block_of_same_type_and_name(
-                            'block', blk.name) is not None:
+                        if len(self.block_list.get_all_blocks_of_same_type_and_name('block', blk.name)) > 0:
                             return True
                     blk.highlight()
                     self._new_block(blk.name, x, y)

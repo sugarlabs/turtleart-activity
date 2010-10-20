@@ -274,8 +274,7 @@ def update_label_value(tw, name, value=None):
     """ Update the label of value blocks to reflect current value """
     if tw.hide or not tw.interactive_mode:
         return
-    list = tw.block_list.get_all_blocks_of_same_type_and_name(
-        'block', name)
+    list = tw.block_list.get_similar_blocks('block', name)
     if value is None:
         for block in list:
             block.spr.set_label(BLOCK_NAMES[name][0])
