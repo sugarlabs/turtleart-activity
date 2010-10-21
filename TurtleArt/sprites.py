@@ -52,7 +52,7 @@ Example usage:
         my_sprite = sprites.Sprite(self.sprite_list, x1, y1, my_pixbuf)
 
         # Move the sprite to a new position.
-        my_sprite.move((x1+dx, y1+dy))
+        my_sprite.move_relative((dx, dy))
 
         # Create another "pixbuf".
         your_pixbuf = svg_str_to_pixbuf("<svg>...some svg code...</svg>")

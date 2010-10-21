@@ -5,6 +5,7 @@
 * fixed typo in Python sample code (#2449)
 * only allow one start block per project
 * show box values on box label
+* moved import/export functions off activity toolbar onto journal toolbar
 
 100
 

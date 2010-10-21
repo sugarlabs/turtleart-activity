@@ -724,28 +724,30 @@ class TurtleArtActivity(activity.Activity):
                                                 page=help_toolbar,
                                                 icon_name='help-toolbar')
 
+            journal_toolbar = gtk.Toolbar()
+            journal_toolbar_button = ToolbarButton(page=journal_toolbar,
+                                                   icon_name='activity-journal')
+
             # Add the toolbars and buttons to the toolbox
             activity_toolbar_button.show()
             toolbox.toolbar.insert(activity_toolbar_button, -1)
             edit_toolbar_button.show()
             toolbox.toolbar.insert(edit_toolbar_button, -1)
+            journal_toolbar_button.show()
+            toolbox.toolbar.insert(journal_toolbar_button, -1)
             view_toolbar_button.show()
             toolbox.toolbar.insert(view_toolbar_button, -1)
-            toolbox.toolbar.insert(palette_toolbar_button, -1)
             palette_toolbar_button.show()
+            toolbox.toolbar.insert(palette_toolbar_button, -1)
+            help_toolbar_button.show()
+            toolbox.toolbar.insert(help_toolbar_button, -1)
 
             _add_separator(toolbox.toolbar)
 
             self._make_project_buttons(toolbox.toolbar)
 
-            _add_separator(toolbox.toolbar)
-
-            toolbox.toolbar.insert(help_toolbar_button, -1)
-            help_toolbar_button.show()
-
             _add_separator(toolbox.toolbar, True)
 
-            # Sugar Stop Button
             stop_button = StopButton(self)
             stop_button.props.accelerator = '<Ctrl>Q'
             toolbox.toolbar.insert(stop_button, -1)
@@ -765,9 +767,9 @@ class TurtleArtActivity(activity.Activity):
             edit_toolbar = gtk.Toolbar()
             toolbox.add_toolbar(_('Edit'), edit_toolbar)
             edit_toolbar_button = edit_toolbar
-            save_toolbar = gtk.Toolbar()
-            toolbox.add_toolbar(_('Import/Export'), save_toolbar)
-            activity_toolbar_button = save_toolbar
+            journal_toolbar = gtk.Toolbar()
+            toolbox.add_toolbar(_('Import/Export'), journal_toolbar)
+            journal_toolbar_button = journal_toolbar
             help_toolbar = gtk.Toolbar()
             toolbox.add_toolbar(_('Help'), help_toolbar)
             help_toolbar_button = help_toolbar
@@ -780,22 +782,22 @@ class TurtleArtActivity(activity.Activity):
 
         self.keep_button = _add_button('filesave', _("Save snapshot"),
                                        self.do_keep_cb,
-                                       activity_toolbar_button)
+                                       journal_toolbar_button)
         self.save_as_html = _add_button('htmloff', _("Save as HTML"),
                                         self.do_save_as_html_cb,
-                                        activity_toolbar_button)
+                                        journal_toolbar_button)
         self.save_as_logo = _add_button('logo-saveoff', _("Save as Logo"),
                                         self.do_save_as_logo_cb,
-                                        activity_toolbar_button)
+                                        journal_toolbar_button)
         self.save_as_image = _add_button('image-saveoff', _("Save as image"),
                                          self.do_save_as_image_cb,
-                                         activity_toolbar_button)
+                                         journal_toolbar_button)
         self.load_python = _add_button('pippy-openoff', _("Load my block"),
                                        self.do_load_python_cb,
-                                       activity_toolbar_button)
+                                       journal_toolbar_button)
         self.load_ta_project = _add_button('load-from-journal',
             _("Import project from the Journal"), self.do_load_ta_project_cb,
-                                           activity_toolbar_button)
+                                           journal_toolbar_button)
         copy = _add_button('edit-copy', _('Copy'), self._copy_cb,
                            edit_toolbar_button, '<Ctrl>c')
         paste = _add_button('edit-paste', _('Paste'), self._paste_cb,
