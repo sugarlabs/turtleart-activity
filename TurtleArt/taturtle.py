@@ -113,6 +113,7 @@ class Turtle:
         self.shapes = []
         self.custom_shapes = False
         self.type = 'turtle'
+        self.name = key
         self.heading = 0
         self.pen_shade = 50
         self.pen_color = 0
@@ -120,10 +121,19 @@ class Turtle:
         self.pen_size = 5
         self.pen_state = True
 
-        # If the turtle key is an int, we'll use a palette color as the
+        self._prep_shapes(key, turtles, turtle_colors)
+
+        if turtles.sprite_list is not None:
+            self.spr = Sprite(turtles.sprite_list, 0, 0, self.shapes[0])
+        else:
+            self.spr = None
+        turtles.add_to_dict(key, self)
+
+    def _prep_shapes(self, name, turtles=None, turtle_colors=None):
+        # If the turtle name is an int, we'll use a palette color as the
         # turtle color
         try:
-            int_key = int(key)
+            int_key = int(name)
             use_color_table = True
         except ValueError:
             use_color_table = False
@@ -138,13 +148,9 @@ class Turtle:
                            '#%06x' % (color_table[stroke])]
             self.shapes = generate_turtle_pixbufs(self.colors)
         else:
-            self.shapes = turtles.get_pixbufs()
-
-        if turtles.sprite_list is not None:
-            self.spr = Sprite(turtles.sprite_list, 0, 0, self.shapes[0])
-        else:
-            self.spr = None
-        turtles.add_to_dict(key, self)
+            if turtles is not None:
+                self.colors = ['#008000', '#00A000']
+                self.shapes = turtles.get_pixbufs()
 
     def set_shapes(self, shapes):
         """ Reskin the turtle """
