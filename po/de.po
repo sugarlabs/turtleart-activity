@@ -10,12 +10,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: turtleart-activity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-08 14:52-0400\n"
-"PO-Revision-Date: 2010-09-20 22:07+0200\n"
+"POT-Creation-Date: 2010-09-25 08:30-0400\n"
+"PO-Revision-Date: 2010-10-20 16:01+0200\n"
 "Last-Translator: Markus <m.slg@gmx.de>\n"
 "Language-Team: OLPC-German <m.slg@gmx.de>\n"
 "Language: de\n"
@@ -26,8 +30,8 @@ msgstr ""
 "X-Generator: Pootle 2.0.3\n"
 
 #: activity/activity.info:2 /home/walter/Desktop/turtleblocks/turtleart.py:202
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:1304
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2174
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:1309
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2316
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taexporthtml.py:122
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taexporthtml.py:124
 msgid "Turtle Art"
@@ -72,7 +76,7 @@ msgstr "Blöcke anzeigen"
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:368
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:387
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:895
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:754
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:782
 msgid "Hide blocks"
 msgstr "Blöcke verbergen"
 
@@ -158,26 +162,26 @@ msgid "Polar coordinates"
 msgstr "Polarkoordinaten"
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:833
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2171
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2175
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:740
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:412
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2313
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2317
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:749
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:436
 msgid "xcor"
 msgstr "x-Wert"
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:834
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2171
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2175
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:741
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:413
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2313
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2317
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:750
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:437
 msgid "ycor"
 msgstr "y-Wert"
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:835
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2171
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2175
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:741
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:297
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2313
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2317
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:750
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:314
 msgid "heading"
 msgstr "Richtung"
 
@@ -211,7 +215,7 @@ msgstr "<Ctrl>b"
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:901
 #: /home/walter/Desktop/turtleblocks/turtleart.py:252
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:738
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:766
 msgid "Clean"
 msgstr "Alles löschen"
 
@@ -221,7 +225,7 @@ msgstr "<Ctrl>e"
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:904
 #: /home/walter/Desktop/turtleblocks/turtleart.py:253
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:805
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:834
 msgid "Run"
 msgstr "Ausführen"
 
@@ -231,7 +235,7 @@ msgstr "<Ctrl>r"
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:906
 #: /home/walter/Desktop/turtleblocks/turtleart.py:254
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:806
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:835
 msgid "Step"
 msgstr "Einzelschritte"
 
@@ -241,7 +245,7 @@ msgstr "<Ctrl>w"
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:908
 #: /home/walter/Desktop/turtleblocks/turtleart.py:255
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:734
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:762
 msgid "Debug"
 msgstr "Fehlersuche"
 
@@ -250,7 +254,7 @@ msgid "<Ctrl>d"
 msgstr "<Ctrl>d"
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:910
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:836
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:867
 msgid "Stop turtle"
 msgstr "Schildkröte anhalten"
 
@@ -379,761 +383,801 @@ msgstr "Anmeldung fehlgeschlagen"
 msgid "Failed to upload!"
 msgstr "Hochladen fehlgeschlagen!"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:529
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:530
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:532
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:533
 msgid "orientation"
 msgstr "Orientierung"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:540
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:793
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:543
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:796
 msgid "next"
 msgstr "Nächstes"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2286
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tawindow.py:2426
 msgid "image"
 msgstr "Bild"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/tautils.py:463
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:355
+#: /home/walter/Desktop/turtleblocks/TurtleArt/tautils.py:465
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:376
 msgid "click to open"
 msgstr "Zum Öffnen klicken"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:693
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:702
 msgid "did not output to"
 msgstr "keine Ausgabe erfolgt"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:742
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:360
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:751
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:381
 msgid "scale"
 msgstr "Skalierung"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:745
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:323
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:754
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:342
 msgid "pen down"
 msgstr "senke Stift ab"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:747
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:325
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:756
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:344
 msgid "pen up"
 msgstr "hebe Stift an"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:749
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:280
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:287
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:758
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:294
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:303
 msgid "color"
 msgstr "Farbe"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:750
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:287
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:371
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:759
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:303
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:393
 msgid "shade"
 msgstr "Schattierung"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:751
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:324
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:760
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:343
 msgid "pen size"
 msgstr "Stiftdicke"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:767
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:776
 msgid "I don't know how to"
 msgstr "Ich kann nicht"
 
 # (Markus S.) 'mag kein'?
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:938
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:967
 msgid "doesn't like"
 msgstr "mag nicht"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:938
+#: /home/walter/Desktop/turtleblocks/TurtleArt/talogo.py:967
 msgid "as input"
 msgstr "als Eingabe"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:265
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:398
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:278
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:422
 msgid "turtle"
 msgstr "Schildkröte"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:266
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:279
 msgid "and"
 msgstr "und"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:267
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:280
 msgid "arc"
 msgstr "Kreisbogen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:267
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:280
 msgid "angle"
 msgstr "Winkel"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:267
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:280
 msgid "radius"
 msgstr "Radius"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:269
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:282
 msgid "back"
 msgstr "gehe rückwärts"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:270
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:283
 msgid "black"
 msgstr "Schwarz"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:271
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:284
+msgid "blocks"
+msgstr "Blöcke"
+
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:285
 msgid "blue"
 msgstr "Blau"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:272
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:286
 msgid "bottom"
 msgstr "unten"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:273
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:287
 msgid "picture bottom"
 msgstr "Unterer Bildrand"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:274
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:383
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:288
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:406
 msgid "box"
 msgstr "Box"
 
 # (Markus S.) 'Variable' war 'Rahmen'
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:275
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:289
 msgid "box 1"
 msgstr "Box 1"
 
 # (Markus S.) 'Variable' war 'Rahmen'
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:276
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:290
 msgid "box 2"
 msgstr "Box 2"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:277
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:291
 msgid "Cartesian"
 msgstr "Kartesisch"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:278
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:292
 msgid " clean "
 msgstr " lösche alles "
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:279
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:293
 msgid "empty heap"
 msgstr "leerer Stapel"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:281
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:565
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:295
+msgid "colors"
+msgstr "Farben"
+
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:296
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:591
 msgid "comment"
 msgstr "Bemerkung"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:282
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:297
 msgid "cyan"
 msgstr "Zyan"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:285
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:300
 msgid "empty trash"
 msgstr "Mülleimer leeren"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:287
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:302
+msgid "extras"
+msgstr "Extras"
+
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:303
 msgid "fill screen"
 msgstr "fülle Bildschirm"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:288
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:304
+msgid "flow"
+msgstr "Programmfluss"
+
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:305
 msgid "forever"
 msgstr "fortlaufend"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:289
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:306
 msgid "forward"
 msgstr "gehe vorwärts"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:290
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:307
 msgid "full screen"
 msgstr "Vollbild"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:291
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:308
 msgid "gray"
 msgstr "Grau"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:293
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:310
 msgid "green"
 msgstr "Grün"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:294
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:376
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:570
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:601
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:311
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:399
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:596
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:628
 msgid "action"
 msgstr "Aktion"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:295
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:377
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:312
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:400
 msgid "action 1"
 msgstr "Aktion 1"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:296
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:378
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:313
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:401
 msgid "action 2"
 msgstr "Aktion 2"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:298
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:315
 msgid "height"
 msgstr "Höhe"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:299
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:316
 msgid "hide blocks"
 msgstr "Blöcke verbergen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:302
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:303
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:319
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:320
 msgid "if"
 msgstr "wenn"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:302
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:319
 msgid "then"
 msgstr "dann"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:303
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:320
 msgid "then else"
 msgstr "dann sonst"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:304
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:372
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:321
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:394
 msgid "show"
 msgstr "zeige"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:306
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:323
 msgid "query keyboard"
 msgstr "Tastatur auslesen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:307
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:324
 msgid "keyboard"
 msgstr "Tastatur"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:308
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:309
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:325
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:326
 msgid "left"
 msgstr "links"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:310
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:327
 msgid "picture left"
 msgstr "Linker Bildrand"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:314
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:315
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:316
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:317
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:331
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:332
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:333
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:334
 msgid "Python"
 msgstr "Python"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:318
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:400
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:401
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:402
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:335
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:424
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:425
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:426
 msgid " "
 msgstr " "
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:319
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:336
 msgid "not"
 msgstr "nicht"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:321
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:338
+msgid "numbers"
+msgstr "Zahlen"
+
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:339
 msgid "orange"
 msgstr "Orange"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:322
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:340
 msgid "or"
 msgstr "oder"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:332
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:341
+msgid "pen"
+msgstr "Stift"
+
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:351
 msgid "pitch"
 msgstr "Tonhöhe"
 
 # (Markus S.) Vergleiche 'Cartesian'
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:334
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:353
 msgid "polar"
 msgstr "Polar"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:335
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:354
 msgid "pop"
 msgstr "pop"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:336
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:355
+msgid "portfolio"
+msgstr "Portfolio"
+
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:356
 msgid "show heap"
 msgstr "zeige Stapel"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:337
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:357
 msgid "print"
 msgstr "schreibe"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:339
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:359
 msgid "purple"
 msgstr "Violett"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:340
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:360
 msgid "push"
 msgstr "push"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:341
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:361
 msgid "random"
 msgstr "Zufallszahl"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:341
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:361
 msgid "min"
 msgstr "min"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:341
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:361
 msgid "max"
 msgstr "max"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:342
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:362
 msgid "read pixel"
 msgstr "lies Pixel"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:343
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:363
 msgid "red"
 msgstr "Rot"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:344
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:364
 msgid "mod"
 msgstr "mod"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:345
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:365
 msgid "repeat"
 msgstr "wiederhole"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:346
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:366
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:397
+msgid "turtle shell"
+msgstr "Schildkrötenpanzer"
+
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:367
 msgid "resistance"
 msgstr "Widerstand"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:347
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:368
 msgid "restore last"
 msgstr "Letztes rückgängig"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:348
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:369
 msgid "restore all"
 msgstr "Alles rückgängig"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:349
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:350
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:370
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:371
 msgid "right"
 msgstr "rechts"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:351
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:372
 msgid "picture right"
 msgstr "Rechter Bildrand"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:352
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:373
 msgid "save picture"
 msgstr "Bild speichern"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:353
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:374
 msgid "save SVG"
 msgstr "Als SVG speichern"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:356
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:358
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:377
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:379
 msgid "top of stack"
 msgstr "Stapelanfang"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:361
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:382
 msgid "turtle sees"
 msgstr "Schildkröte sieht"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:362
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:383
 msgid "set color"
 msgstr "setze Farbe"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:363
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:384
 msgid "set gray"
 msgstr "setze Grauton"
 
 #
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:364
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:385
 msgid "set heading"
 msgstr "setze Richtung"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:365
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:386
 msgid "set pen size"
 msgstr "setze Stiftdicke"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:366
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:387
 msgid "set scale"
 msgstr "setze Skalierung"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:367
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:388
 msgid "set shade"
 msgstr "setze Schattierung"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:368
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:389
 msgid "set text color"
 msgstr "setze Schriftfarbe"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:369
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:390
 msgid "set text size"
 msgstr "setze Schriftgröße"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:370
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:391
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:392
 msgid "set xy"
 msgstr "setze xy"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:370
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:391
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:392
 msgid "x"
 msgstr "x"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:370
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:391
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:392
 msgid "y"
 msgstr "y"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:373
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:395
 msgid "show blocks"
 msgstr "Blöcke anzeigen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:374
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:396
 msgid "show aligned"
 msgstr "Ausgerichtet anzeigen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:379
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:402
 msgid "start"
 msgstr "starte"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:380
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:403
 msgid "start fill"
 msgstr "beginne Füllung"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:381
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:404
 msgid "end fill"
 msgstr "beende Füllung"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:382
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:405
 msgid "stop action"
 msgstr "beende Aktion"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:383
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:406
 msgid "store in"
 msgstr "speichere in"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:383
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:406
 msgid "value"
 msgstr "Wert"
 
 # (Markus S.) 'Variable' war 'Rahmen'
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:384
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:407
 msgid "store in box 1"
 msgstr "speichere in Box 1"
 
 # (Markus S.) 'Variable' war 'Rahmen'
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:385
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:408
 msgid "store in box 2"
 msgstr "speichere in Box 2"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:386
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:599
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:600
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:605
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:616
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:409
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:626
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:627
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:632
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:643
 msgid "text"
 msgstr "Text"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:393
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:711
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:416
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:739
 msgid "text size"
 msgstr "Schriftgröße"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:394
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:417
 msgid "title x"
 msgstr "Titel: x"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:395
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:418
 msgid "title y"
 msgstr "Titel: y"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:396
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:419
 msgid "top"
 msgstr "oben"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:397
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:420
 msgid "picture top"
 msgstr "Oberer Bildrand"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:399
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:421
+msgid "trash"
+msgstr "Müll"
+
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:423
 msgid "until"
 msgstr "bis"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:403
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:427
 msgid "voltage"
 msgstr "Spannung"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:404
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:428
 msgid "volume"
 msgstr "Lautstärke"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:406
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:430
 msgid "wait"
 msgstr "warte"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:407
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:408
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:431
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:432
 msgid "while"
 msgstr "solange"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:409
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:433
 msgid "white"
 msgstr "Weiß"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:410
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:434
 msgid "width"
 msgstr "Breite"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:411
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:435
 msgid "write"
 msgstr "schreibe"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:414
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:438
 msgid "yellow"
 msgstr "Gelb"
 
 # (Markus S.) 'Rahmen'?
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:564
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:604
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:590
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:631
 msgid "my box"
 msgstr "Meine Box"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:586
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:587
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:612
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:613
 msgid "label"
 msgstr "Beschriftung"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:588
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:589
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:614
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:615
 msgid "picture name"
 msgstr "Bildname"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:606
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:607
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:608
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:609
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:610
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:611
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:929
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:947
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:964
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:996
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:1028
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:1060
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:633
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:634
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:635
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:636
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:637
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:638
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:962
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:984
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:1005
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:1047
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:1089
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:1131
 msgid "Title"
 msgstr "Titel"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:689
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:717
 msgid "audio"
 msgstr "Audio"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:690
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:718
 msgid "divide"
 msgstr "geteilt durch"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:691
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:719
 msgid "equal"
 msgstr "gleich"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:692
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:720
 msgid "greater than"
 msgstr "größer als"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:693
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:721
 msgid "horizontal space"
 msgstr "horizontaler Zwischenraum"
 
 # (Markus S.) 'Gleichheit'?
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:694
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:722
 msgid "identity"
 msgstr "Gleichheit"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:695
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:723
 msgid "if then"
 msgstr "wenn dann"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:696
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:724
 msgid "if then else"
 msgstr "wenn dann sonst"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:697
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:725
 msgid "journal"
 msgstr "Tagebuch"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:698
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:726
 msgid "less than"
 msgstr "kleiner als"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:699
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:727
 msgid "minus"
 msgstr "minus"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:700
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:728
 msgid "Python code"
 msgstr "Python-Quelltext"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:701
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:729
 msgid "number"
 msgstr "Zahl"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:702
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:730
 msgid "plus"
 msgstr "plus"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:703
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:731
 msgid "multiply"
 msgstr "mal"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:704
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:732
 msgid "square root"
 msgstr "Quadratwurzel"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:705
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:706
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:733
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:734
 msgid "presentation 1x1"
 msgstr "Präsentation 1x1"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:707
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:735
 msgid "presentation 1x2"
 msgstr "Präsentation 1x2"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:708
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:736
 msgid "presentation 2x1"
 msgstr "Präsentation 2x1"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:709
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:737
 msgid "presentation 2x2"
 msgstr "Präsentation 2x2"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:710
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:738
 msgid "presentation bulleted list"
 msgstr "Darstellung als Spiegelstrichliste"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:712
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:740
 msgid "vertical space"
 msgstr "Vertikaler Zwischenraum"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:718
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:746
 msgid "chooses which turtle to command"
 msgstr "Die zu steuernde Schildkröte wählen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:719
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:747
 msgid "logical AND operator"
 msgstr "Logischer UND-Operator"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:720
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:748
 msgid "moves turtle along an arc"
 msgstr "Schildkröte entlang eines Kreisbogens bewegen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:721
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:749
 msgid "Sugar Journal audio object"
 msgstr "Audioobjekt aus dem Sugar-Tagebuch"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:722
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:750
 msgid "moves turtle backward"
 msgstr "Schildkröte rückwärts bewegen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:723
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:751
 msgid "Palette of variable blocks"
 msgstr "Palette der Variablenblöcke"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:724
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:752
 msgid "ycor of bottom of screen"
 msgstr "y-Koordinate des unteren Bildschirmrandes"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:725
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:753
 msgid "Variable 1 (numeric value)"
 msgstr "Variable 1 (Zahlenwert)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:726
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:754
 msgid "Variable 2 (numeric value)"
 msgstr "Variable 2 (Zahlenwert)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:727
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:755
 msgid "named variable (numeric value)"
 msgstr "Benannte Variable (Zahlenwert)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:728
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:756
 msgid "displays Cartesian coordinates"
 msgstr "Kartesische Koordinaten anzeigen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:729
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:757
 msgid "clears the screen and reset the turtle"
 msgstr "Bildschirm leeren und Schildkröte zurücksetzen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:730
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:758
 msgid "emptys FILO (first-in-last-out heap)"
 msgstr "FILO-Stapel leeren (first in, last out)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:731
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:759
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr ""
 "Die aktuelle Stiftfarbe (kann an Stelle eines Zahlenblocks benutzt werden)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:732
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:760
 msgid "Palette of pen colors"
 msgstr "Palette der Stiftfarben"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:733
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:761
 msgid "places a comment in your code"
 msgstr "Kommentar in dein Programm einfügen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:735
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:763
 msgid "Sugar Journal description field"
 msgstr "Beschreibungsfeld im Sugar-Tagebuch"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:736
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:764
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr "Dividiert die obere Zahleneingabe (Zähler) durch die untere (Nenner)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:737
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:765
 msgid "permanently deletes items in trash"
 msgstr "Mülleimer endgültig leeren"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:739
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:767
 msgid "logical equal-to operator"
 msgstr "Logischer Ist-gleich-Operator"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:740
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:768
 msgid "Palette of extra options"
 msgstr "Palette der erweiterten Optionen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:741
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:769
 msgid "fills the background with (color, shade)"
 msgstr "Den Hintergrund mit (Farbe, Schattierung) füllen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:742
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:770
 msgid "Palette of flow operators"
 msgstr "Palette der Flussoperatoren"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:743
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:771
 msgid "loops forever"
 msgstr "Endlos wiederholen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:744
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:772
 msgid "moves turtle forward"
 msgstr "Schildkröte vorwärts bewegen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:745
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:773
 msgid "hides the Sugar toolbars"
 msgstr "Sugar-Leiste verbergen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:746
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:774
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr "Der aktuelle Grauton (kann an Stelle eines Zahlenblocks benutzt werden)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:747
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:775
 msgid "logical greater-than operator"
 msgstr "Logischer Größer-als-Operator"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:748
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:776
 msgid "top of Action 1 stack"
 msgstr "Stapelanfang von Aktion 1"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:749
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:777
 msgid "top of Action 2 stack"
 msgstr "Stapelanfang von Aktion 2"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:750
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:778
 msgid "top of nameable action stack"
 msgstr "Stapelanfang einer benennbaren Aktion"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:751
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:779
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
@@ -1141,70 +1185,70 @@ msgstr ""
 "Die aktuelle Richtung der Schildkröte (kann an Stelle eines Zahlenblocks "
 "benutzt werden)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:752
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:780
 msgid "the canvas height"
 msgstr "Die Fensterhöhe"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:753
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:781
 msgid "declutters canvas by hiding blocks"
 msgstr "Fenster durch Verbergen der Blöcke aufräumen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:755
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:783
 msgid "jogs stack right"
 msgstr "Stapel nach rechts versetzen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:756
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:784
 msgid "identity operator used for extending blocks"
 msgstr "Identitätsoperator, um Blöcke zu erweitern"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:757
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:785
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr ""
 "Wenn-Dann-Sonst-Operator, der boolesche Operatoren aus der mathematischen "
 "Palette nutzt"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:758
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:786
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr ""
 "Wenn-Dann-Operator, der boolesche Operatoren aus der mathematischen Palette "
 "nutzt"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:759
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:787
 msgid "Sugar Journal media object"
 msgstr "Medienobjekt aus dem Sugar-Tagebuch"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:760
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:788
 msgid "query for keyboard input (results stored in keyboard block)"
 msgstr ""
 "Tastatureingabe auslesen (das Ergebnis wird im Tastaturblock gespeichert)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:761
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:789
 msgid "holds results of query-keyboard block"
 msgstr "Das Ergebnis des Tastaturabfrage-Blocks"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:762
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:790
 msgid "xcor of left of screen"
 msgstr "x-Koordinate des linken Bildschirmrandes"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:763
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:791
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "Schildkröte gegen den Uhrzeigersinn drehen (Winkel in Grad)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:764
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:792
 msgid "logical less-than operator"
 msgstr "Logischer Kleiner-als-Operator"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:765
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:793
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr "Die untere Zahleneingabe von der oberen subtrahieren"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:766
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:794
 msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
 msgstr ""
 "Ein programmierbarer Block für fortgeschrittene mathematische Ausdrücke wie "
 "sin(x)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:767
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:795
 msgid ""
 "a programmable block: used to add advanced single-variable math equations, e."
 "g., sin(x)"
@@ -1212,7 +1256,7 @@ msgstr ""
 "Ein programmierbarer Block für fortgeschrittene mathematische Ausdrücke mit "
 "einer Variablen, z.B. sin(x)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:768
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:796
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
@@ -1220,7 +1264,7 @@ msgstr ""
 "Ein programmierbarer Block für fortgeschrittene mathematische Ausdrücke mit "
 "mehreren Variablen wie sqrt(x*x+y*y)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:769
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:797
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
@@ -1228,340 +1272,346 @@ msgstr ""
 "Ein programmierbarer Block für fortgeschrittene mathematische Ausdrücke mit "
 "mehreren Variablen, z.B. sin(x+y+z)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:770
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:798
 msgid "displays next palette"
 msgstr "Nächste Palette anzeigen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:771
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:854
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:855
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:856
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:799
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:885
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:886
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:887
 msgid "runs code found in the tamyblock.py module found in the Journal"
 msgstr "Code aus dem Modul tamyblock.py aus dem Tagebuch ausführen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:772
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:800
 msgid "logical NOT operator"
 msgstr "Logischer NICHT-Operator"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:773
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:801
 msgid "Palette of numeric operators"
 msgstr "Palette der mathematischen Operatoren"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:774
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:802
 msgid "used as numeric input in mathematic operators"
 msgstr "Als Zahleneingabe in mathematischen Operatoren"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:775
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:803
 msgid "logical OR operator"
 msgstr "Logischer ODER-Operator"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:776
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:804
 msgid "changes the orientation of the palette of blocks"
 msgstr "Die Ausrichtung der Block-Palette ändern"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:777
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:805
 msgid "Turtle will draw when moved."
 msgstr "Die Schildkröte zeichnet, wenn sie sich bewegt."
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:778
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:806
 msgid "Palette of pen commands"
 msgstr "Palette der Stiftbefehle"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:779
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:807
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr ""
 "Die aktuelle Stiftgröße (kann an Stelle eines Zahlenblocks benutzt werden)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:780
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:808
 msgid "Turtle will not draw when moved."
 msgstr "Die Schildkröte zeichnet nicht, wenn sie sich bewegt."
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:781
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:842
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:809
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:873
 msgid "presentation template: select Journal object (with description)"
 msgstr "Präsentationsvorlage: ein Tagebuch-Objekt (mit Beschreibung)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:782
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:843
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:810
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:874
 msgid "presentation template: select Journal object (no description)"
 msgstr "Präsentationsvorlage: ein Tagebuch-Objekt (ohne Beschreibung)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:783
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:784
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:844
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:845
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:811
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:812
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:875
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:876
 msgid "presentation template: select two Journal objects"
 msgstr "Präsentationsvorlage: zwei Tagebuch-Objekte"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:785
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:846
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:813
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:877
 msgid "presentation template: select four Journal objects"
 msgstr "Präsentationsvorlage: vier Tagebuch-Objekte"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:786
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:847
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:814
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:878
 msgid "presentation template: list of bullets"
 msgstr "Präsentationsvorlage: Spiegelstrichliste"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:787
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:815
 msgid "microphone input pitch"
 msgstr "Mikrofoneingangstonhöhe"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:788
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:816
 msgid "adds two alphanumeric inputs"
 msgstr "Addiert zwei Zahleneingaben"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:789
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:817
 msgid "displays polar coordinates"
 msgstr "Polarkoordinaten anzeigen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:790
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:818
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr "Wert aus FILO-Stapel (first in, last out) entfernen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:791
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:819
 msgid "Palette of presentation templates"
 msgstr "Palette der Präsentationsvorlagen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:792
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:820
 msgid "prints value in status block at bottom of the screen"
 msgstr "Wert im Statusblock am unteren Bildschirmrand anzeigen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:793
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:821
 msgid "shows values in FILO (first-in last-out heap)"
 msgstr "Werte im FILO-Stapel (first in, last out) anzeigen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:794
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:822
 msgid "multiplies two numeric inputs"
 msgstr "Zwei Zahleneingaben multiplizieren"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:795
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:823
 msgid "pushes value onto FILO (first-in last-out heap)"
 msgstr "Wert in FILO-Stapel (first in, last out) schreiben"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:796
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:824
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr "Eine Zufallszahl zwischen dem Minimal- (oben) und Maximalwert (unten)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:797
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:825
 msgid "RGB color under the turtle is pushed to the stack"
 msgstr "RGB-Farbton unter der Schildkröte wird in den Stapel eingefügt"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:798
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:826
 msgid "modular (remainder) operator"
 msgstr "Modulo-Operator (Divisionsrest)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:799
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:827
 msgid "loops specified number of times"
 msgstr "So oft wiederholen, wie angegeben"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:800
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:828
 msgid "sensor input resistance"
 msgstr "Sensoreingangswiderstand"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:801
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:829
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:859
+msgid "put a custom 'shell' on the turtle"
+msgstr "Den 'Panzer' der Schildkröte anpassen"
+
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:830
 msgid "restores most recent blocks from trash"
 msgstr "Zuletzt gelöschten Block wiederherstellen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:802
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:831
 msgid "restore all blocks from trash"
 msgstr "Alle gelöschten Blöcke wiederherstellen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:803
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:832
 msgid "xcor of right of screen"
 msgstr "x-Koordinate des rechten Bildschirmrandes"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:804
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:833
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "Schildkröte im Uhrzeigersinn drehen (Winkel in Grad)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:807
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:836
 msgid "bottom block in a collapsibe stack: click to collapse"
 msgstr "Unterster Block in einem zuklappbaren Stapel: zum Zuklappen klicken"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:808
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:837
 msgid "bottom block in a collapsed stack: click to open"
 msgstr "Unterster Block in einem zugeklappten Stapel: zum Aufklappen klicken"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:809
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:811
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:838
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:840
 msgid "top of a collapsible stack"
 msgstr "Anfang eines zuklappbaren Stapels"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:810
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:812
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:839
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:841
 msgid "top of a collapsed stack"
 msgstr "Anfang eines zugeklappten Stapels"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:813
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:842
 msgid "saves a picture to the Sugar Journal"
 msgstr "Ein Bild ins Sugar-Tagebuch speichern"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:814
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:843
 msgid "saves turtle graphics as an SVG file in the Sugar Journal"
 msgstr "Eine Schildkröten-Grafik als SVG ins Sugar-Tagebuch speichern"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:815
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:844
 msgid "holds current scale value"
 msgstr "Der aktuelle Skalierungsfaktor"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:816
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:845
 msgid "returns the color that the turtle \"sees\""
 msgstr "Liefert die Farbe, die die Schildkröte \"sieht\""
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:817
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:846
 msgid "sets color of the line drawn by the turtle"
 msgstr "Farbe der Schildkrötenspur festlegen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:818
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:847
 msgid "sets gray level of the line drawn by the turtle"
 msgstr "Grauton der Schildkrötenspur festlegen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:819
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:848
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "Richtung der Schildkröte festlegen (0 zeigt zum oberen Bildschirmrand.)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:820
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:849
 msgid "sets size of the line drawn by the turtle"
 msgstr "Breite der Schildkrötenspur festlegen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:821
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:850
 msgid "sets the scale of media"
 msgstr "Skalierung der Medien setzen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:822
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:851
 msgid "sets shade of the line drawn by the turtle"
 msgstr "Schattierung der Schildkrötenspur festlegen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:823
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:852
 msgid "sets color of text drawn by the turtle"
 msgstr "Farbe des Textes festlegen, den die Schildkröte zeichnet"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:824
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:853
 msgid "sets size of text drawn by turtle"
 msgstr "Größe des Textes festlegen, den die Schildkröte zeichnet"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:825
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:854
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:855
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr "Schildkröte zur Position x,y bewegen; (0,0) liegt in Bildschirmmitte."
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:826
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:856
 msgid "holds current pen shade"
 msgstr "Die aktuelle Schattierung des Stiftes"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:827
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:857
 msgid "draws text or show media from the Journal"
 msgstr "Text zeichnen oder Medien aus dem Tagebuch anzeigen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:828
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:858
 msgid "restores hidden blocks"
 msgstr "Verborgene Blöcke wiederherstellen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:829
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:860
 msgid "calculates square root"
 msgstr "Quadratwurzel berechnen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:830
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:861
 msgid "invokes Action 1 stack"
 msgstr "Stapel von Aktion 1 afurufen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:831
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:862
 msgid "invokes Action 2 stack"
 msgstr "Stapel von Aktion 2 aufrufen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:832
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:863
 msgid "invokes named action stack"
 msgstr "Stapel einer benannten Aktion aufrufen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:833
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:864
 msgid "connects action to toolbar run buttons"
 msgstr "Aktion mit Startknöpfen in der Werkzeugleiste verbinden"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:834
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:865
 msgid "starts filled polygon (used with end fill block)"
 msgstr "Beginnt ein gefülltes Polygon (benötigt einen Füllung-beenden-Block)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:835
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:866
 msgid "completes filled polygon (used with start fill block)"
 msgstr ""
 "Schließt ein gefülltes Polygon ab (benötigt einen Füllung-beginnen-Block)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:837
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:868
 msgid "stops current action"
 msgstr "Aktuelle Aktion beenden"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:838
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:869
 msgid "stores numeric value in Variable 1"
 msgstr "Zahlenwert in Variable 1 speichern"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:839
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:870
 msgid "stores numeric value in Variable 2"
 msgstr "Zahlenwert in Variable 2 speichern"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:840
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:871
 msgid "stores numeric value in named variable"
 msgstr "Zahlenwert in benannte Variable speichern"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:841
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:872
 msgid "string value"
 msgstr "Zeichenkette"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:848
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:879
 msgid "holds current text color (can be used in place of a number block)"
 msgstr ""
 "Die aktuelle Schriftfarbe (kann an Stelle eines Zahlenblocks benutzt werden)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:849
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:880
 msgid "holds current text size (can be used in place of a number block)"
 msgstr ""
 "Die aktuelle Schriftgröße (kann an Stelle eines Zahlenblocks benutzt werden)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:850
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:881
 msgid "ycor of top of screen"
 msgstr "y-Koordinate des oberen Bildschirmrandes"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:851
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:882
 msgid "Trashcan"
 msgstr "Mülleimer"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:852
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:883
 msgid "Palette of turtle commands"
 msgstr "Palette der Schildkröten-Befehle"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:853
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:884
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 "Wiederhole-bis-Operator, der boolesche Operatoren aus der mathematischen "
 "Palette nutzt"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:857
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:888
 msgid "sensor voltage"
 msgstr "Sensorspannung"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:858
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:889
 msgid "microphone input volume"
 msgstr "Mikrofoneingangslautstärke"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:859
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:890
 msgid "jogs stack down"
 msgstr "Stapel nach unten versetzen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:860
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:891
 msgid "pauses program execution a specified number of seconds"
 msgstr "Programmausführung für die angegebene Dauer in Sekunden unterbrechen"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:861
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:892
 msgid "do-while-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 "Wiederhole-solange-Operator, der boolesche Operatoren aus der mathematischen "
 "Palette nutzt"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:862
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:893
 msgid "the canvas width"
 msgstr "Die Fensterbreite"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:863
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:894
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -1569,7 +1619,7 @@ msgstr ""
 "Der aktuelle x-Wert der Schildkröten-Position (kann an Stelle eines "
 "Zahlenblocks benutzt werden)"
 
-#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:864
+#: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:895
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -1666,9 +1716,6 @@ msgstr ""
 #~ msgid "Keyboard"
 #~ msgstr "Tastatur"
 
-#~ msgid "Flow"
-#~ msgstr "Programmfluss"
-
 #~ msgid "else"
 #~ msgstr "sonst"
 
@@ -1680,9 +1727,6 @@ msgstr ""
 
 #~ msgid "Templates"
 #~ msgstr "Vorlagen"
-
-#~ msgid "Extras"
-#~ msgstr "Extras"
 
 #~ msgid "read key"
 #~ msgstr "lies Taste aus"
@@ -1716,9 +1760,6 @@ msgstr ""
 
 #~ msgid "stop stack"
 #~ msgstr "Stapel anhalten"
-
-#~ msgid "Blocks"
-#~ msgstr "Blöcke"
 
 #~ msgid "Sensors"
 #~ msgstr "Sensoren"
