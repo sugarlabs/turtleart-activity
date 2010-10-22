@@ -305,8 +305,8 @@ class LogoCode:
         DEFPRIM = {
         '(': [1, lambda self, x: self.prim_opar(x)],
         'and': [2, lambda self, x, y: taand(x, y)],
-        'arc': [2, lambda self, x, y: self.tw.canvas.arc(x, y)],
-        'back': [1, lambda self, x: self.tw.canvas.forward(-x)],
+        'arc': [2, lambda self, x, y: self.prim_move(self.tw.canvas.arc, x, y)],
+        'back': [1, lambda self, x: self.prim_move(self.tw.canvas.forward, -x)],
         'black': [0, lambda self: BLACK],
         'blue': [0, lambda self: 70],
         'bpos': [0, lambda self: -self.tw.canvas.height / \
@@ -330,7 +330,8 @@ class LogoCode:
         'equal?': [2, lambda self,x, y: taequal(x, y)],
         'fillscreen': [2, lambda self, x, y: self.tw.canvas.fillscreen(x, y)],
         'forever': [1, self.prim_forever, True],
-        'forward': [1, lambda self, x: self.tw.canvas.forward(x)],
+        'forward': [1, lambda self, x: self.prim_move(self.tw.canvas.forward,
+                                                      x)],
         'fullscreen': [0, lambda self: self.tw.set_fullscreen()],
         'greater?': [2, lambda self, x, y: tamore(x, y)],
         'green': [0, lambda self: 30],
@@ -384,7 +385,6 @@ class LogoCode:
         'savesvg': [1, lambda self, x: self.save_svg(x)],
         'scale': [0, lambda self: self.scale],
         'see': [0, lambda self: self.see()],
-
         'setcolor': [1, lambda self, x: set_prim(self.tw, 'color',
                                                  self.tw.canvas.setcolor, x)],
         'setgray': [1, lambda self, x: set_prim(self.tw, 'gray',
@@ -397,14 +397,12 @@ class LogoCode:
                                                  self.set_scale, x)],
         'setshade': [1, lambda self, x: set_prim(self.tw, 'shade',
                                                  self.tw.canvas.setshade, x)],
-
         'settextcolor': [1, lambda self, x: self.tw.canvas.settextcolor(x)],
         'settextsize': [1, lambda self, x: self.tw.canvas.settextsize(x)],
-
-        'setxy2': [2, lambda self, x, y: self.tw.canvas.setxy(x, y)],
-        'setxy': [2, lambda self, x, y: self.tw.canvas.setxy(x, y,
-                                            pendown=False)],
-
+        'setxy2': [2, lambda self, x, y: self.prim_move(self.tw.canvas.setxy,
+                                                        x, y)],
+        'setxy': [2, lambda self, x, y: self.prim_move(self.tw.canvas.setxy, x,
+                                                       y, pendown=False)],
         'shade': [0, lambda self: self.tw.canvas.shade],
         'show': [1, lambda self, x: self.show(x, True)],
         'showaligned': [1,lambda self, x: self.show(x, False)],
@@ -857,7 +855,7 @@ class LogoCode:
         self.tw.set_cartesian(False)
         self.hidden_turtle = None
         for name in ['box1', 'box2', 'color', 'shade', 'gray', 'scale',
-                     'pensize', 'heading']:
+                     'pensize', 'heading', 'xcor', 'ycor']:
             update_label_value(self.tw, name)
 
     def prim_start(self):
@@ -1095,6 +1093,16 @@ class LogoCode:
     def prim_right(self, value):
         self.tw.canvas.right(value)
         update_label_value(self.tw, 'heading', self.tw.canvas.heading)
+
+    def prim_move(self, cmd, value1, value2=None):
+        if value2 is None:
+            cmd(value1)
+        else:
+            cmd(value1, value2)
+        update_label_value(self.tw, 'xcor', 
+                           self.tw.canvas.xcor / self.tw.coord_scale)
+        update_label_value(self.tw, 'ycor',
+                           self.tw.canvas.ycor / self.tw.coord_scale)
 
     def prim_setbox(self, name, x, val):
         """ Define value of named box """
