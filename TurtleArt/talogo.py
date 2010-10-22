@@ -42,6 +42,9 @@ from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
                     strtype
 from gettext import gettext as _
 
+VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
+                'heading', 'xcor', 'ycor']
+
 import logging
 _logger = logging.getLogger('turtleart-activity')
 
@@ -270,23 +273,6 @@ def millis():
     return int(clock() * 1000)
 
 
-def update_label_value(tw, name, value=None):
-    """ Update the label of value blocks to reflect current value """
-    if tw.hide or not tw.interactive_mode:
-        return
-    list = tw.block_list.get_similar_blocks('block', name)
-    if value is None:
-        for block in list:
-            block.spr.set_label(BLOCK_NAMES[name][0])
-    else:
-        if type(value) == float:
-            valstring = str(round_int(value)).replace('.', tw.decimal_point)
-        else:
-            valstring = str(value)
-        for block in list:
-            block.spr.set_label(BLOCK_NAMES[name][0] + ' = ' + valstring)
-            block.resize()
-
 class LogoCode:
     """ A class for parsing Logo code """
 
@@ -500,6 +486,8 @@ class LogoCode:
         self.stacks['stack1'] = None
         self.stacks['stack2'] = None
         self.tw.saving_svg = False
+
+        self._find_value_blocks()
 
         for b in blocks:
             b.unhighlight()
@@ -821,9 +809,8 @@ class LogoCode:
         self.tw.set_polar(False)
         self.tw.set_cartesian(False)
         self.hidden_turtle = None
-        for name in ['box1', 'box2', 'color', 'shade', 'gray', 'scale',
-                     'pensize', 'heading', 'xcor', 'ycor']:
-            update_label_value(self.tw, name)
+        for name in VALUE_BLOCKS:
+            self._update_label_value(name)
 
     def prim_start(self):
         """ Start block: recenter """
@@ -1057,25 +1044,47 @@ class LogoCode:
                 self.keyboard = 0
         self.tw.keypress = ""
 
+    def _find_value_blocks(self):
+        self.value_blocks = {}
+        for name in VALUE_BLOCKS:
+            self.value_blocks[name] = self.tw.block_list.get_similar_blocks(
+                'block', name)
+
+    def _update_label_value(self, name, value=None):
+        """ Update the label of value blocks to reflect current value """
+        if self.tw.hide or not self.tw.interactive_mode:
+            return
+        if value is None:
+            for block in self.value_blocks[name]:
+                block.spr.set_label(BLOCK_NAMES[name][0])
+        else:
+            if type(value) == float:
+                valstring = str(round_int(value)).replace('.',
+                                                          self.tw.decimal_point)
+            else:
+                valstring = str(value)
+            for block in self.value_blocks[name]:
+                block.spr.set_label(BLOCK_NAMES[name][0] + ' = ' + valstring)
+                block.resize()
 
     def prim_set(self, name, cmd, value=None):
         """ Set a value and update the associated value blocks """
         if value is not None:
             cmd(value)
-            update_label_value(self.tw, name, value)
+            self._update_label_value(name, value)
 
     def prim_right(self, value):
         self.tw.canvas.right(value)
-        update_label_value(self.tw, 'heading', self.tw.canvas.heading)
+        self._update_label_value('heading', self.tw.canvas.heading)
 
     def prim_move(self, cmd, value1, value2=None):
         if value2 is None:
             cmd(value1)
         else:
             cmd(value1, value2)
-        update_label_value(self.tw, 'xcor', 
+        self._update_label_value('xcor', 
                            self.tw.canvas.xcor / self.tw.coord_scale)
-        update_label_value(self.tw, 'ycor',
+        self._update_label_value('ycor',
                            self.tw.canvas.ycor / self.tw.coord_scale)
 
     def prim_setbox(self, name, x, val):
@@ -1088,7 +1097,7 @@ class LogoCode:
             return
 
         self.boxes[name] = val
-        update_label_value(self.tw, name, val)
+        self._update_label_value(name, val)
 
     def prim_push(self, val):
         """ Push value onto FILO """
