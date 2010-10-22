@@ -270,13 +270,6 @@ def millis():
     return int(clock() * 1000)
 
 
-def set_prim(tw, name, cmd, value=None):
-    """ Set a value and update the associated value blocks """
-    if value is not None:
-        cmd(value)
-    update_label_value(tw, name, value)
-
-
 def update_label_value(tw, name, value=None):
     """ Update the label of value blocks to reflect current value """
     if tw.hide or not tw.interactive_mode:
@@ -385,17 +378,17 @@ class LogoCode:
         'savesvg': [1, lambda self, x: self.save_svg(x)],
         'scale': [0, lambda self: self.scale],
         'see': [0, lambda self: self.see()],
-        'setcolor': [1, lambda self, x: set_prim(self.tw, 'color',
+        'setcolor': [1, lambda self, x: self.prim_set('color',
                                                  self.tw.canvas.setcolor, x)],
-        'setgray': [1, lambda self, x: set_prim(self.tw, 'gray',
+        'setgray': [1, lambda self, x: self.prim_set('gray',
                                                 self.tw.canvas.setgray, x)],
-        'seth': [1, lambda self, x: set_prim(self.tw, 'heading',
+        'seth': [1, lambda self, x: self.prim_set('heading',
                                              self.tw.canvas.seth, x)],
-        'setpensize': [1, lambda self, x: set_prim(self.tw, 'pensize',
+        'setpensize': [1, lambda self, x: self.prim_set('pensize',
              self.tw.canvas.setpensize, x)],
-        'setscale': [1, lambda self, x: set_prim(self.tw, 'scale',
+        'setscale': [1, lambda self, x: self.prim_set('scale',
                                                  self.set_scale, x)],
-        'setshade': [1, lambda self, x: set_prim(self.tw, 'shade',
+        'setshade': [1, lambda self, x: self.prim_set('shade',
                                                  self.tw.canvas.setshade, x)],
         'settextcolor': [1, lambda self, x: self.tw.canvas.settextcolor(x)],
         'settextsize': [1, lambda self, x: self.tw.canvas.settextsize(x)],
@@ -1089,6 +1082,13 @@ class LogoCode:
             except:
                 self.keyboard = 0
         self.tw.keypress = ""
+
+
+    def prim_set(self, name, cmd, value=None):
+        """ Set a value and update the associated value blocks """
+        if value is not None:
+            cmd(value)
+            update_label_value(self.tw, name, value)
 
     def prim_right(self, value):
         self.tw.canvas.right(value)
