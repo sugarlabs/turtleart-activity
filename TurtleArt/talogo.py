@@ -270,6 +270,13 @@ def millis():
     return int(clock() * 1000)
 
 
+def set_prim(tw, name, cmd, value=None):
+    """ Set a value and update the associated value blocks """
+    if value is not None:
+        cmd(value)
+    update_label_value(tw, name, value)
+
+
 def update_label_value(tw, name, value=None):
     """ Update the label of value blocks to reflect current value """
     if tw.hide or not tw.interactive_mode:
@@ -285,7 +292,7 @@ def update_label_value(tw, name, value=None):
             valstring = str(value)
         for block in list:
             block.spr.set_label(BLOCK_NAMES[name][0] + ' = ' + valstring)
-
+            block.resize()
 
 class LogoCode:
     """ A class for parsing Logo code """
@@ -336,7 +343,7 @@ class LogoCode:
         'insertimage': [1, lambda self, x: self.insert_image(x, False)],
         'kbinput': [0, lambda self: self.prim_kbinput()],
         'keyboard': [0, lambda self: self.keyboard],
-        'left': [1, lambda self, x: self.tw.canvas.right(-x)],
+        'left': [1, lambda self, x: self.prim_right(-x)],
         'leftx': [0, lambda self: self.tw.leftx],
         'lpos': [0, lambda self: -self.tw.canvas.width / \
                     (self.tw.coord_scale * 2)],
@@ -369,7 +376,7 @@ class LogoCode:
         'readpixel': [0, lambda self: self.read_pixel()],
         'red': [0, lambda self: 0],
         'repeat': [2, self.prim_repeat, True],
-        'right': [1, lambda self, x: self.tw.canvas.right(x)],
+        'right': [1, lambda self, x: self.prim_right(x)],
         'rightx': [0, lambda self: self.tw.rightx],
         'rpos': [0, lambda self: self.tw.canvas.width / \
                     (self.tw.coord_scale * 2)],
@@ -377,17 +384,27 @@ class LogoCode:
         'savesvg': [1, lambda self, x: self.save_svg(x)],
         'scale': [0, lambda self: self.scale],
         'see': [0, lambda self: self.see()],
-        'setcolor': [1, lambda self, x: self.tw.canvas.setcolor(x)],
-        'setgray': [1, lambda self, x: self.tw.canvas.setgray(x)],
-        'seth': [1, lambda self, x: self.tw.canvas.seth(x)],
-        'setpensize': [1, lambda self, x: self.tw.canvas.setpensize(x)],
-        'setscale': [1, lambda self, x: self.set_scale(x)],
-        'setshade': [1, lambda self, x: self.tw.canvas.setshade(x)],
+
+        'setcolor': [1, lambda self, x: set_prim(self.tw, 'color',
+                                                 self.tw.canvas.setcolor, x)],
+        'setgray': [1, lambda self, x: set_prim(self.tw, 'gray',
+                                                self.tw.canvas.setgray, x)],
+        'seth': [1, lambda self, x: set_prim(self.tw, 'heading',
+                                             self.tw.canvas.seth, x)],
+        'setpensize': [1, lambda self, x: set_prim(self.tw, 'pensize',
+             self.tw.canvas.setpensize, x)],
+        'setscale': [1, lambda self, x: set_prim(self.tw, 'scale',
+                                                 self.set_scale, x)],
+        'setshade': [1, lambda self, x: set_prim(self.tw, 'shade',
+                                                 self.tw.canvas.setshade, x)],
+
         'settextcolor': [1, lambda self, x: self.tw.canvas.settextcolor(x)],
         'settextsize': [1, lambda self, x: self.tw.canvas.settextsize(x)],
+
         'setxy2': [2, lambda self, x, y: self.tw.canvas.setxy(x, y)],
         'setxy': [2, lambda self, x, y: self.tw.canvas.setxy(x, y,
                                             pendown=False)],
+
         'shade': [0, lambda self: self.tw.canvas.shade],
         'show': [1, lambda self, x: self.show(x, True)],
         'showaligned': [1,lambda self, x: self.show(x, False)],
@@ -839,7 +856,8 @@ class LogoCode:
         self.tw.set_polar(False)
         self.tw.set_cartesian(False)
         self.hidden_turtle = None
-        for name in ['box1', 'box2']:
+        for name in ['box1', 'box2', 'color', 'shade', 'gray', 'scale',
+                     'pensize', 'heading']:
             update_label_value(self.tw, name)
 
     def prim_start(self):
@@ -1073,6 +1091,10 @@ class LogoCode:
             except:
                 self.keyboard = 0
         self.tw.keypress = ""
+
+    def prim_right(self, value):
+        self.tw.canvas.right(value)
+        update_label_value(self.tw, 'heading', self.tw.canvas.heading)
 
     def prim_setbox(self, name, x, val):
         """ Define value of named box """
