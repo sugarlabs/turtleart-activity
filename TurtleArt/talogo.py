@@ -724,7 +724,6 @@ class LogoCode:
 
     def evalsym(self, token):
         """ Process primitive associated with symbol token """
-        self.debug_trace(token)
         self.undefined_check(token)
         oldcfun, oldarglist = self.cfun, self.arglist
         self.cfun, self.arglist = token, []
@@ -793,31 +792,6 @@ class LogoCode:
     def ijmp(self, fcn, *args):
         """ ijmp """
         self.step = fcn(*(args))
-
-    def debug_trace(self, token):
-        """ Display debugging information """
-        if self.trace:
-            if token.name in PALETTES[PALETTE_NAMES.index('turtle')]:
-                my_string = "%s\n%s=%d\n%s=%d\n%s=%d\n%s=%d" % \
-                    (token.name, _('xcor'), int(self.tw.canvas.xcor),
-                     _('ycor'), int(self.tw.canvas.ycor), _('heading'),
-                     int(self.tw.canvas.heading), _('scale'), int(self.scale))
-            elif token.name in PALETTES[PALETTE_NAMES.index('pen')]:
-                if self.tw.canvas.pendown:
-                    penstatus = _('pen down')
-                else:
-                    penstatus = _('pen up')
-                my_string = "%s\n%s\n%s=%d\n%s=%d\n%s=%.1f" % \
-                    (token.name, penstatus, _('color'),
-                     int(self.tw.canvas.color), _('shade'),
-                     int(self.tw.canvas.shade), _('pen size'),
-                     self.tw.canvas.pensize)
-            else:
-                my_string = "%s\n" % (token.name)
-                for k, v in self.boxes.iteritems():
-                    my_string += "%s: %s\n" % (k, str(v))
-            self.tw.showlabel('info', my_string)
-        return
 
     def undefined_check(self, token):
         """ Make sure token has a definition """
