@@ -36,7 +36,7 @@ from taconstants import EXPANDABLE, EXPANDABLE_BLOCKS, EXPANDABLE_ARGS, \
     COLLAPSIBLE_TOP_NO_ARM_NO_LABEL, COLLAPSIBLE_BOTTOM, PORTFOLIO_STYLE_2x2, \
     PORTFOLIO_STYLE_1x1, PORTFOLIO_STYLE_2x1, PORTFOLIO_STYLE_1x2, \
     STANDARD_STROKE_WIDTH, SELECTED_STROKE_WIDTH, SELECTED_COLOR, BOX_COLORS, \
-    BASIC_STYLE_EXTENDED_VERTICAL
+    BASIC_STYLE_EXTENDED_VERTICAL, CONSTANTS
 from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
 
@@ -160,7 +160,8 @@ class Block:
         if self.name not in EXPANDABLE and \
            self.name not in EXPANDABLE_BLOCKS and \
            self.name not in EXPANDABLE_ARGS and \
-           self.name not in ['string', 'sandwichtop', 'sandwichtop_no_label']:
+           self.name not in BOX_STYLE and \
+           self.name not in ['sandwichtop', 'sandwichtop_no_label']:
             for b in self.block_list.list:
                 if b.scale == self.scale and b.name == self.name:
                     copy_block = b
@@ -352,6 +353,10 @@ class Block:
                            str(v).replace('.', self.block_list.decimal_point))
                     else:
                         self._set_labels(i, str(v))
+        elif self.type == 'block' and self.name in CONSTANTS:
+                self._set_labels(0, BLOCK_NAMES[self.name][0] + ' = ' + \
+                                     str(CONSTANTS[self.name]))
+
         elif self.name in BLOCK_NAMES:
             for i, n in enumerate(BLOCK_NAMES[self.name]):
                 self._set_labels(i, n)

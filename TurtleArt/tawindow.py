@@ -54,7 +54,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
                         TURTLE_LAYER, EXPANDABLE_BLOCKS, COMPARE_STYLE, \
                         BOOLEAN_STYLE, EXPANDABLE_ARGS, NUMBER_STYLE, \
                         NUMBER_STYLE_PORCH, NUMBER_STYLE_BLOCK, \
-                        NUMBER_STYLE_VAR_ARG
+                        NUMBER_STYLE_VAR_ARG, CONSTANTS
 from talogo import LogoCode, stop_logo
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
@@ -207,16 +207,29 @@ class TurtleArtWindow():
         self.selected_turtle = None
         self.canvas = TurtleGraphics(self, self.width, self.height)
 
-        self.titlex = -(self.canvas.width * TITLEXY[0]) / \
-            (self.coord_scale * 2)
-        self.leftx = -(self.canvas.width * TITLEXY[0]) / \
-            (self.coord_scale * 2)
+        self.titlex = int(-(self.canvas.width * TITLEXY[0]) / \
+            (self.coord_scale * 2))
+        CONSTANTS['titlex'] = self.titlex
+        self.leftx = int(-(self.canvas.width * TITLEXY[0]) / \
+            (self.coord_scale * 2))
+        CONSTANTS['leftx'] = self.leftx        
         self.rightx = 0
-        self.titley = (self.canvas.height * TITLEXY[1]) / \
-            (self.coord_scale * 2)
-        self.topy = (self.canvas.height * (TITLEXY[1] - 0.125)) / \
-            (self.coord_scale * 2)
+        CONSTANTS['rightx'] = self.rightx
+        self.titley = int((self.canvas.height * TITLEXY[1]) / \
+            (self.coord_scale * 2))
+        CONSTANTS['titley'] = self.titley
+        self.topy = int((self.canvas.height * (TITLEXY[1] - 0.125)) / \
+            (self.coord_scale * 2))
+        CONSTANTS['topy'] = self.topy
         self.bottomy = 0
+        CONSTANTS['bottomy'] = self.bottomy
+        CONSTANTS['leftpos'] = int(-self.canvas.width / (self.coord_scale * 2))
+        CONSTANTS['toppos'] = int(self.canvas.height / (self.coord_scale * 2))
+        CONSTANTS['rightpos'] = int(self.canvas.width / (self.coord_scale * 2))
+        CONSTANTS['bottompos'] = int(-self.canvas.height / \
+                                          (self.coord_scale * 2))
+        CONSTANTS['width'] = int(self.canvas.width / self.coord_scale)
+        CONSTANTS['height'] = int(self.canvas.height / self.coord_scale)
 
         self.lc = LogoCode(self)
         self.saved_pictures = []

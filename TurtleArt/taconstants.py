@@ -278,6 +278,15 @@ BLOCKS_WITH_SKIN = ['journal', 'audio', 'description', 'nop', 'userdefined',
 PYTHON_SKIN = ['nop', 'userdefined', 'userdefined2args', 'userdefined3args']
 
 #
+# These blocks hold constants
+#
+CONSTANTS = {'leftpos':None, 'toppos':None, 'rightpos':None, 'bottompos':None,
+             'width':None, 'height':None, 'red':0, 'orange':10, 'yellow':20,
+             'green':40, 'cyan':50, 'blue':70, 'purple':90, 'titlex':None,
+             'titley':None, 'leftx':None, 'topy':None, 'rightx':None,
+             'bottomy':None}
+
+#
 # Block-name dictionary used for labels
 #
 BLOCK_NAMES = {
@@ -288,7 +297,7 @@ BLOCK_NAMES = {
     'back': [_('back')],
     'black': [_('black')],
     'blocks': [_('blocks')],
-    'blue': [_('blue') + ' = 70'],
+    'blue': [_('blue')],
     'bottompos': [_('bottom')],
     'bottomy': [_('picture bottom')],
     'box': [_('box')],
@@ -300,7 +309,7 @@ BLOCK_NAMES = {
     'color': [_('color')],
     'colors': [_('colors')],
     'comment': [_('comment')],
-    'cyan': [_('cyan') + ' = 50'],
+    'cyan': [_('cyan')],
     'decription': [' '],
     'division2': ['/'],
     'empty': [_('empty trash')],
@@ -313,7 +322,7 @@ BLOCK_NAMES = {
     'fullscreen': [_('full screen')],
     'gray': [_('gray')],
     'greater2': [">"],
-    'green': [_('green') + ' = 30'],
+    'green': [_('green')],
     'hat': [_('action')],
     'hat1': [_('action 1')],
     'hat2': [_('action 2')],
@@ -342,7 +351,7 @@ BLOCK_NAMES = {
     'not': [_('not')],
     'number': ['100'],
     'numbers': [_('numbers')],
-    'orange': [_('orange') + ' = 10'],
+    'orange': [_('orange')],
     'or2': [_('or')],
     'pen': [_('pen')],
     'pendown': [_('pen down')],
@@ -362,11 +371,11 @@ BLOCK_NAMES = {
     'printheap': [_('show heap')],
     'print': [_('print')],
     'product2': ['×'],
-    'purple': [_('purple') + ' = 90'],
+    'purple': [_('purple')],
     'push': [_('push')],
     'random': [_('random'), _('min'), _('max')],
     'readpixel': [_('read pixel')],
-    'red': [_('red') + ' = 0'],
+    'red': [_('red')],
     'remainder2': [_('mod')],
     'repeat': [' ', _('repeat')],
     'reskin': [_('turtle shell')],
@@ -441,7 +450,7 @@ BLOCK_NAMES = {
     'write': [_('write')],
     'xcor': [_('xcor')],
     'ycor': [_('ycor')],
-    'yellow': [_('yellow') + ' = 20']}
+    'yellow': [_('yellow')]}
 
 #
 # Logo primitives
