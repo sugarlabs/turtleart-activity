@@ -43,7 +43,7 @@ from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
 from gettext import gettext as _
 
 VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
-                'heading', 'xcor', 'ycor', 'pop']
+                'heading', 'xcor', 'ycor', 'pop', 'see', 'keyboard']
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -1038,7 +1038,8 @@ class LogoCode:
                                  'KP_Right': 3}[self.tw.keypress]
             except:
                 self.keyboard = 0
-        self.tw.keypress = ""
+        self._update_label_value('keyboard', self.keyboard)
+        self.tw.keypress = ''
 
     def _find_value_blocks(self):
         self.value_blocks = {}
@@ -1304,7 +1305,9 @@ class LogoCode:
         """ Read r, g, b from the canvas and return a corresponding palette
         color """
         r, g, b, a = self.tw.canvas.get_pixel()
-        return self.tw.canvas.get_color_index(r, g, b)
+        color_index = self.tw.canvas.get_color_index(r, g, b) 
+        self._update_label_value('see', color_index)
+        return color_index
 
     def read_pixel(self):
         """ Read r, g, b, a from the canvas and push b, g, r to the stack """
