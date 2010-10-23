@@ -806,7 +806,7 @@ class LogoCode:
         self.tw.set_cartesian(False)
         self.hidden_turtle = None
         for name in VALUE_BLOCKS:
-            self._update_label_value(name)
+            self.update_label_value(name)
 
     def prim_start(self):
         """ Start block: recenter """
@@ -1038,7 +1038,7 @@ class LogoCode:
                                  'KP_Right': 3}[self.tw.keypress]
             except:
                 self.keyboard = 0
-        self._update_label_value('keyboard', self.keyboard)
+        self.update_label_value('keyboard', self.keyboard)
         self.tw.keypress = ''
 
     def _find_value_blocks(self):
@@ -1047,7 +1047,7 @@ class LogoCode:
             self.value_blocks[name] = self.tw.block_list.get_similar_blocks(
                 'block', name)
 
-    def _update_label_value(self, name, value=None):
+    def update_label_value(self, name, value=None):
         """ Update the label of value blocks to reflect current value """
         if self.tw.hide or not self.tw.interactive_mode:
             return
@@ -1069,21 +1069,23 @@ class LogoCode:
         """ Set a value and update the associated value blocks """
         if value is not None:
             cmd(value)
-            self._update_label_value(name, value)
+            self.update_label_value(name, value)
 
     def prim_right(self, value):
         self.tw.canvas.right(value)
-        self._update_label_value('heading', self.tw.canvas.heading)
+        self.update_label_value('heading', self.tw.canvas.heading)
 
     def prim_move(self, cmd, value1, value2=None):
         if value2 is None:
             cmd(value1)
         else:
             cmd(value1, value2)
-        self._update_label_value('xcor', 
+        self.update_label_value('xcor', 
                            self.tw.canvas.xcor / self.tw.coord_scale)
-        self._update_label_value('ycor',
+        self.update_label_value('ycor',
                            self.tw.canvas.ycor / self.tw.coord_scale)
+        if len(self.value_blocks['see']) > 0:
+            self.see()
 
     def prim_setbox(self, name, x, val):
         """ Define value of named box """
@@ -1095,12 +1097,12 @@ class LogoCode:
             return
 
         self.boxes[name] = val
-        self._update_label_value(name, val)
+        self.update_label_value(name, val)
 
     def prim_push(self, val):
         """ Push value onto FILO """
         self.heap.append(val)
-        self._update_label_value('pop', val)
+        self.update_label_value('pop', val)
 
     def prim_pop(self):
         """ Pop value off of FILO """
@@ -1108,9 +1110,9 @@ class LogoCode:
             raise logoerror("#emptyheap")
         else:
             if len(self.heap) == 1:
-                self._update_label_value('pop')
+                self.update_label_value('pop')
             else:
-                self._update_label_value('pop', self.heap[-2])
+                self.update_label_value('pop', self.heap[-2])
             return self.heap.pop(-1)
 
     def empty_heap(self):
@@ -1306,7 +1308,7 @@ class LogoCode:
         color """
         r, g, b, a = self.tw.canvas.get_pixel()
         color_index = self.tw.canvas.get_color_index(r, g, b) 
-        self._update_label_value('see', color_index)
+        self.update_label_value('see', color_index)
         return color_index
 
     def read_pixel(self):
