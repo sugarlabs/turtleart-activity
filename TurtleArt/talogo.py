@@ -362,17 +362,17 @@ class LogoCode:
         'scale': [0, lambda self: self.scale],
         'see': [0, lambda self: self.see()],
         'setcolor': [1, lambda self, x: self.prim_set('color',
-                                                 self.tw.canvas.setcolor, x)],
+            self.tw.canvas.setcolor, x)],
         'setgray': [1, lambda self, x: self.prim_set('gray',
-                                                self.tw.canvas.setgray, x)],
+            self.tw.canvas.setgray, x)],
         'seth': [1, lambda self, x: self.prim_set('heading',
-                                             self.tw.canvas.seth, x)],
+            self.tw.canvas.seth, x)],
         'setpensize': [1, lambda self, x: self.prim_set('pensize',
-             self.tw.canvas.setpensize, x)],
+            self.tw.canvas.setpensize, x)],
         'setscale': [1, lambda self, x: self.prim_set('scale',
-                                                 self.set_scale, x)],
+            self.set_scale, x)],
         'setshade': [1, lambda self, x: self.prim_set('shade',
-                                                 self.tw.canvas.setshade, x)],
+            self.tw.canvas.setshade, x)],
         'settextcolor': [1, lambda self, x: self.tw.canvas.settextcolor(x)],
         'settextsize': [1, lambda self, x: self.tw.canvas.settextsize(x)],
         'setxy2': [2, lambda self, x, y: self.prim_move(self.tw.canvas.setxy,
@@ -1053,6 +1053,7 @@ class LogoCode:
         if value is None:
             for block in self.value_blocks[name]:
                 block.spr.set_label(BLOCK_NAMES[name][0])
+                block.resize()
         else:
             if type(value) == float:
                 valstring = str(round_int(value)).replace('.',
