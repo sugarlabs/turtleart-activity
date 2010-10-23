@@ -207,22 +207,16 @@ class TurtleArtWindow():
         self.selected_turtle = None
         self.canvas = TurtleGraphics(self, self.width, self.height)
 
-        self.titlex = int(-(self.canvas.width * TITLEXY[0]) / \
+        CONSTANTS['titlex'] = int(-(self.canvas.width * TITLEXY[0]) / \
             (self.coord_scale * 2))
-        CONSTANTS['titlex'] = self.titlex
-        self.leftx = int(-(self.canvas.width * TITLEXY[0]) / \
+        CONSTANTS['leftx'] = int(-(self.canvas.width * TITLEXY[0]) / \
             (self.coord_scale * 2))
-        CONSTANTS['leftx'] = self.leftx        
-        self.rightx = 0
-        CONSTANTS['rightx'] = self.rightx
-        self.titley = int((self.canvas.height * TITLEXY[1]) / \
+        CONSTANTS['rightx'] = 0
+        CONSTANTS['titley'] = int((self.canvas.height * TITLEXY[1]) / \
             (self.coord_scale * 2))
-        CONSTANTS['titley'] = self.titley
-        self.topy = int((self.canvas.height * (TITLEXY[1] - 0.125)) / \
+        CONSTANTS['topy'] = int((self.canvas.height * (TITLEXY[1] - 0.125)) / \
             (self.coord_scale * 2))
-        CONSTANTS['topy'] = self.topy
-        self.bottomy = 0
-        CONSTANTS['bottomy'] = self.bottomy
+        CONSTANTS['bottomy'] = 0
         CONSTANTS['leftpos'] = int(-self.canvas.width / (self.coord_scale * 2))
         CONSTANTS['toppos'] = int(self.canvas.height / (self.coord_scale * 2))
         CONSTANTS['rightpos'] = int(self.canvas.width / (self.coord_scale * 2))

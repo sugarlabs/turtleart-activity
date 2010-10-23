@@ -34,7 +34,7 @@ except:
     pass
 
 from taconstants import PALETTES, PALETTE_NAMES, TAB_LAYER, BLACK, WHITE, \
-    DEFAULT_SCALE, ICON_SIZE, BLOCK_NAMES
+    DEFAULT_SCALE, ICON_SIZE, BLOCK_NAMES, CONSTANTS
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
@@ -287,10 +287,9 @@ class LogoCode:
         'arc': [2, lambda self, x, y: self.prim_move(self.tw.canvas.arc, x, y)],
         'back': [1, lambda self, x: self.prim_move(self.tw.canvas.forward, -x)],
         'black': [0, lambda self: BLACK],
-        'blue': [0, lambda self: 70],
-        'bpos': [0, lambda self: -self.tw.canvas.height / \
-                    (self.tw.coord_scale * 2)],
-        'boty': [0, lambda self: self.tw.bottomy],
+        'blue': [0, lambda self: CONSTANTS['blue']],
+        'bpos': [0, lambda self: CONSTANTS['bottompos']],
+        'boty': [0, lambda self: CONSTANTS['bottomy']],
         'box1': [0, lambda self: self.boxes['box1']],
         'box': [1, lambda self, x: self.box(x)],
         'box2': [0, lambda self: self.boxes['box2']],
@@ -303,7 +302,7 @@ class LogoCode:
         'gray': [0, lambda self: self.tw.canvas.gray],
         'comment': [1, lambda self, x: self.prim_print(x, True)],
         'container': [1, lambda self, x: x],
-        'cyan': [0, lambda self: 50],
+        'cyan': [0, lambda self: CONSTANTS['cyan']],
         'define': [2, self.prim_define],
         'division': [2, lambda self, x, y: careful_divide(x, y)],
         'equal?': [2, lambda self,x, y: taequal(x, y)],
@@ -313,10 +312,10 @@ class LogoCode:
                                                       x)],
         'fullscreen': [0, lambda self: self.tw.set_fullscreen()],
         'greater?': [2, lambda self, x, y: tamore(x, y)],
-        'green': [0, lambda self: 30],
+        'green': [0, lambda self: CONSTANTS['green']],
         'heading': [0, lambda self: self.tw.canvas.heading],
         'hideblocks': [0, lambda self: self.tw.hideblocks()],
-        'hres': [0, lambda self: self.tw.canvas.width / self.tw.coord_scale],
+        'hres': [0, lambda self: CONSTANTS['width']],
         'id': [1, lambda self, x: identity(x)],
         'if': [2, self.prim_if, True],
         'ifelse': [3, self.prim_ifelse, True],
@@ -324,9 +323,8 @@ class LogoCode:
         'kbinput': [0, lambda self: self.prim_kbinput()],
         'keyboard': [0, lambda self: self.keyboard],
         'left': [1, lambda self, x: self.prim_right(-x)],
-        'leftx': [0, lambda self: self.tw.leftx],
-        'lpos': [0, lambda self: -self.tw.canvas.width / \
-                    (self.tw.coord_scale * 2)],
+        'leftx': [0, lambda self: CONSTANTS['leftx']],
+        'lpos': [0, lambda self: CONSTANTS['leftpos']],
         'less?': [2, lambda self, x, y: taless(x, y)],
         'minus': [2, lambda self, x, y: taminus(x, y)],
         'mod': [2, lambda self, x, y: tamod(x, y)],
@@ -339,7 +337,7 @@ class LogoCode:
         'nop2': [0, lambda self: None],
         'nop3': [1, lambda self, x: None],
         'not': [1, lambda self, x: not x],
-        'orange': [0, lambda self: 10],
+        'orange': [0, lambda self: CONSTANTS['orange']],
         'or': [2, lambda self, x, y: taor(x, y)],
         'pendown': [0, lambda self: self.tw.canvas.setpen(True)],
         'pensize': [0, lambda self: self.tw.canvas.pensize],
@@ -350,16 +348,15 @@ class LogoCode:
         'print': [1, lambda self, x: self.prim_print(x, False)],
         'printheap': [0, lambda self: self.prim_print_heap()],
         'product': [2, lambda self, x, y: taproduct(x, y)],
-        'purple': [0, lambda self: 90],
+        'purple': [0, lambda self: CONSTANTS['purple']],
         'push': [1, lambda self, x: self.prim_push(x)],
         'random': [2, lambda self, x, y: tarandom(x, y)],
         'readpixel': [0, lambda self: self.read_pixel()],
-        'red': [0, lambda self: 0],
+        'red': [0, lambda self: CONSTANTS['red']],
         'repeat': [2, self.prim_repeat, True],
         'right': [1, lambda self, x: self.prim_right(x)],
-        'rightx': [0, lambda self: self.tw.rightx],
-        'rpos': [0, lambda self: self.tw.canvas.width / \
-                    (self.tw.coord_scale * 2)],
+        'rightx': [0, lambda self: CONSTANTS['rightx']],
+        'rpos': [0, lambda self: CONSTANTS['rightpos']],
         'savepix': [1, lambda self, x: self.save_picture(x)],
         'savesvg': [1, lambda self, x: self.save_svg(x)],
         'scale': [0, lambda self: self.scale],
@@ -409,23 +406,22 @@ class LogoCode:
         'textsize': [0, lambda self: self.tw.textsize],
         'titlex': [0, lambda self: self.tw.titlex],
         'titley': [0, lambda self: self.tw.titley],
-        'topy': [0, lambda self: self.tw.topy],
-        'tpos': [0, lambda self: self.tw.canvas.height / \
-                    (self.tw.coord_scale * 2)],
+        'topy': [0, lambda self: CONSTANTS['topy']],
+        'tpos': [0, lambda self: CONSTANTS['toppos']],
         'turtle': [1, lambda self, x: self.tw.canvas.set_turtle(x)],
         'userdefined': [1, lambda self, x: self.prim_myblock([x])],
         'userdefined2': [2, lambda self, x, y: self.prim_myblock([x, y])],
         'userdefined3': [3, lambda self, x, y,
                          z: self.prim_myblock([x, y, z])],
         'video': [1, lambda self, x: self.play_movie(x)],
-        'vres': [0, lambda self: self.tw.canvas.height / self.tw.coord_scale],
+        'vres': [0, lambda self: CONSTANTS['height']],
         'wait': [1, self.prim_wait, True],
         # 'while': [2, self.prim_while, True],
         'white': [0, lambda self: WHITE],
         'write': [2, lambda self, x, y: self.write(self, x, y)],
         'xcor': [0, lambda self: self.tw.canvas.xcor / self.tw.coord_scale],
         'ycor': [0, lambda self: self.tw.canvas.ycor / self.tw.coord_scale],
-        'yellow': [0, lambda self: 20]}
+        'yellow': [0, lambda self: CONSTANTS['yellow']]}
 
         for p in iter(DEFPRIM):
             if len(DEFPRIM[p]) == 2:
