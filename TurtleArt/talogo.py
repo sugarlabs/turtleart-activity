@@ -43,7 +43,7 @@ from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
 from gettext import gettext as _
 
 VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
-                'heading', 'xcor', 'ycor']
+                'heading', 'xcor', 'ycor', 'pop']
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -1099,13 +1099,18 @@ class LogoCode:
     def prim_push(self, val):
         """ Push value onto FILO """
         self.heap.append(val)
+        self._update_label_value('pop', val)
 
     def prim_pop(self):
         """ Pop value off of FILO """
-        try:
-            return self.heap.pop(-1)
-        except:
+        if len(self.heap) == 0:
             raise logoerror("#emptyheap")
+        else:
+            if len(self.heap) == 1:
+                self._update_label_value('pop')
+            else:
+                self._update_label_value('pop', self.heap[-2])
+            return self.heap.pop(-1)
 
     def empty_heap(self):
         """ Empty FILO """
