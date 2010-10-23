@@ -1178,8 +1178,15 @@ class TurtleArtWindow():
         if (dx * dx) + (dy * dy) > ((w * w) + (h * h)) / 6:
             self.drag_turtle = ('turn',
                 self.canvas.heading - atan2(dy, dx) / DEGTOR, 0)
+            self.lc.update_label_value('heading', self.canvas.heading)
         else:
             self.drag_turtle = ('move', x - tx, y - ty)
+            self.lc.update_label_value('xcor',
+                                        self.canvas.xcor / self.coord_scale)
+            self.lc.update_label_value('ycor',
+                                        self.canvas.ycor / self.coord_scale)
+            if len(self.lc.value_blocks['see']) > 0:
+                self.lc.see()
 
     def _move_cb(self, win, event):
         x, y = xy(event)
