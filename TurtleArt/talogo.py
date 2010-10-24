@@ -1049,7 +1049,8 @@ class LogoCode:
 
     def update_label_value(self, name, value=None):
         """ Update the label of value blocks to reflect current value """
-        if self.tw.hide or not self.tw.interactive_mode:
+        if self.tw.hide or not self.tw.interactive_mode or \
+           not hasattr(self, 'value_blocks'):
             return
         if value is None:
             for block in self.value_blocks[name]:
