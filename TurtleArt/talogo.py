@@ -284,7 +284,8 @@ class LogoCode:
         DEFPRIM = {
         '(': [1, lambda self, x: self.prim_opar(x)],
         'and': [2, lambda self, x, y: taand(x, y)],
-        'arc': [2, lambda self, x, y: self.prim_move(self.tw.canvas.arc, x, y)],
+        'arc': [2, lambda self, x, y: self.prim_move(self.tw.canvas.arc, x, y,
+                                                     update_heading=True)],
         'back': [1, lambda self, x: self.prim_move(self.tw.canvas.forward, -x)],
         'black': [0, lambda self: BLACK],
         'blue': [0, lambda self: CONSTANTS['blue']],
@@ -450,6 +451,7 @@ class LogoCode:
 
         self.keyboard = 0
         self.trace = 0
+        self.update_values = False
         self.gplay = None
         self.ag = None
         self.filepath = None
@@ -483,7 +485,11 @@ class LogoCode:
         self.stacks['stack2'] = None
         self.tw.saving_svg = False
 
-        self._find_value_blocks()
+        self.find_value_blocks()
+        if self.trace > 0:
+            self.update_values = True
+        else:
+            self.update_values = False
 
         for b in blocks:
             b.unhighlight()
@@ -1041,7 +1047,8 @@ class LogoCode:
         self.update_label_value('keyboard', self.keyboard)
         self.tw.keypress = ''
 
-    def _find_value_blocks(self):
+    def find_value_blocks(self):
+        """ Find any value blocks that may need label updates """
         self.value_blocks = {}
         for name in VALUE_BLOCKS:
             self.value_blocks[name] = self.tw.block_list.get_similar_blocks(
@@ -1056,7 +1063,7 @@ class LogoCode:
             for block in self.value_blocks[name]:
                 block.spr.set_label(BLOCK_NAMES[name][0])
                 block.resize()
-        else:
+        elif self.update_values:
             if type(value) == float:
                 valstring = str(round_int(value)).replace('.',
                                                           self.tw.decimal_point)
@@ -1076,7 +1083,7 @@ class LogoCode:
         self.tw.canvas.right(value)
         self.update_label_value('heading', self.tw.canvas.heading)
 
-    def prim_move(self, cmd, value1, value2=None):
+    def prim_move(self, cmd, value1, value2=None, update_heading=False):
         if value2 is None:
             cmd(value1)
         else:
@@ -1085,6 +1092,8 @@ class LogoCode:
                            self.tw.canvas.xcor / self.tw.coord_scale)
         self.update_label_value('ycor',
                            self.tw.canvas.ycor / self.tw.coord_scale)
+        if update_heading:
+            self.update_label_value('heading', self.tw.canvas.heading)
         if len(self.value_blocks['see']) > 0:
             self.see()
 
