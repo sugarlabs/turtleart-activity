@@ -1175,18 +1175,14 @@ class TurtleArtWindow():
         dx = x - tx - w
         dy = y - ty - h
         # if x, y is near the edge, rotate
+        if not hasattr(self.lc, 'value_blocks'):
+            self.lc.find_value_blocks()
+        self.lc.update_values = True
         if (dx * dx) + (dy * dy) > ((w * w) + (h * h)) / 6:
             self.drag_turtle = ('turn',
                 self.canvas.heading - atan2(dy, dx) / DEGTOR, 0)
-            self.lc.update_label_value('heading', self.canvas.heading)
         else:
             self.drag_turtle = ('move', x - tx, y - ty)
-            self.lc.update_label_value('xcor',
-                                        self.canvas.xcor / self.coord_scale)
-            self.lc.update_label_value('ycor',
-                                        self.canvas.ycor / self.coord_scale)
-            if len(self.lc.value_blocks['see']) > 0:
-                self.lc.see()
 
     def _move_cb(self, win, event):
         x, y = xy(event)
@@ -1211,6 +1207,7 @@ class TurtleArtWindow():
                 dy = y - sy - self.active_turtle.spr.rect.height / 2
                 self.canvas.seth(int(dragx + atan2(dy, dx) / DEGTOR + 5) / \
                                      10 * 10)
+                self.lc.update_label_value('heading', self.canvas.heading)
 
         # If we are hoving, show popup help.
         elif self.drag_group is None:
@@ -1361,6 +1358,7 @@ class TurtleArtWindow():
                     self._move_turtle(0, 0)
                     self.canvas.heading = 0
                     self.canvas.turn_turtle()
+                    self.lc.update_label_value('heading', self.canvas.heading)
                 else:
                     self.selected_turtle.hide()
                     self.turtles.remove_from_dict(k)
@@ -1416,6 +1414,12 @@ class TurtleArtWindow():
         if self.running_sugar:
             self.display_coordinates()
             self.selected_turtle.spr.set_layer(TURTLE_LAYER)
+            self.lc.update_label_value('xcor',
+                                       self.canvas.xcor / self.coord_scale)
+            self.lc.update_label_value('ycor',
+                                       self.canvas.ycor / self.coord_scale)
+            if len(self.lc.value_blocks['see']) > 0:
+                self.lc.see()
 
     def _click_block(self, x, y):
         """ Click block: lots of special cases to handle... """
