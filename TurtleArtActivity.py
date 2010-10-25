@@ -371,7 +371,7 @@ class TurtleArtActivity(activity.Activity):
     def do_step_cb(self, button):
         """ Callback for step button (turtle). """
         self.step_button.set_icon("run-slowon")
-        self.tw.lc.trace = 0
+        self.tw.lc.trace = 1
         self.tw.run_button(3)
         gobject.timeout_add(1000, self.step_button.set_icon, "run-slowoff")
 
@@ -379,7 +379,7 @@ class TurtleArtActivity(activity.Activity):
         """ Callback for debug button (bug). """
         self.debug_button.set_icon("debugon")
         self.tw.lc.trace = 1
-        self.tw.run_button(6)
+        self.tw.run_button(9)
         gobject.timeout_add(1000, self.debug_button.set_icon, "debugoff")
 
     def do_stop_cb(self, button):
