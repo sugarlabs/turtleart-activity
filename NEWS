@@ -1,3 +1,7 @@
+102
+
+* fixed bug with refactoring of depreciated setxy block
+
 101
 
 * set text color to foreground color (#2448)
