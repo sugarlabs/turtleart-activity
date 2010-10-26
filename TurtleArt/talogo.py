@@ -284,8 +284,7 @@ class LogoCode:
         DEFPRIM = {
         '(': [1, lambda self, x: self._prim_opar(x)],
         'and': [2, lambda self, x, y: _and(x, y)],
-        'arc': [2, lambda self, x, y: self._prim_move(self.tw.canvas.arc, x, y,
-                                                     update_heading=True)],
+        'arc': [2, lambda self, x, y: self._prim_arc(self.tw.canvas.arc, x, y)],
         'back': [1, lambda self, x: self._prim_move(self.tw.canvas.forward,
                                                     -x)],
         'black': [0, lambda self: BLACK],
@@ -406,8 +405,8 @@ class LogoCode:
                     x, y, z, a, b)],
         'textcolor': [0, lambda self: self.tw.canvas.textcolor],
         'textsize': [0, lambda self: self.tw.textsize],
-        'titlex': [0, lambda self: self.tw.titlex],
-        'titley': [0, lambda self: self.tw.titley],
+        'titlex': [0, lambda self: CONSTANTS['titlex']],
+        'titley': [0, lambda self: CONSTANTS['titley']],
         'topy': [0, lambda self: CONSTANTS['topy']],
         'tpos': [0, lambda self: CONSTANTS['toppos']],
         'turtle': [1, lambda self, x: self.tw.canvas.set_turtle(x)],
@@ -1084,17 +1083,26 @@ class LogoCode:
         self.tw.canvas.right(value)
         self.update_label_value('heading', self.tw.canvas.heading)
 
-    def _prim_move(self, cmd, value1, value2=None, update_heading=False):
+    def _prim_move(self, cmd, value1, value2=None, pendown=True):
         if value2 is None:
             cmd(value1)
         else:
-            cmd(value1, value2)
+            print cmd, value1, value2, pendown
+            cmd(value1, value2, pendown=pendown)
         self.update_label_value('xcor', 
                            self.tw.canvas.xcor / self.tw.coord_scale)
         self.update_label_value('ycor',
                            self.tw.canvas.ycor / self.tw.coord_scale)
-        if update_heading:
-            self.update_label_value('heading', self.tw.canvas.heading)
+        if len(self.value_blocks['see']) > 0:
+            self._see()
+
+    def _prim_arc(self, cmd, value1, value2):
+        cmd(value1, value2)
+        self.update_label_value('xcor', 
+                           self.tw.canvas.xcor / self.tw.coord_scale)
+        self.update_label_value('ycor',
+                           self.tw.canvas.ycor / self.tw.coord_scale)
+        self.update_label_value('heading', self.tw.canvas.heading)
         if len(self.value_blocks['see']) > 0:
             self._see()
 
