@@ -804,8 +804,8 @@ def get_hardware():
                 return XO1
         else:
             return UNKNOWN
-    elif path.exists('/etc/olpc-release') or \
-         path.exists('/sys/power/olpc-pm'):
+    elif os.path.exists('/etc/olpc-release') or \
+         os.path.exists('/sys/power/olpc-pm'):
         return XO1
     else:
         return UNKNOWN
