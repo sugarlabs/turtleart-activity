@@ -258,13 +258,17 @@ def _identity(x):
     return(x)
 
 
-def _avg(array):
+def _avg(array, abs_value=False):
     """ Calc. the average value of an array """
     if len(array) == 0:
         return 0
     sum = 0
-    for a in array:
-        sum += a
+    if abs_value:
+        for a in array:
+            sum += abs(a)
+    else:
+        for a in array:
+            sum += a
     return float(sum) / len(array)
 
 
@@ -937,10 +941,10 @@ class LogoCode:
     def _prim_ifelse(self, boolean, list1, list2):
         """ If bool, do list1, else do list2 """
         if boolean:
-            self.ijmp(self._evline, list1[:])
+            self._ijmp(self._evline, list1[:])
             yield True
         else:
-            self.ijmp(self._evline, list2[:])
+            self._ijmp(self._evline, list2[:])
             yield True
 
     def _prim_opar(self, val):
@@ -1378,7 +1382,7 @@ class LogoCode:
         """ return mic in value """
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
-            return float(_avg(buf)) / 164 # scale from -100 to 100
+            return float(_avg(buf, abs_value=True)) / 164 # scale from 0 to 100
         else:
             return 0
 
