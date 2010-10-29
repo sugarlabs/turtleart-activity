@@ -1082,7 +1082,7 @@ class LogoCode:
                 'block', name)
 
     def find_sensor_blocks(self):
-        """ Find any audio/data sensor blocks """
+        """ Find any sensor blocks and set the appropriate sensor type """
         for name in ['volume', 'pitch', 'resistance', 'voltage']:
             if len(self.tw.block_list.get_similar_blocks('block', name)):
                 if name in ['volume', 'pitch']:
@@ -1380,6 +1380,7 @@ class LogoCode:
 
     def _get_volume(self):
         """ return mic in value """
+        #TODO: Adjust gain for different HW
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
             return float(_avg(buf, abs_value=True)) / 164 # scale from 0 to 100
@@ -1387,13 +1388,13 @@ class LogoCode:
             return 0
 
     def _get_pitch(self):
-        """ return frequence of mic in value """
+        """ return index of max value in fft of mic in values """
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
             r = []
             for j in rfft(buf):
                 r.append(float(j))
-            return max(r)
+            return r.index(max(r))
         else:
             return 0
 
