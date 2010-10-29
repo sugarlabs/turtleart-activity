@@ -24,6 +24,7 @@
 import gtk
 from time import clock
 from math import sqrt
+from numpy.fft import rfft
 from random import uniform
 from operator import isNumberType
 from UserDict import UserDict
@@ -257,6 +258,16 @@ def _identity(x):
     return(x)
 
 
+def _avg(array):
+    """ Calc. the average value of an array """
+    if len(array) == 0:
+        return 0
+    sum = 0
+    for a in array:
+        sum += a
+    return float(sum) / len(array)
+
+
 def stop_logo(tw):
     """ Stop logo is called from the Stop button on the toolbar """
     tw.step_time = 0
@@ -298,7 +309,7 @@ class LogoCode:
         'bullet': [1, self._prim_bullet, True],
         'bulletlist': [1, self._prim_list, True],
         'cartesian': [0, lambda self: self.tw.set_cartesian(True)],
-        'clean': [0, lambda self: self._prim_clear()],
+        'clean': [0, lambda self: self.prim_clear()],
         'clearheap': [0, lambda self: self._empty_heap()],
         'color': [0, lambda self: self.tw.canvas.color],
         'gray': [0, lambda self: self.tw.canvas.gray],
@@ -815,7 +826,7 @@ class LogoCode:
     # Primitives
     #
 
-    def _prim_clear(self):
+    def prim_clear(self):
         """ Clear screen """
         stop_media(self)
         self.tw.canvas.clearscreen()
@@ -1367,16 +1378,18 @@ class LogoCode:
         """ return mic in value """
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
-            return float(buf[0]) / 164 # scale from -100 to 100
+            return float(_avg(buf)) / 164 # scale from -100 to 100
         else:
             return 0
 
     def _get_pitch(self):
         """ return frequence of mic in value """
-        # TODO: Calculate FFT
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
-            return float(buf[0]) / 164 # scale from -100 to 100
+            r = []
+            for j in rfft(buf):
+                r.append(float(j))
+            return max(r)
         else:
             return 0
 
@@ -1384,7 +1397,7 @@ class LogoCode:
         """ return resistance sensor value """
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
-            return float(buf[0]) / 164 # scale from -100 to 100
+            return float(_avg(buf))
         else:
             return 0
 
@@ -1392,7 +1405,7 @@ class LogoCode:
         """ return voltage sensor value """
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
-            return float(buf[0]) / 164 # scale from -100 to 100
+            return float(_avg(buf))
         else:
             return 0
 
