@@ -22,7 +22,7 @@
 #THE SOFTWARE.
 
 import gtk
-from time import clock
+from time import clock, sleep
 from math import sqrt
 from numpy.fft import rfft
 from random import uniform
@@ -850,7 +850,8 @@ class LogoCode:
         """ Show the turtle while we wait """
         self.tw.active_turtle.show()
         endtime = _millisecond() + self._int(time * 1000)
-        while _millisecond()<endtime:
+        sleep(time)
+        while _millisecond() < endtime:
             yield True
         self.tw.active_turtle.hide()
         self._ireturn()
