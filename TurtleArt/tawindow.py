@@ -244,12 +244,6 @@ class TurtleArtWindow():
             if self.hw in [XO1, XO15]:
                 PALETTES[PALETTE_NAMES.index('sensor')].append('resistance')
                 PALETTES[PALETTE_NAMES.index('sensor')].append('voltage')
-            if self.hw == XO15:
-                self.audiograb = AudioGrab_XO15(self.new_buffer, self)
-            elif self.hw == XO1:
-                self.audiograb = AudioGrab_XO1(self.new_buffer, self)
-            else:
-                self.audiograb = AudioGrab_Unknown(self.new_buffer, self)
             self.audio_started = False
 
     def new_buffer(self, buf):
@@ -336,11 +330,18 @@ class TurtleArtWindow():
         """ Start grabbing audio if there is an audio block in use """
         if len(self.block_list.get_similar_blocks('block', 'volume')) > 0 or \
            len(self.block_list.get_similar_blocks('block', 'pitch')) > 0 or \
-           len(self.block_list.get_similar_blocks('block', 'resistance')) > 0 or \
+           len(self.block_list.get_similar_blocks('block',
+                                                  'resistance')) > 0 or \
            len(self.block_list.get_similar_blocks('block', 'voltage')) > 0:
             if self.audio_started:
                 self.audiograb.resume_grabbing()
             else:
+                if self.hw == XO15:
+                    self.audiograb = AudioGrab_XO15(self.new_buffer, self)
+                elif self.hw == XO1:
+                    self.audiograb = AudioGrab_XO1(self.new_buffer, self)
+                else:
+                    self.audiograb = AudioGrab_Unknown(self.new_buffer, self)
                 self.audiograb.start_grabbing()
                 self.audio_started = True
 
