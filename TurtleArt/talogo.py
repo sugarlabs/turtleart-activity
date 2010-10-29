@@ -34,7 +34,8 @@ except:
     pass
 
 from taconstants import PALETTES, PALETTE_NAMES, TAB_LAYER, BLACK, WHITE, \
-    DEFAULT_SCALE, ICON_SIZE, BLOCK_NAMES, CONSTANTS
+    DEFAULT_SCALE, ICON_SIZE, BLOCK_NAMES, CONSTANTS, SENSOR_DC_NO_BIAS, \
+    SENSOR_DC_BIAS
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
@@ -343,6 +344,7 @@ class LogoCode:
         'pendown': [0, lambda self: self.tw.canvas.setpen(True)],
         'pensize': [0, lambda self: self.tw.canvas.pensize],
         'penup': [0, lambda self: self.tw.canvas.setpen(False)],
+        'pitch': [0, lambda self: self._get_pitch()],
         'plus': [2, lambda self, x, y: _plus(x, y)],
         'polar': [0, lambda self: self.tw.set_polar(True)],
         'pop': [0, lambda self: self._prim_pop()],
@@ -355,6 +357,7 @@ class LogoCode:
         'readpixel': [0, lambda self: self._read_pixel()],
         'red': [0, lambda self: CONSTANTS['red']],
         'repeat': [2, self._prim_repeat, True],
+        'resistance': [0, lambda self: self._get_resistance()],
         'right': [1, lambda self, x: self._prim_right(x)],
         'rightx': [0, lambda self: CONSTANTS['rightx']],
         'rpos': [0, lambda self: CONSTANTS['rightpos']],
@@ -415,9 +418,10 @@ class LogoCode:
         'userdefined3': [3, lambda self, x, y,
                          z: self._prim_myblock([x, y, z])],
         'video': [1, lambda self, x: self._play_movie(x)],
+        'voltage': [0, lambda self: self._get_voltage()],
+        'volume': [0, lambda self: self._get_volume()],
         'vres': [0, lambda self: CONSTANTS['height']],
         'wait': [1, self._prim_wait, True],
-        # 'while': [2, self._prim_while, True],
         'white': [0, lambda self: WHITE],
         'write': [2, lambda self, x, y: self._write(self, x, y)],
         'xcor': [0, lambda self: self.tw.canvas.xcor / self.tw.coord_scale],
@@ -463,6 +467,13 @@ class LogoCode:
 
         self.scale = DEFAULT_SCALE
 
+        ### sensor stuff
+        self.max_samples = 115
+        self.input_step = 1
+        from ringbuffer import RingBuffer1d
+        self.ringbuffer = RingBuffer1d(self.max_samples, dtype='int16')
+        self.fftx = []
+
     def _def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
         sym = self._intern(name)
@@ -486,6 +497,7 @@ class LogoCode:
         self.tw.saving_svg = False
 
         self.find_value_blocks()
+        self.find_sensor_blocks()
         if self.trace > 0:
             self.update_values = True
         else:
@@ -510,7 +522,7 @@ class LogoCode:
 
         code = self._blocks_to_code(blk)
         if run_flag:
-            print "running code: %s" % (code)
+            _logger.debug("running code: %s" % (code))
             self._setup_cmd(code)
             if not self.tw.hide:
                 self.tw.display_coordinates()
@@ -727,7 +739,7 @@ class LogoCode:
             self.arglist.append(self.iresult)
         if self.cfun.rprim:
             if type(self.cfun.fcn) == self.listtype:
-                print "evalsym rprim list: ", token
+                _logger.debug("evalsym rprim list: %s" % (str(token)))
                 self._icall(self._ufuncall, self.cfun.fcn)
                 yield True
             else:
@@ -1054,6 +1066,20 @@ class LogoCode:
             self.value_blocks[name] = self.tw.block_list.get_similar_blocks(
                 'block', name)
 
+    def find_sensor_blocks(self):
+        """ Find any audio/data sensor blocks """
+        for name in ['volume', 'pitch', 'resistance', 'voltage']:
+            if len(self.tw.block_list.get_similar_blocks('block', name)):
+                if name in ['volume', 'pitch']:
+                    self.tw.audiograb.set_sensor_type()
+                    return
+                elif name == 'resistance':
+                    self.tw.audiograb.set_sensor_type(SENSOR_DC_BIAS)
+                    return
+                elif name == 'voltage':
+                    self.tw.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
+                    return
+
     def update_label_value(self, name, value=None):
         """ Update the label of value blocks to reflect current value """
         if self.tw.hide or not self.tw.interactive_mode or \
@@ -1080,15 +1106,15 @@ class LogoCode:
             self.update_label_value(name, value)
 
     def _prim_right(self, value):
-        self.tw.canvas.right(value)
+        self.tw.canvas.right(float(value))
         self.update_label_value('heading', self.tw.canvas.heading)
 
     def _prim_move(self, cmd, value1, value2=None, pendown=True):
         if value2 is None:
             cmd(value1)
         else:
-            print cmd, value1, value2, pendown
-            cmd(value1, value2, pendown=pendown)
+            # print cmd, value1, value2, pendown
+            cmd(float(value1), float(value2), pendown=pendown)
         self.update_label_value('xcor', 
                            self.tw.canvas.xcor / self.tw.coord_scale)
         self.update_label_value('ycor',
@@ -1097,7 +1123,7 @@ class LogoCode:
             self._see()
 
     def _prim_arc(self, cmd, value1, value2):
-        cmd(value1, value2)
+        cmd(float(value1), float(value2))
         self.update_label_value('xcor', 
                            self.tw.canvas.xcor / self.tw.coord_scale)
         self.update_label_value('ycor',
@@ -1236,7 +1262,7 @@ class LogoCode:
                     dsobject = datastore.get(audio[6:])
                     play_audio(self, dsobject.file_path)
                 except:
-                    print "Couldn't open id: " + str(audio[6:])
+                    _logger.debug("Couldn't open id: %s" % (str(audio[6:])))
         else:
             play_audio(self, audio[6:])
 
@@ -1310,14 +1336,14 @@ class LogoCode:
                         text = str(dsobject.metadata['description'])
                     dsobject.destroy()
                 except:
-                    print "no description in %s" % (media[6:])
+                    _logger.debug("no description in %s" % (media[6:]))
             else:
                 try:
                     f = open(media[6:], 'r')
                     text = f.read()
                     f.close()
                 except:
-                    print "no text in %s?" % (media[6:])
+                    _logger.debug("no text in %s?" % (media[6:]))
             if text is not None:
                 self.tw.canvas.draw_text(text, int(x), int(y),
                                          self.body_height, int(w))
@@ -1336,6 +1362,39 @@ class LogoCode:
         self.heap.append(b)
         self.heap.append(g)
         self.heap.append(r)
+
+    def _get_volume(self):
+        """ return mic in value """
+        buf = self.ringbuffer.read(None, self.input_step)
+        if len(buf) > 0:
+            return float(buf[0]) / 164 # scale from -100 to 100
+        else:
+            return 0
+
+    def _get_pitch(self):
+        """ return frequence of mic in value """
+        # TODO: Calculate FFT
+        buf = self.ringbuffer.read(None, self.input_step)
+        if len(buf) > 0:
+            return float(buf[0]) / 164 # scale from -100 to 100
+        else:
+            return 0
+
+    def _get_resistance(self):
+        """ return resistance sensor value """
+        buf = self.ringbuffer.read(None, self.input_step)
+        if len(buf) > 0:
+            return float(buf[0]) / 164 # scale from -100 to 100
+        else:
+            return 0
+
+    def _get_voltage(self):
+        """ return voltage sensor value """
+        buf = self.ringbuffer.read(None, self.input_step)
+        if len(buf) > 0:
+            return float(buf[0]) / 164 # scale from -100 to 100
+        else:
+            return 0
 
     # Depreciated block methods
 

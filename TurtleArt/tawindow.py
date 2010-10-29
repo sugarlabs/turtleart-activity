@@ -54,7 +54,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
                         TURTLE_LAYER, EXPANDABLE_BLOCKS, COMPARE_STYLE, \
                         BOOLEAN_STYLE, EXPANDABLE_ARGS, NUMBER_STYLE, \
                         NUMBER_STYLE_PORCH, NUMBER_STYLE_BLOCK, \
-                        NUMBER_STYLE_VAR_ARG, CONSTANTS
+                        NUMBER_STYLE_VAR_ARG, CONSTANTS, XO1, XO15, UNKNOWN
 from talogo import LogoCode, stop_logo
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
@@ -67,10 +67,13 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
                     find_sandwich_bottom, restore_stack, collapse_stack, \
                     collapsed, collapsible, hide_button_hit, show_button_hit, \
                     arithmetic_check, xy, find_block_to_run, find_top_block, \
-                    find_start_stack, find_group, find_blk_below, olpc_xo_1, \
-                    dock_dx_dy, data_to_string, journal_check, chooser
+                    find_start_stack, find_group, find_blk_below, \
+                    dock_dx_dy, data_to_string, journal_check, chooser, \
+                    get_hardware
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
+from audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15
+
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -133,7 +136,10 @@ class TurtleArtWindow():
             self.decimal_point = '.'
 
         self.orientation = HORIZONTAL_PALETTE
-        if olpc_xo_1():
+
+        self.hw = get_hardware()
+        _logger.debug('running on %s hardware' % (self.hw))
+        if self.hw in (XO1, XO15):
             self.lead = 1.0
             self.scale = 0.67
             self.color_mode = '565'
@@ -228,11 +234,28 @@ class TurtleArtWindow():
         self.lc = LogoCode(self)
         self.saved_pictures = []
 
+        self.block_operation = ''
+
         if self.interactive_mode:
             self._setup_misc()
             self._show_toolbar_palette(0, False)
 
-        self.block_operation = ''
+            # setup sound/sensor grab
+            if self.hw in [XO1, XO15]:
+                PALETTES[PALETTE_NAMES.index('sensor')].append('resistance')
+                PALETTES[PALETTE_NAMES.index('sensor')].append('voltage')
+            if self.hw == XO15:
+                self.audiograb = AudioGrab_XO15(self.new_buffer, self)
+            elif self.hw == XO1:
+                self.audiograb = AudioGrab_XO1(self.new_buffer, self)
+            else:
+                self.audiograb = AudioGrab_Unknown(self.new_buffer, self)
+            self.audio_started = False
+
+    def new_buffer(self, buf):
+        """ Append a new buffer to the ringbuffer """
+        self.lc.ringbuffer.append(buf)
+        return True
 
     def _setup_events(self):
         """ Register the events we listen to. """
@@ -309,10 +332,25 @@ class TurtleArtWindow():
         self.lc.prim_clear()
         self.display_coordinates()
 
+    def _start_audiograb(self):
+        """ Start grabbing audio if there is an audio block in use """
+        if len(self.block_list.get_similar_blocks('block', 'volume')) > 0 or \
+           len(self.block_list.get_similar_blocks('block', 'pitch')) > 0 or \
+           len(self.block_list.get_similar_blocks('block', 'resistance')) > 0 or \
+           len(self.block_list.get_similar_blocks('block', 'voltage')) > 0:
+            if self.audio_started:
+                self.audiograb.resume_grabbing()
+            else:
+                self.audiograb.start_grabbing()
+                self.audio_started = True
+
     def run_button(self, time):
         """ Run turtle! """
         if self.running_sugar:
             self.activity.recenter()
+
+        if self.interactive_mode:
+            self._start_audiograb()
 
         # Look for a 'start' block
         for blk in self.just_blocks():
@@ -333,6 +371,8 @@ class TurtleArtWindow():
     def stop_button(self):
         """ Stop button """
         stop_logo(self)
+        if self.audio_started:
+            self.audiograb.pause_grabbing()
 
     def set_userdefined(self):
         """ Change icon for user-defined blocks after loading Python code. """
@@ -1471,6 +1511,7 @@ class TurtleArtWindow():
                 dy = 20
                 blk.expand_in_y(dy)
             else:
+                self._start_audiograb()
                 self._run_stack(blk)
                 return
 
@@ -1533,6 +1574,7 @@ class TurtleArtWindow():
             elif blk.name in PYTHON_SKIN and self.myblock is None:
                 self._import_py()
             else:
+                self._start_audiograb()
                 self._run_stack(blk)
         elif blk.name in COLLAPSIBLE:
             top = find_sandwich_top(blk)
@@ -1541,6 +1583,7 @@ class TurtleArtWindow():
             elif top is not None:
                 collapse_stack(top)
         else:
+            self._start_audiograb()
             self._run_stack(blk)
 
     def _expand_boolean(self, blk, blk2, dy):
@@ -1826,6 +1869,8 @@ class TurtleArtWindow():
             if keyname == "p":
                 self.hideshow_button()
             elif keyname == 'q':
+                if self.audio_started:
+                    self.audiograb.stop_grabbing()
                 exit()
 
         elif self.selected_blk is not None:
@@ -2363,8 +2408,8 @@ class TurtleArtWindow():
 
     def display_coordinates(self):
         """ Display the coordinates of the current turtle on the toolbar """
-        x = round_int(self.canvas.xcor / self.coord_scale)
-        y = round_int(self.canvas.ycor / self.coord_scale)
+        x = round_int(float(self.canvas.xcor) / self.coord_scale)
+        y = round_int(float(self.canvas.ycor) / self.coord_scale)
         h = round_int(self.canvas.heading)
         if self.running_sugar:
             self.activity.coordinates_label.set_text("%s: %d %s: %d %s: %d" % \

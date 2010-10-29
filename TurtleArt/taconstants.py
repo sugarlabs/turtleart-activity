@@ -113,7 +113,7 @@ TOP_LAYER = 1000
 #
 
 PALETTE_NAMES = ['turtle', 'pen', 'colors', 'numbers', 'flow', 'blocks',
-                 'extras', 'portfolio', 'trash']
+                 'extras', 'sensor', 'portfolio', 'trash']
 
 PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'seth', 'setxy2', 'heading', 'xcor', 'ycor', 'setscale',
@@ -132,10 +132,11 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
             ['hat1', 'stack1', 'hat', 'hat2', 'stack2', 'stack',
              'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2', 'box',
              'storein', 'start'],
-            ['kbinput', 'push', 'printheap', 'keyboard', 'pop', 'clearheap',
+            ['push', 'printheap', 'keyboard', 'pop', 'clearheap',
              'myfunc1arg', 'userdefined', 'addturtle', 'comment', 'print',
              'cartesian', 'width', 'height', 'polar', 'sandwichtop_no_label',
-             'sandwichbottom', 'readpixel', 'see', 'reskin'],
+             'sandwichbottom', 'reskin'],
+            ['kbinput',  'readpixel', 'see', 'volume'], # 'pitch'
             ['journal', 'audio', 'description', 'hideblocks', 'showblocks',
              'fullscreen', 'savepix', 'savesvg', 'picturelist',
              'picture1x1a', 'picture1x1', 'picture2x2', 'picture2x1',
@@ -149,8 +150,8 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
 COLORS = [["#00FF00", "#00A000"], ["#00FFFF", "#00A0A0"],
           ["#00FFFF", "#00A0A0"], ["#FF00FF", "#A000A0"],
           ["#FFC000", "#A08000"], ["#FFFF00", "#A0A000"],
-          ["#FF0000", "#A00000"], ["#0000FF", "#0000A0"],
-          ["#FFFF00", "#A0A000"]]
+          ["#FF0000", "#A00000"], ["#FF0000", "#A00000"],
+          ["#0000FF", "#0000A0"], ["#FFFF00", "#A0A000"]]
 
 BOX_COLORS = {'red': ["#FF0000", "#A00000"],
               'orange': ["#FFD000", "#AA8000"],
@@ -186,6 +187,13 @@ HIT_GREEN = "#00F000"
 HIDE_WHITE = "#F8F8F8"
 SHOW_WHITE = "#F0F0F0"
 DEFAULT_SCALE = 33
+XO1 = 'xo1'
+XO15 = 'xo1.5'
+UNKNOWN = 'unknown'
+SENSOR_AC_NO_BIAS = 'external'
+SENSOR_AC_BIAS = 'sound'
+SENSOR_DC_NO_BIAS = 'voltage'
+SENSOR_DC_BIAS = 'resistance'
 
 #
 # Block-style definitions
@@ -395,6 +403,7 @@ BLOCK_NAMES = {
     'sandwichtop_no_arm_no_label': [' '],
     'scale': [_('scale')],
     'see': [_('turtle sees')],
+    'sensor': [_('sensors')],
     'setcolor': [_('set color')],
     'setgray': [_('set gray')],
     'seth': [_('set heading')],
@@ -859,6 +868,7 @@ HELP_STRINGS = {
     'savesvg': _("saves turtle graphics as an SVG file in the Sugar Journal"),
     'scale': _("holds current scale value"),
     'see': _('returns the color that the turtle "sees"'),
+    'sensor': _("Palette of sensor blocks"),
     'setcolor': _("sets color of the line drawn by the turtle"),
     'setgray': _("sets gray level of the line drawn by the turtle"),
     'seth': _("sets the heading of the turtle (0 is towards the top of the screen.)"),

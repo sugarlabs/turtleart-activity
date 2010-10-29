@@ -22,6 +22,8 @@
 import gtk
 import pickle
 import subprocess
+import dbus
+
 try:
     OLD_SUGAR_SYSTEM = False
     import json
@@ -35,9 +37,10 @@ except (ImportError, AttributeError):
         from simplejson import dump as jdump
     except:
         OLD_SUGAR_SYSTEM = True
+
 from taconstants import STRING_OR_NUMBER_ARGS, HIDE_LAYER, CONTENT_ARGS, \
                         COLLAPSIBLE, BLOCK_LAYER, CONTENT_BLOCKS, HIT_HIDE, \
-                        HIT_SHOW
+                        HIT_SHOW, XO1, XO15, UNKNOWN
 from StringIO import StringIO
 import os.path
 from gettext import gettext as _
@@ -785,10 +788,27 @@ def find_blk_below(blk, name):
     return None
 
 
-def olpc_xo_1():
-    """ Is the an OLPC XO-1 or XO-1.5? """
-    return os.path.exists('/etc/olpc-release') or \
-           os.path.exists('/sys/power/olpc-pm')
+def get_hardware():
+    """ Determine whether we are using XO 1.0, 1.5, or "unknown" hardware """
+    bus = dbus.SystemBus()
+
+    comp_obj = bus.get_object('org.freedesktop.Hal',
+                              '/org/freedesktop/Hal/devices/computer')
+    dev = dbus.Interface(comp_obj, 'org.freedesktop.Hal.Device')
+    if dev.PropertyExists('system.hardware.vendor') and \
+            dev.PropertyExists('system.hardware.version'):
+        if dev.GetProperty('system.hardware.vendor') == 'OLPC':
+            if dev.GetProperty('system.hardware.version') == '1.5':
+                return XO15
+            else:
+                return XO1
+        else:
+            return UNKNOWN
+    elif path.exists('/etc/olpc-release') or \
+         path.exists('/sys/power/olpc-pm'):
+        return XO1
+    else:
+        return UNKNOWN
 
 
 def walk_stack(tw, blk):
