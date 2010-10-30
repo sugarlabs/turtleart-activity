@@ -136,7 +136,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'myfunc1arg', 'userdefined', 'addturtle', 'comment', 'print',
              'cartesian', 'width', 'height', 'polar', 'sandwichtop_no_label',
              'sandwichbottom', 'reskin'],
-            ['kbinput',  'readpixel', 'see', 'volume'], # 'pitch'
+            ['kbinput',  'readpixel', 'see', 'sound', 'volume', 'pitch'],
             ['journal', 'audio', 'description', 'hideblocks', 'showblocks',
              'fullscreen', 'savepix', 'savesvg', 'picturelist',
              'picture1x1a', 'picture1x1', 'picture2x2', 'picture2x1',
@@ -221,7 +221,7 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'white',
     'black', 'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy',
-    'volume', 'pitch', 'voltage', 'resistance', 'gray', 'see']
+    'sound', 'volume', 'pitch', 'voltage', 'resistance', 'gray', 'see']
 BOX_STYLE_MEDIA = ['description', 'audio', 'journal']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
 NUMBER_STYLE_VAR_ARG = ['myfunc1arg', 'myfunc2arg', 'myfunc3arg']
@@ -419,6 +419,7 @@ BLOCK_NAMES = {
     'showblocks': [_('show blocks')],
     'showaligned': [_('show aligned')],
     'skin': [_('turtle shell')],
+    'sound': [_('sound')],
     'sqrt': ['√'],
     'stack': [_('action')],
     'stack1': [_('action 1')],
@@ -565,6 +566,7 @@ PRIMITIVES = {
     'showblocks': 'showblocks',
     'showaligned': 'showaligned',
     'skin': 'skin',
+    'sound': 'sound',
     'sqrt': 'sqrt',
     'stack': 'stack',
     'stack1': 'stack1',
@@ -883,6 +885,7 @@ HELP_STRINGS = {
     'show': _("draws text or show media from the Journal"),
     'showblocks': _("restores hidden blocks"),
     'skin': _("put a custom 'shell' on the turtle"),
+    'sound': _("raw microphone input signal"),
     'sqrt': _("calculates square root"),
     'stack1': _("invokes Action 1 stack"),
     'stack2': _("invokes Action 2 stack"),

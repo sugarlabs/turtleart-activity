@@ -301,6 +301,7 @@ class LogoCode:
         '(': [1, lambda self, x: self._prim_opar(x)],
         'and': [2, lambda self, x, y: _and(x, y)],
         'arc': [2, lambda self, x, y: self._prim_arc(self.tw.canvas.arc, x, y)],
+        'audio': [1, lambda self, x: self._play_sound(x)],
         'back': [1, lambda self, x: self._prim_move(self.tw.canvas.forward,
                                                     -x)],
         'black': [0, lambda self: BLACK],
@@ -403,7 +404,7 @@ class LogoCode:
         'showaligned': [1,lambda self, x: self._show(x, False)],
         'showblocks': [0, lambda self: self.tw.showblocks()],
         'skin': [1, lambda self, x: self._reskin(x)],
-        'sound': [1, lambda self, x: self._play_sound(x)],
+        'sound': [0, lambda self: self._get_sound()],
         'sqrt': [1, lambda self, x: _sqrt(x)],
         'stack1': [0, self._prim_stack1, True],
         'stack': [1, self._prim_stack, True],
@@ -1084,9 +1085,9 @@ class LogoCode:
 
     def find_sensor_blocks(self):
         """ Find any sensor blocks and set the appropriate sensor type """
-        for name in ['volume', 'pitch', 'resistance', 'voltage']:
+        for name in ['sound', 'volume', 'pitch', 'resistance', 'voltage']:
             if len(self.tw.block_list.get_similar_blocks('block', name)):
-                if name in ['volume', 'pitch']:
+                if name in ['sound', 'volume', 'pitch']:
                     self.tw.audiograb.set_sensor_type()
                     return
                 elif name == 'resistance':
@@ -1385,6 +1386,14 @@ class LogoCode:
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
             return float(_avg(buf, abs_value=True)) / 164 # scale from 0 to 100
+        else:
+            return 0
+
+    def _get_sound(self):
+        """ return raw mic in value """
+        buf = self.ringbuffer.read(None, self.input_step)
+        if len(buf) > 0:
+            return float(buf[0])
         else:
             return 0
 
