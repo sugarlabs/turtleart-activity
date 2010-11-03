@@ -329,6 +329,7 @@ class TurtleArtWindow():
     def _start_audiograb(self):
         """ Start grabbing audio if there is an audio block in use """
         if len(self.block_list.get_similar_blocks('block', 'volume')) > 0 or \
+           len(self.block_list.get_similar_blocks('block', 'sound')) > 0 or \
            len(self.block_list.get_similar_blocks('block', 'pitch')) > 0 or \
            len(self.block_list.get_similar_blocks('block',
                                                   'resistance')) > 0 or \
