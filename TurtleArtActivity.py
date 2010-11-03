@@ -780,7 +780,7 @@ class TurtleArtActivity(activity.Activity):
 
             self._make_project_buttons(project_toolbar)
 
-        self.keep_button = _add_button('filesave', _("Save snapshot"),
+        self.keep_button = _add_button('filesaveoff', _("Save snapshot"),
                                        self.do_keep_cb,
                                        journal_toolbar_button)
         self.save_as_html = _add_button('htmloff', _("Save as HTML"),
@@ -798,6 +798,9 @@ class TurtleArtActivity(activity.Activity):
         self.load_ta_project = _add_button('load-from-journal',
             _("Import project from the Journal"), self.do_load_ta_project_cb,
                                            journal_toolbar_button)
+        _add_separator(journal_toolbar)
+        self.samples_button = _add_button("stock-open", _('Samples'),
+            self.do_samples_cb, journal_toolbar_button)
         copy = _add_button('edit-copy', _('Copy'), self._copy_cb,
                            edit_toolbar_button, '<Ctrl>c')
         paste = _add_button('edit-paste', _('Paste'), self._paste_cb,
@@ -823,9 +826,6 @@ class TurtleArtActivity(activity.Activity):
             self.do_grow_blocks_cb, view_toolbar_button)
         self.resize_down_button = _add_button('resize-', _("Shrink blocks"),
             self.do_shrink_blocks_cb, view_toolbar_button)
-        self.samples_button = _add_button("stock-open", _('Samples'),
-            self.do_samples_cb, help_toolbar_button)
-        _add_separator(help_toolbar)
         self.hover_help_label = _add_label(
             _("Move the cursor over the orange palette for help."),
             help_toolbar)
