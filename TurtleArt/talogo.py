@@ -1266,7 +1266,7 @@ class LogoCode:
         x = self.tw.canvas.width / 2 + int(self.tw.canvas.xcor)
         y = self.tw.canvas.height / 2 - int(self.tw.canvas.ycor)
         if media[0:5] == 'descr':
-            self.show_description(media, x, y, w, h)
+            self._show_description(media, x, y, w, h)
 
     def _play_sound(self, audio):
         """ Sound file from Journal """
