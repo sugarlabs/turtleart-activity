@@ -24,6 +24,7 @@
 import gtk
 from time import clock, sleep
 from math import sqrt
+from numpy import append
 from numpy.fft import rfft
 from random import uniform
 from operator import isNumberType
@@ -483,12 +484,10 @@ class LogoCode:
 
         self.scale = DEFAULT_SCALE
 
-        ### sensor stuff
-        self.max_samples = 115
+        self.max_samples = 1500
         self.input_step = 1
         from ringbuffer import RingBuffer1d
         self.ringbuffer = RingBuffer1d(self.max_samples, dtype='int16')
-        self.fftx = []
 
     def _def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
@@ -782,7 +781,7 @@ class LogoCode:
         """ evaluate one step """
         starttime = _millisecond()
         try:
-            while (_millisecond() - starttime)<120:
+            while (_millisecond() - starttime) < 120:
                 try:
                     if self.step is not None:
                         self.step.next()
@@ -1385,7 +1384,7 @@ class LogoCode:
         #TODO: Adjust gain for different HW
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
-            return float(_avg(buf, abs_value=True)) / 164 # scale from 0 to 100
+            return float(_avg(buf, abs_value=True))
         else:
             return 0
 
@@ -1399,12 +1398,15 @@ class LogoCode:
 
     def _get_pitch(self):
         """ return index of max value in fft of mic in values """
-        buf = self.ringbuffer.read(None, self.input_step)
+        buf = []
+        for i in range(4):
+            buf = append(buf, self.ringbuffer.read(None, self.input_step))
+        print len(buf)
         if len(buf) > 0:
             r = []
             for j in rfft(buf):
-                r.append(float(j))
-            return r.index(max(r))
+                r.append(abs(j))
+            return r.index(max(r)) * 48000 / len(buf)
         else:
             return 0
 
