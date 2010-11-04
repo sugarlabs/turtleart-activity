@@ -1401,11 +1401,11 @@ class LogoCode:
         buf = []
         for i in range(4):
             buf = append(buf, self.ringbuffer.read(None, self.input_step))
-        print len(buf)
         if len(buf) > 0:
             r = []
             for j in rfft(buf):
                 r.append(abs(j))
+            # Convert output to Hertz
             return r.index(max(r)) * 48000 / len(buf)
         else:
             return 0
@@ -1422,7 +1422,8 @@ class LogoCode:
         """ return voltage sensor value """
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
-            return float(_avg(buf))
+            # TODO: test this calibration on XO 1.5
+            return float(_avg(buf)) * 0.0000219 + 1.14
         else:
             return 0
 
