@@ -1087,15 +1087,26 @@ class LogoCode:
         """ Find any sensor blocks and set the appropriate sensor type """
         for name in ['sound', 'volume', 'pitch', 'resistance', 'voltage']:
             if len(self.tw.block_list.get_similar_blocks('block', name)):
+                _logger.debug('find_sensor_blocks: found %s block' % (name))
+                _logger.debug('audio mode was %s' % (self.audio_mode))
                 if name in ['sound', 'volume', 'pitch']:
-                    self.tw.audiograb.set_sensor_type()
-                    return
+                    if self.audio_mode != 'sound':
+                        self.tw.audiograb.set_sensor_type()
+                        self.audio_mode = 'sound'
+                        _logger.debug('audio mode is %s' % (self.audio_mode))
+                        return
                 elif name == 'resistance':
-                    self.tw.audiograb.set_sensor_type(SENSOR_DC_BIAS)
-                    return
+                    if self.audio_mode != 'resistance':
+                        self.tw.audiograb.set_sensor_type(SENSOR_DC_BIAS)
+                        self.audio_mode = 'resistance'
+                        _logger.debug('audio mode is %s' % (self.audio_mode))
+                        return
                 elif name == 'voltage':
-                    self.tw.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
-                    return
+                    if self.audio_mode != 'voltage':
+                        self.tw.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
+                        self.audio_mode = 'voltage'
+                        _logger.debug('audio mode is %s' % (self.audio_mode))
+                        return
 
     def update_label_value(self, name, value=None):
         """ Update the label of value blocks to reflect current value """
