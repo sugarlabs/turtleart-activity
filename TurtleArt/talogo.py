@@ -488,6 +488,7 @@ class LogoCode:
         self.input_step = 1
         from ringbuffer import RingBuffer1d
         self.ringbuffer = RingBuffer1d(self.max_samples, dtype='int16')
+        self.audio_mode = None
 
     def _def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
@@ -1414,7 +1415,9 @@ class LogoCode:
         """ return resistance sensor value """
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
-            return float(_avg(buf))
+            # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
+            # TODO: test this calibration on XO 1.5
+            return 2.718 ** ((float(_avg(buf)) * 0.000045788) + 8.0531)
         else:
             return 0
 
@@ -1422,8 +1425,9 @@ class LogoCode:
         """ return voltage sensor value """
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
+            # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
             # TODO: test this calibration on XO 1.5
-            return float(_avg(buf)) * 0.0000219 + 1.14
+            return float(_avg(buf)) * 0.00002225 + 1.140
         else:
             return 0
 
