@@ -328,12 +328,8 @@ class TurtleArtWindow():
 
     def _start_audiograb(self):
         """ Start grabbing audio if there is an audio block in use """
-        if len(self.block_list.get_similar_blocks('block', 'volume')) > 0 or \
-           len(self.block_list.get_similar_blocks('block', 'sound')) > 0 or \
-           len(self.block_list.get_similar_blocks('block', 'pitch')) > 0 or \
-           len(self.block_list.get_similar_blocks('block',
-                                                  'resistance')) > 0 or \
-           len(self.block_list.get_similar_blocks('block', 'voltage')) > 0:
+        if len(self.block_list.get_similar_blocks('block',
+            ['volume', 'sound', 'pitch', 'resistance', 'voltage'])) > 0:
             if self.audio_started:
                 self.audiograb.resume_grabbing()
             else:
@@ -831,11 +827,34 @@ class TurtleArtWindow():
                 elif blk.name in MACROS:
                     self._new_macro(blk.name, x + 20, y + 20)
                 else:
+                    # TODO: put up an alert message
                     # You can only have one instance of some blocks
                     if blk.name in ['start', 'hat1', 'hat2']:
                         if len(self.block_list.get_similar_blocks(
                                 'block', blk.name)) > 0:
+                            self.showlabel('dupstack')
                             return True
+                    # You cannot miz and match sensor blocks
+                    elif blk.name in ['sound', 'volume', 'pitch']:
+                        if len(self.block_list.get_similar_blocks(
+                                'block', ['resistance', 'voltage'])) > 0:
+                            self.showlabel('incompatible')
+                            return True
+                    elif blk.name in ['resistance', 'voltage']:
+                        if len(self.block_list.get_similar_blocks(
+                                'block', ['sound', 'volume', 'pitch'])) > 0:
+                            self.showlabel('incompatible')
+                            return True
+                        if blk.name == 'resistance':
+                            if len(self.block_list.get_similar_blocks(
+                                    'block', 'voltage')) > 0:
+                                self.showlabel('incompatible')
+                                return True
+                        elif blk.name == 'voltage':
+                            if len(self.block_list.get_similar_blocks(
+                                    'block', 'resistance')) > 0:
+                                self.showlabel('incompatible')
+                                return True
                     blk.highlight()
                     self._new_block(blk.name, x, y)
                     blk.unhighlight()

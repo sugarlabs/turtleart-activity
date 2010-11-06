@@ -695,10 +695,10 @@ MEDIA_SHAPES = ['audiooff', 'audioon', 'audiosmall',
 
 OVERLAY_SHAPES = ['Cartesian', 'Cartesian_labeled', 'polar']
 
-STATUS_SHAPES = ['status', 'info', 'nostack', 'noinput', 'emptyheap',
-                 'emptybox', 'nomedia', 'nocode', 'overflowerror', 'negroot',
-                 'syntaxerror', 'nofile', 'nojournal', 'zerodivide',
-                 'notanumber']
+STATUS_SHAPES = ['status', 'info', 'nostack', 'dupstack', 'noinput',
+                 'emptyheap', 'emptybox', 'nomedia', 'nocode', 'overflowerror',
+                 'negroot', 'syntaxerror', 'nofile', 'nojournal', 'zerodivide',
+                 'notanumber', 'incompatible']
 
 #
 # Emulate Sugar toolbar when running from outside of Sugar
