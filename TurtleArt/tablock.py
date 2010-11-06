@@ -113,11 +113,16 @@ class Blocks:
             i += 1
         return None
 
-    def get_similar_blocks(self, type, name):
+    def get_similar_blocks(self, block_type, name):
         block_list = []
-        for block in self.list:
-            if block.type == type and block.name == name:
-                block_list.append(block)
+        if type(name) == type(''):
+            for block in self.list:
+                if block.type == block_type and block.name == name:
+                    block_list.append(block)
+        else:
+            for block in self.list:
+                if block.type == block_type and block.name in name:
+                    block_list.append(block)
         return block_list
 
 
