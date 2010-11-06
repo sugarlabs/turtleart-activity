@@ -46,7 +46,8 @@ from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
 from gettext import gettext as _
 
 VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
-                'heading', 'xcor', 'ycor', 'pop', 'see', 'keyboard']
+                'heading', 'xcor', 'ycor', 'pop', 'see', 'keyboard',
+                'sound', 'volume', 'pitch', 'resistance', 'voltage']
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -513,7 +514,7 @@ class LogoCode:
         self.tw.saving_svg = False
 
         self.find_value_blocks()
-        self.find_sensor_blocks()
+        self._update_audio_mode()
         if self.trace > 0:
             self.update_values = True
         else:
@@ -1083,30 +1084,24 @@ class LogoCode:
             self.value_blocks[name] = self.tw.block_list.get_similar_blocks(
                 'block', name)
 
-    def find_sensor_blocks(self):
-        """ Find any sensor blocks and set the appropriate sensor type """
-        for name in ['sound', 'volume', 'pitch', 'resistance', 'voltage']:
-            if len(self.tw.block_list.get_similar_blocks('block', name)):
-                _logger.debug('find_sensor_blocks: found %s block' % (name))
-                _logger.debug('audio mode was %s' % (self.audio_mode))
-                if name in ['sound', 'volume', 'pitch']:
-                    if self.audio_mode != 'sound':
-                        self.tw.audiograb.set_sensor_type()
-                        self.audio_mode = 'sound'
-                        _logger.debug('audio mode is %s' % (self.audio_mode))
-                        return
-                elif name == 'resistance':
-                    if self.audio_mode != 'resistance':
-                        self.tw.audiograb.set_sensor_type(SENSOR_DC_BIAS)
-                        self.audio_mode = 'resistance'
-                        _logger.debug('audio mode is %s' % (self.audio_mode))
-                        return
-                elif name == 'voltage':
-                    if self.audio_mode != 'voltage':
-                        self.tw.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
-                        self.audio_mode = 'voltage'
-                        _logger.debug('audio mode is %s' % (self.audio_mode))
-                        return
+    def _update_audio_mode(self):
+        """ If there are sensor blocks, set the appropriate audio mode """
+        for name in ['sound', 'volume', 'pitch']:
+            if len(self.value_blocks[name]) > 0:
+                if self.audio_mode != 'sound':
+                    self.tw.audiograb.set_sensor_type()
+                    self.audio_mode = 'sound'
+                    return
+            elif len(self.value_blocks['resistance']) > 0:
+                if self.audio_mode != 'resistance':
+                    self.tw.audiograb.set_sensor_type(SENSOR_DC_BIAS)
+                    self.audio_mode = 'resistance'
+                    return
+            elif len(self.value_blocks['voltage']) > 0:
+                if self.audio_mode != 'voltage':
+                    self.tw.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
+                    self.audio_mode = 'voltage'
+                    return
 
     def update_label_value(self, name, value=None):
         """ Update the label of value blocks to reflect current value """
@@ -1396,7 +1391,9 @@ class LogoCode:
         #TODO: Adjust gain for different HW
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
-            return float(_avg(buf, abs_value=True))
+            volume = float(_avg(buf, abs_value=True))
+            self.update_label_value('volume', volume)
+            return volume
         else:
             return 0
 
@@ -1404,7 +1401,9 @@ class LogoCode:
         """ return raw mic in value """
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
-            return float(buf[0])
+            sound = float(buf[0])
+            self.update_label_value('sound', sound)
+            return sound
         else:
             return 0
 
@@ -1418,7 +1417,9 @@ class LogoCode:
             for j in rfft(buf):
                 r.append(abs(j))
             # Convert output to Hertz
-            return r.index(max(r)) * 48000 / len(buf)
+            pitch = r.index(max(r)) * 48000 / len(buf) 
+            self.update_label_value('pitch', pitch)
+            return pitch
         else:
             return 0
 
@@ -1428,7 +1429,9 @@ class LogoCode:
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
             # TODO: test this calibration on XO 1.5
-            return 2.718 ** ((float(_avg(buf)) * 0.000045788) + 8.0531)
+            resistance = 2.718 ** ((float(_avg(buf)) * 0.000045788) + 8.0531)
+            self.update_label_value('resistance', resistance)
+            return resistance
         else:
             return 0
 
@@ -1438,7 +1441,9 @@ class LogoCode:
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
             # TODO: test this calibration on XO 1.5
-            return float(_avg(buf)) * 0.00002225 + 1.140
+            voltage = float(_avg(buf)) * 0.00002225 + 1.140
+            self.update_label_value('voltage', voltage)
+            return voltage
         else:
             return 0
 
