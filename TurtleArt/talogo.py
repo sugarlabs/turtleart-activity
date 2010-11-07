@@ -1088,20 +1088,17 @@ class LogoCode:
         """ If there are sensor blocks, set the appropriate audio mode """
         for name in ['sound', 'volume', 'pitch']:
             if len(self.value_blocks[name]) > 0:
-                if self.audio_mode != 'sound':
-                    self.tw.audiograb.set_sensor_type()
-                    self.audio_mode = 'sound'
-                    return
-            elif len(self.value_blocks['resistance']) > 0:
-                if self.audio_mode != 'resistance':
-                    self.tw.audiograb.set_sensor_type(SENSOR_DC_BIAS)
-                    self.audio_mode = 'resistance'
-                    return
-            elif len(self.value_blocks['voltage']) > 0:
-                if self.audio_mode != 'voltage':
-                    self.tw.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
-                    self.audio_mode = 'voltage'
-                    return
+                self.tw.audiograb.set_sensor_type()
+                self.audio_mode = 'sound'
+                return
+        if len(self.value_blocks['resistance']) > 0:
+            self.tw.audiograb.set_sensor_type(SENSOR_DC_BIAS)
+            self.audio_mode = 'resistance'
+            return
+        elif len(self.value_blocks['voltage']) > 0:
+            self.tw.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
+            self.audio_mode = 'voltage'
+            return
 
     def update_label_value(self, name, value=None):
         """ Update the label of value blocks to reflect current value """
