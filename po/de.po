@@ -14,12 +14,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: turtleart-activity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-09-25 08:30-0400\n"
-"PO-Revision-Date: 2010-10-20 16:01+0200\n"
+"PO-Revision-Date: 2010-11-07 20:35+0200\n"
 "Last-Translator: Markus <m.slg@gmx.de>\n"
 "Language-Team: OLPC-German <m.slg@gmx.de>\n"
 "Language: de\n"
@@ -112,7 +116,7 @@ msgstr "Import/Export"
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:800
 msgid "Save snapshot"
-msgstr "Schnappschuss speichern"
+msgstr "Momentaufnahme speichern"
 
 #: /home/walter/Desktop/turtleblocks/TurtleArtActivity.py:803
 #: /home/walter/Desktop/turtleblocks/turtleart.py:219
@@ -263,12 +267,10 @@ msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
 #: /home/walter/Desktop/turtleblocks/turtleart.py:61
-#, fuzzy
 msgid "usage is"
-msgstr "Nutzung ist"
+msgstr "Auslastung ist"
 
 #: /home/walter/Desktop/turtleblocks/turtleart.py:142
-#, fuzzy
 msgid "No option action:"
 msgstr "Keine optionale Aktion:"
 
@@ -1262,7 +1264,7 @@ msgid ""
 "g., sqrt(x*x+y*y)"
 msgstr ""
 "Ein programmierbarer Block für fortgeschrittene mathematische Ausdrücke mit "
-"mehreren Variablen wie sqrt(x*x+y*y)"
+"mehreren Variablen wie wurzel(x*x+y*y)"
 
 #: /home/walter/Desktop/turtleblocks/TurtleArt/taconstants.py:797
 msgid ""
