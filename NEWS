@@ -1,6 +1,8 @@
 103
 
-* Sensor palette
+* Sensor palette: sound, volume, pitch, resistance, voltage
+* Menu cleanup: samples on import/export toolbar
+* Error message when trying to mix and match incompatible blocks
 
 102
 
