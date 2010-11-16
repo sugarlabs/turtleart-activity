@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="45"
+   height="45"
+   viewBox="0 0 44.999998 45.000001"
+   id="Icon"
+   xml:space="preserve"
+   style="overflow:visible"><metadata
+   id="metadata26"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs24" />
+
+
+
+<g
+   transform="matrix(0.5891883,0,0,0.6267357,9.4473949,4.9460901)"
+   id="g17">
+
+	<line
+   x1="42.615002"
+   y1="1.75"
+   x2="32.536999"
+   y2="11.828"
+   id="line19"
+   style="fill:none;stroke:#ffffff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round" />
+	<polyline
+   points="33.322,2.539   42.615,1.75 41.826,11.043  "
+   id="polyline21"
+   style="fill:none;stroke:#ffffff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round" />
+</g>
+<path
+   d="m 35.5,38.888628 c 0,1.68237 -1.12132,3.074271 -3,3.074271 l -23.000001,0 0,-27.000001 8.803922,0 1.696079,2 15.5,0 0,21.92573 0,0 z"
+   id="path2458-4"
+   style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" /><path
+   d="m 35.5,38.888628 c 0,1.68237 -1.12132,3.074271 -3,3.074271 l -23.000001,0 0,-17.000001 8.485295,0 L 20,20.962897 l 15.5,0 0,17.925731 0,0 z"
+   id="path2458"
+   style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" /></svg>
