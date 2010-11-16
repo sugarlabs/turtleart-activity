@@ -117,6 +117,7 @@ class TurtleArtWindow():
 
         self.path = path
         self.load_save_folder = os.path.join(path, 'samples')
+        self.py_load_save_folder = os.path.join(path, 'pysamples')
         self.save_folder = None
         self.save_file_name = None
         self.width = gtk.gdk.screen_width()
@@ -1592,7 +1593,7 @@ class TurtleArtWindow():
                 if blk.name in NUMBER_STYLE_VAR_ARG:
                     self._cascade_expandable(blk)
                 grow_stack_arm(find_sandwich_top(blk))
-            elif blk.name in PYTHON_SKIN and self.myblock is None:
+            elif blk.name in PYTHON_SKIN: # and self.myblock is None:
                 self._import_py()
             else:
                 self._start_audiograb()
@@ -2142,23 +2143,70 @@ class TurtleArtWindow():
         self.selected_blk.spr.set_label(s)
         self.selected_blk.values[0] = s.replace(RETURN, "\12")
 
-    def load_python_code(self):
+    def load_python_code_from_file(self):
         """ Load Python code from a file """
-        fname, self.load_save_folder = get_load_name('.py',
-                                                     self.load_save_folder)
+        id = None
+        fname, self.py_load_save_folder = get_load_name('.py',
+            self.py_load_save_folder)
         if fname is None:
+            return id
+        try:
+            f = open(fname, 'r')
+            self.myblock = f.read()
+            f.close()
+            id = fname
+        except:
+            _logger.error("Unable to read Python code from %s" % (fname))
+            return id
+
+        # add a new block for this code at turtle position
+        (tx, ty) = self.active_turtle.get_xy()
+        self._new_block('userdefined', tx, ty)
+        self.drag_group = None
+
+        # if we are running Sugar, copy the file into the Journal
+        if self.running_sugar:
+            dsobject = datastore.create()
+            dsobject.metadata['title'] = os.path.basename(fname)
+            dsobject.metadata['icon-color'] = \
+                profile.get_color().to_string()
+            dsobject.metadata['mime_type'] = 'text/x-python'
+            dsobject.metadata['activity'] = 'org.laptop.Pippy'
+            dsobject.set_file_path(fname)
+            try:
+                datastore.write(dsobject)
+                id = dsobject.object_id
+            except IOError:
+                _logger.error("Error copying %s to the datastore" % (fname))
+                id = None
+            dsobject.destroy()
+
+        return id
+
+    def load_python_code_from_journal(self, dsobject):
+        """ Read the Python code from the Journal object """
+        _logger.debug("chooser returned %s " % (str(dsobject)))
+        _logger.debug("file_path is %s " % (dsobject.file_path))
+        try:
+            _logger.debug("opening %s " % dsobject.file_path)
+            file_handle = open(dsobject.file_path, "r")
+            self.myblock = file_handle.read()
+            file_handle.close()
+        except:
+            _logger.debug("couldn't open %s" % dsobject.file_path)
             return
-        f = open(fname, 'r')
-        self.myblock = f.read()
-        f.close()
+
+        self.set_userdefined()
+        self.activity.metadata['python code'] = dsobject.object_id
 
     def _import_py(self):
         """ Import Python code into a block """
         if self.running_sugar:
-            self.activity.import_py()
+            chooser(self.parent, 'org.laptop.Pippy',
+                    self.load_python_code_from_journal)
         else:
-            self.load_python_code()
-            self.set_userdefined()
+            if self.load_python_code_from_file() is not None:
+                self.set_userdefined()
 
     def new_project(self):
         """ Start a new project """
@@ -2195,7 +2243,7 @@ class TurtleArtWindow():
         if create_new_project:
             self.new_project()
         self._check_collapsibles(self.process_data(data_from_file(ta_file)))
-        self._loaded_prokect = ta_file
+        self._loaded_project = ta_file
 
     def load_file(self, create_new_project=True):
         _file_name, self.load_save_folder = get_load_name('.ta',

@@ -124,7 +124,9 @@ class TurtleArtActivity(activity.Activity):
 
         self._setup_canvas(canvas)
 
-        self._load_python_code()
+        if 'python code' in self.metadata:
+            self.tw.load_python_code_from_journal(
+                datastore.get(self.metadata['python code']))
 
         self._setup_sharing()
 
@@ -232,25 +234,10 @@ class TurtleArtActivity(activity.Activity):
     def do_load_python_cb(self, button):
         """ Load Python code from the Journal. """
         self.load_python.set_icon("pippy-openon")
-        self.import_py()
+        object_id = self.tw.load_python_code_from_file()
+        if object_id is not None:
+            self.metadata['python code'] = object_id
         gobject.timeout_add(250, self.load_python.set_icon, "pippy-openoff")
-
-    def import_py(self):
-        """ Import Python code from the Journal to load into 'myblock'. """
-        chooser(self, 'org.laptop.Pippy', self._load_python)
-
-    def _load_python(self, dsobject):
-        """ Read the Python code from the Journal object """
-        try:
-            _logger.debug("opening %s " % dsobject.file_path)
-            file_handle = open(dsobject.file_path, "r")
-            self.tw.myblock = file_handle.read()
-            file_handle.close()
-            self.tw.set_userdefined()
-            # save reference to Pythin code in the project metadata
-            self.metadata['python code'] = dsobject.object_id
-        except:
-            _logger.debug("couldn't open %s" % dsobject.file_path)
 
     def do_save_as_image_cb(self, button):
         """ Save the canvas to the Journal. """
@@ -792,14 +779,14 @@ class TurtleArtActivity(activity.Activity):
         self.save_as_image = _add_button('image-saveoff', _("Save as image"),
                                          self.do_save_as_image_cb,
                                          journal_toolbar_button)
-        self.load_python = _add_button('pippy-openoff', _("Load my block"),
-                                       self.do_load_python_cb,
-                                       journal_toolbar_button)
         self.load_ta_project = _add_button('load-from-journal',
             _("Import project from the Journal"), self.do_load_ta_project_cb,
                                            journal_toolbar_button)
         _add_separator(journal_toolbar)
-        self.samples_button = _add_button("stock-open", _('Samples'),
+        self.load_python = _add_button('pippy-openoff', _("Load Python block"),
+                                       self.do_load_python_cb,
+                                       journal_toolbar_button)
+        self.samples_button = _add_button("ta-open", _('Load example'),
             self.do_samples_cb, journal_toolbar_button)
         copy = _add_button('edit-copy', _('Copy'), self._copy_cb,
                            edit_toolbar_button, '<Ctrl>c')
@@ -912,25 +899,7 @@ class TurtleArtActivity(activity.Activity):
             if FILE.readline() == version:
                 newversion = False
         except IOError:
-            _logger.debug("Creating a tamyblock.py Journal entry")
-
-        # Make sure there is a copy of tamyblock.py in the Journal
-        if newversion:
-            dsobject = datastore.create()
-            dsobject.metadata['title'] = 'tamyblock.py'
-            dsobject.metadata['icon-color'] = \
-                profile.get_color().to_string()
-            dsobject.metadata['mime_type'] = 'text/x-python'
-            dsobject.metadata['activity'] = 'org.laptop.Pippy'
-            dsobject.set_file_path(os.path.join(activity.get_bundle_path(),
-                                                'TurtleArt/tamyblock.py'))
-            try:
-                datastore.write(dsobject)
-            except IOError:
-                _logger.error("Error copying %s to the datastore" % \
-                                  (os.path.join(activity.get_bundle_path(),
-                                                'TurtleArt/tamyblock.py')))
-            dsobject.destroy()
+            _logger.debug("Couldn't read version number")
 
         versiondata.append(version)
         file_handle = open(os.path.join(datapath, filename), "w")
@@ -953,14 +922,6 @@ class TurtleArtActivity(activity.Activity):
             self.read_file(self._jobject.file_path)
         else: # if new, load a start brick onto the canvas
             self.tw.load_start()
-
-    def _load_python_code(self):
-        """ Check to see if there is Python code to be loaded. """
-        try:
-            dsobject = datastore.get(self.metadata['python code'])
-            self._load_python(dsobject)
-        except:
-            pass
 
     def _setup_sharing(self):
         """ A simplistic sharing model: the sharer is the master """
