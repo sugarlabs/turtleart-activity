@@ -809,13 +809,3 @@ def get_hardware():
         return XO1
     else:
         return UNKNOWN
-
-
-def walk_stack(tw, blk):
-    """ Convert blocks to logo psuedocode. """
-    top = find_top_block(blk)
-    if blk == top:
-        code = tw.lc.run_blocks(top, tw.block_list.list, False)
-        return code
-    else:
-        return []

@@ -22,7 +22,6 @@ IGNORE = ["hideblocks", "showblocks", "fullscreen", "polar", "cartesian",
           "sandwichbottom", "id"]
 
 import math
-from tautils import walk_stack
 try:
     from sugar.datastore import datastore
 except:
@@ -127,7 +126,7 @@ tasetshade :shade \r"
     """
     for b in bs:
         this_stack = ""
-        data = walk_stack(tw, b)
+        data = walk_stack(tw.lc, b, tw.block_list.list)
         # We need to catch several special cases: stacks, random, etc.
         stack = False
         namedstack = False
@@ -356,3 +355,15 @@ tasetshade :shade \r"
             "make \"taheap []\r" + code
     code = "window\r" + code
     return code
+
+
+def walk_stack(lc, blk, list):
+    """ Convert blocks to logo psuedocode. """
+    from tautils import find_top_block
+
+    top = find_top_block(blk)
+    if blk == top:
+        code = lc.run_blocks(top, list, False)
+        return code
+    else:
+        return []
