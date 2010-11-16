@@ -243,3 +243,76 @@ def myblock(lc, x):
     # else:
     #     lc.heap.append(0) # no mouse event
     # return
+
+    ###########################################################################
+    #
+    # Copy heap to clipboard
+    #
+    ###########################################################################
+
+    # from gtk import Clipboard
+    # from tautils import data_to_string
+
+    # Clipboard().set_text(data_to_string(lc.heap))
+    # return
+
+    ###########################################################################
+    #
+    # Paste from clipboard to heap
+    #
+    ###########################################################################
+
+    # from gtk import Clipboard
+    # from tautils import data_from_string
+
+    # text = Clipboard().wait_for_text()
+    # if text is not None:
+    #     for val in data_from_string(text):
+    #         lc.heap.append(val)
+    #     lc.update_label_value('pop', val)
+    #
+    # return
+
+    ###########################################################################
+    #
+    # Save heap to journal
+    #
+    ###########################################################################
+
+    # from tautils import get_path, data_to_file
+    # from sugar.activity import activity
+    # from gettext import gettext as _
+    # import os.path
+    # from sugar.datastore import datastore
+    # from sugar import profile
+
+    # # Save JSON-encoded heap to temporary file
+    # heap_file = os.path.join(get_path(activity, 'instance'), 'heap.txt')
+    # data_to_file(lc.heap, heap_file)
+
+    # # Create a datastore object
+    # dsobject = datastore.create()
+
+    # # Write any metadata (specifically set the title of the file
+    # #                     and specify that this is a plain text file).
+    # dsobject.metadata['title'] = _('heap')
+    # dsobject.metadata['icon-color'] = profile.get_color().to_string()
+    # dsobject.metadata['mime_type'] = 'text/plain'
+    # dsobject.set_file_path(heap_file)
+    # datastore.write(dsobject)
+    # dsobject.destroy()
+
+    # return
+
+    ###########################################################################
+    #
+    # Load heap from journal
+    #
+    ###########################################################################
+
+    # from tautils import chooser
+
+    # # Choose a datastore object and push data to heap (Sugar only)
+    # chooser(lc.tw.parent, '', lc.push_file_data_to_heap)
+
+    # return
