@@ -2144,11 +2144,12 @@ class TurtleArtWindow():
         self.selected_blk.spr.set_label(s)
         self.selected_blk.values[0] = s.replace(RETURN, "\12")
 
-    def load_python_code_from_file(self, add_new_block=True):
+    def load_python_code_from_file(self, fname=None, add_new_block=True):
         """ Load Python code from a file """
         id = None
-        fname, self.py_load_save_folder = get_load_name('.py',
-            self.py_load_save_folder)
+        if fname is None:
+            fname, self.py_load_save_folder = get_load_name('.py',
+                self.py_load_save_folder)
         if fname is None:
             return id
         try:
@@ -2186,6 +2187,11 @@ class TurtleArtWindow():
                 self.set_userdefined(self.drag_group[0])
                 self.drag_group[0].values.append(dsobject.object_id)
                 self.drag_group = None
+        else:
+            if len(self.selected_blk.values) == 0:
+                self.selected_blk.values.append(fname)
+            else:
+                self.selected_blk.values[0] = fname
 
         return id
 
@@ -2212,7 +2218,7 @@ class TurtleArtWindow():
             chooser(self.parent, 'org.laptop.Pippy',
                     self.load_python_code_from_journal)
         else:
-            self.load_python_code_from_file(False)
+            self.load_python_code_from_file(fname=None, add_new_block=False)
 
         if self.selected_blk is not None:
             self.myblock[self.block_list.list.index(self.selected_blk)] = \
@@ -2338,8 +2344,13 @@ class TurtleArtWindow():
             if value is not None:
                 self.block_scale = value
         elif btype in BASIC_STYLE_VAR_ARG and value is not None:
-            print btype, value
-            self.load_python_code_from_journal(datastore.get(value), blk)
+            if self.running_sugar:
+                self.load_python_code_from_journal(datastore.get(value), blk)
+            else:
+                self.selected_blk = blk
+                self.load_python_code_from_file(fname=value,
+                                                add_new_block=False)
+                self.selected_blk = None
             self.myblock[self.block_list.list.index(blk)] = self.python_code
             self.set_userdefined(blk)
         elif btype in EXPANDABLE or btype in EXPANDABLE_BLOCKS or \

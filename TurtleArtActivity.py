@@ -124,10 +124,6 @@ class TurtleArtActivity(activity.Activity):
 
         self._setup_canvas(canvas)
 
-        if 'python code' in self.metadata:
-            self.tw.load_python_code_from_journal(
-                datastore.get(self.metadata['python code']))
-
         self._setup_sharing()
 
     # Activity toolbar callbacks
@@ -234,9 +230,8 @@ class TurtleArtActivity(activity.Activity):
     def do_load_python_cb(self, button):
         """ Load Python code from the Journal. """
         self.load_python.set_icon("pippy-openon")
-        object_id = self.tw.load_python_code_from_file()
-        if object_id is not None:
-            self.metadata['python code'] = object_id
+        object_id = self.tw.load_python_code_from_file(fname=None,
+                                                       add_new_block=True)
         gobject.timeout_add(250, self.load_python.set_icon, "pippy-openoff")
 
     def do_save_as_image_cb(self, button):
