@@ -54,7 +54,8 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
                         TURTLE_LAYER, EXPANDABLE_BLOCKS, COMPARE_STYLE, \
                         BOOLEAN_STYLE, EXPANDABLE_ARGS, NUMBER_STYLE, \
                         NUMBER_STYLE_PORCH, NUMBER_STYLE_BLOCK, \
-                        NUMBER_STYLE_VAR_ARG, CONSTANTS, XO1, XO15, UNKNOWN
+                        NUMBER_STYLE_VAR_ARG, CONSTANTS, XO1, XO15, UNKNOWN, \
+                        BASIC_STYLE_VAR_ARG
 from talogo import LogoCode, stop_logo
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
@@ -153,7 +154,8 @@ class TurtleArtWindow():
 
         self.block_scale = BLOCK_SCALE
         self.trash_scale = 0.5
-        self.myblock = None
+        self.myblock = {}
+        self.python_code = None
         self.nop = 'nop'
         self.loaded = 0
         self.step_time = 0
@@ -373,14 +375,13 @@ class TurtleArtWindow():
         if self.audio_started:
             self.audiograb.pause_grabbing()
 
-    def set_userdefined(self):
+    def set_userdefined(self, blk=None):
         """ Change icon for user-defined blocks after loading Python code. """
-        for blk in self.just_blocks():
+        if blk is not None:
             if blk.name in PYTHON_SKIN:
                 x, y = self._calc_image_offset('pythonon', blk.spr)
                 blk.set_image(self.media_shapes['pythonon'], x, y)
                 self._resize_skin(blk)
-        self.nop = 'pythonloaded'
 
     def set_fullscreen(self):
         """ Enter fullscreen mode """
@@ -1593,7 +1594,7 @@ class TurtleArtWindow():
                 if blk.name in NUMBER_STYLE_VAR_ARG:
                     self._cascade_expandable(blk)
                 grow_stack_arm(find_sandwich_top(blk))
-            elif blk.name in PYTHON_SKIN: # and self.myblock is None:
+            elif blk.name in PYTHON_SKIN:
                 self._import_py()
             else:
                 self._start_audiograb()
@@ -2143,7 +2144,7 @@ class TurtleArtWindow():
         self.selected_blk.spr.set_label(s)
         self.selected_blk.values[0] = s.replace(RETURN, "\12")
 
-    def load_python_code_from_file(self):
+    def load_python_code_from_file(self, add_new_block=True):
         """ Load Python code from a file """
         id = None
         fname, self.py_load_save_folder = get_load_name('.py',
@@ -2152,17 +2153,12 @@ class TurtleArtWindow():
             return id
         try:
             f = open(fname, 'r')
-            self.myblock = f.read()
+            self.python_code = f.read()
             f.close()
             id = fname
         except:
             _logger.error("Unable to read Python code from %s" % (fname))
             return id
-
-        # add a new block for this code at turtle position
-        (tx, ty) = self.active_turtle.get_xy()
-        self._new_block('userdefined', tx, ty)
-        self.drag_group = None
 
         # if we are running Sugar, copy the file into the Journal
         if self.running_sugar:
@@ -2181,23 +2177,34 @@ class TurtleArtWindow():
                 id = None
             dsobject.destroy()
 
+            if add_new_block:
+                # add a new block for this code at turtle position
+                (tx, ty) = self.active_turtle.get_xy()
+                self._new_block('userdefined', tx, ty)
+                self.myblock[self.block_list.list.index(self.drag_group[0])] = \
+                    self.python_code
+                self.set_userdefined(self.drag_group[0])
+                self.drag_group[0].values.append(dsobject.object_id)
+                self.drag_group = None
+
         return id
 
-    def load_python_code_from_journal(self, dsobject):
+    def load_python_code_from_journal(self, dsobject, blk=None):
         """ Read the Python code from the Journal object """
-        _logger.debug("chooser returned %s " % (str(dsobject)))
-        _logger.debug("file_path is %s " % (dsobject.file_path))
         try:
             _logger.debug("opening %s " % dsobject.file_path)
             file_handle = open(dsobject.file_path, "r")
-            self.myblock = file_handle.read()
+            self.python_code = file_handle.read()
             file_handle.close()
         except:
             _logger.debug("couldn't open %s" % dsobject.file_path)
-            return
-
-        self.set_userdefined()
-        self.activity.metadata['python code'] = dsobject.object_id
+        if blk is None:
+            blk = self.selected_blk
+        if blk is not None:
+            if len(blk.values) == 0:
+                blk.values.append(dsobject.object_id)
+            else:
+                blk.values[0] = dsobject.object_id
 
     def _import_py(self):
         """ Import Python code into a block """
@@ -2205,8 +2212,12 @@ class TurtleArtWindow():
             chooser(self.parent, 'org.laptop.Pippy',
                     self.load_python_code_from_journal)
         else:
-            if self.load_python_code_from_file() is not None:
-                self.set_userdefined()
+            self.load_python_code_from_file(False)
+
+        if self.selected_blk is not None:
+            self.myblock[self.block_list.list.index(self.selected_blk)] = \
+                self.python_code
+            self.set_userdefined(self.selected_blk)
 
     def new_project(self):
         """ Start a new project """
@@ -2326,6 +2337,11 @@ class TurtleArtWindow():
         elif btype == 'start': # block size is saved in start block
             if value is not None:
                 self.block_scale = value
+        elif btype in BASIC_STYLE_VAR_ARG and value is not None:
+            print btype, value
+            self.load_python_code_from_journal(datastore.get(value), blk)
+            self.myblock[self.block_list.list.index(blk)] = self.python_code
+            self.set_userdefined(blk)
         elif btype in EXPANDABLE or btype in EXPANDABLE_BLOCKS or \
              btype in EXPANDABLE_ARGS or btype == 'nop':
             if btype == 'vspace' or btype in EXPANDABLE_BLOCKS:
@@ -2442,6 +2458,8 @@ class TurtleArtWindow():
                     _name = (_blk.name, _blk.values[0])
                 else:
                     _name = (_blk.name)
+            elif _blk.name in BASIC_STYLE_VAR_ARG and len(_blk.values) > 0:
+                _name = (_blk.name, _blk.values[0])
             elif _blk.name in EXPANDABLE or _blk.name in EXPANDABLE_BLOCKS or \
                  _blk.name in EXPANDABLE_ARGS:
                 _ex, _ey = _blk.get_expand_x_y()
