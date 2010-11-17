@@ -2338,12 +2338,7 @@ class TurtleArtWindow():
                     'block', values, self.block_scale)
 
         # Some blocks get transformed.
-        if btype == 'string' and blk.spr is not None:
-            blk.spr.set_label(blk.values[0].replace('\n', RETURN))
-        elif btype == 'start': # block size is saved in start block
-            if value is not None:
-                self.block_scale = value
-        elif btype in BASIC_STYLE_VAR_ARG and value is not None:
+        if btype in BASIC_STYLE_VAR_ARG and value is not None:
             if self.running_sugar:
                 self.load_python_code_from_journal(datastore.get(value), blk)
             else:
@@ -2353,6 +2348,11 @@ class TurtleArtWindow():
                 self.selected_blk = None
             self.myblock[self.block_list.list.index(blk)] = self.python_code
             self.set_userdefined(blk)
+        if btype == 'string' and blk.spr is not None:
+            blk.spr.set_label(blk.values[0].replace('\n', RETURN))
+        elif btype == 'start': # block size is saved in start block
+            if value is not None:
+                self.block_scale = value
         elif btype in EXPANDABLE or btype in EXPANDABLE_BLOCKS or \
              btype in EXPANDABLE_ARGS or btype == 'nop':
             if btype == 'vspace' or btype in EXPANDABLE_BLOCKS:
