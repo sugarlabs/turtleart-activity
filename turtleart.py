@@ -318,7 +318,7 @@ class TurtleMain():
             if self.tw.is_new_project():
                 self._show_save_dialog(True)
             else:
-                if self.tw.project_has_changes():
+                if self.tw.project_has_changed():
                     self._show_save_dialog(False)
         gtk.main_quit()
 
