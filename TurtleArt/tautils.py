@@ -62,7 +62,7 @@ def convert(x, fn, try_ord=True):
     The strategy for mixing numbers and strings is to first try
     converting the string to a float; then if the string is a single
     character, try converting it to an ord; finally, just treat it as a
-    string. Numbers appended to strings are first trreated as ints, then
+    string. Numbers appended to strings are first treated as ints, then
     floats.
     '''
     try:
@@ -106,11 +106,17 @@ def json_load(text):
         _listdata = json.read(text)
     else:
         # strip out leading and trailing whitespace, nulls, and newlines
-        text = text.lstrip()
-        text = text.replace('\12', '')
-        text = text.replace('\00', '')
-        _io = StringIO(text.rstrip())
-        _listdata = jload(_io)
+        clean_text = text.lstrip()
+        clean_text = clean_text.replace('\12', '')
+        clean_text = clean_text.replace('\00', '')
+        _io = StringIO(clean_text.rstrip())
+        try:
+            _listdata = jload(_io)
+        except ValueError:
+            # assume that text is ascii list
+            _listdata = text.split()
+            for i, value in enumerate(_listdata):
+                _listdata[i] = convert(value, float)
     # json converts tuples to lists, so we need to convert back,
     return _tuplify(_listdata)
 
