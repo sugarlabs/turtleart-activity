@@ -2345,9 +2345,9 @@ class TurtleArtWindow():
 
         # Some blocks get transformed.
         if btype in BASIC_STYLE_VAR_ARG and value is not None:
-            if self.running_sugar:
+            if self.running_sugar and value > 0:
                 self.load_python_code_from_journal(datastore.get(value), blk)
-            else:
+            elif value > 0: # catch depreciated format (#2501)
                 self.selected_blk = blk
                 self.load_python_code_from_file(fname=value,
                                                 add_new_block=False)
