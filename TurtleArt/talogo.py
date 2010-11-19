@@ -22,12 +22,14 @@
 #THE SOFTWARE.
 
 import gtk
+
 from time import clock, sleep
 from math import sqrt
 from numpy import append
 from numpy.fft import rfft
 from random import uniform
 from operator import isNumberType
+
 from UserDict import UserDict
 
 try:
@@ -37,12 +39,17 @@ except:
 
 from taconstants import PALETTES, PALETTE_NAMES, TAB_LAYER, BLACK, WHITE, \
     DEFAULT_SCALE, ICON_SIZE, BLOCK_NAMES, CONSTANTS, SENSOR_DC_NO_BIAS, \
-    SENSOR_DC_BIAS
+    SENSOR_DC_BIAS, XO1, XO15
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
                     audio_media_type, text_media_type, round_int, chr_to_ord, \
-                    strtype
+                    strtype, data_from_file
+
+from RtfParser import RtfTextOnly
+
+from ringbuffer import RingBuffer1d
+
 from gettext import gettext as _
 
 VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
@@ -468,6 +475,7 @@ class LogoCode:
         self.heap = []
         self.iresults = None
         self.step = None
+        self.bindex = None
 
         self.hidden_turtle = None
 
@@ -487,9 +495,14 @@ class LogoCode:
 
         self.max_samples = 1500
         self.input_step = 1
-        from ringbuffer import RingBuffer1d
+
         self.ringbuffer = RingBuffer1d(self.max_samples, dtype='int16')
-        self.audio_mode = None
+        if self.tw.hw == XO1:
+            self.voltage_gain = 0.00002225
+            self.voltage_bias = 1.140
+        elif self.tw.hw == XO15:
+            self.voltage_gain = -0.0001471
+            self.voltage_bias = 1.695
 
     def _def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
@@ -671,18 +684,19 @@ class LogoCode:
         self.arglist = None
         while self.iline:
             token = self.iline[0]
-            bindex = None
+            self.bindex = None
             if type(token) == tuple:
-                (token, bindex) = self.iline[0]
+                (token, self.bindex) = self.iline[0]
 
             # If the blocks are visible, highlight the current block.
-            if not self.tw.hide and bindex is not None:
-                self.tw.block_list.list[bindex].highlight()
+            if not self.tw.hide and self.bindex is not None:
+                self.tw.block_list.list[self.bindex].highlight()
 
             # In debugging modes, we pause between steps and show the turtle.
             if self.tw.step_time > 0:
                 self.tw.active_turtle.show()
                 endtime = _millisecond() + self._int(self.tw.step_time) * 100
+                sleep(self.tw.step_time / 10)
                 while _millisecond() < endtime:
                     yield True
                 self.tw.active_turtle.hide()
@@ -691,23 +705,23 @@ class LogoCode:
             if token == self.symopar:
                 token = self.iline[1]
                 if type(token) == tuple:
-                    (token, bindex) = self.iline[1]
+                    (token, self.bindex) = self.iline[1]
 
             # Process the token and any arguments.
             self._icall(self._eval)
             yield True
 
             # Time to unhighlight the current block.
-            if not self.tw.hide and bindex is not None:
-                self.tw.block_list.list[bindex].unhighlight()
+            if not self.tw.hide and self.bindex is not None:
+                self.tw.block_list.list[self.bindex].unhighlight()
 
             if self.procstop:
                 break
             if self.iresult == None:
                 continue
 
-            if bindex is not None:
-                self.tw.block_list.list[bindex].highlight()
+            if self.bindex is not None:
+                self.tw.block_list.list[self.bindex].highlight()
             raise logoerror(str(self.iresult))
         self.iline = oldiline
         self._ireturn()
@@ -725,7 +739,6 @@ class LogoCode:
         # Either we are processing a symbol or a value.
         if type(token) == self.symtype:
             # We highlight blocks here in case an error occurs...
-            # print "> ", token
             if not self.tw.hide and bindex is not None:
                 self.tw.block_list.list[bindex].highlight()
             self._icall(self._evalsym, token)
@@ -735,7 +748,6 @@ class LogoCode:
                 self.tw.block_list.list[bindex].unhighlight()
             res = self.iresult
         else:
-            # print ": ", token
             res = token
 
         self._ireturn(res)
@@ -1027,17 +1039,14 @@ class LogoCode:
 
     def _prim_myblock(self, x):
         """ Run Python code imported from Journal """
-        if self.tw.myblock is not None:
+        if self.bindex is not None and self.bindex in self.tw.myblock:
             try:
                 if len(x) == 1:
-                    y = myfunc_import(self, self.tw.myblock, x[0])
+                    y = myfunc_import(self, self.tw.myblock[self.bindex], x[0])
                 else:
-                    y = myfunc_import(self, self.tw.myblock, x)
+                    y = myfunc_import(self, self.tw.myblock[self.bindex], x)
             except:
                 raise logoerror("#syntaxerror")
-        else:
-            raise logoerror("#nocode")
-        return
 
     def _prim_print(self, n, flag):
         """ Print n """
@@ -1089,15 +1098,12 @@ class LogoCode:
         for name in ['sound', 'volume', 'pitch']:
             if len(self.value_blocks[name]) > 0:
                 self.tw.audiograb.set_sensor_type()
-                self.audio_mode = 'sound'
                 return
         if len(self.value_blocks['resistance']) > 0:
             self.tw.audiograb.set_sensor_type(SENSOR_DC_BIAS)
-            self.audio_mode = 'resistance'
             return
         elif len(self.value_blocks['voltage']) > 0:
             self.tw.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
-            self.audio_mode = 'voltage'
             return
 
     def update_label_value(self, name, value=None):
@@ -1179,6 +1185,14 @@ class LogoCode:
             else:
                 self.update_label_value('pop', self.heap[-2])
             return self.heap.pop(-1)
+
+    def push_file_data_to_heap(self, dsobject):
+        """ push contents of a data store object (assuming json encoding) """
+        data = data_from_file(dsobject.file_path)
+        if data is not None:
+            for val in data:
+                self.heap.append(val)
+            self.update_label_value('pop', val)
 
     def _empty_heap(self):
         """ Empty FILO """
@@ -1347,11 +1361,17 @@ class LogoCode:
             if self.tw.running_sugar:
                 try:
                     dsobject = datastore.get(media[6:])
-                    # TODO: handle rtf, pdf, etc. (See #893)
+                    # TODO: handle doc, odt, pdf (See #893)
                     if text_media_type(dsobject.file_path):
-                        f = open(dsobject.file_path, 'r')
-                        text = f.read()
-                        f.close()
+                        if dsobject.metadata['mime_type'] == 'application/rtf':
+                            text_only = RtfTextOnly()
+                            for line in open(dsobject.file_path, 'r'):
+                                text_only.feed(line)
+                            text = text_only.output
+                        else:
+                            f = open(dsobject.file_path, 'r')
+                            text = f.read()
+                            f.close()
                     else:
                         text = str(dsobject.metadata['description'])
                     dsobject.destroy()
@@ -1359,9 +1379,15 @@ class LogoCode:
                     _logger.debug("no description in %s" % (media[6:]))
             else:
                 try:
-                    f = open(media[6:], 'r')
-                    text = f.read()
-                    f.close()
+                    if media.endswith(('rtf')):
+                            text_only = RtfTextOnly()
+                            for line in open(media[6:], 'r'):
+                                text_only.feed(line)
+                            text = text_only.output
+                    else:
+                        f = open(media[6:], 'r')
+                        text = f.read()
+                        f.close()
                 except:
                     _logger.debug("no text in %s?" % (media[6:]))
             if text is not None:
@@ -1426,7 +1452,15 @@ class LogoCode:
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
             # TODO: test this calibration on XO 1.5
-            resistance = 2.718 ** ((float(_avg(buf)) * 0.000045788) + 8.0531)
+            if self.tw.hw == XO1:
+                resistance = 2.718 ** ((float(_avg(buf)) * 0.000045788) + \
+                                           8.0531)
+            else:
+                avg_buf = float(_avg(buf))
+                if avg_buf > 0:
+                    resistance = (420000000 / avg_buf) - 13500
+                else:
+                    resistance = 420000000
             self.update_label_value('resistance', resistance)
             return resistance
         else:
@@ -1437,8 +1471,7 @@ class LogoCode:
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
-            # TODO: test this calibration on XO 1.5
-            voltage = float(_avg(buf)) * 0.00002225 + 1.140
+            voltage = float(_avg(buf)) * self.voltage_gain + self.voltage_bias
             self.update_label_value('voltage', voltage)
             return voltage
         else:
