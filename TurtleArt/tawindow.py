@@ -72,6 +72,7 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
                     dock_dx_dy, data_to_string, journal_check, chooser, \
                     get_hardware
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
+from tagplay import stop_media
 from sprites import Sprites, Sprite
 from audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15
 
@@ -1830,10 +1831,13 @@ class TurtleArtWindow():
 
     def _update_media_icon(self, blk, name, value=''):
         """ Update the icon on a 'loaded' media block. """
+        print blk.name, name
         if blk.name == 'journal':
             self._load_image_thumb(name, blk)
         elif blk.name == 'audio':
             self._block_skin('audioon', blk)
+        elif blk.name == 'video':
+            self._block_skin('videoon', blk)
         else:
             self._block_skin('descriptionon', blk)
         if value == '':
@@ -1854,7 +1858,8 @@ class TurtleArtWindow():
             pixbuf = get_pixbuf_from_journal(picture, w, h)
         else:
             if movie_media_type(picture):
-                self._block_skin('journalon', blk)
+                self._block_skin('videoon', blk)
+                blk.name = 'video'
             elif audio_media_type(picture):
                 self._block_skin('audioon', blk)
                 blk.name = 'audio'
@@ -1894,6 +1899,7 @@ class TurtleArtWindow():
             elif keyname == 'q':
                 if self.audio_started:
                     self.audiograb.stop_grabbing()
+                stop_media(self.lc)
                 exit()
 
         elif self.selected_blk is not None:
@@ -2378,7 +2384,7 @@ class TurtleArtWindow():
             if len(blk.values) == 0 or blk.values[0] == 'None' or \
                blk.values[0] is None:
                 self._block_skin(btype + 'off', blk)
-            elif btype == 'audio' or btype == 'description':
+            elif btype == 'video' or btype == 'audio' or btype == 'description':
                 self._block_skin(btype + 'on', blk)
             elif self.running_sugar:
                 try:

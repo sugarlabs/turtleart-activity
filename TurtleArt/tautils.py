@@ -300,12 +300,13 @@ def image_to_base64(pixbuf, activity):
 
 def movie_media_type(name):
     """ Is it movie media? """
-    return name.endswith(('.ogv', '.vob', '.mp4', '.wmv', '.mov', '.mpeg'))
+    return name.endswith(('.ogv', '.vob', '.mp4', '.wmv', '.mov', '.mpeg',
+                          'ogg'))
 
 
 def audio_media_type(name):
     """ Is it audio media? """
-    return name.endswith(('.ogg', '.oga', '.m4a'))
+    return name.endswith(('.oga', '.m4a'))
 
 
 def image_media_type(name):

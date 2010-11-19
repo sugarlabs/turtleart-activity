@@ -138,8 +138,8 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'sandwichtop_no_label', 'sandwichbottom'],
             ['kbinput',  'keyboard', 'readpixel', 'see', 'sound', 'volume',
              'pitch'],
-            ['journal', 'audio', 'description', 'hideblocks', 'showblocks',
-             'fullscreen', 'savepix', 'savesvg', 'picturelist',
+            ['journal', 'audio', 'video', 'description', 'hideblocks',
+             'showblocks', 'fullscreen', 'savepix', 'savesvg', 'picturelist',
              'picture1x1a', 'picture1x1', 'picture2x2', 'picture2x1',
              'picture1x2'],
             ['empty', 'restoreall']]
@@ -223,7 +223,7 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'white',
     'black', 'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy',
     'sound', 'volume', 'pitch', 'voltage', 'resistance', 'gray', 'see']
-BOX_STYLE_MEDIA = ['description', 'audio', 'journal']
+BOX_STYLE_MEDIA = ['description', 'audio', 'journal', 'video']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
 NUMBER_STYLE_VAR_ARG = ['myfunc1arg', 'myfunc2arg', 'myfunc3arg']
 NUMBER_STYLE_BLOCK = ['random']
@@ -276,13 +276,14 @@ OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
 #
 # Blocks that contain media
 #
-CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'journal']
+CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'video',
+                  'journal']
 
 #
 # These blocks get a special skin
 #
 BLOCKS_WITH_SKIN = ['journal', 'audio', 'description', 'nop', 'userdefined',
-                    'userdefined2args', 'userdefined3args']
+                    'video', 'userdefined2args', 'userdefined3args']
 
 PYTHON_SKIN = ['nop', 'userdefined', 'userdefined2args', 'userdefined3args']
 
@@ -450,6 +451,7 @@ BLOCK_NAMES = {
     'userdefined': [_(' ')],
     'userdefined2args': [_(' ')],
     'userdefined3args': [_(' ')],
+    'video': [' '],
     'voltage': [_('voltage')],
     'volume': [_('volume')],
     'vspace': [' '],
@@ -666,6 +668,7 @@ DEFAULTS = {
     'userdefined': [100],
     'userdefined2args': [100, 100],
     'userdefined3args': [100, 100, 100],
+    'video': [None],
     'wait': [1],
     'write': [_('text'), 32]}
 
@@ -688,6 +691,7 @@ CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
 #
 
 MEDIA_SHAPES = ['audiooff', 'audioon', 'audiosmall',
+                'videooff', 'videoon', 'videosmall',
                 'journaloff', 'journalon', 'journalsmall',
                 'descriptionoff', 'descriptionon', 'descriptionsmall',
                 'pythonoff', 'pythonon', 'pythonsmall',
@@ -765,6 +769,7 @@ SPECIAL_NAMES = {
     'template2x2': _('presentation 2x2'),
     'templatelist': _('presentation bulleted list'),
     'textsize': _('text size'),
+    'video': _('video'),
     'vspace': _('vertical space')}
 
 #
@@ -915,6 +920,7 @@ HELP_STRINGS = {
     'userdefined': _("runs code found in the tamyblock.py module found in the Journal"),
     'userdefined2args': _("runs code found in the tamyblock.py module found in the Journal"),
     'userdefined3args': _("runs code found in the tamyblock.py module found in the Journal"),
+    'video': _("Sugar Journal video object"),
     'voltage': _("sensor voltage"),
     'volume': _("microphone input volume"),
     'vspace': _("jogs stack down"),

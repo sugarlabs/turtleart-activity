@@ -285,6 +285,7 @@ def stop_logo(tw):
     """ Stop logo is called from the Stop button on the toolbar """
     tw.step_time = 0
     tw.lc.step = _just_stop()
+    stop_media(tw.lc)
     tw.active_turtle.show()
 
 
@@ -442,7 +443,7 @@ class LogoCode:
         'userdefined2': [2, lambda self, x, y: self._prim_myblock([x, y])],
         'userdefined3': [3, lambda self, x, y,
                          z: self._prim_myblock([x, y, z])],
-        'video': [1, lambda self, x: self._play_movie(x)],
+        'video': [1, lambda self, x: self._play_video(x)],
         'voltage': [0, lambda self: self._get_voltage()],
         'volume': [0, lambda self: self._get_volume()],
         'vres': [0, lambda self: CONSTANTS['height']],
@@ -599,6 +600,11 @@ class LogoCode:
                     code.append('#saudio_' + str(blk.values[0]))
                 else:
                     code.append('#saudio_None')
+            elif blk.name == 'video':
+                if blk.values[0] is not None:
+                    code.append('#svideo_' + str(blk.values[0]))
+                else:
+                    code.append('#svideo_None')
             else:
                 return ['%nothing%']
         else:
@@ -1247,6 +1253,8 @@ class LogoCode:
                 self._insert_desc(string)
             elif string[0:6] == 'audio_':
                 self._play_sound(string)
+            elif string[0:6] == 'video_':
+                self._play_video(string)
             else:
                 if center:
                     y -= self.tw.canvas.textsize
@@ -1300,6 +1308,26 @@ class LogoCode:
         else:
             play_audio(self, audio[6:])
 
+    def _play_video(self, video):
+        """ Movie file from Journal """
+        if video == "" or video[6:] == "":
+            raise logoerror("#nomedia")
+        w = int((self.tw.canvas.width * self.scale) / 100.)
+        h = int((self.tw.canvas.height * self.scale) / 100.)
+        x = self.tw.canvas.width / 2 + int(self.tw.canvas.xcor)
+        y = self.tw.canvas.height / 2 - int(self.tw.canvas.ycor)
+        if self.tw.running_sugar:
+            if video[6:] != "None":
+                try:
+                    dsobject = datastore.get(video[6:])
+                    play_movie_from_file(self, dsobject.file_path,
+                                         int(x), int(y), int(w), int(h))
+                except:
+                    _logger.debug("Couldn't open id: %s" % (str(video[6:])))
+        else:
+            play_movie_from_file(self, video[6:],
+                                 int(x), int(y), int(w), int(h))
+
     def _show_picture(self, media, x, y, w, h, show=True):
         """ Image file from Journal """
         if w < 1 or h < 1:
@@ -1312,13 +1340,9 @@ class LogoCode:
             if self.tw.running_sugar:
                 try:
                     dsobject = datastore.get(media[6:])
-                    if movie_media_type(dsobject.file_path):
-                        play_movie_from_file(self, dsobject.file_path,
-                                             int(x), int(y), int(w), int(h))
-                    else:
-                        self.filepath = dsobject.file_path
-                        pixbuf = get_pixbuf_from_journal(dsobject,
-                                                         int(w), int(h))
+                    self.filepath = dsobject.file_path
+                    pixbuf = get_pixbuf_from_journal(dsobject,
+                                                     int(w), int(h))
                     dsobject.destroy()
                 except:
                     # Maybe it is a pathname instead.
@@ -1333,13 +1357,9 @@ class LogoCode:
                                          (media[6:]))
             else:
                 try:
-                    if movie_media_type(media):
-                        play_movie_from_file(self, media[6:], int(x), int(y),
-                                                              int(w), int(h))
-                    else:
-                        self.filepath = media[6:]
-                        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
-                                     media[6:], int(w), int(h))
+                    self.filepath = media[6:]
+                    pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                        media[6:], int(w), int(h))
                 except:
                     self.filepath = None
                     self.tw.showlabel('nofile', media[6:])
