@@ -1,6 +1,6 @@
 #    Copyright (C) 2009, Benjamin Berg, Sebastian Berg
 #    Copyright (C) 2010, Walter Bender
-#    	
+#
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation; either version 2 of the License, or
@@ -17,27 +17,26 @@
 
 import numpy as np
 
+
 class RingBuffer1d(object):
     """This class implements an array being written in as a ring and that can
     be read from continuously ending with the newest data or starting with the
     oldest. It returns a numpy array copy of the data;
     """
+
     def __init__(self, length, dtype=None):
         """Initialize the 1 dimensional ring buffer with the given lengths.
         The initial values are all 0s
         """
-
         self.offset = 0
 
         self._data = np.zeros(length, dtype=dtype)
 
         self.stored = 0
 
-
     def fill(self, number):
         self._data.fill(number)
         self.offset = 0
-
 
     def append(self, data):
         """Append to the ring buffer (and overwrite old data). If len(data)
@@ -54,30 +53,28 @@ class RingBuffer1d(object):
             self.offset = 0
             self.stored = len(self._data)
 
-        elif len(self._data)-self.offset >= len(data):
-            self._data[self.offset:self.offset+len(data)] = data
-            self.offset = self.offset+len(data)
+        elif len(self._data) - self.offset >= len(data):
+            self._data[self.offset: self.offset + len(data)] = data
+            self.offset = self.offset + len(data)
             self.stored += len(data)
         else:
-            self._data[self.offset:] = data[:len(self._data)-self.offset]
-            self._data[:len(data)-(len(self._data)-self.offset)] = \
-                data[-len(data)+(len(self._data)-self.offset):]
-            self.offset = len(data)-(len(self._data)-self.offset)
+            self._data[self.offset:] = data[:len(self._data) - self.offset]
+            self._data[:len(data) - (len(self._data) - self.offset)] = \
+                data[-len(data) + (len(self._data) - self.offset):]
+            self.offset = len(data) - (len(self._data) - self.offset)
             self.stored += len(data)
 
         if len(self._data) <= self.stored:
             self.read = self._read
 
-
     def read(self, number=None, step=1):
         """Read the ring Buffer. Number can be positive or negative.
         Positive values will give the latest information, negative values will
         give the newest added information from the buffer. (in normal order)
-        
+
         Before the buffer is filled once: This returns just None
         """
         return np.array([])
-
 
     def _read(self, number=None, step=1):
         """Read the ring Buffer. Number can be positive or negative.
@@ -85,7 +82,7 @@ class RingBuffer1d(object):
         give the newest added information from the buffer. (in normal order)
         """
         if number == None:
-            number = len(self._data)//step
+            number = len(self._data) // step
 
         number *= step
         assert abs(number) <= len(self._data), \
@@ -93,20 +90,19 @@ class RingBuffer1d(object):
 
         if number < 0:
             if abs(number) <= self.offset:
-                return self._data[self.offset+number:self.offset:step]
+                return self._data[self.offset + number:self.offset:step]
 
-            spam = (self.offset-1) % step
+            spam = (self.offset - 1) % step
 
             return np.concatenate(
-                       (self._data[step-spam-1+self.offset+number::step],
-                        self._data[spam:self.offset:step]))
+                (self._data[step - spam - 1 + self.offset + number::step],
+                 self._data[spam:self.offset:step]))
 
-        if number-(len(self._data)-self.offset) > 0:
-            spam = ((self.offset+number) - self.offset-1) % step
+        if number - (len(self._data) - self.offset) > 0:
+            spam = ((self.offset + number) - self.offset - 1) % step
             return np.concatenate(
-                       (self._data[self.offset:self.offset+number:step],
-                        self._data[spam:number-
-                            (len(self._data)-self.offset):step]))
+                (self._data[self.offset:self.offset + number:step],
+                 self._data[spam:number -
+                            (len(self._data) - self.offset):step]))
 
-        return self._data[self.offset:self.offset+number:step].copy()
-
+        return self._data[self.offset:self.offset + number:step].copy()
