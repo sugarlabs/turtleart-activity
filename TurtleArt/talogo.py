@@ -40,7 +40,7 @@ except ImportError:
 from taconstants import TAB_LAYER, BLACK, WHITE, \
     DEFAULT_SCALE, ICON_SIZE, BLOCK_NAMES, CONSTANTS, SENSOR_DC_NO_BIAS, \
     SENSOR_DC_BIAS, XO1, XO15
-from tagplay import play_audio, play_movie_from_file, stop_media
+from tagplay import play_audio_from_file, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, convert, \
                     text_media_type, round_int, chr_to_ord, \
@@ -1303,11 +1303,11 @@ class LogoCode:
             if audio[6:] != "None":
                 try:
                     dsobject = datastore.get(audio[6:])
-                    play_audio(self, dsobject.file_path)
+                    play_audio_from_file(self, dsobject.file_path)
                 except IOError:
                     _logger.debug("Couldn't open id: %s" % (str(audio[6:])))
         else:
-            play_audio(self, audio[6:])
+            play_audio_from_file(self, audio[6:])
 
     def _play_video(self, video):
         """ Movie file from Journal """

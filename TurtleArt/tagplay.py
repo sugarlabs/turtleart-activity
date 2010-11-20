@@ -45,11 +45,9 @@ import gst.interfaces
 import gtk
 
 import urllib
-from ConfigParser import ConfigParser
-cf = ConfigParser()
 
 
-def play_audio(lc, file_path):
+def play_audio_from_file(lc, file_path):
     """ Called from Show block of audio media """
     if lc.gplay is not None and lc.gplay.player is not None:
         if lc.gplay.player.playing:
@@ -98,9 +96,6 @@ class Gplay():
 
     def __init__(self, lc, x, y, w, h):
 
-        self.update_id = -1
-        self.changed_id = -1
-        self.seek_timeout_id = -1
         self.player = None
         self.uri = None
         self.playlist = []
@@ -152,46 +147,12 @@ class Gplay():
         self.only_audio = only_audio
         self.got_stream_info = True
 
-    def read_file(self, file_path):
-        self.uri = os.path.abspath(file_path)
-        if os.path.islink(self.uri):
-            self.uri = os.path.realpath(self.uri)
-        gobject.idle_add(self.start, self.uri)
-
-    def getplaylist(self, links):
-        result = []
-        for x in links:
-            if x.startswith('http://'):
-                result.append(x)
-            elif x.startswith('#'):
-                continue
-            else:
-                result.append('file://' + \
-                                  urllib.quote(os.path.join(self.playpath, x)))
-        return result
-
     def start(self, uri=None):
         self._want_document = False
         self.playpath = os.path.dirname(uri)
         if not uri:
             return False
-        # FIXME: parse m3u files and extract actual URL
-        if uri.endswith('.m3u') or uri.endswith('.m3u8'):
-            self.playlist.extend(self.getplaylist([line.strip() \
-                for line in open(uri).readlines()]))
-        elif uri.endswith('.pls'):
-            try:
-                cf.readfp(open(uri))
-                x = 1
-                while True:
-                    self.playlist.append(cf.get('playlist', 'File' + str(x)))
-                    x += 1
-            except:
-                #read complete
-                pass
-        else:
-            self.playlist.append('file://' + \
-                                     urllib.quote(os.path.abspath(uri)))
+        self.playlist.append('file://' + urllib.quote(os.path.abspath(uri)))
         if not self.player:
             # lazy init the player so that videowidget is realized
             # and has a valid widget allocation
@@ -221,55 +182,6 @@ class Gplay():
                 pass
             else:
                 self.player.play()
-                if self.update_id == -1:
-                    self.update_id = gobject.timeout_add(self.UPDATE_INTERVAL,
-                                                         self.update_scale_cb)
-
-    def volume_changed_cb(self, widget, value):
-        if self.player:
-            self.player.player.set_property('volume', value)
-
-    def scale_button_press_cb(self, widget, event):
-        self.was_playing = self.player.is_playing()
-        if self.was_playing:
-            self.player.pause()
-
-        # don't timeout-update position during seek
-        if self.update_id != -1:
-            gobject.source_remove(self.update_id)
-            self.update_id = -1
-
-    def scale_value_changed_cb(self, scale):
-        # see seek.c:seek_cb
-        real = long(scale.get_value() * self.p_duration / 100)  # in ns
-        self.player.seek(real)
-        # allow for a preroll
-        self.player.get_state(timeout=50 * gst.MSECOND)  # 50 ms
-
-    def scale_button_release_cb(self, widget, event):
-        # see seek.cstop_seek
-        widget.disconnect(self.changed_id)
-        self.changed_id = -1
-
-        if self.seek_timeout_id != -1:
-            gobject.source_remove(self.seek_timeout_id)
-            self.seek_timeout_id = -1
-        else:
-            if self.was_playing:
-                self.player.play()
-
-        if self.update_id != -1:
-            self.error('Had a previous update timeout id')
-        else:
-            self.update_id = gobject.timeout_add(self.UPDATE_INTERVAL,
-                self.update_scale_cb)
-
-    def update_scale_cb(self):
-        self.p_position, self.p_duration = self.player.query_position()
-        if self.p_position != gst.CLOCK_TIME_NONE:
-            value = self.p_position * 100.0 / self.p_duration
-
-        return True
 
 
 class GstPlayer(gobject.GObject):
