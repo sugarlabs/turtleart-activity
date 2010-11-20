@@ -29,7 +29,7 @@ import logging
 _logger = logging.getLogger('turtleart-activity')
 
 from sugar.activity import activity
-try: # 0.86 toolbar widgets
+try:  # 0.86 toolbar widgets
     from sugar.activity.widgets import ActivityToolbarButton, StopButton,\
                                        EditToolbar, ActivityToolbox
     from sugar.graphics.toolbarbox import ToolbarBox, ToolbarButton
@@ -708,8 +708,7 @@ class TurtleArtActivity(activity.Activity):
 
             journal_toolbar = gtk.Toolbar()
             journal_toolbar_button = ToolbarButton(page=journal_toolbar,
-                                                   icon_name='activity-journal')
-
+                icon_name='activity-journal')
             # Add the toolbars and buttons to the toolbox
             activity_toolbar_button.show()
             toolbox.toolbar.insert(activity_toolbar_button, -1)

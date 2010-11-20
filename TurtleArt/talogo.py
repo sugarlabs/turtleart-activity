@@ -310,7 +310,8 @@ class LogoCode:
         DEFPRIM = {
         '(': [1, lambda self, x: self._prim_opar(x)],
         'and': [2, lambda self, x, y: _and(x, y)],
-        'arc': [2, lambda self, x, y: self._prim_arc(self.tw.canvas.arc, x, y)],
+        'arc': [2, lambda self, x, y: self._prim_arc(self.tw.canvas.arc, x,
+                                                     y)],
         'audio': [1, lambda self, x: self._play_sound(x)],
         'back': [1, lambda self, x: self._prim_move(self.tw.canvas.forward,
                                                     -x)],
@@ -333,7 +334,7 @@ class LogoCode:
         'cyan': [0, lambda self: CONSTANTS['cyan']],
         'define': [2, self._prim_define],
         'division': [2, lambda self, x, y: _careful_divide(x, y)],
-        'equal?': [2, lambda self,x, y: _equal(x, y)],
+        'equal?': [2, lambda self, x, y: _equal(x, y)],
         'fillscreen': [2, lambda self, x, y: self.tw.canvas.fillscreen(x, y)],
         'forever': [1, self._prim_forever, True],
         'forward': [1, lambda self, x: self._prim_move(self.tw.canvas.forward,
@@ -407,11 +408,11 @@ class LogoCode:
         'settextsize': [1, lambda self, x: self.tw.canvas.settextsize(x)],
         'setxy2': [2, lambda self, x, y: self._prim_move(self.tw.canvas.setxy,
                                                         x, y)],
-        'setxy': [2, lambda self, x, y: self._prim_move(self.tw.canvas.setxy, x,
-                                                       y, pendown=False)],
+        'setxy': [2, lambda self, x, y: self._prim_move(self.tw.canvas.setxy,
+                                                        x, y, pendown=False)],
         'shade': [0, lambda self: self.tw.canvas.shade],
         'show': [1, lambda self, x: self._show(x, True)],
-        'showaligned': [1,lambda self, x: self._show(x, False)],
+        'showaligned': [1, lambda self, x: self._show(x, False)],
         'showblocks': [0, lambda self: self.tw.showblocks()],
         'skin': [1, lambda self, x: self._reskin(x)],
         'sound': [0, lambda self: self._get_sound()],
@@ -566,11 +567,11 @@ class LogoCode:
             return ['%nothing%', '%nothing%']
         code = []
         dock = blk.docks[0]
-        if len(dock) > 4: # There could be a '(', ')', '[' or ']'.
+        if len(dock) > 4:  # There could be a '(', ')', '[' or ']'.
             code.append(dock[4])
         if blk.name == 'savesvg':
             self.tw.saving_svg = True
-        if blk.primitive is not None: # make a tuple (prim, blk)
+        if blk.primitive is not None:  # make a tuple (prim, blk)
             code.append((blk.primitive, self.tw.block_list.list.index(blk)))
         elif len(blk.values) > 0:  # Extract the value from content blocks.
             if blk.name == 'number':
@@ -613,7 +614,7 @@ class LogoCode:
             for i in range(1, len(blk.connections)):
                 b = blk.connections[i]
                 dock = blk.docks[i]
-                if len(dock) > 4: # There could be a '(', ')', '[' or ']'.
+                if len(dock) > 4:  # There could be a '(', ')', '[' or ']'.
                     for c in dock[4]:
                         code.append(c)
                 if b is not None:
@@ -625,7 +626,7 @@ class LogoCode:
     def _setup_cmd(self, string):
         """ Execute the psuedocode. """
         self.hidden_turtle = self.tw.active_turtle
-        self.hidden_turtle.hide() # Hide the turtle while we are running.
+        self.hidden_turtle.hide()  # Hide the turtle while we are running.
         self.procstop = False
         blklist = self._readline(string)
         self.step = self._start_eval(blklist)
@@ -1124,7 +1125,7 @@ class LogoCode:
         elif self.update_values:
             if type(value) == float:
                 valstring = str(round_int(value)).replace('.',
-                                                          self.tw.decimal_point)
+                    self.tw.decimal_point)
             else:
                 valstring = str(value)
             for block in self.value_blocks[name]:
@@ -1147,7 +1148,7 @@ class LogoCode:
         else:
             # print cmd, value1, value2, pendown
             cmd(float(value1), float(value2), pendown=pendown)
-        self.update_label_value('xcor', 
+        self.update_label_value('xcor',
                            self.tw.canvas.xcor / self.tw.coord_scale)
         self.update_label_value('ycor',
                            self.tw.canvas.ycor / self.tw.coord_scale)
@@ -1156,7 +1157,7 @@ class LogoCode:
 
     def _prim_arc(self, cmd, value1, value2):
         cmd(float(value1), float(value2))
-        self.update_label_value('xcor', 
+        self.update_label_value('xcor',
                            self.tw.canvas.xcor / self.tw.coord_scale)
         self.update_label_value('ycor',
                            self.tw.canvas.ycor / self.tw.coord_scale)
@@ -1418,7 +1419,7 @@ class LogoCode:
         """ Read r, g, b from the canvas and return a corresponding palette
         color """
         r, g, b, a = self.tw.canvas.get_pixel()
-        color_index = self.tw.canvas.get_color_index(r, g, b) 
+        color_index = self.tw.canvas.get_color_index(r, g, b)
         self.update_label_value('see', color_index)
         return color_index
 
@@ -1460,7 +1461,7 @@ class LogoCode:
             for j in rfft(buf):
                 r.append(abs(j))
             # Convert output to Hertz
-            pitch = r.index(max(r)) * 48000 / len(buf) 
+            pitch = r.index(max(r)) * 48000 / len(buf)
             self.update_label_value('pitch', pitch)
             return pitch
         else:

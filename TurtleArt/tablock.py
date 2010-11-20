@@ -53,7 +53,7 @@ class Blocks:
         self.decimal_point = decimal_point
 
     def get_block(self, i):
-        if i < 0 or i > len(self.list)-1:
+        if i < 0 or i > len(self.list) - 1:
             return(None)
         else:
             return(self.list[i])
@@ -130,7 +130,7 @@ class Block:
     """ A class for the individual blocks """
 
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
-                 values=[], scale=BLOCK_SCALE, colors=["#FF0000", "#A00000"]):
+                 values=[], scale=BLOCK_SCALE, colors=['#FF0000', '#A00000']):
         self.block_list = block_list
         self.spr = None
         self.shapes = [None, None]
@@ -194,7 +194,7 @@ class Block:
             return
         dx = (self.spr.label_width() - self.spr.label_safe_width()) / \
             self.scale
-        if dx !=0:
+        if dx != 0:
             self.dx += dx
             if self.dx < 0:
                 self.dx = 0
@@ -299,7 +299,7 @@ class Block:
         self.svg.set_hide(False)
         if self.type == 'block':
             self.svg.set_show(True)
-        else: # 'proto'
+        else:  # 'proto'
             self.svg.set_show(False)
         self.refresh()
         return dy
@@ -378,18 +378,18 @@ class Block:
         if self.name in CONTENT_BLOCKS:
             n = len(self.values)
             if n == 0:
-                n = 1 # Force a scale to be set, even if there is no value.
+                n = 1  # Force a scale to be set, even if there is no value.
         else:
             if self.name in BLOCK_NAMES:
                 n = len(BLOCK_NAMES[self.name])
             else:
-                _logger.debug("WARNING: unknown block name %s" % (self.name))
+                _logger.debug('WARNING: unknown block name %s' % (self.name))
                 n = 0
         for i in range(n):
-            if i == 1: # top
+            if i == 1:  # top
                 self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
                                               True, 'right', 'top', i)
-            elif i == 2: # bottom
+            elif i == 2:  # bottom
                 self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
                                               True, 'right', 'bottom', i)
             else:

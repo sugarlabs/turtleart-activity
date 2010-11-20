@@ -39,12 +39,12 @@ except ImportError, e:
     print "Import Error: %s. Project upload is disabled." % (e)
     _UPLOAD_AVAILABLE = False
 
-try: 
+try:
     # Try to use XDG Base Directory standard for config files
     import xdg.BaseDirectory
     CONFIG_HOME = os.path.join(xdg.BaseDirectory.xdg_config_home, 'turtleart')
 except ImportError, e:
-    # Default to `.config` per the spec. 
+    # Default to `.config` per the spec.
     CONFIG_HOME = os.path.expanduser(os.path.join('~', '.config', 'turtleart'))
 
 argv = sys.argv[:]  # Workaround for import behavior of gst in tagplay
@@ -59,7 +59,7 @@ from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 
 _HELP_MSG = 'turtleart.py: ' + _('usage is') + """
- \tturtleart.py 
+ \tturtleart.py
  \tturtleart.py project.ta
  \tturtleart.py --output_png project.ta
  \tturtleart.py -o project"""
@@ -79,7 +79,9 @@ def mkdir_p(path):
     except OSError as exc:
         if exc.errno == errno.EEXIST:
             pass
-        else: raise
+        else:
+            raise
+
 
 def _make_sub_menu(menu, name):
     """ add a new submenu to the toolbar """
@@ -116,8 +118,8 @@ class TurtleMain():
     def __init__(self):
         """ Parse command-line options and initialize class """
 
-        # If we are invoked to start a project from Gnome, we should make 
-        # sure our current directory is TA's source dir. 
+        # If we are invoked to start a project from Gnome, we should make
+        # sure our current directory is TA's source dir.
         os.chdir(os.path.dirname(__file__))
 
         self.ta_file = None
@@ -160,8 +162,8 @@ class TurtleMain():
         # make sure Sugar paths are present
         tapath = os.path.join(os.environ['HOME'], '.sugar', 'default',
                               'org.laptop.TurtleArtActivity')
-        map (makepath, (os.path.join(tapath, 'data/'),
-                        os.path.join(tapath, 'instance/')))
+        map(makepath, (os.path.join(tapath, 'data/'),
+                       os.path.join(tapath, 'instance/')))
 
         if self.output_png:
             pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8,
@@ -176,13 +178,13 @@ class TurtleMain():
             except IOError:
                 # Opening the config file failed
                 # We'll assume it needs to be created
-                try: 
+                try:
                     mkdir_p(CONFIG_HOME)
                     data_file = open(os.path.join(CONFIG_HOME, 'turtleartrc'),
                                      'a+')
                 except IOError, e:
-                    # We can't write to the configuration file, use 
-                    # a faux file that will persist for the length of 
+                    # We can't write to the configuration file, use
+                    # a faux file that will persist for the length of
                     # the session.
                     print _('Configuration directory not writable: %s') % (e)
                     data_file = cStringIO.StringIO()
@@ -326,7 +328,7 @@ class TurtleMain():
         """ Dialog for save project """
         dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
                                 buttons=gtk.BUTTONS_OK_CANCEL,
-                                message_format=\
+                                message_format= \
            _('You have unsaved work. Would you like to save before quitting?'))
         dlg.set_title(_('Save project?'))
         dlg.set_property('skip-taskbar-hint', False)
@@ -596,7 +598,7 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
             self.Hbox5.add(self.cancel_button)
 
             self.pop_up.show_all()
-            
+
     def _stop_uploading(self, widget, event=None):
         """ Hide the popup when the upload is complte """
         self.uploading = False
@@ -606,9 +608,9 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
         """ Log into the upload server """
         username = self.username_entry.get_text()
         password = self.password_entry.get_text()
-        server=xmlrpclib.ServerProxy(_UPLOAD_SERVER + '/call/xmlrpc')
-        logged_in = server.login_remote(username,password)
-        if logged_in: 
+        server = xmlrpclib.ServerProxy(_UPLOAD_SERVER + '/call/xmlrpc')
+        logged_in = server.login_remote(username, password)
+        if logged_in:
             upload_key = logged_in
             self._do_submit_to_web(upload_key)
         else:
@@ -641,7 +643,7 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
                               ('small_image', (c.FORM_FILE, imagefile)),
                               ('title', title),
                               ('description', description),
-                              ('upload_key',key), ('_formname',
+                              ('upload_key', key), ('_formname',
                                                    'image_create')])
         c.perform()
         error_code = c.getinfo(c.HTTP_CODE)

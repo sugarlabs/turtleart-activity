@@ -115,7 +115,7 @@ class TurtleGraphics:
         self.fgcolor = self.cm.alloc_color('red')
         self.bgrgb = [255, 248, 222]
         self.bgcolor = self.cm.alloc_color('#fff8de')
-        self.textsize = 48 # depreciated
+        self.textsize = 48  # depreciated
         self.textcolor = self.cm.alloc_color('blue')
         self.tw.active_turtle.show()
         self.shade = 0
@@ -410,7 +410,7 @@ class TurtleGraphics:
             return
         self.set_textcolor()
 
-    def settextsize(self, c): # depreciated
+    def settextsize(self, c):  # depreciated
         """ Set the text size """
         try:
             self.tw.textsize = c
@@ -526,7 +526,7 @@ class TurtleGraphics:
             self.canvas.images[0].draw_layout(self.gc, int(x), int(y), pl)
             w, h = pl.get_pixel_size()
             self.invalt(x, y, w, h)
-        else: # pixmap doesn't support pango
+        else:  # pixmap doesn't support pango
             message = str(label).replace('\0', ' ')
             context = self.canvas.images[0].cairo_create()
             context.set_font_size(size)
@@ -551,7 +551,7 @@ class TurtleGraphics:
             miny, maxy = y1, y2
         else:
             miny, maxy = y2, y1
-        w, h = maxx-minx, maxy-miny
+        w, h = maxx - minx, maxy - miny
         self.canvas.images[0].draw_line(self.gc, x1, y1, x2, y2)
         if self.fill and self.poly_points == []:
             self.poly_points.append((x1, y1))
@@ -571,8 +571,8 @@ class TurtleGraphics:
         x, y = self.width / 2 + int(self.xcor), \
                self.height / 2 - int(self.ycor)
         self.tw.active_turtle.move(
-            (int(self.cx + x - self.tw.active_turtle.spr.rect.width/2),
-             int(self.cy + y - self.tw.active_turtle.spr.rect.height/2)))
+            (int(self.cx + x - self.tw.active_turtle.spr.rect.width / 2),
+             int(self.cy + y - self.tw.active_turtle.spr.rect.height / 2)))
 
     def invalt(self, x, y, w, h):
         """ Mark a region for refresh """

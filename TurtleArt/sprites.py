@@ -100,7 +100,7 @@ class Sprites:
 
     def get_sprite(self, i):
         """ Return a sprint from the array """
-        if i < 0 or i > len(self.list)-1:
+        if i < 0 or i > len(self.list) - 1:
             return(None)
         else:
             return(self.list[i])
@@ -368,14 +368,14 @@ class Sprite:
                 x = int(self.rect.x + self._margins[0] + (my_width - w) / 2)
             elif self._horiz_align[i] == 'left':
                 x = int(self.rect.x + self._margins[0])
-            else: # right
+            else:  # right
                 x = int(self.rect.x + self.rect.width - w - self._margins[2])
             h = pl.get_size()[1] / pango.SCALE
             if self._vert_align[i] == "middle":
                 y = int(self.rect.y + self._margins[1] + (my_height - h) / 2)
             elif self._vert_align[i] == "top":
                 y = int(self.rect.y + self._margins[1])
-            else: # bottom
+            else:  # bottom
                 y = int(self.rect.y + self.rect.height - h - self._margins[3])
             self._sprites.gc.set_foreground(self._color)
             self._sprites.area.draw_layout(self._sprites.gc, x, y, pl)
