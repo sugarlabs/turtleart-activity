@@ -30,8 +30,7 @@ _logger = logging.getLogger('turtleart-activity')
 
 from sugar.activity import activity
 try:  # 0.86 toolbar widgets
-    from sugar.activity.widgets import ActivityToolbarButton, StopButton,\
-                                       EditToolbar, ActivityToolbox
+    from sugar.activity.widgets import ActivityToolbarButton, StopButton
     from sugar.graphics.toolbarbox import ToolbarBox, ToolbarButton
     NEW_SUGAR_SYSTEM = True
 except ImportError:
@@ -56,7 +55,6 @@ from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
                               get_path, chooser
 from TurtleArt.tawindow import TurtleArtWindow
-from TurtleArt.taturtle import Turtle
 
 SERVICE = 'org.laptop.TurtleArtActivity'
 IFACE = SERVICE
@@ -230,8 +228,7 @@ class TurtleArtActivity(activity.Activity):
     def do_load_python_cb(self, button):
         """ Load Python code from the Journal. """
         self.load_python.set_icon("pippy-openon")
-        object_id = self.tw.load_python_code_from_file(fname=None,
-                                                       add_new_block=True)
+        self.tw.load_python_code_from_file(fname=None, add_new_block=True)
         gobject.timeout_add(250, self.load_python.set_icon, "pippy-openoff")
 
     def do_save_as_image_cb(self, button):
@@ -445,7 +442,6 @@ class TurtleArtActivity(activity.Activity):
         ta_code_path = self._dump_ta_code()
         if ta_code_path is not None:
             async_cb(ta_code_path)
-            os.remove(tmpfile)
 
     def _dump_logo_code(self):
         """  Save Logo code to temporary file. """
@@ -882,24 +878,29 @@ class TurtleArtActivity(activity.Activity):
         # Check to see if the version has changed
         try:
             version = os.environ['SUGAR_BUNDLE_VERSION']
-        except:
+        except KeyError:
             version = "unknown"
 
         filename = "version.dat"
-        versiondata = []
-        newversion = True
+        version_data = []
+        new_version = True
         try:
-            FILE = open(os.path.join(datapath, filename), "r")
-            if FILE.readline() == version:
-                newversion = False
+            file_handle = open(os.path.join(datapath, filename), "r")
+            if file_handle.readline() == version:
+                new_version = False
+            file_handle.close()
         except IOError:
             _logger.debug("Couldn't read version number")
 
-        versiondata.append(version)
-        file_handle = open(os.path.join(datapath, filename), "w")
-        file_handle.writelines(versiondata)
-        file_handle.close()
-        return
+        version_data.append(version)
+        try:
+            file_handle = open(os.path.join(datapath, filename), "w")
+            file_handle.writelines(version_data)
+            file_handle.close()
+        except IOError:
+            _logger.debug("Couldn't write version number")
+
+        return new_version
 
     def _setup_canvas(self, canvas):
         """ Initialize the turtle art canvas. """
@@ -946,7 +947,6 @@ class TurtleArtActivity(activity.Activity):
 
     def read_file(self, file_path, run_it=True):
         """ Read a project in and then run it. """
-        import tarfile
         import os
         import tempfile
         import shutil
