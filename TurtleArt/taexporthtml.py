@@ -33,49 +33,49 @@ def save_html(self, tw, embed_flag=True):
 
     # A dictionary to define the HTML wrappers around template elements
     self.html_glue = {
-        'doctype': "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 " + \
-             "Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n",
-        'html': ("<html>\n", "</html>\n"),
-        'html_svg': ("<html xmlns=\"http://www.w3.org/1999/xhtml\">\n",
-                     "</html>\n"),
-        'head': ("<head>\n<!-- Created by Turtle Art -->\n", "</head>\n"),
-        'meta': "<meta http-equiv=\"content-type\" content=\"text/html; " + \
-            "charset=UTF-8\"/>\n",
-        'title': ("<title>", "</title>\n"),
-        'style': ("<style type=\"text/css\">\n<!--\n", "-->\n</style>\n"),
-        'body': ("<body>\n", "\n</body>\n"),
-        'div': ("<div>\n", "</div>\n"),
-        'slide': ("\n<a name=\"slide", "\"></a>\n"),
-        'h1': ("<h1>", "</h1>\n"),
-        'table': ("<table cellpadding=\"10\">\n", "</table>\n"),
-        'tr': ("<tr>\n", "</tr>\n"),
-        'td': ("<td valign=\"top\" width=\"400\" height=\"300\">\n",
-               "\n</td>\n"),
-        'img': ("<img width=\"400\" height=\"300\" alt=\"Image\" " + \
-                "src=\"file://", ".png\" />\n"),
-        'img2': ("<img alt=\"Image\" src=\"image", ".png\" />\n"),
-        'img3': ("<img alt=\"Image\" src=\"file://", "\" />\n"),
-        'ul': ("<table>\n", "</table>\n"),
-        'li': ("<tr><td>", "</td></tr>\n")}
+        'doctype': '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 ' + \
+             'Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">\n',
+        'html': ('<html>\n", "</html>\n'),
+        'html_svg': ('<html xmlns="http://www.w3.org/1999/xhtml">\n',
+                     '</html>\n'),
+        'head': ('<head>\n<!-- Created by Turtle Art -->\n', '</head>\n'),
+        'meta': '<meta http-equiv="content-type" content="text/html; ' + \
+            'charset=UTF-8"/>\n',
+        'title': ('<title>', '</title>\n'),
+        'style': ('<style type="text/css">\n<!--\n', '-->\n</style>\n'),
+        'body': ('<body>\n', '\n</body>\n'),
+        'div': ('<div>\n', '</div>\n'),
+        'slide': ('\n<a name="slide', '"></a>\n'),
+        'h1': ('<h1>', '</h1>\n'),
+        'table': ('<table cellpadding="10\'>\n', '</table>\n'),
+        'tr': ('<tr>\n', '</tr>\n'),
+        'td': ('<td valign="top" width="400" height="300">\n',
+               '\n</td>\n'),
+        'img': ('<img width="400" height="300" alt="Image" ' + \
+                'src="file://"', '".png" />\n'),
+        'img2': ('<img alt="Image" src="image"', '".png" />\n'),
+        'img3': ('<img alt="Image" src="file://"', '"" />\n'),
+        'ul': ('<table>\n', '</table>\n'),
+        'li': ('<tr><td>', '</td></tr>\n')}
 
-    comment = "<!--\n\
-<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\" [\n\
-    <!ENTITY ns_svg \"http://www.w3.org/2000/svg\">\n\
-    <!ENTITY ns_xlink \"http://www.w3.org/1999/xlink\">\n\
+    comment = '<!--\n\<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"' + \
+        ' "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [\n\
+    <!ENTITY ns_svg "http://www.w3.org/2000/svg">\n\
+    <!ENTITY ns_xlink "http://www.w3.org/1999/xlink">\n\
 ]>\n\
--->\n"
+-->\n'
     if self.embed_images == True:
-        self.html_glue['img'] = ("<img width=\"400\" height=\"300\" alt=" + \
-                                 "\"Image\" src=\"data:image/png;base64,\n",
-                                 " \"/>\n")
-        self.html_glue['img2'] = ("<img alt=\"Image\" src=\"data:image/png;" + \
-                                  "base64,\n", " \"/>\n")
+        self.html_glue['img'] = ('<img width="400" height="300" alt=" + \
+                                 ""Image" src="data:image/png;base64,\n"',
+                                 '" "/>\n')
+        self.html_glue['img2'] = ('<img alt="Image" src="data:image/png;" + \
+                                  "base64,\n"', '" "/>\n')
 
     """
     If there are saved_pictures, put them into a .html; otherwise, save a
     screendump and the turtle project code.
     """
-    code = ""
+    code = ''
     if len(tw.saved_pictures) > 0:
         for i, p in enumerate(tw.saved_pictures):
             code += self.html_glue['slide'][0] + str(i)
@@ -83,7 +83,7 @@ def save_html(self, tw, embed_flag=True):
                     self.html_glue['div'][0] + \
                     self.html_glue['h1'][0]
             if self.embed_images == True:
-                f = open(p, "r")
+                f = open(p, 'r')
                 imgdata = f.read()
                 f.close()
                 if p.endswith(('.svg')):
@@ -96,7 +96,7 @@ def save_html(self, tw, embed_flag=True):
                     tmp += self.html_glue['img2'][1]
             else:
                 if p.endswith(('.svg')):
-                    f = open(p, "r")
+                    f = open(p, 'r')
                     imgdata = f.read()
                     f.close()
                     tmp = imgdata
@@ -109,7 +109,8 @@ def save_html(self, tw, embed_flag=True):
                     self.html_glue['div'][1]
     else:
         if self.embed_images == True:
-            imgdata = image_to_base64(save_picture(self.tw.canvas), tw.activity)
+            imgdata = image_to_base64(save_picture(self.tw.canvas),
+                                      tw.activity)
         else:
             imgdata = os.path.join(self.tw.load_save_folder, 'image')
             self.tw.save_as_image(imgdata)
@@ -120,9 +121,9 @@ def save_html(self, tw, embed_flag=True):
         code += self.html_glue['div'][1]
 
     if tw.running_sugar:
-        title = _("Turtle Art") + " " + tw.activity.metadata['title']
+        title = _('Turtle Art') + ' ' + tw.activity.metadata['title']
     else:
-        title = _("Turtle Art")
+        title = _('Turtle Art')
 
     header = self.html_glue['doctype'] + \
             self.html_glue['html'][0]

@@ -134,6 +134,7 @@ def get_id(connection):
         return connection.id
     return None
 
+
 def json_dump(data):
     """ Save data using available JSON tools. """
     if OLD_SUGAR_SYSTEM is True:

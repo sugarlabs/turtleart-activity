@@ -121,29 +121,29 @@ class Gplay():
         if lc.tw.running_sugar:
             self.bin.set_transient_for(lc.tw.activity)
 
-        self.bin.move(x, y+108)
+        self.bin.move(x, y + 108)
         self.bin.resize(w, h)
         self.bin.show_all()
 
         self._want_document = True
 
     def _player_eos_cb(self, widget):
-        logging.debug("end of stream")
+        logging.debug('end of stream')
         pass
 
     def _player_error_cb(self, widget, message, detail):
         self.player.stop()
         self.player.set_uri(None)
-        logging.debug("Error: %s - %s" % (message, detail))
+        logging.debug('Error: %s - %s' % (message, detail))
 
     def _player_stream_info_cb(self, widget, stream_info):
         if not len(stream_info) or self.got_stream_info:
             return
 
         GST_STREAM_TYPE_UNKNOWN = 0
-        GST_STREAM_TYPE_AUDIO   = 1
-        GST_STREAM_TYPE_VIDEO   = 2
-        GST_STREAM_TYPE_TEXT    = 3
+        GST_STREAM_TYPE_AUDIO = 1
+        GST_STREAM_TYPE_VIDEO = 2
+        GST_STREAM_TYPE_TEXT = 3
 
         only_audio = True
         for item in stream_info:
@@ -167,7 +167,7 @@ class Gplay():
                 continue
             else:
                 result.append('file://' + \
-                                  urllib.quote(os.path.join(self.playpath,x)))
+                                  urllib.quote(os.path.join(self.playpath, x)))
         return result
 
     def start(self, uri=None):
@@ -176,7 +176,7 @@ class Gplay():
         if not uri:
             return False
         # FIXME: parse m3u files and extract actual URL
-        if uri.endswith(".m3u") or uri.endswith(".m3u8"):
+        if uri.endswith('.m3u') or uri.endswith('.m3u8'):
             self.playlist.extend(self.getplaylist([line.strip() \
                 for line in open(uri).readlines()]))
         elif uri.endswith('.pls'):
@@ -184,24 +184,25 @@ class Gplay():
                 cf.readfp(open(uri))
                 x = 1
                 while True:
-                    self.playlist.append(cf.get("playlist",'File'+str(x)))
+                    self.playlist.append(cf.get('playlist', 'File' + str(x)))
                     x += 1
             except:
                 #read complete
                 pass
         else:
-            self.playlist.append("file://" + urllib.quote(os.path.abspath(uri)))
+            self.playlist.append('file://' + \
+                                     urllib.quote(os.path.abspath(uri)))
         if not self.player:
             # lazy init the player so that videowidget is realized
             # and has a valid widget allocation
             self.player = GstPlayer(self.videowidget)
-            self.player.connect("eos", self._player_eos_cb)
-            self.player.connect("error", self._player_error_cb)
-            self.player.connect("stream-info", self._player_stream_info_cb)
+            self.player.connect('eos', self._player_eos_cb)
+            self.player.connect('error', self._player_error_cb)
+            self.player.connect('stream-info', self._player_stream_info_cb)
 
         try:
             if not self.currentplaying:
-                logging.info("Playing: " + self.playlist[0])
+                logging.info('Playing: ' + self.playlist[0])
                 self.player.set_uri(self.playlist[0])
                 self.currentplaying = 0
                 self.play_toggled()
@@ -240,10 +241,10 @@ class Gplay():
 
     def scale_value_changed_cb(self, scale):
         # see seek.c:seek_cb
-        real = long(scale.get_value() * self.p_duration / 100) # in ns
+        real = long(scale.get_value() * self.p_duration / 100)  # in ns
         self.player.seek(real)
         # allow for a preroll
-        self.player.get_state(timeout=50 * gst.MSECOND) # 50 ms
+        self.player.get_state(timeout=50 * gst.MSECOND)  # 50 ms
 
     def scale_button_release_cb(self, widget, event):
         # see seek.cstop_seek
@@ -274,9 +275,8 @@ class Gplay():
 class GstPlayer(gobject.GObject):
     __gsignals__ = {
         'error': (gobject.SIGNAL_RUN_FIRST, None, [str, str]),
-        'eos'  : (gobject.SIGNAL_RUN_FIRST, None, []),
-        'stream-info' : (gobject.SIGNAL_RUN_FIRST, None, [object])
-    }
+        'eos': (gobject.SIGNAL_RUN_FIRST, None, []),
+        'stream-info': (gobject.SIGNAL_RUN_FIRST, None, [object])}
 
     def __init__(self, videowidget):
         gobject.GObject.__init__(self)
@@ -284,7 +284,7 @@ class GstPlayer(gobject.GObject):
         self.playing = False
         self.error = False
 
-        self.player = gst.element_factory_make("playbin", "player")
+        self.player = gst.element_factory_make('playbin', 'player')
 
         self.videowidget = videowidget
         self._init_video_sink()
@@ -304,18 +304,18 @@ class GstPlayer(gobject.GObject):
         if message.structure.get_name() == 'prepare-xwindow-id':
             self.videowidget.set_sink(message.src)
             message.src.set_property('force-aspect-ratio', True)
-            
+
     def on_message(self, bus, message):
         t = message.type
         if t == gst.MESSAGE_ERROR:
             err, debug = message.parse_error()
-            logging.debug("Error: %s - %s" % (err, debug))
+            logging.debug('Error: %s - %s' % (err, debug))
             self.error = True
-            self.emit("eos")
+            self.emit('eos')
             self.playing = False
-            self.emit("error", str(err), str(debug))
+            self.emit('error', str(err), str(debug))
         elif t == gst.MESSAGE_EOS:
-            self.emit("eos")
+            self.emit('eos')
             self.playing = False
         elif t == gst.MESSAGE_STATE_CHANGED:
             old, new, pen = message.parse_state_changed()
@@ -327,12 +327,12 @@ class GstPlayer(gobject.GObject):
         self.bin = gst.Bin()
         videoscale = gst.element_factory_make('videoscale')
         self.bin.add(videoscale)
-        pad = videoscale.get_pad("sink")
-        ghostpad = gst.GhostPad("sink", pad)
+        pad = videoscale.get_pad('sink')
+        ghostpad = gst.GhostPad('sink', pad)
         self.bin.add_pad(ghostpad)
-        videoscale.set_property("method", 0)
+        videoscale.set_property('method', 0)
 
-        caps_string = "video/x-raw-yuv, "
+        caps_string = 'video/x-raw-yuv, '
         r = self.videowidget.get_allocation()
         if r.width > 500 and r.height > 500:
             # Sigh... xvimagesink on the XOs will scale the video to fit
@@ -340,24 +340,24 @@ class GstPlayer(gobject.GObject):
             # video in Xephyr so that the XO can work right.
             w = 480
             h = float(w) / float(float(r.width) / float(r.height))
-            caps_string += "width=%d, height=%d" % (w, h)
+            caps_string += 'width=%d, height=%d' % (w, h)
         else:
-            caps_string += "width=480, height=360"
+            caps_string += 'width=480, height=360'
 
         caps = gst.Caps(caps_string)
-        self.filter = gst.element_factory_make("capsfilter", "filter")
+        self.filter = gst.element_factory_make('capsfilter', 'filter')
         self.bin.add(self.filter)
-        self.filter.set_property("caps", caps)
+        self.filter.set_property('caps', caps)
 
-        conv = gst.element_factory_make ("ffmpegcolorspace", "conv");
+        conv = gst.element_factory_make('ffmpegcolorspace', 'conv')
         self.bin.add(conv)
         videosink = gst.element_factory_make('autovideosink')
         self.bin.add(videosink)
         gst.element_link_many(videoscale, self.filter, conv, videosink)
-        self.player.set_property("video-sink", self.bin)
+        self.player.set_property('video-sink', self.bin)
 
     def query_position(self):
-        "Returns a (position, duration) tuple"
+        """ Returns a (position, duration) tuple """
         try:
             position, format = self.player.query_position(gst.FORMAT_TIME)
         except:
@@ -383,22 +383,22 @@ class GstPlayer(gobject.GObject):
         if res:
             self.player.set_new_stream_time(0L)
         else:
-            logging.debug("seek to %r failed" % location)
+            logging.debug('seek to %r failed' % location)
 
     def pause(self):
-        logging.debug("pausing player")
+        logging.debug('pausing player')
         self.player.set_state(gst.STATE_PAUSED)
         self.playing = False
 
     def play(self):
-        logging.debug("playing player")
+        logging.debug('playing player')
         self.player.set_state(gst.STATE_PLAYING)
         self.playing = True
         self.error = False
-        
+
     def stop(self):
         self.player.set_state(gst.STATE_NULL)
-        logging.debug("stopped player")
+        logging.debug('stopped player')
 
     def get_state(self, timeout=1):
         return self.player.get_state(timeout=timeout)
@@ -408,6 +408,7 @@ class GstPlayer(gobject.GObject):
 
 
 class VideoWidget(gtk.DrawingArea):
+
     def __init__(self):
         gtk.DrawingArea.__init__(self)
         self.set_events(gtk.gdk.EXPOSURE_MASK)
@@ -426,24 +427,3 @@ class VideoWidget(gtk.DrawingArea):
         assert self.window.xid
         self.imagesink = sink
         self.imagesink.set_xwindow_id(self.window.xid)
-
-
-
-if __name__ == '__main__':
-    window = gtk.Window()
-
-    view = VideoWidget()
-
-    player = GstPlayer(view)
-
-    window.add(view)
-
-    player.set_uri('http://78.46.73.237:8000/prog')
-    player.play()
-    window.show_all()
-    
-
-
-    gtk.main()
-
-

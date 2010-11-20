@@ -14,6 +14,7 @@
 
 import sys
 
+
 class RtfException(Exception):
     pass
 
@@ -22,6 +23,7 @@ control = 2
 argument = 3
 backslash = 4
 escapedChar = 5
+
 
 class RtfParser(object):
 
@@ -49,15 +51,15 @@ class RtfParser(object):
     def putChar(self):
         pass
 
-    def doControl(self,token,arg):
+    def doControl(self, token, arg):
         pass
 
-    def feed(self,txt):
+    def feed(self, txt):
         for c in txt:
             self.feedChar(c)
 
-    def feedChar(self,char):
-        if self.state == plaintext: # this is just normal user content
+    def feedChar(self, char):
+        if self.state == plaintext:  # this is just normal user content
             if char == '\\':
                 self.state = backslash
             elif char == '{':
@@ -66,7 +68,7 @@ class RtfParser(object):
                 self.popState()
             else:
                 self.putChar(char)
-        elif self.state == backslash: # a command or escape
+        elif self.state == backslash:  # a command or escape
             if char == '\\' or char == '{' or char == '}':
                 self.putChar(char)
                 self.state = plaintext
@@ -77,28 +79,28 @@ class RtfParser(object):
                 elif char == "'":
                     self.state = escapedChar
                     self.escapedChar = ''
-                elif char in ['\\', '{','}']:
+                elif char in ['\\', '{', '}']:
                     self.putChar(char)
                     self.state = plaintext
-                elif char == "~": # non breaking space
+                elif char == "~":  # non breaking space
                     self.putChar(self.getNonBreakingSpace())
                     self.state = plaintext
                 else:
-                    raise RtfException,'unexpected %s after \\' % char
+                    raise RtfException(('unexpected %s after \\' % char))
         elif self.state == escapedChar:
             self.escapedChar = self.escapedChar + char
             if len(self.escapedChar) == 2:
-                char = self.getChar(int(self.escapedChar,16))
+                char = self.getChar(int(self.escapedChar, 16))
                 self.putChar(char)
                 self.state = plaintext
-        elif self.state == control: # collecting the command token
+        elif self.state == control:  # collecting the command token
             if char.isalpha():
                 self.token = self.token + char
-            elif char.isdigit() or char== '-':
+            elif char.isdigit() or char == '-':
                 self.state = argument
                 self.arg = char
             else:
-                self.doControl(self.token,self.arg)
+                self.doControl(self.token, self.arg)
                 self.state = plaintext
                 if char == '\\':
                     self.state = backslash
@@ -109,12 +111,12 @@ class RtfParser(object):
                 else:
                     if not char.isspace():
                         self.putChar(char)
-        elif self.state == argument: # collecting the optional command argument
+        elif self.state == argument:  # collecting the optional argument
             if char.isdigit():
                 self.arg = self.arg + char
             else:
                 self.state = plaintext
-                self.doControl(self.token,self.arg)
+                self.doControl(self.token, self.arg)
                 if char == '\\':
                     self.state = backslash
                 elif char == '{':
@@ -127,30 +129,22 @@ class RtfParser(object):
 
 
 class RtfTextOnly(RtfParser):
+
     def __init__(self):
         RtfParser.__init__(self)
         self.level = 0
-    
+
     def pushState(self):
         self.level = self.level + 1
 
     def popState(self):
         self.level = self.level - 1
 
-    def putChar(self,ch):
+    def putChar(self, ch):
         if self.par:
             self.output += ch
 
-    def doControl(self,token,arg):
+    def doControl(self, token, arg):
         if token[0:3] == 'par':
             self.par = True
         pass
-
-if __name__ == '__main__':
-    text_only = RtfTextOnly()
-    if len(sys.argv) != 2:
-        print 'Usage : %s file.rtf' % sys.argv[0]
-    else:
-        for line in open(sys.argv[1], 'r'):
-            text_only.feed(line)
-        print text_only.output
