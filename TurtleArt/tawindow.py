@@ -34,7 +34,6 @@ import locale
 from gettext import gettext as _
 
 try:
-    from sugar.graphics.objectchooser import ObjectChooser
     from sugar.datastore import datastore
     from sugar import profile
 except ImportError:
@@ -151,7 +150,7 @@ class TurtleArtWindow():
         else:
             self.lead = 1.0
             self.scale = 1.0
-            self.color_mode = '888' # TODO: Read visual mode from gtk image
+            self.color_mode = '888'  # TODO: Read visual mode from gtk image
 
         self.block_scale = BLOCK_SCALE
         self.trash_scale = 0.5
@@ -571,7 +570,6 @@ class TurtleArtWindow():
                 svg_str_to_pixbuf(svg.toolbar(self.width, ICON_SIZE)))
             self.toolbar_spr.type = 'toolbar'
             self.toolbar_spr.set_layer(CATEGORY_LAYER)
-
 
         if self.palette_sprs == []:
             # Create the empty palettes
@@ -1154,7 +1152,7 @@ class TurtleArtWindow():
                     cons.append(None)
             elif blocks[i].connections == 'check':
                 # Convert old-style boolean and arithmetic blocks
-                cons.append(None) # Add an extra connection.
+                cons.append(None)  # Add an extra connection.
                 for c in block_data[i][4]:
                     if c is None:
                         cons.append(None)
@@ -1804,6 +1802,7 @@ class TurtleArtWindow():
 
     def _import_from_journal(self, blk):
         """ Import a file from the Sugar Journal """
+        # TODO: check blk name to set filter
         if self.running_sugar:
             chooser(self.parent, '', self._update_media_blk)
         else:
@@ -1831,7 +1830,6 @@ class TurtleArtWindow():
 
     def _update_media_icon(self, blk, name, value=''):
         """ Update the icon on a 'loaded' media block. """
-        print blk.name, name
         if blk.name == 'journal':
             self._load_image_thumb(name, blk)
         elif blk.name == 'audio':
@@ -1937,7 +1935,7 @@ class TurtleArtWindow():
             newnum = oldnum + '.'
         elif keyname == 'BackSpace':
             if len(oldnum) > 0:
-                newnum = oldnum[:len(oldnum)-1]
+                newnum = oldnum[:len(oldnum) - 1]
             else:
                 newnum = ''
         elif keyname in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
@@ -1998,7 +1996,7 @@ class TurtleArtWindow():
             keyunicode = 9
         if keyname == 'BackSpace':
             if len(oldleft) > 1:
-                newleft = oldleft[:len(oldleft)-1]
+                newleft = oldleft[:len(oldleft) - 1]
             else:
                 newleft = ''
         elif keyname == 'Home':
@@ -2020,7 +2018,7 @@ class TurtleArtWindow():
         elif keyname == 'Down':
             self._unselect_block()
             return
-        elif keyname == 'Up' or keyname == 'Escape': # Restore previous state
+        elif keyname == 'Up' or keyname == 'Escape':  # Restore previous state
             self.selected_blk.spr.set_label(self.saved_string)
             self._unselect_block()
             return
@@ -2034,7 +2032,7 @@ class TurtleArtWindow():
                     newleft = oldleft + unichr(keyunicode)
                 else:
                     newleft = oldleft
-            elif keyunicode == -1: # clipboard text
+            elif keyunicode == -1:  # clipboard text
                 if keyname == '\n':
                     newleft = oldleft + RETURN
                 else:
@@ -2188,7 +2186,7 @@ class TurtleArtWindow():
                 # add a new block for this code at turtle position
                 (tx, ty) = self.active_turtle.get_xy()
                 self._new_block('userdefined', tx, ty)
-                self.myblock[self.block_list.list.index(self.drag_group[0])] = \
+                self.myblock[self.block_list.list.index(self.drag_group[0])] =\
                     self.python_code
                 self.set_userdefined(self.drag_group[0])
                 self.drag_group[0].values.append(dsobject.object_id)
@@ -2345,18 +2343,22 @@ class TurtleArtWindow():
 
         # Some blocks get transformed.
         if btype in BASIC_STYLE_VAR_ARG and value is not None:
-            if self.running_sugar and value > 0:
-                self.load_python_code_from_journal(datastore.get(value), blk)
-            elif value > 0: # catch depreciated format (#2501)
-                self.selected_blk = blk
-                self.load_python_code_from_file(fname=value,
-                                                add_new_block=False)
-                self.selected_blk = None
-            self.myblock[self.block_list.list.index(blk)] = self.python_code
-            self.set_userdefined(blk)
+            # Is there code stored in this userdefined block?
+            if value > 0:  # catch depreciated format (#2501)
+                if self.running_sugar:
+                    self.load_python_code_from_journal(datastore.get(value),
+                                                       blk)
+                else:
+                    self.selected_blk = blk
+                    self.load_python_code_from_file(fname=value,
+                                                    add_new_block=False)
+                    self.selected_blk = None
+                self.myblock[self.block_list.list.index(blk)] = \
+                    self.python_code
+                self.set_userdefined(blk)
         if btype == 'string' and blk.spr is not None:
             blk.spr.set_label(blk.values[0].replace('\n', RETURN))
-        elif btype == 'start': # block size is saved in start block
+        elif btype == 'start':  # block size is saved in start block
             if value is not None:
                 self.block_scale = value
         elif btype in EXPANDABLE or btype in EXPANDABLE_BLOCKS or \
@@ -2368,7 +2370,7 @@ class TurtleArtWindow():
                 if value is not None:
                     blk.expand_in_x(value)
             elif btype == 'templatelist' or btype == 'list':
-                for i in range(len(b[4])-4):
+                for i in range(len(b[4]) - 4):
                     blk.add_arg()
             elif btype == 'myfunc2arg' or btype == 'myfunc3arg' or\
                  btype == 'userdefined2args' or btype == 'userdefined3args':
@@ -2384,7 +2386,8 @@ class TurtleArtWindow():
             if len(blk.values) == 0 or blk.values[0] == 'None' or \
                blk.values[0] is None:
                 self._block_skin(btype + 'off', blk)
-            elif btype == 'video' or btype == 'audio' or btype == 'description':
+            elif btype == 'video' or btype == 'audio' or \
+                 btype == 'description':
                 self._block_skin(btype + 'on', blk)
             elif self.running_sugar:
                 try:
@@ -2456,7 +2459,7 @@ class TurtleArtWindow():
             self.save_folder = self.load_save_folder
 
     def assemble_data_to_save(self, save_turtle=True, save_project=True):
-        """ Pack the project (or stack) into a data stream to be serialized """
+        """ Pack the project (or stack) into a datastream to be serialized """
         _data = []
         _blks = []
 
@@ -2477,7 +2480,7 @@ class TurtleArtWindow():
                     _name = (_blk.name)
             elif _blk.name in BASIC_STYLE_VAR_ARG and len(_blk.values) > 0:
                 _name = (_blk.name, _blk.values[0])
-            elif _blk.name in EXPANDABLE or _blk.name in EXPANDABLE_BLOCKS or \
+            elif _blk.name in EXPANDABLE or _blk.name in EXPANDABLE_BLOCKS or\
                  _blk.name in EXPANDABLE_ARGS:
                 _ex, _ey = _blk.get_expand_x_y()
                 if _ex > 0:
@@ -2486,7 +2489,7 @@ class TurtleArtWindow():
                     _name = (_blk.name, _ey)
                 else:
                     _name = (_blk.name, 0)
-            elif _blk.name == 'start': # save block_size in start block
+            elif _blk.name == 'start':  # save block_size in start block
                 _name = (_blk.name, self.block_scale)
             else:
                 _name = (_blk.name)
@@ -2516,7 +2519,7 @@ class TurtleArtWindow():
         y = round_int(float(self.canvas.ycor) / self.coord_scale)
         h = round_int(self.canvas.heading)
         if self.running_sugar:
-            self.activity.coordinates_label.set_text("%s: %d %s: %d %s: %d" % \
+            self.activity.coordinates_label.set_text("%s: %d %s: %d %s: %d" %\
                 (_("xcor"), x, _("ycor"), y, _("heading"), h))
             self.activity.coordinates_label.show()
         elif self.interactive_mode:
