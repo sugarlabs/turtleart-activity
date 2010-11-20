@@ -34,16 +34,16 @@ from UserDict import UserDict
 
 try:
     from sugar.datastore import datastore
-except:
+except ImportError:
     pass
 
-from taconstants import PALETTES, PALETTE_NAMES, TAB_LAYER, BLACK, WHITE, \
+from taconstants import TAB_LAYER, BLACK, WHITE, \
     DEFAULT_SCALE, ICON_SIZE, BLOCK_NAMES, CONSTANTS, SENSOR_DC_NO_BIAS, \
     SENSOR_DC_BIAS, XO1, XO15
 from tagplay import play_audio, play_movie_from_file, stop_media
 from tajail import myfunc, myfunc_import
-from tautils import get_pixbuf_from_journal, movie_media_type, convert, \
-                    audio_media_type, text_media_type, round_int, chr_to_ord, \
+from tautils import get_pixbuf_from_journal, convert, \
+                    text_media_type, round_int, chr_to_ord, \
                     strtype, data_from_file
 
 from RtfParser import RtfTextOnly
@@ -271,14 +271,14 @@ def _avg(array, abs_value=False):
     """ Calc. the average value of an array """
     if len(array) == 0:
         return 0
-    sum = 0
+    array_sum = 0
     if abs_value:
         for a in array:
-            sum += abs(a)
+            array_sum += abs(a)
     else:
         for a in array:
-            sum += a
-    return float(sum) / len(array)
+            array_sum += a
+    return float(array_sum) / len(array)
 
 
 def stop_logo(tw):
@@ -1041,7 +1041,7 @@ class LogoCode:
                 x = int(x)
         try:
             return self.boxes['box3' + str(x)]
-        except:
+        except KeyError:
             raise logoerror("#emptybox")
 
     def _prim_myblock(self, x):
@@ -1049,9 +1049,9 @@ class LogoCode:
         if self.bindex is not None and self.bindex in self.tw.myblock:
             try:
                 if len(x) == 1:
-                    y = myfunc_import(self, self.tw.myblock[self.bindex], x[0])
+                    myfunc_import(self, self.tw.myblock[self.bindex], x[0])
                 else:
-                    y = myfunc_import(self, self.tw.myblock[self.bindex], x)
+                    myfunc_import(self, self.tw.myblock[self.bindex], x)
             except:
                 raise logoerror("#syntaxerror")
 
@@ -1068,7 +1068,7 @@ class LogoCode:
                         dsobject.destroy()
                     else:
                         self.tw.showlabel('status', n[6:])
-                except:
+                except IOError:
                     self.tw.showlabel('status', n)
             else:
                 self.tw.showlabel('status', n)
@@ -1088,7 +1088,7 @@ class LogoCode:
                                  'Return': 13, \
                                  'KP_Up': 2, 'KP_Down': 4, 'KP_Left': 1, \
                                  'KP_Right': 3}[self.tw.keypress]
-            except:
+            except KeyError:
                 self.keyboard = 0
         self.update_label_value('keyboard', self.keyboard)
         self.tw.keypress = ''
@@ -1199,7 +1199,7 @@ class LogoCode:
         if data is not None:
             for val in data:
                 self.heap.append(val)
-            self.update_label_value('pop', val)
+            self.update_label_value('pop', self.heap[-1])
 
     def _empty_heap(self):
         """ Empty FILO """
@@ -1304,7 +1304,7 @@ class LogoCode:
                 try:
                     dsobject = datastore.get(audio[6:])
                     play_audio(self, dsobject.file_path)
-                except:
+                except IOError:
                     _logger.debug("Couldn't open id: %s" % (str(audio[6:])))
         else:
             play_audio(self, audio[6:])
@@ -1323,7 +1323,7 @@ class LogoCode:
                     dsobject = datastore.get(video[6:])
                     play_movie_from_file(self, dsobject.file_path,
                                          int(x), int(y), int(w), int(h))
-                except:
+                except IOError:
                     _logger.debug("Couldn't open id: %s" % (str(video[6:])))
         else:
             play_movie_from_file(self, video[6:],
@@ -1345,13 +1345,13 @@ class LogoCode:
                     pixbuf = get_pixbuf_from_journal(dsobject,
                                                      int(w), int(h))
                     dsobject.destroy()
-                except:
+                except IOError:
                     # Maybe it is a pathname instead.
                     try:
                         self.filepath = media[6:0]
                         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
                                                    media[6:], int(w), int(h))
-                    except:
+                    except IOError:
                         self.filepath = None
                         self.tw.showlabel('nojournal', media[6:])
                         _logger.debug("Couldn't open Journal object %s" % \
@@ -1361,7 +1361,7 @@ class LogoCode:
                     self.filepath = media[6:]
                     pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
                         media[6:], int(w), int(h))
-                except:
+                except IOError:
                     self.filepath = None
                     self.tw.showlabel('nofile', media[6:])
                     _logger.debug("Couldn't open media object %s" % \
@@ -1396,20 +1396,20 @@ class LogoCode:
                     else:
                         text = str(dsobject.metadata['description'])
                     dsobject.destroy()
-                except:
+                except IOError:
                     _logger.debug("no description in %s" % (media[6:]))
             else:
                 try:
                     if media.endswith(('rtf')):
-                            text_only = RtfTextOnly()
-                            for line in open(media[6:], 'r'):
-                                text_only.feed(line)
-                            text = text_only.output
+                        text_only = RtfTextOnly()
+                        for line in open(media[6:], 'r'):
+                            text_only.feed(line)
+                        text = text_only.output
                     else:
                         f = open(media[6:], 'r')
                         text = f.read()
                         f.close()
-                except:
+                except IOError:
                     _logger.debug("no text in %s?" % (media[6:]))
             if text is not None:
                 self.tw.canvas.draw_text(text, int(x), int(y),
