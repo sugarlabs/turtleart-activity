@@ -24,17 +24,10 @@
 
 
 import logging
-from gettext import gettext as _
 import os
-
-from sugar.activity import activity
-from sugar.graphics.objectchooser import ObjectChooser
-from sugar import mime
 
 import pygtk
 pygtk.require('2.0')
-
-import sys
 
 import gobject
 
@@ -104,8 +97,6 @@ class Gplay():
         self.only_audio = False
         self.got_stream_info = False
         self.currentplaying = 0
-        self.p_position = gst.CLOCK_TIME_NONE
-        self.p_duration = gst.CLOCK_TIME_NONE
 
         self.bin = gtk.Window()
 
@@ -124,7 +115,6 @@ class Gplay():
 
     def _player_eos_cb(self, widget):
         logging.debug('end of stream')
-        pass
 
     def _player_error_cb(self, widget, message, detail):
         self.player.stop()
@@ -135,10 +125,7 @@ class Gplay():
         if not len(stream_info) or self.got_stream_info:
             return
 
-        GST_STREAM_TYPE_UNKNOWN = 0
-        GST_STREAM_TYPE_AUDIO = 1
         GST_STREAM_TYPE_VIDEO = 2
-        GST_STREAM_TYPE_TEXT = 3
 
         only_audio = True
         for item in stream_info:
@@ -267,35 +254,6 @@ class GstPlayer(gobject.GObject):
         self.bin.add(videosink)
         gst.element_link_many(videoscale, self.filter, conv, videosink)
         self.player.set_property('video-sink', self.bin)
-
-    def query_position(self):
-        """ Returns a (position, duration) tuple """
-        try:
-            position, format = self.player.query_position(gst.FORMAT_TIME)
-        except:
-            position = gst.CLOCK_TIME_NONE
-
-        try:
-            duration, format = self.player.query_duration(gst.FORMAT_TIME)
-        except:
-            duration = gst.CLOCK_TIME_NONE
-
-        return (position, duration)
-
-    def seek(self, location):
-        """
-        @param location: time to seek to, in nanoseconds
-        """
-        event = gst.event_new_seek(1.0, gst.FORMAT_TIME,
-            gst.SEEK_FLAG_FLUSH | gst.SEEK_FLAG_ACCURATE,
-            gst.SEEK_TYPE_SET, location,
-            gst.SEEK_TYPE_NONE, 0)
-
-        res = self.player.send_event(event)
-        if res:
-            self.player.set_new_stream_time(0L)
-        else:
-            logging.debug('seek to %r failed' % location)
 
     def pause(self):
         logging.debug('pausing player')
