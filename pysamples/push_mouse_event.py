@@ -32,8 +32,8 @@ def myblock(lc, x):
 
     if lc.tw.mouse_flag == 1:
         # push y first so x will be popped first
-        lc.heap.append(lc.tw.mouse_y)
-        lc.heap.append(lc.tw.mouse_x)
+        lc.heap.append((lc.tw.canvas.height / 2) - lc.tw.mouse_y)
+        lc.heap.append(lc.tw.mouse_x - (lc.tw.canvas.width / 2))
         lc.heap.append(1) # mouse event
         lc.tw.mouse_flag = 0
     else:
