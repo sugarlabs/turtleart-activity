@@ -2151,6 +2151,7 @@ class TurtleArtWindow():
     def load_python_code_from_file(self, fname=None, add_new_block=True):
         """ Load Python code from a file """
         id = None
+        self.python_code = None
         if fname is None:
             fname, self.py_load_save_folder = get_load_name('.py',
                 self.py_load_save_folder)
@@ -2161,7 +2162,7 @@ class TurtleArtWindow():
             self.python_code = f.read()
             f.close()
             id = fname
-        except:
+        except IOError:
             _logger.error("Unable to read Python code from %s" % (fname))
             return id
 
@@ -2201,6 +2202,7 @@ class TurtleArtWindow():
 
     def load_python_code_from_journal(self, dsobject, blk=None):
         """ Read the Python code from the Journal object """
+        self.python_code = None
         try:
             _logger.debug("opening %s " % dsobject.file_path)
             file_handle = open(dsobject.file_path, "r")
@@ -2345,20 +2347,24 @@ class TurtleArtWindow():
         if btype in BASIC_STYLE_VAR_ARG and value is not None:
             # Is there code stored in this userdefined block?
             if value > 0:  # catch depreciated format (#2501)
+                self.python_code = None
                 if self.running_sugar:
                     try:
-                        self.load_python_code_from_journal(
-                            datastore.get(value), blk)
-                    except IOError:
+                        dsobject = datastore.get(value)
+                    except: # Should be IOError, but dbus error is raised
+                        dsobject = None
                         _logger.debug("couldn't get dsobject %s" % value)
+                    if dsobject is not None:
+                        self.load_python_code_from_journal(dsobject, blk)
                 else:
                     self.selected_blk = blk
                     self.load_python_code_from_file(fname=value,
                                                     add_new_block=False)
                     self.selected_blk = None
-                self.myblock[self.block_list.list.index(blk)] = \
-                    self.python_code
-                self.set_userdefined(blk)
+                if self.python_code is not None:
+                    self.myblock[self.block_list.list.index(blk)] = \
+                        self.python_code
+                    self.set_userdefined(blk)
         if btype == 'string' and blk.spr is not None:
             blk.spr.set_label(blk.values[0].replace('\n', RETURN))
         elif btype == 'start':  # block size is saved in start block
