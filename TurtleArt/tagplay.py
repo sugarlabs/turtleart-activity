@@ -30,6 +30,7 @@ import pygtk
 pygtk.require('2.0')
 
 import gobject
+gobject.threads_init()
 
 import pygst
 pygst.require('0.10')
