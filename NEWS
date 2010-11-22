@@ -1,3 +1,15 @@
+104
+
+* added more sample Python code (#548):
+ (copy/paste heap to/from clipboard and to/from Journal)
+* Sample Python code stored in individual files
+* sensor calibation for XO 1.5 hardware (Tony Forster)
+* text-only support for RTF files (#893)
+* refactoring of audio/video code based on Jukebox (#1613)
+* catch depreciated format (#2501)
+* Spanish translation of new blocks
+* Reorganized some palettes (flow, portfolio) to fit smaller screen sizes
+
 103
 
 * sensor palette: sound, volume, pitch, resistance, voltage
