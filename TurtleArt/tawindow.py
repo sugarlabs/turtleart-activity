@@ -2206,7 +2206,7 @@ class TurtleArtWindow():
             file_handle = open(dsobject.file_path, "r")
             self.python_code = file_handle.read()
             file_handle.close()
-        except:
+        except IOError:
             _logger.debug("couldn't open %s" % dsobject.file_path)
         if blk is None:
             blk = self.selected_blk
@@ -2346,8 +2346,11 @@ class TurtleArtWindow():
             # Is there code stored in this userdefined block?
             if value > 0:  # catch depreciated format (#2501)
                 if self.running_sugar:
-                    self.load_python_code_from_journal(datastore.get(value),
-                                                       blk)
+                    try:
+                        self.load_python_code_from_journal(
+                            datastore.get(value), blk)
+                    except IOError:
+                        _logger.debug("couldn't get dsobject %s" % value)
                 else:
                     self.selected_blk = blk
                     self.load_python_code_from_file(fname=value,
