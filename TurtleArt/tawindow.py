@@ -828,7 +828,6 @@ class TurtleArtWindow():
                 elif blk.name in MACROS:
                     self._new_macro(blk.name, x + 20, y + 20)
                 else:
-                    # TODO: put up an alert message
                     # You can only have one instance of some blocks
                     if blk.name in ['start', 'hat1', 'hat2']:
                         if len(self.block_list.get_similar_blocks(
@@ -908,7 +907,7 @@ class TurtleArtWindow():
             return True
 
     def _select_category(self, spr):
-        """ Select a category from the toolbar (old Sugar systems only). """
+        """ Select a category from the toolbar """
         i = self.selectors.index(spr)
         spr.set_shape(self.selector_shapes[i][1])
         if self.selected_selector is not None:
@@ -1489,13 +1488,16 @@ class TurtleArtWindow():
         if blk is None:
             return
         self.selected_blk = blk
+
         if  blk.name == 'number' or blk.name == 'string':
             self.saved_string = blk.spr.labels[0]
             blk.spr.labels[0] += CURSOR
+
         elif blk.name in BOX_STYLE_MEDIA:
             self._import_from_journal(self.selected_blk)
             if blk.name == 'journal' and self.running_sugar:
                 self._load_description_block(blk)
+
         elif blk.name == 'identity2' or blk.name == 'hspace':
             group = find_group(blk)
             if hide_button_hit(blk.spr, x, y):
@@ -1508,6 +1510,7 @@ class TurtleArtWindow():
             for gblk in group:
                 if gblk != blk:
                     gblk.spr.move_relative((dx * blk.scale, 0))
+
         elif blk.name == 'vspace':
             group = find_group(blk)
             if hide_button_hit(blk.spr, x, y):
@@ -1521,6 +1524,7 @@ class TurtleArtWindow():
                 if gblk != blk:
                     gblk.spr.move_relative((0, dy * blk.scale))
             grow_stack_arm(find_sandwich_top(blk))
+
         elif blk.name in EXPANDABLE_BLOCKS:
             # Connection may be lost during expansion, so store it...
             blk0 = blk.connections[0]
@@ -1598,12 +1602,18 @@ class TurtleArtWindow():
             else:
                 self._start_audiograb()
                 self._run_stack(blk)
+
+        elif blk.name in ['sandwichtop_no_arm_no_label', 
+                          'sandwichtop_no_arm']:
+            restore_stack(blk)
+
         elif blk.name in COLLAPSIBLE:
             top = find_sandwich_top(blk)
             if collapsed(blk):
-                restore_stack(top)
+                restore_stack(top)  # depreciated (bottom block is invisible)
             elif top is not None:
                 collapse_stack(top)
+
         else:
             self._start_audiograb()
             self._run_stack(blk)

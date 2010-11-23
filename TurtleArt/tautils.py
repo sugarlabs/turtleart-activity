@@ -464,6 +464,8 @@ def restore_stack(top):
         top.name = 'sandwichtop'
     else:
         top.name = 'sandwichtop_no_label'
+        top.spr.set_label(' ', 1)
+        top.resize()
     top.refresh()
     grow_stack_arm(top)
 
@@ -513,7 +515,7 @@ def collapse_stack(top):
     for _blk in _group:
         if not _hit_bottom and _blk == _bot:
             _hit_bottom = True
-            # Replace 'sandwichbottom' shape with 'sandwichcollapsed' shape
+            # Replace 'sandwichbottom' with invisible 'sandwichcollapsed'
             if len(_blk.values) == 0:
                 _blk.values.append(1)
             else:
@@ -521,16 +523,7 @@ def collapse_stack(top):
             _olddx = _blk.docks[1][2]
             _olddy = _blk.docks[1][3]
             _blk.name = 'sandwichcollapsed'
-            _blk.svg.set_show(True)
-            _blk.svg.set_hide(False)
-            _blk._dx = 0
-            _blk._ey = 0
-            _blk.spr.set_label(' ')
-            _blk.spr.set_label(' ', 1)
             _blk.resize()
-            _blk.spr.set_label(_('click to open'), 1)
-            _blk.resize()
-            # Redock to sandwich top in group
             _you = find_sandwich_top(_blk)
             (_yx, _yy) = _you.spr.get_xy()
             _yd = _you.docks[len(_you.docks) - 1]
@@ -554,6 +547,11 @@ def collapse_stack(top):
         top.name = 'sandwichtop_no_arm'
     else:
         top.name = 'sandwichtop_no_arm_no_label'
+        top.spr.set_label(' ')
+        top.spr.set_label(' ', 1)
+        top.resize()
+        top.spr.set_label(_('click to open'), 1)
+        top.resize()
     top.refresh()
 
 

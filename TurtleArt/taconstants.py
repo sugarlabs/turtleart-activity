@@ -205,8 +205,9 @@ BASIC_STYLE_TAIL = ['stopstack', 'empty']
 BASIC_STYLE = []
 BASIC_STYLE_EXTENDED_VERTICAL = ['clean', 'penup', 'pendown', 'stack1',
     'stack2', 'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput',
-    'fullscreen', 'sandwichcollapsed', 'cartesian', 'polar', 'startfill',
+    'fullscreen', 'cartesian', 'polar', 'startfill',
     'stopfill', 'readpixel', 'vspace']
+INVISIBLE = ['sandwichcollapsed']
 BASIC_STYLE_EXTENDED = ['picturelist', 'picture1x1', 'picture2x2',
     'picture2x1', 'picture1x2', 'picture1x1a']
 BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show', 'image',
@@ -398,11 +399,11 @@ BLOCK_NAMES = {
     'savepix': [_('save picture')],
     'savesvg': [_('save SVG')],
     'sandwichbottom': [' ', ' '],
-    'sandwichcollapsed': [' ', _('click to open')],
+    'sandwichcollapsed': [' '],
     'sandwichtop': [_('top of stack')],
     'sandwichtop_no_label': [' '],
     'sandwichtop_no_arm': [_('top of stack')],
-    'sandwichtop_no_arm_no_label': [' '],
+    'sandwichtop_no_arm_no_label': [' ', _('click to open')],
     'scale': [_('scale')],
     'see': [_('turtle sees')],
     'sensor': [_('sensors')],
