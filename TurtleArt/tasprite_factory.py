@@ -122,9 +122,27 @@ class SVG:
             svg += self._show_dot()
         if self._hide is True:
             svg += self._hide_dot()
-
         svg += self.footer()
         return self.header() + svg
+
+    def invisible(self):
+        self.reset_min_max()
+        (x, y) = self._calculate_x_y()
+        self.margins[2] = 0
+        self.margins[3] = 0
+        # calculate shape but don't include it in the svg output
+        self.new_path(x, y)
+        self._corner(1, -1)
+        self._do_slot()
+        xx = self._x
+        self._corner(1, 1)
+        self._corner(-1, 1)
+        self._do_tab()
+        self._corner(-1, -1)
+        self.calc_w_h()
+        self._close_path()
+        self.style()
+        return self.header() + self.footer()
 
     def basic_flow(self):
         self.reset_min_max()
@@ -484,6 +502,8 @@ class SVG:
         svg += self._close_path()
         self.calc_w_h()
         svg += self.style()
+        if self._show is True:
+            svg += self._show_dot()
         svg += self.footer()
         return self.header() + svg
 
