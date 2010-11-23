@@ -261,46 +261,50 @@ class TurtleArtActivity(activity.Activity):
             os.remove(tmpfile)
         return
 
-    # Main toolbar button callbacks
+    # Main/palette toolbar button callbacks
 
     def do_palette_cb(self, button):
         """ Show/hide palette """
         if self.tw.palette == True:
             self.tw.hideshow_palette(False)
-            self.palette_button.set_icon("paletteon")
-            self.palette_button.set_tooltip(_('Show palette'))
+            self.do_hidepalette()
             if self.new_sugar_system and self.tw.selected_palette is not None:
                 self.palette_buttons[self.tw.selected_palette].set_icon(
                     PALETTE_NAMES[self.tw.selected_palette] + 'off')
         else:
             self.tw.hideshow_palette(True)
-            self.palette_button.set_icon("paletteoff")
-            self.palette_button.set_tooltip(_('Hide palette'))
+            self.do_showpalette()
             if self.new_sugar_system:
                 self.palette_buttons[0].set_icon(PALETTE_NAMES[0] + 'on')
 
     def do_palette_buttons_cb(self, button, i):
         """ Palette selector buttons """
         if self.tw.selected_palette is not None:
-            if self.tw.selected_palette != i:
-                self.palette_buttons[self.tw.selected_palette].set_icon(
-                    PALETTE_NAMES[self.tw.selected_palette] + 'off')
+            self.palette_buttons[self.tw.selected_palette].set_icon(
+                PALETTE_NAMES[self.tw.selected_palette] + 'off')
+            if self.tw.selected_palette == i:
+                # second click so hide the palette (#2505)
+                self.tw.hideshow_palette(False)
+                self.do_hidepalette()
+                return
+
         self.palette_buttons[i].set_icon(PALETTE_NAMES[i] + 'on')
         self.tw.show_palette(i)
-        self.palette_button.set_icon("paletteoff")
-        self.palette_button.set_tooltip(_('Hide palette'))
+        self.do_showpalette()
 
     # These methods are called both from buttons and palette.
 
     def do_hidepalette(self):
         """ Hide the palette. """
-        self.palette_button.set_icon("paletteon")
-        self.palette_button.set_tooltip(_('Show palette'))
+        if hasattr(self, 'palette_button'):
+            self.palette_button.set_icon("paletteon")
+            self.palette_button.set_tooltip(_('Show palette'))
 
     def do_showpalette(self):
         """ Show the palette. """
-        self.palette_button.set_icon("paletteoff")
-        self.palette_button.set_tooltip(_('Hide palette'))
+        if hasattr(self, 'palette_button'):
+            self.palette_button.set_icon("paletteoff")
+            self.palette_button.set_tooltip(_('Hide palette'))
 
     def do_hideshow_cb(self, button):
         """ Toggle visibility. """
@@ -313,25 +317,21 @@ class TurtleArtActivity(activity.Activity):
             self.blocks_button.set_tooltip(_('Hide blocks'))
         # update palette buttons too
         if self.tw.palette == False:
-            self.palette_button.set_icon("paletteon")
-            self.palette_button.set_tooltip(_('Show palette'))
+            self.do_hidepalette()
         else:
-            self.palette_button.set_icon("paletteoff")
-            self.palette_button.set_tooltip(_('Hide palette'))
+            self.do_showpalette()
 
     def do_hide(self):
         """ Hide blocks. """
         self.blocks_button.set_icon("hideshowon")
         self.blocks_button.set_tooltip(_('Show blocks'))
-        self.palette_button.set_icon("paletteon")
-        self.palette_button.set_tooltip(_('Show palette'))
+        self.do_hidepalette()
 
     def do_show(self):
         """ Show blocks. """
         self.blocks_button.set_icon("hideshowoff")
         self.blocks_button.set_tooltip(_('Hide blocks'))
-        self.palette_button.set_icon("paletteoff")
-        self.palette_button.set_tooltip(_('Hide palette'))
+        self.do_showpalette()
 
     def do_eraser_cb(self, button):
         """ Clear the screen and recenter. """
@@ -751,7 +751,7 @@ class TurtleArtActivity(activity.Activity):
             toolbox.add_toolbar(_('Help'), help_toolbar)
             help_toolbar_button = help_toolbar
 
-            self._make_palette_buttons(project_toolbar)
+            self._make_palette_buttons(project_toolbar, palette_button=True)
 
             _add_separator(project_toolbar)
 
@@ -839,10 +839,11 @@ class TurtleArtActivity(activity.Activity):
         else:
             toolbox.set_current_toolbar(1)
 
-    def _make_palette_buttons(self, toolbar):
+    def _make_palette_buttons(self, toolbar, palette_button=False):
         """ Creates the palette and block buttons for both toolbar types"""
-        self.palette_button = _add_button("paletteoff", _('Hide palette'),
-            self.do_palette_cb, toolbar, _('<Ctrl>p'))
+        if palette_button:  # old-style toolbars need this button
+            self.palette_button = _add_button("paletteoff", _('Hide palette'),
+                self.do_palette_cb, toolbar, _('<Ctrl>p'))
         self.blocks_button = _add_button("hideshowoff", _('Hide blocks'),
             self.do_hideshow_cb, toolbar, _('<Ctrl>b'))
 
