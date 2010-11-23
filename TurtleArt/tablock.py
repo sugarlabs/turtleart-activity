@@ -36,7 +36,7 @@ from taconstants import EXPANDABLE, EXPANDABLE_BLOCKS, EXPANDABLE_ARGS, \
     COLLAPSIBLE_TOP_NO_ARM_NO_LABEL, COLLAPSIBLE_BOTTOM, PORTFOLIO_STYLE_2x2, \
     PORTFOLIO_STYLE_1x1, PORTFOLIO_STYLE_2x1, PORTFOLIO_STYLE_1x2, \
     STANDARD_STROKE_WIDTH, SELECTED_STROKE_WIDTH, SELECTED_COLOR, BOX_COLORS, \
-    BASIC_STYLE_EXTENDED_VERTICAL, CONSTANTS
+    BASIC_STYLE_EXTENDED_VERTICAL, CONSTANTS, INVISIBLE
 from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
 
@@ -471,6 +471,8 @@ class Block:
             self._make_collapsible_style_top(svg, arm=False, label=False)
         elif self.name in COLLAPSIBLE_BOTTOM:
             self._make_collapsible_style_bottom(svg)
+        elif self.name in INVISIBLE:
+            self._make_invisible_style(svg)
         elif self.name in PORTFOLIO_STYLE_2x2:
             self._make_portfolio_style_2x2(svg)
         elif self.name in PORTFOLIO_STYLE_2x1:
@@ -812,6 +814,7 @@ class Block:
     def _make_collapsible_style_top(self, svg, arm=True, label=True):
         self.svg.expand(self.dx + self.ex, self.ey)
         self.svg.set_arm(arm)
+        self.svg.set_show(not arm)
         self._make_block_graphics(svg, self.svg.sandwich_top, label)
         if label:
             self.docks = [['flow', True, self.svg.docks[0][0],
@@ -832,6 +835,13 @@ class Block:
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]], ['flow', False,
                        self.svg.docks[1][0], self.svg.docks[1][1]]]
+
+    def _make_invisible_style(self, svg):
+        self._make_block_graphics(svg, self.svg.invisible)
+        # force dock positions to be the same
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                       self.svg.docks[0][1]], ['flow', False,
+                       self.svg.docks[0][0], self.svg.docks[0][1]]]
 
     # Depreciated block styles
 
