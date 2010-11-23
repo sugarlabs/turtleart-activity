@@ -9,6 +9,8 @@
 * catch depreciated format (#2501)
 * Spanish translation of new blocks
 * Reorganized some palettes (flow, portfolio) to fit smaller screen sizes
+* Hide block at bottom of stack when 'collapsed' (#2506)
+* Hide palette on second click (#2505)
 
 103
 
