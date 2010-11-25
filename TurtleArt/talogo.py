@@ -544,7 +544,8 @@ class LogoCode:
                 code = self._blocks_to_code(b)
                 self.stacks['stack2'] = self._readline(code)
             if b.name == 'hat':
-                if b.connections[1] is not None:
+                if b.connections is not None and len(b.connections) > 1 and \
+                   b.connections[1] is not None:
                     code = self._blocks_to_code(b)
                     x = b.connections[1].values[0]
                     if type(convert(x, float, False)) == float:
