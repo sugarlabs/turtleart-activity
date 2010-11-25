@@ -1,16 +1,24 @@
 104
 
-* added more sample Python code (#548):
- (copy/paste heap to/from clipboard and to/from Journal)
-* Sample Python code stored in individual files
-* sensor calibation for XO 1.5 hardware (Tony Forster)
-* text-only support for RTF files (#893)
-* refactoring of audio/video code based on Jukebox (#1613)
-* catch depreciated format (#2501)
-* Spanish translation of new blocks
+BUG FIXES
+
+* Refactoring of audio/video code based on Jukebox (#1613)
+* Catch depreciated format during project load (#2501, #2447)
 * Reorganized some palettes (flow, portfolio) to fit smaller screen sizes
-* Hide block at bottom of stack when 'collapsed' (#2506)
-* Hide palette on second click (#2505)
+* Map mouse coordinates to screen coordinates (#2502)
+* Also closed #2490, #2475, #2449, and #1057
+
+ENHANCEMENTS
+
+* Sample Python code stored in individual files
+* New sample Python code (#548): (copy/paste heap to/from clipboard
+  and to/from Journal)
+* Sensor calibration for XO 1.5 hardware (Tony Forster)
+* Text-only support for RTF files (#893)
+* Block at bottom of stack is hidden when stack is 'collapsed' (#2506)
+* Palette hides on repeat click of selector (#2505)
+* Elimination of redundant Hide Palette button (#2505)
+* Spanish translation of new blocks
 
 103
 
