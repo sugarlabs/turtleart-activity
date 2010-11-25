@@ -2150,8 +2150,9 @@ class TurtleArtWindow():
                 self.showlabel("#notanumber")
         else:
             n = 0
-        self.selected_blk.spr.set_label(n)
-        self.selected_blk.values[0] = n.replace(self.decimal_point, '.')
+        self.selected_blk.spr.set_label(str(n))
+        self.selected_blk.values[0] = float(str(n).replace(self.decimal_point,
+                                                           '.'))
 
     def _string_check(self):
         s = self.selected_blk.spr.labels[0].replace(CURSOR, '')
