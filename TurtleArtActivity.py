@@ -419,23 +419,29 @@ class TurtleArtActivity(activity.Activity):
 
     def do_rescale_cb(self, button):
         """ Rescale coordinate system (100==height/2 or 100 pixels). """
+        if self.tw.cartesian:
+            cartesian = True
+            self.tw.set_cartesian(False)
+        else:
+            cartesian = False
+        if self.tw.polar:
+            polar = True
+            self.tw.set_polar(False)
+        else:
+            polar = False
         if self.tw.coord_scale == 1:
             self.tw.coord_scale = self.tw.height / 200
             self.rescale_button.set_icon("contract-coordinates")
             self.rescale_button.set_tooltip(_('Rescale coordinates down'))
-            self.tw.eraser_button()
-            if self.tw.cartesian:
-                self.tw.overlay_shapes['Cartesian_labeled'].hide()
-                self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
         else:
             self.tw.coord_scale = 1
             self.rescale_button.set_icon("expand-coordinates")
             self.rescale_button.set_tooltip(_('Rescale coordinates up'))
-            self.tw.eraser_button()
-            if self.tw.cartesian:
-                self.tw.overlay_shapes['Cartesian'].hide()
-                self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
-                                                              OVERLAY_LAYER)
+        self.tw.eraser_button()
+        if cartesian:
+            self.tw.set_cartesian(True)
+        if polar:
+            self.tw.set_polar(True)
 
     def get_document_path(self, async_cb, async_err_cb):
         """  View TA code as part of view source.  """
