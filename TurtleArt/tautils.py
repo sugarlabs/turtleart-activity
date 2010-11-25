@@ -547,11 +547,11 @@ def collapse_stack(top):
         top.name = 'sandwichtop_no_arm'
     else:
         top.name = 'sandwichtop_no_arm_no_label'
-        top.spr.set_label(' ')
-        top.spr.set_label(' ', 1)
-        top.resize()
-        top.spr.set_label(_('click to open'), 1)
-        top.resize()
+    top.spr.set_label(' ')
+    top.spr.set_label(' ', 1)
+    top.resize()
+    top.spr.set_label(_('click to open'), 1)
+    top.resize()
     top.refresh()
 
 
