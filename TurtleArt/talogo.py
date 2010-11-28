@@ -23,7 +23,7 @@
 
 import gtk
 
-from time import clock, sleep
+from time import clock, sleep, time
 from math import sqrt
 from numpy import append
 from numpy.fft import rfft
@@ -296,7 +296,7 @@ def _just_stop():
 
 def _millisecond():
     """ Current time in milliseconds """
-    return int(clock() * 1000)
+    return time() * 1000  # clock() * 1000.
 
 
 class LogoCode:
@@ -703,7 +703,7 @@ class LogoCode:
             # In debugging modes, we pause between steps and show the turtle.
             if self.tw.step_time > 0:
                 self.tw.active_turtle.show()
-                endtime = _millisecond() + self._int(self.tw.step_time) * 100
+                endtime = _millisecond() + self.tw.step_time * 100.
                 sleep(self.tw.step_time / 10)
                 while _millisecond() < endtime:
                     yield True
@@ -871,7 +871,7 @@ class LogoCode:
     def _prim_wait(self, time):
         """ Show the turtle while we wait """
         self.tw.active_turtle.show()
-        endtime = _millisecond() + self._int(time * 1000)
+        endtime = _millisecond() + time * 1000.
         sleep(time)
         while _millisecond() < endtime:
             yield True
