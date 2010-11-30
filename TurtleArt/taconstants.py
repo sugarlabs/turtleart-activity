@@ -139,9 +139,9 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
             ['kbinput',  'keyboard', 'readpixel', 'see', 'sound', 'volume',
              'pitch'],
             ['journal', 'audio', 'video', 'description', 'hideblocks',
-             'showblocks', 'fullscreen', 'savepix', 'savesvg', 'picturelist',
-             'picture1x1a', 'picture1x1', 'picture2x2', 'picture2x1',
-             'picture1x2'],
+             'showblocks', 'fullscreen', 'savepix', 'savesvg', 'mediawait',
+             'picturelist', 'picture1x1a', 'picture1x1', 'picture2x2',
+             'picture2x1', 'picture1x2'],
             ['empty', 'restoreall']]
 
 #
@@ -205,7 +205,7 @@ BASIC_STYLE_TAIL = ['stopstack', 'empty']
 BASIC_STYLE = []
 BASIC_STYLE_EXTENDED_VERTICAL = ['clean', 'penup', 'pendown', 'stack1',
     'stack2', 'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput',
-    'fullscreen', 'cartesian', 'polar', 'startfill',
+    'fullscreen', 'cartesian', 'polar', 'startfill', 'mediawait',
     'stopfill', 'readpixel', 'vspace']
 INVISIBLE = ['sandwichcollapsed']
 BASIC_STYLE_EXTENDED = ['picturelist', 'picture1x1', 'picture2x2',
@@ -353,6 +353,7 @@ BLOCK_NAMES = {
     'leftx': [_('picture left')],
     'less2': ['<'],
     'list': ['list'],
+    'mediawait': [_('media wait')],
     'minus2': ['–'],
     'myfunc': [_('Python'), 'f(x)', 'x'],
     'myfunc1arg': [_('Python'), 'f(x)', 'x'],
@@ -515,6 +516,7 @@ PRIMITIVES = {
     'leftx': 'leftx',
     'less2': 'less?',
     'list': 'bulletlist',
+    'mediawait': 'mediawait',
     'minus2': 'minus',
     'myfunc': 'myfunction',
     'myfunc1arg': 'myfunction',
@@ -824,6 +826,7 @@ HELP_STRINGS = {
     'leftpos': _("xcor of left of screen"),
     'left': _("turns turtle counterclockwise (angle in degrees)"),
     'less2': _("logical less-than operator"),
+    'mediawait': _("wait for current video or audio to complete"),
     'minus2': _("subtracts bottom numeric input from top numeric input"),
     'myfunc': _("a programmable block: used to add advanced math equations, e.g., sin(x)"),
     'myfunc1arg': _("a programmable block: used to add advanced single-variable math equations, e.g., sin(x)"),

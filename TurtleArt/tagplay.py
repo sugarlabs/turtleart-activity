@@ -79,10 +79,9 @@ def stop_media(lc):
 
 
 def media_playing(lc):
-
     if lc.gplay == None:
         return False
-    return lc.gplay.player.playing
+    return lc.gplay.player.is_playing()
 
 
 class Gplay():
@@ -257,18 +256,19 @@ class GstPlayer(gobject.GObject):
         self.player.set_property('video-sink', self.bin)
 
     def pause(self):
-        logging.debug('pausing player')
         self.player.set_state(gst.STATE_PAUSED)
         self.playing = False
+        logging.debug('pausing player')
 
     def play(self):
-        logging.debug('playing player')
         self.player.set_state(gst.STATE_PLAYING)
         self.playing = True
         self.error = False
+        logging.debug('playing player')
 
     def stop(self):
         self.player.set_state(gst.STATE_NULL)
+        self.playing = False
         logging.debug('stopped player')
 
     def get_state(self, timeout=1):

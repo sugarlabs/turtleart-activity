@@ -40,11 +40,11 @@ except ImportError:
 from taconstants import TAB_LAYER, BLACK, WHITE, \
     DEFAULT_SCALE, ICON_SIZE, BLOCK_NAMES, CONSTANTS, SENSOR_DC_NO_BIAS, \
     SENSOR_DC_BIAS, XO1, XO15
-from tagplay import play_audio_from_file, play_movie_from_file, stop_media
+from tagplay import play_audio_from_file, play_movie_from_file, stop_media, \
+    media_playing
 from tajail import myfunc, myfunc_import
-from tautils import get_pixbuf_from_journal, convert, \
-                    text_media_type, round_int, chr_to_ord, \
-                    strtype, data_from_file
+from tautils import get_pixbuf_from_journal, convert, data_from_file, \
+    text_media_type, round_int, chr_to_ord, strtype
 
 from RtfParser import RtfTextOnly
 
@@ -355,6 +355,7 @@ class LogoCode:
         'leftx': [0, lambda self: CONSTANTS['leftx']],
         'lpos': [0, lambda self: CONSTANTS['leftpos']],
         'less?': [2, lambda self, x, y: _less(x, y)],
+        'mediawait': [0, self._media_wait, True],
         'minus': [2, lambda self, x, y: _minus(x, y)],
         'mod': [2, lambda self, x, y: _mod(x, y)],
         'myfunction': [2, lambda self, f, x: self._myfunction(f, [x])],
@@ -1293,6 +1294,13 @@ class LogoCode:
         y = self.tw.canvas.height / 2 - int(self.tw.canvas.ycor)
         if media[0:5] == 'descr':
             self._show_description(media, x, y, w, h)
+
+    def _media_wait(self):
+        """ Wait for media to stop playing """
+        while(media_playing(self)):
+            yield True
+        self._ireturn()
+        yield True
 
     def _play_sound(self, audio):
         """ Sound file from Journal """
