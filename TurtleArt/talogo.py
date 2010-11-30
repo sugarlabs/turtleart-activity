@@ -23,7 +23,7 @@
 
 import gtk
 
-from time import clock, sleep, time
+from time import time
 from math import sqrt
 from numpy import append
 from numpy.fft import rfft
@@ -296,7 +296,7 @@ def _just_stop():
 
 def _millisecond():
     """ Current time in milliseconds """
-    return time() * 1000  # clock() * 1000.
+    return time() * 1000
 
 
 class LogoCode:
@@ -704,7 +704,6 @@ class LogoCode:
             if self.tw.step_time > 0:
                 self.tw.active_turtle.show()
                 endtime = _millisecond() + self.tw.step_time * 100.
-                sleep(self.tw.step_time / 10)
                 while _millisecond() < endtime:
                     yield True
                 self.tw.active_turtle.hide()
@@ -872,7 +871,6 @@ class LogoCode:
         """ Show the turtle while we wait """
         self.tw.active_turtle.show()
         endtime = _millisecond() + time * 1000.
-        sleep(time)
         while _millisecond() < endtime:
             yield True
         self.tw.active_turtle.hide()
@@ -1021,7 +1019,7 @@ class LogoCode:
 
     def _prim_print_heap(self):
         """ Display contents of heap """
-        self.tw.showlabel('status', self.heap)
+        self.tw.showlabel('status', str(self.heap) + '      ')
 
     def _int(self, n):
         """ Raise an error if n doesn't convert to int. """
