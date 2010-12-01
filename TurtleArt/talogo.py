@@ -30,6 +30,8 @@ from numpy.fft import rfft
 from random import uniform
 from operator import isNumberType
 
+import os.path
+
 from UserDict import UserDict
 
 try:
@@ -348,7 +350,8 @@ class LogoCode:
         'id': [1, lambda self, x: _identity(x)],
         'if': [2, self._prim_if, True],
         'ifelse': [3, self._prim_ifelse, True],
-        'insertimage': [1, lambda self, x: self._insert_image(x, False)],
+        'insertimage': [1, lambda self, x: self._insert_image(False,
+                                                              filepath=x)],
         'kbinput': [0, lambda self: self._prim_kbinput()],
         'keyboard': [0, lambda self: self.keyboard],
         'left': [1, lambda self, x: self._prim_right(-x)],
@@ -1056,14 +1059,17 @@ class LogoCode:
                 raise logoerror("#syntaxerror")
 
     def _prim_print(self, n, flag):
-        """ Print n """
+        """ Print object n """
         if flag and (self.tw.hide or self.tw.step_time == 0):
             return
         if type(n) == str or type(n) == unicode:
             if n[0:6] == 'media_':
                 try:
                     if self.tw.running_sugar:
-                        dsobject = datastore.get(n[6:])
+                        try:
+                            dsobject = datastore.get(n[6:])
+                        except:
+                            _logger.debug("Couldn't open %s" % (n[6:]))
                         self.tw.showlabel('status', dsobject.metadata['title'])
                         dsobject.destroy()
                     else:
@@ -1146,7 +1152,6 @@ class LogoCode:
         if value2 is None:
             cmd(value1)
         else:
-            # print cmd, value1, value2, pendown
             cmd(float(value1), float(value2), pendown=pendown)
         self.update_label_value('xcor',
                            self.tw.canvas.xcor / self.tw.coord_scale)
@@ -1230,7 +1235,30 @@ class LogoCode:
     def _reskin(self, media):
         """ Reskin the turtle with an image from a file """
         scale = int(ICON_SIZE * float(self.scale) / DEFAULT_SCALE)
-        pixbuf = self._show_picture(media, 0, 0, scale, scale, False)
+        if scale < 1:
+            return
+        self.filepath = None
+        dsobject = None
+        if os.path.exists(media[6:]):  # is it a path?
+            self.filepath = media[6:]
+        elif self.tw.running_sugar:  # is it a datastore object?
+            try:
+                dsobject = datastore.get(media[6:])
+            except:
+                _logger.debug("Couldn't open %s" % (media[6:]))
+            if dsobject is not None:
+                self.filepath = dsobject.file_path
+        if self.filepath == None:
+            self.tw.showlabel('nojournal', self.filepath)
+            _logger.debug("Couldn't open %s" % (self.filepath))
+            return
+        pixbuf = None
+        try:
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.filepath, scale,
+                                                          scale)
+        except:
+            self.tw.showlabel('nojournal', self.filepath)
+            _logger.debug("Couldn't open %s" % (self.filepath))
         if pixbuf is not None:
             self.tw.active_turtle.set_shapes([pixbuf])
             pen_state = self.tw.active_turtle.get_pen_state()
@@ -1240,60 +1268,134 @@ class LogoCode:
             if pen_state:
                 self.tw.canvas.setpen(True)
 
+    def _x(self):
+        """ Convert screen coordinates to turtle coordinates """
+        return int(self.tw.canvas.width / 2) + int(self.tw.canvas.xcor)
+
+    def _y(self):
+        """ Convert screen coordinates to turtle coordinates """
+        return int(self.tw.canvas.height / 2) - int(self.tw.canvas.ycor)
+
+    def _w(self):
+        """ Convert screen coordinates to turtle coordinates """
+        return int((self.tw.canvas.width * self.scale) / 100.)
+
+    def _h(self):
+        """ Convert screen coordinates to turtle coordinates """
+        return int((self.tw.canvas.height * self.scale) / 100.)
+
     def _show(self, string, center=False):
         """ Show is the general-purpose media-rendering block. """
         # convert from Turtle coordinates to screen coordinates
-        x = int(self.tw.canvas.width / 2) + int(self.tw.canvas.xcor)
-        y = int(self.tw.canvas.height / 2) - int(self.tw.canvas.ycor)
         if type(string) == str or type(string) == unicode:
-            if string == "media_None":
+            if string in  ['media_', 'descr_', 'audio_', 'video_',
+                           'media_None', 'descr_None', 'audio_None',
+                           'video_None']:
                 pass
-            elif string[0:6] == 'media_':
-                self._insert_image(string, center)
-            elif string[0:6] == 'descr_':
-                self._insert_desc(string)
-            elif string[0:6] == 'audio_':
-                self._play_sound(string)
-            elif string[0:6] == 'video_':
-                self._play_video(string)
-            else:
+            elif string[0:6] in ['media_', 'descr_', 'audio_', 'video_']:
+                self.filepath = None
+                dsobject = None
+                if os.path.exists(string[6:]):  # is it a path?
+                    self.filepath = string[6:]
+                elif self.tw.running_sugar:  # is it a datastore object?
+                    try:
+                        dsobject = datastore.get(string[6:])
+                    except:
+                        _logger.debug("Couldn't dsobject %s" % (string[6:]))
+                    if dsobject is not None:
+                        self.filepath = dsobject.file_path
+                if self.filepath == None:
+                    self.tw.showlabel('nojournal', string[6:])
+                    _logger.debug("Couldn't open %s" % (string[6:]))
+                elif string[0:6] == 'media_':
+                    self._insert_image(center)
+                elif string[0:6] == 'descr_':
+                    mimetype = None
+                    if dsobject is not None and \
+                       'mime_type' in dsobject.metadata:
+                        mimetype = dsobject.metadata['mime_type']
+                    description = None
+                    if dsobject is not None and \
+                       'description' in dsobject.metadata:
+                        description = dsobject.metadata['description']
+                    self._insert_desc(mimetype, description)
+                elif string[0:6] == 'audio_':
+                    self._play_sound()
+                elif string[0:6] == 'video_':
+                    self._play_video()
+                if dsobject is not None:
+                    dsobject.destroy()
+            else:  # assume it is text to display
                 if center:
-                    y -= self.tw.canvas.textsize
-                self.tw.canvas.draw_text(string, x, y,
+                    y = self._y() - self.tw.canvas.textsize
+                else:
+                    y = self._y()
+                self.tw.canvas.draw_text(string, self._x(), y,
                                          int(self.tw.canvas.textsize * \
                                              self.scale / 100.),
-                                         self.tw.canvas.width - x)
+                                         self.tw.canvas.width - self._x())
         elif type(string) == float or type(string) == int:
             string = round_int(string)
             if center:
                 y -= self.tw.canvas.textsize
-            self.tw.canvas.draw_text(string, x, y,
+            self.tw.canvas.draw_text(string, self._x(), self._y(),
                                      int(self.tw.canvas.textsize * \
                                          self.scale / 100.),
                                      self.tw.canvas.width - x)
 
-    def _insert_image(self, media, center):
+    def _insert_image(self, center=False, filepath=None):
         """ Image only (at current x, y) """
-        w = int((self.tw.canvas.width * self.scale) / 100.)
-        h = int((self.tw.canvas.height * self.scale) / 100.)
-        # convert from Turtle coordinates to screen coordinates
-        x = self.tw.canvas.width / 2 + int(self.tw.canvas.xcor)
-        y = self.tw.canvas.height / 2 - int(self.tw.canvas.ycor)
-        if center:
-            x -= int(w / 2.)
-            y -= int(h / 2.)
-        if media[0:5] == 'media':
-            self._show_picture(media, x, y, w, h)
+        if filepath is not None:
+            self.filepath = filepath
+        pixbuf = None
+        w = self._w()
+        h = self._h()
+        if w < 1 or h < 1:
+            return
+        try:
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.filepath, w, h)
+        except:
+            self.tw.showlabel('nojournal', self.filepath)
+            _logger.debug("Couldn't open %s" % (self.filepath))
+        if pixbuf is not None:
+            if center:
+                self.tw.canvas.draw_pixbuf(pixbuf, 0, 0,
+                                           self._x() - int(w / 2),
+                                           self._y() - int(h / 2), w, h,
+                                           self.filepath)
+            else:
+                self.tw.canvas.draw_pixbuf(pixbuf, 0, 0, self._x(), self._y(),
+                                           w, h, self.filepath)
 
-    def _insert_desc(self, media):
+    def _insert_desc(self, mimetype=None, description=None):
         """ Description text only (at current x, y) """
-        w = int((self.tw.canvas.width * self.scale) / 100.)
-        h = int((self.tw.canvas.height * self.scale) / 100.)
-        # convert from Turtle coordinates to screen coordinates
-        x = self.tw.canvas.width / 2 + int(self.tw.canvas.xcor)
-        y = self.tw.canvas.height / 2 - int(self.tw.canvas.ycor)
-        if media[0:5] == 'descr':
-            self._show_description(media, x, y, w, h)
+        w = self._w()
+        if w < 1:
+            return
+        text = None
+        if text_media_type(self.filepath):
+            if mimetype == 'application/rtf' or \
+               self.filepath.endswith(('rtf')):
+                text_only = RtfTextOnly()
+                for line in open(self.filepath, 'r'):
+                    text_only.feed(line)
+                    text = text_only.output
+            else:
+                try:
+                    f = open(self.filepath, 'r')
+                    text = f.read()
+                    f.close()
+                except IOError:
+                    self.tw.showlabel('nojournal', self.filepath)
+                    _logger.debug("Couldn't open %s" % (self.filepath))
+        else:
+            if description is not None:
+                text = str(description)
+            else:
+                text = self.filepath
+        if text is not None:
+            self.tw.canvas.draw_text(text, self._x(), self._y(),
+                                     self.body_height, w)
 
     def _media_wait(self):
         """ Wait for media to stop playing """
@@ -1302,125 +1404,18 @@ class LogoCode:
         self._ireturn()
         yield True
 
-    def _play_sound(self, audio):
+    def _play_sound(self):
         """ Sound file from Journal """
-        if audio == "" or audio[6:] == "":
-            raise logoerror("#nomedia")
-        if self.tw.running_sugar:
-            if audio[6:] != "None":
-                try:
-                    dsobject = datastore.get(audio[6:])
-                    play_audio_from_file(self, dsobject.file_path)
-                except IOError:
-                    _logger.debug("Couldn't open id: %s" % (str(audio[6:])))
-        else:
-            play_audio_from_file(self, audio[6:])
+        play_audio_from_file(self, self.filepath)
 
-    def _play_video(self, video):
+    def _play_video(self):
         """ Movie file from Journal """
-        if video == "" or video[6:] == "":
-            raise logoerror("#nomedia")
-        w = int((self.tw.canvas.width * self.scale) / 100.)
-        h = int((self.tw.canvas.height * self.scale) / 100.)
-        x = self.tw.canvas.width / 2 + int(self.tw.canvas.xcor)
-        y = self.tw.canvas.height / 2 - int(self.tw.canvas.ycor)
-        if self.tw.running_sugar:
-            if video[6:] != "None":
-                try:
-                    dsobject = datastore.get(video[6:])
-                    play_movie_from_file(self, dsobject.file_path,
-                                         int(x), int(y), int(w), int(h))
-                except IOError:
-                    _logger.debug("Couldn't open id: %s" % (str(video[6:])))
-        else:
-            play_movie_from_file(self, video[6:],
-                                 int(x), int(y), int(w), int(h))
-
-    def _show_picture(self, media, x, y, w, h, show=True):
-        """ Image file from Journal """
+        w = self._w()
+        h = self._h()
         if w < 1 or h < 1:
-            return None
-        if media == "" or media[6:] == "":
-            return None
-        elif media[6:] is not "None":
-            self.filepath = None
-            pixbuf = None
-            if self.tw.running_sugar:
-                try:
-                    dsobject = datastore.get(media[6:])
-                    self.filepath = dsobject.file_path
-                    pixbuf = get_pixbuf_from_journal(dsobject,
-                                                     int(w), int(h))
-                    dsobject.destroy()
-                except IOError:
-                    # Maybe it is a pathname instead.
-                    try:
-                        self.filepath = media[6:0]
-                        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
-                                                   media[6:], int(w), int(h))
-                    except IOError:
-                        self.filepath = None
-                        self.tw.showlabel('nojournal', media[6:])
-                        _logger.debug("Couldn't open Journal object %s" % \
-                                         (media[6:]))
-            else:
-                try:
-                    self.filepath = media[6:]
-                    pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
-                        media[6:], int(w), int(h))
-                except IOError:
-                    self.filepath = None
-                    self.tw.showlabel('nofile', media[6:])
-                    _logger.debug("Couldn't open media object %s" % \
-                                      (media[6:]))
-            if pixbuf is not None and show:
-                self.tw.canvas.draw_pixbuf(pixbuf, 0, 0, int(x), int(y),
-                                                         int(w), int(h),
-                                           self.filepath)
-            else:
-                return pixbuf
-
-    def _show_description(self, media, x, y, w, h):
-        """ Description field from Journal """
-        if media == "" or media[6:] == "":
             return
-        elif media[6:] != "None":
-            text = None
-            if self.tw.running_sugar:
-                try:
-                    dsobject = datastore.get(media[6:])
-                    # TODO: handle doc, odt, pdf (See #893)
-                    if text_media_type(dsobject.file_path):
-                        if dsobject.metadata['mime_type'] == 'application/rtf':
-                            text_only = RtfTextOnly()
-                            for line in open(dsobject.file_path, 'r'):
-                                text_only.feed(line)
-                            text = text_only.output
-                        else:
-                            f = open(dsobject.file_path, 'r')
-                            text = f.read()
-                            f.close()
-                    else:
-                        text = str(dsobject.metadata['description'])
-                    dsobject.destroy()
-                except IOError:
-                    _logger.debug("no description in %s" % (media[6:]))
-            else:
-                try:
-                    if media.endswith(('rtf')):
-                        text_only = RtfTextOnly()
-                        for line in open(media[6:], 'r'):
-                            text_only.feed(line)
-                        text = text_only.output
-                    else:
-                        f = open(media[6:], 'r')
-                        text = f.read()
-                        f.close()
-                except IOError:
-                    _logger.debug("no text in %s?" % (media[6:]))
-            if text is not None:
-                self.tw.canvas.draw_text(text, int(x), int(y),
-                                         self.body_height, int(w))
+        play_movie_from_file(self, self.filepath, self._x(), self._y(),
+                               self._w(), self._h())
 
     def _see(self):
         """ Read r, g, b from the canvas and return a corresponding palette
