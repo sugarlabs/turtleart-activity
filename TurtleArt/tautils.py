@@ -318,7 +318,7 @@ def image_media_type(name):
 
 def text_media_type(name):
     """ Is it text media? """
-    return name.endswith(('.txt', '.py', '.lg', '.rtf'))
+    return name.endswith(('.txt', '.py', '.lg', '.rtf', '.ta'))
 
 
 def round_int(num):
