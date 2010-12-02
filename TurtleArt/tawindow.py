@@ -27,6 +27,8 @@ import gtk
 import gobject
 import os
 import os.path
+import dbus
+
 from math import atan2, pi
 DEGTOR = 2 * pi / 360
 
@@ -75,6 +77,14 @@ from tagplay import stop_media
 from sprites import Sprites, Sprite
 from audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15
 from rfidutils import strhex2bin, strbin2dec, find_device
+from dbus.mainloop.glib import DBusGMainLoop
+
+HAL_SERVICE = 'org.freedesktop.Hal'
+HAL_MGR_PATH = '/org/freedesktop/Hal/Manager'
+HAL_MGR_IFACE = 'org.freedesktop.Hal.Manager'
+HAL_DEV_IFACE = 'org.freedesktop.Hal.Device'
+REGEXP_SERUSB = '\/org\/freedesktop\/Hal\/devices\/usb_device['\
+                'a-z,A-Z,0-9,_]*serial_usb_[0-9]'
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
