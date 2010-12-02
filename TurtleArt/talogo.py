@@ -61,6 +61,32 @@ VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
 import logging
 _logger = logging.getLogger('turtleart-activity')
 
+import os
+
+from dbus.mainloop.glib import DBusGMainLoop
+import dbus
+
+HAL_SERVICE = 'org.freedesktop.Hal'
+HAL_MGR_PATH = '/org/freedesktop/Hal/Manager'
+HAL_MGR_IFACE = 'org.freedesktop.Hal.Manager'
+HAL_DEV_IFACE = 'org.freedesktop.Hal.Device'
+
+
+def find_device():
+    """ Search for RFID devices. Return a device instance or None. """
+    device = None
+    for i in os.listdir(os.path.join('.', 'devices')):
+        if not os.path.isdir(os.path.join('.', 'devices', i)):
+            try:
+                _tempmod = __import__('devices.%s'%i.split('.')[0], globals(),
+                                      locals(), ['RFIDReader'], -1)
+                devtemp = _tempmod.RFIDReader()
+                if devtemp.get_present() == True:
+                    device = devtemp
+            except Exception, e:
+                _logger.error("FIND_DEVICE: %s: %s"%(i, e))
+                pass
+    return device
 
 class noKeyError(UserDict):
 
@@ -389,6 +415,7 @@ class LogoCode:
         'red': [0, lambda self: CONSTANTS['red']],
         'repeat': [2, self._prim_repeat, True],
         'resistance': [0, lambda self: self._get_resistance()],
+        'rfid': [0, lambda self: self.tw.rfid_idn],
         'right': [1, lambda self, x: self._prim_right(x)],
         'rightx': [0, lambda self: CONSTANTS['rightx']],
         'rpos': [0, lambda self: CONSTANTS['rightpos']],

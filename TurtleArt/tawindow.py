@@ -74,7 +74,7 @@ from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from tagplay import stop_media
 from sprites import Sprites, Sprite
 from audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15
-
+from rfidutils import strhex2bin, strbin2dec, find_device
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -248,6 +248,72 @@ class TurtleArtWindow():
                 PALETTES[PALETTE_NAMES.index('sensor')].append('resistance')
                 PALETTES[PALETTE_NAMES.index('sensor')].append('voltage')
             self.audio_started = False
+
+        """
+        The following code will initialize a USB RFID reader. Please note that
+        in order to make this initialization function work, it is necessary to
+        set the permission for the ttyUSB device to 0666. You can do this by
+        adding a rule to /etc/udev/rules.d
+
+        As root (using sudo or su), copy the following text into a new file in
+        /etc/udev/rules.d/94-ttyUSB-rules
+
+        KERNEL=="ttyUSB[0-9]",MODE="0666"
+
+        You only have to do this once.
+        """
+
+        self.rfid_connected = False
+        self.rfid_device = find_device()
+        self.rfid_idn = ''
+
+        if self.rfid_device is not None:
+            _logger.info("RFID device found")
+            self.rfid_connected = self.rfid_device.do_connect()
+            if self.rfid_connected:
+                self.rfid_device.connect("tag-read", self._tag_read_cb)
+                self.rfid_device.connect("disconnected", self._disconnected_cb)
+
+            loop = DBusGMainLoop()
+            bus = dbus.SystemBus(mainloop=loop)
+            hmgr_iface = dbus.Interface(bus.get_object(HAL_SERVICE,
+                HAL_MGR_PATH), HAL_MGR_IFACE)
+
+            hmgr_iface.connect_to_signal('DeviceAdded', self._device_added_cb) 
+
+            PALETTES[PALETTE_NAMES.index('sensor')].append('rfid')
+
+    def _device_added_cb(self, path):
+        """
+        Called from hal connection when a new device is plugged.
+        """
+        if not self.rfid_connected:
+            self.rfid_device = find_device()
+            _logger.debug("DEVICE_ADDED: %s"%self.rfid_device)
+            if self.rfid_device is not None:
+                _logger.debug("DEVICE_ADDED: RFID device is not None!")
+                self.rfid_connected = self._device.do_connect()
+            if self.rfid_connected:
+                _logger.debug("DEVICE_ADDED: Connected!")
+                self.rfid_device.connect("tag-read", self._tag_read_cb)
+                self.rfid_device.connect("disconnected", self._disconnected_cb)
+
+    def _disconnected_cb(self, device, text):
+        """
+        Called when the device is disconnected.
+        """
+        self.rfid_connected = False
+        self.rfid_device = None
+
+    def _tag_read_cb(self, device, tagid):
+        """
+        Callback for "tag-read" signal. Receives the read tag id.
+        """
+        idbin = strhex2bin(tagid)
+        self.rfid_idn = strbin2dec(idbin[26:64])
+        while self.rfid_idn.__len__() < 9:
+            self.rfid_idn = '0' + self.rfid_idn
+        print tagid, idbin, self.rfid_idn
 
     def new_buffer(self, buf):
         """ Append a new buffer to the ringbuffer """

@@ -123,7 +123,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'setcolor', 'setshade', 'setgray', 'color', 'shade',
              'gray', 'startfill', 'stopfill'],
             ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple',
-              'white', 'black'],
+             'white', 'black'],
             ['plus2', 'minus2', 'product2',
              'division2', 'identity2', 'remainder2', 'sqrt', 'random',
              'number', 'greater2', 'less2', 'equal2', 'not', 'and2', 'or2'],
@@ -223,7 +223,7 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'white',
     'black', 'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy',
-    'sound', 'volume', 'pitch', 'voltage', 'resistance', 'gray', 'see']
+    'sound', 'volume', 'pitch', 'voltage', 'resistance', 'gray', 'see', 'rfid']
 BOX_STYLE_MEDIA = ['description', 'audio', 'journal', 'video']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
 NUMBER_STYLE_VAR_ARG = ['myfunc1arg', 'myfunc2arg', 'myfunc3arg']
@@ -394,6 +394,7 @@ BLOCK_NAMES = {
     'resistance': [_('resistance')],
     'restore': [_('restore last')],
     'restoreall': [_('restore all')],
+    'rfid': [_('RFID')],
     'right': [_('right')],
     'rightpos': [_('right')],
     'rightx': [_('picture right')],
@@ -544,6 +545,7 @@ PRIMITIVES = {
     'remainder2': 'mod',
     'repeat': 'repeat',
     'resistance': 'resistance',
+    'rfid': 'rfid',
     'right': 'right',
     'rightpos': 'rpos',
     'rightx': 'rightx',
@@ -866,6 +868,7 @@ HELP_STRINGS = {
     'reskin': _("put a custom 'shell' on the turtle"),
     'restore': _("restores most recent blocks from trash"),
     'restoreall': _("restore all blocks from trash"),
+    'rfid': _("RFID"),
     'rightpos': _("xcor of right of screen"),
     'right': _("turns turtle clockwise (angle in degrees)"),
     'run-fastoff': _("Run"),
