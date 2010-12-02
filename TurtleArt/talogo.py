@@ -61,16 +61,6 @@ VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
 import logging
 _logger = logging.getLogger('turtleart-activity')
 
-import os
-
-from dbus.mainloop.glib import DBusGMainLoop
-import dbus
-
-HAL_SERVICE = 'org.freedesktop.Hal'
-HAL_MGR_PATH = '/org/freedesktop/Hal/Manager'
-HAL_MGR_IFACE = 'org.freedesktop.Hal.Manager'
-HAL_DEV_IFACE = 'org.freedesktop.Hal.Device'
-
 
 def find_device():
     """ Search for RFID devices. Return a device instance or None. """
