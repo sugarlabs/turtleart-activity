@@ -1985,6 +1985,8 @@ class TurtleArtWindow():
                     self.audiograb.stop_grabbing()
                 stop_media(self.lc)
                 exit()
+            elif keyname == 'g':
+                self._align_to_grid()
 
         elif self.selected_blk is not None:
             if self.selected_blk.name == 'number':
@@ -2183,13 +2185,32 @@ class TurtleArtWindow():
         self.display_coordinates()
         self.selected_turtle = None
 
+    def _align_to_grid(self, grid=20):
+        """ Align blocks at the top of stacks to a grid """
+        for blk in self.block_list.list:
+            if blk.type == 'block':
+                top = find_top_block(blk)
+                if top == blk:
+                    x = top.spr.get_xy()[0]
+                    y = top.spr.get_xy()[1]
+                    if x < 0:
+                        dx = -x % grid
+                    else:
+                        dx = -(x % grid)
+                    if y < 0:
+                        dy = -y % grid
+                    else:
+                        dy = -(y % grid)
+                    self._jog_block(top, dx, -dy)
+
     def _jog_block(self, blk, dx, dy):
         """ Jog block """
         if blk.type == 'proto':
             return
         if collapsed(blk):
             return
-
+        if dx == 0 and dy == 0:
+            return
         self._disconnect(blk)
         self.drag_group = find_group(blk)
 
