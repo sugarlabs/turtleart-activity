@@ -154,7 +154,10 @@ class TurtleArtWindow():
         if self.hw in (XO1, XO15):
             self.lead = 1.0
             self.scale = 0.67
-            self.color_mode = '565'
+            if self.hw == XO1:
+                self.color_mode = '565'
+            else:
+                self.color_mode = '888'
             if self.running_sugar and not self.activity.new_sugar_system:
                 self.orientation = VERTICAL_PALETTE
         else:
