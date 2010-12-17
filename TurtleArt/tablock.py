@@ -484,16 +484,13 @@ class Block:
             _logger.debug("WARNING: I don't know how to create a %s block" % \
                               (self.name))
 
-    def _set_colors(self, svg, highlight=False):
+    def _set_colors(self, svg):
         if self.name in BOX_COLORS:
             self.colors = BOX_COLORS[self.name]
         else:
             for p in range(len(PALETTES)):
                 if self.name in PALETTES[p]:
-                    if highlight:
-                        self.colors = HIGHLIGHT_COLORS[p]
-                    else:
-                        self.colors = COLORS[p]
+                    self.colors = COLORS[p]
         self.svg.set_colors(self.colors)
 
     def _make_basic_style(self, svg, extend_x=0, extend_y=0):
@@ -919,7 +916,7 @@ class Block:
                                       self.svg.docks[1][1]]]
 
     def _make_block_graphics(self, svg, function, arg=None):
-        self._set_colors(svg, highlight=True)
+        self._set_colors(svg)
         self.svg.set_gradient(True, GRADIENT_COLOR)
         if arg is None:
             self.shapes[0] = svg_str_to_pixbuf(function())
@@ -927,7 +924,6 @@ class Block:
             self.shapes[0] = svg_str_to_pixbuf(function(arg))
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
-        self._set_colors(svg, highlight=True)
         self.svg.set_gradient(False)
         if arg is None:
             self.shapes[1] = svg_str_to_pixbuf(function())
