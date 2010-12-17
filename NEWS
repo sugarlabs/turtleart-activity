@@ -1,10 +1,17 @@
 105
 
+BUG FIXES
+
 * Fixed problem with coordinate overlay mislabeling when rescaling coordinates
 * Fixed overflow problem causing Turtle Art to crash after ~50 minutes (#2489)
 * Fixed regression with turtle display during Wait
 * Display heap with ellipsis to avoid illegible display (#2268)
 * Added 'Media Wait' block to pause turtle while media is playing
+* New block-highlight scheme (#1709)
+
+ENHANCEMENTS
+
+* Added support for RFID tag reader
 
 104
 
