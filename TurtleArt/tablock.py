@@ -35,7 +35,7 @@ from taconstants import EXPANDABLE, EXPANDABLE_BLOCKS, EXPANDABLE_ARGS, \
     COLLAPSIBLE_TOP, COLLAPSIBLE_TOP_NO_ARM, COLLAPSIBLE_TOP_NO_LABEL, \
     COLLAPSIBLE_TOP_NO_ARM_NO_LABEL, COLLAPSIBLE_BOTTOM, PORTFOLIO_STYLE_2x2, \
     PORTFOLIO_STYLE_1x1, PORTFOLIO_STYLE_2x1, PORTFOLIO_STYLE_1x2, \
-    STANDARD_STROKE_WIDTH, SELECTED_STROKE_WIDTH, SELECTED_COLOR, BOX_COLORS, \
+    STANDARD_STROKE_WIDTH, BOX_COLORS, GRADIENT_COLOR, \
     BASIC_STYLE_EXTENDED_VERTICAL, CONSTANTS, INVISIBLE
 from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
@@ -313,7 +313,6 @@ class Block:
 
         self.svg = SVG()
         self.svg.set_scale(self.scale)
-        self.svg.set_gradiant(True)
         self.svg.set_innie([False])
         self.svg.set_outie(False)
         self.svg.set_tab(True)
@@ -404,7 +403,6 @@ class Block:
         self._top = 0
         self._right = 0
         self._bottom = 0
-        self._set_colors(svg)
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
         self.svg.clear_docks()
         if self.name in BASIC_STYLE:
@@ -486,13 +484,16 @@ class Block:
             _logger.debug("WARNING: I don't know how to create a %s block" % \
                               (self.name))
 
-    def _set_colors(self, svg):
+    def _set_colors(self, svg, highlight=False):
         if self.name in BOX_COLORS:
             self.colors = BOX_COLORS[self.name]
         else:
             for p in range(len(PALETTES)):
                 if self.name in PALETTES[p]:
-                    self.colors = COLORS[p]
+                    if highlight:
+                        self.colors = HIGHLIGHT_COLORS[p]
+                    else:
+                        self.colors = COLORS[p]
         self.svg.set_colors(self.colors)
 
     def _make_basic_style(self, svg, extend_x=0, extend_y=0):
@@ -918,14 +919,16 @@ class Block:
                                       self.svg.docks[1][1]]]
 
     def _make_block_graphics(self, svg, function, arg=None):
+        self._set_colors(svg, highlight=True)
+        self.svg.set_gradient(True, GRADIENT_COLOR)
         if arg is None:
             self.shapes[0] = svg_str_to_pixbuf(function())
         else:
             self.shapes[0] = svg_str_to_pixbuf(function(arg))
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
-        self.svg.set_stroke_width(SELECTED_STROKE_WIDTH)
-        self.svg.set_stroke_color(SELECTED_COLOR)
+        self._set_colors(svg, highlight=True)
+        self.svg.set_gradient(False)
         if arg is None:
             self.shapes[1] = svg_str_to_pixbuf(function())
         else:

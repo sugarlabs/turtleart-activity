@@ -76,7 +76,8 @@ class SVG:
         self._dot_radius = 8
         self._fill = "#00FF00"
         self._stroke = "#00A000"
-        self._gradiant = False
+        self._gradient_color = "#FFFFFF"
+        self._gradient = False
         self.margins = [0, 0, 0, 0]
 
     def basic_block(self):
@@ -588,8 +589,9 @@ class SVG:
     def set_stroke_color(self, color="#00A000"):
         self._stroke = color
 
-    def set_gradiant(self, flag=False):
-        self._gradiant = flag
+    def set_gradient(self, flag=False, color='#FFFFFF'):
+        self._gradient = flag
+	self._gradient_color = color
 
     def set_innie(self, innie_array=[False]):
         self._innie = innie_array
@@ -671,10 +673,11 @@ class SVG:
             self._transform(center))
 
     def _defs(self):
-        if self._gradiant is True:
+        if self._gradient is True:
             return "%s%s%s%s%s%s%s%s%s%s%s%s%.1f%s%s%.1f%s%s%.1f%s%s" % (
         "  <defs>\n    <linearGradient\n       id=\"linearGradient1234\">\n",
-        "      <stop\n         style=\"stop-color:#ffffff;stop-opacity:1;\"\n",
+        "      <stop\n         style=\"stop-color:" + \
+        self._gradient_color + ";stop-opacity:1;\"\n",
         "         offset=\"0\" />\n",
         "      <stop\n         style=\"stop-color:", self._fill,
         ";stop-opacity:1;\"\n",
@@ -710,7 +713,7 @@ class SVG:
             return "   </g>\n</svg>\n"
 
     def style(self):
-        if self._gradiant is True:
+        if self._gradient is True:
             fill = "url(#linearGradient5678)"
         else:
             fill = self._fill
