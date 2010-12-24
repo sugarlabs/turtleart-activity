@@ -3,17 +3,19 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2009-03-07 23:53-0500\n"
-"Last-Translator: Chris Leonard <cjl@laptop.org>\n"
+"PO-Revision-Date: 2010-09-24 04:24+0200\n"
+"Last-Translator: DanielAjoy <da.ajoy@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0rc2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.3\n"
 
 #: activity/activity.info:2
 msgid "Turtle Art"
-msgstr "Tortuga Art"
+msgstr "TortugArte"
 
 #: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
 #: tasetup.py:53 tasetup.py:54
@@ -47,19 +49,19 @@ msgstr "Guardar a/abrir de"
 #: TurtleArtActivity.py:173 TurtleArtActivity.py:262
 #: TurtleArtActivity.py:293
 msgid "hide palette"
-msgstr "oculta los palettes"
+msgstr "ocultar la palette"
 
 #: TurtleArtActivity.py:181 TurtleArtActivity.py:286
 msgid "hide blocks"
-msgstr "oculta los bloques"
+msgstr "ocultar los bloques"
 
 #: TurtleArtActivity.py:194
 msgid "run"
-msgstr "correr"
+msgstr "ejecutar"
 
 #: TurtleArtActivity.py:202
 msgid "step"
-msgstr "caminar"
+msgstr "paso por paso"
 
 #: TurtleArtActivity.py:210
 msgid "stop turtle"
@@ -71,20 +73,20 @@ msgstr "ejemplos"
 
 #: TurtleArtActivity.py:249
 msgid "save as HTML"
-msgstr "guardar a HTML"
+msgstr "guardar como HTML"
 
 #: TurtleArtActivity.py
 msgid "save Logo"
-msgstr "guardar a Logo"
+msgstr "guardar como Logo"
 
 #: TurtleArtActivity.py
 msgid "load my block"
-msgstr "carga de mi bloque"
+msgstr "cargar mi bloque"
 
 #: TurtleArtActivity.py:259 TurtleArtActivity.py:267
 #: TurtleArtActivity.py:290 TurtleArtActivity.py:299
 msgid "show palette"
-msgstr "mostrar palette"
+msgstr "mostrar paleta"
 
 #: TurtleArtActivity.py:283 TurtleArtActivity.py:297
 msgid "show blocks"
@@ -152,11 +154,11 @@ msgstr "poner en caja 2"
 
 #:
 msgid "push"
-msgstr "empujar"
+msgstr "apilar"
 
 #:
 msgid "pop"
-msgstr "sacar"
+msgstr "desapilar"
 
 #:
 msgid "Numbers"
@@ -180,7 +182,7 @@ msgstr "no"
 
 #:
 msgid "random"
-msgstr "aleatorio"
+msgstr "azar"
 
 #:
 msgid "min"
@@ -192,7 +194,7 @@ msgstr "max"
 
 #:
 msgid "mod"
-msgstr "mod"
+msgstr "resto"
 
 #:
 msgid "print"
@@ -206,9 +208,10 @@ msgstr "Pluma"
 msgid "color"
 msgstr "color"
 
+# tono ya es traducción de pitch
 #:
 msgid "shade"
-msgstr "tono"
+msgstr "sombra"
 
 #:
 msgid "fill screen"
@@ -216,23 +219,24 @@ msgstr "pintar fondo"
 
 #:
 msgid "pen up"
-msgstr "sp"
+msgstr "sin pluma"
 
 #:
 msgid "pen down"
-msgstr "cp"
+msgstr "con pluma"
 
 #:
 msgid "set pen size"
-msgstr "fijar tamaño"
+msgstr "fijar grosor"
 
 #:
 msgid "pen size"
 msgstr "tamaño"
 
+# tono ya es traduccion de pitch
 #:
 msgid "set shade"
-msgstr "fijar tono"
+msgstr "fijar sombra"
 
 #:
 msgid "set color"
@@ -240,7 +244,7 @@ msgstr "fijar color"
 
 #:
 msgid "set text color"
-msgstr "fijar el color del texto"
+msgstr "fijar color de texto"
 
 #:
 msgid "Blocks"
@@ -286,7 +290,6 @@ msgstr "radio"
 msgid "heading"
 msgstr "rumbo"
 
-#
 msgid "set heading"
 msgstr "fijar rumbo"
 
