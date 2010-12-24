@@ -412,7 +412,7 @@ class LogoCode:
         'savepix': [1, lambda self, x: self._save_picture(x)],
         'savesvg': [1, lambda self, x: self._save_svg(x)],
         'scale': [0, lambda self: self.scale],
-        'see': [0, lambda self: self._see()],
+        'see': [0, lambda self: self.see()],
         'setcolor': [1, lambda self, x: self._prim_set('color',
             self.tw.canvas.setcolor, x)],
         'setgray': [1, lambda self, x: self._prim_set('gray',
@@ -1175,7 +1175,7 @@ class LogoCode:
         self.update_label_value('ycor',
                            self.tw.canvas.ycor / self.tw.coord_scale)
         if len(self.value_blocks['see']) > 0:
-            self._see()
+            self.see()
 
     def _prim_arc(self, cmd, value1, value2):
         cmd(float(value1), float(value2))
@@ -1185,7 +1185,7 @@ class LogoCode:
                            self.tw.canvas.ycor / self.tw.coord_scale)
         self.update_label_value('heading', self.tw.canvas.heading)
         if len(self.value_blocks['see']) > 0:
-            self._see()
+            self.see()
 
     def _prim_setbox(self, name, x, val):
         """ Define value of named box """
@@ -1434,7 +1434,7 @@ class LogoCode:
         play_movie_from_file(self, self.filepath, self._x(), self._y(),
                                self._w(), self._h())
 
-    def _see(self):
+    def see(self):
         """ Read r, g, b from the canvas and return a corresponding palette
         color """
         r, g, b, a = self.tw.canvas.get_pixel()
