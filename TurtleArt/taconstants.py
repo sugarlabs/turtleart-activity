@@ -136,7 +136,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'myfunc1arg', 'userdefined',
              'cartesian', 'width', 'height', 'polar', 'addturtle', 'reskin',
              'sandwichtop_no_label', 'sandwichbottom'],
-            ['kbinput',  'keyboard', 'readpixel', 'see', 'readcamera', 'camera',
+            ['kbinput',  'keyboard', 'readpixel', 'see',
              'sound', 'volume', 'pitch'],
             ['journal', 'audio', 'video', 'description', 'hideblocks',
              'showblocks', 'fullscreen', 'savepix', 'savesvg', 'mediawait',
@@ -222,7 +222,8 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'white',
     'black', 'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy',
-    'sound', 'volume', 'pitch', 'voltage', 'resistance', 'gray', 'see', 'rfid']
+    'sound', 'volume', 'pitch', 'voltage', 'resistance', 'gray', 'see', 'rfid',
+    'luminance']
 BOX_STYLE_MEDIA = ['description', 'audio', 'journal', 'video', 'camera']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
 NUMBER_STYLE_VAR_ARG = ['myfunc1arg', 'myfunc2arg', 'myfunc3arg']
@@ -353,6 +354,7 @@ BLOCK_NAMES = {
     'leftx': [_('picture left')],
     'less2': ['<'],
     'list': ['list'],
+    'luminance': [_('brightness')],
     'mediawait': [_('media wait')],
     'minus2': ['–'],
     'myfunc': [_('Python'), 'f(x)', 'x'],
@@ -518,6 +520,7 @@ PRIMITIVES = {
     'leftx': 'leftx',
     'less2': 'less?',
     'list': 'bulletlist',
+    'luminance': 'luminance',
     'mediawait': 'mediawait',
     'minus2': 'minus',
     'myfunc': 'myfunction',
@@ -834,6 +837,7 @@ HELP_STRINGS = {
     'leftpos': _("xcor of left of screen"),
     'left': _("turns turtle counterclockwise (angle in degrees)"),
     'less2': _("logical less-than operator"),
+    'luminance': _("light level detected by camera"),
     'mediawait': _("wait for current video or audio to complete"),
     'minus2': _("subtracts bottom numeric input from top numeric input"),
     'myfunc': _("a programmable block: used to add advanced math equations, e.g., sin(x)"),

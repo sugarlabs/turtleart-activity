@@ -22,7 +22,6 @@
 #    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import pygst
-pygst.require("0.10")
 import gst
 import gst.interfaces
 from numpy import fromstring

@@ -33,7 +33,6 @@ import gobject
 gobject.threads_init()
 
 import pygst
-pygst.require('0.10')
 import gst
 import gst.interfaces
 import gtk

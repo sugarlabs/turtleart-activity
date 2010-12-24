@@ -375,6 +375,7 @@ class LogoCode:
         'leftx': [0, lambda self: CONSTANTS['leftx']],
         'lpos': [0, lambda self: CONSTANTS['leftpos']],
         'less?': [2, lambda self, x, y: _less(x, y)],
+        'luminance': [0, lambda self: self._read_camera(True)],
         'mediawait': [0, self._media_wait, True],
         'minus': [2, lambda self, x, y: _minus(x, y)],
         'mod': [2, lambda self, x, y: _mod(x, y)],
@@ -1322,8 +1323,9 @@ class LogoCode:
                 self.filepath = None
                 dsobject = None
                 if string[6:] == 'CAMERA':
-                    save_camera_input_to_file(self.imagepath)
-                    self.filepath = self.imagepath
+                    if self.tw.camera:
+                        save_camera_input_to_file(self.imagepath)
+                        self.filepath = self.imagepath
                 elif os.path.exists(string[6:]):  # is it a path?
                     self.filepath = string[6:]
                 elif self.tw.running_sugar:  # is it a datastore object?
@@ -1461,23 +1463,25 @@ class LogoCode:
         self.heap.append(g)
         self.heap.append(r)
 
-    def _read_camera(self):
+    def _read_camera(self, luminance_only=False):
         """ Read average pixel from camera and push b, g, r to the stack """
-        save_camera_input_to_file(self.imagepath)
         pixbuf = None
+        array = None
         w = self._w()
         h = self._h()
-        if w < 1 or h < 1:
-            return
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.imagepath, w, h)
-
-        array = pixbuf.get_pixels()
-        length = len(array) / 3
-        r = 0
-        g = 0
-        b = 0
-        i = 0
+        if w > 0 and h > 0 and self.tw.camera:
+            save_camera_input_to_file(self.imagepath)
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.imagepath, w, h)
+            try:
+                array = pixbuf.get_pixels()
+            except:
+                array = None
         if array is not None:
+            length = len(array) / 3
+            r = 0
+            g = 0
+            b = 0
+            i = 0
             for j in range(length):
                 r += ord(array[i])
                 i += 1
@@ -1485,9 +1489,19 @@ class LogoCode:
                 i += 1
                 b += ord(array[i])
                 i += 1
-        self.heap.append(int((b / length)))
-        self.heap.append(int((g / length)))
-        self.heap.append(int((r / length)))
+            if luminance_only:
+                return int((r * 0.3 + g * 0.6 + b * 0.1) / length)
+            else:
+                self.heap.append(int((b / length)))
+                self.heap.append(int((g / length)))
+                self.heap.append(int((r / length)))
+        else:
+            if luminance_only:
+                return -1
+            else:
+                self.heap.append(-1)
+                self.heap.append(-1)
+                self.heap.append(-1)
 
     def _get_volume(self):
         """ return mic in value """

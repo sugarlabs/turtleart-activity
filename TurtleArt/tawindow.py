@@ -25,6 +25,7 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gobject
+import gst
 import os
 import os.path
 import dbus
@@ -261,6 +262,14 @@ class TurtleArtWindow():
                 PALETTES[PALETTE_NAMES.index('sensor')].append('resistance')
                 PALETTES[PALETTE_NAMES.index('sensor')].append('voltage')
             self.audio_started = False
+
+        self.camera = False
+        v4l2src = gst.element_factory_make('v4l2src')
+        if v4l2src.props.device_name is not None:
+            PALETTES[PALETTE_NAMES.index('sensor')].append('readcamera')
+            PALETTES[PALETTE_NAMES.index('sensor')].append('luminance')
+            PALETTES[PALETTE_NAMES.index('sensor')].append('camera')
+            self.camera = True
 
         """
         The following code will initialize a USB RFID reader. Please note that
