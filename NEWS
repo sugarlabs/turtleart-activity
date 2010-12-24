@@ -1,17 +1,30 @@
+106
+
+BUG FIXES
+
+* Exposed see as an external method (#2542)
+* Media type tests on file suffix use lower()
+
+ENHANCEMENTS
+
+* Added 'camera sees' block for reading average camera RGB value
+* Added camera media block for grabbing images from the camera
+* New psuedo-color.ta example (Tony Forster)
+
 105
 
 BUG FIXES
 
-* Fixed problem with coordinate overlay mislabeling when rescaling coordinates
+* Fixed problem with coordinate overlay mislabelling when rescaling coordinates
 * Fixed overflow problem causing Turtle Art to crash after ~50 minutes (#2489)
 * Fixed regression with turtle display during Wait
 * Display heap with ellipsis to avoid illegible display (#2268)
-* Added 'Media Wait' block to pause turtle while media is playing
-* New block-highlight scheme (#1709)
+* New block-highlight scheme (#1709) (with help from Rodrigo Arboleda)
 
 ENHANCEMENTS
 
-* Added support for RFID tag reader
+* Added support for RFID tag reader (with help from Emiliano Pastorino)
+* Added 'Media Wait' block to pause turtle while media is playing
 
 104
 
