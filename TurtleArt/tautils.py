@@ -301,24 +301,24 @@ def image_to_base64(pixbuf, activity):
 
 def movie_media_type(name):
     """ Is it movie media? """
-    return name.endswith(('.ogv', '.vob', '.mp4', '.wmv', '.mov', '.mpeg',
-                          'ogg'))
+    return name.lower().endswith(('.ogv', '.vob', '.mp4', '.wmv', '.mov',
+                                  '.mpeg', 'ogg'))
 
 
 def audio_media_type(name):
     """ Is it audio media? """
-    return name.endswith(('.oga', '.m4a'))
+    return name.lower().endswith(('.oga', '.m4a'))
 
 
 def image_media_type(name):
     """ Is it image media? """
-    return name.endswith(('.png', '.jpg', '.jpeg', '.gif', '.tiff', '.tif',
-                          '.svg'))
+    return name.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.tiff',
+                                  '.tif', '.svg'))
 
 
 def text_media_type(name):
     """ Is it text media? """
-    return name.endswith(('.txt', '.py', '.lg', '.rtf', '.ta'))
+    return name.lower().endswith(('.txt', '.py', '.lg', '.rtf', '.ta'))
 
 
 def round_int(num):
