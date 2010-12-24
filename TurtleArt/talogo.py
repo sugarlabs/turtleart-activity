@@ -44,9 +44,10 @@ from taconstants import TAB_LAYER, BLACK, WHITE, \
     SENSOR_DC_BIAS, XO1, XO15
 from tagplay import play_audio_from_file, play_movie_from_file, stop_media, \
     media_playing
+from tacamera import save_camera_input_to_file
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
-    text_media_type, round_int, chr_to_ord, strtype
+    text_media_type, round_int, chr_to_ord, strtype, get_path
 
 from RtfParser import RtfTextOnly
 
@@ -401,6 +402,7 @@ class LogoCode:
         'purple': [0, lambda self: CONSTANTS['purple']],
         'push': [1, lambda self, x: self._prim_push(x)],
         'random': [2, lambda self, x, y: _random(x, y)],
+        'readcamera': [0, lambda self: self._read_camera()],
         'readpixel': [0, lambda self: self._read_pixel()],
         'red': [0, lambda self: CONSTANTS['red']],
         'repeat': [2, self._prim_repeat, True],
@@ -527,6 +529,12 @@ class LogoCode:
             self.voltage_gain = -0.0001471
             self.voltage_bias = 1.695
 
+        if self.tw.running_sugar:
+            self.imagepath = get_path(self.tw.activity,
+                                      'data/turtlepic.jpg')
+        else:
+            self.imagepath = '/tmp/turtlepic.jpg'
+
     def _def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
         sym = self._intern(name)
@@ -628,6 +636,8 @@ class LogoCode:
                     code.append('#svideo_' + str(blk.values[0]))
                 else:
                     code.append('#svideo_None')
+            elif blk.name == 'camera':
+                    code.append('#smedia_CAMERA')
             else:
                 return ['%nothing%']
         else:
@@ -1303,7 +1313,6 @@ class LogoCode:
 
     def _show(self, string, center=False):
         """ Show is the general-purpose media-rendering block. """
-        # convert from Turtle coordinates to screen coordinates
         if type(string) == str or type(string) == unicode:
             if string in  ['media_', 'descr_', 'audio_', 'video_',
                            'media_None', 'descr_None', 'audio_None',
@@ -1312,7 +1321,10 @@ class LogoCode:
             elif string[0:6] in ['media_', 'descr_', 'audio_', 'video_']:
                 self.filepath = None
                 dsobject = None
-                if os.path.exists(string[6:]):  # is it a path?
+                if string[6:] == 'CAMERA':
+                    save_camera_input_to_file(self.imagepath)
+                    self.filepath = self.imagepath
+                elif os.path.exists(string[6:]):  # is it a path?
                     self.filepath = string[6:]
                 elif self.tw.running_sugar:  # is it a datastore object?
                     try:
@@ -1448,6 +1460,34 @@ class LogoCode:
         self.heap.append(b)
         self.heap.append(g)
         self.heap.append(r)
+
+    def _read_camera(self):
+        """ Read average pixel from camera and push b, g, r to the stack """
+        save_camera_input_to_file(self.imagepath)
+        pixbuf = None
+        w = self._w()
+        h = self._h()
+        if w < 1 or h < 1:
+            return
+        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.imagepath, w, h)
+
+        array = pixbuf.get_pixels()
+        length = len(array) / 3
+        r = 0
+        g = 0
+        b = 0
+        i = 0
+        if array is not None:
+            for j in range(length):
+                r += ord(array[i])
+                i += 1
+                g += ord(array[i])
+                i += 1
+                b += ord(array[i])
+                i += 1
+        self.heap.append(int((b / length)))
+        self.heap.append(int((g / length)))
+        self.heap.append(int((r / length)))
 
     def _get_volume(self):
         """ return mic in value """

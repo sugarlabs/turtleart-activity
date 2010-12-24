@@ -1572,7 +1572,7 @@ class TurtleArtWindow():
             self.saved_string = blk.spr.labels[0]
             blk.spr.labels[0] += CURSOR
 
-        elif blk.name in BOX_STYLE_MEDIA:
+        elif blk.name in BOX_STYLE_MEDIA and blk.name != 'camera':
             self._import_from_journal(self.selected_blk)
             if blk.name == 'journal' and self.running_sugar:
                 self._load_description_block(blk)
@@ -2504,7 +2504,7 @@ class TurtleArtWindow():
                     self._block_skin('pythonoff', blk)
         elif btype in BOX_STYLE_MEDIA and blk.spr is not None:
             if len(blk.values) == 0 or blk.values[0] == 'None' or \
-               blk.values[0] is None:
+               blk.values[0] is None or btype == 'camera':
                 self._block_skin(btype + 'off', blk)
             elif btype == 'video' or btype == 'audio' or \
                  btype == 'description':

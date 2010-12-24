@@ -136,8 +136,8 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'myfunc1arg', 'userdefined',
              'cartesian', 'width', 'height', 'polar', 'addturtle', 'reskin',
              'sandwichtop_no_label', 'sandwichbottom'],
-            ['kbinput',  'keyboard', 'readpixel', 'see', 'sound', 'volume',
-             'pitch'],
+            ['kbinput',  'keyboard', 'readpixel', 'see', 'readcamera', 'camera',
+             'sound', 'volume', 'pitch'],
             ['journal', 'audio', 'video', 'description', 'hideblocks',
              'showblocks', 'fullscreen', 'savepix', 'savesvg', 'mediawait',
              'picturelist', 'picture1x1a', 'picture1x1', 'picture2x2',
@@ -205,7 +205,7 @@ BASIC_STYLE = []
 BASIC_STYLE_EXTENDED_VERTICAL = ['clean', 'penup', 'pendown', 'stack1',
     'stack2', 'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput',
     'fullscreen', 'cartesian', 'polar', 'startfill', 'mediawait',
-    'stopfill', 'readpixel', 'vspace']
+    'stopfill', 'readpixel', 'readcamera', 'vspace']
 INVISIBLE = ['sandwichcollapsed']
 BASIC_STYLE_EXTENDED = ['picturelist', 'picture1x1', 'picture2x2',
     'picture2x1', 'picture1x2', 'picture1x1a']
@@ -223,7 +223,7 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'white',
     'black', 'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy',
     'sound', 'volume', 'pitch', 'voltage', 'resistance', 'gray', 'see', 'rfid']
-BOX_STYLE_MEDIA = ['description', 'audio', 'journal', 'video']
+BOX_STYLE_MEDIA = ['description', 'audio', 'journal', 'video', 'camera']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
 NUMBER_STYLE_VAR_ARG = ['myfunc1arg', 'myfunc2arg', 'myfunc3arg']
 NUMBER_STYLE_BLOCK = ['random']
@@ -277,7 +277,7 @@ OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
 # Blocks that contain media
 #
 CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'video',
-                  'journal']
+                  'journal', 'camera']
 
 #
 # These blocks get a special skin
@@ -313,6 +313,7 @@ BLOCK_NAMES = {
     'box': [_('box')],
     'box1': [_('box 1')],
     'box2': [_('box 2')],
+    'camera': [' '],
     'cartesian': [_('Cartesian')],
     'clean': [_(' clean ')],
     'clearheap': [_('empty heap')],
@@ -385,6 +386,7 @@ BLOCK_NAMES = {
     'purple': [_('purple')],
     'push': [_('push')],
     'random': [_('random'), _('min'), _('max')],
+    'readcamera': [_('read camera')],
     'readpixel': [_('read pixel')],
     'red': [_('red')],
     'remainder2': [_('mod')],
@@ -540,6 +542,7 @@ PRIMITIVES = {
     'push': 'push',
     'random': 'random',
     'red': 'red',
+    'readcamera': 'readcamera',
     'readpixel': 'readpixel',
     'remainder2': 'mod',
     'repeat': 'repeat',
@@ -621,6 +624,7 @@ DEFAULTS = {
     'audio': [None],
     'back': [100],
     'box': [_('my box')],
+    'camera': ['CAMERA'],
     'comment': [_('comment')],
     'description': [None],
     'fillscreen': [60, 80],
@@ -696,6 +700,7 @@ CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
 
 MEDIA_SHAPES = ['audiooff', 'audioon', 'audiosmall',
                 'videooff', 'videoon', 'videosmall',
+                'cameraoff', 'camerasmall',
                 'journaloff', 'journalon', 'journalsmall',
                 'descriptionoff', 'descriptionon', 'descriptionsmall',
                 'pythonoff', 'pythonon', 'pythonsmall',
@@ -751,6 +756,7 @@ TEMPLATES = {'t1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
 #
 SPECIAL_NAMES = {
     'audio': _('audio'),
+    'camera': _('camera'),
     'division2': _('divide'),
     'equal2': _('equal'),
     'greater2': _('greater than'),
@@ -790,6 +796,7 @@ HELP_STRINGS = {
     'box1': _("Variable 1 (numeric value)"),
     'box2': _("Variable 2 (numeric value)"),
     'box': _("named variable (numeric value)"),
+    'camera': _('camera output'),
     'cartesian': _("displays Cartesian coordinates"),
     'clean': _("clears the screen and reset the turtle"),
     'clearheap': _("emptys FILO (first-in-last-out heap)"),
@@ -860,6 +867,7 @@ HELP_STRINGS = {
     'product2': _("multiplies two numeric inputs"),
     'push': _("pushes value onto FILO (first-in last-out heap)"),
     'random': _("returns random number between minimum (top) and maximum (bottom) values"),
+    'readcamera': _("Average RGB color from camera is pushed to the stack"),
     'readpixel': _("RGB color under the turtle is pushed to the stack"),
     'remainder2': _("modular (remainder) operator"),
     'repeat': _("loops specified number of times"),
