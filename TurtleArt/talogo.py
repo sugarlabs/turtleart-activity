@@ -1357,19 +1357,21 @@ class LogoCode:
                 if dsobject is not None:
                     dsobject.destroy()
             else:  # assume it is text to display
+                x = self._x()
+                y = self._y()
                 if center:
-                    y = self._y() - self.tw.canvas.textsize
-                else:
-                    y = self._y()
-                self.tw.canvas.draw_text(string, self._x(), y,
+                    y -= self.tw.canvas.textsize
+                self.tw.canvas.draw_text(string, x, y,
                                          int(self.tw.canvas.textsize * \
                                              self.scale / 100.),
-                                         self.tw.canvas.width - self._x())
+                                         self.tw.canvas.width - x)
         elif type(string) == float or type(string) == int:
             string = round_int(string)
+            x = self._x()
+            y = self._y()
             if center:
                 y -= self.tw.canvas.textsize
-            self.tw.canvas.draw_text(string, self._x(), self._y(),
+            self.tw.canvas.draw_text(string, x, y,
                                      int(self.tw.canvas.textsize * \
                                          self.scale / 100.),
                                      self.tw.canvas.width - x)
