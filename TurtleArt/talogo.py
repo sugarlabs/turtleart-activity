@@ -1091,7 +1091,7 @@ class LogoCode:
         if flag and (self.tw.hide or self.tw.step_time == 0):
             return
         if type(n) == str or type(n) == unicode:
-            if n[0:6] == 'media_':
+            if n[0:6] == 'media_' and n[6:] != 'CAMERA':
                 try:
                     if self.tw.running_sugar:
                         try:
