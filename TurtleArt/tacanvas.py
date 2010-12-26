@@ -61,7 +61,10 @@ def calc_gray(c, g, invert=False):
     if g == 100:
         return c
     if invert:
-        return int(((c * 100) - (32768 * (100 - g))) / g)
+        if g == 0:
+            return c
+        else:
+            return int(((c * 100) - (32768 * (100 - g))) / g)
     else:
         return int(((c * g) + (32768 * (100 - g))) / 100)
 
