@@ -22,7 +22,7 @@
 
 import gst, time
 
-def save_camera_input_to_file(imagepath):
+def save_camera_input_to_file(imagepath, pause=2.0):
    """ Grab a frame from the video camera and save to a temporary file """
 
    pipeline = gst.parse_launch(
@@ -30,6 +30,6 @@ def save_camera_input_to_file(imagepath):
    pipeline.set_state(gst.STATE_PLAYING)
 
    # Need to pause for pipeline to stablize
-   time.sleep(2) 
+   time.sleep(pause)
 
    pipeline.set_state(gst.STATE_NULL)

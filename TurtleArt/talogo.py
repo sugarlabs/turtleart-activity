@@ -526,9 +526,13 @@ class LogoCode:
         if self.tw.hw == XO1:
             self.voltage_gain = 0.00002225
             self.voltage_bias = 1.140
+            self.camera_pause = 0.6
         elif self.tw.hw == XO15:
             self.voltage_gain = -0.0001471
             self.voltage_bias = 1.695
+            self.camera_pause = 0.5
+        else:
+            self.camera_pause = 2.0
 
         if self.tw.running_sugar:
             self.imagepath = get_path(self.tw.activity,
@@ -1324,7 +1328,8 @@ class LogoCode:
                 dsobject = None
                 if string[6:] == 'CAMERA':
                     if self.tw.camera:
-                        save_camera_input_to_file(self.imagepath)
+                        save_camera_input_to_file(self.imagepath,
+                                                  self.camera_pause)
                         self.filepath = self.imagepath
                 elif os.path.exists(string[6:]):  # is it a path?
                     self.filepath = string[6:]
@@ -1472,7 +1477,7 @@ class LogoCode:
         w = self._w()
         h = self._h()
         if w > 0 and h > 0 and self.tw.camera:
-            save_camera_input_to_file(self.imagepath)
+            save_camera_input_to_file(self.imagepath, self.camera_pause)
             pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.imagepath, w, h)
             try:
                 array = pixbuf.get_pixels()
