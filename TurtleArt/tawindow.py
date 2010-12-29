@@ -249,11 +249,6 @@ class TurtleArtWindow():
         CONSTANTS['width'] = int(self.canvas.width / self.coord_scale)
         CONSTANTS['height'] = int(self.canvas.height / self.coord_scale)
 
-        self.lc = LogoCode(self)
-        self.saved_pictures = []
-
-        self.block_operation = ''
-
         if self.interactive_mode:
             self._setup_misc()
             self._show_toolbar_palette(0, False)
@@ -264,13 +259,18 @@ class TurtleArtWindow():
                 PALETTES[PALETTE_NAMES.index('sensor')].append('voltage')
             self.audio_started = False
 
-        self.camera = False
+        self.camera_available = False
         v4l2src = gst.element_factory_make('v4l2src')
         if v4l2src.props.device_name is not None:
             PALETTES[PALETTE_NAMES.index('sensor')].append('readcamera')
             PALETTES[PALETTE_NAMES.index('sensor')].append('luminance')
             PALETTES[PALETTE_NAMES.index('sensor')].append('camera')
-            self.camera = True
+            self.camera_available = True
+
+        self.lc = LogoCode(self)
+        self.saved_pictures = []
+
+        self.block_operation = ''
 
         """
         The following code will initialize a USB RFID reader. Please note that

@@ -22,14 +22,21 @@
 
 import gst, time
 
-def save_camera_input_to_file(imagepath, pause=2.0):
-   """ Grab a frame from the video camera and save to a temporary file """
+GST_PIPE = ['v4l2src', 'ffmpegcolorspace', 'pngenc']
 
-   pipeline = gst.parse_launch(
-      'v4l2src ! ffmpegcolorspace ! jpegenc ! filesink location=' + imagepath)
-   pipeline.set_state(gst.STATE_PLAYING)
+class Camera():
+    """ A class for representing the video camera """
 
-   # Need to pause for pipeline to stablize
-   time.sleep(pause)
+    def __init__(self, imagepath):
+       GST_PIPE.append('filesink location=%s' % imagepath)
+       self.pipe = gst.parse_launch('!'.join(GST_PIPE))
+       self.bus = self.pipe.get_bus()
 
-   pipeline.set_state(gst.STATE_NULL)
+    def save_camera_input_to_file(self):
+        """ Grab a frame from the camera """
+        self.pipe.set_state(gst.STATE_PLAYING)
+        self.bus.poll(gst.MESSAGE_EOS, -1)
+
+    def stop_camera_input(self):
+        self.pipe.set_state(gst.STATE_NULL)
+
