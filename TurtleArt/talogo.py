@@ -29,6 +29,7 @@ from numpy import append
 from numpy.fft import rfft
 from random import uniform
 from operator import isNumberType
+from fcntl import ioctl
 
 import os.path
 
@@ -45,6 +46,7 @@ from taconstants import TAB_LAYER, BLACK, WHITE, \
 from tagplay import play_audio_from_file, play_movie_from_file, stop_media, \
     media_playing
 from tacamera import Camera
+import v4l2
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
     text_media_type, round_int, chr_to_ord, strtype, get_path
@@ -57,7 +59,8 @@ from gettext import gettext as _
 
 VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
                 'heading', 'xcor', 'ycor', 'pop', 'see', 'keyboard',
-                'sound', 'volume', 'pitch', 'resistance', 'voltage']
+                'sound', 'volume', 'pitch', 'resistance', 'voltage',
+                'luminance']
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -539,6 +542,19 @@ class LogoCode:
             else:
                 self.imagepath = '/tmp/turtlepic.png'
             self.camera = Camera(self.imagepath)
+            # auto-gain control logic -- doesn't seem to make any difference
+            self._ag_control = None
+            """
+            self.VD = open('/dev/video0', 'rw')
+            self._query_ag_control = v4l2.v4l2_queryctrl(v4l2.V4L2_CID_GAIN)
+            self._ag_control = v4l2.v4l2_control(v4l2.V4L2_CID_GAIN)
+            try:
+                ioctl(self.VD, v4l2.VIDIOC_QUERYCTRL, self._query_ag_control)
+                ioctl(self.VD, v4l2.VIDIOC_G_CTRL, self._ag_control)
+            except:
+                _logger.debug('GAIN control not available')
+                self._ag_control = None
+            """
 
     def _def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
@@ -1477,6 +1493,10 @@ class LogoCode:
         w = self._w()
         h = self._h()
         if w > 0 and h > 0 and self.tw.camera_available:
+            if self._ag_control is not None:
+                self._ag_control.value = 0 # disable AUTOGAIN
+                ioctl(self.VD, v4l2.VIDIOC_S_CTRL, self._ag_control)
+
             self.camera.save_camera_input_to_file()
             self.camera.stop_camera_input()
             pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.imagepath, w, h)
@@ -1498,7 +1518,9 @@ class LogoCode:
                 b += ord(array[i])
                 i += 1
             if luminance_only:
-                return int((r * 0.3 + g * 0.6 + b * 0.1) / length)
+                lum = int((r * 0.3 + g * 0.6 + b * 0.1) / length)
+                self.update_label_value('luminance', lum)
+                return lum
             else:
                 self.heap.append(int((b / length)))
                 self.heap.append(int((g / length)))
