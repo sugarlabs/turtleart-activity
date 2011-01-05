@@ -542,19 +542,6 @@ class LogoCode:
             else:
                 self.imagepath = '/tmp/turtlepic.png'
             self.camera = Camera(self.imagepath)
-            # auto-gain control logic -- doesn't seem to make any difference
-            self._ag_control = None
-            """
-            self.VD = open('/dev/video0', 'rw')
-            self._query_ag_control = v4l2.v4l2_queryctrl(v4l2.V4L2_CID_GAIN)
-            self._ag_control = v4l2.v4l2_control(v4l2.V4L2_CID_GAIN)
-            try:
-                ioctl(self.VD, v4l2.VIDIOC_QUERYCTRL, self._query_ag_control)
-                ioctl(self.VD, v4l2.VIDIOC_G_CTRL, self._ag_control)
-            except:
-                _logger.debug('GAIN control not available')
-                self._ag_control = None
-            """
 
     def _def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
@@ -1493,9 +1480,24 @@ class LogoCode:
         w = self._w()
         h = self._h()
         if w > 0 and h > 0 and self.tw.camera_available:
-            if self._ag_control is not None:
-                self._ag_control.value = 0 # disable AUTOGAIN
-                ioctl(self.VD, v4l2.VIDIOC_S_CTRL, self._ag_control)
+
+            try:
+                self._video_capture_device = open('/dev/video0', 'rw')
+            except:
+                self._video_capture_device = None
+                _logger.debug('video capture device not available')
+            if self._video_capture_device is not None:
+                self._ag_control = v4l2.v4l2_control(v4l2.V4L2_CID_AUTOGAIN)
+                try:
+                    ioctl(self._video_capture_device, v4l2.VIDIOC_G_CTRL,
+                          self._ag_control)
+                    self._ag_control.value = 0 # disable AUTOGAIN
+                    ioctl(self._video_capture_device, v4l2.VIDIOC_S_CTRL,
+                          self._ag_control)
+                except:
+                    _logger.debug('AUTOGAIN control not available')
+            if self._video_capture_device is not None:
+                self._video_capture_device.close()
 
             self.camera.save_camera_input_to_file()
             self.camera.stop_camera_input()
