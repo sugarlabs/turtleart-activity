@@ -516,6 +516,7 @@ class LogoCode:
         self.gplay = None
         self.ag = None
         self.filepath = None
+        self.dsobject = None
 
         # Scale factors for depreciated portfolio blocks
         self.title_height = int((self.tw.canvas.height / 20) * self.tw.scale)
@@ -1280,12 +1281,11 @@ class LogoCode:
             try:
                 dsobject = datastore.get(media[6:])
             except:
-                _logger.debug("Couldn't open %s" % (media[6:]))
+                _logger.debug("Couldn't open skin %s" % (media[6:]))
             if dsobject is not None:
                 self.filepath = dsobject.file_path
         if self.filepath == None:
             self.tw.showlabel('nojournal', self.filepath)
-            _logger.debug("Couldn't open %s" % (self.filepath))
             return
         pixbuf = None
         try:
@@ -1293,7 +1293,7 @@ class LogoCode:
                                                           scale)
         except:
             self.tw.showlabel('nojournal', self.filepath)
-            _logger.debug("Couldn't open %s" % (self.filepath))
+            _logger.debug("Couldn't open skin %s" % (self.filepath))
         if pixbuf is not None:
             self.tw.active_turtle.set_shapes([pixbuf])
             pen_state = self.tw.active_turtle.get_pen_state()
@@ -1328,7 +1328,7 @@ class LogoCode:
                 pass
             elif string[0:6] in ['media_', 'descr_', 'audio_', 'video_']:
                 self.filepath = None
-                dsobject = None
+                self.dsobject = None
                 if string[6:] == 'CAMERA':
                     if self.tw.camera_available:
                         self.camera.save_camera_input_to_file()
@@ -1338,32 +1338,37 @@ class LogoCode:
                     self.filepath = string[6:]
                 elif self.tw.running_sugar:  # is it a datastore object?
                     try:
-                        dsobject = datastore.get(string[6:])
+                        self.dsobject = datastore.get(string[6:])
                     except:
-                        _logger.debug("Couldn't dsobject %s" % (string[6:]))
-                    if dsobject is not None:
-                        self.filepath = dsobject.file_path
+                        _logger.debug("Couldn't find dsobject %s" % (
+                                string[6:]))
+                    if self.dsobject is not None:
+                        self.filepath = self.dsobject.file_path
                 if self.filepath == None:
-                    self.tw.showlabel('nojournal', string[6:])
+                    if self.dsobject is not None:
+                        self.tw.showlabel('nojournal',
+                                          self.dsobject.metadata['title'])
+                    else:
+                        self.tw.showlabel('nojournal', string[6:])
                     _logger.debug("Couldn't open %s" % (string[6:]))
                 elif string[0:6] == 'media_':
                     self._insert_image(center)
                 elif string[0:6] == 'descr_':
                     mimetype = None
-                    if dsobject is not None and \
-                       'mime_type' in dsobject.metadata:
-                        mimetype = dsobject.metadata['mime_type']
+                    if self.dsobject is not None and \
+                       'mime_type' in self.dsobject.metadata:
+                        mimetype = self.dsobject.metadata['mime_type']
                     description = None
-                    if dsobject is not None and \
-                       'description' in dsobject.metadata:
-                        description = dsobject.metadata['description']
+                    if self.dsobject is not None and \
+                       'description' in self.dsobject.metadata:
+                        description = self.dsobject.metadata['description']
                     self._insert_desc(mimetype, description)
                 elif string[0:6] == 'audio_':
                     self._play_sound()
                 elif string[0:6] == 'video_':
                     self._play_video()
-                if dsobject is not None:
-                    dsobject.destroy()
+                if self.dsobject is not None:
+                    self.dsobject.destroy()
             else:  # assume it is text to display
                 x = self._x()
                 y = self._y()
@@ -1393,11 +1398,19 @@ class LogoCode:
         h = self._h()
         if w < 1 or h < 1:
             return
-        try:
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.filepath, w, h)
-        except:
-            self.tw.showlabel('nojournal', self.filepath)
-            _logger.debug("Couldn't open %s" % (self.filepath))
+        if self.filepath is not None and self.filepath != '':
+            try:
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.filepath,
+                                                              w, h)
+            except:
+                self.tw.showlabel('nojournal', self.filepath)
+                _logger.debug("Couldn't open filepath %s" % (self.filepath))
+        elif self.dsobject is not None:
+            try:
+                pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
+            except:
+                self.tw.showlabel('nojournal', self.dsobject)
+                _logger.debug("Couldn't open dsobject %s" % (self.dsobject))
         if pixbuf is not None:
             if center:
                 self.tw.canvas.draw_pixbuf(pixbuf, 0, 0,
@@ -1428,7 +1441,7 @@ class LogoCode:
                     f.close()
                 except IOError:
                     self.tw.showlabel('nojournal', self.filepath)
-                    _logger.debug("Couldn't open %s" % (self.filepath))
+                    _logger.debug("Couldn't open filepath %s" % (self.filepath))
         else:
             if description is not None:
                 text = str(description)
