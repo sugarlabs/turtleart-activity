@@ -1,5 +1,6 @@
 #Copyright (c) 2007-8, Playful Invention Company.
 #Copyright (c) 2008-10, Walter Bender
+#Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -219,9 +220,8 @@ class TurtleGraphics:
                                                    self.height / 2 - self.ycor)
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
-        if self.tw.sharing() and share:
-            self.tw.activity.send_event("f|%s" % \
-                (data_to_string([self.tw.nick, int(n)])))
+        event = "f|%s" % (data_to_string([self._get_my_nick(), int(n)]))
+        self._send_event(event, share)
 
     def seth(self, n, share=True):
         """ Set the turtle heading. """
@@ -232,9 +232,8 @@ class TurtleGraphics:
             return
         self.heading %= 360
         self.turn_turtle()
-        if self.tw.sharing() and share:
-            self.tw.activity.send_event("r|%s" % \
-                (data_to_string([self.tw.nick, round_int(self.heading)])))
+        event = "r|%s" % (data_to_string([self._get_my_nick(), round_int(self.heading)]))
+        self._send_event(event, share)
 
     def right(self, n, share=True):
         """ Rotate turtle clockwise """
@@ -245,9 +244,8 @@ class TurtleGraphics:
             return
         self.heading %= 360
         self.turn_turtle()
-        if self.tw.sharing() and share:
-            self.tw.activity.send_event("r|%s" % \
-                (data_to_string([self.tw.nick, round_int(self.heading)])))
+        event = "r|%s" % (data_to_string([self._get_my_nick(), round_int(self.heading)]))
+        self._send_event(event, share)
 
     def arc(self, a, r, share=True):
         """ Draw an arc """
@@ -262,9 +260,8 @@ class TurtleGraphics:
             _logger.debug("bad value sent to %s" % (__name__))
             return
         self.move_turtle()
-        if self.tw.sharing() and share:
-            self.tw.activity.send_event("a|%s" % \
-                (data_to_string([self.tw.nick, [round_int(a), round_int(r)]])))
+        event = "a|%s" % (data_to_string([self._get_my_nick(), [round_int(a), round_int(r)]]))
+        self._send_event(event, share)
 
     def rarc(self, a, r):
         """ draw a clockwise arc """
@@ -350,9 +347,8 @@ class TurtleGraphics:
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
 
         self.move_turtle()
-        if self.tw.sharing() and share:
-            self.tw.activity.send_event("x|%s" % \
-                (data_to_string([self.tw.nick, [round_int(x), round_int(y)]])))
+        event = "x|%s" % (data_to_string([self._get_my_nick(), [round_int(x), round_int(y)]]))
+        self._send_event(event, share)
 
     def setpensize(self, ps, share=True):
         """ Set the pen size """
@@ -367,9 +363,8 @@ class TurtleGraphics:
         self.gc.set_line_attributes(int(self.pensize * self.tw.coord_scale),
                      gtk.gdk.LINE_SOLID, gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
         self.svg.set_stroke_width(self.pensize)
-        if self.tw.sharing() and share:
-            self.tw.activity.send_event("w|%s" % \
-                (data_to_string([self.tw.nick, round_int(ps)])))
+        event = "w|%s" % (data_to_string([self._get_my_nick(), round_int(ps)]))
+        self._send_event(event, share)
 
     def setcolor(self, c, share=True):
         """ Set the pen color """
@@ -382,9 +377,8 @@ class TurtleGraphics:
         self.tw.active_turtle.set_color(c)
         self.set_fgcolor()
         self.set_textcolor()
-        if self.tw.sharing() and share:
-            self.tw.activity.send_event("c|%s" % \
-                (data_to_string([self.tw.nick, round_int(c)])))
+        event = "c|%s" % (data_to_string([self._get_my_nick(), round_int(c)]))
+        self._send_event(event, share)
 
     def setgray(self, g, share=True):
         """ Set the gray level """
@@ -400,9 +394,8 @@ class TurtleGraphics:
         self.set_fgcolor()
         self.set_textcolor()
         self.tw.active_turtle.set_gray(self.gray)
-        if self.tw.sharing() and share:
-            self.tw.activity.send_event("g|%s" % \
-                (data_to_string([self.tw.nick, round_int(self.gray)])))
+        event = "g|%s" % (data_to_string([self._get_my_nick(), round_int(self.gray)]))
+        self._send_event(event, share)
 
     def settextcolor(self, c):
         """ Set the text color """
@@ -430,9 +423,8 @@ class TurtleGraphics:
         self.tw.active_turtle.set_shade(s)
         self.set_fgcolor()
         self.set_textcolor()
-        if self.tw.sharing() and share:
-            self.tw.activity.send_event("s|%s" % \
-                (data_to_string([self.tw.nick, round_int(s)])))
+        event = "s|%s" % (data_to_string([self._get_my_nick(), round_int(s)]))
+        self._send_event(event, share)
 
     def fillscreen(self, c, s):
         """ Fill screen with color/shade and reset to defaults """
@@ -487,9 +479,8 @@ class TurtleGraphics:
         """ Lower or raise the pen """
         self.pendown = bool
         self.tw.active_turtle.set_pen_state(bool)
-        if self.tw.sharing() and share:
-            self.tw.activity.send_event("p|%s" % \
-                (data_to_string([self.tw.nick, bool])))
+        event = "p|%s" % (data_to_string([self._get_my_nick(), bool]))
+        self._send_event(event, share)
 
     def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path):
         """ Draw a pixbuf """
@@ -657,3 +648,18 @@ class TurtleGraphics:
                               self.svg.background("#%02x%02x%02x" % \
                               (self.bgrgb[0], self.bgrgb[1], self.bgrgb[2])),
                               self.tw.svg_string, self.svg.footer())
+
+    def _get_my_nick(self):
+        return self.tw.nick
+
+    def _send_event(self, entry, share):
+        if not share:
+            return
+
+        if self.tw.sharing():
+            if self.tw.activity:
+                print "Sending: %s" % entry
+                self.tw.activity.send_event(entry)
+            elif self.tw.send_event:
+                print "Sending: %s" % entry
+                self.tw.send_event(entry)
