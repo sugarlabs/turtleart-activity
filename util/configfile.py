@@ -1,0 +1,158 @@
+#!/usr/bin/env python
+#
+# Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
+#
+
+import gobject
+
+class ConfigFile(gobject.GObject):
+    """Load/save a simple (key = value) config file"""
+
+    __gsignals__ = {
+        'configuration-loaded': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
+                                 ()),
+        'configuration-saved': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
+                                 ()),
+        }
+
+    def __init__(self, config_file_path, valid_keys = {}):
+        gobject.GObject.__init__(self)
+
+        self._config_file_path = config_file_path
+        self._valid_keys = valid_keys
+        self._config_hash = {}
+        self._is_loaded = False
+
+    def set_valid_keys(self, valid_keys):
+        self._valid_keys = valid_keys
+
+    def is_loaded(self):
+        return self._is_loaded
+
+    def get(self, key, empty_if_not_loaded = False):
+        if not self._valid_keys.has_key(key):
+            raise RuntimeError("Unknown config value %s" % key)
+
+        if self._config_hash.has_key(key):
+            value = self._config_hash[key]
+        else:
+            if self._valid_keys[key]["type"] == "text":
+                value = ""
+            elif self._valid_keys[key]["type"] == "boolean": 
+                value = False
+            elif self._valid_keys[key]["type"] == "integer": 
+                value = 0 
+
+        return value
+
+    def set(self, key, value):
+        if not self._valid_keys.has_key(key):
+            raise RuntimeError("Unknown config value %s" % key)
+
+        self._config_hash[key] = value
+
+    def load(self):
+        try:
+            config_file = open(self._config_file_path, 'r')
+            lines = config_file.readlines()
+            config_file.close()
+            for line in lines:
+                line = line.strip()
+                k,v = line.split('=')
+                k = k.strip(' ')
+                v = v.strip(' ')
+                if not self._valid_keys.has_key(k):
+                    raise RuntimeError("Unknown config value %s" % k)
+                value_type = self._valid_keys[k]["type"]
+                if value_type == "text":
+                    value = v
+                elif value_type == "boolean":
+                    value = eval(v)
+                elif value_type == "integer":
+                    value = int(v)
+                self._config_hash[k] = value
+            self._is_loaded = True
+            self.emit('configuration-loaded')
+        except Exception,e:
+            print e
+
+        return self._is_loaded
+        
+    def save(self):
+        config_file = open(self._config_file_path, 'w')
+        for k in self._config_hash.keys():
+            v = self._config_hash[k]
+            l = "%s = %s\n" % (k, v)
+            config_file.write(l)
+        config_file.close()
+        self.emit('configuration-saved')
+
+    def dump_keys(self):
+        print "\n\nDumping keys\n\n"
+        for k in self._config_hash.keys():
+            v = self._config_hash[k]
+            l = "%s = %s\n" % (k, v)
+            print l
+
+def test_save_load(test_config_file):
+    keys = {}
+    keys["nick"] = { "type" : "text" }
+    keys["account_id"] = { "type" : "text" }
+    keys["server"] = { "type" : "text" }
+    keys["port"] = { "type" : "text" }
+    keys["password"] = { "type" : "text" }
+    keys["register"] = { "type" : "text" }
+
+    c = ConfigFile(test_config_file)
+    c.set_valid_keys(keys)
+    c.set("nick", "rgs")
+    c.set("account_id", "rgs@andromeda")
+    c.set("server", "andromeda")
+    c.set("port", 5223)
+    c.set("password", "97c74fa0dc3b39b8c87f119fa53cced2b7040786")
+    c.set("register", True)
+
+    c.save()
+    
+    c = ConfigFile(test_config_file)
+    c.set_valid_keys(keys)
+    c.load()
+    c.dump_keys()
+
+def _configuration_saved_cb(config_file_obj):
+    print "_configuration_saved_cb called"
+    config_file_obj.dump_keys()
+
+def _configuration_loaded_cb(config_file_obj):
+    print "_configuration_loaded_cb called"
+    config_file_obj.dump_keys()
+
+def test_signals(test_config_file):
+    keys = {}
+    keys["nick"] = { "type" : "text" }
+    keys["account_id"] = { "type" : "text" }
+    keys["server"] = { "type" : "text" }
+    keys["port"] = { "type" : "text" }
+    keys["password"] = { "type" : "text" }
+    keys["register"] = { "type" : "text" }
+
+    c = ConfigFile(test_config_file)
+    c.connect('configuration-saved', _configuration_saved_cb)
+    c.set_valid_keys(keys)
+    c.set("nick", "rgs")
+    c.set("account_id", "rgs@andromeda")
+    c.set("server", "andromeda")
+    c.set("port", 5223)
+    c.set("password", "97c74fa0dc3b39b8c87f119fa53cced2b7040786")
+    c.set("register", True)
+
+    c.save()
+    
+    c = ConfigFile(test_config_file)
+    c.connect('configuration-loaded', _configuration_loaded_cb)
+    c.set_valid_keys(keys)
+    c.load()
+
+if __name__ == "__main__":
+    test_save_load("/tmp/configfile.0001")
+    test_signals("/tmp/configfile.0002")
