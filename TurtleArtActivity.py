@@ -51,47 +51,6 @@ from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.collaboration import Collaboration
 
-def _add_label(string, toolbar):
-    """ add a label to a toolbar """
-    label = gtk.Label(string)
-    label.set_line_wrap(True)
-    label.show()
-    toolitem = gtk.ToolItem()
-    toolitem.add(label)
-    toolbar.insert(toolitem, -1)
-    toolitem.show()
-    return label
-
-
-def _add_separator(toolbar, expand=False):
-    """ add a separator to a toolbar """
-    separator = gtk.SeparatorToolItem()
-    separator.props.draw = True
-    separator.set_expand(expand)
-    toolbar.insert(separator, -1)
-    separator.show()
-
-
-def _add_button(name, tooltip, callback, toolbar, accelerator=None, arg=None):
-    """ add a button to a toolbar """
-    button = ToolButton(name)
-    button.set_tooltip(tooltip)
-    if arg is None:
-        button.connect('clicked', callback)
-    else:
-        button.connect('clicked', callback, arg)
-    if accelerator is not None:
-        try:
-            button.props.accelerator = accelerator
-        except AttributeError:
-            pass
-    button.show()
-    if hasattr(toolbar, 'insert'): # the main toolbar
-        toolbar.insert(button, -1)
-    else:  # or a secondary toolbar
-        toolbar.props.page.insert(button, -1)
-    return button
-
 
 class TurtleArtActivity(activity.Activity):
 
@@ -525,11 +484,11 @@ class TurtleArtActivity(activity.Activity):
             help_toolbar_button.show()
             toolbox.toolbar.insert(help_toolbar_button, -1)
 
-            _add_separator(toolbox.toolbar)
+            self._add_separator(toolbox.toolbar)
 
             self._make_project_buttons(toolbox.toolbar)
 
-            _add_separator(toolbox.toolbar, True)
+            self._add_separator(toolbox.toolbar, True)
 
             stop_button = StopButton(self)
             stop_button.props.accelerator = '<Ctrl>Q'
@@ -559,57 +518,57 @@ class TurtleArtActivity(activity.Activity):
 
             self._make_palette_buttons(project_toolbar, palette_button=True)
 
-            _add_separator(project_toolbar)
+            self._add_separator(project_toolbar)
 
             self._make_project_buttons(project_toolbar)
 
-        self.keep_button = _add_button('filesaveoff', _("Save snapshot"),
+        self.keep_button = self._add_button('filesaveoff', _("Save snapshot"),
                                        self.do_keep_cb,
                                        journal_toolbar_button)
-        self.save_as_html = _add_button('htmloff', _("Save as HTML"),
+        self.save_as_html = self._add_button('htmloff', _("Save as HTML"),
                                         self.do_save_as_html_cb,
                                         journal_toolbar_button)
-        self.save_as_logo = _add_button('logo-saveoff', _("Save as Logo"),
+        self.save_as_logo = self._add_button('logo-saveoff', _("Save as Logo"),
                                         self.do_save_as_logo_cb,
                                         journal_toolbar_button)
-        self.save_as_image = _add_button('image-saveoff', _("Save as image"),
+        self.save_as_image = self._add_button('image-saveoff', _("Save as image"),
                                          self.do_save_as_image_cb,
                                          journal_toolbar_button)
-        self.load_ta_project = _add_button('load-from-journal',
+        self.load_ta_project = self._add_button('load-from-journal',
             _("Import project from the Journal"), self.do_load_ta_project_cb,
                                            journal_toolbar_button)
-        _add_separator(journal_toolbar)
-        self.load_python = _add_button('pippy-openoff', _("Load Python block"),
+        self._add_separator(journal_toolbar)
+        self.load_python = self._add_button('pippy-openoff', _("Load Python block"),
                                        self.do_load_python_cb,
                                        journal_toolbar_button)
-        self.samples_button = _add_button("ta-open", _('Load example'),
+        self.samples_button = self._add_button("ta-open", _('Load example'),
             self.do_samples_cb, journal_toolbar_button)
-        copy = _add_button('edit-copy', _('Copy'), self._copy_cb,
+        copy = self._add_button('edit-copy', _('Copy'), self._copy_cb,
                            edit_toolbar_button, '<Ctrl>c')
-        paste = _add_button('edit-paste', _('Paste'), self._paste_cb,
+        paste = self._add_button('edit-paste', _('Paste'), self._paste_cb,
                             edit_toolbar_button, '<Ctrl>v')
-        fullscreen_button = _add_button('view-fullscreen', _("Fullscreen"),
+        fullscreen_button = self._add_button('view-fullscreen', _("Fullscreen"),
                                         self.do_fullscreen_cb,
                                         view_toolbar_button, '<Alt>Return')
-        cartesian_button = _add_button('view-Cartesian',
+        cartesian_button = self._add_button('view-Cartesian',
                                        _("Cartesian coordinates"),
                                        self.do_cartesian_cb,
                                        view_toolbar_button)
-        polar_button = _add_button('view-polar', _("Polar coordinates"),
+        polar_button = self._add_button('view-polar', _("Polar coordinates"),
                                    self.do_polar_cb, view_toolbar_button)
-        _add_separator(view_toolbar)
-        self.coordinates_label = _add_label(
+        self._add_separator(view_toolbar)
+        self.coordinates_label = self._add_label(
             _("xcor") + " = 0 " + _("ycor") + " = 0 " + _("heading") + " = 0",
             view_toolbar)
-        _add_separator(view_toolbar, True)
-        self.rescale_button = _add_button('expand-coordinates',
+        self._add_separator(view_toolbar, True)
+        self.rescale_button = self._add_button('expand-coordinates',
             _("Rescale coordinates up"), self.do_rescale_cb,
                                           view_toolbar_button)
-        self.resize_up_button = _add_button('resize+', _("Grow blocks"),
+        self.resize_up_button = self._add_button('resize+', _("Grow blocks"),
             self.do_grow_blocks_cb, view_toolbar_button)
-        self.resize_down_button = _add_button('resize-', _("Shrink blocks"),
+        self.resize_down_button = self._add_button('resize-', _("Shrink blocks"),
             self.do_shrink_blocks_cb, view_toolbar_button)
-        self.hover_help_label = _add_label(
+        self.hover_help_label = self._add_label(
             _("Move the cursor over the orange palette for help."),
             help_toolbar)
 
@@ -621,10 +580,10 @@ class TurtleArtActivity(activity.Activity):
                     suffix = 'off'
                 else:
                     suffix = 'on'
-                self.palette_buttons.append(_add_button(name + suffix,
+                self.palette_buttons.append(self._add_button(name + suffix,
                     HELP_STRINGS[name], self.do_palette_buttons_cb,
                     palette_toolbar_button, None, i))
-            _add_separator(palette_toolbar, True)
+            self._add_separator(palette_toolbar, True)
 
             self._make_palette_buttons(palette_toolbar_button)
 
@@ -648,22 +607,22 @@ class TurtleArtActivity(activity.Activity):
     def _make_palette_buttons(self, toolbar, palette_button=False):
         """ Creates the palette and block buttons for both toolbar types"""
         if palette_button:  # old-style toolbars need this button
-            self.palette_button = _add_button("paletteoff", _('Hide palette'),
+            self.palette_button = self._add_button("paletteoff", _('Hide palette'),
                 self.do_palette_cb, toolbar, _('<Ctrl>p'))
-        self.blocks_button = _add_button("hideshowoff", _('Hide blocks'),
+        self.blocks_button = self._add_button("hideshowoff", _('Hide blocks'),
             self.do_hideshow_cb, toolbar, _('<Ctrl>b'))
 
     def _make_project_buttons(self, toolbar):
         """ Creates the turtle buttons for both toolbar types"""
-        self.eraser_button = _add_button("eraseron", _('Clean'),
+        self.eraser_button = self._add_button("eraseron", _('Clean'),
             self.do_eraser_cb, toolbar, _('<Ctrl>e'))
-        self.run_button = _add_button("run-fastoff", _('Run'), self.do_run_cb,
+        self.run_button = self._add_button("run-fastoff", _('Run'), self.do_run_cb,
                                       toolbar, _('<Ctrl>r'))
-        self.step_button = _add_button("run-slowoff", _('Step'),
+        self.step_button = self._add_button("run-slowoff", _('Step'),
                                        self.do_step_cb, toolbar, _('<Ctrl>w'))
-        self.debug_button = _add_button("debugoff", _('Debug'),
+        self.debug_button = self._add_button("debugoff", _('Debug'),
             self.do_debug_cb, toolbar, _('<Ctrl>d'))
-        self.stop_turtle_button = _add_button("stopitoff", _('Stop turtle'),
+        self.stop_turtle_button = self._add_button("stopitoff", _('Stop turtle'),
             self.do_stop_cb, toolbar, _('<Ctrl>s'))
 
     def _setup_scrolled_window(self):
@@ -817,3 +776,42 @@ class TurtleArtActivity(activity.Activity):
                 self.tw.process_data(data_from_string(text),
                                      self.tw.paste_offset)
                 self.tw.paste_offset += 20
+
+    def _add_label(self, string, toolbar):
+        """ add a label to a toolbar """
+        label = gtk.Label(string)
+        label.set_line_wrap(True)
+        label.show()
+        toolitem = gtk.ToolItem()
+        toolitem.add(label)
+        toolbar.insert(toolitem, -1)
+        toolitem.show()
+        return label
+
+    def _add_separator(toolbar, expand=False):
+        """ add a separator to a toolbar """
+        separator = gtk.SeparatorToolItem()
+        separator.props.draw = True
+        separator.set_expand(expand)
+        toolbar.insert(separator, -1)
+        separator.show()
+
+    def _add_button(name, tooltip, callback, toolbar, accelerator=None, arg=None):
+        """ add a button to a toolbar """
+        button = ToolButton(name)
+        button.set_tooltip(tooltip)
+        if arg is None:
+            button.connect('clicked', callback)
+        else:
+            button.connect('clicked', callback, arg)
+        if accelerator is not None:
+            try:
+                button.props.accelerator = accelerator
+            except AttributeError:
+                pass
+        button.show()
+        if hasattr(toolbar, 'insert'): # the main toolbar
+            toolbar.insert(button, -1)
+        else:  # or a secondary toolbar
+            toolbar.props.page.insert(button, -1)
+        return button
