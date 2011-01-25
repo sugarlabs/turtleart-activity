@@ -32,14 +32,6 @@ import cStringIO
 import errno
 
 try:
-    import pycurl
-    import xmlrpclib
-    _UPLOAD_AVAILABLE = True
-except ImportError, e:
-    print "Import Error: %s. Project upload is disabled." % (e)
-    _UPLOAD_AVAILABLE = False
-
-try:
     # Try to use XDG Base Directory standard for config files
     import xdg.BaseDirectory
     CONFIG_HOME = os.path.join(xdg.BaseDirectory.xdg_config_home, 'turtleart')
@@ -57,23 +49,20 @@ from TurtleArt.tautils import data_to_string, data_from_string, get_save_name
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
-
-_HELP_MSG = 'turtleart.py: ' + _('usage is') + """
- \tturtleart.py
- \tturtleart.py project.ta
- \tturtleart.py --output_png project.ta
- \tturtleart.py -o project"""
-
-_MAX_FILE_SIZE = 950000
-
-_INSTALL_PATH = '/usr/share/turtleart'
-_ALTERNATE_INSTALL_PATH = '/usr/local/share/turtleart'
-_ICON_SUBPATH = 'images/turtle.png'
-_UPLOAD_SERVER = 'http://turtleartsite.appspot.com'
+from extra.upload import Uploader
 
 
 class TurtleMain():
     """ Launch Turtle Art from outside of Sugar """
+
+    _HELP_MSG = 'turtleart.py: ' + _('usage is') + """
+ \tturtleart.py
+ \tturtleart.py project.ta
+ \tturtleart.py --output_png project.ta
+ \tturtleart.py -o project"""
+    _INSTALL_PATH = '/usr/share/turtleart'
+    _ALTERNATE_INSTALL_PATH = '/usr/local/share/turtleart'
+    _ICON_SUBPATH = 'images/turtle.png'
 
     def __init__(self):
         self._init_vars()
@@ -91,6 +80,7 @@ class TurtleMain():
             self._read_initial_pos()
             self._setup_gtk()
             self._build_window()
+            self._uploader.set_tw(self.tw)
             self._start_gtk()
 
     def _mkdir_p(path):
@@ -149,10 +139,10 @@ class TurtleMain():
         self.tw.save_as_image(self.ta_file, self.canvas)
 
     def _build_window(self):
-        if os.path.exists(_INSTALL_PATH):
-            self.tw = TurtleArtWindow(self.canvas, _INSTALL_PATH)
-        elif os.path.exists(_ALTERNATE_INSTALL_PATH):
-            self.tw = TurtleArtWindow(self.canvas, _ALTERNATE_INSTALL_PATH)
+        if os.path.exists(self._INSTALL_PATH):
+            self.tw = TurtleArtWindow(self.canvas, self._INSTALL_PATH)
+        elif os.path.exists(self._ALTERNATE_INSTALL_PATH):
+            self.tw = TurtleArtWindow(self.canvas, self._ALTERNATE_INSTALL_PATH)
         else:
             self.tw = TurtleArtWindow(self.canvas, os.path.abspath('.'))
 
@@ -163,9 +153,9 @@ class TurtleMain():
         # sure our current directory is TA's source dir.
         os.chdir(os.path.dirname(__file__))
 
+        self._uploader = Uploader()
         self.ta_file = None
         self.output_png = False
-        self.uploading = False
         self.i = 0  # FIXME: use a better name for this variable
         self.scale = 2.0
         self.tw = None
@@ -176,11 +166,11 @@ class TurtleMain():
                                        ['help', 'output_png'])
         except getopt.GetoptError, err:
             print str(err)
-            print _HELP_MSG
+            print self._HELP_MSG
             sys.exit(2)
         for o, a in opts:
             if o in ('-h', '--help'):
-                print _HELP_MSG
+                print self._HELP_MSG
                 sys.exit()
             if o in ('-o', '--output_png'):
                 self.output_png = True
@@ -190,7 +180,7 @@ class TurtleMain():
             self.ta_file = args[0]
 
         if len(args) > 1 or self.output_png and self.ta_file is None:
-            print _HELP_MSG
+            print self._HELP_MSG
             sys.exit()
 
         if self.ta_file is not None:
@@ -240,12 +230,12 @@ class TurtleMain():
         win.move(self.x, self.y)
         win.maximize()
         win.set_title(_('Turtle Art'))
-        if os.path.exists(os.path.join(_INSTALL_PATH, _ICON_SUBPATH)):
-            win.set_icon_from_file(os.path.join(_INSTALL_PATH,
-                                                _ICON_SUBPATH))
+        if os.path.exists(os.path.join(self._INSTALL_PATH, self._ICON_SUBPATH)):
+            win.set_icon_from_file(os.path.join(self._INSTALL_PATH,
+                                                self._ICON_SUBPATH))
         else:
             try:
-                win.set_icon_from_file(_ICON_SUBPATH)
+                win.set_icon_from_file(self._ICON_SUBPATH)
             except IOError:
                 pass
         win.connect('delete_event', self._quit_ta)
@@ -282,9 +272,9 @@ class TurtleMain():
         self._make_menu_item(menu, _('Save as image'), self._do_save_picture_cb)
         self._make_menu_item(menu, _('Save as HTML'), self._do_save_html_cb)
         self._make_menu_item(menu, _('Save as Logo'), self._do_save_logo_cb)
-        if _UPLOAD_AVAILABLE:
+        if self._uploader.enabled():
             self._make_menu_item(menu, _('Upload to Web'),
-                            self._do_upload_to_web)
+                                 self._uploader.do_upload_to_web)
         self._make_menu_item(menu, _('Quit'), self.destroy)
         activity_menu = self._make_sub_menu(menu, _('File'))
 
@@ -542,135 +532,6 @@ class TurtleMain():
     def destroy(self, event, data=None):
         """ Callback for destroy event. """
         gtk.main_quit()
-
-    def _do_upload_to_web(self, widget):
-        """ Create dialog for uploading current project to the Web """
-        if not self.uploading:
-            self.uploading = True
-            self.pop_up = gtk.Window()
-            self.pop_up.set_default_size(600, 400)
-            self.pop_up.connect('delete_event', self._stop_uploading)
-            table = gtk.Table(8, 1, False)
-            self.pop_up.add(table)
-
-            login_label = gtk.Label(_('You must have an account at \
-http://turtleartsite.sugarlabs.org to upload your project.'))
-            table.attach(login_label, 0, 1, 0, 1)
-            self.login_message = gtk.Label('')
-            table.attach(self.login_message, 0, 1, 1, 2)
-
-            self.Hbox1 = gtk.HBox()
-            table.attach(self.Hbox1, 0, 1, 2, 3, xpadding=5, ypadding=3)
-            self.username_entry = gtk.Entry()
-            username_label = gtk.Label(_('Username:') + ' ')
-            username_label.set_size_request(150, 25)
-            username_label.set_alignment(1.0, 0.5)
-            self.username_entry.set_size_request(450, 25)
-            self.Hbox1.add(username_label)
-            self.Hbox1.add(self.username_entry)
-
-            self.Hbox2 = gtk.HBox()
-            table.attach(self.Hbox2, 0, 1, 3, 4, xpadding=5, ypadding=3)
-            self.password_entry = gtk.Entry()
-            password_label = gtk.Label(_('Password:') + ' ')
-            self.password_entry.set_visibility(False)
-            password_label.set_size_request(150, 25)
-            password_label.set_alignment(1.0, 0.5)
-            self.password_entry.set_size_request(450, 25)
-            self.Hbox2.add(password_label)
-            self.Hbox2.add(self.password_entry)
-
-            self.Hbox3 = gtk.HBox()
-            table.attach(self.Hbox3, 0, 1, 4, 5, xpadding=5, ypadding=3)
-            self.title_entry = gtk.Entry()
-            title_label = gtk.Label(_('Title:') + ' ')
-            title_label.set_size_request(150, 25)
-            title_label.set_alignment(1.0, 0.5)
-            self.title_entry.set_size_request(450, 25)
-            self.Hbox3.add(title_label)
-            self.Hbox3.add(self.title_entry)
-
-            self.Hbox4 = gtk.HBox()
-            table.attach(self.Hbox4, 0, 1, 5, 6, xpadding=5, ypadding=3)
-            self.description_entry = gtk.TextView()
-            description_label = gtk.Label(_('Description:') + ' ')
-            description_label.set_size_request(150, 25)
-            description_label.set_alignment(1.0, 0.5)
-            self.description_entry.set_wrap_mode(gtk.WRAP_WORD)
-            self.description_entry.set_size_request(450, 50)
-            self.Hbox4.add(description_label)
-            self.Hbox4.add(self.description_entry)
-
-            self.Hbox5 = gtk.HBox()
-            table.attach(self.Hbox5, 0, 1, 6, 7, xpadding=5, ypadding=3)
-            self.submit_button = gtk.Button(_('Submit to Web'))
-            self.submit_button.set_size_request(300, 25)
-            self.submit_button.connect('pressed', self._do_remote_logon)
-            self.Hbox5.add(self.submit_button)
-            self.cancel_button = gtk.Button(_('Cancel'))
-            self.cancel_button.set_size_request(300, 25)
-            self.cancel_button.connect('pressed', self._stop_uploading)
-            self.Hbox5.add(self.cancel_button)
-
-            self.pop_up.show_all()
-
-    def _stop_uploading(self, widget, event=None):
-        """ Hide the popup when the upload is complte """
-        self.uploading = False
-        self.pop_up.hide()
-
-    def _do_remote_logon(self, widget):
-        """ Log into the upload server """
-        username = self.username_entry.get_text()
-        password = self.password_entry.get_text()
-        server = xmlrpclib.ServerProxy(_UPLOAD_SERVER + '/call/xmlrpc')
-        logged_in = server.login_remote(username, password)
-        if logged_in:
-            upload_key = logged_in
-            self._do_submit_to_web(upload_key)
-        else:
-            self.login_message.set_text(_('Login failed'))
-
-    def _do_submit_to_web(self, key):
-        """ Submit project to the server """
-        title = self.title_entry.get_text()
-        description = self.description_entry.get_buffer().get_text(
-            *self.description_entry.get_buffer().get_bounds())
-        tafile, imagefile = self.tw.save_for_upload(title)
-
-        # Set a maximum file size for image to be uploaded.
-        if int(os.path.getsize(imagefile)) > _MAX_FILE_SIZE:
-            import Image
-            while int(os.path.getsize(imagefile)) > _MAX_FILE_SIZE:
-                big_file = Image.open(imagefile)
-                smaller_file = big_file.resize(int(0.9 * big_file.size[0]),
-                                               int(0.9 * big_file.size[1]),
-                                               Image.ANTIALIAS)
-                smaller_file.save(imagefile, quality = 100)
-
-        c = pycurl.Curl()
-        c.setopt(c.POST, 1)
-        c.setopt(c.FOLLOWLOCATION, 1)
-        c.setopt(c.URL, _UPLOAD_SERVER + '/upload')
-        c.setopt(c.HTTPHEADER, ["Expect:"])
-        c.setopt(c.HTTPPOST, [('file', (c.FORM_FILE, tafile)),
-                              ('newimage', (c.FORM_FILE, imagefile)),
-                              ('small_image', (c.FORM_FILE, imagefile)),
-                              ('title', title),
-                              ('description', description),
-                              ('upload_key', key), ('_formname',
-                                                   'image_create')])
-        c.perform()
-        error_code = c.getinfo(c.HTTP_CODE)
-        c.close
-        os.remove(imagefile)
-        os.remove(tafile)
-        if error_code == 400:
-            self.login_message.set_text(_('Failed to upload!'))
-        else:
-            self.pop_up.hide()
-            self.uploading = False
-
 
 if __name__ == "__main__":
     TurtleMain()
