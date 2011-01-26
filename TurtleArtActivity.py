@@ -38,12 +38,6 @@ except ImportError:
 from sugar.graphics.toolbutton import ToolButton
 from sugar.datastore import datastore
 
-import telepathy
-from dbus.service import signal
-from dbus.gobject_service import ExportedGObject
-from sugar.presence import presenceservice
-from sugar.presence.tubeconn import TubeConnection
-
 from sugar import profile
 from gettext import gettext as _
 import os.path
@@ -55,52 +49,7 @@ from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
                               get_path, chooser
 from TurtleArt.tawindow import TurtleArtWindow
-
-SERVICE = 'org.laptop.TurtleArtActivity'
-IFACE = SERVICE
-PATH = '/org/laptop/TurtleArtActivity'
-
-
-def _add_label(string, toolbar):
-    """ add a label to a toolbar """
-    label = gtk.Label(string)
-    label.set_line_wrap(True)
-    label.show()
-    toolitem = gtk.ToolItem()
-    toolitem.add(label)
-    toolbar.insert(toolitem, -1)
-    toolitem.show()
-    return label
-
-
-def _add_separator(toolbar, expand=False):
-    """ add a separator to a toolbar """
-    separator = gtk.SeparatorToolItem()
-    separator.props.draw = True
-    separator.set_expand(expand)
-    toolbar.insert(separator, -1)
-    separator.show()
-
-
-def _add_button(name, tooltip, callback, toolbar, accelerator=None, arg=None):
-    """ add a button to a toolbar """
-    button = ToolButton(name)
-    button.set_tooltip(tooltip)
-    if arg is None:
-        button.connect('clicked', callback)
-    else:
-        button.connect('clicked', callback, arg)
-    if accelerator is not None:
-        try:
-            button.props.accelerator = accelerator
-        except AttributeError:
-            pass
-    button.show()
-    if hasattr(toolbar, 'insert'): # the main toolbar
-        toolbar.insert(button, -1)
-    else:  # or a secondary toolbar
-        toolbar.props.page.insert(button, -1)
-    return button
+from TurtleArt.collaboration import Collaboration
 
 
 class TurtleArtActivity(activity.Activity):
@@ -476,196 +425,6 @@ class TurtleArtActivity(activity.Activity):
             tmpfile = None
         return tmpfile
 
-    # Sharing-related callbacks
-
-    def _shared_cb(self, activity):
-        """ Either set up initial share... """
-        if self._shared_activity is None:
-            _logger.error("Failed to share or join activity ... \
-                _shared_activity is null in _shared_cb()")
-            return
-
-        self.initiating = True
-        self.waiting_for_turtles = False
-        self.turtle_dictionary = \
-            {profile.get_nick_name(): profile.get_color().to_string()}
-        _logger.debug('I am sharing...')
-
-        self.conn = self._shared_activity.telepathy_conn
-        self.tubes_chan = self._shared_activity.telepathy_tubes_chan
-        self.text_chan = self._shared_activity.telepathy_text_chan
-
-        # call back for "NewTube" signal
-        self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].connect_to_signal(
-            'NewTube', self._new_tube_cb)
-
-        _logger.debug('This is my activity: making a tube...')
-        id = self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].OfferDBusTube(
-            SERVICE, {})
-
-    def _joined_cb(self, activity):
-        """ ...or join an exisiting share. """
-        if self._shared_activity is None:
-            _logger.error("Failed to share or join activity ... \
-                _shared_activity is null in _shared_cb()")
-            return
-
-        self.initiating = False
-        self.conn = self._shared_activity.telepathy_conn
-        self.tubes_chan = self._shared_activity.telepathy_tubes_chan
-        self.text_chan = self._shared_activity.telepathy_text_chan
-
-        # call back for "NewTube" signal
-        self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].connect_to_signal(
-            'NewTube', self._new_tube_cb)
-
-        _logger.debug('I am joining an activity: waiting for a tube...')
-        self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].ListTubes(
-            reply_handler=self._list_tubes_reply_cb,
-            error_handler=self._list_tubes_error_cb)
-
-        # Joiner should request current state from sharer.
-        self.waiting_for_turtles = True
-
-    def _list_tubes_reply_cb(self, tubes):
-        for tube_info in tubes:
-            self._new_tube_cb(*tube_info)
-
-    def _list_tubes_error_cb(self, e):
-        _logger.error('ListTubes() failed: %s', e)
-
-    def _new_tube_cb(self, id, initiator, type, service, params, state):
-        """ Create a new tube. """
-        _logger.debug('New tube: ID=%d initator=%d type=%d service=%s '
-                     'params=%r state=%d', id, initiator, type, service,
-                     params, state)
-
-        if (type == telepathy.TUBE_TYPE_DBUS and service == SERVICE):
-            if state == telepathy.TUBE_STATE_LOCAL_PENDING:
-                self.tubes_chan[ \
-                              telepathy.CHANNEL_TYPE_TUBES].AcceptDBusTube(id)
-
-            tube_conn = TubeConnection(self.conn,
-                self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES], id, \
-                group_iface=self.text_chan[telepathy.CHANNEL_INTERFACE_GROUP])
-
-            # We'll use a chat tube to send serialized stacks back and forth.
-            self.chattube = ChatTube(tube_conn, self.initiating, \
-                self.event_received_cb)
-
-            # Now that we have the tube, we can ask for the turtle dictionary.
-            if self.waiting_for_turtles:
-                _logger.debug("Sending a request for the turtle dictionary")
-                # we need to send our own nick and colors
-                colors = profile.get_color().to_string()
-                _logger.debug("t|" + data_to_string([self.tw.nick, colors]))
-                self.send_event("t|%s" % \
-                                (data_to_string([self.tw.nick, colors])))
-
-    def event_received_cb(self, text):
-        """ Handle the receiving of events in share """
-        # _logger.debug(text)
-
-        """
-        Events are sent as a tuple, nick|cmd, where nick is a turle name
-        and cmd is a turtle event. Everyone gets the turtle dictionary from
-        the sharer and watches for 't' events, which indicate that a new
-        turtle has joined.
-        """
-        if len(text) == 0:
-            return
-        # Save active Turtle
-        save_active_turtle = self.tw.active_turtle
-        e = text.split("|", 2)
-        text = e[1]
-        if e[0] == 't': # request for turtle dictionary
-            if text > 0:
-                [nick, colors] = data_from_string(text)
-                if nick != self.tw.nick:
-                    # There may not be a turtle dictionary.
-                    if hasattr(self, "turtle_dictionary"):
-                        self.turtle_dictionary[nick] = colors
-                    else:
-                        self.turtle_dictionary = {nick: colors}
-                    # Add new turtle for the joiner.
-                    self.tw.canvas.set_turtle(nick, colors)
-            # Sharer should send turtle dictionary.
-            if self.initiating:
-                text = data_to_string(self.turtle_dictionary)
-                self.send_event("T|" + text)
-        elif e[0] == 'T': # Receiving the turtle dictionary.
-            if self.waiting_for_turtles:
-                if len(text) > 0:
-                    self.turtle_dictionary = data_from_string(text)
-                    for nick in self.turtle_dictionary:
-                        if nick != self.tw.nick:
-                            colors = self.turtle_dictionary[nick]
-                            # add new turtle for the joiner
-                            self.tw.canvas.set_turtle(nick, colors)
-                self.waiting_for_turtles = False
-        elif e[0] == 'f': # move a turtle forward
-            if len(text) > 0:
-                [nick, x] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.forward(x, False)
-        elif e[0] == 'a': # move a turtle in an arc
-            if len(text) > 0:
-                [nick, [a, r]] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.arc(a, r, False)
-        elif e[0] == 'r': # rotate turtle
-            if len(text) > 0:
-                [nick, h] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.seth(h, False)
-        elif e[0] == 'x': # set turtle xy position
-            if len(text) > 0:
-                [nick, [x, y]] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.setxy(x, y, False)
-        elif e[0] == 'c': # set turtle pen color
-            if len(text) > 0:
-                [nick, x] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.setcolor(x, False)
-        elif e[0] == 'g': # set turtle pen gray level
-            if len(text) > 0:
-                [nick, x] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.setgray(x, False)
-        elif e[0] == 's': # set turtle pen shade
-            if len(text) > 0:
-                [nick, x] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.setshade(x, False)
-        elif e[0] == 'w': # set turtle pen width
-            if len(text) > 0:
-                [nick, x] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.setpensize(x, False)
-        elif e[0] == 'p': # set turtle pen state
-            if len(text) > 0:
-                [nick, x] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.setpen(x, False)
-        # Restore active Turtle
-        self.tw.canvas.set_turtle(self.tw.turtles.get_turtle_key(
-                save_active_turtle))
-
-    def send_event(self, entry):
-        """ Send event through the tube. """
-        if hasattr(self, 'chattube') and self.chattube is not None:
-            self.chattube.SendText(entry)
-
     def __visibility_notify_cb(self, window, event):
         """ Callback method for when the activity's visibility changes. """
         if event.state == gtk.gdk.VISIBILITY_FULLY_OBSCURED:
@@ -725,11 +484,11 @@ class TurtleArtActivity(activity.Activity):
             help_toolbar_button.show()
             toolbox.toolbar.insert(help_toolbar_button, -1)
 
-            _add_separator(toolbox.toolbar)
+            self._add_separator(toolbox.toolbar)
 
             self._make_project_buttons(toolbox.toolbar)
 
-            _add_separator(toolbox.toolbar, True)
+            self._add_separator(toolbox.toolbar, True)
 
             stop_button = StopButton(self)
             stop_button.props.accelerator = '<Ctrl>Q'
@@ -759,57 +518,57 @@ class TurtleArtActivity(activity.Activity):
 
             self._make_palette_buttons(project_toolbar, palette_button=True)
 
-            _add_separator(project_toolbar)
+            self._add_separator(project_toolbar)
 
             self._make_project_buttons(project_toolbar)
 
-        self.keep_button = _add_button('filesaveoff', _("Save snapshot"),
+        self.keep_button = self._add_button('filesaveoff', _("Save snapshot"),
                                        self.do_keep_cb,
                                        journal_toolbar_button)
-        self.save_as_html = _add_button('htmloff', _("Save as HTML"),
+        self.save_as_html = self._add_button('htmloff', _("Save as HTML"),
                                         self.do_save_as_html_cb,
                                         journal_toolbar_button)
-        self.save_as_logo = _add_button('logo-saveoff', _("Save as Logo"),
+        self.save_as_logo = self._add_button('logo-saveoff', _("Save as Logo"),
                                         self.do_save_as_logo_cb,
                                         journal_toolbar_button)
-        self.save_as_image = _add_button('image-saveoff', _("Save as image"),
+        self.save_as_image = self._add_button('image-saveoff', _("Save as image"),
                                          self.do_save_as_image_cb,
                                          journal_toolbar_button)
-        self.load_ta_project = _add_button('load-from-journal',
+        self.load_ta_project = self._add_button('load-from-journal',
             _("Import project from the Journal"), self.do_load_ta_project_cb,
                                            journal_toolbar_button)
-        _add_separator(journal_toolbar)
-        self.load_python = _add_button('pippy-openoff', _("Load Python block"),
+        self._add_separator(journal_toolbar)
+        self.load_python = self._add_button('pippy-openoff', _("Load Python block"),
                                        self.do_load_python_cb,
                                        journal_toolbar_button)
-        self.samples_button = _add_button("ta-open", _('Load example'),
+        self.samples_button = self._add_button("ta-open", _('Load example'),
             self.do_samples_cb, journal_toolbar_button)
-        copy = _add_button('edit-copy', _('Copy'), self._copy_cb,
+        copy = self._add_button('edit-copy', _('Copy'), self._copy_cb,
                            edit_toolbar_button, '<Ctrl>c')
-        paste = _add_button('edit-paste', _('Paste'), self._paste_cb,
+        paste = self._add_button('edit-paste', _('Paste'), self._paste_cb,
                             edit_toolbar_button, '<Ctrl>v')
-        fullscreen_button = _add_button('view-fullscreen', _("Fullscreen"),
+        fullscreen_button = self._add_button('view-fullscreen', _("Fullscreen"),
                                         self.do_fullscreen_cb,
                                         view_toolbar_button, '<Alt>Return')
-        cartesian_button = _add_button('view-Cartesian',
+        cartesian_button = self._add_button('view-Cartesian',
                                        _("Cartesian coordinates"),
                                        self.do_cartesian_cb,
                                        view_toolbar_button)
-        polar_button = _add_button('view-polar', _("Polar coordinates"),
+        polar_button = self._add_button('view-polar', _("Polar coordinates"),
                                    self.do_polar_cb, view_toolbar_button)
-        _add_separator(view_toolbar)
-        self.coordinates_label = _add_label(
+        self._add_separator(view_toolbar)
+        self.coordinates_label = self._add_label(
             _("xcor") + " = 0 " + _("ycor") + " = 0 " + _("heading") + " = 0",
             view_toolbar)
-        _add_separator(view_toolbar, True)
-        self.rescale_button = _add_button('expand-coordinates',
+        self._add_separator(view_toolbar, True)
+        self.rescale_button = self._add_button('expand-coordinates',
             _("Rescale coordinates up"), self.do_rescale_cb,
                                           view_toolbar_button)
-        self.resize_up_button = _add_button('resize+', _("Grow blocks"),
+        self.resize_up_button = self._add_button('resize+', _("Grow blocks"),
             self.do_grow_blocks_cb, view_toolbar_button)
-        self.resize_down_button = _add_button('resize-', _("Shrink blocks"),
+        self.resize_down_button = self._add_button('resize-', _("Shrink blocks"),
             self.do_shrink_blocks_cb, view_toolbar_button)
-        self.hover_help_label = _add_label(
+        self.hover_help_label = self._add_label(
             _("Move the cursor over the orange palette for help."),
             help_toolbar)
 
@@ -821,10 +580,10 @@ class TurtleArtActivity(activity.Activity):
                     suffix = 'off'
                 else:
                     suffix = 'on'
-                self.palette_buttons.append(_add_button(name + suffix,
+                self.palette_buttons.append(self._add_button(name + suffix,
                     HELP_STRINGS[name], self.do_palette_buttons_cb,
                     palette_toolbar_button, None, i))
-            _add_separator(palette_toolbar, True)
+            self._add_separator(palette_toolbar, True)
 
             self._make_palette_buttons(palette_toolbar_button)
 
@@ -848,22 +607,22 @@ class TurtleArtActivity(activity.Activity):
     def _make_palette_buttons(self, toolbar, palette_button=False):
         """ Creates the palette and block buttons for both toolbar types"""
         if palette_button:  # old-style toolbars need this button
-            self.palette_button = _add_button("paletteoff", _('Hide palette'),
+            self.palette_button = self._add_button("paletteoff", _('Hide palette'),
                 self.do_palette_cb, toolbar, _('<Ctrl>p'))
-        self.blocks_button = _add_button("hideshowoff", _('Hide blocks'),
+        self.blocks_button = self._add_button("hideshowoff", _('Hide blocks'),
             self.do_hideshow_cb, toolbar, _('<Ctrl>b'))
 
     def _make_project_buttons(self, toolbar):
         """ Creates the turtle buttons for both toolbar types"""
-        self.eraser_button = _add_button("eraseron", _('Clean'),
+        self.eraser_button = self._add_button("eraseron", _('Clean'),
             self.do_eraser_cb, toolbar, _('<Ctrl>e'))
-        self.run_button = _add_button("run-fastoff", _('Run'), self.do_run_cb,
+        self.run_button = self._add_button("run-fastoff", _('Run'), self.do_run_cb,
                                       toolbar, _('<Ctrl>r'))
-        self.step_button = _add_button("run-slowoff", _('Step'),
+        self.step_button = self._add_button("run-slowoff", _('Step'),
                                        self.do_step_cb, toolbar, _('<Ctrl>w'))
-        self.debug_button = _add_button("debugoff", _('Debug'),
+        self.debug_button = self._add_button("debugoff", _('Debug'),
             self.do_debug_cb, toolbar, _('<Ctrl>d'))
-        self.stop_turtle_button = _add_button("stopitoff", _('Stop turtle'),
+        self.stop_turtle_button = self._add_button("stopitoff", _('Stop turtle'),
             self.do_stop_cb, toolbar, _('<Ctrl>s'))
 
     def _setup_scrolled_window(self):
@@ -926,20 +685,8 @@ class TurtleArtActivity(activity.Activity):
             self.tw.load_start()
 
     def _setup_sharing(self):
-        """ A simplistic sharing model: the sharer is the master """
-        # TODO: hand off role of master is sharer leaves
-        # Get the Presence Service
-        self.pservice = presenceservice.get_instance()
-        self.initiating = None # sharing (True) or joining (False)
-
-        # Add my buddy object to the list
-        owner = self.pservice.get_owner()
-        self.owner = owner
-        self.tw.buddies.append(self.owner)
-        self._share = ""
-
-        self.connect('shared', self._shared_cb)
-        self.connect('joined', self._joined_cb)
+        self._collaboration = Collaboration(self.tw)
+        self._collaboration.setup()
 
     def _setup_visibility_handler(self):
         """ Notify when the visibility state changes """
@@ -1030,26 +777,41 @@ class TurtleArtActivity(activity.Activity):
                                      self.tw.paste_offset)
                 self.tw.paste_offset += 20
 
+    def _add_label(self, string, toolbar):
+        """ add a label to a toolbar """
+        label = gtk.Label(string)
+        label.set_line_wrap(True)
+        label.show()
+        toolitem = gtk.ToolItem()
+        toolitem.add(label)
+        toolbar.insert(toolitem, -1)
+        toolitem.show()
+        return label
 
-class ChatTube(ExportedGObject):
+    def _add_separator(toolbar, expand=False):
+        """ add a separator to a toolbar """
+        separator = gtk.SeparatorToolItem()
+        separator.props.draw = True
+        separator.set_expand(expand)
+        toolbar.insert(separator, -1)
+        separator.show()
 
-    def __init__(self, tube, is_initiator, stack_received_cb):
-        """Class for setting up tube for sharing."""
-        super(ChatTube, self).__init__(tube, PATH)
-        self.tube = tube
-        self.is_initiator = is_initiator # Are we sharing or joining activity?
-        self.stack_received_cb = stack_received_cb
-        self.stack = ''
-
-        self.tube.add_signal_receiver(self.send_stack_cb, 'SendText', IFACE, \
-            path=PATH, sender_keyword='sender')
-
-    def send_stack_cb(self, text, sender=None):
-        if sender == self.tube.get_unique_name():
-            return
-        self.stack = text
-        self.stack_received_cb(text)
-
-    @signal(dbus_interface=IFACE, signature='s')
-    def SendText(self, text):
-        self.stack = text
+    def _add_button(name, tooltip, callback, toolbar, accelerator=None, arg=None):
+        """ add a button to a toolbar """
+        button = ToolButton(name)
+        button.set_tooltip(tooltip)
+        if arg is None:
+            button.connect('clicked', callback)
+        else:
+            button.connect('clicked', callback, arg)
+        if accelerator is not None:
+            try:
+                button.props.accelerator = accelerator
+            except AttributeError:
+                pass
+        button.show()
+        if hasattr(toolbar, 'insert'): # the main toolbar
+            toolbar.insert(button, -1)
+        else:  # or a secondary toolbar
+            toolbar.props.page.insert(button, -1)
+        return button

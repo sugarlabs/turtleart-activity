@@ -3,6 +3,7 @@
 #Copyright (c) 2008-10, Walter Bender
 #Copyright (c) 2009-10 Raúl Gutiérrez Segalés
 #Copyright (C) 2010 Emiliano Pastorino <epastorino@plan.ceibal.edu.uy>
+#Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -100,6 +101,7 @@ class TurtleArtWindow():
         self._loaded_project = ''
         self.win = None
         self.parent = parent
+        self.send_event = None # method to send events over the network
         if type(win) == gtk.DrawingArea:
             self.interactive_mode = True
             self.window = win
@@ -400,6 +402,10 @@ class TurtleArtWindow():
         if self.running_sugar and hasattr(self.activity, 'chattube') and\
            self.activity.chattube is not None:
             return True
+
+        if self.send_event:
+            return True
+
         return False
 
     def is_project_empty(self):
