@@ -788,7 +788,7 @@ class TurtleArtActivity(activity.Activity):
         toolitem.show()
         return label
 
-    def _add_separator(toolbar, expand=False):
+    def _add_separator(self, toolbar, expand=False):
         """ add a separator to a toolbar """
         separator = gtk.SeparatorToolItem()
         separator.props.draw = True
@@ -796,7 +796,7 @@ class TurtleArtActivity(activity.Activity):
         toolbar.insert(separator, -1)
         separator.show()
 
-    def _add_button(name, tooltip, callback, toolbar, accelerator=None, arg=None):
+    def _add_button(self, name, tooltip, callback, toolbar, accelerator=None, arg=None):
         """ add a button to a toolbar """
         button = ToolButton(name)
         button.set_tooltip(tooltip)
