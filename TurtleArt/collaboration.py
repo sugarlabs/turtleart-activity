@@ -26,7 +26,7 @@ class Collaboration():
         # Add my buddy object to the list
         owner = self.pservice.get_owner()
         self.owner = owner
-        self.tw.buddies.append(self.owner)
+        self._tw.buddies.append(self.owner)
         self._share = ""
 
         self._activity.connect('shared', self._shared_cb)
@@ -126,20 +126,20 @@ class Collaboration():
         if len(text) == 0:
             return
         # Save active Turtle
-        save_active_turtle = self.tw.active_turtle
+        save_active_turtle = self._tw.active_turtle
         e = text.split("|", 2)
         text = e[1]
         if e[0] == 't': # request for turtle dictionary
             if text > 0:
                 [nick, colors] = data_from_string(text)
-                if nick != self.tw.nick:
+                if nick != self._tw.nick:
                     # There may not be a turtle dictionary.
                     if hasattr(self, "turtle_dictionary"):
                         self.turtle_dictionary[nick] = colors
                     else:
                         self.turtle_dictionary = {nick: colors}
                     # Add new turtle for the joiner.
-                    self.tw.canvas.set_turtle(nick, colors)
+                    self._tw.canvas.set_turtle(nick, colors)
             # Sharer should send turtle dictionary.
             if self.initiating:
                 text = data_to_string(self.turtle_dictionary)
@@ -149,67 +149,67 @@ class Collaboration():
                 if len(text) > 0:
                     self.turtle_dictionary = data_from_string(text)
                     for nick in self.turtle_dictionary:
-                        if nick != self.tw.nick:
+                        if nick != self._tw.nick:
                             colors = self.turtle_dictionary[nick]
                             # add new turtle for the joiner
-                            self.tw.canvas.set_turtle(nick, colors)
+                            self._tw.canvas.set_turtle(nick, colors)
                 self.waiting_for_turtles = False
         elif e[0] == 'f': # move a turtle forward
             if len(text) > 0:
                 [nick, x] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.forward(x, False)
+                if nick != self._tw.nick:
+                    self._tw.canvas.set_turtle(nick)
+                    self._tw.canvas.forward(x, False)
         elif e[0] == 'a': # move a turtle in an arc
             if len(text) > 0:
                 [nick, [a, r]] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.arc(a, r, False)
+                if nick != self._tw.nick:
+                    self._tw.canvas.set_turtle(nick)
+                    self._tw.canvas.arc(a, r, False)
         elif e[0] == 'r': # rotate turtle
             if len(text) > 0:
                 [nick, h] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.seth(h, False)
+                if nick != self._tw.nick:
+                    self._tw.canvas.set_turtle(nick)
+                    self._tw.canvas.seth(h, False)
         elif e[0] == 'x': # set turtle xy position
             if len(text) > 0:
                 [nick, [x, y]] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.setxy(x, y, False)
+                if nick != self._tw.nick:
+                    self._tw.canvas.set_turtle(nick)
+                    self._tw.canvas.setxy(x, y, False)
         elif e[0] == 'c': # set turtle pen color
             if len(text) > 0:
                 [nick, x] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.setcolor(x, False)
+                if nick != self._tw.nick:
+                    self._tw.canvas.set_turtle(nick)
+                    self._tw.canvas.setcolor(x, False)
         elif e[0] == 'g': # set turtle pen gray level
             if len(text) > 0:
                 [nick, x] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.setgray(x, False)
+                if nick != self._tw.nick:
+                    self._tw.canvas.set_turtle(nick)
+                    self._tw.canvas.setgray(x, False)
         elif e[0] == 's': # set turtle pen shade
             if len(text) > 0:
                 [nick, x] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.setshade(x, False)
+                if nick != self._tw.nick:
+                    self._tw.canvas.set_turtle(nick)
+                    self._tw.canvas.setshade(x, False)
         elif e[0] == 'w': # set turtle pen width
             if len(text) > 0:
                 [nick, x] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.setpensize(x, False)
+                if nick != self._tw.nick:
+                    self._tw.canvas.set_turtle(nick)
+                    self._tw.canvas.setpensize(x, False)
         elif e[0] == 'p': # set turtle pen state
             if len(text) > 0:
                 [nick, x] = data_from_string(text)
-                if nick != self.tw.nick:
-                    self.tw.canvas.set_turtle(nick)
-                    self.tw.canvas.setpen(x, False)
+                if nick != self._tw.nick:
+                    self._tw.canvas.set_turtle(nick)
+                    self._tw.canvas.setpen(x, False)
         # Restore active Turtle
-        self.tw.canvas.set_turtle(self.tw.turtles.get_turtle_key(
+        self._tw.canvas.set_turtle(self._tw.turtles.get_turtle_key(
                 save_active_turtle))
 
     def send_event(self, entry):
@@ -222,7 +222,7 @@ class Collaboration():
         return d
 
     def _get_nick(self):
-        return self.tw.nick
+        return self._tw.nick
 
     def _get_colors(self):
         return profile.get_color().to_string()
