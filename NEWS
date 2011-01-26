@@ -4,9 +4,14 @@ BUG FIXES
 
 * Exposed see as an external method (#2542)
 * Media type tests on file suffix use lower()
+* Uninitialized variables in Show block for numeric arguments (#2543)
+* Catch potential zero-divide in set_gray method (#2545)
+* Fixed regression with show Journal object thumbnails
 
 ENHANCEMENTS
 
+* Code clean up by RGS
+* Added 'brightness' block for reading camera luminance level
 * Added 'camera sees' block for reading average camera RGB value
 * Added camera media block for grabbing images from the camera
 * New psuedo-color.ta example (Tony Forster)
