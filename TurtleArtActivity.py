@@ -685,7 +685,7 @@ class TurtleArtActivity(activity.Activity):
             self.tw.load_start()
 
     def _setup_sharing(self):
-        self._collaboration = Collaboration(self.tw)
+        self._collaboration = Collaboration(self.tw, self)
         self._collaboration.setup()
 
     def _setup_visibility_handler(self):
