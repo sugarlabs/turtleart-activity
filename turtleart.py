@@ -50,6 +50,7 @@ from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from extra.upload import Uploader
+from extra.collaborationplugin import CollaborationPlugin
 from util.menubuilder import MenuBuilder
 
 class TurtleMain():
@@ -78,10 +79,21 @@ class TurtleMain():
             self._draw_and_quit()
         else:
             self._read_initial_pos()
+            self._init_plugins()
             self._setup_gtk()
             self._build_window()
-            self._uploader.set_tw(self.tw)
+            self._run_plugins()
             self._start_gtk()
+
+    def _init_plugins(self):
+        config_file_path = os.path.join(CONFIG_HOME, 'turtleartrc.collab')
+        self._collab_plugin = CollaborationPlugin(self, config_file_path)
+        self._uploader = Uploader()
+
+    def _run_plugins(self):
+        self._uploader.set_tw(self.tw)
+        self._collab_plugin.set_tw(self.tw)
+        self._collab_plugin.setup()
 
     def _mkdir_p(path):
         '''Create a directory in a fashion similar to `mkdir -p`'''
@@ -135,7 +147,6 @@ class TurtleMain():
         # sure our current directory is TA's source dir.
         os.chdir(os.path.dirname(__file__))
 
-        self._uploader = Uploader()
         self.ta_file = None
         self.output_png = False
         self.i = 0  # FIXME: use a better name for this variable
@@ -292,12 +303,15 @@ class TurtleMain():
         MenuBuilder.make_menu_item(menu, _('Stop'), self._do_stop_cb)
         turtle_menu = MenuBuilder.make_sub_menu(menu, _('Turtle'))
 
+        collaboration_menu = self._collab_plugin.get_menu()
+
         menu_bar = gtk.MenuBar()
         menu_bar.append(activity_menu)
         menu_bar.append(edit_menu)
         menu_bar.append(view_menu)
         menu_bar.append(tool_menu)
         menu_bar.append(turtle_menu)
+        menu_bar.append(collaboration_menu)
         return menu_bar
 
     def _quit_ta(self, widget=None, e=None):
