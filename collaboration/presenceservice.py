@@ -28,9 +28,13 @@ import dbus.exceptions
 import dbus.glib
 from dbus import PROPERTIES_IFACE
 
-from sugar.presence.buddy import Buddy, Owner
-from sugar.presence.activity import Activity
-from sugar.presence.connectionmanager import get_connection_manager
+""" FIXME ... """
+try:
+    from sugar.presence.buddy import Buddy, Owner
+    from sugar.presence.activity import Activity
+    from sugar.presence.connectionmanager import get_connection_manager
+except:
+    pass
 
 from telepathy.interfaces import ACCOUNT, \
                                  ACCOUNT_MANAGER, \
@@ -167,7 +171,8 @@ class PresenceService(gobject.GObject):
 
     def get_owner(self):
         """Retrieves the laptop Buddy object."""
-        return Owner()
+        #return Owner()
+        return None
 
     def __share_activity_cb(self, activity):
         """Finish sharing the activity
