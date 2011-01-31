@@ -3,9 +3,15 @@ from dbus.service import signal
 from dbus.gobject_service import ExportedGObject
 import logging
 import telepathy
-from sugar import profile
-from sugar.presence import presenceservice
-from sugar.presence.tubeconn import TubeConnection
+
+try:
+    from sugar import profile
+    from sugar.presence import presenceservice
+    from sugar.presence.tubeconn import TubeConnection
+except:
+    profile = None
+    from collaboration import presenceservice
+    from collaboration.tubeconn import TubeConnection
 
 SERVICE = 'org.laptop.TurtleArtActivity'
 IFACE = SERVICE
@@ -225,7 +231,11 @@ class Collaboration():
         return self._tw.nick
 
     def _get_colors(self):
-        return profile.get_color().to_string()
+        if profile:
+            colors = profile.get_color().to_string()
+        else:
+            colors = self._activity.get_colors()
+        return colors
 
 class ChatTube(ExportedGObject):
 

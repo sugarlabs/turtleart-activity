@@ -49,7 +49,7 @@ from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
                               get_path, chooser
 from TurtleArt.tawindow import TurtleArtWindow
-from TurtleArt.collaboration import Collaboration
+from TurtleArt.tacollaboration import Collaboration
 
 
 class TurtleArtActivity(activity.Activity):
