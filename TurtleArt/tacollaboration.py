@@ -22,6 +22,7 @@ class Collaboration():
     def __init__(self, tw, activity):
         """ A simplistic sharing model: the sharer is the master """
         self._tw = tw
+        self._tw.send_event = self.send_event
         self._activity = activity
 
     def setup(self):

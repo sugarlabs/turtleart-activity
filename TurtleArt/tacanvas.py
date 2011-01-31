@@ -657,9 +657,5 @@ class TurtleGraphics:
             return
 
         if self.tw.sharing():
-            if self.tw.activity:
-                print "Sending: %s" % entry
-                self.tw.activity.send_event(entry)
-            elif self.tw.send_event:
-                print "Sending: %s" % entry
-                self.tw.send_event(entry)
+            print "Sending: %s" % entry
+            self.tw.send_event(entry)
