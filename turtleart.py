@@ -50,7 +50,8 @@ from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from extra.upload import Uploader
-
+from extra.collaborationplugin import CollaborationPlugin
+from util.menubuilder import MenuBuilder
 
 class TurtleMain():
     """ Launch Turtle Art from outside of Sugar """
@@ -78,10 +79,21 @@ class TurtleMain():
             self._draw_and_quit()
         else:
             self._read_initial_pos()
+            self._init_plugins()
             self._setup_gtk()
             self._build_window()
-            self._uploader.set_tw(self.tw)
+            self._run_plugins()
             self._start_gtk()
+
+    def _init_plugins(self):
+        config_file_path = os.path.join(CONFIG_HOME, 'turtleartrc.collab')
+        self._collab_plugin = CollaborationPlugin(self, config_file_path)
+        self._uploader = Uploader()
+
+    def _run_plugins(self):
+        self._uploader.set_tw(self.tw)
+        self._collab_plugin.set_tw(self.tw)
+        self._collab_plugin.setup()
 
     def _mkdir_p(path):
         '''Create a directory in a fashion similar to `mkdir -p`'''
@@ -92,24 +104,6 @@ class TurtleMain():
                 pass
             else:
                 raise
-
-    def _make_sub_menu(self, menu, name):
-        """ add a new submenu to the toolbar """
-        sub_menu = gtk.MenuItem(name)
-        sub_menu.show()
-        sub_menu.set_submenu(menu)
-        return sub_menu
-
-
-    def _make_menu_item(self, menu, tooltip, callback, arg=None):
-        """ add a new item to the submenu """
-        menu_items = gtk.MenuItem(tooltip)
-        menu.append(menu_items)
-        if arg is None:
-            menu_items.connect('activate', callback)
-        else:
-            menu_items.connect('activate', callback, arg)
-        menu_items.show()
 
     def _makepath(self, path):
         """ Make a path if it doesn't previously exist """
@@ -153,7 +147,6 @@ class TurtleMain():
         # sure our current directory is TA's source dir.
         os.chdir(os.path.dirname(__file__))
 
-        self._uploader = Uploader()
         self.ta_file = None
         self.output_png = False
         self.i = 0  # FIXME: use a better name for this variable
@@ -265,50 +258,52 @@ class TurtleMain():
 
     def _get_menu_bar(self):
         menu = gtk.Menu()
-        self._make_menu_item(menu, _('New'), self._do_new_cb)
-        self._make_menu_item(menu, _('Open'), self._do_open_cb)
-        self._make_menu_item(menu, _('Save'), self._do_save_cb)
-        self._make_menu_item(menu, _('Save As'), self._do_save_as_cb)
-        self._make_menu_item(menu, _('Save as image'), self._do_save_picture_cb)
-        self._make_menu_item(menu, _('Save as HTML'), self._do_save_html_cb)
-        self._make_menu_item(menu, _('Save as Logo'), self._do_save_logo_cb)
+        MenuBuilder.make_menu_item(menu, _('New'), self._do_new_cb)
+        MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
+        MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
+        MenuBuilder.make_menu_item(menu, _('Save As'), self._do_save_as_cb)
+        MenuBuilder.make_menu_item(menu, _('Save as image'), self._do_save_picture_cb)
+        MenuBuilder.make_menu_item(menu, _('Save as HTML'), self._do_save_html_cb)
+        MenuBuilder.make_menu_item(menu, _('Save as Logo'), self._do_save_logo_cb)
         if self._uploader.enabled():
-            self._make_menu_item(menu, _('Upload to Web'),
+            MenuBuilder.make_menu_item(menu, _('Upload to Web'),
                                  self._uploader.do_upload_to_web)
-        self._make_menu_item(menu, _('Quit'), self.destroy)
-        activity_menu = self._make_sub_menu(menu, _('File'))
+        MenuBuilder.make_menu_item(menu, _('Quit'), self.destroy)
+        activity_menu = MenuBuilder.make_sub_menu(menu, _('File'))
 
         menu = gtk.Menu()
-        self._make_menu_item(menu, _('Cartesian coordinates'),
+        MenuBuilder.make_menu_item(menu, _('Cartesian coordinates'),
                         self._do_cartesian_cb)
-        self._make_menu_item(menu, _('Polar coordinates'), self._do_polar_cb)
-        self._make_menu_item(menu, _('Rescale coordinates'),
+        MenuBuilder.make_menu_item(menu, _('Polar coordinates'), self._do_polar_cb)
+        MenuBuilder.make_menu_item(menu, _('Rescale coordinates'),
                         self._do_rescale_cb)
-        self._make_menu_item(menu, _('Grow blocks'), self._do_resize_cb, 1.5)
-        self._make_menu_item(menu, _('Shrink blocks'),
+        MenuBuilder.make_menu_item(menu, _('Grow blocks'), self._do_resize_cb, 1.5)
+        MenuBuilder.make_menu_item(menu, _('Shrink blocks'),
                         self._do_resize_cb, 0.667)
-        self._make_menu_item(menu, _('Reset block size'),
+        MenuBuilder.make_menu_item(menu, _('Reset block size'),
                         self._do_resize_cb, -1)
-        view_menu = self._make_sub_menu(menu, _('View'))
+        view_menu = MenuBuilder.make_sub_menu(menu, _('View'))
 
         menu = gtk.Menu()
-        self._make_menu_item(menu, _('Copy'), self._do_copy_cb)
-        self._make_menu_item(menu, _('Paste'), self._do_paste_cb)
-        edit_menu = self._make_sub_menu(menu, _('Edit'))
+        MenuBuilder.make_menu_item(menu, _('Copy'), self._do_copy_cb)
+        MenuBuilder.make_menu_item(menu, _('Paste'), self._do_paste_cb)
+        edit_menu = MenuBuilder.make_sub_menu(menu, _('Edit'))
 
         menu = gtk.Menu()
-        self._make_menu_item(menu, _('Show palette'), self._do_palette_cb)
-        self._make_menu_item(menu, _('Hide palette'), self._do_hide_palette_cb)
-        self._make_menu_item(menu, _('Show/hide blocks'), self._do_hideshow_cb)
-        tool_menu = self._make_sub_menu(menu, _('Tools'))
+        MenuBuilder.make_menu_item(menu, _('Show palette'), self._do_palette_cb)
+        MenuBuilder.make_menu_item(menu, _('Hide palette'), self._do_hide_palette_cb)
+        MenuBuilder.make_menu_item(menu, _('Show/hide blocks'), self._do_hideshow_cb)
+        tool_menu = MenuBuilder.make_sub_menu(menu, _('Tools'))
 
         menu = gtk.Menu()
-        self._make_menu_item(menu, _('Clean'), self._do_eraser_cb)
-        self._make_menu_item(menu, _('Run'), self._do_run_cb)
-        self._make_menu_item(menu, _('Step'), self._do_step_cb)
-        self._make_menu_item(menu, _('Debug'), self._do_trace_cb)
-        self._make_menu_item(menu, _('Stop'), self._do_stop_cb)
-        turtle_menu = self._make_sub_menu(menu, _('Turtle'))
+        MenuBuilder.make_menu_item(menu, _('Clean'), self._do_eraser_cb)
+        MenuBuilder.make_menu_item(menu, _('Run'), self._do_run_cb)
+        MenuBuilder.make_menu_item(menu, _('Step'), self._do_step_cb)
+        MenuBuilder.make_menu_item(menu, _('Debug'), self._do_trace_cb)
+        MenuBuilder.make_menu_item(menu, _('Stop'), self._do_stop_cb)
+        turtle_menu = MenuBuilder.make_sub_menu(menu, _('Turtle'))
+
+        collaboration_menu = self._collab_plugin.get_menu()
 
         menu_bar = gtk.MenuBar()
         menu_bar.append(activity_menu)
@@ -316,6 +311,7 @@ class TurtleMain():
         menu_bar.append(view_menu)
         menu_bar.append(tool_menu)
         menu_bar.append(turtle_menu)
+        menu_bar.append(collaboration_menu)
         return menu_bar
 
     def _quit_ta(self, widget=None, e=None):

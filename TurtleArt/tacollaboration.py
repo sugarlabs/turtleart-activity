@@ -3,9 +3,16 @@ from dbus.service import signal
 from dbus.gobject_service import ExportedGObject
 import logging
 import telepathy
-from sugar import profile
-from sugar.presence import presenceservice
-from sugar.presence.tubeconn import TubeConnection
+from TurtleArt.tautils import data_to_string, data_from_string
+
+try:
+    from sugar import profile
+    from sugar.presence import presenceservice
+    from sugar.presence.tubeconn import TubeConnection
+except:
+    profile = None
+    from collaboration import presenceservice
+    from collaboration.tubeconn import TubeConnection
 
 SERVICE = 'org.laptop.TurtleArtActivity'
 IFACE = SERVICE
@@ -16,6 +23,7 @@ class Collaboration():
     def __init__(self, tw, activity):
         """ A simplistic sharing model: the sharer is the master """
         self._tw = tw
+        self._tw.send_event = self.send_event
         self._activity = activity
 
     def setup(self):
@@ -225,7 +233,11 @@ class Collaboration():
         return self._tw.nick
 
     def _get_colors(self):
-        return profile.get_color().to_string()
+        if profile:
+            colors = profile.get_color().to_string()
+        else:
+            colors = self._activity.get_colors()
+        return colors
 
 class ChatTube(ExportedGObject):
 
