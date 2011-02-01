@@ -896,13 +896,6 @@ class Neighborhood(gobject.GObject):
             print('__activity_updated_cb Unknown activity with activity_id %r', activity_id)
             return
 
-        ###
-        # FIXME: this should be configurable, we only care about the activity thats using this lib
-        #        i.e.: Turtle Art
-
-        if properties['type']:
-            print properties['type']
-
         # we should somehow emulate this and say we only have TurtleArtActivity
         #registry = bundleregistry.get_registry()
         #bundle = registry.get_bundle(properties['type'])
@@ -922,6 +915,10 @@ class Neighborhood(gobject.GObject):
             activity.props.name = properties['name']
         if 'private' in properties:
             activity.props.private = properties['private']
+        # FIXME: this should be configurable, we only care about the activity thats using this lib
+        #        i.e.: Turtle Art
+        if properties['type']:
+            activity.props.bundle = properties['type']
 
         if is_new:
             print "The activity is new"

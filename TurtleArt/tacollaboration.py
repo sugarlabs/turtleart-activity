@@ -3,6 +3,7 @@ from dbus.service import signal
 from dbus.gobject_service import ExportedGObject
 import logging
 import telepathy
+from TurtleArt.tautils import data_to_string, data_from_string
 
 try:
     from sugar import profile

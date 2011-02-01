@@ -355,10 +355,11 @@ class Activity(gobject.GObject):
                 del self._buddies[contact_id]
 
     def _get_buddy(self, contact_id):
-        if contact_id in self._buddies:
-            return self._buddies[contact_id]
-        else:
-            return Buddy(self._account_path, contact_id)
+        return None
+        #if contact_id in self._buddies:
+        #    return self._buddies[contact_id]
+        #else:
+        #    return Buddy(self._account_path, contact_id)
 
     def join(self):
         """Join this activity.

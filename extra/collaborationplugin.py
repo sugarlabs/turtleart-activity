@@ -16,8 +16,11 @@ from collaboration.connectionmanager import get_connection_manager
 from collaboration.activity import Activity
 from collaboration import telepathyclient
 from collaboration.tubeconn import TubeConnection
+import traceback
 from TurtleArt.tacollaboration import Collaboration
 
+CONNECTION_INTERFACE_ACTIVITY_PROPERTIES = \
+        'org.laptop.Telepathy.ActivityProperties'
 
 class CollaborationPlugin(Plugin):
 
@@ -62,6 +65,7 @@ class CollaborationPlugin(Plugin):
 
     def set_tw(self, turtleart_window):
         self.tw = turtleart_window
+        self.tw.nick = self._get_nick()
 
     def get_menu(self):
         menu = gtk.Menu()
@@ -208,6 +212,8 @@ class CollaborationPlugin(Plugin):
             print("room_handle = %s" % str(room_handle))
             self._joined_activity = Activity(account_path, connection, room_handle,
                                        properties=properties)
+            # FIXME: this should be unified, no need to keep 2 references
+            self._shared_activity = self._joined_activity
         except:
             traceback.print_exc(file=sys.stdout)
 
@@ -219,6 +225,7 @@ class CollaborationPlugin(Plugin):
         self._joined_activity.join()
 
     def __joined_cb(self,activity, success, err):
+        print "We've joined an activity"
         self.emit('joined')
 
     def _config_neighborhood_cb(self, widget):
@@ -239,10 +246,10 @@ class CollaborationPlugin(Plugin):
 
     def _share_cb(self, button):
         properties = {}
-        properties['id'] = self._activity._get_activity_id()
-        properties['type'] = self._activity._get_bundle_id()
-        properties['name'] = self._activity._get_title()
-        properties['color'] = self._activity._get_turtle_color()
+        properties['id'] = self._get_activity_id()
+        properties['type'] = self._get_bundle_id()
+        properties['name'] = self._get_title()
+        properties['color'] = self._get_turtle_color()
         properties['private'] = False
 
         connection_manager = get_connection_manager()
@@ -256,6 +263,8 @@ class CollaborationPlugin(Plugin):
         try:
             self._activity._shared_activity = Activity(account_path, connection,
                                              properties=properties)
+            # FIXME: this should be unified, no need to keep 2 references
+            self._shared_activity = self._activity._shared_activity
         except:
             traceback.print_exc(file=sys.stdout)
 
