@@ -47,6 +47,8 @@ class Collaboration():
                 _shared_activity is null in _shared_cb()")
             return
 
+        self._tw.set_sharing(True)
+
         self.initiating = True
         self.waiting_for_turtles = False
         self.turtle_dictionary = self._get_dictionary()
@@ -71,6 +73,8 @@ class Collaboration():
             _logger.error("Failed to share or join activity ... \
                 _shared_activity is null in _shared_cb()")
             return
+
+        self._tw.set_sharing(True)
 
         self.initiating = False
         self.conn = self._shared_activity.telepathy_conn

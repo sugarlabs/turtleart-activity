@@ -100,6 +100,7 @@ class TurtleArtWindow():
     def __init__(self, win, path, parent=None, mycolors=None, mynick=None):
         self._loaded_project = ''
         self.win = None
+        self._sharing = False
         self.parent = parent
         self.send_event = None # method to send events over the network
         if type(win) == gtk.DrawingArea:
@@ -397,16 +398,11 @@ class TurtleArtWindow():
                 self.toolbar_shapes[_name].type = 'toolbar'
             self.toolbar_shapes['stopiton'].hide()
 
+    def set_sharing(self, shared):
+        self._sharing = shared
+
     def sharing(self):
-        """ Is a chattube available for share? """
-        if self.running_sugar and hasattr(self.activity, 'chattube') and\
-           self.activity.chattube is not None:
-            return True
-
-        if self.send_event:
-            return True
-
-        return False
+        return self._sharing
 
     def is_project_empty(self):
         """ Check to see if project has any blocks in use """
