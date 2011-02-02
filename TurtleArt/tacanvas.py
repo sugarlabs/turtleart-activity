@@ -497,7 +497,7 @@ class TurtleGraphics:
                 self.tw.svg_string += self.svg.image(x - self.width / 2,
                                                      y, w, h, path)
 
-    def draw_text(self, label, x, y, size, w):
+    def draw_text(self, label, x, y, size, w, share=True):
         """ Draw text """
         w *= self.tw.coord_scale
         self.gc.set_foreground(self.tw.textcolor)
@@ -532,6 +532,10 @@ class TurtleGraphics:
         if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.text(x - self.width / 2,
                                                 y + size, size, w, label)
+        event = "W|%s" % (data_to_string([self._get_my_nick(),
+                                          [label, round_int(x), round_int(y),
+                                           round_int(size), round_int(w)]]))
+        self._send_event(event, share)
 
     def draw_line(self, x1, y1, x2, y2):
         """ Draw a line """

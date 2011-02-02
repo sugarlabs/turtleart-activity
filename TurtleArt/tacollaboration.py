@@ -190,6 +190,11 @@ class Collaboration():
                 if nick != self._tw.nick:
                     self._tw.canvas.set_turtle(nick)
                     self._tw.canvas.setxy(x, y, False)
+        elif e[0] == 'W': # draw text
+            if len(text) > 0:
+                [nick, [label, x, y, size, w]] = data_from_string(text)
+                if nick != self._tw.nick:
+                    self._tw.canvas.draw_text(label, x, y, size, w, False)
         elif e[0] == 'c': # set turtle pen color
             if len(text) > 0:
                 [nick, x] = data_from_string(text)
