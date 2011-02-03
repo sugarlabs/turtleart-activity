@@ -72,15 +72,16 @@ def find_device():
     for i in os.listdir(os.path.join('.', 'devices')):
         if not os.path.isdir(os.path.join('.', 'devices', i)):
             try:
-                _tempmod = __import__('devices.%s'%i.split('.')[0], globals(),
-                                      locals(), ['RFIDReader'], -1)
+                _tempmod = __import__('devices.%s' % i.split('.')[0],
+                                      globals(), locals(), ['RFIDReader'], -1)
                 devtemp = _tempmod.RFIDReader()
                 if devtemp.get_present() == True:
                     device = devtemp
             except Exception, e:
-                _logger.error("FIND_DEVICE: %s: %s"%(i, e))
+                _logger.error("FIND_DEVICE: %s: %s" % (i, e))
                 pass
     return device
+
 
 class noKeyError(UserDict):
 
@@ -1441,7 +1442,7 @@ class LogoCode:
                     f.close()
                 except IOError:
                     self.tw.showlabel('nojournal', self.filepath)
-                    _logger.debug("Couldn't open filepath %s" % (self.filepath))
+                    _logger.debug("Couldn't open %s" % (self.filepath))
         else:
             if description is not None:
                 text = str(description)
@@ -1504,7 +1505,7 @@ class LogoCode:
                 try:
                     ioctl(self._video_capture_device, v4l2.VIDIOC_G_CTRL,
                           self._ag_control)
-                    self._ag_control.value = 0 # disable AUTOGAIN
+                    self._ag_control.value = 0  # disable AUTOGAIN
                     ioctl(self._video_capture_device, v4l2.VIDIOC_S_CTRL,
                           self._ag_control)
                 except:
