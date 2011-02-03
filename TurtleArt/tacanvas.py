@@ -232,7 +232,8 @@ class TurtleGraphics:
             return
         self.heading %= 360
         self.turn_turtle()
-        event = "r|%s" % (data_to_string([self._get_my_nick(), round_int(self.heading)]))
+        event = "r|%s" % (data_to_string([self._get_my_nick(),
+                                          round_int(self.heading)]))
         self._send_event(event, share)
 
     def right(self, n, share=True):
@@ -244,7 +245,8 @@ class TurtleGraphics:
             return
         self.heading %= 360
         self.turn_turtle()
-        event = "r|%s" % (data_to_string([self._get_my_nick(), round_int(self.heading)]))
+        event = "r|%s" % (data_to_string([self._get_my_nick(),
+                                          round_int(self.heading)]))
         self._send_event(event, share)
 
     def arc(self, a, r, share=True):
@@ -260,7 +262,8 @@ class TurtleGraphics:
             _logger.debug("bad value sent to %s" % (__name__))
             return
         self.move_turtle()
-        event = "a|%s" % (data_to_string([self._get_my_nick(), [round_int(a), round_int(r)]]))
+        event = "a|%s" % (data_to_string([self._get_my_nick(),
+                                          [round_int(a), round_int(r)]]))
         self._send_event(event, share)
 
     def rarc(self, a, r):
@@ -347,7 +350,8 @@ class TurtleGraphics:
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
 
         self.move_turtle()
-        event = "x|%s" % (data_to_string([self._get_my_nick(), [round_int(x), round_int(y)]]))
+        event = "x|%s" % (data_to_string([self._get_my_nick(),
+                                          [round_int(x), round_int(y)]]))
         self._send_event(event, share)
 
     def setpensize(self, ps, share=True):
@@ -361,7 +365,7 @@ class TurtleGraphics:
             return
         self.tw.active_turtle.set_pen_size(ps)
         self.gc.set_line_attributes(int(self.pensize * self.tw.coord_scale),
-                     gtk.gdk.LINE_SOLID, gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
+            gtk.gdk.LINE_SOLID, gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
         self.svg.set_stroke_width(self.pensize)
         event = "w|%s" % (data_to_string([self._get_my_nick(), round_int(ps)]))
         self._send_event(event, share)
@@ -394,7 +398,8 @@ class TurtleGraphics:
         self.set_fgcolor()
         self.set_textcolor()
         self.tw.active_turtle.set_gray(self.gray)
-        event = "g|%s" % (data_to_string([self._get_my_nick(), round_int(self.gray)]))
+        event = "g|%s" % (data_to_string([self._get_my_nick(),
+                                          round_int(self.gray)]))
         self._send_event(event, share)
 
     def settextcolor(self, c):
