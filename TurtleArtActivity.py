@@ -258,7 +258,7 @@ class TurtleArtActivity(activity.Activity):
     def do_hideshow_cb(self, button):
         """ Toggle visibility. """
         self.tw.hideshow_button()
-        if self.tw.hide == True: # we just hid the blocks
+        if self.tw.hide == True:  # we just hid the blocks
             self.blocks_button.set_icon("hideshowon")
             self.blocks_button.set_tooltip(_('Show blocks'))
         else:
@@ -531,14 +531,16 @@ class TurtleArtActivity(activity.Activity):
         self.save_as_logo = self._add_button('logo-saveoff', _("Save as Logo"),
                                         self.do_save_as_logo_cb,
                                         journal_toolbar_button)
-        self.save_as_image = self._add_button('image-saveoff', _("Save as image"),
+        self.save_as_image = self._add_button('image-saveoff', _(
+                "Save as image"),
                                          self.do_save_as_image_cb,
                                          journal_toolbar_button)
         self.load_ta_project = self._add_button('load-from-journal',
             _("Import project from the Journal"), self.do_load_ta_project_cb,
                                            journal_toolbar_button)
         self._add_separator(journal_toolbar)
-        self.load_python = self._add_button('pippy-openoff', _("Load Python block"),
+        self.load_python = self._add_button('pippy-openoff', _(
+                "Load Python block"),
                                        self.do_load_python_cb,
                                        journal_toolbar_button)
         self.samples_button = self._add_button("ta-open", _('Load example'),
@@ -547,8 +549,8 @@ class TurtleArtActivity(activity.Activity):
                            edit_toolbar_button, '<Ctrl>c')
         paste = self._add_button('edit-paste', _('Paste'), self._paste_cb,
                             edit_toolbar_button, '<Ctrl>v')
-        fullscreen_button = self._add_button('view-fullscreen', _("Fullscreen"),
-                                        self.do_fullscreen_cb,
+        fullscreen_button = self._add_button('view-fullscreen',
+                                        _("Fullscreen"), self.do_fullscreen_cb,
                                         view_toolbar_button, '<Alt>Return')
         cartesian_button = self._add_button('view-Cartesian',
                                        _("Cartesian coordinates"),
@@ -566,8 +568,8 @@ class TurtleArtActivity(activity.Activity):
                                           view_toolbar_button)
         self.resize_up_button = self._add_button('resize+', _("Grow blocks"),
             self.do_grow_blocks_cb, view_toolbar_button)
-        self.resize_down_button = self._add_button('resize-', _("Shrink blocks"),
-            self.do_shrink_blocks_cb, view_toolbar_button)
+        self.resize_down_button = self._add_button('resize-',
+            _("Shrink blocks"), self.do_shrink_blocks_cb, view_toolbar_button)
         self.hover_help_label = self._add_label(
             _("Move the cursor over the orange palette for help."),
             help_toolbar)
@@ -607,7 +609,8 @@ class TurtleArtActivity(activity.Activity):
     def _make_palette_buttons(self, toolbar, palette_button=False):
         """ Creates the palette and block buttons for both toolbar types"""
         if palette_button:  # old-style toolbars need this button
-            self.palette_button = self._add_button("paletteoff", _('Hide palette'),
+            self.palette_button = self._add_button("paletteoff", _(
+                    'Hide palette'),
                 self.do_palette_cb, toolbar, _('<Ctrl>p'))
         self.blocks_button = self._add_button("hideshowoff", _('Hide blocks'),
             self.do_hideshow_cb, toolbar, _('<Ctrl>b'))
@@ -616,14 +619,14 @@ class TurtleArtActivity(activity.Activity):
         """ Creates the turtle buttons for both toolbar types"""
         self.eraser_button = self._add_button("eraseron", _('Clean'),
             self.do_eraser_cb, toolbar, _('<Ctrl>e'))
-        self.run_button = self._add_button("run-fastoff", _('Run'), self.do_run_cb,
-                                      toolbar, _('<Ctrl>r'))
+        self.run_button = self._add_button("run-fastoff", _('Run'),
+                                       self.do_run_cb, toolbar, _('<Ctrl>r'))
         self.step_button = self._add_button("run-slowoff", _('Step'),
                                        self.do_step_cb, toolbar, _('<Ctrl>w'))
         self.debug_button = self._add_button("debugoff", _('Debug'),
             self.do_debug_cb, toolbar, _('<Ctrl>d'))
-        self.stop_turtle_button = self._add_button("stopitoff", _('Stop turtle'),
-            self.do_stop_cb, toolbar, _('<Ctrl>s'))
+        self.stop_turtle_button = self._add_button("stopitoff",
+            _('Stop turtle'), self.do_stop_cb, toolbar, _('<Ctrl>s'))
 
     def _setup_scrolled_window(self):
         """ Create a scrolled window to contain the turtle canvas. """
@@ -681,7 +684,7 @@ class TurtleArtActivity(activity.Activity):
 
         if self._jobject and self._jobject.file_path:
             self.read_file(self._jobject.file_path)
-        else: # if new, load a start brick onto the canvas
+        else:  # if new, load a start brick onto the canvas
             self.tw.load_start()
 
     def _setup_sharing(self):
@@ -717,7 +720,7 @@ class TurtleArtActivity(activity.Activity):
                     # If run_it is True, we want to create a new project
                     tar_fd.extractall(tmpdir)
                     self.tw.load_files(os.path.join(tmpdir, 'ta_code.ta'), \
-                                        run_it) # create a new project flag
+                                        run_it)  # create a new project flag
                 finally:
                     shutil.rmtree(tmpdir)
                     tar_fd.close()
@@ -796,7 +799,8 @@ class TurtleArtActivity(activity.Activity):
         toolbar.insert(separator, -1)
         separator.show()
 
-    def _add_button(self, name, tooltip, callback, toolbar, accelerator=None, arg=None):
+    def _add_button(self, name, tooltip, callback, toolbar, accelerator=None,
+                    arg=None):
         """ add a button to a toolbar """
         button = ToolButton(name)
         button.set_tooltip(tooltip)
@@ -810,7 +814,7 @@ class TurtleArtActivity(activity.Activity):
             except AttributeError:
                 pass
         button.show()
-        if hasattr(toolbar, 'insert'): # the main toolbar
+        if hasattr(toolbar, 'insert'):  # the main toolbar
             toolbar.insert(button, -1)
         else:  # or a secondary toolbar
             toolbar.props.page.insert(button, -1)
