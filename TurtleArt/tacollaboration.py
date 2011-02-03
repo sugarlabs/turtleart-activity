@@ -19,6 +19,7 @@ IFACE = SERVICE
 PATH = '/org/laptop/TurtleArtActivity'
 _logger = logging.getLogger('turtleart-activity')
 
+
 class Collaboration():
     def __init__(self, tw, activity):
         """ A simplistic sharing model: the sharer is the master """
@@ -29,7 +30,7 @@ class Collaboration():
     def setup(self):
         # TODO: hand off role of master is sharer leaves
         self.pservice = presenceservice.get_instance()
-        self.initiating = None # sharing (True) or joining (False)
+        self.initiating = None  # sharing (True) or joining (False)
 
         # Add my buddy object to the list
         owner = self.pservice.get_owner()
@@ -141,7 +142,7 @@ class Collaboration():
         save_active_turtle = self._tw.active_turtle
         e = text.split("|", 2)
         text = e[1]
-        if e[0] == 't': # request for turtle dictionary
+        if e[0] == 't':  # request for turtle dictionary
             if text > 0:
                 [nick, colors] = data_from_string(text)
                 if nick != self._tw.nick:
@@ -156,7 +157,7 @@ class Collaboration():
             if self.initiating:
                 text = data_to_string(self.turtle_dictionary)
                 self.send_event("T|" + text)
-        elif e[0] == 'T': # Receiving the turtle dictionary.
+        elif e[0] == 'T':  # Receiving the turtle dictionary.
             if self.waiting_for_turtles:
                 if len(text) > 0:
                     self.turtle_dictionary = data_from_string(text)
@@ -166,60 +167,60 @@ class Collaboration():
                             # add new turtle for the joiner
                             self._tw.canvas.set_turtle(nick, colors)
                 self.waiting_for_turtles = False
-        elif e[0] == 'f': # move a turtle forward
+        elif e[0] == 'f':  # move a turtle forward
             if len(text) > 0:
                 [nick, x] = data_from_string(text)
                 if nick != self._tw.nick:
                     self._tw.canvas.set_turtle(nick)
                     self._tw.canvas.forward(x, False)
-        elif e[0] == 'a': # move a turtle in an arc
+        elif e[0] == 'a':  # move a turtle in an arc
             if len(text) > 0:
                 [nick, [a, r]] = data_from_string(text)
                 if nick != self._tw.nick:
                     self._tw.canvas.set_turtle(nick)
                     self._tw.canvas.arc(a, r, False)
-        elif e[0] == 'r': # rotate turtle
+        elif e[0] == 'r':  # rotate turtle
             if len(text) > 0:
                 [nick, h] = data_from_string(text)
                 if nick != self._tw.nick:
                     self._tw.canvas.set_turtle(nick)
                     self._tw.canvas.seth(h, False)
-        elif e[0] == 'x': # set turtle xy position
+        elif e[0] == 'x':  # set turtle xy position
             if len(text) > 0:
                 [nick, [x, y]] = data_from_string(text)
                 if nick != self._tw.nick:
                     self._tw.canvas.set_turtle(nick)
                     self._tw.canvas.setxy(x, y, False)
-        elif e[0] == 'W': # draw text
+        elif e[0] == 'W':  # draw text
             if len(text) > 0:
                 [nick, [label, x, y, size, w]] = data_from_string(text)
                 if nick != self._tw.nick:
                     self._tw.canvas.draw_text(label, x, y, size, w, False)
-        elif e[0] == 'c': # set turtle pen color
+        elif e[0] == 'c':  # set turtle pen color
             if len(text) > 0:
                 [nick, x] = data_from_string(text)
                 if nick != self._tw.nick:
                     self._tw.canvas.set_turtle(nick)
                     self._tw.canvas.setcolor(x, False)
-        elif e[0] == 'g': # set turtle pen gray level
+        elif e[0] == 'g':  # set turtle pen gray level
             if len(text) > 0:
                 [nick, x] = data_from_string(text)
                 if nick != self._tw.nick:
                     self._tw.canvas.set_turtle(nick)
                     self._tw.canvas.setgray(x, False)
-        elif e[0] == 's': # set turtle pen shade
+        elif e[0] == 's':  # set turtle pen shade
             if len(text) > 0:
                 [nick, x] = data_from_string(text)
                 if nick != self._tw.nick:
                     self._tw.canvas.set_turtle(nick)
                     self._tw.canvas.setshade(x, False)
-        elif e[0] == 'w': # set turtle pen width
+        elif e[0] == 'w':  # set turtle pen width
             if len(text) > 0:
                 [nick, x] = data_from_string(text)
                 if nick != self._tw.nick:
                     self._tw.canvas.set_turtle(nick)
                     self._tw.canvas.setpensize(x, False)
-        elif e[0] == 'p': # set turtle pen state
+        elif e[0] == 'p':  # set turtle pen state
             if len(text) > 0:
                 [nick, x] = data_from_string(text)
                 if nick != self._tw.nick:
@@ -235,7 +236,7 @@ class Collaboration():
             self.chattube.SendText(entry)
 
     def _get_dictionary(self):
-        d = { self._get_nick(): self._get_colors()}
+        d = {self._get_nick(): self._get_colors()}
         return d
 
     def _get_nick(self):
@@ -248,13 +249,14 @@ class Collaboration():
             colors = self._activity.get_colors()
         return colors
 
+
 class ChatTube(ExportedGObject):
 
     def __init__(self, tube, is_initiator, stack_received_cb):
         """Class for setting up tube for sharing."""
         super(ChatTube, self).__init__(tube, PATH)
         self.tube = tube
-        self.is_initiator = is_initiator # Are we sharing or joining activity?
+        self.is_initiator = is_initiator  # Are we sharing or joining activity?
         self.stack_received_cb = stack_received_cb
         self.stack = ''
 
