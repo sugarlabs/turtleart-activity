@@ -53,6 +53,7 @@ from extra.upload import Uploader
 from extra.collaborationplugin import CollaborationPlugin
 from util.menubuilder import MenuBuilder
 
+
 class TurtleMain():
     """ Launch Turtle Art from outside of Sugar """
 
@@ -136,7 +137,8 @@ class TurtleMain():
         if os.path.exists(self._INSTALL_PATH):
             self.tw = TurtleArtWindow(self.canvas, self._INSTALL_PATH)
         elif os.path.exists(self._ALTERNATE_INSTALL_PATH):
-            self.tw = TurtleArtWindow(self.canvas, self._ALTERNATE_INSTALL_PATH)
+            self.tw = TurtleArtWindow(self.canvas,
+                                      self._ALTERNATE_INSTALL_PATH)
         else:
             self.tw = TurtleArtWindow(self.canvas, os.path.abspath('.'))
 
@@ -223,7 +225,8 @@ class TurtleMain():
         win.move(self.x, self.y)
         win.maximize()
         win.set_title(_('Turtle Art'))
-        if os.path.exists(os.path.join(self._INSTALL_PATH, self._ICON_SUBPATH)):
+        if os.path.exists(os.path.join(self._INSTALL_PATH,
+                                       self._ICON_SUBPATH)):
             win.set_icon_from_file(os.path.join(self._INSTALL_PATH,
                                                 self._ICON_SUBPATH))
         else:
@@ -262,9 +265,12 @@ class TurtleMain():
         MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
         MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
         MenuBuilder.make_menu_item(menu, _('Save As'), self._do_save_as_cb)
-        MenuBuilder.make_menu_item(menu, _('Save as image'), self._do_save_picture_cb)
-        MenuBuilder.make_menu_item(menu, _('Save as HTML'), self._do_save_html_cb)
-        MenuBuilder.make_menu_item(menu, _('Save as Logo'), self._do_save_logo_cb)
+        MenuBuilder.make_menu_item(menu, _('Save as image'),
+                                   self._do_save_picture_cb)
+        MenuBuilder.make_menu_item(menu, _('Save as HTML'),
+                                   self._do_save_html_cb)
+        MenuBuilder.make_menu_item(menu, _('Save as Logo'),
+                                   self._do_save_logo_cb)
         if self._uploader.enabled():
             MenuBuilder.make_menu_item(menu, _('Upload to Web'),
                                  self._uploader.do_upload_to_web)
@@ -274,10 +280,12 @@ class TurtleMain():
         menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('Cartesian coordinates'),
                         self._do_cartesian_cb)
-        MenuBuilder.make_menu_item(menu, _('Polar coordinates'), self._do_polar_cb)
+        MenuBuilder.make_menu_item(menu, _('Polar coordinates'),
+                                   self._do_polar_cb)
         MenuBuilder.make_menu_item(menu, _('Rescale coordinates'),
                         self._do_rescale_cb)
-        MenuBuilder.make_menu_item(menu, _('Grow blocks'), self._do_resize_cb, 1.5)
+        MenuBuilder.make_menu_item(menu, _('Grow blocks'),
+                                   self._do_resize_cb, 1.5)
         MenuBuilder.make_menu_item(menu, _('Shrink blocks'),
                         self._do_resize_cb, 0.667)
         MenuBuilder.make_menu_item(menu, _('Reset block size'),
@@ -290,9 +298,12 @@ class TurtleMain():
         edit_menu = MenuBuilder.make_sub_menu(menu, _('Edit'))
 
         menu = gtk.Menu()
-        MenuBuilder.make_menu_item(menu, _('Show palette'), self._do_palette_cb)
-        MenuBuilder.make_menu_item(menu, _('Hide palette'), self._do_hide_palette_cb)
-        MenuBuilder.make_menu_item(menu, _('Show/hide blocks'), self._do_hideshow_cb)
+        MenuBuilder.make_menu_item(menu, _('Show palette'),
+                                   self._do_palette_cb)
+        MenuBuilder.make_menu_item(menu, _('Hide palette'),
+                                   self._do_hide_palette_cb)
+        MenuBuilder.make_menu_item(menu, _('Show/hide blocks'),
+                                   self._do_hideshow_cb)
         tool_menu = MenuBuilder.make_sub_menu(menu, _('Tools'))
 
         menu = gtk.Menu()
@@ -329,8 +340,8 @@ class TurtleMain():
         """ Dialog for save project """
         dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
                                 buttons=gtk.BUTTONS_OK_CANCEL,
-                                message_format= \
-           _('You have unsaved work. Would you like to save before quitting?'))
+                                message_format=_(
+             'You have unsaved work. Would you like to save before quitting?'))
         dlg.set_title(_('Save project?'))
         dlg.set_property('skip-taskbar-hint', False)
 
