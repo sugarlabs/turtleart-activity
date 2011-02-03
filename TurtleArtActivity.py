@@ -164,7 +164,7 @@ class TurtleArtActivity(activity.Activity):
 
     def do_load_ta_project_cb(self, button):
         """ Load a project from the Journal """
-        chooser(self, SERVICE, self._load_ta_project)
+        chooser(self, 'org.laptop.TurtleArtActivity', self._load_ta_project)
 
     def _load_ta_project(self, dsobject):
         """ Load a ta project from the datastore """
