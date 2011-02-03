@@ -102,7 +102,7 @@ class TurtleArtWindow():
         self.win = None
         self._sharing = False
         self.parent = parent
-        self.send_event = None # method to send events over the network
+        self.send_event = None  # method to send events over the network
         if type(win) == gtk.DrawingArea:
             self.interactive_mode = True
             self.window = win
@@ -305,7 +305,7 @@ class TurtleArtWindow():
             hmgr_iface = dbus.Interface(bus.get_object(HAL_SERVICE,
                 HAL_MGR_PATH), HAL_MGR_IFACE)
 
-            hmgr_iface.connect_to_signal('DeviceAdded', self._device_added_cb) 
+            hmgr_iface.connect_to_signal('DeviceAdded', self._device_added_cb)
 
             PALETTES[PALETTE_NAMES.index('sensor')].append('rfid')
 
@@ -315,7 +315,7 @@ class TurtleArtWindow():
         """
         if not self.rfid_connected:
             self.rfid_device = find_device()
-            _logger.debug("DEVICE_ADDED: %s"%self.rfid_device)
+            _logger.debug("DEVICE_ADDED: %s" % self.rfid_device)
             if self.rfid_device is not None:
                 _logger.debug("DEVICE_ADDED: RFID device is not None!")
                 self.rfid_connected = self._device.do_connect()
@@ -1694,7 +1694,7 @@ class TurtleArtWindow():
                 self._start_audiograb()
                 self._run_stack(blk)
 
-        elif blk.name in ['sandwichtop_no_arm_no_label', 
+        elif blk.name in ['sandwichtop_no_arm_no_label',
                           'sandwichtop_no_arm']:
             restore_stack(blk)
 
@@ -2474,7 +2474,7 @@ class TurtleArtWindow():
                 if self.running_sugar:
                     try:
                         dsobject = datastore.get(value)
-                    except: # Should be IOError, but dbus error is raised
+                    except:  # Should be IOError, but dbus error is raised
                         dsobject = None
                         _logger.debug("couldn't get dsobject %s" % value)
                     if dsobject is not None:
