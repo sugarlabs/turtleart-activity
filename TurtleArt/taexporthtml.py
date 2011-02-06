@@ -22,7 +22,7 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import os.path
-from tautils import data_to_string, save_picture, image_to_base64
+from tautils import data_to_string, save_picture, image_to_base64, get_path
 from gettext import gettext as _
 from cgi import escape
 
@@ -90,7 +90,8 @@ def save_html(self, tw, embed_flag=True):
                     tmp = imgdata
                 else:
                     pixbuf = gtk.gdk.pixbuf_new_from_file(p)
-                    imgdata = image_to_base64(pixbuf, tw.activity)
+                    imgdata = image_to_base64(pixbuf,
+                        get_path(tw.activity, 'instance'))
                     tmp = self.html_glue['img2'][0]
                     tmp += imgdata
                     tmp += self.html_glue['img2'][1]
@@ -110,7 +111,7 @@ def save_html(self, tw, embed_flag=True):
     else:
         if self.embed_images == True:
             imgdata = image_to_base64(save_picture(self.tw.canvas),
-                                      tw.activity)
+                                      get_path(tw.activity, 'instance'))
         else:
             imgdata = os.path.join(self.tw.load_save_folder, 'image')
             self.tw.save_as_image(imgdata)

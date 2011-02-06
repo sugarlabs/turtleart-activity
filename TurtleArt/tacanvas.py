@@ -28,7 +28,7 @@ import base64
 
 from sprites import Sprite
 from tasprite_factory import SVG
-from tautils import image_to_base64, data_to_string, round_int
+from tautils import image_to_base64, get_path, data_to_string, round_int
 from taconstants import CANVAS_LAYER, BLACK, WHITE
 
 import logging
@@ -498,7 +498,8 @@ class TurtleGraphics:
             if self.tw.running_sugar:
                 # In Sugar, we need to embed the images inside the SVG
                 self.tw.svg_string += self.svg.image(x - self.width / 2,
-                    y, w, h, path, image_to_base64(pixbuf, self.tw.activity))
+                    y, w, h, path, image_to_base64(pixbuf,
+                    get_path(self.tw.activity, 'instance')))
             else:
                 self.tw.svg_string += self.svg.image(x - self.width / 2,
                                                      y, w, h, path)

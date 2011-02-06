@@ -285,12 +285,12 @@ def get_path(activity, subpath):
                             "org.laptop.TurtleArtActivity", subpath))
 
 
-def image_to_base64(pixbuf, activity):
+def image_to_base64(pixbuf, pathname):
     """ Convert an image to base64 """
-    _file_name = os.path.join(get_path(activity, 'instance'), 'imagetmp.png')
+    _file_name = os.path.join(pathname, 'imagetmp.png')
     if pixbuf != None:
         pixbuf.save(_file_name, "png")
-    _base64 = os.path.join(get_path(activity, 'instance'), 'base64tmp')
+    _base64 = os.path.join(pathname, 'base64tmp')
     _cmd = "base64 <" + _file_name + " >" + _base64
     subprocess.check_call(_cmd, shell=True)
     _file_handle = open(_base64, 'r')
