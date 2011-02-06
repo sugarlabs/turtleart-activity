@@ -214,10 +214,16 @@ class TurtleMain():
             data_file.write(str(800) + '\n')
             data_file.write(str(550) + '\n')
             data_file.seek(0)
-        self.x = int(data_file.readline())
-        self.y = int(data_file.readline())
-        self.width = int(data_file.readline())
-        self.height = int(data_file.readline())
+        try:
+            self.x = int(data_file.readline())
+            self.y = int(data_file.readline())
+            self.width = int(data_file.readline())
+            self.height = int(data_file.readline())
+        except ValueError:
+            self.x = 50
+            self.y = 50
+            self.width = 800
+            self.height = 550
 
     def _setup_gtk(self):
         win = gtk.Window(gtk.WINDOW_TOPLEVEL)
