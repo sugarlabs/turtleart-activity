@@ -24,6 +24,7 @@ import gtk
 from math import sin, cos, pi
 import pango
 import cairo
+import base64
 
 from sprites import Sprite
 from tasprite_factory import SVG
@@ -402,7 +403,7 @@ class TurtleGraphics:
                                           round_int(self.gray)]))
         self._send_event(event, share)
 
-    def settextcolor(self, c):
+    def settextcolor(self, c):  # depreciated
         """ Set the text color """
         try:
             self.tcolor = c
@@ -487,7 +488,7 @@ class TurtleGraphics:
         event = "p|%s" % (data_to_string([self._get_my_nick(), bool]))
         self._send_event(event, share)
 
-    def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path):
+    def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path, share=True):
         """ Draw a pixbuf """
         w *= self.tw.coord_scale
         h *= self.tw.coord_scale
@@ -501,6 +502,21 @@ class TurtleGraphics:
             else:
                 self.tw.svg_string += self.svg.image(x - self.width / 2,
                                                      y, w, h, path)
+        if self.tw.sharing():
+            data = pixbuf.get_pixels()
+            height = pixbuf.get_height()
+            width = pixbuf.get_width()
+            stride = pixbuf.get_rowstride()
+            bits_per_sample = pixbuf.get_bits_per_sample()
+            has_alpha = pixbuf.get_has_alpha()
+            colorspace = pixbuf.get_colorspace()
+            event = "P|%s" % (data_to_string([self._get_my_nick(),
+                [round_int(a), round_int(b), round_int(x), round_int(y),
+                 round_int(w), round_int(h), path,
+                 height, width, stride, bits_per_sample,
+                 has_alpha, colorspace,
+                 base64.standard_b64encode(str(data))]]))
+            self._send_event(event, share)
 
     def draw_text(self, label, x, y, size, w, share=True):
         """ Draw text """
@@ -666,5 +682,5 @@ class TurtleGraphics:
             return
 
         if self.tw.sharing():
-            print "Sending: %s" % entry
+            # print "Sending: %s" % entry
             self.tw.send_event(entry)

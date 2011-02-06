@@ -23,6 +23,10 @@ from dbus.service import signal
 from dbus.gobject_service import ExportedGObject
 import logging
 import telepathy
+
+import gtk
+import base64
+
 from TurtleArt.tautils import data_to_string, data_from_string
 
 try:
@@ -75,7 +79,8 @@ class Collaboration():
             'g' : self._set_pen_gray_level,
             's' : self._set_pen_shade,
             'w' : self._set_pen_width,
-            'p' : self._set_pen_state
+            'p' : self._set_pen_state,
+            'P' : self._draw_pixbuf
             }
 
     def _shared_cb(self, activity):
@@ -218,6 +223,17 @@ class Collaboration():
                         self._tw.canvas.set_turtle(nick, colors)
             self.waiting_for_turtles = False
     
+    def _draw_pixbuf(self, payload):
+        if len(payload) > 0:
+            [nick, [a, b, x, y, w, h, path, width, height, stride,
+                    bits_per_sample, has_alpha, colorspace, data]] =\
+                    data_from_string(payload)
+            if nick != self._tw.nick:
+                self._tw.canvas.draw_pixbuf(gtk.gdk.pixbuf_new_from_data(
+                    base64.standard_b64decode(data), colorspace, has_alpha,
+                    bits_per_sample, width, height, stride), a, b, x, y, w,
+                                            h, path, False)
+
     def _move_forward(self, payload):
         if len(payload) > 0:
             [nick, x] = data_from_string(payload)
