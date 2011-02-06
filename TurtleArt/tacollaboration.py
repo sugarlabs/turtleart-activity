@@ -314,6 +314,8 @@ class Collaboration():
             colors = profile.get_color().to_string()
         else:
             colors = self._activity.get_colors()
+        if colors is None:
+            colors = ['#008000', '#00A000']
         return colors
 
 
