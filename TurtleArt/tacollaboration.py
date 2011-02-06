@@ -184,7 +184,7 @@ class Collaboration():
        # Save active Turtle
         save_active_turtle = self._tw.active_turtle
  
-        command, payload = text.split("|", 2)
+        command, payload = event_message.split("|", 2)
         self._processing_methods[command](payload)
 
         # Restore active Turtle
