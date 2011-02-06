@@ -96,7 +96,7 @@ class TurtleMain():
         self._collab_plugin.set_tw(self.tw)
         self._collab_plugin.setup()
 
-    def _mkdir_p(path):
+    def _mkdir_p(self, path):
         '''Create a directory in a fashion similar to `mkdir -p`'''
         try:
             os.makedirs(path)
