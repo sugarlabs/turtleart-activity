@@ -512,10 +512,9 @@ class TurtleGraphics:
             colorspace = pixbuf.get_colorspace()
             event = "P|%s" % (data_to_string([self._get_my_nick(),
                 [round_int(a), round_int(b), round_int(x), round_int(y),
-                 round_int(w), round_int(h), path,
-                 height, width, stride, bits_per_sample,
-                 has_alpha, colorspace,
-                 base64.standard_b64encode(str(data))]]))
+                 round_int(w), round_int(h),
+                 width, height, stride, bits_per_sample,
+                 has_alpha, colorspace, data]]))
             self._send_event(event, share)
 
     def draw_text(self, label, x, y, size, w, share=True):
