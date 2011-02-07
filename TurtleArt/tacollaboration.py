@@ -315,8 +315,10 @@ class Collaboration():
         return self._tw.nick
 
     def _get_colors(self):
+        colors = None
         if profile:
-            colors = profile.get_color().to_string()
+            if profile.get_color() is not None:
+                colors = profile.get_color().to_string()
         else:
             colors = self._activity.get_colors()
         if colors is None:
