@@ -309,6 +309,11 @@ def stop_logo(tw):
     tw.lc.step = _just_stop()
     stop_media(tw.lc)
     if tw.camera_available:
+        if tw.lc._video_capture_device is not None:
+            # restore AG and then close device
+            tw.lc._set_ag(1)
+            tw.lc._video_capture_device.close()
+            tw.lc._video_capture_device = None
         tw.lc.camera.stop_camera_input()
     tw.active_turtle.show()
 
@@ -537,6 +542,7 @@ class LogoCode:
             self.voltage_bias = 1.695
 
         if self.tw.camera_available:
+            self._video_capture_device = None
             if self.tw.running_sugar:
                 self.imagepath = get_path(self.tw.activity,
                                           'data/turtlepic.png')
@@ -1142,6 +1148,13 @@ class LogoCode:
             self.value_blocks[name] = self.tw.block_list.get_similar_blocks(
                 'block', name)
 
+        if len(self.value_blocks['luminance']) == 0 and \
+           self._video_capture_device is not None:
+                # restore AG and then close device
+                self._set_ag(1)
+                self._video_capture_device.close()
+                self._video_capture_device = None
+
     def _update_audio_mode(self):
         """ If there are sensor blocks, set the appropriate audio mode """
         for name in ['sound', 'volume', 'pitch']:
@@ -1492,26 +1505,17 @@ class LogoCode:
         array = None
         w = self._w()
         h = self._h()
-        if w > 0 and h > 0 and self.tw.camera_available:
 
+        if luminance_only and self.tw.camera_available:
             try:
-                self._video_capture_device = open('/dev/video0', 'rw')
+                if self._video_capture_device is None:
+                    self._video_capture_device = open('/dev/video0', 'rw')
+                    self._set_ag(0)
             except:
                 self._video_capture_device = None
                 _logger.debug('video capture device not available')
-            if self._video_capture_device is not None:
-                self._ag_control = v4l2.v4l2_control(v4l2.V4L2_CID_AUTOGAIN)
-                try:
-                    ioctl(self._video_capture_device, v4l2.VIDIOC_G_CTRL,
-                          self._ag_control)
-                    self._ag_control.value = 0 # disable AUTOGAIN
-                    ioctl(self._video_capture_device, v4l2.VIDIOC_S_CTRL,
-                          self._ag_control)
-                except:
-                    _logger.debug('AUTOGAIN control not available')
-            if self._video_capture_device is not None:
-                self._video_capture_device.close()
 
+        if w > 0 and h > 0 and self.tw.camera_available:
             self.camera.save_camera_input_to_file()
             self.camera.stop_camera_input()
             pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.imagepath, w, h)
@@ -1547,6 +1551,20 @@ class LogoCode:
                 self.heap.append(-1)
                 self.heap.append(-1)
                 self.heap.append(-1)
+
+    def _set_ag(self, value):
+        """ set camera autogain (0==off, 1==on) """
+        self._ag_control = v4l2.v4l2_control(v4l2.V4L2_CID_AUTOGAIN)
+        try:
+            ioctl(self._video_capture_device, v4l2.VIDIOC_G_CTRL,
+                  self._ag_control)
+            self._ag_control.value = value
+            ioctl(self._video_capture_device, v4l2.VIDIOC_S_CTRL,
+                  self._ag_control)
+            ioctl(self._video_capture_device, v4l2.VIDIOC_G_CTRL,
+                  self._ag_control)
+        except:
+            _logger.debug('AUTOGAIN control not available')
 
     def _get_volume(self):
         """ return mic in value """
