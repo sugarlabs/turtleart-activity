@@ -225,13 +225,18 @@ class Collaboration():
     
     def _draw_pixbuf(self, payload):
         if len(payload) > 0:
-            [nick, [a, b, x, y, w, h, width, height, stride,
-                    bits_per_sample, has_alpha, colorspace, data]] =\
-                    data_from_string(payload)
+            [nick, [a, b, x, y, w, h, width, height, data]] =\
+                data_from_string(payload)
             if nick != self._tw.nick:
-                self._tw.canvas.draw_pixbuf(gtk.gdk.pixbuf_new_from_data(
-                    data, colorspace, has_alpha, bits_per_sample, width,
-                    height, stride), a, b, x, y, w, h, None, False)
+                if self.tw.running_sugar:
+                    tmp_path = get_path(self.tw.activity, 'instance')
+                else:
+                    tmp_path = '/tmp'
+                file_name = base64_to_image(data, tmp_path)
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(file_name,
+                                                              width, height)
+                self._tw.canvas.draw_pixbuf(pixbuf, a, b, x, y, w, h,
+                                            file_name, False)
 
     def _move_forward(self, payload):
         if len(payload) > 0:

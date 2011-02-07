@@ -501,21 +501,22 @@ class TurtleGraphics:
                     y, w, h, path, image_to_base64(pixbuf,
                     get_path(self.tw.activity, 'instance')))
             else:
+                # Outside of Sugar, we save a path
                 self.tw.svg_string += self.svg.image(x - self.width / 2,
                                                      y, w, h, path)
         if self.tw.sharing():
-            data = pixbuf.get_pixels()
+            if self.tw.running_sugar:
+                tmp_path = get_path(self.tw.activity, 'instance')
+            else:
+                tmp_path = '/tmp'
+            data = image_to_base64(pixbuf, tmp_path)
             height = pixbuf.get_height()
             width = pixbuf.get_width()
-            stride = pixbuf.get_rowstride()
-            bits_per_sample = pixbuf.get_bits_per_sample()
-            has_alpha = pixbuf.get_has_alpha()
-            colorspace = pixbuf.get_colorspace()
             event = "P|%s" % (data_to_string([self._get_my_nick(),
                 [round_int(a), round_int(b), round_int(x), round_int(y),
                  round_int(w), round_int(h),
-                 width, height, stride, bits_per_sample,
-                 has_alpha, colorspace, data]]))
+                 round_int(width), round_int(height),
+                 data]]))
             self._send_event(event, share)
 
     def draw_text(self, label, x, y, size, w, share=True):

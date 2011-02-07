@@ -296,6 +296,7 @@ def image_to_base64(pixbuf, path_name):
     file_handle = open(base64, 'r')
     data = file_handle.read()
     file_handle.close()
+    print 'image to base64:' + file_name
     return data
 
 
@@ -308,6 +309,7 @@ def base64_to_image(data, path_name):
     file_name = os.path.join(path_name, 'imagetmp.png')
     cmd = "base64 -d <" + base64 + ">" + file_name
     subprocess.check_call(cmd, shell=True)
+    print 'base64 to image:' + file_name
     return file_name
 
 
