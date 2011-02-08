@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007-8, Playful Invention Company.
-#Copyright (c) 2008-10, Walter Bender
+#Copyright (c) 2008-11, Walter Bender
 #Copyright (c) 2008-10, Raúl Gutiérrez Segalés
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1149,13 +1149,6 @@ class LogoCode:
             self.value_blocks[name] = self.tw.block_list.get_similar_blocks(
                 'block', name)
 
-        if len(self.value_blocks['luminance']) == 0 and \
-           self._video_capture_device is not None:
-                # restore AG and then close device
-                self._set_ag(1)
-                self._video_capture_device.close()
-                self._video_capture_device = None
-
     def _update_audio_mode(self):
         """ If there are sensor blocks, set the appropriate audio mode """
         for name in ['sound', 'volume', 'pitch']:
@@ -1503,56 +1496,62 @@ class LogoCode:
 
     def _read_camera(self, luminance_only=False):
         """ Read average pixel from camera and push b, g, r to the stack """
+
+        if not self.tw.camera_available:
+            if not luminance_only:
+                self.heap.append(-1)
+                self.heap.append(-1)
+                self.heap.append(-1)
+            return -1
+
         pixbuf = None
         array = None
         w = self._w()
+        if w < 1:
+            w = 1
         h = self._h()
+        if h < 1:
+            h = 1
 
-        if luminance_only and self.tw.camera_available:
-            try:
-                if self._video_capture_device is None:
-                    self._video_capture_device = open('/dev/video0', 'rw')
-                    self._set_ag(0)
-            except:
-                self._video_capture_device = None
-                _logger.debug('video capture device not available')
+        self._video_capture_device = None
+        try:
+            self._video_capture_device = open('/dev/video0', 'rw')
+        except:
+            _logger.debug('video capture device not available')
+        if self._video_capture_device is not None:
+            self._set_ag(0)  # disable autogain
 
-        if w > 0 and h > 0 and self.tw.camera_available:
-            self.camera.save_camera_input_to_file()
-            self.camera.stop_camera_input()
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.imagepath, w, h)
-            try:
-                array = pixbuf.get_pixels()
-            except:
-                array = None
-        if array is not None:
-            length = len(array) / 3
-            r = 0
-            g = 0
-            b = 0
-            i = 0
-            for j in range(length):
-                r += ord(array[i])
-                i += 1
-                g += ord(array[i])
-                i += 1
-                b += ord(array[i])
-                i += 1
-            if luminance_only:
-                lum = int((r * 0.3 + g * 0.6 + b * 0.1) / length)
-                self.update_label_value('luminance', lum)
-                return lum
-            else:
-                self.heap.append(int((b / length)))
-                self.heap.append(int((g / length)))
-                self.heap.append(int((r / length)))
+        self.camera.save_camera_input_to_file()
+        self.camera.stop_camera_input()
+
+        if self._video_capture_device is not None:
+            self._set_ag(1)  # restore autogain and close device
+            self._video_capture_device.close()
+            self._video_capture_device = None
+
+        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.imagepath, w, h)
+        array = pixbuf.get_pixels()
+
+        array_length = len(array) / 3
+        r = 0
+        g = 0
+        b = 0
+        i = 0
+        for j in range(array_length):
+            r += ord(array[i])
+            i += 1
+            g += ord(array[i])
+            i += 1
+            b += ord(array[i])
+            i += 1
+        if luminance_only:
+            lum = int((r * 0.3 + g * 0.6 + b * 0.1) / array_length)
+            self.update_label_value('luminance', lum)
+            return lum
         else:
-            if luminance_only:
-                return -1
-            else:
-                self.heap.append(-1)
-                self.heap.append(-1)
-                self.heap.append(-1)
+            self.heap.append(int((b / array_length)))
+            self.heap.append(int((g / array_length)))
+            self.heap.append(int((r / array_length)))
 
     def _set_ag(self, value):
         """ set camera autogain (0==off, 1==on) """
