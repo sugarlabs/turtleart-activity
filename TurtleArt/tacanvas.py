@@ -164,12 +164,20 @@ class TurtleGraphics:
                 maxy = p[1]
         w = maxx - minx
         h = maxy - miny
-        self.canvas.images[0].draw_polygon(self.gc, True, self.poly_points)
+        self.fill_polygon(self.poly_points, minx, miny, w, h)
+        event = "F|%s" % (data_to_string([self._get_my_nick(),
+                                          round_int(minx), round_int(miny),
+                                          round_int(w), round_int(h),
+                                          self.poly_points]))
+        self._send_event(event, True)
+        self.poly_points = []
+
+    def fill_polygon(self, poly_points, minx, miny, w, h):
+        self.canvas.images[0].draw_polygon(self.gc, True, poly_points)
         self.invalt(minx - self.pensize * self.tw.coord_scale / 2 - 3,
                     miny - self.pensize * self.tw.coord_scale / 2 - 3,
                     w + self.pensize * self.tw.coord_scale + 6,
                     h + self.pensize * self.tw.coord_scale + 6)
-        self.poly_points = []
 
     def clearscreen(self, share=True):
         """Clear the canvas and reset most graphics attributes to defaults."""
