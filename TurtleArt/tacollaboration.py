@@ -80,6 +80,7 @@ class Collaboration():
             's' : self._set_pen_shade,
             'w' : self._set_pen_width,
             'p' : self._set_pen_state,
+            'F' : self._fill_polygon,
             'P' : self._draw_pixbuf
             }
 
@@ -307,6 +308,12 @@ class Collaboration():
                 self._tw.canvas.set_turtle(nick)
                 self._tw.canvas.setpen(x, False)
 
+    def _fill_polygon(self, payload):
+        # Check to make sure that the poly_point array is passed properly
+        if len(payload) > 0:
+            [nick, minx, miny, w, h, poly_points] = data_from_string(payload)
+            self._tw.canvas.fill_polygon(poly_points, minx, miny, w, h)
+
     def _get_dictionary(self):
         d = {self._get_nick(): self._get_colors()}
         return d
@@ -322,7 +329,8 @@ class Collaboration():
         else:
             colors = self._activity.get_colors()
         if colors is None:
-            colors = ['#008000', '#00A000']
+            colors = '#008000,#00A000'
+        _logger.debug(colors)
         return colors
 
 
