@@ -185,10 +185,14 @@ class Collaboration():
        # Save active Turtle
         save_active_turtle = self._tw.active_turtle
  
-        command, payload = event_message.split("|", 2)
-        print "event message %s" % command
-        _logger.debug("event message (%s)" % command)
-        self._processing_methods[command](payload)
+        print "event_message", event_message
+        try:
+            command, payload = event_message.split("|", 2)
+            print "event message %s" % command
+            _logger.debug("event message (%s)" % command)
+            self._processing_methods[command](payload)
+        except ValueError:
+            print "could not split event message"
 
         # Restore active Turtle
         self._tw.canvas.set_turtle(self._tw.turtles.get_turtle_key(
