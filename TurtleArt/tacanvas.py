@@ -44,6 +44,23 @@ def wrap100(n):
     return n
 
 
+def calc_poly_bounds(poly_points):
+    """ Calculate the minx, miny, width, height of polygon """
+    minx = poly_points[0][0]
+    miny = poly_points[0][1]
+    maxx, maxy = minx, miny
+    for p in poly_points:
+        if p[0] < minx:
+            minx = p[0]
+        elif p[0] > maxx:
+            maxx = p[0]
+        if p[1] < miny:
+            miny = p[1]
+        elif p[1] > maxy:
+            maxy = p[1]
+    return(minx, miny, maxx - minx, maxy - miny)
+
+
 def calc_shade(c, s, invert=False):
     """ Convert a color to the current shade (lightness/darkness). """
     # Assumes 16 bit input values
@@ -149,30 +166,18 @@ class TurtleGraphics:
         self.fill = False
         if len(self.poly_points) == 0:
             return
-        minx = self.poly_points[0][0]
-        miny = self.poly_points[0][1]
-        maxx = minx
-        maxy = miny
+        self.fill_polygon(self.poly_points)
+        shared_poly_points = []
         for p in self.poly_points:
-            if p[0] < minx:
-                minx = p[0]
-            elif p[0] > maxx:
-                maxx = p[0]
-            if p[1] < miny:
-                miny = p[1]
-            elif p[1] > maxy:
-                maxy = p[1]
-        w = maxx - minx
-        h = maxy - miny
-        self.fill_polygon(self.poly_points, minx, miny, w, h)
+            shared_poly_points.append((self.screen_to_turtle_coordinates(
+                        p[0], p[1])))
         event = "F|%s" % (data_to_string([self._get_my_nick(),
-                                          round_int(minx), round_int(miny),
-                                          round_int(w), round_int(h),
-                                          self.poly_points]))
+                                          shared_poly_points]))
         self._send_event(event, True)
         self.poly_points = []
 
-    def fill_polygon(self, poly_points, minx, miny, w, h):
+    def fill_polygon(self, poly_points):
+        minx, miny, w, h = calc_poly_bounds(poly_points)
         self.canvas.images[0].draw_polygon(self.gc, True, poly_points)
         self.invalt(minx - self.pensize * self.tw.coord_scale / 2 - 3,
                     miny - self.pensize * self.tw.coord_scale / 2 - 3,
@@ -224,9 +229,9 @@ class TurtleGraphics:
         self.move_turtle()
         if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.new_path(oldx,
-                                                    self.height / 2 - oldy)
+                                      self.invert_y_coordinate(oldy))
             self.tw.svg_string += self.svg.line_to(self.xcor,
-                                                   self.height / 2 - self.ycor)
+                                      self.invert_y_coordinate(self.ycor))
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
         event = "f|%s" % (data_to_string([self._get_my_nick(), int(n)]))
@@ -286,8 +291,7 @@ class TurtleGraphics:
         oldx, oldy = self.xcor, self.ycor
         cx = self.xcor + r * cos(self.heading * DEGTOR)
         cy = self.ycor - r * sin(self.heading * DEGTOR)
-        x = self.width / 2 + int(cx - r)
-        y = self.height / 2 - int(cy + r)
+        x, y = self.turtle_to_screen_coordinates(int(cx - r), int(cy + r))
         w = int(2 * r)
         h = w
         if self.pendown:
@@ -302,9 +306,10 @@ class TurtleGraphics:
         self.ycor = cy + r * sin(self.heading * DEGTOR)
         if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.new_path(oldx,
-                                                    self.height / 2 - oldy)
+                                      self.invert_y_coordinate(oldx))
             self.tw.svg_string += self.svg.arc_to(self.xcor,
-                self.height / 2 - self.ycor, r, a, 0, s)
+                                      self.invert_y_coordinate(self.ycor),
+                                                  r, a, 0, s)
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
 
@@ -319,8 +324,7 @@ class TurtleGraphics:
         oldx, oldy = self.xcor, self.ycor
         cx = self.xcor - r * cos(self.heading * DEGTOR)
         cy = self.ycor + r * sin(self.heading * DEGTOR)
-        x = self.width / 2 + int(cx - r)
-        y = self.height / 2 - int(cy + r)
+        x, y = self.turtle_to_screen_coordinates(int(cx - r), int(cy + r))
         w = int(2 * r)
         h = w
         if self.pendown:
@@ -336,9 +340,9 @@ class TurtleGraphics:
         self.ycor = cy - r * sin(self.heading * DEGTOR)
         if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.new_path(oldx,
-                                                    self.height / 2 - oldy)
+                                      self.invert_y_coordinate(oldy))
             self.tw.svg_string += self.svg.arc_to(self.xcor,
-                                                  self.height / 2 - self.ycor,
+                                      self.invert_y_coordinate(self.ycor),
                                                   r, a, 0, s)
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
@@ -512,20 +516,20 @@ class TurtleGraphics:
                 # Outside of Sugar, we save a path
                 self.tw.svg_string += self.svg.image(x - self.width / 2,
                                                      y, w, h, path)
-        if self.tw.sharing():
-            if self.tw.running_sugar:
-                tmp_path = get_path(self.tw.activity, 'instance')
-            else:
-                tmp_path = '/tmp'
-            data = image_to_base64(pixbuf, tmp_path)
-            height = pixbuf.get_height()
-            width = pixbuf.get_width()
-            event = "P|%s" % (data_to_string([self._get_my_nick(),
+        if self.tw.running_sugar:
+            tmp_path = get_path(self.tw.activity, 'instance')
+        else:
+            tmp_path = '/tmp'
+        data = image_to_base64(pixbuf, tmp_path)
+        print "sharing pixbuf from %s" % (tmp_path)
+        height = pixbuf.get_height()
+        width = pixbuf.get_width()
+        event = "P|%s" % (data_to_string([self._get_my_nick(),
                 [round_int(a), round_int(b), round_int(x), round_int(y),
                  round_int(w), round_int(h),
                  round_int(width), round_int(height),
                  data]]))
-            self._send_event(event, share)
+        self._send_event(event, share)
 
     def draw_text(self, label, x, y, size, w, share=True):
         """ Draw text """
@@ -567,26 +571,36 @@ class TurtleGraphics:
                                            round_int(size), round_int(w)]]))
         self._send_event(event, share)
 
+    def turtle_to_screen_coordinates(self, x, y):
+        return self.width / 2 + x, self.invert_y_coordinate(y)
+
+    def screen_to_turtle_coordinates(self, x, y):
+        return x - self.width / 2, self.invert_y_coordinate(y)
+
+    def invert_y_coordinate(self, y):
+        return self.height / 2 - y
+
     def draw_line(self, x1, y1, x2, y2):
         """ Draw a line """
-        x1, y1 = self.width / 2 + int(x1), self.height / 2 - int(y1)
-        x2, y2 = self.width / 2 + int(x2), self.height / 2 - int(y2)
+        x1, y1 = self.turtle_to_screen_coordinates(x1, y1)
+        x2, y2 = self.turtle_to_screen_coordinates(x2, y2)
         if x1 < x2:
-            minx, maxx = x1, x2
+            minx, maxx = int(x1), int(x2)
         else:
-            minx, maxx = x2, x1
+            minx, maxx = int(x2), int(x1)
         if y1 < y2:
-            miny, maxy = y1, y2
+            miny, maxy = int(y1), int(y2)
         else:
-            miny, maxy = y2, y1
+            miny, maxy = int(y2), int(y1)
         w, h = maxx - minx, maxy - miny
-        self.canvas.images[0].draw_line(self.gc, x1, y1, x2, y2)
+        self.canvas.images[0].draw_line(self.gc, int(x1), int(y1), int(x2),
+                                        int(y2))
         if self.fill and self.poly_points == []:
-            self.poly_points.append((x1, y1))
+            self.poly_points.append((int(x1), int(y1)))
         if self.fill:
-            self.poly_points.append((x2, y2))
-        self.invalt(minx - self.pensize * self.tw.coord_scale / 2 - 3,
-                    miny - self.pensize * self.tw.coord_scale / 2 - 3,
+            self.poly_points.append((int(x2), int(y2)))
+        self.invalt(minx - int(self.pensize * self.tw.coord_scale / 2) - 3,
+                    miny - int(self.pensize * self.tw.coord_scale / 2) - 3,
                     w + self.pensize * self.tw.coord_scale + 6,
                     h + self.pensize * self.tw.coord_scale + 6)
 
@@ -596,8 +610,7 @@ class TurtleGraphics:
 
     def move_turtle(self):
         """ Move the turtle """
-        x, y = self.width / 2 + int(self.xcor), \
-               self.height / 2 - int(self.ycor)
+        x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
         self.tw.active_turtle.move(
             (int(self.cx + x - self.tw.active_turtle.spr.rect.width / 2),
              int(self.cy + y - self.tw.active_turtle.spr.rect.height / 2)))
@@ -645,9 +658,8 @@ class TurtleGraphics:
     def get_pixel(self):
         """ Read the pixel at x, y """
         if self.tw.interactive_mode:
-            return self.canvas.get_pixel(
-                (self.width / 2 + int(self.xcor),
-                 self.height / 2 - int(self.ycor)), 0, self.tw.color_mode)
+            x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
+            return self.canvas.get_pixel(x, y, 0, self.tw.color_mode)
         else:
             return(-1, -1, -1, -1)
 
@@ -662,10 +674,9 @@ class TurtleGraphics:
         self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
         self.tw.active_turtle.show()
         tx, ty = self.tw.active_turtle.get_xy()
-        self.xcor = -self.width / 2 + tx + \
-            self.tw.active_turtle.spr.rect.width / 2
-        self.ycor = self.height / 2 - ty - \
-            self.tw.active_turtle.spr.rect.height / 2
+        self.xcor, self.ycor = self.screen_to_turtle_coordinates(tx, ty)
+        self.xcor += self.tw.active_turtle.spr.rect.width / 2
+        self.ycor -= self.tw.active_turtle.spr.rect.height / 2
         self.heading = self.tw.active_turtle.get_heading()
         self.setcolor(self.tw.active_turtle.get_color(), False)
         self.setgray(self.tw.active_turtle.get_gray(), False)

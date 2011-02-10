@@ -186,6 +186,8 @@ class Collaboration():
         save_active_turtle = self._tw.active_turtle
  
         command, payload = event_message.split("|", 2)
+        print "event message %s" % command
+        _logger.debug("event message (%s)" % command)
         self._processing_methods[command](payload)
 
         # Restore active Turtle
@@ -226,6 +228,8 @@ class Collaboration():
     
     def _draw_pixbuf(self, payload):
         if len(payload) > 0:
+            print "trying to draw a shared pixbuf"
+            _logger.debug("(trying to draw a shared pixbuf)")
             [nick, [a, b, x, y, w, h, width, height, data]] =\
                 data_from_string(payload)
             if nick != self._tw.nick:
@@ -233,7 +237,9 @@ class Collaboration():
                     tmp_path = get_path(self.tw.activity, 'instance')
                 else:
                     tmp_path = '/tmp'
+                print "creating %s" % (tmp_path)
                 file_name = base64_to_image(data, tmp_path)
+                print "opening %s" % (file_path)
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(file_name,
                                                               width, height)
                 self._tw.canvas.draw_pixbuf(pixbuf, a, b, x, y, w, h,
@@ -311,8 +317,13 @@ class Collaboration():
     def _fill_polygon(self, payload):
         # Check to make sure that the poly_point array is passed properly
         if len(payload) > 0:
-            [nick, minx, miny, w, h, poly_points] = data_from_string(payload)
-            self._tw.canvas.fill_polygon(poly_points, minx, miny, w, h)
+            [nick, poly_points] = data_from_string(payload)
+            shared_poly_points = []
+            for i in range(len(poly_points)):
+                shared_poly_points.append((
+                    self._tw.canvas.turtle_to_screen_coordinates(
+                    poly_points[i][0], poly_points[i][1])))
+            self._tw.canvas.fill_polygon(shared_poly_points)
 
     def _get_dictionary(self):
         d = {self._get_nick(): self._get_colors()}
@@ -330,7 +341,6 @@ class Collaboration():
             colors = self._activity.get_colors()
         if colors is None:
             colors = '#008000,#00A000'
-        _logger.debug(colors)
         return colors
 
 
