@@ -27,7 +27,7 @@ import telepathy
 import gtk
 import base64
 
-from TurtleArt.tautils import data_to_string, data_from_string
+from TurtleArt.tautils import data_to_string, data_from_string, base64_to_image
 
 try:
     from sugar import profile
@@ -81,7 +81,8 @@ class Collaboration():
             'w' : self._set_pen_width,
             'p' : self._set_pen_state,
             'F' : self._fill_polygon,
-            'P' : self._draw_pixbuf
+            'P' : self._draw_pixbuf,
+            'z' : self._clear
             }
 
     def _shared_cb(self, activity):
@@ -185,14 +186,11 @@ class Collaboration():
        # Save active Turtle
         save_active_turtle = self._tw.active_turtle
  
-        print "event_message", event_message
         try:
             command, payload = event_message.split("|", 2)
-            print "event message %s" % command
-            _logger.debug("event message (%s)" % command)
             self._processing_methods[command](payload)
         except ValueError:
-            print "could not split event message"
+            _logger.debug("could not split event message")
 
         # Restore active Turtle
         self._tw.canvas.set_turtle(self._tw.turtles.get_turtle_key(
@@ -229,21 +227,20 @@ class Collaboration():
                         # add new turtle for the joiner
                         self._tw.canvas.set_turtle(nick, colors)
             self.waiting_for_turtles = False
+
+    def _clear(self):
+        pass
     
     def _draw_pixbuf(self, payload):
         if len(payload) > 0:
-            print "trying to draw a shared pixbuf"
-            _logger.debug("(trying to draw a shared pixbuf)")
             [nick, [a, b, x, y, w, h, width, height, data]] =\
                 data_from_string(payload)
             if nick != self._tw.nick:
-                if self.tw.running_sugar:
-                    tmp_path = get_path(self.tw.activity, 'instance')
+                if self._tw.running_sugar:
+                    tmp_path = get_path(self._tw.activity, 'instance')
                 else:
                     tmp_path = '/tmp'
-                print "creating %s" % (tmp_path)
                 file_name = base64_to_image(data, tmp_path)
-                print "opening %s" % (file_path)
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(file_name,
                                                               width, height)
                 self._tw.canvas.draw_pixbuf(pixbuf, a, b, x, y, w, h,

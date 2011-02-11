@@ -521,7 +521,6 @@ class TurtleGraphics:
         else:
             tmp_path = '/tmp'
         data = image_to_base64(pixbuf, tmp_path)
-        print "sharing pixbuf from %s" % (tmp_path)
         height = pixbuf.get_height()
         width = pixbuf.get_width()
         event = "P|%s" % (data_to_string([self._get_my_nick(),
@@ -702,5 +701,4 @@ class TurtleGraphics:
             return
 
         if self.tw.sharing():
-            # print "Sending: %s" % entry
             self.tw.send_event(entry)
