@@ -81,8 +81,7 @@ class Collaboration():
             'w' : self._set_pen_width,
             'p' : self._set_pen_state,
             'F' : self._fill_polygon,
-            'P' : self._draw_pixbuf,
-            'z' : self._clear
+            'P' : self._draw_pixbuf
             }
 
     def _shared_cb(self, activity):
@@ -335,7 +334,7 @@ class Collaboration():
 
     def _get_colors(self):
         colors = None
-        if profile:
+        if self._tw.running_sugar:
             if profile.get_color() is not None:
                 colors = profile.get_color().to_string()
         else:
