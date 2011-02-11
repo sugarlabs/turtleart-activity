@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #Copyright (c) 2007-8, Playful Invention Company
-#Copyright (c) 2008-10, Walter Bender
+#Copyright (c) 2008-11, Walter Bender
+#Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -94,7 +95,7 @@ class TurtleMain():
     def _run_plugins(self):
         self._uploader.set_tw(self.tw)
         self._collab_plugin.set_tw(self.tw)
-        self._collab_plugin.setup()
+        # self._collab_plugin.setup()
 
     def _mkdir_p(self, path):
         '''Create a directory in a fashion similar to `mkdir -p`'''
@@ -145,8 +146,8 @@ class TurtleMain():
         self.tw.save_folder = os.path.expanduser('~')
 
     def _init_vars(self):
-        # If we are invoked to start a project from Gnome, we should make
-        # sure our current directory is TA's source dir.
+        """ If we are invoked to start a project from Gnome, we should make
+        sure our current directory is TA's source dir. """
         os.chdir(os.path.dirname(__file__))
 
         self.ta_file = None
@@ -184,10 +185,8 @@ class TurtleMain():
             if not os.path.exists(self.ta_file):
                 assert False, ('%s: %s' % (self.ta_file, _('File not found')))
 
-    """
-    make sure Sugar paths are present
-    """
     def _ensure_sugar_paths(self):
+        """ Make sure Sugar paths are present. """
         tapath = os.path.join(os.environ['HOME'], '.sugar', 'default',
                               'org.laptop.TurtleArtActivity')
         map(self._makepath, (os.path.join(tapath, 'data/'),
