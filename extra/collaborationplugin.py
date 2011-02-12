@@ -60,7 +60,7 @@ class CollaborationPlugin(Plugin):
 
         self._activity = activity
         self._neighborhood = None
-        self._title = "My Turtle Art session"
+        self._title = _('My Turtle Art session')
         self._bundle_id = "org.laptop.TurtleArt"
         # This could be hashed from the file path (if resuming)
         self._activity_id = "1234567"
