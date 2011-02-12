@@ -27,7 +27,8 @@ import telepathy
 import gtk
 import base64
 
-from TurtleArt.tautils import data_to_string, data_from_string, base64_to_image
+from TurtleArt.tautils import data_to_string, data_from_string, get_path, \
+                              base64_to_image
 
 try:
     from sugar import profile
