@@ -68,20 +68,20 @@ class Collaboration():
 
     def _setup_dispatch_table(self):
         self._processing_methods = {
-            't' : self._turtle_request, 
-            'T' : self._receive_turtle_dict,
-            'f' : self._move_forward,
-            'a' : self._move_in_arc,
-            'r' : self._rotate_turtle,
-            'x' : self._setxy,
-            'W' : self._draw_text, 
-            'c' : self._set_pen_color,
-            'g' : self._set_pen_gray_level,
-            's' : self._set_pen_shade,
-            'w' : self._set_pen_width,
-            'p' : self._set_pen_state,
-            'F' : self._fill_polygon,
-            'P' : self._draw_pixbuf
+            't': self._turtle_request,
+            'T': self._receive_turtle_dict,
+            'f': self._move_forward,
+            'a': self._move_in_arc,
+            'r': self._rotate_turtle,
+            'x': self._setxy,
+            'W': self._draw_text,
+            'c': self._set_pen_color,
+            'g': self._set_pen_gray_level,
+            's': self._set_pen_shade,
+            'w': self._set_pen_width,
+            'p': self._set_pen_state,
+            'F': self._fill_polygon,
+            'P': self._draw_pixbuf
             }
 
     def _shared_cb(self, activity):
@@ -181,10 +181,10 @@ class Collaboration():
         """
         if len(event_message) == 0:
             return
- 
+
        # Save active Turtle
         save_active_turtle = self._tw.active_turtle
- 
+
         try:
             command, payload = event_message.split("|", 2)
             self._processing_methods[command](payload)
@@ -227,9 +227,6 @@ class Collaboration():
                         self._tw.canvas.set_turtle(nick, colors)
             self.waiting_for_turtles = False
 
-    def _clear(self):
-        pass
-    
     def _draw_pixbuf(self, payload):
         if len(payload) > 0:
             [nick, [a, b, x, y, w, h, width, height, data]] =\
@@ -242,6 +239,7 @@ class Collaboration():
                 file_name = base64_to_image(data, tmp_path)
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(file_name,
                                                               width, height)
+                x, y = self._tw.canvas.turtle_to_screen_coordinates(x, y)
                 self._tw.canvas.draw_pixbuf(pixbuf, a, b, x, y, w, h,
                                             file_name, False)
 
@@ -258,7 +256,7 @@ class Collaboration():
             if nick != self._tw.nick:
                 self._tw.canvas.set_turtle(nick)
                 self._tw.canvas.arc(a, r, False)
-    
+
     def _rotate_turtle(self, payload):
         if len(payload) > 0:
             [nick, h] = data_from_string(payload)
