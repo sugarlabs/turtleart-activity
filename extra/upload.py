@@ -31,6 +31,7 @@ except ImportError, e:
     print "Import Error: %s. Project upload is disabled." % (e)
     _UPLOAD_AVAILABLE = False
 
+import os
 import gtk
 from gettext import gettext as _
 
