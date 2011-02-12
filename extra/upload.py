@@ -40,7 +40,7 @@ class Uploader():
     MAX_FILE_SIZE = 950000
     UPLOAD_SERVER = 'http://turtleartsite.appspot.com'
 
-    def __init__(self, upload_server=None, max_file_size=0):
+    def __init__(self, upload_server=None, max_file_size=None):
         self.uploading = False
 
         if upload_server is None:
@@ -48,6 +48,8 @@ class Uploader():
 
         if max_file_size is None:
             self._max_file_size = self.MAX_FILE_SIZE
+        else:
+            self._max_file_size = max_file_size
 
     def set_tw(self, turtleart_window):
         self.tw = turtleart_window
@@ -152,7 +154,7 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
         tafile, imagefile = self.tw.save_for_upload(title)
 
         # Set a maximum file size for image to be uploaded.
-        if int(os.path.getsize(imagefile)) > self.max_file_size:
+        if int(os.path.getsize(imagefile)) > self._max_file_size:
             import Image
             while int(os.path.getsize(imagefile)) > self._max_file_size:
                 big_file = Image.open(imagefile)
