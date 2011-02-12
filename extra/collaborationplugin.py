@@ -65,6 +65,7 @@ class CollaborationPlugin(Plugin):
         # This could be hashed from the file path (if resuming)
         self._activity_id = "1234567"
         self._nick = ""
+        self._setup_has_been_called = False
         self._config_file_path = config_file_path
         self._collaboration_config_values = ConfigFile(self._config_file_path)
         self._valid_config_values = {
@@ -92,6 +93,10 @@ class CollaborationPlugin(Plugin):
     def setup(self):
         self._collaboration = Collaboration(self.tw, self)
         self._collaboration.setup()
+        # Do we know if we were successful?
+        self._setup_has_been_called = True
+        # TODO:
+        #     use set_sensitive to enable Share and Configuration menuitems
 
     def set_tw(self, turtleart_window):
         self.tw = turtleart_window
@@ -270,6 +275,8 @@ class CollaborationPlugin(Plugin):
         self.emit('joined')
 
     def _config_neighborhood_cb(self, widget):
+        if not self._setup_has_been_called:
+            return
         config_w = ConfigWizard(self._config_file_path)
         config_items = [
             {"item_label": _("Nickname"), "item_type": "text",
@@ -294,6 +301,8 @@ class CollaborationPlugin(Plugin):
         config_w.show()
 
     def _share_cb(self, button):
+        if not self._setup_has_been_called:
+            return
         properties = {}
         properties['id'] = self._get_activity_id()
         properties['type'] = self._get_bundle_id()
