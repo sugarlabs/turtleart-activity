@@ -546,6 +546,7 @@ class TurtleMain():
         gtk.main_quit()
 
     def nick_changed(self, nick):
+        """ TODO: Rename default turtle in dictionary """
         pass
 
     def color_changed(self, colors):
