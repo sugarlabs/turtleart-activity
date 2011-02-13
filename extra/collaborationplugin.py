@@ -39,6 +39,7 @@ from collaboration import telepathyclient
 from collaboration.tubeconn import TubeConnection
 import traceback
 from TurtleArt.tacollaboration import Collaboration
+from TurtleArt.taconstants import DEFAULT_TURTLE_COLORS
 
 CONNECTION_INTERFACE_ACTIVITY_PROPERTIES = \
         'org.laptop.Telepathy.ActivityProperties'
@@ -144,8 +145,6 @@ class CollaborationPlugin(Plugin):
         if self._neighborhood is not None:
             return
 
-        print "_connect_to_neighborhood has been called"
-
         params = {}
         params["nickname"] = self._collaboration_config_values.get("nick")
         params["account_id"] = self._collaboration_config_values.get(
@@ -160,10 +159,20 @@ class CollaborationPlugin(Plugin):
         self._nick = self._collaboration_config_values.get("nick")
         self._colors = self._collaboration_config_values.get("colors")
 
+        # Reskin turtle with collaboration colors
+        default_turtle = self._activity.tw.turtles.get_turtle(
+            self._activity.tw.default_turtle_name)
+        try:
+            default_turtle.colors = self._colors.split(',')
+        except:
+            default_turtle.colors = DEFAULT_TURTLE_COLORS
+        default_turtle.custom_shapes = True  # Force regeneration of shapes
+        default_turtle.reset_shapes()
+        default_turtle.show()
+        
         self._activities = {}
         self._buddies = {}
 
-        print "connecting to the neighborhood"
         dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
 
         self._client_handler = telepathyclient.get_instance()
@@ -299,7 +308,7 @@ class CollaborationPlugin(Plugin):
         properties['id'] = self._get_activity_id()
         properties['type'] = self._get_bundle_id()
         properties['name'] = self._get_title()
-        properties['color'] = self._get_colors()
+        properties['color'] = self.get_colors()
         properties['private'] = False
 
         connection_manager = get_connection_manager()
