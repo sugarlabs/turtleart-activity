@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007, Playful Invention Company
-#Copyright (c) 2008-10, Walter Bender
-#Copyright (c) 2009-10 Raúl Gutiérrez Segalés
+#Copyright (c) 2008-11, Walter Bender
+#Copyright (c) 2009-11 Raúl Gutiérrez Segalés
 #Copyright (C) 2010 Emiliano Pastorino <epastorino@plan.ceibal.edu.uy>
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 

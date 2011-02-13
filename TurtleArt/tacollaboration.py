@@ -29,6 +29,7 @@ import base64
 
 from TurtleArt.tautils import data_to_string, data_from_string, get_path, \
                               base64_to_image
+from TurtleArt.taconstants import DEFAULT_TURTLE_COLORS
 
 try:
     from sugar import profile
@@ -339,7 +340,8 @@ class Collaboration():
         else:
             colors = self._activity.get_colors()
         if colors is None:
-            colors = '#008000,#00A000'
+            colors = '%s,%s' % (DEFAULT_TURTLE_COLORS[0],
+                                DEFAULT_TURTLE_COLORS[1])
         return colors
 
 
