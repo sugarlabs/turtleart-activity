@@ -75,7 +75,6 @@ class CollaborationPlugin(Plugin):
             "server": {"type": "text"},
             "port": {"type": "integer"},
             "register": {"type": "boolean"},
-            "turtle_color": {"type": "text"},
             "colors": {"type": "text"}
             }
 
@@ -141,9 +140,6 @@ class CollaborationPlugin(Plugin):
     def _get_title(self):
         return self._title
 
-    def _get_turtle_color(self):
-        return self._turtle_color
-
     def _connect_to_neighborhood(self, config_file_obj):
         if self._neighborhood is not None:
             return
@@ -163,8 +159,6 @@ class CollaborationPlugin(Plugin):
 
         self._nick = self._collaboration_config_values.get("nick")
         self._colors = self._collaboration_config_values.get("colors")
-        self._turtle_color = self._collaboration_config_values.get(
-            "turtle_color")
 
         self._activities = {}
         self._buddies = {}
@@ -292,9 +286,7 @@ class CollaborationPlugin(Plugin):
             {"item_label": _("Register"), "item_type": "boolean",
              "item_name": "register"},
             {"item_label": _("Colors"), "item_type": "text",
-             "item_name": "colors"},
-            {"item_label": _("Turtle Color"), "item_type": "text",
-             "item_name": "turtle_color"}
+             "item_name": "colors"}
             ]
         config_w.set_config_items(config_items)
         config_w.set_config_file_obj(self._collaboration_config_values)
@@ -307,7 +299,7 @@ class CollaborationPlugin(Plugin):
         properties['id'] = self._get_activity_id()
         properties['type'] = self._get_bundle_id()
         properties['name'] = self._get_title()
-        properties['color'] = self._get_turtle_color()
+        properties['color'] = self._get_colors()
         properties['private'] = False
 
         connection_manager = get_connection_manager()
