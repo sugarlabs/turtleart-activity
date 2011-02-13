@@ -39,7 +39,6 @@ from collaboration import telepathyclient
 from collaboration.tubeconn import TubeConnection
 import traceback
 from TurtleArt.tacollaboration import Collaboration
-from TurtleArt.taconstants import DEFAULT_TURTLE_COLORS
 
 CONNECTION_INTERFACE_ACTIVITY_PROPERTIES = \
         'org.laptop.Telepathy.ActivityProperties'
@@ -157,19 +156,13 @@ class CollaborationPlugin(Plugin):
             raise RuntimeError("Invalid server address")
 
         self._nick = self._collaboration_config_values.get("nick")
-        self._colors = self._collaboration_config_values.get("colors")
+        # Tell the parent activity that the nick may have changed
+        self._activity.nick_changed(self._nick)
 
-        # Reskin turtle with collaboration colors
-        default_turtle = self._activity.tw.turtles.get_turtle(
-            self._activity.tw.default_turtle_name)
-        try:
-            default_turtle.colors = self._colors.split(',')
-        except:
-            default_turtle.colors = DEFAULT_TURTLE_COLORS
-        default_turtle.custom_shapes = True  # Force regeneration of shapes
-        default_turtle.reset_shapes()
-        default_turtle.show()
-        
+        self._colors = self._collaboration_config_values.get("colors")
+        # Tell the parent activity that the colors may have changed
+        self._activity.color_changed(self._colors)
+
         self._activities = {}
         self._buddies = {}
 

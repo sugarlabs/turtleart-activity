@@ -45,7 +45,7 @@ sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 
 from gettext import gettext as _
 
-from TurtleArt.taconstants import OVERLAY_LAYER
+from TurtleArt.taconstants import OVERLAY_LAYER, DEFAULT_TURTLE_COLORS
 from TurtleArt.tautils import data_to_string, data_from_string, get_save_name
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexporthtml import save_html
@@ -544,6 +544,21 @@ class TurtleMain():
     def destroy(self, event, data=None):
         """ Callback for destroy event. """
         gtk.main_quit()
+
+    def nick_changed(self, nick):
+        pass
+
+    def color_changed(self, colors):
+        """ Reskin turtle with collaboration colors """
+        turtle = self.tw.turtles.get_turtle(self.tw.default_turtle_name)
+        try:
+            turtle.colors = colors.split(',')
+        except:
+            turtle.colors = DEFAULT_TURTLE_COLORS
+        turtle.custom_shapes = True  # Force regeneration of shapes
+        turtle.reset_shapes()
+        turtle.show()
+
 
 if __name__ == "__main__":
     TurtleMain()
