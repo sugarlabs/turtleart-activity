@@ -682,7 +682,8 @@ class TurtleGraphics:
         """ Read the pixel at x, y """
         if self.tw.interactive_mode:
             x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
-            return self.canvas.get_pixel(x, y, 0, self.tw.color_mode)
+            return self.canvas.get_pixel((int(x), int(y)), 0,
+                                         self.tw.color_mode)
         else:
             return(-1, -1, -1, -1)
 
