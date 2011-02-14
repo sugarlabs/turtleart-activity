@@ -147,7 +147,10 @@ class TurtleArtWindow():
         self.mouse_x = 0
         self.mouse_y = 0
 
-        locale.setlocale(locale.LC_NUMERIC, '')
+        try:
+            locale.setlocale(locale.LC_NUMERIC, '')
+        except:
+            pass
         self.decimal_point = locale.localeconv()['decimal_point']
         if self.decimal_point == '' or self.decimal_point is None:
             self.decimal_point = '.'
