@@ -147,10 +147,11 @@ class TurtleArtWindow():
         self.mouse_x = 0
         self.mouse_y = 0
 
+        # if self.running_sugar:
         try:
             locale.setlocale(locale.LC_NUMERIC, '')
-        except:
-            pass
+        except locale.Error:
+            _logger.debug('unsupported locale')
         self.decimal_point = locale.localeconv()['decimal_point']
         if self.decimal_point == '' or self.decimal_point is None:
             self.decimal_point = '.'
