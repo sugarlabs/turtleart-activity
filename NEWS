@@ -2,14 +2,20 @@
 
 BUG FIXES
 
+* Added sharing to draw_text, fill_polygon, draw_pixbuf (#2461)
 * Exposed see as an external method (#2542)
 * Media type tests on file suffix use lower()
+* Added support for localization to GNOME version (rgs)
 
 ENHANCEMENTS
 
+* Added sharing between Gnome and Sugar versions (with Raul Gutierrez)
+* Added 'time' block for measuring elapsed time (in seconds)
 * Added 'camera sees' block for reading average camera RGB value
+  (with help from Tony Forster and Guzman Trinidad)
 * Added camera media block for grabbing images from the camera
 * New psuedo-color.ta example (Tony Forster)
+* New love-speaks-volumes.ta example
 
 105
 
