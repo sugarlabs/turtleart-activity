@@ -136,7 +136,7 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'myfunc1arg', 'userdefined',
              'cartesian', 'width', 'height', 'polar', 'addturtle', 'reskin',
              'sandwichtop_no_label', 'sandwichbottom'],
-            ['kbinput',  'keyboard', 'readpixel', 'see',
+            ['kbinput',  'keyboard', 'readpixel', 'see', 'time',
              'sound', 'volume', 'pitch'],
             ['journal', 'audio', 'video', 'description', 'hideblocks',
              'showblocks', 'fullscreen', 'savepix', 'savesvg', 'mediawait',
@@ -224,7 +224,7 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'white',
     'black', 'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy',
     'sound', 'volume', 'pitch', 'voltage', 'resistance', 'gray', 'see', 'rfid',
-    'luminance']
+    'luminance', 'time']
 BOX_STYLE_MEDIA = ['description', 'audio', 'journal', 'video', 'camera']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
 NUMBER_STYLE_VAR_ARG = ['myfunc1arg', 'myfunc2arg', 'myfunc3arg']
@@ -448,6 +448,7 @@ BLOCK_NAMES = {
     'template2x2': [' '],
     'templatelist': [' '],
     'textsize': [_('text size')],
+    'time': [_('time')],
     'titlex': [_('title x')],
     'titley': [_('title y')],
     'toppos': [_('top')],
@@ -599,6 +600,7 @@ PRIMITIVES = {
     'template2x2': 't2x2',
     'templatelist': 'bullet',
     'textsize': 'textsize',
+    'time': 'time',
     'titlex': 'titlex',
     'titley': 'titley',
     'toppos': 'tpos',
@@ -932,6 +934,7 @@ HELP_STRINGS = {
     'templatelist': _("presentation template: list of bullets"),
     'textcolor': _("holds current text color (can be used in place of a number block)"),
     'textsize': _("holds current text size (can be used in place of a number block)"),
+    'time': _("elapsed time (in seconds) since program started"),
     'toppos': _("ycor of top of screen"),
     'trash': _("Trashcan"),
     'turtle': _("Palette of turtle commands"),

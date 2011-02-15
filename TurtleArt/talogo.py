@@ -465,6 +465,7 @@ class LogoCode:
                     x, y, z, a, b)],
         'textcolor': [0, lambda self: self.tw.canvas.textcolor],
         'textsize': [0, lambda self: self.tw.textsize],
+        'time': [0, lambda self: self._elapsed_time()],
         'titlex': [0, lambda self: CONSTANTS['titlex']],
         'titley': [0, lambda self: CONSTANTS['titley']],
         'topy': [0, lambda self: CONSTANTS['topy']],
@@ -518,6 +519,7 @@ class LogoCode:
         self.ag = None
         self.filepath = None
         self.dsobject = None
+        self._start_time = None
 
         # Scale factors for depreciated portfolio blocks
         self.title_height = int((self.tw.canvas.height / 20) * self.tw.scale)
@@ -595,6 +597,7 @@ class LogoCode:
         code = self._blocks_to_code(blk)
         if run_flag:
             _logger.debug("running code: %s" % (code))
+            self._start_time = time()
             self._setup_cmd(code)
             if not self.tw.hide:
                 self.tw.display_coordinates()
@@ -900,6 +903,7 @@ class LogoCode:
         self.tw.set_polar(False)
         self.tw.set_cartesian(False)
         self.hidden_turtle = None
+        self._start_time = time()
         for name in VALUE_BLOCKS:
             self.update_label_value(name)
 
@@ -1471,6 +1475,11 @@ class LogoCode:
             return
         play_movie_from_file(self, self.filepath, self._x(), self._y(),
                                self._w(), self._h())
+
+    def _elapsed_time(self):
+        """ Number of seconds since program execution has started or
+        clean (prim_clear) block encountered """
+        return int(time() - self._start_time)
 
     def see(self):
         """ Read r, g, b from the canvas and return a corresponding palette
