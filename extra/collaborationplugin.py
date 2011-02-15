@@ -69,13 +69,13 @@ class CollaborationPlugin(Plugin):
         self._config_file_path = config_file_path
         self._collaboration_config_values = ConfigFile(self._config_file_path)
         self._valid_config_values = {
-            "nick": {"type": "text"},
-            "account_id": {"type": "text"},
-            "password": {"type": "text"},
-            "server": {"type": "text"},
-            "port": {"type": "integer"},
-            "register": {"type": "boolean"},
-            "colors": {"type": "text"}
+            'nick': {'type': 'text'},
+            'account_id': {'type': 'text'},
+            'password': {'type': 'text'},
+            'server': {'type': 'text'},
+            'port': {'type': 'integer'},
+            'register': {'type': 'boolean'},
+            'colors': {'type': 'text'}
             }
 
     def _connect_cb(self, button):
@@ -83,9 +83,9 @@ class CollaborationPlugin(Plugin):
         self._collaboration_config_values.set_valid_keys(
             self._valid_config_values)
         self._collaboration_config_values.connect(
-            "configuration-loaded", self._connect_to_neighborhood)
+            'configuration-loaded', self._connect_to_neighborhood)
         self._collaboration_config_values.connect(
-            "configuration-saved", self._connect_to_neighborhood)
+            'configuration-saved', self._connect_to_neighborhood)
         self._collaboration_config_values.load()
         self.setup()
 
@@ -145,21 +145,21 @@ class CollaborationPlugin(Plugin):
             return
 
         params = {}
-        params["nickname"] = self._collaboration_config_values.get("nick")
-        params["account_id"] = self._collaboration_config_values.get(
-            "account_id")
-        params["server"] = self._collaboration_config_values.get("server")
-        params["port"] = self._collaboration_config_values.get("port")
-        params["password"] = self._collaboration_config_values.get("password")
-        params["register"] = self._collaboration_config_values.get("register")
-        if params["server"] == "":
-            raise RuntimeError("Invalid server address")
+        params['nickname'] = self._collaboration_config_values.get('nick')
+        params['account_id'] = self._collaboration_config_values.get(
+            'account_id')
+        params['server'] = self._collaboration_config_values.get('server')
+        params['port'] = self._collaboration_config_values.get('port')
+        params['password'] = self._collaboration_config_values.get('password')
+        params['register'] = self._collaboration_config_values.get('register')
+        if params['server'] == '':
+            raise RuntimeError('Invalid server address')
 
-        self._nick = self._collaboration_config_values.get("nick")
+        self._nick = self._collaboration_config_values.get('nick')
         # Tell the parent activity that the nick may have changed
         self._activity.nick_changed(self._nick)
 
-        self._colors = self._collaboration_config_values.get("colors")
+        self._colors = self._collaboration_config_values.get('colors')
         # Tell the parent activity that the colors may have changed
         self._activity.color_changed(self._colors)
 
@@ -187,7 +187,7 @@ class CollaborationPlugin(Plugin):
         try:
             self._activities.pop(activity_model.props.name)
         except:
-            print "Failed to remove activity %s" % activity_model.props.name
+            print 'Failed to remove activity %s' % activity_model.props.name
 
         self._recreate_available_activities_menu()
 
@@ -213,13 +213,13 @@ class CollaborationPlugin(Plugin):
         for buddy in self._buddies.values():
             key = buddy.get_key()
             if key is None:
-                key = ""
-            n = buddy.get_nick() + "|" + key[0:15]
+                key = ''
+            n = buddy.get_nick() + '|' + key[0:15]
             MenuBuilder.make_menu_item(self._buddies_submenu, n,
                                        self._buddy_actions_cb, buddy)
 
     def _buddy_actions_cb(self, widget, buddy):
-        print "do something with %s" % buddy.get_nick()
+        print 'do something with %s' % buddy.get_nick()
 
     # TODO:
     #     we need an extra menu branch with a) 'Join' button b) List of buddies
@@ -233,7 +233,7 @@ class CollaborationPlugin(Plugin):
                                        self._join_activity_cb, activity)
 
     def _join_activity_cb(self, widget, activity):
-        print "Lets try to join..."
+        print 'Lets try to join...'
 
         connection_manager = get_connection_manager()
         account_path, connection = \
@@ -243,15 +243,15 @@ class CollaborationPlugin(Plugin):
             return
 
         properties = {}
-        properties["id"] = activity.activity_id
-        properties["color"] = activity.get_color()
-        print "room handle according to activity %s" % activity.room_handle
-        properties["private"] = True
+        properties['id'] = activity.activity_id
+        properties['color'] = activity.get_color()
+        print 'room handle according to activity %s' % activity.room_handle
+        properties['private'] = True
 
         try:
             room_handle = connection.GetActivity(activity.activity_id,
                 dbus_interface=CONNECTION_INTERFACE_ACTIVITY_PROPERTIES)
-            print("room_handle = %s" % str(room_handle))
+            print('room_handle = %s' % str(room_handle))
             self._joined_activity = Activity(
                 account_path, connection, room_handle, properties=properties)
             # FIXME: this should be unified, no need to keep 2 references
@@ -275,20 +275,20 @@ class CollaborationPlugin(Plugin):
             return
         config_w = ConfigWizard(self._config_file_path)
         config_items = [
-            {"item_label": _("Nickname"), "item_type": "text",
-             "item_name": "nick"},
-            {"item_label": _("Account ID"), "item_type": "text",
-             "item_name": "account_id"},
-            {"item_label": _("Server"), "item_type": "text",
-             "item_name": "server"},
-            {"item_label": _("Port"), "item_type": "text",
-             "item_name": "port"},
-            {"item_label": _("Password"), "item_type": "text",
-             "item_name": "password"},
-            {"item_label": _("Register"), "item_type": "boolean",
-             "item_name": "register"},
-            {"item_label": _("Colors"), "item_type": "text",
-             "item_name": "colors"}
+            {'item_label': _('Nickname'), 'item_type': 'text',
+             'item_name': 'nick'},
+            {'item_label': _('Account ID'), 'item_type': 'text',
+             'item_name': 'account_id'},
+            {'item_label': _('Server'), 'item_type': 'text',
+             'item_name': 'server'},
+            {'item_label': _('Port'), 'item_type': 'text',
+             'item_name': 'port'},
+            {'item_label': _('Password'), 'item_type': 'text',
+             'item_name': 'password'},
+            {'item_label': _('Register'), 'item_type': 'boolean',
+             'item_name': 'register'},
+            {'item_label': _('Colors'), 'item_type': 'text',
+             'item_name': 'colors'}
             ]
         config_w.set_config_items(config_items)
         config_w.set_config_file_obj(self._collaboration_config_values)
@@ -334,7 +334,7 @@ class CollaborationPlugin(Plugin):
 
     def __share_activity_error_cb(self, activity, error):
         """Notify with GObject event of unsuccessful sharing of activity"""
-        print "%s got error: %s" % (activity, error)
+        print '%s got error: %s' % (activity, error)
 
-if __name__ == "__main__":
-    print "testing collaboration"
+if __name__ == '__main__':
+    print 'testing collaboration'
