@@ -273,7 +273,7 @@ class TurtleMain():
         MenuBuilder.make_menu_item(menu, _('New'), self._do_new_cb)
         MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
         MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
-        MenuBuilder.make_menu_item(menu, _('Save As'), self._do_save_as_cb)
+        MenuBuilder.make_menu_item(menu, _('Save as'), self._do_save_as_cb)
         MenuBuilder.make_menu_item(menu, _('Save as image'),
                                    self._do_save_picture_cb)
         MenuBuilder.make_menu_item(menu, _('Save as HTML'),
