@@ -900,8 +900,9 @@ class LogoCode:
         stop_media(self)
         self.tw.canvas.clearscreen()
         self.scale = DEFAULT_SCALE
-        self.tw.set_polar(False)
-        self.tw.set_cartesian(False)
+        # Note: users find this "feature" confusing
+        # self.tw.set_polar(False)
+        # self.tw.set_cartesian(False)
         self.hidden_turtle = None
         self._start_time = time()
         for name in VALUE_BLOCKS:
