@@ -113,12 +113,10 @@ TOP_LAYER = 1000
 #
 
 PALETTE_NAMES = ['turtle', 'pen', 'colors', 'numbers', 'flow', 'blocks',
-                 'extras', 'sensor', 'portfolio', 'trash']
+                 'extras', 'sensor', 'media', 'portfolio', 'trash']
 
-PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
-             'seth', 'setxy2', 'heading', 'xcor', 'ycor', 'setscale',
-             'arc', 'scale', 'leftpos', 'toppos', 'rightpos',
-             'bottompos'],
+PALETTES = [['forward', 'back', 'clean', 'left', 'right',
+             'arc', 'setxy2', 'seth', 'xcor', 'ycor', 'heading'],
             ['penup', 'pendown', 'setpensize', 'fillscreen', 'pensize',
              'setcolor', 'setshade', 'setgray', 'color', 'shade',
              'gray', 'startfill', 'stopfill'],
@@ -133,15 +131,16 @@ PALETTES = [['clean', 'forward', 'back', 'show', 'left', 'right',
              'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2', 'box',
              'storein'],
             ['push', 'printheap', 'clearheap', 'pop', 'comment', 'print',
-             'myfunc1arg', 'userdefined',
-             'cartesian', 'width', 'height', 'polar', 'addturtle', 'reskin',
-             'sandwichtop_no_label', 'sandwichbottom'],
+             'myfunc1arg', 'userdefined', 'cartesian', 'polar', 'addturtle',
+             'reskin', 'sandwichtop_no_label', 'sandwichbottom'],
             ['kbinput',  'keyboard', 'readpixel', 'see', 'time',
              'sound', 'volume', 'pitch'],
-            ['journal', 'audio', 'video', 'description', 'hideblocks',
-             'showblocks', 'fullscreen', 'savepix', 'savesvg', 'mediawait',
-             'picturelist', 'picture1x1a', 'picture1x1', 'picture2x2',
-             'picture2x1', 'picture1x2'],
+            ['journal', 'audio', 'video', 'description', 'string',
+             'show', 'setscale', 'savepix', 'savesvg', 'scale', 'mediawait'],
+            ['hideblocks', 'showblocks', 'fullscreen', 'picturelist',
+             'picture1x1a', 'picture1x1', 'picture2x2', 'picture2x1',
+             'picture1x2', 'leftpos',  'bottompos', 'width', 'rightpos',
+             'toppos', 'height'],
             ['empty', 'restoreall']]
 
 #
@@ -152,7 +151,8 @@ COLORS = [["#00FF00", "#00A000"], ["#00FFFF", "#00A0A0"],
           ["#00FFFF", "#00A0A0"], ["#FF00FF", "#A000A0"],
           ["#FFC000", "#A08000"], ["#FFFF00", "#A0A000"],
           ["#FF0000", "#A00000"], ["#FF0000", "#A00000"],
-          ["#0000FF", "#0000A0"], ["#FFFF00", "#A0A000"]]
+          ["#FFFF00", "#A0A000"], ["#0000FF", "#0000A0"],
+          ["#FFFF00", "#A0A000"]]
 
 BOX_COLORS = {'red': ["#FF0000", "#A00000"],
               'orange': ["#FFD000", "#AA8000"],
@@ -841,6 +841,7 @@ HELP_STRINGS = {
     'left': _("turns turtle counterclockwise (angle in degrees)"),
     'less2': _("logical less-than operator"),
     'luminance': _("light level detected by camera"),
+    'media': _("Palette of media objects"),
     'mediawait': _("wait for current video or audio to complete"),
     'minus2': _("subtracts bottom numeric input from top numeric input"),
     'myfunc': _("a programmable block: used to add advanced math equations, e.g., sin(x)"),
