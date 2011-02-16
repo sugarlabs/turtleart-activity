@@ -169,6 +169,8 @@ class CollaborationPlugin(Plugin):
         dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
 
         self._client_handler = telepathyclient.get_instance()
+        if self._client_handler == None:
+            raise RuntimeError('Telepathy client unavailable')
         self._neighborhood = get_neighborhood(params)
         self._neighborhood.connect('activity-added', self._activity_added_cb)
         self._neighborhood.connect('activity-removed',
