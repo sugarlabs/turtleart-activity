@@ -56,7 +56,7 @@ from gettext import gettext as _
 VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
                 'heading', 'xcor', 'ycor', 'pop', 'see', 'keyboard',
                 'sound', 'volume', 'pitch', 'resistance', 'voltage',
-                'luminance']
+                'luminance', 'time']
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -1154,6 +1154,8 @@ class LogoCode:
 
     def _update_audio_mode(self):
         """ If there are sensor blocks, set the appropriate audio mode """
+        if not self.tw.gst_available:
+            return
         for name in ['sound', 'volume', 'pitch']:
             if len(self.value_blocks[name]) > 0:
                 self.tw.audiograb.set_sensor_type()
@@ -1487,7 +1489,9 @@ class LogoCode:
     def _elapsed_time(self):
         """ Number of seconds since program execution has started or
         clean (prim_clear) block encountered """
-        return int(time() - self._start_time)
+        elapsed_time = int(time() - self._start_time)
+        self.update_label_value('time', elapsed_time)
+        return elapsed_time
 
     def see(self):
         """ Read r, g, b from the canvas and return a corresponding palette
