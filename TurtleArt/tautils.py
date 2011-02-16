@@ -260,10 +260,12 @@ def save_svg(string, file_name):
 def get_pixbuf_from_journal(dsobject, w, h):
     """ Load a pixbuf from a Journal object. """
     try:
+        print "looking for pixbuf from journal"
         _pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path,
                                                        int(w), int(h))
     except:
         try:
+            print "getting preview image"
             _pixbufloader = \
                 gtk.gdk.pixbuf_loader_new_with_mime_type('image/png')
             _pixbufloader.set_size(min(300, int(w)), min(225, int(h)))
@@ -271,7 +273,9 @@ def get_pixbuf_from_journal(dsobject, w, h):
             _pixbufloader.close()
             _pixbuf = _pixbufloader.get_pixbuf()
         except:
+            print 'no luck :('
             _pixbuf = None
+    print 'RETURNING with ', _pixbuf
     return _pixbuf
 
 
@@ -330,7 +334,7 @@ def image_media_type(name):
 
 def text_media_type(name):
     """ Is it text media? """
-    return name.lower().endswith(('.txt', '.py', '.lg', '.rtf', '.ta'))
+    return name.lower().endswith(('.txt', '.py', '.lg', '.rtf'))
 
 
 def round_int(num):
