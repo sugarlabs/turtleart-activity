@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007-8, Playful Invention Company.
-#Copyright (c) 2008-10, Walter Bender
+#Copyright (c) 2008-11, Walter Bender
 #Copyright (c) 2008-10, Raúl Gutiérrez Segalés
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1399,6 +1399,8 @@ class LogoCode:
 
     def _insert_image(self, center=False, filepath=None):
         """ Image only (at current x, y) """
+        _logger.debug('insert image')
+
         if filepath is not None:
             self.filepath = filepath
         pixbuf = None
@@ -1406,19 +1408,19 @@ class LogoCode:
         h = self._h()
         if w < 1 or h < 1:
             return
-        if self.filepath is not None and self.filepath != '':
+        if self.dsobject is not None:
+            try:
+                pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
+            except:
+                # self.tw.showlabel('nojournal')
+                _logger.debug("Couldn't open dsobject %s" % (self.dsobject))
+        if pixbuf is None and self.filepath is not None and self.filepath != '':
             try:
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.filepath,
                                                               w, h)
             except:
                 self.tw.showlabel('nojournal', self.filepath)
                 _logger.debug("Couldn't open filepath %s" % (self.filepath))
-        elif self.dsobject is not None:
-            try:
-                pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
-            except:
-                self.tw.showlabel('nojournal', self.dsobject)
-                _logger.debug("Couldn't open dsobject %s" % (self.dsobject))
         if pixbuf is not None:
             if center:
                 self.tw.canvas.draw_pixbuf(pixbuf, 0, 0,
