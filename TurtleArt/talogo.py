@@ -300,17 +300,6 @@ def _avg(array, abs_value=False):
     return float(array_sum) / len(array)
 
 
-def stop_logo(tw):
-    """ Stop logo is called from the Stop button on the toolbar """
-    tw.step_time = 0
-    tw.lc.step = _just_stop()
-    if tw.gst_available:
-        stop_media(tw.lc)
-    if tw.camera_available:
-        tw.lc.camera.stop_camera_input()
-    tw.active_turtle.show()
-
-
 def _just_stop():
     """ yield False to stop stack """
     yield False
@@ -327,12 +316,6 @@ class LogoCode:
     def __init__(self, tw):
 
         self.tw = tw
-        if self.tw.gst_available:
-            from tagplay import play_audio_from_file, play_movie_from_file, \
-                stop_media, media_playing
-            from tacamera import Camera
-            import v4l2
-
         self.oblist = {}
 
         DEFPRIM = {
@@ -548,7 +531,19 @@ class LogoCode:
                                           'data/turtlepic.png')
             else:
                 self.imagepath = '/tmp/turtlepic.png'
+            from tacamera import Camera
             self.camera = Camera(self.imagepath)
+
+    def stop_logo(self):
+        """ Stop logo is called from the Stop button on the toolbar """
+        self.tw.step_time = 0
+        self.step = _just_stop()
+        if self.tw.gst_available:
+            from tagplay import stop_media
+            stop_media(self)
+            if self.tw.camera_available:
+                self.camera.stop_camera_input()
+            self.tw.active_turtle.show()
 
     def _def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
@@ -901,6 +896,7 @@ class LogoCode:
     def prim_clear(self):
         """ Clear screen """
         if self.tw.gst_available:
+            from tagplay import stop_media
             stop_media(self)
         self.tw.canvas.clearscreen()
         self.scale = DEFAULT_SCALE
@@ -956,27 +952,27 @@ class LogoCode:
             y = myfunc(f, x)
             if str(y) == 'nan':
                 _logger.debug("python function returned nan")
-                stop_logo(self.tw)
+                self.stop_logo()
                 raise logoerror("#notanumber")
             else:
                 return y
         except ZeroDivisionError:
-            stop_logo(self.tw)
+            self.stop_logo()
             raise logoerror("#zerodivide")
         except ValueError, e:
-            stop_logo(self.tw)
+            self.stop_logo()
             raise logoerror('#' + str(e))
         except SyntaxError, e:
-            stop_logo(self.tw)
+            self.stop_logo()
             raise logoerror('#' + str(e))
         except NameError, e:
-            stop_logo(self.tw)
+            self.stop_logo()
             raise logoerror('#' + str(e))
         except OverflowError:
-            stop_logo(self.tw)
+            self.stop_logo()
             raise logoerror("#overflowerror")
         except TypeError:
-            stop_logo(self.tw)
+            self.stop_logo()
             raise logoerror("#notanumber")
 
     def _prim_forever(self, blklist):
@@ -1466,6 +1462,7 @@ class LogoCode:
     def _media_wait(self):
         """ Wait for media to stop playing """
         if self.tw.gst_available:
+            from tagplay import media_playing
             while(media_playing(self)):
                 yield True
         self._ireturn()
@@ -1474,6 +1471,7 @@ class LogoCode:
     def _play_sound(self):
         """ Sound file from Journal """
         if self.tw.gst_available:
+            from tagplay import play_audio_from_file
             play_audio_from_file(self, self.filepath)
 
     def _play_video(self):
@@ -1483,6 +1481,7 @@ class LogoCode:
         if w < 1 or h < 1:
             return
         if self.tw.gst_available:
+            from tagplay import play_movie_from_file
             play_movie_from_file(self, self.filepath, self._x(), self._y(),
                                  self._w(), self._h())
 
@@ -1515,12 +1514,14 @@ class LogoCode:
         w = self._w()
         h = self._h()
         if w > 0 and h > 0 and self.tw.camera_available:
+            import v4l2
 
             try:
                 self._video_capture_device = open('/dev/video0', 'rw')
             except:
                 self._video_capture_device = None
                 _logger.debug('video capture device not available')
+
             if self._video_capture_device is not None:
                 self._ag_control = v4l2.v4l2_control(v4l2.V4L2_CID_AUTOGAIN)
                 try:
@@ -1531,6 +1532,7 @@ class LogoCode:
                           self._ag_control)
                 except:
                     _logger.debug('AUTOGAIN control not available')
+
             if self._video_capture_device is not None:
                 self._video_capture_device.close()
 
@@ -1541,6 +1543,7 @@ class LogoCode:
                 array = pixbuf.get_pixels()
             except:
                 array = None
+
         if array is not None:
             length = len(array) / 3
             r = 0

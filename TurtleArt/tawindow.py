@@ -67,7 +67,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
                         NUMBER_STYLE_PORCH, NUMBER_STYLE_BLOCK, \
                         NUMBER_STYLE_VAR_ARG, CONSTANTS, XO1, XO15, UNKNOWN, \
                         BASIC_STYLE_VAR_ARG
-from talogo import LogoCode, stop_logo
+from talogo import LogoCode
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
 from taturtle import Turtles, Turtle
@@ -479,7 +479,7 @@ class TurtleArtWindow():
 
     def stop_button(self):
         """ Stop button """
-        stop_logo(self)
+        self.lc.stop_logo()
         if self.audio_started:
             self.audiograb.pause_grabbing()
 
@@ -2374,7 +2374,7 @@ class TurtleArtWindow():
 
     def new_project(self):
         """ Start a new project """
-        stop_logo(self)
+        self.lc.stop_logo()
         self._loaded_project = ""
         # Put current project in the trash.
         while len(self.just_blocks()) > 0:
