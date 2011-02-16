@@ -30,7 +30,7 @@ from numpy.fft import rfft
 from random import uniform
 from operator import isNumberType
 from fcntl import ioctl
-
+import v4l2
 import os.path
 
 from UserDict import UserDict
@@ -1514,8 +1514,6 @@ class LogoCode:
         w = self._w()
         h = self._h()
         if w > 0 and h > 0 and self.tw.camera_available:
-            import v4l2
-
             try:
                 self._video_capture_device = open('/dev/video0', 'rw')
             except:
