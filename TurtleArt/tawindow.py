@@ -27,7 +27,14 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gobject
-import gst
+
+try:
+    import gst
+    GST_AVAILABLE = True
+except ImportError:
+    # Turtle Art should not fail if gst is not available
+    GST_AVAILABLE = False
+
 import os
 import os.path
 import dbus
@@ -76,11 +83,13 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
                     dock_dx_dy, data_to_string, journal_check, chooser, \
                     get_hardware
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
-from tagplay import stop_media
 from sprites import Sprites, Sprite
-from audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15
 from rfidutils import strhex2bin, strbin2dec, find_device
 from dbus.mainloop.glib import DBusGMainLoop
+
+if GST_AVAILABLE:
+    from tagplay import stop_media
+    from audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15
 
 HAL_SERVICE = 'org.freedesktop.Hal'
 HAL_MGR_PATH = '/org/freedesktop/Hal/Manager'
@@ -103,6 +112,7 @@ class TurtleArtWindow():
         self._sharing = False
         self.parent = parent
         self.send_event = None  # method to send events over the network
+        self.gst_available = GST_AVAILABLE
         if type(win) == gtk.DrawingArea:
             self.interactive_mode = True
             self.window = win
@@ -267,12 +277,13 @@ class TurtleArtWindow():
             self.audio_started = False
 
         self.camera_available = False
-        v4l2src = gst.element_factory_make('v4l2src')
-        if v4l2src.props.device_name is not None:
-            PALETTES[PALETTE_NAMES.index('sensor')].append('readcamera')
-            PALETTES[PALETTE_NAMES.index('sensor')].append('luminance')
-            PALETTES[PALETTE_NAMES.index('sensor')].append('camera')
-            self.camera_available = True
+        if self.gst_available:
+            v4l2src = gst.element_factory_make('v4l2src')
+            if v4l2src.props.device_name is not None:
+                PALETTES[PALETTE_NAMES.index('sensor')].append('readcamera')
+                PALETTES[PALETTE_NAMES.index('sensor')].append('luminance')
+                PALETTES[PALETTE_NAMES.index('sensor')].append('camera')
+                self.camera_available = True
 
         self.lc = LogoCode(self)
         self.saved_pictures = []
@@ -426,6 +437,8 @@ class TurtleArtWindow():
 
     def _start_audiograb(self):
         """ Start grabbing audio if there is an audio block in use """
+        if not self.gst_available:
+            return
         if len(self.block_list.get_similar_blocks('block',
             ['volume', 'sound', 'pitch', 'resistance', 'voltage'])) > 0:
             if self.audio_started:
@@ -2002,7 +2015,8 @@ class TurtleArtWindow():
             elif keyname == 'q':
                 if self.audio_started:
                     self.audiograb.stop_grabbing()
-                stop_media(self.lc)
+                if self.gst_available:
+                    stop_media(self.lc)
                 exit()
             elif keyname == 'g':
                 self._align_to_grid()

@@ -43,10 +43,6 @@ except ImportError:
 from taconstants import TAB_LAYER, BLACK, WHITE, \
     DEFAULT_SCALE, ICON_SIZE, BLOCK_NAMES, CONSTANTS, SENSOR_DC_NO_BIAS, \
     SENSOR_DC_BIAS, XO1, XO15
-from tagplay import play_audio_from_file, play_movie_from_file, stop_media, \
-    media_playing
-from tacamera import Camera
-import v4l2
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
     text_media_type, round_int, chr_to_ord, strtype, get_path
@@ -308,7 +304,8 @@ def stop_logo(tw):
     """ Stop logo is called from the Stop button on the toolbar """
     tw.step_time = 0
     tw.lc.step = _just_stop()
-    stop_media(tw.lc)
+    if tw.gst_available:
+        stop_media(tw.lc)
     if tw.camera_available:
         tw.lc.camera.stop_camera_input()
     tw.active_turtle.show()
@@ -330,6 +327,12 @@ class LogoCode:
     def __init__(self, tw):
 
         self.tw = tw
+        if self.tw.gst_available:
+            from tagplay import play_audio_from_file, play_movie_from_file, \
+                stop_media, media_playing
+            from tacamera import Camera
+            import v4l2
+
         self.oblist = {}
 
         DEFPRIM = {
@@ -897,7 +900,8 @@ class LogoCode:
 
     def prim_clear(self):
         """ Clear screen """
-        stop_media(self)
+        if self.tw.gst_available:
+            stop_media(self)
         self.tw.canvas.clearscreen()
         self.scale = DEFAULT_SCALE
         # Note: users find this "feature" confusing
@@ -1459,14 +1463,16 @@ class LogoCode:
 
     def _media_wait(self):
         """ Wait for media to stop playing """
-        while(media_playing(self)):
-            yield True
+        if self.tw.gst_available:
+            while(media_playing(self)):
+                yield True
         self._ireturn()
         yield True
 
     def _play_sound(self):
         """ Sound file from Journal """
-        play_audio_from_file(self, self.filepath)
+        if self.tw.gst_available:
+            play_audio_from_file(self, self.filepath)
 
     def _play_video(self):
         """ Movie file from Journal """
@@ -1474,8 +1480,9 @@ class LogoCode:
         h = self._h()
         if w < 1 or h < 1:
             return
-        play_movie_from_file(self, self.filepath, self._x(), self._y(),
-                               self._w(), self._h())
+        if self.tw.gst_available:
+            play_movie_from_file(self, self.filepath, self._x(), self._y(),
+                                 self._w(), self._h())
 
     def _elapsed_time(self):
         """ Number of seconds since program execution has started or
