@@ -40,9 +40,9 @@ try:
 except ImportError:
     pass
 
-from taconstants import TAB_LAYER, BLACK, WHITE, \
-    DEFAULT_SCALE, ICON_SIZE, BLOCK_NAMES, CONSTANTS, SENSOR_DC_NO_BIAS, \
-    SENSOR_DC_BIAS, XO1, XO15
+from taconstants import TAB_LAYER, BLACK, WHITE, DEFAULT_SCALE, ICON_SIZE, \
+    BLOCK_NAMES, CONSTANTS, SENSOR_DC_NO_BIAS, SENSOR_DC_BIAS, XO1, XO15, \
+    PREFIX_DICTIONARY
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
     text_media_type, round_int, chr_to_ord, strtype, get_path
@@ -54,9 +54,8 @@ from ringbuffer import RingBuffer1d
 from gettext import gettext as _
 
 VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
-                'heading', 'xcor', 'ycor', 'pop', 'see', 'keyboard',
-                'sound', 'volume', 'pitch', 'resistance', 'voltage',
-                'luminance', 'time']
+                'heading', 'xcor', 'ycor', 'pop', 'time', 'keyboard', 'sound',
+                'volume', 'pitch', 'resistance', 'voltage', 'luminance', 'see']
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -627,26 +626,12 @@ class LogoCode:
                     code.append('#s' + str(blk.values[0]))
                 else:
                     code.append('#s' + blk.values[0])
-            elif blk.name == 'journal':
+            elif blk.name in PREFIX_DICTIONARY:
                 if blk.values[0] is not None:
-                    code.append('#smedia_' + str(blk.values[0]))
+                    code.append(PREFIX_DICTIONARY[blk.name] + \
+                                    str(blk.values[0]))
                 else:
-                    code.append('#smedia_None')
-            elif blk.name == 'description':
-                if blk.values[0] is not None:
-                    code.append('#sdescr_' + str(blk.values[0]))
-                else:
-                    code.append('#sdescr_None')
-            elif blk.name == 'audio':
-                if blk.values[0] is not None:
-                    code.append('#saudio_' + str(blk.values[0]))
-                else:
-                    code.append('#saudio_None')
-            elif blk.name == 'video':
-                if blk.values[0] is not None:
-                    code.append('#svideo_' + str(blk.values[0]))
-                else:
-                    code.append('#svideo_None')
+                    code.append(PREFIX_DICTIONARY[blk.name] + 'None')
             elif blk.name == 'camera':
                     code.append('#smedia_CAMERA')
             else:
@@ -1133,9 +1118,8 @@ class LogoCode:
         else:
             try:
                 self.keyboard = {'Escape': 27, 'space': 32, ' ': 32,
-                                 'Return': 13, \
-                                 'KP_Up': 2, 'KP_Down': 4, 'KP_Left': 1, \
-                                 'KP_Right': 3}[self.tw.keypress]
+                                 'Return': 13, 'KP_Up': 2, 'KP_Down': 4,
+                                 'KP_Left': 1, 'KP_Right': 3}[self.tw.keypress]
             except KeyError:
                 self.keyboard = 0
         self.update_label_value('keyboard', self.keyboard)
@@ -1189,10 +1173,12 @@ class LogoCode:
             self.update_label_value(name, value)
 
     def _prim_right(self, value):
+        """ Turtle rotates clockwise """
         self.tw.canvas.right(float(value))
         self.update_label_value('heading', self.tw.canvas.heading)
 
     def _prim_move(self, cmd, value1, value2=None, pendown=True):
+        """ Turtle moves by method specified in value1 """
         if value2 is None:
             cmd(value1)
         else:
@@ -1205,6 +1191,7 @@ class LogoCode:
             self.see()
 
     def _prim_arc(self, cmd, value1, value2):
+        """ Turtle draws an arc of degree, radius """
         cmd(float(value1), float(value2))
         self.update_label_value('xcor',
                            self.tw.canvas.xcor / self.tw.coord_scale)
@@ -1378,8 +1365,7 @@ class LogoCode:
                 if self.dsobject is not None:
                     self.dsobject.destroy()
             else:  # assume it is text to display
-                x = self._x()
-                y = self._y()
+                x, y = self._x(), self._y()
                 if center:
                     y -= self.tw.canvas.textsize
                 self.tw.canvas.draw_text(string, x, y,
@@ -1388,8 +1374,7 @@ class LogoCode:
                                          self.tw.canvas.width - x)
         elif type(string) == float or type(string) == int:
             string = round_int(string)
-            x = self._x()
-            y = self._y()
+            x, y = self._x(), self._y()
             if center:
                 y -= self.tw.canvas.textsize
             self.tw.canvas.draw_text(string, x, y,
@@ -1404,8 +1389,7 @@ class LogoCode:
         if filepath is not None:
             self.filepath = filepath
         pixbuf = None
-        w = self._w()
-        h = self._h()
+        w, h = self._w(), self._h()
         if w < 1 or h < 1:
             return
         if self.dsobject is not None:
@@ -1478,14 +1462,13 @@ class LogoCode:
 
     def _play_video(self):
         """ Movie file from Journal """
-        w = self._w()
-        h = self._h()
+        w, h = self._w(), self._h()
         if w < 1 or h < 1:
             return
         if self.tw.gst_available:
             from tagplay import play_movie_from_file
             play_movie_from_file(self, self.filepath, self._x(), self._y(),
-                                 self._w(), self._h())
+                                 w, h)
 
     def _elapsed_time(self):
         """ Number of seconds since program execution has started or
@@ -1513,8 +1496,7 @@ class LogoCode:
         """ Read average pixel from camera and push b, g, r to the stack """
         pixbuf = None
         array = None
-        w = self._w()
-        h = self._h()
+        w, h = self._w(), self._h()
         if w > 0 and h > 0 and self.tw.camera_available:
             try:
                 self._video_capture_device = open('/dev/video0', 'rw')
@@ -1546,10 +1528,7 @@ class LogoCode:
 
         if array is not None:
             length = len(array) / 3
-            r = 0
-            g = 0
-            b = 0
-            i = 0
+            r, g, b, i = 0, 0, 0, 0
             for j in range(length):
                 r += ord(array[i])
                 i += 1
