@@ -260,12 +260,10 @@ def save_svg(string, file_name):
 def get_pixbuf_from_journal(dsobject, w, h):
     """ Load a pixbuf from a Journal object. """
     try:
-        print "looking for pixbuf from journal"
         _pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(dsobject.file_path,
                                                        int(w), int(h))
     except:
         try:
-            print "getting preview image"
             _pixbufloader = \
                 gtk.gdk.pixbuf_loader_new_with_mime_type('image/png')
             _pixbufloader.set_size(min(300, int(w)), min(225, int(h)))
@@ -273,9 +271,7 @@ def get_pixbuf_from_journal(dsobject, w, h):
             _pixbufloader.close()
             _pixbuf = _pixbufloader.get_pixbuf()
         except:
-            print 'no luck :('
             _pixbuf = None
-    print 'RETURNING with ', _pixbuf
     return _pixbuf
 
 
