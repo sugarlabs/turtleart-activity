@@ -619,7 +619,8 @@ class LogoCode:
                     code.append(float(blk.values[0]))
                 except ValueError:
                     code.append(float(ord(blk.values[0][0])))
-            elif blk.name == 'string' or blk.name == 'title':
+            elif blk.name == 'string' or \
+                    blk.name == 'title':  # depreciated block
                 if type(blk.values[0]) == float or type(blk.values[0]) == int:
                     if int(blk.values[0]) == blk.values[0]:
                         blk.values[0] = int(blk.values[0])
@@ -1384,8 +1385,6 @@ class LogoCode:
 
     def _insert_image(self, center=False, filepath=None):
         """ Image only (at current x, y) """
-        _logger.debug('insert image')
-
         if filepath is not None:
             self.filepath = filepath
         pixbuf = None
@@ -1396,7 +1395,6 @@ class LogoCode:
             try:
                 pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
             except:
-                # self.tw.showlabel('nojournal')
                 _logger.debug("Couldn't open dsobject %s" % (self.dsobject))
         if pixbuf is None and self.filepath is not None and self.filepath != '':
             try:
