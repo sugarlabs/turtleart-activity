@@ -700,6 +700,9 @@ STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
                 'storeinbox2']
 
+PREFIX_DICTIONARY = {'journal': '#smedia_', 'description': '#sdescr_',
+                     'audio': '#saudio_', 'video': '#svideo_'}
+
 #
 # Status blocks
 #
