@@ -27,11 +27,9 @@ from gettext import gettext as _
 from rfid.rfidutils import strhex2bin, strbin2dec, find_device
 
 from plugin import Plugin
-from TurtleArt.taconstants import PALETTES, PALETTE_NAMES, BOX_STYLE_MEDIA, \
-    CONTENT_BLOCKS, BLOCK_NAMES, DEFAULTS, SPECIAL_NAMES, HELP_STRINGS, \
-    BOX_STYLE
-from TurtleArt.talogo import VALUE_BLOCKS, MEDIA_BLOCKS_DICTIONARY, \
-    PLUGIN_DICTIONARY
+from TurtleArt.taconstants import PALETTES, PALETTE_NAMES, BLOCK_NAMES, \
+    HELP_STRINGS, BOX_STYLE
+from TurtleArt.talogo import VALUE_BLOCKS, PLUGIN_DICTIONARY
 
 import logging
 _logger = logging.getLogger('turtleart-activity RFID plugin')
