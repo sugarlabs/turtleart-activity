@@ -54,8 +54,7 @@ from TurtleArt.tautils import data_to_string, data_from_string, get_save_name
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
-from extra.upload import Uploader
-from extra.collaborationplugin import CollaborationPlugin
+
 from util.menubuilder import MenuBuilder
 
 
@@ -70,11 +69,13 @@ class TurtleMain():
     _INSTALL_PATH = '/usr/share/turtleart'
     _ALTERNATE_INSTALL_PATH = '/usr/local/share/turtleart'
     _ICON_SUBPATH = 'images/turtle.png'
+    _GNOME_PLUGIN_SUBPATH = 'gnome_plugins'
 
     def __init__(self):
         self._init_vars()
         self._parse_command_line()
         self._ensure_sugar_paths()
+        self._plugins = []
 
         if self.output_png:
             pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8,
@@ -91,15 +92,58 @@ class TurtleMain():
             self._run_plugins()
             self._start_gtk()
 
+    def get_config_home(self):
+        return CONFIG_HOME
+
+    def _get_gnome_plugin_home(self):
+        """ Look in current directory first, then usual places """
+        path = os.path.join(os.getcwd(), self._GNOME_PLUGIN_SUBPATH)
+        if os.path.exists(path):
+            return path
+        path = os.path.expanduser(os.path.join('~', 'Activities',
+                                               'TurtleBlocks.activity',
+                                               self._GNOME_PLUGIN_SUBPATH))
+        if os.path.exists(path):
+            return path
+        path = os.path.expanduser(os.path.join('~', 'Activities',
+                                               'TurtleArt.activity',
+                                               self._GNOME_PLUGIN_SUBPATH))
+        if os.path.exists(path):
+            return path
+        path = os.path.join(self._INSTALL_PATH, self._GNOME_PLUGIN_SUBPATH)
+        if os.path.exists(path):
+            return path
+        path = os.path.join(self._ALTERNATE_INSTALL_PATH,
+                            self._GNOME_PLUGIN_SUBPATH)
+        if os.path.exists(path):
+            return path
+        return None
+
+    def _get_plugin_candidates(self, path):
+        """ Look for plugin files in plugin directory. """
+        plugin_files = []
+        if path is not None:
+            candidates = os.listdir(path)
+            for c in candidates:
+                if c[-10:] == '_plugin.py' and c[0] != '#' and c[0] != '.':
+                    plugin_files.append(c.split('.')[0])
+        return plugin_files
+        
     def _init_plugins(self):
-        config_file_path = os.path.join(CONFIG_HOME, 'turtleartrc.collab')
-        self._collab_plugin = CollaborationPlugin(self, config_file_path)
-        self._uploader = Uploader()
+        for p in self._get_plugin_candidates(self._get_gnome_plugin_home()):
+            P = p.capitalize()
+            f = "def f(self): from gnome_plugins.%s import %s; return %s(self)" \
+                % (p, P, P)
+            plugin = {}
+            try:
+                exec f in globals(), plugin
+                self._plugins.append(plugin.values()[0](self))
+            except ImportError:
+                print 'failed to import %s' % (P)
 
     def _run_plugins(self):
-        self._uploader.set_tw(self.tw)
-        self._collab_plugin.set_tw(self.tw)
-        # self._collab_plugin.setup()
+        for p in self._plugins:
+             p.set_tw(self.tw)
 
     def _mkdir_p(self, path):
         '''Create a directory in a fashion similar to `mkdir -p`'''
@@ -280,9 +324,6 @@ class TurtleMain():
                                    self._do_save_html_cb)
         MenuBuilder.make_menu_item(menu, _('Save as Logo'),
                                    self._do_save_logo_cb)
-        if self._uploader.enabled():
-            MenuBuilder.make_menu_item(menu, _('Upload to Web'),
-                                 self._uploader.do_upload_to_web)
         MenuBuilder.make_menu_item(menu, _('Quit'), self.destroy)
         activity_menu = MenuBuilder.make_sub_menu(menu, _('File'))
 
@@ -323,15 +364,16 @@ class TurtleMain():
         MenuBuilder.make_menu_item(menu, _('Stop'), self._do_stop_cb)
         turtle_menu = MenuBuilder.make_sub_menu(menu, _('Turtle'))
 
-        collaboration_menu = self._collab_plugin.get_menu()
-
         menu_bar = gtk.MenuBar()
         menu_bar.append(activity_menu)
         menu_bar.append(edit_menu)
         menu_bar.append(view_menu)
         menu_bar.append(tool_menu)
         menu_bar.append(turtle_menu)
-        menu_bar.append(collaboration_menu)
+
+        # Add menus for plugins
+        for p in self._plugins:
+            menu_bar.append(p.get_menu())
         return menu_bar
 
     def _quit_ta(self, widget=None, e=None):
