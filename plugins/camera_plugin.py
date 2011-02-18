@@ -32,9 +32,10 @@ from camera.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, VIDIOC_G_CTRL, \
 from plugin import Plugin
 from TurtleArt.taconstants import PALETTES, PALETTE_NAMES, BOX_STYLE_MEDIA, \
     CONTENT_BLOCKS, BLOCK_NAMES, DEFAULTS, SPECIAL_NAMES, HELP_STRINGS, \
-    BOX_STYLE
+    BOX_STYLE, PRIMITIVES
 from TurtleArt.talogo import VALUE_BLOCKS, MEDIA_BLOCKS_DICTIONARY, \
     PLUGIN_DICTIONARY
+from TurtleArt.tautils import get_path
 
 import logging
 _logger = logging.getLogger('turtleart-activity camera plugin')
@@ -66,6 +67,7 @@ class Camera_plugin(Plugin):
             BLOCK_NAMES['luminance'] = [_('brightness')]
             HELP_STRINGS['luminance'] = _("light level detected by camera")
             VALUE_BLOCKS.append('luminance')
+            PRIMITIVES['luminance'] = 'luminance'
             PLUGIN_DICTIONARY['luminance'] = self.prim_read_camera
             self._parent.lc._def_prim('luminance', 0,
                 lambda self: PLUGIN_DICTIONARY['luminance'](True))
