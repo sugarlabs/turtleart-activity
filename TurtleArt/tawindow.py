@@ -105,6 +105,9 @@ _logger = logging.getLogger('turtleart-activity')
 class TurtleArtWindow():
     """ TurtleArt Window class abstraction  """
     timeout_tag = [0]
+    _INSTALL_PATH = '/usr/share/turtleart'
+    _ALTERNATE_INSTALL_PATH = '/usr/local/share/turtleart'
+    _PLUGIN_SUBPATH = 'plugins'
 
     def __init__(self, win, path, parent=None, mycolors=None, mynick=None):
         self._loaded_project = ''
@@ -276,18 +279,13 @@ class TurtleArtWindow():
                 PALETTES[PALETTE_NAMES.index('sensor')].append('voltage')
             self.audio_started = False
 
-        self.camera_available = False
-        if self.gst_available:
-            v4l2src = gst.element_factory_make('v4l2src')
-            if v4l2src.props.device_name is not None:
-                PALETTES[PALETTE_NAMES.index('sensor')].append('readcamera')
-                PALETTES[PALETTE_NAMES.index('sensor')].append('luminance')
-                PALETTES[PALETTE_NAMES.index('sensor')].append('camera')
-                self.camera_available = True
+        self._plugins = []
 
+        self._init_plugins()
         self.lc = LogoCode(self)
-        self.saved_pictures = []
+        self._run_plugins()
 
+        self.saved_pictures = []
         self.block_operation = ''
 
         """
@@ -323,6 +321,60 @@ class TurtleArtWindow():
             hmgr_iface.connect_to_signal('DeviceAdded', self._device_added_cb)
 
             PALETTES[PALETTE_NAMES.index('sensor')].append('rfid')
+
+    ####
+
+    def _get_plugin_home(self):
+        """ Look in current directory first, then usual places """
+        path = os.path.join(os.getcwd(), self._PLUGIN_SUBPATH)
+        if os.path.exists(path):
+            return path
+        path = os.path.expanduser(os.path.join('~', 'Activities',
+                                               'TurtleBlocks.activity',
+                                               self._PLUGIN_SUBPATH))
+        if os.path.exists(path):
+            return path
+        path = os.path.expanduser(os.path.join('~', 'Activities',
+                                               'TurtleArt.activity',
+                                               self._PLUGIN_SUBPATH))
+        if os.path.exists(path):
+            return path
+        path = os.path.join(self._INSTALL_PATH, self._PLUGIN_SUBPATH)
+        if os.path.exists(path):
+            return path
+        path = os.path.join(self._ALTERNATE_INSTALL_PATH,
+                            self._PLUGIN_SUBPATH)
+        if os.path.exists(path):
+            return path
+        return None
+
+    def _get_plugin_candidates(self, path):
+        """ Look for plugin files in plugin directory. """
+        plugin_files = []
+        if path is not None:
+            candidates = os.listdir(path)
+            for c in candidates:
+                if c[-10:] == '_plugin.py' and c[0] != '#' and c[0] != '.':
+                    plugin_files.append(c.split('.')[0])
+        return plugin_files
+        
+    def _init_plugins(self):
+        for p in self._get_plugin_candidates(self._get_plugin_home()):
+            P = p.capitalize()
+            f = "def f(self): from plugins.%s import %s; return %s(self)" \
+                % (p, P, P)
+            plugin = {}
+            try:
+                exec f in globals(), plugin
+                self._plugins.append(plugin.values()[0](self))
+            except ImportError:
+                print 'failed to import %s' % (P)
+
+    def _run_plugins(self):
+        for p in self._plugins:
+             p.setup()
+
+    ####
 
     def _device_added_cb(self, path):
         """
@@ -1602,6 +1654,7 @@ class TurtleArtWindow():
             blk.spr.labels[0] += CURSOR
 
         elif blk.name in BOX_STYLE_MEDIA and blk.name != 'camera':
+            # TODO: isolate reference to camera
             self._import_from_journal(self.selected_blk)
             if blk.name == 'journal' and self.running_sugar:
                 self._load_description_block(blk)
@@ -2533,6 +2586,7 @@ class TurtleArtWindow():
                 else:
                     self._block_skin('pythonoff', blk)
         elif btype in BOX_STYLE_MEDIA and blk.spr is not None:
+            # TODO: isolate reference to camera
             if len(blk.values) == 0 or blk.values[0] == 'None' or \
                blk.values[0] is None or btype == 'camera':
                 self._block_skin(btype + 'off', blk)

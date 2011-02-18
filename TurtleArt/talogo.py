@@ -29,8 +29,6 @@ from numpy import append
 from numpy.fft import rfft
 from random import uniform
 from operator import isNumberType
-from fcntl import ioctl
-import v4l2
 import os.path
 
 from UserDict import UserDict
@@ -55,7 +53,9 @@ from gettext import gettext as _
 
 VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
                 'heading', 'xcor', 'ycor', 'pop', 'time', 'keyboard', 'sound',
-                'volume', 'pitch', 'resistance', 'voltage', 'luminance', 'see']
+                'volume', 'pitch', 'resistance', 'voltage', 'see']
+MEDIA_BLOCKS_DICTIONARY = {}  # new media blocks get added here
+PLUGIN_DICTIONARY = {}  # new block primitives get added here
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -317,6 +317,7 @@ class LogoCode:
         self.tw = tw
         self.oblist = {}
 
+        # TODO: remove plugin blocks
         DEFPRIM = {
         '(': [1, lambda self, x: self._prim_opar(x)],
         'and': [2, lambda self, x, y: _and(x, y)],
@@ -366,7 +367,6 @@ class LogoCode:
         'leftx': [0, lambda self: CONSTANTS['leftx']],
         'lpos': [0, lambda self: CONSTANTS['leftpos']],
         'less?': [2, lambda self, x, y: _less(x, y)],
-        'luminance': [0, lambda self: self._read_camera(True)],
         'mediawait': [0, self._media_wait, True],
         'minus': [2, lambda self, x, y: _minus(x, y)],
         'mod': [2, lambda self, x, y: _mod(x, y)],
@@ -394,7 +394,6 @@ class LogoCode:
         'purple': [0, lambda self: CONSTANTS['purple']],
         'push': [1, lambda self, x: self._prim_push(x)],
         'random': [2, lambda self, x, y: _random(x, y)],
-        'readcamera': [0, lambda self: self._read_camera()],
         'readpixel': [0, lambda self: self._read_pixel()],
         'red': [0, lambda self: CONSTANTS['red']],
         'repeat': [2, self._prim_repeat, True],
@@ -524,25 +523,16 @@ class LogoCode:
             self.voltage_gain = -0.0001471
             self.voltage_bias = 1.695
 
-        if self.tw.camera_available:
-            if self.tw.running_sugar:
-                self.imagepath = get_path(self.tw.activity,
-                                          'data/turtlepic.png')
-            else:
-                self.imagepath = '/tmp/turtlepic.png'
-            from tacamera import Camera
-            self.camera = Camera(self.imagepath)
-
     def stop_logo(self):
         """ Stop logo is called from the Stop button on the toolbar """
         self.tw.step_time = 0
         self.step = _just_stop()
+        for p in self.tw._plugins:
+             print p.stop()
         if self.tw.gst_available:
             from tagplay import stop_media
             stop_media(self)
-            if self.tw.camera_available:
-                self.camera.stop_camera_input()
-            self.tw.active_turtle.show()
+        self.tw.active_turtle.show()
 
     def _def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
@@ -633,8 +623,8 @@ class LogoCode:
                                     str(blk.values[0]))
                 else:
                     code.append(PREFIX_DICTIONARY[blk.name] + 'None')
-            elif blk.name == 'camera':
-                    code.append('#smedia_CAMERA')
+            elif blk.name in MEDIA_BLOCKS_DICTIONARY:
+                code.append('#smedia_' + blk.name.upper())
             else:
                 return ['%nothing%']
         else:
@@ -1091,7 +1081,8 @@ class LogoCode:
         if flag and (self.tw.hide or self.tw.step_time == 0):
             return
         if type(n) == str or type(n) == unicode:
-            if n[0:6] == 'media_' and n[6:] != 'CAMERA':
+            if n[0:6] == 'media_' and \
+               n[6:].lower not in MEDIA_BLOCKS_DICTIONARY:
                 try:
                     if self.tw.running_sugar:
                         try:
@@ -1325,11 +1316,9 @@ class LogoCode:
             elif string[0:6] in ['media_', 'descr_', 'audio_', 'video_']:
                 self.filepath = None
                 self.dsobject = None
-                if string[6:] == 'CAMERA':
-                    if self.tw.camera_available:
-                        self.camera.save_camera_input_to_file()
-                        self.camera.stop_camera_input()
-                        self.filepath = self.imagepath
+                print string[6:], MEDIA_BLOCKS_DICTIONARY
+                if string[6:].lower() in MEDIA_BLOCKS_DICTIONARY:
+                    MEDIA_BLOCKS_DICTIONARY[string[6:].lower()]()
                 elif os.path.exists(string[6:]):  # is it a path?
                     self.filepath = string[6:]
                 elif self.tw.running_sugar:  # is it a datastore object?
@@ -1489,66 +1478,6 @@ class LogoCode:
         self.heap.append(b)
         self.heap.append(g)
         self.heap.append(r)
-
-    def _read_camera(self, luminance_only=False):
-        """ Read average pixel from camera and push b, g, r to the stack """
-        pixbuf = None
-        array = None
-        w, h = self._w(), self._h()
-        if w > 0 and h > 0 and self.tw.camera_available:
-            try:
-                self._video_capture_device = open('/dev/video0', 'rw')
-            except:
-                self._video_capture_device = None
-                _logger.debug('video capture device not available')
-
-            if self._video_capture_device is not None:
-                self._ag_control = v4l2.v4l2_control(v4l2.V4L2_CID_AUTOGAIN)
-                try:
-                    ioctl(self._video_capture_device, v4l2.VIDIOC_G_CTRL,
-                          self._ag_control)
-                    self._ag_control.value = 0  # disable AUTOGAIN
-                    ioctl(self._video_capture_device, v4l2.VIDIOC_S_CTRL,
-                          self._ag_control)
-                except:
-                    _logger.debug('AUTOGAIN control not available')
-
-            if self._video_capture_device is not None:
-                self._video_capture_device.close()
-
-            self.camera.save_camera_input_to_file()
-            self.camera.stop_camera_input()
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.imagepath, w, h)
-            try:
-                array = pixbuf.get_pixels()
-            except:
-                array = None
-
-        if array is not None:
-            length = len(array) / 3
-            r, g, b, i = 0, 0, 0, 0
-            for j in range(length):
-                r += ord(array[i])
-                i += 1
-                g += ord(array[i])
-                i += 1
-                b += ord(array[i])
-                i += 1
-            if luminance_only:
-                lum = int((r * 0.3 + g * 0.6 + b * 0.1) / length)
-                self.update_label_value('luminance', lum)
-                return lum
-            else:
-                self.heap.append(int((b / length)))
-                self.heap.append(int((g / length)))
-                self.heap.append(int((r / length)))
-        else:
-            if luminance_only:
-                return -1
-            else:
-                self.heap.append(-1)
-                self.heap.append(-1)
-                self.heap.append(-1)
 
     def _get_volume(self):
         """ return mic in value """

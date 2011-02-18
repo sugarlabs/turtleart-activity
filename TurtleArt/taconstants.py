@@ -224,8 +224,8 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'white',
     'black', 'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy',
     'sound', 'volume', 'pitch', 'voltage', 'resistance', 'gray', 'see', 'rfid',
-    'luminance', 'time']
-BOX_STYLE_MEDIA = ['description', 'audio', 'journal', 'video', 'camera']
+    'time']
+BOX_STYLE_MEDIA = ['description', 'audio', 'journal', 'video']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
 NUMBER_STYLE_VAR_ARG = ['myfunc1arg', 'myfunc2arg', 'myfunc3arg']
 NUMBER_STYLE_BLOCK = ['random']
@@ -279,7 +279,7 @@ OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
 # Blocks that contain media
 #
 CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'video',
-                  'journal', 'camera']
+                  'journal']
 
 #
 # These blocks get a special skin
@@ -315,7 +315,6 @@ BLOCK_NAMES = {
     'box': [_('box')],
     'box1': [_('box 1')],
     'box2': [_('box 2')],
-    'camera': [' '],
     'cartesian': [_('Cartesian')],
     'clean': [_(' clean ')],
     'clearheap': [_('empty heap')],
@@ -355,7 +354,6 @@ BLOCK_NAMES = {
     'leftx': [_('picture left')],
     'less2': ['<'],
     'list': ['list'],
-    'luminance': [_('brightness')],
     'mediawait': [_('media wait')],
     'minus2': ['–'],
     'myfunc': [_('Python'), 'f(x)', 'x'],
@@ -630,7 +628,6 @@ DEFAULTS = {
     'audio': [None],
     'back': [100],
     'box': [_('my box')],
-    'camera': ['CAMERA'],
     'comment': [_('comment')],
     'description': [None],
     'fillscreen': [60, 80],
@@ -765,7 +762,6 @@ TEMPLATES = {'t1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
 #
 SPECIAL_NAMES = {
     'audio': _('audio'),
-    'camera': _('camera'),
     'division2': _('divide'),
     'equal2': _('equal'),
     'greater2': _('greater than'),
@@ -805,7 +801,6 @@ HELP_STRINGS = {
     'box1': _("Variable 1 (numeric value)"),
     'box2': _("Variable 2 (numeric value)"),
     'box': _("named variable (numeric value)"),
-    'camera': _('camera output'),
     'cartesian': _("displays Cartesian coordinates"),
     'clean': _("clears the screen and reset the turtle"),
     'clearheap': _("emptys FILO (first-in-last-out heap)"),
@@ -843,7 +838,6 @@ HELP_STRINGS = {
     'leftpos': _("xcor of left of screen"),
     'left': _("turns turtle counterclockwise (angle in degrees)"),
     'less2': _("logical less-than operator"),
-    'luminance': _("light level detected by camera"),
     'media': _("Palette of media objects"),
     'mediawait': _("wait for current video or audio to complete"),
     'minus2': _("subtracts bottom numeric input from top numeric input"),
