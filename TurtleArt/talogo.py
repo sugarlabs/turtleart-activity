@@ -42,7 +42,7 @@ from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
     text_media_type, round_int, chr_to_ord, strtype, get_path
 
-from RtfParser import RtfTextOnly
+from util.RtfParser import RtfTextOnly
 
 from gettext import gettext as _
 
