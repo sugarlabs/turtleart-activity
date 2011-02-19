@@ -25,8 +25,6 @@ import gtk
 
 from time import time
 from math import sqrt
-from numpy import append
-from numpy.fft import rfft
 from random import uniform
 from operator import isNumberType
 import os.path
@@ -39,21 +37,17 @@ except ImportError:
     pass
 
 from taconstants import TAB_LAYER, BLACK, WHITE, DEFAULT_SCALE, ICON_SIZE, \
-    BLOCK_NAMES, CONSTANTS, SENSOR_DC_NO_BIAS, SENSOR_DC_BIAS, XO1, XO15, \
-    PREFIX_DICTIONARY
+    BLOCK_NAMES, CONSTANTS, PREFIX_DICTIONARY
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
     text_media_type, round_int, chr_to_ord, strtype, get_path
 
 from RtfParser import RtfTextOnly
 
-from ringbuffer import RingBuffer1d
-
 from gettext import gettext as _
 
 VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
-                'heading', 'xcor', 'ycor', 'pop', 'time', 'keyboard', 'sound',
-                'volume', 'pitch', 'resistance', 'voltage', 'see']
+                'heading', 'xcor', 'ycor', 'pop', 'time', 'keyboard', 'see']
 MEDIA_BLOCKS_DICTIONARY = {}  # new media blocks get added here
 PLUGIN_DICTIONARY = {}  # new block primitives get added here
 
@@ -268,20 +262,6 @@ def _identity(x):
     return(x)
 
 
-def _avg(array, abs_value=False):
-    """ Calc. the average value of an array """
-    if len(array) == 0:
-        return 0
-    array_sum = 0
-    if abs_value:
-        for a in array:
-            array_sum += abs(a)
-    else:
-        for a in array:
-            array_sum += a
-    return float(array_sum) / len(array)
-
-
 def _just_stop():
     """ yield False to stop stack """
     yield False
@@ -367,7 +347,6 @@ class LogoCode:
         'pendown': [0, lambda self: self.tw.canvas.setpen(True)],
         'pensize': [0, lambda self: self.tw.canvas.pensize],
         'penup': [0, lambda self: self.tw.canvas.setpen(False)],
-        'pitch': [0, lambda self: self._get_pitch()],
         'plus': [2, lambda self, x, y: _plus(x, y)],
         'polar': [0, lambda self: self.tw.set_polar(True)],
         'pop': [0, lambda self: self._prim_pop()],
@@ -380,7 +359,6 @@ class LogoCode:
         'readpixel': [0, lambda self: self._read_pixel()],
         'red': [0, lambda self: CONSTANTS['red']],
         'repeat': [2, self._prim_repeat, True],
-        'resistance': [0, lambda self: self._get_resistance()],
         'right': [1, lambda self, x: self._prim_right(x)],
         'rightx': [0, lambda self: CONSTANTS['rightx']],
         'rpos': [0, lambda self: CONSTANTS['rightpos']],
@@ -411,7 +389,6 @@ class LogoCode:
         'showaligned': [1, lambda self, x: self._show(x, False)],
         'showblocks': [0, lambda self: self.tw.showblocks()],
         'skin': [1, lambda self, x: self._reskin(x)],
-        'sound': [0, lambda self: self._get_sound()],
         'sqrt': [1, lambda self, x: _sqrt(x)],
         'stack1': [0, self._prim_stack1, True],
         'stack': [1, self._prim_stack, True],
@@ -442,8 +419,6 @@ class LogoCode:
         'userdefined3': [3, lambda self, x, y,
                          z: self._prim_myblock([x, y, z])],
         'video': [1, lambda self, x: self._play_video(x)],
-        'voltage': [0, lambda self: self._get_voltage()],
-        'volume': [0, lambda self: self._get_volume()],
         'vres': [0, lambda self: CONSTANTS['height']],
         'wait': [1, self._prim_wait, True],
         'white': [0, lambda self: WHITE],
@@ -494,23 +469,12 @@ class LogoCode:
 
         self.scale = DEFAULT_SCALE
 
-        self.max_samples = 1500
-        self.input_step = 1
-
-        self.ringbuffer = RingBuffer1d(self.max_samples, dtype='int16')
-        if self.tw.hw == XO1:
-            self.voltage_gain = 0.00002225
-            self.voltage_bias = 1.140
-        elif self.tw.hw == XO15:
-            self.voltage_gain = -0.0001471
-            self.voltage_bias = 1.695
-
     def stop_logo(self):
         """ Stop logo is called from the Stop button on the toolbar """
         self.tw.step_time = 0
         self.step = _just_stop()
-        for p in self.tw._plugins:
-             print p.stop()
+        for plugin in self.tw._plugins:
+            plugin.stop()
         if self.tw.gst_available:
             from tagplay import stop_media
             stop_media(self)
@@ -539,7 +503,6 @@ class LogoCode:
         self.tw.saving_svg = False
 
         self.find_value_blocks()
-        self._update_audio_mode()
         if self.trace > 0:
             self.update_values = True
         else:
@@ -1106,21 +1069,6 @@ class LogoCode:
             self.value_blocks[name] = self.tw.block_list.get_similar_blocks(
                 'block', name)
 
-    def _update_audio_mode(self):
-        """ If there are sensor blocks, set the appropriate audio mode """
-        if not self.tw.gst_available:
-            return
-        for name in ['sound', 'volume', 'pitch']:
-            if len(self.value_blocks[name]) > 0:
-                self.tw.audiograb.set_sensor_type()
-                return
-        if len(self.value_blocks['resistance']) > 0:
-            self.tw.audiograb.set_sensor_type(SENSOR_DC_BIAS)
-            return
-        elif len(self.value_blocks['voltage']) > 0:
-            self.tw.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
-            return
-
     def update_label_value(self, name, value=None):
         """ Update the label of value blocks to reflect current value """
         if self.tw.hide or not self.tw.interactive_mode or \
@@ -1460,75 +1408,6 @@ class LogoCode:
         self.heap.append(b)
         self.heap.append(g)
         self.heap.append(r)
-
-    def _get_volume(self):
-        """ return mic in value """
-        #TODO: Adjust gain for different HW
-        buf = self.ringbuffer.read(None, self.input_step)
-        if len(buf) > 0:
-            volume = float(_avg(buf, abs_value=True))
-            self.update_label_value('volume', volume)
-            return volume
-        else:
-            return 0
-
-    def _get_sound(self):
-        """ return raw mic in value """
-        buf = self.ringbuffer.read(None, self.input_step)
-        if len(buf) > 0:
-            sound = float(buf[0])
-            self.update_label_value('sound', sound)
-            return sound
-        else:
-            return 0
-
-    def _get_pitch(self):
-        """ return index of max value in fft of mic in values """
-        buf = []
-        for i in range(4):
-            buf = append(buf, self.ringbuffer.read(None, self.input_step))
-        if len(buf) > 0:
-            r = []
-            for j in rfft(buf):
-                r.append(abs(j))
-            # Convert output to Hertz
-            pitch = r.index(max(r)) * 48000 / len(buf)
-            self.update_label_value('pitch', pitch)
-            return pitch
-        else:
-            return 0
-
-    def _get_resistance(self):
-        """ return resistance sensor value """
-        buf = self.ringbuffer.read(None, self.input_step)
-        if len(buf) > 0:
-            # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
-            # TODO: test this calibration on XO 1.5
-            if self.tw.hw == XO1:
-                resistance = 2.718 ** ((float(_avg(buf)) * 0.000045788) + \
-                                           8.0531)
-            else:
-                avg_buf = float(_avg(buf))
-                if avg_buf > 0:
-                    resistance = (420000000 / avg_buf) - 13500
-                else:
-                    resistance = 420000000
-            self.update_label_value('resistance', resistance)
-            return resistance
-        else:
-            return 0
-
-    def _get_voltage(self):
-        """ return voltage sensor value """
-        buf = self.ringbuffer.read(None, self.input_step)
-        if len(buf) > 0:
-            # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
-            voltage = float(_avg(buf)) * self.voltage_gain + self.voltage_bias
-            self.update_label_value('voltage', voltage)
-            return voltage
-        else:
-            return 0
-
     # Depreciated block methods
 
     def _show_template1x1(self, title, media):

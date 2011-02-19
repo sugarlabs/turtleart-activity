@@ -87,7 +87,6 @@ from dbus.mainloop.glib import DBusGMainLoop
 
 if GST_AVAILABLE:
     from tagplay import stop_media
-    from audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -264,22 +263,14 @@ class TurtleArtWindow():
             self._setup_misc()
             self._show_toolbar_palette(0, False)
 
-            # setup sound/sensor grab
-            if self.hw in [XO1, XO15]:
-                PALETTES[PALETTE_NAMES.index('sensor')].append('resistance')
-                PALETTES[PALETTE_NAMES.index('sensor')].append('voltage')
-            self.audio_started = False
-
         self._plugins = []
 
         self._init_plugins()
         self.lc = LogoCode(self)
-        self._run_plugins()
+        self._setup_plugins()
 
         self.saved_pictures = []
         self.block_operation = ''
-
-    ####
 
     def _get_plugin_home(self):
         """ Look in current directory first, then usual places """
@@ -316,29 +307,32 @@ class TurtleArtWindow():
         return plugin_files
         
     def _init_plugins(self):
-        for p in self._get_plugin_candidates(self._get_plugin_home()):
-            P = p.capitalize()
+        for pluginfile in self._get_plugin_candidates(self._get_plugin_home()):
+            pluginclass = pluginfile.capitalize()
             f = "def f(self): from plugins.%s import %s; return %s(self)" \
-                % (p, P, P)
-            plugin = {}
-            exec f in globals(), plugin
-            self._plugins.append(plugin.values()[0](self))
-            '''
+                % (pluginfile, pluginclass, pluginclass)
+            plugins = {}
             try:
-                exec f in globals(), plugin
-                self._plugins.append(plugin.values()[0](self))
+                exec f in globals(), plugins
+                self._plugins.append(plugins.values()[0](self))
             except ImportError:
-                print 'failed to import %s' % (P)
-            '''
+                print 'failed to import %s' % (pluginclass)
 
-    def _run_plugins(self):
-        for p in self._plugins:
-             p.setup()
+    def _setup_plugins(self):
+        for plugin in self._plugins:
+             plugin.setup()
 
-    def new_buffer(self, buf):
-        """ Append a new buffer to the ringbuffer """
-        self.lc.ringbuffer.append(buf)
-        return True
+    def _start_plugins(self):
+        for plugin in self._plugins:
+             plugin.start()
+
+    def _stop_plugins(self):
+        for plugin in self._plugins:
+             plugin.stop()
+
+    def _quit_plugins(self):
+        for plugin in self._plugins:
+             plugin.quit()
 
     def _setup_events(self):
         """ Register the events we listen to. """
@@ -414,31 +408,13 @@ class TurtleArtWindow():
         self.lc.prim_clear()
         self.display_coordinates()
 
-    def _start_audiograb(self):
-        """ Start grabbing audio if there is an audio block in use """
-        if not self.gst_available:
-            return
-        if len(self.block_list.get_similar_blocks('block',
-            ['volume', 'sound', 'pitch', 'resistance', 'voltage'])) > 0:
-            if self.audio_started:
-                self.audiograb.resume_grabbing()
-            else:
-                if self.hw == XO15:
-                    self.audiograb = AudioGrab_XO15(self.new_buffer, self)
-                elif self.hw == XO1:
-                    self.audiograb = AudioGrab_XO1(self.new_buffer, self)
-                else:
-                    self.audiograb = AudioGrab_Unknown(self.new_buffer, self)
-                self.audiograb.start_grabbing()
-                self.audio_started = True
-
     def run_button(self, time):
         """ Run turtle! """
         if self.running_sugar:
             self.activity.recenter()
 
         if self.interactive_mode:
-            self._start_audiograb()
+            self._start_plugins()
 
         # Look for a 'start' block
         for blk in self.just_blocks():
@@ -459,8 +435,7 @@ class TurtleArtWindow():
     def stop_button(self):
         """ Stop button """
         self.lc.stop_logo()
-        if self.audio_started:
-            self.audiograb.pause_grabbing()
+        self._stop_plugins()
 
     def set_userdefined(self, blk=None):
         """ Change icon for user-defined blocks after loading Python code. """
@@ -1625,7 +1600,7 @@ class TurtleArtWindow():
                 dy = 20
                 blk.expand_in_y(dy)
             else:
-                self._start_audiograb()
+                self._start_plugins()
                 self._run_stack(blk)
                 return
 
@@ -1688,7 +1663,7 @@ class TurtleArtWindow():
             elif blk.name in PYTHON_SKIN:
                 self._import_py()
             else:
-                self._start_audiograb()
+                self._start_plugins()
                 self._run_stack(blk)
 
         elif blk.name in ['sandwichtop_no_arm_no_label',
@@ -1703,7 +1678,7 @@ class TurtleArtWindow():
                 collapse_stack(top)
 
         else:
-            self._start_audiograb()
+            self._start_plugins()
             self._run_stack(blk)
 
     def _expand_boolean(self, blk, blk2, dy):
@@ -1993,8 +1968,7 @@ class TurtleArtWindow():
             if keyname == "p":
                 self.hideshow_button()
             elif keyname == 'q':
-                if self.audio_started:
-                    self.audiograb.stop_grabbing()
+                self._plugins_quit()
                 if self.gst_available:
                     stop_media(self.lc)
                 exit()
