@@ -428,10 +428,10 @@ class TurtleArtActivity(activity.Activity):
     def __visibility_notify_cb(self, window, event):
         """ Callback method for when the activity's visibility changes. """
         if event.state == gtk.gdk.VISIBILITY_FULLY_OBSCURED:
-            self.tw.lc.ag = None
+            self.tw.background_plugins()
         elif event.state in \
             [gtk.gdk.VISIBILITY_UNOBSCURED, gtk.gdk.VISIBILITY_PARTIAL]:
-            pass
+            self.tw.foreground_plugins()
 
     def update_title_cb(self, widget, event, toolbox):
         """ Update the title. """

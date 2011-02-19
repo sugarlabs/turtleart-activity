@@ -334,6 +334,16 @@ class TurtleArtWindow():
         for plugin in self._plugins:
             plugin.stop()
 
+    def background_plugins(self):
+        """ Background is called when we are pushed to the background. """
+        for plugin in self._plugins:
+            plugin.goto_background()
+
+    def foreground_plugins(self):
+        """ Foreground is called when we are return from the background. """
+        for plugin in self._plugins:
+            plugin.return_to_foreground()
+
     def _quit_plugins(self):
         """ Quit is called upon program exit. """
         for plugin in self._plugins:
@@ -1767,7 +1777,6 @@ class TurtleArtWindow():
         """ Run a stack of blocks. """
         if blk is None:
             return
-        self.lc.ag = None
         top = find_top_block(blk)
         self.lc.run_blocks(top, self.just_blocks(), True)
         if self.interactive_mode:

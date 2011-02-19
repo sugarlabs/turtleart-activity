@@ -457,7 +457,6 @@ class LogoCode:
         self.trace = 0
         self.update_values = False
         self.gplay = None
-        self.ag = None
         self.filepath = None
         self.dsobject = None
         self._start_time = None
