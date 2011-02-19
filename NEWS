@@ -6,9 +6,13 @@ BUG FIXES
 * Exposed see as an external method (#2542)
 * Media type tests on file suffix use lower()
 * Added support for localization to GNOME version (rgs)
+* Work around for situations where gst is not available
+* Fixed problem with displaying Journal preview images in portfolio
+* Restore overlay grids on clear
 
 ENHANCEMENTS
 
+* Added a Media Palette for all media-related blocks
 * Added sharing between Gnome and Sugar versions (with Raul Gutierrez)
 * Added 'time' block for measuring elapsed time (in seconds)
 * Added 'camera sees' block for reading average camera RGB value
@@ -16,6 +20,8 @@ ENHANCEMENTS
 * Added camera media block for grabbing images from the camera
 * New psuedo-color.ta example (Tony Forster)
 * New love-speaks-volumes.ta example
+* More complete translations in Spanish (es) and Italian (it)
+* Added plugin support for non-standard devices (camera, sensors, RFID)
 
 105
 
