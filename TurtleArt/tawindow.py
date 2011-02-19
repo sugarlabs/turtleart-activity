@@ -305,8 +305,9 @@ class TurtleArtWindow():
                 if c[-10:] == '_plugin.py' and c[0] != '#' and c[0] != '.':
                     plugin_files.append(c.split('.')[0])
         return plugin_files
-        
+
     def _init_plugins(self):
+        """ Try importing plugin files from the plugin directory. """
         for pluginfile in self._get_plugin_candidates(self._get_plugin_home()):
             pluginclass = pluginfile.capitalize()
             f = "def f(self): from plugins.%s import %s; return %s(self)" \
@@ -319,20 +320,24 @@ class TurtleArtWindow():
                 print 'failed to import %s' % (pluginclass)
 
     def _setup_plugins(self):
+        """ Initial setup -- call just once. """
         for plugin in self._plugins:
-             plugin.setup()
+            plugin.setup()
 
     def _start_plugins(self):
+        """ Start is called everytime we execute blocks. """
         for plugin in self._plugins:
-             plugin.start()
+            plugin.start()
 
     def _stop_plugins(self):
+        """ Stop is called whenever we stop execution. """
         for plugin in self._plugins:
-             plugin.stop()
+            plugin.stop()
 
     def _quit_plugins(self):
+        """ Quit is called upon program exit. """
         for plugin in self._plugins:
-             plugin.quit()
+            plugin.quit()
 
     def _setup_events(self):
         """ Register the events we listen to. """

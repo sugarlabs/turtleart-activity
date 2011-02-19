@@ -1315,7 +1315,9 @@ class LogoCode:
                 pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
             except:
                 _logger.debug("Couldn't open dsobject %s" % (self.dsobject))
-        if pixbuf is None and self.filepath is not None and self.filepath != '':
+        if pixbuf is None and \
+           self.filepath is not None and \
+           self.filepath != '':
             try:
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.filepath,
                                                               w, h)

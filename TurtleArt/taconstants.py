@@ -205,11 +205,11 @@ BASIC_STYLE_EXTENDED_VERTICAL = ['clean', 'penup', 'pendown', 'stack1',
 INVISIBLE = ['sandwichcollapsed']
 BASIC_STYLE_EXTENDED = ['picturelist', 'picture1x1', 'picture2x2',
     'picture2x1', 'picture1x2', 'picture1x1a']
-BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show', 'image',
+BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
     'setscale', 'setpensize', 'setcolor', 'setshade', 'print', 'showaligned',
     'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1', 'savepix',
     'storeinbox2', 'wait', 'stack', 'push', 'nop', 'addturtle', 'comment',
-    'savesvg', 'setgray', 'skin', 'reskin']
+     'image', 'savesvg', 'setgray', 'skin', 'reskin']
 BASIC_STYLE_VAR_ARG = ['userdefined', 'userdefined2args', 'userdefined3args']
 BULLET_STYLE = ['templatelist', 'list']
 BASIC_STYLE_2ARG = ['arc', 'setxy', 'setxy2', 'fillscreen', 'storein', 'write']
@@ -286,11 +286,11 @@ PYTHON_SKIN = ['nop', 'userdefined', 'userdefined2args', 'userdefined3args']
 #
 # These blocks hold constants
 #
-CONSTANTS = {'leftpos':None, 'toppos':None, 'rightpos':None, 'bottompos':None,
-             'width':None, 'height':None, 'red':0, 'orange':10, 'yellow':20,
-             'green':40, 'cyan':50, 'blue':70, 'purple':90, 'titlex':None,
-             'titley':None, 'leftx':None, 'topy':None, 'rightx':None,
-             'bottomy':None}
+CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
+             'bottompos': None, 'width': None, 'height': None, 'red': 0,
+             'orange': 10, 'yellow': 20, 'green': 40, 'cyan': 50, 'blue': 70,
+             'purple': 90, 'titlex': None, 'titley': None, 'leftx': None,
+             'topy': None, 'rightx': None, 'bottomy': None}
 
 #
 # Block-name dictionary used for labels
@@ -790,7 +790,8 @@ HELP_STRINGS = {
     'cartesian': _("displays Cartesian coordinates"),
     'clean': _("clears the screen and reset the turtle"),
     'clearheap': _("emptys FILO (first-in-last-out heap)"),
-    'color': _("holds current pen color (can be used in place of a number block)"),
+    'color': _(
+        "holds current pen color (can be used in place of a number block)"),
     'colors': _("Palette of pen colors"),
     'comment': _("places a comment in your code"),
     'debugoff': _("Debug"),
@@ -805,7 +806,8 @@ HELP_STRINGS = {
     'forever': _("loops forever"),
     'forward': _("moves turtle forward"),
     'fullscreen': _("hides the Sugar toolbars"),
-    'gray': _("holds current gray level (can be used in place of a number block)"),
+    'gray': _(
+        "holds current gray level (can be used in place of a number block)"),
     'greater2': _("logical greater-than operator"),
     'hat1': _("top of Action 1 stack"),
     'hat2': _("top of Action 2 stack"),
@@ -817,7 +819,8 @@ HELP_STRINGS = {
     'hspace': _("jogs stack right"),
     'identity2': _("identity operator used for extending blocks"),
     'ifelse': _("if-then-else operator that uses boolean operators from Numbers palette"),
-    'if': _("if-then operator that uses boolean operators from Numbers palette"),
+    'if': _(
+        "if-then operator that uses boolean operators from Numbers palette"),
     'journal': _("Sugar Journal media object"),
     'kbinput': _("query for keyboard input (results stored in keyboard block)"),
     'keyboard': _("holds results of query-keyboard block"),
@@ -840,10 +843,13 @@ HELP_STRINGS = {
     'orientation': _("changes the orientation of the palette of blocks"),
     'pendown': _("Turtle will draw when moved."),
     'pen': _("Palette of pen commands"),
-    'pensize': _("holds current pen size (can be used in place of a number block)"),
+    'pensize': _(
+        "holds current pen size (can be used in place of a number block)"),
     'penup': _("Turtle will not draw when moved."),
-    'picture1x1': _("presentation template: select Journal object (with description)"),
-    'picture1x1a': _("presentation template: select Journal object (no description)"),
+    'picture1x1': _(
+        "presentation template: select Journal object (with description)"),
+    'picture1x1a': _(
+        "presentation template: select Journal object (no description)"),
     'picture1x2': _("presentation template: select two Journal objects"),
     'picture2x1': _("presentation template: select two Journal objects"),
     'picture2x2': _("presentation template: select four Journal objects"),
@@ -869,7 +875,8 @@ HELP_STRINGS = {
     'right': _("turns turtle clockwise (angle in degrees)"),
     'run-fastoff': _("Run"),
     'run-slowoff': _("Step"),
-    'sandwichbottom': _("bottom block in a collapsibe stack: click to collapse"),
+    'sandwichbottom': _(
+        "bottom block in a collapsibe stack: click to collapse"),
     'sandwichcollapsed': _("bottom block in a collapsed stack: click to open"),
     'sandwichtop': _("top of a collapsible stack"),
     'sandwichtop_no_label': _("top of a collapsed stack"),
@@ -882,7 +889,8 @@ HELP_STRINGS = {
     'sensor': _("Palette of sensor blocks"),
     'setcolor': _("sets color of the line drawn by the turtle"),
     'setgray': _("sets gray level of the line drawn by the turtle"),
-    'seth': _("sets the heading of the turtle (0 is towards the top of the screen.)"),
+    'seth': _(
+        "sets the heading of the turtle (0 is towards the top of the screen.)"),
     'setpensize': _("sets size of the line drawn by the turtle"),
     'setscale': _("sets the scale of media"),
     'setshade': _("sets shade of the line drawn by the turtle"),
@@ -907,22 +915,29 @@ HELP_STRINGS = {
     'storeinbox2': _("stores numeric value in Variable 2"),
     'storein': _("stores numeric value in named variable"),
     'string': _("string value"),
-    'template1x1': _("presentation template: select Journal object (with description)"),
-    'template1x1a': _("presentation template: select Journal object (no description)"),
+    'template1x1': _(
+        "presentation template: select Journal object (with description)"),
+    'template1x1a': _(
+        "presentation template: select Journal object (no description)"),
     'template1x2': _("presentation template: select two Journal objects"),
     'template2x1': _("presentation template: select two Journal objects"),
     'template2x2': _("presentation template: select four Journal objects"),
     'templatelist': _("presentation template: list of bullets"),
-    'textcolor': _("holds current text color (can be used in place of a number block)"),
-    'textsize': _("holds current text size (can be used in place of a number block)"),
+    'textcolor': _(
+        "holds current text color (can be used in place of a number block)"),
+    'textsize': _(
+        "holds current text size (can be used in place of a number block)"),
     'time': _("elapsed time (in seconds) since program started"),
     'toppos': _("ycor of top of screen"),
     'trash': _("Trashcan"),
     'turtle': _("Palette of turtle commands"),
     'until': _("do-until-True operator that uses boolean operators from Numbers palette"),
-    'userdefined': _("runs code found in the tamyblock.py module found in the Journal"),
-    'userdefined2args': _("runs code found in the tamyblock.py module found in the Journal"),
-    'userdefined3args': _("runs code found in the tamyblock.py module found in the Journal"),
+    'userdefined': _(
+        "runs code found in the tamyblock.py module found in the Journal"),
+    'userdefined2args': _(
+        "runs code found in the tamyblock.py module found in the Journal"),
+    'userdefined3args': _(
+        "runs code found in the tamyblock.py module found in the Journal"),
     'video': _("Sugar Journal video object"),
     'voltage': _("sensor voltage"),
     'vspace': _("jogs stack down"),
@@ -937,17 +952,17 @@ HELP_STRINGS = {
 #
 
 DEAD_KEYS = ['grave', 'acute', 'circumflex', 'tilde', 'diaeresis', 'abovering']
-DEAD_DICTS = [{'A':192, 'E':200, 'I':204, 'O':210, 'U':217, 'a':224, 'e':232,
-               'i':236, 'o':242, 'u':249},
-              {'A':193, 'E':201, 'I':205, 'O':211, 'U':218, 'a':225, 'e':233,
-               'i':237, 'o':243, 'u':250},
-              {'A':194, 'E':202, 'I':206, 'O':212, 'U':219, 'a':226, 'e':234,
-               'i':238, 'o':244, 'u':251},
-              {'A':195, 'O':211, 'N':209, 'U':360, 'a':227, 'o':245, 'n':241,
-               'u':361},
-              {'A':196, 'E':203, 'I':207, 'O':211, 'U':218, 'a':228, 'e':235,
-               'i':239, 'o':245, 'u':252},
-              {'A':197, 'a':229}]
+DEAD_DICTS = [{'A': 192, 'E': 200, 'I': 204, 'O': 210, 'U': 217, 'a': 224,
+               'e': 232, 'i': 236, 'o': 242, 'u': 249},
+              {'A': 193, 'E': 201, 'I': 205, 'O': 211, 'U': 218, 'a': 225,
+               'e': 233, 'i': 237, 'o': 243, 'u': 250},
+              {'A': 194, 'E': 202, 'I': 206, 'O': 212, 'U': 219, 'a': 226,
+               'e': 234, 'i': 238, 'o': 244, 'u': 251},
+              {'A': 195, 'O': 211, 'N': 209, 'U': 360, 'a': 227, 'o': 245,
+               'n': 241, 'u': 361},
+              {'A': 196, 'E': 203, 'I': 207, 'O': 211, 'U': 218, 'a': 228,
+               'e': 235, 'i': 239, 'o': 245, 'u': 252},
+              {'A': 197, 'a': 229}]
 NOISE_KEYS = ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', 'Pause',
               'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift', 'KP_Divide',
               'Escape', 'Return', 'KP_Page_Up', 'Up', 'Down', 'Menu',
