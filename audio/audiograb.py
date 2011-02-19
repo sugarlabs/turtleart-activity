@@ -21,6 +21,11 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+SENSOR_AC_NO_BIAS = 'external'
+SENSOR_AC_BIAS = 'sound'
+SENSOR_DC_NO_BIAS = 'voltage'
+SENSOR_DC_BIAS = 'resistance'
+
 import pygst
 import gst
 import gst.interfaces
@@ -49,8 +54,7 @@ _logger = logging.getLogger('TurtleArt')
 _logger.setLevel(logging.DEBUG)
 logging.basicConfig()
 
-from taconstants import SENSOR_AC_NO_BIAS, SENSOR_AC_BIAS, SENSOR_DC_NO_BIAS, \
-    SENSOR_DC_BIAS, XO1
+from TurtleArt.taconstants import XO1
 
 
 class AudioGrab:

@@ -133,8 +133,7 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right',
             ['push', 'printheap', 'clearheap', 'pop', 'comment', 'print',
              'myfunc1arg', 'userdefined', 'cartesian', 'polar', 'addturtle',
              'reskin', 'sandwichtop_no_label', 'sandwichbottom'],
-            ['kbinput',  'keyboard', 'readpixel', 'see', 'time',
-             'sound', 'volume', 'pitch'],
+            ['kbinput',  'keyboard', 'readpixel', 'see', 'time'],
             ['journal', 'audio', 'video', 'description', 'string',
              'show', 'setscale', 'savepix', 'savesvg', 'scale', 'mediawait'],
             ['hideblocks', 'showblocks', 'fullscreen', 'picturelist',
@@ -191,10 +190,6 @@ DEFAULT_SCALE = 33
 XO1 = 'xo1'
 XO15 = 'xo1.5'
 UNKNOWN = 'unknown'
-SENSOR_AC_NO_BIAS = 'external'
-SENSOR_AC_BIAS = 'sound'
-SENSOR_DC_NO_BIAS = 'voltage'
-SENSOR_DC_BIAS = 'resistance'
 
 #
 # Block-style definitions
@@ -223,8 +218,7 @@ BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
     'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard',
     'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'white',
     'black', 'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy',
-    'sound', 'volume', 'pitch', 'voltage', 'resistance', 'gray', 'see',
-    'time']
+    'gray', 'see', 'time']
 BOX_STYLE_MEDIA = ['description', 'audio', 'journal', 'video']
 NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
 NUMBER_STYLE_VAR_ARG = ['myfunc1arg', 'myfunc2arg', 'myfunc3arg']
@@ -532,7 +526,6 @@ PRIMITIVES = {
     'pendown': 'pendown',
     'pensize': 'pensize',
     'penup': 'penup',
-    'pitch': 'pitch',
     'plus2': 'plus',
     'polar': 'polar',
     'pop': 'pop',
@@ -547,7 +540,6 @@ PRIMITIVES = {
     'readpixel': 'readpixel',
     'remainder2': 'mod',
     'repeat': 'repeat',
-    'resistance': 'resistance',
     'right': 'right',
     'rightpos': 'rpos',
     'rightx': 'rightx',
@@ -576,7 +568,6 @@ PRIMITIVES = {
     'showblocks': 'showblocks',
     'showaligned': 'showaligned',
     'skin': 'skin',
-    'sound': 'sound',
     'sqrt': 'sqrt',
     'stack': 'stack',
     'stack1': 'stack1',
@@ -603,8 +594,6 @@ PRIMITIVES = {
     'userdefined': 'userdefined',
     'userdefined2args': 'userdefined2',
     'userdefined3args': 'userdefined3',
-    'voltage': 'voltage',
-    'volume': 'volume',
     'vspace': 'nop',
     'wait': 'wait',
     'while2': 'while',
@@ -859,7 +848,6 @@ HELP_STRINGS = {
     'picture2x1': _("presentation template: select two Journal objects"),
     'picture2x2': _("presentation template: select four Journal objects"),
     'picturelist': _("presentation template: list of bullets"),
-    'pitch': _('microphone input pitch'),
     'plus2': _("adds two alphanumeric inputs"),
     'polar': _("displays polar coordinates"),
     'pop': _("pops value off FILO (first-in last-out heap)"),
@@ -906,7 +894,6 @@ HELP_STRINGS = {
     'show': _("draws text or show media from the Journal"),
     'showblocks': _("restores hidden blocks"),
     'skin': _("put a custom 'shell' on the turtle"),
-    'sound': _("raw microphone input signal"),
     'sqrt': _("calculates square root"),
     'stack1': _("invokes Action 1 stack"),
     'stack2': _("invokes Action 2 stack"),
@@ -938,7 +925,6 @@ HELP_STRINGS = {
     'userdefined3args': _("runs code found in the tamyblock.py module found in the Journal"),
     'video': _("Sugar Journal video object"),
     'voltage': _("sensor voltage"),
-    'volume': _("microphone input volume"),
     'vspace': _("jogs stack down"),
     'wait': _("pauses program execution a specified number of seconds"),
     'while': _("do-while-True operator that uses boolean operators from Numbers palette"),
