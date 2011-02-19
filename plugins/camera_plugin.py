@@ -61,7 +61,7 @@ class Camera_plugin(Plugin):
 
     def setup(self):
         # set up camera-specific blocks
-        if self._self_test():
+        if self._status:
             PALETTES[PALETTE_NAMES.index('sensor')].append('luminance')
             BOX_STYLE.append('luminance')
             BLOCK_NAMES['luminance'] = [_('brightness')]
@@ -81,19 +81,35 @@ class Camera_plugin(Plugin):
             HELP_STRINGS['camera'] = _('camera output')
             MEDIA_BLOCKS_DICTIONARY['camera'] = self.prim_take_picture
 
+    def start(self):
+        # This gets called by the start button
+        pass
+
     def stop(self):
-        # Ths gets called by the stop button
-        if self._self_test():
+        # This gets called by the stop button
+        if self._status:
             self._camera.stop_camera_input()
 
-    def _self_test(self):
-        print 'reporting Camera status %s' % (str(self._status))
+    def goto_background(self):
+        # This gets called when your process is sent to the background
+        pass
+
+    def return_to_foreground(self):
+        # This gets called when your process returns from the background
+        pass
+
+    def quit(self):
+        # This gets called by the quit button
+        pass
+
+    def _status_report(self):
+        print 'Reporting camera status: %s' % (str(self._status))
         return self._status
 
     # Block primitives used in talogo
 
     def prim_take_picture(self):
-        if self._self_test():
+        if self._status:
             ''' method called by media block '''
             self._camera.save_camera_input_to_file()
             self._camera.stop_camera_input()
@@ -104,7 +120,7 @@ class Camera_plugin(Plugin):
         pixbuf = None
         array = None
         w, h = self._parent.lc._w(), self._parent.lc._h()
-        if w > 0 and h > 0 and self._self_test():
+        if w > 0 and h > 0 and self._status:
             try:
                 self._video_capture_device = open('/dev/video0', 'rw')
             except:
