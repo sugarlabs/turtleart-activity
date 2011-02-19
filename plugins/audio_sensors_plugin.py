@@ -87,7 +87,7 @@ class Audio_sensors_plugin(Plugin):
         PALETTES[PALETTE_NAMES.index('sensor')].append('sound')
         BOX_STYLE.append('sound')
         BLOCK_NAMES['sound'] = [_('sound')]
-        HELP_STRINGS['sound'] = _('raw microphone input signal'),
+        HELP_STRINGS['sound'] = _('raw microphone input signal')
         VALUE_BLOCKS.append('sound')
         PRIMITIVES['sound'] = 'sound'
         PLUGIN_DICTIONARY['sound'] = self.prim_sound
