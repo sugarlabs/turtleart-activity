@@ -72,6 +72,17 @@ class Camera_plugin(Plugin):
             self._parent.lc._def_prim('luminance', 0,
                 lambda self: PLUGIN_DICTIONARY['luminance'](True))
 
+            # Depreciated block
+            BOX_STYLE.append('readcamera')
+            BLOCK_NAMES['readcamera'] = [_('read camera')]
+            HELP_STRINGS['readcamera'] = \
+                _("Average RGB color from camera is pushed to the stack")
+            VALUE_BLOCKS.append('readcamera')
+            PRIMITIVES['readcamera'] = 'readcamera'
+            PLUGIN_DICTIONARY['readcamera'] = self.prim_read_camera
+            self._parent.lc._def_prim('readcamera', 0,
+                lambda self: PLUGIN_DICTIONARY['readcamera'](True))
+
             PALETTES[PALETTE_NAMES.index('sensor')].append('camera')
             BOX_STYLE_MEDIA.append('camera')
             CONTENT_BLOCKS.append('camera')
