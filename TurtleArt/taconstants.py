@@ -201,7 +201,7 @@ BASIC_STYLE = []
 BASIC_STYLE_EXTENDED_VERTICAL = ['clean', 'penup', 'pendown', 'stack1',
     'stack2', 'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput',
     'fullscreen', 'cartesian', 'polar', 'startfill', 'mediawait',
-    'stopfill', 'readpixel', 'readcamera', 'vspace']
+    'stopfill', 'readpixel', 'vspace']
 INVISIBLE = ['sandwichcollapsed']
 BASIC_STYLE_EXTENDED = ['picturelist', 'picture1x1', 'picture2x2',
     'picture2x1', 'picture1x2', 'picture1x1a']
@@ -381,7 +381,6 @@ BLOCK_NAMES = {
     'purple': [_('purple')],
     'push': [_('push')],
     'random': [_('random'), _('min'), _('max')],
-    'readcamera': [_('read camera')],
     'readpixel': [_('read pixel')],
     'red': [_('red')],
     'remainder2': [_('mod')],
@@ -536,7 +535,6 @@ PRIMITIVES = {
     'push': 'push',
     'random': 'random',
     'red': 'red',
-    'readcamera': 'readcamera',
     'readpixel': 'readpixel',
     'remainder2': 'mod',
     'repeat': 'repeat',
@@ -870,7 +868,6 @@ HELP_STRINGS = {
     'product2': _("multiplies two numeric inputs"),
     'push': _("pushes value onto FILO (first-in last-out heap)"),
     'random': _("returns random number between minimum (top) and maximum (bottom) values"),
-    'readcamera': _("Average RGB color from camera is pushed to the stack"),
     'readpixel': _("RGB color under the turtle is pushed to the stack"),
     'remainder2': _("modular (remainder) operator"),
     'repeat': _("loops specified number of times"),
