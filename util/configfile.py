@@ -1,9 +1,23 @@
 #!/usr/bin/env python
 #
 # Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later version.
 #
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the
+# Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
 
 import gobject
+
 
 class ConfigFile(gobject.GObject):
     """Load/save a simple (key = value) config file"""
@@ -15,7 +29,7 @@ class ConfigFile(gobject.GObject):
                                  ()),
         }
 
-    def __init__(self, config_file_path, valid_keys = {}):
+    def __init__(self, config_file_path, valid_keys={}):
         gobject.GObject.__init__(self)
 
         self._config_file_path = config_file_path
@@ -29,24 +43,24 @@ class ConfigFile(gobject.GObject):
     def is_loaded(self):
         return self._is_loaded
 
-    def get(self, key, empty_if_not_loaded = False):
-        if not self._valid_keys.has_key(key):
+    def get(self, key, empty_if_not_loaded=False):
+        if not key in self._valid_keys:
             raise RuntimeError("Unknown config value %s" % key)
 
-        if self._config_hash.has_key(key):
+        if key in self._config_hash:
             value = self._config_hash[key]
         else:
             if self._valid_keys[key]["type"] == "text":
                 value = ""
-            elif self._valid_keys[key]["type"] == "boolean": 
+            elif self._valid_keys[key]["type"] == "boolean":
                 value = False
-            elif self._valid_keys[key]["type"] == "integer": 
-                value = 0 
+            elif self._valid_keys[key]["type"] == "integer":
+                value = 0
 
         return value
 
     def set(self, key, value):
-        if not self._valid_keys.has_key(key):
+        if not key in self._valid_keys:
             raise RuntimeError("Unknown config value %s" % key)
 
         self._config_hash[key] = value
@@ -58,10 +72,10 @@ class ConfigFile(gobject.GObject):
             config_file.close()
             for line in lines:
                 line = line.strip()
-                k,v = line.split('=')
+                k, v = line.split('=')
                 k = k.strip(' ')
                 v = v.strip(' ')
-                if not self._valid_keys.has_key(k):
+                if not k in self._valid_keys:
                     raise RuntimeError("Unknown config value %s" % k)
                 value_type = self._valid_keys[k]["type"]
                 if value_type == "text":
@@ -73,11 +87,11 @@ class ConfigFile(gobject.GObject):
                 self._config_hash[k] = value
             self._is_loaded = True
             self.emit('configuration-loaded')
-        except Exception,e:
+        except Exception, e:
             print e
 
         return self._is_loaded
-        
+
     def save(self):
         config_file = open(self._config_file_path, 'w')
         for k in self._config_hash.keys():
@@ -94,14 +108,15 @@ class ConfigFile(gobject.GObject):
             l = "%s = %s\n" % (k, v)
             print l
 
+
 def test_save_load(test_config_file):
     keys = {}
-    keys["nick"] = { "type" : "text" }
-    keys["account_id"] = { "type" : "text" }
-    keys["server"] = { "type" : "text" }
-    keys["port"] = { "type" : "text" }
-    keys["password"] = { "type" : "text" }
-    keys["register"] = { "type" : "text" }
+    keys["nick"] = {"type": "text"}
+    keys["account_id"] = {"type": "text"}
+    keys["server"] = {"type": "text"}
+    keys["port"] = {"type": "text"}
+    keys["password"] = {"type": "text"}
+    keys["register"] = {"type": "text"}
 
     c = ConfigFile(test_config_file)
     c.set_valid_keys(keys)
@@ -113,28 +128,31 @@ def test_save_load(test_config_file):
     c.set("register", True)
 
     c.save()
-    
+
     c = ConfigFile(test_config_file)
     c.set_valid_keys(keys)
     c.load()
     c.dump_keys()
 
+
 def _configuration_saved_cb(config_file_obj):
     print "_configuration_saved_cb called"
     config_file_obj.dump_keys()
+
 
 def _configuration_loaded_cb(config_file_obj):
     print "_configuration_loaded_cb called"
     config_file_obj.dump_keys()
 
+
 def test_signals(test_config_file):
     keys = {}
-    keys["nick"] = { "type" : "text" }
-    keys["account_id"] = { "type" : "text" }
-    keys["server"] = { "type" : "text" }
-    keys["port"] = { "type" : "text" }
-    keys["password"] = { "type" : "text" }
-    keys["register"] = { "type" : "text" }
+    keys["nick"] = {"type": "text"}
+    keys["account_id"] = {"type": "text"}
+    keys["server"] = {"type": "text"}
+    keys["port"] = {"type": "text"}
+    keys["password"] = {"type": "text"}
+    keys["register"] = {"type": "text"}
 
     c = ConfigFile(test_config_file)
     c.connect('configuration-saved', _configuration_saved_cb)
@@ -147,11 +165,12 @@ def test_signals(test_config_file):
     c.set("register", True)
 
     c.save()
-    
+
     c = ConfigFile(test_config_file)
     c.connect('configuration-loaded', _configuration_loaded_cb)
     c.set_valid_keys(keys)
     c.load()
+
 
 if __name__ == "__main__":
     test_save_load("/tmp/configfile.0001")

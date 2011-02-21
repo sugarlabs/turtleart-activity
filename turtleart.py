@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #Copyright (c) 2007-8, Playful Invention Company
-#Copyright (c) 2008-10, Walter Bender
+#Copyright (c) 2008-11, Walter Bender
+#Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -42,16 +43,20 @@ except ImportError, e:
 argv = sys.argv[:]  # Workaround for import behavior of gst in tagplay
 sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 
-from gettext import gettext as _
+import gettext
 
-from TurtleArt.taconstants import OVERLAY_LAYER
+gettext.bindtextdomain('org.laptop.TurtleArtActivity', 'locale')
+gettext.textdomain('org.laptop.TurtleArtActivity')
+_ = gettext.gettext
+
+from TurtleArt.taconstants import OVERLAY_LAYER, DEFAULT_TURTLE_COLORS
 from TurtleArt.tautils import data_to_string, data_from_string, get_save_name
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
-from extra.upload import Uploader
-from extra.collaborationplugin import CollaborationPlugin
+
 from util.menubuilder import MenuBuilder
+
 
 class TurtleMain():
     """ Launch Turtle Art from outside of Sugar """
@@ -64,11 +69,13 @@ class TurtleMain():
     _INSTALL_PATH = '/usr/share/turtleart'
     _ALTERNATE_INSTALL_PATH = '/usr/local/share/turtleart'
     _ICON_SUBPATH = 'images/turtle.png'
+    _GNOME_PLUGIN_SUBPATH = 'gnome_plugins'
 
     def __init__(self):
         self._init_vars()
         self._parse_command_line()
         self._ensure_sugar_paths()
+        self._plugins = []
 
         if self.output_png:
             pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8,
@@ -85,17 +92,60 @@ class TurtleMain():
             self._run_plugins()
             self._start_gtk()
 
+    def get_config_home(self):
+        return CONFIG_HOME
+
+    def _get_gnome_plugin_home(self):
+        """ Look in current directory first, then usual places """
+        path = os.path.join(os.getcwd(), self._GNOME_PLUGIN_SUBPATH)
+        if os.path.exists(path):
+            return path
+        path = os.path.expanduser(os.path.join('~', 'Activities',
+                                               'TurtleBlocks.activity',
+                                               self._GNOME_PLUGIN_SUBPATH))
+        if os.path.exists(path):
+            return path
+        path = os.path.expanduser(os.path.join('~', 'Activities',
+                                               'TurtleArt.activity',
+                                               self._GNOME_PLUGIN_SUBPATH))
+        if os.path.exists(path):
+            return path
+        path = os.path.join(self._INSTALL_PATH, self._GNOME_PLUGIN_SUBPATH)
+        if os.path.exists(path):
+            return path
+        path = os.path.join(self._ALTERNATE_INSTALL_PATH,
+                            self._GNOME_PLUGIN_SUBPATH)
+        if os.path.exists(path):
+            return path
+        return None
+
+    def _get_plugin_candidates(self, path):
+        """ Look for plugin files in plugin directory. """
+        plugin_files = []
+        if path is not None:
+            candidates = os.listdir(path)
+            for c in candidates:
+                if c[-10:] == '_plugin.py' and c[0] != '#' and c[0] != '.':
+                    plugin_files.append(c.split('.')[0])
+        return plugin_files
+        
     def _init_plugins(self):
-        config_file_path = os.path.join(CONFIG_HOME, 'turtleartrc.collab')
-        self._collab_plugin = CollaborationPlugin(self, config_file_path)
-        self._uploader = Uploader()
+        for p in self._get_plugin_candidates(self._get_gnome_plugin_home()):
+            P = p.capitalize()
+            f = "def f(self): from gnome_plugins.%s import %s; return %s(self)" \
+                % (p, P, P)
+            plugin = {}
+            try:
+                exec f in globals(), plugin
+                self._plugins.append(plugin.values()[0](self))
+            except ImportError:
+                print 'failed to import %s' % (P)
 
     def _run_plugins(self):
-        self._uploader.set_tw(self.tw)
-        self._collab_plugin.set_tw(self.tw)
-        self._collab_plugin.setup()
+        for p in self._plugins:
+             p.set_tw(self.tw)
 
-    def _mkdir_p(path):
+    def _mkdir_p(self, path):
         '''Create a directory in a fashion similar to `mkdir -p`'''
         try:
             os.makedirs(path)
@@ -136,15 +186,16 @@ class TurtleMain():
         if os.path.exists(self._INSTALL_PATH):
             self.tw = TurtleArtWindow(self.canvas, self._INSTALL_PATH)
         elif os.path.exists(self._ALTERNATE_INSTALL_PATH):
-            self.tw = TurtleArtWindow(self.canvas, self._ALTERNATE_INSTALL_PATH)
+            self.tw = TurtleArtWindow(self.canvas,
+                                      self._ALTERNATE_INSTALL_PATH)
         else:
             self.tw = TurtleArtWindow(self.canvas, os.path.abspath('.'))
 
         self.tw.save_folder = os.path.expanduser('~')
 
     def _init_vars(self):
-        # If we are invoked to start a project from Gnome, we should make
-        # sure our current directory is TA's source dir.
+        """ If we are invoked to start a project from Gnome, we should make
+        sure our current directory is TA's source dir. """
         os.chdir(os.path.dirname(__file__))
 
         self.ta_file = None
@@ -182,10 +233,8 @@ class TurtleMain():
             if not os.path.exists(self.ta_file):
                 assert False, ('%s: %s' % (self.ta_file, _('File not found')))
 
-    """
-    make sure Sugar paths are present
-    """
     def _ensure_sugar_paths(self):
+        """ Make sure Sugar paths are present. """
         tapath = os.path.join(os.environ['HOME'], '.sugar', 'default',
                               'org.laptop.TurtleArtActivity')
         map(self._makepath, (os.path.join(tapath, 'data/'),
@@ -212,10 +261,16 @@ class TurtleMain():
             data_file.write(str(800) + '\n')
             data_file.write(str(550) + '\n')
             data_file.seek(0)
-        self.x = int(data_file.readline())
-        self.y = int(data_file.readline())
-        self.width = int(data_file.readline())
-        self.height = int(data_file.readline())
+        try:
+            self.x = int(data_file.readline())
+            self.y = int(data_file.readline())
+            self.width = int(data_file.readline())
+            self.height = int(data_file.readline())
+        except ValueError:
+            self.x = 50
+            self.y = 50
+            self.width = 800
+            self.height = 550
 
     def _setup_gtk(self):
         win = gtk.Window(gtk.WINDOW_TOPLEVEL)
@@ -223,7 +278,8 @@ class TurtleMain():
         win.move(self.x, self.y)
         win.maximize()
         win.set_title(_('Turtle Art'))
-        if os.path.exists(os.path.join(self._INSTALL_PATH, self._ICON_SUBPATH)):
+        if os.path.exists(os.path.join(self._INSTALL_PATH,
+                                       self._ICON_SUBPATH)):
             win.set_icon_from_file(os.path.join(self._INSTALL_PATH,
                                                 self._ICON_SUBPATH))
         else:
@@ -261,23 +317,25 @@ class TurtleMain():
         MenuBuilder.make_menu_item(menu, _('New'), self._do_new_cb)
         MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
         MenuBuilder.make_menu_item(menu, _('Save'), self._do_save_cb)
-        MenuBuilder.make_menu_item(menu, _('Save As'), self._do_save_as_cb)
-        MenuBuilder.make_menu_item(menu, _('Save as image'), self._do_save_picture_cb)
-        MenuBuilder.make_menu_item(menu, _('Save as HTML'), self._do_save_html_cb)
-        MenuBuilder.make_menu_item(menu, _('Save as Logo'), self._do_save_logo_cb)
-        if self._uploader.enabled():
-            MenuBuilder.make_menu_item(menu, _('Upload to Web'),
-                                 self._uploader.do_upload_to_web)
+        MenuBuilder.make_menu_item(menu, _('Save as'), self._do_save_as_cb)
+        MenuBuilder.make_menu_item(menu, _('Save as image'),
+                                   self._do_save_picture_cb)
+        MenuBuilder.make_menu_item(menu, _('Save as HTML'),
+                                   self._do_save_html_cb)
+        MenuBuilder.make_menu_item(menu, _('Save as Logo'),
+                                   self._do_save_logo_cb)
         MenuBuilder.make_menu_item(menu, _('Quit'), self.destroy)
         activity_menu = MenuBuilder.make_sub_menu(menu, _('File'))
 
         menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('Cartesian coordinates'),
                         self._do_cartesian_cb)
-        MenuBuilder.make_menu_item(menu, _('Polar coordinates'), self._do_polar_cb)
+        MenuBuilder.make_menu_item(menu, _('Polar coordinates'),
+                                   self._do_polar_cb)
         MenuBuilder.make_menu_item(menu, _('Rescale coordinates'),
                         self._do_rescale_cb)
-        MenuBuilder.make_menu_item(menu, _('Grow blocks'), self._do_resize_cb, 1.5)
+        MenuBuilder.make_menu_item(menu, _('Grow blocks'),
+                                   self._do_resize_cb, 1.5)
         MenuBuilder.make_menu_item(menu, _('Shrink blocks'),
                         self._do_resize_cb, 0.667)
         MenuBuilder.make_menu_item(menu, _('Reset block size'),
@@ -290,9 +348,12 @@ class TurtleMain():
         edit_menu = MenuBuilder.make_sub_menu(menu, _('Edit'))
 
         menu = gtk.Menu()
-        MenuBuilder.make_menu_item(menu, _('Show palette'), self._do_palette_cb)
-        MenuBuilder.make_menu_item(menu, _('Hide palette'), self._do_hide_palette_cb)
-        MenuBuilder.make_menu_item(menu, _('Show/hide blocks'), self._do_hideshow_cb)
+        MenuBuilder.make_menu_item(menu, _('Show palette'),
+                                   self._do_palette_cb)
+        MenuBuilder.make_menu_item(menu, _('Hide palette'),
+                                   self._do_hide_palette_cb)
+        MenuBuilder.make_menu_item(menu, _('Show/hide blocks'),
+                                   self._do_hideshow_cb)
         tool_menu = MenuBuilder.make_sub_menu(menu, _('Tools'))
 
         menu = gtk.Menu()
@@ -303,15 +364,16 @@ class TurtleMain():
         MenuBuilder.make_menu_item(menu, _('Stop'), self._do_stop_cb)
         turtle_menu = MenuBuilder.make_sub_menu(menu, _('Turtle'))
 
-        collaboration_menu = self._collab_plugin.get_menu()
-
         menu_bar = gtk.MenuBar()
         menu_bar.append(activity_menu)
         menu_bar.append(edit_menu)
         menu_bar.append(view_menu)
         menu_bar.append(tool_menu)
         menu_bar.append(turtle_menu)
-        menu_bar.append(collaboration_menu)
+
+        # Add menus for plugins
+        for p in self._plugins:
+            menu_bar.append(p.get_menu())
         return menu_bar
 
     def _quit_ta(self, widget=None, e=None):
@@ -329,8 +391,8 @@ class TurtleMain():
         """ Dialog for save project """
         dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
                                 buttons=gtk.BUTTONS_OK_CANCEL,
-                                message_format= \
-           _('You have unsaved work. Would you like to save before quitting?'))
+                                message_format=_(
+             'You have unsaved work. Would you like to save before quitting?'))
         dlg.set_title(_('Save project?'))
         dlg.set_property('skip-taskbar-hint', False)
 
@@ -528,6 +590,22 @@ class TurtleMain():
     def destroy(self, event, data=None):
         """ Callback for destroy event. """
         gtk.main_quit()
+
+    def nick_changed(self, nick):
+        """ TODO: Rename default turtle in dictionary """
+        pass
+
+    def color_changed(self, colors):
+        """ Reskin turtle with collaboration colors """
+        turtle = self.tw.turtles.get_turtle(self.tw.default_turtle_name)
+        try:
+            turtle.colors = colors.split(',')
+        except:
+            turtle.colors = DEFAULT_TURTLE_COLORS
+        turtle.custom_shapes = True  # Force regeneration of shapes
+        turtle.reset_shapes()
+        turtle.show()
+
 
 if __name__ == "__main__":
     TurtleMain()

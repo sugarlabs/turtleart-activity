@@ -1,25 +1,41 @@
 #!/usr/bin/python
+# Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the
+# Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
 
 from configfile import ConfigFile
-import gtk 
+import gtk
+
 
 class ConfigWizard():
     """Simple configuration wizard window."""
-    
+
     def __init__(self, config_file_path):
         self._config_items = []
         self._config_entries = {}
         self._config_file_path = config_file_path
-        self._config_file_obj = None 
+        self._config_file_obj = None
 
     """
-    [ { item_label, item_type, item_name, item_with_value } , ... ]
+    [ {item_label, item_type, item_name, item_with_value} , ... ]
     """
     def set_config_items(self, items):
         self._config_items = items
         keys = {}
         for i in self._config_items:
-            keys[i["item_name"]] = { "type" : i["item_type"] }
+            keys[i["item_name"]] = {"type": i["item_type"]}
         self._valid_keys = keys
 
     def set_config_file_obj(self, obj):
@@ -28,7 +44,7 @@ class ConfigWizard():
     def get_config_file_obj(self, obj):
         return self._config_file_obj
 
-    def show(self, read_from_disc = False):
+    def show(self, read_from_disc=False):
 
         if read_from_disc:
             self._config_file_obj = ConfigFile(self._config_file_path)
@@ -47,8 +63,8 @@ class ConfigWizard():
         row = 1
         for i in self._config_items:
             hbox = self._create_param(i)
-            table.attach(hbox, 0, 1, row, row+1, xpadding=5, ypadding=2)
-            row = row +1
+            table.attach(hbox, 0, 1, row, row + 1, xpadding=5, ypadding=2)
+            row = row + 1
 
         hbox = gtk.HBox()
         save_button = gtk.Button('Save')
@@ -59,7 +75,7 @@ class ConfigWizard():
         cancel_button.set_size_request(50, 15)
         cancel_button.connect('pressed', self._close_config_cb)
         hbox.add(cancel_button)
-        table.attach(hbox, 0, 1, row, row+1, xpadding=5, ypadding=2)
+        table.attach(hbox, 0, 1, row, row + 1, xpadding=5, ypadding=2)
 
         self._config_popup.show_all()
 
@@ -89,11 +105,12 @@ class ConfigWizard():
         self._config_file_obj.save()
 
     """
-      { item_label, item_type, item_name, item_with_value }
+      {item_label, item_type, item_name, item_with_value}
     """
     def _create_param(self, opts):
         param_name = opts["item_name"]
-        with_value = opts["item_with_value"] if opts.has_key("item_with_value") else True
+        with_value = opts["item_with_value"] if "item_with_value" in opts \
+            else True
         hbox = gtk.HBox()
         if opts["item_type"] == "text":
             entry = gtk.Entry()
@@ -117,14 +134,15 @@ class ConfigWizard():
     def _close_config_cb(self, widget, event=None):
         self._config_popup.hide()
 
+
 def test_wizard_from_config_file_obj(test_config_file):
     keys = {}
-    keys["nick"] = { "type" : "text" }
-    keys["account_id"] = { "type" : "text" }
-    keys["server"] = { "type" : "text" }
-    keys["port"] = { "type" : "text" }
-    keys["password"] = { "type" : "text" }
-    keys["register"] = { "type" : "text" }
+    keys["nick"] = {"type": "text"}
+    keys["account_id"] = {"type": "text"}
+    keys["server"] = {"type": "text"}
+    keys["port"] = {"type": "text"}
+    keys["password"] = {"type": "text"}
+    keys["register"] = {"type": "text"}
 
     c = ConfigFile(test_config_file)
     c.set_valid_keys(keys)
@@ -136,32 +154,36 @@ def test_wizard_from_config_file_obj(test_config_file):
     c.set("register", True)
 
     c.save()
-    
+
     c = ConfigFile(test_config_file)
     c.set_valid_keys(keys)
     c.load()
 
     config_w = ConfigWizard(test_config_file)
     config_items = [
-        {"item_label" : "Nickname", "item_type" : "text", "item_name" : "nick" },
-        { "item_label" : "Account ID", "item_type" : "text", "item_name" : "account_id" },
-        { "item_label" : "Server", "item_type" : "text", "item_name" : "server" },
-        { "item_label" : "Port", "item_type" : "text", "item_name" : "port" },
-        { "item_label" : "Password", "item_type" : "text", "item_name" : "password" },
-        { "item_label" : "Register", "item_type" : "text", "item_name" : "register" }
+        {"item_label": "Nickname", "item_type": "text", "item_name": "nick"},
+        {"item_label": "Account ID", "item_type": "text",
+         "item_name": "account_id"},
+        {"item_label": "Server", "item_type": "text", "item_name": "server"},
+        {"item_label": "Port", "item_type": "text", "item_name": "port"},
+        {"item_label": "Password", "item_type": "text",
+         "item_name": "password"},
+        {"item_label": "Register", "item_type": "text",
+         "item_name": "register"}
         ]
     config_w.set_config_items(config_items)
     config_w.set_config_file_obj(c)
     config_w.show()
 
+
 def test_wizard_from_config_file_path(test_config_file):
     keys = {}
-    keys["nick"] = { "type" : "text" }
-    keys["account_id"] = { "type" : "text" }
-    keys["server"] = { "type" : "text" }
-    keys["port"] = { "type" : "text" }
-    keys["password"] = { "type" : "text" }
-    keys["register"] = { "type" : "text" }
+    keys["nick"] = {"type": "text"}
+    keys["account_id"] = {"type": "text"}
+    keys["server"] = {"type": "text"}
+    keys["port"] = {"type": "text"}
+    keys["password"] = {"type": "text"}
+    keys["register"] = {"type": "text"}
 
     c = ConfigFile(test_config_file)
     c.set_valid_keys(keys)
@@ -173,18 +195,22 @@ def test_wizard_from_config_file_path(test_config_file):
     c.set("register", True)
 
     c.save()
-    
+
     config_w = ConfigWizard(test_config_file)
     config_items = [
-        {"item_label" : "Nickname", "item_type" : "text", "item_name" : "nick" },
-        { "item_label" : "Account ID", "item_type" : "text", "item_name" : "account_id" },
-        { "item_label" : "Server", "item_type" : "text", "item_name" : "server" },
-        { "item_label" : "Port", "item_type" : "text", "item_name" : "port" },
-        { "item_label" : "Password", "item_type" : "text", "item_name" : "password" },
-        { "item_label" : "Register", "item_type" : "text", "item_name" : "register" }
+        {"item_label": "Nickname", "item_type": "text", "item_name": "nick"},
+        {"item_label": "Account ID", "item_type": "text",
+         "item_name": "account_id"},
+        {"item_label": "Server", "item_type": "text", "item_name": "server"},
+        {"item_label": "Port", "item_type": "text", "item_name": "port"},
+        {"item_label": "Password", "item_type": "text",
+         "item_name": "password"},
+        {"item_label": "Register", "item_type": "text",
+         "item_name": "register"}
         ]
     config_w.set_config_items(config_items)
     config_w.show(True)
+
 
 if __name__ == "__main__":
     #test_wizard_from_config_file_obj("/tmp/configwizard.test.0001")

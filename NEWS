@@ -2,19 +2,28 @@
 
 BUG FIXES
 
+* Added sharing to draw_text, fill_polygon, draw_pixbuf (#2461)
 * Exposed see as an external method (#2542)
 * Media type tests on file suffix use lower()
-* Uninitialized variables in Show block for numeric arguments (#2543)
-* Catch potential zero-divide in set_gray method (#2545)
-* Fixed regression with show Journal object thumbnails
+* Added support for localization to GNOME version (rgs)
+* Work around for situations where gst is not available
+* Fixed problem with displaying Journal preview images in portfolio
+* Restore overlay grids on clear
+* Fixed problem with help-string wrap width
 
 ENHANCEMENTS
 
-* Code clean up by RGS
-* Added 'brightness' block for reading camera luminance level
+* Added a Media Palette for all media-related blocks
+* Added sharing between Gnome and Sugar versions (with Raul Gutierrez)
+* Added 'time' block for measuring elapsed time (in seconds)
 * Added 'camera sees' block for reading average camera RGB value
+  (with help from Tony Forster and Guzman Trinidad)
 * Added camera media block for grabbing images from the camera
 * New psuedo-color.ta example (Tony Forster)
+* New love-speaks-volumes.ta example
+* New spiralaterals.ta example inspired by Spiralaterals activity
+* More complete translations in Spanish (es) and Italian (it)
+* Added plugin support for non-standard devices (camera, sensors, RFID)
 
 105
 

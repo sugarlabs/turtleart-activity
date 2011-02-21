@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007, Playful Invention Company
-#Copyright (c) 2008-10, Walter Bender
-#Copyright (c) 2009-10 Raúl Gutiérrez Segalés
-#Copyright (C) 2010 Emiliano Pastorino <epastorino@plan.ceibal.edu.uy>
+#Copyright (c) 2008-11, Walter Bender
+#Copyright (c) 2009-11 Raúl Gutiérrez Segalés
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,7 +26,14 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gobject
-import gst
+
+try:
+    import gst
+    GST_AVAILABLE = True
+except ImportError:
+    # Turtle Art should not fail if gst is not available
+    GST_AVAILABLE = False
+
 import os
 import os.path
 import dbus
@@ -60,7 +66,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
                         NUMBER_STYLE_PORCH, NUMBER_STYLE_BLOCK, \
                         NUMBER_STYLE_VAR_ARG, CONSTANTS, XO1, XO15, UNKNOWN, \
                         BASIC_STYLE_VAR_ARG
-from talogo import LogoCode, stop_logo
+from talogo import LogoCode
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
 from taturtle import Turtles, Turtle
@@ -76,18 +82,11 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
                     dock_dx_dy, data_to_string, journal_check, chooser, \
                     get_hardware
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
-from tagplay import stop_media
 from sprites import Sprites, Sprite
-from audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15
-from rfidutils import strhex2bin, strbin2dec, find_device
 from dbus.mainloop.glib import DBusGMainLoop
 
-HAL_SERVICE = 'org.freedesktop.Hal'
-HAL_MGR_PATH = '/org/freedesktop/Hal/Manager'
-HAL_MGR_IFACE = 'org.freedesktop.Hal.Manager'
-HAL_DEV_IFACE = 'org.freedesktop.Hal.Device'
-REGEXP_SERUSB = '\/org\/freedesktop\/Hal\/devices\/usb_device['\
-                'a-z,A-Z,0-9,_]*serial_usb_[0-9]'
+if GST_AVAILABLE:
+    from tagplay import stop_media
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -96,13 +95,17 @@ _logger = logging.getLogger('turtleart-activity')
 class TurtleArtWindow():
     """ TurtleArt Window class abstraction  """
     timeout_tag = [0]
+    _INSTALL_PATH = '/usr/share/turtleart'
+    _ALTERNATE_INSTALL_PATH = '/usr/local/share/turtleart'
+    _PLUGIN_SUBPATH = 'plugins'
 
     def __init__(self, win, path, parent=None, mycolors=None, mynick=None):
         self._loaded_project = ''
         self.win = None
         self._sharing = False
         self.parent = parent
-        self.send_event = None # method to send events over the network
+        self.send_event = None  # method to send events over the network
+        self.gst_available = GST_AVAILABLE
         if type(win) == gtk.DrawingArea:
             self.interactive_mode = True
             self.window = win
@@ -147,7 +150,11 @@ class TurtleArtWindow():
         self.mouse_x = 0
         self.mouse_y = 0
 
-        locale.setlocale(locale.LC_NUMERIC, '')
+        # if self.running_sugar:
+        try:
+            locale.setlocale(locale.LC_NUMERIC, '')
+        except locale.Error:
+            _logger.debug('unsupported locale')
         self.decimal_point = locale.localeconv()['decimal_point']
         if self.decimal_point == '' or self.decimal_point is None:
             self.decimal_point = '.'
@@ -256,95 +263,91 @@ class TurtleArtWindow():
             self._setup_misc()
             self._show_toolbar_palette(0, False)
 
-            # setup sound/sensor grab
-            if self.hw in [XO1, XO15]:
-                PALETTES[PALETTE_NAMES.index('sensor')].append('resistance')
-                PALETTES[PALETTE_NAMES.index('sensor')].append('voltage')
-            self.audio_started = False
+        self._plugins = []
 
-        self.camera_available = False
-        v4l2src = gst.element_factory_make('v4l2src')
-        if v4l2src.props.device_name is not None:
-            PALETTES[PALETTE_NAMES.index('sensor')].append('readcamera')
-            PALETTES[PALETTE_NAMES.index('sensor')].append('luminance')
-            PALETTES[PALETTE_NAMES.index('sensor')].append('camera')
-            self.camera_available = True
-
+        self._init_plugins()
         self.lc = LogoCode(self)
-        self.saved_pictures = []
+        self._setup_plugins()
 
+        self.saved_pictures = []
         self.block_operation = ''
 
-        """
-        The following code will initialize a USB RFID reader. Please note that
-        in order to make this initialization function work, it is necessary to
-        set the permission for the ttyUSB device to 0666. You can do this by
-        adding a rule to /etc/udev/rules.d
+    def _get_plugin_home(self):
+        """ Look in current directory first, then usual places """
+        path = os.path.join(os.getcwd(), self._PLUGIN_SUBPATH)
+        if os.path.exists(path):
+            return path
+        path = os.path.expanduser(os.path.join('~', 'Activities',
+                                               'TurtleBlocks.activity',
+                                               self._PLUGIN_SUBPATH))
+        if os.path.exists(path):
+            return path
+        path = os.path.expanduser(os.path.join('~', 'Activities',
+                                               'TurtleArt.activity',
+                                               self._PLUGIN_SUBPATH))
+        if os.path.exists(path):
+            return path
+        path = os.path.join(self._INSTALL_PATH, self._PLUGIN_SUBPATH)
+        if os.path.exists(path):
+            return path
+        path = os.path.join(self._ALTERNATE_INSTALL_PATH,
+                            self._PLUGIN_SUBPATH)
+        if os.path.exists(path):
+            return path
+        return None
 
-        As root (using sudo or su), copy the following text into a new file in
-        /etc/udev/rules.d/94-ttyUSB-rules
+    def _get_plugin_candidates(self, path):
+        """ Look for plugin files in plugin directory. """
+        plugin_files = []
+        if path is not None:
+            candidates = os.listdir(path)
+            for c in candidates:
+                if c[-10:] == '_plugin.py' and c[0] != '#' and c[0] != '.':
+                    plugin_files.append(c.split('.')[0])
+        return plugin_files
 
-        KERNEL=="ttyUSB[0-9]",MODE="0666"
+    def _init_plugins(self):
+        """ Try importing plugin files from the plugin directory. """
+        for pluginfile in self._get_plugin_candidates(self._get_plugin_home()):
+            pluginclass = pluginfile.capitalize()
+            f = "def f(self): from plugins.%s import %s; return %s(self)" \
+                % (pluginfile, pluginclass, pluginclass)
+            plugins = {}
+            try:
+                exec f in globals(), plugins
+                self._plugins.append(plugins.values()[0](self))
+            except ImportError:
+                print 'failed to import %s' % (pluginclass)
 
-        You only have to do this once.
-        """
+    def _setup_plugins(self):
+        """ Initial setup -- call just once. """
+        for plugin in self._plugins:
+            plugin.setup()
 
-        self.rfid_connected = False
-        self.rfid_device = find_device()
-        self.rfid_idn = ''
+    def _start_plugins(self):
+        """ Start is called everytime we execute blocks. """
+        for plugin in self._plugins:
+            plugin.start()
 
-        if self.rfid_device is not None:
-            _logger.info("RFID device found")
-            self.rfid_connected = self.rfid_device.do_connect()
-            if self.rfid_connected:
-                self.rfid_device.connect("tag-read", self._tag_read_cb)
-                self.rfid_device.connect("disconnected", self._disconnected_cb)
+    def _stop_plugins(self):
+        """ Stop is called whenever we stop execution. """
+        for plugin in self._plugins:
+            plugin.stop()
 
-            loop = DBusGMainLoop()
-            bus = dbus.SystemBus(mainloop=loop)
-            hmgr_iface = dbus.Interface(bus.get_object(HAL_SERVICE,
-                HAL_MGR_PATH), HAL_MGR_IFACE)
+    def background_plugins(self):
+        """ Background is called when we are pushed to the background. """
+        for plugin in self._plugins:
+            plugin.goto_background()
 
-            hmgr_iface.connect_to_signal('DeviceAdded', self._device_added_cb) 
+    def foreground_plugins(self):
+        """ Foreground is called when we are return from the background. """
+        for plugin in self._plugins:
+            plugin.return_to_foreground()
 
-            PALETTES[PALETTE_NAMES.index('sensor')].append('rfid')
-
-    def _device_added_cb(self, path):
-        """
-        Called from hal connection when a new device is plugged.
-        """
-        if not self.rfid_connected:
-            self.rfid_device = find_device()
-            _logger.debug("DEVICE_ADDED: %s"%self.rfid_device)
-            if self.rfid_device is not None:
-                _logger.debug("DEVICE_ADDED: RFID device is not None!")
-                self.rfid_connected = self._device.do_connect()
-            if self.rfid_connected:
-                _logger.debug("DEVICE_ADDED: Connected!")
-                self.rfid_device.connect("tag-read", self._tag_read_cb)
-                self.rfid_device.connect("disconnected", self._disconnected_cb)
-
-    def _disconnected_cb(self, device, text):
-        """
-        Called when the device is disconnected.
-        """
-        self.rfid_connected = False
-        self.rfid_device = None
-
-    def _tag_read_cb(self, device, tagid):
-        """
-        Callback for "tag-read" signal. Receives the read tag id.
-        """
-        idbin = strhex2bin(tagid)
-        self.rfid_idn = strbin2dec(idbin[26:64])
-        while self.rfid_idn.__len__() < 9:
-            self.rfid_idn = '0' + self.rfid_idn
-        print tagid, idbin, self.rfid_idn
-
-    def new_buffer(self, buf):
-        """ Append a new buffer to the ringbuffer """
-        self.lc.ringbuffer.append(buf)
-        return True
+    def _quit_plugins(self):
+        """ Quit is called upon program exit. """
+        for plugin in self._plugins:
+            plugin.quit()
 
     def _setup_events(self):
         """ Register the events we listen to. """
@@ -420,29 +423,13 @@ class TurtleArtWindow():
         self.lc.prim_clear()
         self.display_coordinates()
 
-    def _start_audiograb(self):
-        """ Start grabbing audio if there is an audio block in use """
-        if len(self.block_list.get_similar_blocks('block',
-            ['volume', 'sound', 'pitch', 'resistance', 'voltage'])) > 0:
-            if self.audio_started:
-                self.audiograb.resume_grabbing()
-            else:
-                if self.hw == XO15:
-                    self.audiograb = AudioGrab_XO15(self.new_buffer, self)
-                elif self.hw == XO1:
-                    self.audiograb = AudioGrab_XO1(self.new_buffer, self)
-                else:
-                    self.audiograb = AudioGrab_Unknown(self.new_buffer, self)
-                self.audiograb.start_grabbing()
-                self.audio_started = True
-
     def run_button(self, time):
         """ Run turtle! """
         if self.running_sugar:
             self.activity.recenter()
 
         if self.interactive_mode:
-            self._start_audiograb()
+            self._start_plugins()
 
         # Look for a 'start' block
         for blk in self.just_blocks():
@@ -462,9 +449,8 @@ class TurtleArtWindow():
 
     def stop_button(self):
         """ Stop button """
-        stop_logo(self)
-        if self.audio_started:
-            self.audiograb.pause_grabbing()
+        self.lc.stop_logo()
+        self._stop_plugins()
 
     def set_userdefined(self, blk=None):
         """ Change icon for user-defined blocks after loading Python code. """
@@ -1585,6 +1571,7 @@ class TurtleArtWindow():
             blk.spr.labels[0] += CURSOR
 
         elif blk.name in BOX_STYLE_MEDIA and blk.name != 'camera':
+            # TODO: isolate reference to camera
             self._import_from_journal(self.selected_blk)
             if blk.name == 'journal' and self.running_sugar:
                 self._load_description_block(blk)
@@ -1628,7 +1615,7 @@ class TurtleArtWindow():
                 dy = 20
                 blk.expand_in_y(dy)
             else:
-                self._start_audiograb()
+                self._start_plugins()
                 self._run_stack(blk)
                 return
 
@@ -1691,10 +1678,10 @@ class TurtleArtWindow():
             elif blk.name in PYTHON_SKIN:
                 self._import_py()
             else:
-                self._start_audiograb()
+                self._start_plugins()
                 self._run_stack(blk)
 
-        elif blk.name in ['sandwichtop_no_arm_no_label', 
+        elif blk.name in ['sandwichtop_no_arm_no_label',
                           'sandwichtop_no_arm']:
             restore_stack(blk)
 
@@ -1706,7 +1693,7 @@ class TurtleArtWindow():
                 collapse_stack(top)
 
         else:
-            self._start_audiograb()
+            self._start_plugins()
             self._run_stack(blk)
 
     def _expand_boolean(self, blk, blk2, dy):
@@ -1790,7 +1777,6 @@ class TurtleArtWindow():
         """ Run a stack of blocks. """
         if blk is None:
             return
-        self.lc.ag = None
         top = find_top_block(blk)
         self.lc.run_blocks(top, self.just_blocks(), True)
         if self.interactive_mode:
@@ -1996,9 +1982,9 @@ class TurtleArtWindow():
             if keyname == "p":
                 self.hideshow_button()
             elif keyname == 'q':
-                if self.audio_started:
-                    self.audiograb.stop_grabbing()
-                stop_media(self.lc)
+                self._plugins_quit()
+                if self.gst_available:
+                    stop_media(self.lc)
                 exit()
             elif keyname == 'g':
                 self._align_to_grid()
@@ -2356,7 +2342,7 @@ class TurtleArtWindow():
 
     def new_project(self):
         """ Start a new project """
-        stop_logo(self)
+        self.lc.stop_logo()
         self._loaded_project = ""
         # Put current project in the trash.
         while len(self.just_blocks()) > 0:
@@ -2474,7 +2460,7 @@ class TurtleArtWindow():
                 if self.running_sugar:
                     try:
                         dsobject = datastore.get(value)
-                    except: # Should be IOError, but dbus error is raised
+                    except:  # Should be IOError, but dbus error is raised
                         dsobject = None
                         _logger.debug("couldn't get dsobject %s" % value)
                     if dsobject is not None:
@@ -2515,6 +2501,7 @@ class TurtleArtWindow():
                 else:
                     self._block_skin('pythonoff', blk)
         elif btype in BOX_STYLE_MEDIA and blk.spr is not None:
+            # TODO: isolate reference to camera
             if len(blk.values) == 0 or blk.values[0] == 'None' or \
                blk.values[0] is None or btype == 'camera':
                 self._block_skin(btype + 'off', blk)

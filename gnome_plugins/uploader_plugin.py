@@ -1,3 +1,26 @@
+#!/usr/bin/env python
+#Copyright (c) 2011 Walter Bender
+#Copyright (c) 2010 Jamie Boisture
+#Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
+
+#Permission is hereby granted, free of charge, to any person obtaining a copy
+#of this software and associated documentation files (the "Software"), to deal
+#in the Software without restriction, including without limitation the rights
+#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+#copies of the Software, and to permit persons to whom the Software is
+#furnished to do so, subject to the following conditions:
+
+#The above copyright notice and this permission notice shall be included in
+#all copies or substantial portions of the Software.
+
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+#THE SOFTWARE.
+
 #!/usr/bin/python
 
 try:
@@ -8,14 +31,21 @@ except ImportError, e:
     print "Import Error: %s. Project upload is disabled." % (e)
     _UPLOAD_AVAILABLE = False
 
+import os
 import gtk
+
+from plugin import Plugin
+from util.menubuilder import MenuBuilder
+
 from gettext import gettext as _
 
-class Uploader():
+
+class Uploader_plugin(Plugin):
     MAX_FILE_SIZE = 950000
     UPLOAD_SERVER = 'http://turtleartsite.appspot.com'
 
-    def __init__(self, upload_server = None, max_file_size = 0):
+    def __init__(self, parent, upload_server=None, max_file_size=None):
+        self._parent = parent
         self.uploading = False
 
         if upload_server is None:
@@ -23,14 +53,23 @@ class Uploader():
 
         if max_file_size is None:
             self._max_file_size = self.MAX_FILE_SIZE
+        else:
+            self._max_file_size = max_file_size
 
     def set_tw(self, turtleart_window):
         self.tw = turtleart_window
 
+    def get_menu(self):
+        menu = gtk.Menu()
+        MenuBuilder.make_menu_item(menu, _('Upload to Web'),
+                                   self.do_upload_to_web)
+        upload_menu = MenuBuilder.make_sub_menu(menu, _('Upload'))
+        return upload_menu
+
     def enabled(self):
         return _UPLOAD_AVAILABLE
 
-    def do_upload_to_web(self, widget = None):
+    def do_upload_to_web(self, widget=None):
         if self.uploading:
             return
 
@@ -127,14 +166,14 @@ http://turtleartsite.sugarlabs.org to upload your project.'))
         tafile, imagefile = self.tw.save_for_upload(title)
 
         # Set a maximum file size for image to be uploaded.
-        if int(os.path.getsize(imagefile)) > self.max_file_size:
+        if int(os.path.getsize(imagefile)) > self._max_file_size:
             import Image
             while int(os.path.getsize(imagefile)) > self._max_file_size:
                 big_file = Image.open(imagefile)
                 smaller_file = big_file.resize(int(0.9 * big_file.size[0]),
                                                int(0.9 * big_file.size[1]),
                                                Image.ANTIALIAS)
-                smaller_file.save(imagefile, quality = 100)
+                smaller_file.save(imagefile, quality=100)
 
         c = pycurl.Curl()
         c.setopt(c.POST, 1)

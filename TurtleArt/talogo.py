@@ -25,12 +25,8 @@ import gtk
 
 from time import time
 from math import sqrt
-from numpy import append
-from numpy.fft import rfft
 from random import uniform
 from operator import isNumberType
-from fcntl import ioctl
-
 import os.path
 
 from UserDict import UserDict
@@ -40,32 +36,26 @@ try:
 except ImportError:
     pass
 
-from taconstants import TAB_LAYER, BLACK, WHITE, \
-    DEFAULT_SCALE, ICON_SIZE, BLOCK_NAMES, CONSTANTS, SENSOR_DC_NO_BIAS, \
-    SENSOR_DC_BIAS, XO1, XO15
-from tagplay import play_audio_from_file, play_movie_from_file, stop_media, \
-    media_playing
-from tacamera import Camera
-import v4l2
+from taconstants import TAB_LAYER, BLACK, WHITE, DEFAULT_SCALE, ICON_SIZE, \
+    BLOCK_NAMES, CONSTANTS, PREFIX_DICTIONARY
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
     text_media_type, round_int, chr_to_ord, strtype, get_path
 
-from RtfParser import RtfTextOnly
-
-from ringbuffer import RingBuffer1d
+from util.RtfParser import RtfTextOnly
 
 from gettext import gettext as _
 
 VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
-                'heading', 'xcor', 'ycor', 'pop', 'see', 'keyboard',
-                'sound', 'volume', 'pitch', 'resistance', 'voltage',
-                'luminance']
+                'heading', 'xcor', 'ycor', 'pop', 'time', 'keyboard', 'see']
+MEDIA_BLOCKS_DICTIONARY = {}  # new media blocks get added here
+PLUGIN_DICTIONARY = {}  # new block primitives get added here
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
 
 
+<<<<<<< HEAD
 def find_device():
     """ Search for RFID devices. Return a device instance or None. """
     device = None
@@ -83,6 +73,8 @@ def find_device():
     return device
 
 
+=======
+>>>>>>> 860754f7e871617df9d101a51dc64a69b742a0ba
 class noKeyError(UserDict):
 
     __missing__ = lambda x, y: 0
@@ -290,6 +282,7 @@ def _identity(x):
     return(x)
 
 
+<<<<<<< HEAD
 def _avg(array, abs_value=False):
     """ Calc. the average value of an array """
     if len(array) == 0:
@@ -319,6 +312,8 @@ def stop_logo(tw):
     tw.active_turtle.show()
 
 
+=======
+>>>>>>> 860754f7e871617df9d101a51dc64a69b742a0ba
 def _just_stop():
     """ yield False to stop stack """
     yield False
@@ -337,6 +332,7 @@ class LogoCode:
         self.tw = tw
         self.oblist = {}
 
+        # TODO: remove plugin blocks
         DEFPRIM = {
         '(': [1, lambda self, x: self._prim_opar(x)],
         'and': [2, lambda self, x, y: _and(x, y)],
@@ -386,7 +382,6 @@ class LogoCode:
         'leftx': [0, lambda self: CONSTANTS['leftx']],
         'lpos': [0, lambda self: CONSTANTS['leftpos']],
         'less?': [2, lambda self, x, y: _less(x, y)],
-        'luminance': [0, lambda self: self._read_camera(True)],
         'mediawait': [0, self._media_wait, True],
         'minus': [2, lambda self, x, y: _minus(x, y)],
         'mod': [2, lambda self, x, y: _mod(x, y)],
@@ -404,7 +399,6 @@ class LogoCode:
         'pendown': [0, lambda self: self.tw.canvas.setpen(True)],
         'pensize': [0, lambda self: self.tw.canvas.pensize],
         'penup': [0, lambda self: self.tw.canvas.setpen(False)],
-        'pitch': [0, lambda self: self._get_pitch()],
         'plus': [2, lambda self, x, y: _plus(x, y)],
         'polar': [0, lambda self: self.tw.set_polar(True)],
         'pop': [0, lambda self: self._prim_pop()],
@@ -414,12 +408,9 @@ class LogoCode:
         'purple': [0, lambda self: CONSTANTS['purple']],
         'push': [1, lambda self, x: self._prim_push(x)],
         'random': [2, lambda self, x, y: _random(x, y)],
-        'readcamera': [0, lambda self: self._read_camera()],
         'readpixel': [0, lambda self: self._read_pixel()],
         'red': [0, lambda self: CONSTANTS['red']],
         'repeat': [2, self._prim_repeat, True],
-        'resistance': [0, lambda self: self._get_resistance()],
-        'rfid': [0, lambda self: self.tw.rfid_idn],
         'right': [1, lambda self, x: self._prim_right(x)],
         'rightx': [0, lambda self: CONSTANTS['rightx']],
         'rpos': [0, lambda self: CONSTANTS['rightpos']],
@@ -450,7 +441,6 @@ class LogoCode:
         'showaligned': [1, lambda self, x: self._show(x, False)],
         'showblocks': [0, lambda self: self.tw.showblocks()],
         'skin': [1, lambda self, x: self._reskin(x)],
-        'sound': [0, lambda self: self._get_sound()],
         'sqrt': [1, lambda self, x: _sqrt(x)],
         'stack1': [0, self._prim_stack1, True],
         'stack': [1, self._prim_stack, True],
@@ -470,6 +460,7 @@ class LogoCode:
                     x, y, z, a, b)],
         'textcolor': [0, lambda self: self.tw.canvas.textcolor],
         'textsize': [0, lambda self: self.tw.textsize],
+        'time': [0, lambda self: self._elapsed_time()],
         'titlex': [0, lambda self: CONSTANTS['titlex']],
         'titley': [0, lambda self: CONSTANTS['titley']],
         'topy': [0, lambda self: CONSTANTS['topy']],
@@ -480,8 +471,6 @@ class LogoCode:
         'userdefined3': [3, lambda self, x, y,
                          z: self._prim_myblock([x, y, z])],
         'video': [1, lambda self, x: self._play_video(x)],
-        'voltage': [0, lambda self: self._get_voltage()],
-        'volume': [0, lambda self: self._get_volume()],
         'vres': [0, lambda self: CONSTANTS['height']],
         'wait': [1, self._prim_wait, True],
         'white': [0, lambda self: WHITE],
@@ -520,9 +509,9 @@ class LogoCode:
         self.trace = 0
         self.update_values = False
         self.gplay = None
-        self.ag = None
         self.filepath = None
         self.dsobject = None
+        self._start_time = None
 
         # Scale factors for depreciated portfolio blocks
         self.title_height = int((self.tw.canvas.height / 20) * self.tw.scale)
@@ -531,6 +520,7 @@ class LogoCode:
 
         self.scale = DEFAULT_SCALE
 
+<<<<<<< HEAD
         self.max_samples = 1500
         self.input_step = 1
 
@@ -550,6 +540,18 @@ class LogoCode:
             else:
                 self.imagepath = '/tmp/turtlepic.png'
             self.camera = Camera(self.imagepath)
+=======
+    def stop_logo(self):
+        """ Stop logo is called from the Stop button on the toolbar """
+        self.tw.step_time = 0
+        self.step = _just_stop()
+        for plugin in self.tw._plugins:
+            plugin.stop()
+        if self.tw.gst_available:
+            from tagplay import stop_media
+            stop_media(self)
+        self.tw.active_turtle.show()
+>>>>>>> 860754f7e871617df9d101a51dc64a69b742a0ba
 
     def _def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
@@ -574,7 +576,6 @@ class LogoCode:
         self.tw.saving_svg = False
 
         self.find_value_blocks()
-        self._update_audio_mode()
         if self.trace > 0:
             self.update_values = True
         else:
@@ -601,6 +602,7 @@ class LogoCode:
         code = self._blocks_to_code(blk)
         if run_flag:
             _logger.debug("running code: %s" % (code))
+            self._start_time = time()
             self._setup_cmd(code)
             if not self.tw.hide:
                 self.tw.display_coordinates()
@@ -625,35 +627,22 @@ class LogoCode:
                     code.append(float(blk.values[0]))
                 except ValueError:
                     code.append(float(ord(blk.values[0][0])))
-            elif blk.name == 'string' or blk.name == 'title':
+            elif blk.name == 'string' or \
+                    blk.name == 'title':  # depreciated block
                 if type(blk.values[0]) == float or type(blk.values[0]) == int:
                     if int(blk.values[0]) == blk.values[0]:
                         blk.values[0] = int(blk.values[0])
                     code.append('#s' + str(blk.values[0]))
                 else:
                     code.append('#s' + blk.values[0])
-            elif blk.name == 'journal':
+            elif blk.name in PREFIX_DICTIONARY:
                 if blk.values[0] is not None:
-                    code.append('#smedia_' + str(blk.values[0]))
+                    code.append(PREFIX_DICTIONARY[blk.name] + \
+                                    str(blk.values[0]))
                 else:
-                    code.append('#smedia_None')
-            elif blk.name == 'description':
-                if blk.values[0] is not None:
-                    code.append('#sdescr_' + str(blk.values[0]))
-                else:
-                    code.append('#sdescr_None')
-            elif blk.name == 'audio':
-                if blk.values[0] is not None:
-                    code.append('#saudio_' + str(blk.values[0]))
-                else:
-                    code.append('#saudio_None')
-            elif blk.name == 'video':
-                if blk.values[0] is not None:
-                    code.append('#svideo_' + str(blk.values[0]))
-                else:
-                    code.append('#svideo_None')
-            elif blk.name == 'camera':
-                    code.append('#smedia_CAMERA')
+                    code.append(PREFIX_DICTIONARY[blk.name] + 'None')
+            elif blk.name in MEDIA_BLOCKS_DICTIONARY:
+                code.append('#smedia_' + blk.name.upper())
             else:
                 return ['%nothing%']
         else:
@@ -900,12 +889,16 @@ class LogoCode:
 
     def prim_clear(self):
         """ Clear screen """
-        stop_media(self)
+        if self.tw.gst_available:
+            from tagplay import stop_media
+            stop_media(self)
         self.tw.canvas.clearscreen()
         self.scale = DEFAULT_SCALE
-        self.tw.set_polar(False)
-        self.tw.set_cartesian(False)
+        # Note: users find this "feature" confusing
+        # self.tw.set_polar(False)
+        # self.tw.set_cartesian(False)
         self.hidden_turtle = None
+        self._start_time = time()
         for name in VALUE_BLOCKS:
             self.update_label_value(name)
 
@@ -953,27 +946,27 @@ class LogoCode:
             y = myfunc(f, x)
             if str(y) == 'nan':
                 _logger.debug("python function returned nan")
-                stop_logo(self.tw)
+                self.stop_logo()
                 raise logoerror("#notanumber")
             else:
                 return y
         except ZeroDivisionError:
-            stop_logo(self.tw)
+            self.stop_logo()
             raise logoerror("#zerodivide")
         except ValueError, e:
-            stop_logo(self.tw)
+            self.stop_logo()
             raise logoerror('#' + str(e))
         except SyntaxError, e:
-            stop_logo(self.tw)
+            self.stop_logo()
             raise logoerror('#' + str(e))
         except NameError, e:
-            stop_logo(self.tw)
+            self.stop_logo()
             raise logoerror('#' + str(e))
         except OverflowError:
-            stop_logo(self.tw)
+            self.stop_logo()
             raise logoerror("#overflowerror")
         except TypeError:
-            stop_logo(self.tw)
+            self.stop_logo()
             raise logoerror("#notanumber")
 
     def _prim_forever(self, blklist):
@@ -1106,7 +1099,8 @@ class LogoCode:
         if flag and (self.tw.hide or self.tw.step_time == 0):
             return
         if type(n) == str or type(n) == unicode:
-            if n[0:6] == 'media_' and n[6:] != 'CAMERA':
+            if n[0:6] == 'media_' and \
+               n[6:].lower not in MEDIA_BLOCKS_DICTIONARY:
                 try:
                     if self.tw.running_sugar:
                         try:
@@ -1134,9 +1128,8 @@ class LogoCode:
         else:
             try:
                 self.keyboard = {'Escape': 27, 'space': 32, ' ': 32,
-                                 'Return': 13, \
-                                 'KP_Up': 2, 'KP_Down': 4, 'KP_Left': 1, \
-                                 'KP_Right': 3}[self.tw.keypress]
+                                 'Return': 13, 'KP_Up': 2, 'KP_Down': 4,
+                                 'KP_Left': 1, 'KP_Right': 3}[self.tw.keypress]
             except KeyError:
                 self.keyboard = 0
         self.update_label_value('keyboard', self.keyboard)
@@ -1148,19 +1141,6 @@ class LogoCode:
         for name in VALUE_BLOCKS:
             self.value_blocks[name] = self.tw.block_list.get_similar_blocks(
                 'block', name)
-
-    def _update_audio_mode(self):
-        """ If there are sensor blocks, set the appropriate audio mode """
-        for name in ['sound', 'volume', 'pitch']:
-            if len(self.value_blocks[name]) > 0:
-                self.tw.audiograb.set_sensor_type()
-                return
-        if len(self.value_blocks['resistance']) > 0:
-            self.tw.audiograb.set_sensor_type(SENSOR_DC_BIAS)
-            return
-        elif len(self.value_blocks['voltage']) > 0:
-            self.tw.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
-            return
 
     def update_label_value(self, name, value=None):
         """ Update the label of value blocks to reflect current value """
@@ -1188,10 +1168,12 @@ class LogoCode:
             self.update_label_value(name, value)
 
     def _prim_right(self, value):
+        """ Turtle rotates clockwise """
         self.tw.canvas.right(float(value))
         self.update_label_value('heading', self.tw.canvas.heading)
 
     def _prim_move(self, cmd, value1, value2=None, pendown=True):
+        """ Turtle moves by method specified in value1 """
         if value2 is None:
             cmd(value1)
         else:
@@ -1204,6 +1186,7 @@ class LogoCode:
             self.see()
 
     def _prim_arc(self, cmd, value1, value2):
+        """ Turtle draws an arc of degree, radius """
         cmd(float(value1), float(value2))
         self.update_label_value('xcor',
                            self.tw.canvas.xcor / self.tw.coord_scale)
@@ -1336,11 +1319,9 @@ class LogoCode:
             elif string[0:6] in ['media_', 'descr_', 'audio_', 'video_']:
                 self.filepath = None
                 self.dsobject = None
-                if string[6:] == 'CAMERA':
-                    if self.tw.camera_available:
-                        self.camera.save_camera_input_to_file()
-                        self.camera.stop_camera_input()
-                        self.filepath = self.imagepath
+                print string[6:], MEDIA_BLOCKS_DICTIONARY
+                if string[6:].lower() in MEDIA_BLOCKS_DICTIONARY:
+                    MEDIA_BLOCKS_DICTIONARY[string[6:].lower()]()
                 elif os.path.exists(string[6:]):  # is it a path?
                     self.filepath = string[6:]
                 elif self.tw.running_sugar:  # is it a datastore object?
@@ -1377,8 +1358,7 @@ class LogoCode:
                 if self.dsobject is not None:
                     self.dsobject.destroy()
             else:  # assume it is text to display
-                x = self._x()
-                y = self._y()
+                x, y = self._x(), self._y()
                 if center:
                     y -= self.tw.canvas.textsize
                 self.tw.canvas.draw_text(string, x, y,
@@ -1387,8 +1367,7 @@ class LogoCode:
                                          self.tw.canvas.width - x)
         elif type(string) == float or type(string) == int:
             string = round_int(string)
-            x = self._x()
-            y = self._y()
+            x, y = self._x(), self._y()
             if center:
                 y -= self.tw.canvas.textsize
             self.tw.canvas.draw_text(string, x, y,
@@ -1401,23 +1380,23 @@ class LogoCode:
         if filepath is not None:
             self.filepath = filepath
         pixbuf = None
-        w = self._w()
-        h = self._h()
+        w, h = self._w(), self._h()
         if w < 1 or h < 1:
             return
-        if self.filepath is not None and self.filepath != '':
+        if self.dsobject is not None:
+            try:
+                pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
+            except:
+                _logger.debug("Couldn't open dsobject %s" % (self.dsobject))
+        if pixbuf is None and \
+           self.filepath is not None and \
+           self.filepath != '':
             try:
                 pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.filepath,
                                                               w, h)
             except:
                 self.tw.showlabel('nojournal', self.filepath)
                 _logger.debug("Couldn't open filepath %s" % (self.filepath))
-        elif self.dsobject is not None:
-            try:
-                pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
-            except:
-                self.tw.showlabel('nojournal', self.dsobject)
-                _logger.debug("Couldn't open dsobject %s" % (self.dsobject))
         if pixbuf is not None:
             if center:
                 self.tw.canvas.draw_pixbuf(pixbuf, 0, 0,
@@ -1448,8 +1427,12 @@ class LogoCode:
                     f.close()
                 except IOError:
                     self.tw.showlabel('nojournal', self.filepath)
+<<<<<<< HEAD
                     _logger.debug("Couldn't open filepath %s" % \
                                       (self.filepath))
+=======
+                    _logger.debug("Couldn't open %s" % (self.filepath))
+>>>>>>> 860754f7e871617df9d101a51dc64a69b742a0ba
         else:
             if description is not None:
                 text = str(description)
@@ -1461,23 +1444,35 @@ class LogoCode:
 
     def _media_wait(self):
         """ Wait for media to stop playing """
-        while(media_playing(self)):
-            yield True
+        if self.tw.gst_available:
+            from tagplay import media_playing
+            while(media_playing(self)):
+                yield True
         self._ireturn()
         yield True
 
     def _play_sound(self):
         """ Sound file from Journal """
-        play_audio_from_file(self, self.filepath)
+        if self.tw.gst_available:
+            from tagplay import play_audio_from_file
+            play_audio_from_file(self, self.filepath)
 
     def _play_video(self):
         """ Movie file from Journal """
-        w = self._w()
-        h = self._h()
+        w, h = self._w(), self._h()
         if w < 1 or h < 1:
             return
-        play_movie_from_file(self, self.filepath, self._x(), self._y(),
-                               self._w(), self._h())
+        if self.tw.gst_available:
+            from tagplay import play_movie_from_file
+            play_movie_from_file(self, self.filepath, self._x(), self._y(),
+                                 w, h)
+
+    def _elapsed_time(self):
+        """ Number of seconds since program execution has started or
+        clean (prim_clear) block encountered """
+        elapsed_time = int(time() - self._start_time)
+        self.update_label_value('time', elapsed_time)
+        return elapsed_time
 
     def see(self):
         """ Read r, g, b from the canvas and return a corresponding palette
@@ -1493,6 +1488,7 @@ class LogoCode:
         self.heap.append(b)
         self.heap.append(g)
         self.heap.append(r)
+<<<<<<< HEAD
 
     def _read_camera(self, luminance_only=False):
         """ Read average pixel from camera and push b, g, r to the stack """
@@ -1635,6 +1631,8 @@ class LogoCode:
         else:
             return 0
 
+=======
+>>>>>>> 860754f7e871617df9d101a51dc64a69b742a0ba
     # Depreciated block methods
 
     def _show_template1x1(self, title, media):

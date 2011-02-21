@@ -285,18 +285,30 @@ def get_path(activity, subpath):
                             "org.laptop.TurtleArtActivity", subpath))
 
 
-def image_to_base64(pixbuf, activity):
-    """ Convert an image to base64 """
-    _file_name = os.path.join(get_path(activity, 'instance'), 'imagetmp.png')
+def image_to_base64(pixbuf, path_name):
+    """ Convert an image to base64-encoded data """
+    file_name = os.path.join(path_name, 'imagetmp.png')
     if pixbuf != None:
-        pixbuf.save(_file_name, "png")
-    _base64 = os.path.join(get_path(activity, 'instance'), 'base64tmp')
-    _cmd = "base64 <" + _file_name + " >" + _base64
-    subprocess.check_call(_cmd, shell=True)
-    _file_handle = open(_base64, 'r')
-    _data = _file_handle.read()
-    _file_handle.close()
-    return _data
+        pixbuf.save(file_name, "png")
+    base64 = os.path.join(path_name, 'base64tmp')
+    cmd = "base64 <" + file_name + " >" + base64
+    subprocess.check_call(cmd, shell=True)
+    file_handle = open(base64, 'r')
+    data = file_handle.read()
+    file_handle.close()
+    return data
+
+
+def base64_to_image(data, path_name):
+    """ Convert base64-encoded data to an image """
+    base64 = os.path.join(path_name, 'base64tmp')
+    file_handle = open(base64, 'w')
+    file_handle.write(data)
+    file_handle.close()
+    file_name = os.path.join(path_name, 'imagetmp.png')
+    cmd = "base64 -d <" + base64 + ">" + file_name
+    subprocess.check_call(cmd, shell=True)
+    return file_name
 
 
 def movie_media_type(name):
@@ -318,7 +330,7 @@ def image_media_type(name):
 
 def text_media_type(name):
     """ Is it text media? """
-    return name.lower().endswith(('.txt', '.py', '.lg', '.rtf', '.ta'))
+    return name.lower().endswith(('.txt', '.py', '.lg', '.rtf'))
 
 
 def round_int(num):

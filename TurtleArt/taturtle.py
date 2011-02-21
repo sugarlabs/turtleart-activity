@@ -19,7 +19,7 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-from taconstants import TURTLE_LAYER
+from taconstants import TURTLE_LAYER, DEFAULT_TURTLE_COLORS
 from tasprite_factory import SVG, svg_str_to_pixbuf
 from tacanvas import wrap100, color_table
 from sprites import Sprite
@@ -149,7 +149,7 @@ class Turtle:
             self.shapes = generate_turtle_pixbufs(self.colors)
         else:
             if turtles is not None:
-                self.colors = ['#008000', '#00A000']
+                self.colors = DEFAULT_TURTLE_COLORS
                 self.shapes = turtles.get_pixbufs()
 
     def set_shapes(self, shapes):

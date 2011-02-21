@@ -18,11 +18,15 @@ import logging
 
 import dbus
 from dbus import PROPERTIES_IFACE
-from telepathy.interfaces import CLIENT, \
-                                 CLIENT_APPROVER, \
-                                 CLIENT_HANDLER, \
-                                 CLIENT_INTERFACE_REQUESTS
-from telepathy.server import DBusProperties
+try:
+    from telepathy.interfaces import CLIENT, \
+                                     CLIENT_APPROVER, \
+                                     CLIENT_HANDLER, \
+                                     CLIENT_INTERFACE_REQUESTS
+    from telepathy.server import DBusProperties
+    TELEPATHY_AVAILABLE = True
+except ImportError:
+    TELEPATHY_AVAILABLE = False
 
 import dispatch
 
@@ -34,7 +38,10 @@ _instance = None
 
 
 class TelepathyClient(dbus.service.Object, DBusProperties):
+
     def __init__(self):
+        if not TELEPATHY_AVAILABLE:
+            return None
         self._interfaces = set([CLIENT, CLIENT_HANDLER,
                                 CLIENT_INTERFACE_REQUESTS, PROPERTIES_IFACE,
                                 CLIENT_APPROVER])
