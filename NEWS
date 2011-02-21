@@ -9,6 +9,7 @@ BUG FIXES
 * Work around for situations where gst is not available
 * Fixed problem with displaying Journal preview images in portfolio
 * Restore overlay grids on clear
+* Fixed problem with help-string wrap width
 
 ENHANCEMENTS
 
@@ -20,6 +21,7 @@ ENHANCEMENTS
 * Added camera media block for grabbing images from the camera
 * New psuedo-color.ta example (Tony Forster)
 * New love-speaks-volumes.ta example
+* New spiralaterals.ta example inspired by Spiralaterals activity
 * More complete translations in Spanish (es) and Italian (it)
 * Added plugin support for non-standard devices (camera, sensors, RFID)
 
