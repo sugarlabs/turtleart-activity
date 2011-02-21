@@ -43,7 +43,8 @@ from gettext import gettext as _
 import os.path
 import tarfile
 
-from TurtleArt.taconstants import PALETTE_NAMES, OVERLAY_LAYER, HELP_STRINGS
+from TurtleArt.taconstants import PALETTE_NAMES, OVERLAY_LAYER, HELP_STRINGS, \
+                                  ICON_SIZE
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
@@ -572,7 +573,7 @@ class TurtleArtActivity(activity.Activity):
             _("Shrink blocks"), self.do_shrink_blocks_cb, view_toolbar_button)
         self.hover_help_label = self._add_label(
             _("Move the cursor over the orange palette for help."),
-            help_toolbar)
+            help_toolbar, gtk.gdk.screen_width() - 2 * ICON_SIZE)
 
         # The palette toolbar is only used with 0.86+
         if self.new_sugar_system:
@@ -780,10 +781,12 @@ class TurtleArtActivity(activity.Activity):
                                      self.tw.paste_offset)
                 self.tw.paste_offset += 20
 
-    def _add_label(self, string, toolbar):
+    def _add_label(self, string, toolbar, width=None):
         """ add a label to a toolbar """
         label = gtk.Label(string)
         label.set_line_wrap(True)
+        if width is not None:
+            label.set_size_request(width, -1)
         label.show()
         toolitem = gtk.ToolItem()
         toolitem.add(label)
