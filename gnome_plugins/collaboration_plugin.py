@@ -22,6 +22,7 @@
 
 import sys
 sys.path.append("..")
+import os.path
 
 import dbus
 from gettext import gettext as _
@@ -71,7 +72,8 @@ class Collaboration_plugin(Plugin):
         self._setup_has_been_called = False
 
     def _setup_config_file(self, config_file_path):
-        self._config_file_path = config_file_path
+        self._config_file_path = os.path.join(config_file_path,
+                                              'turtleartrc.collab')
         self._collaboration_config_values = ConfigFile(self._config_file_path)
         self._valid_config_values = {
             'nick': {'type': 'text'},
