@@ -13,6 +13,7 @@ BUG FIXES
 
 ENHANCEMENTS
 
+* Added offset for second argument in Boolean compare blocks
 * Reorganized palettes (#2633) for more clarity
 * Added a Media Palette for all media-related blocks
 * Added sharing between Gnome and Sugar versions (with Raul Gutierrez)
