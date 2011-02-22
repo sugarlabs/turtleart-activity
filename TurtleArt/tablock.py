@@ -35,7 +35,7 @@ from taconstants import EXPANDABLE, EXPANDABLE_BLOCKS, EXPANDABLE_ARGS, \
     COLLAPSIBLE_TOP, COLLAPSIBLE_TOP_NO_ARM, COLLAPSIBLE_TOP_NO_LABEL, \
     COLLAPSIBLE_TOP_NO_ARM_NO_LABEL, COLLAPSIBLE_BOTTOM, PORTFOLIO_STYLE_2x2, \
     PORTFOLIO_STYLE_1x1, PORTFOLIO_STYLE_2x1, PORTFOLIO_STYLE_1x2, \
-    STANDARD_STROKE_WIDTH, BOX_COLORS, GRADIENT_COLOR, \
+    STANDARD_STROKE_WIDTH, BOX_COLORS, GRADIENT_COLOR, COMPARE_PORCH_STYLE, \
     BASIC_STYLE_EXTENDED_VERTICAL, CONSTANTS, INVISIBLE
 from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
@@ -443,6 +443,8 @@ class Block:
             self._make_number_style_porch(svg)
         elif self.name in COMPARE_STYLE:
             self._make_compare_style(svg)
+        elif self.name in COMPARE_PORCH_STYLE:
+            self._make_compare_porch_style(svg)
         elif self.name in BOOLEAN_STYLE:
             self._make_boolean_style(svg)
         elif self.name in NOT_STYLE:
@@ -705,6 +707,10 @@ class Block:
                       ['number', False, self.svg.docks[2][0],
                                         self.svg.docks[2][1]],
                       ['unavailable', False, 0, 0, ')']]
+
+    def _make_compare_porch_style(self, svg):
+        self.svg.set_porch(True)
+        self._make_compare_style(svg)
 
     def _make_boolean_style(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)

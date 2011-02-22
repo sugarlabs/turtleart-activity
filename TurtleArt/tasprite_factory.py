@@ -80,6 +80,15 @@ class SVG:
         self._gradient = False
         self.margins = [0, 0, 0, 0]
 
+    """
+    The block construction methods typically start on the left side of
+    a block and proceed clockwise around the block, first constructing a
+    left-side connector ("outie"), a corner (1, -1), a slot or hat on along
+    the top, a corner (1, 1), right side connectors ("innie"), possibly a
+    "porch" to suggest an order of arguments, another corner (-1, 1),
+    a tab or tail, and the fourth corner (-1, -1).
+    """
+
     def basic_block(self):
         self.reset_min_max()
         (x, y) = self._calculate_x_y()
@@ -334,12 +343,8 @@ class SVG:
         yoffset = self._radius * 2 + 2 * self._innie_y2 + \
                   self._innie_spacer + self._stroke_width / 2.0 + \
                   self._expand_y
-        if self._porch is True:
-            yoffset += self._porch_y
         svg = self._start_boolean(self._stroke_width / 2.0, yoffset)
         yoffset = -2 * self._innie_y2 - self._innie_spacer - self._stroke_width
-        if self._porch is True:
-            yoffset -= self._porch_y
         svg += self._rline_to(0, yoffset)
 
         self._hide_x = self._x + self._radius / 2 + self._stroke_width
@@ -353,12 +358,13 @@ class SVG:
         svg += self._do_innie()
         svg += self._rline_to(0, self._expand_y)
         if self._porch is True:
-            svg += self._do_porch()
+            svg += self._do_porch(False)
         else:
             svg += self._rline_to(0, 2 * self._innie_y2 + self._innie_spacer)
         svg += self._do_innie()
         svg += self._rline_to(0, self._radius)
         svg += self.line_to(xx, self._y)
+
         svg += self._rline_to(-self._expand_x, 0)
 
         self._show_y = self._y + self._radius / 2
