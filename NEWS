@@ -9,10 +9,11 @@ BUG FIXES
 * Work around for situations where gst is not available
 * Fixed problem with displaying Journal preview images in portfolio
 * Restore overlay grids on clear
-* Fixed problem with help-string wrap width
+* Fixed problem with help-string wrap width (#2633)
 
 ENHANCEMENTS
 
+* Reorganized palettes (#2633) for more clarity
 * Added a Media Palette for all media-related blocks
 * Added sharing between Gnome and Sugar versions (with Raul Gutierrez)
 * Added 'time' block for measuring elapsed time (in seconds)
