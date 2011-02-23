@@ -113,7 +113,7 @@ TOP_LAYER = 1000
 #
 
 PALETTE_NAMES = ['turtle', 'pen', 'colors', 'numbers', 'flow', 'blocks',
-                 'extras', 'sensor', 'media', 'portfolio', 'trash']
+                  'media',  'sensor', 'extras', 'portfolio', 'trash']
 
 PALETTES = [['forward', 'back', 'clean', 'left', 'right',
              'arc', 'setxy2', 'seth', 'xcor', 'ycor', 'heading'],
@@ -130,12 +130,12 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right',
             ['start', 'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2',
              'box', 'storein', 'hat', 'hat1', 'hat2', 'stack', 'stack1',
              'stack2'],
+            ['journal', 'audio', 'video', 'description', 'string',
+             'show', 'setscale', 'savepix', 'savesvg', 'scale', 'mediawait'],
+            ['kbinput',  'keyboard', 'readpixel', 'see', 'time'],
             ['push', 'printheap', 'clearheap', 'pop', 'comment', 'print',
              'myfunc1arg', 'userdefined', 'cartesian', 'polar', 'addturtle',
              'reskin', 'sandwichtop_no_label', 'sandwichbottom'],
-            ['kbinput',  'keyboard', 'readpixel', 'see', 'time'],
-            ['journal', 'audio', 'video', 'description', 'string',
-             'show', 'setscale', 'savepix', 'savesvg', 'scale', 'mediawait'],
             ['hideblocks', 'showblocks', 'fullscreen', 'picturelist',
              'picture1x1a', 'picture1x1', 'picture2x2', 'picture2x1',
              'picture1x2', 'leftpos',  'bottompos', 'width', 'rightpos',
@@ -149,8 +149,8 @@ PALETTES = [['forward', 'back', 'clean', 'left', 'right',
 COLORS = [["#00FF00", "#00A000"], ["#00FFFF", "#00A0A0"],
           ["#00FFFF", "#00A0A0"], ["#FF00FF", "#A000A0"],
           ["#FFC000", "#A08000"], ["#FFFF00", "#A0A000"],
-          ["#FF0000", "#A00000"], ["#FF0000", "#A00000"],
-          ["#A0FF00", "#A0A000"], ["#0000FF", "#0000A0"],
+          ["#A0FF00", "#A0A000"], ["#FF6060", "#A06060"],
+          ["#FF0000", "#A00000"], ["#6060FF", "#6060A0"],
           ["#FFFF00", "#A0A000"]]
 
 BOX_COLORS = {'red': ["#FF0000", "#A00000"],
