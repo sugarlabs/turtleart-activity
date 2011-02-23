@@ -92,9 +92,6 @@ if GST_AVAILABLE:
 class TurtleArtWindow():
     """ TurtleArt Window class abstraction  """
     timeout_tag = [0]
-    _INSTALL_PATH = '/usr/share/sugar/activities/TurtleArt.activity'
-    _ALTERNATE_INSTALL_PATH = \
-        '/usr/local/share/sugar/activities/TurtleArt.activity'
     _PLUGIN_SUBPATH = 'plugins'
 
     def __init__(self, win, path, parent=None, mycolors=None, mynick=None):
@@ -270,23 +267,12 @@ class TurtleArtWindow():
         self.block_operation = ''
 
     def _get_plugin_home(self):
-        """ Look in current directory first, then usual places """
-        path = os.path.join(os.getcwd(), self._PLUGIN_SUBPATH)
+        """ Look in the execution directory """
+        path = os.path.join(self.path, self._PLUGIN_SUBPATH)
         if os.path.exists(path):
             return path
-        path = os.path.expanduser(os.path.join('~', 'Activities',
-                                               'TurtleArt.activity',
-                                               self._PLUGIN_SUBPATH))
-        if os.path.exists(path):
-            return path
-        path = os.path.join(self._INSTALL_PATH, self._PLUGIN_SUBPATH)
-        if os.path.exists(path):
-            return path
-        path = os.path.join(self._ALTERNATE_INSTALL_PATH,
-                            self._PLUGIN_SUBPATH)
-        if os.path.exists(path):
-            return path
-        return None
+        else:
+            return None
 
     def _get_plugin_candidates(self, path):
         """ Look for plugin files in plugin directory. """

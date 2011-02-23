@@ -100,23 +100,12 @@ class TurtleMain():
         return CONFIG_HOME
 
     def _get_gnome_plugin_home(self):
-        """ Look in current directory first, then usual places """
-        path = os.path.join(os.getcwd(), self._GNOME_PLUGIN_SUBPATH)
-        if os.path.exists(path):
-            return path
-        path = os.path.expanduser(os.path.join('~', 'Activities',
-                                               'TurtleArt.activity',
-                                               self._GNOME_PLUGIN_SUBPATH))
-        if os.path.exists(path):
-            return path
-        path = os.path.join(self._INSTALL_PATH, self._GNOME_PLUGIN_SUBPATH)
-        if os.path.exists(path):
-            return path
-        path = os.path.join(self._ALTERNATE_INSTALL_PATH,
-                            self._GNOME_PLUGIN_SUBPATH)
-        if os.path.exists(path):
-            return path
-        return None
+        """ Use plugin directory associated with execution path """
+        if os.path.exists(os.path.join(self._dirname,
+                                       self._GNOME_PLUGIN_SUBPATH)):
+            return os.path.join(self._dirname, self._GNOME_PLUGIN_SUBPATH)
+        else:
+            return None
 
     def _get_plugin_candidates(self, path):
         """ Look for plugin files in plugin directory. """
@@ -182,33 +171,15 @@ class TurtleMain():
         self.tw.save_as_image(self.ta_file, self.canvas)
 
     def _build_window(self):
-        if os.path.exists(self._INSTALL_PATH):
-            self.tw = TurtleArtWindow(self.canvas, self._INSTALL_PATH)
-        elif os.path.exists(self._ALTERNATE_INSTALL_PATH):
-            self.tw = TurtleArtWindow(self.canvas,
-                                      self._ALTERNATE_INSTALL_PATH)
-        else:
-            self.tw = TurtleArtWindow(self.canvas, os.path.abspath('.'))
-
+        self.tw = TurtleArtWindow(self.canvas, self._dirname)
         self.tw.save_folder = os.path.expanduser('~')
 
     def _init_vars(self):
         """ If we are invoked to start a project from Gnome, we should make
         sure our current directory is TA's source dir. """
-        dirname = os.path.dirname(__file__)
-        if dirname == '':
-            if os.path.exists(os.path.join('~', 'Activities',
-                                           'TurtleArt.activity')):
-                os.chdir(os.path.join('~', 'Activities',
-                                           'TurtleArt.activity'))
-            elif os.path.exists(self._INSTALL_PATH):
-                os.chdir(self._INSTALL_PATH)
-            elif os.path.exists(self._ALTERNATIVE_INSTALL_PATH):
-                os.chdir(self._ALTERNATIVE_INSTALL_PATH)
-            else:
-                os.chdir(os.path.abspath('.'))
-        else:
-            os.chdir(dirname)
+        self._dirname = self._get_execution_dir()
+        if self._dirname is not None:
+            os.chdir(self._dirname)
         self.ta_file = None
         self.output_png = False
         self.i = 0  # FIXME: use a better name for this variable
@@ -289,15 +260,9 @@ class TurtleMain():
         win.move(self.x, self.y)
         win.maximize()
         win.set_title(_('Turtle Art'))
-        if os.path.exists(os.path.join(self._INSTALL_PATH,
-                                       self._ICON_SUBPATH)):
-            win.set_icon_from_file(os.path.join(self._INSTALL_PATH,
+        if os.path.exists(os.path.join(self._dirname, self._ICON_SUBPATH)):
+            win.set_icon_from_file(os.path.join(self._dirname,
                                                 self._ICON_SUBPATH))
-        else:
-            try:
-                win.set_icon_from_file(self._ICON_SUBPATH)
-            except IOError:
-                pass
         win.connect('delete_event', self._quit_ta)
 
         vbox = gtk.VBox(False, 0)
@@ -616,6 +581,22 @@ class TurtleMain():
         turtle.custom_shapes = True  # Force regeneration of shapes
         turtle.reset_shapes()
         turtle.show()
+
+    def _get_execution_dir(self):
+        """ From whence is the program being executed? """
+        dirname = os.path.dirname(__file__)
+        if dirname == '':
+            if os.path.exists(os.path.join('~', 'Activities',
+                                           'TurtleArt.activity')):
+                return os.path.join('~', 'Activities', 'TurtleArt.activity')
+            elif os.path.exists(self._INSTALL_PATH):
+                return self._INSTALL_PATH
+            elif os.path.exists(self._ALTERNATIVE_INSTALL_PATH):
+                return self._ALTERNATIVE_INSTALL_PATH
+            else:
+                return os.path.abspath('.')
+        else:
+            return os.path.abspath(dirname)
 
 
 if __name__ == "__main__":
