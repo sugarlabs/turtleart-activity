@@ -70,7 +70,7 @@ class TurtleMain():
  \tturtleart.py --output_png project.ta
  \tturtleart.py -o project"""
     _INSTALL_PATH = '/usr/share/sugar/activities/TurtleArt.activity'
-    _ALTERNATE_INSTALL_PATH = \
+    _ALTERNATIVE_INSTALL_PATH = \
         '/usr/local/share/sugar/activities/TurtleArt.activity'
     _ICON_SUBPATH = 'images/turtle.png'
     _GNOME_PLUGIN_SUBPATH = 'gnome_plugins'
