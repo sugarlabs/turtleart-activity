@@ -92,8 +92,9 @@ if GST_AVAILABLE:
 class TurtleArtWindow():
     """ TurtleArt Window class abstraction  """
     timeout_tag = [0]
-    _INSTALL_PATH = '/usr/share/turtleart'
-    _ALTERNATE_INSTALL_PATH = '/usr/local/share/turtleart'
+    _INSTALL_PATH = '/usr/share/sugar/activities/TurtleArt.activity'
+    _ALTERNATE_INSTALL_PATH = \
+        '/usr/local/share/sugar/activities/TurtleArt.activity'
     _PLUGIN_SUBPATH = 'plugins'
 
     def __init__(self, win, path, parent=None, mycolors=None, mynick=None):
@@ -271,11 +272,6 @@ class TurtleArtWindow():
     def _get_plugin_home(self):
         """ Look in current directory first, then usual places """
         path = os.path.join(os.getcwd(), self._PLUGIN_SUBPATH)
-        if os.path.exists(path):
-            return path
-        path = os.path.expanduser(os.path.join('~', 'Activities',
-                                               'TurtleBlocks.activity',
-                                               self._PLUGIN_SUBPATH))
         if os.path.exists(path):
             return path
         path = os.path.expanduser(os.path.join('~', 'Activities',

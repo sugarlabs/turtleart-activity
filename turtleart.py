@@ -45,7 +45,10 @@ sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 
 import gettext
 
-gettext.bindtextdomain('org.laptop.TurtleArtActivity', 'locale')
+# Commenting out bindtextdomain so that GNOME can find the installed .mo files,
+# but it will not find the .mo files in the local locale directory when running
+# from a git repository or the unzipped .xo file.
+# gettext.bindtextdomain('org.laptop.TurtleArtActivity', 'locale')
 gettext.textdomain('org.laptop.TurtleArtActivity')
 _ = gettext.gettext
 
@@ -66,8 +69,9 @@ class TurtleMain():
  \tturtleart.py project.ta
  \tturtleart.py --output_png project.ta
  \tturtleart.py -o project"""
-    _INSTALL_PATH = '/usr/share/turtleart'
-    _ALTERNATE_INSTALL_PATH = '/usr/local/share/turtleart'
+    _INSTALL_PATH = '/usr/share/sugar/activities/TurtleArt.activity'
+    _ALTERNATE_INSTALL_PATH = \
+        '/usr/local/share/sugar/activities/TurtleArt.activity'
     _ICON_SUBPATH = 'images/turtle.png'
     _GNOME_PLUGIN_SUBPATH = 'gnome_plugins'
 
@@ -98,11 +102,6 @@ class TurtleMain():
     def _get_gnome_plugin_home(self):
         """ Look in current directory first, then usual places """
         path = os.path.join(os.getcwd(), self._GNOME_PLUGIN_SUBPATH)
-        if os.path.exists(path):
-            return path
-        path = os.path.expanduser(os.path.join('~', 'Activities',
-                                               'TurtleBlocks.activity',
-                                               self._GNOME_PLUGIN_SUBPATH))
         if os.path.exists(path):
             return path
         path = os.path.expanduser(os.path.join('~', 'Activities',
@@ -196,7 +195,13 @@ class TurtleMain():
     def _init_vars(self):
         """ If we are invoked to start a project from Gnome, we should make
         sure our current directory is TA's source dir. """
-        os.chdir(os.path.dirname(__file__))
+        dirname = os.path.dirname(__file__)
+        if dirname == '':
+            dirname = '.'
+        try:
+            os.chdir(dirname)
+        except OSError:
+            print ("Couldn't chdir to %s" % (dirname))
 
         self.ta_file = None
         self.output_png = False
