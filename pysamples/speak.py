@@ -32,8 +32,10 @@ def myblock(lc, x):
 
     import os
 
-    if type(x) == float:
-        if int(x) == x:
-            x = int(x)
+    # Turtle Art numbers are passed as float,
+    # but they may be integer values.
+    if type(x) == float and int(x) == x:
+        x = int(x)
+
     os.system('espeak "%s" --stdout | aplay' % (x))
 
