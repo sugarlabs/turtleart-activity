@@ -197,12 +197,18 @@ class TurtleMain():
         sure our current directory is TA's source dir. """
         dirname = os.path.dirname(__file__)
         if dirname == '':
-            dirname = '.'
-        try:
+            if os.path.exists(os.path.join('~', 'Activities',
+                                           'TurtleArt.activity')):
+                os.chdir(os.path.join('~', 'Activities',
+                                           'TurtleArt.activity'))
+            elif os.path.exists(self._INSTALL_PATH):
+                os.chdir(self._INSTALL_PATH)
+            elif os.path.exists(self._ALTERNATIVE_INSTALL_PATH):
+                os.chdir(self._ALTERNATIVE_INSTALL_PATH)
+            else:
+                os.chdir(os.path.abspath('.'))
+        else:
             os.chdir(dirname)
-        except OSError:
-            print ("Couldn't chdir to %s" % (dirname))
-
         self.ta_file = None
         self.output_png = False
         self.i = 0  # FIXME: use a better name for this variable
