@@ -18,9 +18,10 @@ ENHANCEMENTS
 * Added a Media Palette for all media-related blocks
 * Added sharing between Gnome and Sugar versions (with Raul Gutierrez)
 * Added 'time' block for measuring elapsed time (in seconds)
-* Added 'camera sees' block for reading average camera RGB value
+* Added 'brightness' block for reading average camera luminance value
   (with help from Tony Forster and Guzman Trinidad)
 * Added camera media block for grabbing images from the camera
+* New speak.py sample code (Tony Forster)
 * New psuedo-color.ta example (Tony Forster)
 * New love-speaks-volumes.ta example
 * New spiralaterals.ta example inspired by Spiralaterals activity
