@@ -28,11 +28,9 @@ import base64
 
 from sprites import Sprite
 from tasprite_factory import SVG
-from tautils import image_to_base64, get_path, data_to_string, round_int
+from tautils import image_to_base64, get_path, data_to_string, round_int, \
+    debug_output
 from taconstants import CANVAS_LAYER, BLACK, WHITE
-
-import logging
-_logger = logging.getLogger('turtleart-activity')
 
 
 def wrap100(n):
@@ -223,7 +221,8 @@ class TurtleGraphics:
             self.xcor += nn * sin(self.heading * DEGTOR)
             self.ycor += nn * cos(self.heading * DEGTOR)
         except TypeError, ValueError:
-            _logger.debug("bad value sent to %s" % (__name__))
+            debug_output("bad value sent to %s" % (__name__),
+                         self.tw.running_sugar)
             return
         if self.pendown:
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
@@ -244,7 +243,8 @@ class TurtleGraphics:
         try:
             self.heading = n
         except TypeError, ValueError:
-            _logger.debug("bad value sent to %s" % (__name__))
+            debug_output("bad value sent to %s" % (__name__),
+                         self.tw.running_sugar)
             return
         self.heading %= 360
         self.turn_turtle()
@@ -258,7 +258,8 @@ class TurtleGraphics:
         try:
             self.heading += n
         except TypeError, ValueError:
-            _logger.debug("bad value sent to %s" % (__name__))
+            debug_output("bad value sent to %s" % (__name__),
+                         self.tw.running_sugar)
             return
         self.heading %= 360
         self.turn_turtle()
@@ -277,7 +278,8 @@ class TurtleGraphics:
             else:
                 self.rarc(a, rr)
         except TypeError, ValueError:
-            _logger.debug("bad value sent to %s" % (__name__))
+            debug_output("bad value sent to %s" % (__name__),
+                         self.tw.running_sugar)
             return
         self.move_turtle()
         if self.tw.sharing() and share:
@@ -360,7 +362,8 @@ class TurtleGraphics:
         try:
             self.xcor, self.ycor = x, y
         except TypeError, ValueError:
-            _logger.debug("bad value sent to %s" % (__name__))
+            debug_output("bad value sent to %s" % (__name__),
+                         self.tw.running_sugar)
             return
 
         if self.pendown and pendown:
@@ -380,7 +383,8 @@ class TurtleGraphics:
                 ps = 0
             self.pensize = ps
         except TypeError, ValueError:
-            _logger.debug("bad value sent to %s" % (__name__))
+            debug_output("bad value sent to %s" % (__name__),
+                         self.tw.running_sugar)
             return
         self.tw.active_turtle.set_pen_size(ps)
         self.gc.set_line_attributes(int(self.pensize * self.tw.coord_scale),
@@ -397,7 +401,8 @@ class TurtleGraphics:
             self.color = c
             self.tcolor = c
         except TypeError, ValueError:
-            _logger.debug("bad value sent to %s" % (__name__))
+            debug_output("bad value sent to %s" % (__name__),
+                         self.tw.running_sugar)
             return
         self.tw.active_turtle.set_color(c)
         self.set_fgcolor()
@@ -412,7 +417,8 @@ class TurtleGraphics:
         try:
             self.gray = g
         except TypeError, ValueError:
-            _logger.debug("bad value sent to %s" % (__name__))
+            debug_output("bad value sent to %s" % (__name__),
+                         self.tw.running_sugar)
             return
         if self.gray < 0:
             self.gray = 0
@@ -431,7 +437,8 @@ class TurtleGraphics:
         try:
             self.tcolor = c
         except TypeError, ValueError:
-            _logger.debug("bad value sent to %s" % (__name__))
+            debug_output("bad value sent to %s" % (__name__),
+                         self.tw.running_sugar)
             return
         self.set_textcolor()
 
@@ -440,14 +447,16 @@ class TurtleGraphics:
         try:
             self.tw.textsize = c
         except TypeError, ValueError:
-            _logger.debug("bad value sent to %s" % (__name__))
+            debug_output("bad value sent to %s" % (__name__),
+                         self.tw.running_sugar)
 
     def setshade(self, s, share=True):
         """ Set the color shade """
         try:
             self.shade = s
         except TypeError, ValueError:
-            _logger.debug("bad value sent to %s" % (__name__))
+            debug_output("bad value sent to %s" % (__name__),
+                         self.tw.running_sugar)
             return
         self.tw.active_turtle.set_shade(s)
         self.set_fgcolor()
@@ -556,7 +565,8 @@ class TurtleGraphics:
         try:
             fd.set_size(int(size * self.tw.coord_scale) * pango.SCALE)
         except TypeError, ValueError:
-            _logger.debug("bad value sent to %s" % (__name__))
+            debug_output("bad value sent to %s" % (__name__),
+                         self.tw.running_sugar)
             return
         if self.tw.interactive_mode:
             if type(label) == str or type(label) == unicode:

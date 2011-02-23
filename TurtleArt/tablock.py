@@ -40,8 +40,7 @@ from taconstants import EXPANDABLE, EXPANDABLE_BLOCKS, EXPANDABLE_ARGS, \
 from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
 
-import logging
-_logger = logging.getLogger('turtleart-activity')
+from tautils import debug_output
 
 
 class Blocks:
@@ -382,7 +381,8 @@ class Block:
             if self.name in BLOCK_NAMES:
                 n = len(BLOCK_NAMES[self.name])
             else:
-                _logger.debug('WARNING: unknown block name %s' % (self.name))
+                debug_output('WARNING: unknown block name %s' % (self.name),
+                             self.tw.running_sugar)
                 n = 0
         for i in range(n):
             if i == 1:  # top
@@ -483,8 +483,8 @@ class Block:
             self._make_portfolio_style_1x2(svg)
         else:
             self._make_basic_style(svg)
-            _logger.debug("WARNING: I don't know how to create a %s block" % \
-                              (self.name))
+            debug_output("WARNING: I don't know how to create a %s block" % \
+                             (self.name), self.tw.running_sugar)
 
     def _set_colors(self, svg):
         if self.name in BOX_COLORS:

@@ -40,7 +40,7 @@ from taconstants import TAB_LAYER, BLACK, WHITE, DEFAULT_SCALE, ICON_SIZE, \
     BLOCK_NAMES, CONSTANTS, PREFIX_DICTIONARY
 from tajail import myfunc, myfunc_import
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
-    text_media_type, round_int, chr_to_ord, strtype, get_path
+    text_media_type, round_int, chr_to_ord, strtype, get_path, debug_output
 
 from util.RtfParser import RtfTextOnly
 
@@ -51,30 +51,7 @@ VALUE_BLOCKS = ['box1', 'box2', 'color', 'shade', 'gray', 'scale', 'pensize',
 MEDIA_BLOCKS_DICTIONARY = {}  # new media blocks get added here
 PLUGIN_DICTIONARY = {}  # new block primitives get added here
 
-import logging
-_logger = logging.getLogger('turtleart-activity')
 
-
-<<<<<<< HEAD
-def find_device():
-    """ Search for RFID devices. Return a device instance or None. """
-    device = None
-    for i in os.listdir(os.path.join('.', 'devices')):
-        if not os.path.isdir(os.path.join('.', 'devices', i)):
-            try:
-                _tempmod = __import__('devices.%s' % i.split('.')[0],
-                                      globals(), locals(), ['RFIDReader'], -1)
-                devtemp = _tempmod.RFIDReader()
-                if devtemp.get_present() == True:
-                    device = devtemp
-            except Exception, e:
-                _logger.error('FIND_DEVICE: %s: %s' % (i, e))
-                pass
-    return device
-
-
-=======
->>>>>>> 860754f7e871617df9d101a51dc64a69b742a0ba
 class noKeyError(UserDict):
 
     __missing__ = lambda x, y: 0
@@ -282,38 +259,6 @@ def _identity(x):
     return(x)
 
 
-<<<<<<< HEAD
-def _avg(array, abs_value=False):
-    """ Calc. the average value of an array """
-    if len(array) == 0:
-        return 0
-    array_sum = 0
-    if abs_value:
-        for a in array:
-            array_sum += abs(a)
-    else:
-        for a in array:
-            array_sum += a
-    return float(array_sum) / len(array)
-
-
-def stop_logo(tw):
-    """ Stop logo is called from the Stop button on the toolbar """
-    tw.step_time = 0
-    tw.lc.step = _just_stop()
-    stop_media(tw.lc)
-    if tw.camera_available:
-        if tw.lc._video_capture_device is not None:
-            # restore AG and then close device
-            tw.lc._set_ag(1)
-            tw.lc._video_capture_device.close()
-            tw.lc._video_capture_device = None
-        tw.lc.camera.stop_camera_input()
-    tw.active_turtle.show()
-
-
-=======
->>>>>>> 860754f7e871617df9d101a51dc64a69b742a0ba
 def _just_stop():
     """ yield False to stop stack """
     yield False
@@ -520,27 +465,6 @@ class LogoCode:
 
         self.scale = DEFAULT_SCALE
 
-<<<<<<< HEAD
-        self.max_samples = 1500
-        self.input_step = 1
-
-        self.ringbuffer = RingBuffer1d(self.max_samples, dtype='int16')
-        if self.tw.hw == XO1:
-            self.voltage_gain = 0.00002225
-            self.voltage_bias = 1.140
-        elif self.tw.hw == XO15:
-            self.voltage_gain = -0.0001471
-            self.voltage_bias = 1.695
-
-        if self.tw.camera_available:
-            self._video_capture_device = None
-            if self.tw.running_sugar:
-                self.imagepath = get_path(self.tw.activity,
-                                          'data/turtlepic.png')
-            else:
-                self.imagepath = '/tmp/turtlepic.png'
-            self.camera = Camera(self.imagepath)
-=======
     def stop_logo(self):
         """ Stop logo is called from the Stop button on the toolbar """
         self.tw.step_time = 0
@@ -551,7 +475,6 @@ class LogoCode:
             from tagplay import stop_media
             stop_media(self)
         self.tw.active_turtle.show()
->>>>>>> 860754f7e871617df9d101a51dc64a69b742a0ba
 
     def _def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
@@ -601,7 +524,7 @@ class LogoCode:
 
         code = self._blocks_to_code(blk)
         if run_flag:
-            _logger.debug("running code: %s" % (code))
+            debug_output("running code: %s" % (code), self.tw.running_sugar)
             self._start_time = time()
             self._setup_cmd(code)
             if not self.tw.hide:
@@ -811,7 +734,8 @@ class LogoCode:
             self.arglist.append(self.iresult)
         if self.cfun.rprim:
             if type(self.cfun.fcn) == self.listtype:
-                _logger.debug("evalsym rprim list: %s" % (str(token)))
+                debug_output('evalsym rprim list: %s' % (str(token)),
+                             self.tw.running_sugar)
                 self._icall(self._ufuncall, self.cfun.fcn)
                 yield True
             else:
@@ -945,7 +869,8 @@ class LogoCode:
         try:
             y = myfunc(f, x)
             if str(y) == 'nan':
-                _logger.debug("python function returned nan")
+                debug_output('Python function returned NAN',
+                             self.tw.running_sugar)
                 self.stop_logo()
                 raise logoerror("#notanumber")
             else:
@@ -1106,7 +1031,8 @@ class LogoCode:
                         try:
                             dsobject = datastore.get(n[6:])
                         except:
-                            _logger.debug("Couldn't open %s" % (n[6:]))
+                            debug_output("Couldn't open %s" % (n[6:]),
+                                         self.tw.running_sugar)
                         self.tw.showlabel('status', dsobject.metadata['title'])
                         dsobject.destroy()
                     else:
@@ -1271,7 +1197,8 @@ class LogoCode:
             try:
                 dsobject = datastore.get(media[6:])
             except:
-                _logger.debug("Couldn't open skin %s" % (media[6:]))
+                debug_output("Couldn't open skin %s" % (media[6:]),
+                             self.tw.running_sugar)
             if dsobject is not None:
                 self.filepath = dsobject.file_path
         if self.filepath == None:
@@ -1283,7 +1210,8 @@ class LogoCode:
                                                           scale)
         except:
             self.tw.showlabel('nojournal', self.filepath)
-            _logger.debug("Couldn't open skin %s" % (self.filepath))
+            debug_output("Couldn't open skin %s" % (self.filepath),
+                         self.tw.running_sugar)
         if pixbuf is not None:
             self.tw.active_turtle.set_shapes([pixbuf])
             pen_state = self.tw.active_turtle.get_pen_state()
@@ -1328,8 +1256,8 @@ class LogoCode:
                     try:
                         self.dsobject = datastore.get(string[6:])
                     except:
-                        _logger.debug("Couldn't find dsobject %s" % (
-                                string[6:]))
+                        debug_output("Couldn't find dsobject %s" % (
+                                string[6:]), self.tw.running_sugar)
                     if self.dsobject is not None:
                         self.filepath = self.dsobject.file_path
                 if self.filepath == None:
@@ -1338,7 +1266,8 @@ class LogoCode:
                                           self.dsobject.metadata['title'])
                     else:
                         self.tw.showlabel('nojournal', string[6:])
-                    _logger.debug("Couldn't open %s" % (string[6:]))
+                    debug_output("Couldn't open %s" % (string[6:]),
+                                 self.tw.running_sugar)
                 elif string[0:6] == 'media_':
                     self._insert_image(center)
                 elif string[0:6] == 'descr_':
@@ -1387,7 +1316,8 @@ class LogoCode:
             try:
                 pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
             except:
-                _logger.debug("Couldn't open dsobject %s" % (self.dsobject))
+                debug_output("Couldn't open dsobject %s" % (self.dsobject),
+                             self.tw.running_sugar)
         if pixbuf is None and \
            self.filepath is not None and \
            self.filepath != '':
@@ -1396,7 +1326,8 @@ class LogoCode:
                                                               w, h)
             except:
                 self.tw.showlabel('nojournal', self.filepath)
-                _logger.debug("Couldn't open filepath %s" % (self.filepath))
+                debug_output("Couldn't open filepath %s" % (self.filepath),
+                             self.tw.running_sugar)
         if pixbuf is not None:
             if center:
                 self.tw.canvas.draw_pixbuf(pixbuf, 0, 0,
@@ -1427,12 +1358,8 @@ class LogoCode:
                     f.close()
                 except IOError:
                     self.tw.showlabel('nojournal', self.filepath)
-<<<<<<< HEAD
-                    _logger.debug("Couldn't open filepath %s" % \
-                                      (self.filepath))
-=======
-                    _logger.debug("Couldn't open %s" % (self.filepath))
->>>>>>> 860754f7e871617df9d101a51dc64a69b742a0ba
+                    debug_output("Couldn't open %s" % (self.filepath),
+                                 self.tw.running_sugar)
         else:
             if description is not None:
                 text = str(description)
@@ -1488,151 +1415,6 @@ class LogoCode:
         self.heap.append(b)
         self.heap.append(g)
         self.heap.append(r)
-<<<<<<< HEAD
-
-    def _read_camera(self, luminance_only=False):
-        """ Read average pixel from camera and push b, g, r to the stack """
-
-        if not self.tw.camera_available:
-            if not luminance_only:
-                self.heap.append(-1)
-                self.heap.append(-1)
-                self.heap.append(-1)
-            return -1
-
-        pixbuf = None
-        array = None
-        w = self._w()
-        if w < 1:
-            w = 1
-        h = self._h()
-        if h < 1:
-            h = 1
-
-        self._video_capture_device = None
-        try:
-            self._video_capture_device = open('/dev/video0', 'rw')
-        except:
-            _logger.debug('video capture device not available')
-        if self._video_capture_device is not None:
-            self._set_ag(0)  # disable autogain
-
-        self.camera.save_camera_input_to_file()
-        self.camera.stop_camera_input()
-
-        if self._video_capture_device is not None:
-            self._set_ag(1)  # restore autogain and close device
-            self._video_capture_device.close()
-            self._video_capture_device = None
-
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.imagepath, w, h)
-        array = pixbuf.get_pixels()
-
-        array_length = len(array) / 3
-        r = 0
-        g = 0
-        b = 0
-        i = 0
-        for j in range(array_length):
-            r += ord(array[i])
-            i += 1
-            g += ord(array[i])
-            i += 1
-            b += ord(array[i])
-            i += 1
-        if luminance_only:
-            lum = int((r * 0.3 + g * 0.6 + b * 0.1) / array_length)
-            self.update_label_value('luminance', lum)
-            return lum
-        else:
-            self.heap.append(int((b / array_length)))
-            self.heap.append(int((g / array_length)))
-            self.heap.append(int((r / array_length)))
-
-    def _set_ag(self, value):
-        """ set camera autogain (0==off, 1==on) """
-        self._ag_control = v4l2.v4l2_control(v4l2.V4L2_CID_AUTOGAIN)
-        try:
-            ioctl(self._video_capture_device, v4l2.VIDIOC_G_CTRL,
-                  self._ag_control)
-            self._ag_control.value = value
-            ioctl(self._video_capture_device, v4l2.VIDIOC_S_CTRL,
-                  self._ag_control)
-            ioctl(self._video_capture_device, v4l2.VIDIOC_G_CTRL,
-                  self._ag_control)
-        except:
-            _logger.debug('AUTOGAIN control not available')
-
-    def _get_volume(self):
-        """ return mic in value """
-        #TODO: Adjust gain for different HW
-        buf = self.ringbuffer.read(None, self.input_step)
-        if len(buf) > 0:
-            volume = float(_avg(buf, abs_value=True))
-            self.update_label_value('volume', volume)
-            return volume
-        else:
-            return 0
-
-    def _get_sound(self):
-        """ return raw mic in value """
-        buf = self.ringbuffer.read(None, self.input_step)
-        if len(buf) > 0:
-            sound = float(buf[0])
-            self.update_label_value('sound', sound)
-            return sound
-        else:
-            return 0
-
-    def _get_pitch(self):
-        """ return index of max value in fft of mic in values """
-        buf = []
-        for i in range(4):
-            buf = append(buf, self.ringbuffer.read(None, self.input_step))
-        if len(buf) > 0:
-            r = []
-            for j in rfft(buf):
-                r.append(abs(j))
-            # Convert output to Hertz
-            pitch = r.index(max(r)) * 48000 / len(buf)
-            self.update_label_value('pitch', pitch)
-            return pitch
-        else:
-            return 0
-
-    def _get_resistance(self):
-        """ return resistance sensor value """
-        buf = self.ringbuffer.read(None, self.input_step)
-        if len(buf) > 0:
-            # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
-            # TODO: test this calibration on XO 1.5
-            if self.tw.hw == XO1:
-                resistance = 2.718 ** ((float(_avg(buf)) * 0.000045788) + \
-                                           8.0531)
-            else:
-                avg_buf = float(_avg(buf))
-                if avg_buf > 0:
-                    resistance = (420000000 / avg_buf) - 13500
-                else:
-                    resistance = 420000000
-            self.update_label_value('resistance', resistance)
-            return resistance
-        else:
-            return 0
-
-    def _get_voltage(self):
-        """ return voltage sensor value """
-        buf = self.ringbuffer.read(None, self.input_step)
-        if len(buf) > 0:
-            # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
-            voltage = float(_avg(buf)) * self.voltage_gain + self.voltage_bias
-            self.update_label_value('voltage', voltage)
-            return voltage
-        else:
-            return 0
-
-=======
->>>>>>> 860754f7e871617df9d101a51dc64a69b742a0ba
     # Depreciated block methods
 
     def _show_template1x1(self, title, media):

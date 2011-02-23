@@ -48,6 +48,22 @@ import logging
 _logger = logging.getLogger('turtleart-activity')
 
 
+def debug_output(message_string, running_sugar=False):
+    """ unified debugging output """
+    if running_sugar:
+        _logger.debug(message_string)
+    else:
+        print(message_string)
+
+
+def error_output(message_string, running_sugar=False):
+    """ unified debugging output """
+    if running_sugar:
+        _logger.error(message_string)
+    else:
+        print(message_string)
+
+
 class pythonerror(Exception):
 
     def __init__(self, value):
@@ -338,7 +354,6 @@ def round_int(num):
     try:
         float(num)
     except TypeError:
-        _logger.debug("error trying to convert %s to number" % (str(num)))
         raise pythonerror("#syntaxerror")
 
     if int(float(num)) == num:

@@ -19,8 +19,6 @@
 #THE SOFTWARE.
 
 # A naive approach to running myfunc in a jail
-import logging
-_logger = logging.getLogger('turtleart-activity')
 import traceback
 from time import *
 from math import *

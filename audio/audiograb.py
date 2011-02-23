@@ -48,24 +48,19 @@ QUIT_DC_MODE_ENABLE = False
 QUIT_CAPTURE_GAIN = 100
 QUIT_BIAS = True
 
-import logging
-
-_logger = logging.getLogger('TurtleArt')
-_logger.setLevel(logging.DEBUG)
-logging.basicConfig()
-
 from TurtleArt.taconstants import XO1
+from TurtleArt.tautils import debug_output
 
 
 class AudioGrab:
     """ The interface between measure and the audio device """
 
-    def __init__(self, callable1, activity):
+    def __init__(self, callable1, parent):
         """ Initialize the class: callable1 is a data buffer;
-            activity is the parent class"""
+            parent is the parent class"""
 
         self.callable1 = callable1
-        self.activity = activity
+        self.parent = parent
         self.sensor = None
 
         self.temp_buffer = [0]
@@ -109,8 +104,9 @@ class AudioGrab:
 
         # Query the available controls
         try: # F11+
-            _logger.debug('controls: %r', [t.props.untranslated_label \
-                                       for t in self._mixer.list_tracks()])
+            debug_output('controls: %r' % \
+            ([t.props.untranslated_label for t in self._mixer.list_tracks()]),
+                         self.parent.running_sugar)
             self._dc_control = self._find_control(['dc mode'])
             self._mic_bias_control = self._find_control(['mic bias',
                                                          'dc input bias',
@@ -153,7 +149,7 @@ class AudioGrab:
         """The function that is called whenever new data is available
         This is the signal handler for the handoff signal"""
         if buffer is None:
-            _logger.debug('audiograb buffer is None')
+            debug_output('audiograb buffer is None', self.parent.running_sugar)
             return False
 
         temp_buffer = fromstring(buffer, 'int16')
@@ -238,8 +234,9 @@ class AudioGrab:
 
         controls.sort(key=lambda e: e[1])
         if controls:
-            _logger.debug("found control: %s" %\
-                          (str(controls[0][0].props.untranslated_label)))
+            debug_output('Found control: %s' % \
+                          (str(controls[0][0].props.untranslated_label)),
+                         self.parent.running_sugar)
             return controls[0][0]
 
         return None
@@ -266,8 +263,9 @@ class AudioGrab:
             return default
 
         value = bool(control.flags & gst.interfaces.MIXER_TRACK_MUTE)
-        _logger.debug('Getting %s (%s) mute status: %r', name,
-                  control.props.untranslated_label, value)
+        debug_output('Getting %s (%s) mute status: %r' % (name,
+            control.props.untranslated_label, value),
+                     self.parent.running_sugar)
         return value
 
     def _set_mute(self, control, name, value):
@@ -276,8 +274,9 @@ class AudioGrab:
             return
 
         self._mixer.set_mute(control, value)
-        _logger.debug('Set mute for %s (%s) to %r', name,
-                  control.props.untranslated_label, value)
+        debug_output('Set mute for %s (%s) to %r' % (name,
+                  control.props.untranslated_label, value),
+                     self.parent.running_sugar)
 
     def _get_volume(self, control, name):
         """Get volume of a control and convert to a scale of 0-100"""
@@ -315,14 +314,14 @@ class AudioGrab:
 
     def mute_master(self):
         """Mutes the Master Control"""
-        if not self._hardwired and self.activity.hw != XO1:
+        if not self._hardwired and self.parent.hw != XO1:
             self._set_mute(self._master_control, 'Master', True)
         else:
             self.amixer_set('Master', False)
 
     def unmute_master(self):
         """Unmutes the Master Control"""
-        if not self._hardwired and self.activity.hw != XO1:
+        if not self._hardwired and self.parent.hw != XO1:
             self._set_mute(self._master_control, 'Master', True)
         else:
             self.amixer_set('Master', True)
@@ -351,7 +350,7 @@ class AudioGrab:
 
     def set_bias(self, bias_state=False):
         """Enables / disables bias voltage."""
-        if not self._hardwired and self.activity.hw != XO1:
+        if not self._hardwired and self.parent.hw != XO1:
             if self._mic_bias_control is None:
                 return
             # if not isinstance(self._mic_bias_control,
@@ -407,7 +406,7 @@ class AudioGrab:
     def set_dc_mode(self, dc_mode=False):
         """Sets the DC Mode Enable control
         pass False to mute and True to unmute"""
-        if not self._hardwired and self.activity.hw != XO1:
+        if not self._hardwired and self.parent.hw != XO1:
             if self._dc_control is not None:
                 self._set_mute(self._dc_control, 'DC mode', not dc_mode)
         else:
@@ -465,7 +464,8 @@ class AudioGrab:
                 return self._get_mute(self._mic_boost_control, 'Mic Boost',
                                       False)
             current = self._mixer.get_volume(self._mic_boost_control)
-            _logger.debug('current: %s' % (str(current)))
+            debug_output('current: %s' % (str(current)),
+                         self.parent.running_sugar)
             if current != self._mic_boost_control.min_volume:
                 return True
             return False
@@ -484,7 +484,7 @@ class AudioGrab:
         """Sets the Capture gain slider settings
         capture_val must be given as an integer between 0 and 100 indicating the
         percentage of the slider to be set"""
-        if not self._hardwired and self.activity.hw != XO1:
+        if not self._hardwired and self.parent.hw != XO1:
             if self._capture_control is not None:
                 self._set_volume(self._capture_control, 'Capture', capture_val)
         else:
@@ -510,7 +510,7 @@ class AudioGrab:
         """Sets the MIC gain slider settings
         mic_val must be given as an integer between 0 and 100 indicating the
         percentage of the slider to be set"""
-        if not self._hardwired and self.activity.hw != XO1:
+        if not self._hardwired and self.parent.hw != XO1:
             self._set_volume(self._mic_gain_control, 'Mic', mic_val)
         else:
             os.system("amixer set Mic " + str(mic_val) + "%")
@@ -550,10 +550,9 @@ class AudioGrab:
             SENSOR_DC_BIAS: (True, True, 0, False)
         }
         mode, bias, gain, boost = PARAMETERS[sensor_type]
-        _logger.debug("====================================")
-        _logger.debug("Set Sensor Type to %s" % (str(sensor_type)))
+        debug_output('Set Sensor Type to %s' % (str(sensor_type)),
+                     self.parent.running_sugar)
         self._set_sensor_type(mode, bias, gain, boost)
-        _logger.debug("====================================")
 
     def _set_sensor_type(self, mode=None, bias=None, gain=None, boost=None):
         """Helper to modify (some) of the sensor settings."""
@@ -602,11 +601,10 @@ class AudioGrab_XO15(AudioGrab):
             SENSOR_DC_NO_BIAS: (True, False, 80, False),
             SENSOR_DC_BIAS: (True, True, 90, False)
         }
-        _logger.debug("====================================")
-        _logger.debug("Set Sensor Type to %s" % (str(sensor_type)))
+        debug_output('Set Sensor Type to %s' % (str(sensor_type)),
+                     self.parent.running_sugar)
         mode, bias, gain, boost = PARAMETERS[sensor_type]
         self._set_sensor_type(mode, bias, gain, boost)
-        _logger.debug("====================================")
 
 
 class AudioGrab_Unknown(AudioGrab):
@@ -619,8 +617,7 @@ class AudioGrab_Unknown(AudioGrab):
             SENSOR_DC_NO_BIAS: (True, False, 80, False),
             SENSOR_DC_BIAS: (True, True, 90, False)
         }
-        _logger.debug("====================================")
-        _logger.debug("Set Sensor Type to %s" % (str(sensor_type)))
+        debug_output('Set Sensor Type to %s' % (str(sensor_type)),
+                     self.parent.running_sugar)
         mode, bias, gain, boost = PARAMETERS[sensor_type]
         self._set_sensor_type(mode, bias, gain, boost)
-        _logger.debug("====================================")

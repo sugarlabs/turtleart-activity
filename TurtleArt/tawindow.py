@@ -80,16 +80,13 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
                     arithmetic_check, xy, find_block_to_run, find_top_block, \
                     find_start_stack, find_group, find_blk_below, \
                     dock_dx_dy, data_to_string, journal_check, chooser, \
-                    get_hardware
+                    get_hardware, debug_output
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 from dbus.mainloop.glib import DBusGMainLoop
 
 if GST_AVAILABLE:
     from tagplay import stop_media
-
-import logging
-_logger = logging.getLogger('turtleart-activity')
 
 
 class TurtleArtWindow():
@@ -125,7 +122,7 @@ class TurtleArtWindow():
             self.running_sugar = False
             self.gc = self.window.new_gc()
         else:
-            _logger.debug("bad win type %s" % (type(win)))
+            debug_output("bad win type %s" % (type(win)), False)
 
         if self.running_sugar:
             self.activity = parent
@@ -150,11 +147,10 @@ class TurtleArtWindow():
         self.mouse_x = 0
         self.mouse_y = 0
 
-        # if self.running_sugar:
         try:
             locale.setlocale(locale.LC_NUMERIC, '')
         except locale.Error:
-            _logger.debug('unsupported locale')
+            debug_output('unsupported locale', self.running_sugar)
         self.decimal_point = locale.localeconv()['decimal_point']
         if self.decimal_point == '' or self.decimal_point is None:
             self.decimal_point = '.'
@@ -162,7 +158,7 @@ class TurtleArtWindow():
         self.orientation = HORIZONTAL_PALETTE
 
         self.hw = get_hardware()
-        _logger.debug('running on %s hardware' % (self.hw))
+        # debug_output('running on %s hardware' % (self.hw), self.running_sugar)
         if self.hw in (XO1, XO15):
             self.lead = 1.0
             self.scale = 0.67
@@ -435,7 +431,8 @@ class TurtleArtWindow():
         for blk in self.just_blocks():
             if find_start_stack(blk):
                 self.step_time = time
-                _logger.debug("running stack starting from %s" % (blk.name))
+                debug_output("running stack starting from %s" % (blk.name),
+                             self.running_sugar)
                 self._run_stack(blk)
                 return
 
@@ -443,7 +440,8 @@ class TurtleArtWindow():
         for blk in self.just_blocks():
             if find_block_to_run(blk):
                 self.step_time = time
-                _logger.debug("running stack starting from %s" % (blk.name))
+                debug_output("running stack starting from %s" % (blk.name),
+                             self.running_sugar)
                 self._run_stack(blk)
         return
 
@@ -1205,7 +1203,7 @@ class TurtleArtWindow():
     def process_data(self, block_data, offset=0):
         """ Process block_data (from a macro, a file, or the clipboard). """
         if offset != 0:
-            _logger.debug("offset is %d" % (offset))
+            debug_output("offset is %d" % (offset), self.running_sugar)
         # Create the blocks (or turtle).
         blocks = []
         for blk in block_data:
@@ -1224,7 +1222,8 @@ class TurtleArtWindow():
                         else:
                             cons.append(blocks[c])
                 else:
-                    _logger.debug("connection error %s" % (str(block_data[i])))
+                    debug_output("connection error %s" % (str(block_data[i])),
+                                 self.running_sugar)
                     cons.append(None)
             elif blocks[i].connections == 'check':
                 # Convert old-style boolean and arithmetic blocks
@@ -1248,7 +1247,8 @@ class TurtleArtWindow():
                             blocks[c].connections[3] = None
                         else:
                             # Connection was to a block we haven't seen yet.
-                            _logger.debug("Warning: dock to the future")
+                            debug_output("Warning: dock to the future",
+                                         self.running_sugar)
                 else:
                     if block_data[i][4][0] is not None:
                         c = block_data[i][4][0]
@@ -1262,10 +1262,12 @@ class TurtleArtWindow():
                             blocks[c].connections[1] = None
                         else:
                             # Connection was to a block we haven't seen yet.
-                            _logger.debug("Warning: dock to the future")
+                            debug_output("Warning: dock to the future",
+                                         self.running_sugar)
             else:
-                _logger.debug("Warning: unknown connection state %s" % \
-                                  (str(blocks[i].connections)))
+                debug_output("Warning: unknown connection state %s" % \
+                                  (str(blocks[i].connections)),
+                             self.running_sugar)
             blocks[i].connections = cons[:]
 
         # Block sizes and shapes may have changed.
@@ -2063,7 +2065,8 @@ class TurtleArtWindow():
                     oldleft, oldright = \
                         self.selected_blk.spr.labels[0].split(CURSOR)
                 except ValueError:
-                    _logger.debug("[%s]" % self.selected_blk.spr.labels[0])
+                    debug_output("[%s]" % self.selected_blk.spr.labels[0],
+                                 self.running_sugar)
                     oldleft = self.selected_blk.spr.labels[0]
                     oldright = ''
         else:
@@ -2272,7 +2275,8 @@ class TurtleArtWindow():
             f.close()
             id = fname
         except IOError:
-            _logger.error("Unable to read Python code from %s" % (fname))
+            error_output("Unable to read Python code from %s" % (fname),
+                         self.running_sugar)
             return id
 
         # if we are running Sugar, copy the file into the Journal
@@ -2288,7 +2292,8 @@ class TurtleArtWindow():
                 datastore.write(dsobject)
                 id = dsobject.object_id
             except IOError:
-                _logger.error("Error copying %s to the datastore" % (fname))
+                error_output("Error copying %s to the datastore" % (fname),
+                             self.running_sugar)
                 id = None
             dsobject.destroy()
 
@@ -2313,12 +2318,14 @@ class TurtleArtWindow():
         """ Read the Python code from the Journal object """
         self.python_code = None
         try:
-            _logger.debug("opening %s " % dsobject.file_path)
+            debug_output("opening %s " % dsobject.file_path,
+                         self.running_sugar)
             file_handle = open(dsobject.file_path, "r")
             self.python_code = file_handle.read()
             file_handle.close()
         except IOError:
-            _logger.debug("couldn't open %s" % dsobject.file_path)
+            debug_output("couldn't open %s" % dsobject.file_path,
+                         self.running_sugar)
         if blk is None:
             blk = self.selected_blk
         if blk is not None:
@@ -2363,8 +2370,9 @@ class TurtleArtWindow():
             saved_project_data = f.read()
             f.close()
         except:
-            _logger.debug("problem loading saved project data from %s" % \
-                              (self._loaded_project))
+            debug_output("problem loading saved project data from %s" % \
+                              (self._loaded_project),
+                         self.running_sugar)
             saved_project_data = ""
         current_project_data = data_to_string(self.assemble_data_to_save())
 
@@ -2462,7 +2470,8 @@ class TurtleArtWindow():
                         dsobject = datastore.get(value)
                     except:  # Should be IOError, but dbus error is raised
                         dsobject = None
-                        _logger.debug("couldn't get dsobject %s" % value)
+                        debug_output("couldn't get dsobject %s" % value,
+                                     self.running_sugar)
                     if dsobject is not None:
                         self.load_python_code_from_journal(dsobject, blk)
                 else:
@@ -2528,8 +2537,8 @@ class TurtleArtWindow():
                         x, y = self._calc_image_offset('', blk.spr)
                         blk.set_image(pixbuf, x, y)
                     except:
-                        _logger.debug("Couldn't open dsobject (%s)" % \
-                              (blk.values[0]))
+                        debug_output("Couldn't open dsobject (%s)" % \
+                              (blk.values[0]), self.running_sugar)
                         self._block_skin('journaloff', blk)
             else:
                 if not movie_media_type(blk.values[0][-4:]):
@@ -2648,7 +2657,7 @@ class TurtleArtWindow():
     def showlabel(self, shp, label=''):
         """ Display a message on a status block """
         if not self.interactive_mode:
-            _logger.debug(label)
+            debug_output(label, self.running_sugar)
             return
         if shp == 'syntaxerror' and str(label) != '':
             if str(label)[1:] in self.status_shapes:

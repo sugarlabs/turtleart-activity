@@ -23,9 +23,7 @@ from taconstants import TURTLE_LAYER, DEFAULT_TURTLE_COLORS
 from tasprite_factory import SVG, svg_str_to_pixbuf
 from tacanvas import wrap100, color_table
 from sprites import Sprite
-
-import logging
-_logger = logging.getLogger('turtleart-activity')
+from tautils import debug_output
 
 
 SHAPES = 36
@@ -159,7 +157,8 @@ class Turtle:
             self.shapes = shapes[:]
         else:
             if n != 1:
-                _logger.debug("%d images passed to set_shapes: ignoring" % (n))
+                debug_output("%d images passed to set_shapes: ignoring" % (n),
+                             self.tw.running_sugar)
             images = [shapes[0]]
             if self.heading == 0:
                 for i in range(3):

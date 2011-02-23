@@ -21,14 +21,13 @@
 
 from dbus.service import signal
 from dbus.gobject_service import ExportedGObject
-import logging
 import telepathy
 
 import gtk
 import base64
 
 from TurtleArt.tautils import data_to_string, data_from_string, get_path, \
-                              base64_to_image
+                              base64_to_image, debug_output, error_output
 from TurtleArt.taconstants import DEFAULT_TURTLE_COLORS
 
 try:
@@ -43,7 +42,6 @@ except:
 SERVICE = 'org.laptop.TurtleArtActivity'
 IFACE = SERVICE
 PATH = '/org/laptop/TurtleArtActivity'
-_logger = logging.getLogger('turtleart-activity')
 
 
 class Collaboration():
@@ -63,7 +61,7 @@ class Collaboration():
         owner = self.pservice.get_owner()
         self.owner = owner
         self._tw.buddies.append(self.owner)
-        self._share = ""
+        self._share = ''
 
         self._activity.connect('shared', self._shared_cb)
         self._activity.connect('joined', self._joined_cb)
@@ -89,8 +87,9 @@ class Collaboration():
     def _shared_cb(self, activity):
         self._shared_activity = self._activity._shared_activity
         if self._shared_activity is None:
-            _logger.error("Failed to share or join activity ... \
-                _shared_activity is null in _shared_cb()")
+            debug_output('Failed to share or join activity ... \
+                _shared_activity is null in _shared_cb()',
+                         self._tw.running_sugar)
             return
 
         self._tw.set_sharing(True)
@@ -99,7 +98,7 @@ class Collaboration():
         self.waiting_for_turtles = False
         self.turtle_dictionary = self._get_dictionary()
 
-        _logger.debug('I am sharing...')
+        debug_output('I am sharing...', self._tw.running_sugar)
 
         self.conn = self._shared_activity.telepathy_conn
         self.tubes_chan = self._shared_activity.telepathy_tubes_chan
@@ -108,7 +107,8 @@ class Collaboration():
         self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].connect_to_signal(
             'NewTube', self._new_tube_cb)
 
-        _logger.debug('This is my activity: making a tube...')
+        debug_output('This is my activity: making a tube...',
+                     self._tw.running_sugar)
 
         id = self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].OfferDBusTube(
             SERVICE, {})
@@ -116,8 +116,9 @@ class Collaboration():
     def _joined_cb(self, activity):
         self._shared_activity = self._activity._shared_activity
         if self._shared_activity is None:
-            _logger.error("Failed to share or join activity ... \
-                _shared_activity is null in _shared_cb()")
+            debug_output('Failed to share or join activity ... \
+                _shared_activity is null in _shared_cb()',
+                         self._tw.running_sugar)
             return
 
         self._tw.set_sharing(True)
@@ -131,7 +132,8 @@ class Collaboration():
         self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].connect_to_signal(
             'NewTube', self._new_tube_cb)
 
-        _logger.debug('I am joining an activity: waiting for a tube...')
+        debug_output('I am joining an activity: waiting for a tube...',
+                     self._tw.running_sugar)
         self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].ListTubes(
             reply_handler=self._list_tubes_reply_cb,
             error_handler=self._list_tubes_error_cb)
@@ -144,13 +146,13 @@ class Collaboration():
             self._new_tube_cb(*tube_info)
 
     def _list_tubes_error_cb(self, e):
-        _logger.error('ListTubes() failed: %s', e)
+        error_output('ListTubes() failed: %s' % (e), self._tw.running_sugar)
 
     def _new_tube_cb(self, id, initiator, type, service, params, state):
         """ Create a new tube. """
-        _logger.debug('New tube: ID=%d initator=%d type=%d service=%s '
-                     'params=%r state=%d', id, initiator, type, service,
-                     params, state)
+        debug_output('New tube: ID=%d initator=%d type=%d service=%s \
+                     params=%r state=%d' % (id, initiator, type, service,
+                     params, state), self._tw.running_sugar)
 
         if (type == telepathy.TUBE_TYPE_DBUS and service == SERVICE):
             if state == telepathy.TUBE_STATE_LOCAL_PENDING:
@@ -167,11 +169,12 @@ class Collaboration():
 
             # Now that we have the tube, we can ask for the turtle dictionary.
             if self.waiting_for_turtles:
-                _logger.debug("Sending a request for the turtle dictionary")
+                debug_output('Sending a request for the turtle dictionary',
+                             self._tw.running_sugar)
                 # we need to send our own nick and colors
                 colors = self._get_colors()
-                event = "t|" + data_to_string([self._get_nick(), colors])
-                _logger.debug(event)
+                event = 't|' + data_to_string([self._get_nick(), colors])
+                debug_output(event, self._tw.running_sugar)
                 self.send_event(event)
 
     def event_received_cb(self, event_message):
@@ -188,10 +191,11 @@ class Collaboration():
         save_active_turtle = self._tw.active_turtle
 
         try:
-            command, payload = event_message.split("|", 2)
+            command, payload = event_message.split('|', 2)
             self._processing_methods[command](payload)
         except ValueError:
-            _logger.debug("could not split event message")
+            debug_output('Could not split event message.',
+                         self._tw.running_sugar)
 
         # Restore active Turtle
         self._tw.canvas.set_turtle(self._tw.turtles.get_turtle_key(
@@ -207,7 +211,7 @@ class Collaboration():
             [nick, colors] = data_from_string(payload)
             if nick != self._tw.nick:
                 # There may not be a turtle dictionary.
-                if hasattr(self, "turtle_dictionary"):
+                if hasattr(self, 'turtle_dictionary'):
                     self.turtle_dictionary[nick] = colors
                 else:
                     self.turtle_dictionary = {nick: colors}
@@ -216,7 +220,7 @@ class Collaboration():
         # Sharer should send turtle dictionary.
         if self.initiating:
             event_payload = data_to_string(self.turtle_dictionary)
-            self.send_event("T|" + event_payload)
+            self.send_event('T|' + event_payload)
 
     def _receive_turtle_dict(self, payload):
         if self.waiting_for_turtles:
