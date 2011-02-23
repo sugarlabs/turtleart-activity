@@ -66,6 +66,7 @@ class Audio_sensors_plugin(Plugin):
     def __init__(self, parent):
         self._parent = parent
         self.hw = self._parent.hw
+        self.running_sugar = self._parent.running_sugar
         self._status = True  # TODO: test for audio device
 
     def setup(self):
