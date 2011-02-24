@@ -375,7 +375,6 @@ class SVG:
                                   self._scale)
         self.margins[1] = int(self._stroke_width * self._scale)
         self.margins[2] = int(self._stroke_width * self._scale)
-        self.margins[3] = int(self._stroke_width * self._scale)
         return self.header() + svg
 
     def turtle(self, colors):
