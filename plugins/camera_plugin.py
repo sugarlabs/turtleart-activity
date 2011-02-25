@@ -30,11 +30,10 @@ from camera.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, VIDIOC_G_CTRL, \
  VIDIOC_S_CTRL
 
 from plugin import Plugin
-from TurtleArt.taconstants import PALETTES, PALETTE_NAMES, BOX_STYLE_MEDIA, \
-    CONTENT_BLOCKS, BLOCK_NAMES, DEFAULTS, SPECIAL_NAMES, HELP_STRINGS, \
-    BOX_STYLE, PRIMITIVES
-from TurtleArt.talogo import VALUE_BLOCKS, MEDIA_BLOCKS_DICTIONARY, \
-    PLUGIN_DICTIONARY
+
+from TurtleArt.taprimitive import Primitive
+from TurtleArt.taconstants import BOX_STYLE_MEDIA, BOX_STYLE
+from TurtleArt.talogo import MEDIA_BLOCKS_DICTIONARY, PLUGIN_DICTIONARY
 from TurtleArt.tautils import get_path
 
 import logging
@@ -62,35 +61,41 @@ class Camera_plugin(Plugin):
     def setup(self):
         # set up camera-specific blocks
         if self._status:
-            PALETTES[PALETTE_NAMES.index('sensor')].append('luminance')
-            BOX_STYLE.append('luminance')
-            BLOCK_NAMES['luminance'] = [_('brightness')]
-            HELP_STRINGS['luminance'] = _("light level detected by camera")
-            VALUE_BLOCKS.append('luminance')
-            PRIMITIVES['luminance'] = 'luminance'
+            luminance = Primitive('luminance')
+            luminance.set_palette('sensor')
+            luminance.set_style(BOX_STYLE)
+            luminance.set_label(_('brightness'))
+            luminance.set_help(_('light level detected by camera'))
+            luminance.set_value_block(True)
+            luminance.set_prim_name('luminance')
             PLUGIN_DICTIONARY['luminance'] = self.prim_read_camera
             self._parent.lc._def_prim('luminance', 0,
                 lambda self: PLUGIN_DICTIONARY['luminance'](True))
+            luminance.add_prim()
 
             # Depreciated block
-            BOX_STYLE.append('readcamera')
-            BLOCK_NAMES['readcamera'] = [_('read camera')]
-            HELP_STRINGS['readcamera'] = \
-                _("Average RGB color from camera is pushed to the stack")
-            VALUE_BLOCKS.append('readcamera')
-            PRIMITIVES['readcamera'] = 'readcamera'
-            PLUGIN_DICTIONARY['readcamera'] = self.prim_read_camera
-            self._parent.lc._def_prim('readcamera', 0,
-                lambda self: PLUGIN_DICTIONARY['readcamera'](True))
+            read_camera = Primitive('read_camera')
+            read_camera.set_style(BOX_STYLE)
+            read_camera.set_label(_('brightness'))
+            read_camera.set_help(
+                _('Average RGB color from camera is pushed to the stack'))
+            read_camera.set_value_block(True)
+            read_camera.set_prim_name('read_camera')
+            PLUGIN_DICTIONARY['read_camera'] = self.prim_read_camera
+            self._parent.lc._def_prim('read_camera', 0,
+                lambda self: PLUGIN_DICTIONARY['read_camera'](True))
+            read_camera.add_prim()
 
-            PALETTES[PALETTE_NAMES.index('sensor')].append('camera')
-            BOX_STYLE_MEDIA.append('camera')
-            CONTENT_BLOCKS.append('camera')
-            BLOCK_NAMES['camera'] = [' ']
-            DEFAULTS['camera'] = ['CAMERA']
-            SPECIAL_NAMES['camera'] = _('camera')
-            HELP_STRINGS['camera'] = _('camera output')
+            camera = Primitive('camera')
+            camera.set_palette('sensor')
+            camera.set_style(BOX_STYLE_MEDIA)
+            camera.set_label([' '])
+            camera.set_help(_('camera output'))
+            camera.set_special_name(_('camera'))
+            camera.set_content_block(True)
+            camera.set_default(['CAMERA'])
             MEDIA_BLOCKS_DICTIONARY['camera'] = self.prim_take_picture
+            camera.add_prim()
 
     def start(self):
         # This gets called by the start button

@@ -27,9 +27,10 @@ from gettext import gettext as _
 from rfid.rfidutils import strhex2bin, strbin2dec, find_device
 
 from plugin import Plugin
-from TurtleArt.taconstants import PALETTES, PALETTE_NAMES, BLOCK_NAMES, \
-    HELP_STRINGS, BOX_STYLE
-from TurtleArt.talogo import VALUE_BLOCKS, PLUGIN_DICTIONARY
+
+from TurtleArt.taprimitive import Primitive
+from TurtleArt.taconstants import BOX_STYLE
+from TurtleArt.talogo import PLUGIN_DICTIONARY
 
 import logging
 _logger = logging.getLogger('turtleart-activity RFID plugin')
@@ -83,18 +84,19 @@ class Rfid_plugin(Plugin):
             self._status = True
 
     def setup(self):
-        # set up camera-specific blocks
+        # set up RFID-specific blocks
         if self._status:
-            PALETTES[PALETTE_NAMES.index('sensor')].append('rfid')
-            BOX_STYLE.append('rfid')
-            BLOCK_NAMES['rfid'] = [_('RFID')]
-            HELP_STRINGS['rfid'] = _("read value from RFID device")
-            PRIMITIVES['rfid'] = 'rfid'
-            VALUE_BLOCKS.append('rfid')
-            PLUGIN_DICTIONARY['rfid'] = self.prim_read_rfid
+            rfid = Primitive('rfid')
+            rfid.set_palette('sensor')
+            rfid.set_style(BOX_STYLE)
+            rfid.set_label(_('RFID'))
+            rfid.set_help(_('read value from RFID device'))
+            rfid.set_value_block(True)
+            rfid.set_prim_name('rfid')
+            PLUGIN_DICTIONARY['rfid'] = self.prim_read_camera
             self._parent.lc._def_prim('rfid', 0,
-                lambda self: PLUGIN_DICTIONARY['rfid']())
-
+                lambda self: PLUGIN_DICTIONARY['rfid'](True))
+            rfid.add_prim()
 
     def start(self):
         # This gets called by the start button
