@@ -156,7 +156,6 @@ class TurtleArtWindow():
         self.orientation = HORIZONTAL_PALETTE
 
         self.hw = get_hardware()
-        # debug_output('running on %s hardware' % (self.hw), self.running_sugar)
         if self.hw in (XO1, XO15):
             self.lead = 1.0
             self.scale = 0.67

@@ -596,7 +596,7 @@ class SVG:
 
     def set_gradient(self, flag=False, color='#FFFFFF'):
         self._gradient = flag
-	self._gradient_color = color
+        self._gradient_color = color
 
     def set_innie(self, innie_array=[False]):
         self._innie = innie_array

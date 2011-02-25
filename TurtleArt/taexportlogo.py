@@ -27,6 +27,7 @@ try:
 except:
     pass
 
+
 def save_logo(tw):
     """ Set up the Turtle Art color palette and color processing. """
     color_processing = '\
