@@ -116,12 +116,12 @@ class TurtleMain():
                 if c[-10:] == '_plugin.py' and c[0] != '#' and c[0] != '.':
                     plugin_files.append(c.split('.')[0])
         return plugin_files
-        
+
     def _init_plugins(self):
         for p in self._get_plugin_candidates(self._get_gnome_plugin_home()):
             P = p.capitalize()
-            f = "def f(self): from gnome_plugins.%s import %s; return %s(self)" \
-                % (p, P, P)
+            f = \
+    "def f(self): from gnome_plugins.%s import %s; return %s(self)" % (p, P, P)
             plugin = {}
             try:
                 exec f in globals(), plugin
@@ -131,7 +131,7 @@ class TurtleMain():
 
     def _run_plugins(self):
         for p in self._plugins:
-             p.set_tw(self.tw)
+            p.set_tw(self.tw)
 
     def _mkdir_p(self, path):
         '''Create a directory in a fashion similar to `mkdir -p`'''
