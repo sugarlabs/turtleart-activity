@@ -890,7 +890,7 @@ class TurtleArtWindow():
                                 'block', blk.name)) > 0:
                             self.showlabel('dupstack')
                             return True
-                    # You cannot miz and match sensor blocks
+                    # You cannot mix and match sensor blocks
                     elif blk.name in ['sound', 'volume', 'pitch']:
                         if len(self.block_list.get_similar_blocks(
                                 'block', ['resistance', 'voltage'])) > 0:
