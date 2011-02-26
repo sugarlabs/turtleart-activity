@@ -32,7 +32,6 @@ from camera.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, VIDIOC_G_CTRL, \
 from plugin import Plugin
 
 from TurtleArt.taprimitive import Primitive
-from TurtleArt.taconstants import BOX_STYLE_MEDIA, BOX_STYLE
 from TurtleArt.talogo import MEDIA_BLOCKS_DICTIONARY, PLUGIN_DICTIONARY
 from TurtleArt.tautils import get_path
 
@@ -63,7 +62,7 @@ class Camera_plugin(Plugin):
         if self._status:
             luminance = Primitive('luminance')
             luminance.set_palette('sensor')
-            luminance.set_style(BOX_STYLE)
+            luminance.set_style('box-style')
             luminance.set_label(_('brightness'))
             luminance.set_help(_('light level detected by camera'))
             luminance.set_value_block(True)
@@ -75,7 +74,7 @@ class Camera_plugin(Plugin):
 
             # Depreciated block
             read_camera = Primitive('read_camera')
-            read_camera.set_style(BOX_STYLE)
+            read_camera.set_style('box-style')
             read_camera.set_label(_('brightness'))
             read_camera.set_help(
                 _('Average RGB color from camera is pushed to the stack'))
@@ -88,7 +87,7 @@ class Camera_plugin(Plugin):
 
             camera = Primitive('camera')
             camera.set_palette('sensor')
-            camera.set_style(BOX_STYLE_MEDIA)
+            camera.set_style('box-style-media')
             camera.set_label([' '])
             camera.set_help(_('camera output'))
             camera.set_special_name(_('camera'))

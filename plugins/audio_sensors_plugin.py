@@ -38,7 +38,7 @@ from audio.audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15, \
 from audio.ringbuffer import RingBuffer1d
 
 from TurtleArt.taprimitive import Primitive
-from TurtleArt.taconstants import BOX_STYLE, XO1, XO15
+from TurtleArt.taconstants import XO1, XO15
 from TurtleArt.talogo import PLUGIN_DICTIONARY
 from TurtleArt.tautils import get_path
 
@@ -86,7 +86,7 @@ class Audio_sensors_plugin(Plugin):
 
         sound = Primitive('sound')
         sound.set_palette('sensor')
-        sound.set_style(BOX_STYLE)
+        sound.set_style('box-style')
         sound.set_label(_('sound'))
         sound.set_help(_('raw microphone input signal'))
         sound.set_value_block(True)
@@ -98,7 +98,7 @@ class Audio_sensors_plugin(Plugin):
 
         volume = Primitive('volume')
         volume.set_palette('sensor')
-        volume.set_style(BOX_STYLE)
+        volume.set_style('box-style')
         volume.set_label(_('volume'))
         volume.set_help(_('microphone input volume'))
         volume.set_value_block(True)
@@ -111,7 +111,7 @@ class Audio_sensors_plugin(Plugin):
         pitch = Primitive('pitch')
         if PITCH_AVAILABLE:
             pitch.set_palette('sensor')
-        pitch.set_style(BOX_STYLE)
+        pitch.set_style('box-style')
         pitch.set_label(_('pitch'))
         pitch.set_help(_('microphone input pitch'))
         pitch.set_value_block(True)
@@ -124,7 +124,7 @@ class Audio_sensors_plugin(Plugin):
         if self.hw in [XO1, XO15]:
             resistance = Primitive('resistance')
             resistance.set_palette('sensor')
-            resistance.set_style(BOX_STYLE)
+            resistance.set_style('box-style')
             resistance.set_label(_('resistance'))
             resistance.set_help(_('sensor input resistance'))
             resistance.set_value_block(True)
@@ -136,7 +136,7 @@ class Audio_sensors_plugin(Plugin):
 
             voltage = Primitive('voltage')
             voltage.set_palette('sensor')
-            voltage.set_style(BOX_STYLE)
+            voltage.set_style('box-style')
             voltage.set_label(_('voltage'))
             voltage.set_help(_('sensor input voltage'))
             voltage.set_value_block(True)

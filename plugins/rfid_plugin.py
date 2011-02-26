@@ -29,7 +29,6 @@ from rfid.rfidutils import strhex2bin, strbin2dec, find_device
 from plugin import Plugin
 
 from TurtleArt.taprimitive import Primitive
-from TurtleArt.taconstants import BOX_STYLE
 from TurtleArt.talogo import PLUGIN_DICTIONARY
 
 import logging
@@ -88,7 +87,7 @@ class Rfid_plugin(Plugin):
         if self._status:
             rfid = Primitive('rfid')
             rfid.set_palette('sensor')
-            rfid.set_style(BOX_STYLE)
+            rfid.set_style('box-style')
             rfid.set_label(_('RFID'))
             rfid.set_help(_('read value from RFID device'))
             rfid.set_value_block(True)

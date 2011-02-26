@@ -248,6 +248,46 @@ PORTFOLIO_STYLE_1x1 = ['template1x1', 'template1x1a']
 PORTFOLIO_STYLE_2x1 = ['template2x1']
 PORTFOLIO_STYLE_1x2 = ['template1x2']
 
+BLOCK_STYLES = {'basic-style-head': BASIC_STYLE_HEAD,
+                'basic-style-head-1arg': BASIC_STYLE_HEAD_1ARG,
+                'basic-style-tail': BASIC_STYLE_TAIL,
+                'basic-style': BASIC_STYLE,
+                'basic-style-extended-vertical': BASIC_STYLE_EXTENDED_VERTICAL,
+                'invisible': INVISIBLE,
+                'basic-style-extended': BASIC_STYLE_EXTENDED,
+                'basic-style-1arg': BASIC_STYLE_1ARG,
+                'basic-style-var-arg': BASIC_STYLE_VAR_ARG,
+                'bullet-style': BULLET_STYLE,
+                'basic-style-2arg': BASIC_STYLE_2ARG,
+                'box-style': BOX_STYLE,
+                'box-style-media': BOX_STYLE_MEDIA,
+                'number-style': NUMBER_STYLE,
+                'number-style-var-arg': NUMBER_STYLE_VAR_ARG,
+                'number-style-block': NUMBER_STYLE_BLOCK,
+                'number-style-porch': NUMBER_STYLE_PORCH,
+                'number-style-1arg': NUMBER_STYLE_1ARG,
+                'number-style-1strarg': NUMBER_STYLE_1STRARG,
+                'compare-style': COMPARE_STYLE,
+                'compare-porch-style': COMPARE_PORCH_STYLE,
+                'boolean-style': BOOLEAN_STYLE,
+                'not-style': NOT_STYLE,
+                'flow-style': FLOW_STYLE,
+                'flow-style-tail': FLOW_STYLE_TAIL,
+                'flow-style-1arg': FLOW_STYLE_1ARG,
+                'flow-style-boolean': FLOW_STYLE_BOOLEAN,
+                'flow-style-while': FLOW_STYLE_WHILE,
+                'flow-style-else': FLOW_STYLE_ELSE,
+                'collapsible-top': COLLAPSIBLE_TOP,
+                'collapsible-top-no-arm': COLLAPSIBLE_TOP_NO_ARM,
+                'collapsible-top-no-label': COLLAPSIBLE_TOP_NO_LABEL,
+                'collapsible-top-no-arm-no-label':
+                    COLLAPSIBLE_TOP_NO_ARM_NO_LABEL,
+                'collapsible-bottom': COLLAPSIBLE_BOTTOM,
+                'portfolio-style-2x2': PORTFOLIO_STYLE_2x2,
+                'portfolio-style-1x1': PORTFOLIO_STYLE_1x1,
+                'portfolio-style-2x1': PORTFOLIO_STYLE_2x1,
+                'portfolio-style-1x2': PORTFOLIO_STYLE_1x2}
+
 #
 # Blocks that are expandable
 #

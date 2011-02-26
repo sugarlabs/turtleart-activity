@@ -19,22 +19,8 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-from taconstants import EXPANDABLE, EXPANDABLE_BLOCKS, EXPANDABLE_ARGS, \
-    PRIMITIVES, OLD_NAMES, BLOCK_SCALE, BLOCK_NAMES, CONTENT_BLOCKS, \
-    PALETTES, COLORS, BASIC_STYLE_HEAD, BASIC_STYLE_HEAD_1ARG, \
-    BASIC_STYLE_TAIL, BASIC_STYLE, BASIC_STYLE_EXTENDED, BASIC_STYLE_1ARG, \
-    BASIC_STYLE_VAR_ARG, BULLET_STYLE, BASIC_STYLE_2ARG, BOX_STYLE, \
-    BOX_STYLE_MEDIA, NUMBER_STYLE, NUMBER_STYLE_VAR_ARG, NUMBER_STYLE_BLOCK, \
-    NUMBER_STYLE_PORCH, NUMBER_STYLE_1ARG, NUMBER_STYLE_1STRARG, \
-    COMPARE_STYLE, BOOLEAN_STYLE, NOT_STYLE, FLOW_STYLE, FLOW_STYLE_TAIL, \
-    FLOW_STYLE_1ARG, FLOW_STYLE_BOOLEAN, FLOW_STYLE_WHILE, FLOW_STYLE_ELSE, \
-    COLLAPSIBLE_TOP, COLLAPSIBLE_TOP_NO_ARM, COLLAPSIBLE_TOP_NO_LABEL, \
-    COLLAPSIBLE_TOP_NO_ARM_NO_LABEL, COLLAPSIBLE_BOTTOM, PORTFOLIO_STYLE_2x2, \
-    PORTFOLIO_STYLE_1x1, PORTFOLIO_STYLE_2x1, PORTFOLIO_STYLE_1x2, \
-    STANDARD_STROKE_WIDTH, BOX_COLORS, GRADIENT_COLOR, COMPARE_PORCH_STYLE, \
-    BASIC_STYLE_EXTENDED_VERTICAL, CONSTANTS, INVISIBLE, PALETTE_NAMES, \
-    HELP_STRINGS, DEFAULTS, SPECIAL_NAMES
-
+from taconstants import BLOCK_STYLES, BLOCK_NAMES, HELP_STRINGS, PALETTES, \
+    PALETTE_NAMES, CONTENT_BLOCKS, PRIMITIVES, DEFAULTS, SPECIAL_NAMES
 from talogo import VALUE_BLOCKS
 from tautils import debug_output
 
@@ -63,7 +49,7 @@ class Primitive():
             debug_output('You must specify a style for your block')
             return
         else:
-            self._style.append(self._name)
+            BLOCK_STYLES[self._style].append(self._name)
 
         if self._label is not None:
             BLOCK_NAMES[self._name] = self._label
@@ -73,6 +59,8 @@ class Primitive():
 
         if self._help is not None:
             HELP_STRINGS[self._name] = self._help
+        else:
+            HELP_STRINGS[self._name] = ''
 
         if self._value_block:
             VALUE_BLOCKS.append(self._name)
@@ -120,8 +108,10 @@ class Primitive():
             self._default = [default]
 
     def set_style(self, style):
-        self._style = style
+        if style not in BLOCK_STYLES:
+            debug_output('Unknown style: %s' % (style))
+        else:
+            self._style = style
 
     def set_prim_name(self, prim_name):
         self._prim_name = prim_name
-
