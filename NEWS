@@ -1,32 +1,34 @@
 106
 
-BUG FIXES
-
-* Added sharing to draw_text, fill_polygon, draw_pixbuf (#2461)
-* Exposed see as an external method (#2542)
-* Media type tests on file suffix use lower()
-* Added support for localization to GNOME version (rgs)
-* Work around for situations where gst is not available
-* Fixed problem with displaying Journal preview images in portfolio
-* Restore overlay grids on clear
-* Fixed problem with help-string wrap width (#2633)
-
 ENHANCEMENTS
 
-* Added offset for second argument in Boolean compare blocks
-* Reorganized palettes (#2633) for more clarity
-* Added a Media Palette for all media-related blocks
-* Added sharing between Gnome and Sugar versions (with Raul Gutierrez)
+* Added sharing to draw_text, fill_polygon, draw_pixbuf (#2461)
+* Added sharing (EXPERIMENTAL) between Gnome and Sugar versions (with Raul
+  Gutierrez Segales)
 * Added 'time' block for measuring elapsed time (in seconds)
 * Added 'brightness' block for reading average camera luminance value
   (with help from Tony Forster and Guzman Trinidad)
 * Added camera media block for grabbing images from the camera
-* New speak.py sample code (Tony Forster)
+* New speak.py sample code for doing text to speech (Tony Forster)
+* New load_block.py sample code for programatically creating TA projects
 * New psuedo-color.ta example (Tony Forster)
-* New love-speaks-volumes.ta example
+* New love-speaks-volumes.ta example -- use mic input to scale shapes
 * New spiralaterals.ta example inspired by Spiralaterals activity
+* Added a Media Palette for all media-related blocks and reorganized palettes
+  (#2633) for more clarity (Claudia Urrea and Bill Kerr)
+* Added offset for second argument in Boolean compare blocks
 * More complete translations in Spanish (es) and Italian (it)
 * Added plugin support for non-standard devices (camera, sensors, RFID)
+
+BUG FIXES
+
+* Exposed see as an external method (#2542)
+* Media type tests on file suffix use lower()
+* Added support for localization to GNOME version (Raul Gutierrez Segales)
+* Work around for situations where gst is not available
+* Fixed problem with displaying Journal preview images in portfolio
+* Restore overlay grids on clear
+* Fixed problem with help-string wrap width (#2633)
 
 105
 
