@@ -21,8 +21,10 @@
 #THE SOFTWARE.
 
 import os
+import dbus
 
 from gettext import gettext as _
+from dbus.mainloop.glib import DBusGMainLoop
 
 from rfid.rfidutils import strhex2bin, strbin2dec, find_device
 
