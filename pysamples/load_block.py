@@ -30,9 +30,30 @@ def myblock(lc, x):
     ###########################################################################
 
     from taconstants import BLOCK_NAMES, PRIMITIVES
+    from tautils import find_group
 
+    # It is a bit more work than just calling _new_block().
+    # We need to:
+    # (1) translate the label name into the internal block name;
+    # (2) 'dock' the block onto a stack where appropriate; and
+    # (3) disassociate the new block from the mouse.
+
+    # Place the block at the turtle.
     tx, ty = lc.tw.active_turtle.get_xy()
     for name in BLOCK_NAMES:
+        # Translate label name into block/prim name.
         if x == BLOCK_NAMES[name][0] and PRIMITIVES[name] == name:
             lc.tw._new_block(name, tx + 20, ty + 20)
+
+            # Find the block we just created and attach it to a stack.
+            lc.tw.drag_group = None
+            spr = lc.tw.sprite_list.find_sprite((tx + 20, ty + 20))
+            if spr is not None:
+                blk = lc.tw.block_list.spr_to_block(spr)
+                if blk is not None:
+                    lc.tw.drag_group = find_group(blk)
+                    lc.tw._snap_to_dock()
+
+            # Disassociate new block from mouse.
+            lc.tw.drag_group = None
             return
