@@ -21,6 +21,7 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected.
 
+
 def myblock(lc, blkname):
 
     ###########################################################################
@@ -31,7 +32,6 @@ def myblock(lc, blkname):
 
     from taconstants import BLOCK_NAMES, PRIMITIVES
     from tautils import find_group
-
 
     def new_block(lc, blkname, x, y):
         """ Create a new block. It is a bit more work than just calling
@@ -66,4 +66,3 @@ def myblock(lc, blkname):
             y += int(new_block(lc, name, x, y))
     else:
         new_block(lc, blkname, x, y)
-

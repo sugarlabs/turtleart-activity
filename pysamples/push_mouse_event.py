@@ -22,7 +22,8 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected.
 
-def myblock(lc, x):
+
+def myblock(lc, x):  # ignore second argument
 
     ###########################################################################
     #

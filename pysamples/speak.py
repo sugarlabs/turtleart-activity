@@ -22,7 +22,8 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected.
 
-def myblock(lc, x):
+
+def myblock(lc, text):
 
     ###########################################################################
     #
@@ -34,8 +35,7 @@ def myblock(lc, x):
 
     # Turtle Art numbers are passed as float,
     # but they may be integer values.
-    if type(x) == float and int(x) == x:
-        x = int(x)
+    if type(text) == float and int(text) == text:
+        text = int(text)
 
-    os.system('espeak "%s" --stdout | aplay' % (x))
-
+    os.system('espeak "%s" --stdout | aplay' % (text))

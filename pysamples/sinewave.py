@@ -21,13 +21,14 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected.
 
-def myblock(lc, x):
+
+def myblock(lc, frequency):
 
     ###########################################################################
     #
-    # Plays a sound at frequency x
+    # Plays a sound at frequency frequency
     #
     ###########################################################################
 
     import os
-    os.system('speaker-test -t sine -l 1 -f %d' % (int(x)))
+    os.system('speaker-test -t sine -l 1 -f %d' % (int(frequency)))

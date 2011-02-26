@@ -22,7 +22,8 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected and expanded to 3 arguments.
 
-def myblock(lc, x):
+
+def myblock(lc, rgb_array):
 
     ###########################################################################
     #
@@ -30,21 +31,15 @@ def myblock(lc, x):
     #
     ###########################################################################
 
-    # assuming x is an array [r, g, b]
-    b = int(x[2])
-    while b < 0:
-        b += 256
-    while b > 255:
-        b -= 256
-    g = int(x[1])
-    while g < 0:
-        g += 256
-    while g > 255:
-        g -= 256
-    r = int(x[0])
-    while r < 0:
-        r += 256
-    while r > 255:
-        r -= 256
-    rgb = "#%02x%02x%02x" % (r,g,b)
+    def mod(x):
+        while x < 0:
+            x += 256
+        while b > 255:
+            x -= 256
+        return x
+
+    b = mod(int(rgb_array[2]))
+    g = mod(int(rgb_array[1]))
+    r = mod(int(rgb_array[0]))
+    rgb = "#%02x%02x%02x" % (r, g, b)
     lc.tw.canvas.fgcolor = lc.tw.canvas.cm.alloc_color(rgb)

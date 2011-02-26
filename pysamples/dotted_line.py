@@ -22,21 +22,21 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected. Some examples of how to use this block are included
 # below. Try uncommenting an example or write your own Python code.
-# 
+#
 # To uncomment code, remove the '# ' in the Python code. Take care to preserve
 # the proper indentations.
 #
-# 
+#
 # NOTES:
-# 
+#
 # Turtle Art is created in object oriented Python code. This is based
 # around the definition of classes and the creation of object(s) which
 # are instance(s) of that class. These objects then have properties and
 # methods which are defined by their class.
-# 
+#
 # See http://docs.python.org/tutorial/classes.html for a description of
 # classes in Python.
-# 
+#
 # Class			Defined in	Instance	Created in
 # TurtleArtWindow	tawindow.py	tw		TurtleArtActivity.py
 # LogoCode		talogo.py	lc		tawindow.py
@@ -44,11 +44,11 @@
 # Turtles, Turtle	taturtle.py	turtles		tawindow.py,
 #                                                       tacanvas.py
 # Blocks, Block		tablock.py	block_list	tawindow.py
-# 
-# 
+#
+#
 # Class TurtleArtWindow -- useful properties and methods (from within
 # tamyblock.py, lc.tw is the class instance)
-# 
+#
 # Methods and data attributes	Example
 # set_fullscreen(self)		lc.tw.set_fullscreen()
 # Note: Hides the Sugar toolbar
@@ -62,11 +62,11 @@
 # Note: Toggles visibility of blocks and palettes
 # self.active_turtle		lc.tw.active_turtle
 # Note: The active turtle instance
-# 
-# 
+#
+#
 # Class TurtleGraphics -- useful properties and methods (from within
 # tamyblock.py, lc.tw.canvas is the class instance)
-# 
+#
 # Methods and data attributes	Example
 # clearscreen(self)		lc.tw.canvas.clearscreen()
 # Note: Clears the screen and resets all turtle and
@@ -108,8 +108,8 @@
 #       (scaled to current units)
 # self.set_turtle(name)		lc.tw.canvas.set_turtle(1)
 # Note: Set the current turtle to turtle '1'
-# 
-# 
+#
+#
 # Other useful Python functions
 # Module			Example
 # from math import pow		pow(2,3) returns 2 to the 3rd power
@@ -124,28 +124,30 @@
 # Note: See http://docs.python.org/tutorial/datastructures.html
 #
 
-def myblock(lc, x):
+
+def myblock(lc, line_length):
 
     ###########################################################################
     #
-    # Draw a dotted line of length x.
+    # Draw a dotted line of length line_length.
     #
     ###########################################################################
 
-    try:  # make sure x is a number
-        x = float(x)
+    try:  # make sure line_length is a number
+        line_length = float(line_length)
     except ValueError:
         return
     if lc.tw.canvas.pendown:
         dist = 0
-        while dist+lc.tw.canvas.pensize < x:   # repeat drawing dots
+        while dist + lc.tw.canvas.pensize < line_length:  # repeat drawing dots
             lc.tw.canvas.setpen(True)
             lc.tw.canvas.forward(1)
             lc.tw.canvas.setpen(False)
-            lc.tw.canvas.forward((lc.tw.canvas.pensize*2)-1)
-            dist += (lc.tw.canvas.pensize*2)
-        lc.tw.canvas.forward(x-dist)  # make sure we have moved exactly x
+            lc.tw.canvas.forward((lc.tw.canvas.pensize * 2) - 1)
+            dist += (lc.tw.canvas.pensize * 2)
+        # make sure we have moved exactly line_length
+        lc.tw.canvas.forward(line_length - dist)
         lc.tw.canvas.setpen(True)
     else:
-        lc.tw.canvas.forward(x)
+        lc.tw.canvas.forward(line_length)
     return
