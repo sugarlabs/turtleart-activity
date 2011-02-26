@@ -21,7 +21,7 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected.
 
-def myblock(lc, x):
+def myblock(lc, blkname):
 
     ###########################################################################
     #
@@ -32,28 +32,38 @@ def myblock(lc, x):
     from taconstants import BLOCK_NAMES, PRIMITIVES
     from tautils import find_group
 
-    # It is a bit more work than just calling _new_block().
-    # We need to:
-    # (1) translate the label name into the internal block name;
-    # (2) 'dock' the block onto a stack where appropriate; and
-    # (3) disassociate the new block from the mouse.
 
-    # Place the block at the turtle.
-    tx, ty = lc.tw.active_turtle.get_xy()
-    for name in BLOCK_NAMES:
-        # Translate label name into block/prim name.
-        if x == BLOCK_NAMES[name][0] and PRIMITIVES[name] == name:
-            lc.tw._new_block(name, tx + 20, ty + 20)
+    def new_block(lc, blkname, x, y):
+        """ Create a new block. It is a bit more work than just calling
+        _new_block(). We need to:
+        (1) translate the label name into the internal block name;
+        (2) 'dock' the block onto a stack where appropriate; and
+        (3) disassociate the new block from the mouse. """
 
-            # Find the block we just created and attach it to a stack.
-            lc.tw.drag_group = None
-            spr = lc.tw.sprite_list.find_sprite((tx + 20, ty + 20))
-            if spr is not None:
-                blk = lc.tw.block_list.spr_to_block(spr)
-                if blk is not None:
-                    lc.tw.drag_group = find_group(blk)
-                    lc.tw._snap_to_dock()
+        for name in BLOCK_NAMES:
+            # Translate label name into block/prim name.
+            if blkname in BLOCK_NAMES[name] and PRIMITIVES[name] == name:
+                lc.tw._new_block(name, x + 20, y + 20)
 
-            # Disassociate new block from mouse.
-            lc.tw.drag_group = None
-            return
+                # Find the block we just created and attach it to a stack.
+                lc.tw.drag_group = None
+                spr = lc.tw.sprite_list.find_sprite((x + 20, y + 20))
+                if spr is not None:
+                    blk = lc.tw.block_list.spr_to_block(spr)
+                    if blk is not None:
+                        lc.tw.drag_group = find_group(blk)
+                        lc.tw._snap_to_dock()
+
+                # Disassociate new block from mouse.
+                lc.tw.drag_group = None
+                return blk.height
+        return 0
+
+    # Place the block at the active turtle (x, y).
+    x, y = lc.tw.active_turtle.get_xy()
+    if type(blkname) == type([]):
+        for name in blkname:
+            y += int(new_block(lc, name, x, y))
+    else:
+        new_block(lc, blkname, x, y)
+
