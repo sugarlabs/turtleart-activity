@@ -35,11 +35,13 @@ def myblock(lc, blkname):
     from tautils import find_group
 
     def make_block(lc, name, x, y, defaults):
-        lc.tw._new_block(name, x + 20, y + 20, defaults)
+        x_pos = x + 20
+        y_pos = y + 20
+        lc.tw._new_block(name, x_pos, y_pos, defaults)
 
         # Find the block we just created and attach it to a stack.
         lc.tw.drag_group = None
-        spr = lc.tw.sprite_list.find_sprite((x + 20, y + 20))
+        spr = lc.tw.sprite_list.find_sprite((x_pos, y_pos))
         if spr is not None:
             blk = lc.tw.block_list.spr_to_block(spr)
             if blk is not None:
