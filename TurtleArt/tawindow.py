@@ -80,7 +80,7 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
                     arithmetic_check, xy, find_block_to_run, find_top_block, \
                     find_start_stack, find_group, find_blk_below, \
                     dock_dx_dy, data_to_string, journal_check, chooser, \
-                    get_hardware, debug_output
+                    get_hardware, debug_output, error_output
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 from dbus.mainloop.glib import DBusGMainLoop
