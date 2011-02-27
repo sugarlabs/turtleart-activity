@@ -1111,11 +1111,13 @@ class TurtleArtWindow():
         self.selected_blk.unhighlight()
         self.selected_blk = None
 
-    def _new_block(self, name, x, y):
+    def _new_block(self, name, x, y, defaults=None):
         """ Make a new block. """
         if name in CONTENT_BLOCKS:
+            if defaults == None:
+                defaults = DEFAULTS[name]
             newblk = Block(self.block_list, self.sprite_list, name, x - 20,
-                           y - 20, 'block', DEFAULTS[name], self.block_scale)
+                           y - 20, 'block', defaults, self.block_scale)
         else:
             newblk = Block(self.block_list, self.sprite_list, name, x - 20,
                            y - 20, 'block', [], self.block_scale)
@@ -1134,7 +1136,9 @@ class TurtleArtWindow():
         self.drag_pos = 20, 20
         newblk.connections = [None] * len(newblk.docks)
         if newblk.name in DEFAULTS:
-            for i, argvalue in enumerate(DEFAULTS[newblk.name]):
+            if defaults == None:
+                defaults = DEFAULTS[newblk.name]
+            for i, argvalue in enumerate(defaults):
                 # skip the first dock position since it is always a connector
                 dock = newblk.docks[i + 1]
                 argname = dock[0]
