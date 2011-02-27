@@ -29,6 +29,7 @@ BUG FIXES
 * Fixed problem with displaying Journal preview images in portfolio
 * Restore overlay grids on clear
 * Fixed problem with help-string wrap width (#2633)
+* Added missing dependency to RFID plugin (Emiliano Pastorino)
 
 105
 
