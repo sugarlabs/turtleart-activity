@@ -252,15 +252,15 @@ class TurtleArtWindow():
         CONSTANTS['width'] = int(self.canvas.width / self.coord_scale)
         CONSTANTS['height'] = int(self.canvas.height / self.coord_scale)
 
-        if self.interactive_mode:
-            self._setup_misc()
-            self._show_toolbar_palette(0, False)
-
         self._plugins = []
 
         self._init_plugins()
         self.lc = LogoCode(self)
         self._setup_plugins()
+
+        if self.interactive_mode:
+            self._setup_misc()
+            self._show_toolbar_palette(0, False)
 
         self.saved_pictures = []
         self.block_operation = ''
@@ -608,10 +608,23 @@ class TurtleArtWindow():
             svg = SVG()
             x, y = 50, 0
             for i, name in enumerate(PALETTE_NAMES):
-                a = svg_str_to_pixbuf(svg_from_file("%s/icons/%soff.svg" % (
-                                                    self.path, name)))
-                b = svg_str_to_pixbuf(svg_from_file("%s/icons/%son.svg" % (
-                                                    self.path, name)))
+                try:
+                    a = svg_str_to_pixbuf(svg_from_file(
+                            '%s/icons/%soff.svg' % (self.path, name)))
+                except IOError:
+                    a = svg_str_to_pixbuf(svg_from_file(
+                            '%s/icons/extrasoff.svg' % (self.path)))
+                    error_output('Unable to open %s/icons/%soff.svg' % \
+                                     (self.path, name), self.running_sugar)
+                try:
+                    b = svg_str_to_pixbuf(svg_from_file(
+                            '%s/icons/%son.svg' % (self.path, name)))
+                except IOError:
+                    b = svg_str_to_pixbuf(svg_from_file(
+                            '%s/icons/extrason.svg' % (self.path)))
+                    error_output('Unable to open %s/icons/%son.svg' % \
+                                     (self.path, name), self.running_sugar)
+
                 self.selector_shapes.append([a, b])
                 self.selectors.append(Sprite(self.sprite_list, x, y, a))
                 self.selectors[i].type = 'selector'
