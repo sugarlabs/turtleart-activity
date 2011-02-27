@@ -385,10 +385,12 @@ class Block:
                              self.tw.running_sugar)
                 n = 0
         for i in range(n):
-            if self.name in COMPARE_PORCH_STYLE or \
-               self.name in NUMBER_STYLE_PORCH:  # special case
+            if self.name in COMPARE_PORCH_STYLE:
                 self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
                                               True, 'center', 'bottom', i)
+            elif self.name in NUMBER_STYLE_PORCH:
+                self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
+                                              True, 'right', 'bottom', i)
             elif i == 1:  # top
                 self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
                                               True, 'right', 'top', i)
