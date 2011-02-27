@@ -20,9 +20,43 @@
 #THE SOFTWARE.
 
 from taconstants import BLOCK_STYLES, BLOCK_NAMES, HELP_STRINGS, PALETTES, \
-    PALETTE_NAMES, CONTENT_BLOCKS, PRIMITIVES, DEFAULTS, SPECIAL_NAMES
+    PALETTE_NAMES, CONTENT_BLOCKS, PRIMITIVES, DEFAULTS, SPECIAL_NAMES, \
+    COLORS
 from talogo import VALUE_BLOCKS
 from tautils import debug_output
+
+
+class Palette():
+    """ a class for defining new palettes """
+
+    def __init__(self, name, colors=["#00FF00", "#00A000"]):
+        self._name = name
+        self._colors = colors
+        self._help = None
+
+    def add_palette(self):
+        if self._name is None:
+            debug_output('You must specify a name for your palette')
+            return
+
+        # Insert new palette just before the trash
+        if 'trash' in PALETTE_NAMES:
+            i = PALETTE_NAMES.index('trash')
+        else:
+            i = len(PALETTE_NAMES)
+        PALETTE_NAMES.insert(i, self._name)
+        PALETTES.insert(i, [])
+        COLORS.insert(i, self._colors)
+
+        # Special name entry is needed for help hover mechanism
+        SPECIAL_NAMES[self._name] = self._name
+        if self._help is not None:
+            HELP_STRINGS[self._name] = self._help
+        else:
+            HELP_STRINGS[self._name] = ''
+
+    def set_help(self, help):
+        self._help = help
 
 
 class Primitive():
