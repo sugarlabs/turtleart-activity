@@ -1126,14 +1126,16 @@ class TurtleArtWindow():
 
     def _new_block(self, name, x, y, defaults=None):
         """ Make a new block. """
+        x_pos = x - 20
+        y_pos = y - 20
         if name in CONTENT_BLOCKS:
             if defaults == None:
                 defaults = DEFAULTS[name]
-            newblk = Block(self.block_list, self.sprite_list, name, x - 20,
-                           y - 20, 'block', defaults, self.block_scale)
+            newblk = Block(self.block_list, self.sprite_list, name, x_pos,
+                           y_pos, 'block', defaults, self.block_scale)
         else:
-            newblk = Block(self.block_list, self.sprite_list, name, x - 20,
-                           y - 20, 'block', [], self.block_scale)
+            newblk = Block(self.block_list, self.sprite_list, name, x_pos,
+                           y_pos, 'block', [], self.block_scale)
 
         # Add a 'skin' to some blocks
         if name in PYTHON_SKIN:
