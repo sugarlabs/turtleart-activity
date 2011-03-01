@@ -21,7 +21,7 @@
 
 from taconstants import BLOCK_STYLES, BLOCK_NAMES, HELP_STRINGS, PALETTES, \
     PALETTE_NAMES, CONTENT_BLOCKS, PRIMITIVES, DEFAULTS, SPECIAL_NAMES, \
-    COLORS
+    COLORS, EXPANDABLE_STYLE, EXPANDABLE_BLOCKS
 from talogo import VALUE_BLOCKS
 from tautils import debug_output
 
@@ -29,12 +29,13 @@ from tautils import debug_output
 class Palette():
     """ a class for defining new palettes """
 
-    def __init__(self, name, colors=["#00FF00", "#00A000"]):
+    def __init__(self, name, colors=["#00FF00", "#00A000"], position=None):
         self._name = name
+        self._special_name = name
         self._colors = colors
         self._help = None
 
-    def add_palette(self):
+    def add_palette(self, position=None):
         if self._name is None:
             debug_output('You must specify a name for your palette')
             return
@@ -44,12 +45,20 @@ class Palette():
             i = PALETTE_NAMES.index('trash')
         else:
             i = len(PALETTE_NAMES)
-        PALETTE_NAMES.insert(i, self._name)
-        PALETTES.insert(i, [])
-        COLORS.insert(i, self._colors)
+
+        if position is not None and type(position) is int and position < i:
+            i = position
+
+        if self._name not in PALETTE_NAMES:
+            PALETTE_NAMES.insert(i, self._name)
+            PALETTES.insert(i, [])
+            COLORS.insert(i, self._colors)
+        else:
+            # debug_output('Palette %s already defined' % (self._name))
+            return
 
         # Special name entry is needed for help hover mechanism
-        SPECIAL_NAMES[self._name] = self._name
+        SPECIAL_NAMES[self._name] = self._special_name
         if self._help is not None:
             HELP_STRINGS[self._name] = self._help
         else:
@@ -58,6 +67,8 @@ class Palette():
     def set_help(self, help):
         self._help = help
 
+    def set_special_name(self, name):
+        self._special_name = name
 
 class Primitive():
     """ a class for defining new block primitives """
@@ -74,7 +85,7 @@ class Primitive():
         self._value_block = False
         self._content_block = False
 
-    def add_prim(self):
+    def add_prim(self, position=None):
         if self._name is None:
             debug_output('You must specify a name for your block')
             return
@@ -89,7 +100,14 @@ class Primitive():
             BLOCK_NAMES[self._name] = self._label
 
         if self._palette is not None:
-            PALETTES[PALETTE_NAMES.index(self._palette)].append(self._name)
+            i = PALETTE_NAMES.index(self._palette)
+            if position is not None and type(position) is int and \
+                    position < len(PALETTES[i]):
+                PALETTES[i].insert(position, self._name)
+            else:
+                PALETTES[i].append(self._name)
+                if position is not None:
+                    debug_output('Ignoring position (%s)' % (str(position)))
 
         if self._help is not None:
             HELP_STRINGS[self._name] = self._help
@@ -110,6 +128,9 @@ class Primitive():
 
         if self._special_name is not None:
             SPECIAL_NAMES[self._name] = self._special_name
+
+        if self._style in EXPANDABLE_STYLE:
+            EXPANDABLE_BLOCKS.append(self._name)
 
     def set_value_block(self, value=True):
         self._value_block = value

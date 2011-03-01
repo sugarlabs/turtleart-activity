@@ -71,6 +71,7 @@ class TurtleArtActivity(activity.Activity):
         self._check_ver_change(datapath)
 
         self._setup_canvas(canvas)
+        self._setup_palette_toolbar()
 
         self._setup_sharing()
 
@@ -448,7 +449,7 @@ class TurtleArtActivity(activity.Activity):
         if self.new_sugar_system:
             # Use 0.86 toolbar design
             # Create toolbox and secondary toolbars
-            toolbox = ToolbarBox()
+            self._toolbox = ToolbarBox()
 
             activity_toolbar_button = ActivityToolbarButton(self)
 
@@ -460,9 +461,9 @@ class TurtleArtActivity(activity.Activity):
             view_toolbar_button = ToolbarButton(label=_('View'),
                                                 page=view_toolbar,
                                                 icon_name='toolbar-view')
-            palette_toolbar = gtk.Toolbar()
-            palette_toolbar_button = ToolbarButton(page=palette_toolbar,
-                                                   icon_name='palette')
+            self._palette_toolbar = gtk.Toolbar()
+            self._palette_toolbar_button = ToolbarButton(
+                page=self._palette_toolbar, icon_name='palette')
             help_toolbar = gtk.Toolbar()
             help_toolbar_button = ToolbarButton(label=_("Help"),
                                                 page=help_toolbar,
@@ -471,50 +472,51 @@ class TurtleArtActivity(activity.Activity):
             journal_toolbar = gtk.Toolbar()
             journal_toolbar_button = ToolbarButton(page=journal_toolbar,
                 icon_name='activity-journal')
+
             # Add the toolbars and buttons to the toolbox
             activity_toolbar_button.show()
-            toolbox.toolbar.insert(activity_toolbar_button, -1)
+            self._toolbox.toolbar.insert(activity_toolbar_button, -1)
             edit_toolbar_button.show()
-            toolbox.toolbar.insert(edit_toolbar_button, -1)
+            self._toolbox.toolbar.insert(edit_toolbar_button, -1)
             journal_toolbar_button.show()
-            toolbox.toolbar.insert(journal_toolbar_button, -1)
+            self._toolbox.toolbar.insert(journal_toolbar_button, -1)
             view_toolbar_button.show()
-            toolbox.toolbar.insert(view_toolbar_button, -1)
-            palette_toolbar_button.show()
-            toolbox.toolbar.insert(palette_toolbar_button, -1)
+            self._toolbox.toolbar.insert(view_toolbar_button, -1)
+            self._palette_toolbar_button.show()
+            self._toolbox.toolbar.insert(self._palette_toolbar_button, -1)
             help_toolbar_button.show()
-            toolbox.toolbar.insert(help_toolbar_button, -1)
+            self._toolbox.toolbar.insert(help_toolbar_button, -1)
 
-            self._add_separator(toolbox.toolbar)
+            self._add_separator(self._toolbox.toolbar)
 
-            self._make_project_buttons(toolbox.toolbar)
+            self._make_project_buttons(self._toolbox.toolbar)
 
-            self._add_separator(toolbox.toolbar, True)
+            self._add_separator(self._toolbox.toolbar, True)
 
             stop_button = StopButton(self)
             stop_button.props.accelerator = '<Ctrl>Q'
-            toolbox.toolbar.insert(stop_button, -1)
+            self._toolbox.toolbar.insert(stop_button, -1)
             stop_button.show()
 
         else:
             # Use pre-0.86 toolbar design
-            toolbox = activity.ActivityToolbox(self)
-            self.set_toolbox(toolbox)
+            self._toolbox = activity.ActivityToolbox(self)
+            self.set_toolbox(self._toolbox)
 
             project_toolbar = gtk.Toolbar()
-            toolbox.add_toolbar(_('Project'), project_toolbar)
+            self._toolbox.add_toolbar(_('Project'), project_toolbar)
 
             view_toolbar = gtk.Toolbar()
-            toolbox.add_toolbar(_('View'), view_toolbar)
+            self._toolbox.add_toolbar(_('View'), view_toolbar)
             view_toolbar_button = view_toolbar
             edit_toolbar = gtk.Toolbar()
-            toolbox.add_toolbar(_('Edit'), edit_toolbar)
+            self._toolbox.add_toolbar(_('Edit'), edit_toolbar)
             edit_toolbar_button = edit_toolbar
             journal_toolbar = gtk.Toolbar()
-            toolbox.add_toolbar(_('Import/Export'), journal_toolbar)
+            self._toolbox.add_toolbar(_('Import/Export'), journal_toolbar)
             journal_toolbar_button = journal_toolbar
             help_toolbar = gtk.Toolbar()
-            toolbox.add_toolbar(_('Help'), help_toolbar)
+            self._toolbox.add_toolbar(_('Help'), help_toolbar)
             help_toolbar_button = help_toolbar
 
             self._make_palette_buttons(project_toolbar, palette_button=True)
@@ -575,6 +577,24 @@ class TurtleArtActivity(activity.Activity):
             _("Move the cursor over the orange palette for help."),
             help_toolbar, gtk.gdk.screen_width() - 2 * ICON_SIZE)
 
+        # Setup palette toolbar only AFTER initializing the plugins
+        # self._setup_palette_toolbar()
+
+        edit_toolbar.show()
+        view_toolbar.show()
+        help_toolbar.show()
+        self._toolbox.show()
+
+        if self.new_sugar_system:
+            # Hack as a workaround for #2050
+            edit_toolbar_button.set_expanded(True)
+            edit_toolbar_button.set_expanded(False)
+
+            self._palette_toolbar_button.set_expanded(True)
+        else:
+            self._toolbox.set_current_toolbar(1)
+
+    def _setup_palette_toolbar(self):
         # The palette toolbar is only used with 0.86+
         if self.new_sugar_system:
             self.palette_buttons = []
@@ -585,27 +605,14 @@ class TurtleArtActivity(activity.Activity):
                     suffix = 'on'
                 self.palette_buttons.append(self._add_button(name + suffix,
                     HELP_STRINGS[name], self.do_palette_buttons_cb,
-                    palette_toolbar_button, None, i))
-            self._add_separator(palette_toolbar, True)
+                    self._palette_toolbar_button, None, i))
+            self._add_separator(self._palette_toolbar, True)
 
-            self._make_palette_buttons(palette_toolbar_button)
+            self._make_palette_buttons(self._palette_toolbar_button)
 
-            self.set_toolbar_box(toolbox)
-            palette_toolbar.show()
+            self.set_toolbar_box(self._toolbox)
+            self._palette_toolbar.show()
 
-        edit_toolbar.show()
-        view_toolbar.show()
-        help_toolbar.show()
-        toolbox.show()
-
-        if self.new_sugar_system:
-            # Hack as a workaround for #2050
-            edit_toolbar_button.set_expanded(True)
-            edit_toolbar_button.set_expanded(False)
-
-            palette_toolbar_button.set_expanded(True)
-        else:
-            toolbox.set_current_toolbar(1)
 
     def _make_palette_buttons(self, toolbar, palette_button=False):
         """ Creates the palette and block buttons for both toolbar types"""

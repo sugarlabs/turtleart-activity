@@ -19,79 +19,6 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-"""
-This file contains the constants that by-in-large determine the
-behavior of Turtle Art. Notably, the block palettes are defined
-below. If you want to add a new block to Turtle Art, it is generally a
-matter of modifying some tables below and then adding the primitive to
-talogo.py. For example, if we want to add a new turtle command,
-'uturn', we'd make the following changes:
-
-(1) We'd add 'uturn' to the PALETTES list of lists:
-
-PALETTES = [['forward', 'back', 'clean', 'left', 'right', 'uturn', 'show',
-             'seth', 'setxy', 'heading', 'xcor', 'ycor', 'setscale',
-              'arc', 'scale'],
-            ['penup','pendown', 'setpensize', 'fillscreen', 'pensize',...
-
-(2) Then we'd add it to one of the block-style definitions. Since it takes
-no arguments, we'd add it here:
-
-BASIC_STYLE = ['clean', 'penup', 'pendown', 'stack1', 'stack2', 'vspace',
-    'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput', 'uturn']
-
-(3) Then we give it a name (Note the syntax _('string to be
-translated') used by the language-internationalization system; also
-note that the name is an array, as some blocks contain multiple
-strings.):
-
-BLOCK_NAMES = {
-...
-    'uturn':[_('u-turn')],
-...
-              }
-
-(4) and a help-menu entry:
-
-HELP_STRINGS = {
-...
-    'uturn':_('change the heading of the turtle 180 degrees'),
-...
-               }
-
-(5) Next, we need to define it as a primitive for the Logo command
-parser (generally just the same name):
-
-PRIMITIVES = {
-...
-    'uturn':'uturn',
-...
-             }
-
-(6) Since there are no default arguments, we don't need to do anything
-else here. But we do need to define the actual function in talogo.py
-
-DEFPRIM = {
-...
-    'uturn':[0, lambda self: self.tw.canvas.seth(self.tw.canvas.heading+180)],
-...
-          }
-
-That's it. When you next run Turtle Art, you will have a 'uturn' block
-on the Turtle Palette.
-
-Adding a new palette is simply a matter of: (1) adding an additional
-entry to PALETTE_NAMES; (2) new list of blocks to PALETTES; and (3) an
-additional entry in COLORS. However you will have to: (4) create icons
-for the palette-selector buttons. These are kept in the icons
-subdirectory. You need two icons: yourpalettenameoff.svg and
-yourpalettenameon.svg, where yourpalettename is the same string as the
-entry you added to the PALETTE_NAMES list. Note that the icons should
-be the same size (55x55) as the others. This is the default icon size
-for Sugar toolbars.
-
-"""
-
 from gettext import gettext as _
 
 #
@@ -112,47 +39,11 @@ TOP_LAYER = 1000
 # Block-palette categories
 #
 
-PALETTE_NAMES = ['turtle', 'pen', 'colors', 'numbers', 'flow', 'blocks',
-                  'media',  'sensor', 'extras', 'portfolio', 'trash']
+PALETTE_NAMES = []
+PALETTES = []
+COLORS = []
 
-PALETTES = [['forward', 'back', 'clean', 'left', 'right',
-             'arc', 'setxy2', 'seth', 'xcor', 'ycor', 'heading'],
-            ['penup', 'pendown', 'setpensize', 'fillscreen', 'pensize',
-              'startfill', 'stopfill'],
-            ['setcolor', 'setshade', 'setgray', 'color', 'shade', 'gray',
-             'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple',
-             'white', 'black'],
-            ['plus2', 'minus2', 'product2',
-             'division2', 'identity2', 'remainder2', 'sqrt', 'random',
-             'number', 'greater2', 'less2', 'equal2', 'not', 'and2', 'or2'],
-            ['wait', 'forever', 'repeat', 'if', 'ifelse', 'while', 'until',
-             'hspace', 'vspace', 'stopstack'],
-            ['start', 'storeinbox1', 'storeinbox2', 'string', 'box1', 'box2',
-             'box', 'storein', 'hat', 'hat1', 'hat2', 'stack', 'stack1',
-             'stack2'],
-            ['journal', 'audio', 'video', 'description', 'string',
-             'show', 'setscale', 'savepix', 'savesvg', 'scale', 'mediawait'],
-            ['kbinput',  'keyboard', 'readpixel', 'see', 'time'],
-            ['push', 'printheap', 'clearheap', 'pop', 'comment', 'print',
-             'myfunc1arg', 'userdefined', 'cartesian', 'polar', 'addturtle',
-             'reskin', 'sandwichtop_no_label', 'sandwichbottom'],
-            ['hideblocks', 'showblocks', 'fullscreen', 'picturelist',
-             'picture1x1a', 'picture1x1', 'picture2x2', 'picture2x1',
-             'picture1x2', 'leftpos',  'bottompos', 'width', 'rightpos',
-             'toppos', 'height'],
-            ['empty', 'restoreall']]
-
-#
-# Block-style attributes
-#
-
-COLORS = [["#00FF00", "#00A000"], ["#00FFFF", "#00A0A0"],
-          ["#00FFFF", "#00A0A0"], ["#FF00FF", "#A000A0"],
-          ["#FFC000", "#A08000"], ["#FFFF00", "#A0A000"],
-          ["#A0FF00", "#A0A000"], ["#FF6060", "#A06060"],
-          ["#FF0000", "#A00000"], ["#6060FF", "#6060A0"],
-          ["#FFFF00", "#A0A000"]]
-
+# Special-case some block colors
 BOX_COLORS = {'red': ["#FF0000", "#A00000"],
               'orange': ["#FFD000", "#AA8000"],
               'yellow': ["#FFFF00", "#A0A000"],
@@ -194,59 +85,47 @@ UNKNOWN = 'unknown'
 #
 # Block-style definitions
 #
-BASIC_STYLE_HEAD = ['start', 'hat1', 'hat2', 'restore', 'restoreall']
-BASIC_STYLE_HEAD_1ARG = ['hat']
-BASIC_STYLE_TAIL = ['stopstack', 'empty']
+# TODO: define depreciated blocks
+BASIC_STYLE_HEAD = []
+BASIC_STYLE_HEAD_1ARG = []
+BASIC_STYLE_TAIL = []
 BASIC_STYLE = []
-BASIC_STYLE_EXTENDED_VERTICAL = ['clean', 'penup', 'pendown', 'stack1',
-    'stack2', 'hideblocks', 'showblocks', 'clearheap', 'printheap', 'kbinput',
-    'fullscreen', 'cartesian', 'polar', 'startfill', 'mediawait',
-    'stopfill', 'readpixel', 'vspace']
-INVISIBLE = ['sandwichcollapsed']
-BASIC_STYLE_EXTENDED = ['picturelist', 'picture1x1', 'picture2x2',
-    'picture2x1', 'picture1x2', 'picture1x1a']
-BASIC_STYLE_1ARG = ['forward', 'back', 'left', 'right', 'seth', 'show',
-    'setscale', 'setpensize', 'setcolor', 'setshade', 'print', 'showaligned',
-    'settextsize', 'settextcolor', 'print', 'wait', 'storeinbox1', 'savepix',
-    'storeinbox2', 'wait', 'stack', 'push', 'nop', 'addturtle', 'comment',
-     'image', 'savesvg', 'setgray', 'skin', 'reskin']
-BASIC_STYLE_VAR_ARG = ['userdefined', 'userdefined2args', 'userdefined3args']
+BASIC_STYLE_EXTENDED_VERTICAL = []
+INVISIBLE = []
+BASIC_STYLE_EXTENDED = []
+BASIC_STYLE_1ARG = ['settextsize', 'settextcolor', 'nop']
+BASIC_STYLE_VAR_ARG = []
 BULLET_STYLE = ['templatelist', 'list']
-BASIC_STYLE_2ARG = ['arc', 'setxy', 'setxy2', 'fillscreen', 'storein', 'write']
-BOX_STYLE = ['number', 'xcor', 'ycor', 'heading', 'pensize', 'color', 'shade',
-    'textcolor', 'textsize', 'box1', 'box2', 'string', 'leftpos', 'scale',
-    'toppos', 'rightpos', 'bottompos', 'width', 'height', 'pop', 'keyboard',
-    'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'white',
-    'black', 'titlex', 'titley', 'leftx', 'topy', 'rightx', 'bottomy',
-    'gray', 'see', 'time']
-BOX_STYLE_MEDIA = ['description', 'audio', 'journal', 'video']
-NUMBER_STYLE = ['plus2', 'product2', 'myfunc']
-NUMBER_STYLE_VAR_ARG = ['myfunc1arg', 'myfunc2arg', 'myfunc3arg']
-NUMBER_STYLE_BLOCK = ['random']
-NUMBER_STYLE_PORCH = ['minus2', 'division2', 'remainder2']
-NUMBER_STYLE_1ARG = ['sqrt', 'identity2']
-NUMBER_STYLE_1STRARG = ['box']
-COMPARE_STYLE = ['equal2']
-COMPARE_PORCH_STYLE = ['greater2', 'less2']
-BOOLEAN_STYLE = ['and2', 'or2']
-NOT_STYLE = ['not']
-FLOW_STYLE = ['forever']
-FLOW_STYLE_TAIL = ['hspace']
-FLOW_STYLE_1ARG = ['repeat']
-FLOW_STYLE_BOOLEAN = ['if', 'while', 'until']
-FLOW_STYLE_WHILE = ['while2']
-FLOW_STYLE_ELSE = ['ifelse']
-COLLAPSIBLE_TOP = ['sandwichtop']
-COLLAPSIBLE_TOP_NO_ARM = ['sandwichtop_no_arm']
-COLLAPSIBLE_TOP_NO_LABEL = ['sandwichtop_no_label']
-COLLAPSIBLE_TOP_NO_ARM_NO_LABEL = ['sandwichtop_no_arm_no_label']
-COLLAPSIBLE_BOTTOM = ['sandwichbottom']
+BASIC_STYLE_2ARG = []
+BOX_STYLE = ['textsize']
+BOX_STYLE_MEDIA = []
+NUMBER_STYLE = ['myfunc']
+NUMBER_STYLE_VAR_ARG = []
+NUMBER_STYLE_BLOCK = []
+NUMBER_STYLE_PORCH = []
+NUMBER_STYLE_1ARG = []
+NUMBER_STYLE_1STRARG = []
+COMPARE_STYLE = []
+COMPARE_PORCH_STYLE = []
+BOOLEAN_STYLE = []
+NOT_STYLE = []
+FLOW_STYLE = []
+FLOW_STYLE_TAIL = []
+FLOW_STYLE_1ARG = []
+FLOW_STYLE_BOOLEAN = []
+FLOW_STYLE_WHILE = []
+FLOW_STYLE_ELSE = []
+COLLAPSIBLE_TOP = []
+COLLAPSIBLE_TOP_NO_ARM = []
+COLLAPSIBLE_TOP_NO_LABEL = []
+COLLAPSIBLE_TOP_NO_ARM_NO_LABEL = []
+COLLAPSIBLE_BOTTOM = []
 
 # Depreciated block styles
-PORTFOLIO_STYLE_2x2 = ['template2x2']
-PORTFOLIO_STYLE_1x1 = ['template1x1', 'template1x1a']
-PORTFOLIO_STYLE_2x1 = ['template2x1']
-PORTFOLIO_STYLE_1x2 = ['template1x2']
+PORTFOLIO_STYLE_2x2 = []
+PORTFOLIO_STYLE_1x1 = []
+PORTFOLIO_STYLE_2x1 = []
+PORTFOLIO_STYLE_1x2 = []
 
 BLOCK_STYLES = {'basic-style-head': BASIC_STYLE_HEAD,
                 'basic-style-head-1arg': BASIC_STYLE_HEAD_1ARG,
@@ -291,11 +170,12 @@ BLOCK_STYLES = {'basic-style-head': BASIC_STYLE_HEAD,
 #
 # Blocks that are expandable
 #
+EXPANDABLE_STYLE = ['boolean-style', 'compare-porch-style', 'compare-style',
+                    'number-style-porch', 'number-style', 'basic-style-2arg']
+
 EXPANDABLE = ['vspace', 'hspace', 'identity2']
 
-EXPANDABLE_BLOCKS = ['plus2', 'minus2', 'division2', 'remainder2', 'product2',
-                   'random', 'equal2', 'greater2', 'less2', 'and2', 'or2',
-                   'arc', 'setxy', 'setxy2', 'fillscreen', 'storein', 'write']
+EXPANDABLE_BLOCKS = []
 
 EXPANDABLE_ARGS = ['templatelist', 'list', 'myfunc1arg', 'myfunc2arg',
                    'myfunc3arg', 'userdefined', 'userdefined2args',
@@ -337,376 +217,30 @@ CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
 # Block-name dictionary used for labels
 #
 BLOCK_NAMES = {
-    'addturtle': [_('turtle')],
-    'and2': [_('and')],
-    'arc': [_('arc'), _('angle'), _('radius')],
-    'audio': [' '],
-    'back': [_('back')],
-    'black': [_('black')],
-    'blocks': [_('blocks')],
-    'blue': [_('blue')],
-    'bottompos': [_('bottom')],
-    'bottomy': [_('picture bottom')],
-    'box': [_('box')],
-    'box1': [_('box 1')],
-    'box2': [_('box 2')],
-    'cartesian': [_('Cartesian')],
-    'clean': [_(' clean ')],
-    'clearheap': [_('empty heap')],
-    'color': [_('color')],
-    'colors': [_('colors')],
-    'comment': [_('comment')],
-    'cyan': [_('cyan')],
-    'decription': [' '],
-    'division2': ['/'],
-    'empty': [_('empty trash')],
-    'equal2': ['='],
-    'extras': [_('extras')],
-    'fillscreen': [_('fill screen'), _('color'), _('shade')],
-    'flow': [_('flow')],
-    'forever': [_('forever')],
-    'forward': [_('forward')],
-    'fullscreen': [_('full screen')],
-    'gray': [_('gray')],
-    'greater2': ['>'],
-    'green': [_('green')],
-    'hat': [_('action')],
-    'hat1': [_('action 1')],
-    'hat2': [_('action 2')],
-    'heading': [_('heading')],
-    'height': [_('height')],
-    'hideblocks': [_('hide blocks')],
-    'hspace': [' '],
-    'identity2': ['←'],
-    'if': [' ', _('if'), _('then')],
-    'ifelse': [' ', _('if'), _('then else')],
-    'image': [_('show')],
-    'journal': [' '],
-    'kbinput': [_('query keyboard')],
-    'keyboard': [_('keyboard')],
-    'left': [_('left')],
-    'leftpos': [_('left')],
-    'leftx': [_('picture left')],
-    'less2': ['<'],
     'list': ['list'],
-    'mediawait': [_('media wait')],
-    'minus2': ['–'],
     'myfunc': [_('Python'), 'f(x)', 'x'],
-    'myfunc1arg': [_('Python'), 'f(x)', 'x'],
-    'myfunc2arg': [_('Python'), 'f(x,y)', ' '],
-    'myfunc3arg': [_('Python'), 'f(x,y,z)', ' '],
     'nop': [_(' ')],
-    'not': [_('not')],
-    'number': ['100'],
-    'numbers': [_('numbers')],
-    'orange': [_('orange')],
-    'or2': [_('or')],
-    'pen': [_('pen')],
-    'pendown': [_('pen down')],
-    'pensize': [_('pen size')],
-    'penup': [_('pen up')],
-    'picturelist': [' '],
-    'picture1x1': [' '],
-    'picture1x1a': [' '],
-    'picture2x2': [' '],
-    'picture2x1': [' '],
-    'picture1x2': [' '],
-    'pitch': [_('pitch')],
-    'plus2': ['+'],
-    'polar': [_('polar')],
-    'pop': [_('pop')],
-    'portfolio': [_('portfolio')],
-    'printheap': [_('show heap')],
-    'print': [_('print')],
-    'product2': ['×'],
-    'purple': [_('purple')],
-    'push': [_('push')],
-    'random': [_('random'), _('min'), _('max')],
-    'readpixel': [_('read pixel')],
-    'red': [_('red')],
-    'remainder2': [_('mod')],
-    'repeat': [' ', _('repeat')],
-    'reskin': [_('turtle shell')],
-    'resistance': [_('resistance')],
-    'restore': [_('restore last')],
-    'restoreall': [_('restore all')],
-    'right': [_('right')],
-    'rightpos': [_('right')],
-    'rightx': [_('picture right')],
-    'savepix': [_('save picture')],
-    'savesvg': [_('save SVG')],
-    'sandwichbottom': [' ', ' '],
-    'sandwichcollapsed': [' '],
-    'sandwichtop': [_('top of stack')],
-    'sandwichtop_no_arm': [_('top of stack')],
-    'sandwichtop_no_label': [' ', ' '],
-    'sandwichtop_no_arm_no_label': [' ', _('click to open')],
-    'scale': [_('scale')],
-    'see': [_('turtle sees')],
-    'sensor': [_('sensors')],
-    'setcolor': [_('set color')],
-    'setgray': [_('set gray')],
-    'seth': [_('set heading')],
-    'setpensize': [_('set pen size')],
-    'setscale': [_('set scale')],
-    'setshade': [_('set shade')],
-    'settextcolor': [_('set text color')],
     'settextsize': [_('set text size')],
-    'setxy': [_('set xy'), _('x'), _('y')],
-    'setxy2': [_('set xy'), _('x'), _('y')],
-    'shade': [_('shade')],
-    'show': [_('show')],
-    'showblocks': [_('show blocks')],
-    'showaligned': [_('show aligned')],
-    'skin': [_('turtle shell')],
-    'sound': [_('sound')],
-    'sqrt': ['√'],
-    'stack': [_('action')],
-    'stack1': [_('action 1')],
-    'stack2': [_('action 2')],
-    'start': [_('start')],
-    'startfill': [_('start fill')],
-    'stopfill': [_('end fill')],
-    'stopstack': [_('stop action')],
-    'storein': [_('store in'), _('box'), _('value')],
-    'storeinbox1': [_('store in box 1')],
-    'storeinbox2': [_('store in box 2')],
-    'string': [_('text')],
-    'template1x1': [' '],
-    'template1x1a': [' '],
-    'template1x2': [' '],
-    'template2x1': [' '],
-    'template2x2': [' '],
-    'templatelist': [' '],
-    'textsize': [_('text size')],
-    'time': [_('time')],
-    'titlex': [_('title x')],
-    'titley': [_('title y')],
-    'toppos': [_('top')],
-    'topy': [_('picture top')],
-    'trash': [_('trash')],
-    'turtle': [_('turtle')],
-    'until': [_('until')],
-    'userdefined': [_(' ')],
-    'userdefined2args': [_(' ')],
-    'userdefined3args': [_(' ')],
-    'video': [' '],
-    'voltage': [_('voltage')],
-    'volume': [_('volume')],
-    'vspace': [' '],
-    'wait': [_('wait')],
-    'while': [_('while')],
-    'while2': [_('while')],
-    'white': [_('white')],
-    'width': [_('width')],
-    'write': [_('write')],
-    'xcor': [_('xcor')],
-    'ycor': [_('ycor')],
-    'yellow': [_('yellow')]}
+    'textsize': [_('text size')]}
 
 #
 # Logo primitives
 #
-
+# TODO: check hats (nop1, 2, 3), setxy
 PRIMITIVES = {
-    'addturtle': 'turtle',
-    'and2': 'and',
-    'arc': 'arc',
-    'back': 'back',
-    'black': 'black',
-    'blue': 'blue',
-    'bottompos': 'bpos',
-    'bottomy': 'boty',
-    'box1': 'box1',
-    'box2': 'box2',
-    'box': 'box',
-    'cartesian': 'cartesian',
-    'clean': 'clean',
-    'clearheap': 'clearheap',
-    'color': 'color',
-    'comment': 'comment',
-    'cyan': 'cyan',
-    'division2': 'division',
-    'equal2': 'equal?',
-    'fillscreen': 'fillscreen',
-    'forever': 'forever',
-    'forward': 'forward',
-    'fullscreen': 'fullscreen',
-    'gray': 'gray',
-    'greater2': 'greater?',
-    'green': 'green',
-    'hat': 'nop3',
-    'hat1': 'nop1',
-    'hat2': 'nop2',
-    'heading': 'heading',
-    'height': 'vres',
-    'hideblocks': 'hideblocks',
-    'hspace': 'nop',
-    'identity2': 'id',
-    'if': 'if',
-    'ifelse': 'ifelse',
-    'image': 'show',
-    'kbinput': 'kbinput',
-    'keyboard': 'keyboard',
-    'left': 'left',
-    'leftpos': 'lpos',
-    'leftx': 'leftx',
-    'less2': 'less?',
     'list': 'bulletlist',
-    'mediawait': 'mediawait',
-    'minus2': 'minus',
     'myfunc': 'myfunction',
-    'myfunc1arg': 'myfunction',
-    'myfunc2arg': 'myfunction2',
-    'myfunc3arg': 'myfunction3',
     'nop': 'userdefined',
-    'not': 'not',
-    'orange': 'orange',
-    'or2': 'or',
-    'pendown': 'pendown',
-    'pensize': 'pensize',
-    'penup': 'penup',
-    'plus2': 'plus',
-    'polar': 'polar',
-    'pop': 'pop',
-    'printheap': 'printheap',
-    'print': 'print',
-    'product2': 'product',
-    'purple': 'purple',
-    'push': 'push',
-    'random': 'random',
-    'red': 'red',
-    'readpixel': 'readpixel',
-    'remainder2': 'mod',
-    'repeat': 'repeat',
-    'right': 'right',
-    'rightpos': 'rpos',
-    'rightx': 'rightx',
-    'sandwichtop': 'comment',
-    'sandwichtop_no_arm': 'comment',
-    'sandwichtop_no_label': 'nop',
-    'sandwichtop_no_arm_no_label': 'nop',
-    'sandwichbottom': 'nop',
-    'sandwichcollapsed': 'nop',
-    'savepix': 'savepix',
-    'savesvg': 'savesvg',
-    'see': 'see',
-    'scale': 'scale',
-    'setcolor': 'setcolor',
-    'setgray': 'setgray',
-    'seth': 'seth',
-    'setpensize': 'setpensize',
-    'setscale': 'setscale',
-    'setshade': 'setshade',
     'settextsize': 'settextsize',
-    'settextcolor': 'settextcolor',
-    'setxy': 'setxy',
-    'setxy2': 'setxy2',
-    'shade': 'shade',
-    'show': 'show',
-    'showblocks': 'showblocks',
-    'showaligned': 'showaligned',
-    'skin': 'skin',
-    'sqrt': 'sqrt',
-    'stack': 'stack',
-    'stack1': 'stack1',
-    'stack2': 'stack2',
-    'start': 'start',
-    'startfill': 'startfill',
-    'stopfill': 'stopfill',
-    'stopstack': 'stopstack',
-    'storein': 'storeinbox',
-    'storeinbox1': 'storeinbox1',
-    'storeinbox2': 'storeinbox2',
-    'template1x1': 't1x1',
-    'template1x1a': 't1x1a',
-    'template1x2': 't1x2',
-    'template2x1': 't2x1',
-    'template2x2': 't2x2',
-    'templatelist': 'bullet',
-    'textsize': 'textsize',
-    'time': 'time',
-    'titlex': 'titlex',
-    'titley': 'titley',
-    'toppos': 'tpos',
-    'topy': 'topy',
-    'userdefined': 'userdefined',
-    'userdefined2args': 'userdefined2',
-    'userdefined3args': 'userdefined3',
-    'vspace': 'nop',
-    'wait': 'wait',
-    'while2': 'while',
-    'white': 'white',
-    'width': 'hres',
-    'write': 'write',
-    'xcor': 'xcor',
-    'ycor': 'ycor',
-    'yellow': 'yellow'}
+    'textsize': 'textsize'}
 
 #
 # block default values
 #
 
 DEFAULTS = {
-    'addturtle': [1],
-    'arc': [90, 100],
-    'audio': [None],
-    'back': [100],
-    'box': [_('my box')],
-    'comment': [_('comment')],
-    'description': [None],
-    'fillscreen': [60, 80],
-    'forever': [None, 'vspace'],
-    'forward': [100],
-    'hat': [_('action')],
-    'if': [None, None, 'vspace'],
-    'ifelse': [None, 'vspace', None, 'vspace'],
-    'journal': [None],
-    'left': [90],
-    'list': ['∙ ', '∙ '],
-    'media': [None],
     'myfunc': ['x', 100],
-    'myfunc1arg': ['x', 100],
-    'myfunc2arg': ['x+y', 100, 100],
-    'myfunc3arg': ['x+y+z', 100, 100, 100],
-    'nop': [100],
-    'number': [100],
-    'random': [0, 100],
-    'repeat': [4, None, 'vspace'],
-    'right': [90],
-    'sandwichtop': [_('label')],
-    'sandwichtop_no_arm': [_('label')],
-    'savepix': [_('picture name')],
-    'savesvg': [_('picture name')],
-    'setcolor': [0],
-    'setgray': [100],
-    'seth': [0],
-    'setpensize': [5],
-    'setscale': [33],
-    'setshade': [50],
-    'settextsize': [48],
-    'settextcolor': [0],
-    'setxy': [0, 0],
-    'setxy2': [0, 0],
-    'show': [_('text')],
-    'showaligned': [_('text')],
-    'stack': [_('action')],
-    'storeinbox1': [100],
-    'storeinbox2': [100],
-    'storein': [_('my box'), 100],
-    'string': [_('text')],
-    'template1x1': [_('Title'), 'None'],
-    'template1x1a': [_('Title'), 'None'],
-    'template1x2': [_('Title'), 'None', 'None'],
-    'template2x1': [_('Title'), 'None', 'None'],
-    'template2x2': [_('Title'), 'None', 'None', 'None', 'None'],
-    'templatelist': [_('Title'), '∙ '],
-    'userdefined': [100],
-    'userdefined2args': [100, 100],
-    'userdefined3args': [100, 100, 100],
-    'video': [None],
-    'wait': [1],
-    'write': [_('text'), 32]}
+    'nop': [100]}
 
 #
 # Blocks that can interchange strings and numbers for their arguments
@@ -763,7 +297,7 @@ OLD_NAMES = {'product': 'product2', 'storeinbox': 'storein', 'minus': 'minus2',
              'template1': 'template1x1', 'template2': 'template2x1',
              'template6': 'template1x2', 'template7': 'template2x2',
              'template4': 'template1x1a', 'hres': 'width', 'vres': 'height',
-             'sandwichtop2': 'sandwichtop'}
+             'sandwichtop2': 'sandwichtop', 'image': 'show'}
 
 #
 # Define the relative size and postion of media objects
@@ -786,215 +320,30 @@ TEMPLATES = {'t1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
 # Names for blocks without names for popup help
 #
 SPECIAL_NAMES = {
-    'and2': _('and'),
-    'audio': _('audio'),
-    'description': _('description'),
-    'division2': _('divide'),
-    'equal2': _('equal'),
-    'greater2': _('greater than'),
-    'hspace': _('horizontal space'),
-    'identity2': _('identity'),
-    'if': _('if then'),
-    'ifelse': _('if then else'),
-    'journal': _('journal'),
-    'less2': _('less than'),
-    'or2': _('or'),
-    'minus2': _('minus'),
-    'nop': _('Python code'),
-    'number': _('number'),
-    'plus2': _('plus'),
-    'product2': _('multiply'),
-    'remainder2': _('mod'),
-    'repeat': _('repeat'),
-    'sandwichtop_no_label': _('top of a collapsible stack'),
-    'sandwichbottom': _('bottom of a collapsible stack'),
-    'sensors': _('sensors'),
-    'sqrt': _('square root'),
-    'template1x1': _('presentation 1x1'),
-    'template1x1a': _('presentation 1x1'),
-    'template1x2': _('presentation 1x2'),
-    'template2x1': _('presentation 2x1'),
-    'template2x2': _('presentation 2x2'),
-    'templatelist': _('presentation bulleted list'),
-    'textsize': _('text size'),
-    'userdefined': _('Python block'),
-    'userdefined2args': _('Python block'),
-    'userdefined3args': _('Python block'),
-    'video': _('video'),
-    'vspace': _('vertical space')}
+    'textsize': _('text size')}
 
 #
 # Help messages
 #
 HELP_STRINGS = {
-    'addturtle': _("chooses which turtle to command"),
-    'and2': _("logical AND operator"),
-    'arc': _("moves turtle along an arc"),
-    'audio': _("Sugar Journal audio object"),
-    'back': _("moves turtle backward"),
-    'blocks': _("Palette of variable blocks"),
-    'bottompos': _("ycor of bottom of screen"),
-    'box1': _("Variable 1 (numeric value)"),
-    'box2': _("Variable 2 (numeric value)"),
-    'box': _("named variable (numeric value)"),
     'cartesian': _("displays Cartesian coordinates"),
     'clean': _("clears the screen and reset the turtle"),
-    'clearheap': _("emptys FILO (first-in-last-out heap)"),
-    'color': _(
-        "holds current pen color (can be used in place of a number block)"),
-    'colors': _("Palette of pen colors"),
-    'comment': _("places a comment in your code"),
     'debugoff': _("Debug"),
-    'description': _("Sugar Journal description field"),
-    'division2': _("divides top numeric input (numerator) by bottom numeric input (denominator)"),
-    'empty': _("permanently deletes items in trash"),
     'eraseron': _("Clean"),
-    'equal2': _("logical equal-to operator"),
-    'extras': _("Palette of extra options"),
-    'fillscreen': _("fills the background with (color, shade)"),
-    'flow': _("Palette of flow operators"),
-    'forever': _("loops forever"),
-    'forward': _("moves turtle forward"),
-    'fullscreen': _("hides the Sugar toolbars"),
-    'gray': _(
-        "holds current gray level (can be used in place of a number block)"),
-    'greater2': _("logical greater-than operator"),
-    'hat1': _("top of Action 1 stack"),
-    'hat2': _("top of Action 2 stack"),
-    'hat': _("top of nameable action stack"),
-    'heading': _("holds current heading value of the turtle (can be used in place of a number block)"),
-    'height': _("the canvas height"),
-    'hideblocks': _("declutters canvas by hiding blocks"),
-    'hideshowoff': _("Hide blocks"),
-    'hspace': _("jogs stack right"),
-    'identity2': _("identity operator used for extending blocks"),
-    'ifelse': _("if-then-else operator that uses boolean operators from Numbers palette"),
-    'if': _(
-        "if-then operator that uses boolean operators from Numbers palette"),
-    'journal': _("Sugar Journal media object"),
-    'kbinput': _("query for keyboard input (results stored in keyboard block)"),
-    'keyboard': _("holds results of query-keyboard block"),
-    'leftpos': _("xcor of left of screen"),
-    'left': _("turns turtle counterclockwise (angle in degrees)"),
-    'less2': _("logical less-than operator"),
-    'media': _("Palette of media objects"),
-    'mediawait': _("wait for current video or audio to complete"),
-    'minus2': _("subtracts bottom numeric input from top numeric input"),
     'myfunc': _("a programmable block: used to add advanced math equations, e.g., sin(x)"),
-    'myfunc1arg': _("a programmable block: used to add advanced single-variable math equations, e.g., sin(x)"),
-    'myfunc2arg': _("a programmable block: used to add advanced multi-variable math equations, e.g., sqrt(x*x+y*y)"),
-    'myfunc3arg': _("a programmable block: used to add advanced multi-variable math equations, e.g., sin(x+y+z)"),
     'next': _('displays next palette'),
     'nop': _("runs code found in the tamyblock.py module found in the Journal"),
-    'not': _("logical NOT operator"),
-    'numbers': _("Palette of numeric operators"),
-    'number': _("used as numeric input in mathematic operators"),
-    'or2': _("logical OR operator"),
     'orientation': _("changes the orientation of the palette of blocks"),
-    'pendown': _("Turtle will draw when moved."),
-    'pen': _("Palette of pen commands"),
-    'pensize': _(
-        "holds current pen size (can be used in place of a number block)"),
-    'penup': _("Turtle will not draw when moved."),
-    'picture1x1': _(
-        "presentation template: select Journal object (with description)"),
-    'picture1x1a': _(
-        "presentation template: select Journal object (no description)"),
-    'picture1x2': _("presentation template: select two Journal objects"),
-    'picture2x1': _("presentation template: select two Journal objects"),
-    'picture2x2': _("presentation template: select four Journal objects"),
-    'picturelist': _("presentation template: list of bullets"),
-    'plus2': _("adds two alphanumeric inputs"),
     'polar': _("displays polar coordinates"),
-    'pop': _("pops value off FILO (first-in last-out heap)"),
-    'portfolio': _("Palette of presentation templates"),
-    'print': _("prints value in status block at bottom of the screen"),
-    'printheap': _("shows values in FILO (first-in last-out heap)"),
-    'product2': _("multiplies two numeric inputs"),
-    'push': _("pushes value onto FILO (first-in last-out heap)"),
-    'random': _("returns random number between minimum (top) and maximum (bottom) values"),
-    'readpixel': _("RGB color under the turtle is pushed to the stack"),
-    'remainder2': _("modular (remainder) operator"),
-    'repeat': _("loops specified number of times"),
-    'resistance': _("sensor input resistance"),
-    'reskin': _("put a custom 'shell' on the turtle"),
-    'restore': _("restores most recent blocks from trash"),
-    'restoreall': _("restore all blocks from trash"),
-    'rightpos': _("xcor of right of screen"),
-    'right': _("turns turtle clockwise (angle in degrees)"),
     'run-fastoff': _("Run"),
     'run-slowoff': _("Step"),
-    'sandwichbottom': _(
-        "bottom block in a collapsibe stack: click to collapse"),
-    'sandwichcollapsed': _("bottom block in a collapsed stack: click to open"),
-    'sandwichtop': _("top of a collapsible stack"),
-    'sandwichtop_no_label': _("top of a collapsed stack"),
-    'sandwichtop_no_arm': _("top of a collapsible stack"),
-    'sandwichtop_no_arm_no_label': _("top of a collapsed stack"),
     'savepix': _("saves a picture to the Sugar Journal"),
     'savesvg': _("saves turtle graphics as an SVG file in the Sugar Journal"),
-    'scale': _("holds current scale value"),
-    'see': _('returns the color that the turtle "sees"'),
-    'sensor': _("Palette of sensor blocks"),
-    'setcolor': _("sets color of the line drawn by the turtle"),
-    'setgray': _("sets gray level of the line drawn by the turtle"),
-    'seth': _(
-        "sets the heading of the turtle (0 is towards the top of the screen.)"),
-    'setpensize': _("sets size of the line drawn by the turtle"),
-    'setscale': _("sets the scale of media"),
-    'setshade': _("sets shade of the line drawn by the turtle"),
-    'settextcolor': _("sets color of text drawn by the turtle"),
-    'settextsize': _("sets size of text drawn by turtle"),
-    'setxy': _("moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."),
-    'setxy2': _("moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."),
-    'shade': _("holds current pen shade"),
-    'show': _("draws text or show media from the Journal"),
-    'showblocks': _("restores hidden blocks"),
-    'skin': _("put a custom 'shell' on the turtle"),
-    'sqrt': _("calculates square root"),
-    'stack1': _("invokes Action 1 stack"),
-    'stack2': _("invokes Action 2 stack"),
-    'stack': _("invokes named action stack"),
-    'start': _("connects action to toolbar run buttons"),
-    'startfill': _("starts filled polygon (used with end fill block)"),
-    'stopfill': _("completes filled polygon (used with start fill block)"),
     'stopiton': _("Stop turtle"),
-    'stopstack': _("stops current action"),
-    'storeinbox1': _("stores numeric value in Variable 1"),
-    'storeinbox2': _("stores numeric value in Variable 2"),
-    'storein': _("stores numeric value in named variable"),
-    'string': _("string value"),
-    'template1x1': _(
-        "presentation template: select Journal object (with description)"),
-    'template1x1a': _(
-        "presentation template: select Journal object (no description)"),
-    'template1x2': _("presentation template: select two Journal objects"),
-    'template2x1': _("presentation template: select two Journal objects"),
-    'template2x2': _("presentation template: select four Journal objects"),
-    'templatelist': _("presentation template: list of bullets"),
     'textcolor': _(
         "holds current text color (can be used in place of a number block)"),
     'textsize': _(
-        "holds current text size (can be used in place of a number block)"),
-    'time': _("elapsed time (in seconds) since program started"),
-    'toppos': _("ycor of top of screen"),
-    'trash': _("Trashcan"),
-    'turtle': _("Palette of turtle commands"),
-    'until': _("do-until-True operator that uses boolean operators from Numbers palette"),
-    'userdefined': _(
-        "runs code found in the tamyblock.py module found in the Journal"),
-    'userdefined2args': _(
-        "runs code found in the tamyblock.py module found in the Journal"),
-    'userdefined3args': _(
-        "runs code found in the tamyblock.py module found in the Journal"),
-    'video': _("Sugar Journal video object"),
-    'voltage': _("sensor voltage"),
-    'vspace': _("jogs stack down"),
-    'wait': _("pauses program execution a specified number of seconds"),
-    'while': _("do-while-True operator that uses boolean operators from Numbers palette"),
-    'width': _("the canvas width"),
-    'xcor': _("holds current x-coordinate value of the turtle (can be used in place of a number block)"),
-    'ycor': _("holds current y-coordinate value of the turtle (can be used in place of a number block)")}
+        "holds current text size (can be used in place of a number block)")}
 
 #
 # 'dead key' Unicode dictionaries

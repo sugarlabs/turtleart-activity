@@ -196,7 +196,6 @@ class TurtleArtWindow():
         self.palette_sprs = []
         self.palettes = []
         self.palette_button = []
-        self.trash_index = PALETTE_NAMES.index('trash')
         self.trash_stack = []
         self.selected_palette = None
         self.previous_palette = None
@@ -256,6 +255,9 @@ class TurtleArtWindow():
 
         self._init_plugins()
         self.lc = LogoCode(self)
+
+        from tabasics import Palettes
+        p = Palettes(self)
         self._setup_plugins()
 
         if self.interactive_mode:
@@ -713,7 +715,7 @@ class TurtleArtWindow():
         self._layout_palette(n)
         for blk in self.palettes[n]:
             blk.spr.set_layer(TAB_LAYER)
-        if n == self.trash_index:
+        if n == PALETTE_NAMES.index('trash'):
             for blk in self.trash_stack:
                 for gblk in find_group(blk):
                     if gblk.status != 'collapsed':
@@ -721,6 +723,8 @@ class TurtleArtWindow():
 
     def _hide_toolbar_palette(self):
         """ Hide the toolbar palettes """
+        print self.activity.palette_buttons
+        print self.selected_palette
         self._hide_previous_palette()
         if self.activity is None or not self.activity.new_sugar_system:
             # Hide the selectors
@@ -747,7 +751,7 @@ class TurtleArtWindow():
                  self.previous_palette != self.selected_palette:
                 self.activity.palette_buttons[self.previous_palette].set_icon(
                     PALETTE_NAMES[self.previous_palette] + 'off')
-            if self.previous_palette == self.trash_index:
+            if self.previous_palette == PALETTE_NAMES.index('trash'):
                 for blk in self.trash_stack:
                     for gblk in find_group(blk):
                         gblk.spr.hide()
@@ -813,7 +817,7 @@ class TurtleArtWindow():
                 _x, _y = 20, self.toolbar_offset + 5
                 _x, _y, _max = self._horizontal_layout(_x, _y,
                                                        self.palettes[n])
-                if n == self.trash_index:
+                if n == PALETTE_NAMES.index('trash'):
                     _x, _y, _max = self._horizontal_layout(_x + _max, _y,
                                                            self.trash_stack)
                 _w = _x + _max + 25
@@ -1038,8 +1042,8 @@ class TurtleArtWindow():
             if gblk.name in BLOCKS_WITH_SKIN:
                 self._resize_skin(gblk)
 
-        # self.show_palette(self.trash_index)
-        if self.selected_palette != self.trash_index:
+        # self.show_palette(PALETTE_NAMES.index('trash'))
+        if self.selected_palette != PALETTE_NAMES.index('trash'):
             for gblk in group:
                 gblk.spr.hide()
 
@@ -1091,8 +1095,8 @@ class TurtleArtWindow():
     def _in_the_trash(self, x, y):
         """ Is x, y over the trash can? """
         """
-        if self.selected_palette == self.trash_index and \
-           self.palette_sprs[self.trash_index][self.orientation].hit((x, y)):
+        if self.selected_palette == PALETTE_NAMES.index('trash') and \
+           self.palette_sprs[PALETTE_NAMES.index('trash')][self.orientation].hit((x, y)):
             return True
         """
         if self.selected_palette is not None and \
