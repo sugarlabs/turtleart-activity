@@ -70,6 +70,7 @@ class Palette():
     def set_special_name(self, name):
         self._special_name = name
 
+
 class Primitive():
     """ a class for defining new block primitives """
 
@@ -170,3 +171,25 @@ class Primitive():
 
     def set_prim_name(self, prim_name):
         self._prim_name = prim_name
+
+
+def make_prim(block_name, style='basic-block', palette=None, label=None,
+              special_name=None, default=None, prim_name=None,
+              help_string=None, value_block=False):
+    """ Block factory """
+    b = Primitive(block_name)
+    b.set_style(style)
+    if palette is not None:
+        b.set_palette(palette)
+    if label is not None:
+        b.set_label(label)
+    if special_name is not None:
+        b.set_special_name(special_name)
+    if default is not None:
+        b.set_default(default)
+    if prim_name is not None:
+        b.set_prim_name(prim_name)
+    if help_string is not None:
+        b.set_help(help_string)
+    b.set_value_block(value_block)
+    b.add_prim()
