@@ -205,6 +205,17 @@ class Turtle_blocks_plugin(Plugin):
             lambda self, x: PLUGIN_DICTIONARY['show'](x, False))
         b.add_prim()
 
+        b = Primitive('write')  # depreciated
+        b.set_style('basic-style-1arg')
+        b.set_label(_('show'))
+        b.set_default([_('text'), 32])
+        b.set_prim_name('write')
+        b.set_help(_('draws text or show media from the Journal'))
+        PLUGIN_DICTIONARY['write'] = self._prim_write
+        self.tw.lc._def_prim('write', 2,
+            lambda self, x, y: PLUGIN_DICTIONARY['write'](x, y))
+        b.add_prim()
+
         b = Primitive('setscale')
         b.set_palette('media')
         b.set_style('basic-style-1arg')
@@ -259,6 +270,26 @@ class Turtle_blocks_plugin(Plugin):
         b.set_prim_name('mediawait')
         b.set_help(_('wait for current video or audio to complete'))
         self.tw.lc._def_prim('mediawait', 0, self.tw.lc._media_wait, True)
+        b.add_prim()
+
+        b = Primitive('settextcolor')  # depreciated
+        b.set_style('basic-style-1arg')
+        b.set_label(_('set text color'))
+        b.set_prim_name('settextcolor')
+        b.set_default(0)
+        b.set_help(_('sets color of the text drawn by the turtle'))
+        self.tw.lc._def_prim('settextcolor', 1,
+                             lambda self, x: self.tw.canvas.settextcolor(x))
+        b.add_prim()
+
+        b = Primitive('settextsize')  # depreciated
+        b.set_style('basic-style-1arg')
+        b.set_label(_('set text size'))
+        b.set_prim_name('settextsize')
+        b.set_default(0)
+        b.set_help(_('sets size of the text drawn by the turtle'))
+        self.tw.lc._def_prim('settextsize', 1,
+                             lambda self, x: self.tw.canvas.settextsize(x))
         b.add_prim()
 
     def _sensor_palette(self):
@@ -581,7 +612,7 @@ class Turtle_blocks_plugin(Plugin):
         b.set_style('bullet-style')
         b.set_label(_('list'))
         b.set_prim_name('bulletlist')
-        b.set_help(_(''))
+        b.set_help(_('presentation bulleted list'))
         b.set_default(['∙ ', '∙ '])
         PLUGIN_DICTIONARY['bulletlist'] = self._prim_list
         self.tw.lc._def_prim('bulletlist', 1,
@@ -997,31 +1028,6 @@ class Turtle_blocks_plugin(Plugin):
     # Depreciated blocks
     # TODO: reinstate these blocks
     """
-    'myfunc': [_('Python'), 'f(x)', 'x'],
-    'nop': [_(' ')],
-    'settextsize': [_('set text size')],
-    'textsize': [_('text size')]}
-    'myfunc': ['x', 100],
-    'nop': [100]}
-    'nop': _("runs code found in the tamyblock.py module found in the Journal"),
-    'myfunc': 'myfunction',
-    'nop': 'userdefined',
-    'settextsize': 'settextsize',
-    'textsize': 'textsize'}
-    'myfunc': _("a programmable block: used to add advanced math equations, e.g., sin(x)"),
-'settextsize', 'settextcolor', 
-    'textsize': _('text size')}
-    'textcolor': _(
-        "holds current text color (can be used in place of a number block)"),
-    'textsize': _(
-        "holds current text size (can be used in place of a number block)")}
-        'settextcolor': [1, lambda self, x: self.tw.canvas.settextcolor(x)],
-        'settextsize': [1, lambda self, x: self.tw.canvas.settextsize(x)],
-        'textcolor': [0, lambda self: self.tw.canvas.textcolor],
-        'textsize': [0, lambda self: self.tw.textsize]}
-        'insertimage': [1, lambda self, x: self._insert_image(False,
-                                                              filepath=x)],
-        'container': [1, lambda self, x: x],
 PORTFOLIO_STYLE_2x2 = ['template2x2']
 PORTFOLIO_STYLE_1x1 = ['template1x1', 'template1x1a']
 PORTFOLIO_STYLE_2x1 = ['template2x1']
@@ -1045,14 +1051,12 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
         't2x1': [3, lambda self, x, y, z: self._show_template2x1(x, y, z)],
         't2x2': [5, lambda self, x, y, z, a, b: self._show_template2x2(
                     x, y, z, a, b)],
-        'write': [2, lambda self, x, y: self._write(self, x, y)]
     'template1x1': [_('Title'), 'None'],
     'template1x1a': [_('Title'), 'None'],
     'template1x2': [_('Title'), 'None', 'None'],
     'template2x1': [_('Title'), 'None', 'None'],
     'template2x2': [_('Title'), 'None', 'None', 'None', 'None'],
     'templatelist': [_('Title'), '∙ '],
-    'write': [_('text'), 32]}
 
     'template1x1a': _('presentation 1x1'),
     'template1x2': _('presentation 1x2'),
@@ -1249,7 +1253,7 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
 
-    def _write(self, string, fsize):
+    def _prim_write(self, string, fsize):
         """ Write string at size """
         x = self.tw.canvas.width / 2 + int(self.tw.canvas.xcor)
         y = self.tw.canvas.height / 2 - int(self.tw.canvas.ycor)
