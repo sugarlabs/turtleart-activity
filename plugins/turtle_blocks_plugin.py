@@ -79,6 +79,9 @@ class Turtle_blocks_plugin(Plugin):
         self.tw = parent
 
     def setup(self):
+        self.heap = self.tw.lc.heap
+        self.keyboard = self.tw.lc.keyboard
+
         # set up Turtle Block palettes
         self._flow_palette()
 
@@ -177,7 +180,7 @@ class Turtle_blocks_plugin(Plugin):
         b.set_label(_('text'))
         b.set_default(_('text'))
         b.set_special_name('')
-        b.set_help('string value')
+        b.set_help(_('string value'))
         b.add_prim()
 
         b = Primitive('show')
@@ -512,7 +515,7 @@ class Turtle_blocks_plugin(Plugin):
         b.set_style('collapsible-bottom')
         b.set_label([' ', ' '])
         b.set_prim_name('nop')
-        b.set_help(_('bottom of a collapsed stack'))
+        b.set_help(_('bottom of a collapsible stack'))
         b.add_prim()
 
         b = Primitive('sandwichcollapsed')
@@ -1012,6 +1015,13 @@ class Turtle_blocks_plugin(Plugin):
         "holds current text color (can be used in place of a number block)"),
     'textsize': _(
         "holds current text size (can be used in place of a number block)")}
+        'settextcolor': [1, lambda self, x: self.tw.canvas.settextcolor(x)],
+        'settextsize': [1, lambda self, x: self.tw.canvas.settextsize(x)],
+        'textcolor': [0, lambda self: self.tw.canvas.textcolor],
+        'textsize': [0, lambda self: self.tw.textsize]}
+        'insertimage': [1, lambda self, x: self._insert_image(False,
+                                                              filepath=x)],
+        'container': [1, lambda self, x: x],
 PORTFOLIO_STYLE_2x2 = ['template2x2']
 PORTFOLIO_STYLE_1x1 = ['template1x1', 'template1x1a']
 PORTFOLIO_STYLE_2x1 = ['template2x1']

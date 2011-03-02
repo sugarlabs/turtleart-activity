@@ -179,7 +179,7 @@ class Palettes():
         b.set_label(_('left'))
         b.set_prim_name('left')
         b.set_default(90)
-        b.set_help(_('turns turtle counterclockwise (angle in degrees'))
+        b.set_help(_('turns turtle counterclockwise (angle in degrees)'))
         PLUGIN_DICTIONARY['right'] = self._prim_right
         self.tw.lc._def_prim('right', 1, 
                              lambda self, x: PLUGIN_DICTIONARY['right'](-x))
@@ -191,7 +191,7 @@ class Palettes():
         b.set_label(_('right'))
         b.set_prim_name('right')
         b.set_default(90)
-        b.set_help(_('turns turtle clockwise (angle in degrees'))
+        b.set_help(_('turns turtle clockwise (angle in degrees)'))
         self.tw.lc._def_prim('right', 1, 
                              lambda self, x: PLUGIN_DICTIONARY['right'](x))
         b.add_prim()
@@ -238,7 +238,7 @@ class Palettes():
         b.set_label(_('set heading'))
         b.set_prim_name('seth')
         b.set_default(0)
-        b.set_help(_('sets the heading of the turtle (0 is towards the top of the screen.'))
+        b.set_help(_('sets the heading of the turtle (0 is towards the top of the screen.)'))
         PLUGIN_DICTIONARY['set'] = self._prim_set
         self.tw.lc._def_prim('seth', 1, 
                              lambda self, x: PLUGIN_DICTIONARY['set'](
@@ -249,7 +249,7 @@ class Palettes():
         b.set_palette('turtle')
         b.set_style('box-style')
         b.set_label(_('xcor'))
-        b.set_help(_('holds current x-coordinate value of the turtle (can be used in place of a number block'))
+        b.set_help(_('holds current x-coordinate value of the turtle (can be used in place of a number block)'))
         b.set_value_block(True)
         b.set_prim_name('xcor')
         self.tw.lc._def_prim(
@@ -260,7 +260,7 @@ class Palettes():
         b.set_palette('turtle')
         b.set_style('box-style')
         b.set_label(_('ycor'))
-        b.set_help(_('holds current y-coordinate value of the turtle (can be used in place of a number block'))
+        b.set_help(_('holds current y-coordinate value of the turtle (can be used in place of a number block)'))
         b.set_value_block(True)
         b.set_prim_name('ycor')
         self.tw.lc._def_prim(
@@ -271,7 +271,7 @@ class Palettes():
         b.set_palette('turtle')
         b.set_style('box-style')
         b.set_label(_('heading'))
-        b.set_help(_('holds current heading value of the turtle (can be used in place of a number block'))
+        b.set_help(_('holds current heading value of the turtle (can be used in place of a number block)'))
         b.set_value_block(True)
         b.set_prim_name('heading')
         self.tw.lc._def_prim(
@@ -544,7 +544,7 @@ class Palettes():
         b.set_label('100')
         b.set_default(100)
         b.set_special_name(_('number'))
-        b.set_help('used as numeric input in mathematic operators')
+        b.set_help(_('used as numeric input in mathematic operators'))
         b.add_prim()
 
         b = Primitive('greater2')
@@ -745,7 +745,7 @@ class Palettes():
         b.set_label(_('text'))
         b.set_default(_('text'))
         b.set_special_name('')
-        b.set_help('string value')
+        b.set_help(_('string value'))
         b.add_prim()
 
         b = Primitive('box1')
@@ -753,7 +753,7 @@ class Palettes():
         b.set_style('box-style')
         b.set_label(_('box 1'))
         b.set_prim_name('box1')
-        b.set_help('Variable 1 (numeric value)')
+        b.set_help(_('Variable 1 (numeric value)'))
         b.set_value_block(True)
         self.tw.lc._def_prim('box1', 0, lambda self: self.tw.lc.boxes['box1'])
         b.add_prim()
@@ -763,7 +763,7 @@ class Palettes():
         b.set_style('box-style')
         b.set_label(_('box 2'))
         b.set_prim_name('box2')
-        b.set_help('Variable 2 (numeric value)')
+        b.set_help(_('Variable 2 (numeric value)'))
         b.set_value_block(True)
         self.tw.lc._def_prim('box2', 0, lambda self: self.tw.lc.boxes['box2'])
         b.add_prim()
@@ -774,7 +774,7 @@ class Palettes():
         b.set_label(_('box'))
         b.set_prim_name('box')
         b.set_default(_('my box'))
-        b.set_help('named variable (numeric value)')
+        b.set_help(_('named variable (numeric value)'))
         PLUGIN_DICTIONARY['box'] = self._prim_box
         self.tw.lc._def_prim('box', 1,
                              lambda self, x: PLUGIN_DICTIONARY['box'](x))
