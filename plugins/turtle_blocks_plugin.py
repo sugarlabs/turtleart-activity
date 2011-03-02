@@ -30,16 +30,13 @@ except ImportError:
     pass
 
 from plugin import Plugin
-from TurtleArt.taprimitive import Palette, Primitive
+from TurtleArt.taprimitive import Palette, Primitive, make_prim
 from TurtleArt.talogo import PLUGIN_DICTIONARY, logoerror, \
     MEDIA_BLOCKS_DICTIONARY
 from TurtleArt.taconstants import DEFAULT_SCALE, CONSTANTS, BLACK, WHITE, \
     ICON_SIZE
 from TurtleArt.tautils import convert, round_int, debug_output
 from TurtleArt.tajail import myfunc, myfunc_import
-
-# TODO: add expandibles to taprimitives
-#       fix position problem
 
 
 def _num_type(x):
@@ -123,639 +120,587 @@ class Turtle_blocks_plugin(Plugin):
     # Palette definitions
 
     def _flow_palette(self):
-        b = Primitive('while')  # macro
-        b.set_palette('flow')
-        b.set_style('flow-style-boolean')
-        b.set_label(_('while'))
-        b.set_help(_('do-while-True operator that uses boolean operators from Numbers palette'))
-        b.add_prim()
+        # macro
+        make_prim('while',
+                  palette='flow',
+                  style='flow-style-boolean',
+                  label=_('while'),
+                  help_string=_('do-while-True operator that uses boolean \
+operators from Numbers palette'))
 
-        b = Primitive('until')  # macro
-        b.set_palette('flow')
-        b.set_style('flow-style-boolean')
-        b.set_label(_('until'))
-        b.set_help(_('do-until-True operator that uses boolean operators from Numbers palette'))
-        b.add_prim()
+        # macro
+        make_prim('until',
+                  palette='flow',
+                  style='flow-style-boolean',
+                  label=_('until'),
+                  help_string=_('do-until-True operator that uses boolean \
+operators from Numbers palette'))
 
     def _media_palette(self):
-        b = Primitive('journal')
-        b.set_palette('media')
-        b.set_style('box-style-media')
-        b.set_label(' ')
-        b.set_special_name(_('journal'))
-        b.set_default(None)
-        b.set_help(_('Sugar Journal media object'))
-        b.add_prim()
+        make_prim('journal',
+                  palette='media',
+                  style='box-style-media',
+                  label=' ',
+                  special_name=_('journal'),
+                  default=None,
+                  help_string=_('Sugar Journal media object'))
 
-        b = Primitive('audio')
-        b.set_palette('media')
-        b.set_style('box-style-media')
-        b.set_label(' ')
-        b.set_special_name(_('audio'))
-        b.set_default(None)
-        b.set_help(_('Sugar Journal audio object'))
-        b.add_prim()
+        make_prim('audio',
+                  palette='media',
+                  style='box-style-media',
+                  label=' ',
+                  special_name=_('audio'),
+                  default=None,
+                  help_string=_('Sugar Journal audio object'))
 
-        b = Primitive('video')
-        b.set_palette('media')
-        b.set_style('box-style-media')
-        b.set_label(' ')
-        b.set_special_name(_('video'))
-        b.set_default(None)
-        b.set_help(_('Sugar Journal video object'))
-        b.add_prim()
+        make_prim('video',
+                  palette='media',
+                  style='box-style-media',
+                  label=' ',
+                  special_name=_('video'),
+                  default=None,
+                  help_string=_('Sugar Journal video object'))
 
-        b = Primitive('description')
-        b.set_palette('media')
-        b.set_style('box-style-media')
-        b.set_label(' ')
-        b.set_special_name(_('description'))
-        b.set_default(None)
-        b.set_help(_('Sugar Journal description field'))
-        b.add_prim()
+        make_prim('description',
+                  palette='media',
+                  style='box-style-media',
+                  label=' ',
+                  special_name=_('description'),
+                  default=None,
+                  help_string=_('Sugar Journal description field'))
 
-        b = Primitive('string')
-        b.set_palette('media')
-        b.set_style('box-style')
-        b.set_label(_('text'))
-        b.set_default(_('text'))
-        b.set_special_name('')
-        b.set_help(_('string value'))
-        b.add_prim()
+        make_prim('string',
+                  palette='media',
+                  style='box-style',
+                  label=_('text'),
+                  default=_('text'),
+                  special_name='',
+                  help_string=_('string value'))
 
-        b = Primitive('show')
-        b.set_palette('media')
-        b.set_style('basic-style-1arg')
-        b.set_label(_('show'))
-        b.set_default(_('text'))
-        b.set_prim_name('show')
-        b.set_help(_('draws text or show media from the Journal'))
         PLUGIN_DICTIONARY['show'] = self._prim_show
+        make_prim('show',
+                  palette='media',
+                  style='basic-style-1arg',
+                  label=_('show'),
+                  default=_('text'),
+                  prim_name='show',
+                  help_string=_('draws text or show media from the Journal'))
         self.tw.lc._def_prim('show', 1, 
             lambda self, x: PLUGIN_DICTIONARY['show'](x, True))
-        b.add_prim()
 
-        b = Primitive('showaligned')
-        b.set_style('basic-style-1arg')
-        b.set_label(_('show aligned'))
-        b.set_default(_('text'))
-        b.set_prim_name('showaligned')
-        b.set_help(_('draws text or show media from the Journal'))
+        make_prim('showaligned',
+                  style='basic-style-1arg',
+                  label=_('show aligned'),
+                  default=_('text'),
+                  prim_name='showaligned',
+                  help_string=_('draws text or show media from the Journal'))
         self.tw.lc._def_prim('showaligned', 1, 
             lambda self, x: PLUGIN_DICTIONARY['show'](x, False))
-        b.add_prim()
 
-        b = Primitive('write')  # depreciated
-        b.set_style('basic-style-1arg')
-        b.set_label(_('show'))
-        b.set_default([_('text'), 32])
-        b.set_prim_name('write')
-        b.set_help(_('draws text or show media from the Journal'))
+        # depreciated
         PLUGIN_DICTIONARY['write'] = self._prim_write
+        make_prim('write',
+                  style='basic-style-1arg',
+                  label=_('show'),
+                  default=[_('text'), 32],
+                  prim_name='write',
+                  help_string=_('draws text or show media from the Journal'))
         self.tw.lc._def_prim('write', 2,
             lambda self, x, y: PLUGIN_DICTIONARY['write'](x, y))
-        b.add_prim()
 
-        b = Primitive('setscale')
-        b.set_palette('media')
-        b.set_style('basic-style-1arg')
-        b.set_label(_('set scale'))
-        b.set_prim_name('setscale')
-        b.set_default(33)
-        b.set_help(_('sets the scale of media'))
         PLUGIN_DICTIONARY['setscale'] = self._prim_setscale
+        make_prim('setscale',
+                  palette='media',
+                  style='basic-style-1arg',
+                  label=_('set scale'),
+                  prim_name='setscale',
+                  default=33,
+                  help_string=_('sets the scale of media'))
         self.tw.lc._def_prim('setscale', 1,
                              lambda self, x: PLUGIN_DICTIONARY['setscale'](x))
 
-        b.add_prim()
-
-        b = Primitive('savepix')
-        b.set_palette('media')
-        b.set_style('basic-style-1arg')
-        b.set_label(_('save picture'))
-        b.set_prim_name('savepix')
-        b.set_default(_('picture name'))
-        b.set_help(_('saves a picture to the Sugar Journal'))
         PLUGIN_DICTIONARY['savepix'] = self._prim_save_picture
+        make_prim('savepix',
+                  palette='media',
+                  style='basic-style-1arg',
+                  label=_('save picture'),
+                  prim_name='savepix',
+                  default=_('picture name'),
+                  help_string=_('saves a picture to the Sugar Journal'))
         self.tw.lc._def_prim('savepix', 1,
                              lambda self, x: PLUGIN_DICTIONARY['savepix'](x))
-        b.add_prim()
 
-        b = Primitive('savesvg')
-        b.set_palette('media')
-        b.set_style('basic-style-1arg')
-        b.set_label(_('save SVG'))
-        b.set_prim_name('savesvg')
-        b.set_default(_('picture name'))
-        b.set_help(_('saves turtle graphics as an SVG file in the Sugar Journal'))
         PLUGIN_DICTIONARY['savesvg'] = self._prim_save_svg
+        make_prim('savesvg',
+                  palette='media',
+                  style='basic-style-1arg',
+                  label=_('save SVG'),
+                  prim_name='savesvg',
+                  default=_('picture name'),
+                  help_string=_('saves turtle graphics as an SVG file in the \
+Sugar Journal'))
         self.tw.lc._def_prim('savesvg', 1,
                              lambda self, x: PLUGIN_DICTIONARY['savesvg'](x))
-        b.add_prim()
 
-        b = Primitive('scale')
-        b.set_palette('media')
-        b.set_style('box-style')
-        b.set_label(_('scale'))
-        b.set_prim_name('scale')
-        b.set_value_block(True)
-        b.set_help(_('holds current scale value'))
+        make_prim('scale',
+                  palette='media',
+                  style='box-style',
+                  label=_('scale'),
+                  prim_name='scale',
+                  value_block=True,
+                  help_string=_('holds current scale value'))
         self.tw.lc._def_prim('scale', 0, lambda self: self.tw.lc.scale)
-        b.add_prim()
 
-        b = Primitive('mediawait')
-        b.set_palette('media')
-        b.set_style('basic-style-extended-vertical')
-        b.set_label(_('media wait'))
-        b.set_prim_name('mediawait')
-        b.set_help(_('wait for current video or audio to complete'))
+        make_prim('mediawait',
+                  palette='media',
+                  style='basic-style-extended-vertical',
+                  label=_('media wait'),
+                  prim_name='mediawait',
+                  help_string=_('wait for current video or audio to complete'))
         self.tw.lc._def_prim('mediawait', 0, self.tw.lc._media_wait, True)
-        b.add_prim()
-
-        b = Primitive('settextcolor')  # depreciated
-        b.set_style('basic-style-1arg')
-        b.set_label(_('set text color'))
-        b.set_prim_name('settextcolor')
-        b.set_default(0)
-        b.set_help(_('sets color of the text drawn by the turtle'))
-        self.tw.lc._def_prim('settextcolor', 1,
-                             lambda self, x: self.tw.canvas.settextcolor(x))
-        b.add_prim()
-
-        b = Primitive('settextsize')  # depreciated
-        b.set_style('basic-style-1arg')
-        b.set_label(_('set text size'))
-        b.set_prim_name('settextsize')
-        b.set_default(0)
-        b.set_help(_('sets size of the text drawn by the turtle'))
-        self.tw.lc._def_prim('settextsize', 1,
-                             lambda self, x: self.tw.canvas.settextsize(x))
-        b.add_prim()
 
     def _sensor_palette(self):
-        b = Primitive('kbinput')
-        b.set_palette('sensor')
-        b.set_style('basic-style-extended-vertical')
-        b.set_label(_('query keyboard'))
-        b.set_prim_name('kbinput')
-        b.set_help(_('query for keyboard input (results stored in keyboard block)'))
+
         PLUGIN_DICTIONARY['kbinput'] = self._prim_kbinput
+        make_prim('kbinput',
+                  palette='sensor',
+                  style='basic-style-extended-vertical',
+                  label=_('query keyboard'),
+                  prim_name='kbinput',
+                  help_string=_('query for keyboard input (results stored in \
+keyboard block)'))
         self.tw.lc._def_prim('kbinput', 0, 
                              lambda self: PLUGIN_DICTIONARY['kbinput']())
-        b.add_prim()
 
-        b = Primitive('keyboard')
-        b.set_palette('sensor')
-        b.set_style('box-style')
-        b.set_label(_('keyboard'))
-        b.set_prim_name('keyboard')
-        b.set_value_block(True)
-        b.set_help(_('holds results of query-keyboard block'))
+
+        make_prim('keyboard',
+                  palette='sensor',
+                  style='box-style',
+                  label=_('keyboard'),
+                  prim_name='keyboard',
+                  value_block=True,
+                  help_string=_('holds results of query-keyboard block'))
         self.tw.lc._def_prim('keyboard', 0, lambda self: self.tw.lc.keyboard)
-        b.add_prim()
 
-        b = Primitive('readpixel')
-        b.set_palette('sensor')
-        b.set_style('basic-style-extended-vertical')
-        b.set_label(_('read pixel'))
-        b.set_prim_name('readpixel')
-        b.set_help(_('RGB color under the turtle is pushed to the stack'))
         PLUGIN_DICTIONARY['readpixel'] = self._prim_readpixel
+        make_prim('readpixel',
+                  palette='sensor',
+                  style='basic-style-extended-vertical',
+                  label=_('read pixel'),
+                  prim_name='readpixel',
+                  help_string=_('RGB color under the turtle is pushed to the \
+stack'))
         self.tw.lc._def_prim('readpixel', 0, 
                              lambda self: PLUGIN_DICTIONARY['readpixel']())
-        b.add_prim()
 
-        b = Primitive('see')
-        b.set_palette('sensor')
-        b.set_style('box-style')
-        b.set_label(_('turtle sees'))
-        b.set_prim_name('see')
-        b.set_help(_('returns the color that the turtle "sees"'))
-        b.set_value_block(True)
         PLUGIN_DICTIONARY['see'] = self._prim_see
+        make_prim('see',
+                  palette='sensor',
+                  style='box-style',
+                  label=_('turtle sees'),
+                  prim_name='see',
+                  value_block=True,
+                  help_string=_('returns the color that the turtle "sees"'))
         self.tw.lc._def_prim('see', 0, 
                              lambda self: PLUGIN_DICTIONARY['see']())
-        b.add_prim()
 
-        b = Primitive('time')
-        b.set_palette('sensor')
-        b.set_style('box-style')
-        b.set_label(_('time'))
-        b.set_prim_name('time')
-        b.set_value_block(True)
-        b.set_help(_('elapsed time (in seconds) since program started'))
         PLUGIN_DICTIONARY['time'] = self._prim_time
+        make_prim('time',
+                  palette='sensor',
+                  style='box-style',
+                  label=_('time'),
+                  prim_name='time',
+                  value_block=True,
+                  help_string=_('elapsed time (in seconds) since program \
+started'))
         self.tw.lc._def_prim('time', 0, 
                              lambda self: PLUGIN_DICTIONARY['time']())
-        b.add_prim()
 
     def _extras_palette(self):
-        b = Primitive('push')
-        b.set_palette('extras')
-        b.set_style('basic-style-1arg')
-        b.set_label(_('push'))
-        b.set_prim_name('push')
-        b.set_help(_('pushes value onto FILO (first-in last-out heap)'))
+
         PLUGIN_DICTIONARY['push'] = self._prim_push
+        make_prim('push',
+                  palette='extras',
+                  style='basic-style-1arg',
+                  label=_('push'),
+                  prim_name='push',
+                  help_string=_('pushes value onto FILO (first-in last-out \
+heap)'))
         self.tw.lc._def_prim('push', 1,
                              lambda self, x: PLUGIN_DICTIONARY['push'](x))
-        b.add_prim()
 
-        b = Primitive('printheap')
-        b.set_palette('extras')
-        b.set_style('basic-style-extended-vertical')
-        b.set_label(_('show heap'))
-        b.set_prim_name('printheap')
-        b.set_help(_('shows values in FILO (first-in last-out heap)'))
         PLUGIN_DICTIONARY['printheap'] = self._prim_printheap
+        make_prim('printheap',
+                  palette='extras',
+                  style='basic-style-extended-vertical',
+                  label=_('show heap'),
+                  prim_name='printheap',
+                  help_string=_('shows values in FILO (first-in last-out \
+heap)'))
         self.tw.lc._def_prim('printheap', 0, 
                              lambda self: PLUGIN_DICTIONARY['printheap']())
-        b.add_prim()
 
-        b = Primitive('clearheap')
-        b.set_palette('extras')
-        b.set_style('basic-style-extended-vertical')
-        b.set_label(_('empty heap'))
-        b.set_prim_name('clearheap')
-        b.set_help(_('emptys FILO (first-in-last-out heap)'))
         PLUGIN_DICTIONARY['clearheap'] = self._prim_emptyheap
+        make_prim('clearheap',
+                  palette='extras',
+                  style='basic-style-extended-vertical',
+                  label=_('empty heap'),
+                  prim_name='clearheap',
+                  help_string=_('emptys FILO (first-in-last-out heap)'))
         self.tw.lc._def_prim('clearheap', 0, 
                              lambda self: PLUGIN_DICTIONARY['clearheap']())
-        b.add_prim()
 
-        b = Primitive('pop')
-        b.set_palette('extras')
-        b.set_style('box-style')
-        b.set_label(_('pop'))
-        b.set_prim_name('pop')
-        b.set_value_block(True)
-        b.set_help(_('pops value off FILO (first-in last-out heap)'))
         PLUGIN_DICTIONARY['pop'] = self._prim_pop
+        make_prim('pop',
+                  palette='extras',
+                  style='box-style',
+                  label=_('pop'),
+                  prim_name='pop',
+                  value_block=True,
+                  help_string=_('pops value off FILO (first-in last-out heap)'))
         self.tw.lc._def_prim('pop', 0, 
                              lambda self: PLUGIN_DICTIONARY['pop']())
-        b.add_prim()
 
-        b = Primitive('comment')
-        b.set_palette('extras')
-        b.set_style('basic-style-1arg')
-        b.set_label(_('comment'))
-        b.set_prim_name('comment')
-        b.set_default(_('comment'))
-        b.set_help(_('places a comment in your code'))
         PLUGIN_DICTIONARY['print'] = self._prim_print
+        make_prim('comment',
+                  palette='extras',
+                  style='basic-style-1arg',
+                  label=_('comment'),
+                  prim_name='comment',
+                  default=_('comment'),
+                  help_string=_('places a comment in your code'))
         self.tw.lc._def_prim('comment', 1,
             lambda self, x: PLUGIN_DICTIONARY['print'](x, True))
-        b.add_prim()
 
-        b = Primitive('print')
-        b.set_palette('extras')
-        b.set_style('basic-style-1arg')
-        b.set_label(_('print'))
-        b.set_prim_name('print')
-        b.set_help(_('prints value in status block at bottom of the screen'))
+        make_prim('print',
+                  palette='extras',
+                  style='basic-style-1arg',
+                  label=_('print'),
+                  prim_name='print',
+                  help_string=_('prints value in status block at bottom of \
+the screen'))
         self.tw.lc._def_prim('print', 1,
             lambda self, x: PLUGIN_DICTIONARY['print'](x, False))
-        b.add_prim()
 
-        b = Primitive('myfunc1arg')
-        b.set_palette('extras')
-        b.set_style('number-style-var-arg')
-        b.set_label([_('Python'), 'f(x)', 'x'])
-        b.set_prim_name('myfunction')
-        b.set_default(['x', 100])
-        b.set_help(_('a programmable block: used to add advanced single-variable math equations, e.g., sin(x)'))
         PLUGIN_DICTIONARY['myfunction'] = self._prim_myfunction
+        make_prim('myfunc1arg',
+                  palette='extras',
+                  style='number-style-var-arg',
+                  label=[_('Python'), 'f(x)', 'x'],
+                  prim_name='myfunction',
+                  default=['x', 100],
+                  help_string=_('a programmable block: used to add advanced \
+single-variable math equations, e.g., sin(x)'))
         self.tw.lc._def_prim('myfunction', 2,
             lambda self, f, x: PLUGIN_DICTIONARY['myfunction'](f, [x]))
-        b.add_prim()
 
-        b = Primitive('myfunc2arg')
-        b.set_style('number-style-var-arg')
-        b.set_label([_('Python'), 'f(x,y)', 'x'])
-        b.set_prim_name('myfunction2')
-        b.set_default(['x+y', 100, 100])
-        b.set_help(_('a programmable block: used to add advanced multi-variable math equations, e.g., sqrt(x*x+y*y)'))
+        make_prim('myfunc2arg',
+                  style='number-style-var-arg',
+                  label=[_('Python'), 'f(x,y)', 'x'],
+                  prim_name='myfunction2',
+                  default=['x+y', 100, 100],
+                  help_string=_('a programmable block: used to add advanced \
+multi-variable math equations, e.g., sqrt(x*x+y*y)'))
         self.tw.lc._def_prim('myfunction2', 3,
             lambda self, f, x: PLUGIN_DICTIONARY['myfunction'](f, [x, y]))
-        b.add_prim()
 
-        b = Primitive('myfunc3arg')
-        b.set_style('number-style-var-arg')
-        b.set_label([_('Python'), 'f(x,y,z)', 'x'])
-        b.set_prim_name('myfunction3')
-        b.set_default(['x+y+z', 100, 100, 100])
-        b.set_help(_('a programmable block: used to add advanced multi-variable math equations, e.g., sin(x+y+z)'))
+        make_prim('myfunc3arg',
+                  style='number-style-var-arg',
+                  label=[_('Python'), 'f(x,y,z)', 'x'],
+                  prim_name='myfunction3',
+                  default=['x+y+z', 100, 100, 100],
+                  help_string=_('a programmable block: used to add advanced \
+multi-variable math equations, e.g., sin(x+y+z)'))
         self.tw.lc._def_prim('myfunction3', 4,
             lambda self, f, x, y, z: PLUGIN_DICTIONARY['myfunction'](
                 f, [x, y, z]))
-        b.add_prim()
 
-        b = Primitive('userdefined')
-        b.set_palette('extras')
-        b.set_style('basic-style-var-arg')
-        b.set_label(' ')
-        b.set_prim_name('userdefined')
-        b.set_special_name(_('Python block'))
-        b.set_default(100)
-        b.set_help(_('runs code found in the tamyblock.py module found in the Journal'))
         PLUGIN_DICTIONARY['userdefined'] = self._prim_myblock
+        make_prim('userdefined',
+                  palette='extras',
+                  style='basic-style-var-arg',
+                  label=' ',
+                  prim_name='userdefined',
+                  special_name=_('Python block'),
+                  default=100,
+                  help_string=_('runs code found in the tamyblock.py module \
+found in the Journal'))
         self.tw.lc._def_prim('userdefined', 1,
             lambda self, x: PLUGIN_DICTIONARY['userdefined']([x]))
-        b.add_prim()
 
-        b = Primitive('userdefined2')
-        b.set_style('basic-style-var-arg')
-        b.set_label(' ')
-        b.set_prim_name('userdefined')
-        b.set_special_name(_('Python block'))
-        b.set_default([100, 100])
-        b.set_help(_('runs code found in the tamyblock.py module found in the Journal'))
+        make_prim('userdefined2',
+                  style='basic-style-var-arg',
+                  label=' ',
+                  prim_name='userdefined',
+                  special_name=_('Python block'),
+                  default=[100, 100],
+                  help_string=_('runs code found in the tamyblock.py module \
+found in the Journal'))
         self.tw.lc._def_prim('userdefined2', 2,
             lambda self, x, y: PLUGIN_DICTIONARY['userdefined']([x, y]))
-        b.add_prim()
 
-        b = Primitive('userdefined3')
-        b.set_style('basic-style-var-arg')
-        b.set_label(' ')
-        b.set_prim_name('userdefined')
-        b.set_special_name(_('Python block'))
-        b.set_default([100, 100, 100])
-        b.set_help(_('runs code found in the tamyblock.py module found in the Journal'))
+        make_prim('userdefined3',
+                  style='basic-style-var-arg',
+                  label=' ',
+                  prim_name='userdefined',
+                  special_name=_('Python block'),
+                  default=[100, 100, 100],
+                  help_string=_('runs code found in the tamyblock.py module \
+found in the Journal'))
         self.tw.lc._def_prim('userdefined3', 3,
             lambda self, x, y, z: PLUGIN_DICTIONARY['userdefined']([x, y, z]))
-        b.add_prim()
 
-        b = Primitive('cartesian')
-        b.set_palette('extras')
-        b.set_style('basic-style-extended-vertical')
-        b.set_label(_('Cartesian'))
-        b.set_prim_name('cartesian')
-        b.set_help(_('displays Cartesian coordinates'))
-        self.tw.lc._def_prim('cartesian', 0, 
+        make_prim('cartesian',
+                  palette='extras',
+                  style='basic-style-extended-vertical',
+                  label=_('Cartesian'),
+                  prim_name='cartesian',
+                  help_string=_('displays Cartesian coordinates'))
+        self.tw.lc._def_prim('cartesian', 0,
                              lambda self: self.tw.set_cartesian(True))
-        b.add_prim()
 
-        b = Primitive('polar')
-        b.set_palette('extras')
-        b.set_style('basic-style-extended-vertical')
-        b.set_label(_('polar'))
-        b.set_prim_name('polar')
-        b.set_help(_('displays polar coordinates'))
+        make_prim('polar',
+                  palette='extras',
+                  style='basic-style-extended-vertical',
+                  label=_('polar'),
+                  prim_name='polar',
+                  help_string=_('displays polar coordinates'))
         self.tw.lc._def_prim('polar', 0, 
                              lambda self: self.tw.set_polar(True))
-        b.add_prim()
 
-        b = Primitive('addturtle')
-        b.set_palette('extras')
-        b.set_style('basic-style-1arg')
-        b.set_label(_('turtle'))
-        b.set_prim_name('turtle')
-        b.set_default(1)
-        b.set_help(_('chooses which turtle to command'))
+        make_prim('addturtle',
+                  palette='extras',
+                  style='basic-style-1arg',
+                  label=_('turtle'),
+                  prim_name='turtle',
+                  default=1,
+                  help_string=_('chooses which turtle to command'))
         self.tw.lc._def_prim('turtle', 1,
             lambda self, x: self.tw.canvas.set_turtle(x))
-        b.add_prim()
 
-        b = Primitive('skin')
-        b.set_style('basic-style-1arg')
-        b.set_label(_('turtle shell'))
-        b.set_prim_name('skin')
-        b.set_help(_("put a custom 'shell' on the turtle"))
         PLUGIN_DICTIONARY['skin'] = self._prim_reskin
+        make_prim('skin',
+                  style='basic-style-1arg',
+                  label=_('turtle shell'),
+                  prim_name='skin',
+                  help_string=_("put a custom 'shell' on the turtle"))
         self.tw.lc._def_prim('skin', 1,
             lambda self, x: PLUGIN_DICTIONARY['skin'](x))
-        b.add_prim()
 
-        b = Primitive('reskin')  # macro
-        b.set_palette('extras')
-        b.set_style('basic-style-1arg')
-        b.set_label(_('turtle shell'))
-        b.set_help(_("put a custom 'shell' on the turtle"))
-        b.add_prim()
+        # macro
+        make_prim('reskin',
+                  palette='extras',
+                  style='basic-style-1arg',
+                  label=_('turtle shell'),
+                  help_string=_("put a custom 'shell' on the turtle"))
 
-        b = Primitive('sandwichtop_no_label')
-        b.set_palette('extras')
-        b.set_style('collapsible-top-no-label')
-        b.set_label([' ', ' '])
-        b.set_prim_name('nop')
-        b.set_help(_('top of a collapsed stack'))
-        b.add_prim()
+        make_prim('sandwichtop_no_label',
+                  palette='extras',
+                  style='collapsible-top-no-label',
+                  label=[' ', ' '],
+                  special_name=_('top'),
+                  prim_name='nop',
+                  help_string=_('top of a collapsed stack'))
 
-        b = Primitive('sandwichbottom')
-        b.set_palette('extras')
-        b.set_style('collapsible-bottom')
-        b.set_label([' ', ' '])
-        b.set_prim_name('nop')
-        b.set_help(_('bottom of a collapsible stack'))
-        b.add_prim()
+        make_prim('sandwichbottom',
+                  palette='extras',
+                  style='collapsible-bottom',
+                  label=[' ', ' '],
+                  prim_name='nop',
+                  special_name=_('bottom'),
+                  help_string=_('bottom of a collapsible stack'))
 
-        b = Primitive('sandwichcollapsed')
-        b.set_style('invisible')
-        b.set_label(' ')
-        b.set_prim_name('nop')
-        b.set_help(_('bottom block in a collapsed stack: click to open'))
-        b.add_prim()
+        make_prim('sandwichcollapsed',
+                  style='invisible',
+                  label=' ',
+                  prim_name='nop',
+                  help_string=_('bottom block in a collapsed stack: click to \
+open'))
 
-        b = Primitive('sandwichtop')  # depreciated
-        b.set_style('collapsible-top')
-        b.set_label(_('top of stack'))
-        b.set_default(_('label'))
-        b.set_prim_name('comment')
-        b.set_help(_('top of stack'))
-        b.add_prim()
+        # depreciated blocks
+        make_prim('sandwichtop',
+                  style='collapsible-top',
+                  label=_('top of stack'),
+                  default=_('label'),
+                  prim_name='comment',
+                  help_string=_('top of stack'))
 
-        b = Primitive('sandwichtop_no_arm')  # depreciated
-        b.set_style('collapsible-top-no-arm')
-        b.set_label(_('top of a collapsible stack'))
-        b.set_default(_('label'))
-        b.set_prim_name('comment')
-        b.set_help(_('top of stack'))
-        b.add_prim()
+        make_prim('sandwichtop_no_arm',
+                  style='collapsible-top-no-arm',
+                  label=_('top of a collapsible stack'),
+                  default=_('label'),
+                  prim_name='comment',
+                  help_string=_('top of stack'))
 
-        b = Primitive('sandwichtop_no_arm_no_label')  # depreciated
-        b.set_style('collapsible-top-no-arm-no-label')
-        b.set_label([' ', _('click to open')])
-        b.set_prim_name('nop')
-        b.set_help(_('top of stack'))
-        b.add_prim()
+        make_prim('sandwichtop_no_arm_no_label',
+                  style='collapsible-top-no-arm-no-label',
+                  label=[' ', _('click to open')],
+                  prim_name='nop',
+                  help_string=_('top of stack'))
 
     def _portfolio_palette(self):
-        b = Primitive('hideblocks')
-        b.set_palette('portfolio')
-        b.set_style('basic-style-extended-vertical')
-        b.set_label(_('hide blocks'))
-        b.set_prim_name('hideblocks')
-        b.set_help(_('declutters canvas by hiding blocks'))
+
+        make_prim('hideblocks',
+                  palette='portfolio',
+                  style='basic-style-extended-vertical',
+                  label=_('hide blocks'),
+                  prim_name='hideblocks',
+                  help_string=_('declutters canvas by hiding blocks'))
         self.tw.lc._def_prim('hideblocks', 0, lambda self: self.tw.hideblocks())
-        b.add_prim()
 
-        b = Primitive('showblocks')
-        b.set_palette('portfolio')
-        b.set_style('basic-style-extended-vertical')
-        b.set_label(_('show blocks'))
-        b.set_prim_name('showblocks')
-        b.set_help(_('restores hidden blocks'))
+        make_prim('showblocks',
+                  palette='portfolio',
+                  style='basic-style-extended-vertical',
+                  label=_('show blocks'),
+                  prim_name='showblocks',
+                  help_string=_('restores hidden blocks'))
         self.tw.lc._def_prim('showblocks', 0, lambda self: self.tw.showblocks())
-        b.add_prim()
 
-        b = Primitive('fullscreen')
-        b.set_palette('portfolio')
-        b.set_style('basic-style-extended-vertical')
-        b.set_label(_('full screen'))
-        b.set_prim_name('fullscreen')
-        b.set_help(_('hides the Sugar toolbars'))
+        make_prim('fullscreen',
+                  palette='portfolio',
+                  style='basic-style-extended-vertical',
+                  label=_('full screen'),
+                  prim_name='fullscreen',
+                  help_string=_('hides the Sugar toolbars'))
         self.tw.lc._def_prim('fullscreen', 0,
                              lambda self: self.tw.set_fullscreen())
-        b.add_prim()
 
-        b = Primitive('list')
-        b.set_style('bullet-style')
-        b.set_label(_('list'))
-        b.set_prim_name('bulletlist')
-        b.set_help(_('presentation bulleted list'))
-        b.set_default(['∙ ', '∙ '])
         PLUGIN_DICTIONARY['bulletlist'] = self._prim_list
+        make_prim('list',
+                  style='bullet-style',
+                  label=_('list'),
+                  prim_name='bulletlist',
+                  default=['∙ ', '∙ '],
+                  help_string=_('presentation bulleted list'))
         self.tw.lc._def_prim('bulletlist', 1,
                              PLUGIN_DICTIONARY['bulletlist'], True)
-        b.add_prim()
 
-        b = Primitive('picturelist')  # macro
-        b.set_palette('portfolio')
-        b.set_style('basic-style-extended')
-        b.set_label(' ')
-        b.set_help(_('presentation template: list of bullets'))
-        b.add_prim()
+        # macros
+        make_prim('picturelist',
+                  palette='portfolio',
+                  style='basic-style-extended',
+                  label=' ',
+                  help_string=_('presentation template: list of bullets'))
 
-        b = Primitive('picture1x1a')  # macro
-        b.set_palette('portfolio')
-        b.set_style('basic-style-extended')
-        b.set_label(' ')
-        b.set_help(_('presentation template: select Journal object (no description)'))
-        b.add_prim()
+        make_prim('picture1x1a',
+                  palette='portfolio',
+                  style='basic-style-extended',
+                  label=' ',
+                  help_string=_('presentation template: select Journal object \
+(no description)'))
 
-        b = Primitive('picture1x1')  # macro
-        b.set_palette('portfolio')
-        b.set_style('basic-style-extended')
-        b.set_label(' ')
-        b.set_help(_('presentation template: select Journal object (with description)'))
-        b.add_prim()
+        make_prim('picture1x1',
+                  palette='portfolio',
+                  style='basic-style-extended',
+                  label=' ',
+                  help_string=_('presentation template: select Journal object \
+(with description)'))
 
-        b = Primitive('picture2x2')  # macro
-        b.set_palette('portfolio')
-        b.set_style('basic-style-extended')
-        b.set_label(' ')
-        b.set_help(_('presentation template: select four Journal objects'))
-        b.add_prim()
+        make_prim('picture2x2',
+                  palette='portfolio',
+                  style='basic-style-extended',
+                  label=' ',
+                  help_string=_('presentation template: select four Journal \
+objects'))
 
-        b = Primitive('picture2x1')  # macro
-        b.set_palette('portfolio')
-        b.set_style('basic-style-extended')
-        b.set_label(' ')
-        b.set_help(_('presentation template: select two Journal objects'))
-        b.add_prim()
+        make_prim('picture2x1',
+                  palette='portfolio',
+                  style='basic-style-extended',
+                  label=' ',
+                  help_string=_('presentation template: select two Journal \
+objects'))
 
-        b = Primitive('picture1x2')  # macro
-        b.set_palette('portfolio')
-        b.set_style('basic-style-extended')
-        b.set_label(' ')
-        b.set_help(_('presentation template: select two Journal objects'))
-        b.add_prim()
+        make_prim('picture1x2',
+                  palette='portfolio',
+                  style='basic-style-extended',
+                  label=' ',
+                  help_string=_('presentation template: select two Journal \
+objects'))
 
-        b = Primitive('leftpos')
-        b.set_palette('portfolio')
-        b.set_style('box-style')
-        b.set_label(_('left'))
-        b.set_prim_name('lpos')
-        b.set_help(_('xcor of left of screen'))
+        # Display-dependent constants
+        make_prim('leftpos',
+                  palette='portfolio',
+                  style='box-style',
+                  label=_('left'),
+                  prim_name='lpos',
+                  help_string=_('xcor of left of screen'))
         self.tw.lc._def_prim('lpos', 0, lambda self: CONSTANTS['leftpos'])
-        b.add_prim()
 
-        b = Primitive('bottompos')
-        b.set_palette('portfolio')
-        b.set_style('box-style')
-        b.set_label(_('bottom'))
-        b.set_prim_name('bpos')
-        b.set_help(_('ycor of bottom of screen'))
+        make_prim('bottompos',
+                  palette='portfolio',
+                  style='box-style',
+                  label=_('bottom'),
+                  prim_name='bpos',
+                  help_string=_('ycor of bottom of screen'))
         self.tw.lc._def_prim('bpos', 0, lambda self: CONSTANTS['bottompos'])
-        b.add_prim()
 
-        b = Primitive('width')
-        b.set_palette('portfolio')
-        b.set_style('box-style')
-        b.set_label(_('width'))
-        b.set_prim_name('hres')
-        b.set_help(_('the canvas width'))
+        make_prim('width',
+                  palette='portfolio',
+                  style='box-style',
+                  label=_('width'),
+                  prim_name='hres',
+                  help_string=_('the canvas width'))
         self.tw.lc._def_prim('hres', 0, lambda self: CONSTANTS['width'])
-        b.add_prim()
 
-        b = Primitive('rightpos')
-        b.set_palette('portfolio')
-        b.set_style('box-style')
-        b.set_label(_('right'))
-        b.set_prim_name('rpos')
-        b.set_help(_('xcor of right of screen'))
+        make_prim('rightpos',
+                  palette='portfolio',
+                  style='box-style',
+                  label=_('right'),
+                  prim_name='rpos',
+                  help_string=_('xcor of right of screen'))
         self.tw.lc._def_prim('rpos', 0, lambda self: CONSTANTS['rightpos'])
-        b.add_prim()
 
-        b = Primitive('toppos')
-        b.set_palette('portfolio')
-        b.set_style('box-style')
-        b.set_label(_('top'))
-        b.set_prim_name('tpos')
-        b.set_help(_('ycor of top of screen'))
+        make_prim('toppos',
+                  palette='portfolio',
+                  style='box-style',
+                  label=_('top'),
+                  prim_name='tpos',
+                  help_string=_('ycor of top of screen'))
         self.tw.lc._def_prim('tpos', 0, lambda self: CONSTANTS['toppos'])
-        b.add_prim()
 
-        b = Primitive('height')
-        b.set_palette('portfolio')
-        b.set_style('box-style')
-        b.set_label(_('height'))
-        b.set_prim_name('vres')
-        b.set_help(_('the canvas height'))
+        make_prim('height',
+                  palette='portfolio',
+                  style='box-style',
+                  label=_('height'),
+                  prim_name='vres',
+                  help_string=_('the canvas height'))
         self.tw.lc._def_prim('vres', 0, lambda self: CONSTANTS['height'])
-        b.add_prim()
 
-        b = Primitive('titlex')
-        b.set_style('box-style')
-        b.set_label(_('title x'))
-        b.set_prim_name('titlex')
+        make_prim('titlex',
+                  style='box-style',
+                  label=_('title x'),
+                  prim_name='titlex')
         self.tw.lc._def_prim('titlex', 0, lambda self: CONSTANTS['titlex'])
-        b.add_prim()
 
-        b = Primitive('titley')
-        b.set_style('box-style')
-        b.set_label(_('title y'))
-        b.set_prim_name('titley')
+        make_prim('titley',
+                  style='box-style',
+                  label=_('title y'),
+                  prim_name='titley')
         self.tw.lc._def_prim('titley', 0, lambda self: CONSTANTS['titley'])
-        b.add_prim()
 
-        b = Primitive('leftx')
-        b.set_style('box-style')
-        b.set_label(_('left x'))
-        b.set_prim_name('leftx')
+        make_prim('leftx',
+                  style='box-style',
+                  label=_('left x'),
+                  prim_name='leftx')
         self.tw.lc._def_prim('leftx', 0, lambda self: CONSTANTS['leftx'])
-        b.add_prim()
 
-        b = Primitive('topy')
-        b.set_style('box-style')
-        b.set_label(_('top y'))
-        b.set_prim_name('topy')
+        make_prim('topy',
+                  style='box-style',
+                  label=_('top y'),
+                  prim_name='topy')
         self.tw.lc._def_prim('topy', 0, lambda self: CONSTANTS['topy'])
-        b.add_prim()
 
-        b = Primitive('rightx')
-        b.set_style('box-style')
-        b.set_label(_('right x'))
-        b.set_prim_name('rightx')
+        make_prim('rightx',
+                  style='box-style',
+                  label=_('right x'),
+                  prim_name='rightx')
         self.tw.lc._def_prim('rightx', 0, lambda self: CONSTANTS['rightx'])
-        b.add_prim()
 
-        b = Primitive('bottomy')
-        b.set_style('box-style')
-        b.set_label(_('bottom y'))
-        b.set_prim_name('bottomy')
+        make_prim('bottomy',
+                  style='box-style',
+                  label=_('bottom y'),
+                  prim_name='bottomy')
         self.tw.lc._def_prim('bottomy', 0, lambda self: CONSTANTS['bottomy'])
-        b.add_prim()
 
     # Block primitives
 
