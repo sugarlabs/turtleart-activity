@@ -30,40 +30,37 @@ which contains additional blocks. (Even better, write your own plugin!!)
 For example, if we want to add a new turtle command, 'uturn', we'd
 make the following changes:
 
-        b = Primitive('uturn') 
-        b.set_palette('turtle')  # the palette to place it in
-        b.set_style('basic-style')  # the block style 
-        b.set_label(_('u-turn'))  # the label that will appear on the block
-        b.set_prim_name('uturn')  # an intern name for the primitive
-        b.set_help(_('turns the turtle 180 degrees'))  # a help message
+    b = Primitive('uturn')  # the name of your block
+    b.set_palette('turtle')  # the palette to place it in
+    b.set_style('basic-style')  # the block style
+    b.set_label(_('u-turn'))  # the label that will appear on the block
+    b.set_prim_name('uturn')  # a reference to the primitive dictionary
+    b.set_help(_('turns the turtle 180 degrees'))  # a help message
 
-        # def_prim takes 3 arguments: the primitive name, the number of
-        # of arguments, 0 in this case, and the function to call.
-        # We are using a special method, 'set', that will update the label
-        # of the heading block as well as the heading itself. _prim_set
-        # also takes arguments: the name of the block whose label needs to
-        # be updated, the function call to change the value, and the new
-        # value, in the case, the current heading + 180
-        self.tw.lc._def_prim('uturn', 0, 
-                             lambda self, x: PLUGIN_DICTIONARY['set'](
-                'heading', self.tw.canvas.seth, self.tw.canvas.heading + 180))
-        b.add_prim()
+    # Next, you need to define what your block will do:
+    # def_prim takes 3 arguments: the primitive name, the number of
+    # of arguments, 0 in this case, and the function to call, in this
+    # case, the canvas function to set the heading.
+    self.tw.lc._def_prim('uturn', 0,
+        lambda self, x: self.tw.canvas.seth(self.tw.canvas.heading + 180))
+
+    # Finally, add your new block
+    b.add_prim()
 
 That's it. When you next run Turtle Art, you will have a 'uturn' block
 on the Turtle Palette.
 
 Adding a new palette is simply a matter of:
-        p = Palette('turtle', ["#00FF00", "#00A000"])  # assign name and colors
-        p.set_help(_('Palette of turtle commands'))  # and a help message
-        p.add_palette()
+    p = Palette('mypalette', ["#00FF00", "#00A000"])  # assign name and colors
+    p.set_help(_('Palette of my custom commands'))  # and a help message
+    p.add_palette()
 
-However you will have to create icons for the palette-selector
-buttons. These are kept in the icons subdirectory. You need two icons:
-yourpalettenameoff.svg and yourpalettenameon.svg, where
-yourpalettename is the same string as the entry you added to the
-PALETTE_NAMES list. Note that the icons should be the same size
-(55x55) as the others. This is the default icon size for Sugar
-toolbars.
+You will have to create icons for the palette-selector buttons. These
+are kept in the icons subdirectory. You need two icons:
+mypaletteoff.svg and yourpaletteon.svg, where mypalette is the same
+string as the entry you used in instantiating the Palette class. Note
+that the icons should be the same size (55x55) as the others. (This is
+the default icon size for Sugar toolbars.)
 
 """
 
