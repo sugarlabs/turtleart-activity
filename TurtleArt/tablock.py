@@ -381,8 +381,7 @@ class Block:
             if self.name in BLOCK_NAMES:
                 n = len(BLOCK_NAMES[self.name])
             else:
-                debug_output('WARNING: unknown block name %s' % (self.name),
-                             self.tw.running_sugar)
+                debug_output('WARNING: unknown block name %s' % (self.name))
                 n = 0
         for i in range(n):
             if self.name in COMPARE_PORCH_STYLE:
@@ -490,7 +489,7 @@ class Block:
         else:
             self._make_basic_style(svg)
             debug_output("WARNING: I don't know how to create a %s block" % \
-                             (self.name), self.tw.running_sugar)
+                             (self.name))
 
     def _set_colors(self, svg):
         if self.name in BOX_COLORS:
