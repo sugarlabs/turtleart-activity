@@ -22,24 +22,15 @@
 #THE SOFTWARE.
 
 import gtk
-
 from time import time
-from math import sqrt
-from random import uniform
-from operator import isNumberType
-import os.path
 
+from operator import isNumberType
 from UserDict import UserDict
 
-try:
-    from sugar.datastore import datastore
-except ImportError:
-    pass
-
 from taconstants import TAB_LAYER, DEFAULT_SCALE, BLOCK_NAMES, \
-    PREFIX_DICTIONARY, CONSTANTS, BLACK, WHITE
+    PREFIX_DICTIONARY
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
-    text_media_type, round_int, chr_to_ord, strtype, get_path, debug_output
+    text_media_type, round_int, get_path, debug_output
 
 from util.RtfParser import RtfTextOnly
 
@@ -97,20 +88,9 @@ class LogoCode:
         self.tw = tw
         self.oblist = {}
 
-        # TODO: remove plugin blocks
-        DEFPRIM = {
-        '(': [1, lambda self, x: self._prim_opar(x)],
-        'bullet': [1, self._prim_bullet, True],
-        'bulletlist': [1, self._prim_list, True],
-        'container': [1, lambda self, x: x],
-        'define': [2, self._prim_define],
-        'insertimage': [1, lambda self, x: self._insert_image(False,
-                                                              filepath=x)],
-        'nop': [0, lambda self: None],
-        'settextcolor': [1, lambda self, x: self.tw.canvas.settextcolor(x)],
-        'settextsize': [1, lambda self, x: self.tw.canvas.settextsize(x)],
-        'textcolor': [0, lambda self: self.tw.canvas.textcolor],
-        'textsize': [0, lambda self: self.tw.textsize]}
+        DEFPRIM = {'(': [1, lambda self, x: self._prim_opar(x)],
+                   'define': [2, self._prim_define],
+                   'nop': [0, lambda self: None]}
 
         for p in iter(DEFPRIM):
             if len(DEFPRIM[p]) == 2:
@@ -499,18 +479,6 @@ class LogoCode:
     # Primitives
     #
 
-    def _prim_bullet(self, blklist):
-        """ Depreciated bullet-list block style """
-        self._show_bullets(blklist)
-        self._ireturn()
-        yield True
-
-    def _prim_list(self, blklist):
-        """ Expandable list block """
-        self._show_list(blklist)
-        self._ireturn()
-        yield True
-
     def _prim_opar(self, val):
         self.iline.pop(0)
         return val
@@ -521,40 +489,6 @@ class LogoCode:
             name = self._intern(name)
         name.nargs, name.fcn = 0, body
         name.rprim = True
-
-    def _prim_stack(self, x):
-        """ Process a named stack """
-        if type(convert(x, float, False)) == float:
-            if int(float(x)) == x:
-                x = int(x)
-        if 'stack3' + str(x) not in self.stacks or\
-           self.stacks['stack3' + str(x)] is None:
-            raise logoerror("#nostack")
-        self._icall(self._evline, self.stacks['stack3' + str(x)][:])
-        yield True
-        self.procstop = False
-        self._ireturn()
-        yield True
-
-    def _prim_stack1(self):
-        """ Process Stack 1 """
-        if self.stacks['stack1'] is None:
-            raise logoerror("#nostack")
-        self._icall(self._evline, self.stacks['stack1'][:])
-        yield True
-        self.procstop = False
-        self._ireturn()
-        yield True
-
-    def _prim_stack2(self):
-        """ Process Stack 2 """
-        if self.stacks['stack2'] is None:
-            raise logoerror("#nostack")
-        self._icall(self._evline, self.stacks['stack2'][:])
-        yield True
-        self.procstop = False
-        self._ireturn()
-        yield True
 
     def _int(self, n):
         """ Raise an error if n doesn't convert to int. """
@@ -602,15 +536,6 @@ class LogoCode:
             for val in data:
                 self.heap.append(val)
             self.update_label_value('pop', self.heap[-1])
-
-    def _show_list(self, sarray):
-        """ Display list of media objects """
-        x = self.tw.canvas.xcor / self.tw.coord_scale
-        y = self.tw.canvas.ycor / self.tw.coord_scale
-        for s in sarray:
-            self.tw.canvas.setxy(x, y, pendown=False)
-            self._show(s)
-            y -= int(self.tw.canvas.textsize * self.tw.lead)
 
     def _x(self):
         """ Convert screen coordinates to turtle coordinates """
