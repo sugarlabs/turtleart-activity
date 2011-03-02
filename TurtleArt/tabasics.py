@@ -168,7 +168,7 @@ class Palettes():
         b.set_label(_('clean'))
         b.set_prim_name('clean')
         b.set_help(_('clears the screen and reset the turtle'))
-        PLUGIN_DICTIONARY['clean'] = self._prim_clear
+        PLUGIN_DICTIONARY['clean'] = self.tw.lc.prim_clear
         self.tw.lc._def_prim('clean', 0, 
                              lambda self: PLUGIN_DICTIONARY['clean']())
         b.add_prim()
@@ -807,7 +807,6 @@ class Palettes():
         b.set_style('basic-style-head')
         b.set_label(_('action 1'))
         b.set_prim_name('nop1')
-        b.set_default(_('action 1'))
         b.set_help(_('top of Action 1 stack'))
         self.tw.lc._def_prim('nop1', 0, lambda self: None)
         b.add_prim()
@@ -817,7 +816,6 @@ class Palettes():
         b.set_style('basic-style-head')
         b.set_label(_('action 2'))
         b.set_prim_name('nop2')
-        b.set_default(_('action 2'))
         b.set_help(_('top of Action 2 stack'))
         self.tw.lc._def_prim('nop2', 0, lambda self: None)
         b.add_prim()
@@ -892,18 +890,6 @@ class Palettes():
             return self.tw.lc.boxes['box3' + str(x)]
         except KeyError:
             raise logoerror("#emptybox")
-
-    def _prim_clear(self):
-        """ Clear screen """
-        if self.tw.gst_available:
-            from tagplay import stop_media
-            # stop_media(self)  # TODO: gplay variable
-        self.tw.canvas.clearscreen()
-        self.tw.lc.scale = DEFAULT_SCALE  # TODO: move to lc method
-        self.tw.lc.hidden_turtle = None
-        self.tw.lc._start_time = time()
-        for name in VALUE_BLOCKS:
-            self.tw.lc.update_label_value(name)
 
     def _prim_forever(self, blklist):
         """ Do list forever """
