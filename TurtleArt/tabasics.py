@@ -777,7 +777,7 @@ class Palettes():
         b.set_help('named variable (numeric value)')
         PLUGIN_DICTIONARY['box'] = self._prim_box
         self.tw.lc._def_prim('box', 1,
-                             lambda self, x: PLUGIN_DICTONARY['box'](x))
+                             lambda self, x: PLUGIN_DICTIONARY['box'](x))
         b.add_prim()
 
         b = Primitive('storein')
