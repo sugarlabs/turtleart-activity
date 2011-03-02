@@ -1551,8 +1551,6 @@ class TurtleArtWindow():
                                        self.canvas.xcor / self.coord_scale)
             self.lc.update_label_value('ycor',
                                        self.canvas.ycor / self.coord_scale)
-            if len(self.lc.value_blocks['see']) > 0:
-                self.lc.see()
 
     def _click_block(self, x, y):
         """ Click block: lots of special cases to handle... """
