@@ -51,36 +51,27 @@ except ImportError:
     pass
 
 from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
-                        PALETTE_NAMES, TITLEXY, MEDIA_SHAPES, STATUS_SHAPES, \
-                        OVERLAY_SHAPES, TOOLBAR_SHAPES, TAB_LAYER, RETURN, \
-                        OVERLAY_LAYER, CATEGORY_LAYER, BLOCKS_WITH_SKIN, \
-                        ICON_SIZE, PALETTES, PALETTE_SCALE, BOX_STYLE_MEDIA, \
-                        PALETTE_WIDTH, MACROS, TOP_LAYER, BLOCK_LAYER, \
-                        CONTENT_BLOCKS, DEFAULTS, SPECIAL_NAMES, \
-                        HELP_STRINGS, CURSOR, EXPANDABLE, COLLAPSIBLE, \
-                        DEAD_DICTS, DEAD_KEYS, TEMPLATES, PYTHON_SKIN, \
-                        PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, OLD_NAMES, \
-                        BOOLEAN_STYLE, BLOCK_NAMES, DEFAULT_TURTLE, \
-                        TURTLE_LAYER, EXPANDABLE_BLOCKS, COMPARE_STYLE, \
-                        BOOLEAN_STYLE, EXPANDABLE_ARGS, NUMBER_STYLE, \
-                        NUMBER_STYLE_PORCH, NUMBER_STYLE_BLOCK, \
-                        NUMBER_STYLE_VAR_ARG, CONSTANTS, XO1, XO15, UNKNOWN, \
-                        BASIC_STYLE_VAR_ARG
+    PALETTE_NAMES, TITLEXY, MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES, \
+    TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER, CATEGORY_LAYER, \
+    BLOCKS_WITH_SKIN, ICON_SIZE, PALETTES, PALETTE_SCALE, PALETTE_WIDTH, \
+    MACROS, TOP_LAYER, BLOCK_LAYER, CONTENT_BLOCKS, DEFAULTS, SPECIAL_NAMES, \
+    HELP_STRINGS, CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, \
+    TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
+    OLD_NAMES, BLOCK_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, EXPANDABLE_BLOCKS, \
+    EXPANDABLE_ARGS, CONSTANTS, XO1, XO15, UNKNOWN, BLOCK_STYLES
 from talogo import LogoCode
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
 from taturtle import Turtles, Turtle
 from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
-                    data_to_file, round_int, get_id, get_pixbuf_from_journal, \
-                    movie_media_type, audio_media_type, image_media_type, \
-                    save_picture, save_svg, calc_image_size, get_path, \
-                    reset_stack_arm, grow_stack_arm, find_sandwich_top, \
-                    find_sandwich_bottom, restore_stack, collapse_stack, \
-                    collapsed, collapsible, hide_button_hit, show_button_hit, \
-                    arithmetic_check, xy, find_block_to_run, find_top_block, \
-                    find_start_stack, find_group, find_blk_below, \
-                    dock_dx_dy, data_to_string, journal_check, chooser, \
-                    get_hardware, debug_output, error_output
+    data_to_file, round_int, get_id, get_pixbuf_from_journal, \
+    movie_media_type, audio_media_type, image_media_type, save_picture, \
+    save_svg, calc_image_size, get_path, reset_stack_arm, grow_stack_arm, \
+    find_sandwich_top, find_sandwich_bottom, restore_stack, collapse_stack, \
+    collapsed, collapsible, hide_button_hit, show_button_hit, chooser, \
+    arithmetic_check, xy, find_block_to_run, find_top_block, journal_check, \
+    find_group, find_blk_below, dock_dx_dy, data_to_string, find_start_stack, \
+    get_hardware, debug_output, error_output
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 from dbus.mainloop.glib import DBusGMainLoop
@@ -296,7 +287,7 @@ class TurtleArtWindow():
                 exec f in globals(), plugins
                 self._plugins.append(plugins.values()[0](self))
             except ImportError:
-                print 'failed to import %s' % (pluginclass)
+                debug_output('failed to import %s' % (pluginclass))
 
     def _setup_plugins(self):
         """ Initial setup -- call just once. """
@@ -703,7 +694,7 @@ class TurtleArtWindow():
                 self.palettes[n][i].unhighlight()
 
                 # Some proto blocks get a skin.
-                if name in BOX_STYLE_MEDIA:
+                if name in BLOCK_STYLES['box-style-media']:
                     self._proto_skin(name + 'small', n, i)
                 elif name[:8] == 'template':
                     self._proto_skin(name[8:], n, i)
@@ -723,8 +714,6 @@ class TurtleArtWindow():
 
     def _hide_toolbar_palette(self):
         """ Hide the toolbar palettes """
-        print self.activity.palette_buttons
-        print self.selected_palette
         self._hide_previous_palette()
         if self.activity is None or not self.activity.new_sugar_system:
             # Hide the selectors
@@ -1147,7 +1136,7 @@ class TurtleArtWindow():
                 self._block_skin('pythonon', newblk)
             else:
                 self._block_skin('pythonoff', newblk)
-        elif name in BOX_STYLE_MEDIA:
+        elif name in BLOCK_STYLES['box-style-media']:
             self._block_skin(name + 'off', newblk)
 
         newspr = newblk.spr
@@ -1238,7 +1227,7 @@ class TurtleArtWindow():
                     else:
                         cons.append(blocks[c])
                 # If the boolean op was connected, readjust the plumbing.
-                if blocks[i].name in BOOLEAN_STYLE:
+                if blocks[i].name in BLOCK_STYLES['boolean-style']:
                     if block_data[i][4][0] is not None:
                         c = block_data[i][4][0]
                         cons[0] = blocks[block_data[c][4][0]]
@@ -1576,7 +1565,8 @@ class TurtleArtWindow():
             self.saved_string = blk.spr.labels[0]
             blk.spr.labels[0] += CURSOR
 
-        elif blk.name in BOX_STYLE_MEDIA and blk.name != 'camera':
+        elif blk.name in BLOCK_STYLES['box-style-media'] and \
+             blk.name != 'camera':
             # TODO: isolate reference to camera
             self._import_from_journal(self.selected_blk)
             if blk.name == 'journal' and self.running_sugar:
@@ -1625,7 +1615,7 @@ class TurtleArtWindow():
                 self._run_stack(blk)
                 return
 
-            if blk.name in BOOLEAN_STYLE:
+            if blk.name in BLOCK_STYLE['boolean-style']:
                 self._expand_boolean(blk, blk.connections[1], dy)
             else:
                 self._expand_expandable(blk, blk.connections[1], dy)
@@ -1678,7 +1668,7 @@ class TurtleArtWindow():
                 argblk.spr.set_layer(TOP_LAYER)
                 argblk.connections = [blk, None]
                 blk.connections[n - 1] = argblk
-                if blk.name in NUMBER_STYLE_VAR_ARG:
+                if blk.name in BLOCK_STYLES['number-style-var-arg']:
                     self._cascade_expandable(blk)
                 grow_stack_arm(find_sandwich_top(blk))
             elif blk.name in PYTHON_SKIN:
@@ -1719,16 +1709,24 @@ class TurtleArtWindow():
         for gblk in find_group(blk):
             if gblk not in group:
                 gblk.spr.move_relative((0, dy * blk.scale))
-        if blk.name in COMPARE_STYLE:
+        if blk.name in BLOCK_STYLES['compare-style']:
             for gblk in find_group(blk):
                 gblk.spr.move_relative((0, -dy * blk.scale))
 
+    def _number_style(self, name):
+        if name in BLOCK_STYLES['number-style']:
+            return True
+        if name in BLOCK_STYLES['number-style-porch']:
+            return True
+        if name in BLOCK_STYLES['number-style-block']:
+            return True
+        if name in BLOCK_STYLES['number-style-var-arg']:
+            return True
+        return False
+
     def _cascade_expandable(self, blk):
         """ If expanding/shrinking a block, cascade. """
-        while blk.name in NUMBER_STYLE or \
-                blk.name in NUMBER_STYLE_PORCH or \
-                blk.name in NUMBER_STYLE_BLOCK or \
-                blk.name in NUMBER_STYLE_VAR_ARG:
+        while self._number_style(blk.name):
             if blk.connections[0] is None:
                 break
             if blk.connections[0].name in EXPANDABLE_BLOCKS:
@@ -1748,7 +1746,7 @@ class TurtleArtWindow():
                     for gblk in find_group(blk):
                         if gblk not in group:
                             gblk.spr.move_relative((0, dy * blk.scale))
-                    if blk.name in COMPARE_STYLE:
+                    if blk.name in BLOCK_STYLES['compare-style']:
                         for gblk in find_group(blk):
                             gblk.spr.move_relative((0, -dy * blk.scale))
             else:
@@ -1840,9 +1838,9 @@ class TurtleArtWindow():
                     selected_block.connections[best_selected_block_dockn] = \
                         best_destination
 
-            if best_destination.name in BOOLEAN_STYLE:
+            if best_destination.name in BLOCK_STYLES['boolean-style']:
                 if best_destination_dockn == 2 and \
-                   selected_block.name in COMPARE_STYLE:
+                   selected_block.name in BLOCK_STYLES['compare-style']:
                     dy = selected_block.ey - best_destination.ey
                     best_destination.expand_in_y(dy)
                     self._expand_boolean(best_destination, selected_block, dy)
@@ -1850,7 +1848,8 @@ class TurtleArtWindow():
                  best_destination_dockn == 1:
                 dy = 0
                 if (selected_block.name in EXPANDABLE_BLOCKS or
-                    selected_block.name in NUMBER_STYLE_VAR_ARG):
+                    selected_block.name in BLOCK_STYLES[
+                        'number-style-var-arg']):
                     if selected_block.name == 'myfunc2arg':
                         dy = 40 + selected_block.ey - best_destination.ey
                     elif selected_block.name == 'myfunc3arg':
@@ -1878,7 +1877,7 @@ class TurtleArtWindow():
             c = blk2.connections.index(blk)
             blk2.connections[c] = None
 
-        if blk2.name in BOOLEAN_STYLE:
+        if blk2.name in BLOCK_STYLES['boolean-style']:
             if c == 2 and blk2.ey > 0:
                 dy = -blk2.ey
                 blk2.expand_in_y(dy)
@@ -2465,7 +2464,7 @@ class TurtleArtWindow():
                     'block', values, self.block_scale)
 
         # Some blocks get transformed.
-        if btype in BASIC_STYLE_VAR_ARG and value is not None:
+        if btype in BLOCK_STYLES['basic-style-var-arg'] and value is not None:
             # Is there code stored in this userdefined block?
             if value > 0:  # catch depreciated format (#2501)
                 self.python_code = None
@@ -2513,7 +2512,7 @@ class TurtleArtWindow():
                     self._block_skin('pythonon', blk)
                 else:
                     self._block_skin('pythonoff', blk)
-        elif btype in BOX_STYLE_MEDIA and blk.spr is not None:
+        elif btype in BLOCK_STYLES['box-style-media'] and blk.spr is not None:
             # TODO: isolate reference to camera
             if len(blk.values) == 0 or blk.values[0] == 'None' or \
                blk.values[0] is None or btype == 'camera':
@@ -2610,7 +2609,8 @@ class TurtleArtWindow():
                     _name = (_blk.name, _blk.values[0])
                 else:
                     _name = (_blk.name)
-            elif _blk.name in BASIC_STYLE_VAR_ARG and len(_blk.values) > 0:
+            elif _blk.name in BLOCK_STYLES['basic-style-var-arg'] and \
+                 len(_blk.values) > 0:
                 _name = (_blk.name, _blk.values[0])
             elif _blk.name in EXPANDABLE or _blk.name in EXPANDABLE_BLOCKS or\
                  _blk.name in EXPANDABLE_ARGS:
