@@ -30,7 +30,7 @@ from rfid.rfidutils import strhex2bin, strbin2dec, find_device
 
 from plugin import Plugin
 
-from TurtleArt.taprimitive import Primitive
+from TurtleArt.taprimitive import Primitive, Palette, make_prim
 from TurtleArt.talogo import PLUGIN_DICTIONARY
 
 import logging
@@ -87,17 +87,20 @@ class Rfid_plugin(Plugin):
     def setup(self):
         # set up RFID-specific blocks
         if self._status:
-            rfid = Primitive('rfid')
-            rfid.set_palette('sensor')
-            rfid.set_style('box-style')
-            rfid.set_label(_('RFID'))
-            rfid.set_help(_('read value from RFID device'))
-            rfid.set_value_block(True)
-            rfid.set_prim_name('rfid')
+            sensors = Palette('sensor')
+            sensors.set_help(_('Palette of sensor blocks'))
+            sensors.add_palette()
+
             PLUGIN_DICTIONARY['rfid'] = self.prim_read_camera
+            make_prim('rfid',
+                      palette='sensor',
+                      style='box-style',
+                      label=_('RFID'),
+                      help_string=_('read value from RFID device'),
+                      value_block=True,
+                      prim_name='rfid')
             self._parent.lc._def_prim('rfid', 0,
                 lambda self: PLUGIN_DICTIONARY['rfid'](True))
-            rfid.add_prim()
 
     def start(self):
         # This gets called by the start button
