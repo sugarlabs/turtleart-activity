@@ -29,12 +29,12 @@ which contains additional blocks. (Even better, write your own plugin!!)
 For example, if we want to add a new turtle command, 'uturn', we'd
 make the following changes:
 
-    self._make_prim('uturn',  # the name of your block
-                    palette='turtle',  # the palette to place it in
-                    style='basic-style',  # the block style
-                    label=_('u turn'),  # the label for the block
-                    prim_name='uturn',  # code reference (see below)
-                    help_string=_('turns the turtle 180 degrees'))
+    make_prim('uturn',  # the name of your block
+              palette='turtle',  # the palette to place it in
+              style='basic-style',  # the block style
+              label=_('u turn'),  # the label for the block
+              prim_name='uturn',  # code reference (see below)
+              help_string=_('turns the turtle 180 degrees'))
 
     # Next, you need to define what your block will do:
     # def_prim takes 3 arguments: the primitive name, the number of
