@@ -25,18 +25,8 @@ from gettext import gettext as _
 
 from taconstants import EXPANDABLE, EXPANDABLE_BLOCKS, EXPANDABLE_ARGS, \
     PRIMITIVES, OLD_NAMES, BLOCK_SCALE, BLOCK_NAMES, CONTENT_BLOCKS, \
-    PALETTES, COLORS, BASIC_STYLE_HEAD, BASIC_STYLE_HEAD_1ARG, \
-    BASIC_STYLE_TAIL, BASIC_STYLE, BASIC_STYLE_EXTENDED, BASIC_STYLE_1ARG, \
-    BASIC_STYLE_VAR_ARG, BULLET_STYLE, BASIC_STYLE_2ARG, BOX_STYLE, \
-    BOX_STYLE_MEDIA, NUMBER_STYLE, NUMBER_STYLE_VAR_ARG, NUMBER_STYLE_BLOCK, \
-    NUMBER_STYLE_PORCH, NUMBER_STYLE_1ARG, NUMBER_STYLE_1STRARG, \
-    COMPARE_STYLE, BOOLEAN_STYLE, NOT_STYLE, FLOW_STYLE, FLOW_STYLE_TAIL, \
-    FLOW_STYLE_1ARG, FLOW_STYLE_BOOLEAN, FLOW_STYLE_WHILE, FLOW_STYLE_ELSE, \
-    COLLAPSIBLE_TOP, COLLAPSIBLE_TOP_NO_ARM, COLLAPSIBLE_TOP_NO_LABEL, \
-    COLLAPSIBLE_TOP_NO_ARM_NO_LABEL, COLLAPSIBLE_BOTTOM, PORTFOLIO_STYLE_2x2, \
-    PORTFOLIO_STYLE_1x1, PORTFOLIO_STYLE_2x1, PORTFOLIO_STYLE_1x2, \
-    STANDARD_STROKE_WIDTH, BOX_COLORS, GRADIENT_COLOR, COMPARE_PORCH_STYLE, \
-    BASIC_STYLE_EXTENDED_VERTICAL, CONSTANTS, INVISIBLE
+    PALETTES, COLORS, BLOCK_STYLES, STANDARD_STROKE_WIDTH, BOX_COLORS, \
+    GRADIENT_COLOR, CONSTANTS
 from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
 
@@ -44,6 +34,7 @@ from tautils import debug_output
 
 
 class Blocks:
+
     """ A class for the list of blocks and everything they share in common """
 
     def __init__(self, font_scale_factor=1, decimal_point='.'):
@@ -149,6 +140,49 @@ class Block:
         self._font_size = [6.0, 4.5]
         self._image = None
 
+        self.block_methods = {
+            'basic-style-head': self._make_basic_style_head,
+            'basic-style-head-1arg': self._make_basic_style_head_1arg,
+            'basic-style-tail': self._make_basic_style_tail,
+            'basic-style': self._make_basic_style,
+            'basic-style-extended-vertical': [self._make_basic_style, 0, 4],
+            'invisible': self._make_invisible_style,
+            'basic-style-extended': [self._make_basic_style, 16, 16],
+            'basic-style-1arg': self._make_basic_style_1arg,
+            'basic-style-var-arg': self._make_basic_style_var_arg,
+            'bullet-style': self._make_bullet_style,
+            'basic-style-2arg': self._make_basic_style_2arg,
+            'box-style': self._make_box_style,
+            'box-style-media': self._make_media_style,
+            'number-style': self._make_number_style,
+            'number-style-var-arg': self._make_number_style_var_arg,
+            'number-style-block': self._make_number_style_block,
+            'number-style-porch': self._make_number_style_porch,
+            'number-style-1arg': self._make_number_style_1arg,
+            'number-style-1strarg': self._make_number_style_1strarg,
+            'compare-style': self._make_compare_style,
+            'compare-porch-style': self._make_compare_porch_style,
+            'boolean-style': self._make_boolean_style,
+            'not-style': self._make_not_style,
+            'flow-style': self._make_flow_style,
+            'flow-style-tail': self._make_flow_style_tail,
+            'flow-style-1arg': self._make_flow_style_1arg,
+            'flow-style-boolean': self._make_flow_style_boolean,
+            'flow-style-while': self._make_flow_style_while,
+            'flow-style-else': self._make_flow_style_else,
+            'collapsible-top': [self._make_collapsible_style_top, True, True],
+            'collapsible-top-no-arm': [self._make_collapsible_style_top,
+                                       False, True],
+            'collapsible-top-no-label': [self._make_collapsible_style_top,
+                                         True, False],
+            'collapsible-top-no-arm-no-label': [
+                self._make_collapsible_style_top, False, False],
+            'collapsible-bottom': self._make_collapsible_style_bottom,
+            'portfolio-style-2x2': self._make_portfolio_style_2x2,
+            'portfolio-style-1x1': self._make_portfolio_style_1x1,
+            'portfolio-style-2x1': self._make_portfolio_style_2x1,
+            'portfolio-style-1x2': self._make_portfolio_style_1x2}
+
         if self.name in OLD_NAMES:
             self.name = OLD_NAMES[self.name]
 
@@ -161,11 +195,7 @@ class Block:
 
         # If there is already a block with the same name, reuse it
         copy_block = None
-        if self.name not in EXPANDABLE and \
-           self.name not in EXPANDABLE_BLOCKS and \
-           self.name not in EXPANDABLE_ARGS and \
-           self.name not in BOX_STYLE and \
-           self.name not in ['sandwichtop', 'sandwichtop_no_label']:
+        if self.cloneable():
             for b in self.block_list.list:
                 if b.scale == self.scale and b.name == self.name:
                     copy_block = b
@@ -176,6 +206,26 @@ class Block:
             self.primitive = PRIMITIVES[self.name]
 
         self.block_list.append_to_list(self)
+
+    def expandable(self):
+        """ Can this block be expanded? """
+        if self.name in EXPANDABLE:
+            return True
+        if self.name in EXPANDABLE_BLOCKS:
+            return True
+        if self.name in EXPANDABLE_ARGS:
+            return True
+        return False
+
+    def cloneable(self):
+        """ Is it safe to clone this block? """
+        if self.expandable():
+            return False
+        if self.name in BLOCK_STYLES['box-style']:
+            return False
+        if self.name in ['sandwichtop', 'sandwichtop_no_label']:
+            return False
+        return True
 
     def highlight(self):
         """ We may want to highlight a block... """
@@ -334,10 +384,7 @@ class Block:
                 self.shapes[1] = copy_block.shapes[1]
             self.docks = copy_block.docks[:]
         else:
-            if (self.name in EXPANDABLE or \
-                self.name in EXPANDABLE_BLOCKS or \
-                self.name in EXPANDABLE_ARGS) and \
-               self.type == 'block':
+            if self.expandable() and self.type == 'block':
                 self.svg.set_show(True)
 
             self._make_block(self.svg)
@@ -384,10 +431,10 @@ class Block:
                 debug_output('WARNING: unknown block name %s' % (self.name))
                 n = 0
         for i in range(n):
-            if self.name in COMPARE_PORCH_STYLE:
+            if self.name in BLOCK_STYLES['compare-porch-style']:
                 self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
                                               True, 'center', 'bottom', i)
-            elif self.name in NUMBER_STYLE_PORCH:
+            elif self.name in BLOCK_STYLES['number-style-porch']:
                 self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
                                               True, 'right', 'bottom', i)
             elif i == 1:  # top
@@ -410,86 +457,14 @@ class Block:
         self._bottom = 0
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
         self.svg.clear_docks()
-        if self.name in BASIC_STYLE:
-            self._make_basic_style(svg)
-        elif self.name in BASIC_STYLE_HEAD:
-            self._make_basic_style_head(svg)
-        elif self.name in BASIC_STYLE_EXTENDED:
-            self._make_basic_style(svg, 16, 16)
-        elif self.name in BASIC_STYLE_EXTENDED_VERTICAL:
-            self._make_basic_style(svg, 0, 4)
-        elif self.name in BASIC_STYLE_HEAD_1ARG:
-            self._make_basic_style_head_1arg(svg)
-        elif self.name in BASIC_STYLE_TAIL:
-            self._make_basic_style_tail(svg)
-        elif self.name in BASIC_STYLE_1ARG:
-            self._make_basic_style_1arg(svg)
-        elif self.name in BASIC_STYLE_2ARG:
-            self._make_basic_style_2arg(svg)
-        elif self.name in BASIC_STYLE_VAR_ARG:
-            self._make_basic_style_var_arg(svg)
-        elif self.name in BULLET_STYLE:
-            self._make_bullet_style(svg)
-        elif self.name in BOX_STYLE:
-            self._make_box_style(svg)
-        elif self.name in BOX_STYLE_MEDIA:
-            self._make_media_style(svg)
-        elif self.name in NUMBER_STYLE:
-            self._make_number_style(svg)
-        elif self.name in NUMBER_STYLE_BLOCK:
-            self._make_number_style_block(svg)
-        elif self.name in NUMBER_STYLE_VAR_ARG:
-            self._make_number_style_var_arg(svg)
-        elif self.name in NUMBER_STYLE_1ARG:
-            self._make_number_style_1arg(svg)
-        elif self.name in NUMBER_STYLE_1STRARG:
-            self._make_number_style_1strarg(svg)
-        elif self.name in NUMBER_STYLE_PORCH:
-            self._make_number_style_porch(svg)
-        elif self.name in COMPARE_STYLE:
-            self._make_compare_style(svg)
-        elif self.name in COMPARE_PORCH_STYLE:
-            self._make_compare_porch_style(svg)
-        elif self.name in BOOLEAN_STYLE:
-            self._make_boolean_style(svg)
-        elif self.name in NOT_STYLE:
-            self._make_not_style(svg)
-        elif self.name in FLOW_STYLE:
-            self._make_flow_style(svg)
-        elif self.name in FLOW_STYLE_TAIL:
-            self._make_flow_style_tail(svg)
-        elif self.name in FLOW_STYLE_1ARG:
-            self._make_flow_style_1arg(svg)
-        elif self.name in FLOW_STYLE_BOOLEAN:
-            self._make_flow_style_boolean(svg)
-        elif self.name in FLOW_STYLE_WHILE:
-            self._make_flow_style_while(svg)
-        elif self.name in FLOW_STYLE_ELSE:
-            self._make_flow_style_else(svg)
-        elif self.name in COLLAPSIBLE_TOP:
-            self._make_collapsible_style_top(svg, arm=True, label=True)
-        elif self.name in COLLAPSIBLE_TOP_NO_ARM:
-            self._make_collapsible_style_top(svg, arm=False, label=True)
-        elif self.name in COLLAPSIBLE_TOP_NO_LABEL:
-            self._make_collapsible_style_top(svg, arm=True, label=False)
-        elif self.name in COLLAPSIBLE_TOP_NO_ARM_NO_LABEL:
-            self._make_collapsible_style_top(svg, arm=False, label=False)
-        elif self.name in COLLAPSIBLE_BOTTOM:
-            self._make_collapsible_style_bottom(svg)
-        elif self.name in INVISIBLE:
-            self._make_invisible_style(svg)
-        elif self.name in PORTFOLIO_STYLE_2x2:
-            self._make_portfolio_style_2x2(svg)
-        elif self.name in PORTFOLIO_STYLE_2x1:
-            self._make_portfolio_style_2x1(svg)
-        elif self.name in PORTFOLIO_STYLE_1x1:
-            self._make_portfolio_style_1x1(svg)
-        elif self.name in PORTFOLIO_STYLE_1x2:
-            self._make_portfolio_style_1x2(svg)
-        else:
-            self._make_basic_style(svg)
-            debug_output("WARNING: I don't know how to create a %s block" % \
-                             (self.name))
+        for k in BLOCK_STYLES.keys():
+            if self.name in BLOCK_STYLES[k]:
+                if type(self.block_methods[k]) == type([]):
+                    self.block_methods[k][0](svg, self.block_methods[k][1],
+                                             self.block_methods[k][2])
+                else:
+                    self.block_methods[k](svg)
+                return
 
     def _set_colors(self, svg):
         if self.name in BOX_COLORS:
