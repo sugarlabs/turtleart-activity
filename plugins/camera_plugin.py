@@ -95,8 +95,7 @@ to the stack'),
                       label=' ',
                       default='CAMERA',
                       help_string=_('camera output'),
-                      content_block=True,
-                      prim_name='luminance')
+                      content_block=True)
 
     def start(self):
         # This gets called by the start button
