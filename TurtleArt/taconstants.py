@@ -85,87 +85,45 @@ UNKNOWN = 'unknown'
 #
 # Block-style definitions
 #
-# TODO: define depreciated blocks
-BASIC_STYLE_HEAD = []
-BASIC_STYLE_HEAD_1ARG = []
-BASIC_STYLE_TAIL = []
-BASIC_STYLE = []
-BASIC_STYLE_EXTENDED_VERTICAL = []
-INVISIBLE = []
-BASIC_STYLE_EXTENDED = []
-BASIC_STYLE_1ARG = ['nop']
-BASIC_STYLE_VAR_ARG = []
-BULLET_STYLE = []
-BASIC_STYLE_2ARG = []
-BOX_STYLE = ['textsize']
-BOX_STYLE_MEDIA = []
-NUMBER_STYLE = ['myfunc']
-NUMBER_STYLE_VAR_ARG = []
-NUMBER_STYLE_BLOCK = []
-NUMBER_STYLE_PORCH = []
-NUMBER_STYLE_1ARG = []
-NUMBER_STYLE_1STRARG = []
-COMPARE_STYLE = []
-COMPARE_PORCH_STYLE = []
-BOOLEAN_STYLE = []
-NOT_STYLE = []
-FLOW_STYLE = []
-FLOW_STYLE_TAIL = []
-FLOW_STYLE_1ARG = []
-FLOW_STYLE_BOOLEAN = []
-FLOW_STYLE_WHILE = []
-FLOW_STYLE_ELSE = []
-COLLAPSIBLE_TOP = []
-COLLAPSIBLE_TOP_NO_ARM = []
-COLLAPSIBLE_TOP_NO_LABEL = []
-COLLAPSIBLE_TOP_NO_ARM_NO_LABEL = []
-COLLAPSIBLE_BOTTOM = []
 
-# Depreciated block styles
-PORTFOLIO_STYLE_2x2 = []
-PORTFOLIO_STYLE_1x1 = []
-PORTFOLIO_STYLE_2x1 = []
-PORTFOLIO_STYLE_1x2 = []
-
-BLOCK_STYLES = {'basic-style-head': BASIC_STYLE_HEAD,
-                'basic-style-head-1arg': BASIC_STYLE_HEAD_1ARG,
-                'basic-style-tail': BASIC_STYLE_TAIL,
-                'basic-style': BASIC_STYLE,
-                'basic-style-extended-vertical': BASIC_STYLE_EXTENDED_VERTICAL,
-                'invisible': INVISIBLE,
-                'basic-style-extended': BASIC_STYLE_EXTENDED,
-                'basic-style-1arg': BASIC_STYLE_1ARG,
-                'basic-style-var-arg': BASIC_STYLE_VAR_ARG,
-                'bullet-style': BULLET_STYLE,
-                'basic-style-2arg': BASIC_STYLE_2ARG,
-                'box-style': BOX_STYLE,
-                'box-style-media': BOX_STYLE_MEDIA,
-                'number-style': NUMBER_STYLE,
-                'number-style-var-arg': NUMBER_STYLE_VAR_ARG,
-                'number-style-block': NUMBER_STYLE_BLOCK,
-                'number-style-porch': NUMBER_STYLE_PORCH,
-                'number-style-1arg': NUMBER_STYLE_1ARG,
-                'number-style-1strarg': NUMBER_STYLE_1STRARG,
-                'compare-style': COMPARE_STYLE,
-                'compare-porch-style': COMPARE_PORCH_STYLE,
-                'boolean-style': BOOLEAN_STYLE,
-                'not-style': NOT_STYLE,
-                'flow-style': FLOW_STYLE,
-                'flow-style-tail': FLOW_STYLE_TAIL,
-                'flow-style-1arg': FLOW_STYLE_1ARG,
-                'flow-style-boolean': FLOW_STYLE_BOOLEAN,
-                'flow-style-while': FLOW_STYLE_WHILE,
-                'flow-style-else': FLOW_STYLE_ELSE,
-                'collapsible-top': COLLAPSIBLE_TOP,
-                'collapsible-top-no-arm': COLLAPSIBLE_TOP_NO_ARM,
-                'collapsible-top-no-label': COLLAPSIBLE_TOP_NO_LABEL,
-                'collapsible-top-no-arm-no-label':
-                    COLLAPSIBLE_TOP_NO_ARM_NO_LABEL,
-                'collapsible-bottom': COLLAPSIBLE_BOTTOM,
-                'portfolio-style-2x2': PORTFOLIO_STYLE_2x2,
-                'portfolio-style-1x1': PORTFOLIO_STYLE_1x1,
-                'portfolio-style-2x1': PORTFOLIO_STYLE_2x1,
-                'portfolio-style-1x2': PORTFOLIO_STYLE_1x2}
+BLOCK_STYLES = {'basic-style-head': [],
+                'basic-style-head-1arg': [],
+                'basic-style-tail': [],
+                'basic-style': [],
+                'basic-style-extended-vertical': [],
+                'invisible': [],
+                'basic-style-extended': [],
+                'basic-style-1arg': [],
+                'basic-style-var-arg': [],
+                'bullet-style': [],
+                'basic-style-2arg': [],
+                'box-style': [],
+                'box-style-media': [],
+                'number-style': [],
+                'number-style-var-arg': [],
+                'number-style-block': [],
+                'number-style-porch': [],
+                'number-style-1arg': [],
+                'number-style-1strarg': [],
+                'compare-style': [],
+                'compare-porch-style': [],
+                'boolean-style': [],
+                'not-style': [],
+                'flow-style': [],
+                'flow-style-tail': [],
+                'flow-style-1arg': [],
+                'flow-style-boolean': [],
+                'flow-style-while': [],
+                'flow-style-else': [],
+                'collapsible-top': [],
+                'collapsible-top-no-arm': [],
+                'collapsible-top-no-label': [],
+                'collapsible-top-no-arm-no-label': [],
+                'collapsible-bottom': [],
+                'portfolio-style-2x2': [],
+                'portfolio-style-1x1': [],
+                'portfolio-style-2x1': [],
+                'portfolio-style-1x2': []}
 
 #
 # Blocks that are expandable
