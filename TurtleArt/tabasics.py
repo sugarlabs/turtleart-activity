@@ -53,7 +53,7 @@ Adding a new palette is simply a matter of:
 
 You will have to create icons for the palette-selector buttons. These
 are kept in the icons subdirectory. You need two icons:
-mypaletteoff.svg and yourpaletteon.svg, where mypalette is the same
+mypaletteoff.svg and mypaletteon.svg, where 'mypalette' is the same
 string as the entry you used in instantiating the Palette class. Note
 that the icons should be the same size (55x55) as the others. (This is
 the default icon size for Sugar toolbars.)
@@ -852,8 +852,6 @@ operators from Numbers palette'))
         self.tw.lc.update_label_value(
             'ycor', self.tw.canvas.ycor / self.tw.coord_scale)
         self.tw.lc.update_label_value('heading', self.tw.canvas.heading)
-        if len(self.lc.tw.value_blocks['see']) > 0:
-            self.lc.tw.see()
 
     def _prim_box(self, x):
         """ Retrieve value from named box """
@@ -902,8 +900,6 @@ operators from Numbers palette'))
                            self.tw.canvas.xcor / self.tw.coord_scale)
         self.tw.lc.update_label_value('ycor',
                            self.tw.canvas.ycor / self.tw.coord_scale)
-        if len(self.tw.lc.value_blocks['see']) > 0:
-            self.tw.lc.see()
 
     def _prim_repeat(self, num, blklist):
         """ Repeat list num times. """

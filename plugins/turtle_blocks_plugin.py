@@ -141,8 +141,8 @@ operators from Numbers palette'))
                   palette='media',
                   style='box-style-media',
                   label=' ',
+                  default='None',
                   special_name=_('journal'),
-                  default=None,
                   help_string=_('Sugar Journal media object'))
 
         make_prim('audio',
@@ -150,7 +150,7 @@ operators from Numbers palette'))
                   style='box-style-media',
                   label=' ',
                   special_name=_('audio'),
-                  default=None,
+                  default='None',
                   help_string=_('Sugar Journal audio object'))
 
         make_prim('video',
@@ -158,7 +158,7 @@ operators from Numbers palette'))
                   style='box-style-media',
                   label=' ',
                   special_name=_('video'),
-                  default=None,
+                  default='None',
                   help_string=_('Sugar Journal video object'))
 
         make_prim('description',
@@ -166,7 +166,7 @@ operators from Numbers palette'))
                   style='box-style-media',
                   label=' ',
                   special_name=_('description'),
-                  default=None,
+                  default='None',
                   help_string=_('Sugar Journal description field'))
 
         make_prim('string',
@@ -299,7 +299,6 @@ stack'))
                   style='box-style',
                   label=_('turtle sees'),
                   prim_name='see',
-                  value_block=True,
                   help_string=_('returns the color that the turtle "sees"'))
         self.tw.lc._def_prim('see', 0, 
                              lambda self: PLUGIN_DICTIONARY['see']())
