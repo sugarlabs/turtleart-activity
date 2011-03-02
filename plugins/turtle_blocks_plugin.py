@@ -574,6 +574,17 @@ class Turtle_blocks_plugin(Plugin):
                              lambda self: self.tw.set_fullscreen())
         b.add_prim()
 
+        b = Primitive('list')
+        b.set_style('bullet-style')
+        b.set_label(_('list'))
+        b.set_prim_name('bulletlist')
+        b.set_help(_(''))
+        b.set_default(['∙ ', '∙ '])
+        PLUGIN_DICTIONARY['bulletlist'] = self._prim_list
+        self.tw.lc._def_prim('bulletlist', 1,
+                             PLUGIN_DICTIONARY['bulletlist'], True)
+        b.add_prim()
+
         b = Primitive('picturelist')  # macro
         b.set_palette('portfolio')
         b.set_style('basic-style-extended')
@@ -731,6 +742,12 @@ class Turtle_blocks_plugin(Plugin):
                 self.tw.lc.keyboard = 0
         self.tw.lc.update_label_value('keyboard', self.tw.lc.keyboard)
         self.tw.keypress = ''
+
+    def _prim_list(self, blklist):
+        """ Expandable list block """
+        self._prim_showlist(blklist)
+        self.tw.lc._ireturn()
+        yield True
 
     def _prim_myblock(self, x):
         """ Run Python code imported from Journal """
@@ -957,6 +974,16 @@ class Turtle_blocks_plugin(Plugin):
                                          self.tw.lc.scale / 100.),
                                      self.tw.canvas.width - x)
 
+
+    def _prim_showlist(self, sarray):
+        """ Display list of media objects """
+        x = self.tw.canvas.xcor / self.tw.coord_scale
+        y = self.tw.canvas.ycor / self.tw.coord_scale
+        for s in sarray:
+            self.tw.canvas.setxy(x, y, pendown=False)
+            self._prim_show(s)
+            y -= int(self.tw.canvas.textsize * self.tw.lead)
+
     def _prim_time(self):
         """ Number of seconds since program execution has started or
         clean (prim_clear) block encountered """
@@ -965,8 +992,26 @@ class Turtle_blocks_plugin(Plugin):
         return elapsed_time
 
     # Depreciated blocks
-
+    # TODO: reinstate these blocks
     """
+    'myfunc': [_('Python'), 'f(x)', 'x'],
+    'nop': [_(' ')],
+    'settextsize': [_('set text size')],
+    'textsize': [_('text size')]}
+    'myfunc': ['x', 100],
+    'nop': [100]}
+    'nop': _("runs code found in the tamyblock.py module found in the Journal"),
+    'myfunc': 'myfunction',
+    'nop': 'userdefined',
+    'settextsize': 'settextsize',
+    'textsize': 'textsize'}
+    'myfunc': _("a programmable block: used to add advanced math equations, e.g., sin(x)"),
+'settextsize', 'settextcolor', 
+    'textsize': _('text size')}
+    'textcolor': _(
+        "holds current text color (can be used in place of a number block)"),
+    'textsize': _(
+        "holds current text size (can be used in place of a number block)")}
 PORTFOLIO_STYLE_2x2 = ['template2x2']
 PORTFOLIO_STYLE_1x1 = ['template1x1', 'template1x1a']
 PORTFOLIO_STYLE_2x1 = ['template2x1']

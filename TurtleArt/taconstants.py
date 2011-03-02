@@ -93,9 +93,9 @@ BASIC_STYLE = []
 BASIC_STYLE_EXTENDED_VERTICAL = []
 INVISIBLE = []
 BASIC_STYLE_EXTENDED = []
-BASIC_STYLE_1ARG = ['settextsize', 'settextcolor', 'nop']
+BASIC_STYLE_1ARG = ['nop']
 BASIC_STYLE_VAR_ARG = []
-BULLET_STYLE = ['templatelist', 'list']
+BULLET_STYLE = []
 BASIC_STYLE_2ARG = []
 BOX_STYLE = ['textsize']
 BOX_STYLE_MEDIA = []
@@ -177,7 +177,7 @@ EXPANDABLE = ['vspace', 'hspace', 'identity2']
 
 EXPANDABLE_BLOCKS = []
 
-EXPANDABLE_ARGS = ['templatelist', 'list', 'myfunc1arg', 'myfunc2arg',
+EXPANDABLE_ARGS = ['list', 'myfunc1arg', 'myfunc2arg',
                    'myfunc3arg', 'userdefined', 'userdefined2args',
                    'userdefined3args']
 #
@@ -216,31 +216,17 @@ CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
 #
 # Block-name dictionary used for labels
 #
-BLOCK_NAMES = {
-    'list': ['list'],
-    'myfunc': [_('Python'), 'f(x)', 'x'],
-    'nop': [_(' ')],
-    'settextsize': [_('set text size')],
-    'textsize': [_('text size')]}
+BLOCK_NAMES = {}
 
 #
 # Logo primitives
 #
-# TODO: check hats (nop1, 2, 3), setxy
-PRIMITIVES = {
-    'list': 'bulletlist',
-    'myfunc': 'myfunction',
-    'nop': 'userdefined',
-    'settextsize': 'settextsize',
-    'textsize': 'textsize'}
+PRIMITIVES = {}
 
 #
 # block default values
 #
-
-DEFAULTS = {
-    'myfunc': ['x', 100],
-    'nop': [100]}
+DEFAULTS = {}
 
 #
 # Blocks that can interchange strings and numbers for their arguments
@@ -319,8 +305,7 @@ TEMPLATES = {'t1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
 #
 # Names for blocks without names for popup help
 #
-SPECIAL_NAMES = {
-    'textsize': _('text size')}
+SPECIAL_NAMES = {}
 
 #
 # Help messages
@@ -330,20 +315,14 @@ HELP_STRINGS = {
     'clean': _("clears the screen and reset the turtle"),
     'debugoff': _("Debug"),
     'eraseron': _("Clean"),
-    'myfunc': _("a programmable block: used to add advanced math equations, e.g., sin(x)"),
     'next': _('displays next palette'),
-    'nop': _("runs code found in the tamyblock.py module found in the Journal"),
     'orientation': _("changes the orientation of the palette of blocks"),
     'polar': _("displays polar coordinates"),
     'run-fastoff': _("Run"),
     'run-slowoff': _("Step"),
     'savepix': _("saves a picture to the Sugar Journal"),
     'savesvg': _("saves turtle graphics as an SVG file in the Sugar Journal"),
-    'stopiton': _("Stop turtle"),
-    'textcolor': _(
-        "holds current text color (can be used in place of a number block)"),
-    'textsize': _(
-        "holds current text size (can be used in place of a number block)")}
+    'stopiton': _("Stop turtle")}
 
 #
 # 'dead key' Unicode dictionaries
