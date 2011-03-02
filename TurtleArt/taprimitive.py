@@ -175,7 +175,7 @@ class Primitive():
 
 def make_prim(block_name, style='basic-block', palette=None, label=None,
               special_name=None, default=None, prim_name=None,
-              help_string=None, value_block=False):
+              help_string=None, value_block=False, content_block=False):
     """ Block factory """
     b = Primitive(block_name)
     b.set_style(style)
@@ -186,10 +186,14 @@ def make_prim(block_name, style='basic-block', palette=None, label=None,
     if special_name is not None:
         b.set_special_name(special_name)
     if default is not None:
-        b.set_default(default)
+        if default == 'None':
+            b.set_default(None)
+        else:
+            b.set_default(default)
     if prim_name is not None:
         b.set_prim_name(prim_name)
     if help_string is not None:
         b.set_help(help_string)
     b.set_value_block(value_block)
+    b.set_content_block(content_block)
     b.add_prim()
