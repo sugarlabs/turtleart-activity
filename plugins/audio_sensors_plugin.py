@@ -37,7 +37,7 @@ from audio.audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15, \
 
 from audio.ringbuffer import RingBuffer1d
 
-from TurtleArt.taprimitive import Primitive
+from TurtleArt.taprimitive import Primitive, Palette, make_prim
 from TurtleArt.taconstants import XO1, XO15
 from TurtleArt.talogo import PLUGIN_DICTIONARY
 from TurtleArt.tautils import get_path
@@ -84,67 +84,73 @@ class Audio_sensors_plugin(Plugin):
             self.voltage_gain = -0.0001471
             self.voltage_bias = 1.695
 
-        sound = Primitive('sound')
-        sound.set_palette('sensor')
-        sound.set_style('box-style')
-        sound.set_label(_('sound'))
-        sound.set_help(_('raw microphone input signal'))
-        sound.set_value_block(True)
-        sound.set_prim_name('sound')
+        sensors = Palette('sensor')
+        sensors.set_help(_('Palette of sensor blocks'))
+        sensors.add_palette()
+
         PLUGIN_DICTIONARY['sound'] = self.prim_sound
+        make_prim('sound',
+                  palette='sensor',
+                  style='box-style',
+                  label=_('sound'),
+                  help_string=_('raw microphone input signal'),
+                  value_block=True,
+                  prim_name='sound')
         self._parent.lc._def_prim('sound', 0,
                                   lambda self: PLUGIN_DICTIONARY['sound']())
-        sound.add_prim()
 
-        volume = Primitive('volume')
-        volume.set_palette('sensor')
-        volume.set_style('box-style')
-        volume.set_label(_('volume'))
-        volume.set_help(_('microphone input volume'))
-        volume.set_value_block(True)
-        volume.set_prim_name('volume')
         PLUGIN_DICTIONARY['volume'] = self.prim_volume
+        make_prim('volume',
+                  palette='sensor',
+                  style='box-style',
+                  label=_('loudness'),
+                  help_string=_('microphone input volume'),
+                  value_block=True,
+                  prim_name='volume')
         self._parent.lc._def_prim('volume', 0,
                                   lambda self: PLUGIN_DICTIONARY['volume']())
-        volume.add_prim()
 
-        pitch = Primitive('pitch')
-        if PITCH_AVAILABLE:
-            pitch.set_palette('sensor')
-        pitch.set_style('box-style')
-        pitch.set_label(_('pitch'))
-        pitch.set_help(_('microphone input pitch'))
-        pitch.set_value_block(True)
-        pitch.set_prim_name('pitch')
         PLUGIN_DICTIONARY['pitch'] = self.prim_pitch
+        if PITCH_AVAILABLE:
+            make_prim('pitch',
+                      palette='sensor',
+                      style='box-style',
+                      label=_('pitch'),
+                      help_string=_('microphone input pitch'),
+                      value_block=True,
+                      prim_name='pitch')
+        else:
+            make_prim('pitch',
+                      style='box-style',
+                      label=_('pitch'),
+                      help_string=_('microphone input pitch'),
+                      value_block=True,
+                      prim_name='pitch')
         self._parent.lc._def_prim('pitch', 0,
                                   lambda self: PLUGIN_DICTIONARY['pitch']())
-        pitch.add_prim()
 
         if self.hw in [XO1, XO15]:
-            resistance = Primitive('resistance')
-            resistance.set_palette('sensor')
-            resistance.set_style('box-style')
-            resistance.set_label(_('resistance'))
-            resistance.set_help(_('sensor input resistance'))
-            resistance.set_value_block(True)
-            resistance.set_prim_name('resistance')
             PLUGIN_DICTIONARY['resistance'] = self.prim_resistance
+            make_prim('resistance',
+                      palette='sensor',
+                      style='box-style',
+                      label=_('resistance'),
+                      help_string=_('microphone input resistance'),
+                      value_block=True,
+                      prim_name='resistance')
             self._parent.lc._def_prim('resistance', 0,
                 lambda self: PLUGIN_DICTIONARY['resistance']())
-            resistance.add_prim()
 
-            voltage = Primitive('voltage')
-            voltage.set_palette('sensor')
-            voltage.set_style('box-style')
-            voltage.set_label(_('voltage'))
-            voltage.set_help(_('sensor input voltage'))
-            voltage.set_value_block(True)
-            voltage.set_prim_name('voltage')
             PLUGIN_DICTIONARY['voltage'] = self.prim_voltage
+            make_prim('voltage',
+                      palette='sensor',
+                      style='box-style',
+                      label=_('voltage'),
+                      help_string=_('microphone input voltage'),
+                      value_block=True,
+                      prim_name='voltage')
             self._parent.lc._def_prim('voltage', 0,
                 lambda self: PLUGIN_DICTIONARY['voltage']())
-            voltage.add_prim()
 
         self.audio_started = False
 
