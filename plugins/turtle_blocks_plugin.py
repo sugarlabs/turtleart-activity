@@ -681,6 +681,78 @@ objects'))
                   prim_name='bottomy')
         self.tw.lc.def_prim('bottomy', 0, lambda self: CONSTANTS['bottomy'])
 
+        # depreciated blocks
+
+        PLUGIN_DICTIONARY['t1x1'] = self._prim_t1x1
+        make_prim('template1x1',
+                  style='portfolio-style-1x1',
+                  label=' ',
+                  prim_name='t1x1',
+                  default=[_('Title'), 'None'],
+                  special_name=_('presentation 1x1'),
+                  help_string=_('presentation template: select Journal object \
+(with description)'))
+        self.tw.lc.def_prim('t1x1', 2,
+                            lambda self, a, b: PLUGIN_DICTIONARY['t1x1'](a, b))
+
+        PLUGIN_DICTIONARY['t1x1a'] = self._prim_t1x1a
+        make_prim('template1x1a',
+                  style='portfolio-style-1x1',
+                  label=' ',
+                  prim_name='t1x1a',
+                  default=[_('Title'), 'None'],
+                  special_name=_('presentation 1x1'),
+                  help_string=_('presentation template: select Journal object \
+(no description)'))
+        self.tw.lc.def_prim('t1x1a', 2,
+            lambda self, a, b: PLUGIN_DICTIONARY['t1x1a'](a, b))
+
+        PLUGIN_DICTIONARY['2x1'] = self._prim_t2x1
+        make_prim('template2x1',
+                  style='portfolio-style-2x1',
+                  label=' ',
+                  prim_name='t2x1',
+                  default=[_('Title'), 'None', 'None'],
+                  special_name=_('presentation 2x1'),
+                  help_string=_("presentation template: select two Journal \
+objects"))
+        self.tw.lc.def_prim('t2x1', 3,
+            lambda self, a, b, c: PLUGIN_DICTIONARY['t2x1'](a, b, c))
+
+        PLUGIN_DICTIONARY['1x2'] = self._prim_t1x2
+        make_prim('template1x2',
+                  style='portfolio-style-1x2',
+                  label=' ',
+                  prim_name='t1x2',
+                  default=[_('Title'), 'None', 'None'],
+                  special_name=_('presentation 1x2'),
+                  help_string=_("presentation template: select two Journal \
+objects"))
+        self.tw.lc.def_prim('t1x2', 3,
+            lambda self, a, b, c: PLUGIN_DICTIONARY['t1x2'](a, b, c))
+
+        PLUGIN_DICTIONARY['t2x2'] = self._prim_t2x2
+        make_prim('template2x2',
+                  style='portfolio-style-2x2',
+                  label=' ',
+                  prim_name='t2x2',
+                  default=[_('Title'), 'None', 'None', 'None', 'None'],
+                  special_name=_('presentation 2x2'),
+                  help_string=_("presentation template: select four Journal \
+objects"))
+        self.tw.lc.def_prim('t2x2', 5,
+            lambda self, a, b, c, d, e: PLUGIN_DICTIONARY['t2x2'](
+                a, b, c, d, e))
+
+        make_prim('templatelist',
+                  style='bullet-style',
+                  label=' ',
+                  prim_name='bullet',
+                  default=[_('Title'), '∙ '],
+                  special_name=_('presentation bulleted list'),
+                  help_string=_('presentation template: list of bullets'))
+        self.tw.lc.def_prim('bullet', 1, self._prim_list, True)
+
     # Block primitives
 
     def _prim_emptyheap(self):
@@ -951,54 +1023,8 @@ objects'))
         return elapsed_time
 
     # Depreciated blocks
-    # TODO: reinstate these blocks
-    """
-PORTFOLIO_STYLE_2x2 = ['template2x2']
-PORTFOLIO_STYLE_1x1 = ['template1x1', 'template1x1a']
-PORTFOLIO_STYLE_2x1 = ['template2x1']
-PORTFOLIO_STYLE_1x2 = ['template1x2']
-    'template1x1': [' '],
-    'template1x1a': [' '],
-    'template1x2': [' '],
-    'template2x1': [' '],
-    'template2x2': [' '],
-    'templatelist': [' '],
-    'template1x1': 't1x1',
-    'template1x1a': 't1x1a',
-    'template1x2': 't1x2',
-    'template2x1': 't2x1',
-    'template2x2': 't2x2',
-    'templatelist': 'bullet',
 
-        't1x1': [2, lambda self, x, y: self._show_template1x1(x, y)],
-        't1x1a': [2, lambda self, x, y: self._show_template1x1a(x, y)],
-        't1x2': [3, lambda self, x, y, z: self._show_template1x2(x, y, z)],
-        't2x1': [3, lambda self, x, y, z: self._show_template2x1(x, y, z)],
-        't2x2': [5, lambda self, x, y, z, a, b: self._show_template2x2(
-                    x, y, z, a, b)],
-    'template1x1': [_('Title'), 'None'],
-    'template1x1a': [_('Title'), 'None'],
-    'template1x2': [_('Title'), 'None', 'None'],
-    'template2x1': [_('Title'), 'None', 'None'],
-    'template2x2': [_('Title'), 'None', 'None', 'None', 'None'],
-    'templatelist': [_('Title'), '∙ '],
-
-    'template1x1a': _('presentation 1x1'),
-    'template1x2': _('presentation 1x2'),
-    'template2x1': _('presentation 2x1'),
-    'template2x2': _('presentation 2x2'),
-    'templatelist': _('presentation bulleted list'),
-    'template1x1': _(
-        "presentation template: select Journal object (with description)"),
-    'template1x1a': _(
-        "presentation template: select Journal object (no description)"),
-    'template1x2': _("presentation template: select two Journal objects"),
-    'template2x1': _("presentation template: select two Journal objects"),
-    'template2x2': _("presentation template: select four Journal objects"),
-    'templatelist': _("presentation template: list of bullets"),
-    """
-
-    def _show_template1x1(self, title, media):
+    def _prim_t1x1(self, title, media):
         """ title, one image, and description """
         xo = self.tw.calc_position('t1x1')[2]
         x = -(self.tw.canvas.width / 2) + xo
@@ -1027,7 +1053,7 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
 
-    def _show_template2x1(self, title, media1, media2):
+    def _prim_t2x1(self, title, media1, media2):
         """ title, two images (horizontal), two descriptions """
         xo = self.tw.calc_position('t2x1')[2]
         x = -(self.tw.canvas.width / 2) + xo
@@ -1062,29 +1088,7 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
 
-    def _show_bullets(self, sarray):
-        """ title and varible number of  bullets """
-        xo = self.tw.calc_position('bullet')[2]
-        x = -(self.tw.canvas.width / 2) + xo
-        y = self.tw.canvas.height / 2
-        self.tw.canvas.setxy(x, y, pendown=False)
-        # save the text size so we can restore it later
-        save_text_size = self.tw.canvas.textsize
-        # set title text
-        self.tw.canvas.settextsize(self.title_height)
-        self._prim_show(sarray[0])
-        # set body text size
-        self.tw.canvas.settextsize(self.bullet_height)
-        # leave some space below the title
-        y -= int(self.title_height * 2 * self.tw.lead)
-        for s in sarray[1:]:
-            self.tw.canvas.setxy(x, y, pendown=False)
-            self._prim_show(s)
-            y -= int(self.bullet_height * 2 * self.tw.lead)
-        # restore text size
-        self.tw.canvas.settextsize(save_text_size)
-
-    def _show_template1x2(self, title, media1, media2):
+    def _prim_t1x2(self, title, media1, media2):
         """ title, two images (vertical), two desciptions """
         xo = self.tw.calc_position('t1x2')[2]
         x = -(self.tw.canvas.width / 2) + xo
@@ -1119,7 +1123,7 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
 
-    def _show_template2x2(self, title, media1, media2, media3, media4):
+    def _prim_t2x2(self, title, media1, media2, media3, media4):
         """ title and four images """
         xo = self.tw.calc_position('t2x2')[2]
         x = -(self.tw.canvas.width / 2) + xo
@@ -1153,7 +1157,7 @@ PORTFOLIO_STYLE_1x2 = ['template1x2']
         # restore text size
         self.tw.canvas.settextsize(save_text_size)
 
-    def _show_template1x1a(self, title, media1):
+    def _prim_t1x1a(self, title, media1):
         """ title, one media object """
         xo = self.tw.calc_position('t1x1a')[2]
         x = -(self.tw.canvas.width / 2) + xo
