@@ -19,14 +19,12 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-import gst
 try:
     from numpy import append
     from numpy.fft import rfft
     PITCH_AVAILABLE = True
 except:
     PITCH_AVAILABLE = False
-import gtk
 
 from gettext import gettext as _
 
@@ -37,10 +35,9 @@ from audio.audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15, \
 
 from audio.ringbuffer import RingBuffer1d
 
-from TurtleArt.taprimitive import Primitive, Palette, make_prim
+from TurtleArt.taprimitive import Palette, make_prim
 from TurtleArt.taconstants import XO1, XO15
 from TurtleArt.talogo import PLUGIN_DICTIONARY
-from TurtleArt.tautils import get_path
 
 import logging
 _logger = logging.getLogger('turtleart-activity audio sensors plugin')
@@ -96,7 +93,7 @@ class Audio_sensors_plugin(Plugin):
                   help_string=_('raw microphone input signal'),
                   value_block=True,
                   prim_name='sound')
-        self._parent.lc._def_prim('sound', 0,
+        self._parent.lc.def_prim('sound', 0,
                                   lambda self: PLUGIN_DICTIONARY['sound']())
 
         PLUGIN_DICTIONARY['volume'] = self.prim_volume
@@ -107,7 +104,7 @@ class Audio_sensors_plugin(Plugin):
                   help_string=_('microphone input volume'),
                   value_block=True,
                   prim_name='volume')
-        self._parent.lc._def_prim('volume', 0,
+        self._parent.lc.def_prim('volume', 0,
                                   lambda self: PLUGIN_DICTIONARY['volume']())
 
         PLUGIN_DICTIONARY['pitch'] = self.prim_pitch
@@ -126,7 +123,7 @@ class Audio_sensors_plugin(Plugin):
                       help_string=_('microphone input pitch'),
                       value_block=True,
                       prim_name='pitch')
-        self._parent.lc._def_prim('pitch', 0,
+        self._parent.lc.def_prim('pitch', 0,
                                   lambda self: PLUGIN_DICTIONARY['pitch']())
 
         if self.hw in [XO1, XO15]:
@@ -138,7 +135,7 @@ class Audio_sensors_plugin(Plugin):
                       help_string=_('microphone input resistance'),
                       value_block=True,
                       prim_name='resistance')
-            self._parent.lc._def_prim('resistance', 0,
+            self._parent.lc.def_prim('resistance', 0,
                 lambda self: PLUGIN_DICTIONARY['resistance']())
 
             PLUGIN_DICTIONARY['voltage'] = self.prim_voltage
@@ -149,7 +146,7 @@ class Audio_sensors_plugin(Plugin):
                       help_string=_('microphone input voltage'),
                       value_block=True,
                       prim_name='voltage')
-            self._parent.lc._def_prim('voltage', 0,
+            self._parent.lc.def_prim('voltage', 0,
                 lambda self: PLUGIN_DICTIONARY['voltage']())
 
         self.audio_started = False

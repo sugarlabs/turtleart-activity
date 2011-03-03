@@ -30,11 +30,10 @@ except ImportError:
     pass
 
 from plugin import Plugin
-from TurtleArt.taprimitive import Palette, Primitive, make_prim
+from TurtleArt.taprimitive import Palette, make_prim
 from TurtleArt.talogo import PLUGIN_DICTIONARY, logoerror, \
     MEDIA_BLOCKS_DICTIONARY
-from TurtleArt.taconstants import DEFAULT_SCALE, CONSTANTS, BLACK, WHITE, \
-    ICON_SIZE
+from TurtleArt.taconstants import DEFAULT_SCALE, CONSTANTS, ICON_SIZE
 from TurtleArt.tautils import convert, round_int, debug_output
 from TurtleArt.tajail import myfunc, myfunc_import
 
@@ -185,7 +184,7 @@ operators from Numbers palette'))
                   default=_('text'),
                   prim_name='show',
                   help_string=_('draws text or show media from the Journal'))
-        self.tw.lc._def_prim('show', 1, 
+        self.tw.lc.def_prim('show', 1, 
             lambda self, x: PLUGIN_DICTIONARY['show'](x, True))
 
         make_prim('showaligned',
@@ -194,7 +193,7 @@ operators from Numbers palette'))
                   default=_('text'),
                   prim_name='showaligned',
                   help_string=_('draws text or show media from the Journal'))
-        self.tw.lc._def_prim('showaligned', 1, 
+        self.tw.lc.def_prim('showaligned', 1, 
             lambda self, x: PLUGIN_DICTIONARY['show'](x, False))
 
         # depreciated
@@ -205,7 +204,7 @@ operators from Numbers palette'))
                   default=[_('text'), 32],
                   prim_name='write',
                   help_string=_('draws text or show media from the Journal'))
-        self.tw.lc._def_prim('write', 2,
+        self.tw.lc.def_prim('write', 2,
             lambda self, x, y: PLUGIN_DICTIONARY['write'](x, y))
 
         PLUGIN_DICTIONARY['setscale'] = self._prim_setscale
@@ -216,7 +215,7 @@ operators from Numbers palette'))
                   prim_name='setscale',
                   default=33,
                   help_string=_('sets the scale of media'))
-        self.tw.lc._def_prim('setscale', 1,
+        self.tw.lc.def_prim('setscale', 1,
                              lambda self, x: PLUGIN_DICTIONARY['setscale'](x))
 
         PLUGIN_DICTIONARY['savepix'] = self._prim_save_picture
@@ -227,7 +226,7 @@ operators from Numbers palette'))
                   prim_name='savepix',
                   default=_('picture name'),
                   help_string=_('saves a picture to the Sugar Journal'))
-        self.tw.lc._def_prim('savepix', 1,
+        self.tw.lc.def_prim('savepix', 1,
                              lambda self, x: PLUGIN_DICTIONARY['savepix'](x))
 
         PLUGIN_DICTIONARY['savesvg'] = self._prim_save_svg
@@ -239,7 +238,7 @@ operators from Numbers palette'))
                   default=_('picture name'),
                   help_string=_('saves turtle graphics as an SVG file in the \
 Sugar Journal'))
-        self.tw.lc._def_prim('savesvg', 1,
+        self.tw.lc.def_prim('savesvg', 1,
                              lambda self, x: PLUGIN_DICTIONARY['savesvg'](x))
 
         make_prim('scale',
@@ -249,7 +248,7 @@ Sugar Journal'))
                   prim_name='scale',
                   value_block=True,
                   help_string=_('holds current scale value'))
-        self.tw.lc._def_prim('scale', 0, lambda self: self.tw.lc.scale)
+        self.tw.lc.def_prim('scale', 0, lambda self: self.tw.lc.scale)
 
         make_prim('mediawait',
                   palette='media',
@@ -257,7 +256,7 @@ Sugar Journal'))
                   label=_('media wait'),
                   prim_name='mediawait',
                   help_string=_('wait for current video or audio to complete'))
-        self.tw.lc._def_prim('mediawait', 0, self.tw.lc._media_wait, True)
+        self.tw.lc.def_prim('mediawait', 0, self.tw.lc.media_wait, True)
 
     def _sensor_palette(self):
 
@@ -269,7 +268,7 @@ Sugar Journal'))
                   prim_name='kbinput',
                   help_string=_('query for keyboard input (results stored in \
 keyboard block)'))
-        self.tw.lc._def_prim('kbinput', 0, 
+        self.tw.lc.def_prim('kbinput', 0, 
                              lambda self: PLUGIN_DICTIONARY['kbinput']())
 
 
@@ -280,7 +279,7 @@ keyboard block)'))
                   prim_name='keyboard',
                   value_block=True,
                   help_string=_('holds results of query-keyboard block'))
-        self.tw.lc._def_prim('keyboard', 0, lambda self: self.tw.lc.keyboard)
+        self.tw.lc.def_prim('keyboard', 0, lambda self: self.tw.lc.keyboard)
 
         PLUGIN_DICTIONARY['readpixel'] = self._prim_readpixel
         make_prim('readpixel',
@@ -290,7 +289,7 @@ keyboard block)'))
                   prim_name='readpixel',
                   help_string=_('RGB color under the turtle is pushed to the \
 stack'))
-        self.tw.lc._def_prim('readpixel', 0, 
+        self.tw.lc.def_prim('readpixel', 0, 
                              lambda self: PLUGIN_DICTIONARY['readpixel']())
 
         PLUGIN_DICTIONARY['see'] = self._prim_see
@@ -300,7 +299,7 @@ stack'))
                   label=_('turtle sees'),
                   prim_name='see',
                   help_string=_('returns the color that the turtle "sees"'))
-        self.tw.lc._def_prim('see', 0, 
+        self.tw.lc.def_prim('see', 0, 
                              lambda self: PLUGIN_DICTIONARY['see']())
 
         PLUGIN_DICTIONARY['time'] = self._prim_time
@@ -312,7 +311,7 @@ stack'))
                   value_block=True,
                   help_string=_('elapsed time (in seconds) since program \
 started'))
-        self.tw.lc._def_prim('time', 0, 
+        self.tw.lc.def_prim('time', 0, 
                              lambda self: PLUGIN_DICTIONARY['time']())
 
     def _extras_palette(self):
@@ -325,7 +324,7 @@ started'))
                   prim_name='push',
                   help_string=_('pushes value onto FILO (first-in last-out \
 heap)'))
-        self.tw.lc._def_prim('push', 1,
+        self.tw.lc.def_prim('push', 1,
                              lambda self, x: PLUGIN_DICTIONARY['push'](x))
 
         PLUGIN_DICTIONARY['printheap'] = self._prim_printheap
@@ -336,7 +335,7 @@ heap)'))
                   prim_name='printheap',
                   help_string=_('shows values in FILO (first-in last-out \
 heap)'))
-        self.tw.lc._def_prim('printheap', 0, 
+        self.tw.lc.def_prim('printheap', 0, 
                              lambda self: PLUGIN_DICTIONARY['printheap']())
 
         PLUGIN_DICTIONARY['clearheap'] = self._prim_emptyheap
@@ -346,7 +345,7 @@ heap)'))
                   label=_('empty heap'),
                   prim_name='clearheap',
                   help_string=_('emptys FILO (first-in-last-out heap)'))
-        self.tw.lc._def_prim('clearheap', 0, 
+        self.tw.lc.def_prim('clearheap', 0, 
                              lambda self: PLUGIN_DICTIONARY['clearheap']())
 
         PLUGIN_DICTIONARY['pop'] = self._prim_pop
@@ -357,7 +356,7 @@ heap)'))
                   prim_name='pop',
                   value_block=True,
                   help_string=_('pops value off FILO (first-in last-out heap)'))
-        self.tw.lc._def_prim('pop', 0, 
+        self.tw.lc.def_prim('pop', 0, 
                              lambda self: PLUGIN_DICTIONARY['pop']())
 
         PLUGIN_DICTIONARY['print'] = self._prim_print
@@ -368,7 +367,7 @@ heap)'))
                   prim_name='comment',
                   default=_('comment'),
                   help_string=_('places a comment in your code'))
-        self.tw.lc._def_prim('comment', 1,
+        self.tw.lc.def_prim('comment', 1,
             lambda self, x: PLUGIN_DICTIONARY['print'](x, True))
 
         make_prim('print',
@@ -378,7 +377,7 @@ heap)'))
                   prim_name='print',
                   help_string=_('prints value in status block at bottom of \
 the screen'))
-        self.tw.lc._def_prim('print', 1,
+        self.tw.lc.def_prim('print', 1,
             lambda self, x: PLUGIN_DICTIONARY['print'](x, False))
 
         PLUGIN_DICTIONARY['myfunction'] = self._prim_myfunction
@@ -390,7 +389,7 @@ the screen'))
                   default=['x', 100],
                   help_string=_('a programmable block: used to add advanced \
 single-variable math equations, e.g., sin(x)'))
-        self.tw.lc._def_prim('myfunction', 2,
+        self.tw.lc.def_prim('myfunction', 2,
             lambda self, f, x: PLUGIN_DICTIONARY['myfunction'](f, [x]))
 
         make_prim('myfunc2arg',
@@ -400,7 +399,7 @@ single-variable math equations, e.g., sin(x)'))
                   default=['x+y', 100, 100],
                   help_string=_('a programmable block: used to add advanced \
 multi-variable math equations, e.g., sqrt(x*x+y*y)'))
-        self.tw.lc._def_prim('myfunction2', 3,
+        self.tw.lc.def_prim('myfunction2', 3,
             lambda self, f, x: PLUGIN_DICTIONARY['myfunction'](f, [x, y]))
 
         make_prim('myfunc3arg',
@@ -410,7 +409,7 @@ multi-variable math equations, e.g., sqrt(x*x+y*y)'))
                   default=['x+y+z', 100, 100, 100],
                   help_string=_('a programmable block: used to add advanced \
 multi-variable math equations, e.g., sin(x+y+z)'))
-        self.tw.lc._def_prim('myfunction3', 4,
+        self.tw.lc.def_prim('myfunction3', 4,
             lambda self, f, x, y, z: PLUGIN_DICTIONARY['myfunction'](
                 f, [x, y, z]))
 
@@ -424,7 +423,7 @@ multi-variable math equations, e.g., sin(x+y+z)'))
                   default=100,
                   help_string=_('runs code found in the tamyblock.py module \
 found in the Journal'))
-        self.tw.lc._def_prim('userdefined', 1,
+        self.tw.lc.def_prim('userdefined', 1,
             lambda self, x: PLUGIN_DICTIONARY['userdefined']([x]))
 
         make_prim('userdefined2args',
@@ -435,7 +434,7 @@ found in the Journal'))
                   default=[100, 100],
                   help_string=_('runs code found in the tamyblock.py module \
 found in the Journal'))
-        self.tw.lc._def_prim('userdefined2', 2,
+        self.tw.lc.def_prim('userdefined2', 2,
             lambda self, x, y: PLUGIN_DICTIONARY['userdefined']([x, y]))
 
         make_prim('userdefined3args',
@@ -446,7 +445,7 @@ found in the Journal'))
                   default=[100, 100, 100],
                   help_string=_('runs code found in the tamyblock.py module \
 found in the Journal'))
-        self.tw.lc._def_prim('userdefined3', 3,
+        self.tw.lc.def_prim('userdefined3', 3,
             lambda self, x, y, z: PLUGIN_DICTIONARY['userdefined']([x, y, z]))
 
         make_prim('cartesian',
@@ -455,7 +454,7 @@ found in the Journal'))
                   label=_('Cartesian'),
                   prim_name='cartesian',
                   help_string=_('displays Cartesian coordinates'))
-        self.tw.lc._def_prim('cartesian', 0,
+        self.tw.lc.def_prim('cartesian', 0,
                              lambda self: self.tw.set_cartesian(True))
 
         make_prim('polar',
@@ -464,7 +463,7 @@ found in the Journal'))
                   label=_('polar'),
                   prim_name='polar',
                   help_string=_('displays polar coordinates'))
-        self.tw.lc._def_prim('polar', 0, 
+        self.tw.lc.def_prim('polar', 0, 
                              lambda self: self.tw.set_polar(True))
 
         make_prim('addturtle',
@@ -474,7 +473,7 @@ found in the Journal'))
                   prim_name='turtle',
                   default=1,
                   help_string=_('chooses which turtle to command'))
-        self.tw.lc._def_prim('turtle', 1,
+        self.tw.lc.def_prim('turtle', 1,
             lambda self, x: self.tw.canvas.set_turtle(x))
 
         PLUGIN_DICTIONARY['skin'] = self._prim_reskin
@@ -483,7 +482,7 @@ found in the Journal'))
                   label=_('turtle shell'),
                   prim_name='skin',
                   help_string=_("put a custom 'shell' on the turtle"))
-        self.tw.lc._def_prim('skin', 1,
+        self.tw.lc.def_prim('skin', 1,
             lambda self, x: PLUGIN_DICTIONARY['skin'](x))
 
         # macro
@@ -545,7 +544,7 @@ open'))
                   label=_('hide blocks'),
                   prim_name='hideblocks',
                   help_string=_('declutters canvas by hiding blocks'))
-        self.tw.lc._def_prim('hideblocks', 0, lambda self: self.tw.hideblocks())
+        self.tw.lc.def_prim('hideblocks', 0, lambda self: self.tw.hideblocks())
 
         make_prim('showblocks',
                   palette='portfolio',
@@ -553,7 +552,7 @@ open'))
                   label=_('show blocks'),
                   prim_name='showblocks',
                   help_string=_('restores hidden blocks'))
-        self.tw.lc._def_prim('showblocks', 0, lambda self: self.tw.showblocks())
+        self.tw.lc.def_prim('showblocks', 0, lambda self: self.tw.showblocks())
 
         make_prim('fullscreen',
                   palette='portfolio',
@@ -561,7 +560,7 @@ open'))
                   label=_('full screen'),
                   prim_name='fullscreen',
                   help_string=_('hides the Sugar toolbars'))
-        self.tw.lc._def_prim('fullscreen', 0,
+        self.tw.lc.def_prim('fullscreen', 0,
                              lambda self: self.tw.set_fullscreen())
 
         PLUGIN_DICTIONARY['bulletlist'] = self._prim_list
@@ -571,7 +570,7 @@ open'))
                   prim_name='bulletlist',
                   default=['∙ ', '∙ '],
                   help_string=_('presentation bulleted list'))
-        self.tw.lc._def_prim('bulletlist', 1,
+        self.tw.lc.def_prim('bulletlist', 1,
                              PLUGIN_DICTIONARY['bulletlist'], True)
 
         # macros
@@ -623,7 +622,7 @@ objects'))
                   label=_('left'),
                   prim_name='lpos',
                   help_string=_('xcor of left of screen'))
-        self.tw.lc._def_prim('lpos', 0, lambda self: CONSTANTS['leftpos'])
+        self.tw.lc.def_prim('lpos', 0, lambda self: CONSTANTS['leftpos'])
 
         make_prim('bottompos',
                   palette='portfolio',
@@ -631,7 +630,7 @@ objects'))
                   label=_('bottom'),
                   prim_name='bpos',
                   help_string=_('ycor of bottom of screen'))
-        self.tw.lc._def_prim('bpos', 0, lambda self: CONSTANTS['bottompos'])
+        self.tw.lc.def_prim('bpos', 0, lambda self: CONSTANTS['bottompos'])
 
         make_prim('width',
                   palette='portfolio',
@@ -639,7 +638,7 @@ objects'))
                   label=_('width'),
                   prim_name='hres',
                   help_string=_('the canvas width'))
-        self.tw.lc._def_prim('hres', 0, lambda self: CONSTANTS['width'])
+        self.tw.lc.def_prim('hres', 0, lambda self: CONSTANTS['width'])
 
         make_prim('rightpos',
                   palette='portfolio',
@@ -647,7 +646,7 @@ objects'))
                   label=_('right'),
                   prim_name='rpos',
                   help_string=_('xcor of right of screen'))
-        self.tw.lc._def_prim('rpos', 0, lambda self: CONSTANTS['rightpos'])
+        self.tw.lc.def_prim('rpos', 0, lambda self: CONSTANTS['rightpos'])
 
         make_prim('toppos',
                   palette='portfolio',
@@ -655,7 +654,7 @@ objects'))
                   label=_('top'),
                   prim_name='tpos',
                   help_string=_('ycor of top of screen'))
-        self.tw.lc._def_prim('tpos', 0, lambda self: CONSTANTS['toppos'])
+        self.tw.lc.def_prim('tpos', 0, lambda self: CONSTANTS['toppos'])
 
         make_prim('height',
                   palette='portfolio',
@@ -663,43 +662,43 @@ objects'))
                   label=_('height'),
                   prim_name='vres',
                   help_string=_('the canvas height'))
-        self.tw.lc._def_prim('vres', 0, lambda self: CONSTANTS['height'])
+        self.tw.lc.def_prim('vres', 0, lambda self: CONSTANTS['height'])
 
         make_prim('titlex',
                   style='box-style',
                   label=_('title x'),
                   prim_name='titlex')
-        self.tw.lc._def_prim('titlex', 0, lambda self: CONSTANTS['titlex'])
+        self.tw.lc.def_prim('titlex', 0, lambda self: CONSTANTS['titlex'])
 
         make_prim('titley',
                   style='box-style',
                   label=_('title y'),
                   prim_name='titley')
-        self.tw.lc._def_prim('titley', 0, lambda self: CONSTANTS['titley'])
+        self.tw.lc.def_prim('titley', 0, lambda self: CONSTANTS['titley'])
 
         make_prim('leftx',
                   style='box-style',
                   label=_('left x'),
                   prim_name='leftx')
-        self.tw.lc._def_prim('leftx', 0, lambda self: CONSTANTS['leftx'])
+        self.tw.lc.def_prim('leftx', 0, lambda self: CONSTANTS['leftx'])
 
         make_prim('topy',
                   style='box-style',
                   label=_('top y'),
                   prim_name='topy')
-        self.tw.lc._def_prim('topy', 0, lambda self: CONSTANTS['topy'])
+        self.tw.lc.def_prim('topy', 0, lambda self: CONSTANTS['topy'])
 
         make_prim('rightx',
                   style='box-style',
                   label=_('right x'),
                   prim_name='rightx')
-        self.tw.lc._def_prim('rightx', 0, lambda self: CONSTANTS['rightx'])
+        self.tw.lc.def_prim('rightx', 0, lambda self: CONSTANTS['rightx'])
 
         make_prim('bottomy',
                   style='box-style',
                   label=_('bottom y'),
                   prim_name='bottomy')
-        self.tw.lc._def_prim('bottomy', 0, lambda self: CONSTANTS['bottomy'])
+        self.tw.lc.def_prim('bottomy', 0, lambda self: CONSTANTS['bottomy'])
 
     # Block primitives
 
@@ -724,7 +723,7 @@ objects'))
     def _prim_list(self, blklist):
         """ Expandable list block """
         self._prim_showlist(blklist)
-        self.tw.lc._ireturn()
+        self.tw.lc.ireturn()
         yield True
 
     def _prim_myblock(self, x):
@@ -917,7 +916,7 @@ objects'))
                     debug_output("Couldn't open %s" % (string[6:]),
                                  self.tw.running_sugar)
                 elif string[0:6] == 'media_':
-                    self.tw.lc._insert_image(center)
+                    self.tw.lc.insert_image(center)
                 elif string[0:6] == 'descr_':
                     mimetype = None
                     if self.tw.lc.dsobject is not None and \
@@ -927,15 +926,15 @@ objects'))
                     if self.tw.lc.dsobject is not None and \
                        'description' in self.tw.lc.dsobject.metadata:
                         description = self.tw.lc.dsobject.metadata['description']
-                    self.tw.lc._insert_desc(mimetype, description)
+                    self.tw.lc.insert_desc(mimetype, description)
                 elif string[0:6] == 'audio_':
-                    self.tw.lc._play_sound()
+                    self.tw.lc.play_sound()
                 elif string[0:6] == 'video_':
-                    self.tw.lc._play_video()
+                    self.tw.lc.play_video()
                 if self.tw.lc.dsobject is not None:
                     self.tw.lc.dsobject.destroy()
             else:  # assume it is text to display
-                x, y = self.tw.lc._x(), self.tw.lc._y()
+                x, y = self.tw.lc.x2tx(), self.tw.lc.y2ty()
                 if center:
                     y -= self.tw.canvas.textsize
                 self.tw.canvas.draw_text(string, x, y,
@@ -944,7 +943,7 @@ objects'))
                                          self.tw.canvas.width - x)
         elif type(string) == float or type(string) == int:
             string = round_int(string)
-            x, y = self.tw.lc._x(), self.tw.lc._y()
+            x, y = self.tw.lc.x2tx(), self.tw.lc.y2ty()
             if center:
                 y -= self.tw.canvas.textsize
             self.tw.canvas.draw_text(string, x, y,
@@ -965,7 +964,7 @@ objects'))
     def _prim_time(self):
         """ Number of seconds since program execution has started or
         clean (prim_clear) block encountered """
-        elapsed_time = int(time() - self.tw.lc._start_time)
+        elapsed_time = int(time() - self.tw.lc.start_time)
         self.tw.lc.update_label_value('time', elapsed_time)
         return elapsed_time
 

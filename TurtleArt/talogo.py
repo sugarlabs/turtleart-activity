@@ -30,13 +30,13 @@ from UserDict import UserDict
 from taconstants import TAB_LAYER, DEFAULT_SCALE, BLOCK_NAMES, \
     PREFIX_DICTIONARY
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
-    text_media_type, round_int, get_path, debug_output
+    text_media_type, round_int, debug_output
 
 from util.RtfParser import RtfTextOnly
 
 from gettext import gettext as _
 
-VALUE_BLOCKS = []
+VALUE_BLOCKS = []  # blocks whose labels are updated get added here
 MEDIA_BLOCKS_DICTIONARY = {}  # new media blocks get added here
 PLUGIN_DICTIONARY = {}  # new block primitives get added here
 
@@ -94,9 +94,9 @@ class LogoCode:
 
         for p in iter(DEFPRIM):
             if len(DEFPRIM[p]) == 2:
-                self._def_prim(p, DEFPRIM[p][0], DEFPRIM[p][1])
+                self.def_prim(p, DEFPRIM[p][0], DEFPRIM[p][1])
             else:
-                self._def_prim(p, DEFPRIM[p][0], DEFPRIM[p][1], DEFPRIM[p][2])
+                self.def_prim(p, DEFPRIM[p][0], DEFPRIM[p][1], DEFPRIM[p][2])
 
         self.symtype = type(self._intern('print'))
         self.listtype = type([])
@@ -124,7 +124,7 @@ class LogoCode:
         self.gplay = None
         self.filepath = None
         self.dsobject = None
-        self._start_time = None
+        self.start_time = None
 
         # Scale factors for depreciated portfolio blocks
         self.title_height = int((self.tw.canvas.height / 20) * self.tw.scale)
@@ -144,7 +144,7 @@ class LogoCode:
             stop_media(self)
         self.tw.active_turtle.show()
 
-    def _def_prim(self, name, args, fcn, rprim=False):
+    def def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
         sym = self._intern(name)
         sym.nargs, sym.fcn = args, fcn
@@ -193,7 +193,7 @@ class LogoCode:
         code = self._blocks_to_code(blk)
         if run_flag:
             debug_output("running code: %s" % (code), self.tw.running_sugar)
-            self._start_time = time()
+            self.start_time = time()
             self._setup_cmd(code)
             if not self.tw.hide:
                 self.tw.display_coordinates()
@@ -298,7 +298,7 @@ class LogoCode:
         elif self.tw.interactive_mode:
             self.tw.toolbar_shapes['stopiton'].set_layer(TAB_LAYER)
         self.running = True
-        self._icall(self._evline, blklist)
+        self.icall(self.evline, blklist)
         yield True
         if self.tw.running_sugar:
             self.tw.activity.stop_turtle_button.set_icon("stopitoff")
@@ -307,12 +307,12 @@ class LogoCode:
         yield False
         self.running = False
 
-    def _icall(self, fcn, *args):
+    def icall(self, fcn, *args):
         """ Add a function and its arguments to the program stack. """
         self.istack.append(self.step)
         self.step = fcn(*(args))
 
-    def _evline(self, blklist):
+    def evline(self, blklist):
         """ Evaluate a line of code from the list. """
         oldiline = self.iline
         self.iline = blklist[:]
@@ -342,7 +342,7 @@ class LogoCode:
                     (token, self.bindex) = self.iline[1]
 
             # Process the token and any arguments.
-            self._icall(self._eval)
+            self.icall(self._eval)
             yield True
 
             # Time to unhighlight the current block.
@@ -358,7 +358,7 @@ class LogoCode:
                 self.tw.block_list.list[self.bindex].highlight()
             raise logoerror(str(self.iresult))
         self.iline = oldiline
-        self._ireturn()
+        self.ireturn()
         if not self.tw.hide and self.tw.step_time > 0:
             self.tw.display_coordinates()
         yield True
@@ -375,7 +375,7 @@ class LogoCode:
             # We highlight blocks here in case an error occurs...
             if not self.tw.hide and bindex is not None:
                 self.tw.block_list.list[bindex].highlight()
-            self._icall(self._evalsym, token)
+            self.icall(self._evalsym, token)
             yield True
             # and unhighlight if everything was OK.
             if not self.tw.hide and bindex is not None:
@@ -384,7 +384,7 @@ class LogoCode:
         else:
             res = token
 
-        self._ireturn(res)
+        self.ireturn(res)
         yield True
 
     def _evalsym(self, token):
@@ -397,18 +397,18 @@ class LogoCode:
             raise logoerror("#noinput")
         for i in range(token.nargs):
             self._no_args_check()
-            self._icall(self._eval)
+            self.icall(self._eval)
             yield True
             self.arglist.append(self.iresult)
         if self.cfun.rprim:
             if type(self.cfun.fcn) == self.listtype:
                 debug_output('evalsym rprim list: %s' % (str(token)),
                              self.tw.running_sugar)
-                self._icall(self._ufuncall, self.cfun.fcn)
+                self.icall(self._ufuncall, self.cfun.fcn)
                 yield True
             else:
                 # print "evalsym rprim: ", token
-                self._icall(self.cfun.fcn, *self.arglist)
+                self.icall(self.cfun.fcn, *self.arglist)
                 yield True
             result = None
         else:
@@ -418,12 +418,12 @@ class LogoCode:
         if self.arglist is not None and result == None:
             raise logoerror("%s %s %s" % \
                 (oldcfun.name, _("did not output to"), self.cfun.name))
-        self._ireturn(result)
+        self.ireturn(result)
         yield True
 
     def _ufuncall(self, body):
         """ ufuncall """
-        self._ijmp(self._evline, body)
+        self.ijmp(self.evline, body)
         yield True
 
     def doevalstep(self):
@@ -450,12 +450,12 @@ class LogoCode:
             return False
         return True
 
-    def _ireturn(self, res=None):
+    def ireturn(self, res=None):
         """ return value """
         self.step = self.istack.pop()
         self.iresult = res
 
-    def _ijmp(self, fcn, *args):
+    def ijmp(self, fcn, *args):
         """ ijmp """
         self.step = fcn(*(args))
 
@@ -490,7 +490,19 @@ class LogoCode:
         name.nargs, name.fcn = 0, body
         name.rprim = True
 
-    def _int(self, n):
+    def prim_clear(self):
+        """ Clear screen """
+        if self.tw.gst_available:
+            from tagplay import stop_media
+            # stop_media(self)  # TODO: gplay variable
+        self.tw.canvas.clearscreen()
+        self.tw.lc.scale = DEFAULT_SCALE
+        self.tw.lc.hidden_turtle = None
+        self.tw.lc.start_time = time()
+        for name in VALUE_BLOCKS:
+            self.tw.lc.update_label_value(name)
+
+    def int(self, n):
         """ Raise an error if n doesn't convert to int. """
         if type(n) == int:
             return n
@@ -501,7 +513,6 @@ class LogoCode:
         else:
             raise logoerror("%s %s %s %s" \
                 % (self.cfun.name, _("doesn't like"), str(n), _("as input")))
-
 
     def find_value_blocks(self):
         """ Find any value blocks that may need label updates """
@@ -537,28 +548,28 @@ class LogoCode:
                 self.heap.append(val)
             self.update_label_value('pop', self.heap[-1])
 
-    def _x(self):
+    def x2tx(self):
         """ Convert screen coordinates to turtle coordinates """
         return int(self.tw.canvas.width / 2) + int(self.tw.canvas.xcor)
 
-    def _y(self):
+    def y2ty(self):
         """ Convert screen coordinates to turtle coordinates """
         return int(self.tw.canvas.height / 2) - int(self.tw.canvas.ycor)
 
-    def _w(self):
-        """ Convert screen coordinates to turtle coordinates """
+    def wpercent(self):
+        """ width as a percentage of screen coordinates """
         return int((self.tw.canvas.width * self.scale) / 100.)
 
-    def _h(self):
-        """ Convert screen coordinates to turtle coordinates """
+    def hpercent(self):
+        """ height as a percentage of screen coordinates """
         return int((self.tw.canvas.height * self.scale) / 100.)
 
-    def _insert_image(self, center=False, filepath=None):
+    def insert_image(self, center=False, filepath=None):
         """ Image only (at current x, y) """
         if filepath is not None:
             self.filepath = filepath
         pixbuf = None
-        w, h = self._w(), self._h()
+        w, h = self.wpercent(), self.hpercent()
         if w < 1 or h < 1:
             return
         if self.dsobject is not None:
@@ -580,16 +591,16 @@ class LogoCode:
         if pixbuf is not None:
             if center:
                 self.tw.canvas.draw_pixbuf(pixbuf, 0, 0,
-                                           self._x() - int(w / 2),
-                                           self._y() - int(h / 2), w, h,
+                                           self.x2tx() - int(w / 2),
+                                           self.y2ty() - int(h / 2), w, h,
                                            self.filepath)
             else:
-                self.tw.canvas.draw_pixbuf(pixbuf, 0, 0, self._x(), self._y(),
-                                           w, h, self.filepath)
+                self.tw.canvas.draw_pixbuf(pixbuf, 0, 0, self.x2tx(),
+                                           self.y2ty(), w, h, self.filepath)
 
-    def _insert_desc(self, mimetype=None, description=None):
+    def insert_desc(self, mimetype=None, description=None):
         """ Description text only (at current x, y) """
-        w = self._w()
+        w = self.wpercent()
         if w < 1:
             return
         text = None
@@ -615,30 +626,30 @@ class LogoCode:
             else:
                 text = self.filepath
         if text is not None:
-            self.tw.canvas.draw_text(text, self._x(), self._y(),
+            self.tw.canvas.draw_text(text, self.x2tx(), self.y2ty(),
                                      self.body_height, w)
 
-    def _media_wait(self):
+    def media_wait(self):
         """ Wait for media to stop playing """
         if self.tw.gst_available:
             from tagplay import media_playing
             while(media_playing(self)):
                 yield True
-        self._ireturn()
+        self.ireturn()
         yield True
 
-    def _play_sound(self):
+    def play_sound(self):
         """ Sound file from Journal """
         if self.tw.gst_available:
             from tagplay import play_audio_from_file
             play_audio_from_file(self, self.filepath)
 
-    def _play_video(self):
+    def play_video(self):
         """ Movie file from Journal """
-        w, h = self._w(), self._h()
+        w, h = self.wpercent(), self.hpercent()
         if w < 1 or h < 1:
             return
         if self.tw.gst_available:
             from tagplay import play_movie_from_file
-            play_movie_from_file(self, self.filepath, self._x(), self._y(),
+            play_movie_from_file(self, self.filepath, self.x2tx(), self.y2ty(),
                                  w, h)

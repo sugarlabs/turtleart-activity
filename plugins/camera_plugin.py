@@ -31,7 +31,7 @@ from camera.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, VIDIOC_G_CTRL, \
 
 from plugin import Plugin
 
-from TurtleArt.taprimitive import Primitive, Palette, make_prim
+from TurtleArt.taprimitive import Palette, make_prim
 from TurtleArt.talogo import MEDIA_BLOCKS_DICTIONARY, PLUGIN_DICTIONARY
 from TurtleArt.tautils import get_path
 
@@ -72,7 +72,7 @@ class Camera_plugin(Plugin):
                       help_string=_('light level detected by camera'),
                       value_block=True,
                       prim_name='luminance')
-            self._parent.lc._def_prim('luminance', 0,
+            self._parent.lc.def_prim('luminance', 0,
                 lambda self: PLUGIN_DICTIONARY['luminance'](True))
 
             # Depreciated block
@@ -85,7 +85,7 @@ class Camera_plugin(Plugin):
 to the stack'),
                       value_block=True,
                       prim_name='luminance')
-            self._parent.lc._def_prim('read_camera', 0,
+            self._parent.lc.def_prim('read_camera', 0,
                 lambda self: PLUGIN_DICTIONARY['read_camera'](True))
 
             MEDIA_BLOCKS_DICTIONARY['camera'] = self.prim_take_picture

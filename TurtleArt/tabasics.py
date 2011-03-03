@@ -40,7 +40,7 @@ make the following changes:
     # def_prim takes 3 arguments: the primitive name, the number of
     # of arguments, 0 in this case, and the function to call, in this
     # case, the canvas function to set the heading.
-    self.tw.lc._def_prim('uturn', 0,
+    self.tw.lc.def_prim('uturn', 0,
         lambda self, x: self.tw.canvas.seth(self.tw.canvas.heading + 180))
 
 That's it. When you next run Turtle Art, you will have a 'uturn' block
@@ -66,9 +66,9 @@ from random import uniform
 
 from gettext import gettext as _
 
-from taprimitive import Palette, Primitive, make_prim
-from talogo import PLUGIN_DICTIONARY, VALUE_BLOCKS, logoerror
-from taconstants import DEFAULT_SCALE, CONSTANTS, BLACK, WHITE
+from taprimitive import Palette, make_prim
+from talogo import PLUGIN_DICTIONARY, logoerror
+from taconstants import CONSTANTS, BLACK, WHITE
 from tautils import convert, chr_to_ord, round_int, strtype
 
 
@@ -141,7 +141,7 @@ class Palettes():
                   default=100,
                   prim_name='forward',
                   help_string=_('moves turtle forward'))
-        self.tw.lc._def_prim('forward', 1,
+        self.tw.lc.def_prim('forward', 1,
                              lambda self, x: PLUGIN_DICTIONARY['move'](
                 self.tw.canvas.forward, x))
 
@@ -152,7 +152,7 @@ class Palettes():
                   prim_name='back',
                   default=100,
                   help_string=_('moves turtle backward'))
-        self.tw.lc._def_prim('back', 1,
+        self.tw.lc.def_prim('back', 1,
                              lambda self, x: PLUGIN_DICTIONARY['move'](
                 self.tw.canvas.forward, -x))
 
@@ -163,7 +163,7 @@ class Palettes():
                   label=_('clean'),
                   prim_name='clean',
                   help_string=_('clears the screen and reset the turtle'))
-        self.tw.lc._def_prim('clean', 0,
+        self.tw.lc.def_prim('clean', 0,
                              lambda self: PLUGIN_DICTIONARY['clean']())
 
         PLUGIN_DICTIONARY['right'] = self._prim_right
@@ -175,7 +175,7 @@ class Palettes():
                   default=90,
                   help_string=_('turns turtle counterclockwise (angle in \
 degrees)'))
-        self.tw.lc._def_prim('right', 1,
+        self.tw.lc.def_prim('right', 1,
                              lambda self, x: PLUGIN_DICTIONARY['right'](-x))
 
         make_prim('right',
@@ -185,7 +185,7 @@ degrees)'))
                   prim_name='right',
                   default=90,
                   help_string=_('turns turtle clockwise (angle in degrees)'))
-        self.tw.lc._def_prim('right', 1,
+        self.tw.lc.def_prim('right', 1,
                              lambda self, x: PLUGIN_DICTIONARY['right'](x))
 
         PLUGIN_DICTIONARY['arc'] = self._prim_arc
@@ -196,7 +196,7 @@ degrees)'))
                   prim_name='arc',
                   default=[90, 100],
                   help_string=_('moves turtle along an arc'))
-        self.tw.lc._def_prim('arc', 2,
+        self.tw.lc.def_prim('arc', 2,
                              lambda self, x, y: PLUGIN_DICTIONARY['arc'](
                 self.tw.canvas.arc, x, y))
 
@@ -208,7 +208,7 @@ degrees)'))
                   default=[0, 0],
                   help_string=_('moves turtle to position xcor, ycor; (0, 0) \
 is in the center of the screen.'))
-        self.tw.lc._def_prim('setxy2', 2,
+        self.tw.lc.def_prim('setxy2', 2,
                              lambda self, x, y: PLUGIN_DICTIONARY['move'](
                 self.tw.canvas.setxy, x, y))
 
@@ -221,7 +221,7 @@ is in the center of the screen.'))
                   default=0,
                   help_string=_('sets the heading of the turtle (0 is towards \
 the top of the screen.)'))
-        self.tw.lc._def_prim('seth', 1,
+        self.tw.lc.def_prim('seth', 1,
                              lambda self, x: PLUGIN_DICTIONARY['set'](
                 'heading', self.tw.canvas.seth, x))
 
@@ -233,7 +233,7 @@ the top of the screen.)'))
 turtle (can be used in place of a number block)'),
                   value_block=True,
                   prim_name='xcor')
-        self.tw.lc._def_prim(
+        self.tw.lc.def_prim(
             'xcor', 0, lambda self: self.tw.canvas.xcor / self.tw.coord_scale)
 
         make_prim('ycor',
@@ -244,7 +244,7 @@ turtle (can be used in place of a number block)'),
 turtle (can be used in place of a number block)'),
                   value_block=True,
                   prim_name='ycor')
-        self.tw.lc._def_prim(
+        self.tw.lc.def_prim(
             'ycor', 0, lambda self: self.tw.canvas.ycor / self.tw.coord_scale)
 
         make_prim('heading',
@@ -255,7 +255,7 @@ turtle (can be used in place of a number block)'),
 (can be used in place of a number block)'),
                   value_block=True,
                   prim_name='heading')
-        self.tw.lc._def_prim(
+        self.tw.lc.def_prim(
             'heading', 0, lambda self: self.tw.canvas.heading)
 
         # Depreciated
@@ -266,7 +266,7 @@ turtle (can be used in place of a number block)'),
                   default=[0, 0],
                   help_string=_('moves turtle to position xcor, ycor; (0, 0) \
 is in the center of the screen.'))
-        self.tw.lc._def_prim('setxy', 2,
+        self.tw.lc.def_prim('setxy', 2,
                              lambda self, x, y: PLUGIN_DICTIONARY['move'](
                 self.tw.canvas.setxy, x, y, pendown=False))
 
@@ -279,7 +279,7 @@ is in the center of the screen.'))
                   label=_('pen up'),
                   prim_name='penup',
                   help_string=_('Turtle will not draw when moved.'))
-        self.tw.lc._def_prim('penup', 0,
+        self.tw.lc.def_prim('penup', 0,
                              lambda self: self.tw.canvas.setpen(False))
 
         make_prim('pendown',
@@ -288,7 +288,7 @@ is in the center of the screen.'))
                   label=_('pen down'),
                   prim_name='pendown',
                   help_string=_('Turtle will draw when moved.'))
-        self.tw.lc._def_prim('pendown', 0,
+        self.tw.lc.def_prim('pendown', 0,
                              lambda self: self.tw.canvas.setpen(True))
 
         make_prim('setpensize',
@@ -298,7 +298,7 @@ is in the center of the screen.'))
                   prim_name='setpensize',
                   default=5,
                   help_string=_('sets size of the line drawn by the turtle'))
-        self.tw.lc._def_prim('setpensize', 1,
+        self.tw.lc.def_prim('setpensize', 1,
                              lambda self, x: PLUGIN_DICTIONARY['set'](
                 'pensize', self.tw.canvas.setpensize, x))
 
@@ -309,7 +309,7 @@ is in the center of the screen.'))
                   prim_name='fillscreen',
                   default=[60, 80],
                   help_string=_('fills the background with (color, shade)'))
-        self.tw.lc._def_prim('fillscreen', 2,
+        self.tw.lc.def_prim('fillscreen', 2,
             lambda self, x, y: self.tw.canvas.fillscreen(x, y))
 
         make_prim('pensize',
@@ -320,7 +320,7 @@ is in the center of the screen.'))
 of a number block)'),
                   value_block=True,
                   prim_name='pensize')
-        self.tw.lc._def_prim('pensize', 0, lambda self: self.tw.canvas.pensize)
+        self.tw.lc.def_prim('pensize', 0, lambda self: self.tw.canvas.pensize)
 
         make_prim('startfill',
                   palette='pen',
@@ -329,7 +329,7 @@ of a number block)'),
                   prim_name='startfill',
                   help_string=_('starts filled polygon (used with end fill \
 block)'))
-        self.tw.lc._def_prim('startfill', 0,
+        self.tw.lc.def_prim('startfill', 0,
                              lambda self: self.tw.canvas.start_fill())
 
         make_prim('stopfill',
@@ -339,7 +339,7 @@ block)'))
                   prim_name='stopfill',
                   help_string=_('completes filled polygon (used with start \
 fill block)'))
-        self.tw.lc._def_prim('stopfill', 0,
+        self.tw.lc.def_prim('stopfill', 0,
                              lambda self: self.tw.canvas.stop_fill())
 
     def _color_palette(self):
@@ -352,7 +352,7 @@ fill block)'))
                   prim_name='setcolor',
                   default=0,
                   help_string=_('sets color of the line drawn by the turtle'))
-        self.tw.lc._def_prim('setcolor', 1,
+        self.tw.lc.def_prim('setcolor', 1,
                              lambda self, x: PLUGIN_DICTIONARY['set'](
                 'color', self.tw.canvas.setcolor, x))
 
@@ -363,7 +363,7 @@ fill block)'))
                   prim_name='setshade',
                   default=50,
                   help_string=_('sets shade of the line drawn by the turtle'))
-        self.tw.lc._def_prim('setshade', 1,
+        self.tw.lc.def_prim('setshade', 1,
                              lambda self, x: PLUGIN_DICTIONARY['set'](
                 'shade', self.tw.canvas.setshade, x))
 
@@ -375,7 +375,7 @@ fill block)'))
                   default=100,
                   help_string=_('sets gray level of the line drawn by the \
 turtle'))
-        self.tw.lc._def_prim('setgray', 1,
+        self.tw.lc.def_prim('setgray', 1,
                              lambda self, x: PLUGIN_DICTIONARY['set'](
                 'gray', self.tw.canvas.setgray, x))
 
@@ -387,7 +387,7 @@ turtle'))
 place of a number block)'),
                   value_block=True,
                   prim_name='color')
-        self.tw.lc._def_prim('color', 0, lambda self: self.tw.canvas.color)
+        self.tw.lc.def_prim('color', 0, lambda self: self.tw.canvas.color)
 
         make_prim('shade',
                   palette='colors',
@@ -396,7 +396,7 @@ place of a number block)'),
                   help_string=_('holds current pen shade'),
                   value_block=True,
                   prim_name='shade')
-        self.tw.lc._def_prim('shade', 0, lambda self: self.tw.canvas.shade)
+        self.tw.lc.def_prim('shade', 0, lambda self: self.tw.canvas.shade)
 
         make_prim('gray',
                   palette='colors',
@@ -406,7 +406,7 @@ place of a number block)'),
 place of a number block)'),
                   value_block=True,
                   prim_name='gray')
-        self.tw.lc._def_prim('gray', 0, lambda self: self.tw.canvas.gray)
+        self.tw.lc.def_prim('gray', 0, lambda self: self.tw.canvas.gray)
 
         self._make_constant('red', 'colors', CONSTANTS['red'])
         self._make_constant('orange', 'colors', CONSTANTS['orange'])
@@ -425,7 +425,7 @@ place of a number block)'),
                   prim_name='settextcolor',
                   default=0,
                   help_string=_('sets color of text drawn by the turtle'))
-        self.tw.lc._def_prim('settextcolor', 1,
+        self.tw.lc.def_prim('settextcolor', 1,
                              lambda self, x: self.tw.canvas.settextcolor(x))
 
         make_prim('settextsize',
@@ -434,7 +434,7 @@ place of a number block)'),
                   prim_name='settextsize',
                   default=0,
                   help_string=_('sets size of text drawn by the turtle'))
-        self.tw.lc._def_prim('settextsize', 1,
+        self.tw.lc.def_prim('settextsize', 1,
                              lambda self, x: self.tw.canvas.settextsize(x))
 
     def _numbers_palette(self):
@@ -448,7 +448,7 @@ place of a number block)'),
                   special_name=_('plus'),
                   prim_name='plus',
                   help_string=_('adds two alphanumeric inputs'))
-        self.tw.lc._def_prim(
+        self.tw.lc.def_prim(
             'plus', 2, lambda self, x, y: PLUGIN_DICTIONARY['plus'](x, y))
 
         PLUGIN_DICTIONARY['minus'] = self._prim_minus
@@ -460,7 +460,7 @@ place of a number block)'),
                   prim_name='minus',
                   help_string=_('subtracts bottom numeric input from top \
 numeric input'))
-        self.tw.lc._def_prim(
+        self.tw.lc.def_prim(
             'minus', 2, lambda self, x, y: PLUGIN_DICTIONARY['minus'](x, y))
 
         PLUGIN_DICTIONARY['product'] = self._prim_product
@@ -471,7 +471,7 @@ numeric input'))
                   special_name=_('multiply'),
                   prim_name='product',
                   help_string=_('multiplies two numeric inputs'))
-        self.tw.lc._def_prim(
+        self.tw.lc.def_prim(
             'product', 2,
             lambda self, x, y: PLUGIN_DICTIONARY['product'](x, y))
 
@@ -484,7 +484,7 @@ numeric input'))
                   prim_name='division',
                   help_string=_('divides top numeric input (numerator) by \
 bottom numeric input (denominator)'))
-        self.tw.lc._def_prim(
+        self.tw.lc.def_prim(
             'division', 2,
             lambda self, x, y: PLUGIN_DICTIONARY['division'](x, y))
 
@@ -496,7 +496,7 @@ bottom numeric input (denominator)'))
                   special_name=_('identity'),
                   prim_name='id',
                   help_string=_('identity operator used for extending blocks'))
-        self.tw.lc._def_prim('id', 1,
+        self.tw.lc.def_prim('id', 1,
                              lambda self, x: PLUGIN_DICTIONARY['id'](x))
 
         PLUGIN_DICTIONARY['remainder'] = self._prim_mod
@@ -507,7 +507,7 @@ bottom numeric input (denominator)'))
                   special_name=_('mod'),
                   prim_name='remainder',
                   help_string=_('modular (remainder) operator'))
-        self.tw.lc._def_prim('remainder', 2,
+        self.tw.lc.def_prim('remainder', 2,
             lambda self, x, y: PLUGIN_DICTIONARY['remainder'](x, y))
 
         PLUGIN_DICTIONARY['sqrt'] = self._prim_sqrt
@@ -518,7 +518,7 @@ bottom numeric input (denominator)'))
                   special_name=_('square root'),
                   prim_name='sqrt',
                   help_string=_('calculates square root'))
-        self.tw.lc._def_prim('sqrt', 1,
+        self.tw.lc.def_prim('sqrt', 1,
                              lambda self, x: PLUGIN_DICTIONARY['sqrt'](x))
 
         PLUGIN_DICTIONARY['random'] = self._prim_random
@@ -530,7 +530,7 @@ bottom numeric input (denominator)'))
                   prim_name='random',
                   help_string=_('returns random number between minimum (top) \
 and maximum (bottom) values'))
-        self.tw.lc._def_prim(
+        self.tw.lc.def_prim(
             'random', 2, lambda self, x, y: PLUGIN_DICTIONARY['random'](x, y))
 
         make_prim('number',
@@ -550,7 +550,7 @@ operators'))
                   special_name=_('greater than'),
                   prim_name='greater?',
                   help_string=_('logical greater-than operator'))
-        self.tw.lc._def_prim(
+        self.tw.lc.def_prim(
             'greater?', 2, lambda self, x, y: PLUGIN_DICTIONARY['more'](x, y))
 
         PLUGIN_DICTIONARY['less'] = self._prim_less
@@ -561,7 +561,7 @@ operators'))
                   special_name=_('less than'),
                   prim_name='less?',
                   help_string=_('logical less-than operator'))
-        self.tw.lc._def_prim(
+        self.tw.lc.def_prim(
             'less?', 2, lambda self, x, y: PLUGIN_DICTIONARY['less'](x, y))
 
         PLUGIN_DICTIONARY['equal'] = self._prim_equal
@@ -572,7 +572,7 @@ operators'))
                   special_name=_('equal'),
                   prim_name='equal?',
                   help_string=_('logical equal-to operator'))
-        self.tw.lc._def_prim(
+        self.tw.lc.def_prim(
             'equal?', 2, lambda self, x, y: PLUGIN_DICTIONARY['equal'](x, y))
 
         make_prim('not',
@@ -581,7 +581,7 @@ operators'))
                   label=_('not'),
                   prim_name='not',
                   help_string=_('logical NOT operator'))
-        self.tw.lc._def_prim('not', 1, lambda self, x: not x)
+        self.tw.lc.def_prim('not', 1, lambda self, x: not x)
 
         make_prim('and2',
                   palette='numbers',
@@ -590,7 +590,7 @@ operators'))
                   prim_name='and',
                   special_name=_('and'),
                   help_string=_('logical AND operator'))
-        self.tw.lc._def_prim('not', 2, lambda self, x, y: x & y)
+        self.tw.lc.def_prim('not', 2, lambda self, x, y: x & y)
 
         make_prim('or2',
                   palette='numbers',
@@ -599,7 +599,7 @@ operators'))
                   prim_name='or',
                   special_name=_('or'),
                   help_string=_('logical OR operator'))
-        self.tw.lc._def_prim('not', 2, lambda self, x, y: x | y)
+        self.tw.lc.def_prim('not', 2, lambda self, x, y: x | y)
 
     def _flow_palette(self):
         """ The basic Turtle Art flow palette """
@@ -613,7 +613,7 @@ operators'))
                   default=1,
                   help_string=_(
                 'pauses program execution a specified number of seconds'))
-        self.tw.lc._def_prim('wait', 1, PLUGIN_DICTIONARY['wait'], True)
+        self.tw.lc.def_prim('wait', 1, PLUGIN_DICTIONARY['wait'], True)
 
         PLUGIN_DICTIONARY['forever'] = self._prim_forever
         make_prim('forever',
@@ -623,7 +623,7 @@ operators'))
                   prim_name='forever',
                   default=[None, 'vspace'],
                   help_string=_('loops forever'))
-        self.tw.lc._def_prim('forever', 1, PLUGIN_DICTIONARY['forever'], True)
+        self.tw.lc.def_prim('forever', 1, PLUGIN_DICTIONARY['forever'], True)
 
         PLUGIN_DICTIONARY['repeat'] = self._prim_repeat
         make_prim('repeat',
@@ -634,7 +634,7 @@ operators'))
                   default=[4, None, 'vspace'],
                   special_name=_('repeat'),
                   help_string=_('loops specified number of times'))
-        self.tw.lc._def_prim('repeat', 2, PLUGIN_DICTIONARY['repeat'], True)
+        self.tw.lc.def_prim('repeat', 2, PLUGIN_DICTIONARY['repeat'], True)
 
         PLUGIN_DICTIONARY['if'] = self._prim_if
         make_prim('if',
@@ -646,7 +646,7 @@ operators'))
                   special_name=_('if then'),
                   help_string=_('if-then operator that uses boolean \
 operators from Numbers palette'))
-        self.tw.lc._def_prim('if', 2, PLUGIN_DICTIONARY['if'], True)
+        self.tw.lc.def_prim('if', 2, PLUGIN_DICTIONARY['if'], True)
 
         PLUGIN_DICTIONARY['ifelse'] = self._prim_ifelse
         make_prim('ifelse',
@@ -658,7 +658,7 @@ operators from Numbers palette'))
                   special_name=_('if then else'),
                   help_string=_('if-then-else operator that uses boolean \
 operators from Numbers palette'))
-        self.tw.lc._def_prim('ifelse', 3, PLUGIN_DICTIONARY['ifelse'], True)
+        self.tw.lc.def_prim('ifelse', 3, PLUGIN_DICTIONARY['ifelse'], True)
 
         make_prim('hspace',
                   palette='flow',
@@ -667,7 +667,7 @@ operators from Numbers palette'))
                   prim_name='nop',
                   special_name=_('horizontal space'),
                   help_string=_('jogs stack right'))
-        self.tw.lc._def_prim('nop', 0, lambda self: None)
+        self.tw.lc.def_prim('nop', 0, lambda self: None)
 
         make_prim('vspace',
                   palette='flow',
@@ -676,7 +676,7 @@ operators from Numbers palette'))
                   prim_name='nop',
                   special_name=_('vertical space'),
                   help_string=_('jogs stack down'))
-        self.tw.lc._def_prim('nop', 0, lambda self: None)
+        self.tw.lc.def_prim('nop', 0, lambda self: None)
 
         PLUGIN_DICTIONARY['stopstack'] = self._prim_stopstack
         make_prim('stopstack',
@@ -685,7 +685,7 @@ operators from Numbers palette'))
                   label=_('stop action'),
                   prim_name='stopstack',
                   help_string=_('stops current action'))
-        self.tw.lc._def_prim('stopstack', 0,
+        self.tw.lc.def_prim('stopstack', 0,
                              lambda self: PLUGIN_DICTIONARY['stopstack']())
 
     def _blocks_palette(self):
@@ -698,7 +698,7 @@ operators from Numbers palette'))
                   label=_('start'),
                   prim_name='start',
                   help_string=_('connects action to toolbar run buttons'))
-        self.tw.lc._def_prim('start', 0,
+        self.tw.lc.def_prim('start', 0,
                              lambda self: PLUGIN_DICTIONARY['start']())
 
         PLUGIN_DICTIONARY['setbox'] = self._prim_setbox
@@ -709,7 +709,7 @@ operators from Numbers palette'))
                   prim_name='storeinbox1',
                   default=100,
                   help_string=_('stores numeric value in Variable 1'))
-        self.tw.lc._def_prim('storeinbox1', 1,
+        self.tw.lc.def_prim('storeinbox1', 1,
                              lambda self, x: PLUGIN_DICTIONARY['setbox'](
                 'box1', None, x))
 
@@ -720,7 +720,7 @@ operators from Numbers palette'))
                   prim_name='storeinbox2',
                   default=100,
                   help_string=_('stores numeric value in Variable 2'))
-        self.tw.lc._def_prim('storeinbox2', 1,
+        self.tw.lc.def_prim('storeinbox2', 1,
                              lambda self, x: PLUGIN_DICTIONARY['setbox'](
                 'box2', None, x))
 
@@ -739,7 +739,7 @@ operators from Numbers palette'))
                   prim_name='box1',
                   help_string=_('Variable 1 (numeric value)'),
                   value_block=True)
-        self.tw.lc._def_prim('box1', 0, lambda self: self.tw.lc.boxes['box1'])
+        self.tw.lc.def_prim('box1', 0, lambda self: self.tw.lc.boxes['box1'])
 
         make_prim('box2',
                   palette='blocks',
@@ -748,7 +748,7 @@ operators from Numbers palette'))
                   prim_name='box2',
                   help_string=_('Variable 2 (numeric value)'),
                   value_block=True)
-        self.tw.lc._def_prim('box2', 0, lambda self: self.tw.lc.boxes['box2'])
+        self.tw.lc.def_prim('box2', 0, lambda self: self.tw.lc.boxes['box2'])
 
         PLUGIN_DICTIONARY['box'] = self._prim_box
         make_prim('box',
@@ -758,7 +758,7 @@ operators from Numbers palette'))
                   prim_name='box',
                   default=_('my box'),
                   help_string=_('named variable (numeric value)'))
-        self.tw.lc._def_prim('box', 1,
+        self.tw.lc.def_prim('box', 1,
                              lambda self, x: PLUGIN_DICTIONARY['box'](x))
 
         make_prim('storein',
@@ -768,7 +768,7 @@ operators from Numbers palette'))
                   prim_name='storeinbox',
                   default=[_('my box'), 100],
                   help_string=_('stores numeric value in named variable'))
-        self.tw.lc._def_prim('storeinbox', 2,
+        self.tw.lc.def_prim('storeinbox', 2,
                              lambda self, x, y: PLUGIN_DICTIONARY['setbox'](
                 'box3', x, y))
 
@@ -779,7 +779,7 @@ operators from Numbers palette'))
                   prim_name='nop3',
                   default=_('action'),
                   help_string=_('top of nameable action stack'))
-        self.tw.lc._def_prim('nop3', 1, lambda self, x: None)
+        self.tw.lc.def_prim('nop3', 1, lambda self, x: None)
 
         make_prim('hat1',
                   palette='blocks',
@@ -787,7 +787,7 @@ operators from Numbers palette'))
                   label=_('action 1'),
                   prim_name='nop1',
                   help_string=_('top of Action 1 stack'))
-        self.tw.lc._def_prim('nop1', 0, lambda self: None)
+        self.tw.lc.def_prim('nop1', 0, lambda self: None)
 
         make_prim('hat2',
                   palette='blocks',
@@ -795,7 +795,7 @@ operators from Numbers palette'))
                   label=_('action 2'),
                   prim_name='nop2',
                   help_string=_('top of Action 2 stack'))
-        self.tw.lc._def_prim('nop2', 0, lambda self: None)
+        self.tw.lc.def_prim('nop2', 0, lambda self: None)
 
         PLUGIN_DICTIONARY['stack'] = self._prim_stack
         make_prim('stack',
@@ -805,7 +805,7 @@ operators from Numbers palette'))
                   prim_name='stack',
                   default=_('action'),
                   help_string=_('invokes named action stack'))
-        self.tw.lc._def_prim('stack', 1, PLUGIN_DICTIONARY['stack'], True)
+        self.tw.lc.def_prim('stack', 1, PLUGIN_DICTIONARY['stack'], True)
 
         PLUGIN_DICTIONARY['stack1'] = self._prim_stack1
         make_prim('stack1',
@@ -815,7 +815,7 @@ operators from Numbers palette'))
                   prim_name='stack1',
                   default=_('action 1'),
                   help_string=_('invokes Action 1 stack'))
-        self.tw.lc._def_prim('stack1', 0, PLUGIN_DICTIONARY['stack1'], True)
+        self.tw.lc.def_prim('stack1', 0, PLUGIN_DICTIONARY['stack1'], True)
 
         PLUGIN_DICTIONARY['stack2'] = self._prim_stack2
         make_prim('stack2',
@@ -825,7 +825,7 @@ operators from Numbers palette'))
                   prim_name='stack2',
                   default=_('action 2'),
                   help_string=_('invokes Action 2 stack'))
-        self.tw.lc._def_prim('stack2', 0, PLUGIN_DICTIONARY['stack2'], True)
+        self.tw.lc.def_prim('stack2', 0, PLUGIN_DICTIONARY['stack2'], True)
 
     def _trash_palette(self):
         """ The basic Turtle Art turtle palette """
@@ -866,28 +866,28 @@ operators from Numbers palette'))
     def _prim_forever(self, blklist):
         """ Do list forever """
         while True:
-            self.tw.lc._icall(self.tw.lc._evline, blklist[:])
+            self.tw.lc.icall(self.tw.lc.evline, blklist[:])
             yield True
             if self.tw.lc.procstop:
                 break
-        self.tw.lc._ireturn()
+        self.tw.lc.ireturn()
         yield True
 
     def _prim_if(self, boolean, blklist):
         """ If bool, do list """
         if boolean:
-            self.tw.lc._icall(self.tw.lc._evline, blklist[:])
+            self.tw.lc.icall(self.tw.lc.evline, blklist[:])
             yield True
-        self.tw.lc._ireturn()
+        self.tw.lc.ireturn()
         yield True
 
     def _prim_ifelse(self, boolean, list1, list2):
         """ If bool, do list1, else do list2 """
         if boolean:
-            self.tw.lc._ijmp(self.tw.lc._evline, list1[:])
+            self.tw.lc.ijmp(self.tw.lc.evline, list1[:])
             yield True
         else:
-            self.tw.lc._ijmp(self.tw.lc._evline, list2[:])
+            self.tw.lc.ijmp(self.tw.lc.evline, list2[:])
             yield True
 
     def _prim_move(self, cmd, value1, value2=None, pendown=True):
@@ -903,13 +903,13 @@ operators from Numbers palette'))
 
     def _prim_repeat(self, num, blklist):
         """ Repeat list num times. """
-        num = self.tw.lc._int(num)
+        num = self.tw.lc.int(num)
         for i in range(num):
-            self.tw.lc._icall(self.tw.lc._evline, blklist[:])
+            self.tw.lc.icall(self.tw.lc.evline, blklist[:])
             yield True
             if self.tw.lc.procstop:
                 break
-        self.tw.lc._ireturn()
+        self.tw.lc.ireturn()
         yield True
 
     def _prim_right(self, value):
@@ -943,32 +943,32 @@ operators from Numbers palette'))
         if 'stack3' + str(x) not in self.tw.lc.stacks or \
            self.tw.lc.stacks['stack3' + str(x)] is None:
             raise logoerror("#nostack")
-        self.tw.lc._icall(self.tw.lc._evline,
+        self.tw.lc.icall(self.tw.lc.evline,
                           self.tw.lc.stacks['stack3' + str(x)][:])
         yield True
         self.tw.lc.procstop = False
-        self.tw.lc._ireturn()
+        self.tw.lc.ireturn()
         yield True
 
     def _prim_stack1(self):
         """ Process Stack 1 """
         if self.tw.lc.stacks['stack1'] is None:
             raise logoerror("#nostack")
-        self.tw.lc._icall(self.tw.lc._evline,
+        self.tw.lc.icall(self.tw.lc.evline,
                           self.tw.lc.stacks['stack1'][:])
         yield True
         self.tw.lc.procstop = False
-        self.tw.lc._ireturn()
+        self.tw.lc.ireturn()
         yield True
 
     def _prim_stack2(self):
         """ Process Stack 2 """
         if self.tw.lc.stacks['stack2'] is None:
             raise logoerror("#nostack")
-        self.tw.lc._icall(self.tw.lc._evline, self.tw.lc.stacks['stack2'][:])
+        self.tw.lc.icall(self.tw.lc.evline, self.tw.lc.stacks['stack2'][:])
         yield True
         self.tw.lc.procstop = False
-        self.tw.lc._ireturn()
+        self.tw.lc.ireturn()
         yield True
 
     def _prim_start(self):
@@ -980,14 +980,14 @@ operators from Numbers palette'))
         """ Stop execution of a stack """
         self.tw.lc.procstop = True
 
-    def _prim_wait(self, time):
+    def _prim_wait(self, wait_time):
         """ Show the turtle while we wait """
         self.tw.active_turtle.show()
-        endtime = _millisecond() + time * 1000.
+        endtime = _millisecond() + wait_time * 1000.
         while _millisecond() < endtime:
             yield True
         self.tw.active_turtle.hide()
-        self.tw.lc._ireturn()
+        self.tw.lc.ireturn()
         yield True
 
     # Math primitivies
@@ -1148,4 +1148,4 @@ operators from Numbers palette'))
         """ Factory for constant blocks """
         make_prim(block_name, palette=palette_name, style='box-style',
                   label=_(block_name), prim_name=block_name)
-        self.tw.lc._def_prim(block_name, 0, lambda self: constant)
+        self.tw.lc.def_prim(block_name, 0, lambda self: constant)
