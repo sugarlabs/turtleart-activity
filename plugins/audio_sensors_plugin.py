@@ -35,7 +35,7 @@ from audio.audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15, \
 
 from audio.ringbuffer import RingBuffer1d
 
-from TurtleArt.taprimitive import Palette, make_prim
+from TurtleArt.taprimitive import make_palette, make_prim
 from TurtleArt.taconstants import XO1, XO15
 from TurtleArt.talogo import PLUGIN_DICTIONARY
 
@@ -81,9 +81,9 @@ class Audio_sensors_plugin(Plugin):
             self.voltage_gain = -0.0001471
             self.voltage_bias = 1.695
 
-        sensors = Palette('sensor')
-        sensors.set_help(_('Palette of sensor blocks'))
-        sensors.add_palette()
+        make_palette('sensor',
+                     colors=["#FF6060", "#A06060"],
+                     help_string=_('Palette of sensor blocks'))
 
         PLUGIN_DICTIONARY['sound'] = self.prim_sound
         make_prim('sound',

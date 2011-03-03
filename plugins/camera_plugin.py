@@ -58,8 +58,9 @@ class Camera_plugin(Plugin):
             self._status = True
 
     def setup(self):
-        make_palette('sensor', ["#FF6060", "#A06060"],
-                     _('Palette of sensor blocks'))
+        make_palette('sensor',
+                     colors=["#FF6060", "#A06060"],
+                     help_string=_('Palette of sensor blocks'))
 
         # set up camera-specific blocks
         if self._status:

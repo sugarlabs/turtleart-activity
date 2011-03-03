@@ -86,8 +86,9 @@ class Rfid_plugin(Plugin):
     def setup(self):
         # set up RFID-specific blocks
         if self._status:
-            make_palette('sensor', ["#FF6060", "#A06060"],
-                         _('Palette of sensor blocks'))
+            make_palette('sensor',
+                         colors=["#FF6060", "#A06060"],
+                         help_string=_('Palette of sensor blocks'))
 
             PLUGIN_DICTIONARY['rfid'] = self.prim_read_camera
             make_prim('rfid',

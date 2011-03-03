@@ -47,9 +47,9 @@ That's it. When you next run Turtle Art, you will have a 'uturn' block
 on the Turtle Palette.
 
 Adding a new palette is simply a matter of:
-    p = Palette('mypalette', ["#00FF00", "#00A000"])  # assign name and colors
-    p.set_help(_('Palette of my custom commands'))  # and a help message
-    p.add_palette()
+    make_palette('mypalette',  # the name of your palette
+                 colors=["#00FF00", "#00A000"],
+                 help_string=_('Palette of my custom commands'))
 
 You will have to create icons for the palette-selector buttons. These
 are kept in the icons subdirectory. You need two icons:
@@ -94,31 +94,38 @@ class Palettes():
     def __init__(self, parent):
         self.tw = parent
 
-        make_palette('turtle', ["#00FF00", "#00A000"],
-                     _('Palette of turtle commands'))
+        make_palette('turtle',
+                     colors=["#00FF00", "#00A000"],
+                     help_string=_('Palette of turtle commands'))
         self._turtle_palette()
 
-        make_palette('pen', ["#00FFFF", "#00A0A0"],
-                     _('Palette of pen commands'))
+        make_palette('pen',
+                     colors=["#00FFFF", "#00A0A0"],
+                     help_string=_('Palette of pen commands'))
         self._pen_palette()
 
-        make_palette('colors', ["#00FFFF", "#00A0A0"],
-                     _('Palette of pen colors'))
+        make_palette('colors',
+                     colors=["#00FFFF", "#00A0A0"],
+                     help_string=_('Palette of pen colors'))
         self._color_palette()
 
-        make_palette('numbers', ["#FF00FF", "#A000A0"],
-                     _('Palette of numeric operators'))
+        make_palette('numbers',
+                     colors=["#FF00FF", "#A000A0"],
+                     help_string=_('Palette of numeric operators'))
         self._numbers_palette()
 
-        make_palette('flow', ["#FFC000", "#A08000"],
-                     _('Palette of flow operators'))
+        make_palette('flow',
+                     colors=["#FFC000", "#A08000"],
+                     help_string=_('Palette of flow operators'))
         self._flow_palette()
 
-        make_palette('blocks', ["#FFFF00", "#A0A000"],
-                     _('Palette of variable blocks'))
+        make_palette('blocks',
+                     colors=["#FFFF00", "#A0A000"],
+                     help_string=_('Palette of variable blocks'))
         self._blocks_palette()
 
-        make_palette('trash', ["#FFFF00", "#A0A000"])
+        make_palette('trash',
+                     colors=["#FFFF00", "#A0A000"])
         self._trash_palette()
 
     # Palette definitions

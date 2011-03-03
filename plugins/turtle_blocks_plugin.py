@@ -81,20 +81,24 @@ class Turtle_blocks_plugin(Plugin):
         # set up Turtle Block palettes
         self._flow_palette()
 
-        make_palette('media', ["#A0FF00", "#80A000"],
-                     _('Palette of media objects'))
+        make_palette('media',
+                     colors=["#A0FF00", "#80A000"],
+                     help_string=_('Palette of media objects'))
         self._media_palette()
 
-        make_palette('sensor', ["#FF6060", "#A06060"],
-                     _('Palette of sensor blocks'))
+        make_palette('sensor',
+                     colors=["#FF6060", "#A06060"],
+                     help_string=_('Palette of sensor blocks'))
         self._sensor_palette()
 
-        make_palette('extras', ["#FF0000", "#A00000"],
-                     _('Palette of extra options'))
+        make_palette('extras',
+                     colors=["#FF0000", "#A00000"],
+                     help_string=_('Palette of extra options'))
         self._extras_palette()
 
-        make_palette('portfolio', ["#0606FF", "#0606A0"],
-                     _('Palette of presentation templates'))
+        make_palette('portfolio',
+                     colors=["#0606FF", "#0606A0"],
+                     help_string=_('Palette of presentation templates'))
         self._portfolio_palette()
 
     def start(self):
@@ -921,7 +925,8 @@ objects'))
                     description = None
                     if self.tw.lc.dsobject is not None and \
                        'description' in self.tw.lc.dsobject.metadata:
-                        description = self.tw.lc.dsobject.metadata['description']
+                        description = self.tw.lc.dsobject.metadata[
+                            'description']
                     self.tw.lc.insert_desc(mimetype, description)
                 elif string[0:6] == 'audio_':
                     self.tw.lc.play_sound()
