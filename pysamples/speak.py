@@ -23,7 +23,7 @@
 # palette is selected.
 
 
-def myblock(lc, text):
+def myblock(lc, arg):
 
     ###########################################################################
     #
@@ -33,9 +33,24 @@ def myblock(lc, text):
 
     import os
 
+    pitch = None
+    if type(arg) == type([]):
+        text = arg[0]
+        if len(arg) > 1:
+            pitch = int(arg[1])
+            if pitch > 99:
+                pitch = 99
+            elif pitch < 0:
+                pitch = 0
+    else:
+        text = arg
+
     # Turtle Art numbers are passed as float,
     # but they may be integer values.
     if type(text) == float and int(text) == text:
         text = int(text)
 
-    os.system('espeak "%s" --stdout | aplay' % (text))
+    if pitch is None:
+        os.system('espeak "%s" --stdout | aplay' % (text))
+    else:
+        os.system('espeak "%s" -p "%s" --stdout | aplay' % (text, pitch))
