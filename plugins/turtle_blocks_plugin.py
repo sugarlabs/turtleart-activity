@@ -427,10 +427,10 @@ found in the Journal'))
         self.tw.lc._def_prim('userdefined', 1,
             lambda self, x: PLUGIN_DICTIONARY['userdefined']([x]))
 
-        make_prim('userdefined2',
+        make_prim('userdefined2args',
                   style='basic-style-var-arg',
                   label=' ',
-                  prim_name='userdefined',
+                  prim_name='userdefined2',
                   special_name=_('Python block'),
                   default=[100, 100],
                   help_string=_('runs code found in the tamyblock.py module \
@@ -438,10 +438,10 @@ found in the Journal'))
         self.tw.lc._def_prim('userdefined2', 2,
             lambda self, x, y: PLUGIN_DICTIONARY['userdefined']([x, y]))
 
-        make_prim('userdefined3',
+        make_prim('userdefined3args',
                   style='basic-style-var-arg',
                   label=' ',
-                  prim_name='userdefined',
+                  prim_name='userdefined3',
                   special_name=_('Python block'),
                   default=[100, 100, 100],
                   help_string=_('runs code found in the tamyblock.py module \
