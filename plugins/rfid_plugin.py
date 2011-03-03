@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#Copyright (C) 2010 Emiliano Pastorino <epastorino@plan.ceibal.edu.uy>
+#Copyright (C) 2010,11 Emiliano Pastorino <epastorino@plan.ceibal.edu.uy>
 #Copyright (c) 2011 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,7 +20,6 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-import os
 import dbus
 
 from gettext import gettext as _
@@ -30,7 +29,7 @@ from rfid.rfidutils import strhex2bin, strbin2dec, find_device
 
 from plugin import Plugin
 
-from TurtleArt.taprimitive import Primitive, Palette, make_prim
+from TurtleArt.taprimitive import Palette, make_prim
 from TurtleArt.talogo import PLUGIN_DICTIONARY
 
 import logging
@@ -99,7 +98,7 @@ class Rfid_plugin(Plugin):
                       help_string=_('read value from RFID device'),
                       value_block=True,
                       prim_name='rfid')
-            self._parent.lc._def_prim('rfid', 0,
+            self._parent.lc.def_prim('rfid', 0,
                 lambda self: PLUGIN_DICTIONARY['rfid'](True))
 
     def start(self):
@@ -159,6 +158,7 @@ class Rfid_plugin(Plugin):
         while self.rfid_idn.__len__() < 9:
             self.rfid_idn = '0' + self.rfid_idn
         print tagid, idbin, self.rfid_idn
+        self.tw.lc.update_label_value('rfid', self.rfid_idn)
 
     # Block primitives used in talogo
 
