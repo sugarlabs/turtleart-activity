@@ -144,7 +144,7 @@ EXPANDABLE_ARGS = ['list', 'myfunc1arg', 'myfunc2arg',
 COLLAPSIBLE = ['sandwichbottom', 'sandwichcollapsed']
 
 #
-# Depreciated block styles that need dock adjustments
+# Deprecated block styles that need dock adjustments
 #
 OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
 
@@ -241,7 +241,8 @@ OLD_NAMES = {'product': 'product2', 'storeinbox': 'storein', 'minus': 'minus2',
              'template1': 'template1x1', 'template2': 'template2x1',
              'template6': 'template1x2', 'template7': 'template2x2',
              'template4': 'template1x1a', 'hres': 'width', 'vres': 'height',
-             'sandwichtop2': 'sandwichtop', 'image': 'show'}
+             'sandwichtop2': 'sandwichtop', 'image': 'show',
+             'container': 'indentity2', 'insertimage': 'show'}
 
 #
 # Define the relative size and postion of media objects
@@ -250,7 +251,7 @@ OLD_NAMES = {'product': 'product2', 'storeinbox': 'storein', 'minus': 'minus2',
 TITLEXY = (0.9375, 0.875)
 
 #
-# Relative placement of portfolio objects (used by depreciated blocks)
+# Relative placement of portfolio objects (used by deprecated blocks)
 #
 TEMPLATES = {'t1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
              't2z1': (0.5, 0.5, 0.0625, 0.125, 1.05, 1.05),

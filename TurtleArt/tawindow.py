@@ -1682,7 +1682,7 @@ class TurtleArtWindow():
         elif blk.name in COLLAPSIBLE:
             top = find_sandwich_top(blk)
             if collapsed(blk):
-                restore_stack(top)  # depreciated (bottom block is invisible)
+                restore_stack(top)  # deprecated (bottom block is invisible)
             elif top is not None:
                 collapse_stack(top)
 
@@ -2464,7 +2464,7 @@ class TurtleArtWindow():
         # Some blocks get transformed.
         if btype in BLOCK_STYLES['basic-style-var-arg'] and value is not None:
             # Is there code stored in this userdefined block?
-            if value > 0:  # catch depreciated format (#2501)
+            if value > 0:  # catch deprecated format (#2501)
                 self.python_code = None
                 if self.running_sugar:
                     try:
@@ -2681,7 +2681,7 @@ class TurtleArtWindow():
             self.status_spr.move((PALETTE_WIDTH, self.height - 200))
 
     def calc_position(self, template):
-        """ Relative placement of portfolio objects (depreciated) """
+        """ Relative placement of portfolio objects (deprecated) """
         w, h, x, y, dx, dy = TEMPLATES[template]
         x *= self.canvas.width
         y *= self.canvas.height

@@ -135,7 +135,7 @@ class TurtleGraphics:
         self.fgcolor = self.cm.alloc_color('red')
         self.bgrgb = [255, 248, 222]
         self.bgcolor = self.cm.alloc_color('#fff8de')
-        self.textsize = 48  # depreciated
+        self.textsize = 48  # deprecated
         self.textcolor = self.cm.alloc_color('blue')
         self.tw.active_turtle.show()
         self.shade = 0
@@ -432,7 +432,7 @@ class TurtleGraphics:
                                               round_int(self.gray)]))
             self.tw.send_event(event)
 
-    def settextcolor(self, c):  # depreciated
+    def settextcolor(self, c):  # deprecated
         """ Set the text color """
         try:
             self.tcolor = c
@@ -442,7 +442,7 @@ class TurtleGraphics:
             return
         self.set_textcolor()
 
-    def settextsize(self, c):  # depreciated
+    def settextsize(self, c):  # deprecated
         """ Set the text size """
         try:
             self.tw.textsize = c

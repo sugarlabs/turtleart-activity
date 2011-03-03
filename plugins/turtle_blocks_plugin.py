@@ -177,7 +177,7 @@ operators from Numbers palette'))
         self.tw.lc.def_prim('showaligned', 1, 
             lambda self, x: PLUGIN_DICTIONARY['show'](x, False))
 
-        # depreciated
+        # deprecated
         PLUGIN_DICTIONARY['write'] = self._prim_write
         make_prim('write',
                   style='basic-style-1arg',
@@ -496,7 +496,7 @@ found in the Journal'))
                   help_string=_('bottom block in a collapsed stack: click to \
 open'))
 
-        # depreciated blocks
+        # deprecated blocks
         make_prim('sandwichtop',
                   style='collapsible-top',
                   label=_('top of stack'),
@@ -681,7 +681,7 @@ objects'))
                   prim_name='bottomy')
         self.tw.lc.def_prim('bottomy', 0, lambda self: CONSTANTS['bottomy'])
 
-        # depreciated blocks
+        # deprecated blocks
 
         PLUGIN_DICTIONARY['t1x1'] = self._prim_t1x1
         make_prim('template1x1',
@@ -1022,7 +1022,7 @@ objects"))
         self.tw.lc.update_label_value('time', elapsed_time)
         return elapsed_time
 
-    # Depreciated blocks
+    # Deprecated blocks
 
     def _prim_t1x1(self, title, media):
         """ title, one image, and description """

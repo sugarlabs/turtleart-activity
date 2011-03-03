@@ -258,7 +258,7 @@ turtle (can be used in place of a number block)'),
         self.tw.lc.def_prim(
             'heading', 0, lambda self: self.tw.canvas.heading)
 
-        # Depreciated
+        # Deprecated
         make_prim('setxy',
                   style='basic-style-2arg',
                   label=[_('set xy'), _('x'), _('y')],
@@ -418,7 +418,7 @@ place of a number block)'),
         self._make_constant('white', 'colors', WHITE)
         self._make_constant('black', 'colors', BLACK)
 
-        # depreciated blocks
+        # deprecated blocks
         make_prim('settextcolor',
                   style='basic-style-1arg',
                   label=_('set text color'),

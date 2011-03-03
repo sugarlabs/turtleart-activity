@@ -126,7 +126,7 @@ class LogoCode:
         self.dsobject = None
         self.start_time = None
 
-        # Scale factors for depreciated portfolio blocks
+        # Scale factors for deprecated portfolio blocks
         self.title_height = int((self.tw.canvas.height / 20) * self.tw.scale)
         self.body_height = int((self.tw.canvas.height / 40) * self.tw.scale)
         self.bullet_height = int((self.tw.canvas.height / 30) * self.tw.scale)
@@ -219,7 +219,7 @@ class LogoCode:
                 except ValueError:
                     code.append(float(ord(blk.values[0][0])))
             elif blk.name == 'string' or \
-                    blk.name == 'title':  # depreciated block
+                    blk.name == 'title':  # deprecated block
                 if type(blk.values[0]) == float or type(blk.values[0]) == int:
                     if int(blk.values[0]) == blk.values[0]:
                         blk.values[0] = int(blk.values[0])
