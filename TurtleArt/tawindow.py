@@ -989,7 +989,7 @@ class TurtleArtWindow():
             self.lc.trace = 0
             self.run_button(0)
         elif spr.name == 'run-slowoff':
-            self.lc.trace = 0
+            self.lc.trace = 1
             self.run_button(3)
         elif spr.name == 'debugoff':
             self.lc.trace = 1
