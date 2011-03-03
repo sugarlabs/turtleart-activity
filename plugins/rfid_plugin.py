@@ -29,7 +29,7 @@ from rfid.rfidutils import strhex2bin, strbin2dec, find_device
 
 from plugin import Plugin
 
-from TurtleArt.taprimitive import Palette, make_prim
+from TurtleArt.taprimitive import make_palette, make_prim
 from TurtleArt.talogo import PLUGIN_DICTIONARY
 
 import logging
@@ -86,9 +86,8 @@ class Rfid_plugin(Plugin):
     def setup(self):
         # set up RFID-specific blocks
         if self._status:
-            sensors = Palette('sensor')
-            sensors.set_help(_('Palette of sensor blocks'))
-            sensors.add_palette()
+            make_palette('sensor', ["#FF6060", "#A06060"],
+                         _('Palette of sensor blocks'))
 
             PLUGIN_DICTIONARY['rfid'] = self.prim_read_camera
             make_prim('rfid',

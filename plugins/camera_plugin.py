@@ -31,7 +31,7 @@ from camera.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, VIDIOC_G_CTRL, \
 
 from plugin import Plugin
 
-from TurtleArt.taprimitive import Palette, make_prim
+from TurtleArt.taprimitive import make_palette, make_prim
 from TurtleArt.talogo import MEDIA_BLOCKS_DICTIONARY, PLUGIN_DICTIONARY
 from TurtleArt.tautils import get_path
 
@@ -58,9 +58,8 @@ class Camera_plugin(Plugin):
             self._status = True
 
     def setup(self):
-        sensors = Palette('sensor')
-        sensors.set_help(_('Palette of sensor blocks'))
-        sensors.add_palette()
+        make_palette('sensor', ["#FF6060", "#A06060"],
+                     _('Palette of sensor blocks'))
 
         # set up camera-specific blocks
         if self._status:

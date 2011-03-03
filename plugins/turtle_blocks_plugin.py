@@ -30,7 +30,7 @@ except ImportError:
     pass
 
 from plugin import Plugin
-from TurtleArt.taprimitive import Palette, make_prim
+from TurtleArt.taprimitive import make_palette, make_prim
 from TurtleArt.talogo import PLUGIN_DICTIONARY, logoerror, \
     MEDIA_BLOCKS_DICTIONARY
 from TurtleArt.taconstants import DEFAULT_SCALE, CONSTANTS, ICON_SIZE
@@ -81,24 +81,20 @@ class Turtle_blocks_plugin(Plugin):
         # set up Turtle Block palettes
         self._flow_palette()
 
-        p = Palette('media', ["#A0FF00", "#80A000"])
-        p.set_help(_('Palette of media objects'))
-        p.add_palette()
+        make_palette('media', ["#A0FF00", "#80A000"],
+                     _('Palette of media objects'))
         self._media_palette()
 
-        p = Palette('sensor', ["#FF6060", "#A06060"])
-        p.set_help(_('Palette of sensor blocks'))
-        p.add_palette()
+        make_palette('sensor', ["#FF6060", "#A06060"],
+                     _('Palette of sensor blocks'))
         self._sensor_palette()
 
-        p = Palette('extras', ["#FF0000", "#A00000"])
-        p.set_help(_('Palette of extra options'))
-        p.add_palette()
+        make_palette('extras', ["#FF0000", "#A00000"],
+                     _('Palette of extra options'))
         self._extras_palette()
 
-        p = Palette('portfolio', ["#0606FF", "#0606A0"])
-        p.set_help(_('Palette of presentation templates'))
-        p.add_palette()
+        make_palette('portfolio', ["#0606FF", "#0606A0"],
+                     _('Palette of presentation templates'))
         self._portfolio_palette()
 
     def start(self):

@@ -66,7 +66,7 @@ from random import uniform
 
 from gettext import gettext as _
 
-from taprimitive import Palette, make_prim
+from taprimitive import make_palette, make_prim
 from talogo import PLUGIN_DICTIONARY, logoerror
 from taconstants import CONSTANTS, BLACK, WHITE
 from tautils import convert, chr_to_ord, round_int, strtype
@@ -94,38 +94,31 @@ class Palettes():
     def __init__(self, parent):
         self.tw = parent
 
-        p = Palette('turtle', ["#00FF00", "#00A000"])
-        p.set_help(_('Palette of turtle commands'))
-        p.add_palette()
+        make_palette('turtle', ["#00FF00", "#00A000"],
+                     _('Palette of turtle commands'))
         self._turtle_palette()
 
-        p = Palette('pen', ["#00FFFF", "#00A0A0"])
-        p.set_help(_('Palette of pen commands'))
-        p.add_palette()
+        make_palette('pen', ["#00FFFF", "#00A0A0"],
+                     _('Palette of pen commands'))
         self._pen_palette()
 
-        p = Palette('colors', ["#00FFFF", "#00A0A0"])
-        p.set_help(_('Palette of pen colors'))
-        p.add_palette()
+        make_palette('colors', ["#00FFFF", "#00A0A0"],
+                     _('Palette of pen colors'))
         self._color_palette()
 
-        p = Palette('numbers', ["#FF00FF", "#A000A0"])
-        p.set_help(_('Palette of numeric operators'))
-        p.add_palette()
+        make_palette('numbers', ["#FF00FF", "#A000A0"],
+                     _('Palette of numeric operators'))
         self._numbers_palette()
 
-        p = Palette('flow', ["#FFC000", "#A08000"])
-        p.set_help(_('Palette of flow operators'))
-        p.add_palette()
+        make_palette('flow', ["#FFC000", "#A08000"],
+                     _('Palette of flow operators'))
         self._flow_palette()
 
-        p = Palette('blocks', ["#FFFF00", "#A0A000"])
-        p.set_help(_('Palette of variable blocks'))
-        p.add_palette()
+        make_palette('blocks', ["#FFFF00", "#A0A000"],
+                     _('Palette of variable blocks'))
         self._blocks_palette()
 
-        p = Palette('trash', ["#FFFF00", "#A0A000"])
-        p.add_palette()
+        make_palette('trash', ["#FFFF00", "#A0A000"])
         self._trash_palette()
 
     # Palette definitions

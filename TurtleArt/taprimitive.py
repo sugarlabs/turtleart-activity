@@ -71,6 +71,17 @@ class Palette():
         self._special_name = name
 
 
+def make_palette(palette_name, colors=None, help_string=None):
+    """ Palette helper function """
+    if colors is None:
+        p = Palette(palette_name)
+    else:
+        p = Palette(palette_name, colors)
+    if help_string is not None:
+        p.set_help(help_string)
+    p.add_palette()
+
+
 class Primitive():
     """ a class for defining new block primitives """
 
@@ -176,7 +187,7 @@ class Primitive():
 def make_prim(block_name, style='basic-block', palette=None, label=None,
               special_name=None, default=None, prim_name=None,
               help_string=None, value_block=False, content_block=False):
-    """ Block factory """
+    """ Primitive helper function """
     b = Primitive(block_name)
     b.set_style(style)
     if palette is not None:
