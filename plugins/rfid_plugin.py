@@ -97,28 +97,6 @@ class Rfid_plugin(Plugin):
             self._parent.lc.def_prim('rfid', 0,
                 lambda self: PLUGIN_DICTIONARY['rfid'](True))
 
-    def start(self):
-        # This gets called by the start button
-        if self._status:
-            pass
-
-    def stop(self):
-        # This gets called by the stop button
-        if self._status:
-            pass
-
-    def goto_background(self):
-        # This gets called when your process is sent to the background
-        pass
-
-    def return_to_foreground(self):
-        # This gets called when your process returns from the background
-        pass
-
-    def quit(self):
-        # This gets called by the quit button
-        pass
-
     def _status_report(self):
         print 'Reporting RFID status: %s' % (str(self._status))
         return self._status

@@ -97,21 +97,6 @@ class Turtle_blocks_plugin(Plugin):
                      help_string=_('Palette of presentation templates'))
         self._portfolio_palette()
 
-    def start(self):
-        pass
-
-    def stop(self):
-        pass
-
-    def goto_background(self):
-        pass
-
-    def return_to_foreground(self):
-        pass
-
-    def quit(self):
-        pass
-
     # Palette definitions
 
     def _flow_palette(self):
@@ -396,7 +381,7 @@ single-variable math equations, e.g., sin(x)'))
                   help_string=_('a programmable block: used to add advanced \
 multi-variable math equations, e.g., sqrt(x*x+y*y)'))
         self.tw.lc.def_prim('myfunction2', 3,
-            lambda self, f, x: PLUGIN_DICTIONARY['myfunction'](f, [x, y]))
+            lambda self, f, x, y: PLUGIN_DICTIONARY['myfunction'](f, [x, y]))
 
         make_prim('myfunc3arg',
                   style='number-style-var-arg',

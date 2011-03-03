@@ -25,28 +25,26 @@ class Plugin(gobject.GObject):
 
     def setup(self):
         """ Setup is called once, when the Turtle Window is created. """
-        raise RuntimeError("You need to define setup for your plugin.")
+        pass
 
     def start(self):
         """ start is called when run button is pressed. """
-        raise RuntimeError("You need to define start for your plugin.")
+        pass
 
     def stop(self):
         """ stop is called when stop button is pressed. """
-        raise RuntimeError("You need to define stop for your plugin.")
+        pass
 
     def goto_background(self):
         """ goto_background is called when the activity is sent to the
         background. """
-        raise RuntimeError(
-            "You need to define goto_background for your plugin.")
+        pass
 
     def return_to_foreground(self):
         """ return_to_foreground is called when the activity returns to
         the foreground. """
-        raise RuntimeError(
-            "You need to define return_to_foreground for your plugin.")
+        pass
 
     def quit(self):
         """ cleanup is called when the activity is exiting. """
-        raise RuntimeError("You need to define quit for your plugin.")
+        pass

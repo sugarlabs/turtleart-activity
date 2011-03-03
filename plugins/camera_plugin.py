@@ -93,26 +93,10 @@ to the stack'),
                       help_string=_('camera output'),
                       content_block=True)
 
-    def start(self):
-        # This gets called by the start button
-        pass
-
     def stop(self):
         # This gets called by the stop button
         if self._status:
             self._camera.stop_camera_input()
-
-    def goto_background(self):
-        # This gets called when your process is sent to the background
-        pass
-
-    def return_to_foreground(self):
-        # This gets called when your process returns from the background
-        pass
-
-    def quit(self):
-        # This gets called by the quit button
-        pass
 
     def _status_report(self):
         print 'Reporting camera status: %s' % (str(self._status))

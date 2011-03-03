@@ -198,10 +198,12 @@ class Audio_sensors_plugin(Plugin):
 
     def goto_background(self):
         # This gets called when your process is sent to the background
+        # TODO: handle this case
         pass
 
     def return_to_foreground(self):
         # This gets called when your process returns from the background
+        # TODO: handle this case
         pass
 
     def quit(self):
