@@ -77,24 +77,12 @@ class Turtle_blocks_plugin(Plugin):
         # set up Turtle Block palettes
         self._flow_palette()
 
-        make_palette('media',
-                     colors=["#A0FF00", "#80A000"],
-                     help_string=_('Palette of media objects'))
         self._media_palette()
 
-        make_palette('sensor',
-                     colors=["#FF6060", "#A06060"],
-                     help_string=_('Palette of sensor blocks'))
         self._sensor_palette()
 
-        make_palette('extras',
-                     colors=["#FF0000", "#A00000"],
-                     help_string=_('Palette of extra options'))
         self._extras_palette()
 
-        make_palette('portfolio',
-                     colors=["#0606FF", "#0606A0"],
-                     help_string=_('Palette of presentation templates'))
         self._portfolio_palette()
 
     # Palette definitions
@@ -117,6 +105,11 @@ operators from Numbers palette'))
 operators from Numbers palette'))
 
     def _media_palette(self):
+
+        make_palette('media',
+                     colors=["#A0FF00", "#80A000"],
+                     help_string=_('Palette of media objects'))
+
         make_prim('journal',
                   palette='media',
                   style='box-style-media',
@@ -241,6 +234,10 @@ Sugar Journal'))
 
     def _sensor_palette(self):
 
+        make_palette('sensor',
+                     colors=["#FF6060", "#A06060"],
+                     help_string=_('Palette of sensor blocks'))
+
         PLUGIN_DICTIONARY['kbinput'] = self._prim_kbinput
         make_prim('kbinput',
                   palette='sensor',
@@ -296,6 +293,10 @@ started'))
                              lambda self: PLUGIN_DICTIONARY['time']())
 
     def _extras_palette(self):
+
+        make_palette('extras',
+                     colors=["#FF0000", "#A00000"],
+                     help_string=_('Palette of extra options'))
 
         PLUGIN_DICTIONARY['push'] = self._prim_push
         make_prim('push',
@@ -518,6 +519,10 @@ open'))
                   help_string=_('top of stack'))
 
     def _portfolio_palette(self):
+
+        make_palette('portfolio',
+                     colors=["#0606FF", "#0606A0"],
+                     help_string=_('Palette of presentation templates'))
 
         make_prim('hideblocks',
                   palette='portfolio',

@@ -94,44 +94,28 @@ class Palettes():
     def __init__(self, parent):
         self.tw = parent
 
-        make_palette('turtle',
-                     colors=["#00FF00", "#00A000"],
-                     help_string=_('Palette of turtle commands'))
         self._turtle_palette()
 
-        make_palette('pen',
-                     colors=["#00FFFF", "#00A0A0"],
-                     help_string=_('Palette of pen commands'))
         self._pen_palette()
 
-        make_palette('colors',
-                     colors=["#00FFFF", "#00A0A0"],
-                     help_string=_('Palette of pen colors'))
         self._color_palette()
 
-        make_palette('numbers',
-                     colors=["#FF00FF", "#A000A0"],
-                     help_string=_('Palette of numeric operators'))
         self._numbers_palette()
 
-        make_palette('flow',
-                     colors=["#FFC000", "#A08000"],
-                     help_string=_('Palette of flow operators'))
         self._flow_palette()
 
-        make_palette('blocks',
-                     colors=["#FFFF00", "#A0A000"],
-                     help_string=_('Palette of variable blocks'))
         self._blocks_palette()
 
-        make_palette('trash',
-                     colors=["#FFFF00", "#A0A000"])
         self._trash_palette()
 
     # Palette definitions
 
     def _turtle_palette(self):
         """ The basic Turtle Art turtle palette """
+
+        make_palette('turtle',
+                     colors=["#00FF00", "#00A000"],
+                     help_string=_('Palette of turtle commands'))
 
         PLUGIN_DICTIONARY['move'] = self._prim_move
         make_prim('forward',
@@ -273,6 +257,10 @@ is in the center of the screen.'))
     def _pen_palette(self):
         """ The basic Turtle Art pen palette """
 
+        make_palette('pen',
+                     colors=["#00FFFF", "#00A0A0"],
+                     help_string=_('Palette of pen commands'))
+
         make_prim('penup',
                   palette='pen',
                   style='basic-style-extended-vertical',
@@ -344,6 +332,10 @@ fill block)'))
 
     def _color_palette(self):
         """ The basic Turtle Art color palette """
+
+        make_palette('colors',
+                     colors=["#00FFFF", "#00A0A0"],
+                     help_string=_('Palette of pen colors'))
 
         make_prim('setcolor',
                   palette='colors',
@@ -439,6 +431,10 @@ place of a number block)'),
 
     def _numbers_palette(self):
         """ The basic Turtle Art numbers palette """
+
+        make_palette('numbers',
+                     colors=["#FF00FF", "#A000A0"],
+                     help_string=_('Palette of numeric operators'))
 
         PLUGIN_DICTIONARY['plus'] = self._prim_plus
         make_prim('plus2',
@@ -604,6 +600,10 @@ operators'))
     def _flow_palette(self):
         """ The basic Turtle Art flow palette """
 
+        make_palette('flow',
+                     colors=["#FFC000", "#A08000"],
+                     help_string=_('Palette of flow operators'))
+
         PLUGIN_DICTIONARY['wait'] = self._prim_wait
         make_prim('wait',
                   palette='flow',
@@ -690,6 +690,10 @@ operators from Numbers palette'))
 
     def _blocks_palette(self):
         """ The basic Turtle Art blocks palette """
+
+        make_palette('blocks',
+                     colors=["#FFFF00", "#A0A000"],
+                     help_string=_('Palette of variable blocks'))
 
         PLUGIN_DICTIONARY['start'] = self._prim_start
         make_prim('start',
@@ -829,6 +833,9 @@ operators from Numbers palette'))
 
     def _trash_palette(self):
         """ The basic Turtle Art turtle palette """
+
+        make_palette('trash',
+                     colors=["#FFFF00", "#A0A000"])
 
         make_prim('empty',
                   palette='trash',
