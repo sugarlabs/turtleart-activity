@@ -786,17 +786,18 @@ variable'))
         """ The basic Turtle Art turtle palette """
 
         palette = make_palette('trash',
-                               colors=["#FFFF00", "#A0A000"])
+                               colors=["#FFFF00", "#A0A000"],
+                               help_string=_('trash'))
 
         palette.add_block('empty',
                           style='basic-style-tail',
                           label=_('empty trash'),
-                          help_string=_("permanently deletes items in trash"))
+                          help_string=_('permanently deletes items in trash'))
 
         palette.add_block('restoreall',
                           style='basic-style-head',
                           label=_('restore all'),
-                          help_string=_("restore all blocks from trash"))
+                          help_string=_('restore all blocks from trash'))
 
     # Block primitives
 
