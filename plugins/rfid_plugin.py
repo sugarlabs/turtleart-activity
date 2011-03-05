@@ -25,7 +25,7 @@ from rfid.rfidutils import strhex2bin, strbin2dec, find_device
 
 from plugin import Plugin
 
-from TurtleArt.taprimitive import make_palette
+from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import PLUGIN_DICTIONARY
 
 import logging

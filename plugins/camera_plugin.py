@@ -27,7 +27,7 @@ from camera.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, VIDIOC_G_CTRL, \
 
 from plugin import Plugin
 
-from TurtleArt.taprimitive import make_palette
+from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import MEDIA_BLOCKS_DICTIONARY, PLUGIN_DICTIONARY
 from TurtleArt.tautils import get_path
 

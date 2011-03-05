@@ -26,7 +26,7 @@ except ImportError:
     pass
 
 from plugin import Plugin
-from TurtleArt.taprimitive import make_palette
+from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import PLUGIN_DICTIONARY, logoerror, \
     MEDIA_BLOCKS_DICTIONARY
 from TurtleArt.taconstants import DEFAULT_SCALE, CONSTANTS, ICON_SIZE

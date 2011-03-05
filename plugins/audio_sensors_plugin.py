@@ -31,7 +31,7 @@ from audio.audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15, \
 
 from audio.ringbuffer import RingBuffer1d
 
-from TurtleArt.taprimitive import make_palette
+from TurtleArt.tapalette import make_palette
 from TurtleArt.taconstants import XO1, XO15
 from TurtleArt.talogo import PLUGIN_DICTIONARY
 

@@ -45,7 +45,7 @@ add_block method in the Palette class.
     # of arguments, 0 in this case, and the function to call, in this
     # case, the canvas function to set the heading.
     self.tw.lc.def_prim('uturn', 0,
-        lambda self, x: self.tw.canvas.seth(self.tw.canvas.heading + 180))
+        lambda self: self.tw.canvas.seth(self.tw.canvas.heading + 180))
 
 That's it. When you next run Turtle Art, you will have a 'uturn' block
 on the 'mypalette' palette.
@@ -64,7 +64,7 @@ from random import uniform
 
 from gettext import gettext as _
 
-from taprimitive import make_palette
+from tapalette import make_palette
 from talogo import PLUGIN_DICTIONARY, logoerror
 from taconstants import CONSTANTS, BLACK, WHITE
 from tautils import convert, chr_to_ord, round_int, strtype
