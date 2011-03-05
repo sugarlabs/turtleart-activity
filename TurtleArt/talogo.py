@@ -36,9 +36,9 @@ from util.RtfParser import RtfTextOnly
 
 from gettext import gettext as _
 
-VALUE_BLOCKS = []  # blocks whose labels are updated get added here
-MEDIA_BLOCKS_DICTIONARY = {}  # new media blocks get added here
-PLUGIN_DICTIONARY = {}  # new block primitives get added here
+value_blocks = []  # blocks whose labels are updated get added here
+media_blocks_dictionary = {}  # new media blocks get added here
+primitive_dictionary = {}  # new block primitives get added here
 
 
 class noKeyError(UserDict):
@@ -232,7 +232,7 @@ class LogoCode:
                                     str(blk.values[0]))
                 else:
                     code.append(PREFIX_DICTIONARY[blk.name] + 'None')
-            elif blk.name in MEDIA_BLOCKS_DICTIONARY:
+            elif blk.name in media_blocks_dictionary:
                 code.append('#smedia_' + blk.name.upper())
             else:
                 return ['%nothing%']
@@ -499,7 +499,7 @@ class LogoCode:
         self.tw.lc.scale = DEFAULT_SCALE
         self.tw.lc.hidden_turtle = None
         self.tw.lc.start_time = time()
-        for name in VALUE_BLOCKS:
+        for name in value_blocks:
             self.tw.lc.update_label_value(name)
 
     def int(self, n):
@@ -516,10 +516,10 @@ class LogoCode:
 
     def find_value_blocks(self):
         """ Find any value blocks that may need label updates """
-        self.value_blocks = {}
-        for name in VALUE_BLOCKS:
-            self.value_blocks[name] = self.tw.block_list.get_similar_blocks(
-                'block', name)
+        self.value_blocks_to_update = {}
+        for name in value_blocks:
+            self.value_blocks_to_update[name] = \
+                self.tw.block_list.get_similar_blocks('block', name)
 
     def update_label_value(self, name, value=None):
         """ Update the label of value blocks to reflect current value """
@@ -527,7 +527,7 @@ class LogoCode:
            not hasattr(self, 'value_blocks'):
             return
         if value is None:
-            for block in self.value_blocks[name]:
+            for block in self.value_blocks_to_update[name]:
                 block.spr.set_label(BLOCK_NAMES[name][0])
                 block.resize()
         elif self.update_values:
@@ -536,7 +536,7 @@ class LogoCode:
                     self.tw.decimal_point)
             else:
                 valstring = str(value)
-            for block in self.value_blocks[name]:
+            for block in self.value_blocks_to_update[name]:
                 block.spr.set_label(BLOCK_NAMES[name][0] + ' = ' + valstring)
                 block.resize()
 

@@ -27,8 +27,8 @@ except ImportError:
 
 from plugin import Plugin
 from TurtleArt.tapalette import make_palette
-from TurtleArt.talogo import PLUGIN_DICTIONARY, logoerror, \
-    MEDIA_BLOCKS_DICTIONARY
+from TurtleArt.talogo import primitive_dictionary, logoerror, \
+    media_blocks_dictionary
 from TurtleArt.taconstants import DEFAULT_SCALE, CONSTANTS, ICON_SIZE
 from TurtleArt.tautils import convert, round_int, debug_output
 from TurtleArt.tajail import myfunc, myfunc_import
@@ -147,7 +147,7 @@ boolean operators from Numbers palette'))
                           special_name='',
                           help_string=_('string value'))
 
-        PLUGIN_DICTIONARY['show'] = self._prim_show
+        primitive_dictionary['show'] = self._prim_show
         palette.add_block('show',
                           style='basic-style-1arg',
                           label=_('show'),
@@ -156,7 +156,7 @@ boolean operators from Numbers palette'))
                           help_string=_('draws text or show media from the \
 Journal'))
         self.tw.lc.def_prim('show', 1, 
-            lambda self, x: PLUGIN_DICTIONARY['show'](x, True))
+            lambda self, x: primitive_dictionary['show'](x, True))
 
         palette.add_block('showaligned',
                           hidden=True,
@@ -167,10 +167,10 @@ Journal'))
                           help_string=_('draws text or show media from the \
 Journal'))
         self.tw.lc.def_prim('showaligned', 1, 
-            lambda self, x: PLUGIN_DICTIONARY['show'](x, False))
+            lambda self, x: primitive_dictionary['show'](x, False))
 
         # deprecated
-        PLUGIN_DICTIONARY['write'] = self._prim_write
+        primitive_dictionary['write'] = self._prim_write
         palette.add_block('write',
                           hidden=True,
                           style='basic-style-1arg',
@@ -180,9 +180,9 @@ Journal'))
                           help_string=_('draws text or show media from the \
 Journal'))
         self.tw.lc.def_prim('write', 2,
-            lambda self, x, y: PLUGIN_DICTIONARY['write'](x, y))
+            lambda self, x, y: primitive_dictionary['write'](x, y))
 
-        PLUGIN_DICTIONARY['setscale'] = self._prim_setscale
+        primitive_dictionary['setscale'] = self._prim_setscale
         palette.add_block('setscale',
                           style='basic-style-1arg',
                           label=_('set scale'),
@@ -190,9 +190,9 @@ Journal'))
                           default=33,
                           help_string=_('sets the scale of media'))
         self.tw.lc.def_prim('setscale', 1,
-                             lambda self, x: PLUGIN_DICTIONARY['setscale'](x))
+                             lambda self, x: primitive_dictionary['setscale'](x))
 
-        PLUGIN_DICTIONARY['savepix'] = self._prim_save_picture
+        primitive_dictionary['savepix'] = self._prim_save_picture
         palette.add_block('savepix',
                           style='basic-style-1arg',
                           label=_('save picture'),
@@ -200,9 +200,9 @@ Journal'))
                           default=_('picture name'),
                           help_string=_('saves a picture to the Sugar Journal'))
         self.tw.lc.def_prim('savepix', 1,
-                             lambda self, x: PLUGIN_DICTIONARY['savepix'](x))
+                             lambda self, x: primitive_dictionary['savepix'](x))
 
-        PLUGIN_DICTIONARY['savesvg'] = self._prim_save_svg
+        primitive_dictionary['savesvg'] = self._prim_save_svg
         palette.add_block('savesvg',
                           style='basic-style-1arg',
                           label=_('save SVG'),
@@ -211,7 +211,7 @@ Journal'))
                           help_string=_('saves turtle graphics as an SVG file \
 in the Sugar Journal'))
         self.tw.lc.def_prim('savesvg', 1,
-                             lambda self, x: PLUGIN_DICTIONARY['savesvg'](x))
+                             lambda self, x: primitive_dictionary['savesvg'](x))
 
         palette.add_block('scale',
                           style='box-style',
@@ -235,7 +235,7 @@ complete'))
                      colors=["#FF6060", "#A06060"],
                      help_string=_('Palette of sensor blocks'))
 
-        PLUGIN_DICTIONARY['kbinput'] = self._prim_kbinput
+        primitive_dictionary['kbinput'] = self._prim_kbinput
         palette.add_block('kbinput',
                           style='basic-style-extended-vertical',
                           label=_('query keyboard'),
@@ -243,7 +243,7 @@ complete'))
                           help_string=_('query for keyboard input (results \
 stored in keyboard block)'))
         self.tw.lc.def_prim('kbinput', 0, 
-                             lambda self: PLUGIN_DICTIONARY['kbinput']())
+                             lambda self: primitive_dictionary['kbinput']())
 
         palette.add_block('keyboard',
                           style='box-style',
@@ -254,7 +254,7 @@ stored in keyboard block)'))
 block'))
         self.tw.lc.def_prim('keyboard', 0, lambda self: self.tw.lc.keyboard)
 
-        PLUGIN_DICTIONARY['readpixel'] = self._prim_readpixel
+        primitive_dictionary['readpixel'] = self._prim_readpixel
         palette.add_block('readpixel',
                           style='basic-style-extended-vertical',
                           label=_('read pixel'),
@@ -262,9 +262,9 @@ block'))
                           help_string=_('RGB color under the turtle is pushed \
 to the stack'))
         self.tw.lc.def_prim('readpixel', 0, 
-                             lambda self: PLUGIN_DICTIONARY['readpixel']())
+                             lambda self: primitive_dictionary['readpixel']())
 
-        PLUGIN_DICTIONARY['see'] = self._prim_see
+        primitive_dictionary['see'] = self._prim_see
         palette.add_block('see',
                           style='box-style',
                           label=_('turtle sees'),
@@ -272,9 +272,9 @@ to the stack'))
                           help_string=_('returns the color that the turtle \
 "sees"'))
         self.tw.lc.def_prim('see', 0, 
-                             lambda self: PLUGIN_DICTIONARY['see']())
+                             lambda self: primitive_dictionary['see']())
 
-        PLUGIN_DICTIONARY['time'] = self._prim_time
+        primitive_dictionary['time'] = self._prim_time
         palette.add_block('time',
                           style='box-style',
                           label=_('time'),
@@ -283,7 +283,7 @@ to the stack'))
                           help_string=_('elapsed time (in seconds) since \
 program started'))
         self.tw.lc.def_prim('time', 0, 
-                             lambda self: PLUGIN_DICTIONARY['time']())
+                             lambda self: primitive_dictionary['time']())
 
     def _extras_palette(self):
 
@@ -291,7 +291,7 @@ program started'))
                      colors=["#FF0000", "#A00000"],
                      help_string=_('Palette of extra options'))
 
-        PLUGIN_DICTIONARY['push'] = self._prim_push
+        primitive_dictionary['push'] = self._prim_push
         palette.add_block('push',
                           style='basic-style-1arg',
                           label=_('push'),
@@ -299,9 +299,9 @@ program started'))
                           help_string=_('pushes value onto FILO (first-in \
 last-out heap)'))
         self.tw.lc.def_prim('push', 1,
-                             lambda self, x: PLUGIN_DICTIONARY['push'](x))
+                             lambda self, x: primitive_dictionary['push'](x))
 
-        PLUGIN_DICTIONARY['printheap'] = self._prim_printheap
+        primitive_dictionary['printheap'] = self._prim_printheap
         palette.add_block('printheap',
                           style='basic-style-extended-vertical',
                           label=_('show heap'),
@@ -309,18 +309,18 @@ last-out heap)'))
                           help_string=_('shows values in FILO (first-in \
 last-out heap)'))
         self.tw.lc.def_prim('printheap', 0, 
-                             lambda self: PLUGIN_DICTIONARY['printheap']())
+                             lambda self: primitive_dictionary['printheap']())
 
-        PLUGIN_DICTIONARY['clearheap'] = self._prim_emptyheap
+        primitive_dictionary['clearheap'] = self._prim_emptyheap
         palette.add_block('clearheap',
                           style='basic-style-extended-vertical',
                           label=_('empty heap'),
                           prim_name='clearheap',
                           help_string=_('emptys FILO (first-in-last-out heap)'))
         self.tw.lc.def_prim('clearheap', 0, 
-                             lambda self: PLUGIN_DICTIONARY['clearheap']())
+                             lambda self: primitive_dictionary['clearheap']())
 
-        PLUGIN_DICTIONARY['pop'] = self._prim_pop
+        primitive_dictionary['pop'] = self._prim_pop
         palette.add_block('pop',
                           style='box-style',
                           label=_('pop'),
@@ -329,9 +329,9 @@ last-out heap)'))
                           help_string=_('pops value off FILO (first-in \
 last-out heap)'))
         self.tw.lc.def_prim('pop', 0, 
-                             lambda self: PLUGIN_DICTIONARY['pop']())
+                             lambda self: primitive_dictionary['pop']())
 
-        PLUGIN_DICTIONARY['print'] = self._prim_print
+        primitive_dictionary['print'] = self._prim_print
         palette.add_block('comment',
                           style='basic-style-1arg',
                           label=_('comment'),
@@ -339,7 +339,7 @@ last-out heap)'))
                           default=_('comment'),
                           help_string=_('places a comment in your code'))
         self.tw.lc.def_prim('comment', 1,
-            lambda self, x: PLUGIN_DICTIONARY['print'](x, True))
+            lambda self, x: primitive_dictionary['print'](x, True))
 
         palette.add_block('print',
                           style='basic-style-1arg',
@@ -348,9 +348,9 @@ last-out heap)'))
                           help_string=_('prints value in status block at \
 bottom of the screen'))
         self.tw.lc.def_prim('print', 1,
-            lambda self, x: PLUGIN_DICTIONARY['print'](x, False))
+            lambda self, x: primitive_dictionary['print'](x, False))
 
-        PLUGIN_DICTIONARY['myfunction'] = self._prim_myfunction
+        primitive_dictionary['myfunction'] = self._prim_myfunction
         palette.add_block('myfunc1arg',
                           style='number-style-var-arg',
                           label=[_('Python'), 'f(x)', 'x'],
@@ -359,7 +359,7 @@ bottom of the screen'))
                           help_string=_('a programmable block: used to add \
 advanced single-variable math equations, e.g., sin(x)'))
         self.tw.lc.def_prim('myfunction', 2,
-            lambda self, f, x: PLUGIN_DICTIONARY['myfunction'](f, [x]))
+            lambda self, f, x: primitive_dictionary['myfunction'](f, [x]))
 
         palette.add_block('myfunc2arg',
                           hidden=True,
@@ -370,7 +370,7 @@ advanced single-variable math equations, e.g., sin(x)'))
                           help_string=_('a programmable block: used to add \
 advanced multi-variable math equations, e.g., sqrt(x*x+y*y)'))
         self.tw.lc.def_prim('myfunction2', 3,
-            lambda self, f, x, y: PLUGIN_DICTIONARY['myfunction'](f, [x, y]))
+            lambda self, f, x, y: primitive_dictionary['myfunction'](f, [x, y]))
 
         palette.add_block('myfunc3arg',
                           hidden=True,
@@ -381,10 +381,10 @@ advanced multi-variable math equations, e.g., sqrt(x*x+y*y)'))
                           help_string=_('a programmable block: used to add \
 advanced multi-variable math equations, e.g., sin(x+y+z)'))
         self.tw.lc.def_prim('myfunction3', 4,
-            lambda self, f, x, y, z: PLUGIN_DICTIONARY['myfunction'](
+            lambda self, f, x, y, z: primitive_dictionary['myfunction'](
                 f, [x, y, z]))
 
-        PLUGIN_DICTIONARY['userdefined'] = self._prim_myblock
+        primitive_dictionary['userdefined'] = self._prim_myblock
         palette.add_block('userdefined',
                           style='basic-style-var-arg',
                           label=' ',
@@ -394,7 +394,7 @@ advanced multi-variable math equations, e.g., sin(x+y+z)'))
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined', 1,
-            lambda self, x: PLUGIN_DICTIONARY['userdefined']([x]))
+            lambda self, x: primitive_dictionary['userdefined']([x]))
 
         palette.add_block('userdefined2args',
                           hidden=True,
@@ -406,7 +406,7 @@ module found in the Journal'))
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined2', 2,
-            lambda self, x, y: PLUGIN_DICTIONARY['userdefined']([x, y]))
+            lambda self, x, y: primitive_dictionary['userdefined']([x, y]))
 
         palette.add_block('userdefined3args',
                           hidden=True,
@@ -418,7 +418,7 @@ module found in the Journal'))
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined3', 3,
-            lambda self, x, y, z: PLUGIN_DICTIONARY['userdefined']([x, y, z]))
+            lambda self, x, y, z: primitive_dictionary['userdefined']([x, y, z]))
 
         palette.add_block('cartesian',
                           style='basic-style-extended-vertical',
@@ -445,7 +445,7 @@ module found in the Journal'))
         self.tw.lc.def_prim('turtle', 1,
             lambda self, x: self.tw.canvas.set_turtle(x))
 
-        PLUGIN_DICTIONARY['skin'] = self._prim_reskin
+        primitive_dictionary['skin'] = self._prim_reskin
         palette.add_block('skin',
                           hidden=True,
                           style='basic-style-1arg',
@@ -453,7 +453,7 @@ module found in the Journal'))
                           prim_name='skin',
                           help_string=_("put a custom 'shell' on the turtle"))
         self.tw.lc.def_prim('skin', 1,
-            lambda self, x: PLUGIN_DICTIONARY['skin'](x))
+            lambda self, x: primitive_dictionary['skin'](x))
 
         # macro
         palette.add_block('reskin',
@@ -535,7 +535,7 @@ click to open'))
         self.tw.lc.def_prim('fullscreen', 0,
                              lambda self: self.tw.set_fullscreen())
 
-        PLUGIN_DICTIONARY['bulletlist'] = self._prim_list
+        primitive_dictionary['bulletlist'] = self._prim_list
         palette.add_block('list',
                           hidden=True,
                           style='bullet-style',
@@ -544,7 +544,7 @@ click to open'))
                           default=['∙ ', '∙ '],
                           help_string=_('presentation bulleted list'))
         self.tw.lc.def_prim('bulletlist', 1,
-                             PLUGIN_DICTIONARY['bulletlist'], True)
+                             primitive_dictionary['bulletlist'], True)
 
         # macros
         palette.add_block('picturelist',
@@ -670,7 +670,7 @@ Journal objects'))
 
         # deprecated blocks
 
-        PLUGIN_DICTIONARY['t1x1'] = self._prim_t1x1
+        primitive_dictionary['t1x1'] = self._prim_t1x1
         palette.add_block('template1x1',
                           hidden=True,
                           style='portfolio-style-1x1',
@@ -681,9 +681,9 @@ Journal objects'))
                           help_string=_('presentation template: select \
 Journal object (with description)'))
         self.tw.lc.def_prim('t1x1', 2,
-                            lambda self, a, b: PLUGIN_DICTIONARY['t1x1'](a, b))
+                            lambda self, a, b: primitive_dictionary['t1x1'](a, b))
 
-        PLUGIN_DICTIONARY['t1x1a'] = self._prim_t1x1a
+        primitive_dictionary['t1x1a'] = self._prim_t1x1a
         palette.add_block('template1x1a',
                           hidden=True,
                           style='portfolio-style-1x1',
@@ -694,9 +694,9 @@ Journal object (with description)'))
                           help_string=_('presentation template: select \
 Journal object (no description)'))
         self.tw.lc.def_prim('t1x1a', 2,
-            lambda self, a, b: PLUGIN_DICTIONARY['t1x1a'](a, b))
+            lambda self, a, b: primitive_dictionary['t1x1a'](a, b))
 
-        PLUGIN_DICTIONARY['2x1'] = self._prim_t2x1
+        primitive_dictionary['2x1'] = self._prim_t2x1
         palette.add_block('template2x1',
                           hidden=True,
                           style='portfolio-style-2x1',
@@ -707,9 +707,9 @@ Journal object (no description)'))
                           help_string=_("presentation template: select two \
 Journal objects"))
         self.tw.lc.def_prim('t2x1', 3,
-            lambda self, a, b, c: PLUGIN_DICTIONARY['t2x1'](a, b, c))
+            lambda self, a, b, c: primitive_dictionary['t2x1'](a, b, c))
 
-        PLUGIN_DICTIONARY['1x2'] = self._prim_t1x2
+        primitive_dictionary['1x2'] = self._prim_t1x2
         palette.add_block('template1x2',
                           hidden=True,
                           style='portfolio-style-1x2',
@@ -720,9 +720,9 @@ Journal objects"))
                           help_string=_("presentation template: select two \
 Journal objects"))
         self.tw.lc.def_prim('t1x2', 3,
-            lambda self, a, b, c: PLUGIN_DICTIONARY['t1x2'](a, b, c))
+            lambda self, a, b, c: primitive_dictionary['t1x2'](a, b, c))
 
-        PLUGIN_DICTIONARY['t2x2'] = self._prim_t2x2
+        primitive_dictionary['t2x2'] = self._prim_t2x2
         palette.add_block('template2x2',
                           hidden=True,
                           style='portfolio-style-2x2',
@@ -733,7 +733,7 @@ Journal objects"))
                           help_string=_("presentation template: select four \
 Journal objects"))
         self.tw.lc.def_prim('t2x2', 5,
-            lambda self, a, b, c, d, e: PLUGIN_DICTIONARY['t2x2'](
+            lambda self, a, b, c, d, e: primitive_dictionary['t2x2'](
                 a, b, c, d, e))
 
         palette.add_block('templatelist',
@@ -833,7 +833,7 @@ bullets'))
             return
         if type(n) == str or type(n) == unicode:
             if n[0:6] == 'media_' and \
-               n[6:].lower not in MEDIA_BLOCKS_DICTIONARY:
+               n[6:].lower not in media_blocks_dictionary:
                 try:
                     if self.tw.running_sugar:
                         try:
@@ -941,9 +941,9 @@ bullets'))
             elif string[0:6] in ['media_', 'descr_', 'audio_', 'video_']:
                 self.tw.lc.filepath = None
                 self.tw.lc.dsobject = None
-                print string[6:], MEDIA_BLOCKS_DICTIONARY
-                if string[6:].lower() in MEDIA_BLOCKS_DICTIONARY:
-                    MEDIA_BLOCKS_DICTIONARY[string[6:].lower()]()
+                print string[6:], media_blocks_dictionary
+                if string[6:].lower() in media_blocks_dictionary:
+                    media_blocks_dictionary[string[6:].lower()]()
                 elif os.path.exists(string[6:]):  # is it a path?
                     self.tw.lc.filepath = string[6:]
                 elif self.tw.running_sugar:  # is it a datastore object?

@@ -22,7 +22,7 @@
 from taconstants import BLOCK_STYLES, BLOCK_NAMES, HELP_STRINGS, PALETTES, \
     PALETTE_NAMES, CONTENT_BLOCKS, PRIMITIVES, DEFAULTS, SPECIAL_NAMES, \
     COLORS, EXPANDABLE_STYLE, EXPANDABLE_BLOCKS
-from talogo import VALUE_BLOCKS
+from talogo import value_blocks
 from tautils import debug_output
 
 
@@ -154,7 +154,7 @@ class Block():
             HELP_STRINGS[self._name] = ''
 
         if self._value_block:
-            VALUE_BLOCKS.append(self._name)
+            value_blocks.append(self._name)
 
         if self._content_block:
             CONTENT_BLOCKS.append(self._name)

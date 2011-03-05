@@ -33,7 +33,7 @@ from audio.ringbuffer import RingBuffer1d
 
 from TurtleArt.tapalette import make_palette
 from TurtleArt.taconstants import XO1, XO15
-from TurtleArt.talogo import PLUGIN_DICTIONARY
+from TurtleArt.talogo import primitive_dictionary
 
 import logging
 _logger = logging.getLogger('turtleart-activity audio sensors plugin')
@@ -81,7 +81,7 @@ class Audio_sensors_plugin(Plugin):
                                colors=["#FF6060", "#A06060"],
                                help_string=_('Palette of sensor blocks'))
 
-        PLUGIN_DICTIONARY['sound'] = self.prim_sound
+        primitive_dictionary['sound'] = self.prim_sound
         palette.add_block('sound',
                           style='box-style',
                           label=_('sound'),
@@ -89,9 +89,9 @@ class Audio_sensors_plugin(Plugin):
                           value_block=True,
                           prim_name='sound')
         self._parent.lc.def_prim('sound', 0,
-                                  lambda self: PLUGIN_DICTIONARY['sound']())
+                                  lambda self: primitive_dictionary['sound']())
 
-        PLUGIN_DICTIONARY['volume'] = self.prim_volume
+        primitive_dictionary['volume'] = self.prim_volume
         palette.add_block('volume',
                           style='box-style',
                           label=_('loudness'),
@@ -99,9 +99,9 @@ class Audio_sensors_plugin(Plugin):
                           value_block=True,
                           prim_name='volume')
         self._parent.lc.def_prim('volume', 0,
-                                  lambda self: PLUGIN_DICTIONARY['volume']())
+                                  lambda self: primitive_dictionary['volume']())
 
-        PLUGIN_DICTIONARY['pitch'] = self.prim_pitch
+        primitive_dictionary['pitch'] = self.prim_pitch
         if PITCH_AVAILABLE:
             palette.add_block('pitch',
                               style='box-style',
@@ -118,10 +118,10 @@ class Audio_sensors_plugin(Plugin):
                               value_block=True,
                               prim_name='pitch')
         self._parent.lc.def_prim('pitch', 0,
-                                  lambda self: PLUGIN_DICTIONARY['pitch']())
+                                  lambda self: primitive_dictionary['pitch']())
 
         if self.hw in [XO1, XO15]:
-            PLUGIN_DICTIONARY['resistance'] = self.prim_resistance
+            primitive_dictionary['resistance'] = self.prim_resistance
             palette.add_block('resistance',
                               style='box-style',
                               label=_('resistance'),
@@ -129,9 +129,9 @@ class Audio_sensors_plugin(Plugin):
                               value_block=True,
                               prim_name='resistance')
             self._parent.lc.def_prim('resistance', 0,
-                lambda self: PLUGIN_DICTIONARY['resistance']())
+                lambda self: primitive_dictionary['resistance']())
 
-            PLUGIN_DICTIONARY['voltage'] = self.prim_voltage
+            primitive_dictionary['voltage'] = self.prim_voltage
             palette.add_block('voltage',
                               style='box-style',
                               label=_('voltage'),
@@ -139,7 +139,7 @@ class Audio_sensors_plugin(Plugin):
                               value_block=True,
                               prim_name='voltage')
             self._parent.lc.def_prim('voltage', 0,
-                lambda self: PLUGIN_DICTIONARY['voltage']())
+                lambda self: primitive_dictionary['voltage']())
 
         self.audio_started = False
 

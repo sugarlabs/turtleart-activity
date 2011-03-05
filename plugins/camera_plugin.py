@@ -28,7 +28,7 @@ from camera.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, VIDIOC_G_CTRL, \
 from plugin import Plugin
 
 from TurtleArt.tapalette import make_palette
-from TurtleArt.talogo import MEDIA_BLOCKS_DICTIONARY, PLUGIN_DICTIONARY
+from TurtleArt.talogo import media_blocks_dictionary, primitive_dictionary
 from TurtleArt.tautils import get_path
 
 import logging
@@ -60,7 +60,7 @@ class Camera_plugin(Plugin):
 
         # set up camera-specific blocks
         if self._status:
-            PLUGIN_DICTIONARY['luminance'] = self.prim_read_camera
+            primitive_dictionary['luminance'] = self.prim_read_camera
             palette.add_block('luminance',
                               style='box-style',
                               label=_('brightness'),
@@ -68,10 +68,10 @@ class Camera_plugin(Plugin):
                               value_block=True,
                               prim_name='luminance')
             self._parent.lc.def_prim('luminance', 0,
-                lambda self: PLUGIN_DICTIONARY['luminance'](True))
+                lambda self: primitive_dictionary['luminance'](True))
 
             # Depreciated block
-            PLUGIN_DICTIONARY['read_camera'] = self.prim_read_camera
+            primitive_dictionary['read_camera'] = self.prim_read_camera
             palette.add_block('read_camera',
                               hidden=True,
                               style='box-style',
@@ -81,9 +81,9 @@ is pushed to the stack'),
                               value_block=True,
                               prim_name='luminance')
             self._parent.lc.def_prim('read_camera', 0,
-                lambda self: PLUGIN_DICTIONARY['read_camera'](True))
+                lambda self: primitive_dictionary['read_camera'](True))
 
-            MEDIA_BLOCKS_DICTIONARY['camera'] = self.prim_take_picture
+            media_blocks_dictionary['camera'] = self.prim_take_picture
             palette.add_block('camera',
                               style='box-style-media',
                               label=' ',

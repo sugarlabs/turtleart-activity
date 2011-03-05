@@ -26,7 +26,7 @@ from rfid.rfidutils import strhex2bin, strbin2dec, find_device
 from plugin import Plugin
 
 from TurtleArt.tapalette import make_palette
-from TurtleArt.talogo import PLUGIN_DICTIONARY
+from TurtleArt.talogo import primitive_dictionary
 
 import logging
 _logger = logging.getLogger('turtleart-activity RFID plugin')
@@ -86,7 +86,7 @@ class Rfid_plugin(Plugin):
                                    colors=["#FF6060", "#A06060"],
                                    help_string=_('Palette of sensor blocks'))
 
-            PLUGIN_DICTIONARY['rfid'] = self.prim_read_camera
+            primitive_dictionary['rfid'] = self.prim_read_camera
             palette.add_block('rfid',
                               palette='sensor',
                               style='box-style',
@@ -95,7 +95,7 @@ class Rfid_plugin(Plugin):
                               value_block=True,
                               prim_name='rfid')
             self._parent.lc.def_prim('rfid', 0,
-                lambda self: PLUGIN_DICTIONARY['rfid'](True))
+                lambda self: primitive_dictionary['rfid'](True))
 
     def _status_report(self):
         print 'Reporting RFID status: %s' % (str(self._status))
