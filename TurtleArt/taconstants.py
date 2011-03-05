@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2010, Walter Bender
+#Copyright (c) 2010-11 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -75,49 +75,6 @@ XO15 = 'xo1.5'
 UNKNOWN = 'unknown'
 
 #
-# Block-style definitions
-#
-
-BLOCK_STYLES = {'basic-style-head': [],
-                'basic-style-head-1arg': [],
-                'basic-style-tail': [],
-                'basic-style': [],
-                'basic-style-extended-vertical': [],
-                'invisible': [],
-                'basic-style-extended': [],
-                'basic-style-1arg': [],
-                'basic-style-var-arg': [],
-                'bullet-style': [],
-                'basic-style-2arg': [],
-                'box-style': [],
-                'box-style-media': [],
-                'number-style': [],
-                'number-style-var-arg': [],
-                'number-style-block': [],
-                'number-style-porch': [],
-                'number-style-1arg': [],
-                'number-style-1strarg': [],
-                'compare-style': [],
-                'compare-porch-style': [],
-                'boolean-style': [],
-                'not-style': [],
-                'flow-style': [],
-                'flow-style-tail': [],
-                'flow-style-1arg': [],
-                'flow-style-boolean': [],
-                'flow-style-while': [],
-                'flow-style-else': [],
-                'collapsible-top': [],
-                'collapsible-top-no-arm': [],
-                'collapsible-top-no-label': [],
-                'collapsible-top-no-arm-no-label': [],
-                'collapsible-bottom': [],
-                'portfolio-style-2x2': [],
-                'portfolio-style-1x1': [],
-                'portfolio-style-2x1': [],
-                'portfolio-style-1x2': []}
-
-#
 # Blocks that are expandable
 #
 EXPANDABLE_STYLE = ['boolean-style', 'compare-porch-style', 'compare-style',
@@ -142,7 +99,7 @@ OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
 # These blocks get a special skin
 #
 BLOCKS_WITH_SKIN = ['journal', 'audio', 'description', 'nop', 'userdefined',
-                    'video', 'userdefined2args', 'userdefined3args']
+                    'video', 'userdefined2args', 'userdefined3args', 'camera']
 
 PYTHON_SKIN = ['nop', 'userdefined', 'userdefined2args', 'userdefined3args']
 
