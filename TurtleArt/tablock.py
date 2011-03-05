@@ -23,10 +23,10 @@ import gtk
 
 from gettext import gettext as _
 
-from taconstants import EXPANDABLE, EXPANDABLE_BLOCKS, EXPANDABLE_ARGS, \
-    PRIMITIVES, OLD_NAMES, BLOCK_SCALE, BLOCK_NAMES, CONTENT_BLOCKS, \
-    PALETTES, COLORS, BLOCK_STYLES, STANDARD_STROKE_WIDTH, BOX_COLORS, \
-    GRADIENT_COLOR, CONSTANTS
+from taconstants import CONSTANTS, EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, \
+    STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS, GRADIENT_COLOR
+from tapalette import palette_blocks, block_colors, expandable_blocks, \
+    content_blocks, block_names, block_primitives, block_styles
 from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
 
@@ -202,8 +202,8 @@ class Block:
                     break
         self._new_block_from_factory(sprite_list, x, y, copy_block)
 
-        if name in PRIMITIVES:
-            self.primitive = PRIMITIVES[self.name]
+        if name in block_primitives:
+            self.primitive = block_primitives[self.name]
 
         self.block_list.append_to_list(self)
 
@@ -211,7 +211,7 @@ class Block:
         """ Can this block be expanded? """
         if self.name in EXPANDABLE:
             return True
-        if self.name in EXPANDABLE_BLOCKS:
+        if self.name in expandable_blocks:
             return True
         if self.name in EXPANDABLE_ARGS:
             return True
@@ -221,7 +221,7 @@ class Block:
         """ Is it safe to clone this block? """
         if self.expandable():
             return False
-        if self.name in BLOCK_STYLES['box-style']:
+        if self.name in block_styles['box-style']:
             return False
         if self.name in ['sandwichtop', 'sandwichtop_no_label']:
             return False
@@ -404,11 +404,11 @@ class Block:
                     else:
                         self._set_labels(i, str(v))
         elif self.type == 'block' and self.name in CONSTANTS:
-                self._set_labels(0, BLOCK_NAMES[self.name][0] + ' = ' + \
+                self._set_labels(0, block_names[self.name][0] + ' = ' + \
                                      str(CONSTANTS[self.name]))
 
-        elif self.name in BLOCK_NAMES:
-            for i, n in enumerate(BLOCK_NAMES[self.name]):
+        elif self.name in block_names:
+            for i, n in enumerate(block_names[self.name]):
                 self._set_labels(i, n)
 
         if copy_block is None:
@@ -420,21 +420,21 @@ class Block:
                              self.svg.margins[2], self.svg.margins[3])
 
     def _set_label_attributes(self):
-        if self.name in CONTENT_BLOCKS:
+        if self.name in content_blocks:
             n = len(self.values)
             if n == 0:
                 n = 1  # Force a scale to be set, even if there is no value.
         else:
-            if self.name in BLOCK_NAMES:
-                n = len(BLOCK_NAMES[self.name])
+            if self.name in block_names:
+                n = len(block_names[self.name])
             else:
                 debug_output('WARNING: unknown block name %s' % (self.name))
                 n = 0
         for i in range(n):
-            if self.name in BLOCK_STYLES['compare-porch-style']:
+            if self.name in block_styles['compare-porch-style']:
                 self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
                                               True, 'center', 'bottom', i)
-            elif self.name in BLOCK_STYLES['number-style-porch']:
+            elif self.name in block_styles['number-style-porch']:
                 self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
                                               True, 'right', 'bottom', i)
             elif i == 1:  # top
@@ -457,8 +457,8 @@ class Block:
         self._bottom = 0
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
         self.svg.clear_docks()
-        for k in BLOCK_STYLES.keys():
-            if self.name in BLOCK_STYLES[k]:
+        for k in block_styles.keys():
+            if self.name in block_styles[k]:
                 if type(self.block_methods[k]) == type([]):
                     self.block_methods[k][0](svg, self.block_methods[k][1],
                                              self.block_methods[k][2])
@@ -470,9 +470,9 @@ class Block:
         if self.name in BOX_COLORS:
             self.colors = BOX_COLORS[self.name]
         else:
-            for p in range(len(PALETTES)):
-                if self.name in PALETTES[p]:
-                    self.colors = COLORS[p]
+            for p in range(len(palette_blocks)):
+                if self.name in palette_blocks[p]:
+                    self.colors = block_colors[p]
         self.svg.set_colors(self.colors)
 
     def _make_basic_style(self, svg, extend_x=0, extend_y=0):

@@ -19,10 +19,57 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-from taconstants import BLOCK_STYLES, BLOCK_NAMES, HELP_STRINGS, PALETTES, \
-    PALETTE_NAMES, CONTENT_BLOCKS, PRIMITIVES, DEFAULTS, SPECIAL_NAMES, \
-    COLORS, EXPANDABLE_STYLE, EXPANDABLE_BLOCKS
-from talogo import value_blocks
+palette_names = []
+palette_blocks = []
+block_colors = []
+expandable_blocks = []
+block_names = {}
+block_primitives = {}
+default_values = {}
+special_names = {}  # Names for blocks without names for popup help
+content_blocks = ['number', 'string', 'description', 'audio', 'video',
+                  'journal']
+value_blocks = []  # blocks whose labels are updated get added here
+block_styles = {'basic-style-head': [],
+                'basic-style-head-1arg': [],
+                'basic-style-tail': [],
+                'basic-style': [],
+                'basic-style-extended-vertical': [],
+                'invisible': [],
+                'basic-style-extended': [],
+                'basic-style-1arg': [],
+                'basic-style-var-arg': [],
+                'bullet-style': [],
+                'basic-style-2arg': [],
+                'box-style': [],
+                'box-style-media': [],
+                'number-style': [],
+                'number-style-var-arg': [],
+                'number-style-block': [],
+                'number-style-porch': [],
+                'number-style-1arg': [],
+                'number-style-1strarg': [],
+                'compare-style': [],
+                'compare-porch-style': [],
+                'boolean-style': [],
+                'not-style': [],
+                'flow-style': [],
+                'flow-style-tail': [],
+                'flow-style-1arg': [],
+                'flow-style-boolean': [],
+                'flow-style-while': [],
+                'flow-style-else': [],
+                'collapsible-top': [],
+                'collapsible-top-no-arm': [],
+                'collapsible-top-no-label': [],
+                'collapsible-top-no-arm-no-label': [],
+                'collapsible-bottom': [],
+                'portfolio-style-2x2': [],
+                'portfolio-style-1x1': [],
+                'portfolio-style-2x1': [],
+                'portfolio-style-1x2': []}
+
+from taconstants import HELP_STRINGS, EXPANDABLE_STYLE
 from tautils import debug_output
 
 
@@ -41,24 +88,24 @@ class Palette():
             return
 
         # Insert new palette just before the trash
-        if 'trash' in PALETTE_NAMES:
-            i = PALETTE_NAMES.index('trash')
+        if 'trash' in palette_names:
+            i = palette_names.index('trash')
         else:
-            i = len(PALETTE_NAMES)
+            i = len(palette_names)
 
         if position is not None and type(position) is int and position < i:
             i = position
 
-        if self._name not in PALETTE_NAMES:
-            PALETTE_NAMES.insert(i, self._name)
-            PALETTES.insert(i, [])
-            COLORS.insert(i, self._colors)
+        if self._name not in palette_names:
+            palette_names.insert(i, self._name)
+            palette_blocks.insert(i, [])
+            block_colors.insert(i, self._colors)
         else:
             # debug_output('Palette %s already defined' % (self._name))
             return
 
         # Special name entry is needed for help hover mechanism
-        SPECIAL_NAMES[self._name] = self._special_name
+        special_names[self._name] = self._special_name
         if self._help is not None:
             HELP_STRINGS[self._name] = self._help
         else:
@@ -133,18 +180,18 @@ class Block():
             debug_output('You must specify a style for your block')
             return
         else:
-            BLOCK_STYLES[self._style].append(self._name)
+            block_styles[self._style].append(self._name)
 
         if self._label is not None:
-            BLOCK_NAMES[self._name] = self._label
+            block_names[self._name] = self._label
 
         if self._palette is not None:
-            i = PALETTE_NAMES.index(self._palette)
+            i = palette_names.index(self._palette)
             if position is not None and type(position) is int and \
-                    position < len(PALETTES[i]):
-                PALETTES[i].insert(position, self._name)
+                    position < len(palette_blocks[i]):
+                palette_blocks[i].insert(position, self._name)
             else:
-                PALETTES[i].append(self._name)
+                palette_blocks[i].append(self._name)
                 if position is not None:
                     debug_output('Ignoring position (%s)' % (str(position)))
 
@@ -157,19 +204,19 @@ class Block():
             value_blocks.append(self._name)
 
         if self._content_block:
-            CONTENT_BLOCKS.append(self._name)
+            content_blocks.append(self._name)
 
         if self._prim_name is not None:
-            PRIMITIVES[self._name] = self._prim_name
+            block_primitives[self._name] = self._prim_name
 
         if self._default is not None:
-            DEFAULTS[self._name] = self._default
+            default_values[self._name] = self._default
 
         if self._special_name is not None:
-            SPECIAL_NAMES[self._name] = self._special_name
+            special_names[self._name] = self._special_name
 
         if self._style in EXPANDABLE_STYLE:
-            EXPANDABLE_BLOCKS.append(self._name)
+            expandable_blocks.append(self._name)
 
     def set_value_block(self, value=True):
         self._value_block = value
@@ -178,7 +225,7 @@ class Block():
         self._content_block = value
 
     def set_palette(self, palette):
-        if not palette in PALETTE_NAMES:
+        if not palette in palette_names:
             debug_output('Could not find palette %s' % (palette))
         else:
             self._palette = palette
@@ -202,7 +249,7 @@ class Block():
             self._default = [default]
 
     def set_style(self, style):
-        if style not in BLOCK_STYLES:
+        if style not in block_styles:
             debug_output('Unknown style: %s' % (style))
         else:
             self._style = style

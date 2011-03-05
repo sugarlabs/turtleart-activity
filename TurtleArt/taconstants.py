@@ -35,14 +35,6 @@ TAB_LAYER = 710
 STATUS_LAYER = 900
 TOP_LAYER = 1000
 
-#
-# Block-palette categories
-#
-
-PALETTE_NAMES = []
-PALETTES = []
-COLORS = []
-
 # Special-case some block colors
 BOX_COLORS = {'red': ["#FF0000", "#A00000"],
               'orange': ["#FFD000", "#AA8000"],
@@ -133,8 +125,6 @@ EXPANDABLE_STYLE = ['boolean-style', 'compare-porch-style', 'compare-style',
 
 EXPANDABLE = ['vspace', 'hspace', 'identity2']
 
-EXPANDABLE_BLOCKS = []
-
 EXPANDABLE_ARGS = ['list', 'myfunc1arg', 'myfunc2arg',
                    'myfunc3arg', 'userdefined', 'userdefined2args',
                    'userdefined3args']
@@ -147,12 +137,6 @@ COLLAPSIBLE = ['sandwichbottom', 'sandwichcollapsed']
 # Deprecated block styles that need dock adjustments
 #
 OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
-
-#
-# Blocks that contain media
-#
-CONTENT_BLOCKS = ['number', 'string', 'description', 'audio', 'video',
-                  'journal']
 
 #
 # These blocks get a special skin
@@ -170,21 +154,6 @@ CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
              'orange': 10, 'yellow': 20, 'green': 40, 'cyan': 50, 'blue': 70,
              'purple': 90, 'titlex': None, 'titley': None, 'leftx': None,
              'topy': None, 'rightx': None, 'bottomy': None}
-
-#
-# Block-name dictionary used for labels
-#
-BLOCK_NAMES = {}
-
-#
-# Logo primitives
-#
-PRIMITIVES = {}
-
-#
-# block default values
-#
-DEFAULTS = {}
 
 #
 # Blocks that can interchange strings and numbers for their arguments
@@ -260,11 +229,6 @@ TEMPLATES = {'t1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
              't1x1a': (0.9, 0.9, 0.0625, 0.125, 0, 0),
              'bullet': (1, 1, 0.0625, 0.125, 0, 0.1),
              'insertimage': (0.333, 0.333)}
-
-#
-# Names for blocks without names for popup help
-#
-SPECIAL_NAMES = {}
 
 #
 # Help messages

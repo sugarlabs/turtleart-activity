@@ -154,7 +154,7 @@ turtle'))
                           default=90,
                           help_string=_('turns turtle counterclockwise (angle \
 in degrees)'))
-        self.tw.lc.def_prim('right', 1,
+        self.tw.lc.def_prim('left', 1,
                              lambda self, x: primitive_dictionary['right'](-x))
 
         palette.add_block('right',

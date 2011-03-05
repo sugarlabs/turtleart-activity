@@ -38,9 +38,8 @@ except (ImportError, AttributeError):
     except:
         OLD_SUGAR_SYSTEM = True
 
-from taconstants import STRING_OR_NUMBER_ARGS, HIDE_LAYER, CONTENT_ARGS, \
-                        COLLAPSIBLE, BLOCK_LAYER, CONTENT_BLOCKS, HIT_HIDE, \
-                        HIT_SHOW, XO1, XO15, UNKNOWN
+from taconstants import HIDE_LAYER, COLLAPSIBLE, BLOCK_LAYER, HIT_HIDE, \
+    HIT_SHOW, XO1, XO15, UNKNOWN
 from StringIO import StringIO
 import os.path
 from gettext import gettext as _
@@ -638,39 +637,6 @@ def neg_arg(value):
         if convert(value, float) < 0:
             return True
     return False
-
-
-def dock_dx_dy(block1, dock1n, block2, dock2n):
-    """ Find the distance between the dock points of two blocks. """
-    _dock1 = block1.docks[dock1n]
-    _dock2 = block2.docks[dock2n]
-    _d1type, _d1dir, _d1x, _d1y = _dock1[0:4]
-    _d2type, _d2dir, _d2x, _d2y = _dock2[0:4]
-    if block1 == block2:
-        return (100, 100)
-    if _d1dir == _d2dir:
-        return (100, 100)
-    if (_d2type is not 'number') or (dock2n is not 0):
-        if block1.connections is not None and \
-           dock1n < len(block1.connections) and \
-           block1.connections[dock1n] is not None:
-            return (100, 100)
-        if block2.connections is not None and \
-           dock2n < len(block2.connections) and \
-           block2.connections[dock2n] is not None:
-            return (100, 100)
-    if _d1type != _d2type:
-        if block1.name in STRING_OR_NUMBER_ARGS:
-            if _d2type == 'number' or _d2type == 'string':
-                pass
-        elif block1.name in CONTENT_ARGS:
-            if _d2type in CONTENT_BLOCKS:
-                pass
-        else:
-            return (100, 100)
-    (_b1x, _b1y) = block1.spr.get_xy()
-    (_b2x, _b2y) = block2.spr.get_xy()
-    return ((_b1x + _d1x) - (_b2x + _d2x), (_b1y + _d1y) - (_b2y + _d2y))
 
 
 def journal_check(blk1, blk2, dock1, dock2):

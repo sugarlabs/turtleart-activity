@@ -27,8 +27,8 @@ from time import time
 from operator import isNumberType
 from UserDict import UserDict
 
-from taconstants import TAB_LAYER, DEFAULT_SCALE, BLOCK_NAMES, \
-    PREFIX_DICTIONARY
+from taconstants import TAB_LAYER, DEFAULT_SCALE, PREFIX_DICTIONARY
+from tapalette import block_names, value_blocks
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
     text_media_type, round_int, debug_output
 
@@ -36,7 +36,6 @@ from util.RtfParser import RtfTextOnly
 
 from gettext import gettext as _
 
-value_blocks = []  # blocks whose labels are updated get added here
 media_blocks_dictionary = {}  # new media blocks get added here
 primitive_dictionary = {}  # new block primitives get added here
 
@@ -528,7 +527,7 @@ class LogoCode:
             return
         if value is None:
             for block in self.value_blocks_to_update[name]:
-                block.spr.set_label(BLOCK_NAMES[name][0])
+                block.spr.set_label(block_names[name][0])
                 block.resize()
         elif self.update_values:
             if type(value) == float:
@@ -537,7 +536,7 @@ class LogoCode:
             else:
                 valstring = str(value)
             for block in self.value_blocks_to_update[name]:
-                block.spr.set_label(BLOCK_NAMES[name][0] + ' = ' + valstring)
+                block.spr.set_label(block_names[name][0] + ' = ' + valstring)
                 block.resize()
 
     def push_file_data_to_heap(self, dsobject):
