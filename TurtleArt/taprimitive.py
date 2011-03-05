@@ -70,19 +70,46 @@ class Palette():
     def set_special_name(self, name):
         self._special_name = name
 
+    def add_block(self, block_name, style='basic-block', label=None,
+                  special_name=None, default=None, prim_name=None,
+                  help_string=None, value_block=False, content_block=False,
+                  hidden=False):
+        """ Add a new block to the palette """
+        block = Block(block_name)
+        block.set_style(style)
+        if label is not None:
+            block.set_label(label)
+        if special_name is not None:
+            block.set_special_name(special_name)
+        if default is not None:
+            if default == 'None':
+                block.set_default(None)
+            else:
+                block.set_default(default)
+        if prim_name is not None:
+            block.set_prim_name(prim_name)
+        if help_string is not None:
+            block.set_help(help_string)
+        block.set_value_block(value_block)
+        block.set_content_block(content_block)
+        if not hidden:
+            block.set_palette(self._name)
+        block.add_block()
+
 
 def make_palette(palette_name, colors=None, help_string=None):
     """ Palette helper function """
     if colors is None:
-        p = Palette(palette_name)
+        palette = Palette(palette_name)
     else:
-        p = Palette(palette_name, colors)
+        palette = Palette(palette_name, colors)
     if help_string is not None:
-        p.set_help(help_string)
-    p.add_palette()
+        palette.set_help(help_string)
+    palette.add_palette()
+    return palette
 
 
-class Primitive():
+class Block():
     """ a class for defining new block primitives """
 
     def __init__(self, name):
@@ -97,7 +124,7 @@ class Primitive():
         self._value_block = False
         self._content_block = False
 
-    def add_prim(self, position=None):
+    def add_block(self, position=None):
         if self._name is None:
             debug_output('You must specify a name for your block')
             return
@@ -182,29 +209,3 @@ class Primitive():
 
     def set_prim_name(self, prim_name):
         self._prim_name = prim_name
-
-
-def make_prim(block_name, style='basic-block', palette=None, label=None,
-              special_name=None, default=None, prim_name=None,
-              help_string=None, value_block=False, content_block=False):
-    """ Primitive helper function """
-    b = Primitive(block_name)
-    b.set_style(style)
-    if palette is not None:
-        b.set_palette(palette)
-    if label is not None:
-        b.set_label(label)
-    if special_name is not None:
-        b.set_special_name(special_name)
-    if default is not None:
-        if default == 'None':
-            b.set_default(None)
-        else:
-            b.set_default(default)
-    if prim_name is not None:
-        b.set_prim_name(prim_name)
-    if help_string is not None:
-        b.set_help(help_string)
-    b.set_value_block(value_block)
-    b.set_content_block(content_block)
-    b.add_prim()

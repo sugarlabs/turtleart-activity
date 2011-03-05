@@ -66,7 +66,7 @@ from random import uniform
 
 from gettext import gettext as _
 
-from taprimitive import make_palette, make_prim
+from taprimitive import make_palette
 from talogo import PLUGIN_DICTIONARY, logoerror
 from taconstants import CONSTANTS, BLACK, WHITE
 from tautils import convert, chr_to_ord, round_int, strtype
@@ -113,143 +113,135 @@ class Palettes():
     def _turtle_palette(self):
         """ The basic Turtle Art turtle palette """
 
-        make_palette('turtle',
-                     colors=["#00FF00", "#00A000"],
-                     help_string=_('Palette of turtle commands'))
+        palette = make_palette('turtle',
+                               colors=["#00FF00", "#00A000"],
+                               help_string=_('Palette of turtle commands'))
 
         PLUGIN_DICTIONARY['move'] = self._prim_move
-        make_prim('forward',
-                  palette='turtle',
-                  style='basic-style-1arg',
-                  label=_('forward'),
-                  default=100,
-                  prim_name='forward',
-                  help_string=_('moves turtle forward'))
+        palette.add_block('forward',
+                          style='basic-style-1arg',
+                          label=_('forward'),
+                          default=100,
+                          prim_name='forward',
+                          help_string=_('moves turtle forward'))
         self.tw.lc.def_prim('forward', 1,
                              lambda self, x: PLUGIN_DICTIONARY['move'](
                 self.tw.canvas.forward, x))
 
-        make_prim('back',
-                  palette='turtle',
-                  style='basic-style-1arg',
-                  label=_('back'),
-                  prim_name='back',
-                  default=100,
-                  help_string=_('moves turtle backward'))
+        palette.add_block('back',
+                          style='basic-style-1arg',
+                          label=_('back'),
+                          prim_name='back',
+                          default=100,
+                          help_string=_('moves turtle backward'))
         self.tw.lc.def_prim('back', 1,
                              lambda self, x: PLUGIN_DICTIONARY['move'](
                 self.tw.canvas.forward, -x))
 
         PLUGIN_DICTIONARY['clean'] = self.tw.lc.prim_clear
-        make_prim('clean',
-                  palette='turtle',
-                  style='basic-style-extended-vertical',
-                  label=_('clean'),
-                  prim_name='clean',
-                  help_string=_('clears the screen and reset the turtle'))
+        palette.add_block('clean',
+                          style='basic-style-extended-vertical',
+                          label=_('clean'),
+                          prim_name='clean',
+                          help_string=_('clears the screen and reset the \
+turtle'))
         self.tw.lc.def_prim('clean', 0,
                              lambda self: PLUGIN_DICTIONARY['clean']())
 
         PLUGIN_DICTIONARY['right'] = self._prim_right
-        make_prim('left',
-                  palette='turtle',
-                  style='basic-style-1arg',
-                  label=_('left'),
-                  prim_name='left',
-                  default=90,
-                  help_string=_('turns turtle counterclockwise (angle in \
-degrees)'))
+        palette.add_block('left',
+                          style='basic-style-1arg',
+                          label=_('left'),
+                          prim_name='left',
+                          default=90,
+                          help_string=_('turns turtle counterclockwise (angle \
+in degrees)'))
         self.tw.lc.def_prim('right', 1,
                              lambda self, x: PLUGIN_DICTIONARY['right'](-x))
 
-        make_prim('right',
-                  palette='turtle',
-                  style='basic-style-1arg',
-                  label=_('right'),
-                  prim_name='right',
-                  default=90,
-                  help_string=_('turns turtle clockwise (angle in degrees)'))
+        palette.add_block('right',
+                          style='basic-style-1arg',
+                          label=_('right'),
+                          prim_name='right',
+                          default=90,
+                          help_string=_('turns turtle clockwise (angle in \
+degrees)'))
         self.tw.lc.def_prim('right', 1,
                              lambda self, x: PLUGIN_DICTIONARY['right'](x))
 
         PLUGIN_DICTIONARY['arc'] = self._prim_arc
-        make_prim('arc',
-                  palette='turtle',
-                  style='basic-style-2arg',
-                  label=[_('arc'), _('angle'), _('radius')],
-                  prim_name='arc',
-                  default=[90, 100],
-                  help_string=_('moves turtle along an arc'))
+        palette.add_block('arc',
+                          style='basic-style-2arg',
+                          label=[_('arc'), _('angle'), _('radius')],
+                          prim_name='arc',
+                          default=[90, 100],
+                          help_string=_('moves turtle along an arc'))
         self.tw.lc.def_prim('arc', 2,
                              lambda self, x, y: PLUGIN_DICTIONARY['arc'](
                 self.tw.canvas.arc, x, y))
 
-        make_prim('setxy2',
-                  palette='turtle',
-                  style='basic-style-2arg',
-                  label=[_('set xy'), _('x'), _('y')],
-                  prim_name='setxy2',
-                  default=[0, 0],
-                  help_string=_('moves turtle to position xcor, ycor; (0, 0) \
-is in the center of the screen.'))
+        palette.add_block('setxy2',
+                          style='basic-style-2arg',
+                          label=[_('set xy'), _('x'), _('y')],
+                          prim_name='setxy2',
+                          default=[0, 0],
+                          help_string=_('moves turtle to position xcor, ycor; \
+(0, 0) is in the center of the screen.'))
         self.tw.lc.def_prim('setxy2', 2,
                              lambda self, x, y: PLUGIN_DICTIONARY['move'](
                 self.tw.canvas.setxy, x, y))
 
         PLUGIN_DICTIONARY['set'] = self._prim_set
-        make_prim('seth',
-                  palette='turtle',
-                  style='basic-style-1arg',
-                  label=_('set heading'),
-                  prim_name='seth',
-                  default=0,
-                  help_string=_('sets the heading of the turtle (0 is towards \
-the top of the screen.)'))
+        palette.add_block('seth',
+                          style='basic-style-1arg',
+                          label=_('set heading'),
+                          prim_name='seth',
+                          default=0,
+                          help_string=_('sets the heading of the turtle (0 is \
+towards the top of the screen.)'))
         self.tw.lc.def_prim('seth', 1,
                              lambda self, x: PLUGIN_DICTIONARY['set'](
                 'heading', self.tw.canvas.seth, x))
 
-        make_prim('xcor',
-                  palette='turtle',
-                  style='box-style',
-                  label=_('xcor'),
-                  help_string=_('holds current x-coordinate value of the \
-turtle (can be used in place of a number block)'),
-                  value_block=True,
-                  prim_name='xcor')
+        palette.add_block('xcor',
+                          style='box-style',
+                          label=_('xcor'),
+                          help_string=_('holds current x-coordinate value of \
+the turtle (can be used in place of a number block)'),
+                          value_block=True,
+                          prim_name='xcor')
         self.tw.lc.def_prim(
             'xcor', 0, lambda self: self.tw.canvas.xcor / self.tw.coord_scale)
 
-        make_prim('ycor',
-                  palette='turtle',
-                  style='box-style',
-                  label=_('ycor'),
-                  help_string=_('holds current y-coordinate value of the \
-turtle (can be used in place of a number block)'),
-                  value_block=True,
-                  prim_name='ycor')
+        palette.add_block('ycor',
+                          style='box-style',
+                          label=_('ycor'),
+                          help_string=_('holds current y-coordinate value of \
+the turtle (can be used in place of a number block)'),
+                          value_block=True,
+                          prim_name='ycor')
         self.tw.lc.def_prim(
             'ycor', 0, lambda self: self.tw.canvas.ycor / self.tw.coord_scale)
 
-        make_prim('heading',
-                  palette='turtle',
-                  style='box-style',
-                  label=_('heading'),
-                  help_string=_('holds current heading value of the turtle \
-(can be used in place of a number block)'),
-                  value_block=True,
-                  prim_name='heading')
+        palette.add_block('heading',
+                          style='box-style',
+                          label=_('heading'),
+                          help_string=_('holds current heading value of the \
+turtle (can be used in place of a number block)'),
+                          value_block=True,
+                          prim_name='heading')
         self.tw.lc.def_prim(
             'heading', 0, lambda self: self.tw.canvas.heading)
 
         # Deprecated
-        make_prim('setxy',
-                  style='basic-style-2arg',
-                  label=[_('set xy'), _('x'), _('y')],
-                  prim_name='setxy',
-                  default=[0, 0],
-                  help_string=_('moves turtle to position xcor, ycor; (0, 0) \
-is in the center of the screen.'))
+        palette.add_block('setxy',
+                          hidden=True,
+                          style='basic-style-2arg',
+                          label=[_('set xy'), _('x'), _('y')],
+                          prim_name='setxy',
+                          default=[0, 0],
+                          help_string=_('moves turtle to position xcor, ycor; \
+(0, 0) is in the center of the screen.'))
         self.tw.lc.def_prim('setxy', 2,
                              lambda self, x, y: PLUGIN_DICTIONARY['move'](
                 self.tw.canvas.setxy, x, y, pendown=False))
@@ -257,597 +249,556 @@ is in the center of the screen.'))
     def _pen_palette(self):
         """ The basic Turtle Art pen palette """
 
-        make_palette('pen',
-                     colors=["#00FFFF", "#00A0A0"],
-                     help_string=_('Palette of pen commands'))
+        palette = make_palette('pen',
+                               colors=["#00FFFF", "#00A0A0"],
+                               help_string=_('Palette of pen commands'))
 
-        make_prim('penup',
-                  palette='pen',
-                  style='basic-style-extended-vertical',
-                  label=_('pen up'),
-                  prim_name='penup',
-                  help_string=_('Turtle will not draw when moved.'))
+        palette.add_block('penup',
+                          style='basic-style-extended-vertical',
+                          label=_('pen up'),
+                          prim_name='penup',
+                          help_string=_('Turtle will not draw when moved.'))
         self.tw.lc.def_prim('penup', 0,
                              lambda self: self.tw.canvas.setpen(False))
 
-        make_prim('pendown',
-                  palette='pen',
-                  style='basic-style-extended-vertical',
-                  label=_('pen down'),
-                  prim_name='pendown',
-                  help_string=_('Turtle will draw when moved.'))
+        palette.add_block('pendown',
+                          style='basic-style-extended-vertical',
+                          label=_('pen down'),
+                          prim_name='pendown',
+                          help_string=_('Turtle will draw when moved.'))
         self.tw.lc.def_prim('pendown', 0,
                              lambda self: self.tw.canvas.setpen(True))
 
-        make_prim('setpensize',
-                  palette='pen',
-                  style='basic-style-1arg',
-                  label=_('set pen size'),
-                  prim_name='setpensize',
-                  default=5,
-                  help_string=_('sets size of the line drawn by the turtle'))
+        palette.add_block('setpensize',
+                          style='basic-style-1arg',
+                          label=_('set pen size'),
+                          prim_name='setpensize',
+                          default=5,
+                          help_string=_('sets size of the line drawn by the \
+turtle'))
         self.tw.lc.def_prim('setpensize', 1,
                              lambda self, x: PLUGIN_DICTIONARY['set'](
                 'pensize', self.tw.canvas.setpensize, x))
 
-        make_prim('fillscreen',
-                  palette='pen',
-                  style='basic-style-2arg',
-                  label=[_('fill screen'), _('color'), _('shade')],
-                  prim_name='fillscreen',
-                  default=[60, 80],
-                  help_string=_('fills the background with (color, shade)'))
+        palette.add_block('fillscreen',
+                          style='basic-style-2arg',
+                          label=[_('fill screen'), _('color'), _('shade')],
+                          prim_name='fillscreen',
+                          default=[60, 80],
+                          help_string=_('fills the background with (color, \
+shade)'))
         self.tw.lc.def_prim('fillscreen', 2,
             lambda self, x, y: self.tw.canvas.fillscreen(x, y))
 
-        make_prim('pensize',
-                  palette='pen',
-                  style='box-style',
-                  label=_('pen size'),
-                  help_string=_('holds current pen size (can be used in place \
-of a number block)'),
-                  value_block=True,
-                  prim_name='pensize')
+        palette.add_block('pensize',
+                          style='box-style',
+                          label=_('pen size'),
+                          help_string=_('holds current pen size (can be used \
+in place of a number block)'),
+                          value_block=True,
+                          prim_name='pensize')
         self.tw.lc.def_prim('pensize', 0, lambda self: self.tw.canvas.pensize)
 
-        make_prim('startfill',
-                  palette='pen',
-                  style='basic-style-extended-vertical',
-                  label=_('start fill'),
-                  prim_name='startfill',
-                  help_string=_('starts filled polygon (used with end fill \
-block)'))
+        palette.add_block('startfill',
+                          style='basic-style-extended-vertical',
+                          label=_('start fill'),
+                          prim_name='startfill',
+                          help_string=_('starts filled polygon (used with end \
+fill block)'))
         self.tw.lc.def_prim('startfill', 0,
                              lambda self: self.tw.canvas.start_fill())
 
-        make_prim('stopfill',
-                  palette='pen',
-                  style='basic-style-extended-vertical',
-                  label=_('end fill'),
-                  prim_name='stopfill',
-                  help_string=_('completes filled polygon (used with start \
-fill block)'))
+        palette.add_block('stopfill',
+                          style='basic-style-extended-vertical',
+                          label=_('end fill'),
+                          prim_name='stopfill',
+                          help_string=_('completes filled polygon (used with \
+start fill block)'))
         self.tw.lc.def_prim('stopfill', 0,
                              lambda self: self.tw.canvas.stop_fill())
 
     def _color_palette(self):
         """ The basic Turtle Art color palette """
 
-        make_palette('colors',
-                     colors=["#00FFFF", "#00A0A0"],
-                     help_string=_('Palette of pen colors'))
+        palette = make_palette('colors',
+                               colors=["#00FFFF", "#00A0A0"],
+                               help_string=_('Palette of pen colors'))
 
-        make_prim('setcolor',
-                  palette='colors',
-                  style='basic-style-1arg',
-                  label=_('set color'),
-                  prim_name='setcolor',
-                  default=0,
-                  help_string=_('sets color of the line drawn by the turtle'))
+        palette.add_block('setcolor',
+                          style='basic-style-1arg',
+                          label=_('set color'),
+                          prim_name='setcolor',
+                          default=0,
+                          help_string=_('sets color of the line drawn by the \
+turtle'))
         self.tw.lc.def_prim('setcolor', 1,
                              lambda self, x: PLUGIN_DICTIONARY['set'](
                 'color', self.tw.canvas.setcolor, x))
 
-        make_prim('setshade',
-                  palette='colors',
-                  style='basic-style-1arg',
-                  label=_('set shade'),
-                  prim_name='setshade',
-                  default=50,
-                  help_string=_('sets shade of the line drawn by the turtle'))
+        palette.add_block('setshade',
+                          style='basic-style-1arg',
+                          label=_('set shade'),
+                          prim_name='setshade',
+                          default=50,
+                          help_string=_('sets shade of the line drawn by the \
+turtle'))
         self.tw.lc.def_prim('setshade', 1,
                              lambda self, x: PLUGIN_DICTIONARY['set'](
                 'shade', self.tw.canvas.setshade, x))
 
-        make_prim('setgray',
-                  palette='colors',
-                  style='basic-style-1arg',
-                  label=_('set gray'),
-                  prim_name='setgray',
-                  default=100,
-                  help_string=_('sets gray level of the line drawn by the \
-turtle'))
+        palette.add_block('setgray',
+                          style='basic-style-1arg',
+                          label=_('set gray'),
+                          prim_name='setgray',
+                          default=100,
+                          help_string=_('sets gray level of the line drawn by \
+the turtle'))
         self.tw.lc.def_prim('setgray', 1,
                              lambda self, x: PLUGIN_DICTIONARY['set'](
                 'gray', self.tw.canvas.setgray, x))
 
-        make_prim('color',
-                  palette='colors',
-                  style='box-style',
-                  label=_('color'),
-                  help_string=_('holds current pen color (can be used in \
-place of a number block)'),
-                  value_block=True,
-                  prim_name='color')
+        palette.add_block('color',
+                          style='box-style',
+                          label=_('color'),
+                          help_string=_('holds current pen color (can be used \
+in place of a number block)'),
+                          value_block=True,
+                          prim_name='color')
         self.tw.lc.def_prim('color', 0, lambda self: self.tw.canvas.color)
 
-        make_prim('shade',
-                  palette='colors',
-                  style='box-style',
-                  label=_('shade'),
-                  help_string=_('holds current pen shade'),
-                  value_block=True,
-                  prim_name='shade')
+        palette.add_block('shade',
+                          style='box-style',
+                          label=_('shade'),
+                          help_string=_('holds current pen shade'),
+                          value_block=True,
+                          prim_name='shade')
         self.tw.lc.def_prim('shade', 0, lambda self: self.tw.canvas.shade)
 
-        make_prim('gray',
-                  palette='colors',
-                  style='box-style',
-                  label=_('gray'),
-                  help_string=_('holds current gray level (can be used in \
-place of a number block)'),
-                  value_block=True,
-                  prim_name='gray')
+        palette.add_block('gray',
+                          style='box-style',
+                          label=_('gray'),
+                          help_string=_('holds current gray level (can be used \
+in place of a number block)'),
+                          value_block=True,
+                          prim_name='gray')
         self.tw.lc.def_prim('gray', 0, lambda self: self.tw.canvas.gray)
 
-        self._make_constant('red', 'colors', CONSTANTS['red'])
-        self._make_constant('orange', 'colors', CONSTANTS['orange'])
-        self._make_constant('yellow', 'colors', CONSTANTS['yellow'])
-        self._make_constant('green', 'colors', CONSTANTS['green'])
-        self._make_constant('cyan', 'colors', CONSTANTS['cyan'])
-        self._make_constant('blue', 'colors', CONSTANTS['blue'])
-        self._make_constant('purple', 'colors', CONSTANTS['purple'])
-        self._make_constant('white', 'colors', WHITE)
-        self._make_constant('black', 'colors', BLACK)
+        self._make_constant(palette, 'red', CONSTANTS['red'])
+        self._make_constant(palette, 'orange', CONSTANTS['orange'])
+        self._make_constant(palette, 'yellow', CONSTANTS['yellow'])
+        self._make_constant(palette, 'green', CONSTANTS['green'])
+        self._make_constant(palette, 'cyan', CONSTANTS['cyan'])
+        self._make_constant(palette, 'blue', CONSTANTS['blue'])
+        self._make_constant(palette, 'purple', CONSTANTS['purple'])
+        self._make_constant(palette, 'white', WHITE)
+        self._make_constant(palette, 'black', BLACK)
 
         # deprecated blocks
-        make_prim('settextcolor',
-                  style='basic-style-1arg',
-                  label=_('set text color'),
-                  prim_name='settextcolor',
-                  default=0,
-                  help_string=_('sets color of text drawn by the turtle'))
+        palette.add_block('settextcolor',
+                          hidden=True,
+                          style='basic-style-1arg',
+                          label=_('set text color'),
+                          prim_name='settextcolor',
+                          default=0,
+                          help_string=_('sets color of text drawn by the \
+turtle'))
         self.tw.lc.def_prim('settextcolor', 1,
                              lambda self, x: self.tw.canvas.settextcolor(x))
 
-        make_prim('settextsize',
-                  style='basic-style-1arg',
-                  label=_('set text size'),
-                  prim_name='settextsize',
-                  default=0,
-                  help_string=_('sets size of text drawn by the turtle'))
+        palette.add_block('settextsize',
+                          hidden=True,
+                          style='basic-style-1arg',
+                          label=_('set text size'),
+                          prim_name='settextsize',
+                          default=0,
+                          help_string=_('sets size of text drawn by the \
+turtle'))
         self.tw.lc.def_prim('settextsize', 1,
                              lambda self, x: self.tw.canvas.settextsize(x))
 
     def _numbers_palette(self):
         """ The basic Turtle Art numbers palette """
 
-        make_palette('numbers',
-                     colors=["#FF00FF", "#A000A0"],
-                     help_string=_('Palette of numeric operators'))
+        palette = make_palette('numbers',
+                               colors=["#FF00FF", "#A000A0"],
+                               help_string=_('Palette of numeric operators'))
 
         PLUGIN_DICTIONARY['plus'] = self._prim_plus
-        make_prim('plus2',
-                  palette='numbers',
-                  style='number-style',
-                  label='+',
-                  special_name=_('plus'),
-                  prim_name='plus',
-                  help_string=_('adds two alphanumeric inputs'))
+        palette.add_block('plus2',
+                          style='number-style',
+                          label='+',
+                          special_name=_('plus'),
+                          prim_name='plus',
+                          help_string=_('adds two alphanumeric inputs'))
         self.tw.lc.def_prim(
             'plus', 2, lambda self, x, y: PLUGIN_DICTIONARY['plus'](x, y))
 
         PLUGIN_DICTIONARY['minus'] = self._prim_minus
-        make_prim('minus2',
-                  palette='numbers',
-                  style='number-style-porch',
-                  label='–',
-                  special_name=_('minus'),
-                  prim_name='minus',
-                  help_string=_('subtracts bottom numeric input from top \
-numeric input'))
+        palette.add_block('minus2',
+                          style='number-style-porch',
+                          label='–',
+                          special_name=_('minus'),
+                          prim_name='minus',
+                          help_string=_('subtracts bottom numeric input from \
+top numeric input'))
         self.tw.lc.def_prim(
             'minus', 2, lambda self, x, y: PLUGIN_DICTIONARY['minus'](x, y))
 
         PLUGIN_DICTIONARY['product'] = self._prim_product
-        make_prim('product2',
-                  palette='numbers',
-                  style='number-style',
-                  label='×',
-                  special_name=_('multiply'),
-                  prim_name='product',
-                  help_string=_('multiplies two numeric inputs'))
+        palette.add_block('product2',
+                          style='number-style',
+                          label='×',
+                          special_name=_('multiply'),
+                          prim_name='product',
+                          help_string=_('multiplies two numeric inputs'))
         self.tw.lc.def_prim(
             'product', 2,
             lambda self, x, y: PLUGIN_DICTIONARY['product'](x, y))
 
         PLUGIN_DICTIONARY['division'] = self._prim_careful_divide
-        make_prim('division2',
-                  palette='numbers',
-                  style='number-style-porch',
-                  label='/',
-                  special_name=_('divide'),
-                  prim_name='division',
-                  help_string=_('divides top numeric input (numerator) by \
-bottom numeric input (denominator)'))
+        palette.add_block('division2',
+                          style='number-style-porch',
+                          label='/',
+                          special_name=_('divide'),
+                          prim_name='division',
+                          help_string=_('divides top numeric input (numerator) \
+by bottom numeric input (denominator)'))
         self.tw.lc.def_prim(
             'division', 2,
             lambda self, x, y: PLUGIN_DICTIONARY['division'](x, y))
 
         PLUGIN_DICTIONARY['id'] = self._prim_identity
-        make_prim('identity2',
-                  palette='numbers',
-                  style='number-style-1strarg',
-                  label='←',
-                  special_name=_('identity'),
-                  prim_name='id',
-                  help_string=_('identity operator used for extending blocks'))
+        palette.add_block('identity2',
+                          style='number-style-1strarg',
+                          label='←',
+                          special_name=_('identity'),
+                          prim_name='id',
+                          help_string=_('identity operator used for extending \
+blocks'))
         self.tw.lc.def_prim('id', 1,
                              lambda self, x: PLUGIN_DICTIONARY['id'](x))
 
         PLUGIN_DICTIONARY['remainder'] = self._prim_mod
-        make_prim('remainder2',
-                  palette='numbers',
-                  style='number-style-porch',
-                  label=_('mod'),
-                  special_name=_('mod'),
-                  prim_name='remainder',
-                  help_string=_('modular (remainder) operator'))
+        palette.add_block('remainder2',
+                          style='number-style-porch',
+                          label=_('mod'),
+                          special_name=_('mod'),
+                          prim_name='remainder',
+                          help_string=_('modular (remainder) operator'))
         self.tw.lc.def_prim('remainder', 2,
             lambda self, x, y: PLUGIN_DICTIONARY['remainder'](x, y))
 
         PLUGIN_DICTIONARY['sqrt'] = self._prim_sqrt
-        make_prim('sqrt',
-                  palette='numbers',
-                  style='number-style-1arg',
-                  label=_('√'),
-                  special_name=_('square root'),
-                  prim_name='sqrt',
-                  help_string=_('calculates square root'))
+        palette.add_block('sqrt',
+                          style='number-style-1arg',
+                          label=_('√'),
+                          special_name=_('square root'),
+                          prim_name='sqrt',
+                          help_string=_('calculates square root'))
         self.tw.lc.def_prim('sqrt', 1,
                              lambda self, x: PLUGIN_DICTIONARY['sqrt'](x))
 
         PLUGIN_DICTIONARY['random'] = self._prim_random
-        make_prim('random',
-                  palette='numbers',
-                  style='number-style-block',
-                  label=[_('random'), _('min'), _('max')],
-                  default=[0, 100],
-                  prim_name='random',
-                  help_string=_('returns random number between minimum (top) \
-and maximum (bottom) values'))
+        palette.add_block('random',
+                          style='number-style-block',
+                          label=[_('random'), _('min'), _('max')],
+                          default=[0, 100],
+                          prim_name='random',
+                          help_string=_('returns random number between minimum \
+(top) and maximum (bottom) values'))
         self.tw.lc.def_prim(
             'random', 2, lambda self, x, y: PLUGIN_DICTIONARY['random'](x, y))
 
-        make_prim('number',
-                  palette='numbers',
-                  style='box-style',
-                  label='100',
-                  default=100,
-                  special_name=_('number'),
-                  help_string=_('used as numeric input in mathematic \
+        palette.add_block('number',
+                          style='box-style',
+                          label='100',
+                          default=100,
+                          special_name=_('number'),
+                          help_string=_('used as numeric input in mathematic \
 operators'))
 
         PLUGIN_DICTIONARY['more'] = self._prim_more
-        make_prim('greater2',
-                  palette='numbers',
-                  style='compare-porch-style',
-                  label='>',
-                  special_name=_('greater than'),
-                  prim_name='greater?',
-                  help_string=_('logical greater-than operator'))
+        palette.add_block('greater2',
+                          style='compare-porch-style',
+                          label='>',
+                          special_name=_('greater than'),
+                          prim_name='greater?',
+                          help_string=_('logical greater-than operator'))
         self.tw.lc.def_prim(
             'greater?', 2, lambda self, x, y: PLUGIN_DICTIONARY['more'](x, y))
 
         PLUGIN_DICTIONARY['less'] = self._prim_less
-        make_prim('less2',
-                  palette='numbers',
-                  style='compare-porch-style',
-                  label='<',
-                  special_name=_('less than'),
-                  prim_name='less?',
-                  help_string=_('logical less-than operator'))
+        palette.add_block('less2',
+                          style='compare-porch-style',
+                          label='<',
+                          special_name=_('less than'),
+                          prim_name='less?',
+                          help_string=_('logical less-than operator'))
         self.tw.lc.def_prim(
             'less?', 2, lambda self, x, y: PLUGIN_DICTIONARY['less'](x, y))
 
         PLUGIN_DICTIONARY['equal'] = self._prim_equal
-        make_prim('equal2',
-                  palette='numbers',
-                  style='compare-style',
-                  label='=',
-                  special_name=_('equal'),
-                  prim_name='equal?',
-                  help_string=_('logical equal-to operator'))
+        palette.add_block('equal2',
+                          style='compare-style',
+                          label='=',
+                          special_name=_('equal'),
+                          prim_name='equal?',
+                          help_string=_('logical equal-to operator'))
         self.tw.lc.def_prim(
             'equal?', 2, lambda self, x, y: PLUGIN_DICTIONARY['equal'](x, y))
 
-        make_prim('not',
-                  palette='numbers',
-                  style='not-style',
-                  label=_('not'),
-                  prim_name='not',
-                  help_string=_('logical NOT operator'))
+        palette.add_block('not',
+                          style='not-style',
+                          label=_('not'),
+                          prim_name='not',
+                          help_string=_('logical NOT operator'))
         self.tw.lc.def_prim('not', 1, lambda self, x: not x)
 
-        make_prim('and2',
-                  palette='numbers',
-                  style='boolean-style',
-                  label=_('and'),
-                  prim_name='and',
-                  special_name=_('and'),
-                  help_string=_('logical AND operator'))
+        palette.add_block('and2',
+                          style='boolean-style',
+                          label=_('and'),
+                          prim_name='and',
+                          special_name=_('and'),
+                          help_string=_('logical AND operator'))
         self.tw.lc.def_prim('not', 2, lambda self, x, y: x & y)
 
-        make_prim('or2',
-                  palette='numbers',
-                  style='boolean-style',
-                  label=_('or'),
-                  prim_name='or',
-                  special_name=_('or'),
-                  help_string=_('logical OR operator'))
+        palette.add_block('or2',
+                          style='boolean-style',
+                          label=_('or'),
+                          prim_name='or',
+                          special_name=_('or'),
+                          help_string=_('logical OR operator'))
         self.tw.lc.def_prim('not', 2, lambda self, x, y: x | y)
 
     def _flow_palette(self):
         """ The basic Turtle Art flow palette """
 
-        make_palette('flow',
-                     colors=["#FFC000", "#A08000"],
-                     help_string=_('Palette of flow operators'))
+        palette = make_palette('flow',
+                               colors=["#FFC000", "#A08000"],
+                               help_string=_('Palette of flow operators'))
 
         PLUGIN_DICTIONARY['wait'] = self._prim_wait
-        make_prim('wait',
-                  palette='flow',
-                  style='basic-style-1arg',
-                  label=_('wait'),
-                  prim_name='wait',
-                  default=1,
-                  help_string=_(
-                'pauses program execution a specified number of seconds'))
+        palette.add_block('wait',
+                          style='basic-style-1arg',
+                          label=_('wait'),
+                          prim_name='wait',
+                          default=1,
+                          help_string=_('pauses program execution a specified \
+number of seconds'))
         self.tw.lc.def_prim('wait', 1, PLUGIN_DICTIONARY['wait'], True)
 
         PLUGIN_DICTIONARY['forever'] = self._prim_forever
-        make_prim('forever',
-                  palette='flow',
-                  style='flow-style',
-                  label=_('forever'),
-                  prim_name='forever',
-                  default=[None, 'vspace'],
-                  help_string=_('loops forever'))
+        palette.add_block('forever',
+                          style='flow-style',
+                          label=_('forever'),
+                          prim_name='forever',
+                          default=[None, 'vspace'],
+                          help_string=_('loops forever'))
         self.tw.lc.def_prim('forever', 1, PLUGIN_DICTIONARY['forever'], True)
 
         PLUGIN_DICTIONARY['repeat'] = self._prim_repeat
-        make_prim('repeat',
-                  palette='flow',
-                  style='flow-style-1arg',
-                  label=[' ', _('repeat')],
-                  prim_name='repeat',
-                  default=[4, None, 'vspace'],
-                  special_name=_('repeat'),
-                  help_string=_('loops specified number of times'))
+        palette.add_block('repeat',
+                          style='flow-style-1arg',
+                          label=[' ', _('repeat')],
+                          prim_name='repeat',
+                          default=[4, None, 'vspace'],
+                          special_name=_('repeat'),
+                          help_string=_('loops specified number of times'))
         self.tw.lc.def_prim('repeat', 2, PLUGIN_DICTIONARY['repeat'], True)
 
         PLUGIN_DICTIONARY['if'] = self._prim_if
-        make_prim('if',
-                  palette='flow',
-                  style='flow-style-boolean',
-                  label=[' ', _('if'), _('then')],
-                  prim_name='if',
-                  default=[None, None, 'vspace'],
-                  special_name=_('if then'),
-                  help_string=_('if-then operator that uses boolean \
+        palette.add_block('if',
+                          style='flow-style-boolean',
+                          label=[' ', _('if'), _('then')],
+                          prim_name='if',
+                          default=[None, None, 'vspace'],
+                          special_name=_('if then'),
+                          help_string=_('if-then operator that uses boolean \
 operators from Numbers palette'))
         self.tw.lc.def_prim('if', 2, PLUGIN_DICTIONARY['if'], True)
 
         PLUGIN_DICTIONARY['ifelse'] = self._prim_ifelse
-        make_prim('ifelse',
-                  palette='flow',
-                  style='flow-style-else',
-                  label=[' ', _('if'), _('then else')],
-                  prim_name='ifelse',
-                  default=[None, 'vspace', None, 'vspace'],
-                  special_name=_('if then else'),
-                  help_string=_('if-then-else operator that uses boolean \
-operators from Numbers palette'))
+        palette.add_block('ifelse',
+                          style='flow-style-else',
+                          label=[' ', _('if'), _('then else')],
+                          prim_name='ifelse',
+                          default=[None, 'vspace', None, 'vspace'],
+                          special_name=_('if then else'),
+                          help_string=_('if-then-else operator that uses \
+boolean operators from Numbers palette'))
         self.tw.lc.def_prim('ifelse', 3, PLUGIN_DICTIONARY['ifelse'], True)
 
-        make_prim('hspace',
-                  palette='flow',
-                  style='flow-style-tail',
-                  label=' ',
-                  prim_name='nop',
-                  special_name=_('horizontal space'),
-                  help_string=_('jogs stack right'))
+        palette.add_block('hspace',
+                          style='flow-style-tail',
+                          label=' ',
+                          prim_name='nop',
+                          special_name=_('horizontal space'),
+                          help_string=_('jogs stack right'))
         self.tw.lc.def_prim('nop', 0, lambda self: None)
 
-        make_prim('vspace',
-                  palette='flow',
-                  style='basic-style-extended-vertical',
-                  label=' ',
-                  prim_name='nop',
-                  special_name=_('vertical space'),
-                  help_string=_('jogs stack down'))
+        palette.add_block('vspace',
+                          style='basic-style-extended-vertical',
+                          label=' ',
+                          prim_name='nop',
+                          special_name=_('vertical space'),
+                          help_string=_('jogs stack down'))
         self.tw.lc.def_prim('nop', 0, lambda self: None)
 
         PLUGIN_DICTIONARY['stopstack'] = self._prim_stopstack
-        make_prim('stopstack',
-                  palette='flow',
-                  style='basic-style-tail',
-                  label=_('stop action'),
-                  prim_name='stopstack',
-                  help_string=_('stops current action'))
+        palette.add_block('stopstack',
+                          style='basic-style-tail',
+                          label=_('stop action'),
+                          prim_name='stopstack',
+                          help_string=_('stops current action'))
         self.tw.lc.def_prim('stopstack', 0,
                              lambda self: PLUGIN_DICTIONARY['stopstack']())
 
     def _blocks_palette(self):
         """ The basic Turtle Art blocks palette """
 
-        make_palette('blocks',
-                     colors=["#FFFF00", "#A0A000"],
-                     help_string=_('Palette of variable blocks'))
+        palette = make_palette('blocks',
+                               colors=["#FFFF00", "#A0A000"],
+                               help_string=_('Palette of variable blocks'))
 
         PLUGIN_DICTIONARY['start'] = self._prim_start
-        make_prim('start',
-                  palette='blocks',
-                  style='basic-style-head',
-                  label=_('start'),
-                  prim_name='start',
-                  help_string=_('connects action to toolbar run buttons'))
+        palette.add_block('start',
+                          style='basic-style-head',
+                          label=_('start'),
+                          prim_name='start',
+                          help_string=_('connects action to toolbar run \
+buttons'))
         self.tw.lc.def_prim('start', 0,
                              lambda self: PLUGIN_DICTIONARY['start']())
 
         PLUGIN_DICTIONARY['setbox'] = self._prim_setbox
-        make_prim('storeinbox1',
-                  palette='blocks',
-                  style='basic-style-1arg',
-                  label=_('store in box 1'),
-                  prim_name='storeinbox1',
-                  default=100,
-                  help_string=_('stores numeric value in Variable 1'))
+        palette.add_block('storeinbox1',
+                          style='basic-style-1arg',
+                          label=_('store in box 1'),
+                          prim_name='storeinbox1',
+                          default=100,
+                          help_string=_('stores numeric value in Variable 1'))
         self.tw.lc.def_prim('storeinbox1', 1,
                              lambda self, x: PLUGIN_DICTIONARY['setbox'](
                 'box1', None, x))
 
-        make_prim('storeinbox2',
-                  palette='blocks',
-                  style='basic-style-1arg',
-                  label=_('store in box 2'),
-                  prim_name='storeinbox2',
-                  default=100,
-                  help_string=_('stores numeric value in Variable 2'))
+        palette.add_block('storeinbox2',
+                          style='basic-style-1arg',
+                          label=_('store in box 2'),
+                          prim_name='storeinbox2',
+                          default=100,
+                          help_string=_('stores numeric value in Variable 2'))
         self.tw.lc.def_prim('storeinbox2', 1,
                              lambda self, x: PLUGIN_DICTIONARY['setbox'](
                 'box2', None, x))
 
-        make_prim('string',
-                  palette='blocks',
-                  style='box-style',
-                  label=_('text'),
-                  default=_('text'),
-                  special_name='',
-                  help_string=_('string value'))
+        palette.add_block('string',
+                          style='box-style',
+                          label=_('text'),
+                          default=_('text'),
+                          special_name='',
+                          help_string=_('string value'))
 
-        make_prim('box1',
-                  palette='blocks',
-                  style='box-style',
-                  label=_('box 1'),
-                  prim_name='box1',
-                  help_string=_('Variable 1 (numeric value)'),
-                  value_block=True)
+        palette.add_block('box1',
+                          style='box-style',
+                          label=_('box 1'),
+                          prim_name='box1',
+                          help_string=_('Variable 1 (numeric value)'),
+                          value_block=True)
         self.tw.lc.def_prim('box1', 0, lambda self: self.tw.lc.boxes['box1'])
 
-        make_prim('box2',
-                  palette='blocks',
-                  style='box-style',
-                  label=_('box 2'),
-                  prim_name='box2',
-                  help_string=_('Variable 2 (numeric value)'),
-                  value_block=True)
+        palette.add_block('box2',
+                          style='box-style',
+                          label=_('box 2'),
+                          prim_name='box2',
+                          help_string=_('Variable 2 (numeric value)'),
+                          value_block=True)
         self.tw.lc.def_prim('box2', 0, lambda self: self.tw.lc.boxes['box2'])
 
         PLUGIN_DICTIONARY['box'] = self._prim_box
-        make_prim('box',
-                  palette='blocks',
-                  style='number-style-1strarg',
-                  label=_('box'),
-                  prim_name='box',
-                  default=_('my box'),
-                  help_string=_('named variable (numeric value)'))
+        palette.add_block('box',
+                          style='number-style-1strarg',
+                          label=_('box'),
+                          prim_name='box',
+                          default=_('my box'),
+                          help_string=_('named variable (numeric value)'))
         self.tw.lc.def_prim('box', 1,
                              lambda self, x: PLUGIN_DICTIONARY['box'](x))
 
-        make_prim('storein',
-                  palette='blocks',
-                  style='basic-style-2arg',
-                  label=[_('store in'), _('box'), _('value')],
-                  prim_name='storeinbox',
-                  default=[_('my box'), 100],
-                  help_string=_('stores numeric value in named variable'))
+        palette.add_block('storein',
+                          style='basic-style-2arg',
+                          label=[_('store in'), _('box'), _('value')],
+                          prim_name='storeinbox',
+                          default=[_('my box'), 100],
+                          help_string=_('stores numeric value in named \
+variable'))
         self.tw.lc.def_prim('storeinbox', 2,
                              lambda self, x, y: PLUGIN_DICTIONARY['setbox'](
                 'box3', x, y))
 
-        make_prim('hat',
-                  palette='blocks',
-                  style='basic-style-head-1arg',
-                  label=_('action'),
-                  prim_name='nop3',
-                  default=_('action'),
-                  help_string=_('top of nameable action stack'))
+        palette.add_block('hat',
+                          style='basic-style-head-1arg',
+                          label=_('action'),
+                          prim_name='nop3',
+                          default=_('action'),
+                          help_string=_('top of nameable action stack'))
         self.tw.lc.def_prim('nop3', 1, lambda self, x: None)
 
-        make_prim('hat1',
-                  palette='blocks',
-                  style='basic-style-head',
-                  label=_('action 1'),
-                  prim_name='nop1',
-                  help_string=_('top of Action 1 stack'))
+        palette.add_block('hat1',
+                          style='basic-style-head',
+                          label=_('action 1'),
+                          prim_name='nop1',
+                          help_string=_('top of Action 1 stack'))
         self.tw.lc.def_prim('nop1', 0, lambda self: None)
 
-        make_prim('hat2',
-                  palette='blocks',
-                  style='basic-style-head',
-                  label=_('action 2'),
-                  prim_name='nop2',
-                  help_string=_('top of Action 2 stack'))
+        palette.add_block('hat2',
+                          style='basic-style-head',
+                          label=_('action 2'),
+                          prim_name='nop2',
+                          help_string=_('top of Action 2 stack'))
         self.tw.lc.def_prim('nop2', 0, lambda self: None)
 
         PLUGIN_DICTIONARY['stack'] = self._prim_stack
-        make_prim('stack',
-                  palette='blocks',
-                  style='basic-style-1arg',
-                  label=_('action'),
-                  prim_name='stack',
-                  default=_('action'),
-                  help_string=_('invokes named action stack'))
+        palette.add_block('stack',
+                          style='basic-style-1arg',
+                          label=_('action'),
+                          prim_name='stack',
+                          default=_('action'),
+                          help_string=_('invokes named action stack'))
         self.tw.lc.def_prim('stack', 1, PLUGIN_DICTIONARY['stack'], True)
 
         PLUGIN_DICTIONARY['stack1'] = self._prim_stack1
-        make_prim('stack1',
-                  palette='blocks',
-                  style='basic-style-extended-vertical',
-                  label=_('action 1'),
-                  prim_name='stack1',
-                  default=_('action 1'),
-                  help_string=_('invokes Action 1 stack'))
+        palette.add_block('stack1',
+                          style='basic-style-extended-vertical',
+                          label=_('action 1'),
+                          prim_name='stack1',
+                          default=_('action 1'),
+                          help_string=_('invokes Action 1 stack'))
         self.tw.lc.def_prim('stack1', 0, PLUGIN_DICTIONARY['stack1'], True)
 
         PLUGIN_DICTIONARY['stack2'] = self._prim_stack2
-        make_prim('stack2',
-                  palette='blocks',
-                  style='basic-style-extended-vertical',
-                  label=_('action 2'),
-                  prim_name='stack2',
-                  default=_('action 2'),
-                  help_string=_('invokes Action 2 stack'))
+        palette.add_block('stack2',
+                          style='basic-style-extended-vertical',
+                          label=_('action 2'),
+                          prim_name='stack2',
+                          default=_('action 2'),
+                          help_string=_('invokes Action 2 stack'))
         self.tw.lc.def_prim('stack2', 0, PLUGIN_DICTIONARY['stack2'], True)
 
     def _trash_palette(self):
         """ The basic Turtle Art turtle palette """
 
-        make_palette('trash',
-                     colors=["#FFFF00", "#A0A000"])
+        palette = make_palette('trash',
+                               colors=["#FFFF00", "#A0A000"])
 
-        make_prim('empty',
-                  palette='trash',
-                  style='basic-style-tail',
-                  label=_('empty trash'),
-                  help_string=_("permanently deletes items in trash"))
+        palette.add_block('empty',
+                          style='basic-style-tail',
+                          label=_('empty trash'),
+                          help_string=_("permanently deletes items in trash"))
 
-        make_prim('restoreall',
-                  palette='trash',
-                  style='basic-style-head',
-                  label=_('restore all'),
-                  help_string=_("restore all blocks from trash"))
+        palette.add_block('restoreall',
+                          style='basic-style-head',
+                          label=_('restore all'),
+                          help_string=_("restore all blocks from trash"))
 
     # Block primitives
 
@@ -1151,8 +1102,8 @@ operators from Numbers palette'))
             else:
                 raise logoerror("#syntaxerror")
 
-    def _make_constant(self, block_name, palette_name, constant):
+    def _make_constant(self, palette, block_name, constant):
         """ Factory for constant blocks """
-        make_prim(block_name, palette=palette_name, style='box-style',
-                  label=_(block_name), prim_name=block_name)
+        palette.add_block(block_name, style='box-style',
+                          label=_(block_name), prim_name=block_name)
         self.tw.lc.def_prim(block_name, 0, lambda self: constant)

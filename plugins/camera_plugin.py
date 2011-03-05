@@ -27,7 +27,7 @@ from camera.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, VIDIOC_G_CTRL, \
 
 from plugin import Plugin
 
-from TurtleArt.taprimitive import make_palette, make_prim
+from TurtleArt.taprimitive import make_palette
 from TurtleArt.talogo import MEDIA_BLOCKS_DICTIONARY, PLUGIN_DICTIONARY
 from TurtleArt.tautils import get_path
 
@@ -54,44 +54,42 @@ class Camera_plugin(Plugin):
             self._status = True
 
     def setup(self):
-        make_palette('sensor',
-                     colors=["#FF6060", "#A06060"],
-                     help_string=_('Palette of sensor blocks'))
+        palette = make_palette('sensor',
+                               colors=["#FF6060", "#A06060"],
+                               help_string=_('Palette of sensor blocks'))
 
         # set up camera-specific blocks
         if self._status:
             PLUGIN_DICTIONARY['luminance'] = self.prim_read_camera
-            make_prim('luminance',
-                      palette='sensor',
-                      style='box-style',
-                      label=_('brightness'),
-                      help_string=_('light level detected by camera'),
-                      value_block=True,
-                      prim_name='luminance')
+            palette.add_block('luminance',
+                              style='box-style',
+                              label=_('brightness'),
+                              help_string=_('light level detected by camera'),
+                              value_block=True,
+                              prim_name='luminance')
             self._parent.lc.def_prim('luminance', 0,
                 lambda self: PLUGIN_DICTIONARY['luminance'](True))
 
             # Depreciated block
             PLUGIN_DICTIONARY['read_camera'] = self.prim_read_camera
-            make_prim('read_camera',
-                      palette='sensor',
-                      style='box-style',
-                      label=_('brightness'),
-                      help_string=_('Average RGB color from camera is pushed \
-to the stack'),
-                      value_block=True,
-                      prim_name='luminance')
+            palette.add_block('read_camera',
+                              hidden=True,
+                              style='box-style',
+                              label=_('brightness'),
+                              help_string=_('Average RGB color from camera \
+is pushed to the stack'),
+                              value_block=True,
+                              prim_name='luminance')
             self._parent.lc.def_prim('read_camera', 0,
                 lambda self: PLUGIN_DICTIONARY['read_camera'](True))
 
             MEDIA_BLOCKS_DICTIONARY['camera'] = self.prim_take_picture
-            make_prim('camera',
-                      palette='sensor',
-                      style='box-style-media',
-                      label=' ',
-                      default='CAMERA',
-                      help_string=_('camera output'),
-                      content_block=True)
+            palette.add_block('camera',
+                              style='box-style-media',
+                              label=' ',
+                              default='CAMERA',
+                              help_string=_('camera output'),
+                              content_block=True)
 
     def stop(self):
         # This gets called by the stop button
