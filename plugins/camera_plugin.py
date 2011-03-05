@@ -138,7 +138,8 @@ is pushed to the stack'),
 
             self._camera.save_camera_input_to_file()
             self._camera.stop_camera_input()
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self._imagepath, w, h)
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self._imagepath,
+                                                          w, h)
             try:
                 array = pixbuf.get_pixels()
             except:
@@ -169,5 +170,3 @@ is pushed to the stack'),
                 self._parent.lc.heap.append(-1)
                 self._parent.lc.heap.append(-1)
                 self._parent.lc.heap.append(-1)
-
-

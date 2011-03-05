@@ -99,7 +99,7 @@ class Audio_sensors_plugin(Plugin):
                           value_block=True,
                           prim_name='volume')
         self._parent.lc.def_prim('volume', 0,
-                                  lambda self: primitive_dictionary['volume']())
+            lambda self: primitive_dictionary['volume']())
 
         primitive_dictionary['pitch'] = self.prim_pitch
         if PITCH_AVAILABLE:

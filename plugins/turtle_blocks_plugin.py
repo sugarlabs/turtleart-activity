@@ -155,7 +155,7 @@ boolean operators from Numbers palette'))
                           prim_name='show',
                           help_string=_('draws text or show media from the \
 Journal'))
-        self.tw.lc.def_prim('show', 1, 
+        self.tw.lc.def_prim('show', 1,
             lambda self, x: primitive_dictionary['show'](x, True))
 
         palette.add_block('showaligned',
@@ -166,7 +166,7 @@ Journal'))
                           prim_name='showaligned',
                           help_string=_('draws text or show media from the \
 Journal'))
-        self.tw.lc.def_prim('showaligned', 1, 
+        self.tw.lc.def_prim('showaligned', 1,
             lambda self, x: primitive_dictionary['show'](x, False))
 
         # deprecated
@@ -190,7 +190,7 @@ Journal'))
                           default=33,
                           help_string=_('sets the scale of media'))
         self.tw.lc.def_prim('setscale', 1,
-                             lambda self, x: primitive_dictionary['setscale'](x))
+            lambda self, x: primitive_dictionary['setscale'](x))
 
         primitive_dictionary['savepix'] = self._prim_save_picture
         palette.add_block('savepix',
@@ -198,9 +198,10 @@ Journal'))
                           label=_('save picture'),
                           prim_name='savepix',
                           default=_('picture name'),
-                          help_string=_('saves a picture to the Sugar Journal'))
+                          help_string=_('saves a picture to the Sugar \
+Journal'))
         self.tw.lc.def_prim('savepix', 1,
-                             lambda self, x: primitive_dictionary['savepix'](x))
+                            lambda self, x: primitive_dictionary['savepix'](x))
 
         primitive_dictionary['savesvg'] = self._prim_save_svg
         palette.add_block('savesvg',
@@ -211,7 +212,7 @@ Journal'))
                           help_string=_('saves turtle graphics as an SVG file \
 in the Sugar Journal'))
         self.tw.lc.def_prim('savesvg', 1,
-                             lambda self, x: primitive_dictionary['savesvg'](x))
+                            lambda self, x: primitive_dictionary['savesvg'](x))
 
         palette.add_block('scale',
                           style='box-style',
@@ -242,8 +243,8 @@ complete'))
                           prim_name='kbinput',
                           help_string=_('query for keyboard input (results \
 stored in keyboard block)'))
-        self.tw.lc.def_prim('kbinput', 0, 
-                             lambda self: primitive_dictionary['kbinput']())
+        self.tw.lc.def_prim('kbinput', 0,
+                            lambda self: primitive_dictionary['kbinput']())
 
         palette.add_block('keyboard',
                           style='box-style',
@@ -261,8 +262,8 @@ block'))
                           prim_name='readpixel',
                           help_string=_('RGB color under the turtle is pushed \
 to the stack'))
-        self.tw.lc.def_prim('readpixel', 0, 
-                             lambda self: primitive_dictionary['readpixel']())
+        self.tw.lc.def_prim('readpixel', 0,
+                            lambda self: primitive_dictionary['readpixel']())
 
         primitive_dictionary['see'] = self._prim_see
         palette.add_block('see',
@@ -271,8 +272,8 @@ to the stack'))
                           prim_name='see',
                           help_string=_('returns the color that the turtle \
 "sees"'))
-        self.tw.lc.def_prim('see', 0, 
-                             lambda self: primitive_dictionary['see']())
+        self.tw.lc.def_prim('see', 0,
+                            lambda self: primitive_dictionary['see']())
 
         primitive_dictionary['time'] = self._prim_time
         palette.add_block('time',
@@ -282,8 +283,8 @@ to the stack'))
                           value_block=True,
                           help_string=_('elapsed time (in seconds) since \
 program started'))
-        self.tw.lc.def_prim('time', 0, 
-                             lambda self: primitive_dictionary['time']())
+        self.tw.lc.def_prim('time', 0,
+                            lambda self: primitive_dictionary['time']())
 
     def _extras_palette(self):
 
@@ -299,7 +300,7 @@ program started'))
                           help_string=_('pushes value onto FILO (first-in \
 last-out heap)'))
         self.tw.lc.def_prim('push', 1,
-                             lambda self, x: primitive_dictionary['push'](x))
+                            lambda self, x: primitive_dictionary['push'](x))
 
         primitive_dictionary['printheap'] = self._prim_printheap
         palette.add_block('printheap',
@@ -308,17 +309,18 @@ last-out heap)'))
                           prim_name='printheap',
                           help_string=_('shows values in FILO (first-in \
 last-out heap)'))
-        self.tw.lc.def_prim('printheap', 0, 
-                             lambda self: primitive_dictionary['printheap']())
+        self.tw.lc.def_prim('printheap', 0,
+                            lambda self: primitive_dictionary['printheap']())
 
         primitive_dictionary['clearheap'] = self._prim_emptyheap
         palette.add_block('clearheap',
                           style='basic-style-extended-vertical',
                           label=_('empty heap'),
                           prim_name='clearheap',
-                          help_string=_('emptys FILO (first-in-last-out heap)'))
-        self.tw.lc.def_prim('clearheap', 0, 
-                             lambda self: primitive_dictionary['clearheap']())
+                          help_string=_('emptys FILO (first-in-last-out \
+heap)'))
+        self.tw.lc.def_prim('clearheap', 0,
+                            lambda self: primitive_dictionary['clearheap']())
 
         primitive_dictionary['pop'] = self._prim_pop
         palette.add_block('pop',
@@ -328,8 +330,8 @@ last-out heap)'))
                           value_block=True,
                           help_string=_('pops value off FILO (first-in \
 last-out heap)'))
-        self.tw.lc.def_prim('pop', 0, 
-                             lambda self: primitive_dictionary['pop']())
+        self.tw.lc.def_prim('pop', 0,
+                            lambda self: primitive_dictionary['pop']())
 
         primitive_dictionary['print'] = self._prim_print
         palette.add_block('comment',
@@ -370,7 +372,8 @@ advanced single-variable math equations, e.g., sin(x)'))
                           help_string=_('a programmable block: used to add \
 advanced multi-variable math equations, e.g., sqrt(x*x+y*y)'))
         self.tw.lc.def_prim('myfunction2', 3,
-            lambda self, f, x, y: primitive_dictionary['myfunction'](f, [x, y]))
+            lambda self, f, x, y: primitive_dictionary['myfunction'](
+                f, [x, y]))
 
         palette.add_block('myfunc3arg',
                           hidden=True,
@@ -418,7 +421,8 @@ module found in the Journal'))
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined3', 3,
-            lambda self, x, y, z: primitive_dictionary['userdefined']([x, y, z]))
+            lambda self, x, y, z: primitive_dictionary['userdefined'](
+                [x, y, z]))
 
         palette.add_block('cartesian',
                           style='basic-style-extended-vertical',
@@ -433,7 +437,7 @@ module found in the Journal'))
                           label=_('polar'),
                           prim_name='polar',
                           help_string=_('displays polar coordinates'))
-        self.tw.lc.def_prim('polar', 0, 
+        self.tw.lc.def_prim('polar', 0,
                              lambda self: self.tw.set_polar(True))
 
         palette.add_block('addturtle',
@@ -681,7 +685,7 @@ Journal objects'))
                           help_string=_('presentation template: select \
 Journal object (with description)'))
         self.tw.lc.def_prim('t1x1', 2,
-                            lambda self, a, b: primitive_dictionary['t1x1'](a, b))
+            lambda self, a, b: primitive_dictionary['t1x1'](a, b))
 
         primitive_dictionary['t1x1a'] = self._prim_t1x1a
         palette.add_block('template1x1a',
@@ -957,7 +961,7 @@ bullets'))
                 if self.tw.lc.filepath == None:
                     if self.tw.lc.dsobject is not None:
                         self.tw.showlabel('nojournal',
-                                          self.tw.lc.dsobject.metadata['title'])
+                            self.tw.lc.dsobject.metadata['title'])
                     else:
                         self.tw.showlabel('nojournal', string[6:])
                     debug_output("Couldn't open %s" % (string[6:]),
@@ -998,7 +1002,6 @@ bullets'))
                                      int(self.tw.canvas.textsize * \
                                          self.tw.lc.scale / 100.),
                                      self.tw.canvas.width - x)
-
 
     def _prim_showlist(self, sarray):
         """ Display list of media objects """
