@@ -69,8 +69,15 @@ block_styles = {'basic-style-head': [],
                 'portfolio-style-2x1': [],
                 'portfolio-style-1x2': []}
 
-from taconstants import HELP_STRINGS, EXPANDABLE_STYLE
+from taconstants import EXPANDABLE_STYLE
 from tautils import debug_output
+
+from gettext import gettext as _
+
+help_strings = {
+    'next': _('displays next palette'),
+    'orientation': _("changes the orientation of the palette of blocks")
+    }
 
 
 class Palette():
@@ -78,7 +85,7 @@ class Palette():
 
     def __init__(self, name, colors=["#00FF00", "#00A000"], position=None):
         self._name = name
-        self._special_name = name
+        self._special_name = _(name)
         self._colors = colors
         self._help = None
 
@@ -107,9 +114,9 @@ class Palette():
         # Special name entry is needed for help hover mechanism
         special_names[self._name] = self._special_name
         if self._help is not None:
-            HELP_STRINGS[self._name] = self._help
+            help_strings[self._name] = self._help
         else:
-            HELP_STRINGS[self._name] = ''
+            help_strings[self._name] = ''
 
     def set_help(self, help):
         self._help = help
@@ -196,9 +203,9 @@ class Block():
                     debug_output('Ignoring position (%s)' % (str(position)))
 
         if self._help is not None:
-            HELP_STRINGS[self._name] = self._help
+            help_strings[self._name] = self._help
         else:
-            HELP_STRINGS[self._name] = ''
+            help_strings[self._name] = ''
 
         if self._value_block:
             value_blocks.append(self._name)

@@ -188,23 +188,6 @@ TEMPLATES = {'t1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
              'insertimage': (0.333, 0.333)}
 
 #
-# Help messages
-#
-HELP_STRINGS = {
-    'cartesian': _("displays Cartesian coordinates"),
-    'clean': _("clears the screen and reset the turtle"),
-    'debugoff': _("Debug"),
-    'eraseron': _("Clean"),
-    'next': _('displays next palette'),
-    'orientation': _("changes the orientation of the palette of blocks"),
-    'polar': _("displays polar coordinates"),
-    'run-fastoff': _("Run"),
-    'run-slowoff': _("Step"),
-    'savepix': _("saves a picture to the Sugar Journal"),
-    'savesvg': _("saves turtle graphics as an SVG file in the Sugar Journal"),
-    'stopiton': _("Stop turtle")}
-
-#
 # 'dead key' Unicode dictionaries
 #
 

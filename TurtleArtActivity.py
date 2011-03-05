@@ -32,9 +32,9 @@ from sugar.activity import activity
 try:  # 0.86 toolbar widgets
     from sugar.activity.widgets import ActivityToolbarButton, StopButton
     from sugar.graphics.toolbarbox import ToolbarBox, ToolbarButton
-    NEW_SUGAR_SYSTEM = True
+    has_toolbarbox = True
 except ImportError:
-    NEW_SUGAR_SYSTEM = False
+    has_toolbarbox = False
 from sugar.graphics.toolbutton import ToolButton
 from sugar.datastore import datastore
 
@@ -43,8 +43,8 @@ from gettext import gettext as _
 import os.path
 import tarfile
 
-from TurtleArt.taconstants import PALETTE_NAMES, OVERLAY_LAYER, HELP_STRINGS, \
-                                  ICON_SIZE
+from TurtleArt.tapalette import palette_names, help_strings
+from TurtleArt.taconstants import OVERLAY_LAYER, ICON_SIZE
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
@@ -63,7 +63,7 @@ class TurtleArtActivity(activity.Activity):
 
         self._setup_visibility_handler()
 
-        self.new_sugar_system = NEW_SUGAR_SYSTEM
+        self.has_toolbarbox = has_toolbarbox
         self._setup_toolbar()
 
         canvas = self._setup_scrolled_window()
@@ -219,27 +219,27 @@ class TurtleArtActivity(activity.Activity):
         if self.tw.palette == True:
             self.tw.hideshow_palette(False)
             self.do_hidepalette()
-            if self.new_sugar_system and self.tw.selected_palette is not None:
+            if self.has_toolbarbox and self.tw.selected_palette is not None:
                 self.palette_buttons[self.tw.selected_palette].set_icon(
-                    PALETTE_NAMES[self.tw.selected_palette] + 'off')
+                    palette_names[self.tw.selected_palette] + 'off')
         else:
             self.tw.hideshow_palette(True)
             self.do_showpalette()
-            if self.new_sugar_system:
-                self.palette_buttons[0].set_icon(PALETTE_NAMES[0] + 'on')
+            if self.has_toolbarbox:
+                self.palette_buttons[0].set_icon(palette_names[0] + 'on')
 
     def do_palette_buttons_cb(self, button, i):
         """ Palette selector buttons """
         if self.tw.selected_palette is not None:
             self.palette_buttons[self.tw.selected_palette].set_icon(
-                PALETTE_NAMES[self.tw.selected_palette] + 'off')
+                palette_names[self.tw.selected_palette] + 'off')
             if self.tw.selected_palette == i:
                 # second click so hide the palette (#2505)
                 self.tw.hideshow_palette(False)
                 self.do_hidepalette()
                 return
 
-        self.palette_buttons[i].set_icon(PALETTE_NAMES[i] + 'on')
+        self.palette_buttons[i].set_icon(palette_names[i] + 'on')
         self.tw.show_palette(i)
         self.do_showpalette()
 
@@ -446,7 +446,7 @@ class TurtleArtActivity(activity.Activity):
 
     def _setup_toolbar(self):
         """ Setup toolbar according to Sugar version """
-        if self.new_sugar_system:
+        if self.has_toolbarbox:
             # Use 0.86 toolbar design
             # Create toolbox and secondary toolbars
             self._toolbox = ToolbarBox()
@@ -585,7 +585,7 @@ class TurtleArtActivity(activity.Activity):
         help_toolbar.show()
         self._toolbox.show()
 
-        if self.new_sugar_system:
+        if self.has_toolbarbox:
             # Hack as a workaround for #2050
             edit_toolbar_button.set_expanded(True)
             edit_toolbar_button.set_expanded(False)
@@ -596,15 +596,15 @@ class TurtleArtActivity(activity.Activity):
 
     def _setup_palette_toolbar(self):
         # The palette toolbar is only used with 0.86+
-        if self.new_sugar_system:
+        if self.has_toolbarbox:
             self.palette_buttons = []
-            for i, name in enumerate(PALETTE_NAMES):
+            for i, name in enumerate(palette_names):
                 if i > 0:
                     suffix = 'off'
                 else:
                     suffix = 'on'
                 self.palette_buttons.append(self._add_button(name + suffix,
-                    HELP_STRINGS[name], self.do_palette_buttons_cb,
+                    help_strings[name], self.do_palette_buttons_cb,
                     self._palette_toolbar_button, None, i))
             self._add_separator(self._palette_toolbar, True)
 
@@ -612,7 +612,6 @@ class TurtleArtActivity(activity.Activity):
 
             self.set_toolbar_box(self._toolbox)
             self._palette_toolbar.show()
-
 
     def _make_palette_buttons(self, toolbar, palette_button=False):
         """ Creates the palette and block buttons for both toolbar types"""
@@ -828,4 +827,7 @@ class TurtleArtActivity(activity.Activity):
             toolbar.insert(button, -1)
         else:  # or a secondary toolbar
             toolbar.props.page.insert(button, -1)
+
+        if not name in help_strings:
+            help_strings[name] = tooltip
         return button

@@ -55,12 +55,13 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER, CATEGORY_LAYER, \
     BLOCKS_WITH_SKIN, ICON_SIZE, PALETTE_SCALE, PALETTE_WIDTH, \
     MACROS, TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, \
-    HELP_STRINGS, CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, \
+    CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, \
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
     EXPANDABLE_ARGS, CONSTANTS, XO1, XO15, UNKNOWN, TITLEXY, \
     CONTENT_ARGS
 from tapalette import palette_names, palette_blocks, expandable_blocks, \
-    block_names, content_blocks, default_values, special_names, block_styles
+    block_names, content_blocks, default_values, special_names, block_styles, \
+    help_strings
 from talogo import LogoCode
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
@@ -156,7 +157,7 @@ class TurtleArtWindow():
                 self.color_mode = '565'
             else:
                 self.color_mode = '888'
-            if self.running_sugar and not self.activity.new_sugar_system:
+            if self.running_sugar and not self.activity.has_toolbarbox:
                 self.orientation = VERTICAL_PALETTE
         else:
             self.lead = 1.0
@@ -503,7 +504,7 @@ class TurtleArtWindow():
                 if blk.status != 'collapsed':
                     blk.spr.set_layer(BLOCK_LAYER)
             self.show_palette()
-            if self.activity is not None and self.activity.new_sugar_system:
+            if self.activity is not None and self.activity.has_toolbarbox:
                 self.activity.palette_buttons[0].set_icon(
                                                        palette_names[0] + 'on')
             self.hide = False
@@ -531,7 +532,7 @@ class TurtleArtWindow():
         self._show_toolbar_palette(n)
         self.palette_button[self.orientation].set_layer(TAB_LAYER)
         self.palette_button[2].set_layer(TAB_LAYER)
-        if self.activity is None or not self.activity.new_sugar_system:
+        if self.activity is None or not self.activity.has_toolbarbox:
             self.toolbar_spr.set_layer(CATEGORY_LAYER)
         self.palette = True
 
@@ -540,7 +541,7 @@ class TurtleArtWindow():
         self._hide_toolbar_palette()
         self.palette_button[self.orientation].hide()
         self.palette_button[2].hide()
-        if self.activity is None or not self.activity.new_sugar_system:
+        if self.activity is None or not self.activity.has_toolbarbox:
             self.toolbar_spr.hide()
         self.palette = False
 
@@ -597,7 +598,7 @@ class TurtleArtWindow():
 
     def _show_toolbar_palette(self, n, init_only=False):
         """ Show the toolbar palettes, creating them on init_only """
-        if (self.activity is None or not self.activity.new_sugar_system) and\
+        if (self.activity is None or not self.activity.has_toolbarbox) and\
            self.selectors == []:
             # Create the selectors
             svg = SVG()
@@ -676,7 +677,7 @@ class TurtleArtWindow():
         self.selected_palette = n
         self.previous_palette = self.selected_palette
 
-        if self.activity is None or not self.activity.new_sugar_system:
+        if self.activity is None or not self.activity.has_toolbarbox:
             self.selected_selector = self.selectors[n]
             # Make sure all of the selectors are visible.
             self.selectors[n].set_shape(self.selector_shapes[n][1])
@@ -717,7 +718,7 @@ class TurtleArtWindow():
     def _hide_toolbar_palette(self):
         """ Hide the toolbar palettes """
         self._hide_previous_palette()
-        if self.activity is None or not self.activity.new_sugar_system:
+        if self.activity is None or not self.activity.has_toolbarbox:
             # Hide the selectors
             for i in range(len(palette_blocks)):
                 self.selectors[i].hide()
@@ -735,7 +736,7 @@ class TurtleArtWindow():
                 self.palettes[self.previous_palette][i].spr.hide()
             self.palette_sprs[self.previous_palette][
                               self.orientation].hide()
-            if self.activity is None or not self.activity.new_sugar_system:
+            if self.activity is None or not self.activity.has_toolbarbox:
                 self.selectors[self.previous_palette].set_shape(
                     self.selector_shapes[self.previous_palette][0])
             elif self.previous_palette is not None and \
@@ -948,7 +949,7 @@ class TurtleArtWindow():
                     if i == len(palette_names):
                         i = 0
                     if self.activity is None or \
-                       not self.activity.new_sugar_system:
+                       not self.activity.has_toolbarbox:
                         self._select_category(self.selectors[i])
                     else:
                         if self.selected_palette is not None:
@@ -1452,20 +1453,20 @@ class TurtleArtWindow():
     def _do_show_popup(self, block_name):
         """ Fetch the help text and display it.  """
         if block_name in special_names:
-            block_name_s = special_names[block_name]
+            special_block_name = special_names[block_name]
         elif block_name in block_names:
-            block_name_s = block_names[block_name][0]
+            special_block_name = block_names[block_name][0]
         elif block_name in TOOLBAR_SHAPES:
-            block_name_s = ''
+            special_block_name = ''
         else:
-            block_name_s = _(block_name)
-        if block_name in HELP_STRINGS:
-            if block_name_s == '':
-                label = HELP_STRINGS[block_name]
+            special_block_name = _(block_name)
+        if block_name in help_strings:
+            if special_block_name == '':
+                label = help_strings[block_name]
             else:
-                label = block_name_s + ": " + HELP_STRINGS[block_name]
+                label = special_block_name + ": " + help_strings[block_name]
         else:
-            label = block_name_s
+            label = special_block_name
         if self.running_sugar:
             self.activity.hover_help_label.set_text(label)
             self.activity.hover_help_label.show()
