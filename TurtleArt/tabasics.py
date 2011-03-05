@@ -26,15 +26,19 @@ below. If you want to add a new block to Turtle Art, you could
 simply add a block of code to this file or to turtle_block_plugin.py,
 which contains additional blocks. (Even better, write your own plugin!!)
 
-For example, if we want to add a new turtle command, 'uturn', we'd
-make the following changes:
 
-    make_prim('uturn',  # the name of your block
-              palette='turtle',  # the palette to place it in
-              style='basic-style',  # the block style
-              label=_('u turn'),  # the label for the block
-              prim_name='uturn',  # code reference (see below)
-              help_string=_('turns the turtle 180 degrees'))
+Adding a new palette is simply a matter of:
+    palette = make_palette('mypalette',  # the name of your palette
+                           colors=["#00FF00", "#00A000"],
+                           help_string=_('Palette of my custom commands'))
+
+For example, if we want to add a new turtle command, 'uturn', we'd use the
+add_block method in the Palette class.
+    palette.add_block('uturn',  # the name of your block
+                      style='basic-style',  # the block style
+                      label=_('u turn'),  # the label for the block
+                      prim_name='uturn',  # code reference (see below)
+                      help_string=_('turns the turtle 180 degrees'))
 
     # Next, you need to define what your block will do:
     # def_prim takes 3 arguments: the primitive name, the number of
@@ -44,12 +48,7 @@ make the following changes:
         lambda self, x: self.tw.canvas.seth(self.tw.canvas.heading + 180))
 
 That's it. When you next run Turtle Art, you will have a 'uturn' block
-on the Turtle Palette.
-
-Adding a new palette is simply a matter of:
-    make_palette('mypalette',  # the name of your palette
-                 colors=["#00FF00", "#00A000"],
-                 help_string=_('Palette of my custom commands'))
+on the 'mypalette' palette.
 
 You will have to create icons for the palette-selector buttons. These
 are kept in the icons subdirectory. You need two icons:
@@ -57,7 +56,6 @@ mypaletteoff.svg and mypaletteon.svg, where 'mypalette' is the same
 string as the entry you used in instantiating the Palette class. Note
 that the icons should be the same size (55x55) as the others. (This is
 the default icon size for Sugar toolbars.)
-
 """
 
 from time import time
