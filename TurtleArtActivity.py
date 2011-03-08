@@ -44,7 +44,7 @@ import os.path
 import tarfile
 
 from TurtleArt.tapalette import palette_names, help_strings
-from TurtleArt.taconstants import OVERLAY_LAYER, ICON_SIZE
+from TurtleArt.taconstants import OVERLAY_LAYER, ICON_SIZE, BLOCK_SCALE
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
@@ -343,15 +343,24 @@ class TurtleArtActivity(activity.Activity):
 
     def do_grow_blocks_cb(self, button):
         """ Grow the blocks. """
-        self.do_resize_blocks(1.5)
+        self.do_resize_blocks(1)
 
     def do_shrink_blocks_cb(self, button):
         """ Shrink the blocks. """
-        self.do_resize_blocks(0.67)
+        self.do_resize_blocks(-1)
 
-    def do_resize_blocks(self, scale_factor):
+    def do_resize_blocks(self, inc):
         """ Scale the blocks. """
-        self.tw.block_scale *= scale_factor
+        if self.tw.block_scale in BLOCK_SCALE:
+            i = BLOCK_SCALE.index(self.tw.block_scale) + inc
+        else:
+            i = 2.0
+        if i < 0:
+            self.tw.block_scale = BLOCK_SCALE[0]
+        elif i == len(BLOCK_SCALE):
+            self.tw.block_scale = BLOCK_SCALE[-1]
+        else:
+            self.tw.block_scale = BLOCK_SCALE[i]
         self.tw.resize_blocks()
 
     def do_cartesian_cb(self, button):

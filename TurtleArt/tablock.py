@@ -23,7 +23,7 @@ import gtk
 
 from gettext import gettext as _
 
-from taconstants import CONSTANTS, EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, \
+from taconstants import EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS, \
     STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS, GRADIENT_COLOR
 from tapalette import palette_blocks, block_colors, expandable_blocks, \
     content_blocks, block_names, block_primitives, block_styles
@@ -120,7 +120,8 @@ class Block:
     """ A class for the individual blocks """
 
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
-                 values=[], scale=BLOCK_SCALE, colors=['#FF0000', '#A00000']):
+                 values=[], scale=BLOCK_SCALE[0],
+                 colors=['#FF0000', '#A00000']):
         self.block_list = block_list
         self.spr = None
         self.shapes = [None, None]

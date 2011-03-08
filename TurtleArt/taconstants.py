@@ -55,7 +55,7 @@ SELECTOR_WIDTH = 55
 ICON_SIZE = 55
 GRADIENT_COLOR = "#FFFFFF"
 STANDARD_STROKE_WIDTH = 1.0
-BLOCK_SCALE = 2.0
+BLOCK_SCALE = [0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 8.0]
 PALETTE_SCALE = 1.5
 DEFAULT_TURTLE = 'Yertle'
 DEFAULT_TURTLE_COLORS = ['#008000', '#00A000']
@@ -73,6 +73,12 @@ DEFAULT_SCALE = 33
 XO1 = 'xo1'
 XO15 = 'xo1.5'
 UNKNOWN = 'unknown'
+
+CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
+             'bottompos': None, 'width': None, 'height': None, 'red': 0,
+             'orange': 10, 'yellow': 20, 'green': 40, 'cyan': 50, 'blue': 70,
+             'purple': 90, 'titlex': None, 'titley': None, 'leftx': None,
+             'topy': None, 'rightx': None, 'bottomy': None}
 
 #
 # Blocks that are expandable
@@ -103,14 +109,6 @@ BLOCKS_WITH_SKIN = ['journal', 'audio', 'description', 'nop', 'userdefined',
 
 PYTHON_SKIN = ['nop', 'userdefined', 'userdefined2args', 'userdefined3args']
 
-#
-# These blocks hold constants
-#
-CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
-             'bottompos': None, 'width': None, 'height': None, 'red': 0,
-             'orange': 10, 'yellow': 20, 'green': 40, 'cyan': 50, 'blue': 70,
-             'purple': 90, 'titlex': None, 'titley': None, 'leftx': None,
-             'topy': None, 'rightx': None, 'bottomy': None}
 
 #
 # Blocks that can interchange strings and numbers for their arguments

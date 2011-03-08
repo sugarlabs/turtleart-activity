@@ -57,8 +57,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     MACROS, TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, \
     CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, \
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
-    EXPANDABLE_ARGS, CONSTANTS, XO1, XO15, UNKNOWN, TITLEXY, \
-    CONTENT_ARGS
+    EXPANDABLE_ARGS, XO1, XO15, UNKNOWN, TITLEXY, CONTENT_ARGS, CONSTANTS
 from tapalette import palette_names, palette_blocks, expandable_blocks, \
     block_names, content_blocks, default_values, special_names, block_styles, \
     help_strings
@@ -164,7 +163,7 @@ class TurtleArtWindow():
             self.scale = 1.0
             self.color_mode = '888'  # TODO: Read visual mode from gtk image
 
-        self.block_scale = BLOCK_SCALE
+        self.block_scale = BLOCK_SCALE[3]
         self.trash_scale = 0.5
         self.myblock = {}
         self.python_code = None
