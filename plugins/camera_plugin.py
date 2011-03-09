@@ -29,7 +29,7 @@ from plugin import Plugin
 
 from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import media_blocks_dictionary, primitive_dictionary
-from TurtleArt.tautils import get_path
+from TurtleArt.tautils import get_path, debug_output
 
 import logging
 _logger = logging.getLogger('turtleart-activity camera plugin')
@@ -97,7 +97,7 @@ is pushed to the stack'),
             self._camera.stop_camera_input()
 
     def _status_report(self):
-        print 'Reporting camera status: %s' % (str(self._status))
+        debug_output('Reporting camera status: %s' % (str(self._status)))
         return self._status
 
     # Block primitives used in talogo

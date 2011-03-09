@@ -27,6 +27,7 @@ from plugin import Plugin
 
 from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import primitive_dictionary
+from TurtleArt.tautils import debug_output
 
 import logging
 _logger = logging.getLogger('turtleart-activity RFID plugin')
@@ -98,7 +99,7 @@ class Rfid_plugin(Plugin):
                 lambda self: primitive_dictionary['rfid'](True))
 
     def _status_report(self):
-        print 'Reporting RFID status: %s' % (str(self._status))
+        debug_output('Reporting RFID status: %s' % (str(self._status)))
         return self._status
 
     def _device_added_cb(self, path):

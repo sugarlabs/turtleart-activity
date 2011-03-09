@@ -34,6 +34,7 @@ from audio.ringbuffer import RingBuffer1d
 from TurtleArt.tapalette import make_palette
 from TurtleArt.taconstants import XO1, XO15
 from TurtleArt.talogo import primitive_dictionary
+from TurtleArt.tautils import debug_output
 
 import logging
 _logger = logging.getLogger('turtleart-activity audio sensors plugin')
@@ -207,7 +208,7 @@ class Audio_sensors_plugin(Plugin):
         self.stop()
 
     def _status_report(self):
-        print 'Reporting audio sensor status: %s' % (str(self._status))
+        debug_output('Reporting audio sensor status: %s' % (str(self._status)))
         return self._status
 
     # Block primitives used in talogo
