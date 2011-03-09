@@ -29,7 +29,7 @@ from plugin import Plugin
 from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import primitive_dictionary, logoerror, \
     media_blocks_dictionary
-from TurtleArt.taconstants import DEFAULT_SCALE, CONSTANTS, ICON_SIZE
+from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS
 from TurtleArt.tautils import convert, round_int, debug_output
 from TurtleArt.tajail import myfunc, myfunc_import
 
@@ -73,6 +73,7 @@ class Turtle_blocks_plugin(Plugin):
     def setup(self):
         self.heap = self.tw.lc.heap
         self.keyboard = self.tw.lc.keyboard
+        self.title_height = int((self.tw.canvas.height / 20) * self.tw.scale)
 
         # set up Turtle Block palettes
         self._flow_palette()
@@ -897,7 +898,6 @@ bullets'))
             return
         pixbuf = None
         try:
-            print self.tw.lc.filepath, scale, scale
             pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.tw.lc.filepath,
                                                           scale, scale)
         except:
@@ -945,7 +945,6 @@ bullets'))
             elif string[0:6] in ['media_', 'descr_', 'audio_', 'video_']:
                 self.tw.lc.filepath = None
                 self.tw.lc.dsobject = None
-                print string[6:], media_blocks_dictionary
                 if string[6:].lower() in media_blocks_dictionary:
                     media_blocks_dictionary[string[6:].lower()]()
                 elif os.path.exists(string[6:]):  # is it a path?
@@ -1037,7 +1036,7 @@ bullets'))
                       / self.tw.canvas.height
         self._prim_setscale(myscale)
         # set body text size
-        self.tw.canvas.settextsize(self.body_height)
+        self.tw.canvas.settextsize(self.tw.lc.body_height)
         # render media object
         # leave some space below the title
         y -= int(self.title_height * 2 * self.tw.lead)
@@ -1066,7 +1065,7 @@ bullets'))
                   self.tw.canvas.height
         self._prim_setscale(myscale)
         # set body text size
-        self.tw.canvas.settextsize(self.body_height)
+        self.tw.canvas.settextsize(self.tw.lc.body_height)
         # render four quadrents
         # leave some space below the title
         y -= int(self.title_height * 2 * self.tw.lead)
@@ -1101,7 +1100,7 @@ bullets'))
                  self.tw.canvas.height
         self._prim_setscale(myscale)
         # set body text size
-        self.tw.canvas.settextsize(self.body_height)
+        self.tw.canvas.settextsize(self.tw.lc.body_height)
         # render four quadrents
         # leave some space below the title
         y -= int(self.title_height * 2 * self.tw.lead)
@@ -1136,7 +1135,7 @@ bullets'))
                   self.tw.canvas.height
         self._prim_setscale(myscale)
         # set body text size
-        self.tw.canvas.settextsize(self.body_height)
+        self.tw.canvas.settextsize(self.tw.lc.body_height)
         # render four quadrents
         # leave some space below the title
         y -= int(self.title_height * 2 * self.tw.lead)
@@ -1170,7 +1169,7 @@ bullets'))
                        self.tw.canvas.height
         self._prim_setscale(myscale)
         # set body text size
-        self.tw.canvas.settextsize(self.body_height)
+        self.tw.canvas.settextsize(self.tw.lc.body_height)
         # render media object
         # leave some space below the title
         y -= int(self.title_height * 2 * self.tw.lead)

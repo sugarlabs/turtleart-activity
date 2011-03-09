@@ -125,10 +125,7 @@ class LogoCode:
         self.dsobject = None
         self.start_time = None
 
-        # Scale factors for deprecated portfolio blocks
-        self.title_height = int((self.tw.canvas.height / 20) * self.tw.scale)
         self.body_height = int((self.tw.canvas.height / 40) * self.tw.scale)
-        self.bullet_height = int((self.tw.canvas.height / 30) * self.tw.scale)
 
         self.scale = DEFAULT_SCALE
 
