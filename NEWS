@@ -6,6 +6,7 @@ ENHANCEMENTS
   classes for all blocks. (The goal is to make it easier for end-user
   modifications.)
 * Added basic-style-3arg block
+* Moved plugin libraries to ./plugins/lib/
 
 BUG FIXES
 
