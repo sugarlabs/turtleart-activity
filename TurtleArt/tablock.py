@@ -142,25 +142,26 @@ class Block:
         self._image = None
 
         self.block_methods = {
+            'basic-style': self._make_basic_style,
             'basic-style-head': self._make_basic_style_head,
             'basic-style-head-1arg': self._make_basic_style_head_1arg,
             'basic-style-tail': self._make_basic_style_tail,
-            'basic-style': self._make_basic_style,
-            'basic-style-extended-vertical': [self._make_basic_style, 0, 4],
-            'invisible': self._make_invisible_style,
             'basic-style-extended': [self._make_basic_style, 16, 16],
+            'basic-style-extended-vertical': [self._make_basic_style, 0, 4],
             'basic-style-1arg': self._make_basic_style_1arg,
-            'basic-style-var-arg': self._make_basic_style_var_arg,
-            'bullet-style': self._make_bullet_style,
             'basic-style-2arg': self._make_basic_style_2arg,
+            'basic-style-3arg': self._make_basic_style_3arg,
+            'basic-style-var-arg': self._make_basic_style_var_arg,
+            'invisible': self._make_invisible_style,
+            'bullet-style': self._make_bullet_style,
             'box-style': self._make_box_style,
             'box-style-media': self._make_media_style,
             'number-style': self._make_number_style,
-            'number-style-var-arg': self._make_number_style_var_arg,
             'number-style-block': self._make_number_style_block,
             'number-style-porch': self._make_number_style_porch,
             'number-style-1arg': self._make_number_style_1arg,
             'number-style-1strarg': self._make_number_style_1strarg,
+            'number-style-var-arg': self._make_number_style_var_arg,
             'compare-style': self._make_compare_style,
             'compare-porch-style': self._make_compare_porch_style,
             'boolean-style': self._make_boolean_style,
@@ -535,6 +536,21 @@ class Block:
                                         self.svg.docks[2][1]],
                       ['flow', False, self.svg.docks[3][0],
                                       self.svg.docks[3][1]]]
+
+    def _make_basic_style_3arg(self, svg):
+        self.svg.expand(10 + self.dx + self.ex, self.ey)
+        self.svg.set_innie([True, True, True])
+        self._make_block_graphics(svg, self.svg.basic_block)
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['number', False, self.svg.docks[1][0],
+                                        self.svg.docks[1][1]],
+                      ['number', False, self.svg.docks[2][0],
+                                        self.svg.docks[2][1]],
+                      ['number', False, self.svg.docks[3][0],
+                                        self.svg.docks[3][1]],
+                      ['flow', False, self.svg.docks[4][0],
+                                      self.svg.docks[4][1]]]
 
     def _make_basic_style_var_arg(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)
