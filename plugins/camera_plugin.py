@@ -21,8 +21,8 @@ from fcntl import ioctl
 
 from gettext import gettext as _
 
-from camera.tacamera import Camera
-from camera.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, VIDIOC_G_CTRL, \
+from lib.camera.tacamera import Camera
+from lib.camera.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, VIDIOC_G_CTRL, \
  VIDIOC_S_CTRL
 
 from plugin import Plugin

@@ -26,10 +26,10 @@ from gettext import gettext as _
 
 from plugin import Plugin
 
-from audio.audiograb import AudioGrab_Unknown, AudioGrab_XO1, AudioGrab_XO15, \
-    SENSOR_DC_NO_BIAS, SENSOR_DC_BIAS
+from plugins.lib.audio.audiograb import AudioGrab_Unknown, AudioGrab_XO1, \
+    AudioGrab_XO15, SENSOR_DC_NO_BIAS, SENSOR_DC_BIAS
 
-from audio.ringbuffer import RingBuffer1d
+from plugins.lib.audio.ringbuffer import RingBuffer1d
 
 from TurtleArt.tapalette import make_palette
 from TurtleArt.taconstants import XO1, XO15
