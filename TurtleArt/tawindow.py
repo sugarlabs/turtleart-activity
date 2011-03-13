@@ -1341,10 +1341,11 @@ class TurtleArtWindow():
                 self.selected_turtle.spr.set_layer(TOP_LAYER)
                 self.selected_turtle.move((sx + dx, sy + dy))
                 if self.sharing():  # share turtle movement
+                    tx, ty = self.canvas.screen_to_turtle_coordinates(sx + dx,
+                                                                      sy + y)
                     self.send_event("x|%s" % (
                         data_to_string([self.selected_turtle.get_name(),
-                                        [round_int(sx + dx),
-                                         round_int(sy + dy)]])))
+                                        [round_int(tx), round_int(ty)]])))
             else:
                 dx = x - sx - self.active_turtle.spr.rect.width / 2
                 dy = y - sy - self.active_turtle.spr.rect.height / 2
