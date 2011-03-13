@@ -113,7 +113,8 @@ is pushed to the stack'),
         """ Read average pixel from camera and push b, g, r to the stack """
         pixbuf = None
         array = None
-        w, h = self._parent.lc._w(), self._parent.lc._h()
+        w = int((self._parent.canvas.width * self._parent.lc.scale) / 100.)
+        h = int((self._parent.canvas.height * self._parent.lc.scale) / 100.)
         if w > 0 and h > 0 and self._status:
             try:
                 self._video_capture_device = open('/dev/video0', 'rw')
