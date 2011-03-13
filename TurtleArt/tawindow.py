@@ -211,10 +211,10 @@ class TurtleArtWindow():
             self.sprite_list = None
 
         self.turtles = Turtles(self.sprite_list)
-        if mynick is None:
+        if self.nick is None:
             self.default_turtle_name = DEFAULT_TURTLE
         else:
-            self.default_turtle_name = mynick
+            self.default_turtle_name = self.nick
         if mycolors is None:
             Turtle(self.turtles, self.default_turtle_name)
         else:
@@ -927,6 +927,11 @@ class TurtleArtWindow():
         # Next, look for a turtle
         t = self.turtles.spr_to_turtle(spr)
         if t is not None:
+            # If turtle is shared, ignore click
+            if hasattr(self, 'turtle_dictionary'):
+                if t.get_name() in self.turtle_dictionary and \
+                   t.get_name() != self.nick:
+                    return True
             self.selected_turtle = t
             self.canvas.set_turtle(self.turtles.get_turtle_key(t))
             self._turtle_pressed(x, y)

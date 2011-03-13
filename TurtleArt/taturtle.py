@@ -229,6 +229,10 @@ class Turtle:
             self.spr.move(pos)
         return(self.x, self.y)
 
+    def get_name(self):
+        ''' return turtle name (key) '''
+        return self.name
+
     def get_xy(self):
         """ Return the turtle's x, y coordinates. """
         return(self.x, self.y)

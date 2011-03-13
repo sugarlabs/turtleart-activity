@@ -49,6 +49,7 @@ class Collaboration():
         """ A simplistic sharing model: the sharer is the master """
         self._tw = tw
         self._tw.send_event = self.send_event
+        self._tw.turtle_dictionary = {}
         self._activity = activity
         self._setup_dispatch_table()
 
@@ -96,7 +97,7 @@ class Collaboration():
 
         self.initiating = True
         self.waiting_for_turtles = False
-        self.turtle_dictionary = self._get_dictionary()
+        self._tw.turtle_dictionary = self._get_dictionary()
 
         debug_output('I am sharing...', self._tw.running_sugar)
 
@@ -211,24 +212,24 @@ class Collaboration():
             [nick, colors] = data_from_string(payload)
             if nick != self._tw.nick:
                 # There may not be a turtle dictionary.
-                if hasattr(self, 'turtle_dictionary'):
-                    self.turtle_dictionary[nick] = colors
+                if hasattr(self._tw, 'turtle_dictionary'):
+                    self._tw.turtle_dictionary[nick] = colors
                 else:
-                    self.turtle_dictionary = {nick: colors}
+                    self._tw.turtle_dictionary = {nick: colors}
                 # Add new turtle for the joiner.
                 self._tw.canvas.set_turtle(nick, colors)
         # Sharer should send turtle dictionary.
         if self.initiating:
-            event_payload = data_to_string(self.turtle_dictionary)
+            event_payload = data_to_string(self._tw.turtle_dictionary)
             self.send_event('T|' + event_payload)
 
     def _receive_turtle_dict(self, payload):
         if self.waiting_for_turtles:
             if len(payload) > 0:
-                self.turtle_dictionary = data_from_string(payload)
-                for nick in self.turtle_dictionary:
+                self._tw.turtle_dictionary = data_from_string(payload)
+                for nick in self._tw.turtle_dictionary:
                     if nick != self._tw.nick:
-                        colors = self.turtle_dictionary[nick]
+                        colors = self._tw.turtle_dictionary[nick]
                         # add new turtle for the joiner
                         self._tw.canvas.set_turtle(nick, colors)
             self.waiting_for_turtles = False
