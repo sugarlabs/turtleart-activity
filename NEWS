@@ -5,13 +5,16 @@ ENHANCEMENTS
 * Refactoring of block and palette generation to use the plugin
   classes for all blocks. (The goal is to make it easier for end-user
   modifications.)
-* Added basic-style-3arg block
+* Added basic-style-3arg block (used by NXT plugin)
 * Moved plugin libraries to ./plugins/lib/
+* Shared turtles are updated after mouse drag (#2687)
+* Shared turtles cannot be repositioned remotely (#2687)
 
 BUG FIXES
 
 * Fixed regression with help messages when running Sugar 0.84 (#2676)
-* Fixed problem with camera block graphic (#2678)
+* Fixed problem with camera block graphic in trash (#2678)
+* Fixed regression with camera_plugin after refactoring (#2689)
 
 106
 
