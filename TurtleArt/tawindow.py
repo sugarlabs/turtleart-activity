@@ -928,10 +928,8 @@ class TurtleArtWindow():
         t = self.turtles.spr_to_turtle(spr)
         if t is not None:
             # If turtle is shared, ignore click
-            if hasattr(self, 'turtle_dictionary'):
-                if t.get_name() in self.turtle_dictionary and \
-                   t.get_name() != self.nick:
-                    return True
+            if self.remote_turtle(t.get_name()):
+                return True
             self.selected_turtle = t
             self.canvas.set_turtle(self.turtles.get_turtle_key(t))
             self._turtle_pressed(x, y)
@@ -1342,12 +1340,21 @@ class TurtleArtWindow():
                 dy = y - dragy - sy
                 self.selected_turtle.spr.set_layer(TOP_LAYER)
                 self.selected_turtle.move((sx + dx, sy + dy))
+                if self.sharing():  # share turtle movement
+                    self.send_event("x|%s" % (
+                        data_to_string([self.selected_turtle.get_name(),
+                                        [round_int(sx + dx),
+                                         round_int(sy + dy)]])))
             else:
                 dx = x - sx - self.active_turtle.spr.rect.width / 2
                 dy = y - sy - self.active_turtle.spr.rect.height / 2
                 self.canvas.seth(int(dragx + atan2(dy, dx) / DEGTOR + 5) / \
                                      10 * 10)
                 self.lc.update_label_value('heading', self.canvas.heading)
+                if self.sharing():  # share turtle rotation
+                    self.send_event("r|%s" % (
+                            data_to_string([self.selected_turtle.get_name(),
+                                            round_int(self.heading)])))
 
         # If we are hoving, show popup help.
         elif self.drag_group is None:
@@ -1544,6 +1551,15 @@ class TurtleArtWindow():
         # Find the block we clicked on and process it.
         if self.block_operation == 'click':
             self._click_block(x, y)
+
+    def remote_turtle(self, name):
+        ''' Is this a remote turtle? '''
+        if name == self.nick:
+            return False
+        if hasattr(self, 'turtle_dictionary') and \
+           name in self.turtle_dictionary:
+            return True
+        return False
 
     def _move_turtle(self, x, y):
         """ Move the selected turtle to (x, y). """
