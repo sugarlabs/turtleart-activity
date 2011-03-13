@@ -1336,16 +1336,17 @@ class TurtleArtWindow():
             dtype, dragx, dragy = self.drag_turtle
             (sx, sy) = self.selected_turtle.get_xy()
             if dtype == 'move':
-                dx = x - dragx - sx
-                dy = y - dragy - sy
+                dx = x - dragx - sx + self.active_turtle.spr.rect.width / 2
+                dy = y - dragy - sy + self.active_turtle.spr.rect.width / 2
                 self.selected_turtle.spr.set_layer(TOP_LAYER)
-                self.selected_turtle.move((sx + dx, sy + dy))
-                if self.sharing():  # share turtle movement
-                    tx, ty = self.canvas.screen_to_turtle_coordinates(sx + dx,
-                                                                      sy + y)
-                    self.send_event("x|%s" % (
-                        data_to_string([self.selected_turtle.get_name(),
-                                        [round_int(tx), round_int(ty)]])))
+                tx, ty = self.canvas.screen_to_turtle_coordinates(sx + dx,
+                                                                  sy + dy)
+                if self.canvas.pendown:
+                    self.canvas.setpen(False)
+                    self.canvas.setxy(tx, ty)
+                    self.canvas.setpen(True)
+                else:
+                    self.canvas.setxy(tx, ty)
             else:
                 dx = x - sx - self.active_turtle.spr.rect.width / 2
                 dy = y - sy - self.active_turtle.spr.rect.height / 2
