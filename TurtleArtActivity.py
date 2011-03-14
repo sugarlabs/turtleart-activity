@@ -582,7 +582,7 @@ class TurtleArtActivity(activity.Activity):
             self.do_grow_blocks_cb, view_toolbar_button)
         self.resize_down_button = self._add_button('resize-',
             _("Shrink blocks"), self.do_shrink_blocks_cb, view_toolbar_button)
-        if self.has_toolbarbox:
+        if gtk.gtk_version[0] > 2 or gtk.gtk_version[1] > 16:
             self.hover_help_label = self._add_label(
                 _("Move the cursor over the orange palette for help."),
                 help_toolbar, gtk.gdk.screen_width() - 2 * ICON_SIZE)
