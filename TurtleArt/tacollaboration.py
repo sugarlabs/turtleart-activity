@@ -98,7 +98,8 @@ class Collaboration():
         self.initiating = True
         self.waiting_for_turtles = False
         self._tw.turtle_dictionary = self._get_dictionary()
-
+        self._tw.remote_turtles = []
+        
         debug_output('I am sharing...', self._tw.running_sugar)
 
         self.conn = self._shared_activity.telepathy_conn
@@ -216,6 +217,10 @@ class Collaboration():
                     self._tw.turtle_dictionary[nick] = colors
                 else:
                     self._tw.turtle_dictionary = {nick: colors}
+                if hasattr(self._tw, 'remote_turtles'):
+                    self._tw.remote_turtles.append(nick)
+                else:
+                    self._tw.remote_turtles = [nick]
                 # Add new turtle for the joiner.
                 self._tw.canvas.set_turtle(nick, colors)
                 self._tw.label_remote_turtle(nick)
@@ -229,7 +234,8 @@ class Collaboration():
             if len(payload) > 0:
                 self._tw.turtle_dictionary = data_from_string(payload)
                 for nick in self._tw.turtle_dictionary:
-                    if nick != self._tw.nick:
+                    if nick != self._tw.nick and \
+                       nick in self._tw.remote_turtles:
                         colors = self._tw.turtle_dictionary[nick]
                         # add new turtle for the joiner
                         self._tw.canvas.set_turtle(nick, colors)

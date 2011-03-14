@@ -1308,8 +1308,8 @@ class TurtleArtWindow():
 
     def _turtle_pressed(self, x, y):
         (tx, ty) = self.selected_turtle.get_xy()
-        w = self.active_turtle.spr.rect.width / 2
-        h = self.active_turtle.spr.rect.height / 2
+        w = self.selected_turtle.spr.rect.width / 2
+        h = self.selected_turtle.spr.rect.height / 2
         dx = x - tx - w
         dy = y - ty - h
         # if x, y is near the edge, rotate
@@ -1335,9 +1335,10 @@ class TurtleArtWindow():
         if self.selected_turtle is not None:
             dtype, dragx, dragy = self.drag_turtle
             (sx, sy) = self.selected_turtle.get_xy()
+            # self.canvas.set_turtle(self.selected_turtle.get_name())
             if dtype == 'move':
-                dx = x - dragx - sx + self.active_turtle.spr.rect.width / 2
-                dy = y - dragy - sy + self.active_turtle.spr.rect.width / 2
+                dx = x - dragx - sx + self.selected_turtle.spr.rect.width / 2
+                dy = y - dragy - sy + self.selected_turtle.spr.rect.width / 2
                 self.selected_turtle.spr.set_layer(TOP_LAYER)
                 tx, ty = self.canvas.screen_to_turtle_coordinates(sx + dx,
                                                                   sy + dy)
@@ -1348,8 +1349,8 @@ class TurtleArtWindow():
                 else:
                     self.canvas.setxy(tx, ty)
             else:
-                dx = x - sx - self.active_turtle.spr.rect.width / 2
-                dy = y - sy - self.active_turtle.spr.rect.height / 2
+                dx = x - sx - self.selected_turtle.spr.rect.width / 2
+                dy = y - sy - self.selected_turtle.spr.rect.height / 2
                 self.canvas.seth(int(dragx + atan2(dy, dx) / DEGTOR + 5) / \
                                      10 * 10)
                 self.lc.update_label_value('heading', self.canvas.heading)
@@ -1511,14 +1512,15 @@ class TurtleArtWindow():
                 else:
                     self.selected_turtle.hide()
                     self.turtles.remove_from_dict(k)
+                    self.active_turtle = None
             else:
                 self._move_turtle(tx - self.canvas.width / 2 + \
                                       self.active_turtle.spr.rect.width / 2,
                                   self.canvas.height / 2 - ty - \
                                       self.active_turtle.spr.rect.height / 2)
             self.selected_turtle = None
-            self.active_turtle = self.turtles.get_turtle(
-                self.default_turtle_name)
+            if self.active_turtle is None:
+                self.canvas.set_turtle(self.default_turtle_name)
             return
 
         # If we don't have a group of blocks, then there is nothing to do.
@@ -1558,8 +1560,8 @@ class TurtleArtWindow():
         ''' Is this a remote turtle? '''
         if name == self.nick:
             return False
-        if hasattr(self, 'turtle_dictionary') and \
-           name in self.turtle_dictionary:
+        if hasattr(self, 'remote_turtles') and \
+           name in self.remote_turtles:
             return True
         return False
 
@@ -2673,11 +2675,12 @@ class TurtleArtWindow():
                           _sy - self.canvas.cy, connections))
         if save_turtle:
             for _turtle in iter(self.turtles.dict):
-                self.canvas.set_turtle(_turtle)
-                _data.append((-1, ['turtle', _turtle],
-                             self.canvas.xcor, self.canvas.ycor,
-                             self.canvas.heading, self.canvas.color,
-                             self.canvas.shade, self.canvas.pensize))
+                # Don't save remote turtles
+                if not self.remote_turtle(_turtle):
+                    _data.append((-1, ['turtle', _turtle],
+                                   self.canvas.xcor, self.canvas.ycor,
+                                   self.canvas.heading, self.canvas.color,
+                                   self.canvas.shade, self.canvas.pensize))
         return _data
 
     def display_coordinates(self):
