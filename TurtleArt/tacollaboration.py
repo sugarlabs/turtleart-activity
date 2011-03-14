@@ -271,6 +271,8 @@ class Collaboration():
         if put_pen_back_down:
             self.send_event('p|%s' % (data_to_string([self._get_nick(),
                                                       True])))
+        self.send_event('r|%s' % (data_to_string([self._get_nick(),
+                int(self._tw.canvas.heading)])))
 
     def _draw_pixbuf(self, payload):
         if len(payload) > 0:
