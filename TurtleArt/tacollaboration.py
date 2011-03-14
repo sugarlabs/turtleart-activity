@@ -49,7 +49,7 @@ class Collaboration():
         """ A simplistic sharing model: the sharer is the master """
         self._tw = tw
         self._tw.send_event = self.send_event
-        self._tw.turtle_dictionary = {}
+        self._tw.remote_turtle_dictionary = {}
         self._activity = activity
         self._setup_dispatch_table()
 
@@ -63,7 +63,6 @@ class Collaboration():
         self.owner = owner
         self._tw.buddies.append(self.owner)
         self._share = ''
-
         self._activity.connect('shared', self._shared_cb)
         self._activity.connect('joined', self._joined_cb)
 
@@ -97,8 +96,7 @@ class Collaboration():
 
         self.initiating = True
         self.waiting_for_turtles = False
-        self._tw.turtle_dictionary = self._get_dictionary()
-        self._tw.remote_turtles = []
+        self._tw.remote_turtle_dictionary = self._get_dictionary()
         
         debug_output('I am sharing...', self._tw.running_sugar)
 
@@ -170,10 +168,10 @@ class Collaboration():
                 self.event_received_cb)
 
             # Now that we have the tube, we can ask for the turtle dictionary.
-            if self.waiting_for_turtles:
+            if self.waiting_for_turtles:  # A joiner must wait for turtles.
                 debug_output('Sending a request for the turtle dictionary',
                              self._tw.running_sugar)
-                # we need to send our own nick and colors
+                # We need to send our own nick, colors, and turtle position
                 colors = self._get_colors()
                 event = 't|' + data_to_string([self._get_nick(), colors])
                 debug_output(event, self._tw.running_sugar)
@@ -209,37 +207,51 @@ class Collaboration():
             self.chattube.SendText(entry)
 
     def _turtle_request(self, payload):
+        ''' incoming turtle from a joiner '''
         if payload > 0:
             [nick, colors] = data_from_string(payload)
-            if nick != self._tw.nick:
+            if nick != self._tw.nick:  # It is not me.
                 # There may not be a turtle dictionary.
-                if hasattr(self._tw, 'turtle_dictionary'):
-                    self._tw.turtle_dictionary[nick] = colors
+                if hasattr(self._tw, 'remote_turtle_dictionary'):
+                    self._tw.remote_turtle_dictionary[nick] = colors
                 else:
-                    self._tw.turtle_dictionary = {nick: colors}
-                if hasattr(self._tw, 'remote_turtles'):
-                    self._tw.remote_turtles.append(nick)
-                else:
-                    self._tw.remote_turtles = [nick]
+                    self._tw.remote_turtle_dictionary = self._get_dictionary()
                 # Add new turtle for the joiner.
                 self._tw.canvas.set_turtle(nick, colors)
-                self._tw.label_remote_turtle(nick)
-        # Sharer should send turtle dictionary.
+                self._tw.label_remote_turtle(nick, colors)
+
+        # Sharer should send the updated remote turtle dictionary to everyone.
         if self.initiating:
-            event_payload = data_to_string(self._tw.turtle_dictionary)
+            if not self._tw.nick in self._tw.remote_turtle_dictionary:
+                self._tw.remote_turtle_dictionary[self._tw.nick] = \
+                    self._get_colors()
+            event_payload = data_to_string(self._tw.remote_turtle_dictionary)
             self.send_event('T|' + event_payload)
 
     def _receive_turtle_dict(self, payload):
+        ''' Any time there is a new joiner, an updated turtle dictionary is
+        circulated. '''
         if self.waiting_for_turtles:
             if len(payload) > 0:
-                self._tw.turtle_dictionary = data_from_string(payload)
-                for nick in self._tw.turtle_dictionary:
-                    if nick != self._tw.nick and \
-                       nick in self._tw.remote_turtles:
-                        colors = self._tw.turtle_dictionary[nick]
-                        # add new turtle for the joiner
+                # Grab the new remote turtles dictionary.
+                remote_turtle_dictionary = data_from_string(payload)
+                # Add see what is new.
+                for nick in remote_turtle_dictionary:
+                    if nick == self._tw.nick:
+                        debug_output('skipping my nick %s' \
+                                         % (nick), self._tw.running_sugar)
+                    elif nick != self._tw.remote_turtle_dictionary:
+                        # Add new the turtle.
+                        colors = remote_turtle_dictionary[nick]
+                        self._tw.remote_turtle_dictionary[nick] = colors
                         self._tw.canvas.set_turtle(nick, colors)
-                        self._tw.label_remote_turtle(nick)
+                        # Label the remote turtle.
+                        self._tw.label_remote_turtle(nick, colors)
+                        debug_output('adding %s to remote turtle dictionary' \
+                                         % (nick), self._tw.running_sugar)
+                    else:
+                        debug_output('%s already in remote turtle dictionary' \
+                                         % (nick), self._tw.running_sugar)
             self.waiting_for_turtles = False
 
     def _draw_pixbuf(self, payload):
@@ -339,8 +351,7 @@ class Collaboration():
             self._tw.canvas.fill_polygon(shared_poly_points)
 
     def _get_dictionary(self):
-        d = {self._get_nick(): self._get_colors()}
-        return d
+        return {self._get_nick(): self._get_colors()}
 
     def _get_nick(self):
         return self._tw.nick
@@ -355,7 +366,7 @@ class Collaboration():
         if colors is None:
             colors = '%s,%s' % (DEFAULT_TURTLE_COLORS[0],
                                 DEFAULT_TURTLE_COLORS[1])
-        return colors
+        return colors.split(',')
 
 
 class ChatTube(ExportedGObject):

@@ -1560,19 +1560,19 @@ class TurtleArtWindow():
         ''' Is this a remote turtle? '''
         if name == self.nick:
             return False
-        if hasattr(self, 'remote_turtles') and \
-           name in self.remote_turtles:
+        if hasattr(self, 'remote_turtle_dictionary') and \
+           name in self.remote_turtle_dictionary:
             return True
         return False
 
-    def label_remote_turtle(self, name):
+    def label_remote_turtle(self, name, colors=['#A0A0A0', '#C0C0C0']):
         ''' Add a label to remote turtles '''
         turtle = self.turtles.get_turtle(name)
         if turtle is not None:
             turtle.label_block = Block(self.block_list,
                                        self.sprite_list, 'turtle-label', 0, 0,
-                                       'label', [], 1.0,
-                                       colors=['#A0A0A0', '#C0C0C0'])
+                                       'label', [], 1.0 / self.scale,
+                                       colors)
             turtle.label_block.spr.set_label(name)
             turtle.show()
 
