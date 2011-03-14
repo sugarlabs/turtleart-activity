@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2010 Walter Bender
+#Copyright (c) 2010,11 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,8 @@ from tacanvas import wrap100, color_table
 from sprites import Sprite
 from tautils import debug_output
 
+from random import uniform
+from math import sin, cos
 
 SHAPES = 36
 
@@ -118,11 +120,17 @@ class Turtle:
         self.pen_gray = 100
         self.pen_size = 5
         self.pen_state = True
+        self.label_block = None
 
         self._prep_shapes(key, turtles, turtle_colors)
 
+        # Choose a random angle from which to attach the turtle label
         if turtles.sprite_list is not None:
             self.spr = Sprite(turtles.sprite_list, 0, 0, self.shapes[0])
+            angle = uniform(0, 6.14)
+            r = self.shapes[0].get_width() * 0.67
+            self.label_xy = [int(r * sin(angle) + r / 2.0),
+                             int(r * cos(angle) + r / 2.0)]
         else:
             self.spr = None
         turtles.add_to_dict(key, self)
@@ -149,6 +157,13 @@ class Turtle:
             if turtles is not None:
                 self.colors = DEFAULT_TURTLE_COLORS
                 self.shapes = turtles.get_pixbufs()
+
+    def set_turtle_colors(self, turtle_colors):
+        ''' reset the colors of a preloaded turtle '''
+        if turtle_colors is not None:
+            self.colors = turtle_colors[:]
+            self.shapes = generate_turtle_pixbufs(self.colors)
+            self.set_heading(self.heading)
 
     def set_shapes(self, shapes):
         """ Reskin the turtle """
@@ -212,6 +227,8 @@ class Turtle:
         """ Hide the turtle. """
         if self.spr is not None:
             self.spr.hide()
+        if self.label_block is not None:
+            self.label_block.spr.hide()
         self.hidden = True
 
     def show(self):
@@ -221,12 +238,19 @@ class Turtle:
             self.hidden = False
         self.move((self.x, self.y))
         self.set_heading(self.heading)
+        if self.label_block is not None:
+            self.label_block.spr.move((self.x + self.label_xy[0],
+                                       self.y + self.label_xy[1]))
+            self.label_block.spr.set_layer(TURTLE_LAYER)
 
     def move(self, pos):
         """ Move the turtle. """
         self.x, self.y = int(pos[0]), int(pos[1])
         if not self.hidden and self.spr is not None:
             self.spr.move(pos)
+        if self.label_block is not None:
+            self.label_block.spr.move((pos[0] + self.label_xy[0],
+                                       pos[1] + self.label_xy[1]))
         return(self.x, self.y)
 
     def get_name(self):

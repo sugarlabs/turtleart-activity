@@ -218,6 +218,7 @@ class Collaboration():
                     self._tw.turtle_dictionary = {nick: colors}
                 # Add new turtle for the joiner.
                 self._tw.canvas.set_turtle(nick, colors)
+                self._tw.label_remote_turtle(nick)
         # Sharer should send turtle dictionary.
         if self.initiating:
             event_payload = data_to_string(self._tw.turtle_dictionary)
@@ -232,6 +233,7 @@ class Collaboration():
                         colors = self._tw.turtle_dictionary[nick]
                         # add new turtle for the joiner
                         self._tw.canvas.set_turtle(nick, colors)
+                        self._tw.label_remote_turtle(nick)
             self.waiting_for_turtles = False
 
     def _draw_pixbuf(self, payload):

@@ -707,7 +707,11 @@ class TurtleGraphics:
             self.seth(0, False)
             self.setxy(0, 0, False, pendown=False)
             self.tw.active_turtle.set_pen_state(True)
-        self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
+        elif colors is not None:
+            self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
+            self.tw.active_turtle.set_turtle_colors(colors)
+        else:
+            self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
         self.tw.active_turtle.show()
         tx, ty = self.tw.active_turtle.get_xy()
         self.xcor, self.ycor = self.screen_to_turtle_coordinates(tx, ty)

@@ -122,6 +122,7 @@ class Block:
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
                  values=[], scale=BLOCK_SCALE[0],
                  colors=['#FF0000', '#A00000']):
+
         self.block_list = block_list
         self.spr = None
         self.shapes = [None, None]
@@ -143,6 +144,7 @@ class Block:
 
         self.block_methods = {
             'basic-style': self._make_basic_style,
+            'blank-style': self._make_blank_style,
             'basic-style-head': self._make_basic_style_head,
             'basic-style-head-1arg': self._make_basic_style_head_1arg,
             'basic-style-tail': self._make_basic_style_tail,
@@ -361,7 +363,6 @@ class Block:
         return (self.ex, self.ey)
 
     def _new_block_from_factory(self, sprite_list, x, y, copy_block=None):
-
         self.svg = SVG()
         self.svg.set_scale(self.scale)
         self.svg.set_innie([False])
@@ -483,6 +484,13 @@ class Block:
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]], ['flow',
                        False, self.svg.docks[1][0], self.svg.docks[1][1]]]
+
+    def _make_blank_style(self, svg, extend_x=0, extend_y=0):
+        self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
+        self.svg.set_slot(False)
+        self.svg.set_tab(False)
+        self._make_block_graphics(svg, self.svg.basic_block)
+        self.docks = []
 
     def _make_basic_style_head(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)

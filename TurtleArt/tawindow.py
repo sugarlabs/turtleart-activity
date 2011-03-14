@@ -1563,6 +1563,17 @@ class TurtleArtWindow():
             return True
         return False
 
+    def label_remote_turtle(self, name):
+        ''' Add a label to remote turtles '''
+        turtle = self.turtles.get_turtle(name)
+        if turtle is not None:
+            turtle.label_block = Block(self.block_list,
+                                       self.sprite_list, 'turtle-label', 0, 0,
+                                       'label', [], 1.0,
+                                       colors=['#A0A0A0', '#C0C0C0'])
+            turtle.label_block.spr.set_label(name)
+            turtle.show()
+
     def _move_turtle(self, x, y):
         """ Move the selected turtle to (x, y). """
         (cx, cy) = self.canvas.canvas.get_xy()

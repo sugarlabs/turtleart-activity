@@ -31,6 +31,7 @@ content_blocks = ['number', 'string', 'description', 'audio', 'video',
                   'journal']
 value_blocks = []  # blocks whose labels are updated get added here
 block_styles = {'basic-style': [],
+                'blank-style': [],
                 'basic-style-head': [],
                 'basic-style-head-1arg': [],
                 'basic-style-tail': [],

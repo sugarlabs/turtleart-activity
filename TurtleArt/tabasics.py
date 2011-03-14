@@ -66,9 +66,8 @@ from gettext import gettext as _
 
 from tapalette import make_palette
 from talogo import primitive_dictionary, logoerror
-from taconstants import CONSTANTS, BLACK, WHITE
 from tautils import convert, chr_to_ord, round_int, strtype
-
+from taconstants import BLACK, WHITE, CONSTANTS
 
 def _num_type(x):
     """ Is x a number type? """
@@ -230,6 +229,11 @@ turtle (can be used in place of a number block)'),
                           prim_name='heading')
         self.tw.lc.def_prim(
             'heading', 0, lambda self: self.tw.canvas.heading)
+
+        palette.add_block('turtle-label',
+                          hidden=True,
+                          style='blank-style',
+                          label=['turtle'])
 
         # Deprecated
         palette.add_block('setxy',
