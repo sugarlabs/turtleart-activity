@@ -1573,6 +1573,8 @@ class TurtleArtWindow():
                                        self.sprite_list, 'turtle-label', 0, 0,
                                        'label', [], 1.0 / self.scale,
                                        colors)
+            turtle.label_block.spr.set_label_attributes(1.0 / self.scale,
+                                                        rescale=False)
             turtle.label_block.spr.set_label(name)
             turtle.show()
 
@@ -2443,14 +2445,12 @@ class TurtleArtWindow():
         if blk[1] == 'turtle':
             self.load_turtle(blk)
             return True
-        elif type(blk[1]) == list and blk[1][0] == 'turtle':
-            self.load_turtle(blk, blk[1][1])
+        elif type(blk[1]) in [list, tuple] and blk[1][0] == 'turtle':
+            if blk[1][1] == DEFAULT_TURTLE:
+                self.load_turtle(blk, self.nick)
+            else:
+                self.load_turtle(blk, blk[1][1])
             return True
-        elif type(blk[1]) == tuple:
-            _btype, _key = blk[1]
-            if _btype == 'turtle':
-                self.load_turtle(blk, _key)
-                return True
         return False
 
     def load_turtle(self, blk, key=1):
@@ -2674,10 +2674,13 @@ class TurtleArtWindow():
             _data.append((_blk.id, _name, _sx - self.canvas.cx,
                           _sy - self.canvas.cy, connections))
         if save_turtle:
-            for _turtle in iter(self.turtles.dict):
+            for turtle in iter(self.turtles.dict):
                 # Don't save remote turtles
-                if not self.remote_turtle(_turtle):
-                    _data.append((-1, ['turtle', _turtle],
+                if not self.remote_turtle(turtle):
+                    # Save default turtle as 'Yertle'
+                    if turtle == self.nick:
+                        turtle = DEFAULT_TURTLE
+                    _data.append((-1, ['turtle', turtle],
                                    self.canvas.xcor, self.canvas.ycor,
                                    self.canvas.heading, self.canvas.color,
                                    self.canvas.shade, self.canvas.pensize))
