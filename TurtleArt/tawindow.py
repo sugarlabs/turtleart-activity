@@ -1573,7 +1573,7 @@ class TurtleArtWindow():
                                        self.sprite_list, 'turtle-label', 0, 0,
                                        'label', [], 1.0 / self.scale,
                                        colors)
-            turtle.label_block.spr.set_label_attributes(1.0 / self.scale,
+            turtle.label_block.spr.set_label_attributes(4.0 / self.scale,
                                                         rescale=False)
             turtle.label_block.spr.set_label(name)
             turtle.show()
@@ -2938,4 +2938,3 @@ def dock_dx_dy(block1, dock1n, block2, dock2n):
     (_b1x, _b1y) = block1.spr.get_xy()
     (_b2x, _b2y) = block2.spr.get_xy()
     return ((_b1x + _d1x) - (_b2x + _d2x), (_b1y + _d1y) - (_b2y + _d2y))
-
