@@ -130,9 +130,14 @@ class Turtle:
         if turtles.sprite_list is not None:
             self.spr = Sprite(turtles.sprite_list, 0, 0, self.shapes[0])
             angle = uniform(0, 6.14)
-            r = self.shapes[0].get_width() * 0.75
-            self.label_xy = [int(r * sin(angle) + r / 2.0),
-                             int(r * cos(angle) + r / 2.0)]
+            w = self.shapes[0].get_width()
+            r = w * 0.75
+            if angle > 3.14:
+                self.label_xy = [w + int(r * sin(angle) + r / 2.0),
+                                 int(r * cos(angle) + r / 2.0)]
+            else:
+                self.label_xy = [int(r * sin(angle) + r / 2.0),
+                                 int(r * cos(angle) + r / 2.0)]
         else:
             self.spr = None
         turtles.add_to_dict(key, self)
