@@ -1357,7 +1357,7 @@ class TurtleArtWindow():
                 if self.sharing():  # share turtle rotation
                     self.send_event("r|%s" % (
                             data_to_string([self.selected_turtle.get_name(),
-                                            round_int(self.heading)])))
+                                            round_int(self.canvas.heading)])))
 
         # If we are hoving, show popup help.
         elif self.drag_group is None:
