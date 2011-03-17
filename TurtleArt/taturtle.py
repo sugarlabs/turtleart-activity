@@ -129,13 +129,16 @@ class Turtle:
         # Choose a random angle from which to attach the turtle label
         if turtles.sprite_list is not None:
             self.spr = Sprite(turtles.sprite_list, 0, 0, self.shapes[0])
-            angle = uniform(0, 6.14)
+            angle = uniform(0, 4.10) # 240 degrees
             w = self.shapes[0].get_width()
             r = w * 0.67
-            if angle > 3.14:
+            # Restrict angle the the sides 30-150; 210-330
+            if angle > 2.05:
+                angle += 1.57
                 self.label_xy = [int(r * sin(angle)),
                                  int(r * cos(angle) + w / 2.0)]
             else:
+                angle += 0.52
                 self.label_xy = [int(r * sin(angle) + w / 2.0),
                                  int(r * cos(angle) + w / 2.0)]
         else:
