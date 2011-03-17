@@ -213,12 +213,17 @@ class Collaboration():
             if nick != self._tw.nick:  # It is not me.
                 # There may not be a turtle dictionary.
                 if hasattr(self._tw, 'remote_turtle_dictionary'):
+                    # Make sure it is not a "rejoin".
+                    if not nick in self._tw.remote_turtle_dictionary:
+                        # Add new turtle for the joiner.
+                        self._tw.canvas.set_turtle(nick, colors)
+                        self._tw.label_remote_turtle(nick, colors)
                     self._tw.remote_turtle_dictionary[nick] = colors
                 else:
                     self._tw.remote_turtle_dictionary = self._get_dictionary()
-                # Add new turtle for the joiner.
-                self._tw.canvas.set_turtle(nick, colors)
-                self._tw.label_remote_turtle(nick, colors)
+                    # Add new turtle for the joiner.
+                    self._tw.canvas.set_turtle(nick, colors)
+                    self._tw.label_remote_turtle(nick, colors)
 
         # Sharer should send the updated remote turtle dictionary to everyone.
         if self.initiating:
