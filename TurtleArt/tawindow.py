@@ -1574,8 +1574,8 @@ class TurtleArtWindow():
                                        'label', [], 1.0 / self.scale,
                                        colors)
             turtle.label_block.spr.set_label_attributes(6.0 / self.scale)
-            if len(name) > 5:
-                turtle.label_block.spr.set_label(name[0:3] + '…')
+            if len(name) > 6:
+                turtle.label_block.spr.set_label(name[0:4] + '…')
             else:
                 turtle.label_block.spr.set_label(name)
             turtle.show()
