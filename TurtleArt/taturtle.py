@@ -131,13 +131,13 @@ class Turtle:
             self.spr = Sprite(turtles.sprite_list, 0, 0, self.shapes[0])
             angle = uniform(0, 6.14)
             w = self.shapes[0].get_width()
-            r = w * 0.75
+            r = w * 0.67
             if angle > 3.14:
-                self.label_xy = [w + int(r * sin(angle) + r / 2.0),
-                                 int(r * cos(angle) + r / 2.0)]
+                self.label_xy = [int(r * sin(angle)),
+                                 int(r * cos(angle) + w / 2.0)]
             else:
-                self.label_xy = [int(r * sin(angle) + r / 2.0),
-                                 int(r * cos(angle) + r / 2.0)]
+                self.label_xy = [int(r * sin(angle) + w / 2.0),
+                                 int(r * cos(angle) + w / 2.0)]
         else:
             self.spr = None
         turtles.add_to_dict(key, self)
@@ -248,7 +248,7 @@ class Turtle:
         if self.label_block is not None:
             self.label_block.spr.move((self.x + self.label_xy[0],
                                        self.y + self.label_xy[1]))
-            self.label_block.spr.set_layer(TURTLE_LAYER)
+            self.label_block.spr.set_layer(TURTLE_LAYER + 1)
 
     def move(self, pos):
         """ Move the turtle. """

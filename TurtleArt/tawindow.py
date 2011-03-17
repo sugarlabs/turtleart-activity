@@ -1573,9 +1573,11 @@ class TurtleArtWindow():
                                        self.sprite_list, 'turtle-label', 0, 0,
                                        'label', [], 1.0 / self.scale,
                                        colors)
-            turtle.label_block.spr.set_label_attributes(4.0 / self.scale,
-                                                        rescale=False)
-            turtle.label_block.spr.set_label(name)
+            turtle.label_block.spr.set_label_attributes(6.0 / self.scale)
+            if len(name) > 5:
+                turtle.label_block.spr.set_label(name[0:3] + '…')
+            else:
+                turtle.label_block.spr.set_label(name)
             turtle.show()
 
     def _move_turtle(self, x, y):
