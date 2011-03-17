@@ -556,21 +556,25 @@ operators'))
                           help_string=_('logical NOT operator'))
         self.tw.lc.def_prim('not', 1, lambda self, x: not x)
 
+        primitive_dictionary['and'] = self._prim_and
         palette.add_block('and2',
                           style='boolean-style',
                           label=_('and'),
                           prim_name='and',
                           special_name=_('and'),
                           help_string=_('logical AND operator'))
-        self.tw.lc.def_prim('not', 2, lambda self, x, y: x & y)
+        self.tw.lc.def_prim(
+            'and', 2, lambda self, x, y: primitive_dictionary['and'](x, y))
 
+        primitive_dictionary['or'] = self._prim_or
         palette.add_block('or2',
                           style='boolean-style',
                           label=_('or'),
                           prim_name='or',
                           special_name=_('or'),
                           help_string=_('logical OR operator'))
-        self.tw.lc.def_prim('not', 2, lambda self, x, y: x | y)
+        self.tw.lc.def_prim(
+            'or', 2, lambda self, x, y: primitive_dictionary['or'](x, y))
 
     def _flow_palette(self):
         """ The basic Turtle Art flow palette """
@@ -805,6 +809,10 @@ variable'))
 
     # Block primitives
 
+    def _prim_and(self, x, y):
+        """ Logical and """
+        return x & y
+
     def _prim_arc(self, cmd, value1, value2):
         """ Turtle draws an arc of degree, radius """
         cmd(float(value1), float(value2))
@@ -861,6 +869,10 @@ variable'))
                            self.tw.canvas.xcor / self.tw.coord_scale)
         self.tw.lc.update_label_value('ycor',
                            self.tw.canvas.ycor / self.tw.coord_scale)
+
+    def _prim_or(self, x, y):
+        """ Logical or """
+        return x | y
 
     def _prim_repeat(self, num, blklist):
         """ Repeat list num times. """
