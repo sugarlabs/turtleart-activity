@@ -26,7 +26,7 @@ from sprites import Sprite
 from tautils import debug_output
 
 from random import uniform
-from math import sin, cos
+from math import sin, cos, pi
 
 SHAPES = 36
 
@@ -129,16 +129,16 @@ class Turtle:
         # Choose a random angle from which to attach the turtle label
         if turtles.sprite_list is not None:
             self.spr = Sprite(turtles.sprite_list, 0, 0, self.shapes[0])
-            angle = uniform(0, 4.10) # 240 degrees
+            angle = uniform(0, pi * 4 / 3.0) # 240 degrees
             w = self.shapes[0].get_width()
             r = w * 0.67
             # Restrict angle the the sides 30-150; 210-330
-            if angle > 2.05:
-                angle += 1.57
+            if angle > pi * 2 / 3.0:
+                angle += pi / 2.0  # + 90
                 self.label_xy = [int(r * sin(angle)),
                                  int(r * cos(angle) + w / 2.0)]
             else:
-                angle += 0.52
+                angle += pi / 6.0  # + 30
                 self.label_xy = [int(r * sin(angle) + w / 2.0),
                                  int(r * cos(angle) + w / 2.0)]
         else:
