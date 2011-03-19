@@ -165,6 +165,14 @@ def make_palette(palette_name, colors=None, help_string=None):
     return palette
 
 
+def palette_name_to_index(palette_name):
+    ''' Find the index associated with palette_name. '''
+    if palette_name in palette_names:
+        return palette_names.index(palette_name)
+    else:
+        return None
+
+
 class Block():
     """ a class for defining new block primitives """
 

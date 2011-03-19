@@ -24,19 +24,21 @@
 
 def myblock(lc, arg):
     ''' Add a uturn block to the 'turtle' palette '''
-    from TurtleArt.tapalette import make_palette
+    from TurtleArt.tapalette import make_palette, palette_name_to_index
     from TurtleArt.talogo import primitive_dictionary
     from gettext import gettext as _
-    palette = make_palette('turtle')
 
+    palette = make_palette('turtle')
     palette.add_block('uturn',
                       style='basic-style-extended-vertical',
                       label=_('uturn'),
                       prim_name='uturn',
                       help_string=_('make a uturn'))
+
     lc.tw.lc.def_prim('uturn', 0,
                      lambda self: primitive_dictionary['set'](
             'heading', lc.tw.canvas.seth,
             lc.tw.canvas.heading + 180))
 
-    lc.tw.show_toolbar_palette(0, regenerate=True)
+    lc.tw.show_toolbar_palette(palette_name_to_index('turtle'),
+                               regenerate=True)
