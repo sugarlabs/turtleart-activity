@@ -255,7 +255,7 @@ class TurtleArtWindow():
 
         if self.interactive_mode:
             self._setup_misc()
-            self._show_toolbar_palette(0, False)
+            self.show_toolbar_palette(0, False)
 
         self.saved_pictures = []
         self.block_operation = ''
@@ -528,7 +528,7 @@ class TurtleArtWindow():
 
     def show_palette(self, n=0):
         """ Show palette  """
-        self._show_toolbar_palette(n)
+        self.show_toolbar_palette(n)
         self.palette_button[self.orientation].set_layer(TAB_LAYER)
         self.palette_button[2].set_layer(TAB_LAYER)
         if self.activity is None or not self.activity.has_toolbarbox:
@@ -595,7 +595,7 @@ class TurtleArtWindow():
             if blk.name in BLOCKS_WITH_SKIN:
                 self._resize_skin(blk)
 
-    def _show_toolbar_palette(self, n, init_only=False):
+    def show_toolbar_palette(self, n, init_only=False, regenerate=False):
         """ Show the toolbar palettes, creating them on init_only """
         # If we are running the 0.86+ toolbar, the selectors are already
         # created, as toolbar buttons. Otherwise, we need to create them.
@@ -632,9 +632,9 @@ class TurtleArtWindow():
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
         # Create 'proto' blocks for each palette entry
-        self.create_proto_blocks(n)
+        self._create_proto_blocks(n, regenerate=regenerate)
 
-        self.layout_palette(n)
+        self._layout_palette(n, regenerate=regenerate)
         for blk in self.palettes[n]:
             blk.spr.set_layer(TAB_LAYER)
         if n == palette_names.index('trash'):
@@ -712,7 +712,7 @@ class TurtleArtWindow():
         self.palette_button[2].type = 'palette'
         self.palette_button[2].set_layer(TAB_LAYER)
 
-    def create_proto_blocks(self, n, regenerate=False):
+    def _create_proto_blocks(self, n, regenerate=False):
         ''' Create the protoblocks that will populate a palette. '''
         if regenerate:
             for blk in self.palettes[n]:
@@ -823,7 +823,7 @@ class TurtleArtWindow():
                 _g.spr.move_relative((_dx, 0))
         return x, y, _max_h
 
-    def layout_palette(self, n):
+    def _layout_palette(self, n, regenerate=False):
         """ Layout prototypes in a palette. """
         if n is not None:
             if self.orientation == HORIZONTAL_PALETTE:
@@ -834,7 +834,8 @@ class TurtleArtWindow():
                     _x, _y, _max = self._horizontal_layout(_x + _max, _y,
                                                            self.trash_stack)
                 _w = _x + _max + 25
-                if self.palette_sprs[n][self.orientation] is None:
+                if self.palette_sprs[n][self.orientation] is None or \
+                        regenerate:
                     svg = SVG()
                     self.palette_sprs[n][self.orientation] = Sprite(
                             self.sprite_list, 0, self.toolbar_offset,
@@ -852,7 +853,8 @@ class TurtleArtWindow():
                     _x, _y, _max = self._vertical_layout(_x, _y + _max,
                                                          self.trash_stack)
                 _h = _y + _max + 25 - self.toolbar_offset
-                if self.palette_sprs[n][self.orientation] is None:
+                if self.palette_sprs[n][self.orientation] is None or \
+                        regenerate:
                     svg = SVG()
                     self.palette_sprs[n][self.orientation] = \
                         Sprite(self.sprite_list, 0, self.toolbar_offset,
@@ -989,7 +991,7 @@ class TurtleArtWindow():
                     self.palette_button[1 - self.orientation].hide()
                     self.palette_sprs[self.selected_palette][
                         1 - self.orientation].hide()
-                    self.layout_palette(self.selected_palette)
+                    self._layout_palette(self.selected_palette)
                     self.show_palette(self.selected_palette)
             elif spr.type == 'toolbar':
                 self._select_toolbar_button(spr)
