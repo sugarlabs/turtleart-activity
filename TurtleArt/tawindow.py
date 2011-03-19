@@ -1223,8 +1223,7 @@ class TurtleArtWindow():
 
     def process_data(self, block_data, offset=0):
         """ Process block_data (from a macro, a file, or the clipboard). """
-        if offset != 0:
-            debug_output("offset is %d" % (offset), self.running_sugar)
+
         # Create the blocks (or turtle).
         blocks = []
         for blk in block_data:
@@ -1934,6 +1933,8 @@ class TurtleArtWindow():
 
     def _disconnect(self, blk):
         """ Disconnect block from stack above it. """
+        if blk is None:
+            return
         if blk.connections[0] is None:
             return
         if collapsed(blk):
