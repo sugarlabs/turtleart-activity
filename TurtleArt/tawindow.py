@@ -753,10 +753,9 @@ class TurtleArtWindow():
         """ Hide just the previously viewed toolbar palette """
         # Hide previous palette
         if self.previous_palette is not None:
-            for i in range(len(palette_blocks[self.previous_palette])):
-                self.palettes[self.previous_palette][i].spr.hide()
-            self.palette_sprs[self.previous_palette][
-                              self.orientation].hide()
+            for proto in self.palettes[self.previous_palette]:
+                proto.spr.hide()
+            self.palette_sprs[self.previous_palette][self.orientation].hide()
             if self.activity is None or not self.activity.has_toolbarbox:
                 self.selectors[self.previous_palette].set_shape(
                     self.selector_shapes[self.previous_palette][0])
