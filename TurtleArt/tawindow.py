@@ -2475,7 +2475,8 @@ class TurtleArtWindow():
             return True
         elif type(blk[1]) in [list, tuple] and blk[1][0] == 'turtle':
             if blk[1][1] == DEFAULT_TURTLE:
-                self.load_turtle(blk, self.nick)
+                if self.nick is not None and self.nick is not '':
+                    self.load_turtle(blk, self.nick)
             else:
                 self.load_turtle(blk, blk[1][1])
             return True
