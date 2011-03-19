@@ -597,76 +597,19 @@ class TurtleArtWindow():
 
     def _show_toolbar_palette(self, n, init_only=False):
         """ Show the toolbar palettes, creating them on init_only """
+        # If we are running the 0.86+ toolbar, the selectors are already
+        # created, as toolbar buttons. Otherwise, we need to create them.
         if (self.activity is None or not self.activity.has_toolbarbox) and\
            self.selectors == []:
-            # Create the selectors
-            svg = SVG()
-            x, y = 50, 0
-            for i, name in enumerate(palette_names):
-                try:
-                    a = svg_str_to_pixbuf(svg_from_file(
-                            '%s/icons/%soff.svg' % (self.path, name)))
-                except IOError:
-                    a = svg_str_to_pixbuf(svg_from_file(
-                            '%s/icons/extrasoff.svg' % (self.path)))
-                    error_output('Unable to open %s/icons/%soff.svg' % \
-                                     (self.path, name), self.running_sugar)
-                try:
-                    b = svg_str_to_pixbuf(svg_from_file(
-                            '%s/icons/%son.svg' % (self.path, name)))
-                except IOError:
-                    b = svg_str_to_pixbuf(svg_from_file(
-                            '%s/icons/extrason.svg' % (self.path)))
-                    error_output('Unable to open %s/icons/%son.svg' % \
-                                     (self.path, name), self.running_sugar)
+            # First, create the selector buttons
+            self._create_the_selectors()
 
-                self.selector_shapes.append([a, b])
-                self.selectors.append(Sprite(self.sprite_list, x, y, a))
-                self.selectors[i].type = 'selector'
-                self.selectors[i].name = name
-                self.selectors[i].set_layer(TAB_LAYER)
-                w = self.selectors[i].get_dimensions()[0]
-                x += int(w)
-
-            # Create the toolbar background
-            self.toolbar_offset = ICON_SIZE
-            self.toolbar_spr = Sprite(self.sprite_list, 0, 0,
-                svg_str_to_pixbuf(svg.toolbar(self.width, ICON_SIZE)))
-            self.toolbar_spr.type = 'toolbar'
-            self.toolbar_spr.set_layer(CATEGORY_LAYER)
-
+        # Create the empty palettes that we'll then populate with prototypes.
         if self.palette_sprs == []:
-            # Create the empty palettes
-            if len(self.palettes) == 0:
-                for i in range(len(palette_blocks)):
-                    self.palettes.append([])
+            self._create_the_empty_palettes()
 
-            # Create empty palette backgrounds
-            for i in palette_names:
-                self.palette_sprs.append([None, None])
-
-            # Create the palette orientation button
-            self.palette_button.append(Sprite(self.sprite_list, 0,
-                self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
-                            "%s/images/palettehorizontal.svg" % (self.path)))))
-            self.palette_button.append(Sprite(self.sprite_list, 0,
-                self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
-                            "%s/images/palettevertical.svg" % (self.path)))))
-            self.palette_button[0].name = _('orientation')
-            self.palette_button[1].name = _('orientation')
-            self.palette_button[0].type = 'palette'
-            self.palette_button[1].type = 'palette'
-            self.palette_button[self.orientation].set_layer(TAB_LAYER)
-            self.palette_button[1 - self.orientation].hide()
-
-            # Create the palette next button
-            self.palette_button.append(Sprite(self.sprite_list, 16,
-                self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
-                            "%s/images/palettenext.svg" % (self.path)))))
-            self.palette_button[2].name = _('next')
-            self.palette_button[2].type = 'palette'
-            self.palette_button[2].set_layer(TAB_LAYER)
-
+        # At initialization of the program, we don't actually populate
+        # the palettes.
         if init_only:
             return
 
@@ -676,9 +619,10 @@ class TurtleArtWindow():
         self.selected_palette = n
         self.previous_palette = self.selected_palette
 
+        # Make sure all of the selectors are visible. (We don't need to do
+        # this for 0.86+ toolbars since the selectors are toolbar buttons.)
         if self.activity is None or not self.activity.has_toolbarbox:
             self.selected_selector = self.selectors[n]
-            # Make sure all of the selectors are visible.
             self.selectors[n].set_shape(self.selector_shapes[n][1])
             for i in range(len(palette_blocks)):
                 self.selectors[i].set_layer(TAB_LAYER)
@@ -687,8 +631,95 @@ class TurtleArtWindow():
         if self.palette_sprs[n][self.orientation] is not None:
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
+        # Create 'proto' blocks for each palette entry
+        self.create_proto_blocks(n)
+
+        self.layout_palette(n)
+        for blk in self.palettes[n]:
+            blk.spr.set_layer(TAB_LAYER)
+        if n == palette_names.index('trash'):
+            for blk in self.trash_stack:
+                for gblk in find_group(blk):
+                    if gblk.status != 'collapsed':
+                        gblk.spr.set_layer(TAB_LAYER)
+
+    def _create_the_selectors(self):
+        ''' Create the palette selector buttons. '''
+        svg = SVG()
+        x, y = 50, 0  # positioned at the left, top
+        for i, name in enumerate(palette_names):
+            try:
+                a = svg_str_to_pixbuf(svg_from_file('%s/icons/%soff.svg' % \
+                                                        (self.path, name)))
+            except IOError:
+                a = svg_str_to_pixbuf(svg_from_file('%s/icons/extrasoff.svg' % \
+                                                        (self.path)))
+                error_output('Unable to open %s/icons/%soff.svg' % \
+                                 (self.path, name), self.running_sugar)
+            try:
+                b = svg_str_to_pixbuf(svg_from_file('%s/icons/%son.svg' % \
+                                                        (self.path, name)))
+            except IOError:
+                b = svg_str_to_pixbuf(svg_from_file('%s/icons/extrason.svg' % \
+                                                        (self.path)))
+                error_output('Unable to open %s/icons/%son.svg' % \
+                                 (self.path, name), self.running_sugar)
+
+            self.selector_shapes.append([a, b])
+            self.selectors.append(Sprite(self.sprite_list, x, y, a))
+            self.selectors[i].type = 'selector'
+            self.selectors[i].name = name
+            self.selectors[i].set_layer(TAB_LAYER)
+            w = self.selectors[i].get_dimensions()[0]
+            x += int(w)  # running from left to right
+
+        # Create the toolbar background for the selectors
+        self.toolbar_offset = ICON_SIZE
+        self.toolbar_spr = Sprite(self.sprite_list, 0, 0,
+            svg_str_to_pixbuf(svg.toolbar(self.width, ICON_SIZE)))
+        self.toolbar_spr.type = 'toolbar'
+        self.toolbar_spr.set_layer(CATEGORY_LAYER)
+
+    def _create_the_empty_palettes(self):
+        ''' Create the empty palettes to be populated by prototype blocks. '''
+        if len(self.palettes) == 0:
+            for i in range(len(palette_blocks)):
+                self.palettes.append([])
+
+        # Create empty palette backgrounds
+        for i in palette_names:
+            self.palette_sprs.append([None, None])
+
+        # Create the palette orientation button
+        self.palette_button.append(Sprite(self.sprite_list, 0,
+            self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
+                        "%s/images/palettehorizontal.svg" % (self.path)))))
+        self.palette_button.append(Sprite(self.sprite_list, 0,
+            self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
+                        "%s/images/palettevertical.svg" % (self.path)))))
+        self.palette_button[0].name = _('orientation')
+        self.palette_button[1].name = _('orientation')
+        self.palette_button[0].type = 'palette'
+        self.palette_button[1].type = 'palette'
+        self.palette_button[self.orientation].set_layer(TAB_LAYER)
+        self.palette_button[1 - self.orientation].hide()
+
+        # Create the palette next button
+        self.palette_button.append(Sprite(self.sprite_list, 16,
+            self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
+                        "%s/images/palettenext.svg" % (self.path)))))
+        self.palette_button[2].name = _('next')
+        self.palette_button[2].type = 'palette'
+        self.palette_button[2].set_layer(TAB_LAYER)
+
+    def create_proto_blocks(self, n, regenerate=False):
+        ''' Create the protoblocks that will populate a palette. '''
+        if regenerate:
+            for blk in self.palettes[n]:
+                blk.type = 'trash'
+            self.palettes[n] = []
+
         if self.palettes[n] == []:
-            # Create 'proto' blocks for each palette entry
             for i, name in enumerate(palette_blocks[n]):
                 self.palettes[n].append(Block(self.block_list,
                     self.sprite_list, name, 0, 0, 'proto', [], PALETTE_SCALE))
@@ -704,15 +735,6 @@ class TurtleArtWindow():
                     self._proto_skin(name[7:], n, i)
                 elif name in PYTHON_SKIN:
                     self._proto_skin('pythonsmall', n, i)
-
-        self._layout_palette(n)
-        for blk in self.palettes[n]:
-            blk.spr.set_layer(TAB_LAYER)
-        if n == palette_names.index('trash'):
-            for blk in self.trash_stack:
-                for gblk in find_group(blk):
-                    if gblk.status != 'collapsed':
-                        gblk.spr.set_layer(TAB_LAYER)
 
     def _hide_toolbar_palette(self):
         """ Hide the toolbar palettes """
@@ -801,7 +823,7 @@ class TurtleArtWindow():
                 _g.spr.move_relative((_dx, 0))
         return x, y, _max_h
 
-    def _layout_palette(self, n):
+    def layout_palette(self, n):
         """ Layout prototypes in a palette. """
         if n is not None:
             if self.orientation == HORIZONTAL_PALETTE:
@@ -967,7 +989,7 @@ class TurtleArtWindow():
                     self.palette_button[1 - self.orientation].hide()
                     self.palette_sprs[self.selected_palette][
                         1 - self.orientation].hide()
-                    self._layout_palette(self.selected_palette)
+                    self.layout_palette(self.selected_palette)
                     self.show_palette(self.selected_palette)
             elif spr.type == 'toolbar':
                 self._select_toolbar_button(spr)
