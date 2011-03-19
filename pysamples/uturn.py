@@ -22,23 +22,28 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected.
 
-def myblock(lc, arg):
+def myblock(parent, arg):
     ''' Add a uturn block to the 'turtle' palette '''
+
     from TurtleArt.tapalette import make_palette, palette_name_to_index
     from TurtleArt.talogo import primitive_dictionary
     from gettext import gettext as _
 
+    # Choose a palette for the new block.
     palette = make_palette('turtle')
+
+    # Create a new block prototype.
     palette.add_block('uturn',
                       style='basic-style-extended-vertical',
                       label=_('uturn'),
                       prim_name='uturn',
                       help_string=_('make a uturn'))
 
-    lc.tw.lc.def_prim('uturn', 0,
+    # Add its primitive to the LogoCode dictionary.
+    parent.tw.lc.def_prim('uturn', 0,
                      lambda self: primitive_dictionary['set'](
-            'heading', lc.tw.canvas.seth,
-            lc.tw.canvas.heading + 180))
+            'heading', parent.tw.canvas.seth, parent.tw.canvas.heading + 180))
 
-    lc.tw.show_toolbar_palette(palette_name_to_index('turtle'),
-                               regenerate=True)
+    # Regenerate the palette, which will now include the new block.
+    parent.tw.show_toolbar_palette(palette_name_to_index('turtle'),
+                                   regenerate=True)
