@@ -1710,10 +1710,12 @@ class TurtleArtWindow():
                     dy = blk.add_arg()
                     blk.primitive = 'userdefined2'
                     blk.name = 'userdefined2args'
+                    self._resize_skin(blk)
                 elif blk.name == 'userdefined2args':
                     dy = blk.add_arg(False)
                     blk.primitive = 'userdefined3'
                     blk.name = 'userdefined3args'
+                    self._resize_skin(blk)
                 else:
                     dy = blk.add_arg()
                 for gblk in group:
