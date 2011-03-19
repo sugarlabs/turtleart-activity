@@ -30,7 +30,7 @@ from tapalette import palette_blocks, block_colors, expandable_blocks, \
 from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
 
-from tautils import debug_output
+from tautils import debug_output, error_output
 
 
 class Blocks:
@@ -468,6 +468,8 @@ class Block:
                 else:
                     self.block_methods[k](svg)
                 return
+        error_output('block type not found %s' % (self.name))
+        self.block_methods['basic-style'](svg)
 
     def _set_colors(self, svg):
         if self.name in BOX_COLORS:
