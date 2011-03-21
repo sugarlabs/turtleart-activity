@@ -23,7 +23,7 @@
 # palette is selected and expanded to 3 arguments.
 
 
-def myblock(lc, rgb_array):
+def myblock(tw, rgb_array):
 
     ###########################################################################
     #
@@ -42,4 +42,4 @@ def myblock(lc, rgb_array):
     g = mod(int(rgb_array[1]))
     r = mod(int(rgb_array[0]))
     rgb = "#%02x%02x%02x" % (r, g, b)
-    lc.tw.canvas.fgcolor = lc.tw.canvas.cm.alloc_color(rgb)
+    tw.canvas.fgcolor = tw.canvas.cm.alloc_color(rgb)

@@ -43,11 +43,11 @@ def myfunc(f, args):
         return userdefined.values()[0](args[0], args[1], args[2])
 
 
-def myfunc_import(lc, f, x):
+def myfunc_import(parent, f, x):
     userdefined = {}
     try:
         exec f in globals(), userdefined
-        return userdefined['myblock'](lc, x)
+        return userdefined['myblock'](parent.tw, x)
     except:
         traceback.print_exc()
         return None

@@ -23,7 +23,7 @@
 # palette is selected.
 
 
-def myblock(lc, x):  # ignore second argument
+def myblock(tw, x):  # ignore second argument
 
     ###########################################################################
     #
@@ -31,11 +31,11 @@ def myblock(lc, x):  # ignore second argument
     #
     ###########################################################################
 
-    if lc.tw.mouse_flag == 1:
+    if tw.mouse_flag == 1:
         # push y first so x will be popped first
-        lc.heap.append((lc.tw.canvas.height / 2) - lc.tw.mouse_y)
-        lc.heap.append(lc.tw.mouse_x - (lc.tw.canvas.width / 2))
-        lc.heap.append(1) # mouse event
-        lc.tw.mouse_flag = 0
+        tw.lc.heap.append((tw.canvas.height / 2) - tw.mouse_y)
+        tw.lc.heap.append(tw.mouse_x - (tw.canvas.width / 2))
+        tw.lc.heap.append(1) # mouse event
+        tw.mouse_flag = 0
     else:
-        lc.heap.append(0) # no mouse event
+        tw.lc.heap.append(0) # no mouse event

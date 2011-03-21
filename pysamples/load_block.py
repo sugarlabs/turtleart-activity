@@ -22,7 +22,7 @@
 # palette is selected.
 
 
-def myblock(lc, blkname):
+def myblock(tw, blkname):
 
     ###########################################################################
     #
@@ -30,29 +30,29 @@ def myblock(lc, blkname):
     #
     ###########################################################################
 
-    from taconstants import BLOCK_NAMES, PRIMITIVES, CONTENT_BLOCKS, \
-        SPECIAL_NAMES
-    from tautils import find_group
+    from TurtleArt.tapalette import block_names, block_primitives, \
+        special_names, content_blocks
+    from TurtleArt.tautils import find_group
 
-    def make_block(lc, name, x, y, defaults):
+    def make_block(tw, name, x, y, defaults):
         x_pos = x + 20
         y_pos = y + 20
-        lc.tw._new_block(name, x_pos, y_pos, defaults)
+        tw._new_block(name, x_pos, y_pos, defaults)
 
         # Find the block we just created and attach it to a stack.
-        lc.tw.drag_group = None
-        spr = lc.tw.sprite_list.find_sprite((x_pos, y_pos))
+        tw.drag_group = None
+        spr = tw.sprite_list.find_sprite((x_pos, y_pos))
         if spr is not None:
-            blk = lc.tw.block_list.spr_to_block(spr)
+            blk = tw.block_list.spr_to_block(spr)
             if blk is not None:
-                lc.tw.drag_group = find_group(blk)
-                lc.tw._snap_to_dock()
+                tw.drag_group = find_group(blk)
+                tw._snap_to_dock()
 
         # Disassociate new block from mouse.
-        lc.tw.drag_group = None
+        tw.drag_group = None
         return blk.height
 
-    def find_block(lc, blkname, x, y, defaults=None):
+    def find_block(tw, blkname, x, y, defaults=None):
         """ Create a new block. It is a bit more work than just calling
         _new_block(). We need to:
         (1) translate the label name into the internal block name;
@@ -60,27 +60,28 @@ def myblock(lc, blkname):
         (3) disassociate the new block from the mouse. """
 
         print blkname
-        for name in BLOCK_NAMES:
+        for name in block_names:
             # Translate label name into block/prim name.
-            if blkname in BLOCK_NAMES[name]:
-                if (name in PRIMITIVES and PRIMITIVES[name] == name) or \
-                   name in CONTENT_BLOCKS:
-                    return make_block(lc, name, x, y, defaults)
-        for name in SPECIAL_NAMES:
+            if blkname in block_names[name]:
+                if (name in block_primitives and \
+                        block_primitives[name] == name) or \
+                        name in content_blocks:
+                    return make_block(tw, name, x, y, defaults)
+        for name in special_names:
             # Translate label name into block/prim name.
-            if blkname in SPECIAL_NAMES[name]:
-                return make_block(lc, name, x, y, defaults)
+            if blkname in special_names[name]:
+                return make_block(tw, name, x, y, defaults)
         return -1
 
     # Place the block at the active turtle (x, y) and
     # push height to stack.
-    x, y = lc.tw.active_turtle.get_xy()
+    x, y = tw.active_turtle.get_xy()
     if type(blkname) == type([]):
         name = blkname[0]
         value = blkname[1:]
-        dy = int(find_block(lc, name, x, y, value))
+        dy = int(find_block(tw, name, x, y, value))
     else:
         name = blkname
-        dy = int(find_block(lc, name, x, y))
+        dy = int(find_block(tw, name, x, y))
     if dy != -1:
-        lc.heap.append(dy)
+        tw.lc.heap.append(dy)

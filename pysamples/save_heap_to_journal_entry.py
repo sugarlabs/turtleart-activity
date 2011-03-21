@@ -22,7 +22,7 @@
 # palette is selected.
 
 
-def myblock(lc, title):
+def myblock(tw, title):
 
     ###########################################################################
     #
@@ -42,7 +42,7 @@ def myblock(lc, title):
     # Save JSON-encoded heap to temporary file
     heap_file = os.path.join(get_path(activity, 'instance'),
                              str(title) + '.txt')
-    data_to_file(lc.heap, heap_file)
+    data_to_file(tw.lc.heap, heap_file)
 
     # Create a datastore object
     dsobject = datastore.create()

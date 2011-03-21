@@ -47,66 +47,66 @@
 #
 #
 # Class TurtleArtWindow -- useful properties and methods (from within
-# tamyblock.py, lc.tw is the class instance)
+# tamyblock.py, tw is the class instance)
 #
 # Methods and data attributes	Example
-# set_fullscreen(self)		lc.tw.set_fullscreen()
+# set_fullscreen(self)		tw.set_fullscreen()
 # Note: Hides the Sugar toolbar
-# set_cartesian(self, flag)	lc.tw.set_cartesian(True)
+# set_cartesian(self, flag)	tw.set_cartesian(True)
 # Note: True will make the overlay visible;
 #       False will make it invisible
-# set_polar(self, flag)		lc.tw.set_polar(True)
+# set_polar(self, flag)		tw.set_polar(True)
 # Note: True will make the overlay visible;
 #       False will make it invisible
-# hideshow_button(self, flag)	lc.tw.hideshow_button()
+# hideshow_button(self, flag)	tw.hideshow_button()
 # Note: Toggles visibility of blocks and palettes
-# self.active_turtle		lc.tw.active_turtle
+# self.active_turtle		tw.active_turtle
 # Note: The active turtle instance
 #
 #
 # Class TurtleGraphics -- useful properties and methods (from within
-# tamyblock.py, lc.tw.canvas is the class instance)
+# tamyblock.py, tw.canvas is the class instance)
 #
 # Methods and data attributes	Example
-# clearscreen(self)		lc.tw.canvas.clearscreen()
+# clearscreen(self)		tw.canvas.clearscreen()
 # Note: Clears the screen and resets all turtle and
 #       pen attributes to default values
-# setpen(self, flag)		lc.tw.canvas.setpen(True)
+# setpen(self, flag)		tw.canvas.setpen(True)
 # Note: True will set the pen "down", enabling drawing;
 #       False will set the pen "up"
-# forward(self, n)		lc.tw.canvas.forward(100)
+# forward(self, n)		tw.canvas.forward(100)
 # Note: Move the turtle forward 100 units
-# arc(self, a, r)		lc.tw.canvas.arc(120, 50)
+# arc(self, a, r)		tw.canvas.arc(120, 50)
 # Note: Move the turtle along an arc of 120 degrees
 #       (clockwise) and radius of 50 units
-# setheading(self, a)		lc.tw.canvas.setheading(180)
+# setheading(self, a)		tw.canvas.setheading(180)
 # Note: Set the turtle heading to 180
 #       (towards the bottom of the screen)
-# self.heading			lc.tw.canvas.heading
+# self.heading			tw.canvas.heading
 # Note: The current heading
-# setpensize(self, n)		lc.tw.canvas.setpensize(25)
+# setpensize(self, n)		tw.canvas.setpensize(25)
 # Note: Set the turtle pensize to 25 units
-# self.pensize			lc.tw.canvas.pensize
+# self.pensize			tw.canvas.pensize
 # Note: The current pensize
-# setcolor(self, c)		lc.tw.canvas.color(70)
+# setcolor(self, c)		tw.canvas.color(70)
 # Note:	Set the pen color to 70 (blue)
-# self.color			lc.tw.canvas.color
+# self.color			tw.canvas.color
 # Note: The current pen color
-# setshade(self, s)		lc.tw.canvas.shade(50)
+# setshade(self, s)		tw.canvas.shade(50)
 # Note:	Set the pen shade to 50
-# self.shade			lc.tw.canvas.shade
+# self.shade			tw.canvas.shade
 # Note: The current pen shade
-# fillscreen(self, c, s)	lc.tw.canvas.fillscreen(70, 90)
+# fillscreen(self, c, s)	tw.canvas.fillscreen(70, 90)
 # Note: Fill the screen with color 70, shade 90 (light blue)
-# setxy(self, x, y)		lc.tw.canvas.setxy(100,100)
+# setxy(self, x, y)		tw.canvas.setxy(100,100)
 # Note: Move the turtle to position (100, 100)
-# self.xcor			lc.tw.canvas.xcor
+# self.xcor			tw.canvas.xcor
 # Note: The current x coordinate of the turtle
 #       (scaled to current units)
-# self.ycor			lc.tw.canvas.ycor
+# self.ycor			tw.canvas.ycor
 # Note: The current y coordinate of the turtle
 #       (scaled to current units)
-# self.set_turtle(name)		lc.tw.canvas.set_turtle(1)
+# self.set_turtle(name)		tw.canvas.set_turtle(1)
 # Note: Set the current turtle to turtle '1'
 #
 #
@@ -118,14 +118,14 @@
 # Note: See http://docs.python.org/library/math.html
 # from time import localtime	localtime().tm_hour returns the current hour
 # Note: See http://docs.python.org/library/time.html
-# 				lc.heap.append(data) adds data to the heap
+# 				tw.lc.heap.append(data) adds data to the heap
 # Note: See http://docs.python.org/tutorial/datastructures.html
-# 				data = lc.heap.pop(-1) pops data off the heap
+# 				data = tw.lc.heap.pop(-1) pops data off the heap
 # Note: See http://docs.python.org/tutorial/datastructures.html
 #
 
 
-def myblock(lc, line_length):
+def myblock(tw, line_length):
 
     ###########################################################################
     #
@@ -137,17 +137,17 @@ def myblock(lc, line_length):
         line_length = float(line_length)
     except ValueError:
         return
-    if lc.tw.canvas.pendown:
+    if tw.canvas.pendown:
         dist = 0
-        while dist + lc.tw.canvas.pensize < line_length:  # repeat drawing dots
-            lc.tw.canvas.setpen(True)
-            lc.tw.canvas.forward(1)
-            lc.tw.canvas.setpen(False)
-            lc.tw.canvas.forward((lc.tw.canvas.pensize * 2) - 1)
-            dist += (lc.tw.canvas.pensize * 2)
+        while dist + tw.canvas.pensize < line_length:  # repeat drawing dots
+            tw.canvas.setpen(True)
+            tw.canvas.forward(1)
+            tw.canvas.setpen(False)
+            tw.canvas.forward((tw.canvas.pensize * 2) - 1)
+            dist += (tw.canvas.pensize * 2)
         # make sure we have moved exactly line_length
-        lc.tw.canvas.forward(line_length - dist)
-        lc.tw.canvas.setpen(True)
+        tw.canvas.forward(line_length - dist)
+        tw.canvas.setpen(True)
     else:
-        lc.tw.canvas.forward(line_length)
+        tw.canvas.forward(line_length)
     return

@@ -22,7 +22,7 @@
 # palette is selected.
 
 
-def myblock(lc, frequency):
+def myblock(tw, frequency):
 
     ###########################################################################
     #

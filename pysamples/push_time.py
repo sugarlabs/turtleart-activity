@@ -22,7 +22,7 @@
 # palette is selected.
 
 
-def myblock(lc, x):  # ignore second argument
+def myblock(tw, x):  # ignore second argument
 
     ###########################################################################
     #
@@ -33,6 +33,6 @@ def myblock(lc, x):  # ignore second argument
     #
     ###########################################################################
 
-    lc.heap.append(localtime().tm_hour)
-    lc.heap.append(localtime().tm_min)
-    lc.heap.append(localtime().tm_sec)
+    tw.lc.heap.append(localtime().tm_hour)
+    tw.lc.heap.append(localtime().tm_min)
+    tw.lc.heap.append(localtime().tm_sec)

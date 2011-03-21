@@ -22,7 +22,7 @@
 # palette is selected.
 
 
-def myblock(lc, x):  # second argument is ignored
+def myblock(tw, x):  # second argument is ignored
 
     ###########################################################################
     #
@@ -33,4 +33,4 @@ def myblock(lc, x):  # second argument is ignored
     from gtk import Clipboard
     from tautils import data_to_string
 
-    Clipboard().set_text(data_to_string(lc.heap))
+    Clipboard().set_text(data_to_string(tw.lc.heap))

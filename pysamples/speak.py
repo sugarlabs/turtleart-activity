@@ -23,7 +23,7 @@
 # palette is selected.
 
 
-def myblock(lc, arg):
+def myblock(tw, arg):
 
     ###########################################################################
     #

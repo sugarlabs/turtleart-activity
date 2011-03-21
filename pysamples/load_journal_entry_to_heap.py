@@ -22,7 +22,7 @@
 # palette is selected.
 
 
-def myblock(lc, x):  # ignore second argument
+def myblock(tw, x):  # ignore second argument
 
     ###########################################################################
     #
@@ -33,4 +33,4 @@ def myblock(lc, x):  # ignore second argument
     from tautils import chooser
 
     # Choose a datastore object and push data to heap (Sugar only)
-    chooser(lc.tw.parent, '', lc.push_file_data_to_heap)
+    chooser(tw.parent, '', tw.lc.push_file_data_to_heap)

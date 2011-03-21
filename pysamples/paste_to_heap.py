@@ -22,7 +22,7 @@
 # palette is selected.
 
 
-def myblock(lc, x):  # ignore second argument
+def myblock(tw, x):  # ignore second argument
 
     ###########################################################################
     #
@@ -36,5 +36,5 @@ def myblock(lc, x):  # ignore second argument
     text = Clipboard().wait_for_text()
     if text is not None:
         for val in data_from_string(text):
-            lc.heap.append(val)
-        lc.update_label_value('pop', val)
+            tw.lc.heap.append(val)
+        tw.lc.update_label_value('pop', val)
