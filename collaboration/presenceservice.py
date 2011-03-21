@@ -95,7 +95,7 @@ class PresenceService(gobject.GObject):
                     name = 'org.freedesktop.Telepathy.Error.NotAvailable'
                     if e.get_dbus_name() == name:
                         logging.debug("There's no shared activity with the id "
-                                      "%s", activity_id)
+                                      "%s" % (activity_id))
                     else:
                         raise
                 else:
@@ -166,8 +166,8 @@ class PresenceService(gobject.GObject):
                         dbus_interface=CONNECTION)
                 return self.get_buddy(account_path, contact_ids[0])
 
-        raise ValueError('Unknown buddy in connection %s with handle %d',
-                         tp_conn_path, handle)
+        raise ValueError('Unknown buddy in connection %s with handle %d' % \
+                         (tp_conn_path, handle))
 
     def get_owner(self):
         """Retrieves the laptop Buddy object."""
@@ -203,8 +203,8 @@ class PresenceService(gobject.GObject):
         properties['private'] = private
 
         if self._activity_cache is not None:
-            raise ValueError('Activity %s is already tracked',
-                             activity.get_id())
+            raise ValueError('Activity %s is already tracked' % \
+                             (activity.get_id()))
 
         connection_manager = get_connection_manager()
         account_path, connection = \
@@ -220,8 +220,8 @@ class PresenceService(gobject.GObject):
         self._activity_cache = shared_activity
 
         if shared_activity.props.joined:
-            raise RuntimeError('Activity %s is already shared.' %
-                               activity.props.id)
+            raise RuntimeError('Activity %s is already shared.' % \
+                               (activity.props.id))
 
         shared_activity.share(self.__share_activity_cb,
                               self.__share_activity_error_cb)
