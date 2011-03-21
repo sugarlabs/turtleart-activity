@@ -20,6 +20,11 @@ BUG FIXES
 * Fixed regression with camera_plugin after refactoring (#2689)
 * Fixed problem with saving/loading extra turtles when nick changes (#2441)
 
+FLAG
+
+* Userdefined code gets TurtleWindow instance rather than LogoCode
+  instance as first argument
+
 106
 
 ENHANCEMENTS
