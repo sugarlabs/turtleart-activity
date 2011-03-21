@@ -22,6 +22,12 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected and expanded to 3 arguments.
 
+# Usage: Import this code into a Python (user-definable) block.
+# First, expand the Python block to reveal three numerics arguments.
+# Set these values to the desired red, green, and blue. When the code
+# is run, the red, green, and blue values are used to set the pen
+# color.
+
 
 def myblock(tw, rgb_array):
 
@@ -31,15 +37,8 @@ def myblock(tw, rgb_array):
     #
     ###########################################################################
 
-    def mod(x):
-        while x < 0:
-            x += 256
-        while b > 255:
-            x -= 256
-        return x
-
-    b = mod(int(rgb_array[2]))
-    g = mod(int(rgb_array[1]))
-    r = mod(int(rgb_array[0]))
-    rgb = "#%02x%02x%02x" % (r, g, b)
+    
+    rgb = "#%02x%02x%02x" % ((int(rgb_array[0]) % 256),
+                             (int(rgb_array[1]) % 256),
+                             (int(rgb_array[2]) % 256))
     tw.canvas.fgcolor = tw.canvas.cm.alloc_color(rgb)

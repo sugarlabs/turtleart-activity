@@ -21,6 +21,15 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected.
 
+# Usage: Import this code into a Python (user-definable) block; when
+# this code is run, the turtle will create a block at the current
+# location of the turtle.  The first argument to the Python block
+# should be a string containing the name of the desired
+# block. Arguments to the block can be passed by expanding the Python
+# block to include up to two additional arguments.  Note that the
+# height of the block is pushed to the FILO heap and can be used to
+# advance the position of the turtle when creating stacks.
+
 
 def myblock(tw, blkname):
 

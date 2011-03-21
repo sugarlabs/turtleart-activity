@@ -21,6 +21,11 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected.
 
+# Usage: Import this code into a Python (user-definable) block; when
+# this code is run, the chooser will be opened for selecting a file
+# from the Journal. The contents of that file will be loaded onto the
+# FILO heap.
+
 
 def myblock(tw, x):  # ignore second argument
 

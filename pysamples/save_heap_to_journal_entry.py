@@ -21,6 +21,11 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected.
 
+# Usage: Import this code into a Python (user-definable) block; when
+# this code is run, the contents of the FILO heap are saved to a
+# Journal entry named by the value of the argument to the Python
+# block.
+
 
 def myblock(tw, title):
 

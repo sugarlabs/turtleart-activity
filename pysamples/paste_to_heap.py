@@ -21,6 +21,10 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected.
 
+# Usage: Import this code into a Python (user-definable) block; when
+# this code is run, the contents of the clipboard will be appended to
+# the FILO heap.
+
 
 def myblock(tw, x):  # ignore second argument
 

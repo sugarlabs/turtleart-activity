@@ -22,6 +22,11 @@
 # This procedure is invoked when the user-definable block on the "extras"
 # palette is selected.
 
+# Usage: Import this code into a Python (user-definable) block; when
+# it is run, a u-turn block will be added to the Turtle Palette. You
+# can use the u-turn block as you would any other block.
+
+
 def myblock(tw, arg):
     ''' Add a uturn block to the 'turtle' palette '''
 

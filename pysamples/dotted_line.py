@@ -124,6 +124,10 @@
 # Note: See http://docs.python.org/tutorial/datastructures.html
 #
 
+# Usage: Import this code into a Python (user-definable) block; when
+# this code is run, the turtle will draw a dotted line of the length
+# of the numeric argument block docked to the Python block.
+
 
 def myblock(tw, line_length):
 
