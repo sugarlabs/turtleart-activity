@@ -30,7 +30,7 @@ def myblock(tw, x):  # ignore second argument
     #
     ###########################################################################
 
-    from tautils import chooser
+    from TurtleArt.tautils import chooser
 
     # Choose a datastore object and push data to heap (Sugar only)
     chooser(tw.parent, '', tw.lc.push_file_data_to_heap)

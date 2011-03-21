@@ -31,6 +31,6 @@ def myblock(tw, x):  # second argument is ignored
     ###########################################################################
 
     from gtk import Clipboard
-    from tautils import data_to_string
+    from TurtleArt.tautils import data_to_string
 
     Clipboard().set_text(data_to_string(tw.lc.heap))

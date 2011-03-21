@@ -37,7 +37,7 @@ def myblock(tw, title):
     from sugar.datastore import datastore
     from sugar import profile
 
-    from tautils import get_path, data_to_file
+    from TurtleArt.tautils import get_path, data_to_file
 
     # Save JSON-encoded heap to temporary file
     heap_file = os.path.join(get_path(activity, 'instance'),
