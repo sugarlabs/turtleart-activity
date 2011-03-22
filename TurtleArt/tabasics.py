@@ -777,7 +777,6 @@ variable'))
                           style='basic-style-extended-vertical',
                           label=_('action 1'),
                           prim_name='stack1',
-                          default=_('action 1'),
                           help_string=_('invokes Action 1 stack'))
         self.tw.lc.def_prim('stack1', 0, primitive_dictionary['stack1'], True)
 
@@ -786,7 +785,6 @@ variable'))
                           style='basic-style-extended-vertical',
                           label=_('action 2'),
                           prim_name='stack2',
-                          default=_('action 2'),
                           help_string=_('invokes Action 2 stack'))
         self.tw.lc.def_prim('stack2', 0, primitive_dictionary['stack2'], True)
 
