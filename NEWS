@@ -21,7 +21,7 @@ BUG FIXES
 * Fixed regression with camera_plugin after refactoring (#2689)
 * Fixed problem with saving/loading extra turtles when nick changes (#2441)
 
-PYTHON CODE FLAG DAY
+PYTHON CODE CHANGE
 
 * Userdefined code gets TurtleWindow instance rather than LogoCode
   instance as first argument. This change was made in order to better
@@ -31,7 +31,9 @@ PYTHON CODE FLAG DAY
   directly, e.g., tw. To reference lc, use tw.lc. Also note that the
   push_mouse_event.py sample has changed. The x,y position of the
   mouse is now always pushed to the stack, whether or not the mouse
-  button is pressed.
+  button is pressed. Under most circumstances, Turtle Art will detect
+  when myblock is looking for lc rather than tw and it will pass the
+  correct argument.
 
 106
 
