@@ -519,8 +519,7 @@ class LogoCode:
 
     def update_label_value(self, name, value=None):
         """ Update the label of value blocks to reflect current value """
-        if self.tw.hide or not self.tw.interactive_mode or \
-           not hasattr(self, 'value_blocks'):
+        if self.tw.hide or not self.tw.interactive_mode:
             return
         if value is None:
             for block in self.value_blocks_to_update[name]:
@@ -533,6 +532,7 @@ class LogoCode:
             else:
                 valstring = str(value)
             for block in self.value_blocks_to_update[name]:
+                print name, value
                 block.spr.set_label(block_names[name][0] + ' = ' + valstring)
                 block.resize()
 
