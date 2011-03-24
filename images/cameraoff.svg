@@ -1,37 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="55"
-   height="42"
-   viewBox="0 0 55 42"
-   id="svg2"
-   xml:space="preserve"><metadata
-     id="metadata29"><rdf:RDF><cc:Work
-         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
-     id="defs27">
-	
-	
-	
-	
-	
-	
-	
-</defs><g
-     transform="matrix(3,0,0,3,-55.015,-67.788)"
-     id="g3016"><path
-       d="m 27.504,24.842 c -4.757,0 -8.72,4.744 -8.72,4.744 0,0 3.963,4.767 8.72,4.764 4.757,-0.004 8.722,-4.77 8.722,-4.77 0,0 -3.964,-4.741 -8.722,-4.738 z m 0,8.09 c -1.842,0 -3.335,-1.494 -3.335,-3.336 0,-1.839 1.493,-3.336 3.335,-3.336 1.839,0 3.333,1.497 3.333,3.336 0.001,1.842 -1.493,3.336 -3.333,3.336 z"
-       id="path13"
-       style="fill:#010101;display:inline" /><circle
-       cx="27.504999"
-       cy="29.597"
-       r="1.5140001"
-       id="circle15"
-       style="fill:#010101;display:inline" /></g></svg>
+<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd' [
+	<!ENTITY stroke_color "#010101">
+	<!ENTITY fill_color "#ffffff">
+]><svg enable-background="new 0 0 55 55" height="55px" version="1.1" viewBox="0 0 55 55" width="55px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><g display="block" id="camera-external">
+	<g display="inline">
+		<g>
+			<polygon fill="&fill_color;" points="38.532,14.52 34.904,9.862 18.783,9.862 15.155,14.52 6.29,14.52 6.29,38.973 48.209,38.973      48.209,14.52    "/>
+		</g>
+		<g>
+			<polygon fill="none" points="38.532,14.52 34.904,9.862 18.783,9.862 15.155,14.52      6.29,14.52 6.29,38.973 48.209,38.973 48.209,14.52    " stroke="&stroke_color;" stroke-width="3.5"/>
+		</g>
+	</g>
+	<path d="M20.601,26.441c0,3.67,2.979,6.648,6.65,6.648   c3.667,0,6.646-2.979,6.646-6.648c0-3.668-2.979-6.652-6.646-6.652C23.581,19.789,20.601,22.775,20.601,26.441z" display="inline" fill="&fill_color;" stroke="&stroke_color;" stroke-width="3.5"/>
+	<rect display="inline" fill="&stroke_color;" height="4.193" width="6.287" x="38.099" y="18.418"/>
+</g></svg>
