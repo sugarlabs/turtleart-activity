@@ -30,6 +30,12 @@
 # height of the block is pushed to the FILO heap and can be used to
 # advance the position of the turtle when creating stacks.
 
+# For example, try the following to place forward 100, right 90 on the canvas:
+# start
+# Python(forward, 100)  <-- Python load_block.py expanded to two arguments
+# setxy(xcor, (subtract(ycor, pop)))  <-- subtract top of heap from ycor
+# Python(right, 90)  <-- Python load_block.py expanded to two arguments
+
 
 def myblock(tw, blkname):
 
