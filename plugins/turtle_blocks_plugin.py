@@ -862,7 +862,11 @@ bullets'))
 
     def _prim_printheap(self):
         """ Display contents of heap """
-        self.tw.showlabel('status', str(self.tw.lc.heap) + '      ')
+        heap_as_string = str(self.tw.lc.heap)
+        if len(heap_as_string) > 80:
+            self.tw.showlabel('status', str(self.tw.lc.heap)[0:79] + '…')
+        else:
+            self.tw.showlabel('status', str(self.tw.lc.heap))
 
     def _prim_push(self, val):
         """ Push value onto FILO """
