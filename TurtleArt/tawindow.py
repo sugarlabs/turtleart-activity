@@ -1318,7 +1318,7 @@ class TurtleArtWindow():
             return
         (sx, sy) = blk.spr.get_xy()
         for i, c in enumerate(blk.connections):
-            if i > 0 and c is not None:
+            if i > 0 and c is not None and i < len(blk.docks):
                 bdock = blk.docks[i]
                 for j in range(len(c.docks)):
                     if j < len(c.connections) and c.connections[j] == blk:
