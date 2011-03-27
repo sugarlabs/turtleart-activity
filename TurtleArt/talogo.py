@@ -403,12 +403,10 @@ class LogoCode:
                 self.icall(self._ufuncall, self.cfun.fcn)
                 yield True
             else:
-                # print "evalsym rprim: ", token
                 self.icall(self.cfun.fcn, *self.arglist)
                 yield True
             result = None
         else:
-            # print "evalsym: ", token
             result = self.cfun.fcn(self, *self.arglist)
         self.cfun, self.arglist = oldcfun, oldarglist
         if self.arglist is not None and result == None:
@@ -532,7 +530,6 @@ class LogoCode:
             else:
                 valstring = str(value)
             for block in self.value_blocks_to_update[name]:
-                print name, value
                 block.spr.set_label(block_names[name][0] + ' = ' + valstring)
                 block.resize()
 
