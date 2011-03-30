@@ -5,19 +5,96 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: 2008-12-14 22:54-0500\n"
-"Last-Translator: Chris Leonard <cjl@laptop.org>\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2010-12-19 05:16+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.3\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
 msgstr "Turtle Art"
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "title"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "text"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "stack"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "box"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "name"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "Project"
+
+#:
+msgid "Save as"
+msgstr "Save as"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "hide palette"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "hide blocks"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "run"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "step"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "stop turtle"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "samples"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "save as HTML"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "save Logo"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "load my block"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "show palette"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "show blocks"
 
 #:
 msgid "Flow"
@@ -80,6 +157,14 @@ msgid "store in box 2"
 msgstr "store in box 2"
 
 #:
+msgid "push"
+msgstr "push"
+
+#:
+msgid "pop"
+msgstr "pop"
+
+#:
 msgid "Numbers"
 msgstr "Numbers"
 
@@ -125,7 +210,7 @@ msgstr "Pen"
 
 #:
 msgid "color"
-msgstr ""
+msgstr "color"
 
 #:
 msgid "shade"
@@ -160,12 +245,20 @@ msgid "set color"
 msgstr "set color"
 
 #:
+msgid "set text color"
+msgstr "set text color"
+
+#:
 msgid "Blocks"
 msgstr "Blocks"
 
 #:
 msgid "Turtle"
 msgstr "Turtle"
+
+#:
+msgid "clean"
+msgstr "clean"
 
 #:
 msgid "forward"
@@ -199,13 +292,9 @@ msgstr "radius"
 msgid "heading"
 msgstr "heading"
 
-#:
+#
 msgid "set heading"
 msgstr "seth"
-
-#:
-msgid "clean"
-msgstr "clean"
 
 #:
 msgid "set xy"
@@ -228,9 +317,49 @@ msgid "ycor"
 msgstr "ycor"
 
 #:
-msgid "Project"
-msgstr "Project"
+msgid "Sensors"
+msgstr "Sensors"
 
 #:
-msgid "Samples"
-msgstr "Samples"
+msgid "volume"
+msgstr "volume"
+
+#:
+msgid "pitch"
+msgstr "pitch"
+
+#:
+msgid "voltage"
+msgstr "voltage"
+
+#:
+msgid "resistance"
+msgstr "resistance"
+
+#:
+msgid "Templates"
+msgstr "Templates"
+
+#:
+msgid "Keyboard"
+msgstr "Keyboard"
+
+#:
+msgid "read key"
+msgstr "read key"
+
+#:
+msgid "sound"
+msgstr "sound"
+
+#:
+msgid "hres"
+msgstr "hres"
+
+#:
+msgid "vres"
+msgstr "vres"
+
+#:
+msgid "start"
+msgstr "start"
