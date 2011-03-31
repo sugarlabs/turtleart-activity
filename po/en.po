@@ -1,361 +1,361 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2011-01-18 05:11+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
-
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.3\n"
 
 #: activity/activity.info:2
 msgid "Turtle Art"
-msgstr ""
+msgstr "Turtle Art"
 
 #: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
 #: tasetup.py:53 tasetup.py:54
 msgid "title"
-msgstr ""
+msgstr "title"
 
 #: tasetup.py:66
 msgid "text"
-msgstr ""
+msgstr "text"
 
 #: tasetup.py:119 tasetup.py:120
 msgid "stack"
-msgstr "action"
+msgstr "stack"
 
 #: tasetup.py:125 tasetup.py:126
 msgid "box"
-msgstr ""
+msgstr "box"
 
 #: tasetup.py:127
 msgid "name"
-msgstr ""
+msgstr "name"
 
 #: TurtleArtActivity.py:48
 msgid "Project"
-msgstr ""
+msgstr "Project"
 
 #:
 msgid "Save as"
-msgstr "Save/Load"
+msgstr "Save as"
 
 #: TurtleArtActivity.py:173 TurtleArtActivity.py:262
 #: TurtleArtActivity.py:293
 msgid "hide palette"
-msgstr ""
+msgstr "hide palette"
 
 #: TurtleArtActivity.py:181 TurtleArtActivity.py:286
 msgid "hide blocks"
-msgstr ""
+msgstr "hide blocks"
 
 #: TurtleArtActivity.py:194
 msgid "run"
-msgstr ""
+msgstr "run"
 
 #: TurtleArtActivity.py:202
 msgid "step"
-msgstr "walk"
+msgstr "step"
 
 #: TurtleArtActivity.py:210
 msgid "stop turtle"
-msgstr ""
-
-#: TurtleArtActivity.py:223
-msgid "clean"
-msgstr ""
+msgstr "stop turtle"
 
 #: TurtleArtActivity.py:236
 msgid "samples"
-msgstr ""
+msgstr "samples"
 
 #: TurtleArtActivity.py:249
 msgid "save as HTML"
-msgstr ""
+msgstr "save as HTML"
 
 #: TurtleArtActivity.py
 msgid "save Logo"
-msgstr "save as Logo"
+msgstr "save Logo"
 
 #: TurtleArtActivity.py
 msgid "load my block"
-msgstr ""
+msgstr "load my block"
 
 #: TurtleArtActivity.py:259 TurtleArtActivity.py:267
 #: TurtleArtActivity.py:290 TurtleArtActivity.py:299
 msgid "show palette"
-msgstr ""
+msgstr "show palette"
 
 #: TurtleArtActivity.py:283 TurtleArtActivity.py:297
 msgid "show blocks"
-msgstr ""
+msgstr "show blocks"
 
 #:
 msgid "Flow"
-msgstr ""
+msgstr "Flow"
 
 #:
 msgid "forever"
-msgstr ""
+msgstr "forever"
 
 #:
 msgid "if"
-msgstr ""
+msgstr "if"
 
 #:
 msgid "then"
-msgstr ""
+msgstr "then"
 
 #:
 msgid "else"
-msgstr ""
+msgstr "else"
 
 #:
 msgid "repeat"
-msgstr ""
+msgstr "repeat"
 
 #:
 msgid "stop stack"
-msgstr ""
+msgstr "stop stack"
 
 #:
 msgid "wait"
-msgstr ""
+msgstr "wait"
 
 #:
 msgid "My Blocks"
-msgstr ""
+msgstr "My Blocks"
 
 #:
 msgid "box 1"
-msgstr ""
+msgstr "box 1"
 
 #:
 msgid "box 2"
-msgstr ""
+msgstr "box 2"
 
 #:
 msgid "stack 1"
-msgstr "action 1"
+msgstr "stack 1"
 
 #:
 msgid "stack 2"
-msgstr "action 2"
+msgstr "stack 2"
 
 #:
 msgid "store in box 1"
-msgstr ""
+msgstr "store in box 1"
 
 #:
 msgid "store in box 2"
-msgstr ""
+msgstr "store in box 2"
 
 #:
 msgid "push"
-msgstr ""
+msgstr "push"
 
 #:
 msgid "pop"
-msgstr ""
+msgstr "pop"
 
 #:
 msgid "Numbers"
-msgstr ""
+msgstr "Numbers"
 
 #:
 msgid "number"
-msgstr ""
+msgstr "number"
 
 #:
 msgid "and"
-msgstr ""
+msgstr "and"
 
 #:
 msgid "or"
-msgstr ""
+msgstr "or"
 
 #:
 msgid "not"
-msgstr ""
+msgstr "not"
 
 #:
 msgid "random"
-msgstr ""
+msgstr "random"
 
 #:
 msgid "min"
-msgstr ""
+msgstr "min"
 
 #:
 msgid "max"
-msgstr ""
+msgstr "max"
 
 #:
 msgid "mod"
-msgstr ""
+msgstr "mod"
 
 #:
 msgid "print"
-msgstr ""
+msgstr "print"
 
 #:
 msgid "Pen"
-msgstr ""
+msgstr "Pen"
 
 #:
 msgid "color"
-msgstr ""
+msgstr "color"
 
 #:
 msgid "shade"
-msgstr ""
+msgstr "shade"
 
 #:
 msgid "fill screen"
-msgstr ""
+msgstr "fill screen"
 
 #:
 msgid "pen up"
-msgstr ""
+msgstr "pen up"
 
 #:
 msgid "pen down"
-msgstr ""
+msgstr "pen down"
 
 #:
 msgid "set pen size"
-msgstr ""
+msgstr "set pen size"
 
 #:
 msgid "pen size"
-msgstr ""
+msgstr "pen size"
 
 #:
 msgid "set shade"
-msgstr ""
+msgstr "set shade"
 
 #:
 msgid "set color"
-msgstr ""
+msgstr "set color"
 
 #:
 msgid "set text color"
-msgstr ""
+msgstr "set text color"
 
 #:
 msgid "Blocks"
-msgstr ""
+msgstr "Blocks"
 
 #:
 msgid "Turtle"
-msgstr ""
+msgstr "Turtle"
+
+#:
+msgid "clean"
+msgstr "clean"
 
 #:
 msgid "forward"
-msgstr ""
+msgstr "forward"
 
 #:
 msgid "back"
-msgstr ""
+msgstr "back"
 
 #:
 msgid "right"
-msgstr ""
+msgstr "right"
 
 #:
 msgid "left"
-msgstr ""
+msgstr "left"
 
 #:
 msgid "arc"
-msgstr ""
+msgstr "arc"
 
 #:
 msgid "angle"
-msgstr ""
+msgstr "angle"
 
 #:
 msgid "radius"
-msgstr ""
+msgstr "radius"
 
 #:
 msgid "heading"
-msgstr ""
+msgstr "heading"
 
-#:
+#
 msgid "set heading"
 msgstr "seth"
 
 #:
 msgid "set xy"
-msgstr ""
+msgstr "set xy"
 
 #:
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #:
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #:
 msgid "xcor"
-msgstr ""
+msgstr "xcor"
 
 #:
 msgid "ycor"
-msgstr ""
+msgstr "ycor"
 
 #:
 msgid "Sensors"
-msgstr ""
+msgstr "Sensors"
 
 #:
 msgid "volume"
-msgstr ""
+msgstr "volume"
 
 #:
 msgid "pitch"
-msgstr ""
+msgstr "pitch"
 
 #:
 msgid "voltage"
-msgstr ""
+msgstr "voltage"
 
 #:
 msgid "resistance"
-msgstr ""
+msgstr "resistance"
 
 #:
 msgid "Templates"
-msgstr ""
+msgstr "Templates"
 
 #:
 msgid "Keyboard"
-msgstr ""
+msgstr "Keyboard"
 
 #:
 msgid "read key"
-msgstr "query kb"
+msgstr "read key"
 
 #:
 msgid "sound"
-msgstr ""
+msgstr "sound"
 
 #:
 msgid "hres"
-msgstr ""
+msgstr "hres"
 
 #:
 msgid "vres"
-msgstr ""
+msgstr "vres"
 
 #:
 msgid "start"
-msgstr ""
+msgstr "start"
