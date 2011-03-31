@@ -180,7 +180,11 @@ class LogoCode:
                 if b.connections is not None and len(b.connections) > 1 and \
                    b.connections[1] is not None:
                     code = self._blocks_to_code(b)
-                    x = b.connections[1].values[0]
+                    try:
+                        x = b.connections[1].values[0]
+                    except IndexError:
+                        self.tw.showlabel('#nostack')
+                        return None
                     if type(convert(x, float, False)) == float:
                         if int(float(x)) == x:
                             x = int(x)
