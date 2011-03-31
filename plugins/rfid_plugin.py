@@ -17,8 +17,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import dbus
-
-from gettext import gettext as _
 from dbus.mainloop.glib import DBusGMainLoop
 
 from lib.rfid.rfidutils import strhex2bin, strbin2dec, find_device

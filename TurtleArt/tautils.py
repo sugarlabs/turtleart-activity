@@ -42,7 +42,6 @@ from taconstants import HIDE_LAYER, COLLAPSIBLE, BLOCK_LAYER, HIT_HIDE, \
     HIT_SHOW, XO1, XO15, UNKNOWN
 from StringIO import StringIO
 import os.path
-from gettext import gettext as _
 import logging
 _logger = logging.getLogger('turtleart-activity')
 

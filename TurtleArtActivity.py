@@ -39,9 +39,11 @@ from sugar.graphics.toolbutton import ToolButton
 from sugar.datastore import datastore
 
 from sugar import profile
-from gettext import gettext as _
 import os.path
 import tarfile
+
+# installs the global _() magic
+import TurtleArt.tagettext
 
 from TurtleArt.tapalette import palette_names, help_strings
 from TurtleArt.taconstants import OVERLAY_LAYER, ICON_SIZE, BLOCK_SCALE

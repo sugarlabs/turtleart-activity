@@ -18,7 +18,6 @@
 import gtk
 from time import time
 import os.path
-from gettext import gettext as _
 
 try:
     from sugar.datastore import datastore

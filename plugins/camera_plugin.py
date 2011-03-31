@@ -19,8 +19,6 @@ import gst
 import gtk
 from fcntl import ioctl
 
-from gettext import gettext as _
-
 from lib.camera.tacamera import Camera
 from lib.camera.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, VIDIOC_G_CTRL, \
  VIDIOC_S_CTRL

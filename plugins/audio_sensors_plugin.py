@@ -22,8 +22,6 @@ try:
 except:
     PITCH_AVAILABLE = False
 
-from gettext import gettext as _
-
 from plugin import Plugin
 
 from plugins.lib.audio.audiograb import AudioGrab_Unknown, AudioGrab_XO1, \

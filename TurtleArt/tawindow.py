@@ -42,7 +42,6 @@ from math import atan2, pi
 DEGTOR = 2 * pi / 360
 
 import locale
-from gettext import gettext as _
 
 try:
     from sugar.datastore import datastore
