@@ -88,8 +88,8 @@ def myblock(tw, blkname):
                 return make_block(tw, name, x, y, defaults)
         return -1
 
-    # Place the block at the active turtle (x, y) and
-    # push height to stack.
+    # Place the block at the active turtle (x, y) and move the turtle
+    # into position to place the next block in the stack.
     x, y = tw.active_turtle.get_xy()
     if type(blkname) == type([]):
         name = blkname[0]
@@ -98,5 +98,5 @@ def myblock(tw, blkname):
     else:
         name = blkname
         dy = int(find_block(tw, name, x, y))
-    if dy != -1:
-        tw.lc.heap.append(dy)
+
+    tw.active_turtle.move((x, y - dy))
