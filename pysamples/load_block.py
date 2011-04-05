@@ -27,13 +27,12 @@
 # should be a string containing the name of the desired
 # block. Arguments to the block can be passed by expanding the Python
 # block to include up to two additional arguments.  Note that the
-# height of the block is pushed to the FILO heap and can be used to
-# advance the position of the turtle when creating stacks.
+# turtle is moved to the bottom of the block after it is loaded in
+# order position another block to the bottom of the stack.
 
 # For example, try the following to place forward 100, right 90 on the canvas:
 # start
 # Python(forward, 100)  <-- Python load_block.py expanded to two arguments
-# setxy(xcor, (subtract(ycor, pop)))  <-- subtract top of heap from ycor
 # Python(right, 90)  <-- Python load_block.py expanded to two arguments
 
 
