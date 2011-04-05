@@ -277,8 +277,32 @@ class TurtleArtWindow():
                     plugin_files.append(c.split('.')[0])
         return plugin_files
 
+    def _get_plugins_from_plugins_lib(self, path):
+        """ Look for plugin files in plugin/lib directory. """
+        plugin_files = []
+        if path is not None:
+            candidates = os.listdir(path)
+            for dirname in candidates:
+                if os.path.exists(
+                    os.path.join(path, dirname, dirname + '.py')):
+                    plugin_files.append(dirname)
+        return plugin_files
+
     def _init_plugins(self):
         """ Try importing plugin files from the plugin directory. """
+        '''
+        for pluginfile in self._get_plugins_from_plugins_lib(
+            self._get_plugin_home()):
+            pluginclass = pluginfile.capitalize()
+            f = "def f(self): from plugins.%s.%s import %s; return %s(self)" % (pluginfile, pluginfile, pluginclass, pluginclass)
+            plugins = {}
+            try:
+                exec f in globals(), plugins
+                self._plugins.append(plugins.values()[0](self))
+            except ImportError:
+                debug_output('failed to import %s' % (pluginclass))
+        '''
+
         for pluginfile in self._get_plugin_candidates(self._get_plugin_home()):
             pluginclass = pluginfile.capitalize()
             f = "def f(self): from plugins.%s import %s; return %s(self)" \
@@ -598,7 +622,7 @@ class TurtleArtWindow():
         """ Show the toolbar palettes, creating them on init_only """
         # If we are running the 0.86+ toolbar, the selectors are already
         # created, as toolbar buttons. Otherwise, we need to create them.
-        if (self.activity is None or not self.activity.has_toolbarbox) and\
+        if (self.activity is None or not self.activity.has_toolbarbox) and \
            self.selectors == []:
             # First, create the selector buttons
             self._create_the_selectors()
@@ -769,102 +793,99 @@ class TurtleArtWindow():
 
     def _horizontal_layout(self, x, y, blocks):
         """ Position prototypes in a horizontal palette. """
-        _max_w = 0
+        max_w = 0
         for blk in blocks:
-            _w, _h = self._width_and_height(blk)
-            if y + _h > PALETTE_HEIGHT + self.toolbar_offset:
-                x += int(_max_w + 3)
+            w, h = self._width_and_height(blk)
+            if y + h > PALETTE_HEIGHT + self.toolbar_offset:
+                x += int(max_w + 3)
                 y = self.toolbar_offset + 3
-                _max_w = 0
-            (_bx, _by) = blk.spr.get_xy()
-            _dx = x - _bx
-            _dy = y - _by
+                max_w = 0
+            (bx, by) = blk.spr.get_xy()
+            dx = x - bx
+            dy = y - by
             for g in find_group(blk):
-                g.spr.move_relative((int(_dx), int(_dy)))
-            y += int(_h + 3)
-            if _w > _max_w:
-                _max_w = _w
-        return x, y, _max_w
+                g.spr.move_relative((int(dx), int(dy)))
+            y += int(h + 3)
+            if w > max_w:
+                max_w = w
+        return x, y, max_w
 
     def _vertical_layout(self, x, y, blocks):
         """ Position prototypes in a vertical palette. """
-        _row = []
-        _row_w = 0
-        _max_h = 0
-        for _b in blocks:
-            _w, _h = self._width_and_height(_b)
-            if x + _w > PALETTE_WIDTH:
+        row = []
+        row_w = 0
+        max_h = 0
+        for b in blocks:
+            w, h = self._width_and_height(b)
+            if x + w > PALETTE_WIDTH:
                 # Recenter row.
-                _dx = int((PALETTE_WIDTH - _row_w) / 2)
-                for _r in _row:
-                    for _g in find_group(_r):
-                        _g.spr.move_relative((_dx, 0))
-                _row = []
-                _row_w = 0
+                dx = int((PALETTE_WIDTH - row_w) / 2)
+                for r in row:
+                    for g in find_group(r):
+                        g.spr.move_relative((dx, 0))
+                row = []
+                row_w = 0
                 x = 4
-                y += int(_max_h + 3)
-                _max_h = 0
-            _row.append(_b)
-            _row_w += (4 + _w)
-            (_bx, _by) = _b.spr.get_xy()
-            _dx = int(x - _bx)
-            _dy = int(y - _by)
-            for _g in find_group(_b):
-                _g.spr.move_relative((_dx, _dy))
-            x += int(_w + 4)
-            if _h > _max_h:
-                _max_h = _h
+                y += int(max_h + 3)
+                max_h = 0
+            row.append(b)
+            row_w += (4 + w)
+            (bx, by) = b.spr.get_xy()
+            dx = int(x - bx)
+            dy = int(y - by)
+            for g in find_group(b):
+                g.spr.move_relative((dx, dy))
+            x += int(w + 4)
+            if h > max_h:
+                max_h = h
         # Recenter last row.
-        _dx = int((PALETTE_WIDTH - _row_w) / 2)
-        for _r in _row:
-            for _g in find_group(_r):
-                _g.spr.move_relative((_dx, 0))
-        return x, y, _max_h
+        dx = int((PALETTE_WIDTH - row_w) / 2)
+        for r in row:
+            for g in find_group(r):
+                g.spr.move_relative((dx, 0))
+        return x, y, max_h
 
     def _layout_palette(self, n, regenerate=False):
         """ Layout prototypes in a palette. """
         if n is not None:
             if self.orientation == HORIZONTAL_PALETTE:
-                _x, _y = 20, self.toolbar_offset + 5
-                _x, _y, _max = self._horizontal_layout(_x, _y,
-                                                       self.palettes[n])
+                x, y = 20, self.toolbar_offset + 5
+                x, y, max_w = self._horizontal_layout(x, y, self.palettes[n])
                 if n == palette_names.index('trash'):
-                    _x, _y, _max = self._horizontal_layout(_x + _max, _y,
-                                                           self.trash_stack)
-                _w = _x + _max + 25
-                if self.palette_sprs[n][self.orientation] is None or \
-                        regenerate:
-                    svg = SVG()
-                    self.palette_sprs[n][self.orientation] = Sprite(
-                            self.sprite_list, 0, self.toolbar_offset,
-                            svg_str_to_pixbuf(svg.palette(_w, PALETTE_HEIGHT)))
-                    self.palette_sprs[n][self.orientation].type = 'category'
-                if n == palette_names.index('trash'):
-                    svg = SVG()
-                    self.palette_sprs[n][self.orientation].set_shape(
-                        svg_str_to_pixbuf(svg.palette(_w, PALETTE_HEIGHT)))
-                self.palette_button[2].move((_w - 20, self.toolbar_offset))
+                    x, y, max_w = self._horizontal_layout(x + max_w, y,
+                                                          self.trash_stack)
+                w = x + max_w + 25
+                self._make_palette_spr(n, 0, self.toolbar_offset,
+                                       w, PALETTE_HEIGHT, regenerate)
+                self.palette_button[2].move((w - 20, self.toolbar_offset))
             else:
-                _x, _y = 5, self.toolbar_offset + 15
-                _x, _y, _max = self._vertical_layout(_x, _y, self.palettes[n])
+                x, y = 5, self.toolbar_offset + 15
+                x, y, max_h = self._vertical_layout(x, y, self.palettes[n])
                 if n == palette_names.index('trash'):
-                    _x, _y, _max = self._vertical_layout(_x, _y + _max,
-                                                         self.trash_stack)
-                _h = _y + _max + 25 - self.toolbar_offset
-                if self.palette_sprs[n][self.orientation] is None or \
-                        regenerate:
-                    svg = SVG()
-                    self.palette_sprs[n][self.orientation] = \
-                        Sprite(self.sprite_list, 0, self.toolbar_offset,
-                            svg_str_to_pixbuf(svg.palette(PALETTE_WIDTH, _h)))
-                    self.palette_sprs[n][self.orientation].type = 'category'
-                if n == palette_names.index('trash'):
-                    svg = SVG()
-                    self.palette_sprs[n][self.orientation].set_shape(
-                        svg_str_to_pixbuf(svg.palette(PALETTE_WIDTH, _h)))
+                    x, y, max_h = self._vertical_layout(x, y + max_h,
+                                                        self.trash_stack)
+                h = y + max_h + 25 - self.toolbar_offset
+                self._make_palette_spr(n, 0, self.toolbar_offset,
+                                       PALETTE_WIDTH, h, regenerate)
                 self.palette_button[2].move((PALETTE_WIDTH - 20,
                                              self.toolbar_offset))
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
+
+    def _make_palette_spr(self, n, x, y, w, h, regenerate=False):
+        ''' Make the background for the palette. '''
+        if regenerate and not self.palette_sprs[n][self.orientation] is None:
+            self.palette_sprs[n][self.orientation].hide()
+            self.palette_sprs[n][self.orientation] = None
+        if self.palette_sprs[n][self.orientation] is None:
+            svg = SVG()
+            self.palette_sprs[n][self.orientation] = \
+                Sprite(self.sprite_list, x, y, svg_str_to_pixbuf(
+                    svg.palette(w, h)))
+            self.palette_sprs[n][self.orientation].type = 'category'
+            if n == palette_names.index('trash'):
+                svg = SVG()
+                self.palette_sprs[n][self.orientation].set_shape(
+                    svg_str_to_pixbuf(svg.palette(w, h)))
 
     def _buttonpress_cb(self, win, event):
         """ Button press """
