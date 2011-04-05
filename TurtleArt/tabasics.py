@@ -469,7 +469,7 @@ by bottom numeric input (denominator)'))
 
         primitive_dictionary['id'] = self._prim_identity
         palette.add_block('identity2',
-                          style='number-style-1strarg',
+                          style='number-style-1arg',
                           label='←',
                           special_name=_('identity'),
                           prim_name='id',
