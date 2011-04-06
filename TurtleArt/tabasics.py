@@ -116,8 +116,9 @@ class Palettes():
         palette.add_block('forward',
                           style='basic-style-1arg',
                           label=_('forward'),
-                          default=100,
                           prim_name='forward',
+                          default=100,
+                          logo_command='forward',
                           help_string=_('moves turtle forward'))
         self.tw.lc.def_prim('forward', 1,
                              lambda self, x: primitive_dictionary['move'](
@@ -128,6 +129,7 @@ class Palettes():
                           label=_('back'),
                           prim_name='back',
                           default=100,
+                          logo_command='back',
                           help_string=_('moves turtle backward'))
         self.tw.lc.def_prim('back', 1,
                              lambda self, x: primitive_dictionary['move'](
@@ -138,6 +140,7 @@ class Palettes():
                           style='basic-style-extended-vertical',
                           label=_('clean'),
                           prim_name='clean',
+                          logo_command='clean',
                           help_string=_('clears the screen and reset the \
 turtle'))
         self.tw.lc.def_prim('clean', 0,
@@ -149,6 +152,7 @@ turtle'))
                           label=_('left'),
                           prim_name='left',
                           default=90,
+                          logo_command='left',
                           help_string=_('turns turtle counterclockwise (angle \
 in degrees)'))
         self.tw.lc.def_prim('left', 1,
@@ -159,6 +163,7 @@ in degrees)'))
                           label=_('right'),
                           prim_name='right',
                           default=90,
+                          logo_command='right',
                           help_string=_('turns turtle clockwise (angle in \
 degrees)'))
         self.tw.lc.def_prim('right', 1,
@@ -170,6 +175,7 @@ degrees)'))
                           label=[_('arc'), _('angle'), _('radius')],
                           prim_name='arc',
                           default=[90, 100],
+                          logo_command='taarc',
                           help_string=_('moves turtle along an arc'))
         self.tw.lc.def_prim('arc', 2,
                              lambda self, x, y: primitive_dictionary['arc'](
@@ -179,6 +185,7 @@ degrees)'))
                           style='basic-style-2arg',
                           label=[_('set xy'), _('x'), _('y')],
                           prim_name='setxy2',
+                          logo_command='tasetxy',
                           default=[0, 0],
                           help_string=_('moves turtle to position xcor, ycor; \
 (0, 0) is in the center of the screen.'))
@@ -192,6 +199,7 @@ degrees)'))
                           label=_('set heading'),
                           prim_name='seth',
                           default=0,
+                          logo_command='seth',
                           help_string=_('sets the heading of the turtle (0 is \
 towards the top of the screen.)'))
         self.tw.lc.def_prim('seth', 1,
@@ -204,7 +212,8 @@ towards the top of the screen.)'))
                           help_string=_('holds current x-coordinate value of \
 the turtle (can be used in place of a number block)'),
                           value_block=True,
-                          prim_name='xcor')
+                          prim_name='xcor',
+                          logo_command='xcor')
         self.tw.lc.def_prim(
             'xcor', 0, lambda self: self.tw.canvas.xcor / self.tw.coord_scale)
 
@@ -214,7 +223,8 @@ the turtle (can be used in place of a number block)'),
                           help_string=_('holds current y-coordinate value of \
 the turtle (can be used in place of a number block)'),
                           value_block=True,
-                          prim_name='ycor')
+                          prim_name='ycor',
+                          logo_command='ycor')
         self.tw.lc.def_prim(
             'ycor', 0, lambda self: self.tw.canvas.ycor / self.tw.coord_scale)
 
@@ -224,7 +234,8 @@ the turtle (can be used in place of a number block)'),
                           help_string=_('holds current heading value of the \
 turtle (can be used in place of a number block)'),
                           value_block=True,
-                          prim_name='heading')
+                          prim_name='heading',
+                          logo_command='heading')
         self.tw.lc.def_prim(
             'heading', 0, lambda self: self.tw.canvas.heading)
 
@@ -240,6 +251,7 @@ turtle (can be used in place of a number block)'),
                           label=[_('set xy'), _('x'), _('y')],
                           prim_name='setxy',
                           default=[0, 0],
+                          logo_command='tasetxypenup',
                           help_string=_('moves turtle to position xcor, ycor; \
 (0, 0) is in the center of the screen.'))
         self.tw.lc.def_prim('setxy', 2,
@@ -257,6 +269,7 @@ turtle (can be used in place of a number block)'),
                           style='basic-style-extended-vertical',
                           label=_('pen up'),
                           prim_name='penup',
+                          logo_command='penup',
                           help_string=_('Turtle will not draw when moved.'))
         self.tw.lc.def_prim('penup', 0,
                              lambda self: self.tw.canvas.setpen(False))
@@ -265,6 +278,7 @@ turtle (can be used in place of a number block)'),
                           style='basic-style-extended-vertical',
                           label=_('pen down'),
                           prim_name='pendown',
+                          logo_command='pendown',
                           help_string=_('Turtle will draw when moved.'))
         self.tw.lc.def_prim('pendown', 0,
                              lambda self: self.tw.canvas.setpen(True))
@@ -274,6 +288,7 @@ turtle (can be used in place of a number block)'),
                           label=_('set pen size'),
                           prim_name='setpensize',
                           default=5,
+                          logo_command='setpensize',
                           help_string=_('sets size of the line drawn by the \
 turtle'))
         self.tw.lc.def_prim('setpensize', 1,
@@ -285,6 +300,7 @@ turtle'))
                           label=[_('fill screen'), _('color'), _('shade')],
                           prim_name='fillscreen',
                           default=[60, 80],
+                          logo_command='tasetbackground',
                           help_string=_('fills the background with (color, \
 shade)'))
         self.tw.lc.def_prim('fillscreen', 2,
@@ -296,7 +312,8 @@ shade)'))
                           help_string=_('holds current pen size (can be used \
 in place of a number block)'),
                           value_block=True,
-                          prim_name='pensize')
+                          prim_name='pensize',
+                          logo_command='pensize')
         self.tw.lc.def_prim('pensize', 0, lambda self: self.tw.canvas.pensize)
 
         palette.add_block('startfill',
@@ -329,6 +346,7 @@ start fill block)'))
                           label=_('set color'),
                           prim_name='setcolor',
                           default=0,
+                          logo_command='tasetpencolor',
                           help_string=_('sets color of the line drawn by the \
 turtle'))
         self.tw.lc.def_prim('setcolor', 1,
@@ -340,6 +358,7 @@ turtle'))
                           label=_('set shade'),
                           prim_name='setshade',
                           default=50,
+                          logo_command='tasetshade',
                           help_string=_('sets shade of the line drawn by the \
 turtle'))
         self.tw.lc.def_prim('setshade', 1,
@@ -363,7 +382,8 @@ the turtle'))
                           help_string=_('holds current pen color (can be used \
 in place of a number block)'),
                           value_block=True,
-                          prim_name='color')
+                          prim_name='color',
+                          logo_command='pencolor')
         self.tw.lc.def_prim('color', 0, lambda self: self.tw.canvas.color)
 
         palette.add_block('shade',
@@ -371,7 +391,8 @@ in place of a number block)'),
                           label=_('shade'),
                           help_string=_('holds current pen shade'),
                           value_block=True,
-                          prim_name='shade')
+                          prim_name='shade',
+                          logo_command=':shade')
         self.tw.lc.def_prim('shade', 0, lambda self: self.tw.canvas.shade)
 
         palette.add_block('gray',
@@ -429,6 +450,7 @@ turtle'))
                           label='+',
                           special_name=_('plus'),
                           prim_name='plus',
+                          logo_command='sum',
                           help_string=_('adds two alphanumeric inputs'))
         self.tw.lc.def_prim(
             'plus', 2, lambda self, x, y: primitive_dictionary['plus'](x, y))
@@ -439,6 +461,7 @@ turtle'))
                           label='–',
                           special_name=_('minus'),
                           prim_name='minus',
+                          logo_command='taminus',
                           help_string=_('subtracts bottom numeric input from \
 top numeric input'))
         self.tw.lc.def_prim(
@@ -450,6 +473,7 @@ top numeric input'))
                           label='×',
                           special_name=_('multiply'),
                           prim_name='product',
+                          logo_command='product',
                           help_string=_('multiplies two numeric inputs'))
         self.tw.lc.def_prim(
             'product', 2,
@@ -461,6 +485,7 @@ top numeric input'))
                           label='/',
                           special_name=_('divide'),
                           prim_name='division',
+                          logo_command='quotient',
                           help_string=_('divides top numeric input (numerator) \
 by bottom numeric input (denominator)'))
         self.tw.lc.def_prim(
@@ -484,6 +509,7 @@ blocks'))
                           label=_('mod'),
                           special_name=_('mod'),
                           prim_name='remainder',
+                          logo_command='remainder',
                           help_string=_('modular (remainder) operator'))
         self.tw.lc.def_prim('remainder', 2,
             lambda self, x, y: primitive_dictionary['remainder'](x, y))
@@ -494,6 +520,7 @@ blocks'))
                           label=_('√'),
                           special_name=_('square root'),
                           prim_name='sqrt',
+                          logo_command='tasqrt',
                           help_string=_('calculates square root'))
         self.tw.lc.def_prim('sqrt', 1,
                              lambda self, x: primitive_dictionary['sqrt'](x))
@@ -504,6 +531,7 @@ blocks'))
                           label=[_('random'), _('min'), _('max')],
                           default=[0, 100],
                           prim_name='random',
+                          logo_command='tarandom',
                           help_string=_('returns random number between minimum \
 (top) and maximum (bottom) values'))
         self.tw.lc.def_prim(
@@ -523,6 +551,7 @@ operators'))
                           label='>',
                           special_name=_('greater than'),
                           prim_name='greater?',
+                          logo_command='greater?',
                           help_string=_('logical greater-than operator'))
         self.tw.lc.def_prim(
             'greater?', 2, lambda self, x, y: primitive_dictionary['more'](x, y))
@@ -533,6 +562,7 @@ operators'))
                           label='<',
                           special_name=_('less than'),
                           prim_name='less?',
+                          logo_command='less?',
                           help_string=_('logical less-than operator'))
         self.tw.lc.def_prim(
             'less?', 2, lambda self, x, y: primitive_dictionary['less'](x, y))
@@ -543,6 +573,7 @@ operators'))
                           label='=',
                           special_name=_('equal'),
                           prim_name='equal?',
+                          logo_command='equal?',
                           help_string=_('logical equal-to operator'))
         self.tw.lc.def_prim(
             'equal?', 2, lambda self, x, y: primitive_dictionary['equal'](x, y))
@@ -551,6 +582,7 @@ operators'))
                           style='not-style',
                           label=_('not'),
                           prim_name='not',
+                          logo_command='not',
                           help_string=_('logical NOT operator'))
         self.tw.lc.def_prim('not', 1, lambda self, x: not x)
 
@@ -559,6 +591,7 @@ operators'))
                           style='boolean-style',
                           label=_('and'),
                           prim_name='and',
+                          logo_command='and',
                           special_name=_('and'),
                           help_string=_('logical AND operator'))
         self.tw.lc.def_prim(
@@ -569,6 +602,7 @@ operators'))
                           style='boolean-style',
                           label=_('or'),
                           prim_name='or',
+                          logo_command='or',
                           special_name=_('or'),
                           help_string=_('logical OR operator'))
         self.tw.lc.def_prim(
@@ -587,6 +621,7 @@ operators'))
                           label=_('wait'),
                           prim_name='wait',
                           default=1,
+                          logo_command='wait',
                           help_string=_('pauses program execution a specified \
 number of seconds'))
         self.tw.lc.def_prim('wait', 1, primitive_dictionary['wait'], True)
@@ -597,6 +632,7 @@ number of seconds'))
                           label=_('forever'),
                           prim_name='forever',
                           default=[None, 'vspace'],
+                          logo_command='forever',
                           help_string=_('loops forever'))
         self.tw.lc.def_prim('forever', 1, primitive_dictionary['forever'], True)
 
@@ -606,6 +642,7 @@ number of seconds'))
                           label=[' ', _('repeat')],
                           prim_name='repeat',
                           default=[4, None, 'vspace'],
+                          logo_command='repeat',
                           special_name=_('repeat'),
                           help_string=_('loops specified number of times'))
         self.tw.lc.def_prim('repeat', 2, primitive_dictionary['repeat'], True)
@@ -617,6 +654,7 @@ number of seconds'))
                           prim_name='if',
                           default=[None, None, 'vspace'],
                           special_name=_('if then'),
+                          logo_command='if',
                           help_string=_('if-then operator that uses boolean \
 operators from Numbers palette'))
         self.tw.lc.def_prim('if', 2, primitive_dictionary['if'], True)
@@ -627,6 +665,7 @@ operators from Numbers palette'))
                           label=[' ', _('if'), _('then else')],
                           prim_name='ifelse',
                           default=[None, 'vspace', None, 'vspace'],
+                          logo_command='ifelse',
                           special_name=_('if then else'),
                           help_string=_('if-then-else operator that uses \
 boolean operators from Numbers palette'))
@@ -653,6 +692,7 @@ boolean operators from Numbers palette'))
                           style='basic-style-tail',
                           label=_('stop action'),
                           prim_name='stopstack',
+                          logo_command='stop',
                           help_string=_('stops current action'))
         self.tw.lc.def_prim('stopstack', 0,
                              lambda self: primitive_dictionary['stopstack']())
@@ -669,6 +709,7 @@ boolean operators from Numbers palette'))
                           style='basic-style-head',
                           label=_('start'),
                           prim_name='start',
+                          logo_command='to start\r',
                           help_string=_('connects action to toolbar run \
 buttons'))
         self.tw.lc.def_prim('start', 0,
@@ -680,6 +721,7 @@ buttons'))
                           label=_('store in box 1'),
                           prim_name='storeinbox1',
                           default=100,
+                          logo_command='make "box1',
                           help_string=_('stores numeric value in Variable 1'))
         self.tw.lc.def_prim('storeinbox1', 1,
                              lambda self, x: primitive_dictionary['setbox'](
@@ -690,6 +732,7 @@ buttons'))
                           label=_('store in box 2'),
                           prim_name='storeinbox2',
                           default=100,
+                          logo_command='make "box2',
                           help_string=_('stores numeric value in Variable 2'))
         self.tw.lc.def_prim('storeinbox2', 1,
                              lambda self, x: primitive_dictionary['setbox'](
@@ -706,6 +749,7 @@ buttons'))
                           style='box-style',
                           label=_('box 1'),
                           prim_name='box1',
+                          logo_command=':box1',
                           help_string=_('Variable 1 (numeric value)'),
                           value_block=True)
         self.tw.lc.def_prim('box1', 0, lambda self: self.tw.lc.boxes['box1'])
@@ -714,6 +758,7 @@ buttons'))
                           style='box-style',
                           label=_('box 2'),
                           prim_name='box2',
+                          logo_command=':box2',
                           help_string=_('Variable 2 (numeric value)'),
                           value_block=True)
         self.tw.lc.def_prim('box2', 0, lambda self: self.tw.lc.boxes['box2'])
@@ -724,6 +769,7 @@ buttons'))
                           label=_('box'),
                           prim_name='box',
                           default=_('my box'),
+                          logo_command='box',
                           help_string=_('named variable (numeric value)'))
         self.tw.lc.def_prim('box', 1,
                              lambda self, x: primitive_dictionary['box'](x))
@@ -732,6 +778,7 @@ buttons'))
                           style='basic-style-2arg',
                           label=[_('store in'), _('box'), _('value')],
                           prim_name='storeinbox',
+                          logo_command='storeinbox',
                           default=[_('my box'), 100],
                           help_string=_('stores numeric value in named \
 variable'))
@@ -743,7 +790,8 @@ variable'))
                           style='basic-style-head-1arg',
                           label=_('action'),
                           prim_name='nop3',
-                          default=_('action'),
+                          default=_('stack'),
+                          logo_command='action',
                           help_string=_('top of nameable action stack'))
         self.tw.lc.def_prim('nop3', 1, lambda self, x: None)
 
@@ -751,6 +799,7 @@ variable'))
                           style='basic-style-head',
                           label=_('action 1'),
                           prim_name='nop1',
+                          logo_command='to stack1\r',
                           help_string=_('top of Action 1 stack'))
         self.tw.lc.def_prim('nop1', 0, lambda self: None)
 
@@ -758,6 +807,7 @@ variable'))
                           style='basic-style-head',
                           label=_('action 2'),
                           prim_name='nop2',
+                          logo_command='to stack2\r',
                           help_string=_('top of Action 2 stack'))
         self.tw.lc.def_prim('nop2', 0, lambda self: None)
 
@@ -766,6 +816,7 @@ variable'))
                           style='basic-style-1arg',
                           label=_('action'),
                           prim_name='stack',
+                          logo_command='runstack',
                           default=_('action'),
                           help_string=_('invokes named action stack'))
         self.tw.lc.def_prim('stack', 1, primitive_dictionary['stack'], True)
@@ -775,6 +826,7 @@ variable'))
                           style='basic-style-extended-vertical',
                           label=_('action 1'),
                           prim_name='stack1',
+                          logo_command='stack1',
                           help_string=_('invokes Action 1 stack'))
         self.tw.lc.def_prim('stack1', 0, primitive_dictionary['stack1'], True)
 
@@ -783,6 +835,7 @@ variable'))
                           style='basic-style-extended-vertical',
                           label=_('action 2'),
                           prim_name='stack2',
+                          logo_command='stack2',
                           help_string=_('invokes Action 2 stack'))
         self.tw.lc.def_prim('stack2', 0, primitive_dictionary['stack2'], True)
 

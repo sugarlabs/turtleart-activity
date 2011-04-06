@@ -153,6 +153,7 @@ boolean operators from Numbers palette'))
                           label=_('show'),
                           default=_('text'),
                           prim_name='show',
+                          logo_command='label',
                           help_string=_('draws text or show media from the \
 Journal'))
         self.tw.lc.def_prim('show', 1,
@@ -164,6 +165,7 @@ Journal'))
                           label=_('show aligned'),
                           default=_('text'),
                           prim_name='showaligned',
+                          logo_command='label',
                           help_string=_('draws text or show media from the \
 Journal'))
         self.tw.lc.def_prim('showaligned', 1,
@@ -177,6 +179,7 @@ Journal'))
                           label=_('show'),
                           default=[_('text'), 32],
                           prim_name='write',
+                          logo_command='label',
                           help_string=_('draws text or show media from the \
 Journal'))
         self.tw.lc.def_prim('write', 2,
@@ -188,6 +191,7 @@ Journal'))
                           label=_('set scale'),
                           prim_name='setscale',
                           default=33,
+                          logo_command='setlabelheight',
                           help_string=_('sets the scale of media'))
         self.tw.lc.def_prim('setscale', 1,
             lambda self, x: primitive_dictionary['setscale'](x))
@@ -219,6 +223,7 @@ in the Sugar Journal'))
                           label=_('scale'),
                           prim_name='scale',
                           value_block=True,
+                          logo_command='labelsize',
                           help_string=_('holds current scale value'))
         self.tw.lc.def_prim('scale', 0, lambda self: self.tw.lc.scale)
 
@@ -251,6 +256,7 @@ stored in keyboard block)'))
                           label=_('keyboard'),
                           prim_name='keyboard',
                           value_block=True,
+                          logo_command='make "keyboard readchar',
                           help_string=_('holds results of query-keyboard \
 block'))
         self.tw.lc.def_prim('keyboard', 0, lambda self: self.tw.lc.keyboard)
@@ -260,6 +266,7 @@ block'))
                           style='basic-style-extended-vertical',
                           label=_('read pixel'),
                           prim_name='readpixel',
+                          logo_command=':keyboard',
                           help_string=_('RGB color under the turtle is pushed \
 to the stack'))
         self.tw.lc.def_prim('readpixel', 0,
@@ -297,6 +304,7 @@ program started'))
                           style='basic-style-1arg',
                           label=_('push'),
                           prim_name='push',
+                          logo_command='tapush',
                           help_string=_('pushes value onto FILO (first-in \
 last-out heap)'))
         self.tw.lc.def_prim('push', 1,
@@ -307,6 +315,7 @@ last-out heap)'))
                           style='basic-style-extended-vertical',
                           label=_('show heap'),
                           prim_name='printheap',
+                          logo_command='taprintheap',
                           help_string=_('shows values in FILO (first-in \
 last-out heap)'))
         self.tw.lc.def_prim('printheap', 0,
@@ -317,6 +326,7 @@ last-out heap)'))
                           style='basic-style-extended-vertical',
                           label=_('empty heap'),
                           prim_name='clearheap',
+                          logo_command='taclearheap',
                           help_string=_('emptys FILO (first-in-last-out \
 heap)'))
         self.tw.lc.def_prim('clearheap', 0,
@@ -328,6 +338,7 @@ heap)'))
                           label=_('pop'),
                           prim_name='pop',
                           value_block=True,
+                          logo_command='tapop',
                           help_string=_('pops value off FILO (first-in \
 last-out heap)'))
         self.tw.lc.def_prim('pop', 0,
@@ -347,6 +358,7 @@ last-out heap)'))
                           style='basic-style-1arg',
                           label=_('print'),
                           prim_name='print',
+                          logo_command='label',
                           help_string=_('prints value in status block at \
 bottom of the screen'))
         self.tw.lc.def_prim('print', 1,
@@ -592,6 +604,7 @@ Journal objects'))
                           style='box-style',
                           label=_('left'),
                           prim_name='lpos',
+                          logo_command='lpos',
                           help_string=_('xcor of left of screen'))
         self.tw.lc.def_prim('lpos', 0, lambda self: CONSTANTS['leftpos'])
 
@@ -599,6 +612,7 @@ Journal objects'))
                           style='box-style',
                           label=_('bottom'),
                           prim_name='bpos',
+                          logo_command='bpos',
                           help_string=_('ycor of bottom of screen'))
         self.tw.lc.def_prim('bpos', 0, lambda self: CONSTANTS['bottompos'])
 
@@ -606,6 +620,7 @@ Journal objects'))
                           style='box-style',
                           label=_('width'),
                           prim_name='hres',
+                          logo_command='width',
                           help_string=_('the canvas width'))
         self.tw.lc.def_prim('hres', 0, lambda self: CONSTANTS['width'])
 
@@ -613,6 +628,7 @@ Journal objects'))
                           style='box-style',
                           label=_('right'),
                           prim_name='rpos',
+                          logo_command='rpos',
                           help_string=_('xcor of right of screen'))
         self.tw.lc.def_prim('rpos', 0, lambda self: CONSTANTS['rightpos'])
 
@@ -620,6 +636,7 @@ Journal objects'))
                           style='box-style',
                           label=_('top'),
                           prim_name='tpos',
+                          logo_command='tpos',
                           help_string=_('ycor of top of screen'))
         self.tw.lc.def_prim('tpos', 0, lambda self: CONSTANTS['toppos'])
 
@@ -627,6 +644,7 @@ Journal objects'))
                           style='box-style',
                           label=_('height'),
                           prim_name='vres',
+                          logo_command='height',
                           help_string=_('the canvas height'))
         self.tw.lc.def_prim('vres', 0, lambda self: CONSTANTS['height'])
 
@@ -634,6 +652,7 @@ Journal objects'))
                           hidden=True,
                           style='box-style',
                           label=_('title x'),
+                          logo_command='titlex',
                           prim_name='titlex')
         self.tw.lc.def_prim('titlex', 0, lambda self: CONSTANTS['titlex'])
 
@@ -641,6 +660,7 @@ Journal objects'))
                           hidden=True,
                           style='box-style',
                           label=_('title y'),
+                          logo_command='titley',
                           prim_name='titley')
         self.tw.lc.def_prim('titley', 0, lambda self: CONSTANTS['titley'])
 
@@ -648,28 +668,32 @@ Journal objects'))
                           hidden=True,
                           style='box-style',
                           label=_('left x'),
-                          prim_name='leftx')
+                          prim_name='leftx',
+                          logo_command='leftx')
         self.tw.lc.def_prim('leftx', 0, lambda self: CONSTANTS['leftx'])
 
         palette.add_block('topy',
                           hidden=True,
                           style='box-style',
                           label=_('top y'),
-                          prim_name='topy')
+                          prim_name='topy',
+                          logo_command='topy')
         self.tw.lc.def_prim('topy', 0, lambda self: CONSTANTS['topy'])
 
         palette.add_block('rightx',
                           hidden=True,
                           style='box-style',
                           label=_('right x'),
-                          prim_name='rightx')
+                          prim_name='rightx',
+                          logo_command='rightx')
         self.tw.lc.def_prim('rightx', 0, lambda self: CONSTANTS['rightx'])
 
         palette.add_block('bottomy',
                           hidden=True,
                           style='box-style',
                           label=_('bottom y'),
-                          prim_name='bottomy')
+                          prim_name='bottomy',
+                          logo_command='bottomy')
         self.tw.lc.def_prim('bottomy', 0, lambda self: CONSTANTS['bottomy'])
 
         # deprecated blocks

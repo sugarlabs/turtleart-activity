@@ -129,7 +129,7 @@ class Palette():
     def add_block(self, block_name, style='basic-block', label=None,
                   special_name=None, default=None, prim_name=None,
                   help_string=None, value_block=False, content_block=False,
-                  hidden=False):
+                  logo_command=None, hidden=False):
         """ Add a new block to the palette """
         block = Block(block_name)
         block.set_style(style)
@@ -144,6 +144,8 @@ class Palette():
                 block.set_default(default)
         if prim_name is not None:
             block.set_prim_name(prim_name)
+        if logo_command is not None:
+            block.set_logo_command(logo_command)
         if help_string is not None:
             block.set_help(help_string)
         block.set_value_block(value_block)
@@ -185,6 +187,7 @@ class Block():
         self._default = None
         self._help = None
         self._prim_name = None
+        self._logo_command = None
         self._value_block = False
         self._content_block = False
 
@@ -273,3 +276,6 @@ class Block():
 
     def set_prim_name(self, prim_name):
         self._prim_name = prim_name
+
+    def set_logo_command(self, logo_command):
+        self._logo_command = logo_command
