@@ -119,7 +119,7 @@ class Block:
 
     def __init__(self, block_list, sprite_list, name, x, y, type='block',
                  values=[], scale=BLOCK_SCALE[0],
-                 colors=['#FF0000', '#A00000']):
+                 colors=['#A0A0A0', '#808080']):
 
         self.block_list = block_list
         self.spr = None
