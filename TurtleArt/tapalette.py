@@ -26,6 +26,7 @@ expandable_blocks = []
 block_names = {}
 block_primitives = {}
 default_values = {}
+logo_commands = {}
 special_names = {}  # Names for blocks without names for popup help
 content_blocks = ['number', 'string', 'description', 'audio', 'video',
                   'journal']
@@ -228,6 +229,9 @@ class Block():
 
         if self._prim_name is not None:
             block_primitives[self._name] = self._prim_name
+
+        if self._logo_command is not None:
+            logo_commands[self._name] = self._logo_command
 
         if self._default is not None:
             default_values[self._name] = self._default
