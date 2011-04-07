@@ -24,80 +24,10 @@ except:
     pass
 
 from TurtleArt.tapalette import logo_commands, logo_functions
+from TurtleArt.taconstants import TITLEXY, CONSTANTS
 
 def save_logo(tw):
     """ Set up the Turtle Art color palette and color processing. """
-
-    color_processing = '\
-to tasetpalette :i :r :g :b :myshade \r\
-make "s ((:myshade - 50) / 50) \r\
-ifelse lessp :s 0 [ \r\
-make "s (1 + (:s *0.8)) \r\
-make "r (:r * :s) \r\
-make "g (:g * :s) \r\
-make "b (:b * :s) \r\
-] [ \
-make "s (:s * 0.9) \r\
-make "r (:r + ((99-:r) * :s)) \r\
-make "g (:g + ((99-:g) * :s)) \r\
-make "b (:b + ((99-:b) * :s)) \r\
-] \
-setpalette :i (list :r :g :b) \r\
-end \r\
-\
-to rgb :myi :mycolors :myshade \r\
-make "myr first :mycolors \r\
-make "mycolors butfirst :mycolors \r\
-make "myg first :mycolors \r\
-make "mycolors butfirst :mycolors \r\
-make "myb first :mycolors \r\
-make "mycolors butfirst :mycolors \r\
-tasetpalette :myi :myr :myg :myb :myshade \r\
-output :mycolors \r\
-end \r\
-\
-to processcolor :mycolors :myshade \r\
-if emptyp :mycolors [stop] \r\
-make "i :i + 1 \r\
-processcolor (rgb :i :mycolors :myshade) :myshade \r\
-end \r\
-\
-to tasetshade :shade \r\
-make "myshade modulo :shade 200 \r\
-if greaterp :myshade 99 [make "myshade (199-:myshade)] \r\
-make "i 7 \r\
-make "mycolors :colors \r\
-processcolor :mycolors :myshade \r\
-end \r\
-\
-to tasetpencolor :c \r\
-make "color (modulo (round :c) 100) \r\
-setpencolor :color + 8 \r\
-end \r\
-\
-make "colors [ \
-99  0  0 99  5  0 99 10  0 99 15  0 99 20  0 \
-99 25  0 99 30  0 99 35  0 99 40  0 99 45  0 \
-99 50  0 99 55  0 99 60  0 99 65  0 99 70  0 \
-99 75  0 99 80  0 99 85  0 99 90  0 99 95  0 \
-99 99  0 90 99  0 80 99  0 70 99  0 60 99  0 \
-50 99  0 40 99  0 30 99  0 20 99  0 10 99  0 \
- 0 99  0  0 99  5  0 99 10  0 99 15  0 99 20 \
- 0 99 25  0 99 30  0 99 35  0 99 40  0 99 45 \
- 0 99 50  0 99 55  0 99 60  0 99 65  0 99 70 \
- 0 99 75  0 99 80  0 99 85  0 99 90  0 99 95 \
- 0 99 99  0 95 99  0 90 99  0 85 99  0 80 99 \
- 0 75 99  0 70 99  0 65 99  0 60 99  0 55 99 \
- 0 50 99  0 45 99  0 40 99  0 35 99  0 30 99 \
- 0 25 99  0 20 99  0 15 99  0 10 99  0  5 99 \
- 0  0 99  5  0 99 10  0 99 15  0 99 20  0 99 \
-25  0 99 30  0 99 35  0 99 40  0 99 45  0 99 \
-50  0 99 55  0 99 60  0 99 65  0 99 70  0 99 \
-75  0 99 80  0 99 85  0 99 90  0 99 95  0 99 \
-99  0 99 99  0 90 99  0 80 99  0 70 99  0 60 \
-99  0 50 99  0 40 99  0 30 99  0 20 99  0 10] \r\
-make "shade  50 \r\
-tasetshade :shade \r'
 
     # We need to catch several special cases: stacks, boxes, labels, etc.
     dispatch_table = {
@@ -112,6 +42,23 @@ tasetshade :shade \r'
         'tpos': _tpos,
         'rpos': _rpos,
         'bpos': _bpos,
+        'red': _red,
+        'orange': _orange,
+        'yellow': _yellow,
+        'green': _green,
+        'cyan': _cyan,
+        'blue': _blue,
+        'purple': _purple,
+        'white': _white,
+        'black': _black,
+        'titlex': _titlex,
+        'titley': _titley,
+        'leftx': _leftx,
+        'topy': _topy,
+        'rightx': _rightx,
+        'bottomy': _bottomy,
+        'width': _width,
+        'height': _height
         }
 
     stacks_of_blocks = tw.just_blocks()
@@ -171,9 +118,9 @@ tasetshade :shade \r'
         if key in logocode:
             logocode = logo_functions[key] + logocode
 
-    if 'tasetshade' in logocode or 'tasetcolor' in logocode or \
+    if 'tasetshade' in logocode or 'tasetpencolor' in logocode or \
        'tasetbackground' in logocode:
-        logocode = color_processing + logocode
+        logocode = logo_functions['tacolor'] + logocode
 
     logocode = 'window\r' + logocode
     return logocode
@@ -226,7 +173,7 @@ def _add_reference_to_box(box_name):
         else:
             return ':%s' % (str(box_name).replace(' ', '_'))
 
-# TODO: Add the rest of the constants
+
 def _lpos(tw):
         return str(-tw.canvas.width / (tw.coord_scale * 2))
 
@@ -241,6 +188,74 @@ def _rpos(tw):
 
 def _bpos(tw):
         return str(-tw.canvas.height / (tw.coord_scale * 2))
+
+
+def _width(tw):
+    return int(tw.canvas.width / tw.coord_scale)
+
+
+def _height(tw):
+    int(tw.canvas.height / tw.coord_scale)
+
+
+def _titlex(tw):
+    return int(-(tw.canvas.width * TITLEXY[0]) / (tw.coord_scale * 2))
+
+
+def _titley(tw):
+    return int((tw.canvas.height * TITLEXY[1]) / (tw.coord_scale * 2))
+
+
+def _leftx(tw):
+    return int(-(tw.canvas.width * TITLEXY[0]) / (tw.coord_scale * 2))
+
+
+def _topy(tw):
+    return int((tw.canvas.height * (TITLEXY[1] - 0.125)) / (tw.coord_scale * 2))
+
+
+def _rightx(tw):
+    return 0
+
+
+def _bottomy(tw):
+    return 0
+
+
+def _red(tw):
+    return CONSTANTS['red']
+
+
+def _orange(tw):
+    return CONSTANTS['orange']
+
+
+def _yellow(tw):
+    return CONSTANTS['yellow']
+
+
+def _green(tw):
+    return CONSTANTS['green']
+
+
+def _cyan(tw):
+    return CONSTANTS['cyan']
+
+
+def _blue(tw):
+    return CONSTANTS['blue']
+
+
+def _purple(tw):
+    return CONSTANTS['purple']
+
+
+def _white(tw):
+    return 1
+
+
+def _black(tw):
+    return 0
 
 
 def _walk_stack(tw, blk_in_stack):

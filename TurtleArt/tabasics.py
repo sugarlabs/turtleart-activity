@@ -448,6 +448,79 @@ turtle'))
         self.tw.lc.def_prim('settextsize', 1,
                              lambda self, x: self.tw.canvas.settextsize(x))
 
+        # In order to map Turtle Art colors to the standard UCB Logo palette,
+        # we need to define a somewhat complex set of functions.
+        define_logo_function('tacolor', '\
+to tasetpalette :i :r :g :b :myshade \r\
+make "s ((:myshade - 50) / 50) \r\
+ifelse lessp :s 0 [ \r\
+make "s (1 + (:s *0.8)) \r\
+make "r (:r * :s) \r\
+make "g (:g * :s) \r\
+make "b (:b * :s) \r\
+] [ \
+make "s (:s * 0.9) \r\
+make "r (:r + ((99-:r) * :s)) \r\
+make "g (:g + ((99-:g) * :s)) \r\
+make "b (:b + ((99-:b) * :s)) \r\
+] \
+setpalette :i (list :r :g :b) \r\
+end \r\
+\
+to rgb :myi :mycolors :myshade \r\
+make "myr first :mycolors \r\
+make "mycolors butfirst :mycolors \r\
+make "myg first :mycolors \r\
+make "mycolors butfirst :mycolors \r\
+make "myb first :mycolors \r\
+make "mycolors butfirst :mycolors \r\
+tasetpalette :myi :myr :myg :myb :myshade \r\
+output :mycolors \r\
+end \r\
+\
+to processcolor :mycolors :myshade \r\
+if emptyp :mycolors [stop] \r\
+make "i :i + 1 \r\
+processcolor (rgb :i :mycolors :myshade) :myshade \r\
+end \r\
+\
+to tasetshade :shade \r\
+make "myshade modulo :shade 200 \r\
+if greaterp :myshade 99 [make "myshade (199-:myshade)] \r\
+make "i 7 \r\
+make "mycolors :colors \r\
+processcolor :mycolors :myshade \r\
+end \r\
+\
+to tasetpencolor :c \r\
+make "color (modulo (round :c) 100) \r\
+setpencolor :color + 8 \r\
+end \r\
+\
+make "colors [ \
+99  0  0 99  5  0 99 10  0 99 15  0 99 20  0 \
+99 25  0 99 30  0 99 35  0 99 40  0 99 45  0 \
+99 50  0 99 55  0 99 60  0 99 65  0 99 70  0 \
+99 75  0 99 80  0 99 85  0 99 90  0 99 95  0 \
+99 99  0 90 99  0 80 99  0 70 99  0 60 99  0 \
+50 99  0 40 99  0 30 99  0 20 99  0 10 99  0 \
+ 0 99  0  0 99  5  0 99 10  0 99 15  0 99 20 \
+ 0 99 25  0 99 30  0 99 35  0 99 40  0 99 45 \
+ 0 99 50  0 99 55  0 99 60  0 99 65  0 99 70 \
+ 0 99 75  0 99 80  0 99 85  0 99 90  0 99 95 \
+ 0 99 99  0 95 99  0 90 99  0 85 99  0 80 99 \
+ 0 75 99  0 70 99  0 65 99  0 60 99  0 55 99 \
+ 0 50 99  0 45 99  0 40 99  0 35 99  0 30 99 \
+ 0 25 99  0 20 99  0 15 99  0 10 99  0  5 99 \
+ 0  0 99  5  0 99 10  0 99 15  0 99 20  0 99 \
+25  0 99 30  0 99 35  0 99 40  0 99 45  0 99 \
+50  0 99 55  0 99 60  0 99 65  0 99 70  0 99 \
+75  0 99 80  0 99 85  0 99 90  0 99 95  0 99 \
+99  0 99 99  0 90 99  0 80 99  0 70 99  0 60 \
+99  0 50 99  0 40 99  0 30 99  0 20 99  0 10] \r\
+make "shade  50 \r\
+tasetshade :shade \r')
+
     def _numbers_palette(self):
         """ The basic Turtle Art numbers palette """
 
@@ -1185,5 +1258,6 @@ variable'))
     def _make_constant(self, palette, block_name, constant):
         """ Factory for constant blocks """
         palette.add_block(block_name, style='box-style',
-                          label=_(block_name), prim_name=block_name)
+                          label=_(block_name), prim_name=block_name,
+                          logo_command=block_name)
         self.tw.lc.def_prim(block_name, 0, lambda self: constant)
