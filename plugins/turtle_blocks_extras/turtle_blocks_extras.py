@@ -25,7 +25,7 @@ except ImportError:
     pass
 
 from plugins.plugin import Plugin
-from TurtleArt.tapalette import make_palette
+from TurtleArt.tapalette import make_palette, define_logo_function
 from TurtleArt.talogo import primitive_dictionary, logoerror, \
     media_blocks_dictionary
 from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS
@@ -309,6 +309,8 @@ program started'))
 last-out heap)'))
         self.tw.lc.def_prim('push', 1,
                             lambda self, x: primitive_dictionary['push'](x))
+        define_logo_function('tapush', 'to tapush :foo\rmake "taheap fput \
+:foo :taheap\rend\rmake "taheap []\r')
 
         primitive_dictionary['printheap'] = self._prim_printheap
         palette.add_block('printheap',
@@ -320,6 +322,8 @@ last-out heap)'))
 last-out heap)'))
         self.tw.lc.def_prim('printheap', 0,
                             lambda self: primitive_dictionary['printheap']())
+        define_logo_function('taprintheap', 'to taprintheap \rprint :taheap\r\
+end\r')
 
         primitive_dictionary['clearheap'] = self._prim_emptyheap
         palette.add_block('clearheap',
@@ -331,6 +335,8 @@ last-out heap)'))
 heap)'))
         self.tw.lc.def_prim('clearheap', 0,
                             lambda self: primitive_dictionary['clearheap']())
+        define_logo_function('taclearheap', 'to taclearheap\rmake "taheap []\r\
+end\r')
 
         primitive_dictionary['pop'] = self._prim_pop
         palette.add_block('pop',
@@ -343,6 +349,8 @@ heap)'))
 last-out heap)'))
         self.tw.lc.def_prim('pop', 0,
                             lambda self: primitive_dictionary['pop']())
+        define_logo_function('tapop', 'to tapop\rif emptyp :taheap [stop]\r\
+make \'tmp first :taheap\rmake "taheap butfirst :taheap\routput :tmp\rend\r')
 
         primitive_dictionary['print'] = self._prim_print
         palette.add_block('comment',

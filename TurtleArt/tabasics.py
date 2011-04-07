@@ -62,7 +62,7 @@ from time import time
 from math import sqrt
 from random import uniform
 
-from tapalette import make_palette
+from tapalette import make_palette, define_logo_function
 from talogo import primitive_dictionary, logoerror
 from tautils import convert, chr_to_ord, round_int, strtype
 from taconstants import BLACK, WHITE, CONSTANTS
@@ -180,6 +180,8 @@ degrees)'))
         self.tw.lc.def_prim('arc', 2,
                              lambda self, x, y: primitive_dictionary['arc'](
                 self.tw.canvas.arc, x, y))
+        define_logo_function('taarc', 'to taarc :a :r\rrepeat round :a \
+[right 1 forward (0.0175 * :r)]\rend\r')
 
         palette.add_block('setxy2',
                           style='basic-style-2arg',
@@ -192,6 +194,7 @@ degrees)'))
         self.tw.lc.def_prim('setxy2', 2,
                              lambda self, x, y: primitive_dictionary['move'](
                 self.tw.canvas.setxy, x, y))
+        define_logo_function('tasetxy', 'to tasetxy :x :y\rsetxy :x :y\rend\r')
 
         primitive_dictionary['set'] = self._prim_set
         palette.add_block('seth',
@@ -257,6 +260,8 @@ turtle (can be used in place of a number block)'),
         self.tw.lc.def_prim('setxy', 2,
                              lambda self, x, y: primitive_dictionary['move'](
                 self.tw.canvas.setxy, x, y, pendown=False))
+        define_logo_function('tasetxypenup', 'to tasetxypenup :x :y\rpenup\r\
+setxy :x :y\rpendown\rend\r')
 
     def _pen_palette(self):
         """ The basic Turtle Art pen palette """
@@ -294,6 +299,8 @@ turtle'))
         self.tw.lc.def_prim('setpensize', 1,
                              lambda self, x: primitive_dictionary['set'](
                 'pensize', self.tw.canvas.setpensize, x))
+        define_logo_function('tasetpensize', 'to tasetpensize :a\rsetpensize \
+round :a\rend\r')
 
         palette.add_block('fillscreen',
                           style='basic-style-2arg',
@@ -305,6 +312,8 @@ turtle'))
 shade)'))
         self.tw.lc.def_prim('fillscreen', 2,
             lambda self, x, y: self.tw.canvas.fillscreen(x, y))
+        define_logo_function('tasetbackground', 'to tasetbackground :color \
+:shade\rtasetshade :shade\rsetbackground :color\rend\r')
 
         palette.add_block('pensize',
                           style='box-style',
@@ -315,6 +324,8 @@ in place of a number block)'),
                           prim_name='pensize',
                           logo_command='pensize')
         self.tw.lc.def_prim('pensize', 0, lambda self: self.tw.canvas.pensize)
+        define_logo_function('tapensize', 'to tapensize\routput first round \
+pensize\rend\r')
 
         palette.add_block('startfill',
                           style='basic-style-extended-vertical',
@@ -466,6 +477,8 @@ turtle'))
 top numeric input'))
         self.tw.lc.def_prim(
             'minus', 2, lambda self, x, y: primitive_dictionary['minus'](x, y))
+        define_logo_function('taminus', 'to taminus :y :x\routput sum :x minus \
+:y\rend\r')
 
         primitive_dictionary['product'] = self._prim_product
         palette.add_block('product2',
@@ -535,7 +548,10 @@ blocks'))
                           help_string=_('returns random number between minimum \
 (top) and maximum (bottom) values'))
         self.tw.lc.def_prim(
-            'random', 2, lambda self, x, y: primitive_dictionary['random'](x, y))
+            'random', 2, lambda self, x, y: primitive_dictionary['random'](
+                x, y))
+        define_logo_function('tarandom', 'to tarandom :min :max\r \
+output (random (:max - :min)) + :min\rend\r')
 
         palette.add_block('number',
                           style='box-style',
@@ -791,7 +807,7 @@ variable'))
                           label=_('action'),
                           prim_name='nop3',
                           default=_('stack'),
-                          logo_command='action',
+                          logo_command='to action',
                           help_string=_('top of nameable action stack'))
         self.tw.lc.def_prim('nop3', 1, lambda self, x: None)
 
@@ -816,7 +832,7 @@ variable'))
                           style='basic-style-1arg',
                           label=_('action'),
                           prim_name='stack',
-                          logo_command='runstack',
+                          logo_command='action',
                           default=_('action'),
                           help_string=_('invokes named action stack'))
         self.tw.lc.def_prim('stack', 1, primitive_dictionary['stack'], True)

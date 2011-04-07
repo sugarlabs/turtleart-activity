@@ -27,6 +27,7 @@ block_names = {}
 block_primitives = {}
 default_values = {}
 logo_commands = {}
+logo_functions = {}
 special_names = {}  # Names for blocks without names for popup help
 content_blocks = ['number', 'string', 'description', 'audio', 'video',
                   'journal']
@@ -175,6 +176,9 @@ def palette_name_to_index(palette_name):
     else:
         return None
 
+def define_logo_function(key, value):
+    ''' Add a logo function to the table. '''
+    logo_functions[key] = value    
 
 class Block():
     """ a class for defining new block primitives """
@@ -230,8 +234,8 @@ class Block():
         if self._prim_name is not None:
             block_primitives[self._name] = self._prim_name
 
-        if self._logo_command is not None:
-            logo_commands[self._name] = self._logo_command
+        if self._logo_command is not None and self._prim_name is not None:
+            logo_commands[self._prim_name] = self._logo_command
 
         if self._default is not None:
             default_values[self._name] = self._default
