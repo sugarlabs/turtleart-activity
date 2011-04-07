@@ -99,7 +99,7 @@ def save_logo(tw):
                 else:
                     print 'missing arg to %s' % (logo_command)
             elif logo_command in constants_table:
-                this_stack += constants_table[logo_command](tw)
+                this_stack += str(constants_table[logo_command](tw))
             elif logo_command is not None:
                 this_stack += logo_command
             else:  # assume it is an argument
@@ -175,19 +175,19 @@ def _add_reference_to_box(box_name):
 
 
 def _lpos(tw):
-        return str(-tw.canvas.width / (tw.coord_scale * 2))
+        return int(-tw.canvas.width / (tw.coord_scale * 2))
 
 
 def _tpos(tw):
-        return str(tw.canvas.height / (tw.coord_scale * 2))
+        return int(tw.canvas.height / (tw.coord_scale * 2))
 
 
 def _rpos(tw):
-        return str(tw.canvas.width / (tw.coord_scale * 2))
+        return int(tw.canvas.width / (tw.coord_scale * 2))
 
 
 def _bpos(tw):
-        return str(-tw.canvas.height / (tw.coord_scale * 2))
+        return int(-tw.canvas.height / (tw.coord_scale * 2))
 
 
 def _width(tw):
