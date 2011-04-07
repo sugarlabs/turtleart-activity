@@ -350,7 +350,7 @@ last-out heap)'))
         self.tw.lc.def_prim('pop', 0,
                             lambda self: primitive_dictionary['pop']())
         define_logo_function('tapop', 'to tapop\rif emptyp :taheap [stop]\r\
-make \'tmp first :taheap\rmake "taheap butfirst :taheap\routput :tmp\rend\r')
+make "tmp first :taheap\rmake "taheap butfirst :taheap\routput :tmp\rend\r')
 
         primitive_dictionary['print'] = self._prim_print
         palette.add_block('comment',
