@@ -104,13 +104,15 @@ class TurtleArtWindow():
                 self.window.show_all()
                 self.running_sugar = False
             self.area = self.window.window
-            self.gc = self.area.new_gc()
+            if self.area is not None:
+                self.gc = self.area.new_gc()
             self._setup_events()
         elif type(win) == gtk.gdk.Pixmap:
             self.interactive_mode = False
             self.window = win
             self.running_sugar = False
-            self.gc = self.window.new_gc()
+            if self.window is not None:
+                self.gc = self.window.new_gc()
         else:
             debug_output("bad win type %s" % (type(win)), False)
 
@@ -243,6 +245,7 @@ class TurtleArtWindow():
         CONSTANTS['width'] = int(self.canvas.width / self.coord_scale)
         CONSTANTS['height'] = int(self.canvas.height / self.coord_scale)
 
+        self._icon_paths = [os.path.join(self.path, 'icons')]
         self._plugins = []
 
         self._init_plugins()
@@ -267,18 +270,8 @@ class TurtleArtWindow():
         else:
             return None
 
-    def _get_plugin_candidates(self, path):
-        """ Look for plugin files in plugin directory. """
-        plugin_files = []
-        if path is not None:
-            candidates = os.listdir(path)
-            for c in candidates:
-                if c[-10:] == '_plugin.py' and c[0] != '#' and c[0] != '.':
-                    plugin_files.append(c.split('.')[0])
-        return plugin_files
-
-    def _get_plugins_from_plugins_lib(self, path):
-        """ Look for plugin files in plugin/lib directory. """
+    def _get_plugins_from_plugins_dir(self, path):
+        """ Look for plugin files in plugin dir. """
         plugin_files = []
         if path is not None:
             candidates = os.listdir(path)
@@ -289,30 +282,33 @@ class TurtleArtWindow():
         return plugin_files
 
     def _init_plugins(self):
-        """ Try importing plugin files from the plugin directory. """
-        '''
-        for pluginfile in self._get_plugins_from_plugins_lib(
+        """ Try importing plugin files from the plugin dir. """
+        for plugin_dir in self._get_plugins_from_plugins_dir(
             self._get_plugin_home()):
-            pluginclass = pluginfile.capitalize()
-            f = "def f(self): from plugins.%s.%s import %s; return %s(self)" % (pluginfile, pluginfile, pluginclass, pluginclass)
+            plugin_class = plugin_dir.capitalize()
+            f = "def f(self): from plugins.%s.%s import %s; return %s(self)" \
+                % (plugin_dir, plugin_dir, plugin_class, plugin_class)
             plugins = {}
             try:
                 exec f in globals(), plugins
                 self._plugins.append(plugins.values()[0](self))
+                # debug_output('successfully importing %s' % (plugin_class))
             except ImportError:
-                debug_output('failed to import %s' % (pluginclass))
-        '''
+                debug_output('failed to import %s' % (plugin_class))
 
-        for pluginfile in self._get_plugin_candidates(self._get_plugin_home()):
-            pluginclass = pluginfile.capitalize()
-            f = "def f(self): from plugins.%s import %s; return %s(self)" \
-                % (pluginfile, pluginclass, pluginclass)
-            plugins = {}
-            try:
-                exec f in globals(), plugins
-                self._plugins.append(plugins.values()[0](self))
-            except ImportError:
-                debug_output('failed to import %s' % (pluginclass))
+        # Add the icon dir for each plugin to the icon_theme search path
+        for plugin_dir in self._get_plugins_from_plugins_dir(
+            self._get_plugin_home()):
+            self._add_plugin_icon_dir(os.path.join(self._get_plugin_home(),
+                                                   plugin_dir))
+
+    def _add_plugin_icon_dir(self, dirname):
+        ''' If there is an icon subdir, add it to the search path. '''
+        icon_theme = gtk.icon_theme_get_default()
+        icon_path = os.path.join(dirname, 'icons')
+        if os.path.exists(icon_path):
+            icon_theme.append_search_path(icon_path)
+            self._icon_paths.append(icon_path)
 
     def _setup_plugins(self):
         """ Initial setup -- call just once. """
@@ -359,41 +355,41 @@ class TurtleArtWindow():
     def _setup_misc(self):
         """ Misc. sprites for status, overlays, etc. """
         # media blocks get positioned into other blocks
-        for _name in MEDIA_SHAPES:
-            if _name[0:7] == 'journal' and not self.running_sugar:
-                file_name = 'file' + _name[7:]
+        for name in MEDIA_SHAPES:
+            if name[0:7] == 'journal' and not self.running_sugar:
+                filename = 'file' + name[7:]
             else:
-                file_name = _name
-            self.media_shapes[_name] = svg_str_to_pixbuf(svg_from_file(
-                    "%s/images/%s.svg" % (self.path, file_name)))
+                filename = name
+            self.media_shapes[name] = svg_str_to_pixbuf(svg_from_file(
+                    "%s/images/%s.svg" % (self.path, filename)))
 
-        for i, _name in enumerate(STATUS_SHAPES):
-            self.status_shapes[_name] = svg_str_to_pixbuf(svg_from_file(
-                    "%s/images/%s.svg" % (self.path, _name)))
+        for i, name in enumerate(STATUS_SHAPES):
+            self.status_shapes[name] = svg_str_to_pixbuf(svg_from_file(
+                    "%s/images/%s.svg" % (self.path, name)))
         self.status_spr = Sprite(self.sprite_list, 0, self.height - 200,
                                  self.status_shapes['status'])
         self.status_spr.hide()
         self.status_spr.type = 'status'
 
-        for _name in OVERLAY_SHAPES:
-            self.overlay_shapes[_name] = Sprite(self.sprite_list,
+        for name in OVERLAY_SHAPES:
+            self.overlay_shapes[name] = Sprite(self.sprite_list,
                                                 int(self.width / 2 - 600),
                                                 int(self.height / 2 - 450),
                                                 svg_str_to_pixbuf(
-                    svg_from_file("%s/images/%s.svg" % (self.path, _name))))
-            self.overlay_shapes[_name].hide()
-            self.overlay_shapes[_name].type = 'overlay'
+                    svg_from_file("%s/images/%s.svg" % (self.path, name))))
+            self.overlay_shapes[name].hide()
+            self.overlay_shapes[name].type = 'overlay'
 
         if not self.running_sugar:
             offset = self.width - 55 * len(TOOLBAR_SHAPES)
-            for i, _name in enumerate(TOOLBAR_SHAPES):
-                self.toolbar_shapes[_name] = Sprite(self.sprite_list,
-                                                    i * 55 + offset, 0,
-                                                    svg_str_to_pixbuf(
-                        svg_from_file("%s/icons/%s.svg" % (self.path, _name))))
-                self.toolbar_shapes[_name].set_layer(TAB_LAYER)
-                self.toolbar_shapes[_name].name = _name
-                self.toolbar_shapes[_name].type = 'toolbar'
+            for i, name in enumerate(TOOLBAR_SHAPES):
+                self.toolbar_shapes[name] = Sprite(
+                    self.sprite_list, i * 55 + offset, 0,
+                    svg_str_to_pixbuf(svg_from_file(os.path.join(
+                                self.path, 'icons', '%s.svg' % (name)))))
+                self.toolbar_shapes[name].set_layer(TAB_LAYER)
+                self.toolbar_shapes[name].name = name
+                self.toolbar_shapes[name].type = 'toolbar'
             self.toolbar_shapes['stopiton'].hide()
 
     def set_sharing(self, shared):
@@ -492,22 +488,22 @@ class TurtleArtWindow():
         """ Reposition the overlays when window size changes """
         self.width = event.width
         self.height = event.height
-        for _name in OVERLAY_SHAPES:
-            shape = self.overlay_shapes[_name]
+        for name in OVERLAY_SHAPES:
+            shape = self.overlay_shapes[name]
             showing = False
             if shape in shape._sprites.list:
                 shape.hide()
                 showing = True
-            self.overlay_shapes[_name] = Sprite(self.sprite_list,
+            self.overlay_shapes[name] = Sprite(self.sprite_list,
                                                 int(self.width / 2 - 600),
                                                 int(self.height / 2 - 450),
                                                 svg_str_to_pixbuf(
-                    svg_from_file("%s/images/%s.svg" % (self.path, _name))))
+                    svg_from_file("%s/images/%s.svg" % (self.path, name))))
             if showing:
-                self.overlay_shapes[_name].set_layer(OVERLAY_LAYER)
+                self.overlay_shapes[name].set_layer(OVERLAY_LAYER)
             else:
-                self.overlay_shapes[_name].hide()
-            self.overlay_shapes[_name].type = 'overlay'
+                self.overlay_shapes[name].hide()
+            self.overlay_shapes[name].type = 'overlay'
         self.cartesian = False
         self.polar = False
         self.canvas.width = self.width
@@ -671,25 +667,31 @@ class TurtleArtWindow():
         svg = SVG()
         x, y = 50, 0  # positioned at the left, top
         for i, name in enumerate(palette_names):
-            try:
-                a = svg_str_to_pixbuf(svg_from_file('%s/icons/%soff.svg' % \
-                                                        (self.path, name)))
-            except IOError:
-                a = svg_str_to_pixbuf(svg_from_file('%s/icons/extrasoff.svg' % \
-                                                        (self.path)))
-                error_output('Unable to open %s/icons/%soff.svg' % \
-                                 (self.path, name), self.running_sugar)
-            try:
-                b = svg_str_to_pixbuf(svg_from_file('%s/icons/%son.svg' % \
-                                                        (self.path, name)))
-            except IOError:
-                b = svg_str_to_pixbuf(svg_from_file('%s/icons/extrason.svg' % \
-                                                        (self.path)))
-                error_output('Unable to open %s/icons/%son.svg' % \
-                                 (self.path, name), self.running_sugar)
+            for path in self._icon_paths:
+                if os.path.exists(os.path.join(path, '%soff.svg' % (name))):
+                    icon_pathname = os.path.join(path, '%soff.svg' % (name))
+                    break
+            if icon_pathname is not None:
+                off_shape = svg_str_to_pixbuf(svg_from_file(icon_pathname))
+            else:
+                off_shape = svg_str_to_pixbuf(svg_from_file(os.path.join(
+                            self._icon_paths[0], 'extrasoff.svg')))
+                error_output('Unable to open %soff.svg' % (name),
+                             self.running_sugar)
+            for path in self._icon_paths:
+                if os.path.exists(os.path.join(path, '%son.svg' % (name))):
+                    icon_pathname = os.path.join(path, '%son.svg' % (name))
+                    break
+            if icon_pathname is not None:
+                on_shape = svg_str_to_pixbuf(svg_from_file(icon_pathname))
+            else:
+                on_shape = svg_str_to_pixbuf(svg_from_file(os.path.join(
+                            self._icon_paths[0], 'extrason.svg')))
+                error_output('Unable to open %son.svg' % (name),
+                             self.running_sugar)
 
-            self.selector_shapes.append([a, b])
-            self.selectors.append(Sprite(self.sprite_list, x, y, a))
+            self.selector_shapes.append([off_shape, on_shape])
+            self.selectors.append(Sprite(self.sprite_list, x, y, off_shape))
             self.selectors[i].type = 'selector'
             self.selectors[i].name = name
             self.selectors[i].set_layer(TAB_LAYER)
