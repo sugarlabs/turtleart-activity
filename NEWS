@@ -7,11 +7,16 @@ ENHANCEMENTS
   modifications.)
 * Added the ability to add new blocks on the fly (See uturn.py example)
 * Added basic-style-3arg block (used by NXT plugin)
-* Moved plugin libraries to ./plugins/lib/
+* Moved plugin libraries to ./plugins
 * Shared turtles are updated after mouse drag (#2687)
 * Shared turtles cannot be repositioned remotely (#2687)
+* Shared turtles have labels
 * Turtles are synchronized when joining share (#2687)
-* Comments on usage included in the python sample code (#2709)
+* Comments on usage included in the Python sample code (#2709)
+* Using standard Sugar icons for colors and camera
+* refactoring of export Logo code to enable plugins to define new functions
+* Fixed problem with first sample when using sensors
+* Value blocks updated properly on first appearance
 
 BUG FIXES
 
@@ -20,6 +25,8 @@ BUG FIXES
 * Fixed problem with camera block graphic in trash (#2678)
 * Fixed regression with camera_plugin after refactoring (#2689)
 * Fixed problem with saving/loading extra turtles when nick changes (#2441)
+* Fixed problem with displaying large FILO heap (#2751)
+* More robust handling of broken projects and unknown block types
 
 PYTHON CODE CHANGE
 
@@ -28,12 +35,9 @@ PYTHON CODE CHANGE
   accommodate and better parallel the new plugin mechanism. Most
   likely, you had been referencing tw, the TurtleWindow instance from
   lc, the LogoCode instance, e.g., lc.tw. Now you can reference tw
-  directly, e.g., tw. To reference lc, use tw.lc. Also note that the
-  push_mouse_event.py sample has changed. The x,y position of the
-  mouse is now always pushed to the stack, whether or not the mouse
-  button is pressed. Under most circumstances, Turtle Art will detect
-  when myblock is looking for lc rather than tw and it will pass the
-  correct argument.
+  directly, e.g., tw. To reference lc, use tw.lc. Under most
+  circumstances, Turtle Art will detect when myblock is looking for lc
+  rather than tw and it will pass the correct argument.
 
 106
 
@@ -162,7 +166,7 @@ ENHANCEMENTS
 * rgs fixed resume problem in GNOME version (#2293)
 * checking alpha value to block 'hit' detection (fixes problem with
   selecting the wrong block when blocks wrap around each other).
-* trap and display math errors in python block (#2313)
+* trap and display math errors in Python block (#2313)
 
 96
 
@@ -438,7 +442,7 @@ ENHANCEMENTS
 
 * first pass at hover help support (thanks Raul)
 * put samples button, keep button on project toolbar
-* fixed journal icons associated with html, python, logo
+* fixed journal icons associated with HTML, Python, Logo
 * improved compatibility with old Sugar builds
 * images centered under turtle
 * text vertically centered under turtle
