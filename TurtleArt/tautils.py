@@ -328,7 +328,7 @@ def base64_to_image(data, path_name):
 def movie_media_type(name):
     """ Is it movie media? """
     return name.lower().endswith(('.ogv', '.vob', '.mp4', '.wmv', '.mov',
-                                  '.mpeg', 'ogg'))
+                                  '.mpeg', '.ogg', '.webm'))
 
 
 def audio_media_type(name):
