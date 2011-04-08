@@ -831,7 +831,7 @@ buttons'))
                           style='box-style',
                           label=_('text'),
                           default=_('text'),
-                          special_name='',
+                          special_name=_('text'),
                           help_string=_('string value'))
 
         palette.add_block('box1',
