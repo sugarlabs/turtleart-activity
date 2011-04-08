@@ -419,9 +419,6 @@ class TurtleArtWindow():
         if self.running_sugar:
             self.activity.recenter()
 
-        if self.interactive_mode:
-            self._start_plugins()
-
         # Look for a 'start' block
         for blk in self.just_blocks():
             if find_start_stack(blk):
@@ -1695,7 +1692,6 @@ class TurtleArtWindow():
                 dy = 20
                 blk.expand_in_y(dy)
             else:
-                self._start_plugins()
                 self._run_stack(blk)
                 return
 
@@ -1761,7 +1757,6 @@ class TurtleArtWindow():
             elif blk.name in PYTHON_SKIN:
                 self._import_py()
             else:
-                self._start_plugins()
                 self._run_stack(blk)
 
         elif blk.name in ['sandwichtop_no_arm_no_label',
@@ -1776,7 +1771,6 @@ class TurtleArtWindow():
                 collapse_stack(top)
 
         else:
-            self._start_plugins()
             self._run_stack(blk)
 
     def _expand_boolean(self, blk, blk2, dy):
@@ -1868,6 +1862,8 @@ class TurtleArtWindow():
         """ Run a stack of blocks. """
         if blk is None:
             return
+        self.lc.find_value_blocks()  # Are there blocks to update?
+        self._start_plugins()  # Let the plugins know we are running.
         top = find_top_block(blk)
         self.lc.run_blocks(top, self.just_blocks(), True)
         if self.interactive_mode:

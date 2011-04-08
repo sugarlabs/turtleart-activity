@@ -162,7 +162,6 @@ class LogoCode:
         self.stacks['stack2'] = None
         self.tw.saving_svg = False
 
-        self.find_value_blocks()
         if self.trace > 0:
             self.update_values = True
         else:

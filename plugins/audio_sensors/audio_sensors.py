@@ -56,9 +56,10 @@ class Audio_sensors(Plugin):
 
     def __init__(self, parent):
         self._parent = parent
+        self._status = True  # TODO: test for audio device
+        # These flags are referenced by audiograb
         self.hw = self._parent.hw
         self.running_sugar = self._parent.running_sugar
-        self._status = True  # TODO: test for audio device
 
     def setup(self):
         # set up audio-sensor-specific blocks
@@ -169,27 +170,26 @@ class Audio_sensors(Plugin):
 
     def _update_audio_mode(self):
         """ If there are sensor blocks, set the appropriate audio mode """
-        if not hasattr(self._parent.lc, 'value_blocks'):
+        if not hasattr(self._parent.lc, 'value_blocks_to_update'):
             return
         for name in ['sound', 'volume', 'pitch']:
-            if name in self._parent.lc.value_blocks:
-                if len(self._parent.lc.value_blocks[name]) > 0:
+            if name in self._parent.lc.value_blocks_to_update:
+                if len(self._parent.lc.value_blocks_to_update[name]) > 0:
                     self.audiograb.set_sensor_type()
                     return
-        if 'resistance' in self._parent.lc.value_blocks:
-            if len(self._parent.lc.value_blocks['resistance']) > 0:
+        if 'resistance' in self._parent.lc.value_blocks_to_update:
+            if len(self._parent.lc.value_blocks_to_update['resistance']) > 0:
                 self.audiograb.set_sensor_type(SENSOR_DC_BIAS)
                 return
-        if 'voltage' in self._parent.lc.value_blocks:
-            if len(self._parent.lc.value_blocks['voltage']) > 0:
+        if 'voltage' in self._parent.lc.value_blocks_to_update:
+            if len(self._parent.lc.value_blocks_to_update['voltage']) > 0:
                 self.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
                 return
 
     def stop(self):
         # This gets called by the stop button
-        if self._status:
-            if self.audio_started:
-                self.audiograb.pause_grabbing()
+        if self._status and self.audio_started:
+            self.audiograb.pause_grabbing()
 
     def goto_background(self):
         # This gets called when your process is sent to the background
@@ -203,7 +203,8 @@ class Audio_sensors(Plugin):
 
     def quit(self):
         # This gets called by the quit button
-        self.stop()
+        if self._status and self.audio_started:
+            self.audiograb.stop_grabbing()
 
     def _status_report(self):
         debug_output('Reporting audio sensor status: %s' % (str(self._status)))
