@@ -2793,49 +2793,30 @@ class TurtleArtWindow():
 
     def save_as_image(self, name="", svg=False, pixbuf=None):
         """ Grab the current canvas and save it. """
+        if svg:
+            suffix = '.svg'
+        else:
+            suffix = '.png'
 
         if not self.interactive_mode:
-            save_picture(self.canvas, name[:-3] + ".png")
+            save_picture(self.canvas, name[:-3] + suffix)
             return
-            """
-            self.color_map = self.window.get_colormap()
-            new_pix = pixbuf.get_from_drawable(self.window, self.color_map,
-                                               0, 0, 0, 0,
-                                               self.width, self.height)
-            new_pix.save(name[:-3] + ".png", "png")
-            """
-
         if self.running_sugar:
-            if svg:
-                if len(name) == 0:
-                    filename = "ta.svg"
-                else:
-                    filename = name + ".svg"
+            if len(name) == 0:
+                filename = 'ta' + suffix
             else:
-                if len(name) == 0:
-                    filename = "ta.png"
-                else:
-                    filename = name + ".png"
+                filename = name + suffix
             datapath = get_path(self.activity, 'instance')
         elif len(name) == 0:
-            name = "ta"
+            name = 'ta'
             if self.save_folder is not None:
                 self.load_save_folder = self.save_folder
-            if svg:
-                filename, self.load_save_folder = get_save_name('.svg',
-                                                     self.load_save_folder,
-                                                     name)
-            else:
-                filename, self.load_save_folder = get_save_name('.png',
-                                                     self.load_save_folder,
-                                                     name)
+            filename, self.load_save_folder = get_save_name(
+                suffix, self.load_save_folder, name)
             datapath = self.load_save_folder
         else:
             datapath = os.getcwd()
-            if svg:
-                filename = name + ".svg"
-            else:
-                filename = name + ".png"
+            filename = name + suffix
         if filename is None:
             return
 
