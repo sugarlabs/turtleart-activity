@@ -14,9 +14,12 @@ ENHANCEMENTS
 * Turtles are synchronized when joining share (#2687)
 * Comments on usage included in the Python sample code (#2709)
 * Using standard Sugar icons for colors and camera
-* refactoring of export Logo code to enable plugins to define new functions
-* Fixed problem with first sample when using sensors
+* Refactoring of export Logo code to enable plugins to define new functions
 * Value blocks updated properly on first appearance
+* Reduced the header size in Python sample code for easier reading (#2748)
+* Extend clearscreen to entire canvas (#2745)
+* Cleaned up some issues with .es translations (Guzman Trinidad)
+* More robust handling of broken projects and unknown block types
 
 BUG FIXES
 
@@ -26,7 +29,8 @@ BUG FIXES
 * Fixed regression with camera_plugin after refactoring (#2689)
 * Fixed problem with saving/loading extra turtles when nick changes (#2441)
 * Fixed problem with displaying large FILO heap (#2751)
-* More robust handling of broken projects and unknown block types
+* Fixed a problem with tags causing malformed HTML export
+* Fixed problem with first sample when using sensors
 
 PYTHON CODE CHANGE
 
