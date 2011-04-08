@@ -24,7 +24,8 @@ import gtk
 from taconstants import EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS, \
     STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS, GRADIENT_COLOR
 from tapalette import palette_blocks, block_colors, expandable_blocks, \
-    content_blocks, block_names, block_primitives, block_styles
+    content_blocks, block_names, block_primitives, block_styles, \
+    special_block_colors
 from tasprite_factory import SVG, svg_str_to_pixbuf
 import sprites
 
@@ -472,6 +473,8 @@ class Block:
     def _set_colors(self, svg):
         if self.name in BOX_COLORS:
             self.colors = BOX_COLORS[self.name]
+        elif self.name in special_block_colors:
+            self.colors = special_block_colors[self.name]      
         else:
             for p in range(len(palette_blocks)):
                 if self.name in palette_blocks[p]:

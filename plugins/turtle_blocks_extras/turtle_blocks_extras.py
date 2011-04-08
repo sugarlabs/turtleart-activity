@@ -161,6 +161,7 @@ Journal'))
 
         palette.add_block('showaligned',
                           hidden=True,
+                          colors=["#A0FF00", "#80A000"],
                           style='basic-style-1arg',
                           label=_('show aligned'),
                           default=_('text'),
@@ -175,6 +176,7 @@ Journal'))
         primitive_dictionary['write'] = self._prim_write
         palette.add_block('write',
                           hidden=True,
+                          colors=["#A0FF00", "#80A000"],
                           style='basic-style-1arg',
                           label=_('show'),
                           default=[_('text'), 32],
@@ -385,6 +387,7 @@ advanced single-variable math equations, e.g., sin(x)'))
 
         palette.add_block('myfunc2arg',
                           hidden=True,
+                          colors=["#FF0000", "#A00000"],
                           style='number-style-var-arg',
                           label=[_('Python'), 'f(x,y)', 'x'],
                           prim_name='myfunction2',
@@ -397,6 +400,7 @@ advanced multi-variable math equations, e.g., sqrt(x*x+y*y)'))
 
         palette.add_block('myfunc3arg',
                           hidden=True,
+                          colors=["#FF0000", "#A00000"],
                           style='number-style-var-arg',
                           label=[_('Python'), 'f(x,y,z)', 'x'],
                           prim_name='myfunction3',
@@ -421,6 +425,7 @@ module found in the Journal'))
 
         palette.add_block('userdefined2args',
                           hidden=True,
+                          colors=["#FF0000", "#A00000"],
                           style='basic-style-var-arg',
                           label=' ',
                           prim_name='userdefined2',
@@ -433,6 +438,7 @@ module found in the Journal'))
 
         palette.add_block('userdefined3args',
                           hidden=True,
+                          colors=["#FF0000", "#A00000"],
                           style='basic-style-var-arg',
                           label=' ',
                           prim_name='userdefined3',
@@ -472,6 +478,7 @@ module found in the Journal'))
         primitive_dictionary['skin'] = self._prim_reskin
         palette.add_block('skin',
                           hidden=True,
+                          colors=["#FF0000", "#A00000"],
                           style='basic-style-1arg',
                           label=_('turtle shell'),
                           prim_name='skin',
@@ -501,6 +508,7 @@ module found in the Journal'))
 
         palette.add_block('sandwichcollapsed',
                           hidden=True,
+                          colors=["#FF0000", "#A00000"],
                           style='invisible',
                           label=' ',
                           prim_name='nop',
@@ -510,6 +518,7 @@ click to open'))
         # deprecated blocks
         palette.add_block('sandwichtop',
                           hidden=True,
+                          colors=["#FF0000", "#A00000"],
                           style='collapsible-top',
                           label=_('top of stack'),
                           default=_('label'),
@@ -518,6 +527,7 @@ click to open'))
 
         palette.add_block('sandwichtop_no_arm',
                           hidden=True,
+                          colors=["#FF0000", "#A00000"],
                           style='collapsible-top-no-arm',
                           label=_('top of a collapsible stack'),
                           default=_('label'),
@@ -526,6 +536,7 @@ click to open'))
 
         palette.add_block('sandwichtop_no_arm_no_label',
                           hidden=True,
+                          colors=["#FF0000", "#A00000"],
                           style='collapsible-top-no-arm-no-label',
                           label=[' ', _('click to open')],
                           prim_name='nop',
@@ -562,6 +573,7 @@ click to open'))
         primitive_dictionary['bulletlist'] = self._prim_list
         palette.add_block('list',
                           hidden=True,
+                          colors=["#0606FF", "#0606A0"],
                           style='bullet-style',
                           label=_('list'),
                           prim_name='bulletlist',
@@ -658,6 +670,7 @@ Journal objects'))
 
         palette.add_block('titlex',
                           hidden=True,
+                          colors=["#0606FF", "#0606A0"],
                           style='box-style',
                           label=_('title x'),
                           logo_command='titlex',
@@ -666,6 +679,7 @@ Journal objects'))
 
         palette.add_block('titley',
                           hidden=True,
+                          colors=["#0606FF", "#0606A0"],
                           style='box-style',
                           label=_('title y'),
                           logo_command='titley',
@@ -674,6 +688,7 @@ Journal objects'))
 
         palette.add_block('leftx',
                           hidden=True,
+                          colors=["#0606FF", "#0606A0"],
                           style='box-style',
                           label=_('left x'),
                           prim_name='leftx',
@@ -682,6 +697,7 @@ Journal objects'))
 
         palette.add_block('topy',
                           hidden=True,
+                          colors=["#0606FF", "#0606A0"],
                           style='box-style',
                           label=_('top y'),
                           prim_name='topy',
@@ -690,6 +706,7 @@ Journal objects'))
 
         palette.add_block('rightx',
                           hidden=True,
+                          colors=["#0606FF", "#0606A0"],
                           style='box-style',
                           label=_('right x'),
                           prim_name='rightx',
@@ -698,6 +715,7 @@ Journal objects'))
 
         palette.add_block('bottomy',
                           hidden=True,
+                          colors=["#0606FF", "#0606A0"],
                           style='box-style',
                           label=_('bottom y'),
                           prim_name='bottomy',
@@ -709,6 +727,7 @@ Journal objects'))
         primitive_dictionary['t1x1'] = self._prim_t1x1
         palette.add_block('template1x1',
                           hidden=True,
+                          colors=["#0606FF", "#0606A0"],
                           style='portfolio-style-1x1',
                           label=' ',
                           prim_name='t1x1',
@@ -722,6 +741,7 @@ Journal object (with description)'))
         primitive_dictionary['t1x1a'] = self._prim_t1x1a
         palette.add_block('template1x1a',
                           hidden=True,
+                          colors=["#0606FF", "#0606A0"],
                           style='portfolio-style-1x1',
                           label=' ',
                           prim_name='t1x1a',
@@ -735,6 +755,7 @@ Journal object (no description)'))
         primitive_dictionary['2x1'] = self._prim_t2x1
         palette.add_block('template2x1',
                           hidden=True,
+                          colors=["#0606FF", "#0606A0"],
                           style='portfolio-style-2x1',
                           label=' ',
                           prim_name='t2x1',
@@ -748,6 +769,7 @@ Journal objects"))
         primitive_dictionary['1x2'] = self._prim_t1x2
         palette.add_block('template1x2',
                           hidden=True,
+                          colors=["#0606FF", "#0606A0"],
                           style='portfolio-style-1x2',
                           label=' ',
                           prim_name='t1x2',
@@ -761,6 +783,7 @@ Journal objects"))
         primitive_dictionary['t2x2'] = self._prim_t2x2
         palette.add_block('template2x2',
                           hidden=True,
+                          colors=["#0606FF", "#0606A0"],
                           style='portfolio-style-2x2',
                           label=' ',
                           prim_name='t2x2',
@@ -774,6 +797,7 @@ Journal objects"))
 
         palette.add_block('templatelist',
                           hidden=True,
+                          colors=["#0606FF", "#0606A0"],
                           style='bullet-style',
                           label=' ',
                           prim_name='bullet',

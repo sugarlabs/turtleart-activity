@@ -32,6 +32,7 @@ special_names = {}  # Names for blocks without names for popup help
 content_blocks = ['number', 'string', 'description', 'audio', 'video',
                   'journal']
 value_blocks = []  # blocks whose labels are updated get added here
+special_block_colors = {}
 block_styles = {'basic-style': [],
                 'blank-style': [],
                 'basic-style-head': [],
@@ -131,7 +132,7 @@ class Palette():
     def add_block(self, block_name, style='basic-block', label=None,
                   special_name=None, default=None, prim_name=None,
                   help_string=None, value_block=False, content_block=False,
-                  logo_command=None, hidden=False):
+                  logo_command=None, hidden=False, colors=None):
         """ Add a new block to the palette """
         block = Block(block_name)
         block.set_style(style)
@@ -150,6 +151,8 @@ class Palette():
             block.set_logo_command(logo_command)
         if help_string is not None:
             block.set_help(help_string)
+        if colors is not None:
+            block.set_colors(colors)
         block.set_value_block(value_block)
         block.set_content_block(content_block)
         if not hidden:
@@ -195,6 +198,7 @@ class Block():
         self._logo_command = None
         self._value_block = False
         self._content_block = False
+        self._colors = None
 
     def add_block(self, position=None):
         if self._name is None:
@@ -245,6 +249,12 @@ class Block():
 
         if self._style in EXPANDABLE_STYLE:
             expandable_blocks.append(self._name)
+
+        if self._colors is not None:
+            special_block_colors[self._name] = self._colors
+
+    def set_colors(self, colors=None):
+        self._colors = colors
 
     def set_value_block(self, value=True):
         self._value_block = value
