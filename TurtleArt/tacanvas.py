@@ -185,7 +185,7 @@ class TurtleGraphics:
 
     def clearscreen(self, share=True):
         """Clear the canvas and reset most graphics attributes to defaults."""
-        rect = gtk.gdk.Rectangle(0, 0, self.width, self.height)
+        rect = gtk.gdk.Rectangle(0, 0, self.width * 2, self.height * 2)
         self.gc.set_foreground(self.bgcolor)
         self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
         self.invalt(0, 0, self.width, self.height)
@@ -473,7 +473,7 @@ class TurtleGraphics:
         oldc, olds = self.color, self.shade
         self.setcolor(c, False)
         self.setshade(s, False)
-        rect = gtk.gdk.Rectangle(0, 0, self.width, self.height)
+        rect = gtk.gdk.Rectangle(0, 0, self.width * 2, self.height * 2)
         self.gc.set_foreground(self.fgcolor)
         self.bgrgb = self.fgrgb[:]
         self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
