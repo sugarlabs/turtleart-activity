@@ -80,21 +80,29 @@ class Rfid(Plugin):
 
     def setup(self):
         # set up RFID-specific blocks
-        if self._status:
-            palette = make_palette('sensor',
-                                   colors=["#FF6060", "#A06060"],
-                                   help_string=_('Palette of sensor blocks'))
+        primitive_dictionary['rfid'] = self.prim_read_rfid
+        palette = make_palette('sensor',
+                               colors=["#FF6060", "#A06060"],
+                               help_string=_('Palette of sensor blocks'))
 
-            primitive_dictionary['rfid'] = self.prim_read_camera
+        if self._status:
             palette.add_block('rfid',
-                              palette='sensor',
                               style='box-style',
                               label=_('RFID'),
                               help_string=_('read value from RFID device'),
                               value_block=True,
                               prim_name='rfid')
-            self._parent.lc.def_prim('rfid', 0,
-                lambda self: primitive_dictionary['rfid'](True))
+        else:
+            palette.add_block('rfid',
+                              hidden=True,
+                              style='box-style',
+                              label=_('RFID'),
+                              help_string=_('read value from RFID device'),
+                              value_block=True,
+                              prim_name='rfid')
+
+        self._parent.lc.def_prim(
+            'rfid', 0, lambda self: primitive_dictionary['rfid']())
 
     def _status_report(self):
         debug_output('Reporting RFID status: %s' % (str(self._status)))
@@ -138,3 +146,5 @@ class Rfid(Plugin):
     def prim_read_rfid(self):
         if self._status:
             return self.rfid_idn
+        else:
+            return '0'

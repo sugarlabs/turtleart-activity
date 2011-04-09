@@ -39,7 +39,7 @@ _logger = logging.getLogger('turtleart-activity audio sensors plugin')
 
 
 def _avg(array, abs_value=False):
-    """ Calc. the average value of an array """
+    ''' Calc. the average value of an array '''
     if len(array) == 0:
         return 0
     array_sum = 0
@@ -63,46 +63,54 @@ class Audio_sensors(Plugin):
 
     def setup(self):
         # set up audio-sensor-specific blocks
-        if not self._status:
-            return
-
         self.max_samples = 1500
         self.input_step = 1
 
         self.ringbuffer = RingBuffer1d(self.max_samples, dtype='int16')
-        if self.hw == XO1:
-            self.voltage_gain = 0.00002225
-            self.voltage_bias = 1.140
-        elif self.hw == XO15:
-            self.voltage_gain = -0.0001471
-            self.voltage_bias = 1.695
 
         palette = make_palette('sensor',
                                colors=["#FF6060", "#A06060"],
                                help_string=_('Palette of sensor blocks'))
 
         primitive_dictionary['sound'] = self.prim_sound
-        palette.add_block('sound',
-                          style='box-style',
-                          label=_('sound'),
-                          help_string=_('raw microphone input signal'),
-                          value_block=True,
-                          prim_name='sound')
-        self._parent.lc.def_prim('sound', 0,
-                                  lambda self: primitive_dictionary['sound']())
-
         primitive_dictionary['volume'] = self.prim_volume
-        palette.add_block('volume',
-                          style='box-style',
-                          label=_('loudness'),
-                          help_string=_('microphone input volume'),
-                          value_block=True,
-                          prim_name='volume')
-        self._parent.lc.def_prim('volume', 0,
-            lambda self: primitive_dictionary['volume']())
+        if self._status:
+            palette.add_block('sound',
+                              style='box-style',
+                              label=_('sound'),
+                              help_string=_('raw microphone input signal'),
+                              value_block=True,
+                              prim_name='sound')
+
+            palette.add_block('volume',
+                              style='box-style',
+                              label=_('loudness'),
+                              help_string=_('microphone input volume'),
+                              value_block=True,
+                              prim_name='volume')
+        else:
+            palette.add_block('sound',
+                              hidden=True,
+                              style='box-style',
+                              label=_('sound'),
+                              help_string=_('raw microphone input signal'),
+                              value_block=True,
+                              prim_name='sound')
+            palette.add_block('volume',
+                              hidden=True,
+                              style='box-style',
+                              label=_('loudness'),
+                              help_string=_('microphone input volume'),
+                              value_block=True,
+                              prim_name='volume')
+
+        self._parent.lc.def_prim(
+            'sound', 0, lambda self: primitive_dictionary['sound']())
+        self._parent.lc.def_prim(
+            'volume', 0, lambda self: primitive_dictionary['volume']())
 
         primitive_dictionary['pitch'] = self.prim_pitch
-        if PITCH_AVAILABLE:
+        if PITCH_AVAILABLE and self._status:
             palette.add_block('pitch',
                               style='box-style',
                               label=_('pitch'),
@@ -120,26 +128,46 @@ class Audio_sensors(Plugin):
         self._parent.lc.def_prim('pitch', 0,
                                   lambda self: primitive_dictionary['pitch']())
 
-        if self.hw in [XO1, XO15]:
-            primitive_dictionary['resistance'] = self.prim_resistance
+        primitive_dictionary['resistance'] = self.prim_resistance
+        primitive_dictionary['voltage'] = self.prim_voltage
+        if self.hw in [XO1, XO15] and self._status:
+            if self.hw == XO1:
+                self.voltage_gain = 0.00002225
+                self.voltage_bias = 1.140
+            elif self.hw == XO15:
+                self.voltage_gain = -0.0001471
+                self.voltage_bias = 1.695
             palette.add_block('resistance',
                               style='box-style',
                               label=_('resistance'),
                               help_string=_('microphone input resistance'),
                               value_block=True,
                               prim_name='resistance')
-            self._parent.lc.def_prim('resistance', 0,
-                lambda self: primitive_dictionary['resistance']())
-
-            primitive_dictionary['voltage'] = self.prim_voltage
             palette.add_block('voltage',
                               style='box-style',
                               label=_('voltage'),
                               help_string=_('microphone input voltage'),
                               value_block=True,
                               prim_name='voltage')
-            self._parent.lc.def_prim('voltage', 0,
-                lambda self: primitive_dictionary['voltage']())
+        else:
+            palette.add_block('resistance',
+                              hidden=True,
+                              style='box-style',
+                              label=_('resistance'),
+                              help_string=_('microphone input resistance'),
+                              value_block=True,
+                              prim_name='resistance')
+            palette.add_block('voltage',
+                              hidden=True,
+                              style='box-style',
+                              label=_('voltage'),
+                              help_string=_('microphone input voltage'),
+                              value_block=True,
+                              prim_name='resistance')
+        self._parent.lc.def_prim(
+            'resistance', 0, lambda self: primitive_dictionary['resistance']())
+        self._parent.lc.def_prim(
+            'voltage', 0, lambda self: primitive_dictionary['voltage']())
 
         self.audio_started = False
 
@@ -147,7 +175,7 @@ class Audio_sensors(Plugin):
         # This gets called by the start button
         if not self._status:
             return
-        """ Start grabbing audio if there is an audio block in use """
+        ''' Start grabbing audio if there is an audio block in use '''
         if len(self._parent.block_list.get_similar_blocks('block',
             ['volume', 'sound', 'pitch', 'resistance', 'voltage'])) > 0:
             if self.audio_started:
@@ -164,12 +192,12 @@ class Audio_sensors(Plugin):
         self._update_audio_mode()
 
     def new_buffer(self, buf):
-        """ Append a new buffer to the ringbuffer """
+        ''' Append a new buffer to the ringbuffer '''
         self.ringbuffer.append(buf)
         return True
 
     def _update_audio_mode(self):
-        """ If there are sensor blocks, set the appropriate audio mode """
+        ''' If there are sensor blocks, set the appropriate audio mode '''
         if not hasattr(self._parent.lc, 'value_blocks_to_update'):
             return
         for name in ['sound', 'volume', 'pitch']:
@@ -213,8 +241,10 @@ class Audio_sensors(Plugin):
     # Block primitives used in talogo
 
     def prim_volume(self):
-        """ return mic in value """
+        ''' return mic in value '''
         #TODO: Adjust gain for different HW
+        if not self._status:
+            return 0
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
             volume = float(_avg(buf, abs_value=True))
@@ -224,7 +254,9 @@ class Audio_sensors(Plugin):
             return 0
 
     def prim_sound(self):
-        """ return raw mic in value """
+        ''' return raw mic in value '''
+        if not self._status:
+            return 0
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
             sound = float(buf[0])
@@ -234,8 +266,8 @@ class Audio_sensors(Plugin):
             return 0
 
     def prim_pitch(self):
-        """ return index of max value in fft of mic in values """
-        if not PITCH_AVAILABLE:
+        ''' return index of max value in fft of mic in values '''
+        if not PITCH_AVAILABLE or not self._status:
             return 0
         buf = []
         for i in range(4):
@@ -252,7 +284,9 @@ class Audio_sensors(Plugin):
             return 0
 
     def prim_resistance(self):
-        """ return resistance sensor value """
+        ''' return resistance sensor value '''
+        if not self.hw in [XO1, XO15] or not self._status:
+            return 0
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
@@ -272,7 +306,9 @@ class Audio_sensors(Plugin):
             return 0
 
     def prim_voltage(self):
-        """ return voltage sensor value """
+        ''' return voltage sensor value '''
+        if not self.hw in [XO1, XO15] or not self._status:
+            return 0
         buf = self.ringbuffer.read(None, self.input_step)
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>

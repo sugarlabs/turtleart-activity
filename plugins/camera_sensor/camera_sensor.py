@@ -18,6 +18,7 @@
 import gst
 import gtk
 from fcntl import ioctl
+import os
 
 from plugins.camera_sensor.tacamera import Camera
 from plugins.camera_sensor.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, \
@@ -57,8 +58,11 @@ class Camera_sensor(Plugin):
                                help_string=_('Palette of sensor blocks'))
 
         # set up camera-specific blocks
+        primitive_dictionary['luminance'] = self.prim_read_camera
+        primitive_dictionary['read_camera'] = self.prim_read_camera
+        media_blocks_dictionary['camera'] = self.prim_take_picture
+
         if self._status:
-            primitive_dictionary['luminance'] = self.prim_read_camera
             palette.add_block('luminance',
                               style='box-style',
                               label=_('brightness'),
@@ -66,10 +70,10 @@ class Camera_sensor(Plugin):
                               value_block=True,
                               prim_name='luminance')
             self._parent.lc.def_prim('luminance', 0,
-                lambda self: primitive_dictionary['luminance'](True))
+                lambda self: primitive_dictionary['luminance'](
+                    luminance_only=True))
 
             # Depreciated block
-            primitive_dictionary['read_camera'] = self.prim_read_camera
             palette.add_block('read_camera',
                               hidden=True,
                               style='box-style',
@@ -79,10 +83,40 @@ is pushed to the stack'),
                               value_block=True,
                               prim_name='luminance')
             self._parent.lc.def_prim('read_camera', 0,
-                lambda self: primitive_dictionary['read_camera'](True))
+                lambda self: primitive_dictionary['read_camera']())
 
-            media_blocks_dictionary['camera'] = self.prim_take_picture
             palette.add_block('camera',
+                              style='box-style-media',
+                              label=' ',
+                              default='CAMERA',
+                              help_string=_('camera output'),
+                              content_block=True)
+        else:  # No camera, so blocks should do nothing
+            palette.add_block('luminance',
+                              hidden=True,
+                              style='box-style',
+                              label=_('brightness'),
+                              help_string=_('light level detected by camera'),
+                              value_block=True,
+                              prim_name='luminance')
+            self._parent.lc.def_prim('luminance', 0,
+                lambda self: primitive_dictionary['luminance'](
+                    luminance_only=True))
+
+            # Depreciated block
+            palette.add_block('read_camera',
+                              hidden=True,
+                              style='box-style',
+                              label=_('brightness'),
+                              help_string=_('Average RGB color from camera \
+is pushed to the stack'),
+                              value_block=True,
+                              prim_name='luminance')
+            self._parent.lc.def_prim('read_camera', 0,
+                lambda self: primitive_dictionary['read_camera']())
+
+            palette.add_block('camera',
+                              hidden=True,
                               style='box-style-media',
                               label=' ',
                               default='CAMERA',
@@ -106,9 +140,21 @@ is pushed to the stack'),
             self._camera.save_camera_input_to_file()
             self._camera.stop_camera_input()
             self._parent.lc.filepath = self._imagepath
+        else:
+            self._parent.lc.filepath = os.path.join(
+                self._parent.path, 'samples', 'images', 'me.jpg')
 
     def prim_read_camera(self, luminance_only=False):
         """ Read average pixel from camera and push b, g, r to the stack """
+        if self._status:
+            if luminance_only:
+                return 0
+            else:
+                self._parent.lc.heap.append(-1)
+                self._parent.lc.heap.append(-1)
+                self._parent.lc.heap.append(-1)
+            return
+
         pixbuf = None
         array = None
         w = int((self._parent.canvas.width * self._parent.lc.scale) / 100.)
