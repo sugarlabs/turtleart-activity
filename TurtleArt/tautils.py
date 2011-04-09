@@ -1,5 +1,5 @@
 #Copyright (c) 2007-8, Playful Invention Company.
-#Copyright (c) 2008-10, Walter Bender
+#Copyright (c) 2008-11, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -785,32 +785,27 @@ def find_blk_below(blk, name):
             return _gblk
     return None
 
+"""
+Are we on an OLPC XO?
+"""
+
 
 def get_hardware():
     """ Determine whether we are using XO 1.0, 1.5, or "unknown" hardware """
-    bus = dbus.SystemBus()
-    comp_obj = None
-    try:
-        comp_obj = bus.get_object('org.freedesktop.Hal',
-                                  '/org/freedesktop/Hal/devices/computer')
-    except dbus.exceptions.DBusException:
-        error_output('Unable to get dbus object \
-/org/freedesktop/Hal/devices/computer')
-
-    if comp_obj is not None:
-        dev = dbus.Interface(comp_obj, 'org.freedesktop.Hal.Device')
-        if dev.PropertyExists('system.hardware.vendor') and \
-           dev.PropertyExists('system.hardware.version'):
-            if dev.GetProperty('system.hardware.vendor') == 'OLPC':
-                if dev.GetProperty('system.hardware.version') == '1.5':
-                    return XO15
-                else:
-                    return XO1
-            else:
-                return UNKNOWN
-
-    if os.path.exists('/etc/olpc-release') or \
-         os.path.exists('/sys/power/olpc-pm'):
+    if _get_dmi('product_name') != 'XO':
+        return UNKNOWN
+    version = _get_dmi('product_version')
+    if version == '1':
         return XO1
+    elif version == '1.5':
+        return XO15
     else:
         return UNKNOWN
+
+
+def _get_dmi(node):
+    path = os.path.join('/sys/class/dmi/id', node)
+    try:
+        return open(path).readline().strip()
+    except:
+        return None
