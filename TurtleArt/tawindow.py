@@ -88,7 +88,6 @@ class TurtleArtWindow():
 
     def __init__(self, win, path, parent=None, mycolors=None, mynick=None):
         self._loaded_project = ''
-        self.win = None
         self._sharing = False
         self.parent = parent
         self.send_event = None  # method to send events over the network
@@ -1527,7 +1526,7 @@ class TurtleArtWindow():
             self.activity.hover_help_label.show()
         else:
             if self.interactive_mode:
-                self.win.set_title(_("Turtle Art") + " — " + label)
+                self.window.set_title(_("Turtle Art") + " — " + label)
         return 0
 
     def _buttonrelease_cb(self, win, event):
@@ -2743,7 +2742,7 @@ class TurtleArtWindow():
                 (_("xcor"), x, _("ycor"), y, _("heading"), h))
             self.activity.coordinates_label.show()
         elif self.interactive_mode:
-            self.win.set_title("%s — %s: %d %s: %d %s: %d" % \
+            self.window.set_title("%s — %s: %d %s: %d %s: %d" % \
                 (_("Turtle Art"), _("xcor"), x, _("ycor"), y, _("heading"), h))
 
     def showlabel(self, shp, label=''):
