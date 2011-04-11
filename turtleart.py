@@ -148,7 +148,7 @@ class TurtleMain():
 
     def _start_gtk(self):
         self.win.connect('configure_event', self.tw.update_overlay_position)
-        self.tw.win = self.win
+        self.tw.window = self.win
         if self.ta_file is None:
             self.tw.load_start()
         else:
