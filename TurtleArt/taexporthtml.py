@@ -22,9 +22,10 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import os.path
-from tautils import data_to_string, save_picture, image_to_base64, get_path
-from gettext import gettext as _
 from cgi import escape
+from gettext import gettext as _
+
+from tautils import data_to_string, save_picture, image_to_base64, get_path
 
 # A dictionary to define the HTML wrappers around template elements
 HTML_GLUE = {

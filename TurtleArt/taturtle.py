@@ -19,14 +19,15 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
+from random import uniform
+from math import sin, cos, pi
+from gettext import gettext as _
+
 from taconstants import TURTLE_LAYER, DEFAULT_TURTLE_COLORS
 from tasprite_factory import SVG, svg_str_to_pixbuf
 from tacanvas import wrap100, color_table
 from sprites import Sprite
 from tautils import debug_output
-
-from random import uniform
-from math import sin, cos, pi
 
 SHAPES = 36
 

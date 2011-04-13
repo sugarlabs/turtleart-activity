@@ -25,6 +25,7 @@ from math import sin, cos, pi
 import pango
 import cairo
 import base64
+from gettext import gettext as _
 
 from sprites import Sprite
 from tasprite_factory import SVG

@@ -18,10 +18,13 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
+from gettext import gettext as _
+
 try:
     from sugar.datastore import datastore
+    HAS_DATASTORE = True
 except:
-    pass
+    HAS_DATASTORE = False
 
 from TurtleArt.tapalette import logo_commands, logo_functions
 from TurtleArt.taconstants import TITLEXY, CONSTANTS
@@ -129,12 +132,11 @@ def save_logo(tw):
 def _add_label(string):
         if type(string) == str and string[0:8] in ['#smedia_', '#saudio_',
                                                    '#svideo_', '#sdescr_']:
-            try:
+            string = string[8:]
+            if HAS_DATASTORE:
                 dsobject = datastore.get(string[8:])
-                string = dsobject.metadata['title']
-            except:
-                print 'failed to get title for %s' % (string)
-                string = string[8:]
+                if 'title' in dsobject.metadata:
+                    string = dsobject.metadata['title']
         else:
             string = str(string)
         if string[0:2] == '#s':

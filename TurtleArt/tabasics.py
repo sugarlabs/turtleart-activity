@@ -62,6 +62,8 @@ from time import time
 from math import sqrt
 from random import uniform
 
+from gettext import gettext as _
+
 from tapalette import make_palette, define_logo_function
 from talogo import primitive_dictionary, logoerror
 from tautils import convert, chr_to_ord, round_int, strtype

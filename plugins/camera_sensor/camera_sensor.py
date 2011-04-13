@@ -19,6 +19,7 @@ import gst
 import gtk
 from fcntl import ioctl
 import os
+from gettext import gettext as _
 
 from plugins.camera_sensor.tacamera import Camera
 from plugins.camera_sensor.v4l2 import v4l2_control, V4L2_CID_AUTOGAIN, \

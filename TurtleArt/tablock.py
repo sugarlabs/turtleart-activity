@@ -20,6 +20,7 @@
 #THE SOFTWARE.
 
 import gtk
+from gettext import gettext as _
 
 from taconstants import EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS, \
     STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS, GRADIENT_COLOR

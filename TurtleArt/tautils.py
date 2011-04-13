@@ -23,6 +23,8 @@ import gtk
 import pickle
 import subprocess
 import dbus
+import os.path
+from gettext import gettext as _
 
 try:
     OLD_SUGAR_SYSTEM = False
@@ -37,11 +39,11 @@ except (ImportError, AttributeError):
         from simplejson import dump as jdump
     except:
         OLD_SUGAR_SYSTEM = True
+from StringIO import StringIO
 
 from taconstants import HIDE_LAYER, COLLAPSIBLE, BLOCK_LAYER, HIT_HIDE, \
     HIT_SHOW, XO1, XO15, UNKNOWN
-from StringIO import StringIO
-import os.path
+
 import logging
 _logger = logging.getLogger('turtleart-activity')
 

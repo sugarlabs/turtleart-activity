@@ -18,9 +18,9 @@
 
 import dbus
 from dbus.mainloop.glib import DBusGMainLoop
+from gettext import gettext as _
 
 from plugins.rfid.rfidutils import strhex2bin, strbin2dec, find_device
-
 from plugins.plugin import Plugin
 
 from TurtleArt.tapalette import make_palette

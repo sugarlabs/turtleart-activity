@@ -26,6 +26,7 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gobject
+from gettext import gettext as _
 
 try:
     import gst
@@ -87,6 +88,7 @@ class TurtleArtWindow():
     _PLUGIN_SUBPATH = 'plugins'
 
     def __init__(self, win, path, parent=None, mycolors=None, mynick=None):
+        print '3. canvas, window', win, win.window
         self._loaded_project = ''
         self._sharing = False
         self.parent = parent
@@ -95,16 +97,27 @@ class TurtleArtWindow():
         if type(win) == gtk.DrawingArea:
             self.interactive_mode = True
             self.window = win
+            print '3a. canvas, window', self.window, self.window.window
             self.window.set_flags(gtk.CAN_FOCUS)
+            self.window.show_all()
+            print '3b. canvas, window', self.window, self.window.window
             if self.parent is not None:
                 self.parent.show_all()
+                print '3c. canvas, window', self.window, self.window.window
                 self.running_sugar = True
             else:
-                self.window.show_all()
+                print '3d. canvas, window', self.window, self.window.window
                 self.running_sugar = False
+            print '4. canvas, window', self.window, self.window.window
             self.area = self.window.window
+            print '5. window', self.area
             if self.area is not None:
                 self.gc = self.area.new_gc()
+            else:
+                # Why would the drawable area be none???
+                # We lose...
+                print 'drawable area is None... punting'
+                exit()
             self._setup_events()
         elif type(win) == gtk.gdk.Pixmap:
             self.interactive_mode = False
@@ -520,7 +533,7 @@ class TurtleArtWindow():
             self.show_palette()
             if self.activity is not None and self.activity.has_toolbarbox:
                 self.activity.palette_buttons[0].set_icon(
-                                                       palette_names[0] + 'on')
+                    palette_names[0] + 'on')
             self.hide = False
             if self.running_sugar:
                 self.activity.recenter()
