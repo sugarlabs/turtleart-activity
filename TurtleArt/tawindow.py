@@ -579,7 +579,7 @@ class TurtleArtWindow():
         self.hide = False
         self.hideshow_button()
         if self.running_sugar:
-            self.activity.do_hide()
+            self.activity.do_hide_blocks()
 
     def showblocks(self):
         """ Callback from 'show blocks' block """
@@ -588,7 +588,7 @@ class TurtleArtWindow():
         self.hide = True
         self.hideshow_button()
         if self.running_sugar:
-            self.activity.do_show()
+            self.activity.do_show_blocks()
 
     def resize_blocks(self, blocks=None):
         """ Resize blocks or if blocks is None, all of the blocks """

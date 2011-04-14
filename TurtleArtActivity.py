@@ -258,13 +258,13 @@ class TurtleArtActivity(activity.Activity):
         else:
             self.do_showpalette()
 
-    def do_hide(self):
+    def do_hide_blocks(self):
         ''' Hide blocks. '''
         self.blocks_button.set_icon('hideshowon')
         self.blocks_button.set_tooltip(_('Show blocks'))
         self.do_hidepalette()
 
-    def do_show(self):
+    def do_show_blocks(self):
         ''' Show blocks. '''
         if not hasattr(self, 'blocks_button'):
             return
