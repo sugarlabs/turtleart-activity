@@ -33,7 +33,7 @@ import cStringIO
 import errno
 
 try:
-    # Try to use XDG Base Directory standard for config files
+    # Try to use XDG Base Directory standard for config files.
     import xdg.BaseDirectory
     CONFIG_HOME = os.path.join(xdg.BaseDirectory.xdg_config_home, 'turtleart')
 except ImportError, e:
@@ -43,8 +43,14 @@ except ImportError, e:
 argv = sys.argv[:]  # Workaround for import behavior of gst in tagplay
 sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 
-# installs the global _() magic
-import TurtleArt.tagettext
+import gettext
+
+# Commenting out bindtextdomain so that GNOME can find the installed .mo files,
+# but it will not find the .mo files in the local locale directory when running
+# from a git repository or the unzipped .xo file.
+# gettext.bindtextdomain('org.laptop.TurtleArtActivity', 'locale')
+gettext.textdomain('org.laptop.TurtleArtActivity')
+_ = gettext.gettext
 
 from TurtleArt.taconstants import OVERLAY_LAYER, DEFAULT_TURTLE_COLORS
 from TurtleArt.tautils import data_to_string, data_from_string, get_save_name
@@ -56,13 +62,13 @@ from util.menubuilder import MenuBuilder
 
 
 class TurtleMain():
-    """ Launch Turtle Art from outside of Sugar """
+    ''' Launch Turtle Art from outside of Sugar. '''
 
-    _HELP_MSG = 'turtleart.py: ' + _('usage is') + """
+    _HELP_MSG = 'turtleart.py: ' + _('usage is') + '''
  \tturtleart.py
  \tturtleart.py project.ta
  \tturtleart.py --output_png project.ta
- \tturtleart.py -o project"""
+ \tturtleart.py -o project'''
     _INSTALL_PATH = '/usr/share/sugar/activities/TurtleArt.activity'
     _ALTERNATIVE_INSTALL_PATH = \
         '/usr/local/share/sugar/activities/TurtleArt.activity'
@@ -94,7 +100,7 @@ class TurtleMain():
         return CONFIG_HOME
 
     def _get_gnome_plugin_home(self):
-        """ Use plugin directory associated with execution path """
+        ''' Use plugin directory associated with execution path. '''
         if os.path.exists(os.path.join(self._dirname,
                                        self._GNOME_PLUGIN_SUBPATH)):
             return os.path.join(self._dirname, self._GNOME_PLUGIN_SUBPATH)
@@ -102,7 +108,7 @@ class TurtleMain():
             return None
 
     def _get_plugin_candidates(self, path):
-        """ Look for plugin files in plugin directory. """
+        ''' Look for plugin files in plugin directory. '''
         plugin_files = []
         if path is not None:
             candidates = os.listdir(path)
@@ -112,6 +118,7 @@ class TurtleMain():
         return plugin_files
 
     def _init_plugins(self):
+        ''' Try launching any plugins we may have found. '''
         for p in self._get_plugin_candidates(self._get_gnome_plugin_home()):
             P = p.capitalize()
             f = \
@@ -124,11 +131,12 @@ class TurtleMain():
                 print 'failed to import %s' % (P)
 
     def _run_plugins(self):
+        ''' Tell the plugin about the TurtleWindow instance. '''
         for p in self._plugins:
             p.set_tw(self.tw)
 
     def _mkdir_p(self, path):
-        '''Create a directory in a fashion similar to `mkdir -p`'''
+        '''Create a directory in a fashion similar to `mkdir -p`.'''
         try:
             os.makedirs(path)
         except OSError as exc:
@@ -138,7 +146,7 @@ class TurtleMain():
                 raise
 
     def _makepath(self, path):
-        """ Make a path if it doesn't previously exist """
+        ''' Make a path if it doesn't previously exist '''
         from os import makedirs
         from os.path import normpath, dirname, exists
 
@@ -147,6 +155,7 @@ class TurtleMain():
             makedirs(dpath)
 
     def _start_gtk(self):
+        ''' Get a main window set up. '''
         self.win.connect('configure_event', self.tw.update_overlay_position)
         self.tw.window = self.win
         if self.ta_file is None:
@@ -159,18 +168,21 @@ class TurtleMain():
         gtk.main()
 
     def _draw_and_quit(self):
+        ''' Non-interactive mode: run the project, save it to a file
+        and quit. '''
         self.tw.load_start(self.ta_file)
         self.tw.lc.trace = 0
         self.tw.run_button(0)
         self.tw.save_as_image(self.ta_file, self.canvas)
 
     def _build_window(self):
+        ''' Initialize the TurtleWindow instance. '''
         self.tw = TurtleArtWindow(self.canvas, self._dirname)
         self.tw.save_folder = os.path.expanduser('~')
 
     def _init_vars(self):
-        """ If we are invoked to start a project from Gnome, we should make
-        sure our current directory is TA's source dir. """
+        ''' If we are invoked to start a project from Gnome, we should make
+        sure our current directory is TA's source dir. '''
         self._dirname = self._get_execution_dir()
         if self._dirname is not None:
             os.chdir(self._dirname)
@@ -181,6 +193,7 @@ class TurtleMain():
         self.tw = None
 
     def _parse_command_line(self):
+        ''' Try to make sense of the command-line arguments. '''
         try:
             opts, args = getopt.getopt(argv[1:], 'ho',
                                        ['help', 'output_png'])
@@ -210,13 +223,14 @@ class TurtleMain():
                 assert False, ('%s: %s' % (self.ta_file, _('File not found')))
 
     def _ensure_sugar_paths(self):
-        """ Make sure Sugar paths are present. """
+        ''' Make sure Sugar paths are present. '''
         tapath = os.path.join(os.environ['HOME'], '.sugar', 'default',
                               'org.laptop.TurtleArtActivity')
         map(self._makepath, (os.path.join(tapath, 'data/'),
                        os.path.join(tapath, 'instance/')))
 
     def _read_initial_pos(self):
+        ''' Read saved configuration. '''
         try:
             data_file = open(os.path.join(CONFIG_HOME, 'turtleartrc'), 'r')
         except IOError:
@@ -249,6 +263,7 @@ class TurtleMain():
             self.height = 550
 
     def _setup_gtk(self):
+        ''' Set up a scrolled window in which to run Turtle Blocks. '''
         win = gtk.Window(gtk.WINDOW_TOPLEVEL)
         win.set_default_size(self.width, self.height)
         win.move(self.x, self.y)
@@ -283,6 +298,7 @@ class TurtleMain():
         self.canvas = canvas
 
     def _get_menu_bar(self):
+        ''' Instead of Sugar toolbars, use GNOME menus. '''
         menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('New'), self._do_new_cb)
         MenuBuilder.make_menu_item(menu, _('Open'), self._do_open_cb)
@@ -347,7 +363,7 @@ class TurtleMain():
         return menu_bar
 
     def _quit_ta(self, widget=None, e=None):
-        """ Save changes on exit """
+        ''' Save changes on exit '''
         project_empty = self.tw.is_project_empty()
         if not project_empty:
             if self.tw.is_new_project():
@@ -358,7 +374,7 @@ class TurtleMain():
         gtk.main_quit()
 
     def _show_save_dialog(self, new_project=True):
-        """ Dialog for save project """
+        ''' Dialog for save project '''
         dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
                                 buttons=gtk.BUTTONS_OK_CANCEL,
                                 message_format=_(
@@ -375,38 +391,38 @@ class TurtleMain():
                 self._save_changes()
 
     def _do_new_cb(self, widget):
-        """ Callback for new project. """
+        ''' Callback for new project. '''
         self.tw.new_project()
         self.tw.load_start()
 
     def _do_open_cb(self, widget):
-        """ Callback for open project. """
+        ''' Callback for open project. '''
         self.tw.load_file(True)
 
     def _do_save_cb(self, widget):
-        """ Callback for save project. """
+        ''' Callback for save project. '''
         self.tw.save_file()
 
     def _do_save_as_cb(self, widget):
-        """ Callback for save-as project. """
+        ''' Callback for save-as project. '''
         self._save_as()
 
     def _save_as(self):
-        """ Save as is called from callback and quit """
+        ''' Save as is called from callback and quit '''
         self.tw.save_file_name = None
         self.tw.save_file()
 
     def _save_changes(self):
-        """ Save changes to current project """
+        ''' Save changes to current project '''
         self.tw.save_file_name = None
         self.tw.save_file(self.tw._loaded_project)
 
     def _do_save_picture_cb(self, widget):
-        """ Callback for save canvas. """
+        ''' Callback for save canvas. '''
         self.tw.save_as_image()
 
     def _do_save_html_cb(self, widget):
-        """ Callback for save project to HTML. """
+        ''' Callback for save project to HTML. '''
         html = save_html(self, self.tw, False)
         if len(html) == 0:
             return
@@ -422,7 +438,7 @@ class TurtleMain():
         self.tw.saved_pictures = []
 
     def _do_save_logo_cb(self, widget):
-        """ Callback for save project to Logo. """
+        ''' Callback for save project to Logo. '''
         logocode = save_logo(self.tw)
         if len(logocode) == 0:
             return
@@ -434,7 +450,7 @@ class TurtleMain():
         f.close()
 
     def _do_resize_cb(self, widget, factor):
-        """ Callback to resize blocks. """
+        ''' Callback to resize blocks. '''
         if factor == -1:
             self.tw.block_scale = 2.0
         else:
@@ -442,7 +458,7 @@ class TurtleMain():
         self.tw.resize_blocks()
 
     def _do_cartesian_cb(self, button):
-        """ Callback to display/hide Cartesian coordinate overlay. """
+        ''' Callback to display/hide Cartesian coordinate overlay. '''
         if self.tw.cartesian is True:
             if self.tw.coord_scale == 1:
                 self.tw.overlay_shapes['Cartesian_labeled'].hide()
@@ -458,7 +474,7 @@ class TurtleMain():
             self.tw.cartesian = True
 
     def _do_polar_cb(self, button):
-        """ Callback to display/hide Polar coordinate overlay. """
+        ''' Callback to display/hide Polar coordinate overlay. '''
         if self.tw.polar is True:
             self.tw.overlay_shapes['polar'].hide()
             self.tw.polar = False
@@ -467,7 +483,7 @@ class TurtleMain():
             self.tw.polar = True
 
     def _do_rescale_cb(self, button):
-        """ Callback to rescale coordinate space. """
+        ''' Callback to rescale coordinate space. '''
         if self.tw.coord_scale == 1:
             self.tw.coord_scale = self.tw.height / 200
             self.tw.eraser_button()
@@ -483,51 +499,51 @@ class TurtleMain():
                                                               OVERLAY_LAYER)
 
     def _do_palette_cb(self, widget):
-        """ Callback to show/hide palette of blocks. """
+        ''' Callback to show/hide palette of blocks. '''
         self.tw.show_palette(self.i)
         self.i += 1
         if self.i == len(self.tw.palettes):
             self.i = 0
 
     def _do_hide_palette_cb(self, widget):
-        """ Hide the palette of blocks. """
+        ''' Hide the palette of blocks. '''
         self.tw.hide_palette()
 
     def _do_hideshow_cb(self, widget):
-        """ Hide/show the blocks. """
+        ''' Hide/show the blocks. '''
         self.tw.hideshow_button()
 
     def _do_eraser_cb(self, widget):
-        """ Callback for eraser button. """
+        ''' Callback for eraser button. '''
         self.tw.eraser_button()
         return
 
     def _do_run_cb(self, widget):
-        """ Callback for run button (rabbit). """
+        ''' Callback for run button (rabbit). '''
         self.tw.lc.trace = 0
         self.tw.run_button(0)
         return
 
     def _do_step_cb(self, widget):
-        """ Callback for step button (turtle). """
+        ''' Callback for step button (turtle). '''
         self.tw.lc.trace = 0
         self.tw.run_button(3)
         return
 
     def _do_trace_cb(self, widget):
-        """ Callback for debug button (bug). """
+        ''' Callback for debug button (bug). '''
         self.tw.lc.trace = 1
         self.tw.run_button(6)
         return
 
     def _do_stop_cb(self, widget):
-        """ Callback for stop button. """
+        ''' Callback for stop button. '''
         self.tw.lc.trace = 0
         self.tw.stop_button()
         return
 
     def _do_copy_cb(self, button):
-        """ Callback for copy button. """
+        ''' Callback for copy button. '''
         clipBoard = gtk.Clipboard()
         data = self.tw.assemble_data_to_save(False, False)
         if data is not []:
@@ -535,7 +551,7 @@ class TurtleMain():
             clipBoard.set_text(text)
 
     def _do_paste_cb(self, button):
-        """ Callback for paste button. """
+        ''' Callback for paste button. '''
         clipBoard = gtk.Clipboard()
         text = clipBoard.wait_for_text()
         if text is not None:
@@ -550,7 +566,7 @@ class TurtleMain():
                 self.tw.paste_offset += 20
 
     def _window_event(self, event, data):
-        """ Callback for resize event. """
+        ''' Callback for resize event. '''
         data_file = open('.turtleartrc', 'w')
         data_file.write(str(data.x) + '\n')
         data_file.write(str(data.y) + '\n')
@@ -558,15 +574,15 @@ class TurtleMain():
         data_file.write(str(data.height) + '\n')
 
     def destroy(self, event, data=None):
-        """ Callback for destroy event. """
+        ''' Callback for destroy event. '''
         gtk.main_quit()
 
     def nick_changed(self, nick):
-        """ TODO: Rename default turtle in dictionary """
+        ''' TODO: Rename default turtle in dictionary '''
         pass
 
     def color_changed(self, colors):
-        """ Reskin turtle with collaboration colors """
+        ''' Reskin turtle with collaboration colors '''
         turtle = self.tw.turtles.get_turtle(self.tw.default_turtle_name)
         try:
             turtle.colors = colors.split(',')
@@ -577,7 +593,7 @@ class TurtleMain():
         turtle.show()
 
     def _get_execution_dir(self):
-        """ From whence is the program being executed? """
+        ''' From whence is the program being executed? '''
         dirname = os.path.dirname(__file__)
         if dirname == '':
             if os.path.exists(os.path.join('~', 'Activities',
@@ -593,5 +609,5 @@ class TurtleMain():
             return os.path.abspath(dirname)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     TurtleMain()
