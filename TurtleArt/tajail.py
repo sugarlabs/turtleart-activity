@@ -23,6 +23,7 @@ import traceback
 from time import *
 from math import *
 
+from gettext import gettext as _
 
 def myfunc(f, args):
     ''' Run inline Python code '''
