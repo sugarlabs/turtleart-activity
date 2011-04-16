@@ -20,6 +20,8 @@ ENHANCEMENTS
 * Extend clearscreen to entire canvas (#2745)
 * Cleaned up some issues with .es translations (Guzman Trinidad)
 * More robust handling of broken projects and unknown block types
+* Added hidden blocks when plugin devices are unavailable
+* Added new Python example for recording audio
 
 BUG FIXES
 
@@ -31,6 +33,7 @@ BUG FIXES
 * Fixed problem with displaying large FILO heap (#2751)
 * Fixed a problem with tags causing malformed HTML export
 * Fixed problem with first sample when using sensors
+* Fixed problem with method-name conflict with gtk.widget
 
 PYTHON CODE CHANGE
 
