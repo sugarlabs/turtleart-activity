@@ -49,6 +49,7 @@ import gettext
 # but it will not find the .mo files in the local locale directory when running
 # from a git repository or the unzipped .xo file.
 # gettext.bindtextdomain('org.laptop.TurtleArtActivity', 'locale')
+
 gettext.textdomain('org.laptop.TurtleArtActivity')
 _ = gettext.gettext
 
@@ -157,7 +158,7 @@ class TurtleMain():
     def _start_gtk(self):
         ''' Get a main window set up. '''
         self.win.connect('configure_event', self.tw.update_overlay_position)
-        self.tw.window = self.win
+        self.tw.parent = self.win
         if self.ta_file is None:
             self.tw.load_start()
         else:

@@ -88,7 +88,6 @@ class TurtleArtWindow():
     _PLUGIN_SUBPATH = 'plugins'
 
     def __init__(self, win, path, parent=None, mycolors=None, mynick=None):
-        print '3. canvas, window', win, win.window
         self._loaded_project = ''
         self._sharing = False
         self.parent = parent
@@ -97,26 +96,19 @@ class TurtleArtWindow():
         if type(win) == gtk.DrawingArea:
             self.interactive_mode = True
             self.window = win
-            print '3a. canvas, window', self.window, self.window.window
             self.window.set_flags(gtk.CAN_FOCUS)
             self.window.show_all()
-            print '3b. canvas, window', self.window, self.window.window
             if self.parent is not None:
                 self.parent.show_all()
-                print '3c. canvas, window', self.window, self.window.window
                 self.running_sugar = True
             else:
-                print '3d. canvas, window', self.window, self.window.window
                 self.running_sugar = False
-            print '4. canvas, window', self.window, self.window.window
             self.area = self.window.window
-            print '5. window', self.area
             if self.area is not None:
                 self.gc = self.area.new_gc()
             else:
-                # Why would the drawable area be none???
                 # We lose...
-                print 'drawable area is None... punting'
+                debug_output('drawable area is None... punting')
                 exit()
             self._setup_events()
         elif type(win) == gtk.gdk.Pixmap:
@@ -1539,7 +1531,7 @@ class TurtleArtWindow():
             self.activity.hover_help_label.show()
         else:
             if self.interactive_mode:
-                self.window.set_title(_("Turtle Art") + " — " + label)
+                self.parent.set_title(_("Turtle Art") + " — " + label)
         return 0
 
     def _buttonrelease_cb(self, win, event):
@@ -2062,9 +2054,10 @@ class TurtleArtWindow():
 
     def _keypress_cb(self, area, event):
         """ Keyboard """
+        print 'KEYPRESS CB'
         keyname = gtk.gdk.keyval_name(event.keyval)
         keyunicode = gtk.gdk.keyval_to_unicode(event.keyval)
-
+        print '_keypress_cb', keyname
         if event.get_state() & gtk.gdk.MOD1_MASK:
             alt_mask = True
             alt_flag = 'T'
@@ -2072,6 +2065,7 @@ class TurtleArtWindow():
             alt_mask = False
             alt_flag = 'F'
         self._key_press(alt_mask, keyname, keyunicode)
+        print '_key_press returned', keyname
         return keyname
 
     def _key_press(self, alt_mask, keyname, keyunicode):
@@ -2109,6 +2103,7 @@ class TurtleArtWindow():
     def _process_numeric_input(self, keyname):
         ''' Make sure numeric input is valid. '''
         oldnum = self.selected_blk.spr.labels[0].replace(CURSOR, '')
+        print '_process_numeric_input:', keyname, oldnum
         if len(oldnum) == 0:
             oldnum = '0'
         if keyname == 'minus':
@@ -2148,6 +2143,7 @@ class TurtleArtWindow():
                 float(newnum.replace(self.decimal_point, '.'))
             except ValueError, e:
                 newnum = oldnum
+        print '_process_numeric_input:', newnum
         self.selected_blk.spr.set_label(newnum + CURSOR)
 
     def process_alphanumeric_input(self, keyname, keyunicode):
@@ -2755,7 +2751,7 @@ class TurtleArtWindow():
                 (_("xcor"), x, _("ycor"), y, _("heading"), h))
             self.activity.coordinates_label.show()
         elif self.interactive_mode:
-            self.window.set_title("%s — %s: %d %s: %d %s: %d" % \
+            self.parent.set_title("%s — %s: %d %s: %d %s: %d" % \
                 (_("Turtle Art"), _("xcor"), x, _("ycor"), y, _("heading"), h))
 
     def showlabel(self, shp, label=''):
