@@ -667,13 +667,11 @@ class TurtleArtActivity(activity.Activity):
         canvas.show()
         self.sw.show()
         self.show_all()
-        print '1. canvas, window', canvas, canvas.window
         return canvas
 
     def _setup_canvas(self, canvas):
         ''' Initialize the turtle art canvas. '''
         bundle_path = activity.get_bundle_path()
-        print '2. canvas.window', canvas, canvas.window
         self.tw = TurtleArtWindow(canvas, bundle_path, self,
                                   profile.get_color().to_string(),
                                   profile.get_nick_name())
