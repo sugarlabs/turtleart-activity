@@ -1701,7 +1701,7 @@ class TurtleArtWindow():
                 self._run_stack(blk)
                 return
 
-            if blk.name in BLOCK_STYLE['boolean-style']:
+            if blk.name in block_styles['boolean-style']:
                 self._expand_boolean(blk, blk.connections[1], dy)
             else:
                 self._expand_expandable(blk, blk.connections[1], dy)
@@ -2056,10 +2056,8 @@ class TurtleArtWindow():
 
     def _keypress_cb(self, area, event):
         """ Keyboard """
-        print 'KEYPRESS CB'
         keyname = gtk.gdk.keyval_name(event.keyval)
         keyunicode = gtk.gdk.keyval_to_unicode(event.keyval)
-        print '_keypress_cb', keyname
         if event.get_state() & gtk.gdk.MOD1_MASK:
             alt_mask = True
             alt_flag = 'T'
@@ -2067,7 +2065,6 @@ class TurtleArtWindow():
             alt_mask = False
             alt_flag = 'F'
         self._key_press(alt_mask, keyname, keyunicode)
-        print '_key_press returned', keyname
         return keyname
 
     def _key_press(self, alt_mask, keyname, keyunicode):
@@ -2105,7 +2102,6 @@ class TurtleArtWindow():
     def _process_numeric_input(self, keyname):
         ''' Make sure numeric input is valid. '''
         oldnum = self.selected_blk.spr.labels[0].replace(CURSOR, '')
-        print '_process_numeric_input:', keyname, oldnum
         if len(oldnum) == 0:
             oldnum = '0'
         if keyname == 'minus':
@@ -2145,7 +2141,6 @@ class TurtleArtWindow():
                 float(newnum.replace(self.decimal_point, '.'))
             except ValueError, e:
                 newnum = oldnum
-        print '_process_numeric_input:', newnum
         self.selected_blk.spr.set_label(newnum + CURSOR)
 
     def process_alphanumeric_input(self, keyname, keyunicode):
