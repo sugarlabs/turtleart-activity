@@ -1665,7 +1665,8 @@ class TurtleArtWindow():
                 dx = 20
                 blk.expand_in_x(dx)
             else:
-                dx = 0
+                self._run_stack(blk)
+                return
             for gblk in group:
                 if gblk != blk:
                     gblk.spr.move_relative((dx * blk.scale, 0))
@@ -1678,7 +1679,8 @@ class TurtleArtWindow():
                 dy = 20
                 blk.expand_in_y(dy)
             else:
-                dy = 0
+                self._run_stack(blk)
+                return
             for gblk in group:
                 if gblk != blk:
                     gblk.spr.move_relative((0, dy * blk.scale))
