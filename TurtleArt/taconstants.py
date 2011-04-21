@@ -84,7 +84,8 @@ CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
 # Blocks that are expandable
 #
 EXPANDABLE_STYLE = ['boolean-style', 'compare-porch-style', 'compare-style',
-                    'number-style-porch', 'number-style', 'basic-style-2arg']
+                    'number-style-porch', 'number-style', 'basic-style-2arg',
+                    'number-style-block']
 
 EXPANDABLE = ['vspace', 'hspace', 'identity2']
 
