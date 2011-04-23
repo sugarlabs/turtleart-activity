@@ -121,15 +121,22 @@ def json_load(text):
     if OLD_SUGAR_SYSTEM is True:
         _listdata = json.read(text)
     else:
-        # strip out leading and trailing whitespace, nulls, and newlines
+        # Strip out leading and trailing whitespace, nulls, and newlines
         clean_text = text.lstrip()
         clean_text = clean_text.replace('\12', '')
         clean_text = clean_text.replace('\00', '')
-        _io = StringIO(clean_text.rstrip())
+        clean_text = clean_text.rstrip()
+        # Look for missing ']'s
+        left_count = clean_text.count('[')
+        right_count = clean_text.count(']')
+        while left_count > right_count:
+            clean_text += ']'
+            right_count = clean_text.count(']')
+        _io = StringIO(clean_text)
         try:
             _listdata = jload(_io)
         except ValueError:
-            # assume that text is ascii list
+            # Assume that text is ascii list
             _listdata = text.split()
             for i, value in enumerate(_listdata):
                 _listdata[i] = convert(value, float)
