@@ -1,10 +1,14 @@
+# Turtle Art
+# Copyright (C) 2009 Sugar Labs
+# This file is distributed under the same license as the PACKAGE package.
+# Walter Bender <walter@sugarlabs.org>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: turtleart-activity\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2010-02-26 04:46+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"PO-Revision-Date: 2011-05-02 22:32+0200\n"
+"Last-Translator: Markus <m.slg@gmx.de>\n"
 "Language-Team: OLPC-German <m.slg@gmx.de>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -15,28 +19,28 @@ msgstr ""
 
 #: activity/activity.info:2
 msgid "Turtle Art"
-msgstr "Turtle-Kunst"
+msgstr "Turtle-Art"
 
 #: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
 #: tasetup.py:53 tasetup.py:54
 msgid "title"
-msgstr "titel"
+msgstr "Titel"
 
 #: tasetup.py:66
 msgid "text"
-msgstr "text"
+msgstr "Text"
 
 #: tasetup.py:119 tasetup.py:120
 msgid "stack"
-msgstr "stapel"
+msgstr "Stapel"
 
 #: tasetup.py:125 tasetup.py:126
 msgid "box"
-msgstr "rahmen"
+msgstr "Rahmen"
 
 #: tasetup.py:127
 msgid "name"
-msgstr "name"
+msgstr "Name"
 
 #: TurtleArtActivity.py:48
 msgid "Project"
@@ -49,19 +53,19 @@ msgstr "Speichern unter"
 #: TurtleArtActivity.py:173 TurtleArtActivity.py:262
 #: TurtleArtActivity.py:293
 msgid "hide palette"
-msgstr "palette verbergen"
+msgstr "Palette verbergen"
 
 #: TurtleArtActivity.py:181 TurtleArtActivity.py:286
 msgid "hide blocks"
-msgstr "blöcke verbergen"
+msgstr "Blöcke verbergen"
 
 #: TurtleArtActivity.py:194
 msgid "run"
-msgstr "ausführen"
+msgstr "Ausführen"
 
 #: TurtleArtActivity.py:202
 msgid "step"
-msgstr "einzelschritt"
+msgstr "Einzelschritt"
 
 #: TurtleArtActivity.py:210
 msgid "stop turtle"
@@ -69,11 +73,11 @@ msgstr "Turtle anhalten"
 
 #: TurtleArtActivity.py:236
 msgid "samples"
-msgstr "vorlagen"
+msgstr "Vorlagen"
 
 #: TurtleArtActivity.py:249
 msgid "save as HTML"
-msgstr "als HTML speichern"
+msgstr "Als HTML speichern"
 
 #: TurtleArtActivity.py
 msgid "save Logo"
@@ -81,16 +85,16 @@ msgstr "Logo speichern"
 
 #: TurtleArtActivity.py
 msgid "load my block"
-msgstr "meinen block laden"
+msgstr "Meinen Block laden"
 
 #: TurtleArtActivity.py:259 TurtleArtActivity.py:267
 #: TurtleArtActivity.py:290 TurtleArtActivity.py:299
 msgid "show palette"
-msgstr "palette anzeigen"
+msgstr "Palette anzeigen"
 
 #: TurtleArtActivity.py:283 TurtleArtActivity.py:297
 msgid "show blocks"
-msgstr "blöcke anzeigen"
+msgstr "Blöcke anzeigen"
 
 #:
 msgid "Flow"
@@ -114,15 +118,15 @@ msgstr "sonst"
 
 #:
 msgid "repeat"
-msgstr "wiederhole"
+msgstr "wiederholen"
 
 #:
 msgid "stop stack"
-msgstr "stapel anhalten"
+msgstr "Stapel anhalten"
 
 #:
 msgid "wait"
-msgstr "warte"
+msgstr "warten"
 
 #:
 msgid "My Blocks"
@@ -130,19 +134,19 @@ msgstr "Meine Blöcke"
 
 #:
 msgid "box 1"
-msgstr "rahmen 1"
+msgstr "Rahmen 1"
 
 #:
 msgid "box 2"
-msgstr "rahmen 2"
+msgstr "Rahmen 2"
 
 #:
 msgid "stack 1"
-msgstr "stapel 1"
+msgstr "Stapel 1"
 
 #:
 msgid "stack 2"
-msgstr "stapel 2"
+msgstr "Stapel 2"
 
 #:
 msgid "store in box 1"
@@ -154,11 +158,11 @@ msgstr "in Rahmen 2 speichern"
 
 #:
 msgid "push"
-msgstr "push"
+msgstr "ablegen"
 
 #:
 msgid "pop"
-msgstr "pop"
+msgstr "aufnehmen"
 
 #:
 msgid "Numbers"
@@ -166,7 +170,7 @@ msgstr "Zahlen"
 
 #:
 msgid "number"
-msgstr "zahl"
+msgstr "Zahl"
 
 #:
 msgid "and"
@@ -180,9 +184,10 @@ msgstr "oder"
 msgid "not"
 msgstr "nicht"
 
+# (Markus S.) Zufallszahl?
 #:
 msgid "random"
-msgstr "zufall"
+msgstr "Zufall"
 
 #:
 msgid "min"
@@ -206,11 +211,11 @@ msgstr "Stift"
 
 #:
 msgid "color"
-msgstr "farbe"
+msgstr "Farbe"
 
 #:
 msgid "shade"
-msgstr "farbton"
+msgstr "Farbton"
 
 #:
 msgid "fill screen"
@@ -226,11 +231,11 @@ msgstr "senke Stift ab"
 
 #:
 msgid "set pen size"
-msgstr "setze Stiftdicke"
+msgstr "lege Stiftdicke fest"
 
 #:
 msgid "pen size"
-msgstr "stiftdicke"
+msgstr "Stiftdicke"
 
 #:
 msgid "set shade"
@@ -254,7 +259,7 @@ msgstr "Turtle"
 
 #:
 msgid "clean"
-msgstr "lösche alles"
+msgstr "alles löschen"
 
 #:
 msgid "forward"
@@ -266,31 +271,32 @@ msgstr "gehe rückwärts"
 
 #:
 msgid "right"
-msgstr "dreh dich rechts"
+msgstr "drehe rechts"
 
 #:
 msgid "left"
-msgstr "dreh dich links"
+msgstr "drehe links"
 
 #:
 msgid "arc"
-msgstr "kreisbogen"
+msgstr "Kreisbogen"
 
 #:
 msgid "angle"
-msgstr "winkel"
+msgstr "Winkel"
 
 #:
 msgid "radius"
-msgstr "radius"
+msgstr "Radius"
 
 #:
 msgid "heading"
-msgstr "richtung"
+msgstr "Richtung"
 
 #
+#, fuzzy
 msgid "set heading"
-msgstr "setze Richtung"
+msgstr "seth"
 
 #:
 msgid "set xy"
@@ -318,19 +324,19 @@ msgstr "Sensoren"
 
 #:
 msgid "volume"
-msgstr "lautstärke"
+msgstr "Lautstärke"
 
 #:
 msgid "pitch"
-msgstr "tonhöhe"
+msgstr "Tonhöhe"
 
 #:
 msgid "voltage"
-msgstr "spannung"
+msgstr "Spannung"
 
 #:
 msgid "resistance"
-msgstr "widerstand"
+msgstr "Widerstand"
 
 #:
 msgid "Templates"
@@ -342,11 +348,11 @@ msgstr "Tastatur"
 
 #:
 msgid "read key"
-msgstr "lies Taste aus"
+msgstr "lies Taste"
 
 #:
 msgid "sound"
-msgstr "klang"
+msgstr "Klang"
 
 #:
 msgid "hres"
@@ -358,4 +364,4 @@ msgstr "vert. Auflösung"
 
 #:
 msgid "start"
-msgstr "start"
+msgstr "Start"
