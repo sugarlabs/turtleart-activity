@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: turtleart-activity\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2011-05-02 22:32+0200\n"
+"PO-Revision-Date: 2011-05-02 22:33+0200\n"
 "Last-Translator: Markus <m.slg@gmx.de>\n"
 "Language-Team: OLPC-German <m.slg@gmx.de>\n"
 "Language: de\n"
@@ -294,9 +294,8 @@ msgid "heading"
 msgstr "Richtung"
 
 #
-#, fuzzy
 msgid "set heading"
-msgstr "seth"
+msgstr "setze Richtung"
 
 #:
 msgid "set xy"
