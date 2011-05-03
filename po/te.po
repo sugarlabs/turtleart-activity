@@ -2,236 +2,1609 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2011-03-23 03:26+0200\n"
+"PO-Revision-Date: 2009-02-20 14:16-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"X-Generator: Pootle 1.1.0rc2\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
+msgstr "టర్టిల్ కళ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:657
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:658
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:659
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:660
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:661
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:662
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:989
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1011
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1032
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1074
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1116
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1158
+msgid "Title"
+msgstr "పీఠిక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:390
+msgid "resistance"
+msgstr "ప్రతిఘటన "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:462
+msgid "yellow"
+msgstr "పసుపు పచ్చ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:842
+msgid "displays polar coordinates"
 msgstr ""
 
-#:
-msgid "Flow"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:783
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr ""
+"FILO క్రమంలో ఖాళీ చేస్తుంది (మొదట-వచ్చినది - కుప్పనుండి -చరకు -వెళుతుంది )"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:358
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:448
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:449
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:450
+msgid " "
 msgstr ""
 
-#:
-msgid "forever"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:811
+msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr ""
 
-#:
-msgid "if"
-msgstr ""
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:808
+msgid "jogs stack right"
+msgstr "కుప్పను కుడివైపుకు నెడుతుంది "
 
-#:
-msgid "then"
-msgstr ""
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:812
+msgid "Sugar Journal media object"
+msgstr "శుగర్ పొద్దు   మాధ్యమ తాత్పర్యం "
 
-#:
-msgid "else"
-msgstr ""
-
-#:
-msgid "repeat"
-msgstr ""
-
-#:
-msgid "stop stack"
-msgstr ""
-
-#:
-msgid "wait"
-msgstr ""
-
-#:
-msgid "My Blocks"
-msgstr ""
-
-#:
-msgid "box 1"
-msgstr ""
-
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:313
 msgid "box 2"
+msgstr "పేటిక 2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:312
+msgid "box 1"
+msgstr "పేటిక 1"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:878
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:254
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:860
+msgid "Step"
+msgstr "మెట్టు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:847
+msgid "multiplies two numeric inputs"
 msgstr ""
 
-#:
-msgid "stack 1"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:177
+msgid "presentation"
+msgstr "సమర్పణ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:248
+msgid "Show/hide blocks"
+msgstr "భాగాలను చూపుము/దాచుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:299
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:312
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:324
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:341
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:355
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:867
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:247
+msgid "Hide palette"
+msgstr "పలకాన్ని దాచుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:217
+msgid "Save As"
 msgstr ""
 
-#:
-msgid "stack 2"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:320
+msgid "cyan"
 msgstr ""
 
-#:
-msgid "store in box 1"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:857
+#, fuzzy
+msgid "xcor of right of screen"
+msgstr "తెర దిగువున y అక్షము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:793
+msgid "Palette of extra options"
+msgstr "అదనపు  ఇచ్ఛాపూర్వకాల పలకం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:786
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:219
+msgid "Save as HTML"
+msgstr "HTML గా దాచు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:187
+#, python-format
+msgid "Configuration directory not writable: %s"
 msgstr ""
 
-#:
-msgid "store in box 2"
-msgstr ""
-
-#:
-msgid "Numbers"
-msgstr ""
-
-#:
-msgid "number"
-msgstr ""
-
-#:
-msgid "and"
-msgstr ""
-
-#:
-msgid "or"
-msgstr ""
-
-#:
-msgid "not"
-msgstr ""
-
-#:
-msgid "random"
-msgstr ""
-
-#:
-msgid "min"
-msgstr ""
-
-#:
-msgid "max"
-msgstr ""
-
-#:
-msgid "mod"
-msgstr ""
-
-#:
-msgid "print"
-msgstr ""
-
-#:
-msgid "Pen"
-msgstr ""
-
-#:
-msgid "color"
-msgstr ""
-
-#:
-msgid "shade"
-msgstr ""
-
-#:
-msgid "fill screen"
-msgstr ""
-
-#:
-msgid "pen up"
-msgstr ""
-
-#:
-msgid "pen down"
-msgstr ""
-
-#:
-msgid "set pen size"
-msgstr ""
-
-#:
-msgid "pen size"
-msgstr ""
-
-#:
-msgid "set shade"
-msgstr ""
-
-#:
-msgid "set color"
-msgstr ""
-
-#:
-msgid "Blocks"
-msgstr ""
-
-#:
-msgid "Turtle"
-msgstr ""
-
-#:
-msgid "forward"
-msgstr ""
-
-#:
-msgid "back"
-msgstr ""
-
-#:
-msgid "right"
-msgstr ""
-
-#:
-msgid "left"
-msgstr ""
-
-#:
-msgid "arc"
-msgstr ""
-
-#:
-msgid "angle"
-msgstr ""
-
-#:
-msgid "radius"
-msgstr ""
-
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:816
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2416
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2420
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:337
 msgid "heading"
+msgstr "పీఠిక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:868
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
 msgstr ""
 
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:883
+msgid "draws text or show media from the Journal"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:308
+msgid "blue"
+msgstr "నీలం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:781
+msgid "displays Cartesian coordinates"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:142
+msgid "No option action:"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:916
+msgid "jogs stack down"
+msgstr "కుప్పను క్రింది వైపునకు నెడుతుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:851
+msgid "modular (remainder) operator"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:397
+msgid "save SVG"
+msgstr "SVG గా దాచు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:400
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:402
+msgid "top of stack"
+msgstr "కుప్ప పై భాగాన"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:824
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:911
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:912
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:913
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:365
+msgid "pen down"
+msgstr "కలం పక్కనపెట్టు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:315
+msgid " clean "
+msgstr "శుభ్రం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:454
+msgid "wait"
+msgstr "వేచి ఉండు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:311
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:430
+msgid "box"
+msgstr "పేటిక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:652
+msgid "Failed to upload!"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:889
+msgid "invokes named action stack"
+msgstr "నామకరణ అయిన చర్య కుప్పను ప్రేరేపిస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:334
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:423
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:620
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:652
+msgid "action"
+msgstr "చర్య "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:910
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:61
+msgid "usage is"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:779
+msgid "Variable 2 (numeric value)"
+msgstr "చరరాశి 2 ( పూర్ణసంఖ్య  విలువ )"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:743
+msgid "divide"
+msgstr "భాగించు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:638
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:639
+msgid "picture name"
+msgstr "ప్రతిరూప నామం"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:830
+msgid "Move the cursor over the orange palette for help."
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:780
+msgid "named variable (numeric value)"
+msgstr "నామకరణం అయిన చరరాశి  ( పూర్ణసంఖ్య  విలువ )"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:603
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:861
+msgid "next"
+msgstr "తర్వాత"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:748
+msgid "if then"
+msgstr "ఒకవేళ అయితే "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:410
+msgid "set pen size"
+msgstr "కలం పరిమాణాన్ని అమర్చు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:835
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:900
+msgid "presentation template: select Journal object (no description)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:447
+msgid "until"
+msgstr "అప్పటివరకు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:790
+msgid "permanently deletes items in trash"
+msgstr "చెత్తకుండీలోని అంశాలను పూర్తిగా తొలగిస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:801
+msgid "top of Action 1 stack"
+msgstr "చర్య 1 కుప్ప  పైన "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:820
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:795
+msgid "Palette of flow operators"
+msgstr "ప్రస్రణా కార్యవాహికల పలకం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:864
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:866
+msgid "top of a collapsed stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:810
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:882
+msgid "holds current pen shade"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:615
+msgid "Login failed"
+msgstr ""
+
+#
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:409
 msgid "set heading"
 msgstr "seth"
 
-#:
-msgid "clean"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:361
+#, fuzzy
+msgid "numbers"
+msgstr "సంఖ్య "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:850
+msgid "RGB color under the turtle is pushed to the stack"
 msgstr ""
 
-#:
-msgid "set xy"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:806
+msgid "declutters canvas by hiding blocks"
+msgstr "భాగాలను దాచటం ద్వారా యవనికను శుబ్రపరుస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:879
+msgid "<Ctrl>w"
 msgstr ""
 
-#:
-msgid "x"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:877
+msgid "<Ctrl>r"
 msgstr ""
 
-#:
-msgid "y"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:883
+msgid "<Ctrl>s"
 msgstr ""
 
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:868
+msgid "<Ctrl>p"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:459
+msgid "write"
+msgstr "రాయు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:771
+msgid "Import/Export"
+msgstr "ఎగుమతి/దిగుమతి "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:881
+msgid "<Ctrl>d"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:875
+msgid "<Ctrl>e"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:870
+msgid "<Ctrl>b"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:799
+#, fuzzy
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr ""
+"ప్రస్థుత పాఠ్య పరిమాణాన్ని పట్టి ఉంచుతుంది (సంఖ్య  భాగాల స్థానంలో వాడవచ్చు )"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:746
+msgid "horizontal space"
+msgstr "అడ్డంగా ఉన్న  ప్రదేశం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:898
+msgid "string value"
+msgstr "పద బంధం విలువ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:805
+msgid "I don't know how to"
+msgstr "ఎలాగో నాకు తెలియదు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:414
+msgid "set text size"
+msgstr "పాఠ్య పరిమాణాన్ని అమర్చు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:548
+msgid "Username:"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:891
+msgid "starts filled polygon (used with end fill block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:838
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:903
+msgid "presentation template: select four Journal objects"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:804
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:873
+msgid "sets gray level of the line drawn by the turtle"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:558
+msgid "Password:"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:429
+msgid "stop action"
+msgstr "చర్యను నిలిపివేయి "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:333
+msgid "green"
+msgstr "ఆకుపచ్చ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:326
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:417
+msgid "shade"
+msgstr "ఛాయ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:794
+msgid "fills the background with (color, shade)"
+msgstr "పూర్వరంగాన్ని (వర్ణము, చాయతో ) నింపుతుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:920
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:396
+msgid "save picture"
+msgstr "ప్రతిరూపాన్ని దాచు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:347
+msgid "keyboard"
+msgstr "మీటల పలకం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:391
+msgid "restore last"
+msgstr "చివరిదాన్ని పున:స్థాపించు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:819
+msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:454
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:820
+msgid "Rescale coordinates up"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:367
+msgid "pen up"
+msgstr "కలం పట్టుకొను "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:362
+msgid "orange"
+msgstr "నారింజ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:917
+msgid "pauses program execution a specified number of seconds"
+msgstr "నిర్వర్తిస్తున్న కార్యక్రమాన్ని పేర్కొన్న సెకన్ల వరకు నిలిపి వేస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:848
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:342
+msgid "then"
+msgstr "అయితే "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:756
+msgid "did not output to"
+msgstr "అక్కడకి దిగుబడి కాలేదు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:359
+msgid "not"
+msgstr "కాదు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:749
+#, fuzzy
+msgid "if then else"
+msgstr "కాకపోతే "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:894
+msgid "stops current action"
+msgstr "ప్రస్థుత  చర్యను నిలిపి వేస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:858
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:815
+#, fuzzy
+msgid "xcor of left of screen"
+msgstr "తెర దిగువున y అక్షము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:849
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:301
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:446
+msgid "turtle"
+msgstr "టర్టిల్ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:823
+msgid "displays next palette"
+msgstr "తదుపరి పలకాన్ని ప్రదర్శిస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:339
+msgid "hide blocks"
+msgstr "భాగాలను దాచు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:879
+msgid "sets size of text drawn by turtle"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:817
+msgid "logical less-than operator"
+msgstr "తార్కిక తక్కువ కార్యవాహిక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:307
+msgid "blocks"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:856
+msgid "restore all blocks from trash"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:216
+msgid "Save"
+msgstr "దాచు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:431
+msgid "store in box 1"
+msgstr "1 పేటికలో దాచుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:432
+msgid "store in box 2"
+msgstr "2 పేటికలో దాచుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:440
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:764
+msgid "text size"
+msgstr "పాఠ పరిమాణం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:798
+msgid "hides the Sugar toolbars"
+msgstr "శుగర్  పనిముట్ల పట్టాను దాచుతుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:222
+msgid "Upload to Web"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:380
+msgid "print"
+msgstr "ముద్రణ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:386
+msgid "red"
+msgstr "ఎరుపు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:406
+msgid "sensors"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:789
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:220
+msgid "Save as Logo"
+msgstr "ముద్రికగా దాచు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:853
+msgid "sensor input resistance"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:872
+msgid "sets color of the line drawn by the turtle"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:413
+msgid "set text color"
+msgstr "పాఠ్య వర్ణాన్ని అమర్చు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:871
+msgid "Palette of sensor blocks"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:754
+msgid "number"
+msgstr "సంఖ్య "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:799
+msgid "Import project from the Journal"
+msgstr "పొద్దునుండి పథకాన్ని దిగుమతి చేసుకొనుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:346
+msgid "query keyboard"
+msgstr "query మీటల పలకం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:426
+msgid "start"
+msgstr "ప్రారంభించు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:443
+msgid "top"
+msgstr "పైన "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:589
+msgid "Submit to Web"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:809
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:228
+msgid "Cartesian coordinates"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:716
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:765
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:238
+msgid "View"
+msgstr "దర్శించు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:411
+msgid "set scale"
+msgstr "కొలబద్దను అమర్చు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:457
+#, fuzzy
+msgid "white"
+msgstr "రాయు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:890
+msgid "connects action to toolbar run buttons"
+msgstr "చర్యను పనిముట్ల మీటలతో అనుసంధానం చేస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:762
+msgid "presentation 2x2"
+msgstr "సమర్పణ 2x2 "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:805
+msgid "the canvas height"
+msgstr "యవనిక ఎత్తు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:330
+msgid "full screen"
+msgstr "తెర నిండా "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:761
+msgid "presentation 2x1"
+msgstr "సమర్పణ  2x1 "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:752
+msgid "minus"
+msgstr "తీసివేయు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:302
+msgid "and"
+msgstr "మరియు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:998
+msgid "as input"
+msgstr "ఎగుబడిలా"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:905
+msgid "holds current text color (can be used in place of a number block)"
+msgstr ""
+"ప్రస్థుత పాఠ్య వర్ణాన్ని  పట్టి ఉంచుతుంది ( సంఖ్య భాగాల స్థానంలో వాడవచ్చు  )"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:832
+#, fuzzy
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+"ప్రస్థుత పాఠ్య పరిమాణాన్ని పట్టి ఉంచుతుంది (సంఖ్య  భాగాల స్థానంలో వాడవచ్చు )"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:303
+msgid "angle"
+msgstr "కోణం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:384
+msgid "min"
+msgstr "అత్యల్ప "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:831
+#, fuzzy
+msgid "Palette of pen commands"
+msgstr "కలం వర్ణాలతో కూడిన పలకం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:846
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:444
+msgid "picture top"
+msgstr "ప్రతిరూపం పైన "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:918
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:225
+msgid "File"
+msgstr "దస్త్రము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:830
+msgid "Turtle will draw when moved."
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:777
+msgid "ycor of bottom of screen"
+msgstr "తెర దిగువున y అక్షము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:862
+msgid "bottom block in a collapsed stack: click to open"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:834
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:899
+msgid "presentation template: select Journal object (with description)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:826
+#, fuzzy
+msgid "Palette of numeric operators"
+msgstr "ప్రస్రణా కార్యవాహికల పలకం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:756
+msgid "multiply"
+msgstr "గుణించు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:876
+msgid "sets the scale of media"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:328
+msgid "forever"
+msgstr "ఎప్పటికీ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:877
+msgid "sets shade of the line drawn by the turtle"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:327
+msgid "flow"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:273
+msgid "snapshot"
+msgstr "ఛాయా చిత్రం  "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:836
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:837
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:901
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:902
+msgid "presentation template: select two Journal objects"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:822
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:233
+msgid "Grow blocks"
+msgstr "భాగాలను పెంచుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:805
+msgid "Fullscreen"
+msgstr "తెర మొత్తం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:154
+msgid "File not found"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:344
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:418
+msgid "show"
+msgstr "చూపు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:433
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:650
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:651
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:656
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:667
+msgid "text"
+msgstr "పాఠము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:384
+msgid "random"
+msgstr "విభిన్నంగా"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:800
+msgid "logical greater-than operator"
+msgstr "తార్కిక  ఎక్కువ కార్యవాహిక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:318
+#, fuzzy
+msgid "colors"
+msgstr "వర్ణము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:378
+msgid "portfolio"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:816
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:306
+#, fuzzy
+msgid "black"
+msgstr "వెనుక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:886
+msgid "calculates square root"
+msgstr "మూలాన్ని గణిస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:921
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:745
+msgid "greater than"
+msgstr "కంటే ఏక్కువ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:816
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2416
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2420
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:460
 msgid "xcor"
+msgstr "x అక్షము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:855
+msgid "restores most recent blocks from trash"
 msgstr ""
 
-#:
-msgid "ycor"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:331
+msgid "gray"
 msgstr ""
 
-#:
-msgid "Project"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:723
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:774
+msgid "Help"
+msgstr "సహాయం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:331
+msgid "Save project?"
 msgstr ""
 
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:771
+msgid "chooses which turtle to command"
+msgstr "ఏ టర్టిల్‌ను నిర్దేశించాలో ఎంచుకొంటుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:415
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:416
+msgid "x"
+msgstr "x"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:878
+msgid "sets color of text drawn by the turtle"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:374
+msgid "pitch"
+msgstr "శృతి "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:303
+msgid "arc"
+msgstr "జ్యా"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:303
+msgid "radius"
+msgstr "వ్యాసార్ధం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:812
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:230
+msgid "Polar coordinates"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:412
+msgid "set shade"
+msgstr "ఛాయను అమర్చు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:772
+msgid "logical AND operator"
+msgstr "తార్కిక AND కార్యనిర్వాహిక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:539
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:795
+msgid "Load my block"
+msgstr "నా భాగాన్ని  తెరువుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:825
+msgid "logical NOT operator"
+msgstr "తార్కిక కాదు కార్యవాహిక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:876
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:253
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:859
+msgid "Run"
+msgstr "నడుపు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:379
+msgid "show heap"
+msgstr "కుప్పను చూపుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:874
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:636
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:637
+msgid "label"
+msgstr "లేబుల్ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:915
+msgid "microphone input volume"
+msgstr "మైకు ఎగుబడి పరిమాణం"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:569
+#, fuzzy
+msgid "Title:"
+msgstr "పీఠిక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:776
+msgid "Palette of variable blocks"
+msgstr "మారే భాగాల పలకం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:827
+msgid "used as numeric input in mathematic operators"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:593
+msgid "Cancel"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:778
+msgid "Variable 1 (numeric value)"
+msgstr "చరరాశి 1 ( పూర్ణసంఖ్య  విలువ ) "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:841
+msgid "adds two alphanumeric inputs"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:744
+msgid "equal"
+msgstr "సమానం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:998
+msgid "doesn't like"
+msgstr "నచ్చని "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:330
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:884
+msgid "restores hidden blocks"
+msgstr "దాగి ఉన్న భాగాల్ని పున:స్థాపిస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:319
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:615
+msgid "comment"
+msgstr "వ్యాఖ్య "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:833
+msgid "Turtle will not draw when moved."
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:377
+msgid "pop"
+msgstr "ఎగసి "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:338
+msgid "height"
+msgstr "ఎత్తు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:366
+msgid "pen size"
+msgstr "కలం పరిమాణము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:389
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:421
+msgid "turtle shell"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:826
 msgid "Samples"
+msgstr "నమూనాలు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:882
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:893
+msgid "Stop turtle"
+msgstr "టర్టిల్ ని ఆపు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:773
+msgid "moves turtle along an arc"
+msgstr "జ్యా వెంబడి టర్టిల్‌ని కదుపుతుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:792
+msgid "logical equal-to operator"
+msgstr "తార్కిక సమాన కార్యవాహిక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:785
+msgid "Palette of pen colors"
+msgstr "కలం వర్ణాలతో కూడిన పలకం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:895
+msgid "stores numeric value in Variable 1"
+msgstr "సంఖ్యా విలువను చరరాశి 1 లో నిక్షిప్తం చేస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:896
+msgid "stores numeric value in Variable 2"
+msgstr "సంఖ్యా విలువను చరరాశి 2 లో నిక్షిప్తం చేస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:854
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:885
+msgid "put a custom 'shell' on the turtle"
 msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:775
+msgid "moves turtle backward"
+msgstr "టర్టిల్‌ని వెనుకకు నడుపుతుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:888
+msgid "invokes Action 2 stack"
+msgstr "చర్య 2 కుప్పను ప్రేరేపిస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:331
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:346
+msgid "Show blocks"
+msgstr "భాగాలను చూపుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:350
+msgid "picture left"
+msgstr "ప్రతిరూపం ఎడమ  "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:430
+msgid "value"
+msgstr "విలువ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:455
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:456
+#, fuzzy
+msgid "while"
+msgstr "రాయు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:814
+msgid "holds results of query-keyboard block"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:875
+msgid "sets size of the line drawn by the turtle"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:215
+msgid "Open"
+msgstr "తెరుచు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:592
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:593
+#, fuzzy
+msgid "orientation"
+msgstr "సమర్పణ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:816
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2416
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2420
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:461
+msgid "ycor"
+msgstr "y అక్షము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:821
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:342
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:343
+msgid "if"
+msgstr "ఒక వేళ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:880
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:881
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:354
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:355
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:356
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:357
+msgid "Python"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:256
+msgid "Stop"
+msgstr "నిలిపివేయి "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:336
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:425
+msgid "action 2"
+msgstr "చర్య  2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:335
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:424
+msgid "action 1"
+msgstr "చర్య 1"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:428
+msgid "end fill"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:801
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:241
+msgid "Copy"
+msgstr "కాపీ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:803
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:242
+msgid "Paste"
+msgstr "అతికించు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:405
+msgid "turtle sees"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:753
+msgid "Python code"
+msgstr "Python సంకేతం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:316
+msgid "empty heap"
+msgstr "ఖాళీ కుప్ప "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:843
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:874
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:252
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:791
+msgid "Clean"
+msgstr "శుభ్రపరుచు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:844
+msgid "Palette of presentation templates"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:407
+msgid "set color"
+msgstr "వర్ణాన్ని  అమర్చు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:747
+msgid "identity"
+msgstr "అస్థిత్వం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:863
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:865
+msgid "top of a collapsible stack"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:415
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:416
+msgid "y"
+msgstr "y"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:742
+msgid "audio"
+msgstr "శ్రావణ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:249
+msgid "Tools"
+msgstr "పనిముట్లు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:348
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:349
+msgid "left"
+msgstr "ఎడమ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:818
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:813
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:314
+msgid "Cartesian"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:451
+msgid "voltage"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:782
+msgid "clears the screen and reset the turtle"
+msgstr "తెరను శుభ్ర పరచి టర్టిల్‌ను పున:స్థాపిస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:861
+msgid "bottom block in a collapsibe stack: click to collapse"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:870
+msgid "returns the color that the turtle \"sees\""
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:887
+msgid "invokes Action 1 stack"
+msgstr "చర్య 1 కుప్పను ప్రేరేపిస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:909
+msgid "Palette of turtle commands"
+msgstr "టర్టిల్ నిర్దేశాల పలకం"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:317
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:326
+msgid "color"
+msgstr "వర్ణము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:796
+msgid "loops forever"
+msgstr "ఎల్లప్పిటికీ ఉండే లూపులు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:420
+msgid "show aligned"
+msgstr "లీనంగా చూపు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:762
+msgid "Project"
+msgstr "పథకం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:880
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:255
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:787
+msgid "Debug"
+msgstr "లోప నిర్మూలన "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:387
+msgid "mod"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:765
+msgid "vertical space"
+msgstr "నిటారు ప్రదేశము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:892
+msgid "completes filled polygon (used with start fill block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:751
+msgid "less than"
+msgstr "కంటే తక్కువ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:919
+msgid "the canvas width"
+msgstr "యవనిక వెడల్పు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:757
+msgid "square root"
+msgstr "మూలం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:908
+msgid "Trashcan"
+msgstr "చెత్త కుండీ"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:231
+msgid "Rescale coordinates"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:419
+msgid "show blocks"
+msgstr "భాగాలను చూపు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:224
+msgid "Quit"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:393
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:394
+msgid "right"
+msgstr "కుడి "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:788
+msgid "Sugar Journal description field"
+msgstr "శుగర్ పొద్దును వివరించే ప్రాంతం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:343
+msgid "then else"
+msgstr "కాకపోతే "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:408
+msgid "set gray"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:763
+msgid "presentation bulleted list"
+msgstr "సమర్పణ  విశేషణ సూచిక జాబితా "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:214
+msgid "New"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:786
+msgid "places a comment in your code"
+msgstr "మీ సంకేతాలలో వ్యాఖ్యనుంచుతుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:385
+msgid "read pixel"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:404
+msgid "scale"
+msgstr "కొలబద్ద "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:309
+msgid "bottom"
+msgstr "దిగువ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:382
+msgid "purple"
+msgstr "ఊద "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:446
+msgid "Rescale coordinates down"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tautils.py:523
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:399
+msgid "click to open"
+msgstr "తెరుచుటకు నొక్కుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:364
+#, fuzzy
+msgid "pen"
+msgstr "తెరుచు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:840
+msgid "microphone input pitch"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:579
+msgid "Description:"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:750
+msgid "journal"
+msgstr "పొద్దు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:323
+msgid "empty trash"
+msgstr "చెత్తకుండీ ఖాళీ చేయు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:774
+msgid "Sugar Journal audio object"
+msgstr "శుగర్ పొద్దు శ్రావ్య తాత్పర్యం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:257
+msgid "Turtle"
+msgstr "టర్టిల్ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:829
+msgid "changes the orientation of the palette of blocks"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:430
+msgid "store in"
+msgstr "దీనిలో దాచు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:334
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:353
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:869
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:807
+msgid "Hide blocks"
+msgstr "భాగాలను దాచుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:755
+msgid "plus"
+msgstr "కూడిక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:363
+msgid "or"
+msgstr "లేదా"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:839
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:904
+msgid "presentation template: list of bullets"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:802
+msgid "top of Action 2 stack"
+msgstr "చర్య 2 కుప్ప  పైన"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:824
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:234
+msgid "Shrink blocks"
+msgstr "భాగాలను కుంచించుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2529
+msgid "image"
+msgstr "ప్రతిరూపము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:236
+msgid "Reset block size"
+msgstr "బాగం పరిమాణాన్ని  పున:స్థాపించు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:784
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr ""
+"ప్రస్తుత కలం వర్ణాన్ని పట్టి ఉంచుతుంది ( సంఖ్య భాగం బదులు మనం దీనిని వాడ "
+"వచ్చు)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:292
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:319
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:338
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:348
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:246
+msgid "Show palette"
+msgstr "వర్ణపలకాన్ని చూపుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:867
+msgid "saves a picture to the Sugar Journal"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:783
+msgid "Save snapshot"
+msgstr "ఛాయా చిత్రాన్ని దాచుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:458
+msgid "width"
+msgstr "వెడల్పు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:797
+msgid "moves turtle forward"
+msgstr "టర్టిల్‌ను ముందుకు నడుపుతుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:329
+msgid "forward"
+msgstr "ముందుకు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:614
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:655
+msgid "my box"
+msgstr "నా పేటిక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:395
+msgid "picture right"
+msgstr "ప్రతిరూపం కుడి "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:305
+msgid "back"
+msgstr "వెనుక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:452
+msgid "volume"
+msgstr "సంపుటం "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:869
+msgid "holds current scale value"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:758
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:759
+msgid "presentation 1x1"
+msgstr "సమర్పణ 1x1 "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:760
+msgid "presentation 1x2"
+msgstr "సమర్పణ 1x2 "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:803
+msgid "top of nameable action stack"
+msgstr "నామకరణం చెయ గల చర్య  కుప్ప  పైన"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:897
+msgid "stores numeric value in named variable"
+msgstr "సంఖ్యా విలువను  పేరు గల చరరాశి రూపంలో నిక్షిప్తం చేస్తుంది "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:828
+#, fuzzy
+msgid "logical OR operator"
+msgstr "తార్కిక కాదు కార్యవాహిక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:310
+msgid "picture bottom"
+msgstr "ప్రతిరూపం దిగువున "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:852
+msgid "loops specified number of times"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:907
+#, fuzzy
+msgid "ycor of top of screen"
+msgstr "తెర దిగువున y అక్షము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:914
+msgid "sensor voltage"
+msgstr "సెన్సారు  వోల్టేజీ"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:442
+msgid "title y"
+msgstr "పీఠిక y"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:441
+msgid "title x"
+msgstr "పీఠిక x"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:326
+msgid "fill screen"
+msgstr "తెరను నింపుము "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:415
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:416
+msgid "set xy"
+msgstr "xy లను అమర్చు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:445
+msgid "trash"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:376
+msgid "polar"
+msgstr "ధృవ "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:388
+msgid "repeat"
+msgstr "మళ్ళీ చేయి"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:792
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:218
+msgid "Save as image"
+msgstr "ప్రతిరూపంగా దాచు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:712
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:768
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:243
+msgid "Edit"
+msgstr "సరిచేయు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:809
+msgid "identity operator used for extending blocks"
+msgstr "భాగాలను పెంచటానికి ఉపయోగించే కార్యవాహిక గుర్తు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:789
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:384
+msgid "max"
+msgstr "అత్యధిక "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:906
+msgid "holds current text size (can be used in place of a number block)"
+msgstr ""
+"ప్రస్థుత పాఠ్య పరిమాణాన్ని పట్టి ఉంచుతుంది (సంఖ్య  భాగాల స్థానంలో వాడవచ్చు )"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:845
+msgid "prints value in status block at bottom of the screen"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:325
+msgid "extras"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:427
+msgid "start fill"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:383
+msgid "push"
+msgstr "నెట్టు "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:822
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:392
+msgid "restore all"
+msgstr "అన్నింటినీ పున:స్థాపించు "
+
+#~ msgid "Save Logo"
+#~ msgstr "ముద్రికను దాచు "
+
+#~ msgid "bulleted list"
+#~ msgstr "విశేష సూచిక జాబితా"
+
+#~ msgid "picture"
+#~ msgstr "ప్రతిరూపం"
+
+#~ msgid "2×2 pictures"
+#~ msgstr "2x2 ప్రతిరూపాలు"
+
+#~ msgid "2×1 pictures"
+#~ msgstr "2x1 ప్రతిరూపాలు"
+
+#~ msgid "1×2 pictures"
+#~ msgstr "1×2 ప్రతిరూపం"
+
+#~ msgid "1×1 picture"
+#~ msgstr "1×1 ప్రతిరూపం"

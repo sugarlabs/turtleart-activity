@@ -3,13 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-25 17:04+0000\n"
-"PO-Revision-Date: 2009-02-20 14:16-0500\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2010-03-15 20:11+0200\n"
+"Last-Translator: satyaakam goswami <satyaakam@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0rc2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.3\n"
 
 #: activity/activity.info:2
 #: /home/walter/Desktop/ta-refactoring/tawindow.py:1300
@@ -21,20 +23,19 @@ msgstr "टर्टल आर्ट"
 
 #: /home/walter/Desktop/ta-refactoring/tawindow.py:507
 #: /home/walter/Desktop/ta-refactoring/tawindow.py:508
-#, fuzzy
 msgid "orientation"
-msgstr "प्रस्तुतिकरण"
+msgstr "दिशा"
 
 #: /home/walter/Desktop/ta-refactoring/tawindow.py:518
 #: /home/walter/Desktop/ta-refactoring/tawindow.py:786
 #, fuzzy
 msgid "next"
-msgstr "पाठ"
+msgstr "अगला"
 
 #: /home/walter/Desktop/ta-refactoring/tawindow.py:1565
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:328
 msgid "click to open"
-msgstr ""
+msgstr "खोलने के लिए क्लिक करें"
 
 #: /home/walter/Desktop/ta-refactoring/tawindow.py:2549
 #: /home/walter/Desktop/ta-refactoring/tawindow.py:2553
@@ -65,11 +66,11 @@ msgstr "शीर्षक"
 
 #: /home/walter/Desktop/ta-refactoring/tawindow.py:2612
 msgid "image"
-msgstr ""
+msgstr "फोटो"
 
 #: /home/walter/Desktop/ta-refactoring/talogo.py:704
 msgid "did not output to"
-msgstr ""
+msgstr "यहाँ आउटपुट नहीं दें"
 
 #: /home/walter/Desktop/ta-refactoring/talogo.py:746
 #: /home/walter/Desktop/ta-refactoring/taconstants.py:331

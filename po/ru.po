@@ -1,353 +1,1702 @@
-#, fuzzy
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-03-23 03:22+0200\n"
+"PO-Revision-Date: 2009-08-13 10:09-0400\n"
+"Last-Translator: Тимур Селье <muyou.prj@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 1.2.1\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
 msgstr "Черепашка"
 
-#:
-msgid "Project"
-msgstr "Проект"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:657
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:658
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:659
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:660
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:661
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:662
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:989
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1011
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1032
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1074
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1116
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1158
+msgid "Title"
+msgstr "Заголовок"
 
-#:
-msgid "Samples"
-msgstr "Примеры"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:390
+msgid "resistance"
+msgstr "сопротивление"
 
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:462
+msgid "yellow"
+msgstr "желтый"
 
-#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
-#: tasetup.py:53 tasetup.py:54
-msgid "title"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:842
+msgid "displays polar coordinates"
+msgstr "показывает полярные координаты "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:783
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "пустые FILO (first-in-last-out heap)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:358
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:448
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:449
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:450
+msgid " "
 msgstr ""
 
-#: tasetup.py:66
-msgid "text"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:811
+msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr ""
+"если-тогда оператор, используемый логическими операторами из палитры номеров"
 
-#:
-msgid "Save as"
-msgstr ""
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:808
+msgid "jogs stack right"
+msgstr "сдвигает стек вправо"
 
-#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
-#: TurtleArtActivity.py:293
-msgid "hide palette"
-msgstr ""
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:812
+msgid "Sugar Journal media object"
+msgstr "медиа объект Sugar Journal"
 
-#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
-msgid "hide blocks"
-msgstr ""
-
-#: TurtleArtActivity.py:194
-msgid "run"
-msgstr ""
-
-#: TurtleArtActivity.py:202
-msgid "step"
-msgstr ""
-
-#: TurtleArtActivity.py:210
-msgid "stop turtle"
-msgstr ""
-
-#: TurtleArtActivity.py:249
-msgid "save as HTML"
-msgstr ""
-
-#: TurtleArtActivity.py
-msgid "save Logo"
-msgstr ""
-
-#: TurtleArtActivity.py
-msgid "load my block"
-msgstr ""
-
-#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
-#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
-msgid "show palette"
-msgstr ""
-
-#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
-msgid "show blocks"
-msgstr ""
-
-#:
-msgid "Flow"
-msgstr "Передвижение"
-
-#:
-msgid "forever"
-msgstr "всегда"
-
-#:
-msgid "if"
-msgstr "если"
-
-#:
-msgid "then"
-msgstr "тогда"
-
-#:
-msgid "else"
-msgstr "иначе"
-
-#:
-msgid "repeat"
-msgstr "повтор"
-
-#:
-msgid "stop stack"
-msgstr "конец цепи"
-
-#:
-msgid "wait"
-msgstr "ждать"
-
-#:
-msgid "My Blocks"
-msgstr "Мои блоки"
-
-#:
-msgid "start"
-msgstr ""
-
-#:
-msgid "box"
-msgstr "блок"
-#:
-msgid "box 1"
-msgstr "блок 1"
-
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:313
 msgid "box 2"
 msgstr "блок 2"
 
-#:
-msgid "stack"
-msgstr "цепь"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:312
+msgid "box 1"
+msgstr "блок 1"
 
-#:
-msgid "stack 1"
-msgstr "цепь 1"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:878
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:254
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:860
+msgid "Step"
+msgstr "Шаг"
 
-#:
-msgid "stack 2"
-msgstr "цепь 2"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:847
+msgid "multiplies two numeric inputs"
+msgstr "умножает два числа"
 
-#:
-msgid "store in box 1"
-msgstr "сохранить в кармане 1"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:177
+msgid "presentation"
+msgstr "презентация"
 
-#:
-msgid "store in box 2"
-msgstr "сохранить в кармане 2"
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:248
+msgid "Show/hide blocks"
+msgstr "Показать/скрыть блоки"
 
-#:
-msgid "name"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:299
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:312
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:324
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:341
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:355
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:867
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:247
+msgid "Hide palette"
+msgstr "скрыть палитру"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:217
+#, fuzzy
+msgid "Save As"
+msgstr "Сохранить как"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:320
+msgid "cyan"
+msgstr "голубой"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:857
+msgid "xcor of right of screen"
+msgstr "коодината Х справа экрана"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:793
+msgid "Palette of extra options"
+msgstr "палитра экстра-опций"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:786
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:219
+msgid "Save as HTML"
+msgstr "Сохранить как HTML"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:187
+#, python-format
+msgid "Configuration directory not writable: %s"
 msgstr ""
 
-#:
-msgid "Numbers"
-msgstr "Числа"
-
-#:
-msgid "number"
-msgstr "число"
-
-#:
-msgid "and"
-msgstr "и"
-
-#:
-msgid "or"
-msgstr "или"
-
-#:
-msgid "not"
-msgstr "не"
-
-#:
-msgid "random"
-msgstr "случайно"
-
-#:
-msgid "min"
-msgstr "минимум"
-
-#:
-msgid "max"
-msgstr "максимум"
-
-#:
-msgid "mod"
-msgstr "модуль"
-
-#:
-msgid "print"
-msgstr "печать"
-
-#:
-msgid "Pen"
-msgstr "Перо"
-
-#:
-msgid "color"
-msgstr "цвет"
-
-#:
-msgid "shade"
-msgstr "затенение"
-
-#:
-msgid "fill screen"
-msgstr "заполнение"
-
-#:
-msgid "pen up"
-msgstr "поднять перо"
-
-#:
-msgid "pen down"
-msgstr "опустить перо"
-
-#:
-msgid "set pen size"
-msgstr "размер пера"
-
-#:
-msgid "pen size"
-msgstr "размер пера"
-
-#:
-msgid "set shade"
-msgstr "затенение"
-
-#:
-msgid "set color"
-msgstr "цвет"
-
-#:
-msgid "set text color"
-msgstr ""
-
-#:
-msgid "Blocks"
-msgstr "Блоки"
-
-#:
-msgid "Turtle"
-msgstr "Черепашка"
-
-#:
-msgid "forward"
-msgstr "вперёд"
-
-#:
-msgid "back"
-msgstr "назад"
-
-#:
-msgid "right"
-msgstr "вправо"
-
-#:
-msgid "left"
-msgstr "влево"
-
-#:
-msgid "arc"
-msgstr "круг"
-
-#:
-msgid "angle"
-msgstr "угол"
-
-#:
-msgid "radius"
-msgstr "радиус"
-
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:816
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2416
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2420
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:337
 msgid "heading"
 msgstr "направление"
 
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:868
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr "сохранить черепашью графику как SVG файл в Sugar Journal"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:883
+msgid "draws text or show media from the Journal"
+msgstr "рисует текста или показывает медиа из Journal"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:308
+msgid "blue"
+msgstr "колубой"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:781
+msgid "displays Cartesian coordinates"
+msgstr "показывает Декартовы координаты"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:142
+msgid "No option action:"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:916
+msgid "jogs stack down"
+msgstr "jogs stack down"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:851
+msgid "modular (remainder) operator"
+msgstr "оператор модуля (остатка)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:397
+msgid "save SVG"
+msgstr "сохранить SVG"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:400
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:402
+msgid "top of stack"
+msgstr "вершина стека"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:824
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:911
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:912
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:913
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr "запускает код поиска в модуле tamyblock.py из Journal"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:365
+msgid "pen down"
+msgstr "опустить перо"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:315
+msgid " clean "
+msgstr " очистить "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:454
+msgid "wait"
+msgstr "ждать"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:311
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:430
+msgid "box"
+msgstr "блок"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:652
+msgid "Failed to upload!"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:889
+msgid "invokes named action stack"
+msgstr "вызывает действие именнованного стека"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:334
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:423
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:620
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:652
+msgid "action"
+msgstr "действие"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:910
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"делать-пока-правда оператор, используемый логическими операторами из "
+"Нумерованной палитры"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:61
+msgid "usage is"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:779
+msgid "Variable 2 (numeric value)"
+msgstr "переменная 2 (числовое значение)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:743
+msgid "divide"
+msgstr "делить"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:638
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:639
+msgid "picture name"
+msgstr "имя картинки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:830
+msgid "Move the cursor over the orange palette for help."
+msgstr "Передвиньте курсор перед оранжевой палитрой для вызова помощи"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:780
+msgid "named variable (numeric value)"
+msgstr "именная переменная (числовое значение)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:603
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:861
+msgid "next"
+msgstr "дальше"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:748
+msgid "if then"
+msgstr "если тогда"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:410
+msgid "set pen size"
+msgstr "размер пера"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:835
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:900
+msgid "presentation template: select Journal object (no description)"
+msgstr "пример презентации: выбирете обект Journal (без описанием)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:447
+msgid "until"
+msgstr "пока "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:790
+msgid "permanently deletes items in trash"
+msgstr "безвозвратно удаляет пункты в корзину"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:801
+msgid "top of Action 1 stack"
+msgstr "вершина стека действия 1 "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:820
+#, fuzzy
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+"программируемый блок: используется для добавления дополнительных "
+"математических выражений с одной переменной, к пр. син(х)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:795
+msgid "Palette of flow operators"
+msgstr "палитра операторов над плавающей точкой"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:864
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:866
+msgid "top of a collapsed stack"
+msgstr "верх свёрнутого стека"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:810
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+"если-тогда-иначе оператор, используемый логическими операторами из палитры "
+"номеров"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:882
+msgid "holds current pen shade"
+msgstr "блокирует текущую тень кисти"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:615
+msgid "Login failed"
+msgstr ""
+
+#
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:409
 msgid "set heading"
 msgstr "направление"
 
-#:
-msgid "clean"
-msgstr "очистить"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:361
+#, fuzzy
+msgid "numbers"
+msgstr "число"
 
-#:
-msgid "set xy"
-msgstr "координаты"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:850
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr ""
 
-#:
-msgid "x"
-msgstr "x"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:806
+msgid "declutters canvas by hiding blocks"
+msgstr "очищает холст, скрывая блоки"
 
-#:
-msgid "y"
-msgstr "y"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:879
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
 
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:877
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:883
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:868
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:459
+msgid "write"
+msgstr "запись"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:771
+msgid "Import/Export"
+msgstr "Импорт/Экспорт"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:881
+msgid "<Ctrl>d"
+msgstr "<Ctrl>d"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:875
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:870
+msgid "<Ctrl>b"
+msgstr "<Ctrl>b"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:799
+#, fuzzy
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr ""
+"блокирует секущий размер пера (может быть использовано в числовых блока)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:746
+msgid "horizontal space"
+msgstr "горизонтальный пробел"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:898
+msgid "string value"
+msgstr "строковое значение"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:805
+msgid "I don't know how to"
+msgstr "Я не знаю как "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:414
+msgid "set text size"
+msgstr "установить размер пера"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:548
+msgid "Username:"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:891
+msgid "starts filled polygon (used with end fill block)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:838
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:903
+msgid "presentation template: select four Journal objects"
+msgstr "пример презентации: выбирете четыре обекта Journal"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:804
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+"блокирует текущее значение головы черепашки (может использоваться в "
+"нумерованных блоках)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:873
+#, fuzzy
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "устанвливают тени линии, рисуемой черепашкой"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:558
+msgid "Password:"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:429
+msgid "stop action"
+msgstr "остановить действие"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:333
+msgid "green"
+msgstr "зелёный"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:326
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:417
+msgid "shade"
+msgstr "затенение"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:794
+msgid "fills the background with (color, shade)"
+msgstr "заполняет фон (цвет, изображение)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:920
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"заблокировать текущую коорд. Х черепахи (может использоваться в числовых "
+"блоках)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:396
+msgid "save picture"
+msgstr "сохранить картинку"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:347
+msgid "keyboard"
+msgstr "клавиатура"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:391
+msgid "restore last"
+msgstr "повторить последнее"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:819
+msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
+msgstr ""
+"программируемый блок: используется для добавления дополнительных "
+"математических функций, к примеру, синус(х)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:454
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:820
+msgid "Rescale coordinates up"
+msgstr "Rescale координаты вверх"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:367
+msgid "pen up"
+msgstr "поднять перо"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:362
+msgid "orange"
+msgstr "оранжевый"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:917
+msgid "pauses program execution a specified number of seconds"
+msgstr "приостанавлиет выполнение на указанное число секунд"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:848
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "кладёт значения в FILO (first-in last-out heap)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:342
+msgid "then"
+msgstr "тогда"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:756
+msgid "did not output to"
+msgstr "не выводит на"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:359
+msgid "not"
+msgstr "не"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:749
+msgid "if then else"
+msgstr "если тогда иначе"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:894
+msgid "stops current action"
+msgstr "останавливает текущее действие"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:858
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "поворачивает черепашку по часовой стрелке (угол в градусах) "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:815
+msgid "xcor of left of screen"
+msgstr "координата Х слева от экрана "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:849
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+"возвращает случайные числа между минимумом (верхнее знач) и максимумов "
+"(нижнее знач) числами"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:301
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:446
+msgid "turtle"
+msgstr "черепашка"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:823
+msgid "displays next palette"
+msgstr "отображает следующую палитру"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:339
+msgid "hide blocks"
+msgstr "скрыть блоки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:879
+msgid "sets size of text drawn by turtle"
+msgstr "устанвливают размеры текста, рисуемого черепашкой"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:817
+msgid "logical less-than operator"
+msgstr "логический оператор меньше чем "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:307
+#, fuzzy
+msgid "blocks"
+msgstr "Блоки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:856
+msgid "restore all blocks from trash"
+msgstr "восстанавливает все блоки из карзины"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:216
+msgid "Save"
+msgstr "Сохранить"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:431
+msgid "store in box 1"
+msgstr "сохранить в кармане 1"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:432
+msgid "store in box 2"
+msgstr "сохранить в кармане 2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:440
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:764
+msgid "text size"
+msgstr "размер текста"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:798
+msgid "hides the Sugar toolbars"
+msgstr "скрывает Sugar тулбар"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:222
+msgid "Upload to Web"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:380
+msgid "print"
+msgstr "печать"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:386
+msgid "red"
+msgstr "красный"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:406
+#, fuzzy
+msgid "sensors"
+msgstr "сенсоры"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:789
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:220
+msgid "Save as Logo"
+msgstr "Сохранить как Logo"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:853
+msgid "sensor input resistance"
+msgstr "датчик входного сопротивления"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:872
+msgid "sets color of the line drawn by the turtle"
+msgstr "устанавливает цвет линий, рисуемых черепашкой"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:413
+msgid "set text color"
+msgstr "цвет текста"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:871
+msgid "Palette of sensor blocks"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:754
+msgid "number"
+msgstr "число"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:799
+msgid "Import project from the Journal"
+msgstr "Импортировать проект из журнала"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:346
+msgid "query keyboard"
+msgstr "запрос клавиатура"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:426
+msgid "start"
+msgstr "старт"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:443
+msgid "top"
+msgstr "вершина "
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:589
+msgid "Submit to Web"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:809
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:228
+msgid "Cartesian coordinates"
+msgstr "Декартовы координаты"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:716
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:765
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:238
+msgid "View"
+msgstr "Показать"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:411
+msgid "set scale"
+msgstr "установить затенение"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:457
+#, fuzzy
+msgid "white"
+msgstr "в то время, как"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:890
+msgid "connects action to toolbar run buttons"
+msgstr "объединяет дейтсвия в кнопки запуска на тулбаре"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:762
+msgid "presentation 2x2"
+msgstr "представление 2x2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:805
+msgid "the canvas height"
+msgstr "высота холста"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:330
+msgid "full screen"
+msgstr "полный экран"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:761
+msgid "presentation 2x1"
+msgstr "представление 2x1"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:752
+msgid "minus"
+msgstr "минус"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:302
+msgid "and"
+msgstr "и"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:998
+msgid "as input"
+msgstr "как ввод"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:905
+msgid "holds current text color (can be used in place of a number block)"
+msgstr ""
+"блокирует текущий цвет текста (может использовать вместе с нумерованными "
+"блоками)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:832
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+"блокирует секущий размер пера (может быть использовано в числовых блока)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:303
+msgid "angle"
+msgstr "угол"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:384
+msgid "min"
+msgstr "минимум"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:831
+msgid "Palette of pen commands"
+msgstr "Палитра команд ручке"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:846
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "показывает значения FILO (first-in last-out heap)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:444
+msgid "picture top"
+msgstr "вершина картинки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:918
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"делать-пока-правда оператор, который используется логическими операторами из "
+"числовой палитры"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:225
+msgid "File"
+msgstr "Файл"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:830
+msgid "Turtle will draw when moved."
+msgstr "Черепашка будет рисовать, двигаясь."
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:777
+msgid "ycor of bottom of screen"
+msgstr "У-координата наверху экрана"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:862
+msgid "bottom block in a collapsed stack: click to open"
+msgstr "нижний блок сворачиваемого стека: нажмите, чтобы открыть"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:834
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:899
+msgid "presentation template: select Journal object (with description)"
+msgstr "пример презентации: выбирете обект Journal (с описанием)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:826
+msgid "Palette of numeric operators"
+msgstr "Палитра числовых операторов"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:756
+msgid "multiply"
+msgstr "множество"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:876
+msgid "sets the scale of media"
+msgstr "устанавливает масштаб медиа "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:328
+msgid "forever"
+msgstr "всегда"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:877
+msgid "sets shade of the line drawn by the turtle"
+msgstr "устанвливают тени линии, рисуемой черепашкой"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:327
+#, fuzzy
+msgid "flow"
+msgstr "Передвижение"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:273
+msgid "snapshot"
+msgstr "снимок"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:836
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:837
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:901
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:902
+msgid "presentation template: select two Journal objects"
+msgstr "пример презентации: выбирете два обекта Journal"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:822
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:233
+msgid "Grow blocks"
+msgstr "Увеличить блоки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:805
+msgid "Fullscreen"
+msgstr "На весь экран"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:154
+msgid "File not found"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:344
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:418
+msgid "show"
+msgstr "показать"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:433
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:650
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:651
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:656
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:667
+msgid "text"
+msgstr "текст"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:384
+msgid "random"
+msgstr "случайно"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:800
+msgid "logical greater-than operator"
+msgstr "логический оператор больше чем "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:318
+#, fuzzy
+msgid "colors"
+msgstr "цвет"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:378
+msgid "portfolio"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:816
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "поворачивает черепашку по часовой стрелке (угол в градусах) "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:306
+#, fuzzy
+msgid "black"
+msgstr "назад"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:886
+msgid "calculates square root"
+msgstr "вычисляет квадратный корень"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:921
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"заблокировать текущую коорд. У черепахи (может использоваться в числовых "
+"блоках)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:745
+msgid "greater than"
+msgstr "больше чем"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:816
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2416
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2420
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:460
 msgid "xcor"
 msgstr "x текущ."
 
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:855
+msgid "restores most recent blocks from trash"
+msgstr "возвращает самые последние блоки из корзины"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:331
+msgid "gray"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:723
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:774
+msgid "Help"
+msgstr "Помощь"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:331
+msgid "Save project?"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:771
+msgid "chooses which turtle to command"
+msgstr "выберете черепашку"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:415
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:416
+msgid "x"
+msgstr "x"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:878
+msgid "sets color of text drawn by the turtle"
+msgstr "устанвливают цвет текста, рисуемого черепашкой"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:374
+msgid "pitch"
+msgstr "нажатие"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:303
+msgid "arc"
+msgstr "круг"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:303
+msgid "radius"
+msgstr "радиус"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:812
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:230
+msgid "Polar coordinates"
+msgstr "Полярные координаты"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:412
+msgid "set shade"
+msgstr "затенение"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:772
+msgid "logical AND operator"
+msgstr "логической оператор И"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:539
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:795
+msgid "Load my block"
+msgstr "Загрузить мои блоки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:825
+msgid "logical NOT operator"
+msgstr "логический оператор НЕ"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:876
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:253
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:859
+msgid "Run"
+msgstr "Запустить"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:379
+msgid "show heap"
+msgstr "показать голову"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:874
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:636
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:637
+msgid "label"
+msgstr "надпись"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:915
+msgid "microphone input volume"
+msgstr "уровень ввода микрофона"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:569
+#, fuzzy
+msgid "Title:"
+msgstr "Заголовок"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:776
+msgid "Palette of variable blocks"
+msgstr "Палитра возможных блоков"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:827
+msgid "used as numeric input in mathematic operators"
+msgstr "используется как числа ввода в математических операторах"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:593
+msgid "Cancel"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:778
+msgid "Variable 1 (numeric value)"
+msgstr "переменная 1 (числовое значение)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:841
+msgid "adds two alphanumeric inputs"
+msgstr "добавьте два альфа-числа"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:744
+msgid "equal"
+msgstr "равно"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:998
+msgid "doesn't like"
+msgstr "не нравится"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:330
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:884
+msgid "restores hidden blocks"
+msgstr "восстанавлиет скрытые блоки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:319
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:615
+msgid "comment"
+msgstr "комментарий"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:833
+msgid "Turtle will not draw when moved."
+msgstr "Черепашка не будет рисовать, двигаясь ."
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:377
+msgid "pop"
+msgstr "вытолкнуть"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:338
+msgid "height"
+msgstr "высота"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:366
+msgid "pen size"
+msgstr "размер пера"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:389
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:421
+msgid "turtle shell"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:826
+msgid "Samples"
+msgstr "Примеры"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:882
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:893
+msgid "Stop turtle"
+msgstr "Остановить черепашку"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:773
+msgid "moves turtle along an arc"
+msgstr "передвигает черепаху по кругу"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:792
+msgid "logical equal-to operator"
+msgstr "логический оператор равно"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:785
+msgid "Palette of pen colors"
+msgstr "Палитра цветов ручки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:895
+msgid "stores numeric value in Variable 1"
+msgstr "сохраняет числовое значение в Переменной 1"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:896
+msgid "stores numeric value in Variable 2"
+msgstr "сохраняет числовое значение в Переменной 2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:854
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:885
+msgid "put a custom 'shell' on the turtle"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:775
+msgid "moves turtle backward"
+msgstr "перемещает черепашку назад"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:888
+msgid "invokes Action 2 stack"
+msgstr "вызывает Действия 2 стека"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:331
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:346
+msgid "Show blocks"
+msgstr "показать блоки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:350
+msgid "picture left"
+msgstr "картинка слева"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:430
+msgid "value"
+msgstr "значение"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:455
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:456
+msgid "while"
+msgstr "в то время, как"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:814
+msgid "holds results of query-keyboard block"
+msgstr "блокирует результаты блока очереди клавиатуры"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:875
+msgid "sets size of the line drawn by the turtle"
+msgstr "устанавливает размер линии, рисуемой черепашкой"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:215
+msgid "Open"
+msgstr "Открыть"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:592
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:593
+msgid "orientation"
+msgstr "ориентация"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:816
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2416
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2420
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:461
 msgid "ycor"
 msgstr "y текущ."
 
-#:
-msgid "Sensors"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:821
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+"программируемый блок: используется для добавления дополнительных "
+"математических функций с множеством переменных, к пр., корень(х*х+у*у)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:342
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:343
+msgid "if"
+msgstr "если"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:880
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:881
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr "перемещает черепашку к позиции коор Х, коор У; (0, 0) это центр экрана."
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:354
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:355
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:356
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:357
+msgid "Python"
+msgstr "Python"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:256
+msgid "Stop"
+msgstr "Стоп"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:336
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:425
+msgid "action 2"
+msgstr "действие 2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:335
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:424
+msgid "action 1"
+msgstr "дейтсвие 1"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:428
+msgid "end fill"
 msgstr ""
 
-#:
-msgid "volume"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:801
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:241
+msgid "Copy"
+msgstr "Копировать"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:803
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:242
+msgid "Paste"
+msgstr "Вставить"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:405
+msgid "turtle sees"
 msgstr ""
 
-#:
-msgid "pitch"
-msgstr ""
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:753
+msgid "Python code"
+msgstr "Python code"
 
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:316
+msgid "empty heap"
+msgstr "пустая голова"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:843
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "показывает значение FILO (first-in last-out heap)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:874
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:252
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:791
+msgid "Clean"
+msgstr "Очистить"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:844
+msgid "Palette of presentation templates"
+msgstr "Палитра примеров презентации"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:407
+msgid "set color"
+msgstr "цвет"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:747
+msgid "identity"
+msgstr "идентификатор"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:863
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:865
+msgid "top of a collapsible stack"
+msgstr "верх сворачиваемого стека"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:415
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:416
+msgid "y"
+msgstr "y"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:742
+msgid "audio"
+msgstr "аудио"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:249
+msgid "Tools"
+msgstr "Инструменты"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:348
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:349
+msgid "left"
+msgstr "влево"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:818
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "выделяет нижнее число ввода из верха нумерованного ввода "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:813
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr ""
+"очередь для клавиатурного ввода (результаты сохраняются в блоке клавиатуры)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:314
+msgid "Cartesian"
+msgstr "Декартова"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:451
 msgid "voltage"
+msgstr "напряжение"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:782
+msgid "clears the screen and reset the turtle"
+msgstr "очищает экран и возвращает черепашку"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:861
+msgid "bottom block in a collapsibe stack: click to collapse"
+msgstr "нижний блок сворачиваемого стека: нажмите, чтобы свернуть"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:870
+msgid "returns the color that the turtle \"sees\""
 msgstr ""
 
-#:
-msgid "resistance"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:887
+msgid "invokes Action 1 stack"
+msgstr "вызывает Действия 1 стека"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:909
+msgid "Palette of turtle commands"
+msgstr "Палитра комманд черепашки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:317
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:326
+msgid "color"
+msgstr "цвет"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:796
+msgid "loops forever"
+msgstr "вечный цикл"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:420
+msgid "show aligned"
+msgstr "показать угол"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:762
+msgid "Project"
+msgstr "Проект"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:880
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:255
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:787
+msgid "Debug"
+msgstr "Попробовать"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:387
+msgid "mod"
+msgstr "модуль"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:765
+msgid "vertical space"
+msgstr "вертикальный пробел"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:892
+msgid "completes filled polygon (used with start fill block)"
 msgstr ""
 
-#:
-msgid "Templates"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:751
+msgid "less than"
+msgstr "меньше чем "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:919
+msgid "the canvas width"
+msgstr "ширина полотна"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:757
+msgid "square root"
+msgstr "квадратный корень"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:908
+msgid "Trashcan"
+msgstr "Урна для мусора"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:231
+msgid "Rescale coordinates"
+msgstr "Перерисовать координаты"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:419
+msgid "show blocks"
+msgstr "показать блоки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:224
+msgid "Quit"
 msgstr ""
 
-#:
-msgid "Keyboard"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:393
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:394
+msgid "right"
+msgstr "вправо"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:788
+msgid "Sugar Journal description field"
+msgstr "Поле описания Sugar Journal"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:343
+msgid "then else"
+msgstr "тогда иначе"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:408
+msgid "set gray"
 msgstr ""
 
-#:
-msgid "read key"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:763
+msgid "presentation bulleted list"
+msgstr "представление маркированным списком"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:214
+msgid "New"
 msgstr ""
 
-#:
-msgid "sound"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:786
+msgid "places a comment in your code"
+msgstr "места комментария в вашем коде"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:385
+msgid "read pixel"
 msgstr ""
 
-#:
-msgid "hres"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:404
+msgid "scale"
+msgstr "масштаб"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:309
+msgid "bottom"
+msgstr "низ"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:382
+msgid "purple"
+msgstr "пурпурный"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:446
+msgid "Rescale coordinates down"
+msgstr "Rescale координаты вниз"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tautils.py:523
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:399
+msgid "click to open"
+msgstr "нажмите для открытия"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:364
+#, fuzzy
+msgid "pen"
+msgstr "Открыть"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:840
+msgid "microphone input pitch"
+msgstr "микрофонный ввод комманд"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:579
+msgid "Description:"
 msgstr ""
 
-#:
-msgid "vres"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:750
+msgid "journal"
+msgstr "журнал"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:323
+msgid "empty trash"
+msgstr "пустая корзина"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:774
+msgid "Sugar Journal audio object"
+msgstr "Аудио объект Sugar Journal"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:257
+msgid "Turtle"
+msgstr "Черепашка"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:829
+msgid "changes the orientation of the palette of blocks"
+msgstr "изменяет ориентаци палитры блоков"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:430
+msgid "store in"
+msgstr "записать в"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:334
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:353
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:869
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:807
+msgid "Hide blocks"
+msgstr "скрыть блоки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:755
+msgid "plus"
+msgstr "плюс"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:363
+msgid "or"
+msgstr "или"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:839
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:904
+msgid "presentation template: list of bullets"
+msgstr "пример презентации: список ядра"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:802
+msgid "top of Action 2 stack"
+msgstr "вершина стека действия 2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:824
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:234
+msgid "Shrink blocks"
+msgstr "Уменьшить блоки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2529
+msgid "image"
+msgstr "картинка"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:236
+msgid "Reset block size"
+msgstr "Сбросить размер блоков"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:784
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr ""
+"блокирует текущий цвет ручки (может использоваться на месте нумерованных "
+"блоков)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:292
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:319
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:338
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:348
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:246
+msgid "Show palette"
+msgstr "показать палитру"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:867
+msgid "saves a picture to the Sugar Journal"
+msgstr "сохранить картинку в Sugar Journal"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:783
+msgid "Save snapshot"
+msgstr "Сохранить снимок"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:458
+msgid "width"
+msgstr "ширина"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:797
+msgid "moves turtle forward"
+msgstr "перемещает черепашку вперёд"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:329
+msgid "forward"
+msgstr "вперёд"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:614
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:655
+msgid "my box"
+msgstr "моя коробка"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:395
+msgid "picture right"
+msgstr "картинка вправо"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:305
+msgid "back"
+msgstr "назад"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:452
+msgid "volume"
+msgstr "громкость"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:869
+msgid "holds current scale value"
+msgstr "блокирует текущее значение масштаба"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:758
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:759
+msgid "presentation 1x1"
+msgstr "представление 1x1"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:760
+msgid "presentation 1x2"
+msgstr "представление 1x2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:803
+msgid "top of nameable action stack"
+msgstr "вершина стека именованных действий"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:897
+msgid "stores numeric value in named variable"
+msgstr "сохраняет числовое значение в именнованной переменной"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:828
+msgid "logical OR operator"
+msgstr "логический оператор ИЛИ"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:310
+msgid "picture bottom"
+msgstr "низ картинки"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:852
+msgid "loops specified number of times"
+msgstr "цикл указанное число раз"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:907
+msgid "ycor of top of screen"
+msgstr "коор. У на вершине экрана"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:914
+msgid "sensor voltage"
+msgstr "вольтаж датчика"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:442
+msgid "title y"
+msgstr "координата У"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:441
+msgid "title x"
+msgstr "координата Х"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:326
+msgid "fill screen"
+msgstr "заполнение"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:415
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:416
+msgid "set xy"
+msgstr "координаты"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:445
+msgid "trash"
 msgstr ""
 
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:376
+msgid "polar"
+msgstr "полярный"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:388
+msgid "repeat"
+msgstr "повтор"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:792
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:218
+msgid "Save as image"
+msgstr "Сохранить как картинку"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:712
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:768
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:243
+msgid "Edit"
+msgstr "Редактировать"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:809
+msgid "identity operator used for extending blocks"
+msgstr "тождественный оператор используемый для расширения блоков"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:789
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr "делит верхнее число (делитель) на нижнее (знаменатель)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:384
+msgid "max"
+msgstr "максимум"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:906
+msgid "holds current text size (can be used in place of a number block)"
+msgstr ""
+"блокирует текущий размер текста (может использовать вместе с нумерованными "
+"блоками)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:845
+msgid "prints value in status block at bottom of the screen"
+msgstr "печатает значение в блоке статуса на вершине экрана"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:325
+msgid "extras"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:427
+msgid "start fill"
+msgstr ""
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:383
+msgid "push"
+msgstr "затолкнуть"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:822
+#, fuzzy
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+"программируемый блок: используется для добавления дополнительных "
+"математических выражений с множеством переменных, напр. син(х+у+z)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:392
+msgid "restore all"
+msgstr "вернуть всё"
+
+#~ msgid "<Alt>d"
+#~ msgstr "<Alt>d"
+
+#~ msgid "Save Logo"
+#~ msgstr "Сохранить Logo"
+
+#~ msgid "<Ctrl>o"
+#~ msgstr "<Ctrl>o"
+
+#~ msgid "bulleted list"
+#~ msgstr "маркированный список"
+
+#~ msgid "picture"
+#~ msgstr "картинка"
+
+#~ msgid "2×2 pictures"
+#~ msgstr "картинка 2х2"
+
+#~ msgid "2×1 pictures"
+#~ msgstr "картинка 2х1"
+
+#~ msgid "1×2 pictures"
+#~ msgstr "картинка 1х2"
+
+#~ msgid "1×1 picture"
+#~ msgstr "картинка 1х1"
+
+#~ msgid "name"
+#~ msgstr "имя"
+
+#, fuzzy
+#~ msgid "load my block"
+#~ msgstr "загрузить мой проект"
+
+#~ msgid "stack 2"
+#~ msgstr "цепь 2"
+
+#~ msgid "stack 1"
+#~ msgstr "цепь 1"
+
+#~ msgid "Keyboard"
+#~ msgstr "Клавиатура"
+
+#~ msgid "else"
+#~ msgstr "иначе"
+
+#~ msgid "My Blocks"
+#~ msgstr "Мои блоки"
+
+#~ msgid "Numbers"
+#~ msgstr "Числа"
+
+#~ msgid "Templates"
+#~ msgstr "Шаблоны"
+
+#~ msgid "read key"
+#~ msgstr "считать клавишу"
+
+#~ msgid "clean"
+#~ msgstr "очистить"
+
+#~ msgid "sound"
+#~ msgstr "звук"
+
+#, fuzzy
+#~ msgid "text color"
+#~ msgstr "цвет"
+
+#~ msgid "Pen"
+#~ msgstr "Перо"
+
+#~ msgid "hide palette"
+#~ msgstr "скрыть палитру"
+
+#~ msgid "stack"
+#~ msgstr "цепь"
+
+#~ msgid "run"
+#~ msgstr "запуск"
+
+#~ msgid "stop stack"
+#~ msgstr "конец цепи"
+
+#~ msgid "hres"
+#~ msgstr "высота"
+
+#~ msgid "vres"
+#~ msgstr "ширина"

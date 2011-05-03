@@ -1,0 +1,234 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-17 10:53-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.0.1\n"
+
+#: 
+msgid "Turtle Art"
+msgstr "Tartaruga"
+
+#:
+msgid "Flow"
+msgstr "Fluxo"
+
+#:
+msgid "forever"
+msgstr "para sempre"
+
+#:
+msgid "if"
+msgstr "si"
+
+#:
+msgid "then"
+msgstr "então"
+
+#:
+msgid "else"
+msgstr "senão"
+
+#:
+msgid "repeat"
+msgstr "repetir"
+
+#:
+msgid "stop stack"
+msgstr "parar pilha"
+
+#:
+msgid "wait"
+msgstr "esperar"
+
+#:
+msgid "My Blocks"
+msgstr "Os meus blocos"
+
+#:
+msgid "box 1"
+msgstr "caixa 1"
+
+#:
+msgid "box 2"
+msgstr "caixa 2"
+
+#:
+msgid "stack 1"
+msgstr "pilha 1"
+
+#:
+msgid "stack 2"
+msgstr "pilha 2"
+
+#:
+msgid "store in box 1"
+msgstr "por na caixa 1"
+
+#:
+msgid "store in box 2"
+msgstr "por na caixa 2"
+
+#:
+msgid "Numbers"
+msgstr "Números"
+
+#:
+msgid "number"
+msgstr "número"
+
+#:
+msgid "and"
+msgstr "e"
+
+#:
+msgid "or"
+msgstr "ou"
+
+#:
+msgid "not"
+msgstr "não"
+
+#:
+msgid "random"
+msgstr "aleatório"
+
+#:
+msgid "min"
+msgstr "mín"
+
+#:
+msgid "max"
+msgstr "máx"
+
+#:
+msgid "mod"
+msgstr "mód"
+
+#:
+msgid "print"
+msgstr "imprimir"
+
+#:
+msgid "Pen"
+msgstr "Caneta"
+
+#:
+msgid "color"
+msgstr "cor"
+
+#:
+msgid "shade"
+msgstr "tom"
+
+#:
+msgid "fill screen"
+msgstr "encher ecrã"
+
+#:
+msgid "pen up"
+msgstr "caneta acima"
+
+#:
+msgid "pen down"
+msgstr "caneta abaixo"
+
+#:
+msgid "set pen size"
+msgstr "ajustar tamanho da caneta"
+
+#:
+msgid "pen size"
+msgstr "tamanho da caneta"
+
+#:
+msgid "set shade"
+msgstr "ajustar tom"
+
+#:
+msgid "set color"
+msgstr "ajustar cor"
+
+#:
+msgid "Blocks"
+msgstr "Blocos"
+
+#:
+msgid "Turtle"
+msgstr "Tartaruga"
+
+#:
+msgid "forward"
+msgstr "avante"
+
+#:
+msgid "back"
+msgstr "atrás"
+
+#:
+msgid "right"
+msgstr "direita"
+
+#:
+msgid "left"
+msgstr "esquerda"
+
+#:
+msgid "arc"
+msgstr "arco"
+
+#:
+msgid "angle"
+msgstr "ângulo"
+
+#:
+msgid "radius"
+msgstr "rádio"
+
+#:
+msgid "heading"
+msgstr "cabeçalho"
+
+#:
+#, fuzzy
+msgid "set heading"
+msgstr "seth"
+
+#:
+msgid "clean"
+msgstr "limpar"
+
+#:
+msgid "set xy"
+msgstr "ajustar xy"
+
+#:
+msgid "x"
+msgstr "x"
+
+#:
+msgid "y"
+msgstr "y"
+
+#:
+msgid "xcor"
+msgstr "xcor"
+
+#:
+msgid "ycor"
+msgstr "ycor"
+
+#:
+msgid "Project"
+msgstr ""
+
+#:
+msgid "Samples"
+msgstr ""

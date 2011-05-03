@@ -2,235 +2,1766 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: 2009-01-29 00:14-0500\n"
-"Last-Translator: Γιάννης Κασκαμανίδης <ttnfy17@yahoo.gr>\n"
+"POT-Creation-Date: 2011-03-23 03:03+0200\n"
+"PO-Revision-Date: 2011-02-21 22:57+0200\n"
+"Last-Translator: John Sarlis <sarlis@sch.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0rc2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.1\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
-msgstr "Η Τέχνη της Χελώνας"
+msgstr "Η Χελωνοτέχνη"
 
-#:
-msgid "Flow"
-msgstr "Ροή"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:657
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:658
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:659
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:660
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:661
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:662
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:989
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1011
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1032
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1074
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1116
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1158
+msgid "Title"
+msgstr "Τίτλος"
 
-#:
-msgid "forever"
-msgstr "για πάντα"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:390
+msgid "resistance"
+msgstr "αντίσταση"
 
-#:
-msgid "if"
-msgstr "εάν"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:462
+msgid "yellow"
+msgstr "κίτρινο"
 
-#:
-msgid "then"
-msgstr "τότε"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:842
+msgid "displays polar coordinates"
+msgstr "εμφανίζει τις πολικές συντεταγμένες"
 
-#:
-msgid "else"
-msgstr "αλλιώς"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:783
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "αδειάζει το ΠΜΤΕ (Πρώτο-Μέσα Τελευταίο-Έξω)"
 
-#:
-msgid "repeat"
-msgstr "επανάληψη"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:358
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:448
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:449
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:450
+msgid " "
+msgstr " "
 
-#:
-msgid "stop stack"
-msgstr "σταμάτημα στοίβας"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:811
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr ""
+"εάν - τότε ο τελεστής που χρησιμοποιεί λογικές τιμές τελεστών από την παλέτα "
+"αριθμών"
 
-#:
-msgid "wait"
-msgstr "αναμονή"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:808
+msgid "jogs stack right"
+msgstr "ώθηση στοίβας προς τα δεξιά"
 
-#:
-msgid "My Blocks"
-msgstr "Τα τμήματά μου"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:812
+msgid "Sugar Journal media object"
+msgstr "Ημερολόγιο του Sugar: αντικείμενο πολυμέσων"
 
-#:
-msgid "box 1"
-msgstr "πλαίσιο 1"
-
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:313
 msgid "box 2"
 msgstr "πλαίσιο 2"
 
-#:
-msgid "stack 1"
-msgstr "στοίβα 1"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:312
+msgid "box 1"
+msgstr "πλαίσιο 1"
 
-#:
-msgid "stack 2"
-msgstr "στοίβα 2"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:878
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:254
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:860
+msgid "Step"
+msgstr "Βήμα"
 
-#:
-msgid "store in box 1"
-msgstr "αποθήκευση στο πλαίσιο 1"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:847
+msgid "multiplies two numeric inputs"
+msgstr "πολλαπλασιάζει δύο αριθμούς"
 
-#:
-msgid "store in box 2"
-msgstr "αποθήκευση στο πλαίσιο 2"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:177
+msgid "presentation"
+msgstr "παρουσίαση"
 
-#:
-msgid "Numbers"
-msgstr "Αριθμοί"
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:248
+msgid "Show/hide blocks"
+msgstr "Εμφάνιση/Απόκρυση εντολών"
 
-#:
-msgid "number"
-msgstr "αριθμός"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:299
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:312
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:324
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:341
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:355
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:867
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:247
+msgid "Hide palette"
+msgstr "Απόκρυψη παλέτας"
 
-#:
-msgid "and"
-msgstr "και"
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:217
+msgid "Save As"
+msgstr "Αποθήκευση ως"
 
-#:
-msgid "or"
-msgstr "ή"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:320
+msgid "cyan"
+msgstr "κυανό"
 
-#:
-msgid "not"
-msgstr "όχι"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:857
+msgid "xcor of right of screen"
+msgstr "xσυντ από δεξιά της οθόνης"
 
-#:
-msgid "random"
-msgstr "τυχαίο"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:793
+msgid "Palette of extra options"
+msgstr "Παλέτα πρόσθετων επιλογών"
 
-#:
-msgid "min"
-msgstr "ελάχιστο"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:786
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:219
+msgid "Save as HTML"
+msgstr "Αποθήκευση ως HTML"
 
-#:
-msgid "max"
-msgstr "μέγιστο"
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:187
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr "Κατάλογος ρυθμίσεων μη εγγράψιμος: %s"
 
-#:
-msgid "mod"
-msgstr "mod"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:816
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2416
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2420
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:337
+msgid "heading"
+msgstr "επικεφαλίδα"
 
-#:
-msgid "print"
-msgstr "εκτύπωση"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:868
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr ""
+"αποθηκεύει τα γραφικά της Χελώνας ως αρχεία SVG στο Ημερολόγιο του Sugar"
 
-#:
-msgid "Pen"
-msgstr "Στιλό"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:883
+msgid "draws text or show media from the Journal"
+msgstr "γράφει κείμενο ή εμφανίζει πολυμέσα από το Ημερολόγιο"
 
-#:
-msgid "color"
-msgstr "χρώμα"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:308
+msgid "blue"
+msgstr "μπλε"
 
-#:
-msgid "shade"
-msgstr "σκιά"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:781
+msgid "displays Cartesian coordinates"
+msgstr "εμφανίζει Καρτεσιανές συντεταγμένες"
 
-#:
-msgid "fill screen"
-msgstr "γέμισμα οθόνης"
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:142
+msgid "No option action:"
+msgstr "Δεν υπάρχει επιλογή ενέργειας:"
 
-#:
-msgid "pen up"
-msgstr "στιλό πάνω"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:916
+msgid "jogs stack down"
+msgstr "ώθηση στοίβας προς τα κάτω"
 
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:851
+msgid "modular (remainder) operator"
+msgstr "αρθρωτός (υπόλοιπο) τελεστής"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:397
+msgid "save SVG"
+msgstr "αποθήκευση SVG"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:400
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:402
+msgid "top of stack"
+msgstr "κορυφή της στοίβας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:824
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:911
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:912
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:913
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr ""
+"εκτελεί τον κώδικα που βρέθηκε στο άρθρωμα tamyblock.py το οποίο εντοπίστηκε "
+"στο Ημερολόγιο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:365
 msgid "pen down"
 msgstr "στιλό κάτω"
 
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:315
+msgid " clean "
+msgstr " καθαρισμός "
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:454
+msgid "wait"
+msgstr "αναμονή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:311
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:430
+msgid "box"
+msgstr "πλαίσιο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:652
+msgid "Failed to upload!"
+msgstr "Αποτυχία αποστολής!"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:889
+msgid "invokes named action stack"
+msgstr "επίκληση της επώνυμης ενέργειας της στοίβας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:334
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:423
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:620
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:652
+msgid "action"
+msgstr "ενέργεια"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:910
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"κάνε-μέχρι-Αληθής τελεστής που χρησιμοποιεί λογικές τιμές τελεστών από την "
+"παλέτα αριθμών"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:61
+msgid "usage is"
+msgstr "το σύνηθες είναι"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:779
+msgid "Variable 2 (numeric value)"
+msgstr "μεταβλητή 2 (αριθμητική τιμή)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:743
+msgid "divide"
+msgstr "διαίρεση"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:638
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:639
+msgid "picture name"
+msgstr "όνομα εικόνας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:830
+msgid "Move the cursor over the orange palette for help."
+msgstr "Μετακινείστε το δείκτη προς τις πορτοκαλί παλέτες για λήψη βοήθειας."
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:780
+msgid "named variable (numeric value)"
+msgstr "μεταβλητή με όνομα (αριθμητική τιμή)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:603
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:861
+msgid "next"
+msgstr "επόμενο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:748
+msgid "if then"
+msgstr "εάν τότε"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:410
 msgid "set pen size"
 msgstr "ορισμός μεγέθους στιλό"
 
-#:
-msgid "pen size"
-msgstr "μέγεθος στιλό"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:835
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:900
+msgid "presentation template: select Journal object (no description)"
+msgstr ""
+"πρότυπο παρουσίασης: επιλέξτε αντικείμενο από το Ημερολόγιο (χωρίς "
+"περιγραφή)"
 
-#:
-msgid "set shade"
-msgstr "ορισμός σκιάς"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:447
+msgid "until"
+msgstr "μέχρι"
 
-#:
-msgid "set color"
-msgstr "ορισμός χρώματος"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:790
+msgid "permanently deletes items in trash"
+msgstr "διαγράφει μόνιμα τα αντικείμενα του κάδου ανακύκλωσης"
 
-#:
-msgid "Blocks"
-msgstr "Τμήματα"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:801
+msgid "top of Action 1 stack"
+msgstr "κορυφή της στοίβας της ενέργειας 1"
 
-#:
-msgid "Turtle"
-msgstr "Χελώνα"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:820
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+"ένα προγραμματιστικό τμήμα εντολών: χρησιμοποιείται για την προσθήκη "
+"προχωρημένων μαθηματικών εξισώσεων μιας μεταβλητής, π.χ. sin(x)"
 
-#:
-msgid "forward"
-msgstr "μπροστά"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:795
+msgid "Palette of flow operators"
+msgstr "Παλέτα τελεστών ροής"
 
-#:
-msgid "back"
-msgstr "πίσω"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:864
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:866
+msgid "top of a collapsed stack"
+msgstr "κορυφή μιας στοίβας που κατέρρευσε"
 
-#:
-msgid "right"
-msgstr "δεξιά"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:810
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+"εάν - τότε άλλος τελεστής που χρησιμοποιεί λογικές τιμές τελεστών από την "
+"παλέτα αριθμών"
 
-#:
-msgid "left"
-msgstr "αριστερά"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:882
+msgid "holds current pen shade"
+msgstr "συγκρατεί την τρέχουσα σκιά του στιλό"
 
-#:
-msgid "arc"
-msgstr "τόξο"
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:615
+msgid "Login failed"
+msgstr "Η σύνδεση απέτυχε"
 
-#:
-msgid "angle"
-msgstr "γωνία"
-
-#:
-msgid "radius"
-msgstr "ακτίνα"
-
-#:
-msgid "heading"
-msgstr "κεφαλίδα"
-
-#:
+#
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:409
 msgid "set heading"
 msgstr "ορισμός επικεφαλίδας"
 
-#:
-msgid "clean"
-msgstr "καθαρισμός"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:361
+msgid "numbers"
+msgstr "αριθμοί"
 
-#:
-msgid "set xy"
-msgstr "ορισμός xy"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:850
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr "Το χρώμα ΚΠΜ κάτω από τη χελώνα προωθήθηκε στη Στοίβα"
 
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:806
+msgid "declutters canvas by hiding blocks"
+msgstr "γέμισμα του καμβά με κρυμμένα εντολές"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:879
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:877
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:883
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:868
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:459
+msgid "write"
+msgstr "γράφω"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:771
+msgid "Import/Export"
+msgstr "Εισαγωγή/Εξαγωγή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:881
+msgid "<Ctrl>d"
+msgstr "<Ctrl>d"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:875
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:870
+msgid "<Ctrl>b"
+msgstr "<Ctrl>b"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:799
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr ""
+"διατήρηση τρέχοντος επιπέδου του γκρίζου (μπορεί να χρησιμοποιηθεί στη θέση "
+"ενός τμήματος αριθμού )"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:746
+msgid "horizontal space"
+msgstr "οριζόντιο διάστημα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:898
+msgid "string value"
+msgstr "αλφαριθμητική τιμή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:805
+msgid "I don't know how to"
+msgstr "Δεν γνωρίζω πως"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:414
+msgid "set text size"
+msgstr "ορισμός μεγέθους κειμένου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:548
+msgid "Username:"
+msgstr "Όνομα χρήστη:"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:891
+msgid "starts filled polygon (used with end fill block)"
+msgstr ""
+"Έναρξη ενός γεμάτου πολύγωνου (χρησιμοποιείται μαζί με τον τερματισμό ενός "
+"γεμάτου μπλοκ)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:838
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:903
+msgid "presentation template: select four Journal objects"
+msgstr "πρότυπο παρουσίασης: επιλέξτε τέσσερα αντικείμενα από το Ημερολόγιο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:804
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+"διατήρηση τρέχουσας επικεφαλίδας της χελώνας (μπορεί να χρησιμοποιηθεί στη "
+"θέση μιας αριθμητικής εντολής)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:873
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "ορισμός του επιπέδου γκριζαρίσματος της γραμμής που σχεδιάζει η χελώνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:558
+msgid "Password:"
+msgstr "Κωδικός πρόσβασης:"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:429
+msgid "stop action"
+msgstr "σταμάτημα ενέργειας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:333
+msgid "green"
+msgstr "πράσινο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:326
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:417
+msgid "shade"
+msgstr "σκιά"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:794
+msgid "fills the background with (color, shade)"
+msgstr "γέμισμα του παρασκηνίου με (χρώμα, σκιά)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:920
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"διατήρηση τρέχουσας τιμής της x-συντεταγμένης της χελώνας (μπορεί να "
+"χρησιμοποιηθεί στη θέση ενός αριθμού τμήματος)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:396
+msgid "save picture"
+msgstr "αποθήκευση εικόνας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:347
+msgid "keyboard"
+msgstr "πληκτρολόγιο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:391
+msgid "restore last"
+msgstr "επαναφορά τελευταίου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:819
+msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
+msgstr ""
+"μια εντολή προγραμματισμού: χρησιμοποιείται για την εισαγωγή προχωρημένων "
+"μαθηματικών εξισώσεων, π.χ. ημ(x)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:454
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:820
+msgid "Rescale coordinates up"
+msgstr "Αύξηση κλιμάκωσης συντεταγμένων"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:367
+msgid "pen up"
+msgstr "στιλό πάνω"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:362
+msgid "orange"
+msgstr "πορτοκαλί"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:917
+msgid "pauses program execution a specified number of seconds"
+msgstr ""
+"παύει την εκτέλεση του προγράμματος για καθορισμένο αριθμό δευτερολέπτων"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:848
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "προωθεί την τιμή στη ΠΜΤΕ (πρώτη-μέσα τελευταία-έξω στοίβα)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:342
+msgid "then"
+msgstr "τότε"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:756
+msgid "did not output to"
+msgstr "δεν έγινε εξαγωγή στο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:359
+msgid "not"
+msgstr "όχι"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:749
+msgid "if then else"
+msgstr "εάν τότε άλλο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:894
+msgid "stops current action"
+msgstr "διακόπτει την τρέχουσα ενέργεια"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:858
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "περιστροφή της χελώνας δεξιόστροφα (γωνία σε μοίρες)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:815
+msgid "xcor of left of screen"
+msgstr "xσυντ από αριστερά της οθόνης"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:849
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+"επιστρέφει έναν τυχαίο αριθμό μεταξύ των ελάχιστων (επάνω) και των μέγιστων "
+"(κάτω) τιμών"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:301
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:446
+msgid "turtle"
+msgstr "χελώνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:823
+msgid "displays next palette"
+msgstr "εμφανίζει την επόμενη παλέτα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:339
+msgid "hide blocks"
+msgstr "απόκρυψη εντολών"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:879
+msgid "sets size of text drawn by turtle"
+msgstr "ορισμός μεγέθους του κειμένου που γράφει η χελώνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:817
+msgid "logical less-than operator"
+msgstr "λογικός τελεστής - μικρότερο από (<)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:307
+msgid "blocks"
+msgstr "ομάδες"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:856
+msgid "restore all blocks from trash"
+msgstr "επαναφέρει όλες τις εντολές από τον κάδο ανακύκλωσης"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:216
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:431
+msgid "store in box 1"
+msgstr "αποθήκευση στο πλαίσιο 1"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:432
+msgid "store in box 2"
+msgstr "αποθήκευση στο πλαίσιο 2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:440
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:764
+msgid "text size"
+msgstr "μέγεθος κειμένου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:798
+msgid "hides the Sugar toolbars"
+msgstr "αποκρύπτει τις εργαλειοθήκες του Sugar"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:222
+msgid "Upload to Web"
+msgstr "Αποστολή στο Web"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:380
+msgid "print"
+msgstr "εκτύπωση"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:386
+msgid "red"
+msgstr "κόκκινο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:406
+msgid "sensors"
+msgstr "αισθητήρες"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:789
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:220
+msgid "Save as Logo"
+msgstr "Αποθήκευση ως λογότυπο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:853
+msgid "sensor input resistance"
+msgstr "αισθητήρας αντίστασης εισόδου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:872
+msgid "sets color of the line drawn by the turtle"
+msgstr "ορισμός χρώματος της γραμμής που σχεδιάζει η χελώνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:413
+msgid "set text color"
+msgstr "ορισμός χρώματος κειμένου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:871
+msgid "Palette of sensor blocks"
+msgstr "Παλέτα με μπλοκ αισθητήρων"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:754
+msgid "number"
+msgstr "αριθμός"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:799
+msgid "Import project from the Journal"
+msgstr "Εισαγωγή έργου από το Ημερολόγιο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:346
+msgid "query keyboard"
+msgstr "ερώτημα πληκτρολογίου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:426
+msgid "start"
+msgstr "έναρξη"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:443
+msgid "top"
+msgstr "κορυφή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:589
+msgid "Submit to Web"
+msgstr "Αποστολή στο Web"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:809
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:228
+msgid "Cartesian coordinates"
+msgstr "Καρτεσιανές συντεταγμένες"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:716
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:765
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:238
+msgid "View"
+msgstr "Προβολή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:411
+msgid "set scale"
+msgstr "ορισμός κλίμακας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:457
+msgid "white"
+msgstr "λευκό"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:890
+msgid "connects action to toolbar run buttons"
+msgstr "συνδέει την ενέργεια με τα πλήκτρα εκτέλεσης της γραμμής εργαλείων"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:762
+msgid "presentation 2x2"
+msgstr "παρουσίαση 2X2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:805
+msgid "the canvas height"
+msgstr "το ύψος του καμβά"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:330
+msgid "full screen"
+msgstr "πλήρης οθόνη"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:761
+msgid "presentation 2x1"
+msgstr "παρουσίαση 2X1"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:752
+msgid "minus"
+msgstr "πλην"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:302
+msgid "and"
+msgstr "και"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:998
+msgid "as input"
+msgstr "ως εισαγωγή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:905
+msgid "holds current text color (can be used in place of a number block)"
+msgstr ""
+"διατήρηση τρέχοντος χρώματος του κειμένου (μπορεί να χρησιμοποιηθεί στη θέση "
+"ενός αριθμού τμήματος)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:832
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+"διατήρηση τρέχοντος μεγέθους του στιλό (μπορεί να χρησιμοποιηθεί στη θέση "
+"ενός αριθμού τμήματος)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:303
+msgid "angle"
+msgstr "γωνία"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:384
+msgid "min"
+msgstr "ελάχιστο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:831
+msgid "Palette of pen commands"
+msgstr "Παλέτα εντολών του στιλό"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:846
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "εμφανίζει την τιμή στη ΠΜΤΕ (πρώτη-μέσα τελευταία-έξω στοίβα)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:444
+msgid "picture top"
+msgstr "εικόνα στην κορυφή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:918
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"κάνε-ενώ-Αληθής τελεστής που χρησιμοποιεί λογικές τιμές τελεστών από την "
+"παλέτα αριθμών"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:225
+msgid "File"
+msgstr "Αρχείο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:830
+msgid "Turtle will draw when moved."
+msgstr "Η χελώνα θα σχεδιάζει καθώς μετακινείται."
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:777
+msgid "ycor of bottom of screen"
+msgstr "yσυντ από το κάτω μέρος της οθόνης"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:862
+msgid "bottom block in a collapsed stack: click to open"
+msgstr ""
+"κάτω εντολή σε μια στοίβα που μπορεί να καταρρεύσει: κάντε κλικ για άνοιγμα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:834
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:899
+msgid "presentation template: select Journal object (with description)"
+msgstr ""
+"πρότυπο παρουσίασης: επιλέξτε αντικείμενο από το Ημερολόγιο (με περιγραφή)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:826
+msgid "Palette of numeric operators"
+msgstr "Παλέτα αριθμητικών τελεστών"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:756
+msgid "multiply"
+msgstr "πολλαπλασιασμός"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:876
+msgid "sets the scale of media"
+msgstr "ορισμός της κλίμακας των πολυμέσων"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:328
+msgid "forever"
+msgstr "για πάντα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:877
+msgid "sets shade of the line drawn by the turtle"
+msgstr "ορισμός σκιάς της γραμμής που σχεδιάζει η χελώνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:327
+msgid "flow"
+msgstr "ροή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:273
+msgid "snapshot"
+msgstr "στιγμιότυπο οθόνης"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:836
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:837
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:901
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:902
+msgid "presentation template: select two Journal objects"
+msgstr "πρότυπο παρουσίασης: επιλέξτε δύο αντικείμενο από το Ημερολόγιο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:822
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:233
+msgid "Grow blocks"
+msgstr "Ανάπτυξη εντολών"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:805
+msgid "Fullscreen"
+msgstr "Πλήρης οθόνη"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:154
+msgid "File not found"
+msgstr "Το αρχείο δεν βρέθηκε"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:344
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:418
+msgid "show"
+msgstr "εμφάνιση"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:433
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:650
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:651
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:656
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:667
+msgid "text"
+msgstr "κείμενο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:384
+msgid "random"
+msgstr "τυχαίο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:800
+msgid "logical greater-than operator"
+msgstr "λογικός τελεστής - μεγαλύτερο από (>)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:318
+msgid "colors"
+msgstr "χρώματα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:378
+msgid "portfolio"
+msgstr "χαρτοφύλακας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:816
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "περιστρέφει τη χελώνα αριστερόστροφα (γωνία σε μοίρες)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:306
+msgid "black"
+msgstr "μαύρο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:886
+msgid "calculates square root"
+msgstr "υπολογίζει την τετραγωνική ρίζα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:921
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"διατήρηση τρέχουσας τιμής της y-συντεταγμένης της χελώνας (μπορεί να "
+"χρησιμοποιηθεί στη θέση ενός αριθμού τμήματος)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:745
+msgid "greater than"
+msgstr "μεγαλύτερο από"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:816
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2416
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2420
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:460
+msgid "xcor"
+msgstr "xσυντ"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:855
+msgid "restores most recent blocks from trash"
+msgstr "επαναφέρει τις πιο πρόσφατες εντολές από τον κάδο ανακύκλωσης"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:331
+msgid "gray"
+msgstr "γκρίζο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:723
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:774
+msgid "Help"
+msgstr "Βοήθεια"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:331
+msgid "Save project?"
+msgstr "Αποθήκευση έργου;"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:771
+msgid "chooses which turtle to command"
+msgstr "επιλέξτε σε ποια χελώνα θέλετε να δώσετε εντολή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:415
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:416
 msgid "x"
-msgstr "x"
+msgstr "χ"
 
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:878
+msgid "sets color of text drawn by the turtle"
+msgstr "ορισμός χρώματος του κειμένου που γράφει η χελώνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:374
+msgid "pitch"
+msgstr "τόνος"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:303
+msgid "arc"
+msgstr "τόξο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:303
+msgid "radius"
+msgstr "ακτίνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:812
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:230
+msgid "Polar coordinates"
+msgstr "Πολικές συντεταγμένες"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:412
+msgid "set shade"
+msgstr "ορισμός σκιάς"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:772
+msgid "logical AND operator"
+msgstr "λογικός τελεστής σύζευξης (και)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:539
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+"Πρέπει να έχετε έναν λογαριασμό στο http://turtleartsite.sugarlabs.org για "
+"να ανεβάσετε το έργο σας."
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:795
+msgid "Load my block"
+msgstr "Φόρτωση της δικής μου εντολής"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:825
+msgid "logical NOT operator"
+msgstr "λογικός τελεστής άρνησης (όχι)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:876
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:253
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:859
+msgid "Run"
+msgstr "Εκτέλεση"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:379
+msgid "show heap"
+msgstr "εμφάνιση στοίβας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:874
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "ορισμός επικεφαλίδας της χελώνας (0 προς την κορυφή της οθόνης)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:636
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:637
+msgid "label"
+msgstr "ετικέτα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:915
+msgid "microphone input volume"
+msgstr "ένταση εισόδου μικροφώνου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:569
+msgid "Title:"
+msgstr "Τίτλος:"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:776
+msgid "Palette of variable blocks"
+msgstr "Παλέτα μεταβλητών εντολών"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:827
+msgid "used as numeric input in mathematic operators"
+msgstr "χρησιμοποιείται ως αριθμός σε μαθηματικές πράξεις"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:593
+msgid "Cancel"
+msgstr "Άκυρο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:778
+msgid "Variable 1 (numeric value)"
+msgstr "μεταβλητή 1 (αριθμητική τιμή)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:841
+msgid "adds two alphanumeric inputs"
+msgstr "προσθέτει δύο αλφαριθμητικά"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:744
+msgid "equal"
+msgstr "ίσο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:998
+msgid "doesn't like"
+msgstr "δεν αρέσει"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:330
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr ""
+"Υπάρχει εργασία μη αποθηκευμένη. Θέλετε να την αποθηκεύσετε πριν την έξοδο;"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:884
+msgid "restores hidden blocks"
+msgstr "επαναφέρει κρυμμένες εντολές"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:319
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:615
+msgid "comment"
+msgstr "σχόλιο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:833
+msgid "Turtle will not draw when moved."
+msgstr "Η χελώνα δεν θα σχεδιάζει καθώς μετακινείται."
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:377
+msgid "pop"
+msgstr "απώθηση"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:338
+msgid "height"
+msgstr "ύψος"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:366
+msgid "pen size"
+msgstr "μέγεθος στιλό"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:389
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:421
+msgid "turtle shell"
+msgstr "κέλυφος χελώνας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:826
+msgid "Samples"
+msgstr "Παραδείγματα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:882
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:893
+msgid "Stop turtle"
+msgstr "Σταμάτημα χελώνας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:773
+msgid "moves turtle along an arc"
+msgstr "μετακίνηση της χελώνας κατά μήκος ενός τόξου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:792
+msgid "logical equal-to operator"
+msgstr "λογικός τελεστής ισότητας (=)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:785
+msgid "Palette of pen colors"
+msgstr "Παλέτα χρωμάτων του στιλό"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:895
+msgid "stores numeric value in Variable 1"
+msgstr "αποθηκεύει την αριθμητική τιμή στη μεταβλητή 1"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:896
+msgid "stores numeric value in Variable 2"
+msgstr "αποθηκεύει την αριθμητική τιμή στη μεταβλητή 2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:854
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:885
+msgid "put a custom 'shell' on the turtle"
+msgstr "τοποθετεί ένα τροποποιημένο \"κέλυφος\" πάνω στη χελώνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:775
+msgid "moves turtle backward"
+msgstr "μετακίνηση της χελώνας προς τα πίσω"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:888
+msgid "invokes Action 2 stack"
+msgstr "επίκληση της ενέργειας 2 της στοίβας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:331
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:346
+msgid "Show blocks"
+msgstr "Εμφάνιση εντολών"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:350
+msgid "picture left"
+msgstr "εικόνα αριστερά"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:430
+msgid "value"
+msgstr "τιμή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:455
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:456
+msgid "while"
+msgstr "λευκό"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:814
+msgid "holds results of query-keyboard block"
+msgstr "διατηρεί τα αποτελέσματα του ερωτήματος - εντολή πληκτρολογίου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:875
+msgid "sets size of the line drawn by the turtle"
+msgstr "ορισμός μεγέθους της γραμμής που σχεδιάζει η χελώνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:215
+msgid "Open"
+msgstr "Άνοιγμα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:592
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:593
+msgid "orientation"
+msgstr "προσανατολισμός"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:816
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2416
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2420
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:461
+msgid "ycor"
+msgstr "yσυντ"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:821
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+"μια προγραμματιστική εντολή: χρησιμοποιείται για την προσθήκη προχωρημένων "
+"μαθηματικών εξισώσεων πολλών μεταβλητών, π.χ. τ_ρ(x*x+y*y)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:342
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:343
+msgid "if"
+msgstr "εάν"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:880
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:881
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+"μετακίνηση της χελώνας στη θέση xσυντ, yσυντ; (0, 0) είναι στο κέντρο της "
+"οθόνης."
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:354
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:355
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:356
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:357
+msgid "Python"
+msgstr "Python"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:256
+msgid "Stop"
+msgstr "Διακοπή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:336
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:425
+msgid "action 2"
+msgstr "ενέργεια 2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:335
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:424
+msgid "action 1"
+msgstr "ενέργεια 1"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:428
+msgid "end fill"
+msgstr "τέλος γεμίσματος"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:801
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:241
+msgid "Copy"
+msgstr "Αντιγραφή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:803
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:242
+msgid "Paste"
+msgstr "Επικόλληση"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:405
+msgid "turtle sees"
+msgstr "η χελώνα βλέπει"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:753
+msgid "Python code"
+msgstr "Κώδικας Python"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:316
+msgid "empty heap"
+msgstr "κενός σωρός"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:843
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "ανάδυση της τιμής στον σωρό ΠΜΤΕ (πρώτη-μέσα τελευταία-έξω στοίβα)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:874
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:252
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:791
+msgid "Clean"
+msgstr "Καθαρισμός"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:844
+msgid "Palette of presentation templates"
+msgstr "Παλέτα προτύπων παρουσιάσεων"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:407
+msgid "set color"
+msgstr "ορισμός χρώματος"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:747
+msgid "identity"
+msgstr "ταυτότητα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:863
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:865
+msgid "top of a collapsible stack"
+msgstr "κορυφή μιας στοίβας που μπορεί να καταρρεύσει"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:415
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:416
 msgid "y"
 msgstr "y"
 
-#:
-msgid "xcor"
-msgstr "xγωνία"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:742
+msgid "audio"
+msgstr "ήχος"
 
-#:
-msgid "ycor"
-msgstr "yγωνία"
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:249
+msgid "Tools"
+msgstr "Εργαλεία"
 
-#:
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:348
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:349
+msgid "left"
+msgstr "αριστερά"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:818
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "αφαιρεί τον κάτω αριθμό από αυτόν της κορυφής"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:813
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr ""
+"ερώτημα για τα δεδομένα εισόδου του πληκτρολογίου (τα αποτελέσματα θα "
+"αποθηκευτούν στην εντολή πληκτρολογίου)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:314
+msgid "Cartesian"
+msgstr "Καρτεσιανό"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:451
+msgid "voltage"
+msgstr "τάση"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:782
+msgid "clears the screen and reset the turtle"
+msgstr "καθαρίζει την οθόνη και επανατοποθετεί τη χελώνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:861
+msgid "bottom block in a collapsibe stack: click to collapse"
+msgstr ""
+"κάτω εντολή σε μια στοίβα που μπορεί να καταρρεύσει: κάντε κλικ για "
+"κατάρρευση"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:870
+msgid "returns the color that the turtle \"sees\""
+msgstr "επιστρέφει το χρώμα που \"βλέπει\" αυτή η χελώνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:887
+msgid "invokes Action 1 stack"
+msgstr "επίκληση της ενέργειας 1 της στοίβας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:909
+msgid "Palette of turtle commands"
+msgstr "Παλέτα εντολών της χελώνας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:317
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:326
+msgid "color"
+msgstr "χρώμα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:796
+msgid "loops forever"
+msgstr "αδιάκοπη εκτέλεση σε βρόχο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:420
+msgid "show aligned"
+msgstr "εμφάνιση στοιχισμένων"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:762
 msgid "Project"
 msgstr "Έργο"
 
-#:
-msgid "Samples"
-msgstr "Παραδείγματα"
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:880
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:255
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:787
+msgid "Debug"
+msgstr "Αποσφαλμάτωση"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:387
+msgid "mod"
+msgstr "υπόλοιπο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:765
+msgid "vertical space"
+msgstr "κάθετο διάστημα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:892
+msgid "completes filled polygon (used with start fill block)"
+msgstr ""
+"ολοκληρώνει ένα γεμάτο πολύγωνο (χρησιμοποιείται μαζί με την έναρξη ενός "
+"γεμάτου μπλοκ)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:751
+msgid "less than"
+msgstr "μικρότερο από"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:919
+msgid "the canvas width"
+msgstr "το πλάτος του καμβά"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:757
+msgid "square root"
+msgstr "τετραγωνική ρίζα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:908
+msgid "Trashcan"
+msgstr "Σκουπιδοτενεκές"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:231
+msgid "Rescale coordinates"
+msgstr "Επανακλιμάκωση συντεταγμένων"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:419
+msgid "show blocks"
+msgstr "εμφάνιση εντολών"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:224
+msgid "Quit"
+msgstr "Έξοδος"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:393
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:394
+msgid "right"
+msgstr "δεξιά"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:788
+msgid "Sugar Journal description field"
+msgstr "Ημερολόγιο του Sugar: πεδίο περιγραφής"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:343
+msgid "then else"
+msgstr "τότε άλλο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:408
+msgid "set gray"
+msgstr "ορισμός γκρίζου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:763
+msgid "presentation bulleted list"
+msgstr "παρουσίαση λίστας με κουκκίδες"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:214
+msgid "New"
+msgstr "Νέο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:786
+msgid "places a comment in your code"
+msgstr "τοποθετεί ένα σχόλιο στον κώδικά σας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:385
+msgid "read pixel"
+msgstr "ανάγνωση εικονοστοιχείου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:404
+msgid "scale"
+msgstr "κλίμακα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:309
+msgid "bottom"
+msgstr "κάτω"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:382
+msgid "purple"
+msgstr "πορφυρό"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:446
+msgid "Rescale coordinates down"
+msgstr "Μείωση κλιμάκωσης συντεταγμένων"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tautils.py:523
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:399
+msgid "click to open"
+msgstr "κάντε κλικ για άνοιγμα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:364
+msgid "pen"
+msgstr "στιλό"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:840
+msgid "microphone input pitch"
+msgstr "τόνος εισαγωγής μικροφώνου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:579
+msgid "Description:"
+msgstr "Περιγραφή:"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:750
+msgid "journal"
+msgstr "Ημερολόγιο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:323
+msgid "empty trash"
+msgstr "κενός κάδος ανακύκλωσης"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:774
+msgid "Sugar Journal audio object"
+msgstr "Ημερολόγιο του Sugar: αντικείμενο ήχου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:257
+msgid "Turtle"
+msgstr "Χελώνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:829
+msgid "changes the orientation of the palette of blocks"
+msgstr "αλλάζει τον προσανατολισμό των παλετών που περιέχουν τις εντολές"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:430
+msgid "store in"
+msgstr "αποθήκευση στο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:334
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:353
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:869
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:807
+msgid "Hide blocks"
+msgstr "Απόκρυψη εντολών"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:755
+msgid "plus"
+msgstr "συν"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:363
+msgid "or"
+msgstr "ή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:839
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:904
+msgid "presentation template: list of bullets"
+msgstr "πρότυπο παρουσίασης: λίστα κουκκίδων"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:802
+msgid "top of Action 2 stack"
+msgstr "κορυφή της στοίβας της ενέργειας 2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:824
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:234
+msgid "Shrink blocks"
+msgstr "Συρρίκνωση εντολών"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2529
+msgid "image"
+msgstr "εικόνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:236
+msgid "Reset block size"
+msgstr "Ρύθμιση μεγέθους πλαισίου εντολών"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:784
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr ""
+"διατήρηση τρέχοντος χρώματος του στιλό (μπορεί να χρησιμοποιηθεί στη θέση "
+"μιας αριθμητικής εντολής)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:292
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:319
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:338
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:348
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:246
+msgid "Show palette"
+msgstr "Εμφάνιση παλέτας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:867
+msgid "saves a picture to the Sugar Journal"
+msgstr "αποθηκεύει την εικόνα στο Ημερολόγιο του Sugar"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:783
+msgid "Save snapshot"
+msgstr "Αποθήκευση στιγμιότυπου"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:458
+msgid "width"
+msgstr "πλάτος"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:797
+msgid "moves turtle forward"
+msgstr "μετακίνηση της χελώνας μπροστά"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:329
+msgid "forward"
+msgstr "μπροστά"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:614
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:655
+msgid "my box"
+msgstr "το δικό μου πλαίσιο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:395
+msgid "picture right"
+msgstr "εικόνα δεξιά"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:305
+msgid "back"
+msgstr "πίσω"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:452
+msgid "volume"
+msgstr "ένταση"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:869
+msgid "holds current scale value"
+msgstr "συγκρατεί την τρέχουσα τιμή της κλίμακας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:758
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:759
+msgid "presentation 1x1"
+msgstr "παρουσίαση 1X1"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:760
+msgid "presentation 1x2"
+msgstr "παρουσίαση 1X2"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:803
+msgid "top of nameable action stack"
+msgstr "κορυφή της επώνυμης ενέργειας της στοίβας"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:897
+msgid "stores numeric value in named variable"
+msgstr "αποθηκεύει την αριθμητική τιμή στην επώνυμη μεταβλητή"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:828
+msgid "logical OR operator"
+msgstr "λογικός τελεστής διάζευξης (ή)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:310
+msgid "picture bottom"
+msgstr "εικόνα στο κάτω μέρος"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:852
+msgid "loops specified number of times"
+msgstr "επανάληψη σύμφωνα με τον καθορισμένο αριθμό"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:907
+msgid "ycor of top of screen"
+msgstr "yσυντ από την κορυφή της οθόνης"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:914
+msgid "sensor voltage"
+msgstr "αισθητήρας τάσης"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:442
+msgid "title y"
+msgstr "τίτλος y"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:441
+msgid "title x"
+msgstr "τίτλος χ"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:326
+msgid "fill screen"
+msgstr "γέμισμα οθόνης"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:415
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:416
+msgid "set xy"
+msgstr "ορισμός χy"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:445
+msgid "trash"
+msgstr "κάδος ανακύκλωσης"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:376
+msgid "polar"
+msgstr "πολική"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:388
+msgid "repeat"
+msgstr "επανάληψη"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:792
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:218
+msgid "Save as image"
+msgstr "Αποθήκευση ως εικόνα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:712
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:768
+#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:243
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:809
+msgid "identity operator used for extending blocks"
+msgstr "τελεστής ταυτότητας που χρησιμοποιείται για τις εκτεταμένες εντολές"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:789
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+"διαιρεί τον αριθμό της κορυφής (αριθμητής) με τον αριθμό στο κάτω μέρος "
+"(παρανομαστής)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:384
+msgid "max"
+msgstr "μέγιστο"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:906
+msgid "holds current text size (can be used in place of a number block)"
+msgstr ""
+"διατήρηση τρέχοντος μεγέθους του κειμένου (μπορεί να χρησιμοποιηθεί στη θέση "
+"ενός αριθμού τμήματος)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:845
+msgid "prints value in status block at bottom of the screen"
+msgstr "εκτυπώνει την αξία στο πεδίο κατάστασης στο κάτω μέρος της οθόνης"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:325
+msgid "extras"
+msgstr "πρόσθετα"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:427
+msgid "start fill"
+msgstr "έναρξη γεμίσματος"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:383
+msgid "push"
+msgstr "ώθηση"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:822
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+"ένα προγραμματιστικό τμήμα εντολών: χρησιμοποιείται για την προσθήκη "
+"προχωρημένων μαθηματικών εξισώσεων πολλών μεταβλητών, π.χ. ημ(x+y+z)"
+
+#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:392
+msgid "restore all"
+msgstr "επαναφορά όλων"
+
+#~ msgid "<Alt>d"
+#~ msgstr "<Alt>d"
+
+#~ msgid "Save Logo"
+#~ msgstr "Αποθήκευση λογότυπου"
+
+#~ msgid "<Ctrl>o"
+#~ msgstr "<Ctrl>o"
+
+#~ msgid "bulleted list"
+#~ msgstr "λίστα κουκκίδων"
+
+#~ msgid "picture"
+#~ msgstr "εικόνα"
+
+#~ msgid "2×2 pictures"
+#~ msgstr "2Χ2 εικόνες"
+
+#~ msgid "2×1 pictures"
+#~ msgstr "2Χ1 εικόνες"
+
+#~ msgid "1×2 pictures"
+#~ msgstr "1Χ2 εικόνες"
+
+#~ msgid "1×1 picture"
+#~ msgstr "1Χ1 εικόνα"
+
+#~ msgid "name"
+#~ msgstr "όνομα"
+
+#~ msgid "holds current pen shade (can be used in place of a number block)"
+#~ msgstr ""
+#~ "διατήρηση τρέχουσας σκιάς του στιλό (μπορεί να χρησιμοποιηθεί στη θέση ενός "
+#~ "αριθμού τμήματος)"
+
+#~ msgid ""
+#~ "a programmable block: add your own math equation in the block, e.g., sin(x)"
+#~ msgstr ""
+#~ "ένα προγραμματιζόμενο πλαίσιο: προσθέστε τη δική σας μαθηματική εξίσωση στο "
+#~ "πλαίσιο, π.χ., sin(x)"
+
+#~ msgid "pop value off FILO"
+#~ msgstr "απομάκρυνση της τιμής εκτός ΠΜΤΕ"
+
+#~ msgid "show FILO in status block"
+#~ msgstr "εμφάνιση του ΠΜΤΕ στο πεδίο κατάστασης"
+
+#~ msgid "empty FILO"
+#~ msgstr "κενό ΠΜΤΕ"
+
+#~ msgid "wait specified number of seconds"
+#~ msgstr "αναμονή για καθορισμένο χρόνο σε δευτερόλεπτα"
+
+#~ msgid "do not continue current action"
+#~ msgstr "μην συνεχίζετε την τρέχουσα ενέργεια"
+
+#~ msgid "<Alt>p"
+#~ msgstr "<Alt>p"
+
+#~ msgid "<Alt>b"
+#~ msgstr "<Alt>b"
+
+#~ msgid "<Alt>e"
+#~ msgstr "<Alt>e"
+
+#~ msgid "<Alt>r"
+#~ msgstr "<Alt>r"
+
+#~ msgid "<Alt>w"
+#~ msgstr "<Alt>w"
+
+#~ msgid "<Alt>s"
+#~ msgstr "<Alt>s"
+
+#~ msgid "load my block"
+#~ msgstr "φόρτωση του δικού μου πλαισίου"
+
+#~ msgid "<Alt>o"
+#~ msgstr "<Alt>o"
+
+#~ msgid "stack 2"
+#~ msgstr "στοίβα 2"
+
+#~ msgid "stack 1"
+#~ msgstr "στοίβα 1"
+
+#~ msgid "Keyboard"
+#~ msgstr "Πληκτρολόγιο"
+
+#~ msgid "else"
+#~ msgstr "αλλιώς"
+
+#~ msgid "My Blocks"
+#~ msgstr "Τα τμήματά μου"
+
+#~ msgid "Numbers"
+#~ msgstr "Αριθμοί"
+
+#~ msgid "Templates"
+#~ msgstr "Πρότυπα"
+
+#~ msgid "read key"
+#~ msgstr "διάβασε κλειδί"
+
+#~ msgid "clean"
+#~ msgstr "καθαρισμός"
+
+#~ msgid "setyx"
+#~ msgstr "ορισμός yx"
+
+#~ msgid "sound"
+#~ msgstr "ήχος"
+
+#~ msgid "text color"
+#~ msgstr "χρώμα κειμένου"
+
+#~ msgid "Pen"
+#~ msgstr "Στιλό"
+
+#~ msgid "hide palette"
+#~ msgstr "απόκρυψη παλέτας"
+
+#~ msgid "stack"
+#~ msgstr "στοίβα"
+
+#~ msgid "save Logo"
+#~ msgstr "αποθήκευση λογότυπου"
+
+#~ msgid "run"
+#~ msgstr "εκτέλεση"
+
+#~ msgid "stop stack"
+#~ msgstr "σταμάτημα στοίβας"
+
+#~ msgid "hres"
+#~ msgstr "οριζ.ανάλυση"
+
+#~ msgid "vres"
+#~ msgstr "κατ.ανάλυση"
