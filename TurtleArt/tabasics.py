@@ -947,6 +947,11 @@ variable'))
                           label=_('restore all'),
                           help_string=_('restore all blocks from trash'))
 
+        palette.add_block('trashall',
+                          style='basic-style-tail',
+                          label=_('clear all'),
+                          help_string=_('move all blocks to trash'))
+
     # Block primitives
 
     def _prim_and(self, x, y):

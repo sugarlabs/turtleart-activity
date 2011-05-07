@@ -935,6 +935,10 @@ class TurtleArtWindow():
                     self._restore_latest_from_trash()
                 elif blk.name == 'empty':
                     self._empty_trash()
+                elif blk.name == 'trashall':
+                    for b in self.just_blocks():
+                        if b.type != 'trash':
+                            self._put_in_trash(find_top_block(b))
                 elif blk.name in MACROS:
                     self._new_macro(blk.name, x + 20, y + 20)
                 else:
