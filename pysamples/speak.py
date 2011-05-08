@@ -12,6 +12,7 @@
 def myblock(tw, arg):
     ''' Text to speech '''
 
+    TABLE = {'es': 'spanish'}
     import os
 
     pitch = None
@@ -31,7 +32,14 @@ def myblock(tw, arg):
     if type(text) == float and int(text) == text:
         text = int(text)
 
-    if pitch is None:
-        os.system('espeak "%s" --stdout | aplay' % (text))
+    lang = os.environ['LANG'][0:2]
+    if lang in TABLE:
+        language_option = '-v ' + TABLE[lang]
     else:
-        os.system('espeak "%s" -p "%s" --stdout | aplay' % (text, pitch))
+        language_option = ''
+    if pitch is None:
+        os.system('espeak %s "%s" --stdout | aplay' % (language_option,
+                                                         text))
+    else:
+        os.system('espeak %s "%s" -p "%s" --stdout | aplay' % (
+                language_option, text, pitch))
