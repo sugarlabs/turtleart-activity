@@ -137,7 +137,7 @@ class TurtleGraphics:
         self.bgrgb = [255, 248, 222]
         self.bgcolor = self.cm.alloc_color('#fff8de')
         self.textsize = 48  # deprecated
-        self.textcolor = self.cm.alloc_color('blue')
+        self.textcolor = self.cm.alloc_color('red')
         self.tw.active_turtle.show()
         self.shade = 0
         self.pendown = False
@@ -145,7 +145,6 @@ class TurtleGraphics:
         self.ycor = 0
         self.heading = 0
         self.pensize = 5
-        self.tcolor = 0
         self.color = 0
         self.gray = 100
         self.fill = False
@@ -193,7 +192,6 @@ class TurtleGraphics:
         self.setpensize(5, share)
         self.setgray(100, share)
         self.setcolor(0, share)
-        self.settextcolor(70)
         self.setshade(50, share)
         for turtle_key in iter(self.tw.turtles.dict):
             # Don't reset remote turtles
@@ -394,14 +392,12 @@ class TurtleGraphics:
         """ Set the pen color """
         try:
             self.color = c
-            self.tcolor = c
         except TypeError, ValueError:
             debug_output("bad value sent to %s" % (__name__),
                          self.tw.running_sugar)
             return
         self.tw.active_turtle.set_color(c)
         self.set_fgcolor()
-        self.set_textcolor()
         if self.tw.sharing() and share:
             event = "c|%s" % (data_to_string([self._get_my_nick(),
                                               round_int(c)]))
@@ -420,7 +416,6 @@ class TurtleGraphics:
         if self.gray > 100:
             self.gray = 100
         self.set_fgcolor()
-        self.set_textcolor()
         self.tw.active_turtle.set_gray(self.gray)
         if self.tw.sharing() and share:
             event = "g|%s" % (data_to_string([self._get_my_nick(),
@@ -429,13 +424,7 @@ class TurtleGraphics:
 
     def settextcolor(self, c):  # deprecated
         """ Set the text color """
-        try:
-            self.tcolor = c
-        except TypeError, ValueError:
-            debug_output("bad value sent to %s" % (__name__),
-                         self.tw.running_sugar)
-            return
-        self.set_textcolor()
+        return
 
     def settextsize(self, c):  # deprecated
         """ Set the text size """
@@ -455,7 +444,6 @@ class TurtleGraphics:
             return
         self.tw.active_turtle.set_shade(s)
         self.set_fgcolor()
-        self.set_textcolor()
         if self.tw.sharing() and share:
             event = "s|%s" % (data_to_string([self._get_my_nick(),
                                               round_int(s)]))
@@ -508,7 +496,7 @@ class TurtleGraphics:
 
     def set_textcolor(self):
         """ Set the text color to foreground color. """
-        self.tw.textcolor = self.fgcolor
+        return
 
     def setpen(self, bool, share=True):
         """ Lower or raise the pen """
@@ -555,7 +543,7 @@ class TurtleGraphics:
     def draw_text(self, label, x, y, size, w, share=True):
         """ Draw text """
         w *= self.tw.coord_scale
-        self.gc.set_foreground(self.tw.textcolor)
+        self.gc.set_foreground(self.fgcolor)
         fd = pango.FontDescription('Sans')
         try:
             fd.set_size(int(size * self.tw.coord_scale) * pango.SCALE)
