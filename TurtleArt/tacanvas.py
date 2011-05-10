@@ -229,14 +229,7 @@ class TurtleGraphics:
             return
         if self.pendown:
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
-        self.move_turtle()
-        if self.tw.saving_svg and self.pendown:
-            self.tw.svg_string += self.svg.new_path(oldx,
-                                      self.invert_y_coordinate(oldy))
-            self.tw.svg_string += self.svg.line_to(self.xcor,
-                                      self.invert_y_coordinate(self.ycor))
-            self.tw.svg_string += "\"\n"
-            self.tw.svg_string += self.svg.style()
+
         if self.tw.sharing() and share:
             event = "f|%s" % (data_to_string([self._get_my_nick(), int(n)]))
             self.tw.send_event(event)
@@ -373,7 +366,6 @@ class TurtleGraphics:
             self.gc.set_foreground(self.fgcolor)
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
 
-        self.move_turtle()
         if self.tw.sharing() and share:
             event = "x|%s" % (data_to_string([self._get_my_nick(),
                                               [round_int(x), round_int(y)]]))
@@ -639,6 +631,12 @@ class TurtleGraphics:
                     miny - int(self.pensize * self.tw.coord_scale / 2) - 3,
                     w + self.pensize * self.tw.coord_scale + 6,
                     h + self.pensize * self.tw.coord_scale + 6)
+        self.move_turtle()
+        if self.tw.saving_svg and self.pendown:
+            self.tw.svg_string += self.svg.new_path(x1, y1)
+            self.tw.svg_string += self.svg.line_to(x2, y2)
+            self.tw.svg_string += "\"\n"
+            self.tw.svg_string += self.svg.style()
 
     def turn_turtle(self):
         """ Change the orientation of the turtle """
