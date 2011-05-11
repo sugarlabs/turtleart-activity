@@ -182,7 +182,19 @@ class TurtleGraphics:
                     miny - self.pensize * self.tw.coord_scale / 2 - 3,
                     w + self.pensize * self.tw.coord_scale + 6,
                     h + self.pensize * self.tw.coord_scale + 6)
-        # TODO: Add SVG output
+        if self.tw.saving_svg and self.pendown:
+            self.svg.set_fill_color("#%02x%02x%02x" % (self.fgrgb[0],
+                                                       self.fgrgb[1],
+                                                       self.fgrgb[2]))
+            self.tw.svg_string += self.svg.new_path(poly_points[0][0],
+                                                    poly_points[0][1])
+            for p in range(len(poly_points)):
+                if p > 0:
+                    self.tw.svg_string += self.svg.line_to(poly_points[p][0],
+                                                           poly_points[p][1])
+            self.tw.svg_string += "\"\n"
+            self.tw.svg_string += self.svg.style()
+            self.svg.set_fill_color('none')
 
     def clearscreen(self, share=True):
         """Clear the canvas and reset most graphics attributes to defaults."""
