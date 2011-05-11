@@ -137,7 +137,7 @@ class TurtleGraphics:
         self.bgrgb = [255, 248, 222]
         self.bgcolor = self.cm.alloc_color('#fff8de')
         self.textsize = 48  # deprecated
-        self.textcolor = self.cm.alloc_color('red')
+        self.textcolor = self.cm.alloc_color('red')  # deprecated
         self.tw.active_turtle.show()
         self.shade = 0
         self.pendown = False
@@ -182,6 +182,7 @@ class TurtleGraphics:
                     miny - self.pensize * self.tw.coord_scale / 2 - 3,
                     w + self.pensize * self.tw.coord_scale + 6,
                     h + self.pensize * self.tw.coord_scale + 6)
+        # TODO: Add SVG output
 
     def clearscreen(self, share=True):
         """Clear the canvas and reset most graphics attributes to defaults."""
@@ -227,6 +228,7 @@ class TurtleGraphics:
             return
         if self.pendown:
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
+        self.move_turtle()
 
         if self.tw.sharing() and share:
             event = "f|%s" % (data_to_string([self._get_my_nick(), int(n)]))
@@ -363,6 +365,7 @@ class TurtleGraphics:
         if self.pendown and pendown:
             self.gc.set_foreground(self.fgcolor)
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
+        self.move_turtle()
 
         if self.tw.sharing() and share:
             event = "x|%s" % (data_to_string([self._get_my_nick(),
@@ -573,8 +576,8 @@ class TurtleGraphics:
             context.move_to(x, y + h)
             context.show_text(message)
 
-        if self.tw.saving_svg and self.pendown:
-            self.tw.svg_string += self.svg.text(x - self.width / 2,
+        if self.tw.saving_svg:  # and self.pendown:
+            self.tw.svg_string += self.svg.text(x, # - self.width / 2,
                                                 y + size, size, w, label)
         if self.tw.sharing() and share:
             event = "W|%s" % (data_to_string([self._get_my_nick(),
@@ -619,7 +622,6 @@ class TurtleGraphics:
                     miny - int(self.pensize * self.tw.coord_scale / 2) - 3,
                     w + self.pensize * self.tw.coord_scale + 6,
                     h + self.pensize * self.tw.coord_scale + 6)
-        self.move_turtle()
         if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.new_path(x1, y1)
             self.tw.svg_string += self.svg.line_to(x2, y2)
