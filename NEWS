@@ -1,3 +1,17 @@
+108
+
+ENHANCEMENTS
+
+* vspace, hspace run stack on mouse click (#2790)
+* added clear all button to Trash Palette
+* added language support to speak.py sample code
+
+BUG FIXES
+
+* Save to SVG was not working for setxy
+* Save to SVG was not working for fill
+* Save to SVG was broken for arc
+
 107
 
 ENHANCEMENTS
