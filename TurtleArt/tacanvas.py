@@ -320,11 +320,10 @@ class TurtleGraphics:
         self.xcor = cx - r * cos(self.heading * DEGTOR)
         self.ycor = cy + r * sin(self.heading * DEGTOR)
         if self.tw.saving_svg and self.pendown:
-            self.tw.svg_string += self.svg.new_path(oldx,
-                                      self.invert_y_coordinate(oldx))
-            self.tw.svg_string += self.svg.arc_to(self.xcor,
-                                      self.invert_y_coordinate(self.ycor),
-                                                  r, a, 0, s)
+            x, y = self.turtle_to_screen_coordinates(oldx, oldy)
+            self.tw.svg_string += self.svg.new_path(x, y)
+            x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
+            self.tw.svg_string += self.svg.arc_to(x, y, r, a, 0, s)
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
 
@@ -354,11 +353,10 @@ class TurtleGraphics:
         self.xcor = cx + r * cos(self.heading * DEGTOR)
         self.ycor = cy - r * sin(self.heading * DEGTOR)
         if self.tw.saving_svg and self.pendown:
-            self.tw.svg_string += self.svg.new_path(oldx,
-                                      self.invert_y_coordinate(oldy))
-            self.tw.svg_string += self.svg.arc_to(self.xcor,
-                                      self.invert_y_coordinate(self.ycor),
-                                                  r, a, 0, s)
+            x, y = self.turtle_to_screen_coordinates(oldx, oldy)
+            self.tw.svg_string += self.svg.new_path(x, y)
+            x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
+            self.tw.svg_string += self.svg.arc_to(x, y, r, a, 0, s)
             self.tw.svg_string += "\"\n"
             self.tw.svg_string += self.svg.style()
 
