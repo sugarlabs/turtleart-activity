@@ -980,7 +980,7 @@ bullets'))
     def _prim_save_svg(self, name):
         """ Save SVG to file """
         self.tw.canvas.svg_close()
-        self.tw.save_as_image(name, True)
+        self.tw.save_as_image(name, svg=True)
 
     def _prim_see(self):
         """ Read r, g, b from the canvas and return a corresponding palette
