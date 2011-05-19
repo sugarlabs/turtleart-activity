@@ -42,8 +42,8 @@ add_block method in the Palette class.
 
     # Next, you need to define what your block will do:
     # def_prim takes 3 arguments: the primitive name, the number of
-    # of arguments, 0 in this case, and the function to call, in this
-    # case, the canvas function to set the heading.
+    # arguments -- 0 in this case -- and the function to call -- in this
+    # case, the canvas.seth function to set the heading.
     self.tw.lc.def_prim('uturn', 0,
         lambda self: self.tw.canvas.seth(self.tw.canvas.heading + 180))
 
