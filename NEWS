@@ -5,6 +5,7 @@ ENHANCEMENTS
 * vspace, hspace run stack on mouse click (#2790)
 * added clear all button to Trash Palette
 * added language support to speak.py sample code
+* added 'scratch' and 'hoops' examples
 
 BUG FIXES
 
