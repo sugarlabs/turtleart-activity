@@ -158,6 +158,8 @@ class TurtleGraphics:
         """ Start accumulating points of a polygon to fill. """
         self.fill = True
         self.poly_points = []
+        if self.tw.saving_svg:
+            self.tw.svg_string += '<g>'
 
     def stop_fill(self):
         """ Fill the polygon. """
@@ -174,6 +176,8 @@ class TurtleGraphics:
                                                   shared_poly_points]))
             self.tw.send_event(event)
         self.poly_points = []
+        if self.tw.saving_svg:
+            self.tw.svg_string += '</g>'
 
     def fill_polygon(self, poly_points):
         minx, miny, w, h = calc_poly_bounds(poly_points)
