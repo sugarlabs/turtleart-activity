@@ -3,13 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2009-04-03 01:26-0400\n"
-"Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
+"PO-Revision-Date: 2010-01-25 07:20+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0rc2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.0.1\n"
 
 #: activity/activity.info:2
 msgid "Turtle Art"
@@ -75,7 +77,7 @@ msgstr "enregistrer en HTML"
 
 #: TurtleArtActivity.py
 msgid "save Logo"
-msgstr "enregistrer en logo"
+msgstr "enregistrer en Logo"
 
 #: TurtleArtActivity.py
 msgid "load my block"

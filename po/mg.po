@@ -7,19 +7,19 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2009-11-24 14:15-0400\n"
-"Last-Translator: Ny Menavazana <menavazana@gmail.com>\n"
+"PO-Revision-Date: 2010-05-03 10:15+0200\n"
+"Last-Translator: Zafimamy Gabriella Ralaivao <gabriella@intnet.mu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: mg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Pootle 1.2.1\n"
+"X-Generator: Pootle 2.0.3\n"
 
 #: activity/activity.info:2
 msgid "Turtle Art"
-msgstr "Zava-kanton'ny Sokatra (Turtle Art)"
+msgstr "Zavakanto Sokatra"
 
 #: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
 #: tasetup.py:53 tasetup.py:54
@@ -32,7 +32,7 @@ msgstr "lahatsoratra"
 
 #: tasetup.py:119 tasetup.py:120
 msgid "stack"
-msgstr "staka (stack)"
+msgstr "favosana"
 
 #: tasetup.py:125 tasetup.py:126
 msgid "box"
@@ -48,7 +48,7 @@ msgstr "Tetikasa"
 
 #:
 msgid "Save as"
-msgstr "Tehirizo ho"
+msgstr "Tehirizo hoe"
 
 #: TurtleArtActivity.py:173 TurtleArtActivity.py:262
 #: TurtleArtActivity.py:293
@@ -57,7 +57,7 @@ msgstr "afeno ny andian-doko"
 
 #: TurtleArtActivity.py:181 TurtleArtActivity.py:286
 msgid "hide blocks"
-msgstr "afeno ny vongana"
+msgstr "afeno ireo vongana"
 
 #: TurtleArtActivity.py:194
 msgid "run"
@@ -69,7 +69,7 @@ msgstr "dingana"
 
 #: TurtleArtActivity.py:210
 msgid "stop turtle"
-msgstr "ajanony i sokatra"
+msgstr "ajanony ny sokatra"
 
 #: TurtleArtActivity.py:236
 msgid "samples"
@@ -81,7 +81,7 @@ msgstr "tehirizo ho HTML"
 
 #: TurtleArtActivity.py
 msgid "save Logo"
-msgstr "tehirizo ny sary famantarana"
+msgstr "tehirizo ny Logo"
 
 #: TurtleArtActivity.py
 msgid "load my block"
@@ -98,7 +98,7 @@ msgstr "asehoy ireo bolongana"
 
 #:
 msgid "Flow"
-msgstr "Koriana"
+msgstr "Ampikoriano"
 
 #:
 msgid "forever"
@@ -110,11 +110,11 @@ msgstr "raha"
 
 #:
 msgid "then"
-msgstr "noho izany"
+msgstr "dia"
 
 #:
 msgid "else"
-msgstr "raha tsy izany"
+msgstr "raha tsy izany dia"
 
 #:
 msgid "repeat"
@@ -122,7 +122,7 @@ msgstr "avereno"
 
 #:
 msgid "stop stack"
-msgstr "ajanony ny andiany"
+msgstr "ajanony ny favosana"
 
 #:
 msgid "wait"
@@ -130,33 +130,33 @@ msgstr "andraso"
 
 #:
 msgid "My Blocks"
-msgstr "Ny bolongako"
+msgstr "Ireo bolongako"
 
 # can be 'boaty'<span class="translation-space"> </span>
 # 
 #:
 msgid "box 1"
-msgstr "vata 1"
+msgstr "boaty 1"
 
 #:
 msgid "box 2"
-msgstr "vata 2"
+msgstr "boaty 2"
 
 #:
 msgid "stack 1"
-msgstr "andiany 1"
+msgstr "favosana 1"
 
 #:
 msgid "stack 2"
-msgstr "andiany 2"
+msgstr "favosana 2"
 
 #:
 msgid "store in box 1"
-msgstr "ampidiro ao anaty vata 1"
+msgstr "tehirizo amin'ny boaty 1"
 
 #:
 msgid "store in box 2"
-msgstr "ampidiro ao anaty vata 2"
+msgstr "tehirizo amin'ny boaty 2"
 
 #:
 msgid "push"
@@ -164,15 +164,15 @@ msgstr "atoseho"
 
 #:
 msgid "pop"
-msgstr "avoahay"
+msgstr "abolabolao"
 
 #:
 msgid "Numbers"
-msgstr "Tarehimarika maromaro"
+msgstr "Ireo isa"
 
 #:
 msgid "number"
-msgstr "tarehimarika"
+msgstr "isa"
 
 #:
 msgid "and"
@@ -188,7 +188,7 @@ msgstr "tsy"
 
 #:
 msgid "random"
-msgstr "random"
+msgstr "kisendrasendra"
 
 #:
 msgid "min"
@@ -204,7 +204,7 @@ msgstr "mod"
 
 #:
 msgid "print"
-msgstr "soraty masinina"
+msgstr "ataovy pirinty"
 
 #:
 msgid "Pen"
@@ -216,7 +216,7 @@ msgstr "loko"
 
 #:
 msgid "shade"
-msgstr "matroka"
+msgstr "aloka"
 
 #:
 msgid "fill screen"
@@ -232,16 +232,16 @@ msgstr "ampidino ny penina"
 
 #:
 msgid "set pen size"
-msgstr "omeo ny refin'ny penina"
+msgstr "amboaro ny haben'ny penina"
 
 # pensily = penina
 #:
 msgid "pen size"
-msgstr "refin'ny penina"
+msgstr "haben'ny penina"
 
 #:
 msgid "set shade"
-msgstr "asio tandindona"
+msgstr "asio aloka"
 
 #:
 msgid "set color"
@@ -249,11 +249,11 @@ msgstr "asio loko"
 
 #:
 msgid "set text color"
-msgstr "omeo ny loko'ny lahatsoratra"
+msgstr "asio loko ny soratra"
 
 #:
 msgid "Blocks"
-msgstr "Bolongana"
+msgstr "Ireo bolongana"
 
 #:
 msgid "Turtle"
@@ -265,24 +265,24 @@ msgstr "diovy"
 
 #:
 msgid "forward"
-msgstr "mandrosoa"
+msgstr "mandroso"
 
 # ou 'miverena'
 #:
 msgid "back"
-msgstr "mihemora"
+msgstr "miverina"
 
 #:
 msgid "right"
-msgstr "ankavanana"
+msgstr "havanana"
 
 #:
 msgid "left"
-msgstr "ankavia"
+msgstr "havia"
 
 #:
 msgid "arc"
-msgstr "faribolana"
+msgstr "kihefy"
 
 #:
 msgid "angle"
@@ -339,7 +339,7 @@ msgstr "voltazy"
 
 #:
 msgid "resistance"
-msgstr ""
+msgstr "hahenjanana"
 
 #:
 msgid "Templates"

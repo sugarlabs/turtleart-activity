@@ -2,22 +2,98 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2011-04-20 18:01+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: km\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.0.1\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
+msgstr ""
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "ចំណងជើង"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "អត្ថបទ"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr ""
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr ""
+
+#: tasetup.py:127
+msgid "name"
+msgstr "ឈ្មោ"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "គម្រោង"
+
+#:
+msgid "Save as"
+msgstr "រក្សាទុកជា"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr ""
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr ""
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr ""
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "ជំហាន"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr ""
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr ""
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr ""
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr ""
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr ""
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr ""
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
 msgstr ""
 
 #:
@@ -26,7 +102,7 @@ msgstr ""
 
 #:
 msgid "forever"
-msgstr ""
+msgstr "ជារៀង​រហូត"
 
 #:
 msgid "if"
@@ -81,12 +157,20 @@ msgid "store in box 2"
 msgstr ""
 
 #:
-msgid "Numbers"
+msgid "push"
 msgstr ""
 
 #:
-msgid "number"
+msgid "pop"
 msgstr ""
+
+#:
+msgid "Numbers"
+msgstr "ចំនួន"
+
+#:
+msgid "number"
+msgstr "លេខ"
 
 #:
 msgid "and"
@@ -98,11 +182,11 @@ msgstr ""
 
 #:
 msgid "not"
-msgstr ""
+msgstr "មិន"
 
 #:
 msgid "random"
-msgstr ""
+msgstr "ព្រាវ"
 
 #:
 msgid "min"
@@ -118,19 +202,19 @@ msgstr ""
 
 #:
 msgid "print"
-msgstr ""
+msgstr "បោះពុម្ព"
 
 #:
 msgid "Pen"
-msgstr ""
+msgstr "ប៊ិក"
 
 #:
 msgid "color"
-msgstr ""
+msgstr "ពណ៌"
 
 #:
 msgid "shade"
-msgstr ""
+msgstr "ស្រមោល​"
 
 #:
 msgid "fill screen"
@@ -161,6 +245,10 @@ msgid "set color"
 msgstr ""
 
 #:
+msgid "set text color"
+msgstr ""
+
+#:
 msgid "Blocks"
 msgstr ""
 
@@ -169,8 +257,12 @@ msgid "Turtle"
 msgstr ""
 
 #:
-msgid "forward"
+msgid "clean"
 msgstr ""
+
+#:
+msgid "forward"
+msgstr "ទៅ​មុខ"
 
 #:
 msgid "back"
@@ -178,11 +270,11 @@ msgstr ""
 
 #:
 msgid "right"
-msgstr ""
+msgstr "ស្តាំ"
 
 #:
 msgid "left"
-msgstr ""
+msgstr "ឆ្វេង"
 
 #:
 msgid "arc"
@@ -190,23 +282,19 @@ msgstr ""
 
 #:
 msgid "angle"
-msgstr ""
+msgstr "មុំ"
 
 #:
 msgid "radius"
-msgstr ""
+msgstr "កាំ"
 
 #:
 msgid "heading"
 msgstr ""
 
-#:
+#
 msgid "set heading"
 msgstr "seth"
-
-#:
-msgid "clean"
-msgstr ""
 
 #:
 msgid "set xy"
@@ -229,9 +317,49 @@ msgid "ycor"
 msgstr ""
 
 #:
-msgid "Project"
+msgid "Sensors"
 msgstr ""
 
 #:
-msgid "Samples"
+msgid "volume"
+msgstr ""
+
+#:
+msgid "pitch"
+msgstr ""
+
+#:
+msgid "voltage"
+msgstr ""
+
+#:
+msgid "resistance"
+msgstr ""
+
+#:
+msgid "Templates"
+msgstr ""
+
+#:
+msgid "Keyboard"
+msgstr ""
+
+#:
+msgid "read key"
+msgstr ""
+
+#:
+msgid "sound"
+msgstr ""
+
+#:
+msgid "hres"
+msgstr ""
+
+#:
+msgid "vres"
+msgstr ""
+
+#:
+msgid "start"
 msgstr ""

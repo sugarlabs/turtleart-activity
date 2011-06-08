@@ -1,237 +1,391 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2011-02-06 22:49+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Pootle 2.0.3\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
-msgstr ""
+msgstr "فن السلحفاة"
 
-#:
-msgid "Flow"
-msgstr ""
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "العنوان"
 
-#:
-msgid "forever"
-msgstr ""
+#: tasetup.py:66
+msgid "text"
+msgstr "نص"
 
-#:
-msgid "if"
-msgstr ""
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "حزمة"
 
-#:
-msgid "then"
-msgstr ""
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "صندوق"
 
-#:
-msgid "else"
-msgstr ""
+#: tasetup.py:127
+msgid "name"
+msgstr "الاسم"
 
-#:
-msgid "repeat"
-msgstr ""
-
-#:
-msgid "stop stack"
-msgstr ""
-
-#:
-msgid "wait"
-msgstr ""
-
-#:
-msgid "My Blocks"
-msgstr ""
-
-#:
-msgid "box 1"
-msgstr ""
-
-#:
-msgid "box 2"
-msgstr ""
-
-#:
-msgid "stack 1"
-msgstr ""
-
-#:
-msgid "stack 2"
-msgstr ""
-
-#:
-msgid "store in box 1"
-msgstr ""
-
-#:
-msgid "store in box 2"
-msgstr ""
-
-#:
-msgid "Numbers"
-msgstr ""
-
-#:
-msgid "number"
-msgstr ""
-
-#:
-msgid "and"
-msgstr ""
-
-#:
-msgid "or"
-msgstr ""
-
-#:
-msgid "not"
-msgstr ""
-
-#:
-msgid "random"
-msgstr ""
-
-#:
-msgid "min"
-msgstr ""
-
-#:
-msgid "max"
-msgstr ""
-
-#:
-msgid "mod"
-msgstr ""
-
-#:
-msgid "print"
-msgstr ""
-
-#:
-msgid "Pen"
-msgstr ""
-
-#:
-msgid "color"
-msgstr ""
-
-#:
-msgid "shade"
-msgstr ""
-
-#:
-msgid "fill screen"
-msgstr ""
-
-#:
-msgid "pen up"
-msgstr ""
-
-#:
-msgid "pen down"
-msgstr ""
-
-#:
-msgid "set pen size"
-msgstr ""
-
-#:
-msgid "pen size"
-msgstr ""
-
-#:
-msgid "set shade"
-msgstr ""
-
-#:
-msgid "set color"
-msgstr ""
-
-#:
-msgid "Blocks"
-msgstr ""
-
-#:
-msgid "Turtle"
-msgstr ""
-
-#:
-msgid "forward"
-msgstr ""
-
-#:
-msgid "back"
-msgstr ""
-
-#:
-msgid "right"
-msgstr ""
-
-#:
-msgid "left"
-msgstr ""
-
-#:
-msgid "arc"
-msgstr ""
-
-#:
-msgid "angle"
-msgstr ""
-
-#:
-msgid "radius"
-msgstr ""
-
-#:
-msgid "heading"
-msgstr ""
-
-#:
-msgid "set heading"
-msgstr "seth"
-
-#:
-msgid "clean"
-msgstr ""
-
-#:
-msgid "set xy"
-msgstr ""
-
-#:
-msgid "x"
-msgstr ""
-
-#:
-msgid "y"
-msgstr ""
-
-#:
-msgid "xcor"
-msgstr ""
-
-#:
-msgid "ycor"
-msgstr ""
-
-#:
+#: TurtleArtActivity.py:48
 msgid "Project"
-msgstr ""
+msgstr "مشروع"
 
-#:
-msgid "Samples"
-msgstr ""
+msgid "Save as"
+msgstr "احفظ باسم"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262 TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "أخفي اللوحة"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "أخفي القطع"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "تشغيل"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "خطوة"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "اوقف السلحفاة"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "عينات"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "حفظ ك HTML"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "حفظ الشعار"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "حمل قطعتي"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267 TurtleArtActivity.py:290
+#: TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "أظهر المنصة"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "أظهر القطع"
+
+msgid "Flow"
+msgstr "تدفق"
+
+msgid "forever"
+msgstr "للأبد"
+
+msgid "if"
+msgstr "إذا"
+
+msgid "then"
+msgstr "بعدها"
+
+msgid "else"
+msgstr "وإلا"
+
+msgid "repeat"
+msgstr "كرر"
+
+msgid "stop stack"
+msgstr "أوقف الحزمة"
+
+msgid "wait"
+msgstr "انتظر"
+
+msgid "My Blocks"
+msgstr "قطعي"
+
+msgid "box 1"
+msgstr "الصندوق 1"
+
+msgid "box 2"
+msgstr "الصندوق 2"
+
+msgid "stack 1"
+msgstr "حزمة ١"
+
+msgid "stack 2"
+msgstr "حزمة ٢"
+
+msgid "store in box 1"
+msgstr "احفظ في الصندوق 1"
+
+msgid "store in box 2"
+msgstr "احفظ فالصندوق 2"
+
+msgid "push"
+msgstr "ادفع"
+
+msgid "pop"
+msgstr "اخرج"
+
+msgid "Numbers"
+msgstr "الارقام"
+
+msgid "number"
+msgstr "عدد"
+
+msgid "and"
+msgstr "و"
+
+msgid "or"
+msgstr "أو"
+
+msgid "not"
+msgstr "ليس"
+
+msgid "random"
+msgstr "عشوائي"
+
+msgid "min"
+msgstr "على الاقل"
+
+msgid "max"
+msgstr "على الاكثر"
+
+msgid "mod"
+msgstr "باقي القسمة"
+
+msgid "print"
+msgstr "اطبع"
+
+msgid "Pen"
+msgstr "قلم"
+
+msgid "color"
+msgstr "لون"
+
+msgid "shade"
+msgstr "ظل"
+
+msgid "fill screen"
+msgstr "ملء الشاشه"
+
+msgid "pen up"
+msgstr "القلم للأعلى"
+
+msgid "pen down"
+msgstr "القلم للأسفل"
+
+msgid "set pen size"
+msgstr "حدد حجم القلم"
+
+msgid "pen size"
+msgstr "حجم القلم"
+
+msgid "set shade"
+msgstr "حدد التظليل"
+
+msgid "set color"
+msgstr "حدد اللون"
+
+msgid "set text color"
+msgstr "حدد لون النص"
+
+msgid "Blocks"
+msgstr "قطع"
+
+msgid "Turtle"
+msgstr "سلحفاة"
+
+msgid "clean"
+msgstr "مسح"
+
+msgid "forward"
+msgstr "للأمام"
+
+msgid "back"
+msgstr "السابق:: للخلف"
+
+msgid "right"
+msgstr "يمين"
+
+msgid "left"
+msgstr "يسار"
+
+msgid "arc"
+msgstr "قوس"
+
+msgid "angle"
+msgstr "زاوية"
+
+msgid "radius"
+msgstr "نصف القطر"
+
+msgid "heading"
+msgstr "ترويسة"
+
+#
+msgid "set heading"
+msgstr "اضبط الترويسة"
+
+msgid "set xy"
+msgstr "حدد س ص"
+
+msgid "x"
+msgstr "س"
+
+msgid "y"
+msgstr "ص"
+
+msgid "xcor"
+msgstr "الاحداثي السيني"
+
+msgid "ycor"
+msgstr "الاحداثي الصادي"
+
+msgid "Sensors"
+msgstr "مجسات"
+
+msgid "volume"
+msgstr "الحجم"
+
+msgid "pitch"
+msgstr "ارمي"
+
+msgid "voltage"
+msgstr "فولت"
+
+msgid "resistance"
+msgstr "مقاومة"
+
+msgid "Templates"
+msgstr "قالب"
+
+msgid "Keyboard"
+msgstr "لوحة المفاتيح"
+
+msgid "read key"
+msgstr "اقرأ حرف"
+
+msgid "sound"
+msgstr "صوت"
+
+msgid "hres"
+msgstr "الوضوح الأفقي"
+
+msgid "vres"
+msgstr "الوضوح العمودي"
+
+msgid "start"
+msgstr "ابدأ"
+
+#~ msgid "palette of turtle commands"
+#~ msgstr "لوحة أوامر السلحفاة"
+
+#~ msgid "palette of pen commands"
+#~ msgstr "لوحة أوامر القلم"
+
+#~ msgid "palette of numeric operators"
+#~ msgstr "لوحة المعاملات الرقمية"
+
+#~ msgid "palette of extra options"
+#~ msgstr "لوحة الخيارات الإضافية"
+
+#~ msgid "palette of flow operators"
+#~ msgstr "لوحة المعاملات التدفقية"
+
+#, fuzzy
+#~ msgid "palette of variable blocks"
+#~ msgstr "لوحة البلوكات المتغيرة"
+
+#~ msgid "palette of presentation templates"
+#~ msgstr "لوحة قوالب العرض"
+
+#~ msgid "clear the screen and reset the turtle"
+#~ msgstr "امسح الشاشة وأعد ضبط السلحفاة"
+
+#~ msgid "move turtle forward"
+#~ msgstr "حرك السلحفاة للأمام"
+
+#~ msgid "move turtle backward"
+#~ msgstr "حرك السلحفاة للخلف"
+
+#~ msgid "turn turtle counterclockwise (angle in degrees)"
+#~ msgstr "دوّر السلحفاة عكس عقارب الساعة (الزاوية بالدرجات)"
+
+#~ msgid "turn turtle clockwise (angle in degrees)"
+#~ msgstr "دوّر السلحفاة بجهة عقارب الساعة (الزاوية بالدرجات)"
+
+#~ msgid "move turtle along an arc"
+#~ msgstr "حرك السلحفاة على قوس"
+
+#~ msgid ""
+#~ "move turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+#~ msgstr "حرك السلحفاة إلى الإحداثيات س ، ع؛ (0، 0) هو منتصف الشاشة"
+
+#~ msgid "set the heading of the turtle (0 is towards the top of the screen.)"
+#~ msgstr "اضبط اتجاه رأس السلحفاة (0 باتجاه أعلى الشاشة)"
+
+#, fuzzy
+#~ msgid "draw text or show media from the Journal"
+#~ msgstr "ارسم نصا أو أظهر صورة أو صوتا أو فيديو من الدفتر"
+
+#, fuzzy
+#~ msgid "set the scale of media"
+#~ msgstr "حدد مقاس المادة"
+
+#~ msgid ""
+#~ "holds current x-coordinate value of the turtle (can be used in place of a "
+#~ "number block)"
+#~ msgstr ""
+#~ "فيها قيمة إحداثية س الخاصة بالسلحفاة (يمكن استعمالها بدل رقم القطعة)"
+
+#, fuzzy
+#~ msgid "Save as image"
+#~ msgstr "احفظ كصورة"
+
+#, fuzzy
+#~ msgid "Fullscreen"
+#~ msgstr "ملء الشاشة"
+
+#, fuzzy
+#~ msgid "Clean"
+#~ msgstr "مسح"
+
+#~ msgid "keyboard"
+#~ msgstr "لوحة التحكم "
+
+#~ msgid "width"
+#~ msgstr "العرض"
+
+#~ msgid "height"
+#~ msgstr "الارتفاع"
+
+#~ msgid "setyx"
+#~ msgstr "حدد س ص "
+
+#, fuzzy
+#~ msgid "set scale"
+#~ msgstr "حدد التظليل"
+
+#, fuzzy
+#~ msgid "text color"
+#~ msgstr "حدد اللون "
+
+#, fuzzy
+#~ msgid "set text size"
+#~ msgstr "حدد حجم القلم "

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
 "PO-Revision-Date: 2009-02-20 14:16-0500\n"
 "Last-Translator: Eduardo H. Silva <HoboPrimate@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Pootle 1.1.0rc2\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
 msgstr "Artartaruga"
 
@@ -23,6 +23,18 @@ msgstr "título"
 #: tasetup.py:66
 msgid "text"
 msgstr "texto"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "pilha"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "caixa"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "nome"
 
 #: TurtleArtActivity.py:48
 msgid "Project"
@@ -115,24 +127,12 @@ msgid "My Blocks"
 msgstr "Os meus blocos"
 
 #:
-msgid "start"
-msgstr "iniciar"
-
-#:
-msgid "box"
-msgstr "caixa"
-
-#:
 msgid "box 1"
 msgstr "caixa 1"
 
 #:
 msgid "box 2"
 msgstr "caixa 2"
-
-#:
-msgid "stack"
-msgstr "pilha"
 
 #:
 msgid "stack 1"
@@ -151,8 +151,12 @@ msgid "store in box 2"
 msgstr "pôr na caixa 2"
 
 #:
-msgid "name"
-msgstr "nome"
+msgid "push"
+msgstr ""
+
+#:
+msgid "pop"
+msgstr ""
 
 #:
 msgid "Numbers"
@@ -247,6 +251,10 @@ msgid "Turtle"
 msgstr "Tartaruga"
 
 #:
+msgid "clean"
+msgstr "limpar"
+
+#:
 msgid "forward"
 msgstr "avançar"
 
@@ -278,13 +286,10 @@ msgstr "raio"
 msgid "heading"
 msgstr "cabeçalho"
 
-#:
+#
+#, fuzzy
 msgid "set heading"
-msgstr "ajustar o cabeçalho"
-
-#:
-msgid "clean"
-msgstr "limpar"
+msgstr "seth"
 
 #:
 msgid "set xy"
@@ -349,3 +354,7 @@ msgstr "hres"
 #:
 msgid "vres"
 msgstr "vres"
+
+#:
+msgid "start"
+msgstr "iniciar"

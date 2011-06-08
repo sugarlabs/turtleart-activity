@@ -2,22 +2,97 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2009-10-07 21:36-0400\n"
+"Last-Translator: Tony Forster <forster@ozonline.com.au>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: bi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"X-Generator: Pootle 1.2.1\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
+msgstr "Totel Art"
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "taetel"
+
+#: tasetup.py:66
+msgid "text"
+msgstr ""
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr ""
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "bokis"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "nem"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "Projek"
+
+#:
+msgid "Save as"
+msgstr ""
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr ""
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr ""
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "ron"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr ""
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "stop totel"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr ""
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr ""
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr ""
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr ""
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr ""
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
 msgstr ""
 
 #:
@@ -34,7 +109,7 @@ msgstr ""
 
 #:
 msgid "then"
-msgstr ""
+msgstr "nao"
 
 #:
 msgid "else"
@@ -42,7 +117,7 @@ msgstr ""
 
 #:
 msgid "repeat"
-msgstr ""
+msgstr "ripitim"
 
 #:
 msgid "stop stack"
@@ -50,7 +125,7 @@ msgstr ""
 
 #:
 msgid "wait"
-msgstr ""
+msgstr "wet"
 
 #:
 msgid "My Blocks"
@@ -81,12 +156,20 @@ msgid "store in box 2"
 msgstr ""
 
 #:
-msgid "Numbers"
+msgid "push"
 msgstr ""
 
 #:
-msgid "number"
+msgid "pop"
 msgstr ""
+
+#:
+msgid "Numbers"
+msgstr "Namba"
+
+#:
+msgid "number"
+msgstr "namba"
 
 #:
 msgid "and"
@@ -98,7 +181,7 @@ msgstr ""
 
 #:
 msgid "not"
-msgstr ""
+msgstr "no"
 
 #:
 msgid "random"
@@ -122,11 +205,11 @@ msgstr ""
 
 #:
 msgid "Pen"
-msgstr ""
+msgstr "Stilo"
 
 #:
 msgid "color"
-msgstr ""
+msgstr "kala"
 
 #:
 msgid "shade"
@@ -161,12 +244,20 @@ msgid "set color"
 msgstr ""
 
 #:
+msgid "set text color"
+msgstr ""
+
+#:
 msgid "Blocks"
 msgstr ""
 
 #:
 msgid "Turtle"
-msgstr ""
+msgstr "Totel"
+
+#:
+msgid "clean"
+msgstr "klinim"
 
 #:
 msgid "forward"
@@ -178,11 +269,11 @@ msgstr ""
 
 #:
 msgid "right"
-msgstr ""
+msgstr "raet"
 
 #:
 msgid "left"
-msgstr ""
+msgstr "lef"
 
 #:
 msgid "arc"
@@ -200,13 +291,9 @@ msgstr ""
 msgid "heading"
 msgstr ""
 
-#:
+#
 msgid "set heading"
 msgstr "seth"
-
-#:
-msgid "clean"
-msgstr ""
 
 #:
 msgid "set xy"
@@ -229,9 +316,49 @@ msgid "ycor"
 msgstr ""
 
 #:
-msgid "Project"
+msgid "Sensors"
 msgstr ""
 
 #:
-msgid "Samples"
+msgid "volume"
 msgstr ""
+
+#:
+msgid "pitch"
+msgstr ""
+
+#:
+msgid "voltage"
+msgstr ""
+
+#:
+msgid "resistance"
+msgstr ""
+
+#:
+msgid "Templates"
+msgstr ""
+
+#:
+msgid "Keyboard"
+msgstr ""
+
+#:
+msgid "read key"
+msgstr ""
+
+#:
+msgid "sound"
+msgstr ""
+
+#:
+msgid "hres"
+msgstr ""
+
+#:
+msgid "vres"
+msgstr ""
+
+#:
+msgid "start"
+msgstr "statem"

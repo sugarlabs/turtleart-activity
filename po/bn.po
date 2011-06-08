@@ -1,237 +1,308 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
+# Tisa <nktisa@gmail.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: Fructose VERSION\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2009-06-13 21:09+0600\n"
+"Last-Translator: Tisa <nktisa@gmail.com>\n"
+"Language-Team: Bengali <ankur-bd-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.0.1\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
-msgstr ""
+msgstr "টার্টেল আর্ট"
 
-#:
-msgid "Flow"
-msgstr ""
+#: tasetup.py:46
+#: tasetup.py:49
+#: tasetup.py:50
+#: tasetup.py:51
+#: tasetup.py:52
+#: tasetup.py:53
+#: tasetup.py:54
+msgid "title"
+msgstr "শিরোনাম"
 
-#:
-msgid "forever"
-msgstr ""
+#: tasetup.py:66
+msgid "text"
+msgstr "টেক্সট"
 
-#:
-msgid "if"
-msgstr ""
+#: tasetup.py:119
+#: tasetup.py:120
+msgid "stack"
+msgstr "স্ট্যাক"
 
-#:
-msgid "then"
-msgstr ""
+#: tasetup.py:125
+#: tasetup.py:126
+msgid "box"
+msgstr "বাক্স"
 
-#:
-msgid "else"
-msgstr ""
+#: tasetup.py:127
+msgid "name"
+msgstr "নাম"
 
-#:
-msgid "repeat"
-msgstr ""
-
-#:
-msgid "stop stack"
-msgstr ""
-
-#:
-msgid "wait"
-msgstr ""
-
-#:
-msgid "My Blocks"
-msgstr ""
-
-#:
-msgid "box 1"
-msgstr ""
-
-#:
-msgid "box 2"
-msgstr ""
-
-#:
-msgid "stack 1"
-msgstr ""
-
-#:
-msgid "stack 2"
-msgstr ""
-
-#:
-msgid "store in box 1"
-msgstr ""
-
-#:
-msgid "store in box 2"
-msgstr ""
-
-#:
-msgid "Numbers"
-msgstr ""
-
-#:
-msgid "number"
-msgstr ""
-
-#:
-msgid "and"
-msgstr ""
-
-#:
-msgid "or"
-msgstr ""
-
-#:
-msgid "not"
-msgstr ""
-
-#:
-msgid "random"
-msgstr ""
-
-#:
-msgid "min"
-msgstr ""
-
-#:
-msgid "max"
-msgstr ""
-
-#:
-msgid "mod"
-msgstr ""
-
-#:
-msgid "print"
-msgstr ""
-
-#:
-msgid "Pen"
-msgstr ""
-
-#:
-msgid "color"
-msgstr ""
-
-#:
-msgid "shade"
-msgstr ""
-
-#:
-msgid "fill screen"
-msgstr ""
-
-#:
-msgid "pen up"
-msgstr ""
-
-#:
-msgid "pen down"
-msgstr ""
-
-#:
-msgid "set pen size"
-msgstr ""
-
-#:
-msgid "pen size"
-msgstr ""
-
-#:
-msgid "set shade"
-msgstr ""
-
-#:
-msgid "set color"
-msgstr ""
-
-#:
-msgid "Blocks"
-msgstr ""
-
-#:
-msgid "Turtle"
-msgstr ""
-
-#:
-msgid "forward"
-msgstr ""
-
-#:
-msgid "back"
-msgstr ""
-
-#:
-msgid "right"
-msgstr ""
-
-#:
-msgid "left"
-msgstr ""
-
-#:
-msgid "arc"
-msgstr ""
-
-#:
-msgid "angle"
-msgstr ""
-
-#:
-msgid "radius"
-msgstr ""
-
-#:
-msgid "heading"
-msgstr ""
-
-#:
-msgid "set heading"
-msgstr "seth"
-
-#:
-msgid "clean"
-msgstr ""
-
-#:
-msgid "set xy"
-msgstr ""
-
-#:
-msgid "x"
-msgstr ""
-
-#:
-msgid "y"
-msgstr ""
-
-#:
-msgid "xcor"
-msgstr ""
-
-#:
-msgid "ycor"
-msgstr ""
-
-#:
+#: TurtleArtActivity.py:48
 msgid "Project"
-msgstr ""
+msgstr "প্রকল্প"
 
-#:
-msgid "Samples"
-msgstr ""
+msgid "Save as"
+msgstr "নতুনভাবে সংরক্ষণ করো"
+
+#: TurtleArtActivity.py:173
+#: TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "প্যালেট লুকাও"
+
+#: TurtleArtActivity.py:181
+#: TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "ব্লক লুকাও"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "চালাও"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "ধাপ"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "টার্টেল বন্ধ করো"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "নমুনা সমুহ"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "HTML হিসেবে সংরক্ষণ করো"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "logo সংরক্ষণ করো"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "\"আমার ‌ব্লক\" লোড করো"
+
+#: TurtleArtActivity.py:259
+#: TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290
+#: TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "প্যালেট দেখাও"
+
+#: TurtleArtActivity.py:283
+#: TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "ব্লক দেখাও"
+
+msgid "Flow"
+msgstr "প্রবাহ"
+
+msgid "forever"
+msgstr "চিরদিন"
+
+msgid "if"
+msgstr "if"
+
+msgid "then"
+msgstr "then"
+
+msgid "else"
+msgstr "else"
+
+msgid "repeat"
+msgstr "পুনরায় করো"
+
+msgid "stop stack"
+msgstr "স্ট্যাক বন্ধ করো"
+
+msgid "wait"
+msgstr "অপেক্ষা করো"
+
+msgid "My Blocks"
+msgstr "আমার ব্লক"
+
+msgid "box 1"
+msgstr "বাক্স ১"
+
+msgid "box 2"
+msgstr "বাক্স ২"
+
+msgid "stack 1"
+msgstr "স্ট্যাক ১"
+
+msgid "stack 2"
+msgstr "স্ট্যাক ২"
+
+msgid "store in box 1"
+msgstr "বাক্স ১ এ সংরক্ষণ করো"
+
+msgid "store in box 2"
+msgstr "বাক্স ২ এ সংরক্ষণ করো"
+
+msgid "push"
+msgstr "প্রবেশ করাও"
+
+msgid "pop"
+msgstr "বের করো"
+
+msgid "Numbers"
+msgstr "সংখ্যাসমষ্টি"
+
+msgid "number"
+msgstr "সংখ্যা"
+
+msgid "and"
+msgstr "AND"
+
+msgid "or"
+msgstr "OR"
+
+msgid "not"
+msgstr "NOT"
+
+msgid "random"
+msgstr "র‍্যান্ডম"
+
+msgid "min"
+msgstr "নূন্যতম"
+
+msgid "max"
+msgstr "সর্বোচ্চ"
+
+msgid "mod"
+msgstr "মোড"
+
+msgid "print"
+msgstr "মুদ্রণ করো"
+
+msgid "Pen"
+msgstr "কলম"
+
+msgid "color"
+msgstr "রং"
+
+msgid "shade"
+msgstr "ছায়া"
+
+msgid "fill screen"
+msgstr "পর্দা ভরাট করো"
+
+msgid "pen up"
+msgstr "কলম ওঠাও"
+
+msgid "pen down"
+msgstr "কলম নামাও"
+
+msgid "set pen size"
+msgstr "কলমের আকার নির্ধারণ করো"
+
+msgid "pen size"
+msgstr "কলমের আকার"
+
+msgid "set shade"
+msgstr "ছায়া নির্ধারণ করো"
+
+msgid "set color"
+msgstr "রং নির্ধারণ করো"
+
+msgid "set text color"
+msgstr "টেক্সটের রং নির্ধারণ করো"
+
+msgid "Blocks"
+msgstr "ব্লকসমূহ"
+
+msgid "Turtle"
+msgstr "টার্টেল"
+
+msgid "clean"
+msgstr "পরিষ্কার করো"
+
+msgid "forward"
+msgstr "সামনে যাও"
+
+msgid "back"
+msgstr "পেছনে যাও"
+
+msgid "right"
+msgstr "ডানে যাও"
+
+msgid "left"
+msgstr "বামে যাও"
+
+msgid "arc"
+msgstr "চাপ"
+
+msgid "angle"
+msgstr "কোণ"
+
+msgid "radius"
+msgstr "ব্যাসার্ধ"
+
+msgid "heading"
+msgstr "শিরোনাম"
+
+#
+msgid "set heading"
+msgstr "শিরোনাম নির্ধারণ করো"
+
+msgid "set xy"
+msgstr "xy নির্ধারণ করো"
+
+msgid "x"
+msgstr "x"
+
+msgid "y"
+msgstr "y"
+
+msgid "xcor"
+msgstr "xcor"
+
+msgid "ycor"
+msgstr "ycor"
+
+msgid "Sensors"
+msgstr "সেন্সর"
+
+msgid "volume"
+msgstr "ভলিউম"
+
+msgid "pitch"
+msgstr "পিচ"
+
+msgid "voltage"
+msgstr "ভোল্টেজ"
+
+msgid "resistance"
+msgstr "রোধ"
+
+msgid "Templates"
+msgstr "ফর্মা"
+
+msgid "Keyboard"
+msgstr "কী-বোর্ড"
+
+msgid "read key"
+msgstr "কী পড়া"
+
+msgid "sound"
+msgstr "শব্দ"
+
+msgid "hres"
+msgstr "hres"
+
+msgid "vres"
+msgstr "vres"
+
+msgid "start"
+msgstr "শুরু করো"

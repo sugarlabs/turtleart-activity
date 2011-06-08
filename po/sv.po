@@ -7,13 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2009-02-27 19:29-0500\n"
-"Last-Translator: Susanna Björverud <susanna.bjorverud@telia.com>\n"
+"PO-Revision-Date: 2010-02-12 06:05+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0rc2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.1\n"
 
 #: activity/activity.info:2
 msgid "Turtle Art"
@@ -79,7 +81,7 @@ msgstr "spara som HTML"
 
 #: TurtleArtActivity.py
 msgid "save Logo"
-msgstr "spara logotyp"
+msgstr "spara Logotyp"
 
 #: TurtleArtActivity.py
 msgid "load my block"
@@ -121,7 +123,7 @@ msgstr "upprepa"
 
 #:
 msgid "stop stack"
-msgstr "Avsluta stack"
+msgstr "avsluta stack"
 
 #:
 msgid "wait"
@@ -221,15 +223,15 @@ msgstr "fyll skärm"
 
 #:
 msgid "pen up"
-msgstr "Ta upp penna"
+msgstr "ta upp penna"
 
 #:
 msgid "pen down"
-msgstr "Sätt ned penna"
+msgstr "sätt ned penna"
 
 #:
 msgid "set pen size"
-msgstr "Ange pennstorlek"
+msgstr "ange pennstorlek"
 
 #:
 msgid "pen size"
@@ -237,7 +239,7 @@ msgstr "pennstorlek"
 
 #:
 msgid "set shade"
-msgstr "Ange skugga"
+msgstr "ange skugga"
 
 #:
 msgid "set color"
@@ -310,12 +312,12 @@ msgstr "y"
 # förkortningen kor. torde fungera för både koordinat och korrelation... Jämförde med andra språk så det motsvarar vad de översatt.
 #:
 msgid "xcor"
-msgstr "xkor."
+msgstr "xkor"
 
 # se ovan
 #:
 msgid "ycor"
-msgstr "ykor."
+msgstr "ykor"
 
 #:
 msgid "Sensors"

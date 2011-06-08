@@ -2,236 +2,364 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2010-01-19 18:24+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.1\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
-msgstr ""
+msgstr "کچھوا گيم"
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "ٹائيٹل"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "ٹيکسٹ"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "سٹيک"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "ڈبا"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "نام"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "پراجیکٹ"
+
+#:
+msgid "Save as"
+msgstr "اس طرح مہفوظ کريں"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "پيليٹ کو چھپائيں"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "بلاک کو چھپائيں"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "بھاگو"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "قدم"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "ٹرٹل کو روک ديں"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "نمونے"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "HTMLمہفوظ کريں"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "لوگو کو محفوظ کريں"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "ميرے بلاک کو لوڈ کريں"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "پيليٹ کو ظاہر کريں"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "بلاک کو ظاہر کريں"
 
 #:
 msgid "Flow"
-msgstr ""
+msgstr "بہنا"
 
 #:
 msgid "forever"
-msgstr ""
+msgstr "ہمیشہ کے لیے"
 
 #:
 msgid "if"
-msgstr ""
+msgstr "اگر"
 
 #:
 msgid "then"
-msgstr ""
+msgstr "پھر"
 
 #:
 msgid "else"
-msgstr ""
+msgstr "زائد"
 
 #:
 msgid "repeat"
-msgstr ""
+msgstr "دھرائیں"
 
 #:
 msgid "stop stack"
-msgstr ""
+msgstr "ذخیرہ کرنے سے روکیں"
 
 #:
 msgid "wait"
-msgstr ""
+msgstr "انتظار کریں"
 
 #:
 msgid "My Blocks"
-msgstr ""
+msgstr "میرے خانے"
 
 #:
 msgid "box 1"
-msgstr ""
+msgstr "ڈبہ 1"
 
 #:
 msgid "box 2"
-msgstr ""
+msgstr "ڈبہ 2"
 
 #:
 msgid "stack 1"
-msgstr ""
+msgstr "ذخیرہ کرنا 1"
 
 #:
 msgid "stack 2"
-msgstr ""
+msgstr "ذخیرہ کرنا 2"
 
 #:
 msgid "store in box 1"
-msgstr ""
+msgstr "ڈبہ 1 میں ذخیرہ کرنا"
 
 #:
 msgid "store in box 2"
-msgstr ""
+msgstr "ڈبہ 2 میں ذخیرہ کرنا"
+
+#:
+msgid "push"
+msgstr "دھکا دو"
+
+#:
+msgid "pop"
+msgstr "پوپ"
 
 #:
 msgid "Numbers"
-msgstr ""
+msgstr "اعداد"
 
 #:
 msgid "number"
-msgstr ""
+msgstr "عدد"
 
 #:
 msgid "and"
-msgstr ""
+msgstr "اور"
 
 #:
 msgid "or"
-msgstr ""
+msgstr "یا"
 
 #:
 msgid "not"
-msgstr ""
+msgstr "نہیں"
 
 #:
 msgid "random"
-msgstr ""
+msgstr "ترتیب"
 
 #:
 msgid "min"
-msgstr ""
+msgstr "کم سے کم"
 
 #:
 msgid "max"
-msgstr ""
+msgstr "زیادہ سے زیادہ"
 
 #:
 msgid "mod"
-msgstr ""
+msgstr "متوازن"
 
 #:
 msgid "print"
-msgstr ""
+msgstr "چھاپنا"
 
 #:
 msgid "Pen"
-msgstr ""
+msgstr "قلم"
 
 #:
 msgid "color"
-msgstr ""
+msgstr "رنگ"
 
 #:
 msgid "shade"
-msgstr ""
+msgstr "سایہ"
 
 #:
 msgid "fill screen"
-msgstr ""
+msgstr "سکرین کو بھریں"
 
 #:
 msgid "pen up"
-msgstr ""
+msgstr "قلم ہٹانا"
 
 #:
 msgid "pen down"
-msgstr ""
+msgstr "قلم رکھنا"
 
 #:
 msgid "set pen size"
-msgstr ""
+msgstr "قلم کا سائز درست کرنا"
 
 #:
 msgid "pen size"
-msgstr ""
+msgstr "قلم کا سائز"
 
 #:
 msgid "set shade"
-msgstr ""
+msgstr "سایہ کو درست کرنا"
 
 #:
 msgid "set color"
-msgstr ""
+msgstr "رنگ کو درست کرنا"
+
+#:
+msgid "set text color"
+msgstr "متن کا رنگ سيٹ کريں"
 
 #:
 msgid "Blocks"
-msgstr ""
+msgstr "خانے"
 
 #:
 msgid "Turtle"
-msgstr ""
-
-#:
-msgid "forward"
-msgstr ""
-
-#:
-msgid "back"
-msgstr ""
-
-#:
-msgid "right"
-msgstr ""
-
-#:
-msgid "left"
-msgstr ""
-
-#:
-msgid "arc"
-msgstr ""
-
-#:
-msgid "angle"
-msgstr ""
-
-#:
-msgid "radius"
-msgstr ""
-
-#:
-msgid "heading"
-msgstr ""
-
-#:
-msgid "set heading"
-msgstr "seth"
+msgstr "کچھوا"
 
 #:
 msgid "clean"
-msgstr ""
+msgstr "صاف"
+
+#:
+msgid "forward"
+msgstr "آگے"
+
+#:
+msgid "back"
+msgstr "واپس"
+
+#:
+msgid "right"
+msgstr "دایاں"
+
+#:
+msgid "left"
+msgstr "بایاں"
+
+#:
+msgid "arc"
+msgstr "کمان"
+
+#:
+msgid "angle"
+msgstr "ذاویہ"
+
+#:
+msgid "radius"
+msgstr "نصف قطر"
+
+#:
+msgid "heading"
+msgstr "عنوان"
+
+#
+msgid "set heading"
+msgstr "عنوان کو سيٹ کريں"
 
 #:
 msgid "set xy"
-msgstr ""
+msgstr "xy درست کریں"
 
 #:
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #:
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #:
 msgid "xcor"
-msgstr ""
+msgstr "xcor"
 
 #:
 msgid "ycor"
-msgstr ""
+msgstr "ycor"
 
 #:
-msgid "Project"
-msgstr ""
+msgid "Sensors"
+msgstr "سينسرز"
 
 #:
-msgid "Samples"
-msgstr ""
+msgid "volume"
+msgstr "آواز"
+
+#:
+msgid "pitch"
+msgstr "سطح"
+
+#:
+msgid "voltage"
+msgstr "وولٹيج"
+
+#:
+msgid "resistance"
+msgstr "مزاحمت"
+
+#:
+msgid "Templates"
+msgstr "ٹمپليٹ"
+
+#:
+msgid "Keyboard"
+msgstr "کی بورڈ"
+
+#:
+msgid "read key"
+msgstr "پڑھنے والی کی"
+
+#:
+msgid "sound"
+msgstr "آواز"
+
+#:
+msgid "hres"
+msgstr "hres"
+
+#:
+msgid "vres"
+msgstr "vres"
+
+#:
+msgid "start"
+msgstr "شروع کریں"

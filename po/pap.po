@@ -2,236 +2,366 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2010-02-23 16:38+0200\n"
+"Last-Translator:  <empetronia@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: pap\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.1\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
-msgstr ""
+msgstr "Arte di turtuga"
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "título"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "teksto"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "stapel"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "bòks"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "nòmber"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "Proyekto"
+
+#:
+msgid "Save as"
+msgstr "Warda komo"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "skonde palèt"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "skonde blòki"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "start"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "paso"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "stòp e turtuga"
+
+# "Muestra" kan eventueel ehèmpel vervangen
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "ehèmpelnan"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "warda komo HTML"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "warda Logo"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "karga mi blòki"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "mustra palèt"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "mustra blòki"
 
 #:
 msgid "Flow"
-msgstr ""
+msgstr "Kore"
 
 #:
 msgid "forever"
-msgstr ""
+msgstr "pa semper"
 
 #:
 msgid "if"
-msgstr ""
+msgstr "si"
 
 #:
 msgid "then"
-msgstr ""
+msgstr "anto"
 
+# "otro" kan ook zijn, ligt aan de context
 #:
 msgid "else"
-msgstr ""
+msgstr "si no"
 
 #:
 msgid "repeat"
-msgstr ""
+msgstr "ripití"
 
 #:
 msgid "stop stack"
-msgstr ""
+msgstr "stòp stapel"
 
 #:
 msgid "wait"
-msgstr ""
+msgstr "warda un ratu"
 
 #:
 msgid "My Blocks"
-msgstr ""
+msgstr "Mi blòkinan"
 
 #:
 msgid "box 1"
-msgstr ""
+msgstr "bòks 1"
 
 #:
 msgid "box 2"
-msgstr ""
+msgstr "bòks 2"
 
 #:
 msgid "stack 1"
-msgstr ""
+msgstr "stapel 1"
 
 #:
 msgid "stack 2"
-msgstr ""
+msgstr "stapel 2"
 
 #:
 msgid "store in box 1"
-msgstr ""
+msgstr "warda den bòks 1"
 
 #:
 msgid "store in box 2"
-msgstr ""
+msgstr "warda den bòks 2"
+
+#:
+msgid "push"
+msgstr "pusha / pone"
+
+#:
+msgid "pop"
+msgstr "kita"
 
 #:
 msgid "Numbers"
-msgstr ""
+msgstr "Numbernan"
 
 #:
 msgid "number"
-msgstr ""
+msgstr "númber"
 
 #:
 msgid "and"
-msgstr ""
+msgstr "i"
 
 #:
 msgid "or"
-msgstr ""
+msgstr "òf"
 
 #:
 msgid "not"
-msgstr ""
+msgstr "no"
 
 #:
 msgid "random"
-msgstr ""
+msgstr "arbitrario"
 
 #:
 msgid "min"
-msgstr ""
+msgstr "mínimo"
 
 #:
 msgid "max"
-msgstr ""
+msgstr "máksimo"
 
 #:
 msgid "mod"
-msgstr ""
+msgstr "mod"
 
 #:
 msgid "print"
-msgstr ""
+msgstr "prent"
 
 #:
 msgid "Pen"
-msgstr ""
+msgstr "Pèn"
 
 #:
 msgid "color"
-msgstr ""
+msgstr "koló"
 
 #:
 msgid "shade"
-msgstr ""
+msgstr "sombra"
 
 #:
 msgid "fill screen"
-msgstr ""
+msgstr "yena e pantaya"
 
 #:
 msgid "pen up"
-msgstr ""
+msgstr "pèn ariba"
 
 #:
 msgid "pen down"
-msgstr ""
+msgstr "pèn abou"
 
 #:
 msgid "set pen size"
-msgstr ""
+msgstr "pone tamaño di pèn"
 
 #:
 msgid "pen size"
-msgstr ""
+msgstr "tamaño di pèn"
 
 #:
 msgid "set shade"
-msgstr ""
+msgstr "pone sombra"
 
 #:
 msgid "set color"
-msgstr ""
+msgstr "pone koló"
+
+#:
+msgid "set text color"
+msgstr "pone koló di teksto"
 
 #:
 msgid "Blocks"
-msgstr ""
+msgstr "Blòkinan"
 
 #:
 msgid "Turtle"
-msgstr ""
-
-#:
-msgid "forward"
-msgstr ""
-
-#:
-msgid "back"
-msgstr ""
-
-#:
-msgid "right"
-msgstr ""
-
-#:
-msgid "left"
-msgstr ""
-
-#:
-msgid "arc"
-msgstr ""
-
-#:
-msgid "angle"
-msgstr ""
-
-#:
-msgid "radius"
-msgstr ""
-
-#:
-msgid "heading"
-msgstr ""
-
-#:
-msgid "set heading"
-msgstr "seth"
+msgstr "Turtuga"
 
 #:
 msgid "clean"
-msgstr ""
+msgstr "limpia"
+
+#:
+msgid "forward"
+msgstr "adelante"
+
+#:
+msgid "back"
+msgstr "bèk"
+
+#:
+msgid "right"
+msgstr "derechi"
+
+#:
+msgid "left"
+msgstr "robes"
+
+#:
+msgid "arc"
+msgstr "arko"
+
+#:
+msgid "angle"
+msgstr "huki"
+
+#:
+msgid "radius"
+msgstr "rayo"
+
+#:
+msgid "heading"
+msgstr "direkshon"
+
+#
+msgid "set heading"
+msgstr "pone direkshon"
 
 #:
 msgid "set xy"
-msgstr ""
+msgstr "pone xy"
 
 #:
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #:
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #:
 msgid "xcor"
-msgstr ""
+msgstr "xcor"
 
 #:
 msgid "ycor"
-msgstr ""
+msgstr "ycor"
 
 #:
-msgid "Project"
-msgstr ""
+msgid "Sensors"
+msgstr "Sensornan"
 
 #:
-msgid "Samples"
-msgstr ""
+msgid "volume"
+msgstr "volúmen"
+
+#:
+msgid "pitch"
+msgstr "altura di tono"
+
+#:
+msgid "voltage"
+msgstr "vòltahe"
+
+#:
+msgid "resistance"
+msgstr "resistensia"
+
+#:
+msgid "Templates"
+msgstr "Plantianan"
+
+#:
+msgid "Keyboard"
+msgstr "Teklado"
+
+#:
+msgid "read key"
+msgstr "lesa e tekla"
+
+#:
+msgid "sound"
+msgstr "sonido"
+
+#:
+msgid "hres"
+msgstr "hres"
+
+#:
+msgid "vres"
+msgstr "vres"
+
+#:
+msgid "start"
+msgstr "start"

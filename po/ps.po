@@ -2,236 +2,364 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2009-07-02 01:00-0400\n"
+"Last-Translator: Abdulhadi Hairan <abdulhadi@paiwastoon.com.af>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ps\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 1.2.1\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
-msgstr ""
+msgstr "شمشتی هنر"
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "سرلیک"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "متن"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "دلی"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "بکس"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "نوم"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "پروژه"
+
+#:
+msgid "Save as"
+msgstr "په توګه ساتل"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "پالیټ پټول"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "بلاکونه پټول"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "منډه"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "قدم"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "شمشتی درول"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "بېلګې"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "د هټمل په توګه ساتل"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "خبرال ساتل"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "زما بلاک پورته کړه"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "پالیټ وښایه"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "بلاکونه وښایه"
 
 #:
 msgid "Flow"
-msgstr ""
+msgstr "بهيدل"
 
 #:
 msgid "forever"
-msgstr ""
+msgstr "د تل لپاره"
 
 #:
 msgid "if"
-msgstr ""
+msgstr "که"
 
 #:
 msgid "then"
-msgstr ""
+msgstr "نو"
 
 #:
 msgid "else"
-msgstr ""
+msgstr "که نه"
 
 #:
 msgid "repeat"
-msgstr ""
+msgstr "تکرار"
 
 #:
 msgid "stop stack"
-msgstr ""
+msgstr "دلی وتموئ"
 
 #:
 msgid "wait"
-msgstr ""
+msgstr "انتظار وکړئ"
 
 #:
 msgid "My Blocks"
-msgstr ""
+msgstr "زما غونډې"
 
 #:
 msgid "box 1"
-msgstr ""
+msgstr "اول کوتۍ"
 
 #:
 msgid "box 2"
-msgstr ""
+msgstr "دويم کوتۍ"
 
 #:
 msgid "stack 1"
-msgstr ""
+msgstr "اوله دلی"
 
 #:
 msgid "stack 2"
-msgstr ""
+msgstr "دوهمه دلی"
 
 #:
 msgid "store in box 1"
-msgstr ""
+msgstr "په اول کوتي کې يې وځيرمئ"
 
 #:
 msgid "store in box 2"
-msgstr ""
+msgstr "په دويم کوتي کې يې وځيرمئ"
+
+#:
+msgid "push"
+msgstr "دیکه"
+
+#:
+msgid "pop"
+msgstr "دنګون"
 
 #:
 msgid "Numbers"
-msgstr ""
+msgstr "شميرې"
 
 #:
 msgid "number"
-msgstr ""
+msgstr "شميره"
 
 #:
 msgid "and"
-msgstr ""
+msgstr "او"
 
 #:
 msgid "or"
-msgstr ""
+msgstr "يا"
 
 #:
 msgid "not"
-msgstr ""
+msgstr "ندی"
 
 #:
 msgid "random"
-msgstr ""
+msgstr "ناټاکلې"
 
 #:
 msgid "min"
-msgstr ""
+msgstr "لږترلږه"
 
 #:
 msgid "max"
-msgstr ""
+msgstr "زیات نه زیات"
 
 #:
 msgid "mod"
-msgstr ""
+msgstr "اکر"
 
 #:
 msgid "print"
-msgstr ""
+msgstr "چاپ"
 
 #:
 msgid "Pen"
-msgstr ""
+msgstr "قلم"
 
 #:
 msgid "color"
-msgstr ""
+msgstr "رنګ"
 
 #:
 msgid "shade"
-msgstr ""
+msgstr "سيوری"
 
 #:
 msgid "fill screen"
-msgstr ""
+msgstr "پرده ډکول"
 
 #:
 msgid "pen up"
-msgstr ""
+msgstr "قلم پورته"
 
 #:
 msgid "pen down"
-msgstr ""
+msgstr "قلم کښته"
 
 #:
 msgid "set pen size"
-msgstr ""
+msgstr "د قلم کچه ټاکل"
 
 #:
 msgid "pen size"
-msgstr ""
+msgstr "د قلم کچه"
 
 #:
 msgid "set shade"
-msgstr ""
+msgstr "سيوری وټاکئ"
 
 #:
 msgid "set color"
-msgstr ""
+msgstr "رنګ وټاکئ"
+
+#:
+msgid "set text color"
+msgstr "د متن رنګ ټاکل"
 
 #:
 msgid "Blocks"
-msgstr ""
+msgstr "غونډې"
 
 #:
 msgid "Turtle"
-msgstr ""
-
-#:
-msgid "forward"
-msgstr ""
-
-#:
-msgid "back"
-msgstr ""
-
-#:
-msgid "right"
-msgstr ""
-
-#:
-msgid "left"
-msgstr ""
-
-#:
-msgid "arc"
-msgstr ""
-
-#:
-msgid "angle"
-msgstr ""
-
-#:
-msgid "radius"
-msgstr ""
-
-#:
-msgid "heading"
-msgstr ""
-
-#:
-msgid "set heading"
-msgstr "seth"
+msgstr "شمشتی"
 
 #:
 msgid "clean"
-msgstr ""
+msgstr "پاکول"
+
+#:
+msgid "forward"
+msgstr "مخته"
+
+#:
+msgid "back"
+msgstr "شاته"
+
+#:
+msgid "right"
+msgstr "ښي"
+
+#:
+msgid "left"
+msgstr "کيڼ"
+
+#:
+msgid "arc"
+msgstr "آرک"
+
+#:
+msgid "angle"
+msgstr "زاويه"
+
+#:
+msgid "radius"
+msgstr "وړانګه"
+
+#:
+msgid "heading"
+msgstr "سرکی"
+
+#
+msgid "set heading"
+msgstr "سرکی ټاکل"
 
 #:
 msgid "set xy"
-msgstr ""
+msgstr "xy ټاکل"
 
 #:
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #:
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #:
 msgid "xcor"
-msgstr ""
+msgstr "xcor"
 
 #:
 msgid "ycor"
-msgstr ""
+msgstr "ycor"
 
 #:
-msgid "Project"
-msgstr ""
+msgid "Sensors"
+msgstr "د رڼا او وړانګې کچه معلوموونکي"
 
 #:
-msgid "Samples"
-msgstr ""
+msgid "volume"
+msgstr "غږ"
+
+#:
+msgid "pitch"
+msgstr "سطحه"
+
+#:
+msgid "voltage"
+msgstr "ولټیج"
+
+#:
+msgid "resistance"
+msgstr "مقاومت"
+
+#:
+msgid "Templates"
+msgstr "قالبونه"
+
+#:
+msgid "Keyboard"
+msgstr "کیلیدړه"
+
+#:
+msgid "read key"
+msgstr "کیلي ولوله"
+
+#:
+msgid "sound"
+msgstr "غږ"
+
+#:
+msgid "hres"
+msgstr "هریس"
+
+#:
+msgid "vres"
+msgstr "وریس"
+
+#:
+msgid "start"
+msgstr "پېل"

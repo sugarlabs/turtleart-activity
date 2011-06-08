@@ -2,236 +2,364 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
+"PO-Revision-Date: 2011-04-06 14:52+0200\n"
+"Last-Translator:  <jimmy@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: rw\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1) ;\n"
+"X-Generator: Pootle 2.0.1\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
-msgstr ""
+msgstr "Ubugeni bw'Akanyamashyo "
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "Umutwe w'amagambo"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "Inyandiko"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "stack"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "Ikarito"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "Izina"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "umushinga"
+
+#:
+msgid "Save as"
+msgstr "Bika nka"
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "hisha palette"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "hisha blocks"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "iruka"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "intambwe"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "hagarika akanyamashyo"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "ingero"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "bika nka HTML"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "bika logo"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "zana block yanjye"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "erekana palette"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "erekana amablock"
 
 #:
 msgid "Flow"
-msgstr ""
+msgstr "Flow"
 
 #:
 msgid "forever"
-msgstr ""
+msgstr "burundu"
 
 #:
 msgid "if"
-msgstr ""
+msgstr "niba"
 
 #:
 msgid "then"
-msgstr ""
+msgstr "hanyuma"
 
 #:
 msgid "else"
-msgstr ""
+msgstr "kindi"
 
 #:
 msgid "repeat"
-msgstr ""
+msgstr "subiramo"
 
 #:
 msgid "stop stack"
-msgstr ""
+msgstr "hagarika stack"
 
 #:
 msgid "wait"
-msgstr ""
+msgstr "tegereza"
 
 #:
 msgid "My Blocks"
-msgstr ""
+msgstr "amablock yanjye"
 
 #:
 msgid "box 1"
-msgstr ""
+msgstr "ikarito ya 1"
 
 #:
 msgid "box 2"
-msgstr ""
+msgstr "ikarito ya 2"
 
 #:
 msgid "stack 1"
-msgstr ""
+msgstr "stack ya 1"
 
 #:
 msgid "stack 2"
-msgstr ""
+msgstr "stack ya 2"
 
 #:
 msgid "store in box 1"
-msgstr ""
+msgstr "bika mu ikarito ya 1"
 
 #:
 msgid "store in box 2"
-msgstr ""
+msgstr "bika mu ikarito ya 2"
+
+#:
+msgid "push"
+msgstr "sunika"
+
+#:
+msgid "pop"
+msgstr "pop"
 
 #:
 msgid "Numbers"
-msgstr ""
+msgstr "Imibare"
 
 #:
 msgid "number"
-msgstr ""
+msgstr "umubare"
 
 #:
 msgid "and"
-msgstr ""
+msgstr "na"
 
 #:
 msgid "or"
-msgstr ""
+msgstr "cyangwa"
 
 #:
 msgid "not"
-msgstr ""
+msgstr "si"
 
 #:
 msgid "random"
-msgstr ""
+msgstr "bidakurikije umurongo"
 
 #:
 msgid "min"
-msgstr ""
+msgstr "bike"
 
 #:
 msgid "max"
-msgstr ""
+msgstr "byinshi"
 
 #:
 msgid "mod"
-msgstr ""
+msgstr "hagati"
 
 #:
 msgid "print"
-msgstr ""
+msgstr "print"
 
 #:
 msgid "Pen"
-msgstr ""
+msgstr "ikaramu"
 
 #:
 msgid "color"
-msgstr ""
+msgstr "ibara"
 
 #:
 msgid "shade"
-msgstr ""
+msgstr "siga"
 
 #:
 msgid "fill screen"
-msgstr ""
+msgstr "uzuza ekara"
 
 #:
 msgid "pen up"
-msgstr ""
+msgstr "ikaramu hejuru"
 
 #:
 msgid "pen down"
-msgstr ""
+msgstr "ikaramu hasi"
 
 #:
 msgid "set pen size"
-msgstr ""
+msgstr "tunganya ingano y'ikaramu"
 
 #:
 msgid "pen size"
-msgstr ""
+msgstr "ingano y'ikaramu"
 
 #:
 msgid "set shade"
-msgstr ""
+msgstr "tegura gusiga"
 
 #:
 msgid "set color"
-msgstr ""
+msgstr "tunganya ibara"
+
+#:
+msgid "set text color"
+msgstr "tunganya ibara ry'inyandiko"
 
 #:
 msgid "Blocks"
-msgstr ""
+msgstr "Blocks"
 
 #:
 msgid "Turtle"
-msgstr ""
-
-#:
-msgid "forward"
-msgstr ""
-
-#:
-msgid "back"
-msgstr ""
-
-#:
-msgid "right"
-msgstr ""
-
-#:
-msgid "left"
-msgstr ""
-
-#:
-msgid "arc"
-msgstr ""
-
-#:
-msgid "angle"
-msgstr ""
-
-#:
-msgid "radius"
-msgstr ""
-
-#:
-msgid "heading"
-msgstr ""
-
-#:
-msgid "set heading"
-msgstr "seth"
+msgstr "akanyamashyo"
 
 #:
 msgid "clean"
-msgstr ""
+msgstr "sukura"
+
+#:
+msgid "forward"
+msgstr "jyana imbere"
+
+#:
+msgid "back"
+msgstr "inyuma"
+
+#:
+msgid "right"
+msgstr "iburyo"
+
+#:
+msgid "left"
+msgstr "ibumoso"
+
+#:
+msgid "arc"
+msgstr "umuheto"
+
+#:
+msgid "angle"
+msgstr "inguni"
+
+#:
+msgid "radius"
+msgstr "akarambararo"
+
+#:
+msgid "heading"
+msgstr "umutwe w'amagambo"
+
+#
+msgid "set heading"
+msgstr "tunganya umutwe w'amagambo"
 
 #:
 msgid "set xy"
-msgstr ""
+msgstr "tunganya xy"
 
 #:
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #:
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #:
 msgid "xcor"
-msgstr ""
+msgstr "xcor"
 
 #:
 msgid "ycor"
-msgstr ""
+msgstr "ycor"
 
 #:
-msgid "Project"
-msgstr ""
+msgid "Sensors"
+msgstr "ibyunviro"
 
 #:
-msgid "Samples"
-msgstr ""
+msgid "volume"
+msgstr "ubunini"
+
+#:
+msgid "pitch"
+msgstr "pitch"
+
+#:
+msgid "voltage"
+msgstr "voltage"
+
+#:
+msgid "resistance"
+msgstr "resistance"
+
+#:
+msgid "Templates"
+msgstr "Templates"
+
+#:
+msgid "Keyboard"
+msgstr "keyboard"
+
+#:
+msgid "read key"
+msgstr "soma urufunguzo"
+
+#:
+msgid "sound"
+msgstr "ijwi"
+
+#:
+msgid "hres"
+msgstr "hres"
+
+#:
+msgid "vres"
+msgstr "vres"
+
+#:
+msgid "start"
+msgstr "tangira"

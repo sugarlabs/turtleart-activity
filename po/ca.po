@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 10:53-0500\n"
+"Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
+"POT-Creation-Date: 2009-01-21 10:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,222 +16,349 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.0.1\n"
 
-#: 
+#: activity/activity.info:2
 msgid "Turtle Art"
-msgstr ""
+msgstr "Turtle Art"
+
+#: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
+#: tasetup.py:53 tasetup.py:54
+msgid "title"
+msgstr "títol"
+
+#: tasetup.py:66
+msgid "text"
+msgstr "text"
+
+#: tasetup.py:119 tasetup.py:120
+msgid "stack"
+msgstr "pila"
+
+#: tasetup.py:125 tasetup.py:126
+msgid "box"
+msgstr "capsa"
+
+#: tasetup.py:127
+msgid "name"
+msgstr "nom"
+
+#: TurtleArtActivity.py:48
+msgid "Project"
+msgstr "Projecte"
+
+#:
+msgid "Save as"
+msgstr "Anomena i desa..."
+
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:262
+#: TurtleArtActivity.py:293
+msgid "hide palette"
+msgstr "amaga la paleta"
+
+#: TurtleArtActivity.py:181 TurtleArtActivity.py:286
+msgid "hide blocks"
+msgstr "amaga blocs"
+
+#: TurtleArtActivity.py:194
+msgid "run"
+msgstr "executa"
+
+#: TurtleArtActivity.py:202
+msgid "step"
+msgstr "pas"
+
+#: TurtleArtActivity.py:210
+msgid "stop turtle"
+msgstr "atura la tortuga"
+
+#: TurtleArtActivity.py:236
+msgid "samples"
+msgstr "mostres"
+
+#: TurtleArtActivity.py:249
+msgid "save as HTML"
+msgstr "desa com a HTML"
+
+#: TurtleArtActivity.py
+msgid "save Logo"
+msgstr "guarda Logotip"
+
+#: TurtleArtActivity.py
+msgid "load my block"
+msgstr "carrega el meu bloc"
+
+#: TurtleArtActivity.py:259 TurtleArtActivity.py:267
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:299
+msgid "show palette"
+msgstr "mostra la paleta"
+
+#: TurtleArtActivity.py:283 TurtleArtActivity.py:297
+msgid "show blocks"
+msgstr "mostra blocs"
 
 #:
 msgid "Flow"
-msgstr ""
+msgstr "Surant"
 
 #:
 msgid "forever"
-msgstr ""
+msgstr "per sempre"
 
 #:
 msgid "if"
-msgstr ""
+msgstr "si"
 
 #:
 msgid "then"
-msgstr ""
+msgstr "llavors"
 
 #:
 msgid "else"
-msgstr ""
+msgstr "o també"
 
 #:
 msgid "repeat"
-msgstr ""
+msgstr "repetició"
 
 #:
 msgid "stop stack"
-msgstr ""
+msgstr "atura la pila"
 
 #:
 msgid "wait"
-msgstr ""
+msgstr "espera"
 
 #:
 msgid "My Blocks"
-msgstr ""
+msgstr "Els meus Blocs"
 
 #:
 msgid "box 1"
-msgstr ""
+msgstr "capsa 1"
 
 #:
 msgid "box 2"
-msgstr ""
+msgstr "capsa 2"
 
 #:
 msgid "stack 1"
-msgstr ""
+msgstr "pìla 1"
 
 #:
 msgid "stack 2"
-msgstr ""
+msgstr "pila 2"
 
 #:
 msgid "store in box 1"
-msgstr ""
+msgstr "emmagatzema a la capsa 1"
 
 #:
 msgid "store in box 2"
-msgstr ""
+msgstr "emmagatzema a la capsa 2"
+
+#:
+msgid "push"
+msgstr "prem"
+
+#:
+msgid "pop"
+msgstr "pop"
 
 #:
 msgid "Numbers"
-msgstr ""
+msgstr "Nombres"
 
 #:
 msgid "number"
-msgstr ""
+msgstr "nombre"
 
 #:
 msgid "and"
-msgstr ""
+msgstr "i"
 
 #:
 msgid "or"
-msgstr ""
+msgstr "o"
 
 #:
 msgid "not"
-msgstr ""
+msgstr "no"
 
 #:
 msgid "random"
-msgstr ""
+msgstr "aleatori"
 
 #:
 msgid "min"
-msgstr ""
+msgstr "min"
 
 #:
 msgid "max"
-msgstr ""
+msgstr "màx"
 
 #:
 msgid "mod"
-msgstr ""
+msgstr "mod"
 
 #:
 msgid "print"
-msgstr ""
+msgstr "imprimeix"
 
 #:
 msgid "Pen"
-msgstr ""
+msgstr "Bolígraf"
 
 #:
 msgid "color"
-msgstr ""
+msgstr "color"
 
 #:
 msgid "shade"
-msgstr ""
+msgstr "enrotlla"
 
 #:
 msgid "fill screen"
-msgstr ""
+msgstr "omple la pantalla"
 
 #:
 msgid "pen up"
-msgstr ""
+msgstr "bolígraf amunt"
 
 #:
 msgid "pen down"
-msgstr ""
+msgstr "bolígraf avall"
 
 #:
 msgid "set pen size"
-msgstr ""
+msgstr "estableix la mida del bolígraf"
 
 #:
 msgid "pen size"
-msgstr ""
+msgstr "mida del bolígraf"
 
 #:
 msgid "set shade"
-msgstr ""
+msgstr "defineix ombra"
 
 #:
 msgid "set color"
-msgstr ""
+msgstr "defineix el color"
+
+#:
+msgid "set text color"
+msgstr "defineix el color del text"
 
 #:
 msgid "Blocks"
-msgstr ""
+msgstr "Blocs"
 
 #:
 msgid "Turtle"
-msgstr ""
+msgstr "Tortuga"
+
+#:
+msgid "clean"
+msgstr "neteja"
 
 #:
 msgid "forward"
-msgstr ""
+msgstr "endavant"
 
 #:
 msgid "back"
-msgstr ""
+msgstr "endarrere"
 
 #:
 msgid "right"
-msgstr ""
+msgstr "dreta"
 
 #:
 msgid "left"
-msgstr ""
+msgstr "esquerra"
 
 #:
 msgid "arc"
-msgstr ""
+msgstr "arc"
 
 #:
 msgid "angle"
-msgstr ""
+msgstr "angle"
 
 #:
 msgid "radius"
-msgstr ""
+msgstr "radi"
 
 #:
 msgid "heading"
-msgstr ""
+msgstr "encapçalament"
 
-#:
+#
 msgid "set heading"
 msgstr "seth"
 
 #:
-msgid "clean"
-msgstr ""
-
-#:
 msgid "set xy"
-msgstr ""
+msgstr "defineix xy"
 
 #:
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #:
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #:
 msgid "xcor"
-msgstr ""
+msgstr "xcor"
 
 #:
 msgid "ycor"
-msgstr ""
+msgstr "ycor"
 
 #:
-msgid "Project"
-msgstr ""
+msgid "Sensors"
+msgstr "Sensors"
 
 #:
-msgid "Samples"
-msgstr ""
+msgid "volume"
+msgstr "volum"
+
+#:
+msgid "pitch"
+msgstr "velocitat"
+
+#:
+msgid "voltage"
+msgstr "tensió"
+
+#:
+msgid "resistance"
+msgstr "resistència"
+
+#:
+msgid "Templates"
+msgstr "Plantilles"
+
+#:
+msgid "Keyboard"
+msgstr "Teclat"
+
+#:
+msgid "read key"
+msgstr "llegeix la clau"
+
+#:
+msgid "sound"
+msgstr "so"
+
+#:
+msgid "hres"
+msgstr "hres"
+
+#:
+msgid "vres"
+msgstr "vres"
+
+#:
+msgid "start"
+msgstr "comença"
