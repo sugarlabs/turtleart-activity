@@ -170,7 +170,7 @@ def json_dump(data):
 
 def get_load_name(suffix, load_save_folder):
     """ Open a load file dialog. """
-    _dialog = gtk.FileChooserDialog("Load...", None,
+    _dialog = gtk.FileChooserDialog(_('Load...'), None,
         gtk.FILE_CHOOSER_ACTION_OPEN, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                                        gtk.STOCK_OPEN, gtk.RESPONSE_OK))
     _dialog.set_default_response(gtk.RESPONSE_OK)
@@ -179,7 +179,7 @@ def get_load_name(suffix, load_save_folder):
 
 def get_save_name(suffix, load_save_folder, save_file_name):
     """ Open a save file dialog. """
-    _dialog = gtk.FileChooserDialog("Save...", None,
+    _dialog = gtk.FileChooserDialog(_('Save...'), None,
         gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                                        gtk.STOCK_SAVE, gtk.RESPONSE_OK))
     _dialog.set_default_response(gtk.RESPONSE_OK)
