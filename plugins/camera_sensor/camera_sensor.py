@@ -31,9 +31,6 @@ from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import media_blocks_dictionary, primitive_dictionary
 from TurtleArt.tautils import get_path, debug_output
 
-import logging
-_logger = logging.getLogger('turtleart-activity camera plugin')
-
 
 class Camera_sensor(Plugin):
 
@@ -49,8 +46,8 @@ class Camera_sensor(Plugin):
                                           'data/turtlepic.png')
             else:
                 self._imagepath = '/tmp/turtlepic.png'
-            self._camera = Camera(self._imagepath)
 
+            self._camera = None
             self._status = True
 
     def setup(self):
@@ -124,9 +121,16 @@ is pushed to the stack'),
                               help_string=_('camera output'),
                               content_block=True)
 
+    def start(self):
+        ''' Initialize the camera if there is an camera block in use '''
+        if len(self._parent.block_list.get_similar_blocks('block',
+            ['camera', 'read_camera', 'luminance'])) > 0:
+            if self._camera is None:
+                self._camera = Camera(self._imagepath)
+
     def stop(self):
-        # This gets called by the stop button
-        if self._status:
+        ''' This gets called by the stop button '''
+        if self._status and self._camera is not None:
             self._camera.stop_camera_input()
 
     def _status_report(self):
@@ -147,9 +151,9 @@ is pushed to the stack'),
 
     def prim_read_camera(self, luminance_only=False):
         """ Read average pixel from camera and push b, g, r to the stack """
-        if self._status:
+        if not self._status:
             if luminance_only:
-                return 0
+                return -1
             else:
                 self._parent.lc.heap.append(-1)
                 self._parent.lc.heap.append(-1)
@@ -158,14 +162,14 @@ is pushed to the stack'),
 
         pixbuf = None
         array = None
-        w = int((self._parent.canvas.width * self._parent.lc.scale) / 100.)
-        h = int((self._parent.canvas.height * self._parent.lc.scale) / 100.)
-        if w > 0 and h > 0 and self._status:
+        w = 4
+        h = 3
+        if self._status:
             try:
                 self._video_capture_device = open('/dev/video0', 'rw')
             except:
                 self._video_capture_device = None
-                _logger.debug('video capture device not available')
+                debug_output('video capture device not available')
 
             if self._video_capture_device is not None:
                 self._ag_control = v4l2_control(V4L2_CID_AUTOGAIN)
@@ -176,7 +180,7 @@ is pushed to the stack'),
                     ioctl(self._video_capture_device, VIDIOC_S_CTRL,
                           self._ag_control)
                 except:
-                    _logger.debug('AUTOGAIN control not available')
+                    # debug_output('AUTOGAIN control not available')
                     pass
 
             if self._video_capture_device is not None:
