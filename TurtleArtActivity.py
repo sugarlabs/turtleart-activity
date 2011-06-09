@@ -47,7 +47,7 @@ import tarfile
 from gettext import gettext as _
 
 from TurtleArt.tapalette import palette_names, help_strings
-from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE
+from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE, XO1, XO15
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
@@ -558,7 +558,7 @@ class TurtleArtActivity(activity.Activity):
                          self.do_cartesian_cb, view_toolbar_button)
         self._add_button('view-polar', _('Polar coordinates'),
                          self.do_polar_cb, view_toolbar_button)
-        if get_hardware() in ['XO1', 'XO15']:
+        if get_hardware() in [XO1, XO15]:
             self._add_button('view-metric', _('Metric coordinates'),
                              self.do_metric_cb, view_toolbar_button)
         self._add_separator(view_toolbar)
