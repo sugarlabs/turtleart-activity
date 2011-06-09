@@ -23,14 +23,25 @@
 import gst, time
 
 GST_PIPE = ['v4l2src', 'ffmpegcolorspace', 'pngenc']
+# GST_PIPE = ['v4l2src', 'ffmpegcolorspace', 'gdkpixbufsink']
 
 class Camera():
     """ A class for representing the video camera """
 
     def __init__(self, imagepath):
+       # self.imagepath = imagepath
        GST_PIPE.append('filesink location=%s' % imagepath)
        self.pipe = gst.parse_launch('!'.join(GST_PIPE))
        self.bus = self.pipe.get_bus()
+       # self.bus.add_signal_watch()
+       # self.bus.connect('message', self._on_message)
+
+    def _on_message(self, bus, message):
+        ''' We get a message if a pixbuf is available '''
+        if message.structure is not None:
+            print message.structure.get_name()
+            if message.structure.get_name() == 'pixbuf':
+                message.structure['pixbuf'].save(self.imagepath, 'png')
 
     def save_camera_input_to_file(self):
         """ Grab a frame from the camera """
