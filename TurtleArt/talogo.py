@@ -191,7 +191,7 @@ class LogoCode:
 
         code = self._blocks_to_code(blk)
         if run_flag:
-            debug_output("running code: %s" % (code), self.tw.running_sugar)
+            # debug_output("running code: %s" % (code), self.tw.running_sugar)
             self.start_time = time()
             self._setup_cmd(code)
             if not self.tw.hide:
@@ -401,8 +401,8 @@ class LogoCode:
             self.arglist.append(self.iresult)
         if self.cfun.rprim:
             if type(self.cfun.fcn) == self.listtype:
-                debug_output('evalsym rprim list: %s' % (str(token)),
-                             self.tw.running_sugar)
+                # debug_output('evalsym rprim list: %s' % (str(token)),
+                #              self.tw.running_sugar)
                 self.icall(self._ufuncall, self.cfun.fcn)
                 yield True
             else:
