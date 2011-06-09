@@ -794,14 +794,17 @@ def find_blk_below(blk, name):
             return _gblk
     return None
 
-"""
-Are we on an OLPC XO?
-"""
-
 
 def get_hardware():
     """ Determine whether we are using XO 1.0, 1.5, or "unknown" hardware """
-    if _get_dmi('product_name') != 'XO':
+    product = _get_dmi('product_name')
+    if product is None:
+        if os.path.exists('/etc/olpc-release') or \
+           os.path.exists('/sys/power/olpc-pm'):
+            return XO1
+        else:
+            return UNKNOWN
+    if product != 'XO':
         return UNKNOWN
     version = _get_dmi('product_version')
     if version == '1':
@@ -813,6 +816,8 @@ def get_hardware():
 
 
 def _get_dmi(node):
+    ''' The desktop management interface should be a reliable source
+    for product and version information. '''
     path = os.path.join('/sys/class/dmi/id', node)
     try:
         return open(path).readline().strip()
