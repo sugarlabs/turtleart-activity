@@ -185,6 +185,7 @@ class TurtleArtWindow():
         self.media_shapes = {}
         self.cartesian = False
         self.polar = False
+        self.metric = False
         self.overlay_shapes = {}
         self.toolbar_shapes = {}
         self.toolbar_offset = 0
@@ -485,6 +486,15 @@ class TurtleArtWindow():
             self.overlay_shapes['polar'].hide()
             self.polar = False
 
+    def set_metric(self, flag):
+        """ Turn on/off metric coordinates """
+        if flag:
+            self.overlay_shapes['metric'].set_layer(OVERLAY_LAYER)
+            self.metric = True
+        else:
+            self.overlay_shapes['metric'].hide()
+            self.metric = False
+
     def update_overlay_position(self, widget, event):
         """ Reposition the overlays when window size changes """
         self.width = event.width
@@ -507,6 +517,7 @@ class TurtleArtWindow():
             self.overlay_shapes[name].type = 'overlay'
         self.cartesian = False
         self.polar = False
+        self.metric = False
         self.canvas.width = self.width
         self.canvas.height = self.height
         self.canvas.move_turtle()

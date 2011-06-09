@@ -51,7 +51,7 @@ from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
-                              get_path, chooser
+                              get_path, chooser, get_hardware
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.tacollaboration import Collaboration
 
@@ -362,6 +362,13 @@ class TurtleArtActivity(activity.Activity):
         else:
             self.tw.set_polar(True)
 
+    def do_metric_cb(self, button):
+        ''' Display metric-coordinate grid. '''
+        if self.tw.metric:
+            self.tw.set_metric(False)
+        else:
+            self.tw.set_metric(True)
+
     def do_rescale_cb(self, button):
         ''' Rescale coordinate system (100==height/2 or 100 pixels). '''
         if self.tw.cartesian:
@@ -372,6 +379,11 @@ class TurtleArtActivity(activity.Activity):
         if self.tw.polar:
             polar = True
             self.tw.set_polar(False)
+        else:
+            polar = False
+        if self.tw.metric:
+            metric = True
+            self.tw.set_metric(False)
         else:
             polar = False
         if self.tw.coord_scale == 1:
@@ -387,6 +399,8 @@ class TurtleArtActivity(activity.Activity):
             self.tw.set_cartesian(True)
         if polar:
             self.tw.set_polar(True)
+        if metric:
+            self.tw.set_metric(True)
 
     def get_document_path(self, async_cb, async_err_cb):
         '''  View TA code as part of view source.  '''
@@ -544,6 +558,9 @@ class TurtleArtActivity(activity.Activity):
                          self.do_cartesian_cb, view_toolbar_button)
         self._add_button('view-polar', _('Polar coordinates'),
                          self.do_polar_cb, view_toolbar_button)
+        if get_hardware() in ['XO1', 'XO15']:
+            self._add_button('view-metric', _('Metric coordinates'),
+                             self.do_metric_cb, view_toolbar_button)
         self._add_separator(view_toolbar)
         self.coordinates_label = self._add_label(_('xcor') + ' = 0 ' + \
             _('ycor') + ' = 0 ' + _('heading') + ' = 0', view_toolbar)
