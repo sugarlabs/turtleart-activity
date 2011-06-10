@@ -1,3 +1,15 @@
+109
+
+ENHANCEMENTS
+
+* CM coordinate grid overlay (XO hardware only)
+
+BUG FIXES
+* Restored missing localization files
+* Only initialize camera if camera block is being used
+* Suppress unnecessary debug output from talogo
+* Fix hardware detection on some old builds
+
 108
 
 ENHANCEMENTS
