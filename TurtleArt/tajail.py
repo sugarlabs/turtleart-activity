@@ -19,14 +19,14 @@
 #THE SOFTWARE.
 
 # A naive approach to running myfunc in a jail
-import logging
-_logger = logging.getLogger('turtleart-activity')
 import traceback
 from time import *
 from math import *
 
+from gettext import gettext as _
 
 def myfunc(f, args):
+    ''' Run inline Python code '''
     # check to make sure no import calls are made
     if len(args) == 1:
         myf = 'def f(x): return ' + f.replace('import', '')
@@ -45,11 +45,16 @@ def myfunc(f, args):
         return userdefined.values()[0](args[0], args[1], args[2])
 
 
-def myfunc_import(lc, f, x):
+def myfunc_import(parent, f, x):
+    ''' Run Python code imported from Journal '''
+    if 'def myblock(lc,' in  f:
+        base_class = parent.tw.lc  # pre-v107, we passed lc
+    else:
+        base_class = parent.tw  # as of v107, we pass tw
     userdefined = {}
     try:
         exec f in globals(), userdefined
-        return userdefined['myblock'](lc, x)
+        return userdefined['myblock'](base_class, x)
     except:
         traceback.print_exc()
         return None

@@ -1,33 +1,15 @@
-#Copyright (c) 2010, Tony Forster
+#Copyright (c) 2010-11, Tony Forster
 
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
+# This procedure is invoked when the user-definable block on the
+# "extras" palette is selected.
 
-#The above copyright notice and this permission notice shall be included in
-#all copies or substantial portions of the Software.
+# Usage: Import this code into a Python (user-definable) block and
+# pass a frequency in Hertz to the Python block. A tone will play over
+# the speaker at the specified frequency.
 
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-#THE SOFTWARE.
 
-# This procedure is invoked when the user-definable block on the "extras"
-# palette is selected.
-
-def myblock(lc, x):
-
-    ###########################################################################
-    #
-    # Plays a sound at frequency x
-    #
-    ###########################################################################
+def myblock(tw, frequency):
+    ''' Plays a sound at frequency frequency '''
 
     import os
-    os.system('speaker-test -t sine -l 1 -f %d' % (int(x)))
+    os.system('speaker-test -t sine -l 1 -f %d' % (int(frequency)))

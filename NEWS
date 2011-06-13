@@ -1,20 +1,110 @@
+109
+
+ENHANCEMENTS
+
+* CM coordinate grid overlay (XO hardware only)
+
+BUG FIXES
+* Restored missing localization files
+* Only initialize camera if camera block is being used
+* Suppress unnecessary debug output from talogo
+* Fix hardware detection on some old builds
+
+108
+
+ENHANCEMENTS
+
+* vspace, hspace run stack on mouse click (#2790)
+* added clear all button to Trash Palette
+* added language support to speak.py sample code
+* added 'scratch' and 'hoops' examples
+
+BUG FIXES
+
+* Save to SVG was not working for setxy
+* Save to SVG was not working for fill
+* Save to SVG was broken for arc
+
+107
+
+ENHANCEMENTS
+
+* Refactoring of block and palette generation to use the plugin
+  classes for all blocks. (The goal is to make it easier for end-user
+  modifications.)
+* Added the ability to add new blocks on the fly (See uturn.py example)
+* Added basic-style-3arg block (used by NXT plugin)
+* Moved plugin libraries to ./plugins
+* Shared turtles are updated after mouse drag (#2687)
+* Shared turtles cannot be repositioned remotely (#2687)
+* Shared turtles have labels
+* Turtles are synchronized when joining share (#2687)
+* Comments on usage included in the Python sample code (#2709)
+* Using standard Sugar icons for colors and camera
+* Refactoring of export Logo code to enable plugins to define new functions
+* Value blocks updated properly on first appearance
+* Reduced the header size in Python sample code for easier reading (#2748)
+* Extend clearscreen to entire canvas (#2745)
+* Cleaned up some issues with .es translations (Guzman Trinidad)
+* More robust handling of broken projects and unknown block types
+* Added hidden blocks when plugin devices are unavailable
+* Added new Python example for recording audio
+
+BUG FIXES
+
+* Fixed regression with help messages when running Sugar 0.84 (#2676)
+* Fixed problem with selected turtle reverting back to default turtle (#2687)
+* Fixed problem with camera block graphic in trash (#2678)
+* Fixed regression with camera_plugin after refactoring (#2689)
+* Fixed problem with saving/loading extra turtles when nick changes (#2441)
+* Fixed problem with displaying large FILO heap (#2751)
+* Fixed a problem with tags causing malformed HTML export
+* Fixed problem with first sample when using sensors
+* Fixed problem with method-name conflict with gtk.widget
+
+PYTHON CODE CHANGE
+
+* Userdefined code gets TurtleWindow instance rather than LogoCode
+  instance as first argument. This change was made in order to better
+  accommodate and better parallel the new plugin mechanism. Most
+  likely, you had been referencing tw, the TurtleWindow instance from
+  lc, the LogoCode instance, e.g., lc.tw. Now you can reference tw
+  directly, e.g., tw. To reference lc, use tw.lc. Under most
+  circumstances, Turtle Art will detect when myblock is looking for lc
+  rather than tw and it will pass the correct argument.
+
 106
+
+ENHANCEMENTS
+
+* Added sharing to draw_text, fill_polygon, draw_pixbuf (#2461)
+* Added sharing (EXPERIMENTAL) between Gnome and Sugar versions (with Raul
+  Gutierrez Segales)
+* Added 'time' block for measuring elapsed time (in seconds)
+* Added 'brightness' block for reading average camera luminance value
+  (with help from Tony Forster and Guzman Trinidad)
+* Added camera media block for grabbing images from the camera
+* New speak.py sample code for doing text to speech (Tony Forster)
+* New load_block.py sample code for programatically creating TA projects
+* New psuedo-color.ta example (Tony Forster)
+* New love-speaks-volumes.ta example -- use mic input to scale shapes
+* New spiralaterals.ta example inspired by Spiralaterals activity
+* Added a Media Palette for all media-related blocks and reorganized palettes
+  (#2633) for more clarity (Claudia Urrea and Bill Kerr)
+* Added offset for second argument in Boolean compare blocks
+* More complete translations in Spanish (es) and Italian (it)
+* Added plugin support for non-standard devices (camera, sensors, RFID)
 
 BUG FIXES
 
 * Exposed see as an external method (#2542)
 * Media type tests on file suffix use lower()
-* Uninitialized variables in Show block for numeric arguments (#2543)
-* Catch potential zero-divide in set_gray method (#2545)
-* Fixed regression with show Journal object thumbnails
-
-ENHANCEMENTS
-
-* Code clean up by RGS
-* Added 'brightness' block for reading camera luminance level
-* Added 'camera sees' block for reading average camera RGB value
-* Added camera media block for grabbing images from the camera
-* New psuedo-color.ta example (Tony Forster)
+* Added support for localization to GNOME version (Raul Gutierrez Segales)
+* Work around for situations where gst is not available
+* Fixed problem with displaying Journal preview images in portfolio
+* Restore overlay grids on clear
+* Fixed problem with help-string wrap width (#2633)
+* Added missing dependency to RFID plugin (Emiliano Pastorino)
 
 105
 
@@ -110,7 +200,7 @@ ENHANCEMENTS
 * rgs fixed resume problem in GNOME version (#2293)
 * checking alpha value to block 'hit' detection (fixes problem with
   selecting the wrong block when blocks wrap around each other).
-* trap and display math errors in python block (#2313)
+* trap and display math errors in Python block (#2313)
 
 96
 
@@ -386,7 +476,7 @@ ENHANCEMENTS
 
 * first pass at hover help support (thanks Raul)
 * put samples button, keep button on project toolbar
-* fixed journal icons associated with html, python, logo
+* fixed journal icons associated with HTML, Python, Logo
 * improved compatibility with old Sugar builds
 * images centered under turtle
 * text vertically centered under turtle

@@ -1,4 +1,4 @@
-#Copyright (c) 2008-10, Walter Bender
+#Copyright (c) 2008-11, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -18,351 +18,255 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-IGNORE = ['hideblocks', 'showblocks', 'fullscreen', 'polar', 'cartesian',
-          'sandwichbottom', 'id']
+from gettext import gettext as _
 
-import math
 try:
     from sugar.datastore import datastore
+    HAS_DATASTORE = True
 except:
-    pass
+    HAS_DATASTORE = False
+
+from TurtleArt.tapalette import logo_commands, logo_functions
+from TurtleArt.taconstants import TITLEXY, CONSTANTS
 
 def save_logo(tw):
     """ Set up the Turtle Art color palette and color processing. """
-    color_processing = '\
-to tasetpalette :i :r :g :b :myshade \r\
-make "s ((:myshade - 50) / 50) \r\
-ifelse lessp :s 0 [ \r\
-make "s (1 + (:s *0.8)) \r\
-make "r (:r * :s) \r\
-make "g (:g * :s) \r\
-make "b (:b * :s) \r\
-] [ \
-make "s (:s * 0.9) \r\
-make "r (:r + ((99-:r) * :s)) \r\
-make "g (:g + ((99-:g) * :s)) \r\
-make "b (:b + ((99-:b) * :s)) \r\
-] \
-setpalette :i (list :r :g :b) \r\
-end \r\
-\
-to rgb :myi :mycolors :myshade \r\
-make "myr first :mycolors \r\
-make "mycolors butfirst :mycolors \r\
-make "myg first :mycolors \r\
-make "mycolors butfirst :mycolors \r\
-make "myb first :mycolors \r\
-make "mycolors butfirst :mycolors \r\
-tasetpalette :myi :myr :myg :myb :myshade \r\
-output :mycolors \r\
-end \r\
-\
-to processcolor :mycolors :myshade \r\
-if emptyp :mycolors [stop] \r\
-make "i :i + 1 \r\
-processcolor (rgb :i :mycolors :myshade) :myshade \r\
-end \r\
-\
-to tasetshade :shade \r\
-make "myshade modulo :shade 200 \r\
-if greaterp :myshade 99 [make "myshade (199-:myshade)] \r\
-make "i 7 \r\
-make "mycolors :colors \r\
-processcolor :mycolors :myshade \r\
-end \r\
-\
-to tasetpencolor :c \r\
-make "color (modulo (round :c) 100) \r\
-setpencolor :color + 8 \r\
-end \r\
-\
-make "colors [ \
-99  0  0 99  5  0 99 10  0 99 15  0 99 20  0 \
-99 25  0 99 30  0 99 35  0 99 40  0 99 45  0 \
-99 50  0 99 55  0 99 60  0 99 65  0 99 70  0 \
-99 75  0 99 80  0 99 85  0 99 90  0 99 95  0 \
-99 99  0 90 99  0 80 99  0 70 99  0 60 99  0 \
-50 99  0 40 99  0 30 99  0 20 99  0 10 99  0 \
- 0 99  0  0 99  5  0 99 10  0 99 15  0 99 20 \
- 0 99 25  0 99 30  0 99 35  0 99 40  0 99 45 \
- 0 99 50  0 99 55  0 99 60  0 99 65  0 99 70 \
- 0 99 75  0 99 80  0 99 85  0 99 90  0 99 95 \
- 0 99 99  0 95 99  0 90 99  0 85 99  0 80 99 \
- 0 75 99  0 70 99  0 65 99  0 60 99  0 55 99 \
- 0 50 99  0 45 99  0 40 99  0 35 99  0 30 99 \
- 0 25 99  0 20 99  0 15 99  0 10 99  0  5 99 \
- 0  0 99  5  0 99 10  0 99 15  0 99 20  0 99 \
-25  0 99 30  0 99 35  0 99 40  0 99 45  0 99 \
-50  0 99 55  0 99 60  0 99 65  0 99 70  0 99 \
-75  0 99 80  0 99 85  0 99 90  0 99 95  0 99 \
-99  0 99 99  0 90 99  0 80 99  0 70 99  0 60 \
-99  0 50 99  0 40 99  0 30 99  0 20 99  0 10] \r\
-make "shade  50 \r\
-tasetshade :shade \r'
 
-    bs = tw.just_blocks()
-    code = ''
+    # We need to catch several special cases: stacks, boxes, labels, etc.
+    dispatch_table = {
+        'label': _add_label,
+        'to action': _add_named_stack,
+        'action': _add_reference_to_stack,
+        'storeinbox': _add_named_box,
+        'box': _add_reference_to_box
+        }
+    constants_table = {
+        'lpos': _lpos,
+        'tpos': _tpos,
+        'rpos': _rpos,
+        'bpos': _bpos,
+        'red': _red,
+        'orange': _orange,
+        'yellow': _yellow,
+        'green': _green,
+        'cyan': _cyan,
+        'blue': _blue,
+        'purple': _purple,
+        'white': _white,
+        'black': _black,
+        'titlex': _titlex,
+        'titley': _titley,
+        'leftx': _leftx,
+        'topy': _topy,
+        'rightx': _rightx,
+        'bottomy': _bottomy,
+        'width': _width,
+        'height': _height
+        }
+
+    stacks_of_blocks = tw.just_blocks()
     stack_count = 0
-    show = 0
 
-    # These flags are used to trigger the prepending of additional procedures.
-    random = False
-    fillscreen = False
-    setcolor = False
-    setxy = False
-    setxy2 = False
-    pensize = False
-    setpensize = False
-    arc = False
-    heap = False
-    write = False
-    minus = False
-    division = False
-    image = False
+    logocode = ''
 
     """
     Walk through the code, substituting UCB Logo for Turtle Art primitives.
     """
-    for b in bs:
+    for stack in stacks_of_blocks:
         this_stack = ''
-        data = walk_stack(tw.lc, b, tw.block_list.list)
-        # We need to catch several special cases: stacks, random, etc.
-        stack = False
-        namedstack = False
-        namedbox = False
-        refstack = False
-        refbox = False
-        myvar = ''
-        for d in data:
-            if type(d) == type((1, 2)):
-                (d, b) = d
-            if type(d) is float:
-                if namedbox:
-                    myvar += str(d)
-                    myvar += ' '
-                elif write:
-                    this_stack += 'labelsize '
-                    this_stack += str(d)
-                    write = False
-                else:
-                    this_stack += str(d)
-            elif show == 2:
-                # Use title for Journal objects
-                if d[0:8] == '#smedia_':
-                    try:
-                        dsobject = datastore.get(d[8:])
-                        this_stack += dsobject.metadata['title']
-                        dsobject.destroy()
-                    except:
-                        this_stack += str(d)
-                else:
-                    this_stack += str(d)
-                show = 0
+        psuedocode = _walk_stack(tw, stack)
+        if psuedocode == []:
+            continue
+
+        skip = False
+        for i in range(len(psuedocode)):
+            if skip:
+                skip = False
+                continue
+            blk = psuedocode[i]
+            if type(blk) == type((1, 2)):
+                (blk, _blk_no) = blk
+            if blk in logo_commands:
+                logo_command = logo_commands[blk]
             else:
-                # Translate some Turtle Art primitives into UCB Logo
-                if namedstack:
-                    this_stack += 'to '
-                    this_stack += d[2:].replace(' ', '_')
-                    this_stack += '\r'
-                    stack = True
-                    namedstack = False
-                elif namedbox:
-                    if d[0:2] == '#s':
-                        this_stack += 'make "'
-                        this_stack += d[2:].replace(' ', '_')
-                        this_stack += ' '
-                        this_stack += myvar
-                        namedbox = False
-                        myvar = ''
-                    else:
-                        myvar += d
-                elif refstack:
-                    this_stack += d[2:].replace(' ', '_')
-                    this_stack += ' '
-                    refstack = False
-                elif refbox:
-                    this_stack += ':'
-                    this_stack += d[2:].replace(' ', '_')
-                    refbox = False
-                elif d == 'stack':
-                    refstack = True
-                elif d == 'box':
-                    refbox = True
-                elif d == 'storeinbox':
-                    namedbox = True
-                elif d == 'storeinbox1':
-                    this_stack += 'make "box1'
-                elif d == 'box1':
-                    this_stack += ':box1'
-                elif d == 'storeinbox2':
-                    this_stack += 'make "box2'
-                elif d == 'box2':
-                    this_stack += ':box2'
-                elif d == 'shade':
-                    this_stack += ':shade'
-                elif d == 'setshade':
-                    setcolor = True
-                    this_stack += 'tasetshade'
-                elif d == 'color':
-                    this_stack += 'pencolor'
-                elif d == 'nop':
-                    this_stack += ' '
-                elif d == 'start':
-                    this_stack += 'to start\r'
-                    stack = True
-                elif d == 'nop1':
-                    this_stack += 'to stack1\r'
-                    stack = True
-                elif d == 'nop2':
-                    this_stack += 'to stack2\r'
-                    stack = True
-                elif d == 'nop3':
-                    namedstack = True
-                elif d == 'stopstack':
-                    this_stack += 'stop'
-                elif d == 'clean':
-                    this_stack += 'clearscreen'
-                elif d == 'setxy':
-                    setxy = True
-                    this_stack += 'tasetxypenup'
-                elif d == 'setxy2':
-                    setxy2 = True
-                    this_stack += 'tasetxy'
-                elif d == 'color':
-                    this_stack += ':color'
-                elif d == 'plus':
-                    this_stack += 'sum'
-                elif d == 'setcolor':
-                    setcolor = True
-                    this_stack += 'tasetpencolor'
-                elif d == 'fillscreen':
-                    fillscreen = True
-                    setcolor = True
-                    this_stack += 'tasetbackground'
-                elif d == 'random':
-                    random = True
-                    this_stack += 'tarandom'
-                elif d == 'pensize':
-                    pensize = True
-                    this_stack += 'tapensize'
-                elif d == 'setpensize':
-                    setpensize = True
-                    this_stack += 'tasetpensize'
-                elif d == 'arc':
-                    arc = True
-                    this_stack += 'taarc'
-                elif d == 'pop':
-                    heap = True
-                    this_stack += 'tapop'
-                elif d == 'push':
-                    heap = True
-                    this_stack += 'tapush'
-                elif d == 'heap':
-                    heap = True
-                    this_stack += 'taprintheap'
-                elif d == 'emptyheap':
-                    heap = True
-                    this_stack += 'taclearheap'
-                elif d == 'kbinput':
-                    this_stack += 'make "keyboard readchar'
-                elif d == 'keyboard':
-                    this_stack += ':keyboard'
-                elif d == 'insertimage':
-                    image = True
-                elif image:
-                    # Skip this arg
-                    image = 2
-                elif image == 2:
-                    # Skip this arg
-                    image = False
-                elif d[0:2] == '#s':
-                    # output single characters as a string
-                    if len(d[2:]):
-                        this_stack += '"'
-                        this_stack += d[2:]
-                    # make a sentence out of everything else
-                    else:
-                        this_stack += 'sentence '
-                        this_stack += d[2:].replace('\s', ' "')
-                        this_stack += '\r'
-                elif d == 'write':
-                    this_stack += 'label'
-                    write = True
-                elif d == 'show' or d == 'showaligned':
-                    this_stack += 'label'
-                    show = 1
-                elif d == 'minus2':
-                    this_stack += 'taminus'
-                    minus = True
-                elif d == 'division':
-                    this_stack += 'quotient'
-                elif d == 'lpos':
-                    this_stack += str(-tw.canvas.width / (tw.coord_scale * 2))
-                elif d == 'rpos':
-                    this_stack += str(tw.canvas.width / (tw.coord_scale * 2))
-                elif d == 'bpos':
-                    this_stack += str(-tw.canvas.height / (tw.coord_scale * 2))
-                elif d == 'tpos':
-                    this_stack += str(tw.canvas.height / (tw.coord_scale * 2))
-                elif d in IGNORE:
-                    this_stack += ' '
-                elif show == 1 and d[0:2] == '#s':
-                    this_stack += d[2:]
-                # We don't handle depreciated 'template' blocks
+                logo_command = None
+            if i == 0 and not logo_command in ['to stack1\r', 'to stack2\r',
+                                               'to action', 'to start\r']:
+                this_stack = 'to turtleblocks_%d\r' % (stack_count)
+                stack_count += 1
+            if logo_command in dispatch_table:
+                if i + 1 < len(psuedocode):
+                    this_stack += dispatch_table[logo_command](
+                        psuedocode[i + 1])
+                    skip = True
                 else:
-                    this_stack += d
+                    print 'missing arg to %s' % (logo_command)
+            elif logo_command in constants_table:
+                this_stack += str(constants_table[logo_command](tw))
+            elif logo_command is not None:
+                this_stack += logo_command
+            else:  # assume it is an argument
+                if not blk in ['nop', 'nop1', 'nop2', 'nop3']:
+                    if type(blk) == str and blk[0:2] == '#s':
+                        this_stack += str(blk[2:]).replace(' ', '_')
+                    else:
+                        this_stack += str(blk).replace(' ', '_')
             this_stack += ' '
-        if stack:
-            stack = False
-        # if it is not a stack, we need to add a 'to ta#' label
-        elif len(data) > 0:
-            this_stack = 'to ta' + str(stack_count) + '\r' + this_stack
-            stack_count += 1
-        if len(data) > 0:
-            code += this_stack
-            code += '\rend\r'
 
-    # We need to define some additional procedures.
-    if minus:  # Logo minus only takes one argument.
-        code = 'to taminus :y :x\routput sum :x minus :y\rend\r' + code
-    if random:  # to avoid negative numbers
-        code = 'to tarandom :min :max\r' + \
-               'output (random (:max - :min)) + :min\rend\r' + code
-    if fillscreen:  # Set shade than background color
-        code = 'to tasetbackground :color :shade\r' + \
-               'tasetshade :shade\rsetbackground :color\rend\r' + code
-    if setcolor:  # Load the Turtle Art color palette.
-        code = color_processing + code
-    if setpensize:  # Set int of pensize
-        code = 'to tasetpensize :a\rsetpensize round :a\rend\r' + code
-    if pensize:  # Return only the first argument.
-        code = 'to tapensize\routput first round pensize\rend\r' + code
-    if setxy2:  # Swap and round arguments
-        code = 'to tasetxy :x :y\rsetxy :x :y\rend\r' + code
-    if setxy:  # Swap and round arguments and add pen up/down
-        code = 'to tasetxy :x :y\rpenup\rsetxy :x :y\rpendown\rend\r' + code
-    if arc:  # Turtle Art 'arc' needs to be redefined.
-        c = (2 * math.pi) / 360
-        code = 'to taarc :a :r\rrepeat round :a [right 1 forward (' + \
-               str(c) + ' * :r)]\rend\r' + code
-    if heap:  # Add psuedo 'push' and 'pop'
-        code = 'to tapush :foo\rmake "taheap fput :foo :taheap\rend\r' + \
-            'to tapop\rif emptyp :taheap [stop]\rmake \'tmp first :taheap\r' +\
-            'make "taheap butfirst :taheap\routput :tmp\rend\r' + \
-            'to taclearheap\rmake "taheap []\rend\r' + \
-            'to taprintheap \rprint :taheap\rend\r' + \
-            'make "taheap []\r' + code
-    code = 'window\r' + code
-    return code
+        logocode += this_stack
+        logocode += '\rend\r'
+
+    # We may need to prepend some additional procedures.
+    for key in logo_functions.iterkeys():
+        if key in logocode:
+            logocode = logo_functions[key] + logocode
+
+    if 'tasetshade' in logocode or 'tasetpencolor' in logocode or \
+       'tasetbackground' in logocode:
+        logocode = logo_functions['tacolor'] + logocode
+
+    logocode = 'window\r' + logocode
+    return logocode
 
 
-def walk_stack(lc, blk, list):
+def _add_label(string):
+        if type(string) == str and string[0:8] in ['#smedia_', '#saudio_',
+                                                   '#svideo_', '#sdescr_']:
+            string = string[8:]
+            if HAS_DATASTORE:
+                dsobject = datastore.get(string[8:])
+                if 'title' in dsobject.metadata:
+                    string = dsobject.metadata['title']
+        else:
+            string = str(string)
+        if string[0:2] == '#s':
+            string = string[2:]
+            string = '"' + string
+        if string.count(' ') > 0:
+            return 'label sentence %s\r' % (string.replace(' ', ' "'))
+        else:
+            return 'label %s' % (string.replace(' ', '_'))
+
+
+def _add_named_stack(action):
+        if type(action) == str and action[0:2] == '#s':
+            return 'to %s\r' % (str(action[2:]).replace(' ', '_'))
+        else:
+            return 'to %s\r' % (str(action).replace(' ', '_'))
+
+
+def _add_reference_to_stack(action):
+        if type(action) == str and action[0:2] == '#s':
+            return '%s' % (str(action[2:]).replace(' ', '_'))
+        else:
+            return '%s' % (str(action).replace(' ', '_'))
+
+
+def _add_named_box(box_name):
+        if type(box_name) == str and box_name[0:2] == '#s':
+            return 'make "%s' % (str(box_name[2:]).replace(' ', '_'))
+        else:
+            return 'make "%s' % (str(box_name).replace(' ', '_'))
+
+
+def _add_reference_to_box(box_name):
+        if type(box_name) == str and box_name[0:2] == '#s':
+            return ':%s' % (str(box_name[2:]).replace(' ', '_'))
+        else:
+            return ':%s' % (str(box_name).replace(' ', '_'))
+
+
+def _lpos(tw):
+        return int(-tw.canvas.width / (tw.coord_scale * 2))
+
+
+def _tpos(tw):
+        return int(tw.canvas.height / (tw.coord_scale * 2))
+
+
+def _rpos(tw):
+        return int(tw.canvas.width / (tw.coord_scale * 2))
+
+
+def _bpos(tw):
+        return int(-tw.canvas.height / (tw.coord_scale * 2))
+
+
+def _width(tw):
+    return int(tw.canvas.width / tw.coord_scale)
+
+
+def _height(tw):
+    int(tw.canvas.height / tw.coord_scale)
+
+
+def _titlex(tw):
+    return int(-(tw.canvas.width * TITLEXY[0]) / (tw.coord_scale * 2))
+
+
+def _titley(tw):
+    return int((tw.canvas.height * TITLEXY[1]) / (tw.coord_scale * 2))
+
+
+def _leftx(tw):
+    return int(-(tw.canvas.width * TITLEXY[0]) / (tw.coord_scale * 2))
+
+
+def _topy(tw):
+    return int((tw.canvas.height * (TITLEXY[1] - 0.125)) / (tw.coord_scale * 2))
+
+
+def _rightx(tw):
+    return 0
+
+
+def _bottomy(tw):
+    return 0
+
+
+def _red(tw):
+    return CONSTANTS['red']
+
+
+def _orange(tw):
+    return CONSTANTS['orange']
+
+
+def _yellow(tw):
+    return CONSTANTS['yellow']
+
+
+def _green(tw):
+    return CONSTANTS['green']
+
+
+def _cyan(tw):
+    return CONSTANTS['cyan']
+
+
+def _blue(tw):
+    return CONSTANTS['blue']
+
+
+def _purple(tw):
+    return CONSTANTS['purple']
+
+
+def _white(tw):
+    return 1
+
+
+def _black(tw):
+    return 0
+
+
+def _walk_stack(tw, blk_in_stack):
     """ Convert blocks to logo psuedocode. """
     from tautils import find_top_block
 
-    top = find_top_block(blk)
-    if blk == top:
-        code = lc.run_blocks(top, list, False)
-        return code
+    top = find_top_block(blk_in_stack)
+    if blk_in_stack == top:
+        psuedocode = tw.lc.run_blocks(top, tw.block_list.list, False)
+        return psuedocode
     else:
         return []

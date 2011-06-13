@@ -1,5 +1,5 @@
 #Copyright (c) 2007-8, Playful Invention Company.
-#Copyright (c) 2008-10, Walter Bender
+#Copyright (c) 2008-11, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,8 @@ import gtk
 import pickle
 import subprocess
 import dbus
+import os.path
+from gettext import gettext as _
 
 try:
     OLD_SUGAR_SYSTEM = False
@@ -37,15 +39,29 @@ except (ImportError, AttributeError):
         from simplejson import dump as jdump
     except:
         OLD_SUGAR_SYSTEM = True
-
-from taconstants import STRING_OR_NUMBER_ARGS, HIDE_LAYER, CONTENT_ARGS, \
-                        COLLAPSIBLE, BLOCK_LAYER, CONTENT_BLOCKS, HIT_HIDE, \
-                        HIT_SHOW, XO1, XO15, UNKNOWN
 from StringIO import StringIO
-import os.path
-from gettext import gettext as _
+
+from taconstants import HIDE_LAYER, COLLAPSIBLE, BLOCK_LAYER, HIT_HIDE, \
+    HIT_SHOW, XO1, XO15, UNKNOWN
+
 import logging
 _logger = logging.getLogger('turtleart-activity')
+
+
+def debug_output(message_string, running_sugar=False):
+    """ unified debugging output """
+    if running_sugar:
+        _logger.debug(message_string)
+    else:
+        print(message_string)
+
+
+def error_output(message_string, running_sugar=False):
+    """ unified debugging output """
+    if running_sugar:
+        _logger.error(message_string)
+    else:
+        print(message_string)
 
 
 class pythonerror(Exception):
@@ -105,15 +121,22 @@ def json_load(text):
     if OLD_SUGAR_SYSTEM is True:
         _listdata = json.read(text)
     else:
-        # strip out leading and trailing whitespace, nulls, and newlines
+        # Strip out leading and trailing whitespace, nulls, and newlines
         clean_text = text.lstrip()
         clean_text = clean_text.replace('\12', '')
         clean_text = clean_text.replace('\00', '')
-        _io = StringIO(clean_text.rstrip())
+        clean_text = clean_text.rstrip()
+        # Look for missing ']'s
+        left_count = clean_text.count('[')
+        right_count = clean_text.count(']')
+        while left_count > right_count:
+            clean_text += ']'
+            right_count = clean_text.count(']')
+        _io = StringIO(clean_text)
         try:
             _listdata = jload(_io)
         except ValueError:
-            # assume that text is ascii list
+            # Assume that text is ascii list
             _listdata = text.split()
             for i, value in enumerate(_listdata):
                 _listdata[i] = convert(value, float)
@@ -147,7 +170,7 @@ def json_dump(data):
 
 def get_load_name(suffix, load_save_folder):
     """ Open a load file dialog. """
-    _dialog = gtk.FileChooserDialog("Load...", None,
+    _dialog = gtk.FileChooserDialog(_('Load...'), None,
         gtk.FILE_CHOOSER_ACTION_OPEN, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                                        gtk.STOCK_OPEN, gtk.RESPONSE_OK))
     _dialog.set_default_response(gtk.RESPONSE_OK)
@@ -156,7 +179,7 @@ def get_load_name(suffix, load_save_folder):
 
 def get_save_name(suffix, load_save_folder, save_file_name):
     """ Open a save file dialog. """
-    _dialog = gtk.FileChooserDialog("Save...", None,
+    _dialog = gtk.FileChooserDialog(_('Save...'), None,
         gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                                        gtk.STOCK_SAVE, gtk.RESPONSE_OK))
     _dialog.set_default_response(gtk.RESPONSE_OK)
@@ -285,24 +308,36 @@ def get_path(activity, subpath):
                             "org.laptop.TurtleArtActivity", subpath))
 
 
-def image_to_base64(pixbuf, activity):
-    """ Convert an image to base64 """
-    _file_name = os.path.join(get_path(activity, 'instance'), 'imagetmp.png')
+def image_to_base64(pixbuf, path_name):
+    """ Convert an image to base64-encoded data """
+    file_name = os.path.join(path_name, 'imagetmp.png')
     if pixbuf != None:
-        pixbuf.save(_file_name, "png")
-    _base64 = os.path.join(get_path(activity, 'instance'), 'base64tmp')
-    _cmd = "base64 <" + _file_name + " >" + _base64
-    subprocess.check_call(_cmd, shell=True)
-    _file_handle = open(_base64, 'r')
-    _data = _file_handle.read()
-    _file_handle.close()
-    return _data
+        pixbuf.save(file_name, "png")
+    base64 = os.path.join(path_name, 'base64tmp')
+    cmd = "base64 <" + file_name + " >" + base64
+    subprocess.check_call(cmd, shell=True)
+    file_handle = open(base64, 'r')
+    data = file_handle.read()
+    file_handle.close()
+    return data
+
+
+def base64_to_image(data, path_name):
+    """ Convert base64-encoded data to an image """
+    base64 = os.path.join(path_name, 'base64tmp')
+    file_handle = open(base64, 'w')
+    file_handle.write(data)
+    file_handle.close()
+    file_name = os.path.join(path_name, 'imagetmp.png')
+    cmd = "base64 -d <" + base64 + ">" + file_name
+    subprocess.check_call(cmd, shell=True)
+    return file_name
 
 
 def movie_media_type(name):
     """ Is it movie media? """
     return name.lower().endswith(('.ogv', '.vob', '.mp4', '.wmv', '.mov',
-                                  '.mpeg', 'ogg'))
+                                  '.mpeg', '.ogg', '.webm'))
 
 
 def audio_media_type(name):
@@ -318,7 +353,7 @@ def image_media_type(name):
 
 def text_media_type(name):
     """ Is it text media? """
-    return name.lower().endswith(('.txt', '.py', '.lg', '.rtf', '.ta'))
+    return name.lower().endswith(('.txt', '.py', '.lg', '.rtf'))
 
 
 def round_int(num):
@@ -326,7 +361,6 @@ def round_int(num):
     try:
         float(num)
     except TypeError:
-        _logger.debug("error trying to convert %s to number" % (str(num)))
         raise pythonerror("#syntaxerror")
 
     if int(float(num)) == num:
@@ -613,39 +647,6 @@ def neg_arg(value):
     return False
 
 
-def dock_dx_dy(block1, dock1n, block2, dock2n):
-    """ Find the distance between the dock points of two blocks. """
-    _dock1 = block1.docks[dock1n]
-    _dock2 = block2.docks[dock2n]
-    _d1type, _d1dir, _d1x, _d1y = _dock1[0:4]
-    _d2type, _d2dir, _d2x, _d2y = _dock2[0:4]
-    if block1 == block2:
-        return (100, 100)
-    if _d1dir == _d2dir:
-        return (100, 100)
-    if (_d2type is not 'number') or (dock2n is not 0):
-        if block1.connections is not None and \
-           dock1n < len(block1.connections) and \
-           block1.connections[dock1n] is not None:
-            return (100, 100)
-        if block2.connections is not None and \
-           dock2n < len(block2.connections) and \
-           block2.connections[dock2n] is not None:
-            return (100, 100)
-    if _d1type != _d2type:
-        if block1.name in STRING_OR_NUMBER_ARGS:
-            if _d2type == 'number' or _d2type == 'string':
-                pass
-        elif block1.name in CONTENT_ARGS:
-            if _d2type in CONTENT_BLOCKS:
-                pass
-        else:
-            return (100, 100)
-    (_b1x, _b1y) = block1.spr.get_xy()
-    (_b2x, _b2y) = block2.spr.get_xy()
-    return ((_b1x + _d1x) - (_b2x + _d2x), (_b1y + _d1y) - (_b2y + _d2y))
-
-
 def journal_check(blk1, blk2, dock1, dock2):
     """ Dock blocks only if arg is Journal block """
     if blk1 == None or blk2 == None:
@@ -796,22 +797,29 @@ def find_blk_below(blk, name):
 
 def get_hardware():
     """ Determine whether we are using XO 1.0, 1.5, or "unknown" hardware """
-    bus = dbus.SystemBus()
-
-    comp_obj = bus.get_object('org.freedesktop.Hal',
-                              '/org/freedesktop/Hal/devices/computer')
-    dev = dbus.Interface(comp_obj, 'org.freedesktop.Hal.Device')
-    if dev.PropertyExists('system.hardware.vendor') and \
-            dev.PropertyExists('system.hardware.version'):
-        if dev.GetProperty('system.hardware.vendor') == 'OLPC':
-            if dev.GetProperty('system.hardware.version') == '1.5':
-                return XO15
-            else:
-                return XO1
+    product = _get_dmi('product_name')
+    if product is None:
+        if os.path.exists('/etc/olpc-release') or \
+           os.path.exists('/sys/power/olpc-pm'):
+            return XO1
         else:
             return UNKNOWN
-    elif os.path.exists('/etc/olpc-release') or \
-         os.path.exists('/sys/power/olpc-pm'):
+    if product != 'XO':
+        return UNKNOWN
+    version = _get_dmi('product_version')
+    if version == '1':
         return XO1
+    elif version == '1.5':
+        return XO15
     else:
         return UNKNOWN
+
+
+def _get_dmi(node):
+    ''' The desktop management interface should be a reliable source
+    for product and version information. '''
+    path = os.path.join('/sys/class/dmi/id', node)
+    try:
+        return open(path).readline().strip()
+    except:
+        return None

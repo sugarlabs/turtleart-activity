@@ -426,12 +426,15 @@ class Sprite:
                     b = ord(array[offset + 2])
                     return(r, g, b, a)
                 except IndexError:
+                    """
                     print "Index Error: %d %d (%d, %d) (w: %d, h: %d) (%dx%d)"\
                             % (len(array), offset, x, y,
                                self.images[i].get_width(),
                                self.images[i].get_height(),
                                self.rect.width, self.rect.height)
-            return(-1, -1, -1, -1)
+                    """
+                    pass
+                return(-1, -1, -1, -1)
         else:
             w, h = self.images[i].get_size()
             if x < 0 or x > (w - 1) or y < 0 or y > (h - 1):
