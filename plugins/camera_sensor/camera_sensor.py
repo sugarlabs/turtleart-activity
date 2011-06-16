@@ -56,7 +56,6 @@ class Camera_sensor(Plugin):
                                help_string=_('Palette of sensor blocks'))
 
         # set up camera-specific blocks
-        primitive_dictionary['luminance'] = self.prim_read_camera
         primitive_dictionary['read_camera'] = self.prim_read_camera
         media_blocks_dictionary['camera'] = self.prim_take_picture
 
@@ -68,7 +67,7 @@ class Camera_sensor(Plugin):
                               value_block=True,
                               prim_name='luminance')
             self._parent.lc.def_prim('luminance', 0,
-                lambda self: primitive_dictionary['luminance'](
+                lambda self: primitive_dictionary['read_camera'](
                     luminance_only=True))
 
             # Depreciated block
@@ -79,7 +78,7 @@ class Camera_sensor(Plugin):
                               help_string=_('Average RGB color from camera \
 is pushed to the stack'),
                               value_block=True,
-                              prim_name='luminance')
+                              prim_name='read_camera')
             self._parent.lc.def_prim('read_camera', 0,
                 lambda self: primitive_dictionary['read_camera']())
 
@@ -96,9 +95,9 @@ is pushed to the stack'),
                               label=_('brightness'),
                               help_string=_('light level detected by camera'),
                               value_block=True,
-                              prim_name='luminance')
+                              prim_name='read_camera')
             self._parent.lc.def_prim('luminance', 0,
-                lambda self: primitive_dictionary['luminance'](
+                lambda self: primitive_dictionary['read_camera'](
                     luminance_only=True))
 
             # Depreciated block
@@ -109,7 +108,7 @@ is pushed to the stack'),
                               help_string=_('Average RGB color from camera \
 is pushed to the stack'),
                               value_block=True,
-                              prim_name='luminance')
+                              prim_name='read_camera')
             self._parent.lc.def_prim('read_camera', 0,
                 lambda self: primitive_dictionary['read_camera']())
 
@@ -134,7 +133,8 @@ is pushed to the stack'),
             self._camera.stop_camera_input()
 
     def _status_report(self):
-        debug_output('Reporting camera status: %s' % (str(self._status)))
+        debug_output('Reporting camera status: %s' % (str(self._status)),
+                     self._parent.running_sugar)
         return self._status
 
     # Block primitives used in talogo
@@ -162,38 +162,24 @@ is pushed to the stack'),
 
         pixbuf = None
         array = None
-        w = 4
-        h = 3
+
         if self._status:
             try:
                 self._video_capture_device = open('/dev/video0', 'rw')
             except:
                 self._video_capture_device = None
-                debug_output('video capture device not available')
+                debug_output('video capture device not available',
+                             self._parent.running_sugar)
 
-            if self._video_capture_device is not None:
-                self._ag_control = v4l2_control(V4L2_CID_AUTOGAIN)
-                try:
-                    ioctl(self._video_capture_device, VIDIOC_G_CTRL,
-                          self._ag_control)
-                    self._ag_control.value = 0  # disable AUTOGAIN
-                    ioctl(self._video_capture_device, VIDIOC_S_CTRL,
-                          self._ag_control)
-                except:
-                    # debug_output('AUTOGAIN control not available')
-                    pass
+            self._set_autogain(0)  # disable AUTOGAIN
 
-            if self._video_capture_device is not None:
-                self._video_capture_device.close()
-
-            self._camera.save_camera_input_to_file()
-            self._camera.stop_camera_input()
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self._imagepath,
-                                                          w, h)
+            pixbuf = self._get_pixbuf_from_camera()
             try:
                 array = pixbuf.get_pixels()
             except:
                 array = None
+
+            self._set_autogain(1)  # reenable AUTOGAIN
 
         if array is not None:
             length = len(array) / 3
@@ -220,3 +206,26 @@ is pushed to the stack'),
                 self._parent.lc.heap.append(-1)
                 self._parent.lc.heap.append(-1)
                 self._parent.lc.heap.append(-1)
+
+    def _set_autogain(self, state):
+        ''' 0 is off; 1 is on '''
+        if self._video_capture_device is not None:
+            self._ag_control = v4l2_control(V4L2_CID_AUTOGAIN)
+            try:
+                ioctl(self._video_capture_device, VIDIOC_G_CTRL,
+                      self._ag_control)
+                self._ag_control.value = state
+                ioctl(self._video_capture_device, VIDIOC_S_CTRL,
+                      self._ag_control)
+            except:
+                pass
+
+    def _get_pixbuf_from_camera(self):
+        ''' Regardless of how we get it, we want to return a pixbuf '''
+        if self._video_capture_device is not None:
+            self._video_capture_device.close()
+            self._camera.save_camera_input_to_file()
+            self._camera.stop_camera_input()
+            return gtk.gdk.pixbuf_new_from_file(self._imagepath)
+        else:
+            return None
