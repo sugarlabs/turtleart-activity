@@ -5,6 +5,7 @@
 
 # Usage: Import this code into a Python (user-definable) block and
 # pass a sound name Python block. The sound will play.
+# Alternatively, pass a pitch, amplitude, and duration, e.g., 440, 5000, 1
 
 # Note: Assumes TamTam suite is installed in ~/Activities
 
@@ -14,8 +15,6 @@ def myblock(tw, sound):
 
     from TurtleArt.tautils import get_path
     import os
-    import sys
-    from gettext import gettext as _
 
     dirs = [os.path.join(os.environ['HOME'],
                 'Activities/TamTamMini.activity/common/Resources/Sounds/')]
@@ -28,6 +27,37 @@ def myblock(tw, sound):
         for d in dirs:
             if os.path.isdir(d):
                 return d
+
+    def playSine(pitch=1000, amplitude=5000, duration=1, starttime=0,
+                 pitch_envelope='default', amplitude_envelope='default'):
+        """ Create a score to play a sine wave. """
+        _play(pitch, amplitude, duration, starttime, pitch_envelope,
+              amplitude_envelope, 1)
+
+    def _play(pitch, amplitude, duration, starttime, pitch_envelope,
+              amplitude_envelope, instrument):
+        if pitch_envelope == 'default':
+            pitenv = 99
+        else:
+            pitenv = pitch_envelope
+
+        if amplitude_envelope == 'default':
+            ampenv = 100
+        else:
+            ampenv = amplitude_envelope
+
+        if not 1 in instrlist:
+            orchlines.append("instr 1\n")
+            orchlines.append("kpitenv oscil 1, 1/p3, p6\n")
+            orchlines.append("aenv oscil 1, 1/p3, p7\n")
+            orchlines.append("asig oscil p5*aenv, p4*kpitenv, p8\n")
+            orchlines.append("out asig\n")
+            orchlines.append("endin\n\n")
+            instrlist.append(1)
+
+        scorelines.append("i1 %s %s %s %s %s %s %s\n" % (
+                str(starttime), str(duration), str(pitch), str(amplitude),
+                str(pitenv), str(ampenv), str(instrument)))
 
     def playWave(sound='horse', pitch=1, amplitude=1, loop=False, duration=1,
                  starttime=0, pitch_envelope='default',
@@ -90,10 +120,21 @@ def myblock(tw, sound):
         csd.write("\n</CsoundSynthesizer>")
         csd.close()
 
-    playWave(sound)  # Create a score.
+    if type(sound) == float:
+        playSine(pitch=float(sound))
+    elif type(sound) == list:  # Create a score by computing a sinewave.
+        if len(sound) == 1:
+            playSine(pitch=float(sound[0]))
+        elif len(sound) == 2:
+            playSine(pitch=float(sound[0]), amplitude=float(sound[1]))
+        else:
+            playSine(pitch=float(sound[0]), amplitude=float(sound[1]),
+                     duration=float(sound[2]))
+    else:  # Create a score from a prerecorded Wave file.
+        playWave(sound)
     if tw.running_sugar:
-        path = os.path.join(get_path(tw.activity, 'instance'), sound + '.csd')
+        path = os.path.join(get_path(tw.activity, 'instance'), 'tmp.csd')
     else:
-        path = os.path.join('/tmp', sound + '.csd')
+        path = os.path.join('/tmp', 'tmp.csd')
     audioWrite(path)  # Create a csound file from the score.
     os.system('csound ' + path)  # Play the csound file.
