@@ -1,3 +1,15 @@
+111
+
+ENHANCEMENTS
+* New sample program: urban_landscapes.ta
+* New sample program: fractions.ta
+* New python block example for csound
+* Translation updates for .de
+
+BUG FIX
+* Reverted default action name to 'action' instead of 'stack'
+* Reverted accelerator-key work-around (#2050) in light of #2986
+
 110
 
 BUG FIX
