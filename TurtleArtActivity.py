@@ -587,15 +587,9 @@ class TurtleArtActivity(activity.Activity):
         view_toolbar.show()
         help_toolbar.show()
         self._toolbox.show()
+
         # Setup palette toolbar only *after* initializing the plugins
-
-        if self.has_toolbarbox:
-            # Hack as a workaround for #2050
-            edit_toolbar_button.set_expanded(True)
-            edit_toolbar_button.set_expanded(False)
-
-            self._palette_toolbar_button.set_expanded(True)
-        else:
+        if not self.has_toolbarbox:
             self._toolbox.set_current_toolbar(1)
 
     def _setup_palette_toolbar(self):
