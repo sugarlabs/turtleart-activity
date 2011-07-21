@@ -15,15 +15,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-23 02:59+0200\n"
-"PO-Revision-Date: 2010-08-07 22:03+0200\n"
+"PO-Revision-Date: 2011-07-21 21:07+0200\n"
 "Last-Translator: Myckel Habets <myckel@sdf.lonestar.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.3\n"
+"X-Generator: Pootle 2.0.1\n"
 
 #: activity/activity.info:2
 msgid "Turtle Art"
@@ -139,7 +139,7 @@ msgstr "Opslaan als HTML"
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:187
 #, python-format
 msgid "Configuration directory not writable: %s"
-msgstr ""
+msgstr "Configuratiedirectory is niet schrijfbaar: %s"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:816
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2416
@@ -166,7 +166,7 @@ msgstr "toont Cartesische coördinaten"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:142
 msgid "No option action:"
-msgstr ""
+msgstr "Geen optie actie:"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:916
 msgid "jogs stack down"
@@ -211,7 +211,7 @@ msgstr "doos"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:652
 msgid "Failed to upload!"
-msgstr ""
+msgstr "Uploaden mislukt!"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:889
 msgid "invokes named action stack"
@@ -232,7 +232,7 @@ msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:61
 msgid "usage is"
-msgstr ""
+msgstr "gebruik is"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:779
 msgid "Variable 2 (numeric value)"
@@ -313,7 +313,7 @@ msgstr "behoudt deze pen schaduw"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:615
 msgid "Login failed"
-msgstr ""
+msgstr "Aanmelden mislukt"
 
 #
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:409
@@ -321,13 +321,12 @@ msgid "set heading"
 msgstr "richting instellen"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:361
-#, fuzzy
 msgid "numbers"
-msgstr "nummer"
+msgstr "nummers"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:850
 msgid "RGB color under the turtle is pushed to the stack"
-msgstr ""
+msgstr "RGB kleur onder de schildpad is op de stapel gelegd"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:806
 msgid "declutters canvas by hiding blocks"
@@ -391,11 +390,11 @@ msgstr "stel tekstgrootte in"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:548
 msgid "Username:"
-msgstr ""
+msgstr "Gebruikersnaam:"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:891
 msgid "starts filled polygon (used with end fill block)"
-msgstr "Begint met een gevuld vlak (gebruik met eindig vullen van blok)"
+msgstr "begint met een gevuld vlak (gebruik met eindig vullen van blok)"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:838
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:903
@@ -416,7 +415,7 @@ msgstr "stelt het grijsniveau van de lijn in getekend door de schildpad"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:558
 msgid "Password:"
-msgstr ""
+msgstr "Wachtwoord:"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:429
 msgid "stop action"
@@ -537,9 +536,8 @@ msgid "logical less-than operator"
 msgstr "logische kleiner-dan operator"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:307
-#, fuzzy
 msgid "blocks"
-msgstr "Blokken"
+msgstr "blokken"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:856
 msgid "restore all blocks from trash"
@@ -568,7 +566,7 @@ msgstr "verbergt de Sugar werkbalken"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:222
 msgid "Upload to Web"
-msgstr ""
+msgstr "Naar web uploaden"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:380
 msgid "print"
@@ -579,9 +577,8 @@ msgid "red"
 msgstr "rood"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:406
-#, fuzzy
 msgid "sensors"
-msgstr "Sensors"
+msgstr "sensors"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:789
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:220
@@ -602,7 +599,7 @@ msgstr "zet tekstkleur"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:871
 msgid "Palette of sensor blocks"
-msgstr ""
+msgstr "Palet van sensorblokken"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:754
 msgid "number"
@@ -626,7 +623,7 @@ msgstr "bovenin"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:589
 msgid "Submit to Web"
-msgstr ""
+msgstr "Naar web opsturen"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:809
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:228
@@ -644,9 +641,8 @@ msgid "set scale"
 msgstr "stel schaal in"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:457
-#, fuzzy
 msgid "white"
-msgstr "zolang"
+msgstr "wit"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:890
 msgid "connects action to toolbar run buttons"
@@ -756,9 +752,8 @@ msgid "sets shade of the line drawn by the turtle"
 msgstr "stelt de schaduw van de lijn in getekend door het schildpad"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:327
-#, fuzzy
 msgid "flow"
-msgstr "Vloeien"
+msgstr "vloeien"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:273
 msgid "snapshot"
@@ -782,7 +777,7 @@ msgstr "Schermvullend"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:154
 msgid "File not found"
-msgstr ""
+msgstr "Bestand niet gevonden"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:344
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:418
@@ -806,22 +801,20 @@ msgid "logical greater-than operator"
 msgstr "logische groter-dan operator"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:318
-#, fuzzy
 msgid "colors"
-msgstr "kleur"
+msgstr "kleuren"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:378
 msgid "portfolio"
-msgstr ""
+msgstr "portfolio"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:816
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "draait schildpad tegen de klok in (hoek in graden)"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:306
-#, fuzzy
 msgid "black"
-msgstr "terug"
+msgstr "zwart"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:886
 msgid "calculates square root"
@@ -861,7 +854,7 @@ msgstr "Help"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:331
 msgid "Save project?"
-msgstr ""
+msgstr "Project opslaan?"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:771
 msgid "chooses which turtle to command"
@@ -906,6 +899,8 @@ msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
 msgstr ""
+"Je moet een account op http://turtleartsite.sugarlabs.org hebben om je "
+"project te uploaden."
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:795
 msgid "Load my block"
@@ -941,9 +936,8 @@ msgid "microphone input volume"
 msgstr "microfoon invoer volume"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:569
-#, fuzzy
 msgid "Title:"
-msgstr "Titel"
+msgstr "Titel:"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:776
 msgid "Palette of variable blocks"
@@ -955,7 +949,7 @@ msgstr "gebruikt als getalsinvoer in wiskundige opetatoren"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:593
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:778
 msgid "Variable 1 (numeric value)"
@@ -976,6 +970,8 @@ msgstr "houdt niet van"
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:330
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr ""
+"Je hebt nog werk dat niet is opgeslagen. Wil je het opslaan voor het "
+"afsluiten?"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:884
 msgid "restores hidden blocks"
@@ -1005,7 +1001,7 @@ msgstr "pen dikte"
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:389
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:421
 msgid "turtle shell"
-msgstr ""
+msgstr "turtle shall"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:826
 msgid "Samples"
@@ -1039,7 +1035,7 @@ msgstr "slaat getalswaarde op in Variabele 2"
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:854
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:885
 msgid "put a custom 'shell' on the turtle"
-msgstr ""
+msgstr "legt een aangepast 'schild' op de schildpad"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:775
 msgid "moves turtle backward"
@@ -1149,7 +1145,7 @@ msgstr "Plak"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:405
 msgid "turtle sees"
-msgstr ""
+msgstr "schildpad ziet"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:753
 msgid "Python code"
@@ -1231,7 +1227,7 @@ msgstr "onderste blok in een inklapbare stapel: klik om in te klappen"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:870
 msgid "returns the color that the turtle \"sees\""
-msgstr ""
+msgstr "geeft de kleur dat de schildpad \"ziet\""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:887
 msgid "invokes Action 1 stack"
@@ -1335,7 +1331,7 @@ msgstr "plaatst een commentaar in je code"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:385
 msgid "read pixel"
-msgstr ""
+msgstr "lees pixel"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:404
 msgid "scale"
@@ -1359,9 +1355,8 @@ msgid "click to open"
 msgstr "klik om te openen"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:364
-#, fuzzy
 msgid "pen"
-msgstr "Open"
+msgstr "pen"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:840
 msgid "microphone input pitch"
@@ -1369,7 +1364,7 @@ msgstr "microfoon invoer toonhoogte"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:579
 msgid "Description:"
-msgstr ""
+msgstr "Beschrijving:"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:750
 msgid "journal"
@@ -1541,7 +1536,7 @@ msgstr "zet xy"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:445
 msgid "trash"
-msgstr ""
+msgstr "prullenbak"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:376
 msgid "polar"
@@ -1586,7 +1581,7 @@ msgstr "drukt waarde af in status blok bij de onderkant van het scherm"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:325
 msgid "extras"
-msgstr ""
+msgstr "extra's"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:427
 msgid "start fill"
