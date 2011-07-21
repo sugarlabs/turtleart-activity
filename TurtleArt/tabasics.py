@@ -881,7 +881,7 @@ variable'))
                           style='basic-style-head-1arg',
                           label=_('action'),
                           prim_name='nop3',
-                          default=_('stack'),
+                          default=_('action'),
                           logo_command='to action',
                           help_string=_('top of nameable action stack'))
         self.tw.lc.def_prim('nop3', 1, lambda self, x: None)
