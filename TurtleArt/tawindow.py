@@ -375,7 +375,7 @@ class TurtleArtWindow():
 
         for i, name in enumerate(STATUS_SHAPES):
             self.status_shapes[name] = svg_str_to_pixbuf(svg_from_file(
-                    "%s/images/%s.svg" % (self.path, name)))
+                    os.path.join(self.path, 'images', name + '.svg')))
         self.status_spr = Sprite(self.sprite_list, 0, self.height - 200,
                                  self.status_shapes['status'])
         self.status_spr.hide()
