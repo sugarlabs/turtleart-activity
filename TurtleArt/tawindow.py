@@ -57,7 +57,8 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     MACROS, TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, \
     CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, NO_IMPORT, \
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
-    EXPANDABLE_ARGS, XO1, XO15, UNKNOWN, TITLEXY, CONTENT_ARGS, CONSTANTS
+    EXPANDABLE_ARGS, XO1, XO15, UNKNOWN, TITLEXY, CONTENT_ARGS, CONSTANTS, \
+    EXPAND_SKIN
 from tapalette import palette_names, palette_blocks, expandable_blocks, \
     block_names, content_blocks, default_values, special_names, block_styles, \
     help_strings
@@ -2623,9 +2624,10 @@ class TurtleArtWindow():
         elif btype in block_styles['box-style-media'] and blk.spr is not None:
             if len(blk.values) == 0 or blk.values[0] == 'None' or \
                blk.values[0] is None or btype in NO_IMPORT:
+                if btype in EXPAND_SKIN:
+                    blk.expand_in_x(EXPAND_SKIN[btype])
                 self._block_skin(btype + 'off', blk)
-            elif btype == 'video' or btype == 'audio' or \
-                 btype == 'description':
+            elif btype in ['video', 'audio', 'description']:
                 self._block_skin(btype + 'on', blk)
             elif self.running_sugar:
                 try:
@@ -2953,8 +2955,10 @@ class TurtleArtWindow():
                 w, h = self._calc_w_h('journaloff', blk.spr)
                 x, y = self._calc_image_offset('journaloff', blk.spr, w, h)
         else:
-            w, h = self._calc_w_h('descriptionoff', blk.spr)
-            x, y = self._calc_image_offset('descriptionoff', blk.spr, w, h)
+            # w, h = self._calc_w_h('descriptionoff', blk.spr)
+            w, h = self._calc_w_h('', blk.spr)
+            # x, y = self._calc_image_offset('descriptionoff', blk.spr, w, h)
+            x, y = self._calc_image_offset('', blk.spr, w, h)
         blk.scale_image(x, y, w, h)
 
 

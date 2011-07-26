@@ -137,6 +137,8 @@ MEDIA_SHAPES = []
 
 NO_IMPORT = []
 
+EXPAND_SKIN = {}
+
 OVERLAY_SHAPES = ['Cartesian', 'Cartesian_labeled', 'polar', 'metric']
 
 STATUS_SHAPES = ['status', 'info', 'nostack', 'dupstack', 'noinput',
