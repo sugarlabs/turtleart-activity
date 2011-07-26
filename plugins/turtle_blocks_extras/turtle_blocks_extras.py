@@ -29,7 +29,8 @@ from plugins.plugin import Plugin
 from TurtleArt.tapalette import make_palette, define_logo_function
 from TurtleArt.talogo import primitive_dictionary, logoerror, \
     media_blocks_dictionary
-from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS
+from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS, \
+    MEDIA_SHAPES
 from TurtleArt.tautils import convert, round_int, debug_output
 from TurtleArt.tajail import myfunc, myfunc_import
 
@@ -119,6 +120,9 @@ boolean operators from Numbers palette'))
                           default='None',
                           special_name=_('journal'),
                           help_string=_('Sugar Journal media object'))
+        MEDIA_SHAPES.append('journalsmall')
+        MEDIA_SHAPES.append('journaloff')
+        MEDIA_SHAPES.append('journalon')
 
         palette.add_block('audio',
                           style='box-style-media',
@@ -126,6 +130,9 @@ boolean operators from Numbers palette'))
                           special_name=_('audio'),
                           default='None',
                           help_string=_('Sugar Journal audio object'))
+        MEDIA_SHAPES.append('audiosmall')
+        MEDIA_SHAPES.append('audiooff')
+        MEDIA_SHAPES.append('audioon')
 
         palette.add_block('video',
                           style='box-style-media',
@@ -133,6 +140,9 @@ boolean operators from Numbers palette'))
                           special_name=_('video'),
                           default='None',
                           help_string=_('Sugar Journal video object'))
+        MEDIA_SHAPES.append('videosmall')
+        MEDIA_SHAPES.append('videooff')
+        MEDIA_SHAPES.append('videoon')
 
         palette.add_block('description',
                           style='box-style-media',
@@ -140,6 +150,9 @@ boolean operators from Numbers palette'))
                           special_name=_('description'),
                           default='None',
                           help_string=_('Sugar Journal description field'))
+        MEDIA_SHAPES.append('descriptionsmall')
+        MEDIA_SHAPES.append('descriptionoff')
+        MEDIA_SHAPES.append('descriptionon')
 
         palette.add_block('string',
                           style='box-style',
@@ -450,6 +463,9 @@ module found in the Journal'))
         self.tw.lc.def_prim('userdefined3', 3,
             lambda self, x, y, z: primitive_dictionary['userdefined'](
                 [x, y, z]))
+        MEDIA_SHAPES.append('pythonsmall')
+        MEDIA_SHAPES.append('pythonoff')
+        MEDIA_SHAPES.append('pythonon')
 
         palette.add_block('cartesian',
                           style='basic-style-extended-vertical',
@@ -589,36 +605,42 @@ click to open'))
                           label=' ',
                           help_string=_('presentation template: list of \
 bullets'))
+        MEDIA_SHAPES.append('list')
 
         palette.add_block('picture1x1a',
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select \
 Journal object (no description)'))
+        MEDIA_SHAPES.append('1x1a')
 
         palette.add_block('picture1x1',
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select \
 Journal object (with description)'))
+        MEDIA_SHAPES.append('1x1')
 
         palette.add_block('picture2x2',
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select four \
 Journal objects'))
+        MEDIA_SHAPES.append('2x2')
 
         palette.add_block('picture2x1',
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select two \
 Journal objects'))
+        MEDIA_SHAPES.append('2x1')
 
         palette.add_block('picture1x2',
                           style='basic-style-extended',
                           label=' ',
                           help_string=_('presentation template: select two \
 Journal objects'))
+        MEDIA_SHAPES.append('1x2')
 
         # Display-dependent constants
         palette.add_block('leftpos',

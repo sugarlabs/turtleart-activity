@@ -132,12 +132,7 @@ PREFIX_DICTIONARY = {'journal': '#smedia_', 'description': '#sdescr_',
 # Status blocks
 #
 
-MEDIA_SHAPES = ['audiooff', 'audioon', 'audiosmall',
-                'videooff', 'videoon', 'videosmall',
-                'journaloff', 'journalon', 'journalsmall',
-                'descriptionoff', 'descriptionon', 'descriptionsmall',
-                'pythonoff', 'pythonon', 'pythonsmall',
-                'list', '1x1', '1x1a', '2x1', '1x2', '2x2']
+MEDIA_SHAPES = []
 
 NO_IMPORT = []
 
