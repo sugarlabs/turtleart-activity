@@ -30,7 +30,7 @@ from TurtleArt.tapalette import make_palette, define_logo_function
 from TurtleArt.talogo import primitive_dictionary, logoerror, \
     media_blocks_dictionary
 from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS, \
-    MEDIA_SHAPES
+    MEDIA_SHAPES, SKIN_PATHS
 from TurtleArt.tautils import convert, round_int, debug_output
 from TurtleArt.tajail import myfunc, myfunc_import
 
@@ -72,6 +72,8 @@ class Turtle_blocks_extras(Plugin):
         self.tw = parent
 
     def setup(self):
+        SKIN_PATHS.append('plugins/turtle_blocks_extras/images')
+
         self.heap = self.tw.lc.heap
         self.keyboard = self.tw.lc.keyboard
         self.title_height = int((self.tw.canvas.height / 20) * self.tw.scale)

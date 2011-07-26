@@ -53,7 +53,7 @@ except ImportError:
 from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES, STRING_OR_NUMBER_ARGS, \
     TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER, CATEGORY_LAYER, \
-    BLOCKS_WITH_SKIN, ICON_SIZE, PALETTE_SCALE, PALETTE_WIDTH, \
+    BLOCKS_WITH_SKIN, ICON_SIZE, PALETTE_SCALE, PALETTE_WIDTH, SKIN_PATHS, \
     MACROS, TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, \
     CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, NO_IMPORT, \
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
@@ -365,8 +365,13 @@ class TurtleArtWindow():
                 filename = 'file' + name[7:]
             else:
                 filename = name
-            self.media_shapes[name] = svg_str_to_pixbuf(svg_from_file(
-                    "%s/images/%s.svg" % (self.path, filename)))
+            # Try both images/ and plugins/*/images/
+            for path in SKIN_PATHS:
+                if os.path.exists(os.path.join(self.path, path,
+                                               filename + '.svg')):
+                    self.media_shapes[name] = svg_str_to_pixbuf(svg_from_file(
+                            os.path.join(self.path, path, filename + '.svg')))
+                    break
 
         for i, name in enumerate(STATUS_SHAPES):
             self.status_shapes[name] = svg_str_to_pixbuf(svg_from_file(

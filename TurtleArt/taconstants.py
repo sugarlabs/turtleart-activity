@@ -131,6 +131,7 @@ PREFIX_DICTIONARY = {'journal': '#smedia_', 'description': '#sdescr_',
 #
 # Status blocks
 #
+SKIN_PATHS = ['images']
 
 MEDIA_SHAPES = []
 

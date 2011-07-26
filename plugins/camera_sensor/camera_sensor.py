@@ -30,7 +30,7 @@ from plugins.plugin import Plugin
 from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import media_blocks_dictionary, primitive_dictionary
 from TurtleArt.tautils import get_path, debug_output
-from TurtleArt.taconstants import MEDIA_SHAPES, NO_IMPORT
+from TurtleArt.taconstants import MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS
 
 
 class Camera_sensor(Plugin):
@@ -59,6 +59,8 @@ class Camera_sensor(Plugin):
         # set up camera-specific blocks
         primitive_dictionary['read_camera'] = self.prim_read_camera
         media_blocks_dictionary['camera'] = self.prim_take_picture
+
+        SKIN_PATHS.append('plugins/camera_sensor/images')
 
         if self._status:
             palette.add_block('luminance',
