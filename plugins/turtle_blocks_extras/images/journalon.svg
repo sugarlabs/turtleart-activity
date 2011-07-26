@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="60"
+   height="45"
+   id="svg2">
+  <defs
+     id="defs5">
+    <linearGradient
+       id="linearGradient3166">
+      <stop
+         id="stop3168"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3170"
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="0.94254935"
+       y1="-31.669659"
+       x2="104.37702"
+       y2="20.434471"
+       id="linearGradient3172"
+       xlink:href="#linearGradient3166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.7083638,0,0,1.0012565,0.1338084,32.632067)" />
+  </defs>
+  <path
+     d="m 17.066502,43.917067 24.519997,0 c 2.225,0 3.439,-1.447 3.439,-3.441 l 0,-27.28 c 0,-1.73 -1.732,-3.4410005 -3.439,-3.4410005 l -4.388997,0"
+     id="path2999"
+     style="fill:#ff0000;fill-opacity:1;stroke:#010101;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round" />
+  <path
+     d="m 37.197502,33.507067 c 0,1.836 -1.345,3.201 -3.441,4.047 l -16.69,6.363 0,-34.1620005 16.69,-8.5990001 c 2.228,-0.39399999 3.441,0.8400001 3.441,2.8340001 l 0,29.5170005 z"
+     id="path3005"
+     style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round" />
+  <path
+     d="m 19.754502,37.522067 c 0,0 -1.351,-0.543 -2.702,-0.543 -1.351,0 -2.703,0.543 -2.703,0.543"
+     id="path3007"
+     style="fill:none;stroke:#010101;stroke-width:2.25;stroke-linecap:round;stroke-linejoin:round" />
+  <path
+     d="m 19.754502,26.921067 c 0,0 -1.239,-0.543 -2.815,-0.543 -1.577,0 -2.59,0.543 -2.59,0.543"
+     id="path3009"
+     style="fill:none;stroke:#010101;stroke-width:2.25;stroke-linecap:round;stroke-linejoin:round" />
+  <path
+     d="m 19.754502,16.593067 c 0,0 -1.125,-0.544 -2.927,-0.544 -1.802,0 -2.478,0.544 -2.478,0.544"
+     id="path3011"
+     style="fill:none;stroke:#010101;stroke-width:2.25;stroke-linecap:round;stroke-linejoin:round" />
+  <line
+     id="line3013"
+     y2="6.4200654"
+     y1="41.448067"
+     x2="23.539497"
+     x1="23.539497"
+     style="fill:none;stroke:#010101;stroke-width:2.25;stroke-linecap:round;stroke-linejoin:round" />
+</svg>
