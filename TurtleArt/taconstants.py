@@ -134,11 +134,12 @@ PREFIX_DICTIONARY = {'journal': '#smedia_', 'description': '#sdescr_',
 
 MEDIA_SHAPES = ['audiooff', 'audioon', 'audiosmall',
                 'videooff', 'videoon', 'videosmall',
-                'cameraoff', 'camerasmall',
                 'journaloff', 'journalon', 'journalsmall',
                 'descriptionoff', 'descriptionon', 'descriptionsmall',
                 'pythonoff', 'pythonon', 'pythonsmall',
                 'list', '1x1', '1x1a', '2x1', '1x2', '2x2']
+
+NO_IMPORT = []
 
 OVERLAY_SHAPES = ['Cartesian', 'Cartesian_labeled', 'polar', 'metric']
 

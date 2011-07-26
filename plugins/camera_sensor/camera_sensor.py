@@ -30,6 +30,7 @@ from plugins.plugin import Plugin
 from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import media_blocks_dictionary, primitive_dictionary
 from TurtleArt.tautils import get_path, debug_output
+from TurtleArt.taconstants import MEDIA_SHAPES, NO_IMPORT
 
 
 class Camera_sensor(Plugin):
@@ -119,6 +120,10 @@ is pushed to the stack'),
                               default='CAMERA',
                               help_string=_('camera output'),
                               content_block=True)
+
+        NO_IMPORT.append('camera')
+        MEDIA_SHAPES.append('camerasmall')
+        MEDIA_SHAPES.append('cameraoff')
 
     def start(self):
         ''' Initialize the camera if there is an camera block in use '''

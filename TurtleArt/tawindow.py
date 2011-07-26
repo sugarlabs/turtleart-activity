@@ -55,7 +55,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER, CATEGORY_LAYER, \
     BLOCKS_WITH_SKIN, ICON_SIZE, PALETTE_SCALE, PALETTE_WIDTH, \
     MACROS, TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, \
-    CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, \
+    CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, NO_IMPORT, \
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
     EXPANDABLE_ARGS, XO1, XO15, UNKNOWN, TITLEXY, CONTENT_ARGS, CONSTANTS
 from tapalette import palette_names, palette_blocks, expandable_blocks, \
@@ -1666,8 +1666,7 @@ class TurtleArtWindow():
             blk.spr.labels[0] += CURSOR
 
         elif blk.name in block_styles['box-style-media'] and \
-             blk.name != 'camera':
-            # TODO: isolate reference to camera
+             blk.name not in NO_IMPORT:
             self._import_from_journal(self.selected_blk)
             if blk.name == 'journal' and self.running_sugar:
                 self._load_description_block(blk)
@@ -2617,9 +2616,8 @@ class TurtleArtWindow():
                 else:
                     self._block_skin('pythonoff', blk)
         elif btype in block_styles['box-style-media'] and blk.spr is not None:
-            # TODO: isolate reference to camera
             if len(blk.values) == 0 or blk.values[0] == 'None' or \
-               blk.values[0] is None or btype == 'camera':
+               blk.values[0] is None or btype in NO_IMPORT:
                 self._block_skin(btype + 'off', blk)
             elif btype == 'video' or btype == 'audio' or \
                  btype == 'description':
