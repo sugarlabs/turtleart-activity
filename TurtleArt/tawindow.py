@@ -772,9 +772,9 @@ class TurtleArtWindow():
                 # Some proto blocks get a skin.
                 if name in block_styles['box-style-media']:
                     self._proto_skin(name + 'small', n, i)
-                elif name[:8] == 'template':
+                elif name[:8] == 'template':  # Deprecated
                     self._proto_skin(name[8:], n, i)
-                elif name[:7] == 'picture':
+                elif name[:7] == 'picture':  # Deprecated
                     self._proto_skin(name[7:], n, i)
                 elif name in PYTHON_SKIN:
                     self._proto_skin('pythonsmall', n, i)
@@ -2622,11 +2622,11 @@ class TurtleArtWindow():
                 else:
                     self._block_skin('pythonoff', blk)
         elif btype in block_styles['box-style-media'] and blk.spr is not None:
+            if btype in EXPAND_SKIN:
+                if blk.ex == 0:
+                    blk.expand_in_x(EXPAND_SKIN[btype])
             if len(blk.values) == 0 or blk.values[0] == 'None' or \
                blk.values[0] is None or btype in NO_IMPORT:
-                if btype in EXPAND_SKIN:
-                    if blk.ex == 0:
-                        blk.expand_in_x(EXPAND_SKIN[btype])
                 self._block_skin(btype + 'off', blk)
             elif btype in ['video', 'audio', 'description']:
                 self._block_skin(btype + 'on', blk)
@@ -2920,6 +2920,7 @@ class TurtleArtWindow():
         target_w = spr.label_safe_width()
         target_h = spr.label_safe_height()
         if name == '':
+            debug_output("%d, %d" % (target_w, target_h))
             return target_w, target_h
         image_w = self.media_shapes[name].get_width()
         image_h = self.media_shapes[name].get_height()

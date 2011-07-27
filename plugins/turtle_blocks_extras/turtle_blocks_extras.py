@@ -30,7 +30,8 @@ from TurtleArt.tapalette import make_palette, define_logo_function
 from TurtleArt.talogo import primitive_dictionary, logoerror, \
     media_blocks_dictionary
 from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS, \
-    MEDIA_SHAPES, SKIN_PATHS
+    MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN, PYTHON_SKIN, \
+    PREFIX_DICTIONARY
 from TurtleArt.tautils import convert, round_int, debug_output
 from TurtleArt.tajail import myfunc, myfunc_import
 
@@ -122,6 +123,8 @@ boolean operators from Numbers palette'))
                           default='None',
                           special_name=_('journal'),
                           help_string=_('Sugar Journal media object'))
+        PREFIX_DICTIONARY['journal'] = '#smedia_'
+        BLOCKS_WITH_SKIN.append('journal')
         MEDIA_SHAPES.append('journalsmall')
         MEDIA_SHAPES.append('journaloff')
         MEDIA_SHAPES.append('journalon')
@@ -132,6 +135,8 @@ boolean operators from Numbers palette'))
                           special_name=_('audio'),
                           default='None',
                           help_string=_('Sugar Journal audio object'))
+        BLOCKS_WITH_SKIN.append('audio')
+        PREFIX_DICTIONARY['audio'] = '#saudio_'
         MEDIA_SHAPES.append('audiosmall')
         MEDIA_SHAPES.append('audiooff')
         MEDIA_SHAPES.append('audioon')
@@ -142,6 +147,8 @@ boolean operators from Numbers palette'))
                           special_name=_('video'),
                           default='None',
                           help_string=_('Sugar Journal video object'))
+        BLOCKS_WITH_SKIN.append('video')
+        PREFIX_DICTIONARY['video'] = '#svideo_'
         MEDIA_SHAPES.append('videosmall')
         MEDIA_SHAPES.append('videooff')
         MEDIA_SHAPES.append('videoon')
@@ -152,6 +159,8 @@ boolean operators from Numbers palette'))
                           special_name=_('description'),
                           default='None',
                           help_string=_('Sugar Journal description field'))
+        BLOCKS_WITH_SKIN.append('description')
+        PREFIX_DICTIONARY['description'] = '#sdescr_'
         MEDIA_SHAPES.append('descriptionsmall')
         MEDIA_SHAPES.append('descriptionoff')
         MEDIA_SHAPES.append('descriptionon')
@@ -438,6 +447,8 @@ advanced multi-variable math equations, e.g., sin(x+y+z)'))
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined', 1,
             lambda self, x: primitive_dictionary['userdefined']([x]))
+        BLOCKS_WITH_SKIN.append('userdefined')
+        PYTHON_SKIN.append('userdefined')
 
         palette.add_block('userdefined2args',
                           hidden=True,
@@ -451,6 +462,8 @@ module found in the Journal'))
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined2', 2,
             lambda self, x, y: primitive_dictionary['userdefined']([x, y]))
+        BLOCKS_WITH_SKIN.append('userdefined2args')
+        PYTHON_SKIN.append('userdefined2args')
 
         palette.add_block('userdefined3args',
                           hidden=True,
@@ -465,6 +478,8 @@ module found in the Journal'))
         self.tw.lc.def_prim('userdefined3', 3,
             lambda self, x, y, z: primitive_dictionary['userdefined'](
                 [x, y, z]))
+        BLOCKS_WITH_SKIN.append('userdefined3args')
+        PYTHON_SKIN.append('userdefined3args')
         MEDIA_SHAPES.append('pythonsmall')
         MEDIA_SHAPES.append('pythonoff')
         MEDIA_SHAPES.append('pythonon')

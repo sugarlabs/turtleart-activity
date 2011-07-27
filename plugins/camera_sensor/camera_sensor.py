@@ -30,7 +30,8 @@ from plugins.plugin import Plugin
 from TurtleArt.tapalette import make_palette
 from TurtleArt.talogo import media_blocks_dictionary, primitive_dictionary
 from TurtleArt.tautils import get_path, debug_output
-from TurtleArt.taconstants import MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS
+from TurtleArt.taconstants import MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS, \
+    BLOCKS_WITH_SKIN
 
 
 class Camera_sensor(Plugin):
@@ -124,6 +125,7 @@ is pushed to the stack'),
                               content_block=True)
 
         NO_IMPORT.append('camera')
+        BLOCKS_WITH_SKIN.append('camera')
         MEDIA_SHAPES.append('camerasmall')
         MEDIA_SHAPES.append('cameraoff')
 

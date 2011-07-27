@@ -103,15 +103,6 @@ COLLAPSIBLE = ['sandwichbottom', 'sandwichcollapsed']
 OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
 
 #
-# These blocks get a special skin
-#
-BLOCKS_WITH_SKIN = ['journal', 'audio', 'description', 'nop', 'userdefined',
-                    'video', 'userdefined2args', 'userdefined3args', 'camera']
-
-PYTHON_SKIN = ['nop', 'userdefined', 'userdefined2args', 'userdefined3args']
-
-
-#
 # Blocks that can interchange strings and numbers for their arguments
 #
 STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
@@ -125,12 +116,15 @@ STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
                 'storeinbox2']
 
-PREFIX_DICTIONARY = {'journal': '#smedia_', 'description': '#sdescr_',
-                     'audio': '#saudio_', 'video': '#svideo_'}
+PREFIX_DICTIONARY = {}
 
 #
-# Status blocks
+# These blocks get a special skin
 #
+BLOCKS_WITH_SKIN = []
+
+PYTHON_SKIN = []
+
 SKIN_PATHS = ['images']
 
 MEDIA_SHAPES = []
@@ -139,6 +133,9 @@ NO_IMPORT = []
 
 EXPAND_SKIN = {}
 
+#
+# Status blocks
+#
 OVERLAY_SHAPES = ['Cartesian', 'Cartesian_labeled', 'polar', 'metric']
 
 STATUS_SHAPES = ['status', 'info', 'nostack', 'dupstack', 'noinput',
