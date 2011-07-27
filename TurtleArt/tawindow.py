@@ -2920,7 +2920,6 @@ class TurtleArtWindow():
         target_w = spr.label_safe_width()
         target_h = spr.label_safe_height()
         if name == '':
-            debug_output("%d, %d" % (target_w, target_h))
             return target_w, target_h
         image_w = self.media_shapes[name].get_width()
         image_h = self.media_shapes[name].get_height()
