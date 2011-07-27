@@ -2625,7 +2625,8 @@ class TurtleArtWindow():
             if len(blk.values) == 0 or blk.values[0] == 'None' or \
                blk.values[0] is None or btype in NO_IMPORT:
                 if btype in EXPAND_SKIN:
-                    blk.expand_in_x(EXPAND_SKIN[btype])
+                    if blk.ex == 0:
+                        blk.expand_in_x(EXPAND_SKIN[btype])
                 self._block_skin(btype + 'off', blk)
             elif btype in ['video', 'audio', 'description']:
                 self._block_skin(btype + 'on', blk)
