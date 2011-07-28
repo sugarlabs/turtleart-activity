@@ -1209,6 +1209,9 @@ class TurtleArtWindow():
             else:
                 self._block_skin('pythonoff', newblk)
         elif name in block_styles['box-style-media']:
+            if name in EXPAND_SKIN:
+                if newblk.ex == 0:
+                    newblk.expand_in_x(EXPAND_SKIN[name])
             self._block_skin(name + 'off', newblk)
 
         newspr = newblk.spr
