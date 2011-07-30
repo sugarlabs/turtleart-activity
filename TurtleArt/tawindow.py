@@ -1211,7 +1211,9 @@ class TurtleArtWindow():
         elif name in block_styles['box-style-media']:
             if name in EXPAND_SKIN:
                 if newblk.ex == 0:
-                    newblk.expand_in_x(EXPAND_SKIN[name])
+                    newblk.expand_in_x(EXPAND_SKIN[name][0])
+                if newblk.ey == 0:
+                    newblk.expand_in_y(EXPAND_SKIN[name][1])
             self._block_skin(name + 'off', newblk)
 
         newspr = newblk.spr
@@ -2603,31 +2605,12 @@ class TurtleArtWindow():
         elif btype == 'start':  # block size is saved in start block
             if value is not None:
                 self.block_scale = value
-        elif btype in EXPANDABLE or btype in expandable_blocks or \
-             btype in EXPANDABLE_ARGS or btype == 'nop':
-            if btype == 'vspace' or btype in expandable_blocks:
-                if value is not None:
-                    blk.expand_in_y(value)
-            elif btype == 'hspace' or btype == 'identity2':
-                if value is not None:
-                    blk.expand_in_x(value)
-            elif btype == 'templatelist' or btype == 'list':
-                for i in range(len(b[4]) - 4):
-                    blk.add_arg()
-            elif btype == 'myfunc2arg' or btype == 'myfunc3arg' or\
-                 btype == 'userdefined2args' or btype == 'userdefined3args':
-                blk.add_arg()
-            if btype == 'myfunc3arg' or btype == 'userdefined3args':
-                blk.add_arg(False)
-            if btype in PYTHON_SKIN:
-                if self.nop == 'pythonloaded':
-                    self._block_skin('pythonon', blk)
-                else:
-                    self._block_skin('pythonoff', blk)
         elif btype in block_styles['box-style-media'] and blk.spr is not None:
             if btype in EXPAND_SKIN:
                 if blk.ex == 0:
-                    blk.expand_in_x(EXPAND_SKIN[btype])
+                    blk.expand_in_x(EXPAND_SKIN[btype][0])
+                if blk.ey == 0:
+                    blk.expand_in_y(EXPAND_SKIN[btype][1])
             if len(blk.values) == 0 or blk.values[0] == 'None' or \
                blk.values[0] is None or btype in NO_IMPORT:
                 self._block_skin(btype + 'off', blk)
@@ -2670,6 +2653,27 @@ class TurtleArtWindow():
                     self._block_skin('journalon', blk)
             blk.spr.set_label(' ')
             blk.resize()
+        elif btype in EXPANDABLE or btype in expandable_blocks or \
+             btype in EXPANDABLE_ARGS or btype == 'nop':
+            if btype == 'vspace' or btype in expandable_blocks:
+                if value is not None:
+                    blk.expand_in_y(value)
+            elif btype == 'hspace' or btype == 'identity2':
+                if value is not None:
+                    blk.expand_in_x(value)
+            elif btype == 'templatelist' or btype == 'list':
+                for i in range(len(b[4]) - 4):
+                    blk.add_arg()
+            elif btype == 'myfunc2arg' or btype == 'myfunc3arg' or\
+                 btype == 'userdefined2args' or btype == 'userdefined3args':
+                blk.add_arg()
+            if btype == 'myfunc3arg' or btype == 'userdefined3args':
+                blk.add_arg(False)
+            if btype in PYTHON_SKIN:
+                if self.nop == 'pythonloaded':
+                    self._block_skin('pythonon', blk)
+                else:
+                    self._block_skin('pythonoff', blk)
 
         if self.interactive_mode:
             blk.spr.set_layer(BLOCK_LAYER)
