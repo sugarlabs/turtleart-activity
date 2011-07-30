@@ -85,13 +85,12 @@ CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
 #
 EXPANDABLE_STYLE = ['boolean-style', 'compare-porch-style', 'compare-style',
                     'number-style-porch', 'number-style', 'basic-style-2arg',
-                    'number-style-block']
+                    'number-style-block', 'box-style-media']
 
 EXPANDABLE = ['vspace', 'hspace', 'identity2']
 
-EXPANDABLE_ARGS = ['list', 'myfunc1arg', 'myfunc2arg',
-                   'myfunc3arg', 'userdefined', 'userdefined2args',
-                   'userdefined3args']
+EXPANDABLE_ARGS = ['list', 'myfunc1arg', 'myfunc2arg', 'myfunc3arg',
+                   'userdefined', 'userdefined2args', 'userdefined3args']
 #
 # Blocks that are 'collapsible'
 #
