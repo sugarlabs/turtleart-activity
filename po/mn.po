@@ -34,9 +34,20 @@ msgstr "Яст мэлхий Урлан"
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1074
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1116
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1158
-#, fuzzy
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:735
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:749
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:777
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:805
+#: TurtleArt/taconstants.py:255
+#: TurtleArt/taconstants.py:277
+#: TurtleArt/taconstants.py:298
+#: TurtleArt/taconstants.py:340
+#: TurtleArt/taconstants.py:382
+#: TurtleArt/taconstants.py:424
 msgid "Title"
-msgstr "гарчиг"
+msgstr "Гарчиг"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:390
 msgid "resistance"
@@ -84,9 +95,10 @@ msgstr "богц 1"
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:878
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:254
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:860
-#, fuzzy
+#: TurtleArtActivity.py:637
+#: turtleart.py:349
 msgid "Step"
-msgstr "алхам"
+msgstr "Алхам"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:847
 msgid "multiplies two numeric inputs"
@@ -107,7 +119,9 @@ msgstr ""
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:355
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:867
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:247
-#, fuzzy
+#: TurtleArtActivity.py:244
+#: TurtleArtActivity.py:624
+#: turtleart.py:340
 msgid "Hide palette"
 msgstr "Хавтан нуу"
 
@@ -131,7 +145,8 @@ msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:786
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:219
-#, fuzzy
+#: TurtleArtActivity.py:532
+#: turtleart.py:310
 msgid "Save as HTML"
 msgstr "HTML-аар хадгалах"
 
@@ -220,8 +235,11 @@ msgstr ""
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:423
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:620
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:652
+#: TurtleArt/tabasics.py:882
+#: TurtleArt/tabasics.py:908
+#: TurtleArt/tabasics.py:911
 msgid "action"
-msgstr ""
+msgstr "үйлдэл"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:910
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
@@ -254,9 +272,10 @@ msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:603
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:861
-#, fuzzy
+#: TurtleArt/tawindow.py:748
+#: TurtleArt/tawindow.py:1010
 msgid "next"
-msgstr "бичвэр"
+msgstr "дараах"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:748
 msgid "if then"
@@ -380,9 +399,9 @@ msgid "I don't know how to"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:414
-#, fuzzy
+#: TurtleArt/tabasics.py:445
 msgid "set text size"
-msgstr "үзэгний хэмжээ өг"
+msgstr "үгсэнд хэмжээ өг"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:548
 msgid "Username:"
@@ -439,9 +458,9 @@ msgid "save picture"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:347
-#, fuzzy
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:259
 msgid "keyboard"
-msgstr "Гар"
+msgstr "гар"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:391
 msgid "restore last"
@@ -506,9 +525,9 @@ msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:301
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:446
-#, fuzzy
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:472
 msgid "turtle"
-msgstr "Яст Мэлхий"
+msgstr "яст мэлхий"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:823
 msgid "displays next palette"
@@ -536,8 +555,9 @@ msgid "restore all blocks from trash"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:216
+#: turtleart.py:306
 msgid "Save"
-msgstr ""
+msgstr "Хадгалах"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:431
 msgid "store in box 1"
@@ -611,9 +631,10 @@ msgid "start"
 msgstr "эхэл"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:443
-#, fuzzy
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:658
 msgid "top"
-msgstr "алхам"
+msgstr "дээд"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:589
 msgid "Submit to Web"
@@ -627,13 +648,16 @@ msgstr ""
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:716
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:765
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:238
+#: TurtleArtActivity.py:463
+#: TurtleArtActivity.py:510
+#: turtleart.py:330
 msgid "View"
-msgstr ""
+msgstr "Харах"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:411
-#, fuzzy
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
 msgid "set scale"
-msgstr "сүүдэр"
+msgstr "масштаб тогтоох"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:457
 msgid "white"
@@ -652,7 +676,7 @@ msgid "the canvas height"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:330
-#, fuzzy
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:568
 msgid "full screen"
 msgstr "дзлгзц дүүргэх"
 
@@ -661,8 +685,9 @@ msgid "presentation 2x1"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:752
+#: TurtleArt/tabasics.py:548
 msgid "minus"
-msgstr ""
+msgstr "хасах"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:302
 msgid "and"
@@ -705,8 +730,9 @@ msgid "do-while-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:225
+#: turtleart.py:315
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:830
 msgid "Turtle will draw when moved."
@@ -763,14 +789,15 @@ msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:822
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:233
-#, fuzzy
+#: TurtleArtActivity.py:572
+#: turtleart.py:324
 msgid "Grow blocks"
 msgstr "Блокыг харуул"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:805
-#, fuzzy
+#: TurtleArtActivity.py:554
 msgid "Fullscreen"
-msgstr "дзлгзц дүүргэх"
+msgstr "Дзлгзц дүүргэх"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:154
 msgid "File not found"
@@ -842,13 +869,16 @@ msgid "restores most recent blocks from trash"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:331
+#: TurtleArt/tabasics.py:413
 msgid "gray"
-msgstr ""
+msgstr "саарал"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:723
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:774
+#: TurtleArtActivity.py:470
+#: TurtleArtActivity.py:519
 msgid "Help"
-msgstr ""
+msgstr "Тусламж"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:331
 msgid "Save project?"
@@ -931,9 +961,9 @@ msgid "microphone input volume"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:569
-#, fuzzy
+#: gnome_plugins/uploader_plugin.py:113
 msgid "Title:"
-msgstr "гарчиг"
+msgstr "Гарчиг:"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:776
 msgid "Palette of variable blocks"
@@ -944,8 +974,9 @@ msgid "used as numeric input in mathematic operators"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:593
+#: gnome_plugins/uploader_plugin.py:137
 msgid "Cancel"
-msgstr ""
+msgstr "Болих"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:778
 msgid "Variable 1 (numeric value)"
@@ -985,8 +1016,9 @@ msgid "pop"
 msgstr "ав"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:338
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:666
 msgid "height"
-msgstr ""
+msgstr "өндөр"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:366
 msgid "pen size"
@@ -1005,9 +1037,9 @@ msgstr "жишээ"
 # яст мэлхийг зогсоох эсвэл яст мэлхий зогс 2-н нэгийг аваарай
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:882
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:893
-#, fuzzy
+#: TurtleArtActivity.py:641
 msgid "Stop turtle"
-msgstr "яст мэлхий зогс"
+msgstr "Яст мэлхий зогс"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:773
 msgid "moves turtle along an arc"
@@ -1044,7 +1076,8 @@ msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:331
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:346
-#, fuzzy
+#: TurtleArtActivity.py:251
+#: TurtleArtActivity.py:264
 msgid "Show blocks"
 msgstr "Блокыг харуул"
 
@@ -1053,8 +1086,9 @@ msgid "picture left"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:430
+#: TurtleArt/tabasics.py:870
 msgid "value"
-msgstr ""
+msgstr "утга"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:455
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:456
@@ -1070,8 +1104,9 @@ msgid "sets size of the line drawn by the turtle"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:215
+#: turtleart.py:305
 msgid "Open"
-msgstr ""
+msgstr "Нээх"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:592
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:593
@@ -1110,9 +1145,9 @@ msgid "Python"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:256
-#, fuzzy
+#: turtleart.py:351
 msgid "Stop"
-msgstr "алхам"
+msgstr "Зогсоох"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:336
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:425
@@ -1157,9 +1192,10 @@ msgstr ""
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:874
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:252
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:791
-#, fuzzy
+#: TurtleArtActivity.py:633
+#: turtleart.py:347
 msgid "Clean"
-msgstr "арилга"
+msgstr "Арилга"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:844
 msgid "Palette of presentation templates"
@@ -1292,8 +1328,9 @@ msgid "show blocks"
 msgstr "Блокыг харуул"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:224
+#: turtleart.py:314
 msgid "Quit"
-msgstr ""
+msgstr "Гарах"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:393
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:394
@@ -1317,8 +1354,9 @@ msgid "presentation bulleted list"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:214
+#: turtleart.py:304
 msgid "New"
-msgstr ""
+msgstr "Шинэ"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:786
 msgid "places a comment in your code"
@@ -1329,8 +1367,9 @@ msgid "read pixel"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:404
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:226
 msgid "scale"
-msgstr ""
+msgstr "масштаб"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:309
 msgid "bottom"
@@ -1362,8 +1401,9 @@ msgid "Description:"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:750
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:120
 msgid "journal"
-msgstr ""
+msgstr "журнал"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:323
 msgid "empty trash"
@@ -1389,13 +1429,16 @@ msgstr ""
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:353
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:869
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:807
-#, fuzzy
+#: TurtleArtActivity.py:254
+#: TurtleArtActivity.py:272
+#: TurtleArtActivity.py:627
 msgid "Hide blocks"
 msgstr "Блок нуу"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:755
+#: TurtleArt/tabasics.py:537
 msgid "plus"
-msgstr ""
+msgstr "нэмэх"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:363
 msgid "or"
@@ -1412,12 +1455,15 @@ msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:824
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:234
+#: TurtleArtActivity.py:575
+#: turtleart.py:326
 msgid "Shrink blocks"
-msgstr ""
+msgstr "Блокыг нуу"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2529
+#: TurtleArt/tawindow.py:2859
 msgid "image"
-msgstr ""
+msgstr "дүрслэл"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:236
 msgid "Reset block size"
@@ -1433,7 +1479,8 @@ msgstr ""
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:338
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:348
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:246
-#, fuzzy
+#: TurtleArtActivity.py:238
+#: turtleart.py:338
 msgid "Show palette"
 msgstr "Хавтанг харуул"
 
@@ -1446,8 +1493,9 @@ msgid "Save snapshot"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:458
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:642
 msgid "width"
-msgstr ""
+msgstr "өргөн"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:797
 msgid "moves turtle forward"
@@ -1459,8 +1507,10 @@ msgstr "урагшаа"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:614
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:655
+#: TurtleArt/tabasics.py:862
+#: TurtleArt/tabasics.py:873
 msgid "my box"
-msgstr ""
+msgstr "миний богц"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:395
 msgid "picture right"
@@ -1552,8 +1602,11 @@ msgstr ""
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:712
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:768
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:243
+#: TurtleArtActivity.py:459
+#: TurtleArtActivity.py:513
+#: turtleart.py:335
 msgid "Edit"
-msgstr ""
+msgstr "Засварлах"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:809
 msgid "identity operator used for extending blocks"
