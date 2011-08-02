@@ -1,3 +1,13 @@
+113
+
+ENHANCEMENTS
+* Reenabled initial setting of a default palette toolbar (accidently removed in v111 when fixing keyboard acceration problem #2986)
+* Enbaled scaling of box-style-media (used to improve the display of currency with currency plugin)
+* Update to mn translations
+
+BUG FIX
+* Fixed problem with scaling some blocks with image overlays
+
 112
 
 ENHANCEMENTS
