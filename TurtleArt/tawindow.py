@@ -1794,7 +1794,13 @@ class TurtleArtWindow():
                           'sandwichtop_no_arm']:
             restore_stack(blk)
 
-        elif blk.name in COLLAPSIBLE:
+        elif blk.name in COLLAPSIBLE or blk.name == 'sandwichtop_no_label':
+            if blk.name == 'sandwichtop_no_label':
+                debug_output('>>>>>>>>> HIT SANDWICHTOP')
+                if hide_button_hit(blk.spr, x, y):
+                    collapse_stack(blk)
+                else:
+                    self._run_stack(blk)
             top = find_sandwich_top(blk)
             if collapsed(blk):
                 restore_stack(top)  # deprecated (bottom block is invisible)

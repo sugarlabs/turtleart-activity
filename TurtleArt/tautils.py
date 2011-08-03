@@ -388,6 +388,8 @@ def reset_stack_arm(top):
     if top is not None and top.name in ['sandwichtop', 'sandwichtop_no_label']:
         if top.ey > 0:
             top.reset_y()
+        top.svg.set_hide(False)
+        top.refresh()
 
 
 def grow_stack_arm(top):
@@ -404,6 +406,7 @@ def grow_stack_arm(top):
         _dy = _by - (_ty + _th)
         if _dy > 0:
             top.expand_in_y(_dy / top.scale)
+            top.svg.set_hide(True)
             top.refresh()
 
 
@@ -586,6 +589,7 @@ def collapse_stack(top):
     top.resize()
     top.spr.set_label(_('click to open'), 1)
     top.resize()
+    top.svg.set_hide(False)
     top.refresh()
 
 
