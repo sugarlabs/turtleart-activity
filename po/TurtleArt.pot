@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-03 10:07-0400\n"
+"POT-Creation-Date: 2011-08-05 09:46-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -273,6 +273,42 @@ msgstr ""
 
 #: TurtleArtActivity.py:638
 msgid "<Ctrl>s"
+msgstr ""
+
+#: taextras.py:36
+msgid "Turtle Art Mini"
+msgstr ""
+
+#: taextras.py:40
+msgid "Turtle Confusion"
+msgstr ""
+
+#: taextras.py:41
+msgid "Select a challenge"
+msgstr ""
+
+#: taextras.py:47
+msgid "Palette of Mexican pesos"
+msgstr ""
+
+#: taextras.py:48
+msgid "Palette of Colombian pesos"
+msgstr ""
+
+#: taextras.py:49
+msgid "Palette of Rwandan francs"
+msgstr ""
+
+#: taextras.py:50
+msgid "Palette of US currencies"
+msgstr ""
+
+#: taextras.py:51
+msgid "Palette of Australian currencies"
+msgstr ""
+
+#: taextras.py:52
+msgid "Palette of Guaranies"
 msgstr ""
 
 #: pysamples/grecord.py:205 plugins/audio_sensors/audio_sensors.py:82
