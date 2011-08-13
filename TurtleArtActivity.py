@@ -537,10 +537,10 @@ class TurtleArtActivity(activity.Activity):
         self.save_as_image = self._add_button(
             'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
             journal_toolbar_button)
+        self._add_separator(journal_toolbar)
         self.load_ta_project = self._add_button(
             'load-from-journal', _('Import project from the Journal'),
             self.do_load_ta_project_cb, journal_toolbar_button)
-        self._add_separator(journal_toolbar)
         self.load_python = self._add_button(
             'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
             journal_toolbar_button)
