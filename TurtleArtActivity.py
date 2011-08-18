@@ -485,20 +485,19 @@ class TurtleArtActivity(activity.Activity):
             self._toolbox.toolbar.insert(view_toolbar_button, -1)
             self._palette_toolbar_button.show()
             self._toolbox.toolbar.insert(self._palette_toolbar_button, -1)
-            help_toolbar_button.show()
-            self._toolbox.toolbar.insert(help_toolbar_button, -1)
-
-            self._add_separator(self._toolbox.toolbar)
 
             self._make_project_buttons(self._toolbox.toolbar)
 
-            self._add_separator(self._toolbox.toolbar, True)
+            self._add_separator(self._toolbox.toolbar, expand=True,
+                                visible=False)
+
+            help_toolbar_button.show()
+            self._toolbox.toolbar.insert(help_toolbar_button, -1)
 
             stop_button = StopButton(self)
             stop_button.props.accelerator = '<Ctrl>Q'
             self._toolbox.toolbar.insert(stop_button, -1)
             stop_button.show()
-
         else:
             self._toolbox = activity.ActivityToolbox(self)
             self.set_toolbox(self._toolbox)
@@ -561,7 +560,7 @@ class TurtleArtActivity(activity.Activity):
         if get_hardware() in [XO1, XO15]:
             self._add_button('view-metric', _('Metric coordinates'),
                              self.do_metric_cb, view_toolbar_button)
-        self._add_separator(view_toolbar)
+        self._add_separator(view_toolbar, visible=False)
         self.coordinates_label = self._add_label(_('xcor') + ' = 0 ' + \
             _('ycor') + ' = 0 ' + _('heading') + ' = 0', view_toolbar)
         self._add_separator(view_toolbar, True)
@@ -802,10 +801,10 @@ class TurtleArtActivity(activity.Activity):
         toolitem.show()
         return label
 
-    def _add_separator(self, toolbar, expand=False):
+    def _add_separator(self, toolbar, expand=False, visible=True):
         ''' Add a separator to a toolbar. '''
         separator = gtk.SeparatorToolItem()
-        separator.props.draw = True
+        separator.props.draw = visible
         separator.set_expand(expand)
         toolbar.insert(separator, -1)
         separator.show()
