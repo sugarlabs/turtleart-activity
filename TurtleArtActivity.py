@@ -548,7 +548,7 @@ class TurtleArtActivity(activity.Activity):
         self._add_separator(view_toolbar, visible=False)
         self.coordinates_label = self._add_label(_('xcor') + ' = 0 ' + \
             _('ycor') + ' = 0 ' + _('heading') + ' = 0', view_toolbar)
-        self._add_separator(view_toolbar, expand=True)
+        self._add_separator(view_toolbar, expand=True, visible=False)
         self.rescale_button = self._add_button(
             'expand-coordinates', _('Rescale coordinates up'),
             self.do_rescale_cb, view_toolbar_button)
@@ -593,7 +593,8 @@ class TurtleArtActivity(activity.Activity):
                     help_strings[name], self.do_palette_buttons_cb,
                     self._palette_toolbar_button, None, i))
 
-            self._add_separator(self._palette_toolbar, False)
+            self._add_separator(self._palette_toolbar, expand=True,
+                                visible=False)
 
             self._make_palette_buttons(self._palette_toolbar_button)
             self._palette_toolbar.show()
