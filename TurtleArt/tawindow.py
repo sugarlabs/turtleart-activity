@@ -57,8 +57,8 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     MACROS, TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, \
     CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, NO_IMPORT, \
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
-    EXPANDABLE_ARGS, XO1, XO15, UNKNOWN, TITLEXY, CONTENT_ARGS, CONSTANTS, \
-    EXPAND_SKIN
+    EXPANDABLE_ARGS, XO1, XO15, XO175, UNKNOWN, TITLEXY, CONTENT_ARGS, \
+    CONSTANTS, EXPAND_SKIN
 from tapalette import palette_names, palette_blocks, expandable_blocks, \
     block_names, content_blocks, default_values, special_names, block_styles, \
     help_strings
@@ -156,7 +156,7 @@ class TurtleArtWindow():
         self.orientation = HORIZONTAL_PALETTE
 
         self.hw = get_hardware()
-        if self.hw in (XO1, XO15):
+        if self.hw in (XO1, XO15, XO175):
             self.lead = 1.0
             self.scale = 0.67
             if self.hw == XO1:
