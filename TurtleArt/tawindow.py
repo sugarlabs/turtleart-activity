@@ -109,7 +109,8 @@ class TurtleArtWindow():
                 self.gc = self.area.new_gc()
             else:
                 # We lose...
-                debug_output('drawable area is None... punting')
+                debug_output('drawable area is None... punting',
+                             self.running_sugar)
                 exit()
             self._setup_events()
         elif type(win) == gtk.gdk.Pixmap:
@@ -298,9 +299,16 @@ class TurtleArtWindow():
             try:
                 exec f in globals(), plugins
                 self._plugins.append(plugins.values()[0](self))
-                # debug_output('successfully importing %s' % (plugin_class))
+                debug_output('successfully importing %s' % (plugin_class),
+                             self.running_sugar)
             except ImportError:
-                debug_output('failed to import %s' % (plugin_class))
+                debug_output('failed to import %s' % (plugin_class),
+                             self.running_sugar)
+            '''
+            exec f in globals(), plugins
+            self._plugins.append(plugins.values()[0](self))
+            debug_output('successfully importing %s' % (plugin_class))
+            '''
 
         # Add the icon dir for each plugin to the icon_theme search path
         for plugin_dir in self._get_plugins_from_plugins_dir(
@@ -1796,7 +1804,6 @@ class TurtleArtWindow():
 
         elif blk.name in COLLAPSIBLE or blk.name == 'sandwichtop_no_label':
             if blk.name == 'sandwichtop_no_label':
-                debug_output('>>>>>>>>> HIT SANDWICHTOP')
                 if hide_button_hit(blk.spr, x, y):
                     collapse_stack(blk)
                 else:
