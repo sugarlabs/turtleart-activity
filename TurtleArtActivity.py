@@ -36,6 +36,7 @@ try:  # 0.86 toolbar widgets
 except ImportError:
     HAS_TOOLBARBOX = False
 from sugar.graphics.toolbutton import ToolButton
+from sugar.graphics.radiotoolbutton import RadioToolButton
 from sugar.datastore import datastore
 
 from sugar import profile
@@ -220,15 +221,16 @@ class TurtleArtActivity(activity.Activity):
     def do_palette_buttons_cb(self, button, i):
         ''' Palette selector buttons '''
         if self.tw.selected_palette is not None:
-            self.palette_buttons[self.tw.selected_palette].set_icon(
-                palette_names[self.tw.selected_palette] + 'off')
+            if not self.has_toolbarbox:
+                self.palette_buttons[self.tw.selected_palette].set_icon(
+                    palette_names[self.tw.selected_palette] + 'off')
             if self.tw.selected_palette == i:
                 # Hide the palette if it is already selected.
                 self.tw.hideshow_palette(False)
                 self.do_hidepalette()
                 return
-
-        self.palette_buttons[i].set_icon(palette_names[i] + 'on')
+        if not self.has_toolbarbox:
+            self.palette_buttons[i].set_icon(palette_names[i] + 'on')
         self.tw.show_palette(i)
         self.do_showpalette()
 
@@ -583,19 +585,20 @@ class TurtleArtActivity(activity.Activity):
         # The palette toolbar must be setup *after* plugins are loaded.
         if self.has_toolbarbox:
             self.palette_buttons = []
-            for i, name in enumerate(palette_names):
+            for i, palette_name in enumerate(palette_names):
                 if i == 0:
-                    suffix = 'on'
+                    palette_group = None
                 else:
-                    suffix = 'off'
-                _logger.debug('palette_buttons.append %s', name)
-                self.palette_buttons.append(self._add_button(name + suffix,
-                    help_strings[name], self.do_palette_buttons_cb,
-                    self._palette_toolbar_button, None, i))
-
+                    palette_group = self.palette_buttons[0]
+                _logger.debug('palette_buttons.append %s', palette_name)
+                self.palette_buttons.append(self._radio_button_factory(
+                        palette_name + 'off',
+                        self._palette_toolbar_button,
+                        self.do_palette_buttons_cb, i,
+                        help_strings[palette_name],
+                        palette_group))
             self._add_separator(self._palette_toolbar, expand=True,
                                 visible=False)
-
             self._make_palette_buttons(self._palette_toolbar_button)
             self._palette_toolbar.show()
 
@@ -841,4 +844,23 @@ class TurtleArtActivity(activity.Activity):
 
         if not name in help_strings:
             help_strings[name] = tooltip
+        return button
+
+    def _radio_button_factory(self, button_name, toolbar, cb, arg, tooltip,
+                              group):
+        ''' Add a radio button to a toolbar '''
+        button = RadioToolButton(group=group)
+        button.set_named_icon(button_name)
+        if cb is not None:
+            if arg is None:
+                button.connect('clicked', cb)
+            else:
+                button.connect('clicked', cb, arg)
+        if hasattr(toolbar, 'insert'):  # Add button to the main toolbar...
+            toolbar.insert(button, -1)
+        else:  # ...or a secondary toolbar.
+            toolbar.props.page.insert(button, -1)
+        button.show()
+        if tooltip is not None:
+            button.set_tooltip(tooltip)
         return button
