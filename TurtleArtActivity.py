@@ -603,16 +603,16 @@ class TurtleArtActivity(activity.Activity):
             self._palette_toolbar.show()
 
     def _make_load_save_buttons(self, toolbar):
-        self.keep_button = self._add_button(
-            'filesaveoff', _('Save snapshot'), self.do_keep_cb, toolbar)
+        self.save_as_image = self._add_button(
+            'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
+            toolbar)
         self.save_as_html = self._add_button(
             'htmloff', _('Save as HTML'), self.do_save_as_html_cb, toolbar)
         self.save_as_logo = self._add_button(
             'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
             toolbar)
-        self.save_as_image = self._add_button(
-            'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
-            toolbar)
+        self.keep_button = self._add_button(
+            'filesaveoff', _('Save snapshot'), self.do_keep_cb, toolbar)
         if not self.has_toolbarbox:
             self._add_separator(toolbar)
         self.load_ta_project = self._add_button(
