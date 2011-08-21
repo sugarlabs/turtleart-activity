@@ -548,9 +548,6 @@ class TurtleArtWindow():
                 if blk.status != 'collapsed':
                     blk.spr.set_layer(BLOCK_LAYER)
             self.show_palette()
-            if self.activity is not None and self.activity.has_toolbarbox:
-                self.activity.palette_buttons[0].set_icon(
-                    palette_names[0] + 'on')
             self.hide = False
             if self.running_sugar:
                 self.activity.recenter()
@@ -794,7 +791,8 @@ class TurtleArtWindow():
             # Hide the selectors
             for i in range(len(palette_blocks)):
                 self.selectors[i].hide()
-        elif self.selected_palette is not None:
+        elif self.selected_palette is not None and \
+             not self.activity.has_toolbarbox:
             self.activity.palette_buttons[self.selected_palette].set_icon(
                 palette_names[self.selected_palette] + 'off')
         self.selected_palette = None
@@ -1029,12 +1027,14 @@ class TurtleArtWindow():
                        not self.activity.has_toolbarbox:
                         self._select_category(self.selectors[i])
                     else:
-                        if self.selected_palette is not None:
+                        if self.selected_palette is not None and \
+                           not self.activity.has_toolbarbox:
                             self.activity.palette_buttons[
                                 self.selected_palette].set_icon(
                                 palette_names[self.selected_palette] + 'off')
-                        self.activity.palette_buttons[i].set_icon(
-                            palette_names[i] + 'on')
+                        if not self.activity.has_toolbarbox:
+                            self.activity.palette_buttons[i].set_icon(
+                                palette_names[i] + 'on')
                         self.show_palette(i)
                 else:
                     self.orientation = 1 - self.orientation
