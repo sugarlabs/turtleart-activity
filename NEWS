@@ -1,11 +1,25 @@
+114
+
+ENHANCEMENTS
+* Toolbar cleanup to be consistent with new design-team guidelines
+* Support for accelerometer on XO 1.75 hardware
+
+BUG FIXES
+* Fixed race-condition that sometimes prevented turtle art from
+  launching (#3044)
+
 113
 
 ENHANCEMENTS
-* Reenabled initial setting of a default palette toolbar (accidently removed in v111 when fixing keyboard acceration problem #2986)
-* Enbaled scaling of box-style-media (used to improve the display of currency with currency plugin)
+* Enabled scaling of box-style-media (used to improve the display of
+  currency with currency plug-in)
+  See http://wiki.sugarlabs.org/go/Activities/TurtleArt#currency
 * Update to mn translations
 
-BUG FIX
+BUG FIXES
+* Re-enabled initial setting of a default Palette Toolbar
+ (accidentally removed in Version 111 when fixing keyboard acceleration
+ problem #2986)
 * Fixed problem with scaling some blocks with image overlays
 
 112
@@ -23,7 +37,7 @@ ENHANCEMENTS
 * New python block example for csound
 * Translation updates for .de
 
-BUG FIX
+BUG FIXES
 * Reverted default action name to 'action' instead of 'stack'
 * Reverted accelerator-key work-around (#2050) in light of #2986
 
