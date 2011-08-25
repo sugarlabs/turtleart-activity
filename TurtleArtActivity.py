@@ -48,7 +48,7 @@ import tarfile
 from gettext import gettext as _
 
 from TurtleArt.tapalette import palette_names, help_strings
-from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE, XO1, XO15
+from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE, XO1, XO15, XO175
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
@@ -75,6 +75,7 @@ class TurtleArtActivity(activity.Activity):
 
         _logger.debug('_setup_palette_toolbar')
         self._setup_palette_toolbar()
+        self._setup_help_toolbar()
 
         _logger.debug('_setup_sharing')
         self._setup_sharing()
@@ -544,7 +545,7 @@ class TurtleArtActivity(activity.Activity):
                          self.do_cartesian_cb, view_toolbar_button)
         self._add_button('view-polar', _('Polar coordinates'),
                          self.do_polar_cb, view_toolbar_button)
-        if get_hardware() in [XO1, XO15]:
+        if get_hardware() in [XO1, XO15, XO175]:
             self._add_button('view-metric', _('Metric coordinates'),
                              self.do_metric_cb, view_toolbar_button)
         self._add_separator(view_toolbar, visible=False)
@@ -560,7 +561,21 @@ class TurtleArtActivity(activity.Activity):
         self.resize_down_button = self._add_button(
             'resize-', _('Shrink blocks'), self.do_shrink_blocks_cb,
             view_toolbar_button)
-        if gtk.gtk_version[0] > 2 or gtk.gtk_version[1] > 16:
+
+        edit_toolbar.show()
+        view_toolbar.show()
+        help_toolbar.show()
+        self._toolbox.show()
+
+        if not self.has_toolbarbox:
+            self._toolbox.set_current_toolbar(1)
+
+    def _setup_help_toolbar(self):
+        ''' The help toolbar must be setup we determine what hardware
+        is in use. '''
+        # FIXME: Temporary work-around gtk problem with XO175
+        if get_hardware() not in [XO175] and \
+           (gtk.gtk_version[0] > 2 or gtk.gtk_version[1] > 16):
             self.hover_help_label = self._add_label(
                 _('Move the cursor over the orange palette for help.'),
                 help_toolbar, gtk.gdk.screen_width() - 2 * ICON_SIZE)
@@ -569,20 +584,8 @@ class TurtleArtActivity(activity.Activity):
                 _('Move the cursor over the orange palette for help.'),
                 help_toolbar)
 
-        edit_toolbar.show()
-        view_toolbar.show()
-        help_toolbar.show()
-        self._toolbox.show()
-
-        # Setup palette toolbar only *after* initializing the plugins
-        if self.has_toolbarbox:
-            # self._palette_toolbar_button.set_expanded(True)
-            pass
-        else:
-            self._toolbox.set_current_toolbar(1)
-
     def _setup_palette_toolbar(self):
-        # The palette toolbar must be setup *after* plugins are loaded.
+        ''' The palette toolbar must be setup *after* plugins are loaded. '''
         if self.has_toolbarbox:
             self.palette_buttons = []
             for i, palette_name in enumerate(palette_names):
@@ -819,7 +822,10 @@ class TurtleArtActivity(activity.Activity):
         separator = gtk.SeparatorToolItem()
         separator.props.draw = visible
         separator.set_expand(expand)
-        toolbar.insert(separator, -1)
+        if hasattr(toolbar, 'insert'):
+            toolbar.insert(separator, -1)
+        else:
+            toolbar.props.page.insert(separator, -1)
         separator.show()
 
     def _add_button(self, name, tooltip, callback, toolbar, accelerator=None,
