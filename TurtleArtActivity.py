@@ -472,9 +472,9 @@ class TurtleArtActivity(activity.Activity):
             self._palette_toolbar = gtk.Toolbar()
             self._palette_toolbar_button = ToolbarButton(
                 page=self._palette_toolbar, icon_name='palette')
-            help_toolbar = gtk.Toolbar()
+            self._help_toolbar = gtk.Toolbar()
             help_toolbar_button = ToolbarButton(label=_('Help'),
-                                                page=help_toolbar,
+                                                page=self._help_toolbar,
                                                 icon_name='help-toolbar')
 
             self._make_load_save_buttons(activity_toolbar_button)
@@ -514,18 +514,14 @@ class TurtleArtActivity(activity.Activity):
 
             project_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Project'), project_toolbar)
-
             view_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('View'), view_toolbar)
-            view_toolbar_button = view_toolbar
             edit_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Edit'), edit_toolbar)
-            edit_toolbar_button = edit_toolbar
             journal_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Import/Export'), journal_toolbar)
-            help_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('Help'), help_toolbar)
-            help_toolbar_button = help_toolbar
+            self._help_toolbar = gtk.Toolbar()
+            self._toolbox.add_toolbar(_('Help'), self._help_toolbar)
 
             self._make_palette_buttons(project_toolbar, palette_button=True)
 
@@ -535,36 +531,34 @@ class TurtleArtActivity(activity.Activity):
             self._make_load_save_buttons(journal_toolbar)
 
         self._add_button('edit-copy', _('Copy'), self._copy_cb,
-                         edit_toolbar_button, '<Ctrl>c')
+                         edit_toolbar, '<Ctrl>c')
         self._add_button('edit-paste', _('Paste'), self._paste_cb,
-                         edit_toolbar_button, '<Ctrl>v')
+                         edit_toolbar, '<Ctrl>v')
         self._add_button('view-fullscreen', _('Fullscreen'),
-                         self.do_fullscreen_cb, view_toolbar_button,
-                         '<Alt>Return')
+                         self.do_fullscreen_cb, view_toolbar, '<Alt>Return')
         self._add_button('view-Cartesian', _('Cartesian coordinates'),
-                         self.do_cartesian_cb, view_toolbar_button)
+                         self.do_cartesian_cb, view_toolbar)
         self._add_button('view-polar', _('Polar coordinates'),
-                         self.do_polar_cb, view_toolbar_button)
+                         self.do_polar_cb, view_toolbar)
         if get_hardware() in [XO1, XO15, XO175]:
             self._add_button('view-metric', _('Metric coordinates'),
-                             self.do_metric_cb, view_toolbar_button)
+                             self.do_metric_cb, view_toolbar)
         self._add_separator(view_toolbar, visible=False)
         self.coordinates_label = self._add_label(_('xcor') + ' = 0 ' + \
             _('ycor') + ' = 0 ' + _('heading') + ' = 0', view_toolbar)
         self._add_separator(view_toolbar, expand=True, visible=False)
         self.rescale_button = self._add_button(
             'expand-coordinates', _('Rescale coordinates up'),
-            self.do_rescale_cb, view_toolbar_button)
+            self.do_rescale_cb, view_toolbar)
         self.resize_up_button = self._add_button(
-            'resize+', _('Grow blocks'), self.do_grow_blocks_cb,
-            view_toolbar_button)
+            'resize+', _('Grow blocks'), self.do_grow_blocks_cb, view_toolbar)
         self.resize_down_button = self._add_button(
             'resize-', _('Shrink blocks'), self.do_shrink_blocks_cb,
-            view_toolbar_button)
+            view_toolbar)
 
         edit_toolbar.show()
         view_toolbar.show()
-        help_toolbar.show()
+        self._help_toolbar.show()
         self._toolbox.show()
 
         if not self.has_toolbarbox:
@@ -578,11 +572,11 @@ class TurtleArtActivity(activity.Activity):
            (gtk.gtk_version[0] > 2 or gtk.gtk_version[1] > 16):
             self.hover_help_label = self._add_label(
                 _('Move the cursor over the orange palette for help.'),
-                help_toolbar, gtk.gdk.screen_width() - 2 * ICON_SIZE)
+                self._help_toolbar, gtk.gdk.screen_width() - 2 * ICON_SIZE)
         else:
             self.hover_help_label = self._add_label(
                 _('Move the cursor over the orange palette for help.'),
-                help_toolbar)
+                self._help_toolbar)
 
     def _setup_palette_toolbar(self):
         ''' The palette toolbar must be setup *after* plugins are loaded. '''
@@ -596,13 +590,13 @@ class TurtleArtActivity(activity.Activity):
                 _logger.debug('palette_buttons.append %s', palette_name)
                 self.palette_buttons.append(self._radio_button_factory(
                         palette_name + 'off',
-                        self._palette_toolbar_button,
+                        self._palette_toolbar,
                         self.do_palette_buttons_cb, i,
                         help_strings[palette_name],
                         palette_group))
             self._add_separator(self._palette_toolbar, expand=True,
                                 visible=False)
-            self._make_palette_buttons(self._palette_toolbar_button)
+            self._make_palette_buttons(self._palette_toolbar)
             self._palette_toolbar.show()
 
     def _make_load_save_buttons(self, toolbar):
