@@ -29,11 +29,14 @@ import logging
 _logger = logging.getLogger('turtleart-activity accelerometer plugin')
 
 
+ACCELEROMETER_DEVICE = '/sys/devices/platform/lis3lv02d/position'
+
+
 class Accelerometer(Plugin):
 
     def __init__(self, parent):
         self._parent = parent
-        if os.path.exists('/sys/devices/platform/lis3lv02d/position'):
+        if os.path.exists(ACCELEROMETER_DEVICE):
             self._status = True
         else:
             self._status = False
@@ -50,13 +53,15 @@ class Accelerometer(Plugin):
             palette.add_block('xyz',
                               style='basic-style-extended-vertical',
                               label=_('acceleration'),
-                              help_string=_('push accereration in x, y, z to heap'),
+                              help_string=\
+                                  _('push accereration in x, y, z to heap'),
                               prim_name='xyz')
         else:
             palette.add_block('xyz',
                               style='basic-style-extended-vertical',
                               label=_('acceleration'),
-                              help_string=_('push accereration in x, y, z to heap'),
+                              help_string=\
+                                  _('push accereration in x, y, z to heap'),
                               hidden=True,
                               prim_name='xyz')
 
@@ -76,10 +81,10 @@ class Accelerometer(Plugin):
             self._parent.lc.heap.append(0)
             self._parent.lc.heap.append(0)
         else:
-            fh = open('/sys/devices/platform/lis3lv02d/position')
+            fh = open(ACCELEROMETER_DEVICE)
             string = fh.read()
             xyz = string[1:-2].split(',')
-            self._parent.lc.heap.append(int(xyz[2]))
-            self._parent.lc.heap.append(int(xyz[1]))
-            self._parent.lc.heap.append(int(xyz[0]))
+            self._parent.lc.heap.append(float(xyz[2]) / 18)
+            self._parent.lc.heap.append(float(xyz[1]) / 18)
+            self._parent.lc.heap.append(float(xyz[0]) / 18)
             fh.close()

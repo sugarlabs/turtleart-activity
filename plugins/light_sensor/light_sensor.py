@@ -22,7 +22,6 @@ from gettext import gettext as _
 from plugins.plugin import Plugin
 
 from TurtleArt.tapalette import make_palette
-from TurtleArt.taconstants import XO1, XO15
 from TurtleArt.talogo import primitive_dictionary
 from TurtleArt.tautils import debug_output
 
@@ -30,11 +29,14 @@ import logging
 _logger = logging.getLogger('turtleart-activity light-sensor plugin')
 
 
-class Accelerometer(Plugin):
+LIGHT_SENSOR_DEVICE = '/sys/devices/platform/olpc-ols.0/power_state'
+
+
+class Light_sensor(Plugin):
 
     def __init__(self, parent):
         self._parent = parent
-        if os.path.exists('/sys/devices/platform/olpc-ols.0/power_state'):
+        if os.path.exists(LIGHT_SENSOR_DEVICE):
             self._status = True
         else:
             self._status = False
@@ -49,14 +51,14 @@ class Accelerometer(Plugin):
         primitive_dictionary['lightsensor'] = self.prim_lightsensor
         if self._status:
             palette.add_block('lightsensor',
-                              style='basic-style-extended-vertical',
+                              style='box-style',
                               label=_('brightness'),
                               help_string=\
                                   _('light level detected by light sensor'),
                               prim_name='lightsensor')
         else:
             palette.add_block('lightsensor',
-                              style='basic-style-extended-vertical',
+                              style='box-style',
                               label=_('brightness'),
                               help_string=\
                                   _('light level detected by light sensor'),
@@ -78,7 +80,7 @@ class Accelerometer(Plugin):
         if not self._status:
             return -1
         else:
-            fh = open('/sys/devices/platform/olpc-ols.0/power_state')
+            fh = open(LIGHT_SENSOR_DEVICE)
             string = fh.read()
             fh.close()
-            return int(string)
+            return float(string)
