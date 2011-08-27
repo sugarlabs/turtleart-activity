@@ -39,6 +39,7 @@ class Camera_sensor(Plugin):
     def __init__(self, parent):
         self._parent = parent
         self._status = False
+        self._camera = None
 
         v4l2src = gst.element_factory_make('v4l2src')
         if v4l2src.props.device_name is not None:
@@ -49,7 +50,6 @@ class Camera_sensor(Plugin):
             else:
                 self._imagepath = '/tmp/turtlepic.png'
 
-            self._camera = None
             self._status = True
 
     def setup(self):
@@ -97,7 +97,8 @@ is pushed to the stack'),
                               hidden=True,
                               style='box-style',
                               label=_('brightness'),
-                              help_string=_('light level detected by camera'),
+                              help_string=\
+                                  _('light level detected by camera'),
                               value_block=True,
                               prim_name='read_camera')
             self._parent.lc.def_prim('luminance', 0,
@@ -133,7 +134,7 @@ is pushed to the stack'),
         ''' Initialize the camera if there is an camera block in use '''
         if len(self._parent.block_list.get_similar_blocks('block',
             ['camera', 'read_camera', 'luminance'])) > 0:
-            if self._camera is None:
+            if self._status and self._camera is None:
                 self._camera = Camera(self._imagepath)
 
     def stop(self):
