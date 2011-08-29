@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-29 07:57-0400\n"
+"POT-Creation-Date: 2011-08-29 08:03-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -331,329 +331,328 @@ msgid "Returns 1 when the button is press and 0 otherwise."
 msgstr ""
 
 #: taextras.py:63
-msgid ""
-"Returns the level of ligth in the ambient as a number between 0 and 1023."
+msgid "Returns the ambient light level  as a number between 0 and 1023."
+msgstr ""
+
+#: taextras.py:64
+msgid "Returns the ambient temperature as a number between 0 and 255."
 msgstr ""
 
 #: taextras.py:65
-msgid "Returns the temperature in the ambient as a number between 0 and 255."
-msgstr ""
-
-#: taextras.py:66
 msgid ""
 "Returns the distance from the object in front of the sensor as a number "
 "between 0 and 255."
 msgstr ""
 
-#: taextras.py:68
+#: taextras.py:67
 msgid "Returns 0 or 1 depending on the sensor inclination."
 msgstr ""
 
-#: taextras.py:69
+#: taextras.py:68
 msgid "Returns 1 when the sensors detects a magnetic field, 0 otherwise."
 msgstr ""
 
-#: taextras.py:70
+#: taextras.py:69
 msgid "Switchs from 0 to 1, the frequency depends on the vibration."
 msgstr ""
 
-#: taextras.py:71
+#: taextras.py:70
 msgid "LED"
 msgstr ""
 
-#: taextras.py:72
+#: taextras.py:71
 msgid "pushbutton"
 msgstr ""
 
-#: taextras.py:73
+#: taextras.py:72
 msgid "grayscale"
 msgstr ""
 
-#: taextras.py:74
+#: taextras.py:73
 msgid "ambient light"
 msgstr ""
 
-#: taextras.py:75
+#: taextras.py:74
 msgid "temperature"
 msgstr ""
 
-#: taextras.py:76
+#: taextras.py:75
 msgid "distance"
 msgstr ""
 
-#: taextras.py:77
+#: taextras.py:76
 msgid "tilt"
 msgstr ""
 
-#: taextras.py:78
+#: taextras.py:77
 msgid "magnetic induction"
 msgstr ""
 
-#: taextras.py:79
+#: taextras.py:78
 msgid "vibration"
 msgstr ""
 
-#: taextras.py:80
+#: taextras.py:79
 msgid "Butia Robot"
 msgstr ""
 
-#: taextras.py:81
+#: taextras.py:80
 msgid "delay Butia"
 msgstr ""
 
-#: taextras.py:82
+#: taextras.py:81
 msgid "wait for argument seconds"
 msgstr ""
 
-#: taextras.py:83
+#: taextras.py:82
 msgid "Butia battery charge"
 msgstr ""
 
-#: taextras.py:84
+#: taextras.py:83
 msgid "Returns the battery charge as a number between 0 and 255."
 msgstr ""
 
-#: taextras.py:85
+#: taextras.py:84
 msgid "Butia speed"
 msgstr ""
 
-#: taextras.py:86
+#: taextras.py:85
 msgid ""
-"Set the moving speed of the Butia motors as the value between 0 and 1023, "
-"passed by argument."
+"Set the speed of the Butia motors as the value between 0 and 1023, passed by "
+"an argument."
 msgstr ""
 
-#: taextras.py:88
+#: taextras.py:87
 msgid "forward Butia"
 msgstr ""
 
-#: taextras.py:89
+#: taextras.py:88
 msgid "Move the Butia robot forward."
 msgstr ""
 
-#: taextras.py:90
+#: taextras.py:89
 msgid "forward distance"
 msgstr ""
 
-#: taextras.py:91
+#: taextras.py:90
 msgid "Move the Butia robot forward a predefined distance."
 msgstr ""
 
-#: taextras.py:92
+#: taextras.py:91
 msgid "backward Butia"
 msgstr ""
 
-#: taextras.py:93 taextras.py:97 taextras.py:99 taextras.py:103
+#: taextras.py:92 taextras.py:96 taextras.py:98 taextras.py:102
 msgid "Move the Butia robot backward."
 msgstr ""
 
-#: taextras.py:94
+#: taextras.py:93
 msgid "backward distance"
 msgstr ""
 
-#: taextras.py:95
+#: taextras.py:94
 msgid "Move the Butia robot backward a predefined distance."
 msgstr ""
 
-#: taextras.py:96
+#: taextras.py:95
 msgid "left Butia"
 msgstr ""
 
-#: taextras.py:98
+#: taextras.py:97
 msgid "right Butia"
 msgstr ""
 
-#: taextras.py:100
+#: taextras.py:99
 msgid "Turn x degrees"
 msgstr ""
 
-#: taextras.py:101
+#: taextras.py:100
 msgid "Turn the Butia robot x degrees."
 msgstr ""
 
-#: taextras.py:102
+#: taextras.py:101
 msgid "stop Butia"
 msgstr ""
 
-#: taextras.py:104
+#: taextras.py:103
 msgid "print Butia"
 msgstr ""
 
-#: taextras.py:105
+#: taextras.py:104
 msgid "Print text in Butia robot 32-character ASCII display."
 msgstr ""
 
-#: taextras.py:106
+#: taextras.py:105
 msgid "Butia"
 msgstr ""
 
-#: taextras.py:110
+#: taextras.py:109
 msgid "The camera was not found."
 msgstr ""
 
-#: taextras.py:111
+#: taextras.py:110
 msgid "Error on the init of the camera."
 msgstr ""
 
-#: taextras.py:112
+#: taextras.py:111
 msgid "FollowMe"
 msgstr ""
 
-#: taextras.py:113
+#: taextras.py:112
 msgid "follow a RGB color"
 msgstr ""
 
-#: taextras.py:114
+#: taextras.py:113
 msgid "follow a turtle color"
 msgstr ""
 
-#: taextras.py:115
+#: taextras.py:114
 msgid "calibrate a color to follow"
 msgstr ""
 
-#: taextras.py:116
+#: taextras.py:115
 msgid "x position"
 msgstr ""
 
-#: taextras.py:117
+#: taextras.py:116
 msgid "return x position"
 msgstr ""
 
-#: taextras.py:118
+#: taextras.py:117
 msgid "y position"
 msgstr ""
 
-#: taextras.py:119
+#: taextras.py:118
 msgid "return y position"
 msgstr ""
 
-#: taextras.py:123
+#: taextras.py:122
 msgid "Sumo Butia"
 msgstr ""
 
-#: taextras.py:124
+#: taextras.py:123
 msgid "submit speed​​"
 msgstr ""
 
-#: taextras.py:125
+#: taextras.py:124
 msgid "Send speeds the robot."
 msgstr ""
 
-#: taextras.py:126
+#: taextras.py:125
 msgid "set speed"
 msgstr ""
 
-#: taextras.py:127
+#: taextras.py:126
 msgid "Set the default speed for the movement commands."
 msgstr ""
 
-#: taextras.py:128
+#: taextras.py:127
 msgid "move"
 msgstr ""
 
-#: taextras.py:129 TurtleArt/tabasics.py:131
+#: taextras.py:128 TurtleArt/tabasics.py:131
 msgid "back"
 msgstr ""
 
-#: taextras.py:130 pysamples/grecord.py:215
+#: taextras.py:129 pysamples/grecord.py:215
 msgid "stop"
 msgstr ""
 
-#: taextras.py:131
+#: taextras.py:130
 msgid "turn left"
 msgstr ""
 
-#: taextras.py:132
+#: taextras.py:131
 msgid "turn right"
 msgstr ""
 
-#: taextras.py:133
+#: taextras.py:132
 msgid "angle to center"
 msgstr ""
 
 #. TRANS: dojo is the playing field
-#: taextras.py:135
+#: taextras.py:134
 msgid "Get the angle to the center of the dojo."
 msgstr ""
 
-#: taextras.py:136
+#: taextras.py:135
 msgid "angle to the opponent"
 msgstr ""
 
-#: taextras.py:137
+#: taextras.py:136
 msgid "Get the angle to the center of the opponent."
 msgstr ""
 
-#: taextras.py:138
+#: taextras.py:137
 msgid "x coor."
 msgstr ""
 
-#: taextras.py:139
+#: taextras.py:138
 msgid "Get the x coordinate of the robot."
 msgstr ""
 
-#: taextras.py:140
+#: taextras.py:139
 msgid "y coor."
 msgstr ""
 
-#: taextras.py:141
+#: taextras.py:140
 msgid "Get the y coordinate of the robot."
 msgstr ""
 
-#: taextras.py:142
+#: taextras.py:141
 msgid "opponent x coor."
 msgstr ""
 
-#: taextras.py:143
+#: taextras.py:142
 msgid "Get the x coordinate of the opponent."
 msgstr ""
 
-#: taextras.py:144
+#: taextras.py:143
 msgid "opponent y coor."
 msgstr ""
 
-#: taextras.py:145
+#: taextras.py:144
 msgid "Get the y coordinate of the opponent."
 msgstr ""
 
-#: taextras.py:146
+#: taextras.py:145
 msgid "rotation"
 msgstr ""
 
-#: taextras.py:147
+#: taextras.py:146
 msgid "Get SumBot rotation."
 msgstr ""
 
-#: taextras.py:148
+#: taextras.py:147
 msgid "opponent rotation"
 msgstr ""
 
-#: taextras.py:149
+#: taextras.py:148
 msgid "Get the rotation of the opponent."
 msgstr ""
 
-#: taextras.py:150
+#: taextras.py:149
 msgid "distance to center"
 msgstr ""
 
 #. TRANS: dojo is the playing field
-#: taextras.py:152
+#: taextras.py:151
 msgid "Get the distance to the center of the dojo."
 msgstr ""
 
-#: taextras.py:153
+#: taextras.py:152
 msgid "distance to opponent"
 msgstr ""
 
-#: taextras.py:154
+#: taextras.py:153
 msgid "Get the distance to the opponent."
 msgstr ""
 
-#: taextras.py:155
+#: taextras.py:154
 msgid "update information"
 msgstr ""
 
-#: taextras.py:156
+#: taextras.py:155
 msgid "Update information from the server."
 msgstr ""
 
@@ -1378,8 +1377,11 @@ msgid "acceleration"
 msgstr ""
 
 #: plugins/accelerometer/accelerometer.py:57
-#: plugins/accelerometer/accelerometer.py:64
 msgid "push accereration in x, y, z to heap"
+msgstr ""
+
+#: plugins/accelerometer/accelerometer.py:64
+msgid "push acceleration in x, y, z to heap"
 msgstr ""
 
 #: TurtleArt/tapalette.py:83
