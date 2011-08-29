@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-28 17:46-0400\n"
+"POT-Creation-Date: 2011-08-29 07:57-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -354,7 +354,7 @@ msgid "Returns 1 when the sensors detects a magnetic field, 0 otherwise."
 msgstr ""
 
 #: taextras.py:70
-msgid "Switchs from 0 to 1, the frecuency depends on the vibration."
+msgid "Switchs from 0 to 1, the frequency depends on the vibration."
 msgstr ""
 
 #: taextras.py:71
