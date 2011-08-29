@@ -67,7 +67,7 @@ BUTIA_STRINGS = [
 number between 0 and 255.'),
     _('Returns 0 or 1 depending on the sensor inclination.'),
     _('Returns 1 when the sensors detects a magnetic field, 0 otherwise.'),
-    _('Switchs from 0 to 1, the frecuency depends on the vibration.'),
+    _('Switchs from 0 to 1, the frequency depends on the vibration.'),
     _('LED'),
     _('pushbutton'),
     _('grayscale'),
