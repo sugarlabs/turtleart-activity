@@ -57,8 +57,8 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     MACROS, TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, \
     CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, NO_IMPORT, \
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
-    EXPANDABLE_ARGS, XO1, XO15, UNKNOWN, TITLEXY, CONTENT_ARGS, CONSTANTS, \
-    EXPAND_SKIN
+    EXPANDABLE_ARGS, XO1, XO15, XO175, UNKNOWN, TITLEXY, CONTENT_ARGS, \
+    CONSTANTS, EXPAND_SKIN
 from tapalette import palette_names, palette_blocks, expandable_blocks, \
     block_names, content_blocks, default_values, special_names, block_styles, \
     help_strings
@@ -109,7 +109,8 @@ class TurtleArtWindow():
                 self.gc = self.area.new_gc()
             else:
                 # We lose...
-                debug_output('drawable area is None... punting')
+                debug_output('drawable area is None... punting',
+                             self.running_sugar)
                 exit()
             self._setup_events()
         elif type(win) == gtk.gdk.Pixmap:
@@ -155,7 +156,7 @@ class TurtleArtWindow():
         self.orientation = HORIZONTAL_PALETTE
 
         self.hw = get_hardware()
-        if self.hw in (XO1, XO15):
+        if self.hw in (XO1, XO15, XO175):
             self.lead = 1.0
             self.scale = 0.67
             if self.hw == XO1:
@@ -298,9 +299,16 @@ class TurtleArtWindow():
             try:
                 exec f in globals(), plugins
                 self._plugins.append(plugins.values()[0](self))
-                # debug_output('successfully importing %s' % (plugin_class))
+                debug_output('successfully importing %s' % (plugin_class),
+                             self.running_sugar)
             except ImportError:
-                debug_output('failed to import %s' % (plugin_class))
+                debug_output('failed to import %s' % (plugin_class),
+                             self.running_sugar)
+            '''
+            exec f in globals(), plugins
+            self._plugins.append(plugins.values()[0](self))
+            debug_output('successfully importing %s' % (plugin_class))
+            '''
 
         # Add the icon dir for each plugin to the icon_theme search path
         for plugin_dir in self._get_plugins_from_plugins_dir(
@@ -540,9 +548,6 @@ class TurtleArtWindow():
                 if blk.status != 'collapsed':
                     blk.spr.set_layer(BLOCK_LAYER)
             self.show_palette()
-            if self.activity is not None and self.activity.has_toolbarbox:
-                self.activity.palette_buttons[0].set_icon(
-                    palette_names[0] + 'on')
             self.hide = False
             if self.running_sugar:
                 self.activity.recenter()
@@ -786,7 +791,8 @@ class TurtleArtWindow():
             # Hide the selectors
             for i in range(len(palette_blocks)):
                 self.selectors[i].hide()
-        elif self.selected_palette is not None:
+        elif self.selected_palette is not None and \
+             not self.activity.has_toolbarbox:
             self.activity.palette_buttons[self.selected_palette].set_icon(
                 palette_names[self.selected_palette] + 'off')
         self.selected_palette = None
@@ -1021,12 +1027,14 @@ class TurtleArtWindow():
                        not self.activity.has_toolbarbox:
                         self._select_category(self.selectors[i])
                     else:
-                        if self.selected_palette is not None:
+                        if self.selected_palette is not None and \
+                           not self.activity.has_toolbarbox:
                             self.activity.palette_buttons[
                                 self.selected_palette].set_icon(
                                 palette_names[self.selected_palette] + 'off')
-                        self.activity.palette_buttons[i].set_icon(
-                            palette_names[i] + 'on')
+                        if not self.activity.has_toolbarbox:
+                            self.activity.palette_buttons[i].set_icon(
+                                palette_names[i] + 'on')
                         self.show_palette(i)
                 else:
                     self.orientation = 1 - self.orientation
@@ -1796,7 +1804,6 @@ class TurtleArtWindow():
 
         elif blk.name in COLLAPSIBLE or blk.name == 'sandwichtop_no_label':
             if blk.name == 'sandwichtop_no_label':
-                debug_output('>>>>>>>>> HIT SANDWICHTOP')
                 if hide_button_hit(blk.spr, x, y):
                     collapse_stack(blk)
                 else:

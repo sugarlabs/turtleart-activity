@@ -36,6 +36,7 @@ try:  # 0.86 toolbar widgets
 except ImportError:
     HAS_TOOLBARBOX = False
 from sugar.graphics.toolbutton import ToolButton
+from sugar.graphics.radiotoolbutton import RadioToolButton
 from sugar.datastore import datastore
 
 from sugar import profile
@@ -47,7 +48,7 @@ import tarfile
 from gettext import gettext as _
 
 from TurtleArt.tapalette import palette_names, help_strings
-from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE, XO1, XO15
+from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE, XO1, XO15, XO175
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
@@ -63,16 +64,20 @@ class TurtleArtActivity(activity.Activity):
         super(TurtleArtActivity, self).__init__(handle)
 
         self._check_ver_change(get_path(activity, 'data'))
-
         self._setup_visibility_handler()
 
         self.has_toolbarbox = HAS_TOOLBARBOX
+        _logger.debug('_setup_toolbar')
         self._setup_toolbar()
 
+        _logger.debug('_setup_canvas')
         self._setup_canvas(self._setup_scrolled_window())
 
+        _logger.debug('_setup_palette_toolbar')
         self._setup_palette_toolbar()
+        self._setup_help_toolbar()
 
+        _logger.debug('_setup_sharing')
         self._setup_sharing()
 
     # Activity toolbar callbacks
@@ -80,7 +85,7 @@ class TurtleArtActivity(activity.Activity):
     def do_save_as_html_cb(self, button):
         ''' Write html out to datastore. '''
         self.save_as_html.set_icon('htmlon')
-        _logger.debug('saving html code')
+        _logger.debug('saving HTML code')
         # Until we have URLs for datastore objects, always embed images.
         embed_flag = True
 
@@ -217,15 +222,16 @@ class TurtleArtActivity(activity.Activity):
     def do_palette_buttons_cb(self, button, i):
         ''' Palette selector buttons '''
         if self.tw.selected_palette is not None:
-            self.palette_buttons[self.tw.selected_palette].set_icon(
-                palette_names[self.tw.selected_palette] + 'off')
+            if not self.has_toolbarbox:
+                self.palette_buttons[self.tw.selected_palette].set_icon(
+                    palette_names[self.tw.selected_palette] + 'off')
             if self.tw.selected_palette == i:
                 # Hide the palette if it is already selected.
                 self.tw.hideshow_palette(False)
                 self.do_hidepalette()
                 return
-
-        self.palette_buttons[i].set_icon(palette_names[i] + 'on')
+        if not self.has_toolbarbox:
+            self.palette_buttons[i].set_icon(palette_names[i] + 'on')
         self.tw.show_palette(i)
         self.do_showpalette()
 
@@ -466,152 +472,155 @@ class TurtleArtActivity(activity.Activity):
             self._palette_toolbar = gtk.Toolbar()
             self._palette_toolbar_button = ToolbarButton(
                 page=self._palette_toolbar, icon_name='palette')
-            help_toolbar = gtk.Toolbar()
+            self._help_toolbar = gtk.Toolbar()
             help_toolbar_button = ToolbarButton(label=_('Help'),
-                                                page=help_toolbar,
+                                                page=self._help_toolbar,
                                                 icon_name='help-toolbar')
 
-            journal_toolbar = gtk.Toolbar()
-            journal_toolbar_button = ToolbarButton(page=journal_toolbar,
-                icon_name='activity-journal')
+            self._make_load_save_buttons(activity_toolbar_button)
 
             activity_toolbar_button.show()
             self._toolbox.toolbar.insert(activity_toolbar_button, -1)
             edit_toolbar_button.show()
             self._toolbox.toolbar.insert(edit_toolbar_button, -1)
-            journal_toolbar_button.show()
-            self._toolbox.toolbar.insert(journal_toolbar_button, -1)
             view_toolbar_button.show()
             self._toolbox.toolbar.insert(view_toolbar_button, -1)
             self._palette_toolbar_button.show()
             self._toolbox.toolbar.insert(self._palette_toolbar_button, -1)
-            help_toolbar_button.show()
-            self._toolbox.toolbar.insert(help_toolbar_button, -1)
-
-            self._add_separator(self._toolbox.toolbar)
 
             self._make_project_buttons(self._toolbox.toolbar)
 
-            self._add_separator(self._toolbox.toolbar, True)
+            self._add_separator(self._toolbox.toolbar, expand=True,
+                                visible=False)
+
+            self.samples_button = self._add_button(
+                'ta-open', _('Load example'), self.do_samples_cb,
+                self._toolbox.toolbar)
+
+            help_toolbar_button.show()
+            self._toolbox.toolbar.insert(help_toolbar_button, -1)
 
             stop_button = StopButton(self)
             stop_button.props.accelerator = '<Ctrl>Q'
             self._toolbox.toolbar.insert(stop_button, -1)
             stop_button.show()
 
+            _logger.debug('set_toolbar_box')
+            self.set_toolbar_box(self._toolbox)
+            self._palette_toolbar_button.set_expanded(True)
         else:
             self._toolbox = activity.ActivityToolbox(self)
             self.set_toolbox(self._toolbox)
 
             project_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Project'), project_toolbar)
-
             view_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('View'), view_toolbar)
-            view_toolbar_button = view_toolbar
             edit_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Edit'), edit_toolbar)
-            edit_toolbar_button = edit_toolbar
             journal_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Import/Export'), journal_toolbar)
-            journal_toolbar_button = journal_toolbar
-            help_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('Help'), help_toolbar)
-            help_toolbar_button = help_toolbar
+            self._help_toolbar = gtk.Toolbar()
+            self._toolbox.add_toolbar(_('Help'), self._help_toolbar)
 
             self._make_palette_buttons(project_toolbar, palette_button=True)
 
             self._add_separator(project_toolbar)
 
             self._make_project_buttons(project_toolbar)
+            self._make_load_save_buttons(journal_toolbar)
 
-        self.keep_button = self._add_button(
-            'filesaveoff', _('Save snapshot'), self.do_keep_cb,
-            journal_toolbar_button)
-        self.save_as_html = self._add_button(
-            'htmloff', _('Save as HTML'), self.do_save_as_html_cb,
-            journal_toolbar_button)
-        self.save_as_logo = self._add_button(
-            'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
-            journal_toolbar_button)
-        self.save_as_image = self._add_button(
-            'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
-            journal_toolbar_button)
-        self.load_ta_project = self._add_button(
-            'load-from-journal', _('Import project from the Journal'),
-            self.do_load_ta_project_cb, journal_toolbar_button)
-        self._add_separator(journal_toolbar)
-        self.load_python = self._add_button(
-            'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
-            journal_toolbar_button)
-        self.samples_button = self._add_button(
-            'ta-open', _('Load example'), self.do_samples_cb,
-            journal_toolbar_button)
         self._add_button('edit-copy', _('Copy'), self._copy_cb,
-                         edit_toolbar_button, '<Ctrl>c')
+                         edit_toolbar, '<Ctrl>c')
         self._add_button('edit-paste', _('Paste'), self._paste_cb,
-                         edit_toolbar_button, '<Ctrl>v')
+                         edit_toolbar, '<Ctrl>v')
         self._add_button('view-fullscreen', _('Fullscreen'),
-                         self.do_fullscreen_cb, view_toolbar_button,
-                         '<Alt>Return')
+                         self.do_fullscreen_cb, view_toolbar, '<Alt>Return')
         self._add_button('view-Cartesian', _('Cartesian coordinates'),
-                         self.do_cartesian_cb, view_toolbar_button)
+                         self.do_cartesian_cb, view_toolbar)
         self._add_button('view-polar', _('Polar coordinates'),
-                         self.do_polar_cb, view_toolbar_button)
-        if get_hardware() in [XO1, XO15]:
+                         self.do_polar_cb, view_toolbar)
+        if get_hardware() in [XO1, XO15, XO175]:
             self._add_button('view-metric', _('Metric coordinates'),
-                             self.do_metric_cb, view_toolbar_button)
-        self._add_separator(view_toolbar)
+                             self.do_metric_cb, view_toolbar)
+        self._add_separator(view_toolbar, visible=False)
         self.coordinates_label = self._add_label(_('xcor') + ' = 0 ' + \
             _('ycor') + ' = 0 ' + _('heading') + ' = 0', view_toolbar)
-        self._add_separator(view_toolbar, True)
+        self._add_separator(view_toolbar, expand=True, visible=False)
         self.rescale_button = self._add_button(
             'expand-coordinates', _('Rescale coordinates up'),
-            self.do_rescale_cb, view_toolbar_button)
+            self.do_rescale_cb, view_toolbar)
         self.resize_up_button = self._add_button(
-            'resize+', _('Grow blocks'), self.do_grow_blocks_cb,
-            view_toolbar_button)
+            'resize+', _('Grow blocks'), self.do_grow_blocks_cb, view_toolbar)
         self.resize_down_button = self._add_button(
             'resize-', _('Shrink blocks'), self.do_shrink_blocks_cb,
-            view_toolbar_button)
-        if gtk.gtk_version[0] > 2 or gtk.gtk_version[1] > 16:
-            self.hover_help_label = self._add_label(
-                _('Move the cursor over the orange palette for help.'),
-                help_toolbar, gtk.gdk.screen_width() - 2 * ICON_SIZE)
-        else:
-            self.hover_help_label = self._add_label(
-                _('Move the cursor over the orange palette for help.'),
-                help_toolbar)
+            view_toolbar)
 
         edit_toolbar.show()
         view_toolbar.show()
-        help_toolbar.show()
+        self._help_toolbar.show()
         self._toolbox.show()
 
-        # Setup palette toolbar only *after* initializing the plugins
-        if self.has_toolbarbox:
-            self._palette_toolbar_button.set_expanded(True)
-        else:
+        if not self.has_toolbarbox:
             self._toolbox.set_current_toolbar(1)
 
+    def _setup_help_toolbar(self):
+        ''' The help toolbar must be setup we determine what hardware
+        is in use. '''
+        # FIXME: Temporary work-around gtk problem with XO175
+        if get_hardware() not in [XO175] and \
+           (gtk.gtk_version[0] > 2 or gtk.gtk_version[1] > 16):
+            self.hover_help_label = self._add_label(
+                _('Move the cursor over the orange palette for help.'),
+                self._help_toolbar, gtk.gdk.screen_width() - 2 * ICON_SIZE)
+        else:
+            self.hover_help_label = self._add_label(
+                _('Move the cursor over the orange palette for help.'),
+                self._help_toolbar)
+
     def _setup_palette_toolbar(self):
-        # The palette toolbar must be setup *after* plugins are loaded.
+        ''' The palette toolbar must be setup *after* plugins are loaded. '''
         if self.has_toolbarbox:
             self.palette_buttons = []
-            for i, name in enumerate(palette_names):
-                if i > 0:
-                    suffix = 'off'
+            for i, palette_name in enumerate(palette_names):
+                if i == 0:
+                    palette_group = None
                 else:
-                    suffix = 'on'
-                self.palette_buttons.append(self._add_button(name + suffix,
-                    help_strings[name], self.do_palette_buttons_cb,
-                    self._palette_toolbar_button, None, i))
-            self._add_separator(self._palette_toolbar, True)
-
-            self._make_palette_buttons(self._palette_toolbar_button)
-
-            self.set_toolbar_box(self._toolbox)
+                    palette_group = self.palette_buttons[0]
+                _logger.debug('palette_buttons.append %s', palette_name)
+                self.palette_buttons.append(self._radio_button_factory(
+                        palette_name + 'off',
+                        self._palette_toolbar,
+                        self.do_palette_buttons_cb, i,
+                        help_strings[palette_name],
+                        palette_group))
+            self._add_separator(self._palette_toolbar, expand=True,
+                                visible=False)
+            self._make_palette_buttons(self._palette_toolbar)
             self._palette_toolbar.show()
+
+    def _make_load_save_buttons(self, toolbar):
+        self.save_as_image = self._add_button(
+            'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
+            toolbar)
+        self.save_as_html = self._add_button(
+            'htmloff', _('Save as HTML'), self.do_save_as_html_cb, toolbar)
+        self.save_as_logo = self._add_button(
+            'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
+            toolbar)
+        self.keep_button = self._add_button(
+            'filesaveoff', _('Save snapshot'), self.do_keep_cb, toolbar)
+        if not self.has_toolbarbox:
+            self._add_separator(toolbar)
+        self.load_ta_project = self._add_button(
+            'load-from-journal', _('Import project from the Journal'),
+            self.do_load_ta_project_cb, toolbar)
+        self.load_python = self._add_button(
+            'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
+            toolbar)
+        if not self.has_toolbarbox:
+            self.samples_button = self._add_button(
+                'ta-open', _('Load example'), self.do_samples_cb, toolbar)
 
     def _make_palette_buttons(self, toolbar, palette_button=False):
         ''' Creates the palette and block buttons for both toolbar types'''
@@ -802,12 +811,15 @@ class TurtleArtActivity(activity.Activity):
         toolitem.show()
         return label
 
-    def _add_separator(self, toolbar, expand=False):
+    def _add_separator(self, toolbar, expand=False, visible=True):
         ''' Add a separator to a toolbar. '''
         separator = gtk.SeparatorToolItem()
-        separator.props.draw = True
+        separator.props.draw = visible
         separator.set_expand(expand)
-        toolbar.insert(separator, -1)
+        if hasattr(toolbar, 'insert'):
+            toolbar.insert(separator, -1)
+        else:
+            toolbar.props.page.insert(separator, -1)
         separator.show()
 
     def _add_button(self, name, tooltip, callback, toolbar, accelerator=None,
@@ -832,4 +844,23 @@ class TurtleArtActivity(activity.Activity):
 
         if not name in help_strings:
             help_strings[name] = tooltip
+        return button
+
+    def _radio_button_factory(self, button_name, toolbar, cb, arg, tooltip,
+                              group):
+        ''' Add a radio button to a toolbar '''
+        button = RadioToolButton(group=group)
+        button.set_named_icon(button_name)
+        if cb is not None:
+            if arg is None:
+                button.connect('clicked', cb)
+            else:
+                button.connect('clicked', cb, arg)
+        if hasattr(toolbar, 'insert'):  # Add button to the main toolbar...
+            toolbar.insert(button, -1)
+        else:  # ...or a secondary toolbar.
+            toolbar.props.page.insert(button, -1)
+        button.show()
+        if tooltip is not None:
+            button.set_tooltip(tooltip)
         return button

@@ -509,6 +509,8 @@ class SVG:
         svg += self.style()
         if self._show is True:
             svg += self._show_dot()
+        if self._hide is True:
+            svg += self._hide_dot()
         svg += self.footer()
         return self.header() + svg
 

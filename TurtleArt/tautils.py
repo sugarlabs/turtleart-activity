@@ -42,7 +42,7 @@ except (ImportError, AttributeError):
 from StringIO import StringIO
 
 from taconstants import HIDE_LAYER, COLLAPSIBLE, BLOCK_LAYER, HIT_HIDE, \
-    HIT_SHOW, XO1, XO15, UNKNOWN
+    HIT_SHOW, XO1, XO15, XO175, UNKNOWN
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -803,7 +803,9 @@ def get_hardware():
     """ Determine whether we are using XO 1.0, 1.5, or "unknown" hardware """
     product = _get_dmi('product_name')
     if product is None:
-        if os.path.exists('/etc/olpc-release') or \
+        if os.path.exists('/sys/devices/platform/lis3lv02d/position'):
+            return XO175  # FIXME: temporary check for XO 1.75
+        elif os.path.exists('/etc/olpc-release') or \
            os.path.exists('/sys/power/olpc-pm'):
             return XO1
         else:
@@ -816,7 +818,7 @@ def get_hardware():
     elif version == '1.5':
         return XO15
     else:
-        return UNKNOWN
+        return XO175
 
 
 def _get_dmi(node):

@@ -32,7 +32,7 @@ from plugins.audio_sensors.audiograb import AudioGrab_Unknown, AudioGrab_XO1, \
 from plugins.audio_sensors.ringbuffer import RingBuffer1d
 
 from TurtleArt.tapalette import make_palette
-from TurtleArt.taconstants import XO1, XO15
+from TurtleArt.taconstants import XO1, XO15, XO175
 from TurtleArt.talogo import primitive_dictionary
 from TurtleArt.tautils import debug_output
 
@@ -132,6 +132,7 @@ class Audio_sensors(Plugin):
 
         primitive_dictionary['resistance'] = self.prim_resistance
         primitive_dictionary['voltage'] = self.prim_voltage
+        # FIXME: XO175 drivers don't work yet
         if self.hw in [XO1, XO15] and self._status:
             if self.hw == XO1:
                 self.voltage_gain = 0.00002225
