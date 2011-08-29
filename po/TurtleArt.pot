@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-29 08:26-0400\n"
+"POT-Creation-Date: 2011-08-29 09:03-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -331,7 +331,7 @@ msgid "Returns 1 when the button is press and 0 otherwise."
 msgstr ""
 
 #: taextras.py:63
-msgid "Returns the ambient light level  as a number between 0 and 1023."
+msgid "Returns the ambient light level as a number between 0 and 1023."
 msgstr ""
 
 #: taextras.py:64
@@ -418,7 +418,7 @@ msgstr ""
 
 #: taextras.py:85
 msgid ""
-"Set the speed of the Butia motors as the value between 0 and 1023, passed by "
+"Set the speed of the Butia motors as a value between 0 and 1023, passed by "
 "an argument."
 msgstr ""
 
@@ -491,7 +491,7 @@ msgid "The camera was not found."
 msgstr ""
 
 #: taextras.py:110
-msgid "Error on the init of the camera."
+msgid "Error on the initialization of the camera."
 msgstr ""
 
 #: taextras.py:111
@@ -1377,9 +1377,6 @@ msgid "acceleration"
 msgstr ""
 
 #: plugins/accelerometer/accelerometer.py:57
-msgid "push accereration in x, y, z to heap"
-msgstr ""
-
 #: plugins/accelerometer/accelerometer.py:64
 msgid "push acceleration in x, y, z to heap"
 msgstr ""

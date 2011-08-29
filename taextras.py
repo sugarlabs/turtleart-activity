@@ -60,7 +60,7 @@ BUTIA_STRINGS = [
     _('Returns the object gray level encountered him as a number between \
 0 and 1023.'),
     _('Returns 1 when the button is press and 0 otherwise.'),
-    _('Returns the ambient light level  as a number between 0 and 1023.'),
+    _('Returns the ambient light level as a number between 0 and 1023.'),
     _('Returns the ambient temperature as a number between 0 and 255.'),
     _('Returns the distance from the object in front of the sensor as a \
 number between 0 and 255.'),
@@ -82,7 +82,7 @@ number between 0 and 255.'),
     _('Butia battery charge'),
     _('Returns the battery charge as a number between 0 and 255.'),
     _('Butia speed'),
-    _('Set the speed of the Butia motors as the value between 0 and 1023, \
+    _('Set the speed of the Butia motors as a value between 0 and 1023, \
 passed by an argument.'),
     _('forward Butia'),
     _('Move the Butia robot forward.'),
@@ -107,7 +107,7 @@ passed by an argument.'),
 
 FOLLOWME_STRINGS = [
     _('The camera was not found.')
-    _('Error on the init of the camera.')
+    _('Error on the initialization of the camera.')
     _('FollowMe'))
     _('follow a RGB color'),
     _('follow a turtle color'),

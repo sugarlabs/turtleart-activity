@@ -54,7 +54,7 @@ class Accelerometer(Plugin):
                               style='basic-style-extended-vertical',
                               label=_('acceleration'),
                               help_string=\
-                                  _('push accereration in x, y, z to heap'),
+                                  _('push acceleration in x, y, z to heap'),
                               prim_name='xyz')
         else:
             palette.add_block('xyz',
