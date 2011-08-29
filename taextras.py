@@ -60,9 +60,8 @@ BUTIA_STRINGS = [
     _('Returns the object gray level encountered him as a number between \
 0 and 1023.'),
     _('Returns 1 when the button is press and 0 otherwise.'),
-    _('Returns the level of ligth in the ambient as a number between \
-0 and 1023.'),
-    _('Returns the temperature in the ambient as a number between 0 and 255.'),
+    _('Returns the ambient light level  as a number between 0 and 1023.'),
+    _('Returns the ambient temperature as a number between 0 and 255.'),
     _('Returns the distance from the object in front of the sensor as a \
 number between 0 and 255.'),
     _('Returns 0 or 1 depending on the sensor inclination.'),
@@ -83,8 +82,8 @@ number between 0 and 255.'),
     _('Butia battery charge'),
     _('Returns the battery charge as a number between 0 and 255.'),
     _('Butia speed'),
-    _('Set the moving speed of the Butia motors as the value between \
-0 and 1023, passed by argument.'),
+    _('Set the speed of the Butia motors as the value between 0 and 1023, \
+passed by an argument.'),
     _('forward Butia'),
     _('Move the Butia robot forward.'),
     _('forward distance'),
