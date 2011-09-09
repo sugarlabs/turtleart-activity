@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 03:15+0200\n"
-"PO-Revision-Date: 2011-03-11 10:08+0200\n"
-"Last-Translator: swikriti <swikriti.bashyal@olenepal.org>\n"
+"POT-Creation-Date: 2011-08-29 09:03-0400\n"
+"PO-Revision-Date: 2011-09-09 12:53+0200\n"
+"Last-Translator:  <aman.maharjan@olenepal.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ne\n"
 "MIME-Version: 1.0\n"
@@ -21,1573 +21,2115 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.1\n"
 
-#: activity/activity.info:2
+#: activity/activity.info:2 turtleart.py:272 pysamples/grecord.py:205
+#: TurtleArt/tawindow.py:1568 TurtleArt/tawindow.py:2793
+#: TurtleArt/taexporthtml.py:127 TurtleArt/taexporthtml.py:129
 msgid "Turtle Art"
-msgstr "टर्टल चित्र"
+msgstr "टर्टल आर्ट"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:657
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:658
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:659
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:660
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:661
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:662
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:989
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1011
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1032
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1074
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1116
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:1158
-msgid "Title"
-msgstr "शीर्षक"
+#: turtleart.py:68
+msgid "usage is"
+msgstr "प्रयोग हो"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:390
-msgid "resistance"
-msgstr "प्रतिबन्ध"
+#: turtleart.py:212
+msgid "No option action:"
+msgstr "विकल्प नभएमा कार्य:"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:462
-msgid "yellow"
-msgstr "पहेलो"
+#: turtleart.py:224
+msgid "File not found"
+msgstr "फाइल भेटिएन"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:842
-msgid "displays polar coordinates"
-msgstr "पोलार कोअरडिनेट देखाऊ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:783
-msgid "emptys FILO (first-in-last-out heap)"
-msgstr "FILO (first-in-last-out heap) मेटाउँछ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:358
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:448
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:449
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:450
-msgid " "
-msgstr " "
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:811
-msgid "if-then operator that uses boolean operators from Numbers palette"
-msgstr "if-then operator that uses boolean operators from Numbers palette"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:808
-msgid "jogs stack right"
-msgstr "जगहरु दायाँ थाँक लग्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:812
-msgid "Sugar Journal media object"
-msgstr "सुगर जर्नल मिडिया वस्तु"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:313
-msgid "box 2"
-msgstr "बाकस २"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:312
-msgid "box 1"
-msgstr "बाकस १"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:878
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:254
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:860
-msgid "Step"
-msgstr "चाल"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:847
-msgid "multiplies two numeric inputs"
-msgstr "२ वटा संख्यात्मक आगतको गुणन गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:177
-msgid "presentation"
-msgstr "प्रस्तुती"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:248
-msgid "Show/hide blocks"
-msgstr "खण्ड लुकाऊ/देखाऊ "
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:299
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:312
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:324
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:341
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:355
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:867
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:247
-msgid "Hide palette"
-msgstr "रंग मिलाउने मेज लुकाऊ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:217
-msgid "Save As"
-msgstr "सुरक्षित राख"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:320
-msgid "cyan"
-msgstr "स्यान"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:857
-msgid "xcor of right of screen"
-msgstr "स्क्रिनको दायाँपट्टि xcor"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:793
-msgid "Palette of extra options"
-msgstr "अतिरिक्त विकल्प भएको रंगदानी"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:786
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:219
-msgid "Save as HTML"
-msgstr "HTML बनाएर बचत गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:187
+#: turtleart.py:248
 #, python-format
 msgid "Configuration directory not writable: %s"
 msgstr "कनफिगरेसन निर्देशिकामा लेख्न मिल्दैन: %s"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:816
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2416
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2420
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:337
-msgid "heading"
-msgstr "शीर्षक"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:868
-msgid "saves turtle graphics as an SVG file in the Sugar Journal"
-msgstr "टर्टल ग्राफिकलाई SVG बनाई सुगर जर्नलमा सेभ गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:883
-msgid "draws text or show media from the Journal"
-msgstr "पंजिकामा रहेको पाठ वा मिडिया देखाउँछ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:308
-msgid "blue"
-msgstr "निलो"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:781
-msgid "displays Cartesian coordinates"
-msgstr "कार्टिसन कोर्डिनेट देखिउँछ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:142
-msgid "No option action:"
-msgstr "विकल्प नभएमा कार्य:"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:916
-msgid "jogs stack down"
-msgstr "जग्सहरु तल थाँक लाग्छन"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:851
-msgid "modular (remainder) operator"
-msgstr "modular (remainder) operator"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:397
-msgid "save SVG"
-msgstr "SVG सेभ गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:400
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:402
-msgid "top of stack"
-msgstr "थाकको माथि"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:824
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:911
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:912
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:913
-msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr "जर्नलमा रहेको tamyblock.py module को सङ्केत चलाउँछ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:365
-msgid "pen down"
-msgstr "कलमले नलेख"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:315
-msgid " clean "
-msgstr " सफा "
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:454
-msgid "wait"
-msgstr "पर्ख"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:311
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:430
-msgid "box"
-msgstr "बाकस"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:652
-msgid "Failed to upload!"
-msgstr "अप्लोड गर्न सकेन"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:889
-msgid "invokes named action stack"
-msgstr ""
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:334
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:423
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:620
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:652
-msgid "action"
-msgstr "कार्य"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:910
-#, fuzzy
-msgid "do-until-True operator that uses boolean operators from Numbers palette"
-msgstr "do-while-True operator that uses boolean operators from Numbers palette"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:61
-msgid "usage is"
-msgstr "यसको प्रयोग हो"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:779
-msgid "Variable 2 (numeric value)"
-msgstr "चल 2 (संङख्यातमक मान)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:743
-msgid "divide"
-msgstr "भाग गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:638
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:639
-msgid "picture name"
-msgstr "तस्विरको नाम"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:830
-msgid "Move the cursor over the orange palette for help."
-msgstr "साहयताको लागि कर्सरलाई सुन्तला रङ्गको रङदानीमा लानुहोस्"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:780
-msgid "named variable (numeric value)"
-msgstr "नाम गरिएको चल (numeric value)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:603
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:861
-msgid "next"
-msgstr "आर्को"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:748
-msgid "if then"
-msgstr "if then"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:410
-msgid "set pen size"
-msgstr "कलमको परिमाण मिलाऊ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:835
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:900
-msgid "presentation template: select Journal object (no description)"
-msgstr "प्रस्तुती टेम्प्लेट: पंजिकाको वस्तु छान (no description)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:447
-msgid "until"
-msgstr "नभएसम्म"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:790
-msgid "permanently deletes items in trash"
-msgstr "रद्दीटोकरीको बस्तु सधैलाई मेटाउँछ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:801
-msgid "top of Action 1 stack"
-msgstr "कार्यको १ थाकमा प्रथम मा छ।"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:820
-msgid ""
-"a programmable block: used to add advanced single-variable math equations, e."
-"g., sin(x)"
-msgstr ""
-"प्रोगरामेबल खण्ड: उन्नत एकल-चल गणीत समीकरण थप्न प्रयोग गरिने, e.g., sin(x)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:795
-msgid "Palette of flow operators"
-msgstr "फ्लो सञ्चालनकर्ताको रंगदानी"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:864
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:866
-msgid "top of a collapsed stack"
-msgstr "संक्षिप्त थाँकको माथि"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:810
-#, fuzzy
-msgid "if-then-else operator that uses boolean operators from Numbers palette"
-msgstr "if-then operator that uses boolean operators from Numbers palette"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:882
-msgid "holds current pen shade"
-msgstr "अहिलेको कलमको रंग बचत गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:615
-msgid "Login failed"
-msgstr "लगइन असफल भयो"
-
-#
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:409
-msgid "set heading"
-msgstr "शीर्षक राख"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:361
-msgid "numbers"
-msgstr "अंक"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:850
-msgid "RGB color under the turtle is pushed to the stack"
-msgstr "कछुवा मुनिको RGB कलर थाँक मुनि फिर्ता जान्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:806
-msgid "declutters canvas by hiding blocks"
-msgstr ""
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:879
-msgid "<Ctrl>w"
-msgstr "<Ctrl>w"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:877
-msgid "<Ctrl>r"
-msgstr "<Ctrl>r"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:883
-msgid "<Ctrl>s"
-msgstr "<Ctrl>s"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:868
-msgid "<Ctrl>p"
-msgstr "<Ctrl>p"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:459
-msgid "write"
-msgstr "लेख"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:771
-msgid "Import/Export"
-msgstr "आयात/निर्यात"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:881
-msgid "<Ctrl>d"
-msgstr "<Ctrl>d"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:875
-msgid "<Ctrl>e"
-msgstr "<Ctrl>e"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:870
-msgid "<Ctrl>b"
-msgstr "<Ctrl>b"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:799
-msgid "holds current gray level (can be used in place of a number block)"
-msgstr "खरानी रङ हालमा प्रयोग (यो अंक बल्क गर्न पनि प्रयोग गर्न सक्नु हुन्छ)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:746
-msgid "horizontal space"
-msgstr "तर्सो खाली ठाँऊ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:898
-msgid "string value"
-msgstr "स्ट्रिङ मान"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:805
-msgid "I don't know how to"
-msgstr "मलाई आउँदैन कसरी गर्ने"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:414
-msgid "set text size"
-msgstr "कलमको साइज मिलाउ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:548
-msgid "Username:"
-msgstr "प्रयोगकर्ताको नाम"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:891
-msgid "starts filled polygon (used with end fill block)"
-msgstr "भरिएको बहुभुज सुरु गर्छ (used with end fill block)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:838
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:903
-msgid "presentation template: select four Journal objects"
-msgstr "प्रस्तुती टेम्प्लेट: चारवटा जर्नलको बस्तु छान"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:804
-msgid ""
-"holds current heading value of the turtle (can be used in place of a number "
-"block)"
-msgstr "र्टटलको हाल शीर्षक अंक राख्छ (यो अंक बल्कको सट्टामा पनि प्रयोग हुन्छ)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:873
-msgid "sets gray level of the line drawn by the turtle"
-msgstr "कछुवाले बनाएको धर्कोको छाँया निर्धारित गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:558
-msgid "Password:"
-msgstr "पासवर्ड:"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:429
-msgid "stop action"
-msgstr "कार्य रद्द गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:333
-msgid "green"
-msgstr "हरियो"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:326
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:417
-msgid "shade"
-msgstr "छाया"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:794
-msgid "fills the background with (color, shade)"
-msgstr "पृष्ठभुमि (color, shade) ले भरिन्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:920
-msgid ""
-"holds current x-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr ""
-"कछुवाको तत्काल x-समन्वय बचाइ राख्छ (संख्या खण्डको सट्टामा प्रयोग गर्न "
-"सकिन्छ)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:396
-msgid "save picture"
-msgstr "तस्बिर बचत गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:347
-msgid "keyboard"
-msgstr "किबोर्ड"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:391
-msgid "restore last"
-msgstr "पूर्वावस्थामा ल्याउ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:819
-msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
-msgstr ""
-"प्रोगरामेबल ढिक्का: उन्नत गणित सामीकरण थप्न प्रयोग गरिने, जस्तै., sin(x)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:454
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:820
-msgid "Rescale coordinates up"
-msgstr "कोअरडिनेट पुन: स्केल गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:367
-msgid "pen up"
-msgstr "कलमले लेख"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:362
-msgid "orange"
-msgstr "सुन्तला"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:917
-msgid "pauses program execution a specified number of seconds"
-msgstr "कार्यक्रम कार्यान्वयनलाई तोकिएको समयले रोक्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:848
-msgid "pushes value onto FILO (first-in last-out heap)"
-msgstr "मानलाई FILO (first-in last-out heap) मा धकेल्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:342
-msgid "then"
-msgstr "अनि"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:756
-msgid "did not output to"
-msgstr "निर्गत गरेन"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:359
-msgid "not"
-msgstr "होइन"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:749
-msgid "if then else"
-msgstr "if then else"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:894
-msgid "stops current action"
-msgstr "हालको कार्य रोक्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:858
-msgid "turns turtle clockwise (angle in degrees)"
-msgstr "कछुवालाई घडिको दिशामा घुमाउँछ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:815
-msgid "xcor of left of screen"
-msgstr "स्क्रिनको बायाँपट्टि xcor"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:849
-msgid "returns random number between minimum (top) and maximum (bottom) values"
-msgstr ""
-"न्युन (top) र अधिक्तम(bottom) मान बिच अनियमित ढन्गले सङ्ख्या फिर्ता गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:301
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:446
-msgid "turtle"
-msgstr "कछुवा"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:823
-msgid "displays next palette"
-msgstr "अर्को रंगदानी देखाँउछ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:339
-msgid "hide blocks"
-msgstr "ब्लकहरु लुकाउ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:879
-msgid "sets size of text drawn by turtle"
-msgstr "कछुवाले बनाएको अक्षरको आकार निस्चित गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:817
-msgid "logical less-than operator"
-msgstr "युक्तिसंगत भन्दा कम सञ्चालनकर्ता"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:307
-msgid "blocks"
-msgstr "ढिक्काहरु"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:856
-msgid "restore all blocks from trash"
-msgstr "रद्दि टोकरीमा भएका सबै सामग्री फिर्ता जान्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:216
+#: turtleart.py:304
+msgid "New"
+msgstr "नयाँ"
+
+#: turtleart.py:305
+msgid "Open"
+msgstr "खोल"
+
+#: turtleart.py:306
 msgid "Save"
-msgstr "बचत गर"
+msgstr "सेभ गर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:431
-msgid "store in box 1"
-msgstr "बाकस १ मा भंडार गर"
+#: turtleart.py:307
+msgid "Save as"
+msgstr "नाममा सेभ गर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:432
-msgid "store in box 2"
-msgstr "बाकस २ मा भंडार गर"
+#: turtleart.py:308 TurtleArtActivity.py:604
+msgid "Save as image"
+msgstr "तस्विरको रुपमा सेभ गर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:440
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:764
-msgid "text size"
-msgstr "अक्षरको साइज"
+#: turtleart.py:310 TurtleArtActivity.py:607
+msgid "Save as HTML"
+msgstr "HTMLको रुपमा सेभ गर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:798
-msgid "hides the Sugar toolbars"
-msgstr "सुगर उपकरणपट्टी लुकाउँछ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:222
-msgid "Upload to Web"
-msgstr "संजालमा अप्लोड गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:380
-msgid "print"
-msgstr "प्रिन्ट"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:386
-msgid "red"
-msgstr "रातो"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:406
-msgid "sensors"
-msgstr "संवेदक"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:789
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:220
+#: turtleart.py:312 TurtleArtActivity.py:609
 msgid "Save as Logo"
-msgstr "लोगोलाई सुरक्षित राख"
+msgstr "लोगोको रुपमा सेभ गर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:853
-msgid "sensor input resistance"
-msgstr ""
+#: turtleart.py:314
+msgid "Quit"
+msgstr "बन्द गर्नुहोस्"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:872
-msgid "sets color of the line drawn by the turtle"
-msgstr "कछुवाले बनाएको रेखाको रंग सेट गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:413
-msgid "set text color"
-msgstr "अक्षरको रंग राख"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:871
-msgid "Palette of sensor blocks"
-msgstr "सेन्सर ढिक्काको रंगदानी"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:754
-msgid "number"
-msgstr "अंक"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:799
-msgid "Import project from the Journal"
-msgstr "पंजिकाबाट परियोजना आयात गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:346
-msgid "query keyboard"
-msgstr "क्वेरी किबोर्ड"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:426
-msgid "start"
-msgstr "सुरु गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:443
-msgid "top"
-msgstr "माथि"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:589
-msgid "Submit to Web"
-msgstr "सञ्जालमा बुझाऊ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:809
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:228
-msgid "Cartesian coordinates"
-msgstr "कार्टेसन कोअरडिनेट"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:716
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:765
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:238
-msgid "View"
-msgstr "द्रष्य"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:411
-msgid "set scale"
-msgstr "छाया राख"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:457
-msgid "white"
-msgstr "सेतो"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:890
-msgid "connects action to toolbar run buttons"
-msgstr "कार्यलाई उपकरण पट्टी चलाउने बटनसँग जडान गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:762
-msgid "presentation 2x2"
-msgstr "प्रस्तुति 2x2"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:805
-msgid "the canvas height"
-msgstr "क्यानभास हाइट"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:330
-msgid "full screen"
-msgstr "स्क्रिन भर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:761
-msgid "presentation 2x1"
-msgstr "प्रस्तुति 2x1"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:752
-msgid "minus"
-msgstr "घटाऊ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:302
-msgid "and"
-msgstr "र"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:998
-msgid "as input"
-msgstr "as input"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:905
-msgid "holds current text color (can be used in place of a number block)"
-msgstr ""
-"अक्षरको तत्कालिन रङलाई होल्ड गर्छ (सङ्ख्या ब्लकको सट्टा प्रयोग गर्न सकिन्छ)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:832
-msgid "holds current pen size (can be used in place of a number block)"
-msgstr "पेनको तत्कालिन आकार बचत गर्छ  (सङ्ख्या ब्लकको सट्टा प्रयोग गर्न सकिन्छ)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:303
-msgid "angle"
-msgstr "कोण"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:384
-msgid "min"
-msgstr "कम्ति"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:831
-msgid "Palette of pen commands"
-msgstr "कलम कमान्डको रंगदानी"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:846
-msgid "shows values in FILO (first-in last-out heap)"
-msgstr "मानलाई FILO (first-in last-out heap) मा देखाँउछ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:444
-msgid "picture top"
-msgstr "तस्विर माथी"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:918
-msgid "do-while-True operator that uses boolean operators from Numbers palette"
-msgstr "do-while-True operator that uses boolean operators from Numbers palette"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:225
+#: turtleart.py:315
 msgid "File"
 msgstr "फाइल"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:830
-msgid "Turtle will draw when moved."
-msgstr "चित्र बनाउन कछुवालाई हल्लाऊ"
+#: turtleart.py:318 TurtleArtActivity.py:539
+msgid "Cartesian coordinates"
+msgstr "कार्टेसियन निर्देशांक"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:777
-msgid "ycor of bottom of screen"
-msgstr "ycor पर्दाको तल छ"
+#: turtleart.py:320 TurtleArtActivity.py:541
+msgid "Polar coordinates"
+msgstr "पोलार निर्देशांक"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:862
-msgid "bottom block in a collapsed stack: click to open"
-msgstr " बन्द भाको थाक तल खण्डमा छ। खोल्न क्लिक गर"
+#: turtleart.py:322
+msgid "Rescale coordinates"
+msgstr "निर्देशांक रिस्केल गर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:834
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:899
-msgid "presentation template: select Journal object (with description)"
-msgstr "प्रस्तुति टेम्प्लेट: पंजिकाको बस्तु छान्नुहोस (वर्णन समेत)"
+#: turtleart.py:324 TurtleArtActivity.py:554
+msgid "Grow blocks"
+msgstr "खण्डहरु बढाऊ"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:826
-msgid "Palette of numeric operators"
-msgstr "न्युमरेटर सञ्चालनकर्ताको रङदानी"
+#: turtleart.py:326 TurtleArtActivity.py:556
+msgid "Shrink blocks"
+msgstr "खण्डहरु घटाऊ"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:756
-msgid "multiply"
-msgstr "गुनन्"
+#: turtleart.py:328
+msgid "Reset block size"
+msgstr "खण्ड आकार रिसेट गर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:876
-msgid "sets the scale of media"
-msgstr "मिडियाको स्केल निर्धारित गर्छ"
+#: turtleart.py:330 TurtleArtActivity.py:469 TurtleArtActivity.py:518
+msgid "View"
+msgstr "हेर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:328
-msgid "forever"
-msgstr "सधैकोलागि"
+#: turtleart.py:333 TurtleArtActivity.py:533
+msgid "Copy"
+msgstr "प्रतिलिपी बनाऊ"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:877
-msgid "sets shade of the line drawn by the turtle"
-msgstr "कछुवाले बनाएको रेखाको सेड निर्धारण गर्छ"
+#: turtleart.py:334 TurtleArtActivity.py:535
+msgid "Paste"
+msgstr "प्रतिलिपी सार"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:327
-msgid "flow"
-msgstr "प्रवाह"
+#: turtleart.py:335 TurtleArtActivity.py:465 TurtleArtActivity.py:520
+msgid "Edit"
+msgstr "सम्पादन गर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:273
+#: turtleart.py:338 TurtleArtActivity.py:244
+msgid "Show palette"
+msgstr "प्यालेट देखाउ"
+
+#: turtleart.py:340 TurtleArtActivity.py:250 TurtleArtActivity.py:629
+msgid "Hide palette"
+msgstr "प्यालेट लुकाऊ"
+
+#: turtleart.py:342
+msgid "Show/hide blocks"
+msgstr "खण्ड लुकाऊ/देखाऊ "
+
+#: turtleart.py:344
+msgid "Tools"
+msgstr "औजार"
+
+#: turtleart.py:347 TurtleArtActivity.py:638
+msgid "Clean"
+msgstr "सफा गर्नुहोस्"
+
+#: turtleart.py:348 TurtleArtActivity.py:640
+msgid "Run"
+msgstr "चलाउनुहोस्"
+
+#: turtleart.py:349 TurtleArtActivity.py:642
+msgid "Step"
+msgstr "चाल"
+
+#: turtleart.py:350 TurtleArtActivity.py:644
+msgid "Debug"
+msgstr "त्रुटि सच्याउनुहोस्"
+
+#: turtleart.py:351
+msgid "Stop"
+msgstr "रोक"
+
+#: turtleart.py:352
+msgid "Turtle"
+msgstr "टर्टल"
+
+#: turtleart.py:382
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr "तिमीसगँ बचत नगरिएको काम छ। बन्द गर्नुपूर्व बचत गर्न चाहनुहुन्छ?"
+
+#: turtleart.py:383
+msgid "Save project?"
+msgstr "परियोजना सेभ गर?"
+
+#: TurtleArtActivity.py:125
+msgid "presentation"
+msgstr "प्रस्तुति"
+
+#: TurtleArtActivity.py:196
 msgid "snapshot"
 msgstr "स्न्यापशट"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:836
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:837
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:901
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:902
-msgid "presentation template: select two Journal objects"
-msgstr "प्रस्तुती टेम्प्लेट: दुईवटा जर्नल बस्तु छान्नुहोस"
+#: TurtleArtActivity.py:257 TurtleArtActivity.py:270
+msgid "Show blocks"
+msgstr "खण्डहरु देखाउ"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:822
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:233
-msgid "Grow blocks"
-msgstr "ब्लाकहरु बढाऊ"
+#: TurtleArtActivity.py:260 TurtleArtActivity.py:278 TurtleArtActivity.py:632
+msgid "Hide blocks"
+msgstr "खण्डहरु लुकाऊ"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:805
-msgid "Fullscreen"
-msgstr "पुरै पर्दा"
+#: TurtleArtActivity.py:398
+msgid "Rescale coordinates down"
+msgstr "निर्देशांक तल पुन: स्केल गर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:154
-msgid "File not found"
-msgstr "फाइल भेटिएन"
+#: TurtleArtActivity.py:402 TurtleArtActivity.py:551
+msgid "Rescale coordinates up"
+msgstr "निर्देशांक माथि पुन: स्केल गर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:344
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:418
-msgid "show"
-msgstr "देखाउ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:433
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:650
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:651
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:656
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:667
-msgid "text"
-msgstr "पाठ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:384
-msgid "random"
-msgstr "जुनसुकै"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:800
-msgid "logical greater-than operator"
-msgstr "युक्तिसंगत भन्दा ठूलो सञ्चालनकर्ता"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:318
-msgid "colors"
-msgstr "रंगहरु"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:378
-msgid "portfolio"
-msgstr "पोर्टफोलीओ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:816
-msgid "turns turtle counterclockwise (angle in degrees)"
-msgstr "कछुवालाई घडिको उल्टो दिशामा घुमाउँछ (कोण ढिग्रीमा)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:306
-msgid "black"
-msgstr "कालो"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:886
-msgid "calculates square root"
-msgstr "वर्गमूल निकाल्छ "
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:921
-msgid ""
-"holds current y-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr ""
-"कछुवाको तत्काल y-समन्वय वचत गर्छ (can be used in place of a number block)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:745
-msgid "greater than"
-msgstr "भन्दा ठूलो"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:816
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2416
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2420
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:460
-msgid "xcor"
-msgstr "xcor"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:855
-msgid "restores most recent blocks from trash"
-msgstr "हालसालको ढिक्काहरु रद्दिटोकरीबाट फिर्ता गरिन्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:331
-msgid "gray"
-msgstr "खरानी रङ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:723
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:774
+#: TurtleArtActivity.py:476 TurtleArtActivity.py:524
 msgid "Help"
 msgstr "मद्दत"
 
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:331
-msgid "Save project?"
-msgstr "परियोजना बचत गर्ने?"
+#: TurtleArtActivity.py:497 TurtleArtActivity.py:623
+msgid "Load example"
+msgstr "उदाहरण सुरु गर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:771
-msgid "chooses which turtle to command"
-msgstr "आदेश गर्ने कछुवा छान्छ"
+#: TurtleArtActivity.py:516
+msgid "Project"
+msgstr "परियोजना"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:415
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:416
-msgid "x"
-msgstr "x"
+#: TurtleArtActivity.py:522
+msgid "Import/Export"
+msgstr "आयात/निर्यात"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:878
-msgid "sets color of text drawn by the turtle"
-msgstr "कछुवाले लेख्ने अक्षरको रङ निर्धारण गर्छ"
+#: TurtleArtActivity.py:537
+msgid "Fullscreen"
+msgstr "पुरै पर्दा"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:374
-msgid "pitch"
-msgstr "पिच"
+#: TurtleArtActivity.py:544
+msgid "Metric coordinates"
+msgstr "मैट्रिक / मापीय निर्देशांक"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:303
-msgid "arc"
-msgstr "वृत्तखण्ड"
+#: TurtleArtActivity.py:547 TurtleArt/tawindow.py:2789
+#: TurtleArt/tawindow.py:2793 TurtleArt/tabasics.py:216
+msgid "xcor"
+msgstr "xcor"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:303
-msgid "radius"
-msgstr "त्रिज्या"
+#: TurtleArtActivity.py:548 TurtleArt/tawindow.py:2789
+#: TurtleArt/tawindow.py:2793 TurtleArt/tabasics.py:227
+msgid "ycor"
+msgstr "ycor"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:812
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:230
-msgid "Polar coordinates"
-msgstr "पोलार कोअर्डिनेट"
+#: TurtleArtActivity.py:548 TurtleArt/tawindow.py:2789
+#: TurtleArt/tawindow.py:2793 TurtleArt/tabasics.py:238
+msgid "heading"
+msgstr "शीर्षक"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:412
-msgid "set shade"
-msgstr "छाया राख"
+#: TurtleArtActivity.py:574 TurtleArtActivity.py:578
+msgid "Move the cursor over the orange palette for help."
+msgstr "साहयताको लागि कर्सरलाई सुन्तला रङ्गको प्यालेट माथि लानुहोस्"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:772
-msgid "logical AND operator"
-msgstr "युक्तिसंगत AND सञ्चालनकर्ता"
+#: TurtleArtActivity.py:612
+msgid "Save snapshot"
+msgstr "स्नयापसट सेभ गर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:539
+#: TurtleArtActivity.py:616
+msgid "Import project from the Journal"
+msgstr "पंजिकाबाट परियोजना आयात गर"
+
+#: TurtleArtActivity.py:619
+msgid "Load Python block"
+msgstr "पाइथन खण्ड सुरु गर"
+
+#: TurtleArtActivity.py:630
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:633
+msgid "<Ctrl>b"
+msgstr "<Ctrl>b"
+
+#: TurtleArtActivity.py:638
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: TurtleArtActivity.py:640
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:642
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:644
+msgid "<Ctrl>d"
+msgstr "<Ctrl>d"
+
+#: TurtleArtActivity.py:646
+msgid "Stop turtle"
+msgstr "टर्टल रोक"
+
+#: TurtleArtActivity.py:647
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: taextras.py:36
+msgid "Turtle Art Mini"
+msgstr "टर्टल आर्ट मिनि"
+
+#: taextras.py:40
+msgid "Turtle Confusion"
+msgstr "टर्टल स्तब्घ"
+
+#: taextras.py:41
+msgid "Select a challenge"
+msgstr "एउटा मुकाब्ला छान"
+
+#: taextras.py:47
+msgid "Palette of Mexican pesos"
+msgstr "मेक्सिकन पेसोको प्यालेट"
+
+#: taextras.py:48
+msgid "Palette of Colombian pesos"
+msgstr "कोल्म्बियन पेसोको प्यालेट"
+
+#: taextras.py:49
+msgid "Palette of Rwandan francs"
+msgstr "रूआण्डान फ्रेकंको प्यालेट"
+
+#: taextras.py:50
+msgid "Palette of US currencies"
+msgstr "अमेरिका मुद्राहरुको प्यालेट"
+
+#: taextras.py:51
+msgid "Palette of Australian currencies"
+msgstr "अस्ट्रेलियन मुद्राहरुको प्यालेट"
+
+#: taextras.py:52
+msgid "Palette of Guaranies"
+msgstr "गुआरनीजको प्यालेट"
+
+#. TRANS: Butia is the Arduino Robot Project from Uruguay
+#. (http://www.fing.edu.uy/inco/proyectos/butia/)
+#: taextras.py:58
+msgid "Turtle Art Butia"
+msgstr "टर्टल आर्ट बुटिया"
+
+#: taextras.py:59
+msgid "Adjust LED intensity between 0 and 255."
+msgstr "LED तीव्रता ० देखि २५५ भित्र समायोजित गर।"
+
+#: taextras.py:60
+msgid ""
+"Returns the object gray level encountered him as a number between 0 and 1023."
+msgstr ""
+"० देखि १०२३ बीचको अंकको रुपमा उसले सामना गरेको वस्तु खैरो मात्रा फिर्ता "
+"गर्छ।"
+
+#: taextras.py:62
+msgid "Returns 1 when the button is press and 0 otherwise."
+msgstr "बटन थिच्दा १ फर्काउँछ अथवा ०।"
+
+#: taextras.py:63
+msgid "Returns the ambient light level as a number between 0 and 1023."
+msgstr "० देखि १०२३ भित्रको अंकको रुपमा अ्यामबीअन्ट प्रकाश मात्रा फिर्ता गर्छ।"
+
+#: taextras.py:64
+msgid "Returns the ambient temperature as a number between 0 and 255."
+msgstr "० देखि २५५ भित्रको अंकको रुपमा अ्यामबीअन्ट तापमान फिर्ता गर्छ।"
+
+#: taextras.py:65
+msgid ""
+"Returns the distance from the object in front of the sensor as a number "
+"between 0 and 255."
+msgstr ""
+"० देखि २५५ भित्रको अंकको रुपमा सेंसर अगाडि देखि वस्तु सम्मको दुरी फिर्ता "
+"गर्छ।"
+
+#: taextras.py:67
+msgid "Returns 0 or 1 depending on the sensor inclination."
+msgstr "सेंसर झुकावमा निर्भर भई ० वा १ फिर्ता गर्छ।"
+
+#: taextras.py:68
+msgid "Returns 1 when the sensors detects a magnetic field, 0 otherwise."
+msgstr "सेंसरले चुंबकीय क्षेत्र पता लगायो भने १ फिर्ता गर्छ, अथवा ० ।"
+
+#: taextras.py:69
+msgid "Switches from 0 to 1, the frequency depends on the vibration."
+msgstr "० देखि १ मा बदक्छ, आवृत्ति कंपनमा निर्भर हुन्छ।"
+
+#: taextras.py:70
+msgid "LED"
+msgstr "LED"
+
+#: taextras.py:71
+msgid "pushbutton"
+msgstr "पुसबटन"
+
+#: taextras.py:72
+msgid "grayscale"
+msgstr "ग्रेस्केल"
+
+#: taextras.py:73
+msgid "ambient light"
+msgstr "अ्यामबीअन्ट प्रकाश"
+
+#: taextras.py:74
+msgid "temperature"
+msgstr "तापमान"
+
+#: taextras.py:75
+msgid "distance"
+msgstr "दुरी"
+
+#: taextras.py:76
+msgid "tilt"
+msgstr "झुकाव"
+
+#: taextras.py:77
+msgid "magnetic induction"
+msgstr "चुंबकीय प्रेरण"
+
+#: taextras.py:78
+msgid "vibration"
+msgstr "कंपन"
+
+#: taextras.py:79
+msgid "Butia Robot"
+msgstr "बुटिया रोबट"
+
+#: taextras.py:80
+msgid "delay Butia"
+msgstr "बुटिया विलम्ब गर"
+
+#: taextras.py:81
+msgid "wait for argument seconds"
+msgstr "बहस सेकेन्डहरुको लागि प्रतीक्षा गर"
+
+#: taextras.py:82
+msgid "Butia battery charge"
+msgstr "बुटिया ब्याटरी चार्ज"
+
+#: taextras.py:83
+msgid "Returns the battery charge as a number between 0 and 255."
+msgstr "० देखि २५५ सम्म अंकको रुपमा ब्याटरी चार्ज फिर्ता गर्छ।"
+
+#: taextras.py:84
+msgid "Butia speed"
+msgstr "बुटिया गति"
+
+#: taextras.py:85
+msgid ""
+"Set the speed of the Butia motors as a value between 0 and 1023, passed by "
+"an argument."
+msgstr ""
+"० देखि १०२३ भित्र मानको रुपमा बुटिया मोटरको गति सेट गर, एउटा बहसद्वारा पास "
+"गरेपछि।"
+
+#: taextras.py:87
+msgid "forward Butia"
+msgstr "बुटियालाई अगाडि लग"
+
+#: taextras.py:88
+msgid "Move the Butia robot forward."
+msgstr "बुटिया रोबटलाई अगाडि सार।"
+
+#: taextras.py:89
+msgid "forward distance"
+msgstr "अगाडिको दुरी"
+
+#: taextras.py:90
+msgid "Move the Butia robot forward a predefined distance."
+msgstr "बुटिया रोबटलाई पूर्वनिर्धारित दुरीमा अगाडि सार।"
+
+#: taextras.py:91
+msgid "backward Butia"
+msgstr "बुटियालाई पछाडि सार"
+
+#: taextras.py:92 taextras.py:96 taextras.py:98 taextras.py:102
+msgid "Move the Butia robot backward."
+msgstr "बुटिया रोबटलाई पछाडि सार।"
+
+#: taextras.py:93
+msgid "backward distance"
+msgstr "पछाडिको दुरी"
+
+#: taextras.py:94
+msgid "Move the Butia robot backward a predefined distance."
+msgstr "बुटिया रोबटलाई पूर्वनिर्धारित दुरीमा पछाडि सार।"
+
+#: taextras.py:95
+msgid "left Butia"
+msgstr "बायाँ बुटिया"
+
+#: taextras.py:97
+msgid "right Butia"
+msgstr "दायाँ बुटिया"
+
+#: taextras.py:99
+msgid "Turn x degrees"
+msgstr "x डिग्री मोड़"
+
+#: taextras.py:100
+msgid "Turn the Butia robot x degrees."
+msgstr "बुटिया रोबटलाई x डिग्री मोड़"
+
+#: taextras.py:101
+msgid "stop Butia"
+msgstr "बुटियालाई रोक"
+
+#: taextras.py:103
+msgid "print Butia"
+msgstr "बुटियालाई छाप"
+
+#: taextras.py:104
+msgid "Print text in Butia robot 32-character ASCII display."
+msgstr " बुटिया रोबट ३२-क्यारेक्टर ASCII प्रदर्शनमा पाठ छाप।"
+
+#: taextras.py:105
+msgid "Butia"
+msgstr "बुटिया"
+
+#: taextras.py:109
+msgid "The camera was not found."
+msgstr "क्यामेरा बेटेको थिएन।"
+
+#: taextras.py:110
+msgid "Error on the initialization of the camera."
+msgstr "क्यामेराको आरंभीकरणमा त्रुटि"
+
+#: taextras.py:111
+msgid "FollowMe"
+msgstr "मलाई अनुगमन गर"
+
+#: taextras.py:112
+msgid "follow a RGB color"
+msgstr "RGB रंग अनुगमन गर"
+
+#: taextras.py:113
+msgid "follow a turtle color"
+msgstr "टर्टल रंग अनुगमन गर"
+
+#: taextras.py:114
+msgid "calibrate a color to follow"
+msgstr "अनुगमन गर्नको लागि एउटा रंग जाँच"
+
+#: taextras.py:115
+msgid "x position"
+msgstr "x स्थान"
+
+#: taextras.py:116
+msgid "return x position"
+msgstr "x स्थान फिर्ता गर"
+
+#: taextras.py:117
+msgid "y position"
+msgstr "y स्थान"
+
+#: taextras.py:118
+msgid "return y position"
+msgstr "y स्थान फिर्ता गर"
+
+#: taextras.py:122
+msgid "Sumo Butia"
+msgstr "सुमो बुटिया"
+
+#: taextras.py:123
+msgid "submit speed​​"
+msgstr "गति प्रस्तुत गर"
+
+#: taextras.py:124
+msgid "Send speeds the robot."
+msgstr "सेन्ड बटनले रोबटको गति बढाउछ।"
+
+#: taextras.py:125
+msgid "set speed"
+msgstr "गति सेट गर"
+
+#: taextras.py:126
+msgid "Set the default speed for the movement commands."
+msgstr "चाल आदेशहरुको लागि पूर्वनिर्धारित गति सेट गर।"
+
+#: taextras.py:127
+msgid "move"
+msgstr "सर"
+
+#: taextras.py:128 TurtleArt/tabasics.py:131
+msgid "back"
+msgstr "पछाडि"
+
+#: taextras.py:129 pysamples/grecord.py:215
+msgid "stop"
+msgstr "रोक"
+
+#: taextras.py:130
+msgid "turn left"
+msgstr "बायाँ मोड़"
+
+#: taextras.py:131
+msgid "turn right"
+msgstr "दायाँ मोड"
+
+#: taextras.py:132
+msgid "angle to center"
+msgstr "केंद्र तर्फ कोण गर"
+
+#. TRANS: dojo is the playing field
+#: taextras.py:134
+msgid "Get the angle to the center of the dojo."
+msgstr "डोजोको केंद्र तर्फ कोण मिलाऊ।"
+
+#: taextras.py:135
+msgid "angle to the opponent"
+msgstr "प्रतिद्वंदी तर्फ कोण गर"
+
+#: taextras.py:136
+msgid "Get the angle to the center of the opponent."
+msgstr "प्रतिद्वंदीको  केंद्र तर्फ कोण मिलाऊ।"
+
+#: taextras.py:137
+msgid "x coor."
+msgstr "x समन्वय"
+
+#: taextras.py:138
+msgid "Get the x coordinate of the robot."
+msgstr "रोबटको x निर्देशांक लिऊ ।"
+
+#: taextras.py:139
+msgid "y coor."
+msgstr "y निर्देशांक"
+
+#: taextras.py:140
+msgid "Get the y coordinate of the robot."
+msgstr "रोबटको y निर्देशांक लिऊ ।"
+
+#: taextras.py:141
+msgid "opponent x coor."
+msgstr "प्रतिद्वंदी x निर्देशांक"
+
+#: taextras.py:142
+msgid "Get the x coordinate of the opponent."
+msgstr "प्रतिद्वंदीको x निर्देशांक लिऊ ।"
+
+#: taextras.py:143
+msgid "opponent y coor."
+msgstr "प्रतिद्वंदी y निर्देशांक"
+
+#: taextras.py:144
+msgid "Get the y coordinate of the opponent."
+msgstr "प्रतिद्वंदीको y निर्देशांक लिऊ ।"
+
+#: taextras.py:145
+msgid "rotation"
+msgstr "रोटेशन"
+
+#: taextras.py:146
+msgid "Get SumBot rotation."
+msgstr "समबट रोटेशन लिऊ ।"
+
+#: taextras.py:147
+msgid "opponent rotation"
+msgstr "प्रतिद्वंदी रोटेशन"
+
+#: taextras.py:148
+msgid "Get the rotation of the opponent."
+msgstr "प्रतिद्वंदीको रोटेशन लिऊ ।"
+
+#: taextras.py:149
+msgid "distance to center"
+msgstr "केंद्र सम्मको दुरी"
+
+#. TRANS: dojo is the playing field
+#: taextras.py:151
+msgid "Get the distance to the center of the dojo."
+msgstr "डोजोको केंद्र सम्मको दुरी लिऊ ।"
+
+#: taextras.py:152
+msgid "distance to opponent"
+msgstr "प्रतिद्वंदी सम्मको दुरी"
+
+#: taextras.py:153
+msgid "Get the distance to the opponent."
+msgstr "प्रतिद्वंदी सम्मको दुरी लिऊ ।"
+
+#: taextras.py:154
+msgid "update information"
+msgstr "सुचना अद्यावधिक गर"
+
+#: taextras.py:155
+msgid "Update information from the server."
+msgstr "सर्भरबाट सुचना अद्यावधिक गर"
+
+#: pysamples/grecord.py:205 plugins/audio_sensors/audio_sensors.py:82
+#: plugins/audio_sensors/audio_sensors.py:97
+msgid "sound"
+msgstr "ध्बनि"
+
+#: pysamples/grecord.py:213 TurtleArt/tabasics.py:801
+msgid "start"
+msgstr "सुरु गर"
+
+#: pysamples/grecord.py:217
+msgid "play"
+msgstr "खेल"
+
+#: pysamples/grecord.py:219
+msgid "save"
+msgstr "सेभ गर"
+
+#: pysamples/uturn.py:24
+msgid "uturn"
+msgstr "यूमोड"
+
+#: pysamples/uturn.py:26
+msgid "make a uturn"
+msgstr "यूमोड लिऊ"
+
+#: gnome_plugins/collaboration_plugin.py:67
+msgid "My Turtle Art session"
+msgstr "मेरो टर्टल आर्ट सेशन"
+
+#: gnome_plugins/collaboration_plugin.py:115
+msgid "Enable collaboration"
+msgstr "सहकार्य सक्षम पार"
+
+#: gnome_plugins/collaboration_plugin.py:120
+msgid "Activities"
+msgstr "क्रियाकलापहरु"
+
+#: gnome_plugins/collaboration_plugin.py:125
+msgid "Buddies"
+msgstr "बद्दिहरु"
+
+#: gnome_plugins/collaboration_plugin.py:128
+msgid "Share"
+msgstr "बाँड"
+
+#: gnome_plugins/collaboration_plugin.py:129
+msgid "Configuration"
+msgstr "कन्फिगरेसन"
+
+#: gnome_plugins/collaboration_plugin.py:132
+msgid "Neighborhood"
+msgstr "छिमेकी"
+
+#: gnome_plugins/collaboration_plugin.py:288
+msgid "Nickname"
+msgstr "उपनाम"
+
+#: gnome_plugins/collaboration_plugin.py:290
+msgid "Account ID"
+msgstr "खाता ID"
+
+#: gnome_plugins/collaboration_plugin.py:292
+msgid "Server"
+msgstr "सर्भर"
+
+#: gnome_plugins/collaboration_plugin.py:294
+msgid "Port"
+msgstr "द्वार"
+
+#: gnome_plugins/collaboration_plugin.py:296
+msgid "Password"
+msgstr "पासवर्ड"
+
+#: gnome_plugins/collaboration_plugin.py:298
+msgid "Register"
+msgstr "रजिस्टर गर"
+
+#: gnome_plugins/collaboration_plugin.py:300
+msgid "Colors"
+msgstr "रंगहरु"
+
+#: gnome_plugins/uploader_plugin.py:64
+msgid "Upload to Web"
+msgstr "संजालमा अप्लोड गर"
+
+#: gnome_plugins/uploader_plugin.py:66
+msgid "Upload"
+msgstr "अपलोड"
+
+#: gnome_plugins/uploader_plugin.py:83
 msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
 msgstr ""
 "परियोजना अप्लोड गर्न http://turtleartsite.sugarlabs.org मा अकाउन्ट हुनुपर्छ"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:795
-msgid "Load my block"
-msgstr "मेरो ब्लक सुरु गर"
+#: gnome_plugins/uploader_plugin.py:92
+msgid "Username:"
+msgstr "प्रयोगकर्ताको नाम:"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:825
-msgid "logical NOT operator"
-msgstr "युक्तिसंगत NOT सञ्चालनकर्ता"
+#: gnome_plugins/uploader_plugin.py:102
+msgid "Password:"
+msgstr "पासवर्ड:"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:876
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:253
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:859
-msgid "Run"
-msgstr "चलाउनुहोस्"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:379
-msgid "show heap"
-msgstr "हिप देखाउ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:874
-msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
-msgstr "कछुवाको शिर्षक निर्धारण गर्छ (0 स्क्रिनको माथिल्लो भागमा छ।)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:636
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:637
-msgid "label"
-msgstr "लेवुल"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:915
-msgid "microphone input volume"
-msgstr "माइक्रोफोन आयातको भोल्युम"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:569
+#: gnome_plugins/uploader_plugin.py:113
 msgid "Title:"
 msgstr "शीर्षक:"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:776
-msgid "Palette of variable blocks"
-msgstr "चल ढिक्काहरुको रंङदानी"
+#: gnome_plugins/uploader_plugin.py:123
+msgid "Description:"
+msgstr "वर्णन:"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:827
-msgid "used as numeric input in mathematic operators"
-msgstr "गणित सञ्चालनमा संख्यात्मक आगतको प्रयोग"
+#: gnome_plugins/uploader_plugin.py:133
+msgid "Submit to Web"
+msgstr "सञ्जालमा बुझाऊ"
 
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:593
+#: gnome_plugins/uploader_plugin.py:137
 msgid "Cancel"
 msgstr "रद्द गर"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:778
-msgid "Variable 1 (numeric value)"
-msgstr "चल 1 (संख्यात्मक मान)"
+#: gnome_plugins/uploader_plugin.py:159
+msgid "Login failed"
+msgstr "लगइन असफल भयो"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:841
-msgid "adds two alphanumeric inputs"
-msgstr "दुईवटा अल्फान्युमेरिक आगतहरु जोड्छ"
+#: gnome_plugins/uploader_plugin.py:196
+msgid "Failed to upload!"
+msgstr "अप्लोड गर्न सकेन"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:744
-msgid "equal"
-msgstr "बराबर"
+#: plugins/camera_sensor/camera_sensor.py:58 plugins/rfid/rfid.py:86
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:269
+#: plugins/light_sensor/light_sensor.py:49
+#: plugins/audio_sensors/audio_sensors.py:75
+#: plugins/accelerometer/accelerometer.py:49
+msgid "Palette of sensor blocks"
+msgstr "सेन्सर खण्डहरुको प्यालेट"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/talogo.py:998
-msgid "doesn't like"
-msgstr "मनपर्दैन"
+#: plugins/camera_sensor/camera_sensor.py:69
+#: plugins/camera_sensor/camera_sensor.py:81
+#: plugins/camera_sensor/camera_sensor.py:99
+#: plugins/camera_sensor/camera_sensor.py:112
+#: plugins/light_sensor/light_sensor.py:55
+#: plugins/light_sensor/light_sensor.py:62
+msgid "brightness"
+msgstr "चम्किलोपन"
 
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:330
-msgid "You have unsaved work. Would you like to save before quitting?"
-msgstr "काम बचत गरिएको छैन। बन्दगर्नुपूर्व बचत गर्न चाहनुहुन्छ?"
+#: plugins/camera_sensor/camera_sensor.py:70
+#: plugins/camera_sensor/camera_sensor.py:101
+msgid "light level detected by camera"
+msgstr "क्यामेराले पत्तालगाएको प्रकाशको मात्रा"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:884
-msgid "restores hidden blocks"
-msgstr "लुकेका ब्लकलाई पूर्वावस्थामा ल्याउँछ"
+#: plugins/camera_sensor/camera_sensor.py:82
+#: plugins/camera_sensor/camera_sensor.py:113
+msgid "Average RGB color from camera is pushed to the stack"
+msgstr "क्यामेराबाट आएको औसत RGB रंग थाकमा पन्छाइन्छ "
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:319
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:615
-msgid "comment"
-msgstr "टिप्पणी"
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:125
+msgid "camera output"
+msgstr "क्यामेराको निर्गत"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:833
-msgid "Turtle will not draw when moved."
-msgstr "कछुवालाई सारेमा कोर्दैन"
+#: plugins/rfid/rfid.py:91 plugins/rfid/rfid.py:99
+msgid "RFID"
+msgstr "RFID"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:377
-msgid "pop"
-msgstr "पप्"
+#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
+msgid "read value from RFID device"
+msgstr "RFID यन्त्रबाट मान पढ"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:338
-msgid "height"
-msgstr "उचाइ"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
+#: TurtleArt/tabasics.py:707
+msgid "Palette of flow operators"
+msgstr "फ्लो सञ्चालनकर्ताको प्यालेट"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:366
-msgid "pen size"
-msgstr "कलमको आकार"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:389
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:421
-msgid "turtle shell"
-msgstr "कछुवाको शेल"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:826
-msgid "Samples"
-msgstr "नमूनाहरु"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:882
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:893
-msgid "Stop turtle"
-msgstr "टर्टल रोक"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:773
-msgid "moves turtle along an arc"
-msgstr "टर्टल चाप को वरिपरी जान्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:792
-msgid "logical equal-to operator"
-msgstr "युक्तिसंगत सँग बराबर सञ्चालनकर्ता "
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:785
-msgid "Palette of pen colors"
-msgstr "कलमका रङहरुको रंङदानी"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:895
-msgid "stores numeric value in Variable 1"
-msgstr "संख्यात्मक मान चल १ मा भण्डारण गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:896
-msgid "stores numeric value in Variable 2"
-msgstr "संख्यात्मक मान चल २ मा भण्डारण गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:854
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:885
-msgid "put a custom 'shell' on the turtle"
-msgstr "टर्टलमा अनुकूलन \"shell\" राख"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:775
-msgid "moves turtle backward"
-msgstr "टर्टललाई पछाडि ल्याउ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:888
-msgid "invokes Action 2 stack"
-msgstr "invokes Action 2 stack"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:331
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:346
-msgid "Show blocks"
-msgstr "ब्लाकहरु देखाउ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:350
-msgid "picture left"
-msgstr "चित्र बायाँतिर छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:430
-msgid "value"
-msgstr "मान"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:455
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:456
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:103
 msgid "while"
 msgstr "एकैछिन पछि"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:814
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:104
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"अंक प्यालेटबाट boolean सञ्चालनकर्ता प्रयोग गर्ने do-while-True सञ्चालनकर्ता"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:110
+msgid "until"
+msgstr "नभएसम्म"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:111
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"do-until-True सञ्चालनकर्ता जुनले अंकहरु प्यालेटदैखि बुलियन सञ्चालनकर्ता "
+"चलाउछ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:118
+msgid "Palette of media objects"
+msgstr "मिडिया वस्तुहरुको प्यालेट"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:124
+msgid "journal"
+msgstr "पंजिका"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:125
+msgid "Sugar Journal media object"
+msgstr "सुगर जर्नल मिडिया वस्तु"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
+msgid "audio"
+msgstr "श्रव्य"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:137
+msgid "Sugar Journal audio object"
+msgstr "सुगर जर्नल श्रव्य वस्तु"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:147
+msgid "video"
+msgstr "भिडियो"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:149
+msgid "Sugar Journal video object"
+msgstr "सुगर जर्नल भिडियो वस्तु"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:159
+msgid "description"
+msgstr "वर्णन"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:161
+msgid "Sugar Journal description field"
+msgstr "सुगर पंजिका वर्णन फाँट"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:170
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:171
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:172
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:179
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:207
+#: TurtleArt/tabasics.py:834 TurtleArt/tabasics.py:835
+#: TurtleArt/tabasics.py:836
+msgid "text"
+msgstr "पाठ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:173
+#: TurtleArt/tabasics.py:837
+msgid "string value"
+msgstr "स्ट्रिङ मान"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:178
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:206
+msgid "show"
+msgstr "देखाउ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:182
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:210
+msgid "draws text or show media from the Journal"
+msgstr "पंजिकामा रहेको पाठ वा मिडिया देखाउँछ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:191
+msgid "show aligned"
+msgstr "पङ्क्तिबद्धरुपमा देखाऊ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:218
+msgid "set scale"
+msgstr "छाया राख"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:222
+msgid "sets the scale of media"
+msgstr "मिडियाको स्केल निर्धारित गर्छ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
+msgid "save picture"
+msgstr "तस्बिर सेभ गर"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:231
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:242
+msgid "picture name"
+msgstr "तस्विरको नाम"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:232
+msgid "saves a picture to the Sugar Journal"
+msgstr "सुगर जर्नलमा  तस्विर सेभ गर्छ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:240
+msgid "save SVG"
+msgstr "SVG सेभ गर"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:243
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr "टर्टल ग्राफिकलाई SVG बनाई सुगर जर्नलमा सेभ गर्छ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:250
+msgid "scale"
+msgstr "स्केल"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:254
+msgid "holds current scale value"
+msgstr "हालको स्केल मान राख्छ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:259
+msgid "media wait"
+msgstr "मिडिया रोक"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:261
+msgid "wait for current video or audio to complete"
+msgstr "हालको भिडियो वा आवाज समाप्त हुन कुर्नुहोस्"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:274
+msgid "query keyboard"
+msgstr "क्वेरी कुञ्जीपाटी"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr " कुञ्जीपाटीको लाई क्वेरी आगत (परिणामहरु कुञ्जीपाटीको बल्कमा छ)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
+msgid "keyboard"
+msgstr "कुञ्जीपाटी"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:287
 msgid "holds results of query-keyboard block"
-msgstr "क्वेरी-किबोर्ड खण्डको परिणाम राख्छ।"
+msgstr "क्वेरी-कुञ्जीपाटी खण्डको परिणाम राख्छ।"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:875
-msgid "sets size of the line drawn by the turtle"
-msgstr "र्टटलले बनाको रेखा को साइज सेट गर्छ"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:294
+msgid "read pixel"
+msgstr "पिक्सेल पढ"
 
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:215
-msgid "Open"
-msgstr "खोल"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr "कछुवा मुनिको RGB कलर थाँक मुनि फिर्ता जान्छ"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:592
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:593
-msgid "orientation"
-msgstr "पृष्ठविन्यास"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
+msgid "turtle sees"
+msgstr "टर्टलले देख्छ"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:816
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2416
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2420
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:461
-msgid "ycor"
-msgstr "ycor"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
+msgid "returns the color that the turtle \"sees\""
+msgstr "टर्टलले \"देखेको\" रंग फिर्ता गर्छ"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:821
-#, fuzzy
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:315
+msgid "time"
+msgstr "समय"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:318
+msgid "elapsed time (in seconds) since program started"
+msgstr "कार्यक्रम सुरु भएदेखिको बितेको समय(सेकेन्ड मा)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:327
+msgid "Palette of extra options"
+msgstr "अतिरिक्त विकल्प भएको प्यालेट"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:332
+msgid "push"
+msgstr "धकाल"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:335
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "मानलाई FILO (first-in last-out heap) मा धकेल्छ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:345
+msgid "show heap"
+msgstr "हिप देखाउ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:348
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "मानलाई FILO (first-in last-out heap) मा देखाँउछ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:358
+msgid "empty heap"
+msgstr "खाली थाक"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:361
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "FILO (first-in last-out heap) मेटाउँछ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
+msgid "pop"
+msgstr "पप्"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:375
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "FILO (first-in last-out heap)को मान पप गर्छ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:387
+msgid "comment"
+msgstr "टिप्पणी"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
+msgid "places a comment in your code"
+msgstr "तपाँइको सङ्केतमा टिप्पणी राख्छ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
+msgid "print"
+msgstr "प्रिन्ट"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:397
+msgid "prints value in status block at bottom of the screen"
+msgstr "मानलाई पर्दाको  तल स्थिति खण्डमा छाप्छ"
+
+# http://ne.wikipedia.org/wiki/%E0%A4%AA%E0%A4%BE%E0%A4%87%E0%A4%A5%E0%A4%A8_%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%97%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%AE%E0%A4%BF%E0%A4%99%E0%A5%8D%E0%A4%97_%E0%A4%AD%E0%A4%BE%E0%A4%B7%E0%A4%BE
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:405
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:417
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
+msgid "Python"
+msgstr "पाइथन"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:408
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+"प्रोगरामेबल खण्ड: उन्नत एकल-चल गणीत समीकरण थप्न प्रयोग गरिने, e.g., sin(x)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:420
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
 msgstr ""
-"प्रोगरामेबल खण्ड: उन्नत एकल-चल गणीत समीकरण थप्न प्रयोग गरिने, e.g., sin(x)"
+"प्रोगरामेबल खण्ड: उन्नत बहु-चल गणीत समीकरण थप्न प्रयोग गरिने, e.g., sqrt(x*x "
+"+ y*y)"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:342
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:343
-msgid "if"
-msgstr "यदि"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:880
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:881
-msgid ""
-"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-msgstr "र्टटललाई xcor, ycor को ठाँउमा लान्छ; (0, 0) स्क्रिनको बिच हो."
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:354
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:355
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:356
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:357
-msgid "Python"
-msgstr "Python"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:256
-msgid "Stop"
-msgstr "बन्द गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:336
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:425
-msgid "action 2"
-msgstr "कार्य २"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:335
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:424
-msgid "action 1"
-msgstr "कार्य १"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:428
-msgid "end fill"
-msgstr "अन्त्यमा भर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:801
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:241
-msgid "Copy"
-msgstr "सार्नुहोस्"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:803
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:242
-msgid "Paste"
-msgstr "टाँस्नुहोस्"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:405
-msgid "turtle sees"
-msgstr "टर्टलले देख्छ।"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:753
-msgid "Python code"
-msgstr "पाइथन कोड"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:316
-msgid "empty heap"
-msgstr "खाली थाक"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:843
-msgid "pops value off FILO (first-in last-out heap)"
-msgstr "FILO (first-in last-out heap)को मान पप गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:874
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:252
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:791
-msgid "Clean"
-msgstr "सफा"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:844
-msgid "Palette of presentation templates"
-msgstr "प्रस्तुत गर्ने टेम्प्लेटहरूको दानी"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:407
-msgid "set color"
-msgstr "रंङ राख"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:747
-msgid "identity"
-msgstr "परिचय"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:863
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:865
-msgid "top of a collapsible stack"
-msgstr "सकिने थाकको माथि"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:415
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:416
-msgid "y"
-msgstr "y"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:742
-msgid "audio"
-msgstr "श्रव्य"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:249
-msgid "Tools"
-msgstr "औजार"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:348
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:349
-msgid "left"
-msgstr "बायाँ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:818
-msgid "subtracts bottom numeric input from top numeric input"
-msgstr "माथिको संख्यात्मक आगतले तलको संख्यात्मक आगतलाई घटाउछ।"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:813
-msgid "query for keyboard input (results stored in keyboard block)"
-msgstr " कुञ्जीपाटीको लाई क्वेरी आगत (परिणामहरु कुञ्जीपाटीको बल्कमा छ)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:314
-msgid "Cartesian"
-msgstr ""
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:451
-msgid "voltage"
-msgstr "भोल्टेज"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:782
-msgid "clears the screen and reset the turtle"
-msgstr "स्क्रिन खाली गर्छ र टर्टललाई रिसेट गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:861
-#, fuzzy
-msgid "bottom block in a collapsibe stack: click to collapse"
-msgstr " बन्द भाको थाक तल खण्डमा छ। खोल्न क्लिक गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:870
-msgid "returns the color that the turtle \"sees\""
-msgstr "र्टटलले देखेको रंग फिर्ता गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:887
-msgid "invokes Action 1 stack"
-msgstr "invokes Action 1 stack"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:909
-msgid "Palette of turtle commands"
-msgstr "र्टटलको आदेशहरूको दानी"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:317
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:326
-msgid "color"
-msgstr "रंग"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:796
-msgid "loops forever"
-msgstr "लुप (हरु) सधैँका लागी"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:420
-msgid "show aligned"
-msgstr ""
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:762
-msgid "Project"
-msgstr "परियोजना"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:880
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:255
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:787
-msgid "Debug"
-msgstr "त्रुटि सच्याउनुहोस्"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:387
-msgid "mod"
-msgstr "mod"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:765
-msgid "vertical space"
-msgstr "ठाडो गरि खाली ठाउँ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:892
-#, fuzzy
-msgid "completes filled polygon (used with start fill block)"
-msgstr "भरिएको बहुभुज सुरु गर्छ (used with end fill block)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:751
-msgid "less than"
-msgstr "...भन्दा कम "
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:919
-msgid "the canvas width"
-msgstr "क्यानभासको चौडाइ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:757
-msgid "square root"
-msgstr "बर्गको रुट"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:908
-msgid "Trashcan"
-msgstr "डसट्बीन"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:231
-msgid "Rescale coordinates"
-msgstr "रिस्केल समवय "
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:419
-msgid "show blocks"
-msgstr "ब्लाकहरु देखाउ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:224
-msgid "Quit"
-msgstr "बन्द गर्नुहोस्"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:393
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:394
-msgid "right"
-msgstr "दायाँ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:788
-msgid "Sugar Journal description field"
-msgstr ""
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:343
-msgid "then else"
-msgstr "then else"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:408
-msgid "set gray"
-msgstr "खरानी रङ्ग रख।"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:763
-msgid "presentation bulleted list"
-msgstr "प्रस्तुति बुलेटेड सुचि"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:214
-msgid "New"
-msgstr "नयाँ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:786
-msgid "places a comment in your code"
-msgstr ""
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:385
-msgid "read pixel"
-msgstr "पिक्सेल पढ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:404
-msgid "scale"
-msgstr "स्केल"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:309
-msgid "bottom"
-msgstr "तलतिर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:382
-msgid "purple"
-msgstr "प्याजी"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:446
-#, fuzzy
-msgid "Rescale coordinates down"
-msgstr "कोअरडिनेट पुन: स्केल गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tautils.py:523
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:399
-msgid "click to open"
-msgstr "खोल्नलाई क्लिक गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:364
-msgid "pen"
-msgstr "कलम"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:840
-msgid "microphone input pitch"
-msgstr "माइक्रोफोन आगत पिच"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:579
-msgid "Description:"
-msgstr "वर्णन:"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:750
-msgid "journal"
-msgstr "पंजिका"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:323
-msgid "empty trash"
-msgstr "खाली डस्टबीन"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:774
-msgid "Sugar Journal audio object"
-msgstr "सुगर जर्नल श्रव्य वस्तु"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:257
-msgid "Turtle"
-msgstr "कछुवा"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:829
-msgid "changes the orientation of the palette of blocks"
-msgstr ""
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:430
-msgid "store in"
-msgstr "स्टोर गर्नुहोस्"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:334
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:353
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:869
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:807
-msgid "Hide blocks"
-msgstr "ब्लकहरु लुकाउ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:755
-msgid "plus"
-msgstr "प्लस्"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:363
-msgid "or"
-msgstr "अथवा"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:839
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:904
-msgid "presentation template: list of bullets"
-msgstr "प्रस्तुति टेम्पलेट"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:802
-msgid "top of Action 2 stack"
-msgstr "top of Action 2 stack"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:824
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:234
-msgid "Shrink blocks"
-msgstr "ढिक्काहरु घटाऊ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/tawindow.py:2529
-msgid "image"
-msgstr "चित्र"
-
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:236
-msgid "Reset block size"
-msgstr "ढिक्काको आकार रिसेट गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:784
-msgid "holds current pen color (can be used in place of a number block)"
-msgstr "पेनको हाल रंग राख्छ (अंक ब्लको सट्टामा पनि प्रयोग हुन्छ)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:292
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:319
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:338
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:348
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:246
-msgid "Show palette"
-msgstr "रंग मिलाउने मेज देखाउ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:867
-msgid "saves a picture to the Sugar Journal"
-msgstr "सुगर जर्नलमा चित्र सेभ गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:783
-msgid "Save snapshot"
-msgstr "स्नयापसट सेभ गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:458
-msgid "width"
-msgstr "चौडाई"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:797
-msgid "moves turtle forward"
-msgstr "र्टटललाइ अगाडि बडाउछ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:329
-msgid "forward"
-msgstr "अगाडि"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:614
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:655
-msgid "my box"
-msgstr "मेरो बाकस"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:395
-msgid "picture right"
-msgstr "दायाँमा भएको चित्र"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:305
-msgid "back"
-msgstr "पछाडि"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:452
-msgid "volume"
-msgstr "आवाज"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:869
-msgid "holds current scale value"
-msgstr "हालको स्केल मान राख्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:758
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:759
-msgid "presentation 1x1"
-msgstr "प्रस्तुति १x१"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:760
-msgid "presentation 1x2"
-msgstr "प्रस्तुति १x२"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:803
-msgid "top of nameable action stack"
-msgstr ""
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:897
-msgid "stores numeric value in named variable"
-msgstr "संख्यात्मक मानलाई नाम गरिएको चलमा भण्डारन गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:828
-msgid "logical OR operator"
-msgstr "युक्तिसंगत वा सञ्चालनकर्ता"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:310
-msgid "picture bottom"
-msgstr "चित्र तलतिर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:852
-msgid "loops specified number of times"
-msgstr "तोकिए अनुसार लुप गर्छ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:907
-msgid "ycor of top of screen"
-msgstr "स्क्रिनको माथी ycor"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:914
-msgid "sensor voltage"
-msgstr "सेन्सर भोलटेज"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:442
-msgid "title y"
-msgstr "शीर्षक y"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:441
-msgid "title x"
-msgstr "शीर्षक x"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:326
-msgid "fill screen"
-msgstr "स्क्रिन भर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:415
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:416
-msgid "set xy"
-msgstr "xy राख"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:445
-msgid "trash"
-msgstr "रद्दिटोकरी"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:376
-msgid "polar"
-msgstr "पोलार"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:388
-msgid "repeat"
-msgstr "दोहोर्‍याउ"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:792
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:218
-msgid "Save as image"
-msgstr "छवि बनाएर सेभ गर"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:712
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:768
-#: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:243
-msgid "Edit"
-msgstr "सम्पादन"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:809
-msgid "identity operator used for extending blocks"
-msgstr ""
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:789
-msgid ""
-"divides top numeric input (numerator) by bottom numeric input (denominator)"
-msgstr ""
-"माथील्लो संख्यात्मक आगतलाई (numerator) तलको संख्यात्मक आगतले भाग गर "
-"(denominator)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:384
-msgid "max"
-msgstr "अधिक्तम"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:906
-#, fuzzy
-msgid "holds current text size (can be used in place of a number block)"
-msgstr "पेनको तत्कालिन आकार बचत गर्छ  (सङ्ख्या ब्लकको सट्टा प्रयोग गर्न सकिन्छ)"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:845
-msgid "prints value in status block at bottom of the screen"
-msgstr ""
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:325
-msgid "extras"
-msgstr "अधिक"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:427
-msgid "start fill"
-msgstr "भर्न सुरु गर "
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:383
-msgid "push"
-msgstr "धकल"
-
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:822
-#, fuzzy
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:433
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
 msgstr ""
-"प्रोगरामेबल खण्ड: उन्नत एकल-चल गणीत समीकरण थप्न प्रयोग गरिने, e.g., sin(x)"
+"प्रोगरामेबल खण्ड: उन्नत बहु-चल गणीत समीकरण थप्न प्रयोग गरिने, e.g., "
+"sin(x+y+z)"
 
-#: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:392
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:444
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:459
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:474
+msgid "Python block"
+msgstr "पाइथन खण्ड"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:446
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:461
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:476
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr "जर्नलमा रहेको tamyblock.py मोड्युलको सङ्केत चलाउँछ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:489
+msgid "Cartesian"
+msgstr "कार्टेसन"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:491
+msgid "displays Cartesian coordinates"
+msgstr "कार्टिसन कोर्डिनेट देखिउँछ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:497
+msgid "polar"
+msgstr "पोलार"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
+msgid "displays polar coordinates"
+msgstr "पोलार निर्देशांक देखाऊ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:505
+msgid "turtle"
+msgstr "कछुवा"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
+msgid "chooses which turtle to command"
+msgstr "आदेश गर्ने कछुवा छान्छ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:517
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:526
+msgid "turtle shell"
+msgstr "कछुवाको शेल"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:527
+msgid "put a custom 'shell' on the turtle"
+msgstr "टर्टलमा अनुकूलन \"shell\" राख"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:697
+msgid "top"
+msgstr "माथि"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:534
+msgid "top of a collapsed stack"
+msgstr "संक्षिप्त थाँकको माथि"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:540
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:673
+msgid "bottom"
+msgstr "तलतिर"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:541
+msgid "bottom of a collapsible stack"
+msgstr "पतन गर्न मिल्ने थाकको तल"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
+msgid "bottom block in a collapsed stack: click to open"
+msgstr "पतनएको थाक तल खण्डमा छ। खोल्न क्लिक गर"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:557
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:560
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:569
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:577
+msgid "top of stack"
+msgstr "थाकको माथि"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:558
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:567
+msgid "label"
+msgstr "लेवुल"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:566
+msgid "top of a collapsible stack"
+msgstr "पतन गर्न मिल्ने थाकको माथि"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:575
+#: TurtleArt/tautils.py:590
+msgid "click to open"
+msgstr "खोल्नलाई क्लिक गर"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:583
+msgid "Palette of presentation templates"
+msgstr "प्रस्तुत गर्ने टेम्प्लेटहरूको प्यालेट"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:587
+msgid "hide blocks"
+msgstr "खण्डहरु लुकाऊ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
+msgid "declutters canvas by hiding blocks"
+msgstr "खण्डहरु लुकाएर क्यानभास सफा बनाउँछ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:594
+msgid "show blocks"
+msgstr "खण्डहरु देखाऊ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:596
+msgid "restores hidden blocks"
+msgstr "लुकेका खण्डलाई पूर्वावस्थामा ल्याउँछ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:601
+msgid "full screen"
+msgstr "पूरा पर्दा"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:603
+msgid "hides the Sugar toolbars"
+msgstr "सुगर उपकरणपट्टी लुकाउँछ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:612
+msgid "list"
+msgstr "सूची"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:615
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:845
+msgid "presentation bulleted list"
+msgstr "प्रस्तुति बुलेटेड सूची"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:623
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:846
+msgid "presentation template: list of bullets"
+msgstr "प्रस्तुति टेम्पलेट: बुलेटका सूची"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:630
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:790
+msgid "presentation template: select Journal object (no description)"
+msgstr "प्रस्तुति टेम्प्लेट: पंजिकाको वस्तु छान (विवरण नभएका)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:637
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
+msgid "presentation template: select Journal object (with description)"
+msgstr "प्रस्तुति टेम्प्लेट: पंजिकाको बस्तु छान (विवरण समेत)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:832
+msgid "presentation template: select four Journal objects"
+msgstr "प्रस्तुति टेम्प्लेट: चारवटा जर्नलको वस्तु छान"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:651
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:658
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:818
+msgid "presentation template: select two Journal objects"
+msgstr "प्रस्तुती टेम्प्लेट: दुईवटा जर्नल बस्तु छान"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:665
+#: TurtleArt/tabasics.py:154
+msgid "left"
+msgstr "बायाँ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:668
+msgid "xcor of left of screen"
+msgstr "स्क्रिनको बायाँपट्टिको xcor"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:676
+msgid "ycor of bottom of screen"
+msgstr "स्क्रिनको तलपट्टिको ycor"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:681
+msgid "width"
+msgstr "चौडाइ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:684
+msgid "the canvas width"
+msgstr "क्यानभासको चौडाइ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
+#: TurtleArt/tabasics.py:165
+msgid "right"
+msgstr "दायाँ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:692
+msgid "xcor of right of screen"
+msgstr "स्क्रिनको दायाँपट्टिको xcor"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:700
+msgid "ycor of top of screen"
+msgstr "स्क्रिनको माथिपट्टिको ycor"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:705
+msgid "height"
+msgstr "उचाइ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:708
+msgid "the canvas height"
+msgstr "क्यानभास हाइट"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
+msgid "title x"
+msgstr "शीर्षक x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
+msgid "title y"
+msgstr "शीर्षक y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:733
+msgid "left x"
+msgstr "बायाँ x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
+msgid "top y"
+msgstr "माथि y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
+msgid "right x"
+msgstr "दायाँ x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:760
+msgid "bottom y"
+msgstr "तल y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:788
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:802
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:816
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:830
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:844
+#: TurtleArt/taconstants.py:251 TurtleArt/taconstants.py:273
+#: TurtleArt/taconstants.py:294 TurtleArt/taconstants.py:336
+#: TurtleArt/taconstants.py:378 TurtleArt/taconstants.py:420
+msgid "Title"
+msgstr "शीर्षक"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:775
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
+msgid "presentation 1x1"
+msgstr "प्रस्तुति १x१"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:803
+msgid "presentation 2x1"
+msgstr "प्रस्तुति 2x1"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:817
+msgid "presentation 1x2"
+msgstr "प्रस्तुति १x२"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:831
+msgid "presentation 2x2"
+msgstr "प्रस्तुति 2x2"
+
+#: plugins/light_sensor/light_sensor.py:57
+#: plugins/light_sensor/light_sensor.py:64
+msgid "light level detected by light sensor"
+msgstr "प्रकाश सेंसरद्वारा पता लगाएको प्रकाश मात्रा"
+
+#: plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98
+msgid "raw microphone input signal"
+msgstr "कच्चा माइक्रोफोनको आगत संकेत"
+
+#: plugins/audio_sensors/audio_sensors.py:89
+#: plugins/audio_sensors/audio_sensors.py:104
+msgid "loudness"
+msgstr "चर्कोपन"
+
+#: plugins/audio_sensors/audio_sensors.py:90
+#: plugins/audio_sensors/audio_sensors.py:105
+msgid "microphone input volume"
+msgstr "माइक्रोफोन आयातको भोल्युम"
+
+#: plugins/audio_sensors/audio_sensors.py:118
+#: plugins/audio_sensors/audio_sensors.py:126
+msgid "pitch"
+msgstr "पिच"
+
+#: plugins/audio_sensors/audio_sensors.py:119
+#: plugins/audio_sensors/audio_sensors.py:127
+msgid "microphone input pitch"
+msgstr "माइक्रोफोन आगत पिच"
+
+#: plugins/audio_sensors/audio_sensors.py:145
+#: plugins/audio_sensors/audio_sensors.py:159
+msgid "resistance"
+msgstr "प्रतिबन्ध"
+
+#: plugins/audio_sensors/audio_sensors.py:146
+#: plugins/audio_sensors/audio_sensors.py:160
+msgid "microphone input resistance"
+msgstr "माइक्रोफोनको आगत प्रतिरोध"
+
+#: plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:166
+msgid "voltage"
+msgstr "भोल्टेज"
+
+#: plugins/audio_sensors/audio_sensors.py:152
+#: plugins/audio_sensors/audio_sensors.py:167
+msgid "microphone input voltage"
+msgstr "माइक्रोफोनको आयात भोल्युम"
+
+#: plugins/accelerometer/accelerometer.py:55
+#: plugins/accelerometer/accelerometer.py:62
+msgid "acceleration"
+msgstr "गतिवृद्धि"
+
+#: plugins/accelerometer/accelerometer.py:57
+#: plugins/accelerometer/accelerometer.py:64
+msgid "push acceleration in x, y, z to heap"
+msgstr "थुप्रो हुने गरी x, y, z मा गतिवृद्धि थिच"
+
+#: TurtleArt/tapalette.py:83
+msgid "displays next palette"
+msgstr "अर्को प्यालेट देखाँउछ"
+
+#: TurtleArt/tapalette.py:84
+msgid "changes the orientation of the palette of blocks"
+msgstr "खण्डहरुको प्यालेटको अभिमुखीकरण परिवर्तन गर्छ"
+
+#: TurtleArt/tawindow.py:748 TurtleArt/tawindow.py:749
+msgid "orientation"
+msgstr "पृष्ठविन्यास"
+
+#: TurtleArt/tawindow.py:759 TurtleArt/tawindow.py:1022
+msgid "next"
+msgstr "आर्को"
+
+#: TurtleArt/tawindow.py:2885
+msgid "image"
+msgstr "चित्र"
+
+#: TurtleArt/tautils.py:173
+msgid "Load..."
+msgstr "सुरु गर..."
+
+#: TurtleArt/tautils.py:182
+msgid "Save..."
+msgstr "सेभ गर..."
+
+#: TurtleArt/talogo.py:417
+msgid "did not output to"
+msgstr "निर्गत गरेन"
+
+#: TurtleArt/talogo.py:466
+msgid "I don't know how to"
+msgstr "मलाई आउँदैन कसरी गर्ने"
+
+#: TurtleArt/talogo.py:512
+msgid "doesn't like"
+msgstr "मनपर्दैन"
+
+#: TurtleArt/talogo.py:512
+msgid "as input"
+msgstr "आपूर्तिको रुपमा"
+
+#: TurtleArt/tabasics.py:115
+msgid "Palette of turtle commands"
+msgstr "टर्टलको आदेशहरूको प्यालेट"
+
+#: TurtleArt/tabasics.py:120
+msgid "forward"
+msgstr "अगाडि"
+
+#: TurtleArt/tabasics.py:124
+msgid "moves turtle forward"
+msgstr "टर्टललाई अगाडि सार्छ"
+
+#: TurtleArt/tabasics.py:135
+msgid "moves turtle backward"
+msgstr "टर्टललाई पछाडि सार्छ"
+
+#: TurtleArt/tabasics.py:143
+msgid "clean"
+msgstr "सफा"
+
+#: TurtleArt/tabasics.py:146
+msgid "clears the screen and reset the turtle"
+msgstr "स्क्रिन खाली गर्छ र टर्टललाई रिसेट गर्छ"
+
+#: TurtleArt/tabasics.py:158
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "कछुवालाई घडिको उल्टो दिशामा घुमाउँछ (कोण ढिग्रीमा)"
+
+#: TurtleArt/tabasics.py:169
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "कछुवालाई घडिको दिशामा घुमाउँछ(कोण ढिग्रीमा)"
+
+#: TurtleArt/tabasics.py:177
+msgid "arc"
+msgstr "वृत्तखण्ड"
+
+#: TurtleArt/tabasics.py:177
+msgid "angle"
+msgstr "कोण"
+
+#: TurtleArt/tabasics.py:177
+msgid "radius"
+msgstr "त्रिज्या"
+
+#: TurtleArt/tabasics.py:181
+msgid "moves turtle along an arc"
+msgstr "टर्टल चाप को वरिपरी सार्छ"
+
+#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256
+msgid "set xy"
+msgstr "xy राख"
+
+#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256
+msgid "x"
+msgstr "x"
+
+#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256
+msgid "y"
+msgstr "y"
+
+#: TurtleArt/tabasics.py:194 TurtleArt/tabasics.py:260
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr "टर्टललाई xcor, ycor को ठाँउमा सार्छ ; (0, 0) स्क्रिनको बिच हो."
+
+#
+#: TurtleArt/tabasics.py:204
+msgid "set heading"
+msgstr "शीर्षक राख"
+
+#: TurtleArt/tabasics.py:208
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "टर्टलको शिर्षक निर्धारण गर्छ (0 स्क्रिनको माथिल्लो भागमा छ।)"
+
+#: TurtleArt/tabasics.py:217
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"टर्टलको तत्काल x-निर्देशांक मान बचाइराख्छ (संख्या खण्डको सट्टामा प्रयोग गर्न "
+"सकिन्छ)"
+
+#: TurtleArt/tabasics.py:228
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"टर्टलको तत्काल y- निर्देशांक मान बचाइराख्छ(संख्या खण्डको सट्टामा प्रयोग गर्न "
+"सकिन्छ)"
+
+#: TurtleArt/tabasics.py:239
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+"र्टटलको हालको शीर्षक मान राख्छ (संख्या खण्डको सट्टामा प्रयोग गर्न सकिन्छ)"
+
+#: TurtleArt/tabasics.py:273
+msgid "Palette of pen commands"
+msgstr "कलम आदेशको प्यालेट"
+
+#: TurtleArt/tabasics.py:277
+msgid "pen up"
+msgstr "कलमले लेख"
+
+#: TurtleArt/tabasics.py:280
+msgid "Turtle will not draw when moved."
+msgstr "कछुवालाई सारेमा कोर्दैन"
+
+#: TurtleArt/tabasics.py:286
+msgid "pen down"
+msgstr "कलमले नलेख"
+
+#: TurtleArt/tabasics.py:289
+msgid "Turtle will draw when moved."
+msgstr "चित्र बनाउन कछुवालाई हल्लाऊ"
+
+#: TurtleArt/tabasics.py:295
+msgid "set pen size"
+msgstr "कलमको परिमाण मिलाऊ"
+
+#: TurtleArt/tabasics.py:299
+msgid "sets size of the line drawn by the turtle"
+msgstr "टर्टलले बनाएको रेखा को साइज सेट गर्छ"
+
+#: TurtleArt/tabasics.py:309
+msgid "fill screen"
+msgstr "स्क्रिन भर"
+
+#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:394
+msgid "color"
+msgstr "रंग"
+
+#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:404
+msgid "shade"
+msgstr "छाया"
+
+#: TurtleArt/tabasics.py:313
+msgid "fills the background with (color, shade)"
+msgstr "पृष्ठभुमि (रंग, सेड) ले भरिन्छ"
+
+#: TurtleArt/tabasics.py:322
+msgid "pen size"
+msgstr "कलमको आकार"
+
+#: TurtleArt/tabasics.py:323
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr "पेनको तत्कालिन आकार बचत गर्छ  (सङ्ख्या खण्डको सट्टा प्रयोग गर्न सकिन्छ)"
+
+#: TurtleArt/tabasics.py:334
+msgid "start fill"
+msgstr "भर्न सुरु गर "
+
+#: TurtleArt/tabasics.py:336
+msgid "starts filled polygon (used with end fill block)"
+msgstr "भरिएको बहुभुज सुरु गर्छ (अन्त्य भर्ने  खण्डसगँ प्रयोग गरिने)"
+
+#: TurtleArt/tabasics.py:343
+msgid "end fill"
+msgstr "अन्त्यमा भर"
+
+#: TurtleArt/tabasics.py:345
+msgid "completes filled polygon (used with start fill block)"
+msgstr "भरिएको बहुभुज सुरु गर्छ ( पहिलो भरिएको खण्डसँग प्रयोग गरिने)"
+
+#: TurtleArt/tabasics.py:355
+msgid "Palette of pen colors"
+msgstr "कलमका रङहरुको प्यालेट"
+
+#: TurtleArt/tabasics.py:359
+msgid "set color"
+msgstr "रंङ राख"
+
+#: TurtleArt/tabasics.py:363
+msgid "sets color of the line drawn by the turtle"
+msgstr "कछुवाले बनाएको रेखाको रंग सेट गर्छ"
+
+#: TurtleArt/tabasics.py:371
+msgid "set shade"
+msgstr "छाया राख"
+
+#: TurtleArt/tabasics.py:375
+msgid "sets shade of the line drawn by the turtle"
+msgstr "कछुवाले बनाएको रेखाको सेड निर्धारण गर्छ"
+
+#: TurtleArt/tabasics.py:383
+msgid "set gray"
+msgstr "खरानी रङ्ग रख।"
+
+#: TurtleArt/tabasics.py:386
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "कछुवाले बनाएको धर्कोको छाँया निर्धारित गर्छ"
+
+#: TurtleArt/tabasics.py:395
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr "पेनको हाल रंग राख्छ (अंक ब्लको सट्टामा पनि प्रयोग हुन्छ)"
+
+#: TurtleArt/tabasics.py:405
+msgid "holds current pen shade"
+msgstr "अहिलेको कलमको रंग बचत गर्छ"
+
+#: TurtleArt/tabasics.py:413
+msgid "gray"
+msgstr "खरानी रङ"
+
+#: TurtleArt/tabasics.py:414
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr "खरानी रङ हालमा प्रयोग (यो अंक बल्क गर्न पनि प्रयोग गर्न सक्नु हुन्छ)"
+
+#: TurtleArt/tabasics.py:434
+msgid "set text color"
+msgstr "अक्षरको रंग राख"
+
+#: TurtleArt/tabasics.py:437
+msgid "sets color of text drawn by the turtle"
+msgstr "कछुवाले लेख्ने अक्षरको रङ निर्धारण गर्छ"
+
+#: TurtleArt/tabasics.py:445
+msgid "set text size"
+msgstr "कलमको साइज मिलाउ"
+
+#: TurtleArt/tabasics.py:448
+msgid "sets size of text drawn by the turtle"
+msgstr "कछुवाले कोरेको अक्षरको आकार निश्चित गर्छ"
+
+#: TurtleArt/tabasics.py:531
+msgid "Palette of numeric operators"
+msgstr "न्युमरेटर सञ्चालनकर्ताको प्यालेट"
+
+#: TurtleArt/tabasics.py:537
+msgid "plus"
+msgstr "प्लस्"
+
+#: TurtleArt/tabasics.py:540
+msgid "adds two alphanumeric inputs"
+msgstr "दुईवटा अल्फान्युमेरिक आगतहरु जोड्छ"
+
+#: TurtleArt/tabasics.py:548
+msgid "minus"
+msgstr "घटाऊ"
+
+#: TurtleArt/tabasics.py:551
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "माथिको संख्यात्मक आगतले तलको संख्यात्मक आगतलाई घटाउछ।"
+
+#: TurtleArt/tabasics.py:562
+msgid "multiply"
+msgstr "गुनन्"
+
+#: TurtleArt/tabasics.py:565
+msgid "multiplies two numeric inputs"
+msgstr "२ वटा संख्यात्मक आगतको गुणन गर्छ"
+
+#: TurtleArt/tabasics.py:574
+msgid "divide"
+msgstr "भाग गर"
+
+#: TurtleArt/tabasics.py:577
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+"माथील्लो संख्यात्मक आगतलाई (न्यूमिरेतर) तलको संख्यात्मक आगतले भाग गर "
+"(डिनोमिरेतर)"
+
+#: TurtleArt/tabasics.py:587
+msgid "identity"
+msgstr "परिचय"
+
+#: TurtleArt/tabasics.py:589
+msgid "identity operator used for extending blocks"
+msgstr " बल्क बिस्तार गर्न प्रयोग भएको  सञ्चालनकर्ताको पहिचान गर"
+
+#: TurtleArt/tabasics.py:597 TurtleArt/tabasics.py:598
+msgid "mod"
+msgstr "mod"
+
+#: TurtleArt/tabasics.py:601
+msgid "modular (remainder) operator"
+msgstr "मोड्युल (रेमिनदर) सञ्चालनकर्ता"
+
+#: TurtleArt/tabasics.py:608
+msgid "√"
+msgstr "√"
+
+#: TurtleArt/tabasics.py:609
+msgid "square root"
+msgstr "बर्गको रुट"
+
+#: TurtleArt/tabasics.py:612
+msgid "calculates square root"
+msgstr "वर्गमूल निकाल्छ "
+
+#: TurtleArt/tabasics.py:619
+msgid "random"
+msgstr "जुनसुकै"
+
+#: TurtleArt/tabasics.py:619
+msgid "min"
+msgstr "कम्ति"
+
+#: TurtleArt/tabasics.py:619
+msgid "max"
+msgstr "अधिक्तम"
+
+#: TurtleArt/tabasics.py:623
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+"न्युन (top) र अधिक्तम(bottom) मानहरु बिच अनियमित ढन्गले सङ्ख्या फिर्ता गर्छ"
+
+#: TurtleArt/tabasics.py:635
+msgid "number"
+msgstr "अंक"
+
+#: TurtleArt/tabasics.py:636
+msgid "used as numeric input in mathematic operators"
+msgstr "गणित सञ्चालनमा संख्यात्मक आगतको प्रयोग"
+
+#: TurtleArt/tabasics.py:643
+msgid "greater than"
+msgstr "भन्दा ठूलो"
+
+#: TurtleArt/tabasics.py:646
+msgid "logical greater-than operator"
+msgstr "युक्तिसंगत greater-than सञ्चालनकर्ता"
+
+#: TurtleArt/tabasics.py:654
+msgid "less than"
+msgstr "...भन्दा कम "
+
+#: TurtleArt/tabasics.py:657
+msgid "logical less-than operator"
+msgstr "युक्तिसंगत less-than सञ्चालनकर्ता"
+
+#: TurtleArt/tabasics.py:665
+msgid "equal"
+msgstr "बराबर"
+
+#: TurtleArt/tabasics.py:668
+msgid "logical equal-to operator"
+msgstr "युक्तिसंगत equal-to सञ्चालनकर्ता "
+
+#: TurtleArt/tabasics.py:674
+msgid "not"
+msgstr "होइन"
+
+#: TurtleArt/tabasics.py:677
+msgid "logical NOT operator"
+msgstr "युक्तिसंगत NOT सञ्चालनकर्ता"
+
+#: TurtleArt/tabasics.py:683 TurtleArt/tabasics.py:686
+msgid "and"
+msgstr "र"
+
+#: TurtleArt/tabasics.py:687
+msgid "logical AND operator"
+msgstr "युक्तिसंगत AND सञ्चालनकर्ता"
+
+#: TurtleArt/tabasics.py:694 TurtleArt/tabasics.py:697
+msgid "or"
+msgstr "अथवा"
+
+#: TurtleArt/tabasics.py:698
+msgid "logical OR operator"
+msgstr "युक्तिसंगत वा सञ्चालनकर्ता"
+
+#: TurtleArt/tabasics.py:712
+msgid "wait"
+msgstr "पर्ख"
+
+#: TurtleArt/tabasics.py:716
+msgid "pauses program execution a specified number of seconds"
+msgstr "कार्यक्रम कार्यान्वयनलाई तोकिएको समयले रोक्छ"
+
+#: TurtleArt/tabasics.py:723
+msgid "forever"
+msgstr "सधैकोलागि"
+
+#: TurtleArt/tabasics.py:727
+msgid "loops forever"
+msgstr "लुप (हरु) सधैँका लागी"
+
+#: TurtleArt/tabasics.py:733 TurtleArt/tabasics.py:737
+msgid "repeat"
+msgstr "दोहोर्‍याउ"
+
+#: TurtleArt/tabasics.py:738
+msgid "loops specified number of times"
+msgstr "तोकिए अनुसार लुप गर्छ"
+
+#: TurtleArt/tabasics.py:744 TurtleArt/tabasics.py:756
+msgid "if"
+msgstr "यदि"
+
+#: TurtleArt/tabasics.py:744
+msgid "then"
+msgstr "अनि"
+
+#: TurtleArt/tabasics.py:747
+msgid "if then"
+msgstr "इफ देन"
+
+#: TurtleArt/tabasics.py:749
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr "सङ्ख्या प्यालेटबाट बुलियन सञ्चालकहरू प्रयोग गर्ने if-thenसञ्चालक"
+
+#: TurtleArt/tabasics.py:756
+msgid "then else"
+msgstr "देन एल्स"
+
+#: TurtleArt/tabasics.py:760
+msgid "if then else"
+msgstr " इफ् देन एल्स "
+
+#: TurtleArt/tabasics.py:761
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr "सङ्ख्या प्यालेटबाट बुलियन सञ्चालकहरू प्रयोग गर्ने if-then-else सञ्चालक"
+
+#: TurtleArt/tabasics.py:769
+msgid "horizontal space"
+msgstr "तर्सो खाली ठाँऊ"
+
+#: TurtleArt/tabasics.py:770
+msgid "jogs stack right"
+msgstr "जगहरु दायाँ थाँक लग्छ"
+
+#: TurtleArt/tabasics.py:777
+msgid "vertical space"
+msgstr "ठाडो गरि खाली ठाउँ"
+
+#: TurtleArt/tabasics.py:778
+msgid "jogs stack down"
+msgstr "जग्सहरु तल थाँक लाग्छन"
+
+#: TurtleArt/tabasics.py:784
+msgid "stop action"
+msgstr "कार्य रद्द गर"
+
+#: TurtleArt/tabasics.py:787
+msgid "stops current action"
+msgstr "हालको कार्य रोक्छ"
+
+#: TurtleArt/tabasics.py:796
+msgid "Palette of variable blocks"
+msgstr "चल खण्डहरुको प्यालेट"
+
+#: TurtleArt/tabasics.py:804
+msgid "connects action to toolbar run buttons"
+msgstr "कार्यलाई उपकरण पट्टी चलाउने बटनसँग जडान गर्छ"
+
+#: TurtleArt/tabasics.py:812
+msgid "store in box 1"
+msgstr "बाकस १ मा भंडार गर"
+
+#: TurtleArt/tabasics.py:816
+msgid "stores numeric value in Variable 1"
+msgstr "संख्यात्मक मान चल १ मा भण्डारण गर्छ"
+
+#: TurtleArt/tabasics.py:823
+msgid "store in box 2"
+msgstr "बाकस २ मा भंडार गर"
+
+#: TurtleArt/tabasics.py:827
+msgid "stores numeric value in Variable 2"
+msgstr "संख्यात्मक मान चल २ मा भण्डारण गर्छ"
+
+#: TurtleArt/tabasics.py:841
+msgid "box 1"
+msgstr "बाकस १"
+
+#: TurtleArt/tabasics.py:844
+msgid "Variable 1 (numeric value)"
+msgstr "चल 1 (संख्यात्मक मान)"
+
+#: TurtleArt/tabasics.py:850
+msgid "box 2"
+msgstr "बाकस २"
+
+#: TurtleArt/tabasics.py:853
+msgid "Variable 2 (numeric value)"
+msgstr "चल २ (संङख्यातमक मान)"
+
+#: TurtleArt/tabasics.py:860 TurtleArt/tabasics.py:870
+msgid "box"
+msgstr "बाकस"
+
+#: TurtleArt/tabasics.py:862 TurtleArt/tabasics.py:873
+msgid "my box"
+msgstr "मेरो बाकस"
+
+#: TurtleArt/tabasics.py:864
+msgid "named variable (numeric value)"
+msgstr "नाम गरिएको चल (संख्यात्मक मान)"
+
+#: TurtleArt/tabasics.py:870
+msgid "store in"
+msgstr "स्टोर गर्नुहोस्"
+
+#: TurtleArt/tabasics.py:870
+msgid "value"
+msgstr "मान"
+
+#: TurtleArt/tabasics.py:874
+msgid "stores numeric value in named variable"
+msgstr "संख्यात्मक मानलाई नाम गरिएको चलमा भण्डारन गर्छ"
+
+#: TurtleArt/tabasics.py:882 TurtleArt/tabasics.py:884
+#: TurtleArt/tabasics.py:908 TurtleArt/tabasics.py:911
+msgid "action"
+msgstr "कार्य"
+
+#: TurtleArt/tabasics.py:886
+msgid "top of nameable action stack"
+msgstr "नामाकरण गर्न मिल्ने कार्य थाँकको माथि"
+
+#: TurtleArt/tabasics.py:891 TurtleArt/tabasics.py:918
+msgid "action 1"
+msgstr "कार्य १"
+
+#: TurtleArt/tabasics.py:894
+msgid "top of Action 1 stack"
+msgstr "कार्य १ थाकको प्रथम मा छ।"
+
+#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:927
+msgid "action 2"
+msgstr "कार्य २"
+
+#: TurtleArt/tabasics.py:902
+msgid "top of Action 2 stack"
+msgstr "कार्य २ थाकको माथि"
+
+#: TurtleArt/tabasics.py:912
+msgid "invokes named action stack"
+msgstr "इनभोक्स नामाङिक्त कार्य थाक"
+
+#: TurtleArt/tabasics.py:921
+msgid "invokes Action 1 stack"
+msgstr "कार्य १ थाक स्तुति गर्छ"
+
+#: TurtleArt/tabasics.py:930
+msgid "invokes Action 2 stack"
+msgstr "कार्य २ थाक स्तुति गर्छ"
+
+#: TurtleArt/tabasics.py:938
+msgid "trash"
+msgstr "रद्दिटोकरी"
+
+#: TurtleArt/tabasics.py:942
+msgid "empty trash"
+msgstr "खाली डस्टबीन"
+
+#: TurtleArt/tabasics.py:943
+msgid "permanently deletes items in trash"
+msgstr "रद्दीटोकरीको बस्तु सधैलाई मेटाउँछ"
+
+#: TurtleArt/tabasics.py:947
 msgid "restore all"
 msgstr "सबै पूर्वावस्थामा ल्याउ"
+
+#: TurtleArt/tabasics.py:948
+msgid "restore all blocks from trash"
+msgstr "रद्दि टोकरीमा भएका सबै सामग्री फिर्ता जान्छ"
+
+#: TurtleArt/tabasics.py:952
+msgid "clear all"
+msgstr "सबै सफा गर"
+
+#: TurtleArt/tabasics.py:953
+msgid "move all blocks to trash"
+msgstr "सबै खण्डहरू रद्दीटोकरीमा सार"
+
+#~ msgid "stack"
+#~ msgstr "चाङ्ग"
+
+#~ msgid "yellow"
+#~ msgstr "पहेलो"
+
+#~ msgid " "
+#~ msgstr "  "
+
+#~ msgid "cyan"
+#~ msgstr "स्यान"
+
+#~ msgid "blue"
+#~ msgstr "निलो"
+
+#~ msgid " clean "
+#~ msgstr " सफा "
+
+#~ msgid "numbers"
+#~ msgstr "अंक"
+
+#~ msgid "write"
+#~ msgstr "लेख"
+
+#~ msgid "green"
+#~ msgstr "हरियो"
+
+#~ msgid "restore last"
+#~ msgstr "पूर्वावस्थामा ल्याउ"
+
+#~ msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
+#~ msgstr ""
+#~ "प्रोगरामेबल ढिक्का: उन्नत गणित सामीकरण थप्न प्रयोग गरिने, जस्तै., sin(x)"
+
+#~ msgid "orange"
+#~ msgstr "सुन्तला"
+
+#~ msgid "blocks"
+#~ msgstr "ढिक्काहरु"
+
+#~ msgid "text size"
+#~ msgstr "अक्षरको साइज"
+
+#~ msgid "red"
+#~ msgstr "रातो"
+
+#~ msgid "sensors"
+#~ msgstr "संवेदक"
+
+#~ msgid "sensor input resistance"
+#~ msgstr "सेन्सर आगत प्रतिरोध"
+
+#~ msgid "white"
+#~ msgstr "सेतो"
+
+#~ msgid "holds current text color (can be used in place of a number block)"
+#~ msgstr ""
+#~ "अक्षरको तत्कालिन रङलाई होल्ड गर्छ (सङ्ख्या ब्लकको सट्टा प्रयोग गर्न सकिन्छ)"
+
+#~ msgid "picture top"
+#~ msgstr "तस्विर माथी"
+
+#~ msgid "flow"
+#~ msgstr "प्रवाह"
+
+#~ msgid "portfolio"
+#~ msgstr "पोर्टफोलीओ"
+
+#~ msgid "black"
+#~ msgstr "कालो"
+
+#~ msgid "restores most recent blocks from trash"
+#~ msgstr "हालसालको ढिक्काहरु रद्दिटोकरीबाट फिर्ता गरिन्छ"
+
+#~ msgid "Load my block"
+#~ msgstr "मेरो ब्लक सुरु गर"
+
+#~ msgid "Samples"
+#~ msgstr "नमूनाहरु"
+
+#~ msgid "picture left"
+#~ msgstr "चित्र बायाँतिर छ"
+
+#~ msgid "Python code"
+#~ msgstr "पाइथन कोड"
+
+#~ msgid "bottom block in a collapsibe stack: click to collapse"
+#~ msgstr "संक्षिप्त थाक तल खण्डमा छ। खोल्न क्लिक गर"
+
+#~ msgid "Trashcan"
+#~ msgstr "डसट्बीन"
+
+#~ msgid "purple"
+#~ msgstr "प्याजी"
+
+#~ msgid "pen"
+#~ msgstr "कलम"
+
+#~ msgid "picture right"
+#~ msgstr "दायाँमा भएको चित्र"
+
+#~ msgid "volume"
+#~ msgstr "आवाज"
+
+#~ msgid "picture bottom"
+#~ msgstr "चित्र तलतिर"
+
+#~ msgid "sensor voltage"
+#~ msgstr "सेन्सर भोलटेज"
+
+#~ msgid "holds current text size (can be used in place of a number block)"
+#~ msgstr "  तत्कालिन आकार बचत गर्छ  (सङ्ख्या ब्लकको सट्टा प्रयोग गर्न सकिन्छ)"
+
+#~ msgid "extras"
+#~ msgstr "अधिक"
 
 #~ msgid "name"
 #~ msgstr "नाम"
@@ -1620,12 +2162,6 @@ msgstr "सबै पूर्वावस्थामा ल्याउ"
 #~ msgid "read key"
 #~ msgstr "कि पढ"
 
-#~ msgid "clean"
-#~ msgstr "सफा"
-
-#~ msgid "sound"
-#~ msgstr "ध्बनि"
-
 #, fuzzy
 #~ msgid "text color"
 #~ msgstr "रंङ राख"
@@ -1635,9 +2171,6 @@ msgstr "सबै पूर्वावस्थामा ल्याउ"
 
 #~ msgid "hide palette"
 #~ msgstr "रंग मिलाउने मेज लुकाऊ"
-
-#~ msgid "stack"
-#~ msgstr "चाङ्ग"
 
 #~ msgid "run"
 #~ msgstr "चलाउ"
