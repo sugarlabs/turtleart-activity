@@ -121,7 +121,7 @@ FOLLOWME_STRINGS = [
 SUMO_STRINGS = [
     _('Sumo Butia'),
     _('submit speed​​'),
-    _('Send speeds the robot.'),
+    _('Send speed to the robot.'),
     _('set speed'),
     _('Set the default speed for the movement commands.'),
     _('move'),
