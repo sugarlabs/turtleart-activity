@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-29 09:03-0400\n"
-"PO-Revision-Date: 2011-08-29 05:15+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"PO-Revision-Date: 2011-09-17 17:46+0200\n"
+"Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
-"Language: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -279,262 +279,275 @@ msgstr "<Ctrl>s"
 
 #: taextras.py:36
 msgid "Turtle Art Mini"
-msgstr ""
+msgstr "ArtTortue Mini"
 
 #: taextras.py:40
 msgid "Turtle Confusion"
-msgstr ""
+msgstr "Confusion tortue"
 
 #: taextras.py:41
 msgid "Select a challenge"
-msgstr ""
+msgstr "Sélectionner un défi"
 
 #: taextras.py:47
 msgid "Palette of Mexican pesos"
-msgstr ""
+msgstr "Palette de pesos mexicains"
 
 #: taextras.py:48
 msgid "Palette of Colombian pesos"
-msgstr ""
+msgstr "Palette de pesos colombiens"
 
 #: taextras.py:49
 msgid "Palette of Rwandan francs"
-msgstr ""
+msgstr "Palette de francs rwandais"
 
 #: taextras.py:50
 msgid "Palette of US currencies"
-msgstr ""
+msgstr "Palette de devises des États-Unis"
 
 #: taextras.py:51
 msgid "Palette of Australian currencies"
-msgstr ""
+msgstr "Palette de devises australiennes"
 
 #: taextras.py:52
 msgid "Palette of Guaranies"
-msgstr ""
+msgstr "Palette de guaranis"
 
 #. TRANS: Butia is the Arduino Robot Project from Uruguay
 #. (http://www.fing.edu.uy/inco/proyectos/butia/)
 #: taextras.py:58
 msgid "Turtle Art Butia"
-msgstr ""
+msgstr "Butia Art Tortue"
 
 #: taextras.py:59
 msgid "Adjust LED intensity between 0 and 255."
-msgstr ""
+msgstr "Régler l'intensité de la DEL entre 0 et 255."
 
 #: taextras.py:60
 msgid ""
 "Returns the object gray level encountered him as a number between 0 and 1023."
 msgstr ""
+"Retourne le niveau de gris de l'objet rencontré sous forme de valeur "
+"comprise entre 0 et 1023."
 
 #: taextras.py:62
 msgid "Returns 1 when the button is press and 0 otherwise."
-msgstr ""
+msgstr "Retourne 1 lorsque le bouton est actionné et 0 dans le cas contraire."
 
 #: taextras.py:63
 msgid "Returns the ambient light level as a number between 0 and 1023."
 msgstr ""
+"Retourne le niveau d'éclairage ambiant sous forme de nombre compris entre 0 "
+"et 1023."
 
 #: taextras.py:64
 msgid "Returns the ambient temperature as a number between 0 and 255."
 msgstr ""
+"Retourne la température ambiante sous forme de nombre compris entre 0 et "
+"255."
 
 #: taextras.py:65
 msgid ""
 "Returns the distance from the object in front of the sensor as a number "
 "between 0 and 255."
 msgstr ""
+"Retourne la distance de l'objet en face du capteur sous forme de nombre "
+"compris entre 0 et 255."
 
 #: taextras.py:67
 msgid "Returns 0 or 1 depending on the sensor inclination."
-msgstr ""
+msgstr "Retourne 0 ou 1 en fonction de l'inclinaison du capteur."
 
 #: taextras.py:68
 msgid "Returns 1 when the sensors detects a magnetic field, 0 otherwise."
 msgstr ""
+"Retourne 1 lorsque les capteurs détectent un champ magnétique, 0 dans le cas "
+"contraire."
 
 #: taextras.py:69
 msgid "Switches from 0 to 1, the frequency depends on the vibration."
-msgstr ""
+msgstr "Bascule entre 0 et 1, la fréquence dépend des vibrations."
 
 #: taextras.py:70
 msgid "LED"
-msgstr ""
+msgstr "DEL"
 
 #: taextras.py:71
 msgid "pushbutton"
-msgstr ""
+msgstr "bouton poussoir"
 
 #: taextras.py:72
 msgid "grayscale"
-msgstr ""
+msgstr "niveau de gris"
 
 #: taextras.py:73
 msgid "ambient light"
-msgstr ""
+msgstr "lumière ambiante "
 
 #: taextras.py:74
 msgid "temperature"
-msgstr ""
+msgstr "température"
 
 #: taextras.py:75
 msgid "distance"
-msgstr ""
+msgstr "distance"
 
 #: taextras.py:76
 msgid "tilt"
-msgstr ""
+msgstr "inclinaison"
 
 #: taextras.py:77
 msgid "magnetic induction"
-msgstr ""
+msgstr "induction magnétique"
 
 #: taextras.py:78
 msgid "vibration"
-msgstr ""
+msgstr "vibration"
 
 #: taextras.py:79
 msgid "Butia Robot"
-msgstr ""
+msgstr "Robot Butia"
 
 #: taextras.py:80
 msgid "delay Butia"
-msgstr ""
+msgstr "délai Butia"
 
 #: taextras.py:81
 msgid "wait for argument seconds"
-msgstr ""
+msgstr "exécute une pause du nombre de secondes passées en argument"
 
 #: taextras.py:82
 msgid "Butia battery charge"
-msgstr ""
+msgstr "niveau de la batterie de Butia"
 
 #: taextras.py:83
 msgid "Returns the battery charge as a number between 0 and 255."
-msgstr ""
+msgstr "Retourne le niveau de la batterie entre 0 et 255."
 
 #: taextras.py:84
 msgid "Butia speed"
-msgstr ""
+msgstr "vitesse de Butia"
 
 #: taextras.py:85
 msgid ""
 "Set the speed of the Butia motors as a value between 0 and 1023, passed by "
 "an argument."
 msgstr ""
+"Définit la vitesse des moteurs de Butia avec une valeur entre 0 et 1023, "
+"passée en argument."
 
 #: taextras.py:87
 msgid "forward Butia"
-msgstr ""
+msgstr "faire avancer Butia"
 
 #: taextras.py:88
 msgid "Move the Butia robot forward."
-msgstr ""
+msgstr "Fait avancer le robot Butia."
 
 #: taextras.py:89
 msgid "forward distance"
-msgstr ""
+msgstr "longueur du déplacement en avant"
 
 #: taextras.py:90
 msgid "Move the Butia robot forward a predefined distance."
-msgstr ""
+msgstr "Fait avancer le robot Butia sur une distance prédéfinie."
 
 #: taextras.py:91
 msgid "backward Butia"
-msgstr ""
+msgstr "faire reculer Butia"
 
 #: taextras.py:92 taextras.py:96 taextras.py:98 taextras.py:102
 msgid "Move the Butia robot backward."
-msgstr ""
+msgstr "Fait reculer le robot Butia."
 
 #: taextras.py:93
 msgid "backward distance"
-msgstr ""
+msgstr "longueur du déplacement en arrière"
 
 #: taextras.py:94
 msgid "Move the Butia robot backward a predefined distance."
-msgstr ""
+msgstr "Fait reculer le robot Butia sur une distance prédéfinie."
 
 #: taextras.py:95
 msgid "left Butia"
-msgstr ""
+msgstr "tourne Butia vers la gauche"
 
 #: taextras.py:97
 msgid "right Butia"
-msgstr ""
+msgstr "tourne Butia vers la droite"
 
 #: taextras.py:99
 msgid "Turn x degrees"
-msgstr ""
+msgstr "Tourne de x degrés"
 
 #: taextras.py:100
 msgid "Turn the Butia robot x degrees."
-msgstr ""
+msgstr "Tourne le robot de x degrés."
 
 #: taextras.py:101
 msgid "stop Butia"
-msgstr ""
+msgstr "arrête Butia"
 
 #: taextras.py:103
 msgid "print Butia"
-msgstr ""
+msgstr "écrire sur Butia "
 
 #: taextras.py:104
 msgid "Print text in Butia robot 32-character ASCII display."
 msgstr ""
+"Afficher du texte sur l'afficheur ASCII de 32 caractères du robot Butia."
 
 #: taextras.py:105
 msgid "Butia"
-msgstr ""
+msgstr "Butia"
 
 #: taextras.py:109
 msgid "The camera was not found."
-msgstr ""
+msgstr "La caméra est introuvable."
 
 #: taextras.py:110
 msgid "Error on the initialization of the camera."
-msgstr ""
+msgstr "Erreur lors de l'initialisation de la caméra."
 
 #: taextras.py:111
 msgid "FollowMe"
-msgstr ""
+msgstr "SuisMoi"
 
 #: taextras.py:112
 msgid "follow a RGB color"
-msgstr ""
+msgstr "suivre une couleur RVB"
 
 #: taextras.py:113
 msgid "follow a turtle color"
-msgstr ""
+msgstr "suivre une couleur de la tortue"
 
 #: taextras.py:114
 msgid "calibrate a color to follow"
-msgstr ""
+msgstr "calibrer une couleur à suivre"
 
 #: taextras.py:115
 msgid "x position"
-msgstr ""
+msgstr "position en x"
 
 #: taextras.py:116
 msgid "return x position"
-msgstr ""
+msgstr "retourne la position en x"
 
 #: taextras.py:117
 msgid "y position"
-msgstr ""
+msgstr "position en y"
 
 #: taextras.py:118
 msgid "return y position"
-msgstr ""
+msgstr "retourne la position en y"
 
 #: taextras.py:122
 msgid "Sumo Butia"
-msgstr ""
+msgstr "Sumo Butia"
 
 #: taextras.py:123
 msgid "submit speed​​"
-msgstr ""
+msgstr "soumettre la vitesse"
 
 #: taextras.py:124
 msgid "Send speeds the robot."
@@ -542,15 +555,15 @@ msgstr ""
 
 #: taextras.py:125
 msgid "set speed"
-msgstr ""
+msgstr "fixe la vitesse"
 
 #: taextras.py:126
 msgid "Set the default speed for the movement commands."
-msgstr ""
+msgstr "Fixe la vitesse par défaut pour les commandes de déplacement."
 
 #: taextras.py:127
 msgid "move"
-msgstr ""
+msgstr "déplace"
 
 #: taextras.py:128 TurtleArt/tabasics.py:131
 msgid "back"
@@ -558,105 +571,105 @@ msgstr "recule"
 
 #: taextras.py:129 pysamples/grecord.py:215
 msgid "stop"
-msgstr "Arrêter"
+msgstr "arrête"
 
 #: taextras.py:130
 msgid "turn left"
-msgstr ""
+msgstr "tourne à gauche"
 
 #: taextras.py:131
 msgid "turn right"
-msgstr ""
+msgstr "tourne à droite"
 
 #: taextras.py:132
 msgid "angle to center"
-msgstr ""
+msgstr "angle avec le centre"
 
 #. TRANS: dojo is the playing field
 #: taextras.py:134
 msgid "Get the angle to the center of the dojo."
-msgstr ""
+msgstr "Obtient l'angle avec le centre du dojo."
 
 #: taextras.py:135
 msgid "angle to the opponent"
-msgstr ""
+msgstr "angle avec l'adversaire"
 
 #: taextras.py:136
 msgid "Get the angle to the center of the opponent."
-msgstr ""
+msgstr "Obtient l'angle avec le centre de l'adversaire."
 
 #: taextras.py:137
 msgid "x coor."
-msgstr ""
+msgstr "coor. x"
 
 #: taextras.py:138
 msgid "Get the x coordinate of the robot."
-msgstr ""
+msgstr "Obtient la coordonnée x du robot."
 
 #: taextras.py:139
 msgid "y coor."
-msgstr ""
+msgstr "coor. y"
 
 #: taextras.py:140
 msgid "Get the y coordinate of the robot."
-msgstr ""
+msgstr "Obtient la coordonnée y du robot."
 
 #: taextras.py:141
 msgid "opponent x coor."
-msgstr ""
+msgstr "coor. x de l'adversaire"
 
 #: taextras.py:142
 msgid "Get the x coordinate of the opponent."
-msgstr ""
+msgstr "Obtient la coordonnée x de l'adversaire."
 
 #: taextras.py:143
 msgid "opponent y coor."
-msgstr ""
+msgstr "coor. y de l'adversaire."
 
 #: taextras.py:144
 msgid "Get the y coordinate of the opponent."
-msgstr ""
+msgstr "Obtient la coordonnée y de l'adversaire."
 
 #: taextras.py:145
 msgid "rotation"
-msgstr ""
+msgstr "rotation"
 
 #: taextras.py:146
 msgid "Get SumBot rotation."
-msgstr ""
+msgstr "Obtient la rotation SumBot."
 
 #: taextras.py:147
 msgid "opponent rotation"
-msgstr ""
+msgstr "rotation de l'adversaire"
 
 #: taextras.py:148
 msgid "Get the rotation of the opponent."
-msgstr ""
+msgstr "Obtient la rotation de l'adversaire."
 
 #: taextras.py:149
 msgid "distance to center"
-msgstr ""
+msgstr "distance par rapport au centre"
 
 #. TRANS: dojo is the playing field
 #: taextras.py:151
 msgid "Get the distance to the center of the dojo."
-msgstr ""
+msgstr "Obtient la distance par rapport au centre du dojo."
 
 #: taextras.py:152
 msgid "distance to opponent"
-msgstr ""
+msgstr "distance par rapport à l'adversaire"
 
 #: taextras.py:153
 msgid "Get the distance to the opponent."
-msgstr ""
+msgstr "Obtient la distance par rapport à l'adversaire."
 
 #: taextras.py:154
 msgid "update information"
-msgstr ""
+msgstr "actualise l'information"
 
 #: taextras.py:155
 msgid "Update information from the server."
-msgstr ""
+msgstr "Actualise l'information depuis le serveur."
 
 #: pysamples/grecord.py:205 plugins/audio_sensors/audio_sensors.py:82
 #: plugins/audio_sensors/audio_sensors.py:97
@@ -704,7 +717,6 @@ msgid "Share"
 msgstr "Partager"
 
 #: gnome_plugins/collaboration_plugin.py:129
-#, fuzzy
 msgid "Configuration"
 msgstr "Configuration"
 
@@ -882,7 +894,6 @@ msgid "Sugar Journal video object"
 msgstr "objet vidéo du Journal Sugar"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:159
-#, fuzzy
 msgid "description"
 msgstr "description"
 
@@ -1346,7 +1357,7 @@ msgstr "présentation 2x2"
 #: plugins/light_sensor/light_sensor.py:57
 #: plugins/light_sensor/light_sensor.py:64
 msgid "light level detected by light sensor"
-msgstr ""
+msgstr "niveau de luminosité détecté par le capteur de luminosité"
 
 #: plugins/audio_sensors/audio_sensors.py:83
 #: plugins/audio_sensors/audio_sensors.py:98
@@ -1396,12 +1407,12 @@ msgstr "tension d'entrée du micro"
 #: plugins/accelerometer/accelerometer.py:55
 #: plugins/accelerometer/accelerometer.py:62
 msgid "acceleration"
-msgstr ""
+msgstr "accélération"
 
 #: plugins/accelerometer/accelerometer.py:57
 #: plugins/accelerometer/accelerometer.py:64
 msgid "push acceleration in x, y, z to heap"
-msgstr ""
+msgstr "pousse l'accélération sur x, y, z sur le tas"
 
 #: TurtleArt/tapalette.py:83
 msgid "displays next palette"
