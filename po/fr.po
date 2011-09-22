@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-29 09:03-0400\n"
-"PO-Revision-Date: 2011-09-17 19:15+0200\n"
-"Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
+"PO-Revision-Date: 2011-09-22 04:46+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Pootle 2.0.1\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2 turtleart.py:272 pysamples/grecord.py:205
 #: TurtleArt/tawindow.py:1568 TurtleArt/tawindow.py:2793
@@ -382,7 +382,7 @@ msgstr "niveau de gris"
 
 #: taextras.py:73
 msgid "ambient light"
-msgstr "lumière ambiante "
+msgstr "lumière ambiante"
 
 #: taextras.py:74
 msgid "temperature"
@@ -418,7 +418,7 @@ msgstr "exécute une pause du nombre de secondes passées en argument"
 
 #: taextras.py:82
 msgid "Butia battery charge"
-msgstr "niveau de la batterie de Butia"
+msgstr "Niveau de la batterie de Butia"
 
 #: taextras.py:83
 msgid "Returns the battery charge as a number between 0 and 255."
@@ -426,7 +426,7 @@ msgstr "Retourne le niveau de la batterie entre 0 et 255."
 
 #: taextras.py:84
 msgid "Butia speed"
-msgstr "vitesse de Butia"
+msgstr "Vitesse de Butia"
 
 #: taextras.py:85
 msgid ""
@@ -490,7 +490,7 @@ msgstr "arrête Butia"
 
 #: taextras.py:103
 msgid "print Butia"
-msgstr "écrire sur Butia "
+msgstr "écrire sur Butia"
 
 #: taextras.py:104
 msgid "Print text in Butia robot 32-character ASCII display."
@@ -682,11 +682,11 @@ msgstr "commencer"
 
 #: pysamples/grecord.py:217
 msgid "play"
-msgstr "Jouer"
+msgstr "jouer"
 
 #: pysamples/grecord.py:219
 msgid "save"
-msgstr "Enregistrer"
+msgstr "enregistrer"
 
 #: pysamples/uturn.py:24
 msgid "uturn"
@@ -742,7 +742,7 @@ msgstr "Port"
 
 #: gnome_plugins/collaboration_plugin.py:296
 msgid "Password"
-msgstr "Mot de passe :"
+msgstr "Mot de passe"
 
 #: gnome_plugins/collaboration_plugin.py:298
 msgid "Register"
@@ -1022,7 +1022,7 @@ msgstr "temps écoulé (en secondes) depuis le démarrage du programme"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:327
 msgid "Palette of extra options"
-msgstr "palette d'options supplémentaires"
+msgstr "Palette d'options supplémentaires"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:332
 msgid "push"
@@ -1194,7 +1194,7 @@ msgstr "cliquer pour ouvrir"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:583
 msgid "Palette of presentation templates"
-msgstr "palette de modèles de présentation"
+msgstr "Palette de modèles de présentation"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:587
 msgid "hide blocks"
@@ -1568,7 +1568,7 @@ msgstr "crayon levé"
 
 #: TurtleArt/tabasics.py:280
 msgid "Turtle will not draw when moved."
-msgstr "La tortue ne dessinera pas lorsqu'elle sera déplacée"
+msgstr "La tortue ne dessinera pas lorsqu'elle sera déplacée."
 
 #: TurtleArt/tabasics.py:286
 msgid "pen down"
@@ -1576,7 +1576,7 @@ msgstr "crayon abaissé"
 
 #: TurtleArt/tabasics.py:289
 msgid "Turtle will draw when moved."
-msgstr "La tortue dessinera quand elle sera déplacée"
+msgstr "La tortue dessinera quand elle sera déplacée."
 
 #: TurtleArt/tabasics.py:295
 msgid "set pen size"
@@ -1696,7 +1696,7 @@ msgstr "définit la taille du texte dessiné par la tortue"
 
 #: TurtleArt/tabasics.py:531
 msgid "Palette of numeric operators"
-msgstr "palette d'opérateurs numériques"
+msgstr "Palette d'opérateurs numériques"
 
 #: TurtleArt/tabasics.py:537
 msgid "plus"
@@ -1919,7 +1919,7 @@ msgstr "arrêter l'action courante"
 
 #: TurtleArt/tabasics.py:796
 msgid "Palette of variable blocks"
-msgstr "palette de blocs variables"
+msgstr "Palette de blocs variables"
 
 #: TurtleArt/tabasics.py:804
 msgid "connects action to toolbar run buttons"
