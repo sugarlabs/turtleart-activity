@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-29 09:03-0400\n"
-"PO-Revision-Date: 2011-09-22 04:46+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"PO-Revision-Date: 2011-09-23 20:38+0200\n"
+"Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -838,7 +838,7 @@ msgstr "RFID"
 
 #: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
 msgid "read value from RFID device"
-msgstr "Lire la valeur de l'équipement RFID"
+msgstr "lire la valeur de l'équipement RFID"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
 #: TurtleArt/tabasics.py:707
@@ -875,7 +875,7 @@ msgstr "journal"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:125
 msgid "Sugar Journal media object"
-msgstr "objet média du Journal Sugar"
+msgstr "Objet média du Journal Sugar"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
 msgid "audio"
@@ -883,7 +883,7 @@ msgstr "audio"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:137
 msgid "Sugar Journal audio object"
-msgstr "objet audio du Journal Sugar"
+msgstr "Objet audio du Journal Sugar"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:147
 msgid "video"
@@ -891,7 +891,7 @@ msgstr "vidéo"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:149
 msgid "Sugar Journal video object"
-msgstr "objet vidéo du Journal Sugar"
+msgstr "Objet vidéo du Journal Sugar"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:159
 msgid "description"
@@ -899,7 +899,7 @@ msgstr "description"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:161
 msgid "Sugar Journal description field"
-msgstr "champ description du Journal Sugar"
+msgstr "Champ description du Journal Sugar"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:170
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:171
@@ -1107,7 +1107,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:459
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:474
 msgid "Python block"
-msgstr "bloc Python"
+msgstr "Bloc Python"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:446
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:461
