@@ -1,3 +1,12 @@
+115
+
+ENHANCEMENTS
+* Support for light sensor on XO 1.75 hardware
+* New translations
+
+BUG FIXES
+* Returning float values from sensors as per OLPC #11166
+
 114
 
 ENHANCEMENTS
