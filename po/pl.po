@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-29 09:03-0400\n"
-"PO-Revision-Date: 2011-09-26 23:22+0200\n"
+"PO-Revision-Date: 2011-09-26 23:40+0200\n"
 "Last-Translator: Jakub <jamarat@o2.pl>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: pl\n"
@@ -1190,7 +1190,7 @@ msgstr "schowaj schemat"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
 msgid "declutters canvas by hiding blocks"
-msgstr ""
+msgstr "uporządkuj ekran chowając klocki"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:594
 msgid "show blocks"
@@ -1346,9 +1346,8 @@ msgstr "poziom światła wykryty przez czujnik światła"
 
 #: plugins/audio_sensors/audio_sensors.py:83
 #: plugins/audio_sensors/audio_sensors.py:98
-#, fuzzy
 msgid "raw microphone input signal"
-msgstr "surowy sygnał wejścia mikrofonu"
+msgstr "surowy sygnał wejścia mikrofonowego"
 
 #: plugins/audio_sensors/audio_sensors.py:89
 #: plugins/audio_sensors/audio_sensors.py:104
@@ -1397,9 +1396,8 @@ msgstr "przyspieszenie"
 
 #: plugins/accelerometer/accelerometer.py:57
 #: plugins/accelerometer/accelerometer.py:64
-#, fuzzy
 msgid "push acceleration in x, y, z to heap"
-msgstr "wciśnij przyspieszenie w x, y, z, .........."
+msgstr "odłóż wartości przyspieszenia (x, y, z) na stos"
 
 #: TurtleArt/tapalette.py:83
 msgid "displays next palette"
@@ -1462,9 +1460,8 @@ msgid "moves turtle backward"
 msgstr "przemieszcza żółwia do tyłu"
 
 #: TurtleArt/tabasics.py:143
-#, fuzzy
 msgid "clean"
-msgstr "Wyczyść"
+msgstr "wyczyść"
 
 #: TurtleArt/tabasics.py:146
 msgid "clears the screen and reset the turtle"
