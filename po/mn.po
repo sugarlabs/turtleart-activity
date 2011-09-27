@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-23 03:09+0200\n"
-"PO-Revision-Date: 2010-10-10 05:44+0200\n"
-"Last-Translator: Bulgantamir Nerguin <ar_uul_us@yahoo.com>\n"
+"PO-Revision-Date: 2011-09-27 12:49+0200\n"
+"Last-Translator: Cris Anderson <anderson861@gmail.com>\n"
 "Language-Team: Mongolian\n"
-"Language: \n"
+"Language: mn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.3\n"
+"X-Generator: Pootle 2.0.5\n"
 
 # Зураач барималчдын ажлын өрөөг урлан гэдэгтэй адилаар Яст мэлхийн Урлан болгоё оо
 #: activity/activity.info:2
@@ -127,7 +127,6 @@ msgstr "Хавтан нуу"
 
 # Нэрнээс гадна төрлөө сольж хадгалдаг тул Өөрөөр хадгалах гэдэг нь зүгээр болов уу? мөн Scratch дээр ингэж орчуулсан байгаа.
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:217
-#, fuzzy
 msgid "Save As"
 msgstr "Өөрөөр хадгалах"
 
@@ -334,7 +333,6 @@ msgid "set heading"
 msgstr "чиглэл"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:361
-#, fuzzy
 msgid "numbers"
 msgstr "тоо"
 
@@ -546,9 +544,8 @@ msgid "logical less-than operator"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:307
-#, fuzzy
 msgid "blocks"
-msgstr "Блокууд"
+msgstr "блокууд"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:856
 msgid "restore all blocks from trash"
@@ -589,7 +586,6 @@ msgid "red"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:406
-#, fuzzy
 msgid "sensors"
 msgstr "Мэдрэхүй"
 
@@ -772,9 +768,8 @@ msgid "sets shade of the line drawn by the turtle"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:327
-#, fuzzy
 msgid "flow"
-msgstr "Урсахуй"
+msgstr "урсахуй"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:273
 msgid "snapshot"
@@ -839,7 +834,6 @@ msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:306
-#, fuzzy
 msgid "black"
 msgstr "ухар"
 
@@ -929,7 +923,6 @@ msgid ""
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:795
-#, fuzzy
 msgid "Load my block"
 msgstr "Миний блок ачаалах"
 
@@ -1030,9 +1023,8 @@ msgid "turtle shell"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:826
-#, fuzzy
 msgid "Samples"
-msgstr "жишээ"
+msgstr "Жишээ"
 
 # яст мэлхийг зогсоох эсвэл яст мэлхий зогс 2-н нэгийг аваарай
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:882
@@ -1165,13 +1157,17 @@ msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:801
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:241
+#: turtleart.py:333
+#: TurtleArtActivity.py:533
 msgid "Copy"
-msgstr ""
+msgstr "Хуулах"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArtActivity.py:803
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:242
+#: turtleart.py:334
+#: TurtleArtActivity.py:535
 msgid "Paste"
-msgstr ""
+msgstr "Тавих"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:405
 msgid "turtle sees"
@@ -1220,12 +1216,14 @@ msgid "y"
 msgstr "y"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:742
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
 msgid "audio"
-msgstr ""
+msgstr "дуу бичлэг"
 
 #: /home/walter/Desktop/turtle/turtleblocks/turtleart.py:249
+#: turtleart.py:344
 msgid "Tools"
-msgstr ""
+msgstr "Хэрэгсэл"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:348
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:349
@@ -1312,8 +1310,9 @@ msgid "the canvas width"
 msgstr ""
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:757
+#: TurtleArt/tabasics.py:609
 msgid "square root"
-msgstr ""
+msgstr "дөрвөлжин үндэс"
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:908
 msgid "Trashcan"
