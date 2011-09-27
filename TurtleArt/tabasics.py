@@ -417,15 +417,18 @@ in place of a number block)'),
                           prim_name='gray')
         self.tw.lc.def_prim('gray', 0, lambda self: self.tw.canvas.gray)
 
-        self._make_constant(palette, 'red', CONSTANTS['red'])
-        self._make_constant(palette, 'orange', CONSTANTS['orange'])
-        self._make_constant(palette, 'yellow', CONSTANTS['yellow'])
-        self._make_constant(palette, 'green', CONSTANTS['green'])
-        self._make_constant(palette, 'cyan', CONSTANTS['cyan'])
-        self._make_constant(palette, 'blue', CONSTANTS['blue'])
-        self._make_constant(palette, 'purple', CONSTANTS['purple'])
-        self._make_constant(palette, 'white', WHITE)
-        self._make_constant(palette, 'black', BLACK)
+        self._make_constant(palette, 'red', _('red'), CONSTANTS['red'])
+        self._make_constant(palette, 'orange', _('orange'),
+                            CONSTANTS['orange'])
+        self._make_constant(palette, 'yellow', _('yellow'),
+                            CONSTANTS['yellow'])
+        self._make_constant(palette, 'green', _('green'), CONSTANTS['green'])
+        self._make_constant(palette, 'cyan', _('cyan'), CONSTANTS['cyan'])
+        self._make_constant(palette, 'blue', _('blue'), CONSTANTS['blue'])
+        self._make_constant(palette, 'purple', _('purple'),
+                            CONSTANTS['purple'])
+        self._make_constant(palette, 'white', _('white'), WHITE)
+        self._make_constant(palette, 'black', _('black'), BLACK)
 
         # deprecated blocks
         palette.add_block('settextcolor',
@@ -1262,9 +1265,9 @@ variable'))
             else:
                 raise logoerror("#syntaxerror")
 
-    def _make_constant(self, palette, block_name, constant):
+    def _make_constant(self, palette, block_name, label, constant):
         """ Factory for constant blocks """
         palette.add_block(block_name, style='box-style',
-                          label=_(block_name), prim_name=block_name,
+                          label=label, prim_name=block_name,
                           logo_command=block_name)
         self.tw.lc.def_prim(block_name, 0, lambda self: constant)
