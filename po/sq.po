@@ -293,8 +293,9 @@ msgid "heading"
 msgstr "kreu"
 
 #
+#, fuzzy
 msgid "set heading"
-msgstr "vendos kreun"
+msgstr "seth"
 
 #:
 msgid "set xy"
