@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-09-27 07:23-0400\n"
-"PO-Revision-Date: 2011-09-28 21:38+0200\n"
+"PO-Revision-Date: 2011-09-28 21:51+0200\n"
 "Last-Translator: Jakub <jamarat@o2.pl>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: pl\n"
@@ -101,7 +101,8 @@ msgstr "y"
 #: TurtleArt/tabasics.py:194 TurtleArt/tabasics.py:260
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-msgstr "przesuwa żółwia do pozycji xcor, ycor; gdzie (0, ) jest śodkiem ekranu"
+msgstr ""
+"przesuwa żółwia do pozycji xcor, ycor; gdzie (0, 0) jest środkiem ekranu."
 
 #
 #: TurtleArt/tabasics.py:204
@@ -149,7 +150,7 @@ msgid ""
 "block)"
 msgstr ""
 "przechowuje bieżącą wartość kierunku żółwia (może być użyty w miejscu klocka "
-"z liczbą) "
+"z liczbą)"
 
 #: TurtleArt/tabasics.py:273
 msgid "Palette of pen commands"
@@ -968,7 +969,7 @@ msgstr "Port"
 
 #: gnome_plugins/collaboration_plugin.py:296
 msgid "Password"
-msgstr "Hasło:"
+msgstr "Hasło"
 
 #: gnome_plugins/collaboration_plugin.py:298
 msgid "Register"
@@ -1249,7 +1250,7 @@ msgstr "poczekaj na zakończenie bieżącego audio lub video"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:274
 msgid "query keyboard"
-msgstr "odczytaj  klawiaturę"
+msgstr "odczytaj klawiaturę"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
 msgid "query for keyboard input (results stored in keyboard block)"
@@ -1749,7 +1750,7 @@ msgstr "ładowanie baterii Butia"
 
 #: taextras.py:83
 msgid "Returns the battery charge as a number between 0 and 255."
-msgstr "Zwraca poziom ładowania baterii jako liczbę między 0 i 255"
+msgstr "Zwraca poziom ładowania baterii jako liczbę między 0 i 255."
 
 #: taextras.py:84
 msgid "Butia speed"
@@ -1769,7 +1770,7 @@ msgstr "Butia naprzód"
 
 #: taextras.py:88
 msgid "Move the Butia robot forward."
-msgstr "Przesuń robota Butia naprzód"
+msgstr "Przesuń robota Butia naprzód."
 
 #: taextras.py:89
 msgid "forward distance"
@@ -1785,7 +1786,7 @@ msgstr "Butia wstecz"
 
 #: taextras.py:92 taextras.py:96 taextras.py:98 taextras.py:102
 msgid "Move the Butia robot backward."
-msgstr "Przesuń robota Butia w tył"
+msgstr "Przesuń robota Butia w tył."
 
 #: taextras.py:93
 msgid "backward distance"
@@ -1809,7 +1810,7 @@ msgstr "Skręć o x stopni"
 
 #: taextras.py:100
 msgid "Turn the Butia robot x degrees."
-msgstr "Skręć robota Butia o x stopni"
+msgstr "Skręć robota Butia o x stopni."
 
 #: taextras.py:101
 msgid "stop Butia"
@@ -1918,7 +1919,7 @@ msgstr "Pobierz kąt w stosunku do centrum przeciwnika."
 
 #: taextras.py:137
 msgid "x coor."
-msgstr "współrz. x"
+msgstr "współrz. x."
 
 #: taextras.py:138
 msgid "Get the x coordinate of the robot."
@@ -1926,7 +1927,7 @@ msgstr "Pobierz współrzędną x robota."
 
 #: taextras.py:139
 msgid "y coor."
-msgstr "współrz. y"
+msgstr "współrz. y."
 
 #: taextras.py:140
 msgid "Get the y coordinate of the robot."
@@ -1954,7 +1955,7 @@ msgstr "obrót"
 
 #: taextras.py:146
 msgid "Get SumBot rotation."
-msgstr "Pobierz obrót SumBot"
+msgstr "Pobierz obrót SumBot."
 
 #: taextras.py:147
 msgid "opponent rotation"
@@ -1962,7 +1963,7 @@ msgstr "obrót przeciwnika"
 
 #: taextras.py:148
 msgid "Get the rotation of the opponent."
-msgstr "Pobierz obrót przeciwnika"
+msgstr "Pobierz obrót przeciwnika."
 
 #: taextras.py:149
 msgid "distance to center"
@@ -1995,7 +1996,7 @@ msgstr "użycie"
 
 #: turtleart.py:212
 msgid "No option action:"
-msgstr "Brak opcji działania: "
+msgstr "Brak opcji działania:"
 
 #: turtleart.py:224
 msgid "File not found"
@@ -2061,5 +2062,3 @@ msgstr "Masz niezapisaną pracę. Czy chcesz ją zapisać przed zakończeniem?"
 #: turtleart.py:383
 msgid "Save project?"
 msgstr "Zapisać projekt?"
-
-
