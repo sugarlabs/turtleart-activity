@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-23 03:09+0200\n"
-"PO-Revision-Date: 2011-09-27 12:49+0200\n"
-"Last-Translator: Cris Anderson <anderson861@gmail.com>\n"
+"PO-Revision-Date: 2011-09-28 19:58+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: Mongolian\n"
 "Language: mn\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,7 @@ msgstr ""
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:449
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:450
 msgid " "
-msgstr ""
+msgstr " "
 
 #: /home/walter/Desktop/turtle/turtleblocks/TurtleArt/taconstants.py:811
 msgid "if-then operator that uses boolean operators from Numbers palette"
