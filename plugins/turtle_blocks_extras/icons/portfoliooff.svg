@@ -24,7 +24,15 @@
 </metadata>
 <defs
    id="defs12" />
-`  <g
+
+`  <rect
+   width="42.345783"
+   height="42.345783"
+   x="6.3271084"
+   y="6.3271084"
+   id="rect3016"
+   style="fill:#282828;fill-opacity:1;stroke:#282828;stroke-width:2.6542182;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+<g
    transform="matrix(0.8501594,0,0,0.8501594,4.1206165,2.9055499)"
    id="g3041">
   <rect
