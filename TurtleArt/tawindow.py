@@ -88,15 +88,16 @@ class TurtleArtWindow():
     timeout_tag = [0]
     _PLUGIN_SUBPATH = 'plugins'
 
-    def __init__(self, win, path, parent=None, mycolors=None, mynick=None):
+    def __init__(self, canvas_window, path, parent=None,
+                 mycolors=None, mynick=None):
         self._loaded_project = ''
         self._sharing = False
         self.parent = parent
         self.send_event = None  # method to send events over the network
         self.gst_available = GST_AVAILABLE
-        if type(win) == gtk.DrawingArea:
+        if type(canvas_window) == gtk.DrawingArea:
             self.interactive_mode = True
-            self.window = win
+            self.window = canvas_window
             self.window.set_flags(gtk.CAN_FOCUS)
             self.window.show_all()
             if self.parent is not None:
@@ -113,14 +114,14 @@ class TurtleArtWindow():
                              self.running_sugar)
                 exit()
             self._setup_events()
-        elif type(win) == gtk.gdk.Pixmap:
+        elif type(canvas_window) == gtk.gdk.Pixmap:
             self.interactive_mode = False
-            self.window = win
+            self.window = canvas_window
             self.running_sugar = False
             if self.window is not None:
                 self.gc = self.window.new_gc()
         else:
-            debug_output("bad win type %s" % (type(win)), False)
+            debug_output("bad win type %s" % (type(canvas_window)), False)
 
         if self.running_sugar:
             self.activity = parent
@@ -364,7 +365,7 @@ class TurtleArtWindow():
         self.window.connect("button-press-event", self._buttonpress_cb)
         self.window.connect("button-release-event", self._buttonrelease_cb)
         self.window.connect("motion-notify-event", self._move_cb)
-        self.window.connect("key_press_event", self._keypress_cb)
+        self.window.connect("key-press-event", self._keypress_cb)
 
     def _setup_misc(self):
         """ Misc. sprites for status, overlays, etc. """
@@ -586,6 +587,19 @@ class TurtleArtWindow():
             self.toolbar_spr.hide()
         self.palette = False
 
+    def move_palettes(self, x, y):
+        """ Move the palettes. """
+        for p in self.palettes:
+            for blk in p:
+                blk.spr.move((x + blk.spr.save_xy[0], y + blk.spr.save_xy[1]))
+        for spr in self.palette_button:
+            spr.move((x + spr.save_xy[0], y + spr.save_xy[1]))
+        for p in self.palette_sprs:
+            if p[0] is not None:
+                p[0].move((x + p[0].save_xy[0], y + p[0].save_xy[1]))
+            if p[1] is not None:
+                p[1].move((x + p[1].save_xy[0], y + p[1].save_xy[1]))
+
     def hideblocks(self):
         """ Callback from 'hide blocks' block """
         if not self.interactive_mode:
@@ -686,7 +700,8 @@ class TurtleArtWindow():
                         gblk.spr.set_layer(TAB_LAYER)
 
     def _create_the_selectors(self):
-        ''' Create the palette selector buttons. '''
+        ''' Create the palette selector buttons: only when running
+        old-style Sugar toolbars or from GNOME '''
         svg = SVG()
         x, y = 50, 0  # positioned at the left, top
         for i, name in enumerate(palette_names):
@@ -831,6 +846,10 @@ class TurtleArtWindow():
             dy = y - by
             for g in find_group(blk):
                 g.spr.move_relative((int(dx), int(dy)))
+                g.spr.save_xy = g.spr.get_xy()
+                if not self.hw in [XO1]:
+                    g.spr.move_relative((self.activity.hadj_value,
+                                         self.activity.vadj_value,))
             y += int(h + 3)
             if w > max_w:
                 max_w = w
@@ -849,6 +868,8 @@ class TurtleArtWindow():
                 for r in row:
                     for g in find_group(r):
                         g.spr.move_relative((dx, 0))
+                        g.spr.save_xy = (g.spr.save_xy[0] + dx,
+                                         g.spr.save_xy[1])
                 row = []
                 row_w = 0
                 x = 4
@@ -861,6 +882,10 @@ class TurtleArtWindow():
             dy = int(y - by)
             for g in find_group(b):
                 g.spr.move_relative((dx, dy))
+                g.spr.save_xy = g.spr.get_xy()
+                if not self.hw in [XO1]:
+                    g.spr.move_relative((self.activity.hadj_value,
+                                         self.activity.vadj_value,))
             x += int(w + 4)
             if h > max_h:
                 max_h = h
@@ -869,6 +894,7 @@ class TurtleArtWindow():
         for r in row:
             for g in find_group(r):
                 g.spr.move_relative((dx, 0))
+                g.spr.save_xy = (g.spr.save_xy[0] + dx, g.spr.save_xy[1])
         return x, y, max_h
 
     def _layout_palette(self, n, regenerate=False):
@@ -884,6 +910,10 @@ class TurtleArtWindow():
                 self._make_palette_spr(n, 0, self.toolbar_offset,
                                        w, PALETTE_HEIGHT, regenerate)
                 self.palette_button[2].move((w - 20, self.toolbar_offset))
+                self.palette_button[2].save_xy = self.palette_button[2].get_xy()
+                if not self.hw in [XO1]:
+                    self.palette_button[2].move_relative(
+                        (self.activity.hadj_value, self.activity.vadj_value))
             else:
                 x, y = 5, self.toolbar_offset + 15
                 x, y, max_h = self._vertical_layout(x, y, self.palettes[n])
@@ -895,6 +925,10 @@ class TurtleArtWindow():
                                        PALETTE_WIDTH, h, regenerate)
                 self.palette_button[2].move((PALETTE_WIDTH - 20,
                                              self.toolbar_offset))
+                self.palette_button[2].save_xy = self.palette_button[2].get_xy()
+                if not self.hw in [XO1]:
+                    self.palette_button[2].move_relative(
+                        (self.activity.hadj_value, self.activity.vadj_value))
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
     def _make_palette_spr(self, n, x, y, w, h, regenerate=False):
@@ -907,6 +941,10 @@ class TurtleArtWindow():
             self.palette_sprs[n][self.orientation] = \
                 Sprite(self.sprite_list, x, y, svg_str_to_pixbuf(
                     svg.palette(w, h)))
+            self.palette_sprs[n][self.orientation].save_xy = (x, y)
+            if not self.hw in [XO1]:
+                self.palette_sprs[n][self.orientation].move_relative(
+                    (self.activity.hadj_value, self.activity.vadj_value))
             self.palette_sprs[n][self.orientation].type = 'category'
             if n == palette_names.index('trash'):
                 svg = SVG()

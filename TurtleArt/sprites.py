@@ -159,6 +159,7 @@ class Sprite:
         """ Initialize an individual sprite """
         self._sprites = sprites
         self.rect = gtk.gdk.Rectangle(int(x), int(y), 0, 0)
+        self.save_xy = (x, y)  # remember initial (x, y) position
         self._scale = [12]
         self._rescale = [True]
         self._horiz_align = ["center"]

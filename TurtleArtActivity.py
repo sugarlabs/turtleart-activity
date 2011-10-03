@@ -320,12 +320,16 @@ class TurtleArtActivity(activity.Activity):
 
     def recenter(self):
         ''' Recenter scrolled window around canvas. '''
+        self.hadj_value = 0
         hadj = self.sw.get_hadjustment()
-        hadj.set_value(0)
+        hadj.set_value(self.hadj_value)
         self.sw.set_hadjustment(hadj)
+        self.vadj_value = 0
         vadj = self.sw.get_vadjustment()
-        vadj.set_value(0)
+        vadj.set_value(self.vadj_value)
         self.sw.set_vadjustment(vadj)
+        if not self.tw.hw in [XO1]:
+            self.tw.move_palettes(self.hadj_value, self.vadj_value)
 
     def do_fullscreen_cb(self, button):
         ''' Hide the Sugar toolbars. '''
@@ -686,15 +690,32 @@ class TurtleArtActivity(activity.Activity):
         canvas.set_size_request(gtk.gdk.screen_width() * 2,
                                 gtk.gdk.screen_height() * 2)
         self.sw.add_with_viewport(canvas)
+        hadj = self.sw.get_hadjustment()
+        hadj.connect('value-changed', self._scroll_cb)
+        vadj = self.sw.get_vadjustment()
+        vadj.connect('value-changed', self._scroll_cb)
+        self.hadj_value = 0
+        self.vadj_value = 0
         canvas.show()
         self.sw.show()
         self.show_all()
         return canvas
 
-    def _setup_canvas(self, canvas):
+    def _scroll_cb(self, window):
+        ''' The scrolling window has been changed, so move the
+        floating palettes. '''
+        hadj = self.sw.get_hadjustment()
+        self.hadj_value = hadj.get_value()
+        vadj = self.sw.get_vadjustment()
+        self.vadj_value = vadj.get_value()
+        if not self.tw.hw in [XO1]:
+            gobject.idle_add(self.tw.move_palettes, self.hadj_value,
+                             self.vadj_value)
+
+    def _setup_canvas(self, canvas_window):
         ''' Initialize the turtle art canvas. '''
         bundle_path = activity.get_bundle_path()
-        self.tw = TurtleArtWindow(canvas, bundle_path, self,
+        self.tw = TurtleArtWindow(canvas_window, bundle_path, self,
                                   profile.get_color().to_string(),
                                   profile.get_nick_name())
         self.tw.window.grab_focus()
