@@ -1032,6 +1032,9 @@ class TurtleArtWindow():
                             self.activity.palette_buttons[
                                 self.selected_palette].set_icon(
                                 palette_names[self.selected_palette] + 'off')
+                        else:
+                            # select radio button associated with this palette
+                            self.activity.palette_buttons[i].set_active(True)
                         if not self.activity.has_toolbarbox:
                             self.activity.palette_buttons[i].set_icon(
                                 palette_names[i] + 'on')
