@@ -2266,6 +2266,9 @@ class TurtleArtWindow():
                 newleft = oldleft[:len(oldleft) - 1]
             else:
                 newleft = ''
+        if keyname == 'Delete':
+            if len(oldright) > 0:
+                oldright = oldright[1:]
         elif keyname == 'Home':
             oldright = oldleft + oldright
             newleft = ''
