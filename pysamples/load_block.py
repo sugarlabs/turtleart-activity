@@ -75,4 +75,5 @@ def myblock(tw, blkname):
         name = blkname
         dy = int(find_block(tw, name, x, y))
 
-    tw.active_turtle.move((x, y - dy))
+    # Account for block overlaps by adding back 4 pixels
+    tw.active_turtle.move((x, y - dy + 4))
