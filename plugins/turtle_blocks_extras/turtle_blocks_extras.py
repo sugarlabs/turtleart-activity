@@ -20,11 +20,6 @@ from time import time
 import os.path
 from gettext import gettext as _
 
-try:
-    from sugar.datastore import datastore
-except ImportError:
-    pass
-
 from plugins.plugin import Plugin
 from TurtleArt.tapalette import make_palette, define_logo_function
 from TurtleArt.talogo import primitive_dictionary, logoerror, \
@@ -936,6 +931,7 @@ bullets'))
                n[6:].lower not in media_blocks_dictionary:
                 try:
                     if self.tw.running_sugar:
+                        from sugar.datastore import datastore
                         try:
                             dsobject = datastore.get(n[6:])
                         except:

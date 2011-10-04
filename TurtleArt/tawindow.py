@@ -44,12 +44,6 @@ DEGTOR = 2 * pi / 360
 
 import locale
 
-try:
-    from sugar.datastore import datastore
-    from sugar import profile
-except ImportError:
-    pass
-
 from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES, STRING_OR_NUMBER_ARGS, \
     TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER, CATEGORY_LAYER, \
@@ -124,6 +118,10 @@ class TurtleArtWindow():
             debug_output("bad win type %s" % (type(canvas_window)), False)
 
         if self.running_sugar:
+            # Sugar-specific imports
+            from sugar.datastore import datastore
+            from sugar import profile
+
             self.activity = parent
             self.nick = profile.get_nick_name()
         else:
@@ -852,7 +850,7 @@ class TurtleArtWindow():
             for g in find_group(blk):
                 g.spr.move_relative((int(dx), int(dy)))
                 g.spr.save_xy = g.spr.get_xy()
-                if not self.hw in [XO1]:
+                if self.running_sugar and not self.hw in [XO1]:
                     g.spr.move_relative((self.activity.hadj_value,
                                          self.activity.vadj_value,))
             y += int(h + 3)
@@ -888,7 +886,7 @@ class TurtleArtWindow():
             for g in find_group(b):
                 g.spr.move_relative((dx, dy))
                 g.spr.save_xy = g.spr.get_xy()
-                if not self.hw in [XO1]:
+                if self.running_sugar and not self.hw in [XO1]:
                     g.spr.move_relative((self.activity.hadj_value,
                                          self.activity.vadj_value,))
             x += int(w + 4)
@@ -916,7 +914,7 @@ class TurtleArtWindow():
                                        w, PALETTE_HEIGHT, regenerate)
                 self.palette_button[2].move((w - 20, self.toolbar_offset))
                 self.palette_button[2].save_xy = self.palette_button[2].get_xy()
-                if not self.hw in [XO1]:
+                if self.running_sugar and not self.hw in [XO1]:
                     self.palette_button[2].move_relative(
                         (self.activity.hadj_value, self.activity.vadj_value))
             else:
@@ -931,7 +929,7 @@ class TurtleArtWindow():
                 self.palette_button[2].move((PALETTE_WIDTH - 20,
                                              self.toolbar_offset))
                 self.palette_button[2].save_xy = self.palette_button[2].get_xy()
-                if not self.hw in [XO1]:
+                if self.running_sugar and not self.hw in [XO1]:
                     self.palette_button[2].move_relative(
                         (self.activity.hadj_value, self.activity.vadj_value))
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
@@ -947,7 +945,7 @@ class TurtleArtWindow():
                 Sprite(self.sprite_list, x, y, svg_str_to_pixbuf(
                     svg.palette(w, h)))
             self.palette_sprs[n][self.orientation].save_xy = (x, y)
-            if not self.hw in [XO1]:
+            if self.running_sugar and not self.hw in [XO1]:
                 self.palette_sprs[n][self.orientation].move_relative(
                     (self.activity.hadj_value, self.activity.vadj_value))
             self.palette_sprs[n][self.orientation].type = 'category'
