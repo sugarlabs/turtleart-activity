@@ -22,7 +22,6 @@
 import gtk
 import pickle
 import subprocess
-import dbus
 import os.path
 from gettext import gettext as _
 
