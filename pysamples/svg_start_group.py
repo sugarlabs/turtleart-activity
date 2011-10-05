@@ -4,14 +4,18 @@
 # "extras" palette is selected and expanded to 3 arguments.
 
 # Usage: Import this code into a Python (user-definable) block.
-# First, expand the Python block to reveal three numerics arguments.
-# Set these values to the desired red, green, and blue. When the code
-# is run, the red, green, and blue values are used to set the pen
-# color.
+# In using SVG, it is sometimes useful to divide your drawing into
+# groups of elements. You can do that by inserting <g> </g> around
+# sections of your code.
+#
+# Place the svg_start_group.py block at the point in your program
+# where you'd like to start a group in your SVG output.
+#
+# Be sure to use the corresponding svg_end_group.py block to close
+# the SVG group definition.
 
 
 def myblock(tw, x):
     ''' Add start group to SVG output '''
     
     tw.svg_string += '<g>'
-
