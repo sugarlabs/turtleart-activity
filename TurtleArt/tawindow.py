@@ -1461,7 +1461,7 @@ class TurtleArtWindow():
             # self.canvas.set_turtle(self.selected_turtle.get_name())
             if dtype == 'move':
                 dx = x - dragx - sx + self.selected_turtle.spr.rect.width / 2
-                dy = y - dragy - sy + self.selected_turtle.spr.rect.width / 2
+                dy = y - dragy - sy + self.selected_turtle.spr.rect.height / 2
                 self.selected_turtle.spr.set_layer(TOP_LAYER)
                 tx, ty = self.canvas.screen_to_turtle_coordinates(sx + dx,
                                                                   sy + dy)
