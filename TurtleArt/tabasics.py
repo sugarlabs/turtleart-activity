@@ -941,17 +941,17 @@ variable'))
                                help_string=_('trash'))
 
         palette.add_block('empty',
-                          style='basic-style-tail',
+                          style='blank-style',
                           label=_('empty trash'),
                           help_string=_('permanently deletes items in trash'))
 
         palette.add_block('restoreall',
-                          style='basic-style-head',
+                          style='blank-style',
                           label=_('restore all'),
                           help_string=_('restore all blocks from trash'))
 
         palette.add_block('trashall',
-                          style='basic-style-tail',
+                          style='blank-style',
                           label=_('clear all'),
                           help_string=_('move all blocks to trash'))
 

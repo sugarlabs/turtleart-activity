@@ -493,6 +493,7 @@ class Block:
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
         self.svg.set_slot(False)
         self.svg.set_tab(False)
+        self.svg.set_tail(False)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = []
 
@@ -520,6 +521,7 @@ class Block:
     def _make_basic_style_tail(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)
         self.svg.set_tab(False)
+        self.svg.set_tail(True)
         self._make_block_graphics(svg, self.svg.basic_block)
         self.docks = [['flow', True, self.svg.docks[0][0],
                                      self.svg.docks[0][1]],

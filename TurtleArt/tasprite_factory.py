@@ -57,6 +57,7 @@ class SVG:
         self._bool = False
         self._slot_x = 10
         self._slot_y = 2
+        self._tail = False
         self._porch = False
         self._porch_x = self._innie_x1 + self._innie_x2 + \
             4 * self._stroke_width
@@ -547,6 +548,9 @@ class SVG:
     #
     # Utility methods
     #
+    def set_tail(self, flag=True):
+        self._tail = flag
+
     def set_draw_innies(self, flag=True):
         self._draw_innies = flag
 
@@ -940,10 +944,12 @@ class SVG:
     def _do_tail(self):
         if self._outie is True:
             return self._rline_to(-self._slot_x, 0)
-        else:
+        elif self._tail:
             return "%s%s" % (
                 self._rline_to(-self._slot_x / 2.0, self._slot_y * 2.0),
                 self._rline_to(-self._slot_x / 2.0, -self._slot_y * 2.0))
+        else:
+            return self._rline_to(-self._slot_x, 0)
 
     def _do_tab(self):
         s = "%s%s%s%s%s" % (
