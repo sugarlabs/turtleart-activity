@@ -68,7 +68,7 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
     collapsed, collapsible, hide_button_hit, show_button_hit, chooser, \
     arithmetic_check, xy, find_block_to_run, find_top_block, journal_check, \
     find_group, find_blk_below, data_to_string, find_start_stack, \
-    get_hardware, debug_output, error_output
+    get_hardware, debug_output, error_output, data_to_string
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 from dbus.mainloop.glib import DBusGMainLoop
@@ -208,6 +208,7 @@ class TurtleArtWindow():
         self.drag_group = None
         self.drag_turtle = 'move', 0, 0
         self.drag_pos = 0, 0
+        self.turtle_movement_to_share = None
         self.paste_offset = 20
 
         self.block_list = Blocks(font_scale_factor=self.scale,
@@ -1450,6 +1451,24 @@ class TurtleArtWindow():
         self._mouse_move(x, y)
         return True
 
+    def _share_mouse_move(self):
+        ''' Share turtle movement and rotation after button up '''
+        if self.sharing():
+            nick = self.turtle_movement_to_share.get_name()
+            self.send_event("r|%s" % (
+                    data_to_string([nick, round_int(self.canvas.heading)])))
+            if self.canvas.pendown:
+                self.send_event('p|%s' % (data_to_string([nick, False])))
+                put_pen_back_down = True
+            else:
+                put_pen_back_down = False
+            self.send_event("x|%s" % (
+                    data_to_string([nick, [round_int(self.canvas.xcor),
+                                           round_int(self.canvas.ycor)]])))
+            if put_pen_back_down:
+                self.send_event('p|%s' % (data_to_string([nick, True])))
+        self.turtle_movement_to_share = None
+
     def _mouse_move(self, x, y):
         """ Process mouse movements """
         self.block_operation = 'move'
@@ -1467,20 +1486,17 @@ class TurtleArtWindow():
                                                                   sy + dy)
                 if self.canvas.pendown:
                     self.canvas.setpen(False)
-                    self.canvas.setxy(tx, ty)
+                    self.canvas.setxy(tx, ty, share=False)
                     self.canvas.setpen(True)
                 else:
-                    self.canvas.setxy(tx, ty)
+                    self.canvas.setxy(tx, ty, share=False)
             else:
                 dx = x - sx - self.selected_turtle.spr.rect.width / 2
                 dy = y - sy - self.selected_turtle.spr.rect.height / 2
                 self.canvas.seth(int(dragx + atan2(dy, dx) / DEGTOR + 5) / \
-                                     10 * 10)
+                                     10 * 10, share=False)
                 self.lc.update_label_value('heading', self.canvas.heading)
-                if self.sharing():  # share turtle rotation
-                    self.send_event("r|%s" % (
-                            data_to_string([self.selected_turtle.get_name(),
-                                            round_int(self.canvas.heading)])))
+            self.turtle_movement_to_share = self.selected_turtle
 
         # If we are hoving, show popup help.
         elif self.drag_group is None:
@@ -1616,6 +1632,8 @@ class TurtleArtWindow():
         """ Button release """
         x, y = xy(event)
         self.button_release(x, y)
+        if self.turtle_movement_to_share is not None:
+            self._share_mouse_move()
         return True
 
     def button_release(self, x, y):
