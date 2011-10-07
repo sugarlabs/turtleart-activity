@@ -1,3 +1,26 @@
+117
+
+ENHANCEMENTS
+* Palettes float while scrolling the canvas so that they are always at
+  hand (#3011)
+* Added labels for neg. angles to polar coordinate overlay (#2650)
+* Enabled Delete key when present (#3052)
+* Added sensor.py example to pysamples (#3059)
+* New translations
+
+BUG FIXES
+* Fixed problem with palette selection on old-style toolbars and GNOME
+  version (#3094)
+* Reverted patch to address #2633 since it caused Help label to disappear on
+  XO 1.75 machines
+* Accounted for block overlap in Python load_block.py (#3115)
+* Fixed problem with launching in GNOME (#3133)
+* Added missing comments to Python block code (#3159)
+* Removed misleading tail on remote turtle labels (#3164)
+* Fixed rounding error in positioning remote turtles (#3163)
+* Consolidated turtle movements to prevent network overload when sharing
+  (#3162)
+
 116
 
 ENHANCEMENTS
