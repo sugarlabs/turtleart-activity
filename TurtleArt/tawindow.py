@@ -37,7 +37,6 @@ except ImportError:
 
 import os
 import os.path
-import dbus
 
 from math import atan2, pi
 DEGTOR = 2 * pi / 360
@@ -51,7 +50,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     MACROS, TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, \
     CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, NO_IMPORT, \
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
-    EXPANDABLE_ARGS, XO1, XO15, XO175, UNKNOWN, TITLEXY, CONTENT_ARGS, \
+    EXPANDABLE_ARGS, XO1, XO15, XO175, TITLEXY, CONTENT_ARGS, \
     CONSTANTS, EXPAND_SKIN
 from tapalette import palette_names, palette_blocks, expandable_blocks, \
     block_names, content_blocks, default_values, special_names, block_styles, \
@@ -71,7 +70,6 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
     get_hardware, debug_output, error_output, data_to_string
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
-from dbus.mainloop.glib import DBusGMainLoop
 
 if GST_AVAILABLE:
     from tagplay import stop_media
@@ -2621,6 +2619,9 @@ class TurtleArtWindow():
 
     def load_block(self, b, offset=0):
         """ Restore individual blocks from saved state """
+        if self.running_sugar:
+            from sugar.datastore import datastore
+
         # A block is saved as: (i, (btype, value), x, y, (c0,... cn))
         # The x, y position is saved/loaded for backward compatibility
         btype, value = b[1], None
@@ -2662,7 +2663,6 @@ class TurtleArtWindow():
             if value > 0:  # catch deprecated format (#2501)
                 self.python_code = None
                 if self.running_sugar:
-                    from sugar.datastore import datastore
                     try:
                         dsobject = datastore.get(value)
                     except:  # Should be IOError, but dbus error is raised
@@ -2697,7 +2697,6 @@ class TurtleArtWindow():
             elif btype in ['video', 'audio', 'description']:
                 self._block_skin(btype + 'on', blk)
             elif self.running_sugar:
-                from sugar.datastore import datastore
                 try:
                     dsobject = datastore.get(blk.values[0])
                     if not movie_media_type(dsobject.file_path[-4:]):
