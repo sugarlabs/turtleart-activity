@@ -118,8 +118,6 @@ class TurtleArtWindow():
             debug_output("bad win type %s" % (type(canvas_window)), False)
 
         if self.running_sugar:
-            # Sugar-specific imports
-            from sugar.datastore import datastore
             from sugar import profile
 
             self.activity = parent
@@ -2477,6 +2475,9 @@ class TurtleArtWindow():
 
         # if we are running Sugar, copy the file into the Journal
         if self.running_sugar:
+            from sugar.datastore import datastore
+            from sugar import profile
+
             dsobject = datastore.create()
             dsobject.metadata['title'] = os.path.basename(fname)
             dsobject.metadata['icon-color'] = \
@@ -2661,6 +2662,7 @@ class TurtleArtWindow():
             if value > 0:  # catch deprecated format (#2501)
                 self.python_code = None
                 if self.running_sugar:
+                    from sugar.datastore import datastore
                     try:
                         dsobject = datastore.get(value)
                     except:  # Should be IOError, but dbus error is raised
@@ -2695,6 +2697,7 @@ class TurtleArtWindow():
             elif btype in ['video', 'audio', 'description']:
                 self._block_skin(btype + 'on', blk)
             elif self.running_sugar:
+                from sugar.datastore import datastore
                 try:
                     dsobject = datastore.get(blk.values[0])
                     if not movie_media_type(dsobject.file_path[-4:]):
@@ -2944,6 +2947,9 @@ class TurtleArtWindow():
         self.saved_pictures.append(file_path)
 
         if self.running_sugar:
+            from sugar.datastore import datastore
+            from sugar import profile
+
             dsobject = datastore.create()
             if len(name) == 0:
                 dsobject.metadata['title'] = "%s %s" % \
