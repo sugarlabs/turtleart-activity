@@ -512,7 +512,7 @@ class TurtleGraphics:
                                                      self.fgrgb[2]))
 
     def set_textcolor(self):
-        """ Set the text color to foreground color. """
+        """ Deprecated: Set the text color to foreground color. """
         return
 
     def setpen(self, bool, share=True):
@@ -602,16 +602,16 @@ class TurtleGraphics:
 
     def turtle_to_screen_coordinates(self, x, y):
         """ The origin of turtle coordinates is the center of the screen """
-        return self.width / 2 + x, self.invert_y_coordinate(y)
+        return self.width / 2. + x, self.invert_y_coordinate(y)
 
     def screen_to_turtle_coordinates(self, x, y):
         """ The origin of the screen coordinates is the upper left corner """
-        return x - self.width / 2, self.invert_y_coordinate(y)
+        return x - self.width / 2., self.invert_y_coordinate(y)
 
     def invert_y_coordinate(self, y):
         """ Positive y goes up in turtle coordinates, down in sceeen
         coordinates """
-        return self.height / 2 - y
+        return self.height / 2. - y
 
     def draw_line(self, x1, y1, x2, y2):
         """ Draw a line """
@@ -650,8 +650,8 @@ class TurtleGraphics:
         """ Move the turtle """
         x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
         self.tw.active_turtle.move(
-            (int(self.cx + x - self.tw.active_turtle.spr.rect.width / 2),
-             int(self.cy + y - self.tw.active_turtle.spr.rect.height / 2)))
+            (int(self.cx + x - self.tw.active_turtle.spr.rect.width / 2.),
+             int(self.cy + y - self.tw.active_turtle.spr.rect.height / 2.)))
 
     def invalt(self, x, y, w, h):
         """ Mark a region for refresh """
@@ -667,7 +667,7 @@ class TurtleGraphics:
             g <<= 8
             b <<= 8
             if self.shade != 50:
-                sh = (wrap100(self.shade) - 50) / 50.0
+                sh = (wrap100(self.shade) - 50) / 50.
                 r = calc_shade(r, sh, True)
                 g = calc_shade(g, sh, True)
                 b = calc_shade(b, sh, True)
@@ -718,8 +718,8 @@ class TurtleGraphics:
         self.tw.active_turtle.show()
         tx, ty = self.tw.active_turtle.get_xy()
         self.xcor, self.ycor = self.screen_to_turtle_coordinates(tx, ty)
-        self.xcor += self.tw.active_turtle.spr.rect.width / 2
-        self.ycor -= self.tw.active_turtle.spr.rect.height / 2
+        self.xcor += self.tw.active_turtle.spr.rect.width / 2.
+        self.ycor -= self.tw.active_turtle.spr.rect.height / 2.
         self.heading = self.tw.active_turtle.get_heading()
         self.setcolor(self.tw.active_turtle.get_color(), False)
         self.setgray(self.tw.active_turtle.get_gray(), False)
