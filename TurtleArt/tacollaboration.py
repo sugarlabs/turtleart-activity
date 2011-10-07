@@ -232,7 +232,7 @@ class Collaboration():
                     self._get_colors()
             event_payload = data_to_string(self._tw.remote_turtle_dictionary)
             self.send_event('T|' + event_payload)
-            self._send_my_xy()  # And the sender should report her xy position.
+            self.send_my_xy()  # And the sender should report her xy position.
 
     def _receive_turtle_dict(self, payload):
         ''' Any time there is a new joiner, an updated turtle dictionary is
@@ -260,10 +260,11 @@ class Collaboration():
                         debug_output('%s already in remote turtle dictionary' \
                                          % (nick), self._tw.running_sugar)
             self.waiting_for_turtles = False
-        self._send_my_xy()
+        self.send_my_xy()
 
-    def _send_my_xy(self):
-        ''' Set xy location so joiner can sync turtle positions. '''
+    def send_my_xy(self):
+        ''' Set xy location so joiner can sync turtle positions. Should be
+        used to sync positions after turtle drag. '''
         self._tw.canvas.set_turtle(self._get_nick())
         if self._tw.canvas.pendown:
             self.send_event('p|%s' % (data_to_string([self._get_nick(),

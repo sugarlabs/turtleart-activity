@@ -133,6 +133,10 @@ class Collaboration_plugin(Plugin):
 
         return neighborhood_menu
 
+    def send_xy(self):
+        ''' Resync xy position (and orientation) of my turtle. '''
+        self._collaboration.send_my_xy()
+
     def get_colors(self):
         return self._colors
 

@@ -733,6 +733,10 @@ class TurtleArtActivity(activity.Activity):
         self._collaboration = Collaboration(self.tw, self)
         self._collaboration.setup()
 
+    def send_xy(self):
+        ''' Resync xy position (and orientation) of my turtle. '''
+        self._collaboration.send_my_xy()
+
     def _setup_visibility_handler(self):
         ''' Notify me when the visibility state changes. '''
         self.add_events(gtk.gdk.VISIBILITY_NOTIFY_MASK)
