@@ -106,8 +106,8 @@ passed by an argument.'),
     ]
 
 FOLLOWME_STRINGS = [
-    _('The camera was not found.')
-    _('Error on the initialization of the camera.')
+    _('The camera was not found.'),
+    _('Error on the initialization of the camera.'),
     _('FollowMe'),
     _('follow a RGB color'),
     _('follow a turtle color'),
