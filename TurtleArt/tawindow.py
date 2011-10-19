@@ -127,6 +127,7 @@ class TurtleArtWindow():
         self.path = path
         self.load_save_folder = os.path.join(path, 'samples')
         self.py_load_save_folder = os.path.join(path, 'pysamples')
+        self.used_block_list = []  # Which blocks has the user used?
         self.save_folder = None
         self.save_file_name = None
         self.width = gtk.gdk.screen_width()
@@ -1308,6 +1309,8 @@ class TurtleArtWindow():
                     newblk.connections[i + 1] = argblk
         self.drag_group = find_group(newblk)
         self.block_operation = 'new'
+        if newblk.name not in self.used_block_list:
+            self.used_block_list.append(newblk.name)
 
     def _new_macro(self, name, x, y):
         """ Create a "macro" (predefined stack of blocks). """
@@ -2759,6 +2762,8 @@ class TurtleArtWindow():
             blk.spr.set_layer(BLOCK_LAYER)
         if check_dock:
             blk.connections = 'check'
+        if blk.name not in self.used_block_list:
+            self.used_block_list.append(blk.name)
         return blk
 
     def load_start(self, ta_file=None):
