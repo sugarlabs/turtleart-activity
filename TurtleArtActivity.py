@@ -80,6 +80,13 @@ class TurtleArtActivity(activity.Activity):
         _logger.debug('_setup_sharing')
         self._setup_sharing()
 
+        if 'activity_count' in self.metadata:
+            count = int(self.metadata['activity_count'])
+            count += 1
+        else:
+            count = 1
+        self.metadata['activity_count'] = str(count)
+
     # Activity toolbar callbacks
 
     def do_save_as_html_cb(self, button):
@@ -747,7 +754,8 @@ class TurtleArtActivity(activity.Activity):
         _logger.debug('Write file: %s' % file_path)
         self.metadata['mime_type'] = 'application/x-turtle-art'
         self.metadata['turtle_blocks'] = ''.join(self.tw.used_block_list)
-        self.metadata['activity_data'] = data_to_string(['turtle_blocks'])
+        self.metadata['activity_data'] = data_to_string(['activity_count',
+                                                         'turtle_blocks'])
         data_to_file(self.tw.assemble_data_to_save(), file_path)
 
     def read_file(self, file_path, run_it=True):
