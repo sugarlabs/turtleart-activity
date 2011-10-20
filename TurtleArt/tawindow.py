@@ -1310,7 +1310,7 @@ class TurtleArtWindow():
         self.drag_group = find_group(newblk)
         self.block_operation = 'new'
         if newblk.name not in self.used_block_list:
-            self.used_block_list.append(newblk.name)
+            self.used_block_list.append(newblk.name + ' ')
 
     def _new_macro(self, name, x, y):
         """ Create a "macro" (predefined stack of blocks). """
@@ -2763,7 +2763,7 @@ class TurtleArtWindow():
         if check_dock:
             blk.connections = 'check'
         if blk.name not in self.used_block_list:
-            self.used_block_list.append(blk.name)
+            self.used_block_list.append(blk.name + ' ')
         return blk
 
     def load_start(self, ta_file=None):
