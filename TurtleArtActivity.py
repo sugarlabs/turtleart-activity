@@ -80,12 +80,14 @@ class TurtleArtActivity(activity.Activity):
         _logger.debug('_setup_sharing')
         self._setup_sharing()
 
-        if 'activity_count' in self.metadata:
-            count = int(self.metadata['activity_count'])
+        # TRANS: activity count is the number of times this instance
+        # has been accessed
+        if _('activity count') in self.metadata:
+            count = int(self.metadata[_('activity count')])
             count += 1
         else:
             count = 1
-        self.metadata['activity_count'] = str(count)
+        self.metadata[_('activity count')] = str(count)
 
     # Activity toolbar callbacks
 
@@ -753,9 +755,9 @@ class TurtleArtActivity(activity.Activity):
         ''' Write the project to the Journal. '''
         _logger.debug('Write file: %s' % file_path)
         self.metadata['mime_type'] = 'application/x-turtle-art'
-        self.metadata['turtle_blocks'] = ''.join(self.tw.used_block_list)
-        self.metadata['activity_data'] = data_to_string(['activity_count',
-                                                         'turtle_blocks'])
+        self.metadata[_('turtle blocks')] = ''.join(self.tw.used_block_list)
+        self.metadata['activity_data'] = data_to_string([_('activity count'),
+                                                         _('turtle blocks')])
         data_to_file(self.tw.assemble_data_to_save(), file_path)
 
     def read_file(self, file_path, run_it=True):
