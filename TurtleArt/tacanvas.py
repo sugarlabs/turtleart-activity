@@ -284,6 +284,7 @@ class TurtleGraphics:
         """ Draw an arc """
         self.gc.set_foreground(self.fgcolor)
         rr = r * self.tw.coord_scale
+        self.rarc(a, rr)
         try:
             if a < 0:
                 self.larc(-a, rr)
@@ -314,8 +315,9 @@ class TurtleGraphics:
         w = int(2 * r)
         h = w
         if self.pendown:
-            self.canvas.images[0].draw_arc(self.gc, False, x, y, w, h,
-                                int(180 - self.heading - a) * 64, int(a) * 64)
+            self.canvas.images[0].draw_arc(self.gc, False, int(x), int(y), w,
+                                           h, int(180 - self.heading - a) * 64,
+                                           int(a) * 64)
             self.invalt(x - self.pensize * self.tw.coord_scale / 2 - 3,
                         y - self.pensize * self.tw.coord_scale / 2 - 3,
                         w + self.pensize * self.tw.coord_scale + 6,
@@ -346,8 +348,8 @@ class TurtleGraphics:
         w = int(2 * r)
         h = w
         if self.pendown:
-            self.canvas.images[0].draw_arc(self.gc, False, x, y, w, h,
-                                           int(360 - self.heading) * 64,
+            self.canvas.images[0].draw_arc(self.gc, False, int(x), int(y),
+                                           w, h, int(360 - self.heading) * 64,
                                            int(a) * 64)
             self.invalt(x - self.pensize * self.tw.coord_scale / 2 - 3,
                         y - self.pensize * self.tw.coord_scale / 2 - 3,
