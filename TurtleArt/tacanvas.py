@@ -284,7 +284,6 @@ class TurtleGraphics:
         """ Draw an arc """
         self.gc.set_foreground(self.fgcolor)
         rr = r * self.tw.coord_scale
-        self.rarc(a, rr)
         try:
             if a < 0:
                 self.larc(-a, rr)
