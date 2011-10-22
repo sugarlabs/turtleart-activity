@@ -1312,7 +1312,8 @@ class TurtleArtWindow():
         if newblk.spr.labels[0] is not None and \
                 newblk.name not in ['', 'number', 'string']:
             if newblk.spr.labels[0] not in self.used_block_list:
-                self.used_block_list.append(newblk.spr.labels[0] + ' ')
+                self.used_block_list.append(newblk.spr.labels[0])
+                self.used_block_list.append(' ')
 
     def _new_macro(self, name, x, y):
         """ Create a "macro" (predefined stack of blocks). """
@@ -2765,9 +2766,10 @@ class TurtleArtWindow():
         if check_dock:
             blk.connections = 'check'
         if blk.spr.labels[0] is not None and \
-                blk.name not in ['', 'number', 'string']:
+                blk.name not in ['', ' ', 'number', 'string']:
             if blk.spr.labels[0] not in self.used_block_list:
-                self.used_block_list.append(blk.spr.labels[0] + ' ')
+                self.used_block_list.append(blk.spr.labels[0])
+                self.used_block_list.append(' ')
         return blk
 
     def load_start(self, ta_file=None):
