@@ -1,3 +1,17 @@
+119
+
+ENHANCEMENTS
+* Save list of blocks used as a searchable tag in the Journal
+
+BUG FIXES
+* Fixed type error introduced to arc commands by patch to address #3164
+
+
+118
+
+ENHANCEMENTS
+* New translations
+
 117
 
 ENHANCEMENTS
