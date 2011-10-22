@@ -1,3 +1,8 @@
+120
+
+BUG FIX
+* Removed debugging call that caused "doubling" of arcs #3214
+
 119
 
 ENHANCEMENTS
