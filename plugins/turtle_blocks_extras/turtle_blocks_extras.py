@@ -593,7 +593,7 @@ click to open'))
 
         palette.add_block('fullscreen',
                           style='basic-style-extended-vertical',
-                          label=_('full screen'),
+                          label=_('Fullscreen').lower(),
                           prim_name='fullscreen',
                           help_string=_('hides the Sugar toolbars'))
         self.tw.lc.def_prim('fullscreen', 0,
