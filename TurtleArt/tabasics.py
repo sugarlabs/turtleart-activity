@@ -1133,7 +1133,7 @@ variable'))
         """ Numeric and logical equal """
         try:
             return float(x) == float(y)
-        except TypeError:
+        except ValueError:
             typex, typey = False, False
             if strtype(x):
                 typex = True
