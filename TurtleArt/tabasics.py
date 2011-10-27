@@ -1143,7 +1143,7 @@ variable'))
                 return x == y
             try:
                 return self._string_to_num(x) == self._string_to_num(y)
-            except ValueError:
+            except TypeError:
                 raise logoerror("#syntaxerror")
 
     def _prim_less(self, x, y):
