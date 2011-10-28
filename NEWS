@@ -1,3 +1,18 @@
+122
+
+ENHANCEMENTS
+* New translations
+
+BUG FIX
+* Allow pysample/*py files to be loaded into projects from Sugar
+* Catch value error in string comparisons with Boolean blocks
+* Added missing sugar.datastore imports
+
+121
+
+ENHANCEMENTS
+* More consistent block labeling (#3215)
+
 120
 
 BUG FIX
@@ -10,7 +25,6 @@ ENHANCEMENTS
 
 BUG FIXES
 * Fixed type error introduced to arc commands by patch to address #3164
-
 
 118
 
