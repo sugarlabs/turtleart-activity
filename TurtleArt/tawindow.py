@@ -36,7 +36,6 @@ except ImportError:
     GST_AVAILABLE = False
 
 import os
-import os.path
 
 from math import atan2, pi
 DEGTOR = 2 * pi / 360
@@ -2492,6 +2491,8 @@ class TurtleArtWindow():
             try:
                 datastore.write(dsobject)
                 id = dsobject.object_id
+                debug_output("Copying %s to the datastore" % (fname),
+                             self.running_sugar)
             except IOError:
                 error_output("Error copying %s to the datastore" % (fname),
                              self.running_sugar)
@@ -2507,6 +2508,12 @@ class TurtleArtWindow():
                 self.set_userdefined(self.drag_group[0])
                 self.drag_group[0].values.append(dsobject.object_id)
                 self.drag_group = None
+            # Save object ID in block value
+            if self.selected_blk is not None:
+                if len(self.selected_blk.values) == 0:
+                    self.selected_blk.values.append(dsobject.object_id)
+                else:
+                    self.selected_blk.values[0] = dsobject.object_id
         else:
             if len(self.selected_blk.values) == 0:
                 self.selected_blk.values.append(fname)
@@ -2527,6 +2534,7 @@ class TurtleArtWindow():
         except IOError:
             debug_output("couldn't open %s" % dsobject.file_path,
                          self.running_sugar)
+        # Save the object id as the block value
         if blk is None:
             blk = self.selected_blk
         if blk is not None:
@@ -2669,14 +2677,25 @@ class TurtleArtWindow():
             if value > 0:  # catch deprecated format (#2501)
                 self.python_code = None
                 if self.running_sugar:
-                    try:
-                        dsobject = datastore.get(value)
-                    except:  # Should be IOError, but dbus error is raised
-                        dsobject = None
-                        debug_output("couldn't get dsobject %s" % value,
-                                     self.running_sugar)
-                    if dsobject is not None:
-                        self.load_python_code_from_journal(dsobject, blk)
+                    debug_output(value, self.running_sugar)
+                    # For security reasons, only open files found in
+                    # Python samples directory
+                    if os.path.exists(os.path.join(self.path, value)) and \
+                            value[0:9] == 'pysamples':
+                        self.selected_blk = blk
+                        self.load_python_code_from_file(
+                            fname=os.path.join(self.path, value),
+                            add_new_block=False)
+                        self.selected_blk = None
+                    else:  # or files from the Journal
+                        try:
+                            dsobject = datastore.get(value)
+                        except:  # Should be IOError, but dbus error is raised
+                            dsobject = None
+                            debug_output("couldn't get dsobject %s" % value,
+                                         self.running_sugar)
+                        if dsobject is not None:
+                            self.load_python_code_from_journal(dsobject, blk)
                 else:
                     self.selected_blk = blk
                     self.load_python_code_from_file(fname=value,
