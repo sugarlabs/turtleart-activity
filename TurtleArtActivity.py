@@ -24,6 +24,7 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gobject
+import dbus
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -58,10 +59,14 @@ from TurtleArt.tacollaboration import Collaboration
 
 
 class TurtleArtActivity(activity.Activity):
+    ''' Activity subclass for Turtle Art '''
 
     def __init__(self, handle):
-        ''' Activity subclass for Turtle Art '''
-        super(TurtleArtActivity, self).__init__(handle)
+        ''' Set up the toolbars, canvas, sharing, etc. '''
+        try:
+            super(TurtleArtActivity, self).__init__(handle)
+        except dbus.exceptions.DBusException, e:
+            _logger.error(str(e))
 
         self._check_ver_change(get_path(activity, 'data'))
         self._setup_visibility_handler()
