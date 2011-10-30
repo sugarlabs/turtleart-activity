@@ -24,6 +24,7 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
+import cairo
 
 import getopt
 import sys
@@ -178,7 +179,10 @@ class TurtleMain():
 
     def _build_window(self):
         ''' Initialize the TurtleWindow instance. '''
-        self.tw = TurtleArtWindow(self.canvas, self._dirname)
+        print 'calling do_realize from _build_windoe'
+        self.do_realize()
+        self.tw = TurtleArtWindow(self.canvas, self._dirname,
+                                  turtle_canvas=self.turtle_canvas)
         self.tw.save_folder = os.path.expanduser('~')
 
     def _init_vars(self):
@@ -274,6 +278,8 @@ class TurtleMain():
             win.set_icon_from_file(os.path.join(self._dirname,
                                                 self._ICON_SUBPATH))
         win.connect('delete_event', self._quit_ta)
+        print 'connecting realize event'
+        win.connect('realize', self.do_realize)
 
         vbox = gtk.VBox(False, 0)
         win.add(vbox)
@@ -297,6 +303,19 @@ class TurtleMain():
         win.show_all()
         self.win = win
         self.canvas = canvas
+
+    def do_realize(self, foo=None):
+        """ Makes a cairo surface on which the turtle draws """
+        print 'do_realize'
+        if not hasattr(self, 'canvas'):
+            print 'no canvas yet...'
+            return
+        win = self.canvas.get_window()
+        cr = win.cairo_create()
+        surface = cr.get_target()
+        self.turtle_canvas = surface.create_similar(
+            cairo.CONTENT_COLOR, gtk.gdk.screen_width() * 2,
+            gtk.gdk.screen_height() * 2)
 
     def _get_menu_bar(self):
         ''' Instead of Sugar toolbars, use GNOME menus. '''

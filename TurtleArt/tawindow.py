@@ -80,10 +80,11 @@ class TurtleArtWindow():
     _PLUGIN_SUBPATH = 'plugins'
 
     def __init__(self, canvas_window, path, parent=None,
-                 mycolors=None, mynick=None):
+                 mycolors=None, mynick=None, turtle_canvas=None):
         self._loaded_project = ''
         self._sharing = False
         self.parent = parent
+        self.turtle_canvas = turtle_canvas
         self.send_event = None  # method to send events over the network
         self.gst_available = GST_AVAILABLE
         if type(canvas_window) == gtk.DrawingArea:
@@ -210,7 +211,7 @@ class TurtleArtWindow():
         self.block_list = Blocks(font_scale_factor=self.scale,
                                  decimal_point=self.decimal_point)
         if self.interactive_mode:
-            self.sprite_list = Sprites(self.window, self.area, self.gc)
+            self.sprite_list = Sprites(self.window)
         else:
             self.sprite_list = None
 
@@ -356,6 +357,7 @@ class TurtleArtWindow():
         self.window.add_events(gtk.gdk.BUTTON_RELEASE_MASK)
         self.window.add_events(gtk.gdk.POINTER_MOTION_MASK)
         self.window.add_events(gtk.gdk.KEY_PRESS_MASK)
+        # self.window.connect('realize', self.do_realize)
         self.window.connect("expose-event", self._expose_cb)
         self.window.connect("button-press-event", self._buttonpress_cb)
         self.window.connect("button-release-event", self._buttonrelease_cb)
@@ -417,10 +419,32 @@ class TurtleArtWindow():
         """ Check to see if project has any blocks in use """
         return len(self.just_blocks()) == 1
 
-    def _expose_cb(self, win, event):
+    def _expose_cb(self, win=None, event=None):
         """ Repaint """
-        self.sprite_list.refresh(event)
+        self.do_expose_event(event)
         return True
+
+    # Handle the expose-event by drawing
+    def do_expose_event(self, event=None):
+
+        # Create the cairo context
+        cr = self.window.window.cairo_create()
+
+        if event is None:
+            cr.rectangle(self.rect.x, self.rect.y,
+                         self.rect.width, self.rect.height)
+        else:
+        # Restrict Cairo to the exposed area; avoid extra work
+            cr.rectangle(event.area.x, event.area.y,
+                         event.area.width, event.area.height)
+        cr.clip()
+
+        if self.turtle_canvas is not None:
+            cr.set_source_surface(self.turtle_canvas)
+            cr.paint()
+
+        # Refresh sprite list
+        self.sprite_list.redraw_sprites(cr=cr)
 
     def eraser_button(self):
         """ Eraser_button (hide status block when clearing the screen.) """
@@ -548,7 +572,10 @@ class TurtleArtWindow():
             if self.running_sugar:
                 self.activity.recenter()
 
-        self.canvas.canvas.inval()
+        self.window.queue_draw_area(0,
+                                    0,
+                                    self.width,
+                                    self.height)
 
     def hideshow_palette(self, state):
         """ Hide or show palette  """
@@ -1563,7 +1590,11 @@ class TurtleArtWindow():
             self.rect.y = miny
             self.rect.width = maxx - minx
             self.rect.height = maxy - miny
-            self.sprite_list.area.invalidate_rect(self.rect, False)
+            self.window.queue_draw_area(self.rect.x,
+                                        self.rect.y,
+                                        self.rect.width,
+                                        self.rect.height)
+            self._expose_cb()
 
         self.dx += dx
         self.dy += dy

@@ -121,6 +121,18 @@ class TurtleGraphics:
         self.tw = tw
         self.width = width
         self.height = height
+        
+        self.canvas = self.tw.window.window.cairo_create()
+        self.canvas.set_source_surface(self.tw.turtle_canvas)
+        self.canvas.set_source_rgb(1., 1., 1.)
+        self.canvas.rectangle(0, 0, width, height)
+        self.canvas.fill()
+
+        self.cx = 0
+        self.cy = 0
+        self.fgcolor = 'red'
+
+        '''
         if self.tw.interactive_mode:
             self.canvas = Sprite(tw.sprite_list, 0, 0,
                 gtk.gdk.Pixmap(self.tw.area, self.width * 2,
@@ -134,10 +146,11 @@ class TurtleGraphics:
         self.cm = self.gc.get_colormap()
         self.fgrgb = [255, 0, 0]
         self.fgcolor = self.cm.alloc_color('red')
+        '''
         self.bgrgb = [255, 248, 222]
-        self.bgcolor = self.cm.alloc_color('#fff8de')
+        # self.bgcolor = self.cm.alloc_color('#fff8de')
         self.textsize = 48  # deprecated
-        self.textcolor = self.cm.alloc_color('red')  # deprecated
+        # self.textcolor = self.cm.alloc_color('red')  # deprecated
         self.tw.active_turtle.show()
         self.shade = 0
         self.pendown = False
@@ -202,10 +215,15 @@ class TurtleGraphics:
 
     def clearscreen(self, share=True):
         """Clear the canvas and reset most graphics attributes to defaults."""
-        rect = gtk.gdk.Rectangle(0, 0, self.width * 2, self.height * 2)
-        self.gc.set_foreground(self.bgcolor)
-        self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
-        self.invalt(0, 0, self.width, self.height)
+        self.canvas.set_source_rgb(1., 1., 0.)
+        self.canvas.rectangle(0, 0, self.width, self.height)
+        self.canvas.fill()
+
+
+        # rect = gtk.gdk.Rectangle(0, 0, self.width * 2, self.height * 2)
+        # self.gc.set_foreground(self.bgcolor)
+        # self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
+        # self.invalt(0, 0, self.width, self.height)
         self.setpensize(5, share)
         self.setgray(100, share)
         self.setcolor(0, share)
@@ -233,7 +251,7 @@ class TurtleGraphics:
     def forward(self, n, share=True):
         """ Move the turtle forward."""
         nn = n * self.tw.coord_scale
-        self.gc.set_foreground(self.fgcolor)
+        # self.gc.set_foreground(self.fgcolor)
         oldx, oldy = self.xcor, self.ycor
         try:
             self.xcor += nn * sin(self.heading * DEGTOR)
@@ -243,12 +261,22 @@ class TurtleGraphics:
                          self.tw.running_sugar)
             return
         if self.pendown:
-            self.draw_line(oldx, oldy, self.xcor, self.ycor)
+            # self.draw_line(oldx, oldy, self.xcor, self.ycor)
+            self.canvas.set_source_rgb(1.0, 0, 0)
+            self.canvas.move_to(0, 0)
+            self.canvas.line_to(100, 100)
+            # self.canvas.set_line_width(0.2)
+            self.canvas.stroke()
+
         self.move_turtle()
 
         if self.tw.sharing() and share:
             event = "f|%s" % (data_to_string([self._get_my_nick(), int(n)]))
             self.tw.send_event(event)
+        self.tw.window.queue_draw_area(0,
+                                       0,
+                                       self.width,
+                                       self.height)
 
     def seth(self, n, share=True):
         """ Set the turtle heading. """
@@ -398,8 +426,8 @@ class TurtleGraphics:
                          self.tw.running_sugar)
             return
         self.tw.active_turtle.set_pen_size(ps)
-        self.gc.set_line_attributes(int(self.pensize * self.tw.coord_scale),
-            gtk.gdk.LINE_SOLID, gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
+        # self.gc.set_line_attributes(int(self.pensize * self.tw.coord_scale),
+        #     gtk.gdk.LINE_SOLID, gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
         self.svg.set_stroke_width(self.pensize)
         if self.tw.sharing() and share:
             event = "w|%s" % (data_to_string([self._get_my_nick(),
@@ -507,7 +535,7 @@ class TurtleGraphics:
             b = calc_gray(b, self.gray)
             b = calc_shade(b, sh)
         self.fgrgb = [r >> 8, g >> 8, b >> 8]
-        self.fgcolor = self.cm.alloc_color(r, g, b)
+        # self.fgcolor = self.cm.alloc_color(r, g, b)
         self.svg.set_stroke_color("#%02x%02x%02x" % (self.fgrgb[0],
                                                      self.fgrgb[1],
                                                      self.fgrgb[2]))
