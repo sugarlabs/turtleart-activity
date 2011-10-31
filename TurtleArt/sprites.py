@@ -90,6 +90,7 @@ class Sprites:
         ''' Initialize an empty array of sprites '''
         self.widget = widget
         self.list = []
+        self.cr = None
 
     def set_cairo_context(self, cr):
         ''' Cairo context may be set or reset after __init__ '''
@@ -396,18 +397,20 @@ class Sprite:
 
     def label_width(self):
         ''' Calculate the width of a label '''
-        return self.rect.width
-        max = 0
-        for i in range(len(self.labels)):
-            # FIX ME: define a pango layout
-            pl = pango.Layout(pango.Context())  # context is missing arg
-            pl.set_text(self.labels[i])
-            self._fd.set_size(int(self._scale[i] * pango.SCALE))
-            pl.set_font_description(self._fd)
-            w = pl.get_size()[0] / pango.SCALE
-            if w > max:
-                max = w
-        return max
+        cr = pangocairo.CairoContext(self._sprites.cr)
+        if cr is not None:
+            max = 0
+            for i in range(len(self.labels)):
+                pl = cr.create_layout()
+                pl.set_text(self.labels[i])
+                self._fd.set_size(int(self._scale[i] * pango.SCALE))
+                pl.set_font_description(self._fd)
+                w = pl.get_size()[0] / pango.SCALE
+                if w > max:
+                    max = w
+            return max
+        else:
+            return self.rect.width
 
     def label_safe_width(self):
         ''' Return maximum width for a label '''

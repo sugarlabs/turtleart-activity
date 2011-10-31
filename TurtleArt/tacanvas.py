@@ -24,6 +24,7 @@ import gtk
 from math import sin, cos, pi
 import pango
 import cairo
+import pangocairo
 import base64
 from gettext import gettext as _
 
@@ -90,7 +91,7 @@ def calc_gray(c, g, invert=False):
 colors = {}
 DEGTOR = 2 * pi / 360
 
-color_table = (
+COLOR_TABLE = (
     0xFF0000, 0xFF0D00, 0xFF1A00, 0xFF2600, 0xFF3300,
     0xFF4000, 0xFF4D00, 0xFF5900, 0xFF6600, 0xFF7300,
     0xFF8000, 0xFF8C00, 0xFF9900, 0xFFA600, 0xFFB300,
@@ -123,33 +124,16 @@ class TurtleGraphics:
         self.height = height
         
         self.canvas = cairo.Context(self.tw.turtle_canvas)
+        self.tw.sprite_list.set_cairo_context(self.canvas)
         self.canvas.set_source_rgb(1., 1., 1.)
         self.canvas.rectangle(0, 0, width, height)
         self.canvas.fill()
 
         self.cx = 0
         self.cy = 0
-        self.fgcolor = 'red'
-
-        '''
-        if self.tw.interactive_mode:
-            self.canvas = Sprite(tw.sprite_list, 0, 0,
-                gtk.gdk.Pixmap(self.tw.area, self.width * 2,
-                               self.height * 2, -1))
-        else:
-            self.canvas = Sprite(None, 0, 0, self.tw.window)
-        self.canvas.set_layer(CANVAS_LAYER)
-        (self.cx, self.cy) = self.canvas.get_xy()
-        self.canvas.type = 'canvas'
-        self.gc = self.canvas.images[0].new_gc()
-        self.cm = self.gc.get_colormap()
         self.fgrgb = [255, 0, 0]
-        self.fgcolor = self.cm.alloc_color('red')
-        '''
         self.bgrgb = [255, 248, 222]
-        # self.bgcolor = self.cm.alloc_color('#fff8de')
         self.textsize = 48  # deprecated
-        # self.textcolor = self.cm.alloc_color('red')  # deprecated
         self.tw.active_turtle.show()
         self.shade = 0
         self.pendown = False
@@ -164,6 +148,7 @@ class TurtleGraphics:
         self.svg = SVG()
         self.svg.set_fill_color('none')
         self.tw.svg_string = ''
+
         self.clearscreen(False)
 
     def start_fill(self):
@@ -193,11 +178,10 @@ class TurtleGraphics:
 
     def fill_polygon(self, poly_points):
         minx, miny, w, h = calc_poly_bounds(poly_points)
+        '''
         self.canvas.images[0].draw_polygon(self.gc, True, poly_points)
-        self.invalt(minx - self.pensize * self.tw.coord_scale / 2 - 3,
-                    miny - self.pensize * self.tw.coord_scale / 2 - 3,
-                    w + self.pensize * self.tw.coord_scale + 6,
-                    h + self.pensize * self.tw.coord_scale + 6)
+        '''
+        print 'fix me: fill_polygon'
         if self.tw.saving_svg and self.pendown:
             self.svg.set_fill_color("#%02x%02x%02x" % (self.fgrgb[0],
                                                        self.fgrgb[1],
@@ -214,15 +198,13 @@ class TurtleGraphics:
 
     def clearscreen(self, share=True):
         """Clear the canvas and reset most graphics attributes to defaults."""
-        self.canvas.set_source_rgb(1., 1., 0.)
+        self.canvas.move_to(0, 0)
+        self.canvas.set_source_rgb(self.bgrgb[0] / 255.,
+                                   self.bgrgb[1] / 255.,
+                                   self.bgrgb[2] / 255.)
         self.canvas.rectangle(0, 0, self.width, self.height)
         self.canvas.fill()
-
-
-        # rect = gtk.gdk.Rectangle(0, 0, self.width * 2, self.height * 2)
-        # self.gc.set_foreground(self.bgcolor)
-        # self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
-        # self.invalt(0, 0, self.width, self.height)
+        self.inval()
         self.setpensize(5, share)
         self.setgray(100, share)
         self.setcolor(0, share)
@@ -250,7 +232,8 @@ class TurtleGraphics:
     def forward(self, n, share=True):
         """ Move the turtle forward."""
         nn = n * self.tw.coord_scale
-        # self.gc.set_foreground(self.fgcolor)
+        self.canvas.set_source_rgb(self.fgrgb[0] / 255., self.fgrgb[1] / 255.,
+                                   self.fgrgb[2] / 255.)
         oldx, oldy = self.xcor, self.ycor
         try:
             self.xcor += nn * sin(self.heading * DEGTOR)
@@ -260,12 +243,7 @@ class TurtleGraphics:
                          self.tw.running_sugar)
             return
         if self.pendown:
-            # self.draw_line(oldx, oldy, self.xcor, self.ycor)
-            self.canvas.set_source_rgb(1.0, 0, 0)
-            self.canvas.move_to(0, 0)
-            self.canvas.line_to(100, 100)
-            # self.canvas.set_line_width(0.2)
-            self.canvas.stroke()
+            self.draw_line(oldx, oldy, self.xcor, self.ycor)
 
         self.move_turtle()
 
@@ -309,7 +287,8 @@ class TurtleGraphics:
 
     def arc(self, a, r, share=True):
         """ Draw an arc """
-        self.gc.set_foreground(self.fgcolor)
+        self.canvas.set_source_rgb(self.fgrgb[0] / 255., self.fgrgb[1] / 255.,
+                                   self.fgrgb[2] / 255.)
         rr = r * self.tw.coord_scale
         try:
             if a < 0:
@@ -341,13 +320,12 @@ class TurtleGraphics:
         w = int(2 * r)
         h = w
         if self.pendown:
+            '''
             self.canvas.images[0].draw_arc(self.gc, False, int(x), int(y), w,
                                            h, int(180 - self.heading - a) * 64,
                                            int(a) * 64)
-            self.invalt(x - self.pensize * self.tw.coord_scale / 2 - 3,
-                        y - self.pensize * self.tw.coord_scale / 2 - 3,
-                        w + self.pensize * self.tw.coord_scale + 6,
-                        h + self.pensize * self.tw.coord_scale + 6)
+            '''
+            print 'fix me: rarc'
         self.right(a, False)
         self.xcor = cx - r * cos(self.heading * DEGTOR)
         self.ycor = cy + r * sin(self.heading * DEGTOR)
@@ -374,13 +352,12 @@ class TurtleGraphics:
         w = int(2 * r)
         h = w
         if self.pendown:
+            '''
             self.canvas.images[0].draw_arc(self.gc, False, int(x), int(y),
                                            w, h, int(360 - self.heading) * 64,
                                            int(a) * 64)
-            self.invalt(x - self.pensize * self.tw.coord_scale / 2 - 3,
-                        y - self.pensize * self.tw.coord_scale / 2 - 3,
-                        w + self.pensize * self.tw.coord_scale + 6,
-                        h + self.pensize * self.tw.coord_scale + 6)
+            '''
+            print 'fix me: larc'
         self.right(-a, False)
         self.xcor = cx + r * cos(self.heading * DEGTOR)
         self.ycor = cy - r * sin(self.heading * DEGTOR)
@@ -405,7 +382,9 @@ class TurtleGraphics:
             return
 
         if self.pendown and pendown:
-            self.gc.set_foreground(self.fgcolor)
+            self.canvas.set_source_rgb(self.fgrgb[0] / 255.,
+                                       self.fgrgb[1] / 255.,
+                                       self.fgrgb[2] / 255.)
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
         self.move_turtle()
 
@@ -425,8 +404,7 @@ class TurtleGraphics:
                          self.tw.running_sugar)
             return
         self.tw.active_turtle.set_pen_size(ps)
-        # self.gc.set_line_attributes(int(self.pensize * self.tw.coord_scale),
-        #     gtk.gdk.LINE_SOLID, gtk.gdk.CAP_ROUND, gtk.gdk.JOIN_MITER)
+        self.canvas.set_line_width(ps)
         self.svg.set_stroke_width(self.pensize)
         if self.tw.sharing() and share:
             event = "w|%s" % (data_to_string([self._get_my_nick(),
@@ -467,6 +445,10 @@ class TurtleGraphics:
                                               round_int(self.gray)]))
             self.tw.send_event(event)
 
+    def set_textcolor(self):
+        """ Deprecated: Set the text color to foreground color. """
+        return
+
     def settextcolor(self, c):  # deprecated
         """ Set the text color """
         return
@@ -499,11 +481,13 @@ class TurtleGraphics:
         oldc, olds = self.color, self.shade
         self.setcolor(c, False)
         self.setshade(s, False)
-        rect = gtk.gdk.Rectangle(0, 0, self.width * 2, self.height * 2)
-        self.gc.set_foreground(self.fgcolor)
+        self.canvas.set_source_rgb(self.fgrgb[0] / 255.,
+                                   self.fgrgb[1] / 255.,
+                                   self.fgrgb[2] / 255.)
         self.bgrgb = self.fgrgb[:]
-        self.canvas.images[0].draw_rectangle(self.gc, True, *rect)
-        self.invalt(0, 0, self.width, self.height)
+        self.canvas.rectangle(0, 0, self.width, self.height)
+        self.canvas.fill()
+        self.inval()
         self.setcolor(oldc, False)
         self.setshade(olds, False)
         self.tw.svg_string = ''
@@ -523,7 +507,7 @@ class TurtleGraphics:
             b = 0x0000
         else:
             sh = (wrap100(self.shade) - 50) / 50.0
-            rgb = color_table[wrap100(self.color)]
+            rgb = COLOR_TABLE[wrap100(self.color)]
             r = (rgb >> 8) & 0xff00
             r = calc_gray(r, self.gray)
             r = calc_shade(r, sh)
@@ -534,14 +518,9 @@ class TurtleGraphics:
             b = calc_gray(b, self.gray)
             b = calc_shade(b, sh)
         self.fgrgb = [r >> 8, g >> 8, b >> 8]
-        # self.fgcolor = self.cm.alloc_color(r, g, b)
         self.svg.set_stroke_color("#%02x%02x%02x" % (self.fgrgb[0],
                                                      self.fgrgb[1],
                                                      self.fgrgb[2]))
-
-    def set_textcolor(self):
-        """ Deprecated: Set the text color to foreground color. """
-        return
 
     def setpen(self, bool, share=True):
         """ Lower or raise the pen """
@@ -555,8 +534,8 @@ class TurtleGraphics:
         """ Draw a pixbuf """
         w *= self.tw.coord_scale
         h *= self.tw.coord_scale
-        self.canvas.images[0].draw_pixbuf(self.gc, pixbuf, a, b, x, y)
-        self.invalt(x, y, w, h)
+        # self.canvas.images[0].draw_pixbuf(self.gc, pixbuf, a, b, x, y)
+        print 'fix me: draw_pixbuf'
         if self.tw.saving_svg:
             if self.tw.running_sugar:
                 # In Sugar, we need to embed the images inside the SVG
@@ -588,36 +567,27 @@ class TurtleGraphics:
     def draw_text(self, label, x, y, size, w, share=True):
         """ Draw text """
         w *= self.tw.coord_scale
-        self.gc.set_foreground(self.fgcolor)
+        cr = pangocairo.CairoContext(self.canvas)
+        pl = cr.create_layout()
         fd = pango.FontDescription('Sans')
-        try:
-            fd.set_size(int(size * self.tw.coord_scale) * pango.SCALE)
-        except TypeError, ValueError:
-            debug_output("bad value sent to %s" % (__name__),
-                         self.tw.running_sugar)
-            return
-        if self.tw.interactive_mode:
-            if type(label) == str or type(label) == unicode:
-                pl = self.tw.window.create_pango_layout(
-                    label.replace('\0', ' '))
-            elif type(label) == float or type(label) == int:
-                pl = self.tw.window.create_pango_layout(str(label))
-            else:
-                pl = self.tw.window.create_pango_layout(str(label))
-            pl.set_font_description(fd)
-            pl.set_width(int(w) * pango.SCALE)
-            self.canvas.images[0].draw_layout(self.gc, int(x), int(y), pl)
-            w, h = pl.get_pixel_size()
-            self.invalt(x, y, w, h)
-        else:  # pixmap doesn't support pango
-            message = str(label).replace('\0', ' ')
-            context = self.canvas.images[0].cairo_create()
-            context.set_font_size(size)
-            q, k, w, h = context.text_extents(message)[:4]
-            context.set_source_rgb(0, 0, 0)
-            context.move_to(x, y + h)
-            context.show_text(message)
-
+        fd.set_size(int(size * self.tw.coord_scale) * pango.SCALE)
+        pl.set_font_description(fd)
+        if type(label) == str or type(label) == unicode:
+            pl.set_text(label.replace('\0', ' '))
+        elif type(label) == float or type(label) == int:
+            pl.set_text(str(label))
+        else:
+            pl.set_text(str(label))
+        pl.set_width(int(w) * pango.SCALE)
+        cr.save()
+        cr.translate(x, y)
+        self.canvas.set_source_rgb(self.fgrgb[0] / 255.,
+                                   self.fgrgb[1] / 255.,
+                                   self.fgrgb[2] / 255.)
+        cr.update_layout(pl)
+        cr.show_layout(pl)
+        cr.restore()
+        self.inval()
         if self.tw.saving_svg:  # and self.pendown:
             self.tw.svg_string += self.svg.text(x, # - self.width / 2,
                                                 y + size, size, w, label)
@@ -654,16 +624,15 @@ class TurtleGraphics:
         else:
             miny, maxy = int(y2), int(y1)
         w, h = maxx - minx, maxy - miny
-        self.canvas.images[0].draw_line(self.gc, int(x1), int(y1), int(x2),
-                                        int(y2))
+
+        self.canvas.move_to(x1, y1)
+        self.canvas.line_to(x2, y2)
+        self.canvas.stroke()
+
         if self.fill and self.poly_points == []:
             self.poly_points.append((int(x1), int(y1)))
         if self.fill:
             self.poly_points.append((int(x2), int(y2)))
-        self.invalt(minx - int(self.pensize * self.tw.coord_scale / 2) - 3,
-                    miny - int(self.pensize * self.tw.coord_scale / 2) - 3,
-                    w + self.pensize * self.tw.coord_scale + 6,
-                    h + self.pensize * self.tw.coord_scale + 6)
         if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.new_path(x1, y1)
             self.tw.svg_string += self.svg.line_to(x2, y2)
@@ -680,13 +649,6 @@ class TurtleGraphics:
         self.tw.active_turtle.move(
             (int(self.cx + x - self.tw.active_turtle.spr.rect.width / 2.),
              int(self.cy + y - self.tw.active_turtle.spr.rect.height / 2.)))
-
-    def invalt(self, x, y, w, h):
-        """ Mark a region for refresh """
-        if self.tw.interactive_mode:
-            self.tw.area.invalidate_rect(
-                gtk.gdk.Rectangle(int(x + self.cx), int(y + self.cy),
-                                  int(w), int(h)), False)
 
     def get_color_index(self, r, g, b, a=0):
         """ Find the closest palette entry to the rgb triplet """
@@ -708,7 +670,7 @@ class TurtleGraphics:
             b >>= 8
         min_distance = 1000000
         closest_color = -1
-        for i, c in enumerate(color_table):
+        for i, c in enumerate(COLOR_TABLE):
             cr = int((c & 0xff0000) >> 16)
             cg = int((c & 0x00ff00) >> 8)
             cb = int((c & 0x0000ff))
@@ -767,3 +729,7 @@ class TurtleGraphics:
 
     def _get_my_nick(self):
         return self.tw.nick
+
+    def inval(self):
+        ''' Invalidate a region for gtk '''
+        self.tw.window.queue_draw_area(0, 0, self.width, self.height)
