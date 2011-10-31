@@ -123,11 +123,13 @@ class TurtleGraphics:
         self.width = width
         self.height = height
         
+        print type(self.tw.turtle_canvas)
+        # Build a cairo.Context from a cairo.XlibSurface
         self.canvas = cairo.Context(self.tw.turtle_canvas)
+        cr = gtk.gdk.CairoContext(self.canvas)
+        # print cr.get_current_point()
+        cr.set_line_cap(1)  # Set the line cap to be round
         self.tw.sprite_list.set_cairo_context(self.canvas)
-        self.canvas.set_source_rgb(1., 1., 1.)
-        self.canvas.rectangle(0, 0, width, height)
-        self.canvas.fill()
 
         self.cx = 0
         self.cy = 0
@@ -202,7 +204,7 @@ class TurtleGraphics:
         self.canvas.set_source_rgb(self.bgrgb[0] / 255.,
                                    self.bgrgb[1] / 255.,
                                    self.bgrgb[2] / 255.)
-        self.canvas.rectangle(0, 0, self.width, self.height)
+        self.canvas.rectangle(0, 0, self.width * 2, self.height * 2)
         self.canvas.fill()
         self.inval()
         self.setpensize(5, share)
@@ -319,6 +321,9 @@ class TurtleGraphics:
         x, y = self.turtle_to_screen_coordinates(int(cx - r), int(cy + r))
         w = int(2 * r)
         h = w
+        self.right(a, False)
+        self.xcor = cx - r * cos(self.heading * DEGTOR)
+        self.ycor = cy + r * sin(self.heading * DEGTOR)
         if self.pendown:
             '''
             self.canvas.images[0].draw_arc(self.gc, False, int(x), int(y), w,
@@ -326,9 +331,10 @@ class TurtleGraphics:
                                            int(a) * 64)
             '''
             print 'fix me: rarc'
-        self.right(a, False)
-        self.xcor = cx - r * cos(self.heading * DEGTOR)
-        self.ycor = cy + r * sin(self.heading * DEGTOR)
+            # arc?, arc_negative?
+            self.canvas.move_to(x, y)
+            self.canvas.curve_to(self.xcor, self.ycor)
+            self.canvas.stroke()
         if self.tw.saving_svg and self.pendown:
             x, y = self.turtle_to_screen_coordinates(oldx, oldy)
             self.tw.svg_string += self.svg.new_path(x, y)
@@ -485,7 +491,7 @@ class TurtleGraphics:
                                    self.fgrgb[1] / 255.,
                                    self.fgrgb[2] / 255.)
         self.bgrgb = self.fgrgb[:]
-        self.canvas.rectangle(0, 0, self.width, self.height)
+        self.canvas.rectangle(0, 0, self.width * 2, self.height * 2)
         self.canvas.fill()
         self.inval()
         self.setcolor(oldc, False)
@@ -534,8 +540,14 @@ class TurtleGraphics:
         """ Draw a pixbuf """
         w *= self.tw.coord_scale
         h *= self.tw.coord_scale
-        # self.canvas.images[0].draw_pixbuf(self.gc, pixbuf, a, b, x, y)
-        print 'fix me: draw_pixbuf'
+
+        # Build a gtk.gdk.CairoContext from a cairo.Context to access
+        # the set_source_pixbuf attribute.
+        cr = gtk.gdk.CairoContext(self.canvas)
+        cr.set_source_pixbuf(pixbuf, x, y)
+        cr.rectangle(x, y, w, h)
+        cr.fill()
+        self.inval()
         if self.tw.saving_svg:
             if self.tw.running_sugar:
                 # In Sugar, we need to embed the images inside the SVG
