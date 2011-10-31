@@ -159,6 +159,7 @@ class Sprite:
     def __init__(self, sprites, x, y, image):
         ''' Initialize an individual sprite '''
         self._sprites = sprites
+        self.save_xy = (x, y)  # remember initial (x, y) position
         self.rect = gtk.gdk.Rectangle(int(x), int(y), 0, 0)
         self._scale = [12]
         self._rescale = [True]
