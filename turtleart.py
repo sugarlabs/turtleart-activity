@@ -180,14 +180,13 @@ class TurtleMain():
     def _build_window(self):
         ''' Initialize the TurtleWindow instance. '''
         win = self.canvas.get_window()
-        self.cr = win.cairo_create()
-        surface = self.cr.get_target()
+        cr = win.cairo_create()
+        surface = cr.get_target()
         self.turtle_canvas = surface.create_similar(
             cairo.CONTENT_COLOR, gtk.gdk.screen_width() * 2,
             gtk.gdk.screen_height() * 2)
         self.tw = TurtleArtWindow(self.canvas, self._dirname,
-                                  turtle_canvas=self.turtle_canvas,
-                                  cr=self.cr)
+                                  turtle_canvas=self.turtle_canvas)
         self.tw.save_folder = os.path.expanduser('~')
 
     def _init_vars(self):

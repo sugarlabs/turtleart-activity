@@ -730,8 +730,8 @@ class TurtleArtActivity(activity.Activity):
     def _setup_canvas(self, canvas_window):
         ''' Initialize the turtle art canvas. '''
         win = self._canvas.get_window()
-        self.cr = win.cairo_create()
-        surface = self.cr.get_target()
+        cr = win.cairo_create()
+        surface = cr.get_target()
         self.turtle_canvas = surface.create_similar(
             cairo.CONTENT_COLOR, gtk.gdk.screen_width() * 2,
             gtk.gdk.screen_height() * 2)
@@ -739,8 +739,7 @@ class TurtleArtActivity(activity.Activity):
         self.tw = TurtleArtWindow(canvas_window, bundle_path, self,
                                   mycolors=profile.get_color().to_string(),
                                   mynick=profile.get_nick_name(),
-                                  turtle_canvas=self.turtle_canvas,
-                                  cr=self.cr)
+                                  turtle_canvas=self.turtle_canvas)
         self.tw.window.grab_focus()
         path = os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'], 'data')
         self.tw.save_folder = path

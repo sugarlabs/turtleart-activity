@@ -80,11 +80,10 @@ class TurtleArtWindow():
     _PLUGIN_SUBPATH = 'plugins'
 
     def __init__(self, canvas_window, path, parent=None,
-                 mycolors=None, mynick=None, turtle_canvas=None, cr=None):
+                 mycolors=None, mynick=None, turtle_canvas=None):
         self._loaded_project = ''
         self._sharing = False
         self.parent = parent
-        self.cr = cr
         self.turtle_canvas = turtle_canvas
         self.send_event = None  # method to send events over the network
         self.gst_available = GST_AVAILABLE
