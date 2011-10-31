@@ -122,8 +122,7 @@ class TurtleGraphics:
         self.width = width
         self.height = height
         
-        self.canvas = self.tw.window.window.cairo_create()
-        self.canvas.set_source_surface(self.tw.turtle_canvas)
+        self.canvas = cairo.Context(self.tw.turtle_canvas)
         self.canvas.set_source_rgb(1., 1., 1.)
         self.canvas.rectangle(0, 0, width, height)
         self.canvas.fill()
