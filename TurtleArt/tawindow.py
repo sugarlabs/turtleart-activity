@@ -80,10 +80,11 @@ class TurtleArtWindow():
     _PLUGIN_SUBPATH = 'plugins'
 
     def __init__(self, canvas_window, path, parent=None,
-                 mycolors=None, mynick=None, turtle_canvas=None):
+                 mycolors=None, mynick=None, turtle_canvas=None, cr=None):
         self._loaded_project = ''
         self._sharing = False
         self.parent = parent
+        self.cr = cr
         self.turtle_canvas = turtle_canvas
         self.send_event = None  # method to send events over the network
         self.gst_available = GST_AVAILABLE
@@ -1755,9 +1756,8 @@ class TurtleArtWindow():
 
     def _move_turtle(self, x, y):
         """ Move the selected turtle to (x, y). """
-        (cx, cy) = self.canvas.canvas.get_xy()
-        self.canvas.xcor = x - cx
-        self.canvas.ycor = y + cy
+        self.canvas.xcor = x
+        self.canvas.ycor = y
         self.canvas.move_turtle()
         if self.running_sugar:
             self.display_coordinates()

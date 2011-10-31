@@ -544,9 +544,14 @@ class TurtleGraphics:
         # Build a gtk.gdk.CairoContext from a cairo.Context to access
         # the set_source_pixbuf attribute.
         cr = gtk.gdk.CairoContext(self.canvas)
+        cr.save()
+        cr.rotate(self.heading * DEGTOR)
         cr.set_source_pixbuf(pixbuf, x, y)
+        # To do: reposition rectangle based on angle of rotation
         cr.rectangle(x, y, w, h)
+        cr.rotate(-self.heading * DEGTOR)
         cr.fill()
+        cr.restore()
         self.inval()
         if self.tw.saving_svg:
             if self.tw.running_sugar:
@@ -593,6 +598,7 @@ class TurtleGraphics:
         pl.set_width(int(w) * pango.SCALE)
         cr.save()
         cr.translate(x, y)
+        cr.rotate(self.heading * DEGTOR)
         self.canvas.set_source_rgb(self.fgrgb[0] / 255.,
                                    self.fgrgb[1] / 255.,
                                    self.fgrgb[2] / 255.)
