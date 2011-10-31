@@ -25,7 +25,7 @@ from gettext import gettext as _
 
 from taconstants import TURTLE_LAYER, DEFAULT_TURTLE_COLORS
 from tasprite_factory import SVG, svg_str_to_pixbuf
-from tacanvas import wrap100, color_table
+from tacanvas import wrap100, COLOR_TABLE
 from sprites import Sprite
 from tautils import debug_output
 
@@ -161,8 +161,8 @@ class Turtle:
         elif use_color_table:
             fill = wrap100(int_key)
             stroke = wrap100(fill + 10)
-            self.colors = ['#%06x' % (color_table[fill]),
-                           '#%06x' % (color_table[stroke])]
+            self.colors = ['#%06x' % (COLOR_TABLE[fill]),
+                           '#%06x' % (COLOR_TABLE[stroke])]
             self.shapes = generate_turtle_pixbufs(self.colors)
         else:
             if turtles is not None:
