@@ -179,11 +179,8 @@ class TurtleGraphics:
             self.tw.svg_string += '</g>'
 
     def fill_polygon(self, poly_points):
+        """ Draw the polygon... """
         minx, miny, w, h = calc_poly_bounds(poly_points)
-        '''
-        self.canvas.images[0].draw_polygon(self.gc, True, poly_points)
-        '''
-        print 'fix me: fill_polygon'
         self.canvas.new_path()
         for i, p in enumerate(poly_points):
             if i == 0:
@@ -333,16 +330,13 @@ class TurtleGraphics:
         self.xcor = cx - r * cos(self.heading * DEGTOR)
         self.ycor = cy + r * sin(self.heading * DEGTOR)
         if self.pendown:
-            '''
-            self.canvas.images[0].draw_arc(self.gc, False, int(x), int(y), w,
-                                           h, int(180 - self.heading - a) * 64,
-                                           int(a) * 64)
-            '''
-            print 'fix me: rarc'
             # arc?, arc_negative?
-            self.canvas.move_to(x, y)
-            self.canvas.arc(self.xcor, self.ycor, r, 180. - self.heading - a, a)
+            cx, cy = self.turtle_to_screen_coordinates(cx, cy)
+            self.canvas.arc(cx, cy, r,
+                            (90 + self.heading) * DEGTOR,
+                            (90 + self.heading + a) * DEGTOR)
             self.canvas.stroke()
+            self.inval()
         if self.tw.saving_svg and self.pendown:
             x, y = self.turtle_to_screen_coordinates(oldx, oldy)
             self.tw.svg_string += self.svg.new_path(x, y)
@@ -365,16 +359,16 @@ class TurtleGraphics:
         x, y = self.turtle_to_screen_coordinates(int(cx - r), int(cy + r))
         w = int(2 * r)
         h = w
-        if self.pendown:
-            '''
-            self.canvas.images[0].draw_arc(self.gc, False, int(x), int(y),
-                                           w, h, int(360 - self.heading) * 64,
-                                           int(a) * 64)
-            '''
-            print 'fix me: larc'
         self.right(-a, False)
         self.xcor = cx + r * cos(self.heading * DEGTOR)
         self.ycor = cy - r * sin(self.heading * DEGTOR)
+        if self.pendown:
+            cx, cy = self.turtle_to_screen_coordinates(cx, cy)
+            self.canvas.arc_negative(cx, cy, r,
+                                     (self.heading + 90) * DEGTOR,
+                                     (self.heading - a + 90) * DEGTOR)
+            self.canvas.stroke()
+            self.inval()
         if self.tw.saving_svg and self.pendown:
             x, y = self.turtle_to_screen_coordinates(oldx, oldy)
             self.tw.svg_string += self.svg.new_path(x, y)
