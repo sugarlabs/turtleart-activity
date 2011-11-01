@@ -184,6 +184,14 @@ class TurtleGraphics:
         self.canvas.images[0].draw_polygon(self.gc, True, poly_points)
         '''
         print 'fix me: fill_polygon'
+        self.canvas.new_path()
+        for i, p in enumerate(poly_points):
+            if i == 0:
+                self.canvas.move_to(p[0], p[1])
+            else:
+                self.canvas.line_to(p[0], p[1])
+        self.canvas.close_path()
+        self.canvas.fill()
         if self.tw.saving_svg and self.pendown:
             self.svg.set_fill_color("#%02x%02x%02x" % (self.fgrgb[0],
                                                        self.fgrgb[1],
@@ -333,7 +341,7 @@ class TurtleGraphics:
             print 'fix me: rarc'
             # arc?, arc_negative?
             self.canvas.move_to(x, y)
-            self.canvas.curve_to(self.xcor, self.ycor)
+            self.canvas.arc(self.xcor, self.ycor, r, 180. - self.heading - a, a)
             self.canvas.stroke()
         if self.tw.saving_svg and self.pendown:
             x, y = self.turtle_to_screen_coordinates(oldx, oldy)
