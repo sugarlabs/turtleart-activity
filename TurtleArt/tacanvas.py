@@ -323,26 +323,22 @@ class TurtleGraphics:
         oldx, oldy = self.xcor, self.ycor
         cx = self.xcor + r * cos(self.heading * DEGTOR)
         cy = self.ycor - r * sin(self.heading * DEGTOR)
-        x, y = self.turtle_to_screen_coordinates(int(cx - r), int(cy + r))
-        w = int(2 * r)
-        h = w
+        if self.pendown:
+            x, y = self.turtle_to_screen_coordinates(cx, cy)
+            self.canvas.arc(x, y, r,
+                            (self.heading - 180) * DEGTOR,
+                            (self.heading - 180 + a) * DEGTOR)
+            self.canvas.stroke()
+            self.inval()
         self.right(a, False)
         self.xcor = cx - r * cos(self.heading * DEGTOR)
         self.ycor = cy + r * sin(self.heading * DEGTOR)
-        if self.pendown:
-            # arc?, arc_negative?
-            cx, cy = self.turtle_to_screen_coordinates(cx, cy)
-            self.canvas.arc(cx, cy, r,
-                            (90 + self.heading) * DEGTOR,
-                            (90 + self.heading + a) * DEGTOR)
-            self.canvas.stroke()
-            self.inval()
         if self.tw.saving_svg and self.pendown:
             x, y = self.turtle_to_screen_coordinates(oldx, oldy)
             self.tw.svg_string += self.svg.new_path(x, y)
             x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
             self.tw.svg_string += self.svg.arc_to(x, y, r, a, 0, s)
-            self.tw.svg_string += "\"\n"
+            self.tw.svg_string += '"\n'
             self.tw.svg_string += self.svg.style()
 
     def larc(self, a, r):
@@ -356,25 +352,22 @@ class TurtleGraphics:
         oldx, oldy = self.xcor, self.ycor
         cx = self.xcor - r * cos(self.heading * DEGTOR)
         cy = self.ycor + r * sin(self.heading * DEGTOR)
-        x, y = self.turtle_to_screen_coordinates(int(cx - r), int(cy + r))
-        w = int(2 * r)
-        h = w
+        if self.pendown:
+            x, y = self.turtle_to_screen_coordinates(cx, cy)
+            self.canvas.arc_negative(x, y, r,
+                                     (self.heading) * DEGTOR,
+                                     (self.heading - a) * DEGTOR)
+            self.canvas.stroke()
+            self.inval()
         self.right(-a, False)
         self.xcor = cx + r * cos(self.heading * DEGTOR)
         self.ycor = cy - r * sin(self.heading * DEGTOR)
-        if self.pendown:
-            cx, cy = self.turtle_to_screen_coordinates(cx, cy)
-            self.canvas.arc_negative(cx, cy, r,
-                                     (self.heading + 90) * DEGTOR,
-                                     (self.heading - a + 90) * DEGTOR)
-            self.canvas.stroke()
-            self.inval()
         if self.tw.saving_svg and self.pendown:
             x, y = self.turtle_to_screen_coordinates(oldx, oldy)
             self.tw.svg_string += self.svg.new_path(x, y)
             x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
             self.tw.svg_string += self.svg.arc_to(x, y, r, a, 0, s)
-            self.tw.svg_string += "\"\n"
+            self.tw.svg_string += '"\n'
             self.tw.svg_string += self.svg.style()
 
     def setxy(self, x, y, share=True, pendown=True):
