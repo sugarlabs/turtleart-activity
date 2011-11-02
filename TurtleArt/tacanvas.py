@@ -21,7 +21,7 @@
 #THE SOFTWARE.
 
 import gtk
-from math import sin, cos, pi
+from math import sin, cos, atan, pi, sqrt
 import pango
 import cairo
 import pangocairo
@@ -533,18 +533,27 @@ class TurtleGraphics:
 
     def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path, share=True):
         """ Draw a pixbuf """
-        w *= self.tw.coord_scale
-        h *= self.tw.coord_scale
-
+        '''
+        # Fix me: rotate image
+        r = sqrt(x*x + y*y)
+        if x != 0:
+            angle = atan(y/x)  # initial angle relative to the origin
+        else:
+            angle = 0.
+        angle += self.heading * DEGTOR  # add in heading
+        nx = cos(angle) * r
+        ny = sin(angle) * r
+        '''
         # Build a gtk.gdk.CairoContext from a cairo.Context to access
         # the set_source_pixbuf attribute.
         cr = gtk.gdk.CairoContext(self.canvas)
         cr.save()
-        cr.rotate(self.heading * DEGTOR)
+        # cr.translate(-x, -y)
+        # cr.rotate(self.heading * DEGTOR)
+        # cr.translate(nx, ny)
         cr.set_source_pixbuf(pixbuf, x, y)
         # To do: reposition rectangle based on angle of rotation
         cr.rectangle(x, y, w, h)
-        cr.rotate(-self.heading * DEGTOR)
         cr.fill()
         cr.restore()
         self.inval()
@@ -698,6 +707,7 @@ class TurtleGraphics:
 
     def get_pixel(self):
         """ Read the pixel at x, y """
+        # FIX ME: broken for Cairo
         if self.tw.interactive_mode:
             x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
             return self.canvas.get_pixel((int(x), int(y)), 0,
