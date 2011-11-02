@@ -1,3 +1,33 @@
+123
+
+ENHANCEMENTS
+* Using Cairo graphics
+ - antialiasing
+ - rotation of text
+
+BUG
+* get_pixel is broken
+* rotate of images is broken
+
+####
+
+122
+
+ENHANCEMENTS
+* New translations
+
+BUG FIX
+* Allow pysample/*py files to be loaded into projects from Sugar
+* Catch value error in string comparisons with Boolean blocks
+* Added missing sugar.datastore imports
+
+121
+
+ENHANCEMENTS
+* More consistent block labeling (#3215)
+
+####
+
 120
 
 BUG FIX
