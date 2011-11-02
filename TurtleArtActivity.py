@@ -761,8 +761,8 @@ class TurtleArtActivity(activity.Activity):
         _logger.debug('Write file: %s' % file_path)
         self.metadata['mime_type'] = 'application/x-turtle-art'
         self.metadata[_('turtle blocks')] = ''.join(self.tw.used_block_list)
-        self.metadata['activity_data'] = data_to_string([_('activity count'),
-                                                         _('turtle blocks')])
+        self.metadata['public'] = data_to_string([_('activity count'),
+                                                  _('turtle blocks')])
         data_to_file(self.tw.assemble_data_to_save(), file_path)
 
     def read_file(self, file_path, run_it=True):
