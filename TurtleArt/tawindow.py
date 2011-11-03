@@ -571,11 +571,10 @@ class TurtleArtWindow():
             self.hide = False
             if self.running_sugar:
                 self.activity.recenter()
+        self._inval_all()
 
-        self.window.queue_draw_area(0,
-                                    0,
-                                    self.width,
-                                    self.height)
+    def _inval_all(self):
+        self.window.queue_draw_area(0, 0, self.width, self.height)
 
     def hideshow_palette(self, state):
         """ Hide or show palette  """
@@ -1214,6 +1213,7 @@ class TurtleArtWindow():
         for gblk in group:
             if collapsed(gblk):
                 collapse_stack(find_sandwich_top(gblk))
+
         # And resize any skins.
         for gblk in group:
             if gblk.name in BLOCKS_WITH_SKIN:
@@ -1907,7 +1907,6 @@ class TurtleArtWindow():
                 restore_stack(top)  # deprecated (bottom block is invisible)
             elif top is not None:
                 collapse_stack(top)
-
         else:
             self._run_stack(blk)
 
@@ -2019,6 +2018,9 @@ class TurtleArtWindow():
         d = 200
         for selected_block_dockn in range(len(selected_block.docks)):
             for destination_block in self.just_blocks():
+                # Don't link to a block that is hidden
+                if destination_block.status == 'collapsed':
+                    continue
                 # Don't link to a block to which you're already connected
                 if destination_block in self.drag_group:
                     continue
