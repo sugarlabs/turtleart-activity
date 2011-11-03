@@ -280,7 +280,7 @@ class Block:
         self._set_label_attributes()
         self.svg.set_scale(self.scale)
         self.refresh()
-        self.spr.draw()
+        self.spr.inval()
 
     def refresh(self):
         if self.spr is None:
