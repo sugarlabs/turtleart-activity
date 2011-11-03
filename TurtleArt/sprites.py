@@ -233,10 +233,11 @@ class Sprite:
         self.set_image(image, i)
         self.inval()
 
-    def set_layer(self, layer):
+    def set_layer(self, layer=None):
         ''' Set the layer for a sprite '''
         self._sprites.remove_from_list(self)
-        self.layer = layer
+        if layer is not None:
+            self.layer = layer
         for i in range(self._sprites.length_of_list()):
             if layer < self._sprites.get_sprite(i).layer:
                 self._sprites.insert_in_list(self, i)
@@ -307,7 +308,7 @@ class Sprite:
 
     def restore(self):
         ''' Restore a hidden sprite '''
-        self.inval()
+        self.set_layer()
 
     def inval(self):
         ''' Invalidate a region for gtk '''
