@@ -491,6 +491,7 @@ def restore_stack(top):
             _dy += _newdy - _olddy
         else:
             if not _hit_bottom:
+                _blk.spr.restore()
                 _blk.spr.set_layer(BLOCK_LAYER)
                 _blk.status = None
             else:
@@ -575,6 +576,7 @@ def collapse_stack(top):
         else:
             if not _hit_bottom:
                 _blk.spr.set_layer(HIDE_LAYER)
+                _blk.spr.hide()
                 _blk.status = 'collapsed'
             else:
                 _blk.spr.move_relative((_dx, _dy))

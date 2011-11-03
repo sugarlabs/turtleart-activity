@@ -305,6 +305,10 @@ class Sprite:
         self.inval()
         self._sprites.remove_from_list(self)
 
+    def restore(self):
+        ''' Restore a hidden sprite '''
+        self.inval()
+
     def inval(self):
         ''' Invalidate a region for gtk '''
         # self._sprites.window.invalidate_rect(self.rect, False)
