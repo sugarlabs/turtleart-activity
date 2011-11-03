@@ -40,8 +40,8 @@ except (ImportError, AttributeError):
         OLD_SUGAR_SYSTEM = True
 from StringIO import StringIO
 
-from taconstants import HIDE_LAYER, COLLAPSIBLE, BLOCK_LAYER, HIT_HIDE, \
-    HIT_SHOW, XO1, XO15, XO175, UNKNOWN
+from taconstants import COLLAPSIBLE, HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, \
+    UNKNOWN
 
 import logging
 _logger = logging.getLogger('turtleart-activity')

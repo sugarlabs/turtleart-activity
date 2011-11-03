@@ -25,8 +25,6 @@ from gettext import gettext as _
 # Sprite layers
 #
 
-HIDE_LAYER = 100
-CANVAS_LAYER = 500
 OVERLAY_LAYER = 525
 TURTLE_LAYER = 550
 BLOCK_LAYER = 600

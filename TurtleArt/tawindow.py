@@ -571,9 +571,10 @@ class TurtleArtWindow():
             self.hide = False
             if self.running_sugar:
                 self.activity.recenter()
-        self._inval_all()
+        self.inval_all()
 
-    def _inval_all(self):
+    def inval_all(self):
+        """ Force a refresh """
         self.window.queue_draw_area(0, 0, self.width, self.height)
 
     def hideshow_palette(self, state):
@@ -1074,10 +1075,7 @@ class TurtleArtWindow():
 
         # Finally, check for anything else
         if hasattr(spr, 'type'):
-            if spr.type == "canvas":
-                pass
-                # spr.set_layer(CANVAS_LAYER)
-            elif spr.type == 'selector':
+            if spr.type == 'selector':
                 self._select_category(spr)
             elif spr.type == 'category':
                 if hide_button_hit(spr, x, y):

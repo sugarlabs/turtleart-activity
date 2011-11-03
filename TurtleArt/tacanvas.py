@@ -32,7 +32,7 @@ from sprites import Sprite
 from tasprite_factory import SVG
 from tautils import image_to_base64, get_path, data_to_string, round_int, \
     debug_output
-from taconstants import CANVAS_LAYER, BLACK, WHITE
+from taconstants import BLACK, WHITE
 
 
 def wrap100(n):
@@ -755,4 +755,4 @@ class TurtleGraphics:
 
     def inval(self):
         ''' Invalidate a region for gtk '''
-        self.tw.window.queue_draw_area(0, 0, self.width, self.height)
+        self.tw.inval_all()
