@@ -387,6 +387,7 @@ class TurtleGraphics:
                                        self.fgrgb[1] / 255.,
                                        self.fgrgb[2] / 255.)
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
+            self.inval()
         self.move_turtle()
 
         if self.tw.sharing() and share:
