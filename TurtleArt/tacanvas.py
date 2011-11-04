@@ -44,23 +44,6 @@ def wrap100(n):
     return n
 
 
-def calc_poly_bounds(poly_points):
-    """ Calculate the minx, miny, width, height of polygon """
-    minx = poly_points[0][0]
-    miny = poly_points[0][1]
-    maxx, maxy = minx, miny
-    for p in poly_points:
-        if p[0] < minx:
-            minx = p[0]
-        elif p[0] > maxx:
-            maxx = p[0]
-        if p[1] < miny:
-            miny = p[1]
-        elif p[1] > maxy:
-            maxy = p[1]
-    return(minx, miny, maxx - minx, maxy - miny)
-
-
 def calc_shade(c, s, invert=False):
     """ Convert a color to the current shade (lightness/darkness). """
     # Assumes 16 bit input values
@@ -174,13 +157,16 @@ class TurtleGraphics:
 
     def fill_polygon(self, poly_points):
         """ Draw the polygon... """
-        minx, miny, w, h = calc_poly_bounds(poly_points)
         self.canvas.new_path()
         for i, p in enumerate(poly_points):
-            if i == 0:
-                self.canvas.move_to(p[0], p[1])
-            else:
-                self.canvas.line_to(p[0], p[1])
+            if p[0] == 'move':
+                self.canvas.move_to(p[1], p[2])
+            elif p[0] == 'rarc':
+                self.canvas.arc(p[1], p[2], p[3], p[4], p[5])
+            elif p[0] == 'larc':
+                self.canvas.arc_negative(p[1], p[2], p[3], p[4], p[5])
+            else:  # line
+                self.canvas.line_to(p[1], p[2])
         self.canvas.close_path()
         self.canvas.fill()
         if self.tw.saving_svg and self.pendown:
@@ -290,12 +276,11 @@ class TurtleGraphics:
         """ Draw an arc """
         self.canvas.set_source_rgb(self.fgrgb[0] / 255., self.fgrgb[1] / 255.,
                                    self.fgrgb[2] / 255.)
-        rr = r * self.tw.coord_scale
         try:
             if a < 0:
-                self.larc(-a, rr)
+                self.larc(-a, r)
             else:
-                self.rarc(a, rr)
+                self.rarc(a, r)
         except TypeError, ValueError:
             debug_output("bad value sent to %s" % (__name__),
                          self.tw.running_sugar)
@@ -308,6 +293,7 @@ class TurtleGraphics:
 
     def rarc(self, a, r):
         """ draw a clockwise arc """
+        r *= self.tw.coord_scale
         if r < 0:
             r = -r
             a = -a
@@ -324,6 +310,14 @@ class TurtleGraphics:
                             (self.heading - 180 + a) * DEGTOR)
             self.canvas.stroke()
             self.inval()
+
+        if self.fill and self.poly_points == []:
+            self.poly_points.append(('move', x, y))
+        if self.fill:
+            self.poly_points.append(('rarc', x, y, r,
+                                     (self.heading - 180) * DEGTOR,
+                                     (self.heading - 180 + a) * DEGTOR))
+
         self.right(a, False)
         self.xcor = cx - r * cos(self.heading * DEGTOR)
         self.ycor = cy + r * sin(self.heading * DEGTOR)
@@ -337,6 +331,7 @@ class TurtleGraphics:
 
     def larc(self, a, r):
         """ draw a counter-clockwise arc """
+        r *= self.tw.coord_scale
         if r < 0:
             r = -r
             a = -a
@@ -353,6 +348,14 @@ class TurtleGraphics:
                                      (self.heading - a) * DEGTOR)
             self.canvas.stroke()
             self.inval()
+
+        if self.fill and self.poly_points == []:
+            self.poly_points.append(('move', x, y))
+        if self.fill:
+            self.poly_points.append(('larc', x, y, r,
+                                     (self.heading) * DEGTOR,
+                                     (self.heading - a) * DEGTOR))
+
         self.right(-a, False)
         self.xcor = cx + r * cos(self.heading * DEGTOR)
         self.ycor = cy - r * sin(self.heading * DEGTOR)
@@ -528,24 +531,26 @@ class TurtleGraphics:
 
     def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path, share=True):
         """ Draw a pixbuf """
-        '''
         # Fix me: rotate image
-        r = sqrt(x*x + y*y)
+
+        r = sqrt(x * x + y * y)
         if x != 0:
-            angle = atan(y/x)  # initial angle relative to the origin
+            angle = atan(y / x)  # initial angle relative to the origin
         else:
             angle = 0.
         angle += self.heading * DEGTOR  # add in heading
         nx = cos(angle) * r
         ny = sin(angle) * r
-        '''
+
+        debug_output('x,y: %f,%f r: %f, a: %f, nx,y: %f,%f' % (x, y, r, angle,
+                                                               nx, ny), True)
         # Build a gtk.gdk.CairoContext from a cairo.Context to access
         # the set_source_pixbuf attribute.
         cr = gtk.gdk.CairoContext(self.canvas)
         cr.save()
-        # cr.translate(-x, -y)
-        # cr.rotate(self.heading * DEGTOR)
-        # cr.translate(nx, ny)
+        cr.translate(-x, -y)  # move to origin
+        cr.rotate(self.heading * DEGTOR)  # rotate
+        cr.translate(x, y)  # move back
         cr.set_source_pixbuf(pixbuf, x, y)
         # To do: reposition rectangle based on angle of rotation
         cr.rectangle(x, y, w, h)
@@ -647,9 +652,9 @@ class TurtleGraphics:
         self.canvas.stroke()
 
         if self.fill and self.poly_points == []:
-            self.poly_points.append((int(x1), int(y1)))
+            self.poly_points.append(('move', x1, y1))
         if self.fill:
-            self.poly_points.append((int(x2), int(y2)))
+            self.poly_points.append(('line', x2, y2))
         if self.tw.saving_svg and self.pendown:
             self.tw.svg_string += self.svg.new_path(x1, y1)
             self.tw.svg_string += self.svg.line_to(x2, y2)
