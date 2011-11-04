@@ -708,11 +708,25 @@ class TurtleGraphics:
 
     def get_pixel(self):
         """ Read the pixel at x, y """
-        # FIX ME: broken for Cairo
+        # Fix me: Is there a more efficient way of doing this?
         if self.tw.interactive_mode:
             x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
-            return self.canvas.get_pixel((int(x), int(y)), 0,
-                                         self.tw.color_mode)
+            x = int(x)
+            y = int(y)
+            w = self.tw.turtle_canvas.get_width()
+            h = self.tw.turtle_canvas.get_height()
+            if x < 0 or x > (w - 1) or y < 0 or y > (h - 1):
+                return(-1, -1, -1, -1)
+            # Map the cairo surface onto a pixmap
+            pixmap = gtk.gdk.Pixmap(None, w, h, 24)
+            cr = pixmap.cairo_create()
+            cr.set_source_surface(self.tw.turtle_canvas, 0, 0)
+            cr.paint()
+            # Read the pixel
+            pixel = pixmap.get_image(x, y, 1, 1).get_pixel(0, 0)
+            return(int((pixel & 0xFF0000) >> 16),
+                   int((pixel & 0x00FF00) >> 8),
+                   int((pixel & 0x0000FF) >> 0), 0)
         else:
             return(-1, -1, -1, -1)
 
