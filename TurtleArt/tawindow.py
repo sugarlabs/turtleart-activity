@@ -202,11 +202,14 @@ class TurtleArtWindow():
         self.selector_shapes = []
         self.selected_blk = None
         self.selected_spr = None
+        self.selected_turtle = None
         self.drag_group = None
         self.drag_turtle = 'move', 0, 0
         self.drag_pos = 0, 0
         self.turtle_movement_to_share = None
-        self.paste_offset = 20
+        self.paste_offset = 20  # Don't paste on top of where you copied.
+        self.saving_svg = False
+        self.svg_string = ''
 
         self.block_list = Blocks(font_scale_factor=self.scale,
                                  decimal_point=self.decimal_point)
@@ -214,6 +217,9 @@ class TurtleArtWindow():
             self.sprite_list = Sprites(self.window)
         else:
             self.sprite_list = None
+
+        self.canvas = TurtleGraphics(self, self.width, self.height)
+        self.sprite_list.set_cairo_context(self.canvas.canvas)
 
         self.turtles = Turtles(self.sprite_list)
         if self.nick is None:
@@ -225,11 +231,9 @@ class TurtleArtWindow():
         else:
             Turtle(self.turtles, self.default_turtle_name, mycolors.split(','))
         self.active_turtle = self.turtles.get_turtle(self.default_turtle_name)
+        self.active_turtle.show()
 
-        self.saving_svg = False
-        self.svg_string = ''
-        self.selected_turtle = None
-        self.canvas = TurtleGraphics(self, self.width, self.height)
+        self.canvas.clearscreen(False)
 
         CONSTANTS['titlex'] = int(-(self.canvas.width * TITLEXY[0]) / \
             (self.coord_scale * 2))

@@ -123,20 +123,16 @@ class TurtleGraphics:
         self.width = width
         self.height = height
         
-        print type(self.tw.turtle_canvas)
         # Build a cairo.Context from a cairo.XlibSurface
         self.canvas = cairo.Context(self.tw.turtle_canvas)
         cr = gtk.gdk.CairoContext(self.canvas)
-        # print cr.get_current_point()
         cr.set_line_cap(1)  # Set the line cap to be round
-        self.tw.sprite_list.set_cairo_context(self.canvas)
 
         self.cx = 0
         self.cy = 0
         self.fgrgb = [255, 0, 0]
         self.bgrgb = [255, 248, 222]
         self.textsize = 48  # deprecated
-        self.tw.active_turtle.show()
         self.shade = 0
         self.pendown = False
         self.xcor = 0
@@ -150,8 +146,6 @@ class TurtleGraphics:
         self.svg = SVG()
         self.svg.set_fill_color('none')
         self.tw.svg_string = ''
-
-        self.clearscreen(False)
 
     def start_fill(self):
         """ Start accumulating points of a polygon to fill. """
@@ -216,6 +210,10 @@ class TurtleGraphics:
         self.setgray(100, share)
         self.setcolor(0, share)
         self.setshade(50, share)
+        self.tw.svg_string = ''
+        self.svg.reset_min_max()
+        self.fill = False
+        self.poly_points = []
         for turtle_key in iter(self.tw.turtles.dict):
             # Don't reset remote turtles
             if not self.tw.remote_turtle(turtle_key):
@@ -231,10 +229,6 @@ class TurtleGraphics:
                 self.setpen(True, share)
                 self.tw.active_turtle.hide()
         self.set_turtle(self.tw.default_turtle_name)
-        self.tw.svg_string = ''
-        self.svg.reset_min_max()
-        self.fill = False
-        self.poly_points = []
 
     def forward(self, n, share=True):
         """ Move the turtle forward."""
