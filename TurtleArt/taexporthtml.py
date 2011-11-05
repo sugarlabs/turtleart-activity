@@ -111,7 +111,10 @@ def save_html(self, tw, embed_flag=True):
                     HTML_GLUE['div'][1]
     else:
         if embed_flag:
-            imgdata = image_to_base64(save_picture(self.tw.canvas),
+            tmpfile = os.path.join(get_path(tw.activity, 'instance'),
+                                   'tmpfile.png')
+            save_picture(self.tw.canvas, tmpfile)
+            imgdata = image_to_base64(tmpfile,
                                       get_path(tw.activity, 'instance'))
         else:
             imgdata = os.path.join(self.tw.load_save_folder, 'image')
