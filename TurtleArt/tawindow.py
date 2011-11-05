@@ -97,23 +97,11 @@ class TurtleArtWindow():
                 self.running_sugar = True
             else:
                 self.running_sugar = False
-            self.area = self.window.window
-            if self.area is not None:
-                self.gc = self.area.new_gc()
-            else:
-                # We lose...
-                debug_output('drawable area is None... punting',
-                             self.running_sugar)
-                exit()
             self._setup_events()
-        elif type(canvas_window) == gtk.gdk.Pixmap:
+        else:
             self.interactive_mode = False
             self.window = canvas_window
             self.running_sugar = False
-            if self.window is not None:
-                self.gc = self.window.new_gc()
-        else:
-            debug_output("bad win type %s" % (type(canvas_window)), False)
 
         if self.running_sugar:
             from sugar import profile
@@ -219,7 +207,8 @@ class TurtleArtWindow():
             self.sprite_list = None
 
         self.canvas = TurtleGraphics(self, self.width, self.height)
-        self.sprite_list.set_cairo_context(self.canvas.canvas)
+        if self.interactive_mode:
+            self.sprite_list.set_cairo_context(self.canvas.canvas)
 
         self.turtles = Turtles(self.sprite_list)
         if self.nick is None:
@@ -579,7 +568,8 @@ class TurtleArtWindow():
 
     def inval_all(self):
         """ Force a refresh """
-        self.window.queue_draw_area(0, 0, self.width, self.height)
+        if self.interactive_mode:
+            self.window.queue_draw_area(0, 0, self.width, self.height)
 
     def hideshow_palette(self, state):
         """ Hide or show palette  """
@@ -2819,7 +2809,7 @@ class TurtleArtWindow():
             blk.spr.set_layer(BLOCK_LAYER)
         if check_dock:
             blk.connections = 'check'
-        if blk.spr.labels[0] is not None and \
+        if self.running_sugar and blk.spr.labels[0] is not None and \
                 blk.name not in ['', ' ', 'number', 'string']:
             if blk.spr.labels[0] not in self.used_block_list:
                 self.used_block_list.append(blk.spr.labels[0])

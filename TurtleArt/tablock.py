@@ -381,8 +381,9 @@ class Block:
             self.width = copy_block.width
             self.height = copy_block.height
             self.shapes[0] = copy_block.shapes[0]
-            self.spr = sprites.Sprite(sprite_list, x, y, self.shapes[0])
-            self.spr._margins = copy_block.spr._margins[:]
+            if sprite_list is not None:
+                self.spr = sprites.Sprite(sprite_list, x, y, self.shapes[0])
+                self.spr._margins = copy_block.spr._margins[:]
             if len(copy_block.shapes) > 1:
                 self.shapes[1] = copy_block.shapes[1]
             self.docks = copy_block.docks[:]
@@ -414,15 +415,19 @@ class Block:
             for i, n in enumerate(block_names[self.name]):
                 self._set_labels(i, n)
 
-        if copy_block is None:
+        if copy_block is None and self.spr is not None:
             if self.spr.label_width() > self.spr.label_safe_width():
                 self.resize()
 
     def _set_margins(self):
+        if self.spr is None:
+            return
         self.spr.set_margins(self.svg.margins[0], self.svg.margins[1],
                              self.svg.margins[2], self.svg.margins[3])
 
     def _set_label_attributes(self):
+        if self.spr is None:
+            return
         if self.name in content_blocks:
             n = len(self.values)
             if n == 0:
@@ -451,6 +456,8 @@ class Block:
                                               True, 'center', 'middle', i)
 
     def _set_labels(self, i, label):
+        if self.spr is None:
+            return
         self.spr.set_label(label, i)
 
     def _make_block(self, svg):

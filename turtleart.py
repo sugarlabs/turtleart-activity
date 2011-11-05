@@ -84,11 +84,13 @@ class TurtleMain():
         self._plugins = []
 
         if self.output_png:
+            # Fix me: We need to create a cairo surface to work with
             pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8,
                                     gtk.gdk.screen_width(),
                                     gtk.gdk.screen_height())
-            self.canvas, mask = pixbuf.render_pixmap_and_mask()
-            self._build_window()
+            # self.canvas, mask = pixbuf.render_pixmap_and_mask()
+            self.canvas = pixbuf
+            self._build_window(interactive=False)
             self._draw_and_quit()
         else:
             self._read_initial_pos()
@@ -175,13 +177,19 @@ class TurtleMain():
         self.tw.load_start(self.ta_file)
         self.tw.lc.trace = 0
         self.tw.run_button(0)
-        self.tw.save_as_image(self.ta_file, self.canvas)
+        self.tw.save_as_image(self.ta_file)
 
-    def _build_window(self):
+    def _build_window(self, interactive=True):
         ''' Initialize the TurtleWindow instance. '''
-        win = self.canvas.get_window()
-        cr = win.cairo_create()
-        surface = cr.get_target()
+        if interactive:
+            win = self.canvas.get_window()
+            cr = win.cairo_create()
+            surface = cr.get_target()
+        else:
+            img_surface = cairo.ImageSurface(cairo.FORMAT_RGB24,
+                                             1024, 768)
+            cr = cairo.Context(img_surface)
+            surface = cr.get_target()
         self.turtle_canvas = surface.create_similar(
             cairo.CONTENT_COLOR, gtk.gdk.screen_width() * 2,
             gtk.gdk.screen_height() * 2)

@@ -237,10 +237,7 @@ class TurtleGraphics:
         if self.tw.sharing() and share:
             event = 'f|%s' % (data_to_string([self._get_my_nick(), int(n)]))
             self.tw.send_event(event)
-        self.tw.window.queue_draw_area(0,
-                                       0,
-                                       self.width,
-                                       self.height)
+        self.inval()
 
     def seth(self, n, share=True):
         ''' Set the turtle heading. '''
@@ -531,28 +528,23 @@ class TurtleGraphics:
 
     def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path, share=True):
         ''' Draw a pixbuf '''
-        # Fix me: rotate image
-
-        r = sqrt(x * x + y * y)
-        if x != 0:
-            angle = atan(y / x)  # initial angle relative to the origin
-        else:
-            angle = 0.
-        angle += self.heading * DEGTOR  # add in heading
-        nx = cos(angle) * r
-        ny = sin(angle) * r
-
-        debug_output('x,y: %f,%f r: %f, a: %f, nx,y: %f,%f' % (x, y, r, angle,
-                                                               nx, ny), True)
+        ### These really only need to be calculated once
+        ox, oy = self.turtle_to_screen_coordinates(-w / 2., h / 2.)
+        r = sqrt(self.width * self.width + self.height * self.height) / 2
+        a = atan(self.width / float(self.height))
+        cx = ox - cos(a) * r
+        cy = oy - sin(a) * r
+        ###
         # Build a gtk.gdk.CairoContext from a cairo.Context to access
         # the set_source_pixbuf attribute.
         cr = gtk.gdk.CairoContext(self.canvas)
         cr.save()
-        cr.translate(-x, -y)  # move to origin
-        cr.rotate(self.heading * DEGTOR)  # rotate
-        cr.translate(x, y)  # move back
+        cr.rotate(self.heading * DEGTOR)
+        # Fix me: offset of rotated image
+        nx = cx + cos(a - self.heading * DEGTOR) * r
+        ny = cy + sin(a - self.heading * DEGTOR) * r
+        cr.translate(nx-x, ny-y)
         cr.set_source_pixbuf(pixbuf, x, y)
-        # To do: reposition rectangle based on angle of rotation
         cr.rectangle(x, y, w, h)
         cr.fill()
         cr.restore()
@@ -660,9 +652,12 @@ class TurtleGraphics:
     def move_turtle(self):
         ''' Move the turtle '''
         x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
-        self.tw.active_turtle.move(
-            (int(self.cx + x - self.tw.active_turtle.spr.rect.width / 2.),
-             int(self.cy + y - self.tw.active_turtle.spr.rect.height / 2.)))
+        if self.tw.interactive_mode:
+            self.tw.active_turtle.move(
+                (int(self.cx + x - self.tw.active_turtle.spr.rect.width / 2.),
+                 int(self.cy + y - self.tw.active_turtle.spr.rect.height / 2.)))
+        else:
+            self.tw.active_turtle.move((int(self.cx + x), int(self.cy + y)))
 
     def get_color_index(self, r, g, b, a=0):
         ''' Find the closest palette entry to the rgb triplet '''
@@ -737,8 +732,9 @@ class TurtleGraphics:
         self.tw.active_turtle.show()
         tx, ty = self.tw.active_turtle.get_xy()
         self.xcor, self.ycor = self.screen_to_turtle_coordinates(tx, ty)
-        self.xcor += self.tw.active_turtle.spr.rect.width / 2.
-        self.ycor -= self.tw.active_turtle.spr.rect.height / 2.
+        if self.tw.interactive_mode:
+            self.xcor += self.tw.active_turtle.spr.rect.width / 2.
+            self.ycor -= self.tw.active_turtle.spr.rect.height / 2.
         self.heading = self.tw.active_turtle.get_heading()
         self.setcolor(self.tw.active_turtle.get_color(), False)
         self.setgray(self.tw.active_turtle.get_gray(), False)

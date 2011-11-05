@@ -173,6 +173,7 @@ class Sprite:
         self.layer = 100
         self.labels = []
         self.images = []
+        self.surfaces = []
         self._dx = []  # image offsets
         self._dy = []
         self.type = None
@@ -183,6 +184,7 @@ class Sprite:
         ''' Add an image to the sprite. '''
         while len(self.images) < i + 1:
             self.images.append(None)
+            self.surfaces.append(None)
             self._dx.append(0)
             self._dy.append(0)
         self.images[i] = image
@@ -323,18 +325,25 @@ class Sprite:
         if cr is None:
             print 'sprite.draw: no Cairo context.'
             return
+        # Fix me: Cache cairo surfaces
         for i, img in enumerate(self.images):
-            if isinstance(img, gtk.gdk.Pixbuf):
+            if self.surfaces[i] is not None:
+                cr.set_source_surface(self.surfaces[i],
+                                      self.rect.x + self._dx[i],
+                                      self.rect.y + self._dy[i])
+            elif isinstance(img, gtk.gdk.Pixbuf):
                 cr.set_source_pixbuf(img,
                                      self.rect.x + self._dx[i],
                                      self.rect.y + self._dy[i])
-                cr.rectangle(self.rect.x + self._dx[i],
-                             self.rect.y + self._dy[i],
-                             self.rect.width,
-                             self.rect.height)
-                cr.fill()
+                # self.surfaces[i] = cr.get_target()
             else:
                 print 'sprite.draw: source not a pixbuf (%s)' % (type(img))
+            cr.rectangle(self.rect.x + self._dx[i],
+                         self.rect.y + self._dy[i],
+                         self.rect.width,
+                         self.rect.height)
+            cr.fill()
+
         if len(self.labels) > 0:
             self.draw_label(cr)
 
