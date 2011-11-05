@@ -532,9 +532,10 @@ class TurtleGraphics:
         # the set_source_pixbuf attribute.
         cr = gtk.gdk.CairoContext(self.canvas)
         cr.save()
-        cr.translate(x, y)  # center the rotation on x, y
+        # center the rotation on the center of the image
+        cr.translate(x + w / 2., y + h / 2.)
         cr.rotate(self.heading * DEGTOR)
-        cr.translate(-x, -y)  # reset the position
+        cr.translate(-x - w / 2., -y - h / 2.)
         cr.set_source_pixbuf(pixbuf, x, y)
         cr.rectangle(x, y, w, h)
         cr.fill()
