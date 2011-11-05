@@ -3,13 +3,8 @@
 ENHANCEMENTS
 * Using Cairo graphics
  - antialiasing
- - rotation of text
+ - rotation of text and images
  - filled arcs
-
-BUG
-
-* rotation of images (a new feature) is only partially implemented:
-  use with caution
 
 122
 

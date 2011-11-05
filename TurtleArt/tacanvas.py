@@ -528,22 +528,13 @@ class TurtleGraphics:
 
     def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path, share=True):
         ''' Draw a pixbuf '''
-        ### These really only need to be calculated once
-        ox, oy = self.turtle_to_screen_coordinates(-w / 2., h / 2.)
-        r = sqrt(self.width * self.width + self.height * self.height) / 2
-        a = atan(self.width / float(self.height))
-        cx = ox - cos(a) * r
-        cy = oy - sin(a) * r
-        ###
         # Build a gtk.gdk.CairoContext from a cairo.Context to access
         # the set_source_pixbuf attribute.
         cr = gtk.gdk.CairoContext(self.canvas)
         cr.save()
+        cr.translate(x, y)  # center the rotation on x, y
         cr.rotate(self.heading * DEGTOR)
-        # Fix me: offset of rotated image
-        nx = cx + cos(a - self.heading * DEGTOR) * r
-        ny = cy + sin(a - self.heading * DEGTOR) * r
-        cr.translate(nx-x, ny-y)
+        cr.translate(-x, -y)  # reset the position
         cr.set_source_pixbuf(pixbuf, x, y)
         cr.rectangle(x, y, w, h)
         cr.fill()
