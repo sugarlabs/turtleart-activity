@@ -140,9 +140,9 @@ class TurtleArtWindow():
         self.orientation = HORIZONTAL_PALETTE
 
         self.hw = get_hardware()
+        self.lead = 1.0
+        self.scale = 1.0
         if self.hw in (XO1, XO15, XO175):
-            self.lead = 1.0
-            self.scale = 0.67
             if self.hw == XO1:
                 self.color_mode = '565'
             else:
@@ -150,8 +150,6 @@ class TurtleArtWindow():
             if self.running_sugar and not self.activity.has_toolbarbox:
                 self.orientation = VERTICAL_PALETTE
         else:
-            self.lead = 1.0
-            self.scale = 1.0
             self.color_mode = '888'  # TODO: Read visual mode from gtk image
 
         self.block_scale = BLOCK_SCALE[3]
