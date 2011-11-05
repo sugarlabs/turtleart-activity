@@ -13,7 +13,6 @@
 def myblock(tw, rgb_array):
     ''' Set rgb color from values '''
     
-    rgb = "#%02x%02x%02x" % ((int(rgb_array[0]) % 256),
-                             (int(rgb_array[1]) % 256),
-                             (int(rgb_array[2]) % 256))
-    tw.canvas.fgcolor = tw.canvas.cm.alloc_color(rgb)
+    tw.canvas.fgrgb = [(int(rgb_array[0]) % 256),
+                       (int(rgb_array[1]) % 256),
+                       (int(rgb_array[2]) % 256)]
