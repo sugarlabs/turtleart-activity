@@ -141,8 +141,8 @@ class TurtleArtWindow():
 
         self.hw = get_hardware()
         self.lead = 1.0
-        self.scale = 1.0
         if self.hw in (XO1, XO15, XO175):
+            self.scale = 1.2  # slight scale-up of fonts on XO
             if self.hw == XO1:
                 self.color_mode = '565'
             else:
@@ -150,6 +150,7 @@ class TurtleArtWindow():
             if self.running_sugar and not self.activity.has_toolbarbox:
                 self.orientation = VERTICAL_PALETTE
         else:
+            self.scale = 1.0
             self.color_mode = '888'  # TODO: Read visual mode from gtk image
 
         self.block_scale = BLOCK_SCALE[3]
@@ -488,6 +489,12 @@ class TurtleArtWindow():
 
     def set_cartesian(self, flag):
         """ Turn on/off Cartesian coordinates """
+        if self.coord_scale == 1:
+            self.draw_overlay('Cartesian_labeled')
+        else:
+            self.draw_overlay('Cartesian')
+        return
+        '''
         if flag:
             if self.coord_scale == 1:
                 self.overlay_shapes['Cartesian_labeled'].set_layer(
@@ -501,24 +508,45 @@ class TurtleArtWindow():
             else:
                 self.overlay_shapes['Cartesian'].hide()
             self.cartesian = False
+        '''
 
     def set_polar(self, flag):
         """ Turn on/off polar coordinates """
+        self.draw_overlay('polar')
+        return
+        '''
         if flag:
             self.overlay_shapes['polar'].set_layer(OVERLAY_LAYER)
             self.polar = True
         else:
             self.overlay_shapes['polar'].hide()
             self.polar = False
+        '''
 
     def set_metric(self, flag):
         """ Turn on/off metric coordinates """
+        self.draw_overlay('metric')
+        return
+        '''
         if flag:
             self.overlay_shapes['metric'].set_layer(OVERLAY_LAYER)
             self.metric = True
         else:
             self.overlay_shapes['metric'].hide()
             self.metric = False
+        '''
+
+    def draw_overlay(self, overlay):
+        ''' Draw a coordinate grid onto the canvas. '''
+        save_heading = self.canvas.heading
+        self.canvas.heading = 0
+        w = self.overlay_shapes[overlay].rect[2]
+        h = self.overlay_shapes[overlay].rect[3]
+        self.canvas.draw_pixbuf(self.overlay_shapes[overlay].images[0],
+                                0, 0, (self.canvas.width - w) / 2.,
+                                (self.canvas.height - h) / 2.,
+                                w, h, '', share=False)
+        self.canvas.heading = save_heading
 
     def update_overlay_position(self, widget, event):
         """ Reposition the overlays when window size changes """
