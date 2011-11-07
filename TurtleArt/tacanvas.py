@@ -543,12 +543,16 @@ class TurtleGraphics:
         self.inval()
         if self.tw.saving_svg:
             if self.tw.running_sugar:
-                # In Sugar, we need to embed the images inside the SVG
-                self.tw.svg_string += self.svg.image(x - self.width / 2,
-                    y, w, h, path, image_to_base64(pixbuf,
-                    get_path(self.tw.activity, 'instance')))
+                # In Sugar, we embed the images inside the SVG
+                tmp_file = os.path.join(get_path(tw.activity, 'instance'),
+                                       'tmpfile.png')
+                pixbuf.save(tmp_file, 'png', {'quality': '100'})
+                self.tw.svg_string += self.svg.image(
+                    x - self.width / 2, y, w, h, path,
+                    image_to_base64(tmp_file,
+                                    get_path(self.tw.activity, 'instance')))
             else:
-                # Outside of Sugar, we save a path
+                # In GNOME, we embed a path
                 self.tw.svg_string += self.svg.image(x - self.width / 2,
                                                      y, w, h, path)
         if self.tw.sharing() and share:
@@ -556,7 +560,10 @@ class TurtleGraphics:
                 tmp_path = get_path(self.tw.activity, 'instance')
             else:
                 tmp_path = '/tmp'
-            data = image_to_base64(pixbuf, tmp_path)
+            tmp_file = os.path.join(get_path(tw.activity, 'instance'),
+                                   'tmpfile.png')
+            pixbuf.save(tmp_file, 'png', {'quality': '100'})
+            data = image_to_base64(tmp_file, tmp_path)
             height = pixbuf.get_height()
             width = pixbuf.get_width()
             x, y = self.screen_to_turtle_coordinates(x, y)

@@ -78,43 +78,42 @@ def save_html(self, tw, embed_flag=True):
     """
     htmlcode = ''
     if len(tw.saved_pictures) > 0:
-        for i, p in enumerate(tw.saved_pictures):
+        for i, image_file in enumerate(tw.saved_pictures):
             htmlcode += HTML_GLUE['slide'][0] + str(i)
             htmlcode += HTML_GLUE['slide'][1] + \
                     HTML_GLUE['div'][0] + \
                     HTML_GLUE['h1'][0]
             if embed_flag:
-                f = open(p, 'r')
+                f = open(image_file, 'r')
                 imgdata = f.read()
                 f.close()
-                if p.endswith(('.svg')):
+                if image_file.endswith(('.svg')):
                     tmp = imgdata
                 else:
-                    pixbuf = gtk.gdk.pixbuf_new_from_file(p)
-                    imgdata = image_to_base64(pixbuf,
-                        get_path(tw.activity, 'instance'))
+                    imgdata = image_to_base64(image_file,
+                                              get_path(tw.activity, 'instance'))
                     tmp = HTML_GLUE['img2'][0]
                     tmp += imgdata
                     tmp += HTML_GLUE['img2'][1]
             else:
-                if p.endswith(('.svg')):
-                    f = open(p, 'r')
+                if image_file.endswith(('.svg')):
+                    f = open(image_file, 'r')
                     imgdata = f.read()
                     f.close()
                     tmp = imgdata
                 else:
                     tmp = HTML_GLUE['img3'][0]
-                    tmp += p
+                    tmp += image_file
                     tmp += HTML_GLUE['img3'][1]
             htmlcode += tmp + \
                     HTML_GLUE['h1'][1] + \
                     HTML_GLUE['div'][1]
     else:
         if embed_flag:
-            tmpfile = os.path.join(get_path(tw.activity, 'instance'),
+            tmp_file = os.path.join(get_path(tw.activity, 'instance'),
                                    'tmpfile.png')
-            save_picture(self.tw.canvas, tmpfile)
-            imgdata = image_to_base64(tmpfile,
+            save_picture(self.tw.canvas, tmp_file)
+            imgdata = image_to_base64(tmp_file,
                                       get_path(tw.activity, 'instance'))
         else:
             imgdata = os.path.join(self.tw.load_save_folder, 'image')
