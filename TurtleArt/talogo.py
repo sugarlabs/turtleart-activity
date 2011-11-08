@@ -585,14 +585,20 @@ class LogoCode:
                 debug_output("Couldn't open filepath %s" % (self.filepath),
                              self.tw.running_sugar)
         if pixbuf is not None:
+            x = self.tw.canvas.xcor
+            y = self.tw.canvas.ycor
+            w *= self.tw.coord_scale
+            h *= self.tw.coord_scale
             if center:
                 self.tw.canvas.draw_pixbuf(pixbuf, 0, 0,
                                            self.x2tx() - int(w / 2),
                                            self.y2ty() - int(h / 2), w, h,
                                            self.filepath)
             else:
-                self.tw.canvas.draw_pixbuf(pixbuf, 0, 0, self.x2tx(),
-                                           self.y2ty(), w, h, self.filepath)
+                self.tw.canvas.draw_pixbuf(pixbuf, 0, 0,
+                                           self.x2tx(),
+                                           self.y2ty(),
+                                           w, h, self.filepath)
 
     def insert_desc(self, mimetype=None, description=None):
         """ Description text only (at current x, y) """

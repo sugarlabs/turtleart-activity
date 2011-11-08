@@ -20,6 +20,7 @@
 #THE SOFTWARE.
 
 import gtk
+import cairo
 import pickle
 import subprocess
 import os.path
@@ -40,8 +41,8 @@ except (ImportError, AttributeError):
         OLD_SUGAR_SYSTEM = True
 from StringIO import StringIO
 
-from taconstants import HIDE_LAYER, COLLAPSIBLE, BLOCK_LAYER, HIT_HIDE, \
-    HIT_SHOW, XO1, XO15, XO175, UNKNOWN
+from taconstants import COLLAPSIBLE, HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, \
+    UNKNOWN
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -260,16 +261,26 @@ def do_dialog(dialog, suffix, load_save_folder):
     return _result, load_save_folder
 
 
-def save_picture(canvas, file_name=''):
-    """ Save the canvas to a file. """
-    _pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, canvas.width,
-                             canvas.height)
-    _pixbuf.get_from_drawable(canvas.canvas.images[0],
-                              canvas.canvas.images[0].get_colormap(),
-                              0, 0, 0, 0, canvas.width, canvas.height)
-    if file_name != '':
-        _pixbuf.save(file_name, 'png')
-    return _pixbuf
+def save_picture(canvas, file_name):
+    """ Save the canvas to a file """
+    x_surface = canvas.canvas.get_target()
+    img_surface = cairo.ImageSurface(cairo.FORMAT_RGB24,
+                                     canvas.width, canvas.height)
+    cr = cairo.Context(img_surface)
+    cr.set_source_surface(x_surface)
+    cr.paint()
+    img_surface.write_to_png(file_name)
+
+
+def get_canvas_data(canvas):
+    x_surface = canvas.canvas.get_target()
+    img_surface = cairo.ImageSurface(cairo.FORMAT_RGB24,
+                                     canvas.width, canvas.height)
+    cr = cairo.Context(img_surface)
+    cr.set_source_surface(x_surface)
+    cr.paint()
+    return img_surface.get_data()
+
 
 
 def save_svg(string, file_name):
@@ -307,13 +318,10 @@ def get_path(activity, subpath):
                             "org.laptop.TurtleArtActivity", subpath))
 
 
-def image_to_base64(pixbuf, path_name):
+def image_to_base64(image_path, tmp_path):
     """ Convert an image to base64-encoded data """
-    file_name = os.path.join(path_name, 'imagetmp.png')
-    if pixbuf != None:
-        pixbuf.save(file_name, "png")
-    base64 = os.path.join(path_name, 'base64tmp')
-    cmd = "base64 <" + file_name + " >" + base64
+    base64 = os.path.join(tmp_path, 'base64tmp')
+    cmd = "base64 <" + image_path + " >" + base64
     subprocess.check_call(cmd, shell=True)
     file_handle = open(base64, 'r')
     data = file_handle.read()
@@ -491,7 +499,7 @@ def restore_stack(top):
             _dy += _newdy - _olddy
         else:
             if not _hit_bottom:
-                _blk.spr.set_layer(BLOCK_LAYER)
+                _blk.spr.restore()
                 _blk.status = None
             else:
                 _blk.spr.move_relative((_dx, _dy))
@@ -574,7 +582,7 @@ def collapse_stack(top):
             _dy += _newdy - _olddy
         else:
             if not _hit_bottom:
-                _blk.spr.set_layer(HIDE_LAYER)
+                _blk.spr.hide()
                 _blk.status = 'collapsed'
             else:
                 _blk.spr.move_relative((_dx, _dy))

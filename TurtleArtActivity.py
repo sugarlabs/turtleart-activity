@@ -23,6 +23,7 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
+import cairo
 import gobject
 import dbus
 
@@ -76,7 +77,7 @@ class TurtleArtActivity(activity.Activity):
         self._setup_toolbar()
 
         _logger.debug('_setup_canvas')
-        self._setup_canvas(self._setup_scrolled_window())
+        self._canvas = self._setup_canvas(self._setup_scrolled_window())
 
         _logger.debug('_setup_palette_toolbar')
         self._setup_palette_toolbar()
@@ -728,10 +729,17 @@ class TurtleArtActivity(activity.Activity):
 
     def _setup_canvas(self, canvas_window):
         ''' Initialize the turtle art canvas. '''
+        win = canvas_window.get_window()  # self._canvas.get_window()
+        cr = win.cairo_create()
+        surface = cr.get_target()
+        self.turtle_canvas = surface.create_similar(
+            cairo.CONTENT_COLOR, gtk.gdk.screen_width() * 2,
+            gtk.gdk.screen_height() * 2)
         bundle_path = activity.get_bundle_path()
         self.tw = TurtleArtWindow(canvas_window, bundle_path, self,
-                                  profile.get_color().to_string(),
-                                  profile.get_nick_name())
+                                  mycolors=profile.get_color().to_string(),
+                                  mynick=profile.get_nick_name(),
+                                  turtle_canvas=self.turtle_canvas)
         self.tw.window.grab_focus()
         path = os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'], 'data')
         self.tw.save_folder = path

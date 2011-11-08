@@ -1,3 +1,17 @@
+123
+
+ENHANCEMENTS
+* Using Cairo graphics
+ - antialiasing
+ - rotation of text and images
+ - filled arcs
+
+NOTE
+* For performance reasons, the coordinate grids are now drawn directly
+  onto the turtle canvas. This has two consequences: (1) the grids cannot
+  be erased except by erasing the entire screen; and (2) the turtle can
+  draw on top of the grid.
+
 122
 
 ENHANCEMENTS
@@ -25,6 +39,7 @@ ENHANCEMENTS
 
 BUG FIXES
 * Fixed type error introduced to arc commands by patch to address #3164
+
 
 118
 

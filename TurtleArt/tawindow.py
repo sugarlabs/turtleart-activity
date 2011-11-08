@@ -80,10 +80,11 @@ class TurtleArtWindow():
     _PLUGIN_SUBPATH = 'plugins'
 
     def __init__(self, canvas_window, path, parent=None,
-                 mycolors=None, mynick=None):
+                 mycolors=None, mynick=None, turtle_canvas=None):
         self._loaded_project = ''
         self._sharing = False
         self.parent = parent
+        self.turtle_canvas = turtle_canvas
         self.send_event = None  # method to send events over the network
         self.gst_available = GST_AVAILABLE
         if type(canvas_window) == gtk.DrawingArea:
@@ -96,23 +97,11 @@ class TurtleArtWindow():
                 self.running_sugar = True
             else:
                 self.running_sugar = False
-            self.area = self.window.window
-            if self.area is not None:
-                self.gc = self.area.new_gc()
-            else:
-                # We lose...
-                debug_output('drawable area is None... punting',
-                             self.running_sugar)
-                exit()
             self._setup_events()
-        elif type(canvas_window) == gtk.gdk.Pixmap:
+        else:
             self.interactive_mode = False
             self.window = canvas_window
             self.running_sugar = False
-            if self.window is not None:
-                self.gc = self.window.new_gc()
-        else:
-            debug_output("bad win type %s" % (type(canvas_window)), False)
 
         if self.running_sugar:
             from sugar import profile
@@ -151,9 +140,9 @@ class TurtleArtWindow():
         self.orientation = HORIZONTAL_PALETTE
 
         self.hw = get_hardware()
+        self.lead = 1.0
         if self.hw in (XO1, XO15, XO175):
-            self.lead = 1.0
-            self.scale = 0.67
+            self.scale = 1.2  # slight scale-up of fonts on XO
             if self.hw == XO1:
                 self.color_mode = '565'
             else:
@@ -161,7 +150,6 @@ class TurtleArtWindow():
             if self.running_sugar and not self.activity.has_toolbarbox:
                 self.orientation = VERTICAL_PALETTE
         else:
-            self.lead = 1.0
             self.scale = 1.0
             self.color_mode = '888'  # TODO: Read visual mode from gtk image
 
@@ -201,18 +189,25 @@ class TurtleArtWindow():
         self.selector_shapes = []
         self.selected_blk = None
         self.selected_spr = None
+        self.selected_turtle = None
         self.drag_group = None
         self.drag_turtle = 'move', 0, 0
         self.drag_pos = 0, 0
         self.turtle_movement_to_share = None
-        self.paste_offset = 20
+        self.paste_offset = 20  # Don't paste on top of where you copied.
+        self.saving_svg = False
+        self.svg_string = ''
 
         self.block_list = Blocks(font_scale_factor=self.scale,
                                  decimal_point=self.decimal_point)
         if self.interactive_mode:
-            self.sprite_list = Sprites(self.window, self.area, self.gc)
+            self.sprite_list = Sprites(self.window)
         else:
             self.sprite_list = None
+
+        self.canvas = TurtleGraphics(self, self.width, self.height)
+        if self.interactive_mode:
+            self.sprite_list.set_cairo_context(self.canvas.canvas)
 
         self.turtles = Turtles(self.sprite_list)
         if self.nick is None:
@@ -224,11 +219,9 @@ class TurtleArtWindow():
         else:
             Turtle(self.turtles, self.default_turtle_name, mycolors.split(','))
         self.active_turtle = self.turtles.get_turtle(self.default_turtle_name)
+        self.active_turtle.show()
 
-        self.saving_svg = False
-        self.svg_string = ''
-        self.selected_turtle = None
-        self.canvas = TurtleGraphics(self, self.width, self.height)
+        self.canvas.clearscreen(False)
 
         CONSTANTS['titlex'] = int(-(self.canvas.width * TITLEXY[0]) / \
             (self.coord_scale * 2))
@@ -356,6 +349,7 @@ class TurtleArtWindow():
         self.window.add_events(gtk.gdk.BUTTON_RELEASE_MASK)
         self.window.add_events(gtk.gdk.POINTER_MOTION_MASK)
         self.window.add_events(gtk.gdk.KEY_PRESS_MASK)
+        # self.window.connect('realize', self.do_realize)
         self.window.connect("expose-event", self._expose_cb)
         self.window.connect("button-press-event", self._buttonpress_cb)
         self.window.connect("button-release-event", self._buttonrelease_cb)
@@ -417,10 +411,32 @@ class TurtleArtWindow():
         """ Check to see if project has any blocks in use """
         return len(self.just_blocks()) == 1
 
-    def _expose_cb(self, win, event):
+    def _expose_cb(self, win=None, event=None):
         """ Repaint """
-        self.sprite_list.refresh(event)
+        self.do_expose_event(event)
         return True
+
+    # Handle the expose-event by drawing
+    def do_expose_event(self, event=None):
+
+        # Create the cairo context
+        cr = self.window.window.cairo_create()
+
+        if event is None:
+            cr.rectangle(self.rect.x, self.rect.y,
+                         self.rect.width, self.rect.height)
+        else:
+        # Restrict Cairo to the exposed area; avoid extra work
+            cr.rectangle(event.area.x, event.area.y,
+                         event.area.width, event.area.height)
+        cr.clip()
+
+        if self.turtle_canvas is not None:
+            cr.set_source_surface(self.turtle_canvas)
+            cr.paint()
+
+        # Refresh sprite list
+        self.sprite_list.redraw_sprites(cr=cr)
 
     def eraser_button(self):
         """ Eraser_button (hide status block when clearing the screen.) """
@@ -473,6 +489,12 @@ class TurtleArtWindow():
 
     def set_cartesian(self, flag):
         """ Turn on/off Cartesian coordinates """
+        if self.coord_scale == 1:
+            self.draw_overlay('Cartesian_labeled')
+        else:
+            self.draw_overlay('Cartesian')
+        return
+        '''
         if flag:
             if self.coord_scale == 1:
                 self.overlay_shapes['Cartesian_labeled'].set_layer(
@@ -486,24 +508,45 @@ class TurtleArtWindow():
             else:
                 self.overlay_shapes['Cartesian'].hide()
             self.cartesian = False
+        '''
 
     def set_polar(self, flag):
         """ Turn on/off polar coordinates """
+        self.draw_overlay('polar')
+        return
+        '''
         if flag:
             self.overlay_shapes['polar'].set_layer(OVERLAY_LAYER)
             self.polar = True
         else:
             self.overlay_shapes['polar'].hide()
             self.polar = False
+        '''
 
     def set_metric(self, flag):
         """ Turn on/off metric coordinates """
+        self.draw_overlay('metric')
+        return
+        '''
         if flag:
             self.overlay_shapes['metric'].set_layer(OVERLAY_LAYER)
             self.metric = True
         else:
             self.overlay_shapes['metric'].hide()
             self.metric = False
+        '''
+
+    def draw_overlay(self, overlay):
+        ''' Draw a coordinate grid onto the canvas. '''
+        save_heading = self.canvas.heading
+        self.canvas.heading = 0
+        w = self.overlay_shapes[overlay].rect[2]
+        h = self.overlay_shapes[overlay].rect[3]
+        self.canvas.draw_pixbuf(self.overlay_shapes[overlay].images[0],
+                                0, 0, (self.canvas.width - w) / 2.,
+                                (self.canvas.height - h) / 2.,
+                                w, h, '', share=False)
+        self.canvas.heading = save_heading
 
     def update_overlay_position(self, widget, event):
         """ Reposition the overlays when window size changes """
@@ -547,8 +590,12 @@ class TurtleArtWindow():
             self.hide = False
             if self.running_sugar:
                 self.activity.recenter()
+        self.inval_all()
 
-        self.canvas.canvas.inval()
+    def inval_all(self):
+        """ Force a refresh """
+        if self.interactive_mode:
+            self.window.queue_draw_area(0, 0, self.width, self.height)
 
     def hideshow_palette(self, state):
         """ Hide or show palette  """
@@ -1048,10 +1095,7 @@ class TurtleArtWindow():
 
         # Finally, check for anything else
         if hasattr(spr, 'type'):
-            if spr.type == "canvas":
-                pass
-                # spr.set_layer(CANVAS_LAYER)
-            elif spr.type == 'selector':
+            if spr.type == 'selector':
                 self._select_category(spr)
             elif spr.type == 'category':
                 if hide_button_hit(spr, x, y):
@@ -1187,6 +1231,7 @@ class TurtleArtWindow():
         for gblk in group:
             if collapsed(gblk):
                 collapse_stack(find_sandwich_top(gblk))
+
         # And resize any skins.
         for gblk in group:
             if gblk.name in BLOCKS_WITH_SKIN:
@@ -1563,7 +1608,11 @@ class TurtleArtWindow():
             self.rect.y = miny
             self.rect.width = maxx - minx
             self.rect.height = maxy - miny
-            self.sprite_list.area.invalidate_rect(self.rect, False)
+            self.window.queue_draw_area(self.rect.x,
+                                        self.rect.y,
+                                        self.rect.width,
+                                        self.rect.height)
+            # self._expose_cb()
 
         self.dx += dx
         self.dy += dy
@@ -1633,6 +1682,7 @@ class TurtleArtWindow():
         """ Button release """
         x, y = xy(event)
         self.button_release(x, y)
+        self._expose_cb()
         if self.turtle_movement_to_share is not None:
             self._share_mouse_move()
         return True
@@ -1724,9 +1774,8 @@ class TurtleArtWindow():
 
     def _move_turtle(self, x, y):
         """ Move the selected turtle to (x, y). """
-        (cx, cy) = self.canvas.canvas.get_xy()
-        self.canvas.xcor = x - cx
-        self.canvas.ycor = y + cy
+        self.canvas.xcor = x
+        self.canvas.ycor = y
         self.canvas.move_turtle()
         if self.running_sugar:
             self.display_coordinates()
@@ -1876,7 +1925,6 @@ class TurtleArtWindow():
                 restore_stack(top)  # deprecated (bottom block is invisible)
             elif top is not None:
                 collapse_stack(top)
-
         else:
             self._run_stack(blk)
 
@@ -1988,6 +2036,9 @@ class TurtleArtWindow():
         d = 200
         for selected_block_dockn in range(len(selected_block.docks)):
             for destination_block in self.just_blocks():
+                # Don't link to a block that is hidden
+                if destination_block.status == 'collapsed':
+                    continue
                 # Don't link to a block to which you're already connected
                 if destination_block in self.drag_group:
                     continue
@@ -2784,7 +2835,7 @@ class TurtleArtWindow():
             blk.spr.set_layer(BLOCK_LAYER)
         if check_dock:
             blk.connections = 'check'
-        if blk.spr.labels[0] is not None and \
+        if self.running_sugar and blk.spr.labels[0] is not None and \
                 blk.name not in ['', ' ', 'number', 'string']:
             if blk.spr.labels[0] not in self.used_block_list:
                 self.used_block_list.append(blk.spr.labels[0])
