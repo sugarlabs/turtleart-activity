@@ -2041,17 +2041,17 @@ msgstr ""
 #~ msgid "stack"
 #~ msgstr "stack"
 
-#~ msgid "yellow"
-#~ msgstr "giallo"
+msgid "yellow"
+msgstr "giallo"
 
 #~ msgid " "
 #~ msgstr " "
 
-#~ msgid "cyan"
-#~ msgstr "ciano"
+msgid "cyan"
+msgstr "ciano"
 
-#~ msgid "blue"
-#~ msgstr "blu"
+msgid "blue"
+msgstr "blu"
 
 #~ msgid " clean "
 #~ msgstr " pulisci "
@@ -2062,8 +2062,8 @@ msgstr ""
 #~ msgid "write"
 #~ msgstr "scrivi"
 
-#~ msgid "green"
-#~ msgstr "verde"
+msgid "green"
+msgstr "verde"
 
 #~ msgid "restore last"
 #~ msgstr "ripristina ultimo"
@@ -2082,8 +2082,8 @@ msgstr ""
 #~ msgid "text size"
 #~ msgstr "dimensione testo"
 
-#~ msgid "red"
-#~ msgstr "rosso"
+msgid "red"
+msgstr "rosso"
 
 #~ msgid "sensors"
 #~ msgstr "sensori"
@@ -2091,8 +2091,8 @@ msgstr ""
 #~ msgid "sensor input resistance"
 #~ msgstr "resistenza del sensore di ingresso"
 
-#~ msgid "white"
-#~ msgstr "bianco"
+msgid "white"
+msgstr "bianco"
 
 #~ msgid "holds current text color (can be used in place of a number block)"
 #~ msgstr ""
@@ -2108,8 +2108,8 @@ msgstr ""
 #~ msgid "portfolio"
 #~ msgstr "portfolio"
 
-#~ msgid "black"
-#~ msgstr "nero"
+msgid "black"
+msgstr "nero"
 
 #~ msgid "restores most recent blocks from trash"
 #~ msgstr "recupara i blocchi buttati nel centino più di recente"
@@ -2132,8 +2132,8 @@ msgstr ""
 #~ msgid "Trashcan"
 #~ msgstr "Cestino"
 
-#~ msgid "purple"
-#~ msgstr "porpora"
+msgid "purple"
+msgstr "porpora"
 
 #~ msgid "pen"
 #~ msgstr "penna"

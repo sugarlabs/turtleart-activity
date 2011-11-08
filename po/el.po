@@ -2044,17 +2044,17 @@ msgstr "μετακίνηση όλων των εντολών στον κάδο α
 #~ msgid "stack"
 #~ msgstr "στοίβα"
 
-#~ msgid "yellow"
-#~ msgstr "κίτρινο"
+msgid "yellow"
+msgstr "κίτρινο"
 
 #~ msgid " "
 #~ msgstr " "
 
-#~ msgid "cyan"
-#~ msgstr "κυανό"
+msgid "cyan"
+msgstr "κυανό"
 
-#~ msgid "blue"
-#~ msgstr "μπλε"
+msgid "blue"
+msgstr "μπλε"
 
 #~ msgid " clean "
 #~ msgstr " καθαρισμός "
@@ -2065,8 +2065,8 @@ msgstr "μετακίνηση όλων των εντολών στον κάδο α
 #~ msgid "write"
 #~ msgstr "γράφω"
 
-#~ msgid "green"
-#~ msgstr "πράσινο"
+msgid "green"
+msgstr "πράσινο"
 
 #~ msgid "restore last"
 #~ msgstr "επαναφορά τελευταίου"
@@ -2076,8 +2076,8 @@ msgstr "μετακίνηση όλων των εντολών στον κάδο α
 #~ "μια εντολή προγραμματισμού: χρησιμοποιείται για την εισαγωγή προχωρημένων "
 #~ "μαθηματικών εξισώσεων, π.χ. ημ(x)"
 
-#~ msgid "orange"
-#~ msgstr "πορτοκαλί"
+msgid "orange"
+msgstr "πορτοκαλί"
 
 #~ msgid "blocks"
 #~ msgstr "ομάδες"
@@ -2085,8 +2085,8 @@ msgstr "μετακίνηση όλων των εντολών στον κάδο α
 #~ msgid "text size"
 #~ msgstr "μέγεθος κειμένου"
 
-#~ msgid "red"
-#~ msgstr "κόκκινο"
+msgid "red"
+msgstr "κόκκινο"
 
 #~ msgid "sensors"
 #~ msgstr "αισθητήρες"
@@ -2094,8 +2094,8 @@ msgstr "μετακίνηση όλων των εντολών στον κάδο α
 #~ msgid "sensor input resistance"
 #~ msgstr "αισθητήρας αντίστασης εισόδου"
 
-#~ msgid "white"
-#~ msgstr "λευκό"
+msgid "white"
+msgstr "λευκό"
 
 #~ msgid "holds current text color (can be used in place of a number block)"
 #~ msgstr ""
@@ -2111,8 +2111,8 @@ msgstr "μετακίνηση όλων των εντολών στον κάδο α
 #~ msgid "portfolio"
 #~ msgstr "χαρτοφύλακας"
 
-#~ msgid "black"
-#~ msgstr "μαύρο"
+msgid "black"
+msgstr "μαύρο"
 
 #~ msgid "restores most recent blocks from trash"
 #~ msgstr "επαναφέρει τις πιο πρόσφατες εντολές από τον κάδο ανακύκλωσης"
@@ -2137,8 +2137,8 @@ msgstr "μετακίνηση όλων των εντολών στον κάδο α
 #~ msgid "Trashcan"
 #~ msgstr "Σκουπιδοτενεκές"
 
-#~ msgid "purple"
-#~ msgstr "πορφυρό"
+msgid "purple"
+msgstr "πορφυρό"
 
 #~ msgid "pen"
 #~ msgstr "στιλό"

@@ -2047,17 +2047,17 @@ msgstr "mover todos los bloques a la basura"
 #~ msgid "stack"
 #~ msgstr "pila"
 
-#~ msgid "yellow"
-#~ msgstr "amarillo"
+msgid "yellow"
+msgstr "amarillo"
 
 #~ msgid " "
 #~ msgstr " "
 
-#~ msgid "cyan"
-#~ msgstr "cian"
+msgid "cyan"
+msgstr "cian"
 
-#~ msgid "blue"
-#~ msgstr "azul"
+msgid "blue"
+msgstr "azul"
 
 #~ msgid " clean "
 #~ msgstr " limpiar "
@@ -2068,8 +2068,8 @@ msgstr "mover todos los bloques a la basura"
 #~ msgid "write"
 #~ msgstr "escribir"
 
-#~ msgid "green"
-#~ msgstr "verde"
+msgid "green"
+msgstr "verde"
 
 #~ msgid "restore last"
 #~ msgstr "restaurar último"
@@ -2079,8 +2079,8 @@ msgstr "mover todos los bloques a la basura"
 #~ "un bloque programable: utilizado para agregar ecuaciones matemáticas "
 #~ "avanzadas, i.e., sen(x)"
 
-#~ msgid "orange"
-#~ msgstr "naranja"
+msgid "orange"
+msgstr "naranja"
 
 #~ msgid "blocks"
 #~ msgstr "bloques"
@@ -2088,8 +2088,8 @@ msgstr "mover todos los bloques a la basura"
 #~ msgid "text size"
 #~ msgstr "tamaño del texto"
 
-#~ msgid "red"
-#~ msgstr "rojo"
+msgid "red"
+msgstr "rojo"
 
 #~ msgid "sensors"
 #~ msgstr "sensores"
@@ -2097,8 +2097,8 @@ msgstr "mover todos los bloques a la basura"
 #~ msgid "sensor input resistance"
 #~ msgstr "resistencia de entrada del sensor"
 
-#~ msgid "white"
-#~ msgstr "blanco"
+msgid "white"
+msgstr "blanco"
 
 #~ msgid "holds current text color (can be used in place of a number block)"
 #~ msgstr ""
@@ -2114,8 +2114,8 @@ msgstr "mover todos los bloques a la basura"
 #~ msgid "portfolio"
 #~ msgstr "cartera"
 
-#~ msgid "black"
-#~ msgstr "negro"
+msgid "black"
+msgstr "negro"
 
 #~ msgid "restores most recent blocks from trash"
 #~ msgstr "restaura los bloques más recientes de la papelera"
@@ -2138,8 +2138,8 @@ msgstr "mover todos los bloques a la basura"
 #~ msgid "Trashcan"
 #~ msgstr "bote de basura"
 
-#~ msgid "purple"
-#~ msgstr "morado"
+msgid "purple"
+msgstr "morado"
 
 #~ msgid "pen"
 #~ msgstr "lápiz"
@@ -2204,3 +2204,9 @@ msgstr "mover todos los bloques a la basura"
 
 #~ msgid "1×1 picture"
 #~ msgstr "dibujos 1x1"
+
+msgid "turtle blocks"
+msgstr "Bloques de la Tortuga"
+
+msgid "activity count"
+msgstr "Iteracciones"

@@ -2031,14 +2031,14 @@ msgstr ""
 #~ msgid "stack"
 #~ msgstr "đống"
 
-#~ msgid "yellow"
-#~ msgstr "vàng"
+msgid "yellow"
+msgstr "vàng"
 
-#~ msgid "cyan"
-#~ msgstr "lục lam"
+msgid "cyan"
+msgstr "lục lam"
 
-#~ msgid "blue"
-#~ msgstr "xanh"
+msgid "blue"
+msgstr "xanh"
 
 #~ msgid " clean "
 #~ msgstr " làm sạch "
@@ -2050,8 +2050,8 @@ msgstr ""
 #~ msgid "write"
 #~ msgstr "viết"
 
-#~ msgid "green"
-#~ msgstr "lục"
+msgid "green"
+msgstr "lục"
 
 #~ msgid "restore last"
 #~ msgstr "phục hồi cái cuối"
@@ -2061,8 +2061,8 @@ msgstr ""
 #~ "một khối có thể lập trình: dùng để thêm phương trình toán học cấp cao, v.d. "
 #~ "sin(x)"
 
-#~ msgid "orange"
-#~ msgstr "cam"
+msgid "orange"
+msgstr "cam"
 
 #, fuzzy
 #~ msgid "blocks"
@@ -2071,8 +2071,8 @@ msgstr ""
 #~ msgid "text size"
 #~ msgstr "kích cỡ chữ"
 
-#~ msgid "red"
-#~ msgstr "đỏ"
+msgid "red"
+msgstr "đỏ"
 
 #, fuzzy
 #~ msgid "sensors"
@@ -2082,8 +2082,8 @@ msgstr ""
 #~ msgstr "điện trở đầu vào máy nhạy"
 
 #, fuzzy
-#~ msgid "white"
-#~ msgstr "trong khi"
+msgid "white"
+msgstr "trong khi"
 
 #~ msgid "holds current text color (can be used in place of a number block)"
 #~ msgstr "giữ màu chữ hiện thời (cũng có thể dùng để thay thế một khối con số)"
@@ -2096,8 +2096,8 @@ msgstr ""
 #~ msgstr "Chảy"
 
 #, fuzzy
-#~ msgid "black"
-#~ msgstr "lùi"
+msgid "black"
+msgstr "lùi"
 
 #~ msgid "restores most recent blocks from trash"
 #~ msgstr "phục hồi từ sọt rác các khối vừa đặt"
@@ -2120,8 +2120,8 @@ msgstr ""
 #~ msgid "Trashcan"
 #~ msgstr "Sọt Rác"
 
-#~ msgid "purple"
-#~ msgstr "tím"
+msgid "purple"
+msgstr "tím"
 
 #, fuzzy
 #~ msgid "pen"
