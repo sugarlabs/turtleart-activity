@@ -476,28 +476,11 @@ class TurtleMain():
 
     def _do_cartesian_cb(self, button):
         ''' Callback to display/hide Cartesian coordinate overlay. '''
-        if self.tw.cartesian is True:
-            if self.tw.coord_scale == 1:
-                self.tw.overlay_shapes['Cartesian_labeled'].hide()
-            else:
-                self.tw.overlay_shapes['Cartesian'].hide()
-            self.tw.cartesian = False
-        else:
-            if self.tw.coord_scale == 1:
-                self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
-                                                              OVERLAY_LAYER)
-            else:
-                self.tw.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
-            self.tw.cartesian = True
+        self.tw.set_cartesian(True)
 
     def _do_polar_cb(self, button):
         ''' Callback to display/hide Polar coordinate overlay. '''
-        if self.tw.polar is True:
-            self.tw.overlay_shapes['polar'].hide()
-            self.tw.polar = False
-        else:
-            self.tw.overlay_shapes['polar'].set_layer(OVERLAY_LAYER)
-            self.tw.polar = True
+        self.tw.set_polar(True)
 
     def _do_rescale_cb(self, button):
         ''' Callback to rescale coordinate space. '''
