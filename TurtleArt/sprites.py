@@ -81,7 +81,7 @@ pygtk.require('2.0')
 import gtk
 import pango
 import pangocairo
-
+import cairo
 
 class Sprites:
     ''' A class for the list of sprites and everything they share in common '''
@@ -173,7 +173,7 @@ class Sprite:
         self.layer = 100
         self.labels = []
         self.images = []
-        self.surfaces = []
+        self.cached_surfaces = []
         self._dx = []  # image offsets
         self._dy = []
         self.type = None
@@ -184,10 +184,11 @@ class Sprite:
         ''' Add an image to the sprite. '''
         while len(self.images) < i + 1:
             self.images.append(None)
-            self.surfaces.append(None)
+            self.cached_surfaces.append(None)
             self._dx.append(0)
             self._dy.append(0)
         self.images[i] = image
+        self.cached_surfaces[i] = None  # Clear cache
         self._dx[i] = dx
         self._dy[i] = dy
         if isinstance(self.images[i], gtk.gdk.Pixbuf):
@@ -314,7 +315,6 @@ class Sprite:
 
     def inval(self):
         ''' Invalidate a region for gtk '''
-        # self._sprites.window.invalidate_rect(self.rect, False)
         self._sprites.widget.queue_draw_area(self.rect.x,
                                              self.rect.y,
                                              self.rect.width,
@@ -325,25 +325,24 @@ class Sprite:
         if cr is None:
             print 'sprite.draw: no Cairo context.'
             return
-        # Fix me: Cache cairo surfaces
         for i, img in enumerate(self.images):
-            if self.surfaces[i] is not None:
-                cr.set_source_surface(self.surfaces[i],
-                                      self.rect.x + self._dx[i],
-                                      self.rect.y + self._dy[i])
-            elif isinstance(img, gtk.gdk.Pixbuf):
-                cr.set_source_pixbuf(img,
-                                     self.rect.x + self._dx[i],
-                                     self.rect.y + self._dy[i])
-                # self.surfaces[i] = cr.get_target()
-            else:
-                print 'sprite.draw: source not a pixbuf (%s)' % (type(img))
+            if self.cached_surfaces[i] is None:
+                surface = cairo.ImageSurface(
+                    cairo.FORMAT_ARGB32, self.rect.width, self.rect.height)
+                context = cairo.Context(surface)
+                context = gtk.gdk.CairoContext(context)
+                context.set_source_pixbuf(img, 0, 0)
+                context.rectangle(0, 0, self.rect.width, self.rect.height)
+                context.fill()
+                self.cached_surfaces[i] = surface
+            cr.set_source_surface(self.cached_surfaces[i],
+                                  self.rect.x + self._dx[i],
+                                  self.rect.y + self._dy[i])
             cr.rectangle(self.rect.x + self._dx[i],
                          self.rect.y + self._dy[i],
                          self.rect.width,
                          self.rect.height)
             cr.fill()
-
         if len(self.labels) > 0:
             self.draw_label(cr)
 
@@ -371,7 +370,6 @@ class Sprite:
         for i in range(len(self.labels)):
             pl = cr.create_layout()
             pl.set_text(str(self.labels[i]))
-            # pl = self._sprites.canvas.create_pango_layout(str(self.labels[i]))
             self._fd.set_size(int(self._scale[i] * pango.SCALE))
             pl.set_font_description(self._fd)
             w = pl.get_size()[0] / pango.SCALE
