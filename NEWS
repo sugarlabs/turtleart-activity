@@ -1,7 +1,7 @@
 123
 
 ENHANCEMENTS
-* Using Cairo graphics
+* Using Cairo graphics (#1203)
  - antialiasing
  - rotation of text and images
  - filled arcs
@@ -11,6 +11,11 @@ NOTE
   onto the turtle canvas. This has two consequences: (1) the grids cannot
   be erased except by erasing the entire screen; and (2) the turtle can
   draw on top of the grid.
+
+BUG FIXES:
+* Export as Physics project (#3113) available as a plugin
+* i18n enhancement (#3215) consistent use of strings
+* Enable delete key on HS keyboard (#3052)
 
 122
 
