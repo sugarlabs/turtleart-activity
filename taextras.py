@@ -154,3 +154,58 @@ SUMO_STRINGS = [
     _('update information'),
     _('Update information from the server.')
     ]
+
+PHYSICS_STRINGS = [
+    # TRANS: Please use similar terms to those used in the Physics Activity
+    _('Palette of physics blocks'),
+    _('start polygon'),
+    _('Begin defining a new polygon based \
+on the current Turtle xy position.'),
+    _('add point'),
+    _('Add a new point to the current \
+polygon based on the current Turtle xy position.'),
+    _('end polygon'),
+    _('Define a new polygon.'),
+    _('end filled polygon'),
+    _('Define a new flled polygon.'),
+    _('triangle'),
+    # TRANS: base of a triangle
+    _('base'),
+    # TRANS: height of a triangle
+    _('height'),
+    _('Add a triangle object to the project.'),
+    _('circle'),
+    _('Add a circle object to the project.'),
+    _('rectangle'),
+    _('width'),
+    _('height'),
+    _('Add a rectangle object to the project.'),
+    _('reset'),
+    _('Reset the project; clear the object list.'),
+    _('motor'),
+    _('torque'),
+    _('speed'),
+    _('Motor torque and speed range from 0 (off) to positive numbers; \
+motor is placed on the most recent object created.'),
+    _('pin'),
+    _('Pin an object down so that it cannot fall.'),
+    _('joint'),
+    _('x'),
+    _('y'),
+    _('Join two objects together (the most \
+recent object created and the object at point x, y).'),
+    _('Save the project to the Journal as a Physics activity.'),
+    _('density'),
+    _('Set the density property for objects \
+(density can be any positive number).'),
+    _('friction'),
+    _('Set the friction property for objects (value from 0 to 1, \
+where 0 turns friction off and 1 is strong friction).'),
+    # TRANS: bounciness is restitution
+    _('bounciness'),
+    _('Set the bounciness property for \
+objects (a value from 0 to 1, where 0 means no bounce and 1 is very bouncy).'),
+    _('dynamic'),
+    _('If dynamic = 1, the object can move; \
+if dynamic = 0, it is fixed in position.')
+]
