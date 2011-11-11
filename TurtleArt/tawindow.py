@@ -1613,8 +1613,6 @@ class TurtleArtWindow():
                                         self.rect.y,
                                         self.rect.width,
                                         self.rect.height)
-            # self._expose_cb()
-
         self.dx += dx
         self.dy += dy
 
@@ -1683,7 +1681,6 @@ class TurtleArtWindow():
         """ Button release """
         x, y = xy(event)
         self.button_release(x, y)
-        self._expose_cb()
         if self.turtle_movement_to_share is not None:
             self._share_mouse_move()
         return True
