@@ -1353,8 +1353,8 @@ class TurtleArtWindow():
                     newblk.connections[i + 1] = argblk
         self.drag_group = find_group(newblk)
         self.block_operation = 'new'
-        if newblk.spr.labels[0] is not None and \
-                newblk.name not in ['', 'number', 'string']:
+        if len(newblk.spr.labels) > 0 and newblk.spr.labels[0] is not None \
+                and newblk.name not in ['', 'number', 'string']:
             if newblk.spr.labels[0] not in self.used_block_list:
                 if len(self.used_block_list) > 0:
                     self.used_block_list.append(', ')
@@ -2833,7 +2833,7 @@ class TurtleArtWindow():
             blk.spr.set_layer(BLOCK_LAYER)
         if check_dock:
             blk.connections = 'check'
-        if self.running_sugar and blk.spr.labels[0] is not None and \
+        if self.running_sugar and len(blk.spr.labels) > 0 and \
                 blk.name not in ['', ' ', 'number', 'string']:
             if blk.spr.labels[0] not in self.used_block_list:
                 if len(self.used_block_list) > 0:
