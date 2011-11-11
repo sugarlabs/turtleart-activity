@@ -172,7 +172,6 @@ class Sprite:
         self._margins = [0, 0, 0, 0]
         self.layer = 100
         self.labels = []
-        self.images = []
         self.cached_surfaces = []
         self._dx = []  # image offsets
         self._dy = []
@@ -182,20 +181,17 @@ class Sprite:
 
     def set_image(self, image, i=0, dx=0, dy=0):
         ''' Add an image to the sprite. '''
-        while len(self.images) < i + 1:
-            self.images.append(None)
+        while len(self.cached_surfaces) < i + 1:
             self.cached_surfaces.append(None)
             self._dx.append(0)
             self._dy.append(0)
-        self.images[i] = image
-        self.cached_surfaces[i] = None  # Clear cache
         self._dx[i] = dx
         self._dy[i] = dy
-        if isinstance(self.images[i], gtk.gdk.Pixbuf):
-            w = self.images[i].get_width()
-            h = self.images[i].get_height()
+        if isinstance(image, gtk.gdk.Pixbuf):
+            w = image.get_width()
+            h = image.get_height()
         else:
-            w, h = self.images[i].get_size()
+            w, h = image.get_size()
         if i == 0:  # Always reset width and height when base image changes.
             self.rect.width = w + dx
             self.rect.height = h + dy
@@ -204,6 +200,14 @@ class Sprite:
                 self.rect.width = w + dx
             if h + dy > self.rect.height:
                 self.rect.height = h + dy
+        surface = cairo.ImageSurface(
+            cairo.FORMAT_ARGB32, self.rect.width, self.rect.height)
+        context = cairo.Context(surface)
+        context = gtk.gdk.CairoContext(context)
+        context.set_source_pixbuf(image, 0, 0)
+        context.rectangle(0, 0, self.rect.width, self.rect.height)
+        context.fill()
+        self.cached_surfaces[i] = surface
 
     def move(self, pos):
         ''' Move to new (x, y) position '''
@@ -325,17 +329,8 @@ class Sprite:
         if cr is None:
             print 'sprite.draw: no Cairo context.'
             return
-        for i, img in enumerate(self.images):
-            if self.cached_surfaces[i] is None:
-                surface = cairo.ImageSurface(
-                    cairo.FORMAT_ARGB32, self.rect.width, self.rect.height)
-                context = cairo.Context(surface)
-                context = gtk.gdk.CairoContext(context)
-                context.set_source_pixbuf(img, 0, 0)
-                context.rectangle(0, 0, self.rect.width, self.rect.height)
-                context.fill()
-                self.cached_surfaces[i] = surface
-            cr.set_source_surface(self.cached_surfaces[i],
+        for i, surface in enumerate(self.cached_surfaces):
+            cr.set_source_surface(surface,
                                   self.rect.x + self._dx[i],
                                   self.rect.y + self._dy[i])
             cr.rectangle(self.rect.x + self._dx[i],
@@ -437,51 +432,21 @@ class Sprite:
         ''' Return the upper-left corner of the label safe zone '''
         return(self._margins[0], self._margins[1])
 
-    def get_pixel(self, pos, i=0, mode='888'):
+    def get_pixel(self, pos, i=0):
         ''' Return the pixel at (x, y) '''
-        x, y = pos
-        x = x - self.rect.x
-        y = y - self.rect.y
-        if isinstance(self.images[i], gtk.gdk.Pixbuf):
-            if y > self.images[i].get_height() - 1:
-                return(-1, -1, -1, -1)
-            array = self.images[i].get_pixels()
-            if array is not None:
-                try:
-                    if self.images[i].get_has_alpha():
-                        offset = (y * self.images[i].get_width() + x) * 4
-                        a = ord(array[offset + 3])
-                    else:
-                        offset = (y * self.images[i].get_width() + x) * 3
-                        a = 255
-                    r = ord(array[offset])
-                    g = ord(array[offset + 1])
-                    b = ord(array[offset + 2])
-                    return(r, g, b, a)
-                except IndexError:
-                    """
-                    print "Index Error: %d %d (%d, %d) (w: %d, h: %d) (%dx%d)"\
-                            % (len(array), offset, x, y,
-                               self.images[i].get_width(),
-                               self.images[i].get_height(),
-                               self.rect.width, self.rect.height)
-                    """
-                    pass
-                return(-1, -1, -1, -1)
-        else:
-            w, h = self.images[i].get_size()
-            if x < 0 or x > (w - 1) or y < 0 or y > (h - 1):
-                return(-1, -1, -1, -1)
-            image = self.images[i].get_image(x, y, 1, 1)
-            pixel = image.get_pixel(0, 0)
-            visual = self.images[i].get_visual()
-            r = int((pixel & visual.red_mask) >> visual.red_shift)
-            g = int((pixel & visual.green_mask) >> visual.green_shift)
-            b = int((pixel & visual.blue_mask) >> visual.blue_shift)
-            # Rescale to 8 bits
-            if mode == '565':
-                r = r << 3
-                g = g << 2
-                b = b << 3
-            return(r, g, b, 0)
+        x = int(pos[0] - self.rect.x)
+        y = int(pos[1] - self.rect.y)
+        if x < 0 or x > (self.rect.width - 1) or \
+                y < 0 or y > (self.rect.height - 1):
+            return(-1, -1, -1, -1)
 
+        # Map the cairo surface onto a pixmap
+        pixmap = gtk.gdk.Pixmap(None, self.rect.width, self.rect.height, 24)
+        cr = pixmap.cairo_create()
+        cr.set_source_surface(self.cached_surfaces[i], 0, 0)
+        cr.paint()
+        # Read the pixel        
+        pixel = pixmap.get_image(x, y, 1, 1).get_pixel(0, 0)
+        return(int((pixel & 0xFF0000) >> 16),
+               int((pixel & 0x00FF00) >> 8),
+               int((pixel & 0x0000FF) >> 0), 0)
