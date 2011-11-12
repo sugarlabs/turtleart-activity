@@ -1,3 +1,11 @@
+125
+
+BUG FIXES:
+Alan Jhonn Aguiar Schwyn uncovered some bugs: some old, some new.
+* get_pixel failed on some old Sugar system (fixed with patch from cscott)
+* typo in quit_plugin method
+* typo in coordinate-rescale callback
+
 124
 
 BUG FIX:
