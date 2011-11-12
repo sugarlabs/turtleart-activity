@@ -526,6 +526,14 @@ class TurtleGraphics:
             event = 'p|%s' % (data_to_string([self._get_my_nick(), bool]))
             self.tw.send_event(event)
 
+    def draw_surface(self, surface, x, y, w, h):
+        ''' Draw a surface '''
+        cr = gtk.gdk.CairoContext(self.canvas)
+        cr.set_source_surface(surface, x, y)
+        cr.rectangle(x, y, w, h)
+        cr.fill()
+        self.inval()
+
     def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path, share=True):
         ''' Draw a pixbuf '''
         # Build a gtk.gdk.CairoContext from a cairo.Context to access

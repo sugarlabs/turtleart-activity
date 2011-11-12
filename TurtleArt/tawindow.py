@@ -494,47 +494,16 @@ class TurtleArtWindow():
         else:
             self.draw_overlay('Cartesian')
         return
-        '''
-        if flag:
-            if self.coord_scale == 1:
-                self.overlay_shapes['Cartesian_labeled'].set_layer(
-                    OVERLAY_LAYER)
-            else:
-                self.overlay_shapes['Cartesian'].set_layer(OVERLAY_LAYER)
-            self.cartesian = True
-        else:
-            if self.coord_scale == 1:
-                self.overlay_shapes['Cartesian_labeled'].hide()
-            else:
-                self.overlay_shapes['Cartesian'].hide()
-            self.cartesian = False
-        '''
 
     def set_polar(self, flag):
         """ Turn on/off polar coordinates """
         self.draw_overlay('polar')
         return
-        '''
-        if flag:
-            self.overlay_shapes['polar'].set_layer(OVERLAY_LAYER)
-            self.polar = True
-        else:
-            self.overlay_shapes['polar'].hide()
-            self.polar = False
-        '''
 
     def set_metric(self, flag):
         """ Turn on/off metric coordinates """
         self.draw_overlay('metric')
         return
-        '''
-        if flag:
-            self.overlay_shapes['metric'].set_layer(OVERLAY_LAYER)
-            self.metric = True
-        else:
-            self.overlay_shapes['metric'].hide()
-            self.metric = False
-        '''
 
     def draw_overlay(self, overlay):
         ''' Draw a coordinate grid onto the canvas. '''
@@ -542,10 +511,10 @@ class TurtleArtWindow():
         self.canvas.heading = 0
         w = self.overlay_shapes[overlay].rect[2]
         h = self.overlay_shapes[overlay].rect[3]
-        self.canvas.draw_pixbuf(self.overlay_shapes[overlay].images[0],
-                                0, 0, (self.canvas.width - w) / 2.,
-                                (self.canvas.height - h) / 2.,
-                                w, h, '', share=False)
+        self.canvas.draw_surface(
+            self.overlay_shapes[overlay].cached_surfaces[0],
+            (self.canvas.width - w) / 2.,
+            (self.canvas.height - h) / 2., w, h)
         self.canvas.heading = save_heading
 
     def update_overlay_position(self, widget, event):
