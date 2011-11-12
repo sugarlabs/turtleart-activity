@@ -395,22 +395,8 @@ class TurtleArtActivity(activity.Activity):
             self.tw.set_metric(True)
 
     def do_rescale_cb(self, button):
-        ''' Rescale coordinate system (100==height/2 or 100 pixels). '''
-        if self.tw.cartesian:
-            cartesian = True
-            self.tw.set_cartesian(False)
-        else:
-            cartesian = False
-        if self.tw.polar:
-            polar = True
-            self.tw.set_polar(False)
-        else:
-            polar = False
-        if self.tw.metric:
-            metric = True
-            self.tw.set_metric(False)
-        else:
-            polar = False
+        ''' Rescale coordinate system (100==height/2 or 100 pixels). '''        
+
         if self.tw.coord_scale == 1:
             self.tw.coord_scale = self.tw.height / 200
             self.rescale_button.set_icon('contract-coordinates')
@@ -420,12 +406,8 @@ class TurtleArtActivity(activity.Activity):
             self.rescale_button.set_icon('expand-coordinates')
             self.rescale_button.set_tooltip(_('Rescale coordinates up'))
         self.tw.eraser_button()
-        if cartesian:
-            self.tw.set_cartesian(True)
-        if polar:
-            self.tw.set_polar(True)
-        if metric:
-            self.tw.set_metric(True)
+        # Given the change in how overlays are handled (v123), there is no way
+        # to erase and then redraw the overlays.
 
     def get_document_path(self, async_cb, async_err_cb):
         '''  View TA code as part of view source.  '''
