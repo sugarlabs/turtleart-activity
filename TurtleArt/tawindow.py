@@ -442,6 +442,7 @@ class TurtleArtWindow():
         """ Eraser_button (hide status block when clearing the screen.) """
         if self.status_spr is not None:
             self.status_spr.hide()
+        self.lc.find_value_blocks()  # Are there blocks to update?
         self.lc.prim_clear()
         self.display_coordinates()
 
