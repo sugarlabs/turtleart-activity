@@ -1241,7 +1241,10 @@ class TurtleArtWindow():
             for blk in self.drag_group:
                 if blk.status != 'collapsed':
                     blk.spr.set_layer(TOP_LAYER)
-            self.saved_string = blk.spr.labels[0]
+            if len(blk.spr.labels) > 0:
+                self.saved_string = blk.spr.labels[0]
+            else:
+                self.saved_string = ''
 
     def _unselect_block(self):
         """ Unselect block """
@@ -2197,7 +2200,7 @@ class TurtleArtWindow():
             if keyname == "p":
                 self.hideshow_button()
             elif keyname == 'q':
-                self._plugins_quit()
+                self._quit_plugins()
                 if self.gst_available:
                     stop_media(self.lc)
                 exit()
