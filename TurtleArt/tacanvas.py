@@ -719,7 +719,7 @@ class TurtleGraphics:
             cs.flush() # ensure all writing is done
             # Read the pixel
             pixels = cs.get_data()
-            return (ord(pixels[0]), ord(pixels[1]), ord(pixels[2]), 0)
+            return (ord(pixels[2]), ord(pixels[1]), ord(pixels[0]), 0)
         else:
             return(-1, -1, -1, -1)
 

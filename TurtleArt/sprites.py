@@ -450,16 +450,5 @@ class Sprite:
         cs.flush() # ensure all writing is done
         # Read the pixel
         pixels = cs.get_data()
-        return (ord(pixels[0]), ord(pixels[1]), ord(pixels[2]), 0)
-        '''
-        # Map the cairo surface onto a pixmap
-        pixmap = gtk.gdk.Pixmap(None, self.rect.width, self.rect.height, 24)
-        cr = pixmap.cairo_create()
-        cr.set_source_surface(self.cached_surfaces[i], 0, 0)
-        cr.paint()
-        # Read the pixel        
-        pixel = pixmap.get_image(x, y, 1, 1).get_pixel(0, 0)
-        return(int((pixel & 0xFF0000) >> 16),
-               int((pixel & 0x00FF00) >> 8),
-               int((pixel & 0x0000FF) >> 0), 0)
-        '''
+        return (ord(pixels[2]), ord(pixels[1]), ord(pixels[0]), 0)
+
