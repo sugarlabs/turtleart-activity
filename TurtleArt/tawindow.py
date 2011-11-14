@@ -328,6 +328,12 @@ class TurtleArtWindow():
         for plugin in self._plugins:
             plugin.stop()
 
+    def clear_plugins(self):
+	""" Clear is called from the clean block and erase button """
+        for plugin in self._plugins:
+            if hasattr(plugin, 'clear'):
+                plugin.clear()
+
     def background_plugins(self):
         """ Background is called when we are pushed to the background. """
         for plugin in self._plugins:

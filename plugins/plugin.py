@@ -35,6 +35,10 @@ class Plugin(gobject.GObject):
         """ stop is called when stop button is pressed. """
         pass
 
+    def clear(self):
+        """ clear is called when erase button is pressed and from the clean block. """
+        pass
+
     def goto_background(self):
         """ goto_background is called when the activity is sent to the
         background. """

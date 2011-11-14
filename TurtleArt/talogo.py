@@ -489,6 +489,7 @@ class LogoCode:
 
     def prim_clear(self):
         """ Clear screen """
+	self.tw.clear_plugins()
         if self.tw.gst_available:
             from tagplay import stop_media
             # stop_media(self)  # TODO: gplay variable
