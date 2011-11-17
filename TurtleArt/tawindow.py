@@ -1474,6 +1474,8 @@ class TurtleArtWindow():
 
     def _move_cb(self, win, event):
         x, y = xy(event)
+        self.mouse_x = x
+        self.mouse_y = y
         self._mouse_move(x, y)
         return True
 
@@ -1659,6 +1661,8 @@ class TurtleArtWindow():
     def _buttonrelease_cb(self, win, event):
         """ Button release """
         x, y = xy(event)
+        self.mouse_x = x
+        self.mouse_y = y
         self.button_release(x, y)
         if self.turtle_movement_to_share is not None:
             self._share_mouse_move()

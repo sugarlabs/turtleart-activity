@@ -17,7 +17,7 @@
 
 import gtk
 from time import time
-import os.path
+import os
 from gettext import gettext as _
 
 from plugins.plugin import Plugin
@@ -26,7 +26,7 @@ from TurtleArt.talogo import primitive_dictionary, logoerror, \
     media_blocks_dictionary
 from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS, \
     MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN, PYTHON_SKIN, \
-    PREFIX_DICTIONARY
+    PREFIX_DICTIONARY, VOICES
 from TurtleArt.tautils import convert, round_int, debug_output
 from TurtleArt.tajail import myfunc, myfunc_import
 
@@ -257,11 +257,52 @@ in the Sugar Journal'))
 complete'))
         self.tw.lc.def_prim('mediawait', 0, self.tw.lc.media_wait, True)
 
+        primitive_dictionary['speak'] = self._prim_speak
+        palette.add_block('speak',
+                          style='basic-style-1arg',
+                          label=_('speak'),
+                          prim_name='speak',
+                          default=_('hello'),
+                          help_string=_('speaks text'))
+        self.tw.lc.def_prim('speak', 1,
+                            lambda self, x: primitive_dictionary['speak'](x))
+
     def _sensor_palette(self):
 
         palette = make_palette('sensor',
                      colors=["#FF6060", "#A06060"],
                      help_string=_('Palette of sensor blocks'))
+
+        primitive_dictionary['mouseclick'] = self._prim_mouse_click
+        palette.add_block('mouseclick',
+                          style='box-style',
+                          label=_('click'),
+                          prim_name='mouseclick',
+                          value_block=True,
+                          help_string=_('returns 1 if mouse button has been \
+clicked'))
+        self.tw.lc.def_prim('mouseclick', 0,
+                            lambda self: primitive_dictionary['mouseclick']())
+
+        palette.add_block('mousex',
+                          style='box-style',
+                          label=_('mouse x'),
+                          prim_name='mousex',
+                          value_block=True,
+                          help_string=_('returns mouse x coordinate'))
+        self.tw.lc.def_prim('mousex', 0,
+                            lambda self: self.tw.mouse_x - (
+                self.tw.canvas.width / 2))
+
+        palette.add_block('mousey',
+                          style='box-style',
+                          label=_('mouse y'),
+                          prim_name='mousey',
+                          value_block=True,
+                          help_string=_('returns mouse y coordinate'))
+        self.tw.lc.def_prim('mousey', 0,
+                            lambda self: (
+                self.tw.canvas.height / 2) - self.tw.mouse_y)
 
         primitive_dictionary['kbinput'] = self._prim_kbinput
         palette.add_block('kbinput',
@@ -1017,6 +1058,27 @@ bullets'))
         """ Save SVG to file """
         self.tw.canvas.svg_close()
         self.tw.save_as_image(name, svg=True)
+
+    def _prim_speak(self, text):
+        """ Speak text """
+        if type(text) == float and int(text) == text:
+            text = int(text)
+
+        lang = os.environ['LANG'][0:2]
+        if lang in VOICES:
+            language_option = '-v ' + VOICES[lang]
+        else:
+            language_option = ''
+        os.system('espeak %s "%s" --stdout | aplay' % (
+                language_option, text))
+
+    def _prim_mouse_click(self):
+        """ Return 1 if mouse button has been pressed """
+        if self.tw.mouse_flag == 1:
+            self.tw.mouse_flag = 0
+            return 1
+        else:
+            return 0
 
     def _prim_see(self):
         """ Read r, g, b from the canvas and return a corresponding palette
