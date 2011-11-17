@@ -1,3 +1,11 @@
+126
+
+ENHANCEMENTS
+* Added speak block to media palette
+* Added mouse x, y, and click blocks to sensor palette
+* Added plugin support for clear method attached to Clean block and
+  Erase button.
+
 125
 
 BUG FIXES:
