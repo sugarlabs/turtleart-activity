@@ -267,6 +267,18 @@ complete'))
         self.tw.lc.def_prim('speak', 1,
                             lambda self, x: primitive_dictionary['speak'](x))
 
+        primitive_dictionary['sinewave'] = self._prim_sinewave
+        palette.add_block('sinewave',
+                          style='basic-style-1arg',
+                          label=_('sinewave'),
+                          prim_name='sinewave',
+                          default=_(800),
+                          help_string=_('plays a sinewave for 10 seconds at a \
+frequency determined by the argument passed'))
+        self.tw.lc.def_prim('sinewave', 1,
+                            lambda self,
+                            x: primitive_dictionary['sinewave'](x))
+
     def _sensor_palette(self):
 
         palette = make_palette('sensor',
@@ -1070,7 +1082,18 @@ bullets'))
         else:
             language_option = ''
         os.system('espeak %s "%s" --stdout | aplay' % (
-                language_option, text))
+                language_option, str(text)))
+
+    def _prim_sinewave(self, frequency):
+        """ Play a sinewave """
+        try:
+            frequency = float(frequency)
+        except ValueError:
+            self.tw.lc.stop_logo()
+            raise logoerror("#notanumber")
+        if frequency < 0:
+            frequency = -frequency
+        os.system('speaker-test -t sine -l 1 -f %d' % (int(frequency)))
 
     def _prim_mouse_click(self):
         """ Return 1 if mouse button has been pressed """
