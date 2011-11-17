@@ -18,6 +18,7 @@
 import gtk
 from time import time
 import os
+
 from gettext import gettext as _
 
 from plugins.plugin import Plugin
@@ -27,7 +28,7 @@ from TurtleArt.talogo import primitive_dictionary, logoerror, \
 from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS, \
     MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN, PYTHON_SKIN, \
     PREFIX_DICTIONARY, VOICES
-from TurtleArt.tautils import convert, round_int, debug_output
+from TurtleArt.tautils import convert, round_int, debug_output, get_path
 from TurtleArt.tajail import myfunc, myfunc_import
 
 
@@ -269,15 +270,16 @@ complete'))
 
         primitive_dictionary['sinewave'] = self._prim_sinewave
         palette.add_block('sinewave',
-                          style='basic-style-1arg',
-                          label=_('sinewave'),
+                          style='basic-style-3arg',
+                          # TRANS: pitch, duration, amplitude
+                          label=[_('sinewave'), _('pitch'), _('duration'), ''],
                           prim_name='sinewave',
-                          default=_(800),
-                          help_string=_('plays a sinewave for 10 seconds at a \
-frequency determined by the argument passed'))
-        self.tw.lc.def_prim('sinewave', 1,
+                          default=[1000, 5000, 1],
+                          help_string=_('plays a sinewave at frequency, \
+amplitude, and duration (in seconds)'))
+        self.tw.lc.def_prim('sinewave', 3,
                             lambda self,
-                            x: primitive_dictionary['sinewave'](x))
+                            x, y, z: primitive_dictionary['sinewave'](x, y, z))
 
     def _sensor_palette(self):
 
@@ -1084,16 +1086,75 @@ bullets'))
         os.system('espeak %s "%s" --stdout | aplay' % (
                 language_option, str(text)))
 
-    def _prim_sinewave(self, frequency):
-        """ Play a sinewave """
+    def _prim_sinewave(self, pitch, amplitude, duration):
+        """ Create a Csound score to play a sine wave. """
+        self.orchlines = []
+        self.scorelines = []
+        self.instrlist = []
+
         try:
-            frequency = float(frequency)
+            pitch = abs(float(pitch))
+            amplitute = abs(float(amplitude))
+            duration = abs(float(duration))
         except ValueError:
             self.tw.lc.stop_logo()
             raise logoerror("#notanumber")
-        if frequency < 0:
-            frequency = -frequency
-        os.system('speaker-test -t sine -l 1 -f %d' % (int(frequency)))
+
+        self._play_sinewave(pitch, amplitude, duration)
+
+        if self.tw.running_sugar:
+            path = os.path.join(get_path(self.tw.activity, 'instance'),
+                                'tmp.csd')
+        else:
+            path = os.path.join('/tmp', 'tmp.csd')
+        self._audio_write(path)  # Create a csound file from the score.
+        os.system('csound ' + path)  # Play the csound file.
+
+    def _play_sinewave(self, pitch, amplitude, duration, starttime=0,
+              pitch_envelope=99, amplitude_envelope=100, instrument=1):
+
+        pitenv = pitch_envelope
+        ampenv = amplitude_envelope
+        if not 1 in self.instrlist:
+            self.orchlines.append("instr 1\n")
+            self.orchlines.append("kpitenv oscil 1, 1/p3, p6\n")
+            self.orchlines.append("aenv oscil 1, 1/p3, p7\n")
+            self.orchlines.append("asig oscil p5*aenv, p4*kpitenv, p8\n")
+            self.orchlines.append("out asig\n")
+            self.orchlines.append("endin\n\n")
+            self.instrlist.append(1)
+
+        self.scorelines.append("i1 %s %s %s %s %s %s %s\n" % (
+                str(starttime), str(duration), str(pitch), str(amplitude),
+                str(pitenv), str(ampenv), str(instrument)))
+
+    def _audio_write(self, file):
+        """ Compile a .csd file. """
+
+        csd = open(file, "w")
+        csd.write("<CsoundSynthesizer>\n\n")
+        csd.write("<CsOptions>\n")
+        csd.write("-+rtaudio=alsa -odevaudio -m0 -d -b256 -B512\n")
+        csd.write("</CsOptions>\n\n")
+        csd.write("<CsInstruments>\n\n")
+        csd.write("sr=16000\n")
+        csd.write("ksmps=50\n")
+        csd.write("nchnls=1\n\n")
+        for line in self.orchlines:
+            csd.write(line)
+        csd.write("\n</CsInstruments>\n\n")
+        csd.write("<CsScore>\n\n")
+        csd.write("f1 0 2048 10 1\n")
+        csd.write("f2 0 2048 10 1 0 .33 0 .2 0 .143 0 .111\n")
+        csd.write("f3 0 2048 10 1 .5 .33 .25 .2 .175 .143 .125 .111 .1\n")
+        csd.write("f10 0 2048 10 1 0 0 .3 0 .2 0 0 .1\n")
+        csd.write("f99 0 2048 7 1 2048 1\n")
+        csd.write("f100 0 2048 7 0. 10 1. 1900 1. 132 0.\n")
+        csd.write(self.scorelines.pop())
+        csd.write("e\n")
+        csd.write("\n</CsScore>\n")
+        csd.write("\n</CsoundSynthesizer>")
+        csd.close()
 
     def _prim_mouse_click(self):
         """ Return 1 if mouse button has been pressed """
