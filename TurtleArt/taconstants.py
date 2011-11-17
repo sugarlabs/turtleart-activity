@@ -207,6 +207,19 @@ WHITE_SPACE = ['space', 'Tab']
 CURSOR = '█'
 RETURN = '⏎'
 
+VOICES = {'af': 'afrikaans', 'cy': 'welsh-test', 'el': 'greek',
+          'es': 'spanish', 'hi': 'hindi-test', 'hy': 'armenian',
+          'ku': 'kurdish', 'mk': 'macedonian-test', 'pt': 'brazil',
+          'sk': 'slovak', 'sw': 'swahili', 'bs': 'bosnian',
+          'da': 'danish', 'en': 'english', 'fi': 'finnish',
+          'hr': 'croatian', 'id': 'indonesian-test', 'la': 'latin',
+          'nl': 'dutch-test', 'sq': 'albanian', 'ta': 'tamil',
+          'vi': 'vietnam-test', 'ca': 'catalan', 'de': 'german',
+          'eo': 'esperanto', 'fr': 'french', 'hu': 'hungarian', 
+          'is': 'icelandic-test', 'lv': 'latvian', 'no': 'norwegian',
+          'ro': 'romanian', 'sr': 'serbian', 'zh': 'Mandarin',
+          'cs': 'czech', 'it': 'italian', 'pl': 'polish',
+          'ru': 'russian_test', 'sv': 'swedish', 'tr': 'turkish'}
 
 #
 # Macros (groups of blocks)
