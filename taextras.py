@@ -112,6 +112,7 @@ FOLLOWME_STRINGS = [
     _('follow a RGB color'),
     _('follow a turtle color'),
     _('calibrate a color to follow'),
+    _('Calibrate'),
     _('x position'),
     _('return x position'),
     _('y position'),
