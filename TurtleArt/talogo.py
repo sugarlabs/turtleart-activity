@@ -561,7 +561,8 @@ class LogoCode:
         """ height as a percentage of screen coordinates """
         return int((self.tw.canvas.height * self.scale) / 100.)
 
-    def insert_image(self, center=False, filepath=None):
+    def insert_image(self, center=False, filepath=None, resize=True,
+                     offset=False):
         """ Image only (at current x, y) """
         if filepath is not None:
             self.filepath = filepath
@@ -579,8 +580,13 @@ class LogoCode:
            self.filepath is not None and \
            self.filepath != '':
             try:
-                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.filepath,
-                                                              w, h)
+                if not resize:
+                    pixbuf = gtk.gdk.pixbuf_new_from_file(self.filepath)
+                    w = pixbuf.get_width()
+                    h = pixbuf.get_height()
+                else:
+                    pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                        self.filepath, w, h)
             except:
                 self.tw.showlabel('nojournal', self.filepath)
                 debug_output("Couldn't open filepath %s" % (self.filepath),
@@ -595,6 +601,9 @@ class LogoCode:
                                            self.x2tx() - int(w / 2),
                                            self.y2ty() - int(h / 2), w, h,
                                            self.filepath)
+            elif offset:
+                self.tw.canvas.draw_pixbuf(pixbuf, 0, 0, self.x2tx(),
+                                           self.y2ty() - h, w, h, self.filepath)
             else:
                 self.tw.canvas.draw_pixbuf(pixbuf, 0, 0,
                                            self.x2tx(),
