@@ -140,6 +140,11 @@ is pushed to the stack'),
         if self._status and self.camera is not None:
             self.camera.stop_camera_input()
 
+    def clear(self):
+        ''' This gets called by the clean button and erase button '''
+        if self._status and self.camera is not None:
+            self.camera.stop_camera_input()
+
     def _status_report(self):
         debug_output('Reporting camera status: %s' % (str(self._status)),
                      self._parent.running_sugar)
@@ -184,24 +189,37 @@ is pushed to the stack'),
 
     def calc_luminance(self):
         array = self.camera.pixbuf.get_pixels()
+        width = self.camera.pixbuf.get_width()
+        height = self.camera.pixbuf.get_height()
         self._set_autogain(1)  # reenable AUTOGAIN
 
         if array is not None:
-            length = len(array) / 3
-            r, g, b, i = 0, 0, 0, 0
-            for j in range(length):
-                r += ord(array[i])
-                i += 1
-                g += ord(array[i])
-                i += 1
-                b += ord(array[i])
-                i += 1
+            length = int(len(array) / 3)
+            if length != width * height:
+                debug_output('array length != width x height (%d != %dx%d)' % \
+                                 (length, width, height),
+                             self._parent.running_sugar)
+
+            # Average the 100 pixels in the center of the screen
+            r, g, b = 0, 0, 0
+            row_offset = int((height / 2 - 5) * width * 3)
+            column_offset = int(width / 2 - 5) * 3
+            for y in range(10):
+                i = row_offset + column_offset
+                for x in range(10):
+                    r += ord(array[i])
+                    i += 1
+                    g += ord(array[i])
+                    i += 1
+                    b += ord(array[i])
+                    i += 1
+                row_offset += width * 3
             if self.luminance_only:
-                self.luminance = int((r * 0.3 + g * 0.6 + b * 0.1) / length)
+                self.luminance = int((r * 0.3 + g * 0.6 + b * 0.1) / 100)
             else:
-                self.r = int(r / length)
-                self.g = int(g / length)
-                self.b = int(b / length)
+                self.r = int(r / 100)
+                self.g = int(g / 100)
+                self.b = int(b / 100)
         else:
             if self.luminance_only:
                 self.luminance = -1

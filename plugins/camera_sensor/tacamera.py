@@ -54,7 +54,7 @@ class Camera():
         self.pipe.set_state(gst.STATE_PLAYING)
         while not self.image_ready:
             self.bus.poll(gst.MESSAGE_ANY, -1)
-        self.stop_camera_input()
+        # self.stop_camera_input()
 
     def stop_camera_input(self):
         ''' Stop grabbing '''
