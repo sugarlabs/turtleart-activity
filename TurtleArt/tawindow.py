@@ -1661,6 +1661,7 @@ class TurtleArtWindow():
     def _buttonrelease_cb(self, win, event):
         """ Button release """
         x, y = xy(event)
+        self.mouse_flag = 0
         self.mouse_x = x
         self.mouse_y = y
         self.button_release(x, y)
