@@ -39,7 +39,6 @@ class Camera():
         self.bus = self.pipe.get_bus()
         self.bus.add_signal_watch()
         self.bus.connect('message', self._on_message)
-        self.image_ready = False
 
     def _on_message(self, bus, message):
         ''' We get a message if a pixbuf is available '''
@@ -47,11 +46,11 @@ class Camera():
             # debug_output(message.structure.get_name(), True)
             if message.structure.get_name() == 'pixbuf':
                 self.pixbuf = message.structure['pixbuf']
-                self.bus.remove_signal_watch()
                 self.image_ready = True
 
     def start_camera_input(self):
         ''' Start grabbing '''
+        self.image_ready = False
         self.pipe.set_state(gst.STATE_PLAYING)
         while not self.image_ready:
             self.bus.poll(gst.MESSAGE_ANY, -1)
