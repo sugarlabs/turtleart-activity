@@ -1201,8 +1201,6 @@ bullets'))
                     if self.tw.lc.dsobject is not None:
                         self.tw.lc.filepath = self.tw.lc.dsobject.file_path
                 if self.tw.lc.pixbuf is not None:
-                    debug_output('calling insert_image with pixbuf',
-                                 self.tw.running_sugar)
                     self.tw.lc.insert_image(center=center, pixbuf=True)
                 elif self.tw.lc.filepath is None:
                     if self.tw.lc.dsobject is not None:
