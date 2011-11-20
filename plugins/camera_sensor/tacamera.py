@@ -21,33 +21,42 @@
 #THE SOFTWARE.
 
 import gst, time
+import gobject
 
-GST_PIPE = ['v4l2src', 'ffmpegcolorspace', 'pngenc']
-# GST_PIPE = ['v4l2src', 'ffmpegcolorspace', 'gdkpixbufsink']
+from TurtleArt.tautils import debug_output
+
+GST_PIPE = ['v4l2src', 'ffmpegcolorspace', 'gdkpixbufsink']
+
 
 class Camera():
-    """ A class for representing the video camera """
+    ''' Sets up a pipe from the camera to a pixbuf and emits a signal
+    when the image is ready. '''
 
-    def __init__(self, imagepath):
-       # self.imagepath = imagepath
-       GST_PIPE.append('filesink location=%s' % imagepath)
-       self.pipe = gst.parse_launch('!'.join(GST_PIPE))
-       self.bus = self.pipe.get_bus()
-       # self.bus.add_signal_watch()
-       # self.bus.connect('message', self._on_message)
+    def __init__(self):
+        ''' Prepare camera pipeline to pixbuf and signal watch '''
+        self.pixbuf = None
+        self.pipe = gst.parse_launch('!'.join(GST_PIPE))
+        self.bus = self.pipe.get_bus()
+        self.bus.add_signal_watch()
+        self.bus.connect('message', self._on_message)
+        self.image_ready = False
 
     def _on_message(self, bus, message):
         ''' We get a message if a pixbuf is available '''
         if message.structure is not None:
-            print message.structure.get_name()
+            # debug_output(message.structure.get_name(), True)
             if message.structure.get_name() == 'pixbuf':
-                message.structure['pixbuf'].save(self.imagepath, 'png')
+                self.pixbuf = message.structure['pixbuf']
+                self.bus.remove_signal_watch()
+                self.image_ready = True
 
-    def save_camera_input_to_file(self):
-        """ Grab a frame from the camera """
+    def start_camera_input(self):
+        ''' Start grabbing '''
         self.pipe.set_state(gst.STATE_PLAYING)
-        self.bus.poll(gst.MESSAGE_EOS, -1)
+        while not self.image_ready:
+            self.bus.poll(gst.MESSAGE_ANY, -1)
+        self.stop_camera_input()
 
     def stop_camera_input(self):
+        ''' Stop grabbing '''
         self.pipe.set_state(gst.STATE_NULL)
-
