@@ -572,7 +572,11 @@ class LogoCode:
         w, h = self.wpercent(), self.hpercent()
         if w < 1 or h < 1:
             return
-        if not pixbuf and self.dsobject is not None:
+        if pixbuf:  # We may have to rescale the picture
+            if w != self.pixbuf.get_width() or h != self.pixbuf.get_height():
+                self.pixbuf = self.pixbuf.scale_simple(
+                    w, h, gtk.gdk.INTERP_BILINEAR)
+        elif self.dsobject is not None:
             try:
                 self.pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
             except:
