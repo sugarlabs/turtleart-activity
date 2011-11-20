@@ -569,7 +569,7 @@ class TurtleArtActivity(activity.Activity):
         ''' The help toolbar must be setup we determine what hardware
         is in use. '''
         # FIXME: Temporary work-around gtk problem with XO175
-        if get_hardware() not in [XO175] and \
+        if get_hardware() not in [XO1, XO15, XO175] and \
            (gtk.gtk_version[0] > 2 or gtk.gtk_version[1] > 16):
             self.hover_help_label = self._add_label(
                 _('Move the cursor over the orange palette for help.'),
