@@ -34,7 +34,6 @@ class Camera():
 
     def __init__(self):
         ''' Prepare camera pipeline to pixbuf and signal watch '''
-        self.pixbuf = None
         self.pipe = gst.parse_launch('!'.join(GST_PIPE))
         self.bus = self.pipe.get_bus()
         self.bus.add_signal_watch()
@@ -50,6 +49,7 @@ class Camera():
 
     def start_camera_input(self):
         ''' Start grabbing '''
+        self.pixbuf = None
         self.image_ready = False
         self.pipe.set_state(gst.STATE_PLAYING)
         while not self.image_ready:
