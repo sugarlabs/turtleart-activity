@@ -42,7 +42,7 @@ class Camera_sensor(Plugin):
         ''' Make sure there is a camera device '''
         self._parent = parent
         self._status = False
-        self.function = None
+        self._ag_control = None
         self.camera = None
 
         v4l2src = gst.element_factory_make('v4l2src')
@@ -135,15 +135,22 @@ is pushed to the stack'),
             if self._status and self.camera is None:
                 self.camera = Camera()
 
+    def quit(self):
+        ''' This gets called when the activity quits '''
+        self._reset_the_camera()
+
     def stop(self):
         ''' This gets called by the stop button '''
-        if self._status and self.camera is not None:
-            self.camera.stop_camera_input()
+        self._reset_the_camera()
 
     def clear(self):
         ''' This gets called by the clean button and erase button '''
+        self._reset_the_camera()
+
+    def _reset_the_camera(self):
         if self._status and self.camera is not None:
             self.camera.stop_camera_input()
+            self._set_autogain(1)  # enable AUTOGAIN
 
     def _status_report(self):
         debug_output('Reporting camera status: %s' % (str(self._status)),
@@ -154,6 +161,7 @@ is pushed to the stack'),
 
     def prim_take_picture(self):
         ''' method called by media block '''
+        self._set_autogain(1)  # enable AUTOGAIN
         self._get_pixbuf_from_camera()
         self._parent.lc.pixbuf = self.camera.pixbuf
 
@@ -170,12 +178,6 @@ is pushed to the stack'),
             return
 
         array = None
-        try:
-            self._video_capture_device = open('/dev/video0', 'rw')
-        except:
-            self._video_capture_device = None
-            debug_output('video capture device not available',
-                         self._parent.running_sugar)
         self._set_autogain(0)  # disable AUTOGAIN
         self._get_pixbuf_from_camera()
         self.calc_luminance()
@@ -191,7 +193,6 @@ is pushed to the stack'),
         array = self.camera.pixbuf.get_pixels()
         width = self.camera.pixbuf.get_width()
         height = self.camera.pixbuf.get_height()
-        self._set_autogain(1)  # reenable AUTOGAIN
 
         if array is not None:
             length = int(len(array) / 3)
@@ -230,16 +231,23 @@ is pushed to the stack'),
 
     def _set_autogain(self, state):
         ''' 0 is off; 1 is on '''
-        if self._video_capture_device is not None:
-            self._ag_control = v4l2_control(V4L2_CID_AUTOGAIN)
-            try:
-                ioctl(self._video_capture_device, VIDIOC_G_CTRL,
-                      self._ag_control)
-                self._ag_control.value = state
-                ioctl(self._video_capture_device, VIDIOC_S_CTRL,
-                      self._ag_control)
-            except:
-                pass
+        if self._ag_control is not None and self._ag_control.value == state:
+            return
+        try:
+            video_capture_device = open('/dev/video0', 'rw')
+        except:
+            video_capture_device = None
+            debug_output('video capture device not available',
+                         self._parent.running_sugar)
+            return
+        self._ag_control = v4l2_control(V4L2_CID_AUTOGAIN)
+        try:
+            ioctl(video_capture_device, VIDIOC_G_CTRL, self._ag_control)
+            self._ag_control.value = state
+            ioctl(video_capture_device, VIDIOC_S_CTRL, self._ag_control)
+        except:
+            pass
+        video_capture_device.close()
 
     def _get_pixbuf_from_camera(self):
         ''' Regardless of how we get it, we want to return a pixbuf '''
