@@ -2938,8 +2938,7 @@ class TurtleArtWindow():
             shp = shp[1:]
             label = ''
         self.status_spr.set_shape(self.status_shapes[shp])
-        self.status_spr.set_label_attributes(6.0 * self.block_scale,
-                                             rescale=False)
+        self.status_spr.set_label_attributes(12.0, rescale=False)
         self.status_spr.set_label(str(label))
         self.status_spr.set_layer(STATUS_LAYER)
         if shp == 'info':
