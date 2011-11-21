@@ -287,16 +287,16 @@ amplitude, and duration (in seconds)'))
                      colors=["#FF6060", "#A06060"],
                      help_string=_('Palette of sensor blocks'))
 
-        primitive_dictionary['mouseclick'] = self._prim_mouse_click
-        palette.add_block('mouseclick',
+        primitive_dictionary['mousebutton'] = self._prim_mouse_button
+        palette.add_block('mousebutton',
                           style='box-style',
-                          label=_('click'),
-                          prim_name='mouseclick',
+                          label=_('button down'),
+                          prim_name='mousebutton',
                           value_block=True,
-                          help_string=_('returns 1 if mouse button has been \
-clicked'))
-        self.tw.lc.def_prim('mouseclick', 0,
-                            lambda self: primitive_dictionary['mouseclick']())
+                          help_string=_('returns 1 if mouse button is \
+pressed'))
+        self.tw.lc.def_prim('mousebutton', 0,
+                            lambda self: primitive_dictionary['mousebutton']())
 
         palette.add_block('mousex',
                           style='box-style',
@@ -1156,10 +1156,9 @@ bullets'))
         csd.write("\n</CsoundSynthesizer>")
         csd.close()
 
-    def _prim_mouse_click(self):
-        """ Return 1 if mouse button has been pressed """
+    def _prim_mouse_button(self):
+        """ Return 1 if mouse button is pressed """
         if self.tw.mouse_flag == 1:
-            self.tw.mouse_flag = 0
             return 1
         else:
             return 0
@@ -1186,6 +1185,7 @@ bullets'))
                 pass
             elif string[0:6] in ['media_', 'descr_', 'audio_', 'video_']:
                 self.tw.lc.filepath = None
+                self.tw.lc.pixbuf = None  # Camera writes directly to pixbuf
                 self.tw.lc.dsobject = None
                 if string[6:].lower() in media_blocks_dictionary:
                     media_blocks_dictionary[string[6:].lower()]()
@@ -1200,7 +1200,9 @@ bullets'))
                                 string[6:]), self.tw.running_sugar)
                     if self.tw.lc.dsobject is not None:
                         self.tw.lc.filepath = self.tw.lc.dsobject.file_path
-                if self.tw.lc.filepath == None:
+                if self.tw.lc.pixbuf is not None:
+                    self.tw.lc.insert_image(center=center, pixbuf=True)
+                elif self.tw.lc.filepath is None:
                     if self.tw.lc.dsobject is not None:
                         self.tw.showlabel('nojournal',
                             self.tw.lc.dsobject.metadata['title'])
@@ -1209,7 +1211,7 @@ bullets'))
                     debug_output("Couldn't open %s" % (string[6:]),
                                  self.tw.running_sugar)
                 elif string[0:6] == 'media_':
-                    self.tw.lc.insert_image(center)
+                    self.tw.lc.insert_image(center=center)
                 elif string[0:6] == 'descr_':
                     mimetype = None
                     if self.tw.lc.dsobject is not None and \

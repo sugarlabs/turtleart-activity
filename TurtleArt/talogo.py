@@ -122,6 +122,7 @@ class LogoCode:
         self.update_values = False
         self.gplay = None
         self.filepath = None
+        self.pixbuf = None
         self.dsobject = None
         self.start_time = None
 
@@ -562,50 +563,55 @@ class LogoCode:
         return int((self.tw.canvas.height * self.scale) / 100.)
 
     def insert_image(self, center=False, filepath=None, resize=True,
-                     offset=False):
+                     offset=False, pixbuf=False):
         """ Image only (at current x, y) """
         if filepath is not None:
             self.filepath = filepath
-        pixbuf = None
+        if not pixbuf:
+            self.pixbuf = None
         w, h = self.wpercent(), self.hpercent()
         if w < 1 or h < 1:
             return
-        if self.dsobject is not None:
+        if pixbuf:  # We may have to rescale the picture
+            if w != self.pixbuf.get_width() or h != self.pixbuf.get_height():
+                self.pixbuf = self.pixbuf.scale_simple(
+                    w, h, gtk.gdk.INTERP_BILINEAR)
+        elif self.dsobject is not None:
             try:
-                pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
+                self.pixbuf = get_pixbuf_from_journal(self.dsobject, w, h)
             except:
                 debug_output("Couldn't open dsobject %s" % (self.dsobject),
                              self.tw.running_sugar)
-        if pixbuf is None and \
+        if self.pixbuf is None and \
            self.filepath is not None and \
            self.filepath != '':
             try:
                 if not resize:
-                    pixbuf = gtk.gdk.pixbuf_new_from_file(self.filepath)
-                    w = pixbuf.get_width()
-                    h = pixbuf.get_height()
+                    self.pixbuf = gtk.gdk.pixbuf_new_from_file(self.filepath)
+                    w = self.pixbuf.get_width()
+                    h = self.pixbuf.get_height()
                 else:
-                    pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                    self.pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
                         self.filepath, w, h)
             except:
                 self.tw.showlabel('nojournal', self.filepath)
                 debug_output("Couldn't open filepath %s" % (self.filepath),
                              self.tw.running_sugar)
-        if pixbuf is not None:
+        if self.pixbuf is not None:
             x = self.tw.canvas.xcor
             y = self.tw.canvas.ycor
             w *= self.tw.coord_scale
             h *= self.tw.coord_scale
             if center:
-                self.tw.canvas.draw_pixbuf(pixbuf, 0, 0,
+                self.tw.canvas.draw_pixbuf(self.pixbuf, 0, 0,
                                            self.x2tx() - int(w / 2),
                                            self.y2ty() - int(h / 2), w, h,
                                            self.filepath)
             elif offset:
-                self.tw.canvas.draw_pixbuf(pixbuf, 0, 0, self.x2tx(),
+                self.tw.canvas.draw_pixbuf(self.pixbuf, 0, 0, self.x2tx(),
                                            self.y2ty() - h, w, h, self.filepath)
             else:
-                self.tw.canvas.draw_pixbuf(pixbuf, 0, 0,
+                self.tw.canvas.draw_pixbuf(self.pixbuf, 0, 0,
                                            self.x2tx(),
                                            self.y2ty(),
                                            w, h, self.filepath)

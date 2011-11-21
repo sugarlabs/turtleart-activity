@@ -19,6 +19,8 @@ import gst
 import gtk
 from fcntl import ioctl
 import os
+from time import time
+
 from gettext import gettext as _
 
 from plugins.camera_sensor.tacamera import Camera
@@ -37,22 +39,18 @@ from TurtleArt.taconstants import MEDIA_SHAPES, NO_IMPORT, SKIN_PATHS, \
 class Camera_sensor(Plugin):
 
     def __init__(self, parent):
+        ''' Make sure there is a camera device '''
         self._parent = parent
         self._status = False
-        self._camera = None
+        self.function = None
+        self.camera = None
 
         v4l2src = gst.element_factory_make('v4l2src')
         if v4l2src.props.device_name is not None:
-
-            if self._parent.running_sugar:
-                self._imagepath = get_path(self._parent.activity,
-                                          'data/turtlepic.png')
-            else:
-                self._imagepath = '/tmp/turtlepic.png'
-
             self._status = True
 
     def setup(self):
+        ''' Set up the palettes '''
         palette = make_palette('sensor',
                                colors=["#FF6060", "#A06060"],
                                help_string=_('Palette of sensor blocks'))
@@ -134,13 +132,18 @@ is pushed to the stack'),
         ''' Initialize the camera if there is an camera block in use '''
         if len(self._parent.block_list.get_similar_blocks('block',
             ['camera', 'read_camera', 'luminance'])) > 0:
-            if self._status and self._camera is None:
-                self._camera = Camera(self._imagepath)
+            if self._status and self.camera is None:
+                self.camera = Camera()
 
     def stop(self):
         ''' This gets called by the stop button '''
-        if self._status and self._camera is not None:
-            self._camera.stop_camera_input()
+        if self._status and self.camera is not None:
+            self.camera.stop_camera_input()
+
+    def clear(self):
+        ''' This gets called by the clean button and erase button '''
+        if self._status and self.camera is not None:
+            self.camera.stop_camera_input()
 
     def _status_report(self):
         debug_output('Reporting camera status: %s' % (str(self._status)),
@@ -150,19 +153,15 @@ is pushed to the stack'),
     # Block primitives used in talogo
 
     def prim_take_picture(self):
-        if self._status:
-            ''' method called by media block '''
-            self._camera.save_camera_input_to_file()
-            self._camera.stop_camera_input()
-            self._parent.lc.filepath = self._imagepath
-        else:
-            self._parent.lc.filepath = os.path.join(
-                self._parent.path, 'samples', 'images', 'me.jpg')
+        ''' method called by media block '''
+        self._get_pixbuf_from_camera()
+        self._parent.lc.pixbuf = self.camera.pixbuf
 
     def prim_read_camera(self, luminance_only=False):
         """ Read average pixel from camera and push b, g, r to the stack """
+        self.luminance_only = luminance_only
         if not self._status:
-            if luminance_only:
+            if self.luminance_only:
                 return -1
             else:
                 self._parent.lc.heap.append(-1)
@@ -170,52 +169,64 @@ is pushed to the stack'),
                 self._parent.lc.heap.append(-1)
             return
 
-        pixbuf = None
         array = None
+        try:
+            self._video_capture_device = open('/dev/video0', 'rw')
+        except:
+            self._video_capture_device = None
+            debug_output('video capture device not available',
+                         self._parent.running_sugar)
+        self._set_autogain(0)  # disable AUTOGAIN
+        self._get_pixbuf_from_camera()
+        self.calc_luminance()
+        if self.luminance_only:
+            self._parent.lc.update_label_value('luminance', self.luminance)
+            return self.luminance
+        else:
+            self._parent.lc.heap.append(self.b)
+            self._parent.lc.heap.append(self.g)
+            self._parent.lc.heap.append(self.r)
 
-        if self._status:
-            try:
-                self._video_capture_device = open('/dev/video0', 'rw')
-            except:
-                self._video_capture_device = None
-                debug_output('video capture device not available',
-                             self._parent.running_sugar)
-
-            self._set_autogain(0)  # disable AUTOGAIN
-
-            pixbuf = self._get_pixbuf_from_camera()
-            try:
-                array = pixbuf.get_pixels()
-            except:
-                array = None
-
-            self._set_autogain(1)  # reenable AUTOGAIN
+    def calc_luminance(self):
+        array = self.camera.pixbuf.get_pixels()
+        width = self.camera.pixbuf.get_width()
+        height = self.camera.pixbuf.get_height()
+        self._set_autogain(1)  # reenable AUTOGAIN
 
         if array is not None:
-            length = len(array) / 3
-            r, g, b, i = 0, 0, 0, 0
-            for j in range(length):
-                r += ord(array[i])
-                i += 1
-                g += ord(array[i])
-                i += 1
-                b += ord(array[i])
-                i += 1
-            if luminance_only:
-                lum = int((r * 0.3 + g * 0.6 + b * 0.1) / length)
-                self._parent.lc.update_label_value('luminance', lum)
-                return lum
+            length = int(len(array) / 3)
+            if length != width * height:
+                debug_output('array length != width x height (%d != %dx%d)' % \
+                                 (length, width, height),
+                             self._parent.running_sugar)
+
+            # Average the 100 pixels in the center of the screen
+            r, g, b = 0, 0, 0
+            row_offset = int((height / 2 - 5) * width * 3)
+            column_offset = int(width / 2 - 5) * 3
+            for y in range(10):
+                i = row_offset + column_offset
+                for x in range(10):
+                    r += ord(array[i])
+                    i += 1
+                    g += ord(array[i])
+                    i += 1
+                    b += ord(array[i])
+                    i += 1
+                row_offset += width * 3
+            if self.luminance_only:
+                self.luminance = int((r * 0.3 + g * 0.6 + b * 0.1) / 100)
             else:
-                self._parent.lc.heap.append(int((b / length)))
-                self._parent.lc.heap.append(int((g / length)))
-                self._parent.lc.heap.append(int((r / length)))
+                self.r = int(r / 100)
+                self.g = int(g / 100)
+                self.b = int(b / 100)
         else:
-            if luminance_only:
-                return -1
+            if self.luminance_only:
+                self.luminance = -1
             else:
-                self._parent.lc.heap.append(-1)
-                self._parent.lc.heap.append(-1)
-                self._parent.lc.heap.append(-1)
+                self.r = -1
+                self.g = -1
+                self.b = -1
 
     def _set_autogain(self, state):
         ''' 0 is off; 1 is on '''
@@ -232,10 +243,6 @@ is pushed to the stack'),
 
     def _get_pixbuf_from_camera(self):
         ''' Regardless of how we get it, we want to return a pixbuf '''
-        if self._video_capture_device is not None:
-            self._video_capture_device.close()
-            self._camera.save_camera_input_to_file()
-            self._camera.stop_camera_input()
-            return gtk.gdk.pixbuf_new_from_file(self._imagepath)
-        else:
-            return None
+        self._parent.lc.pixbuf = None
+        if self._status:
+            self.camera.start_camera_input()
