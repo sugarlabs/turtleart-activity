@@ -290,8 +290,8 @@ class TurtleArtWindow():
                 self._plugins.append(plugins.values()[0](self))
                 debug_output('successfully importing %s' % (plugin_class),
                              self.running_sugar)
-            except ImportError:
-                debug_output('failed to import %s' % (plugin_class),
+            except ImportError as e:
+                debug_output('failed to import %s: %s' % (plugin_class, str(e)),
                              self.running_sugar)
             '''
             exec f in globals(), plugins

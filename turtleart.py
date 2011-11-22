@@ -131,8 +131,8 @@ class TurtleMain():
             try:
                 exec f in globals(), plugin
                 self._plugins.append(plugin.values()[0](self))
-            except ImportError:
-                print 'failed to import %s' % (P)
+            except ImportError as e:
+                print 'failed to import %s: %s' % (P, str(e))
 
     def _run_plugins(self):
         ''' Tell the plugin about the TurtleWindow instance. '''
