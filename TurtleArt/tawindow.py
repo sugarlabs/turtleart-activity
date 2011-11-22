@@ -290,8 +290,8 @@ class TurtleArtWindow():
                 self._plugins.append(plugins.values()[0](self))
                 debug_output('successfully importing %s' % (plugin_class),
                              self.running_sugar)
-            except ImportError:
-                debug_output('failed to import %s' % (plugin_class),
+            except ImportError as e:
+                debug_output('failed to import %s: %s' % (plugin_class, str(e)),
                              self.running_sugar)
             '''
             exec f in globals(), plugins
@@ -2938,8 +2938,7 @@ class TurtleArtWindow():
             shp = shp[1:]
             label = ''
         self.status_spr.set_shape(self.status_shapes[shp])
-        self.status_spr.set_label_attributes(6.0 * self.block_scale,
-                                             rescale=False)
+        self.status_spr.set_label_attributes(12.0, rescale=False)
         self.status_spr.set_label(str(label))
         self.status_spr.set_layer(STATUS_LAYER)
         if shp == 'info':

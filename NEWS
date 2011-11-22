@@ -1,3 +1,12 @@
+128
+
+BUG FIXES:
+* Fixed logic error preventing camera capture of multiple frames
+* Fixed problem with camera autogain (#2651)
+* Don't zoom text in alert blocks (#3175)
+
+Note: Still working on  #2624, repeated show camera fails after awhile
+
 127
 
 ENHANCEMENTS:
