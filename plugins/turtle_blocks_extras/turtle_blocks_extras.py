@@ -1107,8 +1107,10 @@ bullets'))
                                 'tmp.csd')
         else:
             path = os.path.join('/tmp', 'tmp.csd')
-        self._audio_write(path)  # Create a csound file from the score.
-        os.system('csound ' + path)  # Play the csound file.
+        # Create a csound file from the score.
+        self._audio_write(path)
+        # Play the csound file.
+        os.system('csound ' + path + ' > /dev/null 2>&1')
 
     def _play_sinewave(self, pitch, amplitude, duration, starttime=0,
               pitch_envelope=99, amplitude_envelope=100, instrument=1):
