@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-29 09:03-0400\n"
-"PO-Revision-Date: 2011-11-20 04:05+0200\n"
-"Last-Translator: EdgarQuispeChambi <quispedgar@yahoo.es>\n"
+"PO-Revision-Date: 2011-11-23 07:29+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: aym\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "CharapArte"
 #  "el uso es"
 #: turtleart.py:68
 msgid "usage is"
-msgstr "Ukham luraña"
+msgstr "ukham luraña"
 
 #  "Sin acción alternativa:"
 #: turtleart.py:212
@@ -199,7 +199,7 @@ msgstr "¿Wakichawinaka imtañani?"
 #  "presentación"
 #: TurtleArtActivity.py:125
 msgid "presentation"
-msgstr "Uñt'ayawi"
+msgstr "uñt'ayawi"
 
 #  "instantánea"
 #: TurtleArtActivity.py:196
@@ -272,7 +272,7 @@ msgstr "ycor"
 #: TurtleArtActivity.py:548 TurtleArt/tawindow.py:2789
 #: TurtleArt/tawindow.py:2793 TurtleArt/tabasics.py:238
 msgid "heading"
-msgstr "Qawkirusa sarasna"
+msgstr "qawkirusa sarasna"
 
 #  "Mover el cursor sobre la paleta naranja para ayuda."
 #: TurtleArtActivity.py:574 TurtleArtActivity.py:578
@@ -411,7 +411,7 @@ msgstr "Qhanachaña kutayasi 0 ukjata 1023 uqakama."
 #  "Devuelve la temperatura en el ambiente como un número entre 0 y 255."
 #: taextras.py:64
 msgid "Returns the ambient temperature as a number between 0 and 255."
-msgstr "Thaya lupir qama qutayaña 0 ukjata 255 uqakama"
+msgstr "Thaya lupir qama qutayaña 0 ukjata 255 uqakama."
 
 #  "Devuelve la distancia del objeto en frente al sensor como un número entre 0 "
 #  "y 255."
@@ -419,12 +419,12 @@ msgstr "Thaya lupir qama qutayaña 0 ukjata 255 uqakama"
 msgid ""
 "Returns the distance from the object in front of the sensor as a number "
 "between 0 and 255."
-msgstr "Jayaru qutayaña kunasa sensor nayrapanki ukjama 0 ukjata 255 uqakama"
+msgstr "Jayaru qutayaña kunasa sensor nayrapanki ukjama 0 ukjata 255 uqakama."
 
 #  "Devuelve 0 o 1 dependiendo the la inclinación del sensor."
 #: taextras.py:67
 msgid "Returns 0 or 1 depending on the sensor inclination."
-msgstr "0 ukjata 1 inasa uka sensor wali uchataskiwa"
+msgstr "0 ukjata 1 inasa uka sensor wali uchataskiwa."
 
 #  "Devuelve 1 cuando el sensor detecta un campo magnético, 0 en otro caso."
 #: taextras.py:68
@@ -435,7 +435,7 @@ msgstr ""
 #  "Oscila entre 0 y 1 dependiendo de la vibración."
 #: taextras.py:69
 msgid "Switches from 0 to 1, the frequency depends on the vibration."
-msgstr "0 ukatja 1 kama, qarkatasiñata yati"
+msgstr "0 ukatja 1 kama, qarkatasiñata yati."
 
 #  "LED"
 #: taextras.py:70
@@ -445,27 +445,27 @@ msgstr "LED"
 #  "Botón"
 #: taextras.py:71
 msgid "pushbutton"
-msgstr "Limjaña"
+msgstr "limjaña"
 
 #  "escala de gris"
 #: taextras.py:72
 msgid "grayscale"
-msgstr "Wali uqi, janiwa wali uqikiti"
+msgstr "wali uqi, janiwa wali uqikiti"
 
 #  "luz ambiente"
 #: taextras.py:73
 msgid "ambient light"
-msgstr "Qhanta"
+msgstr "qhanta"
 
 #  "temperatura"
 #: taextras.py:74
 msgid "temperature"
-msgstr "Phututi"
+msgstr "phututi"
 
 #  "distancia"
 #: taextras.py:75
 msgid "distance"
-msgstr "Sara"
+msgstr "sara"
 
 #  "inclinación"
 #: taextras.py:76
@@ -495,7 +495,7 @@ msgstr "Butia suytaña"
 #  "Espera los segundos pasados por argumento"
 #: taextras.py:81
 msgid "wait for argument seconds"
-msgstr " Espera los segundos pasados por argumento"
+msgstr "espera los segundos pasados por argumento"
 
 #  "carga de batería Butiá"
 #: taextras.py:82
@@ -505,7 +505,7 @@ msgstr "carga de batería Butiá"
 #  "Devuelve la carga de la batería del robot como un número entre 0 y 255."
 #: taextras.py:83
 msgid "Returns the battery charge as a number between 0 and 255."
-msgstr "Devuelve la carga de la batería del robot como un número entre 0 y 255"
+msgstr "Devuelve la carga de la batería del robot como un número entre 0 y 255."
 
 #  "velocidad Butiá"
 #: taextras.py:84
@@ -519,8 +519,8 @@ msgid ""
 "Set the speed of the Butia motors as a value between 0 and 1023, passed by "
 "an argument."
 msgstr ""
-"Setea la velocidad de los motores del Butiá como un valor entre 0 y 1023 \" "
-"\"pasado como argumento"
+"Setea la velocidad de los motores del Butiá como un valor entre 0 y 1023, "
+"pasado como argumento."
 
 #  "adelante Butiá"
 #: taextras.py:87
@@ -530,7 +530,7 @@ msgstr "adelante Butiá"
 #  "Mueve el robot Butiá hacia adelante"
 #: taextras.py:88
 msgid "Move the Butia robot forward."
-msgstr "Mueve el robot Butiá hacia adelante"
+msgstr "Mueve el robot Butiá hacia adelante."
 
 #  "adelante distancia"
 #: taextras.py:89
@@ -540,7 +540,7 @@ msgstr "adelante distancia"
 #  "Mueve el robot Butiá hacia adelante una distancia predefinida"
 #: taextras.py:90
 msgid "Move the Butia robot forward a predefined distance."
-msgstr "Mueve el robot Butiá hacia adelante una distancia predefinida"
+msgstr "Mueve el robot Butiá hacia adelante una distancia predefinida."
 
 #  "atrás Butiá"
 #: taextras.py:91
@@ -550,7 +550,7 @@ msgstr "atrás Butiá"
 #  "Mueve el robot Butiá hacia atrás"
 #: taextras.py:92 taextras.py:96 taextras.py:98 taextras.py:102
 msgid "Move the Butia robot backward."
-msgstr "Mueve el robot Butiá hacia atrás"
+msgstr "Mueve el robot Butiá hacia atrás."
 
 #  "atrás distancia"
 #: taextras.py:93
@@ -605,12 +605,12 @@ msgstr ""
 #  "La cámara no fue encontrada."
 #: taextras.py:109
 msgid "The camera was not found."
-msgstr "Janiwa camera jaqiskiti"
+msgstr "Janiwa camera jaqiskiti."
 
 #  "Error en la inicialización de la cámara."
 #: taextras.py:110
 msgid "Error on the initialization of the camera."
-msgstr "Pantjata, camera janiwa qaltkiti"
+msgstr "Pantjata, camera janiwa qaltkiti."
 
 #  "FollowMe"
 #: taextras.py:111
@@ -625,12 +625,12 @@ msgstr "RGB color tumpasiña"
 #  "seguir un color de tortuga"
 #: taextras.py:113
 msgid "follow a turtle color"
-msgstr "Charapa color tumpasiña"
+msgstr "charapa color tumpasiña"
 
 #  "calibrar un color a seguir"
 #: taextras.py:114
 msgid "calibrate a color to follow"
-msgstr "Samiru tumpasiri qaltasi"
+msgstr "samiru tumpasiri qaltasi"
 
 #  "posición x"
 #: taextras.py:115
@@ -640,7 +640,7 @@ msgstr "x sayt'ata"
 #  "retorna la posición x"
 #: taextras.py:116
 msgid "return x position"
-msgstr "Qutayaña x sayt'ata "
+msgstr "qutayaña x sayt'ata"
 
 #  "posición y"
 #: taextras.py:117
@@ -660,12 +660,12 @@ msgstr "Butiá Sumo"
 #  "enviar velocidades"
 #: taextras.py:123
 msgid "submit speed​​"
-msgstr "Qatak'i apayaña"
+msgstr "qatak'i apayaña"
 
 #  "Envía la velocidad al robot."
 #: taextras.py:124
 msgid "Send speeds the robot."
-msgstr "Envía la velocidad al robot"
+msgstr "Envía la velocidad al robot."
 
 #  "establecer velocidad"
 #: taextras.py:125
