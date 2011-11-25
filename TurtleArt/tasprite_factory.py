@@ -25,7 +25,8 @@ pygtk.require('2.0')
 import gtk
 import os
 
-from taconstants import HIT_RED, HIT_GREEN, HIDE_WHITE, SHOW_WHITE
+from taconstants import HIT_RED, HIT_GREEN, HIDE_WHITE, SHOW_WHITE, \
+    PALETTE_COLOR, TOOLBAR_COLOR
 
 
 class SVG:
@@ -90,6 +91,8 @@ class SVG:
     """
 
     def basic_block(self):
+        ''' The most common block type: used for 0, 1, 2, or 3
+        argument commands, stacks, et al. '''
         self.reset_min_max()
         (x, y) = self._calculate_x_y()
         self.margins[2] = 0
@@ -136,6 +139,8 @@ class SVG:
         return self.header() + svg
 
     def invisible(self):
+        ''' A block that is invisible but still has connectors: used
+        when collapsing stacks. '''
         self.reset_min_max()
         (x, y) = self._calculate_x_y()
         self.margins[2] = 0
@@ -155,6 +160,7 @@ class SVG:
         return self.header() + self.footer()
 
     def basic_flow(self):
+        ''' A flow block includes an arm that holds a branch in the flow '''
         self.reset_min_max()
         (x, y) = self._calculate_x_y()
         self.margins[2] = 0
@@ -183,6 +189,7 @@ class SVG:
             svg += self._rline_to(self._radius * 3 + self._slot_x * 2, 0)
         else:
             svg += self._rline_to(self._radius + self._slot_x, 0)
+        save_y = self._y
         hh = self._x
         svg += self._corner(1, 1)
         svg += self._rline_to(-self._radius, 0)
@@ -211,9 +218,14 @@ class SVG:
         if self._show is True:
             svg += self._show_dot()
         svg += self.footer()
+        if self._bool is True:  # move secondary labels to arm
+            self.margins[2] = self._radius * 1.5 * self._scale
+            self.margins[3] = (self._max_y - save_y - self._radius + \
+                                   self._stroke_width) * self._scale
         return self.header() + svg
 
     def portfolio(self):
+        ''' Deprecated block '''
         self.reset_min_max()
         (x, y) = self._calculate_x_y()
         self.margins[0] = int(x + 2 * self._stroke_width + 0.5)
@@ -255,6 +267,7 @@ class SVG:
         return self.header() + svg
 
     def basic_box(self):
+        ''' Basic argument style used for numbers, text, media '''
         self.reset_min_max()
         self.set_outie(True)
         x = self._stroke_width / 2.0 + self._innie_x1 + self._innie_x2
@@ -277,6 +290,7 @@ class SVG:
         return self.header() + svg
 
     def boolean_and_or(self):
+        ''' Booleans are in a class of their own '''
         self.reset_min_max()
         svg = self._start_boolean(self._stroke_width / 2.0,
                                   self._radius * 5.5 + self._stroke_width / \
@@ -317,6 +331,7 @@ class SVG:
         return self.header() + svg
 
     def boolean_not(self):
+        ''' Booleans are in a class of their own '''
         self.reset_min_max()
         svg = self._start_boolean(self._stroke_width / 2.0, self._radius * \
                                       2.0 + self._stroke_width / 2.0)
@@ -339,6 +354,7 @@ class SVG:
         return self.header() + svg
 
     def boolean_compare(self):
+        ''' Booleans are in a class of their own '''
         self.reset_min_max()
         yoffset = self._radius * 2 + 2 * self._innie_y2 + \
                   self._innie_spacer + self._stroke_width / 2.0 + \
@@ -378,6 +394,7 @@ class SVG:
         return self.header() + svg
 
     def turtle(self, colors):
+        ''' Turtles are just another block '''
         self.reset_min_max()
         self._fill, self._stroke = colors[0], colors[1]
 
@@ -459,9 +476,10 @@ class SVG:
         return self.header() + svg
 
     def palette(self, width, height):
+        ''' Just a rectangle with a hide button. '''
         self.reset_min_max()
         self._width, self._height = width, height
-        self._fill, self._stroke = "#FFD000", "none"
+        self._fill, self._stroke = PALETTE_COLOR, "none"
         svg = self._rect(width, height, 0, 0)
         self._hide_x = (width - self._radius * 1.5) / 2
         self._hide_y = (height - self._radius * 1.5) / 2
@@ -470,14 +488,17 @@ class SVG:
         return self.header() + svg
 
     def toolbar(self, width, height):
+        ''' Just a rectangle '''
         self.reset_min_max()
         self._width, self._height = width, height
-        self._fill, self._stroke = "#282828", "none"
+        self._fill, self._stroke = TOOLBAR_COLOR, "none"
         svg = self._rect(width, height, 0, 0)
         svg += self.footer()
         return self.header() + svg
 
     def sandwich_top(self, innie_flag=True):
+        ''' Special block for the top of a collapsible stack; includes
+        an 'arm" that extends down the left side of a stack '''
         self.reset_min_max()
         x = self._stroke_width / 2.0
         y = self._stroke_width / 2.0 + self._radius
@@ -516,6 +537,9 @@ class SVG:
         return self.header() + svg
 
     def sandwich_bottom(self):
+        ''' Special block for the bottom of a collapsible stack;
+        includes a connection to the 'arm" that extends down the left
+        side of a stack '''
         self.reset_min_max()
         x = self._stroke_width / 2.0
         y = self._stroke_width / 2.0

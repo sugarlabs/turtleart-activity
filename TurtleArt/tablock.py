@@ -445,6 +445,15 @@ class Block:
             elif self.name in block_styles['number-style-porch']:
                 self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
                                               True, 'right', 'bottom', i)
+
+            elif self.name in block_styles['flow-style-boolean'] or \
+                 self.name in block_styles['flow-style-else']:
+                self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
+                                              True, 'left', 'middle', 0)
+                self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
+                                              True, 'right', 'top', 1)
+                self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
+                                              True, 'right', 'bottom', 2)
             elif i == 1:  # top
                 self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
                                               True, 'right', 'top', i)
