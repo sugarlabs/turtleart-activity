@@ -744,7 +744,7 @@ number of seconds'))
         primitive_dictionary['if'] = self._prim_if
         palette.add_block('if',
                           style='flow-style-boolean',
-                          label=[' ', _('if'), _('then')],
+                          label=[_('if'), ' ', _('then')],
                           prim_name='if',
                           default=[None, None, 'vspace'],
                           special_name=_('if then'),
@@ -756,7 +756,7 @@ operators from Numbers palette'))
         primitive_dictionary['ifelse'] = self._prim_ifelse
         palette.add_block('ifelse',
                           style='flow-style-else',
-                          label=[' ', _('if'), _('then else')],
+                          label=[_('if'), ' ', _('then else')],
                           prim_name='ifelse',
                           default=[None, 'vspace', None, 'vspace'],
                           logo_command='ifelse',
