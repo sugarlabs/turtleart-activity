@@ -169,7 +169,7 @@ polygon based on the current Turtle xy position.'),
     _('Define a new polygon.'),
     _('end filled polygon'),
     _('Not a simple polygon'),
-    _('Define a new flled polygon.'),
+    _('Define a new filled polygon.'),
     _('triangle'),
     # TRANS: base of a triangle
     _('base'),
