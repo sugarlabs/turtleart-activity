@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-29 09:03-0400\n"
-"PO-Revision-Date: 2011-11-23 07:29+0200\n"
+"PO-Revision-Date: 2011-11-26 02:14+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: aym\n"
@@ -204,7 +204,7 @@ msgstr "uñt'ayawi"
 #  "instantánea"
 #: TurtleArtActivity.py:196
 msgid "snapshot"
-msgstr "K'ataki untayasi"
+msgstr "k'ataki untayasi"
 
 #  "Mostrar bloques"
 #: TurtleArtActivity.py:257 TurtleArtActivity.py:270
@@ -560,17 +560,17 @@ msgstr "atrás distancia"
 #  "Mueve el robot Butiá hacia atrás una distancia predefinida"
 #: taextras.py:94
 msgid "Move the Butia robot backward a predefined distance."
-msgstr ""
+msgstr "Mueve el robot Butiá hacia atrás una distancia predefinida."
 
 #  "izquierda Butiá"
 #: taextras.py:95
 msgid "left Butia"
-msgstr ""
+msgstr "ch'iqa Butiá"
 
 #  "derecha Butiá"
 #: taextras.py:97
 msgid "right Butia"
-msgstr ""
+msgstr "kupi Butiá"
 
 #  "girar x grados"
 #: taextras.py:99
@@ -585,7 +585,7 @@ msgstr ""
 #  "detener Butiá"
 #: taextras.py:101
 msgid "stop Butia"
-msgstr ""
+msgstr "Butia sayt'ayaña"
 
 #  "imprimir Butiá"
 #: taextras.py:103
@@ -600,7 +600,7 @@ msgstr ""
 #  "Butiá"
 #: taextras.py:105
 msgid "Butia"
-msgstr ""
+msgstr "Butiá"
 
 #  "La cámara no fue encontrada."
 #: taextras.py:109
@@ -685,12 +685,12 @@ msgstr ""
 #  "atrás"
 #: taextras.py:128 TurtleArt/tabasics.py:131
 msgid "back"
-msgstr ""
+msgstr "alaxa pacha pata"
 
 #  "parar"
 #: taextras.py:129 pysamples/grecord.py:215
 msgid "stop"
-msgstr ""
+msgstr "sayt'ayaña"
 
 #  "girar izquierda"
 #: taextras.py:130
@@ -818,22 +818,22 @@ msgstr ""
 #: pysamples/grecord.py:205 plugins/audio_sensors/audio_sensors.py:82
 #: plugins/audio_sensors/audio_sensors.py:97
 msgid "sound"
-msgstr ""
+msgstr "sijiqi"
 
 #  "empezar"
 #: pysamples/grecord.py:213 TurtleArt/tabasics.py:801
 msgid "start"
-msgstr ""
+msgstr "qalltawi"
 
 #  "reproducir"
 #: pysamples/grecord.py:217
 msgid "play"
-msgstr ""
+msgstr "nakhtayaña"
 
 #  "guardar"
 #: pysamples/grecord.py:219
 msgid "save"
-msgstr ""
+msgstr "imaña"
 
 #  "vuelta en U"
 #: pysamples/uturn.py:24
@@ -878,7 +878,7 @@ msgstr ""
 #  "Vecindario"
 #: gnome_plugins/collaboration_plugin.py:132
 msgid "Neighborhood"
-msgstr ""
+msgstr "Wakisirinaka"
 
 #  "Apodo"
 #: gnome_plugins/collaboration_plugin.py:288
@@ -893,7 +893,7 @@ msgstr ""
 #  "Servidor"
 #: gnome_plugins/collaboration_plugin.py:292
 msgid "Server"
-msgstr ""
+msgstr "Katuqiri"
 
 #  "Puerto"
 #: gnome_plugins/collaboration_plugin.py:294
@@ -913,7 +913,7 @@ msgstr ""
 #  "Colores"
 #: gnome_plugins/collaboration_plugin.py:300
 msgid "Colors"
-msgstr ""
+msgstr "Sumi"
 
 #  "Enviar a la Web"
 #: gnome_plugins/uploader_plugin.py:64
@@ -936,22 +936,22 @@ msgstr ""
 #  "Usuario:"
 #: gnome_plugins/uploader_plugin.py:92
 msgid "Username:"
-msgstr ""
+msgstr "Apnaqirini sutipa:"
 
 #  "Contraseña:"
 #: gnome_plugins/uploader_plugin.py:102
 msgid "Password:"
-msgstr ""
+msgstr "Jist'araña:"
 
 #  "Título:"
 #: gnome_plugins/uploader_plugin.py:113
 msgid "Title:"
-msgstr ""
+msgstr "Suti:"
 
 #  "Descripción:"
 #: gnome_plugins/uploader_plugin.py:123
 msgid "Description:"
-msgstr ""
+msgstr "Yatiyaña:"
 
 #  "Enviar a la Web"
 #: gnome_plugins/uploader_plugin.py:133
@@ -961,7 +961,7 @@ msgstr ""
 #  "Cancelar"
 #: gnome_plugins/uploader_plugin.py:137
 msgid "Cancel"
-msgstr ""
+msgstr "Tukuyaña"
 
 #  "Error de autentificación"
 #: gnome_plugins/uploader_plugin.py:159
@@ -1054,7 +1054,7 @@ msgstr ""
 #  "diario"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:124
 msgid "journal"
-msgstr ""
+msgstr "sapüru luräwi"
 
 #  "objeto de medios del Diario de Sugar"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:125
@@ -1064,7 +1064,7 @@ msgstr ""
 #  "audio"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
 msgid "audio"
-msgstr ""
+msgstr "ist'awi"
 
 #  "objeto de audio del Diario de Sugar"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:137
@@ -1074,7 +1074,7 @@ msgstr ""
 #  "video"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:147
 msgid "video"
-msgstr ""
+msgstr "uñtaña"
 
 #  "objeto de video del Diario de Sugar"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:149
@@ -1101,7 +1101,7 @@ msgstr ""
 #: TurtleArt/tabasics.py:834 TurtleArt/tabasics.py:835
 #: TurtleArt/tabasics.py:836
 msgid "text"
-msgstr ""
+msgstr "qillqawi"
 
 #  "valor de cadena"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:173
@@ -1113,7 +1113,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:178
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:206
 msgid "show"
-msgstr ""
+msgstr "uñachayaña"
 
 #  "dibujar texto o mostrar medios desde el Diario"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:182
@@ -1166,7 +1166,7 @@ msgstr ""
 #  "escala"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:250
 msgid "scale"
-msgstr ""
+msgstr "jach'a"
 
 #  "mantiene el valor actual de la escala"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:254
@@ -1197,7 +1197,7 @@ msgstr ""
 #  "teclado"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
 msgid "keyboard"
-msgstr ""
+msgstr "qillqa q'upt'aña"
 
 #  "contiene los resultados del bloque de consulta del teclado"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:287
@@ -1227,7 +1227,7 @@ msgstr ""
 #  "tiempo"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:315
 msgid "time"
-msgstr ""
+msgstr "pacha"
 
 #  "el tiempo transcurrido (en segundos) desde el inicio del programa"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:318
@@ -1368,7 +1368,7 @@ msgstr ""
 #  "tortuga"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:505
 msgid "turtle"
-msgstr ""
+msgstr "charapa"
 
 #  "elige la tortuga a ordenar"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
@@ -1391,7 +1391,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:697
 msgid "top"
-msgstr ""
+msgstr "p'atja"
 
 #  "encima de una pila plegable"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:534
@@ -1467,7 +1467,7 @@ msgstr ""
 #  "pantalla completa"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:601
 msgid "full screen"
-msgstr ""
+msgstr "maypacha uñtawi"
 
 #  "oculta las barras de herramientas de Azúcar"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:603
@@ -1477,7 +1477,7 @@ msgstr ""
 #  "lista"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:612
 msgid "list"
-msgstr ""
+msgstr "siqi"
 
 #  "presentación con lista de viñetas"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:615
@@ -1521,7 +1521,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:665
 #: TurtleArt/tabasics.py:154
 msgid "left"
-msgstr ""
+msgstr "ch'iqa"
 
 #  "coorx de la izquierda de la pantalla"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:668
@@ -1536,7 +1536,7 @@ msgstr ""
 #  "anchura"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:681
 msgid "width"
-msgstr ""
+msgstr "lankhu"
 
 #  "el ancho del lienzo"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:684
@@ -1547,7 +1547,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
 #: TurtleArt/tabasics.py:165
 msgid "right"
-msgstr ""
+msgstr "kupi"
 
 #  "xcor del lado derecho de la pantalla"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:692
@@ -1562,7 +1562,7 @@ msgstr ""
 #  "altura"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:705
 msgid "height"
-msgstr ""
+msgstr "alaya pacha"
 
 #  "la altura del lienzo"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:708
@@ -1582,17 +1582,17 @@ msgstr ""
 #  "izquierda x"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:733
 msgid "left x"
-msgstr ""
+msgstr "ch'iqa x"
 
 #  "arriba y"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
 msgid "top y"
-msgstr ""
+msgstr "p'atja y"
 
 #  "derecha x"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
 msgid "right x"
-msgstr ""
+msgstr "kupi x"
 
 #  "debajo y"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:760
@@ -1660,8 +1660,9 @@ msgstr ""
 #  "tono"
 #: plugins/audio_sensors/audio_sensors.py:118
 #: plugins/audio_sensors/audio_sensors.py:126
+#, fuzzy
 msgid "pitch"
-msgstr ""
+msgstr "Irama"
 
 #  "campo de entrada de micrófono"
 #: plugins/audio_sensors/audio_sensors.py:119
@@ -1725,22 +1726,22 @@ msgstr ""
 #  "siguiente"
 #: TurtleArt/tawindow.py:759 TurtleArt/tawindow.py:1022
 msgid "next"
-msgstr ""
+msgstr "jutiri"
 
 #  "imagen"
 #: TurtleArt/tawindow.py:2885
 msgid "image"
-msgstr ""
+msgstr "uñjasiwi"
 
 #  "Cargar..."
 #: TurtleArt/tautils.py:173
 msgid "Load..."
-msgstr ""
+msgstr "Apxataña..."
 
 #  "Guardar..."
 #: TurtleArt/tautils.py:182
 msgid "Save..."
-msgstr ""
+msgstr "Imaña..."
 
 #  "no pudo escribir en"
 #: TurtleArt/talogo.py:417
@@ -1770,7 +1771,7 @@ msgstr ""
 #  "adelante"
 #: TurtleArt/tabasics.py:120
 msgid "forward"
-msgstr ""
+msgstr "sartawi"
 
 #  "avanzar la tortuga"
 #: TurtleArt/tabasics.py:124
@@ -1785,7 +1786,7 @@ msgstr ""
 #  "limpiar"
 #: TurtleArt/tabasics.py:143
 msgid "clean"
-msgstr ""
+msgstr "q'umachaña"
 
 #  "limpia la pantalla y restaura la tortuga"
 #: TurtleArt/tabasics.py:146
@@ -1830,12 +1831,12 @@ msgstr ""
 #  "x"
 #: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #  "y"
 #: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #  "mover la tortuga a la posición xcor, ycor; (0, 0) está en el centro de la "
 #  "pantalla."
@@ -1845,10 +1846,9 @@ msgid ""
 msgstr ""
 
 #  "fijar rumbo"
-#
 #: TurtleArt/tabasics.py:204
 msgid "set heading"
-msgstr "seth"
+msgstr ""
 
 #  "fija la orientación de la tortuga (0 es hacia la parte superior de la "
 #  "pantalla.)"
@@ -1923,7 +1923,7 @@ msgstr ""
 #  "color"
 #: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:394
 msgid "color"
-msgstr ""
+msgstr "sumi"
 
 #  "tono"
 #: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:404
@@ -2093,7 +2093,7 @@ msgstr ""
 #  "identidad"
 #: TurtleArt/tabasics.py:587
 msgid "identity"
-msgstr ""
+msgstr "kankaña"
 
 #  "operador de identidad usado para extender bloques"
 #: TurtleArt/tabasics.py:589
@@ -2113,12 +2113,13 @@ msgstr ""
 #  "√"
 #: TurtleArt/tabasics.py:608
 msgid "√"
-msgstr ""
+msgstr "√"
 
 #  "raiz cuadrada"
 #: TurtleArt/tabasics.py:609
+#, fuzzy
 msgid "square root"
-msgstr ""
+msgstr "Raíz cuadrada"
 
 #  "calcula la raíz cuadrada"
 #: TurtleArt/tabasics.py:612
@@ -2128,7 +2129,7 @@ msgstr ""
 #  "aleatorio"
 #: TurtleArt/tabasics.py:619
 msgid "random"
-msgstr ""
+msgstr "kawkiri"
 
 #  "min"
 #: TurtleArt/tabasics.py:619
@@ -2149,7 +2150,7 @@ msgstr ""
 #  "número"
 #: TurtleArt/tabasics.py:635
 msgid "number"
-msgstr ""
+msgstr "jakhu"
 
 #  "utilizado como entrada numérica en los operadores matemáticos"
 #: TurtleArt/tabasics.py:636
@@ -2179,7 +2180,7 @@ msgstr ""
 #  "equivalente"
 #: TurtleArt/tabasics.py:665
 msgid "equal"
-msgstr ""
+msgstr "kikipa"
 
 #  "operador lógico de igualdad"
 #: TurtleArt/tabasics.py:668
@@ -2189,7 +2190,7 @@ msgstr ""
 #  "no"
 #: TurtleArt/tabasics.py:674
 msgid "not"
-msgstr ""
+msgstr "janiwa"
 
 #  "operador NO lógico"
 #: TurtleArt/tabasics.py:677
@@ -2199,7 +2200,7 @@ msgstr ""
 #  "y"
 #: TurtleArt/tabasics.py:683 TurtleArt/tabasics.py:686
 msgid "and"
-msgstr ""
+msgstr "ukata"
 
 #  "operador Y lógico"
 #: TurtleArt/tabasics.py:687
