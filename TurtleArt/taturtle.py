@@ -193,16 +193,17 @@ class Turtle:
             if self.heading == 0:  # rotate the shapes
                 images = []
                 w, h = shapes[0].get_width(), shapes[0].get_height()
-                w = h = int(sqrt(w * w + h * h))
+                nw = nh = int(sqrt(w * w + h * h))
                 for i in range(SHAPES):
-                    surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, w, h)
+                    surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, nw, nh)
                     context = cairo.Context(surface)
                     context = gtk.gdk.CairoContext(context)
-                    context.translate(w / 2., h / 2.)
+                    context.translate(nw / 2., nh / 2.)
                     context.rotate(i * 10 * pi / 180.)
-                    context.translate(-w / 2., -h / 2.)
-                    context.set_source_pixbuf(shapes[0], 0, 0)
-                    context.rectangle(0, 0, w, h)
+                    context.translate(-nw / 2., -nh / 2.)
+                    context.set_source_pixbuf(shapes[0], (nw - w) / 2.,
+                                              (nh - h) / 2.)
+                    context.rectangle(0, 0, nw, nh)
                     context.fill()
                     images.append(surface)
                 self.shapes = images[:]
