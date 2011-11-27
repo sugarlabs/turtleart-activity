@@ -20,8 +20,10 @@
 #THE SOFTWARE.
 
 from random import uniform
-from math import sin, cos, pi
+from math import sin, cos, pi, sqrt
 from gettext import gettext as _
+import gtk
+import cairo
 
 from taconstants import TURTLE_LAYER, DEFAULT_TURTLE_COLORS
 from tasprite_factory import SVG, svg_str_to_pixbuf
@@ -176,25 +178,37 @@ class Turtle:
             self.shapes = generate_turtle_pixbufs(self.colors)
             self.set_heading(self.heading)
 
-    def set_shapes(self, shapes):
+    def set_shapes(self, shapes, i=0):
         """ Reskin the turtle """
         n = len(shapes)
-        if n == SHAPES:
+        if n == 1 and i > 0:  # set shape[i]
+            if i < len(self.shapes):
+                self.shapes[i] = shapes[0]
+        elif n == SHAPES:  # all shapes have been precomputed
             self.shapes = shapes[:]
-        else:
+        else:  # rotate shapes
             if n != 1:
                 debug_output("%d images passed to set_shapes: ignoring" % (n),
                              self.tw.running_sugar)
-            images = [shapes[0]]
-            if self.heading == 0:
-                for i in range(3):
-                    images.append(images[i].rotate_simple(270))
+            if self.heading == 0:  # rotate the shapes
+                images = []
+                w, h = shapes[0].get_width(), shapes[0].get_height()
+                w = h = int(sqrt(w * w + h * h))
                 for i in range(SHAPES):
-                    j = (i + 4) % SHAPES
-                    self.shapes[j] = images[int(j / 9)]
-            else:
+                    surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, w, h)
+                    context = cairo.Context(surface)
+                    context = gtk.gdk.CairoContext(context)
+                    context.translate(w / 2., h / 2.)
+                    context.rotate(i * 10 * pi / 180.)
+                    context.translate(-w / 2., -h / 2.)
+                    context.set_source_pixbuf(shapes[0], 0, 0)
+                    context.rectangle(0, 0, w, h)
+                    context.fill()
+                    images.append(surface)
+                self.shapes = images[:]
+            else:  # associate shape with image at current heading
                 j = int(self.heading + 5) % 360 / (360 / SHAPES)
-                self.shapes[j] = images[0]
+                self.shapes[j] = shapes[0]
         self.custom_shapes = True
         self.show()
 
