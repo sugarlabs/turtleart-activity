@@ -187,7 +187,8 @@ class Sprite:
             self._dy.append(0)
         self._dx[i] = dx
         self._dy[i] = dy
-        if isinstance(image, gtk.gdk.Pixbuf):
+        if isinstance(image, gtk.gdk.Pixbuf) or \
+           isinstance(image, cairo.ImageSurface):
             w = image.get_width()
             h = image.get_height()
         else:
@@ -200,14 +201,17 @@ class Sprite:
                 self.rect.width = w + dx
             if h + dy > self.rect.height:
                 self.rect.height = h + dy
-        surface = cairo.ImageSurface(
-            cairo.FORMAT_ARGB32, self.rect.width, self.rect.height)
-        context = cairo.Context(surface)
-        context = gtk.gdk.CairoContext(context)
-        context.set_source_pixbuf(image, 0, 0)
-        context.rectangle(0, 0, self.rect.width, self.rect.height)
-        context.fill()
-        self.cached_surfaces[i] = surface
+        if isinstance(image, cairo.ImageSurface):
+            self.cached_surfaces[i] = image
+        else:  # Convert to Cairo surface
+            surface = cairo.ImageSurface(
+                cairo.FORMAT_ARGB32, self.rect.width, self.rect.height)
+            context = cairo.Context(surface)
+            context = gtk.gdk.CairoContext(context)
+            context.set_source_pixbuf(image, 0, 0)
+            context.rectangle(0, 0, self.rect.width, self.rect.height)
+            context.fill()
+            self.cached_surfaces[i] = surface
 
     def move(self, pos):
         ''' Move to new (x, y) position '''
