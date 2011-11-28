@@ -1,3 +1,10 @@
+129
+
+ENHANCEMENTS:
+* Repositioned labels on if-then-else blocks
+* Reskinned turtles now rotate to all angles
+* New translations (.aym, .quz, .fr, .da)
+
 128
 
 BUG FIXES:
