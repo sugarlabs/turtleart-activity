@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-21 00:32-0500\n"
-"PO-Revision-Date: 2011-11-27 01:32+0200\n"
-"Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
+"POT-Creation-Date: 2011-11-26 00:32-0500\n"
+"PO-Revision-Date: 2011-11-29 10:54+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -701,9 +701,9 @@ msgstr "effacer tout"
 msgid "move all blocks to trash"
 msgstr "déplacer tous les blocs vers la corbeille"
 
-#: TurtleArt/taconstants.py:262 TurtleArt/taconstants.py:284
-#: TurtleArt/taconstants.py:305 TurtleArt/taconstants.py:347
-#: TurtleArt/taconstants.py:389 TurtleArt/taconstants.py:431
+#: TurtleArt/taconstants.py:264 TurtleArt/taconstants.py:286
+#: TurtleArt/taconstants.py:307 TurtleArt/taconstants.py:349
+#: TurtleArt/taconstants.py:391 TurtleArt/taconstants.py:433
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:824
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:838
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:852
@@ -758,7 +758,7 @@ msgstr "orientation"
 msgid "next"
 msgstr "suivant"
 
-#: TurtleArt/tawindow.py:3019
+#: TurtleArt/tawindow.py:3018
 msgid "image"
 msgstr "image"
 
@@ -2116,7 +2116,7 @@ msgid "Not a simple polygon"
 msgstr "Pas un polygone simple"
 
 #: taextras.py:172
-msgid "Define a new flled polygon."
+msgid "Define a new filled polygon."
 msgstr "Définit un nouveau polygone plein"
 
 #: taextras.py:173
