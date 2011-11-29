@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-21 00:32-0500\n"
-"PO-Revision-Date: 2011-11-27 04:37+0200\n"
-"Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
+"POT-Creation-Date: 2011-11-26 00:32-0500\n"
+"PO-Revision-Date: 2011-11-29 10:50+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -689,9 +689,9 @@ msgstr "ryd alt"
 msgid "move all blocks to trash"
 msgstr "flyt alle blokke til papirkurv"
 
-#: TurtleArt/taconstants.py:262 TurtleArt/taconstants.py:284
-#: TurtleArt/taconstants.py:305 TurtleArt/taconstants.py:347
-#: TurtleArt/taconstants.py:389 TurtleArt/taconstants.py:431
+#: TurtleArt/taconstants.py:264 TurtleArt/taconstants.py:286
+#: TurtleArt/taconstants.py:307 TurtleArt/taconstants.py:349
+#: TurtleArt/taconstants.py:391 TurtleArt/taconstants.py:433
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:824
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:838
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:852
@@ -746,7 +746,7 @@ msgstr "retning"
 msgid "next"
 msgstr "næste"
 
-#: TurtleArt/tawindow.py:3019
+#: TurtleArt/tawindow.py:3018
 msgid "image"
 msgstr "billede"
 
@@ -2084,7 +2084,7 @@ msgid "Not a simple polygon"
 msgstr "Ikke en simpel polygon"
 
 #: taextras.py:172
-msgid "Define a new flled polygon."
+msgid "Define a new filled polygon."
 msgstr "Definér en ny udfyldt polygon."
 
 #: taextras.py:173
