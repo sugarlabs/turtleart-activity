@@ -265,6 +265,7 @@ class LogoCode:
         The block associated with the command is stored as the second element
         in a tuple, e.g., (#forward, 16)
         """
+        # debug_output(line, self.tw.running_sugar)
         res = []
         while line:
             token = line.pop(0)
@@ -431,7 +432,12 @@ class LogoCode:
             while (_millisecond() - starttime) < 120:
                 try:
                     if self.step is not None:
-                        self.step.next()
+                        try:
+                            self.step.next()
+                        except ValueError:
+                            debug_output('generator already executing',
+                                         self.tw.running_sugar)
+                            return False
                     else:
                         return False
                 except StopIteration:
@@ -495,11 +501,11 @@ class LogoCode:
             from tagplay import stop_media
             # stop_media(self)  # TODO: gplay variable
         self.tw.canvas.clearscreen()
-        self.tw.lc.scale = DEFAULT_SCALE
-        self.tw.lc.hidden_turtle = None
-        self.tw.lc.start_time = time()
+        self.scale = DEFAULT_SCALE
+        self.hidden_turtle = None
+        self.start_time = time()
         for name in value_blocks:
-            self.tw.lc.update_label_value(name)
+            self.update_label_value(name)
 
     def int(self, n):
         """ Raise an error if n doesn't convert to int. """
