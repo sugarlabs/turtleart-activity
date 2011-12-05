@@ -343,7 +343,10 @@ class Audio_sensors(Plugin):
                     resistance = (420000000 / avg_buf) - 13500
                 else:
                     resistance = 420000000
-            self._parent.lc.update_label_value('resistance', resistance)
+            if channel == 0:
+                self._parent.lc.update_label_value('resistance', resistance)
+            else:
+                self._parent.lc.update_label_value('resistance2', resistance)
             return resistance
         else:
             return 0
@@ -356,7 +359,10 @@ class Audio_sensors(Plugin):
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
             voltage = float(_avg(buf)) * self.voltage_gain + self.voltage_bias
-            self._parent.lc.update_label_value('voltage', voltage)
+            if channel == 0:
+                self._parent.lc.update_label_value('voltage', voltage)
+            else:
+                self._parent.lc.update_label_value('voltage2', voltage)
             return voltage
         else:
             return 0
