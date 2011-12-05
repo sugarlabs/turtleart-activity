@@ -154,13 +154,13 @@ class Audio_sensors(Plugin):
                               help_string=_('microphone input voltage'),
                               value_block=True,
                               prim_name='voltage')
-            palette.add_block('resistance',
+            palette.add_block('resistance2',
                               style='box-style',
                               label=_('resistance') + '2',
                               help_string=_('microphone input resistance'),
                               value_block=True,
                               prim_name='resistance2')
-            palette.add_block('voltage',
+            palette.add_block('voltage2',
                               style='box-style',
                               label=_('voltage') + '2',
                               help_string=_('microphone input voltage'),
@@ -172,28 +172,24 @@ class Audio_sensors(Plugin):
                               style='box-style',
                               label=_('resistance'),
                               help_string=_('microphone input resistance'),
-                              value_block=True,
                               prim_name='resistance')
             palette.add_block('voltage',
                               hidden=True,
                               style='box-style',
                               label=_('voltage'),
                               help_string=_('microphone input voltage'),
-                              value_block=True,
                               prim_name='voltage')
             palette.add_block('resistance',
                               hidden=True,
                               style='box-style',
                               label=_('resistance') + '2',
                               help_string=_('microphone input resistance'),
-                              value_block=True,
                               prim_name='resistance2')
             palette.add_block('voltage',
                               hidden=True,
                               style='box-style',
                               label=_('voltage') + '2',
                               help_string=_('microphone input voltage'),
-                              value_block=True,
                               prim_name='voltage2')
         self._parent.lc.def_prim(
             'resistance', 0,
@@ -214,7 +210,8 @@ class Audio_sensors(Plugin):
             return
         ''' Start grabbing audio if there is an audio block in use '''
         if len(self._parent.block_list.get_similar_blocks('block',
-            ['volume', 'sound', 'pitch', 'resistance', 'voltage'])) > 0:
+            ['volume', 'sound', 'pitch', 'resistance', 'voltage',
+             'resistance2', 'voltage2'])) > 0:
             if self.audio_started:
                 self.audiograb.resume_grabbing()
             else:
@@ -229,12 +226,11 @@ class Audio_sensors(Plugin):
                 self.audiograb.start_grabbing()
                 self.audio_started = True
 
-        self._channels = self.audiograb.channels
-        for i in range(self._channels):
-            self.ringbuffer.append(RingBuffer1d(self.max_samples,
-                                                dtype='int16'))
-
-        self._update_audio_mode()
+                self._channels = self.audiograb.channels
+                for i in range(self._channels):
+                    self.ringbuffer.append(RingBuffer1d(self.max_samples,
+                                                        dtype='int16'))
+            self._update_audio_mode()
 
     def new_buffer(self, buf, channel=0):
         """ Append a new buffer to the ringbuffer """
@@ -255,7 +251,7 @@ class Audio_sensors(Plugin):
                 if len(self._parent.lc.value_blocks_to_update[name]) > 0:
                     self.audiograb.set_sensor_type(SENSOR_DC_BIAS)
                     return
-        for name in ['voltage',  'voltage2']:
+        for name in ['voltage', 'voltage2']:
             if name in self._parent.lc.value_blocks_to_update:
                 if len(self._parent.lc.value_blocks_to_update[name]) > 0:
                     self.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
