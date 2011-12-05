@@ -1035,22 +1035,25 @@ class TurtleArtWindow():
                     # You cannot mix and match sensor blocks
                     elif blk.name in ['sound', 'volume', 'pitch']:
                         if len(self.block_list.get_similar_blocks(
-                                'block', ['resistance', 'voltage'])) > 0:
+                                'block', ['resistance', 'voltage',
+                                          'resistance2', 'voltage2'])) > 0:
                             self.showlabel('incompatible')
                             return True
-                    elif blk.name in ['resistance', 'voltage']:
+                    elif blk.name in ['resistance', 'voltage',
+                                      'resistance2', 'voltage2']:
                         if len(self.block_list.get_similar_blocks(
                                 'block', ['sound', 'volume', 'pitch'])) > 0:
                             self.showlabel('incompatible')
                             return True
-                        if blk.name == 'resistance':
+                        if blk.name in ['resistance', 'resistance2']:
                             if len(self.block_list.get_similar_blocks(
-                                    'block', 'voltage')) > 0:
+                                    'block', ['voltage', 'voltage2'])) > 0:
                                 self.showlabel('incompatible')
                                 return True
-                        elif blk.name == 'voltage':
+                        elif blk.name in ['voltage', 'voltage2']:
                             if len(self.block_list.get_similar_blocks(
-                                    'block', 'resistance')) > 0:
+                                    'block', ['resistance',
+                                              'resistance2'])) > 0:
                                 self.showlabel('incompatible')
                                 return True
                     blk.highlight()
