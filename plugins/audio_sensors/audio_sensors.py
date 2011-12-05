@@ -27,7 +27,7 @@ except:
 from plugins.plugin import Plugin
 
 from plugins.audio_sensors.audiograb import AudioGrab_Unknown, AudioGrab_XO1, \
-    AudioGrab_XO15, SENSOR_DC_NO_BIAS, SENSOR_DC_BIAS
+    AudioGrab_XO15, AudioGrab_XO175, SENSOR_DC_NO_BIAS, SENSOR_DC_BIAS
 
 from plugins.audio_sensors.ringbuffer import RingBuffer1d
 
@@ -68,7 +68,7 @@ class Audio_sensors(Plugin):
         self.max_samples = 1500
         self.input_step = 1
 
-        self.ringbuffer = RingBuffer1d(self.max_samples, dtype='int16')
+        self.ringbuffer = []
 
         palette = make_palette('sensor',
                                colors=["#FF6060", "#A06060"],
@@ -107,9 +107,9 @@ class Audio_sensors(Plugin):
                               prim_name='volume')
 
         self._parent.lc.def_prim(
-            'sound', 0, lambda self: primitive_dictionary['sound']())
+            'sound', 0, lambda self: primitive_dictionary['sound'](0))
         self._parent.lc.def_prim(
-            'volume', 0, lambda self: primitive_dictionary['volume']())
+            'volume', 0, lambda self: primitive_dictionary['volume'](0))
 
         primitive_dictionary['pitch'] = self.prim_pitch
         if PITCH_AVAILABLE and self._status:
@@ -128,16 +128,18 @@ class Audio_sensors(Plugin):
                               value_block=True,
                               prim_name='pitch')
         self._parent.lc.def_prim('pitch', 0,
-                                  lambda self: primitive_dictionary['pitch']())
+                                 lambda self: primitive_dictionary['pitch'](0))
 
         primitive_dictionary['resistance'] = self.prim_resistance
         primitive_dictionary['voltage'] = self.prim_voltage
-        # FIXME: XO175 drivers don't work yet
-        if self.hw in [XO1, XO15] and self._status:
+        if self.hw in [XO1, XO15, XO175] and self._status:
             if self.hw == XO1:
                 self.voltage_gain = 0.00002225
                 self.voltage_bias = 1.140
             elif self.hw == XO15:
+                self.voltage_gain = -0.0001471
+                self.voltage_bias = 1.695
+            else:  # FIXME: Calibrate 1.75
                 self.voltage_gain = -0.0001471
                 self.voltage_bias = 1.695
             palette.add_block('resistance',
@@ -152,6 +154,18 @@ class Audio_sensors(Plugin):
                               help_string=_('microphone input voltage'),
                               value_block=True,
                               prim_name='voltage')
+            palette.add_block('resistance',
+                              style='box-style',
+                              label=_('resistance') + '2',
+                              help_string=_('microphone input resistance'),
+                              value_block=True,
+                              prim_name='resistance2')
+            palette.add_block('voltage',
+                              style='box-style',
+                              label=_('voltage') + '2',
+                              help_string=_('microphone input voltage'),
+                              value_block=True,
+                              prim_name='voltage2')
         else:
             palette.add_block('resistance',
                               hidden=True,
@@ -166,11 +180,31 @@ class Audio_sensors(Plugin):
                               label=_('voltage'),
                               help_string=_('microphone input voltage'),
                               value_block=True,
-                              prim_name='resistance')
+                              prim_name='voltage')
+            palette.add_block('resistance',
+                              hidden=True,
+                              style='box-style',
+                              label=_('resistance') + '2',
+                              help_string=_('microphone input resistance'),
+                              value_block=True,
+                              prim_name='resistance2')
+            palette.add_block('voltage',
+                              hidden=True,
+                              style='box-style',
+                              label=_('voltage') + '2',
+                              help_string=_('microphone input voltage'),
+                              value_block=True,
+                              prim_name='voltage2')
         self._parent.lc.def_prim(
-            'resistance', 0, lambda self: primitive_dictionary['resistance']())
+            'resistance', 0,
+            lambda self: primitive_dictionary['resistance'](0))
         self._parent.lc.def_prim(
-            'voltage', 0, lambda self: primitive_dictionary['voltage']())
+            'voltage', 0, lambda self: primitive_dictionary['voltage'](0))
+        self._parent.lc.def_prim(
+            'resistance2', 0,
+            lambda self: primitive_dictionary['resistance'](1))
+        self._parent.lc.def_prim(
+            'voltage2', 0, lambda self: primitive_dictionary['voltage'](1))
 
         self.audio_started = False
 
@@ -184,7 +218,9 @@ class Audio_sensors(Plugin):
             if self.audio_started:
                 self.audiograb.resume_grabbing()
             else:
-                if self.hw == XO15:
+                if self.hw == XO175:
+                    self.audiograb = AudioGrab_XO175(self.new_buffer, self)
+                elif self.hw == XO15:
                     self.audiograb = AudioGrab_XO15(self.new_buffer, self)
                 elif self.hw == XO1:
                     self.audiograb = AudioGrab_XO1(self.new_buffer, self)
@@ -192,11 +228,17 @@ class Audio_sensors(Plugin):
                     self.audiograb = AudioGrab_Unknown(self.new_buffer, self)
                 self.audiograb.start_grabbing()
                 self.audio_started = True
+
+        self._channels = self.audiograb.channels
+        for i in range(self._channels):
+            self.ringbuffer.append(RingBuffer1d(self.max_samples,
+                                                dtype='int16'))
+
         self._update_audio_mode()
 
-    def new_buffer(self, buf):
-        ''' Append a new buffer to the ringbuffer '''
-        self.ringbuffer.append(buf)
+    def new_buffer(self, buf, channel=0):
+        """ Append a new buffer to the ringbuffer """
+        self.ringbuffer[channel].append(buf)
         return True
 
     def _update_audio_mode(self):
@@ -208,14 +250,16 @@ class Audio_sensors(Plugin):
                 if len(self._parent.lc.value_blocks_to_update[name]) > 0:
                     self.audiograb.set_sensor_type()
                     return
-        if 'resistance' in self._parent.lc.value_blocks_to_update:
-            if len(self._parent.lc.value_blocks_to_update['resistance']) > 0:
-                self.audiograb.set_sensor_type(SENSOR_DC_BIAS)
-                return
-        if 'voltage' in self._parent.lc.value_blocks_to_update:
-            if len(self._parent.lc.value_blocks_to_update['voltage']) > 0:
-                self.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
-                return
+        for name in ['resistance', 'resistance2']:
+            if name in self._parent.lc.value_blocks_to_update:
+                if len(self._parent.lc.value_blocks_to_update[name]) > 0:
+                    self.audiograb.set_sensor_type(SENSOR_DC_BIAS)
+                    return
+        for name in ['voltage',  'voltage2']:
+            if name in self._parent.lc.value_blocks_to_update:
+                if len(self._parent.lc.value_blocks_to_update[name]) > 0:
+                    self.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
+                    return
 
     def stop(self):
         # This gets called by the stop button
@@ -243,12 +287,11 @@ class Audio_sensors(Plugin):
 
     # Block primitives used in talogo
 
-    def prim_volume(self):
+    def prim_volume(self, channel):
         ''' return mic in value '''
-        #TODO: Adjust gain for different HW
         if not self._status:
             return 0
-        buf = self.ringbuffer.read(None, self.input_step)
+        buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
             volume = float(_avg(buf, abs_value=True))
             self._parent.lc.update_label_value('volume', volume)
@@ -256,11 +299,11 @@ class Audio_sensors(Plugin):
         else:
             return 0
 
-    def prim_sound(self):
+    def prim_sound(self, channel):
         ''' return raw mic in value '''
         if not self._status:
             return 0
-        buf = self.ringbuffer.read(None, self.input_step)
+        buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
             sound = float(buf[0])
             self._parent.lc.update_label_value('sound', sound)
@@ -268,13 +311,14 @@ class Audio_sensors(Plugin):
         else:
             return 0
 
-    def prim_pitch(self):
+    def prim_pitch(self, channel):
         ''' return index of max value in fft of mic in values '''
         if not PITCH_AVAILABLE or not self._status:
             return 0
         buf = []
         for i in range(4):
-            buf = append(buf, self.ringbuffer.read(None, self.input_step))
+            buf = append(
+                buf, self.ringbuffer[channel].read(None, self.input_step))
         if len(buf) > 0:
             r = []
             for j in rfft(buf):
@@ -286,14 +330,14 @@ class Audio_sensors(Plugin):
         else:
             return 0
 
-    def prim_resistance(self):
+    def prim_resistance(self, channel):
         ''' return resistance sensor value '''
-        if not self.hw in [XO1, XO15] or not self._status:
+        if not self.hw in [XO1, XO15, XO175] or not self._status:
             return 0
-        buf = self.ringbuffer.read(None, self.input_step)
+        buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
-            # TODO: test this calibration on XO 1.5
+            # TODO: test this calibration on XO 1.5, XO 1.75
             if self.hw == XO1:
                 resistance = 2.718 ** ((float(_avg(buf)) * 0.000045788) + \
                                            8.0531)
@@ -308,11 +352,11 @@ class Audio_sensors(Plugin):
         else:
             return 0
 
-    def prim_voltage(self):
+    def prim_voltage(self, channel):
         ''' return voltage sensor value '''
-        if not self.hw in [XO1, XO15] or not self._status:
+        if not self.hw in [XO1, XO15, XO175] or not self._status:
             return 0
-        buf = self.ringbuffer.read(None, self.input_step)
+        buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
             voltage = float(_avg(buf)) * self.voltage_gain + self.voltage_bias
