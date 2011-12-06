@@ -26,8 +26,8 @@ except:
 
 from plugins.plugin import Plugin
 
-from plugins.audio_sensors.audiograb import AudioGrab_Unknown, AudioGrab_XO1, \
-    AudioGrab_XO15, AudioGrab_XO175, SENSOR_DC_NO_BIAS, SENSOR_DC_BIAS
+from plugins.audio_sensors.audiograb import AudioGrab, \
+    SENSOR_DC_NO_BIAS, SENSOR_DC_BIAS, SENSOR_AC_BIAS
 
 from plugins.audio_sensors.ringbuffer import RingBuffer1d
 
@@ -64,7 +64,7 @@ class Audio_sensors(Plugin):
         self.running_sugar = self._parent.running_sugar
 
     def setup(self):
-        # set up audio-sensor-specific blocks
+        ''' set up audio-sensor-specific blocks '''
         self.max_samples = 1500
         self.input_step = 1
 
@@ -203,82 +203,85 @@ class Audio_sensors(Plugin):
             'voltage2', 0, lambda self: primitive_dictionary['voltage'](1))
 
         self.audio_started = False
+        if self.hw == XO175:
+            self.PARAMETERS = {
+                SENSOR_AC_BIAS: (False, True, 80, True),
+                SENSOR_DC_NO_BIAS: (True, False, 80, False),
+                SENSOR_DC_BIAS: (True, True, 90, False)
+                }
+        elif self.hw == XO15:
+            self.PARAMETERS = {
+                SENSOR_AC_BIAS: (False, True, 80, True),
+                SENSOR_DC_NO_BIAS: (True, False, 80, False),
+                SENSOR_DC_BIAS: (True, True, 90, False)
+                }
+        elif self.hw == XO1:
+            self.PARAMETERS = {
+                SENSOR_AC_BIAS: (False, True, 40, True),
+                SENSOR_DC_NO_BIAS: (True, False, 0, False),
+                SENSOR_DC_BIAS: (True, True, 0, False)
+                }
+        else:
+            self.PARAMETERS = {
+                SENSOR_AC_BIAS: (None, True, 40, True),
+                SENSOR_DC_NO_BIAS: (True, False, 80, False),
+                SENSOR_DC_BIAS: (True, True, 90, False)
+                }
 
     def start(self):
-        # This gets called by the start button
+        ''' Start grabbing audio if there is an audio block in use '''
         if not self._status:
             return
-        ''' Start grabbing audio if there is an audio block in use '''
-        if len(self._parent.block_list.get_similar_blocks('block',
-            ['volume', 'sound', 'pitch', 'resistance', 'voltage',
-             'resistance2', 'voltage2'])) > 0:
-            if self.audio_started:
-                self.audiograb.resume_grabbing()
-            else:
-                if self.hw == XO175:
-                    self.audiograb = AudioGrab_XO175(self.new_buffer, self)
-                elif self.hw == XO15:
-                    self.audiograb = AudioGrab_XO15(self.new_buffer, self)
-                elif self.hw == XO1:
-                    self.audiograb = AudioGrab_XO1(self.new_buffer, self)
-                else:
-                    self.audiograb = AudioGrab_Unknown(self.new_buffer, self)
-                self.audiograb.start_grabbing()
-                self.audio_started = True
-
-                self._channels = self.audiograb.channels
-                for i in range(self._channels):
-                    self.ringbuffer.append(RingBuffer1d(self.max_samples,
-                                                        dtype='int16'))
-            self._update_audio_mode()
+        if self.audio_started:
+            self.audiograb.stop_grabbing()
+        if len(self._parent.block_list.get_similar_blocks(
+                'block', ['volume', 'sound', 'pitch'])) > 0:
+            mode, bias, gain, boost = self.PARAMETERS[SENSOR_AC_BIAS]
+        elif len(self._parent.block_list.get_similar_blocks(
+                'block', ['resistance', 'resistance2'])) > 0:
+            mode, bias, gain, boost = self.PARAMETERS[SENSOR_DC_BIAS]
+        elif len(self._parent.block_list.get_similar_blocks(
+                'block', ['voltage', 'voltage2'])) > 0:
+            mode, bias, gain, boost = self.PARAMETERS[SENSOR_NO_DC_BIAS]
+        else:
+            return  # no audio blocks in play
+        self.audiograb = AudioGrab(self.new_buffer, self,
+                                   mode, bias, gain, boost)
+        self._channels = self.audiograb.channels
+        for i in range(self._channels):
+            self.ringbuffer.append(RingBuffer1d(self.max_samples,
+                                                dtype='int16'))
+        self.audiograb.start_grabbing()
+        self.audio_started = True
 
     def new_buffer(self, buf, channel=0):
-        """ Append a new buffer to the ringbuffer """
+        ''' Append a new buffer to the ringbuffer '''
         self.ringbuffer[channel].append(buf)
         return True
 
-    def _update_audio_mode(self):
-        ''' If there are sensor blocks, set the appropriate audio mode '''
-        if not hasattr(self._parent.lc, 'value_blocks_to_update'):
-            return
-        for name in ['sound', 'volume', 'pitch']:
-            if name in self._parent.lc.value_blocks_to_update:
-                if len(self._parent.lc.value_blocks_to_update[name]) > 0:
-                    self.audiograb.set_sensor_type()
-                    return
-        for name in ['resistance', 'resistance2']:
-            if name in self._parent.lc.value_blocks_to_update:
-                if len(self._parent.lc.value_blocks_to_update[name]) > 0:
-                    self.audiograb.set_sensor_type(SENSOR_DC_BIAS)
-                    return
-        for name in ['voltage', 'voltage2']:
-            if name in self._parent.lc.value_blocks_to_update:
-                if len(self._parent.lc.value_blocks_to_update[name]) > 0:
-                    self.audiograb.set_sensor_type(SENSOR_DC_NO_BIAS)
-                    return
-
     def stop(self):
-        # This gets called by the stop button
+        ''' This gets called by the stop button '''
         if self._status and self.audio_started:
-            self.audiograb.pause_grabbing()
+            self.audiograb.on_activity_quit()  # reset all setting
+        self.audio_started = False
 
     def goto_background(self):
-        # This gets called when your process is sent to the background
-        # TODO: handle this case
+        ''' This gets called when your process is sent to the background '''
         pass
 
     def return_to_foreground(self):
-        # This gets called when your process returns from the background
-        # TODO: handle this case
+        ''' This gets called when your process returns from the background '''
         pass
 
     def quit(self):
-        # This gets called by the quit button
+        ''' This gets called by the quit button '''
         if self._status and self.audio_started:
-            self.audiograb.stop_grabbing()
+            self.audiograb.on_activity_quit()
 
     def _status_report(self):
-        debug_output('Reporting audio sensor status: %s' % (str(self._status)))
+        debug_output(
+            'Reporting audio sensor status: %s' % (str(self._status)),
+            self._parent.running_sugar)
         return self._status
 
     # Block primitives used in talogo

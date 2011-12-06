@@ -51,7 +51,8 @@ SENSOR_DC_BIAS = 'resistance'
 class AudioGrab():
     """ The interface between measure and the audio device """
 
-    def __init__(self, callable1, parent):
+    def __init__(self, callable1, parent,
+                 mode=None, bias=None, gain=None, boost=None):
         """ Initialize the class: callable1 is a data buffer;
             parent is the parent class"""
 
@@ -86,11 +87,13 @@ class AudioGrab():
 
         # Variables for saving and resuming state of sound device
         self.master = self.get_master()
-        self.bias = BIAS
-        self.dc_mode = DC_MODE_ENABLE
-        self.capture_gain = CAPTURE_GAIN
-        self.mic_boost = MIC_BOOST
+        self.bias = bias
+        self.dc_mode = mode
+        self.capture_gain = gain
+        self.mic_boost = boost
         self.mic = self.get_mic_gain()
+
+        self._set_sensor_type(mode, bias, gain, boost)
 
         # Set up gstreamer pipeline
         self._pad_count = 0
@@ -185,7 +188,8 @@ class AudioGrab():
                          self.parent.running_sugar)
 
     def set_handoff_signal(self, handoff_state):
-        '''Sets whether the handoff signal would generate an interrupt or not'''
+        '''Sets whether the handoff signal would generate an interrupt
+        or not'''
         for i in range(len(self.fakesink)):
             self.fakesink[i].set_property('signal-handoffs', handoff_state)
 
@@ -647,18 +651,23 @@ class AudioGrab():
 
     def _set_sensor_type(self, mode=None, bias=None, gain=None, boost=None):
         '''Helper to modify (some) of the sensor settings.'''
+        '''
         if mode is not None and mode != self.get_dc_mode():
             # If we change to/from dc mode, we need to rebuild the pipelines
             self.stop_grabbing()
             self._unlink_sink_queues()
             self.set_dc_mode(mode)
             self.start_grabbing()
+        '''
+        if mode is not None:
+            self.set_dc_mode(mode)
         if bias is not None:
             self.set_bias(bias)
         if gain is not None:
             self.set_capture_gain(gain)
         if boost is not None:
             self.set_mic_boost(boost)
+        self.save_state()
 
     def on_activity_quit(self):
         '''When Activity quits'''
@@ -672,6 +681,7 @@ class AudioGrab():
 class AudioGrab_XO1(AudioGrab):
     ''' Use default parameters for OLPC XO 1.0 laptop '''
     pass
+
 
 class AudioGrab_XO15(AudioGrab):
     ''' Override parameters for OLPC XO 1.5 laptop '''
