@@ -242,7 +242,7 @@ class Audio_sensors(Plugin):
             mode, bias, gain, boost = self.PARAMETERS[SENSOR_DC_BIAS]
         elif len(self._parent.block_list.get_similar_blocks(
                 'block', ['voltage', 'voltage2'])) > 0:
-            mode, bias, gain, boost = self.PARAMETERS[SENSOR_NO_DC_BIAS]
+            mode, bias, gain, boost = self.PARAMETERS[SENSOR_DC_NO_BIAS]
         else:
             return  # no audio blocks in play
         self.audiograb = AudioGrab(self.new_buffer, self,
