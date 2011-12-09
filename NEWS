@@ -1,3 +1,15 @@
+130
+
+ENHANCEMENTS:
+* Add support for stereo sensor input on XO1.5, XO1.75 hardware
+
+BUG FIXES:
+* More robust initialization of sensors (#552)
+* Work around for problem with Journal preview image
+* Clean up temporary files left from various export functions
+* Fixed layout issue with embedded images in .svg exports
+* Fixed regression bug in HTML export
+
 129
 
 ENHANCEMENTS:
