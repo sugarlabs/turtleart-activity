@@ -3008,9 +3008,6 @@ class TurtleArtWindow():
         else:
             save_picture(self.canvas, file_path)
 
-        # keep a log of the saved pictures for export to HTML
-        self.saved_pictures.append(file_path)
-
         if self.running_sugar:
             from sugar.datastore import datastore
             from sugar import profile
@@ -3029,6 +3026,10 @@ class TurtleArtWindow():
             dsobject.set_file_path(file_path)
             datastore.write(dsobject)
             dsobject.destroy()
+            self.saved_pictures.append((dsobject.object_id, svg))
+            os.remove(file_path)
+        else:
+            self.saved_pictures.append((file_path, svg))
 
     def just_blocks(self):
         """ Filter out 'proto', 'trash', and 'deleted' blocks """

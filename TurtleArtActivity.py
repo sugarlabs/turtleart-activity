@@ -114,7 +114,7 @@ class TurtleArtActivity(activity.Activity):
 
         save_type = '.html'
         if len(self.tw.saved_pictures) > 0:
-            if self.tw.saved_pictures[0].endswith(('.svg')):
+            if self.tw.saved_pictures[0][1]:  # svg=True
                 save_type = '.xml'
 
         html_file = os.path.join(datapath, 'portfolio' + save_type)
@@ -155,6 +155,10 @@ class TurtleArtActivity(activity.Activity):
         gobject.timeout_add(250, self.save_as_html.set_icon, 'htmloff')
 
         self.tw.saved_pictures = []  # Clear queue of pictures we have viewed.
+        if embed_flag:
+            os.remove(html_file)
+        else:
+            os.remove(tar_file)
         return
 
     def do_save_as_logo_cb(self, button):
@@ -172,6 +176,7 @@ class TurtleArtActivity(activity.Activity):
         datastore.write(dsobject)
         dsobject.destroy()
 
+        os.remove(logo_code_path)
         gobject.timeout_add(250, self.save_as_logo.set_icon, 'logo-saveoff')
         return
 

@@ -78,25 +78,33 @@ def save_html(self, tw, embed_flag=True):
     """
     htmlcode = ''
     if len(tw.saved_pictures) > 0:
-        for i, image_file in enumerate(tw.saved_pictures):
+        # saved_picture list is a collection of tuples of either the
+        # image_file or the containing dsobject and an SVG flag
+        for i, (image, svg_flag) in enumerate(tw.saved_pictures):
             htmlcode += HTML_GLUE['slide'][0] + str(i)
             htmlcode += HTML_GLUE['slide'][1] + \
                     HTML_GLUE['div'][0] + \
                     HTML_GLUE['h1'][0]
+            if tw.running_sugar:
+                from sugar.datastore import datastore
+                dobject = datastore.get(image)  # dsobject.object_id
+                image_file = dobject.file_path
+            else:
+                image_file = image
             if embed_flag:
                 f = open(image_file, 'r')
                 imgdata = f.read()
                 f.close()
-                if image_file.endswith(('.svg')):
+                if svg_flag:
                     tmp = imgdata
                 else:
-                    imgdata = image_to_base64(image_file,
-                                              get_path(tw.activity, 'instance'))
+                    imgdata = image_to_base64(
+                        image_file, get_path(tw.activity, 'instance'))
                     tmp = HTML_GLUE['img2'][0]
                     tmp += imgdata
                     tmp += HTML_GLUE['img2'][1]
             else:
-                if image_file.endswith(('.svg')):
+                if svg_flag:
                     f = open(image_file, 'r')
                     imgdata = f.read()
                     f.close()
@@ -135,7 +143,7 @@ def save_html(self, tw, embed_flag=True):
     style = HTML_GLUE['style'][0] + \
             HTML_GLUE['style'][1]
     if len(tw.saved_pictures) > 0:
-        if tw.saved_pictures[0].endswith(('.svg')):
+        if tw.saved_pictures[0][1]:
             header = HTML_GLUE['html_svg'][0]
             style = COMMENT
 
