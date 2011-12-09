@@ -23,7 +23,7 @@ import gtk
 import cairo
 import pickle
 import subprocess
-import os.path
+import os
 from gettext import gettext as _
 
 try:
@@ -331,6 +331,7 @@ def image_to_base64(image_path, tmp_path):
     file_handle = open(base64, 'r')
     data = file_handle.read()
     file_handle.close()
+    os.remove(base64)
     return data
 
 
