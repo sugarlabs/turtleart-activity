@@ -22,6 +22,7 @@
 
 import gtk
 from math import sin, cos, atan, pi, sqrt
+import os
 import pango
 import cairo
 import pangocairo
@@ -552,23 +553,24 @@ class TurtleGraphics:
         if self.tw.saving_svg:
             if self.tw.running_sugar:
                 # In Sugar, we embed the images inside the SVG
-                tmp_file = os.path.join(get_path(tw.activity, 'instance'),
+                tmp_file = os.path.join(get_path(self.tw.activity, 'instance'),
                                        'tmpfile.png')
                 pixbuf.save(tmp_file, 'png', {'quality': '100'})
                 self.tw.svg_string += self.svg.image(
-                    x - self.width / 2, y, w, h, path,
+                    x, y, w, h, path,
                     image_to_base64(tmp_file,
                                     get_path(self.tw.activity, 'instance')))
+                os.remove(tmp_file)
             else:
                 # In GNOME, we embed a path
-                self.tw.svg_string += self.svg.image(x - self.width / 2,
-                                                     y, w, h, path)
+                self.tw.svg_string += self.svg.image(
+                    x - self.width / 2, y, w, h, path)
         if self.tw.sharing() and share:
             if self.tw.running_sugar:
                 tmp_path = get_path(self.tw.activity, 'instance')
             else:
                 tmp_path = '/tmp'
-            tmp_file = os.path.join(get_path(tw.activity, 'instance'),
+            tmp_file = os.path.join(get_path(self.tw.activity, 'instance'),
                                    'tmpfile.png')
             pixbuf.save(tmp_file, 'png', {'quality': '100'})
             data = image_to_base64(tmp_file, tmp_path)
@@ -583,6 +585,7 @@ class TurtleGraphics:
                                                round_int(height),
                                                data]]))
             self.tw.send_event(event)
+            os.remove(tmp_file)
 
     def draw_text(self, label, x, y, size, w, share=True):
         ''' Draw text '''
