@@ -69,8 +69,8 @@ def save_html(self, tw, embed_flag=True):
         HTML_GLUE['img'] = ('<img width="400" height="300" alt=' + \
                                  '"Image" src="data:image/png;base64,\n',
                                  '"/>\n')
-        HTML_GLUE['img2'] = ('<img alt="Image" src="data:image/png;"' + \
-                                  '"base64,\n"', '"/>\n')
+        HTML_GLUE['img2'] = ('<img alt="Image" src="data:image/png;' + \
+                                  'base64,\n', '"/>\n')
 
     """
     If there are saved_pictures, put them into a .html; otherwise,
