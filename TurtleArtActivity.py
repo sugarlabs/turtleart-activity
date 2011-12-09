@@ -685,6 +685,7 @@ class TurtleArtActivity(activity.Activity):
         ''' Create a scrolled window to contain the turtle canvas. '''
         self.sw = gtk.ScrolledWindow()
         self.set_canvas(self.sw)
+        _logger.debug('in scrolled window: %s' % (str(self.canvas)))
         self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.sw.show()
 
@@ -753,12 +754,41 @@ class TurtleArtActivity(activity.Activity):
 
     def write_file(self, file_path):
         ''' Write the project to the Journal. '''
-        _logger.debug('Write file: %s' % file_path)
+        data_to_file(self.tw.assemble_data_to_save(), file_path)
         self.metadata['mime_type'] = 'application/x-turtle-art'
         self.metadata[_('turtle blocks')] = ''.join(self.tw.used_block_list)
         self.metadata['public'] = data_to_string([_('activity count'),
                                                   _('turtle blocks')])
-        data_to_file(self.tw.assemble_data_to_save(), file_path)
+        _logger.debug('Wrote to file: %s' % file_path)
+
+    def get_preview(self):
+        ''' Override of activity.get_preview since self.canvas is
+        somehow being reset '''
+        from sugar.graphics import style
+        _logger.debug('in get_preview: %s' % (str(self.canvas)))
+        if self.canvas is None:
+            self.canvas = self.sw
+        if not hasattr(self.canvas, 'get_snapshot'):
+            _logger.debug('no get_snapshot attribute')
+            return
+        pixmap = self.canvas.get_snapshot((-1, -1, 0, 0))
+
+        width, height = pixmap.get_size()
+        pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, 0, 8, width, height)
+        pixbuf = pixbuf.get_from_drawable(pixmap, pixmap.get_colormap(),
+                                          0, 0, 0, 0, width, height)
+        pixbuf = pixbuf.scale_simple(style.zoom(300), style.zoom(225),
+                                     gtk.gdk.INTERP_BILINEAR)
+
+        preview_data = []
+
+        def save_func(buf, data):
+            data.append(buf)
+
+        pixbuf.save_to_callback(save_func, 'png', user_data=preview_data)
+        preview_data = ''.join(preview_data)
+
+        return preview_data
 
     def read_file(self, file_path, run_it=True):
         ''' Read a project in and then run it. '''
