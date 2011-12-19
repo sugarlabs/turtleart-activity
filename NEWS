@@ -2,6 +2,8 @@
 
 ENHANCEMENTS:
 * Add support for stereo sensor input on XO1.5, XO1.75 hardware
+* New translations
+* New example program: soundpaint.ta
 
 BUG FIXES:
 * More robust initialization of sensors (#552)
