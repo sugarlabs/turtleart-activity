@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-29 09:03-0400\n"
-"PO-Revision-Date: 2011-12-19 14:35+0200\n"
-"Last-Translator: Jasmine <udea_jasmine@yahoo.com>\n"
+"PO-Revision-Date: 2011-12-21 20:57+0200\n"
+"Last-Translator: anush.mkrtchyan <anush.mkrtchyan@ca1492.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hy\n"
 "MIME-Version: 1.0\n"
@@ -560,7 +560,7 @@ msgstr "Ներմուծել արագությունը"
 
 #: taextras.py:124
 msgid "Send speeds the robot."
-msgstr ""
+msgstr "Փոխանցել արագությունը ռոբոտին:"
 
 #: taextras.py:125
 #: taextras.py:126
@@ -732,7 +732,7 @@ msgstr "Շրջադարձ U տառի ձևով"
 
 #: pysamples/uturn.py:26
 msgid "make a uturn"
-msgstr "Կատարել  լրիվ շրջադարձ U տառի ձևով"
+msgstr "Կատարել լրիվ շրջադարձ U տառի ձևով"
 
 #: gnome_plugins/collaboration_plugin.py:67
 msgid "My Turtle Art session"
@@ -1109,7 +1109,7 @@ msgstr "Մեկնաբանություն"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
 msgid "places a comment in your code"
-msgstr "﻿Մեկնաբանություն է տեղադրում է  Ձեր կոդում:"
+msgstr "﻿Մեկնաբանություն է տեղադրում է Ձեր կոդում:"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
 msgid "print"
@@ -1788,7 +1788,7 @@ msgstr "ինքնություն"
 
 #: TurtleArt/tabasics.py:589
 msgid "identity operator used for extending blocks"
-msgstr "Մասնիկներն  ընդլայնելու համար կիրառվող ինքնության օպերատորը:"
+msgstr "Մասնիկներն ընդլայնելու համար կիրառվող ինքնության օպերատորը:"
 
 # Մոդուլ
 #: TurtleArt/tabasics.py:597 TurtleArt/tabasics.py:598
@@ -1826,7 +1826,7 @@ msgstr "առավելագույն"
 #: TurtleArt/tabasics.py:623
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
-"Վերադարձնում է նվազագույն (վերին) եւ առավելագույն(ստորին)արժեքների միջեւ  "
+"Վերադարձնում է նվազագույն (վերին) եւ առավելագույն(ստորին)արժեքների միջեւ "
 "պատահական որևէ թիվ"
 
 #: TurtleArt/tabasics.py:635
@@ -2081,7 +2081,7 @@ msgstr "վերականգնել բոլորը"
 
 #: TurtleArt/tabasics.py:948
 msgid "restore all blocks from trash"
-msgstr "վերականգնել աղբարկղից բոլոր մասնիկները "
+msgstr "վերականգնել աղբարկղից բոլոր մասնիկները"
 
 #: TurtleArt/tabasics.py:952
 msgid "clear all"
