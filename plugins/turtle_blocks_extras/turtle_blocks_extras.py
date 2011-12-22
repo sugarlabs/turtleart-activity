@@ -93,6 +93,19 @@ class Turtle_blocks_extras(Plugin):
                                colors=["#FFC000", "#A08000"],
                                help_string=_('Palette of flow operators'))
 
+        '''
+        primitive_dictionary['while'] = self._prim_while
+        palette.add_block('while',
+                          style='flow-style-boolean',
+                          label=[_('while'), ' ', ' '],
+                          prim_name='while',
+                          default=[None, None, 'vspace'],
+                          special_name=_('while'),
+                          help_string=_('do-while-True operator that uses \
+boolean operators from Numbers palette'))
+        self.tw.lc.def_prim('while', 2, primitive_dictionary['while'], True)
+        '''
+
         # macro
         palette.add_block('while',
                           style='flow-style-boolean',
@@ -464,7 +477,7 @@ advanced single-variable math equations, e.g., sin(x)'))
                           hidden=True,
                           colors=["#FF0000", "#A00000"],
                           style='number-style-var-arg',
-                          label=[_('Python'), 'f(x,y)', 'x'],
+                          label=[_('Python'), 'f(x,y)', ' '],
                           prim_name='myfunction2',
                           default=['x+y', 100, 100],
                           help_string=_('a programmable block: used to add \
@@ -477,7 +490,7 @@ advanced multi-variable math equations, e.g., sqrt(x*x+y*y)'))
                           hidden=True,
                           colors=["#FF0000", "#A00000"],
                           style='number-style-var-arg',
-                          label=[_('Python'), 'f(x,y,z)', 'x'],
+                          label=[_('Python'), 'f(x,y,z)', ' '],
                           prim_name='myfunction3',
                           default=['x+y+z', 100, 100, 100],
                           help_string=_('a programmable block: used to add \
@@ -1264,6 +1277,21 @@ bullets'))
         elapsed_time = int(time() - self.tw.lc.start_time)
         self.tw.lc.update_label_value('time', elapsed_time)
         return elapsed_time
+
+    '''
+    def _prim_while(self, boolean, blklist): """ Repeat while true:
+        won't work as coded as boolean is only calculated once. """
+
+        while(True):
+            if not boolean:
+                break
+            self.tw.lc.icall(self.tw.lc.evline, blklist[:])
+            yield True
+            if self.tw.lc.procstop:
+                break
+        self.tw.lc.ireturn()
+        yield True
+    '''
 
     # Deprecated blocks
 
