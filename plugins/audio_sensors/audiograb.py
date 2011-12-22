@@ -85,15 +85,24 @@ class AudioGrab():
                          self.parent.running_sugar)
             self.channels = 2
 
-        # Variables for saving and resuming state of sound device
-        self.master = self.get_master()
-        self.bias = bias
-        self.dc_mode = mode
-        self.capture_gain = gain
-        self.mic_boost = boost
-        self.mic = self.get_mic_gain()
+        # Set mixer to known state
+        self.set_dc_mode(DC_MODE_ENABLE)
+        self.set_bias(BIAS)
+        self.set_capture_gain(CAPTURE_GAIN)
+        self.set_mic_boost(MIC_BOOST)
 
+        self.master = self.get_master()
+        self.dc_mode = self.get_dc_mode()
+        self.bias = self.get_bias()
+        self.capture_gain = self.get_capture_gain()
+        self.mic_boost = self.get_mic_boost()
+
+        # Set mixer to desired state
         self._set_sensor_type(mode, bias, gain, boost)
+        self.dc_mode = self.get_dc_mode()
+        self.bias = self.get_bias()
+        self.capture_gain = self.get_capture_gain()
+        self.mic_boost = self.get_mic_boost()
 
         # Set up gstreamer pipeline
         self._pad_count = 0
@@ -626,39 +635,8 @@ class AudioGrab():
             else:
                 return 100
 
-    def set_sensor_type(self, sensor_type=SENSOR_AC_BIAS):
-        '''Set the type of sensor you want to use. Set sensor_type according
-        to the following
-        SENSOR_AC_NO_BIAS - AC coupling with Bias Off --> Very rarely used.
-            Use when connecting a dynamic microphone externally
-        SENSOR_AC_BIAS - AC coupling with Bias On --> The default settings.
-            The internal MIC uses these
-        SENSOR_DC_NO_BIAS - DC coupling with Bias Off --> measuring voltage
-            output sensor. For example LM35 which gives output proportional
-            to temperature
-        SENSOR_DC_BIAS - DC coupling with Bias On --> measuring resistance.
-        '''
-        PARAMETERS = {
-            SENSOR_AC_NO_BIAS: (False, False, 50, True),
-            SENSOR_AC_BIAS: (False, True, 40, True),
-            SENSOR_DC_NO_BIAS: (True, False, 0, False),
-            SENSOR_DC_BIAS: (True, True, 0, False)
-        }
-        mode, bias, gain, boost = PARAMETERS[sensor_type]
-        debug_output('Set sensor type to %s' % (str(sensor_type)),
-                     self.parent.running_sugar)
-        self._set_sensor_type(mode, bias, gain, boost)
-
     def _set_sensor_type(self, mode=None, bias=None, gain=None, boost=None):
         '''Helper to modify (some) of the sensor settings.'''
-        '''
-        if mode is not None and mode != self.get_dc_mode():
-            # If we change to/from dc mode, we need to rebuild the pipelines
-            self.stop_grabbing()
-            self._unlink_sink_queues()
-            self.set_dc_mode(mode)
-            self.start_grabbing()
-        '''
         if mode is not None:
             self.set_dc_mode(mode)
         if bias is not None:
@@ -676,50 +654,3 @@ class AudioGrab():
         self.set_capture_gain(QUIT_CAPTURE_GAIN)
         self.set_bias(QUIT_BIAS)
         self.stop_sound_device()
-
-
-class AudioGrab_XO1(AudioGrab):
-    ''' Use default parameters for OLPC XO 1.0 laptop '''
-    pass
-
-
-class AudioGrab_XO15(AudioGrab):
-    ''' Override parameters for OLPC XO 1.5 laptop '''
-    def set_sensor_type(self, sensor_type=SENSOR_AC_BIAS):
-        '''Helper to modify (some) of the sensor settings.'''
-        PARAMETERS = {
-            SENSOR_AC_NO_BIAS: (False, False, 80, True),
-            SENSOR_AC_BIAS: (False, True, 80, True),
-            SENSOR_DC_NO_BIAS: (True, False, 80, False),
-            SENSOR_DC_BIAS: (True, True, 90, False)
-        }
-        mode, bias, gain, boost = PARAMETERS[sensor_type]
-        self._set_sensor_type(mode, bias, gain, boost)
-
-
-class AudioGrab_XO175(AudioGrab):
-    ''' Override parameters for OLPC XO 1.75 laptop '''
-    def set_sensor_type(self, sensor_type=SENSOR_AC_BIAS):
-        '''Helper to modify (some) of the sensor settings.'''
-        PARAMETERS = {
-            SENSOR_AC_NO_BIAS: (False, False, 80, True),
-            SENSOR_AC_BIAS: (False, True, 80, True),
-            SENSOR_DC_NO_BIAS: (True, False, 80, False),
-            SENSOR_DC_BIAS: (True, True, 90, False)
-        }
-        mode, bias, gain, boost = PARAMETERS[sensor_type]
-        self._set_sensor_type(mode, bias, gain, boost)
-
-
-class AudioGrab_Unknown(AudioGrab):
-    ''' Override parameters for generic hardware '''
-    def set_sensor_type(self, sensor_type=SENSOR_AC_BIAS):
-        '''Helper to modify (some) of the sensor settings.'''
-        PARAMETERS = {
-            SENSOR_AC_NO_BIAS: (None, False, 50, True),
-            SENSOR_AC_BIAS: (None, True, 40, True),
-            SENSOR_DC_NO_BIAS: (True, False, 80, False),
-            SENSOR_DC_BIAS: (True, True, 90, False)
-        }
-        mode, bias, gain, boost = PARAMETERS[sensor_type]
-        self._set_sensor_type(mode, bias, gain, boost)
