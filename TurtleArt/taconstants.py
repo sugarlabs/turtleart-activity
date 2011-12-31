@@ -227,6 +227,7 @@ VOICES = {'af': 'afrikaans', 'cy': 'welsh-test', 'el': 'greek',
 # Macros (groups of blocks)
 #
 MACROS = {
+    '''
     'until':
               [[0, 'forever', 0, 0, [None, 2, 1]],
                [1, 'vspace', 0, 0, [0, None]],
@@ -239,6 +240,7 @@ MACROS = {
                [2, 'ifelse', 0, 0, [0, None, 3, 4, None]],
                [3, 'vspace', 0, 0, [2, None]],
                [4, 'stopstack', 0, 0, [2, None]]],
+    '''
     'kbinput':
               [[0, 'forever', 0, 0, [None, 1, None]],
                [1, 'kbinput', 0, 0, [0, 2]],

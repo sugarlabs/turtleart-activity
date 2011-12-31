@@ -172,7 +172,6 @@ class Block:
             'flow-style-tail': self._make_flow_style_tail,
             'flow-style-1arg': self._make_flow_style_1arg,
             'flow-style-boolean': self._make_flow_style_boolean,
-            'flow-style-while': self._make_flow_style_while,
             'flow-style-else': self._make_flow_style_else,
             'collapsible-top': [self._make_collapsible_style_top, True, True],
             'collapsible-top-no-arm': [self._make_collapsible_style_top,
@@ -806,21 +805,6 @@ class Block:
                                       self.svg.docks[1][1]],
                       ['flow', False, self.svg.docks[2][0],
                                       self.svg.docks[2][1], '['],
-                      ['flow', False, self.svg.docks[3][0],
-                                      self.svg.docks[3][1], ']']]
-
-    def _make_flow_style_while(self, svg):
-        self.svg.expand(self.dx + self.ex, self.ey)
-        self.svg.set_slot(True)
-        self.svg.set_tab(True)
-        self.svg.set_boolean(True)
-        self._make_block_graphics(svg, self.svg.basic_flow)
-        self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
-                      ['bool', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1], '['],
-                      ['flow', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1], ']['],
                       ['flow', False, self.svg.docks[3][0],
                                       self.svg.docks[3][1], ']']]
 

@@ -67,6 +67,14 @@ class logoerror(Exception):
     def __str__(self):
         return repr(self.value)
 
+class HiddenBlock:
+
+    def __init__(self, name):
+        self.name = name
+        self.primitive = name
+        self.connections = []
+        self.docks = []
+
 # Utility functions
 
 def _just_stop():
@@ -163,6 +171,11 @@ class LogoCode:
         self.stacks['stack2'] = None
         self.tw.saving_svg = False
 
+        # Save state in case there is a hidden macro expansion
+        saveblocks = None
+        saveblk = blk
+        savewhileblks = []
+
         if self.trace > 0:
             self.update_values = True
         else:
@@ -173,10 +186,10 @@ class LogoCode:
             if b.name == 'hat1':
                 code = self._blocks_to_code(b)
                 self.stacks['stack1'] = self._readline(code)
-            if b.name == 'hat2':
+            elif b.name == 'hat2':
                 code = self._blocks_to_code(b)
                 self.stacks['stack2'] = self._readline(code)
-            if b.name == 'hat':
+            elif b.name == 'hat':
                 if b.connections is not None and len(b.connections) > 1 and \
                    b.connections[1] is not None:
                     code = self._blocks_to_code(b)
@@ -189,8 +202,84 @@ class LogoCode:
                         if int(float(x)) == x:
                             x = int(x)
                     self.stacks['stack3' + str(x)] = self._readline(code)
+            elif b.name in ['while', 'until']:
+                # Hidden macro expansion: Convert a while or until block into
+                # forever, ifelse, stopstack
+                if saveblocks is None:
+                    saveblocks = blocks[:]
+                # Replace the while block
+                foreverblk = HiddenBlock('forever')
+                ifelseblk = HiddenBlock('ifelse')
+                stopstackblk = HiddenBlock('stopstack')
+                if b.connections is not None:
+                    inflow = b.connections[0]
+                    boolflow = b.connections[1]
+                    whileflow = b.connections[2]
+                    outflow = b.connections[3]
+                if inflow is not None:
+                    i = inflow.connections.index(b)
+                    inflow.connections[i] = foreverblk
+                else:
+                    i = None
+                if outflow is not None:
+                    j = outflow.connections.index(b)
+                    outflow.connections[j] = foreverblk
+                else:
+                    j = None
+                # Save the connections so we can restore them later
+                savewhileblks.append([b, i, j])
+                # Assign the connections and build the docks
+                foreverblk.connections.append(inflow)
+                foreverblk.docks.append(['flow', True, 0, 0])
+                foreverblk.connections.append(ifelseblk)
+                foreverblk.docks.append(['flow', False, 0, 0, '['])
+                foreverblk.connections.append(outflow)
+                foreverblk.docks.append(['flow', False, 0, 0, ']'])
+                ifelseblk.connections.append(foreverblk)
+                ifelseblk.docks.append(['flow', True, 0, 0])
+                ifelseblk.connections.append(boolflow)
+                ifelseblk.docks.append(['bool', False, 0, 0])
+                if b.name == 'while':
+                    ifelseblk.connections.append(whileflow)
+                    ifelseblk.connections.append(stopstackblk)
+                else:  # until
+                    ifelseblk.connections.append(stopstackblk)
+                    ifelseblk.connections.append(whileflow)
+                ifelseblk.docks.append(['flow', False, 0, 0, '['])
+                ifelseblk.docks.append(['flow', False, 0, 0, ']['])
+                ifelseblk.connections.append(None)
+                ifelseblk.docks.append(['flow', False, 0, 0, ']'])
+                stopstackblk.connections.append(ifelseblk)
+                stopstackblk.docks.append(['flow', False, 0, 0])
+                i = blocks.index(b)
+                if i == 0:
+                    blocksleft = []
+                else:
+                    blocksleft = blocks[0:i]
+                if i == len(blocks) - 1:
+                    blocksright = []
+                else:
+                    blocksright = blocks[i + 1:]
+                blocks = blocksleft[:]
+                blocks.append(foreverblk)
+                blocks.append(ifelseblk)
+                blocks.append(stopstackblk)
+                blocks.extend(blocksright)
+                if b == blk:
+                    blk = foreverblk
 
         code = self._blocks_to_code(blk)
+
+        if saveblocks is not None:
+            # Undo any hidden macro expansion
+            blocks = saveblocks[:]
+            blk = saveblk
+            for b in savewhileblks:
+                if b[1] is not None:
+                    b[0].connections[0].connections[b[1]] = b[0]
+                if b[2] is not None:
+                    b[0].connections[3].connections[b[2]] = b[0]
+
         if run_flag:
             # debug_output("running code: %s" % (code), self.tw.running_sugar)
             self.start_time = time()
@@ -211,7 +300,12 @@ class LogoCode:
         if blk.name == 'savesvg':
             self.tw.saving_svg = True
         if blk.primitive is not None:  # make a tuple (prim, blk)
-            code.append((blk.primitive, self.tw.block_list.list.index(blk)))
+            # special case: expand 'while' and 'until' primitives
+            try:
+                code.append((blk.primitive,
+                             self.tw.block_list.list.index(blk)))
+            except ValueError:
+                code.append(blk.primitive)  # Hidden block
         elif len(blk.values) > 0:  # Extract the value from content blocks.
             if blk.name == 'number':
                 try:

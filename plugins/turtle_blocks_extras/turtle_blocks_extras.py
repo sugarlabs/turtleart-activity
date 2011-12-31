@@ -93,30 +93,23 @@ class Turtle_blocks_extras(Plugin):
                                colors=["#FFC000", "#A08000"],
                                help_string=_('Palette of flow operators'))
 
-        '''
-        primitive_dictionary['while'] = self._prim_while
+        # internally expanded macro
         palette.add_block('while',
                           style='flow-style-boolean',
                           label=[_('while'), ' ', ' '],
                           prim_name='while',
-                          default=[None, None, 'vspace'],
+                          default=[None, None, None],
                           special_name=_('while'),
                           help_string=_('do-while-True operator that uses \
 boolean operators from Numbers palette'))
-        self.tw.lc.def_prim('while', 2, primitive_dictionary['while'], True)
-        '''
 
-        # macro
-        palette.add_block('while',
+        # internally expanded macro
+        palette.add_block('until', 
                           style='flow-style-boolean',
-                          label=_('while'),
-                          help_string=_('do-while-True operator that uses \
-boolean operators from Numbers palette'))
-
-        # macro
-        palette.add_block('until',
-                          style='flow-style-boolean',
-                          label=_('until'),
+                          label=[_('until'), ' ', ' '],
+                          prim_name='until',
+                          default=[None, None, None],
+                          special_name=_('until'),
                           help_string=_('do-until-True operator that uses \
 boolean operators from Numbers palette'))
 
@@ -1277,21 +1270,6 @@ bullets'))
         elapsed_time = int(time() - self.tw.lc.start_time)
         self.tw.lc.update_label_value('time', elapsed_time)
         return elapsed_time
-
-    '''
-    def _prim_while(self, boolean, blklist): """ Repeat while true:
-        won't work as coded as boolean is only calculated once. """
-
-        while(True):
-            if not boolean:
-                break
-            self.tw.lc.icall(self.tw.lc.evline, blklist[:])
-            yield True
-            if self.tw.lc.procstop:
-                break
-        self.tw.lc.ireturn()
-        yield True
-    '''
 
     # Deprecated blocks
 
