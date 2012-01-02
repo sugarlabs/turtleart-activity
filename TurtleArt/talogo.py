@@ -229,6 +229,8 @@ class LogoCode:
                     b[0].connections[0].connections[b[1]] = b[0]
                 if b[2] is not None:
                     b[0].connections[-1].connections[b[2]] = b[0]
+                if b[3] is not None:
+                    b[0].connections[-2].connections[b[3]] = b[0]
 
         if run_flag:
             # debug_output("running code: %s" % (code), self.tw.running_sugar)
@@ -742,6 +744,14 @@ class LogoCode:
         action_blk = HiddenBlock('stack')
         action_label_blk = HiddenBlock('string', value=action_name)
 
+        # Create action block(s) to run the code inside the forever loop
+        action_flow_name = '#s_flow %d' % (len(self.save_while_blks) + 1)
+        action_flow = HiddenBlock('stack')
+        flow_label_blk = HiddenBlock('string', value=action_flow_name)
+        if b.name == 'until':  # run until flow at least once
+            action_first = HiddenBlock('stack')
+            first_label_blk = HiddenBlock('string', value=action_flow_name)
+
         # Create the blocks we'll put in the new stack
         forever_blk = HiddenBlock('forever')
         if while_until_blk:
@@ -757,7 +767,10 @@ class LogoCode:
         # Assign new connections and build the docks
         if inflow is not None:
             i = inflow.connections.index(b)
-            inflow.connections[i] = action_blk
+            if b.name == 'until':
+                inflow.connections[i] = action_first
+            else:
+                inflow.connections[i] = action_blk
         else:
             i = None
         if outflow is not None:
@@ -765,7 +778,24 @@ class LogoCode:
             outflow.connections[j] = action_blk
         else:
             j = None
-        action_blk.connections.append(inflow)
+        if whileflow is not None:
+            k = whileflow.connections.index(b)
+            whileflow.connections[k] = None
+        else:
+            k = None
+
+        if b.name == 'until':
+            action_first.connections.append(inflow)
+            action_first.docks.append(['flow', True, 0, 0])
+            action_first.connections.append(first_label_blk)
+            action_first.docks.append(['number', False, 0, 0])
+            action_first.connections.append(action_blk)
+            action_first.docks.append(['flow', False, 0, 0])
+            first_label_blk.connections.append(action_first)
+            first_label_blk.docks.append(['number', True, 0, 0])
+            action_blk.connections.append(action_first)
+        else:
+            action_blk.connections.append(inflow)
         action_blk.docks.append(['flow', True, 0, 0])
         action_blk.connections.append(action_label_blk)
         action_blk.docks.append(['number', False, 0, 0])
@@ -774,38 +804,50 @@ class LogoCode:
         action_label_blk.connections.append(action_blk)
         action_label_blk.docks.append(['number', True, 0, 0])
 
-        # Create a separate stack for the forever loop
         forever_blk.connections.append(None)
         forever_blk.docks.append(['flow', True, 0, 0])
         if while_until_blk:
             forever_blk.connections.append(ifelse_blk)
+            action_flow.connections.append(ifelse_blk)
         else:
-            forever_blk.connections.append(whileflow)
+            forever_blk.connections.append(action_flow)
+            action_flow.connections.append(forever_blk)
         forever_blk.docks.append(['flow', False, 0, 0, '['])
         forever_blk.connections.append(outflow)
         forever_blk.docks.append(['flow', False, 0, 0, ']'])
+        action_flow.docks.append(['flow', True, 0, 0])
+        action_flow.connections.append(flow_label_blk)
+        action_flow.docks.append(['number', False, 0, 0])
+        action_flow.connections.append(None)
+        action_flow.docks.append(['flow', False, 0, 0])
+        flow_label_blk.connections.append(action_flow)
+        flow_label_blk.docks.append(['number', True, 0, 0])
         if while_until_blk:
             ifelse_blk.connections.append(forever_blk)
             ifelse_blk.docks.append(['flow', True, 0, 0])
             ifelse_blk.connections.append(boolflow)
             ifelse_blk.docks.append(['bool', False, 0, 0])
             if b.name == 'while':
-                ifelse_blk.connections.append(whileflow)
+                ifelse_blk.connections.append(action_flow)
                 ifelse_blk.connections.append(stopstack_blk)
             else:  # until
                 ifelse_blk.connections.append(stopstack_blk)
-                ifelse_blk.connections.append(whileflow)
+                ifelse_blk.connections.append(action_flow)
             ifelse_blk.docks.append(['flow', False, 0, 0, '['])
             ifelse_blk.docks.append(['flow', False, 0, 0, ']['])
             ifelse_blk.connections.append(None)
             ifelse_blk.docks.append(['flow', False, 0, 0, ']'])
             stopstack_blk.connections.append(ifelse_blk)
             stopstack_blk.docks.append(['flow', False, 0, 0])
+
+        # Create a separate stacks for the forever loop and the whileflow
         code = self._blocks_to_code(forever_blk)
         self.stacks['stack3' + str(action_name)] = self._readline(code)
+        code = self._blocks_to_code(whileflow)
+        self.stacks['stack3' + str(action_flow_name)] = self._readline(code)
 
         # Save the connections so we can restore them later
-        self.save_while_blks.append([b, i, j])
+        self.save_while_blks.append([b, i, j, k])
 
         # Insert the new blocks into the stack
         i = blocks.index(b)
@@ -818,10 +860,17 @@ class LogoCode:
         else:
             blocks_right = blocks[i + 1:]
         blocks = blocks_left[:]
+        if b.name == 'until':
+            blocks.append(action_first)
+        blocks.append(action_blk)
         blocks.append(forever_blk)
         if while_until_blk:
             blocks.append(ifelse_blk)
             blocks.append(stopstack_blk)
+        blocks.append(action_flow)
         blocks.extend(blocks_right)
 
-        return action_blk, blocks
+        if b.name == 'until':
+            return action_first, blocks
+        else:
+            return action_blk, blocks
