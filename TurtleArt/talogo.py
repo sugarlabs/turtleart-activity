@@ -778,7 +778,7 @@ class LogoCode:
             outflow.connections[j] = action_blk
         else:
             j = None
-        if whileflow is not None:
+        if whileflow is not None and b.name == 'until':
             k = whileflow.connections.index(b)
             whileflow.connections[k] = None
         else:
@@ -808,27 +808,28 @@ class LogoCode:
         forever_blk.docks.append(['flow', True, 0, 0])
         if while_until_blk:
             forever_blk.connections.append(ifelse_blk)
-            action_flow.connections.append(ifelse_blk)
+            if b.name == 'until':
+                action_flow.connections.append(ifelse_blk)
         else:
-            forever_blk.connections.append(action_flow)
-            action_flow.connections.append(forever_blk)
+            forever_blk.connections.append(whileflow)
         forever_blk.docks.append(['flow', False, 0, 0, '['])
         forever_blk.connections.append(outflow)
         forever_blk.docks.append(['flow', False, 0, 0, ']'])
-        action_flow.docks.append(['flow', True, 0, 0])
-        action_flow.connections.append(flow_label_blk)
-        action_flow.docks.append(['number', False, 0, 0])
-        action_flow.connections.append(None)
-        action_flow.docks.append(['flow', False, 0, 0])
-        flow_label_blk.connections.append(action_flow)
-        flow_label_blk.docks.append(['number', True, 0, 0])
+        if b.name == 'until':
+            action_flow.docks.append(['flow', True, 0, 0])
+            action_flow.connections.append(flow_label_blk)
+            action_flow.docks.append(['number', False, 0, 0])
+            action_flow.connections.append(None)
+            action_flow.docks.append(['flow', False, 0, 0])
+            flow_label_blk.connections.append(action_flow)
+            flow_label_blk.docks.append(['number', True, 0, 0])
         if while_until_blk:
             ifelse_blk.connections.append(forever_blk)
             ifelse_blk.docks.append(['flow', True, 0, 0])
             ifelse_blk.connections.append(boolflow)
             ifelse_blk.docks.append(['bool', False, 0, 0])
             if b.name == 'while':
-                ifelse_blk.connections.append(action_flow)
+                ifelse_blk.connections.append(whileflow)
                 ifelse_blk.connections.append(stopstack_blk)
             else:  # until
                 ifelse_blk.connections.append(stopstack_blk)
@@ -843,8 +844,9 @@ class LogoCode:
         # Create a separate stacks for the forever loop and the whileflow
         code = self._blocks_to_code(forever_blk)
         self.stacks['stack3' + str(action_name)] = self._readline(code)
-        code = self._blocks_to_code(whileflow)
-        self.stacks['stack3' + str(action_flow_name)] = self._readline(code)
+        if b.name == 'until':
+            code = self._blocks_to_code(whileflow)
+            self.stacks['stack3' + str(action_flow_name)] = self._readline(code)
 
         # Save the connections so we can restore them later
         self.save_while_blks.append([b, i, j, k])
@@ -867,7 +869,8 @@ class LogoCode:
         if while_until_blk:
             blocks.append(ifelse_blk)
             blocks.append(stopstack_blk)
-        blocks.append(action_flow)
+            if b.name == 'until':
+                blocks.append(action_flow)
         blocks.extend(blocks_right)
 
         if b.name == 'until':
