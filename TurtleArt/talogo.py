@@ -728,12 +728,18 @@ class LogoCode:
         """ Expand a while or until block into: forever, ifelse, stopstack
             Expand a forever block to run in a separate stack """
 
-        # TODO: create a less brittle way of doing this
-
-        if b.name in ['while', 'until']:
-            while_until_blk = True
+        # TODO: create a less brittle way of doing this; having to
+        # manage the connections and flows locally means we may run
+        # into trouble if any of these block types (forever, while,
+        # until. ifelse, stopstack, or stack) is changed in tablock.py
+        if b.name == 'while':
+            while_blk = True        
         else:
-            while_until_blk = False
+            while_blk = False
+        if b.name == 'until':
+            until_blk = True        
+        else:
+            until_blk = False
 
         # We'll restore the original blocks when we are finished
         if self.save_blocks is None:
@@ -744,30 +750,28 @@ class LogoCode:
         action_blk = HiddenBlock('stack')
         action_label_blk = HiddenBlock('string', value=action_name)
 
-        # Create action block(s) to run the code inside the forever loop
-        action_flow_name = '#s_flow %d' % (len(self.save_while_blks) + 1)
-        action_flow = HiddenBlock('stack')
-        flow_label_blk = HiddenBlock('string', value=action_flow_name)
-        if b.name == 'until':  # run until flow at least once
-            action_first = HiddenBlock('stack')
-            first_label_blk = HiddenBlock('string', value=action_flow_name)
-
         # Create the blocks we'll put in the new stack
         forever_blk = HiddenBlock('forever')
-        if while_until_blk:
+        if while_blk or until_blk:
             ifelse_blk = HiddenBlock('ifelse')
             stopstack_blk = HiddenBlock('stopstack')
         if b.connections is not None:
             inflow = b.connections[0]
-            if while_until_blk:
+            if while_blk or until_blk:
                 boolflow = b.connections[1]
             whileflow = b.connections[-2]
             outflow = b.connections[-1]
 
+        # Create action block(s) to run the code inside the forever loop
+        if until_blk and whileflow is not None:  # run until flow at least once
+            action_flow_name = '#s_flow %d' % (len(self.save_while_blks) + 1)
+            action_first = HiddenBlock('stack')
+            first_label_blk = HiddenBlock('string', value=action_flow_name)
+
         # Assign new connections and build the docks
         if inflow is not None:
             i = inflow.connections.index(b)
-            if b.name == 'until':
+            if until_blk and whileflow is not None:
                 inflow.connections[i] = action_first
             else:
                 inflow.connections[i] = action_blk
@@ -778,13 +782,8 @@ class LogoCode:
             outflow.connections[j] = action_blk
         else:
             j = None
-        if whileflow is not None and b.name == 'until':
-            k = whileflow.connections.index(b)
-            whileflow.connections[k] = None
-        else:
-            k = None
 
-        if b.name == 'until':
+        if until_blk and whileflow is not None:
             action_first.connections.append(inflow)
             action_first.docks.append(['flow', True, 0, 0])
             action_first.connections.append(first_label_blk)
@@ -806,34 +805,24 @@ class LogoCode:
 
         forever_blk.connections.append(None)
         forever_blk.docks.append(['flow', True, 0, 0])
-        if while_until_blk:
+        if while_blk or until_blk:
             forever_blk.connections.append(ifelse_blk)
-            if b.name == 'until':
-                action_flow.connections.append(ifelse_blk)
         else:
             forever_blk.connections.append(whileflow)
         forever_blk.docks.append(['flow', False, 0, 0, '['])
         forever_blk.connections.append(outflow)
         forever_blk.docks.append(['flow', False, 0, 0, ']'])
-        if b.name == 'until':
-            action_flow.docks.append(['flow', True, 0, 0])
-            action_flow.connections.append(flow_label_blk)
-            action_flow.docks.append(['number', False, 0, 0])
-            action_flow.connections.append(None)
-            action_flow.docks.append(['flow', False, 0, 0])
-            flow_label_blk.connections.append(action_flow)
-            flow_label_blk.docks.append(['number', True, 0, 0])
-        if while_until_blk:
+        if while_blk or until_blk:
             ifelse_blk.connections.append(forever_blk)
             ifelse_blk.docks.append(['flow', True, 0, 0])
             ifelse_blk.connections.append(boolflow)
             ifelse_blk.docks.append(['bool', False, 0, 0])
-            if b.name == 'while':
+            if while_blk:
                 ifelse_blk.connections.append(whileflow)
                 ifelse_blk.connections.append(stopstack_blk)
             else:  # until
                 ifelse_blk.connections.append(stopstack_blk)
-                ifelse_blk.connections.append(action_flow)
+                ifelse_blk.connections.append(whileflow)
             ifelse_blk.docks.append(['flow', False, 0, 0, '['])
             ifelse_blk.docks.append(['flow', False, 0, 0, ']['])
             ifelse_blk.connections.append(None)
@@ -841,15 +830,29 @@ class LogoCode:
             stopstack_blk.connections.append(ifelse_blk)
             stopstack_blk.docks.append(['flow', False, 0, 0])
 
+        if whileflow is not None:
+            if while_blk or until_blk:
+                whileflow.connections[0] = ifelse_blk
+            else:
+                whileflow.connections[0] = forever_blk
+
         # Create a separate stacks for the forever loop and the whileflow
         code = self._blocks_to_code(forever_blk)
         self.stacks['stack3' + str(action_name)] = self._readline(code)
-        if b.name == 'until':
+        if until_blk and whileflow is not None:
+            # Create a stack from the whileflow to be called from
+            # action_first, but then reconnect it to the ifelse block
+            c = whileflow.connections[0]
+            whileflow.connections[0] = None
             code = self._blocks_to_code(whileflow)
             self.stacks['stack3' + str(action_flow_name)] = self._readline(code)
+            whileflow.connections[0] = c
 
         # Save the connections so we can restore them later
-        self.save_while_blks.append([b, i, j, k])
+        if whileflow is not None:
+            self.save_while_blks.append([b, i, j, 0])
+        else:
+            self.save_while_blks.append([b, i, j, None])
 
         # Insert the new blocks into the stack
         i = blocks.index(b)
@@ -862,18 +865,16 @@ class LogoCode:
         else:
             blocks_right = blocks[i + 1:]
         blocks = blocks_left[:]
-        if b.name == 'until':
+        if until_blk and whileflow is not None:
             blocks.append(action_first)
         blocks.append(action_blk)
         blocks.append(forever_blk)
-        if while_until_blk:
+        if while_blk or until_blk:
             blocks.append(ifelse_blk)
             blocks.append(stopstack_blk)
-            if b.name == 'until':
-                blocks.append(action_flow)
         blocks.extend(blocks_right)
 
-        if b.name == 'until':
+        if until_blk and whileflow is not None:
             return action_first, blocks
         else:
             return action_blk, blocks
