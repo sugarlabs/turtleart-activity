@@ -228,15 +228,13 @@ VOICES = {'af': 'afrikaans', 'cy': 'welsh-test', 'el': 'greek',
 #
 MACROS = {
     'kbinput':
-              [[0, 'kbinput', 0, 0, [None, 1]],
-               [1, 'vspace', 0, 0, [0, 2]],
-               [2, 'until', 0, 0, [1, 3, 6, None]],
-               [3, 'greater2', 0, 0, [2, 4, 5, None]],
-               [4, 'keyboard', 0, 0, [3, None]],
-               [5, ['number', '0'], 0, 0, [3, None]],
-               [6, 'wait', 0, 0, [2, 7, 8]],
-               [7, ['number', '0.1'], 0, 0, [6, None]],
-               [8, 'kbinput', 0, 0, [6, None]]],
+              [[0, 'until', 0, 0, [None, 1, 4, None]],
+               [1, 'greater2', 0, 0, [0, 2, 3, None]],
+               [2, 'keyboard', 0, 0, [1, None]],
+               [3, ['number', '0'], 0, 0, [1, None]],
+               [4, 'wait', 0, 0, [0, 5, 6]],
+               [5, ['number', '0.1'], 0, 0, [4, None]],
+               [6, 'kbinput', 0, 0, [4, None]]],
     'picturelist':
               [[0, 'sandwichtop_no_label', 0, 0, [None, 1]],
                [1, 'penup', 0, 0, [0, 2]],
