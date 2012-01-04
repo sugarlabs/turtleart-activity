@@ -73,6 +73,8 @@ from sprites import Sprites, Sprite
 if GST_AVAILABLE:
     from tagplay import stop_media
 
+MOTION_THRESHOLD = 4
+
 
 class TurtleArtWindow():
     """ TurtleArt Window class abstraction  """
@@ -1548,7 +1550,7 @@ class TurtleArtWindow():
             dx = x - dragx - sx
             dy = y - dragy - sy
 
-            # Take no action if there was a move of 0,0.
+            # Take no action if there was a move of 0, 0.
             if dx == 0 and dy == 0:
                 return
 
@@ -1730,7 +1732,11 @@ class TurtleArtWindow():
         self.drag_group = None
 
         # Find the block we clicked on and process it.
-        if self.block_operation == 'click':
+        # Consider a very small move a click (for touch interfaces)
+        if self.block_operation == 'click' or \
+           (self.hw == XO175 and self.block_operation == 'move' and (
+                abs(self.dx) < MOTION_THRESHOLD and \
+                abs(self.dy < MOTION_THRESHOLD))):
             self._click_block(x, y)
 
     def remote_turtle(self, name):
