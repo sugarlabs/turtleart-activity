@@ -42,7 +42,7 @@ except (ImportError, AttributeError):
 from StringIO import StringIO
 
 from taconstants import COLLAPSIBLE, HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, \
-    UNKNOWN
+    XO30, UNKNOWN
 
 SANDWICHES = ['sandwichtop', 'sandwichtop_no_label', 'sandwichtop_no_arm',
               'sandwichtop_no_arm_no_label']
@@ -809,7 +809,7 @@ def get_hardware():
     product = _get_dmi('product_name')
     if product is None:
         if os.path.exists('/sys/devices/platform/lis3lv02d/position'):
-            return XO175  # FIXME: temporary check for XO 1.75
+            return XO175  # FIXME: temporary check for XO 1.75 and XO 3.0
         elif os.path.exists('/etc/olpc-release') or \
            os.path.exists('/sys/power/olpc-pm'):
             return XO1

@@ -49,7 +49,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     MACROS, TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, \
     CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, NO_IMPORT, \
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
-    EXPANDABLE_ARGS, XO1, XO15, XO175, TITLEXY, CONTENT_ARGS, \
+    EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, TITLEXY, CONTENT_ARGS, \
     CONSTANTS, EXPAND_SKIN
 from tapalette import palette_names, palette_blocks, expandable_blocks, \
     block_names, content_blocks, default_values, special_names, block_styles, \
@@ -73,7 +73,7 @@ from sprites import Sprites, Sprite
 if GST_AVAILABLE:
     from tagplay import stop_media
 
-MOTION_THRESHOLD = 4
+MOTION_THRESHOLD = 6
 
 
 class TurtleArtWindow():
@@ -208,6 +208,11 @@ class TurtleArtWindow():
             self.sprite_list = None
 
         self.canvas = TurtleGraphics(self, self.width, self.height)
+        '''
+        # If and when we need this...
+        if self.hw == XO175 and self.canvas.width == 1024:
+            self.hw = XO30  # FIXME: temporary test
+        '''
         if self.interactive_mode:
             self.sprite_list.set_cairo_context(self.canvas.canvas)
 
@@ -1734,7 +1739,7 @@ class TurtleArtWindow():
         # Find the block we clicked on and process it.
         # Consider a very small move a click (for touch interfaces)
         if self.block_operation == 'click' or \
-           (self.hw == XO175 and self.block_operation == 'move' and (
+           (self.hw in [XO175, XO30] and self.block_operation == 'move' and (
                 abs(self.dx) < MOTION_THRESHOLD and \
                 abs(self.dy < MOTION_THRESHOLD))):
             self._click_block(x, y)

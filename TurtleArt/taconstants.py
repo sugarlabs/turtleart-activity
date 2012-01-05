@@ -73,6 +73,7 @@ DEFAULT_SCALE = 33
 XO1 = 'xo1'
 XO15 = 'xo1.5'
 XO175 = 'xo1.75'
+XO30 = 'xo3.0'
 UNKNOWN = 'unknown'
 
 CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
