@@ -209,11 +209,8 @@ class TurtleArtWindow():
             self.sprite_list = None
 
         self.canvas = TurtleGraphics(self, self.width, self.height)
-        '''
-        # If and when we need this...
         if self.hw == XO175 and self.canvas.width == 1024:
             self.hw = XO30  # FIXME: temporary test
-        '''
         if self.interactive_mode:
             self.sprite_list.set_cairo_context(self.canvas.canvas)
 
