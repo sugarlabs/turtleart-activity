@@ -397,10 +397,10 @@ class SVG:
         ''' A triangle that points up '''
         self.reset_min_max()
         self._fill, self._stroke = colors[0], colors[1]
-        self._width, self._height = 55, 55
-        svg = self.new_path(0, 55)
-        svg += self._rline_to(27.5, -55)
-        svg += self._rline_to(27.5, 55)
+        self._width, self._height = 55 * self._scale, 55 * self._scale
+        svg = self.new_path(5, 50)
+        svg += self._rline_to(22.5, -45)
+        svg += self._rline_to(22.5, 45)
         svg += self._close_path()
         svg += self.style()
         svg += self.footer()
@@ -410,10 +410,10 @@ class SVG:
         ''' A triangle that points down '''
         self.reset_min_max()
         self._fill, self._stroke = colors[0], colors[1]
-        self._width, self._height = 55, 55
-        svg = self.new_path(0, 0)
-        svg += self._rline_to(27.5, 55)
-        svg += self._rline_to(27.5, -55)
+        self._width, self._height = 55 * self._scale, 55 * self._scale
+        svg = self.new_path(5, 5)
+        svg += self._rline_to(22.5, 45)
+        svg += self._rline_to(22.5, -45)
         svg += self._close_path()
         svg += self.style()
         svg += self.footer()
