@@ -1828,7 +1828,7 @@ class TurtleArtWindow():
                 bw, bh = blk.spr.get_dimensions()
                 tw, th = self.triangle_sprs[0].get_dimensions()
                 for spr in self.triangle_sprs:
-                    spr.restore()
+                    spr.set_layer(TOP_LAYER)
                 self.triangle_sprs[0].move((int(bx + (bw - tw) / 2), by - th))
                 self.triangle_sprs[1].move((int(bx + (bw - tw) / 2), by + bh))
 
