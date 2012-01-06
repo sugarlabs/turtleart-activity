@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#Copyright (c) 2009,10 Walter Bender
+#Copyright (c) 2009-12 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -391,6 +391,32 @@ class SVG:
                                   self._scale)
         self.margins[1] = int(self._stroke_width * self._scale)
         self.margins[2] = int(self._stroke_width * self._scale)
+        return self.header() + svg
+
+    def triangle_up(self, colors):
+        ''' A triangle that points up '''
+        self.reset_min_max()
+        self._fill, self._stroke = colors[0], colors[1]
+        self._width, self._height = 55, 55
+        svg = self.new_path(0, 55)
+        svg += self._rline_to(27.5, -55)
+        svg += self._rline_to(27.5, 55)
+        svg += self._close_path()
+        svg += self.style()
+        svg += self.footer()
+        return self.header() + svg
+
+    def triangle_down(self, colors):
+        ''' A triangle that points down '''
+        self.reset_min_max()
+        self._fill, self._stroke = colors[0], colors[1]
+        self._width, self._height = 55, 55
+        svg = self.new_path(0, 0)
+        svg += self._rline_to(27.5, 55)
+        svg += self._rline_to(27.5, -55)
+        svg += self._close_path()
+        svg += self.style()
+        svg += self.footer()
         return self.header() + svg
 
     def turtle(self, colors):
