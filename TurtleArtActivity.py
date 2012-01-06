@@ -50,7 +50,7 @@ import tarfile
 from gettext import gettext as _
 
 from TurtleArt.tapalette import palette_names, help_strings
-from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE, XO1, XO15, XO175
+from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE, XO1, XO15, XO175, XO30
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
@@ -86,6 +86,7 @@ class TurtleArtActivity(activity.Activity):
 
         _logger.debug('_setup_palette_toolbar')
         self._setup_palette_toolbar()
+        self._setup_extra_controls()
         self._setup_help_toolbar()
 
         _logger.debug('_setup_sharing')
@@ -484,9 +485,9 @@ class TurtleArtActivity(activity.Activity):
             self._palette_toolbar_button = ToolbarButton(
                 page=self._palette_toolbar, icon_name='palette')
             self._help_toolbar = gtk.Toolbar()
-            help_toolbar_button = ToolbarButton(label=_('Help'),
-                                                page=self._help_toolbar,
-                                                icon_name='help-toolbar')
+            self._help_toolbar_button = ToolbarButton(label=_('Help'),
+                                                      page=self._help_toolbar,
+                                                      icon_name='help-toolbar')
 
             self._make_load_save_buttons(activity_toolbar_button)
 
@@ -500,21 +501,6 @@ class TurtleArtActivity(activity.Activity):
             self._toolbox.toolbar.insert(self._palette_toolbar_button, -1)
 
             self._make_project_buttons(self._toolbox.toolbar)
-
-            self._add_separator(self._toolbox.toolbar, expand=True,
-                                visible=False)
-
-            self.samples_button = self._add_button(
-                'ta-open', _('Load example'), self.do_samples_cb,
-                self._toolbox.toolbar)
-
-            help_toolbar_button.show()
-            self._toolbox.toolbar.insert(help_toolbar_button, -1)
-
-            stop_button = StopButton(self)
-            stop_button.props.accelerator = '<Ctrl>Q'
-            self._toolbox.toolbar.insert(stop_button, -1)
-            stop_button.show()
 
             _logger.debug('set_toolbar_box')
             self.set_toolbar_box(self._toolbox)
@@ -575,11 +561,28 @@ class TurtleArtActivity(activity.Activity):
         if not self.has_toolbarbox:
             self._toolbox.set_current_toolbar(1)
 
+    def _setup_extra_controls(self):
+        if self.tw.hw in [XO1, XO15, XO175]:
+            self._add_separator(self._toolbox.toolbar, expand=True,
+                                visible=False)
+
+        self.samples_button = self._add_button(
+            'ta-open', _('Load example'), self.do_samples_cb,
+            self._toolbox.toolbar)
+
+        self._help_toolbar_button.show()
+        self._toolbox.toolbar.insert(self._help_toolbar_button, -1)
+
+        stop_button = StopButton(self)
+        stop_button.props.accelerator = '<Ctrl>Q'
+        self._toolbox.toolbar.insert(stop_button, -1)
+        stop_button.show()
+
     def _setup_help_toolbar(self):
         ''' The help toolbar must be setup we determine what hardware
         is in use. '''
         # FIXME: Temporary work-around gtk problem with XO175
-        if get_hardware() not in [XO1, XO15, XO175] and \
+        if get_hardware() not in [XO1, XO15, XO175, XO30] and \
            (gtk.gtk_version[0] > 2 or gtk.gtk_version[1] > 16):
             self.hover_help_label = self._add_label(
                 _('Move the cursor over the orange palette for help.'),
@@ -605,8 +608,9 @@ class TurtleArtActivity(activity.Activity):
                         self.do_palette_buttons_cb, i,
                         help_strings[palette_name],
                         palette_group))
-            self._add_separator(self._palette_toolbar, expand=True,
-                                visible=False)
+            if self.tw.hw in [XO1, XO15, XO175]:
+                self._add_separator(self._palette_toolbar, expand=True,
+                                    visible=False)
             self._make_palette_buttons(self._palette_toolbar)
             self._palette_toolbar.show()
 
