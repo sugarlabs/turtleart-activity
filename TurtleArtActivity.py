@@ -500,8 +500,6 @@ class TurtleArtActivity(activity.Activity):
             self._palette_toolbar_button.show()
             self._toolbox.toolbar.insert(self._palette_toolbar_button, -1)
 
-            self._make_project_buttons(self._toolbox.toolbar)
-
             _logger.debug('set_toolbar_box')
             self.set_toolbar_box(self._toolbox)
             self._palette_toolbar_button.set_expanded(True)
@@ -562,6 +560,10 @@ class TurtleArtActivity(activity.Activity):
             self._toolbox.set_current_toolbar(1)
 
     def _setup_extra_controls(self):
+        ''' Add the rest of the buttons to the main toolbar '''
+        if self.has_toolbarbox:
+            self._make_project_buttons(self._toolbox.toolbar)
+
         if self.tw.hw in [XO1, XO15, XO175]:
             self._add_separator(self._toolbox.toolbar, expand=True,
                                 visible=False)
@@ -655,8 +657,9 @@ class TurtleArtActivity(activity.Activity):
             'run-fastoff', _('Run'), self.do_run_cb, toolbar, _('<Ctrl>r'))
         self.step_button = self._add_button(
             'run-slowoff', _('Step'), self.do_step_cb, toolbar, _('<Ctrl>w'))
-        self.debug_button = self._add_button(
-            'debugoff', _('Debug'), self.do_debug_cb, toolbar, _('<Ctrl>d'))
+        if self.tw.hw not in [XO30]:
+            self.debug_button = self._add_button(
+                'debugoff', _('Debug'), self.do_debug_cb, toolbar, _('<Ctrl>d'))
         self.stop_turtle_button = self._add_button(
             'stopitoff', _('Stop turtle'), self.do_stop_cb, toolbar,
             _('<Ctrl>s'))

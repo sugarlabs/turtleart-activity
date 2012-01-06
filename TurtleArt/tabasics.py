@@ -67,7 +67,7 @@ from gettext import gettext as _
 from tapalette import make_palette, define_logo_function
 from talogo import primitive_dictionary, logoerror
 from tautils import convert, chr_to_ord, round_int, strtype
-from taconstants import BLACK, WHITE, CONSTANTS
+from taconstants import BLACK, WHITE, CONSTANTS, XO30
 
 def _num_type(x):
     """ Is x a number type? """
@@ -350,9 +350,14 @@ start fill block)'))
     def _color_palette(self):
         """ The basic Turtle Art color palette """
 
-        palette = make_palette('colors',
-                               colors=["#00FFFF", "#00A0A0"],
-                               help_string=_('Palette of pen colors'))
+        if self.tw.hw == XO30:
+            palette = make_palette('pen',
+                                   colors=["#00FFFF", "#00A0A0"],
+                                   help_string=_('Palette of pen colors'))
+        else:
+            palette = make_palette('colors',
+                                   colors=["#00FFFF", "#00A0A0"],
+                                   help_string=_('Palette of pen colors'))
 
         palette.add_block('setcolor',
                           style='basic-style-1arg',
