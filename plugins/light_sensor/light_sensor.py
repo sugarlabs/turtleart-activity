@@ -29,7 +29,7 @@ import logging
 _logger = logging.getLogger('turtleart-activity light-sensor plugin')
 
 
-LIGHT_SENSOR_DEVICE = '/sys/devices/platform/olpc-ols.0/power_state'
+LIGHT_SENSOR_DEVICE = '/sys/devices/platform/olpc-ols.0/level'
 
 
 class Light_sensor(Plugin):
