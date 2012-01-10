@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-06 00:32-0400\n"
-"PO-Revision-Date: 2011-10-12 08:56+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"PO-Revision-Date: 2012-01-10 15:06+0200\n"
+"Last-Translator: Cris Anderson <anderson861@gmail.com>\n"
 "Language-Team: Mongolian\n"
 "Language: mn\n"
 "MIME-Version: 1.0\n"
@@ -45,9 +45,8 @@ msgid "moves turtle backward"
 msgstr ""
 
 #: TurtleArt/tabasics.py:143
-#, fuzzy
 msgid "clean"
-msgstr "Арилга"
+msgstr "арилгах"
 
 #: TurtleArt/tabasics.py:146
 msgid "clears the screen and reset the turtle"
@@ -183,7 +182,7 @@ msgstr "ѳнгѳ"
 
 #: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:404
 msgid "shade"
-msgstr "сүүдзр"
+msgstr "сүүдэр"
 
 #: TurtleArt/tabasics.py:313
 msgid "fills the background with (color, shade)"
@@ -319,7 +318,7 @@ msgstr "нэмэх"
 
 #: TurtleArt/tabasics.py:543
 msgid "adds two alphanumeric inputs"
-msgstr ""
+msgstr "хоёр тоо нэмэх"
 
 #: TurtleArt/tabasics.py:551
 msgid "minus"
@@ -330,18 +329,16 @@ msgid "subtracts bottom numeric input from top numeric input"
 msgstr ""
 
 #: TurtleArt/tabasics.py:565
-#, fuzzy
 msgid "multiply"
-msgstr "Үржүүлэх"
+msgstr "үржүүлэх"
 
 #: TurtleArt/tabasics.py:568
 msgid "multiplies two numeric inputs"
 msgstr ""
 
 #: TurtleArt/tabasics.py:577
-#, fuzzy
 msgid "divide"
-msgstr "Хуваах"
+msgstr "хуваах"
 
 #: TurtleArt/tabasics.py:580
 msgid ""
@@ -402,7 +399,6 @@ msgid "used as numeric input in mathematic operators"
 msgstr ""
 
 #: TurtleArt/tabasics.py:646
-#, fuzzy
 msgid "greater than"
 msgstr "энэ нь арай их"
 
@@ -411,7 +407,6 @@ msgid "logical greater-than operator"
 msgstr ""
 
 #: TurtleArt/tabasics.py:657
-#, fuzzy
 msgid "less than"
 msgstr "энэ нь арай бага"
 
@@ -421,7 +416,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:668
 msgid "equal"
-msgstr ""
+msgstr "тэнцүү"
 
 #: TurtleArt/tabasics.py:671
 msgid "logical equal-to operator"
@@ -656,14 +651,12 @@ msgid "invokes Action 2 stack"
 msgstr ""
 
 #: TurtleArt/tabasics.py:941
-#, fuzzy
 msgid "trash"
-msgstr "Хогийн сав"
+msgstr "хогийн сав"
 
 #: TurtleArt/tabasics.py:945
-#, fuzzy
 msgid "empty trash"
-msgstr "Хогийн сав хоослох"
+msgstr "хогийн сав хоослох"
 
 #: TurtleArt/tabasics.py:946
 msgid "permanently deletes items in trash"
@@ -678,9 +671,8 @@ msgid "restore all blocks from trash"
 msgstr ""
 
 #: TurtleArt/tabasics.py:955
-#, fuzzy
 msgid "clear all"
-msgstr "Бүгдийг арилгах"
+msgstr "бүгдийг арилгах"
 
 #: TurtleArt/tabasics.py:956
 msgid "move all blocks to trash"
@@ -748,9 +740,8 @@ msgid "image"
 msgstr "дүрслэл"
 
 #: TurtleArtActivity.py:125
-#, fuzzy
 msgid "presentation"
-msgstr "Үзүүлэн"
+msgstr "үзүүлэн"
 
 #: TurtleArtActivity.py:196
 msgid "snapshot"
@@ -795,7 +786,7 @@ msgstr "Тусламж"
 
 #: TurtleArtActivity.py:501 TurtleArtActivity.py:627
 msgid "Load example"
-msgstr ""
+msgstr "Жишээ ачаалах"
 
 #: TurtleArtActivity.py:520
 msgid "Project"
@@ -843,7 +834,7 @@ msgstr ""
 
 #: TurtleArtActivity.py:608 turtleart.py:308
 msgid "Save as image"
-msgstr ""
+msgstr "Дүрслэлээр хадгалах"
 
 #: TurtleArtActivity.py:611 turtleart.py:310
 msgid "Save as HTML"
@@ -883,7 +874,7 @@ msgstr ""
 
 #: TurtleArtActivity.py:644 turtleart.py:348
 msgid "Run"
-msgstr ""
+msgstr "Эхэл"
 
 #: TurtleArtActivity.py:644
 msgid "<Ctrl>r"
@@ -899,7 +890,7 @@ msgstr ""
 
 #: TurtleArtActivity.py:648 turtleart.py:350
 msgid "Debug"
-msgstr ""
+msgstr "Оношилгоо"
 
 #: TurtleArtActivity.py:648
 msgid "<Ctrl>d"
@@ -932,7 +923,7 @@ msgstr ""
 
 #: gnome_plugins/collaboration_plugin.py:128
 msgid "Share"
-msgstr ""
+msgstr "Хуваалцах"
 
 #: gnome_plugins/collaboration_plugin.py:129
 msgid "Configuration"
@@ -952,24 +943,23 @@ msgstr ""
 
 #: gnome_plugins/collaboration_plugin.py:292
 msgid "Server"
-msgstr ""
+msgstr "Сервер"
 
 #: gnome_plugins/collaboration_plugin.py:294
 msgid "Port"
-msgstr ""
+msgstr "Порт"
 
 #: gnome_plugins/collaboration_plugin.py:296
 msgid "Password"
-msgstr ""
+msgstr "Нууц үг"
 
 #: gnome_plugins/collaboration_plugin.py:298
 msgid "Register"
-msgstr ""
+msgstr "Бүртгүүлэх"
 
 #: gnome_plugins/collaboration_plugin.py:300
-#, fuzzy
 msgid "Colors"
-msgstr "ѳнгѳ"
+msgstr "Өнгѳ"
 
 #: gnome_plugins/uploader_plugin.py:64
 msgid "Upload to Web"
@@ -977,7 +967,7 @@ msgstr ""
 
 #: gnome_plugins/uploader_plugin.py:66
 msgid "Upload"
-msgstr ""
+msgstr "Ачаалах"
 
 #: gnome_plugins/uploader_plugin.py:83
 msgid ""
@@ -987,11 +977,11 @@ msgstr ""
 
 #: gnome_plugins/uploader_plugin.py:92
 msgid "Username:"
-msgstr ""
+msgstr "Хэрэглэгчийн нэр:"
 
 #: gnome_plugins/uploader_plugin.py:102
 msgid "Password:"
-msgstr ""
+msgstr "Нууц үг:"
 
 #: gnome_plugins/uploader_plugin.py:113
 msgid "Title:"
@@ -999,7 +989,7 @@ msgstr "Гарчиг:"
 
 #: gnome_plugins/uploader_plugin.py:123
 msgid "Description:"
-msgstr ""
+msgstr "Тайлбар:"
 
 #: gnome_plugins/uploader_plugin.py:133
 msgid "Submit to Web"
@@ -1160,7 +1150,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:142
 msgid "video"
-msgstr ""
+msgstr "видео"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:144
 msgid "Sugar Journal video object"
@@ -1168,7 +1158,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:154
 msgid "description"
-msgstr ""
+msgstr "тайлбар"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:156
 msgid "Sugar Journal description field"
@@ -1177,7 +1167,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:173
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
 msgid "show"
-msgstr ""
+msgstr "үзүүлэх"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:177
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:190
@@ -1199,12 +1189,12 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:224
 msgid "save picture"
-msgstr ""
+msgstr "зураг хадгалах"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:226
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:237
 msgid "picture name"
-msgstr ""
+msgstr "зураг нэр"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:227
 msgid "saves a picture to the Sugar Journal"
@@ -1268,7 +1258,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:310
 msgid "time"
-msgstr ""
+msgstr "цаг"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:313
 msgid "elapsed time (in seconds) since program started"
@@ -1313,7 +1303,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:380
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:382
 msgid "comment"
-msgstr ""
+msgstr "тайлбар"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:383
 msgid "places a comment in your code"
@@ -1465,7 +1455,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:607
 msgid "list"
-msgstr ""
+msgstr "жагсаалт"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:610
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:840
@@ -1573,18 +1563,16 @@ msgid "presentation 2x2"
 msgstr ""
 
 #: pysamples/grecord.py:215 taextras.py:129
-#, fuzzy
 msgid "stop"
-msgstr "дээд"
+msgstr "зогсоох"
 
 #: pysamples/grecord.py:217
 msgid "play"
-msgstr ""
+msgstr "тоглуулах"
 
 #: pysamples/grecord.py:219
-#, fuzzy
 msgid "save"
-msgstr "Хадгалах"
+msgstr "хадгалах"
 
 #: pysamples/uturn.py:24
 msgid "uturn"
@@ -1693,11 +1681,11 @@ msgstr ""
 
 #: taextras.py:74
 msgid "temperature"
-msgstr ""
+msgstr "температур"
 
 #: taextras.py:75
 msgid "distance"
-msgstr ""
+msgstr "хоорондын зай"
 
 #: taextras.py:76
 msgid "tilt"
@@ -1867,7 +1855,7 @@ msgstr ""
 
 #: taextras.py:127
 msgid "move"
-msgstr ""
+msgstr "нүүх"
 
 #: taextras.py:130
 msgid "turn left"
