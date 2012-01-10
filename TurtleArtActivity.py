@@ -514,7 +514,7 @@ class TurtleArtActivity(activity.Activity):
             edit_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Edit'), edit_toolbar)
             journal_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('Import/Export'), journal_toolbar)
+            self._toolbox.add_toolbar(_('Save/Load'), journal_toolbar)
             self._help_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Help'), self._help_toolbar)
 
@@ -617,27 +617,60 @@ class TurtleArtActivity(activity.Activity):
             self._palette_toolbar.show()
 
     def _make_load_save_buttons(self, toolbar):
-        self.save_as_image = self._add_button(
-            'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
-            toolbar)
-        self.save_as_html = self._add_button(
-            'htmloff', _('Save as HTML'), self.do_save_as_html_cb, toolbar)
-        self.save_as_logo = self._add_button(
-            'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
-            toolbar)
-        self.keep_button = self._add_button(
-            'filesaveoff', _('Save snapshot'), self.do_keep_cb, toolbar)
-        if not self.has_toolbarbox:
+        if self.has_toolbarbox:
+            save_load_button = self._add_button(
+                'save-load', _('Save/Load'), self._save_load_palette_cb,
+                toolbar)
+            self._palette = save_load_button.get_palette()
+            button_box = gtk.VBox()
+            self.save_as_image = self._add_button_and_label(
+                'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
+                button_box)
+            self.save_as_html = self._add_button_and_label(
+                'htmloff', _('Save as HTML'), self.do_save_as_html_cb,
+                button_box)
+            self.save_as_logo = self._add_button_and_label(
+                'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
+                button_box)
+            self.keep_button = self._add_button_and_label(
+                'filesaveoff', _('Save snapshot'), self.do_keep_cb, button_box)
+            self.load_ta_project = self._add_button_and_label(
+                'load-from-journal', _('Load project'),
+                self.do_load_ta_project_cb, button_box)
+            self.load_python = self._add_button_and_label(
+                'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
+                button_box)
+            button_box.show_all()
+            self._palette.set_content(button_box)
+        else:
+            self.save_as_image = self._add_button(
+                'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
+                toolbar)
+            self.save_as_html = self._add_button(
+                'htmloff', _('Save as HTML'), self.do_save_as_html_cb, toolbar)
+            self.save_as_logo = self._add_button(
+                'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
+                toolbar)
+            self.keep_button = self._add_button(
+                'filesaveoff', _('Save snapshot'), self.do_keep_cb, toolbar)
             self._add_separator(toolbar)
-        self.load_ta_project = self._add_button(
-            'load-from-journal', _('Import project from the Journal'),
-            self.do_load_ta_project_cb, toolbar)
-        self.load_python = self._add_button(
-            'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
-            toolbar)
-        if not self.has_toolbarbox:
+            self.load_ta_project = self._add_button(
+                'load-from-journal', _('Load project'),
+                self.do_load_ta_project_cb, toolbar)
+            self.load_python = self._add_button(
+                'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
+                toolbar)
             self.samples_button = self._add_button(
                 'ta-open', _('Load example'), self.do_samples_cb, toolbar)
+
+    def _save_load_palette_cb(self, button):
+        if self._palette:
+            if not self._palette.is_up():
+                self._palette.popup(immediate=True,
+                                    state=self._palette.SECONDARY)
+            else:
+                self._palette.popdown(immediate=True)
+            return 
 
     def _make_palette_buttons(self, toolbar, palette_button=False):
         ''' Creates the palette and block buttons for both toolbar types'''
@@ -875,7 +908,8 @@ class TurtleArtActivity(activity.Activity):
                     arg=None):
         ''' Add a button to a toolbar. '''
         button = ToolButton(name)
-        button.set_tooltip(tooltip)
+        if tooltip is not None:
+            button.set_tooltip(tooltip)
         if arg is None:
             button.connect('clicked', callback)
         else:
@@ -886,10 +920,11 @@ class TurtleArtActivity(activity.Activity):
             except AttributeError:
                 pass
         button.show()
-        if hasattr(toolbar, 'insert'):  # Add button to the main toolbar...
-            toolbar.insert(button, -1)
-        else:  # ...or a secondary toolbar.
-            toolbar.props.page.insert(button, -1)
+        if toolbar is not None:
+            if hasattr(toolbar, 'insert'):  # Add button to the main toolbar...
+                toolbar.insert(button, -1)
+            else:  # ...or a secondary toolbar.
+                toolbar.props.page.insert(button, -1)
 
         if not name in help_strings:
             help_strings[name] = tooltip
@@ -912,4 +947,16 @@ class TurtleArtActivity(activity.Activity):
         button.show()
         if tooltip is not None:
             button.set_tooltip(tooltip)
+        return button
+
+    def _add_button_and_label(self, icon_name, tooltip, cb, box):
+        ''' Add a button and a label to a box '''
+        button_and_label = gtk.HBox()
+        button = self._add_button(icon_name, None, cb, None)
+        label =  gtk.Label(tooltip)
+        label.show()
+        button_and_label.pack_start(button)
+        button_and_label.pack_start(label)
+        box.pack_start(button_and_label)
+        button_and_label.show()
         return button
