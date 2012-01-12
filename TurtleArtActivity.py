@@ -617,7 +617,7 @@ class TurtleArtActivity(activity.Activity):
             self._palette_toolbar.show()
 
     def _make_load_save_buttons(self, toolbar):
-        if self.has_toolbarbox:
+        if self.has_toolbarbox and gtk.gdk.screen_width() < 1200:
             save_load_button = self._add_button(
                 'save-load', _('Save/Load'), self._save_load_palette_cb,
                 toolbar)
