@@ -1,3 +1,26 @@
+131
+
+ENHANCEMENTS:
+* Internalized While and Until blocks (no longer macro expansions)
+* Simplified keyboard input macro (uses until block)
+* Some consolidation of toolbars on smaller displays
+* New data-graphing example from ClaudiaU
+* New strings for Butia, Follow Me, and Sumo plugins
+
+TOUCH ENHANCEMENTS:
+* Added on-screen adjusters for numeric blocks
+* Added a mouse-motion threshold for differentiating between a click and a
+  drag motion
+
+BUG FIXES:
+ * While and Until blocks continue program flow after exiting
+ * Until block executes once before test
+ * Changed light-sensor power_state (deprecated) to level
+ * Switched to panel for Save/Load buttons so that they'd all fit on
+   smaller screens
+
+Thanks to Alan Jhonn Aguiar Schwyn for testing many of these changes
+
 130
 
 ENHANCEMENTS:
