@@ -266,7 +266,7 @@ def _walk_stack(tw, blk_in_stack):
 
     top = find_top_block(blk_in_stack)
     if blk_in_stack == top:
-        psuedocode = tw.lc.run_blocks(top, tw.block_list.list, False)
+        psuedocode = tw.lc.run_blocks(top, tw.just_blocks(), False)
         return psuedocode
     else:
         return []

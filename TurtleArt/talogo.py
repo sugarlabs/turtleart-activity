@@ -755,6 +755,10 @@ class LogoCode:
         if while_blk or until_blk:
             ifelse_blk = HiddenBlock('ifelse')
             stopstack_blk = HiddenBlock('stopstack')
+        inflow = None
+        whileflow = None
+        outflow = None
+        boolflow = None
         if b.connections is not None:
             inflow = b.connections[0]
             if while_blk or until_blk:
