@@ -1371,11 +1371,14 @@ class TurtleArtWindow():
                     newblk.connections[i + 1] = argblk
         self.drag_group = find_group(newblk)
         self.block_operation = 'new'
+        debug_output(newblk.name, True)
         if len(newblk.spr.labels) > 0 and newblk.spr.labels[0] is not None \
                 and newblk.name not in ['', 'number', 'string']:
-            if newblk.spr.labels[0] not in self.used_block_list:
-                if len(self.used_block_list) > 0:
-                    self.used_block_list.append(', ')
+            if len(self.used_block_list) > 0:
+                self.used_block_list.append(', ')
+            if newblk.name in special_names:
+                self.used_block_list.append(special_names[newblk.name])
+            elif newblk.spr.labels[0] not in self.used_block_list:
                 self.used_block_list.append(newblk.spr.labels[0])
 
     def _new_macro(self, name, x, y):
@@ -2870,9 +2873,11 @@ class TurtleArtWindow():
             blk.connections = 'check'
         if self.running_sugar and len(blk.spr.labels) > 0 and \
                 blk.name not in ['', ' ', 'number', 'string']:
-            if blk.spr.labels[0] not in self.used_block_list:
-                if len(self.used_block_list) > 0:
-                    self.used_block_list.append(', ')
+            if len(self.used_block_list) > 0:
+                self.used_block_list.append(', ')
+            if blk.name in special_names:
+                self.used_block_list.append(special_names[blk.name])
+            elif blk.spr.labels[0] not in self.used_block_list:
                 self.used_block_list.append(blk.spr.labels[0])
         return blk
 

@@ -94,12 +94,13 @@ class TurtleArtActivity(activity.Activity):
 
         # TRANS: activity count is the number of times this instance
         # has been accessed
-        if _('activity count') in self.metadata:
-            count = int(self.metadata[_('activity count')])
+        if 'activity count' in self.metadata:
+            count = int(self.metadata['activity count'])
             count += 1
         else:
             count = 1
-        self.metadata[_('activity count')] = str(count)
+        self.metadata['activity count'] = str(count)
+
 
     # Activity toolbar callbacks
 
@@ -800,9 +801,9 @@ class TurtleArtActivity(activity.Activity):
         ''' Write the project to the Journal. '''
         data_to_file(self.tw.assemble_data_to_save(), file_path)
         self.metadata['mime_type'] = 'application/x-turtle-art'
-        self.metadata[_('turtle blocks')] = ''.join(self.tw.used_block_list)
-        self.metadata['public'] = data_to_string([_('activity count'),
-                                                  _('turtle blocks')])
+        self.metadata['turtle blocks'] = ''.join(self.tw.used_block_list)
+        self.metadata['public'] = data_to_string(['activity count',
+                                                  'turtle blocks'])
         _logger.debug('Wrote to file: %s' % file_path)
 
     def read_file(self, file_path, run_it=True):
