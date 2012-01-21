@@ -13,7 +13,7 @@ def myblock(tw, x):  # ignores second argument
     import os
 
     # The light sensor is only available on the XO 1.75
-    device = '/sys/devices/platform/olpc-ols.0/power_state'
+    device = '/sys/devices/platform/olpc-ols.0/level'
 
     if os.path.exists(device):
         fh = open(device)
