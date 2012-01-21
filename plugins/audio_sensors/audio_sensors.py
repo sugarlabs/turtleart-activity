@@ -154,18 +154,6 @@ class Audio_sensors(Plugin):
                               help_string=_('microphone input voltage'),
                               value_block=True,
                               prim_name='voltage')
-            palette.add_block('resistance2',
-                              style='box-style',
-                              label=_('resistance') + '2',
-                              help_string=_('microphone input resistance'),
-                              value_block=True,
-                              prim_name='resistance2')
-            palette.add_block('voltage2',
-                              style='box-style',
-                              label=_('voltage') + '2',
-                              help_string=_('microphone input voltage'),
-                              value_block=True,
-                              prim_name='voltage2')
         else:
             palette.add_block('resistance',
                               hidden=True,
@@ -179,13 +167,28 @@ class Audio_sensors(Plugin):
                               label=_('voltage'),
                               help_string=_('microphone input voltage'),
                               prim_name='voltage')
-            palette.add_block('resistance',
+
+        if self.hw in [XO15, XO175, XO30] and self._status:
+            palette.add_block('resistance2',
+                              style='box-style',
+                              label=_('resistance') + '2',
+                              help_string=_('microphone input resistance'),
+                              value_block=True,
+                              prim_name='resistance2')
+            palette.add_block('voltage2',
+                              style='box-style',
+                              label=_('voltage') + '2',
+                              help_string=_('microphone input voltage'),
+                              value_block=True,
+                              prim_name='voltage2')
+        else:
+            palette.add_block('resistance2',
                               hidden=True,
                               style='box-style',
                               label=_('resistance') + '2',
                               help_string=_('microphone input resistance'),
                               prim_name='resistance2')
-            palette.add_block('voltage',
+            palette.add_block('voltage2',
                               hidden=True,
                               style='box-style',
                               label=_('voltage') + '2',
@@ -333,6 +336,8 @@ class Audio_sensors(Plugin):
         ''' return resistance sensor value '''
         if not self.hw in [XO1, XO15, XO175, XO30] or not self._status:
             return 0
+        if self.hw == XO1 and channel != 0:
+            return 0
         buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
@@ -359,6 +364,8 @@ class Audio_sensors(Plugin):
     def prim_voltage(self, channel):
         ''' return voltage sensor value '''
         if not self.hw in [XO1, XO15, XO175, XO30] or not self._status:
+            return 0
+        if self.hw == XO1 and channel != 0:
             return 0
         buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
