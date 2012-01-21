@@ -140,8 +140,8 @@ class Audio_sensors(Plugin):
                 self.voltage_gain = -0.0001471
                 self.voltage_bias = 1.695
             else:  # XO 1.75 and 3.0
-                self._voltage_gain = 0.00007692
-                self._voltage_bias = 0.719
+                self.voltage_gain = 0.00007692
+                self.voltage_bias = 0.719
             palette.add_block('resistance',
                               style='box-style',
                               label=_('resistance'),
