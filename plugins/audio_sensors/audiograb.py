@@ -2,7 +2,7 @@
 #
 # Author:  Arjun Sarwal   arjun@laptop.org
 # Copyright (C) 2007, Arjun Sarwal
-# Copyright (C) 2009-11 Walter Bender
+# Copyright (C) 2009-12 Walter Bender
 # Copyright (C) 2009, Benjamin Berg, Sebastian Berg
 # Copyright (C) 2009, Sayamindu Dasgupta
 # Copyright (C) 2010, Sascha Silbe
@@ -67,10 +67,6 @@ class AudioGrab():
             self.channels = 1
         else:
             self.channels = None
-
-        self.waveform_id = 1
-
-        self.counter_buffer = 0
 
         self._dc_control = None
         self._mic_bias_control = None
@@ -210,17 +206,13 @@ class AudioGrab():
         else:
             pass
 
-    def on_buffer(self, element, buffer, pad, channel):
+    def on_buffer(self, element, data_buffer, pad, channel):
         '''The function that is called whenever new data is available
         This is the signal handler for the handoff signal'''
-        temp_buffer = fromstring(buffer, 'int16')
+        temp_buffer = fromstring(data_buffer, 'int16')
         if not self.dont_queue_the_buffer:
             self._new_buffer(temp_buffer, channel=channel)
         return False
-
-    def set_sensor(self, sensor):
-        '''Keep a reference to the sensot toolbar for logging'''
-        self.sensor = sensor
 
     def start_sound_device(self):
         '''Start or Restart grabbing data from the audio capture'''
@@ -242,11 +234,6 @@ class AudioGrab():
         '''Sets the number of buffers after which a buffer needs to be
         emitted'''
         self.buffer_interval_logging = interval
-
-    def reset_counter_buffer(self):
-        '''Resets the counter buffer used to keep track of after how many
-        buffers to emit a buffer for logging'''
-        self.counter_buffer = 0
 
     def set_sampling_rate(self, sr):
         '''Sets the sampling rate of the capture device
@@ -506,7 +493,7 @@ class AudioGrab():
     def get_dc_mode(self):
         '''Returns the setting of DC Mode Enable control
         i.e. True: Unmuted and False: Muted'''
-        if self._labels_available:
+        if self._labels_available and self.parent.hw != XO1:
             if self._dc_control is not None:
                 return not self._get_mute(self._dc_control, 'DC mode', False)
             else:
@@ -623,7 +610,7 @@ class AudioGrab():
     def get_mic_gain(self):
         '''Gets the MIC gain slider settings. The value returned is an
         integer between 0-100 and is an indicative of the percentage 0 - 100%'''
-        if self._labels_available:
+        if self._labels_available and self.parent.hw != XO1:
             return self._get_volume(self._mic_gain_control, 'Mic')
         else:
             (status, output) = commands.getstatusoutput('amixer get Mic')
