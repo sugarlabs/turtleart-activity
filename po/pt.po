@@ -1,19 +1,25 @@
+# Turtle Art
+# Copyright (C) 2009 Sugar Labs
+# This file is distributed under the same license as the PACKAGE package.
+# Walter Bender <walter@sugarlabs.org>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2009-02-20 14:16-0500\n"
-"Last-Translator: Eduardo H. Silva <HoboPrimate@gmail.com>\n"
+"PO-Revision-Date: 2012-01-23 01:16+0200\n"
+"Last-Translator: Eduardo H. <hoboprimate@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0rc2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2
 msgid "Turtle Art"
-msgstr "Artartaruga"
+msgstr "Tartarugarte"
 
 #: tasetup.py:46 tasetup.py:49 tasetup.py:50 tasetup.py:51 tasetup.py:52
 #: tasetup.py:53 tasetup.py:54
@@ -152,11 +158,11 @@ msgstr "pôr na caixa 2"
 
 #:
 msgid "push"
-msgstr ""
+msgstr "insere"
 
 #:
 msgid "pop"
-msgstr ""
+msgstr "retira"
 
 #:
 msgid "Numbers"
@@ -284,12 +290,10 @@ msgstr "raio"
 
 #:
 msgid "heading"
-msgstr "cabeçalho"
+msgstr "direcção"
 
-#
-#, fuzzy
 msgid "set heading"
-msgstr "seth"
+msgstr "ajustar direcção"
 
 #:
 msgid "set xy"
@@ -333,7 +337,7 @@ msgstr "resistência"
 
 #:
 msgid "Templates"
-msgstr "Predefinições"
+msgstr "Modelos"
 
 #:
 msgid "Keyboard"
