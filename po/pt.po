@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-26 00:32-0500\n"
-"PO-Revision-Date: 2012-01-23 01:46+0200\n"
+"PO-Revision-Date: 2012-01-25 23:00+0200\n"
 "Last-Translator: Eduardo H. <hoboprimate@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: pt\n"
@@ -831,7 +831,7 @@ msgstr "Colar"
 #: TurtleArtActivity.py:538
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:651
 msgid "Fullscreen"
-msgstr "Ecrã completo"
+msgstr "Ecrã inteiro"
 
 #: TurtleArtActivity.py:540 turtleart.py:334
 msgid "Cartesian coordinates"
@@ -1079,12 +1079,12 @@ msgstr "volume da entrada do microfone"
 #: plugins/audio_sensors/audio_sensors.py:126
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:275
 msgid "pitch"
-msgstr "tom"
+msgstr "altura"
 
 #: plugins/audio_sensors/audio_sensors.py:119
 #: plugins/audio_sensors/audio_sensors.py:127
 msgid "microphone input pitch"
-msgstr "tom da entrada do microfone"
+msgstr "altura do som da entrada do microfone"
 
 #: plugins/audio_sensors/audio_sensors.py:145
 #: plugins/audio_sensors/audio_sensors.py:159
@@ -1477,7 +1477,7 @@ msgstr "carapaça da tartaruga"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:569
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:577
 msgid "put a custom 'shell' on the turtle"
-msgstr "coloca uma \"carapaça\" customizada na tartaruga"
+msgstr "coloca uma \"carapaça\" personalizada na tartaruga"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:582
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747
@@ -1999,7 +1999,7 @@ msgstr "Obtém a coordenada y do robô."
 
 #: taextras.py:142
 msgid "opponent x coor."
-msgstr "x coor. oponente"
+msgstr "x coor. oponente."
 
 #: taextras.py:143
 msgid "Get the x coordinate of the opponent."
@@ -2007,7 +2007,7 @@ msgstr "Obtém a coordenada x do oponente."
 
 #: taextras.py:144
 msgid "opponent y coor."
-msgstr "y coor. oponente"
+msgstr "y coor. oponente."
 
 #: taextras.py:145
 msgid "Get the y coordinate of the opponent."
