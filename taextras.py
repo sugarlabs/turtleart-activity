@@ -219,3 +219,19 @@ objects (a value from 0 to 1, where 0 means no bounce and 1 is very bouncy).'),
     _('If dynamic = 1, the object can move; \
 if dynamic = 0, it is fixed in position.')
 ]
+
+WEDO_STRINGS = [
+    # TRANS: WeDo is a robotics product of the LEGO company
+    _('Palette of WeDo blocks'),
+    _('tilt'),
+    _('tilt sensor output: (-1 == no tilt,\
+ 0 == tilt forward, 3 == tilt back, 1 == tilt left, 2 == tilt right)'),
+    _('distance'),
+    _('distance sensor output'),
+    _('Motor A'),
+    _('returns the current value of Motor A'),
+    _('Motor B'),
+    _('returns the current value of Motor B'),
+    _('set the value for Motor A'),
+    _('set the value for Motor B')
+]
