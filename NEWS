@@ -1,3 +1,23 @@
+133
+
+ENHANCEMENTS:
+* New translations
+* Added strings used by WeDo plugin
+* Added True and False blocks to Numbers palette (only for large screens)
+* Added is heap empty block?
+* Added support for polynomial objects in math libraries
+  (used by nutrition plugin)
+
+132
+
+BUG FIX:
+* Fixed problem with exporting of Logo code introduced in v131
+* Capture "special blocks" in used block list
+* Fixed typo in local variables causing voltage sensing to fail with
+  XO 1.75 (#3297)
+* Changed light-sensor power_state (deprecated) to level in python
+  sample code (OLPC #11485)
+
 131
 
 ENHANCEMENTS:
