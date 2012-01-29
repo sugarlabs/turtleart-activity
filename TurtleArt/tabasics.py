@@ -653,7 +653,11 @@ operators'))
                           logo_command='greater?',
                           help_string=_('logical greater-than operator'))
         self.tw.lc.def_prim(
-            'greater?', 2, lambda self, x, y: primitive_dictionary['more'](x, y))
+            'greater?', 2,
+            lambda self, x, y: primitive_dictionary['more'](x, y))
+
+        if self.tw.canvas.width > 1024:
+            self._make_constant(palette, 'true', _('True'), 1)
 
         primitive_dictionary['less'] = self._prim_less
         palette.add_block('less2',
@@ -665,6 +669,9 @@ operators'))
                           help_string=_('logical less-than operator'))
         self.tw.lc.def_prim(
             'less?', 2, lambda self, x, y: primitive_dictionary['less'](x, y))
+
+        if self.tw.canvas.width > 1024:
+            self._make_constant(palette, 'false', _('False'), 0)
 
         primitive_dictionary['equal'] = self._prim_equal
         palette.add_block('equal2',
@@ -1120,6 +1127,14 @@ variable'))
 
     def _prim_careful_divide(self, x, y):
         """ Raise error on divide by zero """
+        if type(x) == list and _num_type(y):
+            z = []
+            for i in range(len(x)):
+                try:
+                    z.append(x[i] / y)
+                except ZeroDivisionError:
+                    raise logoerror("#zerodivide")
+            return z
         try:
             return x / y
         except ZeroDivisionError:
@@ -1136,6 +1151,11 @@ variable'))
 
     def _prim_equal(self, x, y):
         """ Numeric and logical equal """
+        if type(x) == list and type(y) == list:
+            for i in range(len(x)):
+                if x[i] != y[i]:
+                    return False
+            return True
         try:
             return float(x) == float(y)
         except ValueError:
@@ -1176,6 +1196,11 @@ variable'))
         """ Add numbers, concat strings """
         if _num_type(x) and _num_type(y):
             return(x + y)
+        elif type(x) == list and type(y) == list:
+            z = []
+            for i in range(len(x)):
+                z.append(x[i] + y[i])
+            return(z)
         else:
             if _num_type(x):
                 xx = str(round_int(x))
@@ -1191,6 +1216,11 @@ variable'))
         """ Numerical subtraction """
         if _num_type(x) and _num_type(y):
             return(x - y)
+        elif type(x) == list and type(y) == list:
+            z = []
+            for i in range(len(x)):
+                z.append(x[i] - y[i])
+            return(z)
         try:
             return self._string_to_num(x) - self._string_to_num(y)
         except TypeError:
@@ -1200,6 +1230,16 @@ variable'))
         """ Numerical multiplication """
         if _num_type(x) and _num_type(y):
             return(x * y)
+        elif type(x) == list and _num_type(y):
+            z = []
+            for i in range(len(x)):
+                z.append(x[i] * y)
+            return(z)
+        elif type(y) == list and _num_type(x):
+            z = []
+            for i in range(len(y)):
+                z.append(y[i] * x)
+            return(z)
         try:
             return self._string_to_num(x) * self._string_to_num(y)
         except TypeError:
@@ -1260,6 +1300,8 @@ variable'))
             return(x)
         if type(x) is ord:
             return(int(x))
+        if type(x) is list:
+            raise logoerror("#syntaxerror")
         xx = convert(x.replace(self.tw.decimal_point, '.'), float)
         if type(xx) is float:
             return xx
