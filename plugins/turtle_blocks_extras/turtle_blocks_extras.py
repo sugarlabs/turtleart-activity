@@ -435,6 +435,16 @@ last-out heap)'))
         define_logo_function('tapop', 'to tapop\rif emptyp :taheap [stop]\r\
 make "tmp first :taheap\rmake "taheap butfirst :taheap\routput :tmp\rend\r')
 
+        primitive_dictionary['isheapempty'] = self._prim_is_heap_empty
+        palette.add_block('isheapempty',
+                          style='box-style',
+                          label=_('empty heap?'),
+                          prim_name='isheapempty',
+                          value_block=True,
+                          help_string=_('returns True if heap is empty'))
+        self.tw.lc.def_prim('isheapempty', 0,
+                            lambda self: primitive_dictionary['isheapempty']())
+
         primitive_dictionary['print'] = self._prim_print
         palette.add_block('comment',
                           style='basic-style-1arg',
@@ -971,6 +981,13 @@ bullets'))
         except TypeError:
             self.tw.lc.stop_logo()
             raise logoerror("#notanumber")
+
+    def _prim_is_heap_empty(self):
+        """ is FILO empty? """
+        if len(self.tw.lc.heap) == 0:
+            return 1
+        else:
+            return 0
 
     def _prim_pop(self):
         """ Pop value off of FILO """
