@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: Walter Bender <walter@sugarlabs.org>\n"
 "POT-Creation-Date: 2009-01-21 10:45+0000\n"
-"PO-Revision-Date: 2012-01-23 01:16+0200\n"
+"PO-Revision-Date: 2012-01-31 21:55+0200\n"
 "Last-Translator: Eduardo H. <hoboprimate@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: pt\n"
@@ -230,7 +230,7 @@ msgstr "caneta para baixo"
 
 #:
 msgid "set pen size"
-msgstr "ajustar o tamanho da caneta"
+msgstr "definir tamanho da caneta"
 
 #:
 msgid "pen size"
@@ -238,15 +238,15 @@ msgstr "tamanho da caneta"
 
 #:
 msgid "set shade"
-msgstr "ajustar o tom"
+msgstr "definir tom"
 
 #:
 msgid "set color"
-msgstr "ajustar a cor"
+msgstr "definir cor"
 
 #:
 msgid "set text color"
-msgstr "ajustar a cor do texto"
+msgstr "definir cor do texto"
 
 #:
 msgid "Blocks"
@@ -290,14 +290,14 @@ msgstr "raio"
 
 #:
 msgid "heading"
-msgstr "direcção"
+msgstr "orientação"
 
 msgid "set heading"
-msgstr "ajustar direcção"
+msgstr "definir orientação"
 
 #:
 msgid "set xy"
-msgstr "ajustar xy"
+msgstr "definir xy"
 
 #:
 msgid "x"
@@ -309,11 +309,11 @@ msgstr "y"
 
 #:
 msgid "xcor"
-msgstr "xcor"
+msgstr "coorx"
 
 #:
 msgid "ycor"
-msgstr "ycor"
+msgstr "coory"
 
 #:
 msgid "Sensors"
@@ -325,7 +325,7 @@ msgstr "volume"
 
 #:
 msgid "pitch"
-msgstr "tom"
+msgstr "altura"
 
 #:
 msgid "voltage"
@@ -345,7 +345,7 @@ msgstr "Teclado"
 
 #:
 msgid "read key"
-msgstr "ler a chave"
+msgstr "ler chave"
 
 #:
 msgid "sound"
