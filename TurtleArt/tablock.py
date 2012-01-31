@@ -128,6 +128,7 @@ class Block:
         self.shapes = [None, None]
         self.name = name
         self.colors = colors
+        self._custom_colors = False
         self.scale = scale
         self.docks = None
         self.connections = None
@@ -280,6 +281,11 @@ class Block:
         self.svg.set_scale(self.scale)
         self.refresh()
         self.spr.inval()
+
+    def set_colors(self, colors):
+        self.colors = colors[:]
+        self._custom_colors = True
+        self.refresh()
 
     def refresh(self):
         if self.spr is None:
@@ -487,6 +493,9 @@ class Block:
         self.block_methods['basic-style'](svg)
 
     def _set_colors(self, svg):
+        if self._custom_colors:
+            self.svg.set_colors(self.colors)
+            return
         if self.name in BOX_COLORS:
             self.colors = BOX_COLORS[self.name]
         elif self.name in special_block_colors:
