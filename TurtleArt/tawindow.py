@@ -2141,7 +2141,8 @@ class TurtleArtWindow():
             # Some destination blocks expand to accomodate large blocks
             if best_destination.name in block_styles['boolean-style']:
                 if best_destination_dockn == 2 and \
-                   selected_block.name in block_styles['compare-style']:
+                   (selected_block.name in block_styles['compare-style'] or \
+                    selected_block.name in block_styles['compare-porch-style']):
                     dy = selected_block.ey - best_destination.ey
                     best_destination.expand_in_y(dy)
                     self._expand_boolean(best_destination, selected_block, dy)
@@ -2198,7 +2199,6 @@ class TurtleArtWindow():
                     self._expand_expandable(blk2, blk, dy)
                     if blk2.name in block_styles[
                         'compare-porch-style']:
-                        print 'removing offset'
                         blk2.spr.move_relative((0, -dy * blk2.scale))
                 self._cascade_expandable(blk2)
                 grow_stack_arm(find_sandwich_top(blk2))
