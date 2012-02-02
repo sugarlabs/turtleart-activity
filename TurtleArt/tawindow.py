@@ -1900,7 +1900,7 @@ class TurtleArtWindow():
                 return
 
             if blk.name in block_styles['boolean-style']:
-                self._expand_boolean(blk, blk.connections[1], dy)
+                self._expand_boolean(blk, blk.connections[2], dy)
             else:
                 self._expand_expandable(blk, blk.connections[1], dy)
 
@@ -2141,9 +2141,14 @@ class TurtleArtWindow():
             # Some destination blocks expand to accomodate large blocks
             if best_destination.name in block_styles['boolean-style']:
                 if best_destination_dockn == 2 and \
-                   (selected_block.name in block_styles['compare-style'] or \
+                   (selected_block.name in block_styles['boolean-style'] or \
+                    selected_block.name in block_styles['compare-style'] or \
                     selected_block.name in block_styles['compare-porch-style']):
                     dy = selected_block.ey - best_destination.ey
+                    if selected_block.name in block_styles['boolean-style']:
+                        # Even without expanding, boolean blocks are
+                        # too large to fit in the lower dock position
+                        dy += 45
                     best_destination.expand_in_y(dy)
                     self._expand_boolean(best_destination, selected_block, dy)
             elif best_destination.name in expandable_blocks and \
