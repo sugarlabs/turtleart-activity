@@ -50,7 +50,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, NO_IMPORT, \
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
     EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, TITLEXY, CONTENT_ARGS, \
-    CONSTANTS, EXPAND_SKIN
+    CONSTANTS, EXPAND_SKIN, PROTO_LAYER
 from tapalette import palette_names, palette_blocks, expandable_blocks, \
     block_names, content_blocks, default_values, special_names, block_styles, \
     help_strings
@@ -730,11 +730,14 @@ class TurtleArtWindow():
             self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
         # Create 'proto' blocks for each palette entry
-        self._create_proto_blocks(n, regenerate=regenerate)
+        self._create_proto_blocks(n)
 
         self._layout_palette(n, regenerate=regenerate)
         for blk in self.palettes[n]:
-            blk.spr.set_layer(TAB_LAYER)
+            if blk.get_visibility():
+                blk.spr.set_layer(PROTO_LAYER)
+            else:
+                blk.spr.hide()
         if n == palette_names.index('trash'):
             for blk in self.trash_stack:
                 for gblk in find_group(blk):
@@ -817,30 +820,40 @@ class TurtleArtWindow():
         self.palette_button[2].type = 'palette'
         self.palette_button[2].set_layer(TAB_LAYER)
 
-    def _create_proto_blocks(self, n, regenerate=False):
+    def _create_proto_blocks(self, n):
         ''' Create the protoblocks that will populate a palette. '''
-        if regenerate:
-            for blk in self.palettes[n]:
-                blk.type = 'trash'
-            self.palettes[n] = []
+        # Reload the palette, but reuse the existing blocks
+        # If a block doesn't exist, add it
 
-        if self.palettes[n] == []:
-            for i, name in enumerate(palette_blocks[n]):
-                self.palettes[n].append(Block(self.block_list,
-                    self.sprite_list, name, 0, 0, 'proto', [], PALETTE_SCALE))
-                self.palettes[n][i].spr.set_layer(TAB_LAYER)
-                self.palettes[n][i].unhighlight()
+        for blk in self.palettes[n]:
+            blk.spr.hide()
+        old_blocks = self.palettes[n][:]
+        self.palettes[n] = []
+        for i, name in enumerate(palette_blocks[n]):        
+            found_block = False
+            for oblk in old_blocks:
+                if oblk.name == name:
+                    self.palettes[n].append(oblk)
+                    found_block = True
+                    break
+            if not found_block:
+                self.palettes[n].append(Block(
+                        self.block_list, self.sprite_list, name, 0, 0,
+                        'proto', [], PALETTE_SCALE))
+            self.palettes[n][i].spr.set_layer(PROTO_LAYER)
+            self.palettes[n][i].unhighlight()
 
-                # Some proto blocks get a skin.
-                if name in block_styles['box-style-media']:
-                    self._proto_skin(name + 'small', n, i)
-                elif name[:8] == 'template':  # Deprecated
-                    self._proto_skin(name[8:], n, i)
-                elif name[:7] == 'picture':  # Deprecated
-                    self._proto_skin(name[7:], n, i)
-                elif name in PYTHON_SKIN:
-                    self._proto_skin('pythonsmall', n, i)
-
+            # Some proto blocks get a skin.
+            if name in block_styles['box-style-media']:
+                self._proto_skin(name + 'small', n, i)
+            elif name[:8] == 'template':  # Deprecated
+                self._proto_skin(name[8:], n, i)
+            elif name[:7] == 'picture':  # Deprecated
+                self._proto_skin(name[7:], n, i)
+            elif name in PYTHON_SKIN:
+                self._proto_skin('pythonsmall', n, i)
+        return
+                
     def _hide_toolbar_palette(self):
         """ Hide the toolbar palettes """
         self._hide_previous_palette()
@@ -878,6 +891,8 @@ class TurtleArtWindow():
         """ Position prototypes in a horizontal palette. """
         max_w = 0
         for blk in blocks:
+            if not blk.get_visibility():
+                continue
             w, h = self._width_and_height(blk)
             if y + h > PALETTE_HEIGHT + self.toolbar_offset:
                 x += int(max_w + 3)
@@ -891,7 +906,7 @@ class TurtleArtWindow():
                 g.spr.save_xy = g.spr.get_xy()
                 if self.running_sugar and not self.hw in [XO1]:
                     g.spr.move_relative((self.activity.hadj_value,
-                                         self.activity.vadj_value,))
+                                         self.activity.vadj_value))
             y += int(h + 3)
             if w > max_w:
                 max_w = w
@@ -902,8 +917,10 @@ class TurtleArtWindow():
         row = []
         row_w = 0
         max_h = 0
-        for b in blocks:
-            w, h = self._width_and_height(b)
+        for blk in blocks:
+            if not blk.get_visibility():
+                continue
+            w, h = self._width_and_height(blk)
             if x + w > PALETTE_WIDTH:
                 # Recenter row.
                 dx = int((PALETTE_WIDTH - row_w) / 2)
@@ -917,17 +934,17 @@ class TurtleArtWindow():
                 x = 4
                 y += int(max_h + 3)
                 max_h = 0
-            row.append(b)
+            row.append(blk)
             row_w += (4 + w)
-            (bx, by) = b.spr.get_xy()
+            (bx, by) = blk.spr.get_xy()
             dx = int(x - bx)
             dy = int(y - by)
-            for g in find_group(b):
+            for g in find_group(blk):
                 g.spr.move_relative((dx, dy))
                 g.spr.save_xy = g.spr.get_xy()
                 if self.running_sugar and not self.hw in [XO1]:
                     g.spr.move_relative((self.activity.hadj_value,
-                                         self.activity.vadj_value,))
+                                         self.activity.vadj_value))
             x += int(w + 4)
             if h > max_h:
                 max_h = h

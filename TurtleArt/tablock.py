@@ -142,6 +142,7 @@ class Block:
         self._ei = 0
         self._font_size = [6.0, 4.5]
         self._image = None
+        self._visible = True
 
         self.block_methods = {
             'basic-style': self._make_basic_style,
@@ -210,6 +211,18 @@ class Block:
             self.primitive = block_primitives[self.name]
 
         self.block_list.append_to_list(self)
+
+    def get_visibility(self):
+        ''' Should block be visible on the palette? '''
+        return self._visible
+
+    def set_visibility(self, state):
+        ''' Should block be visible? '''
+        self._visible = state
+        if self._visible:
+            self.spr.restore()
+        else:
+            self.spr.hide()
 
     def expandable(self):
         """ Can this block be expanded? """
