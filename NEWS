@@ -1,3 +1,13 @@
+134
+
+ENHANCEMENTS:
+* Added method to change block color (used by some plugins)
+* Added method to set the visibility of palette blocks (used by some plugins)
+
+BUG FIX:
+* Fixed typo inadvertently intoduced into plugin strings
+* Fixed problem with boolean and compare blocks not expanding properly
+
 133
 
 ENHANCEMENTS:
