@@ -74,7 +74,7 @@ if GST_AVAILABLE:
     from tagplay import stop_media
 
 MOTION_THRESHOLD = 6
-
+SNAP_THRESHOLD = 200
 
 class TurtleArtWindow():
     """ TurtleArt Window class abstraction  """
@@ -2086,7 +2086,7 @@ class TurtleArtWindow():
         """
         selected_block = self.drag_group[0]
         best_destination = None
-        d = 200
+        d = SNAP_THRESHOLD
         for selected_block_dockn in range(len(selected_block.docks)):
             for destination_block in self.just_blocks():
                 # Don't link to a block that is hidden
@@ -2106,7 +2106,8 @@ class TurtleArtWindow():
                     best_destination = destination_block
                     best_destination_dockn = destination_dockn
                     best_selected_block_dockn = selected_block_dockn
-        if d < 200:
+        if d < SNAP_THRESHOLD:
+            # Some combinations of blocks are not valid
             if not arithmetic_check(selected_block, best_destination,
                                     best_selected_block_dockn,
                                     best_destination_dockn):
@@ -2115,6 +2116,8 @@ class TurtleArtWindow():
                                     best_selected_block_dockn,
                                     best_destination_dockn):
                 return
+
+            # Move the selected blocks into the docked position
             for blk in self.drag_group:
                 (sx, sy) = blk.spr.get_xy()
                 blk.spr.move((sx + best_xy[0], sy + best_xy[1]))
@@ -2125,13 +2128,17 @@ class TurtleArtWindow():
                 blk_in_dock.connections[0] = None
                 self._put_in_trash(blk_in_dock)
 
+            # Note the connection in destination dock
             best_destination.connections[best_destination_dockn] = \
                 selected_block
+
+            # And in the selected block dock
             if selected_block.connections is not None:
                 if best_selected_block_dockn < len(selected_block.connections):
                     selected_block.connections[best_selected_block_dockn] = \
                         best_destination
 
+            # Some destination blocks expand to accomodate large blocks
             if best_destination.name in block_styles['boolean-style']:
                 if best_destination_dockn == 2 and \
                    selected_block.name in block_styles['compare-style']:
@@ -2151,12 +2158,18 @@ class TurtleArtWindow():
                     else:
                         dy = 20 + selected_block.ey - best_destination.ey
                     best_destination.expand_in_y(dy)
+                    if best_destination.name in block_styles[
+                        'compare-porch-style']:
+                        offset = -dy * best_destination.scale
+                        best_destination.spr.move_relative((0, offset))
+                        for blk in self.drag_group:
+                            blk.spr.move_relative((0, offset))
                 else:
                     if best_destination.ey > 0:
                         dy = best_destination.reset_y()
                 if dy != 0:
-                    self._expand_expandable(best_destination, selected_block,
-                                            dy)
+                    self._expand_expandable(
+                        best_destination, selected_block, dy)
                 self._cascade_expandable(best_destination)
                 grow_stack_arm(find_sandwich_top(best_destination))
 
@@ -2183,6 +2196,10 @@ class TurtleArtWindow():
                 dy = blk2.reset_y()
                 if dy != 0:
                     self._expand_expandable(blk2, blk, dy)
+                    if blk2.name in block_styles[
+                        'compare-porch-style']:
+                        print 'removing offset'
+                        blk2.spr.move_relative((0, -dy * blk2.scale))
                 self._cascade_expandable(blk2)
                 grow_stack_arm(find_sandwich_top(blk2))
 
