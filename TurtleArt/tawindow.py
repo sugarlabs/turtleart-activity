@@ -53,7 +53,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     CONSTANTS, EXPAND_SKIN, PROTO_LAYER
 from tapalette import palette_names, palette_blocks, expandable_blocks, \
     block_names, content_blocks, default_values, special_names, block_styles, \
-    help_strings
+    help_strings, hidden_proto_blocks
 from talogo import LogoCode
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
@@ -607,7 +607,7 @@ class TurtleArtWindow():
             self.show_palette()
 
     def show_palette(self, n=None):
-        """ Show palette  """
+        """ Show palette. """
         if n is None:
             if self.selected_palette is None:
                 n = 0
@@ -859,6 +859,8 @@ class TurtleArtWindow():
                 self.palettes[n].append(Block(
                         self.block_list, self.sprite_list, name, 0, 0,
                         'proto', [], PALETTE_SCALE))
+                if name in hidden_proto_blocks:
+                    self.palettes[n][i].set_visibility(False)
             self.palettes[n][i].spr.set_layer(PROTO_LAYER)
             self.palettes[n][i].unhighlight()
 
@@ -897,9 +899,10 @@ class TurtleArtWindow():
             if self.activity is None or not self.activity.has_toolbarbox:
                 self.selectors[palette].set_shape(
                     self.selector_shapes[palette][0])
-            elif palette is not None and palette != self.selected_palette:
-                self.activity.palette_buttons[palette].set_icon(
-                    palette_names[palette] + 'off')
+            elif palette is not None and palette != self.selected_palette \
+                 and not self.activity.has_toolbarbox:
+                    self.activity.palette_buttons[palette].set_icon(
+                        palette_names[palette] + 'off')
             if palette == palette_names.index('trash'):
                 for blk in self.trash_stack:
                     for gblk in find_group(blk):

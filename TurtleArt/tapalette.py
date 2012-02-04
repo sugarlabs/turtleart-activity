@@ -31,6 +31,7 @@ logo_functions = {}
 special_names = {}  # Names for blocks without names for popup help
 content_blocks = ['number', 'string', 'description', 'audio', 'video',
                   'journal']
+hidden_proto_blocks = [] # proto blocks that are (at least initially) hidden
 value_blocks = []  # blocks whose labels are updated get added here
 special_block_colors = {}
 block_styles = {'basic-style': [],
@@ -155,8 +156,9 @@ class Palette():
             block.set_colors(colors)
         block.set_value_block(value_block)
         block.set_content_block(content_block)
-        if not hidden:
-            block.set_palette(self._name)
+        block.set_palette(self._name)
+        if hidden:
+            block.set_hidden()
         block.add_block()
 
 
@@ -179,9 +181,11 @@ def palette_name_to_index(palette_name):
     else:
         return None
 
+
 def define_logo_function(key, value):
     ''' Add a logo function to the table. '''
     logo_functions[key] = value    
+
 
 class Block():
     """ a class for defining new block primitives """
@@ -252,6 +256,9 @@ class Block():
 
         if self._colors is not None:
             special_block_colors[self._name] = self._colors
+
+    def set_hidden(self):
+        hidden_proto_blocks.append(self._name)
 
     def set_colors(self, colors=None):
         self._colors = colors
