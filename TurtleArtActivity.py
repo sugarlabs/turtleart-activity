@@ -253,13 +253,13 @@ class TurtleArtActivity(activity.Activity):
                 self.palette_buttons[self.tw.selected_palette].set_icon(
                     palette_names[self.tw.selected_palette] + 'off')
             if self.tw.selected_palette == i:
-                # Hide the palette if it is already selected.
+                # Hide the palette if it is already selected.             
                 self.tw.hideshow_palette(False)
-                self.do_hidepalette()
+                self.tw.selected_palette = None
                 return
         if not self.has_toolbarbox:
             self.palette_buttons[i].set_icon(palette_names[i] + 'on')
-        self.tw.show_palette(i)
+        self.tw.show_palette(n=i)
         self.do_showpalette()
 
     # These methods are called both from toolbar buttons and blocks.
