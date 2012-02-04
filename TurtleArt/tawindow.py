@@ -693,7 +693,8 @@ class TurtleArtWindow():
             if blk.name in BLOCKS_WITH_SKIN:
                 self._resize_skin(blk)
 
-    def show_toolbar_palette(self, n, init_only=False, regenerate=False):
+    def show_toolbar_palette(self, n, init_only=False, regenerate=False,
+                             show=True):
         """ Show the toolbar palettes, creating them on init_only """
         # If we are running the 0.86+ toolbar, the selectors are already
         # created, as toolbar buttons. Otherwise, we need to create them.
@@ -711,28 +712,35 @@ class TurtleArtWindow():
         if init_only:
             return
 
-        # Hide the previously displayed palette
-        self._hide_previous_palette()
+        if show:
+            # Hide the previously displayed palette
+            self._hide_previous_palette()
+        else:
+            save_selected = self.selected_palette
+            save_previous = self.previous_palette
 
         self.selected_palette = n
         self.previous_palette = self.selected_palette
 
         # Make sure all of the selectors are visible. (We don't need to do
         # this for 0.86+ toolbars since the selectors are toolbar buttons.)
-        if self.activity is None or not self.activity.has_toolbarbox:
+        if show and (self.activity is None or not self.activity.has_toolbarbox):
             self.selected_selector = self.selectors[n]
             self.selectors[n].set_shape(self.selector_shapes[n][1])
             for i in range(len(palette_blocks)):
                 self.selectors[i].set_layer(TAB_LAYER)
 
-        # Show the palette with the current orientation.
-        if self.palette_sprs[n][self.orientation] is not None:
-            self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
+            # Show the palette with the current orientation.
+            if self.palette_sprs[n][self.orientation] is not None:
+                self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
         # Create 'proto' blocks for each palette entry
         self._create_proto_blocks(n)
 
-        self._layout_palette(n, regenerate=regenerate)
+        if show or save_selected == n:
+            self._layout_palette(n, regenerate=regenerate)
+        else:
+            self._layout_palette(n, regenerate=regenerate, show=False)
         for blk in self.palettes[n]:
             if blk.get_visibility():
                 blk.spr.set_layer(PROTO_LAYER)
@@ -743,6 +751,12 @@ class TurtleArtWindow():
                 for gblk in find_group(blk):
                     if gblk.status != 'collapsed':
                         gblk.spr.set_layer(TAB_LAYER)
+
+        if not show:
+            if not save_selected == n:
+                self._hide_previous_palette(palette=n)
+            self.selected_palette = save_selected
+            self.previous_palette = save_previous
 
     def _create_the_selectors(self):
         ''' Create the palette selector buttons: only when running
@@ -868,21 +882,22 @@ class TurtleArtWindow():
         self.selected_palette = None
         self.previous_palette = None
 
-    def _hide_previous_palette(self):
+    def _hide_previous_palette(self, palette=None):
         """ Hide just the previously viewed toolbar palette """
+        if palette is None:
+            palette = self.previous_palette
         # Hide previous palette
-        if self.previous_palette is not None:
-            for proto in self.palettes[self.previous_palette]:
+        if palette is not None:
+            for proto in self.palettes[palette]:
                 proto.spr.hide()
-            self.palette_sprs[self.previous_palette][self.orientation].hide()
+            self.palette_sprs[palette][self.orientation].hide()
             if self.activity is None or not self.activity.has_toolbarbox:
-                self.selectors[self.previous_palette].set_shape(
-                    self.selector_shapes[self.previous_palette][0])
-            elif self.previous_palette is not None and \
-                 self.previous_palette != self.selected_palette:
-                self.activity.palette_buttons[self.previous_palette].set_icon(
-                    palette_names[self.previous_palette] + 'off')
-            if self.previous_palette == palette_names.index('trash'):
+                self.selectors[palette].set_shape(
+                    self.selector_shapes[palette][0])
+            elif palette is not None and palette != self.selected_palette:
+                self.activity.palette_buttons[palette].set_icon(
+                    palette_names[palette] + 'off')
+            if palette == palette_names.index('trash'):
                 for blk in self.trash_stack:
                     for gblk in find_group(blk):
                         gblk.spr.hide()
@@ -956,7 +971,7 @@ class TurtleArtWindow():
                 g.spr.save_xy = (g.spr.save_xy[0] + dx, g.spr.save_xy[1])
         return x, y, max_h
 
-    def _layout_palette(self, n, regenerate=False):
+    def _layout_palette(self, n, regenerate=False, show=True):
         """ Layout prototypes in a palette. """
         if n is not None:
             if self.orientation == HORIZONTAL_PALETTE:
@@ -968,11 +983,8 @@ class TurtleArtWindow():
                 w = x + max_w + 25
                 self._make_palette_spr(n, 0, self.toolbar_offset,
                                        w, PALETTE_HEIGHT, regenerate)
-                self.palette_button[2].move((w - 20, self.toolbar_offset))
-                self.palette_button[2].save_xy = self.palette_button[2].get_xy()
-                if self.running_sugar and not self.hw in [XO1]:
-                    self.palette_button[2].move_relative(
-                        (self.activity.hadj_value, self.activity.vadj_value))
+                if show:
+                    self.palette_button[2].move((w - 20, self.toolbar_offset))
             else:
                 x, y = 5, self.toolbar_offset + 15
                 x, y, max_h = self._vertical_layout(x, y, self.palettes[n])
@@ -982,13 +994,15 @@ class TurtleArtWindow():
                 h = y + max_h + 25 - self.toolbar_offset
                 self._make_palette_spr(n, 0, self.toolbar_offset,
                                        PALETTE_WIDTH, h, regenerate)
-                self.palette_button[2].move((PALETTE_WIDTH - 20,
-                                             self.toolbar_offset))
+                if show:
+                    self.palette_button[2].move((PALETTE_WIDTH - 20,
+                                                 self.toolbar_offset))
+            if show:
                 self.palette_button[2].save_xy = self.palette_button[2].get_xy()
                 if self.running_sugar and not self.hw in [XO1]:
                     self.palette_button[2].move_relative(
                         (self.activity.hadj_value, self.activity.vadj_value))
-            self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
+                self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
 
     def _make_palette_spr(self, n, x, y, w, h, regenerate=False):
         ''' Make the background for the palette. '''
