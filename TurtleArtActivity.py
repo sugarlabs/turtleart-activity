@@ -508,8 +508,8 @@ class TurtleArtActivity(activity.Activity):
             self._toolbox = activity.ActivityToolbox(self)
             self.set_toolbox(self._toolbox)
 
-            project_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('Project'), project_toolbar)
+            self._project_toolbar = gtk.Toolbar()
+            self._toolbox.add_toolbar(_('Project'), self._project_toolbar)
             view_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('View'), view_toolbar)
             edit_toolbar = gtk.Toolbar()
@@ -519,11 +519,10 @@ class TurtleArtActivity(activity.Activity):
             self._help_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Help'), self._help_toolbar)
 
-            self._make_palette_buttons(project_toolbar, palette_button=True)
+            self._make_palette_buttons(self._project_toolbar,
+                                       palette_button=True)
 
-            self._add_separator(project_toolbar)
-
-            self._make_project_buttons(project_toolbar)
+            self._add_separator(self._project_toolbar)
             self._make_load_save_buttons(journal_toolbar)
 
         self._add_button('edit-copy', _('Copy'), self._copy_cb,
@@ -562,8 +561,11 @@ class TurtleArtActivity(activity.Activity):
 
     def _setup_extra_controls(self):
         ''' Add the rest of the buttons to the main toolbar '''
-        if self.has_toolbarbox:
-            self._make_project_buttons(self._toolbox.toolbar)
+        if not self.has_toolbarbox:
+            self._make_project_buttons(self._project_toolbar)
+            return
+
+        self._make_project_buttons(self._toolbox.toolbar)
 
         if self.tw.hw in [XO1, XO15, XO175]:
             self._add_separator(self._toolbox.toolbar, expand=True,

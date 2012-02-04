@@ -606,8 +606,13 @@ class TurtleArtWindow():
                 self.activity.recenter()
             self.show_palette()
 
-    def show_palette(self, n=0):
+    def show_palette(self, n=None):
         """ Show palette  """
+        if n is None:
+            if self.selected_palette is None:
+                n = 0
+            else:
+                n = self.selected_palette
         self.show_toolbar_palette(n)
         self.palette_button[self.orientation].set_layer(TAB_LAYER)
         self.palette_button[2].set_layer(TAB_LAYER)
@@ -879,14 +884,12 @@ class TurtleArtWindow():
              not self.activity.has_toolbarbox:
             self.activity.palette_buttons[self.selected_palette].set_icon(
                 palette_names[self.selected_palette] + 'off')
-        self.selected_palette = None
-        self.previous_palette = None
 
     def _hide_previous_palette(self, palette=None):
         """ Hide just the previously viewed toolbar palette """
         if palette is None:
             palette = self.previous_palette
-        # Hide previous palette
+        # Hide previously selected palette
         if palette is not None:
             for proto in self.palettes[palette]:
                 proto.spr.hide()
