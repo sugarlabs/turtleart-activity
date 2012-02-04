@@ -797,6 +797,11 @@ class TurtleArtActivity(activity.Activity):
         self.add_events(gtk.gdk.VISIBILITY_NOTIFY_MASK)
         self.connect('visibility-notify-event', self.__visibility_notify_cb)
 
+    def can_close(self):      
+        ''' Override activity class can_close inorder to notify plugins '''
+        self.tw.quit_plugins()
+        return True
+
     def write_file(self, file_path):
         ''' Write the project to the Journal. '''
         data_to_file(self.tw.assemble_data_to_save(), file_path)

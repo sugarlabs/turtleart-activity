@@ -349,7 +349,7 @@ class TurtleArtWindow():
         for plugin in self._plugins:
             plugin.return_to_foreground()
 
-    def _quit_plugins(self):
+    def quit_plugins(self):
         """ Quit is called upon program exit. """
         for plugin in self._plugins:
             plugin.quit()
@@ -2318,7 +2318,7 @@ class TurtleArtWindow():
             if keyname == "p":
                 self.hideshow_button()
             elif keyname == 'q':
-                self._quit_plugins()
+                self.quit_plugins()
                 if self.gst_available:
                     stop_media(self.lc)
                 exit()
