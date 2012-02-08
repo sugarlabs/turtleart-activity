@@ -318,8 +318,18 @@ class TurtleArtWindow():
             icon_theme.append_search_path(icon_path)
             self._icon_paths.append(icon_path)
 
+    def _get_plugin_instance(self, plugin_name):
+        """ Returns the plugin 'plugin_name' instance """
+        list_plugins = self._get_plugins_from_plugins_dir(
+            self._get_plugin_home())
+        if plugin_name in list_plugins:
+            number_plugin = list_plugins.index(plugin_name)
+            return self._plugins[number_plugin]
+        else:
+            return None
+
     def _setup_plugins(self):
-        """ Initial setup -- call just once. """
+        """ Initial setup -- called just once. """
         for plugin in self._plugins:
             plugin.setup()
 
@@ -334,7 +344,7 @@ class TurtleArtWindow():
             plugin.stop()
 
     def clear_plugins(self):
-	""" Clear is called from the clean block and erase button """
+	""" Clear is called from the clean block and erase button. """
         for plugin in self._plugins:
             if hasattr(plugin, 'clear'):
                 plugin.clear()
@@ -2595,8 +2605,14 @@ class TurtleArtWindow():
         else:
             n = 0
         self.selected_blk.spr.set_label(str(n))
-        self.selected_blk.values[0] = float(str(n).replace(self.decimal_point,
-                                                           '.'))
+        debug_output(str(n), True)
+        try:
+            self.selected_blk.values[0] = \
+                float(str(n).replace(self.decimal_point, '.'))
+        except ValueError:
+            self.selected_blk.values[0] = float(str(n))
+        except IndexError:
+            self.selected_blk.values[0] = float(str(n))
 
     def _string_check(self):
         s = self.selected_blk.spr.labels[0].replace(CURSOR, '')
