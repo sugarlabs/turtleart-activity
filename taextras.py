@@ -78,19 +78,25 @@ between 0 and 255'),
     _('Butia Robot'),
     _('delay Butia'),
     _('wait for argument seconds'),
+    #TRANS: This string is shorthand for "battery charge of Butia"
     _('battery charge Butia'),
     _('returns the battery charge as a number between 0 and 255'),
+    #TRANS: This string is shorthand for "speed of Butia"
     _('speed Butia'),
     _('set the speed of the Butia motors as a value between 0 and 1023, \
 passed by an argument'),
+    #TRANS: This string is shorthand for "move Butia forward"
     _('forward Butia'),
     _('move the Butia robot forward'),
     _('move the Butia robot forward a predefined distance'),
+    #TRANS: This string is shorthand for "move Butia backward"
     _('backward Butia'),
     _('move the Butia robot backward'),
     _('move the Butia robot backward a predefined distance'),
+    #TRANS: This string is shorthand for "turn Butia left"
     _('left Butia'),
     _('turn the Butia robot at left'),
+    #TRANS: This string is shorthand for "turn Butia right"
     _('right Butia'),
     _('turn the Butia robot at right'),
     _('turn Butia'),
@@ -128,14 +134,18 @@ SUMO_STRINGS = [
     _('speed SumBot'),
     _('submit the speed to the SumBot'),
     _('set the default speed for the movement commands'),
+    #TRANS: This string is shorthand for "move SumBot forward"
     _('forward SumBot'),
     _('move SumBot forward'),
+    #TRANS: This string is shorthand for "move SumBot backward"
     _('backward SumBot'),
     _('move SumBot backward'),
     _('stop SumBot'),
     _('stop the SumBot'),
+    #TRANS: This string is shorthand for "turn SumBot left"
     _('left SumBot'),
     _('turn left the SumBot'),
+    #TRANS: This string is shorthand for "move SumBot right"
     _('right SumBot'),
     _('turn right the SumBot'),
     _('angle to center'),
@@ -143,16 +153,22 @@ SUMO_STRINGS = [
     _('get the angle to the center of the dohyo'),
     _('angle to Enemy'),
     _('get the angle to the Enemy'),
+    #TRANS: This string is shorthand for "x coordinate of SumBot"
     _('x coor. SumBot'),
     _('get the x coordinate of the SumBot'),
+    #TRANS: This string is shorthand for "y coordinate of SumBot"
     _('y coor. SumBot'),
     _('get the y coordinate of the SumBot'),
+    #TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
     _('x coor. Enemy'),
     _('get the x coordinate of the Enemy'),
+    #TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
     _('y coor. Enemy'),
     _('get the y coordinate of the Enemy'),
+    #TRANS: This string is shorthand for "rotation of SumBot"
     _('rotation SumBot'),
     _('get the rotation of the Sumbot'),
+    #TRANS: This string is shorthand for "rotation of SumBot's enemy"
     _('rotation Enemy'),
     _('get the rotation of the Enemy'),
     _('distance to center'),
@@ -226,6 +242,7 @@ WEDO_STRINGS = [
     _('tilt sensor output: (-1 == no tilt,\
  0 == tilt forward, 3 == tilt back, 1 == tilt left, 2 == tilt right)'),
     _('distance'),
+    #TRANS: This string is shorthand for "output of the distance sensor"
     _('distance sensor output'),
     _('Motor A'),
     _('returns the current value of Motor A'),
