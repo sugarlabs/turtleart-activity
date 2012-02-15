@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-01 00:31-0500\n"
-"PO-Revision-Date: 2012-02-01 14:59+0200\n"
+"POT-Creation-Date: 2012-02-12 00:30-0500\n"
+"PO-Revision-Date: 2012-02-15 05:50+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en_US\n"
@@ -22,8 +22,8 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2 TurtleArt/taexporthtml.py:137
-#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1700
-#: TurtleArt/tawindow.py:2980 pysamples/grecord.py:205 turtleart.py:288
+#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1747
+#: TurtleArt/tawindow.py:3055 pysamples/grecord.py:205 turtleart.py:288
 msgid "Turtle Art"
 msgstr "Turtle Art"
 
@@ -116,8 +116,8 @@ msgstr "seth"
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "sets the heading of the turtle (0 is towards the top of the screen.)"
 
-#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:2976
-#: TurtleArt/tawindow.py:2980 TurtleArtActivity.py:543
+#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3051
+#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:542
 msgid "xcor"
 msgstr "xcor"
 
@@ -129,8 +129,8 @@ msgstr ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
 
-#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:2976
-#: TurtleArt/tawindow.py:2980 TurtleArtActivity.py:544
+#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3051
+#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:543
 msgid "ycor"
 msgstr "ycor"
 
@@ -142,8 +142,8 @@ msgstr ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
 
-#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:2976
-#: TurtleArt/tawindow.py:2980 TurtleArtActivity.py:544
+#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3051
+#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:543
 msgid "heading"
 msgstr "heading"
 
@@ -187,7 +187,7 @@ msgstr "sets size of the line drawn by the turtle"
 msgid "fill screen"
 msgstr "fill screen"
 
-#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:399
+#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:399 taextras.py:273
 msgid "color"
 msgstr "color"
 
@@ -695,9 +695,9 @@ msgstr "clear all"
 msgid "move all blocks to trash"
 msgstr "move all blocks to trash"
 
-#: TurtleArt/taconstants.py:249 TurtleArt/taconstants.py:271
-#: TurtleArt/taconstants.py:292 TurtleArt/taconstants.py:334
-#: TurtleArt/taconstants.py:376 TurtleArt/taconstants.py:418
+#: TurtleArt/taconstants.py:250 TurtleArt/taconstants.py:272
+#: TurtleArt/taconstants.py:293 TurtleArt/taconstants.py:335
+#: TurtleArt/taconstants.py:377 TurtleArt/taconstants.py:419
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:840
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:868
@@ -723,11 +723,11 @@ msgstr "doesn't like"
 msgid "as input"
 msgstr "as input"
 
-#: TurtleArt/tapalette.py:83
+#: TurtleArt/tapalette.py:84
 msgid "displays next palette"
 msgstr "displays next palette"
 
-#: TurtleArt/tapalette.py:84
+#: TurtleArt/tapalette.py:85
 msgid "changes the orientation of the palette of blocks"
 msgstr "changes the orientation of the palette of blocks"
 
@@ -744,15 +744,15 @@ msgstr "Save..."
 msgid "click to open"
 msgstr "click to open"
 
-#: TurtleArt/tawindow.py:805 TurtleArt/tawindow.py:806
+#: TurtleArt/tawindow.py:837 TurtleArt/tawindow.py:838
 msgid "orientation"
 msgstr "orientation"
 
-#: TurtleArt/tawindow.py:816 TurtleArt/tawindow.py:1117
+#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:1164
 msgid "next"
 msgstr "next"
 
-#: TurtleArt/tawindow.py:3071
+#: TurtleArt/tawindow.py:3146
 msgid "image"
 msgstr "image"
 
@@ -768,7 +768,7 @@ msgstr "snapshot"
 msgid "Show palette"
 msgstr "Show palette"
 
-#: TurtleArtActivity.py:277 TurtleArtActivity.py:680 turtleart.py:356
+#: TurtleArtActivity.py:277 TurtleArtActivity.py:682 turtleart.py:356
 msgid "Hide palette"
 msgstr "Hide palette"
 
@@ -776,7 +776,7 @@ msgstr "Hide palette"
 msgid "Show blocks"
 msgstr "Show blocks"
 
-#: TurtleArtActivity.py:287 TurtleArtActivity.py:305 TurtleArtActivity.py:683
+#: TurtleArtActivity.py:287 TurtleArtActivity.py:305 TurtleArtActivity.py:685
 msgid "Hide blocks"
 msgstr "Hide blocks"
 
@@ -784,7 +784,7 @@ msgstr "Hide blocks"
 msgid "Rescale coordinates down"
 msgstr "Rescale coordinates down"
 
-#: TurtleArtActivity.py:419 TurtleArtActivity.py:547
+#: TurtleArtActivity.py:419 TurtleArtActivity.py:546
 msgid "Rescale coordinates up"
 msgstr "Rescale coordinates up"
 
@@ -804,120 +804,120 @@ msgstr "Help"
 msgid "Project"
 msgstr "Project"
 
-#: TurtleArtActivity.py:518 TurtleArtActivity.py:623
+#: TurtleArtActivity.py:518 TurtleArtActivity.py:625
 msgid "Save/Load"
 msgstr "Save/Load"
 
-#: TurtleArtActivity.py:529 turtleart.py:349
+#: TurtleArtActivity.py:528 turtleart.py:349
 msgid "Copy"
 msgstr "Copy"
 
-#: TurtleArtActivity.py:531 turtleart.py:350
+#: TurtleArtActivity.py:530 turtleart.py:350
 msgid "Paste"
 msgstr "Paste"
 
-#: TurtleArtActivity.py:533
+#: TurtleArtActivity.py:532
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:667
 msgid "Fullscreen"
 msgstr "Fullscreen"
 
-#: TurtleArtActivity.py:535 turtleart.py:334
+#: TurtleArtActivity.py:534 turtleart.py:334
 msgid "Cartesian coordinates"
 msgstr "Cartesian coordinates"
 
-#: TurtleArtActivity.py:537 turtleart.py:336
+#: TurtleArtActivity.py:536 turtleart.py:336
 msgid "Polar coordinates"
 msgstr "Polar coordinates"
 
-#: TurtleArtActivity.py:540
+#: TurtleArtActivity.py:539
 msgid "Metric coordinates"
 msgstr "Metric coordinates"
 
-#: TurtleArtActivity.py:550 turtleart.py:340
+#: TurtleArtActivity.py:549 turtleart.py:340
 msgid "Grow blocks"
 msgstr "Grow blocks"
 
-#: TurtleArtActivity.py:552 turtleart.py:342
+#: TurtleArtActivity.py:551 turtleart.py:342
 msgid "Shrink blocks"
 msgstr "Shrink blocks"
 
-#: TurtleArtActivity.py:573 TurtleArtActivity.py:665
+#: TurtleArtActivity.py:575 TurtleArtActivity.py:667
 msgid "Load example"
 msgstr "Load example"
 
-#: TurtleArtActivity.py:591 TurtleArtActivity.py:595
+#: TurtleArtActivity.py:593 TurtleArtActivity.py:597
 msgid "Move the cursor over the orange palette for help."
 msgstr "Move the cursor over the orange palette for help."
 
-#: TurtleArtActivity.py:628 TurtleArtActivity.py:648 turtleart.py:324
+#: TurtleArtActivity.py:630 TurtleArtActivity.py:650 turtleart.py:324
 msgid "Save as image"
 msgstr "Save as image"
 
-#: TurtleArtActivity.py:631 TurtleArtActivity.py:651 turtleart.py:326
+#: TurtleArtActivity.py:633 TurtleArtActivity.py:653 turtleart.py:326
 msgid "Save as HTML"
 msgstr "Save as HTML"
 
-#: TurtleArtActivity.py:634 TurtleArtActivity.py:653 turtleart.py:328
+#: TurtleArtActivity.py:636 TurtleArtActivity.py:655 turtleart.py:328
 msgid "Save as Logo"
 msgstr "Save as Logo"
 
-#: TurtleArtActivity.py:637 TurtleArtActivity.py:656
+#: TurtleArtActivity.py:639 TurtleArtActivity.py:658
 msgid "Save snapshot"
 msgstr "Save snapshot"
 
-#: TurtleArtActivity.py:639 TurtleArtActivity.py:659
+#: TurtleArtActivity.py:641 TurtleArtActivity.py:661
 msgid "Load project"
 msgstr "Load project"
 
-#: TurtleArtActivity.py:642 TurtleArtActivity.py:662
+#: TurtleArtActivity.py:644 TurtleArtActivity.py:664
 msgid "Load Python block"
 msgstr "Load Python block"
 
-#: TurtleArtActivity.py:681
+#: TurtleArtActivity.py:683
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
-#: TurtleArtActivity.py:684
+#: TurtleArtActivity.py:686
 msgid "<Ctrl>b"
 msgstr "<Ctrl>b"
 
-#: TurtleArtActivity.py:689 turtleart.py:363
+#: TurtleArtActivity.py:691 turtleart.py:363
 msgid "Clean"
 msgstr "Clean"
 
-#: TurtleArtActivity.py:689
+#: TurtleArtActivity.py:691
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
-#: TurtleArtActivity.py:691 turtleart.py:364
+#: TurtleArtActivity.py:693 turtleart.py:364
 msgid "Run"
 msgstr "Run"
 
-#: TurtleArtActivity.py:691
+#: TurtleArtActivity.py:693
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
-#: TurtleArtActivity.py:693 turtleart.py:365
+#: TurtleArtActivity.py:695 turtleart.py:365
 msgid "Step"
 msgstr "Step"
 
-#: TurtleArtActivity.py:693
+#: TurtleArtActivity.py:695
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
-#: TurtleArtActivity.py:696 turtleart.py:366
+#: TurtleArtActivity.py:698 turtleart.py:366
 msgid "Debug"
 msgstr "Debug"
 
-#: TurtleArtActivity.py:696
+#: TurtleArtActivity.py:698
 msgid "<Ctrl>d"
 msgstr "<Ctrl>d"
 
-#: TurtleArtActivity.py:698
+#: TurtleArtActivity.py:700
 msgid "Stop turtle"
 msgstr "Stop turtle"
 
-#: TurtleArtActivity.py:699
+#: TurtleArtActivity.py:701
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
@@ -1334,7 +1334,7 @@ msgstr "turtle sees"
 msgid "returns the color that the turtle \"sees\""
 msgstr "returns the color that the turtle \"sees\""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371 taextras.py:279
 msgid "time"
 msgstr "time"
 
@@ -2314,6 +2314,187 @@ msgstr "set the value for Motor A"
 msgid "set the value for Motor B"
 msgstr "set the value for Motor B"
 
+#. TRANS: Lego NXT is a robotics product of the LEGO company
+#: taextras.py:240
+msgid "Palette of LEGO NXT blocks"
+msgstr "Palette of LEGO NXT blocks"
+
+#: taextras.py:241
+msgid ""
+"turn motor\n"
+"rotations"
+msgstr ""
+"turn motor\n"
+"rotations"
+
+#: taextras.py:242
+msgid "port"
+msgstr "port"
+
+#: taextras.py:243
+msgid "power"
+msgstr "power"
+
+#: taextras.py:244
+msgid "turn a motor"
+msgstr "turn a motor"
+
+#: taextras.py:245
+msgid "PORT A"
+msgstr "PORT A"
+
+#: taextras.py:246
+msgid "port A of the brick"
+msgstr "port A of the brick"
+
+#: taextras.py:247
+msgid "PORT B"
+msgstr "PORT B"
+
+#: taextras.py:248
+msgid "port B of the brick"
+msgstr "port B of the brick"
+
+#: taextras.py:249
+msgid "PORT C"
+msgstr "PORT C"
+
+#: taextras.py:250
+msgid "port C of the brick"
+msgstr "port C of the brick"
+
+#: taextras.py:251
+msgid ""
+"sync motors\n"
+"steering"
+msgstr ""
+"sync motors\n"
+"steering"
+
+#: taextras.py:252
+msgid "rotations"
+msgstr "rotations"
+
+#: taextras.py:253
+msgid "synchronize two motors"
+msgstr "synchronize two motors"
+
+#: taextras.py:254
+msgid "start motor"
+msgstr "start motor"
+
+#: taextras.py:255
+msgid "run a motor forever"
+msgstr "run a motor forever"
+
+#: taextras.py:256
+msgid "brake motor"
+msgstr "brake motor"
+
+#: taextras.py:257
+msgid "brake a specified motor"
+msgstr "brake a specified motor"
+
+#: taextras.py:258
+msgid "read"
+msgstr "read"
+
+#: taextras.py:259
+msgid "sensor"
+msgstr "sensor"
+
+#: taextras.py:260
+msgid "read sensor output"
+msgstr "read sensor output"
+
+#: taextras.py:261
+msgid "touch"
+msgstr "touch"
+
+#: taextras.py:262
+msgid "touch sensor"
+msgstr "touch sensor"
+
+#: taextras.py:263
+msgid "PORT 1"
+msgstr "PORT 1"
+
+#: taextras.py:264
+msgid "port 1 of the brick"
+msgstr "port 1 of the brick"
+
+#: taextras.py:265
+msgid "PORT 2"
+msgstr "PORT 2"
+
+#: taextras.py:266
+msgid "port 2 of the brick"
+msgstr "port 2 of the brick"
+
+#: taextras.py:267
+msgid "PORT 3"
+msgstr "PORT 3"
+
+#: taextras.py:268
+msgid "port 3 of the brick"
+msgstr "port 3 of the brick"
+
+#: taextras.py:269
+msgid "PORT 4"
+msgstr "PORT 4"
+
+#: taextras.py:270
+msgid "port 4 of the brick"
+msgstr "port 4 of the brick"
+
+#: taextras.py:271
+msgid "ultrasonic"
+msgstr "ultrasonic"
+
+#: taextras.py:272
+msgid "distance sensor"
+msgstr "distance sensor"
+
+#: taextras.py:274
+msgid "color sensor"
+msgstr "color sensor"
+
+#: taextras.py:275
+msgid "light"
+msgstr "light"
+
+#: taextras.py:276
+msgid "light sensor"
+msgstr "light sensor"
+
+#: taextras.py:277
+msgid "play tone"
+msgstr "play tone"
+
+#: taextras.py:278
+msgid "freq"
+msgstr "freq"
+
+#: taextras.py:280
+msgid "play a tone at freq for time"
+msgstr "play a tone at freq for time"
+
+#: taextras.py:281
+msgid "set light"
+msgstr "set light"
+
+#: taextras.py:282
+msgid "set color sensor light"
+msgstr "set color sensor light"
+
+#: taextras.py:283
+msgid "refresh NXT"
+msgstr "refresh NXT"
+
+#: taextras.py:284
+msgid "search for a connected NXT brick"
+msgstr "search for a connected NXT brick"
+
 #: turtleart.py:69
 msgid "usage is"
 msgstr "usage is"
@@ -2467,9 +2648,6 @@ msgstr "Save project?"
 #~ msgid "Get the y coordinate of the opponent."
 #~ msgstr "Get the y coordinate of the opponent."
 
-#~ msgid "rotation"
-#~ msgstr "rotation"
-
 #~ msgid "Get SumBot rotation."
 #~ msgstr "Get SumBot rotation."
 
@@ -2519,9 +2697,6 @@ msgstr "Save project?"
 
 #~ msgid "text size"
 #~ msgstr "text size"
-
-#~ msgid "sensors"
-#~ msgstr "sensors"
 
 #~ msgid "sensor input resistance"
 #~ msgstr "sensor input resistance"
