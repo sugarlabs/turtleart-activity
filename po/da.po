@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-12 00:30-0500\n"
-"PO-Revision-Date: 2012-02-14 23:58+0200\n"
+"POT-Creation-Date: 2012-02-16 00:31-0500\n"
+"PO-Revision-Date: 2012-02-16 21:51+0200\n"
 "Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -93,11 +93,11 @@ msgstr "flytter skildpadden langs en arc"
 msgid "set xy"
 msgstr "indstil xy"
 
-#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256 taextras.py:202
+#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256 taextras.py:218
 msgid "x"
 msgstr "x"
 
-#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256 taextras.py:203
+#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256 taextras.py:219
 msgid "y"
 msgstr "y"
 
@@ -186,7 +186,7 @@ msgstr "sætter størrelse på linjen som tegnes af skildpadden"
 msgid "fill screen"
 msgstr "fyld skærm"
 
-#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:399 taextras.py:273
+#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:399 taextras.py:260
 msgid "color"
 msgstr "farve"
 
@@ -1043,7 +1043,7 @@ msgstr "acceleration"
 #: plugins/accelerometer/accelerometer.py:57
 #: plugins/accelerometer/accelerometer.py:64
 msgid "push acceleration in x, y, z to heap"
-msgstr "skub acceleration i x, y, z til hób (heap)"
+msgstr "skub acceleration i x, y, z til hób/heap"
 
 #: plugins/audio_sensors/audio_sensors.py:82
 #: plugins/audio_sensors/audio_sensors.py:97 pysamples/grecord.py:205
@@ -1588,7 +1588,7 @@ msgstr "xkor for venstre del af skærmen"
 msgid "ycor of bottom of screen"
 msgstr "ykor for bunden af skærm"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747 taextras.py:189
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747 taextras.py:205
 msgid "width"
 msgstr "bredde"
 
@@ -1604,8 +1604,8 @@ msgstr "x-kor for højreside af skærm"
 msgid "ycor of top of screen"
 msgstr "ykor for toppen af skærm"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771 taextras.py:184
-#: taextras.py:190
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771 taextras.py:200
+#: taextras.py:206
 msgid "height"
 msgstr "højde"
 
@@ -1775,11 +1775,11 @@ msgstr "omgivende lys"
 msgid "temperature"
 msgstr "temperatur"
 
-#: taextras.py:74 taextras.py:228
+#: taextras.py:74 taextras.py:244
 msgid "distance"
 msgstr "distance"
 
-#: taextras.py:75 taextras.py:225
+#: taextras.py:75 taextras.py:241
 msgid "tilt"
 msgstr "vip"
 
@@ -1803,19 +1803,21 @@ msgstr "udsæt Butia"
 msgid "wait for argument seconds"
 msgstr "vent på argument sekunder"
 
-#: taextras.py:81
+#. TRANS: This string is shorthand for "battery charge of Butia"
+#: taextras.py:82
 msgid "battery charge Butia"
 msgstr "Butia batteriopladning"
 
-#: taextras.py:82
+#: taextras.py:83
 msgid "returns the battery charge as a number between 0 and 255"
 msgstr "returnerer batteriopladningen som et tal mellem 0 og 255"
 
-#: taextras.py:83
+#. TRANS: This string is shorthand for "speed of Butia"
+#: taextras.py:85
 msgid "speed Butia"
 msgstr "Butia hastighed"
 
-#: taextras.py:84
+#: taextras.py:86
 msgid ""
 "set the speed of the Butia motors as a value between 0 and 1023, passed by "
 "an argument"
@@ -1823,306 +1825,320 @@ msgstr ""
 "angiver hastigheden af Butia-motorerne som en værdi mellem 0 og 1023, sendt "
 "med et argument"
 
-#: taextras.py:86
+#. TRANS: This string is shorthand for "move Butia forward"
+#: taextras.py:89
 msgid "forward Butia"
 msgstr "ryk Butia frem"
 
-#: taextras.py:87
+#: taextras.py:90
 msgid "move the Butia robot forward"
 msgstr "flyt Butia-robotten fremad"
 
-#: taextras.py:88
+#: taextras.py:91
 msgid "move the Butia robot forward a predefined distance"
 msgstr "flyt Butia-robotten fremad med en forudbestemt distance"
 
-#: taextras.py:89
+#. TRANS: This string is shorthand for "move Butia backward"
+#: taextras.py:93
 msgid "backward Butia"
 msgstr "ryk Butia tilbage"
 
-#: taextras.py:90
+#: taextras.py:94
 msgid "move the Butia robot backward"
 msgstr "flyt Butia-robotten tilbage"
 
-#: taextras.py:91
+#: taextras.py:95
 msgid "move the Butia robot backward a predefined distance"
 msgstr "flyt Butia-robotten bagud med en forudbestemt distance"
 
-#: taextras.py:92
+#. TRANS: This string is shorthand for "turn Butia left"
+#: taextras.py:97
 msgid "left Butia"
 msgstr "Butia til venstre"
 
-#: taextras.py:93
+#: taextras.py:98
 msgid "turn the Butia robot at left"
 msgstr "drej Butia-robotten mod venstre"
 
-#: taextras.py:94
+#. TRANS: This string is shorthand for "turn Butia right"
+#: taextras.py:100
 msgid "right Butia"
 msgstr "Butia til højre"
 
-#: taextras.py:95
+#: taextras.py:101
 msgid "turn the Butia robot at right"
 msgstr "drej Butia-robotten mod højre"
 
-#: taextras.py:96
+#: taextras.py:102
 msgid "turn Butia"
 msgstr "drej Butia"
 
-#: taextras.py:97
+#: taextras.py:103
 msgid "turn the Butia robot x degrees"
 msgstr "drej Butia-robotten x grader"
 
-#: taextras.py:98
+#: taextras.py:104
 msgid "stop Butia"
 msgstr "stop Butia"
 
-#: taextras.py:99
+#: taextras.py:105
 msgid "stop the Butia robot"
 msgstr "stop Butia-robotten"
 
-#: taextras.py:100
+#: taextras.py:106
 msgid "display Butia"
 msgstr "vis Butia"
 
 #. TRANS: this string must contain only ASCII characters.
 #. The len must be 32 characters/spaces.
-#: taextras.py:103
+#: taextras.py:109
 msgid "Hello World    Butia            "
-msgstr "Hej verden      Butia            "
+msgstr "Hello World    Butia            "
 
-#: taextras.py:104
+#: taextras.py:110
 msgid "print text in Butia robot 32-character ASCII display"
 msgstr "udskriv tekst i Butia-robottens 32-tegns ASCII-skærm"
 
-#: taextras.py:105
+#: taextras.py:111
 msgid "Butia"
 msgstr "Butia"
 
-#: taextras.py:109
+#: taextras.py:115
 msgid "The camera was not found."
 msgstr "Kameraet blev ikke fundet."
 
-#: taextras.py:110
+#: taextras.py:116
 msgid "Error on the initialization of the camera."
 msgstr "Fejl under initialisering af kameraet."
 
-#: taextras.py:111
+#: taextras.py:117
 msgid "FollowMe"
 msgstr "FølgMig"
 
-#: taextras.py:112
+#: taextras.py:118
 msgid "follow a RGB color"
 msgstr "følg en RGB-farve"
 
-#: taextras.py:113
+#: taextras.py:119
 msgid "set a threshold for a RGB color"
 msgstr "angiv en grænse for en RGB-farve"
 
-#: taextras.py:114
+#: taextras.py:120
 msgid "follow a turtle color"
 msgstr "følg en skildpadde-farve"
 
-#: taextras.py:115
+#: taextras.py:121
 msgid "set the minimal number of pixels to follow"
 msgstr "angiv det mindste antal billedpunkter som skal følges"
 
-#: taextras.py:116
+#: taextras.py:122
 msgid "calibrate"
 msgstr "kalibrér"
 
-#: taextras.py:117
+#: taextras.py:123
 msgid "calibrate a color to follow"
 msgstr "kalibrér en farve som skal følges"
 
-#: taextras.py:118
+#: taextras.py:124
 msgid "x position"
 msgstr "x-position"
 
-#: taextras.py:119
+#: taextras.py:125
 msgid "return x position"
 msgstr "returnér x-position"
 
-#: taextras.py:120
+#: taextras.py:126
 msgid "y position"
 msgstr "y-position"
 
-#: taextras.py:121
+#: taextras.py:127
 msgid "return y position"
 msgstr "returnér y-position"
 
-#: taextras.py:122
+#: taextras.py:128
 msgid "pixels"
 msgstr "billedpunkter"
 
-#: taextras.py:123
+#: taextras.py:129
 msgid "return the number of pixels of the biggest blob"
 msgstr "returnér antallet af billedpunkter for den største klat"
 
-#: taextras.py:127
+#: taextras.py:133
 msgid "SumBot"
 msgstr "SumBot"
 
-#: taextras.py:128
+#: taextras.py:134
 msgid "speed SumBot"
 msgstr "SumBot hastighed"
 
-#: taextras.py:129
+#: taextras.py:135
 msgid "submit the speed to the SumBot"
 msgstr "send hastigheden til SumBotten"
 
-#: taextras.py:130
+#: taextras.py:136
 msgid "set the default speed for the movement commands"
 msgstr "angiv standard for hastigheden på flytte-kommandoer"
 
-#: taextras.py:131
+#. TRANS: This string is shorthand for "move SumBot forward"
+#: taextras.py:138
 msgid "forward SumBot"
 msgstr "ryk SumBot frem"
 
-#: taextras.py:132
+#: taextras.py:139
 msgid "move SumBot forward"
 msgstr "flyt SumBot frem"
 
-#: taextras.py:133
+#. TRANS: This string is shorthand for "move SumBot backward"
+#: taextras.py:141
 msgid "backward SumBot"
 msgstr "ryk SumBot tilbage"
 
-#: taextras.py:134
+#: taextras.py:142
 msgid "move SumBot backward"
 msgstr "flyt SumBot tilbage"
 
-#: taextras.py:135
+#: taextras.py:143
 msgid "stop SumBot"
 msgstr "stop SumBot"
 
-#: taextras.py:136
+#: taextras.py:144
 msgid "stop the SumBot"
 msgstr "stop SumBotten"
 
-#: taextras.py:137
+#. TRANS: This string is shorthand for "turn SumBot left"
+#: taextras.py:146
 msgid "left SumBot"
 msgstr "SumBot til venstre"
 
-#: taextras.py:138
+#: taextras.py:147
 msgid "turn left the SumBot"
 msgstr "drej Sumbotten til venstre"
 
-#: taextras.py:139
+#. TRANS: This string is shorthand for "move SumBot right"
+#: taextras.py:149
 msgid "right SumBot"
 msgstr "SumBot til højre"
 
-#: taextras.py:140
+#: taextras.py:150
 msgid "turn right the SumBot"
 msgstr "drej SumBotten til højre"
 
-#: taextras.py:141
+#: taextras.py:151
 msgid "angle to center"
 msgstr "vinkel til centrum"
 
 #. TRANS: dohyo is the playing field
-#: taextras.py:143
+#: taextras.py:153
 msgid "get the angle to the center of the dohyo"
 msgstr "hent vinklen til dohyoens centrum"
 
-#: taextras.py:144
+#: taextras.py:154
 msgid "angle to Enemy"
 msgstr "vinkel en fjende"
 
-#: taextras.py:145
+#: taextras.py:155
 msgid "get the angle to the Enemy"
 msgstr "hent vinklen til fjenden"
 
-#: taextras.py:146
+#. TRANS: This string is shorthand for "x coordinate of SumBot"
+#: taextras.py:157
 msgid "x coor. SumBot"
 msgstr "x-koord. SumBot"
 
-#: taextras.py:147
+#: taextras.py:158
 msgid "get the x coordinate of the SumBot"
 msgstr "hent x-koordinatet for SumBotten"
 
-#: taextras.py:148
+#. TRANS: This string is shorthand for "y coordinate of SumBot"
+#: taextras.py:160
 msgid "y coor. SumBot"
 msgstr "y-koord. SumBot"
 
-#: taextras.py:149
+#: taextras.py:161
 msgid "get the y coordinate of the SumBot"
 msgstr "hent y-koordinatet for SumBotten"
 
-#: taextras.py:150
+#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
+#: taextras.py:163
 msgid "x coor. Enemy"
 msgstr "x-koord. fjende"
 
-#: taextras.py:151
+#: taextras.py:164
 msgid "get the x coordinate of the Enemy"
 msgstr "hent x-koordinatet for fjenden"
 
-#: taextras.py:152
+#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
+#: taextras.py:166
 msgid "y coor. Enemy"
 msgstr "y-koord. fjende"
 
-#: taextras.py:153
+#: taextras.py:167
 msgid "get the y coordinate of the Enemy"
 msgstr "hent y-koordinatet for fjenden"
 
-#: taextras.py:154
+#. TRANS: This string is shorthand for "rotation of SumBot"
+#: taextras.py:169
 msgid "rotation SumBot"
 msgstr "rotation for SumBot"
 
-#: taextras.py:155
+#: taextras.py:170
 msgid "get the rotation of the Sumbot"
 msgstr "hent rotationen for SumBotten"
 
-#: taextras.py:156
+#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
+#: taextras.py:172
 msgid "rotation Enemy"
 msgstr "rotation for fjende"
 
-#: taextras.py:157
+#: taextras.py:173
 msgid "get the rotation of the Enemy"
 msgstr "hent rotationen for fjenden"
 
-#: taextras.py:158
+#: taextras.py:174
 msgid "distance to center"
 msgstr "afstand til centrum"
 
 #. TRANS: dohyo is the playing field
-#: taextras.py:160
+#: taextras.py:176
 msgid "get the distance to the center of the dohyo"
 msgstr "hent afstanden til dohyoens centrum"
 
-#: taextras.py:161
+#: taextras.py:177
 msgid "distance to Enemy"
 msgstr "afstand til fjende"
 
-#: taextras.py:162
+#: taextras.py:178
 msgid "get the distance to the Enemy"
 msgstr "hent afstanden til fjenden"
 
-#: taextras.py:163
+#: taextras.py:179
 msgid "update information"
 msgstr "opdatér information"
 
-#: taextras.py:164
+#: taextras.py:180
 msgid "update information from the server"
 msgstr "opdatér information fra serveren"
 
 #. TRANS: Please use similar terms to those used in the Physics Activity
-#: taextras.py:169
+#: taextras.py:185
 msgid "Palette of physics blocks"
 msgstr "Palette af fysik-blokke"
 
-#: taextras.py:170
+#: taextras.py:186
 msgid "start polygon"
 msgstr "start polygon"
 
-#: taextras.py:171
+#: taextras.py:187
 msgid "Begin defining a new polygon based on the current Turtle xy position."
 msgstr ""
 "Begynd med at definere en ny polygon baseret på den nuværende xy-position "
 "for skildpadde."
 
-#: taextras.py:173
+#: taextras.py:189
 msgid "add point"
 msgstr "tilføj punkt"
 
-#: taextras.py:174
+#: taextras.py:190
 msgid ""
 "Add a new point to the current polygon based on the current Turtle xy "
 "position."
@@ -2130,76 +2146,76 @@ msgstr ""
 "Tilføj et nyt punkt til den nuværende polygon baseret på den nuværende xy-"
 "position for skildpadde."
 
-#: taextras.py:176
+#: taextras.py:192
 msgid "end polygon"
 msgstr "afslut polygon"
 
-#: taextras.py:177
+#: taextras.py:193
 msgid "Define a new polygon."
 msgstr "Definér en ny polygon."
 
-#: taextras.py:178
+#: taextras.py:194
 msgid "end filled polygon"
 msgstr "afslut udfyldt polygon"
 
-#: taextras.py:179
+#: taextras.py:195
 msgid "Not a simple polygon"
 msgstr "Ikke en simpel polygon"
 
-#: taextras.py:180
+#: taextras.py:196
 msgid "Define a new filled polygon."
 msgstr "Definér en ny udfyldt polygon."
 
-#: taextras.py:181
+#: taextras.py:197
 msgid "triangle"
 msgstr "trekant"
 
 #. TRANS: base of a triangle
-#: taextras.py:183
+#: taextras.py:199
 msgid "base"
 msgstr "base"
 
-#: taextras.py:185
+#: taextras.py:201
 msgid "Add a triangle object to the project."
 msgstr "Tilføj et trekantsobjekt til projektet."
 
-#: taextras.py:186
+#: taextras.py:202
 msgid "circle"
 msgstr "cirkel"
 
-#: taextras.py:187
+#: taextras.py:203
 msgid "Add a circle object to the project."
 msgstr "Tilføj et cirkelobjekt til projektet."
 
-#: taextras.py:188
+#: taextras.py:204
 msgid "rectangle"
 msgstr "rektangel"
 
-#: taextras.py:191
+#: taextras.py:207
 msgid "Add a rectangle object to the project."
 msgstr "Tilføj et rektangelobjekt til projektet."
 
-#: taextras.py:192
+#: taextras.py:208
 msgid "reset"
 msgstr "nulstil"
 
-#: taextras.py:193
+#: taextras.py:209
 msgid "Reset the project; clear the object list."
 msgstr "Nulstil projektet; ryd objektlisten."
 
-#: taextras.py:194
+#: taextras.py:210
 msgid "motor"
 msgstr "motor"
 
-#: taextras.py:195
+#: taextras.py:211
 msgid "torque"
 msgstr "drejningsmoment"
 
-#: taextras.py:196
+#: taextras.py:212
 msgid "speed"
 msgstr "hastighed"
 
-#: taextras.py:197
+#: taextras.py:213
 msgid ""
 "Motor torque and speed range from 0 (off) to positive numbers; motor is "
 "placed on the most recent object created."
@@ -2207,19 +2223,19 @@ msgstr ""
 "Drejningsmoment på motor og hastighedsinterval fra 0 (fra) til positive tal; "
 "motor placeres på det objekt som allersenest er oprettet."
 
-#: taextras.py:199
+#: taextras.py:215
 msgid "pin"
 msgstr "fastgør"
 
-#: taextras.py:200
+#: taextras.py:216
 msgid "Pin an object down so that it cannot fall."
 msgstr "Fastgør et objekt nede, så det ikke kan falde."
 
-#: taextras.py:201
+#: taextras.py:217
 msgid "joint"
 msgstr "sammensæt"
 
-#: taextras.py:204
+#: taextras.py:220
 msgid ""
 "Join two objects together (the most recent object created and the object at "
 "point x, y)."
@@ -2227,25 +2243,25 @@ msgstr ""
 "Sammensæt to objekter (de allersenest oprettede objekt og objektet ved "
 "punktet x, y)."
 
-#: taextras.py:206
+#: taextras.py:222
 msgid "Save the project to the Journal as a Physics activity."
 msgstr "Gem projektet til Journalen som en fysik-aktivitet."
 
-#: taextras.py:207
+#: taextras.py:223
 msgid "density"
 msgstr "tæthed"
 
-#: taextras.py:208
+#: taextras.py:224
 msgid ""
 "Set the density property for objects (density can be any positive number)."
 msgstr ""
 "Angiv tæthedsegenskab for objekter (tæthed kan være ethvert positivt tal)."
 
-#: taextras.py:210
+#: taextras.py:226
 msgid "friction"
 msgstr "friktion"
 
-#: taextras.py:211
+#: taextras.py:227
 msgid ""
 "Set the friction property for objects (value from 0 to 1, where 0 turns "
 "friction off and 1 is strong friction)."
@@ -2254,11 +2270,11 @@ msgstr ""
 "friktion fra og 1 er stærk friktion)."
 
 #. TRANS: bounciness is restitution
-#: taextras.py:214
+#: taextras.py:230
 msgid "bounciness"
 msgstr "fjedringsgrad"
 
-#: taextras.py:215
+#: taextras.py:231
 msgid ""
 "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
 "no bounce and 1 is very bouncy)."
@@ -2266,11 +2282,11 @@ msgstr ""
 "Angiv fjedringsgraden for objekter (en værdi fra 0 til 1, hvor 0 betyder "
 "ingen fjedring og 1 er stærk fjedring)."
 
-#: taextras.py:217
+#: taextras.py:233
 msgid "dynamic"
 msgstr "dynamisk"
 
-#: taextras.py:218
+#: taextras.py:234
 msgid ""
 "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
 msgstr ""
@@ -2278,11 +2294,11 @@ msgstr ""
 "fikseret i position."
 
 #. TRANS: WeDo is a robotics product of the LEGO company
-#: taextras.py:224
+#: taextras.py:240
 msgid "Palette of WeDo blocks"
 msgstr "Palette af WeDo-blokke"
 
-#: taextras.py:226
+#: taextras.py:242
 msgid ""
 "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
 "tilt left, 2 == tilt right)"
@@ -2290,186 +2306,111 @@ msgstr ""
 "hældningssensor output (-1 == ingen hældning, 0 == hæld fremad, 3 == hæld "
 "tilbage, 2 == hæld til højre)"
 
-#: taextras.py:229
+#. TRANS: This string is shorthand for "output of the distance sensor"
+#: taextras.py:246
 msgid "distance sensor output"
 msgstr "afstandssensor output"
 
-#: taextras.py:230
+#: taextras.py:247
 msgid "Motor A"
 msgstr "Motor A"
 
-#: taextras.py:231
+#: taextras.py:248
 msgid "returns the current value of Motor A"
 msgstr "returnerer nuværende værdi fra Motor A"
 
-#: taextras.py:232
+#: taextras.py:249
 msgid "Motor B"
 msgstr "Motor B"
 
-#: taextras.py:233
+#: taextras.py:250
 msgid "returns the current value of Motor B"
 msgstr "returnerer nuværende værdi fra Motor B"
 
-#: taextras.py:234
+#: taextras.py:251
 msgid "set the value for Motor A"
 msgstr "angiv værdien for Motor A"
 
-#: taextras.py:235
+#: taextras.py:252
 msgid "set the value for Motor B"
 msgstr "angiv værdien for Motor B"
 
 #. TRANS: Lego NXT is a robotics product of the LEGO company
-#: taextras.py:240
+#: taextras.py:257
 msgid "Palette of LEGO NXT blocks"
 msgstr "Palet af LEGO NXT-klodser"
 
-#: taextras.py:241
-msgid ""
-"turn motor\n"
-"rotations"
-msgstr ""
-"drej motor\n"
-"omdrejninger"
-
-#: taextras.py:242
-msgid "port"
-msgstr "port"
-
-#: taextras.py:243
-msgid "power"
-msgstr "kraft"
-
-#: taextras.py:244
-msgid "turn a motor"
-msgstr "drej en motor"
-
-#: taextras.py:245
-msgid "PORT A"
-msgstr "PORT A"
-
-#: taextras.py:246
-msgid "port A of the brick"
-msgstr "port A på klodsen"
-
-#: taextras.py:247
-msgid "PORT B"
-msgstr "PORT B"
-
-#: taextras.py:248
-msgid "port B of the brick"
-msgstr "port B på klodsen"
-
-#: taextras.py:249
-msgid "PORT C"
-msgstr "PORT C"
-
-#: taextras.py:250
-msgid "port C of the brick"
-msgstr "port C på klodsen"
-
-#: taextras.py:251
-msgid ""
-"sync motors\n"
-"steering"
-msgstr ""
-"synkroniser motorer\n"
-"styring"
-
-#: taextras.py:252
-msgid "rotations"
-msgstr "rotationer"
-
-#: taextras.py:253
-msgid "synchronize two motors"
-msgstr "synkronisér to motorer"
-
-#: taextras.py:254
-msgid "start motor"
-msgstr "start motor"
-
-#: taextras.py:255
-msgid "run a motor forever"
-msgstr "kør en motor for evigt"
-
-#: taextras.py:256
-msgid "brake motor"
-msgstr "brems motor"
-
-#: taextras.py:257
-msgid "brake a specified motor"
-msgstr "brems en specifik motor"
-
 #: taextras.py:258
-msgid "read"
-msgstr "læs"
-
-#: taextras.py:259
-msgid "sensor"
-msgstr "sensor"
-
-#: taextras.py:260
-msgid "read sensor output"
-msgstr "læs uddata fra sensor"
-
-#: taextras.py:261
 msgid "touch"
 msgstr "berør"
 
+#: taextras.py:259
+msgid "ultrasonic"
+msgstr "ultrasonisk"
+
+#: taextras.py:261
+msgid "light"
+msgstr "lys"
+
 #: taextras.py:262
-msgid "touch sensor"
-msgstr "berør sensor"
+msgid "PORT A"
+msgstr "PORT A"
 
 #: taextras.py:263
+msgid "PORT B"
+msgstr "PORT B"
+
+#: taextras.py:264
+msgid "PORT C"
+msgstr "PORT C"
+
+#: taextras.py:265
 msgid "PORT 1"
 msgstr "PORT 1"
 
-#: taextras.py:264
-msgid "port 1 of the brick"
-msgstr "port 1 på klodsen"
-
-#: taextras.py:265
+#: taextras.py:266
 msgid "PORT 2"
 msgstr "PORT 1"
-
-#: taextras.py:266
-msgid "port 2 of the brick"
-msgstr "port 2 på klodsen"
 
 #: taextras.py:267
 msgid "PORT 3"
 msgstr "PORT 3"
 
 #: taextras.py:268
-msgid "port 3 of the brick"
-msgstr "port 3 på klodsen"
-
-#: taextras.py:269
 msgid "PORT 4"
 msgstr "PORT 4"
 
+#: taextras.py:269
+msgid "Please check the connection with the brick."
+msgstr "Tjek venligst forbindelsen til klodsen."
+
 #: taextras.py:270
-msgid "port 4 of the brick"
-msgstr "port 4 på klodsen"
+msgid "Please check the port."
+msgstr "Tjek venligst porten."
 
 #: taextras.py:271
-msgid "ultrasonic"
-msgstr "ultrasonisk"
+msgid "The value of power must be between -127 to 127."
+msgstr "Værdien af kraften skal være mellem -127 til 127."
 
 #: taextras.py:272
-msgid "distance sensor"
-msgstr "afstandssensor"
+msgid "An error has ocurred: check all and try reconect."
+msgstr "En fejl er opstået: tjek alle og forsøg at tilslutte igen."
+
+#: taextras.py:273
+msgid "NXT found"
+msgstr "NXT fundet"
 
 #: taextras.py:274
-msgid "color sensor"
-msgstr "farve-sensor"
+msgid "NXT not found"
+msgstr "NXT ikke fundet"
 
 #: taextras.py:275
-msgid "light"
-msgstr "lys"
+msgid "refresh NXT"
+msgstr "opfrisk NXT"
 
 #: taextras.py:276
-msgid "light sensor"
-msgstr "lys-sensor"
+msgid "Search for a connected NXT brick."
+msgstr "Søg efter en tilsluttet NXT-klods."
 
 #: taextras.py:277
 msgid "play tone"
@@ -2480,24 +2421,124 @@ msgid "freq"
 msgstr "frekvens"
 
 #: taextras.py:280
-msgid "play a tone at freq for time"
-msgstr "afspil en tone ved frekvens for tid"
+msgid "Play a tone at freq for time."
+msgstr "Afspil en tone ved frekvens for tid."
 
 #: taextras.py:281
+msgid ""
+"turn motor\n"
+"rotations"
+msgstr ""
+"drej motor\n"
+"omdrejninger"
+
+#: taextras.py:282
+msgid "port"
+msgstr "port"
+
+#: taextras.py:283
+msgid "power"
+msgstr "kraft"
+
+#: taextras.py:284
+msgid "turn a motor"
+msgstr "drej en motor"
+
+#: taextras.py:285
+msgid ""
+"sync motors\n"
+"steering"
+msgstr ""
+"synkroniser motorer\n"
+"styring"
+
+#: taextras.py:286
+msgid "rotations"
+msgstr "rotationer"
+
+#: taextras.py:287
+msgid "synchronize two motors"
+msgstr "synkronisér to motorer"
+
+#: taextras.py:288
+msgid "PORT A of the brick"
+msgstr "PORT A på klodsen"
+
+#: taextras.py:289
+msgid "PORT B of the brick"
+msgstr "PORT B på klodsen"
+
+#: taextras.py:290
+msgid "PORT C of the brick"
+msgstr "PORT C på klodsen"
+
+#: taextras.py:291
+msgid "start motor"
+msgstr "start motor"
+
+#: taextras.py:292
+msgid "Run a motor forever."
+msgstr "Kør en motor for evigt."
+
+#: taextras.py:293
+msgid "brake motor"
+msgstr "brems motor"
+
+#: taextras.py:294
+msgid "Stop a specified motor."
+msgstr "Stop en angivet motor."
+
+#: taextras.py:295
+msgid "PORT 1 of the brick"
+msgstr "PORT 1 på klodsen"
+
+#: taextras.py:296
+msgid "color sensor"
+msgstr "farve-sensor"
+
+#: taextras.py:297
+msgid "light sensor"
+msgstr "lys-sensor"
+
+#: taextras.py:298
+msgid "PORT 2 of the brick"
+msgstr "PORT 2 på klodsen"
+
+#: taextras.py:299
+msgid "touch sensor"
+msgstr "berør sensor"
+
+#: taextras.py:300
+msgid "distance sensor"
+msgstr "afstandssensor"
+
+#: taextras.py:301
+msgid "PORT 3 of the brick"
+msgstr "PORT 3 på klodsen"
+
+#: taextras.py:302
+msgid "read"
+msgstr "læs"
+
+#: taextras.py:303
+msgid "sensor"
+msgstr "sensor"
+
+#: taextras.py:304
+msgid "Read sensor output."
+msgstr "Læs uddata fra sensor."
+
+#: taextras.py:305
+msgid "PORT 4 of the brick"
+msgstr "PORT 4 på klodsen"
+
+#: taextras.py:306
 msgid "set light"
 msgstr "angiv lys"
 
-#: taextras.py:282
-msgid "set color sensor light"
-msgstr "angiv farve for sensor-lys"
-
-#: taextras.py:283
-msgid "refresh NXT"
-msgstr "opfrisk NXT"
-
-#: taextras.py:284
-msgid "search for a connected NXT brick"
-msgstr "søg efter en tilsluttet NXT-klods"
+#: taextras.py:307
+msgid "Set color sensor light."
+msgstr "Angiv farve for sensor-lys."
 
 #: turtleart.py:69
 msgid "usage is"
@@ -2571,6 +2612,9 @@ msgstr "Du har arbejde som ikke er gemt. Vil du gemme før du afslutter?"
 #: turtleart.py:399
 msgid "Save project?"
 msgstr "Gem projekt?"
+
+#~ msgid "brake a specified motor"
+#~ msgstr "brems en specifik motor"
 
 #~ msgid ""
 #~ "returns the object gray level encountered him as a number between 0 and 1023"
