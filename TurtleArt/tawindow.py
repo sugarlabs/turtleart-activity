@@ -2028,7 +2028,8 @@ class TurtleArtWindow():
         for gblk in find_group(blk):
             if gblk not in group:
                 gblk.spr.move_relative((0, dy * blk.scale))
-        if blk.name in block_styles['compare-style']:
+        if blk.name in block_styles['compare-style'] or \
+           blk.name in block_styles['compare-porch-style']:
             for gblk in find_group(blk):
                 gblk.spr.move_relative((0, -dy * blk.scale))
 
@@ -2065,7 +2066,8 @@ class TurtleArtWindow():
                     for gblk in find_group(blk):
                         if gblk not in group:
                             gblk.spr.move_relative((0, dy * blk.scale))
-                    if blk.name in block_styles['compare-style']:
+                    if blk.name in block_styles['compare-style'] or \
+                       blk.name in block_styles['compare-porch-style']:
                         for gblk in find_group(blk):
                             gblk.spr.move_relative((0, -dy * blk.scale))
             else:
@@ -2194,12 +2196,6 @@ class TurtleArtWindow():
                     else:
                         dy = 20 + selected_block.ey - best_destination.ey
                     best_destination.expand_in_y(dy)
-                    if best_destination.name in block_styles[
-                        'compare-porch-style']:
-                        offset = -dy * best_destination.scale
-                        best_destination.spr.move_relative((0, offset))
-                        for blk in self.drag_group:
-                            blk.spr.move_relative((0, offset))
                 else:
                     if best_destination.ey > 0:
                         dy = best_destination.reset_y()
@@ -2232,9 +2228,6 @@ class TurtleArtWindow():
                 dy = blk2.reset_y()
                 if dy != 0:
                     self._expand_expandable(blk2, blk, dy)
-                    if blk2.name in block_styles[
-                        'compare-porch-style']:
-                        blk2.spr.move_relative((0, -dy * blk2.scale))
                 self._cascade_expandable(blk2)
                 grow_stack_arm(find_sandwich_top(blk2))
 
