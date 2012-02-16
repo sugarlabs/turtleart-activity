@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#Copyright (c) 2011 Walter Bender
+#Copyright (c) 2011, 2012 Walter Bender
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -342,17 +342,16 @@ class Audio_sensors(Plugin):
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
             # TODO: test this calibration on XO 1.5, XO 1.75
+            avg_buf = float(_avg(buf))
             if self.hw == XO1:
-                resistance = 2.718 ** ((float(_avg(buf)) * 0.000045788) + \
-                                           8.0531)
+                resistance = 2.718 ** ((avg_buf * 0.000045788) + 8.0531)
             elif self.hw == XO15:
-                avg_buf = float(_avg(buf))
                 if avg_buf > 0:
                     resistance = (420000000 / avg_buf) - 13500
                 else:
                     resistance = 420000000
             else:  # XO 1.75, 3.0
-                return (46000000 / (30514 - avg_buffer)) - 1150
+                return (46000000 / (30514 - avg_buf)) - 1150
             if channel == 0:
                 self._parent.lc.update_label_value('resistance', resistance)
             else:
