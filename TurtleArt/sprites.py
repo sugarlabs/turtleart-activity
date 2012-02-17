@@ -120,6 +120,11 @@ class Sprites:
         else:
             self.list.insert(i, spr)
 
+    def find_in_list(self, spr):
+        if spr in self.list:
+            return True
+        return False
+
     def remove_from_list(self, spr):
         ''' Remove a sprite from the list. '''
         if spr in self.list:
@@ -356,7 +361,7 @@ class Sprite:
             return False
         if y > self.rect.y + self.rect.height:
             return False
-        return True
+        return self._sprites.find_in_list(self)
 
     def draw_label(self, cr):
         ''' Draw the label based on its attributes '''

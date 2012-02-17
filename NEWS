@@ -1,3 +1,22 @@
+136
+
+ENHANCEMENTS:
+* Add method to retrieve plugin instance (Alan Jhonn Aguiar Schwyn)
+* New translations
+
+BUG FIXES:
+* Fixed regression in resistance sensor calibration for XO 1.75
+* Fixed another problem with expanded compare blocks
+* Fixed problem with disappearing blocks due to dragging over hidden palettes
+
+135
+
+ENHANCEMENTS:
+* Changed mechanism for handling "hidden" blocks (used by some plugins)
+
+BUG FIX:
+* Restore currently selected palette after hide/show palette cycle
+
 134
 
 ENHANCEMENTS:
