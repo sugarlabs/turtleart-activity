@@ -1308,12 +1308,7 @@ class TurtleArtWindow():
         self.trash_stack = []
 
     def _in_the_trash(self, x, y):
-        """ Is x, y over the trash can? """
-        """
-        if self.selected_palette == palette_names.index('trash') and \
-           self.palette_sprs[palette_names.index('trash')][self.orientation].hit((x, y)):
-            return True
-        """
+        """ Is x, y over a palette? """
         if self.selected_palette is not None and \
            self.palette_sprs[self.selected_palette][self.orientation].hit(
             (x, y)):
@@ -1791,7 +1786,7 @@ class TurtleArtWindow():
             return
 
         blk = self.drag_group[0]
-        # Remove blocks by dragging them onto the trash palette.
+        # Remove blocks by dragging them onto any palette.
         if self.block_operation == 'move' and self._in_the_trash(x, y):
             self._put_in_trash(blk, x, y)
             self.drag_group = None
