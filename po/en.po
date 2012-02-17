@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-02-16 00:31-0500\n"
-"PO-Revision-Date: 2012-02-17 05:22+0200\n"
+"PO-Revision-Date: 2012-02-17 05:33+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: en\n"
@@ -2386,7 +2386,7 @@ msgstr "The value of power must be between -127 to 127."
 
 #: taextras.py:272
 msgid "An error has ocurred: check all and try reconect."
-msgstr "An error has ocurred: check all and try reconect."
+msgstr "An error has occurred: check all and try reconnect."
 
 #: taextras.py:273
 msgid "NXT found"
