@@ -1004,7 +1004,9 @@ bullets'))
         """ Print object n """
         if flag and (self.tw.hide or self.tw.step_time == 0):
             return
-        if type(n) == str or type(n) == unicode:
+        if type(n) == list:
+            self.tw.showlabel('status', n)
+        elif type(n) == str or type(n) == unicode:
             if n[0:6] == 'media_' and \
                n[6:].lower not in media_blocks_dictionary:
                 try:
