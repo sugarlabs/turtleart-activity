@@ -1173,6 +1173,8 @@ variable'))
 
     def _prim_less(self, x, y):
         """ Compare numbers and strings """
+        if type(x) == list or type(y) == list:
+            raise logoerror("#syntaxerror")
         try:
             return float(x) < float(y)
         except ValueError:
