@@ -10,681 +10,935 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-29 09:03-0400\n"
-"PO-Revision-Date: 2011-08-06 05:49+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"POT-Creation-Date: 2012-02-16 00:31-0500\n"
+"PO-Revision-Date: 2011-12-21 16:00+0200\n"
+"Last-Translator: Yannis <kiolalis@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.1\n"
+"X-Generator: Pootle 2.0.5\n"
 
-#: activity/activity.info:2 turtleart.py:272 pysamples/grecord.py:205
-#: TurtleArt/tawindow.py:1568 TurtleArt/tawindow.py:2793
-#: TurtleArt/taexporthtml.py:127 TurtleArt/taexporthtml.py:129
+#: activity/activity.info:2 TurtleArt/taexporthtml.py:137
+#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1747
+#: TurtleArt/tawindow.py:3055 pysamples/grecord.py:205 turtleart.py:288
 msgid "Turtle Art"
 msgstr "Η Χελωνοτέχνη"
 
-#: turtleart.py:68
-msgid "usage is"
-msgstr "το σύνηθες είναι"
-
-#: turtleart.py:212
-msgid "No option action:"
-msgstr "Δεν υπάρχει επιλογή ενέργειας:"
-
-#: turtleart.py:224
-msgid "File not found"
-msgstr "Το αρχείο δεν βρέθηκε"
-
-#: turtleart.py:248
-#, python-format
-msgid "Configuration directory not writable: %s"
-msgstr "Κατάλογος ρυθμίσεων μη εγγράψιμος: %s"
-
-#: turtleart.py:304
-msgid "New"
-msgstr "Νέο"
-
-#: turtleart.py:305
-msgid "Open"
-msgstr "Άνοιγμα"
-
-#: turtleart.py:306
-msgid "Save"
-msgstr "Αποθήκευση"
-
-#: turtleart.py:307
-msgid "Save as"
-msgstr "Αποθήκευση ως"
-
-#: turtleart.py:308 TurtleArtActivity.py:604
-msgid "Save as image"
-msgstr "Αποθήκευση ως εικόνα"
-
-#: turtleart.py:310 TurtleArtActivity.py:607
-msgid "Save as HTML"
-msgstr "Αποθήκευση ως HTML"
-
-#: turtleart.py:312 TurtleArtActivity.py:609
-msgid "Save as Logo"
-msgstr "Αποθήκευση ως λογότυπο"
-
-#: turtleart.py:314
-msgid "Quit"
-msgstr "Έξοδος"
-
-#: turtleart.py:315
-msgid "File"
-msgstr "Αρχείο"
-
-#: turtleart.py:318 TurtleArtActivity.py:539
-msgid "Cartesian coordinates"
-msgstr "Καρτεσιανές συντεταγμένες"
-
-#: turtleart.py:320 TurtleArtActivity.py:541
-msgid "Polar coordinates"
-msgstr "Πολικές συντεταγμένες"
-
-#: turtleart.py:322
-msgid "Rescale coordinates"
-msgstr "Επανακλιμάκωση συντεταγμένων"
-
-#: turtleart.py:324 TurtleArtActivity.py:554
-msgid "Grow blocks"
-msgstr "Ανάπτυξη εντολών"
-
-#: turtleart.py:326 TurtleArtActivity.py:556
-msgid "Shrink blocks"
-msgstr "Συρρίκνωση εντολών"
-
-#: turtleart.py:328
-msgid "Reset block size"
-msgstr "Ρύθμιση μεγέθους πλαισίου εντολών"
-
-#: turtleart.py:330 TurtleArtActivity.py:469 TurtleArtActivity.py:518
-msgid "View"
-msgstr "Προβολή"
-
-#: turtleart.py:333 TurtleArtActivity.py:533
-msgid "Copy"
-msgstr "Αντιγραφή"
-
-#: turtleart.py:334 TurtleArtActivity.py:535
-msgid "Paste"
-msgstr "Επικόλληση"
-
-#: turtleart.py:335 TurtleArtActivity.py:465 TurtleArtActivity.py:520
-msgid "Edit"
-msgstr "Επεξεργασία"
-
-#: turtleart.py:338 TurtleArtActivity.py:244
-msgid "Show palette"
-msgstr "Εμφάνιση παλέτας"
-
-#: turtleart.py:340 TurtleArtActivity.py:250 TurtleArtActivity.py:629
-msgid "Hide palette"
-msgstr "Απόκρυψη παλέτας"
-
-#: turtleart.py:342
-msgid "Show/hide blocks"
-msgstr "Εμφάνιση/Απόκρυση εντολών"
-
-#: turtleart.py:344
-msgid "Tools"
-msgstr "Εργαλεία"
-
-#: turtleart.py:347 TurtleArtActivity.py:638
-msgid "Clean"
-msgstr "Καθαρισμός"
-
-#: turtleart.py:348 TurtleArtActivity.py:640
-msgid "Run"
-msgstr "Εκτέλεση"
-
-#: turtleart.py:349 TurtleArtActivity.py:642
-msgid "Step"
-msgstr "Βήμα"
-
-#: turtleart.py:350 TurtleArtActivity.py:644
-msgid "Debug"
-msgstr "Αποσφαλμάτωση"
-
-#: turtleart.py:351
-msgid "Stop"
-msgstr "Διακοπή"
-
-#: turtleart.py:352
-msgid "Turtle"
-msgstr "Χελώνα"
-
-#: turtleart.py:382
-msgid "You have unsaved work. Would you like to save before quitting?"
-msgstr ""
-"Υπάρχει εργασία μη αποθηκευμένη. Θέλετε να την αποθηκεύσετε πριν την έξοδο;"
-
-#: turtleart.py:383
-msgid "Save project?"
-msgstr "Αποθήκευση έργου;"
-
-#: TurtleArtActivity.py:125
-msgid "presentation"
-msgstr "παρουσίαση"
-
-#: TurtleArtActivity.py:196
-msgid "snapshot"
-msgstr "στιγμιότυπο οθόνης"
-
-#: TurtleArtActivity.py:257 TurtleArtActivity.py:270
-msgid "Show blocks"
-msgstr "Εμφάνιση εντολών"
-
-#: TurtleArtActivity.py:260 TurtleArtActivity.py:278 TurtleArtActivity.py:632
-msgid "Hide blocks"
-msgstr "Απόκρυψη εντολών"
-
-#: TurtleArtActivity.py:398
-msgid "Rescale coordinates down"
-msgstr "Μείωση κλιμάκωσης συντεταγμένων"
-
-#: TurtleArtActivity.py:402 TurtleArtActivity.py:551
-msgid "Rescale coordinates up"
-msgstr "Αύξηση κλιμάκωσης συντεταγμένων"
-
-#: TurtleArtActivity.py:476 TurtleArtActivity.py:524
-msgid "Help"
-msgstr "Βοήθεια"
-
-#: TurtleArtActivity.py:497 TurtleArtActivity.py:623
-msgid "Load example"
-msgstr "Φόρτωση παραδείγματος"
-
-#: TurtleArtActivity.py:516
-msgid "Project"
-msgstr "Έργο"
-
-#: TurtleArtActivity.py:522
-msgid "Import/Export"
-msgstr "Εισαγωγή/Εξαγωγή"
-
-#: TurtleArtActivity.py:537
-msgid "Fullscreen"
-msgstr "Πλήρης οθόνη"
-
-#: TurtleArtActivity.py:544
-msgid "Metric coordinates"
-msgstr "Μετρικές συντεταγμένες"
-
-#: TurtleArtActivity.py:547 TurtleArt/tawindow.py:2789
-#: TurtleArt/tawindow.py:2793 TurtleArt/tabasics.py:216
-msgid "xcor"
-msgstr "xσυντ"
-
-#: TurtleArtActivity.py:548 TurtleArt/tawindow.py:2789
-#: TurtleArt/tawindow.py:2793 TurtleArt/tabasics.py:227
-msgid "ycor"
-msgstr "yσυντ"
-
-#: TurtleArtActivity.py:548 TurtleArt/tawindow.py:2789
-#: TurtleArt/tawindow.py:2793 TurtleArt/tabasics.py:238
-msgid "heading"
-msgstr "επικεφαλίδα"
-
-#: TurtleArtActivity.py:574 TurtleArtActivity.py:578
-msgid "Move the cursor over the orange palette for help."
-msgstr "Μετακινείστε το δείκτη προς τις πορτοκαλί παλέτες για λήψη βοήθειας."
-
-#: TurtleArtActivity.py:612
-msgid "Save snapshot"
-msgstr "Αποθήκευση στιγμιότυπου"
-
-#: TurtleArtActivity.py:616
-msgid "Import project from the Journal"
-msgstr "Εισαγωγή έργου από το Ημερολόγιο"
-
-#: TurtleArtActivity.py:619
-msgid "Load Python block"
-msgstr "Φόρτωση εντολών της Python"
-
-#: TurtleArtActivity.py:630
-msgid "<Ctrl>p"
-msgstr "<Ctrl>p"
-
-#: TurtleArtActivity.py:633
-msgid "<Ctrl>b"
-msgstr "<Ctrl>b"
-
-#: TurtleArtActivity.py:638
-msgid "<Ctrl>e"
-msgstr "<Ctrl>e"
-
-#: TurtleArtActivity.py:640
-msgid "<Ctrl>r"
-msgstr "<Ctrl>r"
-
-#: TurtleArtActivity.py:642
-msgid "<Ctrl>w"
-msgstr "<Ctrl>w"
-
-#: TurtleArtActivity.py:644
-msgid "<Ctrl>d"
-msgstr "<Ctrl>d"
-
-#: TurtleArtActivity.py:646
-msgid "Stop turtle"
-msgstr "Σταμάτημα χελώνας"
-
-#: TurtleArtActivity.py:647
-msgid "<Ctrl>s"
-msgstr "<Ctrl>s"
-
-#: taextras.py:36
-msgid "Turtle Art Mini"
-msgstr ""
-
-#: taextras.py:40
-msgid "Turtle Confusion"
-msgstr ""
-
-#: taextras.py:41
-msgid "Select a challenge"
-msgstr ""
-
-#: taextras.py:47
-msgid "Palette of Mexican pesos"
-msgstr ""
-
-#: taextras.py:48
-msgid "Palette of Colombian pesos"
-msgstr ""
-
-#: taextras.py:49
-msgid "Palette of Rwandan francs"
-msgstr ""
-
-#: taextras.py:50
-msgid "Palette of US currencies"
-msgstr ""
-
-#: taextras.py:51
-msgid "Palette of Australian currencies"
-msgstr ""
-
-#: taextras.py:52
-msgid "Palette of Guaranies"
-msgstr ""
-
-#. TRANS: Butia is the Arduino Robot Project from Uruguay
-#. (http://www.fing.edu.uy/inco/proyectos/butia/)
-#: taextras.py:58
-msgid "Turtle Art Butia"
-msgstr ""
-
-#: taextras.py:59
-msgid "Adjust LED intensity between 0 and 255."
-msgstr ""
-
-#: taextras.py:60
-msgid ""
-"Returns the object gray level encountered him as a number between 0 and 1023."
-msgstr ""
-
-#: taextras.py:62
-msgid "Returns 1 when the button is press and 0 otherwise."
-msgstr ""
-
-#: taextras.py:63
-msgid "Returns the ambient light level as a number between 0 and 1023."
-msgstr ""
-
-#: taextras.py:64
-msgid "Returns the ambient temperature as a number between 0 and 255."
-msgstr ""
-
-#: taextras.py:65
-msgid ""
-"Returns the distance from the object in front of the sensor as a number "
-"between 0 and 255."
-msgstr ""
-
-#: taextras.py:67
-msgid "Returns 0 or 1 depending on the sensor inclination."
-msgstr ""
-
-#: taextras.py:68
-msgid "Returns 1 when the sensors detects a magnetic field, 0 otherwise."
-msgstr ""
-
-#: taextras.py:69
-msgid "Switches from 0 to 1, the frequency depends on the vibration."
-msgstr ""
-
-#: taextras.py:70
-msgid "LED"
-msgstr ""
-
-#: taextras.py:71
-msgid "pushbutton"
-msgstr ""
-
-#: taextras.py:72
-msgid "grayscale"
-msgstr ""
-
-#: taextras.py:73
-msgid "ambient light"
-msgstr ""
-
-#: taextras.py:74
-msgid "temperature"
-msgstr ""
-
-#: taextras.py:75
-msgid "distance"
-msgstr ""
-
-#: taextras.py:76
-msgid "tilt"
-msgstr ""
-
-#: taextras.py:77
-msgid "magnetic induction"
-msgstr ""
-
-#: taextras.py:78
-msgid "vibration"
-msgstr ""
-
-#: taextras.py:79
-msgid "Butia Robot"
-msgstr ""
-
-#: taextras.py:80
-msgid "delay Butia"
-msgstr ""
-
-#: taextras.py:81
-msgid "wait for argument seconds"
-msgstr ""
-
-#: taextras.py:82
-msgid "Butia battery charge"
-msgstr ""
-
-#: taextras.py:83
-msgid "Returns the battery charge as a number between 0 and 255."
-msgstr ""
-
-#: taextras.py:84
-msgid "Butia speed"
-msgstr ""
-
-#: taextras.py:85
-msgid ""
-"Set the speed of the Butia motors as a value between 0 and 1023, passed by "
-"an argument."
-msgstr ""
-
-#: taextras.py:87
-msgid "forward Butia"
-msgstr ""
-
-#: taextras.py:88
-msgid "Move the Butia robot forward."
-msgstr ""
-
-#: taextras.py:89
-msgid "forward distance"
-msgstr ""
-
-#: taextras.py:90
-msgid "Move the Butia robot forward a predefined distance."
-msgstr ""
-
-#: taextras.py:91
-msgid "backward Butia"
-msgstr ""
-
-#: taextras.py:92 taextras.py:96 taextras.py:98 taextras.py:102
-msgid "Move the Butia robot backward."
-msgstr ""
-
-#: taextras.py:93
-msgid "backward distance"
-msgstr ""
-
-#: taextras.py:94
-msgid "Move the Butia robot backward a predefined distance."
-msgstr ""
-
-#: taextras.py:95
-msgid "left Butia"
-msgstr ""
-
-#: taextras.py:97
-msgid "right Butia"
-msgstr ""
-
-#: taextras.py:99
-msgid "Turn x degrees"
-msgstr ""
-
-#: taextras.py:100
-msgid "Turn the Butia robot x degrees."
-msgstr ""
-
-#: taextras.py:101
-msgid "stop Butia"
-msgstr ""
-
-#: taextras.py:103
-msgid "print Butia"
-msgstr ""
-
-#: taextras.py:104
-msgid "Print text in Butia robot 32-character ASCII display."
-msgstr ""
-
-#: taextras.py:105
-msgid "Butia"
-msgstr ""
-
-#: taextras.py:109
-msgid "The camera was not found."
-msgstr ""
-
-#: taextras.py:110
-msgid "Error on the initialization of the camera."
-msgstr ""
-
-#: taextras.py:111
-msgid "FollowMe"
-msgstr ""
-
-#: taextras.py:112
-msgid "follow a RGB color"
-msgstr ""
-
-#: taextras.py:113
-msgid "follow a turtle color"
-msgstr ""
-
-#: taextras.py:114
-msgid "calibrate a color to follow"
-msgstr ""
-
-#: taextras.py:115
-msgid "x position"
-msgstr ""
-
-#: taextras.py:116
-msgid "return x position"
-msgstr ""
-
-#: taextras.py:117
-msgid "y position"
-msgstr ""
-
-#: taextras.py:118
-msgid "return y position"
-msgstr ""
-
-#: taextras.py:122
-msgid "Sumo Butia"
-msgstr ""
-
-#: taextras.py:123
-msgid "submit speed​​"
-msgstr ""
-
-#: taextras.py:124
-msgid "Send speeds the robot."
-msgstr ""
-
-#: taextras.py:125
-msgid "set speed"
-msgstr ""
-
-#: taextras.py:126
-msgid "Set the default speed for the movement commands."
-msgstr ""
-
-#: taextras.py:127
-msgid "move"
-msgstr ""
-
-#: taextras.py:128 TurtleArt/tabasics.py:131
+#: TurtleArt/tabasics.py:115
+msgid "Palette of turtle commands"
+msgstr "Παλέτα εντολών της χελώνας"
+
+#: TurtleArt/tabasics.py:120
+msgid "forward"
+msgstr "μπροστά"
+
+#: TurtleArt/tabasics.py:124
+msgid "moves turtle forward"
+msgstr "μετακίνηση της χελώνας μπροστά"
+
+#: TurtleArt/tabasics.py:131
 msgid "back"
 msgstr "πίσω"
 
-#: taextras.py:129 pysamples/grecord.py:215
-msgid "stop"
-msgstr "διακοπή"
+#: TurtleArt/tabasics.py:135
+msgid "moves turtle backward"
+msgstr "μετακίνηση της χελώνας προς τα πίσω"
 
-#: taextras.py:130
-msgid "turn left"
+#: TurtleArt/tabasics.py:143
+msgid "clean"
+msgstr "καθαρισμός"
+
+#: TurtleArt/tabasics.py:146
+msgid "clears the screen and reset the turtle"
+msgstr "καθαρίζει την οθόνη και επανατοποθετεί τη χελώνα"
+
+#: TurtleArt/tabasics.py:154
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
+msgid "left"
+msgstr "αριστερά"
+
+#: TurtleArt/tabasics.py:158
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "περιστρέφει τη χελώνα αριστερόστροφα (γωνία σε μοίρες)"
+
+#: TurtleArt/tabasics.py:165
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:755
+msgid "right"
+msgstr "δεξιά"
+
+#: TurtleArt/tabasics.py:169
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "περιστροφή της χελώνας δεξιόστροφα (γωνία σε μοίρες)"
+
+#: TurtleArt/tabasics.py:177
+msgid "arc"
+msgstr "τόξο"
+
+#: TurtleArt/tabasics.py:177
+msgid "angle"
+msgstr "γωνία"
+
+#: TurtleArt/tabasics.py:177
+msgid "radius"
+msgstr "ακτίνα"
+
+#: TurtleArt/tabasics.py:181
+msgid "moves turtle along an arc"
+msgstr "μετακίνηση της χελώνας κατά μήκος ενός τόξου"
+
+#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256
+msgid "set xy"
+msgstr "ορισμός χy"
+
+#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256 taextras.py:218
+msgid "x"
+msgstr "χ"
+
+#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256 taextras.py:219
+msgid "y"
+msgstr "y"
+
+#: TurtleArt/tabasics.py:194 TurtleArt/tabasics.py:260
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+"μετακίνηση της χελώνας στη θέση xσυντ, yσυντ; (0, 0) είναι στο κέντρο της "
+"οθόνης."
+
+#
+#: TurtleArt/tabasics.py:204
+msgid "set heading"
+msgstr "ορισμός επικεφαλίδας"
+
+#: TurtleArt/tabasics.py:208
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "ορισμός επικεφαλίδας της χελώνας (0 προς την κορυφή της οθόνης)"
+
+#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3051
+#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:542
+msgid "xcor"
+msgstr "xσυντ"
+
+#: TurtleArt/tabasics.py:217
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"διατήρηση τρέχουσας τιμής της x-συντεταγμένης της χελώνας (μπορεί να "
+"χρησιμοποιηθεί στη θέση ενός αριθμού τμήματος)"
+
+#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3051
+#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:543
+msgid "ycor"
+msgstr "yσυντ"
+
+#: TurtleArt/tabasics.py:228
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"διατήρηση τρέχουσας τιμής της y-συντεταγμένης της χελώνας (μπορεί να "
+"χρησιμοποιηθεί στη θέση ενός αριθμού τμήματος)"
+
+#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3051
+#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:543
+msgid "heading"
+msgstr "επικεφαλίδα"
+
+#: TurtleArt/tabasics.py:239
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+"διατήρηση τρέχουσας επικεφαλίδας της χελώνας (μπορεί να χρησιμοποιηθεί στη "
+"θέση μιας αριθμητικής εντολής)"
+
+#: TurtleArt/tabasics.py:273
+msgid "Palette of pen commands"
+msgstr "Παλέτα εντολών του στιλό"
+
+#: TurtleArt/tabasics.py:277
+msgid "pen up"
+msgstr "στιλό πάνω"
+
+#: TurtleArt/tabasics.py:280
+msgid "Turtle will not draw when moved."
+msgstr "Η χελώνα δεν θα σχεδιάζει καθώς μετακινείται."
+
+#: TurtleArt/tabasics.py:286
+msgid "pen down"
+msgstr "στιλό κάτω"
+
+#: TurtleArt/tabasics.py:289
+msgid "Turtle will draw when moved."
+msgstr "Η χελώνα θα σχεδιάζει καθώς μετακινείται."
+
+#: TurtleArt/tabasics.py:295
+msgid "set pen size"
+msgstr "ορισμός μεγέθους στιλό"
+
+#: TurtleArt/tabasics.py:299
+msgid "sets size of the line drawn by the turtle"
+msgstr "ορισμός μεγέθους της γραμμής που σχεδιάζει η χελώνα"
+
+#: TurtleArt/tabasics.py:309
+msgid "fill screen"
+msgstr "γέμισμα οθόνης"
+
+#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:399 taextras.py:260
+msgid "color"
+msgstr "χρώμα"
+
+#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:409
+msgid "shade"
+msgstr "σκιά"
+
+#: TurtleArt/tabasics.py:313
+msgid "fills the background with (color, shade)"
+msgstr "γέμισμα του παρασκηνίου με (χρώμα, σκιά)"
+
+#: TurtleArt/tabasics.py:322
+msgid "pen size"
+msgstr "μέγεθος στιλό"
+
+#: TurtleArt/tabasics.py:323
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+"διατήρηση τρέχοντος μεγέθους του στιλό (μπορεί να χρησιμοποιηθεί στη θέση "
+"ενός αριθμού τμήματος)"
+
+#: TurtleArt/tabasics.py:334
+msgid "start fill"
+msgstr "έναρξη γεμίσματος"
+
+#: TurtleArt/tabasics.py:336
+msgid "starts filled polygon (used with end fill block)"
+msgstr ""
+"Έναρξη ενός γεμάτου πολύγωνου (χρησιμοποιείται μαζί με τον τερματισμό ενός "
+"γεμάτου μπλοκ)"
+
+#: TurtleArt/tabasics.py:343
+msgid "end fill"
+msgstr "τέλος γεμίσματος"
+
+#: TurtleArt/tabasics.py:345
+msgid "completes filled polygon (used with start fill block)"
+msgstr ""
+"ολοκληρώνει ένα γεμάτο πολύγωνο (χρησιμοποιείται μαζί με την έναρξη ενός "
+"γεμάτου μπλοκ)"
+
+#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:360
+msgid "Palette of pen colors"
+msgstr "Παλέτα χρωμάτων του στιλό"
+
+#: TurtleArt/tabasics.py:364
+msgid "set color"
+msgstr "ορισμός χρώματος"
+
+#: TurtleArt/tabasics.py:368
+msgid "sets color of the line drawn by the turtle"
+msgstr "ορισμός χρώματος της γραμμής που σχεδιάζει η χελώνα"
+
+#: TurtleArt/tabasics.py:376
+msgid "set shade"
+msgstr "ορισμός σκιάς"
+
+#: TurtleArt/tabasics.py:380
+msgid "sets shade of the line drawn by the turtle"
+msgstr "ορισμός σκιάς της γραμμής που σχεδιάζει η χελώνα"
+
+#: TurtleArt/tabasics.py:388
+msgid "set gray"
+msgstr "ορισμός γκρίζου"
+
+#: TurtleArt/tabasics.py:391
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "ορισμός του επιπέδου γκριζαρίσματος της γραμμής που σχεδιάζει η χελώνα"
+
+#: TurtleArt/tabasics.py:400
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr ""
+"διατήρηση τρέχοντος χρώματος του στιλό (μπορεί να χρησιμοποιηθεί στη θέση "
+"μιας αριθμητικής εντολής)"
+
+#: TurtleArt/tabasics.py:410
+msgid "holds current pen shade"
+msgstr "συγκρατεί την τρέχουσα σκιά του στιλό"
+
+#: TurtleArt/tabasics.py:418
+msgid "gray"
+msgstr "γκρίζο"
+
+#: TurtleArt/tabasics.py:419
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr ""
+"διατήρηση τρέχοντος επιπέδου του γκρίζου (μπορεί να χρησιμοποιηθεί στη θέση "
+"ενός τμήματος αριθμού )"
+
+#: TurtleArt/tabasics.py:425
+msgid "red"
+msgstr "κόκκινο"
+
+#: TurtleArt/tabasics.py:426
+msgid "orange"
+msgstr "πορτοκαλί"
+
+#: TurtleArt/tabasics.py:428
+msgid "yellow"
+msgstr "κίτρινο"
+
+#: TurtleArt/tabasics.py:430
+msgid "green"
+msgstr "πράσινο"
+
+#: TurtleArt/tabasics.py:431
+msgid "cyan"
+msgstr "κυανό"
+
+#: TurtleArt/tabasics.py:432
+msgid "blue"
+msgstr "μπλε"
+
+#: TurtleArt/tabasics.py:433
+msgid "purple"
+msgstr "πορφυρό"
+
+#: TurtleArt/tabasics.py:435
+msgid "white"
+msgstr "λευκό"
+
+#: TurtleArt/tabasics.py:436
+msgid "black"
+msgstr "μαύρο"
+
+#: TurtleArt/tabasics.py:442
+msgid "set text color"
+msgstr "ορισμός χρώματος κειμένου"
+
+#: TurtleArt/tabasics.py:445
+msgid "sets color of text drawn by the turtle"
+msgstr "ορισμός χρώματος του κειμένου που γράφει η χελώνα"
+
+#: TurtleArt/tabasics.py:453
+msgid "set text size"
+msgstr "ορισμός μεγέθους κειμένου"
+
+#: TurtleArt/tabasics.py:456
+msgid "sets size of text drawn by the turtle"
+msgstr "ορισμός μεγέθους του κειμένου που γράφει η χελώνα"
+
+#: TurtleArt/tabasics.py:539
+msgid "Palette of numeric operators"
+msgstr "Παλέτα αριθμητικών τελεστών"
+
+#: TurtleArt/tabasics.py:545
+msgid "plus"
+msgstr "συν"
+
+#: TurtleArt/tabasics.py:548
+msgid "adds two alphanumeric inputs"
+msgstr "προσθέτει δύο αλφαριθμητικά"
+
+#: TurtleArt/tabasics.py:556
+msgid "minus"
+msgstr "πλην"
+
+#: TurtleArt/tabasics.py:559
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "αφαιρεί τον κάτω αριθμό από αυτόν της κορυφής"
+
+#: TurtleArt/tabasics.py:570
+msgid "multiply"
+msgstr "πολλαπλασιασμός"
+
+#: TurtleArt/tabasics.py:573
+msgid "multiplies two numeric inputs"
+msgstr "πολλαπλασιάζει δύο αριθμούς"
+
+#: TurtleArt/tabasics.py:582
+msgid "divide"
+msgstr "διαίρεση"
+
+#: TurtleArt/tabasics.py:585
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+"διαιρεί τον αριθμό της κορυφής (αριθμητής) με τον αριθμό στο κάτω μέρος "
+"(παρανομαστής)"
+
+#: TurtleArt/tabasics.py:595
+msgid "identity"
+msgstr "ταυτότητα"
+
+#: TurtleArt/tabasics.py:597
+msgid "identity operator used for extending blocks"
+msgstr "τελεστής ταυτότητας που χρησιμοποιείται για τις εκτεταμένες εντολές"
+
+#: TurtleArt/tabasics.py:605 TurtleArt/tabasics.py:606
+msgid "mod"
+msgstr "υπόλοιπο"
+
+#: TurtleArt/tabasics.py:609
+msgid "modular (remainder) operator"
+msgstr "αρθρωτός (υπόλοιπο) τελεστής"
+
+#: TurtleArt/tabasics.py:616
+msgid "√"
+msgstr "√"
+
+#: TurtleArt/tabasics.py:617
+msgid "square root"
+msgstr "τετραγωνική ρίζα"
+
+#: TurtleArt/tabasics.py:620
+msgid "calculates square root"
+msgstr "υπολογίζει την τετραγωνική ρίζα"
+
+#: TurtleArt/tabasics.py:627
+msgid "random"
+msgstr "τυχαίο"
+
+#: TurtleArt/tabasics.py:627
+msgid "min"
+msgstr "ελάχιστο"
+
+#: TurtleArt/tabasics.py:627
+msgid "max"
+msgstr "μέγιστο"
+
+#: TurtleArt/tabasics.py:631
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+"επιστρέφει έναν τυχαίο αριθμό μεταξύ των ελάχιστων (επάνω) και των μέγιστων "
+"(κάτω) τιμών"
+
+#: TurtleArt/tabasics.py:643
+msgid "number"
+msgstr "αριθμός"
+
+#: TurtleArt/tabasics.py:644
+msgid "used as numeric input in mathematic operators"
+msgstr "χρησιμοποιείται ως αριθμός σε μαθηματικές πράξεις"
+
+#: TurtleArt/tabasics.py:651
+msgid "greater than"
+msgstr "μεγαλύτερο από"
+
+#: TurtleArt/tabasics.py:654
+msgid "logical greater-than operator"
+msgstr "λογικός τελεστής - μεγαλύτερο από (>)"
+
+#: TurtleArt/tabasics.py:660
+msgid "True"
 msgstr ""
 
-#: taextras.py:131
-msgid "turn right"
+#: TurtleArt/tabasics.py:666
+msgid "less than"
+msgstr "μικρότερο από"
+
+#: TurtleArt/tabasics.py:669
+msgid "logical less-than operator"
+msgstr "λογικός τελεστής - μικρότερο από (<)"
+
+#: TurtleArt/tabasics.py:674
+msgid "False"
 msgstr ""
 
-#: taextras.py:132
-msgid "angle to center"
+#: TurtleArt/tabasics.py:680
+msgid "equal"
+msgstr "ίσο"
+
+#: TurtleArt/tabasics.py:683
+msgid "logical equal-to operator"
+msgstr "λογικός τελεστής ισότητας (=)"
+
+#: TurtleArt/tabasics.py:689
+msgid "not"
+msgstr "όχι"
+
+#: TurtleArt/tabasics.py:692
+msgid "logical NOT operator"
+msgstr "λογικός τελεστής άρνησης (όχι)"
+
+#: TurtleArt/tabasics.py:698 TurtleArt/tabasics.py:701
+msgid "and"
+msgstr "και"
+
+#: TurtleArt/tabasics.py:702
+msgid "logical AND operator"
+msgstr "λογικός τελεστής σύζευξης (και)"
+
+#: TurtleArt/tabasics.py:709 TurtleArt/tabasics.py:712
+msgid "or"
+msgstr "ή"
+
+#: TurtleArt/tabasics.py:713
+msgid "logical OR operator"
+msgstr "λογικός τελεστής διάζευξης (ή)"
+
+#: TurtleArt/tabasics.py:722
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:94
+msgid "Palette of flow operators"
+msgstr "Παλέτα τελεστών ροής"
+
+#: TurtleArt/tabasics.py:727
+msgid "wait"
+msgstr "αναμονή"
+
+#: TurtleArt/tabasics.py:731
+msgid "pauses program execution a specified number of seconds"
 msgstr ""
+"παύει την εκτέλεση του προγράμματος για καθορισμένο αριθμό δευτερολέπτων"
 
-#. TRANS: dojo is the playing field
-#: taextras.py:134
-msgid "Get the angle to the center of the dojo."
+#: TurtleArt/tabasics.py:738
+msgid "forever"
+msgstr "για πάντα"
+
+#: TurtleArt/tabasics.py:742
+msgid "loops forever"
+msgstr "αδιάκοπη εκτέλεση σε βρόχο"
+
+#: TurtleArt/tabasics.py:748 TurtleArt/tabasics.py:752
+msgid "repeat"
+msgstr "επανάληψη"
+
+#: TurtleArt/tabasics.py:753
+msgid "loops specified number of times"
+msgstr "επανάληψη σύμφωνα με τον καθορισμένο αριθμό"
+
+#: TurtleArt/tabasics.py:759 TurtleArt/tabasics.py:771
+msgid "if"
+msgstr "εάν"
+
+#: TurtleArt/tabasics.py:759
+msgid "then"
+msgstr "τότε"
+
+#: TurtleArt/tabasics.py:762
+msgid "if then"
+msgstr "εάν τότε"
+
+#: TurtleArt/tabasics.py:764
+msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr ""
+"εάν - τότε ο τελεστής που χρησιμοποιεί λογικές τιμές τελεστών από την παλέτα "
+"αριθμών"
 
-#: taextras.py:135
-msgid "angle to the opponent"
+#: TurtleArt/tabasics.py:771
+msgid "then else"
+msgstr "τότε άλλο"
+
+#: TurtleArt/tabasics.py:775
+msgid "if then else"
+msgstr "εάν τότε άλλο"
+
+#: TurtleArt/tabasics.py:776
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr ""
+"εάν - τότε άλλος τελεστής που χρησιμοποιεί λογικές τιμές τελεστών από την "
+"παλέτα αριθμών"
 
-#: taextras.py:136
-msgid "Get the angle to the center of the opponent."
-msgstr ""
+#: TurtleArt/tabasics.py:784
+msgid "horizontal space"
+msgstr "οριζόντιο διάστημα"
 
-#: taextras.py:137
-msgid "x coor."
-msgstr ""
+#: TurtleArt/tabasics.py:785
+msgid "jogs stack right"
+msgstr "ώθηση στοίβας προς τα δεξιά"
 
-#: taextras.py:138
-msgid "Get the x coordinate of the robot."
-msgstr ""
+#: TurtleArt/tabasics.py:792
+msgid "vertical space"
+msgstr "κάθετο διάστημα"
 
-#: taextras.py:139
-msgid "y coor."
-msgstr ""
+#: TurtleArt/tabasics.py:793
+msgid "jogs stack down"
+msgstr "ώθηση στοίβας προς τα κάτω"
 
-#: taextras.py:140
-msgid "Get the y coordinate of the robot."
-msgstr ""
+#: TurtleArt/tabasics.py:799
+msgid "stop action"
+msgstr "σταμάτημα ενέργειας"
 
-#: taextras.py:141
-msgid "opponent x coor."
-msgstr ""
+#: TurtleArt/tabasics.py:802
+msgid "stops current action"
+msgstr "διακόπτει την τρέχουσα ενέργεια"
 
-#: taextras.py:142
-msgid "Get the x coordinate of the opponent."
-msgstr ""
+#: TurtleArt/tabasics.py:811
+msgid "Palette of variable blocks"
+msgstr "Παλέτα μεταβλητών εντολών"
 
-#: taextras.py:143
-msgid "opponent y coor."
-msgstr ""
-
-#: taextras.py:144
-msgid "Get the y coordinate of the opponent."
-msgstr ""
-
-#: taextras.py:145
-msgid "rotation"
-msgstr ""
-
-#: taextras.py:146
-msgid "Get SumBot rotation."
-msgstr ""
-
-#: taextras.py:147
-msgid "opponent rotation"
-msgstr ""
-
-#: taextras.py:148
-msgid "Get the rotation of the opponent."
-msgstr ""
-
-#: taextras.py:149
-msgid "distance to center"
-msgstr ""
-
-#. TRANS: dojo is the playing field
-#: taextras.py:151
-msgid "Get the distance to the center of the dojo."
-msgstr ""
-
-#: taextras.py:152
-msgid "distance to opponent"
-msgstr ""
-
-#: taextras.py:153
-msgid "Get the distance to the opponent."
-msgstr ""
-
-#: taextras.py:154
-msgid "update information"
-msgstr ""
-
-#: taextras.py:155
-msgid "Update information from the server."
-msgstr ""
-
-#: pysamples/grecord.py:205 plugins/audio_sensors/audio_sensors.py:82
-#: plugins/audio_sensors/audio_sensors.py:97
-msgid "sound"
-msgstr "ήχος"
-
-#: pysamples/grecord.py:213 TurtleArt/tabasics.py:801
+#: TurtleArt/tabasics.py:816 pysamples/grecord.py:213
 msgid "start"
 msgstr "έναρξη"
 
-#: pysamples/grecord.py:217
-msgid "play"
-msgstr "αναπαραγωγή"
+#: TurtleArt/tabasics.py:819
+msgid "connects action to toolbar run buttons"
+msgstr "συνδέει την ενέργεια με τα πλήκτρα εκτέλεσης της γραμμής εργαλείων"
 
-#: pysamples/grecord.py:219
-msgid "save"
-msgstr "αποθήκευση"
+#: TurtleArt/tabasics.py:827
+msgid "store in box 1"
+msgstr "αποθήκευση στο πλαίσιο 1"
 
-#: pysamples/uturn.py:24
-msgid "uturn"
-msgstr "μεταβολή"
+#: TurtleArt/tabasics.py:831
+msgid "stores numeric value in Variable 1"
+msgstr "αποθηκεύει την αριθμητική τιμή στη μεταβλητή 1"
 
-#: pysamples/uturn.py:26
-msgid "make a uturn"
-msgstr "πραγματοποίηση μιας μεταβολής"
+#: TurtleArt/tabasics.py:838
+msgid "store in box 2"
+msgstr "αποθήκευση στο πλαίσιο 2"
+
+#: TurtleArt/tabasics.py:842
+msgid "stores numeric value in Variable 2"
+msgstr "αποθηκεύει την αριθμητική τιμή στη μεταβλητή 2"
+
+#: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
+#: TurtleArt/tabasics.py:851
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:172
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:173
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:174
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:209
+msgid "text"
+msgstr "κείμενο"
+
+#: TurtleArt/tabasics.py:852
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
+msgid "string value"
+msgstr "αλφαριθμητική τιμή"
+
+#: TurtleArt/tabasics.py:856
+msgid "box 1"
+msgstr "πλαίσιο 1"
+
+#: TurtleArt/tabasics.py:859
+msgid "Variable 1 (numeric value)"
+msgstr "μεταβλητή 1 (αριθμητική τιμή)"
+
+#: TurtleArt/tabasics.py:865
+msgid "box 2"
+msgstr "πλαίσιο 2"
+
+#: TurtleArt/tabasics.py:868
+msgid "Variable 2 (numeric value)"
+msgstr "μεταβλητή 2 (αριθμητική τιμή)"
+
+#: TurtleArt/tabasics.py:875 TurtleArt/tabasics.py:885
+msgid "box"
+msgstr "πλαίσιο"
+
+#: TurtleArt/tabasics.py:877 TurtleArt/tabasics.py:888
+msgid "my box"
+msgstr "το δικό μου πλαίσιο"
+
+#: TurtleArt/tabasics.py:879
+msgid "named variable (numeric value)"
+msgstr "μεταβλητή με όνομα (αριθμητική τιμή)"
+
+#: TurtleArt/tabasics.py:885
+msgid "store in"
+msgstr "αποθήκευση στο"
+
+#: TurtleArt/tabasics.py:885
+msgid "value"
+msgstr "τιμή"
+
+#: TurtleArt/tabasics.py:889
+msgid "stores numeric value in named variable"
+msgstr "αποθηκεύει την αριθμητική τιμή στην επώνυμη μεταβλητή"
+
+#: TurtleArt/tabasics.py:897 TurtleArt/tabasics.py:899
+#: TurtleArt/tabasics.py:923 TurtleArt/tabasics.py:926
+msgid "action"
+msgstr "ενέργεια"
+
+#: TurtleArt/tabasics.py:901
+msgid "top of nameable action stack"
+msgstr "κορυφή της επώνυμης ενέργειας της στοίβας"
+
+#: TurtleArt/tabasics.py:906 TurtleArt/tabasics.py:933
+msgid "action 1"
+msgstr "ενέργεια 1"
+
+#: TurtleArt/tabasics.py:909
+msgid "top of Action 1 stack"
+msgstr "κορυφή της στοίβας της ενέργειας 1"
+
+#: TurtleArt/tabasics.py:914 TurtleArt/tabasics.py:942
+msgid "action 2"
+msgstr "ενέργεια 2"
+
+#: TurtleArt/tabasics.py:917
+msgid "top of Action 2 stack"
+msgstr "κορυφή της στοίβας της ενέργειας 2"
+
+#: TurtleArt/tabasics.py:927
+msgid "invokes named action stack"
+msgstr "επίκληση της επώνυμης ενέργειας της στοίβας"
+
+#: TurtleArt/tabasics.py:936
+msgid "invokes Action 1 stack"
+msgstr "επίκληση της ενέργειας 1 της στοίβας"
+
+#: TurtleArt/tabasics.py:945
+msgid "invokes Action 2 stack"
+msgstr "επίκληση της ενέργειας 2 της στοίβας"
+
+#: TurtleArt/tabasics.py:953
+msgid "trash"
+msgstr "κάδος ανακύκλωσης"
+
+#: TurtleArt/tabasics.py:957
+msgid "empty trash"
+msgstr "κενός κάδος ανακύκλωσης"
+
+#: TurtleArt/tabasics.py:958
+msgid "permanently deletes items in trash"
+msgstr "διαγράφει μόνιμα τα αντικείμενα του κάδου ανακύκλωσης"
+
+#: TurtleArt/tabasics.py:962
+msgid "restore all"
+msgstr "επαναφορά όλων"
+
+#: TurtleArt/tabasics.py:963
+msgid "restore all blocks from trash"
+msgstr "επαναφέρει όλες τις εντολές από τον κάδο ανακύκλωσης"
+
+#: TurtleArt/tabasics.py:967
+msgid "clear all"
+msgstr "καθαρισμός όλων"
+
+#: TurtleArt/tabasics.py:968
+msgid "move all blocks to trash"
+msgstr "μετακίνηση όλων των εντολών στον κάδο ανακύκλωσης"
+
+#: TurtleArt/taconstants.py:250 TurtleArt/taconstants.py:272
+#: TurtleArt/taconstants.py:293 TurtleArt/taconstants.py:335
+#: TurtleArt/taconstants.py:377 TurtleArt/taconstants.py:419
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:840
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:868
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:896
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:910
+msgid "Title"
+msgstr "Τίτλος"
+
+#: TurtleArt/talogo.py:465
+msgid "did not output to"
+msgstr "δεν έγινε εξαγωγή στο"
+
+#: TurtleArt/talogo.py:519
+msgid "I don't know how to"
+msgstr "Δεν γνωρίζω πως"
+
+#: TurtleArt/talogo.py:566
+msgid "doesn't like"
+msgstr "δεν αρέσει"
+
+#: TurtleArt/talogo.py:566
+msgid "as input"
+msgstr "ως εισαγωγή"
+
+#: TurtleArt/tapalette.py:84
+msgid "displays next palette"
+msgstr "εμφανίζει την επόμενη παλέτα"
+
+#: TurtleArt/tapalette.py:85
+msgid "changes the orientation of the palette of blocks"
+msgstr "αλλάζει τον προσανατολισμό των παλετών που περιέχουν τις εντολές"
+
+#: TurtleArt/tautils.py:177
+msgid "Load..."
+msgstr "Φόρτωση..."
+
+#: TurtleArt/tautils.py:187
+msgid "Save..."
+msgstr "Αποθήκευση..."
+
+#: TurtleArt/tautils.py:596
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:641
+msgid "click to open"
+msgstr "κάντε κλικ για άνοιγμα"
+
+#: TurtleArt/tawindow.py:837 TurtleArt/tawindow.py:838
+msgid "orientation"
+msgstr "προσανατολισμός"
+
+#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:1164
+msgid "next"
+msgstr "επόμενο"
+
+#: TurtleArt/tawindow.py:3146
+msgid "image"
+msgstr "εικόνα"
+
+#: TurtleArtActivity.py:147
+msgid "presentation"
+msgstr "παρουσίαση"
+
+#: TurtleArtActivity.py:223
+msgid "snapshot"
+msgstr "στιγμιότυπο οθόνης"
+
+#: TurtleArtActivity.py:271 turtleart.py:354
+msgid "Show palette"
+msgstr "Εμφάνιση παλέτας"
+
+#: TurtleArtActivity.py:277 TurtleArtActivity.py:682 turtleart.py:356
+msgid "Hide palette"
+msgstr "Απόκρυψη παλέτας"
+
+#: TurtleArtActivity.py:284 TurtleArtActivity.py:297
+msgid "Show blocks"
+msgstr "Εμφάνιση εντολών"
+
+#: TurtleArtActivity.py:287 TurtleArtActivity.py:305 TurtleArtActivity.py:685
+msgid "Hide blocks"
+msgstr "Απόκρυψη εντολών"
+
+#: TurtleArtActivity.py:415
+msgid "Rescale coordinates down"
+msgstr "Μείωση κλιμάκωσης συντεταγμένων"
+
+#: TurtleArtActivity.py:419 TurtleArtActivity.py:546
+msgid "Rescale coordinates up"
+msgstr "Αύξηση κλιμάκωσης συντεταγμένων"
+
+#: TurtleArtActivity.py:478 TurtleArtActivity.py:516 turtleart.py:351
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: TurtleArtActivity.py:482 TurtleArtActivity.py:514 turtleart.py:346
+msgid "View"
+msgstr "Προβολή"
+
+#: TurtleArtActivity.py:489 TurtleArtActivity.py:520
+msgid "Help"
+msgstr "Βοήθεια"
+
+#: TurtleArtActivity.py:512
+msgid "Project"
+msgstr "Έργο"
+
+#: TurtleArtActivity.py:518 TurtleArtActivity.py:625
+msgid "Save/Load"
+msgstr ""
+
+#: TurtleArtActivity.py:528 turtleart.py:349
+msgid "Copy"
+msgstr "Αντιγραφή"
+
+#: TurtleArtActivity.py:530 turtleart.py:350
+msgid "Paste"
+msgstr "Επικόλληση"
+
+#: TurtleArtActivity.py:532
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:667
+msgid "Fullscreen"
+msgstr "Πλήρης οθόνη"
+
+#: TurtleArtActivity.py:534 turtleart.py:334
+msgid "Cartesian coordinates"
+msgstr "Καρτεσιανές συντεταγμένες"
+
+#: TurtleArtActivity.py:536 turtleart.py:336
+msgid "Polar coordinates"
+msgstr "Πολικές συντεταγμένες"
+
+#: TurtleArtActivity.py:539
+msgid "Metric coordinates"
+msgstr "Μετρικές συντεταγμένες"
+
+#: TurtleArtActivity.py:549 turtleart.py:340
+msgid "Grow blocks"
+msgstr "Ανάπτυξη εντολών"
+
+#: TurtleArtActivity.py:551 turtleart.py:342
+msgid "Shrink blocks"
+msgstr "Συρρίκνωση εντολών"
+
+#: TurtleArtActivity.py:575 TurtleArtActivity.py:667
+msgid "Load example"
+msgstr "Φόρτωση παραδείγματος"
+
+#: TurtleArtActivity.py:593 TurtleArtActivity.py:597
+msgid "Move the cursor over the orange palette for help."
+msgstr "Μετακινείστε το δείκτη προς τις πορτοκαλί παλέτες για λήψη βοήθειας."
+
+#: TurtleArtActivity.py:630 TurtleArtActivity.py:650 turtleart.py:324
+msgid "Save as image"
+msgstr "Αποθήκευση ως εικόνα"
+
+#: TurtleArtActivity.py:633 TurtleArtActivity.py:653 turtleart.py:326
+msgid "Save as HTML"
+msgstr "Αποθήκευση ως HTML"
+
+#: TurtleArtActivity.py:636 TurtleArtActivity.py:655 turtleart.py:328
+msgid "Save as Logo"
+msgstr "Αποθήκευση ως λογότυπο"
+
+#: TurtleArtActivity.py:639 TurtleArtActivity.py:658
+msgid "Save snapshot"
+msgstr "Αποθήκευση στιγμιότυπου"
+
+#: TurtleArtActivity.py:641 TurtleArtActivity.py:661
+msgid "Load project"
+msgstr ""
+
+#: TurtleArtActivity.py:644 TurtleArtActivity.py:664
+msgid "Load Python block"
+msgstr "Φόρτωση εντολών της Python"
+
+#: TurtleArtActivity.py:683
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:686
+msgid "<Ctrl>b"
+msgstr "<Ctrl>b"
+
+#: TurtleArtActivity.py:691 turtleart.py:363
+msgid "Clean"
+msgstr "Καθαρισμός"
+
+#: TurtleArtActivity.py:691
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: TurtleArtActivity.py:693 turtleart.py:364
+msgid "Run"
+msgstr "Εκτέλεση"
+
+#: TurtleArtActivity.py:693
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:695 turtleart.py:365
+msgid "Step"
+msgstr "Βήμα"
+
+#: TurtleArtActivity.py:695
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:698 turtleart.py:366
+msgid "Debug"
+msgstr "Αποσφαλμάτωση"
+
+#: TurtleArtActivity.py:698
+msgid "<Ctrl>d"
+msgstr "<Ctrl>d"
+
+#: TurtleArtActivity.py:700
+msgid "Stop turtle"
+msgstr "Σταμάτημα χελώνας"
+
+#: TurtleArtActivity.py:701
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
 
 #: gnome_plugins/collaboration_plugin.py:67
 msgid "My Turtle Art session"
@@ -714,31 +968,31 @@ msgstr "Ρύθμιση"
 msgid "Neighborhood"
 msgstr "Γειτονιά"
 
-#: gnome_plugins/collaboration_plugin.py:288
+#: gnome_plugins/collaboration_plugin.py:292
 msgid "Nickname"
 msgstr "Ψευδώνυμο"
 
-#: gnome_plugins/collaboration_plugin.py:290
+#: gnome_plugins/collaboration_plugin.py:294
 msgid "Account ID"
 msgstr "ID λογαριασμού"
 
-#: gnome_plugins/collaboration_plugin.py:292
+#: gnome_plugins/collaboration_plugin.py:296
 msgid "Server"
 msgstr "Διακομιστής"
 
-#: gnome_plugins/collaboration_plugin.py:294
+#: gnome_plugins/collaboration_plugin.py:298
 msgid "Port"
 msgstr "Θύρα"
 
-#: gnome_plugins/collaboration_plugin.py:296
+#: gnome_plugins/collaboration_plugin.py:300
 msgid "Password"
 msgstr "Κωδικός πρόσβασης"
 
-#: gnome_plugins/collaboration_plugin.py:298
+#: gnome_plugins/collaboration_plugin.py:302
 msgid "Register"
 msgstr "Καταχώρηση"
 
-#: gnome_plugins/collaboration_plugin.py:300
+#: gnome_plugins/collaboration_plugin.py:304
 msgid "Colors"
 msgstr "Χρώματα"
 
@@ -790,568 +1044,28 @@ msgstr "Η σύνδεση απέτυχε"
 msgid "Failed to upload!"
 msgstr "Αποτυχία αποστολής!"
 
-#: plugins/camera_sensor/camera_sensor.py:58 plugins/rfid/rfid.py:86
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:269
-#: plugins/light_sensor/light_sensor.py:49
-#: plugins/audio_sensors/audio_sensors.py:75
 #: plugins/accelerometer/accelerometer.py:49
+#: plugins/audio_sensors/audio_sensors.py:75
+#: plugins/camera_sensor/camera_sensor.py:56
+#: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:294
 msgid "Palette of sensor blocks"
 msgstr "Παλέτα με μπλοκ αισθητήρων"
 
-#: plugins/camera_sensor/camera_sensor.py:69
-#: plugins/camera_sensor/camera_sensor.py:81
-#: plugins/camera_sensor/camera_sensor.py:99
-#: plugins/camera_sensor/camera_sensor.py:112
-#: plugins/light_sensor/light_sensor.py:55
-#: plugins/light_sensor/light_sensor.py:62
-msgid "brightness"
-msgstr "φωτεινότητα"
+#: plugins/accelerometer/accelerometer.py:55
+#: plugins/accelerometer/accelerometer.py:62
+msgid "acceleration"
+msgstr "επιτάχυνση"
 
-#: plugins/camera_sensor/camera_sensor.py:70
-#: plugins/camera_sensor/camera_sensor.py:101
-msgid "light level detected by camera"
-msgstr "επίπεδο φωτός που εντοπίστηκε από την κάμερα"
-
-#: plugins/camera_sensor/camera_sensor.py:82
-#: plugins/camera_sensor/camera_sensor.py:113
-msgid "Average RGB color from camera is pushed to the stack"
-msgstr "Μέσος όρος χρώματος RGB που μετακινήθηκε με ώθηση προς τη στοίβα"
-
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:125
-msgid "camera output"
-msgstr "έξοδος κάμερας"
-
-#: plugins/rfid/rfid.py:91 plugins/rfid/rfid.py:99
-msgid "RFID"
-msgstr "RFID"
-
-#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
-msgid "read value from RFID device"
-msgstr "ανάγνωση τιμής από συσκευή RFID"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
-#: TurtleArt/tabasics.py:707
-msgid "Palette of flow operators"
-msgstr "Παλέτα τελεστών ροής"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:103
-msgid "while"
-msgstr "λευκό"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:104
-msgid "do-while-True operator that uses boolean operators from Numbers palette"
+#: plugins/accelerometer/accelerometer.py:57
+#: plugins/accelerometer/accelerometer.py:64
+msgid "push acceleration in x, y, z to heap"
 msgstr ""
-"κάνε-ενώ-Αληθής τελεστής που χρησιμοποιεί λογικές τιμές τελεστών από την "
-"παλέτα αριθμών"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:110
-msgid "until"
-msgstr "μέχρι"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:111
-msgid "do-until-True operator that uses boolean operators from Numbers palette"
-msgstr ""
-"κάνε-μέχρι-Αληθής τελεστής που χρησιμοποιεί λογικές τιμές τελεστών από την "
-"παλέτα αριθμών"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:118
-msgid "Palette of media objects"
-msgstr "Παλέτα πολυμεσικών αντικειμένων"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:124
-msgid "journal"
-msgstr "Ημερολόγιο"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:125
-msgid "Sugar Journal media object"
-msgstr "Ημερολόγιο του Sugar: αντικείμενο πολυμέσων"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:135
-msgid "audio"
+#: plugins/audio_sensors/audio_sensors.py:82
+#: plugins/audio_sensors/audio_sensors.py:97 pysamples/grecord.py:205
+msgid "sound"
 msgstr "ήχος"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:137
-msgid "Sugar Journal audio object"
-msgstr "Ημερολόγιο του Sugar: αντικείμενο ήχου"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:147
-msgid "video"
-msgstr "βίντεο"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:149
-msgid "Sugar Journal video object"
-msgstr "Αντικείμενο ήχου του Ημερολογίου του Sugar"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:159
-msgid "description"
-msgstr "περιγραφή"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:161
-msgid "Sugar Journal description field"
-msgstr "Ημερολόγιο του Sugar: πεδίο περιγραφής"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:170
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:171
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:172
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:179
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:207
-#: TurtleArt/tabasics.py:834 TurtleArt/tabasics.py:835
-#: TurtleArt/tabasics.py:836
-msgid "text"
-msgstr "κείμενο"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:173
-#: TurtleArt/tabasics.py:837
-msgid "string value"
-msgstr "αλφαριθμητική τιμή"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:178
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:206
-msgid "show"
-msgstr "εμφάνιση"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:182
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:210
-msgid "draws text or show media from the Journal"
-msgstr "γράφει κείμενο ή εμφανίζει πολυμέσα από το Ημερολόγιο"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:191
-msgid "show aligned"
-msgstr "εμφάνιση στοιχισμένων"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:218
-msgid "set scale"
-msgstr "ορισμός κλίμακας"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:222
-msgid "sets the scale of media"
-msgstr "ορισμός της κλίμακας των πολυμέσων"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
-msgid "save picture"
-msgstr "αποθήκευση εικόνας"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:231
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:242
-msgid "picture name"
-msgstr "όνομα εικόνας"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:232
-msgid "saves a picture to the Sugar Journal"
-msgstr "αποθηκεύει την εικόνα στο Ημερολόγιο του Sugar"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:240
-msgid "save SVG"
-msgstr "αποθήκευση SVG"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:243
-msgid "saves turtle graphics as an SVG file in the Sugar Journal"
-msgstr ""
-"αποθηκεύει τα γραφικά της Χελώνας ως αρχεία SVG στο Ημερολόγιο του Sugar"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:250
-msgid "scale"
-msgstr "κλίμακα"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:254
-msgid "holds current scale value"
-msgstr "συγκρατεί την τρέχουσα τιμή της κλίμακας"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:259
-msgid "media wait"
-msgstr "αναμονή για πολυμέσα"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:261
-msgid "wait for current video or audio to complete"
-msgstr "αναμονή για ολοκλήρωση του τρέχοντος βίντεο ή ήχου"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:274
-msgid "query keyboard"
-msgstr "ερώτημα πληκτρολογίου"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
-msgid "query for keyboard input (results stored in keyboard block)"
-msgstr ""
-"ερώτημα για τα δεδομένα εισόδου του πληκτρολογίου (τα αποτελέσματα θα "
-"αποθηκευτούν στην εντολή πληκτρολογίου)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
-msgid "keyboard"
-msgstr "πληκτρολόγιο"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:287
-msgid "holds results of query-keyboard block"
-msgstr "διατηρεί τα αποτελέσματα του ερωτήματος - εντολή πληκτρολογίου"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:294
-msgid "read pixel"
-msgstr "ανάγνωση εικονοστοιχείου"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
-msgid "RGB color under the turtle is pushed to the stack"
-msgstr "Το χρώμα ΚΠΜ κάτω από τη χελώνα προωθήθηκε στη Στοίβα"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
-msgid "turtle sees"
-msgstr "η χελώνα βλέπει"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
-msgid "returns the color that the turtle \"sees\""
-msgstr "επιστρέφει το χρώμα που \"βλέπει\" αυτή η χελώνα"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:315
-msgid "time"
-msgstr "χρόνος"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:318
-msgid "elapsed time (in seconds) since program started"
-msgstr ""
-"χρόνος που πέρασε (σε δευτερόλεπτα) από τη στιγμή που ξεκίνησε το πρόγραμμα"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:327
-msgid "Palette of extra options"
-msgstr "Παλέτα πρόσθετων επιλογών"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:332
-msgid "push"
-msgstr "ώθηση"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:335
-msgid "pushes value onto FILO (first-in last-out heap)"
-msgstr "προωθεί την τιμή στη ΠΜΤΕ (πρώτη-μέσα τελευταία-έξω στοίβα)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:345
-msgid "show heap"
-msgstr "εμφάνιση στοίβας"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:348
-msgid "shows values in FILO (first-in last-out heap)"
-msgstr "εμφανίζει την τιμή στη ΠΜΤΕ (πρώτη-μέσα τελευταία-έξω στοίβα)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:358
-msgid "empty heap"
-msgstr "κενός σωρός"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:361
-msgid "emptys FILO (first-in-last-out heap)"
-msgstr "αδειάζει το ΠΜΤΕ (Πρώτο-Μέσα Τελευταίο-Έξω)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
-msgid "pop"
-msgstr "απώθηση"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:375
-msgid "pops value off FILO (first-in last-out heap)"
-msgstr "ανάδυση της τιμής στον σωρό ΠΜΤΕ (πρώτη-μέσα τελευταία-έξω στοίβα)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:387
-msgid "comment"
-msgstr "σχόλιο"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
-msgid "places a comment in your code"
-msgstr "τοποθετεί ένα σχόλιο στον κώδικά σας"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
-msgid "print"
-msgstr "εκτύπωση"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:397
-msgid "prints value in status block at bottom of the screen"
-msgstr "εκτυπώνει την αξία στο πεδίο κατάστασης στο κάτω μέρος της οθόνης"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:405
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:417
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
-msgid "Python"
-msgstr "Python"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:408
-msgid ""
-"a programmable block: used to add advanced single-variable math equations, e."
-"g., sin(x)"
-msgstr ""
-"ένα προγραμματιστικό τμήμα εντολών: χρησιμοποιείται για την προσθήκη "
-"προχωρημένων μαθηματικών εξισώσεων μιας μεταβλητής, π.χ. sin(x)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:420
-msgid ""
-"a programmable block: used to add advanced multi-variable math equations, e."
-"g., sqrt(x*x+y*y)"
-msgstr ""
-"μια προγραμματιστική εντολή: χρησιμοποιείται για την προσθήκη προχωρημένων "
-"μαθηματικών εξισώσεων πολλών μεταβλητών, π.χ. τ_ρ(x*x+y*y)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:433
-msgid ""
-"a programmable block: used to add advanced multi-variable math equations, e."
-"g., sin(x+y+z)"
-msgstr ""
-"ένα προγραμματιστικό τμήμα εντολών: χρησιμοποιείται για την προσθήκη "
-"προχωρημένων μαθηματικών εξισώσεων πολλών μεταβλητών, π.χ. ημ(x+y+z)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:444
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:459
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:474
-msgid "Python block"
-msgstr "Εντολές Python"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:446
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:461
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:476
-msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr ""
-"εκτελεί τον κώδικα που βρέθηκε στο άρθρωμα tamyblock.py το οποίο εντοπίστηκε "
-"στο Ημερολόγιο"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:489
-msgid "Cartesian"
-msgstr "Καρτεσιανό"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:491
-msgid "displays Cartesian coordinates"
-msgstr "εμφανίζει Καρτεσιανές συντεταγμένες"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:497
-msgid "polar"
-msgstr "πολική"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
-msgid "displays polar coordinates"
-msgstr "εμφανίζει τις πολικές συντεταγμένες"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:505
-msgid "turtle"
-msgstr "χελώνα"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
-msgid "chooses which turtle to command"
-msgstr "επιλέξτε σε ποια χελώνα θέλετε να δώσετε εντολή"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:517
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:526
-msgid "turtle shell"
-msgstr "κέλυφος χελώνας"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:527
-msgid "put a custom 'shell' on the turtle"
-msgstr "τοποθετεί ένα τροποποιημένο \"κέλυφος\" πάνω στη χελώνα"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:697
-msgid "top"
-msgstr "κορυφή"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:534
-msgid "top of a collapsed stack"
-msgstr "κορυφή μιας στοίβας που κατέρρευσε"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:540
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:673
-msgid "bottom"
-msgstr "κάτω μέρος"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:541
-msgid "bottom of a collapsible stack"
-msgstr "το κάτω μέρος μιας στοίβας που μπορεί να καταρρεύσει"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
-msgid "bottom block in a collapsed stack: click to open"
-msgstr ""
-"κάτω εντολή σε μια στοίβα που μπορεί να καταρρεύσει: κάντε κλικ για άνοιγμα"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:557
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:560
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:569
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:577
-msgid "top of stack"
-msgstr "κορυφή της στοίβας"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:558
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:567
-msgid "label"
-msgstr "ετικέτα"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:566
-msgid "top of a collapsible stack"
-msgstr "κορυφή μιας στοίβας που μπορεί να καταρρεύσει"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:575
-#: TurtleArt/tautils.py:590
-msgid "click to open"
-msgstr "κάντε κλικ για άνοιγμα"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:583
-msgid "Palette of presentation templates"
-msgstr "Παλέτα προτύπων παρουσιάσεων"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:587
-msgid "hide blocks"
-msgstr "απόκρυψη εντολών"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
-msgid "declutters canvas by hiding blocks"
-msgstr "γέμισμα του καμβά με κρυμμένα εντολές"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:594
-msgid "show blocks"
-msgstr "εμφάνιση εντολών"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:596
-msgid "restores hidden blocks"
-msgstr "επαναφέρει κρυμμένες εντολές"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:601
-msgid "full screen"
-msgstr "πλήρης οθόνη"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:603
-msgid "hides the Sugar toolbars"
-msgstr "αποκρύπτει τις εργαλειοθήκες του Sugar"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:612
-msgid "list"
-msgstr "λίστα"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:615
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:845
-msgid "presentation bulleted list"
-msgstr "παρουσίαση λίστας με κουκκίδες"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:623
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:846
-msgid "presentation template: list of bullets"
-msgstr "πρότυπο παρουσίασης: λίστα κουκκίδων"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:630
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:790
-msgid "presentation template: select Journal object (no description)"
-msgstr ""
-"πρότυπο παρουσίασης: επιλέξτε αντικείμενο από το Ημερολόγιο (χωρίς "
-"περιγραφή)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:637
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
-msgid "presentation template: select Journal object (with description)"
-msgstr ""
-"πρότυπο παρουσίασης: επιλέξτε αντικείμενο από το Ημερολόγιο (με περιγραφή)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:832
-msgid "presentation template: select four Journal objects"
-msgstr "πρότυπο παρουσίασης: επιλέξτε τέσσερα αντικείμενα από το Ημερολόγιο"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:651
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:658
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:818
-msgid "presentation template: select two Journal objects"
-msgstr "πρότυπο παρουσίασης: επιλέξτε δύο αντικείμενο από το Ημερολόγιο"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:665
-#: TurtleArt/tabasics.py:154
-msgid "left"
-msgstr "αριστερά"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:668
-msgid "xcor of left of screen"
-msgstr "xσυντ από αριστερά της οθόνης"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:676
-msgid "ycor of bottom of screen"
-msgstr "yσυντ από το κάτω μέρος της οθόνης"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:681
-msgid "width"
-msgstr "πλάτος"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:684
-msgid "the canvas width"
-msgstr "το πλάτος του καμβά"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
-#: TurtleArt/tabasics.py:165
-msgid "right"
-msgstr "δεξιά"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:692
-msgid "xcor of right of screen"
-msgstr "xσυντ από δεξιά της οθόνης"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:700
-msgid "ycor of top of screen"
-msgstr "yσυντ από την κορυφή της οθόνης"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:705
-msgid "height"
-msgstr "ύψος"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:708
-msgid "the canvas height"
-msgstr "το ύψος του καμβά"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
-msgid "title x"
-msgstr "τίτλος χ"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
-msgid "title y"
-msgstr "τίτλος y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:733
-msgid "left x"
-msgstr "αριστερό x"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
-msgid "top y"
-msgstr "επάνω y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
-msgid "right x"
-msgstr "δεξιό x"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:760
-msgid "bottom y"
-msgstr "κάτω y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:788
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:802
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:816
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:830
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:844
-#: TurtleArt/taconstants.py:251 TurtleArt/taconstants.py:273
-#: TurtleArt/taconstants.py:294 TurtleArt/taconstants.py:336
-#: TurtleArt/taconstants.py:378 TurtleArt/taconstants.py:420
-msgid "Title"
-msgstr "Τίτλος"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:775
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
-msgid "presentation 1x1"
-msgstr "παρουσίαση 1X1"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:803
-msgid "presentation 2x1"
-msgstr "παρουσίαση 2X1"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:817
-msgid "presentation 1x2"
-msgstr "παρουσίαση 1X2"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:831
-msgid "presentation 2x2"
-msgstr "παρουσίαση 2X2"
-
-#: plugins/light_sensor/light_sensor.py:57
-#: plugins/light_sensor/light_sensor.py:64
-msgid "light level detected by light sensor"
-msgstr ""
 
 #: plugins/audio_sensors/audio_sensors.py:83
 #: plugins/audio_sensors/audio_sensors.py:98
@@ -1370,6 +1084,7 @@ msgstr "ένταση εισόδου μικροφώνου"
 
 #: plugins/audio_sensors/audio_sensors.py:118
 #: plugins/audio_sensors/audio_sensors.py:126
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
 msgid "pitch"
 msgstr "τόνος"
 
@@ -1378,683 +1093,1558 @@ msgstr "τόνος"
 msgid "microphone input pitch"
 msgstr "τόνος εισαγωγής μικροφώνου"
 
-#: plugins/audio_sensors/audio_sensors.py:145
-#: plugins/audio_sensors/audio_sensors.py:159
+#: plugins/audio_sensors/audio_sensors.py:147
+#: plugins/audio_sensors/audio_sensors.py:161
+#: plugins/audio_sensors/audio_sensors.py:174
+#: plugins/audio_sensors/audio_sensors.py:188
 msgid "resistance"
 msgstr "αντίσταση"
 
-#: plugins/audio_sensors/audio_sensors.py:146
-#: plugins/audio_sensors/audio_sensors.py:160
+#: plugins/audio_sensors/audio_sensors.py:148
+#: plugins/audio_sensors/audio_sensors.py:162
+#: plugins/audio_sensors/audio_sensors.py:175
+#: plugins/audio_sensors/audio_sensors.py:189
 msgid "microphone input resistance"
 msgstr "αντίσταση εισόδου μικροφώνου"
 
-#: plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:166
+#: plugins/audio_sensors/audio_sensors.py:153
+#: plugins/audio_sensors/audio_sensors.py:167
+#: plugins/audio_sensors/audio_sensors.py:180
+#: plugins/audio_sensors/audio_sensors.py:194
 msgid "voltage"
 msgstr "τάση"
 
-#: plugins/audio_sensors/audio_sensors.py:152
-#: plugins/audio_sensors/audio_sensors.py:167
+#: plugins/audio_sensors/audio_sensors.py:154
+#: plugins/audio_sensors/audio_sensors.py:168
+#: plugins/audio_sensors/audio_sensors.py:181
+#: plugins/audio_sensors/audio_sensors.py:195
 msgid "microphone input voltage"
 msgstr "τάση εισόδου μικροφώνου"
 
-#: plugins/accelerometer/accelerometer.py:55
-#: plugins/accelerometer/accelerometer.py:62
-msgid "acceleration"
+#: plugins/camera_sensor/camera_sensor.py:67
+#: plugins/camera_sensor/camera_sensor.py:79
+#: plugins/camera_sensor/camera_sensor.py:97
+#: plugins/camera_sensor/camera_sensor.py:110
+#: plugins/light_sensor/light_sensor.py:55
+#: plugins/light_sensor/light_sensor.py:62
+msgid "brightness"
+msgstr "φωτεινότητα"
+
+#: plugins/camera_sensor/camera_sensor.py:68
+#: plugins/camera_sensor/camera_sensor.py:99
+msgid "light level detected by camera"
+msgstr "επίπεδο φωτός που εντοπίστηκε από την κάμερα"
+
+#: plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:111
+msgid "Average RGB color from camera is pushed to the stack"
+msgstr "Μέσος όρος χρώματος RGB που μετακινήθηκε με ώθηση προς τη στοίβα"
+
+#: plugins/camera_sensor/camera_sensor.py:91
+#: plugins/camera_sensor/camera_sensor.py:123
+msgid "camera output"
+msgstr "έξοδος κάμερας"
+
+#: plugins/light_sensor/light_sensor.py:57
+#: plugins/light_sensor/light_sensor.py:64
+msgid "light level detected by light sensor"
+msgstr "επίπεδο φωτός που έχει ανιχνευθεί από τον αισθητήρα φωτός"
+
+#: plugins/rfid/rfid.py:91 plugins/rfid/rfid.py:99
+msgid "RFID"
+msgstr "RFID"
+
+#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
+msgid "read value from RFID device"
+msgstr "ανάγνωση τιμής από συσκευή RFID"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:99
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:102
+msgid "while"
+msgstr "λευκό"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:103
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
 msgstr ""
-
-#: plugins/accelerometer/accelerometer.py:57
-#: plugins/accelerometer/accelerometer.py:64
-msgid "push acceleration in x, y, z to heap"
-msgstr ""
-
-#: TurtleArt/tapalette.py:83
-msgid "displays next palette"
-msgstr "εμφανίζει την επόμενη παλέτα"
-
-#: TurtleArt/tapalette.py:84
-msgid "changes the orientation of the palette of blocks"
-msgstr "αλλάζει τον προσανατολισμό των παλετών που περιέχουν τις εντολές"
-
-#: TurtleArt/tawindow.py:748 TurtleArt/tawindow.py:749
-msgid "orientation"
-msgstr "προσανατολισμός"
-
-#: TurtleArt/tawindow.py:759 TurtleArt/tawindow.py:1022
-msgid "next"
-msgstr "επόμενο"
-
-#: TurtleArt/tawindow.py:2885
-msgid "image"
-msgstr "εικόνα"
-
-#: TurtleArt/tautils.py:173
-msgid "Load..."
-msgstr "Φόρτωση..."
-
-#: TurtleArt/tautils.py:182
-msgid "Save..."
-msgstr "Αποθήκευση..."
-
-#: TurtleArt/talogo.py:417
-msgid "did not output to"
-msgstr "δεν έγινε εξαγωγή στο"
-
-#: TurtleArt/talogo.py:466
-msgid "I don't know how to"
-msgstr "Δεν γνωρίζω πως"
-
-#: TurtleArt/talogo.py:512
-msgid "doesn't like"
-msgstr "δεν αρέσει"
-
-#: TurtleArt/talogo.py:512
-msgid "as input"
-msgstr "ως εισαγωγή"
-
-#: TurtleArt/tabasics.py:115
-msgid "Palette of turtle commands"
-msgstr "Παλέτα εντολών της χελώνας"
-
-#: TurtleArt/tabasics.py:120
-msgid "forward"
-msgstr "μπροστά"
-
-#: TurtleArt/tabasics.py:124
-msgid "moves turtle forward"
-msgstr "μετακίνηση της χελώνας μπροστά"
-
-#: TurtleArt/tabasics.py:135
-msgid "moves turtle backward"
-msgstr "μετακίνηση της χελώνας προς τα πίσω"
-
-#: TurtleArt/tabasics.py:143
-msgid "clean"
-msgstr "καθαρισμός"
-
-#: TurtleArt/tabasics.py:146
-msgid "clears the screen and reset the turtle"
-msgstr "καθαρίζει την οθόνη και επανατοποθετεί τη χελώνα"
-
-#: TurtleArt/tabasics.py:158
-msgid "turns turtle counterclockwise (angle in degrees)"
-msgstr "περιστρέφει τη χελώνα αριστερόστροφα (γωνία σε μοίρες)"
-
-#: TurtleArt/tabasics.py:169
-msgid "turns turtle clockwise (angle in degrees)"
-msgstr "περιστροφή της χελώνας δεξιόστροφα (γωνία σε μοίρες)"
-
-#: TurtleArt/tabasics.py:177
-msgid "arc"
-msgstr "τόξο"
-
-#: TurtleArt/tabasics.py:177
-msgid "angle"
-msgstr "γωνία"
-
-#: TurtleArt/tabasics.py:177
-msgid "radius"
-msgstr "ακτίνα"
-
-#: TurtleArt/tabasics.py:181
-msgid "moves turtle along an arc"
-msgstr "μετακίνηση της χελώνας κατά μήκος ενός τόξου"
-
-#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256
-msgid "set xy"
-msgstr "ορισμός χy"
-
-#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256
-msgid "x"
-msgstr "χ"
-
-#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256
-msgid "y"
-msgstr "y"
-
-#: TurtleArt/tabasics.py:194 TurtleArt/tabasics.py:260
-msgid ""
-"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-msgstr ""
-"μετακίνηση της χελώνας στη θέση xσυντ, yσυντ; (0, 0) είναι στο κέντρο της "
-"οθόνης."
-
-#
-#: TurtleArt/tabasics.py:204
-msgid "set heading"
-msgstr "ορισμός επικεφαλίδας"
-
-#: TurtleArt/tabasics.py:208
-msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
-msgstr "ορισμός επικεφαλίδας της χελώνας (0 προς την κορυφή της οθόνης)"
-
-#: TurtleArt/tabasics.py:217
-msgid ""
-"holds current x-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr ""
-"διατήρηση τρέχουσας τιμής της x-συντεταγμένης της χελώνας (μπορεί να "
-"χρησιμοποιηθεί στη θέση ενός αριθμού τμήματος)"
-
-#: TurtleArt/tabasics.py:228
-msgid ""
-"holds current y-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr ""
-"διατήρηση τρέχουσας τιμής της y-συντεταγμένης της χελώνας (μπορεί να "
-"χρησιμοποιηθεί στη θέση ενός αριθμού τμήματος)"
-
-#: TurtleArt/tabasics.py:239
-msgid ""
-"holds current heading value of the turtle (can be used in place of a number "
-"block)"
-msgstr ""
-"διατήρηση τρέχουσας επικεφαλίδας της χελώνας (μπορεί να χρησιμοποιηθεί στη "
-"θέση μιας αριθμητικής εντολής)"
-
-#: TurtleArt/tabasics.py:273
-msgid "Palette of pen commands"
-msgstr "Παλέτα εντολών του στιλό"
-
-#: TurtleArt/tabasics.py:277
-msgid "pen up"
-msgstr "στιλό πάνω"
-
-#: TurtleArt/tabasics.py:280
-msgid "Turtle will not draw when moved."
-msgstr "Η χελώνα δεν θα σχεδιάζει καθώς μετακινείται."
-
-#: TurtleArt/tabasics.py:286
-msgid "pen down"
-msgstr "στιλό κάτω"
-
-#: TurtleArt/tabasics.py:289
-msgid "Turtle will draw when moved."
-msgstr "Η χελώνα θα σχεδιάζει καθώς μετακινείται."
-
-#: TurtleArt/tabasics.py:295
-msgid "set pen size"
-msgstr "ορισμός μεγέθους στιλό"
-
-#: TurtleArt/tabasics.py:299
-msgid "sets size of the line drawn by the turtle"
-msgstr "ορισμός μεγέθους της γραμμής που σχεδιάζει η χελώνα"
-
-#: TurtleArt/tabasics.py:309
-msgid "fill screen"
-msgstr "γέμισμα οθόνης"
-
-#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:394
-msgid "color"
-msgstr "χρώμα"
-
-#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:404
-msgid "shade"
-msgstr "σκιά"
-
-#: TurtleArt/tabasics.py:313
-msgid "fills the background with (color, shade)"
-msgstr "γέμισμα του παρασκηνίου με (χρώμα, σκιά)"
-
-#: TurtleArt/tabasics.py:322
-msgid "pen size"
-msgstr "μέγεθος στιλό"
-
-#: TurtleArt/tabasics.py:323
-msgid "holds current pen size (can be used in place of a number block)"
-msgstr ""
-"διατήρηση τρέχοντος μεγέθους του στιλό (μπορεί να χρησιμοποιηθεί στη θέση "
-"ενός αριθμού τμήματος)"
-
-#: TurtleArt/tabasics.py:334
-msgid "start fill"
-msgstr "έναρξη γεμίσματος"
-
-#: TurtleArt/tabasics.py:336
-msgid "starts filled polygon (used with end fill block)"
-msgstr ""
-"Έναρξη ενός γεμάτου πολύγωνου (χρησιμοποιείται μαζί με τον τερματισμό ενός "
-"γεμάτου μπλοκ)"
-
-#: TurtleArt/tabasics.py:343
-msgid "end fill"
-msgstr "τέλος γεμίσματος"
-
-#: TurtleArt/tabasics.py:345
-msgid "completes filled polygon (used with start fill block)"
-msgstr ""
-"ολοκληρώνει ένα γεμάτο πολύγωνο (χρησιμοποιείται μαζί με την έναρξη ενός "
-"γεμάτου μπλοκ)"
-
-#: TurtleArt/tabasics.py:355
-msgid "Palette of pen colors"
-msgstr "Παλέτα χρωμάτων του στιλό"
-
-#: TurtleArt/tabasics.py:359
-msgid "set color"
-msgstr "ορισμός χρώματος"
-
-#: TurtleArt/tabasics.py:363
-msgid "sets color of the line drawn by the turtle"
-msgstr "ορισμός χρώματος της γραμμής που σχεδιάζει η χελώνα"
-
-#: TurtleArt/tabasics.py:371
-msgid "set shade"
-msgstr "ορισμός σκιάς"
-
-#: TurtleArt/tabasics.py:375
-msgid "sets shade of the line drawn by the turtle"
-msgstr "ορισμός σκιάς της γραμμής που σχεδιάζει η χελώνα"
-
-#: TurtleArt/tabasics.py:383
-msgid "set gray"
-msgstr "ορισμός γκρίζου"
-
-#: TurtleArt/tabasics.py:386
-msgid "sets gray level of the line drawn by the turtle"
-msgstr "ορισμός του επιπέδου γκριζαρίσματος της γραμμής που σχεδιάζει η χελώνα"
-
-#: TurtleArt/tabasics.py:395
-msgid "holds current pen color (can be used in place of a number block)"
-msgstr ""
-"διατήρηση τρέχοντος χρώματος του στιλό (μπορεί να χρησιμοποιηθεί στη θέση "
-"μιας αριθμητικής εντολής)"
-
-#: TurtleArt/tabasics.py:405
-msgid "holds current pen shade"
-msgstr "συγκρατεί την τρέχουσα σκιά του στιλό"
-
-#: TurtleArt/tabasics.py:413
-msgid "gray"
-msgstr "γκρίζο"
-
-#: TurtleArt/tabasics.py:414
-msgid "holds current gray level (can be used in place of a number block)"
-msgstr ""
-"διατήρηση τρέχοντος επιπέδου του γκρίζου (μπορεί να χρησιμοποιηθεί στη θέση "
-"ενός τμήματος αριθμού )"
-
-#: TurtleArt/tabasics.py:434
-msgid "set text color"
-msgstr "ορισμός χρώματος κειμένου"
-
-#: TurtleArt/tabasics.py:437
-msgid "sets color of text drawn by the turtle"
-msgstr "ορισμός χρώματος του κειμένου που γράφει η χελώνα"
-
-#: TurtleArt/tabasics.py:445
-msgid "set text size"
-msgstr "ορισμός μεγέθους κειμένου"
-
-#: TurtleArt/tabasics.py:448
-msgid "sets size of text drawn by the turtle"
-msgstr "ορισμός μεγέθους του κειμένου που γράφει η χελώνα"
-
-#: TurtleArt/tabasics.py:531
-msgid "Palette of numeric operators"
-msgstr "Παλέτα αριθμητικών τελεστών"
-
-#: TurtleArt/tabasics.py:537
-msgid "plus"
-msgstr "συν"
-
-#: TurtleArt/tabasics.py:540
-msgid "adds two alphanumeric inputs"
-msgstr "προσθέτει δύο αλφαριθμητικά"
-
-#: TurtleArt/tabasics.py:548
-msgid "minus"
-msgstr "πλην"
-
-#: TurtleArt/tabasics.py:551
-msgid "subtracts bottom numeric input from top numeric input"
-msgstr "αφαιρεί τον κάτω αριθμό από αυτόν της κορυφής"
-
-#: TurtleArt/tabasics.py:562
-msgid "multiply"
-msgstr "πολλαπλασιασμός"
-
-#: TurtleArt/tabasics.py:565
-msgid "multiplies two numeric inputs"
-msgstr "πολλαπλασιάζει δύο αριθμούς"
-
-#: TurtleArt/tabasics.py:574
-msgid "divide"
-msgstr "διαίρεση"
-
-#: TurtleArt/tabasics.py:577
-msgid ""
-"divides top numeric input (numerator) by bottom numeric input (denominator)"
-msgstr ""
-"διαιρεί τον αριθμό της κορυφής (αριθμητής) με τον αριθμό στο κάτω μέρος "
-"(παρανομαστής)"
-
-#: TurtleArt/tabasics.py:587
-msgid "identity"
-msgstr "ταυτότητα"
-
-#: TurtleArt/tabasics.py:589
-msgid "identity operator used for extending blocks"
-msgstr "τελεστής ταυτότητας που χρησιμοποιείται για τις εκτεταμένες εντολές"
-
-#: TurtleArt/tabasics.py:597 TurtleArt/tabasics.py:598
-msgid "mod"
-msgstr "υπόλοιπο"
-
-#: TurtleArt/tabasics.py:601
-msgid "modular (remainder) operator"
-msgstr "αρθρωτός (υπόλοιπο) τελεστής"
-
-#: TurtleArt/tabasics.py:608
-msgid "√"
-msgstr "√"
-
-#: TurtleArt/tabasics.py:609
-msgid "square root"
-msgstr "τετραγωνική ρίζα"
-
-#: TurtleArt/tabasics.py:612
-msgid "calculates square root"
-msgstr "υπολογίζει την τετραγωνική ρίζα"
-
-#: TurtleArt/tabasics.py:619
-msgid "random"
-msgstr "τυχαίο"
-
-#: TurtleArt/tabasics.py:619
-msgid "min"
-msgstr "ελάχιστο"
-
-#: TurtleArt/tabasics.py:619
-msgid "max"
-msgstr "μέγιστο"
-
-#: TurtleArt/tabasics.py:623
-msgid "returns random number between minimum (top) and maximum (bottom) values"
-msgstr ""
-"επιστρέφει έναν τυχαίο αριθμό μεταξύ των ελάχιστων (επάνω) και των μέγιστων "
-"(κάτω) τιμών"
-
-#: TurtleArt/tabasics.py:635
-msgid "number"
-msgstr "αριθμός"
-
-#: TurtleArt/tabasics.py:636
-msgid "used as numeric input in mathematic operators"
-msgstr "χρησιμοποιείται ως αριθμός σε μαθηματικές πράξεις"
-
-#: TurtleArt/tabasics.py:643
-msgid "greater than"
-msgstr "μεγαλύτερο από"
-
-#: TurtleArt/tabasics.py:646
-msgid "logical greater-than operator"
-msgstr "λογικός τελεστής - μεγαλύτερο από (>)"
-
-#: TurtleArt/tabasics.py:654
-msgid "less than"
-msgstr "μικρότερο από"
-
-#: TurtleArt/tabasics.py:657
-msgid "logical less-than operator"
-msgstr "λογικός τελεστής - μικρότερο από (<)"
-
-#: TurtleArt/tabasics.py:665
-msgid "equal"
-msgstr "ίσο"
-
-#: TurtleArt/tabasics.py:668
-msgid "logical equal-to operator"
-msgstr "λογικός τελεστής ισότητας (=)"
-
-#: TurtleArt/tabasics.py:674
-msgid "not"
-msgstr "όχι"
-
-#: TurtleArt/tabasics.py:677
-msgid "logical NOT operator"
-msgstr "λογικός τελεστής άρνησης (όχι)"
-
-#: TurtleArt/tabasics.py:683 TurtleArt/tabasics.py:686
-msgid "and"
-msgstr "και"
-
-#: TurtleArt/tabasics.py:687
-msgid "logical AND operator"
-msgstr "λογικός τελεστής σύζευξης (και)"
-
-#: TurtleArt/tabasics.py:694 TurtleArt/tabasics.py:697
-msgid "or"
-msgstr "ή"
-
-#: TurtleArt/tabasics.py:698
-msgid "logical OR operator"
-msgstr "λογικός τελεστής διάζευξης (ή)"
-
-#: TurtleArt/tabasics.py:712
-msgid "wait"
-msgstr "αναμονή"
-
-#: TurtleArt/tabasics.py:716
-msgid "pauses program execution a specified number of seconds"
-msgstr ""
-"παύει την εκτέλεση του προγράμματος για καθορισμένο αριθμό δευτερολέπτων"
-
-#: TurtleArt/tabasics.py:723
-msgid "forever"
-msgstr "για πάντα"
-
-#: TurtleArt/tabasics.py:727
-msgid "loops forever"
-msgstr "αδιάκοπη εκτέλεση σε βρόχο"
-
-#: TurtleArt/tabasics.py:733 TurtleArt/tabasics.py:737
-msgid "repeat"
-msgstr "επανάληψη"
-
-#: TurtleArt/tabasics.py:738
-msgid "loops specified number of times"
-msgstr "επανάληψη σύμφωνα με τον καθορισμένο αριθμό"
-
-#: TurtleArt/tabasics.py:744 TurtleArt/tabasics.py:756
-msgid "if"
-msgstr "εάν"
-
-#: TurtleArt/tabasics.py:744
-msgid "then"
-msgstr "τότε"
-
-#: TurtleArt/tabasics.py:747
-msgid "if then"
-msgstr "εάν τότε"
-
-#: TurtleArt/tabasics.py:749
-msgid "if-then operator that uses boolean operators from Numbers palette"
-msgstr ""
-"εάν - τότε ο τελεστής που χρησιμοποιεί λογικές τιμές τελεστών από την παλέτα "
-"αριθμών"
-
-#: TurtleArt/tabasics.py:756
-msgid "then else"
-msgstr "τότε άλλο"
-
-#: TurtleArt/tabasics.py:760
-msgid "if then else"
-msgstr "εάν τότε άλλο"
-
-#: TurtleArt/tabasics.py:761
-msgid "if-then-else operator that uses boolean operators from Numbers palette"
-msgstr ""
-"εάν - τότε άλλος τελεστής που χρησιμοποιεί λογικές τιμές τελεστών από την "
+"κάνε-ενώ-Αληθής τελεστής που χρησιμοποιεί λογικές τιμές τελεστών από την "
 "παλέτα αριθμών"
 
-#: TurtleArt/tabasics.py:769
-msgid "horizontal space"
-msgstr "οριζόντιο διάστημα"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:112
+msgid "until"
+msgstr "μέχρι"
 
-#: TurtleArt/tabasics.py:770
-msgid "jogs stack right"
-msgstr "ώθηση στοίβας προς τα δεξιά"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"κάνε-μέχρι-Αληθής τελεστής που χρησιμοποιεί λογικές τιμές τελεστών από την "
+"παλέτα αριθμών"
 
-#: TurtleArt/tabasics.py:777
-msgid "vertical space"
-msgstr "κάθετο διάστημα"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:120
+msgid "Palette of media objects"
+msgstr "Παλέτα πολυμεσικών αντικειμένων"
 
-#: TurtleArt/tabasics.py:778
-msgid "jogs stack down"
-msgstr "ώθηση στοίβας προς τα κάτω"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:126
+msgid "journal"
+msgstr "Ημερολόγιο"
 
-#: TurtleArt/tabasics.py:784
-msgid "stop action"
-msgstr "σταμάτημα ενέργειας"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:127
+msgid "Sugar Journal media object"
+msgstr "Ημερολόγιο του Sugar: αντικείμενο πολυμέσων"
 
-#: TurtleArt/tabasics.py:787
-msgid "stops current action"
-msgstr "διακόπτει την τρέχουσα ενέργεια"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:137
+msgid "audio"
+msgstr "ήχος"
 
-#: TurtleArt/tabasics.py:796
-msgid "Palette of variable blocks"
-msgstr "Παλέτα μεταβλητών εντολών"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
+msgid "Sugar Journal audio object"
+msgstr "Ημερολόγιο του Sugar: αντικείμενο ήχου"
 
-#: TurtleArt/tabasics.py:804
-msgid "connects action to toolbar run buttons"
-msgstr "συνδέει την ενέργεια με τα πλήκτρα εκτέλεσης της γραμμής εργαλείων"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:149
+msgid "video"
+msgstr "βίντεο"
 
-#: TurtleArt/tabasics.py:812
-msgid "store in box 1"
-msgstr "αποθήκευση στο πλαίσιο 1"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:151
+msgid "Sugar Journal video object"
+msgstr "Αντικείμενο ήχου του Ημερολογίου του Sugar"
 
-#: TurtleArt/tabasics.py:816
-msgid "stores numeric value in Variable 1"
-msgstr "αποθηκεύει την αριθμητική τιμή στη μεταβλητή 1"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:161
+msgid "description"
+msgstr "περιγραφή"
 
-#: TurtleArt/tabasics.py:823
-msgid "store in box 2"
-msgstr "αποθήκευση στο πλαίσιο 2"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:163
+msgid "Sugar Journal description field"
+msgstr "Ημερολόγιο του Sugar: πεδίο περιγραφής"
 
-#: TurtleArt/tabasics.py:827
-msgid "stores numeric value in Variable 2"
-msgstr "αποθηκεύει την αριθμητική τιμή στη μεταβλητή 2"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:180
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:208
+msgid "show"
+msgstr "εμφάνιση"
 
-#: TurtleArt/tabasics.py:841
-msgid "box 1"
-msgstr "πλαίσιο 1"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:184
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:197
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:212
+msgid "draws text or show media from the Journal"
+msgstr "γράφει κείμενο ή εμφανίζει πολυμέσα από το Ημερολόγιο"
 
-#: TurtleArt/tabasics.py:844
-msgid "Variable 1 (numeric value)"
-msgstr "μεταβλητή 1 (αριθμητική τιμή)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
+msgid "show aligned"
+msgstr "εμφάνιση στοιχισμένων"
 
-#: TurtleArt/tabasics.py:850
-msgid "box 2"
-msgstr "πλαίσιο 2"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:220
+msgid "set scale"
+msgstr "ορισμός κλίμακας"
 
-#: TurtleArt/tabasics.py:853
-msgid "Variable 2 (numeric value)"
-msgstr "μεταβλητή 2 (αριθμητική τιμή)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:224
+msgid "sets the scale of media"
+msgstr "ορισμός της κλίμακας των πολυμέσων"
 
-#: TurtleArt/tabasics.py:860 TurtleArt/tabasics.py:870
-msgid "box"
-msgstr "πλαίσιο"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:231
+msgid "save picture"
+msgstr "αποθήκευση εικόνας"
 
-#: TurtleArt/tabasics.py:862 TurtleArt/tabasics.py:873
-msgid "my box"
-msgstr "το δικό μου πλαίσιο"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:233
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:244
+msgid "picture name"
+msgstr "όνομα εικόνας"
 
-#: TurtleArt/tabasics.py:864
-msgid "named variable (numeric value)"
-msgstr "μεταβλητή με όνομα (αριθμητική τιμή)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:234
+msgid "saves a picture to the Sugar Journal"
+msgstr "αποθηκεύει την εικόνα στο Ημερολόγιο του Sugar"
 
-#: TurtleArt/tabasics.py:870
-msgid "store in"
-msgstr "αποθήκευση στο"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:242
+msgid "save SVG"
+msgstr "αποθήκευση SVG"
 
-#: TurtleArt/tabasics.py:870
-msgid "value"
-msgstr "τιμή"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:245
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr ""
+"αποθηκεύει τα γραφικά της Χελώνας ως αρχεία SVG στο Ημερολόγιο του Sugar"
 
-#: TurtleArt/tabasics.py:874
-msgid "stores numeric value in named variable"
-msgstr "αποθηκεύει την αριθμητική τιμή στην επώνυμη μεταβλητή"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:252
+msgid "scale"
+msgstr "κλίμακα"
 
-#: TurtleArt/tabasics.py:882 TurtleArt/tabasics.py:884
-#: TurtleArt/tabasics.py:908 TurtleArt/tabasics.py:911
-msgid "action"
-msgstr "ενέργεια"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:256
+msgid "holds current scale value"
+msgstr "συγκρατεί την τρέχουσα τιμή της κλίμακας"
 
-#: TurtleArt/tabasics.py:886
-msgid "top of nameable action stack"
-msgstr "κορυφή της επώνυμης ενέργειας της στοίβας"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:261
+msgid "media wait"
+msgstr "αναμονή για πολυμέσα"
 
-#: TurtleArt/tabasics.py:891 TurtleArt/tabasics.py:918
-msgid "action 1"
-msgstr "ενέργεια 1"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:263
+msgid "wait for current video or audio to complete"
+msgstr "αναμονή για ολοκλήρωση του τρέχοντος βίντεο ή ήχου"
 
-#: TurtleArt/tabasics.py:894
-msgid "top of Action 1 stack"
-msgstr "κορυφή της στοίβας της ενέργειας 1"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
+msgid "speak"
+msgstr ""
 
-#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:927
-msgid "action 2"
-msgstr "ενέργεια 2"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
+msgid "hello"
+msgstr ""
 
-#: TurtleArt/tabasics.py:902
-msgid "top of Action 2 stack"
-msgstr "κορυφή της στοίβας της ενέργειας 2"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:273
+msgid "speaks text"
+msgstr ""
 
-#: TurtleArt/tabasics.py:912
-msgid "invokes named action stack"
-msgstr "επίκληση της επώνυμης ενέργειας της στοίβας"
+#. TRANS: pitch, duration, amplitude
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
+msgid "sinewave"
+msgstr ""
 
-#: TurtleArt/tabasics.py:921
-msgid "invokes Action 1 stack"
-msgstr "επίκληση της ενέργειας 1 της στοίβας"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
+msgid "duration"
+msgstr ""
 
-#: TurtleArt/tabasics.py:930
-msgid "invokes Action 2 stack"
-msgstr "επίκληση της ενέργειας 2 της στοίβας"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:284
+msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
+msgstr ""
 
-#: TurtleArt/tabasics.py:938
-msgid "trash"
-msgstr "κάδος ανακύκλωσης"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:299
+msgid "button down"
+msgstr ""
 
-#: TurtleArt/tabasics.py:942
-msgid "empty trash"
-msgstr "κενός κάδος ανακύκλωσης"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:302
+msgid "returns 1 if mouse button is pressed"
+msgstr ""
 
-#: TurtleArt/tabasics.py:943
-msgid "permanently deletes items in trash"
-msgstr "διαγράφει μόνιμα τα αντικείμενα του κάδου ανακύκλωσης"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:309
+msgid "mouse x"
+msgstr ""
 
-#: TurtleArt/tabasics.py:947
-msgid "restore all"
-msgstr "επαναφορά όλων"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:312
+msgid "returns mouse x coordinate"
+msgstr ""
 
-#: TurtleArt/tabasics.py:948
-msgid "restore all blocks from trash"
-msgstr "επαναφέρει όλες τις εντολές από τον κάδο ανακύκλωσης"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:319
+msgid "mouse y"
+msgstr ""
 
-#: TurtleArt/tabasics.py:952
-msgid "clear all"
-msgstr "καθαρισμός όλων"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
+msgid "returns mouse y coordinate"
+msgstr ""
 
-#: TurtleArt/tabasics.py:953
-msgid "move all blocks to trash"
-msgstr "μετακίνηση όλων των εντολών στον κάδο ανακύκλωσης"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
+msgid "query keyboard"
+msgstr "ερώτημα πληκτρολογίου"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:332
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr ""
+"ερώτημα για τα δεδομένα εισόδου του πληκτρολογίου (τα αποτελέσματα θα "
+"αποθηκευτούν στην εντολή πληκτρολογίου)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:339
+msgid "keyboard"
+msgstr "πληκτρολόγιο"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:343
+msgid "holds results of query-keyboard block"
+msgstr "διατηρεί τα αποτελέσματα του ερωτήματος - εντολή πληκτρολογίου"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:350
+msgid "read pixel"
+msgstr "ανάγνωση εικονοστοιχείου"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:353
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr "Το χρώμα ΚΠΜ κάτω από τη χελώνα προωθήθηκε στη Στοίβα"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:361
+msgid "turtle sees"
+msgstr "η χελώνα βλέπει"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:363
+msgid "returns the color that the turtle \"sees\""
+msgstr "επιστρέφει το χρώμα που \"βλέπει\" αυτή η χελώνα"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371 taextras.py:279
+msgid "time"
+msgstr "χρόνος"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:374
+msgid "elapsed time (in seconds) since program started"
+msgstr ""
+"χρόνος που πέρασε (σε δευτερόλεπτα) από τη στιγμή που ξεκίνησε το πρόγραμμα"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:383
+msgid "Palette of extra options"
+msgstr "Παλέτα πρόσθετων επιλογών"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
+msgid "push"
+msgstr "ώθηση"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:391
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "προωθεί την τιμή στη ΠΜΤΕ (πρώτη-μέσα τελευταία-έξω στοίβα)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:401
+msgid "show heap"
+msgstr "εμφάνιση στοίβας"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "εμφανίζει την τιμή στη ΠΜΤΕ (πρώτη-μέσα τελευταία-έξω στοίβα)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:414
+msgid "empty heap"
+msgstr "κενός σωρός"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:417
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "αδειάζει το ΠΜΤΕ (Πρώτο-Μέσα Τελευταίο-Έξω)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:427
+msgid "pop"
+msgstr "απώθηση"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:431
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "ανάδυση της τιμής στον σωρό ΠΜΤΕ (πρώτη-μέσα τελευταία-έξω στοίβα)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:441
+#, fuzzy
+msgid "empty heap?"
+msgstr "κενός σωρός"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:444
+msgid "returns True if heap is empty"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:453
+msgid "comment"
+msgstr "σχόλιο"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
+msgid "places a comment in your code"
+msgstr "τοποθετεί ένα σχόλιο στον κώδικά σας"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:460
+msgid "print"
+msgstr "εκτύπωση"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:463
+msgid "prints value in status block at bottom of the screen"
+msgstr "εκτυπώνει την αξία στο πεδίο κατάστασης στο κάτω μέρος της οθόνης"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:471
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:483
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:496
+msgid "Python"
+msgstr "Python"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:474
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+"ένα προγραμματιστικό τμήμα εντολών: χρησιμοποιείται για την προσθήκη "
+"προχωρημένων μαθηματικών εξισώσεων μιας μεταβλητής, π.χ. sin(x)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:486
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+"μια προγραμματιστική εντολή: χρησιμοποιείται για την προσθήκη προχωρημένων "
+"μαθηματικών εξισώσεων πολλών μεταβλητών, π.χ. τ_ρ(x*x+y*y)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+"ένα προγραμματιστικό τμήμα εντολών: χρησιμοποιείται για την προσθήκη "
+"προχωρημένων μαθηματικών εξισώσεων πολλών μεταβλητών, π.χ. ημ(x+y+z)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:510
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:525
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:540
+msgid "Python block"
+msgstr "Εντολές Python"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:512
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:527
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:542
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr ""
+"εκτελεί τον κώδικα που βρέθηκε στο άρθρωμα tamyblock.py το οποίο εντοπίστηκε "
+"στο Ημερολόγιο"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:555
+msgid "Cartesian"
+msgstr "Καρτεσιανό"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:557
+msgid "displays Cartesian coordinates"
+msgstr "εμφανίζει Καρτεσιανές συντεταγμένες"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:563
+msgid "polar"
+msgstr "πολική"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:565
+msgid "displays polar coordinates"
+msgstr "εμφανίζει τις πολικές συντεταγμένες"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:571
+msgid "turtle"
+msgstr "χελώνα"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:574
+msgid "chooses which turtle to command"
+msgstr "επιλέξτε σε ποια χελώνα θέλετε να δώσετε εντολή"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:583
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:592
+msgid "turtle shell"
+msgstr "κέλυφος χελώνας"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:593
+msgid "put a custom 'shell' on the turtle"
+msgstr "τοποθετεί ένα τροποποιημένο \"κέλυφος\" πάνω στη χελώνα"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
+msgid "top"
+msgstr "κορυφή"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:600
+msgid "top of a collapsed stack"
+msgstr "κορυφή μιας στοίβας που κατέρρευσε"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:606
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:739
+msgid "bottom"
+msgstr "κάτω μέρος"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:607
+msgid "bottom of a collapsible stack"
+msgstr "το κάτω μέρος μιας στοίβας που μπορεί να καταρρεύσει"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:615
+msgid "bottom block in a collapsed stack: click to open"
+msgstr ""
+"κάτω εντολή σε μια στοίβα που μπορεί να καταρρεύσει: κάντε κλικ για άνοιγμα"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:623
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:626
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:635
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:643
+msgid "top of stack"
+msgstr "κορυφή της στοίβας"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:624
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:633
+msgid "label"
+msgstr "ετικέτα"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:632
+msgid "top of a collapsible stack"
+msgstr "κορυφή μιας στοίβας που μπορεί να καταρρεύσει"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:649
+msgid "Palette of presentation templates"
+msgstr "Παλέτα προτύπων παρουσιάσεων"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:653
+msgid "hide blocks"
+msgstr "απόκρυψη εντολών"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:655
+msgid "declutters canvas by hiding blocks"
+msgstr "γέμισμα του καμβά με κρυμμένα εντολές"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:660
+msgid "show blocks"
+msgstr "εμφάνιση εντολών"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:662
+msgid "restores hidden blocks"
+msgstr "επαναφέρει κρυμμένες εντολές"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
+msgid "hides the Sugar toolbars"
+msgstr "αποκρύπτει τις εργαλειοθήκες του Sugar"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:678
+msgid "list"
+msgstr "λίστα"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:681
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
+msgid "presentation bulleted list"
+msgstr "παρουσίαση λίστας με κουκκίδες"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:912
+msgid "presentation template: list of bullets"
+msgstr "πρότυπο παρουσίασης: λίστα κουκκίδων"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:696
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:856
+msgid "presentation template: select Journal object (no description)"
+msgstr ""
+"πρότυπο παρουσίασης: επιλέξτε αντικείμενο από το Ημερολόγιο (χωρίς "
+"περιγραφή)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:703
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:842
+msgid "presentation template: select Journal object (with description)"
+msgstr ""
+"πρότυπο παρουσίασης: επιλέξτε αντικείμενο από το Ημερολόγιο (με περιγραφή)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:710
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:898
+msgid "presentation template: select four Journal objects"
+msgstr "πρότυπο παρουσίασης: επιλέξτε τέσσερα αντικείμενα από το Ημερολόγιο"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:717
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:884
+msgid "presentation template: select two Journal objects"
+msgstr "πρότυπο παρουσίασης: επιλέξτε δύο αντικείμενο από το Ημερολόγιο"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
+msgid "xcor of left of screen"
+msgstr "xσυντ από αριστερά της οθόνης"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
+msgid "ycor of bottom of screen"
+msgstr "yσυντ από το κάτω μέρος της οθόνης"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747 taextras.py:205
+msgid "width"
+msgstr "πλάτος"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:750
+msgid "the canvas width"
+msgstr "το πλάτος του καμβά"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:758
+msgid "xcor of right of screen"
+msgstr "xσυντ από δεξιά της οθόνης"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:766
+msgid "ycor of top of screen"
+msgstr "yσυντ από την κορυφή της οθόνης"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771 taextras.py:200
+#: taextras.py:206
+msgid "height"
+msgstr "ύψος"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
+msgid "the canvas height"
+msgstr "το ύψος του καμβά"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:781
+msgid "title x"
+msgstr "τίτλος χ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:790
+msgid "title y"
+msgstr "τίτλος y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:799
+msgid "left x"
+msgstr "αριστερό x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:808
+msgid "top y"
+msgstr "επάνω y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:817
+msgid "right x"
+msgstr "δεξιό x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:826
+msgid "bottom y"
+msgstr "κάτω y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:841
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:855
+msgid "presentation 1x1"
+msgstr "παρουσίαση 1X1"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:869
+msgid "presentation 2x1"
+msgstr "παρουσίαση 2X1"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:883
+msgid "presentation 1x2"
+msgstr "παρουσίαση 1X2"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
+msgid "presentation 2x2"
+msgstr "παρουσίαση 2X2"
+
+#: pysamples/grecord.py:215
+msgid "stop"
+msgstr "διακοπή"
+
+#: pysamples/grecord.py:217
+msgid "play"
+msgstr "αναπαραγωγή"
+
+#: pysamples/grecord.py:219
+msgid "save"
+msgstr "αποθήκευση"
+
+#: pysamples/uturn.py:24
+msgid "uturn"
+msgstr "μεταβολή"
+
+#: pysamples/uturn.py:26
+msgid "make a uturn"
+msgstr "πραγματοποίηση μιας μεταβολής"
+
+#: taextras.py:36
+msgid "Turtle Art Mini"
+msgstr ""
+
+#: taextras.py:40
+msgid "Turtle Confusion"
+msgstr ""
+
+#: taextras.py:41
+msgid "Select a challenge"
+msgstr ""
+
+#: taextras.py:47
+msgid "Palette of Mexican pesos"
+msgstr ""
+
+#: taextras.py:48
+msgid "Palette of Colombian pesos"
+msgstr ""
+
+#: taextras.py:49
+msgid "Palette of Rwandan francs"
+msgstr ""
+
+#: taextras.py:50
+msgid "Palette of US currencies"
+msgstr ""
+
+#: taextras.py:51
+msgid "Palette of Australian currencies"
+msgstr ""
+
+#: taextras.py:52
+msgid "Palette of Guaranies"
+msgstr ""
+
+#. TRANS: Butia is the Arduino Robot Project from Uruguay
+#. (http://www.fing.edu.uy/inco/proyectos/butia/)
+#: taextras.py:58
+msgid "Turtle Art Butia"
+msgstr ""
+
+#: taextras.py:59
+msgid "adjust LED intensity between 0 and 255"
+msgstr ""
+
+#: taextras.py:60
+msgid "returns the object gray level as a number between 0 and 1023"
+msgstr ""
+
+#: taextras.py:61
+msgid "returns 1 when the button is press and 0 otherwise"
+msgstr ""
+
+#: taextras.py:62
+msgid "returns the ambient light level as a number between 0 and 1023"
+msgstr ""
+
+#: taextras.py:63
+msgid "returns the ambient temperature as a number between 0 and 255"
+msgstr ""
+
+#: taextras.py:64
+msgid ""
+"returns the distance from the object in front of the sensor as a number "
+"between 0 and 255"
+msgstr ""
+
+#: taextras.py:66
+msgid "returns 0 or 1 depending on the sensor inclination"
+msgstr ""
+
+#: taextras.py:67
+msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+msgstr ""
+
+#: taextras.py:68
+msgid "switches from 0 to 1, the frequency depends on the vibration"
+msgstr ""
+
+#: taextras.py:69
+msgid "LED"
+msgstr ""
+
+#: taextras.py:70
+msgid "pushbutton"
+msgstr ""
+
+#: taextras.py:71
+msgid "grayscale"
+msgstr ""
+
+#: taextras.py:72
+msgid "ambient light"
+msgstr ""
+
+#: taextras.py:73
+msgid "temperature"
+msgstr ""
+
+#: taextras.py:74 taextras.py:244
+msgid "distance"
+msgstr ""
+
+#: taextras.py:75 taextras.py:241
+msgid "tilt"
+msgstr ""
+
+#: taextras.py:76
+msgid "magnetic induction"
+msgstr ""
+
+#: taextras.py:77
+msgid "vibration"
+msgstr ""
+
+#: taextras.py:78
+msgid "Butia Robot"
+msgstr ""
+
+#: taextras.py:79
+msgid "delay Butia"
+msgstr ""
+
+#: taextras.py:80
+msgid "wait for argument seconds"
+msgstr ""
+
+#. TRANS: This string is shorthand for "battery charge of Butia"
+#: taextras.py:82
+msgid "battery charge Butia"
+msgstr ""
+
+#: taextras.py:83
+msgid "returns the battery charge as a number between 0 and 255"
+msgstr ""
+
+#. TRANS: This string is shorthand for "speed of Butia"
+#: taextras.py:85
+msgid "speed Butia"
+msgstr ""
+
+#: taextras.py:86
+msgid ""
+"set the speed of the Butia motors as a value between 0 and 1023, passed by "
+"an argument"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move Butia forward"
+#: taextras.py:89
+msgid "forward Butia"
+msgstr ""
+
+#: taextras.py:90
+msgid "move the Butia robot forward"
+msgstr ""
+
+#: taextras.py:91
+msgid "move the Butia robot forward a predefined distance"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move Butia backward"
+#: taextras.py:93
+msgid "backward Butia"
+msgstr ""
+
+#: taextras.py:94
+msgid "move the Butia robot backward"
+msgstr ""
+
+#: taextras.py:95
+msgid "move the Butia robot backward a predefined distance"
+msgstr ""
+
+#. TRANS: This string is shorthand for "turn Butia left"
+#: taextras.py:97
+msgid "left Butia"
+msgstr ""
+
+#: taextras.py:98
+msgid "turn the Butia robot at left"
+msgstr ""
+
+#. TRANS: This string is shorthand for "turn Butia right"
+#: taextras.py:100
+msgid "right Butia"
+msgstr ""
+
+#: taextras.py:101
+msgid "turn the Butia robot at right"
+msgstr ""
+
+#: taextras.py:102
+msgid "turn Butia"
+msgstr ""
+
+#: taextras.py:103
+msgid "turn the Butia robot x degrees"
+msgstr ""
+
+#: taextras.py:104
+msgid "stop Butia"
+msgstr ""
+
+#: taextras.py:105
+msgid "stop the Butia robot"
+msgstr ""
+
+#: taextras.py:106
+msgid "display Butia"
+msgstr ""
+
+#. TRANS: this string must contain only ASCII characters.
+#. The len must be 32 characters/spaces.
+#: taextras.py:109
+msgid "Hello World    Butia            "
+msgstr ""
+
+#: taextras.py:110
+msgid "print text in Butia robot 32-character ASCII display"
+msgstr ""
+
+#: taextras.py:111
+msgid "Butia"
+msgstr ""
+
+#: taextras.py:115
+msgid "The camera was not found."
+msgstr ""
+
+#: taextras.py:116
+msgid "Error on the initialization of the camera."
+msgstr ""
+
+#: taextras.py:117
+msgid "FollowMe"
+msgstr ""
+
+#: taextras.py:118
+msgid "follow a RGB color"
+msgstr "ακολούθησε ένα χρώμα RGB"
+
+#: taextras.py:119
+msgid "set a threshold for a RGB color"
+msgstr ""
+
+#: taextras.py:120
+msgid "follow a turtle color"
+msgstr "ακολούθησε το χρώμα της χελώνας"
+
+#: taextras.py:121
+msgid "set the minimal number of pixels to follow"
+msgstr ""
+
+#: taextras.py:122
+#, fuzzy
+msgid "calibrate"
+msgstr "Βαθμονόμηση"
+
+#: taextras.py:123
+msgid "calibrate a color to follow"
+msgstr "βαθμονόμησε ένα χρώμα για να το ακολουθήσει"
+
+#: taextras.py:124
+msgid "x position"
+msgstr "θέση x"
+
+#: taextras.py:125
+msgid "return x position"
+msgstr "επίστρεψε στη θέση x"
+
+#: taextras.py:126
+#, fuzzy
+msgid "y position"
+msgstr "θέση x"
+
+#: taextras.py:127
+#, fuzzy
+msgid "return y position"
+msgstr "επίστρεψε στη θέση x"
+
+#: taextras.py:128
+msgid "pixels"
+msgstr ""
+
+#: taextras.py:129
+msgid "return the number of pixels of the biggest blob"
+msgstr ""
+
+#: taextras.py:133
+msgid "SumBot"
+msgstr ""
+
+#: taextras.py:134
+msgid "speed SumBot"
+msgstr ""
+
+#: taextras.py:135
+msgid "submit the speed to the SumBot"
+msgstr ""
+
+#: taextras.py:136
+msgid "set the default speed for the movement commands"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move SumBot forward"
+#: taextras.py:138
+msgid "forward SumBot"
+msgstr ""
+
+#: taextras.py:139
+msgid "move SumBot forward"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move SumBot backward"
+#: taextras.py:141
+msgid "backward SumBot"
+msgstr ""
+
+#: taextras.py:142
+msgid "move SumBot backward"
+msgstr ""
+
+#: taextras.py:143
+msgid "stop SumBot"
+msgstr ""
+
+#: taextras.py:144
+msgid "stop the SumBot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "turn SumBot left"
+#: taextras.py:146
+msgid "left SumBot"
+msgstr ""
+
+#: taextras.py:147
+msgid "turn left the SumBot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move SumBot right"
+#: taextras.py:149
+msgid "right SumBot"
+msgstr ""
+
+#: taextras.py:150
+msgid "turn right the SumBot"
+msgstr ""
+
+#: taextras.py:151
+msgid "angle to center"
+msgstr ""
+
+#. TRANS: dohyo is the playing field
+#: taextras.py:153
+msgid "get the angle to the center of the dohyo"
+msgstr ""
+
+#: taextras.py:154
+msgid "angle to Enemy"
+msgstr ""
+
+#: taextras.py:155
+msgid "get the angle to the Enemy"
+msgstr ""
+
+#. TRANS: This string is shorthand for "x coordinate of SumBot"
+#: taextras.py:157
+msgid "x coor. SumBot"
+msgstr ""
+
+#: taextras.py:158
+msgid "get the x coordinate of the SumBot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "y coordinate of SumBot"
+#: taextras.py:160
+msgid "y coor. SumBot"
+msgstr ""
+
+#: taextras.py:161
+msgid "get the y coordinate of the SumBot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
+#: taextras.py:163
+msgid "x coor. Enemy"
+msgstr ""
+
+#: taextras.py:164
+msgid "get the x coordinate of the Enemy"
+msgstr ""
+
+#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
+#: taextras.py:166
+msgid "y coor. Enemy"
+msgstr ""
+
+#: taextras.py:167
+msgid "get the y coordinate of the Enemy"
+msgstr ""
+
+#. TRANS: This string is shorthand for "rotation of SumBot"
+#: taextras.py:169
+msgid "rotation SumBot"
+msgstr ""
+
+#: taextras.py:170
+msgid "get the rotation of the Sumbot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
+#: taextras.py:172
+msgid "rotation Enemy"
+msgstr ""
+
+#: taextras.py:173
+msgid "get the rotation of the Enemy"
+msgstr ""
+
+#: taextras.py:174
+msgid "distance to center"
+msgstr ""
+
+#. TRANS: dohyo is the playing field
+#: taextras.py:176
+msgid "get the distance to the center of the dohyo"
+msgstr ""
+
+#: taextras.py:177
+msgid "distance to Enemy"
+msgstr ""
+
+#: taextras.py:178
+msgid "get the distance to the Enemy"
+msgstr ""
+
+#: taextras.py:179
+msgid "update information"
+msgstr ""
+
+#: taextras.py:180
+msgid "update information from the server"
+msgstr ""
+
+#. TRANS: Please use similar terms to those used in the Physics Activity
+#: taextras.py:185
+#, fuzzy
+msgid "Palette of physics blocks"
+msgstr "Παλέτα με μπλοκ αισθητήρων"
+
+#: taextras.py:186
+msgid "start polygon"
+msgstr ""
+
+#: taextras.py:187
+msgid "Begin defining a new polygon based on the current Turtle xy position."
+msgstr ""
+
+#: taextras.py:189
+msgid "add point"
+msgstr ""
+
+#: taextras.py:190
+msgid ""
+"Add a new point to the current polygon based on the current Turtle xy "
+"position."
+msgstr ""
+
+#: taextras.py:192
+msgid "end polygon"
+msgstr ""
+
+#: taextras.py:193
+msgid "Define a new polygon."
+msgstr ""
+
+#: taextras.py:194
+msgid "end filled polygon"
+msgstr ""
+
+#: taextras.py:195
+msgid "Not a simple polygon"
+msgstr ""
+
+#: taextras.py:196
+msgid "Define a new filled polygon."
+msgstr ""
+
+#: taextras.py:197
+msgid "triangle"
+msgstr ""
+
+#. TRANS: base of a triangle
+#: taextras.py:199
+msgid "base"
+msgstr ""
+
+#: taextras.py:201
+msgid "Add a triangle object to the project."
+msgstr ""
+
+#: taextras.py:202
+msgid "circle"
+msgstr ""
+
+#: taextras.py:203
+msgid "Add a circle object to the project."
+msgstr ""
+
+#: taextras.py:204
+msgid "rectangle"
+msgstr ""
+
+#: taextras.py:207
+msgid "Add a rectangle object to the project."
+msgstr ""
+
+#: taextras.py:208
+msgid "reset"
+msgstr ""
+
+#: taextras.py:209
+msgid "Reset the project; clear the object list."
+msgstr ""
+
+#: taextras.py:210
+msgid "motor"
+msgstr ""
+
+#: taextras.py:211
+msgid "torque"
+msgstr ""
+
+#: taextras.py:212
+msgid "speed"
+msgstr ""
+
+#: taextras.py:213
+msgid ""
+"Motor torque and speed range from 0 (off) to positive numbers; motor is "
+"placed on the most recent object created."
+msgstr ""
+
+#: taextras.py:215
+msgid "pin"
+msgstr ""
+
+#: taextras.py:216
+msgid "Pin an object down so that it cannot fall."
+msgstr ""
+
+#: taextras.py:217
+msgid "joint"
+msgstr ""
+
+#: taextras.py:220
+msgid ""
+"Join two objects together (the most recent object created and the object at "
+"point x, y)."
+msgstr ""
+
+#: taextras.py:222
+msgid "Save the project to the Journal as a Physics activity."
+msgstr ""
+
+#: taextras.py:223
+#, fuzzy
+msgid "density"
+msgstr "ταυτότητα"
+
+#: taextras.py:224
+msgid ""
+"Set the density property for objects (density can be any positive number)."
+msgstr ""
+
+#: taextras.py:226
+msgid "friction"
+msgstr ""
+
+#: taextras.py:227
+msgid ""
+"Set the friction property for objects (value from 0 to 1, where 0 turns "
+"friction off and 1 is strong friction)."
+msgstr ""
+
+#. TRANS: bounciness is restitution
+#: taextras.py:230
+msgid "bounciness"
+msgstr ""
+
+#: taextras.py:231
+msgid ""
+"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+"no bounce and 1 is very bouncy)."
+msgstr ""
+
+#: taextras.py:233
+msgid "dynamic"
+msgstr ""
+
+#: taextras.py:234
+msgid ""
+"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+msgstr ""
+
+#. TRANS: WeDo is a robotics product of the LEGO company
+#: taextras.py:240
+#, fuzzy
+msgid "Palette of WeDo blocks"
+msgstr "Παλέτα με μπλοκ αισθητήρων"
+
+#: taextras.py:242
+msgid ""
+"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt left, 2 == tilt right)"
+msgstr ""
+
+#. TRANS: This string is shorthand for "output of the distance sensor"
+#: taextras.py:246
+msgid "distance sensor output"
+msgstr ""
+
+#: taextras.py:247
+msgid "Motor A"
+msgstr ""
+
+#: taextras.py:248
+msgid "returns the current value of Motor A"
+msgstr ""
+
+#: taextras.py:249
+msgid "Motor B"
+msgstr ""
+
+#: taextras.py:250
+msgid "returns the current value of Motor B"
+msgstr ""
+
+#: taextras.py:251
+msgid "set the value for Motor A"
+msgstr ""
+
+#: taextras.py:252
+msgid "set the value for Motor B"
+msgstr ""
+
+#. TRANS: Lego NXT is a robotics product of the LEGO company
+#: taextras.py:257
+msgid "Palette of LEGO NXT blocks"
+msgstr ""
+
+#: taextras.py:258
+msgid "touch"
+msgstr ""
+
+#: taextras.py:259
+msgid "ultrasonic"
+msgstr ""
+
+#: taextras.py:261
+#, fuzzy
+msgid "light"
+msgstr "δεξιά"
+
+#: taextras.py:262
+msgid "PORT A"
+msgstr ""
+
+#: taextras.py:263
+msgid "PORT B"
+msgstr ""
+
+#: taextras.py:264
+msgid "PORT C"
+msgstr ""
+
+#: taextras.py:265
+msgid "PORT 1"
+msgstr ""
+
+#: taextras.py:266
+msgid "PORT 2"
+msgstr ""
+
+#: taextras.py:267
+msgid "PORT 3"
+msgstr ""
+
+#: taextras.py:268
+msgid "PORT 4"
+msgstr ""
+
+#: taextras.py:269
+msgid "Please check the connection with the brick."
+msgstr ""
+
+#: taextras.py:270
+msgid "Please check the port."
+msgstr ""
+
+#: taextras.py:271
+msgid "The value of power must be between -127 to 127."
+msgstr ""
+
+#: taextras.py:272
+msgid "An error has ocurred: check all and try reconect."
+msgstr ""
+
+#: taextras.py:273
+msgid "NXT found"
+msgstr ""
+
+#: taextras.py:274
+msgid "NXT not found"
+msgstr ""
+
+#: taextras.py:275
+msgid "refresh NXT"
+msgstr ""
+
+#: taextras.py:276
+msgid "Search for a connected NXT brick."
+msgstr ""
+
+#: taextras.py:277
+msgid "play tone"
+msgstr ""
+
+#: taextras.py:278
+msgid "freq"
+msgstr ""
+
+#: taextras.py:280
+msgid "Play a tone at freq for time."
+msgstr ""
+
+#: taextras.py:281
+msgid ""
+"turn motor\n"
+"rotations"
+msgstr ""
+
+#: taextras.py:282
+#, fuzzy
+msgid "port"
+msgstr "Θύρα"
+
+#: taextras.py:283
+msgid "power"
+msgstr ""
+
+#: taextras.py:284
+msgid "turn a motor"
+msgstr ""
+
+#: taextras.py:285
+msgid ""
+"sync motors\n"
+"steering"
+msgstr ""
+
+#: taextras.py:286
+msgid "rotations"
+msgstr ""
+
+#: taextras.py:287
+msgid "synchronize two motors"
+msgstr ""
+
+#: taextras.py:288
+msgid "PORT A of the brick"
+msgstr ""
+
+#: taextras.py:289
+msgid "PORT B of the brick"
+msgstr ""
+
+#: taextras.py:290
+msgid "PORT C of the brick"
+msgstr ""
+
+#: taextras.py:291
+msgid "start motor"
+msgstr ""
+
+#: taextras.py:292
+msgid "Run a motor forever."
+msgstr ""
+
+#: taextras.py:293
+msgid "brake motor"
+msgstr ""
+
+#: taextras.py:294
+msgid "Stop a specified motor."
+msgstr ""
+
+#: taextras.py:295
+msgid "PORT 1 of the brick"
+msgstr ""
+
+#: taextras.py:296
+msgid "color sensor"
+msgstr ""
+
+#: taextras.py:297
+msgid "light sensor"
+msgstr ""
+
+#: taextras.py:298
+msgid "PORT 2 of the brick"
+msgstr ""
+
+#: taextras.py:299
+msgid "touch sensor"
+msgstr ""
+
+#: taextras.py:300
+msgid "distance sensor"
+msgstr ""
+
+#: taextras.py:301
+msgid "PORT 3 of the brick"
+msgstr ""
+
+#: taextras.py:302
+#, fuzzy
+msgid "read"
+msgstr "κόκκινο"
+
+#: taextras.py:303
+#, fuzzy
+msgid "sensor"
+msgstr "αισθητήρες"
+
+#: taextras.py:304
+msgid "Read sensor output."
+msgstr ""
+
+#: taextras.py:305
+msgid "PORT 4 of the brick"
+msgstr ""
+
+#: taextras.py:306
+msgid "set light"
+msgstr ""
+
+#: taextras.py:307
+msgid "Set color sensor light."
+msgstr ""
+
+#: turtleart.py:69
+msgid "usage is"
+msgstr "το σύνηθες είναι"
+
+#: turtleart.py:228
+msgid "No option action:"
+msgstr "Δεν υπάρχει επιλογή ενέργειας:"
+
+#: turtleart.py:240
+msgid "File not found"
+msgstr "Το αρχείο δεν βρέθηκε"
+
+#: turtleart.py:264
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr "Κατάλογος ρυθμίσεων μη εγγράψιμος: %s"
+
+#: turtleart.py:320
+msgid "New"
+msgstr "Νέο"
+
+#: turtleart.py:321
+msgid "Open"
+msgstr "Άνοιγμα"
+
+#: turtleart.py:322
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: turtleart.py:323
+msgid "Save as"
+msgstr "Αποθήκευση ως"
+
+#: turtleart.py:330
+msgid "Quit"
+msgstr "Έξοδος"
+
+#: turtleart.py:331
+msgid "File"
+msgstr "Αρχείο"
+
+#: turtleart.py:338
+msgid "Rescale coordinates"
+msgstr "Επανακλιμάκωση συντεταγμένων"
+
+#: turtleart.py:344
+msgid "Reset block size"
+msgstr "Ρύθμιση μεγέθους πλαισίου εντολών"
+
+#: turtleart.py:358
+msgid "Show/hide blocks"
+msgstr "Εμφάνιση/Απόκρυση εντολών"
+
+#: turtleart.py:360
+msgid "Tools"
+msgstr "Εργαλεία"
+
+#: turtleart.py:367
+msgid "Stop"
+msgstr "Διακοπή"
+
+#: turtleart.py:368
+msgid "Turtle"
+msgstr "Χελώνα"
+
+#: turtleart.py:398
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr ""
+"Υπάρχει εργασία μη αποθηκευμένη. Θέλετε να την αποθηκεύσετε πριν την έξοδο;"
+
+#: turtleart.py:399
+msgid "Save project?"
+msgstr "Αποθήκευση έργου;"
+
+#~ msgid "Import/Export"
+#~ msgstr "Εισαγωγή/Εξαγωγή"
+
+#~ msgid "Import project from the Journal"
+#~ msgstr "Εισαγωγή έργου από το Ημερολόγιο"
+
+#~ msgid "full screen"
+#~ msgstr "πλήρης οθόνη"
 
 #~ msgid "stack"
 #~ msgstr "στοίβα"
 
-msgid "yellow"
-msgstr "κίτρινο"
-
 #~ msgid " "
 #~ msgstr " "
-
-msgid "cyan"
-msgstr "κυανό"
-
-msgid "blue"
-msgstr "μπλε"
 
 #~ msgid " clean "
 #~ msgstr " καθαρισμός "
@@ -2065,9 +2655,6 @@ msgstr "μπλε"
 #~ msgid "write"
 #~ msgstr "γράφω"
 
-msgid "green"
-msgstr "πράσινο"
-
 #~ msgid "restore last"
 #~ msgstr "επαναφορά τελευταίου"
 
@@ -2076,26 +2663,14 @@ msgstr "πράσινο"
 #~ "μια εντολή προγραμματισμού: χρησιμοποιείται για την εισαγωγή προχωρημένων "
 #~ "μαθηματικών εξισώσεων, π.χ. ημ(x)"
 
-msgid "orange"
-msgstr "πορτοκαλί"
-
 #~ msgid "blocks"
 #~ msgstr "ομάδες"
 
 #~ msgid "text size"
 #~ msgstr "μέγεθος κειμένου"
 
-msgid "red"
-msgstr "κόκκινο"
-
-#~ msgid "sensors"
-#~ msgstr "αισθητήρες"
-
 #~ msgid "sensor input resistance"
 #~ msgstr "αισθητήρας αντίστασης εισόδου"
-
-msgid "white"
-msgstr "λευκό"
 
 #~ msgid "holds current text color (can be used in place of a number block)"
 #~ msgstr ""
@@ -2110,9 +2685,6 @@ msgstr "λευκό"
 
 #~ msgid "portfolio"
 #~ msgstr "χαρτοφύλακας"
-
-msgid "black"
-msgstr "μαύρο"
 
 #~ msgid "restores most recent blocks from trash"
 #~ msgstr "επαναφέρει τις πιο πρόσφατες εντολές από τον κάδο ανακύκλωσης"
@@ -2136,9 +2708,6 @@ msgstr "μαύρο"
 
 #~ msgid "Trashcan"
 #~ msgstr "Σκουπιδοτενεκές"
-
-msgid "purple"
-msgstr "πορφυρό"
 
 #~ msgid "pen"
 #~ msgstr "στιλό"
