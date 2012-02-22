@@ -306,3 +306,40 @@ LEGO_STRINGS = [
     _('set light'),
     _('Set color sensor light.')
 ]
+
+ARDUINO_STRINGS = [
+    #TRANS: Arduino plugin to control an Arduino board
+    _('Palette of Arduino blocks'),
+    _('HIGH'),
+    _('LOW'),
+    _('INPUT'),
+    _('OUTPUT'),
+    #TRANS: PWM is pulse-width modulation
+    _('PWM'),
+    _('SERVO'),
+    _('ERROR: Check the Arduino and the number of port.'),
+    _('ERROR: Value must be a number from 0 to 255.'),
+    _('ERROR: Value must be either HIGH or LOW.'),
+    _('ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO.'),
+    _('pin mode'),
+    _('pin'),
+    _('mode'),
+    _('Select the pin function (INPUT, OUTPUT, PWM, SERVO).'),
+    _('analog write'),
+    _('value'),
+    _('Write analog value in specified port.'),
+    _('analog read'),
+    _('Read value from analog port. Value may be between 0 and 1023. Use Vref \
+to determine voltage. For USB, volt=((read)*5)/1024) approximately.'),
+    _('digital write'),
+    _('Write digital value to specified port.'),
+    _('digital read'),
+    _('Read value from digital port.'),
+    _('Set HIGH value for digital port.'),
+    _('Configure Arduino port for digital input.'),
+    _('Configure Arduino port to drive a servo.'),
+    _('Set LOW value for digital port.'),
+    _('Configure Arduino port for digital output.'),
+    _('Configure Arduino port for PWM (pulse-width modulation).')
+]
+
