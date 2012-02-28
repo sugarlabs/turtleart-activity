@@ -304,7 +304,11 @@ LEGO_STRINGS = [
     _('Read sensor output.'),
     _('PORT 4 of the brick'),
     _('set light'),
-    _('Set color sensor light.')
+    _('Set color sensor light.'),
+    _('reset motor'),
+    _('Reset the motor counter.'),
+    _('motor position'),
+    _('Get the motor position.')
 ]
 
 ARDUINO_STRINGS = [
