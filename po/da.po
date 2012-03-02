@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-16 00:31-0500\n"
-"PO-Revision-Date: 2012-02-16 21:51+0200\n"
+"POT-Creation-Date: 2012-02-28 00:32-0500\n"
+"PO-Revision-Date: 2012-03-02 17:47+0200\n"
 "Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -22,8 +22,8 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2 TurtleArt/taexporthtml.py:137
-#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1747
-#: TurtleArt/tawindow.py:3055 pysamples/grecord.py:205 turtleart.py:288
+#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1742
+#: TurtleArt/tawindow.py:3043 pysamples/grecord.py:205 turtleart.py:288
 msgid "Turtle Art"
 msgstr "Skildpadde Kunst"
 
@@ -115,8 +115,8 @@ msgstr "indstil retning"
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "sætter retningen for skildpadden (0 er mod toppen af skærmen.)"
 
-#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3051
-#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:542
+#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3039
+#: TurtleArt/tawindow.py:3043 TurtleArtActivity.py:542
 msgid "xcor"
 msgstr "x-kor"
 
@@ -128,8 +128,8 @@ msgstr ""
 "holder aktuel x-koordinat-værdi for skildpadden (kan anvendes i stedet for "
 "en talblok)"
 
-#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3051
-#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:543
+#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3039
+#: TurtleArt/tawindow.py:3043 TurtleArtActivity.py:543
 msgid "ycor"
 msgstr "y-kor"
 
@@ -141,8 +141,8 @@ msgstr ""
 "holder aktuel y-koordinat-værdi for skildpadde (kan anvendes i stedet for en "
 "talblok)"
 
-#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3051
-#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:543
+#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3039
+#: TurtleArt/tawindow.py:3043 TurtleArtActivity.py:543
 msgid "heading"
 msgstr "bevæger sig mod"
 
@@ -624,7 +624,7 @@ msgstr "navngiven variabel (numerisk værdi)"
 msgid "store in"
 msgstr "gem i"
 
-#: TurtleArt/tabasics.py:885
+#: TurtleArt/tabasics.py:885 taextras.py:333
 msgid "value"
 msgstr "værdi"
 
@@ -754,7 +754,7 @@ msgstr "retning"
 msgid "next"
 msgstr "næste"
 
-#: TurtleArt/tawindow.py:3146
+#: TurtleArt/tawindow.py:3134
 msgid "image"
 msgstr "billede"
 
@@ -2223,7 +2223,7 @@ msgstr ""
 "Drejningsmoment på motor og hastighedsinterval fra 0 (fra) til positive tal; "
 "motor placeres på det objekt som allersenest er oprettet."
 
-#: taextras.py:215
+#: taextras.py:215 taextras.py:329
 msgid "pin"
 msgstr "fastgør"
 
@@ -2393,7 +2393,7 @@ msgid "The value of power must be between -127 to 127."
 msgstr "Værdien af kraften skal være mellem -127 til 127."
 
 #: taextras.py:272
-msgid "An error has ocurred: check all and try reconect."
+msgid "An error has ocurred: check all and try reconnect."
 msgstr "En fejl er opstået: tjek alle og forsøg at tilslutte igen."
 
 #: taextras.py:273
@@ -2539,6 +2539,140 @@ msgstr "angiv lys"
 #: taextras.py:307
 msgid "Set color sensor light."
 msgstr "Angiv farve for sensor-lys."
+
+#: taextras.py:308
+msgid "reset motor"
+msgstr "nulstil motor"
+
+#: taextras.py:309
+msgid "Reset the motor counter."
+msgstr "Nulstil motorens tæller."
+
+#: taextras.py:310
+msgid "motor position"
+msgstr "motorens placering"
+
+#: taextras.py:311
+msgid "Get the motor position."
+msgstr "Hent motorens placering."
+
+#. TRANS: Arduino plugin to control an Arduino board
+#: taextras.py:316
+msgid "Palette of Arduino blocks"
+msgstr "Palet af Arduino-blokke"
+
+#: taextras.py:317
+msgid "HIGH"
+msgstr "HØJ"
+
+#: taextras.py:318
+msgid "LOW"
+msgstr "LAV"
+
+#: taextras.py:319
+msgid "INPUT"
+msgstr "INPUT"
+
+#: taextras.py:320
+msgid "OUTPUT"
+msgstr "OUTPUT"
+
+#. TRANS: PWM is pulse-width modulation
+#: taextras.py:322
+msgid "PWM"
+msgstr "PBM"
+
+#: taextras.py:323
+msgid "SERVO"
+msgstr "SERVO"
+
+#: taextras.py:324
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr "FEJL: Tjek Arduiono'en og nummeret på porten."
+
+#: taextras.py:325
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr "FEJL: Værdi skal være et tal mellem 0 og 255."
+
+#: taextras.py:326
+msgid "ERROR: Value must be either HIGH or LOW."
+msgstr "FEJL: Værdiskal vær enten HØJ eller LAV."
+
+#: taextras.py:327
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr "FEJL: Tilstanden skal være enten INPUT, OUTPUT, PBM eller SERVO."
+
+#: taextras.py:328
+msgid "pin mode"
+msgstr "pin-tilstand"
+
+#: taextras.py:330
+msgid "mode"
+msgstr "tilstand"
+
+#: taextras.py:331
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr "Vælg pin-funktionen (INPUT, OUTPUT, PBM, SERVO)."
+
+#: taextras.py:332
+msgid "analog write"
+msgstr "analog skrivning"
+
+#: taextras.py:334
+msgid "Write analog value in specified port."
+msgstr "Skriv analog værdi i angivet port."
+
+#: taextras.py:335
+msgid "analog read"
+msgstr "analog læsning"
+
+#: taextras.py:336
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+"Læs værdi for analog port. Værdi skal mellem 0 og 1023. Brug Vref til at "
+"fastslå spændingen. For USB, volt=((aflæs)/1024) tilnærmelsesvis."
+
+#: taextras.py:338
+msgid "digital write"
+msgstr "digital skrivning"
+
+#: taextras.py:339
+msgid "Write digital value to specified port."
+msgstr "Værdi for digital skrivning for angivet port."
+
+#: taextras.py:340
+msgid "digital read"
+msgstr "digital læsning"
+
+#: taextras.py:341
+msgid "Read value from digital port."
+msgstr "Læs værdi fra digital port."
+
+#: taextras.py:342
+msgid "Set HIGH value for digital port."
+msgstr "Angiv værdien af HØJ for digital port."
+
+#: taextras.py:343
+msgid "Configure Arduino port for digital input."
+msgstr "Sæt Arduino-port til digitalt input."
+
+#: taextras.py:344
+msgid "Configure Arduino port to drive a servo."
+msgstr "Angiv Arduino-port for at køre en servo."
+
+#: taextras.py:345
+msgid "Set LOW value for digital port."
+msgstr "Angiv værdien af LAV for digital port."
+
+#: taextras.py:346
+msgid "Configure Arduino port for digital output."
+msgstr "Sæt Arduino-port til digitalt output."
+
+#: taextras.py:347
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr "Sæt Arduino-port til PBM (pulsbreddemodulation)."
 
 #: turtleart.py:69
 msgid "usage is"
