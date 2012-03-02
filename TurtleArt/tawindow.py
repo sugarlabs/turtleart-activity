@@ -905,7 +905,8 @@ class TurtleArtWindow():
         if palette is not None:
             for proto in self.palettes[palette]:
                 proto.spr.hide()
-            self.palette_sprs[palette][self.orientation].hide()
+            if self.palette_sprs[palette][self.orientation] is not None:
+                self.palette_sprs[palette][self.orientation].hide()
             if self.activity is None or not self.activity.has_toolbarbox:
                 self.selectors[palette].set_shape(
                     self.selector_shapes[palette][0])
