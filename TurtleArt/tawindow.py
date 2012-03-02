@@ -858,7 +858,7 @@ class TurtleArtWindow():
             blk.spr.hide()
         old_blocks = self.palettes[n][:]
         self.palettes[n] = []
-        for i, name in enumerate(palette_blocks[n]):        
+        for name in palette_blocks[n]:
             found_block = False
             for oblk in old_blocks:
                 if oblk.name == name:
@@ -870,19 +870,19 @@ class TurtleArtWindow():
                         self.block_list, self.sprite_list, name, 0, 0,
                         'proto', [], PALETTE_SCALE))
                 if name in hidden_proto_blocks:
-                    self.palettes[n][i].set_visibility(False)
-            self.palettes[n][i].spr.set_layer(PROTO_LAYER)
-            self.palettes[n][i].unhighlight()
+                    self.palettes[n][-1].set_visibility(False)
+            self.palettes[n][-1].spr.set_layer(PROTO_LAYER)
+            self.palettes[n][-1].unhighlight()
 
             # Some proto blocks get a skin.
             if name in block_styles['box-style-media']:
-                self._proto_skin(name + 'small', n, i)
+                self._proto_skin(name + 'small', n, -1)
             elif name[:8] == 'template':  # Deprecated
-                self._proto_skin(name[8:], n, i)
+                self._proto_skin(name[8:], n, -1)
             elif name[:7] == 'picture':  # Deprecated
-                self._proto_skin(name[7:], n, i)
+                self._proto_skin(name[7:], n, -1)
             elif name in PYTHON_SKIN:
-                self._proto_skin('pythonsmall', n, i)
+                self._proto_skin('pythonsmall', n, -1)
         return
                 
     def _hide_toolbar_palette(self):
