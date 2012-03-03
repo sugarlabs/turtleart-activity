@@ -269,7 +269,7 @@ LEGO_STRINGS = [
     _('Please check the connection with the brick.'),
     _('Please check the port.'),
     _('The value of power must be between -127 to 127.'),
-    _('An error has ocurred: check all and try reconnect.'),
+    _('An error has occurred: check all connections and try to reconnect.'),
     _('NXT found'),
     _('NXT not found'),
     _('refresh NXT'),
