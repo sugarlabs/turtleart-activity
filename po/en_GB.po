@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-28 00:32-0500\n"
-"PO-Revision-Date: 2012-03-02 08:09+0200\n"
+"POT-Creation-Date: 2012-03-03 00:31-0500\n"
+"PO-Revision-Date: 2012-03-03 08:40+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en_GB\n"
@@ -22,8 +22,8 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2 TurtleArt/taexporthtml.py:137
-#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1742
-#: TurtleArt/tawindow.py:3043 pysamples/grecord.py:205 turtleart.py:288
+#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1743
+#: TurtleArt/tawindow.py:3044 pysamples/grecord.py:205 turtleart.py:288
 msgid "Turtle Art"
 msgstr "Turtle Art"
 
@@ -115,8 +115,8 @@ msgstr "set heading"
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "sets the heading of the turtle (0 is towards the top of the screen.)"
 
-#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3039
-#: TurtleArt/tawindow.py:3043 TurtleArtActivity.py:542
+#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3040
+#: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:542
 msgid "xcor"
 msgstr "xcor"
 
@@ -128,8 +128,8 @@ msgstr ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
 
-#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3039
-#: TurtleArt/tawindow.py:3043 TurtleArtActivity.py:543
+#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3040
+#: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:543
 msgid "ycor"
 msgstr "ycor"
 
@@ -141,8 +141,8 @@ msgstr ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
 
-#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3039
-#: TurtleArt/tawindow.py:3043 TurtleArtActivity.py:543
+#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3040
+#: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:543
 msgid "heading"
 msgstr "heading"
 
@@ -747,11 +747,11 @@ msgstr "click to open"
 msgid "orientation"
 msgstr "orientation"
 
-#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:1164
+#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:1165
 msgid "next"
 msgstr "next"
 
-#: TurtleArt/tawindow.py:3134
+#: TurtleArt/tawindow.py:3135
 msgid "image"
 msgstr "image"
 
@@ -2388,8 +2388,8 @@ msgid "The value of power must be between -127 to 127."
 msgstr "The value of power must be between -127 to 127."
 
 #: taextras.py:272
-msgid "An error has ocurred: check all and try reconnect."
-msgstr "An error has occurred: check all and try reconnect."
+msgid "An error has occurred: check all connections and try to reconnect."
+msgstr "An error has occurred: check all connections and try to reconnect."
 
 #: taextras.py:273
 msgid "NXT found"
