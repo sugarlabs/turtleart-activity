@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-16 00:31-0500\n"
-"PO-Revision-Date: 2012-02-17 20:07+0200\n"
+"POT-Creation-Date: 2012-03-03 00:31-0500\n"
+"PO-Revision-Date: 2012-03-03 08:31+0200\n"
 "Last-Translator: AlanJAS <alanjas@hotmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: es\n"
@@ -18,8 +18,8 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2 TurtleArt/taexporthtml.py:137
-#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1747
-#: TurtleArt/tawindow.py:3055 pysamples/grecord.py:205 turtleart.py:288
+#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1743
+#: TurtleArt/tawindow.py:3044 pysamples/grecord.py:205 turtleart.py:288
 msgid "Turtle Art"
 msgstr "TortugArte"
 
@@ -115,8 +115,8 @@ msgstr ""
 "fija la orientación de la tortuga (0 es hacia la parte superior de la "
 "pantalla.)"
 
-#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3051
-#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:542
+#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3040
+#: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:542
 msgid "xcor"
 msgstr "coorx"
 
@@ -128,8 +128,8 @@ msgstr ""
 "contiene la coordenada x actual de la tortuga (se puede usar en vez de un "
 "bloque de número)"
 
-#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3051
-#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:543
+#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3040
+#: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:543
 msgid "ycor"
 msgstr "coory"
 
@@ -141,8 +141,8 @@ msgstr ""
 "contiene la coordenada y actual de la tortuga (se puede usar en vez de un "
 "bloque de número)"
 
-#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3051
-#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:543
+#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3040
+#: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:543
 msgid "heading"
 msgstr "rumbo"
 
@@ -635,7 +635,7 @@ msgstr "variable nombrado (valor numérico)"
 msgid "store in"
 msgstr "guardar en"
 
-#: TurtleArt/tabasics.py:885
+#: TurtleArt/tabasics.py:885 taextras.py:333
 msgid "value"
 msgstr "valor"
 
@@ -761,11 +761,11 @@ msgstr "clic para abrir"
 msgid "orientation"
 msgstr "orientación"
 
-#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:1164
+#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:1165
 msgid "next"
 msgstr "siguiente"
 
-#: TurtleArt/tawindow.py:3146
+#: TurtleArt/tawindow.py:3135
 msgid "image"
 msgstr "imagen"
 
@@ -2263,7 +2263,7 @@ msgstr ""
 "recientemente."
 
 # puede ser: alfiler, perno, clavija, clavo - En Physics es: Tachuela (asi que por coherencia, usé Tachuela)
-#: taextras.py:215
+#: taextras.py:215 taextras.py:329
 msgid "pin"
 msgstr "tachuela"
 
@@ -2438,8 +2438,8 @@ msgid "The value of power must be between -127 to 127."
 msgstr "El valor de potencia debe ser entre -127 y 127."
 
 #: taextras.py:272
-msgid "An error has ocurred: check all and try reconect."
-msgstr "Un error ha ocurrido: chequee todo y pruebe reconectar."
+msgid "An error has occurred: check all connections and try to reconnect."
+msgstr "Un error ha ocurrido: chequee todas las conexiones y pruebe reconectar."
 
 #: taextras.py:273
 msgid "NXT found"
@@ -2490,7 +2490,7 @@ msgstr "potencia"
 msgid "turn a motor"
 msgstr "gira un motor"
 
-# sinc: abreviación de sincronizar 
+# sinc: abreviación de sincronizar
 #: taextras.py:285
 msgid ""
 "sync motors\n"
@@ -2586,6 +2586,142 @@ msgstr "prender luz"
 #: taextras.py:307
 msgid "Set color sensor light."
 msgstr "Prende la luz del sensor de color."
+
+#: taextras.py:308
+msgid "reset motor"
+msgstr "reiniciar motor"
+
+#: taextras.py:309
+msgid "Reset the motor counter."
+msgstr "Reinicia el contador del motor."
+
+#: taextras.py:310
+msgid "motor position"
+msgstr "posición del motor"
+
+#: taextras.py:311
+msgid "Get the motor position."
+msgstr "Obtiene la posición del motor."
+
+#. TRANS: Arduino plugin to control an Arduino board
+#: taextras.py:316
+msgid "Palette of Arduino blocks"
+msgstr "Paleta de bloques Arduino"
+
+#: taextras.py:317
+msgid "HIGH"
+msgstr "ALTO"
+
+#: taextras.py:318
+msgid "LOW"
+msgstr "BAJO"
+
+#: taextras.py:319
+msgid "INPUT"
+msgstr "ENTRADA"
+
+#: taextras.py:320
+msgid "OUTPUT"
+msgstr "SALIDA"
+
+#. TRANS: PWM is pulse-width modulation
+#: taextras.py:322
+msgid "PWM"
+msgstr "PWM"
+
+#: taextras.py:323
+msgid "SERVO"
+msgstr "SERVO"
+
+#: taextras.py:324
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr "ERROR: Chequee la Arduino y el número de puerto."
+
+#: taextras.py:325
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr "ERROR: El valor debe ser un número entre 0 y 255."
+
+#: taextras.py:326
+msgid "ERROR: Value must be either HIGH or LOW."
+msgstr "ERROR: El valor debe ser ALTO o BAJO."
+
+#: taextras.py:327
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr "ERROR: El modo debe ser ENTRADA, SALIDA, PWM o SERVO."
+
+#: taextras.py:328
+msgid "pin mode"
+msgstr "modo del pin"
+
+#: taextras.py:330
+msgid "mode"
+msgstr "modo"
+
+#: taextras.py:331
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr "Selecciona la función del pin (ENTRADA, SALIDA, PWM, SERVO)."
+
+#: taextras.py:332
+msgid "analog write"
+msgstr "escribir analógico"
+
+#: taextras.py:334
+msgid "Write analog value in specified port."
+msgstr "Escribe un valor analógico en el puerto especificado."
+
+#: taextras.py:335
+msgid "analog read"
+msgstr "leer analógico"
+
+#: taextras.py:336
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+"Lee un valor desde un puerto analógico. El valor puede ser entre 0 y 1023. "
+"Use Vref para determinar el voltaje. Para USB, volt=((leer)*5/1024) "
+"aproximadamente."
+
+#: taextras.py:338
+msgid "digital write"
+msgstr "escribir digital"
+
+#: taextras.py:339
+msgid "Write digital value to specified port."
+msgstr "Escribe un valor digital en un puerto específico."
+
+#: taextras.py:340
+msgid "digital read"
+msgstr "leer digital"
+
+#: taextras.py:341
+msgid "Read value from digital port."
+msgstr "Lee un valor desde un puerto digital."
+
+#: taextras.py:342
+msgid "Set HIGH value for digital port."
+msgstr "Setea el valor ALTO en el puerto digital."
+
+#: taextras.py:343
+msgid "Configure Arduino port for digital input."
+msgstr "Configura el puerto de la Arduino como entrada digital."
+
+#: taextras.py:344
+msgid "Configure Arduino port to drive a servo."
+msgstr "Configura el puerto de la Arduino para manejar un servo."
+
+#: taextras.py:345
+msgid "Set LOW value for digital port."
+msgstr "Setea el valor BAJO en el puerto digital."
+
+#: taextras.py:346
+msgid "Configure Arduino port for digital output."
+msgstr "Configura el puerto de la Arduino como salida digital."
+
+#: taextras.py:347
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr ""
+"Configura el puerto de la Arduino para PWM modulación por ancho de pulsos)"
 
 #: turtleart.py:69
 msgid "usage is"
