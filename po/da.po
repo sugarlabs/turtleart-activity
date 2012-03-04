@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-28 00:32-0500\n"
-"PO-Revision-Date: 2012-03-02 17:47+0200\n"
+"POT-Creation-Date: 2012-03-03 00:31-0500\n"
+"PO-Revision-Date: 2012-03-04 23:27+0200\n"
 "Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -22,8 +22,8 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2 TurtleArt/taexporthtml.py:137
-#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1742
-#: TurtleArt/tawindow.py:3043 pysamples/grecord.py:205 turtleart.py:288
+#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1743
+#: TurtleArt/tawindow.py:3044 pysamples/grecord.py:205 turtleart.py:288
 msgid "Turtle Art"
 msgstr "Skildpadde Kunst"
 
@@ -115,8 +115,8 @@ msgstr "indstil retning"
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "sætter retningen for skildpadden (0 er mod toppen af skærmen.)"
 
-#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3039
-#: TurtleArt/tawindow.py:3043 TurtleArtActivity.py:542
+#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3040
+#: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:542
 msgid "xcor"
 msgstr "x-kor"
 
@@ -128,8 +128,8 @@ msgstr ""
 "holder aktuel x-koordinat-værdi for skildpadden (kan anvendes i stedet for "
 "en talblok)"
 
-#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3039
-#: TurtleArt/tawindow.py:3043 TurtleArtActivity.py:543
+#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3040
+#: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:543
 msgid "ycor"
 msgstr "y-kor"
 
@@ -141,8 +141,8 @@ msgstr ""
 "holder aktuel y-koordinat-værdi for skildpadde (kan anvendes i stedet for en "
 "talblok)"
 
-#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3039
-#: TurtleArt/tawindow.py:3043 TurtleArtActivity.py:543
+#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3040
+#: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:543
 msgid "heading"
 msgstr "bevæger sig mod"
 
@@ -750,11 +750,11 @@ msgstr "klik for at åbne"
 msgid "orientation"
 msgstr "retning"
 
-#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:1164
+#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:1165
 msgid "next"
 msgstr "næste"
 
-#: TurtleArt/tawindow.py:3134
+#: TurtleArt/tawindow.py:3135
 msgid "image"
 msgstr "billede"
 
@@ -2393,8 +2393,8 @@ msgid "The value of power must be between -127 to 127."
 msgstr "Værdien af kraften skal være mellem -127 til 127."
 
 #: taextras.py:272
-msgid "An error has ocurred: check all and try reconnect."
-msgstr "En fejl er opstået: tjek alle og forsøg at tilslutte igen."
+msgid "An error has occurred: check all connections and try to reconnect."
+msgstr "En fejl er opstået: tjek alle forbindelser og forsøg at tilslutte igen."
 
 #: taextras.py:273
 msgid "NXT found"
