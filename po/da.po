@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-03 00:31-0500\n"
-"PO-Revision-Date: 2012-03-04 23:27+0200\n"
+"PO-Revision-Date: 2012-03-09 11:55+0200\n"
 "Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -1945,7 +1945,7 @@ msgstr "x-position"
 
 #: taextras.py:125
 msgid "return x position"
-msgstr "returnér x-position"
+msgstr "returnerer x-position"
 
 #: taextras.py:126
 msgid "y position"
@@ -1953,7 +1953,7 @@ msgstr "y-position"
 
 #: taextras.py:127
 msgid "return y position"
-msgstr "returnér y-position"
+msgstr "returnerer y-position"
 
 #: taextras.py:128
 msgid "pixels"
