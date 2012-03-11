@@ -131,7 +131,7 @@ class TurtleMain():
             try:
                 exec f in globals(), plugin
                 self._plugins.append(plugin.values()[0](self))
-            except ImportError as e:
+            except ImportError, e:
                 print 'failed to import %s: %s' % (P, str(e))
 
     def _run_plugins(self):
@@ -143,7 +143,7 @@ class TurtleMain():
         '''Create a directory in a fashion similar to `mkdir -p`.'''
         try:
             os.makedirs(path)
-        except OSError as exc:
+        except OSError, exc:
             if exc.errno == errno.EEXIST:
                 pass
             else:

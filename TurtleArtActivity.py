@@ -764,7 +764,8 @@ class TurtleArtActivity(activity.Activity):
 
     def _setup_canvas(self, canvas_window):
         ''' Initialize the turtle art canvas. '''
-        win = canvas_window.get_window()  # self._canvas.get_window()
+        #win = canvas_window.get_window()  # self._canvas.get_window()
+        win = canvas_window.window
         cr = win.cairo_create()
         surface = cr.get_target()
         self.turtle_canvas = surface.create_similar(
