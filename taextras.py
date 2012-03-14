@@ -55,7 +55,7 @@ CURRENCY_STRINGS = [
 BUTIA_STRINGS = [
     #TRANS: Butia is the Arduino Robot Project from Uruguay
     #(http://www.fing.edu.uy/inco/proyectos/butia/)
-    _('Turtle Art Butia'),
+    _('TurtleBots'),
     _('adjust LED intensity between 0 and 255'),
     _('returns the object gray level as a number between 0 and 1023'),
     _('returns 1 when the button is press and 0 otherwise'),
@@ -67,7 +67,7 @@ between 0 and 255'),
     _('returns 1 when the sensors detects a magnetic field, 0 otherwise'),
     _('switches from 0 to 1, the frequency depends on the vibration'),
     _('LED'),
-    _('pushbutton'),
+    _('button'),
     _('grayscale'),
     _('ambient light'),
     _('temperature'),
