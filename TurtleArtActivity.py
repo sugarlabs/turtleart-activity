@@ -94,13 +94,12 @@ class TurtleArtActivity(activity.Activity):
 
         # TRANS: activity count is the number of times this instance
         # has been accessed
-        if 'activity count' in self.metadata:
-            count = int(self.metadata['activity count'])
-            count += 1
-        else:
-            count = 1
+        count = 1
+        if hasattr(self, 'metadata'):
+            if 'activity count' in self.metadata:
+                count = int(self.metadata['activity count'])
+                count += 1
         self.metadata['activity count'] = str(count)
-
 
     # Activity toolbar callbacks
 
