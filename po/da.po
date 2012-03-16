@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-03 00:31-0500\n"
-"PO-Revision-Date: 2012-03-09 11:55+0200\n"
+"POT-Creation-Date: 2012-03-14 00:31-0400\n"
+"PO-Revision-Date: 2012-03-16 21:51+0200\n"
 "Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -1713,8 +1713,8 @@ msgstr "Palet af guaranier"
 #. TRANS: Butia is the Arduino Robot Project from Uruguay
 #. (http://www.fing.edu.uy/inco/proyectos/butia/)
 #: taextras.py:58
-msgid "Turtle Art Butia"
-msgstr "Skildpadde-kunst Butia"
+msgid "TurtleBots"
+msgstr "Skildpadde-robotter"
 
 #: taextras.py:59
 msgid "adjust LED intensity between 0 and 255"
@@ -1760,8 +1760,8 @@ msgid "LED"
 msgstr "LED"
 
 #: taextras.py:70
-msgid "pushbutton"
-msgstr "trykknap"
+msgid "button"
+msgstr "knap"
 
 #: taextras.py:71
 msgid "grayscale"
@@ -2746,6 +2746,12 @@ msgstr "Du har arbejde som ikke er gemt. Vil du gemme før du afslutter?"
 #: turtleart.py:399
 msgid "Save project?"
 msgstr "Gem projekt?"
+
+#~ msgid "Turtle Art Butia"
+#~ msgstr "Skildpadde-kunst Butia"
+
+#~ msgid "pushbutton"
+#~ msgstr "trykknap"
 
 #~ msgid "brake a specified motor"
 #~ msgstr "brems en specifik motor"
