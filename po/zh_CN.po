@@ -11,24 +11,25 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-14 00:31-0400\n"
-"PO-Revision-Date: 2009-01-03 21:24-0500\n"
-"Last-Translator: Alice Zhang <zhl924505@gmail.com>\n"
+"PO-Revision-Date: 2012-03-17 08:09+0200\n"
+"Last-Translator: Xin <dram.wang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2 TurtleArt/taexporthtml.py:137
 #: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1743
 #: TurtleArt/tawindow.py:3044 pysamples/grecord.py:205 turtleart.py:288
 msgid "Turtle Art"
-msgstr "海龟画图"
+msgstr "海龟绘图"
 
 #: TurtleArt/tabasics.py:115
 msgid "Palette of turtle commands"
-msgstr ""
+msgstr "海龟指令的调色板"
 
 #: TurtleArt/tabasics.py:120
 msgid "forward"
@@ -36,7 +37,7 @@ msgstr "前进"
 
 #: TurtleArt/tabasics.py:124
 msgid "moves turtle forward"
-msgstr ""
+msgstr "向前移动海龟"
 
 #: TurtleArt/tabasics.py:131
 msgid "back"
@@ -44,7 +45,7 @@ msgstr "后退"
 
 #: TurtleArt/tabasics.py:135
 msgid "moves turtle backward"
-msgstr ""
+msgstr "向后移动海龟"
 
 #: TurtleArt/tabasics.py:143
 msgid "clean"
@@ -52,7 +53,7 @@ msgstr "清屏"
 
 #: TurtleArt/tabasics.py:146
 msgid "clears the screen and reset the turtle"
-msgstr ""
+msgstr "清空屏幕并重置海龟"
 
 #: TurtleArt/tabasics.py:154
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
@@ -61,7 +62,7 @@ msgstr "左转"
 
 #: TurtleArt/tabasics.py:158
 msgid "turns turtle counterclockwise (angle in degrees)"
-msgstr ""
+msgstr "逆时针转动海龟（角度）"
 
 #: TurtleArt/tabasics.py:165
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:755
@@ -70,7 +71,7 @@ msgstr "右转"
 
 #: TurtleArt/tabasics.py:169
 msgid "turns turtle clockwise (angle in degrees)"
-msgstr ""
+msgstr "顺时针转动海龟（角度）"
 
 #: TurtleArt/tabasics.py:177
 msgid "arc"
@@ -86,7 +87,7 @@ msgstr "半径"
 
 #: TurtleArt/tabasics.py:181
 msgid "moves turtle along an arc"
-msgstr ""
+msgstr "延弧形移动海龟"
 
 #: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256
 msgid "set xy"
@@ -103,17 +104,15 @@ msgstr "纵"
 #: TurtleArt/tabasics.py:194 TurtleArt/tabasics.py:260
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-msgstr ""
+msgstr "移动海龟到座标（x，y）；（0，0）是屏幕中心。"
 
-#
 #: TurtleArt/tabasics.py:204
-#, fuzzy
 msgid "set heading"
-msgstr "seth"
+msgstr "设置朝向"
 
 #: TurtleArt/tabasics.py:208
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
-msgstr ""
+msgstr "设置海龟朝向（0表示朝向屏幕上方）"
 
 #: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3040
 #: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:542
