@@ -1,5 +1,5 @@
 #Copyright (c) 2007, Playful Invention Company
-#Copyright (c) 2008-11, Walter Bender
+#Copyright (c) 2008-12, Walter Bender
 #Copyright (c) 2009-10 Raul Gutierrez Segales
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -92,14 +92,14 @@ class TurtleArtActivity(activity.Activity):
         _logger.debug('_setup_sharing')
         self._setup_sharing()
 
-        # TRANS: activity count is the number of times this instance
-        # has been accessed
+        # Activity count is the number of times this instance has been
+        # accessed
         count = 1
-        if hasattr(self, 'metadata'):
+        if hasattr(self, 'metadata') and self.metadata is not None:
             if 'activity count' in self.metadata:
                 count = int(self.metadata['activity count'])
                 count += 1
-        self.metadata['activity count'] = str(count)
+            self.metadata['activity count'] = str(count)
 
     # Activity toolbar callbacks
 
