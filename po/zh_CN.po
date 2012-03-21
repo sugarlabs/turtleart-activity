@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-14 00:31-0400\n"
-"PO-Revision-Date: 2012-03-17 08:09+0200\n"
+"PO-Revision-Date: 2012-03-21 13:54+0200\n"
 "Last-Translator: Xin <dram.wang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -58,7 +58,7 @@ msgstr "清空屏幕并重置海龟"
 #: TurtleArt/tabasics.py:154
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
 msgid "left"
-msgstr "左转"
+msgstr "左边"
 
 #: TurtleArt/tabasics.py:158
 msgid "turns turtle counterclockwise (angle in degrees)"
@@ -67,7 +67,7 @@ msgstr "逆时针转动海龟（角度）"
 #: TurtleArt/tabasics.py:165
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:755
 msgid "right"
-msgstr "右转"
+msgstr "右边"
 
 #: TurtleArt/tabasics.py:169
 msgid "turns turtle clockwise (angle in degrees)"
@@ -123,7 +123,7 @@ msgstr "横坐标"
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
-msgstr ""
+msgstr "包含海龟当前位置的X座标值（可以用来替换数字块）"
 
 #: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3040
 #: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:543
@@ -134,7 +134,7 @@ msgstr "纵坐标"
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
-msgstr ""
+msgstr "包含海龟当前位置的Y座标值（可以用来替换数字块）"
 
 #: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3040
 #: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:543
@@ -145,11 +145,11 @@ msgstr "朝向"
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
-msgstr ""
+msgstr "包含海龟当前的朝向的角度值（可以用来替换数字块）"
 
 #: TurtleArt/tabasics.py:273
 msgid "Palette of pen commands"
-msgstr ""
+msgstr "画笔指令的调色板"
 
 #: TurtleArt/tabasics.py:277
 msgid "pen up"
@@ -157,7 +157,7 @@ msgstr "抬笔"
 
 #: TurtleArt/tabasics.py:280
 msgid "Turtle will not draw when moved."
-msgstr ""
+msgstr "海龟将不会在移动时绘图。"
 
 #: TurtleArt/tabasics.py:286
 msgid "pen down"
@@ -165,7 +165,7 @@ msgstr "落笔"
 
 #: TurtleArt/tabasics.py:289
 msgid "Turtle will draw when moved."
-msgstr ""
+msgstr "海龟将在移动时绘图。"
 
 #: TurtleArt/tabasics.py:295
 msgid "set pen size"
@@ -173,7 +173,7 @@ msgstr "设置笔的粗细"
 
 #: TurtleArt/tabasics.py:299
 msgid "sets size of the line drawn by the turtle"
-msgstr ""
+msgstr "设置海龟绘制的线条的宽度"
 
 #: TurtleArt/tabasics.py:309
 msgid "fill screen"
@@ -189,7 +189,7 @@ msgstr "明暗度"
 
 #: TurtleArt/tabasics.py:313
 msgid "fills the background with (color, shade)"
-msgstr ""
+msgstr "以（颜色，阴影）填充背景"
 
 #: TurtleArt/tabasics.py:322
 msgid "pen size"
@@ -197,11 +197,11 @@ msgstr "笔的粗细"
 
 #: TurtleArt/tabasics.py:323
 msgid "holds current pen size (can be used in place of a number block)"
-msgstr ""
+msgstr "包含当前画笔的大小（可以用来替换数字块）"
 
 #: TurtleArt/tabasics.py:334
 msgid "start fill"
-msgstr ""
+msgstr "开始填充"
 
 #: TurtleArt/tabasics.py:336
 msgid "starts filled polygon (used with end fill block)"
@@ -209,7 +209,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:343
 msgid "end fill"
-msgstr ""
+msgstr "停止填充"
 
 #: TurtleArt/tabasics.py:345
 msgid "completes filled polygon (used with start fill block)"
@@ -225,7 +225,7 @@ msgstr "设置颜色"
 
 #: TurtleArt/tabasics.py:368
 msgid "sets color of the line drawn by the turtle"
-msgstr ""
+msgstr "设置海龟绘制的线条的颜色"
 
 #: TurtleArt/tabasics.py:376
 msgid "set shade"
@@ -237,11 +237,11 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:388
 msgid "set gray"
-msgstr ""
+msgstr "设置灰度"
 
 #: TurtleArt/tabasics.py:391
 msgid "sets gray level of the line drawn by the turtle"
-msgstr ""
+msgstr "设置海龟绘制的线条的灰度"
 
 #: TurtleArt/tabasics.py:400
 msgid "holds current pen color (can be used in place of a number block)"
@@ -253,65 +253,63 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:418
 msgid "gray"
-msgstr ""
+msgstr "灰度"
 
 #: TurtleArt/tabasics.py:419
 msgid "holds current gray level (can be used in place of a number block)"
-msgstr ""
+msgstr "包含当前的灰度值（可以用来替换数字块）"
 
 #: TurtleArt/tabasics.py:425
 msgid "red"
-msgstr ""
+msgstr "红色"
 
 #: TurtleArt/tabasics.py:426
 msgid "orange"
-msgstr ""
+msgstr "橙黄色"
 
 #: TurtleArt/tabasics.py:428
 msgid "yellow"
-msgstr ""
+msgstr "黄色"
 
 #: TurtleArt/tabasics.py:430
 msgid "green"
-msgstr ""
+msgstr "绿色"
 
 #: TurtleArt/tabasics.py:431
 msgid "cyan"
-msgstr ""
+msgstr "青色"
 
 #: TurtleArt/tabasics.py:432
 msgid "blue"
-msgstr ""
+msgstr "蓝色"
 
 #: TurtleArt/tabasics.py:433
 msgid "purple"
-msgstr ""
+msgstr "紫色"
 
 #: TurtleArt/tabasics.py:435
 msgid "white"
-msgstr ""
+msgstr "白色"
 
 #: TurtleArt/tabasics.py:436
-#, fuzzy
 msgid "black"
-msgstr "后退"
+msgstr "黑色"
 
 #: TurtleArt/tabasics.py:442
 msgid "set text color"
-msgstr ""
+msgstr "设置文字颜色"
 
 #: TurtleArt/tabasics.py:445
 msgid "sets color of text drawn by the turtle"
-msgstr ""
+msgstr "设置海龟绘制文字的颜色"
 
 #: TurtleArt/tabasics.py:453
-#, fuzzy
 msgid "set text size"
-msgstr "设置笔的粗细"
+msgstr "设置文字大小"
 
 #: TurtleArt/tabasics.py:456
 msgid "sets size of text drawn by the turtle"
-msgstr ""
+msgstr "设置海龟绘制的文字的大小"
 
 #: TurtleArt/tabasics.py:539
 msgid "Palette of numeric operators"
@@ -319,7 +317,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:545
 msgid "plus"
-msgstr ""
+msgstr "加"
 
 #: TurtleArt/tabasics.py:548
 msgid "adds two alphanumeric inputs"
@@ -327,7 +325,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:556
 msgid "minus"
-msgstr ""
+msgstr "减"
 
 #: TurtleArt/tabasics.py:559
 msgid "subtracts bottom numeric input from top numeric input"
@@ -372,11 +370,11 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:617
 msgid "square root"
-msgstr ""
+msgstr "平方根"
 
 #: TurtleArt/tabasics.py:620
 msgid "calculates square root"
-msgstr ""
+msgstr "计算平方根"
 
 #: TurtleArt/tabasics.py:627
 msgid "random"
@@ -400,7 +398,7 @@ msgstr "数字"
 
 #: TurtleArt/tabasics.py:644
 msgid "used as numeric input in mathematic operators"
-msgstr ""
+msgstr "在数学运算符中作为数值型输入"
 
 #: TurtleArt/tabasics.py:651
 msgid "greater than"
@@ -428,7 +426,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:680
 msgid "equal"
-msgstr ""
+msgstr "等于"
 
 #: TurtleArt/tabasics.py:683
 msgid "logical equal-to operator"
@@ -663,7 +661,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:953
 msgid "trash"
-msgstr ""
+msgstr "垃圾桶"
 
 #: TurtleArt/tabasics.py:957
 msgid "empty trash"
@@ -719,7 +717,7 @@ msgstr ""
 
 #: TurtleArt/tapalette.py:84
 msgid "displays next palette"
-msgstr ""
+msgstr "显示下一个调色板"
 
 #: TurtleArt/tapalette.py:85
 msgid "changes the orientation of the palette of blocks"
@@ -740,11 +738,11 @@ msgstr ""
 
 #: TurtleArt/tawindow.py:837 TurtleArt/tawindow.py:838
 msgid "orientation"
-msgstr ""
+msgstr "方向"
 
 #: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:1165
 msgid "next"
-msgstr ""
+msgstr "下一个"
 
 #: TurtleArt/tawindow.py:3135
 msgid "image"
@@ -838,7 +836,7 @@ msgstr ""
 
 #: TurtleArtActivity.py:575 TurtleArtActivity.py:667
 msgid "Load example"
-msgstr ""
+msgstr "载入示例"
 
 #: TurtleArtActivity.py:593 TurtleArtActivity.py:597
 msgid "Move the cursor over the orange palette for help."
@@ -1473,7 +1471,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
 msgid "top"
-msgstr ""
+msgstr "顶部"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:600
 msgid "top of a collapsed stack"
@@ -1482,7 +1480,7 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:606
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:739
 msgid "bottom"
-msgstr ""
+msgstr "底部"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:607
 msgid "bottom of a collapsible stack"
@@ -1570,36 +1568,36 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
 msgid "xcor of left of screen"
-msgstr ""
+msgstr "屏幕左方的X座标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
 msgid "ycor of bottom of screen"
-msgstr ""
+msgstr "屏幕下方的Y座标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747 taextras.py:205
 msgid "width"
-msgstr ""
+msgstr "宽度"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:750
 msgid "the canvas width"
-msgstr ""
+msgstr "画布宽度"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:758
 msgid "xcor of right of screen"
-msgstr ""
+msgstr "屏幕右方的X座标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:766
 msgid "ycor of top of screen"
-msgstr ""
+msgstr "屏幕上方的Y座标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771 taextras.py:200
 #: taextras.py:206
 msgid "height"
-msgstr ""
+msgstr "高度"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
 msgid "the canvas height"
-msgstr ""
+msgstr "画布高度"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:781
 msgid "title x"
