@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-14 00:31-0400\n"
-"PO-Revision-Date: 2012-03-21 13:54+0200\n"
+"PO-Revision-Date: 2012-03-22 06:33+0200\n"
 "Last-Translator: Xin <dram.wang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -29,7 +29,7 @@ msgstr "海龟绘图"
 
 #: TurtleArt/tabasics.py:115
 msgid "Palette of turtle commands"
-msgstr "海龟指令的调色板"
+msgstr "海龟指令调色板"
 
 #: TurtleArt/tabasics.py:120
 msgid "forward"
@@ -149,7 +149,7 @@ msgstr "包含海龟当前的朝向的角度值（可以用来替换数字块）
 
 #: TurtleArt/tabasics.py:273
 msgid "Palette of pen commands"
-msgstr "画笔指令的调色板"
+msgstr "画笔指令调色板"
 
 #: TurtleArt/tabasics.py:277
 msgid "pen up"
@@ -185,7 +185,7 @@ msgstr "颜色"
 
 #: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:409
 msgid "shade"
-msgstr "明暗度"
+msgstr "深度"
 
 #: TurtleArt/tabasics.py:313
 msgid "fills the background with (color, shade)"
@@ -205,19 +205,19 @@ msgstr "开始填充"
 
 #: TurtleArt/tabasics.py:336
 msgid "starts filled polygon (used with end fill block)"
-msgstr ""
+msgstr "开始填充多边形的绘制（和“结束填充”块一起使用）"
 
 #: TurtleArt/tabasics.py:343
 msgid "end fill"
-msgstr "停止填充"
+msgstr "结束填充"
 
 #: TurtleArt/tabasics.py:345
 msgid "completes filled polygon (used with start fill block)"
-msgstr ""
+msgstr "结束填充多边形的绘制（和开始填充一起使用）"
 
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:360
 msgid "Palette of pen colors"
-msgstr ""
+msgstr "画笔颜色调色板"
 
 #: TurtleArt/tabasics.py:364
 msgid "set color"
@@ -245,11 +245,11 @@ msgstr "设置海龟绘制的线条的灰度"
 
 #: TurtleArt/tabasics.py:400
 msgid "holds current pen color (can be used in place of a number block)"
-msgstr ""
+msgstr "包含当前画笔的颜色（可以用来替换数字块）"
 
 #: TurtleArt/tabasics.py:410
 msgid "holds current pen shade"
-msgstr ""
+msgstr "设置当前画笔的深度"
 
 #: TurtleArt/tabasics.py:418
 msgid "gray"
@@ -810,9 +810,8 @@ msgstr ""
 
 #: TurtleArtActivity.py:532
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:667
-#, fuzzy
 msgid "Fullscreen"
-msgstr "涂满全屏"
+msgstr "全屏"
 
 #: TurtleArtActivity.py:534 turtleart.py:334
 msgid "Cartesian coordinates"
@@ -885,7 +884,7 @@ msgstr ""
 
 #: TurtleArtActivity.py:693 turtleart.py:364
 msgid "Run"
-msgstr ""
+msgstr "运行"
 
 #: TurtleArtActivity.py:693
 msgid "<Ctrl>r"
@@ -893,7 +892,7 @@ msgstr ""
 
 #: TurtleArtActivity.py:695 turtleart.py:365
 msgid "Step"
-msgstr ""
+msgstr "单步"
 
 #: TurtleArtActivity.py:695
 msgid "<Ctrl>w"
@@ -901,7 +900,7 @@ msgstr ""
 
 #: TurtleArtActivity.py:698 turtleart.py:366
 msgid "Debug"
-msgstr ""
+msgstr "调试"
 
 #: TurtleArtActivity.py:698
 msgid "<Ctrl>d"
@@ -909,7 +908,7 @@ msgstr ""
 
 #: TurtleArtActivity.py:700
 msgid "Stop turtle"
-msgstr ""
+msgstr "停止"
 
 #: TurtleArtActivity.py:701
 msgid "<Ctrl>s"
@@ -1642,7 +1641,7 @@ msgstr ""
 
 #: pysamples/grecord.py:215
 msgid "stop"
-msgstr ""
+msgstr "停止"
 
 #: pysamples/grecord.py:217
 msgid "play"
@@ -2131,11 +2130,11 @@ msgstr ""
 
 #: taextras.py:193
 msgid "Define a new polygon."
-msgstr ""
+msgstr "定义一个新的多边形。"
 
 #: taextras.py:194
 msgid "end filled polygon"
-msgstr ""
+msgstr "结束填充多边形的绘制"
 
 #: taextras.py:195
 msgid "Not a simple polygon"
@@ -2143,7 +2142,7 @@ msgstr ""
 
 #: taextras.py:196
 msgid "Define a new filled polygon."
-msgstr ""
+msgstr "定义一个新的填充多边形。"
 
 #: taextras.py:197
 msgid "triangle"
