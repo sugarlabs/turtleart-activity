@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-14 00:31-0400\n"
-"PO-Revision-Date: 2012-03-22 06:33+0200\n"
+"PO-Revision-Date: 2012-03-22 14:27+0200\n"
 "Last-Translator: Xin <dram.wang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -229,11 +229,11 @@ msgstr "设置海龟绘制的线条的颜色"
 
 #: TurtleArt/tabasics.py:376
 msgid "set shade"
-msgstr "设置明暗度"
+msgstr "设置深度"
 
 #: TurtleArt/tabasics.py:380
 msgid "sets shade of the line drawn by the turtle"
-msgstr ""
+msgstr "设置海龟绘制的线条的深度"
 
 #: TurtleArt/tabasics.py:388
 msgid "set gray"
@@ -313,7 +313,7 @@ msgstr "设置海龟绘制的文字的大小"
 
 #: TurtleArt/tabasics.py:539
 msgid "Palette of numeric operators"
-msgstr ""
+msgstr "数值操作的调色板"
 
 #: TurtleArt/tabasics.py:545
 msgid "plus"
@@ -321,7 +321,7 @@ msgstr "加"
 
 #: TurtleArt/tabasics.py:548
 msgid "adds two alphanumeric inputs"
-msgstr ""
+msgstr "将两个字符数值型输入相加"
 
 #: TurtleArt/tabasics.py:556
 msgid "minus"
@@ -329,32 +329,32 @@ msgstr "减"
 
 #: TurtleArt/tabasics.py:559
 msgid "subtracts bottom numeric input from top numeric input"
-msgstr ""
+msgstr "将顶部输入减去底部输入"
 
 #: TurtleArt/tabasics.py:570
 msgid "multiply"
-msgstr ""
+msgstr "乘"
 
 #: TurtleArt/tabasics.py:573
 msgid "multiplies two numeric inputs"
-msgstr ""
+msgstr "将两个数值型输入相乘"
 
 #: TurtleArt/tabasics.py:582
 msgid "divide"
-msgstr ""
+msgstr "除"
 
 #: TurtleArt/tabasics.py:585
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
-msgstr ""
+msgstr "将顶部输入（分子）除以底部输入（分母）"
 
 #: TurtleArt/tabasics.py:595
 msgid "identity"
-msgstr ""
+msgstr "自身"
 
 #: TurtleArt/tabasics.py:597
 msgid "identity operator used for extending blocks"
-msgstr ""
+msgstr "用来拉长块的“自身”操作符"
 
 #: TurtleArt/tabasics.py:605 TurtleArt/tabasics.py:606
 msgid "mod"
@@ -366,7 +366,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:616
 msgid "√"
-msgstr ""
+msgstr "√"
 
 #: TurtleArt/tabasics.py:617
 msgid "square root"
@@ -390,7 +390,7 @@ msgstr "最大值"
 
 #: TurtleArt/tabasics.py:631
 msgid "returns random number between minimum (top) and maximum (bottom) values"
-msgstr ""
+msgstr "返回最小值（顶部）和最大值（底部）之间的随机数"
 
 #: TurtleArt/tabasics.py:643
 msgid "number"
@@ -402,27 +402,27 @@ msgstr "在数学运算符中作为数值型输入"
 
 #: TurtleArt/tabasics.py:651
 msgid "greater than"
-msgstr ""
+msgstr "大于"
 
 #: TurtleArt/tabasics.py:654
 msgid "logical greater-than operator"
-msgstr ""
+msgstr "逻辑“大于”运算符"
 
 #: TurtleArt/tabasics.py:660
 msgid "True"
-msgstr ""
+msgstr "真"
 
 #: TurtleArt/tabasics.py:666
 msgid "less than"
-msgstr ""
+msgstr "小于"
 
 #: TurtleArt/tabasics.py:669
 msgid "logical less-than operator"
-msgstr ""
+msgstr "逻辑“小于”运算符"
 
 #: TurtleArt/tabasics.py:674
 msgid "False"
-msgstr ""
+msgstr "假"
 
 #: TurtleArt/tabasics.py:680
 msgid "equal"
@@ -430,7 +430,7 @@ msgstr "等于"
 
 #: TurtleArt/tabasics.py:683
 msgid "logical equal-to operator"
-msgstr ""
+msgstr "逻辑“等于”运算符"
 
 #: TurtleArt/tabasics.py:689
 msgid "not"
@@ -438,7 +438,7 @@ msgstr "非"
 
 #: TurtleArt/tabasics.py:692
 msgid "logical NOT operator"
-msgstr ""
+msgstr "逻辑“非”运算符"
 
 #: TurtleArt/tabasics.py:698 TurtleArt/tabasics.py:701
 msgid "and"
@@ -446,7 +446,7 @@ msgstr "与"
 
 #: TurtleArt/tabasics.py:702
 msgid "logical AND operator"
-msgstr ""
+msgstr "逻辑“与”运算符"
 
 #: TurtleArt/tabasics.py:709 TurtleArt/tabasics.py:712
 msgid "or"
@@ -454,12 +454,12 @@ msgstr "或"
 
 #: TurtleArt/tabasics.py:713
 msgid "logical OR operator"
-msgstr ""
+msgstr "逻辑“或”运算符"
 
 #: TurtleArt/tabasics.py:722
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:94
 msgid "Palette of flow operators"
-msgstr ""
+msgstr "流程控制调色板"
 
 #: TurtleArt/tabasics.py:727
 msgid "wait"
@@ -467,7 +467,7 @@ msgstr "等待"
 
 #: TurtleArt/tabasics.py:731
 msgid "pauses program execution a specified number of seconds"
-msgstr ""
+msgstr "暂停程序执行指定秒数"
 
 # Here, 'forever' means 'forever repeat'.
 #: TurtleArt/tabasics.py:738
@@ -476,7 +476,7 @@ msgstr "永远执行"
 
 #: TurtleArt/tabasics.py:742
 msgid "loops forever"
-msgstr ""
+msgstr "永远执行的循环"
 
 #: TurtleArt/tabasics.py:748 TurtleArt/tabasics.py:752
 msgid "repeat"
@@ -484,7 +484,7 @@ msgstr "重复"
 
 #: TurtleArt/tabasics.py:753
 msgid "loops specified number of times"
-msgstr ""
+msgstr "循环指定次数"
 
 #: TurtleArt/tabasics.py:759 TurtleArt/tabasics.py:771
 msgid "if"
@@ -496,7 +496,7 @@ msgstr "那么"
 
 #: TurtleArt/tabasics.py:762
 msgid "if then"
-msgstr ""
+msgstr "如果 那么"
 
 #: TurtleArt/tabasics.py:764
 msgid "if-then operator that uses boolean operators from Numbers palette"
@@ -504,11 +504,11 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:771
 msgid "then else"
-msgstr ""
+msgstr "那么 或者"
 
 #: TurtleArt/tabasics.py:775
 msgid "if then else"
-msgstr ""
+msgstr "如果 那么 或者"
 
 #: TurtleArt/tabasics.py:776
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
@@ -516,35 +516,35 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:784
 msgid "horizontal space"
-msgstr ""
+msgstr "水平空白"
 
 #: TurtleArt/tabasics.py:785
 msgid "jogs stack right"
-msgstr ""
+msgstr "将块堆向右推"
 
 #: TurtleArt/tabasics.py:792
 msgid "vertical space"
-msgstr ""
+msgstr "竖直空白"
 
 #: TurtleArt/tabasics.py:793
 msgid "jogs stack down"
-msgstr ""
+msgstr "将块堆向下推"
 
 #: TurtleArt/tabasics.py:799
 msgid "stop action"
-msgstr ""
+msgstr "停止动作"
 
 #: TurtleArt/tabasics.py:802
 msgid "stops current action"
-msgstr ""
+msgstr "停止当前动作"
 
 #: TurtleArt/tabasics.py:811
 msgid "Palette of variable blocks"
-msgstr ""
+msgstr "变量块调色板"
 
 #: TurtleArt/tabasics.py:816 pysamples/grecord.py:213
 msgid "start"
-msgstr ""
+msgstr "开始"
 
 #: TurtleArt/tabasics.py:819
 msgid "connects action to toolbar run buttons"
@@ -552,19 +552,19 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:827
 msgid "store in box 1"
-msgstr "保存到箱子1"
+msgstr "保存到盒子1"
 
 #: TurtleArt/tabasics.py:831
 msgid "stores numeric value in Variable 1"
-msgstr ""
+msgstr "保存数值到变量1"
 
 #: TurtleArt/tabasics.py:838
 msgid "store in box 2"
-msgstr "保存到箱子2"
+msgstr "保存到盒子2"
 
 #: TurtleArt/tabasics.py:842
 msgid "stores numeric value in Variable 2"
-msgstr ""
+msgstr "保存数值到变量2"
 
 #: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
 #: TurtleArt/tabasics.py:851
@@ -575,57 +575,57 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:209
 msgid "text"
-msgstr ""
+msgstr "文本"
 
 #: TurtleArt/tabasics.py:852
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
 msgid "string value"
-msgstr ""
+msgstr "字符串值"
 
 #: TurtleArt/tabasics.py:856
 msgid "box 1"
-msgstr "箱子1"
+msgstr "盒子1"
 
 #: TurtleArt/tabasics.py:859
 msgid "Variable 1 (numeric value)"
-msgstr ""
+msgstr "变量1（数值）"
 
 #: TurtleArt/tabasics.py:865
 msgid "box 2"
-msgstr "箱子2"
+msgstr "盒子2"
 
 #: TurtleArt/tabasics.py:868
 msgid "Variable 2 (numeric value)"
-msgstr ""
+msgstr "变量2（数值）"
 
 #: TurtleArt/tabasics.py:875 TurtleArt/tabasics.py:885
 msgid "box"
-msgstr ""
+msgstr "盒子"
 
 #: TurtleArt/tabasics.py:877 TurtleArt/tabasics.py:888
 msgid "my box"
-msgstr ""
+msgstr "我的盒子"
 
 #: TurtleArt/tabasics.py:879
 msgid "named variable (numeric value)"
-msgstr ""
+msgstr "命名的变量（数值）"
 
 #: TurtleArt/tabasics.py:885
 msgid "store in"
-msgstr ""
+msgstr "放入"
 
 #: TurtleArt/tabasics.py:885 taextras.py:333
 msgid "value"
-msgstr ""
+msgstr "值"
 
 #: TurtleArt/tabasics.py:889
 msgid "stores numeric value in named variable"
-msgstr ""
+msgstr "保存数值到命名的变量"
 
 #: TurtleArt/tabasics.py:897 TurtleArt/tabasics.py:899
 #: TurtleArt/tabasics.py:923 TurtleArt/tabasics.py:926
 msgid "action"
-msgstr ""
+msgstr "动作"
 
 #: TurtleArt/tabasics.py:901
 msgid "top of nameable action stack"
