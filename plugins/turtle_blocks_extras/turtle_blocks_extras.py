@@ -116,8 +116,9 @@ boolean operators from Numbers palette'))
     def _media_palette(self):
 
         palette = make_palette('media',
-                     colors=["#A0FF00", "#80A000"],
-                     help_string=_('Palette of media objects'))
+                               colors=["#A0FF00", "#80A000"],
+                               help_string=_('Palette of media objects'),
+                               position=7)
 
         palette.add_block('journal',
                           style='box-style-media',
@@ -290,8 +291,9 @@ amplitude, and duration (in seconds)'))
     def _sensor_palette(self):
 
         palette = make_palette('sensor',
-                     colors=["#FF6060", "#A06060"],
-                     help_string=_('Palette of sensor blocks'))
+                               colors=["#FF6060", "#A06060"],
+                               help_string=_('Palette of sensor blocks'),
+                               position=6)
 
         primitive_dictionary['mousebutton'] = self._prim_mouse_button
         palette.add_block('mousebutton',
@@ -379,8 +381,9 @@ program started'))
     def _extras_palette(self):
 
         palette = make_palette('extras',
-                     colors=["#FF0000", "#A00000"],
-                     help_string=_('Palette of extra options'))
+                               colors=["#FF0000", "#A00000"],
+                               help_string=_('Palette of extra options'),
+                               position=8)
 
         primitive_dictionary['push'] = self._prim_push
         palette.add_block('push',
@@ -645,8 +648,10 @@ click to open'))
     def _portfolio_palette(self):
 
         palette = make_palette('portfolio',
-                     colors=["#0606FF", "#0606A0"],
-                     help_string=_('Palette of presentation templates'))
+                               colors=["#0606FF", "#0606A0"],
+                               help_string=_('Palette of presentation \
+templates'),
+                               position=9)
 
         palette.add_block('hideblocks',
                           style='basic-style-extended-vertical',
