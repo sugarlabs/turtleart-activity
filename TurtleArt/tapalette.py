@@ -95,6 +95,10 @@ class Palette():
         self._colors = colors
         self._help = None
 
+        '''
+        self._fd = open('/home/walter/Desktop/turtleblocks/doc/%s-palette.page' % (name), 'a')
+        '''
+
     def add_palette(self, position=None):
         if self._name is None:
             debug_output('You must specify a name for your palette')
@@ -113,6 +117,28 @@ class Palette():
             palette_names.insert(i, self._name)
             palette_blocks.insert(i, [])
             block_colors.insert(i, self._colors)
+
+            '''
+            self._fd.write('<page xmlns="http://projectmallard.org/1.0/"\n\
+      type="guide"\n\
+      id="%s-palette"\n\
+      xmlns:its="http://www.w3.org/2005/11/its"\n\
+      its:version="1.0">\n\
+<info>\n\
+  <link type="guide" xref="index"/>\n\
+  <link type="topic" xref="palettes"/>\n\
+  <its:rules version="1.0">\n\
+    <its:translateRule selector="//path | //cmd" translate="no"/>\n\
+  </its:rules>\n\
+</info>\n\
+<title>The %s Palette</title>\n\
+<p>\n\
+%s\n\
+</p>\n\
+<terms>\n\
+' % (self._name, self._name, self._help))
+            '''
+
         else:
             # debug_output('Palette %s already defined' % (self._name))
             return
@@ -161,8 +187,15 @@ class Palette():
             block.set_hidden()
         block.add_block()
 
+        '''
+        self._fd.write('  <item>\n\
+    <title>%s</title>\n\
+    <p>%s</p>\n\
+  </item>\n\
+' % (block_name, help_string))
+        '''
 
-def make_palette(palette_name, colors=None, help_string=None):
+def make_palette(palette_name, colors=None, help_string=None, position=None):
     """ Palette helper function """
     if colors is None:
         palette = Palette(palette_name)
@@ -170,7 +203,7 @@ def make_palette(palette_name, colors=None, help_string=None):
         palette = Palette(palette_name, colors)
     if help_string is not None:
         palette.set_help(help_string)
-    palette.add_palette()
+    palette.add_palette(position)
     return palette
 
 
@@ -183,7 +216,8 @@ def palette_name_to_index(palette_name):
 
 
 def define_logo_function(key, value):
-    ''' Add a logo function to the table. '''
+    ''' Add a logo function to the table (not necessarily associated
+    with a block, e.g., color lookup tables) '''
     logo_functions[key] = value    
 
 
@@ -203,11 +237,17 @@ class Block():
         self._value_block = False
         self._content_block = False
         self._colors = None
+        self._hidden = False
 
     def add_block(self, position=None):
         if self._name is None:
             debug_output('You must specify a name for your block')
             return
+
+        # FIXME: Does the block already exist? A block can live on
+        # multiple palettes, but it can only have one set of
+        # atttributes. So if this is a redefinition, remove it from
+        # all lists except palettes before regeneration.
 
         if self._style is None:
             debug_output('You must specify a style for your block')
@@ -257,8 +297,11 @@ class Block():
         if self._colors is not None:
             special_block_colors[self._name] = self._colors
 
+        if self._hidden:
+            hidden_proto_blocks.append(self._name)
+
     def set_hidden(self):
-        hidden_proto_blocks.append(self._name)
+        self._hidden = True
 
     def set_colors(self, colors=None):
         self._colors = colors
