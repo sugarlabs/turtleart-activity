@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-16 00:31-0500\n"
+"POT-Creation-Date: 2012-03-14 00:31-0400\n"
 "PO-Revision-Date: 2011-11-26 06:46+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #  "TortugArte"
 #: activity/activity.info:2 TurtleArt/taexporthtml.py:137
-#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1747
-#: TurtleArt/tawindow.py:3055 pysamples/grecord.py:205 turtleart.py:288
+#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1743
+#: TurtleArt/tawindow.py:3044 pysamples/grecord.py:205 turtleart.py:288
 msgid "Turtle Art"
 msgstr "CharapArte"
 
@@ -119,8 +119,8 @@ msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr ""
 
 #  "coorx"
-#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3051
-#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:542
+#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3040
+#: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:542
 msgid "xcor"
 msgstr "xcor"
 
@@ -131,8 +131,8 @@ msgid ""
 msgstr ""
 
 #  "coory"
-#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3051
-#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:543
+#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3040
+#: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:543
 msgid "ycor"
 msgstr "ycor"
 
@@ -143,8 +143,8 @@ msgid ""
 msgstr ""
 
 #  "rumbo"
-#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3051
-#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:543
+#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3040
+#: TurtleArt/tawindow.py:3044 TurtleArtActivity.py:543
 msgid "heading"
 msgstr "qawkirusa sarasna"
 
@@ -636,7 +636,7 @@ msgstr ""
 msgid "store in"
 msgstr ""
 
-#: TurtleArt/tabasics.py:885
+#: TurtleArt/tabasics.py:885 taextras.py:333
 msgid "value"
 msgstr ""
 
@@ -769,12 +769,12 @@ msgid "orientation"
 msgstr "uñt'ayawi"
 
 #  "siguiente"
-#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:1164
+#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:1165
 msgid "next"
 msgstr "jutiri"
 
 #  "imagen"
-#: TurtleArt/tawindow.py:3146
+#: TurtleArt/tawindow.py:3135
 msgid "image"
 msgstr "uñjasiwi"
 
@@ -1818,12 +1818,11 @@ msgstr "Australia qullqimpi lurañanaka"
 msgid "Palette of Guaranies"
 msgstr "Guaraníes qullqimpi lurañanaka"
 
-#  "TortugArte Butiá"
 #. TRANS: Butia is the Arduino Robot Project from Uruguay
 #. (http://www.fing.edu.uy/inco/proyectos/butia/)
 #: taextras.py:58
-msgid "Turtle Art Butia"
-msgstr "CharapArte Butia"
+msgid "TurtleBots"
+msgstr ""
 
 # "Ajusta la intensidad del LED entre 0 y 255."
 #: taextras.py:59
@@ -1888,10 +1887,9 @@ msgstr "0 ukatja 1 kama, qarkatasiñata yati."
 msgid "LED"
 msgstr "LED"
 
-#  "Botón"
 #: taextras.py:70
-msgid "pushbutton"
-msgstr "limjaña"
+msgid "button"
+msgstr ""
 
 #  "escala de gris"
 #: taextras.py:71
@@ -2388,7 +2386,7 @@ msgid ""
 "placed on the most recent object created."
 msgstr ""
 
-#: taextras.py:215
+#: taextras.py:215 taextras.py:329
 msgid "pin"
 msgstr ""
 
@@ -2551,7 +2549,7 @@ msgid "The value of power must be between -127 to 127."
 msgstr ""
 
 #: taextras.py:272
-msgid "An error has ocurred: check all and try reconect."
+msgid "An error has occurred: check all connections and try to reconnect."
 msgstr ""
 
 #: taextras.py:273
@@ -2694,6 +2692,138 @@ msgstr ""
 msgid "Set color sensor light."
 msgstr ""
 
+#: taextras.py:308
+msgid "reset motor"
+msgstr ""
+
+#: taextras.py:309
+msgid "Reset the motor counter."
+msgstr ""
+
+#: taextras.py:310
+msgid "motor position"
+msgstr ""
+
+#: taextras.py:311
+msgid "Get the motor position."
+msgstr ""
+
+#. TRANS: Arduino plugin to control an Arduino board
+#: taextras.py:316
+msgid "Palette of Arduino blocks"
+msgstr ""
+
+#: taextras.py:317
+msgid "HIGH"
+msgstr ""
+
+#: taextras.py:318
+msgid "LOW"
+msgstr ""
+
+#: taextras.py:319
+msgid "INPUT"
+msgstr ""
+
+#: taextras.py:320
+msgid "OUTPUT"
+msgstr ""
+
+#. TRANS: PWM is pulse-width modulation
+#: taextras.py:322
+msgid "PWM"
+msgstr ""
+
+#: taextras.py:323
+msgid "SERVO"
+msgstr ""
+
+#: taextras.py:324
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr ""
+
+#: taextras.py:325
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr ""
+
+#: taextras.py:326
+msgid "ERROR: Value must be either HIGH or LOW."
+msgstr ""
+
+#: taextras.py:327
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr ""
+
+#: taextras.py:328
+msgid "pin mode"
+msgstr ""
+
+#: taextras.py:330
+msgid "mode"
+msgstr ""
+
+#: taextras.py:331
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr ""
+
+#: taextras.py:332
+msgid "analog write"
+msgstr ""
+
+#: taextras.py:334
+msgid "Write analog value in specified port."
+msgstr ""
+
+#: taextras.py:335
+msgid "analog read"
+msgstr ""
+
+#: taextras.py:336
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+
+#: taextras.py:338
+msgid "digital write"
+msgstr ""
+
+#: taextras.py:339
+msgid "Write digital value to specified port."
+msgstr ""
+
+#: taextras.py:340
+msgid "digital read"
+msgstr ""
+
+#: taextras.py:341
+msgid "Read value from digital port."
+msgstr ""
+
+#: taextras.py:342
+msgid "Set HIGH value for digital port."
+msgstr ""
+
+#: taextras.py:343
+msgid "Configure Arduino port for digital input."
+msgstr ""
+
+#: taextras.py:344
+msgid "Configure Arduino port to drive a servo."
+msgstr ""
+
+#: taextras.py:345
+msgid "Set LOW value for digital port."
+msgstr ""
+
+#: taextras.py:346
+msgid "Configure Arduino port for digital output."
+msgstr ""
+
+#: taextras.py:347
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr ""
+
 #  "el uso es"
 #: turtleart.py:69
 msgid "usage is"
@@ -2784,6 +2914,14 @@ msgstr "Wakichawinaka janiwa imtawkiti. ¿Imtacha jukata mistjañani?"
 #: turtleart.py:399
 msgid "Save project?"
 msgstr "¿Wakichawinaka imtañani?"
+
+#  "TortugArte Butiá"
+#~ msgid "Turtle Art Butia"
+#~ msgstr "CharapArte Butia"
+
+#  "Botón"
+#~ msgid "pushbutton"
+#~ msgstr "limjaña"
 
 # "Devuelve el nivel de gris del objeto en frente al sensor como un número "
 #  "entre 0 y 1023."
