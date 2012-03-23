@@ -278,6 +278,7 @@ class TurtleArtActivity(activity.Activity):
         else:
             _logger.debug('turning hover help off')
             self.tw.no_help = True
+            self.tw.last_label = None
             self.tw.status_spr.hide()
             self._hover_help_toggle.set_icon('help-on')
             self._hover_help_toggle.set_tooltip(_('Turn on hover help'))
