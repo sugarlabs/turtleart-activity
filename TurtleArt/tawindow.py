@@ -1743,12 +1743,6 @@ class TurtleArtWindow():
             special_block_name = _(block_name)
         if block_name in help_strings:
             label = help_strings[block_name]
-            '''
-            if special_block_name == '':
-                label = help_strings[block_name]
-            else:
-                label = special_block_name + ": " + help_strings[block_name]
-            '''
         else:
             label = special_block_name
         self.showlabel('help', label=label)
@@ -3076,8 +3070,11 @@ class TurtleArtWindow():
             self.status_spr.move((PALETTE_WIDTH, self.height - 400))
         else:
             # Adjust vertical position based on scrolled window adjustment
-            self.status_spr.move((0, self.height - 200 + \
-                     self.activity.sw.get_vadjustment().get_value()))
+            if self.running_sugar:
+                self.status_spr.move((0, self.height - 200 + \
+                    self.activity.sw.get_vadjustment().get_value()))
+            elif self.interactive_mode:
+                self.status_spr.move((0, self.height - 100))
 
     def calc_position(self, template):
         """ Relative placement of portfolio objects (deprecated) """
