@@ -58,6 +58,9 @@ from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.tacollaboration import Collaboration
 
+if HAS_TOOLBARBOX:
+    from util.helpbutton import HelpButton
+
 
 class TurtleArtActivity(activity.Activity):
     ''' Activity subclass for Turtle Art '''
@@ -87,7 +90,8 @@ class TurtleArtActivity(activity.Activity):
         _logger.debug('_setup_palette_toolbar')
         self._setup_palette_toolbar()
         self._setup_extra_controls()
-        self._setup_help_toolbar()
+        if not self.has_toolbarbox:
+            self._setup_help_toolbar()
 
         _logger.debug('_setup_sharing')
         self._setup_sharing()
@@ -258,8 +262,25 @@ class TurtleArtActivity(activity.Activity):
                 return
         if not self.has_toolbarbox:
             self.palette_buttons[i].set_icon(palette_names[i] + 'on')
+        else:
+            _logger.debug('setting help button palette to %s' % (palette_names[i]))
+            self._help_button.set_current_palette(palette_names[i])
         self.tw.show_palette(n=i)
         self.do_showpalette()
+
+    def _do_hover_help_toggle(self, button):
+        ''' Toggle hover help '''
+        if self.tw.no_help:
+            _logger.debug('turning hover help on')
+            self.tw.no_help = False
+            self._hover_help_toggle.set_icon('help-off')
+            self._hover_help_toggle.set_tooltip(_('Turn off hover help'))
+        else:
+            _logger.debug('turning hover help off')
+            self.tw.no_help = True
+            self.tw.status_spr.hide()
+            self._hover_help_toggle.set_icon('help-on')
+            self._hover_help_toggle.set_tooltip(_('Turn on hover help'))
 
     # These methods are called both from toolbar buttons and blocks.
 
@@ -484,10 +505,9 @@ class TurtleArtActivity(activity.Activity):
             self._palette_toolbar = gtk.Toolbar()
             self._palette_toolbar_button = ToolbarButton(
                 page=self._palette_toolbar, icon_name='palette')
-            self._help_toolbar = gtk.Toolbar()
-            self._help_toolbar_button = ToolbarButton(label=_('Help'),
-                                                      page=self._help_toolbar,
-                                                      icon_name='help-toolbar')
+
+
+            self._help_button = HelpButton()
 
             self._make_load_save_buttons(activity_toolbar_button)
 
@@ -515,8 +535,6 @@ class TurtleArtActivity(activity.Activity):
             self._toolbox.add_toolbar(_('Edit'), edit_toolbar)
             journal_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Save/Load'), journal_toolbar)
-            self._help_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('Help'), self._help_toolbar)
 
             self._make_palette_buttons(self._project_toolbar,
                                        palette_button=True)
@@ -549,10 +567,13 @@ class TurtleArtActivity(activity.Activity):
         self.resize_down_button = self._add_button(
             'resize-', _('Shrink blocks'), self.do_shrink_blocks_cb,
             view_toolbar)
+        self._hover_help_toggle = self._add_button(
+            'help-off', _('Turn off hover help'), self._do_hover_help_toggle,
+            view_toolbar)
+
 
         edit_toolbar.show()
         view_toolbar.show()
-        self._help_toolbar.show()
         self._toolbox.show()
 
         if not self.has_toolbarbox:
@@ -574,27 +595,13 @@ class TurtleArtActivity(activity.Activity):
             'ta-open', _('Load example'), self.do_samples_cb,
             self._toolbox.toolbar)
 
-        self._help_toolbar_button.show()
-        self._toolbox.toolbar.insert(self._help_toolbar_button, -1)
+        self._toolbox.toolbar.insert(self._help_button, -1)
+        self._help_button.show()
 
         stop_button = StopButton(self)
         stop_button.props.accelerator = '<Ctrl>Q'
         self._toolbox.toolbar.insert(stop_button, -1)
         stop_button.show()
-
-    def _setup_help_toolbar(self):
-        ''' The help toolbar must be setup we determine what hardware
-        is in use. '''
-        # FIXME: Temporary work-around gtk problem with XO175
-        if get_hardware() not in [XO1, XO15, XO175, XO30] and \
-           (gtk.gtk_version[0] > 2 or gtk.gtk_version[1] > 16):
-            self.hover_help_label = self._add_label(
-                _('Move the cursor over the orange palette for help.'),
-                self._help_toolbar, gtk.gdk.screen_width() - 2 * ICON_SIZE)
-        else:
-            self.hover_help_label = self._add_label(
-                _('Move the cursor over the orange palette for help.'),
-                self._help_toolbar)
 
     def _setup_palette_toolbar(self):
         ''' The palette toolbar must be setup *after* plugins are loaded. '''

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#Copyright (c) 2011 Walter Bender
+#Copyright (c) 2011,12 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -19,6 +19,8 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
+help_palettes = {}
+help_windows = {}
 palette_names = []
 palette_blocks = []
 block_colors = []
@@ -75,6 +77,12 @@ block_styles = {'basic-style': [],
                 'portfolio-style-2x1': [],
                 'portfolio-style-1x2': []}
 
+
+import gtk
+
+from sugar.graphics.icon import Icon
+from sugar.graphics import style
+
 from taconstants import EXPANDABLE_STYLE
 from tautils import debug_output
 
@@ -94,6 +102,25 @@ class Palette():
         self._special_name = _(name)
         self._colors = colors
         self._help = None
+        self._max_text_width = int(gtk.gdk.screen_width() / 3) - 20
+
+        # Prepare a vbox for the help palette
+        if not (self._name in help_palettes):
+            self._help_box = gtk.VBox()
+            self._help_box.set_homogeneous(False)
+            help_palettes[self._name] = self._help_box
+        else:
+            self._help_box = help_palettes[self._name]
+
+        help_windows[self._name] = gtk.ScrolledWindow()
+        help_windows[self._name].set_size_request(
+            int(gtk.gdk.screen_width() / 3),
+            gtk.gdk.screen_height() - style.GRID_CELL_SIZE * 3)
+        help_windows[self._name].set_policy(
+            gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        help_windows[self._name].add_with_viewport(
+            help_palettes[self._name])
+        help_palettes[self._name].show()
 
         '''
         self._fd = open('/home/walter/Desktop/turtleblocks/doc/%s-palette.page' % (name), 'a')
@@ -150,8 +177,48 @@ class Palette():
         else:
             help_strings[self._name] = ''
 
+    def add_section(self, section_text, icon=None):
+        ''' Add a section to the help palette. From helpbutton.py by
+        Gonzalo Odiard '''
+        hbox = gtk.HBox()
+        label = gtk.Label()
+        label.set_use_markup(True)
+        label.set_markup('<b>%s</b>' % section_text)
+        label.set_line_wrap(True)
+        label.set_size_request(self._max_text_width, -1)
+        hbox.add(label)
+        if icon is not None:
+            _icon = Icon(icon_name=icon)
+            hbox.add(_icon)
+            label.set_size_request(self._max_text_width - 20, -1)
+        else:
+            label.set_size_request(self._max_text_width, -1)
+
+        hbox.show_all()
+        self._help_box.pack_start(hbox, False, False, padding=5)
+
+    def add_paragraph(self, text, icon=None):
+        ''' Add an entry to the help palette. From helpbutton.py by
+        Gonzalo Odiard '''
+        hbox = gtk.HBox()
+        label = gtk.Label(text)
+        label.set_justify(gtk.JUSTIFY_LEFT)
+        label.set_line_wrap(True)
+        hbox.add(label)
+        if icon is not None:
+            _icon = Icon(icon_name=icon)
+            hbox.add(_icon)
+            label.set_size_request(self._max_text_width - 20, -1)
+        else:
+            label.set_size_request(self._max_text_width, -1)
+
+        hbox.show_all()
+        self._help_box.pack_start(hbox, False, False, padding=5)
+
     def set_help(self, help):
         self._help = help
+        if hasattr(self, '_help_box'):
+            self.add_section(self._help, icon=self._name + 'off')
 
     def set_special_name(self, name):
         self._special_name = name
@@ -176,8 +243,15 @@ class Palette():
             block.set_prim_name(prim_name)
         if logo_command is not None:
             block.set_logo_command(logo_command)
-        if help_string is not None:
+        if not hidden and help_string is not None:
             block.set_help(help_string)
+            if special_name is None:
+                if type(label) == list:
+                    self.add_paragraph('%s: %s' % (label[0], help_string))
+                else:
+                    self.add_paragraph('%s: %s' % (label, help_string))
+            else:
+                self.add_paragraph('%s: %s' % (special_name, help_string))
         if colors is not None:
             block.set_colors(colors)
         block.set_value_block(value_block)
