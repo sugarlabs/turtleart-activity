@@ -125,6 +125,7 @@ class TurtleArtWindow():
         self.rect = gtk.gdk.Rectangle(0, 0, 0, 0)
 
         self.no_help = False
+        self.last_label = None
 
         self.keypress = ''
         self.keyvalue = 0
@@ -1745,7 +1746,11 @@ class TurtleArtWindow():
             label = help_strings[block_name]
         else:
             label = special_block_name
+        if self.last_label == label:
+            return 0
         self.showlabel('help', label=label)
+        debug_output(label, True)
+        self.last_label = label
         return 0
 
     def _buttonrelease_cb(self, win, event):
