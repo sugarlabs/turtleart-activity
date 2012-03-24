@@ -1749,7 +1749,6 @@ class TurtleArtWindow():
         if self.last_label == label:
             return 0
         self.showlabel('help', label=label)
-        debug_output(label, True)
         self.last_label = label
         return 0
 
