@@ -1010,7 +1010,7 @@ bullets'))
         if flag and (self.tw.hide or self.tw.step_time == 0):
             return
         if type(n) == list:
-            self.tw.showlabel('status', n)
+            self.tw.showlabel('print', n)
         elif type(n) == str or type(n) == unicode:
             if n[0:6] == 'media_' and \
                n[6:].lower not in media_blocks_dictionary:
@@ -1022,27 +1022,27 @@ bullets'))
                         except:
                             debug_output("Couldn't open %s" % (n[6:]),
                                          self.tw.running_sugar)
-                        self.tw.showlabel('status', dsobject.metadata['title'])
+                        self.tw.showlabel('print', dsobject.metadata['title'])
                         dsobject.destroy()
                     else:
-                        self.tw.showlabel('status', n[6:])
+                        self.tw.showlabel('print', n[6:])
                 except IOError:
-                    self.tw.showlabel('status', n)
+                    self.tw.showlabel('print', n)
             else:
-                self.tw.showlabel('status', n)
+                self.tw.showlabel('print', n)
         elif type(n) == int:
-            self.tw.showlabel('status', n)
+            self.tw.showlabel('print', n)
         else:
-            self.tw.showlabel('status',
+            self.tw.showlabel('print',
                 str(round_int(n)).replace('.', self.tw.decimal_point))
 
     def _prim_printheap(self):
         """ Display contents of heap """
         heap_as_string = str(self.tw.lc.heap)
         if len(heap_as_string) > 80:
-            self.tw.showlabel('status', str(self.tw.lc.heap)[0:79] + '…')
+            self.tw.showlabel('print', str(self.tw.lc.heap)[0:79] + '…')
         else:
-            self.tw.showlabel('status', str(self.tw.lc.heap))
+            self.tw.showlabel('print', str(self.tw.lc.heap))
 
     def _prim_push(self, val):
         """ Push value onto FILO """
