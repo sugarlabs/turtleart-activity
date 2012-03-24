@@ -654,6 +654,10 @@ class TurtleArtWindow():
                 p[0].move((x + p[0].save_xy[0], y + p[0].save_xy[1]))
             if p[1] is not None:
                 p[1].move((x + p[1].save_xy[0], y + p[1].save_xy[1]))
+
+        self.status_spr.move((x + self.status_spr.save_xy[0],
+                              y + self.status_spr.save_xy[1]))
+
         # To do: set save_xy for blocks in Trash
         for blk in self.trash_stack:
             for gblk in find_group(blk):
