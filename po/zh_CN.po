@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-14 00:31-0400\n"
-"PO-Revision-Date: 2012-03-22 14:27+0200\n"
+"PO-Revision-Date: 2012-03-24 06:33+0200\n"
 "Last-Translator: Xin <dram.wang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -205,15 +205,15 @@ msgstr "开始填充"
 
 #: TurtleArt/tabasics.py:336
 msgid "starts filled polygon (used with end fill block)"
-msgstr "开始填充多边形的绘制（和“结束填充”块一起使用）"
+msgstr "开始填充多边形的绘制（和完成填充一起使用）"
 
 #: TurtleArt/tabasics.py:343
 msgid "end fill"
-msgstr "结束填充"
+msgstr "完成填充"
 
 #: TurtleArt/tabasics.py:345
 msgid "completes filled polygon (used with start fill block)"
-msgstr "结束填充多边形的绘制（和开始填充一起使用）"
+msgstr "完成填充多边形的绘制（和开始填充一起使用）"
 
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:360
 msgid "Palette of pen colors"
@@ -354,7 +354,7 @@ msgstr "自身"
 
 #: TurtleArt/tabasics.py:597
 msgid "identity operator used for extending blocks"
-msgstr "用来拉长块的“自身”操作符"
+msgstr "用来拉长积木块的“自身”操作符"
 
 #: TurtleArt/tabasics.py:605 TurtleArt/tabasics.py:606
 msgid "mod"
@@ -362,7 +362,7 @@ msgstr "同余"
 
 #: TurtleArt/tabasics.py:609
 msgid "modular (remainder) operator"
-msgstr ""
+msgstr "取模（余数）操作符"
 
 #: TurtleArt/tabasics.py:616
 msgid "√"
@@ -632,16 +632,18 @@ msgid "top of nameable action stack"
 msgstr ""
 
 #: TurtleArt/tabasics.py:906 TurtleArt/tabasics.py:933
+#, fuzzy
 msgid "action 1"
-msgstr ""
+msgstr "动作"
 
 #: TurtleArt/tabasics.py:909
 msgid "top of Action 1 stack"
 msgstr ""
 
 #: TurtleArt/tabasics.py:914 TurtleArt/tabasics.py:942
+#, fuzzy
 msgid "action 2"
-msgstr ""
+msgstr "动作"
 
 #: TurtleArt/tabasics.py:917
 msgid "top of Action 2 stack"
@@ -661,23 +663,23 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:953
 msgid "trash"
-msgstr "垃圾桶"
+msgstr "回收站"
 
 #: TurtleArt/tabasics.py:957
 msgid "empty trash"
-msgstr ""
+msgstr "清空回收站"
 
 #: TurtleArt/tabasics.py:958
 msgid "permanently deletes items in trash"
-msgstr ""
+msgstr "永久性地删除回收站中的项"
 
 #: TurtleArt/tabasics.py:962
 msgid "restore all"
-msgstr ""
+msgstr "全部还原"
 
 #: TurtleArt/tabasics.py:963
 msgid "restore all blocks from trash"
-msgstr ""
+msgstr "还原回收站中的所有积木块"
 
 #: TurtleArt/tabasics.py:967
 msgid "clear all"
@@ -685,7 +687,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:968
 msgid "move all blocks to trash"
-msgstr ""
+msgstr "将所有积木块移入回收站"
 
 #: TurtleArt/taconstants.py:250 TurtleArt/taconstants.py:272
 #: TurtleArt/taconstants.py:293 TurtleArt/taconstants.py:335
@@ -749,8 +751,9 @@ msgid "image"
 msgstr ""
 
 #: TurtleArtActivity.py:147
+#, fuzzy
 msgid "presentation"
-msgstr ""
+msgstr "方向"
 
 #: TurtleArtActivity.py:223
 msgid "snapshot"
@@ -766,11 +769,11 @@ msgstr ""
 
 #: TurtleArtActivity.py:284 TurtleArtActivity.py:297
 msgid "Show blocks"
-msgstr ""
+msgstr "显示积木块"
 
 #: TurtleArtActivity.py:287 TurtleArtActivity.py:305 TurtleArtActivity.py:685
 msgid "Hide blocks"
-msgstr ""
+msgstr "隐藏积木块"
 
 #: TurtleArtActivity.py:415
 msgid "Rescale coordinates down"
@@ -827,11 +830,11 @@ msgstr ""
 
 #: TurtleArtActivity.py:549 turtleart.py:340
 msgid "Grow blocks"
-msgstr ""
+msgstr "伸长积木块"
 
 #: TurtleArtActivity.py:551 turtleart.py:342
 msgid "Shrink blocks"
-msgstr ""
+msgstr "缩短积木块"
 
 #: TurtleArtActivity.py:575 TurtleArtActivity.py:667
 msgid "Load example"
@@ -1133,8 +1136,9 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:99
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:102
+#, fuzzy
 msgid "while"
-msgstr ""
+msgstr "白色"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:103
 msgid "do-while-True operator that uses boolean operators from Numbers palette"
@@ -1619,8 +1623,9 @@ msgid "right x"
 msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:826
+#, fuzzy
 msgid "bottom y"
-msgstr ""
+msgstr "底部"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:841
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:855
@@ -2222,8 +2227,9 @@ msgid "Save the project to the Journal as a Physics activity."
 msgstr ""
 
 #: taextras.py:223
+#, fuzzy
 msgid "density"
-msgstr ""
+msgstr "自身"
 
 #: taextras.py:224
 msgid ""
@@ -2479,8 +2485,9 @@ msgid "PORT 3 of the brick"
 msgstr ""
 
 #: taextras.py:302
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "红色"
 
 #: taextras.py:303
 msgid "sensor"
@@ -2693,8 +2700,9 @@ msgid "Tools"
 msgstr ""
 
 #: turtleart.py:367
+#, fuzzy
 msgid "Stop"
-msgstr ""
+msgstr "顶部"
 
 #: turtleart.py:368
 msgid "Turtle"
