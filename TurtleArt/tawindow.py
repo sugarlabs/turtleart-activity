@@ -765,10 +765,10 @@ class TurtleArtWindow():
             self._layout_palette(n, regenerate=regenerate, show=False)
         for blk in self.palettes[n]:
             if blk.get_visibility():
-                try:
+                if hasattr(blk.spr, 'set_layer'):
                     blk.spr.set_layer(PROTO_LAYER)
-                except AttributeError:
-                    debug_output('block sprite is None' % (blk.name),
+                else:
+                    debug_output('WARNING: block sprite is None' % (blk.name),
                                  self.running_sugar)
             else:
                 blk.spr.hide()
@@ -883,12 +883,12 @@ class TurtleArtWindow():
                 if name in hidden_proto_blocks:
                     self.palettes[n][-1].set_visibility(False)
                 else:
-                    try:
+                    if hasattr(self.palettes[n][-1].spr, 'set_layer'):
                         self.palettes[n][-1].spr.set_layer(PROTO_LAYER)
                         self.palettes[n][-1].unhighlight()
-                    except AttributeError:
-                        debug_output('block sprite is None' % (blk.name),
-                                     self.running_sugar)
+                    else:
+                        debug_output('WARNING: block sprite is None' % (
+                                self.palettes[n][-1].name), self.running_sugar)
 
             # Some proto blocks get a skin.
             if name in block_styles['box-style-media']:
