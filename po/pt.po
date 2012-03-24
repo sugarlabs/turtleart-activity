@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-24 00:31-0400\n"
-"PO-Revision-Date: 2012-03-23 22:49+0200\n"
+"PO-Revision-Date: 2012-03-24 16:13+0200\n"
 "Last-Translator: Eduardo H. <hoboprimate@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: pt\n"
@@ -775,11 +775,11 @@ msgstr "revisão"
 
 #: TurtleArtActivity.py:277 TurtleArtActivity.py:572 turtleart.py:346
 msgid "Turn off hover help"
-msgstr ""
+msgstr "Desligar ajuda flutuante"
 
 #: TurtleArtActivity.py:284 turtleart.py:348
 msgid "Turn on hover help"
-msgstr ""
+msgstr "Ligar ajuda flutuante"
 
 #: TurtleArtActivity.py:292 turtleart.py:358
 msgid "Show palette"
@@ -1500,7 +1500,7 @@ msgstr "topo"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:603
 msgid "top of a collapsed stack"
-msgstr "topo de uma pilha colapsada"
+msgstr "topo de uma pilha encolhida"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:609
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:744
@@ -1509,15 +1509,15 @@ msgstr "fundo"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:610
 msgid "bottom of a collapsible stack"
-msgstr "fundo de uma pilha colapsável"
+msgstr "fundo de uma pilha que pode encolher"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:618
 msgid "collapsed stack: click to open"
-msgstr ""
+msgstr "pilha encolhida: clica para abrir"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:627
 msgid "bottom block in a collapsed stack: click to open"
-msgstr "bloco de fundo numa pilha colapsada: clica para abrir"
+msgstr "bloco de fundo numa pilha encolhida: clica para abrir"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:634
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:637
@@ -1532,7 +1532,7 @@ msgstr "etiqueta"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:643
 msgid "top of a collapsible stack"
-msgstr "topo de uma pilha colapsável"
+msgstr "topo de uma pilha que pode encolher"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:652
 msgid "Palette of presentation templates"
@@ -2579,115 +2579,116 @@ msgstr "Palete de blocos Arduino"
 
 #: taextras.py:317
 msgid "HIGH"
-msgstr "ALTO"
+msgstr "HIGH"
 
 #: taextras.py:318
 msgid "LOW"
-msgstr "BAIXO"
+msgstr "LOW"
 
 #: taextras.py:319
 msgid "INPUT"
-msgstr ""
+msgstr "INPUT"
 
 #: taextras.py:320
 msgid "OUTPUT"
-msgstr ""
+msgstr "OUTPUT"
 
 #. TRANS: PWM is pulse-width modulation
 #: taextras.py:322
 msgid "PWM"
-msgstr ""
+msgstr "PWM"
 
 #: taextras.py:323
 msgid "SERVO"
-msgstr ""
+msgstr "SERVO"
 
 #: taextras.py:324
 msgid "ERROR: Check the Arduino and the number of port."
-msgstr ""
+msgstr "ERRO: Verifica o Arduino e o número da porta."
 
 #: taextras.py:325
 msgid "ERROR: Value must be a number from 0 to 255."
-msgstr ""
+msgstr "ERRO: Valor deve ser um número entre 0 a 255."
 
 #: taextras.py:326
 msgid "ERROR: Value must be either HIGH or LOW."
-msgstr ""
+msgstr "ERRO: Valor deve ser HIGH ou LOW."
 
 #: taextras.py:327
 msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-msgstr ""
+msgstr "ERRO: O modo deve ser INPUT, OUTPUT, PWM ou SERVO."
 
 #: taextras.py:328
 msgid "pin mode"
-msgstr ""
+msgstr "modo pino"
 
 #: taextras.py:330
-#, fuzzy
 msgid "mode"
-msgstr "mod"
+msgstr "modo"
 
 #: taextras.py:331
 msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-msgstr ""
+msgstr "Escolhe a função do pino (INPUT, OUTPUT, PWM, SERVO)"
 
 #: taextras.py:332
 msgid "analog write"
-msgstr ""
+msgstr "escrever analógico"
 
 #: taextras.py:334
 msgid "Write analog value in specified port."
-msgstr ""
+msgstr "Escreve valor analógico na porta especificada."
 
 #: taextras.py:335
 msgid "analog read"
-msgstr ""
+msgstr "ler analógico"
 
 #: taextras.py:336
 msgid ""
 "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
 "determine voltage. For USB, volt=((read)*5)/1024) approximately."
 msgstr ""
+"Lê valor da porta analógica. Valor pode ser entre 0 e 1023. Utiliza Vref "
+"para determinar a voltagem. Para USB, volt=((ler)*5)/1024) aproximadamente."
 
 #: taextras.py:338
 msgid "digital write"
-msgstr ""
+msgstr "escrever digital"
 
 #: taextras.py:339
 msgid "Write digital value to specified port."
-msgstr ""
+msgstr "Escreve valor digital na porta especificada."
 
 #: taextras.py:340
 msgid "digital read"
-msgstr ""
+msgstr "ler digital"
 
 #: taextras.py:341
 msgid "Read value from digital port."
-msgstr ""
+msgstr "Lê valor de porta digital."
 
 #: taextras.py:342
 msgid "Set HIGH value for digital port."
-msgstr ""
+msgstr "Define valor HIGH para porta digital."
 
 #: taextras.py:343
 msgid "Configure Arduino port for digital input."
-msgstr ""
+msgstr "Configura porta do Arduino para entrada digital."
 
 #: taextras.py:344
 msgid "Configure Arduino port to drive a servo."
-msgstr ""
+msgstr "Configura porta do Arduino para guiar um \"servo\" (motor)."
 
 #: taextras.py:345
 msgid "Set LOW value for digital port."
-msgstr ""
+msgstr "Define valor LOW para porta digital."
 
 #: taextras.py:346
 msgid "Configure Arduino port for digital output."
-msgstr ""
+msgstr "Configura porta do Arduino para saída digital."
 
 #: taextras.py:347
 msgid "Configure Arduino port for PWM (pulse-width modulation)."
-msgstr ""
+msgstr "Configura porta do Arduino para PWM (modulação por largura de pulso)."
 
 #: turtleart.py:69
 msgid "usage is"
