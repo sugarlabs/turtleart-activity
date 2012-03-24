@@ -122,10 +122,6 @@ class Palette():
             help_palettes[self._name])
         help_palettes[self._name].show()
 
-        '''
-        self._fd = open('/home/walter/Desktop/turtleblocks/doc/%s-palette.page' % (name), 'a')
-        '''
-
     def add_palette(self, position=None):
         if self._name is None:
             debug_output('You must specify a name for your palette')
@@ -144,28 +140,6 @@ class Palette():
             palette_names.insert(i, self._name)
             palette_blocks.insert(i, [])
             block_colors.insert(i, self._colors)
-
-            '''
-            self._fd.write('<page xmlns="http://projectmallard.org/1.0/"\n\
-      type="guide"\n\
-      id="%s-palette"\n\
-      xmlns:its="http://www.w3.org/2005/11/its"\n\
-      its:version="1.0">\n\
-<info>\n\
-  <link type="guide" xref="index"/>\n\
-  <link type="topic" xref="palettes"/>\n\
-  <its:rules version="1.0">\n\
-    <its:translateRule selector="//path | //cmd" translate="no"/>\n\
-  </its:rules>\n\
-</info>\n\
-<title>The %s Palette</title>\n\
-<p>\n\
-%s\n\
-</p>\n\
-<terms>\n\
-' % (self._name, self._name, self._help))
-            '''
-
         else:
             # debug_output('Palette %s already defined' % (self._name))
             return
@@ -243,15 +217,16 @@ class Palette():
             block.set_prim_name(prim_name)
         if logo_command is not None:
             block.set_logo_command(logo_command)
-        if not hidden and help_string is not None:
+        if help_string is not None:
             block.set_help(help_string)
-            if special_name is None:
-                if type(label) == list:
-                    self.add_paragraph('%s: %s' % (label[0], help_string))
+            if not hidden: 
+                if special_name is None:
+                    if type(label) == list:
+                        self.add_paragraph('%s: %s' % (label[0], help_string))
+                    else:
+                        self.add_paragraph('%s: %s' % (label, help_string))
                 else:
-                    self.add_paragraph('%s: %s' % (label, help_string))
-            else:
-                self.add_paragraph('%s: %s' % (special_name, help_string))
+                    self.add_paragraph('%s: %s' % (special_name, help_string))
         if colors is not None:
             block.set_colors(colors)
         block.set_value_block(value_block)
@@ -260,14 +235,6 @@ class Palette():
         if hidden:
             block.set_hidden()
         block.add_block()
-
-        '''
-        self._fd.write('  <item>\n\
-    <title>%s</title>\n\
-    <p>%s</p>\n\
-  </item>\n\
-' % (block_name, help_string))
-        '''
 
 def make_palette(palette_name, colors=None, help_string=None, position=None):
     """ Palette helper function """
