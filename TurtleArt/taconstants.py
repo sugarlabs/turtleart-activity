@@ -143,7 +143,7 @@ OVERLAY_SHAPES = ['Cartesian', 'Cartesian_labeled', 'polar', 'metric']
 STATUS_SHAPES = ['status', 'info', 'nostack', 'dupstack', 'noinput',
                  'emptyheap', 'emptybox', 'nomedia', 'nocode', 'overflowerror',
                  'negroot', 'syntaxerror', 'nofile', 'nojournal', 'zerodivide',
-                 'notanumber', 'incompatible']
+                 'notanumber', 'incompatible', 'help']
 
 #
 # Emulate Sugar toolbar when running from outside of Sugar

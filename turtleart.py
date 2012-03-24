@@ -343,6 +343,10 @@ class TurtleMain():
                         self._do_resize_cb, 0.667)
         MenuBuilder.make_menu_item(menu, _('Reset block size'),
                         self._do_resize_cb, -1)
+        MenuBuilder.make_menu_item(menu, _('Turn off hover help'),
+                        self._do_hover_help_off_cb)
+        MenuBuilder.make_menu_item(menu, _('Turn on hover help'),
+                        self._do_hover_help_on_cb)
         view_menu = MenuBuilder.make_sub_menu(menu, _('View'))
 
         menu = gtk.Menu()
@@ -497,6 +501,16 @@ class TurtleMain():
                 self.tw.overlay_shapes['Cartesian'].hide()
                 self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
                                                               OVERLAY_LAYER)
+
+    def _do_hover_help_on_cb(self, button):
+        ''' Turn hover help on '''
+        self.tw.no_help = False
+
+    def _do_hover_help_off_cb(self, button):
+        ''' Turn hover help off '''
+        self.tw.no_help = True
+        self.tw.last_label = None
+        self.tw.status_spr.hide()
 
     def _do_palette_cb(self, widget):
         ''' Callback to show/hide palette of blocks. '''

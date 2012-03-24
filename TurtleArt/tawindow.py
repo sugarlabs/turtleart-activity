@@ -124,6 +124,9 @@ class TurtleArtWindow():
         self.height = gtk.gdk.screen_height()
         self.rect = gtk.gdk.Rectangle(0, 0, 0, 0)
 
+        self.no_help = False
+        self.last_label = None
+
         self.keypress = ''
         self.keyvalue = 0
         self.dead_key = ''
@@ -651,6 +654,10 @@ class TurtleArtWindow():
                 p[0].move((x + p[0].save_xy[0], y + p[0].save_xy[1]))
             if p[1] is not None:
                 p[1].move((x + p[1].save_xy[0], y + p[1].save_xy[1]))
+
+        self.status_spr.move((x + self.status_spr.save_xy[0],
+                              y + self.status_spr.save_xy[1]))
+
         # To do: set save_xy for blocks in Trash
         for blk in self.trash_stack:
             for gblk in find_group(blk):
@@ -1729,6 +1736,8 @@ class TurtleArtWindow():
 
     def _do_show_popup(self, block_name):
         """ Fetch the help text and display it.  """
+        if self.no_help:
+            return 0
         if block_name in special_names:
             special_block_name = special_names[block_name]
         elif block_name in block_names:
@@ -1738,18 +1747,13 @@ class TurtleArtWindow():
         else:
             special_block_name = _(block_name)
         if block_name in help_strings:
-            if special_block_name == '':
-                label = help_strings[block_name]
-            else:
-                label = special_block_name + ": " + help_strings[block_name]
+            label = help_strings[block_name]
         else:
             label = special_block_name
-        if self.running_sugar:
-            self.activity.hover_help_label.set_text(label)
-            self.activity.hover_help_label.show()
-        else:
-            if self.interactive_mode:
-                self.parent.set_title(_("Turtle Art") + " — " + label)
+        if self.last_label == label:
+            return 0
+        self.showlabel('help', label=label)
+        self.last_label = label
         return 0
 
     def _buttonrelease_cb(self, win, event):
@@ -3073,7 +3077,12 @@ class TurtleArtWindow():
         if shp == 'info':
             self.status_spr.move((PALETTE_WIDTH, self.height - 400))
         else:
-            self.status_spr.move((PALETTE_WIDTH, self.height - 200))
+            # Adjust vertical position based on scrolled window adjustment
+            if self.running_sugar:
+                self.status_spr.move((0, self.height - 200 + \
+                    self.activity.sw.get_vadjustment().get_value()))
+            elif self.interactive_mode:
+                self.status_spr.move((0, self.height - 100))
 
     def calc_position(self, template):
         """ Relative placement of portfolio objects (deprecated) """
