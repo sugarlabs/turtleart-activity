@@ -609,6 +609,15 @@ module found in the Journal'))
                           special_name=_('bottom'),
                           help_string=_('bottom of a collapsible stack'))
 
+        palette.add_block('sandwichtop_no_arm_no_label',
+                          hidden=True,
+                          colors=["#FF0000", "#A00000"],
+                          style='collapsible-top-no-arm-no-label',
+                          label=[' ', _('click to open')],
+                          prim_name='nop',
+                          help_string=_('collapsed stack: click to open'))
+
+        # deprecated blocks
         palette.add_block('sandwichcollapsed',
                           hidden=True,
                           colors=["#FF0000", "#A00000"],
@@ -618,7 +627,6 @@ module found in the Journal'))
                           help_string=_('bottom block in a collapsed stack: \
 click to open'))
 
-        # deprecated blocks
         palette.add_block('sandwichtop',
                           hidden=True,
                           colors=["#FF0000", "#A00000"],
@@ -635,14 +643,6 @@ click to open'))
                           label=_('top of a collapsible stack'),
                           default=_('label'),
                           prim_name='comment',
-                          help_string=_('top of stack'))
-
-        palette.add_block('sandwichtop_no_arm_no_label',
-                          hidden=True,
-                          colors=["#FF0000", "#A00000"],
-                          style='collapsible-top-no-arm-no-label',
-                          label=[' ', _('click to open')],
-                          prim_name='nop',
                           help_string=_('top of stack'))
 
     def _portfolio_palette(self):
