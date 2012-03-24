@@ -263,7 +263,6 @@ class TurtleArtActivity(activity.Activity):
         if not self.has_toolbarbox:
             self.palette_buttons[i].set_icon(palette_names[i] + 'on')
         else:
-            _logger.debug('setting help button palette to %s' % (palette_names[i]))
             self._help_button.set_current_palette(palette_names[i])
         self.tw.show_palette(n=i)
         self.do_showpalette()
@@ -271,12 +270,10 @@ class TurtleArtActivity(activity.Activity):
     def _do_hover_help_toggle(self, button):
         ''' Toggle hover help '''
         if self.tw.no_help:
-            _logger.debug('turning hover help on')
             self.tw.no_help = False
             self._hover_help_toggle.set_icon('help-off')
             self._hover_help_toggle.set_tooltip(_('Turn off hover help'))
         else:
-            _logger.debug('turning hover help off')
             self.tw.no_help = True
             self.tw.last_label = None
             self.tw.status_spr.hide()
