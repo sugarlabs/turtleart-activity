@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-24 00:31-0400\n"
-"PO-Revision-Date: 2012-03-24 14:17+0200\n"
+"PO-Revision-Date: 2012-03-25 04:56+0200\n"
 "Last-Translator: Xin <dram.wang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -875,7 +875,6 @@ msgid "<Ctrl>b"
 msgstr "<Ctrl>b"
 
 #: TurtleArtActivity.py:698 turtleart.py:367
-#, fuzzy
 msgid "Clean"
 msgstr "清屏"
 
@@ -1023,7 +1022,7 @@ msgstr "上传失败！"
 #: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:295
 msgid "Palette of sensor blocks"
-msgstr "感应器调色板"
+msgstr "传感器调色板"
 
 #: plugins/accelerometer/accelerometer.py:55
 #: plugins/accelerometer/accelerometer.py:62
@@ -1059,7 +1058,7 @@ msgstr "麦克风输入音量"
 #: plugins/audio_sensors/audio_sensors.py:126
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:282
 msgid "pitch"
-msgstr "音高"
+msgstr "强度"
 
 #: plugins/audio_sensors/audio_sensors.py:119
 #: plugins/audio_sensors/audio_sensors.py:127
@@ -1106,7 +1105,7 @@ msgstr "亮度"
 #: plugins/camera_sensor/camera_sensor.py:68
 #: plugins/camera_sensor/camera_sensor.py:99
 msgid "light level detected by camera"
-msgstr ""
+msgstr "相机侦测到的光照水平"
 
 #: plugins/camera_sensor/camera_sensor.py:80
 #: plugins/camera_sensor/camera_sensor.py:111
@@ -1116,12 +1115,12 @@ msgstr ""
 #: plugins/camera_sensor/camera_sensor.py:91
 #: plugins/camera_sensor/camera_sensor.py:123
 msgid "camera output"
-msgstr ""
+msgstr "相机输出"
 
 #: plugins/light_sensor/light_sensor.py:57
 #: plugins/light_sensor/light_sensor.py:64
 msgid "light level detected by light sensor"
-msgstr ""
+msgstr "光线感应器侦测到的光照水平"
 
 #: plugins/rfid/rfid.py:91 plugins/rfid/rfid.py:99
 msgid "RFID"
@@ -1159,234 +1158,233 @@ msgstr "日志"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:128
 msgid "Sugar Journal media object"
-msgstr ""
+msgstr "Sugar日志中的多媒体文件"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:138
 msgid "audio"
-msgstr ""
+msgstr "音频"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:140
 msgid "Sugar Journal audio object"
-msgstr ""
+msgstr "Sugar日志中的音频文件"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:150
 msgid "video"
-msgstr ""
+msgstr "视频"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:152
 msgid "Sugar Journal video object"
-msgstr ""
+msgstr "Sugar日志中的视频文件"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:162
 msgid "description"
-msgstr ""
+msgstr "描述"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:164
 msgid "Sugar Journal description field"
-msgstr ""
+msgstr "Sugar日志描述字段"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:209
 msgid "show"
-msgstr ""
+msgstr "显示"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:185
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
 msgid "draws text or show media from the Journal"
-msgstr ""
+msgstr "绘制日志中的文本或多媒体"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
 msgid "show aligned"
-msgstr ""
+msgstr "对齐显示"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:221
-#, fuzzy
 msgid "set scale"
-msgstr "设置明暗度"
+msgstr "设置比例"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:225
 msgid "sets the scale of media"
-msgstr ""
+msgstr "设置多媒体的显示比例"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:232
 msgid "save picture"
-msgstr ""
+msgstr "保存图片"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:234
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:245
 msgid "picture name"
-msgstr ""
+msgstr "图片名称"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:235
 msgid "saves a picture to the Sugar Journal"
-msgstr ""
+msgstr "保存图片到Sugar日志中"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:243
 msgid "save SVG"
-msgstr ""
+msgstr "保存SVG"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:246
 msgid "saves turtle graphics as an SVG file in the Sugar Journal"
-msgstr ""
+msgstr "以SVG格式保存海龟图形到Sugar日志中"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:253
 msgid "scale"
-msgstr ""
+msgstr "比例"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:257
 msgid "holds current scale value"
-msgstr ""
+msgstr "包含当前的比例"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
 msgid "media wait"
-msgstr ""
+msgstr "等待多媒体"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:264
 msgid "wait for current video or audio to complete"
-msgstr ""
+msgstr "等待当前的视频或音频结束"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:271
 msgid "speak"
-msgstr ""
+msgstr "朗读"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:273
 msgid "hello"
-msgstr ""
+msgstr "你好"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:274
 msgid "speaks text"
-msgstr ""
+msgstr "朗读文本"
 
 #. TRANS: pitch, duration, amplitude
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:282
 msgid "sinewave"
-msgstr ""
+msgstr "正弦波"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:282
 msgid "duration"
-msgstr ""
+msgstr "持续时间"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
-msgstr ""
+msgstr "播放一个指定频率、波幅和持续时间（秒）的正弦波"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:301
 msgid "button down"
-msgstr ""
+msgstr "鼠标按下"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:304
 msgid "returns 1 if mouse button is pressed"
-msgstr ""
+msgstr "返回1如果鼠标被按下"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:311
 msgid "mouse x"
-msgstr ""
+msgstr "鼠标X坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
 msgid "returns mouse x coordinate"
-msgstr ""
+msgstr "返回鼠标位置的X坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:321
 msgid "mouse y"
-msgstr ""
+msgstr "鼠标Y坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
 msgid "returns mouse y coordinate"
-msgstr ""
+msgstr "返回鼠标位置的Y坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:332
 msgid "query keyboard"
-msgstr ""
+msgstr "查询键盘"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:334
 msgid "query for keyboard input (results stored in keyboard block)"
-msgstr ""
+msgstr "查询键盘输入（结果保存在“键盘”积木块中）"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:341
 msgid "keyboard"
-msgstr ""
+msgstr "键盘"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:345
 msgid "holds results of query-keyboard block"
-msgstr ""
+msgstr "包含“查询键盘”积木块的结果"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:352
 msgid "read pixel"
-msgstr ""
+msgstr "读取像素"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:355
 msgid "RGB color under the turtle is pushed to the stack"
-msgstr ""
+msgstr "海龟所在位置的颜色RGB值将被压入堆栈"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:363
 msgid "turtle sees"
-msgstr ""
+msgstr "海龟看到"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:365
 msgid "returns the color that the turtle \"sees\""
-msgstr ""
+msgstr "返回海龟“看到”的颜色"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:373 taextras.py:279
 msgid "time"
-msgstr ""
+msgstr "时间"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:376
 msgid "elapsed time (in seconds) since program started"
-msgstr ""
+msgstr "程序启动后已经过的时间（秒）"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
 msgid "Palette of extra options"
-msgstr ""
+msgstr "额外选项调色板"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:391
 msgid "push"
-msgstr ""
+msgstr "压入"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
 msgid "pushes value onto FILO (first-in last-out heap)"
-msgstr ""
+msgstr "将值压入FILO（先进后出堆）"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
 msgid "show heap"
-msgstr ""
+msgstr "显示堆"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:407
 msgid "shows values in FILO (first-in last-out heap)"
-msgstr ""
+msgstr "显示FILO（先进后出堆）中的值"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:417
 msgid "empty heap"
-msgstr ""
+msgstr "清空堆"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:420
 msgid "emptys FILO (first-in-last-out heap)"
-msgstr ""
+msgstr "清空FILO（先进后出堆）"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
 msgid "pop"
-msgstr ""
+msgstr "弹出"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:434
 msgid "pops value off FILO (first-in last-out heap)"
-msgstr ""
+msgstr "从FILO（先进后出堆）中弹出值"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:444
 msgid "empty heap?"
-msgstr ""
+msgstr "堆空的吗？"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:447
 msgid "returns True if heap is empty"
-msgstr ""
+msgstr "在堆为空时返回“真”"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:456
 msgid "comment"
-msgstr ""
+msgstr "注释"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:457
 msgid "places a comment in your code"
-msgstr ""
+msgstr "在你的代码中加入注释"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:463
 msgid "print"
@@ -1394,78 +1392,77 @@ msgstr "打印"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:466
 msgid "prints value in status block at bottom of the screen"
-msgstr ""
+msgstr "在位于屏幕底部的状态积木块中打印值"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:474
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:486
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:477
 msgid ""
 "a programmable block: used to add advanced single-variable math equations, e."
 "g., sin(x)"
-msgstr ""
+msgstr "一个可编程积木块：用于加入单变量的高级数学等式，例如sin(x)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:489
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
-msgstr ""
+msgstr "一个可编程积木块：用于加入多变量的高级数学等式，例如sqrt(x*x+y*y)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:502
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
-msgstr ""
+msgstr "一个可编程积木块：用于加入多变量的高级数学等式，例如sin(x+y+z)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:513
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:528
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:543
 msgid "Python block"
-msgstr ""
+msgstr "Python积木块"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:515
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:530
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
 msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr ""
+msgstr "执行日志中tamyblock.py模块中的代码"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:558
 msgid "Cartesian"
-msgstr ""
+msgstr "直角坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:560
 msgid "displays Cartesian coordinates"
-msgstr ""
+msgstr "显示直角坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:566
 msgid "polar"
-msgstr ""
+msgstr "极坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:568
 msgid "displays polar coordinates"
-msgstr ""
+msgstr "显示极坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:574
-#, fuzzy
 msgid "turtle"
 msgstr "海龟"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:577
 msgid "chooses which turtle to command"
-msgstr ""
+msgstr "选择由哪个海龟执行命令"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:586
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:595
 msgid "turtle shell"
-msgstr ""
+msgstr "海龟外壳"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:588
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:596
 msgid "put a custom 'shell' on the turtle"
-msgstr ""
+msgstr "替海龟穿上一个自定义的“外壳”"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:601
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:768
@@ -1474,7 +1471,7 @@ msgstr "顶部"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:603
 msgid "top of a collapsed stack"
-msgstr ""
+msgstr "折叠积木堆的顶部"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:609
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:744
@@ -1483,92 +1480,90 @@ msgstr "底部"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:610
 msgid "bottom of a collapsible stack"
-msgstr ""
+msgstr "折叠积木堆的底部"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:618
 msgid "collapsed stack: click to open"
-msgstr ""
+msgstr "折叠积木堆：点击打开"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:627
 msgid "bottom block in a collapsed stack: click to open"
-msgstr ""
+msgstr "折叠积木堆中底部的积木块：点击打开"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:634
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:637
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
 msgid "top of stack"
-msgstr ""
+msgstr "积木堆顶部"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:635
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
 msgid "label"
-msgstr ""
+msgstr "标签"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:643
 msgid "top of a collapsible stack"
-msgstr ""
+msgstr "折叠积木堆的顶部"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:652
 msgid "Palette of presentation templates"
-msgstr ""
+msgstr "演示模板调色板"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:658
-#, fuzzy
 msgid "hide blocks"
 msgstr "隐藏积木块"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:660
 msgid "declutters canvas by hiding blocks"
-msgstr ""
+msgstr "隐藏积木块使画布整洁一些"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:665
-#, fuzzy
 msgid "show blocks"
 msgstr "显示积木块"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:667
 msgid "restores hidden blocks"
-msgstr ""
+msgstr "恢复隐藏的积木块"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:674
 msgid "hides the Sugar toolbars"
-msgstr ""
+msgstr "隐藏Sugar工具栏"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:683
 msgid "list"
-msgstr ""
+msgstr "列表"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:686
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:916
 msgid "presentation bulleted list"
-msgstr ""
+msgstr "演示项目列表"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:694
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:917
 msgid "presentation template: list of bullets"
-msgstr ""
+msgstr "演示模板：项目列表"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:701
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:861
 msgid "presentation template: select Journal object (no description)"
-msgstr ""
+msgstr "演示模板：选择日志中的物品（无描述）"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:708
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:847
 msgid "presentation template: select Journal object (with description)"
-msgstr ""
+msgstr "演示模板：选择日志中的物品（有描述）"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:903
 msgid "presentation template: select four Journal objects"
-msgstr ""
+msgstr "演示模板：选择四件日志中的物品"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:722
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:729
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:875
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:889
 msgid "presentation template: select two Journal objects"
-msgstr ""
+msgstr "演示模板：选择两件日志中的物品"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:739
 msgid "xcor of left of screen"
