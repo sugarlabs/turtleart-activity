@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-24 00:31-0400\n"
-"PO-Revision-Date: 2012-03-25 05:28+0200\n"
+"PO-Revision-Date: 2012-03-26 00:38+0200\n"
 "Last-Translator: Xin <dram.wang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -826,7 +826,6 @@ msgid "Polar coordinates"
 msgstr "极坐标"
 
 #: TurtleArtActivity.py:557
-#, fuzzy
 msgid "Metric coordinates"
 msgstr "公制坐标"
 
@@ -1032,7 +1031,7 @@ msgstr "加速度"
 #: plugins/accelerometer/accelerometer.py:57
 #: plugins/accelerometer/accelerometer.py:64
 msgid "push acceleration in x, y, z to heap"
-msgstr ""
+msgstr "把沿x，y，z方向加速度放入堆中"
 
 #: plugins/audio_sensors/audio_sensors.py:82
 #: plugins/audio_sensors/audio_sensors.py:97 pysamples/grecord.py:205
@@ -1703,169 +1702,169 @@ msgstr "海龟机器人"
 
 #: taextras.py:59
 msgid "adjust LED intensity between 0 and 255"
-msgstr ""
+msgstr "调整指示灯的光强度（0到255之间）"
 
 #: taextras.py:60
 msgid "returns the object gray level as a number between 0 and 1023"
-msgstr ""
+msgstr "返回对象灰度（0到1023之间）"
 
 #: taextras.py:61
 msgid "returns 1 when the button is press and 0 otherwise"
-msgstr ""
+msgstr "当按钮按下返回1，否则为0"
 
 #: taextras.py:62
 msgid "returns the ambient light level as a number between 0 and 1023"
-msgstr ""
+msgstr "返回环境光亮度（0到1023之间）"
 
 #: taextras.py:63
 msgid "returns the ambient temperature as a number between 0 and 255"
-msgstr ""
+msgstr "返回环境温度（0到255之间）"
 
 #: taextras.py:64
 msgid ""
 "returns the distance from the object in front of the sensor as a number "
 "between 0 and 255"
-msgstr ""
+msgstr "返回传感器前物体的距离（0到255之间）"
 
 #: taextras.py:66
 msgid "returns 0 or 1 depending on the sensor inclination"
-msgstr ""
+msgstr "返回传感器方位角（0或者1）"
 
 #: taextras.py:67
 msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-msgstr ""
+msgstr "当传感器检测到磁场返回1，否则为0"
 
 #: taextras.py:68
 msgid "switches from 0 to 1, the frequency depends on the vibration"
-msgstr ""
+msgstr " 从0切换到1，频率取决于振动"
 
 #: taextras.py:69
 msgid "LED"
-msgstr ""
+msgstr "指示灯"
 
 #: taextras.py:70
 msgid "button"
-msgstr ""
+msgstr "按钮"
 
 #: taextras.py:71
 msgid "grayscale"
-msgstr ""
+msgstr "灰度"
 
 #: taextras.py:72
 msgid "ambient light"
-msgstr ""
+msgstr "环境光"
 
 #: taextras.py:73
 msgid "temperature"
-msgstr ""
+msgstr "温度"
 
 #: taextras.py:74 taextras.py:244
 msgid "distance"
-msgstr ""
+msgstr "距离"
 
 #: taextras.py:75 taextras.py:241
 msgid "tilt"
-msgstr ""
+msgstr "斜度"
 
 #: taextras.py:76
 msgid "magnetic induction"
-msgstr ""
+msgstr "磁场感应"
 
 #: taextras.py:77
 msgid "vibration"
-msgstr ""
+msgstr "振动"
 
 #: taextras.py:78
 msgid "Butia Robot"
-msgstr ""
+msgstr "布迪机器人"
 
 #: taextras.py:79
 msgid "delay Butia"
-msgstr ""
+msgstr "布迪延迟"
 
 #: taextras.py:80
 msgid "wait for argument seconds"
-msgstr ""
+msgstr "等待参数所示秒"
 
 #. TRANS: This string is shorthand for "battery charge of Butia"
 #: taextras.py:82
 msgid "battery charge Butia"
-msgstr ""
+msgstr "布迪充电"
 
 #: taextras.py:83
 msgid "returns the battery charge as a number between 0 and 255"
-msgstr ""
+msgstr "返回电池充电度（0到255之间）"
 
 #. TRANS: This string is shorthand for "speed of Butia"
 #: taextras.py:85
 msgid "speed Butia"
-msgstr ""
+msgstr "布迪加速"
 
 #: taextras.py:86
 msgid ""
 "set the speed of the Butia motors as a value between 0 and 1023, passed by "
 "an argument"
-msgstr ""
+msgstr "通过传递参数设置布迪的电机速度（0到1023之间）"
 
 #. TRANS: This string is shorthand for "move Butia forward"
 #: taextras.py:89
 msgid "forward Butia"
-msgstr ""
+msgstr "布迪前进"
 
 #: taextras.py:90
 msgid "move the Butia robot forward"
-msgstr ""
+msgstr "向前移动布迪机器人"
 
 #: taextras.py:91
 msgid "move the Butia robot forward a predefined distance"
-msgstr ""
+msgstr "布迪机器人向前移动一个预先设定的距离"
 
 #. TRANS: This string is shorthand for "move Butia backward"
 #: taextras.py:93
 msgid "backward Butia"
-msgstr ""
+msgstr "布迪后退"
 
 #: taextras.py:94
 msgid "move the Butia robot backward"
-msgstr ""
+msgstr "先后移动布迪机器人"
 
 #: taextras.py:95
 msgid "move the Butia robot backward a predefined distance"
-msgstr ""
+msgstr "布迪机器人向后移动一个预先设定的距离"
 
 #. TRANS: This string is shorthand for "turn Butia left"
 #: taextras.py:97
 msgid "left Butia"
-msgstr ""
+msgstr "布迪左转"
 
 #: taextras.py:98
 msgid "turn the Butia robot at left"
-msgstr ""
+msgstr "向左转动布迪机器人"
 
 #. TRANS: This string is shorthand for "turn Butia right"
 #: taextras.py:100
 msgid "right Butia"
-msgstr ""
+msgstr "布迪右转"
 
 #: taextras.py:101
 msgid "turn the Butia robot at right"
-msgstr ""
+msgstr "向右转动布迪机器人"
 
 #: taextras.py:102
 msgid "turn Butia"
-msgstr ""
+msgstr "转动布迪"
 
 #: taextras.py:103
 msgid "turn the Butia robot x degrees"
-msgstr ""
+msgstr "将布迪机器人转动X角度"
 
 #: taextras.py:104
 msgid "stop Butia"
-msgstr ""
+msgstr "停止布迪"
 
 #: taextras.py:105
 msgid "stop the Butia robot"
-msgstr ""
+msgstr "停止布迪机器人"
 
 #: taextras.py:106
 msgid "display Butia"
@@ -1875,27 +1874,27 @@ msgstr ""
 #. The len must be 32 characters/spaces.
 #: taextras.py:109
 msgid "Hello World    Butia            "
-msgstr ""
+msgstr "Hello World    Butia            "
 
 #: taextras.py:110
 msgid "print text in Butia robot 32-character ASCII display"
-msgstr ""
+msgstr "在布迪机器人32字节ASCII显示屏中打印文本"
 
 #: taextras.py:111
 msgid "Butia"
-msgstr ""
+msgstr "布迪"
 
 #: taextras.py:115
 msgid "The camera was not found."
-msgstr ""
+msgstr "没有找到相机。"
 
 #: taextras.py:116
 msgid "Error on the initialization of the camera."
-msgstr ""
+msgstr "初始化相机出错。"
 
 #: taextras.py:117
 msgid "FollowMe"
-msgstr ""
+msgstr "跟我来"
 
 #: taextras.py:118
 msgid "follow a RGB color"
