@@ -90,8 +90,6 @@ class TurtleArtActivity(activity.Activity):
         _logger.debug('_setup_palette_toolbar')
         self._setup_palette_toolbar()
         self._setup_extra_controls()
-        if not self.has_toolbarbox:
-            self._setup_help_toolbar()
 
         _logger.debug('_setup_sharing')
         self._setup_sharing()
@@ -504,7 +502,6 @@ class TurtleArtActivity(activity.Activity):
             self._palette_toolbar_button = ToolbarButton(
                 page=self._palette_toolbar, icon_name='palette')
 
-
             self._help_button = HelpButton()
 
             self._make_load_save_buttons(activity_toolbar_button)
@@ -518,7 +515,6 @@ class TurtleArtActivity(activity.Activity):
             self._palette_toolbar_button.show()
             self._toolbox.toolbar.insert(self._palette_toolbar_button, -1)
 
-            _logger.debug('set_toolbar_box')
             self.set_toolbar_box(self._toolbox)
             self._palette_toolbar_button.set_expanded(True)
         else:
@@ -568,7 +564,6 @@ class TurtleArtActivity(activity.Activity):
         self._hover_help_toggle = self._add_button(
             'help-off', _('Turn off hover help'), self._do_hover_help_toggle,
             view_toolbar)
-
 
         edit_toolbar.show()
         view_toolbar.show()
