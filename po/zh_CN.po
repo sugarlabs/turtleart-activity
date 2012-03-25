@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-24 00:31-0400\n"
-"PO-Revision-Date: 2012-03-25 04:56+0200\n"
+"PO-Revision-Date: 2012-03-25 05:28+0200\n"
 "Last-Translator: Xin <dram.wang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -832,11 +832,11 @@ msgstr "公制坐标"
 
 #: TurtleArtActivity.py:567 turtleart.py:340
 msgid "Grow blocks"
-msgstr "伸长积木块"
+msgstr "增大积木块"
 
 #: TurtleArtActivity.py:569 turtleart.py:342
 msgid "Shrink blocks"
-msgstr "缩短积木块"
+msgstr "缩小积木块"
 
 #: TurtleArtActivity.py:596 TurtleArtActivity.py:674
 msgid "Load example"
@@ -1110,7 +1110,7 @@ msgstr "相机侦测到的光照水平"
 #: plugins/camera_sensor/camera_sensor.py:80
 #: plugins/camera_sensor/camera_sensor.py:111
 msgid "Average RGB color from camera is pushed to the stack"
-msgstr ""
+msgstr "相机的平均色彩RGB值已压入堆栈"
 
 #: plugins/camera_sensor/camera_sensor.py:91
 #: plugins/camera_sensor/camera_sensor.py:123
@@ -1600,49 +1600,44 @@ msgstr "画布高度"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:786
 msgid "title x"
-msgstr ""
+msgstr "标题X坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:795
 msgid "title y"
-msgstr ""
+msgstr "标题Y坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
 msgid "left x"
-msgstr ""
+msgstr "左侧X坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:813
 msgid "top y"
-msgstr ""
+msgstr "顶部Y坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:822
 msgid "right x"
-msgstr ""
+msgstr "右侧X坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:831
-#, fuzzy
 msgid "bottom y"
-msgstr "底部"
+msgstr "底部Y坐标"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:846
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:860
-#, fuzzy
 msgid "presentation 1x1"
-msgstr "方向"
+msgstr "以 1x1 方式演示"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
-#, fuzzy
 msgid "presentation 2x1"
-msgstr "方向"
+msgstr "以 2x1 方式演示"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:888
-#, fuzzy
 msgid "presentation 1x2"
-msgstr "方向"
+msgstr "以 1x2 方式演示"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:902
-#, fuzzy
 msgid "presentation 2x2"
-msgstr "方向"
+msgstr "以 2x2 方式演示"
 
 #: pysamples/grecord.py:215
 msgid "stop"
@@ -1650,61 +1645,61 @@ msgstr "停止"
 
 #: pysamples/grecord.py:217
 msgid "play"
-msgstr ""
+msgstr "播放"
 
 #: pysamples/grecord.py:219
 msgid "save"
-msgstr ""
+msgstr "保存"
 
 #: pysamples/uturn.py:24
 msgid "uturn"
-msgstr ""
+msgstr "翻转"
 
 #: pysamples/uturn.py:26
 msgid "make a uturn"
-msgstr ""
+msgstr "做一个翻转"
 
 #: taextras.py:36
 msgid "Turtle Art Mini"
-msgstr ""
+msgstr "迷你海龟绘图"
 
 #: taextras.py:40
 msgid "Turtle Confusion"
-msgstr ""
+msgstr "海龟谜题"
 
 #: taextras.py:41
 msgid "Select a challenge"
-msgstr ""
+msgstr "选择一个挑战"
 
 #: taextras.py:47
 msgid "Palette of Mexican pesos"
-msgstr ""
+msgstr "墨西哥比索调色板"
 
 #: taextras.py:48
 msgid "Palette of Colombian pesos"
-msgstr ""
+msgstr "哥伦比亚比索调色板"
 
 #: taextras.py:49
 msgid "Palette of Rwandan francs"
-msgstr ""
+msgstr "卢旺达法郎调色板"
 
 #: taextras.py:50
 msgid "Palette of US currencies"
-msgstr ""
+msgstr "美国货币调色板"
 
 #: taextras.py:51
 msgid "Palette of Australian currencies"
-msgstr ""
+msgstr "澳大利亚货币调色板"
 
 #: taextras.py:52
 msgid "Palette of Guaranies"
-msgstr ""
+msgstr "瓜拉尼调色板"
 
 #. TRANS: Butia is the Arduino Robot Project from Uruguay
 #. (http://www.fing.edu.uy/inco/proyectos/butia/)
 #: taextras.py:58
 msgid "TurtleBots"
-msgstr ""
+msgstr "海龟机器人"
 
 #: taextras.py:59
 msgid "adjust LED intensity between 0 and 255"
