@@ -658,7 +658,7 @@ class TurtleArtActivity(activity.Activity):
             # Only enable plugin loading if installed in /home
             if activity.get_bundle_path()[0:5] == '/home':
                 self.load_ta_plugin = self._add_button_and_label(
-                    'load-from-journal', _('Install plugin'),
+                    'pluginoff', _('Load plugin'),
                     self.do_load_ta_plugin_cb, button_box)
             self.load_python = self._add_button_and_label(
                 'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
@@ -683,7 +683,7 @@ class TurtleArtActivity(activity.Activity):
             # Only enable plugin loading if installed in /home
             if activity.get_bundle_path()[0:5] == '/home':
                 self.load_ta_plugin = self._add_button(
-                    'load-from-journal', _('Install plugin'),
+                    'pluginoff', _('Load plugin'),
                     self.do_load_ta_plugin_cb, toolbar)
             self.load_python = self._add_button(
                 'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
