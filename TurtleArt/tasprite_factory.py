@@ -422,7 +422,7 @@ class SVG:
     def turtle(self, colors):
         ''' Turtles are just another block '''
         self.reset_min_max()
-        self._fill, self._stroke = colors[0], colors[1]
+        self._fill, self._stroke = colors[1], colors[0]
 
         svg = "%s%s%s%s%s%s%s%s" % ("  <path d=\"M 27.5 48.3 ",
               "C 26.9 48.3 26.4 48.2 25.9 48.2 L 27.2 50.5 L 28.6 48.2 ",
