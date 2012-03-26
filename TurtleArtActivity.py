@@ -210,11 +210,11 @@ class TurtleArtActivity(activity.Activity):
 
     def _load_ta_plugin(self, dsobject):
         ''' Load a TA plugin from the datastore. '''
-        if True:  #Try:
+        try:
             _logger.debug('Opening %s ' % dsobject.file_path)
             self.read_file(dsobject.file_path, run_it=False, plugin=True)
-        # except:
-        #     _logger.debug("Couldn't open %s" % dsobject.file_path)
+        except:
+            _logger.debug("Couldn't open %s" % dsobject.file_path)
 
     def do_load_python_cb(self, button):
         ''' Load Python code from the Journal. '''
@@ -839,6 +839,59 @@ class TurtleArtActivity(activity.Activity):
                                                   'turtle blocks'])
         _logger.debug('Wrote to file: %s' % file_path)
 
+    def _load_a_plugin(self, tmpdir):
+        ''' Load a plugin from the Journal and initialize it '''
+        plugin_path = os.path.join(tmpdir, 'plugin.info')
+        _logger.debug(plugin_path)
+        file_info = ConfigParser.ConfigParser()
+        if len(file_info.read(plugin_path)) == 0:
+            _logger.debug('Required file plugin.info could not be found.')
+            self.tw.showlabel('status',
+                              label=_('Plugin could not be installed.'))
+        elif not file_info.has_option('Plugin', 'name'):
+            _logger.debug('Required open name not found in \
+Plugin section of plugin.info file.')
+            self.tw.showlabel('status',
+                              label=_('Plugin %s could not be installed.'))
+        else:
+            plugin_name = file_info.get('Plugin', 'name')
+            _logger.debug(plugin_name)
+            tmp_path = os.path.join(tmpdir, plugin_name)
+            plugin_path = os.path.join(activity.get_bundle_path(), 'plugins')
+            status = subprocess.call(['mv', tmp_path, plugin_path + '/'])
+            if status == 0:
+                _logger.debug('Plugin %s installed successfully.')
+                if self.has_toolbarbox:
+                    self.tw.init_plugin(plugin_name)
+                    self.tw._plugins[-1].setup()
+                    self.tw.load_media_shapes()
+                    if file_info.has_option('Plugin', 'palette'):
+                        palette_name = file_info.get('Plugin', 'palette')
+                        i = palette_names.index('trash')
+                        self.palette_buttons.insert(i - 1,
+                            self._radio_button_factory(
+                                palette_name + 'off',
+                                self._palette_toolbar,
+                                self.do_palette_buttons_cb,
+                                i - 1,
+                                help_strings[palette_name],
+                                self.palette_buttons[0],
+                                position=i - 1))
+                        self.tw.palettes.insert(i - 1, [])
+                        self.tw.palette_sprs.insert(i - 1, [None, None])
+                        # Finally, we need to change the index
+                        # associated with the Trash Palette
+                        i = palette_names.index('trash')
+                        self.palette_buttons[i].connect(
+                            'clicked', self.do_palette_buttons_cb, i)
+                    else:
+                        self.tw.showlabel('status',
+                                          label=_('Please restart Turtle Art \
+in order to use the plugin.'))
+                else:
+                    self.tw.showlabel('status',
+                                      label=_('Plugin could not be installed.'))
+
     def read_file(self, file_path, run_it=True, plugin=False):
         ''' Open a project or plugin and then run it. '''
         if hasattr(self, 'tw'):
@@ -859,7 +912,7 @@ class TurtleArtActivity(activity.Activity):
 
                 tmpdir = tempfile.mkdtemp()
 
-                if True:  #try:
+                try:
                     tar_fd.extractall(tmpdir)
                     if not plugin:
                         # Looking for a .ta file
@@ -869,76 +922,11 @@ class TurtleArtActivity(activity.Activity):
                         if os.path.exists(turtle_code):
                             self.tw.load_files(turtle_code, run_it)
                     else:
-                        plugin_path = os.path.join(tmpdir, 'plugin.info')
-                        _logger.debug(plugin_path)
-                        file_info = ConfigParser.ConfigParser()
-                        if len(file_info.read(plugin_path)) == 0:
-                            _logger.debug('Required file plugin.info could \
-not be found.')
-                            self.tw.showlabel('status',
-                                              label=_('Plugin could \
-not be installed.'))
-                        elif not file_info.has_option('Plugin', 'name'):
-                            _logger.debug('Required open name not found in \
-Plugin section of plugin.info file.')
-                            self.tw.showlabel('status',
-                                              label=_('Plugin %s could \
-not be installed.'))
-                        else:
-                            plugin_name = file_info.get('Plugin', 'name')
-                            _logger.debug(plugin_name)
-                            tmp_path = os.path.join(tmpdir, plugin_name)
-                            plugin_path = os.path.join(
-                                activity.get_bundle_path(), 'plugins')
-                            status = subprocess.call(
-                                ['mv', tmp_path, plugin_path + '/'])
-                            if status == 0:
-                                _logger.debug('Plugin %s installed \
-successfully.')
-                                if self.has_toolbarbox:
-                                    self.tw.init_plugin(plugin_name)
-                                    self.tw._plugins[-1].setup()
-                                    self.tw.load_media_shapes()
-                                    if file_info.has_option('Plugin',
-                                                            'palette'):
-                                        palette_name = file_info.get(
-                                            'Plugin', 'palette')
-                                        i = palette_names.index('trash')
-                                        _logger.debug('%s %d' \
-% (palette_name, i - 1))
-                                        self.palette_buttons.insert(i - 1,
-                                            self._radio_button_factory(
-                                                palette_name + 'off',
-                                                self._palette_toolbar,
-                                                self.do_palette_buttons_cb,
-                                                i - 1,
-                                                help_strings[palette_name],
-                                                self.palette_buttons[0],
-                                                position=i - 1))
-                                        self.tw.palettes.insert(i - 1, [])
-                                        self.tw.palette_sprs.insert(
-                                            i - 1, [None, None])
-                                        # Finally, we need to change the index
-                                        # associated with the Trash Palette
-                                        i = palette_names.index('trash')
-                                        self.palette_buttons[i].connect(
-                                            'clicked',
-                                            self.do_palette_buttons_cb, i)
-                                else:
-                                    self.tw.showlabel('status',
-                                        label=_('Please restart Turtle Art in \
-order to use the plugin.'))
-                            else:
-                                self.tw.showlabel('status',
-                                                  label=_('Plugin could \
-not be installed.'))
-                else:  # except:
-                    self.tw.showlabel('status',
-                                      label=_('Plugin could not be \
-installed.'))
+                        self._load_a_plugin(tmpdir)
+                except:
                     _logger.debug('Could not extract files from %s.' % (
                             file_path))
-                if True:  # finally:
+                finally:
                     shutil.rmtree(tmpdir)
                     tar_fd.close()
             # ...otherwise, assume it is a .ta file.
