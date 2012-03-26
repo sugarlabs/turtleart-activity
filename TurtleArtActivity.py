@@ -53,7 +53,8 @@ import ConfigParser
 from gettext import gettext as _
 
 from TurtleArt.tapalette import palette_names, help_strings
-from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE, XO1, XO15, XO175, XO30
+from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE, XO1, XO15, XO175, \
+                                  XO30
 from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
@@ -270,7 +271,7 @@ class TurtleArtActivity(activity.Activity):
                 self.palette_buttons[self.tw.selected_palette].set_icon(
                     palette_names[self.tw.selected_palette] + 'off')
             if self.tw.selected_palette == i:
-                # Hide the palette if it is already selected.             
+                # Hide the palette if it is already selected.
                 self.tw.hideshow_palette(False)
                 self.tw.selected_palette = None
                 return
@@ -439,8 +440,7 @@ class TurtleArtActivity(activity.Activity):
             self.tw.set_metric(True)
 
     def do_rescale_cb(self, button):
-        ''' Rescale coordinate system (100==height/2 or 100 pixels). '''        
-
+        ''' Rescale coordinate system (100==height/2 or 100 pixels). '''
         if self.tw.coord_scale == 1:
             self.tw.coord_scale = self.tw.height / 200
             self.rescale_button.set_icon('contract-coordinates')
@@ -661,8 +661,8 @@ class TurtleArtActivity(activity.Activity):
                     'pluginoff', _('Load plugin'),
                     self.do_load_ta_plugin_cb, button_box)
             self.load_python = self._add_button_and_label(
-                'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
-                button_box)
+                'pippy-openoff', _('Load Python block'),
+                self.do_load_python_cb, button_box)
             button_box.show_all()
             self._palette.set_content(button_box)
         else:
@@ -686,8 +686,8 @@ class TurtleArtActivity(activity.Activity):
                     'pluginoff', _('Load plugin'),
                     self.do_load_ta_plugin_cb, toolbar)
             self.load_python = self._add_button(
-                'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
-                toolbar)
+                'pippy-openoff', _('Load Python block'),
+                self.do_load_python_cb, toolbar)
             self.samples_button = self._add_button(
                 'ta-open', _('Load example'), self.do_samples_cb, toolbar)
 
@@ -698,7 +698,7 @@ class TurtleArtActivity(activity.Activity):
                                     state=self._palette.SECONDARY)
             else:
                 self._palette.popdown(immediate=True)
-            return 
+            return
 
     def _make_palette_buttons(self, toolbar, palette_button=False):
         ''' Creates the palette and block buttons for both toolbar types'''
@@ -720,7 +720,8 @@ class TurtleArtActivity(activity.Activity):
             'run-slowoff', _('Step'), self.do_step_cb, toolbar, _('<Ctrl>w'))
         if self.tw.hw not in [XO30]:
             self.debug_button = self._add_button(
-                'debugoff', _('Debug'), self.do_debug_cb, toolbar, _('<Ctrl>d'))
+                'debugoff', _('Debug'), self.do_debug_cb, toolbar,
+                _('<Ctrl>d'))
         self.stop_turtle_button = self._add_button(
             'stopitoff', _('Stop turtle'), self.do_stop_cb, toolbar,
             _('<Ctrl>s'))
@@ -825,7 +826,7 @@ class TurtleArtActivity(activity.Activity):
         self.add_events(gtk.gdk.VISIBILITY_NOTIFY_MASK)
         self.connect('visibility-notify-event', self.__visibility_notify_cb)
 
-    def can_close(self):      
+    def can_close(self):
         ''' Override activity class can_close inorder to notify plugins '''
         self.tw.quit_plugins()
         return True
@@ -889,8 +890,8 @@ Plugin section of plugin.info file.')
                                           label=_('Please restart Turtle Art \
 in order to use the plugin.'))
                 else:
-                    self.tw.showlabel('status',
-                                      label=_('Plugin could not be installed.'))
+                    self.tw.showlabel(
+                        'status', label=_('Plugin could not be installed.'))
 
     def read_file(self, file_path, run_it=True, plugin=False):
         ''' Open a project or plugin and then run it. '''
@@ -1056,7 +1057,7 @@ in order to use the plugin.'))
         ''' Add a button and a label to a box '''
         button_and_label = gtk.HBox()
         button = self._add_button(icon_name, None, cb, None)
-        label =  gtk.Label(tooltip)
+        label = gtk.Label(tooltip)
         label.show()
         button_and_label.pack_start(button)
         button_and_label.pack_start(label)
