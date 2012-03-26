@@ -861,6 +861,12 @@ class TurtleArtWindow():
         # Reload the palette, but reuse the existing blocks
         # If a block doesn't exist, add it
 
+        if not n < len(self.palettes):
+            debug_output(
+                '_create_proto_blocks: palette index %d is out of range' % (n),
+                self.running_sugar)
+            return
+
         for blk in self.palettes[n]:
             blk.spr.hide()
         old_blocks = self.palettes[n][:]
@@ -915,6 +921,11 @@ class TurtleArtWindow():
             palette = self.previous_palette
         # Hide previously selected palette
         if palette is not None:
+            if not palette < len(self.palettes):
+                debug_output(
+                    '_hide_previous_palette: index %d is out of range' % \
+                        (palette), self.running_sugar)
+                return
             for proto in self.palettes[palette]:
                 proto.spr.hide()
             if self.palette_sprs[palette][self.orientation] is not None:

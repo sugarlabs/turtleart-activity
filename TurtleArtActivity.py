@@ -655,9 +655,11 @@ class TurtleArtActivity(activity.Activity):
             self.load_ta_project = self._add_button_and_label(
                 'load-from-journal', _('Load project'),
                 self.do_load_ta_project_cb, button_box)
-            self.load_ta_plugin = self._add_button_and_label(
-                'load-from-journal', _('Install plugin'),
-                self.do_load_ta_plugin_cb, button_box)
+            # Only enable plugin loading if installed in /home
+            if activity.get_bundle_path()[0:5] == '/home':
+                self.load_ta_plugin = self._add_button_and_label(
+                    'load-from-journal', _('Install plugin'),
+                    self.do_load_ta_plugin_cb, button_box)
             self.load_python = self._add_button_and_label(
                 'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
                 button_box)
@@ -678,9 +680,11 @@ class TurtleArtActivity(activity.Activity):
             self.load_ta_project = self._add_button(
                 'load-from-journal', _('Load project'),
                 self.do_load_ta_project_cb, toolbar)
-            self.load_ta_plugin = self._add_button(
-                'load-from-journal', _('Install plugin'),
-                self.do_load_ta_plugin_cb, toolbar)
+            # Only enable plugin loading if installed in /home
+            if activity.get_bundle_path()[0:5] == '/home':
+                self.load_ta_plugin = self._add_button(
+                    'load-from-journal', _('Install plugin'),
+                    self.do_load_ta_plugin_cb, toolbar)
             self.load_python = self._add_button(
                 'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
                 toolbar)
@@ -890,17 +894,27 @@ successfully.')
                                                             'palette'):
                                         palette_name = file_info.get(
                                             'Plugin', 'palette')
+                                        i = palette_names.index('trash')
                                         _logger.debug('%s %d' \
-% (palette_name, len(self.palette_buttons) - 1))
-                                        self.palette_buttons.append(
+% (palette_name, i - 1))
+                                        self.palette_buttons.insert(i - 1,
                                             self._radio_button_factory(
                                                 palette_name + 'off',
                                                 self._palette_toolbar,
                                                 self.do_palette_buttons_cb,
-                                                len(self.palette_buttons) - 1,
+                                                i - 1,
                                                 help_strings[palette_name],
                                                 self.palette_buttons[0],
-                                                position=len(self.palette_buttons)))
+                                                position=i - 1))
+                                        self.tw.palettes.insert(i - 1, [])
+                                        self.tw.palette_sprs.insert(
+                                            i - 1, [None, None])
+                                        # Finally, we need to change the index
+                                        # associated with the Trash Palette
+                                        i = palette_names.index('trash')
+                                        self.palette_buttons[i].connect(
+                                            'clicked',
+                                            self.do_palette_buttons_cb, i)
                                 else:
                                     self.tw.showlabel('status',
                                         label=_('Please restart Turtle Art in \
