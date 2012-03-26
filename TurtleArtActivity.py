@@ -898,6 +898,7 @@ successfully.')
                                 if self.has_toolbarbox:
                                     self.tw.init_plugin(plugin_name)
                                     self.tw._plugins[-1].setup()
+                                    self.tw.load_media_shapes()
                                     if file_info.has_option('Plugin',
                                                             'palette'):
                                         palette_name = file_info.get(

@@ -376,10 +376,11 @@ class TurtleArtWindow():
         self.window.connect("motion-notify-event", self._move_cb)
         self.window.connect("key-press-event", self._keypress_cb)
 
-    def _setup_misc(self):
-        """ Misc. sprites for status, overlays, etc. """
-        # media blocks get positioned into other blocks
+    def load_media_shapes(self):
+        """ Media shapes get positioned onto blocks """
         for name in MEDIA_SHAPES:
+            if name in self.media_shapes:
+                continue
             if name[0:7] == 'journal' and not self.running_sugar:
                 filename = 'file' + name[7:]
             else:
@@ -392,6 +393,9 @@ class TurtleArtWindow():
                             os.path.join(self.path, path, filename + '.svg')))
                     break
 
+    def _setup_misc(self):
+        """ Misc. sprites for status, overlays, etc. """
+        self.load_media_shapes()
         for i, name in enumerate(STATUS_SHAPES):
             self.status_shapes[name] = svg_str_to_pixbuf(svg_from_file(
                     os.path.join(self.path, 'images', name + '.svg')))
