@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-24 00:31-0400\n"
-"PO-Revision-Date: 2012-03-26 00:38+0200\n"
-"Last-Translator: Xin <dram.wang@gmail.com>\n"
+"PO-Revision-Date: 2012-03-26 04:00+0200\n"
+"Last-Translator: lite <litekok@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -1868,7 +1868,7 @@ msgstr "停止布迪机器人"
 
 #: taextras.py:106
 msgid "display Butia"
-msgstr ""
+msgstr "显示布迪"
 
 #. TRANS: this string must contain only ASCII characters.
 #. The len must be 32 characters/spaces.
@@ -1898,164 +1898,164 @@ msgstr "跟我来"
 
 #: taextras.py:118
 msgid "follow a RGB color"
-msgstr ""
+msgstr "接一个RGB颜色"
 
 #: taextras.py:119
 msgid "set a threshold for a RGB color"
-msgstr ""
+msgstr "为RGB颜色设置一个阀门"
 
 #: taextras.py:120
 msgid "follow a turtle color"
-msgstr ""
+msgstr "接一个乌龟颜色"
 
 #: taextras.py:121
 msgid "set the minimal number of pixels to follow"
-msgstr ""
+msgstr "设置要连接的最小像素数目"
 
 #: taextras.py:122
 msgid "calibrate"
-msgstr ""
+msgstr "校准"
 
 #: taextras.py:123
 msgid "calibrate a color to follow"
-msgstr ""
+msgstr "校准要连接的颜色"
 
 #: taextras.py:124
 msgid "x position"
-msgstr ""
+msgstr "x 位置"
 
 #: taextras.py:125
 msgid "return x position"
-msgstr ""
+msgstr "返回 x 位置"
 
 #: taextras.py:126
 msgid "y position"
-msgstr ""
+msgstr "y 位置"
 
 #: taextras.py:127
 msgid "return y position"
-msgstr ""
+msgstr "返回 y 位置"
 
 #: taextras.py:128
 msgid "pixels"
-msgstr ""
+msgstr "像素"
 
 #: taextras.py:129
 msgid "return the number of pixels of the biggest blob"
-msgstr ""
+msgstr "返回最大块的像素数目"
 
 #: taextras.py:133
 msgid "SumBot"
-msgstr ""
+msgstr "桑博"
 
 #: taextras.py:134
 msgid "speed SumBot"
-msgstr ""
+msgstr "加速桑博"
 
 #: taextras.py:135
 msgid "submit the speed to the SumBot"
-msgstr ""
+msgstr "提交桑博的速度"
 
 #: taextras.py:136
 msgid "set the default speed for the movement commands"
-msgstr ""
+msgstr "设置移动命令的默认速度"
 
 #. TRANS: This string is shorthand for "move SumBot forward"
 #: taextras.py:138
 msgid "forward SumBot"
-msgstr ""
+msgstr "向前桑博"
 
 #: taextras.py:139
 msgid "move SumBot forward"
-msgstr ""
+msgstr "移动桑博向前"
 
 #. TRANS: This string is shorthand for "move SumBot backward"
 #: taextras.py:141
 msgid "backward SumBot"
-msgstr ""
+msgstr "向后桑博"
 
 #: taextras.py:142
 msgid "move SumBot backward"
-msgstr ""
+msgstr "移动桑博向后"
 
 #: taextras.py:143
 msgid "stop SumBot"
-msgstr ""
+msgstr "停止桑博"
 
 #: taextras.py:144
 msgid "stop the SumBot"
-msgstr ""
+msgstr "让桑博停下来"
 
 #. TRANS: This string is shorthand for "turn SumBot left"
 #: taextras.py:146
 msgid "left SumBot"
-msgstr ""
+msgstr "左转桑博"
 
 #: taextras.py:147
 msgid "turn left the SumBot"
-msgstr ""
+msgstr "让桑博向左转"
 
 #. TRANS: This string is shorthand for "move SumBot right"
 #: taextras.py:149
 msgid "right SumBot"
-msgstr ""
+msgstr "右转桑博"
 
 #: taextras.py:150
 msgid "turn right the SumBot"
-msgstr ""
+msgstr "让桑博向右转"
 
 #: taextras.py:151
 msgid "angle to center"
-msgstr ""
+msgstr "与中心的角度"
 
 #. TRANS: dohyo is the playing field
 #: taextras.py:153
 msgid "get the angle to the center of the dohyo"
-msgstr ""
+msgstr "得到相对圆环中心的角度"
 
 #: taextras.py:154
 msgid "angle to Enemy"
-msgstr ""
+msgstr "与敌人的角度"
 
 #: taextras.py:155
 msgid "get the angle to the Enemy"
-msgstr ""
+msgstr "得到相对敌人的角度"
 
 #. TRANS: This string is shorthand for "x coordinate of SumBot"
 #: taextras.py:157
 msgid "x coor. SumBot"
-msgstr ""
+msgstr "桑博x坐标"
 
 #: taextras.py:158
 msgid "get the x coordinate of the SumBot"
-msgstr ""
+msgstr "得到桑博的x坐标"
 
 #. TRANS: This string is shorthand for "y coordinate of SumBot"
 #: taextras.py:160
 msgid "y coor. SumBot"
-msgstr ""
+msgstr "桑博y坐标"
 
 #: taextras.py:161
 msgid "get the y coordinate of the SumBot"
-msgstr ""
+msgstr "得到桑博的y坐标"
 
 #. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
 #: taextras.py:163
 msgid "x coor. Enemy"
-msgstr ""
+msgstr "敌人x坐标"
 
 #: taextras.py:164
 msgid "get the x coordinate of the Enemy"
-msgstr ""
+msgstr "得到敌人的x坐标"
 
 #. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
 #: taextras.py:166
 msgid "y coor. Enemy"
-msgstr ""
+msgstr "敌人y坐标"
 
 #: taextras.py:167
 msgid "get the y coordinate of the Enemy"
-msgstr ""
+msgstr "得到敌人的y坐标"
 
 #. TRANS: This string is shorthand for "rotation of SumBot"
 #: taextras.py:169
