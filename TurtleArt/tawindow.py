@@ -289,29 +289,25 @@ class TurtleArtWindow():
         """ Try importing plugin files from the plugin dir. """
         for plugin_dir in self._get_plugins_from_plugins_dir(
             self._get_plugin_home()):
-            plugin_class = plugin_dir.capitalize()
-            f = "def f(self): from plugins.%s.%s import %s; return %s(self)" \
-                % (plugin_dir, plugin_dir, plugin_class, plugin_class)
-            plugins = {}
-            try:
-                exec f in globals(), plugins
-                self._plugins.append(plugins.values()[0](self))
-                debug_output('successfully importing %s' % (plugin_class),
-                             self.running_sugar)
-            except ImportError, e:
-                debug_output('failed to import %s: %s' % (plugin_class, str(e)),
-                             self.running_sugar)
-            '''
+            self.init_plugin(plugin_dir)
+
+    def init_plugin(self, plugin_dir):
+        """ Initialize plugin in plugin_dir """
+        plugin_class = plugin_dir.capitalize()
+        f = "def f(self): from plugins.%s.%s import %s; return %s(self)" \
+            % (plugin_dir, plugin_dir, plugin_class, plugin_class)
+        plugins = {}
+        try:
             exec f in globals(), plugins
             self._plugins.append(plugins.values()[0](self))
-            debug_output('successfully importing %s' % (plugin_class))
-            '''
-
-        # Add the icon dir for each plugin to the icon_theme search path
-        for plugin_dir in self._get_plugins_from_plugins_dir(
-            self._get_plugin_home()):
+            debug_output('successfully importing %s' % (plugin_class),
+                         self.running_sugar)
+            # Add the icon dir to the icon_theme search path
             self._add_plugin_icon_dir(os.path.join(self._get_plugin_home(),
                                                    plugin_dir))
+        except ImportError, e:
+            debug_output('failed to import %s: %s' % (plugin_class, str(e)),
+                         self.running_sugar)
 
     def _add_plugin_icon_dir(self, dirname):
         ''' If there is an icon subdir, add it to the search path. '''

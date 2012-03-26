@@ -1,6 +1,7 @@
 #Copyright (c) 2007, Playful Invention Company
 #Copyright (c) 2008-12, Walter Bender
 #Copyright (c) 2009-10 Raul Gutierrez Segales
+#Copyright (c) 2012 Alan Aguiar
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -40,10 +41,12 @@ except ImportError:
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.radiotoolbutton import RadioToolButton
 from sugar.datastore import datastore
-
 from sugar import profile
+
 import os.path
 import tarfile
+import subprocess
+import ConfigParser
 
 # installs the global _() magic (reverted as it is broken)
 # import TurtleArt.tagettext
@@ -195,10 +198,23 @@ class TurtleArtActivity(activity.Activity):
     def _load_ta_project(self, dsobject):
         ''' Load a TA project from the datastore. '''
         try:
-            _logger.debug('opening %s ' % dsobject.file_path)
-            self.read_file(dsobject.file_path, False)
+            _logger.debug('Opening %s ' % dsobject.file_path)
+            self.read_file(dsobject.file_path, run_it=False, plugin=False)
         except:
-            _logger.debug("couldn't open %s" % dsobject.file_path)
+            _logger.debug("Couldn't open %s" % dsobject.file_path)
+
+    def do_load_ta_plugin_cb(self, button):
+        ''' Load a plugin from the Journal. '''
+        # FIXME: we are looking for tar files
+        chooser(self, '', self._load_ta_plugin)
+
+    def _load_ta_plugin(self, dsobject):
+        ''' Load a TA plugin from the datastore. '''
+        if True:  #Try:
+            _logger.debug('Opening %s ' % dsobject.file_path)
+            self.read_file(dsobject.file_path, run_it=False, plugin=True)
+        # except:
+        #     _logger.debug("Couldn't open %s" % dsobject.file_path)
 
     def do_load_python_cb(self, button):
         ''' Load Python code from the Journal. '''
@@ -639,6 +655,9 @@ class TurtleArtActivity(activity.Activity):
             self.load_ta_project = self._add_button_and_label(
                 'load-from-journal', _('Load project'),
                 self.do_load_ta_project_cb, button_box)
+            self.load_ta_plugin = self._add_button_and_label(
+                'load-from-journal', _('Install plugin'),
+                self.do_load_ta_plugin_cb, button_box)
             self.load_python = self._add_button_and_label(
                 'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
                 button_box)
@@ -659,6 +678,9 @@ class TurtleArtActivity(activity.Activity):
             self.load_ta_project = self._add_button(
                 'load-from-journal', _('Load project'),
                 self.do_load_ta_project_cb, toolbar)
+            self.load_ta_plugin = self._add_button(
+                'load-from-journal', _('Install plugin'),
+                self.do_load_ta_plugin_cb, toolbar)
             self.load_python = self._add_button(
                 'pippy-openoff', _('Load Python block'), self.do_load_python_cb,
                 toolbar)
@@ -813,25 +835,87 @@ class TurtleArtActivity(activity.Activity):
                                                   'turtle blocks'])
         _logger.debug('Wrote to file: %s' % file_path)
 
-    def read_file(self, file_path, run_it=True):
-        ''' Read a project in and then run it. '''
+    def read_file(self, file_path, run_it=True, plugin=False):
+        ''' Open a project or plugin and then run it. '''
         if hasattr(self, 'tw'):
             _logger.debug('Read file: %s' % (file_path))
-            # Could be a deprecated gtar or tar file...
-            if file_path.endswith(('.gtar', '.tar')):
+            # Could be a plugin or deprecated gtar or tar file...
+            if plugin or file_path.endswith(('.gtar', '.tar')):
                 import tempfile
                 import shutil
 
                 tar_fd = tarfile.open(file_path, 'r')
                 tmpdir = tempfile.mkdtemp()
-                try:
-                    # We'll get 'ta_code.ta' and possibly a 'ta_image.png'
-                    # but we will ignore the .png file
-                    # If run_it is True, we want to create a new project
+
+                if True:  #try:
                     tar_fd.extractall(tmpdir)
-                    self.tw.load_files(os.path.join(tmpdir, 'ta_code.ta'),
-                                       run_it)
-                finally:
+                    if not plugin:
+                        # Looking for a .ta file
+                        self.tw.load_files(os.path.join(tmpdir, 'ta_code.ta'),
+                                           run_it)
+                        turtle_code = os.path.join(tmpdir, 'ta_code.ta')
+                        if os.path.exists(turtle_code):
+                            self.tw.load_files(turtle_code, run_it)
+                    else:
+                        plugin_path = os.path.join(tmpdir, 'plugin.info')
+                        _logger.debug(plugin_path)
+                        file_info = ConfigParser.ConfigParser()
+                        if len(file_info.read(plugin_path)) == 0:
+                            _logger.debug('Required file plugin.info could \
+not be found.')
+                            self.tw.showlabel('status',
+                                              label=_('Plugin could \
+not be installed.'))
+                        elif not file_info.has_option('Plugin', 'name'):
+                            _logger.debug('Required open name not found in \
+Plugin section of plugin.info file.')
+                            self.tw.showlabel('status',
+                                              label=_('Plugin %s could \
+not be installed.'))
+                        else:
+                            plugin_name = file_info.get('Plugin', 'name')
+                            _logger.debug(plugin_name)
+                            tmp_path = os.path.join(tmpdir, plugin_name)
+                            plugin_path = os.path.join(
+                                activity.get_bundle_path(), 'plugins')
+                            status = subprocess.call(
+                                ['mv', tmp_path, plugin_path + '/'])
+                            if status == 0:
+                                _logger.debug('Plugin %s installed \
+successfully.')
+                                if self.has_toolbarbox:
+                                    self.tw.init_plugin(plugin_name)
+                                    self.tw._plugins[-1].setup()
+                                    if file_info.has_option('Plugin',
+                                                            'palette'):
+                                        palette_name = file_info.get(
+                                            'Plugin', 'palette')
+                                        _logger.debug('%s %d' \
+% (palette_name, len(self.palette_buttons) - 1))
+                                        self.palette_buttons.append(
+                                            self._radio_button_factory(
+                                                palette_name + 'off',
+                                                self._palette_toolbar,
+                                                self.do_palette_buttons_cb,
+                                                len(self.palette_buttons) - 1,
+                                                help_strings[palette_name],
+                                                self.palette_buttons[0],
+                                                position=len(self.palette_buttons)))
+                                else:
+                                    self.tw.showlabel('status',
+                                        label=_('Please restart Turtle Art in \
+order to use the plugin.'))
+                            else:
+                                self.tw.showlabel('status',
+                                                  label=_('Plugin could \
+not be installed.'))
+                else:  # except:
+                    self.tw.showlabel('status',
+                                      label=_('Plugin could not be \
+installed.'))
+                    _logger.debug('Could not extract files from %s.' % (
+                            file_path))
+                if True:  # finally:
                     shutil.rmtree(tmpdir)
                     tar_fd.close()
             # ...otherwise, assume it is a .ta file.
@@ -939,7 +1023,7 @@ class TurtleArtActivity(activity.Activity):
         return button
 
     def _radio_button_factory(self, button_name, toolbar, cb, arg, tooltip,
-                              group):
+                              group, position=-1):
         ''' Add a radio button to a toolbar '''
         button = RadioToolButton(group=group)
         button.set_named_icon(button_name)
@@ -949,9 +1033,9 @@ class TurtleArtActivity(activity.Activity):
             else:
                 button.connect('clicked', cb, arg)
         if hasattr(toolbar, 'insert'):  # Add button to the main toolbar...
-            toolbar.insert(button, -1)
+            toolbar.insert(button, position)
         else:  # ...or a secondary toolbar.
-            toolbar.props.page.insert(button, -1)
+            toolbar.props.page.insert(button, position)
         button.show()
         if tooltip is not None:
             button.set_tooltip(tooltip)
