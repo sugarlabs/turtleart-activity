@@ -844,11 +844,19 @@ class TurtleArtActivity(activity.Activity):
         if hasattr(self, 'tw'):
             _logger.debug('Read file: %s' % (file_path))
             # Could be a plugin or deprecated gtar or tar file...
-            if plugin or file_path.endswith(('.gtar', '.tar')):
+            if plugin or file_path.endswith(('.gtar', '.tar', '.tar.gz')):
                 import tempfile
                 import shutil
 
-                tar_fd = tarfile.open(file_path, 'r')
+                try:
+                    status = subprocess.call(['gunzip', file_path])
+                    if status == 0:
+                        tar_fd = tarfile.open(file_path[:-3], 'r')
+                    else:
+                        tar_fd = tarfile.open(file_path, 'r')
+                except:
+                    tar_fd = tarfile.open(file_path, 'r')
+
                 tmpdir = tempfile.mkdtemp()
 
                 if True:  #try:
