@@ -43,7 +43,7 @@ from sugar.graphics.radiotoolbutton import RadioToolButton
 from sugar.datastore import datastore
 from sugar import profile
 
-import os.path
+import os
 import tarfile
 import subprocess
 import ConfigParser
@@ -635,6 +635,8 @@ class TurtleArtActivity(activity.Activity):
             self._palette_toolbar.show()
 
     def _make_load_save_buttons(self, toolbar):
+        ''' Additional toolbar buttons for file IO '''
+        home = os.environ['HOME']
         if self.has_toolbarbox and gtk.gdk.screen_width() < 1200:
             save_load_button = self._add_button(
                 'save-load', _('Save/Load'), self._save_load_palette_cb,
@@ -655,8 +657,8 @@ class TurtleArtActivity(activity.Activity):
             self.load_ta_project = self._add_button_and_label(
                 'load-from-journal', _('Load project'),
                 self.do_load_ta_project_cb, button_box)
-            # Only enable plugin loading if installed in /home
-            if activity.get_bundle_path()[0:5] == '/home':
+            # Only enable plugin loading if installed in $HOME
+            if activity.get_bundle_path()[0:len(home)] == home:
                 self.load_ta_plugin = self._add_button_and_label(
                     'pluginoff', _('Load plugin'),
                     self.do_load_ta_plugin_cb, button_box)
@@ -680,8 +682,8 @@ class TurtleArtActivity(activity.Activity):
             self.load_ta_project = self._add_button(
                 'load-from-journal', _('Load project'),
                 self.do_load_ta_project_cb, toolbar)
-            # Only enable plugin loading if installed in /home
-            if activity.get_bundle_path()[0:5] == '/home':
+            # Only enable plugin loading if installed in $HOME
+            if activity.get_bundle_path()[0:len(home)] == home:
                 self.load_ta_plugin = self._add_button(
                     'pluginoff', _('Load plugin'),
                     self.do_load_ta_plugin_cb, toolbar)
@@ -803,8 +805,8 @@ class TurtleArtActivity(activity.Activity):
                                   mynick=profile.get_nick_name(),
                                   turtle_canvas=self.turtle_canvas)
         self.tw.window.grab_focus()
-        path = os.path.join(os.environ['SUGAR_ACTIVITY_ROOT'], 'data')
-        self.tw.save_folder = path
+        self.tw.save_folder = os.path.join(
+            os.environ['SUGAR_ACTIVITY_ROOT'], 'data')
 
         # Try restoring an existing project...
         if self._jobject and self._jobject.file_path:
