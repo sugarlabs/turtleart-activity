@@ -76,6 +76,7 @@ if GST_AVAILABLE:
 MOTION_THRESHOLD = 6
 SNAP_THRESHOLD = 200
 
+
 class TurtleArtWindow():
     """ TurtleArt Window class abstraction  """
     timeout_tag = [0]
@@ -343,7 +344,7 @@ class TurtleArtWindow():
             plugin.stop()
 
     def clear_plugins(self):
-	""" Clear is called from the clean block and erase button. """
+        """ Clear is called from the clean block and erase button. """
         for plugin in self._plugins:
             if hasattr(plugin, 'clear'):
                 plugin.clear()
@@ -906,7 +907,7 @@ class TurtleArtWindow():
             elif name in PYTHON_SKIN:
                 self._proto_skin('pythonsmall', n, -1)
         return
-                
+
     def _hide_toolbar_palette(self):
         """ Hide the toolbar palettes """
         self._hide_previous_palette()
@@ -1098,7 +1099,7 @@ class TurtleArtWindow():
                     n += 1
                 else:
                     n -= 1
-                self.selected_blk.spr.set_label(str(n) + CURSOR)                
+                self.selected_blk.spr.set_label(str(n) + CURSOR)
                 return True
             self._unselect_block()
         self.selected_turtle = None
