@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-24 00:31-0400\n"
-"PO-Revision-Date: 2012-03-26 04:00+0200\n"
+"PO-Revision-Date: 2012-03-27 03:33+0200\n"
 "Last-Translator: lite <litekok@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -2060,72 +2060,72 @@ msgstr "得到敌人的y坐标"
 #. TRANS: This string is shorthand for "rotation of SumBot"
 #: taextras.py:169
 msgid "rotation SumBot"
-msgstr ""
+msgstr "转动桑博"
 
 #: taextras.py:170
 msgid "get the rotation of the Sumbot"
-msgstr ""
+msgstr "得到桑博的转动"
 
 #. TRANS: This string is shorthand for "rotation of SumBot's enemy"
 #: taextras.py:172
 msgid "rotation Enemy"
-msgstr ""
+msgstr "转动敌人"
 
 #: taextras.py:173
 msgid "get the rotation of the Enemy"
-msgstr ""
+msgstr "得到敌人的转动"
 
 #: taextras.py:174
 msgid "distance to center"
-msgstr ""
+msgstr "与中心的距离"
 
 #. TRANS: dohyo is the playing field
 #: taextras.py:176
 msgid "get the distance to the center of the dohyo"
-msgstr ""
+msgstr "得到与圆环中心的距离"
 
 #: taextras.py:177
 msgid "distance to Enemy"
-msgstr ""
+msgstr "与敌人的距离"
 
 #: taextras.py:178
 msgid "get the distance to the Enemy"
-msgstr ""
+msgstr "得到与敌人的距离"
 
 #: taextras.py:179
 msgid "update information"
-msgstr ""
+msgstr "更新信息"
 
 #: taextras.py:180
 msgid "update information from the server"
-msgstr ""
+msgstr "从服务器更新信息"
 
 #. TRANS: Please use similar terms to those used in the Physics Activity
 #: taextras.py:185
 msgid "Palette of physics blocks"
-msgstr ""
+msgstr "物理块调色板"
 
 #: taextras.py:186
 msgid "start polygon"
-msgstr ""
+msgstr "定义多边形"
 
 #: taextras.py:187
 msgid "Begin defining a new polygon based on the current Turtle xy position."
-msgstr ""
+msgstr "根据当前乌龟xy方向的位置开始定义新的多边形。"
 
 #: taextras.py:189
 msgid "add point"
-msgstr ""
+msgstr "添加点"
 
 #: taextras.py:190
 msgid ""
 "Add a new point to the current polygon based on the current Turtle xy "
 "position."
-msgstr ""
+msgstr "根据当前乌龟xy方向的位置添加新的点到当前的多边形。"
 
 #: taextras.py:192
 msgid "end polygon"
-msgstr ""
+msgstr "完成多边形"
 
 #: taextras.py:193
 msgid "Define a new polygon."
@@ -2137,7 +2137,7 @@ msgstr "结束填充多边形的绘制"
 
 #: taextras.py:195
 msgid "Not a simple polygon"
-msgstr ""
+msgstr "不是一个简单多边形"
 
 #: taextras.py:196
 msgid "Define a new filled polygon."
@@ -2145,66 +2145,66 @@ msgstr "定义一个新的填充多边形。"
 
 #: taextras.py:197
 msgid "triangle"
-msgstr ""
+msgstr "三角形"
 
 #. TRANS: base of a triangle
 #: taextras.py:199
 msgid "base"
-msgstr ""
+msgstr "基地"
 
 #: taextras.py:201
 msgid "Add a triangle object to the project."
-msgstr ""
+msgstr "添加一个三角形对象到项目。"
 
 #: taextras.py:202
 msgid "circle"
-msgstr ""
+msgstr "圆形"
 
 #: taextras.py:203
 msgid "Add a circle object to the project."
-msgstr ""
+msgstr "添加一个圆形对象到项目。"
 
 #: taextras.py:204
 msgid "rectangle"
-msgstr ""
+msgstr "长方形"
 
 #: taextras.py:207
 msgid "Add a rectangle object to the project."
-msgstr ""
+msgstr "添加一个长方形对象到项目。"
 
 #: taextras.py:208
 msgid "reset"
-msgstr ""
+msgstr "重置"
 
 #: taextras.py:209
 msgid "Reset the project; clear the object list."
-msgstr ""
+msgstr "重置项目;清除对象列表。"
 
 #: taextras.py:210
 msgid "motor"
-msgstr ""
+msgstr "电机"
 
 #: taextras.py:211
 msgid "torque"
-msgstr ""
+msgstr "转矩"
 
 #: taextras.py:212
 msgid "speed"
-msgstr ""
+msgstr "速度"
 
 #: taextras.py:213
 msgid ""
 "Motor torque and speed range from 0 (off) to positive numbers; motor is "
 "placed on the most recent object created."
-msgstr ""
+msgstr "电机转矩和速度范围是从0（关）到正数，电机放置在最近被创建的对象上。"
 
 #: taextras.py:215 taextras.py:329
 msgid "pin"
-msgstr ""
+msgstr "图钉"
 
 #: taextras.py:216
 msgid "Pin an object down so that it cannot fall."
-msgstr ""
+msgstr "用图钉固定一个对象，防止掉落。"
 
 #: taextras.py:217
 msgid "joint"
