@@ -42,11 +42,14 @@ from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.radiotoolbutton import RadioToolButton
 from sugar.datastore import datastore
 from sugar import profile
+from sugar.graphics.alert import ConfirmationAlert
 
 import os
 import tarfile
 import subprocess
 import ConfigParser
+import shutil
+import tempfile
 
 # installs the global _() magic (reverted as it is broken)
 # import TurtleArt.tagettext
@@ -839,9 +842,9 @@ class TurtleArtActivity(activity.Activity):
                                                   'turtle blocks'])
         _logger.debug('Wrote to file: %s' % file_path)
 
-    def _load_a_plugin(self, tmpdir):
+    def _load_a_plugin(self, tmp_dir):
         ''' Load a plugin from the Journal and initialize it '''
-        plugin_path = os.path.join(tmpdir, 'plugin.info')
+        plugin_path = os.path.join(tmp_dir, 'plugin.info')
         _logger.debug(plugin_path)
         file_info = ConfigParser.ConfigParser()
         if len(file_info.read(plugin_path)) == 0:
@@ -856,53 +859,92 @@ Plugin section of plugin.info file.')
         else:
             plugin_name = file_info.get('Plugin', 'name')
             _logger.debug('Plugin name: %s' % (plugin_name))
-            tmp_path = os.path.join(tmpdir, plugin_name)
+            tmp_path = os.path.join(tmp_dir, plugin_name)
             plugin_path = os.path.join(activity.get_bundle_path(), 'plugins')
-            status = subprocess.call(['cp', '-r', tmp_path, plugin_path + '/'])
-            if status == 0:
-                _logger.debug('Plugin installed successfully.')
-                if self.has_toolbarbox:
-                    create_palette = False
-                    if file_info.has_option('Plugin', 'palette'):
-                        palette_name = file_info.get('Plugin', 'palette')
-                        if not palette_name in palette_names:
-                            create_palette = True
-                    _logger.debug('Initializing plugin...')
-                    self.tw.init_plugin(plugin_name)
-                    self.tw._plugins[-1].setup()
-                    self.tw.load_media_shapes()
-                    if create_palette:
-                        _logger.debug('Creating plugin palette...')
-                        i = palette_names.index('trash')
-                        self.palette_buttons.insert(i - 1,
-                            self._radio_button_factory(
-                                palette_name + 'off',
-                                self._palette_toolbar,
-                                self.do_palette_buttons_cb,
-                                i - 1,
-                                help_strings[palette_name],
-                                self.palette_buttons[0],
-                                position=i - 1))
-                        self.tw.palettes.insert(i - 1, [])
-                        self.tw.palette_sprs.insert(i - 1, [None, None])
-                        # We need to change the index associated with the
-                        # Trash Palette Button.
-                        i = palette_names.index('trash')
-                        self.palette_buttons[i].connect(
-                            'clicked', self.do_palette_buttons_cb, i)
-                    else:
-                        _logger.debug('Palette already exists... \
-skipping insert')
-                else:
-                    self.tw.showlabel('status',
-                                      label=_('Please restart Turtle Art \
-in order to use the plugin.'))
+            if os.path.exists(os.path.join(plugin_path, plugin_name)):
+                self._reload_plugin_alert(tmp_dir, tmp_path, plugin_path,
+                                          plugin_name, file_info)
             else:
-                self.tw.showlabel(
-                    'status', label=_('Plugin could not be installed.'))
-            status = subprocess.call(['rm', '-r', tmp_path])
-            if status != 0:
-                _logger.debug('Problems cleaning up tmp_path.')
+                self._complete_plugin_install(tmp_dir, tmp_path, plugin_path,
+                                              plugin_name, file_info)
+
+    def _complete_plugin_install(self, tmp_dir, tmp_path, plugin_path,
+                                 plugin_name, file_info):
+        ''' We complete the installation directly or from ConfirmationAlert '''
+        status = subprocess.call(['cp', '-r', tmp_path, plugin_path + '/'])
+        if status == 0:
+            _logger.debug('Plugin installed successfully.')
+            if self.has_toolbarbox:
+                create_palette = False
+                if file_info.has_option('Plugin', 'palette'):
+                    palette_name = file_info.get('Plugin', 'palette')
+                    if not palette_name in palette_names:
+                        create_palette = True
+                _logger.debug('Initializing plugin...')
+                self.tw.init_plugin(plugin_name)
+                self.tw._plugins[-1].setup()
+                self.tw.load_media_shapes()
+                if create_palette:
+                    _logger.debug('Creating plugin palette...')
+                    i = palette_names.index('trash')
+                    self.palette_buttons.insert(i - 1,
+                        self._radio_button_factory(
+                            palette_name + 'off',
+                            self._palette_toolbar,
+                            self.do_palette_buttons_cb,
+                            i - 1,
+                            help_strings[palette_name],
+                            self.palette_buttons[0],
+                            position=i - 1))
+                    self.tw.palettes.insert(i - 1, [])
+                    self.tw.palette_sprs.insert(i - 1, [None, None])
+                    # We need to change the index associated with the
+                    # Trash Palette Button.
+                    i = palette_names.index('trash')
+                    self.palette_buttons[i].connect(
+                        'clicked', self.do_palette_buttons_cb, i)
+                else:
+                    _logger.debug('Palette already exists... skipping insert')
+            else:
+                self.tw.showlabel('status',
+                                  label=_('Please restart Turtle Art \
+in order to use the plugin.'))
+        else:
+            self.tw.showlabel(
+                'status', label=_('Plugin could not be installed.'))
+        status = subprocess.call(['rm', '-r', tmp_path])
+        if status != 0:
+            _logger.debug('Problems cleaning up tmp_path.')
+        shutil.rmtree(tmp_dir)
+
+    def _cancel_plugin_install(self, tmp_dir):
+        ''' If we cancel, just cleanup '''
+        shutil.rmtree(tmp_dir)
+
+    def _reload_plugin_alert(self, tmp_dir, tmp_path, plugin_path, plugin_name,
+                             file_info):
+        ''' We warn the user if the plugin was previously loaded '''
+        alert = ConfirmationAlert()
+        alert.props.title = _('Plugin %s already installed') % (plugin_name)
+        alert.props.msg = _('Do you want to reinstall %s') % (plugin_name)
+
+        def _reload_plugin_alert_response_cb(alert, response_id, self,
+                                             tmp_dir, tmp_path, plugin_path,
+                                             plugin_name, file_info):
+            if response_id is gtk.RESPONSE_OK:
+                _logger.debug('continue to install')
+                self.remove_alert(alert)
+                self._complete_plugin_install(tmp_dir, tmp_path, plugin_path,
+                                              plugin_name, file_info)
+            elif response_id is gtk.RESPONSE_CANCEL:
+                _logger.debug('cancel install')
+                self.remove_alert(alert)
+                self._cancel_plugin_install(tmp_dir)
+
+        alert.connect('response', _reload_plugin_alert_response_cb, self,
+                      tmp_dir, tmp_path, plugin_path, plugin_name, file_info)
+        self.add_alert(alert)
+        alert.show()
 
     def read_file(self, file_path, run_it=True, plugin=False):
         ''' Open a project or plugin and then run it. '''
@@ -910,9 +952,6 @@ in order to use the plugin.'))
             _logger.debug('Read file: %s' % (file_path))
             # Could be a plugin or deprecated gtar or tar file...
             if plugin or file_path.endswith(('.gtar', '.tar', '.tar.gz')):
-                import tempfile
-                import shutil
-
                 try:
                     status = subprocess.call(['gunzip', file_path])
                     if status == 0:
@@ -922,24 +961,25 @@ in order to use the plugin.'))
                 except:
                     tar_fd = tarfile.open(file_path, 'r')
 
-                tmpdir = tempfile.mkdtemp()
+                tmp_dir = tempfile.mkdtemp()
 
                 try:
-                    tar_fd.extractall(tmpdir)
+                    tar_fd.extractall(tmp_dir)
                     if not plugin:
                         # Looking for a .ta file
-                        self.tw.load_files(os.path.join(tmpdir, 'ta_code.ta'),
+                        self.tw.load_files(os.path.join(tmp_dir, 'ta_code.ta'),
                                            run_it)
-                        turtle_code = os.path.join(tmpdir, 'ta_code.ta')
+                        turtle_code = os.path.join(tmp_dir, 'ta_code.ta')
                         if os.path.exists(turtle_code):
                             self.tw.load_files(turtle_code, run_it)
                     else:
-                        self._load_a_plugin(tmpdir)
+                        self._load_a_plugin(tmp_dir)
                 except:
                     _logger.debug('Could not extract files from %s.' % (
                             file_path))
                 finally:
-                    shutil.rmtree(tmpdir)
+                    if not plugin:
+                        shutil.rmtree(tmp_dir)
                     tar_fd.close()
             # ...otherwise, assume it is a .ta file.
             else:
