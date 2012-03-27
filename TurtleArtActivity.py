@@ -873,6 +873,9 @@ Plugin section of plugin.info file.')
         ''' We complete the installation directly or from ConfirmationAlert '''
         status = subprocess.call(['cp', '-r', tmp_path, plugin_path + '/'])
         if status == 0:
+            # Save the plugin.info file in the plugin directory
+            subprocess.call(['cp', os.path.join(tmp_dir, 'plugin.info'),
+                             os.path.join(plugin_path, plugin_name) + '/'])
             _logger.debug('Plugin installed successfully.')
             if self.has_toolbarbox:
                 create_palette = False
