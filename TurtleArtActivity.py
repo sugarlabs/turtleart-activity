@@ -928,8 +928,8 @@ in order to use the plugin.'))
                              file_info):
         ''' We warn the user if the plugin was previously loaded '''
         alert = ConfirmationAlert()
-        alert.props.title = _('Plugin %s already installed') % (plugin_name)
-        alert.props.msg = _('Do you want to reinstall %s') % (plugin_name)
+        alert.props.title = _('Plugin %s already installed.') % (plugin_name)
+        alert.props.msg = _('Do you want to reinstall %s?') % (plugin_name)
 
         def _reload_plugin_alert_response_cb(alert, response_id, self,
                                              tmp_dir, tmp_path, plugin_path,
