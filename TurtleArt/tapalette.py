@@ -101,26 +101,26 @@ class Palette():
         self._name = name
         self._special_name = _(name)
         self._colors = colors
-        self._help = None
         self._max_text_width = int(gtk.gdk.screen_width() / 3) - 20
 
         # Prepare a vbox for the help palette
-        if not (self._name in help_palettes):
+        if not self._name in help_palettes:
             self._help_box = gtk.VBox()
             self._help_box.set_homogeneous(False)
             help_palettes[self._name] = self._help_box
+            help_windows[self._name] = gtk.ScrolledWindow()
+            help_windows[self._name].set_size_request(
+                int(gtk.gdk.screen_width() / 3),
+                gtk.gdk.screen_height() - style.GRID_CELL_SIZE * 3)
+            help_windows[self._name].set_policy(
+                gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+            help_windows[self._name].add_with_viewport(
+                help_palettes[self._name])
+            help_palettes[self._name].show()
+            self._help = None
         else:
             self._help_box = help_palettes[self._name]
-
-        help_windows[self._name] = gtk.ScrolledWindow()
-        help_windows[self._name].set_size_request(
-            int(gtk.gdk.screen_width() / 3),
-            gtk.gdk.screen_height() - style.GRID_CELL_SIZE * 3)
-        help_windows[self._name].set_policy(
-            gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-        help_windows[self._name].add_with_viewport(
-            help_palettes[self._name])
-        help_palettes[self._name].show()
+            self._help = 'deja vu'
 
     def add_palette(self, position=None):
         if self._name is None:
@@ -189,9 +189,10 @@ class Palette():
         self._help_box.pack_start(hbox, False, False, padding=5)
 
     def set_help(self, help):
-        self._help = help
-        if hasattr(self, '_help_box'):
-            self.add_section(self._help, icon=self._name + 'off')
+        if self._help is None:
+            self._help = help
+            if hasattr(self, '_help_box'):
+                self.add_section(self._help, icon=self._name + 'off')
 
     def set_special_name(self, name):
         self._special_name = name
@@ -219,13 +220,18 @@ class Palette():
         if help_string is not None:
             block.set_help(help_string)
             if not hidden: 
+                first_arg = None
                 if special_name is None:
                     if type(label) == list:
-                        self.add_paragraph('%s: %s' % (label[0], help_string))
+                        first_arg = label[0]
                     else:
-                        self.add_paragraph('%s: %s' % (label, help_string))
+                        first_arg = label
                 else:
-                    self.add_paragraph('%s: %s' % (special_name, help_string))
+                    first_arg = special_name
+                if first_arg is None or first_arg == '' or first_arg == ' ':
+                    self.add_paragraph('%s' % (help_string))
+                else:
+                    self.add_paragraph('%s: %s' % (first_arg, help_string))
         if colors is not None:
             block.set_colors(colors)
         block.set_value_block(value_block)
@@ -301,13 +307,17 @@ class Block():
 
         if self._palette is not None:
             i = palette_names.index(self._palette)
-            if position is not None and type(position) is int and \
-                    position < len(palette_blocks[i]):
-                palette_blocks[i].insert(position, self._name)
+            if self._name in palette_blocks[i]:
+                debug_output('%s already in palette %s, skipping...' % (
+                        self._name, self._palette))
             else:
-                palette_blocks[i].append(self._name)
-                if position is not None:
-                    debug_output('Ignoring position (%s)' % (str(position)))
+                if position is not None and type(position) is int and \
+                        position < len(palette_blocks[i]):
+                    palette_blocks[i].insert(position, self._name)
+                else:
+                    palette_blocks[i].append(self._name)
+                    if position is not None:
+                        debug_output('Ignoring position (%s)' % (str(position)))
 
         if self._help is not None:
             help_strings[self._name] = self._help
