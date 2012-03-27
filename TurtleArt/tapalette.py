@@ -141,7 +141,6 @@ class Palette():
             palette_blocks.insert(i, [])
             block_colors.insert(i, self._colors)
         else:
-            # debug_output('Palette %s already defined' % (self._name))
             return
 
         # Special name entry is needed for help hover mechanism
@@ -235,6 +234,7 @@ class Palette():
         if hidden:
             block.set_hidden()
         block.add_block()
+
 
 def make_palette(palette_name, colors=None, help_string=None, position=None):
     """ Palette helper function """

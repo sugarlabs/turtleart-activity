@@ -211,11 +211,8 @@ class TurtleArtActivity(activity.Activity):
 
     def _load_ta_plugin(self, dsobject):
         ''' Load a TA plugin from the datastore. '''
-        try:
-            _logger.debug('Opening %s ' % dsobject.file_path)
-            self.read_file(dsobject.file_path, run_it=False, plugin=True)
-        except:
-            _logger.debug("Couldn't open %s" % dsobject.file_path)
+        _logger.debug('Opening %s ' % dsobject.file_path)
+        self.read_file(dsobject.file_path, run_it=False, plugin=True)
 
     def do_load_python_cb(self, button):
         ''' Load Python code from the Journal. '''
@@ -854,22 +851,28 @@ class TurtleArtActivity(activity.Activity):
         elif not file_info.has_option('Plugin', 'name'):
             _logger.debug('Required open name not found in \
 Plugin section of plugin.info file.')
-            self.tw.showlabel('status',
-                              label=_('Plugin %s could not be installed.'))
+            self.tw.showlabel(
+                'status', label=_('Plugin could not be installed.'))
         else:
             plugin_name = file_info.get('Plugin', 'name')
-            _logger.debug(plugin_name)
+            _logger.debug('Plugin name: %s' % (plugin_name))
             tmp_path = os.path.join(tmpdir, plugin_name)
             plugin_path = os.path.join(activity.get_bundle_path(), 'plugins')
-            status = subprocess.call(['mv', tmp_path, plugin_path + '/'])
+            status = subprocess.call(['cp', '-r', tmp_path, plugin_path + '/'])
             if status == 0:
-                _logger.debug('Plugin %s installed successfully.')
+                _logger.debug('Plugin installed successfully.')
                 if self.has_toolbarbox:
+                    create_palette = False
+                    if file_info.has_option('Plugin', 'palette'):
+                        palette_name = file_info.get('Plugin', 'palette')
+                        if not palette_name in palette_names:
+                            create_palette = True
+                    _logger.debug('Initializing plugin...')
                     self.tw.init_plugin(plugin_name)
                     self.tw._plugins[-1].setup()
                     self.tw.load_media_shapes()
-                    if file_info.has_option('Plugin', 'palette'):
-                        palette_name = file_info.get('Plugin', 'palette')
+                    if create_palette:
+                        _logger.debug('Creating plugin palette...')
                         i = palette_names.index('trash')
                         self.palette_buttons.insert(i - 1,
                             self._radio_button_factory(
@@ -882,18 +885,24 @@ Plugin section of plugin.info file.')
                                 position=i - 1))
                         self.tw.palettes.insert(i - 1, [])
                         self.tw.palette_sprs.insert(i - 1, [None, None])
-                        # Finally, we need to change the index
-                        # associated with the Trash Palette
+                        # We need to change the index associated with the
+                        # Trash Palette Button.
                         i = palette_names.index('trash')
                         self.palette_buttons[i].connect(
                             'clicked', self.do_palette_buttons_cb, i)
                     else:
-                        self.tw.showlabel('status',
-                                          label=_('Please restart Turtle Art \
-in order to use the plugin.'))
+                        _logger.debug('Palette already exists... \
+skipping insert')
                 else:
-                    self.tw.showlabel(
-                        'status', label=_('Plugin could not be installed.'))
+                    self.tw.showlabel('status',
+                                      label=_('Please restart Turtle Art \
+in order to use the plugin.'))
+            else:
+                self.tw.showlabel(
+                    'status', label=_('Plugin could not be installed.'))
+            status = subprocess.call(['rm', '-r', tmp_path])
+            if status != 0:
+                _logger.debug('Problems cleaning up tmp_path.')
 
     def read_file(self, file_path, run_it=True, plugin=False):
         ''' Open a project or plugin and then run it. '''

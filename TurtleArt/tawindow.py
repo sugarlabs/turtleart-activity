@@ -301,13 +301,13 @@ class TurtleArtWindow():
         try:
             exec f in globals(), plugins
             self._plugins.append(plugins.values()[0](self))
-            debug_output('successfully importing %s' % (plugin_class),
+            debug_output('Successfully importing %s' % (plugin_class),
                          self.running_sugar)
             # Add the icon dir to the icon_theme search path
             self._add_plugin_icon_dir(os.path.join(self._get_plugin_home(),
                                                    plugin_dir))
         except ImportError, e:
-            debug_output('failed to import %s: %s' % (plugin_class, str(e)),
+            debug_output('Failed to import %s: %s' % (plugin_class, str(e)),
                          self.running_sugar)
 
     def _add_plugin_icon_dir(self, dirname):
