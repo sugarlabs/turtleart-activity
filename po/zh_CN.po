@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-24 00:31-0400\n"
-"PO-Revision-Date: 2012-03-27 03:33+0200\n"
+"PO-Revision-Date: 2012-03-28 04:40+0200\n"
 "Last-Translator: lite <litekok@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -29,7 +29,7 @@ msgstr "海龟绘图"
 
 #: TurtleArt/tabasics.py:115
 msgid "Palette of turtle commands"
-msgstr "海龟指令调色板"
+msgstr "海龟指令模板"
 
 #: TurtleArt/tabasics.py:120
 msgid "forward"
@@ -149,7 +149,7 @@ msgstr "包含海龟当前的朝向的角度值（可以用来替换数字块）
 
 #: TurtleArt/tabasics.py:273
 msgid "Palette of pen commands"
-msgstr "画笔指令调色板"
+msgstr "画笔指令模板"
 
 #: TurtleArt/tabasics.py:277
 msgid "pen up"
@@ -217,7 +217,7 @@ msgstr "完成填充多边形的绘制（和开始填充一起使用）"
 
 #: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:360
 msgid "Palette of pen colors"
-msgstr "画笔颜色调色板"
+msgstr "画笔颜色模板"
 
 #: TurtleArt/tabasics.py:364
 msgid "set color"
@@ -313,7 +313,7 @@ msgstr "设置海龟绘制的文字的大小"
 
 #: TurtleArt/tabasics.py:539
 msgid "Palette of numeric operators"
-msgstr "数值操作的调色板"
+msgstr "数值运算模板"
 
 #: TurtleArt/tabasics.py:545
 msgid "plus"
@@ -459,7 +459,7 @@ msgstr "逻辑“或”运算符"
 #: TurtleArt/tabasics.py:722
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:94
 msgid "Palette of flow operators"
-msgstr "流程控制调色板"
+msgstr "流程控制模板"
 
 #: TurtleArt/tabasics.py:727
 msgid "wait"
@@ -500,7 +500,7 @@ msgstr "如果 那么"
 
 #: TurtleArt/tabasics.py:764
 msgid "if-then operator that uses boolean operators from Numbers palette"
-msgstr "“如果-那么”运算符，会用到数值调色板中的布尔运算符"
+msgstr "“如果-那么”运算符，会用到数值模板中的布尔运算符"
 
 #: TurtleArt/tabasics.py:771
 msgid "then else"
@@ -512,7 +512,7 @@ msgstr "如果 那么 或者"
 
 #: TurtleArt/tabasics.py:776
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
-msgstr "“如果-那么-或者”运算符，会用到数值调色板中的布尔运算符"
+msgstr "“如果-那么-或者”运算符，会用到数值模板中的布尔运算符"
 
 #: TurtleArt/tabasics.py:784
 msgid "horizontal space"
@@ -540,7 +540,7 @@ msgstr "停止当前动作"
 
 #: TurtleArt/tabasics.py:811
 msgid "Palette of variable blocks"
-msgstr "变量块调色板"
+msgstr "可变块模板"
 
 #: TurtleArt/tabasics.py:816 pysamples/grecord.py:213
 msgid "start"
@@ -717,11 +717,11 @@ msgstr "作为输入"
 
 #: TurtleArt/tapalette.py:92
 msgid "displays next palette"
-msgstr "显示下一个调色板"
+msgstr "显示下一个模板"
 
 #: TurtleArt/tapalette.py:93
 msgid "changes the orientation of the palette of blocks"
-msgstr "改变积木块调色板的方向"
+msgstr "改变积木块模板的方向"
 
 #: TurtleArt/tautils.py:177
 msgid "Load..."
@@ -766,11 +766,11 @@ msgstr "开启悬停帮助"
 
 #: TurtleArtActivity.py:292 turtleart.py:358
 msgid "Show palette"
-msgstr "显示调色板"
+msgstr "显示模板"
 
 #: TurtleArtActivity.py:298 TurtleArtActivity.py:689 turtleart.py:360
 msgid "Hide palette"
-msgstr "隐藏调色板"
+msgstr "隐藏模板"
 
 #: TurtleArtActivity.py:305 TurtleArtActivity.py:318
 msgid "Show blocks"
@@ -1021,7 +1021,7 @@ msgstr "上传失败！"
 #: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:295
 msgid "Palette of sensor blocks"
-msgstr "传感器调色板"
+msgstr "传感器模板"
 
 #: plugins/accelerometer/accelerometer.py:55
 #: plugins/accelerometer/accelerometer.py:62
@@ -1136,7 +1136,7 @@ msgstr "当"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:103
 msgid "do-while-True operator that uses boolean operators from Numbers palette"
-msgstr "“当-为真时-执行”操作符，会用到数值调色板中的布尔运算符"
+msgstr "“当-为真时-执行”操作符，会用到数值模板中的布尔运算符"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:112
@@ -1145,11 +1145,11 @@ msgstr "直到"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
-msgstr "“执行-直到-真”操作符，会用到数值调色板中的布尔运算符"
+msgstr "“执行-直到-真”操作符，会用到数值模板中的布尔运算符"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:120
 msgid "Palette of media objects"
-msgstr "多媒体调色板"
+msgstr "多媒体模板"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:127
 msgid "journal"
@@ -1334,7 +1334,7 @@ msgstr "程序启动后已经过的时间（秒）"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
 msgid "Palette of extra options"
-msgstr "额外选项调色板"
+msgstr "额外选项模板"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:391
 msgid "push"
@@ -1506,7 +1506,7 @@ msgstr "折叠积木堆的顶部"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:652
 msgid "Palette of presentation templates"
-msgstr "演示模板调色板"
+msgstr "演示模板"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:658
 msgid "hide blocks"
@@ -1672,27 +1672,27 @@ msgstr "选择一个挑战"
 
 #: taextras.py:47
 msgid "Palette of Mexican pesos"
-msgstr "墨西哥比索调色板"
+msgstr "墨西哥比索模板"
 
 #: taextras.py:48
 msgid "Palette of Colombian pesos"
-msgstr "哥伦比亚比索调色板"
+msgstr "哥伦比亚比索模板"
 
 #: taextras.py:49
 msgid "Palette of Rwandan francs"
-msgstr "卢旺达法郎调色板"
+msgstr "卢旺达法郎模板"
 
 #: taextras.py:50
 msgid "Palette of US currencies"
-msgstr "美国货币调色板"
+msgstr "美国货币模板"
 
 #: taextras.py:51
 msgid "Palette of Australian currencies"
-msgstr "澳大利亚货币调色板"
+msgstr "澳大利亚货币模板"
 
 #: taextras.py:52
 msgid "Palette of Guaranies"
-msgstr "瓜拉尼调色板"
+msgstr "瓜拉尼模板"
 
 #. TRANS: Butia is the Arduino Robot Project from Uruguay
 #. (http://www.fing.edu.uy/inco/proyectos/butia/)
@@ -1906,7 +1906,7 @@ msgstr "为RGB颜色设置一个阀门"
 
 #: taextras.py:120
 msgid "follow a turtle color"
-msgstr "接一个乌龟颜色"
+msgstr "接一个海龟颜色"
 
 #: taextras.py:121
 msgid "set the minimal number of pixels to follow"
@@ -2103,7 +2103,7 @@ msgstr "从服务器更新信息"
 #. TRANS: Please use similar terms to those used in the Physics Activity
 #: taextras.py:185
 msgid "Palette of physics blocks"
-msgstr "物理块调色板"
+msgstr "物理块模板"
 
 #: taextras.py:186
 msgid "start polygon"
@@ -2111,7 +2111,7 @@ msgstr "定义多边形"
 
 #: taextras.py:187
 msgid "Begin defining a new polygon based on the current Turtle xy position."
-msgstr "根据当前乌龟xy方向的位置开始定义新的多边形。"
+msgstr "根据当前海龟xy方向的位置开始定义新的多边形。"
 
 #: taextras.py:189
 msgid "add point"
@@ -2121,7 +2121,7 @@ msgstr "添加点"
 msgid ""
 "Add a new point to the current polygon based on the current Turtle xy "
 "position."
-msgstr "根据当前乌龟xy方向的位置添加新的点到当前的多边形。"
+msgstr "根据当前海龟xy方向的位置添加新的点到当前的多边形。"
 
 #: taextras.py:192
 msgid "end polygon"
@@ -2208,143 +2208,141 @@ msgstr "用图钉固定一个对象，防止掉落。"
 
 #: taextras.py:217
 msgid "joint"
-msgstr ""
+msgstr "联合"
 
 #: taextras.py:220
 msgid ""
 "Join two objects together (the most recent object created and the object at "
 "point x, y)."
-msgstr ""
+msgstr "把两个对象连接到一起（在点x，y处最近创建的对象）。"
 
 #: taextras.py:222
 msgid "Save the project to the Journal as a Physics activity."
-msgstr ""
+msgstr "当作一个物理活动保存该项目到日志。"
 
 #: taextras.py:223
-#, fuzzy
 msgid "density"
-msgstr "自身"
+msgstr "密度"
 
 #: taextras.py:224
 msgid ""
 "Set the density property for objects (density can be any positive number)."
-msgstr ""
+msgstr "设置对象的密度属性（密度可以是任何正数）。"
 
 #: taextras.py:226
 msgid "friction"
-msgstr ""
+msgstr "摩擦"
 
 #: taextras.py:227
 msgid ""
 "Set the friction property for objects (value from 0 to 1, where 0 turns "
 "friction off and 1 is strong friction)."
-msgstr ""
+msgstr "设置对象的摩擦系数（值从0到1，0无摩擦，1强摩擦）。"
 
 #. TRANS: bounciness is restitution
 #: taextras.py:230
 msgid "bounciness"
-msgstr ""
+msgstr "弹力"
 
 #: taextras.py:231
 msgid ""
 "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
 "no bounce and 1 is very bouncy)."
-msgstr ""
+msgstr "设置对象的弹性系数（值从0到1，0无弹性，1强弹性）。"
 
 #: taextras.py:233
 msgid "dynamic"
-msgstr ""
+msgstr "动态"
 
 #: taextras.py:234
 msgid ""
 "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-msgstr ""
+msgstr "动态值为1时对象可以移动；为0时位置是固定的。"
 
 #. TRANS: WeDo is a robotics product of the LEGO company
 #: taextras.py:240
 msgid "Palette of WeDo blocks"
-msgstr ""
+msgstr "乐高WeDo模板"
 
 #: taextras.py:242
 msgid ""
 "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
 "tilt left, 2 == tilt right)"
-msgstr ""
+msgstr "倾斜传感器输出：（-1 ==没有倾斜，0 ==向前倾斜，3 ==向后倾斜，1 ==向左倾斜，2 ==向左倾斜）"
 
 #. TRANS: This string is shorthand for "output of the distance sensor"
 #: taextras.py:246
 msgid "distance sensor output"
-msgstr ""
+msgstr "距离传感器输出"
 
 #: taextras.py:247
 msgid "Motor A"
-msgstr ""
+msgstr "电机 A"
 
 #: taextras.py:248
 msgid "returns the current value of Motor A"
-msgstr ""
+msgstr "返回电机A的当前值"
 
 #: taextras.py:249
 msgid "Motor B"
-msgstr ""
+msgstr "电机B"
 
 #: taextras.py:250
 msgid "returns the current value of Motor B"
-msgstr ""
+msgstr "返回电机B的当前值"
 
 #: taextras.py:251
 msgid "set the value for Motor A"
-msgstr ""
+msgstr "设置电机A的值"
 
 #: taextras.py:252
 msgid "set the value for Motor B"
-msgstr ""
+msgstr "设置电机B的值"
 
 #. TRANS: Lego NXT is a robotics product of the LEGO company
 #: taextras.py:257
 msgid "Palette of LEGO NXT blocks"
-msgstr ""
+msgstr "乐高NXT模块"
 
 #: taextras.py:258
 msgid "touch"
-msgstr ""
+msgstr "触摸"
 
 #: taextras.py:259
 msgid "ultrasonic"
-msgstr ""
+msgstr "超声波"
 
 #: taextras.py:261
-#, fuzzy
 msgid "light"
-msgstr "右转"
+msgstr "灯光"
 
 #: taextras.py:262
 msgid "PORT A"
-msgstr ""
+msgstr "端口 A"
 
 #: taextras.py:263
 msgid "PORT B"
-msgstr ""
+msgstr "端口 B"
 
 #: taextras.py:264
 msgid "PORT C"
-msgstr ""
+msgstr "端口 C"
 
 #: taextras.py:265
 msgid "PORT 1"
-msgstr ""
+msgstr "端口 1"
 
 #: taextras.py:266
 msgid "PORT 2"
-msgstr ""
+msgstr "端口 2"
 
 #: taextras.py:267
 msgid "PORT 3"
-msgstr ""
+msgstr "端口 3"
 
 #: taextras.py:268
 msgid "PORT 4"
-msgstr ""
+msgstr "端口 4"
 
 #: taextras.py:269
 msgid "Please check the connection with the brick."
@@ -2522,7 +2520,7 @@ msgstr ""
 #. TRANS: Arduino plugin to control an Arduino board
 #: taextras.py:316
 msgid "Palette of Arduino blocks"
-msgstr ""
+msgstr "Arduino模板"
 
 #: taextras.py:317
 msgid "HIGH"
