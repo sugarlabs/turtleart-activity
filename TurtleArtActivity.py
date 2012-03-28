@@ -878,12 +878,13 @@ Plugin section of plugin.info file.')
                              os.path.join(plugin_path, plugin_name) + '/'])
             _logger.debug('Plugin installed successfully.')
             if self.has_toolbarbox:
-                create_palette = []
+                palette_name_list = []
                 if file_info.has_option('Plugin', 'palette'):
                     palette_name_list = file_info.get(
                         'Plugin', 'palette').split(',')
+                    create_palette = []
                     for palette_name in palette_name_list:
-                        if not palette_name.rstrip() in palette_names:
+                        if not palette_name.strip() in palette_names:
                             create_palette.append(True)
                         else:
                             create_palette.append(False)
@@ -894,27 +895,27 @@ Plugin section of plugin.info file.')
                 for i, palette_name in enumerate(palette_name_list):
                     if create_palette[i]:
                         _logger.debug('Creating plugin palette %s...' % (
-                                palette_name))
-                        j = palette_names.index('trash')
+                                palette_name.strip()))
+                        j = len(self.palette_buttons)
                         self.palette_buttons.insert(j - 1,
                             self._radio_button_factory(
-                                palette_name + 'off',
+                                palette_name.strip() + 'off',
                                 self._palette_toolbar,
                                 self.do_palette_buttons_cb,
                                 j - 1,
-                                help_strings[palette_name.rstrip()],
+                                help_strings[palette_name.strip()],
                                 self.palette_buttons[0],
                                 position=j - 1))
                         self.tw.palettes.insert(j - 1, [])
                         self.tw.palette_sprs.insert(j - 1, [None, None])
-                        # We need to change the index associated with the
-                        # Trash Palette Button.
-                        j = palette_names.index('trash')
-                        self.palette_buttons[j].connect(
-                            'clicked', self.do_palette_buttons_cb, j)
                     else:
                         _logger.debug('Palette already exists... \
 skipping insert')
+                # We need to change the index associated with the
+                # Trash Palette Button.
+                j = len(palette_names)
+                self.palette_buttons[j - 1].connect(
+                    'clicked', self.do_palette_buttons_cb, j - 1)
             else:
                 self.tw.showlabel('status',
                                   label=_('Please restart Turtle Art \
@@ -973,7 +974,7 @@ in order to use the plugin.'))
 
                 tmp_dir = tempfile.mkdtemp()
 
-                try:
+                if True: # try:
                     tar_fd.extractall(tmp_dir)
                     if not plugin:
                         # Looking for a .ta file
@@ -984,10 +985,10 @@ in order to use the plugin.'))
                             self.tw.load_files(turtle_code, run_it)
                     else:
                         self._load_a_plugin(tmp_dir)
-                except:
+                else: # except:
                     _logger.debug('Could not extract files from %s.' % (
                             file_path))
-                finally:
+                if True: # finally:
                     if not plugin:
                         shutil.rmtree(tmp_dir)
                     tar_fd.close()
