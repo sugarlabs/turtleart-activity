@@ -254,7 +254,11 @@ WEDO_STRINGS = [
 
 LEGO_STRINGS = [
     # TRANS: Lego NXT is a robotics product of the LEGO company
-    _('Palette of LEGO NXT blocks'),
+    _('Palette of LEGO NXT blocks of motors'),
+    _('Palette of LEGO NXT blocks of sensors'),
+    # _('Palette of LEGO NXT blocks'),
+    _('sound'),
+    _('sound sensor'),
     _('touch'),
     _('ultrasonic'),
     _('color'),
