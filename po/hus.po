@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-16 00:31-0500\n"
-"PO-Revision-Date: 2011-09-27 04:57+0200\n"
+"POT-Creation-Date: 2012-03-24 00:31-0400\n"
+"PO-Revision-Date: 2012-03-14 04:51+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: hus\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 # TortugArte = WitsixPet
 #: activity/activity.info:2 TurtleArt/taexporthtml.py:137
-#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:1747
-#: TurtleArt/tawindow.py:3055 pysamples/grecord.py:205 turtleart.py:288
+#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:3057
+#: pysamples/grecord.py:205 turtleart.py:288
 msgid "Turtle Art"
 msgstr "Witsix Pet"
 
@@ -53,7 +53,7 @@ msgid "clears the screen and reset the turtle"
 msgstr "in t'okál an walek ani in wichk'owal an pet"
 
 #: TurtleArt/tabasics.py:154
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:736
 msgid "left"
 msgstr "kwa'atbe'"
 
@@ -64,7 +64,7 @@ msgstr ""
 "in kexem)"
 
 #: TurtleArt/tabasics.py:165
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:755
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:760
 msgid "right"
 msgstr "wínab"
 
@@ -116,8 +116,8 @@ msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr ""
 "ka ts'atb'a an pet ju'taj tin tomnal ka k'alej (0 jaits abal ebal ti walek.)"
 
-#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3051
-#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:542
+#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3053
+#: TurtleArt/tawindow.py:3057 TurtleArtActivity.py:560
 msgid "xcor"
 msgstr "xcor"
 
@@ -130,8 +130,8 @@ msgstr ""
 "in kwa'al xuwek'ij an pet an coordenada x (i ejtowal ki eyendha' tin jalk'ul "
 "jun i kwene' t'ojlab ajumtalab)"
 
-#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3051
-#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:543
+#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3053
+#: TurtleArt/tawindow.py:3057 TurtleArtActivity.py:561
 msgid "ycor"
 msgstr "ycor"
 
@@ -144,8 +144,8 @@ msgstr ""
 "in kwa'al xuwek'ij an pet an coordenada y (i ejtowal ki eyendha' tin jalk'ul "
 "jun i kwene' t'ojlab ajumtalab)"
 
-#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3051
-#: TurtleArt/tawindow.py:3055 TurtleArtActivity.py:543
+#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3053
+#: TurtleArt/tawindow.py:3057 TurtleArtActivity.py:561
 msgid "heading"
 msgstr "in bélil"
 
@@ -282,41 +282,39 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:425
 msgid "red"
-msgstr ""
+msgstr "tsakni'"
 
 #: TurtleArt/tabasics.py:426
 msgid "orange"
-msgstr ""
+msgstr "t'a'at manu'"
 
 #: TurtleArt/tabasics.py:428
 msgid "yellow"
-msgstr ""
+msgstr "manu'"
 
 #: TurtleArt/tabasics.py:430
 msgid "green"
-msgstr ""
+msgstr "yaxu'"
 
 #: TurtleArt/tabasics.py:431
 msgid "cyan"
-msgstr ""
+msgstr "cian"
 
 #: TurtleArt/tabasics.py:432
 msgid "blue"
-msgstr ""
+msgstr "tok'i"
 
 #: TurtleArt/tabasics.py:433
 msgid "purple"
-msgstr ""
+msgstr "tamkulom mukuxtaláb"
 
 #: TurtleArt/tabasics.py:435
-#, fuzzy
 msgid "white"
-msgstr "tamchál"
+msgstr "dhakni'"
 
 #: TurtleArt/tabasics.py:436
-#, fuzzy
 msgid "black"
-msgstr "wichiy"
+msgstr "t'unu'"
 
 #: TurtleArt/tabasics.py:442
 msgid "set text color"
@@ -439,7 +437,7 @@ msgstr "an bolk'idh t'ojnal axi lej pulik etil a"
 
 #: TurtleArt/tabasics.py:660
 msgid "True"
-msgstr ""
+msgstr "lej chubax"
 
 #: TurtleArt/tabasics.py:666
 msgid "less than"
@@ -451,7 +449,7 @@ msgstr "an bolk'dh t'ojnal axi lej pulik etil a"
 
 #: TurtleArt/tabasics.py:674
 msgid "False"
-msgstr ""
+msgstr "yabchubax"
 
 #: TurtleArt/tabasics.py:680
 msgid "equal"
@@ -603,18 +601,18 @@ msgstr "dhaya' in jabil an ajixtaláb ti Bijlab 2"
 
 #: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
 #: TurtleArt/tabasics.py:851
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:172
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:173
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:174
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:209
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:182
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:210
 msgid "text"
 msgstr "dhuchlab"
 
 # valor = jalbíl ; cadena = dhuchlab
 #: TurtleArt/tabasics.py:852
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:176
 msgid "string value"
 msgstr "in jalbíl an dhuchlab"
 
@@ -650,7 +648,7 @@ msgstr "bijilab xi bijidh (jalbil ajixtaláb)"
 msgid "store in"
 msgstr "ki dhaya' ti"
 
-#: TurtleArt/tabasics.py:885
+#: TurtleArt/tabasics.py:885 taextras.py:333
 msgid "value"
 msgstr "jalbíl"
 
@@ -726,12 +724,12 @@ msgstr "ki nedha' patal an kwene' abal ti amul"
 #: TurtleArt/taconstants.py:250 TurtleArt/taconstants.py:272
 #: TurtleArt/taconstants.py:293 TurtleArt/taconstants.py:335
 #: TurtleArt/taconstants.py:377 TurtleArt/taconstants.py:419
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:840
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:868
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:896
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:910
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:845
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:859
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:901
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:915
 msgid "Title"
 msgstr "Bijláb"
 
@@ -752,11 +750,11 @@ msgstr "inbáj in kulbetnal"
 msgid "as input"
 msgstr "ejtil i otseltaláb"
 
-#: TurtleArt/tapalette.py:84
+#: TurtleArt/tapalette.py:92
 msgid "displays next palette"
 msgstr "ki tejwa'medha' xi júnakej i kwene'"
 
-#: TurtleArt/tapalette.py:85
+#: TurtleArt/tapalette.py:93
 msgid "changes the orientation of the palette of blocks"
 msgstr "ka jalk'unchij in áy an kewne' ti kwene' t´'ojláb"
 
@@ -769,198 +767,196 @@ msgid "Save..."
 msgstr "Dhaya'..."
 
 #: TurtleArt/tautils.py:596
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:641
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:616
 msgid "click to open"
 msgstr "ni'inchij abal ka japiy"
 
-#: TurtleArt/tawindow.py:837 TurtleArt/tawindow.py:838
+#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:849
 msgid "orientation"
 msgstr "bolidhtaláb"
 
-#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:1164
+#: TurtleArt/tawindow.py:859 TurtleArt/tawindow.py:1181
 msgid "next"
 msgstr "júnakej"
 
-#: TurtleArt/tawindow.py:3146
+#: TurtleArt/tawindow.py:3153
 msgid "image"
 msgstr "t'iplab"
 
-#: TurtleArtActivity.py:147
+#: TurtleArtActivity.py:150
 msgid "presentation"
 msgstr "tejwa'mejdhomtaláb"
 
 # Instantánea=adhik
-#: TurtleArtActivity.py:223
+#: TurtleArtActivity.py:226
 msgid "snapshot"
 msgstr "adhik"
 
+#: TurtleArtActivity.py:277 TurtleArtActivity.py:572 turtleart.py:346
+msgid "Turn off hover help"
+msgstr ""
+
+#: TurtleArtActivity.py:284 turtleart.py:348
+msgid "Turn on hover help"
+msgstr ""
+
 # paleta = kwene'mukuxtaláb
-#: TurtleArtActivity.py:271 turtleart.py:354
+#: TurtleArtActivity.py:292 turtleart.py:358
 msgid "Show palette"
 msgstr "Tejwa'méjdha' an kwene'mukuxtaláb"
 
 # Ocultar = dhibk'oy, tsina'; esconder = tsina'
-#: TurtleArtActivity.py:277 TurtleArtActivity.py:682 turtleart.py:356
+#: TurtleArtActivity.py:298 TurtleArtActivity.py:689 turtleart.py:360
 msgid "Hide palette"
 msgstr "Ka dhibk'oy an kwene'mukuxtaláb"
 
 # bloque = kwene't'ojláb (conjunto de actividades)
-#: TurtleArtActivity.py:284 TurtleArtActivity.py:297
+#: TurtleArtActivity.py:305 TurtleArtActivity.py:318
 msgid "Show blocks"
 msgstr "Ka tejwa'méjdha' an kwene't'ojlábl"
 
-#: TurtleArtActivity.py:287 TurtleArtActivity.py:305 TurtleArtActivity.py:685
+#: TurtleArtActivity.py:308 TurtleArtActivity.py:326 TurtleArtActivity.py:692
 msgid "Hide blocks"
 msgstr "Ka dhibk'oy an kwene't'ojlábchik"
 
 # escalar=k'adhíl(subir)
-#: TurtleArtActivity.py:415
+#: TurtleArtActivity.py:436
 msgid "Rescale coordinates down"
 msgstr "K'adhíl ti coordenadas abal alál"
 
-#: TurtleArtActivity.py:419 TurtleArtActivity.py:546
+#: TurtleArtActivity.py:440 TurtleArtActivity.py:564
 msgid "Rescale coordinates up"
 msgstr "K'adhíl ti coordenadas abal ebál"
 
-#: TurtleArtActivity.py:478 TurtleArtActivity.py:516 turtleart.py:351
+#: TurtleArtActivity.py:499 TurtleArtActivity.py:536 turtleart.py:355
 msgid "Edit"
 msgstr "Jalk'uy"
 
-#: TurtleArtActivity.py:482 TurtleArtActivity.py:514 turtleart.py:346
+#: TurtleArtActivity.py:503 TurtleArtActivity.py:534 turtleart.py:350
 msgid "View"
 msgstr "Tsu'uw"
 
-# Ayuda = tolmix(conjugado, naná' in tolmix); Ayuda(La) = Tolmixtaláb(como sustantivo: an tolmixtaláb)
-#: TurtleArtActivity.py:489 TurtleArtActivity.py:520
-msgid "Help"
-msgstr "Tolmixtaláb"
-
-#: TurtleArtActivity.py:512
+#: TurtleArtActivity.py:532
 msgid "Project"
 msgstr "Tsalapnadh t'ojláb"
 
-#: TurtleArtActivity.py:518 TurtleArtActivity.py:625
+#: TurtleArtActivity.py:538 TurtleArtActivity.py:632
 msgid "Save/Load"
-msgstr ""
+msgstr "dhaya'/k'adhba'"
 
-#: TurtleArtActivity.py:528 turtleart.py:349
+#: TurtleArtActivity.py:546 turtleart.py:353
 msgid "Copy"
 msgstr "K'ot'biy"
 
-#: TurtleArtActivity.py:530 turtleart.py:350
+#: TurtleArtActivity.py:548 turtleart.py:354
 msgid "Paste"
 msgstr "Ts'at'k'a'"
 
-#: TurtleArtActivity.py:532
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:667
+#: TurtleArtActivity.py:550
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:672
 msgid "Fullscreen"
 msgstr "Putat walek"
 
-#: TurtleArtActivity.py:534 turtleart.py:334
+#: TurtleArtActivity.py:552 turtleart.py:334
 msgid "Cartesian coordinates"
 msgstr "Coordenadas cartesianas"
 
-#: TurtleArtActivity.py:536 turtleart.py:336
+#: TurtleArtActivity.py:554 turtleart.py:336
 msgid "Polar coordinates"
 msgstr "Coordenadas polares"
 
-#: TurtleArtActivity.py:539
+#: TurtleArtActivity.py:557
 msgid "Metric coordinates"
 msgstr "Coordenadas centímetros"
 
-#: TurtleArtActivity.py:549 turtleart.py:340
+#: TurtleArtActivity.py:567 turtleart.py:340
 msgid "Grow blocks"
 msgstr "Ka púwedha' an kwene' t'ojlábchik"
 
-#: TurtleArtActivity.py:551 turtleart.py:342
+#: TurtleArtActivity.py:569 turtleart.py:342
 msgid "Shrink blocks"
 msgstr "Tsipti'méjdha' an kwene' t'ojlábchik"
 
 # Ejemplo = t'ipoxtaláb
-#: TurtleArtActivity.py:575 TurtleArtActivity.py:667
+#: TurtleArtActivity.py:596 TurtleArtActivity.py:674
 msgid "Load example"
 msgstr "Ka k'adhba' an t'ipoxtalábchik"
 
-#: TurtleArtActivity.py:593 TurtleArtActivity.py:597
-msgid "Move the cursor over the orange palette for help."
-msgstr ""
-"Ka éjedha' an chuchbix eblim ti itsak'ní kwene'mukuxtaláb abal ti tolmix'."
-
 # imagen o logo = t'iplab
-#: TurtleArtActivity.py:630 TurtleArtActivity.py:650 turtleart.py:324
+#: TurtleArtActivity.py:637 TurtleArtActivity.py:657 turtleart.py:324
 msgid "Save as image"
 msgstr "Ka dhaya' jant'ini' i t'iplab"
 
 # guarda = Ka dhaya'; como = jant'ini'
-#: TurtleArtActivity.py:633 TurtleArtActivity.py:653 turtleart.py:326
+#: TurtleArtActivity.py:640 TurtleArtActivity.py:660 turtleart.py:326
 msgid "Save as HTML"
 msgstr "Ka dhaya' jant'ini' i HTML"
 
 # Logo = T'iplab
-#: TurtleArtActivity.py:636 TurtleArtActivity.py:655 turtleart.py:328
+#: TurtleArtActivity.py:643 TurtleArtActivity.py:662 turtleart.py:328
 msgid "Save as Logo"
 msgstr "Ka dhaya' jant'ini' i T'iplab"
 
 # Instantánea (o) = Jun adhik
-#: TurtleArtActivity.py:639 TurtleArtActivity.py:658
+#: TurtleArtActivity.py:646 TurtleArtActivity.py:665
 msgid "Save snapshot"
 msgstr "Dhayaxtaláb k'al an jun adhik"
 
-#: TurtleArtActivity.py:641 TurtleArtActivity.py:661
+#: TurtleArtActivity.py:648 TurtleArtActivity.py:668
 msgid "Load project"
-msgstr ""
+msgstr "k'adhba' an tojláb"
 
-#: TurtleArtActivity.py:644 TurtleArtActivity.py:664
+#: TurtleArtActivity.py:651 TurtleArtActivity.py:671
 msgid "Load Python block"
 msgstr "K'adhba' an Python kwene' t'ojláb"
 
-#: TurtleArtActivity.py:683
+#: TurtleArtActivity.py:690
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
-#: TurtleArtActivity.py:686
+#: TurtleArtActivity.py:693
 msgid "<Ctrl>b"
 msgstr "<Ctrl>b"
 
-#: TurtleArtActivity.py:691 turtleart.py:363
+#: TurtleArtActivity.py:698 turtleart.py:367
 msgid "Clean"
 msgstr "T'oka'"
 
-#: TurtleArtActivity.py:691
+#: TurtleArtActivity.py:698
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
-#: TurtleArtActivity.py:693 turtleart.py:364
+#: TurtleArtActivity.py:700 turtleart.py:368
 msgid "Run"
 msgstr "Ka t'aja'"
 
-#: TurtleArtActivity.py:693
+#: TurtleArtActivity.py:700
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
-#: TurtleArtActivity.py:695 turtleart.py:365
+#: TurtleArtActivity.py:702 turtleart.py:369
 msgid "Step"
 msgstr "Ka t'aja' jun xakab"
 
-#: TurtleArtActivity.py:695
+#: TurtleArtActivity.py:702
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
 # Depurar = Takwláts
-#: TurtleArtActivity.py:698 turtleart.py:366
+#: TurtleArtActivity.py:705 turtleart.py:370
 msgid "Debug"
 msgstr "Takwláts"
 
-#: TurtleArtActivity.py:698
+#: TurtleArtActivity.py:705
 msgid "<Ctrl>d"
 msgstr "<Ctrl>d"
 
 # Tortuga = Pet
-#: TurtleArtActivity.py:700
+#: TurtleArtActivity.py:707
 msgid "Stop turtle"
 msgstr "Ka kuba' an pet"
 
-#: TurtleArtActivity.py:701
+#: TurtleArtActivity.py:708
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
@@ -1011,7 +1007,7 @@ msgstr "Wi'leb"
 
 #: gnome_plugins/collaboration_plugin.py:300
 msgid "Password"
-msgstr "Tsinatbijláb"
+msgstr "Tsinatbijiláb"
 
 #: gnome_plugins/collaboration_plugin.py:302
 msgid "Register"
@@ -1043,7 +1039,7 @@ msgstr "Ayendhóm:"
 
 #: gnome_plugins/uploader_plugin.py:102
 msgid "Password:"
-msgstr "Tsinatbijláb:"
+msgstr "Tsinatbijiláb:"
 
 #: gnome_plugins/uploader_plugin.py:113
 msgid "Title:"
@@ -1074,7 +1070,7 @@ msgstr "¡Kibts'obtaláb k'al an k'adhbaxtaláb!"
 #: plugins/audio_sensors/audio_sensors.py:75
 #: plugins/camera_sensor/camera_sensor.py:56
 #: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:294
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:295
 msgid "Palette of sensor blocks"
 msgstr "I kwene' mukuxtaláb ti ats'ax kwene' t'ojláb"
 
@@ -1110,7 +1106,7 @@ msgstr "tsapik an kawídh k'al an otseltaláb kawidhomtaláb"
 
 #: plugins/audio_sensors/audio_sensors.py:118
 #: plugins/audio_sensors/audio_sensors.py:126
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:282
 msgid "pitch"
 msgstr "janidhtaláb"
 
@@ -1217,286 +1213,285 @@ msgstr ""
 msgid "Palette of media objects"
 msgstr "Kwene' i eyextaláb multimedia"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:126
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:127
 msgid "journal"
 msgstr "chudhél dhuchlab"
 
 # medios de comunicación = ólchix ayendhanél
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:127
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:128
 msgid "Sugar Journal media object"
 msgstr "Sugar Journal pél i eyextaláb ólchix ayendhanél"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:137
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:138
 msgid "audio"
 msgstr "ots'oltaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:140
 msgid "Sugar Journal audio object"
 msgstr "Sugar Journal pél i eyextaláb ti ots'oltaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:149
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:150
 msgid "video"
 msgstr "t'iplab tejwa'méjdhomtaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:151
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:152
 msgid "Sugar Journal video object"
 msgstr "Sugar Diario pél i eyextaláb ti t'iplab tejwa'méjdhomtaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:161
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:162
 msgid "description"
 msgstr "tejwa'méjdhomtaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:163
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:164
 msgid "Sugar Journal description field"
 msgstr "Sugar Diario pél jún i jolát abal an tejwa'méjdhomtaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:180
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:208
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:209
 msgid "show"
 msgstr "tejwa'méjdha'"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:184
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:197
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:212
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:185
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
 msgid "draws text or show media from the Journal"
 msgstr ""
 "ka t'ipoy an dhuchlab ólchix ayendhanél o ka tejwa'méjdha' ti Chudhél "
 "dhuchlab"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
 msgid "show aligned"
 msgstr "k'elbadh ka tejwa'méjdha'"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:220
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:221
 msgid "set scale"
 msgstr "bajudh junkudhtaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:224
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:225
 msgid "sets the scale of media"
 msgstr "junkudhtaláb al an bajudh ti ólchix ayendhanél"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:231
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:232
 msgid "save picture"
 msgstr "dhaya' i t'iplab"
 
 # nombre = su nombre(in bijíl)
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:233
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:244
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:234
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:245
 msgid "picture name"
 msgstr "in bijíl an t'iplab"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:234
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:235
 msgid "saves a picture to the Sugar Journal"
 msgstr "in dhayál jún i t'iplab ti Sugar Diario"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:242
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:243
 msgid "save SVG"
 msgstr "dhaya' SVG"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:245
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:246
 msgid "saves turtle graphics as an SVG file in the Sugar Journal"
 msgstr ""
 "in dhayál an t'iplabchik a xi in k'al an pet jant'ini' jún i dhuchlab SVG ti "
 "al an Sugar Diario"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:252
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:253
 msgid "scale"
 msgstr "puwém"
 
 # escala = puwém; escala = bajudh(música)
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:256
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:257
 msgid "holds current scale value"
 msgstr "in kó'onchal in jalbíl a xi xowé' in puwém"
 
 # esperar = áychij
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:261
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
 msgid "media wait"
 msgstr "ki in áychij an ólchix ayendhanél"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:263
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:264
 msgid "wait for current video or audio to complete"
 msgstr "ka ay'chij an ots'oltaláb o an t'iplab tejwa'mejdhomtaláb ma ka taley"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:271
 msgid "speak"
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
-msgid "hello"
-msgstr ""
+msgstr "kaw"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:273
+msgid "hello"
+msgstr "ne'nek"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:274
 msgid "speaks text"
-msgstr ""
+msgstr "ulal an dhuchláb"
 
 #. TRANS: pitch, duration, amplitude
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:282
 msgid "sinewave"
-msgstr ""
+msgstr "sinusoide"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:282
 msgid "duration"
-msgstr ""
+msgstr "owát"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:284
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
-msgstr ""
+msgstr "in watbál junkubat al an sinusoide, in owát anij in owem (adhik k'ij)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:299
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:301
 msgid "button down"
-msgstr ""
+msgstr "ni'adh dhuche'"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:302
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:304
 msgid "returns 1 if mouse button is pressed"
-msgstr ""
+msgstr "wichel jun max an dhuche' kwajat ni'adh"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:309
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:311
 msgid "mouse x"
-msgstr ""
+msgstr "chuchbixtaláb x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:312
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
 msgid "returns mouse x coordinate"
-msgstr ""
+msgstr "in wichbal an elax kits'lab x al an chuchbixtaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:319
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:321
 msgid "mouse y"
-msgstr ""
+msgstr "chuchbixtaláb y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
 msgid "returns mouse y coordinate"
-msgstr ""
+msgstr "in wichbal an elax kits'lab ani an chuchbixtaláb"
 
 # consultar de teclado = alimdhuchumtaláb
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:332
 msgid "query keyboard"
-msgstr "alimdhuchumtaláb"
+msgstr "alim dhuchumtaláb"
 
 # resultados = bajúdhchik
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:332
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:334
 msgid "query for keyboard input (results stored in keyboard block)"
 msgstr ""
 "ka aliy abal an otseltaláb k'al an dhuchumtaláb (in bajúdh k'wajat dhayach "
 "ti al an kwene' t'ojláb xi in k'ál an dhuchumtaláb)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:339
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:341
 msgid "keyboard"
-msgstr "dhuchumtaláb"
+msgstr "ni'imtal dhuche'"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:343
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:345
 msgid "holds results of query-keyboard block"
 msgstr "in kwa'al in bajúdh k'al an kwene' t'ojláb ti alimdhuchumtaláb"
 
 # leer = ajiy
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:350
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:352
 msgid "read pixel"
 msgstr "ka ajiy i pixel"
 
 # pila = t'i'ab
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:353
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:355
 msgid "RGB color under the turtle is pushed to the stack"
 msgstr "An RGB mukuxtaláb ti in alam an pet k'wajbámej t'i'i'idh"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:361
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:363
 msgid "turtle sees"
 msgstr "an pet tsu'ux"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:363
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:365
 msgid "returns the color that the turtle \"sees\""
 msgstr "ka ólna' an mukuxtaláb a xi in \"tsu'tal\" an pet"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371 taextras.py:279
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:373 taextras.py:279
 msgid "time"
 msgstr "k'ij"
 
 # segundo = adhik k'ij
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:374
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:376
 msgid "elapsed time (in seconds) since program started"
 msgstr ""
 "an k'ij wat'enek (ti adhik k'ij) ma ti in tujtal ti in al an tsalpadht'ojláb"
 
 # adiciónal = punk'uxtaláb ; adiciónales = in punkuxtal
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:383
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
 msgid "Palette of extra options"
 msgstr "Kwene' ti in púnk'uxtal i jolat takudhtaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:391
 msgid "push"
 msgstr "nixa'"
 
 # pila, batería = mulkuxtsápláb
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:391
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
 msgid "pushes value onto FILO (first-in last-out heap)"
 msgstr ""
 "ka t'i'aj in jalbíl eblim an mulkuxtsápláb FILO (k'a'ál ti otsel, kalel ti "
 "taltaláb)"
 
 # batería, pila = mulkuxtsápláb
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:401
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
 msgid "show heap"
 msgstr "ka tejwa'méjdha' an t'i'nél"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:407
 msgid "shows values in FILO (first-in last-out heap)"
 msgstr ""
 "ka tejwa'méjdha' in jalbílchik al an t'i'nél FILO (k'a'ál ti otsel, kalel ti "
 "taltaláb)"
 
 # vaciar = jolk'ow
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:414
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:417
 msgid "empty heap"
 msgstr "ka jolk'ow an t'i'nél"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:417
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:420
 msgid "emptys FILO (first-in-last-out heap)"
 msgstr "ka jolk'ow an t'i'nél FILO (k'a'ál-ti-otsel kalel-ti-taltaláb)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:427
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
 msgid "pop"
 msgstr "kaldha'"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:431
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:434
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr ""
 "ka kanchij in jalbíl ti t'i'nél FILO (otsel ti k'a'ál, kalel ti taltaláb)"
 
 # vaciar = jolk'ow
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:441
-#, fuzzy
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:444
 msgid "empty heap?"
 msgstr "ka jolk'ow an t'i'nél"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:444
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:447
 msgid "returns True if heap is empty"
-msgstr ""
+msgstr "in wichbál xi chubax al an t'i'nel xi jolat"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:453
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:456
 msgid "comment"
 msgstr "káw"
 
 # código = káw
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:457
 msgid "places a comment in your code"
 msgstr "ka punuw jún i káw ti al a dhuche'il"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:460
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:463
 msgid "print"
 msgstr "ka wat'ba' ti úw"
 
 # imprime = dhunchunchij
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:463
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:466
 msgid "prints value in status block at bottom of the screen"
 msgstr ""
 "ka dhuchunchij in jalbíl ti al in alwá' an kwene' t'ojláb ti in alálim an "
 "walek"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:471
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:483
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:496
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:474
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:486
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
 msgid "Python"
 msgstr "Python"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:474
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:477
 msgid ""
 "a programmable block: used to add advanced single-variable math equations, e."
 "g., sin(x)"
@@ -1505,13 +1500,13 @@ msgstr ""
 "matemáticas xi lej k'adhat ti ál an ecuaciones matemáticas ti jún i dhuche', "
 "p.e., seno(x)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:486
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:489
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
 msgstr "punchidh exobintalab eyadh`k'al an ajintalab ,i,e.,sqrt(x*x+y*)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:502
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
@@ -1519,232 +1514,235 @@ msgstr ""
 "punchidh exobintaláb eyadh k'al an ecuaciones matemáticas axi k'ibichik yan, "
 "p.e. seno(x+y+z)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:510
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:525
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:540
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:513
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:528
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:543
 msgid "Python block"
 msgstr "Python kwene' t'ojláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:512
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:527
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:542
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:515
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:530
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
 msgid "runs code found in the tamyblock.py module found in the Journal"
 msgstr ""
 "ka t'aja' jun t'ie' i dhuche' ti kwene't'ojláb tamyblock.py axi kw'ajat ti "
 "Chudhél dhuchlab"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:555
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:558
 msgid "Cartesian"
 msgstr "Cartesiana"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:557
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:560
 msgid "displays Cartesian coordinates"
 msgstr "t'ipodh elax kits'lab Cartesianas"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:563
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:566
 msgid "polar"
 msgstr "pulàb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:565
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:568
 msgid "displays polar coordinates"
 msgstr "tìpodh pulàb elàx kits'lab"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:571
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:574
 msgid "turtle"
 msgstr "pet"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:574
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:577
 msgid "chooses which turtle to command"
 msgstr "ka takuy an pet ti abatnom"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:583
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:592
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:586
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:595
 msgid "turtle shell"
 msgstr "in yetse' ot'ol an pet"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:593
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:588
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:596
 msgid "put a custom 'shell' on the turtle"
 msgstr "ka kotonliy t'ipts'odh an pet"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:601
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:768
 msgid "top"
 msgstr "eblim"
 
 # eblim ka t'ia' jununúl
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:600
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:603
 msgid "top of a collapsed stack"
 msgstr "eblim ka t'i'a' jununul"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:606
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:739
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:609
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:744
 msgid "bottom"
 msgstr "alam"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:607
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:610
 msgid "bottom of a collapsible stack"
 msgstr "tin alam an ts'at'at' t'i'e'"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:615
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:618
+msgid "collapsed stack: click to open"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:627
 msgid "bottom block in a collapsed stack: click to open"
 msgstr "ti alal an k'wene' t'ojláb ts'at'at': t'aja' klik abal ka japiy"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:623
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:626
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:635
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:643
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:634
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:637
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
 msgid "top of stack"
 msgstr "eblim ti ál an t'i'e'"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:624
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:633
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:635
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
 msgid "label"
 msgstr "uw bijilab"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:632
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:643
 msgid "top of a collapsible stack"
 msgstr "eblim ti ba an paklax binom tsaplab"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:649
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:652
 msgid "Palette of presentation templates"
 msgstr "An kwene' tejwame'dhomtalab"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:653
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:658
 msgid "hide blocks"
 msgstr "tsina' an kwene' t'ojláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:655
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:660
 msgid "declutters canvas by hiding blocks"
 msgstr "in t'okál in walte'lil tam ka tsinka' an kwene' t'ojláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:660
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:665
 msgid "show blocks"
 msgstr "ka tejwa'mejdha' an kwene' t'ojlab"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:662
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:667
 msgid "restores hidden blocks"
 msgstr "ka wichk'ow an kwene' t'ojlab axi tsinkadh"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:674
 msgid "hides the Sugar toolbars"
 msgstr "in tsinkál an ayixtalab axi in k'al a Sugar"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:678
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:683
 msgid "list"
 msgstr "k'elab"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:681
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:686
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:916
 msgid "presentation bulleted list"
 msgstr "tejwa'medhomtaláb k'al an k'elab ti witsil dhuche'"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:912
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:694
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:917
 msgid "presentation template: list of bullets"
 msgstr "t'ipoxtaláb ti tejwa'medhomtaláb: k'elab an wistil dhuche'"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:696
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:856
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:701
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:861
 msgid "presentation template: select Journal object (no description)"
 msgstr ""
 "t'ipoxtaláb ti tejwa'medhomtaláb: takuxtaláb k'al an eyextaláb ti Chudhél "
 "dhuchlab (yab tejwa'medhach)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:703
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:842
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:708
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:847
 msgid "presentation template: select Journal object (with description)"
 msgstr ""
 "t'ipoxtaláb ti tejwa'medhomtaláb: takuxtaláb k'al an eyextaláb ti Chudhél "
 "dhuchlab (tejwa'medhach)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:710
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:898
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:903
 msgid "presentation template: select four Journal objects"
 msgstr ""
 "t'ipoxtaláb ti tejwa'medhomtaláb: takuxtaláb k'al tse' i eyextaláb ti "
 "Chudhél dhuchlab"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:717
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:884
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:722
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:729
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:875
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:889
 msgid "presentation template: select two Journal objects"
 msgstr ""
 "t'ipoxtaláb ti tejwa'medhomtaláb: takuxtaláb k'al tsab i eyextaláb ti "
 "Chudhél dhuchlab"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:739
 msgid "xcor of left of screen"
 msgstr "xcor ti kwa'atbe' waldhuchumtaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747
 msgid "ycor of bottom of screen"
 msgstr "ycor tin walte'il alal an waldhuchumtalab"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:747 taextras.py:205
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:752 taextras.py:205
 msgid "width"
 msgstr "ts'ikwél"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:750
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:755
 msgid "the canvas width"
 msgstr "tin ts'ikwém an telmaxtaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:758
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
 msgid "xcor of right of screen"
 msgstr "xcor tin walte' winbéj ti waldhuchumtaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:766
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771
 msgid "ycor of top of screen"
 msgstr "ycor tin walte' ti eblim an waldhuchumtaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771 taextras.py:200
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776 taextras.py:200
 #: taextras.py:206
 msgid "height"
 msgstr "t'ek'em"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:779
 msgid "the canvas height"
 msgstr "t'ek'em an telmaxtaláb"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:781
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:786
 msgid "title x"
 msgstr "bijláb x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:790
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:795
 msgid "title y"
 msgstr "bijláb y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:799
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
 msgid "left x"
 msgstr "kwa't'ab x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:808
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:813
 msgid "top y"
 msgstr "eblim y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:817
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:822
 msgid "right x"
 msgstr "wínab x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:826
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:831
 msgid "bottom y"
 msgstr "ti in alam y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:841
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:855
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:846
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:860
 msgid "presentation 1x1"
 msgstr "tejwa'medhomtaláb 1x1"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:869
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
 msgid "presentation 2x1"
 msgstr "tejwa'medhomtaláb 2x1"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:883
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:888
 msgid "presentation 1x2"
 msgstr "tejwa'medhomtaláb 1x2"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:902
 msgid "presentation 2x2"
 msgstr "tejwa'medhomtaláb 2x2"
 
@@ -1807,43 +1805,37 @@ msgstr "Paleta de Guaranies"
 #. TRANS: Butia is the Arduino Robot Project from Uruguay
 #. (http://www.fing.edu.uy/inco/proyectos/butia/)
 #: taextras.py:58
-msgid "Turtle Art Butia"
-msgstr "Tortug tsalpadh t'ajbilab Butía"
+msgid "TurtleBots"
+msgstr ""
 
 #: taextras.py:59
-#, fuzzy
 msgid "adjust LED intensity between 0 and 255"
 msgstr "In lejbayal in tsapík xi LED k'al 0 ani 255."
 
 #: taextras.py:60
-#, fuzzy
 msgid "returns the object gray level as a number between 0 and 1023"
 msgstr ""
 "In wichbal in wichat an tajaxtalab al an k'ailal ejtil jun i ajixtalab al an "
 "0 ani 1023."
 
 #: taextras.py:61
-#, fuzzy
 msgid "returns 1 when the button is press and 0 otherwise"
 msgstr ""
 "In wichbal jun tam al dhuche' k´wajat ni'adh ti 0 ani k'al pil i ajumtalab."
 
 #: taextras.py:62
-#, fuzzy
 msgid "returns the ambient light level as a number between 0 and 1023"
 msgstr ""
 "In wichbal in wichat an tajaxtalab al an k'ailal ejtil jun i ajixtalab al an "
 "0 ani 1023."
 
 #: taextras.py:63
-#, fuzzy
 msgid "returns the ambient temperature as a number between 0 and 255"
 msgstr ""
 "In wichbal an alwa'talab al an k'ailal ejtil jun i ajixtalab al an 0 ani "
 "255."
 
 #: taextras.py:64
-#, fuzzy
 msgid ""
 "returns the distance from the object in front of the sensor as a number "
 "between 0 and 255"
@@ -1852,19 +1844,16 @@ msgstr ""
 "ajixtalab ba' an 0 ani an 255."
 
 #: taextras.py:66
-#, fuzzy
 msgid "returns 0 or 1 depending on the sensor inclination"
 msgstr "In wichbal an 0 o1 k'al in kwentalidh k'al an ots'bixtalab."
 
 #: taextras.py:67
-#, fuzzy
 msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
 msgstr ""
 "In wuichbal jun tam an ots'bixtalab in 'elal jun xi yab bijidh, ba' an 0 "
 "k'al pil i ajixtalab."
 
 #: taextras.py:68
-#, fuzzy
 msgid "switches from 0 to 1, the frequency depends on the vibration"
 msgstr "Ejel ba' an 0 ani al an 1 tam dhiyoyolats."
 
@@ -1873,8 +1862,8 @@ msgid "LED"
 msgstr "LED"
 
 #: taextras.py:70
-msgid "pushbutton"
-msgstr "Dhuche'"
+msgid "button"
+msgstr ""
 
 #: taextras.py:71
 msgid "grayscale"
@@ -1919,10 +1908,9 @@ msgstr "Aychij an tsábchil xi wat'enek ba' an ódhaxtalab"
 #. TRANS: This string is shorthand for "battery charge of Butia"
 #: taextras.py:82
 msgid "battery charge Butia"
-msgstr ""
+msgstr "in dhayal an ti'el butiá"
 
 #: taextras.py:83
-#, fuzzy
 msgid "returns the battery charge as a number between 0 and 255"
 msgstr ""
 "Wichba' an dhaykom k'al an mulkux tsapláb an robot ejtil jun i ajixtalab ba' "
@@ -1931,10 +1919,9 @@ msgstr ""
 #. TRANS: This string is shorthand for "speed of Butia"
 #: taextras.py:85
 msgid "speed Butia"
-msgstr ""
+msgstr "adhiktaláb butiá"
 
 #: taextras.py:86
-#, fuzzy
 msgid ""
 "set the speed of the Butia motors as a value between 0 and 1023, passed by "
 "an argument"
@@ -1948,12 +1935,10 @@ msgid "forward Butia"
 msgstr "Ne'etsnanchij Butiá"
 
 #: taextras.py:90
-#, fuzzy
 msgid "move the Butia robot forward"
 msgstr "Ka edha' an robot ani ka ne'etsnanchij."
 
 #: taextras.py:91
-#, fuzzy
 msgid "move the Butia robot forward a predefined distance"
 msgstr "Ka edha' an robot Butiá ani ka aynanchij in owát jant'ini ka kulbetna'."
 
@@ -1963,12 +1948,10 @@ msgid "backward Butia"
 msgstr "Wichba' Butiá"
 
 #: taextras.py:94
-#, fuzzy
 msgid "move the Butia robot backward"
 msgstr "Edha' an robot Butiá ani´ka wichba'."
 
 #: taextras.py:95
-#, fuzzy
 msgid "move the Butia robot backward a predefined distance"
 msgstr "Edha' an robot Butiá kuxlab ka alchij in ówat."
 
@@ -1979,7 +1962,7 @@ msgstr "K'watab Butiá"
 
 #: taextras.py:98
 msgid "turn the Butia robot at left"
-msgstr ""
+msgstr "in wilkiyal an pat'al butiá abal tin k'wátab"
 
 #. TRANS: This string is shorthand for "turn Butia right"
 #: taextras.py:100
@@ -1988,16 +1971,15 @@ msgstr "Wínab Butiá"
 
 #: taextras.py:101
 msgid "turn the Butia robot at right"
-msgstr ""
+msgstr "in wilk'iyal an pat'al atikláb abal tin winab"
 
 #: taextras.py:102
 msgid "turn Butia"
-msgstr ""
+msgstr "wilk'iy Butiá"
 
 #: taextras.py:103
-#, fuzzy
 msgid "turn the Butia robot x degrees"
-msgstr "Ka tsawix an robot Butiá ba' an ajumtal k'al in kextal."
+msgstr "Ka tsawiy an robot Butiá ba' an ajumtal k'al in kextal."
 
 #: taextras.py:104
 msgid "stop Butia"
@@ -2005,10 +1987,9 @@ msgstr "Kuba' Butiá"
 
 #: taextras.py:105
 msgid "stop the Butia robot"
-msgstr ""
+msgstr "in k'ubal an pat'al atikláb Butiá"
 
 #: taextras.py:106
-#, fuzzy
 msgid "display Butia"
 msgstr "Jilk'ontalab Butía"
 
@@ -2016,10 +1997,9 @@ msgstr "Jilk'ontalab Butía"
 #. The len must be 32 characters/spaces.
 #: taextras.py:109
 msgid "Hello World    Butia            "
-msgstr ""
+msgstr "ne'nek puwel tsabál Butiá       "
 
 #: taextras.py:110
-#, fuzzy
 msgid "print text in Butia robot 32-character ASCII display"
 msgstr "Ka wila' jun i dhuchlab al an walek LCD."
 
@@ -2045,7 +2025,7 @@ msgstr "ki ayna' an mukuxtalab RGB"
 
 #: taextras.py:119
 msgid "set a threshold for a RGB color"
-msgstr ""
+msgstr "in tejwamedhal an umbral abal jun i mukuxtaláb RGB"
 
 #: taextras.py:120
 msgid "follow a turtle color"
@@ -2054,10 +2034,12 @@ msgstr "ki ayna' an mukuxtalab ba' an pét"
 #: taextras.py:121
 msgid "set the minimal number of pixels to follow"
 msgstr ""
+"in tejwamedhal xi tsipkats an ajumtaláb axi ajidh alwa' xi ne'ets ki "
+"beldhanchij"
 
 #: taextras.py:122
 msgid "calibrate"
-msgstr ""
+msgstr "t'ojojoy"
 
 #: taextras.py:123
 msgid "calibrate a color to follow"
@@ -2081,72 +2063,71 @@ msgstr "ka wichba' jun ejet y"
 
 #: taextras.py:128
 msgid "pixels"
-msgstr ""
+msgstr "ajidh alwa'"
 
 #: taextras.py:129
 msgid "return the number of pixels of the biggest blob"
-msgstr ""
+msgstr "ka wichba' an ajumtalàb xi kwajat minkodh lej pulik"
 
 #: taextras.py:133
 msgid "SumBot"
-msgstr ""
+msgstr "SumBot"
 
 #: taextras.py:134
 msgid "speed SumBot"
-msgstr ""
+msgstr "adhiktalàb SumBot"
 
 #: taextras.py:135
 msgid "submit the speed to the SumBot"
-msgstr ""
+msgstr "t'ipoy an adhiktalàb SumBot"
 
 #: taextras.py:136
-#, fuzzy
 msgid "set the default speed for the movement commands"
 msgstr "ka t'ipoy an adhiktalab abal an abatnom tam ka ejelats."
 
 #. TRANS: This string is shorthand for "move SumBot forward"
 #: taextras.py:138
 msgid "forward SumBot"
-msgstr ""
+msgstr "ne'etsnanchij SumBot"
 
 #: taextras.py:139
 msgid "move SumBot forward"
-msgstr ""
+msgstr "yatsiy an SumBot abal tin t'amal"
 
 #. TRANS: This string is shorthand for "move SumBot backward"
 #: taextras.py:141
 msgid "backward SumBot"
-msgstr ""
+msgstr "tin kùx an SumBot"
 
 #: taextras.py:142
 msgid "move SumBot backward"
-msgstr ""
+msgstr "ka yatsiy an tipoxtalàb abal tin kux"
 
 #: taextras.py:143
 msgid "stop SumBot"
-msgstr ""
+msgstr "ka kuba' an tipoxtalàb"
 
 #: taextras.py:144
 msgid "stop the SumBot"
-msgstr ""
+msgstr "in koydhal an tipoxtalàb"
 
 #. TRANS: This string is shorthand for "turn SumBot left"
 #: taextras.py:146
 msgid "left SumBot"
-msgstr ""
+msgstr "k'wàtab an tipoxtalàb"
 
 #: taextras.py:147
 msgid "turn left the SumBot"
-msgstr ""
+msgstr "ka wilk'iy an tipoxtalàb abal tin k'wàtab"
 
 #. TRANS: This string is shorthand for "move SumBot right"
 #: taextras.py:149
 msgid "right SumBot"
-msgstr ""
+msgstr "winab tipoxtalàb"
 
 #: taextras.py:150
 msgid "turn right the SumBot"
-msgstr ""
+msgstr "wilk'iy an tipoxtalàb abal tin winab"
 
 #: taextras.py:151
 msgid "angle to center"
@@ -2154,76 +2135,68 @@ msgstr "kexem ba' in ts'ejeltal"
 
 #. TRANS: dohyo is the playing field
 #: taextras.py:153
-#, fuzzy
 msgid "get the angle to the center of the dohyo"
-msgstr "ka kanchij in keyem ba' in ts'ejeltal an dojo."
+msgstr "ka kanchij in keyem ba' in ts'ejeltal an dohyo."
 
 #: taextras.py:154
 msgid "angle to Enemy"
-msgstr ""
+msgstr "kexem an k'eat tsalapil"
 
 #: taextras.py:155
-#, fuzzy
 msgid "get the angle to the Enemy"
 msgstr "ka kanchij in owát an k'eat tsalapil."
 
 #. TRANS: This string is shorthand for "x coordinate of SumBot"
 #: taextras.py:157
 msgid "x coor. SumBot"
-msgstr ""
+msgstr "coor. x SumBot"
 
 #: taextras.py:158
-#, fuzzy
 msgid "get the x coordinate of the SumBot"
 msgstr "ka kanchij an elax kits'lab x an robot."
 
 #. TRANS: This string is shorthand for "y coordinate of SumBot"
 #: taextras.py:160
 msgid "y coor. SumBot"
-msgstr ""
+msgstr "coor. y SumBot"
 
 #: taextras.py:161
-#, fuzzy
 msgid "get the y coordinate of the SumBot"
 msgstr "in kanchij an elax kits'lab an robot."
 
 #. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
 #: taextras.py:163
 msgid "x coor. Enemy"
-msgstr ""
+msgstr "coor. x k'eat tsalapil"
 
 #: taextras.py:164
-#, fuzzy
 msgid "get the x coordinate of the Enemy"
 msgstr "ka kanchij an elax kits'lab x an robot."
 
 #. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
 #: taextras.py:166
 msgid "y coor. Enemy"
-msgstr ""
+msgstr "coor. y k'eat tsalapil"
 
 #: taextras.py:167
-#, fuzzy
 msgid "get the y coordinate of the Enemy"
 msgstr "in kanchij an elax kits'lab an robot."
 
 #. TRANS: This string is shorthand for "rotation of SumBot"
 #: taextras.py:169
 msgid "rotation SumBot"
-msgstr ""
+msgstr "wilil SumBot"
 
 #: taextras.py:170
-#, fuzzy
 msgid "get the rotation of the Sumbot"
 msgstr "ka kanchij an wililtalab jun puk'e'."
 
 #. TRANS: This string is shorthand for "rotation of SumBot's enemy"
 #: taextras.py:172
 msgid "rotation Enemy"
-msgstr ""
+msgstr "wilil k'eat tsalapil"
 
 #: taextras.py:173
-#, fuzzy
 msgid "get the rotation of the Enemy"
 msgstr "ka kanchij an wililtalab jun puk'e'."
 
@@ -2233,16 +2206,14 @@ msgstr "in owát an ts'ejeltal"
 
 #. TRANS: dohyo is the playing field
 #: taextras.py:176
-#, fuzzy
 msgid "get the distance to the center of the dohyo"
-msgstr "ka kanchij in owát an ts'ejeltal xi dojo."
+msgstr "ka kanchij in owát an ts'ejeltal xi dohyo."
 
 #: taextras.py:177
 msgid "distance to Enemy"
-msgstr ""
+msgstr "in owàt xin k'eat tsalapil"
 
 #: taextras.py:178
-#, fuzzy
 msgid "get the distance to the Enemy"
 msgstr "ka kanchij in owát an k'eat tsalapil."
 
@@ -2251,176 +2222,190 @@ msgid "update information"
 msgstr "ka itmedha' an olchixtalab"
 
 #: taextras.py:180
-#, fuzzy
 msgid "update information from the server"
 msgstr "ka itmedha' an olchixtalab ba' an ábatnom."
 
 # sensor = ats'ax
 #. TRANS: Please use similar terms to those used in the Physics Activity
 #: taextras.py:185
-#, fuzzy
 msgid "Palette of physics blocks"
-msgstr "I kwene' mukuxtaláb ti ats'ax kwene' t'ojláb"
+msgstr "In kwene' mukuxtaláb ti ats'ax kwene' t'ojláb"
 
 #: taextras.py:186
 msgid "start polygon"
-msgstr ""
+msgstr "tujchiy yan walt'etil"
 
 #: taextras.py:187
 msgid "Begin defining a new polygon based on the current Turtle xy position."
 msgstr ""
+"ka tujchij ka bijiy an it yan walt'elil jantodha ti kw'ajat xokij xy in k'al "
+"an pet"
 
 #: taextras.py:189
 msgid "add point"
-msgstr ""
+msgstr "ka punk'uy an tuk"
 
 #: taextras.py:190
 msgid ""
 "Add a new point to the current polygon based on the current Turtle xy "
 "position."
 msgstr ""
+"ka punk'uy jun i it tuk al an yan walt'elil xi kwajat xokij xy al an pet"
 
 #: taextras.py:192
 msgid "end polygon"
-msgstr ""
+msgstr "puntundha yan walt'elil"
 
 #: taextras.py:193
 msgid "Define a new polygon."
-msgstr ""
+msgstr "ka bijiy jun i it yan walt'elil"
 
 #: taextras.py:194
 msgid "end filled polygon"
-msgstr ""
+msgstr "ka putundha an yan walt'elil xi t'uchidh"
 
 #: taextras.py:195
 msgid "Not a simple polygon"
-msgstr ""
+msgstr "yab i yan walt'elil alk'idh"
 
 #: taextras.py:196
 msgid "Define a new filled polygon."
-msgstr ""
+msgstr "in bijiyal jun i it yan walt'elil xi t'uchidh"
 
 #: taextras.py:197
 msgid "triangle"
-msgstr ""
+msgstr "òx ts'upi'"
 
 #. TRANS: base of a triangle
 #: taextras.py:199
 msgid "base"
-msgstr ""
+msgstr "in akan"
 
 #: taextras.py:201
 msgid "Add a triangle object to the project."
-msgstr ""
+msgstr "In punk'uyal jun i eyixtalàb al an òx ts'upi' al an tojlàb"
 
 #: taextras.py:202
 msgid "circle"
-msgstr ""
+msgstr "kw'echo'"
 
 #: taextras.py:203
 msgid "Add a circle object to the project."
-msgstr ""
+msgstr "in punk'uyal jun i eyixtalàb al an kw'echo' abal an tojlàb"
 
 #: taextras.py:204
 msgid "rectangle"
-msgstr ""
+msgstr "pek'madh tse' walte'"
 
 #: taextras.py:207
 msgid "Add a rectangle object to the project."
-msgstr ""
+msgstr "in punk'uyal jun i eyixtalàb pek'madh tse' walte' al an tojlàb"
 
 #: taextras.py:208
 msgid "reset"
-msgstr ""
+msgstr "tsab tujchi'"
 
 #: taextras.py:209
 msgid "Reset the project; clear the object list."
-msgstr ""
+msgstr "ka tsàb tujchi' an tojlàb, in t'okedhal an eyixtalàb xi kwajat k'elbadh"
 
 #: taextras.py:210
 msgid "motor"
-msgstr ""
+msgstr "ichich pat'al"
 
 #: taextras.py:211
 msgid "torque"
-msgstr ""
+msgstr "jayetsek'ij"
 
 #: taextras.py:212
 msgid "speed"
-msgstr ""
+msgstr "adhiktalàb"
 
 #: taextras.py:213
 msgid ""
 "Motor torque and speed range from 0 (off) to positive numbers; motor is "
 "placed on the most recent object created."
 msgstr ""
+"xi jayetsek'ij an adhiktalàb al an ichich pat'al xi kwajat al an rango 0 "
+"(tepts'idh) al an ajixtalàb positivos; an ichich pat'al kwajat punudh al an "
+"eyixtalàb xi inkidh itej"
 
-#: taextras.py:215
+#: taextras.py:215 taextras.py:329
 msgid "pin"
-msgstr ""
+msgstr "eyindhanel xi ts'upidh anij pulik in ok' xi eynal abal ti ts'at'axtalàb"
 
 #: taextras.py:216
 msgid "Pin an object down so that it cannot fall."
-msgstr ""
+msgstr "in teynal an eyixtalàb abal yab ka ijkan"
 
 #: taextras.py:217
 msgid "joint"
-msgstr ""
+msgstr "junkudh"
 
 #: taextras.py:220
 msgid ""
 "Join two objects together (the most recent object created and the object at "
 "point x, y)."
 msgstr ""
+"in tamkuyal tsab i eyixtalàb (an eyixtalàb xi inkidh anij an eyixtalàb xi "
+"kwajat al an tuk x,y)."
 
 #: taextras.py:222
 msgid "Save the project to the Journal as a Physics activity."
-msgstr ""
+msgstr "in dhayal an t'ojlàb al an chudhèl dhuchlab fisica."
 
 #: taextras.py:223
-#, fuzzy
 msgid "density"
-msgstr "ibíl"
+msgstr "alemtalàb"
 
 #: taextras.py:224
 msgid ""
 "Set the density property for objects (density can be any positive number)."
 msgstr ""
+"in bijiyal an àlemtalàb kal an eyixtalàb(an àlemtalàb neèts bijidh jawakits "
+"ajumtalàb xi chubax)"
 
 #: taextras.py:226
 msgid "friction"
-msgstr ""
+msgstr "tam i tadhanal jit'a, o tam u yats'nal"
 
 #: taextras.py:227
 msgid ""
 "Set the friction property for objects (value from 0 to 1, where 0 turns "
 "friction off and 1 is strong friction)."
 msgstr ""
+"in bijiyal in uchbil tam i tadhanal jant'o o jun i eyixtalàb (in alèm "
+"nijant'o anij jun, ju'ta' nijant'o jats' tam i tadhanal anij jun jats xi "
+"ts'apik)."
 
 #. TRANS: bounciness is restitution
 #: taextras.py:230
 msgid "bounciness"
-msgstr ""
+msgstr "in wichbàl jun i eyindhanel xin kwa'alak tin k'ubak owatits"
 
 #: taextras.py:231
 msgid ""
 "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
 "no bounce and 1 is very bouncy)."
 msgstr ""
+"In bijiyal in uchbil kal an eyixtalàb xin kwa'alak tin k'ubak (in alèm "
+"nijjanto' ani jun, ju'ta nijanto' in le' kin uluw in wichbal ani jun in le' "
+"kin uluw yan)"
 
 #: taextras.py:233
 msgid "dynamic"
-msgstr ""
+msgstr "kulbel"
 
 #: taextras.py:234
 msgid ""
 "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
 msgstr ""
+"kulbel=jun, an eyixtalàb in ejtowal ka yats'in; kulbel=nijanto, jilkonal "
+"k'ubat yab yats'nal"
 
 # sensor = ats'ax
 #. TRANS: WeDo is a robotics product of the LEGO company
 #: taextras.py:240
-#, fuzzy
 msgid "Palette of WeDo blocks"
 msgstr "I kwene' mukuxtaláb ti ats'ax kwene' t'ojláb"
 
@@ -2433,31 +2418,31 @@ msgstr ""
 #. TRANS: This string is shorthand for "output of the distance sensor"
 #: taextras.py:246
 msgid "distance sensor output"
-msgstr ""
+msgstr "bel xin elàl in owèm"
 
 #: taextras.py:247
 msgid "Motor A"
-msgstr ""
+msgstr "ichich pat'al A"
 
 #: taextras.py:248
 msgid "returns the current value of Motor A"
-msgstr ""
+msgstr "in wichbal in alèm xin kwaàl an ichich pat'al A"
 
 #: taextras.py:249
 msgid "Motor B"
-msgstr ""
+msgstr "ichich pat'al B"
 
 #: taextras.py:250
 msgid "returns the current value of Motor B"
-msgstr ""
+msgstr "in wichbal in alèm xin kwa'al al an ichich pat'al B"
 
 #: taextras.py:251
 msgid "set the value for Motor A"
-msgstr ""
+msgstr "in elàl in alèm an ichich pat'al A"
 
 #: taextras.py:252
 msgid "set the value for Motor B"
-msgstr ""
+msgstr "in elal in alèm an ichich pat'al B"
 
 #. TRANS: Lego NXT is a robotics product of the LEGO company
 #: taextras.py:257
@@ -2466,154 +2451,157 @@ msgstr ""
 
 #: taextras.py:258
 msgid "touch"
-msgstr ""
+msgstr "dhuche'"
 
 #: taextras.py:259
 msgid "ultrasonic"
-msgstr ""
+msgstr "owèm"
 
 #: taextras.py:261
-#, fuzzy
 msgid "light"
-msgstr "wínab"
+msgstr "tajàx"
 
 #: taextras.py:262
 msgid "PORT A"
-msgstr ""
+msgstr "wi'leb A"
 
 #: taextras.py:263
 msgid "PORT B"
-msgstr ""
+msgstr "wi'leb B"
 
 #: taextras.py:264
 msgid "PORT C"
-msgstr ""
+msgstr "wi'leb C"
 
 #: taextras.py:265
 msgid "PORT 1"
-msgstr ""
+msgstr "wi'leb jun"
 
 #: taextras.py:266
 msgid "PORT 2"
-msgstr ""
+msgstr "wi'leb tsab"
 
 #: taextras.py:267
 msgid "PORT 3"
-msgstr ""
+msgstr "wi'leb òx"
 
 #: taextras.py:268
 msgid "PORT 4"
-msgstr ""
+msgstr "wi'leb tsè"
 
 #: taextras.py:269
 msgid "Please check the connection with the brick."
-msgstr ""
+msgstr "T'ajchij an alwa'talàb ka met'a ju'taj ti ts'atadh kal an brinck"
 
 #: taextras.py:270
 msgid "Please check the port."
-msgstr ""
+msgstr "T'ajchij an alwa'talàb ka met'a an wi'leb"
 
 #: taextras.py:271
 msgid "The value of power must be between -127 to 127."
-msgstr ""
+msgstr "In alèm an tsapiktalàb ne'ets ti - 127 y 127."
 
 #: taextras.py:272
-msgid "An error has ocurred: check all and try reconect."
+msgid "An error has occurred: check all connections and try to reconnect."
 msgstr ""
+"jun i k'ibts'ontalàb watenek: ka met'a an ts'ot'koxtalàb anij ka tsab "
+"ts'ot'k'oy"
 
 #: taextras.py:273
 msgid "NXT found"
-msgstr ""
+msgstr "NXT elàdh"
 
 #: taextras.py:274
 msgid "NXT not found"
-msgstr ""
+msgstr "NXT yab eladh"
 
 #: taextras.py:275
 msgid "refresh NXT"
-msgstr ""
+msgstr "itmèdha' NXT"
 
 #: taextras.py:276
 msgid "Search for a connected NXT brick."
-msgstr ""
+msgstr "in aliyal al jun i brinck NXT xi ts'ot'k'odh."
 
 #: taextras.py:277
 msgid "play tone"
-msgstr ""
+msgstr "tsab watba' in janidh"
 
 #: taextras.py:278
 msgid "freq"
-msgstr ""
+msgstr "frec"
 
 #: taextras.py:280
 msgid "Play a tone at freq for time."
-msgstr ""
+msgstr "in tsab wat'bàl in janidh al an ik' 'frec' al jun i ajumtal an k'ij."
 
 #: taextras.py:281
 msgid ""
 "turn motor\n"
 "rotations"
 msgstr ""
+"wilk'iyal an ichich pat'al\n"
+" wilililchik"
 
 #: taextras.py:282
-#, fuzzy
 msgid "port"
 msgstr "Wi'leb"
 
 #: taextras.py:283
 msgid "power"
-msgstr ""
+msgstr "tsapìk"
 
 #: taextras.py:284
 msgid "turn a motor"
-msgstr ""
+msgstr "in wilk'iyal an ichich patàl"
 
 #: taextras.py:285
 msgid ""
 "sync motors\n"
 "steering"
 msgstr ""
+"sinc ichich pat'al\n"
+" belil"
 
 #: taextras.py:286
-#, fuzzy
 msgid "rotations"
 msgstr "wilil"
 
 #: taextras.py:287
 msgid "synchronize two motors"
-msgstr ""
+msgstr "ka alìy ichich pat'al"
 
 #: taextras.py:288
 msgid "PORT A of the brick"
-msgstr ""
+msgstr "Wi'leb A del brick."
 
 #: taextras.py:289
 msgid "PORT B of the brick"
-msgstr ""
+msgstr "wi'leb B del brinck."
 
 #: taextras.py:290
 msgid "PORT C of the brick"
-msgstr ""
+msgstr "wi'leb C del brinck."
 
 #: taextras.py:291
 msgid "start motor"
-msgstr ""
+msgstr "tujchij ichich pat'al"
 
 #: taextras.py:292
 msgid "Run a motor forever."
-msgstr ""
+msgstr "ka wilk'iy an ichich pat'al abal ets'ey."
 
 #: taextras.py:293
 msgid "brake motor"
-msgstr ""
+msgstr "ka k'uba' an ichich pat'al"
 
 #: taextras.py:294
 msgid "Stop a specified motor."
-msgstr ""
+msgstr "in kubàl jun i ichich pat'al xi bijidhits"
 
 #: taextras.py:295
 msgid "PORT 1 of the brick"
-msgstr ""
+msgstr "wi'leb jun kal an brinck."
 
 #: taextras.py:296
 msgid "color sensor"
@@ -2625,7 +2613,7 @@ msgstr ""
 
 #: taextras.py:298
 msgid "PORT 2 of the brick"
-msgstr ""
+msgstr "wi'leb tsab kal an brinck."
 
 #: taextras.py:299
 msgid "touch sensor"
@@ -2636,12 +2624,14 @@ msgid "distance sensor"
 msgstr ""
 
 #: taextras.py:301
+#, fuzzy
 msgid "PORT 3 of the brick"
-msgstr ""
+msgstr "Wi'leb A del brick."
 
 #: taextras.py:302
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "tsakni'"
 
 #: taextras.py:303
 msgid "sensor"
@@ -2652,8 +2642,9 @@ msgid "Read sensor output."
 msgstr ""
 
 #: taextras.py:305
+#, fuzzy
 msgid "PORT 4 of the brick"
-msgstr ""
+msgstr "Wi'leb A del brick."
 
 #: taextras.py:306
 msgid "set light"
@@ -2661,6 +2652,141 @@ msgstr ""
 
 #: taextras.py:307
 msgid "Set color sensor light."
+msgstr ""
+
+#: taextras.py:308
+msgid "reset motor"
+msgstr ""
+
+#: taextras.py:309
+msgid "Reset the motor counter."
+msgstr ""
+
+#: taextras.py:310
+msgid "motor position"
+msgstr ""
+
+#: taextras.py:311
+msgid "Get the motor position."
+msgstr ""
+
+# sensor = ats'ax
+#. TRANS: Arduino plugin to control an Arduino board
+#: taextras.py:316
+#, fuzzy
+msgid "Palette of Arduino blocks"
+msgstr "I kwene' mukuxtaláb ti ats'ax kwene' t'ojláb"
+
+#: taextras.py:317
+msgid "HIGH"
+msgstr ""
+
+#: taextras.py:318
+msgid "LOW"
+msgstr ""
+
+#: taextras.py:319
+msgid "INPUT"
+msgstr ""
+
+#: taextras.py:320
+msgid "OUTPUT"
+msgstr ""
+
+#. TRANS: PWM is pulse-width modulation
+#: taextras.py:322
+msgid "PWM"
+msgstr ""
+
+#: taextras.py:323
+msgid "SERVO"
+msgstr ""
+
+#: taextras.py:324
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr ""
+
+#: taextras.py:325
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr ""
+
+#: taextras.py:326
+msgid "ERROR: Value must be either HIGH or LOW."
+msgstr ""
+
+#: taextras.py:327
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr ""
+
+#: taextras.py:328
+msgid "pin mode"
+msgstr ""
+
+#: taextras.py:330
+#, fuzzy
+msgid "mode"
+msgstr "mod"
+
+#: taextras.py:331
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr ""
+
+#: taextras.py:332
+msgid "analog write"
+msgstr ""
+
+#: taextras.py:334
+msgid "Write analog value in specified port."
+msgstr ""
+
+#: taextras.py:335
+msgid "analog read"
+msgstr ""
+
+#: taextras.py:336
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+
+#: taextras.py:338
+msgid "digital write"
+msgstr ""
+
+#: taextras.py:339
+msgid "Write digital value to specified port."
+msgstr ""
+
+#: taextras.py:340
+msgid "digital read"
+msgstr ""
+
+#: taextras.py:341
+msgid "Read value from digital port."
+msgstr ""
+
+#: taextras.py:342
+msgid "Set HIGH value for digital port."
+msgstr ""
+
+#: taextras.py:343
+msgid "Configure Arduino port for digital input."
+msgstr ""
+
+#: taextras.py:344
+msgid "Configure Arduino port to drive a servo."
+msgstr ""
+
+#: taextras.py:345
+msgid "Set LOW value for digital port."
+msgstr ""
+
+#: taextras.py:346
+msgid "Configure Arduino port for digital output."
+msgstr ""
+
+#: taextras.py:347
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
 msgstr ""
 
 # el uso es = se usa para = ayendháb abal
@@ -2714,30 +2840,45 @@ msgstr "Kadhiy ti coordenadas"
 msgid "Reset block size"
 msgstr "Ka wichk'ow in púwél an kwene' t'ojláb"
 
-#: turtleart.py:358
+#: turtleart.py:362
 msgid "Show/hide blocks"
 msgstr "Tejwa'méjdha'/dhibk'oy an kwene' t'ojláb"
 
 # Herramientas = Ayixtaláb/ayendhanél
-#: turtleart.py:360
+#: turtleart.py:364
 msgid "Tools"
 msgstr "Ayixtaláb"
 
-#: turtleart.py:367
+#: turtleart.py:371
 msgid "Stop"
 msgstr "Kuba'"
 
-#: turtleart.py:368
+#: turtleart.py:372
 msgid "Turtle"
 msgstr "Pet"
 
-#: turtleart.py:398
+#: turtleart.py:402
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr "Yab a dhaya' an t'ojláb. ¿A kulbétnal ka dhaya' ok'xidh ki it kalej?"
 
-#: turtleart.py:399
+#: turtleart.py:403
 msgid "Save project?"
 msgstr "¿Ki dhaya' an tsalapnadh t'ojláb?"
+
+# Ayuda = tolmix(conjugado, naná' in tolmix); Ayuda(La) = Tolmixtaláb(como sustantivo: an tolmixtaláb)
+#: util/helpbutton.py:42
+msgid "Help"
+msgstr "Tolmixtaláb"
+
+#~ msgid "Move the cursor over the orange palette for help."
+#~ msgstr ""
+#~ "Ka éjedha' an chuchbix eblim ti itsak'ní kwene'mukuxtaláb abal ti tolmix'."
+
+#~ msgid "Turtle Art Butia"
+#~ msgstr "Tortug tsalpadh t'ajbilab Butía"
+
+#~ msgid "pushbutton"
+#~ msgstr "Dhuche'"
 
 #, fuzzy
 #~ msgid ""
