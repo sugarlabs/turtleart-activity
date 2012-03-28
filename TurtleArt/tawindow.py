@@ -630,6 +630,7 @@ class TurtleArtWindow():
         self.show_toolbar_palette(n)
         self.palette_button[self.orientation].set_layer(TAB_LAYER)
         self.palette_button[2].set_layer(TAB_LAYER)
+        self._display_palette_shift_button(n)
         if self.activity is None or not self.activity.has_toolbarbox:
             self.toolbar_spr.set_layer(CATEGORY_LAYER)
         self.palette = True
@@ -639,6 +640,8 @@ class TurtleArtWindow():
         self._hide_toolbar_palette()
         self.palette_button[self.orientation].hide()
         self.palette_button[2].hide()
+        self.palette_button[3].hide()
+        self.palette_button[4].hide()
         if self.activity is None or not self.activity.has_toolbarbox:
             self.toolbar_spr.hide()
         self.palette = False
@@ -716,6 +719,25 @@ class TurtleArtWindow():
             if blk.name in BLOCKS_WITH_SKIN:
                 self._resize_skin(blk)
 
+    def _shift_toolbar_palette(self, n):
+        ''' Shift blocks on specified palette '''
+        x, y = self.palette_sprs[n][self.orientation].get_xy()
+        w, h = self.palette_sprs[n][self.orientation].get_dimensions()
+        bx, by = self.palettes[n][0].spr.get_xy()
+        if self.orientation == 0:
+            dx = w - self.width
+            dy = 0
+            if bx - x > 0:
+                dx *= -1
+        else:
+            dx = 0
+            dy = h - self.height + ICON_SIZE
+            if by - y > 0:
+                dy *= -1
+        for blk in self.palettes[n]:
+            if blk.get_visibility():
+                blk.spr.move_relative((dx, dy))
+
     def show_toolbar_palette(self, n, init_only=False, regenerate=False,
                              show=True):
         """ Show the toolbar palettes, creating them on init_only """
@@ -756,6 +778,7 @@ class TurtleArtWindow():
             # Show the palette with the current orientation.
             if self.palette_sprs[n][self.orientation] is not None:
                 self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
+                self._display_palette_shift_button(n)
 
         # Create 'proto' blocks for each palette entry
         self._create_proto_blocks(n)
@@ -784,6 +807,20 @@ class TurtleArtWindow():
                 self._hide_previous_palette(palette=n)
             self.selected_palette = save_selected
             self.previous_palette = save_previous
+
+    def _display_palette_shift_button(self, n):
+        ''' Palettes too wide (or tall) for the screen get a shift button '''
+        if self.palette_sprs[n][self.orientation].type == \
+                'category-shift-horizontal':
+            self.palette_button[3].set_layer(CATEGORY_LAYER)
+            self.palette_button[4].hide()
+        elif self.palette_sprs[n][self.orientation].type == \
+                'category-shift-vertical':
+            self.palette_button[3].hide()
+            self.palette_button[4].set_layer(CATEGORY_LAYER)
+        else:
+            self.palette_button[3].hide()
+            self.palette_button[4].hide()
 
     def _create_the_selectors(self):
         ''' Create the palette selector buttons: only when running
@@ -860,6 +897,21 @@ class TurtleArtWindow():
         self.palette_button[2].name = _('next')
         self.palette_button[2].type = 'palette'
         self.palette_button[2].set_layer(TAB_LAYER)
+
+        # Create the palette shift buttons
+        dims = self.palette_button[0].get_dimensions()
+        self.palette_button.append(Sprite(self.sprite_list, 0,
+            self.toolbar_offset + dims[1], svg_str_to_pixbuf(svg_from_file(
+                        "%s/images/palettehshift.svg" % (self.path)))))
+        self.palette_button.append(Sprite(self.sprite_list, dims[0],
+            self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
+                        "%s/images/palettevshift.svg" % (self.path)))))
+        self.palette_button[3].name = _('shift')
+        self.palette_button[4].name = _('shift')
+        self.palette_button[3].type = 'palette'
+        self.palette_button[4].type = 'palette'
+        self.palette_button[3].hide()
+        self.palette_button[4].hide()
 
     def _create_proto_blocks(self, n):
         ''' Create the protoblocks that will populate a palette. '''
@@ -1048,6 +1100,7 @@ class TurtleArtWindow():
                     self.palette_button[2].move_relative(
                         (self.activity.hadj_value, self.activity.vadj_value))
                 self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
+                self._display_palette_shift_button(n)
 
     def _make_palette_spr(self, n, x, y, w, h, regenerate=False):
         ''' Make the background for the palette. '''
@@ -1063,7 +1116,16 @@ class TurtleArtWindow():
             if self.running_sugar and not self.hw in [XO1]:
                 self.palette_sprs[n][self.orientation].move_relative(
                     (self.activity.hadj_value, self.activity.vadj_value))
-            self.palette_sprs[n][self.orientation].type = 'category'
+            if self.orientation == 0 and w > self.width:
+                debug_output('setting to shiftable horizontal', True)
+                self.palette_sprs[n][self.orientation].type = \
+                    'category-shift-horizontal'
+            elif self.orientation == 1 and h > self.height - ICON_SIZE:
+                debug_output('setting to shiftable vertical', True)
+                self.palette_sprs[n][self.orientation].type = \
+                    'category-shift-vertical'
+            else:
+                self.palette_sprs[n][self.orientation].type = 'category'
             if n == palette_names.index('trash'):
                 svg = SVG()
                 self.palette_sprs[n][self.orientation].set_shape(
@@ -1186,7 +1248,8 @@ class TurtleArtWindow():
         if hasattr(spr, 'type'):
             if spr.type == 'selector':
                 self._select_category(spr)
-            elif spr.type == 'category':
+            elif spr.type in ['category', 'category-shift-horizontal',
+                              'category-shift-vertical']:
                 if hide_button_hit(spr, x, y):
                     self.hideshow_palette(False)
             elif spr.type == 'palette':
@@ -1210,6 +1273,8 @@ class TurtleArtWindow():
                             self.activity.palette_buttons[i].set_icon(
                                 palette_names[i] + 'on')
                         self.show_palette(i)
+                elif spr.name == _('shift'):
+                    self._shift_toolbar_palette(self.selected_palette)
                 else:
                     self.orientation = 1 - self.orientation
                     self.palette_button[self.orientation].set_layer(TAB_LAYER)
