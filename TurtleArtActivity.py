@@ -878,36 +878,43 @@ Plugin section of plugin.info file.')
                              os.path.join(plugin_path, plugin_name) + '/'])
             _logger.debug('Plugin installed successfully.')
             if self.has_toolbarbox:
-                create_palette = False
+                create_palette = []
                 if file_info.has_option('Plugin', 'palette'):
-                    palette_name = file_info.get('Plugin', 'palette')
-                    if not palette_name in palette_names:
-                        create_palette = True
+                    palette_name_list = file_info.get(
+                        'Plugin', 'palette').split(',')
+                    for palette_name in palette_name_list:
+                        if not palette_name.rstrip() in palette_names:
+                            create_palette.append(True)
+                        else:
+                            create_palette.append(False)
                 _logger.debug('Initializing plugin...')
                 self.tw.init_plugin(plugin_name)
                 self.tw._plugins[-1].setup()
                 self.tw.load_media_shapes()
-                if create_palette:
-                    _logger.debug('Creating plugin palette...')
-                    i = palette_names.index('trash')
-                    self.palette_buttons.insert(i - 1,
-                        self._radio_button_factory(
-                            palette_name + 'off',
-                            self._palette_toolbar,
-                            self.do_palette_buttons_cb,
-                            i - 1,
-                            help_strings[palette_name],
-                            self.palette_buttons[0],
-                            position=i - 1))
-                    self.tw.palettes.insert(i - 1, [])
-                    self.tw.palette_sprs.insert(i - 1, [None, None])
-                    # We need to change the index associated with the
-                    # Trash Palette Button.
-                    i = palette_names.index('trash')
-                    self.palette_buttons[i].connect(
-                        'clicked', self.do_palette_buttons_cb, i)
-                else:
-                    _logger.debug('Palette already exists... skipping insert')
+                for i, palette_name in enumerate(palette_name_list):
+                    if create_palette[i]:
+                        _logger.debug('Creating plugin palette %s...' % (
+                                palette_name))
+                        j = palette_names.index('trash')
+                        self.palette_buttons.insert(j - 1,
+                            self._radio_button_factory(
+                                palette_name + 'off',
+                                self._palette_toolbar,
+                                self.do_palette_buttons_cb,
+                                j - 1,
+                                help_strings[palette_name.rstrip()],
+                                self.palette_buttons[0],
+                                position=j - 1))
+                        self.tw.palettes.insert(j - 1, [])
+                        self.tw.palette_sprs.insert(j - 1, [None, None])
+                        # We need to change the index associated with the
+                        # Trash Palette Button.
+                        j = palette_names.index('trash')
+                        self.palette_buttons[j].connect(
+                            'clicked', self.do_palette_buttons_cb, j)
+                    else:
+                        _logger.debug('Palette already exists... \
+skipping insert')
             else:
                 self.tw.showlabel('status',
                                   label=_('Please restart Turtle Art \
