@@ -24,6 +24,8 @@ from gettext import gettext as _
 import gtk
 
 from sugar.graphics.toolbutton import ToolButton
+from sugar.graphics.icon import Icon
+from sugar.graphics import style
 
 from TurtleArt.tapalette import palette_names, help_windows
 
@@ -33,7 +35,8 @@ _logger = logging.getLogger('turtleart-activity')
 
 class HelpButton(gtk.ToolItem):
 
-    def __init__(self, **kwargs):
+    def __init__(self, activity):
+        self._activity = activity
         self._current_palette = 'turtle'
 
         gtk.ToolItem.__init__(self)
@@ -48,14 +51,68 @@ class HelpButton(gtk.ToolItem):
         help_button.connect('clicked', self.__help_button_clicked_cb)
 
     def set_current_palette(self, name):
-        _logger.debug(name)
         self._current_palette = name
 
     def __help_button_clicked_cb(self, button):
-        if not (self._current_palette in help_windows):
-            _logger.debug('name %s not found' % (self._current_palette))
-            return
-        self._palette.set_content(help_windows[self._current_palette])
-        help_windows[self._current_palette].show_all()
+        if self._activity.palette_toolbar_button.is_expanded():
+            if not (self._current_palette in help_windows):
+                _logger.debug('name %s not found' % (self._current_palette))
+                return
+            self._palette.set_content(help_windows[self._current_palette])
+            help_windows[self._current_palette].show_all()
+        elif self._activity.edit_toolbar_button.is_expanded():
+            self._palette.set_content(help_windows['edit-toolbar'])
+            help_windows['edit-toolbar'].show_all()
+        elif self._activity.view_toolbar_button.is_expanded():
+            self._palette.set_content(help_windows['view-toolbar'])
+            help_windows['view-toolbar'].show_all()
+        elif self._activity.activity_toolbar_button.is_expanded():
+            self._palette.set_content(help_windows['activity-toolbar'])
+            help_windows['activity-toolbar'].show_all()
+        else:
+            self._palette.set_content(help_windows['main-toolbar'])
+            help_windows['main-toolbar'].show_all()
 
         self._palette.popup(immediate=True, state=1)
+
+
+def add_section(help_box, section_text, icon=None):
+    ''' Add a section to the help palette. From helpbutton.py by
+    Gonzalo Odiard '''
+    max_text_width = int(gtk.gdk.screen_width() / 3) - 20
+    hbox = gtk.HBox()
+    label = gtk.Label()
+    label.set_use_markup(True)
+    label.set_markup('<b>%s</b>' % section_text)
+    label.set_line_wrap(True)
+    label.set_size_request(max_text_width, -1)
+    hbox.add(label)
+    if icon is not None:
+        _icon = Icon(icon_name=icon)
+        hbox.add(_icon)
+        label.set_size_request(max_text_width - 20, -1)
+    else:
+        label.set_size_request(max_text_width, -1)
+
+    hbox.show_all()
+    help_box.pack_start(hbox, False, False, padding=5)
+
+
+def add_paragraph(help_box, text, icon=None):
+    ''' Add an entry to the help palette. From helpbutton.py by
+    Gonzalo Odiard '''
+    max_text_width = int(gtk.gdk.screen_width() / 3) - 20
+    hbox = gtk.HBox()
+    label = gtk.Label(text)
+    label.set_justify(gtk.JUSTIFY_LEFT)
+    label.set_line_wrap(True)
+    hbox.add(label)
+    if icon is not None:
+        _icon = Icon(icon_name=icon)
+        hbox.add(_icon)
+        label.set_size_request(max_text_width - 20, -1)
+    else:
+        label.set_size_request(max_text_width, -1)
+
+    hbox.show_all()
+    help_box.pack_start(hbox, False, False, padding=5)

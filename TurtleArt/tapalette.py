@@ -86,6 +86,8 @@ from sugar.graphics import style
 from taconstants import EXPANDABLE_STYLE
 from tautils import debug_output
 
+from util.helpbutton import add_section, add_paragraph
+
 from gettext import gettext as _
 
 help_strings = {
@@ -150,49 +152,11 @@ class Palette():
         else:
             help_strings[self._name] = ''
 
-    def add_section(self, section_text, icon=None):
-        ''' Add a section to the help palette. From helpbutton.py by
-        Gonzalo Odiard '''
-        hbox = gtk.HBox()
-        label = gtk.Label()
-        label.set_use_markup(True)
-        label.set_markup('<b>%s</b>' % section_text)
-        label.set_line_wrap(True)
-        label.set_size_request(self._max_text_width, -1)
-        hbox.add(label)
-        if icon is not None:
-            _icon = Icon(icon_name=icon)
-            hbox.add(_icon)
-            label.set_size_request(self._max_text_width - 20, -1)
-        else:
-            label.set_size_request(self._max_text_width, -1)
-
-        hbox.show_all()
-        self._help_box.pack_start(hbox, False, False, padding=5)
-
-    def add_paragraph(self, text, icon=None):
-        ''' Add an entry to the help palette. From helpbutton.py by
-        Gonzalo Odiard '''
-        hbox = gtk.HBox()
-        label = gtk.Label(text)
-        label.set_justify(gtk.JUSTIFY_LEFT)
-        label.set_line_wrap(True)
-        hbox.add(label)
-        if icon is not None:
-            _icon = Icon(icon_name=icon)
-            hbox.add(_icon)
-            label.set_size_request(self._max_text_width - 20, -1)
-        else:
-            label.set_size_request(self._max_text_width, -1)
-
-        hbox.show_all()
-        self._help_box.pack_start(hbox, False, False, padding=5)
-
     def set_help(self, help):
         if self._help is None:
             self._help = help
             if hasattr(self, '_help_box'):
-                self.add_section(self._help, icon=self._name + 'off')
+                add_section(self._help_box, self._help, icon=self._name + 'off')
 
     def set_special_name(self, name):
         self._special_name = name
@@ -229,9 +193,10 @@ class Palette():
                 else:
                     first_arg = special_name
                 if first_arg is None or first_arg == '' or first_arg == ' ':
-                    self.add_paragraph('%s' % (help_string))
+                    add_paragraph(self._help_box, '%s' % (help_string))
                 else:
-                    self.add_paragraph('%s: %s' % (first_arg, help_string))
+                    add_paragraph(self._help_box, '%s: %s' % (first_arg,
+                                                              help_string))
         if colors is not None:
             block.set_colors(colors)
         block.set_value_block(value_block)
