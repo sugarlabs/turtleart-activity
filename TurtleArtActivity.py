@@ -40,9 +40,10 @@ except ImportError:
     HAS_TOOLBARBOX = False
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.radiotoolbutton import RadioToolButton
+from sugar.graphics.alert import ConfirmationAlert
+from sugar.graphics import style
 from sugar.datastore import datastore
 from sugar import profile
-from sugar.graphics.alert import ConfirmationAlert
 
 import os
 import tarfile
@@ -55,7 +56,8 @@ import tempfile
 # import TurtleArt.tagettext
 from gettext import gettext as _
 
-from TurtleArt.tapalette import palette_names, help_strings
+from TurtleArt.tapalette import palette_names, help_strings, help_palettes, \
+                                help_windows
 from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE, XO1, XO15, XO175, \
                                   XO30
 from TurtleArt.taexporthtml import save_html
@@ -66,7 +68,7 @@ from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.tacollaboration import Collaboration
 
 if HAS_TOOLBARBOX:
-    from util.helpbutton import HelpButton
+    from util.helpbutton import HelpButton, add_section, add_paragraph
 
 
 class TurtleArtActivity(activity.Activity):
@@ -502,37 +504,39 @@ class TurtleArtActivity(activity.Activity):
     def _setup_toolbar(self):
         ''' Setup toolbar according to Sugar version. '''
         if self.has_toolbarbox:
+            self._setup_toolbar_help()
             self._toolbox = ToolbarBox()
 
-            activity_toolbar_button = ActivityToolbarButton(self)
+            self.activity_toolbar_button = ActivityToolbarButton(self)
 
             edit_toolbar = gtk.Toolbar()
-            edit_toolbar_button = ToolbarButton(label=_('Edit'),
+            self.edit_toolbar_button = ToolbarButton(label=_('Edit'),
                                                 page=edit_toolbar,
                                                 icon_name='toolbar-edit')
+
             view_toolbar = gtk.Toolbar()
-            view_toolbar_button = ToolbarButton(label=_('View'),
+            self.view_toolbar_button = ToolbarButton(label=_('View'),
                                                 page=view_toolbar,
                                                 icon_name='toolbar-view')
             self._palette_toolbar = gtk.Toolbar()
-            self._palette_toolbar_button = ToolbarButton(
+            self.palette_toolbar_button = ToolbarButton(
                 page=self._palette_toolbar, icon_name='palette')
 
-            self._help_button = HelpButton()
+            self._help_button = HelpButton(self)
 
-            self._make_load_save_buttons(activity_toolbar_button)
+            self._make_load_save_buttons(self.activity_toolbar_button)
 
-            activity_toolbar_button.show()
-            self._toolbox.toolbar.insert(activity_toolbar_button, -1)
-            edit_toolbar_button.show()
-            self._toolbox.toolbar.insert(edit_toolbar_button, -1)
-            view_toolbar_button.show()
-            self._toolbox.toolbar.insert(view_toolbar_button, -1)
-            self._palette_toolbar_button.show()
-            self._toolbox.toolbar.insert(self._palette_toolbar_button, -1)
+            self.activity_toolbar_button.show()
+            self._toolbox.toolbar.insert(self.activity_toolbar_button, -1)
+            self.edit_toolbar_button.show()
+            self._toolbox.toolbar.insert(self.edit_toolbar_button, -1)
+            self.view_toolbar_button.show()
+            self._toolbox.toolbar.insert(self.view_toolbar_button, -1)
+            self.palette_toolbar_button.show()
+            self._toolbox.toolbar.insert(self.palette_toolbar_button, -1)
 
             self.set_toolbar_box(self._toolbox)
-            self._palette_toolbar_button.set_expanded(True)
+            self.palette_toolbar_button.set_expanded(True)
         else:
             self._toolbox = activity.ActivityToolbox(self)
             self.set_toolbox(self._toolbox)
@@ -611,6 +615,106 @@ class TurtleArtActivity(activity.Activity):
         stop_button.props.accelerator = '<Ctrl>Q'
         self._toolbox.toolbar.insert(stop_button, -1)
         stop_button.show()
+
+    def _setup_toolbar_help(self):
+        ''' Set up a help palette for the main toolbars '''
+        help_box = gtk.VBox()
+        help_box.set_homogeneous(False)
+        help_palettes['main-toolbar'] = help_box
+        help_windows['main-toolbar'] = gtk.ScrolledWindow()
+        help_windows['main-toolbar'].set_size_request(
+            int(gtk.gdk.screen_width() / 3),
+            gtk.gdk.screen_height() - style.GRID_CELL_SIZE * 3)
+        help_windows['main-toolbar'].set_policy(
+            gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        help_windows['main-toolbar'].add_with_viewport(
+            help_palettes['main-toolbar'])
+        help_palettes['main-toolbar'].show()
+
+        add_section(help_box, _('Save/Load'), icon='turtleoff')
+        add_section(help_box, _('Edit'), icon='toolbar-edit')
+        add_section(help_box, _('View'), icon='toolbar-view')
+        add_section(help_box, _('Project'), icon='palette')
+        add_paragraph(help_box, _('Clean'), icon='eraseron')
+        add_paragraph(help_box, _('Run'), icon='run-fastoff')
+        add_paragraph(help_box, _('Step'), icon='run-slowoff')
+        add_paragraph(help_box, _('Debug'), icon='debugoff')
+        add_paragraph(help_box, _('Stop turtle'), icon='stopitoff')
+        add_paragraph(help_box, _('Load example'), icon='ta-open')
+        add_paragraph(help_box, _('Help'), icon='help-toolbar')
+        add_paragraph(help_box, _('Stop'), icon='activity-stop')
+
+        help_box = gtk.VBox()
+        help_box.set_homogeneous(False)
+        help_palettes['activity-toolbar'] = help_box
+        help_windows['activity-toolbar'] = gtk.ScrolledWindow()
+        help_windows['activity-toolbar'].set_size_request(
+            int(gtk.gdk.screen_width() / 3),
+            gtk.gdk.screen_height() - style.GRID_CELL_SIZE * 3)
+        help_windows['activity-toolbar'].set_policy(
+            gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        help_windows['activity-toolbar'].add_with_viewport(
+            help_palettes['activity-toolbar'])
+        help_palettes['activity-toolbar'].show()
+
+        if gtk.gdk.screen_width() < 1200:
+            add_paragraph(help_box, _('Save/Load'), icon='save-load')
+        else:
+            add_section(help_box, _('Save/Load'), icon='turtleoff')
+        add_paragraph(help_box, _('Save as image'), icon='image-saveoff')
+        add_paragraph(help_box, _('Save as HTML'), icon='htmloff')
+        add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
+        add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
+        add_paragraph(help_box, _('Load project'), icon='load-from-journal')
+        home = os.environ['HOME']
+        if activity.get_bundle_path()[0:len(home)] == home:
+            add_paragraph(help_box, _('Load plugin'), icon='pluginoff')
+        add_paragraph(help_box, _('Load Python block'),
+                      icon='pippy-openoff')
+
+        help_box = gtk.VBox()
+        help_box.set_homogeneous(False)
+        help_palettes['edit-toolbar'] = help_box
+        help_windows['edit-toolbar'] = gtk.ScrolledWindow()
+        help_windows['edit-toolbar'].set_size_request(
+            int(gtk.gdk.screen_width() / 3),
+            gtk.gdk.screen_height() - style.GRID_CELL_SIZE * 3)
+        help_windows['edit-toolbar'].set_policy(
+            gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        help_windows['edit-toolbar'].add_with_viewport(
+            help_palettes['edit-toolbar'])
+        help_palettes['edit-toolbar'].show()
+
+        add_section(help_box, _('Edit'), icon='toolbar-edit')
+        add_paragraph(help_box, _('Copy'), icon='edit-copy')
+        add_paragraph(help_box, _('Paste'), icon='edit-paste')
+
+        help_box = gtk.VBox()
+        help_box.set_homogeneous(False)
+        help_palettes['view-toolbar'] = help_box
+        help_windows['view-toolbar'] = gtk.ScrolledWindow()
+        help_windows['view-toolbar'].set_size_request(
+            int(gtk.gdk.screen_width() / 3),
+            gtk.gdk.screen_height() - style.GRID_CELL_SIZE * 3)
+        help_windows['view-toolbar'].set_policy(
+            gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        help_windows['view-toolbar'].add_with_viewport(
+            help_palettes['view-toolbar'])
+        help_palettes['view-toolbar'].show()
+
+        add_section(help_box, _('View'), icon='toolbar-view')
+        add_paragraph(help_box, _('Fullscreen'), icon='view-fullscreen')
+        add_paragraph(help_box, _('Cartesian coordinates'),
+                      icon='view-Cartesian')
+        add_paragraph(help_box, _('Polar coordinates'), icon='view-polar')
+        if get_hardware() in [XO1, XO15, XO175]:
+            add_paragraph(help_box, _('Metric coordinates'),
+                          icon='view-metric')
+        add_paragraph(help_box, _('Rescale coordinates up'),
+                           icon='expand-coordinates')
+        add_paragraph(help_box, _('Grow blocks'), icon='resize+')
+        add_paragraph(help_box, _('Shrink blocks'), icon='resize-')
+        add_paragraph(help_box, _('Turn off hover help'), icon='help-off')
 
     def _setup_palette_toolbar(self):
         ''' The palette toolbar must be setup *after* plugins are loaded. '''
