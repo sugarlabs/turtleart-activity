@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-24 00:31-0400\n"
-"PO-Revision-Date: 2012-03-28 04:40+0200\n"
+"POT-Creation-Date: 2012-03-28 00:31-0400\n"
+"PO-Revision-Date: 2012-03-29 04:36+0200\n"
 "Last-Translator: lite <litekok@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -22,10 +22,10 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2 TurtleArt/taexporthtml.py:137
-#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:3057
+#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:3069
 #: pysamples/grecord.py:205 turtleart.py:288
 msgid "Turtle Art"
-msgstr "海龟绘图"
+msgstr "龟背艺术"
 
 #: TurtleArt/tabasics.py:115
 msgid "Palette of turtle commands"
@@ -114,8 +114,8 @@ msgstr "设置朝向"
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "设置海龟朝向（0表示朝向屏幕上方）"
 
-#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3053
-#: TurtleArt/tawindow.py:3057 TurtleArtActivity.py:560
+#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3065
+#: TurtleArt/tawindow.py:3069 TurtleArtActivity.py:569
 msgid "xcor"
 msgstr "横坐标"
 
@@ -125,8 +125,8 @@ msgid ""
 "number block)"
 msgstr "包含海龟当前位置的X座标值（可以用来替换数字块）"
 
-#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3053
-#: TurtleArt/tawindow.py:3057 TurtleArtActivity.py:561
+#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3065
+#: TurtleArt/tawindow.py:3069 TurtleArtActivity.py:570
 msgid "ycor"
 msgstr "纵坐标"
 
@@ -136,8 +136,8 @@ msgid ""
 "number block)"
 msgstr "包含海龟当前位置的Y座标值（可以用来替换数字块）"
 
-#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3053
-#: TurtleArt/tawindow.py:3057 TurtleArtActivity.py:561
+#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3065
+#: TurtleArt/tawindow.py:3069 TurtleArtActivity.py:570
 msgid "heading"
 msgstr "朝向"
 
@@ -179,7 +179,7 @@ msgstr "设置海龟绘制的线条的宽度"
 msgid "fill screen"
 msgstr "涂满全屏"
 
-#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:399 taextras.py:260
+#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:399 taextras.py:264
 msgid "color"
 msgstr "颜色"
 
@@ -614,7 +614,7 @@ msgstr "命名的变量（数值）"
 msgid "store in"
 msgstr "放入"
 
-#: TurtleArt/tabasics.py:885 taextras.py:333
+#: TurtleArt/tabasics.py:885 taextras.py:337
 msgid "value"
 msgstr "值"
 
@@ -736,182 +736,204 @@ msgstr "保存..."
 msgid "click to open"
 msgstr "点击打开"
 
-#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:849
+#: TurtleArt/tawindow.py:849 TurtleArt/tawindow.py:850
 msgid "orientation"
 msgstr "方向"
 
-#: TurtleArt/tawindow.py:859 TurtleArt/tawindow.py:1181
+#: TurtleArt/tawindow.py:860 TurtleArt/tawindow.py:1193
 msgid "next"
 msgstr "下一个"
 
-#: TurtleArt/tawindow.py:3153
+#: TurtleArt/tawindow.py:3165
 msgid "image"
 msgstr "图片"
 
-#: TurtleArtActivity.py:150
+#: TurtleArtActivity.py:155
 msgid "presentation"
 msgstr "演示"
 
-#: TurtleArtActivity.py:226
+#: TurtleArtActivity.py:241
 msgid "snapshot"
 msgstr "屏幕截图"
 
-#: TurtleArtActivity.py:277 TurtleArtActivity.py:572 turtleart.py:346
+#: TurtleArtActivity.py:290 TurtleArtActivity.py:581 turtleart.py:346
 msgid "Turn off hover help"
 msgstr "关闭悬停帮助"
 
-#: TurtleArtActivity.py:284 turtleart.py:348
+#: TurtleArtActivity.py:296 turtleart.py:348
 msgid "Turn on hover help"
 msgstr "开启悬停帮助"
 
-#: TurtleArtActivity.py:292 turtleart.py:358
+#: TurtleArtActivity.py:304 turtleart.py:358
 msgid "Show palette"
 msgstr "显示模板"
 
-#: TurtleArtActivity.py:298 TurtleArtActivity.py:689 turtleart.py:360
+#: TurtleArtActivity.py:310 TurtleArtActivity.py:709 turtleart.py:360
 msgid "Hide palette"
 msgstr "隐藏模板"
 
-#: TurtleArtActivity.py:305 TurtleArtActivity.py:318
+#: TurtleArtActivity.py:317 TurtleArtActivity.py:330
 msgid "Show blocks"
 msgstr "显示积木块"
 
-#: TurtleArtActivity.py:308 TurtleArtActivity.py:326 TurtleArtActivity.py:692
+#: TurtleArtActivity.py:320 TurtleArtActivity.py:338 TurtleArtActivity.py:712
 msgid "Hide blocks"
 msgstr "隐藏积木块"
 
-#: TurtleArtActivity.py:436
+#: TurtleArtActivity.py:447
 msgid "Rescale coordinates down"
 msgstr "缩小坐标轴比例"
 
-#: TurtleArtActivity.py:440 TurtleArtActivity.py:564
+#: TurtleArtActivity.py:451 TurtleArtActivity.py:573
 msgid "Rescale coordinates up"
 msgstr "增大坐标轴比例"
 
-#: TurtleArtActivity.py:499 TurtleArtActivity.py:536 turtleart.py:355
+#: TurtleArtActivity.py:510 TurtleArtActivity.py:545 turtleart.py:355
 msgid "Edit"
 msgstr "编辑"
 
-#: TurtleArtActivity.py:503 TurtleArtActivity.py:534 turtleart.py:350
+#: TurtleArtActivity.py:514 TurtleArtActivity.py:543 turtleart.py:350
 msgid "View"
 msgstr "视图"
 
-#: TurtleArtActivity.py:532
+#: TurtleArtActivity.py:541
 msgid "Project"
 msgstr "项目"
 
-#: TurtleArtActivity.py:538 TurtleArtActivity.py:632
+#: TurtleArtActivity.py:547 TurtleArtActivity.py:642
 msgid "Save/Load"
 msgstr "保存/读取"
 
-#: TurtleArtActivity.py:546 turtleart.py:353
+#: TurtleArtActivity.py:555 turtleart.py:353
 msgid "Copy"
 msgstr "复制"
 
-#: TurtleArtActivity.py:548 turtleart.py:354
+#: TurtleArtActivity.py:557 turtleart.py:354
 msgid "Paste"
 msgstr "粘贴"
 
-#: TurtleArtActivity.py:550
+#: TurtleArtActivity.py:559
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:672
 msgid "Fullscreen"
 msgstr "全屏"
 
-#: TurtleArtActivity.py:552 turtleart.py:334
+#: TurtleArtActivity.py:561 turtleart.py:334
 msgid "Cartesian coordinates"
 msgstr "直角坐标"
 
-#: TurtleArtActivity.py:554 turtleart.py:336
+#: TurtleArtActivity.py:563 turtleart.py:336
 msgid "Polar coordinates"
 msgstr "极坐标"
 
-#: TurtleArtActivity.py:557
+#: TurtleArtActivity.py:566
 msgid "Metric coordinates"
 msgstr "公制坐标"
 
-#: TurtleArtActivity.py:567 turtleart.py:340
+#: TurtleArtActivity.py:576 turtleart.py:340
 msgid "Grow blocks"
 msgstr "增大积木块"
 
-#: TurtleArtActivity.py:569 turtleart.py:342
+#: TurtleArtActivity.py:578 turtleart.py:342
 msgid "Shrink blocks"
 msgstr "缩小积木块"
 
-#: TurtleArtActivity.py:596 TurtleArtActivity.py:674
+#: TurtleArtActivity.py:604 TurtleArtActivity.py:694
 msgid "Load example"
 msgstr "载入示例"
 
-#: TurtleArtActivity.py:637 TurtleArtActivity.py:657 turtleart.py:324
+#: TurtleArtActivity.py:647 TurtleArtActivity.py:672 turtleart.py:324
 msgid "Save as image"
 msgstr "另存为图片"
 
-#: TurtleArtActivity.py:640 TurtleArtActivity.py:660 turtleart.py:326
+#: TurtleArtActivity.py:650 TurtleArtActivity.py:675 turtleart.py:326
 msgid "Save as HTML"
 msgstr "另存为HTML"
 
-#: TurtleArtActivity.py:643 TurtleArtActivity.py:662 turtleart.py:328
+#: TurtleArtActivity.py:653 TurtleArtActivity.py:677 turtleart.py:328
 msgid "Save as Logo"
 msgstr "另存为Logo"
 
-#: TurtleArtActivity.py:646 TurtleArtActivity.py:665
+#: TurtleArtActivity.py:656 TurtleArtActivity.py:680
 msgid "Save snapshot"
 msgstr "保存屏幕截图"
 
-#: TurtleArtActivity.py:648 TurtleArtActivity.py:668
+#: TurtleArtActivity.py:658 TurtleArtActivity.py:683
 msgid "Load project"
-msgstr "载入作品"
+msgstr "加载作品"
 
-#: TurtleArtActivity.py:651 TurtleArtActivity.py:671
+#: TurtleArtActivity.py:663 TurtleArtActivity.py:688
+msgid "Load plugin"
+msgstr "加载插件"
+
+#: TurtleArtActivity.py:666 TurtleArtActivity.py:691
 msgid "Load Python block"
 msgstr "载入Python积木块"
 
-#: TurtleArtActivity.py:690
+#: TurtleArtActivity.py:710
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
-#: TurtleArtActivity.py:693
+#: TurtleArtActivity.py:713
 msgid "<Ctrl>b"
 msgstr "<Ctrl>b"
 
-#: TurtleArtActivity.py:698 turtleart.py:367
+#: TurtleArtActivity.py:718 turtleart.py:367
 msgid "Clean"
 msgstr "清屏"
 
-#: TurtleArtActivity.py:698
+#: TurtleArtActivity.py:718
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
-#: TurtleArtActivity.py:700 turtleart.py:368
+#: TurtleArtActivity.py:720 turtleart.py:368
 msgid "Run"
 msgstr "运行"
 
-#: TurtleArtActivity.py:700
+#: TurtleArtActivity.py:720
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
-#: TurtleArtActivity.py:702 turtleart.py:369
+#: TurtleArtActivity.py:722 turtleart.py:369
 msgid "Step"
 msgstr "单步"
 
-#: TurtleArtActivity.py:702
+#: TurtleArtActivity.py:722
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
-#: TurtleArtActivity.py:705 turtleart.py:370
+#: TurtleArtActivity.py:725 turtleart.py:370
 msgid "Debug"
 msgstr "调试"
 
-#: TurtleArtActivity.py:705
+#: TurtleArtActivity.py:726
 msgid "<Ctrl>d"
 msgstr "<Ctrl>d"
 
-#: TurtleArtActivity.py:707
+#: TurtleArtActivity.py:728
 msgid "Stop turtle"
 msgstr "停止"
 
-#: TurtleArtActivity.py:708
+#: TurtleArtActivity.py:729
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
+
+#: TurtleArtActivity.py:853 TurtleArtActivity.py:858 TurtleArtActivity.py:924
+msgid "Plugin could not be installed."
+msgstr "插件不能安装。"
+
+#: TurtleArtActivity.py:920
+msgid "Please restart Turtle Art in order to use the plugin."
+msgstr "使用该插件，请重新启动龟背艺术。"
+
+#: TurtleArtActivity.py:938
+#, python-format
+msgid "Plugin %s already installed."
+msgstr "插件 %s 已经被安装。"
+
+#: TurtleArtActivity.py:939
+#, python-format
+msgid "Do you want to reinstall %s?"
+msgstr "想重新 %s 吗？"
 
 #: gnome_plugins/collaboration_plugin.py:67
 msgid "My Turtle Art session"
@@ -1035,6 +1057,7 @@ msgstr "把沿x，y，z方向加速度放入堆中"
 
 #: plugins/audio_sensors/audio_sensors.py:82
 #: plugins/audio_sensors/audio_sensors.py:97 pysamples/grecord.py:205
+#: taextras.py:260
 msgid "sound"
 msgstr "声音"
 
@@ -1324,7 +1347,7 @@ msgstr "海龟看到"
 msgid "returns the color that the turtle \"sees\""
 msgstr "返回海龟“看到”的颜色"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:373 taextras.py:279
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:373 taextras.py:283
 msgid "time"
 msgstr "时间"
 
@@ -2198,7 +2221,7 @@ msgid ""
 "placed on the most recent object created."
 msgstr "电机转矩和速度范围是从0（关）到正数，电机放置在最近被创建的对象上。"
 
-#: taextras.py:215 taextras.py:329
+#: taextras.py:215 taextras.py:333
 msgid "pin"
 msgstr "图钉"
 
@@ -2301,336 +2324,347 @@ msgstr "设置电机B的值"
 
 #. TRANS: Lego NXT is a robotics product of the LEGO company
 #: taextras.py:257
-msgid "Palette of LEGO NXT blocks"
-msgstr "乐高NXT模块"
+msgid "Palette of LEGO NXT blocks of motors"
+msgstr "乐高NXT马达部件模板"
 
 #: taextras.py:258
+msgid "Palette of LEGO NXT blocks of sensors"
+msgstr "乐高NXT传感器部件模板"
+
+#: taextras.py:261
+msgid "sound sensor"
+msgstr "声音传感器"
+
+#: taextras.py:262
 msgid "touch"
 msgstr "触摸"
 
-#: taextras.py:259
+#: taextras.py:263
 msgid "ultrasonic"
 msgstr "超声波"
 
-#: taextras.py:261
+#: taextras.py:265
 msgid "light"
 msgstr "灯光"
 
-#: taextras.py:262
+#: taextras.py:266
 msgid "PORT A"
 msgstr "端口 A"
 
-#: taextras.py:263
+#: taextras.py:267
 msgid "PORT B"
 msgstr "端口 B"
 
-#: taextras.py:264
+#: taextras.py:268
 msgid "PORT C"
 msgstr "端口 C"
 
-#: taextras.py:265
+#: taextras.py:269
 msgid "PORT 1"
 msgstr "端口 1"
 
-#: taextras.py:266
+#: taextras.py:270
 msgid "PORT 2"
 msgstr "端口 2"
 
-#: taextras.py:267
+#: taextras.py:271
 msgid "PORT 3"
 msgstr "端口 3"
 
-#: taextras.py:268
+#: taextras.py:272
 msgid "PORT 4"
 msgstr "端口 4"
 
-#: taextras.py:269
-msgid "Please check the connection with the brick."
-msgstr ""
-
-#: taextras.py:270
-msgid "Please check the port."
-msgstr ""
-
-#: taextras.py:271
-msgid "The value of power must be between -127 to 127."
-msgstr ""
-
-#: taextras.py:272
-msgid "An error has occurred: check all connections and try to reconnect."
-msgstr ""
-
 #: taextras.py:273
-msgid "NXT found"
-msgstr ""
+msgid "Please check the connection with the brick."
+msgstr "请检查与积木的连接。"
 
 #: taextras.py:274
-msgid "NXT not found"
-msgstr ""
+msgid "Please check the port."
+msgstr "请检查端口。"
 
 #: taextras.py:275
-msgid "refresh NXT"
-msgstr ""
+msgid "The value of power must be between -127 to 127."
+msgstr "功率值必须在-127到127之间。"
 
 #: taextras.py:276
-msgid "Search for a connected NXT brick."
-msgstr ""
+msgid "An error has occurred: check all connections and try to reconnect."
+msgstr "发生了一个错误：请检查所有连接并试图重新连接。"
 
 #: taextras.py:277
-msgid "play tone"
-msgstr ""
+msgid "NXT found"
+msgstr "找到 NXT"
 
 #: taextras.py:278
-msgid "freq"
-msgstr ""
+msgid "NXT not found"
+msgstr "没找到 NXT"
+
+#: taextras.py:279
+msgid "refresh NXT"
+msgstr "刷新 NXT"
 
 #: taextras.py:280
-msgid "Play a tone at freq for time."
-msgstr ""
+msgid "Search for a connected NXT brick."
+msgstr "搜索已连接的NXT积木。"
 
 #: taextras.py:281
+msgid "play tone"
+msgstr "播放音调"
+
+#: taextras.py:282
+msgid "freq"
+msgstr "频率"
+
+#: taextras.py:284
+msgid "Play a tone at freq for time."
+msgstr "在某个时间频率播放音调"
+
+#: taextras.py:285
 msgid ""
 "turn motor\n"
 "rotations"
 msgstr ""
+"转动电机\n"
+"旋转"
 
-#: taextras.py:282
+#: taextras.py:286
 msgid "port"
-msgstr ""
+msgstr "端口"
 
-#: taextras.py:283
+#: taextras.py:287
 msgid "power"
-msgstr ""
+msgstr "电源"
 
-#: taextras.py:284
+#: taextras.py:288
 msgid "turn a motor"
-msgstr ""
+msgstr "转动电机"
 
-#: taextras.py:285
+#: taextras.py:289
 msgid ""
 "sync motors\n"
 "steering"
 msgstr ""
-
-#: taextras.py:286
-msgid "rotations"
-msgstr ""
-
-#: taextras.py:287
-msgid "synchronize two motors"
-msgstr ""
-
-#: taextras.py:288
-msgid "PORT A of the brick"
-msgstr ""
-
-#: taextras.py:289
-msgid "PORT B of the brick"
-msgstr ""
+"同步电机\n"
+"转向"
 
 #: taextras.py:290
-msgid "PORT C of the brick"
-msgstr ""
+msgid "rotations"
+msgstr "旋转"
 
 #: taextras.py:291
-msgid "start motor"
-msgstr ""
+msgid "synchronize two motors"
+msgstr "同步两个电机"
 
 #: taextras.py:292
-msgid "Run a motor forever."
-msgstr ""
+msgid "PORT A of the brick"
+msgstr "积木的端口 A"
 
 #: taextras.py:293
-msgid "brake motor"
-msgstr ""
+msgid "PORT B of the brick"
+msgstr "积木的端口 B"
 
 #: taextras.py:294
-msgid "Stop a specified motor."
-msgstr ""
+msgid "PORT C of the brick"
+msgstr "积木的端口 C"
 
 #: taextras.py:295
-msgid "PORT 1 of the brick"
-msgstr ""
+msgid "start motor"
+msgstr "启动电机"
 
 #: taextras.py:296
-msgid "color sensor"
-msgstr ""
+msgid "Run a motor forever."
+msgstr "持续运行电机。"
 
 #: taextras.py:297
-msgid "light sensor"
-msgstr ""
+msgid "brake motor"
+msgstr "制动电机"
 
 #: taextras.py:298
-msgid "PORT 2 of the brick"
-msgstr ""
+msgid "Stop a specified motor."
+msgstr "停止指定的电机。"
 
 #: taextras.py:299
-msgid "touch sensor"
-msgstr ""
+msgid "PORT 1 of the brick"
+msgstr "积木的端口 1"
 
 #: taextras.py:300
-msgid "distance sensor"
-msgstr ""
+msgid "color sensor"
+msgstr "颜色传感器"
 
 #: taextras.py:301
-msgid "PORT 3 of the brick"
-msgstr ""
+msgid "light sensor"
+msgstr "灯光传感器"
 
 #: taextras.py:302
-#, fuzzy
-msgid "read"
-msgstr "红色"
+msgid "PORT 2 of the brick"
+msgstr "积木的端口 2"
 
 #: taextras.py:303
-msgid "sensor"
-msgstr ""
+msgid "touch sensor"
+msgstr "触控传感器"
 
 #: taextras.py:304
-msgid "Read sensor output."
-msgstr ""
+msgid "distance sensor"
+msgstr "距离传感器"
 
 #: taextras.py:305
-msgid "PORT 4 of the brick"
-msgstr ""
+msgid "PORT 3 of the brick"
+msgstr "积木的端口 3"
 
 #: taextras.py:306
-msgid "set light"
-msgstr ""
+msgid "read"
+msgstr "读取"
 
 #: taextras.py:307
-msgid "Set color sensor light."
-msgstr ""
+msgid "sensor"
+msgstr "传感器"
 
 #: taextras.py:308
-msgid "reset motor"
-msgstr ""
+msgid "Read sensor output."
+msgstr "读取传感器输出。"
 
 #: taextras.py:309
-msgid "Reset the motor counter."
-msgstr ""
+msgid "PORT 4 of the brick"
+msgstr "积木的端口 4"
 
 #: taextras.py:310
-msgid "motor position"
-msgstr ""
+msgid "set light"
+msgstr "设置灯"
 
 #: taextras.py:311
+msgid "Set color sensor light."
+msgstr "设置颜色感应灯。"
+
+#: taextras.py:312
+msgid "reset motor"
+msgstr "复位电机"
+
+#: taextras.py:313
+msgid "Reset the motor counter."
+msgstr "复位电机计数器。"
+
+#: taextras.py:314
+msgid "motor position"
+msgstr "电机位置"
+
+#: taextras.py:315
 msgid "Get the motor position."
-msgstr ""
+msgstr "得到电机位置。"
 
 #. TRANS: Arduino plugin to control an Arduino board
-#: taextras.py:316
+#: taextras.py:320
 msgid "Palette of Arduino blocks"
 msgstr "Arduino模板"
 
-#: taextras.py:317
+#: taextras.py:321
 msgid "HIGH"
 msgstr ""
 
-#: taextras.py:318
+#: taextras.py:322
 msgid "LOW"
 msgstr ""
 
-#: taextras.py:319
+#: taextras.py:323
 msgid "INPUT"
 msgstr ""
 
-#: taextras.py:320
+#: taextras.py:324
 msgid "OUTPUT"
 msgstr ""
 
 #. TRANS: PWM is pulse-width modulation
-#: taextras.py:322
+#: taextras.py:326
 msgid "PWM"
 msgstr ""
 
-#: taextras.py:323
+#: taextras.py:327
 msgid "SERVO"
 msgstr ""
 
-#: taextras.py:324
+#: taextras.py:328
 msgid "ERROR: Check the Arduino and the number of port."
 msgstr ""
 
-#: taextras.py:325
+#: taextras.py:329
 msgid "ERROR: Value must be a number from 0 to 255."
 msgstr ""
 
-#: taextras.py:326
+#: taextras.py:330
 msgid "ERROR: Value must be either HIGH or LOW."
 msgstr ""
 
-#: taextras.py:327
+#: taextras.py:331
 msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
 msgstr ""
 
-#: taextras.py:328
+#: taextras.py:332
 msgid "pin mode"
 msgstr ""
 
-#: taextras.py:330
+#: taextras.py:334
 #, fuzzy
 msgid "mode"
 msgstr "同余"
 
-#: taextras.py:331
+#: taextras.py:335
 msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
 msgstr ""
 
-#: taextras.py:332
+#: taextras.py:336
 msgid "analog write"
 msgstr ""
 
-#: taextras.py:334
+#: taextras.py:338
 msgid "Write analog value in specified port."
 msgstr ""
 
-#: taextras.py:335
+#: taextras.py:339
 msgid "analog read"
 msgstr ""
 
-#: taextras.py:336
+#: taextras.py:340
 msgid ""
 "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
 "determine voltage. For USB, volt=((read)*5)/1024) approximately."
 msgstr ""
 
-#: taextras.py:338
+#: taextras.py:342
 msgid "digital write"
 msgstr ""
 
-#: taextras.py:339
+#: taextras.py:343
 msgid "Write digital value to specified port."
 msgstr ""
 
-#: taextras.py:340
+#: taextras.py:344
 msgid "digital read"
 msgstr ""
 
-#: taextras.py:341
+#: taextras.py:345
 msgid "Read value from digital port."
 msgstr ""
 
-#: taextras.py:342
+#: taextras.py:346
 msgid "Set HIGH value for digital port."
 msgstr ""
 
-#: taextras.py:343
+#: taextras.py:347
 msgid "Configure Arduino port for digital input."
 msgstr ""
 
-#: taextras.py:344
+#: taextras.py:348
 msgid "Configure Arduino port to drive a servo."
 msgstr ""
 
-#: taextras.py:345
+#: taextras.py:349
 msgid "Set LOW value for digital port."
 msgstr ""
 
-#: taextras.py:346
+#: taextras.py:350
 msgid "Configure Arduino port for digital output."
 msgstr ""
 
-#: taextras.py:347
+#: taextras.py:351
 msgid "Configure Arduino port for PWM (pulse-width modulation)."
 msgstr ""
 
@@ -2660,8 +2694,9 @@ msgid "Open"
 msgstr ""
 
 #: turtleart.py:322
+#, fuzzy
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: turtleart.py:323
 msgid "Save as"
@@ -2676,8 +2711,9 @@ msgid "File"
 msgstr ""
 
 #: turtleart.py:338
+#, fuzzy
 msgid "Rescale coordinates"
-msgstr ""
+msgstr "增大坐标轴比例"
 
 #: turtleart.py:344
 msgid "Reset block size"
@@ -2711,6 +2747,9 @@ msgstr ""
 #: util/helpbutton.py:42
 msgid "Help"
 msgstr ""
+
+#~ msgid "Palette of LEGO NXT blocks"
+#~ msgstr "乐高NXT模块"
 
 #, fuzzy
 #~ msgid "full screen"
