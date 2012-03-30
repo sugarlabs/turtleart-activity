@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-28 00:31-0400\n"
-"PO-Revision-Date: 2012-03-30 04:02+0200\n"
+"PO-Revision-Date: 2012-03-30 05:24+0200\n"
 "Last-Translator: lite <litekok@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -2575,162 +2575,158 @@ msgstr "输出"
 #. TRANS: PWM is pulse-width modulation
 #: taextras.py:326
 msgid "PWM"
-msgstr ""
+msgstr "调速"
 
 #: taextras.py:327
 msgid "SERVO"
-msgstr ""
+msgstr "伺服"
 
 #: taextras.py:328
 msgid "ERROR: Check the Arduino and the number of port."
-msgstr ""
+msgstr "错误：请检查的Arduino和端口号。"
 
 #: taextras.py:329
 msgid "ERROR: Value must be a number from 0 to 255."
-msgstr ""
+msgstr "错误：数值必须从0到255。"
 
 #: taextras.py:330
 msgid "ERROR: Value must be either HIGH or LOW."
-msgstr ""
+msgstr "错误：值必须是高或低。"
 
 #: taextras.py:331
 msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-msgstr ""
+msgstr "错误：模式必须是输入，输出，调速或伺服。"
 
 #: taextras.py:332
 msgid "pin mode"
-msgstr ""
+msgstr "引脚模式"
 
 #: taextras.py:334
-#, fuzzy
 msgid "mode"
-msgstr "同余"
+msgstr "模式"
 
 #: taextras.py:335
 msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-msgstr ""
+msgstr "选择引脚功能（输入，输出，调速，伺服）。"
 
 #: taextras.py:336
 msgid "analog write"
-msgstr ""
+msgstr "模拟写"
 
 #: taextras.py:338
 msgid "Write analog value in specified port."
-msgstr ""
+msgstr "写模拟值到指定的端口。"
 
 #: taextras.py:339
 msgid "analog read"
-msgstr ""
+msgstr "模拟读"
 
 #: taextras.py:340
 msgid ""
 "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
 "determine voltage. For USB, volt=((read)*5)/1024) approximately."
-msgstr ""
+msgstr "从模拟端口读值。值可能是0到1023之间。使用Vref来确定电压。对于USB，电压大约等于 ((read)*5)/1024。"
 
 #: taextras.py:342
 msgid "digital write"
-msgstr ""
+msgstr "数字写"
 
 #: taextras.py:343
 msgid "Write digital value to specified port."
-msgstr ""
+msgstr "写数字值到指定的端口。"
 
 #: taextras.py:344
 msgid "digital read"
-msgstr ""
+msgstr "数字读"
 
 #: taextras.py:345
 msgid "Read value from digital port."
-msgstr ""
+msgstr "从数字端口读取值。"
 
 #: taextras.py:346
 msgid "Set HIGH value for digital port."
-msgstr ""
+msgstr "设置数字端口为高值。"
 
 #: taextras.py:347
 msgid "Configure Arduino port for digital input."
-msgstr ""
+msgstr "配置用于数字输入的Arduino端口。"
 
 #: taextras.py:348
 msgid "Configure Arduino port to drive a servo."
-msgstr ""
+msgstr "配置用于驱动伺服电机的Arduino端口。"
 
 #: taextras.py:349
 msgid "Set LOW value for digital port."
-msgstr ""
+msgstr "设置数字端口为低值。"
 
 #: taextras.py:350
 msgid "Configure Arduino port for digital output."
-msgstr ""
+msgstr "配置用于数字输出的Arduino端口。"
 
 #: taextras.py:351
 msgid "Configure Arduino port for PWM (pulse-width modulation)."
-msgstr ""
+msgstr "配置用于调速（脉宽调制）的Arduino端口"
 
 #: turtleart.py:69
 msgid "usage is"
-msgstr ""
+msgstr "用法是"
 
 #: turtleart.py:228
 msgid "No option action:"
-msgstr ""
+msgstr "无选项的动作："
 
 #: turtleart.py:240
 msgid "File not found"
-msgstr ""
+msgstr "文件未找到"
 
 #: turtleart.py:264
 #, python-format
 msgid "Configuration directory not writable: %s"
-msgstr ""
+msgstr "配置不可写的目录：%s"
 
 #: turtleart.py:320
 msgid "New"
-msgstr ""
+msgstr "新建"
 
 #: turtleart.py:321
 msgid "Open"
-msgstr ""
+msgstr "打开"
 
 #: turtleart.py:322
-#, fuzzy
 msgid "Save"
 msgstr "保存"
 
 #: turtleart.py:323
 msgid "Save as"
-msgstr ""
+msgstr "另存为"
 
 #: turtleart.py:330
 msgid "Quit"
-msgstr ""
+msgstr "退出"
 
 #: turtleart.py:331
 msgid "File"
-msgstr ""
+msgstr "文件"
 
 #: turtleart.py:338
-#, fuzzy
 msgid "Rescale coordinates"
-msgstr "增大坐标轴比例"
+msgstr "重新调整坐标"
 
 #: turtleart.py:344
 msgid "Reset block size"
-msgstr ""
+msgstr "复位块大小"
 
 #: turtleart.py:362
 msgid "Show/hide blocks"
-msgstr ""
+msgstr "显示/隐藏块"
 
 #: turtleart.py:364
 msgid "Tools"
-msgstr ""
+msgstr "工具"
 
 #: turtleart.py:371
-#, fuzzy
 msgid "Stop"
-msgstr "顶部"
+msgstr "停止"
 
 #: turtleart.py:372
 msgid "Turtle"
@@ -2738,15 +2734,15 @@ msgstr "海龟"
 
 #: turtleart.py:402
 msgid "You have unsaved work. Would you like to save before quitting?"
-msgstr ""
+msgstr "你有尚未保存的工作。想退出前保存吗？"
 
 #: turtleart.py:403
 msgid "Save project?"
-msgstr ""
+msgstr "保存项目？"
 
 #: util/helpbutton.py:42
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
 #~ msgid "Palette of LEGO NXT blocks"
 #~ msgstr "乐高NXT模块"
