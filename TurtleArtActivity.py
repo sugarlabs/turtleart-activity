@@ -794,8 +794,6 @@ class TurtleArtActivity(activity.Activity):
             self.load_python = self._add_button(
                 'pippy-openoff', _('Load Python block'),
                 self.do_load_python_cb, toolbar)
-            self.samples_button = self._add_button(
-                'ta-open', _('Load example'), self.do_samples_cb, toolbar)
 
     def _save_load_palette_cb(self, button):
         if self._palette:
