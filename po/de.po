@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: turtleart-activity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-28 00:31-0400\n"
-"PO-Revision-Date: 2012-03-28 23:11+0200\n"
-"Last-Translator: Markus <m.slg@gmx.de>\n"
+"PO-Revision-Date: 2012-04-03 05:00+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: Deutsche OLPC-Lokalisierung\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -953,7 +953,7 @@ msgstr "Das Plugin konnte nicht installiert werden."
 
 #: TurtleArtActivity.py:920
 msgid "Please restart Turtle Art in order to use the plugin."
-msgstr "Starte die Schildkrötenkunst bitte neu, um das Plugin zu benützen. "
+msgstr "Starte die Schildkrötenkunst bitte neu, um das Plugin zu benützen."
 
 #: TurtleArtActivity.py:938
 #, python-format
