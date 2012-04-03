@@ -1,3 +1,23 @@
+137
+
+ENHANCEMENT:
+* New help system inspired by Gonzalo Odiard's help in SimpleGraph 
+  (includes end run around #2633)
+* Force standard palettes to appear before plugin palettes
+* New mechanism for loading plugins from the Journal (with help from
+  Alan Jhonn Aguiar Schwyn)
+* Toolbars too large to fit on the screen can be shifted
+* Help, print, and status blocks expand to full width on wide screens
+* New translations
+
+BUG FIX:
+* Fixed palette initialization problem for plugins using hidden blocks
+* Fixed typo (#3330) in help string for NXT plugin
+* Reverted some syntax changes to support old XO images still using Python 2.5
+* Catch AttributeError when palette refresh fails
+* Replace deprecated class commands with subprocess
+* Fixed turtle inverted-color problem (#3396)
+
 136
 
 ENHANCEMENTS:
