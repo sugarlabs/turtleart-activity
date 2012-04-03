@@ -398,8 +398,13 @@ class TurtleArtWindow():
         """ Misc. sprites for status, overlays, etc. """
         self.load_media_shapes()
         for i, name in enumerate(STATUS_SHAPES):
-            self.status_shapes[name] = svg_str_to_pixbuf(svg_from_file(
-                    os.path.join(self.path, 'images', name + '.svg')))
+            # Temporary hack to use wider shapes
+            if name in ['print', 'help', 'status'] and self.width > 1024:
+                self.status_shapes[name] = svg_str_to_pixbuf(svg_from_file(
+                        os.path.join(self.path, 'images', name + '1200.svg')))
+            else:
+                self.status_shapes[name] = svg_str_to_pixbuf(svg_from_file(
+                        os.path.join(self.path, 'images', name + '.svg')))
         self.status_spr = Sprite(self.sprite_list, 0, self.height - 200,
                                  self.status_shapes['status'])
         self.status_spr.hide()
