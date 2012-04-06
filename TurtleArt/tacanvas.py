@@ -170,6 +170,7 @@ class TurtleGraphics:
                 self.canvas.line_to(p[1], p[2])
         self.canvas.close_path()
         self.canvas.fill()
+        self.inval()
         if self.tw.saving_svg and self.pendown:
             self.svg.set_fill_color('#%02x%02x%02x' % (self.fgrgb[0],
                                                        self.fgrgb[1],
