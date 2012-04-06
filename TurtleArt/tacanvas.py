@@ -73,7 +73,8 @@ def calc_gray(c, g, invert=False):
 
 
 colors = {}
-DEGTOR = 2 * pi / 360
+DEGTOR = pi / 180.
+RTODEG = 180. / pi
 
 COLOR_TABLE = (
     0xFF0000, 0xFF0D00, 0xFF1A00, 0xFF2600, 0xFF3300,
@@ -172,14 +173,29 @@ class TurtleGraphics:
         self.canvas.fill()
         self.inval()
         if self.tw.saving_svg and self.pendown:
-            # TODO: Fix arc processing
             self.svg.set_fill_color('#%02x%02x%02x' % (self.fgrgb[0],
                                                        self.fgrgb[1],
                                                        self.fgrgb[2]))
-            self.tw.svg_string += self.svg.new_path(poly_points[0][1],
-                                                    poly_points[0][2])
+            h = self.heading
             for p in range(len(poly_points)):
-                if p > 0:
+                if poly_points[p][0] == 'move':
+                    self.tw.svg_string += self.svg.new_path(poly_points[p][1],
+                                                            poly_points[p][2])
+                elif poly_points[p][0] == 'rarc':
+                    h += (poly_points[p][5] - poly_points[p][4]) * RTODEG
+                    r = poly_points[p][3]
+                    x = poly_points[p][1] - r * cos(h * DEGTOR)
+                    y = poly_points[p][2] - r * sin(h * DEGTOR)
+                    self.tw.svg_string += self.svg.arc_to(x, y, r,
+                        a=(poly_points[p][5] - poly_points[p][4]) * RTODEG)
+                elif poly_points[p][0] == 'larc':
+                    h += (poly_points[p][4] - poly_points[p][5]) * RTODEG
+                    r = poly_points[p][3]
+                    x = poly_points[p][1] - r * cos(h * DEGTOR)
+                    y = poly_points[p][2] - r * sin(h * DEGTOR)
+                    self.tw.svg_string += self.svg.arc_to(x, y, r,
+                        a=(poly_points[p][4] - poly_points[p][5]) * RTODEG)
+                else:
                     self.tw.svg_string += self.svg.line_to(poly_points[p][1],
                                                            poly_points[p][2])
             self.tw.svg_string += '"\n'
