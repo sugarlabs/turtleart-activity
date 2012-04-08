@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-28 00:31-0400\n"
-"PO-Revision-Date: 2012-04-03 14:06+0200\n"
+"POT-Creation-Date: 2012-03-29 00:31-0400\n"
+"PO-Revision-Date: 2012-04-08 04:28+0200\n"
 "Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2 TurtleArt/taexporthtml.py:137
-#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:3069
+#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:3134
 #: pysamples/grecord.py:205 turtleart.py:288
 msgid "Turtle Art"
 msgstr "Skildpadde-kunst"
@@ -115,8 +115,8 @@ msgstr "indstil retning"
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "sætter retningen for skildpadden (0 er mod toppen af skærmen.)"
 
-#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3065
-#: TurtleArt/tawindow.py:3069 TurtleArtActivity.py:569
+#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3130
+#: TurtleArt/tawindow.py:3134 TurtleArtActivity.py:573
 msgid "xcor"
 msgstr "x-kor"
 
@@ -128,8 +128,8 @@ msgstr ""
 "holder aktuel x-koordinat-værdi for skildpadden (kan anvendes i stedet for "
 "en talblok)"
 
-#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3065
-#: TurtleArt/tawindow.py:3069 TurtleArtActivity.py:570
+#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3130
+#: TurtleArt/tawindow.py:3134 TurtleArtActivity.py:574
 msgid "ycor"
 msgstr "y-kor"
 
@@ -141,8 +141,8 @@ msgstr ""
 "holder aktuel y-koordinat-værdi for skildpadde (kan anvendes i stedet for en "
 "talblok)"
 
-#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3065
-#: TurtleArt/tawindow.py:3069 TurtleArtActivity.py:570
+#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3130
+#: TurtleArt/tawindow.py:3134 TurtleArtActivity.py:574
 msgid "heading"
 msgstr "bevæger sig mod"
 
@@ -725,11 +725,11 @@ msgstr "kan ikke lide"
 msgid "as input"
 msgstr "som inddata"
 
-#: TurtleArt/tapalette.py:92
+#: TurtleArt/tapalette.py:94
 msgid "displays next palette"
 msgstr "viser næste palette"
 
-#: TurtleArt/tapalette.py:93
+#: TurtleArt/tapalette.py:95
 msgid "changes the orientation of the palette of blocks"
 msgstr "ændrer retningen for paletten af blokke"
 
@@ -746,203 +746,224 @@ msgstr "Gem..."
 msgid "click to open"
 msgstr "klik for at åbne"
 
-#: TurtleArt/tawindow.py:849 TurtleArt/tawindow.py:850
+#: TurtleArt/tawindow.py:886 TurtleArt/tawindow.py:887
 msgid "orientation"
 msgstr "retning"
 
-#: TurtleArt/tawindow.py:860 TurtleArt/tawindow.py:1193
+#: TurtleArt/tawindow.py:897 TurtleArt/tawindow.py:1256
 msgid "next"
 msgstr "næste"
 
-#: TurtleArt/tawindow.py:3165
+#: TurtleArt/tawindow.py:909 TurtleArt/tawindow.py:910
+#: TurtleArt/tawindow.py:1276
+msgid "shift"
+msgstr "skift"
+
+#: TurtleArt/tawindow.py:3230
 msgid "image"
 msgstr "billede"
 
-#: TurtleArtActivity.py:155
+#: TurtleArtActivity.py:157
 msgid "presentation"
 msgstr "præsentation"
 
-#: TurtleArtActivity.py:241
+#: TurtleArtActivity.py:243
 msgid "snapshot"
 msgstr "øjebliksbillede"
 
-#: TurtleArtActivity.py:290 TurtleArtActivity.py:581 turtleart.py:346
+#: TurtleArtActivity.py:292 TurtleArtActivity.py:585 TurtleArtActivity.py:717
+#: turtleart.py:346
 msgid "Turn off hover help"
 msgstr "Slå svæve-hjælp fra"
 
-#: TurtleArtActivity.py:296 turtleart.py:348
+#: TurtleArtActivity.py:298 turtleart.py:348
 msgid "Turn on hover help"
 msgstr "Slå svæve-hjælp til"
 
-#: TurtleArtActivity.py:304 turtleart.py:358
+#: TurtleArtActivity.py:306 turtleart.py:358
 msgid "Show palette"
 msgstr "Vis palette"
 
-#: TurtleArtActivity.py:310 TurtleArtActivity.py:709 turtleart.py:360
+#: TurtleArtActivity.py:312 TurtleArtActivity.py:813 turtleart.py:360
 msgid "Hide palette"
 msgstr "Skjul palette"
 
-#: TurtleArtActivity.py:317 TurtleArtActivity.py:330
+#: TurtleArtActivity.py:319 TurtleArtActivity.py:332
 msgid "Show blocks"
 msgstr "Vis blokke"
 
-#: TurtleArtActivity.py:320 TurtleArtActivity.py:338 TurtleArtActivity.py:712
+#: TurtleArtActivity.py:322 TurtleArtActivity.py:340 TurtleArtActivity.py:816
 msgid "Hide blocks"
 msgstr "Skjul blokke"
 
-#: TurtleArtActivity.py:447
+#: TurtleArtActivity.py:449
 msgid "Rescale coordinates down"
 msgstr "Gentag nedskalering af koordinater"
 
-#: TurtleArtActivity.py:451 TurtleArtActivity.py:573
+#: TurtleArtActivity.py:453 TurtleArtActivity.py:577 TurtleArtActivity.py:713
 msgid "Rescale coordinates up"
 msgstr "Gentag opskalering af koordinater"
 
-#: TurtleArtActivity.py:510 TurtleArtActivity.py:545 turtleart.py:355
+#: TurtleArtActivity.py:513 TurtleArtActivity.py:549 TurtleArtActivity.py:635
+#: TurtleArtActivity.py:688 turtleart.py:355
 msgid "Edit"
 msgstr "Redigér"
 
-#: TurtleArtActivity.py:514 TurtleArtActivity.py:543 turtleart.py:350
+#: TurtleArtActivity.py:518 TurtleArtActivity.py:547 TurtleArtActivity.py:636
+#: TurtleArtActivity.py:705 turtleart.py:350
 msgid "View"
 msgstr "Vis"
 
-#: TurtleArtActivity.py:541
+#: TurtleArtActivity.py:545 TurtleArtActivity.py:637
 msgid "Project"
 msgstr "Projekt"
 
-#: TurtleArtActivity.py:547 TurtleArtActivity.py:642
+#: TurtleArtActivity.py:551 TurtleArtActivity.py:634 TurtleArtActivity.py:661
+#: TurtleArtActivity.py:663 TurtleArtActivity.py:746
 msgid "Save/Load"
 msgstr "Gem/Indlæs"
 
-#: TurtleArtActivity.py:555 turtleart.py:353
+#: TurtleArtActivity.py:559 TurtleArtActivity.py:689 turtleart.py:353
 msgid "Copy"
 msgstr "Kopiér"
 
-#: TurtleArtActivity.py:557 turtleart.py:354
+#: TurtleArtActivity.py:561 TurtleArtActivity.py:690 turtleart.py:354
 msgid "Paste"
 msgstr "Indsæt"
 
-#: TurtleArtActivity.py:559
+#: TurtleArtActivity.py:563 TurtleArtActivity.py:706
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:672
 msgid "Fullscreen"
 msgstr "Fuldskærm"
 
-#: TurtleArtActivity.py:561 turtleart.py:334
+#: TurtleArtActivity.py:565 TurtleArtActivity.py:707 turtleart.py:334
 msgid "Cartesian coordinates"
 msgstr "Cartesianske koordinater"
 
-#: TurtleArtActivity.py:563 turtleart.py:336
+#: TurtleArtActivity.py:567 TurtleArtActivity.py:709 turtleart.py:336
 msgid "Polar coordinates"
 msgstr "Polære koordinater"
 
-#: TurtleArtActivity.py:566
+#: TurtleArtActivity.py:570 TurtleArtActivity.py:711
 msgid "Metric coordinates"
 msgstr "Metriske koordinater"
 
-#: TurtleArtActivity.py:576 turtleart.py:340
+#: TurtleArtActivity.py:580 TurtleArtActivity.py:715 turtleart.py:340
 msgid "Grow blocks"
 msgstr "Øg blokke"
 
-#: TurtleArtActivity.py:578 turtleart.py:342
+#: TurtleArtActivity.py:582 TurtleArtActivity.py:716 turtleart.py:342
 msgid "Shrink blocks"
 msgstr "Mindsk blokke"
 
-#: TurtleArtActivity.py:604 TurtleArtActivity.py:694
+#: TurtleArtActivity.py:608 TurtleArtActivity.py:643 TurtleArtActivity.py:798
 msgid "Load example"
 msgstr "Indlæs eksempel"
 
-#: TurtleArtActivity.py:647 TurtleArtActivity.py:672 turtleart.py:324
-msgid "Save as image"
-msgstr "Gem som billede"
-
-#: TurtleArtActivity.py:650 TurtleArtActivity.py:675 turtleart.py:326
-msgid "Save as HTML"
-msgstr "Gem som HTML"
-
-#: TurtleArtActivity.py:653 TurtleArtActivity.py:677 turtleart.py:328
-msgid "Save as Logo"
-msgstr "Gem som Logo"
-
-#: TurtleArtActivity.py:656 TurtleArtActivity.py:680
-msgid "Save snapshot"
-msgstr "Gem øjebliksbillede"
-
-#: TurtleArtActivity.py:658 TurtleArtActivity.py:683
-msgid "Load project"
-msgstr "Indlæs projekt"
-
-#: TurtleArtActivity.py:663 TurtleArtActivity.py:688
-msgid "Load plugin"
-msgstr "Indlæs udvidelsesmodul"
-
-#: TurtleArtActivity.py:666 TurtleArtActivity.py:691
-msgid "Load Python block"
-msgstr "Indlæs Python-blok"
-
-#: TurtleArtActivity.py:710
-msgid "<Ctrl>p"
-msgstr "<Ctrl>p"
-
-#: TurtleArtActivity.py:713
-msgid "<Ctrl>b"
-msgstr "<Ctrl>b"
-
-#: TurtleArtActivity.py:718 turtleart.py:367
+#: TurtleArtActivity.py:638 TurtleArtActivity.py:822 turtleart.py:367
 msgid "Clean"
 msgstr "Rens"
 
-#: TurtleArtActivity.py:718
-msgid "<Ctrl>e"
-msgstr "<Ctrl>e"
-
-#: TurtleArtActivity.py:720 turtleart.py:368
+#: TurtleArtActivity.py:639 TurtleArtActivity.py:824 turtleart.py:368
 msgid "Run"
 msgstr "Kør"
 
-#: TurtleArtActivity.py:720
-msgid "<Ctrl>r"
-msgstr "<Ctrl>r"
-
-#: TurtleArtActivity.py:722 turtleart.py:369
+#: TurtleArtActivity.py:640 TurtleArtActivity.py:826 turtleart.py:369
 msgid "Step"
 msgstr "Trin"
 
-#: TurtleArtActivity.py:722
-msgid "<Ctrl>w"
-msgstr "<Ctrl>w"
-
-#: TurtleArtActivity.py:725 turtleart.py:370
+#: TurtleArtActivity.py:641 TurtleArtActivity.py:829 turtleart.py:370
 msgid "Debug"
 msgstr "Fejlsøg"
 
-#: TurtleArtActivity.py:726
-msgid "<Ctrl>d"
-msgstr "<Ctrl>d"
-
-#: TurtleArtActivity.py:728
+#: TurtleArtActivity.py:642 TurtleArtActivity.py:832
 msgid "Stop turtle"
 msgstr "Stop skildpadde"
 
-#: TurtleArtActivity.py:729
+#: TurtleArtActivity.py:644 util/helpbutton.py:45
+msgid "Help"
+msgstr "Hjælp"
+
+#: TurtleArtActivity.py:645 turtleart.py:371
+msgid "Stop"
+msgstr "Stop"
+
+#: TurtleArtActivity.py:664 TurtleArtActivity.py:751 TurtleArtActivity.py:776
+#: turtleart.py:324
+msgid "Save as image"
+msgstr "Gem som billede"
+
+#: TurtleArtActivity.py:665 TurtleArtActivity.py:754 TurtleArtActivity.py:779
+#: turtleart.py:326
+msgid "Save as HTML"
+msgstr "Gem som HTML"
+
+#: TurtleArtActivity.py:666 TurtleArtActivity.py:757 TurtleArtActivity.py:781
+#: turtleart.py:328
+msgid "Save as Logo"
+msgstr "Gem som Logo"
+
+#: TurtleArtActivity.py:667 TurtleArtActivity.py:760 TurtleArtActivity.py:784
+msgid "Save snapshot"
+msgstr "Gem øjebliksbillede"
+
+#: TurtleArtActivity.py:668 TurtleArtActivity.py:762 TurtleArtActivity.py:787
+msgid "Load project"
+msgstr "Indlæs projekt"
+
+#: TurtleArtActivity.py:671 TurtleArtActivity.py:767 TurtleArtActivity.py:792
+msgid "Load plugin"
+msgstr "Indlæs udvidelsesmodul"
+
+#: TurtleArtActivity.py:672 TurtleArtActivity.py:770 TurtleArtActivity.py:795
+msgid "Load Python block"
+msgstr "Indlæs Python-blok"
+
+#: TurtleArtActivity.py:814
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:817
+msgid "<Ctrl>b"
+msgstr "<Ctrl>b"
+
+#: TurtleArtActivity.py:822
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: TurtleArtActivity.py:824
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:826
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:830
+msgid "<Ctrl>d"
+msgstr "<Ctrl>d"
+
+#: TurtleArtActivity.py:833
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
-#: TurtleArtActivity.py:853 TurtleArtActivity.py:858 TurtleArtActivity.py:924
+#: TurtleArtActivity.py:957 TurtleArtActivity.py:962 TurtleArtActivity.py:1028
 msgid "Plugin could not be installed."
 msgstr "Udvidelsesmodulet kunne ikke installeres."
 
-#: TurtleArtActivity.py:920
+#: TurtleArtActivity.py:1024
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr ""
 "Genstart venligst Skildpadde-kunst for at gøre brug af udvidelsesmodulet."
 
-#: TurtleArtActivity.py:938
+#: TurtleArtActivity.py:1042
 #, python-format
 msgid "Plugin %s already installed."
 msgstr "Udvidelsesmodulet %s er allerede installeret."
 
-#: TurtleArtActivity.py:939
-#, python-format, 
+#: TurtleArtActivity.py:1043
+#, python-format
+#, python-format,
 msgid "Do you want to reinstall %s?"
 msgstr "Ønsker du at geninstallere %s?"
 
@@ -2331,7 +2352,7 @@ msgid ""
 "tilt left, 2 == tilt right)"
 msgstr ""
 "hældningssensor output (-1 == ingen hældning, 0 == hæld fremad, 3 == hæld "
-"tilbage, 2 == hæld til højre)"
+"tilbage, 1 == hæld til venstre, 2 == hæld til højre)"
 
 #. TRANS: This string is shorthand for "output of the distance sensor"
 #: taextras.py:246
@@ -2766,10 +2787,6 @@ msgstr "Vis/skjul blokke"
 msgid "Tools"
 msgstr "Værktøjer"
 
-#: turtleart.py:371
-msgid "Stop"
-msgstr "Stop"
-
 #: turtleart.py:372
 msgid "Turtle"
 msgstr "Skildpadde"
@@ -2781,10 +2798,6 @@ msgstr "Du har arbejde som ikke er gemt. Vil du gemme før du afslutter?"
 #: turtleart.py:403
 msgid "Save project?"
 msgstr "Gem projekt?"
-
-#: util/helpbutton.py:42
-msgid "Help"
-msgstr "Hjælp"
 
 #~ msgid "Palette of LEGO NXT blocks"
 #~ msgstr "Palet af LEGO NXT-klodser"
