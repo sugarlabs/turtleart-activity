@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007, Playful Invention Company
-#Copyright (c) 2008-11, Walter Bender
+#Copyright (c) 2008-12, Walter Bender
 #Copyright (c) 2009-11 Raúl Gutiérrez Segalés
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
@@ -36,6 +36,7 @@ except ImportError:
     GST_AVAILABLE = False
 
 import os
+import subprocess
 
 from math import atan2, pi
 DEGTOR = 2 * pi / 360
@@ -61,7 +62,7 @@ from taturtle import Turtles, Turtle
 from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
     data_to_file, round_int, get_id, get_pixbuf_from_journal, \
     movie_media_type, audio_media_type, image_media_type, save_picture, \
-    save_svg, calc_image_size, get_path, reset_stack_arm, grow_stack_arm, \
+    calc_image_size, get_path, reset_stack_arm, grow_stack_arm, \
     find_sandwich_top, find_sandwich_bottom, restore_stack, collapse_stack, \
     collapsed, collapsible, hide_button_hit, show_button_hit, chooser, \
     arithmetic_check, xy, find_block_to_run, find_top_block, journal_check, \
@@ -202,8 +203,6 @@ class TurtleArtWindow():
         self.drag_pos = 0, 0
         self.turtle_movement_to_share = None
         self.paste_offset = 20  # Don't paste on top of where you copied.
-        self.saving_svg = False
-        self.svg_string = ''
 
         self.block_list = Blocks(font_scale_factor=self.scale,
                                  decimal_point=self.decimal_point)
@@ -594,6 +593,8 @@ class TurtleArtWindow():
         if not self.hide:
             for blk in self.just_blocks():
                 blk.spr.hide()
+            for spr in self.triangle_sprs:
+                spr.hide()
             self.hide_palette()
             self.hide = True
         else:
@@ -2194,6 +2195,14 @@ class TurtleArtWindow():
         if blk is None:
             return
         self.lc.find_value_blocks()  # Are there blocks to update?
+        # Is there a savesvg block?
+        if len(self.block_list.get_similar_blocks('block', 'savesvg')) > 0:
+            debug_output('savesvg block found!', True)
+            if self.canvas.cr_svg is None:
+                self.canvas.setup_svg_surface()
+            debug_output(self.canvas.cr_svg, True)
+        else:
+            debug_output('no savesvg blocks found', True)
         self._start_plugins()  # Let the plugins know we are running.
         top = find_top_block(blk)
         self.lc.run_blocks(top, self.just_blocks(), True)
@@ -3218,10 +3227,9 @@ class TurtleArtWindow():
 
         file_path = os.path.join(datapath, filename)
         if svg:
-            if self.svg_string == '':
+            if self.canvas.cr_svg is None:
                 return
-            save_svg(self.svg_string, file_path)
-            self.svg_string = ''
+            self.canvas.svg_reset()
         else:
             save_picture(self.canvas, file_path)
 
@@ -3238,14 +3246,22 @@ class TurtleArtWindow():
             dsobject.metadata['icon-color'] = profile.get_color().to_string()
             if svg:
                 dsobject.metadata['mime_type'] = 'image/svg+xml'
+                dsobject.set_file_path(os.path.join(datapath, 'output.svg'))
             else:
                 dsobject.metadata['mime_type'] = 'image/png'
-            dsobject.set_file_path(file_path)
+                dsobject.set_file_path(file_path)
             datastore.write(dsobject)
             dsobject.destroy()
             self.saved_pictures.append((dsobject.object_id, svg))
-            os.remove(file_path)
+            if svg:
+                os.remove(os.path.join(datapath, 'output.svg'))
+            else:
+                os.remove(file_path)
         else:
+            if svg:
+                output = subprocess.check_output(
+                    ['mv', os.path.join(datapath, 'output.svg'),
+                     os.path.join(datapath, filename)])
             self.saved_pictures.append((file_path, svg))
 
     def just_blocks(self):

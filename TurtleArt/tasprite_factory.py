@@ -595,6 +595,31 @@ class SVG:
         svg += self.footer()
         return self.header() + svg
 
+    def status_block(self, graphic=None):
+        ''' Generate a status block '''
+        self.reset_min_max()
+        (x, y) = self._calculate_x_y()
+        self.margins[2] = 0
+        self.margins[3] = 0
+        svg = self.new_path(x, y)
+        svg += self._corner(1, -1)
+        svg += self._rline_to(self._expand_x, 0)
+        xx = self._x
+        svg += self._corner(1, 1)
+        svg += self._rline_to(0, self._expand_y)
+        svg += self._corner(-1, 1)
+        svg += self.line_to(xx, self._y)
+        svg += self._rline_to(-self._expand_x, 0)
+        svg += self._corner(-1, -1)
+        svg += self._rline_to(0, -self._expand_y)
+        self.calc_w_h()
+        svg += self._close_path()
+        svg += self.style()
+        if self._hide is True:
+            svg += self._hide_dot()
+        svg += self.footer()
+        return self.header() + svg
+
     #
     # Utility methods
     #

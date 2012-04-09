@@ -174,7 +174,6 @@ class LogoCode:
             self.stacks[k] = None
         self.stacks['stack1'] = None
         self.stacks['stack2'] = None
-        self.tw.saving_svg = False
 
         # Save state in case there is a hidden macro expansion
         self.save_blocks = None
@@ -249,8 +248,14 @@ class LogoCode:
         dock = blk.docks[0]
         if len(dock) > 4:  # There could be a '(', ')', '[' or ']'.
             code.append(dock[4])
+
+        '''
         if blk.name == 'savesvg':
-            self.tw.saving_svg = True
+            debug_output('talogo: savesvg', True)
+            if self.tw.canvas.cr_svg is None:
+                self.tw.canvas.setup_svg_surface()
+        '''
+
         if blk.primitive is not None:  # make a tuple (prim, blk)
             # special case: expand 'while' and 'until' primitives
             try:
@@ -265,8 +270,9 @@ class LogoCode:
                 except ValueError:
                     code.append(float(ord(blk.values[0][0])))
             elif blk.name == 'string' or \
-                    blk.name == 'title':  # deprecated block
-                if type(blk.values[0]) == float or type(blk.values[0]) == int:
+                 blk.name == 'title':  # deprecated block
+                if type(blk.values[0]) == float or \
+                   type(blk.values[0]) == int:
                     if int(blk.values[0]) == blk.values[0]:
                         blk.values[0] = int(blk.values[0])
                     code.append('#s' + str(blk.values[0]))

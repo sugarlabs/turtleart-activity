@@ -112,7 +112,7 @@ class TurtleGraphics:
         self.canvas = cairo.Context(self.tw.turtle_canvas)
         cr = gtk.gdk.CairoContext(self.canvas)
         cr.set_line_cap(1)  # Set the line cap to be round
-
+        self.cr_svg = None  # Surface used for saving to SVG
         self.cx = 0
         self.cy = 0
         self.fgrgb = [255, 0, 0]
@@ -128,16 +128,25 @@ class TurtleGraphics:
         self.gray = 100
         self.fill = False
         self.poly_points = []
-        self.svg = SVG()
-        self.svg.set_fill_color('none')
-        self.tw.svg_string = ''
+
+    def setup_svg_surface(self):
+        ''' Set up a surface for saving to SVG '''
+        debug_output('Setting up svg surface', True)
+        if self.tw.running_sugar:
+            svg_surface = cairo.SVGSurface(
+                os.path.join(get_path(self.tw.activity, 'instance'),
+                             'output.svg'), self.width, self.height)
+        else:
+            svg_surface = cairo.SVGSurface(
+                os.path.join(os.getcwd(), 'output.svg'),
+                self.width, self.height)
+        self.cr_svg = cairo.Context(svg_surface)
+        self.cr_svg.set_line_cap(1)  # Set the line cap to be round
 
     def start_fill(self):
         ''' Start accumulating points of a polygon to fill. '''
         self.fill = True
         self.poly_points = []
-        if self.tw.saving_svg:
-            self.tw.svg_string += '<g>'
 
     def stop_fill(self):
         ''' Fill the polygon. '''
@@ -154,69 +163,48 @@ class TurtleGraphics:
                                                   shared_poly_points]))
             self.tw.send_event(event)
         self.poly_points = []
-        if self.tw.saving_svg:
-            self.tw.svg_string += '</g>'
 
     def fill_polygon(self, poly_points):
         ''' Draw the polygon... '''
-        self.canvas.new_path()
-        for i, p in enumerate(poly_points):
-            if p[0] == 'move':
-                self.canvas.move_to(p[1], p[2])
-            elif p[0] == 'rarc':
-                self.canvas.arc(p[1], p[2], p[3], p[4], p[5])
-            elif p[0] == 'larc':
-                self.canvas.arc_negative(p[1], p[2], p[3], p[4], p[5])
-            else:  # line
-                self.canvas.line_to(p[1], p[2])
-        self.canvas.close_path()
-        self.canvas.fill()
+        def _fill_polygon(cr, poly_points):
+            cr.new_path()
+            for i, p in enumerate(poly_points):
+                if p[0] == 'move':
+                    cr.move_to(p[1], p[2])
+                elif p[0] == 'rarc':
+                    cr.arc(p[1], p[2], p[3], p[4], p[5])
+                elif p[0] == 'larc':
+                    cr.arc_negative(p[1], p[2], p[3], p[4], p[5])
+                else:  # line
+                    cr.line_to(p[1], p[2])
+            cr.close_path()
+            cr.fill()
+
+        _fill_polygon(self.canvas, poly_points)
         self.inval()
-        if self.tw.saving_svg and self.pendown:
-            self.svg.set_fill_color('#%02x%02x%02x' % (self.fgrgb[0],
-                                                       self.fgrgb[1],
-                                                       self.fgrgb[2]))
-            h = self.heading
-            for p in range(len(poly_points)):
-                if poly_points[p][0] == 'move':
-                    self.tw.svg_string += self.svg.new_path(poly_points[p][1],
-                                                            poly_points[p][2])
-                elif poly_points[p][0] == 'rarc':
-                    h += (poly_points[p][5] - poly_points[p][4]) * RTODEG
-                    r = poly_points[p][3]
-                    x = poly_points[p][1] - r * cos(h * DEGTOR)
-                    y = poly_points[p][2] - r * sin(h * DEGTOR)
-                    self.tw.svg_string += self.svg.arc_to(x, y, r,
-                        a=(poly_points[p][5] - poly_points[p][4]) * RTODEG)
-                elif poly_points[p][0] == 'larc':
-                    h += (poly_points[p][4] - poly_points[p][5]) * RTODEG
-                    r = poly_points[p][3]
-                    x = poly_points[p][1] - r * cos(h * DEGTOR)
-                    y = poly_points[p][2] - r * sin(h * DEGTOR)
-                    self.tw.svg_string += self.svg.arc_to(x, y, r,
-                        a=(poly_points[p][4] - poly_points[p][5]) * RTODEG)
-                else:
-                    self.tw.svg_string += self.svg.line_to(poly_points[p][1],
-                                                           poly_points[p][2])
-            self.tw.svg_string += '"\n'
-            self.tw.svg_string += self.svg.style()
-            self.svg.set_fill_color('none')
+        if self.cr_svg is not None:
+            _fill_polygon(self.cr_svg, poly_points)
 
     def clearscreen(self, share=True):
         '''Clear the canvas and reset most graphics attributes to defaults.'''
-        self.canvas.move_to(0, 0)
-        self.canvas.set_source_rgb(self.bgrgb[0] / 255.,
-                                   self.bgrgb[1] / 255.,
-                                   self.bgrgb[2] / 255.)
-        self.canvas.rectangle(0, 0, self.width * 2, self.height * 2)
-        self.canvas.fill()
+
+        def _clearscreen(cr):
+            cr.move_to(0, 0)
+            cr.set_source_rgb(self.bgrgb[0] / 255.,
+                              self.bgrgb[1] / 255.,
+                              self.bgrgb[2] / 255.)
+            cr.rectangle(0, 0, self.width * 2, self.height * 2)
+            cr.fill()
+
+        _clearscreen(self.canvas)
         self.inval()
+        if self.cr_svg is not None:
+            _clearscreen(self.cr_svg)
+
         self.setpensize(5, share)
         self.setgray(100, share)
         self.setcolor(0, share)
         self.setshade(50, share)
-        self.tw.svg_string = ''
-        self.svg.reset_min_max()
         self.fill = False
         self.poly_points = []
         for turtle_key in iter(self.tw.turtles.dict):
@@ -240,6 +228,10 @@ class TurtleGraphics:
         nn = n * self.tw.coord_scale
         self.canvas.set_source_rgb(self.fgrgb[0] / 255., self.fgrgb[1] / 255.,
                                    self.fgrgb[2] / 255.)
+        if self.cr_svg is not None:
+            debug_output('in forward', True)
+            self.cr_svg.set_source_rgb(self.fgrgb[0] / 255.,
+                self.fgrgb[1] / 255., self.fgrgb[2] / 255.)
         oldx, oldy = self.xcor, self.ycor
         try:
             self.xcor += nn * sin(self.heading * DEGTOR)
@@ -292,6 +284,9 @@ class TurtleGraphics:
         ''' Draw an arc '''
         self.canvas.set_source_rgb(self.fgrgb[0] / 255., self.fgrgb[1] / 255.,
                                    self.fgrgb[2] / 255.)
+        if self.cr_svg is not None:
+            self.cr_svg.set_source_rgb(self.fgrgb[0] / 255.,
+                self.fgrgb[1] / 255., self.fgrgb[2] / 255.)
         try:
             if a < 0:
                 self.larc(-a, r)
@@ -321,11 +316,15 @@ class TurtleGraphics:
         cy = self.ycor - r * sin(self.heading * DEGTOR)
         if self.pendown:
             x, y = self.turtle_to_screen_coordinates(cx, cy)
-            self.canvas.arc(x, y, r,
-                            (self.heading - 180) * DEGTOR,
-                            (self.heading - 180 + a) * DEGTOR)
-            self.canvas.stroke()
+
+            def _rarc(cr, x, y, r, a, h):
+                cr.arc(x, y, r, (h - 180) * DEGTOR, (h - 180 + a) * DEGTOR)
+                cr.stroke()
+
+            _rarc(self.canvas, x, y, r, a, self.heading)
             self.inval()
+            if self.cr_svg is not None:
+                _rarc(self.cr_svg, x, y, r, a, self.heading)
 
         if self.fill:
             if self.poly_points == []:
@@ -337,13 +336,6 @@ class TurtleGraphics:
         self.right(a, False)
         self.xcor = cx - r * cos(self.heading * DEGTOR)
         self.ycor = cy + r * sin(self.heading * DEGTOR)
-        if self.tw.saving_svg and self.pendown:
-            x, y = self.turtle_to_screen_coordinates(oldx, oldy)
-            self.tw.svg_string += self.svg.new_path(x, y)
-            x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
-            self.tw.svg_string += self.svg.arc_to(x, y, r, a, 0, s)
-            self.tw.svg_string += '"\n'
-            self.tw.svg_string += self.svg.style()
 
     def larc(self, a, r):
         ''' draw a counter-clockwise arc '''
@@ -359,11 +351,15 @@ class TurtleGraphics:
         cy = self.ycor + r * sin(self.heading * DEGTOR)
         if self.pendown:
             x, y = self.turtle_to_screen_coordinates(cx, cy)
-            self.canvas.arc_negative(x, y, r,
-                                     (self.heading) * DEGTOR,
-                                     (self.heading - a) * DEGTOR)
-            self.canvas.stroke()
+
+            def _larc(cr, x, y, r, a, h):
+                cr.arc_negative(x, y, r, h * DEGTOR, (h - a) * DEGTOR)
+                cr.stroke()
+
+            _larc(self.canvas, x, y, r, a, self.heading)
             self.inval()
+            if self.cr_svg is not None:
+                _larc(self.cr_svg, x, y, r, a, self.heading)
 
         if self.fill:
             if self.poly_points == []:
@@ -375,13 +371,6 @@ class TurtleGraphics:
         self.right(-a, False)
         self.xcor = cx + r * cos(self.heading * DEGTOR)
         self.ycor = cy - r * sin(self.heading * DEGTOR)
-        if self.tw.saving_svg and self.pendown:
-            x, y = self.turtle_to_screen_coordinates(oldx, oldy)
-            self.tw.svg_string += self.svg.new_path(x, y)
-            x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
-            self.tw.svg_string += self.svg.arc_to(x, y, r, a, 0, s)
-            self.tw.svg_string += '"\n'
-            self.tw.svg_string += self.svg.style()
 
     def setxy(self, x, y, share=True, pendown=True):
         ''' Move turtle to position x,y '''
@@ -399,6 +388,10 @@ class TurtleGraphics:
             self.canvas.set_source_rgb(self.fgrgb[0] / 255.,
                                        self.fgrgb[1] / 255.,
                                        self.fgrgb[2] / 255.)
+            if self.cr_svg is not None:
+                self.cr_svg.set_source_rgb(self.fgrgb[0] / 255.,
+                                          self.fgrgb[1] / 255.,
+                                          self.fgrgb[2] / 255.)
             self.draw_line(oldx, oldy, self.xcor, self.ycor)
             self.inval()
         self.move_turtle()
@@ -420,7 +413,8 @@ class TurtleGraphics:
             return
         self.tw.active_turtle.set_pen_size(ps)
         self.canvas.set_line_width(ps)
-        self.svg.set_stroke_width(self.pensize)
+        if self.cr_svg is not None:
+            self.cr_svg.set_line_width(ps)
         if self.tw.sharing() and share:
             event = 'w|%s' % (data_to_string([self._get_my_nick(),
                                               round_int(ps)]))
@@ -496,17 +490,19 @@ class TurtleGraphics:
         oldc, olds = self.color, self.shade
         self.setcolor(c, False)
         self.setshade(s, False)
-        self.canvas.set_source_rgb(self.fgrgb[0] / 255.,
-                                   self.fgrgb[1] / 255.,
-                                   self.fgrgb[2] / 255.)
         self.bgrgb = self.fgrgb[:]
-        self.canvas.rectangle(0, 0, self.width * 2, self.height * 2)
-        self.canvas.fill()
+
+        def _fillscreen(cr, rgb, w, h):
+            cr.set_source_rgb(rgb[0] / 255., rgb[1] / 255., rgb[2] / 255.)
+            cr.rectangle(0, 0, w * 2, h * 2)
+            cr.fill()
+
+        _fillscreen(self.canvas, self.fgrgb, self.width, self.height)
         self.inval()
+        if self.cr_svg is not None:
+            _fillscreen(self.cr_svg, self.fgrgb, self.width, self.height)
         self.setcolor(oldc, False)
         self.setshade(olds, False)
-        self.tw.svg_string = ''
-        self.svg.reset_min_max()
         self.fill = False
         self.poly_points = []
 
@@ -533,9 +529,6 @@ class TurtleGraphics:
             b = calc_gray(b, self.gray)
             b = calc_shade(b, sh)
         self.fgrgb = [r >> 8, g >> 8, b >> 8]
-        self.svg.set_stroke_color('#%02x%02x%02x' % (self.fgrgb[0],
-                                                     self.fgrgb[1],
-                                                     self.fgrgb[2]))
 
     def setpen(self, bool, share=True):
         ''' Lower or raise the pen '''
@@ -547,42 +540,39 @@ class TurtleGraphics:
 
     def draw_surface(self, surface, x, y, w, h):
         ''' Draw a surface '''
-        cr = gtk.gdk.CairoContext(self.canvas)
-        cr.set_source_surface(surface, x, y)
-        cr.rectangle(x, y, w, h)
-        cr.fill()
+
+        def _draw_surface(cr, surface, x, y, w, h):
+            cc = gtk.gdk.CairoContext(cr)
+            cc.set_source_surface(surface, x, y)
+            cc.rectangle(x, y, w, h)
+            cc.fill()
+
+        _draw_surface(self.canvas, surface, x, y, w, h)
         self.inval()
+        if self.cr_svg is not None:
+            _draw_surface(self.cr_svg, surface, x, y, w, h)
 
     def draw_pixbuf(self, pixbuf, a, b, x, y, w, h, path, share=True):
         ''' Draw a pixbuf '''
-        # Build a gtk.gdk.CairoContext from a cairo.Context to access
-        # the set_source_pixbuf attribute.
-        cr = gtk.gdk.CairoContext(self.canvas)
-        cr.save()
-        # center the rotation on the center of the image
-        cr.translate(x + w / 2., y + h / 2.)
-        cr.rotate(self.heading * DEGTOR)
-        cr.translate(-x - w / 2., -y - h / 2.)
-        cr.set_source_pixbuf(pixbuf, x, y)
-        cr.rectangle(x, y, w, h)
-        cr.fill()
-        cr.restore()
+
+        def _draw_pixbuf(cr, pixbuf, a, b, x, y, w, h, heading):
+            # Build a gtk.gdk.CairoContext from a cairo.Context to access
+            # the set_source_pixbuf attribute.
+            cc = gtk.gdk.CairoContext(cr)
+            cc.save()
+            # center the rotation on the center of the image
+            cc.translate(x + w / 2., y + h / 2.)
+            cc.rotate(heading * DEGTOR)
+            cc.translate(-x - w / 2., -y - h / 2.)
+            cc.set_source_pixbuf(pixbuf, x, y)
+            cc.rectangle(x, y, w, h)
+            cc.fill()
+            cc.restore()
+
+        _draw_pixbuf(self.canvas, pixbuf, a, b, x, y, w, h, self.heading)
         self.inval()
-        if self.tw.saving_svg:
-            if self.tw.running_sugar:
-                # In Sugar, we embed the images inside the SVG
-                tmp_file = os.path.join(get_path(self.tw.activity, 'instance'),
-                                       'tmpfile.png')
-                pixbuf.save(tmp_file, 'png', {'quality': '100'})
-                self.tw.svg_string += self.svg.image(
-                    x, y, w, h, path,
-                    image_to_base64(tmp_file,
-                                    get_path(self.tw.activity, 'instance')))
-                os.remove(tmp_file)
-            else:
-                # In GNOME, we embed a path
-                self.tw.svg_string += self.svg.image(
-                    x - self.width / 2, y, w, h, path)
+        if self.cr_svg is not None:
+            _draw_pixbuf(self.cr_svg, pixbuf, a, b, x, y, w, h, self.heading)
         if self.tw.sharing() and share:
             if self.tw.running_sugar:
                 tmp_path = get_path(self.tw.activity, 'instance')
@@ -608,31 +598,34 @@ class TurtleGraphics:
     def draw_text(self, label, x, y, size, w, share=True):
         ''' Draw text '''
         w *= self.tw.coord_scale
-        cr = pangocairo.CairoContext(self.canvas)
-        pl = cr.create_layout()
-        fd = pango.FontDescription('Sans')
-        fd.set_size(int(size * self.tw.coord_scale) * pango.SCALE)
-        pl.set_font_description(fd)
-        if type(label) == str or type(label) == unicode:
-            pl.set_text(label.replace('\0', ' '))
-        elif type(label) == float or type(label) == int:
-            pl.set_text(str(label))
-        else:
-            pl.set_text(str(label))
-        pl.set_width(int(w) * pango.SCALE)
-        cr.save()
-        cr.translate(x, y)
-        cr.rotate(self.heading * DEGTOR)
-        self.canvas.set_source_rgb(self.fgrgb[0] / 255.,
-                                   self.fgrgb[1] / 255.,
-                                   self.fgrgb[2] / 255.)
-        cr.update_layout(pl)
-        cr.show_layout(pl)
-        cr.restore()
+
+        def _draw_text(cr, label, x, y, size, w, scale, heading, rgb):
+            cc = pangocairo.CairoContext(cr)
+            pl = cc.create_layout()
+            fd = pango.FontDescription('Sans')
+            fd.set_size(int(size * scale) * pango.SCALE)
+            pl.set_font_description(fd)
+            if type(label) == str or type(label) == unicode:
+                pl.set_text(label.replace('\0', ' '))
+            elif type(label) == float or type(label) == int:
+                pl.set_text(str(label))
+            else:
+                pl.set_text(str(label))
+            pl.set_width(int(w) * pango.SCALE)
+            cc.save()
+            cc.translate(x, y)
+            cc.rotate(heading * DEGTOR)
+            cr.set_source_rgb(rgb[0] / 255., rgb[1] / 255., rgb[2] / 255.)
+            cc.update_layout(pl)
+            cc.show_layout(pl)
+            cc.restore()
+
+        _draw_text(self.canvas, label, x, y, size, w, self.tw.coord_scale,
+                   self.heading, self.fgrgb)
         self.inval()
-        if self.tw.saving_svg:  # and self.pendown:
-            self.tw.svg_string += self.svg.text(x, # - self.width / 2,
-                                                y + size, size, w, label)
+        if self.cr_svg is not None:  # and self.pendown:
+            _draw_text(self.cr_svg, label, x, y, size, w, self.tw.coord_scale,
+                       self.heading, self.fgrgb)
         if self.tw.sharing() and share:
             event = 'W|%s' % (data_to_string([self._get_my_nick(),
                                               [label, round_int(x),
@@ -658,20 +651,18 @@ class TurtleGraphics:
         x1, y1 = self.turtle_to_screen_coordinates(x1, y1)
         x2, y2 = self.turtle_to_screen_coordinates(x2, y2)
 
-        self.canvas.move_to(x1, y1)
-        self.canvas.line_to(x2, y2)
-        self.canvas.stroke()
+        def _draw_line(cr, x1, y1, x2, y2):
+            cr.move_to(x1, y1)
+            cr.line_to(x2, y2)
+            cr.stroke()
 
+        _draw_line(self.canvas, x1, y1, x2, y2)
+        if self.cr_svg is not None:
+            _draw_line(self.cr_svg, x1, y1, x2, y2)
         if self.fill:
             if self.poly_points == []:
                 self.poly_points.append(('move', x1, y1))
             self.poly_points.append(('line', x2, y2))
-
-        if self.tw.saving_svg and self.pendown:
-            self.tw.svg_string += self.svg.new_path(x1, y1)
-            self.tw.svg_string += self.svg.line_to(x2, y2)
-            self.tw.svg_string += '"\n'
-            self.tw.svg_string += self.svg.style()
 
     def turn_turtle(self):
         ''' Change the orientation of the turtle '''
@@ -772,14 +763,13 @@ class TurtleGraphics:
 
     def svg_close(self):
         ''' Close current SVG graphic '''
-        if self.tw.svg_string == '':
-            return
-        self.svg.calc_w_h(False)
-        self.tw.svg_string = '%s %s %s %s' % (
-            self.svg.header(True),
-            self.svg.background('#%02x%02x%02x' % (
-                    self.bgrgb[0], self.bgrgb[1], self.bgrgb[2])),
-            self.tw.svg_string, self.svg.footer())
+        debug_output('svg_close', True)
+        self.cr_svg.show_page()
+
+    def svg_reset(self):
+        ''' Reset svg flags '''
+        debug_output('svg_reset', True)
+        self.cr_svg = None
 
     def _get_my_nick(self):
         return self.tw.nick

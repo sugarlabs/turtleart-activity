@@ -798,7 +798,7 @@ def find_blk_below(blk, name):
     if blk == None or len(blk.connections) == 0:
         return
     group = find_group(blk)
-    for gblk in _group:
+    for gblk in group:
         if gblk.name == name:
             return gblk
     return None
