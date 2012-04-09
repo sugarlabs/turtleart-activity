@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2010,11 Walter Bender
+#Copyright (c) 2010,12 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -129,10 +129,10 @@ class Turtle:
 
         self._prep_shapes(key, turtles, turtle_colors)
 
-        # Choose a random angle from which to attach the turtle label
+        # Choose a random angle from which to attach the turtle label.
         if turtles.sprite_list is not None:
             self.spr = Sprite(turtles.sprite_list, 0, 0, self.shapes[0])
-            angle = uniform(0, pi * 4 / 3.0) # 240 degrees
+            angle = uniform(0, pi * 4 / 3.0)  # 240 degrees
             w = self.shapes[0].get_width()
             r = w * 0.67
             # Restrict angle the the sides 30-150; 210-330

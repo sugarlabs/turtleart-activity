@@ -69,6 +69,7 @@ from talogo import primitive_dictionary, logoerror
 from tautils import convert, chr_to_ord, round_int, strtype
 from taconstants import BLACK, WHITE, CONSTANTS, XO30
 
+
 def _num_type(x):
     """ Is x a number type? """
     if type(x) == int:
@@ -416,8 +417,8 @@ in place of a number block)'),
         palette.add_block('gray',
                           style='box-style',
                           label=_('gray'),
-                          help_string=_('holds current gray level (can be used \
-in place of a number block)'),
+                          help_string=_('holds current gray level (can be \
+used in place of a number block)'),
                           value_block=True,
                           prim_name='gray')
         self.tw.lc.def_prim('gray', 0, lambda self: self.tw.canvas.gray)
@@ -560,8 +561,8 @@ tasetshade :shade \r')
 top numeric input'))
         self.tw.lc.def_prim(
             'minus', 2, lambda self, x, y: primitive_dictionary['minus'](x, y))
-        define_logo_function('taminus', 'to taminus :y :x\routput sum :x minus \
-:y\rend\r')
+        define_logo_function('taminus', 'to taminus :y :x\routput sum :x \
+minus :y\rend\r')
 
         primitive_dictionary['product'] = self._prim_product
         palette.add_block('product2',
@@ -582,8 +583,8 @@ top numeric input'))
                           special_name=_('divide'),
                           prim_name='division',
                           logo_command='quotient',
-                          help_string=_('divides top numeric input (numerator) \
-by bottom numeric input (denominator)'))
+                          help_string=_('divides top numeric input \
+(numerator) by bottom numeric input (denominator)'))
         self.tw.lc.def_prim(
             'division', 2,
             lambda self, x, y: primitive_dictionary['division'](x, y))
@@ -628,8 +629,8 @@ blocks'))
                           default=[0, 100],
                           prim_name='random',
                           logo_command='tarandom',
-                          help_string=_('returns random number between minimum \
-(top) and maximum (bottom) values'))
+                          help_string=_('returns random number between \
+minimum (top) and maximum (bottom) values'))
         self.tw.lc.def_prim(
             'random', 2, lambda self, x, y: primitive_dictionary['random'](
                 x, y))
@@ -681,8 +682,8 @@ operators'))
                           prim_name='equal?',
                           logo_command='equal?',
                           help_string=_('logical equal-to operator'))
-        self.tw.lc.def_prim(
-            'equal?', 2, lambda self, x, y: primitive_dictionary['equal'](x, y))
+        self.tw.lc.def_prim('equal?', 2,
+            lambda self, x, y: primitive_dictionary['equal'](x, y))
 
         palette.add_block('not',
                           style='not-style',
@@ -740,7 +741,8 @@ number of seconds'))
                           default=[None, 'vspace'],
                           logo_command='forever',
                           help_string=_('loops forever'))
-        self.tw.lc.def_prim('forever', 1, primitive_dictionary['forever'], True)
+        self.tw.lc.def_prim('forever', 1, primitive_dictionary['forever'],
+                            True)
 
         primitive_dictionary['repeat'] = self._prim_repeat
         palette.add_block('repeat',

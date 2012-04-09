@@ -1,5 +1,5 @@
 #Copyright (c) 2007-8, Playful Invention Company.
-#Copyright (c) 2008-11, Walter Bender
+#Copyright (c) 2008-12, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -286,13 +286,6 @@ def get_canvas_data(canvas):
     cr.set_source_surface(x_surface)
     cr.paint()
     return img_surface.get_data()
-
-
-def save_svg(string, file_name):
-    ''' Write a string to a file. '''
-    file_handle = file(file_name, 'w')
-    file_handle.write(string)
-    file_handle.close()
 
 
 def get_pixbuf_from_journal(dsobject, w, h):

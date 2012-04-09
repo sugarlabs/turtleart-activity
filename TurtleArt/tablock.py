@@ -512,7 +512,7 @@ class Block:
         if self.name in BOX_COLORS:
             self.colors = BOX_COLORS[self.name]
         elif self.name in special_block_colors:
-            self.colors = special_block_colors[self.name]      
+            self.colors = special_block_colors[self.name]
         else:
             for p in range(len(palette_blocks)):
                 if self.name in palette_blocks[p]:

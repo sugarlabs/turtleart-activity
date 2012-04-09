@@ -83,6 +83,7 @@ import pango
 import pangocairo
 import cairo
 
+
 class Sprites:
     ''' A class for the list of sprites and everything they share in common '''
 
@@ -402,14 +403,14 @@ class Sprite:
                 x = int(self.rect.x + self._margins[0] + (my_width - w) / 2)
             elif self._horiz_align[i] == 'left':
                 x = int(self.rect.x + self._margins[0])
-            else: # right
+            else:  # right
                 x = int(self.rect.x + self.rect.width - w - self._margins[2])
             h = pl.get_size()[1] / pango.SCALE
             if self._vert_align[i] == "middle":
                 y = int(self.rect.y + self._margins[1] + (my_height - h) / 2)
             elif self._vert_align[i] == "top":
                 y = int(self.rect.y + self._margins[1])
-            else: # bottom
+            else:  # bottom
                 y = int(self.rect.y + self.rect.height - h - self._margins[3])
             cr.save()
             cr.translate(x, y)
@@ -454,16 +455,13 @@ class Sprite:
         if x < 0 or x > (self.rect.width - 1) or \
                 y < 0 or y > (self.rect.height - 1):
             return(-1, -1, -1, -1)
-
-        # create a new 1x1 cairo surface
-        cs = cairo.ImageSurface(cairo.FORMAT_RGB24, 1, 1);
+        # Create a new 1x1 cairo surface.
+        cs = cairo.ImageSurface(cairo.FORMAT_RGB24, 1, 1)
         cr = cairo.Context(cs)
         cr.set_source_surface(self.cached_surfaces[i], -x, -y)
-        cr.rectangle(0,0,1,1)
+        cr.rectangle(0, 0, 1, 1)
         cr.set_operator(cairo.OPERATOR_SOURCE)
         cr.fill()
-        cs.flush() # ensure all writing is done
-        # Read the pixel
-        pixels = cs.get_data()
+        cs.flush()  # Ensure all the writing is done.
+        pixels = cs.get_data()  # Read the pixel.
         return (ord(pixels[2]), ord(pixels[1]), ord(pixels[0]), 0)
-

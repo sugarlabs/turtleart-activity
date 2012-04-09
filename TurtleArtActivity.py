@@ -1076,7 +1076,7 @@ in order to use the plugin.'))
 
                 tmp_dir = tempfile.mkdtemp()
 
-                if True: # try:
+                try:
                     tar_fd.extractall(tmp_dir)
                     if not plugin:
                         # Looking for a .ta file
@@ -1087,10 +1087,10 @@ in order to use the plugin.'))
                             self.tw.load_files(turtle_code, run_it)
                     else:
                         self._load_a_plugin(tmp_dir)
-                else: # except:
+                except:
                     _logger.debug('Could not extract files from %s.' % (
                             file_path))
-                if True: # finally:
+                finally:
                     if not plugin:
                         shutil.rmtree(tmp_dir)
                     tar_fd.close()

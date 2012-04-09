@@ -775,7 +775,8 @@ class TurtleArtWindow():
 
         # Make sure all of the selectors are visible. (We don't need to do
         # this for 0.86+ toolbars since the selectors are toolbar buttons.)
-        if show and (self.activity is None or not self.activity.has_toolbarbox):
+        if show and \
+           (self.activity is None or not self.activity.has_toolbarbox):
             self.selected_selector = self.selectors[n]
             self.selectors[n].set_shape(self.selector_shapes[n][1])
             for i in range(len(palette_blocks)):
@@ -783,7 +784,8 @@ class TurtleArtWindow():
 
             # Show the palette with the current orientation.
             if self.palette_sprs[n][self.orientation] is not None:
-                self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
+                self.palette_sprs[n][self.orientation].set_layer(
+                    CATEGORY_LAYER)
                 self._display_palette_shift_button(n)
 
         # Create 'proto' blocks for each palette entry
@@ -1101,11 +1103,13 @@ class TurtleArtWindow():
                     self.palette_button[2].move((PALETTE_WIDTH - 20,
                                                  self.toolbar_offset))
             if show:
-                self.palette_button[2].save_xy = self.palette_button[2].get_xy()
+                self.palette_button[2].save_xy = \
+                    self.palette_button[2].get_xy()
                 if self.running_sugar and not self.hw in [XO1]:
                     self.palette_button[2].move_relative(
                         (self.activity.hadj_value, self.activity.vadj_value))
-                self.palette_sprs[n][self.orientation].set_layer(CATEGORY_LAYER)
+                self.palette_sprs[n][self.orientation].set_layer(
+                    CATEGORY_LAYER)
                 self._display_palette_shift_button(n)
 
     def _make_palette_spr(self, n, x, y, w, h, regenerate=False):
@@ -1123,11 +1127,9 @@ class TurtleArtWindow():
                 self.palette_sprs[n][self.orientation].move_relative(
                     (self.activity.hadj_value, self.activity.vadj_value))
             if self.orientation == 0 and w > self.width:
-                debug_output('setting to shiftable horizontal', True)
                 self.palette_sprs[n][self.orientation].type = \
                     'category-shift-horizontal'
             elif self.orientation == 1 and h > self.height - ICON_SIZE:
-                debug_output('setting to shiftable vertical', True)
                 self.palette_sprs[n][self.orientation].type = \
                     'category-shift-vertical'
             else:
@@ -1155,7 +1157,8 @@ class TurtleArtWindow():
 
         # Unselect things that may have been selected earlier
         if self.selected_blk is not None:
-            if self.selected_blk.name == 'number' and spr in self.triangle_sprs:
+            if self.selected_blk.name == 'number' and \
+               spr in self.triangle_sprs:
                 # increment or decrement a number block
                 nf = float(self.selected_blk.spr.labels[0].replace(CURSOR, ''))
                 ni = int(nf)
@@ -1513,7 +1516,6 @@ class TurtleArtWindow():
                     newblk.connections[i + 1] = argblk
         self.drag_group = find_group(newblk)
         self.block_operation = 'new'
-        debug_output(newblk.name, True)
         if len(newblk.spr.labels) > 0 and newblk.spr.labels[0] is not None \
                 and newblk.name not in ['', 'number', 'string']:
             if len(self.used_block_list) > 0:
@@ -2197,12 +2199,8 @@ class TurtleArtWindow():
         self.lc.find_value_blocks()  # Are there blocks to update?
         # Is there a savesvg block?
         if len(self.block_list.get_similar_blocks('block', 'savesvg')) > 0:
-            debug_output('savesvg block found!', True)
             if self.canvas.cr_svg is None:
                 self.canvas.setup_svg_surface()
-            debug_output(self.canvas.cr_svg, True)
-        else:
-            debug_output('no savesvg blocks found', True)
         self._start_plugins()  # Let the plugins know we are running.
         top = find_top_block(blk)
         self.lc.run_blocks(top, self.just_blocks(), True)
@@ -2275,7 +2273,8 @@ class TurtleArtWindow():
                 if best_destination_dockn == 2 and \
                    (selected_block.name in block_styles['boolean-style'] or \
                     selected_block.name in block_styles['compare-style'] or \
-                    selected_block.name in block_styles['compare-porch-style']):
+                    selected_block.name in block_styles['compare-porch-style']
+                    ):
                     dy = selected_block.ey - best_destination.ey
                     if selected_block.name in block_styles['boolean-style']:
                         # Even without expanding, boolean blocks are
@@ -2698,7 +2697,6 @@ class TurtleArtWindow():
         else:
             n = 0
         self.selected_blk.spr.set_label(str(n))
-        debug_output(str(n), True)
         try:
             self.selected_blk.values[0] = \
                 float(str(n).replace(self.decimal_point, '.'))

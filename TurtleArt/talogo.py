@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007-8, Playful Invention Company.
-#Copyright (c) 2008-11, Walter Bender
+#Copyright (c) 2008-12, Walter Bender
 #Copyright (c) 2008-10, Raúl Gutiérrez Segalés
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -67,6 +67,7 @@ class logoerror(Exception):
     def __str__(self):
         return repr(self.value)
 
+
 class HiddenBlock:
 
     def __init__(self, name, value=None):
@@ -81,6 +82,7 @@ class HiddenBlock:
         self.docks = []
 
 # Utility functions
+
 
 def _just_stop():
     """ yield False to stop stack """
@@ -248,14 +250,6 @@ class LogoCode:
         dock = blk.docks[0]
         if len(dock) > 4:  # There could be a '(', ')', '[' or ']'.
             code.append(dock[4])
-
-        '''
-        if blk.name == 'savesvg':
-            debug_output('talogo: savesvg', True)
-            if self.tw.canvas.cr_svg is None:
-                self.tw.canvas.setup_svg_surface()
-        '''
-
         if blk.primitive is not None:  # make a tuple (prim, blk)
             # special case: expand 'while' and 'until' primitives
             try:
@@ -548,7 +542,7 @@ class LogoCode:
 
     def prim_clear(self):
         """ Clear screen """
-	self.tw.clear_plugins()
+        self.tw.clear_plugins()
         if self.tw.gst_available:
             from tagplay import stop_media
             # stop_media(self)  # TODO: gplay variable
@@ -666,8 +660,10 @@ class LogoCode:
                                            self.y2ty() - int(h / 2), w, h,
                                            self.filepath)
             elif offset:
-                self.tw.canvas.draw_pixbuf(self.pixbuf, 0, 0, self.x2tx(),
-                                           self.y2ty() - h, w, h, self.filepath)
+                self.tw.canvas.draw_pixbuf(self.pixbuf, 0, 0,
+                                           self.x2tx(),
+                                           self.y2ty() - h,
+                                           w, h, self.filepath)
             else:
                 self.tw.canvas.draw_pixbuf(self.pixbuf, 0, 0,
                                            self.x2tx(),
@@ -739,11 +735,11 @@ class LogoCode:
         # into trouble if any of these block types (forever, while,
         # until. ifelse, stopstack, or stack) is changed in tablock.py
         if b.name == 'while':
-            while_blk = True        
+            while_blk = True
         else:
             while_blk = False
         if b.name == 'until':
-            until_blk = True        
+            until_blk = True
         else:
             until_blk = False
 
@@ -855,7 +851,8 @@ class LogoCode:
             c = whileflow.connections[0]
             whileflow.connections[0] = None
             code = self._blocks_to_code(whileflow)
-            self.stacks['stack3' + str(action_flow_name)] = self._readline(code)
+            self.stacks['stack3' + str(action_flow_name)] = \
+                self._readline(code)
             whileflow.connections[0] = c
 
         # Save the connections so we can restore them later
