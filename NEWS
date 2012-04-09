@@ -1,6 +1,16 @@
-137
+138
 
 ENHANCEMENT:
+* New translations
+
+BUG FIX:
+* Added more robust sprite 'hit" detection (#3415)
+* Force Cairo refresh after fill block (#3422)
+* Refactoring of save to svg code to use Cairo surface (#3423, #3424)
+
+137
+
+ENHANCEMENTS:
 * New help system inspired by Gonzalo Odiard's help in SimpleGraph 
   (includes end run around #2633)
 * Force standard palettes to appear before plugin palettes
