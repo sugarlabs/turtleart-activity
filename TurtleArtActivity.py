@@ -112,6 +112,8 @@ class TurtleArtActivity(activity.Activity):
                 count += 1
             self.metadata['activity count'] = str(count)
 
+        self._defer_palette_move = False
+
     # Activity toolbar callbacks
 
     def do_save_as_html_cb(self, button):
@@ -380,6 +382,33 @@ class TurtleArtActivity(activity.Activity):
         self.tw.load_file(True)
         self.tw.run_button(0)
 
+    def adjust_sw(self, dx, dy):
+        ''' Adjust the scrolled window position. '''
+        hadj = self.sw.get_hadjustment()
+        hvalue = hadj.get_value() + dx
+        if hvalue < hadj.get_lower():
+            hvalue = hadj.get_lower()
+        elif hvalue > hadj.get_upper():
+            hvalue = hadj.get_upper()
+        hadj.set_value(hvalue)
+        self.sw.set_hadjustment(hadj)
+        vadj = self.sw.get_vadjustment()
+        vvalue = vadj.get_value() + dy
+        if vvalue < vadj.get_lower():
+            vvalue = vadj.get_lower()
+        elif vvalue > vadj.get_upper():
+            vvalue = vadj.get_upper()
+        vadj.set_value(vvalue)
+        self.sw.set_vadjustment(vadj)
+        self._defer_palette_move = True
+
+    def adjust_palette(self):
+        ''' Align palette to scrolled window position. '''
+        if not self.tw.hw in [XO1]:
+            self.tw.move_palettes(self.sw.get_hadjustment().get_value(),
+                                  self.sw.get_vadjustment().get_value())
+        self._defer_palette_move = False
+
     def recenter(self):
         ''' Recenter scrolled window around canvas. '''
         self.hadj_value = 0
@@ -390,8 +419,7 @@ class TurtleArtActivity(activity.Activity):
         vadj = self.sw.get_vadjustment()
         vadj.set_value(self.vadj_value)
         self.sw.set_vadjustment(vadj)
-        if not self.tw.hw in [XO1]:
-            self.tw.move_palettes(self.hadj_value, self.vadj_value)
+        self.adjust_palette()
 
     def do_fullscreen_cb(self, button):
         ''' Hide the Sugar toolbars. '''
@@ -888,7 +916,7 @@ class TurtleArtActivity(activity.Activity):
         self.hadj_value = hadj.get_value()
         vadj = self.sw.get_vadjustment()
         self.vadj_value = vadj.get_value()
-        if not self.tw.hw in [XO1]:
+        if not self.tw.hw in [XO1] and not self._defer_palette_move:
             gobject.idle_add(self.tw.move_palettes, self.hadj_value,
                              self.vadj_value)
 

@@ -201,6 +201,7 @@ class TurtleArtWindow():
         self.drag_group = None
         self.drag_turtle = 'move', 0, 0
         self.drag_pos = 0, 0
+        self.dragging_canvas = [False, 0, 0]
         self.turtle_movement_to_share = None
         self.paste_offset = 20  # Don't paste on top of where you copied.
 
@@ -1181,8 +1182,12 @@ class TurtleArtWindow():
 
         self.dx = 0
         self.dy = 0
+        self.dragging_canvas[1] = x
+        self.dragging_canvas[2] = y
         if spr is None:
+            self.dragging_canvas[0] = True
             return True
+        self.dragging_canvas[0] = False
         self.selected_spr = spr
 
         # From the sprite at x, y, look for a corresponding block
@@ -1685,6 +1690,16 @@ class TurtleArtWindow():
 
     def _mouse_move(self, x, y):
         """ Process mouse movements """
+
+        if self.dragging_canvas[0]:
+            dx = self.dragging_canvas[1] - x
+            dy = self.dragging_canvas[2] - y
+            self.dragging_canvas[1] = x
+            self.dragging_canvas[2] = y
+            if self.running_sugar:
+                self.activity.adjust_sw(dx, dy)
+            return True
+
         self.block_operation = 'move'
 
         # First, check to see if we are dragging or rotating a turtle.
@@ -1853,6 +1868,13 @@ class TurtleArtWindow():
         return True
 
     def button_release(self, x, y):
+        if self.dragging_canvas[0]:
+            self.dragging_canvas[0] = False
+            self.dragging_canvas[1] = x
+            self.dragging_canvas[2] = y
+            self.activity.adjust_palette()
+            return True
+
         # We may have been moving the turtle
         if self.selected_turtle is not None:
             (tx, ty) = self.selected_turtle.get_xy()
