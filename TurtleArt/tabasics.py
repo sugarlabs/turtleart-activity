@@ -747,7 +747,7 @@ number of seconds'))
         primitive_dictionary['repeat'] = self._prim_repeat
         palette.add_block('repeat',
                           style='flow-style-1arg',
-                          label=[' ', _('repeat')],
+                          label=['', _('repeat')],
                           prim_name='repeat',
                           default=[4, None, 'vspace'],
                           logo_command='repeat',
@@ -758,7 +758,7 @@ number of seconds'))
         primitive_dictionary['if'] = self._prim_if
         palette.add_block('if',
                           style='flow-style-boolean',
-                          label=[_('if'), ' ', _('then')],
+                          label=[_('if'), '', _('then')],
                           prim_name='if',
                           default=[None, None, 'vspace'],
                           special_name=_('if then'),
@@ -770,7 +770,7 @@ operators from Numbers palette'))
         primitive_dictionary['ifelse'] = self._prim_ifelse
         palette.add_block('ifelse',
                           style='flow-style-else',
-                          label=[_('if'), ' ', _('then else')],
+                          label=[_('if'), '', _('then else')],
                           prim_name='ifelse',
                           default=[None, 'vspace', None, 'vspace'],
                           logo_command='ifelse',
@@ -781,7 +781,7 @@ boolean operators from Numbers palette'))
 
         palette.add_block('hspace',
                           style='flow-style-tail',
-                          label=' ',
+                          label='',
                           prim_name='nop',
                           special_name=_('horizontal space'),
                           help_string=_('jogs stack right'))
@@ -789,7 +789,7 @@ boolean operators from Numbers palette'))
 
         palette.add_block('vspace',
                           style='basic-style-extended-vertical',
-                          label=' ',
+                          label='',
                           prim_name='nop',
                           special_name=_('vertical space'),
                           help_string=_('jogs stack down'))
