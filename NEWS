@@ -1,7 +1,11 @@
 138
 
-ENHANCEMENT:
+ENHANCEMENTS:
 * New translations
+* Replace ambiguous Sensor palette icon with Sensor icon from Measure
+* Renamed sample programs by genre, e.g., graphics, sensors, math, etc.
+* Canvas can be dragged
+* Add alerts after successful saves
 
 BUG FIX:
 * Added more robust sprite 'hit" detection (#3415)
