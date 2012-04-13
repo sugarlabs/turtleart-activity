@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-29 00:31-0400\n"
-"PO-Revision-Date: 2012-04-13 13:39+0200\n"
+"PO-Revision-Date: 2012-04-13 14:27+0200\n"
 "Last-Translator: Eduardo H. <hoboprimate@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: pt\n"
@@ -1406,7 +1406,7 @@ msgstr "inserir"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
 msgid "pushes value onto FILO (first-in last-out heap)"
-msgstr "insere valor no \"FILO\" (pilha entra-primeiro sai-último)"
+msgstr "insere valor no FILO (pilha último a entrar, primeiro a sair)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
 msgid "show heap"
@@ -1414,7 +1414,7 @@ msgstr "mostrar pilha"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:407
 msgid "shows values in FILO (first-in last-out heap)"
-msgstr "mostra valores no \"FILO\" (pilha entra-primeiro sai-último)"
+msgstr "mostra valores no FILO (pilha último a entrar, primeiro a sair)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:417
 msgid "empty heap"
@@ -1422,7 +1422,7 @@ msgstr "esvaziar pilha"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:420
 msgid "emptys FILO (first-in-last-out heap)"
-msgstr "esvazia \"FILO\" (pilha entra-primeiro sai-último)"
+msgstr "esvazia FILO (pilha último a entrar, primeiro a sair)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
 msgid "pop"
@@ -1430,7 +1430,7 @@ msgstr "retirar"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:434
 msgid "pops value off FILO (first-in last-out heap)"
-msgstr "retira valor do \"FILO\" (pilha entra-primeiro sai-último)"
+msgstr "retira valor do FILO (pilha último a entrar, primeiro a sair)"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:444
 msgid "empty heap?"
