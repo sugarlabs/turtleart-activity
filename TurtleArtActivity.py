@@ -40,7 +40,7 @@ except ImportError:
     HAS_TOOLBARBOX = False
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.radiotoolbutton import RadioToolButton
-from sugar.graphics.alert import ConfirmationAlert
+from sugar.graphics.alert import ConfirmationAlert, NotifyAlert
 from sugar.graphics import style
 from sugar.datastore import datastore
 from sugar import profile
@@ -178,7 +178,8 @@ class TurtleArtActivity(activity.Activity):
             os.remove(html_file)
         else:
             os.remove(tar_file)
-        return
+
+        self._notify_successful_save(title=_('Save as HTML'))
 
     def do_save_as_logo_cb(self, button):
         ''' Write UCB logo code to datastore. '''
@@ -197,7 +198,7 @@ class TurtleArtActivity(activity.Activity):
 
         os.remove(logo_code_path)
         gobject.timeout_add(250, self.save_as_logo.set_icon, 'logo-saveoff')
-        return
+        self._notify_successful_save(title=_('Save as Logo'))
 
     def do_load_ta_project_cb(self, button):
         ''' Load a project from the Journal. '''
@@ -234,7 +235,7 @@ class TurtleArtActivity(activity.Activity):
 
         self.tw.save_as_image()
         gobject.timeout_add(250, self.save_as_image.set_icon, 'image-saveoff')
-        return
+        self._notify_successful_save(title=_('Save as image'))
 
     def do_keep_cb(self, button):
         ''' Save a snapshot of the project to the Journal. '''
@@ -250,7 +251,7 @@ class TurtleArtActivity(activity.Activity):
             datastore.write(dsobject)
             dsobject.destroy()
             os.remove(tmpfile)
-        return
+            self._notify_successful_save(title=_('Save snapshot'))
 
     # Main/palette toolbar button callbacks
 
@@ -1256,3 +1257,16 @@ in order to use the plugin.'))
         box.pack_start(button_and_label)
         button_and_label.show()
         return button
+
+    def _notify_successful_save(self, title='', msg=''):
+        ''' Notify user when saves are completed '''
+
+        def _notification_alert_response_cb(alert, response_id, self):
+            self.remove_alert(alert)
+
+        alert = NotifyAlert()
+        alert.props.title = title
+        alert.connect('response', _notification_alert_response_cb, self)
+        alert.props.msg = msg
+        self.add_alert(alert)
+        alert.show()
