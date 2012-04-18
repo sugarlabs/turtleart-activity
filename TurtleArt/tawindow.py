@@ -465,6 +465,10 @@ class TurtleArtWindow():
 
         # Create the cairo context
         cr = self.window.window.cairo_create()
+        # TODO: set global scale
+        # find_sprite needs rescaled coordinates
+        # sw needs new bounds set
+        # cr.scale(self.activity.global_x_scale, self.activity.global_y_scale)
 
         if event is None:
             cr.rectangle(self.rect.x, self.rect.y,
@@ -1691,13 +1695,12 @@ class TurtleArtWindow():
     def _mouse_move(self, x, y):
         """ Process mouse movements """
 
-        if self.dragging_canvas[0]:
+        if self.running_sugar and self.dragging_canvas[0]:
             dx = self.dragging_canvas[1] - x
             dy = self.dragging_canvas[2] - y
             self.dragging_canvas[1] = x
             self.dragging_canvas[2] = y
-            if self.running_sugar:
-                self.activity.adjust_sw(dx, dy)
+            self.activity.adjust_sw(dx, dy)
             return True
 
         self.block_operation = 'move'
@@ -1868,7 +1871,7 @@ class TurtleArtWindow():
         return True
 
     def button_release(self, x, y):
-        if self.dragging_canvas[0]:
+        if self.running_sugar and self.dragging_canvas[0]:
             self.dragging_canvas[0] = False
             self.dragging_canvas[1] = x
             self.dragging_canvas[2] = y
