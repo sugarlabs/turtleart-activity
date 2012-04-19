@@ -392,7 +392,7 @@ class TurtleMain():
             else:
                 if self.tw.project_has_changed():
                     self._show_save_dialog(False)
-        gtk.main_quit()
+        self.destroy(None)
 
     def _show_save_dialog(self, new_project=True):
         ''' Dialog for save project '''
@@ -589,7 +589,11 @@ class TurtleMain():
 
     def destroy(self, event, data=None):
         ''' Callback for destroy event. '''
+        for plugin in self.tw._plugins:
+            if hasattr(plugin, 'quit'):
+                plugin.quit()
         gtk.main_quit()
+        exit()
 
     def nick_changed(self, nick):
         ''' TODO: Rename default turtle in dictionary '''
