@@ -327,7 +327,7 @@ class TurtleMain():
                                    self._do_save_html_cb)
         MenuBuilder.make_menu_item(menu, _('Save as Logo'),
                                    self._do_save_logo_cb)
-        MenuBuilder.make_menu_item(menu, _('Quit'), self.destroy)
+        MenuBuilder.make_menu_item(menu, _('Quit'), self._quit_ta)
         activity_menu = MenuBuilder.make_sub_menu(menu, _('File'))
 
         menu = gtk.Menu()
@@ -392,7 +392,11 @@ class TurtleMain():
             else:
                 if self.tw.project_has_changed():
                     self._show_save_dialog(False)
-        self.destroy(None)
+        for plugin in self.tw._plugins:
+            if hasattr(plugin, 'quit'):
+                plugin.quit()
+        gtk.main_quit()
+        exit()
 
     def _show_save_dialog(self, new_project=True):
         ''' Dialog for save project '''
@@ -586,14 +590,6 @@ class TurtleMain():
         data_file.write(str(data.y) + '\n')
         data_file.write(str(data.width) + '\n')
         data_file.write(str(data.height) + '\n')
-
-    def destroy(self, event, data=None):
-        ''' Callback for destroy event. '''
-        for plugin in self.tw._plugins:
-            if hasattr(plugin, 'quit'):
-                plugin.quit()
-        gtk.main_quit()
-        exit()
 
     def nick_changed(self, nick):
         ''' TODO: Rename default turtle in dictionary '''
