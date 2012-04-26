@@ -274,7 +274,10 @@ def save_picture(canvas, file_name):
     cr = cairo.Context(img_surface)
     cr.set_source_surface(x_surface)
     cr.paint()
-    img_surface.write_to_png(file_name)
+    if type(file_name) == unicode:
+        img_surface.write_to_png(str(file_name.encode('ascii', 'replace')))
+    else:
+        img_surface.write_to_png(str(file_name))
 
 
 def get_canvas_data(canvas):
