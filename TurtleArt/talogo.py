@@ -213,6 +213,7 @@ class LogoCode:
                         x = b.connections[1].values[0]
                     except IndexError:
                         self.tw.showlabel('#nostack')
+                        self.tw.showblocks()
                         return None
                     if type(convert(x, float, False)) == float:
                         if int(float(x)) == x:
@@ -403,6 +404,7 @@ class LogoCode:
 
             if self.bindex is not None:
                 self.tw.block_list.list[self.bindex].highlight()
+            self.tw.showblocks()
             raise logoerror(str(self.iresult))
         self.iline = oldiline
         self.ireturn()
@@ -441,6 +443,7 @@ class LogoCode:
         self.cfun, self.arglist = token, []
 
         if token.nargs == None:
+            self.tw.showblocks()
             raise logoerror("#noinput")
         for i in range(token.nargs):
             self._no_args_check()
@@ -461,6 +464,7 @@ class LogoCode:
             result = self.cfun.fcn(self, *self.arglist)
         self.cfun, self.arglist = oldcfun, oldarglist
         if self.arglist is not None and result == None:
+            self.tw.showblocks()
             raise logoerror("%s %s %s" % \
                 (oldcfun.name, _("did not output to"), self.cfun.name))
         self.ireturn(result)
@@ -495,6 +499,7 @@ class LogoCode:
                         self.tw.active_turtle.show()
                     return False
         except logoerror, e:
+            self.tw.showblocks()
             self.tw.showlabel('syntaxerror', str(e)[1:-1])
             self.tw.turtles.show_all()
             return False
@@ -517,12 +522,14 @@ class LogoCode:
             errormsg = ''
         else:
             errormsg = "%s %s" % (_("I don't know how to"), _(token.name))
+        self.tw.showblocks()
         raise logoerror(errormsg)
 
     def _no_args_check(self):
         """ Missing argument ? """
         if self.iline and self.iline[0] is not self.symnothing:
             return
+        self.tw.showblocks()
         raise logoerror("#noinput")
 
     #
@@ -562,6 +569,7 @@ class LogoCode:
         elif type(n) == str:
             return int(ord(n[0]))
         else:
+            self.tw.showblocks()
             raise logoerror("%s %s %s %s" \
                 % (self.cfun.name, _("doesn't like"), str(n), _("as input")))
 

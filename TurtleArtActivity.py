@@ -317,12 +317,14 @@ class TurtleArtActivity(activity.Activity):
     def do_hideshow_cb(self, button):
         ''' Toggle visibility. '''
         self.tw.hideshow_button()
+        '''
         if self.tw.hide:  # We just hid the blocks.
             self.blocks_button.set_icon('hideshowon')
             self.blocks_button.set_tooltip(_('Show blocks'))
         else:
             self.blocks_button.set_icon('hideshowoff')
             self.blocks_button.set_tooltip(_('Hide blocks'))
+        '''
         # Update palette buttons too.
         if not self.tw.palette:
             self.do_hidepalette()
@@ -331,8 +333,10 @@ class TurtleArtActivity(activity.Activity):
 
     def do_hide_blocks(self):
         ''' Hide blocks. '''
+        '''
         self.blocks_button.set_icon('hideshowon')
         self.blocks_button.set_tooltip(_('Show blocks'))
+        '''
         self.do_hidepalette()
 
     def do_show_blocks(self):
@@ -354,6 +358,8 @@ class TurtleArtActivity(activity.Activity):
         ''' Callback for run button (rabbit) '''
         self.run_button.set_icon('run-faston')
         self.tw.lc.trace = 0
+        # Autohide blocks and palettes on run
+        self.tw.hideblocks()
         self.tw.run_button(0)
         gobject.timeout_add(1000, self.run_button.set_icon, 'run-fastoff')
 
@@ -375,6 +381,8 @@ class TurtleArtActivity(activity.Activity):
         ''' Callback for stop button. '''
         self.stop_turtle_button.set_icon('stopitoff')
         self.tw.stop_button()
+        # Auto show blocks after stop
+        self.tw.showblocks()
         self.step_button.set_icon('run-slowoff')
         self.run_button.set_icon('run-fastoff')
 
@@ -839,9 +847,11 @@ class TurtleArtActivity(activity.Activity):
             self.palette_button = self._add_button(
                 'paletteoff', _('Hide palette'), self.do_palette_cb,
                 toolbar, _('<Ctrl>p'))
+        '''
         self.blocks_button = self._add_button(
             'hideshowoff', _('Hide blocks'), self.do_hideshow_cb, toolbar,
             _('<Ctrl>b'))
+        '''
 
     def _make_project_buttons(self, toolbar):
         ''' Creates the turtle buttons for both toolbar types'''
