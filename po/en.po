@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-29 00:31-0400\n"
+"POT-Creation-Date: 2012-05-01 00:32-0400\n"
 "PO-Revision-Date: 2012-04-07 08:49+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
@@ -18,106 +18,106 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2 TurtleArt/taexporthtml.py:137
-#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:3134
+#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:3171
 #: pysamples/grecord.py:205 turtleart.py:288
 msgid "Turtle Art"
 msgstr "Turtle Art"
 
-#: TurtleArt/tabasics.py:115
+#: TurtleArt/tabasics.py:116
 msgid "Palette of turtle commands"
 msgstr "Palette of turtle commands"
 
-#: TurtleArt/tabasics.py:120
+#: TurtleArt/tabasics.py:121
 msgid "forward"
 msgstr "forward"
 
-#: TurtleArt/tabasics.py:124
+#: TurtleArt/tabasics.py:125
 msgid "moves turtle forward"
 msgstr "moves turtle forward"
 
-#: TurtleArt/tabasics.py:131
+#: TurtleArt/tabasics.py:132
 msgid "back"
 msgstr "back"
 
-#: TurtleArt/tabasics.py:135
+#: TurtleArt/tabasics.py:136
 msgid "moves turtle backward"
 msgstr "moves turtle backward"
 
-#: TurtleArt/tabasics.py:143
+#: TurtleArt/tabasics.py:144
 msgid "clean"
 msgstr "clean"
 
-#: TurtleArt/tabasics.py:146
+#: TurtleArt/tabasics.py:147
 msgid "clears the screen and reset the turtle"
 msgstr "clears the screen and reset the turtle"
 
-#: TurtleArt/tabasics.py:154
+#: TurtleArt/tabasics.py:155
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:736
 msgid "left"
 msgstr "left"
 
-#: TurtleArt/tabasics.py:158
+#: TurtleArt/tabasics.py:159
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "turns turtle counterclockwise (angle in degrees)"
 
-#: TurtleArt/tabasics.py:165
+#: TurtleArt/tabasics.py:166
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:760
 msgid "right"
 msgstr "right"
 
-#: TurtleArt/tabasics.py:169
+#: TurtleArt/tabasics.py:170
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "turns turtle clockwise (angle in degrees)"
 
-#: TurtleArt/tabasics.py:177
+#: TurtleArt/tabasics.py:178
 msgid "arc"
 msgstr "arc"
 
-#: TurtleArt/tabasics.py:177
+#: TurtleArt/tabasics.py:178
 msgid "angle"
 msgstr "angle"
 
-#: TurtleArt/tabasics.py:177
+#: TurtleArt/tabasics.py:178
 msgid "radius"
 msgstr "radius"
 
-#: TurtleArt/tabasics.py:181
+#: TurtleArt/tabasics.py:182
 msgid "moves turtle along an arc"
 msgstr "moves turtle along an arc"
 
-#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256
+#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
 msgid "set xy"
 msgstr "set xy"
 
-#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256 taextras.py:218
+#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257 taextras.py:218
 msgid "x"
 msgstr "x"
 
-#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256 taextras.py:219
+#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257 taextras.py:219
 msgid "y"
 msgstr "y"
 
-#: TurtleArt/tabasics.py:194 TurtleArt/tabasics.py:260
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 
 #
-#: TurtleArt/tabasics.py:204
+#: TurtleArt/tabasics.py:205
 msgid "set heading"
 msgstr "seth"
 
-#: TurtleArt/tabasics.py:208
+#: TurtleArt/tabasics.py:209
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "sets the heading of the turtle (0 is towards the top of the screen.)"
 
-#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3130
-#: TurtleArt/tawindow.py:3134 TurtleArtActivity.py:573
+#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3167
+#: TurtleArt/tawindow.py:3171 TurtleArtActivity.py:610
 msgid "xcor"
 msgstr "xcor"
 
-#: TurtleArt/tabasics.py:217
+#: TurtleArt/tabasics.py:218
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -125,12 +125,12 @@ msgstr ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
 
-#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3130
-#: TurtleArt/tawindow.py:3134 TurtleArtActivity.py:574
+#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3167
+#: TurtleArt/tawindow.py:3171 TurtleArtActivity.py:611
 msgid "ycor"
 msgstr "ycor"
 
-#: TurtleArt/tabasics.py:228
+#: TurtleArt/tabasics.py:229
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -138,12 +138,12 @@ msgstr ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
 
-#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3130
-#: TurtleArt/tawindow.py:3134 TurtleArtActivity.py:574
+#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3167
+#: TurtleArt/tawindow.py:3171 TurtleArtActivity.py:611
 msgid "heading"
 msgstr "heading"
 
-#: TurtleArt/tabasics.py:239
+#: TurtleArt/tabasics.py:240
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
@@ -151,427 +151,427 @@ msgstr ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
 
-#: TurtleArt/tabasics.py:273
+#: TurtleArt/tabasics.py:274
 msgid "Palette of pen commands"
 msgstr "Palette of pen commands"
 
-#: TurtleArt/tabasics.py:277
+#: TurtleArt/tabasics.py:278
 msgid "pen up"
 msgstr "pen up"
 
-#: TurtleArt/tabasics.py:280
+#: TurtleArt/tabasics.py:281
 msgid "Turtle will not draw when moved."
 msgstr "Turtle will not draw when moved."
 
-#: TurtleArt/tabasics.py:286
+#: TurtleArt/tabasics.py:287
 msgid "pen down"
 msgstr "pen down"
 
-#: TurtleArt/tabasics.py:289
+#: TurtleArt/tabasics.py:290
 msgid "Turtle will draw when moved."
 msgstr "Turtle will draw when moved."
 
-#: TurtleArt/tabasics.py:295
+#: TurtleArt/tabasics.py:296
 msgid "set pen size"
 msgstr "set pen size"
 
-#: TurtleArt/tabasics.py:299
+#: TurtleArt/tabasics.py:300
 msgid "sets size of the line drawn by the turtle"
 msgstr "sets size of the line drawn by the turtle"
 
-#: TurtleArt/tabasics.py:309
+#: TurtleArt/tabasics.py:310
 msgid "fill screen"
 msgstr "fill screen"
 
-#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:399 taextras.py:264
+#: TurtleArt/tabasics.py:310 TurtleArt/tabasics.py:400 taextras.py:264
 msgid "color"
 msgstr "color"
 
-#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:409
+#: TurtleArt/tabasics.py:310 TurtleArt/tabasics.py:410
 msgid "shade"
 msgstr "shade"
 
-#: TurtleArt/tabasics.py:313
+#: TurtleArt/tabasics.py:314
 msgid "fills the background with (color, shade)"
 msgstr "fills the background with (color, shade)"
 
-#: TurtleArt/tabasics.py:322
+#: TurtleArt/tabasics.py:323
 msgid "pen size"
 msgstr "pen size"
 
-#: TurtleArt/tabasics.py:323
+#: TurtleArt/tabasics.py:324
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr "holds current pen size (can be used in place of a number block)"
 
-#: TurtleArt/tabasics.py:334
+#: TurtleArt/tabasics.py:335
 msgid "start fill"
 msgstr "start fill"
 
-#: TurtleArt/tabasics.py:336
+#: TurtleArt/tabasics.py:337
 msgid "starts filled polygon (used with end fill block)"
 msgstr "starts filled polygon (used with end fill block)"
 
-#: TurtleArt/tabasics.py:343
+#: TurtleArt/tabasics.py:344
 msgid "end fill"
 msgstr "end fill"
 
-#: TurtleArt/tabasics.py:345
+#: TurtleArt/tabasics.py:346
 msgid "completes filled polygon (used with start fill block)"
 msgstr "completes filled polygon (used with start fill block)"
 
-#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:360
+#: TurtleArt/tabasics.py:357 TurtleArt/tabasics.py:361
 msgid "Palette of pen colors"
 msgstr "Palette of pen colors"
 
-#: TurtleArt/tabasics.py:364
+#: TurtleArt/tabasics.py:365
 msgid "set color"
 msgstr "set color"
 
-#: TurtleArt/tabasics.py:368
+#: TurtleArt/tabasics.py:369
 msgid "sets color of the line drawn by the turtle"
 msgstr "sets color of the line drawn by the turtle"
 
-#: TurtleArt/tabasics.py:376
+#: TurtleArt/tabasics.py:377
 msgid "set shade"
 msgstr "set shade"
 
-#: TurtleArt/tabasics.py:380
+#: TurtleArt/tabasics.py:381
 msgid "sets shade of the line drawn by the turtle"
 msgstr "sets shade of the line drawn by the turtle"
 
-#: TurtleArt/tabasics.py:388
+#: TurtleArt/tabasics.py:389
 msgid "set gray"
 msgstr "set gray"
 
-#: TurtleArt/tabasics.py:391
+#: TurtleArt/tabasics.py:392
 msgid "sets gray level of the line drawn by the turtle"
 msgstr "sets gray level of the line drawn by the turtle"
 
-#: TurtleArt/tabasics.py:400
+#: TurtleArt/tabasics.py:401
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr "holds current pen color (can be used in place of a number block)"
 
-#: TurtleArt/tabasics.py:410
+#: TurtleArt/tabasics.py:411
 msgid "holds current pen shade"
 msgstr "holds current pen shade"
 
-#: TurtleArt/tabasics.py:418
+#: TurtleArt/tabasics.py:419
 msgid "gray"
 msgstr "gray"
 
-#: TurtleArt/tabasics.py:419
+#: TurtleArt/tabasics.py:420
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr "holds current gray level (can be used in place of a number block)"
 
-#: TurtleArt/tabasics.py:425
+#: TurtleArt/tabasics.py:426
 msgid "red"
 msgstr "red"
 
-#: TurtleArt/tabasics.py:426
+#: TurtleArt/tabasics.py:427
 msgid "orange"
 msgstr "orange"
 
-#: TurtleArt/tabasics.py:428
+#: TurtleArt/tabasics.py:429
 msgid "yellow"
 msgstr "yellow"
 
-#: TurtleArt/tabasics.py:430
+#: TurtleArt/tabasics.py:431
 msgid "green"
 msgstr "green"
 
-#: TurtleArt/tabasics.py:431
+#: TurtleArt/tabasics.py:432
 msgid "cyan"
 msgstr "cyan"
 
-#: TurtleArt/tabasics.py:432
+#: TurtleArt/tabasics.py:433
 msgid "blue"
 msgstr "blue"
 
-#: TurtleArt/tabasics.py:433
+#: TurtleArt/tabasics.py:434
 msgid "purple"
 msgstr "purple"
 
-#: TurtleArt/tabasics.py:435
+#: TurtleArt/tabasics.py:436
 msgid "white"
 msgstr "white"
 
-#: TurtleArt/tabasics.py:436
+#: TurtleArt/tabasics.py:437
 msgid "black"
 msgstr "black"
 
-#: TurtleArt/tabasics.py:442
+#: TurtleArt/tabasics.py:443
 msgid "set text color"
 msgstr "set text color"
 
-#: TurtleArt/tabasics.py:445
+#: TurtleArt/tabasics.py:446
 msgid "sets color of text drawn by the turtle"
 msgstr "sets color of text drawn by the turtle"
 
-#: TurtleArt/tabasics.py:453
+#: TurtleArt/tabasics.py:454
 msgid "set text size"
 msgstr "set text size"
 
-#: TurtleArt/tabasics.py:456
+#: TurtleArt/tabasics.py:457
 msgid "sets size of text drawn by the turtle"
 msgstr "sets size of text drawn by the turtle"
 
-#: TurtleArt/tabasics.py:539
+#: TurtleArt/tabasics.py:540
 msgid "Palette of numeric operators"
 msgstr "Palette of numeric operators"
 
-#: TurtleArt/tabasics.py:545
+#: TurtleArt/tabasics.py:546
 msgid "plus"
 msgstr "plus"
 
-#: TurtleArt/tabasics.py:548
+#: TurtleArt/tabasics.py:549
 msgid "adds two alphanumeric inputs"
 msgstr "adds two alphanumeric inputs"
 
-#: TurtleArt/tabasics.py:556
+#: TurtleArt/tabasics.py:557
 msgid "minus"
 msgstr "minus"
 
-#: TurtleArt/tabasics.py:559
+#: TurtleArt/tabasics.py:560
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr "subtracts bottom numeric input from top numeric input"
 
-#: TurtleArt/tabasics.py:570
+#: TurtleArt/tabasics.py:571
 msgid "multiply"
 msgstr "multiply"
 
-#: TurtleArt/tabasics.py:573
+#: TurtleArt/tabasics.py:574
 msgid "multiplies two numeric inputs"
 msgstr "multiplies two numeric inputs"
 
-#: TurtleArt/tabasics.py:582
+#: TurtleArt/tabasics.py:583
 msgid "divide"
 msgstr "divide"
 
-#: TurtleArt/tabasics.py:585
+#: TurtleArt/tabasics.py:586
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 
-#: TurtleArt/tabasics.py:595
+#: TurtleArt/tabasics.py:596
 msgid "identity"
 msgstr "identity"
 
-#: TurtleArt/tabasics.py:597
+#: TurtleArt/tabasics.py:598
 msgid "identity operator used for extending blocks"
 msgstr "identity operator used for extending blocks"
 
-#: TurtleArt/tabasics.py:605 TurtleArt/tabasics.py:606
+#: TurtleArt/tabasics.py:606 TurtleArt/tabasics.py:607
 msgid "mod"
 msgstr "mod"
 
-#: TurtleArt/tabasics.py:609
+#: TurtleArt/tabasics.py:610
 msgid "modular (remainder) operator"
 msgstr "modular (remainder) operator"
 
-#: TurtleArt/tabasics.py:616
+#: TurtleArt/tabasics.py:617
 msgid "√"
 msgstr "√"
 
-#: TurtleArt/tabasics.py:617
+#: TurtleArt/tabasics.py:618
 msgid "square root"
 msgstr "square root"
 
-#: TurtleArt/tabasics.py:620
+#: TurtleArt/tabasics.py:621
 msgid "calculates square root"
 msgstr "calculates square root"
 
-#: TurtleArt/tabasics.py:627
+#: TurtleArt/tabasics.py:628
 msgid "random"
 msgstr "random"
 
-#: TurtleArt/tabasics.py:627
+#: TurtleArt/tabasics.py:628
 msgid "min"
 msgstr "min"
 
-#: TurtleArt/tabasics.py:627
+#: TurtleArt/tabasics.py:628
 msgid "max"
 msgstr "max"
 
-#: TurtleArt/tabasics.py:631
+#: TurtleArt/tabasics.py:632
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr "returns random number between minimum (top) and maximum (bottom) values"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:644
 msgid "number"
 msgstr "number"
 
-#: TurtleArt/tabasics.py:644
+#: TurtleArt/tabasics.py:645
 msgid "used as numeric input in mathematic operators"
 msgstr "used as numeric input in mathematic operators"
 
-#: TurtleArt/tabasics.py:651
+#: TurtleArt/tabasics.py:652
 msgid "greater than"
 msgstr "greater than"
 
-#: TurtleArt/tabasics.py:654
+#: TurtleArt/tabasics.py:655
 msgid "logical greater-than operator"
 msgstr "logical greater-than operator"
 
-#: TurtleArt/tabasics.py:660
+#: TurtleArt/tabasics.py:661
 msgid "True"
 msgstr "True"
 
-#: TurtleArt/tabasics.py:666
+#: TurtleArt/tabasics.py:667
 msgid "less than"
 msgstr "less than"
 
-#: TurtleArt/tabasics.py:669
+#: TurtleArt/tabasics.py:670
 msgid "logical less-than operator"
 msgstr "logical less-than operator"
 
-#: TurtleArt/tabasics.py:674
+#: TurtleArt/tabasics.py:675
 msgid "False"
 msgstr "False"
 
-#: TurtleArt/tabasics.py:680
+#: TurtleArt/tabasics.py:681
 msgid "equal"
 msgstr "equal"
 
-#: TurtleArt/tabasics.py:683
+#: TurtleArt/tabasics.py:684
 msgid "logical equal-to operator"
 msgstr "logical equal-to operator"
 
-#: TurtleArt/tabasics.py:689
+#: TurtleArt/tabasics.py:690
 msgid "not"
 msgstr "not"
 
-#: TurtleArt/tabasics.py:692
+#: TurtleArt/tabasics.py:693
 msgid "logical NOT operator"
 msgstr "logical NOT operator"
 
-#: TurtleArt/tabasics.py:698 TurtleArt/tabasics.py:701
+#: TurtleArt/tabasics.py:699 TurtleArt/tabasics.py:702
 msgid "and"
 msgstr "and"
 
-#: TurtleArt/tabasics.py:702
+#: TurtleArt/tabasics.py:703
 msgid "logical AND operator"
 msgstr "logical AND operator"
 
-#: TurtleArt/tabasics.py:709 TurtleArt/tabasics.py:712
+#: TurtleArt/tabasics.py:710 TurtleArt/tabasics.py:713
 msgid "or"
 msgstr "or"
 
-#: TurtleArt/tabasics.py:713
+#: TurtleArt/tabasics.py:714
 msgid "logical OR operator"
 msgstr "logical OR operator"
 
-#: TurtleArt/tabasics.py:722
+#: TurtleArt/tabasics.py:723
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:94
 msgid "Palette of flow operators"
 msgstr "Palette of flow operators"
 
-#: TurtleArt/tabasics.py:727
+#: TurtleArt/tabasics.py:728
 msgid "wait"
 msgstr "wait"
 
-#: TurtleArt/tabasics.py:731
+#: TurtleArt/tabasics.py:732
 msgid "pauses program execution a specified number of seconds"
 msgstr "pauses program execution a specified number of seconds"
 
-#: TurtleArt/tabasics.py:738
+#: TurtleArt/tabasics.py:739
 msgid "forever"
 msgstr "forever"
 
-#: TurtleArt/tabasics.py:742
+#: TurtleArt/tabasics.py:743
 msgid "loops forever"
 msgstr "loops forever"
 
-#: TurtleArt/tabasics.py:748 TurtleArt/tabasics.py:752
+#: TurtleArt/tabasics.py:750 TurtleArt/tabasics.py:754
 msgid "repeat"
 msgstr "repeat"
 
-#: TurtleArt/tabasics.py:753
+#: TurtleArt/tabasics.py:755
 msgid "loops specified number of times"
 msgstr "loops specified number of times"
 
-#: TurtleArt/tabasics.py:759 TurtleArt/tabasics.py:771
+#: TurtleArt/tabasics.py:761 TurtleArt/tabasics.py:773
 msgid "if"
 msgstr "if"
 
-#: TurtleArt/tabasics.py:759
+#: TurtleArt/tabasics.py:761
 msgid "then"
 msgstr "then"
 
-#: TurtleArt/tabasics.py:762
+#: TurtleArt/tabasics.py:764
 msgid "if then"
 msgstr "if then"
 
-#: TurtleArt/tabasics.py:764
+#: TurtleArt/tabasics.py:766
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr "if-then operator that uses boolean operators from Numbers palette"
 
-#: TurtleArt/tabasics.py:771
+#: TurtleArt/tabasics.py:773
 msgid "then else"
 msgstr "then else"
 
-#: TurtleArt/tabasics.py:775
+#: TurtleArt/tabasics.py:777
 msgid "if then else"
 msgstr "if then else"
 
-#: TurtleArt/tabasics.py:776
+#: TurtleArt/tabasics.py:778
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr "if-then-else operator that uses boolean operators from Numbers palette"
 
-#: TurtleArt/tabasics.py:784
+#: TurtleArt/tabasics.py:786
 msgid "horizontal space"
 msgstr "horizontal space"
 
-#: TurtleArt/tabasics.py:785
+#: TurtleArt/tabasics.py:787
 msgid "jogs stack right"
 msgstr "jogs stack right"
 
-#: TurtleArt/tabasics.py:792
+#: TurtleArt/tabasics.py:794
 msgid "vertical space"
 msgstr "vertical space"
 
-#: TurtleArt/tabasics.py:793
+#: TurtleArt/tabasics.py:795
 msgid "jogs stack down"
 msgstr "jogs stack down"
 
-#: TurtleArt/tabasics.py:799
+#: TurtleArt/tabasics.py:801
 msgid "stop action"
 msgstr "stop action"
 
-#: TurtleArt/tabasics.py:802
+#: TurtleArt/tabasics.py:804
 msgid "stops current action"
 msgstr "stops current action"
 
-#: TurtleArt/tabasics.py:811
+#: TurtleArt/tabasics.py:813
 msgid "Palette of variable blocks"
 msgstr "Palette of variable blocks"
 
-#: TurtleArt/tabasics.py:816 pysamples/grecord.py:213
+#: TurtleArt/tabasics.py:818 pysamples/grecord.py:213
 msgid "start"
 msgstr "start"
 
-#: TurtleArt/tabasics.py:819
+#: TurtleArt/tabasics.py:821
 msgid "connects action to toolbar run buttons"
 msgstr "connects action to toolbar run buttons"
 
-#: TurtleArt/tabasics.py:827
+#: TurtleArt/tabasics.py:829
 msgid "store in box 1"
 msgstr "store in box 1"
 
-#: TurtleArt/tabasics.py:831
+#: TurtleArt/tabasics.py:833
 msgid "stores numeric value in Variable 1"
 msgstr "stores numeric value in Variable 1"
 
-#: TurtleArt/tabasics.py:838
+#: TurtleArt/tabasics.py:840
 msgid "store in box 2"
 msgstr "store in box 2"
 
-#: TurtleArt/tabasics.py:842
+#: TurtleArt/tabasics.py:844
 msgid "stores numeric value in Variable 2"
 msgstr "stores numeric value in Variable 2"
 
-#: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
-#: TurtleArt/tabasics.py:851
+#: TurtleArt/tabasics.py:851 TurtleArt/tabasics.py:852
+#: TurtleArt/tabasics.py:853
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:173
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:174
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
@@ -581,113 +581,113 @@ msgstr "stores numeric value in Variable 2"
 msgid "text"
 msgstr "text"
 
-#: TurtleArt/tabasics.py:852
+#: TurtleArt/tabasics.py:854
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:176
 msgid "string value"
 msgstr "string value"
 
-#: TurtleArt/tabasics.py:856
+#: TurtleArt/tabasics.py:858
 msgid "box 1"
 msgstr "box 1"
 
-#: TurtleArt/tabasics.py:859
+#: TurtleArt/tabasics.py:861
 msgid "Variable 1 (numeric value)"
 msgstr "Variable 1 (numeric value)"
 
-#: TurtleArt/tabasics.py:865
+#: TurtleArt/tabasics.py:867
 msgid "box 2"
 msgstr "box 2"
 
-#: TurtleArt/tabasics.py:868
+#: TurtleArt/tabasics.py:870
 msgid "Variable 2 (numeric value)"
 msgstr "Variable 2 (numeric value)"
 
-#: TurtleArt/tabasics.py:875 TurtleArt/tabasics.py:885
+#: TurtleArt/tabasics.py:877 TurtleArt/tabasics.py:887
 msgid "box"
 msgstr "box"
 
-#: TurtleArt/tabasics.py:877 TurtleArt/tabasics.py:888
+#: TurtleArt/tabasics.py:879 TurtleArt/tabasics.py:890
 msgid "my box"
 msgstr "my box"
 
-#: TurtleArt/tabasics.py:879
+#: TurtleArt/tabasics.py:881
 msgid "named variable (numeric value)"
 msgstr "named variable (numeric value)"
 
-#: TurtleArt/tabasics.py:885
+#: TurtleArt/tabasics.py:887
 msgid "store in"
 msgstr "store in"
 
-#: TurtleArt/tabasics.py:885 taextras.py:337
+#: TurtleArt/tabasics.py:887 taextras.py:337
 msgid "value"
 msgstr "value"
 
-#: TurtleArt/tabasics.py:889
+#: TurtleArt/tabasics.py:891
 msgid "stores numeric value in named variable"
 msgstr "stores numeric value in named variable"
 
-#: TurtleArt/tabasics.py:897 TurtleArt/tabasics.py:899
-#: TurtleArt/tabasics.py:923 TurtleArt/tabasics.py:926
+#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:901
+#: TurtleArt/tabasics.py:925 TurtleArt/tabasics.py:928
 msgid "action"
 msgstr "action"
 
-#: TurtleArt/tabasics.py:901
+#: TurtleArt/tabasics.py:903
 msgid "top of nameable action stack"
 msgstr "top of nameable action stack"
 
-#: TurtleArt/tabasics.py:906 TurtleArt/tabasics.py:933
+#: TurtleArt/tabasics.py:908 TurtleArt/tabasics.py:935
 msgid "action 1"
 msgstr "action 1"
 
-#: TurtleArt/tabasics.py:909
+#: TurtleArt/tabasics.py:911
 msgid "top of Action 1 stack"
 msgstr "top of Action 1 stack"
 
-#: TurtleArt/tabasics.py:914 TurtleArt/tabasics.py:942
+#: TurtleArt/tabasics.py:916 TurtleArt/tabasics.py:944
 msgid "action 2"
 msgstr "action 2"
 
-#: TurtleArt/tabasics.py:917
+#: TurtleArt/tabasics.py:919
 msgid "top of Action 2 stack"
 msgstr "top of Action 2 stack"
 
-#: TurtleArt/tabasics.py:927
+#: TurtleArt/tabasics.py:929
 msgid "invokes named action stack"
 msgstr "invokes named action stack"
 
-#: TurtleArt/tabasics.py:936
+#: TurtleArt/tabasics.py:938
 msgid "invokes Action 1 stack"
 msgstr "invokes Action 1 stack"
 
-#: TurtleArt/tabasics.py:945
+#: TurtleArt/tabasics.py:947
 msgid "invokes Action 2 stack"
 msgstr "invokes Action 2 stack"
 
-#: TurtleArt/tabasics.py:953
+#: TurtleArt/tabasics.py:955
 msgid "trash"
 msgstr "trash"
 
-#: TurtleArt/tabasics.py:957
+#: TurtleArt/tabasics.py:959
 msgid "empty trash"
 msgstr "empty trash"
 
-#: TurtleArt/tabasics.py:958
+#: TurtleArt/tabasics.py:960
 msgid "permanently deletes items in trash"
 msgstr "permanently deletes items in trash"
 
-#: TurtleArt/tabasics.py:962
+#: TurtleArt/tabasics.py:964
 msgid "restore all"
 msgstr "restore all"
 
-#: TurtleArt/tabasics.py:963
+#: TurtleArt/tabasics.py:965
 msgid "restore all blocks from trash"
 msgstr "restore all blocks from trash"
 
-#: TurtleArt/tabasics.py:967
+#: TurtleArt/tabasics.py:969
 msgid "clear all"
 msgstr "clear all"
 
-#: TurtleArt/tabasics.py:968
+#: TurtleArt/tabasics.py:970
 msgid "move all blocks to trash"
 msgstr "move all blocks to trash"
 
@@ -703,19 +703,19 @@ msgstr "move all blocks to trash"
 msgid "Title"
 msgstr "Title"
 
-#: TurtleArt/talogo.py:465
+#: TurtleArt/talogo.py:469
 msgid "did not output to"
 msgstr "did not output to"
 
-#: TurtleArt/talogo.py:519
+#: TurtleArt/talogo.py:524
 msgid "I don't know how to"
 msgstr "I don't know how to"
 
-#: TurtleArt/talogo.py:566
+#: TurtleArt/talogo.py:574
 msgid "doesn't like"
 msgstr "doesn't like"
 
-#: TurtleArt/talogo.py:566
+#: TurtleArt/talogo.py:574
 msgid "as input"
 msgstr "as input"
 
@@ -735,226 +735,219 @@ msgstr "Load..."
 msgid "Save..."
 msgstr "Save..."
 
-#: TurtleArt/tautils.py:596
+#: TurtleArt/tautils.py:592
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:616
 msgid "click to open"
 msgstr "click to open"
 
-#: TurtleArt/tawindow.py:886 TurtleArt/tawindow.py:887
+#: TurtleArt/tawindow.py:899 TurtleArt/tawindow.py:900
 msgid "orientation"
 msgstr "orientation"
 
-#: TurtleArt/tawindow.py:897 TurtleArt/tawindow.py:1256
+#: TurtleArt/tawindow.py:910 TurtleArt/tawindow.py:1274
 msgid "next"
 msgstr "next"
 
-#: TurtleArt/tawindow.py:909 TurtleArt/tawindow.py:910
-#: TurtleArt/tawindow.py:1276
+#: TurtleArt/tawindow.py:922 TurtleArt/tawindow.py:923
+#: TurtleArt/tawindow.py:1294
 msgid "shift"
 msgstr "shift"
 
-#: TurtleArt/tawindow.py:3230
+#: TurtleArt/tawindow.py:3266
 msgid "image"
 msgstr "image"
 
-#: TurtleArtActivity.py:157
+#: TurtleArtActivity.py:159
 msgid "presentation"
 msgstr "presentation"
 
-#: TurtleArtActivity.py:243
+#: TurtleArtActivity.py:182 TurtleArtActivity.py:702 TurtleArtActivity.py:791
+#: TurtleArtActivity.py:816 turtleart.py:326
+msgid "Save as HTML"
+msgstr "Save as HTML"
+
+#: TurtleArtActivity.py:201 TurtleArtActivity.py:703 TurtleArtActivity.py:794
+#: TurtleArtActivity.py:818 turtleart.py:328
+msgid "Save as Logo"
+msgstr "Save as Logo"
+
+#: TurtleArtActivity.py:238 TurtleArtActivity.py:701 TurtleArtActivity.py:788
+#: TurtleArtActivity.py:813 turtleart.py:324
+msgid "Save as image"
+msgstr "Save as image"
+
+#: TurtleArtActivity.py:246
 msgid "snapshot"
 msgstr "snapshot"
 
-#: TurtleArtActivity.py:292 TurtleArtActivity.py:585 TurtleArtActivity.py:717
+#: TurtleArtActivity.py:254 TurtleArtActivity.py:704 TurtleArtActivity.py:797
+#: TurtleArtActivity.py:821
+msgid "Save snapshot"
+msgstr "Save snapshot"
+
+#: TurtleArtActivity.py:295 TurtleArtActivity.py:622 TurtleArtActivity.py:754
 #: turtleart.py:346
 msgid "Turn off hover help"
 msgstr "Turn off hover help"
 
-#: TurtleArtActivity.py:298 turtleart.py:348
+#: TurtleArtActivity.py:301 turtleart.py:348
 msgid "Turn on hover help"
 msgstr "Turn on hover help"
 
-#: TurtleArtActivity.py:306 turtleart.py:358
+#: TurtleArtActivity.py:309 turtleart.py:358
 msgid "Show palette"
 msgstr "Show palette"
 
-#: TurtleArtActivity.py:312 TurtleArtActivity.py:813 turtleart.py:360
+#: TurtleArtActivity.py:315 TurtleArtActivity.py:848 turtleart.py:360
 msgid "Hide palette"
 msgstr "Hide palette"
 
-#: TurtleArtActivity.py:319 TurtleArtActivity.py:332
-msgid "Show blocks"
-msgstr "Show blocks"
-
-#: TurtleArtActivity.py:322 TurtleArtActivity.py:340 TurtleArtActivity.py:816
+#: TurtleArtActivity.py:347
 msgid "Hide blocks"
 msgstr "Hide blocks"
 
-#: TurtleArtActivity.py:449
+#: TurtleArtActivity.py:486
 msgid "Rescale coordinates down"
 msgstr "Rescale coordinates down"
 
-#: TurtleArtActivity.py:453 TurtleArtActivity.py:577 TurtleArtActivity.py:713
+#: TurtleArtActivity.py:490 TurtleArtActivity.py:614 TurtleArtActivity.py:750
 msgid "Rescale coordinates up"
 msgstr "Rescale coordinates up"
 
-#: TurtleArtActivity.py:513 TurtleArtActivity.py:549 TurtleArtActivity.py:635
-#: TurtleArtActivity.py:688 turtleart.py:355
+#: TurtleArtActivity.py:550 TurtleArtActivity.py:586 TurtleArtActivity.py:672
+#: TurtleArtActivity.py:725 turtleart.py:355
 msgid "Edit"
 msgstr "Edit"
 
-#: TurtleArtActivity.py:518 TurtleArtActivity.py:547 TurtleArtActivity.py:636
-#: TurtleArtActivity.py:705 turtleart.py:350
+#: TurtleArtActivity.py:555 TurtleArtActivity.py:584 TurtleArtActivity.py:673
+#: TurtleArtActivity.py:742 turtleart.py:350
 msgid "View"
 msgstr "View"
 
-#: TurtleArtActivity.py:545 TurtleArtActivity.py:637
+#: TurtleArtActivity.py:582 TurtleArtActivity.py:674
 msgid "Project"
 msgstr "Project"
 
-#: TurtleArtActivity.py:551 TurtleArtActivity.py:634 TurtleArtActivity.py:661
-#: TurtleArtActivity.py:663 TurtleArtActivity.py:746
+#: TurtleArtActivity.py:588 TurtleArtActivity.py:671 TurtleArtActivity.py:698
+#: TurtleArtActivity.py:700 TurtleArtActivity.py:783
 msgid "Save/Load"
 msgstr "Save/Load"
 
-#: TurtleArtActivity.py:559 TurtleArtActivity.py:689 turtleart.py:353
+#: TurtleArtActivity.py:596 TurtleArtActivity.py:726 turtleart.py:353
 msgid "Copy"
 msgstr "Copy"
 
-#: TurtleArtActivity.py:561 TurtleArtActivity.py:690 turtleart.py:354
+#: TurtleArtActivity.py:598 TurtleArtActivity.py:727 turtleart.py:354
 msgid "Paste"
 msgstr "Paste"
 
-#: TurtleArtActivity.py:563 TurtleArtActivity.py:706
+#: TurtleArtActivity.py:600 TurtleArtActivity.py:743
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:672
 msgid "Fullscreen"
 msgstr "Fullscreen"
 
-#: TurtleArtActivity.py:565 TurtleArtActivity.py:707 turtleart.py:334
+#: TurtleArtActivity.py:602 TurtleArtActivity.py:744 turtleart.py:334
 msgid "Cartesian coordinates"
 msgstr "Cartesian coordinates"
 
-#: TurtleArtActivity.py:567 TurtleArtActivity.py:709 turtleart.py:336
+#: TurtleArtActivity.py:604 TurtleArtActivity.py:746 turtleart.py:336
 msgid "Polar coordinates"
 msgstr "Polar coordinates"
 
-#: TurtleArtActivity.py:570 TurtleArtActivity.py:711
+#: TurtleArtActivity.py:607 TurtleArtActivity.py:748
 msgid "Metric coordinates"
 msgstr "Metric coordinates"
 
-#: TurtleArtActivity.py:580 TurtleArtActivity.py:715 turtleart.py:340
+#: TurtleArtActivity.py:617 TurtleArtActivity.py:752 turtleart.py:340
 msgid "Grow blocks"
 msgstr "Grow blocks"
 
-#: TurtleArtActivity.py:582 TurtleArtActivity.py:716 turtleart.py:342
+#: TurtleArtActivity.py:619 TurtleArtActivity.py:753 turtleart.py:342
 msgid "Shrink blocks"
 msgstr "Shrink blocks"
 
-#: TurtleArtActivity.py:608 TurtleArtActivity.py:643 TurtleArtActivity.py:798
+#: TurtleArtActivity.py:645 TurtleArtActivity.py:680
 msgid "Load example"
 msgstr "Load example"
 
-#: TurtleArtActivity.py:638 TurtleArtActivity.py:822 turtleart.py:367
+#: TurtleArtActivity.py:675 TurtleArtActivity.py:859 turtleart.py:367
 msgid "Clean"
 msgstr "Clean"
 
-#: TurtleArtActivity.py:639 TurtleArtActivity.py:824 turtleart.py:368
+#: TurtleArtActivity.py:676 TurtleArtActivity.py:861 turtleart.py:368
 msgid "Run"
 msgstr "Run"
 
-#: TurtleArtActivity.py:640 TurtleArtActivity.py:826 turtleart.py:369
+#: TurtleArtActivity.py:677 TurtleArtActivity.py:863 turtleart.py:369
 msgid "Step"
 msgstr "Step"
 
-#: TurtleArtActivity.py:641 TurtleArtActivity.py:829 turtleart.py:370
+#: TurtleArtActivity.py:678 TurtleArtActivity.py:866 turtleart.py:370
 msgid "Debug"
 msgstr "Debug"
 
-#: TurtleArtActivity.py:642 TurtleArtActivity.py:832
+#: TurtleArtActivity.py:679 TurtleArtActivity.py:869
 msgid "Stop turtle"
 msgstr "Stop turtle"
 
-#: TurtleArtActivity.py:644 util/helpbutton.py:45
+#: TurtleArtActivity.py:681 util/helpbutton.py:45
 msgid "Help"
 msgstr "Help"
 
-#: TurtleArtActivity.py:645 turtleart.py:371
+#: TurtleArtActivity.py:682 turtleart.py:371
 msgid "Stop"
 msgstr "Stop"
 
-#: TurtleArtActivity.py:664 TurtleArtActivity.py:751 TurtleArtActivity.py:776
-#: turtleart.py:324
-msgid "Save as image"
-msgstr "Save as image"
-
-#: TurtleArtActivity.py:665 TurtleArtActivity.py:754 TurtleArtActivity.py:779
-#: turtleart.py:326
-msgid "Save as HTML"
-msgstr "Save as HTML"
-
-#: TurtleArtActivity.py:666 TurtleArtActivity.py:757 TurtleArtActivity.py:781
-#: turtleart.py:328
-msgid "Save as Logo"
-msgstr "Save as Logo"
-
-#: TurtleArtActivity.py:667 TurtleArtActivity.py:760 TurtleArtActivity.py:784
-msgid "Save snapshot"
-msgstr "Save snapshot"
-
-#: TurtleArtActivity.py:668 TurtleArtActivity.py:762 TurtleArtActivity.py:787
+#: TurtleArtActivity.py:705 TurtleArtActivity.py:799 TurtleArtActivity.py:824
 msgid "Load project"
 msgstr "Load project"
 
-#: TurtleArtActivity.py:671 TurtleArtActivity.py:767 TurtleArtActivity.py:792
+#: TurtleArtActivity.py:708 TurtleArtActivity.py:804 TurtleArtActivity.py:829
 msgid "Load plugin"
 msgstr "Load plugin"
 
-#: TurtleArtActivity.py:672 TurtleArtActivity.py:770 TurtleArtActivity.py:795
+#: TurtleArtActivity.py:709 TurtleArtActivity.py:807 TurtleArtActivity.py:832
 msgid "Load Python block"
 msgstr "Load Python block"
 
-#: TurtleArtActivity.py:814
+#: TurtleArtActivity.py:849
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
-#: TurtleArtActivity.py:817
-msgid "<Ctrl>b"
-msgstr "<Ctrl>b"
-
-#: TurtleArtActivity.py:822
+#: TurtleArtActivity.py:859
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
-#: TurtleArtActivity.py:824
+#: TurtleArtActivity.py:861
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
-#: TurtleArtActivity.py:826
+#: TurtleArtActivity.py:863
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
-#: TurtleArtActivity.py:830
+#: TurtleArtActivity.py:867
 msgid "<Ctrl>d"
 msgstr "<Ctrl>d"
 
-#: TurtleArtActivity.py:833
+#: TurtleArtActivity.py:870
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
-#: TurtleArtActivity.py:957 TurtleArtActivity.py:962 TurtleArtActivity.py:1028
+#: TurtleArtActivity.py:994 TurtleArtActivity.py:999 TurtleArtActivity.py:1066
 msgid "Plugin could not be installed."
 msgstr "Plugin could not be installed."
 
-#: TurtleArtActivity.py:1024
+#: TurtleArtActivity.py:1062
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr "Please restart Turtle Art in order to use the plugin."
 
-#: TurtleArtActivity.py:1042
+#: TurtleArtActivity.py:1080
 #, python-format
 msgid "Plugin %s already installed."
 msgstr "Plugin %s already installed."
 
-#: TurtleArtActivity.py:1043
+#: TurtleArtActivity.py:1081
 #, python-format
 msgid "Do you want to reinstall %s?"
 msgstr "Do you want to reinstall %s?"
@@ -2781,13 +2774,19 @@ msgstr "Tools"
 msgid "Turtle"
 msgstr "Turtle"
 
-#: turtleart.py:402
+#: turtleart.py:406
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr "You have unsaved work. Would you like to save before quitting?"
 
-#: turtleart.py:403
+#: turtleart.py:407
 msgid "Save project?"
 msgstr "Save project?"
+
+#~ msgid "Show blocks"
+#~ msgstr "Show blocks"
+
+#~ msgid "<Ctrl>b"
+#~ msgstr "<Ctrl>b"
 
 #~ msgid "Palette of LEGO NXT blocks"
 #~ msgstr "Palette of LEGO NXT blocks"
