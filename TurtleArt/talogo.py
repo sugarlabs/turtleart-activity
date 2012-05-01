@@ -343,13 +343,19 @@ class LogoCode:
         """ Step through the list. """
         if self.tw.running_sugar:
             self.tw.activity.stop_turtle_button.set_icon("stopiton")
+            self.tw.activity.stop_turtle_button.set_tooltip(
+                _('Stop turtle'))
         elif self.tw.interactive_mode:
             self.tw.toolbar_shapes['stopiton'].set_layer(TAB_LAYER)
         self.running = True
         self.icall(self.evline, blklist)
         yield True
         if self.tw.running_sugar:
-            self.tw.activity.stop_turtle_button.set_icon("stopitoff")
+            # self.tw.activity.stop_turtle_button.set_icon("stopitoff")
+            if self.tw.step_time == 0:
+                self.tw.activity.stop_turtle_button.set_icon("hideshowoff")
+                self.tw.activity.stop_turtle_button.set_tooltip(
+                    _('Show blocks'))
         elif self.tw.interactive_mode:
             self.tw.toolbar_shapes['stopiton'].hide()
         yield False

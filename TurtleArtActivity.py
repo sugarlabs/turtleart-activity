@@ -380,6 +380,7 @@ class TurtleArtActivity(activity.Activity):
     def do_stop_cb(self, button):
         ''' Callback for stop button. '''
         self.stop_turtle_button.set_icon('stopitoff')
+        self.stop_turtle_button.set_tooltip(_('Stop turtle'))
         self.tw.stop_button()
         # Auto show blocks after stop
         self.tw.showblocks()
