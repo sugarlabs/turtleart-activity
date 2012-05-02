@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2011, Walter Bender
+#Copyright (c) 2012, Walter Bender
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -653,19 +653,23 @@ click to open'))
 templates'),
                                position=9)
 
+        primitive_dictionary['hideblocks'] = self._prim_hideblocks
         palette.add_block('hideblocks',
                           style='basic-style-extended-vertical',
                           label=_('hide blocks'),
                           prim_name='hideblocks',
                           help_string=_('declutters canvas by hiding blocks'))
-        self.tw.lc.def_prim('hideblocks', 0, lambda self: self.tw.hideblocks())
+        self.tw.lc.def_prim('hideblocks', 0,
+                            lambda self: primitive_dictionary['hideblocks']())
 
+        primitive_dictionary['showblocks'] = self._prim_showblocks
         palette.add_block('showblocks',
                           style='basic-style-extended-vertical',
                           label=_('show blocks'),
                           prim_name='showblocks',
                           help_string=_('restores hidden blocks'))
-        self.tw.lc.def_prim('showblocks', 0, lambda self: self.tw.showblocks())
+        self.tw.lc.def_prim('showblocks', 0,
+                            lambda self: primitive_dictionary['showblocks']())
 
         palette.add_block('fullscreen',
                           style='basic-style-extended-vertical',
@@ -1294,6 +1298,20 @@ bullets'))
         elapsed_time = int(time() - self.tw.lc.start_time)
         self.tw.lc.update_label_value('time', elapsed_time)
         return elapsed_time
+
+    def _prim_hideblocks(self):
+        """ hide blocks and show showblocks button """
+        self.tw.hideblocks()
+        if self.tw.running_sugar:
+            self.tw.activity.stop_turtle_button.set_icon("hideshowoff")
+            self.tw.activity.stop_turtle_button.set_tooltip(_('Show blocks'))
+
+    def _prim_showblocks(self):
+        """ show blocks and show stop turtle button """
+        self.tw.showblocks()
+        if self.tw.running_sugar:
+            self.tw.activity.stop_turtle_button.set_icon("stopiton")
+            self.tw.activity.stop_turtle_button.set_tooltip(_('Stop turtle'))
 
     # Deprecated blocks
 

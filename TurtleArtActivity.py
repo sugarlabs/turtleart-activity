@@ -314,15 +314,6 @@ class TurtleArtActivity(activity.Activity):
             self.palette_button.set_icon('paletteoff')
             self.palette_button.set_tooltip(_('Hide palette'))
 
-    def do_hideshow_cb(self, button):
-        ''' Toggle visibility. '''
-        self.tw.hideshow_button()
-        # Update palette buttons too.
-        if not self.tw.palette:
-            self.do_hidepalette()
-        else:
-            self.do_showpalette()
-
     def do_hide_blocks(self):
         ''' Hide blocks. '''
         self.do_hidepalette()
