@@ -494,7 +494,7 @@ class TurtleArtWindow():
         self.lc.prim_clear()
         self.display_coordinates()
 
-    def run_button(self, time):
+    def run_button(self, time, running_from_button_push=False):
         """ Run turtle! """
         if self.running_sugar:
             self.activity.recenter()
@@ -505,6 +505,10 @@ class TurtleArtWindow():
                 self.step_time = time
                 debug_output("running stack starting from %s" % (blk.name),
                              self.running_sugar)
+                if running_from_button_push:
+                    self.selected_blk = None
+                else:
+                    self.selected_blk = blk
                 self._run_stack(blk)
                 return
 
@@ -514,6 +518,10 @@ class TurtleArtWindow():
                 self.step_time = time
                 debug_output("running stack starting from %s" % (blk.name),
                              self.running_sugar)
+                if running_from_button_push:
+                    self.selected_blk = None
+                else:
+                    self.selected_blk = blk
                 self._run_stack(blk)
         return
 
