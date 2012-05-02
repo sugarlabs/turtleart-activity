@@ -317,14 +317,6 @@ class TurtleArtActivity(activity.Activity):
     def do_hideshow_cb(self, button):
         ''' Toggle visibility. '''
         self.tw.hideshow_button()
-        '''
-        if self.tw.hide:  # We just hid the blocks.
-            self.blocks_button.set_icon('hideshowon')
-            self.blocks_button.set_tooltip(_('Show blocks'))
-        else:
-            self.blocks_button.set_icon('hideshowoff')
-            self.blocks_button.set_tooltip(_('Hide blocks'))
-        '''
         # Update palette buttons too.
         if not self.tw.palette:
             self.do_hidepalette()
@@ -333,10 +325,6 @@ class TurtleArtActivity(activity.Activity):
 
     def do_hide_blocks(self):
         ''' Hide blocks. '''
-        '''
-        self.blocks_button.set_icon('hideshowon')
-        self.blocks_button.set_tooltip(_('Show blocks'))
-        '''
         self.do_hidepalette()
 
     def do_show_blocks(self):
@@ -678,6 +666,7 @@ class TurtleArtActivity(activity.Activity):
         add_paragraph(help_box, _('Step'), icon='run-slowoff')
         add_paragraph(help_box, _('Debug'), icon='debugoff')
         add_paragraph(help_box, _('Stop turtle'), icon='stopitoff')
+        add_paragraph(help_box, _('Show blocks'), icon='hideshowoff')
         add_paragraph(help_box, _('Load example'), icon='ta-open')
         add_paragraph(help_box, _('Help'), icon='help-toolbar')
         add_paragraph(help_box, _('Stop'), icon='activity-stop')
@@ -848,11 +837,6 @@ class TurtleArtActivity(activity.Activity):
             self.palette_button = self._add_button(
                 'paletteoff', _('Hide palette'), self.do_palette_cb,
                 toolbar, _('<Ctrl>p'))
-        '''
-        self.blocks_button = self._add_button(
-            'hideshowoff', _('Hide blocks'), self.do_hideshow_cb, toolbar,
-            _('<Ctrl>b'))
-        '''
 
     def _make_project_buttons(self, toolbar):
         ''' Creates the turtle buttons for both toolbar types'''
