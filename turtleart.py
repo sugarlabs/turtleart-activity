@@ -539,19 +539,20 @@ class TurtleMain():
     def _do_run_cb(self, widget):
         ''' Callback for run button (rabbit). '''
         self.tw.lc.trace = 0
-        self.tw.run_button(0)
+        self.tw.hideblocks()
+        self.tw.run_button(0, running_from_button_push=True)
         return
 
     def _do_step_cb(self, widget):
         ''' Callback for step button (turtle). '''
-        self.tw.lc.trace = 0
-        self.tw.run_button(3)
+        self.tw.lc.trace = 1
+        self.tw.run_button(3, running_from_button_push=True)
         return
 
     def _do_trace_cb(self, widget):
         ''' Callback for debug button (bug). '''
         self.tw.lc.trace = 1
-        self.tw.run_button(6)
+        self.tw.run_button(9, running_from_button_push=True)
         return
 
     def _do_stop_cb(self, widget):
