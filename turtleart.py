@@ -70,7 +70,9 @@ class TurtleMain():
  \tturtleart.py
  \tturtleart.py project.ta
  \tturtleart.py --output_png project.ta
- \tturtleart.py -o project'''
+ \tturtleart.py -o project
+ \tturtleart.py --run project.ta
+ \tturtleart.py -r project'''
     _INSTALL_PATH = '/usr/share/sugar/activities/TurtleArt.activity'
     _ALTERNATIVE_INSTALL_PATH = \
         '/usr/local/share/sugar/activities/TurtleArt.activity'
@@ -83,13 +85,9 @@ class TurtleMain():
         self._ensure_sugar_paths()
         self._plugins = []
 
-        if self.output_png:
-            # Fix me: We need to create a cairo surface to work with
-            pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8,
-                                    gtk.gdk.screen_width(),
-                                    gtk.gdk.screen_height())
-            # self.canvas, mask = pixbuf.render_pixmap_and_mask()
-            self.canvas = pixbuf
+        if self._output_png:
+            # Outputing to file, so no need for a canvas
+            self.canvas = None
             self._build_window(interactive=False)
             self._draw_and_quit()
         else:
@@ -162,22 +160,23 @@ class TurtleMain():
         ''' Get a main window set up. '''
         self.win.connect('configure_event', self.tw.update_overlay_position)
         self.tw.parent = self.win
-        if self.ta_file is None:
+        if self._ta_file is None:
             self.tw.load_start()
         else:
-            print self.ta_file
-            self.tw.load_start(self.ta_file)
+            print self._ta_file
+            self.tw.load_start(self._ta_file)
             self.tw.lc.trace = 0
-            self.tw.run_button(0)
+            if self._run_on_launch:
+                self._do_run_cb()
         gtk.main()
 
     def _draw_and_quit(self):
         ''' Non-interactive mode: run the project, save it to a file
         and quit. '''
-        self.tw.load_start(self.ta_file)
+        self.tw.load_start(self._ta_file)
         self.tw.lc.trace = 0
         self.tw.run_button(0)
-        self.tw.save_as_image(self.ta_file)
+        self.tw.save_as_image(self._ta_file)
 
     def _build_window(self, interactive=True):
         ''' Initialize the TurtleWindow instance. '''
@@ -203,8 +202,9 @@ class TurtleMain():
         self._dirname = self._get_execution_dir()
         if self._dirname is not None:
             os.chdir(self._dirname)
-        self.ta_file = None
-        self.output_png = False
+        self._ta_file = None
+        self._output_png = False
+        self._run_on_launch = False
         self.i = 0  # FIXME: use a better name for this variable
         self.scale = 2.0
         self.tw = None
@@ -212,8 +212,8 @@ class TurtleMain():
     def _parse_command_line(self):
         ''' Try to make sense of the command-line arguments. '''
         try:
-            opts, args = getopt.getopt(argv[1:], 'ho',
-                                       ['help', 'output_png'])
+            opts, args = getopt.getopt(argv[1:], 'hor',
+                                       ['help', 'output_png', 'run'])
         except getopt.GetoptError, err:
             print str(err)
             print self._HELP_MSG
@@ -223,21 +223,23 @@ class TurtleMain():
                 print self._HELP_MSG
                 sys.exit()
             if o in ('-o', '--output_png'):
-                self.output_png = True
+                self._output_png = True
+            elif o in ('-r', '--run'):
+                self._run_on_launch = True
             else:
                 assert False, _('No option action:') + ' ' + o
         if args:
-            self.ta_file = args[0]
+            self._ta_file = args[0]
 
-        if len(args) > 1 or self.output_png and self.ta_file is None:
+        if len(args) > 1 or self._output_png and self._ta_file is None:
             print self._HELP_MSG
             sys.exit()
 
-        if self.ta_file is not None:
-            if not self.ta_file.endswith(('.ta')):
-                self.ta_file += '.ta'
-            if not os.path.exists(self.ta_file):
-                assert False, ('%s: %s' % (self.ta_file, _('File not found')))
+        if self._ta_file is not None:
+            if not self._ta_file.endswith(('.ta')):
+                self._ta_file += '.ta'
+            if not os.path.exists(self._ta_file):
+                assert False, ('%s: %s' % (self._ta_file, _('File not found')))
 
     def _ensure_sugar_paths(self):
         ''' Make sure Sugar paths are present. '''
@@ -536,7 +538,7 @@ class TurtleMain():
         self.tw.eraser_button()
         return
 
-    def _do_run_cb(self, widget):
+    def _do_run_cb(self, widget=None):
         ''' Callback for run button (rabbit). '''
         self.tw.lc.trace = 0
         self.tw.hideblocks()

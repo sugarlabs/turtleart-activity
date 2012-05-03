@@ -1332,6 +1332,7 @@ class TurtleArtWindow():
             return
         if spr.name == 'run-fastoff':
             self.lc.trace = 0
+            self.hideblocks()
             self.run_button(0)
         elif spr.name == 'run-slowoff':
             self.lc.trace = 1
