@@ -369,7 +369,6 @@ class TurtleArtActivity(activity.Activity):
     def do_samples_cb(self, button):
         ''' Sample-projects open dialog '''
         self.tw.load_file(True)
-        self.tw.run_button(0)
 
     def adjust_sw(self, dx, dy):
         ''' Adjust the scrolled window position. '''
@@ -1074,7 +1073,7 @@ in order to use the plugin.'))
         self.add_alert(alert)
         alert.show()
 
-    def read_file(self, file_path, run_it=True, plugin=False):
+    def read_file(self, file_path, run_it=False, plugin=False):
         ''' Open a project or plugin and then run it. '''
         if hasattr(self, 'tw'):
             _logger.debug('Read file: %s' % (file_path))
