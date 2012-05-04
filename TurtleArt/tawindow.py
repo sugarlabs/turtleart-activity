@@ -420,7 +420,7 @@ class TurtleArtWindow():
             self.overlay_shapes[name].type = 'overlay'
 
         if not self.running_sugar:
-            offset = self.width - 55 * len(TOOLBAR_SHAPES)
+            offset = 2 * self.width - 55 * len(TOOLBAR_SHAPES)
             for i, name in enumerate(TOOLBAR_SHAPES):
                 self.toolbar_shapes[name] = Sprite(
                     self.sprite_list, i * 55 + offset, 0,
@@ -883,7 +883,7 @@ class TurtleArtWindow():
         # Create the toolbar background for the selectors
         self.toolbar_offset = ICON_SIZE
         self.toolbar_spr = Sprite(self.sprite_list, 0, 0,
-            svg_str_to_pixbuf(svg.toolbar(self.width, ICON_SIZE)))
+            svg_str_to_pixbuf(svg.toolbar(2 * self.width, ICON_SIZE)))
         self.toolbar_spr.type = 'toolbar'
         self.toolbar_spr.set_layer(CATEGORY_LAYER)
 
