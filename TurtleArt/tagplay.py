@@ -67,7 +67,7 @@ def play_movie_from_file(lc, filepath, x, y, w, h):
 def stop_media(lc):
     """ Called from Clean block and toolbar Stop button """
     if lc.gplay == None:
-        return
+        return False
 
     if lc.gplay.player is not None:
         lc.gplay.player.stop()
@@ -269,6 +269,7 @@ class GstPlayer(gobject.GObject):
         self.player.set_state(gst.STATE_NULL)
         self.playing = False
         logging.debug('stopped player')
+        return False
 
     def get_state(self, timeout=1):
         return self.player.get_state(timeout=timeout)
