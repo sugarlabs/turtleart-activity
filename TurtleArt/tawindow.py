@@ -3196,10 +3196,7 @@ class TurtleArtWindow():
             label = ''
         self.status_spr.set_shape(self.status_shapes[shp])
         self.status_spr.set_label_attributes(12.0, rescale=False)
-        if type(label) == 'unicode':
-            self.status_spr.set_label(str(label.decode('utf-8')))
-        else:
-            self.status_spr.set_label(str(label))
+        self.status_spr.set_label('"%s"' % (str(label)))
         self.status_spr.set_layer(STATUS_LAYER)
         if shp == 'info':
             self.status_spr.move((PALETTE_WIDTH, self.height - 400))
