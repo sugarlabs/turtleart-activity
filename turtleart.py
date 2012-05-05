@@ -32,6 +32,7 @@ import os
 import os.path
 import cStringIO
 import errno
+import ConfigParser
 
 try:
     # Try to use XDG Base Directory standard for config files.
@@ -51,9 +52,6 @@ import gettext
 # from a git repository or the unzipped .xo file.
 # gettext.bindtextdomain('org.laptop.TurtleArtActivity', 'locale')
 
-gettext.textdomain('org.laptop.TurtleArtActivity')
-_ = gettext.gettext
-
 from TurtleArt.taconstants import OVERLAY_LAYER, DEFAULT_TURTLE_COLORS
 from TurtleArt.tautils import data_to_string, data_from_string, get_save_name
 from TurtleArt.tawindow import TurtleArtWindow
@@ -64,15 +62,7 @@ from util.menubuilder import MenuBuilder
 
 
 class TurtleMain():
-    ''' Launch Turtle Art from outside of Sugar. '''
-
-    _HELP_MSG = 'turtleart.py: ' + _('usage is') + '''
- \tturtleart.py
- \tturtleart.py project.ta
- \tturtleart.py --output_png project.ta
- \tturtleart.py -o project
- \tturtleart.py --run project.ta
- \tturtleart.py -r project'''
+    ''' Launch Turtle Art in GNOME (from outside of Sugar). '''
     _INSTALL_PATH = '/usr/share/sugar/activities/TurtleArt.activity'
     _ALTERNATIVE_INSTALL_PATH = \
         '/usr/local/share/sugar/activities/TurtleArt.activity'
@@ -80,6 +70,24 @@ class TurtleMain():
     _GNOME_PLUGIN_SUBPATH = 'gnome_plugins'
 
     def __init__(self):
+        self._abspath = os.path.abspath('.')
+        self._execdirname = self._get_execution_dir()
+        if self._execdirname is not None:
+            os.chdir(self._execdirname)
+        file_activity_info = ConfigParser.ConfigParser()
+        activity_info_path = os.path.abspath('./activity/activity.info')
+        file_activity_info.read(activity_info_path)
+        bundle_id = file_activity_info.get('Activity', 'bundle_id')
+        gettext.textdomain(bundle_id)
+        global _
+        _ = gettext.gettext
+        _HELP_MSG = 'turtleart.py: ' + _('usage is') + '''
+ \tturtleart.py
+ \tturtleart.py project.ta
+ \tturtleart.py --output_png project.ta
+ \tturtleart.py -o project
+ \tturtleart.py --run project.ta
+ \tturtleart.py -r project'''
         self._init_vars()
         self._parse_command_line()
         self._ensure_sugar_paths()
@@ -103,9 +111,9 @@ class TurtleMain():
 
     def _get_gnome_plugin_home(self):
         ''' Use plugin directory associated with execution path. '''
-        if os.path.exists(os.path.join(self._dirname,
+        if os.path.exists(os.path.join(self._execdirname,
                                        self._GNOME_PLUGIN_SUBPATH)):
-            return os.path.join(self._dirname, self._GNOME_PLUGIN_SUBPATH)
+            return os.path.join(self._execdirname, self._GNOME_PLUGIN_SUBPATH)
         else:
             return None
 
@@ -190,22 +198,19 @@ class TurtleMain():
             cr = cairo.Context(img_surface)
             surface = cr.get_target()
         self.turtle_canvas = surface.create_similar(
-            cairo.CONTENT_COLOR, gtk.gdk.screen_width() * 2,
-            gtk.gdk.screen_height() * 2)
-        self.tw = TurtleArtWindow(self.canvas, self._dirname,
+            cairo.CONTENT_COLOR, max(1024, gtk.gdk.screen_width() * 2),
+            max(768, gtk.gdk.screen_height() * 2))
+        self.tw = TurtleArtWindow(self.canvas, self._execdirname,
                                   turtle_canvas=self.turtle_canvas)
         self.tw.save_folder = os.path.expanduser('~')
 
     def _init_vars(self):
         ''' If we are invoked to start a project from Gnome, we should make
         sure our current directory is TA's source dir. '''
-        self._dirname = self._get_execution_dir()
-        if self._dirname is not None:
-            os.chdir(self._dirname)
         self._ta_file = None
         self._output_png = False
         self._run_on_launch = False
-        self.i = 0  # FIXME: use a better name for this variable
+        self.current_palette = 0
         self.scale = 2.0
         self.tw = None
 
@@ -239,7 +244,10 @@ class TurtleMain():
             if not self._ta_file.endswith(('.ta')):
                 self._ta_file += '.ta'
             if not os.path.exists(self._ta_file):
-                assert False, ('%s: %s' % (self._ta_file, _('File not found')))
+                self._ta_file = os.path.join(self._abspath, self._ta_file)
+                if not os.path.exists(self._ta_file):
+                    assert False, ('%s: %s' % (self._ta_file,
+                                               _('File not found')))
 
     def _ensure_sugar_paths(self):
         ''' Make sure Sugar paths are present. '''
@@ -288,8 +296,8 @@ class TurtleMain():
         win.move(self.x, self.y)
         win.maximize()
         win.set_title(_('Turtle Art'))
-        if os.path.exists(os.path.join(self._dirname, self._ICON_SUBPATH)):
-            win.set_icon_from_file(os.path.join(self._dirname,
+        if os.path.exists(os.path.join(self._execdirname, self._ICON_SUBPATH)):
+            win.set_icon_from_file(os.path.join(self._execdirname,
                                                 self._ICON_SUBPATH))
         win.connect('delete_event', self._quit_ta)
 
@@ -520,10 +528,10 @@ class TurtleMain():
 
     def _do_palette_cb(self, widget):
         ''' Callback to show/hide palette of blocks. '''
-        self.tw.show_palette(self.i)
-        self.i += 1
-        if self.i == len(self.tw.palettes):
-            self.i = 0
+        self.tw.show_palette(self.current_palette)
+        self.current_palette += 1
+        if self.current_palette == len(self.tw.palettes):
+            self.current_palette = 0
 
     def _do_hide_palette_cb(self, widget):
         ''' Hide the palette of blocks. '''
