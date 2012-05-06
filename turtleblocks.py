@@ -47,11 +47,6 @@ sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 
 import gettext
 
-# Commenting out bindtextdomain so that GNOME can find the installed .mo files,
-# but it will not find the .mo files in the local locale directory when running
-# from a git repository or the unzipped .xo file.
-# gettext.bindtextdomain('org.laptop.TurtleArtActivity', 'locale')
-
 from TurtleArt.taconstants import OVERLAY_LAYER, DEFAULT_TURTLE_COLORS
 from TurtleArt.tautils import data_to_string, data_from_string, get_save_name
 from TurtleArt.tawindow import TurtleArtWindow
