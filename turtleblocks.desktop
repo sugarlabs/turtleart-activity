@@ -1,12 +1,12 @@
 [Desktop Entry]
-Name=TurtleArt
+Name=TurtleBlocks
 Name[nb]=Skilpaddekunst
 Name[es]=TortugArte
-GenericName=Sugar TurtleArt activity
+GenericName=Sugar TurtleBlocks activity
 GenericName[nb]=Sugar Skilpaddekunst-aktivitet
 GenericName[es]=Actividad Sugar TortugArte
 TryExec=turtleart
-Exec=/usr/share/sugar/activities/turtleart
+Exec=/usr/share/sugar/activities/turtleblocks
 Icon=turtleart
 Type=Application
 Comment=A Logo programming environment
