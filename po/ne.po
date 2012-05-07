@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-24 00:31-0400\n"
-"PO-Revision-Date: 2012-03-09 04:10+0200\n"
+"POT-Creation-Date: 2012-05-02 00:32-0400\n"
+"PO-Revision-Date: 2012-05-07 08:47+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ne\n"
@@ -22,105 +22,105 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2 TurtleArt/taexporthtml.py:137
-#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:3057
+#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:3171
 #: pysamples/grecord.py:205 turtleart.py:288
 msgid "Turtle Art"
 msgstr "टर्टल आर्ट"
 
-#: TurtleArt/tabasics.py:115
+#: TurtleArt/tabasics.py:116
 msgid "Palette of turtle commands"
 msgstr "टर्टलको आदेशहरूको प्यालेट"
 
-#: TurtleArt/tabasics.py:120
+#: TurtleArt/tabasics.py:121
 msgid "forward"
 msgstr "अगाडि"
 
-#: TurtleArt/tabasics.py:124
+#: TurtleArt/tabasics.py:125
 msgid "moves turtle forward"
 msgstr "टर्टललाई अगाडि सार्छ"
 
-#: TurtleArt/tabasics.py:131
+#: TurtleArt/tabasics.py:132
 msgid "back"
 msgstr "पछाडि"
 
-#: TurtleArt/tabasics.py:135
+#: TurtleArt/tabasics.py:136
 msgid "moves turtle backward"
 msgstr "टर्टललाई पछाडि सार्छ"
 
-#: TurtleArt/tabasics.py:143
+#: TurtleArt/tabasics.py:144
 msgid "clean"
 msgstr "सफा"
 
-#: TurtleArt/tabasics.py:146
+#: TurtleArt/tabasics.py:147
 msgid "clears the screen and reset the turtle"
 msgstr "स्क्रिन खाली गर्छ र टर्टललाई रिसेट गर्छ"
 
-#: TurtleArt/tabasics.py:154
+#: TurtleArt/tabasics.py:155
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:736
 msgid "left"
 msgstr "बायाँ"
 
-#: TurtleArt/tabasics.py:158
+#: TurtleArt/tabasics.py:159
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "कछुवालाई घडिको उल्टो दिशामा घुमाउँछ (कोण ढिग्रीमा)"
 
-#: TurtleArt/tabasics.py:165
+#: TurtleArt/tabasics.py:166
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:760
 msgid "right"
 msgstr "दायाँ"
 
-#: TurtleArt/tabasics.py:169
+#: TurtleArt/tabasics.py:170
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "कछुवालाई घडिको दिशामा घुमाउँछ(कोण ढिग्रीमा)"
 
-#: TurtleArt/tabasics.py:177
+#: TurtleArt/tabasics.py:178
 msgid "arc"
 msgstr "वृत्तखण्ड"
 
-#: TurtleArt/tabasics.py:177
+#: TurtleArt/tabasics.py:178
 msgid "angle"
 msgstr "कोण"
 
-#: TurtleArt/tabasics.py:177
+#: TurtleArt/tabasics.py:178
 msgid "radius"
 msgstr "त्रिज्या"
 
-#: TurtleArt/tabasics.py:181
+#: TurtleArt/tabasics.py:182
 msgid "moves turtle along an arc"
 msgstr "टर्टल चाप को वरिपरी सार्छ"
 
-#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256
+#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
 msgid "set xy"
 msgstr "xy राख"
 
-#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256 taextras.py:218
+#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257 taextras.py:218
 msgid "x"
 msgstr "x"
 
-#: TurtleArt/tabasics.py:190 TurtleArt/tabasics.py:256 taextras.py:219
+#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257 taextras.py:219
 msgid "y"
 msgstr "y"
 
-#: TurtleArt/tabasics.py:194 TurtleArt/tabasics.py:260
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr "टर्टललाई xcor, ycor को ठाँउमा सार्छ ; (0, 0) स्क्रिनको बिच हो."
 
 #
-#: TurtleArt/tabasics.py:204
+#: TurtleArt/tabasics.py:205
 msgid "set heading"
 msgstr "शीर्षक राख"
 
-#: TurtleArt/tabasics.py:208
+#: TurtleArt/tabasics.py:209
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "टर्टलको शिर्षक निर्धारण गर्छ (0 स्क्रिनको माथिल्लो भागमा छ।)"
 
-#: TurtleArt/tabasics.py:216 TurtleArt/tawindow.py:3053
-#: TurtleArt/tawindow.py:3057 TurtleArtActivity.py:560
+#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3167
+#: TurtleArt/tawindow.py:3171 TurtleArtActivity.py:611
 msgid "xcor"
 msgstr "xcor"
 
-#: TurtleArt/tabasics.py:217
+#: TurtleArt/tabasics.py:218
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -128,12 +128,12 @@ msgstr ""
 "टर्टलको तत्काल x-निर्देशांक मान बचाइराख्छ (संख्या खण्डको सट्टामा प्रयोग गर्न "
 "सकिन्छ)"
 
-#: TurtleArt/tabasics.py:227 TurtleArt/tawindow.py:3053
-#: TurtleArt/tawindow.py:3057 TurtleArtActivity.py:561
+#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3167
+#: TurtleArt/tawindow.py:3171 TurtleArtActivity.py:612
 msgid "ycor"
 msgstr "ycor"
 
-#: TurtleArt/tabasics.py:228
+#: TurtleArt/tabasics.py:229
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -141,441 +141,441 @@ msgstr ""
 "टर्टलको तत्काल y- निर्देशांक मान बचाइराख्छ(संख्या खण्डको सट्टामा प्रयोग गर्न "
 "सकिन्छ)"
 
-#: TurtleArt/tabasics.py:238 TurtleArt/tawindow.py:3053
-#: TurtleArt/tawindow.py:3057 TurtleArtActivity.py:561
+#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3167
+#: TurtleArt/tawindow.py:3171 TurtleArtActivity.py:612
 msgid "heading"
 msgstr "शीर्षक"
 
-#: TurtleArt/tabasics.py:239
+#: TurtleArt/tabasics.py:240
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
 msgstr ""
 "र्टटलको हालको शीर्षक मान राख्छ (संख्या खण्डको सट्टामा प्रयोग गर्न सकिन्छ)"
 
-#: TurtleArt/tabasics.py:273
+#: TurtleArt/tabasics.py:274
 msgid "Palette of pen commands"
 msgstr "कलम आदेशको प्यालेट"
 
-#: TurtleArt/tabasics.py:277
+#: TurtleArt/tabasics.py:278
 msgid "pen up"
 msgstr "कलमले लेख"
 
-#: TurtleArt/tabasics.py:280
+#: TurtleArt/tabasics.py:281
 msgid "Turtle will not draw when moved."
 msgstr "कछुवालाई सारेमा कोर्दैन"
 
-#: TurtleArt/tabasics.py:286
+#: TurtleArt/tabasics.py:287
 msgid "pen down"
 msgstr "कलमले नलेख"
 
-#: TurtleArt/tabasics.py:289
+#: TurtleArt/tabasics.py:290
 msgid "Turtle will draw when moved."
 msgstr "चित्र बनाउन कछुवालाई हल्लाऊ"
 
-#: TurtleArt/tabasics.py:295
+#: TurtleArt/tabasics.py:296
 msgid "set pen size"
 msgstr "कलमको परिमाण मिलाऊ"
 
-#: TurtleArt/tabasics.py:299
+#: TurtleArt/tabasics.py:300
 msgid "sets size of the line drawn by the turtle"
 msgstr "टर्टलले बनाएको रेखा को साइज सेट गर्छ"
 
-#: TurtleArt/tabasics.py:309
+#: TurtleArt/tabasics.py:310
 msgid "fill screen"
 msgstr "स्क्रिन भर"
 
-#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:399 taextras.py:260
+#: TurtleArt/tabasics.py:310 TurtleArt/tabasics.py:400 taextras.py:264
 msgid "color"
 msgstr "रंग"
 
-#: TurtleArt/tabasics.py:309 TurtleArt/tabasics.py:409
+#: TurtleArt/tabasics.py:310 TurtleArt/tabasics.py:410
 msgid "shade"
 msgstr "छाया"
 
-#: TurtleArt/tabasics.py:313
+#: TurtleArt/tabasics.py:314
 msgid "fills the background with (color, shade)"
 msgstr "पृष्ठभुमि (रंग, सेड) ले भरिन्छ"
 
-#: TurtleArt/tabasics.py:322
+#: TurtleArt/tabasics.py:323
 msgid "pen size"
 msgstr "कलमको आकार"
 
-#: TurtleArt/tabasics.py:323
+#: TurtleArt/tabasics.py:324
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr "पेनको तत्कालिन आकार बचत गर्छ (सङ्ख्या खण्डको सट्टा प्रयोग गर्न सकिन्छ)"
 
-#: TurtleArt/tabasics.py:334
+#: TurtleArt/tabasics.py:335
 msgid "start fill"
 msgstr "भर्न सुरु गर"
 
-#: TurtleArt/tabasics.py:336
+#: TurtleArt/tabasics.py:337
 msgid "starts filled polygon (used with end fill block)"
 msgstr "भरिएको बहुभुज सुरु गर्छ (अन्त्य भर्ने खण्डसगँ प्रयोग गरिने)"
 
-#: TurtleArt/tabasics.py:343
+#: TurtleArt/tabasics.py:344
 msgid "end fill"
 msgstr "अन्त्यमा भर"
 
-#: TurtleArt/tabasics.py:345
+#: TurtleArt/tabasics.py:346
 msgid "completes filled polygon (used with start fill block)"
 msgstr "भरिएको बहुभुज सुरु गर्छ ( पहिलो भरिएको खण्डसँग प्रयोग गरिने)"
 
-#: TurtleArt/tabasics.py:356 TurtleArt/tabasics.py:360
+#: TurtleArt/tabasics.py:357 TurtleArt/tabasics.py:361
 msgid "Palette of pen colors"
 msgstr "कलमका रङहरुको प्यालेट"
 
-#: TurtleArt/tabasics.py:364
+#: TurtleArt/tabasics.py:365
 msgid "set color"
 msgstr "रंङ राख"
 
-#: TurtleArt/tabasics.py:368
+#: TurtleArt/tabasics.py:369
 msgid "sets color of the line drawn by the turtle"
 msgstr "कछुवाले बनाएको रेखाको रंग सेट गर्छ"
 
-#: TurtleArt/tabasics.py:376
+#: TurtleArt/tabasics.py:377
 msgid "set shade"
 msgstr "छाया राख"
 
-#: TurtleArt/tabasics.py:380
+#: TurtleArt/tabasics.py:381
 msgid "sets shade of the line drawn by the turtle"
 msgstr "कछुवाले बनाएको रेखाको सेड निर्धारण गर्छ"
 
-#: TurtleArt/tabasics.py:388
+#: TurtleArt/tabasics.py:389
 msgid "set gray"
 msgstr "खरानी रङ्ग रख।"
 
-#: TurtleArt/tabasics.py:391
+#: TurtleArt/tabasics.py:392
 msgid "sets gray level of the line drawn by the turtle"
 msgstr "कछुवाले बनाएको धर्कोको छाँया निर्धारित गर्छ"
 
-#: TurtleArt/tabasics.py:400
+#: TurtleArt/tabasics.py:401
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr "पेनको हाल रंग राख्छ (अंक ब्लको सट्टामा पनि प्रयोग हुन्छ)"
 
-#: TurtleArt/tabasics.py:410
+#: TurtleArt/tabasics.py:411
 msgid "holds current pen shade"
 msgstr "अहिलेको कलमको रंग बचत गर्छ"
 
-#: TurtleArt/tabasics.py:418
+#: TurtleArt/tabasics.py:419
 msgid "gray"
 msgstr "खरानी रङ"
 
-#: TurtleArt/tabasics.py:419
+#: TurtleArt/tabasics.py:420
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr "खरानी रङ हालमा प्रयोग (यो अंक बल्क गर्न पनि प्रयोग गर्न सक्नु हुन्छ)"
 
-#: TurtleArt/tabasics.py:425
+#: TurtleArt/tabasics.py:426
 msgid "red"
 msgstr "रातो"
 
-#: TurtleArt/tabasics.py:426
+#: TurtleArt/tabasics.py:427
 msgid "orange"
 msgstr "सुन्तला"
 
-#: TurtleArt/tabasics.py:428
+#: TurtleArt/tabasics.py:429
 msgid "yellow"
 msgstr "पहेलो"
 
-#: TurtleArt/tabasics.py:430
+#: TurtleArt/tabasics.py:431
 msgid "green"
 msgstr "हरियो"
 
-#: TurtleArt/tabasics.py:431
+#: TurtleArt/tabasics.py:432
 msgid "cyan"
 msgstr "स्यान"
 
-#: TurtleArt/tabasics.py:432
+#: TurtleArt/tabasics.py:433
 msgid "blue"
 msgstr "निलो"
 
-#: TurtleArt/tabasics.py:433
+#: TurtleArt/tabasics.py:434
 msgid "purple"
 msgstr "प्याजी"
 
-#: TurtleArt/tabasics.py:435
+#: TurtleArt/tabasics.py:436
 msgid "white"
 msgstr "सेतो"
 
-#: TurtleArt/tabasics.py:436
+#: TurtleArt/tabasics.py:437
 msgid "black"
 msgstr "कालो"
 
-#: TurtleArt/tabasics.py:442
+#: TurtleArt/tabasics.py:443
 msgid "set text color"
 msgstr "अक्षरको रंग राख"
 
-#: TurtleArt/tabasics.py:445
+#: TurtleArt/tabasics.py:446
 msgid "sets color of text drawn by the turtle"
 msgstr "कछुवाले लेख्ने अक्षरको रङ निर्धारण गर्छ"
 
-#: TurtleArt/tabasics.py:453
+#: TurtleArt/tabasics.py:454
 msgid "set text size"
 msgstr "कलमको साइज मिलाउ"
 
-#: TurtleArt/tabasics.py:456
+#: TurtleArt/tabasics.py:457
 msgid "sets size of text drawn by the turtle"
 msgstr "कछुवाले कोरेको अक्षरको आकार निश्चित गर्छ"
 
-#: TurtleArt/tabasics.py:539
+#: TurtleArt/tabasics.py:540
 msgid "Palette of numeric operators"
 msgstr "न्युमरेटर सञ्चालनकर्ताको प्यालेट"
 
-#: TurtleArt/tabasics.py:545
+#: TurtleArt/tabasics.py:546
 msgid "plus"
 msgstr "प्लस्"
 
-#: TurtleArt/tabasics.py:548
+#: TurtleArt/tabasics.py:549
 msgid "adds two alphanumeric inputs"
 msgstr "दुईवटा अल्फान्युमेरिक आगतहरु जोड्छ"
 
-#: TurtleArt/tabasics.py:556
+#: TurtleArt/tabasics.py:557
 msgid "minus"
 msgstr "घटाऊ"
 
-#: TurtleArt/tabasics.py:559
+#: TurtleArt/tabasics.py:560
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr "माथिको संख्यात्मक आगतले तलको संख्यात्मक आगतलाई घटाउछ।"
 
-#: TurtleArt/tabasics.py:570
+#: TurtleArt/tabasics.py:571
 msgid "multiply"
 msgstr "गुनन्"
 
-#: TurtleArt/tabasics.py:573
+#: TurtleArt/tabasics.py:574
 msgid "multiplies two numeric inputs"
 msgstr "२ वटा संख्यात्मक आगतको गुणन गर्छ"
 
-#: TurtleArt/tabasics.py:582
+#: TurtleArt/tabasics.py:583
 msgid "divide"
 msgstr "भाग गर"
 
-#: TurtleArt/tabasics.py:585
+#: TurtleArt/tabasics.py:586
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
 "माथील्लो संख्यात्मक आगतलाई (न्यूमिरेतर) तलको संख्यात्मक आगतले भाग गर "
 "(डिनोमिरेतर)"
 
-#: TurtleArt/tabasics.py:595
+#: TurtleArt/tabasics.py:596
 msgid "identity"
 msgstr "परिचय"
 
-#: TurtleArt/tabasics.py:597
+#: TurtleArt/tabasics.py:598
 msgid "identity operator used for extending blocks"
 msgstr "बल्क बिस्तार गर्न प्रयोग भएको सञ्चालनकर्ताको पहिचान गर"
 
-#: TurtleArt/tabasics.py:605 TurtleArt/tabasics.py:606
+#: TurtleArt/tabasics.py:606 TurtleArt/tabasics.py:607
 msgid "mod"
 msgstr "mod"
 
-#: TurtleArt/tabasics.py:609
+#: TurtleArt/tabasics.py:610
 msgid "modular (remainder) operator"
 msgstr "मोड्युल (रेमिनदर) सञ्चालनकर्ता"
 
-#: TurtleArt/tabasics.py:616
+#: TurtleArt/tabasics.py:617
 msgid "√"
 msgstr "√"
 
-#: TurtleArt/tabasics.py:617
+#: TurtleArt/tabasics.py:618
 msgid "square root"
 msgstr "बर्गको रुट"
 
-#: TurtleArt/tabasics.py:620
+#: TurtleArt/tabasics.py:621
 msgid "calculates square root"
 msgstr "वर्गमूल निकाल्छ"
 
-#: TurtleArt/tabasics.py:627
+#: TurtleArt/tabasics.py:628
 msgid "random"
 msgstr "जुनसुकै"
 
-#: TurtleArt/tabasics.py:627
+#: TurtleArt/tabasics.py:628
 msgid "min"
 msgstr "कम्ति"
 
-#: TurtleArt/tabasics.py:627
+#: TurtleArt/tabasics.py:628
 msgid "max"
 msgstr "अधिक्तम"
 
-#: TurtleArt/tabasics.py:631
+#: TurtleArt/tabasics.py:632
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
 "न्युन (top) र अधिक्तम(bottom) मानहरु बिच अनियमित ढन्गले सङ्ख्या फिर्ता गर्छ"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:644
 msgid "number"
 msgstr "अंक"
 
-#: TurtleArt/tabasics.py:644
+#: TurtleArt/tabasics.py:645
 msgid "used as numeric input in mathematic operators"
 msgstr "गणित सञ्चालनमा संख्यात्मक आगतको प्रयोग"
 
-#: TurtleArt/tabasics.py:651
+#: TurtleArt/tabasics.py:652
 msgid "greater than"
 msgstr "भन्दा ठूलो"
 
-#: TurtleArt/tabasics.py:654
+#: TurtleArt/tabasics.py:655
 msgid "logical greater-than operator"
 msgstr "युक्तिसंगत greater-than सञ्चालनकर्ता"
 
-#: TurtleArt/tabasics.py:660
+#: TurtleArt/tabasics.py:661
 msgid "True"
 msgstr "ठिक"
 
-#: TurtleArt/tabasics.py:666
+#: TurtleArt/tabasics.py:667
 msgid "less than"
 msgstr "...भन्दा कम"
 
-#: TurtleArt/tabasics.py:669
+#: TurtleArt/tabasics.py:670
 msgid "logical less-than operator"
 msgstr "युक्तिसंगत less-than सञ्चालनकर्ता"
 
-#: TurtleArt/tabasics.py:674
+#: TurtleArt/tabasics.py:675
 msgid "False"
 msgstr "बेठिक"
 
-#: TurtleArt/tabasics.py:680
+#: TurtleArt/tabasics.py:681
 msgid "equal"
 msgstr "बराबर"
 
-#: TurtleArt/tabasics.py:683
+#: TurtleArt/tabasics.py:684
 msgid "logical equal-to operator"
 msgstr "युक्तिसंगत equal-to सञ्चालनकर्ता"
 
-#: TurtleArt/tabasics.py:689
+#: TurtleArt/tabasics.py:690
 msgid "not"
 msgstr "होइन"
 
-#: TurtleArt/tabasics.py:692
+#: TurtleArt/tabasics.py:693
 msgid "logical NOT operator"
 msgstr "युक्तिसंगत NOT सञ्चालनकर्ता"
 
-#: TurtleArt/tabasics.py:698 TurtleArt/tabasics.py:701
+#: TurtleArt/tabasics.py:699 TurtleArt/tabasics.py:702
 msgid "and"
 msgstr "र"
 
-#: TurtleArt/tabasics.py:702
+#: TurtleArt/tabasics.py:703
 msgid "logical AND operator"
 msgstr "युक्तिसंगत AND सञ्चालनकर्ता"
 
-#: TurtleArt/tabasics.py:709 TurtleArt/tabasics.py:712
+#: TurtleArt/tabasics.py:710 TurtleArt/tabasics.py:713
 msgid "or"
 msgstr "अथवा"
 
-#: TurtleArt/tabasics.py:713
+#: TurtleArt/tabasics.py:714
 msgid "logical OR operator"
 msgstr "युक्तिसंगत वा सञ्चालनकर्ता"
 
-#: TurtleArt/tabasics.py:722
+#: TurtleArt/tabasics.py:723
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:94
 msgid "Palette of flow operators"
 msgstr "फ्लो सञ्चालनकर्ताको प्यालेट"
 
-#: TurtleArt/tabasics.py:727
+#: TurtleArt/tabasics.py:728
 msgid "wait"
 msgstr "पर्ख"
 
-#: TurtleArt/tabasics.py:731
+#: TurtleArt/tabasics.py:732
 msgid "pauses program execution a specified number of seconds"
 msgstr "कार्यक्रम कार्यान्वयनलाई तोकिएको समयले रोक्छ"
 
-#: TurtleArt/tabasics.py:738
+#: TurtleArt/tabasics.py:739
 msgid "forever"
 msgstr "सधैकोलागि"
 
-#: TurtleArt/tabasics.py:742
+#: TurtleArt/tabasics.py:743
 msgid "loops forever"
 msgstr "लुप (हरु) सधैँका लागी"
 
-#: TurtleArt/tabasics.py:748 TurtleArt/tabasics.py:752
+#: TurtleArt/tabasics.py:750 TurtleArt/tabasics.py:754
 msgid "repeat"
 msgstr "दोहोर्‍याउ"
 
-#: TurtleArt/tabasics.py:753
+#: TurtleArt/tabasics.py:755
 msgid "loops specified number of times"
 msgstr "तोकिए अनुसार लुप गर्छ"
 
-#: TurtleArt/tabasics.py:759 TurtleArt/tabasics.py:771
+#: TurtleArt/tabasics.py:761 TurtleArt/tabasics.py:773
 msgid "if"
 msgstr "यदि"
 
-#: TurtleArt/tabasics.py:759
+#: TurtleArt/tabasics.py:761
 msgid "then"
 msgstr "अनि"
 
-#: TurtleArt/tabasics.py:762
+#: TurtleArt/tabasics.py:764
 msgid "if then"
 msgstr "इफ देन"
 
-#: TurtleArt/tabasics.py:764
+#: TurtleArt/tabasics.py:766
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr "सङ्ख्या प्यालेटबाट बुलियन सञ्चालकहरू प्रयोग गर्ने if-thenसञ्चालक"
 
-#: TurtleArt/tabasics.py:771
+#: TurtleArt/tabasics.py:773
 msgid "then else"
 msgstr "देन एल्स"
 
-#: TurtleArt/tabasics.py:775
+#: TurtleArt/tabasics.py:777
 msgid "if then else"
 msgstr "इफ् देन एल्स"
 
-#: TurtleArt/tabasics.py:776
+#: TurtleArt/tabasics.py:778
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr "सङ्ख्या प्यालेटबाट बुलियन सञ्चालकहरू प्रयोग गर्ने if-then-else सञ्चालक"
 
-#: TurtleArt/tabasics.py:784
+#: TurtleArt/tabasics.py:786
 msgid "horizontal space"
 msgstr "तर्सो खाली ठाँऊ"
 
-#: TurtleArt/tabasics.py:785
+#: TurtleArt/tabasics.py:787
 msgid "jogs stack right"
 msgstr "जगहरु दायाँ थाँक लग्छ"
 
-#: TurtleArt/tabasics.py:792
+#: TurtleArt/tabasics.py:794
 msgid "vertical space"
 msgstr "ठाडो गरि खाली ठाउँ"
 
-#: TurtleArt/tabasics.py:793
+#: TurtleArt/tabasics.py:795
 msgid "jogs stack down"
 msgstr "जग्सहरु तल थाँक लाग्छन"
 
-#: TurtleArt/tabasics.py:799
+#: TurtleArt/tabasics.py:801
 msgid "stop action"
 msgstr "कार्य रद्द गर"
 
-#: TurtleArt/tabasics.py:802
+#: TurtleArt/tabasics.py:804
 msgid "stops current action"
 msgstr "हालको कार्य रोक्छ"
 
-#: TurtleArt/tabasics.py:811
+#: TurtleArt/tabasics.py:813
 msgid "Palette of variable blocks"
 msgstr "चल खण्डहरुको प्यालेट"
 
-#: TurtleArt/tabasics.py:816 pysamples/grecord.py:213
+#: TurtleArt/tabasics.py:818 pysamples/grecord.py:213
 msgid "start"
 msgstr "सुरु गर"
 
-#: TurtleArt/tabasics.py:819
+#: TurtleArt/tabasics.py:821
 msgid "connects action to toolbar run buttons"
 msgstr "कार्यलाई उपकरण पट्टी चलाउने बटनसँग जडान गर्छ"
 
-#: TurtleArt/tabasics.py:827
+#: TurtleArt/tabasics.py:829
 msgid "store in box 1"
 msgstr "बाकस १ मा भंडार गर"
 
-#: TurtleArt/tabasics.py:831
+#: TurtleArt/tabasics.py:833
 msgid "stores numeric value in Variable 1"
 msgstr "संख्यात्मक मान चल १ मा भण्डारण गर्छ"
 
-#: TurtleArt/tabasics.py:838
+#: TurtleArt/tabasics.py:840
 msgid "store in box 2"
 msgstr "बाकस २ मा भंडार गर"
 
-#: TurtleArt/tabasics.py:842
+#: TurtleArt/tabasics.py:844
 msgid "stores numeric value in Variable 2"
 msgstr "संख्यात्मक मान चल २ मा भण्डारण गर्छ"
 
-#: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
-#: TurtleArt/tabasics.py:851
+#: TurtleArt/tabasics.py:851 TurtleArt/tabasics.py:852
+#: TurtleArt/tabasics.py:853
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:173
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:174
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
@@ -585,113 +585,113 @@ msgstr "संख्यात्मक मान चल २ मा भण्ड�
 msgid "text"
 msgstr "पाठ"
 
-#: TurtleArt/tabasics.py:852
+#: TurtleArt/tabasics.py:854
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:176
 msgid "string value"
 msgstr "स्ट्रिङ मान"
 
-#: TurtleArt/tabasics.py:856
+#: TurtleArt/tabasics.py:858
 msgid "box 1"
 msgstr "बाकस १"
 
-#: TurtleArt/tabasics.py:859
+#: TurtleArt/tabasics.py:861
 msgid "Variable 1 (numeric value)"
 msgstr "चल 1 (संख्यात्मक मान)"
 
-#: TurtleArt/tabasics.py:865
+#: TurtleArt/tabasics.py:867
 msgid "box 2"
 msgstr "बाकस २"
 
-#: TurtleArt/tabasics.py:868
+#: TurtleArt/tabasics.py:870
 msgid "Variable 2 (numeric value)"
 msgstr "चल २ (संङख्यातमक मान)"
 
-#: TurtleArt/tabasics.py:875 TurtleArt/tabasics.py:885
+#: TurtleArt/tabasics.py:877 TurtleArt/tabasics.py:887
 msgid "box"
 msgstr "बाकस"
 
-#: TurtleArt/tabasics.py:877 TurtleArt/tabasics.py:888
+#: TurtleArt/tabasics.py:879 TurtleArt/tabasics.py:890
 msgid "my box"
 msgstr "मेरो बाकस"
 
-#: TurtleArt/tabasics.py:879
+#: TurtleArt/tabasics.py:881
 msgid "named variable (numeric value)"
 msgstr "नाम गरिएको चल (संख्यात्मक मान)"
 
-#: TurtleArt/tabasics.py:885
+#: TurtleArt/tabasics.py:887
 msgid "store in"
 msgstr "स्टोर गर्नुहोस्"
 
-#: TurtleArt/tabasics.py:885 taextras.py:333
+#: TurtleArt/tabasics.py:887 taextras.py:337
 msgid "value"
 msgstr "मान"
 
-#: TurtleArt/tabasics.py:889
+#: TurtleArt/tabasics.py:891
 msgid "stores numeric value in named variable"
 msgstr "संख्यात्मक मानलाई नाम गरिएको चलमा भण्डारन गर्छ"
 
-#: TurtleArt/tabasics.py:897 TurtleArt/tabasics.py:899
-#: TurtleArt/tabasics.py:923 TurtleArt/tabasics.py:926
+#: TurtleArt/tabasics.py:899 TurtleArt/tabasics.py:901
+#: TurtleArt/tabasics.py:925 TurtleArt/tabasics.py:928
 msgid "action"
 msgstr "कार्य"
 
-#: TurtleArt/tabasics.py:901
+#: TurtleArt/tabasics.py:903
 msgid "top of nameable action stack"
 msgstr "नामाकरण गर्न मिल्ने कार्य थाँकको माथि"
 
-#: TurtleArt/tabasics.py:906 TurtleArt/tabasics.py:933
+#: TurtleArt/tabasics.py:908 TurtleArt/tabasics.py:935
 msgid "action 1"
 msgstr "कार्य १"
 
-#: TurtleArt/tabasics.py:909
+#: TurtleArt/tabasics.py:911
 msgid "top of Action 1 stack"
 msgstr "कार्य १ थाकको प्रथम मा छ।"
 
-#: TurtleArt/tabasics.py:914 TurtleArt/tabasics.py:942
+#: TurtleArt/tabasics.py:916 TurtleArt/tabasics.py:944
 msgid "action 2"
 msgstr "कार्य २"
 
-#: TurtleArt/tabasics.py:917
+#: TurtleArt/tabasics.py:919
 msgid "top of Action 2 stack"
 msgstr "कार्य २ थाकको माथि"
 
-#: TurtleArt/tabasics.py:927
+#: TurtleArt/tabasics.py:929
 msgid "invokes named action stack"
 msgstr "इनभोक्स नामाङिक्त कार्य थाक"
 
-#: TurtleArt/tabasics.py:936
+#: TurtleArt/tabasics.py:938
 msgid "invokes Action 1 stack"
 msgstr "कार्य १ थाक स्तुति गर्छ"
 
-#: TurtleArt/tabasics.py:945
+#: TurtleArt/tabasics.py:947
 msgid "invokes Action 2 stack"
 msgstr "कार्य २ थाक स्तुति गर्छ"
 
-#: TurtleArt/tabasics.py:953
+#: TurtleArt/tabasics.py:955
 msgid "trash"
 msgstr "रद्दिटोकरी"
 
-#: TurtleArt/tabasics.py:957
+#: TurtleArt/tabasics.py:959
 msgid "empty trash"
 msgstr "खाली डस्टबीन"
 
-#: TurtleArt/tabasics.py:958
+#: TurtleArt/tabasics.py:960
 msgid "permanently deletes items in trash"
 msgstr "रद्दीटोकरीको बस्तु सधैलाई मेटाउँछ"
 
-#: TurtleArt/tabasics.py:962
+#: TurtleArt/tabasics.py:964
 msgid "restore all"
 msgstr "सबै पूर्वावस्थामा ल्याउ"
 
-#: TurtleArt/tabasics.py:963
+#: TurtleArt/tabasics.py:965
 msgid "restore all blocks from trash"
 msgstr "रद्दि टोकरीमा भएका सबै सामग्री फिर्ता जान्छ"
 
-#: TurtleArt/tabasics.py:967
+#: TurtleArt/tabasics.py:969
 msgid "clear all"
 msgstr "सबै सफा गर"
 
-#: TurtleArt/tabasics.py:968
+#: TurtleArt/tabasics.py:970
 msgid "move all blocks to trash"
 msgstr "सबै खण्डहरू रद्दीटोकरीमा सार"
 
@@ -707,27 +707,36 @@ msgstr "सबै खण्डहरू रद्दीटोकरीमा स
 msgid "Title"
 msgstr "शीर्षक"
 
-#: TurtleArt/talogo.py:465
+#: TurtleArt/talogo.py:347 TurtleArtActivity.py:383 TurtleArtActivity.py:680
+#: TurtleArtActivity.py:870
+msgid "Stop turtle"
+msgstr "टर्टल रोक"
+
+#: TurtleArt/talogo.py:358
+msgid "Show blocks"
+msgstr "खण्डहरु देखाउ"
+
+#: TurtleArt/talogo.py:475
 msgid "did not output to"
 msgstr "निर्गत गरेन"
 
-#: TurtleArt/talogo.py:519
+#: TurtleArt/talogo.py:530
 msgid "I don't know how to"
 msgstr "मलाई आउँदैन कसरी गर्ने"
 
-#: TurtleArt/talogo.py:566
+#: TurtleArt/talogo.py:580
 msgid "doesn't like"
 msgstr "मनपर्दैन"
 
-#: TurtleArt/talogo.py:566
+#: TurtleArt/talogo.py:580
 msgid "as input"
 msgstr "आपूर्तिको रुपमा"
 
-#: TurtleArt/tapalette.py:92
+#: TurtleArt/tapalette.py:94
 msgid "displays next palette"
 msgstr "अर्को प्यालेट देखाँउछ"
 
-#: TurtleArt/tapalette.py:93
+#: TurtleArt/tapalette.py:95
 msgid "changes the orientation of the palette of blocks"
 msgstr "खण्डहरुको प्यालेटको अभिमुखीकरण परिवर्तन गर्छ"
 
@@ -739,187 +748,219 @@ msgstr "सुरु गर..."
 msgid "Save..."
 msgstr "सेभ गर..."
 
-#: TurtleArt/tautils.py:596
+#: TurtleArt/tautils.py:592
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:616
 msgid "click to open"
 msgstr "खोल्नलाई क्लिक गर"
 
-#: TurtleArt/tawindow.py:848 TurtleArt/tawindow.py:849
+#: TurtleArt/tawindow.py:899 TurtleArt/tawindow.py:900
 msgid "orientation"
 msgstr "पृष्ठविन्यास"
 
-#: TurtleArt/tawindow.py:859 TurtleArt/tawindow.py:1181
+#: TurtleArt/tawindow.py:910 TurtleArt/tawindow.py:1274
 msgid "next"
 msgstr "आर्को"
 
-#: TurtleArt/tawindow.py:3153
+#: TurtleArt/tawindow.py:922 TurtleArt/tawindow.py:923
+#: TurtleArt/tawindow.py:1294
+msgid "shift"
+msgstr "सिफ्ट"
+
+#: TurtleArt/tawindow.py:3266
 msgid "image"
 msgstr "चित्र"
 
-#: TurtleArtActivity.py:150
+#: TurtleArtActivity.py:159
 msgid "presentation"
 msgstr "प्रस्तुति"
 
-#: TurtleArtActivity.py:226
+#: TurtleArtActivity.py:182 TurtleArtActivity.py:703 TurtleArtActivity.py:792
+#: TurtleArtActivity.py:817 turtleart.py:326
+msgid "Save as HTML"
+msgstr "HTMLको रुपमा सेभ गर"
+
+#: TurtleArtActivity.py:201 TurtleArtActivity.py:704 TurtleArtActivity.py:795
+#: TurtleArtActivity.py:819 turtleart.py:328
+msgid "Save as Logo"
+msgstr "लोगोको रुपमा सेभ गर"
+
+#: TurtleArtActivity.py:238 TurtleArtActivity.py:702 TurtleArtActivity.py:789
+#: TurtleArtActivity.py:814 turtleart.py:324
+msgid "Save as image"
+msgstr "तस्विरको रुपमा सेभ गर"
+
+#: TurtleArtActivity.py:246
 msgid "snapshot"
 msgstr "स्न्यापशट"
 
-#: TurtleArtActivity.py:277 TurtleArtActivity.py:572 turtleart.py:346
+#: TurtleArtActivity.py:254 TurtleArtActivity.py:705 TurtleArtActivity.py:798
+#: TurtleArtActivity.py:822
+msgid "Save snapshot"
+msgstr "स्नयापसट सेभ गर"
+
+#: TurtleArtActivity.py:295 TurtleArtActivity.py:623 TurtleArtActivity.py:755
+#: turtleart.py:346
 msgid "Turn off hover help"
-msgstr ""
+msgstr "होबर सहयोग बन्द गर"
 
-#: TurtleArtActivity.py:284 turtleart.py:348
+#: TurtleArtActivity.py:301 turtleart.py:348
 msgid "Turn on hover help"
-msgstr ""
+msgstr "होबर सहयोग सुरु गर"
 
-#: TurtleArtActivity.py:292 turtleart.py:358
+#: TurtleArtActivity.py:309 turtleart.py:358
 msgid "Show palette"
 msgstr "प्यालेट देखाउ"
 
-#: TurtleArtActivity.py:298 TurtleArtActivity.py:689 turtleart.py:360
+#: TurtleArtActivity.py:315 TurtleArtActivity.py:849 turtleart.py:360
 msgid "Hide palette"
 msgstr "प्यालेट लुकाऊ"
 
-#: TurtleArtActivity.py:305 TurtleArtActivity.py:318
-msgid "Show blocks"
-msgstr "खण्डहरु देखाउ"
-
-#: TurtleArtActivity.py:308 TurtleArtActivity.py:326 TurtleArtActivity.py:692
+#: TurtleArtActivity.py:347
 msgid "Hide blocks"
 msgstr "खण्डहरु लुकाऊ"
 
-#: TurtleArtActivity.py:436
+#: TurtleArtActivity.py:487
 msgid "Rescale coordinates down"
 msgstr "निर्देशांक तल पुन: स्केल गर"
 
-#: TurtleArtActivity.py:440 TurtleArtActivity.py:564
+#: TurtleArtActivity.py:491 TurtleArtActivity.py:615 TurtleArtActivity.py:751
 msgid "Rescale coordinates up"
 msgstr "निर्देशांक माथि पुन: स्केल गर"
 
-#: TurtleArtActivity.py:499 TurtleArtActivity.py:536 turtleart.py:355
+#: TurtleArtActivity.py:551 TurtleArtActivity.py:587 TurtleArtActivity.py:673
+#: TurtleArtActivity.py:726 turtleart.py:355
 msgid "Edit"
 msgstr "सम्पादन गर"
 
-#: TurtleArtActivity.py:503 TurtleArtActivity.py:534 turtleart.py:350
+#: TurtleArtActivity.py:556 TurtleArtActivity.py:585 TurtleArtActivity.py:674
+#: TurtleArtActivity.py:743 turtleart.py:350
 msgid "View"
 msgstr "हेर"
 
-#: TurtleArtActivity.py:532
+#: TurtleArtActivity.py:583 TurtleArtActivity.py:675
 msgid "Project"
 msgstr "परियोजना"
 
-#: TurtleArtActivity.py:538 TurtleArtActivity.py:632
+#: TurtleArtActivity.py:589 TurtleArtActivity.py:672 TurtleArtActivity.py:699
+#: TurtleArtActivity.py:701 TurtleArtActivity.py:784
 msgid "Save/Load"
 msgstr "सेभ गर/सुरु गर"
 
-#: TurtleArtActivity.py:546 turtleart.py:353
+#: TurtleArtActivity.py:597 TurtleArtActivity.py:727 turtleart.py:353
 msgid "Copy"
 msgstr "प्रतिलिपी बनाऊ"
 
-#: TurtleArtActivity.py:548 turtleart.py:354
+#: TurtleArtActivity.py:599 TurtleArtActivity.py:728 turtleart.py:354
 msgid "Paste"
 msgstr "प्रतिलिपी सार"
 
-#: TurtleArtActivity.py:550
+#: TurtleArtActivity.py:601 TurtleArtActivity.py:744
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:672
 msgid "Fullscreen"
 msgstr "पुरै पर्दा"
 
-#: TurtleArtActivity.py:552 turtleart.py:334
+#: TurtleArtActivity.py:603 TurtleArtActivity.py:745 turtleart.py:334
 msgid "Cartesian coordinates"
 msgstr "कार्टेसियन निर्देशांक"
 
-#: TurtleArtActivity.py:554 turtleart.py:336
+#: TurtleArtActivity.py:605 TurtleArtActivity.py:747 turtleart.py:336
 msgid "Polar coordinates"
 msgstr "पोलार निर्देशांक"
 
-#: TurtleArtActivity.py:557
+#: TurtleArtActivity.py:608 TurtleArtActivity.py:749
 msgid "Metric coordinates"
 msgstr "मैट्रिक / मापीय निर्देशांक"
 
-#: TurtleArtActivity.py:567 turtleart.py:340
+#: TurtleArtActivity.py:618 TurtleArtActivity.py:753 turtleart.py:340
 msgid "Grow blocks"
 msgstr "खण्डहरु बढाऊ"
 
-#: TurtleArtActivity.py:569 turtleart.py:342
+#: TurtleArtActivity.py:620 TurtleArtActivity.py:754 turtleart.py:342
 msgid "Shrink blocks"
 msgstr "खण्डहरु घटाऊ"
 
-#: TurtleArtActivity.py:596 TurtleArtActivity.py:674
+#: TurtleArtActivity.py:646 TurtleArtActivity.py:681
 msgid "Load example"
 msgstr "उदाहरण सुरु गर"
 
-#: TurtleArtActivity.py:637 TurtleArtActivity.py:657 turtleart.py:324
-msgid "Save as image"
-msgstr "तस्विरको रुपमा सेभ गर"
-
-#: TurtleArtActivity.py:640 TurtleArtActivity.py:660 turtleart.py:326
-msgid "Save as HTML"
-msgstr "HTMLको रुपमा सेभ गर"
-
-#: TurtleArtActivity.py:643 TurtleArtActivity.py:662 turtleart.py:328
-msgid "Save as Logo"
-msgstr "लोगोको रुपमा सेभ गर"
-
-#: TurtleArtActivity.py:646 TurtleArtActivity.py:665
-msgid "Save snapshot"
-msgstr "स्नयापसट सेभ गर"
-
-#: TurtleArtActivity.py:648 TurtleArtActivity.py:668
-msgid "Load project"
-msgstr "परियोजना सुरु गर"
-
-#: TurtleArtActivity.py:651 TurtleArtActivity.py:671
-msgid "Load Python block"
-msgstr "पाइथन खण्ड सुरु गर"
-
-#: TurtleArtActivity.py:690
-msgid "<Ctrl>p"
-msgstr "<Ctrl>p"
-
-#: TurtleArtActivity.py:693
-msgid "<Ctrl>b"
-msgstr "<Ctrl>b"
-
-#: TurtleArtActivity.py:698 turtleart.py:367
+#: TurtleArtActivity.py:676 TurtleArtActivity.py:860 turtleart.py:367
 msgid "Clean"
 msgstr "सफा गर्नुहोस्"
 
-#: TurtleArtActivity.py:698
-msgid "<Ctrl>e"
-msgstr "<Ctrl>e"
-
-#: TurtleArtActivity.py:700 turtleart.py:368
+#: TurtleArtActivity.py:677 TurtleArtActivity.py:862 turtleart.py:368
 msgid "Run"
 msgstr "चलाउनुहोस्"
 
-#: TurtleArtActivity.py:700
-msgid "<Ctrl>r"
-msgstr "<Ctrl>r"
-
-#: TurtleArtActivity.py:702 turtleart.py:369
+#: TurtleArtActivity.py:678 TurtleArtActivity.py:864 turtleart.py:369
 msgid "Step"
 msgstr "चाल"
 
-#: TurtleArtActivity.py:702
-msgid "<Ctrl>w"
-msgstr "<Ctrl>w"
-
-#: TurtleArtActivity.py:705 turtleart.py:370
+#: TurtleArtActivity.py:679 TurtleArtActivity.py:867 turtleart.py:370
 msgid "Debug"
 msgstr "त्रुटि सच्याउनुहोस्"
 
-#: TurtleArtActivity.py:705
+#: TurtleArtActivity.py:682 util/helpbutton.py:45
+msgid "Help"
+msgstr "मद्दत"
+
+#: TurtleArtActivity.py:683 turtleart.py:371
+msgid "Stop"
+msgstr "रोक"
+
+#: TurtleArtActivity.py:706 TurtleArtActivity.py:800 TurtleArtActivity.py:825
+msgid "Load project"
+msgstr "परियोजना सुरु गर"
+
+#: TurtleArtActivity.py:709 TurtleArtActivity.py:805 TurtleArtActivity.py:830
+msgid "Load plugin"
+msgstr "पल्गइन सुरु गर"
+
+#: TurtleArtActivity.py:710 TurtleArtActivity.py:808 TurtleArtActivity.py:833
+msgid "Load Python block"
+msgstr "पाइथन खण्ड सुरु गर"
+
+#: TurtleArtActivity.py:850
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:860
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: TurtleArtActivity.py:862
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:864
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:868
 msgid "<Ctrl>d"
 msgstr "<Ctrl>d"
 
-#: TurtleArtActivity.py:707
-msgid "Stop turtle"
-msgstr "टर्टल रोक"
-
-#: TurtleArtActivity.py:708
+#: TurtleArtActivity.py:871
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
+
+#: TurtleArtActivity.py:995 TurtleArtActivity.py:1000
+#: TurtleArtActivity.py:1067
+msgid "Plugin could not be installed."
+msgstr "पल्गइन इन्टल गर्न सकिएन।"
+
+#: TurtleArtActivity.py:1063
+msgid "Please restart Turtle Art in order to use the plugin."
+msgstr "कृपया पल्गइन चलाउन टर्टल आर्ट पुनरारम्भ गर।"
+
+#: TurtleArtActivity.py:1081
+#, python-format
+msgid "Plugin %s already installed."
+msgstr "पल्गइन %s पहिल्यै इन्टल भइसक्यो।"
+
+#: TurtleArtActivity.py:1082
+#, python-format
+msgid "Do you want to reinstall %s?"
+msgstr "के तिमी %s रिइन्टल गर्न चाहन्छौ?"
 
 #: gnome_plugins/collaboration_plugin.py:67
 msgid "My Turtle Art session"
@@ -1044,6 +1085,7 @@ msgstr "थुप्रो हुने गरी x, y, z मा गतिवृ
 
 #: plugins/audio_sensors/audio_sensors.py:82
 #: plugins/audio_sensors/audio_sensors.py:97 pysamples/grecord.py:205
+#: taextras.py:260
 msgid "sound"
 msgstr "ध्बनि"
 
@@ -1336,7 +1378,7 @@ msgstr "टर्टलले देख्छ"
 msgid "returns the color that the turtle \"sees\""
 msgstr "टर्टलले \"देखेको\" रंग फिर्ता गर्छ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:373 taextras.py:279
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:373 taextras.py:283
 msgid "time"
 msgstr "समय"
 
@@ -1502,7 +1544,7 @@ msgstr "पतन गर्न मिल्ने थाकको तल"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:618
 msgid "collapsed stack: click to open"
-msgstr ""
+msgstr "ढलेको चाङ:खोल्नको लागि क्लिक गर"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:627
 msgid "bottom block in a collapsed stack: click to open"
@@ -2224,7 +2266,7 @@ msgstr ""
 "मोटरको चक्रिय गति र गति ०(बन्द) देखि सकारात्मक अंकहरु सम्म फैलिएको हुन्छ; "
 "मोटर हालै मात्र बनाएको वस्तुमा राखिन्छ।"
 
-#: taextras.py:215 taextras.py:329
+#: taextras.py:215 taextras.py:333
 msgid "pin"
 msgstr "पिन"
 
@@ -2337,341 +2379,348 @@ msgstr "मोटर Bको मान सेट गर"
 
 #. TRANS: Lego NXT is a robotics product of the LEGO company
 #: taextras.py:257
-msgid "Palette of LEGO NXT blocks"
+msgid "Palette of LEGO NXT blocks of motors"
 msgstr ""
 
 #: taextras.py:258
-msgid "touch"
-msgstr ""
-
-#: taextras.py:259
-msgid "ultrasonic"
+msgid "Palette of LEGO NXT blocks of sensors"
 msgstr ""
 
 #: taextras.py:261
+msgid "sound sensor"
+msgstr ""
+
+#: taextras.py:262
+msgid "touch"
+msgstr ""
+
+#: taextras.py:263
+msgid "ultrasonic"
+msgstr ""
+
+#: taextras.py:265
 #, fuzzy
 msgid "light"
 msgstr "दायाँ"
 
-#: taextras.py:262
+#: taextras.py:266
 msgid "PORT A"
 msgstr ""
 
-#: taextras.py:263
+#: taextras.py:267
 msgid "PORT B"
 msgstr ""
 
-#: taextras.py:264
+#: taextras.py:268
 msgid "PORT C"
 msgstr ""
 
-#: taextras.py:265
+#: taextras.py:269
 msgid "PORT 1"
 msgstr ""
 
-#: taextras.py:266
+#: taextras.py:270
 msgid "PORT 2"
 msgstr ""
 
-#: taextras.py:267
+#: taextras.py:271
 msgid "PORT 3"
 msgstr ""
 
-#: taextras.py:268
+#: taextras.py:272
 msgid "PORT 4"
 msgstr ""
 
-#: taextras.py:269
+#: taextras.py:273
 msgid "Please check the connection with the brick."
 msgstr ""
 
-#: taextras.py:270
+#: taextras.py:274
 msgid "Please check the port."
 msgstr ""
 
-#: taextras.py:271
+#: taextras.py:275
 msgid "The value of power must be between -127 to 127."
 msgstr ""
 
-#: taextras.py:272
+#: taextras.py:276
 msgid "An error has occurred: check all connections and try to reconnect."
 msgstr ""
 
-#: taextras.py:273
+#: taextras.py:277
 msgid "NXT found"
 msgstr ""
 
-#: taextras.py:274
+#: taextras.py:278
 msgid "NXT not found"
 msgstr ""
 
-#: taextras.py:275
+#: taextras.py:279
 msgid "refresh NXT"
 msgstr ""
 
-#: taextras.py:276
+#: taextras.py:280
 msgid "Search for a connected NXT brick."
 msgstr ""
 
-#: taextras.py:277
+#: taextras.py:281
 msgid "play tone"
 msgstr ""
 
-#: taextras.py:278
+#: taextras.py:282
 msgid "freq"
 msgstr ""
 
-#: taextras.py:280
+#: taextras.py:284
 msgid "Play a tone at freq for time."
 msgstr ""
 
-#: taextras.py:281
+#: taextras.py:285
 msgid ""
 "turn motor\n"
 "rotations"
 msgstr ""
 
-#: taextras.py:282
+#: taextras.py:286
 #, fuzzy
 msgid "port"
 msgstr "द्वार"
 
-#: taextras.py:283
+#: taextras.py:287
 msgid "power"
 msgstr ""
 
-#: taextras.py:284
+#: taextras.py:288
 msgid "turn a motor"
 msgstr ""
 
-#: taextras.py:285
+#: taextras.py:289
 msgid ""
 "sync motors\n"
 "steering"
 msgstr ""
 
-#: taextras.py:286
+#: taextras.py:290
 #, fuzzy
 msgid "rotations"
 msgstr "रोटेशन"
 
-#: taextras.py:287
+#: taextras.py:291
 msgid "synchronize two motors"
 msgstr ""
 
-#: taextras.py:288
+#: taextras.py:292
 msgid "PORT A of the brick"
 msgstr ""
 
-#: taextras.py:289
+#: taextras.py:293
 msgid "PORT B of the brick"
 msgstr ""
 
-#: taextras.py:290
+#: taextras.py:294
 msgid "PORT C of the brick"
 msgstr ""
 
-#: taextras.py:291
+#: taextras.py:295
 msgid "start motor"
 msgstr ""
 
-#: taextras.py:292
+#: taextras.py:296
 msgid "Run a motor forever."
 msgstr ""
 
-#: taextras.py:293
+#: taextras.py:297
 msgid "brake motor"
 msgstr ""
 
-#: taextras.py:294
+#: taextras.py:298
 msgid "Stop a specified motor."
 msgstr ""
 
-#: taextras.py:295
+#: taextras.py:299
 msgid "PORT 1 of the brick"
 msgstr ""
 
-#: taextras.py:296
+#: taextras.py:300
 msgid "color sensor"
 msgstr ""
 
-#: taextras.py:297
+#: taextras.py:301
 msgid "light sensor"
 msgstr ""
 
-#: taextras.py:298
+#: taextras.py:302
 msgid "PORT 2 of the brick"
 msgstr ""
 
-#: taextras.py:299
+#: taextras.py:303
 msgid "touch sensor"
 msgstr ""
 
-#: taextras.py:300
+#: taextras.py:304
 msgid "distance sensor"
 msgstr ""
 
-#: taextras.py:301
+#: taextras.py:305
 msgid "PORT 3 of the brick"
 msgstr ""
 
-#: taextras.py:302
+#: taextras.py:306
 #, fuzzy
 msgid "read"
 msgstr "रातो"
 
-#: taextras.py:303
+#: taextras.py:307
 #, fuzzy
 msgid "sensor"
 msgstr "संवेदक"
 
-#: taextras.py:304
+#: taextras.py:308
 msgid "Read sensor output."
 msgstr ""
 
-#: taextras.py:305
+#: taextras.py:309
 msgid "PORT 4 of the brick"
 msgstr ""
 
-#: taextras.py:306
+#: taextras.py:310
 msgid "set light"
 msgstr ""
 
-#: taextras.py:307
+#: taextras.py:311
 msgid "Set color sensor light."
 msgstr ""
 
-#: taextras.py:308
+#: taextras.py:312
 msgid "reset motor"
 msgstr ""
 
-#: taextras.py:309
+#: taextras.py:313
 msgid "Reset the motor counter."
 msgstr ""
 
-#: taextras.py:310
+#: taextras.py:314
 msgid "motor position"
 msgstr ""
 
-#: taextras.py:311
+#: taextras.py:315
 msgid "Get the motor position."
 msgstr ""
 
 #. TRANS: Arduino plugin to control an Arduino board
-#: taextras.py:316
+#: taextras.py:320
 #, fuzzy
 msgid "Palette of Arduino blocks"
 msgstr "सेन्सर खण्डहरुको प्यालेट"
 
-#: taextras.py:317
+#: taextras.py:321
 msgid "HIGH"
 msgstr ""
 
-#: taextras.py:318
+#: taextras.py:322
 msgid "LOW"
 msgstr ""
 
-#: taextras.py:319
+#: taextras.py:323
 msgid "INPUT"
 msgstr ""
 
-#: taextras.py:320
+#: taextras.py:324
 msgid "OUTPUT"
 msgstr ""
 
 #. TRANS: PWM is pulse-width modulation
-#: taextras.py:322
+#: taextras.py:326
 msgid "PWM"
 msgstr ""
 
-#: taextras.py:323
+#: taextras.py:327
 msgid "SERVO"
 msgstr ""
 
-#: taextras.py:324
+#: taextras.py:328
 msgid "ERROR: Check the Arduino and the number of port."
 msgstr ""
 
-#: taextras.py:325
+#: taextras.py:329
 msgid "ERROR: Value must be a number from 0 to 255."
 msgstr ""
 
-#: taextras.py:326
+#: taextras.py:330
 msgid "ERROR: Value must be either HIGH or LOW."
 msgstr ""
 
-#: taextras.py:327
+#: taextras.py:331
 msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
 msgstr ""
 
-#: taextras.py:328
+#: taextras.py:332
 msgid "pin mode"
 msgstr ""
 
-#: taextras.py:330
-#, fuzzy
-msgid "mode"
-msgstr "mod"
-
-#: taextras.py:331
-msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-msgstr ""
-
-#: taextras.py:332
-msgid "analog write"
-msgstr ""
-
 #: taextras.py:334
-msgid "Write analog value in specified port."
+msgid "mode"
 msgstr ""
 
 #: taextras.py:335
-msgid "analog read"
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
 msgstr ""
 
 #: taextras.py:336
+msgid "analog write"
+msgstr ""
+
+#: taextras.py:338
+msgid "Write analog value in specified port."
+msgstr ""
+
+#: taextras.py:339
+msgid "analog read"
+msgstr ""
+
+#: taextras.py:340
 msgid ""
 "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
 "determine voltage. For USB, volt=((read)*5)/1024) approximately."
 msgstr ""
 
-#: taextras.py:338
+#: taextras.py:342
 msgid "digital write"
 msgstr ""
 
-#: taextras.py:339
+#: taextras.py:343
 msgid "Write digital value to specified port."
 msgstr ""
 
-#: taextras.py:340
+#: taextras.py:344
 msgid "digital read"
 msgstr ""
 
-#: taextras.py:341
+#: taextras.py:345
 msgid "Read value from digital port."
 msgstr ""
 
-#: taextras.py:342
+#: taextras.py:346
 msgid "Set HIGH value for digital port."
 msgstr ""
 
-#: taextras.py:343
+#: taextras.py:347
 msgid "Configure Arduino port for digital input."
 msgstr ""
 
-#: taextras.py:344
+#: taextras.py:348
 msgid "Configure Arduino port to drive a servo."
 msgstr ""
 
-#: taextras.py:345
+#: taextras.py:349
 msgid "Set LOW value for digital port."
 msgstr ""
 
-#: taextras.py:346
+#: taextras.py:350
 msgid "Configure Arduino port for digital output."
 msgstr ""
 
-#: taextras.py:347
+#: taextras.py:351
 msgid "Configure Arduino port for PWM (pulse-width modulation)."
 msgstr ""
 
@@ -2732,25 +2781,20 @@ msgstr "खण्ड लुकाऊ/देखाऊ"
 msgid "Tools"
 msgstr "औजार"
 
-#: turtleart.py:371
-msgid "Stop"
-msgstr "रोक"
-
 #: turtleart.py:372
 msgid "Turtle"
 msgstr "टर्टल"
 
-#: turtleart.py:402
+#: turtleart.py:406
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr "तिमीसगँ बचत नगरिएको काम छ। बन्द गर्नुपूर्व बचत गर्न चाहनुहुन्छ?"
 
-#: turtleart.py:403
+#: turtleart.py:407
 msgid "Save project?"
 msgstr "परियोजना सेभ गर?"
 
-#: util/helpbutton.py:42
-msgid "Help"
-msgstr "मद्दत"
+#~ msgid "<Ctrl>b"
+#~ msgstr "<Ctrl>b"
 
 #~ msgid "Move the cursor over the orange palette for help."
 #~ msgstr "साहयताको लागि कर्सरलाई सुन्तला रङ्गको प्यालेट माथि लानुहोस्"
