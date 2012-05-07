@@ -44,7 +44,7 @@ DEGTOR = 2 * pi / 360
 import locale
 
 from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
-    MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES, STRING_OR_NUMBER_ARGS, \
+    MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES, \
     TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER, CATEGORY_LAYER, \
     BLOCKS_WITH_SKIN, ICON_SIZE, PALETTE_SCALE, PALETTE_WIDTH, SKIN_PATHS, \
     MACROS, TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, \
@@ -54,7 +54,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     CONSTANTS, EXPAND_SKIN, PROTO_LAYER
 from tapalette import palette_names, palette_blocks, expandable_blocks, \
     block_names, content_blocks, default_values, special_names, block_styles, \
-    help_strings, hidden_proto_blocks
+    help_strings, hidden_proto_blocks, string_or_number_args
 from talogo import LogoCode
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
@@ -3409,7 +3409,7 @@ def dock_dx_dy(block1, dock1n, block2, dock2n):
            block2.connections[dock2n] is not None:
             return (100, 100)
     if _d1type != _d2type:
-        if block1.name in STRING_OR_NUMBER_ARGS:
+        if block1.name in string_or_number_args:
             if _d2type == 'number' or _d2type == 'string':
                 pass
         elif block1.name in CONTENT_ARGS:

@@ -454,6 +454,7 @@ make "tmp first :taheap\rmake "taheap butfirst :taheap\routput :tmp\rend\r')
                           label=_('comment'),
                           prim_name='comment',
                           default=_('comment'),
+                          string_or_number=True,
                           help_string=_('places a comment in your code'))
         self.tw.lc.def_prim('comment', 1,
             lambda self, x: primitive_dictionary['print'](x, True))
@@ -463,6 +464,7 @@ make "tmp first :taheap\rmake "taheap butfirst :taheap\routput :tmp\rend\r')
                           label=_('print'),
                           prim_name='print',
                           logo_command='label',
+                          string_or_number=True,
                           help_string=_('prints value in status block at \
 bottom of the screen'))
         self.tw.lc.def_prim('print', 1,
@@ -474,6 +476,7 @@ bottom of the screen'))
                           label=[_('Python'), 'f(x)', 'x'],
                           prim_name='myfunction',
                           default=['x', 100],
+                          string_or_number=True,
                           help_string=_('a programmable block: used to add \
 advanced single-variable math equations, e.g., sin(x)'))
         self.tw.lc.def_prim('myfunction', 2,
@@ -486,6 +489,7 @@ advanced single-variable math equations, e.g., sin(x)'))
                           label=[_('Python'), 'f(x,y)', ' '],
                           prim_name='myfunction2',
                           default=['x+y', 100, 100],
+                          string_or_number=True,
                           help_string=_('a programmable block: used to add \
 advanced multi-variable math equations, e.g., sqrt(x*x+y*y)'))
         self.tw.lc.def_prim('myfunction2', 3,
@@ -499,6 +503,7 @@ advanced multi-variable math equations, e.g., sqrt(x*x+y*y)'))
                           label=[_('Python'), 'f(x,y,z)', ' '],
                           prim_name='myfunction3',
                           default=['x+y+z', 100, 100, 100],
+                          string_or_number=True,
                           help_string=_('a programmable block: used to add \
 advanced multi-variable math equations, e.g., sin(x+y+z)'))
         self.tw.lc.def_prim('myfunction3', 4,
@@ -510,6 +515,7 @@ advanced multi-variable math equations, e.g., sin(x+y+z)'))
                           style='basic-style-var-arg',
                           label=' ',
                           prim_name='userdefined',
+                          string_or_number=True,
                           special_name=_('Python block'),
                           default=100,
                           help_string=_('runs code found in the tamyblock.py \
@@ -525,6 +531,7 @@ module found in the Journal'))
                           style='basic-style-var-arg',
                           label=' ',
                           prim_name='userdefined2',
+                          string_or_number=True,
                           special_name=_('Python block'),
                           default=[100, 100],
                           help_string=_('runs code found in the tamyblock.py \
@@ -542,6 +549,7 @@ module found in the Journal'))
                           prim_name='userdefined3',
                           special_name=_('Python block'),
                           default=[100, 100, 100],
+                          string_or_number=True,
                           help_string=_('runs code found in the tamyblock.py \
 module found in the Journal'))
         self.tw.lc.def_prim('userdefined3', 3,
@@ -574,6 +582,7 @@ module found in the Journal'))
                           label=_('turtle'),
                           prim_name='turtle',
                           default=1,
+                          string_or_number=True,
                           help_string=_('chooses which turtle to command'))
         self.tw.lc.def_prim('turtle', 1,
             lambda self, x: self.tw.canvas.set_turtle(x))
@@ -633,6 +642,7 @@ click to open'))
                           style='collapsible-top',
                           label=_('top of stack'),
                           default=_('label'),
+                          string_or_number=True,
                           prim_name='comment',
                           help_string=_('top of stack'))
 
@@ -643,6 +653,7 @@ click to open'))
                           label=_('top of a collapsible stack'),
                           default=_('label'),
                           prim_name='comment',
+                          string_or_number=True,
                           help_string=_('top of stack'))
 
     def _portfolio_palette(self):
@@ -685,6 +696,7 @@ templates'),
                           colors=["#0606FF", "#0606A0"],
                           style='bullet-style',
                           label=_('list'),
+                          string_or_number=True,
                           prim_name='bulletlist',
                           default=['∙ ', '∙ '],
                           help_string=_('presentation bulleted list'))
@@ -848,6 +860,7 @@ Journal objects'))
                           prim_name='t1x1',
                           default=[_('Title'), 'None'],
                           special_name=_('presentation 1x1'),
+                          string_or_number=True,
                           help_string=_('presentation template: select \
 Journal object (with description)'))
         self.tw.lc.def_prim('t1x1', 2,
@@ -862,6 +875,7 @@ Journal object (with description)'))
                           prim_name='t1x1a',
                           default=[_('Title'), 'None'],
                           special_name=_('presentation 1x1'),
+                          string_or_number=True,
                           help_string=_('presentation template: select \
 Journal object (no description)'))
         self.tw.lc.def_prim('t1x1a', 2,
@@ -876,6 +890,7 @@ Journal object (no description)'))
                           prim_name='t2x1',
                           default=[_('Title'), 'None', 'None'],
                           special_name=_('presentation 2x1'),
+                          string_or_number=True,
                           help_string=_("presentation template: select two \
 Journal objects"))
         self.tw.lc.def_prim('t2x1', 3,
@@ -890,6 +905,7 @@ Journal objects"))
                           prim_name='t1x2',
                           default=[_('Title'), 'None', 'None'],
                           special_name=_('presentation 1x2'),
+                          string_or_number=True,
                           help_string=_("presentation template: select two \
 Journal objects"))
         self.tw.lc.def_prim('t1x2', 3,
@@ -904,6 +920,7 @@ Journal objects"))
                           prim_name='t2x2',
                           default=[_('Title'), 'None', 'None', 'None', 'None'],
                           special_name=_('presentation 2x2'),
+                          string_or_number=True,
                           help_string=_("presentation template: select four \
 Journal objects"))
         self.tw.lc.def_prim('t2x2', 5,
@@ -918,6 +935,7 @@ Journal objects"))
                           prim_name='bullet',
                           default=[_('Title'), '∙ '],
                           special_name=_('presentation bulleted list'),
+                          string_or_number=True,
                           help_string=_('presentation template: list of \
 bullets'))
         self.tw.lc.def_prim('bullet', 1, self._prim_list, True)

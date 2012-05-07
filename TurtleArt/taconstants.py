@@ -104,17 +104,6 @@ COLLAPSIBLE = ['sandwichbottom', 'sandwichcollapsed']
 #
 OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
 
-#
-# Blocks that can interchange strings and numbers for their arguments
-#
-STRING_OR_NUMBER_ARGS = ['plus2', 'equal2', 'less2', 'greater2', 'box',
-                         'template1x1', 'template1x2', 'template2x1', 'list',
-                         'template2x2', 'template1x1a', 'templatelist', 'nop',
-                         'print', 'stack', 'hat', 'addturtle', 'myfunc',
-                         'myfunc1arg', 'myfunc2arg', 'myfunc3arg', 'comment',
-                         'sandwichtop', 'sandwichtop_no_arm', 'userdefined',
-                         'userdefined2args', 'userdefined3args', 'storein']
-
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
                 'storeinbox2']
 

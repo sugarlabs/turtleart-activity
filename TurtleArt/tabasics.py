@@ -544,6 +544,7 @@ tasetshade :shade \r')
                           style='number-style',
                           label='+',
                           special_name=_('plus'),
+                          string_or_number=True,
                           prim_name='plus',
                           logo_command='sum',
                           help_string=_('adds two alphanumeric inputs'))
@@ -649,6 +650,7 @@ operators'))
         palette.add_block('greater2',
                           style='compare-porch-style',
                           label='>',
+                          string_or_number=True,
                           special_name=_('greater than'),
                           prim_name='greater?',
                           logo_command='greater?',
@@ -665,6 +667,7 @@ operators'))
                           style='compare-porch-style',
                           label='<',
                           special_name=_('less than'),
+                          string_or_number=True,
                           prim_name='less?',
                           logo_command='less?',
                           help_string=_('logical less-than operator'))
@@ -679,6 +682,7 @@ operators'))
                           style='compare-style',
                           label='=',
                           special_name=_('equal'),
+                          string_or_number=True,
                           prim_name='equal?',
                           logo_command='equal?',
                           help_string=_('logical equal-to operator'))
@@ -875,6 +879,7 @@ buttons'))
         palette.add_block('box',
                           style='number-style-1strarg',
                           label=_('box'),
+                          string_or_number=True,
                           prim_name='box',
                           default=_('my box'),
                           logo_command='box',
@@ -885,6 +890,7 @@ buttons'))
         palette.add_block('storein',
                           style='basic-style-2arg',
                           label=[_('store in'), _('box'), _('value')],
+                          string_or_number=True,
                           prim_name='storeinbox',
                           logo_command='storeinbox',
                           default=[_('my box'), 100],
@@ -898,6 +904,7 @@ variable'))
                           style='basic-style-head-1arg',
                           label=_('action'),
                           prim_name='nop3',
+                          string_or_number=True,
                           default=_('action'),
                           logo_command='to action',
                           help_string=_('top of nameable action stack'))
@@ -923,6 +930,7 @@ variable'))
         palette.add_block('stack',
                           style='basic-style-1arg',
                           label=_('action'),
+                          string_or_number=True,
                           prim_name='stack',
                           logo_command='action',
                           default=_('action'),

@@ -36,6 +36,7 @@ content_blocks = ['number', 'string', 'description', 'audio', 'video',
 hidden_proto_blocks = [] # proto blocks that are (at least initially) hidden
 value_blocks = []  # blocks whose labels are updated get added here
 special_block_colors = {}
+string_or_number_args = []
 block_styles = {'basic-style': [],
                 'blank-style': [],
                 'basic-style-head': [],
@@ -164,7 +165,8 @@ class Palette():
     def add_block(self, block_name, style='basic-block', label=None,
                   special_name=None, default=None, prim_name=None,
                   help_string=None, value_block=False, content_block=False,
-                  logo_command=None, hidden=False, colors=None):
+                  logo_command=None, hidden=False, colors=None,
+                  string_or_number=False):
         """ Add a new block to the palette """
         block = Block(block_name)
         block.set_style(style)
@@ -199,6 +201,8 @@ class Palette():
                                                               help_string))
         if colors is not None:
             block.set_colors(colors)
+        if string_or_number:
+            block.set_string_or_number()
         block.set_value_block(value_block)
         block.set_content_block(content_block)
         block.set_palette(self._name)
@@ -250,6 +254,7 @@ class Block():
         self._content_block = False
         self._colors = None
         self._hidden = False
+        self._string_or_number = False
 
     def add_block(self, position=None):
         if self._name is None:
@@ -313,6 +318,9 @@ class Block():
         if self._colors is not None:
             special_block_colors[self._name] = self._colors
 
+        if self._string_or_number:
+            string_or_number_args.append(self._name)
+
         if self._hidden:
             hidden_proto_blocks.append(self._name)
 
@@ -321,6 +329,9 @@ class Block():
 
     def set_colors(self, colors=None):
         self._colors = colors
+
+    def set_string_or_number(self, flag=True):
+        self._string_or_number = flag
 
     def set_value_block(self, value=True):
         self._value_block = value
