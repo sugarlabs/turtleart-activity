@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-02 00:32-0400\n"
-"PO-Revision-Date: 2012-05-05 17:30+0200\n"
-"Last-Translator: Xin <dram.wang@gmail.com>\n"
+"PO-Revision-Date: 2012-05-07 09:30+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -1778,7 +1778,7 @@ msgstr "当传感器检测到磁场返回1，否则为0"
 
 #: taextras.py:68
 msgid "switches from 0 to 1, the frequency depends on the vibration"
-msgstr " 从0切换到1，频率取决于振动"
+msgstr "从0切换到1，频率取决于振动"
 
 #: taextras.py:69
 msgid "LED"
