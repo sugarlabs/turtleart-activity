@@ -616,7 +616,7 @@ class TurtleArtActivity(activity.Activity):
 
         self._make_project_buttons(self._toolbox.toolbar)
 
-        if self.tw.hw in [XO1, XO15, XO175]:
+        if not self.tw.hw in [XO30]:
             self._add_separator(self._toolbox.toolbar, expand=True,
                                 visible=False)
 
