@@ -1981,8 +1981,9 @@ class TurtleArtWindow():
         self.canvas.xcor = x
         self.canvas.ycor = y
         self.canvas.move_turtle()
-        if self.running_sugar:
+        if self.interactive_mode:
             self.display_coordinates()
+        if self.running_sugar:
             self.selected_turtle.spr.set_layer(TURTLE_LAYER)
             self.lc.update_label_value('xcor',
                                        self.canvas.xcor / self.coord_scale)
