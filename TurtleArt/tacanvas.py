@@ -189,6 +189,7 @@ class TurtleGraphics:
 
         def _clearscreen(cr):
             cr.move_to(0, 0)
+            self.bgrgb = [255, 248, 222]
             cr.set_source_rgb(self.bgrgb[0] / 255.,
                               self.bgrgb[1] / 255.,
                               self.bgrgb[2] / 255.)
