@@ -594,9 +594,9 @@ class LogoCode:
         """ Update the label of value blocks to reflect current value """
         if not self.tw.interactive_mode:
             return
-        self.tw.display_coordinates()
         if self.tw.hide:
             return
+        self.tw.display_coordinates()
         if value is None:
             for block in self.value_blocks_to_update[name]:
                 block.spr.set_label(block_names[name][0])
