@@ -320,10 +320,6 @@ class TurtleArtActivity(activity.Activity):
 
     def do_show_blocks(self):
         ''' Show blocks. '''
-        if not hasattr(self, 'blocks_button'):
-            return
-        self.blocks_button.set_icon('hideshowoff')
-        self.blocks_button.set_tooltip(_('Hide blocks'))
         self.do_showpalette()
 
     def do_eraser_cb(self, button):
