@@ -218,6 +218,7 @@ class TurtleMain():
             print str(err)
             print self._HELP_MSG
             sys.exit(2)
+        self._run_on_launch = False
         for o, a in opts:
             if o in ('-h', '--help'):
                 print self._HELP_MSG
