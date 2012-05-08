@@ -240,8 +240,6 @@ class LogoCode:
             # debug_output("running code: %s" % (code), self.tw.running_sugar)
             self.start_time = time()
             self._setup_cmd(code)
-            if not self.tw.hide:
-                self.tw.display_coordinates()
         else:
             return code
 
@@ -594,7 +592,10 @@ class LogoCode:
 
     def update_label_value(self, name, value=None):
         """ Update the label of value blocks to reflect current value """
-        if self.tw.hide or not self.tw.interactive_mode:
+        if not self.tw.interactive_mode:
+            return
+        self.tw.display_coordinates()
+        if self.tw.hide:
             return
         if value is None:
             for block in self.value_blocks_to_update[name]:
