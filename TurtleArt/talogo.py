@@ -512,10 +512,7 @@ class LogoCode:
                     return False
         except logoerror, e:
             self.tw.showblocks()
-            if str(e)[0] == '#':
-                self.tw.showlabel('syntaxerror', str(e)[1:-1])
-            else:
-                self.tw.showlabel('syntaxerror', str(e))
+            self.tw.showlabel('syntaxerror', str(e))
             self.tw.turtles.show_all()
             return False
         return True
