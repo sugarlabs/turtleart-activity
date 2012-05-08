@@ -49,7 +49,8 @@ CURRENCY_STRINGS = [
     _('Palette of Rwandan francs'),
     _('Palette of US currencies'),
     _('Palette of Australian currencies'),
-    _('Palette of Guaranies')
+    _('Palette of Guaranies'),
+    _('Palette of Uruguayan Pesos')
     ]
 
 BUTIA_STRINGS = [
@@ -109,25 +110,42 @@ passed by an argument'),
     _('Hello World    Butia            '),
     _('print text in Butia robot 32-character ASCII display'),
     _('Butia')
-    ]
+]
 
 FOLLOWME_STRINGS = [
     _('The camera was not found.'),
     _('Error on the initialization of the camera.'),
     _('FollowMe'),
+    _('follow'),
+    _('R'),
+    _('G'),
+    _('B'),
     _('follow a RGB color'),
+    _('threshold'),
     _('set a threshold for a RGB color'),
-    _('follow a turtle color'),
-    _('set the minimal number of pixels to follow'),
-    _('calibrate'),
-    _('calibrate a color to follow'),
+    _('save calibration 1'),
+    _('stores a calibration in calibration 1'),
+    _('save calibration 2'),
+    _('stores a calibration in calibration 2'),
+    _('calibration'),
+    _('stores a personalized calibration'),
+    _('calibration 1'),
+    _('return calibration 1'),
+    _('calibration 2'),
+    _('return calibration 2'),
+    _('return a personalized calibration'),
     _('x position'),
     _('return x position'),
     _('y position'),
     _('return y position'),
     _('pixels'),
-    _('return the number of pixels of the biggest blob')
-    ]
+    _('return the number of pixels of the biggest blob'),
+    _('follow a color or calibration'),
+    _('minimum pixels'),
+    _('set the minimal number of pixels to follow'),
+    _('empty calibration'),
+    _('error in string convertion')
+]
 
 SUMO_STRINGS = [
     _('SumBot'),
@@ -178,7 +196,7 @@ SUMO_STRINGS = [
     _('get the distance to the Enemy'),
     _('update information'),
     _('update information from the server')
-    ]
+]
 
 PHYSICS_STRINGS = [
     # TRANS: Please use similar terms to those used in the Physics Activity
@@ -256,13 +274,11 @@ LEGO_STRINGS = [
     # TRANS: Lego NXT is a robotics product of the LEGO company
     _('Palette of LEGO NXT blocks of motors'),
     _('Palette of LEGO NXT blocks of sensors'),
-    # _('Palette of LEGO NXT blocks'),
-    _('sound'),
-    _('sound sensor'),
     _('touch'),
     _('ultrasonic'),
     _('color'),
     _('light'),
+    _('sound'),
     _('PORT A'),
     _('PORT B'),
     _('PORT C'),
@@ -279,16 +295,16 @@ LEGO_STRINGS = [
     _('refresh NXT'),
     _('Search for a connected NXT brick.'),
     _('play tone'),
-    _('freq'),
+    _('frequency'),
     _('time'),
-    _('Play a tone at freq for time.'),
+    _('Play a tone at frequency for time.'),
     _('turn motor\nrotations'),
     _('port'),
     _('power'),
     _('turn a motor'),
-    _('sync motors\nsteering'),
+    _('synchronize motors\nsteering'),
     _('rotations'),
-    _('synchronize two motors'),
+    _('synchronize two motors connected in PORT B and PORT C'),
     _('PORT A of the brick'),
     _('PORT B of the brick'),
     _('PORT C of the brick'),
@@ -296,23 +312,24 @@ LEGO_STRINGS = [
     _('Run a motor forever.'),
     _('brake motor'),
     _('Stop a specified motor.'),
-    _('PORT 1 of the brick'),
-    _('color sensor'),
-    _('light sensor'),
-    _('PORT 2 of the brick'),
-    _('touch sensor'),
-    _('distance sensor'),
-    _('PORT 3 of the brick'),
-    _('read'),
-    _('sensor'),
-    _('Read sensor output.'),
-    _('PORT 4 of the brick'),
-    _('set light'),
-    _('Set color sensor light.'),
     _('reset motor'),
     _('Reset the motor counter.'),
     _('motor position'),
-    _('Get the motor position.')
+    _('Get the motor position.'),
+    _('PORT 1 of the brick'),
+    _('PORT 2 of the brick'),
+    _('PORT 3 of the brick'),
+    _('PORT 4 of the brick'),
+    _('read'),
+    _('sensor'),
+    _('Read sensor output.'),
+    _('color sensor'),
+    _('light sensor'),
+    _('touch sensor'),
+    _('distance sensor'),
+    _('sound sensor'),
+    _('set light'),
+    _('Set color sensor light.')
 ]
 
 ARDUINO_STRINGS = [
