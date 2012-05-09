@@ -1,3 +1,25 @@
+139
+
+ENHANCEMENTS:
+* Autohide blocks when running program from "Rabbit"
+* Autoshow blocks on Stop or Error
+* Move Show-Blocks button to Stop-Turtle button on main toolbar
+* Add --run flag to GNOME version for autorun on launch
+* New translations
+* New plugin strings
+* New translations
+(with help from Alan Jhonn Aguiar Schwyn and Andres Aguirre)
+
+BUG FIX:
+* Fix spacing of GNOME toolbar
+* Use black list instead of white list to specify when to not
+  right-justify the Stop button (#3574).
+* Expose white list for blocks that can take either string or numeric
+  arguments
+* Reset default background color on clean/erase
+* Properly update turtle coordinates on View toolbar
+
+
 138
 
 ENHANCEMENTS:
