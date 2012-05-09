@@ -144,7 +144,7 @@ FOLLOWME_STRINGS = [
     _('minimum pixels'),
     _('set the minimal number of pixels to follow'),
     _('empty calibration'),
-    _('error in string convertion')
+    _('error in string conversion')
 ]
 
 SUMO_STRINGS = [
