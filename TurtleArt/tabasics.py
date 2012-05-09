@@ -833,6 +833,7 @@ buttons'))
                           label=_('store in box 1'),
                           prim_name='storeinbox1',
                           default=100,
+                          string_or_number=True,
                           logo_command='make "box1',
                           help_string=_('stores numeric value in Variable 1'))
         self.tw.lc.def_prim('storeinbox1', 1,
@@ -844,6 +845,7 @@ buttons'))
                           label=_('store in box 2'),
                           prim_name='storeinbox2',
                           default=100,
+                          string_or_number=True,
                           logo_command='make "box2',
                           help_string=_('stores numeric value in Variable 2'))
         self.tw.lc.def_prim('storeinbox2', 1,
