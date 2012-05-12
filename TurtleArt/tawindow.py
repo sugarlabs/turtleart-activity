@@ -1334,15 +1334,20 @@ class TurtleArtWindow():
         if spr.name == 'run-fastoff':
             self.lc.trace = 0
             self.hideblocks()
+            self.display_coordinates(clear=True)
             self.run_button(0)
         elif spr.name == 'run-slowoff':
             self.lc.trace = 1
+            self.showblocks()
             self.run_button(3)
         elif spr.name == 'debugoff':
             self.lc.trace = 1
+            self.showblocks()
             self.run_button(6)
         elif spr.name == 'stopiton':
             self.stop_button()
+            self.display_coordinates()
+            self.showblocks()
             self.toolbar_shapes['stopiton'].hide()
         elif spr.name == 'eraseron':
             self.eraser_button()
@@ -3168,18 +3173,28 @@ class TurtleArtWindow():
                                    self.canvas.shade, self.canvas.pensize))
         return _data
 
-    def display_coordinates(self):
+    def display_coordinates(self, clear=False):
         """ Display the coordinates of the current turtle on the toolbar """
-        x = round_int(float(self.canvas.xcor) / self.coord_scale)
-        y = round_int(float(self.canvas.ycor) / self.coord_scale)
-        h = round_int(self.canvas.heading)
-        if self.running_sugar:
-            self.activity.coordinates_label.set_text("%s: %d %s: %d %s: %d" %\
-                (_("xcor"), x, _("ycor"), y, _("heading"), h))
-            self.activity.coordinates_label.show()
-        elif self.interactive_mode:
-            self.parent.set_title("%s — %s: %d %s: %d %s: %d" % \
-                (_("Turtle Art"), _("xcor"), x, _("ycor"), y, _("heading"), h))
+        if clear:
+            if self.running_sugar:
+                self.activity.coordinates_label.set_text('')
+                self.activity.coordinates_label.show()
+            elif self.interactive_mode:
+                self.parent.set_title('')
+        else:
+            x = round_int(float(self.canvas.xcor) / self.coord_scale)
+            y = round_int(float(self.canvas.ycor) / self.coord_scale)
+            h = round_int(self.canvas.heading)
+            if self.running_sugar:
+                self.activity.coordinates_label.set_text(
+                    "%s: %d %s: %d %s: %d" % (_("xcor"), x, _("ycor"), y,
+                                              _("heading"), h))
+                self.activity.coordinates_label.show()
+            elif self.interactive_mode:
+                self.parent.set_title(
+                    "%s — %s: %d %s: %d %s: %d" % (
+                        _("Turtle Art"), _("xcor"), x, _("ycor"), y,
+                        _("heading"), h))
 
     def showlabel(self, shp, label=''):
         """ Display a message on a status block """

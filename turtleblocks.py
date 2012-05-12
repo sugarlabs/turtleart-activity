@@ -546,6 +546,7 @@ class TurtleMain():
         ''' Callback for run button (rabbit). '''
         self.tw.lc.trace = 0
         self.tw.hideblocks()
+        self.tw.display_coordinates(clear=True)
         self.tw.run_button(0, running_from_button_push=True)
         return
 
@@ -565,6 +566,7 @@ class TurtleMain():
         ''' Callback for stop button. '''
         self.tw.lc.trace = 0
         self.tw.stop_button()
+        self.tw.display_coordinates()
         return
 
     def _do_copy_cb(self, button):

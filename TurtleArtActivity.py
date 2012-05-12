@@ -335,6 +335,7 @@ class TurtleArtActivity(activity.Activity):
         self.tw.lc.trace = 0
         # Autohide blocks and palettes on run
         self.tw.hideblocks()
+        self.tw.display_coordinates(clear=True)
         self.tw.run_button(0, running_from_button_push=True)
         gobject.timeout_add(1000, self.run_button.set_icon, 'run-fastoff')
 
@@ -359,6 +360,7 @@ class TurtleArtActivity(activity.Activity):
         self.tw.stop_button()
         # Auto show blocks after stop
         self.tw.showblocks()
+        self.tw.display_coordinates()
         self.step_button.set_icon('run-slowoff')
         self.run_button.set_icon('run-fastoff')
 

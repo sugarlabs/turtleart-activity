@@ -415,6 +415,7 @@ class LogoCode:
             if self.bindex is not None:
                 self.tw.block_list.list[self.bindex].highlight()
             self.tw.showblocks()
+            self.tw.display_coordinates()
             raise logoerror(str(self.iresult))
         self.iline = oldiline
         self.ireturn()
@@ -454,6 +455,7 @@ class LogoCode:
 
         if token.nargs == None:
             self.tw.showblocks()
+            self.tw.display_coordinates()
             raise logoerror("#noinput")
         for i in range(token.nargs):
             self._no_args_check()
@@ -510,6 +512,7 @@ class LogoCode:
                     return False
         except logoerror, e:
             self.tw.showblocks()
+            self.tw.display_coordinates()
             self.tw.showlabel('syntaxerror', str(e))
             self.tw.turtles.show_all()
             return False
@@ -540,6 +543,7 @@ class LogoCode:
         if self.iline and self.iline[0] is not self.symnothing:
             return
         self.tw.showblocks()
+        self.tw.display_coordinates()
         raise logoerror("#noinput")
 
     #
@@ -755,6 +759,9 @@ class LogoCode:
         # manage the connections and flows locally means we may run
         # into trouble if any of these block types (forever, while,
         # until. ifelse, stopstack, or stack) is changed in tablock.py
+
+        # TODO: Detect nesting, e.g., forever while
+
         if b.name == 'while':
             while_blk = True
         else:
