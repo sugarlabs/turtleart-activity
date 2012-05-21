@@ -82,7 +82,7 @@ class TurtleArtActivity(activity.Activity):
             _logger.error(str(e))
 
         self._check_ver_change(get_path(activity, 'data'))
-        self._setup_visibility_handler()
+        self.connect("notify::active", self._notify_active_cb)
 
         self.has_toolbarbox = HAS_TOOLBARBOX
         _logger.debug('_setup_toolbar')
@@ -502,14 +502,6 @@ class TurtleArtActivity(activity.Activity):
             _logger.error("Couldn't save project code: " + str(e))
             tmpfile = None
         return tmpfile
-
-    def __visibility_notify_cb(self, window, event):
-        ''' Callback method for when the activity's visibility changes. '''
-        if event.state == gtk.gdk.VISIBILITY_FULLY_OBSCURED:
-            self.tw.background_plugins()
-        elif event.state in \
-            [gtk.gdk.VISIBILITY_UNOBSCURED, gtk.gdk.VISIBILITY_PARTIAL]:
-            self.tw.foreground_plugins()
 
     def _keep_clicked_cb(self, button):
         ''' Keep-button clicked. '''
@@ -937,10 +929,18 @@ class TurtleArtActivity(activity.Activity):
         ''' Resync xy position (and orientation) of my turtle. '''
         self._collaboration.send_my_xy()
 
-    def _setup_visibility_handler(self):
-        ''' Notify me when the visibility state changes. '''
-        self.add_events(gtk.gdk.VISIBILITY_NOTIFY_MASK)
-        self.connect('visibility-notify-event', self.__visibility_notify_cb)
+    def _notify_active_cb(self, widget, event):
+        ''' Sugar notify us that the activity is becoming active or
+        inactive. Notify plugins. '''
+        if self.props.active:
+            _logger.debug('going to foreground')
+            self.tw.foreground_plugins()
+        else:
+            # If we go to background, stop media playing.
+            if self.tw.gst_available:
+                from TurtleArt.tagplay import stop_media
+                stop_media(self.tw.lc)
+            self.tw.background_plugins()
 
     def can_close(self):
         ''' Override activity class can_close inorder to notify plugins '''
