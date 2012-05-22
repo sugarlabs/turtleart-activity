@@ -566,7 +566,7 @@ class LogoCode:
         self.tw.clear_plugins()
         if self.tw.gst_available:
             from tagplay import stop_media
-            # stop_media(self)  # TODO: gplay variable
+            stop_media(self)
         self.tw.canvas.clearscreen()
         self.scale = DEFAULT_SCALE
         self.hidden_turtle = None
