@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-09 00:32-0400\n"
-"PO-Revision-Date: 2012-05-10 10:37+0200\n"
+"PO-Revision-Date: 2012-05-21 16:18+0200\n"
 "Last-Translator: lite <litekok@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:3182
 #: pysamples/grecord.py:205 turtleblocks.py:294
 msgid "Turtle Art"
-msgstr "海龟艺术"
+msgstr "海龟绘画"
 
 #: TurtleArt/tabasics.py:116
 msgid "Palette of turtle commands"
