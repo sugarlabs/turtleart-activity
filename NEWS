@@ -1,3 +1,12 @@
+140
+
+ENHANCEMENTS:
+* New translations
+
+BUG FIX:
+* Blank out coordinate display when data are invalid (#3599)
+* Import CalledProcessError in audiograb.py
+
 139
 
 ENHANCEMENTS:
@@ -5,7 +14,6 @@ ENHANCEMENTS:
 * Autoshow blocks on Stop or Error
 * Move Show-Blocks button to Stop-Turtle button on main toolbar
 * Add --run flag to GNOME version for autorun on launch
-* New translations
 * New plugin strings
 * New translations
 (with help from Alan Jhonn Aguiar Schwyn and Andres Aguirre)
