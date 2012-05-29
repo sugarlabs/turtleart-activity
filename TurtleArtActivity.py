@@ -372,18 +372,26 @@ class TurtleArtActivity(activity.Activity):
         ''' Adjust the scrolled window position. '''
         hadj = self.sw.get_hadjustment()
         hvalue = hadj.get_value() + dx
-        if hvalue < hadj.get_lower():
-            hvalue = hadj.get_lower()
-        elif hvalue > hadj.get_upper():
-            hvalue = hadj.get_upper()
+        try:
+            if hvalue < hadj.get_lower():
+                hvalue = hadj.get_lower()
+            elif hvalue > hadj.get_upper():
+                hvalue = hadj.get_upper()
+        except AttributeError:
+            _logger.debug(
+                'get_lower, get_upper only available in PyGTK 2.14 and above.')
         hadj.set_value(hvalue)
         self.sw.set_hadjustment(hadj)
         vadj = self.sw.get_vadjustment()
         vvalue = vadj.get_value() + dy
-        if vvalue < vadj.get_lower():
-            vvalue = vadj.get_lower()
-        elif vvalue > vadj.get_upper():
-            vvalue = vadj.get_upper()
+        try:
+            if vvalue < vadj.get_lower():
+                vvalue = vadj.get_lower()
+            elif vvalue > vadj.get_upper():
+                vvalue = vadj.get_upper()
+        except AttributeError:
+            _logger.debug(
+                'get_lower, get_upper only available in PyGTK 2.14 and above.')
         vadj.set_value(vvalue)
         self.sw.set_vadjustment(vadj)
         self._defer_palette_move = True
