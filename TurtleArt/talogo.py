@@ -62,7 +62,6 @@ class symbol:
 class logoerror(Exception):
 
     def __init__(self, value):
-        print value
         self.value = value
 
     def __str__(self):
