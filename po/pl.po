@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-09 00:32-0400\n"
-"PO-Revision-Date: 2012-04-13 19:05+0200\n"
+"POT-Creation-Date: 2012-05-10 00:32-0400\n"
+"PO-Revision-Date: 2012-05-28 15:16+0200\n"
 "Last-Translator: Marcin <ulinski.marcin@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: pl\n"
@@ -1767,7 +1767,7 @@ msgstr "Paleta Guarani"
 
 #: taextras.py:53
 msgid "Palette of Uruguayan Pesos"
-msgstr ""
+msgstr "Paleta urugwajskich pesos"
 
 #. TRANS: Butia is the Arduino Robot Project from Uruguay
 #. (http://www.fing.edu.uy/inco/proyectos/butia/)
@@ -1976,19 +1976,19 @@ msgstr "ŚledźMnie"
 
 #: taextras.py:119
 msgid "follow"
-msgstr ""
+msgstr "śledź"
 
 #: taextras.py:120
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #: taextras.py:121
 msgid "G"
-msgstr ""
+msgstr "G"
 
 #: taextras.py:122
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #: taextras.py:123
 msgid "follow a RGB color"
@@ -1996,7 +1996,7 @@ msgstr "idź za kolorem RGB"
 
 #: taextras.py:124
 msgid "threshold"
-msgstr ""
+msgstr "próg"
 
 #: taextras.py:125
 msgid "set a threshold for a RGB color"
@@ -2004,47 +2004,47 @@ msgstr "ustaw próg dla koloru RGB"
 
 #: taextras.py:126
 msgid "save calibration 1"
-msgstr ""
+msgstr "zapisz kalibrację 1"
 
 #: taextras.py:127
 msgid "stores a calibration in calibration 1"
-msgstr ""
+msgstr "zapisuje kalibrację w kalibracji 1"
 
 #: taextras.py:128
 msgid "save calibration 2"
-msgstr ""
+msgstr "zapisz kalibrację 2"
 
 #: taextras.py:129
 msgid "stores a calibration in calibration 2"
-msgstr ""
+msgstr "zapisuje kalibrację w kalibracji 2"
 
 #: taextras.py:130
 msgid "calibration"
-msgstr ""
+msgstr "kalibracja"
 
 #: taextras.py:131
 msgid "stores a personalized calibration"
-msgstr ""
+msgstr "zapisuje spersonalizowaną kalibrację"
 
 #: taextras.py:132
 msgid "calibration 1"
-msgstr ""
+msgstr "kalibracja 1"
 
 #: taextras.py:133
 msgid "return calibration 1"
-msgstr ""
+msgstr "zwróć kalibrację 1"
 
 #: taextras.py:134
 msgid "calibration 2"
-msgstr ""
+msgstr "kalibracja 2"
 
 #: taextras.py:135
 msgid "return calibration 2"
-msgstr ""
+msgstr "zwróć kalibrację 2"
 
 #: taextras.py:136
 msgid "return a personalized calibration"
-msgstr ""
+msgstr "zwróć spersonalizowaną kalibrację"
 
 #: taextras.py:137
 msgid "x position"
@@ -2072,11 +2072,11 @@ msgstr "zwróć liczbę pikseli największej plamy"
 
 #: taextras.py:143
 msgid "follow a color or calibration"
-msgstr ""
+msgstr "śledź kolor lub kalibrację"
 
 #: taextras.py:144
 msgid "minimum pixels"
-msgstr ""
+msgstr "minimum pikseli"
 
 #: taextras.py:145
 msgid "set the minimal number of pixels to follow"
@@ -2084,11 +2084,11 @@ msgstr "ustaw minimalną liczbę pikseli do śledzenia"
 
 #: taextras.py:146
 msgid "empty calibration"
-msgstr ""
+msgstr "opróżnij kalibrację"
 
 #: taextras.py:147
-msgid "error in string convertion"
-msgstr ""
+msgid "error in string conversion"
+msgstr "błąd w konwersji ciągu"
 
 #: taextras.py:151
 msgid "SumBot"
@@ -2547,10 +2547,9 @@ msgstr "odwórz ton"
 
 #: taextras.py:298
 msgid "frequency"
-msgstr ""
+msgstr "częstotliwość"
 
 #: taextras.py:300
-#, fuzzy
 msgid "Play a tone at frequency for time."
 msgstr "Odtwórz ton o częstotliwości przez czas."
 
@@ -2579,6 +2578,8 @@ msgid ""
 "synchronize motors\n"
 "steering"
 msgstr ""
+"synchronizuj silniki\n"
+"sterowanie"
 
 #: taextras.py:306
 msgid "rotations"
@@ -2586,7 +2587,7 @@ msgstr "obroty"
 
 #: taextras.py:307
 msgid "synchronize two motors connected in PORT B and PORT C"
-msgstr ""
+msgstr "synchronizuj dwa silniki podłączone do PORTU B i PORTU C"
 
 #: taextras.py:308
 msgid "PORT A of the brick"
