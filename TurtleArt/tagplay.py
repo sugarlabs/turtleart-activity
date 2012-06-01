@@ -30,14 +30,12 @@ import pygtk
 pygtk.require('2.0')
 
 import gobject
-gobject.threads_init()
+# gobject.threads_init()
 
 import pygst
 import gst
 import gst.interfaces
 import gtk
-
-import urllib
 
 
 def play_audio_from_file(lc, file_path):
@@ -133,12 +131,12 @@ class Gplay():
         self.only_audio = only_audio
         self.got_stream_info = True
 
-    def start(self, uri=None):
+    def start(self, file_path=None):
         self._want_document = False
-        self.playpath = os.path.dirname(uri)
-        if not uri:
+        self.playpath = os.path.dirname(file_path)
+        if not file_path:
             return False
-        self.playlist.append('file://' + urllib.quote(os.path.abspath(uri)))
+        self.playlist.append('file://' + os.path.abspath(file_path))
         if not self.player:
             # lazy init the player so that videowidget is realized
             # and has a valid widget allocation
@@ -149,15 +147,13 @@ class Gplay():
 
         try:
             if not self.currentplaying:
-                logging.info('Playing: ' + self.playlist[0])
+                logging.info('Playing: %s' % (self.playlist[0]))
                 self.player.set_uri(self.playlist[0])
                 self.currentplaying = 0
                 self.play_toggled()
                 self.show_all()
-            else:
-                pass
         except:
-            pass
+            logging.error('Error playing %s' % (self.playlist[0]))
         return False
 
     def play_toggled(self):
@@ -184,7 +180,9 @@ class GstPlayer(gobject.GObject):
 
         self.player = gst.element_factory_make('playbin', 'player')
 
+        videowidget.realize()
         self.videowidget = videowidget
+        self.videowidget_xid = videowidget.window.xid
         self._init_video_sink()
 
         bus = self.player.get_bus()
@@ -220,6 +218,8 @@ class GstPlayer(gobject.GObject):
             if old == gst.STATE_READY and new == gst.STATE_PAUSED:
                 self.emit('stream-info',
                           self.player.props.stream_info_value_array)
+        else:
+            logging.debug(message.type)
 
     def _init_video_sink(self):
         self.bin = gst.Bin()
@@ -241,7 +241,6 @@ class GstPlayer(gobject.GObject):
             caps_string += 'width=%d, height=%d' % (w, h)
         else:
             caps_string += 'width=480, height=360'
-
         caps = gst.Caps(caps_string)
         self.filter = gst.element_factory_make('capsfilter', 'filter')
         self.bin.add(self.filter)
@@ -269,7 +268,7 @@ class GstPlayer(gobject.GObject):
         self.player.set_state(gst.STATE_NULL)
         self.playing = False
         logging.debug('stopped player')
-        return False
+        # return False
 
     def get_state(self, timeout=1):
         return self.player.get_state(timeout=timeout)
