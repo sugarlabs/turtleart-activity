@@ -220,8 +220,8 @@ class GstPlayer(gobject.GObject):
             if old == gst.STATE_READY and new == gst.STATE_PAUSED:
                 self.emit('stream-info',
                           self.player.props.stream_info_value_array)
-        else:
-            logging.debug(message.type)
+        # else:
+        #     logging.debug(message.type)
 
     def _init_video_sink(self):
         self.bin = gst.Bin()
