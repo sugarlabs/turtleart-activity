@@ -522,6 +522,8 @@ class TurtleArtActivity(activity.Activity):
 
     def toolbars_expanded(self):
         ''' Are any toolbars expanded? '''
+        if not self.has_toolbarbox:
+            return False
         if self.palette_toolbar_button.is_expanded():
             return True
         elif self.edit_toolbar_button.is_expanded():
