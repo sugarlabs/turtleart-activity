@@ -1,9 +1,17 @@
+141
+
+BUG FIXES:
+* get_lower() and get_upper() are only available in PyGTK 2.14 and above
+* Movies playback works properly (#3166, #3369)
+* Don't drag canvas while program is running (interferes with mouse
+  sensor blocks)
+
 140
 
 ENHANCEMENTS:
 * New translations
 
-BUG FIX:
+BUG FIXES:
 * Blank out coordinate display when data are invalid (#3599)
 * Import CalledProcessError in audiograb.py
 
