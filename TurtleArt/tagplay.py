@@ -104,7 +104,7 @@ class Gplay():
         if lc.tw.running_sugar:
             self.bin.set_transient_for(lc.tw.activity)
 
-        self.bin.move(x, y + 108)
+        self.bin.move(x, y)
         self.bin.resize(w, h)
         self.bin.show_all()
 

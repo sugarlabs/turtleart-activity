@@ -515,6 +515,24 @@ class TurtleArtActivity(activity.Activity):
         ''' Keep-button clicked. '''
         self.jobject_new_patch()
 
+    def is_fullscreen(self):
+        ''' Are we in fullscreen mode (toolbars hidden)? '''
+        # Fixme: this should be a exposed as a window property, not private 
+        return self._is_fullscreen
+
+    def toolbars_expanded(self):
+        ''' Are any toolbars expanded? '''
+        if self.palette_toolbar_button.is_expanded():
+            return True
+        elif self.edit_toolbar_button.is_expanded():
+            return True
+        elif self.view_toolbar_button.is_expanded():
+            return True
+        elif self.activity_toolbar_button.is_expanded():
+            return True
+        else:
+            return False
+
     def _setup_toolbar(self):
         ''' Setup toolbar according to Sugar version. '''
         if self.has_toolbarbox:
