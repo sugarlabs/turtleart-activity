@@ -135,6 +135,7 @@ class TurtleArtWindow():
         self.mouse_flag = 0
         self.mouse_x = 0
         self.mouse_y = 0
+        self.running_blocks = False
 
         try:
             locale.setlocale(locale.LC_NUMERIC, '')
@@ -1198,7 +1199,8 @@ class TurtleArtWindow():
         self.dragging_canvas[1] = x
         self.dragging_canvas[2] = y
         if spr is None:
-            self.dragging_canvas[0] = True
+            if not self.running_blocks:
+                self.dragging_canvas[0] = True
             return True
         self.dragging_canvas[0] = False
         self.selected_spr = spr
@@ -2242,6 +2244,7 @@ class TurtleArtWindow():
         if len(self.block_list.get_similar_blocks('block', 'savesvg')) > 0:
             if self.canvas.cr_svg is None:
                 self.canvas.setup_svg_surface()
+        self.running_blocks = True
         self._start_plugins()  # Let the plugins know we are running.
         top = find_top_block(blk)
         self.lc.run_blocks(top, self.just_blocks(), True)

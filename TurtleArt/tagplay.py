@@ -30,7 +30,7 @@ import pygtk
 pygtk.require('2.0')
 
 import gobject
-# gobject.threads_init()
+gobject.threads_init()
 
 import pygst
 import gst
@@ -112,6 +112,8 @@ class Gplay():
 
     def _player_eos_cb(self, widget):
         logging.debug('end of stream')
+        # Make sure player is stopped after EOS
+        self.player.stop()
 
     def _player_error_cb(self, widget, message, detail):
         self.player.stop()
