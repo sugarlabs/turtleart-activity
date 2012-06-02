@@ -156,6 +156,7 @@ class LogoCode:
             from tagplay import stop_media
             stop_media(self)
         self.tw.active_turtle.show()
+        self.tw.running_blocks = False
 
     def def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
@@ -215,6 +216,7 @@ class LogoCode:
                     except IndexError:
                         self.tw.showlabel('#nostack')
                         self.tw.showblocks()
+                        self.tw.running_blocks = False
                         return None
                     if type(convert(x, float, False)) == float:
                         if int(float(x)) == x:
@@ -498,6 +500,7 @@ class LogoCode:
                         except ValueError:
                             debug_output('generator already executing',
                                          self.tw.running_sugar)
+                            self.tw.running_blocks = False
                             return False
                     else:
                         return False
@@ -508,12 +511,14 @@ class LogoCode:
                         self.hidden_turtle = None
                     else:
                         self.tw.active_turtle.show()
+                    self.tw.running_blocks = False
                     return False
         except logoerror, e:
             self.tw.showblocks()
             self.tw.display_coordinates()
             self.tw.showlabel('syntaxerror', str(e))
             self.tw.turtles.show_all()
+            self.tw.running_blocks = False
             return False
         return True
 
