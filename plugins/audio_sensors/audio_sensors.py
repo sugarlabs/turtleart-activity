@@ -139,7 +139,10 @@ class Audio_sensors(Plugin):
             elif self.hw == XO15:
                 self.voltage_gain = -0.0001471
                 self.voltage_bias = 1.695
-            else:  # XO 1.75 and 3.0
+            elif self.hw == XO175:
+                self.voltage_gain = 0.000051
+                self.voltage_bias = 1.372
+            else:  # XO 3.0
                 self.voltage_gain = 0.00007692
                 self.voltage_bias = 0.719
             palette.add_block('resistance',
@@ -247,7 +250,7 @@ class Audio_sensors(Plugin):
                 'block', ['voltage', 'voltage2'])) > 0:
             mode, bias, gain, boost = self.PARAMETERS[SENSOR_DC_NO_BIAS]
         else:
-            return  # no audio blocks in play
+            return  # No audio blocks in use.
         self.audiograb = AudioGrab(self.new_buffer, self,
                                    mode, bias, gain, boost)
         self._channels = self.audiograb.channels
@@ -350,7 +353,9 @@ class Audio_sensors(Plugin):
                     resistance = (420000000 / avg_buf) - 13500
                 else:
                     resistance = 420000000
-            else:  # XO 1.75, 3.0
+            elif self.hw == XO175:
+                return (180000000 / (30700 - avg_buf)) - 3150
+            else:  # XO 3.0
                 return (46000000 / (30514 - avg_buf)) - 1150
             if channel == 0:
                 self._parent.lc.update_label_value('resistance', resistance)
