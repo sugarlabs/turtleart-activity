@@ -27,6 +27,8 @@ from time import time
 from operator import isNumberType
 from UserDict import UserDict
 
+from sugar.graphics import style
+
 from taconstants import TAB_LAYER, DEFAULT_SCALE, PREFIX_DICTIONARY
 from tapalette import block_names, value_blocks
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
@@ -752,8 +754,17 @@ class LogoCode:
             return
         if self.tw.gst_available:
             from tagplay import play_movie_from_file
-            play_movie_from_file(self, self.filepath, self.x2tx(), self.y2ty(),
-                                 w, h)
+            # The video window is an overlay, so we need to know where
+            # the canvas is relative to the window, e.g., which
+            # toolbars, if any are open.
+            yoffset = 0
+            if self.tw.running_sugar:
+                if not self.tw.activity.is_fullscreen():
+                    yoffset += style.GRID_CELL_SIZE
+                    if self.tw.activity.toolbars_expanded():
+                        yoffset += style.GRID_CELL_SIZE
+            play_movie_from_file(self, self.filepath, self.x2tx(),
+                                 self.y2ty() + yoffset, w, h)
 
     def _expand_forever(self, b, blk, blocks):
         """ Expand a while or until block into: forever, ifelse, stopstack

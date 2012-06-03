@@ -104,7 +104,7 @@ class Gplay():
         if lc.tw.running_sugar:
             self.bin.set_transient_for(lc.tw.activity)
 
-        self.bin.move(x, y + 108)
+        self.bin.move(x, y)
         self.bin.resize(w, h)
         self.bin.show_all()
 
@@ -220,8 +220,8 @@ class GstPlayer(gobject.GObject):
             if old == gst.STATE_READY and new == gst.STATE_PAUSED:
                 self.emit('stream-info',
                           self.player.props.stream_info_value_array)
-        else:
-            logging.debug(message.type)
+        # else:
+        #     logging.debug(message.type)
 
     def _init_video_sink(self):
         self.bin = gst.Bin()
