@@ -75,6 +75,24 @@ def stop_media(lc):
     lc.gplay = None
 
 
+def pause_media(lc):
+    """ From pause media block """
+    if lc.gplay == None:
+        return False
+
+    if lc.gplay.player is not None:
+        lc.gplay.player.pause()
+
+
+def play_media(lc):
+    """ From play media block """
+    if lc.gplay == None:
+        return False
+
+    if lc.gplay.player is not None:
+        lc.gplay.player.play()
+
+
 def media_playing(lc):
     if lc.gplay == None:
         return False
