@@ -354,13 +354,21 @@ class Audio_sensors(Plugin):
                 else:
                     resistance = 420000000
             elif self.hw == XO175:
-                return (180000000 / (30700 - avg_buf)) - 3150
+                if avg_buf < 30700:
+                    return (180000000 / (30700 - avg_buf)) - 3150
+                else:
+                    resistance = 999999999
             else:  # XO 3.0
-                return (46000000 / (30514 - avg_buf)) - 1150
+                if avg_buf < 30514:
+                    return (46000000 / (30514 - avg_buf)) - 1150
+                else:
+                    resistance = 999999999
             if channel == 0:
                 self._parent.lc.update_label_value('resistance', resistance)
             else:
                 self._parent.lc.update_label_value('resistance2', resistance)
+            if resistance < 0:
+                resistance = 0
             return resistance
         else:
             return 0

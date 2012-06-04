@@ -741,6 +741,30 @@ class LogoCode:
         self.ireturn()
         yield True
 
+    def media_stop(self):
+        """ Stop playing media"""
+        if self.tw.gst_available:
+            from tagplay import stop_media
+            stop_media(self)
+        self.ireturn()
+        yield True
+
+    def media_pause(self):
+        """ Pause media"""
+        if self.tw.gst_available:
+            from tagplay import pause_media
+            pause_media(self)
+        self.ireturn()
+        yield True
+
+    def media_play(self):
+        """ Play media"""
+        if self.tw.gst_available:
+            from tagplay import play_media
+            play_media(self)
+        self.ireturn()
+        yield True
+
     def play_sound(self):
         """ Sound file from Journal """
         if self.tw.gst_available:

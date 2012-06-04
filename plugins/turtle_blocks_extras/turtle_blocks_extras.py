@@ -265,6 +265,27 @@ in the Sugar Journal'))
 complete'))
         self.tw.lc.def_prim('mediawait', 0, self.tw.lc.media_wait, True)
 
+        palette.add_block('mediastop',
+                          style='basic-style-extended-vertical',
+                          label=_('media stop'),
+                          prim_name='mediastop',
+                          help_string=_('stop video or audio'))
+        self.tw.lc.def_prim('mediastop', 0, self.tw.lc.media_stop, True)
+
+        palette.add_block('mediapause',
+                          style='basic-style-extended-vertical',
+                          label=_('media pause'),
+                          prim_name='mediapause',
+                          help_string=_('pause video or audio'))
+        self.tw.lc.def_prim('mediapause', 0, self.tw.lc.media_pause, True)
+
+        palette.add_block('mediaplay',
+                          style='basic-style-extended-vertical',
+                          label=_('media resume'),
+                          prim_name='mediaplay',
+                          help_string=_('resume playing video or audio'))
+        self.tw.lc.def_prim('mediaplay', 0, self.tw.lc.media_play, True)
+
         primitive_dictionary['speak'] = self._prim_speak
         palette.add_block('speak',
                           style='basic-style-1arg',
