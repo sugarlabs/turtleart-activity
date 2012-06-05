@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-09 00:32-0400\n"
-"PO-Revision-Date: 2012-05-09 08:28+0200\n"
+"POT-Creation-Date: 2012-06-04 00:32-0400\n"
+"PO-Revision-Date: 2012-06-05 07:37+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en_US\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2 TurtleArt/taexporthtml.py:137
-#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:3182
+#: TurtleArt/taexporthtml.py:139 TurtleArt/tawindow.py:3199
 #: pysamples/grecord.py:205 turtleblocks.py:294
 msgid "Turtle Art"
 msgstr "Turtle Art"
@@ -56,7 +56,7 @@ msgid "clears the screen and reset the turtle"
 msgstr "clears the screen and reset the turtle"
 
 #: TurtleArt/tabasics.py:155
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:752
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:773
 msgid "left"
 msgstr "left"
 
@@ -65,7 +65,7 @@ msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "turns turtle counterclockwise (angle in degrees)"
 
 #: TurtleArt/tabasics.py:166
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:797
 msgid "right"
 msgstr "right"
 
@@ -116,8 +116,8 @@ msgstr "seth"
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "sets the heading of the turtle (0 is towards the top of the screen.)"
 
-#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3178
-#: TurtleArt/tawindow.py:3182 TurtleArtActivity.py:585
+#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3193
+#: TurtleArt/tawindow.py:3199 TurtleArtActivity.py:607
 msgid "xcor"
 msgstr "xcor"
 
@@ -129,8 +129,8 @@ msgstr ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
 
-#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3178
-#: TurtleArt/tawindow.py:3182 TurtleArtActivity.py:586
+#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3193
+#: TurtleArt/tawindow.py:3199 TurtleArtActivity.py:608
 msgid "ycor"
 msgstr "ycor"
 
@@ -142,8 +142,8 @@ msgstr ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
 
-#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3178
-#: TurtleArt/tawindow.py:3182 TurtleArtActivity.py:586
+#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3194
+#: TurtleArt/tawindow.py:3200 TurtleArtActivity.py:608
 msgid "heading"
 msgstr "heading"
 
@@ -698,39 +698,39 @@ msgstr "move all blocks to trash"
 #: TurtleArt/taconstants.py:239 TurtleArt/taconstants.py:261
 #: TurtleArt/taconstants.py:282 TurtleArt/taconstants.py:324
 #: TurtleArt/taconstants.py:366 TurtleArt/taconstants.py:408
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:861
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:876
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:891
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:906
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:936
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:912
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:927
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:942
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:957
 msgid "Title"
 msgstr "Title"
 
-#: TurtleArt/talogo.py:347 TurtleArt/talogo.py:362 TurtleArtActivity.py:358
-#: TurtleArtActivity.py:654 TurtleArtActivity.py:840
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1332
+#: TurtleArt/talogo.py:350 TurtleArt/talogo.py:365 TurtleArtActivity.py:359
+#: TurtleArtActivity.py:676 TurtleArtActivity.py:862
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1353
 msgid "Stop turtle"
 msgstr "Stop turtle"
 
-#: TurtleArt/talogo.py:358 TurtleArtActivity.py:655
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1325
+#: TurtleArt/talogo.py:361 TurtleArtActivity.py:677
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1346
 msgid "Show blocks"
 msgstr "Show blocks"
 
-#: TurtleArt/talogo.py:479
+#: TurtleArt/talogo.py:484
 msgid "did not output to"
 msgstr "did not output to"
 
-#: TurtleArt/talogo.py:534
+#: TurtleArt/talogo.py:543
 msgid "I don't know how to"
 msgstr "I don't know how to"
 
-#: TurtleArt/talogo.py:584
+#: TurtleArt/talogo.py:594
 msgid "doesn't like"
 msgstr "doesn't like"
 
-#: TurtleArt/talogo.py:584
+#: TurtleArt/talogo.py:594
 msgid "as input"
 msgstr "as input"
 
@@ -751,24 +751,24 @@ msgid "Save..."
 msgstr "Save..."
 
 #: TurtleArt/tautils.py:592
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:625
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
 msgid "click to open"
 msgstr "click to open"
 
-#: TurtleArt/tawindow.py:908 TurtleArt/tawindow.py:909
+#: TurtleArt/tawindow.py:909 TurtleArt/tawindow.py:910
 msgid "orientation"
 msgstr "orientation"
 
-#: TurtleArt/tawindow.py:919 TurtleArt/tawindow.py:1283
+#: TurtleArt/tawindow.py:920 TurtleArt/tawindow.py:1285
 msgid "next"
 msgstr "next"
 
-#: TurtleArt/tawindow.py:931 TurtleArt/tawindow.py:932
-#: TurtleArt/tawindow.py:1303
+#: TurtleArt/tawindow.py:932 TurtleArt/tawindow.py:933
+#: TurtleArt/tawindow.py:1305
 msgid "shift"
 msgstr "shift"
 
-#: TurtleArt/tawindow.py:3280
+#: TurtleArt/tawindow.py:3298
 msgid "image"
 msgstr "image"
 
@@ -776,18 +776,18 @@ msgstr "image"
 msgid "presentation"
 msgstr "presentation"
 
-#: TurtleArtActivity.py:182 TurtleArtActivity.py:678 TurtleArtActivity.py:767
-#: TurtleArtActivity.py:792 turtleblocks.py:332
+#: TurtleArtActivity.py:182 TurtleArtActivity.py:700 TurtleArtActivity.py:789
+#: TurtleArtActivity.py:814 turtleblocks.py:332
 msgid "Save as HTML"
 msgstr "Save as HTML"
 
-#: TurtleArtActivity.py:201 TurtleArtActivity.py:679 TurtleArtActivity.py:770
-#: TurtleArtActivity.py:794 turtleblocks.py:334
+#: TurtleArtActivity.py:201 TurtleArtActivity.py:701 TurtleArtActivity.py:792
+#: TurtleArtActivity.py:816 turtleblocks.py:334
 msgid "Save as Logo"
 msgstr "Save as Logo"
 
-#: TurtleArtActivity.py:238 TurtleArtActivity.py:677 TurtleArtActivity.py:764
-#: TurtleArtActivity.py:789 turtleblocks.py:330
+#: TurtleArtActivity.py:238 TurtleArtActivity.py:699 TurtleArtActivity.py:786
+#: TurtleArtActivity.py:811 turtleblocks.py:330
 msgid "Save as image"
 msgstr "Save as image"
 
@@ -795,12 +795,12 @@ msgstr "Save as image"
 msgid "snapshot"
 msgstr "snapshot"
 
-#: TurtleArtActivity.py:254 TurtleArtActivity.py:680 TurtleArtActivity.py:773
-#: TurtleArtActivity.py:797
+#: TurtleArtActivity.py:254 TurtleArtActivity.py:702 TurtleArtActivity.py:795
+#: TurtleArtActivity.py:819
 msgid "Save snapshot"
 msgstr "Save snapshot"
 
-#: TurtleArtActivity.py:295 TurtleArtActivity.py:597 TurtleArtActivity.py:730
+#: TurtleArtActivity.py:295 TurtleArtActivity.py:619 TurtleArtActivity.py:752
 #: turtleblocks.py:352
 msgid "Turn off hover help"
 msgstr "Turn off hover help"
@@ -813,148 +813,149 @@ msgstr "Turn on hover help"
 msgid "Show palette"
 msgstr "Show palette"
 
-#: TurtleArtActivity.py:315 TurtleArtActivity.py:824 turtleblocks.py:366
+#: TurtleArtActivity.py:315 TurtleArtActivity.py:846 turtleblocks.py:366
 msgid "Hide palette"
 msgstr "Hide palette"
 
-#: TurtleArtActivity.py:461
+#: TurtleArtActivity.py:471
 msgid "Rescale coordinates down"
 msgstr "Rescale coordinates down"
 
-#: TurtleArtActivity.py:465 TurtleArtActivity.py:589 TurtleArtActivity.py:726
+#: TurtleArtActivity.py:475 TurtleArtActivity.py:611 TurtleArtActivity.py:748
 msgid "Rescale coordinates up"
 msgstr "Rescale coordinates up"
 
-#: TurtleArtActivity.py:525 TurtleArtActivity.py:561 TurtleArtActivity.py:647
-#: TurtleArtActivity.py:701 turtleblocks.py:361
+#: TurtleArtActivity.py:547 TurtleArtActivity.py:583 TurtleArtActivity.py:669
+#: TurtleArtActivity.py:723 turtleblocks.py:361
 msgid "Edit"
 msgstr "Edit"
 
-#: TurtleArtActivity.py:530 TurtleArtActivity.py:559 TurtleArtActivity.py:648
-#: TurtleArtActivity.py:718 turtleblocks.py:356
+#: TurtleArtActivity.py:552 TurtleArtActivity.py:581 TurtleArtActivity.py:670
+#: TurtleArtActivity.py:740 turtleblocks.py:356
 msgid "View"
 msgstr "View"
 
-#: TurtleArtActivity.py:557 TurtleArtActivity.py:649
+#: TurtleArtActivity.py:579 TurtleArtActivity.py:671
 msgid "Project"
 msgstr "Project"
 
-#: TurtleArtActivity.py:563 TurtleArtActivity.py:646 TurtleArtActivity.py:674
-#: TurtleArtActivity.py:676 TurtleArtActivity.py:759
+#: TurtleArtActivity.py:585 TurtleArtActivity.py:668 TurtleArtActivity.py:696
+#: TurtleArtActivity.py:698 TurtleArtActivity.py:781
 msgid "Save/Load"
 msgstr "Save/Load"
 
-#: TurtleArtActivity.py:571 TurtleArtActivity.py:702 turtleblocks.py:359
+#: TurtleArtActivity.py:593 TurtleArtActivity.py:724 turtleblocks.py:359
 msgid "Copy"
 msgstr "Copy"
 
-#: TurtleArtActivity.py:573 TurtleArtActivity.py:703 turtleblocks.py:360
+#: TurtleArtActivity.py:595 TurtleArtActivity.py:725 turtleblocks.py:360
 msgid "Paste"
 msgstr "Paste"
 
-#: TurtleArtActivity.py:575 TurtleArtActivity.py:719
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:687
+#: TurtleArtActivity.py:597 TurtleArtActivity.py:741
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:708
 msgid "Fullscreen"
 msgstr "Fullscreen"
 
-#: TurtleArtActivity.py:577 TurtleArtActivity.py:720 turtleblocks.py:340
+#: TurtleArtActivity.py:599 TurtleArtActivity.py:742 turtleblocks.py:340
 msgid "Cartesian coordinates"
 msgstr "Cartesian coordinates"
 
-#: TurtleArtActivity.py:579 TurtleArtActivity.py:722 turtleblocks.py:342
+#: TurtleArtActivity.py:601 TurtleArtActivity.py:744 turtleblocks.py:342
 msgid "Polar coordinates"
 msgstr "Polar coordinates"
 
-#: TurtleArtActivity.py:582 TurtleArtActivity.py:724
+#: TurtleArtActivity.py:604 TurtleArtActivity.py:746
 msgid "Metric coordinates"
 msgstr "Metric coordinates"
 
-#: TurtleArtActivity.py:592 TurtleArtActivity.py:728 turtleblocks.py:346
+#: TurtleArtActivity.py:614 TurtleArtActivity.py:750 turtleblocks.py:346
 msgid "Grow blocks"
 msgstr "Grow blocks"
 
-#: TurtleArtActivity.py:594 TurtleArtActivity.py:729 turtleblocks.py:348
+#: TurtleArtActivity.py:616 TurtleArtActivity.py:751 turtleblocks.py:348
 msgid "Shrink blocks"
 msgstr "Shrink blocks"
 
-#: TurtleArtActivity.py:620 TurtleArtActivity.py:656
+#: TurtleArtActivity.py:642 TurtleArtActivity.py:678
 msgid "Load example"
 msgstr "Load example"
 
-#: TurtleArtActivity.py:650 TurtleArtActivity.py:830 turtleblocks.py:373
+#: TurtleArtActivity.py:672 TurtleArtActivity.py:852 turtleblocks.py:373
 msgid "Clean"
 msgstr "Clean"
 
-#: TurtleArtActivity.py:651 TurtleArtActivity.py:832 turtleblocks.py:374
+#: TurtleArtActivity.py:673 TurtleArtActivity.py:854 turtleblocks.py:374
 msgid "Run"
 msgstr "Run"
 
-#: TurtleArtActivity.py:652 TurtleArtActivity.py:834 turtleblocks.py:375
+#: TurtleArtActivity.py:674 TurtleArtActivity.py:856 turtleblocks.py:375
 msgid "Step"
 msgstr "Step"
 
-#: TurtleArtActivity.py:653 TurtleArtActivity.py:837 turtleblocks.py:376
+#: TurtleArtActivity.py:675 TurtleArtActivity.py:859 turtleblocks.py:376
 msgid "Debug"
 msgstr "Debug"
 
-#: TurtleArtActivity.py:657 util/helpbutton.py:45
+#: TurtleArtActivity.py:679 util/helpbutton.py:45
 msgid "Help"
 msgstr "Help"
 
-#: TurtleArtActivity.py:658 turtleblocks.py:377
+#: TurtleArtActivity.py:680 turtleblocks.py:377
 msgid "Stop"
 msgstr "Stop"
 
-#: TurtleArtActivity.py:681 TurtleArtActivity.py:775 TurtleArtActivity.py:800
+#: TurtleArtActivity.py:703 TurtleArtActivity.py:797 TurtleArtActivity.py:822
 msgid "Load project"
 msgstr "Load project"
 
-#: TurtleArtActivity.py:684 TurtleArtActivity.py:780 TurtleArtActivity.py:805
+#: TurtleArtActivity.py:706 TurtleArtActivity.py:802 TurtleArtActivity.py:827
 msgid "Load plugin"
 msgstr "Load plugin"
 
-#: TurtleArtActivity.py:685 TurtleArtActivity.py:783 TurtleArtActivity.py:808
+#: TurtleArtActivity.py:707 TurtleArtActivity.py:805 TurtleArtActivity.py:830
 msgid "Load Python block"
 msgstr "Load Python block"
 
-#: TurtleArtActivity.py:825
+#: TurtleArtActivity.py:847
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
-#: TurtleArtActivity.py:830
+#: TurtleArtActivity.py:852
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
-#: TurtleArtActivity.py:832
+#: TurtleArtActivity.py:854
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
-#: TurtleArtActivity.py:834
+#: TurtleArtActivity.py:856
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
-#: TurtleArtActivity.py:838
+#: TurtleArtActivity.py:860
 msgid "<Ctrl>d"
 msgstr "<Ctrl>d"
 
-#: TurtleArtActivity.py:841
+#: TurtleArtActivity.py:863
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
-#: TurtleArtActivity.py:965 TurtleArtActivity.py:970 TurtleArtActivity.py:1037
+#: TurtleArtActivity.py:995 TurtleArtActivity.py:1000
+#: TurtleArtActivity.py:1067
 msgid "Plugin could not be installed."
 msgstr "Plugin could not be installed."
 
-#: TurtleArtActivity.py:1033
+#: TurtleArtActivity.py:1063
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr "Please restart Turtle Art in order to use the plugin."
 
-#: TurtleArtActivity.py:1051
+#: TurtleArtActivity.py:1081
 #, python-format
 msgid "Plugin %s already installed."
 msgstr "Plugin %s already installed."
 
-#: TurtleArtActivity.py:1052
+#: TurtleArtActivity.py:1082
 #, python-format
 msgid "Do you want to reinstall %s?"
 msgstr "Do you want to reinstall %s?"
@@ -1067,7 +1068,7 @@ msgstr "Failed to upload!"
 #: plugins/audio_sensors/audio_sensors.py:75
 #: plugins/camera_sensor/camera_sensor.py:56
 #: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:295
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
 msgid "Palette of sensor blocks"
 msgstr "Palette of sensor blocks"
 
@@ -1104,7 +1105,7 @@ msgstr "microphone input volume"
 
 #: plugins/audio_sensors/audio_sensors.py:118
 #: plugins/audio_sensors/audio_sensors.py:126
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:282
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:303
 msgid "pitch"
 msgstr "pitch"
 
@@ -1113,31 +1114,31 @@ msgstr "pitch"
 msgid "microphone input pitch"
 msgstr "microphone input pitch"
 
-#: plugins/audio_sensors/audio_sensors.py:147
-#: plugins/audio_sensors/audio_sensors.py:161
-#: plugins/audio_sensors/audio_sensors.py:174
-#: plugins/audio_sensors/audio_sensors.py:188
+#: plugins/audio_sensors/audio_sensors.py:150
+#: plugins/audio_sensors/audio_sensors.py:164
+#: plugins/audio_sensors/audio_sensors.py:177
+#: plugins/audio_sensors/audio_sensors.py:191
 msgid "resistance"
 msgstr "resistance"
 
-#: plugins/audio_sensors/audio_sensors.py:148
-#: plugins/audio_sensors/audio_sensors.py:162
-#: plugins/audio_sensors/audio_sensors.py:175
-#: plugins/audio_sensors/audio_sensors.py:189
+#: plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:165
+#: plugins/audio_sensors/audio_sensors.py:178
+#: plugins/audio_sensors/audio_sensors.py:192
 msgid "microphone input resistance"
 msgstr "microphone input resistance"
 
-#: plugins/audio_sensors/audio_sensors.py:153
-#: plugins/audio_sensors/audio_sensors.py:167
-#: plugins/audio_sensors/audio_sensors.py:180
-#: plugins/audio_sensors/audio_sensors.py:194
+#: plugins/audio_sensors/audio_sensors.py:156
+#: plugins/audio_sensors/audio_sensors.py:170
+#: plugins/audio_sensors/audio_sensors.py:183
+#: plugins/audio_sensors/audio_sensors.py:197
 msgid "voltage"
 msgstr "voltage"
 
-#: plugins/audio_sensors/audio_sensors.py:154
-#: plugins/audio_sensors/audio_sensors.py:168
-#: plugins/audio_sensors/audio_sensors.py:181
-#: plugins/audio_sensors/audio_sensors.py:195
+#: plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:171
+#: plugins/audio_sensors/audio_sensors.py:184
+#: plugins/audio_sensors/audio_sensors.py:198
 msgid "microphone input voltage"
 msgstr "microphone input voltage"
 
@@ -1292,163 +1293,187 @@ msgstr "media wait"
 msgid "wait for current video or audio to complete"
 msgstr "wait for current video or audio to complete"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:271
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
+msgid "media stop"
+msgstr "media stop"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
+msgid "stop video or audio"
+msgstr "stop video or audio"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:277
+msgid "media pause"
+msgstr "media pause"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:279
+msgid "pause video or audio"
+msgstr "pause video or audio"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:284
+msgid "media resume"
+msgstr "media resume"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:286
+msgid "resume playing video or audio"
+msgstr "resume playing video or audio"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:292
 msgid "speak"
 msgstr "speak"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:273
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:294
 msgid "hello"
 msgstr "hello"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:274
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:295
 msgid "speaks text"
 msgstr "speaks text"
 
 #. TRANS: pitch, duration, amplitude
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:282
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:303
 msgid "sinewave"
 msgstr "sinewave"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:282
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:303
 msgid "duration"
 msgstr "duration"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:306
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:301
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
 msgid "button down"
 msgstr "button down"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:304
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:325
 msgid "returns 1 if mouse button is pressed"
 msgstr "returns 1 if mouse button is pressed"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:311
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:332
 msgid "mouse x"
 msgstr "mouse x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:335
 msgid "returns mouse x coordinate"
 msgstr "returns mouse x coordinate"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:321
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:342
 msgid "mouse y"
 msgstr "mouse y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:324
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:345
 msgid "returns mouse y coordinate"
 msgstr "returns mouse y coordinate"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:332
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:353
 msgid "query keyboard"
 msgstr "query keyboard"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:334
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:355
 msgid "query for keyboard input (results stored in keyboard block)"
 msgstr "query for keyboard input (results stored in keyboard block)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:341
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:362
 msgid "keyboard"
 msgstr "keyboard"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:345
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:366
 msgid "holds results of query-keyboard block"
 msgstr "holds results of query-keyboard block"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:352
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:373
 msgid "read pixel"
 msgstr "read pixel"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:355
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:376
 msgid "RGB color under the turtle is pushed to the stack"
 msgstr "RGB color under the turtle is pushed to the stack"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:363
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:384
 msgid "turtle sees"
 msgstr "turtle sees"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:365
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:386
 msgid "returns the color that the turtle \"sees\""
 msgstr "returns the color that the turtle \"sees\""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:373 taextras.py:299
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394 taextras.py:299
 msgid "time"
 msgstr "time"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:376
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:397
 msgid "elapsed time (in seconds) since program started"
 msgstr "elapsed time (in seconds) since program started"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:406
 msgid "Palette of extra options"
 msgstr "Palette of extra options"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:391
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:412
 msgid "push"
 msgstr "push"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:415
 msgid "pushes value onto FILO (first-in last-out heap)"
 msgstr "pushes value onto FILO (first-in last-out heap)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:404
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:425
 msgid "show heap"
 msgstr "show heap"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:407
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:428
 msgid "shows values in FILO (first-in last-out heap)"
 msgstr "shows values in FILO (first-in last-out heap)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:417
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:438
 msgid "empty heap"
 msgstr "empty heap"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:420
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:441
 msgid "emptys FILO (first-in-last-out heap)"
 msgstr "emptys FILO (first-in-last-out heap)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
 msgid "pop"
 msgstr "pop"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:434
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:455
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr "pops value off FILO (first-in last-out heap)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:444
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:465
 msgid "empty heap?"
 msgstr "empty heap?"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:447
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:468
 msgid "returns True if heap is empty"
 msgstr "returns True if heap is empty"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:456
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:475
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:477
 msgid "comment"
 msgstr "comment"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:458
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:479
 msgid "places a comment in your code"
 msgstr "places a comment in your code"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:485
 msgid "print"
 msgstr "print"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:468
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:489
 msgid "prints value in status block at bottom of the screen"
 msgstr "prints value in status block at bottom of the screen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:476
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:489
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:503
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:497
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:510
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:524
 msgid "Python"
 msgstr "Python"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:480
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:501
 msgid ""
 "a programmable block: used to add advanced single-variable math equations, e."
 "g., sin(x)"
@@ -1456,7 +1481,7 @@ msgstr ""
 "a programmable block: used to add advanced single-variable math equations, "
 "e.g., sin(x)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:493
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:514
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
@@ -1464,7 +1489,7 @@ msgstr ""
 "a programmable block: used to add advanced multi-variable math equations, "
 "e.g., sqrt(x*x+y*y)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:507
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:528
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
@@ -1472,224 +1497,224 @@ msgstr ""
 "a programmable block: used to add advanced multi-variable math equations, "
 "e.g., sin(x+y+z)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:535
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:550
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:540
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:556
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:571
 msgid "Python block"
 msgstr "Python block"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:521
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:537
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:553
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:542
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:558
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:574
 msgid "runs code found in the tamyblock.py module found in the Journal"
 msgstr "runs code found in the tamyblock.py module found in the Journal"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:566
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:587
 msgid "Cartesian"
 msgstr "Cartesian"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:568
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
 msgid "displays Cartesian coordinates"
 msgstr "displays Cartesian coordinates"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:574
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:595
 msgid "polar"
 msgstr "polar"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:576
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:597
 msgid "displays polar coordinates"
 msgstr "displays polar coordinates"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:582
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:603
 msgid "turtle"
 msgstr "turtle"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:586
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:607
 msgid "chooses which turtle to command"
 msgstr "chooses which turtle to command"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:595
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:604
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:616
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:625
 msgid "turtle shell"
 msgstr "turtle shell"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:597
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:605
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:618
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:626
 msgid "put a custom 'shell' on the turtle"
 msgstr "put a custom 'shell' on the turtle"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:610
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:784
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:631
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:805
 msgid "top"
 msgstr "top"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:612
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:633
 msgid "top of a collapsed stack"
 msgstr "top of a collapsed stack"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:618
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:760
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:639
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:781
 msgid "bottom"
 msgstr "bottom"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:619
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:640
 msgid "bottom of a collapsible stack"
 msgstr "bottom of a collapsible stack"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:627
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:648
 msgid "collapsed stack: click to open"
 msgstr "collapsed stack: click to open"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:636
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:657
 msgid "bottom block in a collapsed stack: click to open"
 msgstr "bottom block in a collapsed stack: click to open"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:643
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:647
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:657
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:664
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:668
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:678
 msgid "top of stack"
 msgstr "top of stack"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:654
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:665
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:675
 msgid "label"
 msgstr "label"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:653
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:674
 msgid "top of a collapsible stack"
 msgstr "top of a collapsible stack"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:663
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:684
 msgid "Palette of presentation templates"
 msgstr "Palette of presentation templates"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:670
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:691
 msgid "hide blocks"
 msgstr "hide blocks"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:672
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:693
 msgid "declutters canvas by hiding blocks"
 msgstr "declutters canvas by hiding blocks"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:679
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:700
 msgid "show blocks"
 msgstr "show blocks"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:681
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:702
 msgid "restores hidden blocks"
 msgstr "restores hidden blocks"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:710
 msgid "hides the Sugar toolbars"
 msgstr "hides the Sugar toolbars"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:698
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:719
 msgid "list"
 msgstr "list"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:702
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:937
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:958
 msgid "presentation bulleted list"
 msgstr "presentation bulleted list"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:710
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:960
 msgid "presentation template: list of bullets"
 msgstr "presentation template: list of bullets"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:717
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:879
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:738
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:900
 msgid "presentation template: select Journal object (no description)"
 msgstr "presentation template: select Journal object (no description)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:864
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:745
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:885
 msgid "presentation template: select Journal object (with description)"
 msgstr "presentation template: select Journal object (with description)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:924
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:752
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:945
 msgid "presentation template: select four Journal objects"
 msgstr "presentation template: select four Journal objects"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:738
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:745
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:909
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:759
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:766
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:915
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:930
 msgid "presentation template: select two Journal objects"
 msgstr "presentation template: select two Journal objects"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:755
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:776
 msgid "xcor of left of screen"
 msgstr "xcor of left of screen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:784
 msgid "ycor of bottom of screen"
 msgstr "ycor of bottom of screen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:768 taextras.py:223
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789 taextras.py:223
 msgid "width"
 msgstr "width"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:792
 msgid "the canvas width"
 msgstr "the canvas width"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:779
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
 msgid "xcor of right of screen"
 msgstr "xcor of right of screen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:787
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:808
 msgid "ycor of top of screen"
 msgstr "ycor of top of screen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:792 taextras.py:218
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:813 taextras.py:218
 #: taextras.py:224
 msgid "height"
 msgstr "height"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:795
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:816
 msgid "the canvas height"
 msgstr "the canvas height"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:802
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:823
 msgid "title x"
 msgstr "title x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:811
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:832
 msgid "title y"
 msgstr "title y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:820
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:841
 msgid "left x"
 msgstr "left x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:829
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:850
 msgid "top y"
 msgstr "top y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:838
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:859
 msgid "right x"
 msgstr "right x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:847
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:868
 msgid "bottom y"
 msgstr "bottom y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:877
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:883
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:898
 msgid "presentation 1x1"
 msgstr "presentation 1x1"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:892
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:913
 msgid "presentation 2x1"
 msgstr "presentation 2x1"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:907
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:928
 msgid "presentation 1x2"
 msgstr "presentation 1x2"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:922
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:943
 msgid "presentation 2x2"
 msgstr "presentation 2x2"
 
@@ -2072,7 +2097,7 @@ msgid "empty calibration"
 msgstr "empty calibration"
 
 #: taextras.py:147
-msgid "error in string convertion"
+msgid "error in string conversion"
 msgstr "error in string conversion"
 
 #: taextras.py:151
