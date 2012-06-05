@@ -1,3 +1,14 @@
+142
+
+ENHANCEMENT:
+* Improved sensor calibration for XO 1.75 (Thanks to Tony Forster,
+  Guzman Trindad, James Cameron, and John Watlington)
+* Add media pause, resume, and stop
+
+BUG_FIX:
+* Properly offset video window when toolbars are opened/closed or
+  window is in fullscreen mode
+
 141
 
 BUG FIXES:
