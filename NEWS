@@ -1,3 +1,13 @@
+143
+
+ENHANCEMENT:
+* New translations, including Quechua
+
+BUG_FIXES:
+* More robust handling of xid when playing video
+* Disabled canvas dragging on XO hardware (too slow)
+* Fixed problem with labels on resistance blocks
+
 142
 
 ENHANCEMENT:
