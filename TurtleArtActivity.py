@@ -920,7 +920,7 @@ class TurtleArtActivity(activity.Activity):
         self.hadj_value = hadj.get_value()
         vadj = self.sw.get_vadjustment()
         self.vadj_value = vadj.get_value()
-        if not self.tw.hw in [XO1, XO15, XO175] and \
+        if not self.tw.hw in [XO1] and \
            not self._defer_palette_move:
             gobject.idle_add(self.tw.move_palettes, self.hadj_value,
                              self.vadj_value)

@@ -1199,7 +1199,7 @@ class TurtleArtWindow():
         self.dragging_canvas[1] = x
         self.dragging_canvas[2] = y
         if spr is None:
-            if not self.running_blocks:
+            if not self.running_blocks and not self.hw in (XO1, XO15, XO175):
                 self.dragging_canvas[0] = True
             return True
         self.dragging_canvas[0] = False
