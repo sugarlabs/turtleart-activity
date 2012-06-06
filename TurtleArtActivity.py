@@ -1107,15 +1107,24 @@ in order to use the plugin.'))
             # Could be a plugin or deprecated gtar or tar file...
             if plugin or file_path.endswith(('.gtar', '.tar', '.tar.gz')):
                 try:
-                    status = subprocess.call(['gunzip', file_path])
+                    # Copy to tmp file since some systems had trouble
+                    # with gunzip directly from datastore
+                    datapath = get_path(activity, 'instance')
+                    tmpfile = os.path.join(datapath, 'tmpfile.tar.gz')
+                    subprocess.call(['cp', file_path, tmpfile])
+                    status = subprocess.call(['gunzip', tmpfile])
                     if status == 0:
-                        tar_fd = tarfile.open(file_path[:-3], 'r')
+                        _logger.debug('tarfile.open %s' % tmpfile[:3])
+                        tar_fd = tarfile.open(tmpfile[:-3], 'r')
                     else:
-                        tar_fd = tarfile.open(file_path, 'r')
+                        _logger.debug('tarfile.open %s' % tmpfile)
+                        tar_fd = tarfile.open(tmpfile, 'r')
                 except:
+                    _logger.debug('tarfile.open %s' % file_path)
                     tar_fd = tarfile.open(file_path, 'r')
 
                 tmp_dir = tempfile.mkdtemp()
+                _logger.debug('tmp_dir %s' % tmp_dir)
 
                 try:
                     tar_fd.extractall(tmp_dir)
@@ -1127,6 +1136,7 @@ in order to use the plugin.'))
                         if os.path.exists(turtle_code):
                             self.tw.load_files(turtle_code, run_it)
                     else:
+                        _logger.debug('load a plugin from %s' % tmp_dir)
                         self._load_a_plugin(tmp_dir)
                 except:
                     _logger.debug('Could not extract files from %s.' % (
@@ -1135,6 +1145,10 @@ in order to use the plugin.'))
                     if not plugin:
                         shutil.rmtree(tmp_dir)
                     tar_fd.close()
+                    # Remove tmpfile.tar
+                    subprocess.call(['rm',
+                                     os.path.join(datapath, 'tmpfile.tar')])
+
             # ...otherwise, assume it is a .ta file.
             else:
                 _logger.debug('Trying to open a .ta file:' + file_path)
