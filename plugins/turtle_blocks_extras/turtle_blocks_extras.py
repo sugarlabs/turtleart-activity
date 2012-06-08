@@ -364,8 +364,30 @@ stored in keyboard block)'))
                           value_block=True,
                           logo_command='make "keyboard readchar',
                           help_string=_('holds results of query-keyboard \
-block'))
+block as ASCII'))
         self.tw.lc.def_prim('keyboard', 0, lambda self: self.tw.lc.keyboard)
+
+        palette.add_block('keyboard_chr',
+                          style='box-style',
+                          label='chr(%s)' % (_('keyboard')),
+                          prim_name='keyboard_chr',
+                          value_block=True,
+                          logo_command='make "keyboard readchar',
+                          help_string=_('holds results of query-keyboard \
+block as character'))
+        self.tw.lc.def_prim('keyboard_chr', 0,
+                            lambda self: chr(self.tw.lc.keyboard))
+
+        palette.add_block('keyboard_num',
+                          style='box-style',
+                          label='num(%s)' % (_('keyboard')),
+                          prim_name='keyboard_num',
+                          value_block=True,
+                          logo_command='make "keyboard readchar',
+                          help_string=_('holds results of query-keyboard \
+block as number'))
+        self.tw.lc.def_prim('keyboard_num', 0,
+                            lambda self: self.tw.lc.keyboard - 48)
 
         primitive_dictionary['readpixel'] = self._prim_readpixel
         palette.add_block('readpixel',
