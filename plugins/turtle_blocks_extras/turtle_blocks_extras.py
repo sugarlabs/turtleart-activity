@@ -378,6 +378,7 @@ block as character'))
         self.tw.lc.def_prim('keyboard_chr', 0,
                             lambda self: chr(self.tw.lc.keyboard))
 
+        primitive_dictionary['keyboardnum'] = self._prim_keyboard_num
         palette.add_block('keyboard_num',
                           style='box-style',
                           label='num(%s)' % (_('keyboard')),
@@ -387,7 +388,7 @@ block as character'))
                           help_string=_('holds results of query-keyboard \
 block as number'))
         self.tw.lc.def_prim('keyboard_num', 0,
-                            lambda self: self.tw.lc.keyboard - 48)
+                            lambda self: primitive_dictionary['keyboardnum']())
 
         primitive_dictionary['readpixel'] = self._prim_readpixel
         palette.add_block('readpixel',
@@ -1113,6 +1114,13 @@ bullets'))
         """ Push value onto FILO """
         self.tw.lc.heap.append(val)
         self.tw.lc.update_label_value('pop', val)
+
+    def _prim_keyboard_num(self):
+        """ Return a number when a number is typed. """
+        if self.tw.lc.keyboard < 48 or self.tw.lc.keyboard > 57:
+            return -1
+        else:
+            return self.tw.lc.keyboard - 48
 
     def _prim_readpixel(self):
         """ Read r, g, b, a from the canvas and push b, g, r to the stack """
