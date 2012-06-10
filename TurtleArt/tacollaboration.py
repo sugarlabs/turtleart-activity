@@ -26,6 +26,8 @@ import os
 import gtk
 import base64
 
+from gettext import gettext as _
+
 from TurtleArt.tautils import data_to_string, data_from_string, get_path, \
                               base64_to_image, debug_output, error_output
 from TurtleArt.taconstants import DEFAULT_TURTLE_COLORS
