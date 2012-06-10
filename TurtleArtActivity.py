@@ -694,7 +694,7 @@ class TurtleArtActivity(activity.Activity):
             help_palettes['activity-toolbar'])
         help_palettes['activity-toolbar'].show()
 
-        add_paragraph(help_box, _('Share blocks'), icon='shareon')
+        add_paragraph(help_box, _('Share_blocks'), icon='shareon')
         if gtk.gdk.screen_width() < 1200:
             add_paragraph(help_box, _('Save/Load'), icon='save-load')
         else:
@@ -783,6 +783,7 @@ class TurtleArtActivity(activity.Activity):
                                              _('Sharing blocks disabled'),
                                              self._share_cb, toolbar)
         if self.has_toolbarbox and gtk.gdk.screen_width() < 1200:
+            self._add_separator(toolbar, expand=False, visible=True)
             save_load_button = self._add_button(
                 'save-load', _('Save/Load'), self._save_load_palette_cb,
                 toolbar)
@@ -815,6 +816,7 @@ class TurtleArtActivity(activity.Activity):
             button_box.show_all()
             self._palette.set_content(button_box)
         else:
+            self._add_separator(toolbar, expand=True, visible=False)
             self.save_as_image = self._add_button(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
                 toolbar)
@@ -827,7 +829,6 @@ class TurtleArtActivity(activity.Activity):
                 toolbar)
             self.keep_button = self._add_button(
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb, toolbar)
-            self._add_separator(toolbar)
             self.load_ta_project = self._add_button(
                 'load-from-journal', _('Load project'),
                 self.do_load_ta_project_cb, toolbar)
