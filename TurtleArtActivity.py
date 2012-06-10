@@ -1207,6 +1207,7 @@ in order to use the plugin.'))
         if data is not []:
             text = data_to_string(data)
             event = 'B|%s' % (data_to_string([self.tw.nick, text]))
+            self.tw.send_event(event)
         self.tw.paste_offset = 20
 
     def _paste_cb(self, button):
