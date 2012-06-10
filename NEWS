@@ -5,9 +5,11 @@ ENHANCEMENTS:
 * New blocks for keyboard entry (como Raul Hugo)
 * Added sharing for speak block
 * Added sharing of selected stacks
+* Hide status block when starting execution of blocks
 
 BUG_FIXES:
 * Cleaned up some strings in taextras.py
+* Remove flakey save_as_HTML feature
 
 143
 
