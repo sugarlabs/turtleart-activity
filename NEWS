@@ -2,6 +2,12 @@
 
 ENHANCEMENTS:
 * New sample programs (Elver Puerta y Mercedes Vilca Castillo)
+* New blocks for keyboard entry (como Raul Hugo)
+* Added sharing for speak block
+* Added sharing of selected stacks
+
+BUG_FIXES:
+* Cleaned up some strings in taextras.py
 
 143
 
