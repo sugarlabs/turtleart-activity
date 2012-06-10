@@ -240,6 +240,7 @@ motor is placed on the most recent object created.'),
 recent object created and the object at point x, y).'),
     _('save as Physics activity'),
     _('Save the project to the Journal as a Physics activity.'),
+    # TRANS: Here, gear means a toothed wheel, as in a clock-works
     _('gear'),
     _('Add a gear object to the project.'),
     _('density'),
