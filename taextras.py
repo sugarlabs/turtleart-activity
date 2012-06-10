@@ -50,6 +50,7 @@ CURRENCY_STRINGS = [
     _('Palette of US currencies'),
     _('Palette of Australian currencies'),
     _('Palette of Guaranies'),
+    _('Palette of Soles'),
     _('Palette of Uruguayan Pesos')
     ]
 
@@ -237,7 +238,10 @@ motor is placed on the most recent object created.'),
     _('y'),
     _('Join two objects together (the most \
 recent object created and the object at point x, y).'),
+    _('save as Physics activity'),
     _('Save the project to the Journal as a Physics activity.'),
+    _('gear'),
+    _('Add a gear object to the project.'),
     _('density'),
     _('Set the density property for objects \
 (density can be any positive number).'),
