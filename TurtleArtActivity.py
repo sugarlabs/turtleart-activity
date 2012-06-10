@@ -60,7 +60,7 @@ from TurtleArt.tapalette import palette_names, help_strings, help_palettes, \
                                 help_windows
 from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE, XO1, XO15, XO175, \
                                   XO30
-from TurtleArt.taexporthtml import save_html
+# from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
                               get_path, chooser, get_hardware
@@ -116,6 +116,7 @@ class TurtleArtActivity(activity.Activity):
 
     # Activity toolbar callbacks
 
+    """
     def do_save_as_html_cb(self, button):
         ''' Write html out to datastore. '''
         self.save_as_html.set_icon('htmlon')
@@ -180,6 +181,7 @@ class TurtleArtActivity(activity.Activity):
             os.remove(tar_file)
 
         self._notify_successful_save(title=_('Save as HTML'))
+    """
 
     def do_save_as_logo_cb(self, button):
         ''' Write UCB logo code to datastore. '''
@@ -692,12 +694,13 @@ class TurtleArtActivity(activity.Activity):
             help_palettes['activity-toolbar'])
         help_palettes['activity-toolbar'].show()
 
+        add_paragraph(help_box, _('Share blocks'), icon='shareon')
         if gtk.gdk.screen_width() < 1200:
             add_paragraph(help_box, _('Save/Load'), icon='save-load')
         else:
             add_section(help_box, _('Save/Load'), icon='turtleoff')
         add_paragraph(help_box, _('Save as image'), icon='image-saveoff')
-        add_paragraph(help_box, _('Save as HTML'), icon='htmloff')
+        # add_paragraph(help_box, _('Save as HTML'), icon='htmloff')
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
         add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
         add_paragraph(help_box, _('Load project'), icon='load-from-journal')
@@ -788,9 +791,11 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_image = self._add_button_and_label(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
                 button_box)
+            """
             self.save_as_html = self._add_button_and_label(
                 'htmloff', _('Save as HTML'), self.do_save_as_html_cb,
                 button_box)
+            """
             self.save_as_logo = self._add_button_and_label(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 button_box)
@@ -813,8 +818,10 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_image = self._add_button(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
                 toolbar)
+            """
             self.save_as_html = self._add_button(
                 'htmloff', _('Save as HTML'), self.do_save_as_html_cb, toolbar)
+            """
             self.save_as_logo = self._add_button(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 toolbar)
