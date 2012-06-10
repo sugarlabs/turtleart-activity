@@ -1,4 +1,4 @@
-#Copyright (c) 2011, Walter Bender
+#Copyright (c) 2011-12 Walter Bender
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,7 +22,7 @@
 from dbus.service import signal
 from dbus.gobject_service import ExportedGObject
 import telepathy
-
+import os
 import gtk
 import base64
 
@@ -54,7 +54,7 @@ class Collaboration():
         self._setup_dispatch_table()
 
     def setup(self):
-        # TODO: hand off role of master is sharer leaves
+        # TODO: hand off role of master if sharer leaves
         self.pservice = presenceservice.get_instance()
         self.initiating = None  # sharing (True) or joining (False)
 
@@ -81,7 +81,9 @@ class Collaboration():
             'w': self._set_pen_width,
             'p': self._set_pen_state,
             'F': self._fill_polygon,
-            'P': self._draw_pixbuf
+            'P': self._draw_pixbuf,
+            'P': self._paste,
+            'S': self._speak
             }
 
     def _shared_cb(self, activity):
@@ -112,6 +114,7 @@ class Collaboration():
 
         id = self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].OfferDBusTube(
             SERVICE, {})
+        self._enable_share_button()
 
     def _joined_cb(self, activity):
         self._shared_activity = self._activity._shared_activity
@@ -140,6 +143,11 @@ class Collaboration():
 
         # Joiner should request current state from sharer.
         self.waiting_for_turtles = True
+        self._enable_share_button()
+
+    def _enable_share_button(self):
+        self._activity.share_button.set_icon('shareon')
+        self._activity.share_button.set_tooltip(_('Share blocks'))
 
     def _list_tubes_reply_cb(self, tubes):
         for tube_info in tubes:
@@ -375,6 +383,23 @@ class Collaboration():
                     self._tw.canvas.turtle_to_screen_coordinates(
                     poly_points[i][0], poly_points[i][1])))
             self._tw.canvas.fill_polygon(shared_poly_points)
+
+    def _speak(self, payload):
+        if len(payload) > 0:
+            [nick, language_option, text] = data_from_string(payload)
+            if language_option == 'None':
+                language_option = ''
+            if text is not None:
+                os.system('espeak %s "%s" --stdout | aplay' % (
+                        language_option, str(text)))
+
+    def _paste(self, payload):
+        if len(payload) > 0:
+            [nick, text] = data_from_string(payload)
+            if text is not None:
+                self._tw.process_data(data_from_string(text),
+                                      self._tw.paste_offset)
+                self._tw.paste_offset += 20
 
     def _get_dictionary(self):
         return {self._get_nick(): self._get_colors()}

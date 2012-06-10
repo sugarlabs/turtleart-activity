@@ -28,7 +28,8 @@ from TurtleArt.talogo import primitive_dictionary, logoerror, \
 from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS, \
     MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN, PYTHON_SKIN, \
     PREFIX_DICTIONARY, VOICES
-from TurtleArt.tautils import convert, round_int, debug_output, get_path
+from TurtleArt.tautils import convert, round_int, debug_output, get_path, \
+    data_to_string
 from TurtleArt.tajail import myfunc, myfunc_import
 
 
@@ -1188,6 +1189,13 @@ bullets'))
             language_option = ''
         os.system('espeak %s "%s" --stdout | aplay' % (
                 language_option, str(text)))
+        if self.tw.sharing():
+            if language_option == '':
+                event = 'S|%s' % (data_to_string([self.tw.nick, 'None', text]))
+            else:
+                event = 'S|%s' % (data_to_string([self.tw.nick,
+                                                  language_option, text]))
+            self.tw.send_event(event)
 
     def _prim_sinewave(self, pitch, amplitude, duration):
         """ Create a Csound score to play a sine wave. """

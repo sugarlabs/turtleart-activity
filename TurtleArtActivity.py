@@ -776,6 +776,9 @@ class TurtleArtActivity(activity.Activity):
     def _make_load_save_buttons(self, toolbar):
         ''' Additional toolbar buttons for file IO '''
         home = os.environ['HOME']
+        self.share_button = self._add_button('shareoff',
+                                             _('Sharing blocks disabled'),
+                                             self._share_cb, toolbar)
         if self.has_toolbarbox and gtk.gdk.screen_width() < 1200:
             save_load_button = self._add_button(
                 'save-load', _('Save/Load'), self._save_load_palette_cb,
@@ -1185,6 +1188,17 @@ in order to use the plugin.'))
         if data is not []:
             text = data_to_string(data)
             clipboard.set_text(text)
+        self.tw.paste_offset = 20
+
+    def _share_cb(self, button):
+        ''' Share a stack of blocks. '''
+        if not self.tw.sharing():
+            return
+        _logger.debug('Serialize a stack and send as event.')
+        data = self.tw.assemble_data_to_save(False, False)
+        if data is not []:
+            text = data_to_string(data)
+            event = 'B|%s' % (data_to_string([self.tw.nick, text]))
         self.tw.paste_offset = 20
 
     def _paste_cb(self, button):
