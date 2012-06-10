@@ -500,6 +500,8 @@ class TurtleArtWindow():
         """ Run turtle! """
         if self.running_sugar:
             self.activity.recenter()
+        if self.status_spr is not None:
+            self.status_spr.hide()
 
         # Look for a 'start' block
         for blk in self.just_blocks():
