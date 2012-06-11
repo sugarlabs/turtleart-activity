@@ -84,7 +84,7 @@ class Collaboration():
             'p': self._set_pen_state,
             'F': self._fill_polygon,
             'P': self._draw_pixbuf,
-            'P': self._paste,
+            'B': self._paste,
             'S': self._speak
             }
 

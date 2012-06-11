@@ -1206,7 +1206,7 @@ in order to use the plugin.'))
         data = self.tw.assemble_data_to_save(False, False)
         if data is not []:
             text = data_to_string(data)
-            event = 'P|%s' % (data_to_string([self.tw.nick, text]))  # Paste
+            event = 'B|%s' % (data_to_string([self.tw.nick, text]))  # Paste
             self.tw.send_event(event)
         self.tw.paste_offset = 20
 
