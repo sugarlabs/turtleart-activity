@@ -694,7 +694,7 @@ class TurtleArtActivity(activity.Activity):
             help_palettes['activity-toolbar'])
         help_palettes['activity-toolbar'].show()
 
-        add_paragraph(help_box, _('Share blocks'), icon='shareon')
+        add_paragraph(help_box, _('Share selected blocks'), icon='shareon')
         if gtk.gdk.screen_width() < 1200:
             add_paragraph(help_box, _('Save/Load'), icon='save-load')
         else:
