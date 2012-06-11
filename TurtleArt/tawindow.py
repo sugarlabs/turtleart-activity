@@ -1976,9 +1976,9 @@ class TurtleArtWindow():
         if turtle is not None:
             turtle.label_block = Block(self.block_list,
                                        self.sprite_list, 'turtle-label', 0, 0,
-                                       'label', [], 1.0 / self.scale,
+                                       'label', [], 2.0 / self.scale,
                                        colors)
-            turtle.label_block.spr.set_label_attributes(6.0 / self.scale)
+            turtle.label_block.spr.set_label_attributes(12.0 / self.scale)
             if len(name) > 6:
                 turtle.label_block.spr.set_label(name[0:4] + '…')
             else:
