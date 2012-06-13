@@ -1189,7 +1189,13 @@ class TurtleArtWindow():
                     n -= 1
                 self.selected_blk.spr.set_label(str(n) + CURSOR)
                 return True
+            # Un-highlight any blocks in the stack
+            grp = find_group(self.selected_blk)
+            for blk in grp:
+                if blk.status != 'collapsed':
+                    blk.unhighlight()
             self._unselect_block()
+
         self.selected_turtle = None
 
         # Always hide the status layer on a click
@@ -1457,6 +1463,7 @@ class TurtleArtWindow():
             for blk in self.drag_group:
                 if blk.status != 'collapsed':
                     blk.spr.set_layer(TOP_LAYER)
+                    blk.highlight()
             if len(blk.spr.labels) > 0:
                 self.saved_string = blk.spr.labels[0]
             else:
