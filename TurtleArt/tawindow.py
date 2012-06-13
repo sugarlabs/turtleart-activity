@@ -1195,7 +1195,10 @@ class TurtleArtWindow():
                 if blk.status != 'collapsed':
                     blk.unhighlight()
             self._unselect_block()
-
+            if self.running_sugar and self._sharing and \
+               hasattr(self.activity, 'share_button'):
+                self.activity.share_button.set_tooltip(
+                    _('Select blocks to share'))
         self.selected_turtle = None
 
         # Always hide the status layer on a click
@@ -1464,6 +1467,10 @@ class TurtleArtWindow():
                 if blk.status != 'collapsed':
                     blk.spr.set_layer(TOP_LAYER)
                     blk.highlight()
+            if self.running_sugar and self._sharing and \
+               hasattr(self.activity, 'share_button'):
+                self.activity.share_button.set_tooltip(
+                    _('Share selected blocks'))
             if len(blk.spr.labels) > 0:
                 self.saved_string = blk.spr.labels[0]
             else:
