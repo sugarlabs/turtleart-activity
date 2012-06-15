@@ -1,10 +1,26 @@
-145:
+146
+
+ENHANCEMENTS:
+* Add Tony Forster's simulation of math-galton-path.ta to sample programs
+* Define general purpose chr and int blocks instead of special purpose
+  chr(keyboard) and int(keyboard) blocks
+* Highlight all blocks in selected stack
+* Update label on Share Button to remind user to select blocks to share
+* Move save snapshot button to main toolbar
+* Add proto block to blocks palette for named actions
+* Add proto box for blocks palette for named boxes
+
+BUG_FIXES:
+* Clean up some strings on currency palettes
+* Don't call plugin_stop() twice
+
+145
 
 BUG_FIXES:
 * Use different dispatch code for share (#3685)
 * Rescale remote turtle labels (#3684)
 
-144:
+144
 
 ENHANCEMENTS:
 * New sample programs (Elver Puerta y Mercedes Vilca Castillo)
