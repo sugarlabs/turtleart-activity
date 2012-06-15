@@ -517,21 +517,23 @@ bottom of the screen'))
         self.tw.lc.def_prim('print', 1,
             lambda self, x: primitive_dictionary['print'](x, False))
 
+        primitive_dictionary['chr'] = self._prim_chr
         palette.add_block('chr',
                           style='number-style-1arg',
                           label='chr',
                           prim_name='chr',
                           help_string=_('Python chr operator'))
         self.tw.lc.def_prim('chr', 1,
-                             lambda self, x: chr(x))
+                            lambda self, x: primitive_dictionary['chr'](x))
 
+        primitive_dictionary['int'] = self._prim_int
         palette.add_block('int',
                           style='number-style-1arg',
                           label='int',
                           prim_name='int',
                           help_string=_('Python int operator'))
         self.tw.lc.def_prim('int', 1,
-                             lambda self, x: int(x))
+                            lambda self, x: primitive_dictionary['int'](x))
 
         primitive_dictionary['myfunction'] = self._prim_myfunction
         palette.add_block('myfunc1arg',
@@ -1409,6 +1411,22 @@ bullets'))
         if self.tw.running_sugar:
             self.tw.activity.stop_turtle_button.set_icon("stopiton")
             self.tw.activity.stop_turtle_button.set_tooltip(_('Stop turtle'))
+
+    def _prim_chr(self, x):
+        """ Chr conversion """
+        try:
+            return chr(int(x))
+        except ValueError:
+            self.tw.lc.stop_logo()
+            raise logoerror("#notanumber")
+
+    def _prim_int(self, x):
+        """ Int conversion """
+        try:
+            return int(x)
+        except ValueError:
+            self.tw.lc.stop_logo()
+            raise logoerror("#notanumber")
 
     # Deprecated blocks
 

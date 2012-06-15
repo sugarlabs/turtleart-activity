@@ -640,6 +640,10 @@ class TurtleArtActivity(activity.Activity):
             self._add_separator(self._toolbox.toolbar, expand=True,
                                 visible=False)
 
+        self.keep_button = self._add_button(
+            'filesaveoff', _('Save snapshot'), self.do_keep_cb,
+            self._toolbox.toolbar)
+
         self.samples_button = self._add_button(
             'ta-open', _('Load example'), self.do_samples_cb,
             self._toolbox.toolbar)
@@ -674,9 +678,10 @@ class TurtleArtActivity(activity.Activity):
         add_paragraph(help_box, _('Clean'), icon='eraseron')
         add_paragraph(help_box, _('Run'), icon='run-fastoff')
         add_paragraph(help_box, _('Step'), icon='run-slowoff')
-        add_paragraph(help_box, _('Debug'), icon='debugoff')
+        # add_paragraph(help_box, _('Debug'), icon='debugoff')
         add_paragraph(help_box, _('Stop turtle'), icon='stopitoff')
         add_paragraph(help_box, _('Show blocks'), icon='hideshowoff')
+        add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
         add_paragraph(help_box, _('Load example'), icon='ta-open')
         add_paragraph(help_box, _('Help'), icon='help-toolbar')
         add_paragraph(help_box, _('Stop'), icon='activity-stop')
@@ -702,7 +707,6 @@ class TurtleArtActivity(activity.Activity):
         add_paragraph(help_box, _('Save as image'), icon='image-saveoff')
         # add_paragraph(help_box, _('Save as HTML'), icon='htmloff')
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
-        add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
         add_paragraph(help_box, _('Load project'), icon='load-from-journal')
         home = os.environ['HOME']
         if activity.get_bundle_path()[0:len(home)] == home:
@@ -800,8 +804,6 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_logo = self._add_button_and_label(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 button_box)
-            self.keep_button = self._add_button_and_label(
-                'filesaveoff', _('Save snapshot'), self.do_keep_cb, button_box)
             self.load_ta_project = self._add_button_and_label(
                 'load-from-journal', _('Load project'),
                 self.do_load_ta_project_cb, button_box)
@@ -865,10 +867,12 @@ class TurtleArtActivity(activity.Activity):
             'run-fastoff', _('Run'), self.do_run_cb, toolbar, _('<Ctrl>r'))
         self.step_button = self._add_button(
             'run-slowoff', _('Step'), self.do_step_cb, toolbar, _('<Ctrl>w'))
+        '''
         if self.tw.hw not in [XO30]:
             self.debug_button = self._add_button(
                 'debugoff', _('Debug'), self.do_debug_cb, toolbar,
                 _('<Ctrl>d'))
+        '''
         self.stop_turtle_button = self._add_button(
             'stopitoff', _('Stop turtle'), self.do_stop_cb, toolbar,
             _('<Ctrl>s'))

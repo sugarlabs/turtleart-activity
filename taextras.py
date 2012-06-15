@@ -47,10 +47,10 @@ CURRENCY_STRINGS = [
     _('Palette of Mexican pesos'),
     _('Palette of Colombian pesos'),
     _('Palette of Rwandan francs'),
-    _('Palette of US currencies'),
-    _('Palette of Australian currencies'),
-    _('Palette of Guaranies'),
-    _('Palette of Soles'),
+    _('Palette of US dollars'),
+    _('Palette of Australian dollars'),
+    _('Palette of Paraguayan Guaranies'),
+    _('Palette of Peruvian Nuevo Soles'),
     _('Palette of Uruguayan Pesos')
     ]
 
