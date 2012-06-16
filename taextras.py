@@ -124,10 +124,13 @@ FOLLOWME_STRINGS = [
     _('follow a RGB color'),
     _('threshold'),
     _('set a threshold for a RGB color'),
+    #TRANS: the calibration can be saved for later use
     _('save calibration 1'),
     _('stores a calibration in calibration 1'),
+    #TRANS: the calibration can be saved for later use
     _('save calibration 2'),
     _('stores a calibration in calibration 2'),
+    #TRANS: the calibration is used to match an RGB color to a target
     _('calibration'),
     _('stores a personalized calibration'),
     _('calibration 1'),
@@ -149,6 +152,7 @@ FOLLOWME_STRINGS = [
 ]
 
 SUMO_STRINGS = [
+    #TRANS: SumBot is a robot programmed for "Sumo wrestling"
     _('SumBot'),
     _('speed SumBot'),
     _('submit the speed to the SumBot'),
@@ -167,9 +171,13 @@ SUMO_STRINGS = [
     #TRANS: This string is shorthand for "move SumBot right"
     _('right SumBot'),
     _('turn right the SumBot'),
+    #TRANS: The angle to the center is the angle SumBot must turn to
+    #face the center of the playing field
     _('angle to center'),
     #TRANS: dohyo is the playing field
     _('get the angle to the center of the dohyo'),
+    #TRANS: The angle to the center is the angle SumBot must turn to
+    #face the Enemy (opponent)
     _('angle to Enemy'),
     _('get the angle to the Enemy'),
     #TRANS: This string is shorthand for "x coordinate of SumBot"
