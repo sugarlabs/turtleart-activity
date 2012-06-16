@@ -435,6 +435,7 @@ program started'))
         primitive_dictionary['push'] = self._prim_push
         palette.add_block('push',
                           style='basic-style-1arg',
+                          #TRANS: push adds a new item to the program stack
                           label=_('push'),
                           prim_name='push',
                           logo_command='tapush',
@@ -474,6 +475,7 @@ end\r')
         primitive_dictionary['pop'] = self._prim_pop
         palette.add_block('pop',
                           style='box-style',
+                          #TRANS: pop removes a new item from the program stack
                           label=_('pop'),
                           prim_name='pop',
                           value_block=True,
