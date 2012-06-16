@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-06-15 00:32-0400\n"
-"PO-Revision-Date: 2012-06-15 01:07+0200\n"
+"PO-Revision-Date: 2012-06-16 11:53+0200\n"
 "Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -1773,19 +1773,19 @@ msgstr "Palet af Rwanda-franc"
 
 #: taextras.py:50
 msgid "Palette of US dollars"
-msgstr ""
+msgstr "Palet af amerikanske dollar"
 
 #: taextras.py:51
 msgid "Palette of Australian dollars"
-msgstr ""
+msgstr "Palet af australske dollar"
 
 #: taextras.py:52
 msgid "Palette of Paraguayan Guaranies"
-msgstr ""
+msgstr "Palet af paraguayanske guaranies"
 
 #: taextras.py:53
 msgid "Palette of Peruvian Nuevo Soles"
-msgstr ""
+msgstr "Palet af peruvianske nuevo soles"
 
 #: taextras.py:54
 msgid "Palette of Uruguayan Pesos"
