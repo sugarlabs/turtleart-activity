@@ -2703,15 +2703,12 @@ class TurtleArtWindow():
             elif len(self.selected_blk.spr.labels[0]) == 1:
                 oldleft = ''
                 oldright = ''
-            else:
-                try:  # Why are getting a ValueError on occasion?
-                    oldleft, oldright = \
-                        self.selected_blk.spr.labels[0].split(CURSOR)
-                except ValueError:
-                    debug_output("[%s]" % self.selected_blk.spr.labels[0],
-                                 self.running_sugar)
-                    oldleft = self.selected_blk.spr.labels[0]
-                    oldright = ''
+            elif CURSOR in self.selected_blk.spr.labels[0]:
+                oldleft, oldright = \
+                    self.selected_blk.spr.labels[0].split(CURSOR)
+            else:  # Where did our cursor go?
+                oldleft = self.selected_blk.spr.labels[0]
+                oldright = ''
         else:
             oldleft = ''
             oldright = ''
