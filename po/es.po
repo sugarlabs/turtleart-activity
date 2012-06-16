@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-06-15 00:32-0400\n"
-"PO-Revision-Date: 2012-06-15 09:04+0200\n"
-"Last-Translator: AlanJAS <alanjas@hotmail.com>\n"
+"PO-Revision-Date: 2012-06-16 06:22+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -2669,15 +2669,15 @@ msgstr "sincroniza dos motores conectados en el PUERTO B y PUERTO C"
 
 #: taextras.py:313
 msgid "PORT A of the brick"
-msgstr "PUERTO A del brick."
+msgstr "PUERTO A del brick"
 
 #: taextras.py:314
 msgid "PORT B of the brick"
-msgstr "PUERTO B del brick."
+msgstr "PUERTO B del brick"
 
 #: taextras.py:315
 msgid "PORT C of the brick"
-msgstr "PUERTO C del brick."
+msgstr "PUERTO C del brick"
 
 #: taextras.py:316
 msgid "start motor"
@@ -2713,19 +2713,19 @@ msgstr "Obtiene la posición del motor."
 
 #: taextras.py:324
 msgid "PORT 1 of the brick"
-msgstr "PUERTO 1 del brick."
+msgstr "PUERTO 1 del brick"
 
 #: taextras.py:325
 msgid "PORT 2 of the brick"
-msgstr "PUERTO 2 del brick."
+msgstr "PUERTO 2 del brick"
 
 #: taextras.py:326
 msgid "PORT 3 of the brick"
-msgstr "PUERTO 3 del brick."
+msgstr "PUERTO 3 del brick"
 
 #: taextras.py:327
 msgid "PORT 4 of the brick"
-msgstr "PUERTO 4 del brick."
+msgstr "PUERTO 4 del brick"
 
 #: taextras.py:328
 msgid "read"
@@ -2885,7 +2885,7 @@ msgstr "Configura el puerto de la Arduino como salida digital."
 #: taextras.py:373
 msgid "Configure Arduino port for PWM (pulse-width modulation)."
 msgstr ""
-"Configura el puerto de la Arduino para PWM modulación por ancho de pulsos)"
+"Configura el puerto de la Arduino para PWM modulación por ancho de pulsos)."
 
 #: turtleblocks.py:79
 msgid "usage is"
