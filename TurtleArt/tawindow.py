@@ -1249,6 +1249,8 @@ class TurtleArtWindow():
                 elif blk.name in MACROS:
                     self._new_macro(blk.name, x + 20, y + 20)
                 else:
+                    defaults = None
+                    name = blk.name
                     # You can only have one instance of some blocks
                     if blk.name in ['start', 'hat1', 'hat2']:
                         if len(self.block_list.get_similar_blocks(
@@ -1290,7 +1292,7 @@ class TurtleArtWindow():
                                 self.showlabel('incompatible')
                                 return True
                     blk.highlight()
-                    self._new_block(blk.name, x, y)
+                    self._new_block(name, x, y, defaults=defaults)
                     blk.unhighlight()
             return True
 
@@ -1350,9 +1352,6 @@ class TurtleArtWindow():
 
     def _update_action_names(self, name):
         """ change the label on action blocks of the same name """
-        if CURSOR in self._saved_action_name:
-            self._saved_action_name = \
-                self._saved_action_name.replace(CURSOR, '')
         if CURSOR in name:
             name = name.replace(CURSOR, '')
         for blk in self.just_blocks():
@@ -1365,13 +1364,10 @@ class TurtleArtWindow():
                     blk.values[0] = name
                 blk.spr.set_layer(BLOCK_LAYER)
         self._change_proto_name(name, 'stack_%s' % (self._saved_action_name),
-                                'stack_%s' % (name))
+                                'stack_%s' % (name), 'basic-style-1arg')
 
     def _update_box_names(self, name):
         """ change the label on box blocks of the same name """
-        if CURSOR in self._saved_box_name:
-            self._saved_box_name = \
-                self._saved_box_name.replace(CURSOR, '')
         if CURSOR in name:
             name = name.replace(CURSOR, '')
         for blk in self.just_blocks():
@@ -1384,9 +1380,9 @@ class TurtleArtWindow():
                     blk.values[0] = name
                 blk.spr.set_layer(BLOCK_LAYER)
         self._change_proto_name(name, 'box_%s' % (self._saved_box_name),
-                                'box_%s' % (name))
+                                'box_%s' % (name), 'number-style-1strarg')
 
-    def _change_proto_name(self, name, old, new, palette='blocks'):
+    def _change_proto_name(self, name, old, new, style, palette='blocks'):
         """ change the name of a proto block """
         for blk in self.just_protos():
             if blk.name == old:
@@ -1397,6 +1393,19 @@ class TurtleArtWindow():
                 if old in palette_blocks[i]:
                     j = palette_blocks[i].index(old)
                     palette_blocks[i][j] = new
+                if old in block_styles[style]:
+                    block_styles[style].remove(old)
+                    block_styles[style].append(new)
+                else:
+                    debug_output('%s not in %s' % (old, block_styles[style]),
+                                 self.running_sugar)
+                if old in block_names:
+                    del block_names[old]
+                    block_names[new] = name
+                else:
+                    debug_output('%s not in %s' % (old, block_names),
+                                 self.running_sugar)
+                blk.resize()
                 return
 
     def _action_name(self, blk, hat=False):
@@ -1596,8 +1605,11 @@ class TurtleArtWindow():
                     _('Share selected blocks'))
             if len(blk.spr.labels) > 0:
                 self.saved_string = blk.spr.labels[0]
-            elif len(blk.values) > 0:
-                self.saved_string = blk.values[0]
+                self._saved_action_name = self.saved_string
+                self._saved_box_name = self.saved_string
+                debug_output('_block_pressed: %s (%s, %s)' % (
+                        self.saved_string, self._saved_action_name,
+                        self._saved_box_name), self.running_sugar)
             else:
                 self.saved_string = ''
 
@@ -2147,22 +2159,6 @@ class TurtleArtWindow():
 
         if  blk.name == 'number' or blk.name == 'string':
             self.saved_string = blk.spr.labels[0]
-            if self._action_name(blk, hat=True):
-                if CURSOR in self.saved_string:
-                    self._saved_action_name = \
-                        self.saved_string.replace(CURSOR, '')
-                else:
-                    self._saved_action_name = self.saved_string
-            else:
-                self._saved_action_name = ''
-            if self._box_name(blk, storein=True):
-                if CURSOR in self.saved_string:
-                    self._saved_box_name = \
-                        self.saved_string.replace(CURSOR, '')
-                else:
-                    self._saved_box_name = self.saved_string
-            else:
-                self._saved_box_name = ''
             blk.spr.labels[0] += CURSOR
             if blk.name == 'number':
                 bx, by = blk.spr.get_xy()
@@ -2639,8 +2635,8 @@ class TurtleArtWindow():
                 self._process_numeric_input(keyname)
             elif self.selected_blk.name == 'string':
                 self.process_alphanumeric_input(keyname, keyunicode)
-                if self.selected_blk is not None:
-                    self.selected_blk.resize()
+                # if self.selected_blk is not None:
+                self.selected_blk.resize()
             elif self.selected_blk.name != 'proto':
                 self._process_keyboard_commands(keyname, block_flag=True)
 
