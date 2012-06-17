@@ -1011,8 +1011,8 @@ class SVG:
                 self._rline_to(0, -self._slot_y))
         elif self._cap is True:
             return "%s%s" % (
-                self._rline_to(self._slot_x / 2.0, -self._slot_y * 2.0),
-                self._rline_to(self._slot_x / 2.0, self._slot_y * 2.0))
+                self._rline_to(self._slot_x / 2.0, -self._slot_y * 3.0),
+                self._rline_to(self._slot_x / 2.0, self._slot_y * 3.0))
         else:
             return self._rline_to(self._slot_x, 0)
 
@@ -1021,8 +1021,8 @@ class SVG:
             return self._rline_to(-self._slot_x, 0)
         elif self._tail:
             return "%s%s" % (
-                self._rline_to(-self._slot_x / 2.0, self._slot_y * 2.0),
-                self._rline_to(-self._slot_x / 2.0, -self._slot_y * 2.0))
+                self._rline_to(-self._slot_x / 2.0, self._slot_y * 3.0),
+                self._rline_to(-self._slot_x / 2.0, -self._slot_y * 3.0))
         else:
             return self._rline_to(-self._slot_x, 0)
 
@@ -1167,8 +1167,8 @@ class SVG:
             x += self._innie_x1 + self._innie_x2
             self.margins[0] += self._innie_x1 + self._innie_x2
         if self._cap is True:
-            y += self._slot_y * 2.0
-            self.margins[1] += self._slot_y * 2.0
+            y += self._slot_y * 3.0
+            self.margins[1] += self._slot_y * 3.0
         elif self._slot is True:
             self.margins[1] += self._slot_y
         self.margins[0] *= self._scale
