@@ -22,6 +22,7 @@
 help_palettes = {}
 help_windows = {}
 palette_names = []
+palette_init_on_start = []
 palette_blocks = []
 block_colors = []
 expandable_blocks = []
@@ -125,7 +126,7 @@ class Palette():
             self._help_box = help_palettes[self._name]
             self._help = 'deja vu'
 
-    def add_palette(self, position=None):
+    def add_palette(self, position=None, init_on_start=False):
         if self._name is None:
             debug_output('You must specify a name for your palette')
             return
@@ -143,6 +144,9 @@ class Palette():
             palette_names.insert(i, self._name)
             palette_blocks.insert(i, [])
             block_colors.insert(i, self._colors)
+            if init_on_start:
+                if not self._name in palette_init_on_start:
+                    palette_init_on_start.append(self._name)
         else:
             return
 
@@ -211,7 +215,8 @@ class Palette():
         block.add_block()
 
 
-def make_palette(palette_name, colors=None, help_string=None, position=None):
+def make_palette(palette_name, colors=None, help_string=None, position=None,
+                 init_on_start=False):
     """ Palette helper function """
     if colors is None:
         palette = Palette(palette_name)
@@ -219,7 +224,7 @@ def make_palette(palette_name, colors=None, help_string=None, position=None):
         palette = Palette(palette_name, colors)
     if help_string is not None:
         palette.set_help(help_string)
-    palette.add_palette(position)
+    palette.add_palette(position, init_on_start=init_on_start)
     return palette
 
 

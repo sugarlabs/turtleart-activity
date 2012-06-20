@@ -55,7 +55,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
 from tapalette import palette_names, palette_blocks, expandable_blocks, \
     block_names, content_blocks, default_values, special_names, block_styles, \
     help_strings, hidden_proto_blocks, string_or_number_args, \
-    make_palette, palette_name_to_index
+    make_palette, palette_name_to_index, palette_init_on_start
 from talogo import LogoCode, primitive_dictionary, logoerror
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
@@ -266,8 +266,13 @@ class TurtleArtWindow():
 
         if self.interactive_mode:
             self._setup_misc()
-            self.show_toolbar_palette(0, False)
-
+            for name in palette_init_on_start:
+                debug_output('initing palette %s' % (name), self.running_sugar)
+                self.show_toolbar_palette(palette_names.index(name),
+                                          init_only=False, regenerate=True,
+                                          show=False)
+            self.show_toolbar_palette(0, init_only=False, regenerate=True,
+                                          show=True)
         self.saved_pictures = []
         self.block_operation = ''
 
