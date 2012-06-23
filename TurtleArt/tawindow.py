@@ -89,6 +89,7 @@ class TurtleArtWindow():
         self._loaded_project = ''
         self._sharing = False
         self.parent = parent
+        self.window_init_complete = False
         self.turtle_canvas = turtle_canvas
         self.send_event = None  # method to send events over the network
         self.gst_available = GST_AVAILABLE
@@ -275,6 +276,7 @@ class TurtleArtWindow():
                                           show=True)
         self.saved_pictures = []
         self.block_operation = ''
+        self.window_init_complete = True
 
     def _get_plugin_home(self):
         """ Look in the execution directory """
