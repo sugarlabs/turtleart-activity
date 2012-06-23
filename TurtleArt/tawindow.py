@@ -841,6 +841,43 @@ class TurtleArtWindow():
             self.selected_palette = save_selected
             self.previous_palette = save_previous
 
+    def regenerate_palette(self, n):
+        """ Regenerate palette (used by some plugins) """
+
+        if (self.activity is None or not self.activity.has_toolbarbox) and \
+           self.selectors == []:
+            return
+        if self.palette_sprs == []:
+            return
+
+        # At initialization of the program, we don't actually populate
+
+        self._hide_previous_palette()
+        save_selected = self.selected_palette
+        save_previous = self.previous_palette
+        self.selected_palette = n
+        self.previous_palette = self.selected_palette
+
+        if save_selected == n:
+            self._layout_palette(n, regenerate=True)
+        else:
+            self._layout_palette(n, regenerate=True, show=False)
+
+        for blk in self.palettes[n]:
+            if blk.get_visibility():
+                if hasattr(blk.spr, 'set_layer'):
+                    blk.spr.set_layer(PROTO_LAYER)
+                else:
+                    debug_output('WARNING: block sprite is None' % (blk.name),
+                                 self.running_sugar)
+            else:
+                blk.spr.hide()
+
+        if not save_selected == n:
+            self._hide_previous_palette(palette=n)
+        self.selected_palette = save_selected
+        self.previous_palette = save_previous
+
     def _display_palette_shift_button(self, n):
         ''' Palettes too wide (or tall) for the screen get a shift button '''
         if self.palette_sprs[n][self.orientation].type == \
@@ -1612,9 +1649,6 @@ class TurtleArtWindow():
                 self.saved_string = blk.spr.labels[0]
                 self._saved_action_name = self.saved_string
                 self._saved_box_name = self.saved_string
-                debug_output('_block_pressed: %s (%s, %s)' % (
-                        self.saved_string, self._saved_action_name,
-                        self._saved_box_name), self.running_sugar)
             else:
                 self.saved_string = ''
 
