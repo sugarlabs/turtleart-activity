@@ -50,7 +50,6 @@ import gettext
 from TurtleArt.taconstants import OVERLAY_LAYER, DEFAULT_TURTLE_COLORS
 from TurtleArt.tautils import data_to_string, data_from_string, get_save_name
 from TurtleArt.tawindow import TurtleArtWindow
-from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 
 from util.menubuilder import MenuBuilder
@@ -329,8 +328,6 @@ class TurtleMain():
         MenuBuilder.make_menu_item(menu, _('Save as'), self._do_save_as_cb)
         MenuBuilder.make_menu_item(menu, _('Save as image'),
                                    self._do_save_picture_cb)
-        MenuBuilder.make_menu_item(menu, _('Save as HTML'),
-                                   self._do_save_html_cb)
         MenuBuilder.make_menu_item(menu, _('Save as Logo'),
                                    self._do_save_logo_cb)
         MenuBuilder.make_menu_item(menu, _('Quit'), self._quit_ta)
@@ -451,22 +448,6 @@ class TurtleMain():
     def _do_save_picture_cb(self, widget):
         ''' Callback for save canvas. '''
         self.tw.save_as_image()
-
-    def _do_save_html_cb(self, widget):
-        ''' Callback for save project to HTML. '''
-        html = save_html(self, self.tw, False)
-        if len(html) == 0:
-            return
-        save_type = '.html'
-        if len(self.tw.saved_pictures) > 0:
-            if self.tw.saved_pictures[0].endswith(('.svg')):
-                save_type = '.xml'
-        filename, self.tw.load_save_folder = get_save_name(save_type,
-                      self.tw.load_save_folder, 'portfolio')
-        f = file(filename, 'w')
-        f.write(html)
-        f.close()
-        self.tw.saved_pictures = []
 
     def _do_save_logo_cb(self, widget):
         ''' Callback for save project to Logo. '''
