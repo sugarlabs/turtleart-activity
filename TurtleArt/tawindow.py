@@ -471,8 +471,8 @@ class TurtleArtWindow():
         self.do_expose_event(event)
         return True
 
-    # Handle the expose-event by drawing
     def do_expose_event(self, event=None):
+        ''' Handle the expose-event by drawing '''
 
         # Create the cairo context
         cr = self.window.window.cairo_create()
@@ -844,16 +844,12 @@ class TurtleArtWindow():
 
     def regenerate_palette(self, n):
         ''' Regenerate palette (used by some plugins) '''
-
         if (self.activity is None or not self.activity.has_toolbarbox) and \
            self.selectors == []:
             return
         if self.palette_sprs == []:
             return
 
-        # At initialization of the program, we don't actually populate
-
-        self._hide_previous_palette()
         save_selected = self.selected_palette
         save_previous = self.previous_palette
         self.selected_palette = n
@@ -1406,7 +1402,8 @@ class TurtleArtWindow():
                     blk.spr.labels[0] = name
                     blk.values[0] = name
                 blk.spr.set_layer(BLOCK_LAYER)
-        self._change_proto_name(name, 'stack_%s' % (self._saved_action_name),
+        debug_output('update action names: calling change proto name', True)
+        self._update_proto_name(name, 'stack_%s' % (self._saved_action_name),
                                 'stack_%s' % (name), 'basic-style-1arg')
 
     def _update_box_names(self, name):
@@ -1422,34 +1419,46 @@ class TurtleArtWindow():
                     blk.spr.labels[0] = name
                     blk.values[0] = name
                 blk.spr.set_layer(BLOCK_LAYER)
-        self._change_proto_name(name, 'box_%s' % (self._saved_box_name),
+        self._update_proto_name(name, 'box_%s' % (self._saved_box_name),
                                 'box_%s' % (name), 'number-style-1strarg')
 
-    def _change_proto_name(self, name, old, new, style, palette='blocks'):
-        ''' change the name of a proto block '''
-        for blk in self.just_protos():
+    def _update_proto_name(self, name, old, new, style, palette='blocks'):
+        ''' Change the name of a proto block '''
+        # The name change has to happen in multiple places:
+        # (1) The proto block itself
+        # (2) The list of block styles
+        # (3) The list of proto blocks on the palette
+        # (4) The list of block names
+        if old == new:
+            debug_output('%s == %s' % (old, new), True)
+            return
+        found = False
+
+        i = palette_name_to_index(palette)
+        for blk in self.palettes[i]:  # self.just_protos():
             if blk.name == old:
                 blk.name = new
                 blk.spr.labels[0] = name
                 blk.spr.set_layer(PROTO_LAYER)
-                i = palette_name_to_index(palette)
-                if old in palette_blocks[i]:
-                    j = palette_blocks[i].index(old)
-                    palette_blocks[i][j] = new
-                if old in block_styles[style]:
-                    block_styles[style].remove(old)
-                    block_styles[style].append(new)
-                else:
-                    debug_output('%s not in %s' % (old, block_styles[style]),
-                                 self.running_sugar)
-                if old in block_names:
-                    del block_names[old]
-                    block_names[new] = name
-                else:
-                    debug_output('%s not in %s' % (old, block_names),
-                                 self.running_sugar)
                 blk.resize()
-                return
+                break  # Should only be one proto block by this name
+
+        if old in palette_blocks[i]:
+            palette_blocks[i].remove(old)
+        if not new in palette_blocks[i]:
+            palette_blocks[i].append(new)
+
+        if old in block_styles[style]:
+            block_styles[style].remove(old)
+        if not new in block_styles[style]:
+            block_styles[style].append(new)
+
+        if old in block_names:
+            del block_names[old]
+        if not new in block_names:
+            block_names[new] = name
+
+        self.show_toolbar_palette(i, regenerate=True)
 
     def _action_name(self, blk, hat=False):
         ''' is this a label for an action block? '''
@@ -1548,33 +1557,37 @@ class TurtleArtWindow():
             if gblk.name in BLOCKS_WITH_SKIN:
                 self._resize_skin(gblk)
 
-        # self.show_palette(palette_names.index('trash'))
         if self.selected_palette != palette_names.index('trash'):
             for gblk in group:
                 gblk.spr.hide()
 
-        # if there was a named hat or storein, remove it from the proto palette
+        # If there was a named hat or storein, remove it from the
+        # proto palette, the palette name list, the block name list,
+        # and the style list
         for gblk in group:
-            if gblk.name == 'hat' and \
+            if (gblk.name == 'hat' or gblk.name == 'storein') and \
                gblk.connections is not None and \
                gblk.connections[1] is not None and \
-               gblk.connections[1].name == 'string' and \
-               gblk.connections[1].values[0] != _('action'):
+               gblk.connections[1].name == 'string':
+                if gblk.name == 'hat':
+                    name = 'stack_%s' % gblk.connections[1].values[0]
+                    style = 'basic-style-1arg'
+                else:
+                    name = 'box_%s' % gblk.connections[1].values[0]
+                    style = 'number-style-1strarg'
                 i = palette_name_to_index('blocks')
-                name = 'stack_%s' % (gblk.connections[1].values[0])
                 if name in palette_blocks[i]:
                     palette_blocks[i].remove(name)
-                self.show_toolbar_palette(i, regenerate=True)
-            if gblk.name == 'storein' and \
-               gblk.connections is not None and \
-               gblk.connections[1] is not None and \
-               gblk.connections[1].name == 'string' and \
-               gblk.connections[1].values[0] != _('box'):
-                i = palette_name_to_index('blocks')
-                name = 'box_%s' % (gblk.connections[1].values[0])
-                if name in palette_blocks[i]:
-                    palette_blocks[i].remove(name)
-                self.show_toolbar_palette(i, regenerate=True)
+                    for blk in self.palettes[i]:
+                        if blk.name == name:
+                            debug_output('removing blk from palette', True)
+                            blk.spr.hide()
+                            self.palettes[i].remove(blk)
+                    self.show_toolbar_palette(i, regenerate=True)
+                if name in block_styles[style]:
+                    block_styles[style].remove(name)
+                if name in block_names:
+                    del block_names[name]
 
     def _restore_all_from_trash(self):
         ''' Restore all the blocks in the trash can. '''
