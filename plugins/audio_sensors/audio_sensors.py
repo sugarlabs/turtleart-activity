@@ -320,10 +320,7 @@ class Audio_sensors(Plugin):
         ''' return index of max value in fft of mic in values '''
         if not PITCH_AVAILABLE or not self._status:
             return 0
-        buf = []
-        for i in range(4):
-            buf = append(
-                buf, self.ringbuffer[channel].read(None, self.input_step))
+        buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
             buf = rfft(buf)
             buf = abs(buf)
@@ -331,9 +328,9 @@ class Audio_sensors(Plugin):
             if maxi == 0:
                 pitch = 0
             else:  # Simple interpolation
-                a, b, c = buf[maxi - 4], buf[maxi], buf[maxi + 4]
-                maxi -= (4. * a) / float(a + b + c)
-                maxi += (4. * c) / float(a + b + c)
+                a, b, c = buf[maxi - 1], buf[maxi], buf[maxi + 1]
+                maxi -= a / float(a + b + c)
+                maxi += c / float(a + b + c)
                 pitch = maxi * 48000 / (len(buf) * 2)
             
             self._parent.lc.update_label_value('pitch', pitch)
