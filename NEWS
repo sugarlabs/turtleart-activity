@@ -1,3 +1,13 @@
+147
+
+ENHANCEMENTS:
+* New translations, including Aymara
+* Improved pitch tracking
+
+BUG_FIXES:
+* Add flag to initialize palettes on startup (needed by some plugin palettes)
+* Palette overflow (#3719)
+
 146
 
 ENHANCEMENTS:
