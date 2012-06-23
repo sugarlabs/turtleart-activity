@@ -80,7 +80,7 @@ SNAP_THRESHOLD = 200
 
 
 class TurtleArtWindow():
-    """ TurtleArt Window class abstraction  """
+    ''' TurtleArt Window class abstraction  '''
     timeout_tag = [0]
     _PLUGIN_SUBPATH = 'plugins'
 
@@ -279,7 +279,7 @@ class TurtleArtWindow():
         self.window_init_complete = True
 
     def _get_plugin_home(self):
-        """ Look in the execution directory """
+        ''' Look in the execution directory '''
         path = os.path.join(self.path, self._PLUGIN_SUBPATH)
         if os.path.exists(path):
             return path
@@ -287,7 +287,7 @@ class TurtleArtWindow():
             return None
 
     def _get_plugins_from_plugins_dir(self, path):
-        """ Look for plugin files in plugin dir. """
+        ''' Look for plugin files in plugin dir. '''
         plugin_files = []
         if path is not None:
             candidates = os.listdir(path)
@@ -298,13 +298,13 @@ class TurtleArtWindow():
         return plugin_files
 
     def _init_plugins(self):
-        """ Try importing plugin files from the plugin dir. """
+        ''' Try importing plugin files from the plugin dir. '''
         for plugin_dir in self._get_plugins_from_plugins_dir(
             self._get_plugin_home()):
             self.init_plugin(plugin_dir)
 
     def init_plugin(self, plugin_dir):
-        """ Initialize plugin in plugin_dir """
+        ''' Initialize plugin in plugin_dir '''
         plugin_class = plugin_dir.capitalize()
         f = "def f(self): from plugins.%s.%s import %s; return %s(self)" \
             % (plugin_dir, plugin_dir, plugin_class, plugin_class)
@@ -330,7 +330,7 @@ class TurtleArtWindow():
             self._icon_paths.append(icon_path)
 
     def _get_plugin_instance(self, plugin_name):
-        """ Returns the plugin 'plugin_name' instance """
+        ''' Returns the plugin 'plugin_name' instance '''
         list_plugins = self._get_plugins_from_plugins_dir(
             self._get_plugin_home())
         if plugin_name in list_plugins:
@@ -340,48 +340,47 @@ class TurtleArtWindow():
             return None
 
     def _setup_plugins(self):
-        """ Initial setup -- called just once. """
+        ''' Initial setup -- called just once. '''
         for plugin in self._plugins:
             plugin.setup()
 
     def _start_plugins(self):
-        """ Start is called everytime we execute blocks. """
+        ''' Start is called everytime we execute blocks. '''
         for plugin in self._plugins:
             plugin.start()
 
     def _stop_plugins(self):
-        """ Stop is called whenever we stop execution. """
+        ''' Stop is called whenever we stop execution. '''
         for plugin in self._plugins:
             plugin.stop()
 
     def clear_plugins(self):
-        """ Clear is called from the clean block and erase button. """
+        ''' Clear is called from the clean block and erase button. '''
         for plugin in self._plugins:
             if hasattr(plugin, 'clear'):
                 plugin.clear()
 
     def background_plugins(self):
-        """ Background is called when we are pushed to the background. """
+        ''' Background is called when we are pushed to the background. '''
         for plugin in self._plugins:
             plugin.goto_background()
 
     def foreground_plugins(self):
-        """ Foreground is called when we are return from the background. """
+        ''' Foreground is called when we are return from the background. '''
         for plugin in self._plugins:
             plugin.return_to_foreground()
 
     def quit_plugins(self):
-        """ Quit is called upon program exit. """
+        ''' Quit is called upon program exit. '''
         for plugin in self._plugins:
             plugin.quit()
 
     def _setup_events(self):
-        """ Register the events we listen to. """
+        ''' Register the events we listen to. '''
         self.window.add_events(gtk.gdk.BUTTON_PRESS_MASK)
         self.window.add_events(gtk.gdk.BUTTON_RELEASE_MASK)
         self.window.add_events(gtk.gdk.POINTER_MOTION_MASK)
         self.window.add_events(gtk.gdk.KEY_PRESS_MASK)
-        # self.window.connect('realize', self.do_realize)
         self.window.connect("expose-event", self._expose_cb)
         self.window.connect("button-press-event", self._buttonpress_cb)
         self.window.connect("button-release-event", self._buttonrelease_cb)
@@ -389,7 +388,7 @@ class TurtleArtWindow():
         self.window.connect("key-press-event", self._keypress_cb)
 
     def load_media_shapes(self):
-        """ Media shapes get positioned onto blocks """
+        ''' Media shapes get positioned onto blocks '''
         for name in MEDIA_SHAPES:
             if name in self.media_shapes:
                 continue
@@ -406,7 +405,7 @@ class TurtleArtWindow():
                     break
 
     def _setup_misc(self):
-        """ Misc. sprites for status, overlays, etc. """
+        ''' Misc. sprites for status, overlays, etc. '''
         self.load_media_shapes()
         for i, name in enumerate(STATUS_SHAPES):
             # Temporary hack to use wider shapes
@@ -464,11 +463,11 @@ class TurtleArtWindow():
         return self._sharing
 
     def is_project_empty(self):
-        """ Check to see if project has any blocks in use """
+        ''' Check to see if project has any blocks in use '''
         return len(self.just_blocks()) == 1
 
     def _expose_cb(self, win=None, event=None):
-        """ Repaint """
+        ''' Repaint '''
         self.do_expose_event(event)
         return True
 
@@ -499,7 +498,7 @@ class TurtleArtWindow():
         self.sprite_list.redraw_sprites(cr=cr)
 
     def eraser_button(self):
-        """ Eraser_button (hide status block when clearing the screen.) """
+        ''' Eraser_button (hide status block when clearing the screen.) '''
         if self.status_spr is not None:
             self.status_spr.hide()
         self.lc.find_value_blocks()  # Are there blocks to update?
@@ -507,7 +506,7 @@ class TurtleArtWindow():
         self.display_coordinates()
 
     def run_button(self, time, running_from_button_push=False):
-        """ Run turtle! """
+        ''' Run turtle! '''
         if self.running_sugar:
             self.activity.recenter()
         if self.status_spr is not None:
@@ -540,12 +539,12 @@ class TurtleArtWindow():
         return
 
     def stop_button(self):
-        """ Stop button """
+        ''' Stop button '''
         self.lc.stop_logo()
         self._stop_plugins()
 
     def set_userdefined(self, blk=None):
-        """ Change icon for user-defined blocks after loading Python code. """
+        ''' Change icon for user-defined blocks after loading Python code. '''
         if blk is not None:
             if blk.name in PYTHON_SKIN:
                 x, y = self._calc_image_offset('pythonon', blk.spr)
@@ -553,13 +552,13 @@ class TurtleArtWindow():
                 self._resize_skin(blk)
 
     def set_fullscreen(self):
-        """ Enter fullscreen mode """
+        ''' Enter fullscreen mode '''
         if self.running_sugar:
             self.activity.fullscreen()
             self.activity.recenter()
 
     def set_cartesian(self, flag):
-        """ Turn on/off Cartesian coordinates """
+        ''' Turn on/off Cartesian coordinates '''
         if self.coord_scale == 1:
             self.draw_overlay('Cartesian_labeled')
         else:
@@ -567,12 +566,12 @@ class TurtleArtWindow():
         return
 
     def set_polar(self, flag):
-        """ Turn on/off polar coordinates """
+        ''' Turn on/off polar coordinates '''
         self.draw_overlay('polar')
         return
 
     def set_metric(self, flag):
-        """ Turn on/off metric coordinates """
+        ''' Turn on/off metric coordinates '''
         self.draw_overlay('metric')
         return
 
@@ -589,7 +588,7 @@ class TurtleArtWindow():
         self.canvas.heading = save_heading
 
     def update_overlay_position(self, widget, event):
-        """ Reposition the overlays when window size changes """
+        ''' Reposition the overlays when window size changes '''
         self.width = event.width
         self.height = event.height
         for name in OVERLAY_SHAPES:
@@ -616,7 +615,7 @@ class TurtleArtWindow():
         self.canvas.move_turtle()
 
     def hideshow_button(self):
-        """ Hide/show button """
+        ''' Hide/show button '''
         if not self.hide:
             for blk in self.just_blocks():
                 blk.spr.hide()
@@ -635,12 +634,12 @@ class TurtleArtWindow():
         self.inval_all()
 
     def inval_all(self):
-        """ Force a refresh """
+        ''' Force a refresh '''
         if self.interactive_mode:
             self.window.queue_draw_area(0, 0, self.width, self.height)
 
     def hideshow_palette(self, state):
-        """ Hide or show palette  """
+        ''' Hide or show palette  '''
         if not state:
             self.palette = False
             if self.running_sugar:
@@ -654,7 +653,7 @@ class TurtleArtWindow():
             self.show_palette()
 
     def show_palette(self, n=None):
-        """ Show palette. """
+        ''' Show palette. '''
         if n is None:
             if self.selected_palette is None:
                 n = 0
@@ -669,7 +668,7 @@ class TurtleArtWindow():
         self.palette = True
 
     def hide_palette(self):
-        """ Hide the palette. """
+        ''' Hide the palette. '''
         self._hide_toolbar_palette()
         self.palette_button[self.orientation].hide()
         self.palette_button[2].hide()
@@ -680,7 +679,7 @@ class TurtleArtWindow():
         self.palette = False
 
     def move_palettes(self, x, y):
-        """ Move the palettes. """
+        ''' Move the palettes. '''
         for p in self.palettes:
             for blk in p:
                 blk.spr.move((x + blk.spr.save_xy[0], y + blk.spr.save_xy[1]))
@@ -702,7 +701,7 @@ class TurtleArtWindow():
                                y + gblk.spr.save_xy[1]))
 
     def hideblocks(self):
-        """ Callback from 'hide blocks' block """
+        ''' Callback from 'hide blocks' block '''
         if not self.interactive_mode:
             return
         self.hide = False
@@ -711,7 +710,7 @@ class TurtleArtWindow():
             self.activity.do_hide_blocks()
 
     def showblocks(self):
-        """ Callback from 'show blocks' block """
+        ''' Callback from 'show blocks' block '''
         if not self.interactive_mode:
             return
         self.hide = True
@@ -720,7 +719,7 @@ class TurtleArtWindow():
             self.activity.do_show_blocks()
 
     def resize_blocks(self, blocks=None):
-        """ Resize blocks or if blocks is None, all of the blocks """
+        ''' Resize blocks or if blocks is None, all of the blocks '''
         if blocks is None:
             blocks = self.just_blocks()
 
@@ -773,7 +772,7 @@ class TurtleArtWindow():
 
     def show_toolbar_palette(self, n, init_only=False, regenerate=False,
                              show=True):
-        """ Show the toolbar palettes, creating them on init_only """
+        ''' Show the toolbar palettes, creating them on init_only '''
         # If we are running the 0.86+ toolbar, the selectors are already
         # created, as toolbar buttons. Otherwise, we need to create them.
         if (self.activity is None or not self.activity.has_toolbarbox) and \
@@ -844,7 +843,7 @@ class TurtleArtWindow():
             self.previous_palette = save_previous
 
     def regenerate_palette(self, n):
-        """ Regenerate palette (used by some plugins) """
+        ''' Regenerate palette (used by some plugins) '''
 
         if (self.activity is None or not self.activity.has_toolbarbox) and \
            self.selectors == []:
@@ -1033,7 +1032,7 @@ class TurtleArtWindow():
         return
 
     def _hide_toolbar_palette(self):
-        """ Hide the toolbar palettes """
+        ''' Hide the toolbar palettes '''
         self._hide_previous_palette()
         if self.activity is None or not self.activity.has_toolbarbox:
             # Hide the selectors
@@ -1045,7 +1044,7 @@ class TurtleArtWindow():
                 palette_names[self.selected_palette] + 'off')
 
     def _hide_previous_palette(self, palette=None):
-        """ Hide just the previously viewed toolbar palette """
+        ''' Hide just the previously viewed toolbar palette '''
         if palette is None:
             palette = self.previous_palette
         # Hide previously selected palette
@@ -1072,7 +1071,7 @@ class TurtleArtWindow():
                         gblk.spr.hide()
 
     def _horizontal_layout(self, x, y, blocks):
-        """ Position prototypes in a horizontal palette. """
+        ''' Position prototypes in a horizontal palette. '''
         max_w = 0
         for blk in blocks:
             if not blk.get_visibility():
@@ -1097,7 +1096,7 @@ class TurtleArtWindow():
         return x, y, max_w
 
     def _vertical_layout(self, x, y, blocks):
-        """ Position prototypes in a vertical palette. """
+        ''' Position prototypes in a vertical palette. '''
         row = []
         row_w = 0
         max_h = 0
@@ -1141,7 +1140,7 @@ class TurtleArtWindow():
         return x, y, max_h
 
     def _layout_palette(self, n, regenerate=False, show=True):
-        """ Layout prototypes in a palette. """
+        ''' Layout prototypes in a palette. '''
         if n is not None:
             if self.orientation == HORIZONTAL_PALETTE:
                 x, y = 20, self.toolbar_offset + 5
@@ -1204,7 +1203,7 @@ class TurtleArtWindow():
                     svg_str_to_pixbuf(svg.palette(w, h)))
 
     def _buttonpress_cb(self, win, event):
-        """ Button press """
+        ''' Button press '''
         self.window.grab_focus()
         x, y = xy(event)
         self.mouse_flag = 1
@@ -1395,7 +1394,7 @@ class TurtleArtWindow():
             return True
 
     def _update_action_names(self, name):
-        """ change the label on action blocks of the same name """
+        ''' change the label on action blocks of the same name '''
         if CURSOR in name:
             name = name.replace(CURSOR, '')
         for blk in self.just_blocks():
@@ -1411,7 +1410,7 @@ class TurtleArtWindow():
                                 'stack_%s' % (name), 'basic-style-1arg')
 
     def _update_box_names(self, name):
-        """ change the label on box blocks of the same name """
+        ''' change the label on box blocks of the same name '''
         if CURSOR in name:
             name = name.replace(CURSOR, '')
         for blk in self.just_blocks():
@@ -1427,7 +1426,7 @@ class TurtleArtWindow():
                                 'box_%s' % (name), 'number-style-1strarg')
 
     def _change_proto_name(self, name, old, new, style, palette='blocks'):
-        """ change the name of a proto block """
+        ''' change the name of a proto block '''
         for blk in self.just_protos():
             if blk.name == old:
                 blk.name = new
@@ -1453,7 +1452,7 @@ class TurtleArtWindow():
                 return
 
     def _action_name(self, blk, hat=False):
-        """ is this a label for an action block? """
+        ''' is this a label for an action block? '''
         if blk is None:
             return False
         if blk.name != 'string':  # Ignoring int names
@@ -1467,7 +1466,7 @@ class TurtleArtWindow():
         return False
 
     def _box_name(self, blk, storein=False):
-        """ is this a label for a storein block? """
+        ''' is this a label for a storein block? '''
         if blk is None:
             return False
         if blk.name != 'string':  # Ignoring int names
@@ -1481,7 +1480,7 @@ class TurtleArtWindow():
         return False
 
     def _select_category(self, spr):
-        """ Select a category from the toolbar """
+        ''' Select a category from the toolbar '''
         i = self.selectors.index(spr)
         spr.set_shape(self.selector_shapes[i][1])
         if self.selected_selector is not None:
@@ -1494,7 +1493,7 @@ class TurtleArtWindow():
         self.show_palette(i)
 
     def _select_toolbar_button(self, spr):
-        """ Select a toolbar button (Used when not running Sugar). """
+        ''' Select a toolbar button (Used when not running Sugar). '''
         if not hasattr(spr, 'name'):
             return
         if spr.name == 'run-fastoff':
@@ -1521,7 +1520,7 @@ class TurtleArtWindow():
             self.hideshow_button()
 
     def _put_in_trash(self, blk, x=0, y=0):
-        """ Put a group of blocks into the trash. """
+        ''' Put a group of blocks into the trash. '''
         self.trash_stack.append(blk)
         group = find_group(blk)
         for gblk in group:
@@ -1578,13 +1577,13 @@ class TurtleArtWindow():
                 self.show_toolbar_palette(i, regenerate=True)
 
     def _restore_all_from_trash(self):
-        """ Restore all the blocks in the trash can. """
+        ''' Restore all the blocks in the trash can. '''
         for blk in self.block_list.list:
             if blk.type == 'trash':
                 self._restore_from_trash(blk)
 
     def _restore_latest_from_trash(self):
-        """ Restore most recent blocks from the trash can. """
+        ''' Restore most recent blocks from the trash can. '''
         if len(self.trash_stack) == 0:
             return
         self._restore_from_trash(self.trash_stack[len(self.trash_stack) - 1])
@@ -1616,7 +1615,7 @@ class TurtleArtWindow():
         self.trash_stack.remove(blk)
 
     def _empty_trash(self):
-        """ Permanently remove all blocks presently in the trash can. """
+        ''' Permanently remove all blocks presently in the trash can. '''
         for blk in self.block_list.list:
             if blk.type == 'trash':
                 blk.type = 'deleted'
@@ -1624,7 +1623,7 @@ class TurtleArtWindow():
         self.trash_stack = []
 
     def _in_the_trash(self, x, y):
-        """ Is x, y over a palette? """
+        ''' Is x, y over a palette? '''
         if self.selected_palette is not None and \
            self.palette_sprs[self.selected_palette][self.orientation].hit(
             (x, y)):
@@ -1632,7 +1631,7 @@ class TurtleArtWindow():
         return False
 
     def _block_pressed(self, x, y, blk):
-        """ Block pressed """
+        ''' Block pressed '''
         if blk is not None:
             blk.highlight()
             self._disconnect(blk)
@@ -1655,7 +1654,7 @@ class TurtleArtWindow():
                 self.saved_string = ''
 
     def _unselect_block(self):
-        """ Unselect block """
+        ''' Unselect block '''
         # After unselecting a 'number' block, we need to check its value
         if self.selected_blk.name == 'number':
             self._number_check()
@@ -1667,7 +1666,7 @@ class TurtleArtWindow():
         self.selected_blk = None
 
     def _new_block(self, name, x, y, defaults=None):
-        """ Make a new block. """
+        ''' Make a new block. '''
         x_pos = x - 20
         y_pos = y - 20
         if name in content_blocks:
@@ -1746,7 +1745,7 @@ class TurtleArtWindow():
                 self.used_block_list.append(newblk.spr.labels[0])
 
     def _new_macro(self, name, x, y):
-        """ Create a "macro" (predefined stack of blocks). """
+        ''' Create a "macro" (predefined stack of blocks). '''
         macro = MACROS[name]
         macro[0][2] = x
         macro[0][3] = y
@@ -1756,7 +1755,7 @@ class TurtleArtWindow():
         self.drag_group = find_group(top)
 
     def process_data(self, block_data, offset=0):
-        """ Process block_data (from a macro, a file, or the clipboard). """
+        ''' Process block_data (from a macro, a file, or the clipboard). '''
 
         # Create the blocks (or turtle).
         blocks = []
@@ -1847,7 +1846,7 @@ class TurtleArtWindow():
             return None
 
     def _adjust_dock_positions(self, blk):
-        """ Adjust the dock x, y positions """
+        ''' Adjust the dock x, y positions '''
         if not self.interactive_mode:
             return
         (sx, sy) = blk.spr.get_xy()
@@ -1904,7 +1903,7 @@ class TurtleArtWindow():
         self.turtle_movement_to_share = None
 
     def _mouse_move(self, x, y):
-        """ Process mouse movements """
+        ''' Process mouse movements '''
 
         if self.running_sugar and self.dragging_canvas[0]:
             dx = self.dragging_canvas[1] - x
@@ -2013,7 +2012,7 @@ class TurtleArtWindow():
         self.dy += dy
 
     def _show_popup(self, x, y):
-        """ Let's help our users by displaying a little help. """
+        ''' Let's help our users by displaying a little help. '''
         spr = self.sprite_list.find_sprite((x, y))
         blk = self.block_list.spr_to_block(spr)
         if spr and blk is not None:
@@ -2049,7 +2048,7 @@ class TurtleArtWindow():
                     self.timeout_tag[0] = 0
 
     def _do_show_popup(self, block_name):
-        """ Fetch the help text and display it.  """
+        ''' Fetch the help text and display it.  '''
         if self.no_help:
             return 0
         if block_name in special_names:
@@ -2071,7 +2070,7 @@ class TurtleArtWindow():
         return 0
 
     def _buttonrelease_cb(self, win, event):
-        """ Button release """
+        ''' Button release '''
         x, y = xy(event)
         self.mouse_flag = 0
         self.mouse_x = x
@@ -2178,7 +2177,7 @@ class TurtleArtWindow():
             turtle.show()
 
     def _move_turtle(self, x, y):
-        """ Move the selected turtle to (x, y). """
+        ''' Move the selected turtle to (x, y). '''
         self.canvas.xcor = x
         self.canvas.ycor = y
         self.canvas.move_turtle()
@@ -2192,7 +2191,7 @@ class TurtleArtWindow():
                                        self.canvas.ycor / self.coord_scale)
 
     def _click_block(self, x, y):
-        """ Click block: lots of special cases to handle... """
+        ''' Click block: lots of special cases to handle... '''
         blk = self.block_list.spr_to_block(self.selected_spr)
         if blk is None:
             return
@@ -2343,14 +2342,14 @@ class TurtleArtWindow():
             self._run_stack(blk)
 
     def _expand_boolean(self, blk, blk2, dy):
-        """ Expand a boolean blk if blk2 is too big to fit. """
+        ''' Expand a boolean blk if blk2 is too big to fit. '''
         group = find_group(blk2)
         for gblk in find_group(blk):
             if gblk not in group:
                 gblk.spr.move_relative((0, -dy * blk.scale))
 
     def _expand_expandable(self, blk, blk2, dy):
-        """ Expand an expandable blk if blk2 is too big to fit. """
+        ''' Expand an expandable blk if blk2 is too big to fit. '''
         if blk2 is None:
             group = [blk]
         else:
@@ -2376,7 +2375,7 @@ class TurtleArtWindow():
         return False
 
     def _cascade_expandable(self, blk):
-        """ If expanding/shrinking a block, cascade. """
+        ''' If expanding/shrinking a block, cascade. '''
         while self._number_style(blk.name):
             if blk.connections[0] is None:
                 break
@@ -2405,7 +2404,7 @@ class TurtleArtWindow():
                 break
 
     def _check_collapsibles(self, blk):
-        """ Check state of collapsible blocks upon change in dock state. """
+        ''' Check state of collapsible blocks upon change in dock state. '''
         group = find_group(blk)
         for gblk in group:
             if gblk.name in COLLAPSIBLE:
@@ -2430,7 +2429,7 @@ class TurtleArtWindow():
                 gblk.refresh()
 
     def _run_stack(self, blk):
-        """ Run a stack of blocks. """
+        ''' Run a stack of blocks. '''
         if blk is None:
             return
         self.lc.find_value_blocks()  # Are there blocks to update?
@@ -2449,9 +2448,9 @@ class TurtleArtWindow():
                 pass
 
     def _snap_to_dock(self):
-        """ Snap a block (selected_block) to the dock of another block
+        ''' Snap a block (selected_block) to the dock of another block
             (destination_block).
-        """
+        '''
         selected_block = self.drag_group[0]
         best_destination = None
         d = SNAP_THRESHOLD
@@ -2543,7 +2542,7 @@ class TurtleArtWindow():
                 grow_stack_arm(find_sandwich_top(best_destination))
 
     def _disconnect(self, blk):
-        """ Disconnect block from stack above it. """
+        ''' Disconnect block from stack above it. '''
         if blk is None:
             return
         if blk.connections[0] is None:
@@ -2571,7 +2570,7 @@ class TurtleArtWindow():
         blk.connections[0] = None
 
     def _import_from_journal(self, blk):
-        """ Import a file from the Sugar Journal """
+        ''' Import a file from the Sugar Journal '''
         # TODO: check blk name to set filter
         if self.running_sugar:
             chooser(self.parent, '', self._update_media_blk)
@@ -2583,7 +2582,7 @@ class TurtleArtWindow():
             self._update_media_icon(blk, fname)
 
     def _load_description_block(self, blk):
-        """ Look for a corresponding description block """
+        ''' Look for a corresponding description block '''
         if blk is None or blk.name != 'journal' or len(blk.values) == 0 or \
            blk.connections[0] is None:
             return
@@ -2594,12 +2593,12 @@ class TurtleArtWindow():
             self._update_media_icon(dblk, None, blk.values[0])
 
     def _update_media_blk(self, dsobject):
-        """ Called from the chooser to load a media block """
+        ''' Called from the chooser to load a media block '''
         self._update_media_icon(self.selected_blk, dsobject,
                                 dsobject.object_id)
 
     def _update_media_icon(self, blk, name, value=''):
-        """ Update the icon on a 'loaded' media block. """
+        ''' Update the icon on a 'loaded' media block. '''
         if blk.name == 'journal':
             self._load_image_thumb(name, blk)
         elif blk.name == 'audio':
@@ -2617,7 +2616,7 @@ class TurtleArtWindow():
         blk.spr.set_label(' ')
 
     def _load_image_thumb(self, picture, blk):
-        """ Replace icon with a preview image. """
+        ''' Replace icon with a preview image. '''
         pixbuf = None
         self._block_skin('descriptionon', blk)
 
@@ -2642,7 +2641,7 @@ class TurtleArtWindow():
             self._resize_skin(blk)
 
     def _keypress_cb(self, area, event):
-        """ Keyboard """
+        ''' Keyboard '''
         keyname = gtk.gdk.keyval_name(event.keyval)
         keyunicode = gtk.gdk.keyval_to_unicode(event.keyval)
         if event.get_state() & gtk.gdk.MOD1_MASK:
@@ -2731,7 +2730,7 @@ class TurtleArtWindow():
         self.selected_blk.spr.set_label(newnum + CURSOR)
 
     def process_alphanumeric_input(self, keyname, keyunicode):
-        """ Make sure alphanumeric input is properly parsed. """
+        ''' Make sure alphanumeric input is properly parsed. '''
         if len(self.selected_blk.spr.labels[0]) > 0:
             c = self.selected_blk.spr.labels[0].count(CURSOR)
             if c == 0:
@@ -2812,7 +2811,7 @@ class TurtleArtWindow():
         self.selected_blk.spr.set_label("%s%s%s" % (newleft, CURSOR, oldright))
 
     def _process_keyboard_commands(self, keyname, block_flag=True):
-        """ Use the keyboard to move blocks and turtle """
+        ''' Use the keyboard to move blocks and turtle '''
         mov_dict = {'KP_Up': [0, 20], 'j': [0, 20], 'Up': [0, 20],
                     'KP_Down': [0, -20], 'k': [0, -20], 'Down': [0, -20],
                     'KP_Left': [-20, 0], 'h': [-20, 0], 'Left': [-20, 0],
@@ -2857,7 +2856,7 @@ class TurtleArtWindow():
         return True
 
     def _jog_turtle(self, dx, dy):
-        """ Jog turtle """
+        ''' Jog turtle '''
         if dx == -1 and dy == -1:
             self.canvas.xcor = 0
             self.canvas.ycor = 0
@@ -2870,7 +2869,7 @@ class TurtleArtWindow():
         self.selected_turtle = None
 
     def _align_to_grid(self, grid=20):
-        """ Align blocks at the top of stacks to a grid """
+        ''' Align blocks at the top of stacks to a grid '''
         for blk in self.block_list.list:
             if blk.type == 'block':
                 top = find_top_block(blk)
@@ -2888,7 +2887,7 @@ class TurtleArtWindow():
                     self._jog_block(top, dx, -dy)
 
     def _jog_block(self, blk, dx, dy):
-        """ Jog block """
+        ''' Jog block '''
         if blk.type == 'proto':
             return
         if collapsed(blk):
@@ -2913,7 +2912,7 @@ class TurtleArtWindow():
         self.drag_group = None
 
     def _number_check(self):
-        """ Make sure a 'number' block contains a number. """
+        ''' Make sure a 'number' block contains a number. '''
         n = self.selected_blk.spr.labels[0].replace(CURSOR, '')
         if n in ['-', '.', '-.', ',', '-,']:
             n = 0
@@ -2947,7 +2946,7 @@ class TurtleArtWindow():
         self.saved_string = self.selected_blk.values[0]
 
     def load_python_code_from_file(self, fname=None, add_new_block=True):
-        """ Load Python code from a file """
+        ''' Load Python code from a file '''
         id = None
         self.python_code = None
         if fname is None:
@@ -3012,7 +3011,7 @@ class TurtleArtWindow():
         return id
 
     def load_python_code_from_journal(self, dsobject, blk=None):
-        """ Read the Python code from the Journal object """
+        ''' Read the Python code from the Journal object '''
         self.python_code = None
         try:
             debug_output("opening %s " % dsobject.file_path,
@@ -3033,7 +3032,7 @@ class TurtleArtWindow():
                 blk.values[0] = dsobject.object_id
 
     def _import_py(self):
-        """ Import Python code into a block """
+        ''' Import Python code into a block '''
         if self.running_sugar:
             chooser(self.parent, 'org.laptop.Pippy',
                     self.load_python_code_from_journal)
@@ -3046,7 +3045,7 @@ class TurtleArtWindow():
             self.set_userdefined(self.selected_blk)
 
     def new_project(self):
-        """ Start a new project """
+        ''' Start a new project '''
         self.lc.stop_logo()
         self._loaded_project = ""
         # Put current project in the trash.
@@ -3058,11 +3057,11 @@ class TurtleArtWindow():
         self.save_file_name = None
 
     def is_new_project(self):
-        """ Is this a new project or was a old project loaded from a file? """
+        ''' Is this a new project or was a old project loaded from a file? '''
         return self._loaded_project == ""
 
     def project_has_changed(self):
-        """ WARNING: order of JSON serialized data may have changed. """
+        ''' WARNING: order of JSON serialized data may have changed. '''
         try:
             f = open(self._loaded_project, 'r')
             saved_project_data = f.read()
@@ -3077,13 +3076,14 @@ class TurtleArtWindow():
         return saved_project_data != current_project_data
 
     def load_files(self, ta_file, create_new_project=True):
-        """ Load a project from a file """
+        ''' Load a project from a file '''
         if create_new_project:
             self.new_project()
         self._check_collapsibles(self.process_data(data_from_file(ta_file)))
         self._loaded_project = ta_file
 
-    def load_file(self, create_new_project=True):
+    def load_file_from_chooser(self, create_new_project=True):
+        ''' Load a project from file chooser '''
         _file_name, self.load_save_folder = get_load_name('.ta',
                                                      self.load_save_folder)
         if _file_name is None:
@@ -3097,7 +3097,7 @@ class TurtleArtWindow():
             self.activity.metadata['title'] = os.path.split(_file_name)[1]
 
     def _found_a_turtle(self, blk):
-        """ Either [-1, 'turtle', ...] or [-1, ['turtle', key], ...] """
+        ''' Either [-1, 'turtle', ...] or [-1, ['turtle', key], ...] '''
         if blk[1] == 'turtle':
             self.load_turtle(blk)
             return True
@@ -3111,7 +3111,7 @@ class TurtleArtWindow():
         return False
 
     def load_turtle(self, blk, key=1):
-        """ Restore a turtle from its saved state """
+        ''' Restore a turtle from its saved state '''
         tid, name, xcor, ycor, heading, color, shade, pensize = blk
         self.canvas.set_turtle(key)
         self.canvas.setxy(xcor, ycor, pendown=False)
@@ -3121,7 +3121,7 @@ class TurtleArtWindow():
         self.canvas.setpensize(pensize)
 
     def load_block(self, b, offset=0):
-        """ Restore individual blocks from saved state """
+        ''' Restore individual blocks from saved state '''
         if self.running_sugar:
             from sugar.datastore import datastore
 
@@ -3284,7 +3284,7 @@ class TurtleArtWindow():
         return blk
 
     def load_start(self, ta_file=None):
-        """ Start a new project with a 'start' brick """
+        ''' Start a new project with a 'start' brick '''
         if ta_file is None:
             self.process_data([[0, "start", PALETTE_WIDTH + 20,
                                 self.toolbar_offset + PALETTE_HEIGHT + 20,
@@ -3293,7 +3293,7 @@ class TurtleArtWindow():
             self.process_data(data_from_file(ta_file))
 
     def save_file(self, _file_name=None):
-        """ Start a project to a file """
+        ''' Start a project to a file '''
         if self.save_folder is not None:
             self.load_save_folder = self.save_folder
         if _file_name is None:
@@ -3309,7 +3309,7 @@ class TurtleArtWindow():
             self.save_folder = self.load_save_folder
 
     def assemble_data_to_save(self, save_turtle=True, save_project=True):
-        """ Pack the project (or stack) into a datastream to be serialized """
+        ''' Pack the project (or stack) into a datastream to be serialized '''
         _data = []
         _blks = []
 
@@ -3369,7 +3369,7 @@ class TurtleArtWindow():
         return _data
 
     def display_coordinates(self, clear=False):
-        """ Display the coordinates of the current turtle on the toolbar """
+        ''' Display the coordinates of the current turtle on the toolbar '''
         if clear:
             if self.running_sugar:
                 self.activity.coordinates_label.set_text('')
@@ -3392,7 +3392,7 @@ class TurtleArtWindow():
                         _("heading"), h))
 
     def showlabel(self, shp, label=''):
-        """ Display a message on a status block """
+        ''' Display a message on a status block '''
         if not self.interactive_mode:
             debug_output(label, self.running_sugar)
             return
@@ -3423,7 +3423,7 @@ class TurtleArtWindow():
                 self.status_spr.move((0, self.height - 100))
 
     def calc_position(self, template):
-        """ Relative placement of portfolio objects (deprecated) """
+        ''' Relative placement of portfolio objects (deprecated) '''
         w, h, x, y, dx, dy = TEMPLATES[template]
         x *= self.canvas.width
         y *= self.canvas.height
@@ -3434,7 +3434,7 @@ class TurtleArtWindow():
         return(w, h, x, y, dx, dy)
 
     def save_for_upload(self, _file_name):
-        """ Grab the current canvas and save it for upload """
+        ''' Grab the current canvas and save it for upload '''
         if _file_name[-3:] == '.ta':
             _file_name = _file_name[0: -3]
         data_to_file(self.assemble_data_to_save(), _file_name + '.ta')
@@ -3443,8 +3443,8 @@ class TurtleArtWindow():
         image_file = _file_name + '.png'
         return ta_file, image_file
 
-    def save_as_image(self, name="", svg=False, pixbuf=None):
-        """ Grab the current canvas and save it. """
+    def save_as_image(self, name="", svg=False):
+        ''' Grab the current canvas and save it. '''
         if svg:
             suffix = '.svg'
         else:
@@ -3506,13 +3506,13 @@ class TurtleArtWindow():
                 os.remove(file_path)
         else:
             if svg:
-                output = subprocess.check_output(
+                subprocess.check_output(
                     ['mv', os.path.join(datapath, 'output.svg'),
                      os.path.join(datapath, filename)])
             self.saved_pictures.append((file_path, svg))
 
     def just_blocks(self):
-        """ Filter out 'proto', 'trash', and 'deleted' blocks """
+        ''' Filter out 'proto', 'trash', and 'deleted' blocks '''
         just_blocks_list = []
         for blk in self.block_list.list:
             if blk.type == 'block':
@@ -3520,7 +3520,7 @@ class TurtleArtWindow():
         return just_blocks_list
 
     def just_protos(self):
-        """ Filter out 'block', 'trash', and 'deleted' blocks """
+        ''' Filter out 'block', 'trash', and 'deleted' blocks '''
         just_protos_list = []
         for blk in self.block_list.list:
             if blk.type == 'proto':
@@ -3528,7 +3528,7 @@ class TurtleArtWindow():
         return just_protos_list
 
     def _width_and_height(self, blk):
-        """ What are the width and height of a stack? """
+        ''' What are the width and height of a stack? '''
         minx = 10000
         miny = 10000
         maxx = -10000
@@ -3549,7 +3549,7 @@ class TurtleArtWindow():
     # Utilities related to putting a image 'skin' on a block
 
     def _calc_image_offset(self, name, spr, iw=0, ih=0):
-        """ Calculate the postion for placing an image onto a sprite. """
+        ''' Calculate the postion for placing an image onto a sprite. '''
         _l, _t = spr.label_left_top()
         if name == '':
             return _l, _t
@@ -3561,7 +3561,7 @@ class TurtleArtWindow():
         return int(_l + (_w - iw) / 2), int(_t + (_h - ih) / 2)
 
     def _calc_w_h(self, name, spr):
-        """ Calculate new image size """
+        ''' Calculate new image size '''
         target_w = spr.label_safe_width()
         target_h = spr.label_safe_height()
         if name == '':
@@ -3578,18 +3578,18 @@ class TurtleArtWindow():
         return int(new_w), int(new_h)
 
     def _proto_skin(self, name, n, i):
-        """ Utility for calculating proto skin images """
+        ''' Utility for calculating proto skin images '''
         x, y = self._calc_image_offset(name, self.palettes[n][i].spr)
         self.palettes[n][i].spr.set_image(self.media_shapes[name], 1, x, y)
 
     def _block_skin(self, name, blk):
-        """ Some blocks get a skin """
+        ''' Some blocks get a skin '''
         x, y = self._calc_image_offset(name, blk.spr)
         blk.set_image(self.media_shapes[name], x, y)
         self._resize_skin(blk)
 
     def _resize_skin(self, blk):
-        """ Resize the 'skin' when block scale changes. """
+        ''' Resize the 'skin' when block scale changes. '''
         if blk.name in PYTHON_SKIN:
             w, h = self._calc_w_h('pythonoff', blk.spr)
             x, y = self._calc_image_offset('pythonoff', blk.spr, w, h)
@@ -3659,7 +3659,7 @@ class TurtleArtWindow():
                                   regenerate=True)
 
     def _prim_stack(self, x):
-        """ Process a named stack """
+        ''' Process a named stack '''
         if type(convert(x, float, False)) == float:
             if int(float(x)) == x:
                 x = int(x)
@@ -3674,7 +3674,7 @@ class TurtleArtWindow():
         yield True
 
     def _prim_box(self, x):
-        """ Retrieve value from named box """
+        ''' Retrieve value from named box '''
         if type(convert(x, float, False)) == float:
             if int(float(x)) == x:
                 x = int(x)
@@ -3683,8 +3683,9 @@ class TurtleArtWindow():
         except KeyError:
             raise logoerror("#emptybox")
 
+
 def dock_dx_dy(block1, dock1n, block2, dock2n):
-    """ Find the distance between the dock points of two blocks. """
+    ''' Find the distance between the dock points of two blocks. '''
     _dock1 = block1.docks[dock1n]
     _dock2 = block2.docks[dock2n]
     _d1type, _d1dir, _d1x, _d1y = _dock1[0:4]

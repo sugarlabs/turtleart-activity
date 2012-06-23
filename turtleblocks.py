@@ -428,7 +428,7 @@ class TurtleMain():
 
     def _do_open_cb(self, widget):
         ''' Callback for open project. '''
-        self.tw.load_file(True)
+        self.tw.load_file_from_chooser(True)
 
     def _do_save_cb(self, widget):
         ''' Callback for save project. '''

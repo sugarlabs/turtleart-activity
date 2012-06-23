@@ -297,7 +297,7 @@ class TurtleArtActivity(activity.Activity):
 
     def do_samples_cb(self, button):
         ''' Sample-projects open dialog '''
-        self.tw.load_file(True)
+        self.tw.load_file_from_chooser(True)
 
     def adjust_sw(self, dx, dy):
         ''' Adjust the scrolled window position. '''
