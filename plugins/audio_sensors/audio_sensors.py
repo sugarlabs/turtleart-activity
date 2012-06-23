@@ -325,11 +325,17 @@ class Audio_sensors(Plugin):
             buf = append(
                 buf, self.ringbuffer[channel].read(None, self.input_step))
         if len(buf) > 0:
-            r = []
-            for j in rfft(buf):
-                r.append(abs(j))
-            # Convert output to Hertz
-            pitch = r.index(max(r)) * 48000 / len(buf)
+            buf = rfft(buf)
+            buf = abs(buf)
+            maxi = buf.argmax()
+            if maxi == 0:
+                pitch = 0
+            else:  # Simple interpolation
+                a, b, c = buf[maxi - 4], buf[maxi], buf[maxi + 4]
+                maxi -= (4. * a) / float(a + b + c)
+                maxi += (4. * c) / float(a + b + c)
+                pitch = maxi * 48000 / (len(buf) * 2)
+            
             self._parent.lc.update_label_value('pitch', pitch)
             return pitch
         else:
