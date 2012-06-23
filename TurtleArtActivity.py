@@ -52,15 +52,12 @@ import ConfigParser
 import shutil
 import tempfile
 
-# installs the global _() magic (reverted as it is broken)
-# import TurtleArt.tagettext
 from gettext import gettext as _
 
 from TurtleArt.tapalette import palette_names, help_strings, help_palettes, \
                                 help_windows
 from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE, XO1, XO15, XO175, \
                                   XO30
-# from TurtleArt.taexporthtml import save_html
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
                               get_path, chooser, get_hardware
@@ -115,74 +112,6 @@ class TurtleArtActivity(activity.Activity):
         self._defer_palette_move = False
 
     # Activity toolbar callbacks
-
-    """
-    def do_save_as_html_cb(self, button):
-        ''' Write html out to datastore. '''
-        self.save_as_html.set_icon('htmlon')
-        _logger.debug('saving HTML code')
-        # Until we have URLs for datastore objects, always embed images.
-        embed_flag = True
-
-        # Generate HTML by processing TA code from stacks.
-        html = save_html(self, self.tw, embed_flag)
-        if len(html) == 0:
-            return
-
-        # Save the HTML code to the instance directory.
-        datapath = get_path(activity, 'instance')
-
-        save_type = '.html'
-        if len(self.tw.saved_pictures) > 0:
-            if self.tw.saved_pictures[0][1]:  # svg=True
-                save_type = '.xml'
-
-        html_file = os.path.join(datapath, 'portfolio' + save_type)
-        f = file(html_file, 'w')
-        f.write(html)
-        f.close()
-
-        if not embed_flag:
-            # We need to make a tar ball that includes the images.
-            tar_path = os.path.join(datapath, 'portfolio.tar')
-            tar_fd = tarfile.open(tar_path, 'w')
-            try:
-                tar_fd.add(html_file, 'portfolio.html')
-                import glob
-                image_list = glob.glob(os.path.join(datapath, 'image*'))
-                for i in image_list:
-                    tar_fd.add(i, os.path.basename(i))
-            finally:
-                tar_fd.close()
-
-        dsobject = datastore.create()
-        dsobject.metadata['title'] = self.metadata['title'] + ' ' + \
-                                     _('presentation')
-        dsobject.metadata['icon-color'] = profile.get_color().to_string()
-        if embed_flag:
-            if save_type == '.xml':
-                dsobject.metadata['mime_type'] = 'application/xml'
-            else:
-                dsobject.metadata['mime_type'] = 'text/html'
-            dsobject.set_file_path(html_file)
-        else:
-            dsobject.metadata['mime_type'] = 'application/x-tar'
-            dsobject.set_file_path(tar_path)
-        dsobject.metadata['activity'] = 'org.laptop.WebActivity'
-        datastore.write(dsobject)
-        dsobject.destroy()
-
-        gobject.timeout_add(250, self.save_as_html.set_icon, 'htmloff')
-
-        self.tw.saved_pictures = []  # Clear queue of pictures we have viewed.
-        if embed_flag:
-            os.remove(html_file)
-        else:
-            os.remove(tar_file)
-
-        self._notify_successful_save(title=_('Save as HTML'))
-    """
-
     def do_save_as_logo_cb(self, button):
         ''' Write UCB logo code to datastore. '''
         self.save_as_logo.set_icon('logo-saveon')
@@ -636,10 +565,6 @@ class TurtleArtActivity(activity.Activity):
 
         self._make_project_buttons(self._toolbox.toolbar)
 
-        if not self.tw.hw in [XO30]:
-            self._add_separator(self._toolbox.toolbar, expand=True,
-                                visible=False)
-
         self.keep_button = self._add_button(
             'filesaveoff', _('Save snapshot'), self.do_keep_cb,
             self._toolbox.toolbar)
@@ -650,6 +575,10 @@ class TurtleArtActivity(activity.Activity):
 
         self._toolbox.toolbar.insert(self._help_button, -1)
         self._help_button.show()
+
+        if not self.tw.hw in [XO30]:
+            self._add_separator(self._toolbox.toolbar, expand=True,
+                                visible=False)
 
         stop_button = StopButton(self)
         stop_button.props.accelerator = '<Ctrl>Q'
@@ -700,12 +629,11 @@ class TurtleArtActivity(activity.Activity):
         help_palettes['activity-toolbar'].show()
 
         add_paragraph(help_box, _('Share selected blocks'), icon='shareon')
-        if gtk.gdk.screen_width() < 1200:
+        if gtk.gdk.screen_width() < 1024:
             add_paragraph(help_box, _('Save/Load'), icon='save-load')
         else:
             add_section(help_box, _('Save/Load'), icon='turtleoff')
         add_paragraph(help_box, _('Save as image'), icon='image-saveoff')
-        # add_paragraph(help_box, _('Save as HTML'), icon='htmloff')
         add_paragraph(help_box, _('Save as Logo'), icon='logo-saveoff')
         add_paragraph(help_box, _('Load project'), icon='load-from-journal')
         home = os.environ['HOME']
@@ -786,7 +714,7 @@ class TurtleArtActivity(activity.Activity):
         self.share_button = self._add_button('shareoff',
                                              _('Sharing blocks disabled'),
                                              self._share_cb, toolbar)
-        if self.has_toolbarbox and gtk.gdk.screen_width() < 1200:
+        if self.has_toolbarbox and gtk.gdk.screen_width() < 1024:
             self._add_separator(toolbar, expand=False, visible=True)
             save_load_button = self._add_button(
                 'save-load', _('Save/Load'), self._save_load_palette_cb,
@@ -796,11 +724,6 @@ class TurtleArtActivity(activity.Activity):
             self.save_as_image = self._add_button_and_label(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
                 button_box)
-            """
-            self.save_as_html = self._add_button_and_label(
-                'htmloff', _('Save as HTML'), self.do_save_as_html_cb,
-                button_box)
-            """
             self.save_as_logo = self._add_button_and_label(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 button_box)
@@ -818,14 +741,9 @@ class TurtleArtActivity(activity.Activity):
             button_box.show_all()
             self._palette.set_content(button_box)
         else:
-            self._add_separator(toolbar, expand=True, visible=False)
             self.save_as_image = self._add_button(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
                 toolbar)
-            """
-            self.save_as_html = self._add_button(
-                'htmloff', _('Save as HTML'), self.do_save_as_html_cb, toolbar)
-            """
             self.save_as_logo = self._add_button(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
                 toolbar)
