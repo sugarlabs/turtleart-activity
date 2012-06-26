@@ -109,7 +109,10 @@ passed by an argument'),
     #TRANS: this string must contain only ASCII characters.
     #The len must be 32 characters/spaces.
     _('Hello World    Butia            '),
-    _('print text in Butia robot 32-character ASCII display'),
+    _('print text in Butia robot 32-character ASCII display')
+,    _('refresh Butia palette'),
+    _('refresh Butia'),
+    _('refresh the state of the Butia palette and blocks'),
     _('Butia')
 ]
 
