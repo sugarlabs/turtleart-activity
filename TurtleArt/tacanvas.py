@@ -21,6 +21,7 @@
 #THE SOFTWARE.
 
 import gtk
+import gobject
 from math import sin, cos, atan, pi, sqrt
 import os
 import pango
@@ -592,7 +593,7 @@ class TurtleGraphics:
                                                round_int(width),
                                                round_int(height),
                                                data]]))
-            self.tw.send_event(event)
+            gobject.idle_add(self.tw.send_event, event)
             os.remove(tmp_file)
 
     def draw_text(self, label, x, y, size, w, share=True):
