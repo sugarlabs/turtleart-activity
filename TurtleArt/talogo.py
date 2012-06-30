@@ -150,7 +150,6 @@ class LogoCode:
 
     def stop_logo(self):
         """ Stop logo is called from the Stop button on the toolbar """
-        self.tw.step_time = 0
         self.step = _just_stop()
         for plugin in self.tw._plugins:
             plugin.stop()

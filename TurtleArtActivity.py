@@ -263,26 +263,21 @@ class TurtleArtActivity(activity.Activity):
     def do_run_cb(self, button):
         ''' Callback for run button (rabbit) '''
         self.run_button.set_icon('run-faston')
+        self.step_button.set_icon('run-slowoff')
         self.tw.lc.trace = 0
+        self.tw.step_time = 0
         # Autohide blocks and palettes on run
         self.tw.hideblocks()
         self.tw.display_coordinates(clear=True)
-        self.tw.run_button(0, running_from_button_push=True)
-        gobject.timeout_add(1000, self.run_button.set_icon, 'run-fastoff')
+        self.tw.run_button(self.tw.step_time, running_from_button_push=True)
 
     def do_step_cb(self, button):
         ''' Callback for step button (turtle) '''
         self.step_button.set_icon('run-slowon')
+        self.run_button.set_icon('run-fastoff')
         self.tw.lc.trace = 1
-        self.tw.run_button(3, running_from_button_push=True)
-        gobject.timeout_add(1000, self.step_button.set_icon, 'run-slowoff')
-
-    def do_debug_cb(self, button):
-        ''' Callback for debug button (bug) '''
-        self.debug_button.set_icon('debugon')
-        self.tw.lc.trace = 1
-        self.tw.run_button(9, running_from_button_push=True)
-        gobject.timeout_add(1000, self.debug_button.set_icon, 'debugoff')
+        self.tw.step_time = 3
+        self.tw.run_button(self.tw.step_time, running_from_button_push=True)
 
     def do_stop_cb(self, button):
         ''' Callback for stop button. '''
@@ -292,8 +287,6 @@ class TurtleArtActivity(activity.Activity):
         # Auto show blocks after stop
         self.tw.showblocks()
         self.tw.display_coordinates()
-        self.step_button.set_icon('run-slowoff')
-        self.run_button.set_icon('run-fastoff')
 
     def do_samples_cb(self, button):
         ''' Sample-projects open dialog '''
@@ -607,7 +600,6 @@ class TurtleArtActivity(activity.Activity):
         add_paragraph(help_box, _('Clean'), icon='eraseron')
         add_paragraph(help_box, _('Run'), icon='run-fastoff')
         add_paragraph(help_box, _('Step'), icon='run-slowoff')
-        # add_paragraph(help_box, _('Debug'), icon='debugoff')
         add_paragraph(help_box, _('Stop turtle'), icon='stopitoff')
         add_paragraph(help_box, _('Show blocks'), icon='hideshowoff')
         add_paragraph(help_box, _('Save snapshot'), icon='filesaveoff')
@@ -785,12 +777,6 @@ class TurtleArtActivity(activity.Activity):
             'run-fastoff', _('Run'), self.do_run_cb, toolbar, _('<Ctrl>r'))
         self.step_button = self._add_button(
             'run-slowoff', _('Step'), self.do_step_cb, toolbar, _('<Ctrl>w'))
-        '''
-        if self.tw.hw not in [XO30]:
-            self.debug_button = self._add_button(
-                'debugoff', _('Debug'), self.do_debug_cb, toolbar,
-                _('<Ctrl>d'))
-        '''
         self.stop_turtle_button = self._add_button(
             'stopitoff', _('Stop turtle'), self.do_stop_cb, toolbar,
             _('<Ctrl>s'))

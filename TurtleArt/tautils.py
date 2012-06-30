@@ -235,8 +235,15 @@ def data_from_file(ta_file):
 
 def data_from_string(text):
     ''' JSON load data from a string. '''
-    return json_load(text.replace(']],\n', ']], '))
-
+    if type(text) == str:
+        return json_load(text.replace(']],\n', ']], '))
+    else:
+        print type(text), text
+        if hasattr('replace', text):
+            return json_load(text.replace(']],\n', ']], '))
+        else:
+            print 'type error in data_from_string'
+            return ''
 
 def data_to_file(data, ta_file):
     ''' Write data to a file. '''

@@ -330,36 +330,6 @@ in place of a number block)'),
         define_logo_function('tapensize', 'to tapensize\routput first round \
 pensize\rend\r')
 
-        palette.add_block('startfill',
-                          style='basic-style-extended-vertical',
-                          label=_('start fill'),
-                          prim_name='startfill',
-                          help_string=_('starts filled polygon (used with end \
-fill block)'))
-        self.tw.lc.def_prim('startfill', 0,
-                             lambda self: self.tw.canvas.start_fill())
-
-        palette.add_block('stopfill',
-                          style='basic-style-extended-vertical',
-                          label=_('end fill'),
-                          prim_name='stopfill',
-                          help_string=_('completes filled polygon (used with \
-start fill block)'))
-        self.tw.lc.def_prim('stopfill', 0,
-                             lambda self: self.tw.canvas.stop_fill())
-
-    def _color_palette(self):
-        """ The basic Turtle Art color palette """
-
-        if self.tw.hw == XO30:
-            palette = make_palette('pen',
-                                   colors=["#00FFFF", "#00A0A0"],
-                                   help_string=_('Palette of pen colors'))
-        else:
-            palette = make_palette('colors',
-                                   colors=["#00FFFF", "#00A0A0"],
-                                   help_string=_('Palette of pen colors'))
-
         palette.add_block('setcolor',
                           style='basic-style-1arg',
                           label=_('set color'),
@@ -422,6 +392,36 @@ used in place of a number block)'),
                           value_block=True,
                           prim_name='gray')
         self.tw.lc.def_prim('gray', 0, lambda self: self.tw.canvas.gray)
+
+        palette.add_block('startfill',
+                          style='basic-style-extended-vertical',
+                          label=_('start fill'),
+                          prim_name='startfill',
+                          help_string=_('starts filled polygon (used with end \
+fill block)'))
+        self.tw.lc.def_prim('startfill', 0,
+                             lambda self: self.tw.canvas.start_fill())
+
+        palette.add_block('stopfill',
+                          style='basic-style-extended-vertical',
+                          label=_('end fill'),
+                          prim_name='stopfill',
+                          help_string=_('completes filled polygon (used with \
+start fill block)'))
+        self.tw.lc.def_prim('stopfill', 0,
+                             lambda self: self.tw.canvas.stop_fill())
+
+    def _color_palette(self):
+        """ The basic Turtle Art color palette """
+
+        if self.tw.hw == XO30:
+            palette = make_palette('pen',
+                                   colors=["#00FFFF", "#00A0A0"],
+                                   help_string=_('Palette of pen colors'))
+        else:
+            palette = make_palette('colors',
+                                   colors=["#00FFFF", "#00A0A0"],
+                                   help_string=_('Palette of pen colors'))
 
         self._make_constant(palette, 'red', _('red'), CONSTANTS['red'])
         self._make_constant(palette, 'orange', _('orange'),
