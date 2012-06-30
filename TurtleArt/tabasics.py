@@ -659,9 +659,6 @@ operators'))
             'greater?', 2,
             lambda self, x, y: primitive_dictionary['more'](x, y))
 
-        if self.tw.canvas.width > 1024:
-            self._make_constant(palette, 'true', _('True'), 1)
-
         primitive_dictionary['less'] = self._prim_less
         palette.add_block('less2',
                           style='compare-porch-style',
@@ -673,9 +670,6 @@ operators'))
                           help_string=_('logical less-than operator'))
         self.tw.lc.def_prim(
             'less?', 2, lambda self, x, y: primitive_dictionary['less'](x, y))
-
-        if self.tw.canvas.width > 1024:
-            self._make_constant(palette, 'false', _('False'), 0)
 
         primitive_dictionary['equal'] = self._prim_equal
         palette.add_block('equal2',
