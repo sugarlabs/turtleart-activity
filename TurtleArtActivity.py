@@ -558,6 +558,9 @@ class TurtleArtActivity(activity.Activity):
 
         self._make_project_buttons(self._toolbox.toolbar)
 
+        self._add_separator(self._toolbox.toolbar, expand=False,
+                            visible=True)
+
         self.keep_button = self._add_button(
             'filesaveoff', _('Save snapshot'), self.do_keep_cb,
             self._toolbox.toolbar)
