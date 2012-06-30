@@ -202,10 +202,11 @@ class Collaboration():
 
         try:
             command, payload = event_message.split('|', 2)
-            self._processing_methods[command](payload)
         except ValueError:
             debug_output('Could not split event message [%s]' % event_message,
                          self._tw.running_sugar)
+
+        self._processing_methods[command](payload)
 
         # Restore active Turtle
         self._tw.canvas.set_turtle(self._tw.turtles.get_turtle_key(
