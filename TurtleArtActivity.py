@@ -871,6 +871,7 @@ class TurtleArtActivity(activity.Activity):
         if self.has_toolbarbox:
             self._old_cursor = self.get_window().get_cursor()
         self.copying = False
+        self.sharing_blocks = False
 
     def _setup_sharing(self):
         ''' Setup the Collabora stack. '''
@@ -1101,8 +1102,9 @@ in order to use the plugin.'))
         self._jobject.destroy()
 
     def restore_cursor(self):
-        ''' No longer copying, so restore standard cursor. '''
+        ''' No longer copying or sharing, so restore standard cursor. '''
         self.copying = False
+        self.sharing_blocks = False
         if self.has_toolbarbox:
             self.get_window().set_cursor(self._old_cursor)
 
@@ -1147,9 +1149,20 @@ in order to use the plugin.'))
 
     def _share_cb(self, button):
         ''' Share a stack of blocks. '''
+        if self.sharing_blocks:
+            self.restore_cursor()
+        else:
+            self.sharing_blocks = True
+            if self.has_toolbarbox:
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+
+    def share_blocks(self):
+        ''' Share selected stack. '''
         if not self.tw.sharing():
             return
         _logger.debug('Serialize a stack and send as event.')
+        self.restore_cursor()
         data = self.tw.assemble_data_to_save(False, False)
         if data is not []:
             text = data_to_string(data)
