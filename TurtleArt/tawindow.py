@@ -1268,6 +1268,10 @@ class TurtleArtWindow():
 
         # From the sprite at x, y, look for a corresponding block
         blk = self.block_list.spr_to_block(spr)
+        ''' If we were copying and didn't click on a block... '''
+        if self.running_sugar and self.activity.copying:
+            if blk is None or blk.type != 'block':
+                self.activity.restore_cursor()
         if blk is not None:
             if blk.type == 'block':
                 self.selected_blk = blk
@@ -1514,10 +1518,6 @@ class TurtleArtWindow():
             self.lc.trace = 1
             self.showblocks()
             self.run_button(3)
-        elif spr.name == 'debugoff':
-            self.lc.trace = 1
-            self.showblocks()
-            self.run_button(6)
         elif spr.name == 'stopiton':
             self.stop_button()
             self.display_coordinates()
@@ -1651,10 +1651,13 @@ class TurtleArtWindow():
             self.drag_group = find_group(blk)
             (sx, sy) = blk.spr.get_xy()
             self.drag_pos = x - sx, y - sy
-            for blk in self.drag_group:
-                if blk.status != 'collapsed':
-                    blk.spr.set_layer(TOP_LAYER)
-                    blk.highlight()
+            if self.running_sugar and self.activity.copying:
+                for blk in self.drag_group:
+                    if blk.status != 'collapsed':
+                        blk.spr.set_layer(TOP_LAYER)
+                        blk.highlight()
+                self.block_operation = 'copying'
+                self.activity.send_to_clipboard()
             if self.running_sugar and self._sharing and \
                hasattr(self.activity, 'share_button'):
                 self.activity.share_button.set_tooltip(
@@ -2164,6 +2167,11 @@ class TurtleArtWindow():
                 abs(self.dx) < MOTION_THRESHOLD and \
                 abs(self.dy < MOTION_THRESHOLD))):
             self._click_block(x, y)
+        elif self.block_operation == 'copying':
+            self.drag_group = find_group(blk)
+            for gblk in self.drag_group:
+                gblk.unhighlight()
+            self.drag_group = None
 
     def remote_turtle(self, name):
         ''' Is this a remote turtle? '''
@@ -2839,7 +2847,7 @@ class TurtleArtWindow():
             return True
 
         if keyname in ['KP_End', 'End']:
-            self.run_button(0)
+            self.run_button(self.step_time)
         elif self.selected_spr is not None:
             if not self.lc.running and block_flag:
                 blk = self.block_list.spr_to_block(self.selected_spr)
