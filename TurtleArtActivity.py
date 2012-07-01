@@ -558,6 +558,9 @@ class TurtleArtActivity(activity.Activity):
 
         self._make_project_buttons(self._toolbox.toolbar)
 
+        self._add_separator(self._toolbox.toolbar, expand=False,
+                            visible=True)
+
         self.keep_button = self._add_button(
             'filesaveoff', _('Save snapshot'), self.do_keep_cb,
             self._toolbox.toolbar)
@@ -868,6 +871,11 @@ class TurtleArtActivity(activity.Activity):
         else:  # ...or else, load a Start Block onto the canvas.
             self.tw.load_start()
 
+        if self.has_toolbarbox:
+            self._old_cursor = self.get_window().get_cursor()
+        self.copying = False
+        self.sharing_blocks = False
+
     def _setup_sharing(self):
         ''' Setup the Collabora stack. '''
         self._collaboration = Collaboration(self.tw, self)
@@ -1096,8 +1104,26 @@ in order to use the plugin.'))
             error_handler=self._internal_jobject_error_cb)
         self._jobject.destroy()
 
+    def restore_cursor(self):
+        ''' No longer copying or sharing, so restore standard cursor. '''
+        self.copying = False
+        self.sharing_blocks = False
+        if self.has_toolbarbox:
+            self.get_window().set_cursor(self._old_cursor)
+
     def _copy_cb(self, button):
         ''' Copy to the clipboard. '''
+        if self.copying:
+            self.restore_cursor()
+        else:
+            self.copying = True
+            if self.has_toolbarbox:
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+
+    def send_to_clipboard(self):
+        ''' Send selected stack to clipboard. '''
+        self.restore_cursor()
         clipboard = gtk.Clipboard()
         _logger.debug('Serialize the project and copy to clipboard.')
         data = self.tw.assemble_data_to_save(False, False)
@@ -1106,20 +1132,10 @@ in order to use the plugin.'))
             clipboard.set_text(text)
         self.tw.paste_offset = 20
 
-    def _share_cb(self, button):
-        ''' Share a stack of blocks. '''
-        if not self.tw.sharing():
-            return
-        _logger.debug('Serialize a stack and send as event.')
-        data = self.tw.assemble_data_to_save(False, False)
-        if data is not []:
-            text = data_to_string(data)
-            event = 'B|%s' % (data_to_string([self.tw.nick, text]))  # Paste
-            self.tw.send_event(event)
-        self.tw.paste_offset = 20
-
     def _paste_cb(self, button):
         ''' Paste from the clipboard. '''
+        if self.copying:
+            self.restore_cursor()
         clipboard = gtk.Clipboard()
         _logger.debug('Paste to the project.')
         text = clipboard.wait_for_text()
@@ -1133,6 +1149,29 @@ in order to use the plugin.'))
                 self.tw.process_data(data_from_string(text),
                                      self.tw.paste_offset)
                 self.tw.paste_offset += 20
+
+    def _share_cb(self, button):
+        ''' Share a stack of blocks. '''
+        if self.sharing_blocks:
+            self.restore_cursor()
+        else:
+            self.sharing_blocks = True
+            if self.has_toolbarbox:
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+
+    def share_blocks(self):
+        ''' Share selected stack. '''
+        if not self.tw.sharing():
+            return
+        _logger.debug('Serialize a stack and send as event.')
+        self.restore_cursor()
+        data = self.tw.assemble_data_to_save(False, False)
+        if data is not []:
+            text = data_to_string(data)
+            event = 'B|%s' % (data_to_string([self.tw.nick, text]))  # Paste
+            self.tw.send_event(event)
+        self.tw.paste_offset = 20
 
     def _add_label(self, string, toolbar, width=None):
         ''' Add a label to a toolbar. '''

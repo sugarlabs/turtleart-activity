@@ -1,3 +1,23 @@
+148
+
+ENHANCEMENTS:
+* Pen/color palette changes: pen operations on one palette, colors
+  on a second palette
+* Removed bug from all versions
+* New snail icon
+* Rabbit and snail change color to indicate run speed
+* Clicking on a stack respects current run speed
+* Turtle shape more directional
+* New copy- and share-block behavior:
+   (1) Click on Copy Button (or Share-Block Button);
+       the cursor changes to a hand pointer;
+   (2) Click on any block or stack of blocks and that stack is
+       briefly highlighted and copied to the clipboard (or shared);
+   (3) The cursor is changed back to the standard cursor.
+
+BUG FIX:
+* Catch unicode error in collaboration code
+
 147
 
 ENHANCEMENTS:

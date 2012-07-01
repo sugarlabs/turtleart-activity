@@ -237,13 +237,12 @@ def data_from_string(text):
     ''' JSON load data from a string. '''
     if type(text) == str:
         return json_load(text.replace(']],\n', ']], '))
+    elif type(text) == unicode:
+        text = text.encode('ascii', 'replace')
+        return json_load(text.replace(']],\n', ']], '))
     else:
-        print type(text), text
-        if hasattr('replace', text):
-            return json_load(text.replace(']],\n', ']], '))
-        else:
-            print 'type error in data_from_string'
-            return ''
+        print 'type error (%s) in data_from_string' % (type(text))
+        return None
 
 def data_to_file(data, ta_file):
     ''' Write data to a file. '''
