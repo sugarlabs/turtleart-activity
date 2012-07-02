@@ -68,7 +68,8 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
     collapsed, collapsible, hide_button_hit, show_button_hit, chooser, \
     arithmetic_check, xy, find_block_to_run, find_top_block, journal_check, \
     find_group, find_blk_below, data_to_string, find_start_stack, \
-    get_hardware, debug_output, error_output, data_to_string, convert
+    get_hardware, debug_output, error_output, data_to_string, convert, \
+    find_bot_block
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
@@ -77,6 +78,7 @@ if GST_AVAILABLE:
 
 MOTION_THRESHOLD = 6
 SNAP_THRESHOLD = 200
+NO_DOCK = (100, 100)  # Blocks cannot be docked
 
 
 class TurtleArtWindow():
@@ -1652,11 +1654,13 @@ class TurtleArtWindow():
             self.drag_group = find_group(blk)
             (sx, sy) = blk.spr.get_xy()
             self.drag_pos = x - sx, y - sy
+            for blk in self.drag_group:
+                if blk.status != 'collapsed':
+                    blk.spr.set_layer(TOP_LAYER)
             if self.running_sugar and \
                (self.activity.copying or self.activity.sharing_blocks):
                 for blk in self.drag_group:
                     if blk.status != 'collapsed':
-                        blk.spr.set_layer(TOP_LAYER)
                         blk.highlight()
                 self.block_operation = 'copying'
                 if self.activity.copying:
@@ -2483,6 +2487,7 @@ class TurtleArtWindow():
         selected_block = self.drag_group[0]
         best_destination = None
         d = SNAP_THRESHOLD
+        self.inserting_block_mid_stack = False
         for selected_block_dockn in range(len(selected_block.docks)):
             for destination_block in self.just_blocks():
                 # Don't link to a block that is hidden
@@ -2493,8 +2498,9 @@ class TurtleArtWindow():
                     continue
                 # Check each dock of destination for a possible connection
                 for destination_dockn in range(len(destination_block.docks)):
-                    this_xy = dock_dx_dy(destination_block, destination_dockn,
-                                          selected_block, selected_block_dockn)
+                    this_xy = self.dock_dx_dy(
+                        destination_block, destination_dockn,
+                        selected_block, selected_block_dockn)
                     if magnitude(this_xy) > d:
                         continue
                     d = magnitude(this_xy)
@@ -2518,11 +2524,33 @@ class TurtleArtWindow():
                 (sx, sy) = blk.spr.get_xy()
                 blk.spr.move((sx + best_xy[0], sy + best_xy[1]))
 
-            # If there was already a block docked there, move it to the trash.
             blk_in_dock = best_destination.connections[best_destination_dockn]
-            if blk_in_dock is not None and blk_in_dock != selected_block:
-                blk_in_dock.connections[0] = None
-                self._put_in_trash(blk_in_dock)
+            if self.inserting_block_mid_stack:
+                # If there was already a block docked there, move it
+                # to the bottom of the drag group.
+                if blk_in_dock is not None and blk_in_dock != selected_block:
+                    bot = find_bot_block(self.drag_group[0])
+                    if bot is not None:
+                        blk_in_dock.connections[0] = None
+                        drag_group = find_group(blk_in_dock)
+                        blk_in_dock.connections[0] = bot
+                        bot.connections[-1] = blk_in_dock
+                        dx = bot.spr.get_xy()[0] - \
+                             self.drag_group[0].spr.get_xy()[0] + \
+                             bot.docks[-1][2] - blk_in_dock.docks[0][2]
+                        dy = bot.spr.get_xy()[1] - \
+                             self.drag_group[0].spr.get_xy()[1] + \
+                             bot.docks[-1][3] - blk_in_dock.docks[0][3]
+                        # Move each sprite in the group associated
+                        # with the block we are moving.
+                        for gblk in drag_group:
+                            gblk.spr.move_relative((dx, dy))
+            else:
+                # If there was already a block docked there, move it
+                # to the trash.
+                if blk_in_dock is not None and blk_in_dock != selected_block:
+                    blk_in_dock.connections[0] = None
+                    self._put_in_trash(blk_in_dock)
 
             # Note the connection in destination dock
             best_destination.connections[best_destination_dockn] = \
@@ -3713,34 +3741,50 @@ class TurtleArtWindow():
             raise logoerror("#emptybox")
 
 
-def dock_dx_dy(block1, dock1n, block2, dock2n):
-    ''' Find the distance between the dock points of two blocks. '''
-    _dock1 = block1.docks[dock1n]
-    _dock2 = block2.docks[dock2n]
-    _d1type, _d1dir, _d1x, _d1y = _dock1[0:4]
-    _d2type, _d2dir, _d2x, _d2y = _dock2[0:4]
-    if block1 == block2:
-        return (100, 100)
-    if _d1dir == _d2dir:
-        return (100, 100)
-    if (_d2type is not 'number') or (dock2n is not 0):
-        if block1.connections is not None and \
-           dock1n < len(block1.connections) and \
-           block1.connections[dock1n] is not None:
-            return (100, 100)
-        if block2.connections is not None and \
-           dock2n < len(block2.connections) and \
-           block2.connections[dock2n] is not None:
-            return (100, 100)
-    if _d1type != _d2type:
-        if block1.name in string_or_number_args:
-            if _d2type == 'number' or _d2type == 'string':
-                pass
-        elif block1.name in CONTENT_ARGS:
-            if _d2type in content_blocks:
-                pass
-        else:
-            return (100, 100)
-    (_b1x, _b1y) = block1.spr.get_xy()
-    (_b2x, _b2y) = block2.spr.get_xy()
-    return ((_b1x + _d1x) - (_b2x + _d2x), (_b1y + _d1y) - (_b2y + _d2y))
+    def dock_dx_dy(self, block1, dock1n, block2, dock2n):
+        ''' Find the distance between the dock points of two blocks. '''
+        # Cannot dock a block to itself
+        if block1 == block2:
+            return NO_DOCK
+        dock1 = block1.docks[dock1n]
+        dock2 = block2.docks[dock2n]
+        # Dock types include flow, number, string, unavailable
+        # Dock directions: Flow: True -> in; False -> out
+        # Dock directions: Number: True -> out; False -> in
+        # Each dock point as an associated relative x, y position on its block
+        d1type, d1dir, d1x, d1y = dock1[0:4]
+        d2type, d2dir, d2x, d2y = dock2[0:4]
+        # Cannot connect an innie to an innie or an outie to an outie
+        if d1dir == d2dir:
+            return NO_DOCK
+        # Flow blocks can be inserted into the middle of a stack
+        if d2type is 'flow' and dock2n is 0:
+            if block1.connections is not None and \
+               dock1n == len(block1.connections) - 1 and \
+               block1.connections[dock1n] is not None:
+                self.inserting_block_mid_stack = True
+        # Only number blocks can be docked when the dock is not empty
+        elif d2type is not 'number' or dock2n is not 0:
+            if block1.connections is not None and \
+               dock1n < len(block1.connections) and \
+               block1.connections[dock1n] is not None:
+                return NO_DOCK
+            if block2.connections is not None and \
+               dock2n < len(block2.connections) and \
+               block2.connections[dock2n] is not None:
+                return NO_DOCK
+        # Only some dock types are interchangeable
+        if d1type != d2type:
+            # Some blocks will take strings or numbers
+            if block1.name in string_or_number_args:
+                if d2type == 'number' or d2type == 'string':
+                    pass
+            # Some blocks will take content blocks
+            elif block1.name in CONTENT_ARGS:
+                if d2type in content_blocks:
+                    pass
+            else:
+                return NO_DOCK
+        (b1x, b1y) = block1.spr.get_xy()
+        (b2x, b2y) = block2.spr.get_xy()
+        return ((b1x + d1x) - (b2x + d2x), (b1y + d1y) - (b2y + d2y))

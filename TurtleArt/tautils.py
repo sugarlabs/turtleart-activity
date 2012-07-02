@@ -773,6 +773,17 @@ def find_top_block(blk):
     return blk
 
 
+def find_bot_block(blk):
+    ''' Find the bottom block in a stack. '''
+    if blk is None:
+        return None
+    if len(blk.connections) == 0:
+        return blk
+    while blk.connections[-1] is not None:
+        blk = blk.connections[-1]
+    return blk
+
+
 def find_start_stack(blk):
     ''' Find a stack with a 'start' block on top. '''
     if blk is None:
