@@ -1,4 +1,4 @@
-#Copyright (c) 2007-8, Playful Invention Company.
+#copyright (c) 2007-8, Playful Invention Company.
 #Copyright (c) 2008-12, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -766,6 +766,8 @@ def find_top_block(blk):
     ''' Find the top block in a stack. '''
     if blk is None:
         return None
+    if blk.connections is None:
+        return blk
     if len(blk.connections) == 0:
         return blk
     while blk.connections[0] is not None:
@@ -777,6 +779,8 @@ def find_bot_block(blk):
     ''' Find the bottom block in a stack. '''
     if blk is None:
         return None
+    if blk.connections is None:
+        return blk
     if len(blk.connections) == 0:
         return blk
     while blk.connections[-1] is not None:

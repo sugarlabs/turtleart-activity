@@ -1437,7 +1437,8 @@ class TurtleArtWindow():
         # (3) The list of proto blocks on the palette
         # (4) The list of block names
         if old == new:
-            debug_output('%s == %s' % (old, new), True)
+            debug_output('update_proto_name: %s == %s' % (old, new),
+                         self.running_sugar)
             return
         found = False
 
@@ -1473,6 +1474,8 @@ class TurtleArtWindow():
             return False
         if blk.name != 'string':  # Ignoring int names
             return False
+        if blk.connections is None:
+            return False
         if blk.connections[0] is None:
             return False
         if hat and blk.connections[0].name == 'hat':
@@ -1486,6 +1489,8 @@ class TurtleArtWindow():
         if blk is None:
             return False
         if blk.name != 'string':  # Ignoring int names
+            return False
+        if blk.connections is None:
             return False
         if blk.connections[0] is None:
             return False
@@ -1782,42 +1787,53 @@ class TurtleArtWindow():
     def process_data(self, block_data, offset=0):
         ''' Process block_data (from a macro, a file, or the clipboard). '''
 
-        # Create the blocks (or turtle).
-        blocks = []
+        self._process_block_data = []
         for blk in block_data:
             if not self._found_a_turtle(blk):
+                self._process_block_data.append(
+                    [blk[0], blk[1], blk[2], blk[3], blk[4]])
+        self._extra_block_data = []
+        # Create the blocks (or turtle).
+        blocks = []
+        for blk in self._process_block_data:
+            if not self._found_a_turtle(blk):
                 blocks.append(self.load_block(blk, offset))
+        # Some extra blocks may have been added by load_block
+        for blk in self._extra_block_data:
+            self._process_block_data.append(blk)
+            blocks.append(self.load_block(blk, offset))
 
         # Make the connections.
         for i in range(len(blocks)):
             cons = []
             # Normally, it is simply a matter of copying the connections.
             if blocks[i].connections is None:
-                if block_data[i][4] is not None:
-                    for c in block_data[i][4]:
+                if self._process_block_data[i][4] is not None:
+                    for c in self._process_block_data[i][4]:
                         if c is None or c > (len(blocks) - 1):
                             cons.append(None)
                         else:
                             cons.append(blocks[c])
                 else:
-                    debug_output("connection error %s" % (str(block_data[i])),
+                    debug_output("connection error %s" % (
+                            str(self._process_block_data[i])),
                                  self.running_sugar)
                     cons.append(None)
             elif blocks[i].connections == 'check':
                 # Convert old-style boolean and arithmetic blocks
                 cons.append(None)  # Add an extra connection.
-                for c in block_data[i][4]:
+                for c in self._process_block_data[i][4]:
                     if c is None:
                         cons.append(None)
                     else:
                         cons.append(blocks[c])
                 # If the boolean op was connected, readjust the plumbing.
                 if blocks[i].name in block_styles['boolean-style']:
-                    if block_data[i][4][0] is not None:
-                        c = block_data[i][4][0]
-                        cons[0] = blocks[block_data[c][4][0]]
-                        c0 = block_data[c][4][0]
-                        for j, cj in enumerate(block_data[c0][4]):
+                    if self._process_block_data[i][4][0] is not None:
+                        c = self._process_block_data[i][4][0]
+                        cons[0] = blocks[self._process_block_data[c][4][0]]
+                        c0 = self._process_block_data[c][4][0]
+                        for j, cj in enumerate(self._process_block_data[c0][4]):
                             if cj == c:
                                 blocks[c0].connections[j] = blocks[i]
                         if c < i:
@@ -1828,11 +1844,11 @@ class TurtleArtWindow():
                             debug_output("Warning: dock to the future",
                                          self.running_sugar)
                 else:
-                    if block_data[i][4][0] is not None:
-                        c = block_data[i][4][0]
-                        cons[0] = blocks[block_data[c][4][0]]
-                        c0 = block_data[c][4][0]
-                        for j, cj in enumerate(block_data[c0][4]):
+                    if self._process_block_data[i][4][0] is not None:
+                        c = self._process_block_data[i][4][0]
+                        cons[0] = blocks[self._process_block_data[c][4][0]]
+                        c0 = self._process_block_data[c][4][0]
+                        for j, cj in enumerate(self._process_block_data[c0][4]):
                             if cj == c:
                                 blocks[c0].connections[j] = blocks[i]
                         if c < i:
@@ -2602,6 +2618,8 @@ class TurtleArtWindow():
         ''' Disconnect block from stack above it. '''
         if blk is None:
             return
+        if blk.connections is None:
+            return
         if blk.connections[0] is None:
             return
         if collapsed(blk):
@@ -3189,6 +3207,53 @@ class TurtleArtWindow():
             btype, value = btype
         elif type(btype) == list:
             btype, value = btype[0], btype[1]
+
+        # Some blocks can only appear once...
+        if btype in ['start', 'hat1', 'hat2']:
+            if self._check_for_duplicate(btype):
+                debug_output('WARNING: load block found duplicate %s' % (
+                        btype), True)
+                name = block_names[btype][0]
+                while self._find_proto_name('stack_%s' % (name), name):
+                    name += '_2'
+                i = len(self._process_block_data) + len(self._extra_block_data)
+                self._extra_block_data.append(
+                    [i, ['string', name], 0, 0, [b[0], None]])
+                # To do: check for a duplicate name
+                self._new_stack_block(name)
+                btype = 'hat'
+                self._process_block_data[b[0]] = [
+                    b[0], b[1], b[2], b[3], [b[4][0], i, b[4][1]]]
+        elif btype  == 'hat':
+            if b[4][1] < len(self._process_block_data):
+                i = b[4][1]
+                name = self._process_block_data[i][1][1]
+            else:
+                i = b[4][1] - len(self._process_block_data)
+                name = self._extra_block_data[i][1][1]
+            if self._find_proto_name('stack_%s' % (name), name):
+                debug_output('WARNING: load block found duplicate %s: %s' % (
+                        btype, name), True)
+                name += '_2'
+                if b[4][1] < len(self._process_block_data):
+                    dblk = self._process_block_data[i]
+                    self._process_block_data[i] = [dblk[0], (dblk[1][0], name),
+                                                   dblk[2], dblk[3], dblk[4]]
+                else:
+                    dblk = self._extra_block_data[i]
+                    self._extra_block_data[i] = [dblk[0], (dblk[1][0], name),
+                                                 dblk[2], dblk[3], dblk[4]]
+            self._new_stack_block(name)
+        elif btype  == 'storein':
+            if b[4][1] < len(self._process_block_data):
+                i = b[4][1]
+                name = self._process_block_data[i][1][1]
+            else:
+                i = b[4][1] - len(self._process_block_data)
+                name = self._extra_block_data[i][1][1]
+            if not self._find_proto_name('box_%s' % (name), name):
+                self._new_box_block(name)
+
         if btype in content_blocks or btype in COLLAPSIBLE:
             if btype == 'number':
                 try:
@@ -3330,6 +3395,7 @@ class TurtleArtWindow():
             blk.spr.set_layer(BLOCK_LAYER)
         if check_dock:
             blk.connections = 'check'
+
         if self.running_sugar and len(blk.spr.labels) > 0 and \
                 blk.name not in ['', ' ', 'number', 'string']:
             if len(self.used_block_list) > 0:
@@ -3339,6 +3405,13 @@ class TurtleArtWindow():
             elif blk.spr.labels[0] not in self.used_block_list:
                 self.used_block_list.append(blk.spr.labels[0])
         return blk
+
+    def _check_for_duplicate(self, name):
+        ''' Is there already a block of this name? '''
+        for blk in self.just_blocks():
+            if blk.name == name:
+                return True
+        return False
 
     def load_start(self, ta_file=None):
         ''' Start a new project with a 'start' brick '''
@@ -3663,6 +3736,14 @@ class TurtleArtWindow():
             # x, y = self._calc_image_offset('descriptionoff', blk.spr, w, h)
             x, y = self._calc_image_offset('', blk.spr, w, h)
         blk.scale_image(x, y, w, h)
+
+    def _find_proto_name(self, name, label, palette='blocks'):
+        ''' Look for a protoblock with this name '''
+        i = palette_name_to_index(palette)
+        for blk in self.palettes[i]:
+            if blk.name == name and blk.spr.labels[0] == label:
+                return True
+        return False
 
     def _new_stack_block(self, name):
         ''' Add a stack block to the 'blocks' palette '''
