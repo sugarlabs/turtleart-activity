@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#Copyright (c) 2011 Walter Bender
+#Copyright (c) 2011, 2012 Walter Bender
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -51,9 +51,13 @@ class Camera_sensor(Plugin):
 
     def setup(self):
         ''' Set up the palettes '''
-        palette = make_palette('sensor',
-                               colors=["#FF6060", "#A06060"],
-                               help_string=_('Palette of sensor blocks'))
+        sensors_palette = make_palette('sensor',
+                                       colors=["#FF6060", "#A06060"],
+                                       help_string=_(
+                'Palette of sensor blocks'))
+        media_palette = make_palette('media',
+                                     colors=["#A0FF00", "#80A000"],
+                                     help_string=_('Palette of media objects'))
 
         # set up camera-specific blocks
         primitive_dictionary['read_camera'] = self.prim_read_camera
@@ -62,66 +66,69 @@ class Camera_sensor(Plugin):
         SKIN_PATHS.append('plugins/camera_sensor/images')
 
         if self._status:
-            palette.add_block('luminance',
-                              style='box-style',
-                              label=_('brightness'),
-                              help_string=_('light level detected by camera'),
-                              value_block=True,
-                              prim_name='luminance')
+            sensors_palette.add_block('luminance',
+                                      style='box-style',
+                                      label=_('brightness'),
+                                      help_string=_(
+                    'light level detected by camera'),
+                                      value_block=True,
+                                      prim_name='luminance')
             self._parent.lc.def_prim('luminance', 0,
                 lambda self: primitive_dictionary['read_camera'](
                     luminance_only=True))
 
             # Depreciated block
-            palette.add_block('read_camera',
-                              hidden=True,
-                              style='box-style',
-                              label=_('brightness'),
-                              help_string=_('Average RGB color from camera \
+            sensors_palette.add_block('read_camera',
+                                      hidden=True,
+                                      style='box-style',
+                                      label=_('brightness'),
+                                      help_string=_(
+                    'Average RGB color from camera \
 is pushed to the stack'),
-                              value_block=True,
-                              prim_name='read_camera')
+                                      value_block=True,
+                                      prim_name='read_camera')
             self._parent.lc.def_prim('read_camera', 0,
                 lambda self: primitive_dictionary['read_camera']())
 
-            palette.add_block('camera',
-                              style='box-style-media',
-                              label=' ',
-                              default='CAMERA',
-                              help_string=_('camera output'),
-                              content_block=True)
+            media_palette.add_block('camera',
+                                    style='box-style-media',
+                                    label=' ',
+                                    default='CAMERA',
+                                    help_string=_('camera output'),
+                                    content_block=True)
         else:  # No camera, so blocks should do nothing
-            palette.add_block('luminance',
-                              hidden=True,
-                              style='box-style',
-                              label=_('brightness'),
-                              help_string=\
-                                  _('light level detected by camera'),
-                              value_block=True,
-                              prim_name='read_camera')
+            sensors_palette.add_block('luminance',
+                                      hidden=True,
+                                      style='box-style',
+                                      label=_('brightness'),
+                                      help_string=\
+                                          _('light level detected by camera'),
+                                      value_block=True,
+                                      prim_name='read_camera')
             self._parent.lc.def_prim('luminance', 0,
                 lambda self: primitive_dictionary['read_camera'](
                     luminance_only=True))
 
             # Depreciated block
-            palette.add_block('read_camera',
-                              hidden=True,
-                              style='box-style',
-                              label=_('brightness'),
-                              help_string=_('Average RGB color from camera \
+            sensors_palette.add_block('read_camera',
+                                      hidden=True,
+                                      style='box-style',
+                                      label=_('brightness'),
+                                      help_string=_(
+                    'Average RGB color from camera \
 is pushed to the stack'),
-                              value_block=True,
-                              prim_name='read_camera')
+                                      value_block=True,
+                                      prim_name='read_camera')
             self._parent.lc.def_prim('read_camera', 0,
                 lambda self: primitive_dictionary['read_camera']())
 
-            palette.add_block('camera',
-                              hidden=True,
-                              style='box-style-media',
-                              label=' ',
-                              default='CAMERA',
-                              help_string=_('camera output'),
-                              content_block=True)
+            media_palette.add_block('camera',
+                                    hidden=True,
+                                    style='box-style-media',
+                                    label=' ',
+                                    default='CAMERA',
+                                    help_string=_('camera output'),
+                                    content_block=True)
 
         NO_IMPORT.append('camera')
         BLOCKS_WITH_SKIN.append('camera')
