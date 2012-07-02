@@ -671,7 +671,15 @@ module found in the Journal'))
                           label=_('turtle shell'),
                           help_string=_("put a custom 'shell' on the turtle"))
 
+        # macro
+        palette.add_block('clamp',
+                          style='collapsible-top-no-label',
+                          label=[' ', ' '],
+                          special_name=_('top'),
+                          help_string=_('top of a collapsed stack'))
+
         palette.add_block('sandwichtop_no_label',
+                          hidden=True,
                           style='collapsible-top-no-label',
                           label=[' ', ' '],
                           special_name=_('top'),
@@ -679,6 +687,7 @@ module found in the Journal'))
                           help_string=_('top of a collapsed stack'))
 
         palette.add_block('sandwichbottom',
+                          hidden=True,
                           style='collapsible-bottom',
                           label=[' ', ' '],
                           prim_name='nop',

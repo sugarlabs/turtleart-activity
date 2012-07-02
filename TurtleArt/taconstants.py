@@ -218,6 +218,10 @@ VOICES = {'af': 'afrikaans', 'cy': 'welsh-test', 'el': 'greek',
 # Macros (groups of blocks)
 #
 MACROS = {
+    'clamp':
+              [[0, 'sandwichtop_no_label', 0, 0, [None, 1]],
+               [1, 'vspace', 0, 0, [0, 2]],
+               [2, 'sandwichbottom', 0, 0, [1, None]]],
     'kbinput':
               [[0, 'until', 0, 0, [None, 1, 4, None]],
                [1, 'greater2', 0, 0, [0, 2, 3, None]],
