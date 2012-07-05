@@ -1791,7 +1791,6 @@ class TurtleArtWindow():
 
     def process_data(self, block_data, offset=0):
         ''' Process block_data (from a macro, a file, or the clipboard). '''
-
         self._process_block_data = []
         for blk in block_data:
             if not self._found_a_turtle(blk):
@@ -1886,6 +1885,23 @@ class TurtleArtWindow():
                 blk.svg.set_show(False)
                 blk.refresh()
                 grow_stack_arm(find_sandwich_top(blk))
+
+        # process in reverse order
+        for i in range(len(blocks)):
+            blk = blocks[-i - 1]
+            if blk.name in EXPANDABLE_FLOW:
+                if blk.name in block_styles['clamp-style-1arg'] or\
+                   blk.name in block_styles['clamp-style-boolean']:
+                    if blk.connections[2] is not None:
+                        self._resize_clamp(blk, blk.connections[2])
+                elif blk.name in block_styles['clamp-style']:
+                    if blk.connections[1] is not None:
+                        self._resize_clamp(blk, blk.connections[1])
+                elif blk.name in block_styles['clamp-style-else']:
+                    if blk.connections[2] is not None:
+                        self._resize_clamp(blk, blk.connections[2], dockn=2)
+                    if blk.connections[3] is not None:
+                        self._resize_clamp(blk, blk.connections[3], dockn=3)
 
         # Resize blocks to current scale
         self.resize_blocks(blocks)
