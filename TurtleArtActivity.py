@@ -871,7 +871,7 @@ class TurtleArtActivity(activity.Activity):
         else:  # ...or else, load a Start Block onto the canvas.
             self.tw.load_start()
 
-        if self.has_toolbarbox:
+        if hasattr(self.get_window(), 'get_cursor'):
             self._old_cursor = self.get_window().get_cursor()
         self.copying = False
         self.sharing_blocks = False
@@ -1108,7 +1108,7 @@ in order to use the plugin.'))
         ''' No longer copying or sharing, so restore standard cursor. '''
         self.copying = False
         self.sharing_blocks = False
-        if self.has_toolbarbox:
+        if hasattr(self.get_window(), 'get_cursor'):
             self.get_window().set_cursor(self._old_cursor)
 
     def _copy_cb(self, button):
@@ -1117,7 +1117,7 @@ in order to use the plugin.'))
             self.restore_cursor()
         else:
             self.copying = True
-            if self.has_toolbarbox:
+            if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
 
@@ -1156,7 +1156,7 @@ in order to use the plugin.'))
             self.restore_cursor()
         else:
             self.sharing_blocks = True
-            if self.has_toolbarbox:
+            if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
 
