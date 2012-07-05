@@ -171,6 +171,8 @@ class Sprite:
         self._rescale = [True]
         self._horiz_align = ["center"]
         self._vert_align = ["middle"]
+        self._x_pos = [None]
+        self._y_pos = [None]
         self._fd = None
         self._bold = False
         self._italic = False
@@ -289,6 +291,8 @@ class Sprite:
             self._rescale.append(self._rescale[0])
             self._horiz_align.append(self._horiz_align[0])
             self._vert_align.append(self._vert_align[0])
+            self._x_pos.append(self._x_pos[0])
+            self._y_pos.append(self._y_pos[0])
 
     def set_font(self, font):
         ''' Set the font for a label '''
@@ -310,13 +314,15 @@ class Sprite:
         return
 
     def set_label_attributes(self, scale, rescale=True, horiz_align="center",
-                             vert_align="middle", i=0):
+                             vert_align="middle", x_pos=None, y_pos=None, i=0):
         ''' Set the various label attributes '''
         self._extend_labels_array(i)
         self._scale[i] = scale
         self._rescale[i] = rescale
         self._horiz_align[i] = horiz_align
         self._vert_align[i] = vert_align
+        self._x_pos[i] = x_pos
+        self._y_pos[i] = y_pos
 
     def hide(self):
         ''' Hide a sprite '''
@@ -399,14 +405,18 @@ class Sprite:
                         pl.set_font_description(self._fd)
                         w = pl.get_size()[0] / pango.SCALE
                         j -= 1
-            if self._horiz_align[i] == "center":
+            if self._x_pos[i] is not None:
+                x = int(self.rect.x + self._x_pos[i])
+            elif self._horiz_align[i] == "center":
                 x = int(self.rect.x + self._margins[0] + (my_width - w) / 2)
             elif self._horiz_align[i] == 'left':
                 x = int(self.rect.x + self._margins[0])
             else:  # right
                 x = int(self.rect.x + self.rect.width - w - self._margins[2])
             h = pl.get_size()[1] / pango.SCALE
-            if self._vert_align[i] == "middle":
+            if self._y_pos[i] is not None:
+                y = int(self.rect.y + self._y_pos[i])
+            elif self._vert_align[i] == "middle":
                 y = int(self.rect.y + self._margins[1] + (my_height - h) / 2)
             elif self._vert_align[i] == "top":
                 y = int(self.rect.y + self._margins[1])
