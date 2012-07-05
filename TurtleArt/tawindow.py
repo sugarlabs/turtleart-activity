@@ -51,7 +51,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, NO_IMPORT, \
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
     EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, TITLEXY, CONTENT_ARGS, \
-    CONSTANTS, EXPAND_SKIN, PROTO_LAYER
+    CONSTANTS, EXPAND_SKIN, PROTO_LAYER, EXPANDABLE_FLOW
 from tapalette import palette_names, palette_blocks, expandable_blocks, \
     block_names, content_blocks, default_values, special_names, block_styles, \
     help_strings, hidden_proto_blocks, string_or_number_args, \
@@ -1409,7 +1409,6 @@ class TurtleArtWindow():
                     blk.spr.labels[0] = name
                     blk.values[0] = name
                 blk.spr.set_layer(BLOCK_LAYER)
-        debug_output('update action names: calling change proto name', True)
         self._update_proto_name(name, 'stack_%s' % (self._saved_action_name),
                                 'stack_%s' % (name), 'basic-style-1arg')
 
@@ -1588,7 +1587,6 @@ class TurtleArtWindow():
                     palette_blocks[i].remove(name)
                     for blk in self.palettes[i]:
                         if blk.name == name:
-                            debug_output('removing blk from palette', True)
                             blk.spr.hide()
                             self.palettes[i].remove(blk)
                     self.show_toolbar_palette(i, regenerate=True)
@@ -2592,6 +2590,21 @@ class TurtleArtWindow():
                         dy += 45
                     best_destination.expand_in_y(dy)
                     self._expand_boolean(best_destination, selected_block, dy)
+            elif best_destination.name in EXPANDABLE_FLOW:
+                if best_destination.name in block_styles['clamp-style-1arg'] or\
+                   best_destination.name in block_styles['clamp-style-boolean']:
+                    if best_destination_dockn == 2:
+                        self._resize_clamp(best_destination, self.drag_group[0])
+                elif best_destination.name in block_styles['clamp-style']:
+                    if best_destination_dockn == 1:
+                        self._resize_clamp(best_destination, self.drag_group[0])
+                elif best_destination.name in block_styles['clamp-style-else']:
+                    if best_destination_dockn == 2:
+                        self._resize_clamp(
+                            best_destination, self.drag_group[0], dockn=2)
+                    elif best_destination_dockn == 3:
+                        self._resize_clamp(
+                            best_destination, self.drag_group[0], dockn=3)
             elif best_destination.name in expandable_blocks and \
                  best_destination_dockn == 1:
                 dy = 0
@@ -2613,6 +2626,11 @@ class TurtleArtWindow():
                         best_destination, selected_block, dy)
                 self._cascade_expandable(best_destination)
                 grow_stack_arm(find_sandwich_top(best_destination))
+        # If we are in an expandable flow, expand it...
+        blk, dockn = self._expandable_flow_above(selected_block)
+        while blk is not None:
+            self._resize_clamp(blk, blk.connections[dockn], dockn=dockn)
+            blk, dockn = self._expandable_flow_above(blk)
 
     def _disconnect(self, blk):
         ''' Disconnect block from stack above it. '''
@@ -2628,6 +2646,7 @@ class TurtleArtWindow():
         if blk in blk2.connections:
             c = blk2.connections.index(blk)
             blk2.connections[c] = None
+        blk3, dockn = self._expandable_flow_above(blk)
 
         if blk2.name in block_styles['boolean-style']:
             if c == 2 and blk2.ey > 0:
@@ -2641,8 +2660,61 @@ class TurtleArtWindow():
                     self._expand_expandable(blk2, blk, dy)
                 self._cascade_expandable(blk2)
                 grow_stack_arm(find_sandwich_top(blk2))
-
+        # Fix me
+        elif blk2.name in EXPANDABLE_FLOW:
+            self._resize_clamp(blk2, blk2.connections[c], dockn=c)
+        while blk3 is not None and blk3.connections[dockn] is not None:
+            self._resize_clamp(blk3, blk3.connections[dockn], dockn=dockn)
+            blk3, dockn = self._expandable_flow_above(blk3)
         blk.connections[0] = None
+
+    def _resize_clamp(self, blk, gblk, dockn=-2):
+        ''' If the content of a clamp changes, resize it '''
+        if dockn < 0:
+            dockn = len(blk.docks) + dockn
+        y1 = blk.docks[-1][3]
+        if blk.name in block_styles['clamp-style-else'] and dockn == 3:
+            blk.reset_y2()
+        else:
+            blk.reset_y()
+        dy = 0
+        # Calculate height of drag group
+        while gblk is not None:
+            dy += int((gblk.docks[-1][3] - gblk.docks[0][3]) / gblk.scale)
+            gblk = gblk.connections[-1]
+        # Clamp has room for one "standard" block by default
+        if dy > 0:
+            dy -= 21  # Fixme: don't hardcode
+        if blk.name in block_styles['clamp-style-else'] and dockn == 3:
+            blk.expand_in_y2(dy)
+        else:
+            blk.expand_in_y(dy)
+        y2 = blk.docks[-1][3]
+        # Move group below clamp up or down
+        if blk.connections[-1] is not None:
+            drag_group = find_group(blk.connections[-1])
+            for gblk in drag_group:
+                gblk.spr.move_relative((0, y2-y1))
+        # We may have to move the else clamp group down too.
+        if blk.name in block_styles['clamp-style-else'] and dockn == 2:
+            if blk.connections[3] is not None:
+                drag_group = find_group(blk.connections[3])
+                for gblk in drag_group:
+                    gblk.spr.move_relative((0, y2-y1))
+
+    def _expandable_flow_above(self, blk):
+        ''' Is there an expandable flow block above this one? '''
+        while blk.connections[0] is not None:
+            if blk.connections[0].name in EXPANDABLE_FLOW:
+                if blk.connections[0].name == 'ifelse':
+                    if blk.connections[0].connections[-2] == blk:
+                        return blk.connections[0], -2
+                    return blk.connections[0], -3
+                else:
+                    if blk.connections[0].connections[-2] == blk:
+                        return blk.connections[0], -2
+            blk = blk.connections[0]
+        return None, None
 
     def _import_from_journal(self, blk):
         ''' Import a file from the Sugar Journal '''
@@ -3211,8 +3283,6 @@ class TurtleArtWindow():
         # Some blocks can only appear once...
         if btype in ['start', 'hat1', 'hat2']:
             if self._check_for_duplicate(btype):
-                debug_output('WARNING: load block found duplicate %s' % (
-                        btype), True)
                 name = block_names[btype][0]
                 while self._find_proto_name('stack_%s' % (name), name):
                     name += '_2'
@@ -3231,9 +3301,7 @@ class TurtleArtWindow():
             else:
                 i = b[4][1] - len(self._process_block_data)
                 name = self._extra_block_data[i][1][1]
-            if self._find_proto_name('stack_%s' % (name), name):
-                debug_output('WARNING: load block found duplicate %s: %s' % (
-                        btype, name), True)
+            while self._find_proto_name('stack_%s' % (name), name):
                 name += '_2'
                 if b[4][1] < len(self._process_block_data):
                     dblk = self._process_block_data[i]
@@ -3370,13 +3438,21 @@ class TurtleArtWindow():
             blk.spr.set_label(' ')
             blk.resize()
         elif btype in EXPANDABLE or btype in expandable_blocks or \
-             btype in EXPANDABLE_ARGS or btype == 'nop':
+             btype in EXPANDABLE_FLOW or btype in EXPANDABLE_ARGS or \
+             btype == 'nop':
             if btype == 'vspace' or btype in expandable_blocks:
                 if value is not None:
                     blk.expand_in_y(value)
             elif btype == 'hspace' or btype == 'identity2':
                 if value is not None:
                     blk.expand_in_x(value)
+            elif btype in EXPANDABLE_FLOW:
+                if value is not None:
+                    if type(value) is int:
+                        blk.expand_in_y(value)
+                    else:  # thenelse blocks
+                        blk.expand_in_y(value[0])
+                        blk.expand_in_y2(value[1])
             elif btype == 'templatelist' or btype == 'list':
                 for i in range(len(b[4]) - 4):
                     blk.add_arg()
@@ -3440,51 +3516,53 @@ class TurtleArtWindow():
 
     def assemble_data_to_save(self, save_turtle=True, save_project=True):
         ''' Pack the project (or stack) into a datastream to be serialized '''
-        _data = []
-        _blks = []
+        data = []
+        blks = []
 
         if save_project:
-            _blks = self.just_blocks()
+            blks = self.just_blocks()
         else:
             if self.selected_blk is None:
                 return []
-            _blks = find_group(find_top_block(self.selected_blk))
+            blks = find_group(find_top_block(self.selected_blk))
 
-        for _i, _blk in enumerate(_blks):
-            _blk.id = _i
-        for _blk in _blks:
-            if _blk.name in content_blocks or _blk.name in COLLAPSIBLE:
-                if len(_blk.values) > 0:
-                    _name = (_blk.name, _blk.values[0])
+        for i, blk in enumerate(blks):
+            blk.id = i
+        for blk in blks:
+            if blk.name in content_blocks or blk.name in COLLAPSIBLE:
+                if len(blk.values) > 0:
+                    name = (blk.name, blk.values[0])
                 else:
-                    _name = (_blk.name)
-            elif _blk.name in block_styles['basic-style-var-arg'] and \
-                 len(_blk.values) > 0:
-                _name = (_blk.name, _blk.values[0])
-            elif _blk.name in EXPANDABLE or _blk.name in expandable_blocks or\
-                 _blk.name in EXPANDABLE_ARGS:
-                _ex, _ey = _blk.get_expand_x_y()
-                if _ex > 0:
-                    _name = (_blk.name, _ex)
-                elif _ey > 0:
-                    _name = (_blk.name, _ey)
+                    name = (blk.name)
+            elif blk.name in block_styles['basic-style-var-arg'] and \
+                 len(blk.values) > 0:
+                name = (blk.name, blk.values[0])
+            elif blk.name in EXPANDABLE or blk.name in expandable_blocks or \
+                 blk.name in EXPANDABLE_ARGS or blk.name in EXPANDABLE_FLOW:
+                ex, ey, ey2 = blk.get_expand_x_y()
+                if blk.name in block_styles['clamp-style-else']:
+                    name = (blk.name, (ey, ey2))
+                elif ex > 0:
+                    name = (blk.name, ex)
+                elif ey > 0:
+                    name = (blk.name, ey)
                 else:
-                    _name = (_blk.name, 0)
-            elif _blk.name == 'start':  # save block_size in start block
-                _name = (_blk.name, self.block_scale)
+                    name = (blk.name, 0)
+            elif blk.name == 'start':  # save block_size in start block
+                name = (blk.name, self.block_scale)
             else:
-                _name = (_blk.name)
-            if hasattr(_blk, 'connections') and _blk.connections is not None:
-                connections = [get_id(_cblk) for _cblk in _blk.connections]
+                name = (blk.name)
+            if hasattr(blk, 'connections') and blk.connections is not None:
+                connections = [get_id(cblk) for cblk in blk.connections]
             else:
                 connections = None
-            (_sx, _sy) = _blk.spr.get_xy()
+            (sx, sy) = blk.spr.get_xy()
             # Add a slight offset for copy/paste
             if not save_project:
-                _sx += 20
-                _sy += 20
-            _data.append((_blk.id, _name, _sx - self.canvas.cx,
-                          _sy - self.canvas.cy, connections))
+                sx += 20
+                sy += 20
+            data.append((blk.id, name, sx - self.canvas.cx,
+                         sy - self.canvas.cy, connections))
         if save_turtle:
             for turtle in iter(self.turtles.dict):
                 # Don't save remote turtles
@@ -3492,11 +3570,11 @@ class TurtleArtWindow():
                     # Save default turtle as 'Yertle'
                     if turtle == self.nick:
                         turtle = DEFAULT_TURTLE
-                    _data.append((-1, ['turtle', turtle],
+                    data.append((-1, ['turtle', turtle],
                                    self.canvas.xcor, self.canvas.ycor,
                                    self.canvas.heading, self.canvas.color,
                                    self.canvas.shade, self.canvas.pensize))
-        return _data
+        return data
 
     def display_coordinates(self, clear=False):
         ''' Display the coordinates of the current turtle on the toolbar '''
@@ -3821,7 +3899,6 @@ class TurtleArtWindow():
         except KeyError:
             raise logoerror("#emptybox")
 
-
     def dock_dx_dy(self, block1, dock1n, block2, dock2n):
         ''' Find the distance between the dock points of two blocks. '''
         # Cannot dock a block to itself
@@ -3842,6 +3919,11 @@ class TurtleArtWindow():
         if d2type is 'flow' and dock2n is 0:
             if block1.connections is not None and \
                dock1n == len(block1.connections) - 1 and \
+               block1.connections[dock1n] is not None:
+                self.inserting_block_mid_stack = True
+            elif block1.connections is not None and \
+               block1.name in EXPANDABLE_FLOW and \
+               dock1n == 2 and \
                block1.connections[dock1n] is not None:
                 self.inserting_block_mid_stack = True
         # Only number blocks can be docked when the dock is not empty

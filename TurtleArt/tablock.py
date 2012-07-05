@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2010,11 Walter Bender
+#Copyright (c) 2010-2012 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,8 @@ import gtk
 from gettext import gettext as _
 
 from taconstants import EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS, \
-    STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS, GRADIENT_COLOR
+    STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS, GRADIENT_COLOR, \
+    EXPANDABLE_FLOW
 from tapalette import palette_blocks, block_colors, expandable_blocks, \
     content_blocks, block_names, block_primitives, block_styles, \
     special_block_colors
@@ -139,6 +140,7 @@ class Block:
         self.dx = 0
         self.ex = 0
         self.ey = 0
+        self.ey2 = 0
         self._ei = 0
         self._font_size = [6.0, 4.5]
         self._image = None
@@ -170,11 +172,10 @@ class Block:
             'compare-porch-style': self._make_compare_porch_style,
             'boolean-style': self._make_boolean_style,
             'not-style': self._make_not_style,
-            'flow-style': self._make_flow_style,
-            'flow-style-tail': self._make_flow_style_tail,
-            'flow-style-1arg': self._make_flow_style_1arg,
-            'flow-style-boolean': self._make_flow_style_boolean,
-            'flow-style-else': self._make_flow_style_else,
+            'clamp-style': self._make_clamp_style,
+            'clamp-style-1arg': self._make_clamp_style_1arg,
+            'clamp-style-boolean': self._make_clamp_style_boolean,
+            'clamp-style-else': self._make_clamp_style_else,
             'collapsible-top': [self._make_collapsible_style_top, True, True],
             'collapsible-top-no-arm': [self._make_collapsible_style_top,
                                        False, True],
@@ -183,6 +184,11 @@ class Block:
             'collapsible-top-no-arm-no-label': [
                 self._make_collapsible_style_top, False, False],
             'collapsible-bottom': self._make_collapsible_style_bottom,
+            'flow-style': self._make_flow_style,
+            'flow-style-tail': self._make_flow_style_tail,
+            'flow-style-1arg': self._make_flow_style_1arg,
+            'flow-style-boolean': self._make_flow_style_boolean,
+            'flow-style-else': self._make_flow_style_else,
             'portfolio-style-2x2': self._make_portfolio_style_2x2,
             'portfolio-style-1x1': self._make_portfolio_style_1x1,
             'portfolio-style-2x1': self._make_portfolio_style_2x1,
@@ -231,6 +237,8 @@ class Block:
         if self.name in expandable_blocks:
             return True
         if self.name in EXPANDABLE_ARGS:
+            return True
+        if self.name in EXPANDABLE_FLOW:
             return True
         return False
 
@@ -290,7 +298,6 @@ class Block:
         self.scale = scale
         for i in range(len(self._font_size)):
             self._font_size[i] *= self.scale
-        self._set_label_attributes()
         self.svg.set_scale(self.scale)
         self.refresh()
         self.spr.inval()
@@ -305,6 +312,7 @@ class Block:
             return
         self._make_block(self.svg)
         self._set_margins()
+        self._set_label_attributes()
         self.spr.set_shape(self.shapes[0])
 
     def add_arg(self, keep_expanding=True):
@@ -327,6 +335,22 @@ class Block:
         self.ey += dy
         if self.type == 'block':
             if self.ey > 0:
+                self.svg.set_hide(True)
+            else:
+                self.svg.set_hide(False)
+            self.svg.set_show(True)
+        else:
+            self.svg.set_hide(False)
+            self.svg.set_show(False)
+        self.refresh()
+
+    def expand_in_y2(self, dy):
+        """ We may want to grow a block vertically. """
+        if self.spr is None:
+            return
+        self.ey2 += dy
+        if self.type == 'block':
+            if self.ey2 > 0:
                 self.svg.set_hide(True)
             else:
                 self.svg.set_hide(False)
@@ -375,10 +399,23 @@ class Block:
         self.refresh()
         return dy
 
+    def reset_y2(self):
+        if self.spr is None:
+            return 0
+        dy = -self.ey2
+        self.ey2 = 0
+        self.svg.set_hide(False)
+        if self.type == 'block':
+            self.svg.set_show(True)
+        else:  # 'proto'
+            self.svg.set_show(False)
+        self.refresh()
+        return dy
+
     def get_expand_x_y(self):
         if self.spr is None:
             return(0, 0)
-        return (self.ex, self.ey)
+        return (self.ex, self.ey, self.ey2)
 
     def _new_block_from_factory(self, sprite_list, x, y, copy_block=None):
         self.svg = SVG()
@@ -459,28 +496,59 @@ class Block:
         for i in range(n):
             if self.name in block_styles['compare-porch-style']:
                 self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
-                                              True, 'center', 'bottom', i)
+                                              True, 'center', 'bottom', i=i)
             elif self.name in block_styles['number-style-porch']:
                 self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
-                                              True, 'right', 'bottom', i)
-
+                                              True, 'right', 'bottom', i=i)
+            elif self.name in EXPANDABLE_FLOW:
+                self._calc_moving_labels(i)
+            # Deprecated
             elif self.name in block_styles['flow-style-boolean'] or \
                  self.name in block_styles['flow-style-else']:
                 self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
-                                              True, 'left', 'middle', 0)
+                                              True, 'left', 'middle', i=0)
                 self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
-                                              True, 'right', 'top', 1)
+                                              True, 'right', 'top', i=1)
                 self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
-                                              True, 'right', 'bottom', 2)
+                                              True, 'right', 'bottom', i=2)
             elif i == 1:  # top
                 self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
-                                              True, 'right', 'top', i)
+                                              True, 'right', 'top', i=i)
             elif i == 2:  # bottom
                 self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
-                                              True, 'right', 'bottom', i)
+                                              True, 'right', 'bottom', i=i)
             else:
                 self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
-                                              True, 'center', 'middle', i)
+                                              True, 'center', 'middle', i=i)
+
+    def _calc_moving_labels(self, i):
+        ''' Some labels move as blocks change shape/size '''
+        if self.name in block_styles['clamp-style']:
+            y = int((self.docks[0][3] + self.docks[1][3]) / 3)
+            self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
+                                          True, 'right', y_pos=y, i=0)
+        elif self.name in block_styles['clamp-style-1arg']:
+            y = self.docks[1][3] - int(int(self._font_size[0] * 1.3))
+            self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
+                                          True, 'right', y_pos=y, i=0)
+        elif self.name in block_styles['clamp-style-boolean']:
+            y = self.docks[1][3] - int(int(self._font_size[0] * 1.3))
+            self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
+                                          True, 'right', y_pos=y, i=0)
+            y = self.docks[2][3] - int(int(self._font_size[0] * 1.3))
+            self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
+                                          True, 'right', y_pos=y, i=1)
+        elif self.name in block_styles['clamp-style-else']:
+            y = self.docks[1][3] - int(int(self._font_size[0] * 1.3))
+            self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
+                                          True, 'right', y_pos=y, i=0)
+            y = self.docks[2][3] - int(int(self._font_size[0] * 1.3))
+            self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
+                                          True, 'right', y_pos=y, i=1)
+            y = self.docks[3][3] - int(int(self._font_size[0] * 1.3))
+            self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
+                                          True, 'right', y_pos=y, i=2)
+
 
     def _set_labels(self, i, label):
         if self.spr is None:
@@ -778,6 +846,109 @@ class Block:
                       ['bool', False, self.svg.docks[1][0],
                                       self.svg.docks[1][1]]]
 
+    def _make_clamp_style(self, svg, extend_x=0, extend_y=4):
+        self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
+        self.svg.set_slot(True)
+        self.svg.set_tab(True)
+        self.svg.second_clamp(False)
+        self._make_block_graphics(svg, self.svg.clamp)
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['flow', False, self.svg.docks[1][0],
+                                      self.svg.docks[1][1], '['],
+                      # Skip bottom of clamp
+                      ['flow', False, self.svg.docks[3][0],
+                                      self.svg.docks[3][1], ']']]
+
+    def _make_clamp_style_1arg(self, svg, extend_x=0, extend_y=4):
+        self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
+        self.svg.set_slot(True)
+        self.svg.set_tab(True)
+        self.svg.set_innie([True])
+        self.svg.second_clamp(False)
+        self._make_block_graphics(svg, self.svg.clamp)
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['number', False, self.svg.docks[1][0],
+                                        self.svg.docks[1][1]],
+                      ['flow', False, self.svg.docks[2][0],
+                                      self.svg.docks[2][1], '['],
+                      # Skip bottom of clamp
+                      ['flow', False, self.svg.docks[4][0],
+                                      self.svg.docks[4][1], ']']]
+
+    def _make_clamp_style_boolean(self, svg, extend_x=0, extend_y=4):
+        self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
+        self.svg.set_slot(True)
+        self.svg.set_tab(True)
+        self.svg.set_boolean(True)
+        self.svg.second_clamp(False)
+        self._make_block_graphics(svg, self.svg.clamp)
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['bool', False, self.svg.docks[1][0],
+                                        self.svg.docks[1][1]],
+                      ['flow', False, self.svg.docks[2][0],
+                                      self.svg.docks[2][1], '['],
+                      # Skip bottom of clamp
+                      ['flow', False, self.svg.docks[4][0],
+                                      self.svg.docks[4][1], ']']]
+
+    def _make_clamp_style_else(self, svg, extend_x=0, extend_y=4):
+        self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y,
+                        self.dx + self.ex + extend_x, self.ey2 + extend_y)
+        self.svg.set_slot(True)
+        self.svg.set_tab(True)
+        self.svg.set_boolean(True)
+        self.svg.second_clamp(True)
+        self._make_block_graphics(svg, self.svg.clamp)
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['bool', False, self.svg.docks[1][0],
+                                      self.svg.docks[1][1]],
+                      ['flow', False, self.svg.docks[2][0],
+                                      self.svg.docks[2][1], '['],
+                      # Skip bottom of clamp
+                      ['flow', False, self.svg.docks[4][0],
+                                      self.svg.docks[4][1], ']['],
+                      # Skip bottom of clamp
+                      ['flow', False, self.svg.docks[6][0],
+                                      self.svg.docks[6][1], ']']]
+
+    def _make_collapsible_style_top(self, svg, arm=True, label=True):
+        self.svg.expand(self.dx + self.ex, self.ey)
+        self.svg.set_arm(arm)
+        self.svg.set_show(not arm)
+        self._make_block_graphics(svg, self.svg.sandwich_top, label)
+        if label:
+            self.docks = [['flow', True, self.svg.docks[0][0],
+                           self.svg.docks[0][1]],
+                          ['number', False, self.svg.docks[1][0],
+                           self.svg.docks[1][1]],
+                          ['flow', False, self.svg.docks[2][0],
+                           self.svg.docks[2][1]]]
+        else:
+            self.docks = [['flow', True, self.svg.docks[0][0],
+                           self.svg.docks[0][1]],
+                          ['flow', False, self.svg.docks[1][0],
+                           self.svg.docks[1][1]]]
+
+    def _make_collapsible_style_bottom(self, svg):
+        self.svg.expand(self.dx + self.ex, self.ey)
+        self._make_block_graphics(svg, self.svg.sandwich_bottom)
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                       self.svg.docks[0][1]], ['flow', False,
+                       self.svg.docks[1][0], self.svg.docks[1][1]]]
+
+    def _make_invisible_style(self, svg):
+        self._make_block_graphics(svg, self.svg.invisible)
+        # force dock positions to be the same
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                       self.svg.docks[0][1]], ['flow', False,
+                       self.svg.docks[0][0], self.svg.docks[0][1]]]
+
+    # Depreciated block styles
+
     def _make_flow_style(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)
         self.svg.set_slot(True)
@@ -847,40 +1018,6 @@ class Block:
                                       self.svg.docks[2][1], ']['],
                       ['flow', False, self.svg.docks[4][0],
                                       self.svg.docks[4][1], ']']]
-
-    def _make_collapsible_style_top(self, svg, arm=True, label=True):
-        self.svg.expand(self.dx + self.ex, self.ey)
-        self.svg.set_arm(arm)
-        self.svg.set_show(not arm)
-        self._make_block_graphics(svg, self.svg.sandwich_top, label)
-        if label:
-            self.docks = [['flow', True, self.svg.docks[0][0],
-                           self.svg.docks[0][1]],
-                          ['number', False, self.svg.docks[1][0],
-                           self.svg.docks[1][1]],
-                          ['flow', False, self.svg.docks[2][0],
-                           self.svg.docks[2][1]]]
-        else:
-            self.docks = [['flow', True, self.svg.docks[0][0],
-                           self.svg.docks[0][1]],
-                          ['flow', False, self.svg.docks[1][0],
-                           self.svg.docks[1][1]]]
-
-    def _make_collapsible_style_bottom(self, svg):
-        self.svg.expand(self.dx + self.ex, self.ey)
-        self._make_block_graphics(svg, self.svg.sandwich_bottom)
-        self.docks = [['flow', True, self.svg.docks[0][0],
-                       self.svg.docks[0][1]], ['flow', False,
-                       self.svg.docks[1][0], self.svg.docks[1][1]]]
-
-    def _make_invisible_style(self, svg):
-        self._make_block_graphics(svg, self.svg.invisible)
-        # force dock positions to be the same
-        self.docks = [['flow', True, self.svg.docks[0][0],
-                       self.svg.docks[0][1]], ['flow', False,
-                       self.svg.docks[0][0], self.svg.docks[0][1]]]
-
-    # Depreciated block styles
 
     def _make_portfolio_style_2x2(self, svg):
         self.svg.expand(30 + self.dx + self.ex, 10 + self.ey)

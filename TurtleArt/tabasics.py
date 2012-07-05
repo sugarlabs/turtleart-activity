@@ -733,10 +733,12 @@ number of seconds'))
 
         primitive_dictionary['forever'] = self._prim_forever
         palette.add_block('forever',
-                          style='flow-style',
+                          # style='flow-style',
+                          style='clamp-style',
                           label=_('forever'),
                           prim_name='forever',
-                          default=[None, 'vspace'],
+                          # default=[None, 'vspace'],
+                          default=[None, None],
                           logo_command='forever',
                           help_string=_('loops forever'))
         self.tw.lc.def_prim('forever', 1, primitive_dictionary['forever'],
@@ -744,10 +746,12 @@ number of seconds'))
 
         primitive_dictionary['repeat'] = self._prim_repeat
         palette.add_block('repeat',
-                          style='flow-style-1arg',
-                          label=['', _('repeat')],
+                          # style='flow-style-1arg',
+                          style='clamp-style-1arg',
+                          label=_('repeat'),
                           prim_name='repeat',
-                          default=[4, None, 'vspace'],
+                          # default=[4, None, 'vspace'],
+                          default=[4, None, None],
                           logo_command='repeat',
                           special_name=_('repeat'),
                           help_string=_('loops specified number of times'))
@@ -755,10 +759,13 @@ number of seconds'))
 
         primitive_dictionary['if'] = self._prim_if
         palette.add_block('if',
-                          style='flow-style-boolean',
-                          label=[_('if'), '', _('then')],
+                          # style='flow-style-boolean',
+                          style='clamp-style-boolean',
+                          # label=[_('if'), '', _('then')],
+                          label=[_('if'), _('then'), ''],
                           prim_name='if',
-                          default=[None, None, 'vspace'],
+                          # default=[None, None, 'vspace'],
+                          default=[None, None, None],
                           special_name=_('if then'),
                           logo_command='if',
                           help_string=_('if-then operator that uses boolean \
@@ -767,18 +774,29 @@ operators from Numbers palette'))
 
         primitive_dictionary['ifelse'] = self._prim_ifelse
         palette.add_block('ifelse',
-                          style='flow-style-else',
-                          label=[_('if'), '', _('then else')],
+                          hidden=True,  # Too big to fit palette
+                          # style='flow-style-else',
+                          style='clamp-style-else',
+                          label=[_('if'), _('then'), _('else')],
                           prim_name='ifelse',
-                          default=[None, 'vspace', None, 'vspace'],
+                          # default=[None, 'vspace', None, 'vspace'],
+                          default=[None, None, None, None],
                           logo_command='ifelse',
                           special_name=_('if then else'),
                           help_string=_('if-then-else operator that uses \
 boolean operators from Numbers palette'))
         self.tw.lc.def_prim('ifelse', 3, primitive_dictionary['ifelse'], True)
 
+        # macro
+        palette.add_block('ifthenelse',
+                          style='basic-style-extended-vertical',
+                          label=_('if then else'),
+                          help_string=_('if-then-else operator that uses \
+boolean operators from Numbers palette'))
+
         palette.add_block('hspace',
                           style='flow-style-tail',
+                          hidden=True,
                           label='',
                           prim_name='nop',
                           special_name=_('horizontal space'),
