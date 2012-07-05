@@ -64,7 +64,10 @@ class SVG:
             4 * self._stroke_width
         self._porch_y = self._innie_y2
         self._expand_x = 0
+        self._expand_x2 = 0
         self._expand_y = 0
+        self._expand_y2 = 0
+        self._second_clamp = False
         self._arm = True
         self._else = False
         self._draw_innies = True
@@ -515,6 +518,60 @@ class SVG:
         svg += self.footer()
         return self.header() + svg
 
+    def clamp(self):
+        ''' Special block for collapsible stacks; includes an 'arm"
+        that extends down the left side of a stack and a bottom jaw to
+        clamp the blocks. '''
+        self.reset_min_max()
+        x = self._stroke_width / 2.0
+        y = self._stroke_width / 2.0 + self._radius
+        self.margins[0] = int((x + self._stroke_width + 0.5) * self._scale)
+        self.margins[1] = int((self._stroke_width + 0.5) * self._scale)
+        self.margins[2] = 0
+        self.margins[3] = 0
+        svg = self.new_path(x, y)
+        svg += self._corner(1, -1)
+        svg += self._do_slot()
+        svg += self._rline_to(self._radius + self._stroke_width, 0)
+        svg += self._rline_to(self._expand_x, 0)
+        xx = self._x
+        svg += self._corner(1, 1)
+        if self._innie[0] is True:
+            svg += self._do_innie()
+        else:
+            self.margins[2] = \
+                int((self._x - self._stroke_width + 0.5) * self._scale)
+        if self._bool is True:
+            svg += self._do_boolean()
+        svg += self._corner(-1, 1)
+        svg += self.line_to(xx, self._y)
+        svg += self._rline_to(-self._expand_x, 0)
+        svg += self._do_tab()
+        svg += self._inverse_corner(-1, 1, 90, 0, 0)
+        svg += self._rline_to(0, self._expand_y)
+        svg += self._inverse_corner(1, 1, 90, 0, 0)
+        svg += self._do_slot()
+        svg += self._rline_to(self._radius, 0)
+        if self._second_clamp:
+            svg += self._corner(-1, 1)
+            svg += self.line_to(xx, self._y)
+            svg += self._rline_to(-self._expand_x, 0)
+            svg += self._do_tab()
+            svg += self._inverse_corner(-1, 1, 90, 0, 0)
+            svg += self._rline_to(0, self._expand_y2)
+            svg += self._inverse_corner(1, 1, 90, 0, 0)
+            svg += self._do_slot()
+            svg += self._rline_to(self._radius, 0)
+        svg += self._corner(-1, 1)
+        svg += self._rline_to(-self._radius - self._stroke_width, 0)
+        svg += self._do_tab()
+        svg += self._corner(-1, -1)
+        svg += self._close_path()
+        self.calc_w_h()
+        svg += self.style()
+        svg += self.footer()
+        return self.header() + svg
+
     def sandwich_top(self, innie_flag=True):
         ''' Special block for the top of a collapsible stack; includes
         an 'arm" that extends down the left side of a stack '''
@@ -649,9 +706,14 @@ class SVG:
     def set_orientation(self, orientation=0):
         self._orientation = orientation
 
-    def expand(self, w=0, h=0):
+    def second_clamp(self, arg=False):
+        self._second_clamp = arg
+
+    def expand(self, w=0, h=0, w2=0, h2=0):
         self._expand_x = w
         self._expand_y = h
+        self._expand_x2 = w2
+        self._expand_y2 = h2
 
     def set_stroke_width(self, stroke_width=1.5):
         self._stroke_width = stroke_width
@@ -1183,13 +1245,12 @@ def close_file(f):
 
 def generator(datapath):
     svg0 = SVG()
-    f = open_file(datapath, "basic.svg")
-    svg0.set_innie([True, True])
+    f = open_file(datapath, "clamp")
     svg0.set_scale(2)
-    svg0.set_tab(True)
-    svg0.set_slot(True)
     svg0.set_arm(True)
-    svg_str = svg0.basic_block()
+    svg0.expand(0, 0, 0, 21)
+    svg0.second_clamp(True)
+    svg_str = svg0.clamp()
     f.write(svg_str)
     close_file(f)
 
