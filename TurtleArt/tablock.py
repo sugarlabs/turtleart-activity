@@ -173,6 +173,8 @@ class Block:
             'boolean-style': self._make_boolean_style,
             'not-style': self._make_not_style,
             'clamp-style': self._make_clamp_style,
+            'clamp-style-collapsible': self._make_clamp_style_collapsible,
+            'clamp-style-collapsed': self._make_clamp_style_collapsed,
             'clamp-style-1arg': self._make_clamp_style_1arg,
             'clamp-style-boolean': self._make_clamp_style_boolean,
             'clamp-style-else': self._make_clamp_style_else,
@@ -254,12 +256,12 @@ class Block:
 
     def highlight(self):
         """ We may want to highlight a block... """
-        if self.spr is not None:
+        if self.spr is not None and self.status is not 'collapsed':
             self.spr.set_shape(self.shapes[1])
 
     def unhighlight(self):
         """ Or unhighlight it. """
-        if self.spr is not None:
+        if self.spr is not None and self.status is not 'collapsed':
             self.spr.set_shape(self.shapes[0])
 
     def resize(self):
@@ -523,7 +525,8 @@ class Block:
 
     def _calc_moving_labels(self, i):
         ''' Some labels move as blocks change shape/size '''
-        if self.name in block_styles['clamp-style']:
+        if self.name in block_styles['clamp-style'] or \
+           self.name in block_styles['clamp-style-collapsible']:
             y = int((self.docks[0][3] + self.docks[1][3]) / 3)
             self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
@@ -860,6 +863,31 @@ class Block:
                       ['flow', False, self.svg.docks[3][0],
                                       self.svg.docks[3][1], ']']]
 
+    def _make_clamp_style_collapsible(self, svg, extend_x=0, extend_y=4):
+        self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
+        self.svg.set_slot(True)
+        self.svg.set_tab(True)
+        self.svg.set_collapsible(True)
+        self.svg.second_clamp(False)
+        self._make_block_graphics(svg, self.svg.clamp)
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['flow', False, self.svg.docks[1][0],
+                                      self.svg.docks[1][1], '['],
+                      # Skip bottom of clamp
+                      ['flow', False, self.svg.docks[3][0],
+                                      self.svg.docks[3][1], ']']]
+
+    def _make_clamp_style_collapsed(self, svg, extend_x=0, extend_y=4):
+        self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
+        self.svg.set_show(True)
+        self._make_block_graphics(svg, self.svg.basic_block)
+        self.docks = [['flow', True, self.svg.docks[0][0],
+                       self.svg.docks[0][1]],
+                      ['unavailable', True, 0, self.svg.docks[0][1] + 10, '['],
+                      ['flow', False, self.svg.docks[1][0],
+                       self.svg.docks[1][1], ']']]
+
     def _make_clamp_style_1arg(self, svg, extend_x=0, extend_y=4):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
         self.svg.set_slot(True)
@@ -940,14 +968,14 @@ class Block:
                        self.svg.docks[0][1]], ['flow', False,
                        self.svg.docks[1][0], self.svg.docks[1][1]]]
 
+    # Depreciated block styles
+
     def _make_invisible_style(self, svg):
         self._make_block_graphics(svg, self.svg.invisible)
         # force dock positions to be the same
         self.docks = [['flow', True, self.svg.docks[0][0],
                        self.svg.docks[0][1]], ['flow', False,
                        self.svg.docks[0][0], self.svg.docks[0][1]]]
-
-    # Depreciated block styles
 
     def _make_flow_style(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)

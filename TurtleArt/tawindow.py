@@ -69,7 +69,7 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
     arithmetic_check, xy, find_block_to_run, find_top_block, journal_check, \
     find_group, find_blk_below, data_to_string, find_start_stack, \
     get_hardware, debug_output, error_output, data_to_string, convert, \
-    find_bot_block
+    find_bot_block, restore_clamp, collapse_clamp
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
@@ -727,6 +727,7 @@ class TurtleArtWindow():
 
         # We need to restore collapsed stacks before resizing.
         for blk in blocks:
+            # Deprecated
             if blk.status == 'collapsed':
                 bot = find_sandwich_bottom(blk)
                 if collapsed(bot):
@@ -740,6 +741,7 @@ class TurtleArtWindow():
         for blk in blocks:
             self._adjust_dock_positions(blk)
 
+        # Deprecated
         # Re-collapsed stacks after resizing.
         for blk in blocks:
             if collapsed(blk):
@@ -834,6 +836,7 @@ class TurtleArtWindow():
                 blk.spr.hide()
         if n == palette_names.index('trash'):
             for blk in self.trash_stack:
+                # Deprecated
                 for gblk in find_group(blk):
                     if gblk.status != 'collapsed':
                         gblk.spr.set_layer(TAB_LAYER)
@@ -1540,6 +1543,7 @@ class TurtleArtWindow():
         self.trash_stack.append(blk)
         group = find_group(blk)
         for gblk in group:
+            # Deprecated
             if gblk.status == 'collapsed':
                 # Collapsed stacks are restored for rescaling
                 # and then recollapsed after they are moved to the trash.
@@ -1554,6 +1558,7 @@ class TurtleArtWindow():
         for gblk in group:
             self._adjust_dock_positions(gblk)
 
+        # Deprecated
         # Re-collapsing any stacks we had restored for scaling
         for gblk in group:
             if collapsed(gblk):
@@ -1620,6 +1625,7 @@ class TurtleArtWindow():
             gblk.type = 'block'
         for gblk in group:
             self._adjust_dock_positions(gblk)
+        # Deprecated
         # If the stack had been collapsed before going into the trash,
         # collapse it again now.
         for gblk in group:
@@ -1779,6 +1785,7 @@ class TurtleArtWindow():
         macro[0][3] = y
         top = self.process_data(macro)
         self.block_operation = 'new'
+        # Deprecated
         self._check_collapsibles(top)
         self.drag_group = find_group(top)
 
@@ -1868,6 +1875,10 @@ class TurtleArtWindow():
 
         # Look for any stacks that need to be collapsed or sandwiched
         for blk in blocks:
+            if blk.name == 'sandwichclampcollapsed':
+                collapse_clamp(blk, False)
+
+            # Deprecated
             if collapsed(blk):
                 collapse_stack(find_sandwich_top(blk))
             elif blk.name == 'sandwichbottom' and collapsible(blk):
@@ -1988,6 +1999,7 @@ class TurtleArtWindow():
         elif self.drag_group[0] is not None:
             blk = self.drag_group[0]
 
+            # Deprecated
             # Don't move a bottom blk if the stack is collapsed
             if collapsed(blk):
                 return
@@ -2369,13 +2381,24 @@ class TurtleArtWindow():
                 self._import_py()
             else:
                 self._run_stack(blk)
-
-        elif blk.name in ['sandwichtop_no_arm_no_label',
-                          'sandwichtop_no_arm']:
+        elif blk.name == 'sandwichclampcollapsed':
+            restore_clamp(blk)
+            if blk.connections[1] is not None:
+                self._resize_clamp(blk, blk.connections[1], 1)
+            self._resize_parent_clamps(blk)
+        elif blk.name == 'sandwichclamp':
+            if hide_button_hit(blk.spr, x, y):
+                collapse_clamp(blk, True)
+                self._resize_parent_clamps(blk)
+            else:
+                self._run_stack(blk)
+        # Deprecated
+        elif blk.name in ['sandwichclampcollapsed',
+                          'sandwichtop_no_arm_no_label', 'sandwichtop_no_arm']:
             restore_stack(blk)
-
-        elif blk.name in COLLAPSIBLE or blk.name == 'sandwichtop_no_label':
-            if blk.name == 'sandwichtop_no_label':
+        # Deprecated
+        elif blk.name in COLLAPSIBLE or blk.name in ['sandwichtop_no_label']:
+            if blk.name in ['sandwichtop_no_label']:
                 if hide_button_hit(blk.spr, x, y):
                     collapse_stack(blk)
                 else:
@@ -2387,6 +2410,13 @@ class TurtleArtWindow():
                 collapse_stack(top)
         else:
             self._run_stack(blk)
+
+    def _resize_parent_clamps(self, blk):
+        ''' If we changed size, we need to let any parent clamps know. '''
+        nblk, dockn = self._expandable_flow_above(blk)
+        while nblk is not None:
+            self._resize_clamp(nblk, nblk.connections[dockn], dockn=dockn)
+            nblk, dockn = self._expandable_flow_above(nblk)
 
     def _expand_boolean(self, blk, blk2, dy):
         ''' Expand a boolean blk if blk2 is too big to fit. '''
@@ -2450,6 +2480,7 @@ class TurtleArtWindow():
             else:
                 break
 
+    # Deprecated
     def _check_collapsibles(self, blk):
         ''' Check state of collapsible blocks upon change in dock state. '''
         group = find_group(blk)
@@ -3037,6 +3068,7 @@ class TurtleArtWindow():
         ''' Jog block '''
         if blk.type == 'proto':
             return
+        # Deprecated
         if collapsed(blk):
             return
         if dx == 0 and dy == 0:
@@ -3226,6 +3258,7 @@ class TurtleArtWindow():
         ''' Load a project from a file '''
         if create_new_project:
             self.new_project()
+        # Deprecated
         self._check_collapsibles(self.process_data(data_from_file(ta_file)))
         self._loaded_project = ta_file
 
@@ -3328,6 +3361,7 @@ class TurtleArtWindow():
                     values = [round_int(value)]
                 except ValueError:
                     values = [0]
+            # Deprecated
             elif btype in COLLAPSIBLE:
                 if value is not None:
                     values = [int(value)]

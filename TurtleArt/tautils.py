@@ -396,7 +396,81 @@ def calc_image_size(spr):
            int(max(spr.label_safe_height(), 1))
 
 
-# Collapsible stacks live between 'sandwichtop' and 'sandwichbottom' blocks
+def restore_clamp(top):
+    ''' Restore the blocks in a sandwich clamp. '''
+    if top is None:
+        return
+
+    if top.name == 'sandwichclampcollapsed':
+        y1 = top.docks[2][3]
+        if top.connections[1] is not None:
+            for blk in find_group(top.connections[1]):
+                blk.spr.restore()
+                blk.status = None
+
+            # If you come across a 'sandwichclampcollapsed', do not
+            # restore its clamp
+            for blk in find_group(top.connections[1]):
+                if blk.name == 'sandwichclampcollapsed':
+                    if blk.connections[1] is not None:
+                        for b in find_group(blk.connections[1]):
+                            b.spr.hide()
+                            b.status = 'collapsed'
+
+        bot = top.connections[2]
+        top.name = 'sandwichclamp'
+        top.spr.set_label('')
+        top.resize()
+        top.svg.set_hide(True)
+        top.refresh()
+        y2 = top.docks[2][3]
+        dy = y2 - y1
+        if bot is not None:
+            for blk in find_group(bot):
+                blk.spr.move_relative((0, dy))
+        if top.connections[1] is not None:
+            # Make sure stack is aligned to dock
+            x1, y1 = top.connections[1].spr.get_xy()
+            x1 += top.connections[1].docks[0][2]
+            y1 += top.connections[1].docks[0][3]
+            x2, y2 = top.spr.get_xy()
+            x2 += top.docks[1][2]
+            y2 += top.docks[1][3]
+            if x1 != x2 or y1 != y2:
+                for blk in find_group(top.connections[1]):
+                    blk.spr.move_relative((x2 - x1, y2 - y1))
+        return
+
+
+def collapse_clamp(top, transform=True):
+    ''' Hide all the blocks in the clamp. '''
+    if top == None or top.spr == None:
+        return
+
+    if top.name in ['sandwichclampcollapsed', 'sandwichclamp']:
+        y1 = top.docks[2][3]
+        if top.connections[1] is not None:
+            for blk in find_group(top.connections[1]):
+                blk.spr.hide()
+                blk.status = 'collapsed'
+        if transform:
+            bot = top.connections[2]
+            top.name = 'sandwichclampcollapsed'
+            top.spr.set_label(_('click to open'))
+            top.reset_y()
+            top.resize()
+            top.svg.set_hide(False)
+            top.refresh()
+            y2 = top.docks[2][3]
+            dy = y2 - y1
+            if bot is not None:
+                for blk in find_group(bot):
+                    blk.spr.move_relative((0, dy))
+        return
+
+
+# Deprecated: Collapsible stacks live between 'sandwichtop' and
+# 'sandwichbottom' blocks
 
 
 def reset_stack_arm(top):
@@ -555,6 +629,7 @@ def collapse_stack(top):
     # First uncollapse any nested stacks
     if top == None or top.spr == None:
         return
+
     uncollapse_forks(top)
     hit_bottom = False
     bot = find_sandwich_bottom(top)

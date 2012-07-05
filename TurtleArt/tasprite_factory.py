@@ -73,6 +73,7 @@ class SVG:
         self._draw_innies = True
         self._hide = False
         self._show = False
+        self._collapsible = False
         self._show_x = 0
         self._show_y = 0
         self._hide_x = 0
@@ -161,6 +162,8 @@ class SVG:
         self._close_path()
         self.style()
         return self.header() + self.footer()
+
+    # Deprecated
 
     def basic_flow(self):
         ''' A flow block includes an arm that holds a branch in the flow '''
@@ -569,6 +572,8 @@ class SVG:
         svg += self._close_path()
         self.calc_w_h()
         svg += self.style()
+        if self._collapsible:
+            svg += self._hide_dot()
         svg += self.footer()
         return self.header() + svg
 
@@ -685,6 +690,9 @@ class SVG:
     def set_show(self, flag=False):
         self._show = flag
 
+    def set_collapsible(self, flag=False):
+        self._collapsible = flag
+
     def get_width(self):
         return self._width
 
@@ -706,8 +714,8 @@ class SVG:
     def set_orientation(self, orientation=0):
         self._orientation = orientation
 
-    def second_clamp(self, arg=False):
-        self._second_clamp = arg
+    def second_clamp(self, flag=False):
+        self._second_clamp = flag
 
     def expand(self, w=0, h=0, w2=0, h2=0):
         self._expand_x = w
@@ -1245,11 +1253,12 @@ def close_file(f):
 
 def generator(datapath):
     svg0 = SVG()
-    f = open_file(datapath, "clamp")
+    f = open_file(datapath, "clamp.svg")
     svg0.set_scale(2)
     svg0.set_arm(True)
     svg0.expand(0, 0, 0, 21)
-    svg0.second_clamp(True)
+    svg0.set_collapsible(True)
+    svg0.set_hide(True)
     svg_str = svg0.clamp()
     f.write(svg_str)
     close_file(f)

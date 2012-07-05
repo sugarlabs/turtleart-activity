@@ -675,13 +675,24 @@ module found in the Journal'))
                           label=_('turtle shell'),
                           help_string=_("put a custom 'shell' on the turtle"))
 
-        # macro
-        palette.add_block('clamp',
-                          style='collapsible-top-no-label',
-                          label=[' ', ' '],
+        primitive_dictionary['clamp'] = self._prim_clamp
+        palette.add_block('sandwichclamp',
+                          style='clamp-style-collapsible',
+                          label=' ',
+                          special_name=_('top'),
+                          prim_name='clamp',
+                          help_string=_('top of a collapsible stack'))
+        self.tw.lc.def_prim('clamp', 1, primitive_dictionary['clamp'], True)
+
+        palette.add_block('sandwichclampcollapsed',
+                          hidden=True,
+                          style='clamp-style-collapsed',
+                          label=_('click to open'),
+                          prim_name='clamp',
                           special_name=_('top'),
                           help_string=_('top of a collapsed stack'))
 
+        # deprecated blocks
         palette.add_block('sandwichtop_no_label',
                           hidden=True,
                           style='collapsible-top-no-label',
@@ -706,7 +717,6 @@ module found in the Journal'))
                           prim_name='nop',
                           help_string=_('collapsed stack: click to open'))
 
-        # deprecated blocks
         palette.add_block('sandwichcollapsed',
                           hidden=True,
                           colors=["#FF0000", "#A00000"],
@@ -1442,6 +1452,14 @@ bullets'))
         except ValueError:
             self.tw.lc.stop_logo()
             raise logoerror("#notanumber")
+
+    def _prim_clamp(self, blklist):
+        """ Run clamp blklist """
+        self.tw.lc.icall(self.tw.lc.evline, blklist[:])
+        yield True
+        self.tw.lc.procstop = False
+        self.tw.lc.ireturn()
+        yield True
 
     # Deprecated blocks
 

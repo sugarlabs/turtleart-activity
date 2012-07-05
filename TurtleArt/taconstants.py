@@ -91,7 +91,8 @@ EXPANDABLE_STYLE = ['boolean-style', 'compare-porch-style', 'compare-style',
                     'number-style-block', 'box-style-media']
 
 # Fixme: this should be based on styles
-EXPANDABLE_FLOW = ['repeat', 'until', 'while', 'if', 'forever', 'ifelse']
+EXPANDABLE_FLOW = ['repeat', 'until', 'while', 'if', 'forever', 'ifelse',
+                   'sandwichclamp']
 
 EXPANDABLE = ['vspace', 'hspace', 'identity2']
 
@@ -99,6 +100,7 @@ EXPANDABLE_ARGS = ['list', 'myfunc1arg', 'myfunc2arg', 'myfunc3arg',
                    'userdefined', 'userdefined2args', 'userdefined3args']
 #
 # Blocks that are 'collapsible'
+# Deprecated
 #
 COLLAPSIBLE = ['sandwichbottom', 'sandwichcollapsed']
 
@@ -221,12 +223,8 @@ VOICES = {'af': 'afrikaans', 'cy': 'welsh-test', 'el': 'greek',
 # Macros (groups of blocks)
 #
 MACROS = {
-    'ifthenelse':
+    'ifthenelse':  # Because it is too big to fit on the palette
               [[0, 'ifelse', 0, 0, [None, None, None, None]]],
-    'clamp':
-              [[0, 'sandwichtop_no_label', 0, 0, [None, 1]],
-               [1, 'vspace', 0, 0, [0, 2]],
-               [2, 'sandwichbottom', 0, 0, [1, None]]],
     'kbinput':
               [[0, 'until', 0, 0, [None, 1, 4, None]],
                [1, 'greater2', 0, 0, [0, 2, 3, None]],

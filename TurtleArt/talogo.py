@@ -386,7 +386,6 @@ class LogoCode:
             # If the blocks are visible, highlight the current block.
             if not self.tw.hide and self.bindex is not None:
                 self.tw.block_list.list[self.bindex].highlight()
-
             # In debugging modes, we pause between steps and show the turtle.
             if self.tw.step_time > 0:
                 self.tw.active_turtle.show()
@@ -408,12 +407,10 @@ class LogoCode:
             # Time to unhighlight the current block.
             if not self.tw.hide and self.bindex is not None:
                 self.tw.block_list.list[self.bindex].unhighlight()
-
             if self.procstop:
                 break
             if self.iresult == None:
                 continue
-
             if self.bindex is not None:
                 self.tw.block_list.list[self.bindex].highlight()
             self.tw.showblocks()
