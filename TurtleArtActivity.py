@@ -873,6 +873,8 @@ class TurtleArtActivity(activity.Activity):
 
         if hasattr(self.get_window(), 'get_cursor'):
             self._old_cursor = self.get_window().get_cursor()
+        else:
+            self._old_cursor = None
         self.copying = False
         self.sharing_blocks = False
 
@@ -1110,6 +1112,8 @@ in order to use the plugin.'))
         self.sharing_blocks = False
         if hasattr(self.get_window(), 'get_cursor'):
             self.get_window().set_cursor(self._old_cursor)
+        else:
+            self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.ARROW))
 
     def _copy_cb(self, button):
         ''' Copy to the clipboard. '''
@@ -1119,7 +1123,7 @@ in order to use the plugin.'))
             self.copying = True
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+            self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
 
     def send_to_clipboard(self):
         ''' Send selected stack to clipboard. '''
@@ -1158,7 +1162,7 @@ in order to use the plugin.'))
             self.sharing_blocks = True
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+            self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
 
     def share_blocks(self):
         ''' Share selected stack. '''
