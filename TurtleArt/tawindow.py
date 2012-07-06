@@ -48,7 +48,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER, CATEGORY_LAYER, \
     BLOCKS_WITH_SKIN, ICON_SIZE, PALETTE_SCALE, PALETTE_WIDTH, SKIN_PATHS, \
     MACROS, TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, \
-    CURSOR, EXPANDABLE, COLLAPSIBLE, DEAD_DICTS, DEAD_KEYS, NO_IMPORT, \
+    CURSOR, EXPANDABLE, DEAD_DICTS, DEAD_KEYS, NO_IMPORT, \
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
     EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, TITLEXY, CONTENT_ARGS, \
     CONSTANTS, EXPAND_SKIN, PROTO_LAYER, EXPANDABLE_FLOW
@@ -3317,18 +3317,12 @@ class TurtleArtWindow():
             if not self._find_proto_name('box_%s' % (name), name):
                 self._new_box_block(name)
 
-        if btype in content_blocks or btype in COLLAPSIBLE:
+        if btype in content_blocks:
             if btype == 'number':
                 try:
                     values = [round_int(value)]
                 except ValueError:
                     values = [0]
-            # Deprecated
-            elif btype in COLLAPSIBLE:
-                if value is not None:
-                    values = [int(value)]
-                else:
-                    values = []
             else:
                 values = [value]
         else:
@@ -3525,7 +3519,7 @@ class TurtleArtWindow():
         for i, blk in enumerate(blks):
             blk.id = i
         for blk in blks:
-            if blk.name in content_blocks or blk.name in COLLAPSIBLE:
+            if blk.name in content_blocks:
                 if len(blk.values) > 0:
                     name = (blk.name, blk.values[0])
                 else:

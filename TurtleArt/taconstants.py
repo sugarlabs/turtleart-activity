@@ -98,11 +98,6 @@ EXPANDABLE = ['vspace', 'hspace', 'identity2']
 
 EXPANDABLE_ARGS = ['list', 'myfunc1arg', 'myfunc2arg', 'myfunc3arg',
                    'userdefined', 'userdefined2args', 'userdefined3args']
-#
-# Blocks that are 'collapsible'
-# Deprecated
-#
-COLLAPSIBLE = ['sandwichbottom', 'sandwichcollapsed']
 
 #
 # Deprecated block styles that need dock adjustments

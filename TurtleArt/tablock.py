@@ -178,14 +178,6 @@ class Block:
             'clamp-style-1arg': self._make_clamp_style_1arg,
             'clamp-style-boolean': self._make_clamp_style_boolean,
             'clamp-style-else': self._make_clamp_style_else,
-            'collapsible-top': [self._make_collapsible_style_top, True, True],
-            'collapsible-top-no-arm': [self._make_collapsible_style_top,
-                                       False, True],
-            'collapsible-top-no-label': [self._make_collapsible_style_top,
-                                         True, False],
-            'collapsible-top-no-arm-no-label': [
-                self._make_collapsible_style_top, False, False],
-            'collapsible-bottom': self._make_collapsible_style_bottom,
             'flow-style': self._make_flow_style,
             'flow-style-tail': self._make_flow_style_tail,
             'flow-style-1arg': self._make_flow_style_1arg,
@@ -942,31 +934,6 @@ class Block:
                       # Skip bottom of clamp
                       ['flow', False, self.svg.docks[6][0],
                                       self.svg.docks[6][1], ']']]
-
-    def _make_collapsible_style_top(self, svg, arm=True, label=True):
-        self.svg.expand(self.dx + self.ex, self.ey)
-        self.svg.set_arm(arm)
-        self.svg.set_show(not arm)
-        self._make_block_graphics(svg, self.svg.sandwich_top, label)
-        if label:
-            self.docks = [['flow', True, self.svg.docks[0][0],
-                           self.svg.docks[0][1]],
-                          ['number', False, self.svg.docks[1][0],
-                           self.svg.docks[1][1]],
-                          ['flow', False, self.svg.docks[2][0],
-                           self.svg.docks[2][1]]]
-        else:
-            self.docks = [['flow', True, self.svg.docks[0][0],
-                           self.svg.docks[0][1]],
-                          ['flow', False, self.svg.docks[1][0],
-                           self.svg.docks[1][1]]]
-
-    def _make_collapsible_style_bottom(self, svg):
-        self.svg.expand(self.dx + self.ex, self.ey)
-        self._make_block_graphics(svg, self.svg.sandwich_bottom)
-        self.docks = [['flow', True, self.svg.docks[0][0],
-                       self.svg.docks[0][1]], ['flow', False,
-                       self.svg.docks[1][0], self.svg.docks[1][1]]]
 
     # Depreciated block styles
 

@@ -41,11 +41,7 @@ except (ImportError, AttributeError):
         OLD_SUGAR_SYSTEM = True
 from StringIO import StringIO
 
-from taconstants import COLLAPSIBLE, HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, \
-    XO30, UNKNOWN
-
-SANDWICHES = ['sandwichtop', 'sandwichtop_no_label', 'sandwichtop_no_arm',
-              'sandwichtop_no_arm_no_label']
+from taconstants import HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO30, UNKNOWN
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
