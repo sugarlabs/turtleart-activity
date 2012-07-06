@@ -1801,11 +1801,15 @@ class TurtleArtWindow():
         blocks = []
         for blk in self._process_block_data:
             if not self._found_a_turtle(blk):
-                blocks.append(self.load_block(blk, offset))
+                newblk = self.load_block(blk, offset)
+                if newblk is not None:
+                    blocks.append(newblk)
         # Some extra blocks may have been added by load_block
         for blk in self._extra_block_data:
             self._process_block_data.append(blk)
-            blocks.append(self.load_block(blk, offset))
+            newblk = self.load_block(blk, offset)
+            if newblk is not None:
+                blocks.append(newblk)
 
         # Make the connections.
         for i in range(len(blocks)):
@@ -3350,6 +3354,29 @@ class TurtleArtWindow():
             btype, value = btype
         elif type(btype) == list:
             btype, value = btype[0], btype[1]
+
+        # Replace old-style sandwich blocks
+        if btype == 'sandwichtop_no_label':
+            debug_output('swapping out old sandwich top', True)
+            btype = 'sandwichclamp'
+            docks = []
+            for d in b[4]:
+                docks.append(d)
+            docks.append(None)
+            b[4] = docks
+        elif btype == 'sandwichtop_no_arm_no_label':
+            debug_output('swapping out old sandwich collapsed', True)
+            btype = 'sandwichclampcollapsed'
+            docks = []
+            for d in b[4]:
+                docks.append(d)
+            docks.append(None)
+            b[4] = docks
+        # FIXME: blocks after sandwich bottom must be attached to
+        # sandwich top dock[2], currently set to None
+        elif btype in ['sandwichbottom', 'sandwichcollapsed']:
+            debug_output('swapping out old sandwich bottom', True)
+            btype = 'vspace'
 
         # Some blocks can only appear once...
         if btype in ['start', 'hat1', 'hat2']:
