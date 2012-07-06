@@ -2751,7 +2751,11 @@ class TurtleArtWindow():
         dy = 0
         # Calculate height of drag group
         while gblk is not None:
-            dy += int((gblk.docks[-1][3] - gblk.docks[0][3]) / gblk.scale)
+            delta = int((gblk.docks[-1][3] - gblk.docks[0][3]) / gblk.scale)
+            if delta == 0:
+                dy += 21  # Fixme: don't hardcode size of stop action block
+            else:
+                dy += delta
             gblk = gblk.connections[-1]
         # Clamp has room for one "standard" block by default
         if dy > 0:
