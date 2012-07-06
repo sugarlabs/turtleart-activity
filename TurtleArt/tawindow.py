@@ -2318,6 +2318,7 @@ class TurtleArtWindow():
                 if gblk != blk:
                     gblk.spr.move_relative((0, dy * blk.scale))
             grow_stack_arm(find_sandwich_top(blk))
+            self._resize_parent_clamps(blk)
 
         elif blk.name in expandable_blocks:
             # Connection may be lost during expansion, so store it...
@@ -2346,6 +2347,7 @@ class TurtleArtWindow():
                 self._cascade_expandable(blk)
 
             grow_stack_arm(find_sandwich_top(blk))
+            self._resize_parent_clamps(blk)
 
         elif blk.name in EXPANDABLE_ARGS or blk.name == 'nop':
             if show_button_hit(blk.spr, x, y):
@@ -2393,6 +2395,7 @@ class TurtleArtWindow():
                 if blk.name in block_styles['number-style-var-arg']:
                     self._cascade_expandable(blk)
                 grow_stack_arm(find_sandwich_top(blk))
+                self._resize_parent_clamps(blk)
             elif blk.name in PYTHON_SKIN:
                 self._import_py()
             else:
@@ -2677,10 +2680,13 @@ class TurtleArtWindow():
                 grow_stack_arm(find_sandwich_top(best_destination))
         # If we are in an expandable flow, expand it...
         if best_destination is not None:
+            self._resize_parent_clamps(best_destination)
+            '''
             blk, dockn = self._expandable_flow_above(best_destination)
             while blk is not None:
                 self._resize_clamp(blk, blk.connections[dockn], dockn=dockn)
                 blk, dockn = self._expandable_flow_above(blk)
+            '''
 
     def _disconnect(self, blk):
         ''' Disconnect block from stack above it. '''
