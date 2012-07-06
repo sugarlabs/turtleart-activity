@@ -3252,7 +3252,7 @@ class TurtleArtWindow():
         elif type(btype) == list:
             btype, value = btype[0], btype[1]
 
-        # Replace old-style sandwich blocks
+        # Replace deprecated sandwich blocks
         if btype == 'sandwichtop_no_label':
             btype = 'sandwichclamp'
             docks = []
@@ -3271,6 +3271,9 @@ class TurtleArtWindow():
         # sandwich top dock[2], currently set to None
         elif btype in ['sandwichbottom', 'sandwichcollapsed']:
             btype = 'vspace'
+        # FIXME: blocks after sandwichtop should be in a sandwich clamp
+        elif btype in ['sandwichtop', 'sandwichtop_no_arm']:
+            btype = 'comment'
 
         # Some blocks can only appear once...
         if btype in ['start', 'hat1', 'hat2']:

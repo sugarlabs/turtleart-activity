@@ -692,60 +692,6 @@ module found in the Journal'))
                           special_name=_('top'),
                           help_string=_('top of a collapsed stack'))
 
-        # deprecated blocks
-        palette.add_block('sandwichtop_no_label',
-                          hidden=True,
-                          style='collapsible-top-no-label',
-                          label=[' ', ' '],
-                          special_name=_('top'),
-                          prim_name='nop',
-                          help_string=_('top of a collapsed stack'))
-
-        palette.add_block('sandwichbottom',
-                          hidden=True,
-                          style='collapsible-bottom',
-                          label=[' ', ' '],
-                          prim_name='nop',
-                          special_name=_('bottom'),
-                          help_string=_('bottom of a collapsible stack'))
-
-        palette.add_block('sandwichtop_no_arm_no_label',
-                          hidden=True,
-                          colors=["#FF0000", "#A00000"],
-                          style='collapsible-top-no-arm-no-label',
-                          label=[' ', _('click to open')],
-                          prim_name='nop',
-                          help_string=_('collapsed stack: click to open'))
-
-        palette.add_block('sandwichcollapsed',
-                          hidden=True,
-                          colors=["#FF0000", "#A00000"],
-                          style='invisible',
-                          label=' ',
-                          prim_name='nop',
-                          help_string=_('bottom block in a collapsed stack: \
-click to open'))
-
-        palette.add_block('sandwichtop',
-                          hidden=True,
-                          colors=["#FF0000", "#A00000"],
-                          style='collapsible-top',
-                          label=_('top of stack'),
-                          default=_('label'),
-                          string_or_number=True,
-                          prim_name='comment',
-                          help_string=_('top of stack'))
-
-        palette.add_block('sandwichtop_no_arm',
-                          hidden=True,
-                          colors=["#FF0000", "#A00000"],
-                          style='collapsible-top-no-arm',
-                          label=_('top of a collapsible stack'),
-                          default=_('label'),
-                          prim_name='comment',
-                          string_or_number=True,
-                          help_string=_('top of stack'))
-
     def _portfolio_palette(self):
 
         palette = make_palette('portfolio',
