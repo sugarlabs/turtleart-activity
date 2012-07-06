@@ -63,9 +63,7 @@ from taturtle import Turtles, Turtle
 from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
     data_to_file, round_int, get_id, get_pixbuf_from_journal, \
     movie_media_type, audio_media_type, image_media_type, save_picture, \
-    calc_image_size, get_path, reset_stack_arm, grow_stack_arm, \
-    find_sandwich_top, find_sandwich_bottom, restore_stack, collapse_stack, \
-    collapsed, collapsible, hide_button_hit, show_button_hit, chooser, \
+    calc_image_size, get_path, hide_button_hit, show_button_hit, chooser, \
     arithmetic_check, xy, find_block_to_run, find_top_block, journal_check, \
     find_group, find_blk_below, data_to_string, find_start_stack, \
     get_hardware, debug_output, error_output, data_to_string, convert, \
@@ -725,30 +723,11 @@ class TurtleArtWindow():
         if blocks is None:
             blocks = self.just_blocks()
 
-        # We need to restore collapsed stacks before resizing.
-        for blk in blocks:
-            # Deprecated
-            if blk.status == 'collapsed':
-                bot = find_sandwich_bottom(blk)
-                if collapsed(bot):
-                    dy = bot.values[0]
-                    restore_stack(find_sandwich_top(blk))
-                    bot.values[0] = dy
-
         # Do the resizing.
         for blk in blocks:
             blk.rescale(self.block_scale)
         for blk in blocks:
             self._adjust_dock_positions(blk)
-
-        # Deprecated
-        # Re-collapsed stacks after resizing.
-        for blk in blocks:
-            if collapsed(blk):
-                collapse_stack(find_sandwich_top(blk))
-        for blk in blocks:
-            if blk.name in ['sandwichtop', 'sandwichtop_no_label']:
-                grow_stack_arm(blk)
 
         # Resize the skins on some blocks: media content and Python
         for blk in blocks:
@@ -1543,26 +1522,11 @@ class TurtleArtWindow():
         self.trash_stack.append(blk)
         group = find_group(blk)
         for gblk in group:
-            # Deprecated
-            if gblk.status == 'collapsed':
-                # Collapsed stacks are restored for rescaling
-                # and then recollapsed after they are moved to the trash.
-                bot = find_sandwich_bottom(gblk)
-                if collapsed(bot):
-                    dy = bot.values[0]
-                    restore_stack(find_sandwich_top(gblk))
-                    bot.values[0] = dy
             gblk.type = 'trash'
             gblk.rescale(self.trash_scale)
         blk.spr.move((x, y))
         for gblk in group:
             self._adjust_dock_positions(gblk)
-
-        # Deprecated
-        # Re-collapsing any stacks we had restored for scaling
-        for gblk in group:
-            if collapsed(gblk):
-                collapse_stack(find_sandwich_top(gblk))
 
         # And resize any skins.
         for gblk in group:
@@ -1614,6 +1578,12 @@ class TurtleArtWindow():
 
     def _restore_from_trash(self, blk):
         group = find_group(blk)
+
+        for gblk in group:
+            if gblk.name == 'sandwichclampcollapsed':
+                restore_clamp(gblk)
+                self.resize_parent_clamps(gblk)
+
         for gblk in group:
             gblk.rescale(self.block_scale)
             gblk.spr.set_layer(BLOCK_LAYER)
@@ -1623,14 +1593,9 @@ class TurtleArtWindow():
             else:
                 gblk.spr.move((x + PALETTE_WIDTH, y))
             gblk.type = 'block'
+
         for gblk in group:
             self._adjust_dock_positions(gblk)
-        # Deprecated
-        # If the stack had been collapsed before going into the trash,
-        # collapse it again now.
-        for gblk in group:
-            if collapsed(gblk):
-                collapse_stack(find_sandwich_top(gblk))
 
         # And resize any skins.
         for gblk in group:
@@ -1785,8 +1750,6 @@ class TurtleArtWindow():
         macro[0][3] = y
         top = self.process_data(macro)
         self.block_operation = 'new'
-        # Deprecated
-        self._check_collapsibles(top)
         self.drag_group = find_group(top)
 
     def process_data(self, block_data, offset=0):
@@ -1876,19 +1839,10 @@ class TurtleArtWindow():
         for blk in blocks:
             self._adjust_dock_positions(blk)
 
-        # Look for any stacks that need to be collapsed or sandwiched
+        # Look for any stacks that need to be collapsed
         for blk in blocks:
             if blk.name == 'sandwichclampcollapsed':
                 collapse_clamp(blk, False)
-
-            # Deprecated
-            if collapsed(blk):
-                collapse_stack(find_sandwich_top(blk))
-            elif blk.name == 'sandwichbottom' and collapsible(blk):
-                blk.svg.set_hide(True)
-                blk.svg.set_show(False)
-                blk.refresh()
-                grow_stack_arm(find_sandwich_top(blk))
 
         # process in reverse order
         for i in range(len(blocks)):
@@ -2018,11 +1972,6 @@ class TurtleArtWindow():
         # If we have a stack of blocks selected, move them.
         elif self.drag_group[0] is not None:
             blk = self.drag_group[0]
-
-            # Deprecated
-            # Don't move a bottom blk if the stack is collapsed
-            if collapsed(blk):
-                return
 
             self.selected_spr = blk.spr
             dragx, dragy = self.drag_pos
@@ -2209,7 +2158,6 @@ class TurtleArtWindow():
 
         # Look to see if we can dock the current stack.
         self._snap_to_dock()
-        self._check_collapsibles(blk)
         for gblk in self.drag_group:
             if gblk.status != 'collapsed':
                 gblk.spr.set_layer(BLOCK_LAYER)
@@ -2321,7 +2269,6 @@ class TurtleArtWindow():
             for gblk in group:
                 if gblk != blk:
                     gblk.spr.move_relative((0, dy * blk.scale))
-            grow_stack_arm(find_sandwich_top(blk))
             self._resize_parent_clamps(blk)
 
         elif blk.name in expandable_blocks:
@@ -2350,7 +2297,6 @@ class TurtleArtWindow():
                 blk0.connections[dock0] = blk
                 self._cascade_expandable(blk)
 
-            grow_stack_arm(find_sandwich_top(blk))
             self._resize_parent_clamps(blk)
 
         elif blk.name in EXPANDABLE_ARGS or blk.name == 'nop':
@@ -2398,7 +2344,6 @@ class TurtleArtWindow():
                 blk.connections[n - 1] = argblk
                 if blk.name in block_styles['number-style-var-arg']:
                     self._cascade_expandable(blk)
-                grow_stack_arm(find_sandwich_top(blk))
                 self._resize_parent_clamps(blk)
             elif blk.name in PYTHON_SKIN:
                 self._import_py()
@@ -2415,22 +2360,6 @@ class TurtleArtWindow():
                 self._resize_parent_clamps(blk)
             else:
                 self._run_stack(blk)
-        # Deprecated
-        elif blk.name in ['sandwichclampcollapsed',
-                          'sandwichtop_no_arm_no_label', 'sandwichtop_no_arm']:
-            restore_stack(blk)
-        # Deprecated
-        elif blk.name in COLLAPSIBLE or blk.name in ['sandwichtop_no_label']:
-            if blk.name in ['sandwichtop_no_label']:
-                if hide_button_hit(blk.spr, x, y):
-                    collapse_stack(blk)
-                else:
-                    self._run_stack(blk)
-            top = find_sandwich_top(blk)
-            if collapsed(blk):
-                restore_stack(top)  # deprecated (bottom block is invisible)
-            elif top is not None:
-                collapse_stack(top)
         else:
             self._run_stack(blk)
 
@@ -2502,32 +2431,6 @@ class TurtleArtWindow():
                             gblk.spr.move_relative((0, -dy * blk.scale))
             else:
                 break
-
-    # Deprecated
-    def _check_collapsibles(self, blk):
-        ''' Check state of collapsible blocks upon change in dock state. '''
-        group = find_group(blk)
-        for gblk in group:
-            if gblk.name in COLLAPSIBLE:
-                if collapsed(gblk):
-                    gblk.svg.set_show(True)
-                    gblk.svg.set_hide(False)
-                    reset_stack_arm(find_sandwich_top(gblk))
-                elif collapsible(gblk):
-                    gblk.svg.set_hide(True)
-                    gblk.svg.set_show(False)
-                    grow_stack_arm(find_sandwich_top(gblk))
-                else:
-                    gblk.svg.set_hide(False)
-                    gblk.svg.set_show(False)
-                    # Ouch: When you tear off the sandwich bottom, you
-                    # no longer have access to the group with the sandwich top
-                    # so check them all.
-                    for b in self.just_blocks():
-                        if b.name  in ['sandwichtop', 'sandwichtop_no_label']:
-                            if find_sandwich_bottom(b) is None:
-                                reset_stack_arm(b)
-                gblk.refresh()
 
     def _run_stack(self, blk):
         ''' Run a stack of blocks. '''
@@ -2680,8 +2583,6 @@ class TurtleArtWindow():
                     self._expand_expandable(
                         best_destination, selected_block, dy)
                 self._cascade_expandable(best_destination)
-                # Deprecated
-                grow_stack_arm(find_sandwich_top(best_destination))
         # If we are in an expandable flow, expand it...
         if best_destination is not None:
             self._resize_parent_clamps(best_destination)
@@ -2699,8 +2600,6 @@ class TurtleArtWindow():
         if blk.connections is None:
             return
         if blk.connections[0] is None:
-            return
-        if collapsed(blk):
             return
         c = None
         blk2 = blk.connections[0]
@@ -2720,8 +2619,6 @@ class TurtleArtWindow():
                 if dy != 0:
                     self._expand_expandable(blk2, blk, dy)
                 self._cascade_expandable(blk2)
-                # Deprecated
-                grow_stack_arm(find_sandwich_top(blk2))
         elif c is not None and blk2.name in EXPANDABLE_FLOW:
             if blk2.name in block_styles['clamp-style-1arg'] or\
                blk2.name in block_styles['clamp-style-boolean']:
@@ -3114,9 +3011,6 @@ class TurtleArtWindow():
         ''' Jog block '''
         if blk.type == 'proto':
             return
-        # Deprecated
-        if collapsed(blk):
-            return
         if dx == 0 and dy == 0:
             return
         self._disconnect(blk)
@@ -3304,8 +3198,7 @@ class TurtleArtWindow():
         ''' Load a project from a file '''
         if create_new_project:
             self.new_project()
-        # Deprecated
-        self._check_collapsibles(self.process_data(data_from_file(ta_file)))
+        self.process_data(data_from_file(ta_file))
         self._loaded_project = ta_file
 
     def load_file_from_chooser(self, create_new_project=True):
@@ -3361,7 +3254,6 @@ class TurtleArtWindow():
 
         # Replace old-style sandwich blocks
         if btype == 'sandwichtop_no_label':
-            debug_output('swapping out old sandwich top', True)
             btype = 'sandwichclamp'
             docks = []
             for d in b[4]:
@@ -3369,7 +3261,6 @@ class TurtleArtWindow():
             docks.append(None)
             b[4] = docks
         elif btype == 'sandwichtop_no_arm_no_label':
-            debug_output('swapping out old sandwich collapsed', True)
             btype = 'sandwichclampcollapsed'
             docks = []
             for d in b[4]:
@@ -3379,7 +3270,6 @@ class TurtleArtWindow():
         # FIXME: blocks after sandwich bottom must be attached to
         # sandwich top dock[2], currently set to None
         elif btype in ['sandwichbottom', 'sandwichcollapsed']:
-            debug_output('swapping out old sandwich bottom', True)
             btype = 'vspace'
 
         # Some blocks can only appear once...
