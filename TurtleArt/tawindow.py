@@ -2543,8 +2543,7 @@ class TurtleArtWindow():
 
     def _snap_to_dock(self):
         ''' Snap a block (selected_block) to the dock of another block
-            (destination_block).
-        '''
+            (destination_block). '''
         selected_block = self.drag_group[0]
         best_destination = None
         d = SNAP_THRESHOLD
@@ -2642,7 +2641,9 @@ class TurtleArtWindow():
                    best_destination.name in block_styles['clamp-style-boolean']:
                     if best_destination_dockn == 2:
                         self._resize_clamp(best_destination, self.drag_group[0])
-                elif best_destination.name in block_styles['clamp-style']:
+                elif best_destination.name in block_styles['clamp-style'] or \
+                     best_destination.name in block_styles[
+                    'clamp-style-collapsible']:
                     if best_destination_dockn == 1:
                         self._resize_clamp(best_destination, self.drag_group[0])
                 elif best_destination.name in block_styles['clamp-style-else']:
@@ -2672,12 +2673,14 @@ class TurtleArtWindow():
                     self._expand_expandable(
                         best_destination, selected_block, dy)
                 self._cascade_expandable(best_destination)
+                # Deprecated
                 grow_stack_arm(find_sandwich_top(best_destination))
         # If we are in an expandable flow, expand it...
-        blk, dockn = self._expandable_flow_above(selected_block)
-        while blk is not None:
-            self._resize_clamp(blk, blk.connections[dockn], dockn=dockn)
-            blk, dockn = self._expandable_flow_above(blk)
+        if best_destination is not None:
+            blk, dockn = self._expandable_flow_above(best_destination)
+            while blk is not None:
+                self._resize_clamp(blk, blk.connections[dockn], dockn=dockn)
+                blk, dockn = self._expandable_flow_above(blk)
 
     def _disconnect(self, blk):
         ''' Disconnect block from stack above it. '''
@@ -2689,6 +2692,7 @@ class TurtleArtWindow():
             return
         if collapsed(blk):
             return
+        c = None
         blk2 = blk.connections[0]
         if blk in blk2.connections:
             c = blk2.connections.index(blk)
@@ -2706,10 +2710,20 @@ class TurtleArtWindow():
                 if dy != 0:
                     self._expand_expandable(blk2, blk, dy)
                 self._cascade_expandable(blk2)
+                # Deprecated
                 grow_stack_arm(find_sandwich_top(blk2))
-        # Fix me
-        elif blk2.name in EXPANDABLE_FLOW:
-            self._resize_clamp(blk2, blk2.connections[c], dockn=c)
+        elif c is not None and blk2.name in EXPANDABLE_FLOW:
+            if blk2.name in block_styles['clamp-style-1arg'] or\
+               blk2.name in block_styles['clamp-style-boolean']:
+                if c == 2:
+                    self._resize_clamp(blk2, None, c)
+            elif blk2.name in block_styles['clamp-style'] or \
+                 blk2.name in block_styles['clamp-style-collapsible']:
+                if c == 1:
+                    self._resize_clamp(blk2, None)
+            elif blk2.name in block_styles['clamp-style-else']:
+                if c == 2 or c == 3:
+                    self._resize_clamp(blk2, None, dockn=c)
         while blk3 is not None and blk3.connections[dockn] is not None:
             self._resize_clamp(blk3, blk3.connections[dockn], dockn=dockn)
             blk3, dockn = self._expandable_flow_above(blk3)
@@ -2737,6 +2751,7 @@ class TurtleArtWindow():
         else:
             blk.expand_in_y(dy)
         y2 = blk.docks[-1][3]
+        gblk = blk.connections[-1]
         # Move group below clamp up or down
         if blk.connections[-1] is not None:
             drag_group = find_group(blk.connections[-1])
@@ -2747,16 +2762,17 @@ class TurtleArtWindow():
             if blk.connections[3] is not None:
                 drag_group = find_group(blk.connections[3])
                 for gblk in drag_group:
-                    gblk.spr.move_relative((0, y2-y1))
+                    gblk.spr.move_relative((0, y2 - y1))
 
     def _expandable_flow_above(self, blk):
         ''' Is there an expandable flow block above this one? '''
         while blk.connections[0] is not None:
             if blk.connections[0].name in EXPANDABLE_FLOW:
                 if blk.connections[0].name == 'ifelse':
-                    if blk.connections[0].connections[-2] == blk:
-                        return blk.connections[0], -2
-                    return blk.connections[0], -3
+                    if blk.connections[0].connections[2] == blk:
+                        return blk.connections[0], 2
+                    elif blk.connections[0].connections[3] == blk:
+                        return blk.connections[0], 3
                 else:
                     if blk.connections[0].connections[-2] == blk:
                         return blk.connections[0], -2
