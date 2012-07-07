@@ -80,7 +80,7 @@ import gtk
 from sugar.graphics.icon import Icon
 from sugar.graphics import style
 
-from taconstants import EXPANDABLE_STYLE
+from taconstants import EXPANDABLE_STYLE, EXPANDABLE_FLOW
 from tautils import debug_output
 
 from util.helpbutton import add_section, add_paragraph
@@ -271,6 +271,12 @@ class Block():
             return
         else:
             block_styles[self._style].append(self._name)
+        if self._style in ['clamp-style',
+                           'clamp-style-collapsible',
+                           'clamp-style-1arg',
+                           'clamp-style-boolean',
+                           'clamp-style-else']:
+            EXPANDABLE_FLOW.append(self._name)
 
         if self._label is not None:
             block_names[self._name] = self._label

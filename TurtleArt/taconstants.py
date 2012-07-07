@@ -90,9 +90,8 @@ EXPANDABLE_STYLE = ['boolean-style', 'compare-porch-style', 'compare-style',
                     'number-style-porch', 'number-style', 'basic-style-2arg',
                     'number-style-block', 'box-style-media']
 
-# Fixme: this should be based on styles
-EXPANDABLE_FLOW = ['repeat', 'until', 'while', 'if', 'forever', 'ifelse',
-                   'sandwichclamp']
+# These are defined in add_block based on block style
+EXPANDABLE_FLOW = []
 
 EXPANDABLE = ['vspace', 'hspace', 'identity2']
 
