@@ -587,8 +587,8 @@ class Block:
                 else:
                     self.block_methods[k](svg)
                 return
-        error_output('block type not found %s' % (self.name))
-        self.block_methods['basic-style'](svg)
+        error_output('ERROR: block type not found %s' % (self.name))
+        self.block_methods['blank-style'](svg)
 
     def _set_colors(self, svg):
         if self._custom_colors:
