@@ -193,14 +193,13 @@ class LogoCode:
         for b in blocks:
             b.unhighlight()
 
+        # Hidden macro expansions
         for b in blocks:
-            # Hidden macro expansions
             if b.name in ['while', 'until']:
                 action_blk, new_blocks = self._expand_forever(b, blk, blocks)
                 blocks = new_blocks[:]
                 if b == blk:
                     blk = action_blk
-
         for b in blocks:
             if b.name in ['forever']:
                 action_blk, new_blocks = self._expand_forever(b, blk, blocks)
@@ -261,7 +260,6 @@ class LogoCode:
         if len(dock) > 4:  # There could be a '(', ')', '[' or ']'.
             code.append(dock[4])
         if blk.primitive is not None:  # make a tuple (prim, blk)
-            # special case: expand 'while' and 'until' primitives
             if blk in self.tw.block_list.list:
                 code.append((blk.primitive,
                              self.tw.block_list.list.index(blk)))
@@ -393,6 +391,7 @@ class LogoCode:
             # If the blocks are visible, highlight the current block.
             if not self.tw.hide and self.bindex is not None:
                 self.tw.block_list.list[self.bindex].highlight()
+
             # In debugging modes, we pause between steps and show the turtle.
             if self.tw.step_time > 0:
                 self.tw.active_turtle.show()
@@ -414,10 +413,12 @@ class LogoCode:
             # Time to unhighlight the current block.
             if not self.tw.hide and self.bindex is not None:
                 self.tw.block_list.list[self.bindex].unhighlight()
+
             if self.procstop:
                 break
             if self.iresult == None:
                 continue
+
             if self.bindex is not None:
                 self.tw.block_list.list[self.bindex].highlight()
             self.tw.showblocks()
@@ -853,11 +854,11 @@ class LogoCode:
                 inflow.connections[i] = action_blk
         else:
             i = None
+        j = None
         if outflow is not None:
-            j = outflow.connections.index(b)
-            outflow.connections[j] = action_blk
-        else:
-            j = None
+            if b in outflow.connections:
+                j = outflow.connections.index(b)
+                outflow.connections[j] = action_blk
 
         if until_blk and whileflow is not None:
             action_first.connections.append(inflow)
