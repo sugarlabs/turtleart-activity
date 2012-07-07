@@ -163,8 +163,6 @@ class SVG:
         self.style()
         return self.header() + self.footer()
 
-    # Deprecated
-
     def basic_flow(self):
         ''' A flow block includes an arm that holds a branch in the flow '''
         self.reset_min_max()
@@ -574,79 +572,6 @@ class SVG:
         svg += self.style()
         if self._collapsible:
             svg += self._hide_dot()
-        svg += self.footer()
-        return self.header() + svg
-
-    def sandwich_top(self, innie_flag=True):
-        ''' Special block for the top of a collapsible stack; includes
-        an 'arm" that extends down the left side of a stack '''
-        self.reset_min_max()
-        x = self._stroke_width / 2.0
-        y = self._stroke_width / 2.0 + self._radius
-        self.margins[0] = int((x + self._stroke_width + 0.5) * self._scale)
-        self.margins[1] = int((self._stroke_width + 0.5) * self._scale)
-        self.margins[2] = 0
-        self.margins[3] = 0
-        svg = self.new_path(x, y)
-        svg += self._corner(1, -1)
-        svg += self._rline_to(self._radius + self._stroke_width, 0)
-        svg += self._do_slot()
-        svg += self._rline_to(self._expand_x, 0)
-        xx = self._x
-        svg += self._corner(1, 1)
-        if innie_flag:
-            svg += self._do_innie()
-        svg += self._corner(-1, 1)
-        svg += self.line_to(xx, self._y)
-        svg += self._rline_to(-self._expand_x, 0)
-        svg += self._do_tab()
-        if self._arm:
-            svg += self._inverse_corner(-1, 1, 90, 0, 0)
-            svg += self._rline_to(0, self._expand_y)
-            svg += self._rline_to(-self._radius, 0)
-        else:
-            svg += self._rline_to(-self._radius - self._stroke_width, 0)
-            svg += self._corner(-1, -1)
-        svg += self._close_path()
-        self.calc_w_h()
-        svg += self.style()
-        if self._show is True:
-            svg += self._show_dot()
-        if self._hide is True:
-            svg += self._hide_dot()
-        svg += self.footer()
-        return self.header() + svg
-
-    def sandwich_bottom(self):
-        ''' Special block for the bottom of a collapsible stack;
-        includes a connection to the 'arm" that extends down the left
-        side of a stack '''
-        self.reset_min_max()
-        x = self._stroke_width / 2.0
-        y = self._stroke_width / 2.0
-        self.margins[0] = int((x + self._stroke_width + 0.5) * self._scale)
-        self.margins[1] = int((self._stroke_width + 0.5) * self._scale)
-        self.margins[2] = 0
-        self.margins[3] = 0
-        svg = self.new_path(x, y)
-        svg += self._rline_to(self._radius, 0)
-        svg += self._rline_to(0, self._expand_y)
-        svg += self._inverse_corner(1, 1, 90, 0, 0)
-        svg += self._do_slot()
-        svg += self._rline_to(self._radius, 0)
-        svg += self._corner(-1, 1)
-        svg += self._do_tab()
-        svg += self._rline_to(-self._radius - self._stroke_width, 0)
-        svg += self._corner(-1, -1)
-        svg += self._close_path()
-        self.calc_w_h()
-        svg += self.style()
-        self._hide_x = x + self._radius / 2
-        self._hide_y = y + self._radius / 2
-        if self._hide is True:
-            svg += self._hide_dot()
-        if self._show is True:
-            svg += self._show_dot()
         svg += self.footer()
         return self.header() + svg
 
