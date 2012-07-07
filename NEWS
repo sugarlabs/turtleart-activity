@@ -1,3 +1,17 @@
+149
+
+ENHANCEMENTS:
+* Changed flow block artwork to use "clamp style"
+* Insert blocks into the middle of a stack
+* Moved camera to media palette
+* New translations
+
+BUG FIX:
+* Fix regression that prevented selected blocks from moving on top of
+  all other blocks
+* Add box and stack proto blocks to palette on load/copy
+* Don't create duplicate start or action blocks with copy/paste
+
 148
 
 ENHANCEMENTS:
