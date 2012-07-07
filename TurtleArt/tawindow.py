@@ -2245,7 +2245,9 @@ class TurtleArtWindow():
         elif blk.name == 'identity2' or blk.name == 'hspace':
             group = find_group(blk)
             if hide_button_hit(blk.spr, x, y):
-                dx = blk.reset_x()
+                dx = -20
+                blk.contract_in_x(-dx)
+                # dx = blk.reset_x()
             elif show_button_hit(blk.spr, x, y):
                 dx = 20
                 blk.expand_in_x(dx)
@@ -2259,7 +2261,9 @@ class TurtleArtWindow():
         elif blk.name == 'vspace':
             group = find_group(blk)
             if hide_button_hit(blk.spr, x, y):
-                dy = blk.reset_y()
+                dy = -20
+                blk.contract_in_y(-dy)
+                # dy = blk.reset_y()
             elif show_button_hit(blk.spr, x, y):
                 dy = 20
                 blk.expand_in_y(dy)
@@ -2278,7 +2282,9 @@ class TurtleArtWindow():
                 dock0 = blk0.connections.index(blk)
 
             if hide_button_hit(blk.spr, x, y):
-                dy = blk.reset_y()
+                dy = -20
+                blk.contract_in_y(-dy)
+                # dy = blk.reset_y()
             elif show_button_hit(blk.spr, x, y):
                 dy = 20
                 blk.expand_in_y(dy)

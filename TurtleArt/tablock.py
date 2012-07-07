@@ -362,6 +362,42 @@ class Block:
             self.svg.set_show(False)
         self.refresh()
 
+    def contract_in_y(self, dy):
+        """ We may want to shrink a block veritcally. """
+        if self.spr is None:
+            return
+        self.ey -= dy
+        if self.ey < 0:
+            self.ey = 0
+        if self.type == 'block':
+            if self.ey > 0:
+                self.svg.set_hide(True)
+            else:
+                self.svg.set_hide(False)
+            self.svg.set_show(True)
+        else:
+            self.svg.set_hide(False)
+            self.svg.set_show(False)
+        self.refresh()
+
+    def contract_in_x(self, dx):
+        """ We may want to shrink a block horizontally. """
+        if self.spr is None:
+            return
+        self.ex -= dx
+        if self.ex < 0:
+            self.ex = 0
+        if self.type == 'block':
+            if self.ex > 0:
+                self.svg.set_hide(True)
+            else:
+                self.svg.set_hide(False)
+            self.svg.set_show(True)
+        else:
+            self.svg.set_hide(False)
+            self.svg.set_show(False)
+        self.refresh()
+
     def reset_x(self):
         if self.spr is None:
             return 0
