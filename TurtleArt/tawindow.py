@@ -541,7 +541,7 @@ class TurtleArtWindow():
     def stop_button(self):
         ''' Stop button '''
         self.lc.stop_logo()
-        self._stop_plugins()
+        # self._stop_plugins()
 
     def set_userdefined(self, blk=None):
         ''' Change icon for user-defined blocks after loading Python code. '''
