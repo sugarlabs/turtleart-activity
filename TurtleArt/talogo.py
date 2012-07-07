@@ -195,7 +195,14 @@ class LogoCode:
 
         for b in blocks:
             # Hidden macro expansions
-            if b.name in ['while', 'until', 'forever']:
+            if b.name in ['while', 'until']:
+                action_blk, new_blocks = self._expand_forever(b, blk, blocks)
+                blocks = new_blocks[:]
+                if b == blk:
+                    blk = action_blk
+
+        for b in blocks:
+            if b.name in ['forever']:
                 action_blk, new_blocks = self._expand_forever(b, blk, blocks)
                 blocks = new_blocks[:]
                 if b == blk:
@@ -255,10 +262,10 @@ class LogoCode:
             code.append(dock[4])
         if blk.primitive is not None:  # make a tuple (prim, blk)
             # special case: expand 'while' and 'until' primitives
-            try:
+            if blk in self.tw.block_list.list:
                 code.append((blk.primitive,
                              self.tw.block_list.list.index(blk)))
-            except ValueError:
+            else:
                 code.append(blk.primitive)  # Hidden block
         elif len(blk.values) > 0:  # Extract the value from content blocks.
             if blk.name == 'number':
