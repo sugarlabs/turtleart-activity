@@ -733,11 +733,9 @@ number of seconds'))
 
         primitive_dictionary['forever'] = self._prim_forever
         palette.add_block('forever',
-                          # style='flow-style',
                           style='clamp-style',
                           label=_('forever'),
                           prim_name='forever',
-                          # default=[None, 'vspace'],
                           default=[None, None],
                           logo_command='forever',
                           help_string=_('loops forever'))
@@ -746,11 +744,9 @@ number of seconds'))
 
         primitive_dictionary['repeat'] = self._prim_repeat
         palette.add_block('repeat',
-                          # style='flow-style-1arg',
                           style='clamp-style-1arg',
                           label=_('repeat'),
                           prim_name='repeat',
-                          # default=[4, None, 'vspace'],
                           default=[4, None, None],
                           logo_command='repeat',
                           special_name=_('repeat'),
@@ -759,12 +755,9 @@ number of seconds'))
 
         primitive_dictionary['if'] = self._prim_if
         palette.add_block('if',
-                          # style='flow-style-boolean',
                           style='clamp-style-boolean',
-                          # label=[_('if'), '', _('then')],
                           label=[_('if'), _('then'), ''],
                           prim_name='if',
-                          # default=[None, None, 'vspace'],
                           default=[None, None, None],
                           special_name=_('if then'),
                           logo_command='if',
@@ -775,11 +768,9 @@ operators from Numbers palette'))
         primitive_dictionary['ifelse'] = self._prim_ifelse
         palette.add_block('ifelse',
                           hidden=True,  # Too big to fit palette
-                          # style='flow-style-else',
                           style='clamp-style-else',
                           label=[_('if'), _('then'), _('else')],
                           prim_name='ifelse',
-                          # default=[None, 'vspace', None, 'vspace'],
                           default=[None, None, None, None],
                           logo_command='ifelse',
                           special_name=_('if then else'),

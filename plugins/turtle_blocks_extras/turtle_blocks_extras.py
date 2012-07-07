@@ -96,9 +96,7 @@ class Turtle_blocks_extras(Plugin):
 
         # internally expanded macro
         palette.add_block('while',
-                          # style='flow-style-boolean',
                           style='clamp-style-boolean',
-                          # label=[_('while'), ' ', ' '],
                           label=_('while'),
                           prim_name='while',
                           default=[None, None, None],
@@ -108,9 +106,7 @@ boolean operators from Numbers palette'))
 
         # internally expanded macro
         palette.add_block('until', 
-                          # style='flow-style-boolean',
                           style='clamp-style-boolean',
-                          # label=[_('until'), ' ', ' '],
                           label=_('until'),
                           prim_name='until',
                           default=[None, None, None],

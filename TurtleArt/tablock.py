@@ -158,7 +158,6 @@ class Block:
             'basic-style-2arg': self._make_basic_style_2arg,
             'basic-style-3arg': self._make_basic_style_3arg,
             'basic-style-var-arg': self._make_basic_style_var_arg,
-            'invisible': self._make_invisible_style,
             'bullet-style': self._make_bullet_style,
             'box-style': self._make_box_style,
             'box-style-media': self._make_media_style,
@@ -178,11 +177,7 @@ class Block:
             'clamp-style-1arg': self._make_clamp_style_1arg,
             'clamp-style-boolean': self._make_clamp_style_boolean,
             'clamp-style-else': self._make_clamp_style_else,
-            'flow-style': self._make_flow_style,
             'flow-style-tail': self._make_flow_style_tail,
-            'flow-style-1arg': self._make_flow_style_1arg,
-            'flow-style-boolean': self._make_flow_style_boolean,
-            'flow-style-else': self._make_flow_style_else,
             'portfolio-style-2x2': self._make_portfolio_style_2x2,
             'portfolio-style-1x1': self._make_portfolio_style_1x1,
             'portfolio-style-2x1': self._make_portfolio_style_2x1,
@@ -496,15 +491,6 @@ class Block:
                                               True, 'right', 'bottom', i=i)
             elif self.name in EXPANDABLE_FLOW:
                 self._calc_moving_labels(i)
-            # Deprecated
-            elif self.name in block_styles['flow-style-boolean'] or \
-                 self.name in block_styles['flow-style-else']:
-                self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
-                                              True, 'left', 'middle', i=0)
-                self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
-                                              True, 'right', 'top', i=1)
-                self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
-                                              True, 'right', 'bottom', i=2)
             elif i == 1:  # top
                 self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
                                               True, 'right', 'top', i=i)
@@ -935,27 +921,6 @@ class Block:
                       ['flow', False, self.svg.docks[6][0],
                                       self.svg.docks[6][1], ']']]
 
-    # Depreciated block styles
-
-    def _make_invisible_style(self, svg):
-        self._make_block_graphics(svg, self.svg.invisible)
-        # force dock positions to be the same
-        self.docks = [['flow', True, self.svg.docks[0][0],
-                       self.svg.docks[0][1]], ['flow', False,
-                       self.svg.docks[0][0], self.svg.docks[0][1]]]
-
-    def _make_flow_style(self, svg):
-        self.svg.expand(10 + self.dx + self.ex, self.ey)
-        self.svg.set_slot(True)
-        self.svg.set_tab(True)
-        self._make_block_graphics(svg, self.svg.basic_flow)
-        self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
-                      ['flow', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1], '['],
-                      ['flow', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1], ']']]
-
     def _make_flow_style_tail(self, svg):
         self.svg.expand(10 + self.dx + self.ex, self.ey)
         self.svg.set_slot(True)
@@ -966,53 +931,7 @@ class Block:
                       ['flow', False, self.svg.docks[1][0],
                                       self.svg.docks[1][1]]]
 
-    def _make_flow_style_1arg(self, svg):
-        self.svg.expand(self.dx + self.ex, self.ey)
-        self.svg.set_slot(True)
-        self.svg.set_tab(True)
-        self.svg.set_innie([True])
-        self._make_block_graphics(svg, self.svg.basic_flow)
-        self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
-                      ['number', False, self.svg.docks[1][0],
-                                        self.svg.docks[1][1]],
-                      ['flow', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1], '['],
-                      ['flow', False, self.svg.docks[3][0],
-                                      self.svg.docks[3][1], ']']]
-
-    def _make_flow_style_boolean(self, svg):
-        self.svg.expand(self.dx + self.ex, self.ey)
-        self.svg.set_slot(True)
-        self.svg.set_tab(True)
-        self.svg.set_boolean(True)
-        self._make_block_graphics(svg, self.svg.basic_flow)
-        self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
-                      ['bool', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1]],
-                      ['flow', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1], '['],
-                      ['flow', False, self.svg.docks[3][0],
-                                      self.svg.docks[3][1], ']']]
-
-    def _make_flow_style_else(self, svg):
-        self.svg.expand(self.dx + self.ex, self.ey)
-        self.svg.set_slot(True)
-        self.svg.set_tab(True)
-        self.svg.set_else(True)
-        self.svg.set_boolean(True)
-        self._make_block_graphics(svg, self.svg.basic_flow)
-        self.docks = [['flow', True, self.svg.docks[0][0],
-                                     self.svg.docks[0][1]],
-                      ['bool', False, self.svg.docks[1][0],
-                                      self.svg.docks[1][1]],
-                      ['flow', False, self.svg.docks[3][0],
-                                      self.svg.docks[3][1], '['],
-                      ['flow', False, self.svg.docks[2][0],
-                                      self.svg.docks[2][1], ']['],
-                      ['flow', False, self.svg.docks[4][0],
-                                      self.svg.docks[4][1], ']']]
+    # Depreciated block styles
 
     def _make_portfolio_style_2x2(self, svg):
         self.svg.expand(30 + self.dx + self.ex, 10 + self.ey)
