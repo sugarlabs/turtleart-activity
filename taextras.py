@@ -238,6 +238,7 @@ polygon based on the current Turtle xy position.'),
     _('reset'),
     _('Reset the project; clear the object list.'),
     _('motor'),
+    #TRANS: torque as in engine torque
     _('torque'),
     _('speed'),
     _('Motor torque and speed range from 0 (off) to positive numbers; \
@@ -260,10 +261,11 @@ recent object created and the object at point x, y).'),
     _('friction'),
     _('Set the friction property for objects (value from 0 to 1, \
 where 0 turns friction off and 1 is strong friction).'),
-    # TRANS: bounciness is restitution
+    # TRANS: bounciness is coefficient of restitution
     _('bounciness'),
     _('Set the bounciness property for \
 objects (a value from 0 to 1, where 0 means no bounce and 1 is very bouncy).'),
+    # TRANS: dynamic here means moving vs in a fixed position
     _('dynamic'),
     _('If dynamic = 1, the object can move; \
 if dynamic = 0, it is fixed in position.')
