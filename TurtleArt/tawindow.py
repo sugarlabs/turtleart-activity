@@ -2592,12 +2592,39 @@ class TurtleArtWindow():
         # If we are in an expandable flow, expand it...
         if best_destination is not None:
             self._resize_parent_clamps(best_destination)
-            '''
-            blk, dockn = self._expandable_flow_above(best_destination)
-            while blk is not None:
-                self._resize_clamp(blk, blk.connections[dockn], dockn=dockn)
-                blk, dockn = self._expandable_flow_above(blk)
-            '''
+        # Check for while nesting
+        if best_destination is not None:
+            while_blk = self._while_in_drag_group(self.drag_group[0])
+            if while_blk is not None:
+                self._check_while_nesting(best_destination,
+                                          self.drag_group[0], while_blk)
+
+    def _while_in_drag_group(self, blk):
+        ''' Is there a contained while or until block? '''
+        if blk.name in ['while', 'until']:
+            return blk
+        return find_blk_below(blk, ['while', 'until'])
+
+    def _check_while_nesting(self, blk, dock_blk, while_blk):
+        ''' Is there a containing while or until block? If so, swap them '''
+        if blk.name in ['while', 'until']:
+            if blk.connections[2] == dock_blk:
+                self._swap_while_blocks(blk, while_blk)
+        while blk.connections[-1] is not None:
+            blk = blk.connections[-1]
+            if blk.name in ['while', 'until']:
+                if blk.connections[2] == dock_blk:
+                    self._swap_while_blocks(blk, while_blk)
+            dock_blk = blk
+
+    def _swap_while_blocks(self, blk1, blk2):
+        ''' Swap postion in block list of nested while blocks '''
+        # Check to see if blk1 comes before blk2 in the block list.
+        # If so, swap them.
+        i1 = self.just_blocks().index(blk1)
+        i2 = self.just_blocks().index(blk2)
+        if i1 < i2:
+            self.block_list.swap(blk1, blk2)
 
     def _disconnect(self, blk):
         ''' Disconnect block from stack above it. '''

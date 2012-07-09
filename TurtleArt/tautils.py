@@ -657,13 +657,15 @@ def find_group(blk):
     return group
 
 
-def find_blk_below(blk, name):
+def find_blk_below(blk, namelist):
     ''' Find a specific block below this block. '''
     if blk == None or len(blk.connections) == 0:
         return
+    if type(namelist) != list:
+        namelist = [namelist]
     group = find_group(blk)
     for gblk in group:
-        if gblk.name == name:
+        if gblk.name in namelist:
             return gblk
     return None
 

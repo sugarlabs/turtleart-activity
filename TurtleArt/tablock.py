@@ -49,6 +49,12 @@ class Blocks:
         else:
             return(self.list[i])
 
+    def swap(self, blk1, blk2):
+        i1 = self.list.index(blk1)
+        i2 = self.list.index(blk2)
+        self.list[i1] = blk2
+        self.list[i2] = blk1
+
     def length_of_list(self):
         return(len(self.list))
 
