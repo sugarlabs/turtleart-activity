@@ -785,6 +785,7 @@ boolean operators from Numbers palette'))
                           help_string=_('if-then-else operator that uses \
 boolean operators from Numbers palette'))
 
+        # Deprecated
         palette.add_block('hspace',
                           style='flow-style-tail',
                           hidden=True,

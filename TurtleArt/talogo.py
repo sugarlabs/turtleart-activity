@@ -803,8 +803,6 @@ class LogoCode:
         # into trouble if any of these block types (forever, while,
         # until. ifelse, stopstack, or stack) is changed in tablock.py
 
-        # TODO: Detect nesting, e.g., forever while
-
         if b.name == 'while':
             while_blk = True
         else:
@@ -819,7 +817,7 @@ class LogoCode:
             self.save_blocks = blocks[:]
 
         # Create an action block that will jump to the new stack
-        action_name = '#s_forever %d' % (len(self.save_while_blks) + 1)
+        action_name = '_forever %d' % (len(self.save_while_blks) + 1)
         action_blk = HiddenBlock('stack')
         action_label_blk = HiddenBlock('string', value=action_name)
 
@@ -841,7 +839,7 @@ class LogoCode:
 
         # Create action block(s) to run the code inside the forever loop
         if until_blk and whileflow is not None:  # run until flow at least once
-            action_flow_name = '#s_flow %d' % (len(self.save_while_blks) + 1)
+            action_flow_name = '_flow %d' % (len(self.save_while_blks) + 1)
             action_first = HiddenBlock('stack')
             first_label_blk = HiddenBlock('string', value=action_flow_name)
 
