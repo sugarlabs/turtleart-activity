@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-06-27 00:32-0400\n"
-"PO-Revision-Date: 2012-07-01 06:20+0200\n"
+"PO-Revision-Date: 2012-07-10 04:33+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hy\n"
@@ -931,8 +931,9 @@ msgid "Load Python block"
 msgstr "Ներբեռնել «Python» ծրագրի մասնիկները"
 
 #: TurtleArtActivity.py:715
+#: TurtleArtActivity.py:710
 msgid "Sharing blocks disabled"
-msgstr ""
+msgstr "Ընդհանուր օգտագործման մասնիկները կասեցված են:"
 
 #: TurtleArtActivity.py:778
 msgid "<Ctrl>p"
@@ -1317,27 +1318,27 @@ msgstr "Սպասեք մինչև ընթացիկ տեսա կամ ձայնագրո�
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:271
 msgid "media stop"
-msgstr ""
+msgstr "Տեսա/ձայնագրամիջոցը կանգնեցնել:"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:273
 msgid "stop video or audio"
-msgstr ""
+msgstr "կանգնեցնել տեսագրությունը կամ ձայնագրությունը:"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:278
 msgid "media pause"
-msgstr ""
+msgstr "Դադար տալ"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:280
 msgid "pause video or audio"
-msgstr ""
+msgstr "Դադար տալ տեսա կամ ձայնա - գրությանը"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
 msgid "media resume"
-msgstr ""
+msgstr "Շարունակել վերարտադրումը"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:287
 msgid "resume playing video or audio"
-msgstr ""
+msgstr "Շարունակել տեսա կամ ձյնագրության վերարտադրումը"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:293
 msgid "speak"
@@ -1404,10 +1405,10 @@ msgstr ""
 msgid "keyboard"
 msgstr "ստեղնաշար"
 
+# ASCII - American Standard Code for Information Interchange /Տեղեկության Փոխանակման Ամերիկյան Ստանդարտ Կոդ
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:367
-#, fuzzy
 msgid "holds results of query-keyboard block as ASCII"
-msgstr "պահում է հարցման արդյունքները - ստեղնաշարի բլոկ"
+msgstr "Պահում է ստեղնաշարի բլոկի հարցման արդյունքները որպես ASCII."
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:399
 msgid "read pixel"
@@ -1504,11 +1505,11 @@ msgstr "Արժեքը տպում է էկրանի ստորին մասում գտն
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:527
 msgid "Python chr operator"
-msgstr ""
+msgstr "«Պիթոնի» chr օպերատոր"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:536
 msgid "Python int operator"
-msgstr ""
+msgstr "«Պիթոնի» int օպերատոր"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:543
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:556
@@ -1812,23 +1813,23 @@ msgstr "Ռուանդական ֆրանկի պահոց"
 
 #: taextras.py:50
 msgid "Palette of US dollars"
-msgstr ""
+msgstr "ԱՄՆ դոլարի պահոց"
 
 #: taextras.py:51
 msgid "Palette of Australian dollars"
-msgstr ""
+msgstr "Ավստրալիական դոլարի պահոց"
 
 #: taextras.py:52
 msgid "Palette of Paraguayan Guaranies"
-msgstr ""
+msgstr "Պարագվայական գուարանիի պահոց"
 
 #: taextras.py:53
 msgid "Palette of Peruvian Nuevo Soles"
-msgstr ""
+msgstr "Պերուական Նուեվո Սոլերի պահոց"
 
 #: taextras.py:54
 msgid "Palette of Uruguayan Pesos"
-msgstr ""
+msgstr "Ուրուգվայական պեսոի պահոց"
 
 #. TRANS: Butia is the Arduino Robot Project from Uruguay
 #. (http://www.fing.edu.uy/inco/proyectos/butia/)
@@ -2027,15 +2028,15 @@ msgstr "Ցուցադրվում է 32- նշաններից բաղկացած տեք
 
 #: taextras.py:113
 msgid "refresh Butia palette"
-msgstr ""
+msgstr "Թարմացնել Բութիայի պահոցը"
 
 #: taextras.py:114
 msgid "refresh Butia"
-msgstr ""
+msgstr "Թարմացնել Բութիան"
 
 #: taextras.py:115
 msgid "refresh the state of the Butia palette and blocks"
-msgstr ""
+msgstr "Թարմացնել Բութիայի պահոցի վիճակն ու մասնիկները:"
 
 #: taextras.py:116
 msgid "Butia"
@@ -2088,25 +2089,21 @@ msgstr "Սահմանել ԿԿԿ գույնի շեմը"
 # Calibration - ելքային արժեքի հարմարեցումը ելքի էտալոնային արժեքին:
 #. TRANS: the calibration can be saved for later use
 #: taextras.py:131
-#, fuzzy
 msgid "save calibration 1"
-msgstr "Պահել կալիբրացիան 1"
+msgstr "Պահել 1 կալիբրացիան"
 
 #: taextras.py:132
-#, fuzzy
 msgid "stores a calibration in calibration 1"
-msgstr "Պահեստավորում է մի կալիբրացիա կալիբրացի ա 1 -ում:"
+msgstr "Պահեստավորում է մի կալիբրացիա` կալիբրացիա 1 -ում:"
 
 #. TRANS: the calibration can be saved for later use
 #: taextras.py:134
-#, fuzzy
 msgid "save calibration 2"
-msgstr "Պահել կալիբրացիա 2"
+msgstr "Պահել կալիբրացիա 2-ը"
 
 #: taextras.py:135
-#, fuzzy
 msgid "stores a calibration in calibration 2"
-msgstr "Պահեստավորում է մի կալիբրացիա կալիբրացի ա 2 -ում:"
+msgstr "Պահեստավորում է մի կալիբրացիան կալիբրացիա 2 -ում:"
 
 # Calibration - Ելքային արժեքի հարմմարեցումը ելքի էտալոնային արժեքին:
 #. TRANS: the calibration is used to match an RGB color to a target
@@ -2115,7 +2112,6 @@ msgid "calibration"
 msgstr "Կալիբրացիա"
 
 #: taextras.py:138
-#, fuzzy
 msgid "stores a personalized calibration"
 msgstr "Պահեստավորում է անհատականացված կալիբրացիան:"
 
@@ -2132,12 +2128,10 @@ msgid "calibration 2"
 msgstr "Կալիբրացիա 2"
 
 #: taextras.py:142
-#, fuzzy
 msgid "return calibration 2"
 msgstr "Վերադարձնել կալիբրացիա 2-ը"
 
 #: taextras.py:143
-#, fuzzy
 msgid "return a personalized calibration"
 msgstr "Վերադարձնել անհատականացված կալիբրացիան:"
 
@@ -2249,9 +2243,8 @@ msgstr "SumBot -ը շրջել դեպի աջ:"
 #. TRANS: The angle to the center is the angle SumBot must turn to
 #. face the center of the playing field
 #: taextras.py:179
-#, fuzzy
 msgid "angle to center"
-msgstr "Անկյունից` դեպի կենտրոն"
+msgstr "Շրջել դեպի կենտրոն անկյան տակ"
 
 # Dohyo կան dojo - Սումո ըմբշամարտի բեմն է
 #. TRANS: dohyo is the playing field
@@ -2263,12 +2256,11 @@ msgstr "Անկյունը հասցնում է dohyo- ի կենտրոնին"
 #. face the Enemy (opponent)
 #: taextras.py:184
 msgid "angle to Enemy"
-msgstr ""
+msgstr "Շրջել դեպի հակառակորդն ուղղող անկյան տակ:"
 
 #: taextras.py:185
-#, fuzzy
 msgid "get the angle to the Enemy"
-msgstr "Պարզել հեռավորությունը մինչև հակառակորդը"
+msgstr "Պարզել անկյան չափը մինչև հակառակորդը"
 
 #. TRANS: This string is shorthand for "x coordinate of SumBot"
 #: taextras.py:187
@@ -2312,19 +2304,18 @@ msgid "rotation SumBot"
 msgstr "SumBot պտույտ"
 
 #: taextras.py:200
-#, fuzzy
 msgid "get the rotation of the Sumbot"
-msgstr "Հասնում է հակառակ կողմի պտույտին"
+msgstr "Հասնում է Sumbot -ի պտույտին"
 
+# rotation պտույտ կամ շրջադարձ
 #. TRANS: This string is shorthand for "rotation of SumBot's enemy"
 #: taextras.py:202
 msgid "rotation Enemy"
-msgstr ""
+msgstr "Հակառակորդի պտույտ"
 
 #: taextras.py:203
-#, fuzzy
 msgid "get the rotation of the Enemy"
-msgstr "Հասնում է հակառակ կողմի պտույտին"
+msgstr "Հասնում է Հակառակորդի  պտույտին"
 
 #: taextras.py:204
 msgid "distance to center"
@@ -2332,16 +2323,14 @@ msgstr "հեռավորություն կենտրոնից"
 
 #. TRANS: dohyo is the playing field
 #: taextras.py:206
-#, fuzzy
 msgid "get the distance to the center of the dohyo"
-msgstr "Պարզել հեռավորություն «dojo» -ի կենտրոնից"
+msgstr "Պարզել հեռավորությունը «dojo»-ի կենտրոնից"
 
 #: taextras.py:207
 msgid "distance to Enemy"
-msgstr ""
+msgstr "Հեռավորությունը մինչև Հակառակորդը"
 
 #: taextras.py:208
-#, fuzzy
 msgid "get the distance to the Enemy"
 msgstr "Պարզել հեռավորությունը մինչև հակառակորդը"
 
@@ -2350,233 +2339,245 @@ msgid "update information"
 msgstr "արդիականացնել տեղեկությունը"
 
 #: taextras.py:210
-#, fuzzy
 msgid "update information from the server"
 msgstr "Արդիականացնել տեղեկությունը` սերվերից"
 
 #. TRANS: Please use similar terms to those used in the Physics Activity
 #: taextras.py:215
-#, fuzzy
 msgid "Palette of physics blocks"
-msgstr "Սենսորային մասնիկների պահոց"
+msgstr "Ֆիզիկայի մասնիկների պահոց"
 
 #: taextras.py:216
 msgid "start polygon"
-msgstr ""
+msgstr "Սկսել բազմանկյունը"
 
 #: taextras.py:217
 msgid "Begin defining a new polygon based on the current Turtle xy position."
-msgstr ""
+msgstr "Սկսել նոր բազմանկյան սահմանումը` ելնելով Կրիայի առկա XY դիրքից"
 
 #: taextras.py:219
 msgid "add point"
-msgstr ""
+msgstr "Կետ ավելացնել"
 
 #: taextras.py:220
 msgid ""
 "Add a new point to the current polygon based on the current Turtle xy "
 "position."
-msgstr ""
+msgstr "Նոր կետ ավելացնել առկա բազմանկյանը` ելնելով Կրիայի ներկա XY դիրքից:"
 
 #: taextras.py:222
 msgid "end polygon"
-msgstr ""
+msgstr "Ավարտել բազմանկյունը:"
 
 #: taextras.py:223
 msgid "Define a new polygon."
-msgstr ""
+msgstr "Սահմանել նոր բազմանկյուն"
 
 #: taextras.py:224
 msgid "end filled polygon"
-msgstr ""
+msgstr "Ավարտել լցված բազմանկյունը:"
 
 #: taextras.py:225
 msgid "Not a simple polygon"
-msgstr ""
+msgstr "Պարզ բազմանկյուն չէ"
 
 #: taextras.py:226
 msgid "Define a new filled polygon."
-msgstr ""
+msgstr "Սահմանել նոր, լցոնված բազմանկյուն:"
 
 #: taextras.py:227
 msgid "triangle"
-msgstr ""
+msgstr "Եռանկյուն"
 
 #. TRANS: base of a triangle
 #: taextras.py:229
 msgid "base"
-msgstr ""
+msgstr "Հիմք"
 
 #: taextras.py:231
 msgid "Add a triangle object to the project."
-msgstr ""
+msgstr "Եռանկյունաձև օբյեկտ ավելացնել նախագծին:"
 
 #: taextras.py:232
 msgid "circle"
-msgstr ""
+msgstr "Շրջանագիծ"
 
 #: taextras.py:233
 msgid "Add a circle object to the project."
-msgstr ""
+msgstr "Շրջանաձև օբյեկտ ավելացնել նախագծին:"
 
 #: taextras.py:234
 msgid "rectangle"
-msgstr ""
+msgstr "Ուղղանկյուն"
 
 #: taextras.py:237
 msgid "Add a rectangle object to the project."
-msgstr ""
+msgstr "Ուղղանկյունաձև օբյեկտ ավելացնել նախագծին"
 
 #: taextras.py:238
 msgid "reset"
-msgstr ""
+msgstr "Վերակարգավորել"
 
 #: taextras.py:239
 msgid "Reset the project; clear the object list."
-msgstr ""
+msgstr "Վերակարգավորել Նախագիծը, վերացնել օբյեկտների ցանկը:"
 
 #: taextras.py:240
 msgid "motor"
-msgstr ""
+msgstr "Շարժիչ"
 
 #: taextras.py:241
 msgid "torque"
-msgstr ""
+msgstr "Շարժիչի պտտվող մասը"
 
 #: taextras.py:242
 msgid "speed"
-msgstr ""
+msgstr "Արագություն"
 
 #: taextras.py:243
 msgid ""
 "Motor torque and speed range from 0 (off) to positive numbers; motor is "
 "placed on the most recent object created."
 msgstr ""
+"Շարժիչի պտույտները և արագության աստիճանները 0-ից /անջատված/ մինչև դրական "
+"թվեր; շարժիչը տեղավորվում է ամենավերջում ստեղծված օբյեկտի մոտ:"
 
 #: taextras.py:245 taextras.py:366
 msgid "pin"
-msgstr ""
+msgstr "Կոճգամ"
 
 #: taextras.py:246
 msgid "Pin an object down so that it cannot fall."
-msgstr ""
+msgstr "Կոճգամով ամրացրու օբյեկտը, որպեսզի չընկնի:"
 
 #: taextras.py:247
 msgid "joint"
-msgstr ""
+msgstr "Միացյալ"
 
 #: taextras.py:250
 msgid ""
 "Join two objects together (the most recent object created and the object at "
 "point x, y)."
 msgstr ""
+"Միացնել 2 օբյեկտները (ամենավերջում ստեղծված օբյեկտն ու x, y կետի վրա գտնվող "
+"օբյեկտը):"
 
 #: taextras.py:252
 msgid "save as Physics activity"
-msgstr ""
+msgstr "Պահել ֆիզիկա գործունեությունը"
 
 #: taextras.py:253
 msgid "Save the project to the Journal as a Physics activity."
-msgstr ""
+msgstr "Պահել Նախագիծը Մատյանում որպես Ֆիզիկայի գործունեություն:"
 
 #. TRANS: Here, gear means a toothed wheel, as in a clock-works
 #: taextras.py:255
 msgid "gear"
-msgstr ""
+msgstr "Ատամնանիվ"
 
 #: taextras.py:256
 msgid "Add a gear object to the project."
-msgstr ""
+msgstr "Նախագծին ատամնանիվ ավելացնել"
 
 #: taextras.py:257
-#, fuzzy
 msgid "density"
-msgstr "ինքնություն"
+msgstr "Խտություն"
 
 #: taextras.py:258
 msgid ""
 "Set the density property for objects (density can be any positive number)."
-msgstr ""
+msgstr "Սահմանել օբյեկտների խտությունը (կարող է լինել միայն դրական թիվ):"
 
 #: taextras.py:260
 msgid "friction"
-msgstr ""
+msgstr "Շփում"
 
 #: taextras.py:261
 msgid ""
 "Set the friction property for objects (value from 0 to 1, where 0 turns "
 "friction off and 1 is strong friction)."
 msgstr ""
+"Սահմանել օբյեկտների շփման մակարդակը (արժեքը` 0-ից մինչև 1, որտեղ 0 բացառում "
+"է շփումը, իսկ 1-ն` ուժեղ շփում է):"
 
+# Առաձգական մակերեսի շնորհիվ
 #. TRANS: bounciness is restitution
 #: taextras.py:264
 msgid "bounciness"
-msgstr ""
+msgstr "Ետցատկ"
 
 #: taextras.py:265
 msgid ""
 "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
 "no bounce and 1 is very bouncy)."
 msgstr ""
+"Սահմանել օբյեկտի ետցանկի ուժգնությունը (արժեքը` 0-ից մինչև 1, որտեղ 0 "
+"բացառում է ետցատկը, իսկ 1-ը` շատ արագ ետցատկ է):"
 
+# Դինամիկ
 #: taextras.py:267
 msgid "dynamic"
-msgstr ""
+msgstr "Շարժուն"
 
 #: taextras.py:268
 msgid ""
 "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
 msgstr ""
+"Եթե շարժունակությունը = 1, օբյեկտը կարող է շարժվել, եթե այն = 0` ապա անշարժ "
+"մնում է իր դիրքում:"
 
+# WeDo - LEGO ընկերության ռոբոտային արտադրանք է:
 #. TRANS: WeDo is a robotics product of the LEGO company
 #: taextras.py:274
-#, fuzzy
 msgid "Palette of WeDo blocks"
-msgstr "Սենսորային մասնիկների պահոց"
+msgstr "WeDo մասնիկների պահոց"
 
 #: taextras.py:276
 msgid ""
 "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
 "tilt left, 2 == tilt right)"
 msgstr ""
+"Թեքման սենսորի արդյունքը. (-1 == թեքում չկա, 0 == թեքում դեպի առաջ, 3 == "
+"թեքում դեպի ետ, 1 == թեքում դեպի ձախ, 2 == թեքում դեպի աջ)"
 
 #. TRANS: This string is shorthand for "output of the distance sensor"
 #: taextras.py:280
 msgid "distance sensor output"
-msgstr ""
+msgstr "Հեռավորության սենսորի արդյունքը:"
 
 #: taextras.py:281
 msgid "Motor A"
-msgstr ""
+msgstr "Շարժիչ A"
 
 #: taextras.py:282
 msgid "returns the current value of Motor A"
-msgstr ""
+msgstr "Վերադարձնում է A շարժիչի ընթացիկ արժեքը:"
 
 #: taextras.py:283
 msgid "Motor B"
-msgstr ""
+msgstr "Շարժիչ B"
 
 #: taextras.py:284
 msgid "returns the current value of Motor B"
-msgstr ""
+msgstr "Վերադարձնում է B շարժիչի ընթացիկ արժեքը:"
 
 #: taextras.py:285
 msgid "set the value for Motor A"
-msgstr ""
+msgstr "Սահմանել A շարժիչի արժեքը:"
 
 #: taextras.py:286
 msgid "set the value for Motor B"
-msgstr ""
+msgstr "Սահմանել B շարժիչի արժեքը:"
 
+# LEGO NXT - LEGO ընկերության ռոբոտային արտադրանք է: 
 #. TRANS: Lego NXT is a robotics product of the LEGO company
 #: taextras.py:291
 msgid "Palette of LEGO NXT blocks of motors"
-msgstr ""
+msgstr "Շարժիչի LEGO NXT մասնիկների պահոց:"
 
 #: taextras.py:292
 msgid "Palette of LEGO NXT blocks of sensors"
-msgstr ""
+msgstr "LEGO NXT -ի սենսորների մասնիկների պահոց:"
 
 #: taextras.py:293
 msgid "touch"
@@ -2584,40 +2585,39 @@ msgstr ""
 
 #: taextras.py:294
 msgid "ultrasonic"
-msgstr ""
+msgstr "Գերձայնային"
 
 #: taextras.py:296
-#, fuzzy
 msgid "light"
-msgstr "աջ"
+msgstr "Լույս"
 
 #: taextras.py:298
 msgid "PORT A"
-msgstr ""
+msgstr "Մուտք A"
 
 #: taextras.py:299
 msgid "PORT B"
-msgstr ""
+msgstr "Մուտք B"
 
 #: taextras.py:300
 msgid "PORT C"
-msgstr ""
+msgstr "Մուտք C"
 
 #: taextras.py:301
 msgid "PORT 1"
-msgstr ""
+msgstr "Մուտք 1"
 
 #: taextras.py:302
 msgid "PORT 2"
-msgstr ""
+msgstr "Մուտք 2"
 
 #: taextras.py:303
 msgid "PORT 3"
-msgstr ""
+msgstr "Մուտք 3"
 
 #: taextras.py:304
 msgid "PORT 4"
-msgstr ""
+msgstr "Մուտք 4"
 
 #: taextras.py:305
 msgid "Please check the connection with the brick."
@@ -2625,27 +2625,30 @@ msgstr ""
 
 #: taextras.py:306
 msgid "Please check the port."
-msgstr ""
+msgstr "Խնդրեմ, ստուգե՛ք մուտքը"
 
 #: taextras.py:307
 msgid "The value of power must be between -127 to 127."
-msgstr ""
+msgstr "Հզորության արժեքը պետք է լինի   -127 և 127 -ի միջև:"
 
 #: taextras.py:308
 msgid "An error has occurred: check all connections and try to reconnect."
 msgstr ""
+"Վրիպում է տեղի ունեցել. խնդրեմ ստուգե՛ք բոլոր միացումներն ու փորձեք նորից "
+"միացնել:"
 
+# NXT - LEGO -ի գրաֆիկական լեզու
 #: taextras.py:309
 msgid "NXT found"
-msgstr ""
+msgstr "NXT գտնվել է:"
 
 #: taextras.py:310
 msgid "NXT not found"
-msgstr ""
+msgstr "NXT չի գտնվել"
 
 #: taextras.py:311
 msgid "refresh NXT"
-msgstr ""
+msgstr "Թարմացնել NXT-ը"
 
 #: taextras.py:312
 msgid "Search for a connected NXT brick."
@@ -2653,15 +2656,15 @@ msgstr ""
 
 #: taextras.py:313
 msgid "play tone"
-msgstr ""
+msgstr "Վերարտադրել հնչյունը"
 
 #: taextras.py:314
 msgid "frequency"
-msgstr ""
+msgstr "Հաճախականություն"
 
 #: taextras.py:316
 msgid "Play a tone at frequency for time."
-msgstr ""
+msgstr "Նվագարկել հաճախականությամբ հնչյունը որոշակի ժամանակի ընթացքում:"
 
 #: taextras.py:317
 msgid ""
@@ -2670,13 +2673,12 @@ msgid ""
 msgstr ""
 
 #: taextras.py:318
-#, fuzzy
 msgid "port"
-msgstr "Դարպաս"
+msgstr "Մուտք"
 
 #: taextras.py:319
 msgid "power"
-msgstr ""
+msgstr "Հզորություն"
 
 #: taextras.py:320
 msgid "turn a motor"
@@ -2687,15 +2689,16 @@ msgid ""
 "synchronize motors\n"
 "steering"
 msgstr ""
+"Համաժամանակեցնել շարժիչները\n"
+" ղեկելով"
 
 #: taextras.py:322
-#, fuzzy
 msgid "rotations"
-msgstr "պտույտ"
+msgstr "Պտույտներ"
 
 #: taextras.py:323
 msgid "synchronize two motors connected in PORT B and PORT C"
-msgstr ""
+msgstr "Համաժամանակեցնել Մուտք B-ին և Մուտք C -ին միացված շարժիչները:"
 
 #: taextras.py:324
 msgid "PORT A of the brick"
@@ -2711,19 +2714,19 @@ msgstr ""
 
 #: taextras.py:327
 msgid "start motor"
-msgstr ""
+msgstr "Միացնե՛լ շարժիչը"
 
 #: taextras.py:328
 msgid "Run a motor forever."
-msgstr ""
+msgstr "Աշխատեցնե՛լ շարժիչը մշտապես:"
 
 #: taextras.py:329
 msgid "brake motor"
-msgstr ""
+msgstr "Արգելակել շարժիչը"
 
 #: taextras.py:330
 msgid "Stop a specified motor."
-msgstr ""
+msgstr "Արգելակել որոշված շարժիչը"
 
 #: taextras.py:331
 msgid "reset motor"
@@ -2735,11 +2738,11 @@ msgstr ""
 
 #: taextras.py:333
 msgid "motor position"
-msgstr ""
+msgstr "Շարժիչի դիրքը"
 
 #: taextras.py:334
 msgid "Get the motor position."
-msgstr ""
+msgstr "Պարզել շարժիչի դիրքը"
 
 #: taextras.py:335
 msgid "PORT 1 of the brick"
@@ -2758,38 +2761,36 @@ msgid "PORT 4 of the brick"
 msgstr ""
 
 #: taextras.py:339
-#, fuzzy
 msgid "read"
-msgstr "կարմիր"
+msgstr "Կարդալ"
 
 #: taextras.py:340
-#, fuzzy
 msgid "sensor"
-msgstr "սենսորներ"
+msgstr "Սենսոր"
 
 #: taextras.py:341
 msgid "Read sensor output."
-msgstr ""
+msgstr "Կարդալ սենսորի ելքի տվյալները"
 
 #: taextras.py:342
 msgid "color sensor"
-msgstr ""
+msgstr "Գույնի սենսոր"
 
 #: taextras.py:343
 msgid "light sensor"
-msgstr ""
+msgstr "Լույսի սենսոր"
 
 #: taextras.py:344
 msgid "touch sensor"
-msgstr ""
+msgstr "Հպման սենսոր"
 
 #: taextras.py:345
 msgid "distance sensor"
-msgstr ""
+msgstr "Հեռավորության սենսոր"
 
 #: taextras.py:346
 msgid "sound sensor"
-msgstr ""
+msgstr "Ձայնային սենսոր"
 
 #: taextras.py:347
 msgid "set light"
@@ -2799,52 +2800,55 @@ msgstr ""
 msgid "Set color sensor light."
 msgstr ""
 
+# Arduino - բաց, ազատ սարքաշարի հարթակ, հավելյալ մուտք Arduino վահանակի վերահսկման համար:
 #. TRANS: Arduino plugin to control an Arduino board
 #: taextras.py:353
-#, fuzzy
 msgid "Palette of Arduino blocks"
-msgstr "Սենսորային մասնիկների պահոց"
+msgstr "Arduino մասնիկների պահոց"
 
 #: taextras.py:354
 msgid "HIGH"
-msgstr ""
+msgstr "ԲԱՐՁՐ"
 
 #: taextras.py:355
 msgid "LOW"
-msgstr ""
+msgstr "ՑԱԾՐ"
 
 #: taextras.py:356
 msgid "INPUT"
-msgstr ""
+msgstr "ՄՈւՏՔ"
 
 #: taextras.py:357
 msgid "OUTPUT"
-msgstr ""
+msgstr "ԵԼՔ"
 
+# PWM - pulse width modulation, ԲԼՄ -բաբախյունի լայնքի մոդուլացիա 
 #. TRANS: PWM is pulse-width modulation
 #: taextras.py:359
 msgid "PWM"
-msgstr ""
+msgstr "PWM"
 
+# SERVO - փոքր չափի ռոբոտների հեռակա ռադիոկառավարման սարք:
+# 
 #: taextras.py:360
 msgid "SERVO"
-msgstr ""
+msgstr "SERVO"
 
 #: taextras.py:361
 msgid "ERROR: Check the Arduino and the number of port."
-msgstr ""
+msgstr "ՍԽԱԼ. Ստուգել Arduino -ն և մուտքի համարը:"
 
 #: taextras.py:362
 msgid "ERROR: Value must be a number from 0 to 255."
-msgstr ""
+msgstr "ՍԽԱԼ. Արժեքը պետք է լինի 0-ից մինչև 255:"
 
 #: taextras.py:363
 msgid "ERROR: Value must be either HIGH or LOW."
-msgstr ""
+msgstr "ՍԽԱԼ. Արժեքը պետք է լինի կամ ԲԱՐՁՐ, կամ` ՑԱԾՐ:"
 
 #: taextras.py:364
 msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-msgstr ""
+msgstr "ՍԽԱԼ. պետք է լինի, ՄՈւՏՔ, ԵԼՔ, PWM կամ SERVO կերպով:"
 
 #: taextras.py:365
 msgid "pin mode"
@@ -2852,13 +2856,13 @@ msgstr ""
 
 # Մոդուլ
 #: taextras.py:367
-#, fuzzy
 msgid "mode"
-msgstr "mod"
+msgstr "Կերպ"
 
 #: taextras.py:368
+#, fuzzy
 msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-msgstr ""
+msgstr "Ընտրել pin գործառույթը"
 
 #: taextras.py:369
 msgid "analog write"
