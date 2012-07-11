@@ -292,7 +292,9 @@ LEGO_STRINGS = [
     # TRANS: Lego NXT is a robotics product of the LEGO company
     _('Palette of LEGO NXT blocks of motors'),
     _('Palette of LEGO NXT blocks of sensors'),
+    # TRANS: touch sensor (implemented as a button)
     _('touch'),
+    # TRANS: distance sensor (implemented using ultrasonics)
     _('ultrasonic'),
     _('color'),
     _('light'),
@@ -304,6 +306,7 @@ LEGO_STRINGS = [
     _('PORT 2'),
     _('PORT 3'),
     _('PORT 4'),
+    # TRANS: The brick is the NXT controller
     _('Please check the connection with the brick.'),
     _('Please check the port.'),
     _('The value of power must be between -127 to 127.'),
@@ -316,6 +319,7 @@ LEGO_STRINGS = [
     _('frequency'),
     _('time'),
     _('Play a tone at frequency for time.'),
+    # TRANS: turn is the action and rotations is quantity of turns
     _('turn motor\nrotations'),
     _('port'),
     _('power'),
@@ -330,6 +334,7 @@ LEGO_STRINGS = [
     _('Run a motor forever.'),
     _('brake motor'),
     _('Stop a specified motor.'),
+    # TRANS: reset is used to reset the counter associated with the motor
     _('reset motor'),
     _('Reset the motor counter.'),
     _('motor position'),
@@ -346,6 +351,8 @@ LEGO_STRINGS = [
     _('touch sensor'),
     _('distance sensor'),
     _('sound sensor'),
+    # TRANS: set light is used to set the light level associated with
+    # the color sensor
     _('set light'),
     _('Set color sensor light.')
 ]
@@ -364,6 +371,8 @@ ARDUINO_STRINGS = [
     _('ERROR: Value must be a number from 0 to 255.'),
     _('ERROR: Value must be either HIGH or LOW.'),
     _('ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO.'),
+    #TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
+    #in which an I/O pin is being used.
     _('pin mode'),
     _('pin'),
     _('mode'),
