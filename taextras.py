@@ -352,7 +352,7 @@ LEGO_STRINGS = [
     _('distance sensor'),
     _('sound sensor'),
     # TRANS: set light is used to set the light level associated with
-    # the color sensor
+    # the color sensor (which can emit light as well as sense it)
     _('set light'),
     _('Set color sensor light.')
 ]
