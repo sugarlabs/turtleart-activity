@@ -824,10 +824,8 @@ class TurtleArtActivity(activity.Activity):
         canvas.set_size_request(gtk.gdk.screen_width() * 2,
                                 gtk.gdk.screen_height() * 2)
         self.sw.add_with_viewport(canvas)
-        hadj = self.sw.get_hadjustment()
-        hadj.connect('value-changed', self._scroll_cb)
-        vadj = self.sw.get_vadjustment()
-        vadj.connect('value-changed', self._scroll_cb)
+        self.sw.get_hadjustment().connect('value-changed', self._scroll_cb)
+        self.sw.get_vadjustment().connect('value-changed', self._scroll_cb)
         self.hadj_value = 0
         self.vadj_value = 0
         canvas.show()
@@ -838,10 +836,8 @@ class TurtleArtActivity(activity.Activity):
     def _scroll_cb(self, window):
         ''' The scrolling window has been changed, so move the
         floating palettes. '''
-        hadj = self.sw.get_hadjustment()
-        self.hadj_value = hadj.get_value()
-        vadj = self.sw.get_vadjustment()
-        self.vadj_value = vadj.get_value()
+        self.hadj_value = self.sw.get_hadjustment().get_value()
+        self.vadj_value = self.sw.get_vadjustment().get_value()
         if not self.tw.hw in [XO1] and \
            not self._defer_palette_move:
             gobject.idle_add(self.tw.move_palettes, self.hadj_value,
@@ -849,15 +845,13 @@ class TurtleArtActivity(activity.Activity):
 
     def _setup_canvas(self, canvas_window):
         ''' Initialize the turtle art canvas. '''
-        #win = canvas_window.get_window()  # self._canvas.get_window()
-        win = canvas_window.window
-        cr = win.cairo_create()
-        surface = cr.get_target()
-        self.turtle_canvas = surface.create_similar(
+        cr = canvas_window.window.cairo_create()
+        self.turtle_canvas = cr.get_target().create_similar(
             cairo.CONTENT_COLOR, gtk.gdk.screen_width() * 2,
             gtk.gdk.screen_height() * 2)
-        bundle_path = activity.get_bundle_path()
-        self.tw = TurtleArtWindow(canvas_window, bundle_path, self,
+        self.tw = TurtleArtWindow(canvas_window,
+                                  activity.get_bundle_path(),
+                                  self,
                                   mycolors=profile.get_color().to_string(),
                                   mynick=profile.get_nick_name(),
                                   turtle_canvas=self.turtle_canvas)
