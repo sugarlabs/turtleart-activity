@@ -54,10 +54,12 @@ class Camera_sensor(Plugin):
         sensors_palette = make_palette('sensor',
                                        colors=["#FF6060", "#A06060"],
                                        help_string=_(
-                'Palette of sensor blocks'))
+                'Palette of sensor blocks'),
+                                       position=6)
         media_palette = make_palette('media',
                                      colors=["#A0FF00", "#80A000"],
-                                     help_string=_('Palette of media objects'))
+                                     help_string=_('Palette of media objects'),
+                                     position=7)
 
         # set up camera-specific blocks
         primitive_dictionary['read_camera'] = self.prim_read_camera

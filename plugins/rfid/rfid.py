@@ -83,7 +83,8 @@ class Rfid(Plugin):
         primitive_dictionary['rfid'] = self.prim_read_rfid
         palette = make_palette('sensor',
                                colors=["#FF6060", "#A06060"],
-                               help_string=_('Palette of sensor blocks'))
+                               help_string=_('Palette of sensor blocks'),
+                               position=6)
 
         if self._status:
             palette.add_block('rfid',

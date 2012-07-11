@@ -79,9 +79,9 @@ class Turtle_blocks_extras(Plugin):
         # set up Turtle Block palettes
         self._flow_palette()
 
-        self._media_palette()
-
         self._sensor_palette()
+
+        self._media_palette()
 
         self._extras_palette()
 
@@ -113,6 +113,15 @@ boolean operators from Numbers palette'))
                           special_name=_('until'),
                           help_string=_('do-until-True operator that uses \
 boolean operators from Numbers palette'))
+
+        primitive_dictionary['clamp'] = self._prim_clamp
+        palette.add_block('sandwichclamp',
+                          style='clamp-style-collapsible',
+                          label=' ',
+                          special_name=_('top'),
+                          prim_name='clamp',
+                          help_string=_('top of a collapsible stack'))
+        self.tw.lc.def_prim('clamp', 1, primitive_dictionary['clamp'], True)
 
     def _media_palette(self):
 
@@ -670,15 +679,6 @@ module found in the Journal'))
                           style='basic-style-1arg',
                           label=_('turtle shell'),
                           help_string=_("put a custom 'shell' on the turtle"))
-
-        primitive_dictionary['clamp'] = self._prim_clamp
-        palette.add_block('sandwichclamp',
-                          style='clamp-style-collapsible',
-                          label=' ',
-                          special_name=_('top'),
-                          prim_name='clamp',
-                          help_string=_('top of a collapsible stack'))
-        self.tw.lc.def_prim('clamp', 1, primitive_dictionary['clamp'], True)
 
         palette.add_block('sandwichclampcollapsed',
                           hidden=True,

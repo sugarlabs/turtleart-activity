@@ -72,7 +72,8 @@ class Audio_sensors(Plugin):
 
         palette = make_palette('sensor',
                                colors=["#FF6060", "#A06060"],
-                               help_string=_('Palette of sensor blocks'))
+                               help_string=_('Palette of sensor blocks'),
+                               position=6)
 
         primitive_dictionary['sound'] = self.prim_sound
         primitive_dictionary['volume'] = self.prim_volume

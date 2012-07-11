@@ -46,7 +46,8 @@ class Light_sensor(Plugin):
         # set up light-sensor specific blocks
         palette = make_palette('sensor',
                                colors=["#FF6060", "#A06060"],
-                               help_string=_('Palette of sensor blocks'))
+                               help_string=_('Palette of sensor blocks'),
+                               position=6)
 
         primitive_dictionary['lightsensor'] = self.prim_lightsensor
         if self._status:
