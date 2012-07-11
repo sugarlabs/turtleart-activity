@@ -1767,12 +1767,14 @@ class TurtleArtWindow():
                 newblk = self.load_block(blk, offset)
                 if newblk is not None:
                     blocks.append(newblk)
+                    newblk.spr.set_layer(TOP_LAYER)
         # Some extra blocks may have been added by load_block
         for blk in self._extra_block_data:
             self._process_block_data.append(blk)
             newblk = self.load_block(blk, offset)
             if newblk is not None:
                 blocks.append(newblk)
+                newblk.spr.set_layer(TOP_LAYER)
 
         # Make the connections.
         for i in range(len(blocks)):
