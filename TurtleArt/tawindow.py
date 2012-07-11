@@ -529,8 +529,9 @@ class TurtleArtWindow():
         for blk in self.just_blocks():
             if find_block_to_run(blk):
                 self.step_time = time
-                debug_output("running stack starting from %s" % (blk.name),
-                             self.running_sugar)
+                if self.running_sugar:
+                    debug_output("running stack starting from %s" % (blk.name),
+                                 self.running_sugar)
                 if running_from_button_push:
                     self.selected_blk = None
                 else:
