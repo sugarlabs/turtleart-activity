@@ -3419,7 +3419,10 @@ class TurtleArtWindow():
                         self.python_code
                     self.set_userdefined(blk)
         if btype == 'string' and blk.spr is not None:
-            blk.spr.set_label(blk.values[0].replace('\n', RETURN))
+            value = blk.values[0]
+            if type(value) == unicode:
+                value = value.encode('ascii', 'replace')
+            blk.spr.set_label(value.replace('\n', RETURN))
         elif btype == 'start':  # block size is saved in start block
             if value is not None:
                 self.block_scale = value
@@ -3859,6 +3862,8 @@ class TurtleArtWindow():
 
     def _new_stack_block(self, name):
         ''' Add a stack block to the 'blocks' palette '''
+        if type(name) == unicode:
+            name = name.encode('ascii', 'replace')
         if CURSOR in name:
             name = name.replace(CURSOR, '')
         if name == _('action'):
