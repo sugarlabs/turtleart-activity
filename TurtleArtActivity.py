@@ -1139,7 +1139,8 @@ in order to use the plugin.'))
         text = clipboard.wait_for_text()
         if text is not None:
             if self.tw.selected_blk is not None and \
-               self.tw.selected_blk.name == 'string':
+               self.tw.selected_blk.name == 'string' and \
+               text[0:2] != '[[':  # Don't paste block data into a string
                 for i in text:
                     self.tw.process_alphanumeric_input(i, -1)
                 self.tw.selected_blk.resize()

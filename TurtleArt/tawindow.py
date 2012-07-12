@@ -26,6 +26,8 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gobject
+from StringIO import StringIO
+
 from gettext import gettext as _
 
 try:
@@ -67,7 +69,7 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
     arithmetic_check, xy, find_block_to_run, find_top_block, journal_check, \
     find_group, find_blk_below, data_to_string, find_start_stack, \
     get_hardware, debug_output, error_output, data_to_string, convert, \
-    find_bot_block, restore_clamp, collapse_clamp
+    find_bot_block, restore_clamp, collapse_clamp, data_from_string
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
@@ -386,6 +388,29 @@ class TurtleArtWindow():
         self.window.connect("button-release-event", self._buttonrelease_cb)
         self.window.connect("motion-notify-event", self._move_cb)
         self.window.connect("key-press-event", self._keypress_cb)
+
+        target = [("text/plain", 0, 0)]
+        self.window.drag_dest_set(gtk.DEST_DEFAULT_ALL, target,
+                           gtk.gdk.ACTION_COPY | gtk.gdk.ACTION_MOVE)
+        self.window.connect('drag_data_received', self._drag_data_received)
+
+    def _drag_data_received(self, w, context, x, y, data, info, time):
+        ''' Handle dragging of block data from clipboard to canvas. '''
+        debug_output(data.data, True)
+        if data and data.format == 8 and data.data[0:2] == '[[':
+            self.process_data(data_from_string(data.data),
+                              self.paste_offset)
+            self.paste_offset += 20
+            context.finish(True, False, time)
+        elif data and data.format == 8 and \
+             self.selected_blk is not None and \
+             self.selected_blk.name == 'string':
+            for i in data.data:
+                self.process_alphanumeric_input(i, -1)
+            self.selected_blk.resize()
+            context.finish(True, False, time)
+        else:
+            context.finish(False, False, time)
 
     def load_media_shapes(self):
         ''' Media shapes get positioned onto blocks '''
