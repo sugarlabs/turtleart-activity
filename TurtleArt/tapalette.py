@@ -77,7 +77,6 @@ block_styles = {'basic-style': [],
 
 import gtk
 
-from sugar.graphics.icon import Icon
 from sugar.graphics import style
 
 from taconstants import EXPANDABLE_STYLE, EXPANDABLE_FLOW
