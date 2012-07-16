@@ -77,7 +77,11 @@ block_styles = {'basic-style': [],
 
 import gtk
 
-from sugar.graphics import style
+try:
+    from sugar.graphics import style
+    GRID_CELL_SIZE = style.GRID_CELL_SIZE
+except ImportError:
+    GRID_CELL_SIZE = 55
 
 from taconstants import EXPANDABLE_STYLE, EXPANDABLE_FLOW
 from tautils import debug_output
@@ -109,7 +113,7 @@ class Palette():
             help_windows[self._name] = gtk.ScrolledWindow()
             help_windows[self._name].set_size_request(
                 int(gtk.gdk.screen_width() / 3),
-                gtk.gdk.screen_height() - style.GRID_CELL_SIZE * 3)
+                gtk.gdk.screen_height() - GRID_CELL_SIZE * 3)
             help_windows[self._name].set_policy(
                 gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
             help_windows[self._name].add_with_viewport(
