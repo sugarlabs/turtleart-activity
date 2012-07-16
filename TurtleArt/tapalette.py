@@ -79,14 +79,15 @@ import gtk
 
 try:
     from sugar.graphics import style
+    from util.helpbutton import add_section, add_paragraph
     GRID_CELL_SIZE = style.GRID_CELL_SIZE
+    HELP_PALETTE = True
 except ImportError:
     GRID_CELL_SIZE = 55
+    HELP_PALETTE = False
 
 from taconstants import EXPANDABLE_STYLE, EXPANDABLE_FLOW
 from tautils import debug_output
-
-from util.helpbutton import add_section, add_paragraph
 
 from gettext import gettext as _
 
@@ -158,7 +159,7 @@ class Palette():
     def set_help(self, help):
         if self._help is None:
             self._help = help
-            if hasattr(self, '_help_box'):
+            if hasattr(self, '_help_box') and HELP_PALETTE:
                 add_section(self._help_box, self._help, icon=self._name + 'off')
 
     def set_special_name(self, name):
@@ -196,11 +197,12 @@ class Palette():
                         first_arg = label
                 else:
                     first_arg = special_name
-                if first_arg is None or first_arg == '' or first_arg == ' ':
-                    add_paragraph(self._help_box, '%s' % (help_string))
-                else:
-                    add_paragraph(self._help_box, '%s: %s' % (first_arg,
-                                                              help_string))
+                if HELP_PALETTE:
+                    if first_arg is None or first_arg == '' or first_arg == ' ':
+                        add_paragraph(self._help_box, '%s' % (help_string))
+                    else:
+                        add_paragraph(self._help_box, '%s: %s' % (first_arg,
+                                                                  help_string))
         if colors is not None:
             block.set_colors(colors)
         if string_or_number:
