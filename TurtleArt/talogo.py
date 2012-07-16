@@ -27,7 +27,11 @@ from time import time
 from operator import isNumberType
 from UserDict import UserDict
 
-from sugar.graphics import style
+try:
+    from sugar.graphics import style
+    GRID_CELL_SIZE = style.GRID_CELL_SIZE
+except ImportError:
+    GRID_CELL_SIZE = 55
 
 from taconstants import TAB_LAYER, DEFAULT_SCALE, PREFIX_DICTIONARY
 from tapalette import block_names, value_blocks
@@ -788,9 +792,9 @@ class LogoCode:
             yoffset = 0
             if self.tw.running_sugar:
                 if not self.tw.activity.is_fullscreen():
-                    yoffset += style.GRID_CELL_SIZE
+                    yoffset += GRID_CELL_SIZE
                     if self.tw.activity.toolbars_expanded():
-                        yoffset += style.GRID_CELL_SIZE
+                        yoffset += GRID_CELL_SIZE
             play_movie_from_file(self, self.filepath, self.x2tx(),
                                  self.y2ty() + yoffset, w, h)
 
