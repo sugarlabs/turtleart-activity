@@ -1406,6 +1406,10 @@ class TurtleArtWindow():
 
     def _update_action_names(self, name):
         ''' change the label on action blocks of the same name '''
+        if type(name) in [float, int]:
+            return
+        if type(name) == 'unicode':
+            name = name.encode('ascii', 'replace')
         if CURSOR in name:
             name = name.replace(CURSOR, '')
         for blk in self.just_blocks():
@@ -1422,6 +1426,10 @@ class TurtleArtWindow():
 
     def _update_box_names(self, name):
         ''' change the label on box blocks of the same name '''
+        if type(name) in [float, int]:
+            return
+        if type(name) == 'unicode':
+            name = name.encode('ascii', 'replace')
         if CURSOR in name:
             name = name.replace(CURSOR, '')
         for blk in self.just_blocks():
@@ -1479,7 +1487,7 @@ class TurtleArtWindow():
         ''' is this a label for an action block? '''
         if blk is None:
             return False
-        if blk.name != 'string':  # Ignoring int names
+        if blk.name != 'string':  # Ignoring int/float names
             return False
         if blk.connections is None:
             return False
@@ -3887,6 +3895,8 @@ class TurtleArtWindow():
 
     def _new_stack_block(self, name):
         ''' Add a stack block to the 'blocks' palette '''
+        if type(name) in [float, int]:
+            return
         if type(name) == unicode:
             name = name.encode('ascii', 'replace')
         if CURSOR in name:
@@ -3914,6 +3924,10 @@ class TurtleArtWindow():
 
     def _new_box_block(self, name):
         ''' Add a box block to the 'blocks' palette '''
+        if type(name) in [float, int]:
+            return
+        if type(name) == unicode:
+            name = name.encode('ascii', 'replace')
         if CURSOR in name:
             name = name.replace(CURSOR, '')
         if name == _('box'):
