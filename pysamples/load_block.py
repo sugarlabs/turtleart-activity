@@ -1,4 +1,4 @@
-#Copyright (c) 2011, Walter Bender
+#Copyright (c) 2011,2012 Walter Bender
 
 # This procedure is invoked when the user-definable block on the
 # "extras" palette is selected.
@@ -11,6 +11,8 @@
 # block to include up to two additional arguments.  Note that the
 # turtle is moved to the bottom of the block after it is loaded in
 # order position another block to the bottom of the stack.
+
+# The status of these blocks is set to 'load block'
 
 # For example, try the following to place forward 100, right 90 on the canvas:
 # start
@@ -37,11 +39,13 @@ def myblock(tw, blkname):
             blk = tw.block_list.spr_to_block(spr)
             if blk is not None:
                 tw.drag_group = find_group(blk)
+                for b in tw.drag_group:
+                    b.status = 'load block'
                 tw._snap_to_dock()
 
         # Disassociate new block from mouse.
         tw.drag_group = None
-        return blk.height
+        return blk.docks[-1][3] * tw.scale
 
     def find_block(tw, blkname, x, y, defaults=None):
         """ Create a new block. It is a bit more work than just calling
@@ -73,7 +77,14 @@ def myblock(tw, blkname):
         dy = int(find_block(tw, name, x, y, value))
     else:
         name = blkname
-        dy = int(find_block(tw, name, x, y))
+        if name == 'delete':
+            for blk in tw.just_blocks():
+                if blk.status == 'load block':
+                    blk.type = 'trash'
+                    blk.spr.hide()
+            dy = 0
+        else:
+            dy = int(find_block(tw, name, x, y))
 
     # Account for block overlaps by adding back 4 pixels
-    tw.active_turtle.move((x, y - dy + 4))
+    tw.active_turtle.move((x, y + dy))
