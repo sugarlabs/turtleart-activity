@@ -1,7 +1,23 @@
+152
+
+ENHANCEMENT:
+* New sample code
+* New translations
+
+BUG FIX:
+* Catch some errors in auto-action block generation
+* Work around activity version number issue for Sugar 0.88
+
+149.2
+
+BUG FIX:
+* Removed unused import that broke GNOME-only version (w/ rgs)
+
 149.1
 
 ENHANCEMENT:
 * Move "sandwich block" to flow palette
+* Added support for drag-and-drop of block data from clipboard
 * New translations
 
 BUG FIX:
