@@ -22,19 +22,17 @@ import os
 from gettext import gettext as _
 
 from plugins.plugin import Plugin
-from TurtleArt.tapalette import make_palette, define_logo_function
+from TurtleArt.tapalette import make_palette, define_logo_function, \
+     block_names, block_primitives, special_names, content_blocks, \
+     palette_name_to_index, palette_names
 from TurtleArt.talogo import primitive_dictionary, logoerror, \
     media_blocks_dictionary
 from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS, \
     MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN, PYTHON_SKIN, \
     PREFIX_DICTIONARY, VOICES
 from TurtleArt.tautils import convert, round_int, debug_output, get_path, \
-    data_to_string
+    data_to_string, find_group
 from TurtleArt.tajail import myfunc, myfunc_import
-
-from TurtleArt.tapalette import block_names, block_primitives, \
-    special_names, content_blocks
-from TurtleArt.tautils import find_group
 
 
 def _num_type(x):
@@ -702,6 +700,17 @@ module found in the Journal'))
         self.tw.lc.def_prim('loadblock', 1,
             lambda self, x: primitive_dictionary['loadblock'](x))
 
+        primitive_dictionary['loadpalette'] = self._prim_load_palette
+        palette.add_block('loadpalette',
+                          style='basic-style-1arg',
+                          string_or_number=True,
+                          label=_('palette'),
+                          prim_name='loadpalette',
+                          default=_('turtle'),
+                          help_string=_('selects a palette'))
+        self.tw.lc.def_prim('loadpalette', 1,
+            lambda self, x: primitive_dictionary['loadpalette'](x))
+
     def _portfolio_palette(self):
 
         palette = make_palette('portfolio',
@@ -1117,15 +1126,6 @@ bullets'))
         self.tw.lc.heap.append(val)
         self.tw.lc.update_label_value('pop', val)
 
-    '''
-    def _prim_keyboard_num(self):
-        """ Return a number when a number is typed. """
-        if self.tw.lc.keyboard < 48 or self.tw.lc.keyboard > 57:
-            return -1
-        else:
-            return self.tw.lc.keyboard - 48
-    '''
-
     def _prim_readpixel(self):
         """ Read r, g, b, a from the canvas and push b, g, r to the stack """
         r, g, b, a = self.tw.canvas.get_pixel()
@@ -1482,6 +1482,21 @@ bullets'))
         # Block not found
         raise logoerror("#syntaxerror")
         return -1
+
+    def _prim_load_palette(self, arg):
+        ''' Select a palette '''
+        if type(arg) in [int, float]:
+            if int(arg) < 0 or int(arg) > len(palette_names):
+                raise logoerror("#syntaxerror")
+            else:
+                self.tw.show_toolbar_palette(int(arg))
+        else:
+            if type(arg) == unicode:
+                arg = arg.encode('ascii', 'replace')
+            if arg in palette_names:
+                self.tw.show_toolbar_palette(palette_name_to_index(arg))
+            else:
+                raise logoerror("#syntaxerror")
 
     # Deprecated blocks
 
