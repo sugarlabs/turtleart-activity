@@ -513,10 +513,16 @@ class TurtleGraphics:
             r = 0xFF00
             g = 0xFF00
             b = 0xFF00
+            self.color = 0
+            self.shade = 100
+            self.gray = 0
         elif self.color == BLACK or self.shade == BLACK:
             r = 0x0000
             g = 0x0000
             b = 0x0000
+            self.color = 0
+            self.shade = 0
+            self.gray = 0
         else:
             sh = (wrap100(self.shade) - 50) / 50.0
             rgb = COLOR_TABLE[wrap100(self.color)]
