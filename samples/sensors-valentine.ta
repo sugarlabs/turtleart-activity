@@ -105,5 +105,4 @@
 [104, "sandwichtop_no_arm_no_label", 882, 310, [53, 12]],
 [105, ["sandwichcollapsed", 1], 900, 344, [38, null]],
 [106, "sandwichtop_no_arm_no_label", 762, 302, [1, 67]],
-[107, ["sandwichcollapsed", 1], 780, 336, [11, null]],
-[-1, ["turtle", "Yertle"], 0, 0, 0.0, 0.0, 50.0, 5]]
+[107, ["sandwichcollapsed", 1], 780, 336, [11, null]]]
