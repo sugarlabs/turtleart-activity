@@ -515,6 +515,8 @@ class Block:
     def _set_label_attributes(self):
         if self.spr is None:
             return
+        if type(self.name) == unicode:
+            self.name = self.name.encode('ascii', 'replace')
         if self.name in content_blocks:
             n = len(self.values)
             if n == 0:
@@ -586,6 +588,8 @@ class Block:
         self._bottom = 0
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
         self.svg.clear_docks()
+        if type(self.name) == unicode:
+            self.name = self.name.encode('ascii', 'replace')
         for k in block_styles.keys():
             if self.name in block_styles[k]:
                 if type(self.block_methods[k]) == type([]):
