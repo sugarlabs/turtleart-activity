@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#Copyright (c) 2011, Walter Bender
+#Copyright (c) 2011, 2012 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -831,8 +831,37 @@ buttons'))
         self.tw.lc.def_prim('start', 0,
                              lambda self: primitive_dictionary['start']())
 
+        palette.add_block('string',
+                          style='box-style',
+                          label=_('text'),
+                          default=_('text'),
+                          special_name=_('text'),
+                          help_string=_('string value'))
+
+        palette.add_block('hat',
+                          style='basic-style-head-1arg',
+                          label=_('action'),
+                          prim_name='nop3',
+                          string_or_number=True,
+                          default=_('action'),
+                          logo_command='to action',
+                          help_string=_('top of nameable action stack'))
+        self.tw.lc.def_prim('nop3', 1, lambda self, x: None)
+
+        primitive_dictionary['stack'] = self._prim_stack
+        palette.add_block('stack',
+                          style='basic-style-1arg',
+                          label=_('action'),
+                          string_or_number=True,
+                          prim_name='stack',
+                          logo_command='action',
+                          default=_('action'),
+                          help_string=_('invokes named action stack'))
+        self.tw.lc.def_prim('stack', 1, primitive_dictionary['stack'], True)
+
         primitive_dictionary['setbox'] = self._prim_setbox
         palette.add_block('storeinbox1',
+                          hidden=True,
                           style='basic-style-1arg',
                           label=_('store in box 1'),
                           prim_name='storeinbox1',
@@ -845,6 +874,7 @@ buttons'))
                 'box1', None, x))
 
         palette.add_block('storeinbox2',
+                          hidden=True,
                           style='basic-style-1arg',
                           label=_('store in box 2'),
                           prim_name='storeinbox2',
@@ -856,14 +886,8 @@ buttons'))
                              lambda self, x: primitive_dictionary['setbox'](
                 'box2', None, x))
 
-        palette.add_block('string',
-                          style='box-style',
-                          label=_('text'),
-                          default=_('text'),
-                          special_name=_('text'),
-                          help_string=_('string value'))
-
         palette.add_block('box1',
+                          hidden=True,
                           style='box-style',
                           label=_('box 1'),
                           prim_name='box1',
@@ -873,6 +897,7 @@ buttons'))
         self.tw.lc.def_prim('box1', 0, lambda self: self.tw.lc.boxes['box1'])
 
         palette.add_block('box2',
+                          hidden=True,
                           style='box-style',
                           label=_('box 2'),
                           prim_name='box2',
@@ -880,18 +905,6 @@ buttons'))
                           help_string=_('Variable 2 (numeric value)'),
                           value_block=True)
         self.tw.lc.def_prim('box2', 0, lambda self: self.tw.lc.boxes['box2'])
-
-        primitive_dictionary['box'] = self._prim_box
-        palette.add_block('box',
-                          style='number-style-1strarg',
-                          label=_('box'),
-                          string_or_number=True,
-                          prim_name='box',
-                          default=_('my box'),
-                          logo_command='box',
-                          help_string=_('named variable (numeric value)'))
-        self.tw.lc.def_prim('box', 1,
-                             lambda self, x: primitive_dictionary['box'](x))
 
         palette.add_block('storein',
                           style='basic-style-2arg',
@@ -906,17 +919,20 @@ variable'))
                              lambda self, x, y: primitive_dictionary['setbox'](
                 'box3', x, y))
 
-        palette.add_block('hat',
-                          style='basic-style-head-1arg',
-                          label=_('action'),
-                          prim_name='nop3',
+        primitive_dictionary['box'] = self._prim_box
+        palette.add_block('box',
+                          style='number-style-1strarg',
+                          label=_('box'),
                           string_or_number=True,
-                          default=_('action'),
-                          logo_command='to action',
-                          help_string=_('top of nameable action stack'))
-        self.tw.lc.def_prim('nop3', 1, lambda self, x: None)
+                          prim_name='box',
+                          default=_('my box'),
+                          logo_command='box',
+                          help_string=_('named variable (numeric value)'))
+        self.tw.lc.def_prim('box', 1,
+                             lambda self, x: primitive_dictionary['box'](x))
 
         palette.add_block('hat1',
+                          hidden=True,
                           style='basic-style-head',
                           label=_('action 1'),
                           prim_name='nop1',
@@ -925,6 +941,7 @@ variable'))
         self.tw.lc.def_prim('nop1', 0, lambda self: None)
 
         palette.add_block('hat2',
+                          hidden=True,
                           style='basic-style-head',
                           label=_('action 2'),
                           prim_name='nop2',
@@ -932,19 +949,9 @@ variable'))
                           help_string=_('top of Action 2 stack'))
         self.tw.lc.def_prim('nop2', 0, lambda self: None)
 
-        primitive_dictionary['stack'] = self._prim_stack
-        palette.add_block('stack',
-                          style='basic-style-1arg',
-                          label=_('action'),
-                          string_or_number=True,
-                          prim_name='stack',
-                          logo_command='action',
-                          default=_('action'),
-                          help_string=_('invokes named action stack'))
-        self.tw.lc.def_prim('stack', 1, primitive_dictionary['stack'], True)
-
         primitive_dictionary['stack1'] = self._prim_stack1
         palette.add_block('stack1',
+                          hidden=True,
                           style='basic-style-extended-vertical',
                           label=_('action 1'),
                           prim_name='stack1',
@@ -954,6 +961,7 @@ variable'))
 
         primitive_dictionary['stack2'] = self._prim_stack2
         palette.add_block('stack2',
+                          hidden=True,
                           style='basic-style-extended-vertical',
                           label=_('action 2'),
                           prim_name='stack2',
