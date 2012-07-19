@@ -258,7 +258,7 @@ class Sprite:
         if layer is not None:
             self.layer = layer
         for i in range(self._sprites.length_of_list()):
-            if layer < self._sprites.get_sprite(i).layer:
+            if self.layer < self._sprites.get_sprite(i).layer:
                 self._sprites.insert_in_list(self, i)
                 self.inval()
                 return
