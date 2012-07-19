@@ -3,6 +3,7 @@
 ENHANCEMENT:
 * New sample code
 * New translations
+* Remove redundant box and action blocks from Block palette
 
 BUG FIX:
 * Catch some errors in auto-action block generation
