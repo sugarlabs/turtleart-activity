@@ -1447,8 +1447,11 @@ bullets'))
         x, y = self.tw.active_turtle.get_xy()
         if type(blkname) == type([]):
             name = blkname[0]
-            value = blkname[1:]
-            dy = int(self._find_block(name, x, y, value))
+            if len(blkname) > 1:
+                value = blkname[1:]
+                dy = int(self._find_block(name, x, y, value))
+            else:
+                dy = int(self._find_block(name, x, y))
         else:
             name = blkname
             if name == 'delete':
@@ -1466,10 +1469,13 @@ bullets'))
     def _make_block(self, name, x, y, defaults):
         x_pos = x + 20
         y_pos = y + 20
-        for i, v in enumerate(defaults):
-            if type(v) == float and int(v) == v:
-                defaults[i] = int(v)
-        self.tw._new_block(name, x_pos, y_pos, defaults)
+        if defaults is None:
+            self.tw._new_block(name, x_pos, y_pos, defaults)
+        else:
+            for i, v in enumerate(defaults):
+                if type(v) == float and int(v) == v:
+                    defaults[i] = int(v)
+            self.tw._new_block(name, x_pos, y_pos, defaults)
 
         # Find the block we just created and attach it to a stack.
         self.tw.drag_group = None
