@@ -151,6 +151,7 @@ class Block:
         self._font_size = [6.0, 4.5]
         self._image = None
         self._visible = True
+        self.unknown = False  # Block is of unknown style
 
         self.block_methods = {
             'basic-style': self._make_basic_style,
@@ -595,6 +596,7 @@ class Block:
                 return
         error_output('ERROR: block type not found %s' % (self.name))
         self.block_methods['blank-style'](svg)
+        self.unknown = True
 
     def _set_colors(self, svg):
         if self._custom_colors:

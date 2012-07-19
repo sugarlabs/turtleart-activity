@@ -123,6 +123,7 @@ class TurtleArtWindow():
         self.path = path
         self.load_save_folder = os.path.join(path, 'samples')
         self.py_load_save_folder = os.path.join(path, 'pysamples')
+        self._py_cache = {}
         self.used_block_list = []  # Which blocks has the user used?
         self.save_folder = None
         self.save_file_name = None
@@ -3154,26 +3155,31 @@ class TurtleArtWindow():
 
         # if we are running Sugar, copy the file into the Journal
         if self.running_sugar:
-            from sugar.datastore import datastore
-            from sugar import profile
+            if fname in self._py_cache:
+                id = self._py_cache[fname]
+            else:
+                from sugar.datastore import datastore
+                from sugar import profile
 
-            dsobject = datastore.create()
-            dsobject.metadata['title'] = os.path.basename(fname)
-            dsobject.metadata['icon-color'] = \
-                profile.get_color().to_string()
-            dsobject.metadata['mime_type'] = 'text/x-python'
-            dsobject.metadata['activity'] = 'org.laptop.Pippy'
-            dsobject.set_file_path(fname)
-            try:
-                datastore.write(dsobject)
-                id = dsobject.object_id
-                debug_output("Copying %s to the datastore" % (fname),
-                             self.running_sugar)
-            except IOError:
-                error_output("Error copying %s to the datastore" % (fname),
-                             self.running_sugar)
-                id = None
-            dsobject.destroy()
+                dsobject = datastore.create()
+                dsobject.metadata['title'] = os.path.basename(fname)
+                dsobject.metadata['icon-color'] = \
+                    profile.get_color().to_string()
+                dsobject.metadata['mime_type'] = 'text/x-python'
+                dsobject.metadata['activity'] = 'org.laptop.Pippy'
+                dsobject.set_file_path(fname)
+                try:
+                    datastore.write(dsobject)
+                    id = dsobject.object_id
+                    debug_output("Copied %s to the datastore" % (fname),
+                                 self.running_sugar)
+                    # Don't copy the same file more than once
+                    self._py_cache[fname] = id
+                except IOError:
+                    error_output("Error copying %s to the datastore" % (fname),
+                                 self.running_sugar)
+                    id = None
+                dsobject.destroy()
 
             if add_new_block:
                 # add a new block for this code at turtle position
@@ -3182,14 +3188,14 @@ class TurtleArtWindow():
                 self.myblock[self.block_list.list.index(self.drag_group[0])] =\
                     self.python_code
                 self.set_userdefined(self.drag_group[0])
-                self.drag_group[0].values.append(dsobject.object_id)
+                self.drag_group[0].values.append(id)
                 self.drag_group = None
             # Save object ID in block value
             if self.selected_blk is not None:
                 if len(self.selected_blk.values) == 0:
-                    self.selected_blk.values.append(dsobject.object_id)
+                    self.selected_blk.values.append(id)
                 else:
-                    self.selected_blk.values[0] = dsobject.object_id
+                    self.selected_blk.values[0] = id
         else:
             if len(self.selected_blk.values) == 0:
                 self.selected_blk.values.append(fname)
@@ -3202,8 +3208,6 @@ class TurtleArtWindow():
         ''' Read the Python code from the Journal object '''
         self.python_code = None
         try:
-            debug_output("opening %s " % dsobject.file_path,
-                         self.running_sugar)
             file_handle = open(dsobject.file_path, "r")
             self.python_code = file_handle.read()
             file_handle.close()
@@ -3411,9 +3415,9 @@ class TurtleArtWindow():
 
         # If it was an unknown block type, we need to match the number
         # of dock items. TODO: Try to infer the dock type from connections
-        if len(b[4]) > len(blk.docks):
-            debug_output('dock mismatch %d > %d' % (len(b[4]), len(blk.docks)),
-                         self.running_sugar)
+        if blk.unknown and len(b[4]) > len(blk.docks):
+            debug_output('%s: dock mismatch %d > %d' % (
+                    btype, len(b[4]), len(blk.docks)), self.running_sugar)
             for i in range(len(b[4]) - len(blk.docks)):
                 blk.docks.append(['unavailable', True, 0, 0])
 
@@ -3423,7 +3427,6 @@ class TurtleArtWindow():
             if value > 0:  # catch deprecated format (#2501)
                 self.python_code = None
                 if self.running_sugar:
-                    debug_output(value, self.running_sugar)
                     # For security reasons, only open files found in
                     # Python samples directory
                     if os.path.exists(os.path.join(self.path, value)) and \
