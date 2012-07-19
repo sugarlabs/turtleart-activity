@@ -692,13 +692,35 @@ module found in the Journal'))
 
         primitive_dictionary['loadblock'] = self._prim_load_block
         palette.add_block('loadblock',
-                          style='basic-style-1arg',
+                          style='basic-style-var-arg',
                           label=_('load'),
                           prim_name='loadblock',
                           default=_('forward'),
                           help_string=_('loads a block'))
         self.tw.lc.def_prim('loadblock', 1,
             lambda self, x: primitive_dictionary['loadblock'](x))
+
+        palette.add_block('loadblock2arg',
+                          style='basic-style-var-arg',
+                          hidden=True,
+                          label=_('load'),
+                          prim_name='loadblock2',
+                          string_or_number=True,
+                          default=[_('forward'), 100],
+                          help_string=_('loads a block'))
+        self.tw.lc.def_prim('loadblock2', 2,
+            lambda self, x, y: primitive_dictionary['loadblock']([x, y]))
+
+        palette.add_block('loadblock3arg',
+                          style='basic-style-var-arg',
+                          hidden=True,
+                          label=_('load'),
+                          string_or_number=True,
+                          prim_name='loadblock3',
+                          default=[_('setxy'), 0, 0],
+                          help_string=_('loads a block'))
+        self.tw.lc.def_prim('loadblock3', 3,
+            lambda self, x, y, z: primitive_dictionary['loadblock']([x, y, z]))
 
         primitive_dictionary['loadpalette'] = self._prim_load_palette
         palette.add_block('loadpalette',
@@ -1444,6 +1466,9 @@ bullets'))
     def _make_block(self, name, x, y, defaults):
         x_pos = x + 20
         y_pos = y + 20
+        for i, v in enumerate(defaults):
+            if type(v) == float and int(v) == v:
+                defaults[i] = int(v)
         self.tw._new_block(name, x_pos, y_pos, defaults)
 
         # Find the block we just created and attach it to a stack.

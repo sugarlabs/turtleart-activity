@@ -2387,6 +2387,16 @@ class TurtleArtWindow():
                     blk.primitive = 'userdefined3'
                     blk.name = 'userdefined3args'
                     self._resize_skin(blk)
+                elif blk.name == 'loadblock':
+                    dy = blk.add_arg()
+                    blk.primitive = 'loadblock2'
+                    blk.name = 'loadblock2arg'
+                    self._resize_skin(blk)
+                elif blk.name == 'loadblock2arg':
+                    dy = blk.add_arg(False)
+                    blk.primitive = 'loadblock3'
+                    blk.name = 'loadblock3arg'
+                    self._resize_skin(blk)
                 else:
                     dy = blk.add_arg()
                 for gblk in group:
@@ -3550,9 +3560,11 @@ class TurtleArtWindow():
                 for i in range(len(b[4]) - 4):
                     blk.add_arg()
             elif btype == 'myfunc2arg' or btype == 'myfunc3arg' or\
-                 btype == 'userdefined2args' or btype == 'userdefined3args':
+                 btype == 'userdefined2args' or btype == 'userdefined3args' or\
+                 btype == 'loadblock2arg' or btype == 'loadblock3arg':
                 blk.add_arg()
-            if btype == 'myfunc3arg' or btype == 'userdefined3args':
+            if btype == 'myfunc3arg' or btype == 'userdefined3args' or \
+                    btype == 'loadblock3arg':
                 blk.add_arg(False)
             if btype in PYTHON_SKIN:
                 if self.nop == 'pythonloaded':
