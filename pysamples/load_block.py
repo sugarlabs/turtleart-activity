@@ -53,8 +53,6 @@ def myblock(tw, blkname):
         (1) translate the label name into the internal block name;
         (2) 'dock' the block onto a stack where appropriate; and
         (3) disassociate the new block from the mouse. """
-
-        print blkname
         for name in block_names:
             # Translate label name into block/prim name.
             if blkname in block_names[name]:
