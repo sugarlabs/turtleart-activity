@@ -32,6 +32,10 @@ from TurtleArt.tautils import convert, round_int, debug_output, get_path, \
     data_to_string
 from TurtleArt.tajail import myfunc, myfunc_import
 
+from TurtleArt.tapalette import block_names, block_primitives, \
+    special_names, content_blocks
+from TurtleArt.tautils import find_group
+
 
 def _num_type(x):
     """ Is x a number type? """
@@ -687,6 +691,16 @@ module found in the Journal'))
                           prim_name='clamp',
                           special_name=_('top'),
                           help_string=_('top of a collapsed stack'))
+
+        primitive_dictionary['loadblock'] = self._prim_load_block
+        palette.add_block('loadblock',
+                          style='basic-style-1arg',
+                          label=_('load'),
+                          prim_name='loadblock',
+                          default=_('forward'),
+                          help_string=_('loads a block'))
+        self.tw.lc.def_prim('loadblock', 1,
+            lambda self, x: primitive_dictionary['loadblock'](x))
 
     def _portfolio_palette(self):
 
@@ -1402,6 +1416,72 @@ bullets'))
         self.tw.lc.procstop = False
         self.tw.lc.ireturn()
         yield True
+
+    def _prim_load_block(self, blkname):
+        ''' Load a block on to the canvas '''
+        # Place the block at the active turtle (x, y) and move the turtle
+        # into position to place the next block in the stack.
+        # TODO: Add expandable argument
+        x, y = self.tw.active_turtle.get_xy()
+        if type(blkname) == type([]):
+            name = blkname[0]
+            value = blkname[1:]
+            dy = int(self._find_block(name, x, y, value))
+        else:
+            name = blkname
+            if name == 'delete':
+                for blk in self.tw.just_blocks():
+                    if blk.status == 'load block':
+                        blk.type = 'trash'
+                        blk.spr.hide()
+                dy = 0
+            else:
+                dy = int(self._find_block(name, x, y))
+
+        # Account for block overlaps by adding back 4 pixels
+        self.tw.active_turtle.move((x, y + dy))
+
+    def _make_block(self, name, x, y, defaults):
+        x_pos = x + 20
+        y_pos = y + 20
+        self.tw._new_block(name, x_pos, y_pos, defaults)
+
+        # Find the block we just created and attach it to a stack.
+        self.tw.drag_group = None
+        spr = self.tw.sprite_list.find_sprite((x_pos, y_pos))
+        if spr is not None:
+            blk = self.tw.block_list.spr_to_block(spr)
+            if blk is not None:
+                self.tw.drag_group = find_group(blk)
+                for b in self.tw.drag_group:
+                    b.status = 'load block'
+                self.tw._snap_to_dock()
+
+        # Disassociate new block from mouse.
+        self.tw.drag_group = None
+        return blk.docks[-1][3] * self.tw.scale
+
+    def _find_block(self, blkname, x, y, defaults=None):
+        """ Create a new block. It is a bit more work than just calling
+        _new_block(). We need to:
+        (1) translate the label name into the internal block name;
+        (2) 'dock' the block onto a stack where appropriate; and
+        (3) disassociate the new block from the mouse. """
+        for name in block_names:
+            # Translate label name into block/prim name.
+            if blkname in block_names[name]:
+                if (name in block_primitives and \
+                    block_primitives[name] == name) or \
+                    name in content_blocks:
+                    return self._make_block(name, x, y, defaults)
+        for name in special_names:
+            # Translate label name into block/prim name.
+            if blkname in special_names[name]:
+                return _make_block(name, x, y, defaults)
+        # Check for a macro
+        # Block not found
+        raise logoerror("#syntaxerror")
+        return -1
 
     # Deprecated blocks
 
