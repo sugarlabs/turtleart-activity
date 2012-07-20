@@ -4,10 +4,12 @@ ENHANCEMENT:
 * New sample code
 * New translations
 * Remove redundant box and action blocks from Block palette
+* Sharing turtle shell
 
 BUG FIX:
 * Catch some errors in auto-action block generation
 * Work around activity version number issue for Sugar 0.88
+* Reset color, shade, and gray when using Black or White blocks
 
 149.2
 
