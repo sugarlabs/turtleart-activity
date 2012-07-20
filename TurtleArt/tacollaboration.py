@@ -72,6 +72,7 @@ class Collaboration():
         self._processing_methods = {
             't': self._turtle_request,
             'T': self._receive_turtle_dict,
+            'R': self._reskin_turtle,
             'f': self._move_forward,
             'a': self._move_in_arc,
             'r': self._rotate_turtle,
@@ -290,6 +291,20 @@ class Collaboration():
                                                       True])))
         self.send_event('r|%s' % (data_to_string([self._get_nick(),
                 int(self._tw.canvas.heading)])))
+
+    def _reskin_turtle(self, payload):
+        if len(payload) > 0:
+            [nick, [width, height, data]] = data_from_string(payload)
+            if nick != self._tw.nick:
+                if self._tw.running_sugar:
+                    tmp_path = get_path(self._tw.activity, 'instance')
+                else:
+                    tmp_path = '/tmp'
+                file_name = base64_to_image(data, tmp_path)
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(file_name,
+                                                              width, height)
+                self._tw.canvas.set_turtle(nick)
+                self._tw.active_turtle.set_shapes([pixbuf])
 
     def _draw_pixbuf(self, payload):
         if len(payload) > 0:

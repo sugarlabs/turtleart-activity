@@ -16,6 +16,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import gtk
+import gobject
 from time import time
 import os
 
@@ -31,7 +32,7 @@ from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS, \
     MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN, PYTHON_SKIN, \
     PREFIX_DICTIONARY, VOICES
 from TurtleArt.tautils import convert, round_int, debug_output, get_path, \
-    data_to_string, find_group
+    data_to_string, find_group, image_to_base64
 from TurtleArt.tajail import myfunc, myfunc_import
 
 
@@ -1192,6 +1193,24 @@ bullets'))
             self.tw.canvas.forward(0)
             if pen_state:
                 self.tw.canvas.setpen(True)
+
+        if self.tw.sharing():
+            if self.tw.running_sugar:
+                tmp_path = get_path(self.tw.activity, 'instance')
+            else:
+                tmp_path = '/tmp'
+            tmp_file = os.path.join(get_path(self.tw.activity, 'instance'),
+                                   'tmpfile.png')
+            pixbuf.save(tmp_file, 'png', {'quality': '100'})
+            data = image_to_base64(tmp_file, tmp_path)
+            height = pixbuf.get_height()
+            width = pixbuf.get_width()
+            event = 'R|%s' % (data_to_string([self.tw.nick,
+                                              [round_int(width),
+                                               round_int(height),
+                                               data]]))
+            gobject.idle_add(self.tw.send_event, event)
+            os.remove(tmp_file)
 
     def _prim_save_picture(self, name):
         """ Save canvas to file as PNG """
