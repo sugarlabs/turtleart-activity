@@ -1302,7 +1302,7 @@ class TurtleArtWindow():
                         if b.type != 'trash':
                             self._put_in_trash(find_top_block(b))
                 elif blk.name in MACROS:
-                    self._new_macro(blk.name, x + 20, y + 20)
+                    self.new_macro(blk.name, x + 20, y + 20)
                 else:
                     defaults = None
                     name = blk.name
@@ -1798,7 +1798,7 @@ class TurtleArtWindow():
             elif newblk.spr.labels[0] not in self.used_block_list:
                 self.used_block_list.append(newblk.spr.labels[0])
 
-    def _new_macro(self, name, x, y):
+    def new_macro(self, name, x, y):
         ''' Create a "macro" (predefined stack of blocks). '''
         macro = MACROS[name]
         macro[0][2] = x
