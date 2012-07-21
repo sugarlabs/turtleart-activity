@@ -36,7 +36,7 @@ except ImportError:
 from taconstants import TAB_LAYER, DEFAULT_SCALE, PREFIX_DICTIONARY
 from tapalette import block_names, value_blocks
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
-    text_media_type, round_int, debug_output
+    text_media_type, round_int, debug_output, find_group
 
 from util.RtfParser import RtfTextOnly
 
@@ -626,7 +626,9 @@ class LogoCode:
                     if argblk is not None:
                         # Move connections over...
                         dx = (block.dx - dx) * self.tw.block_scale
-                        argblk.spr.move_relative((dx, 0))
+                        drag_group = find_group(argblk)
+                        for blk in drag_group:
+                            blk.spr.move_relative((dx, 0))
                 else:
                     block.resize()
         elif self.update_values:
@@ -650,7 +652,9 @@ class LogoCode:
                         block.resize()
                         # Move connections over...
                         dx = (block.dx - dx) * self.tw.block_scale
-                        argblk.spr.move_relative((dx, 0))
+                        drag_group = find_group(argblk)
+                        for blk in drag_group:
+                            blk.spr.move_relative((dx, 0))
 
     def push_file_data_to_heap(self, dsobject):
         """ push contents of a data store object (assuming json encoding) """
