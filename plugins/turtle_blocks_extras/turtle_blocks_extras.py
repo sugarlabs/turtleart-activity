@@ -30,7 +30,7 @@ from TurtleArt.talogo import primitive_dictionary, logoerror, \
     media_blocks_dictionary
 from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS, \
     MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN, PYTHON_SKIN, \
-    PREFIX_DICTIONARY, VOICES
+    PREFIX_DICTIONARY, VOICES, MACROS
 from TurtleArt.tautils import convert, round_int, debug_output, get_path, \
     data_to_string, find_group, image_to_base64
 from TurtleArt.tajail import myfunc, myfunc_import
@@ -1524,11 +1524,16 @@ bullets'))
                     block_primitives[name] == name) or \
                     name in content_blocks:
                     return self._make_block(name, x, y, defaults)
+            elif blkname in block_names:
+                    return self._make_block(blkname, x, y, defaults)
         for name in special_names:
             # Translate label name into block/prim name.
             if blkname in special_names[name]:
                 return _make_block(name, x, y, defaults)
         # Check for a macro
+        if blkname in MACROS:
+            self.tw.new_macro(blkname, x, y)
+            return 0  # Fix me: calculate flow position
         # Block not found
         raise logoerror("#syntaxerror")
         return -1
