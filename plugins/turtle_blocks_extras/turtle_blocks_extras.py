@@ -1482,23 +1482,22 @@ bullets'))
             else:
                 dy = int(self._find_block(name, x, y))
 
-        # Account for block overlaps by adding back 4 pixels
-        self.tw.active_turtle.move((x, y + dy))
+        # Reposition turtle to end of flow
+        self.tw.canvas.ycor -= dy
+        self.tw.canvas.move_turtle()
 
     def _make_block(self, name, x, y, defaults):
-        x_pos = x + 20
-        y_pos = y + 20
         if defaults is None:
-            self.tw._new_block(name, x_pos, y_pos, defaults)
+            self.tw._new_block(name, x, y, defaults)
         else:
             for i, v in enumerate(defaults):
                 if type(v) == float and int(v) == v:
                     defaults[i] = int(v)
-            self.tw._new_block(name, x_pos, y_pos, defaults)
+            self.tw._new_block(name, x, y, defaults)
 
         # Find the block we just created and attach it to a stack.
         self.tw.drag_group = None
-        spr = self.tw.sprite_list.find_sprite((x_pos, y_pos))
+        spr = self.tw.sprite_list.find_sprite((x, y))
         if spr is not None:
             blk = self.tw.block_list.spr_to_block(spr)
             if blk is not None:
@@ -1509,7 +1508,7 @@ bullets'))
 
         # Disassociate new block from mouse.
         self.tw.drag_group = None
-        return blk.docks[-1][3] * self.tw.scale
+        return blk.docks[-1][3] # * self.tw.scale
 
     def _find_block(self, blkname, x, y, defaults=None):
         """ Create a new block. It is a bit more work than just calling
@@ -1529,7 +1528,7 @@ bullets'))
         for name in special_names:
             # Translate label name into block/prim name.
             if blkname in special_names[name]:
-                return _make_block(name, x, y, defaults)
+                return self._make_block(name, x, y, defaults)
         # Check for a macro
         if blkname in MACROS:
             self.tw.new_macro(blkname, x, y)
