@@ -608,8 +608,9 @@ class LogoCode:
             self.value_blocks_to_update[name] = \
                 self.tw.block_list.get_similar_blocks('block', name)
 
-    def update_label_value(self, name, value=None):
+    def update_label_value(self, name, value=None, label=None):
         """ Update the label of value blocks to reflect current value """
+        # If it is a named box, we need to match the label to the box
         if not self.tw.interactive_mode:
             return
         if self.tw.hide:
@@ -618,7 +619,16 @@ class LogoCode:
         if value is None:
             for block in self.value_blocks_to_update[name]:
                 block.spr.set_label(block_names[name][0])
-                block.resize()
+                if name == 'box':
+                    argblk = block.connections[-2]
+                    dx = block.dx
+                    block.resize()
+                    if argblk is not None:
+                        # Move connections over...
+                        dx = (block.dx - dx) * self.tw.block_scale
+                        argblk.spr.move_relative((dx, 0))
+                else:
+                    block.resize()
         elif self.update_values:
             if type(value) == float:
                 valstring = str(round_int(value)).replace('.',
@@ -626,8 +636,21 @@ class LogoCode:
             else:
                 valstring = str(value)
             for block in self.value_blocks_to_update[name]:
-                block.spr.set_label(block_names[name][0] + ' = ' + valstring)
-                block.resize()
+                if label is None:
+                    block.spr.set_label(
+                        block_names[name][0] + ' = ' + valstring)
+                    block.resize()
+                else:
+                    argblk = block.connections[-2]
+                    # Only update if label matches
+                    if argblk is not None and argblk.spr.labels[0] == label:
+                        block.spr.set_label(
+                            block_names[name][0] + ' = ' + valstring)
+                        dx = block.dx
+                        block.resize()
+                        # Move connections over...
+                        dx = (block.dx - dx) * self.tw.block_scale
+                        argblk.spr.move_relative((dx, 0))
 
     def push_file_data_to_heap(self, dsobject):
         """ push contents of a data store object (assuming json encoding) """

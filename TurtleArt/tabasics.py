@@ -927,6 +927,7 @@ variable'))
                           prim_name='box',
                           default=_('my box'),
                           logo_command='box',
+                          value_block=True,
                           help_string=_('named variable (numeric value)'))
         self.tw.lc.def_prim('box', 1,
                              lambda self, x: primitive_dictionary['box'](x))
@@ -1087,10 +1088,11 @@ variable'))
                 if int(float(x)) == x:
                     x = int(x)
             self.tw.lc.boxes[name + str(x)] = val
+            self.tw.lc.update_label_value('box', val, label=x)
             return
-
-        self.tw.lc.boxes[name] = val
-        self.tw.lc.update_label_value(name, val)
+        else:
+            self.tw.lc.boxes[name] = val
+            self.tw.lc.update_label_value(name, val)            
 
     def _prim_stack(self, x):
         """ Process a named stack """
