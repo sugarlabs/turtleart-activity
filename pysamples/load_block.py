@@ -1,5 +1,7 @@
 #Copyright (c) 2011,2012 Walter Bender
 
+# DEPRECATED by load block on extras palette.
+
 # This procedure is invoked when the user-definable block on the
 # "extras" palette is selected.
 
@@ -28,13 +30,11 @@ def myblock(tw, blkname):
     from TurtleArt.tautils import find_group
 
     def make_block(tw, name, x, y, defaults):
-        x_pos = x + 20
-        y_pos = y + 20
-        tw._new_block(name, x_pos, y_pos, defaults)
+        tw._new_block(name, x, y, defaults)
 
         # Find the block we just created and attach it to a stack.
         tw.drag_group = None
-        spr = tw.sprite_list.find_sprite((x_pos, y_pos))
+        spr = tw.sprite_list.find_sprite((x, y))
         if spr is not None:
             blk = tw.block_list.spr_to_block(spr)
             if blk is not None:
@@ -45,7 +45,7 @@ def myblock(tw, blkname):
 
         # Disassociate new block from mouse.
         tw.drag_group = None
-        return blk.docks[-1][3] * tw.scale
+        return blk.docks[-1][3]
 
     def find_block(tw, blkname, x, y, defaults=None):
         """ Create a new block. It is a bit more work than just calling
@@ -84,5 +84,5 @@ def myblock(tw, blkname):
         else:
             dy = int(find_block(tw, name, x, y))
 
-    # Account for block overlaps by adding back 4 pixels
-    tw.active_turtle.move((x, y + dy))
+    tw.canvas.ypos -= dy
+    tw.canvas.move_turtle()
