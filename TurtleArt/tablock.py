@@ -244,7 +244,9 @@ class Block:
             return False
         if self.name in block_styles['box-style']:
             return False
-        if self.name in ['box', 'sandwichtop', 'sandwichtop_no_label']:
+        if self.name in ['storein', 'box',
+                         # Deprecated blocks
+                         'sandwichtop', 'sandwichtop_no_label']:
             return False
         return True
 
