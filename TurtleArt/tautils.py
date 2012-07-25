@@ -24,6 +24,7 @@ import cairo
 import pickle
 import subprocess
 import os
+import string
 from gettext import gettext as _
 
 try:
@@ -107,6 +108,23 @@ def strtype(x):
     if type(x) == unicode:
         return True
     return False
+
+
+def increment_name(name):
+    ''' If name is of the form foo_2, change it to foo_3. Otherwise,
+    return name_2'''
+    if '_' in name:
+        parts = name.split('_')
+        try:
+            i = int(parts[-1])
+            i += 1
+            parts[-1] = str(i)
+            newname = string.join(parts, '_')
+        except ValueError:
+            newname = '%s_2' % (name)
+    else:
+        newname = '%s_2' % (name)
+    return newname
 
 
 def magnitude(pos):
