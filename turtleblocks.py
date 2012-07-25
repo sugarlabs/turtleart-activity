@@ -72,6 +72,8 @@ class TurtleMain():
         activity_info_path = os.path.abspath('./activity/activity.info')
         file_activity_info.read(activity_info_path)
         bundle_id = file_activity_info.get('Activity', 'bundle_id')
+        path = os.path.abspath('./locale/')
+        gettext.bindtextdomain(bundle_id, path)
         gettext.textdomain(bundle_id)
         global _
         _ = gettext.gettext
