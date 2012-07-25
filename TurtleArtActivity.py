@@ -281,11 +281,16 @@ class TurtleArtActivity(activity.Activity):
 
     def do_stop_cb(self, button):
         ''' Callback for stop button. '''
-        self.stop_turtle_button.set_icon('stopitoff')
-        self.stop_turtle_button.set_tooltip(_('Stop turtle'))
         self.tw.stop_button()
         # Auto show blocks after stop
-        self.tw.showblocks()
+        if not self.tw.hide:
+            self.tw.hideblocks()
+            self.stop_turtle_button.set_icon('hideshowon')
+            self.stop_turtle_button.set_tooltip(_('Show blocks'))
+        else:
+            self.tw.showblocks()
+            self.stop_turtle_button.set_icon('hideshowoff')
+            self.stop_turtle_button.set_tooltip(_('Hide blocks'))
         self.tw.display_coordinates()
 
     def do_samples_cb(self, button):
@@ -781,7 +786,7 @@ class TurtleArtActivity(activity.Activity):
         self.step_button = self._add_button(
             'run-slowoff', _('Step'), self.do_step_cb, toolbar, _('<Ctrl>w'))
         self.stop_turtle_button = self._add_button(
-            'stopitoff', _('Stop turtle'), self.do_stop_cb, toolbar,
+            'hideshowoff', _('Hide blocks'), self.do_stop_cb, toolbar,
             _('<Ctrl>s'))
 
     def _check_ver_change(self, datapath):
@@ -1107,7 +1112,7 @@ in order to use the plugin.'))
         if hasattr(self.get_window(), 'get_cursor'):
             self.get_window().set_cursor(self._old_cursor)
         else:
-            self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.ARROW))
+            self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
 
     def _copy_cb(self, button):
         ''' Copy to the clipboard. '''
