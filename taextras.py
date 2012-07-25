@@ -78,26 +78,26 @@ between 0 and 255'),
     _('magnetic induction'),
     _('vibration'),
     _('Butia Robot'),
-    _('delay Butia'),
-    _('wait for argument seconds'),
+    _('refresh Butia'),
+    _('refresh the state of the Butia palette and blocks'),
     #TRANS: This string is shorthand for "battery charge of Butia"
     _('battery charge Butia'),
     _('returns the battery charge as a number between 0 and 255'),
     #TRANS: This string is shorthand for "speed of Butia"
     _('speed Butia'),
-    _('set the speed of the Butia motors as a value between 0 and 1023, \
+    _('set the speed of the Butia motors to a value between 0 and 1023, \
 passed by an argument'),
     #TRANS: This string is shorthand for "move Butia forward"
     _('forward Butia'),
     _('move the Butia robot forward'),
     _('move the Butia robot forward a predefined distance'),
+    #TRANS: This string is shorthand for "turn Butia left"
+    _('left Butia'),
+    _('turn the Butia robot to the left'),
     #TRANS: This string is shorthand for "move Butia backward"
     _('backward Butia'),
     _('move the Butia robot backward'),
     _('move the Butia robot backward a predefined distance'),
-    #TRANS: This string is shorthand for "turn Butia left"
-    _('left Butia'),
-    _('turn the Butia robot at left'),
     #TRANS: This string is shorthand for "turn Butia right"
     _('right Butia'),
     _('turn the Butia robot at right'),
@@ -106,23 +106,27 @@ passed by an argument'),
     _('stop Butia'),
     _('stop the Butia robot'),
     _('display Butia'),
+    _('Hello World    Butia            '),
     #TRANS: this string must contain only ASCII characters.
     #The len must be 32 characters/spaces.
-    _('Hello World    Butia            '),
-    _('print text in Butia robot 32-character ASCII display')
-,    _('refresh Butia palette'),
-    _('refresh Butia'),
-    _('refresh the state of the Butia palette and blocks'),
+    _('print text in Butia robot 32-character ASCII display'),
     _('Butia')
 ]
 
 FOLLOWME_STRINGS = [
-    _('The camera was not found.'),
-    _('Error on the initialization of the camera.'),
+    _('Error on initialization of the camera'),
+    _('No camera was found'),
+    _('Error stopping camera'),
+    _('Error starting camera'),
+    #TRANS: The "mask" is used to restrict processing to a region in the image
+    _('Error making mask'),
     _('FollowMe'),
     _('follow'),
-    _('R'),
+    #TRANS: Green component of a color
     _('G'),
+    #TRANS: Red component of a color
+    _('R'),
+    #TRANS: Blue component of a color
     _('B'),
     _('follow a RGB color'),
     _('threshold'),
@@ -150,6 +154,14 @@ FOLLOWME_STRINGS = [
     _('follow a color or calibration'),
     _('minimum pixels'),
     _('set the minimal number of pixels to follow'),
+    _('camera mode'),
+    _('set the color mode of the camera: RGB, YUV, or HSV'),
+    _('RGB'),
+    _('set the color mode of the camera to RGB'),
+    _('YUV'),
+    _('set the color mode of the camera to YUV'),
+    _('HSV'),
+    _('set the color mode of the camera to HSV'),
     _('empty calibration'),
     _('error in string conversion')
 ]
