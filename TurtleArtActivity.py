@@ -870,7 +870,8 @@ class TurtleArtActivity(activity.Activity):
         else:  # ...or else, load a Start Block onto the canvas.
             self.tw.load_start()
 
-        if hasattr(self.get_window(), 'get_cursor'):
+        if hasattr(self, 'get_window') and \
+           hasattr(self.get_window(), 'get_cursor'):
             self._old_cursor = self.get_window().get_cursor()
         else:
             self._old_cursor = None
@@ -1109,10 +1110,11 @@ in order to use the plugin.'))
         ''' No longer copying or sharing, so restore standard cursor. '''
         self.copying = False
         self.sharing_blocks = False
-        if hasattr(self.get_window(), 'get_cursor'):
-            self.get_window().set_cursor(self._old_cursor)
-        else:
-            self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+        if hasattr(self, 'get_window'):
+            if hasattr(self.get_window(), 'get_cursor'):
+                self.get_window().set_cursor(self._old_cursor)
+            else:
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
 
     def _copy_cb(self, button):
         ''' Copy to the clipboard. '''
@@ -1120,9 +1122,10 @@ in order to use the plugin.'))
             self.restore_cursor()
         else:
             self.copying = True
-            if hasattr(self.get_window(), 'get_cursor'):
-                self._old_cursor = self.get_window().get_cursor()
-            self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+            if hasattr(self, 'get_window'):
+                if hasattr(self.get_window(), 'get_cursor'):
+                    self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
 
     def send_to_clipboard(self):
         ''' Send selected stack to clipboard. '''
@@ -1160,9 +1163,10 @@ in order to use the plugin.'))
             self.restore_cursor()
         else:
             self.sharing_blocks = True
-            if hasattr(self.get_window(), 'get_cursor'):
-                self._old_cursor = self.get_window().get_cursor()
-            self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+            if hasattr(self, 'get_window'):
+                if hasattr(self.get_window(), 'get_cursor'):
+                    self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
 
     def share_blocks(self):
         ''' Share selected stack. '''
