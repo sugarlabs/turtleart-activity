@@ -334,26 +334,43 @@ class SVG:
         self.margins[3] = int(self._stroke_width * self._scale)
         return self.header() + svg
 
-    def boolean_not(self):
-        ''' Booleans are in a class of their own '''
+    def boolean_not(self, notnot):
+        ''' Booleans are in a class of their own: not and not not '''
         self.reset_min_max()
-        svg = self._start_boolean(self._stroke_width / 2.0, self._radius * \
-                                      2.0 + self._stroke_width / 2.0)
+        if not notnot:
+            svg = self._start_boolean(
+                self._stroke_width / 2.0,
+                self._radius * 2.0 + self._stroke_width / 2.0)
+        else:
+            svg = self._start_boolean(
+                self._stroke_width / 2.0,
+                self._radius + self._stroke_width / 2.0)
         svg += self._rline_to(0, -self._stroke_width)
-        svg += self._rarc_to(1, -1)
+        if not notnot:
+            svg += self._rarc_to(1, -1)
         svg += self._rline_to(self._radius / 2.0 + self._expand_x, 0)
         xx = self._x
-        svg += self._rline_to(0, self._radius / 2.0)
-        svg += self._do_boolean()
-        svg += self._rline_to(0, self._radius / 2.0)
+        if not notnot:
+            svg += self._rline_to(0, self._radius / 2.0)
+            svg += self._do_boolean()
+            svg += self._rline_to(0, self._radius / 2.0)
+        else:
+            svg += self._rline_to(0, self._radius * 2)
         svg += self.line_to(xx, self._y)
-        svg += self._rline_to(-self._expand_x, 0)
-        svg += self._end_boolean()
-        self.margins[0] = int((self._radius + self._stroke_width + 0.5) * \
-                                  self._scale)
+        if not notnot:
+            svg += self._rline_to(-self._expand_x, 0)
+        else:
+            svg += self._rline_to(-self._radius / 2.0 - self._expand_x, 0)
+        svg += self._end_boolean(notnot)
+        if notnot:
+            self.margins[0] = int((self._radius + self._stroke_width + 0.5) * \
+                                      self._scale)
+            self.margins[2] = int((self._radius + self._stroke_width + 0.5) * \
+                                      self._scale)
+        else:
+            self.margins[0] = int((self._stroke_width + 0.5) * self._scale)
+            self.margins[2] = int((self._stroke_width + 0.5) * self._scale)
         self.margins[1] = int(self._stroke_width * self._scale)
-        self.margins[2] = int((self._radius + self._stroke_width + 0.5) * \
-                                  self._scale)
         self.margins[3] = int(self._stroke_width * self._scale)
         return self.header() + svg
 
@@ -1105,8 +1122,11 @@ class SVG:
         svg = self._rarc_to(-1, 1, 90, 0, 0) + self._rarc_to(1, 1, 90, 0, 0)
         return svg
 
-    def _end_boolean(self):
-        svg = self._rline_to(-self._radius * 1.5, 0)
+    def _end_boolean(self, notnot=False):
+        if not notnot:
+            svg = self._rline_to(-self._radius * 1.5, 0)
+        else:
+            svg = ''
         svg += self._rline_to(0, -self._stroke_width)
         svg += self._rline_to(-self._stroke_width, 0)
         self._radius -= self._stroke_width
@@ -1178,13 +1198,10 @@ def close_file(f):
 
 def generator(datapath):
     svg0 = SVG()
-    f = open_file(datapath, "clamp.svg")
+    f = open_file(datapath, "true.svg")
     svg0.set_scale(2)
-    svg0.set_arm(True)
-    svg0.expand(0, 0, 0, 21)
-    svg0.set_collapsible(True)
-    svg0.set_hide(True)
-    svg_str = svg0.clamp()
+    svg0.expand(30, 0, 0, 0)
+    svg_str = svg0.boolean_not(True)
     f.write(svg_str)
     close_file(f)
 

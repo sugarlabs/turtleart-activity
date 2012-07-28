@@ -108,7 +108,7 @@ class Turtle_blocks_extras(Plugin):
 boolean operators from Numbers palette'))
 
         # internally expanded macro
-        palette.add_block('until', 
+        palette.add_block('until',
                           style='clamp-style-boolean',
                           label=_('until'),
                           prim_name='until',
@@ -331,6 +331,7 @@ amplitude, and duration (in seconds)'))
 
         primitive_dictionary['mousebutton'] = self._prim_mouse_button
         palette.add_block('mousebutton',
+                          hidden=True,
                           style='box-style',
                           label=_('button down'),
                           prim_name='mousebutton',
@@ -339,6 +340,17 @@ amplitude, and duration (in seconds)'))
 pressed'))
         self.tw.lc.def_prim('mousebutton', 0,
                             lambda self: primitive_dictionary['mousebutton']())
+
+        primitive_dictionary['mousebutton2'] = self._prim_mouse_button_bool
+        palette.add_block('mousebutton2',
+                          style='boolean-block-style',
+                          label=_('button down'),
+                          prim_name='mousebutton2',
+                          value_block=True,
+                          help_string=_('returns True if mouse button is \
+pressed'))
+        self.tw.lc.def_prim('mousebutton2', 0,
+                            lambda self: primitive_dictionary['mousebutton2']())
 
         palette.add_block('mousex',
                           style='box-style',
@@ -1319,6 +1331,13 @@ bullets'))
             return 1
         else:
             return 0
+
+    def _prim_mouse_button_bool(self):
+        """ Return True if mouse button is pressed """
+        if self.tw.mouse_flag == 1:
+            return True
+        else:
+            return False
 
     def _prim_see(self):
         """ Read r, g, b from the canvas and return a corresponding palette
