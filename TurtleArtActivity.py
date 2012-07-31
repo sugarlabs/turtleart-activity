@@ -523,6 +523,8 @@ class TurtleArtActivity(activity.Activity):
                          edit_toolbar, '<Ctrl>c')
         self._add_button('edit-paste', _('Paste'), self._paste_cb,
                          edit_toolbar, '<Ctrl>v')
+        self._add_button('edit-undo', _('Restore blocks from trash'),
+                         self._undo_cb, edit_toolbar)
         self._add_button('view-fullscreen', _('Fullscreen'),
                          self.do_fullscreen_cb, view_toolbar, '<Alt>Return')
         self._add_button('view-Cartesian', _('Cartesian coordinates'),
@@ -1156,6 +1158,10 @@ in order to use the plugin.'))
                 self.tw.process_data(data_from_string(text),
                                      self.tw.paste_offset)
                 self.tw.paste_offset += 20
+
+    def _undo_cb(self, button):
+        ''' Restore most recent item added to the trash '''
+        self.tw.restore_latest_from_trash()
 
     def _share_cb(self, button):
         ''' Share a stack of blocks. '''

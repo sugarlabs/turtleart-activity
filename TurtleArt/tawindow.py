@@ -1297,7 +1297,7 @@ class TurtleArtWindow():
                 if blk.name == 'restoreall':
                     self._restore_all_from_trash()
                 elif blk.name == 'restore':
-                    self._restore_latest_from_trash()
+                    self.restore_latest_from_trash()
                 elif blk.name == 'empty':
                     self._empty_trash()
                 elif blk.name == 'trashall':
@@ -1686,7 +1686,7 @@ class TurtleArtWindow():
             if blk.type == 'trash':
                 self._restore_from_trash(blk)
 
-    def _restore_latest_from_trash(self):
+    def restore_latest_from_trash(self):
         ''' Restore most recent blocks from the trash can. '''
         if len(self.trash_stack) == 0:
             return
