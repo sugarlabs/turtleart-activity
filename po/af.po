@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: TURTLEART\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-01 00:30-0400\n"
-"PO-Revision-Date: 2011-09-22 05:33+0200\n"
+"PO-Revision-Date: 2012-08-22 18:07+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: AF <walter@sugarlabs.org>\n"
-"Language: \n"
+"Language: af\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -283,16 +283,19 @@ msgid "Palette of pen colors"
 msgstr "palet van penbevele"
 
 #: TurtleArt/tabasics.py:426
+#, fuzzy
 msgid "red"
-msgstr ""
+msgstr "rooi"
 
 #: TurtleArt/tabasics.py:427
+#, fuzzy
 msgid "orange"
-msgstr ""
+msgstr "oranje"
 
 #: TurtleArt/tabasics.py:429
+#, fuzzy
 msgid "yellow"
-msgstr ""
+msgstr "geel"
 
 #: TurtleArt/tabasics.py:431
 msgid "green"
