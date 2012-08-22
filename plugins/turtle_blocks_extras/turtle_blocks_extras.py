@@ -513,6 +513,7 @@ make "tmp first :taheap\rmake "taheap butfirst :taheap\routput :tmp\rend\r')
 
         primitive_dictionary['isheapempty'] = self._prim_is_heap_empty
         palette.add_block('isheapempty',
+                          hidden=True,
                           style='box-style',
                           label=_('empty heap?'),
                           prim_name='isheapempty',
@@ -520,6 +521,16 @@ make "tmp first :taheap\rmake "taheap butfirst :taheap\routput :tmp\rend\r')
                           help_string=_('returns True if heap is empty'))
         self.tw.lc.def_prim('isheapempty', 0,
                             lambda self: primitive_dictionary['isheapempty']())
+
+        primitive_dictionary['isheapempty2'] = self._prim_is_heap_empty_bool
+        palette.add_block('isheapempty2',
+                          style='boolean-block-style',
+                          label=_('empty heap?'),
+                          prim_name='isheapempty2',
+                          value_block=True,
+                          help_string=_('returns True if heap is empty'))
+        self.tw.lc.def_prim('isheapempty2', 0,
+                            lambda self: primitive_dictionary['isheapempty2']())
 
         primitive_dictionary['print'] = self._prim_print
         palette.add_block('comment',
@@ -1105,6 +1116,13 @@ bullets'))
             return 1
         else:
             return 0
+
+    def _prim_is_heap_empty_bool(self):
+        """ is FILO empty? """
+        if len(self.tw.lc.heap) == 0:
+            return True
+        else:
+            return False
 
     def _prim_pop(self):
         """ Pop value off of FILO """
