@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-01 00:30-0400\n"
-"PO-Revision-Date: 2012-06-18 05:35+0200\n"
-"Last-Translator: aman0115 <aman.maharjan@olenepal.org>\n"
+"PO-Revision-Date: 2012-08-22 10:23+0200\n"
+"Last-Translator: prabhat <prabhat.bhattarai@olenepal.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ne\n"
 "MIME-Version: 1.0\n"
@@ -1783,11 +1783,11 @@ msgstr "रूआण्डान फ्रेकंको प्यालेट"
 
 #: taextras.py:50
 msgid "Palette of US dollars"
-msgstr ""
+msgstr "अमेरिकी डलरको प्यालेट"
 
 #: taextras.py:51
 msgid "Palette of Australian dollars"
-msgstr ""
+msgstr "अस्ट्रेलियन डलरको प्यालेट"
 
 #: taextras.py:52
 msgid "Palette of Paraguayan Guaranies"
