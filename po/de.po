@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: turtleart-activity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-01 00:30-0400\n"
-"PO-Revision-Date: 2012-06-25 22:13+0200\n"
-"Last-Translator: mattthias <matthias@sigxcpu.org>\n"
+"PO-Revision-Date: 2012-08-28 20:34+0200\n"
+"Last-Translator: Markus <m.slg@gmx.de>\n"
 "Language-Team: Deutsche OLPC-Lokalisierung\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -875,7 +875,6 @@ msgid "Paste"
 msgstr "Einfügen"
 
 #: TurtleArtActivity.py:526
-#, fuzzy
 msgid "Restore blocks from trash"
 msgstr "Alle gelöschten Blöcke wiederherstellen"
 
@@ -944,7 +943,7 @@ msgstr "Python-Block laden"
 
 #: TurtleArtActivity.py:717
 msgid "Sharing blocks disabled"
-msgstr ""
+msgstr "Teilen von Blöcken ist ausgeschaltet."
 
 #: TurtleArtActivity.py:780
 msgid "<Ctrl>p"
@@ -1395,7 +1394,7 @@ msgstr "Gibt 1 zurück, wenn die Maustaste gedrückt ist."
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:350
 #, fuzzy
 msgid "returns True if mouse button is pressed"
-msgstr "Gibt 1 zurück, wenn die Maustaste gedrückt ist."
+msgstr "Gibt Wahr zurück, wenn die Maustaste gedrückt ist."
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
 msgid "mouse x"
@@ -1427,9 +1426,8 @@ msgid "keyboard"
 msgstr "Tastatur"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:391
-#, fuzzy
 msgid "holds results of query-keyboard block as ASCII"
-msgstr "Das Ergebnis des Tastaturabfrage-Blocks"
+msgstr "Beinhaltet das Ergebnis des Tastaturabfrage-Blocks als ASCII-Zeichen."
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:423
 msgid "read pixel"
@@ -1521,11 +1519,11 @@ msgstr "Zeigt den Wert im Statusblock am unteren Bildschirmrand an"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:551
 msgid "Python chr operator"
-msgstr ""
+msgstr "chr-Operator von Python"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:560
 msgid "Python int operator"
-msgstr ""
+msgstr "int-Operator von Python"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:567
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:580
@@ -1609,18 +1607,19 @@ msgstr "Den 'Panzer' der Schildkröte anpassen"
 msgid "top of a collapsed stack"
 msgstr "Anfang eines zugeklappten Stapels"
 
+# (M. Schlager) lade ?
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:709
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:719
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:730
+#, fuzzy
 msgid "load"
-msgstr ""
+msgstr "laden"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:712
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
-#, fuzzy
 msgid "loads a block"
-msgstr "Meinen Block laden"
+msgstr "Einen Block laden"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:733
 #, fuzzy
@@ -1629,11 +1628,11 @@ msgstr "setze xy"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
 msgid "palette"
-msgstr ""
+msgstr "Palette"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:745
 msgid "selects a palette"
-msgstr ""
+msgstr "Eine Palette wählen"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:753
 msgid "Palette of presentation templates"
@@ -1645,7 +1644,7 @@ msgstr "Blöcke verbergen"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:762
 msgid "declutters canvas by hiding blocks"
-msgstr "Fenster durch Verbergen der Blöcke aufräumen"
+msgstr "Fenster durch Verbergen von Blöcken aufräumen"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:769
 msgid "show blocks"
@@ -1819,19 +1818,19 @@ msgstr "Palette der ruandischen Francs"
 
 #: taextras.py:50
 msgid "Palette of US dollars"
-msgstr ""
+msgstr "Palette der US-Dollars"
 
 #: taextras.py:51
 msgid "Palette of Australian dollars"
-msgstr ""
+msgstr "Palette der australischen Dollars"
 
 #: taextras.py:52
 msgid "Palette of Paraguayan Guaranies"
-msgstr ""
+msgstr "Palette der paraguayischen Guaranies"
 
 #: taextras.py:53
 msgid "Palette of Peruvian Nuevo Soles"
-msgstr ""
+msgstr "Palette der peruanischen Nuevo Soles"
 
 #: taextras.py:54
 msgid "Palette of Uruguayan Pesos"
@@ -1926,12 +1925,14 @@ msgid "Butia Robot"
 msgstr "Butia-Roboter"
 
 #: taextras.py:81
+#, fuzzy
 msgid "refresh Butia"
-msgstr ""
+msgstr "Butia zurücksetzen"
 
 #: taextras.py:82
+#, fuzzy
 msgid "refresh the state of the Butia palette and blocks"
-msgstr ""
+msgstr "Den Zustand der Butia-Palette und -Blöcke zurücksetzen"
 
 #. TRANS: This string is shorthand for "battery charge of Butia"
 #: taextras.py:84
@@ -1975,7 +1976,6 @@ msgid "left Butia"
 msgstr "Butia nach links"
 
 #: taextras.py:96
-#, fuzzy
 msgid "turn the Butia robot to the left"
 msgstr "Drehe den Butia-Roboter nach links."
 
@@ -2036,26 +2036,26 @@ msgid "Butia"
 msgstr "Butia"
 
 #: taextras.py:117
-#, fuzzy
 msgid "Error on initialization of the camera"
 msgstr "Fehler beim Einrichten der Kamera."
 
 #: taextras.py:118
 msgid "No camera was found"
-msgstr ""
+msgstr "Keine Kamera gefunden"
 
 #: taextras.py:119
 msgid "Error stopping camera"
-msgstr ""
+msgstr "Fehler beim Anhalten der Kamera"
 
 #: taextras.py:120
 msgid "Error starting camera"
-msgstr ""
+msgstr "Fehler beim Einschalten der Kamera"
 
 #. TRANS: The "mask" is used to restrict processing to a region in the image
 #: taextras.py:122
+#, fuzzy
 msgid "Error making mask"
-msgstr ""
+msgstr "Fehler beim Erstellen der Bildmaske"
 
 #: taextras.py:123
 msgid "FollowMe"
@@ -2173,39 +2173,39 @@ msgstr "minimale Pixelanzahl"
 
 #: taextras.py:156
 msgid "set the minimal number of pixels to follow"
-msgstr "setze die Mininalzahl zu verfolgender Pixel"
+msgstr "Setze die Minimalzahl zu verfolgender Pixel fest"
 
 #: taextras.py:157
 msgid "camera mode"
-msgstr ""
+msgstr "Kameramodus"
 
 #: taextras.py:158
 msgid "set the color mode of the camera: RGB, YUV, or HSV"
-msgstr ""
+msgstr "Wähle den Farbmodus der Kamera: RGB, YUV oder HSV"
 
 #: taextras.py:159
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #: taextras.py:160
 msgid "set the color mode of the camera to RGB"
-msgstr ""
+msgstr "Setze den Farbmodus der Kamera auf RGB"
 
 #: taextras.py:161
 msgid "YUV"
-msgstr ""
+msgstr "YUV"
 
 #: taextras.py:162
 msgid "set the color mode of the camera to YUV"
-msgstr ""
+msgstr "Setze den Farbmodus der Kamera auf YUV"
 
 #: taextras.py:163
 msgid "HSV"
-msgstr ""
+msgstr "HSV"
 
 #: taextras.py:164
 msgid "set the color mode of the camera to HSV"
-msgstr ""
+msgstr "Setze den Farbmodus der Kamera auf HSV"
 
 #: taextras.py:165
 msgid "empty calibration"
@@ -2227,11 +2227,11 @@ msgstr "Geschwindigkeit des SumBot"
 
 #: taextras.py:173
 msgid "submit the speed to the SumBot"
-msgstr "übermittle die Geschwindigkeit des Sumbot"
+msgstr "Übermittle die Geschwindigkeit auf den Sumbot"
 
 #: taextras.py:174
 msgid "set the default speed for the movement commands"
-msgstr "setze die Standardgeschwindigkeit für die Bewegungsbefehle"
+msgstr "Setze die Standardgeschwindigkeit für die Bewegungsbefehle"
 
 #. TRANS: This string is shorthand for "move SumBot forward"
 #: taextras.py:176
@@ -2505,7 +2505,7 @@ msgstr ""
 
 #: taextras.py:265
 msgid "save as Physics activity"
-msgstr ""
+msgstr "Speichern als Physik-Aktivität"
 
 #: taextras.py:266
 msgid "Save the project to the Journal as a Physics activity."
@@ -2514,12 +2514,11 @@ msgstr "Speichere das Projekt als Physik-Aktivität ins Tagebuch."
 #. TRANS: Here, gear means a toothed wheel, as in a clock-works
 #: taextras.py:268
 msgid "gear"
-msgstr ""
+msgstr "Zahnrad"
 
 #: taextras.py:269
-#, fuzzy
 msgid "Add a gear object to the project."
-msgstr "Füge ein Kreisobjekt zum Projekt hinzu."
+msgstr "Füge ein Zahnradobjekt zum Projekt hinzu."
 
 # (Markus S.) 'Gleichheit'?
 #: taextras.py:270
@@ -2855,11 +2854,11 @@ msgstr "Stelle die Helligkeit des Farbsensors ein."
 #. TRANS: the battery level is the charge level of the brick
 #: taextras.py:371
 msgid "battery level"
-msgstr ""
+msgstr "Batterieladung"
 
 #: taextras.py:372
 msgid "Get battery level of brick."
-msgstr ""
+msgstr "Der Ladezustand der Batterie des Steins"
 
 #. TRANS: Arduino plugin to control an Arduino board
 #: taextras.py:377
