@@ -1564,7 +1564,10 @@ class TurtleArtWindow():
         if blk.connections[0] is None:
             return False
         if storein and blk.connections[0].name == 'storein':
-            return True
+            if blk.connections[0].connections[1] == blk:
+                return True
+            else:
+                return False
         if not storein and blk.connections[0].name == 'box':
             return True
         return False
