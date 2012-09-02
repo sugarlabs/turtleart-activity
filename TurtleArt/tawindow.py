@@ -1320,7 +1320,21 @@ class TurtleArtWindow():
                     elif blk.name in ['hat']:
                         similars = self.block_list.get_similar_blocks(
                             'block', blk.name)
-                        if len(similars) > 0:
+                        # First look for a hat with _('action') as its label
+                        found_the_action_block = False
+                        bname = _('action')
+                        if type(bname) == unicode:
+                            bname = bname.encode('ascii', 'replace')
+                        for sblk in similars:
+                            cblk = sblk.connections[1]
+                            if cblk is not None:
+                                blabel = cblk.spr.labels[0]
+                                if type(blabel) == unicode:
+                                    blabel = blabel.encode('ascii', 'replace')
+                                if bname == blabel:
+                                    found_the_action_block = True
+                        # If there is an action block in use, change the name
+                        if len(similars) > 0 and found_the_action_block:
                             defaults = [_('action')]
                             if self._find_proto_name('stack', defaults[0]):
                                 defaults[0] = increment_name(defaults[0])
