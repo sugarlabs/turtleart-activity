@@ -1,3 +1,23 @@
+156
+
+ENHANCEMENT:
+* Make button down block a boolean
+* New translations
+* Restore from trash added as a button to edit toolbar
+
+BUG FIX:
+* Check for get_window, not available on some older systems
+* Fixed a few corner cases with autogeneration of palette blocks
+
+154
+
+ENHANCEMENT:
+* New sample code
+* New translations
+
+BUG FIX:
+* Add custom storein boxes to palette
+
 152
 
 ENHANCEMENT:
