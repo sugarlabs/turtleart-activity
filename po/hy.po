@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-01 00:30-0400\n"
-"PO-Revision-Date: 2012-08-21 22:09+0200\n"
+"PO-Revision-Date: 2012-08-23 15:08+0200\n"
 "Last-Translator: anush.mkrtchyan <anush.mkrtchyan@ca1492.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hy\n"
@@ -2870,7 +2870,7 @@ msgstr "մարտկոցի մակարդակը"
 
 #: taextras.py:372
 msgid "Get battery level of brick."
-msgstr ""
+msgstr "Ձեռք բերել ուղղանկյան մարտկոցի մակարդակը:"
 
 # Arduino - բաց, ազատ սարքաշարի հարթակ, հավելյալ մուտք Arduino վահանակի վերահսկման համար:
 #. TRANS: Arduino plugin to control an Arduino board

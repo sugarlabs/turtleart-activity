@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-01 00:30-0400\n"
-"PO-Revision-Date: 2012-08-21 23:06+0200\n"
+"PO-Revision-Date: 2012-08-29 02:04+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pbs\n"
@@ -136,7 +136,7 @@ msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
-"lumei peuk se ma nat'ei nanju sad-ia' y lumei  ne kumú' (lania'at lakje' "
+"lumei peuk se ma nat'ei nanju sad-ia' y lumei ne kumú' (lania'at lakje' "
 "kujui nip manakje rabe'en)"
 
 #: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3792
@@ -605,7 +605,7 @@ msgstr "makjaat kiñkie' ndakjaat nui"
 
 #: TurtleArt/tabasics.py:884
 msgid "stores numeric value in Variable 2"
-msgstr "makjaat pu rabe'en  kupu se vania'at liviau'n nui"
+msgstr "makjaat pu rabe'en kupu se vania'at liviau'n nui"
 
 #: TurtleArt/tabasics.py:892
 msgid "box 1"
@@ -699,7 +699,7 @@ msgstr "matseiñ' mi'ia"
 
 #: TurtleArt/tabasics.py:993
 msgid "move all blocks to trash"
-msgstr "vikia'aut mi'ia re se  xik'iai'"
+msgstr "vikia'aut mi'ia re se xik'iai'"
 
 #: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1763
 #: TurtleArtActivity.py:633
@@ -970,7 +970,7 @@ msgstr "¿Kimieng tsukuet manamejep %s?"
 
 #: gnome_plugins/collaboration_plugin.py:67
 msgid "My Turtle Art session"
-msgstr ""
+msgstr "pu kauk tijiap ne tortugArte"
 
 #: gnome_plugins/collaboration_plugin.py:115
 msgid "Enable collaboration"
@@ -1037,7 +1037,7 @@ msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
 msgstr ""
-"tumei numei peuk nu'uei njui pu http://turtleartesite.sugarlabs.or kujui "
+"tumei numei peuk nu'uei njui pu http://turtleartesite.sugarlabs.org kujui "
 "luju'u lupu navu se ndul'ueje ma natsjau."
 
 #: gnome_plugins/uploader_plugin.py:92
@@ -1267,11 +1267,11 @@ msgstr "nda'u'up"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:211
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:226
 msgid "draws text or show media from the Journal"
-msgstr ""
+msgstr "me'es matsjau ma'u'up kad-er se limi xiñi'iu xiñi'iu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:207
 msgid "show aligned"
-msgstr ""
+msgstr "ma'u'up se makjaa't"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:234
 msgid "set scale"
@@ -1301,6 +1301,8 @@ msgstr "makjat SVG"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:259
 msgid "saves turtle graphics as an SVG file in the Sugar Journal"
 msgstr ""
+"vikjiat ravu se nichjaú pu kiñkie' kumu' nkjai' navú makjat ngk'uix SVG pu "
+"xiñi'iu xiñi'iu matsjau kad-ua ninchaul"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:266
 msgid "scale"
@@ -1348,7 +1350,7 @@ msgstr "nia"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
 msgid "hello"
-msgstr ""
+msgstr "hola"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:308
 msgid "speaks text"
