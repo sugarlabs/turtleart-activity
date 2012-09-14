@@ -313,7 +313,8 @@ complete'))
         palette.add_block('sinewave',
                           style='basic-style-3arg',
                           # TRANS: pitch, duration, amplitude
-                          label=[_('sinewave'), _('pitch'), _('duration'), ''],
+                          label=[_('sinewave') + '\n\n', _('pitch'),
+                                 _('amplitude'), _('duration')],
                           prim_name='sinewave',
                           default=[1000, 5000, 1],
                           help_string=_('plays a sinewave at frequency, \

@@ -531,23 +531,29 @@ class Block:
                 debug_output('WARNING: unknown block name %s' % (self.name))
                 n = 0
         for i in range(n):
+            if i > 0:
+                size = int(self._font_size[1] + 0.5)
+            else:
+                size = int(self._font_size[0] + 0.5)
             if self.name in block_styles['compare-porch-style']:
-                self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
-                                              True, 'center', 'bottom', i=i)
+                self.spr.set_label_attributes(size, True, 'center', 'bottom',
+                                              i=i)
             elif self.name in block_styles['number-style-porch']:
-                self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
-                                              True, 'right', 'bottom', i=i)
+                self.spr.set_label_attributes(size, True, 'right', 'bottom',
+                                              i=i)
             elif self.name in EXPANDABLE_FLOW:
                 self._calc_moving_labels(i)
             elif i == 1:  # top
-                self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
-                                              True, 'right', 'top', i=i)
-            elif i == 2:  # bottom
-                self.spr.set_label_attributes(int(self._font_size[1] + 0.5),
-                                              True, 'right', 'bottom', i=i)
+                self.spr.set_label_attributes(size, True, 'right', 'top', i=i)
+            elif i > 0 and i == n - 1:  # bottom
+                self.spr.set_label_attributes(size, True, 'right', 'bottom',
+                                              i=i)
+            elif i > 0:
+                self.spr.set_label_attributes(size, True, 'right', 'middle',
+                                              i=i)
             else:
-                self.spr.set_label_attributes(int(self._font_size[0] + 0.5),
-                                              True, 'center', 'middle', i=i)
+                self.spr.set_label_attributes(size, True, 'center', 'middle',
+                                              i=i)
 
     def _calc_moving_labels(self, i):
         ''' Some labels move as blocks change shape/size '''
