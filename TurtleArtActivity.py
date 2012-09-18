@@ -281,9 +281,8 @@ class TurtleArtActivity(activity.Activity):
 
     def do_stop_cb(self, button):
         ''' Callback for stop button. '''
-        self.tw.stop_button()
         # Auto show blocks after stop
-        if not self.tw.hide:
+        if not self.tw.hide and not self.tw.running_blocks:
             self.tw.hideblocks()
             self.stop_turtle_button.set_icon('hideshowon')
             self.stop_turtle_button.set_tooltip(_('Show blocks'))
@@ -291,6 +290,7 @@ class TurtleArtActivity(activity.Activity):
             self.tw.showblocks()
             self.stop_turtle_button.set_icon('hideshowoff')
             self.stop_turtle_button.set_tooltip(_('Hide blocks'))
+        self.tw.stop_button()
         self.tw.display_coordinates()
 
     def do_samples_cb(self, button):
