@@ -1,3 +1,13 @@
+158
+
+ENHANCEMENTS:
+* New translations
+
+BUG FIX:
+* Properly display blocks with four labels
+* Don't hide blocks when hitting stop button
+* Use different warning messages when plugin fails to import vs load
+
 156
 
 ENHANCEMENT:
