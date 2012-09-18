@@ -325,7 +325,7 @@ class TurtleArtWindow():
             debug_output('Failed to import %s: %s' % (plugin_class, str(e)),
                          self.running_sugar)
         except:
-            debug_output('Failed to import %s' % (plugin_class),
+            debug_output('Failed to load %s' % (plugin_class),
                          self.running_sugar)
 
     def _add_plugin_icon_dir(self, dirname):
