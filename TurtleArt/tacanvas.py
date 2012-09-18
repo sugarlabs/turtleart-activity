@@ -487,10 +487,15 @@ class TurtleGraphics:
             self.tw.send_event(event)
 
     def fillscreen(self, c, s):
-        ''' Fill screen with color/shade and reset to defaults '''
-        oldc, olds = self.color, self.shade
+        ''' Deprecated method: Fill screen with color/shade '''
+        self.fillscreen_with_gray(c, s, self.gray)
+
+    def fillscreen_with_gray(self, c, s, g):
+        ''' Fill screen with color/shade/gray and reset to defaults '''
+        oldc, olds, oldg = self.color, self.shade, self.gray
         self.setcolor(c, False)
         self.setshade(s, False)
+        self.setgray(g, False)
         self.bgrgb = self.fgrgb[:]
 
         def _fillscreen(cr, rgb, w, h):
@@ -504,6 +509,7 @@ class TurtleGraphics:
             _fillscreen(self.cr_svg, self.fgrgb, self.width, self.height)
         self.setcolor(oldc, False)
         self.setshade(olds, False)
+        self.setgray(oldg, False)
         self.fill = False
         self.poly_points = []
 

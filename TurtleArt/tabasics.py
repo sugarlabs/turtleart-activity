@@ -273,39 +273,8 @@ setxy :x :y\rpendown\rend\r')
                                colors=["#00FFFF", "#00A0A0"],
                                help_string=_('Palette of pen commands'))
 
-        palette.add_block('penup',
-                          style='basic-style-extended-vertical',
-                          label=_('pen up'),
-                          prim_name='penup',
-                          logo_command='penup',
-                          help_string=_('Turtle will not draw when moved.'))
-        self.tw.lc.def_prim('penup', 0,
-                             lambda self: self.tw.canvas.setpen(False))
-
-        palette.add_block('pendown',
-                          style='basic-style-extended-vertical',
-                          label=_('pen down'),
-                          prim_name='pendown',
-                          logo_command='pendown',
-                          help_string=_('Turtle will draw when moved.'))
-        self.tw.lc.def_prim('pendown', 0,
-                             lambda self: self.tw.canvas.setpen(True))
-
-        palette.add_block('setpensize',
-                          style='basic-style-1arg',
-                          label=_('set pen size'),
-                          prim_name='setpensize',
-                          default=5,
-                          logo_command='setpensize',
-                          help_string=_('sets size of the line drawn by the \
-turtle'))
-        self.tw.lc.def_prim('setpensize', 1,
-                             lambda self, x: primitive_dictionary['set'](
-                'pensize', self.tw.canvas.setpensize, x))
-        define_logo_function('tasetpensize', 'to tasetpensize :a\rsetpensize \
-round :a\rend\r')
-
         palette.add_block('fillscreen',
+                          hidden=True,
                           style='basic-style-2arg',
                           label=[_('fill screen'), _('color'), _('shade')],
                           prim_name='fillscreen',
@@ -315,20 +284,21 @@ round :a\rend\r')
 shade)'))
         self.tw.lc.def_prim('fillscreen', 2,
             lambda self, x, y: self.tw.canvas.fillscreen(x, y))
+
+        palette.add_block('fillscreen2',
+                          style='basic-style-3arg',
+                          label=[_('fill screen') + '\n\n', _('color'),
+                                 _('shade'), _('gray')],
+                          prim_name='fillscreen2',
+                          default=[60, 80, 100],
+                          logo_command='tasetbackground',
+                          help_string=_('fills the background with (color, \
+shade)'))
+        self.tw.lc.def_prim('fillscreen2', 3,
+            lambda self, x, y, z: self.tw.canvas.fillscreen_with_gray(x, y, z))
+
         define_logo_function('tasetbackground', 'to tasetbackground :color \
 :shade\rtasetshade :shade\rsetbackground :color\rend\r')
-
-        palette.add_block('pensize',
-                          style='box-style',
-                          label=_('pen size'),
-                          help_string=_('holds current pen size (can be used \
-in place of a number block)'),
-                          value_block=True,
-                          prim_name='pensize',
-                          logo_command='pensize')
-        self.tw.lc.def_prim('pensize', 0, lambda self: self.tw.canvas.pensize)
-        define_logo_function('tapensize', 'to tapensize\routput first round \
-pensize\rend\r')
 
         palette.add_block('setcolor',
                           style='basic-style-1arg',
@@ -393,6 +363,38 @@ used in place of a number block)'),
                           prim_name='gray')
         self.tw.lc.def_prim('gray', 0, lambda self: self.tw.canvas.gray)
 
+        palette.add_block('penup',
+                          style='basic-style-extended-vertical',
+                          label=_('pen up'),
+                          prim_name='penup',
+                          logo_command='penup',
+                          help_string=_('Turtle will not draw when moved.'))
+        self.tw.lc.def_prim('penup', 0,
+                             lambda self: self.tw.canvas.setpen(False))
+
+        palette.add_block('pendown',
+                          style='basic-style-extended-vertical',
+                          label=_('pen down'),
+                          prim_name='pendown',
+                          logo_command='pendown',
+                          help_string=_('Turtle will draw when moved.'))
+        self.tw.lc.def_prim('pendown', 0,
+                             lambda self: self.tw.canvas.setpen(True))
+
+        palette.add_block('setpensize',
+                          style='basic-style-1arg',
+                          label=_('set pen size'),
+                          prim_name='setpensize',
+                          default=5,
+                          logo_command='setpensize',
+                          help_string=_('sets size of the line drawn by the \
+turtle'))
+        self.tw.lc.def_prim('setpensize', 1,
+                             lambda self, x: primitive_dictionary['set'](
+                'pensize', self.tw.canvas.setpensize, x))
+        define_logo_function('tasetpensize', 'to tasetpensize :a\rsetpensize \
+round :a\rend\r')
+
         palette.add_block('startfill',
                           style='basic-style-extended-vertical',
                           label=_('start fill'),
@@ -410,6 +412,18 @@ fill block)'))
 start fill block)'))
         self.tw.lc.def_prim('stopfill', 0,
                              lambda self: self.tw.canvas.stop_fill())
+
+        palette.add_block('pensize',
+                          style='box-style',
+                          label=_('pen size'),
+                          help_string=_('holds current pen size (can be used \
+in place of a number block)'),
+                          value_block=True,
+                          prim_name='pensize',
+                          logo_command='pensize')
+        self.tw.lc.def_prim('pensize', 0, lambda self: self.tw.canvas.pensize)
+        define_logo_function('tapensize', 'to tapensize\routput first round \
+pensize\rend\r')
 
     def _color_palette(self):
         """ The basic Turtle Art color palette """
