@@ -198,7 +198,7 @@ class GstPlayer(gobject.GObject):
         self.playing = False
         self.error = False
 
-        self.player = gst.element_factory_make('playbin', 'player')
+        self.player = gst.element_factory_make('playbin2', 'player')
 
         videowidget.realize()
         self.videowidget = videowidget
