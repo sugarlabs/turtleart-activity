@@ -59,22 +59,6 @@ def myblock(tw, x):  # ignore second argument
                             self._activity_name.append(a['activity'])
                             self._activity_count.append(1)
 
-        def get_list(self):
-            activity_list = []
-            for i in range(len(self._activity_name)):
-                activity_list.append([self._activity_name[i],
-                                      self._activity_count[i]])
-            return activity_list
-
-        def get_max(self):
-            max_count = -1
-            max_name = ''
-            for i in range(len(self._activity_name)):
-                if self._activity_count[i] > max_count:
-                    max_count = self._activity_count[i]
-                    max_name = self._activity_name[i]
-            return max_name
-
         def get_sorted(self):
             activity_tuples = []
             for i in range(len(self._activity_name)):
