@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-15 00:31-0400\n"
-"PO-Revision-Date: 2012-09-21 20:13+0200\n"
+"POT-Creation-Date: 2012-09-25 00:30-0400\n"
+"PO-Revision-Date: 2012-09-25 11:26+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: aym\n"
@@ -170,210 +170,212 @@ msgstr ""
 msgid "Palette of pen commands"
 msgstr "Samichaña phuyu apnaqaña limt'aña"
 
-#: TurtleArt/tabasics.py:278
-msgid "pen up"
-msgstr "samichaña phuyu jithsuyaña"
-
-#: TurtleArt/tabasics.py:281
-msgid "Turtle will not draw when moved."
-msgstr "Tortuga wakichataxa unxtayata janiwa rixichkaniti."
-
-#: TurtleArt/tabasics.py:287
-msgid "pen down"
-msgstr "samichaña phuyu jithiqayaña"
-
-#: TurtleArt/tabasics.py:290
-msgid "Turtle will draw when moved."
-msgstr "Tortuga wakichataxa unxtasina rixichaniwa."
-
-#: TurtleArt/tabasics.py:296
-msgid "set pen size"
-msgstr "taña chanichaña"
-
-#: TurtleArt/tabasics.py:300
-msgid "sets size of the line drawn by the turtle"
-msgstr "tortuga wakichatampi rixiñataki rixi chanipa wakichma"
-
 # "pantalla completa"
-#: TurtleArt/tabasics.py:310
+#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
 msgid "fill screen"
 msgstr "maypacha uñtaña phuqachma"
 
 #  "color"
-#: TurtleArt/tabasics.py:310 TurtleArt/tabasics.py:370 taextras.py:311
+#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
+#: TurtleArt/tabasics.py:340 taextras.py:311
 msgid "color"
 msgstr "sami"
 
-#: TurtleArt/tabasics.py:310 TurtleArt/tabasics.py:380
+#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:291
+#: TurtleArt/tabasics.py:350
 msgid "shade"
 msgstr "ist'añataki wakichata"
 
-#: TurtleArt/tabasics.py:314
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
 msgid "fills the background with (color, shade)"
 msgstr "manqhäxa wakichatanakampi phuqachma (samimpi, ch'iwumpi)"
 
-#: TurtleArt/tabasics.py:323
-msgid "pen size"
-msgstr "taña wakichata"
+#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:359
+msgid "gray"
+msgstr "uqiru samiri"
 
-#: TurtleArt/tabasics.py:324
-msgid "holds current pen size (can be used in place of a number block)"
-msgstr ""
-"jichha samichaña phuyu wakichata tañapaniwa (maya tama jakhunaka lanti "
-"apnaqasispa)"
-
-#: TurtleArt/tabasics.py:335
+#: TurtleArt/tabasics.py:305
 msgid "set color"
 msgstr "sami wakichaña"
 
-#: TurtleArt/tabasics.py:339
+#: TurtleArt/tabasics.py:309
 msgid "sets color of the line drawn by the turtle"
 msgstr "tortuga wakichatampi rixita rixi sami wakichma"
 
-#: TurtleArt/tabasics.py:347
+#: TurtleArt/tabasics.py:317
 msgid "set shade"
 msgstr "ist'añataki wakichata wakichaña"
 
-#: TurtleArt/tabasics.py:351
+#: TurtleArt/tabasics.py:321
 msgid "sets shade of the line drawn by the turtle"
 msgstr "tortuga wakichatana rixitapa rixi samiru uñamt'aya wakichaña"
 
-#: TurtleArt/tabasics.py:359
+#: TurtleArt/tabasics.py:329
 msgid "set gray"
 msgstr "uqiru samiri wakichaña"
 
-#: TurtleArt/tabasics.py:362
+#: TurtleArt/tabasics.py:332
 msgid "sets gray level of the line drawn by the turtle"
 msgstr "tortuga wakichatana rixitapa rixi uqi saminiñapa wakichma"
 
-#: TurtleArt/tabasics.py:371
+#: TurtleArt/tabasics.py:341
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr ""
 "jichha samichaña phuyu samipaniwa (maya tama jakhunaka lanti apanaqasispa)"
 
-#: TurtleArt/tabasics.py:381
+#: TurtleArt/tabasics.py:351
 msgid "holds current pen shade"
 msgstr "jichha samichaña phuyuna samichañapaniwa"
 
-#: TurtleArt/tabasics.py:389
-msgid "gray"
-msgstr "uqiru samiri"
-
-#: TurtleArt/tabasics.py:390
+#: TurtleArt/tabasics.py:360
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr ""
 "jichha uqiru samiri samichañapaniwa (maya tama jakhunaka lanti apanaqasispa)"
 
-#: TurtleArt/tabasics.py:398
+#: TurtleArt/tabasics.py:368
+msgid "pen up"
+msgstr "samichaña phuyu jithsuyaña"
+
+#: TurtleArt/tabasics.py:371
+msgid "Turtle will not draw when moved."
+msgstr "Tortuga wakichataxa unxtayata janiwa rixichkaniti."
+
+#: TurtleArt/tabasics.py:377
+msgid "pen down"
+msgstr "samichaña phuyu jithiqayaña"
+
+#: TurtleArt/tabasics.py:380
+msgid "Turtle will draw when moved."
+msgstr "Tortuga wakichataxa unxtasina rixichaniwa."
+
+#: TurtleArt/tabasics.py:386
+msgid "set pen size"
+msgstr "taña chanichaña"
+
+#: TurtleArt/tabasics.py:390
+msgid "sets size of the line drawn by the turtle"
+msgstr "tortuga wakichatampi rixiñataki rixi chanipa wakichma"
+
+#: TurtleArt/tabasics.py:400
 msgid "start fill"
 msgstr "phuqachaña wakichaña qalltaña"
 
-#: TurtleArt/tabasics.py:400
+#: TurtleArt/tabasics.py:402
 msgid "starts filled polygon (used with end fill block)"
 msgstr ""
 "k'uchunakani wakichata samichasa phuqachaña qalltaña (ukasti maya siqi "
 "wakichata samichasa phuqachaña tukuyañana apnaqasi)"
 
-#: TurtleArt/tabasics.py:407
+#: TurtleArt/tabasics.py:409
 msgid "end fill"
 msgstr "samichasa phuqachaña tukuyaña"
 
-#: TurtleArt/tabasics.py:409
+#: TurtleArt/tabasics.py:411
 msgid "completes filled polygon (used with start fill block)"
 msgstr ""
 "k'uchunakani wakichata samichasa phuqachaña tukuyma (ukasti maya siqi "
 "wakichata samichasa phuqachaña qalltañana apnaqasi)"
 
-#: TurtleArt/tabasics.py:420 TurtleArt/tabasics.py:424
+#: TurtleArt/tabasics.py:418
+msgid "pen size"
+msgstr "taña wakichata"
+
+#: TurtleArt/tabasics.py:419
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr ""
+"jichha samichaña phuyu wakichata tañapaniwa (maya tama jakhunaka lanti "
+"apnaqasispa)"
+
+#: TurtleArt/tabasics.py:434 TurtleArt/tabasics.py:438
 msgid "Palette of pen colors"
 msgstr "Samichaña phuyu saminakapa limt'aña"
 
-#: TurtleArt/tabasics.py:426
+#: TurtleArt/tabasics.py:440
 msgid "red"
 msgstr "chupika"
 
-#: TurtleArt/tabasics.py:427
+#: TurtleArt/tabasics.py:441
 msgid "orange"
 msgstr "laranja q'illu"
 
-#: TurtleArt/tabasics.py:429
+#: TurtleArt/tabasics.py:443
 msgid "yellow"
 msgstr "q'illu"
 
-#: TurtleArt/tabasics.py:431
+#: TurtleArt/tabasics.py:445
 msgid "green"
 msgstr "ch'uxña"
 
-#: TurtleArt/tabasics.py:432
+#: TurtleArt/tabasics.py:446
 msgid "cyan"
 msgstr "cian wakichata"
 
-#: TurtleArt/tabasics.py:433
+#: TurtleArt/tabasics.py:447
 msgid "blue"
 msgstr "larama"
 
-#: TurtleArt/tabasics.py:434
+#: TurtleArt/tabasics.py:448
 msgid "purple"
 msgstr "khuchi wila sami"
 
-#: TurtleArt/tabasics.py:436
+#: TurtleArt/tabasics.py:450
 msgid "white"
 msgstr "janq'u"
 
 # "atrás"
-#: TurtleArt/tabasics.py:437
+#: TurtleArt/tabasics.py:451
 msgid "black"
 msgstr "ch'iyära"
 
-#: TurtleArt/tabasics.py:443
+#: TurtleArt/tabasics.py:457
 msgid "set text color"
 msgstr "qillqata samipa wakichaña"
 
-#: TurtleArt/tabasics.py:446
+#: TurtleArt/tabasics.py:460
 msgid "sets color of text drawn by the turtle"
 msgstr "tortuga wakichatana rixitapana qillqata samipa wakichma"
 
-#: TurtleArt/tabasics.py:454
+#: TurtleArt/tabasics.py:468
 msgid "set text size"
 msgstr "qillqata tañapa wakichma"
 
-#: TurtleArt/tabasics.py:457
+#: TurtleArt/tabasics.py:471
 msgid "sets size of text drawn by the turtle"
 msgstr "tortuga wakichatana rixitapana qillqata tañapa wakichma"
 
-#: TurtleArt/tabasics.py:540
+#: TurtleArt/tabasics.py:554
 msgid "Palette of numeric operators"
 msgstr "Jakhunaka chanichiri limt'aña"
 
-#: TurtleArt/tabasics.py:546
+#: TurtleArt/tabasics.py:560
 msgid "plus"
 msgstr "jakhuxataña"
 
-#: TurtleArt/tabasics.py:550
+#: TurtleArt/tabasics.py:564
 msgid "adds two alphanumeric inputs"
 msgstr "alfa chimpuni jakhunaka paya jakhu siqi jakhuxatma"
 
-#: TurtleArt/tabasics.py:558
+#: TurtleArt/tabasics.py:572
 msgid "minus"
 msgstr "jakhuqa"
 
-#: TurtleArt/tabasics.py:561
+#: TurtleArt/tabasics.py:575
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr "aynacha siqinkiri jakhunaka alaya siqinkiri jakhunakata jakhuqma"
 
-#: TurtleArt/tabasics.py:572
+#: TurtleArt/tabasics.py:586
 msgid "multiply"
 msgstr "jakhunuqaña"
 
-#: TurtleArt/tabasics.py:575
+#: TurtleArt/tabasics.py:589
 msgid "multiplies two numeric inputs"
 msgstr "paya siqinkiri jakhunaka jakhunuqaña"
 
-#: TurtleArt/tabasics.py:584
+#: TurtleArt/tabasics.py:598
 msgid "divide"
 msgstr "jakhjaña"
 
-#: TurtleArt/tabasics.py:587
+#: TurtleArt/tabasics.py:601
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
@@ -381,215 +383,215 @@ msgstr ""
 "(jakhjata)"
 
 #  "identidad"
-#: TurtleArt/tabasics.py:597
+#: TurtleArt/tabasics.py:611
 msgid "identity"
 msgstr "kankaña"
 
-#: TurtleArt/tabasics.py:599
+#: TurtleArt/tabasics.py:613
 msgid "identity operator used for extending blocks"
 msgstr "siqinaka jach'anchaña kankañani chaninchiri"
 
-#: TurtleArt/tabasics.py:607 TurtleArt/tabasics.py:608
+#: TurtleArt/tabasics.py:621 TurtleArt/tabasics.py:622
 msgid "mod"
 msgstr "uñanaqa"
 
-#: TurtleArt/tabasics.py:611
+#: TurtleArt/tabasics.py:625
 msgid "modular (remainder) operator"
 msgstr "uñanaqa wakichata chaninchiri (jilt'a)"
 
 #  "√"
-#: TurtleArt/tabasics.py:618
+#: TurtleArt/tabasics.py:632
 msgid "√"
 msgstr "√ chimpu"
 
-#: TurtleArt/tabasics.py:619
+#: TurtleArt/tabasics.py:633
 msgid "square root"
 msgstr "raíz cuadrada wakichata"
 
-#: TurtleArt/tabasics.py:622
+#: TurtleArt/tabasics.py:636
 msgid "calculates square root"
 msgstr "raíz cuadrada wakichata chanichma"
 
 #  "aleatorio"
-#: TurtleArt/tabasics.py:629
+#: TurtleArt/tabasics.py:643
 msgid "random"
 msgstr "maski kawkïrsa"
 
-#: TurtleArt/tabasics.py:629
+#: TurtleArt/tabasics.py:643
 msgid "min"
 msgstr "juk'ata sipana"
 
-#: TurtleArt/tabasics.py:629
+#: TurtleArt/tabasics.py:643
 msgid "max"
 msgstr "jilata sipana"
 
-#: TurtleArt/tabasics.py:633
+#: TurtleArt/tabasics.py:647
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
 "maski kawkïri maya jakhu juk'ata sipansa (alaya) ukata jilata sipansa "
 "kutiyma"
 
 #  "número"
-#: TurtleArt/tabasics.py:645
+#: TurtleArt/tabasics.py:659
 msgid "number"
 msgstr "jakhu"
 
-#: TurtleArt/tabasics.py:646
+#: TurtleArt/tabasics.py:660
 msgid "used as numeric input in mathematic operators"
 msgstr "jakhuñanakana chaninchirinakapana jakhu siqinaka wakichatana apnaqata"
 
-#: TurtleArt/tabasics.py:654
+#: TurtleArt/tabasics.py:668
 msgid "greater than"
 msgstr "ukata sipana jila"
 
-#: TurtleArt/tabasics.py:657
+#: TurtleArt/tabasics.py:671
 msgid "logical greater-than operator"
 msgstr "ukata sipana jila tantiyu chaninchiri"
 
-#: TurtleArt/tabasics.py:666
+#: TurtleArt/tabasics.py:680
 msgid "less than"
 msgstr "ukata sipana pisi"
 
-#: TurtleArt/tabasics.py:670
+#: TurtleArt/tabasics.py:684
 msgid "logical less-than operator"
 msgstr "ukata sipana pisi tantiyu chaninchiri"
 
 #  "equivalente"
-#: TurtleArt/tabasics.py:678
+#: TurtleArt/tabasics.py:692
 msgid "equal"
 msgstr "jukhapura"
 
-#: TurtleArt/tabasics.py:682
+#: TurtleArt/tabasics.py:696
 msgid "logical equal-to operator"
 msgstr "jukhapura tantiyu chaninchiri"
 
 #  "no"
-#: TurtleArt/tabasics.py:688
+#: TurtleArt/tabasics.py:702
 msgid "not"
 msgstr "janiwa"
 
-#: TurtleArt/tabasics.py:691
+#: TurtleArt/tabasics.py:705
 msgid "logical NOT operator"
 msgstr "janiwa tantiyiri chaninchiri"
 
 #  "y"
-#: TurtleArt/tabasics.py:697 TurtleArt/tabasics.py:700
+#: TurtleArt/tabasics.py:711 TurtleArt/tabasics.py:714
 msgid "and"
 msgstr "ukata"
 
-#: TurtleArt/tabasics.py:701
+#: TurtleArt/tabasics.py:715
 msgid "logical AND operator"
 msgstr "Y wakichata tantiyiri chaninchiri"
 
-#: TurtleArt/tabasics.py:708 TurtleArt/tabasics.py:711
+#: TurtleArt/tabasics.py:722 TurtleArt/tabasics.py:725
 msgid "or"
 msgstr "o wakichata"
 
-#: TurtleArt/tabasics.py:712
+#: TurtleArt/tabasics.py:726
 msgid "logical OR operator"
 msgstr "O tantiyu chaninchiri"
 
-#: TurtleArt/tabasics.py:721
+#: TurtleArt/tabasics.py:735
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
 msgid "Palette of flow operators"
 msgstr "Saphanchiri chaninchirinaka limt'aña"
 
-#: TurtleArt/tabasics.py:726
+#: TurtleArt/tabasics.py:740
 msgid "wait"
 msgstr "suyt'aña"
 
-#: TurtleArt/tabasics.py:730
+#: TurtleArt/tabasics.py:744
 msgid "pauses program execution a specified number of seconds"
 msgstr "maya juk'a pacha t'aqa t'ijtäwinaka wakichata sarayaña sayt'ayma"
 
-#: TurtleArt/tabasics.py:737
+#: TurtleArt/tabasics.py:751
 msgid "forever"
 msgstr "wiñayataki"
 
-#: TurtleArt/tabasics.py:741
+#: TurtleArt/tabasics.py:755
 msgid "loops forever"
 msgstr "wiñayataki kutxataña"
 
-#: TurtleArt/tabasics.py:748 TurtleArt/tabasics.py:752
+#: TurtleArt/tabasics.py:762 TurtleArt/tabasics.py:766
 msgid "repeat"
 msgstr "kutxataña"
 
-#: TurtleArt/tabasics.py:753
+#: TurtleArt/tabasics.py:767
 msgid "loops specified number of times"
 msgstr "maya qhawqha kuti kutxatañataki jakhu kutxati"
 
-#: TurtleArt/tabasics.py:759 TurtleArt/tabasics.py:772
+#: TurtleArt/tabasics.py:773 TurtleArt/tabasics.py:786
 msgid "if"
 msgstr "jïsa"
 
-#: TurtleArt/tabasics.py:759 TurtleArt/tabasics.py:772
+#: TurtleArt/tabasics.py:773 TurtleArt/tabasics.py:786
 msgid "then"
 msgstr "ukhamaxa"
 
-#: TurtleArt/tabasics.py:762
+#: TurtleArt/tabasics.py:776
 msgid "if then"
 msgstr "jïsa ukhamaxa"
 
-#: TurtleArt/tabasics.py:764
+#: TurtleArt/tabasics.py:778
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr ""
 "jïsa ukhama chaninchiri ukasti jakhunaka limt'aña tantiyu chaninchirinaka "
 "apnaqi"
 
-#: TurtleArt/tabasics.py:772
+#: TurtleArt/tabasics.py:786
 msgid "else"
 msgstr "jani ukaxa"
 
-#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:784
+#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
 msgid "if then else"
 msgstr "jïsa ukhamaxa jani ukaxa"
 
-#: TurtleArt/tabasics.py:777 TurtleArt/tabasics.py:785
+#: TurtleArt/tabasics.py:791 TurtleArt/tabasics.py:799
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr ""
 "jïsa ukhama chaninchiri ukasti jakhunaka limt'aña tantiyu chaninchirinaka "
 "apnaqi"
 
-#: TurtleArt/tabasics.py:794
+#: TurtleArt/tabasics.py:808
 msgid "horizontal space"
 msgstr "pampa wakichata"
 
-#: TurtleArt/tabasics.py:795
+#: TurtleArt/tabasics.py:809
 msgid "jogs stack right"
 msgstr "ku´pïxaru siqita jithjtayma"
 
-#: TurtleArt/tabasics.py:802
+#: TurtleArt/tabasics.py:816
 msgid "vertical space"
 msgstr "wira wakichata"
 
-#: TurtleArt/tabasics.py:803
+#: TurtleArt/tabasics.py:817
 msgid "jogs stack down"
 msgstr "aynachäxaru siqita jithjtayma"
 
-#: TurtleArt/tabasics.py:809
+#: TurtleArt/tabasics.py:823
 msgid "stop action"
 msgstr "luräwi sayt'ayaña"
 
-#: TurtleArt/tabasics.py:812
+#: TurtleArt/tabasics.py:826
 msgid "stops current action"
 msgstr "jichha luräwi sayt'ayi"
 
-#: TurtleArt/tabasics.py:821
+#: TurtleArt/tabasics.py:835
 msgid "Palette of variable blocks"
 msgstr "Kunaymana mayjt'ayirinaka tama limt'aña"
 
 #  "empezar"
-#: TurtleArt/tabasics.py:826 pysamples/grecord.py:213
+#: TurtleArt/tabasics.py:840 pysamples/grecord.py:213
 msgid "start"
 msgstr "qalltaña"
 
-#: TurtleArt/tabasics.py:829
+#: TurtleArt/tabasics.py:843
 msgid "connects action to toolbar run buttons"
 msgstr "luräwi wakt'ayma kunaymana wakichäwinaka sarayirinaka limt'añanakaru"
 
 #  "texto"
-#: TurtleArt/tabasics.py:836 TurtleArt/tabasics.py:837
-#: TurtleArt/tabasics.py:838
+#: TurtleArt/tabasics.py:850 TurtleArt/tabasics.py:851
+#: TurtleArt/tabasics.py:852
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
@@ -599,133 +601,133 @@ msgstr "luräwi wakt'ayma kunaymana wakichäwinaka sarayirinaka limt'añanakaru"
 msgid "text"
 msgstr "qillqata"
 
-#: TurtleArt/tabasics.py:839
+#: TurtleArt/tabasics.py:853
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
 msgid "string value"
 msgstr "wiskhalla wakichata chanipa"
 
-#: TurtleArt/tabasics.py:843 TurtleArt/tabasics.py:846
-#: TurtleArt/tabasics.py:854 TurtleArt/tabasics.py:858
+#: TurtleArt/tabasics.py:857 TurtleArt/tabasics.py:860
+#: TurtleArt/tabasics.py:868 TurtleArt/tabasics.py:872
 #: TurtleArt/tawindow.py:1250 TurtleArt/tawindow.py:1328
 #: TurtleArt/tawindow.py:1341 TurtleArt/tawindow.py:4061
 msgid "action"
 msgstr "luräwi"
 
-#: TurtleArt/tabasics.py:848
+#: TurtleArt/tabasics.py:862
 msgid "top of nameable action stack"
 msgstr "qhanstayaña luräwi siqita patxa"
 
-#: TurtleArt/tabasics.py:859 TurtleArt/tawindow.py:4075
+#: TurtleArt/tabasics.py:873 TurtleArt/tawindow.py:4075
 msgid "invokes named action stack"
 msgstr "qhanstaya luräwi siqita jawsayaña"
 
-#: TurtleArt/tabasics.py:866
+#: TurtleArt/tabasics.py:880
 msgid "store in box 1"
 msgstr "1 kajuna wakichataru imaña"
 
-#: TurtleArt/tabasics.py:871
+#: TurtleArt/tabasics.py:885
 msgid "stores numeric value in Variable 1"
 msgstr "1 mayjt'ayiri wakichataru jakhuna chanipa imma"
 
-#: TurtleArt/tabasics.py:879
+#: TurtleArt/tabasics.py:893
 msgid "store in box 2"
 msgstr "2 kajuna wakichataru imaña"
 
-#: TurtleArt/tabasics.py:884
+#: TurtleArt/tabasics.py:898
 msgid "stores numeric value in Variable 2"
 msgstr "2 mayjt'ayiri wakichataru jakhuna chanipa imma"
 
-#: TurtleArt/tabasics.py:892
+#: TurtleArt/tabasics.py:906
 msgid "box 1"
 msgstr "1 kajuna wakichata"
 
-#: TurtleArt/tabasics.py:895
+#: TurtleArt/tabasics.py:909
 msgid "Variable 1 (numeric value)"
 msgstr "1 mayjt'ayiri (jakhu chanipa)"
 
-#: TurtleArt/tabasics.py:902
+#: TurtleArt/tabasics.py:916
 msgid "box 2"
 msgstr "2 kajuna wakichata"
 
-#: TurtleArt/tabasics.py:905
+#: TurtleArt/tabasics.py:919
 msgid "Variable 2 (numeric value)"
 msgstr "2 mayjt'ayiri (jakhu chanipa)"
 
-#: TurtleArt/tabasics.py:911 TurtleArt/tawindow.py:4129
+#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4129
 msgid "store in"
 msgstr "wakichataru imaña"
 
-#: TurtleArt/tabasics.py:911 TurtleArt/tabasics.py:925
+#: TurtleArt/tabasics.py:925 TurtleArt/tabasics.py:939
 msgid "box"
 msgstr "kajuna wakichata"
 
-#: TurtleArt/tabasics.py:911 TurtleArt/tawindow.py:4129 taextras.py:396
+#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4129 taextras.py:396
 msgid "value"
 msgstr "chani"
 
-#: TurtleArt/tabasics.py:915 TurtleArt/tabasics.py:928
+#: TurtleArt/tabasics.py:929 TurtleArt/tabasics.py:942
 #: TurtleArt/tawindow.py:1254 TurtleArt/tawindow.py:4090
 #: TurtleArt/tawindow.py:4120
 msgid "my box"
 msgstr "wakichata kajunaja"
 
-#: TurtleArt/tabasics.py:916 TurtleArt/tawindow.py:4134
+#: TurtleArt/tabasics.py:930 TurtleArt/tawindow.py:4134
 msgid "stores numeric value in named variable"
 msgstr "qhanstayata mayjt'ayiriru jakhu chani imma"
 
-#: TurtleArt/tabasics.py:931 TurtleArt/tawindow.py:4104
+#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4104
 msgid "named variable (numeric value)"
 msgstr "qhanstayata mayjt'ayiri (jakhu chani)"
 
-#: TurtleArt/tabasics.py:938 TurtleArt/tabasics.py:957
+#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
 msgid "action 1"
 msgstr "1 luräwi"
 
-#: TurtleArt/tabasics.py:941
+#: TurtleArt/tabasics.py:955
 msgid "top of Action 1 stack"
 msgstr "1 luräwina wakichata siqita nayrïri"
 
-#: TurtleArt/tabasics.py:947 TurtleArt/tabasics.py:967
+#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
 msgid "action 2"
 msgstr "2 luräwi"
 
-#: TurtleArt/tabasics.py:950
+#: TurtleArt/tabasics.py:964
 msgid "top of Action 2 stack"
 msgstr "2 luräwina wakichata siqita nayrïri"
 
-#: TurtleArt/tabasics.py:960
+#: TurtleArt/tabasics.py:974
 msgid "invokes Action 1 stack"
 msgstr "1 luräwina wakichata siqi jawsuña"
 
-#: TurtleArt/tabasics.py:970
+#: TurtleArt/tabasics.py:984
 msgid "invokes Action 2 stack"
 msgstr "2 luräwina wakichata siqi jawsuña"
 
-#: TurtleArt/tabasics.py:978
+#: TurtleArt/tabasics.py:992
 msgid "trash"
 msgstr "jani wakisiri"
 
-#: TurtleArt/tabasics.py:982
+#: TurtleArt/tabasics.py:996
 msgid "empty trash"
 msgstr "jani wakisiri imata ch'ussuña"
 
-#: TurtleArt/tabasics.py:983
+#: TurtleArt/tabasics.py:997
 msgid "permanently deletes items in trash"
 msgstr "jani wakisiri wakichata imata yänakapa jani aliqata pichssuña"
 
-#: TurtleArt/tabasics.py:987
+#: TurtleArt/tabasics.py:1001
 msgid "restore all"
 msgstr "taqi jani wakisiri wakichata imatanaka wasitata jaktayaña"
 
-#: TurtleArt/tabasics.py:988
+#: TurtleArt/tabasics.py:1002
 msgid "restore all blocks from trash"
 msgstr "qawayata jani wakisiri wakichata imata siqinaka wasitata jaktayma"
 
-#: TurtleArt/tabasics.py:992
+#: TurtleArt/tabasics.py:1006
 msgid "clear all"
 msgstr "qawata ch'ussuña"
 
-#: TurtleArt/tabasics.py:993
+#: TurtleArt/tabasics.py:1007
 msgid "move all blocks to trash"
 msgstr "jani wakisiri wakichata imañaru qawayata siqinakaru uchantma"
 
@@ -754,13 +756,13 @@ msgid "Stop turtle"
 msgstr "Tortuga wakichata sayt'ayaña"
 
 #  "Mostrar bloques"
-#: TurtleArt/talogo.py:369 TurtleArtActivity.py:289 TurtleArtActivity.py:614
+#: TurtleArt/talogo.py:369 TurtleArtActivity.py:288 TurtleArtActivity.py:614
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1466
 msgid "Show blocks"
 msgstr "Siqichata wakichatana uñachayaña"
 
 #  "Ocultar bloques"
-#: TurtleArt/talogo.py:373 TurtleArtActivity.py:293 TurtleArtActivity.py:791
+#: TurtleArt/talogo.py:373 TurtleArtActivity.py:292 TurtleArtActivity.py:791
 msgid "Hide blocks"
 msgstr "Siqichata wakichatanaka imantaña"
 
@@ -1902,6 +1904,10 @@ msgstr "qhantayaña"
 #: pysamples/grecord.py:219
 msgid "save"
 msgstr "imaña"
+
+#: pysamples/journal-stats.py:94
+msgid "other"
+msgstr "jaqha"
 
 #: pysamples/uturn.py:24
 msgid "uturn"
