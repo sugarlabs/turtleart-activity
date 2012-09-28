@@ -39,6 +39,9 @@ def myblock(tw, x):  # ignore second argument
                         for dsobj in dsobjs:
                             if not isactivity(dsobj) == 'TurtleArtActivity':
                                 continue
+                            if hascomponent(dsobj, 'mime_type') != \
+                                'application/x-turtle-art':
+                                continue
                             score = hasturtleblocks(dsobj)
                             if score:
                                 self._score.append(score)
@@ -92,7 +95,7 @@ def myblock(tw, x):  # ignore second argument
          'ifelse': 'ifthen', 'while': 'ifthen', 'until': 'ifthen',
          'hat': 'action', 'stack': 'action', 'storein': 'box', 'box': 'box',
          'luminance': 'sensor', 'mousex': 'sensor', 'mousey': 'sensor',
-         'moousebutton2': 'sensor', 'keyboard': 'sensor', 'kbinput': 'sensor',
+         'mousebutton2': 'sensor', 'keyboard': 'sensor', 'kbinput': 'sensor',
          'readpixel': 'sensor', 'see': 'sensor', 'time': 'sensor',
          'sound': 'sensor', 'volume': 'sensor', 'pitch': 'sensor',
          'resistance': 'sensor', 'voltage': 'sensor', 'video': 'media',
@@ -105,13 +108,12 @@ def myblock(tw, x):  # ignore second argument
          'clearheap':'extras', 'isheapempty2':'extras', 'chr':'extras',
          'int':'extras', 'myfunction': 'python', 'userdefined': 'python',
          'loadblock': 'python', 'loadpalette': 'python'}
-
     TAPAL = {'forward': 'turtlep', 'arc': 'turtlep', 'coord': 'turtlep',
          'setxy': 'turtlep', 'pen': 'penp', 'fill': 'penp', 'number': 'numberp',
-         'boolean': 'numberp', 'repeat': 'flowp', 'ifthen': 'flowp',
-         'action': 'boxp', 'box': 'boxp', 'sensor': 'sensorp',
-         'media': 'mediap', 'extras': 'extrasp', 'python': 'extrasp'}
-
+         'random': 'numberp', 'boolean': 'numberp', 'repeat': 'flowp',
+         'ifthen': 'flowp', 'action': 'boxp', 'box': 'boxp',
+         'sensor': 'sensorp', 'media': 'mediap', 'extras': 'extrasp',
+         'python': 'extrasp'}
     TASCORE = {'forward': 3, 'arc': 3, 'setxy': 2.5, 'coord': 4, 'turtlep': 5,
            'pen': 2.5, 'fill': 2.5, 'penp': 5,
            'number': 2.5, 'boolean': 2.5, 'random': 2.5, 'numberp': 0,
@@ -120,7 +122,8 @@ def myblock(tw, x):  # ignore second argument
            'media': 5, 'mediap': 0,
            'python': 5, 'extras': 5, 'extrasp': 0,
            'sensor': 5, 'sensorp': 0}
-           
+    PALS = ['turtlep', 'penp', 'numberp', 'flowp', 'boxp', 'sensorp', 'mediap',
+            'extrasp']
 
     def hasturtleblocks(path):
         ''' Parse turtle block data and generate score based on rubric '''
@@ -136,7 +139,9 @@ def myblock(tw, x):  # ignore second argument
                 token = tokens[1].strip('" [')
                 blocks.append(token)
 
-        score = 0
+        score = []
+        for i in range(len(PALS)):
+            score.append(0)
         cats = []
         pals = []
 
@@ -151,17 +156,19 @@ def myblock(tw, x):  # ignore second argument
 
         for c in cats:
             if c in TASCORE:
-                score += TASCORE[c]
+                score[PALS.index(TAPAL[c])] += TASCORE[c]
 
         for p in pals:
             if p in TASCORE:
-                score += TASCORE[p]
+                score[PALS.index(p)] += TASCORE[p]
 
-        return str(score)
+        return score
 
     data = ParseJournal()
-    for a in data._score:
-        tw.lc.heap.append(float(a))
+    n = min(40, len(data._score) / len(PALS))
+    for i in range(n):
+        for j in range(len(PALS)):
+            tw.lc.heap.append(data._score[(n - i - 1)][len(PALS) - j - 1])
     
-    tw.lc.heap.append(len(data._score))
+    tw.lc.heap.append(n)
     return
