@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-25 00:30-0400\n"
-"PO-Revision-Date: 2012-09-25 10:44+0200\n"
+"POT-Creation-Date: 2012-09-27 14:55-0400\n"
+"PO-Revision-Date: 2012-09-30 03:18+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: en\n"
@@ -17,10 +17,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
 
-#: activity/activity.info:2 TurtleArt/tawindow.py:3817
-#: pysamples/grecord.py:205 turtleblocks.py:295
+#. TRANS: "name" option from activity.info file
+#: TurtleArt/tawindow.py:3817 pysamples/grecord.py:205 turtleblocks.py:295
 msgid "Turtle Art"
 msgstr "Turtle Art"
+
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"A Logo-inspired turtle that draws colorful pictures with snap-together "
+"visual programming blocks"
+msgstr ""
+"A Logo-inspired turtle that draws colorful pictures with snap-together "
+"visual programming blocks"
 
 #: TurtleArt/tabasics.py:116
 msgid "Palette of turtle commands"
@@ -1755,7 +1764,7 @@ msgstr "play"
 msgid "save"
 msgstr "save"
 
-#: pysamples/journal-stats.py:94
+#: pysamples/journal-stats.py:78
 msgid "other"
 msgstr "other"
 
