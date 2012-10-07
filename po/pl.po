@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-27 14:55-0400\n"
-"PO-Revision-Date: 2012-05-28 15:16+0200\n"
-"Last-Translator: Marcin <ulinski.marcin@gmail.com>\n"
+"PO-Revision-Date: 2012-10-01 22:10+0200\n"
+"Last-Translator: KatSitko <xanthe1808@gmail.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -29,6 +29,8 @@ msgid ""
 "A Logo-inspired turtle that draws colorful pictures with snap-together "
 "visual programming blocks"
 msgstr ""
+"Żółw zainspirowany Logo, który rysuje kolorowe obrazki dzięki łączeniu "
+"bloków programowania graficznego"
 
 #: TurtleArt/tabasics.py:116
 msgid "Palette of turtle commands"
@@ -522,7 +524,7 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:786
 msgid "else"
-msgstr ""
+msgstr "pozostałe"
 
 #: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
 msgid "if then else"
@@ -715,7 +717,7 @@ msgstr "przesuń wszystkie klocki do kosza"
 #: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1783
 #: TurtleArtActivity.py:633
 msgid "Share selected blocks"
-msgstr ""
+msgstr "Współdziel wybrane klocki"
 
 #: TurtleArt/taconstants.py:241 TurtleArt/taconstants.py:263
 #: TurtleArt/taconstants.py:284 TurtleArt/taconstants.py:326
@@ -795,7 +797,7 @@ msgstr "przesuń"
 
 #: TurtleArt/tawindow.py:1268
 msgid "Select blocks to share"
-msgstr ""
+msgstr "Wybierz klock do współdzielenia"
 
 #: TurtleArt/tawindow.py:3916
 msgid "image"
@@ -873,9 +875,8 @@ msgid "Paste"
 msgstr "Wklej"
 
 #: TurtleArtActivity.py:526
-#, fuzzy
 msgid "Restore blocks from trash"
-msgstr "przywróć wszystkie klocki z kosza"
+msgstr "przywróć  klocki z kosza"
 
 #: TurtleArtActivity.py:528 TurtleArtActivity.py:678
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
@@ -940,7 +941,7 @@ msgstr "Ładuj blok Pythona"
 
 #: TurtleArtActivity.py:717
 msgid "Sharing blocks disabled"
-msgstr ""
+msgstr "Wspóldzielenie klocków zablokowane"
 
 #: TurtleArtActivity.py:780
 msgid "<Ctrl>p"
@@ -1330,27 +1331,27 @@ msgstr "poczekaj na zakończenie bieżącego audio lub video"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
 msgid "media stop"
-msgstr ""
+msgstr "zatrzymaj media"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
 msgid "stop video or audio"
-msgstr ""
+msgstr "zatrzymaj video lub audio"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:290
 msgid "media pause"
-msgstr ""
+msgstr "wstrzymaj media"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:292
 msgid "pause video or audio"
-msgstr ""
+msgstr "Wstrzymaj wideo lub audio"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
 msgid "media resume"
-msgstr ""
+msgstr "Wznów media"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:299
 msgid "resume playing video or audio"
-msgstr ""
+msgstr "Wznów odtwarzanie wideo lub audio"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
 msgid "speak"
@@ -1371,7 +1372,7 @@ msgstr "fala sinusoidalna"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
 msgid "amplitude"
-msgstr ""
+msgstr "amplituda"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
 msgid "duration"
@@ -1392,9 +1393,8 @@ msgid "returns 1 if mouse button is pressed"
 msgstr "zwraca 1 jeśli wciśnięty zostaje przycisk myszy"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:351
-#, fuzzy
 msgid "returns True if mouse button is pressed"
-msgstr "zwraca 1 jeśli wciśnięty zostaje przycisk myszy"
+msgstr "zwraca Prawda jeśli wciśnięty zostaje przycisk myszy"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:358
 msgid "mouse x"
@@ -1425,9 +1425,8 @@ msgid "keyboard"
 msgstr "klawiatura"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
-#, fuzzy
 msgid "holds results of query-keyboard block as ASCII"
-msgstr "przechowuje wynik działania klocka odczytu klawiatury"
+msgstr "przechowuje wynik działania klocka odczytu klawiatury jako ASCII"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "read pixel"
@@ -1520,11 +1519,11 @@ msgstr "wypisuje wartość w klocku stanu na dole ekranu"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:563
 msgid "Python chr operator"
-msgstr ""
+msgstr "Python chr operator"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
 msgid "Python int operator"
-msgstr ""
+msgstr "Python int operator"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:579
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:592
@@ -1611,13 +1610,13 @@ msgstr "szczyt zwiniętego stosu"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
 msgid "load"
-msgstr ""
+msgstr "załaduj"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:735
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:746
 msgid "loads a block"
-msgstr ""
+msgstr "ładuje klocek"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:745
 #, fuzzy
@@ -1626,11 +1625,11 @@ msgstr "ustaw xy"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:754
 msgid "palette"
-msgstr ""
+msgstr "przybornik kolorów"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:757
 msgid "selects a palette"
-msgstr ""
+msgstr "zaznacz przybornik kolorów"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:765
 msgid "Palette of presentation templates"
@@ -1772,7 +1771,7 @@ msgstr "prezentacja 2x2"
 
 #: pysamples/forward_push.py:45
 msgid "push destination rgb value to heap"
-msgstr ""
+msgstr "zmień wartość końcową rgb, aby ułożyć"
 
 #: pysamples/grecord.py:215
 msgid "stop"
@@ -1788,7 +1787,7 @@ msgstr "Zapisz"
 
 #: pysamples/journal-stats.py:78
 msgid "other"
-msgstr ""
+msgstr "inne"
 
 #: pysamples/uturn.py:24
 msgid "uturn"
@@ -1824,23 +1823,23 @@ msgstr "Paleta rwandyjskich franków"
 
 #: taextras.py:50
 msgid "Palette of US dollars"
-msgstr ""
+msgstr "przybornik dollarów amerykańskich"
 
 #: taextras.py:51
 msgid "Palette of Australian dollars"
-msgstr ""
+msgstr "przybornik dollarów australijskich"
 
 #: taextras.py:52
 msgid "Palette of Paraguayan Guaranies"
-msgstr ""
+msgstr "przybornik paragwajskich Guarani"
 
 #: taextras.py:53
 msgid "Palette of Peruvian Nuevo Soles"
-msgstr ""
+msgstr "przybornik peruwiańskich Nuevo Soles"
 
 #: taextras.py:54
 msgid "Palette of Uruguayan Pesos"
-msgstr "Paleta urugwajskich pesos"
+msgstr "przybornik urugwajskich pesos"
 
 #. TRANS: Butia is the Arduino Robot Project from Uruguay
 #. (http://www.fing.edu.uy/inco/proyectos/butia/)
@@ -1929,11 +1928,11 @@ msgstr "Robot Butia"
 
 #: taextras.py:81
 msgid "refresh Butia"
-msgstr ""
+msgstr "odświeź robota Butia"
 
 #: taextras.py:82
 msgid "refresh the state of the Butia palette and blocks"
-msgstr ""
+msgstr "odśwież stan przybornika oraz klocków robota Butia"
 
 #. TRANS: This string is shorthand for "battery charge of Butia"
 #: taextras.py:84
@@ -2044,20 +2043,20 @@ msgstr "Błąd uruchomienia kamery."
 
 #: taextras.py:118
 msgid "No camera was found"
-msgstr ""
+msgstr "Brak odnalezienia kamery"
 
 #: taextras.py:119
 msgid "Error stopping camera"
-msgstr ""
+msgstr "Błąd zatrzymania kamery"
 
 #: taextras.py:120
 msgid "Error starting camera"
-msgstr ""
+msgstr "Błąd uruchamienia kamery"
 
 #. TRANS: The "mask" is used to restrict processing to a region in the image
 #: taextras.py:122
 msgid "Error making mask"
-msgstr ""
+msgstr "Błąd matrycy"
 
 #: taextras.py:123
 msgid "FollowMe"
@@ -2179,35 +2178,35 @@ msgstr "ustaw minimalną liczbę pikseli do śledzenia"
 
 #: taextras.py:157
 msgid "camera mode"
-msgstr ""
+msgstr "tryb kamery"
 
 #: taextras.py:158
 msgid "set the color mode of the camera: RGB, YUV, or HSV"
-msgstr ""
+msgstr "ustaw kolor trybu kamery: RGB, YUV lub HSV"
 
 #: taextras.py:159
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #: taextras.py:160
 msgid "set the color mode of the camera to RGB"
-msgstr ""
+msgstr "ustaw kolor trybu kamery na RGB"
 
 #: taextras.py:161
 msgid "YUV"
-msgstr ""
+msgstr "YUV"
 
 #: taextras.py:162
 msgid "set the color mode of the camera to YUV"
-msgstr ""
+msgstr "ustaw kolor trybu kamery na YUV"
 
 #: taextras.py:163
 msgid "HSV"
-msgstr ""
+msgstr "HSV"
 
 #: taextras.py:164
 msgid "set the color mode of the camera to HSV"
-msgstr ""
+msgstr "ustaw kolor trybu kamery na HSV"
 
 #: taextras.py:165
 msgid "empty calibration"
@@ -2503,7 +2502,7 @@ msgstr ""
 
 #: taextras.py:265
 msgid "save as Physics activity"
-msgstr ""
+msgstr "zapisz aktywność jako Fizykę"
 
 #: taextras.py:266
 msgid "Save the project to the Journal as a Physics activity."
@@ -2512,7 +2511,7 @@ msgstr "Zapisz projekt w Dzienniku jako Fizykę."
 #. TRANS: Here, gear means a toothed wheel, as in a clock-works
 #: taextras.py:268
 msgid "gear"
-msgstr ""
+msgstr "przybory/koło"
 
 #: taextras.py:269
 #, fuzzy
@@ -2662,7 +2661,7 @@ msgstr "PORT 4"
 #. TRANS: The brick is the NXT controller
 #: taextras.py:322
 msgid "Please check the connection with the brick."
-msgstr "Sprawdź połączene z klockiem."
+msgstr "Sprawdź połączenie z klockiem."
 
 #: taextras.py:323
 msgid "Please check the port."
@@ -2847,7 +2846,7 @@ msgstr "Ustaw światło czujnika koloru."
 #. TRANS: the battery level is the charge level of the brick
 #: taextras.py:371
 msgid "battery level"
-msgstr ""
+msgstr "poziom baterii"
 
 #: taextras.py:372
 msgid "Get battery level of brick."
