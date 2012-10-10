@@ -25,24 +25,33 @@ import gobject
 
 from TurtleArt.tautils import debug_output
 
-GST_PIPE = ['v4l2src', 'ffmpegcolorspace', 'gdkpixbufsink']
-
 
 class Camera():
     ''' Sets up a pipe from the camera to a pixbuf and emits a signal
     when the image is ready. '''
 
-    def __init__(self):
+    def __init__(self, device='/dev/video0'):
         ''' Prepare camera pipeline to pixbuf and signal watch '''
-        self.pipe = gst.parse_launch('!'.join(GST_PIPE))
-        self.bus = self.pipe.get_bus()
-        self.bus.add_signal_watch()
-        self.bus.connect('message', self._on_message)
+        self.pipe = gst.Pipeline('pipeline')
+        v4l2src = gst.element_factory_make('v4l2src', None)
+        v4l2src.props.device = device
+        self.pipe.add(v4l2src)
+        ffmpegcolorspace = gst.element_factory_make('ffmpegcolorspace', None)
+        self.pipe.add(ffmpegcolorspace)
+        gdkpixbufsink = gst.element_factory_make('gdkpixbufsink', None)
+        self.pipe.add(gdkpixbufsink)
+        gst.element_link_many(v4l2src, ffmpegcolorspace, gdkpixbufsink)
+        if self.pipe is not None:
+            self.bus = self.pipe.get_bus()
+            self.bus.add_signal_watch()
+            self.bus.connect('message', self._on_message)
+            status = True
+        else:
+            status = False
 
     def _on_message(self, bus, message):
         ''' We get a message if a pixbuf is available '''
         if message.structure is not None:
-            # debug_output(message.structure.get_name(), True)
             if message.structure.get_name() == 'pixbuf':
                 self.pixbuf = message.structure['pixbuf']
                 self.image_ready = True
@@ -54,7 +63,6 @@ class Camera():
         self.pipe.set_state(gst.STATE_PLAYING)
         while not self.image_ready:
             self.bus.poll(gst.MESSAGE_ANY, -1)
-        # self.stop_camera_input()
 
     def stop_camera_input(self):
         ''' Stop grabbing '''
