@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-27 14:55-0400\n"
-"PO-Revision-Date: 2012-10-07 22:55+0200\n"
+"PO-Revision-Date: 2012-10-10 10:02+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hus\n"
@@ -2151,7 +2151,7 @@ msgstr "Butiá"
 #: taextras.py:117
 #, fuzzy
 msgid "Error on initialization of the camera"
-msgstr "K'ibts'ontalab al in tujtal ba' an k'ot'bixtalab."
+msgstr "K'ibts'ontalab al in tujtal ba' an k'ot'bixtalab"
 
 #: taextras.py:118
 msgid "No camera was found"
