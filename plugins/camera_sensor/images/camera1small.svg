@@ -8,15 +8,15 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="26"
-   height="18.668091"
-   viewBox="0 0 26 18.668091"
+   width="29"
+   height="15"
+   viewBox="0 0 29 15"
    id="svg2"
    xml:space="preserve"><metadata
-     id="metadata29"><rdf:RDF><cc:Work
-         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
-     id="defs27">
+   id="metadata29"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs27">
 	
 	
 	
@@ -27,17 +27,33 @@
 
 		
 	</defs><g
-     transform="matrix(0.57244766,0,0,0.57244766,-2.5989125,-4.6436954)"
+   transform="matrix(0.49560305,0,0,0.51274162,-0.00570885,-0.18882692)"
+   id="g2994"><g
+     transform="matrix(1.142777,0,0,1.142777,-3.1426369,-17.855891)"
+     id="media-flash-usb"
+     style="stroke-width:2.20384002;stroke-miterlimit:4;stroke-dasharray:none;display:block"><g
+       id="g3115"
+       style="stroke-width:2.20384002;stroke-miterlimit:4;stroke-dasharray:none;display:inline"><path
+         d="m 15.885,16.723 c -6.641,0 -12.023,5.385 -12.023,12.025 0,6.639 5.383,12.023 12.023,12.023 h 0.014 27.259 V 16.723 H 15.899"
+         id="path3117"
+         style="fill:#ffffff;stroke:#010101;stroke-width:2.20384002;stroke-miterlimit:4;stroke-dasharray:none" /><rect
+         width="9.1400003"
+         height="14.182"
+         x="43.722"
+         y="21.731001"
+         id="rect3119"
+         style="fill:#ffffff;stroke:#010101;stroke-width:2.20384002;stroke-miterlimit:4;stroke-dasharray:none" /></g></g><g
+     transform="matrix(0.57244766,0,0,0.57244766,11.646526,1.105918)"
      id="camera-external"
      style="display:block"><g
        id="g5"
        style="display:inline"><g
          id="g7"><polygon
-           points="38.532,14.52 34.904,9.862 18.783,9.862 15.155,14.52 6.29,14.52 6.29,38.973 48.209,38.973 48.209,14.52 "
+           points="34.904,9.862 18.783,9.862 15.155,14.52 6.29,14.52 6.29,38.973 48.209,38.973 48.209,14.52 38.532,14.52 "
            id="polygon9"
            style="fill:#ffffff" /></g><g
          id="g11"><polygon
-           points="38.532,14.52 34.904,9.862 18.783,9.862 15.155,14.52 6.29,14.52 6.29,38.973 48.209,38.973 48.209,14.52 "
+           points="34.904,9.862 18.783,9.862 15.155,14.52 6.29,14.52 6.29,38.973 48.209,38.973 48.209,14.52 38.532,14.52 "
            id="polygon13"
            style="fill:none;stroke:#010101;stroke-width:3.5" /></g></g><path
        d="m 20.601,26.441 c 0,3.67 2.979,6.648 6.65,6.648 3.667,0 6.646,-2.979 6.646,-6.648 0,-3.668 -2.979,-6.652 -6.646,-6.652 -3.67,0 -6.65,2.986 -6.65,6.652 z"
@@ -48,14 +64,5 @@
        x="38.098999"
        y="18.417999"
        id="rect17"
-       style="fill:#010101;display:inline" /></g><text
-     x="18.149788"
-     y="15.630935"
-     id="text3000"
-     xml:space="preserve"
-     style="font-size:11px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><tspan
-       x="18.149788"
-       y="15.630935"
-       id="tspan3002"
-       style="font-size:8px;font-weight:bold;-inkscape-font-specification:Sans Bold">2</tspan></text>
+       style="fill:#010101;display:inline" /></g></g>
 </svg>
