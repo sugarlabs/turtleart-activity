@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-01 00:30-0400\n"
+"POT-Creation-Date: 2012-09-27 14:55-0400\n"
 "PO-Revision-Date: 2012-03-21 19:17+0200\n"
 "Last-Translator: Yuan <yuanchao@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,18 +21,25 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pootle 2.0.5\n"
 
-#: activity/activity.info:2 TurtleArt/tawindow.py:3797
-#: pysamples/grecord.py:205 turtleblocks.py:295
+#. TRANS: "name" option from activity.info file
+#: TurtleArt/tawindow.py:3817 pysamples/grecord.py:205 turtleblocks.py:295
 msgid "Turtle Art"
 msgstr "小海龜"
+
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"A Logo-inspired turtle that draws colorful pictures with snap-together "
+"visual programming blocks"
+msgstr ""
 
 #: TurtleArt/tabasics.py:116
 msgid "Palette of turtle commands"
 msgstr "小烏龜指令調色盤"
 
 #: TurtleArt/tabasics.py:121
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:711
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:722
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
 msgid "forward"
 msgstr "前進"
 
@@ -57,7 +64,7 @@ msgid "clears the screen and reset the turtle"
 msgstr "清除螢幕並重置小烏龜"
 
 #: TurtleArt/tabasics.py:155
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:842
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
 msgid "left"
 msgstr "左轉"
 
@@ -66,7 +73,7 @@ msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "將小烏龜逆時針轉向（輸入角度）"
 
 #: TurtleArt/tabasics.py:166
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:866
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:878
 msgid "right"
 msgstr "右轉"
 
@@ -116,8 +123,8 @@ msgstr "設定標頭"
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "設定小烏龜的方向（0是正對螢幕上方）"
 
-#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3791
-#: TurtleArt/tawindow.py:3797 TurtleArtActivity.py:538
+#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3811
+#: TurtleArt/tawindow.py:3817 TurtleArtActivity.py:538
 msgid "xcor"
 msgstr "X座標"
 
@@ -127,8 +134,8 @@ msgid ""
 "number block)"
 msgstr "保持小烏龜現在的x座標值（可以用來代替數字區塊）"
 
-#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3791
-#: TurtleArt/tawindow.py:3797 TurtleArtActivity.py:539
+#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3811
+#: TurtleArt/tawindow.py:3817 TurtleArtActivity.py:539
 msgid "ycor"
 msgstr "Y座標"
 
@@ -138,8 +145,8 @@ msgid ""
 "number block)"
 msgstr "保持小烏龜目前的y座標值（可以用來代替數字區塊）"
 
-#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3792
-#: TurtleArt/tawindow.py:3798 TurtleArtActivity.py:539
+#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3812
+#: TurtleArt/tawindow.py:3818 TurtleArtActivity.py:539
 msgid "heading"
 msgstr "方向"
 
@@ -153,398 +160,400 @@ msgstr "保持小烏龜目前的方向（可以用來代替數字區塊）"
 msgid "Palette of pen commands"
 msgstr "色筆指令盤"
 
-#: TurtleArt/tabasics.py:278
-msgid "pen up"
-msgstr "提筆"
-
-#: TurtleArt/tabasics.py:281
-msgid "Turtle will not draw when moved."
-msgstr "移動中的小烏龜並不會畫圖"
-
-#: TurtleArt/tabasics.py:287
-msgid "pen down"
-msgstr "落筆"
-
-#: TurtleArt/tabasics.py:290
-msgid "Turtle will draw when moved."
-msgstr "小烏龜會畫下移動的軌跡"
-
-#: TurtleArt/tabasics.py:296
-msgid "set pen size"
-msgstr "設定畫筆大小"
-
-#: TurtleArt/tabasics.py:300
-msgid "sets size of the line drawn by the turtle"
-msgstr "設定小烏龜畫線的寬度"
-
-#: TurtleArt/tabasics.py:310
+#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
 msgid "fill screen"
 msgstr "全螢幕"
 
-#: TurtleArt/tabasics.py:310 TurtleArt/tabasics.py:370 taextras.py:311
+#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
+#: TurtleArt/tabasics.py:340 taextras.py:311
 msgid "color"
 msgstr "顏色"
 
-#: TurtleArt/tabasics.py:310 TurtleArt/tabasics.py:380
+#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:291
+#: TurtleArt/tabasics.py:350
 msgid "shade"
 msgstr "形狀"
 
-#: TurtleArt/tabasics.py:314
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
 msgid "fills the background with (color, shade)"
 msgstr "以（顏色或陰影）填滿背景"
 
-#: TurtleArt/tabasics.py:323
-msgid "pen size"
-msgstr "畫筆大小"
-
-#: TurtleArt/tabasics.py:324
-msgid "holds current pen size (can be used in place of a number block)"
-msgstr "保持目前色筆大小（可以用來代替數字區塊）"
-
-#: TurtleArt/tabasics.py:335
-msgid "set color"
-msgstr "設定線條顏色"
-
-#: TurtleArt/tabasics.py:339
-msgid "sets color of the line drawn by the turtle"
-msgstr "設定小烏龜畫線的顏色"
-
-#: TurtleArt/tabasics.py:347
-msgid "set shade"
-msgstr "設定填滿顏色"
-
-#: TurtleArt/tabasics.py:351
-msgid "sets shade of the line drawn by the turtle"
-msgstr "設定小烏龜畫線的陰影"
-
-#: TurtleArt/tabasics.py:359
-msgid "set gray"
-msgstr "設定為灰色"
-
-#: TurtleArt/tabasics.py:362
-msgid "sets gray level of the line drawn by the turtle"
-msgstr "設定小烏龜所畫線條的灰階值"
-
-#: TurtleArt/tabasics.py:371
-msgid "holds current pen color (can be used in place of a number block)"
-msgstr "保持現有畫筆顏色（可替換數值區塊）"
-
-#: TurtleArt/tabasics.py:381
-msgid "holds current pen shade"
-msgstr "沿用目前色筆深度"
-
-#: TurtleArt/tabasics.py:389
+#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:359
 msgid "gray"
 msgstr "灰色"
 
-#: TurtleArt/tabasics.py:390
+#: TurtleArt/tabasics.py:305
+msgid "set color"
+msgstr "設定線條顏色"
+
+#: TurtleArt/tabasics.py:309
+msgid "sets color of the line drawn by the turtle"
+msgstr "設定小烏龜畫線的顏色"
+
+#: TurtleArt/tabasics.py:317
+msgid "set shade"
+msgstr "設定填滿顏色"
+
+#: TurtleArt/tabasics.py:321
+msgid "sets shade of the line drawn by the turtle"
+msgstr "設定小烏龜畫線的陰影"
+
+#: TurtleArt/tabasics.py:329
+msgid "set gray"
+msgstr "設定為灰色"
+
+#: TurtleArt/tabasics.py:332
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "設定小烏龜所畫線條的灰階值"
+
+#: TurtleArt/tabasics.py:341
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr "保持現有畫筆顏色（可替換數值區塊）"
+
+#: TurtleArt/tabasics.py:351
+msgid "holds current pen shade"
+msgstr "沿用目前色筆深度"
+
+#: TurtleArt/tabasics.py:360
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr "維持目前的灰階度（可以用來代替數字區塊）"
 
-#: TurtleArt/tabasics.py:398
+#: TurtleArt/tabasics.py:368
+msgid "pen up"
+msgstr "提筆"
+
+#: TurtleArt/tabasics.py:371
+msgid "Turtle will not draw when moved."
+msgstr "移動中的小烏龜並不會畫圖"
+
+#: TurtleArt/tabasics.py:377
+msgid "pen down"
+msgstr "落筆"
+
+#: TurtleArt/tabasics.py:380
+msgid "Turtle will draw when moved."
+msgstr "小烏龜會畫下移動的軌跡"
+
+#: TurtleArt/tabasics.py:386
+msgid "set pen size"
+msgstr "設定畫筆大小"
+
+#: TurtleArt/tabasics.py:390
+msgid "sets size of the line drawn by the turtle"
+msgstr "設定小烏龜畫線的寬度"
+
+#: TurtleArt/tabasics.py:400
 msgid "start fill"
 msgstr "開始填滿"
 
-#: TurtleArt/tabasics.py:400
+#: TurtleArt/tabasics.py:402
 msgid "starts filled polygon (used with end fill block)"
 msgstr "開始填滿多邊形（用最後填滿的區塊）"
 
-#: TurtleArt/tabasics.py:407
+#: TurtleArt/tabasics.py:409
 msgid "end fill"
 msgstr "停止填滿"
 
-#: TurtleArt/tabasics.py:409
+#: TurtleArt/tabasics.py:411
 msgid "completes filled polygon (used with start fill block)"
 msgstr "完全填滿的多邊形（用開始的填滿區塊）"
 
-#: TurtleArt/tabasics.py:420 TurtleArt/tabasics.py:424
+#: TurtleArt/tabasics.py:418
+msgid "pen size"
+msgstr "畫筆大小"
+
+#: TurtleArt/tabasics.py:419
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr "保持目前色筆大小（可以用來代替數字區塊）"
+
+#: TurtleArt/tabasics.py:434 TurtleArt/tabasics.py:438
 msgid "Palette of pen colors"
 msgstr "色筆調色盤"
 
-#: TurtleArt/tabasics.py:426
+#: TurtleArt/tabasics.py:440
 msgid "red"
 msgstr "紅色"
 
-#: TurtleArt/tabasics.py:427
+#: TurtleArt/tabasics.py:441
 msgid "orange"
 msgstr "橘色"
 
-#: TurtleArt/tabasics.py:429
+#: TurtleArt/tabasics.py:443
 msgid "yellow"
 msgstr "黃色"
 
-#: TurtleArt/tabasics.py:431
+#: TurtleArt/tabasics.py:445
 msgid "green"
 msgstr "綠色"
 
-#: TurtleArt/tabasics.py:432
+#: TurtleArt/tabasics.py:446
 msgid "cyan"
 msgstr "青綠色"
 
-#: TurtleArt/tabasics.py:433
+#: TurtleArt/tabasics.py:447
 msgid "blue"
 msgstr "藍色"
 
-#: TurtleArt/tabasics.py:434
+#: TurtleArt/tabasics.py:448
 msgid "purple"
 msgstr "紫色"
 
-#: TurtleArt/tabasics.py:436
+#: TurtleArt/tabasics.py:450
 msgid "white"
 msgstr "白色"
 
-#: TurtleArt/tabasics.py:437
+#: TurtleArt/tabasics.py:451
 msgid "black"
 msgstr "黑色"
 
-#: TurtleArt/tabasics.py:443
+#: TurtleArt/tabasics.py:457
 msgid "set text color"
 msgstr "設定文字顏色"
 
-#: TurtleArt/tabasics.py:446
+#: TurtleArt/tabasics.py:460
 msgid "sets color of text drawn by the turtle"
 msgstr "設定小烏龜寫字的顏色"
 
-#: TurtleArt/tabasics.py:454
+#: TurtleArt/tabasics.py:468
 msgid "set text size"
 msgstr "設定文字大小"
 
-#: TurtleArt/tabasics.py:457
+#: TurtleArt/tabasics.py:471
 msgid "sets size of text drawn by the turtle"
 msgstr "設定小烏龜寫字的大小"
 
-#: TurtleArt/tabasics.py:540
+#: TurtleArt/tabasics.py:554
 msgid "Palette of numeric operators"
 msgstr "數值運算子調色盤"
 
-#: TurtleArt/tabasics.py:546
+#: TurtleArt/tabasics.py:560
 msgid "plus"
 msgstr "加"
 
-#: TurtleArt/tabasics.py:550
+#: TurtleArt/tabasics.py:564
 msgid "adds two alphanumeric inputs"
 msgstr "增加兩個字母與數字並用的輸入值"
 
-#: TurtleArt/tabasics.py:558
+#: TurtleArt/tabasics.py:572
 msgid "minus"
 msgstr "減"
 
-#: TurtleArt/tabasics.py:561
+#: TurtleArt/tabasics.py:575
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr "將頂端輸入數值減去底端輸入數值"
 
-#: TurtleArt/tabasics.py:572
+#: TurtleArt/tabasics.py:586
 msgid "multiply"
 msgstr "相乘"
 
-#: TurtleArt/tabasics.py:575
+#: TurtleArt/tabasics.py:589
 msgid "multiplies two numeric inputs"
 msgstr "兩個數相乘"
 
-#: TurtleArt/tabasics.py:584
+#: TurtleArt/tabasics.py:598
 msgid "divide"
 msgstr "除"
 
-#: TurtleArt/tabasics.py:587
+#: TurtleArt/tabasics.py:601
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr "用底端輸入的數值（分母）來除上端輸入的數值（分子）"
 
-#: TurtleArt/tabasics.py:597
+#: TurtleArt/tabasics.py:611
 msgid "identity"
 msgstr "辨識"
 
-#: TurtleArt/tabasics.py:599
+#: TurtleArt/tabasics.py:613
 msgid "identity operator used for extending blocks"
 msgstr "用延伸區塊辨認運算子"
 
-#: TurtleArt/tabasics.py:607 TurtleArt/tabasics.py:608
+#: TurtleArt/tabasics.py:621 TurtleArt/tabasics.py:622
 msgid "mod"
 msgstr "模數"
 
-#: TurtleArt/tabasics.py:611
+#: TurtleArt/tabasics.py:625
 msgid "modular (remainder) operator"
 msgstr "模組（剩餘）運算子"
 
-#: TurtleArt/tabasics.py:618
+#: TurtleArt/tabasics.py:632
 msgid "√"
 msgstr "根號"
 
-#: TurtleArt/tabasics.py:619
+#: TurtleArt/tabasics.py:633
 msgid "square root"
 msgstr "平方根"
 
-#: TurtleArt/tabasics.py:622
+#: TurtleArt/tabasics.py:636
 msgid "calculates square root"
 msgstr "計算平方根"
 
-#: TurtleArt/tabasics.py:629
+#: TurtleArt/tabasics.py:643
 msgid "random"
 msgstr "亂數"
 
-#: TurtleArt/tabasics.py:629
+#: TurtleArt/tabasics.py:643
 msgid "min"
 msgstr "最小"
 
-#: TurtleArt/tabasics.py:629
+#: TurtleArt/tabasics.py:643
 msgid "max"
 msgstr "最大"
 
-#: TurtleArt/tabasics.py:633
+#: TurtleArt/tabasics.py:647
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr "回傳最小與最大值之間的隨機數值"
 
-#: TurtleArt/tabasics.py:645
+#: TurtleArt/tabasics.py:659
 msgid "number"
 msgstr "數字"
 
-#: TurtleArt/tabasics.py:646
+#: TurtleArt/tabasics.py:660
 msgid "used as numeric input in mathematic operators"
 msgstr "在數值運算子中使用數字輸入"
 
-#: TurtleArt/tabasics.py:654
+#: TurtleArt/tabasics.py:668
 msgid "greater than"
 msgstr "大於"
 
-#: TurtleArt/tabasics.py:657
+#: TurtleArt/tabasics.py:671
 msgid "logical greater-than operator"
 msgstr "「大於」的邏輯運算子"
 
-#: TurtleArt/tabasics.py:666
+#: TurtleArt/tabasics.py:680
 msgid "less than"
 msgstr "小於"
 
-#: TurtleArt/tabasics.py:670
+#: TurtleArt/tabasics.py:684
 msgid "logical less-than operator"
 msgstr "「小於」的邏輯運算子"
 
-#: TurtleArt/tabasics.py:678
+#: TurtleArt/tabasics.py:692
 msgid "equal"
 msgstr "等於"
 
-#: TurtleArt/tabasics.py:682
+#: TurtleArt/tabasics.py:696
 msgid "logical equal-to operator"
 msgstr "「等於」邏輯運算子"
 
-#: TurtleArt/tabasics.py:688
+#: TurtleArt/tabasics.py:702
 msgid "not"
 msgstr "否"
 
-#: TurtleArt/tabasics.py:691
+#: TurtleArt/tabasics.py:705
 msgid "logical NOT operator"
 msgstr "NOT 邏輯運算子"
 
-#: TurtleArt/tabasics.py:697 TurtleArt/tabasics.py:700
+#: TurtleArt/tabasics.py:711 TurtleArt/tabasics.py:714
 msgid "and"
 msgstr "且"
 
-#: TurtleArt/tabasics.py:701
+#: TurtleArt/tabasics.py:715
 msgid "logical AND operator"
 msgstr "AND 邏輯演算子"
 
-#: TurtleArt/tabasics.py:708 TurtleArt/tabasics.py:711
+#: TurtleArt/tabasics.py:722 TurtleArt/tabasics.py:725
 msgid "or"
 msgstr "或"
 
-#: TurtleArt/tabasics.py:712
+#: TurtleArt/tabasics.py:726
 msgid "logical OR operator"
 msgstr "OR 邏輯運算子"
 
-#: TurtleArt/tabasics.py:721
+#: TurtleArt/tabasics.py:735
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
 msgid "Palette of flow operators"
 msgstr "調色板上的流程運算子"
 
-#: TurtleArt/tabasics.py:726
+#: TurtleArt/tabasics.py:740
 msgid "wait"
 msgstr "等待"
 
-#: TurtleArt/tabasics.py:730
+#: TurtleArt/tabasics.py:744
 msgid "pauses program execution a specified number of seconds"
 msgstr "暫停程式執行指定的秒數"
 
-#: TurtleArt/tabasics.py:737
+#: TurtleArt/tabasics.py:751
 msgid "forever"
 msgstr "持續執行"
 
-#: TurtleArt/tabasics.py:741
+#: TurtleArt/tabasics.py:755
 msgid "loops forever"
 msgstr "永遠迴圈"
 
-#: TurtleArt/tabasics.py:748 TurtleArt/tabasics.py:752
+#: TurtleArt/tabasics.py:762 TurtleArt/tabasics.py:766
 msgid "repeat"
 msgstr "重複"
 
-#: TurtleArt/tabasics.py:753
+#: TurtleArt/tabasics.py:767
 msgid "loops specified number of times"
 msgstr "指定次數的迴圈"
 
-#: TurtleArt/tabasics.py:759 TurtleArt/tabasics.py:772
+#: TurtleArt/tabasics.py:773 TurtleArt/tabasics.py:786
 msgid "if"
 msgstr "若"
 
-#: TurtleArt/tabasics.py:759 TurtleArt/tabasics.py:772
+#: TurtleArt/tabasics.py:773 TurtleArt/tabasics.py:786
 msgid "then"
 msgstr "則"
 
-#: TurtleArt/tabasics.py:762
+#: TurtleArt/tabasics.py:776
 msgid "if then"
 msgstr "若....則....."
 
-#: TurtleArt/tabasics.py:764
+#: TurtleArt/tabasics.py:778
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr "從數字調色盤使用布林運算的 if - then 運算子"
 
-#: TurtleArt/tabasics.py:772
+#: TurtleArt/tabasics.py:786
 msgid "else"
 msgstr "否則"
 
-#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:784
+#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
 msgid "if then else"
 msgstr "若....則.....否則"
 
-#: TurtleArt/tabasics.py:777 TurtleArt/tabasics.py:785
+#: TurtleArt/tabasics.py:791 TurtleArt/tabasics.py:799
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr "從數字調色盤的布林運算子使用「若-則-否則」運算子"
 
-#: TurtleArt/tabasics.py:794
+#: TurtleArt/tabasics.py:808
 msgid "horizontal space"
 msgstr "水平空間"
 
-#: TurtleArt/tabasics.py:795
+#: TurtleArt/tabasics.py:809
 msgid "jogs stack right"
 msgstr "右方的緩慢堆疊"
 
-#: TurtleArt/tabasics.py:802
+#: TurtleArt/tabasics.py:816
 msgid "vertical space"
 msgstr "垂直空間"
 
-#: TurtleArt/tabasics.py:803
+#: TurtleArt/tabasics.py:817
 msgid "jogs stack down"
 msgstr "緩慢堆疊當機"
 
-#: TurtleArt/tabasics.py:809
+#: TurtleArt/tabasics.py:823
 msgid "stop action"
 msgstr "停止動作"
 
-#: TurtleArt/tabasics.py:812
+#: TurtleArt/tabasics.py:826
 msgid "stops current action"
 msgstr "停止目前活動"
 
-#: TurtleArt/tabasics.py:821
+#: TurtleArt/tabasics.py:835
 msgid "Palette of variable blocks"
 msgstr "變數區塊調色盤"
 
-#: TurtleArt/tabasics.py:826 pysamples/grecord.py:213
+#: TurtleArt/tabasics.py:840 pysamples/grecord.py:213
 msgid "start"
 msgstr "啟動"
 
-#: TurtleArt/tabasics.py:829
+#: TurtleArt/tabasics.py:843
 msgid "connects action to toolbar run buttons"
 msgstr "執行工具列上的按鈕以連結行動"
 
-#: TurtleArt/tabasics.py:836 TurtleArt/tabasics.py:837
-#: TurtleArt/tabasics.py:838
+#: TurtleArt/tabasics.py:850 TurtleArt/tabasics.py:851
+#: TurtleArt/tabasics.py:852
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
@@ -554,137 +563,137 @@ msgstr "執行工具列上的按鈕以連結行動"
 msgid "text"
 msgstr "文字"
 
-#: TurtleArt/tabasics.py:839
+#: TurtleArt/tabasics.py:853
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
 msgid "string value"
 msgstr "字串值"
 
-#: TurtleArt/tabasics.py:843 TurtleArt/tabasics.py:846
-#: TurtleArt/tabasics.py:854 TurtleArt/tabasics.py:858
-#: TurtleArt/tawindow.py:1247 TurtleArt/tawindow.py:1324
-#: TurtleArt/tawindow.py:4041
+#: TurtleArt/tabasics.py:857 TurtleArt/tabasics.py:860
+#: TurtleArt/tabasics.py:868 TurtleArt/tabasics.py:872
+#: TurtleArt/tawindow.py:1250 TurtleArt/tawindow.py:1328
+#: TurtleArt/tawindow.py:1341 TurtleArt/tawindow.py:4061
 msgid "action"
 msgstr "動作"
 
-#: TurtleArt/tabasics.py:848
+#: TurtleArt/tabasics.py:862
 msgid "top of nameable action stack"
 msgstr "可命名的動作堆疊上方"
 
-#: TurtleArt/tabasics.py:859 TurtleArt/tawindow.py:4055
+#: TurtleArt/tabasics.py:873 TurtleArt/tawindow.py:4075
 msgid "invokes named action stack"
 msgstr "援用已命名的主動堆疊"
 
-#: TurtleArt/tabasics.py:866
+#: TurtleArt/tabasics.py:880
 msgid "store in box 1"
 msgstr "放入方塊一"
 
-#: TurtleArt/tabasics.py:871
+#: TurtleArt/tabasics.py:885
 msgid "stores numeric value in Variable 1"
 msgstr "在變數 1 中儲存數值"
 
-#: TurtleArt/tabasics.py:879
+#: TurtleArt/tabasics.py:893
 msgid "store in box 2"
 msgstr "放入方塊二"
 
-#: TurtleArt/tabasics.py:884
+#: TurtleArt/tabasics.py:898
 msgid "stores numeric value in Variable 2"
 msgstr "在變數 2 中儲存數值"
 
-#: TurtleArt/tabasics.py:892
+#: TurtleArt/tabasics.py:906
 msgid "box 1"
 msgstr "方塊一"
 
-#: TurtleArt/tabasics.py:895
+#: TurtleArt/tabasics.py:909
 msgid "Variable 1 (numeric value)"
 msgstr "變數 1 （數值）"
 
-#: TurtleArt/tabasics.py:902
+#: TurtleArt/tabasics.py:916
 msgid "box 2"
 msgstr "方塊二"
 
-#: TurtleArt/tabasics.py:905
+#: TurtleArt/tabasics.py:919
 msgid "Variable 2 (numeric value)"
 msgstr "變數2（數值）"
 
-#: TurtleArt/tabasics.py:911 TurtleArt/tawindow.py:4109
+#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4129
 msgid "store in"
 msgstr "放入"
 
-#: TurtleArt/tabasics.py:911 TurtleArt/tabasics.py:925
+#: TurtleArt/tabasics.py:925 TurtleArt/tabasics.py:939
 msgid "box"
 msgstr "方塊"
 
-#: TurtleArt/tabasics.py:911 TurtleArt/tawindow.py:4109 taextras.py:396
+#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4129 taextras.py:396
 msgid "value"
 msgstr "值"
 
-#: TurtleArt/tabasics.py:915 TurtleArt/tabasics.py:928
-#: TurtleArt/tawindow.py:1251 TurtleArt/tawindow.py:4070
-#: TurtleArt/tawindow.py:4100
+#: TurtleArt/tabasics.py:929 TurtleArt/tabasics.py:942
+#: TurtleArt/tawindow.py:1254 TurtleArt/tawindow.py:4090
+#: TurtleArt/tawindow.py:4120
 msgid "my box"
 msgstr "我的箱子"
 
-#: TurtleArt/tabasics.py:916 TurtleArt/tawindow.py:4114
+#: TurtleArt/tabasics.py:930 TurtleArt/tawindow.py:4134
 msgid "stores numeric value in named variable"
 msgstr "在已命名的變數中儲存數值"
 
-#: TurtleArt/tabasics.py:931 TurtleArt/tawindow.py:4084
+#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4104
 msgid "named variable (numeric value)"
 msgstr "命名前的變數（數值）"
 
-#: TurtleArt/tabasics.py:938 TurtleArt/tabasics.py:957
+#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
 msgid "action 1"
 msgstr "動作1"
 
-#: TurtleArt/tabasics.py:941
+#: TurtleArt/tabasics.py:955
 msgid "top of Action 1 stack"
 msgstr "行動1堆疊的上方"
 
-#: TurtleArt/tabasics.py:947 TurtleArt/tabasics.py:967
+#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
 msgid "action 2"
 msgstr "動作2"
 
-#: TurtleArt/tabasics.py:950
+#: TurtleArt/tabasics.py:964
 msgid "top of Action 2 stack"
 msgstr "動作2堆疊的上方"
 
-#: TurtleArt/tabasics.py:960
+#: TurtleArt/tabasics.py:974
 msgid "invokes Action 1 stack"
 msgstr "提取行動1的堆疊"
 
-#: TurtleArt/tabasics.py:970
+#: TurtleArt/tabasics.py:984
 msgid "invokes Action 2 stack"
 msgstr "掉用行動2的堆疊"
 
-#: TurtleArt/tabasics.py:978
+#: TurtleArt/tabasics.py:992
 msgid "trash"
 msgstr "垃圾"
 
-#: TurtleArt/tabasics.py:982
+#: TurtleArt/tabasics.py:996
 msgid "empty trash"
 msgstr "清空垃圾桶"
 
-#: TurtleArt/tabasics.py:983
+#: TurtleArt/tabasics.py:997
 msgid "permanently deletes items in trash"
 msgstr "永久清空垃圾桶中的檔案"
 
-#: TurtleArt/tabasics.py:987
+#: TurtleArt/tabasics.py:1001
 msgid "restore all"
 msgstr "回復全部"
 
-#: TurtleArt/tabasics.py:988
+#: TurtleArt/tabasics.py:1002
 msgid "restore all blocks from trash"
 msgstr "從垃圾桶救回所有區塊"
 
-#: TurtleArt/tabasics.py:992
+#: TurtleArt/tabasics.py:1006
 msgid "clear all"
 msgstr "清除全部"
 
-#: TurtleArt/tabasics.py:993
+#: TurtleArt/tabasics.py:1007
 msgid "move all blocks to trash"
 msgstr "把所有區塊移動到垃圾桶"
 
-#: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1763
+#: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1783
 #: TurtleArtActivity.py:633
 msgid "Share selected blocks"
 msgstr ""
@@ -692,26 +701,26 @@ msgstr ""
 #: TurtleArt/taconstants.py:241 TurtleArt/taconstants.py:263
 #: TurtleArt/taconstants.py:284 TurtleArt/taconstants.py:326
 #: TurtleArt/taconstants.py:368 TurtleArt/taconstants.py:410
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:951
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:996
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1011
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:978
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:993
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1008
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1023
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
 msgid "Title"
 msgstr "標題"
 
 #: TurtleArt/talogo.py:358 TurtleArtActivity.py:613
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1454
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1473
 msgid "Stop turtle"
 msgstr "停止執行"
 
-#: TurtleArt/talogo.py:369 TurtleArtActivity.py:289 TurtleArtActivity.py:614
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1447
+#: TurtleArt/talogo.py:369 TurtleArtActivity.py:288 TurtleArtActivity.py:614
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1466
 msgid "Show blocks"
 msgstr "顯示區塊"
 
-#: TurtleArt/talogo.py:373 TurtleArtActivity.py:293 TurtleArtActivity.py:791
+#: TurtleArt/talogo.py:373 TurtleArtActivity.py:292 TurtleArtActivity.py:791
 msgid "Hide blocks"
 msgstr "隱藏區塊"
 
@@ -748,28 +757,28 @@ msgid "Save..."
 msgstr "儲存"
 
 #: TurtleArt/tautils.py:473
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:701
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
 msgid "click to open"
 msgstr "點選開啟"
 
-#: TurtleArt/tawindow.py:965 TurtleArt/tawindow.py:966
+#: TurtleArt/tawindow.py:968 TurtleArt/tawindow.py:969
 msgid "orientation"
 msgstr "方向"
 
-#: TurtleArt/tawindow.py:976 TurtleArt/tawindow.py:1396
+#: TurtleArt/tawindow.py:979 TurtleArt/tawindow.py:1413
 msgid "next"
 msgstr "下一步"
 
-#: TurtleArt/tawindow.py:988 TurtleArt/tawindow.py:989
-#: TurtleArt/tawindow.py:1416
+#: TurtleArt/tawindow.py:991 TurtleArt/tawindow.py:992
+#: TurtleArt/tawindow.py:1433
 msgid "shift"
 msgstr ""
 
-#: TurtleArt/tawindow.py:1265
+#: TurtleArt/tawindow.py:1268
 msgid "Select blocks to share"
 msgstr ""
 
-#: TurtleArt/tawindow.py:3896
+#: TurtleArt/tawindow.py:3916
 msgid "image"
 msgstr "圖片"
 
@@ -850,7 +859,7 @@ msgid "Restore blocks from trash"
 msgstr "從垃圾桶救回所有區塊"
 
 #: TurtleArtActivity.py:528 TurtleArtActivity.py:678
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:777
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
 msgid "Fullscreen"
 msgstr "全螢幕"
 
@@ -1058,7 +1067,7 @@ msgstr "上傳失敗"
 #: plugins/audio_sensors/audio_sensors.py:75
 #: plugins/camera_sensor/camera_sensor.py:57
 #: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:329
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
 msgid "Palette of sensor blocks"
 msgstr "偵測器區塊的顏色"
 
@@ -1193,8 +1202,8 @@ msgid "do-until-True operator that uses boolean operators from Numbers palette"
 msgstr "執行直到真值運算子使用數字調色盤上的布林運算子"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:124
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:703
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
 msgid "top"
 msgstr "頂端"
 
@@ -1335,395 +1344,405 @@ msgstr "說出文字"
 msgid "sinewave"
 msgstr "正弦波"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
+msgid "amplitude"
+msgstr ""
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
 msgid "duration"
 msgstr "時間長度"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:319
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:320
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr "指定播放正弦波頻率、音量以及時間長度(秒)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:336
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:347
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:337
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:348
 msgid "button down"
 msgstr "按下按鍵"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:339
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:340
 msgid "returns 1 if mouse button is pressed"
 msgstr "當滑鼠按鍵按下時傳回 1"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:350
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:351
 #, fuzzy
 msgid "returns True if mouse button is pressed"
 msgstr "當滑鼠按鍵按下時傳回 1"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:358
 msgid "mouse x"
 msgstr "滑鼠座標 x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:360
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:361
 msgid "returns mouse x coordinate"
 msgstr "傳回滑鼠位置的 x 座標"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:367
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
 msgid "mouse y"
 msgstr "滑鼠座標 y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:370
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
 msgid "returns mouse y coordinate"
 msgstr "傳回滑鼠位置的 y 座標"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:378
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
 msgid "query keyboard"
 msgstr "詢問鍵盤"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:380
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:381
 msgid "query for keyboard input (results stored in keyboard block)"
 msgstr "鍵盤輸入查詢（結果儲存在鍵盤區塊）"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:387
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
 msgid "keyboard"
 msgstr "鍵盤"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:391
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
 #, fuzzy
 msgid "holds results of query-keyboard block as ASCII"
 msgstr "保持詢問鍵盤區塊的結果"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:423
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
 msgid "read pixel"
 msgstr "讀取像素"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:426
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:427
 msgid "RGB color under the turtle is pushed to the stack"
 msgstr "小海龜下的RGB色系已經推入堆疊中"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:434
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:435
 msgid "turtle sees"
 msgstr "小烏龜的視野"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:436
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:437
 msgid "returns the color that the turtle \"sees\""
 msgstr "回傳小烏龜看到的顏色"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:444 taextras.py:332
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:445 taextras.py:332
 msgid "time"
 msgstr "時間"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:447
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:448
 msgid "elapsed time (in seconds) since program started"
 msgstr "程式啟動後所經過的時間（秒）"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:456
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:457
 msgid "Palette of extra options"
 msgstr "調色盤額外選項"
 
 #. TRANS: push adds a new item to the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:463
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
 msgid "push"
 msgstr "存入堆疊"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:466
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:467
 msgid "pushes value onto FILO (first-in last-out heap)"
 msgstr "把數值推向FILO(first-in-hand heap)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:476
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:477
 msgid "show heap"
 msgstr "顯示堆疊"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:479
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:480
 msgid "shows values in FILO (first-in last-out heap)"
 msgstr "在FILO中顯示數值"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:489
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:490
 msgid "empty heap"
 msgstr "清除堆疊"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:492
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:493
 msgid "emptys FILO (first-in-last-out heap)"
 msgstr "清除FILO(first-in-last-out heap)"
 
 #. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:503
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:504
 msgid "pop"
 msgstr "取出堆疊"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:507
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr "跳出FILO關閉值"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:517
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
 #, fuzzy
 msgid "empty heap?"
 msgstr "清除堆疊"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:520
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:522
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
 msgid "returns True if heap is empty"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:527
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:539
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:541
 msgid "comment"
 msgstr "註記"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:531
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:543
 msgid "places a comment in your code"
 msgstr "在程式碼中做註記"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:537
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
 msgid "print"
 msgstr "顯示"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:541
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:553
 msgid "prints value in status block at bottom of the screen"
 msgstr "列印螢幕下方堆疊區塊的值"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:551
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:563
 msgid "Python chr operator"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:560
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
 msgid "Python int operator"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:567
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:580
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:594
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:579
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:592
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:606
 msgid "Python"
 msgstr "Python"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:571
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:583
 msgid ""
 "a programmable block: used to add advanced single-variable math equations, e."
 "g., sin(x)"
 msgstr "可執行區塊：用以增加進階的單一變項數學式（如：sin(x)）"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:584
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:596
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
 msgstr "可執行區塊：用以添加進階多變數數學方程式（如：sqrt(X^X+Y^Y）"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:610
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
 msgstr "可執行區塊：用以添加進階多變數數學式（如：sin(x+y+z)）"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:610
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:626
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:641
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:622
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:638
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:653
 msgid "Python block"
 msgstr "Python區塊"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:612
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:628
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:624
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:640
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:656
 msgid "runs code found in the tamyblock.py module found in the Journal"
 msgstr "從日誌中的tamyblock.py模組執行code"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:657
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
 msgid "Cartesian"
 msgstr "笛卡爾"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:659
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:671
 msgid "displays Cartesian coordinates"
 msgstr "顯示笛卡爾座標系"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:665
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
 msgid "polar"
 msgstr "極"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:667
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:679
 msgid "displays polar coordinates"
 msgstr "顯示極座標"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:673
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:744
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:756
 msgid "turtle"
 msgstr "小烏龜"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
 msgid "chooses which turtle to command"
 msgstr "選擇要控制的小烏龜"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:686
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:695
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:698
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:707
 msgid "turtle shell"
 msgstr "龜殼"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:688
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:696
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:700
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:708
 msgid "put a custom 'shell' on the turtle"
 msgstr "替小烏龜穿上自製的龜殼"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:704
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:716
 msgid "top of a collapsed stack"
 msgstr "崩潰堆疊的上方"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:709
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:719
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:730
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:721
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
 msgid "load"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:712
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:735
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:746
 #, fuzzy
 msgid "loads a block"
 msgstr "載入我的區塊"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:733
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:745
 #, fuzzy
 msgid "setxy"
 msgstr "指定座標"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:754
 msgid "palette"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:745
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:757
 msgid "selects a palette"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:753
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:765
 msgid "Palette of presentation templates"
 msgstr "展示模版調色盤"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:760
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:772
 msgid "hide blocks"
 msgstr "隱藏區塊"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:762
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
 msgid "declutters canvas by hiding blocks"
 msgstr "用隱藏區塊來屠次表现油畫"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:769
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:781
 msgid "show blocks"
 msgstr "顯示區塊"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:783
 msgid "restores hidden blocks"
 msgstr "回復隱藏區塊"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:779
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
 msgid "hides the Sugar toolbars"
 msgstr "隱藏sugar工具列"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:788
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
 msgid "list"
 msgstr "列表"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:792
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1027
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1039
 msgid "presentation bulleted list"
 msgstr "列點展示"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1029
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:812
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
 msgid "presentation template: list of bullets"
 msgstr "展示模版：列點"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:807
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:969
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:819
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
 msgid "presentation template: select Journal object (no description)"
 msgstr "簡報模版：選擇日誌中的物件（無說明）"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:814
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:954
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:826
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
 msgid "presentation template: select Journal object (with description)"
 msgstr "展示模版：選擇日誌中的物件（有描述）"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:821
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1014
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:833
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
 msgid "presentation template: select four Journal objects"
 msgstr "外觀模版：選擇四個日誌中的物件"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:828
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:835
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:984
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:999
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:840
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:847
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:996
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1011
 msgid "presentation template: select two Journal objects"
 msgstr "展示模版：選擇兩個日誌中的物件"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:845
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
 msgid "xcor of left of screen"
 msgstr "視窗左邊的x座標"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:850
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
 msgid "bottom"
 msgstr "底端"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:853
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:865
 msgid "ycor of bottom of screen"
 msgstr "螢幕下方的y座標"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:858 taextras.py:247
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870 taextras.py:247
 msgid "width"
 msgstr "寬度"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:861
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
 msgid "the canvas width"
 msgstr "畫面寬度"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:869
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:881
 msgid "xcor of right of screen"
 msgstr "螢幕右方的x座標"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:877
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:889
 msgid "ycor of top of screen"
 msgstr "螢幕上方的y座標"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882 taextras.py:242
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894 taextras.py:242
 #: taextras.py:248
 msgid "height"
 msgstr "高度"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:885
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
 msgid "the canvas height"
 msgstr "畫布高度"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:892
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:904
 msgid "title x"
 msgstr "x軸標題"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:901
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:913
 msgid "title y"
 msgstr "y軸標題"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:910
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:922
 msgid "left x"
 msgstr "x軸左側"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:919
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:931
 msgid "top y"
 msgstr "y軸頂端"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:928
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:940
 msgid "right x"
 msgstr "x軸右側"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:937
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:949
 msgid "bottom y"
 msgstr "y軸底端"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:952
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:967
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:964
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:979
 msgid "presentation 1x1"
 msgstr "展示為1x1"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:982
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:994
 msgid "presentation 2x1"
 msgstr "以2x1方式展示"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:997
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1009
 msgid "presentation 1x2"
 msgstr "展示為1x2"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1012
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
 msgid "presentation 2x2"
 msgstr "以2x2方式展示"
+
+#: pysamples/forward_push.py:45
+msgid "push destination rgb value to heap"
+msgstr ""
 
 #: pysamples/grecord.py:215
 msgid "stop"
@@ -1736,6 +1755,10 @@ msgstr "播放"
 #: pysamples/grecord.py:219
 msgid "save"
 msgstr "儲存"
+
+#: pysamples/journal-stats.py:78
+msgid "other"
+msgstr ""
 
 #: pysamples/uturn.py:24
 msgid "uturn"

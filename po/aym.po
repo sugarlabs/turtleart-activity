@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-25 00:30-0400\n"
+"POT-Creation-Date: 2012-09-27 14:55-0400\n"
 "PO-Revision-Date: 2012-09-25 11:26+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,17 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #  "TortugArte"
-#: activity/activity.info:2 TurtleArt/tawindow.py:3817
-#: pysamples/grecord.py:205 turtleblocks.py:295
+#. TRANS: "name" option from activity.info file
+#: TurtleArt/tawindow.py:3817 pysamples/grecord.py:205 turtleblocks.py:295
 msgid "Turtle Art"
 msgstr "TortugArte wakichata"
+
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"A Logo-inspired turtle that draws colorful pictures with snap-together "
+"visual programming blocks"
+msgstr ""
 
 #: TurtleArt/tabasics.py:116
 msgid "Palette of turtle commands"
@@ -1905,7 +1912,7 @@ msgstr "qhantayaña"
 msgid "save"
 msgstr "imaña"
 
-#: pysamples/journal-stats.py:94
+#: pysamples/journal-stats.py:78
 msgid "other"
 msgstr "jaqha"
 
