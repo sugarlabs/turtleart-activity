@@ -449,20 +449,38 @@ class TurtleArtActivity(activity.Activity):
         # Fixme: this should be a exposed as a window property, not private 
         return self._is_fullscreen
 
-    def toolbars_expanded(self):
+    def toolbars_expanded(self, palette=False):
         ''' Are any toolbars expanded? '''
         if not self.has_toolbarbox:
-            return False
+            if palette:
+                return None
+            else:
+                return False
         if self.palette_toolbar_button.is_expanded():
-            return True
+            if palette:
+                return self.palette_toolbar_button
+            else:
+                return True
         elif self.edit_toolbar_button.is_expanded():
-            return True
+            if palette:
+                return self.edit_toolbar_button
+            else:
+                return True
         elif self.view_toolbar_button.is_expanded():
-            return True
+            if palette:
+                return self.view_toolbar_button
+            else:
+                return True
         elif self.activity_toolbar_button.is_expanded():
-            return True
+            if palette:
+                return self.activity_toolbar_button
+            else:
+                return True
         else:
-            return False
+            if palette:
+                return None
+            else:
+                return False
 
     def _setup_toolbar(self):
         ''' Setup toolbar according to Sugar version. '''
@@ -525,6 +543,7 @@ class TurtleArtActivity(activity.Activity):
                          edit_toolbar, '<Ctrl>v')
         self._add_button('edit-undo', _('Restore blocks from trash'),
                          self._undo_cb, edit_toolbar)
+
         self._add_button('view-fullscreen', _('Fullscreen'),
                          self.do_fullscreen_cb, view_toolbar, '<Alt>Return')
         self._add_button('view-Cartesian', _('Cartesian coordinates'),
@@ -820,16 +839,36 @@ class TurtleArtActivity(activity.Activity):
 
         return new_version
 
+    def _fixed_resize_cb(self, widget=None, rect=None):
+        ''' If a toolbar opens or closes, we need to resize the vbox
+        holding out scrolling window. '''
+        self.vbox.set_size_request(rect[2], rect[3])
+
     def _setup_scrolled_window(self):
-        ''' Create a scrolled window to contain the turtle canvas. '''
+        ''' Create a scrolled window to contain the turtle canvas. We
+        add a Fixed container in order to position text Entry widgets
+        on top of string and number blocks.'''
+        self.fixed = gtk.Fixed()
+        self.fixed.connect('size-allocate', self._fixed_resize_cb)
+        self.fixed.show()
+        self.set_canvas(self.fixed)
+        self.vbox = gtk.VBox(False, 0)
+        self.vbox.set_size_request(gtk.gdk.screen_width(),
+                                   gtk.gdk.screen_height() - \
+                                       2 * style.GRID_CELL_SIZE)
         self.sw = gtk.ScrolledWindow()
-        self.set_canvas(self.sw)
+        # self.set_canvas(self.sw)
+        self.vbox.pack_end(self.sw, True, True)
         self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.sw.show()
+        self.vbox.show()
+        self.fixed.put(self.vbox, 0, 0)
 
         canvas = gtk.DrawingArea()
         canvas.set_size_request(gtk.gdk.screen_width() * 2,
                                 gtk.gdk.screen_height() * 2)
+        canvas.show()
+
         self.sw.add_with_viewport(canvas)
         self.sw.get_hadjustment().connect('value-changed', self._scroll_cb)
         self.sw.get_vadjustment().connect('value-changed', self._scroll_cb)
@@ -838,6 +877,7 @@ class TurtleArtActivity(activity.Activity):
         canvas.show()
         self.sw.show()
         self.show_all()
+
         return canvas
 
     def _scroll_cb(self, window):

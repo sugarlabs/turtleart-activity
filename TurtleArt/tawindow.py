@@ -313,6 +313,7 @@ class TurtleArtWindow():
         f = "def f(self): from plugins.%s.%s import %s; return %s(self)" \
             % (plugin_dir, plugin_dir, plugin_class, plugin_class)
         plugins = {}
+        # NOTE: When debugging plugins, it may be useful to not trap errors
         try:
             exec f in globals(), plugins
             self._plugins.append(plugins.values()[0](self))
@@ -410,6 +411,7 @@ class TurtleArtWindow():
         elif data and data.format == 8 and \
              self.selected_blk is not None and \
              self.selected_blk.name == 'string':
+            # FIXME: data should be written to text_entry
             for i in data.data:
                 self.process_alphanumeric_input(i, -1)
             self.selected_blk.resize()
@@ -1245,6 +1247,9 @@ class TurtleArtWindow():
                 else:
                     n -= 1
                 self.selected_blk.spr.set_label(str(n) + CURSOR)
+                if self.running_sugar and hasattr(self, 'text_entry'):
+                    self.text_buffer.set_text(str(n))
+                    self.text_entry.set_buffer(self.text_buffer)
                 return True
             elif self._action_name(self.selected_blk, hat=True):
                 if self.selected_blk.values[0] == _('action'):
@@ -1792,11 +1797,11 @@ class TurtleArtWindow():
         ''' Unselect block '''
         # After unselecting a 'number' block, we need to check its value
         if self.selected_blk.name == 'number':
-            self._number_check()
+            self._test_number()
             for spr in self.triangle_sprs:
                 spr.hide()
         elif self.selected_blk.name == 'string':
-            self._string_check()
+            self._test_string()
         self.selected_blk.unhighlight()
         self.selected_blk = None
 
@@ -2373,6 +2378,30 @@ class TurtleArtWindow():
                     spr.set_layer(TOP_LAYER)
                 self.triangle_sprs[0].move((int(bx + (bw - tw) / 2), by - th))
                 self.triangle_sprs[1].move((int(bx + (bw - tw) / 2), by + bh))
+            if self.running_sugar and blk.name in ['string', 'number']:
+                if not hasattr(self, 'text_entry'):
+                    self.text_entry = gtk.TextView()
+                    self.text_entry.set_justification(gtk.JUSTIFY_CENTER)
+                    self.text_buffer = gtk.TextBuffer()
+                    self.activity.fixed.put(self.text_entry, 0, 0)
+                    '''
+                    NOTE: Use override_background_color in GTK3 port to set
+                    transparent background.
+                    '''
+                self.text_entry.show()
+                self.text_buffer.set_text(self.saved_string)
+                self.text_entry.set_buffer(self.text_buffer)
+                w = blk.spr.label_safe_width()
+                h = blk.spr.label_safe_height()
+                self.text_entry.set_size_request(w, h)
+                bx, by = blk.spr.get_xy()
+                mx, my = blk.spr.label_left_top()
+                self.text_entry.set_pixels_above_lines(my * 2)
+                self.activity.fixed.move(self.text_entry, bx + mx, by + my * 2)
+                self.activity.fixed.show()
+                self.text_entry.connect('focus-out-event',
+                                        self._add_text_changed_cb)
+                self.text_entry.grab_focus()
 
         elif blk.name in block_styles['box-style-media'] and \
              blk.name not in NO_IMPORT:
@@ -3003,6 +3032,7 @@ class TurtleArtWindow():
                 self._align_to_grid()
 
         elif self.selected_blk is not None:
+            # FIXME: This code is deprecated
             if self.selected_blk.name == 'number':
                 self._process_numeric_input(keyname)
             elif self.selected_blk.name == 'string':
@@ -3241,9 +3271,20 @@ class TurtleArtWindow():
         self._snap_to_dock()
         self.drag_group = None
 
-    def _number_check(self):
+    def _test_number(self):
         ''' Make sure a 'number' block contains a number. '''
-        n = self.selected_blk.spr.labels[0].replace(CURSOR, '')
+        if self.running_sugar and hasattr(self, 'text_entry'):
+            self.text_entry.connect('focus-out-event',
+                                    self._add_text_no_changed_cb)
+            self.text_entry.hide()
+            bounds = self.text_entry.get_buffer().get_bounds()
+            n = self.text_entry.get_buffer().get_text(bounds[0],
+                                                      bounds[1])
+        else:
+            n = self.selected_blk.spr.labels[0].replace(CURSOR, '')
+        self._number_check(n)
+
+    def _number_check(self, n):
         if n in ['-', '.', '-.', ',', '-,']:
             n = 0
         elif n is not None:
@@ -3269,9 +3310,35 @@ class TurtleArtWindow():
         except IndexError:
             self.selected_blk.values[0] = float(str(n))
 
-    def _string_check(self):
-        s = self.selected_blk.spr.labels[0].replace(CURSOR, '')
+    def _add_text_no_changed_cb(self, widget=None, event=None):
+        return
+
+    def _add_text_changed_cb(self, widget=None, event=None):
+        if not self.running_sugar:
+            return
+        bounds = self.text_entry.get_buffer().get_bounds()
+        s = self.text_entry.get_buffer().get_text(bounds[0],
+                                                  bounds[1])
+        if self.selected_blk.type == 'string':
+            self._string_check(s)
+        else:
+            self._number_check(s)
+
+    def _test_string(self):
+        if self.running_sugar and hasattr(self, 'text_entry'):
+            self.text_entry.connect('focus-out-event',
+                                    self._add_text_no_changed_cb)
+            self.text_entry.hide()
+            bounds = self.text_entry.get_buffer().get_bounds()
+            s = self.text_entry.get_buffer().get_text(bounds[0],
+                                                      bounds[1])
+        else:
+            s = self.selected_blk.spr.labels[0].replace(CURSOR, '')
+        self._string_check(s)
+
+    def _string_check(self, s):
         self.selected_blk.spr.set_label(s)
+        self.selected_blk.resize()
         self.selected_blk.values[0] = s.replace(RETURN, "\12")
         self.saved_string = self.selected_blk.values[0]
 
