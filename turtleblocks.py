@@ -197,7 +197,8 @@ class TurtleMain():
             cairo.CONTENT_COLOR, max(1024, gtk.gdk.screen_width() * 2),
             max(768, gtk.gdk.screen_height() * 2))
         self.tw = TurtleArtWindow(self.canvas, self._execdirname,
-                                  turtle_canvas=self.turtle_canvas)
+                                  turtle_canvas=self.turtle_canvas,
+                                  parent=self, running_sugar=False)
         self.tw.save_folder = os.path.expanduser('~')
 
     def _init_vars(self):
@@ -286,6 +287,11 @@ class TurtleMain():
             self.width = 800
             self.height = 550
 
+    def _fixed_resize_cb(self, widget=None, rect=None):
+        ''' If a toolbar opens or closes, we need to resize the vbox
+        holding out scrolling window. '''
+        self.vbox.set_size_request(rect[2], rect[3])
+
     def _setup_gtk(self):
         ''' Set up a scrolled window in which to run Turtle Blocks. '''
         win = gtk.Window(gtk.WINDOW_TOPLEVEL)
@@ -298,12 +304,21 @@ class TurtleMain():
                                                 self._ICON_SUBPATH))
         win.connect('delete_event', self._quit_ta)
 
-        vbox = gtk.VBox(False, 0)
-        win.add(vbox)
-        vbox.show()
+        ''' Create a scrolled window to contain the turtle canvas. We
+        add a Fixed container in order to position text Entry widgets
+        on top of string and number blocks.'''
+        self.fixed = gtk.Fixed()
+        self.fixed.connect('size-allocate', self._fixed_resize_cb)
+        self.fixed.show()
+        win.add(self.fixed)
+
+        self.vbox = gtk.VBox(False, 0)
+        # win.add(vbox)
+        self.fixed.put(self.vbox, 0, 0)
+        self.vbox.show()
 
         menu_bar = self._get_menu_bar()
-        vbox.pack_start(menu_bar, False, False, 2)
+        self.vbox.pack_start(menu_bar, False, False, 2)
         menu_bar.show()
 
         sw = gtk.ScrolledWindow()
@@ -315,11 +330,12 @@ class TurtleMain():
         canvas.set_size_request(width, height)
         sw.add_with_viewport(canvas)
         canvas.show()
-        vbox.pack_end(sw, True, True)
+        self.vbox.pack_end(sw, True, True)
 
         win.show_all()
         self.win = win
         self.canvas = canvas
+        self.menu_height = menu_bar.size_request()[1]
 
     def _get_menu_bar(self):
         ''' Instead of Sugar toolbars, use GNOME menus. '''
@@ -565,12 +581,13 @@ class TurtleMain():
         clipBoard = gtk.Clipboard()
         text = clipBoard.wait_for_text()
         if text is not None:
-            if self.tw.selected_blk is not None and\
+            if self.tw.selected_blk is not None and \
                self.tw.selected_blk.name == 'string':
-                for i in text:
-                    self.tw.process_alphanumeric_input(i, -1)
+                self.tw.text_buffer.set_text(
+                    self.tw.text_buffer.get_text() + text)
+                self.tw.text_entry.set_buffer(self.tw.text_buffer)
                 self.tw.selected_blk.resize()
-            else:
+            elif text[0:2] == '[[':
                 self.tw.process_data(data_from_string(text),
                                      self.tw.paste_offset)
                 self.tw.paste_offset += 20

@@ -88,7 +88,8 @@ class TurtleArtWindow():
     _PLUGIN_SUBPATH = 'plugins'
 
     def __init__(self, canvas_window, path, parent=None,
-                 mycolors=None, mynick=None, turtle_canvas=None):
+                 mycolors=None, mynick=None, turtle_canvas=None,
+                 running_sugar=True):
         self._loaded_project = ''
         self._sharing = False
         self.parent = parent
@@ -96,30 +97,25 @@ class TurtleArtWindow():
         self.turtle_canvas = turtle_canvas
         self.send_event = None  # method to send events over the network
         self.gst_available = GST_AVAILABLE
+        self.running_sugar = False
         if type(canvas_window) == gtk.DrawingArea:
             self.interactive_mode = True
             self.window = canvas_window
             self.window.set_flags(gtk.CAN_FOCUS)
             self.window.show_all()
-            if self.parent is not None:
+            if running_sugar:
                 self.parent.show_all()
                 self.running_sugar = True
+                from sugar import profile
+                self.nick = profile.get_nick_name()
             else:
-                self.running_sugar = False
+                self.nick = None
             self._setup_events()
         else:
             self.interactive_mode = False
             self.window = canvas_window
             self.running_sugar = False
-
-        if self.running_sugar:
-            from sugar import profile
-
-            self.activity = parent
-            self.nick = profile.get_nick_name()
-        else:
-            self.activity = None
-            self.nick = None
+        self.activity = parent
 
         self.path = path
         self.load_save_folder = os.path.join(path, 'samples')
@@ -223,6 +219,7 @@ class TurtleArtWindow():
 
         self.canvas = TurtleGraphics(self, self.width, self.height)
         if self.hw == XO175 and self.canvas.width == 1024:
+            # FIXME: Need test for XO40
             self.hw = XO30  # FIXME: temporary test
         if self.interactive_mode:
             self.sprite_list.set_cairo_context(self.canvas.canvas)
@@ -411,10 +408,8 @@ class TurtleArtWindow():
         elif data and data.format == 8 and \
              self.selected_blk is not None and \
              self.selected_blk.name == 'string':
-            # FIXME: data should be written to text_entry
-            for i in data.data:
-                self.process_alphanumeric_input(i, -1)
-            self.selected_blk.resize()
+            self.text_buffer.set_text(self.text_buffer.get_text() + data.data)
+            self.text_entry.set_buffer(self.text_buffer)
             context.finish(True, False, time)
         else:
             context.finish(False, False, time)
@@ -695,7 +690,7 @@ class TurtleArtWindow():
         self.palette_button[self.orientation].set_layer(TAB_LAYER)
         self.palette_button[2].set_layer(TAB_LAYER)
         self._display_palette_shift_button(n)
-        if self.activity is None or not self.activity.has_toolbarbox:
+        if not self.running_sugar or not self.activity.has_toolbarbox:
             self.toolbar_spr.set_layer(CATEGORY_LAYER)
         self.palette = True
 
@@ -790,7 +785,7 @@ class TurtleArtWindow():
         ''' Show the toolbar palettes, creating them on init_only '''
         # If we are running the 0.86+ toolbar, the selectors are already
         # created, as toolbar buttons. Otherwise, we need to create them.
-        if (self.activity is None or not self.activity.has_toolbarbox) and \
+        if (not self.running_sugar or not self.activity.has_toolbarbox) and \
            self.selectors == []:
             # First, create the selector buttons
             self._create_the_selectors()
@@ -817,7 +812,7 @@ class TurtleArtWindow():
         # Make sure all of the selectors are visible. (We don't need to do
         # this for 0.86+ toolbars since the selectors are toolbar buttons.)
         if show and \
-           (self.activity is None or not self.activity.has_toolbarbox):
+           (not self.running_sugar or not self.activity.has_toolbarbox):
             self.selected_selector = self.selectors[n]
             self.selectors[n].set_shape(self.selector_shapes[n][1])
             for i in range(len(palette_blocks)):
@@ -860,7 +855,7 @@ class TurtleArtWindow():
 
     def regenerate_palette(self, n):
         ''' Regenerate palette (used by some plugins) '''
-        if (self.activity is None or not self.activity.has_toolbarbox) and \
+        if (not self.running_sugar or not self.activity.has_toolbarbox) and \
            self.selectors == []:
             return
         if self.palette_sprs == []:
@@ -1046,7 +1041,7 @@ class TurtleArtWindow():
     def _hide_toolbar_palette(self):
         ''' Hide the toolbar palettes '''
         self._hide_previous_palette()
-        if self.activity is None or not self.activity.has_toolbarbox:
+        if not self.running_sugar or not self.activity.has_toolbarbox:
             # Hide the selectors
             for i in range(len(palette_blocks)):
                 self.selectors[i].hide()
@@ -1070,7 +1065,7 @@ class TurtleArtWindow():
                 proto.spr.hide()
             if self.palette_sprs[palette][self.orientation] is not None:
                 self.palette_sprs[palette][self.orientation].hide()
-            if self.activity is None or not self.activity.has_toolbarbox:
+            if not self.running_sugar or not self.activity.has_toolbarbox:
                 self.selectors[palette].set_shape(
                     self.selector_shapes[palette][0])
             elif palette is not None and palette != self.selected_palette \
@@ -1246,7 +1241,7 @@ class TurtleArtWindow():
                 else:
                     n -= 1
                 self.selected_blk.spr.set_label(str(n) + CURSOR)
-                if self.running_sugar and hasattr(self, 'text_entry'):
+                if hasattr(self, 'text_entry'):
                     self.text_buffer.set_text(str(n))
                     self.text_entry.set_buffer(self.text_buffer)
                 return True
@@ -1421,7 +1416,7 @@ class TurtleArtWindow():
                     i = self.selected_palette + 1
                     if i == len(palette_names):
                         i = 0
-                    if self.activity is None or \
+                    if not self.running_sugar or \
                        not self.activity.has_toolbarbox:
                         self._select_category(self.selectors[i])
                     else:
@@ -2380,7 +2375,7 @@ class TurtleArtWindow():
                     spr.set_layer(TOP_LAYER)
                 self.triangle_sprs[0].move((int(bx + (bw - tw) / 2), by - th))
                 self.triangle_sprs[1].move((int(bx + (bw - tw) / 2), by + bh))
-            if self.running_sugar and blk.name in ['string', 'number']:
+            if blk.name in ['string', 'number']:
                 if not hasattr(self, 'text_entry'):
                     self.text_entry = gtk.TextView()
                     self.text_entry.set_justification(gtk.JUSTIFY_CENTER)
@@ -2397,6 +2392,8 @@ class TurtleArtWindow():
                 h = blk.spr.label_safe_height()
                 self.text_entry.set_size_request(w, h)
                 bx, by = blk.spr.get_xy()
+                if not self.running_sugar:
+                    by += self.activity.menu_height + 4  # FIXME: padding
                 mx, my = blk.spr.label_left_top()
                 self.text_entry.set_pixels_above_lines(my * 2)
                 self.activity.fixed.move(self.text_entry, bx + mx, by + my * 2)
@@ -3036,146 +3033,14 @@ class TurtleArtWindow():
             elif keyname == 'g':
                 self._align_to_grid()
 
-        elif self.selected_blk is not None:
-            # FIXME: This code is deprecated
-            if self.selected_blk.name == 'number':
-                self._process_numeric_input(keyname)
-            elif self.selected_blk.name == 'string':
-                self.process_alphanumeric_input(keyname, keyunicode)
-                # if self.selected_blk is not None:
-                self.selected_blk.resize()
-            elif self.selected_blk.name != 'proto':
-                self._process_keyboard_commands(keyname, block_flag=True)
+        elif self.selected_blk is not None and \
+             self.selected_blk.name != 'proto':
+            self._process_keyboard_commands(keyname, block_flag=True)
 
         elif self.turtles.spr_to_turtle(self.selected_spr) is not None:
             self._process_keyboard_commands(keyname, block_flag=False)
 
         return True
-
-    def _process_numeric_input(self, keyname):
-        ''' Make sure numeric input is valid. '''
-        oldnum = self.selected_blk.spr.labels[0].replace(CURSOR, '')
-        if len(oldnum) == 0:
-            oldnum = '0'
-        if keyname == 'minus':
-            if oldnum == '0':
-                newnum = '-'
-            elif oldnum[0] != '-':
-                newnum = '-' + oldnum
-            else:
-                newnum = oldnum
-        elif keyname == 'comma' and self.decimal_point == ',' and \
-                ',' not in oldnum:
-            newnum = oldnum + ','
-        elif keyname == 'period' and self.decimal_point == '.' and \
-                '.' not in oldnum:
-            newnum = oldnum + '.'
-        elif keyname == 'BackSpace':
-            if len(oldnum) > 0:
-                newnum = oldnum[:len(oldnum) - 1]
-            else:
-                newnum = ''
-        elif keyname in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
-            if oldnum == '0':
-                newnum = keyname
-            else:
-                newnum = oldnum + keyname
-        elif keyname == 'Return':
-            self._unselect_block()
-            return
-        else:
-            newnum = oldnum
-        if newnum == '.':
-            newnum = '0.'
-        if newnum == ',':
-            newnum = '0,'
-        if len(newnum) > 0 and newnum != '-':
-            try:
-                float(newnum.replace(self.decimal_point, '.'))
-            except ValueError, e:
-                newnum = oldnum
-        self.selected_blk.spr.set_label(newnum + CURSOR)
-
-    def process_alphanumeric_input(self, keyname, keyunicode):
-        ''' Make sure alphanumeric input is properly parsed. '''
-        if len(self.selected_blk.spr.labels[0]) > 0:
-            c = self.selected_blk.spr.labels[0].count(CURSOR)
-            if c == 0:
-                oldleft = self.selected_blk.spr.labels[0]
-                oldright = ''
-            elif len(self.selected_blk.spr.labels[0]) == 1:
-                oldleft = ''
-                oldright = ''
-            elif CURSOR in self.selected_blk.spr.labels[0]:
-                oldleft, oldright = \
-                    self.selected_blk.spr.labels[0].split(CURSOR)
-            else:  # Where did our cursor go?
-                oldleft = self.selected_blk.spr.labels[0]
-                oldright = ''
-        else:
-            oldleft = ''
-            oldright = ''
-        newleft = oldleft
-        if keyname in ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', \
-                       'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift']:
-            keyname = ''
-            keyunicode = 0
-        # Hack until I sort out input and unicode and dead keys,
-        if keyname[0:5] == 'dead_':
-            self.dead_key = keyname
-            keyname = ''
-            keyunicode = 0
-        if keyname == 'space':
-            keyunicode = 32
-        elif keyname == 'Tab':
-            keyunicode = 9
-        if keyname == 'BackSpace':
-            if len(oldleft) > 1:
-                newleft = oldleft[:len(oldleft) - 1]
-            else:
-                newleft = ''
-        if keyname == 'Delete':
-            if len(oldright) > 0:
-                oldright = oldright[1:]
-        elif keyname == 'Home':
-            oldright = oldleft + oldright
-            newleft = ''
-        elif keyname == 'Left':
-            if len(oldleft) > 0:
-                oldright = oldleft[len(oldleft) - 1:] + oldright
-                newleft = oldleft[:len(oldleft) - 1]
-        elif keyname == 'Right':
-            if len(oldright) > 0:
-                newleft = oldleft + oldright[0]
-                oldright = oldright[1:]
-        elif keyname == 'End':
-            newleft = oldleft + oldright
-            oldright = ''
-        elif keyname == 'Return':
-            newleft = oldleft + RETURN
-        elif keyname == 'Down':
-            self._unselect_block()
-            return
-        elif keyname == 'Up' or keyname == 'Escape':  # Restore previous state
-            self.selected_blk.spr.set_label(self.saved_string)
-            self._unselect_block()
-            return
-        else:
-            if self.dead_key is not '':
-                keyunicode = \
-                    DEAD_DICTS[DEAD_KEYS.index(self.dead_key[5:])][keyname]
-                self.dead_key = ''
-            if keyunicode > 0:
-                if unichr(keyunicode) != '\x00':
-                    newleft = oldleft + unichr(keyunicode)
-                else:
-                    newleft = oldleft
-            elif keyunicode == -1:  # clipboard text
-                if keyname == '\n':
-                    newleft = oldleft + RETURN
-                else:
-                    newleft = oldleft + keyname
-        self.selected_blk.spr.set_label("%s%s%s" % (newleft, CURSOR, oldright))
 
     def _process_keyboard_commands(self, keyname, block_flag=True):
         ''' Use the keyboard to move blocks and turtle '''
@@ -3278,7 +3143,7 @@ class TurtleArtWindow():
 
     def _test_number(self):
         ''' Make sure a 'number' block contains a number. '''
-        if self.running_sugar and hasattr(self, 'text_entry'):
+        if hasattr(self, 'text_entry'):
             self.text_entry.connect('focus-out-event',
                                     self._add_text_no_changed_cb)
             self.text_entry.hide()
@@ -3319,8 +3184,6 @@ class TurtleArtWindow():
         return
 
     def _add_text_changed_cb(self, widget=None, event=None):
-        if not self.running_sugar:
-            return
         bounds = self.text_entry.get_buffer().get_bounds()
         s = self.text_entry.get_buffer().get_text(bounds[0],
                                                   bounds[1])
@@ -3330,7 +3193,7 @@ class TurtleArtWindow():
             self._string_check(s)
 
     def _test_string(self):
-        if self.running_sugar and hasattr(self, 'text_entry'):
+        if hasattr(self, 'text_entry'):
             self.text_entry.connect('focus-out-event',
                                     self._add_text_no_changed_cb)
             self.text_entry.hide()
