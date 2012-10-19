@@ -82,7 +82,7 @@ def myblock(tw, x):  # ignore second argument
     TACAT = {'clean':'forward', 'forward':'forward', 'back':'forward',
          'left':'forward', 'right':'forward', 'arc': 'arc',
          'xcor': 'coord', 'ycor': 'coord', 'heading': 'coord', 
-         'setxy': 'setxy', 'seth': 'setxy', 'penup': 'pen', 'pendown': 'pen',
+         'setxy2': 'setxy', 'seth': 'setxy', 'penup': 'pen', 'pendown': 'pen',
          'setpensize': 'pen', 'setcolor': 'pen', 'pensize': 'pen',
          'color': 'pen', 'setshade': 'pen', 'setgray': 'pen', 'shade': 'pen',
          'gray': 'pen', 'fillscreen': 'pen', 'startfill': 'fill',
