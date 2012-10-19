@@ -134,7 +134,7 @@ class TurtleArtWindow():
 
         self.no_help = False
         self.last_label = None
-
+        self._autohide_shape = True
         self.keypress = ''
         self.keyvalue = 0
         self.dead_key = ''
@@ -451,6 +451,7 @@ class TurtleArtWindow():
                                  self.status_shapes['status'])
         self.status_spr.hide()
         self.status_spr.type = 'status'
+        self._autohide_shape = True
 
         for name in OVERLAY_SHAPES:
             self.overlay_shapes[name] = Sprite(self.sprite_list,
@@ -533,6 +534,7 @@ class TurtleArtWindow():
         ''' Eraser_button (hide status block when clearing the screen.) '''
         if self.status_spr is not None:
             self.status_spr.hide()
+        self._autohide_shape = True
         self.lc.find_value_blocks()  # Are there blocks to update?
         self.lc.prim_clear()
         self.display_coordinates()
@@ -541,9 +543,6 @@ class TurtleArtWindow():
         ''' Run turtle! '''
         if self.running_sugar:
             self.activity.recenter()
-        if self.status_spr is not None:
-            self.status_spr.hide()
-
         # Look for a 'start' block
         for blk in self.just_blocks():
             if find_start_stack(blk):
@@ -1273,9 +1272,12 @@ class TurtleArtWindow():
                     _('Select blocks to share'))
         self.selected_turtle = None
 
-        # Always hide the status layer on a click
-        if self.status_spr is not None:
+        # Almost always hide the status layer on a click
+        if self._autohide_shape and self.status_spr is not None:
             self.status_spr.hide()
+        elif spr == self.status_spr:
+            self.status_spr.hide()
+            self._autohide_shape = True
 
         self.dx = 0
         self.dy = 0
@@ -2617,6 +2619,9 @@ class TurtleArtWindow():
 
     def _run_stack(self, blk):
         ''' Run a stack of blocks. '''
+        if self.status_spr is not None:
+            self.status_spr.hide()
+        self._autohide_shape = True
         if blk is None:
             return
         self.lc.find_value_blocks()  # Are there blocks to update?
@@ -3319,10 +3324,10 @@ class TurtleArtWindow():
         bounds = self.text_entry.get_buffer().get_bounds()
         s = self.text_entry.get_buffer().get_text(bounds[0],
                                                   bounds[1])
-        if self.selected_blk.type == 'string':
-            self._string_check(s)
-        else:
+        if self.selected_blk.type == 'number':
             self._number_check(s)
+        else:
+            self._string_check(s)
 
     def _test_string(self):
         if self.running_sugar and hasattr(self, 'text_entry'):
@@ -3889,6 +3894,13 @@ class TurtleArtWindow():
         if not self.interactive_mode:
             debug_output(label, self.running_sugar)
             return
+        # Don't overwrite an error message
+        if not self._autohide_shape:
+            return
+        if shp in ['print', 'info', 'help']:
+            self._autohide_shape = True
+        else:
+            self._autohide_shape = False
         if shp == 'syntaxerror' and str(label) != '':
             if str(label)[1:] in self.status_shapes:
                 shp = str(label)[1:]
