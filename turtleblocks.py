@@ -291,6 +291,7 @@ class TurtleMain():
         ''' If a toolbar opens or closes, we need to resize the vbox
         holding out scrolling window. '''
         self.vbox.set_size_request(rect[2], rect[3])
+        self.menu_height = self.menu_bar.size_request()[1]
 
     def _setup_gtk(self):
         ''' Set up a scrolled window in which to run Turtle Blocks. '''
@@ -307,19 +308,22 @@ class TurtleMain():
         ''' Create a scrolled window to contain the turtle canvas. We
         add a Fixed container in order to position text Entry widgets
         on top of string and number blocks.'''
+        vbox = gtk.VBox(False, 0)    
+        win.add(vbox)
+
         self.fixed = gtk.Fixed()
         self.fixed.connect('size-allocate', self._fixed_resize_cb)
-        self.fixed.show()
-        win.add(self.fixed)
+        width = gtk.gdk.screen_width()-80
+        height = gtk.gdk.screen_height()-60
+        self.fixed.set_size_request(width, height)
 
         self.vbox = gtk.VBox(False, 0)
-        # win.add(vbox)
-        self.fixed.put(self.vbox, 0, 0)
         self.vbox.show()
 
-        menu_bar = self._get_menu_bar()
-        self.vbox.pack_start(menu_bar, False, False, 2)
-        menu_bar.show()
+        self.menu_bar = self._get_menu_bar()
+        self.vbox.pack_start(self.menu_bar, False, False, 2)
+        self.menu_bar.show()
+        self.menu_height = self.menu_bar.size_request()[1]
 
         sw = gtk.ScrolledWindow()
         sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
@@ -331,11 +335,13 @@ class TurtleMain():
         sw.add_with_viewport(canvas)
         canvas.show()
         self.vbox.pack_end(sw, True, True)
+        self.fixed.put(self.vbox, 0, 0)
+        self.fixed.show()
 
+        vbox.pack_start(self.fixed, False, False, 0)
         win.show_all()
         self.win = win
         self.canvas = canvas
-        self.menu_height = menu_bar.size_request()[1]
 
     def _get_menu_bar(self):
         ''' Instead of Sugar toolbars, use GNOME menus. '''
