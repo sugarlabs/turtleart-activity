@@ -3156,6 +3156,8 @@ class TurtleArtWindow():
 
     def _number_check(self, n):
         n = n.strip()  # Ignore any whitespace
+        if n == '':
+            n = '0'
         if n in ['-', '.', '-.', ',', '-,']:
             n = 0
         elif n is not None:
@@ -3189,6 +3191,8 @@ class TurtleArtWindow():
         s = self.text_entry.get_buffer().get_text(bounds[0],
                                                   bounds[1])
         if self.selected_blk.type == 'number':
+            if s == '':
+                s = '0'
             self._number_check(s)
         else:
             self._string_check(s)
