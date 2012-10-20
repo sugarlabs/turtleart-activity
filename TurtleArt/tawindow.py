@@ -701,7 +701,7 @@ class TurtleArtWindow():
         self.palette_button[2].hide()
         self.palette_button[3].hide()
         self.palette_button[4].hide()
-        if self.activity is None or not self.activity.has_toolbarbox:
+        if not self.running_sugar or not self.activity.has_toolbarbox:
             self.toolbar_spr.hide()
         self.palette = False
 
@@ -3155,6 +3155,7 @@ class TurtleArtWindow():
         self._number_check(n)
 
     def _number_check(self, n):
+        n = n.strip()  # Ignore any whitespace
         if n in ['-', '.', '-.', ',', '-,']:
             n = 0
         elif n is not None:
