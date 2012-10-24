@@ -50,7 +50,7 @@ from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
     TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER, CATEGORY_LAYER, \
     BLOCKS_WITH_SKIN, ICON_SIZE, PALETTE_SCALE, PALETTE_WIDTH, SKIN_PATHS, \
     MACROS, TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, \
-    CURSOR, EXPANDABLE, DEAD_DICTS, DEAD_KEYS, NO_IMPORT, \
+    EXPANDABLE, NO_IMPORT, \
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
     EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, TITLEXY, CONTENT_ARGS, \
     CONSTANTS, EXPAND_SKIN, PROTO_LAYER, EXPANDABLE_FLOW
@@ -133,7 +133,8 @@ class TurtleArtWindow():
         self._autohide_shape = True
         self.keypress = ''
         self.keyvalue = 0
-        self.dead_key = ''
+        self._focus_out_id = None
+        self._text_to_check = False
         self.mouse_flag = 0
         self.mouse_x = 0
         self.mouse_y = 0
@@ -174,7 +175,7 @@ class TurtleArtWindow():
         self.palette = True
         self.coord_scale = 1
         self.buddies = []
-        self.saved_string = ''
+        self._saved_string = ''
         self._saved_action_name = ''
         self._saved_box_name = ''
         self.dx = 0
@@ -278,6 +279,9 @@ class TurtleArtWindow():
         self.saved_pictures = []
         self.block_operation = ''
         self.window_init_complete = True
+
+    def _tablet_mode(self):
+        return False  # Sugar will autoscroll the window for me
 
     def _get_plugin_home(self):
         ''' Look in the execution directory '''
@@ -408,8 +412,8 @@ class TurtleArtWindow():
         elif data and data.format == 8 and \
              self.selected_blk is not None and \
              self.selected_blk.name == 'string':
-            self.text_buffer.set_text(self.text_buffer.get_text() + data.data)
-            self.text_entry.set_buffer(self.text_buffer)
+            self._text_buffer.set_text(self._text_buffer.get_text() + data.data)
+            self.text_entry.set_buffer(self._text_buffer)
             context.finish(True, False, time)
         else:
             context.finish(False, False, time)
@@ -1230,7 +1234,7 @@ class TurtleArtWindow():
             if self.selected_blk.name == 'number' and \
                spr in self.triangle_sprs:
                 # increment or decrement a number block
-                nf = float(self.selected_blk.spr.labels[0].replace(CURSOR, ''))
+                nf = float(self.selected_blk.spr.labels[0])
                 ni = int(nf)
                 if ni == nf:
                     n = ni
@@ -1240,10 +1244,10 @@ class TurtleArtWindow():
                     n += 1
                 else:
                     n -= 1
-                self.selected_blk.spr.set_label(str(n) + CURSOR)
+                self.selected_blk.spr.set_label(str(n))
                 if hasattr(self, 'text_entry'):
-                    self.text_buffer.set_text(str(n))
-                    self.text_entry.set_buffer(self.text_buffer)
+                    self._text_buffer.set_text(str(n))
+                    self.text_entry.set_buffer(self._text_buffer)
                 return True
             elif self._action_name(self.selected_blk, hat=True):
                 if self.selected_blk.values[0] == _('action'):
@@ -1450,15 +1454,10 @@ class TurtleArtWindow():
         ''' change the label on action blocks of the same name '''
         if type(name) in [float, int]:
             return
-        if CURSOR in name:
-            name = name.replace(CURSOR, '')
         if type(name) == 'unicode':
             name = name.encode('ascii', 'replace')
         for blk in self.just_blocks():
             if self._action_name(blk, hat=False):
-                if CURSOR in blk.spr.labels[0]:
-                    blk.spr.labels[0] = \
-                        blk.spr.labels[0].replace(CURSOR, '')
                 if blk.spr.labels[0] == self._saved_action_name:
                     blk.spr.labels[0] = name
                     blk.values[0] = name
@@ -1470,15 +1469,10 @@ class TurtleArtWindow():
         ''' change the label on box blocks of the same name '''
         if type(name) in [float, int]:
             return
-        if CURSOR in name:
-            name = name.replace(CURSOR, '')
         if type(name) == 'unicode':
             name = name.encode('ascii', 'replace')
         for blk in self.just_blocks():
             if self._box_name(blk, storein=False):
-                if CURSOR in blk.spr.labels[0]:
-                    blk.spr.labels[0] = \
-                        blk.spr.labels[0].replace(CURSOR, '')
                 if blk.spr.labels[0] == self._saved_box_name:
                     blk.spr.labels[0] = name
                     blk.values[0] = name
@@ -1490,15 +1484,10 @@ class TurtleArtWindow():
         ''' change the label on storin blocks of the same name '''
         if type(name) in [float, int]:
             return
-        if CURSOR in name:
-            name = name.replace(CURSOR, '')
         if type(name) == 'unicode':
             name = name.encode('ascii', 'replace')
         for blk in self.just_blocks():
             if self._box_name(blk, storein=True):
-                if CURSOR in blk.spr.labels[0]:
-                    blk.spr.labels[0] = \
-                        blk.spr.labels[0].replace(CURSOR, '')
                 if blk.spr.labels[0] == self._saved_box_name:
                     blk.spr.labels[0] = name
                     blk.values[0] = name
@@ -1784,21 +1773,24 @@ class TurtleArtWindow():
                 self.activity.share_button.set_tooltip(
                     _('Share selected blocks'))
             if len(blk.spr.labels) > 0:
-                self.saved_string = blk.spr.labels[0]
-                self._saved_action_name = self.saved_string
-                self._saved_box_name = self.saved_string
+                self._saved_string = blk.spr.labels[0]
+                self._saved_action_name = self._saved_string
+                self._saved_box_name = self._saved_string
             else:
-                self.saved_string = ''
+                self._saved_string = ''
 
     def _unselect_block(self):
         ''' Unselect block '''
         # After unselecting a 'number' block, we need to check its value
         if self.selected_blk.name == 'number':
-            self._test_number()
+            if self._text_to_check:
+                self._test_number()
             for spr in self.triangle_sprs:
                 spr.hide()
         elif self.selected_blk.name == 'string':
-            self._test_string()
+            if self._text_to_check:
+                self._test_string()
+        self._text_to_check = False
         self.selected_blk.unhighlight()
         self.selected_blk = None
 
@@ -2364,9 +2356,8 @@ class TurtleArtWindow():
             return
         self.selected_blk = blk
 
-        if  blk.name == 'number' or blk.name == 'string':
-            self.saved_string = blk.spr.labels[0]
-            blk.spr.labels[0] += CURSOR
+        if blk.name in ['string', 'number']:
+            self._saved_string = blk.spr.labels[0]
             if blk.name == 'number':
                 bx, by = blk.spr.get_xy()
                 bw, bh = blk.spr.get_dimensions()
@@ -2375,32 +2366,26 @@ class TurtleArtWindow():
                     spr.set_layer(TOP_LAYER)
                 self.triangle_sprs[0].move((int(bx + (bw - tw) / 2), by - th))
                 self.triangle_sprs[1].move((int(bx + (bw - tw) / 2), by + bh))
-            if blk.name in ['string', 'number']:
-                if not hasattr(self, 'text_entry'):
-                    self.text_entry = gtk.TextView()
-                    self.text_entry.set_justification(gtk.JUSTIFY_CENTER)
-                    self.text_buffer = gtk.TextBuffer()
-                    self.activity.fixed.put(self.text_entry, 0, 0)
-                    '''
-                    NOTE: Use override_background_color in GTK3 port to set
-                    transparent background.
-                    '''
-                self.text_entry.show()
-                self.text_buffer.set_text(self.saved_string)
-                self.text_entry.set_buffer(self.text_buffer)
-                w = blk.spr.label_safe_width()
-                h = blk.spr.label_safe_height()
-                self.text_entry.set_size_request(w, h)
-                bx, by = blk.spr.get_xy()
-                if not self.running_sugar:
-                    by += self.activity.menu_height + 4  # FIXME: padding
-                mx, my = blk.spr.label_left_top()
-                self.text_entry.set_pixels_above_lines(my * 2)
-                self.activity.fixed.move(self.text_entry, bx + mx, by + my * 2)
-                self.activity.fixed.show()
-                self.text_entry.connect('focus-out-event',
-                                        self._add_text_changed_cb)
-                self.text_entry.grab_focus()
+            if not hasattr(self, '_text_entry'):
+                self._text_entry = gtk.TextView()
+                self._text_entry.set_justification(gtk.JUSTIFY_CENTER)
+                self._text_buffer = self._text_entry.get_buffer()
+                self.activity.fixed.put(self._text_entry, 0, 0)
+            self._text_entry.show()
+            self._text_buffer.set_text(self._saved_string)
+            w = blk.spr.label_safe_width()
+            h = blk.spr.label_safe_height()
+            self._text_entry.set_size_request(w, h)
+            bx, by = blk.spr.get_xy()
+            if not self.running_sugar:
+                by += self.activity.menu_height + 4  # FIXME: padding
+            mx, my = blk.spr.label_left_top()
+            self._text_entry.set_pixels_above_lines(my * 2)
+            self.activity.fixed.move(self._text_entry, bx + mx, by + my * 2)
+            self.activity.fixed.show()
+            self._focus_out_id = self._text_entry.connect(
+                'focus-out-event', self._text_focus_out_cb)
+            self._text_entry.grab_focus()
 
         elif blk.name in block_styles['box-style-media'] and \
              blk.name not in NO_IMPORT:
@@ -3143,77 +3128,76 @@ class TurtleArtWindow():
 
     def _test_number(self):
         ''' Make sure a 'number' block contains a number. '''
-        if hasattr(self, 'text_entry'):
-            self.text_entry.connect('focus-out-event',
-                                    self._add_text_no_changed_cb)
-            self.text_entry.hide()
-            bounds = self.text_entry.get_buffer().get_bounds()
-            n = self.text_entry.get_buffer().get_text(bounds[0],
-                                                      bounds[1])
+        if hasattr(self, '_text_entry'):
+            if self._focus_out_id is not None:
+                self._text_entry.disconnect(self._focus_out_id)
+            self._focus_out_id = None
+            bounds = self._text_buffer.get_bounds()
+            text = self._text_buffer.get_text(bounds[0], bounds[1])
+            self._text_buffer.set_text('')
+            self._text_entry.hide()
         else:
-            n = self.selected_blk.spr.labels[0].replace(CURSOR, '')
-        self._number_check(n)
+            text = self.selected_blk.spr.labels[0]
+        self._number_check(text)
 
-    def _number_check(self, n):
-        n = n.strip()  # Ignore any whitespace
-        if n == '':
-            n = '0'
-        if n in ['-', '.', '-.', ',', '-,']:
-            n = 0
-        elif n is not None:
+    def _number_check(self, text):
+        text = text.strip()  # Ignore any whitespace
+        if text == '':
+            text = '0'
+        if text in ['-', '.', '-.', ',', '-,']:
+            num = 0
+        elif text is not None:
             try:
-                f = float(n.replace(self.decimal_point, '.'))
-                if f > 1000000:
-                    n = 1
+                num = float(text.replace(self.decimal_point, '.'))
+                if num > 1000000:
+                    num = 1
                     self.showlabel("#overflowerror")
-                elif f < -1000000:
-                    n = -1
+                elif num < -1000000:
+                    num = -1
                     self.showlabel("#overflowerror")
+                if int(num) == num:
+                    num = int(num)
             except ValueError:
-                n = 0
+                num = 0
                 self.showlabel("#notanumber")
         else:
-            n = 0
-        self.selected_blk.spr.set_label(str(n))
+            num = 0
+        self.selected_blk.spr.set_label(str(num))
         try:
             self.selected_blk.values[0] = \
-                float(str(n).replace(self.decimal_point, '.'))
+                float(str(num).replace(self.decimal_point, '.'))
         except ValueError:
-            self.selected_blk.values[0] = float(str(n))
+            self.selected_blk.values[0] = float(str(num))
         except IndexError:
-            self.selected_blk.values[0] = float(str(n))
+            self.selected_blk.values[0] = float(str(num))
 
-    def _add_text_no_changed_cb(self, widget=None, event=None):
-        return
-
-    def _add_text_changed_cb(self, widget=None, event=None):
-        bounds = self.text_entry.get_buffer().get_bounds()
-        s = self.text_entry.get_buffer().get_text(bounds[0],
-                                                  bounds[1])
+    def _text_focus_out_cb(self, widget=None, event=None):
+        bounds = self._text_buffer.get_bounds()
+        text = self._text_buffer.get_text(bounds[0], bounds[1])
+        self._text_to_check = True
         if self.selected_blk.type == 'number':
-            if s == '':
-                s = '0'
-            self._number_check(s)
+            self._number_check(text)
         else:
-            self._string_check(s)
+            self._string_check(text)
 
     def _test_string(self):
-        if hasattr(self, 'text_entry'):
-            self.text_entry.connect('focus-out-event',
-                                    self._add_text_no_changed_cb)
-            self.text_entry.hide()
-            bounds = self.text_entry.get_buffer().get_bounds()
-            s = self.text_entry.get_buffer().get_text(bounds[0],
-                                                      bounds[1])
+        if hasattr(self, '_text_entry'):
+            if self._focus_out_id is not None:
+                self._text_entry.disconnect(self._focus_out_id)
+            self._focus_out_id = None
+            bounds = self._text_buffer.get_bounds()
+            text = self._text_buffer.get_text(bounds[0], bounds[1])
+            self._text_buffer.set_text('')
+            self._text_entry.hide()
         else:
-            s = self.selected_blk.spr.labels[0].replace(CURSOR, '')
-        self._string_check(s)
+            text = self.selected_blk.spr.labels[0]
+        self._string_check(text)
 
-    def _string_check(self, s):
-        self.selected_blk.spr.set_label(s)
+    def _string_check(self, text):
+        self.selected_blk.spr.set_label(text)
         self.selected_blk.resize()
-        self.selected_blk.values[0] = s.replace(RETURN, "\12")
-        self.saved_string = self.selected_blk.values[0]
+        self.selected_blk.values[0] = text.replace(RETURN, "\12")
+        self._saved_string = self.selected_blk.values[0]
 
     def load_python_code_from_file(self, fname=None, add_new_block=True):
         ''' Load Python code from a file '''
@@ -4001,8 +3985,6 @@ class TurtleArtWindow():
         ''' Add a stack block to the 'blocks' palette '''
         if type(name) in [float, int]:
             return
-        if CURSOR in name:
-            name = name.replace(CURSOR, '')
         if type(name) == unicode:
             name = name.encode('ascii', 'replace')
         if name == _('action'):
@@ -4030,8 +4012,6 @@ class TurtleArtWindow():
         ''' Add a box block to the 'blocks' palette '''
         if type(name) in [float, int]:
             return
-        if CURSOR in name:
-            name = name.replace(CURSOR, '')
         if type(name) == unicode:
             name = name.encode('ascii', 'replace')
         if name == _('my box'):
@@ -4060,8 +4040,6 @@ class TurtleArtWindow():
         ''' Add a storin block to the 'blocks' palette '''
         if type(name) in [float, int]:
             return
-        if CURSOR in name:
-            name = name.replace(CURSOR, '')
         if type(name) == unicode:
             name = name.encode('ascii', 'replace')
         if name == _('my box'):
