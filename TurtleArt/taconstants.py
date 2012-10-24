@@ -173,31 +173,6 @@ TEMPLATES = {'t1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
              'bullet': (1, 1, 0.0625, 0.125, 0, 0.1),
              'insertimage': (0.333, 0.333)}
 
-#
-# 'dead key' Unicode dictionaries
-#
-
-DEAD_KEYS = ['grave', 'acute', 'circumflex', 'tilde', 'diaeresis', 'abovering']
-DEAD_DICTS = [{'A': 192, 'E': 200, 'I': 204, 'O': 210, 'U': 217, 'a': 224,
-               'e': 232, 'i': 236, 'o': 242, 'u': 249},
-              {'A': 193, 'E': 201, 'I': 205, 'O': 211, 'U': 218, 'a': 225,
-               'e': 233, 'i': 237, 'o': 243, 'u': 250},
-              {'A': 194, 'E': 202, 'I': 206, 'O': 212, 'U': 219, 'a': 226,
-               'e': 234, 'i': 238, 'o': 244, 'u': 251},
-              {'A': 195, 'O': 211, 'N': 209, 'U': 360, 'a': 227, 'o': 245,
-               'n': 241, 'u': 361},
-              {'A': 196, 'E': 203, 'I': 207, 'O': 211, 'U': 218, 'a': 228,
-               'e': 235, 'i': 239, 'o': 245, 'u': 252},
-              {'A': 197, 'a': 229}]
-NOISE_KEYS = ['Shift_L', 'Shift_R', 'Control_L', 'Caps_Lock', 'Pause',
-              'Alt_L', 'Alt_R', 'KP_Enter', 'ISO_Level3_Shift', 'KP_Divide',
-              'Escape', 'Return', 'KP_Page_Up', 'Up', 'Down', 'Menu',
-              'Left', 'Right', 'KP_Home', 'KP_End', 'KP_Up', 'Super_L',
-              'KP_Down', 'KP_Left', 'KP_Right', 'KP_Page_Down', 'Scroll_Lock',
-              'Page_Down', 'Page_Up']
-WHITE_SPACE = ['space', 'Tab']
-
-CURSOR = '█'
 RETURN = '⏎'
 
 VOICES = {'af': 'afrikaans', 'cy': 'welsh-test', 'el': 'greek',
