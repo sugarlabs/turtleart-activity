@@ -2372,7 +2372,8 @@ class TurtleArtWindow():
                 self._text_buffer = self._text_entry.get_buffer()
                 self.activity.fixed.put(self._text_entry, 0, 0)
             self._text_entry.show()
-            self._text_buffer.set_text(self._saved_string)
+            self._text_buffer.set_text(
+                self._saved_string.replace(RETURN, '\12'))
             w = blk.spr.label_safe_width()
             h = blk.spr.label_safe_height()
             self._text_entry.set_size_request(w, h)
@@ -3194,9 +3195,9 @@ class TurtleArtWindow():
         self._string_check(text)
 
     def _string_check(self, text):
-        self.selected_blk.spr.set_label(text)
+        self.selected_blk.spr.set_label(text.replace('\12', RETURN))
         self.selected_blk.resize()
-        self.selected_blk.values[0] = text.replace(RETURN, "\12")
+        self.selected_blk.values[0] = text.replace(RETURN, '\12')
         self._saved_string = self.selected_blk.values[0]
 
     def load_python_code_from_file(self, fname=None, add_new_block=True):
