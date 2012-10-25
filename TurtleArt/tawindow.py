@@ -26,6 +26,7 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gobject
+import pango
 from StringIO import StringIO
 
 from gettext import gettext as _
@@ -764,6 +765,12 @@ class TurtleArtWindow():
         for blk in blocks:
             if blk.name in BLOCKS_WITH_SKIN:
                 self._resize_skin(blk)
+
+        # Resize text_entry widget
+        if hasattr(self, '_text_entry') and len(blocks) > 0:
+            font_desc = pango.FontDescription('Sans')
+            font_desc.set_size(int(blocks[0].font_size[0] * pango.SCALE))
+            self._text_entry.modify_font(font_desc)
 
     def _shift_toolbar_palette(self, n):
         ''' Shift blocks on specified palette '''
@@ -2370,6 +2377,9 @@ class TurtleArtWindow():
                 self._text_entry = gtk.TextView()
                 self._text_entry.set_justification(gtk.JUSTIFY_CENTER)
                 self._text_buffer = self._text_entry.get_buffer()
+                font_desc = pango.FontDescription('Sans')
+                font_desc.set_size(int(blk.font_size[0] * pango.SCALE))
+                self._text_entry.modify_font(font_desc)
                 self.activity.fixed.put(self._text_entry, 0, 0)
             self._text_entry.show()
             self._text_buffer.set_text(
