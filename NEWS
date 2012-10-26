@@ -1,3 +1,9 @@
+164
+
+BUG FIX:
+* check dpi to set font scale
+* fix "triangle" number block increments
+
 162
 
 ENHANCEMENTS:
