@@ -25,6 +25,7 @@ import pickle
 import subprocess
 import os
 import string
+from string import find
 from gettext import gettext as _
 
 try:
@@ -718,3 +719,39 @@ def _get_dmi(node):
         return open(path).readline().strip()
     except:
         return None
+
+
+def get_screen_dpi():
+    '''Looking for 'dimensions' line in xdpyinfo
+       dimensions:    1280x800 pixels (339x212 millimeters)'''
+    output = check_output('/usr/bin/xdpyinfo', 'xdpyinfo failed')
+    if output is not None:
+        strings = output[find(output, 'dimensions:'):].split()
+        w = int(strings[1].split('x')[0])  # e.g., 1280x800
+        mm = int(strings[3][1:].split('x')[0])  # e.g., (339x212)
+        return int((w * 25.4 / mm) + 0.5)
+    else:
+        return 96
+
+
+def check_output(command, warning):
+    ''' Workaround for old systems without subprocess.check_output'''
+    if hasattr(subprocess, 'check_output'):
+        try:
+            output = subprocess.check_output(command)
+        except subprocess.CalledProcessError:
+            log.warning(warning)
+            return None
+    else:
+        import commands
+
+        cmd = ''
+        for c in command:
+            cmd += c
+            cmd += ' '
+        (status, output) = commands.getstatusoutput(cmd)
+        if status != 0:
+            log.warning(warning)
+            return None
+    return output
+

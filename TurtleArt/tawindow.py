@@ -27,6 +27,7 @@ pygtk.require('2.0')
 import gtk
 import gobject
 import pango
+import pangocairo
 from StringIO import StringIO
 
 from gettext import gettext as _
@@ -71,7 +72,7 @@ from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
     find_group, find_blk_below, data_to_string, find_start_stack, \
     get_hardware, debug_output, error_output, data_to_string, convert, \
     find_bot_block, restore_clamp, collapse_clamp, data_from_string, \
-    increment_name
+    increment_name, get_screen_dpi
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
@@ -154,7 +155,7 @@ class TurtleArtWindow():
         self.hw = get_hardware()
         self.lead = 1.0
         if self.hw in (XO1, XO15, XO175):
-            self.scale = 1.2  # slight scale-up of fonts on XO
+            self.scale = 133. / 200  # tweak scale of fonts on XO
             if self.hw == XO1:
                 self.color_mode = '565'
             else:
@@ -164,6 +165,7 @@ class TurtleArtWindow():
         else:
             self.scale = 1.0
             self.color_mode = '888'  # TODO: Read visual mode from gtk image
+        self._set_screen_dpi()        
 
         self.block_scale = BLOCK_SCALE[3]
         self.trash_scale = 0.5
@@ -280,6 +282,11 @@ class TurtleArtWindow():
         self.saved_pictures = []
         self.block_operation = ''
         self.window_init_complete = True
+
+    def _set_screen_dpi(self):
+        dpi = get_screen_dpi()
+        font_map_default = pangocairo.cairo_font_map_get_default()
+        font_map_default.set_resolution(dpi)
 
     def _tablet_mode(self):
         return False  # Sugar will autoscroll the window for me
@@ -1240,7 +1247,6 @@ class TurtleArtWindow():
         if self.selected_blk is not None:
             if self.selected_blk.name == 'number' and \
                spr in self.triangle_sprs:
-                # increment or decrement a number block
                 nf = float(self.selected_blk.spr.labels[0])
                 ni = int(nf)
                 if ni == nf:
@@ -1252,9 +1258,7 @@ class TurtleArtWindow():
                 else:
                     n -= 1
                 self.selected_blk.spr.set_label(str(n))
-                if hasattr(self, 'text_entry'):
-                    self._text_buffer.set_text(str(n))
-                    self.text_entry.set_buffer(self._text_buffer)
+                self._text_buffer.set_text(str(n))
                 return True
             elif self._action_name(self.selected_blk, hat=True):
                 if self.selected_blk.values[0] == _('action'):
