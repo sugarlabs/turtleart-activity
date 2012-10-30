@@ -1,3 +1,8 @@
+165
+
+ENHANCEMENT:
+* Remove a dependency on xpdyinfo
+
 164
 
 BUG FIX:
