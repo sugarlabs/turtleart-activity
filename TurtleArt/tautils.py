@@ -722,16 +722,10 @@ def _get_dmi(node):
 
 
 def get_screen_dpi():
-    '''Looking for 'dimensions' line in xdpyinfo
-       dimensions:    1280x800 pixels (339x212 millimeters)'''
-    output = check_output('/usr/bin/xdpyinfo', 'xdpyinfo failed')
-    if output is not None:
-        strings = output[find(output, 'dimensions:'):].split()
-        w = int(strings[1].split('x')[0])  # e.g., 1280x800
-        mm = int(strings[3][1:].split('x')[0])  # e.g., (339x212)
-        return int((w * 25.4 / mm) + 0.5)
-    else:
-        return 96
+    ''' Return screen DPI '''
+    xft_dpi = gtk.settings_get_default().get_property('gtk-xft-dpi')
+    dpi = float(xft_dpi / 1024)
+    return dpi
 
 
 def check_output(command, warning):
