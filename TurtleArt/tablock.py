@@ -570,17 +570,17 @@ class Block:
             y = self.docks[1][3] - int(int(self.font_size[0] * 1.3))
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
-            y = self.docks[2][3] - int(int(self.font_size[0] * 1.4))
+            y = self.docks[2][3] - int(int(self.font_size[0] * 1.9))
             self.spr.set_label_attributes(int(self.font_size[1] + 0.5),
                                           True, 'right', y_pos=y, i=1)
         elif self.name in block_styles['clamp-style-else']:
             y = self.docks[1][3] - int(int(self.font_size[0] * 1.3))
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
-            y = self.docks[2][3] - int(int(self.font_size[0] * 1.4))
+            y = self.docks[2][3] - int(int(self.font_size[0] * 1.9))
             self.spr.set_label_attributes(int(self.font_size[1] + 0.5),
                                           True, 'right', y_pos=y, i=1)
-            y = self.docks[3][3] - int(int(self.font_size[0] * 1.4))
+            y = self.docks[3][3] - int(int(self.font_size[0] * 1.45))
             self.spr.set_label_attributes(int(self.font_size[1] + 0.5),
                                           True, 'right', y_pos=y, i=2)
 
