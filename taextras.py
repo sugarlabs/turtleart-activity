@@ -68,6 +68,7 @@ between 0 and 255'),
     _('returns 0 or 1 depending on the sensor inclination'),
     _('returns 1 when the sensors detects a magnetic field, 0 otherwise'),
     _('switches from 0 to 1, the frequency depends on the vibration'),
+    _('returns the value of the resistance'),
     _('LED'),
     _('button'),
     _('grayscale'),
@@ -77,6 +78,7 @@ between 0 and 255'),
     _('tilt'),
     _('magnetic induction'),
     _('vibration'),
+    _('resistance'),
     _('Butia Robot'),
     _('refresh Butia'),
     _('refresh the state of the Butia palette and blocks'),
@@ -85,7 +87,7 @@ between 0 and 255'),
     _('returns the battery charge as a number between 0 and 255'),
     #TRANS: This string is shorthand for "speed of Butia"
     _('speed Butia'),
-    _('set the speed of the Butia motors to a value between 0 and 1023, \
+    _('set the speed of the Butia motors as a value between 0 and 1023, \
 passed by an argument'),
     #TRANS: This string is shorthand for "move Butia forward"
     _('forward Butia'),
@@ -93,7 +95,7 @@ passed by an argument'),
     _('move the Butia robot forward a predefined distance'),
     #TRANS: This string is shorthand for "turn Butia left"
     _('left Butia'),
-    _('turn the Butia robot to the left'),
+    _('turn the Butia robot at left'),
     #TRANS: This string is shorthand for "move Butia backward"
     _('backward Butia'),
     _('move the Butia robot backward'),
@@ -105,63 +107,61 @@ passed by an argument'),
     _('turn the Butia robot x degrees'),
     _('stop Butia'),
     _('stop the Butia robot'),
-    _('display Butia'),
-    _('Hello World    Butia            '),
-    #TRANS: this string must contain only ASCII characters.
-    #The len must be 32 characters/spaces.
-    _('print text in Butia robot 32-character ASCII display'),
     _('Butia')
 ]
 
 FOLLOWME_STRINGS = [
+    _('Error importing Pygame. This plugin require Pygame 1.9'),
     _('Error on initialization of the camera'),
-    _('No camera was found'),
-    _('Error stopping camera'),
-    _('Error starting camera'),
+    _('No cameras was found'),
+    _('Error in stop camera'),
+    _('Error in start camera'),
     #TRANS: The "mask" is used to restrict processing to a region in the image
-    _('Error making mask'),
+    _('Error in get mask'),
     _('FollowMe'),
+    _('refresh FollowMe'),
+    _('Search for a connected cameras.'),
+    #TRANS: the calibration is used to match an RGB color to a target
+    _('calibration'),
+    _('stores a personalized calibration'),
+    _('return a personalized calibration'),
     _('follow'),
+    _('follow a color or calibration'),
+    _('brightness'),
+    _('set the camera brightness as a value between 0 to 255.'),
+    _('minimum pixels'),
+    _('set the minimal number of pixels to follow'),
+    _('threshold'),
     #TRANS: Green component of a color
     _('G'),
     #TRANS: Red component of a color
     _('R'),
     #TRANS: Blue component of a color
     _('B'),
-    _('follow a RGB color'),
-    _('threshold'),
     _('set a threshold for a RGB color'),
-    #TRANS: the calibration can be saved for later use
-    _('save calibration 1'),
-    _('stores a calibration in calibration 1'),
-    #TRANS: the calibration can be saved for later use
-    _('save calibration 2'),
-    _('stores a calibration in calibration 2'),
-    #TRANS: the calibration is used to match an RGB color to a target
-    _('calibration'),
-    _('stores a personalized calibration'),
-    _('calibration 1'),
-    _('return calibration 1'),
-    _('calibration 2'),
-    _('return calibration 2'),
-    _('return a personalized calibration'),
+    _('camera mode'),
+    _('set the color mode of the camera: RGB; YUV or HSV'),
+    _('get brightness'),
+    _('get the brightness of the ambient'),
+    _('average color'),
+    _('if 0: average color is off when calibrates; for other values is on'),
     _('x position'),
     _('return x position'),
     _('y position'),
     _('return y position'),
     _('pixels'),
     _('return the number of pixels of the biggest blob'),
-    _('follow a color or calibration'),
-    _('minimum pixels'),
-    _('set the minimal number of pixels to follow'),
-    _('camera mode'),
-    _('set the color mode of the camera: RGB, YUV, or HSV'),
     _('RGB'),
     _('set the color mode of the camera to RGB'),
     _('YUV'),
     _('set the color mode of the camera to YUV'),
     _('HSV'),
     _('set the color mode of the camera to HSV'),
+    _('U'),
+    _('Y'),
+    _('V'),
+    _('S'),
+    _('H'),
     _('empty calibration'),
     _('error in string conversion')
 ]
@@ -286,6 +286,10 @@ if dynamic = 0, it is fixed in position.')
 WEDO_STRINGS = [
     # TRANS: WeDo is a robotics product of the LEGO company
     _('Palette of WeDo blocks'),
+    _('WeDo'),
+    _('set current WeDo device'),
+    _('number of WeDos'),
+    _('number of WeDo devices'),
     _('tilt'),
     _('tilt sensor output: (-1 == no tilt,\
  0 == tilt forward, 3 == tilt back, 1 == tilt left, 2 == tilt right)'),
@@ -297,8 +301,15 @@ WEDO_STRINGS = [
     _('Motor B'),
     _('returns the current value of Motor B'),
     _('set the value for Motor A'),
-    _('set the value for Motor B')
+    _('set the value for Motor B'),
+    _('WeDo is unavailable'),
+    # TRANS: e.g., Wedo 2 is unavailable, defaulting to 1
+    _('WeDo %d is unavailable; defaulting to 1'),
+    # TRANS: %(device)s and %(wedo_number)d are substitution strings;
+    # please leave untranslated
+    _('%(device)s is unavailable on WeDo %(wedo_number)d')
 ]
+
 
 LEGO_STRINGS = [
     # TRANS: Lego NXT is a robotics product of the LEGO company
@@ -311,36 +322,44 @@ LEGO_STRINGS = [
     _('color'),
     _('light'),
     _('sound'),
-    _('PORT A'),
-    _('PORT B'),
-    _('PORT C'),
-    _('PORT 1'),
-    _('PORT 2'),
-    _('PORT 3'),
-    _('PORT 4'),
+    _('grey'),
     # TRANS: The brick is the NXT controller
-    _('Please check the connection with the brick.'),
-    _('Please check the port.'),
-    _('The value of power must be between -127 to 127.'),
-    _('An error has occurred: check all connections and try to reconnect.'),
-    _('NXT found'),
+    _('Please check the connection with the brick'),
+    _("Invalid port '%s'. Port must be: PORT A, B or C"),
+    _("Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"),
+    _('The value of power must be between -127 to 127'),
+    _("The parameter must be a integer no '%s'"),
+    _('An error has occurred: check all connections and try to reconnect'),
+    _('NXT found %s bricks'),
     _('NXT not found'),
+    _('The brick number %s was not found'),
     _('refresh NXT'),
     _('Search for a connected NXT brick.'),
+    _('NxT'),
+    _('set current NxT device'),
+    _('number of NxTs'),
+    _('number of NxT devices'),
+    _('brick name'),
+    _('Get the name of a brick.'),
     _('play tone'),
     _('frequency'),
     _('time'),
     _('Play a tone at frequency for time.'),
-    # TRANS: turn is the action and rotations is quantity of turns
-    _('turn motor\nrotations'),
+    # TRANS: turn is the action
+    _('turn motor\n\n'),
     _('port'),
     _('power'),
-    _('turn a motor'),
-    _('synchronize motors\nsteering'),
+    # TRANS: rotations is quantity of turns
     _('rotations'),
+    _('turn a motor'),
+    _('synchronize\n\nmotors'),
+    _('steering'),
     _('synchronize two motors connected in PORT B and PORT C'),
+    _('PORT A'),
     _('PORT A of the brick'),
+    _('PORT B'),
     _('PORT B of the brick'),
+    _('PORT C'),
     _('PORT C of the brick'),
     _('start motor'),
     _('Run a motor forever.'),
@@ -351,30 +370,34 @@ LEGO_STRINGS = [
     _('Reset the motor counter.'),
     _('motor position'),
     _('Get the motor position.'),
+    _('PORT 1'),
     _('PORT 1 of the brick'),
-    _('PORT 2 of the brick'),
-    _('PORT 3 of the brick'),
-    _('PORT 4 of the brick'),
     _('read'),
     _('sensor'),
     _('Read sensor output.'),
-    _('color sensor'),
+    _('PORT 2'),
+    _('PORT 2 of the brick'),
     _('light sensor'),
+    _('grey sensor'),
+    _('PORT 3'),
+    _('PORT 3 of the brick'),
     _('touch sensor'),
     _('distance sensor'),
+    _('PORT 4'),
+    _('PORT 4 of the brick'),
     _('sound sensor'),
+    _('color sensor'),
     # TRANS: set light is used to set the light level associated with
     # the color sensor (which can emit light as well as sense it)
     _('set light'),
     _('Set color sensor light.'),
     # TRANS: the battery level is the charge level of the brick
     _('battery level'),
-    _('Get battery level of brick.')
+    _('Get battery level of the brick')
 ]
 
 ARDUINO_STRINGS = [
     #TRANS: Arduino plugin to control an Arduino board
-    _('Palette of Arduino blocks'),
     _('HIGH'),
     _('LOW'),
     _('INPUT'),
@@ -386,6 +409,14 @@ ARDUINO_STRINGS = [
     _('ERROR: Value must be a number from 0 to 255.'),
     _('ERROR: Value must be either HIGH or LOW.'),
     _('ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO.'),
+    _('refresh Arduino'),
+    _('Search for connected Arduinos.'),
+    _('arduino'),
+    _('set current arduino board'),
+    _('number of arduinos'),
+    _('number of arduino boards'),
+    _('arduino name'),
+    _('Get the name of an arduino.'),
     #TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
     #in which an I/O pin is being used.
     _('pin mode'),
@@ -410,3 +441,63 @@ to determine voltage. For USB, volt=((read)*5)/1024) approximately.'),
     _('Configure Arduino port for PWM (pulse-width modulation).')
 ]
 
+EXPEYES_STRINGS = [
+    #TRANS: plugin to control an ExpEyes device
+    _("Palette of Expeyes blocks"),
+    # TRANS: Programmable voltage output
+    _("set PVS"),
+    _("set programmable voltage output"),
+    # TRANS: Square wave 1 voltage output
+    _("set SQR1 voltage"),
+    _("set square wave 1 voltage output"),
+    # TRANS: Square wave 2 voltage output
+    _("set SQR2 voltage"),
+    _("set square wave 2 voltage output"),
+    # TRANS: Digital output level
+    _("set OD1"),
+    _("set digital output level (OD1) low (0) or high (1)"),
+    # TRANS: Input 1 voltage level
+    _("IN1 level"),
+    _("returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level \
+<= 2.5 volts"),
+    # TRANS: Input 2 voltage level
+    _("IN2 level"),
+    _("returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level \
+<= 2.5 volts"),
+    # TRANS: Resistive sensor voltage level
+    _("SEN level"),
+    _("returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN \
+voltage level <= 2.5 volts"),
+    _("capture"),
+    _("input"),
+    _("samples"),
+    _("interval"),
+    # TRANS: MS is microseconds
+    _("capture multiple samples from input at interval (MS); results pushed \
+to FIFO"),
+    # TRANS: Analog input 1 voltage level
+    _("A1"),
+    _("read analog input 1 voltage"),
+    # TRANS: Analog input 2 voltage level
+    _("A2"),
+    _("read analog input 2 voltage"),
+    # TRANS: Read input 1 voltage
+    _("IN1"),
+    _("read input 1 voltage"),
+    # TRANS: Read input 2 voltage
+    _("IN2"),
+    _("read input 2 voltage"),
+    # TRANS: Read analog sensor input voltage
+    _("SEN"),
+    _("read analog sensor input voltage"),
+    # TRANS: Read square wave 1 input voltage
+    _("SQR1"),
+    _("read square wave 1 voltage"),
+    # TRANS: Read square wave 2 input voltage
+    _("SQR2"),
+    _("read square wave 2 voltage"),
+    # TRANS: Read programmable voltage
+    _("PVS"),
+    _("read programmable voltage"),
+    _("Expeyes device not found")
+]
