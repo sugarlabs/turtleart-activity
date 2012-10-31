@@ -4148,7 +4148,6 @@ variable'))
                 self.inserting_block_mid_stack = True
             elif block1.connections is not None and \
                block1.name in EXPANDABLE_FLOW and \
-               dock1n == 2 and \
                block1.connections[dock1n] is not None:
                 self.inserting_block_mid_stack = True
         # Only number blocks can be docked when the dock is not empty
