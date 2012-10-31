@@ -132,14 +132,10 @@ FOLLOWME_STRINGS = [
     _('minimum pixels'),
     _('set the minimal number of pixels to follow'),
     _('threshold'),
-    #TRANS: Green component of a color
-    _('G'),
-    #TRANS: Red component of a color
-    _('R'),
-    #TRANS: Blue component of a color
-    _('B'),
+    # TRANS: RGB color space (red, green, blue)
     _('set a threshold for a RGB color'),
     _('camera mode'),
+    # TRANS: RGB, YUV, and HSV are color spaces
     _('set the color mode of the camera: RGB; YUV or HSV'),
     _('get brightness'),
     _('get the brightness of the ambient'),
@@ -151,17 +147,12 @@ FOLLOWME_STRINGS = [
     _('return y position'),
     _('pixels'),
     _('return the number of pixels of the biggest blob'),
-    _('RGB'),
+    # TRANS: RGB color space (red, green, blue)
     _('set the color mode of the camera to RGB'),
-    _('YUV'),
+    # TRANS: YUV color space (luminance, chrominance)
     _('set the color mode of the camera to YUV'),
-    _('HSV'),
+    # TRANS: HSV color space (hue, saturation, value)
     _('set the color mode of the camera to HSV'),
-    _('U'),
-    _('Y'),
-    _('V'),
-    _('S'),
-    _('H'),
     _('empty calibration'),
     _('error in string conversion')
 ]
