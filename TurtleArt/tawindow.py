@@ -155,7 +155,8 @@ class TurtleArtWindow():
         self.hw = get_hardware()
         self.lead = 1.0
         if self.hw in (XO1, XO15, XO175):
-            self.scale = 133. / 200  # tweak scale of fonts on XO
+            self.scale = 1.0
+            self.entry_scale = 0.67
             if self.hw == XO1:
                 self.color_mode = '565'
             else:
@@ -164,6 +165,7 @@ class TurtleArtWindow():
                 self.orientation = VERTICAL_PALETTE
         else:
             self.scale = 1.0
+            self.entry_scale = 1.0            
             self.color_mode = '888'  # TODO: Read visual mode from gtk image
         self._set_screen_dpi()        
 
@@ -285,6 +287,8 @@ class TurtleArtWindow():
 
     def _set_screen_dpi(self):
         dpi = get_screen_dpi()
+        if self.hw in (XO1, XO15, XO175):
+            dpi = 133  # Tweek because of XO display peculiarities
         font_map_default = pangocairo.cairo_font_map_get_default()
         font_map_default.set_resolution(dpi)
 
@@ -776,7 +780,8 @@ class TurtleArtWindow():
         # Resize text_entry widget
         if hasattr(self, '_text_entry') and len(blocks) > 0:
             font_desc = pango.FontDescription('Sans')
-            font_desc.set_size(int(blocks[0].font_size[0] * pango.SCALE))
+            font_desc.set_size(
+                int(blocks[0].font_size[0] * pango.SCALE * self.entry_scale))
             self._text_entry.modify_font(font_desc)
 
     def _shift_toolbar_palette(self, n):
@@ -2382,7 +2387,8 @@ class TurtleArtWindow():
                 self._text_entry.set_justification(gtk.JUSTIFY_CENTER)
                 self._text_buffer = self._text_entry.get_buffer()
                 font_desc = pango.FontDescription('Sans')
-                font_desc.set_size(int(blk.font_size[0] * pango.SCALE))
+                font_desc.set_size(
+                    int(blk.font_size[0] * pango.SCALE * self.entry_scale))
                 self._text_entry.modify_font(font_desc)
                 self.activity.fixed.put(self._text_entry, 0, 0)
             self._text_entry.show()
@@ -2395,7 +2401,7 @@ class TurtleArtWindow():
             if not self.running_sugar:
                 by += self.activity.menu_height + 4  # FIXME: padding
             mx, my = blk.spr.label_left_top()
-            self._text_entry.set_pixels_above_lines(my * 2)
+            self._text_entry.set_pixels_above_lines(my)
             self.activity.fixed.move(self._text_entry, bx + mx, by + my * 2)
             self.activity.fixed.show()
             self._focus_out_id = self._text_entry.connect(

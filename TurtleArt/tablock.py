@@ -72,8 +72,8 @@ class Blocks:
 
     def set_scale(self, scale):
         for b in self.list:
-            for i in range(len(b._font_size)):
-                b._font_size[i] *= b.scale * scale / self.font_scale_factor
+            for i in range(len(b.font_size)):
+                b.font_size[i] *= b.scale * scale / self.font_scale_factor
         self.font_scale_factor = scale
 
     def spr_to_block(self, spr):
@@ -559,7 +559,7 @@ class Block:
         ''' Some labels move as blocks change shape/size '''
         if self.name in block_styles['clamp-style'] or \
            self.name in block_styles['clamp-style-collapsible']:
-            y = int((self.docks[0][3] + self.docks[1][3]) / 3)
+            y = int((self.docks[0][3] + self.docks[1][3]) / 3.3)
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
         elif self.name in block_styles['clamp-style-1arg']:
@@ -570,17 +570,17 @@ class Block:
             y = self.docks[1][3] - int(int(self.font_size[0] * 1.3))
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
-            y = self.docks[2][3] - int(int(self.font_size[0] * 1.3))
+            y = self.docks[2][3] - int(int(self.font_size[0] * 1.4))
             self.spr.set_label_attributes(int(self.font_size[1] + 0.5),
                                           True, 'right', y_pos=y, i=1)
         elif self.name in block_styles['clamp-style-else']:
             y = self.docks[1][3] - int(int(self.font_size[0] * 1.3))
             self.spr.set_label_attributes(int(self.font_size[0] + 0.5),
                                           True, 'right', y_pos=y, i=0)
-            y = self.docks[2][3] - int(int(self.font_size[0] * 1.3))
+            y = self.docks[2][3] - int(int(self.font_size[0] * 1.4))
             self.spr.set_label_attributes(int(self.font_size[1] + 0.5),
                                           True, 'right', y_pos=y, i=1)
-            y = self.docks[3][3] - int(int(self.font_size[0] * 1.3))
+            y = self.docks[3][3] - int(int(self.font_size[0] * 1.4))
             self.spr.set_label_attributes(int(self.font_size[1] + 0.5),
                                           True, 'right', y_pos=y, i=2)
 
