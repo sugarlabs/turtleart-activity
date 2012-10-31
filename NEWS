@@ -1,3 +1,9 @@
+166
+
+BUG FIXES:
+* Fixed problem with label alignment on some blocks
+* Fixed problem inserting blocks into some stacks
+
 165
 
 ENHANCEMENT:
