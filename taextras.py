@@ -92,8 +92,8 @@ between 0 and 255'),
     _('returns the battery charge as a number between 0 and 255'),
     #TRANS: This string is shorthand for "speed of Butia"
     _('speed Butia'),
-    _('set the speed of the Butia motors as a value between 0 and 1023, \
-passed by an argument'),
+    _('set the speed of the Butia motors'),
+    _('the speed must be a value between 0 and 1023'),
     #TRANS: This string is shorthand for "move Butia forward"
     _('forward Butia'),
     _('move the Butia robot forward'),
