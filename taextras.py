@@ -113,9 +113,9 @@ passed by an argument'),
 FOLLOWME_STRINGS = [
     _('Error importing Pygame. This plugin require Pygame 1.9'),
     _('Error on initialization of the camera'),
-    _('No cameras was found'),
-    _('Error in stop camera'),
-    _('Error in start camera'),
+    _('No camera was found'),
+    _('Error stopping camera'),
+    _('Error starting camera'),
     #TRANS: The "mask" is used to restrict processing to a region in the image
     _('Error in get mask'),
     _('FollowMe'),
