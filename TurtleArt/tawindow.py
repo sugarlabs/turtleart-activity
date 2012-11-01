@@ -3752,16 +3752,20 @@ class TurtleArtWindow():
             x = round_int(float(self.canvas.xcor) / self.coord_scale)
             y = round_int(float(self.canvas.ycor) / self.coord_scale)
             h = round_int(self.canvas.heading)
+            if int(x) == x and int(y) == y and int(h) == h:
+                formatting = '%s: %d %s: %d %s: %d'
+            else:
+                formatting = '%s: %0.2f %s: %0.2f %s: %0.2f'
             if self.running_sugar:
                 self.activity.coordinates_label.set_text(
-                    "%s: %d %s: %d %s: %d" % (_("xcor"), x, _("ycor"), y,
-                                              _("heading"), h))
+                    formatting % (_('xcor'), x, _('ycor'), y,
+                                              _('heading'), h))
                 self.activity.coordinates_label.show()
             elif self.interactive_mode:
                 self.parent.set_title(
-                    "%s — %s: %d %s: %d %s: %d" % (
-                        _("Turtle Art"), _("xcor"), x, _("ycor"), y,
-                        _("heading"), h))
+                    '%s — ' + formatting % (
+                        _('Turtle Art'), _('xcor'), x, _('ycor'), y,
+                        _('heading'), h))
 
     def showlabel(self, shp, label=''):
         ''' Display a message on a status block '''
