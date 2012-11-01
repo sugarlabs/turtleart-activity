@@ -3762,10 +3762,10 @@ class TurtleArtWindow():
                                               _('heading'), h))
                 self.activity.coordinates_label.show()
             elif self.interactive_mode:
+                formatting = '%s — ' + formatting
                 self.parent.set_title(
-                    '%s — ' + formatting % (
-                        _('Turtle Art'), _('xcor'), x, _('ycor'), y,
-                        _('heading'), h))
+                    formatting % (_('Turtle Art'), _('xcor'), x, _('ycor'), y,
+                                  _('heading'), h))
 
     def showlabel(self, shp, label=''):
         ''' Display a message on a status block '''
