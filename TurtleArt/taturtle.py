@@ -112,14 +112,14 @@ class Turtle:
 
     def __init__(self, turtles, key, turtle_colors=None):
         """ The turtle is not a block, just a sprite with an orientation """
-        self.x = 0
-        self.y = 0
+        self.x = 0.0
+        self.y = 0.0
         self.hidden = False
         self.shapes = []
         self.custom_shapes = False
         self.type = 'turtle'
         self.name = key
-        self.heading = 0
+        self.heading = 0.0
         self.pen_shade = 50
         self.pen_color = 0
         self.pen_gray = 100
@@ -190,7 +190,7 @@ class Turtle:
             if n != 1:
                 debug_output("%d images passed to set_shapes: ignoring" % (n),
                              self.tw.running_sugar)
-            if self.heading == 0:  # rotate the shapes
+            if self.heading == 0.0:  # rotate the shapes
                 images = []
                 w, h = shapes[0].get_width(), shapes[0].get_height()
                 nw = nh = int(sqrt(w * w + h * h))
@@ -265,18 +265,16 @@ class Turtle:
         self.move((self.x, self.y))
         self.set_heading(self.heading)
         if self.label_block is not None:
-            self.label_block.spr.move((self.x + self.label_xy[0],
-                                       self.y + self.label_xy[1]))
             self.label_block.spr.set_layer(TURTLE_LAYER + 1)
 
     def move(self, pos):
         """ Move the turtle. """
-        self.x, self.y = int(pos[0]), int(pos[1])
+        self.x, self.y = pos[0], pos[1]
         if not self.hidden and self.spr is not None:
-            self.spr.move(pos)
+            self.spr.move((int(pos[0]), int(pos[1])))
         if self.label_block is not None:
-            self.label_block.spr.move((pos[0] + self.label_xy[0],
-                                       pos[1] + self.label_xy[1]))
+            self.label_block.spr.move((int(pos[0] + self.label_xy[0]),
+                                       int(pos[1] + self.label_xy[1])))
         return(self.x, self.y)
 
     def get_name(self):

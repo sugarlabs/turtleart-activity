@@ -217,9 +217,9 @@ class TurtleGraphics:
                 self.tw.active_turtle.set_gray(100)
                 self.tw.active_turtle.set_pen_size(5)
                 self.tw.active_turtle.reset_shapes()
-                self.seth(0, share)
+                self.seth(0.0, share)
                 self.setpen(False, share)
-                self.setxy(0, 0, share)
+                self.setxy(0.0, 0.0, share)
                 self.setpen(True, share)
                 self.tw.active_turtle.hide()
         self.set_turtle(self.tw.default_turtle_name)
@@ -686,11 +686,10 @@ class TurtleGraphics:
         x, y = self.turtle_to_screen_coordinates(self.xcor, self.ycor)
         if self.tw.interactive_mode:
             self.tw.active_turtle.move(
-                (int(self.cx + x - self.tw.active_turtle.spr.rect.width / 2.),
-                 int(self.cy + y - self.tw.active_turtle.spr.rect.height / 2.))
-                )
+                (self.cx + x - self.tw.active_turtle.spr.rect.width / 2.,
+                 self.cy + y - self.tw.active_turtle.spr.rect.height / 2.))
         else:
-            self.tw.active_turtle.move((int(self.cx + x), int(self.cy + y)))
+            self.tw.active_turtle.move(self.cx + x, self.cy + y)
 
     def get_color_index(self, r, g, b, a=0):
         ''' Find the closest palette entry to the rgb triplet '''
@@ -753,8 +752,8 @@ class TurtleGraphics:
         if k not in self.tw.turtles.dict:
             # if it is a new turtle, start it in the center of the screen
             self.tw.active_turtle = self.tw.turtles.get_turtle(k, True, colors)
-            self.seth(0, False)
-            self.setxy(0, 0, False, pendown=False)
+            self.seth(0.0, False)
+            self.setxy(0.0, 0.0, False, pendown=False)
             self.tw.active_turtle.set_pen_state(True)
         elif colors is not None:
             self.tw.active_turtle = self.tw.turtles.get_turtle(k, False)
