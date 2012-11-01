@@ -2274,10 +2274,11 @@ class TurtleArtWindow():
                     self.turtles.remove_from_dict(k)
                     self.active_turtle = None
             else:
-                self._move_turtle(tx - self.canvas.width / 2 + \
-                                      self.active_turtle.spr.rect.width / 2,
-                                  self.canvas.height / 2 - ty - \
-                                      self.active_turtle.spr.rect.height / 2)
+                self._move_turtle(
+                    int(tx - self.canvas.width / 2. + \
+                            self.active_turtle.spr.rect.width / 2.),
+                    int(self.canvas.height / 2. - ty - \
+                            self.active_turtle.spr.rect.height / 2.))
             self.selected_turtle = None
             if self.active_turtle is None:
                 self.canvas.set_turtle(self.default_turtle_name)
