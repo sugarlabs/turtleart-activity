@@ -120,7 +120,7 @@ FOLLOWME_STRINGS = [
     _('Error in get mask'),
     _('FollowMe'),
     _('refresh FollowMe'),
-    _('Search for a connected cameras.'),
+    _('Search for a connected camera.'),
     #TRANS: the calibration is used to match an RGB color to a target
     _('calibration'),
     _('stores a personalized calibration'),
