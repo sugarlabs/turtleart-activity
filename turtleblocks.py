@@ -72,6 +72,7 @@ class TurtleMain():
         activity_info_path = os.path.abspath('./activity/activity.info')
         file_activity_info.read(activity_info_path)
         bundle_id = file_activity_info.get('Activity', 'bundle_id')
+        self.version = file_activity_info.get('Activity', 'activity_version')
         path = os.path.abspath('./locale/')
         gettext.bindtextdomain(bundle_id, path)
         gettext.textdomain(bundle_id)
@@ -299,7 +300,7 @@ class TurtleMain():
         win.set_default_size(self.width, self.height)
         win.move(self.x, self.y)
         win.maximize()
-        win.set_title(_('Turtle Art'))
+        win.set_title('%s %s' % (_('Turtle Art'), str(self.version)))
         if os.path.exists(os.path.join(self._execdirname, self._ICON_SUBPATH)):
             win.set_icon_from_file(os.path.join(self._execdirname,
                                                 self._ICON_SUBPATH))
@@ -313,8 +314,8 @@ class TurtleMain():
 
         self.fixed = gtk.Fixed()
         self.fixed.connect('size-allocate', self._fixed_resize_cb)
-        width = gtk.gdk.screen_width()-80
-        height = gtk.gdk.screen_height()-60
+        width = gtk.gdk.screen_width() - 80
+        height = gtk.gdk.screen_height() - 60
         self.fixed.set_size_request(width, height)
 
         self.vbox = gtk.VBox(False, 0)
