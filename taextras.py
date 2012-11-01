@@ -41,6 +41,11 @@ TURTLECONFUSION_STRINGS = [
     _('Select a challenge')
     ]
 
+TURTLEAMAZONAS_STRINGS = [
+    _('Amazonas Tortuga'),
+    _('Select a challenge')
+    ]
+
 # PLUGINS
 
 CURRENCY_STRINGS = [
