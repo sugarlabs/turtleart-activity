@@ -1,3 +1,13 @@
+167
+
+BUG FIX:
+* Fixed rounding error in calculating turtle movement
+* Fixed truncation error in display of turtle position
+* Fixed some grammatical errors in strings (cjl)
+
+NOTE:
+* taextras.py has been moved to its own repository
+
 166
 
 BUG FIXES:
