@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-27 14:55-0400\n"
+"POT-Creation-Date: 2012-11-02 10:01-0400\n"
 "PO-Revision-Date: 2012-08-27 10:56+0200\n"
 "Last-Translator: aman0115 <aman.maharjan@olenepal.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #. TRANS: "name" option from activity.info file
-#: TurtleArt/tawindow.py:3817 pysamples/grecord.py:205 turtleblocks.py:295
+#: TurtleArt/tawindow.py:3767 pysamples/grecord.py:205 turtleblocks.py:303
 msgid "Turtle Art"
 msgstr "टर्टल आर्ट"
 
@@ -97,11 +97,11 @@ msgstr "टर्टल चाप को वरिपरी सार्छ"
 msgid "set xy"
 msgstr "xy राख"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257 taextras.py:261
+#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
 msgid "x"
 msgstr "x"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257 taextras.py:262
+#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
 msgid "y"
 msgstr "y"
 
@@ -119,8 +119,8 @@ msgstr "शीर्षक राख"
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "टर्टलको शिर्षक निर्धारण गर्छ (0 स्क्रिनको माथिल्लो भागमा छ।)"
 
-#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3811
-#: TurtleArt/tawindow.py:3817 TurtleArtActivity.py:538
+#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3761
+#: TurtleArt/tawindow.py:3767 TurtleArtActivity.py:557
 msgid "xcor"
 msgstr "xcor"
 
@@ -132,8 +132,8 @@ msgstr ""
 "टर्टलको तत्काल x-निर्देशांक मान बचाइराख्छ (संख्या खण्डको सट्टामा प्रयोग गर्न "
 "सकिन्छ)"
 
-#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3811
-#: TurtleArt/tawindow.py:3817 TurtleArtActivity.py:539
+#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3761
+#: TurtleArt/tawindow.py:3767 TurtleArtActivity.py:558
 msgid "ycor"
 msgstr "ycor"
 
@@ -145,8 +145,8 @@ msgstr ""
 "टर्टलको तत्काल y- निर्देशांक मान बचाइराख्छ(संख्या खण्डको सट्टामा प्रयोग गर्न "
 "सकिन्छ)"
 
-#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3812
-#: TurtleArt/tawindow.py:3818 TurtleArtActivity.py:539
+#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3762
+#: TurtleArt/tawindow.py:3768 TurtleArtActivity.py:558
 msgid "heading"
 msgstr "शीर्षक"
 
@@ -166,7 +166,7 @@ msgid "fill screen"
 msgstr "स्क्रिन भर"
 
 #: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
-#: TurtleArt/tabasics.py:340 taextras.py:311
+#: TurtleArt/tabasics.py:340
 msgid "color"
 msgstr "रंग"
 
@@ -574,8 +574,8 @@ msgstr "स्ट्रिङ मान"
 
 #: TurtleArt/tabasics.py:857 TurtleArt/tabasics.py:860
 #: TurtleArt/tabasics.py:868 TurtleArt/tabasics.py:872
-#: TurtleArt/tawindow.py:1250 TurtleArt/tawindow.py:1328
-#: TurtleArt/tawindow.py:1341 TurtleArt/tawindow.py:4061
+#: TurtleArt/tawindow.py:1269 TurtleArt/tawindow.py:1350
+#: TurtleArt/tawindow.py:1363 TurtleArt/tawindow.py:4016
 msgid "action"
 msgstr "कार्य"
 
@@ -583,7 +583,7 @@ msgstr "कार्य"
 msgid "top of nameable action stack"
 msgstr "नामाकरण गर्न मिल्ने कार्य थाँकको माथि"
 
-#: TurtleArt/tabasics.py:873 TurtleArt/tawindow.py:4075
+#: TurtleArt/tabasics.py:873 TurtleArt/tawindow.py:4030
 msgid "invokes named action stack"
 msgstr "इनभोक्स नामाङिक्त कार्य थाक"
 
@@ -619,7 +619,7 @@ msgstr "बाकस २"
 msgid "Variable 2 (numeric value)"
 msgstr "चल २ (संङख्यातमक मान)"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4129
+#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4080
 msgid "store in"
 msgstr "स्टोर गर्नुहोस्"
 
@@ -627,21 +627,21 @@ msgstr "स्टोर गर्नुहोस्"
 msgid "box"
 msgstr "बाकस"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4129 taextras.py:396
+#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4080
 msgid "value"
 msgstr "मान"
 
 #: TurtleArt/tabasics.py:929 TurtleArt/tabasics.py:942
-#: TurtleArt/tawindow.py:1254 TurtleArt/tawindow.py:4090
-#: TurtleArt/tawindow.py:4120
+#: TurtleArt/tawindow.py:1273 TurtleArt/tawindow.py:4043
+#: TurtleArt/tawindow.py:4071
 msgid "my box"
 msgstr "मेरो बाकस"
 
-#: TurtleArt/tabasics.py:930 TurtleArt/tawindow.py:4134
+#: TurtleArt/tabasics.py:930 TurtleArt/tawindow.py:4085
 msgid "stores numeric value in named variable"
 msgstr "संख्यात्मक मानलाई नाम गरिएको चलमा भण्डारन गर्छ"
 
-#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4104
+#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4057
 msgid "named variable (numeric value)"
 msgstr "नाम गरिएको चल (संख्यात्मक मान)"
 
@@ -697,14 +697,14 @@ msgstr "सबै सफा गर"
 msgid "move all blocks to trash"
 msgstr "सबै खण्डहरू रद्दीटोकरीमा सार"
 
-#: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1783
-#: TurtleArtActivity.py:633
+#: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1790
+#: TurtleArtActivity.py:652
 msgid "Share selected blocks"
 msgstr "अंश चुनिंदा खण्डहरू"
 
-#: TurtleArt/taconstants.py:241 TurtleArt/taconstants.py:263
-#: TurtleArt/taconstants.py:284 TurtleArt/taconstants.py:326
-#: TurtleArt/taconstants.py:368 TurtleArt/taconstants.py:410
+#: TurtleArt/taconstants.py:216 TurtleArt/taconstants.py:238
+#: TurtleArt/taconstants.py:259 TurtleArt/taconstants.py:301
+#: TurtleArt/taconstants.py:343 TurtleArt/taconstants.py:385
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:978
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:993
@@ -714,17 +714,17 @@ msgstr "अंश चुनिंदा खण्डहरू"
 msgid "Title"
 msgstr "शीर्षक"
 
-#: TurtleArt/talogo.py:358 TurtleArtActivity.py:613
+#: TurtleArt/talogo.py:358 TurtleArtActivity.py:632
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1473
 msgid "Stop turtle"
 msgstr "टर्टल रोक"
 
-#: TurtleArt/talogo.py:369 TurtleArtActivity.py:288 TurtleArtActivity.py:614
+#: TurtleArt/talogo.py:369 TurtleArtActivity.py:288 TurtleArtActivity.py:633
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1466
 msgid "Show blocks"
 msgstr "खण्डहरु देखाउ"
 
-#: TurtleArt/talogo.py:373 TurtleArtActivity.py:292 TurtleArtActivity.py:791
+#: TurtleArt/talogo.py:373 TurtleArtActivity.py:292 TurtleArtActivity.py:810
 msgid "Hide blocks"
 msgstr "खण्डहरु लुकाऊ"
 
@@ -752,47 +752,47 @@ msgstr "अर्को प्यालेट देखाँउछ"
 msgid "changes the orientation of the palette of blocks"
 msgstr "खण्डहरुको प्यालेटको अभिमुखीकरण परिवर्तन गर्छ"
 
-#: TurtleArt/tautils.py:191
+#: TurtleArt/tautils.py:192
 msgid "Load..."
 msgstr "सुरु गर..."
 
-#: TurtleArt/tautils.py:201
+#: TurtleArt/tautils.py:202
 msgid "Save..."
 msgstr "सेभ गर..."
 
-#: TurtleArt/tautils.py:473
+#: TurtleArt/tautils.py:474
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
 msgid "click to open"
 msgstr "खोल्नलाई क्लिक गर"
 
-#: TurtleArt/tawindow.py:968 TurtleArt/tawindow.py:969
+#: TurtleArt/tawindow.py:987 TurtleArt/tawindow.py:988
 msgid "orientation"
 msgstr "पृष्ठविन्यास"
 
-#: TurtleArt/tawindow.py:979 TurtleArt/tawindow.py:1413
+#: TurtleArt/tawindow.py:998 TurtleArt/tawindow.py:1435
 msgid "next"
 msgstr "आर्को"
 
-#: TurtleArt/tawindow.py:991 TurtleArt/tawindow.py:992
-#: TurtleArt/tawindow.py:1433
+#: TurtleArt/tawindow.py:1010 TurtleArt/tawindow.py:1011
+#: TurtleArt/tawindow.py:1455
 msgid "shift"
 msgstr "सिफ्ट"
 
-#: TurtleArt/tawindow.py:1268
+#: TurtleArt/tawindow.py:1287
 msgid "Select blocks to share"
 msgstr "खण्डहरु अंश छान"
 
-#: TurtleArt/tawindow.py:3916
+#: TurtleArt/tawindow.py:3873
 msgid "image"
 msgstr "चित्र"
 
-#: TurtleArtActivity.py:132 TurtleArtActivity.py:639 TurtleArtActivity.py:730
-#: TurtleArtActivity.py:750 turtleblocks.py:333
+#: TurtleArtActivity.py:132 TurtleArtActivity.py:658 TurtleArtActivity.py:749
+#: TurtleArtActivity.py:769 turtleblocks.py:356
 msgid "Save as Logo"
 msgstr "लोगोको रुपमा सेभ गर"
 
-#: TurtleArtActivity.py:169 TurtleArtActivity.py:638 TurtleArtActivity.py:727
-#: TurtleArtActivity.py:747 turtleblocks.py:331
+#: TurtleArtActivity.py:169 TurtleArtActivity.py:657 TurtleArtActivity.py:746
+#: TurtleArtActivity.py:766 turtleblocks.py:354
 msgid "Save as image"
 msgstr "तस्विरको रुपमा सेभ गर"
 
@@ -800,25 +800,25 @@ msgstr "तस्विरको रुपमा सेभ गर"
 msgid "snapshot"
 msgstr "स्न्यापशट"
 
-#: TurtleArtActivity.py:185 TurtleArtActivity.py:572 TurtleArtActivity.py:615
-#: TurtleArtActivity.py:753
+#: TurtleArtActivity.py:185 TurtleArtActivity.py:591 TurtleArtActivity.py:634
+#: TurtleArtActivity.py:772
 msgid "Save snapshot"
 msgstr "स्नयापसट सेभ गर"
 
-#: TurtleArtActivity.py:226 TurtleArtActivity.py:550 TurtleArtActivity.py:689
-#: turtleblocks.py:351
+#: TurtleArtActivity.py:226 TurtleArtActivity.py:569 TurtleArtActivity.py:708
+#: turtleblocks.py:374
 msgid "Turn off hover help"
 msgstr "होबर सहयोग बन्द गर"
 
-#: TurtleArtActivity.py:232 turtleblocks.py:353
+#: TurtleArtActivity.py:232 turtleblocks.py:376
 msgid "Turn on hover help"
 msgstr "होबर सहयोग सुरु गर"
 
-#: TurtleArtActivity.py:240 turtleblocks.py:363
+#: TurtleArtActivity.py:240 turtleblocks.py:386
 msgid "Show palette"
 msgstr "प्यालेट देखाउ"
 
-#: TurtleArtActivity.py:246 TurtleArtActivity.py:779 turtleblocks.py:365
+#: TurtleArtActivity.py:246 TurtleArtActivity.py:798 turtleblocks.py:388
 msgid "Hide palette"
 msgstr "प्यालेट लुकाऊ"
 
@@ -826,140 +826,140 @@ msgstr "प्यालेट लुकाऊ"
 msgid "Rescale coordinates down"
 msgstr "निर्देशांक तल पुन: स्केल गर"
 
-#: TurtleArtActivity.py:404 TurtleArtActivity.py:542 TurtleArtActivity.py:685
+#: TurtleArtActivity.py:404 TurtleArtActivity.py:561 TurtleArtActivity.py:704
 msgid "Rescale coordinates up"
 msgstr "निर्देशांक माथि पुन: स्केल गर"
 
-#: TurtleArtActivity.py:476 TurtleArtActivity.py:512 TurtleArtActivity.py:607
-#: TurtleArtActivity.py:660 turtleblocks.py:360
+#: TurtleArtActivity.py:494 TurtleArtActivity.py:530 TurtleArtActivity.py:626
+#: TurtleArtActivity.py:679 turtleblocks.py:383
 msgid "Edit"
 msgstr "सम्पादन गर"
 
-#: TurtleArtActivity.py:481 TurtleArtActivity.py:510 TurtleArtActivity.py:608
-#: TurtleArtActivity.py:677 turtleblocks.py:355
+#: TurtleArtActivity.py:499 TurtleArtActivity.py:528 TurtleArtActivity.py:627
+#: TurtleArtActivity.py:696 turtleblocks.py:378
 msgid "View"
 msgstr "हेर"
 
-#: TurtleArtActivity.py:508 TurtleArtActivity.py:609
+#: TurtleArtActivity.py:526 TurtleArtActivity.py:628
 msgid "Project"
 msgstr "परियोजना"
 
-#: TurtleArtActivity.py:514 TurtleArtActivity.py:606 TurtleArtActivity.py:635
-#: TurtleArtActivity.py:637 TurtleArtActivity.py:722
+#: TurtleArtActivity.py:532 TurtleArtActivity.py:625 TurtleArtActivity.py:654
+#: TurtleArtActivity.py:656 TurtleArtActivity.py:741
 msgid "Save/Load"
 msgstr "सेभ गर/सुरु गर"
 
-#: TurtleArtActivity.py:522 TurtleArtActivity.py:661 turtleblocks.py:358
+#: TurtleArtActivity.py:540 TurtleArtActivity.py:680 turtleblocks.py:381
 msgid "Copy"
 msgstr "प्रतिलिपी बनाऊ"
 
-#: TurtleArtActivity.py:524 TurtleArtActivity.py:662 turtleblocks.py:359
+#: TurtleArtActivity.py:542 TurtleArtActivity.py:681 turtleblocks.py:382
 msgid "Paste"
 msgstr "प्रतिलिपी सार"
 
-#: TurtleArtActivity.py:526
+#: TurtleArtActivity.py:544
 msgid "Restore blocks from trash"
 msgstr "रद्दि टोकरीमा भएका सबै सामग्री फिर्ता गर"
 
-#: TurtleArtActivity.py:528 TurtleArtActivity.py:678
+#: TurtleArtActivity.py:547 TurtleArtActivity.py:697
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
 msgid "Fullscreen"
 msgstr "पुरै पर्दा"
 
-#: TurtleArtActivity.py:530 TurtleArtActivity.py:679 turtleblocks.py:339
+#: TurtleArtActivity.py:549 TurtleArtActivity.py:698 turtleblocks.py:362
 msgid "Cartesian coordinates"
 msgstr "कार्टेसियन निर्देशांक"
 
-#: TurtleArtActivity.py:532 TurtleArtActivity.py:681 turtleblocks.py:341
+#: TurtleArtActivity.py:551 TurtleArtActivity.py:700 turtleblocks.py:364
 msgid "Polar coordinates"
 msgstr "पोलार निर्देशांक"
 
-#: TurtleArtActivity.py:535 TurtleArtActivity.py:683
+#: TurtleArtActivity.py:554 TurtleArtActivity.py:702
 msgid "Metric coordinates"
 msgstr "मैट्रिक / मापीय निर्देशांक"
 
-#: TurtleArtActivity.py:545 TurtleArtActivity.py:687 turtleblocks.py:345
+#: TurtleArtActivity.py:564 TurtleArtActivity.py:706 turtleblocks.py:368
 msgid "Grow blocks"
 msgstr "खण्डहरु बढाऊ"
 
-#: TurtleArtActivity.py:547 TurtleArtActivity.py:688 turtleblocks.py:347
+#: TurtleArtActivity.py:566 TurtleArtActivity.py:707 turtleblocks.py:370
 msgid "Shrink blocks"
 msgstr "खण्डहरु घटाऊ"
 
-#: TurtleArtActivity.py:576 TurtleArtActivity.py:616
+#: TurtleArtActivity.py:595 TurtleArtActivity.py:635
 msgid "Load example"
 msgstr "उदाहरण सुरु गर"
 
-#: TurtleArtActivity.py:610 TurtleArtActivity.py:785 turtleblocks.py:372
+#: TurtleArtActivity.py:629 TurtleArtActivity.py:804 turtleblocks.py:395
 msgid "Clean"
 msgstr "सफा गर्नुहोस्"
 
-#: TurtleArtActivity.py:611 TurtleArtActivity.py:787 turtleblocks.py:373
+#: TurtleArtActivity.py:630 TurtleArtActivity.py:806 turtleblocks.py:396
 msgid "Run"
 msgstr "चलाउनुहोस्"
 
-#: TurtleArtActivity.py:612 TurtleArtActivity.py:789 turtleblocks.py:374
+#: TurtleArtActivity.py:631 TurtleArtActivity.py:808 turtleblocks.py:397
 msgid "Step"
 msgstr "चाल"
 
-#: TurtleArtActivity.py:617 util/helpbutton.py:45
+#: TurtleArtActivity.py:636 util/helpbutton.py:45
 msgid "Help"
 msgstr "मद्दत"
 
-#: TurtleArtActivity.py:618 turtleblocks.py:376
+#: TurtleArtActivity.py:637 turtleblocks.py:399
 msgid "Stop"
 msgstr "रोक"
 
-#: TurtleArtActivity.py:640 TurtleArtActivity.py:733 TurtleArtActivity.py:755
+#: TurtleArtActivity.py:659 TurtleArtActivity.py:752 TurtleArtActivity.py:774
 msgid "Load project"
 msgstr "परियोजना सुरु गर"
 
-#: TurtleArtActivity.py:643 TurtleArtActivity.py:738 TurtleArtActivity.py:760
+#: TurtleArtActivity.py:662 TurtleArtActivity.py:757 TurtleArtActivity.py:779
 msgid "Load plugin"
 msgstr "पल्गइन सुरु गर"
 
-#: TurtleArtActivity.py:644 TurtleArtActivity.py:741 TurtleArtActivity.py:763
+#: TurtleArtActivity.py:663 TurtleArtActivity.py:760 TurtleArtActivity.py:782
 msgid "Load Python block"
 msgstr "पाइथन खण्ड सुरु गर"
 
-#: TurtleArtActivity.py:717
+#: TurtleArtActivity.py:736
 msgid "Sharing blocks disabled"
 msgstr ""
 
-#: TurtleArtActivity.py:780
+#: TurtleArtActivity.py:799
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
-#: TurtleArtActivity.py:785
+#: TurtleArtActivity.py:804
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
-#: TurtleArtActivity.py:787
+#: TurtleArtActivity.py:806
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
-#: TurtleArtActivity.py:789
+#: TurtleArtActivity.py:808
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
-#: TurtleArtActivity.py:792
+#: TurtleArtActivity.py:811
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
-#: TurtleArtActivity.py:927 TurtleArtActivity.py:932 TurtleArtActivity.py:999
+#: TurtleArtActivity.py:967 TurtleArtActivity.py:972 TurtleArtActivity.py:1039
 msgid "Plugin could not be installed."
 msgstr "पल्गइन इन्टल गर्न सकिएन।"
 
-#: TurtleArtActivity.py:995
+#: TurtleArtActivity.py:1035
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr "कृपया पल्गइन चलाउन टर्टल आर्ट पुनरारम्भ गर।"
 
-#: TurtleArtActivity.py:1013
+#: TurtleArtActivity.py:1053
 #, python-format
 msgid "Plugin %s already installed."
 msgstr "पल्गइन %s पहिल्यै इन्टल भइसक्यो।"
 
-#: TurtleArtActivity.py:1014
+#: TurtleArtActivity.py:1054
 #, python-format
 msgid "Do you want to reinstall %s?"
 msgstr "के तिमी %s रिइन्टल गर्न चाहन्छौ?"
@@ -1069,7 +1069,7 @@ msgstr "अप्लोड गर्न सकेन"
 
 #: plugins/accelerometer/accelerometer.py:49
 #: plugins/audio_sensors/audio_sensors.py:75
-#: plugins/camera_sensor/camera_sensor.py:57
+#: plugins/camera_sensor/camera_sensor.py:63
 #: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
 msgid "Palette of sensor blocks"
@@ -1087,7 +1087,6 @@ msgstr "थुप्रो हुने गरी x, y, z मा गतिवृ
 
 #: plugins/audio_sensors/audio_sensors.py:83
 #: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
-#: taextras.py:313
 msgid "sound"
 msgstr "ध्बनि"
 
@@ -1145,32 +1144,35 @@ msgstr "भोल्टेज"
 msgid "microphone input voltage"
 msgstr "माइक्रोफोनको आयात भोल्युम"
 
-#: plugins/camera_sensor/camera_sensor.py:61
+#: plugins/camera_sensor/camera_sensor.py:67
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
 msgid "Palette of media objects"
 msgstr "मिडिया वस्तुहरुको प्यालेट"
 
-#: plugins/camera_sensor/camera_sensor.py:73
-#: plugins/camera_sensor/camera_sensor.py:86
-#: plugins/camera_sensor/camera_sensor.py:105
-#: plugins/camera_sensor/camera_sensor.py:118
+#: plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
 #: plugins/light_sensor/light_sensor.py:56
 #: plugins/light_sensor/light_sensor.py:63
 msgid "brightness"
 msgstr "चम्किलोपन"
 
-#: plugins/camera_sensor/camera_sensor.py:75
-#: plugins/camera_sensor/camera_sensor.py:107
+#: plugins/camera_sensor/camera_sensor.py:82
+#: plugins/camera_sensor/camera_sensor.py:130
 msgid "light level detected by camera"
 msgstr "क्यामेराले पत्तालगाएको प्रकाशको मात्रा"
 
-#: plugins/camera_sensor/camera_sensor.py:88
-#: plugins/camera_sensor/camera_sensor.py:120
+#: plugins/camera_sensor/camera_sensor.py:95
+#: plugins/camera_sensor/camera_sensor.py:143
 msgid "Average RGB color from camera is pushed to the stack"
 msgstr "क्यामेराबाट आएको औसत RGB रंग थाकमा पन्छाइन्छ"
 
-#: plugins/camera_sensor/camera_sensor.py:99
-#: plugins/camera_sensor/camera_sensor.py:132
+#: plugins/camera_sensor/camera_sensor.py:106
+#: plugins/camera_sensor/camera_sensor.py:113
+#: plugins/camera_sensor/camera_sensor.py:121
+#: plugins/camera_sensor/camera_sensor.py:155
+#: plugins/camera_sensor/camera_sensor.py:163
 msgid "camera output"
 msgstr "क्यामेराको निर्गत"
 
@@ -1425,7 +1427,7 @@ msgstr "टर्टलले देख्छ"
 msgid "returns the color that the turtle \"sees\""
 msgstr "टर्टलले \"देखेको\" रंग फिर्ता गर्छ"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:445 taextras.py:332
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:445
 msgid "time"
 msgstr "समय"
 
@@ -1685,7 +1687,7 @@ msgstr "तलतिर"
 msgid "ycor of bottom of screen"
 msgstr "स्क्रिनको तलपट्टिको ycor"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870 taextras.py:247
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
 msgid "width"
 msgstr "चौडाइ"
 
@@ -1701,8 +1703,7 @@ msgstr "स्क्रिनको दायाँपट्टिको xcor"
 msgid "ycor of top of screen"
 msgstr "स्क्रिनको माथिपट्टिको ycor"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894 taextras.py:242
-#: taextras.py:248
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894
 msgid "height"
 msgstr "उचाइ"
 
@@ -1779,1250 +1780,899 @@ msgstr "यूमोड"
 msgid "make a uturn"
 msgstr "यूमोड लिऊ"
 
-#: taextras.py:36
-msgid "Turtle Art Mini"
-msgstr "टर्टल आर्ट मिनि"
-
-#: taextras.py:40
-msgid "Turtle Confusion"
-msgstr "टर्टल स्तब्घ"
-
-#: taextras.py:41
-msgid "Select a challenge"
-msgstr "एउटा मुकाब्ला छान"
-
-#: taextras.py:47
-msgid "Palette of Mexican pesos"
-msgstr "मेक्सिकन पेसोको प्यालेट"
-
-#: taextras.py:48
-msgid "Palette of Colombian pesos"
-msgstr "कोल्म्बियन पेसोको प्यालेट"
-
-#: taextras.py:49
-msgid "Palette of Rwandan francs"
-msgstr "रूआण्डान फ्रेकंको प्यालेट"
-
-#: taextras.py:50
-msgid "Palette of US dollars"
-msgstr "अमेरिकी डलरको प्यालेट"
-
-#: taextras.py:51
-msgid "Palette of Australian dollars"
-msgstr "अस्ट्रेलियन डलरको प्यालेट"
-
-#: taextras.py:52
-msgid "Palette of Paraguayan Guaranies"
-msgstr ""
-
-#: taextras.py:53
-msgid "Palette of Peruvian Nuevo Soles"
-msgstr ""
-
-#: taextras.py:54
-msgid "Palette of Uruguayan Pesos"
-msgstr "उरुगुएन पेसोको प्यालेट"
-
-#. TRANS: Butia is the Arduino Robot Project from Uruguay
-#. (http://www.fing.edu.uy/inco/proyectos/butia/)
-#: taextras.py:60
-msgid "TurtleBots"
-msgstr "टर्टलबोट्स"
-
-#: taextras.py:61
-msgid "adjust LED intensity between 0 and 255"
-msgstr "LEDको प्रकाश-तीव्रता ० देखि २५५ भित्र समायोजित गर।"
-
-#: taextras.py:62
-msgid "returns the object gray level as a number between 0 and 1023"
-msgstr "ऐम्बीअन्ट प्रकाश मात्रा ० देखि १०२३ भित्रको अंकको रुपमा फिर्ता गर्छ"
-
-#: taextras.py:63
-msgid "returns 1 when the button is press and 0 otherwise"
-msgstr "बटन थिच्दा १ फर्काउँछ अथवा ० फर्काउँछ।"
-
-#: taextras.py:64
-msgid "returns the ambient light level as a number between 0 and 1023"
-msgstr "ऐम्बीअन्ट प्रकाश मात्रा ० देखि १०२३ भित्रको अंकको रुपमा फिर्ता गर्छ"
-
-#: taextras.py:65
-msgid "returns the ambient temperature as a number between 0 and 255"
-msgstr "ऐम्बीअन्ट तापमान ० देखि २५५ भित्रको अंकको रुपमा फिर्ता गर्छ"
-
-#: taextras.py:66
-msgid ""
-"returns the distance from the object in front of the sensor as a number "
-"between 0 and 255"
-msgstr ""
-"सेंसर अगाडि देखि वस्तु सम्मको दुरी ० देखि २५५ भित्रको अंकको रुपमा फिर्ता "
-"गर्छ"
-
-#: taextras.py:68
-msgid "returns 0 or 1 depending on the sensor inclination"
-msgstr "सेंसर झुकावमा निर्भर भई ० वा १ फिर्ता गर्छ"
-
-#: taextras.py:69
-msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-msgstr "सेंसरले चुंबकीय क्षेत्र पता लगाउँदा १ फिर्ता गर्छ, अथवा ० फिर्ता गर्छ।"
-
-#: taextras.py:70
-msgid "switches from 0 to 1, the frequency depends on the vibration"
-msgstr "० देखि १ मा बदल्नछ, आवृत्ति कंपनमा निर्भर हुन्छ"
-
-#: taextras.py:71
-msgid "LED"
-msgstr "LED"
-
-#: taextras.py:72
-msgid "button"
-msgstr "बटन"
-
-#: taextras.py:73
-msgid "grayscale"
-msgstr "ग्रेस्केल"
-
-#: taextras.py:74
-msgid "ambient light"
-msgstr "अ्यामबीअन्ट प्रकाश"
-
-#: taextras.py:75
-msgid "temperature"
-msgstr "तापमान"
-
-#: taextras.py:76 taextras.py:292
-msgid "distance"
-msgstr "दुरी"
-
-#: taextras.py:77 taextras.py:289
-msgid "tilt"
-msgstr "झुकाव"
-
-#: taextras.py:78
-msgid "magnetic induction"
-msgstr "चुंबकीय प्रेरण"
-
-#: taextras.py:79
-msgid "vibration"
-msgstr "कंपन"
-
-#: taextras.py:80
-msgid "Butia Robot"
-msgstr "बुटिया रोबट"
-
-#: taextras.py:81
-msgid "refresh Butia"
-msgstr ""
-
-#: taextras.py:82
-msgid "refresh the state of the Butia palette and blocks"
-msgstr ""
-
-#. TRANS: This string is shorthand for "battery charge of Butia"
-#: taextras.py:84
-msgid "battery charge Butia"
-msgstr "बुटियाको बैटरी चार्ज"
-
-#: taextras.py:85
-msgid "returns the battery charge as a number between 0 and 255"
-msgstr "ब्याटरी चार्ज ० देखि २५५ सम्म अंकको रुपमा फिर्ता गर्छ"
-
-#. TRANS: This string is shorthand for "speed of Butia"
-#: taextras.py:87
-msgid "speed Butia"
-msgstr "बुटियाको गति बढाऊ"
-
-#: taextras.py:88
-#, fuzzy
-msgid ""
-"set the speed of the Butia motors to a value between 0 and 1023, passed by "
-"an argument"
-msgstr ""
-"बुटिया मोटरको गति ० देखि १०२३ सम्म मानको रुपमा सेट गर, एउटा बहसद्वारा पास "
-"गरेपछि"
-
-#. TRANS: This string is shorthand for "move Butia forward"
-#: taextras.py:91
-msgid "forward Butia"
-msgstr "बुटियालाई अगाडि लग"
-
-#: taextras.py:92
-msgid "move the Butia robot forward"
-msgstr "बुटिया रोबटलाई अगाडि सार"
-
-#: taextras.py:93
-msgid "move the Butia robot forward a predefined distance"
-msgstr "बुटिया रोबटलाई पूर्वनिर्धारित दुरीमा अगाडि सार"
-
-#. TRANS: This string is shorthand for "turn Butia left"
-#: taextras.py:95
-msgid "left Butia"
-msgstr "बायाँ बुटिया"
-
-#: taextras.py:96
-#, fuzzy
-msgid "turn the Butia robot to the left"
-msgstr "बुटिया रोबटलाई बायाँ मोड़"
-
-#. TRANS: This string is shorthand for "move Butia backward"
-#: taextras.py:98
-msgid "backward Butia"
-msgstr "बुटियालाई पछाडि सार"
-
-#: taextras.py:99
-msgid "move the Butia robot backward"
-msgstr "बुटिया रोबटलाई पछाडि सार"
-
-#: taextras.py:100
-msgid "move the Butia robot backward a predefined distance"
-msgstr "बुटिया रोबटलाई पूर्वनिर्धारित दुरीमा पछाडि सार"
-
-#. TRANS: This string is shorthand for "turn Butia right"
-#: taextras.py:102
-msgid "right Butia"
-msgstr "दायाँ बुटिया"
-
-#: taextras.py:103
-msgid "turn the Butia robot at right"
-msgstr "बुटिया रोबटलाई दायाँ मोड़"
-
-#: taextras.py:104
-msgid "turn Butia"
-msgstr "बुटियालाई मोड़"
-
-#: taextras.py:105
-msgid "turn the Butia robot x degrees"
-msgstr "बुटिया रोबटलाई x डिग्री मोड़"
-
-#: taextras.py:106
-msgid "stop Butia"
-msgstr "बुटियालाई रोक"
-
-#: taextras.py:107
-msgid "stop the Butia robot"
-msgstr "बुटिया रोबटलाई रोक"
-
-#: taextras.py:108
-msgid "display Butia"
-msgstr "बुटिया देखाऊ"
-
-#: taextras.py:109
-msgid "Hello World    Butia            "
-msgstr "हेलो वल्ड  बुटिया                    "
-
-#. TRANS: this string must contain only ASCII characters.
-#. The len must be 32 characters/spaces.
-#: taextras.py:112
-msgid "print text in Butia robot 32-character ASCII display"
-msgstr "बुटिया रोबटको पाठलाई ३२-क्यारेक्टर ASCII दिस्प्लेमा छाप।"
-
-#: taextras.py:113
-msgid "Butia"
-msgstr "बुटिया"
-
-#: taextras.py:117
-#, fuzzy
-msgid "Error on initialization of the camera"
-msgstr "क्यामेराको आरंभीकरणमा त्रुटि"
-
-#: taextras.py:118
-msgid "No camera was found"
-msgstr ""
-
-#: taextras.py:119
-msgid "Error stopping camera"
-msgstr ""
-
-#: taextras.py:120
-msgid "Error starting camera"
-msgstr ""
-
-#. TRANS: The "mask" is used to restrict processing to a region in the image
-#: taextras.py:122
-msgid "Error making mask"
-msgstr ""
-
-#: taextras.py:123
-msgid "FollowMe"
-msgstr "मलाई अनुगमन गर"
-
-#: taextras.py:124
-msgid "follow"
-msgstr "अनुगमन"
-
-#. TRANS: Green component of a color
-#: taextras.py:126
-msgid "G"
-msgstr "G"
-
-#. TRANS: Red component of a color
-#: taextras.py:128
-msgid "R"
-msgstr "R"
-
-#. TRANS: Blue component of a color
-#: taextras.py:130
-msgid "B"
-msgstr "B"
-
-#: taextras.py:131
-msgid "follow a RGB color"
-msgstr "RGB रंग अनुगमन गर"
-
-#: taextras.py:132
-msgid "threshold"
-msgstr "सीमा"
-
-#: taextras.py:133
-msgid "set a threshold for a RGB color"
-msgstr "RGB रंगको लागि सीमा रेखा सेट गर"
-
-#. TRANS: the calibration can be saved for later use
-#: taextras.py:135
-msgid "save calibration 1"
-msgstr "व्यासमापन १ सेभ गर"
-
-#: taextras.py:136
-msgid "stores a calibration in calibration 1"
-msgstr "व्यासमापन १ मा व्यासमापनलाई भण्डार गर्छ"
-
-#. TRANS: the calibration can be saved for later use
-#: taextras.py:138
-msgid "save calibration 2"
-msgstr "व्यासमापन २ सेभ गर"
-
-#: taextras.py:139
-msgid "stores a calibration in calibration 2"
-msgstr "व्यासमापन २ मा व्यासमापनलाई भण्डार गर्छ"
-
-#. TRANS: the calibration is used to match an RGB color to a target
-#: taextras.py:141
-msgid "calibration"
-msgstr "व्यासमापन"
-
-#: taextras.py:142
-msgid "stores a personalized calibration"
-msgstr "व्यक्तिगत व्यासमापन भण्डार गर"
-
-#: taextras.py:143
-msgid "calibration 1"
-msgstr "व्यासमापन १"
-
-#: taextras.py:144
-msgid "return calibration 1"
-msgstr "व्यासमापन १ फिर्ता गर"
-
-#: taextras.py:145
-msgid "calibration 2"
-msgstr "व्यासमापन २"
-
-#: taextras.py:146
-msgid "return calibration 2"
-msgstr "व्यासमापन २ फिर्ता गर"
-
-#: taextras.py:147
-msgid "return a personalized calibration"
-msgstr "व्यक्तिगत व्यासमापन फिर्ता गर"
-
-#: taextras.py:148
-msgid "x position"
-msgstr "x स्थान"
-
-#: taextras.py:149
-msgid "return x position"
-msgstr "x स्थान फिर्ता गर"
-
-#: taextras.py:150
-msgid "y position"
-msgstr "y स्थान"
-
-#: taextras.py:151
-msgid "return y position"
-msgstr "y स्थान फिर्ता गर"
-
-#: taextras.py:152
-msgid "pixels"
-msgstr "पिक्सेलहरु"
-
-#: taextras.py:153
-msgid "return the number of pixels of the biggest blob"
-msgstr "सबैभन्दा ठुलो बल्बको पिक्सेलहरुको सङ्ख्या फर्काउँछ"
-
-#: taextras.py:154
-msgid "follow a color or calibration"
-msgstr "रंग वा व्यासमापन अनुकरण गर"
-
-#: taextras.py:155
-msgid "minimum pixels"
-msgstr "न्युनत्तम पिक्सेल"
-
-#: taextras.py:156
-msgid "set the minimal number of pixels to follow"
-msgstr "परिणाम हेर्न न्यूनतम संख्या सेट गर"
-
-#: taextras.py:157
-msgid "camera mode"
-msgstr ""
-
-#: taextras.py:158
-msgid "set the color mode of the camera: RGB, YUV, or HSV"
-msgstr ""
-
-#: taextras.py:159
-msgid "RGB"
-msgstr ""
-
-#: taextras.py:160
-msgid "set the color mode of the camera to RGB"
-msgstr ""
-
-#: taextras.py:161
-msgid "YUV"
-msgstr ""
-
-#: taextras.py:162
-msgid "set the color mode of the camera to YUV"
-msgstr ""
-
-#: taextras.py:163
-msgid "HSV"
-msgstr ""
-
-#: taextras.py:164
-msgid "set the color mode of the camera to HSV"
-msgstr ""
-
-#: taextras.py:165
-msgid "empty calibration"
-msgstr "खाली व्यासमापन"
-
-#: taextras.py:166
-msgid "error in string conversion"
-msgstr "स्ट्रिंग सम्परिवर्तनमा त्रुटि छ"
-
-#. TRANS: SumBot is a robot programmed for "Sumo wrestling"
-#: taextras.py:171
-msgid "SumBot"
-msgstr "समबोट्"
-
-#: taextras.py:172
-msgid "speed SumBot"
-msgstr "सम्बोट्को गति बढाऊ"
-
-#: taextras.py:173
-msgid "submit the speed to the SumBot"
-msgstr "सम्बोट्लाई गति देऊ"
-
-#: taextras.py:174
-msgid "set the default speed for the movement commands"
-msgstr "चाल आदेशहरुको लागि पूर्वनिर्धारित गति सेट गर।"
-
-#. TRANS: This string is shorthand for "move SumBot forward"
-#: taextras.py:176
-msgid "forward SumBot"
-msgstr "सम्बोट्लाई अगाडि लग"
-
-#: taextras.py:177
-msgid "move SumBot forward"
-msgstr "सम्बोट्लाई अगाडि सार"
-
-#. TRANS: This string is shorthand for "move SumBot backward"
-#: taextras.py:179
-msgid "backward SumBot"
-msgstr "सम्बोट्लाई पछाडि लग"
-
-#: taextras.py:180
-msgid "move SumBot backward"
-msgstr "सम्बोट्लाई पछाडि सार"
-
-#: taextras.py:181
-msgid "stop SumBot"
-msgstr "सम्बोट्लाई रोक"
-
-#: taextras.py:182
-msgid "stop the SumBot"
-msgstr "सम्बोट्लाई रोक"
-
-#. TRANS: This string is shorthand for "turn SumBot left"
-#: taextras.py:184
-msgid "left SumBot"
-msgstr "सम्बोट्लाई बायाँ मोड़"
-
-#: taextras.py:185
-msgid "turn left the SumBot"
-msgstr "सम्बोट्लाई बायाँ मोड़"
-
-#. TRANS: This string is shorthand for "move SumBot right"
-#: taextras.py:187
-msgid "right SumBot"
-msgstr "सम्बोट्लाई दायाँ मोड़"
-
-#: taextras.py:188
-msgid "turn right the SumBot"
-msgstr "सम्बोट्लाई दायाँ मोड़"
-
-#. TRANS: The angle to the center is the angle SumBot must turn to
-#. face the center of the playing field
-#: taextras.py:191
-msgid "angle to center"
-msgstr "केंद्र तर्फ कोण गर"
-
-#. TRANS: dohyo is the playing field
-#: taextras.py:193
-msgid "get the angle to the center of the dohyo"
-msgstr "डोजोको केंद्र तर्फ कोण मिलाऊ"
-
-#. TRANS: The angle to the center is the angle SumBot must turn to
-#. face the Enemy (opponent)
-#: taextras.py:196
-msgid "angle to Enemy"
-msgstr "शत्रु तर्फ कोण राख"
-
-#: taextras.py:197
-msgid "get the angle to the Enemy"
-msgstr "शत्रु तर्फ कोण मिलाऊ"
-
-#. TRANS: This string is shorthand for "x coordinate of SumBot"
-#: taextras.py:199
-msgid "x coor. SumBot"
-msgstr "सम्बोट्को x निर्देशांक"
-
-#: taextras.py:200
-msgid "get the x coordinate of the SumBot"
-msgstr "सम्बोट्को x निर्देशांक लिऊ ।"
-
-#. TRANS: This string is shorthand for "y coordinate of SumBot"
-#: taextras.py:202
-msgid "y coor. SumBot"
-msgstr "सम्बोट्को y निर्देशांक"
-
-#: taextras.py:203
-msgid "get the y coordinate of the SumBot"
-msgstr "सम्बोट्को य निर्देशांक लिऊ ।"
-
-#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
-#: taextras.py:205
-msgid "x coor. Enemy"
-msgstr "सम्बोट्को शत्रुको x निर्देशांक"
-
-#: taextras.py:206
-msgid "get the x coordinate of the Enemy"
-msgstr "शत्रुको x निर्देशांक लिऊ ।"
-
-#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
-#: taextras.py:208
-msgid "y coor. Enemy"
-msgstr "सम्बोट्को शत्रुको y निर्देशांक"
-
-#: taextras.py:209
-msgid "get the y coordinate of the Enemy"
-msgstr "शत्रुको ञ निर्देशांक लिऊ ।"
-
-#. TRANS: This string is shorthand for "rotation of SumBot"
-#: taextras.py:211
-msgid "rotation SumBot"
-msgstr "सम्बोट्को परिक्रमण"
-
-#: taextras.py:212
-msgid "get the rotation of the Sumbot"
-msgstr "सम्बोट्को परिक्रमण लिऊ ।"
-
-#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
-#: taextras.py:214
-msgid "rotation Enemy"
-msgstr "शत्रुको परिक्रमण"
-
-#: taextras.py:215
-msgid "get the rotation of the Enemy"
-msgstr "शत्रुको परिक्रमण लिऊ ।"
-
-#: taextras.py:216
-msgid "distance to center"
-msgstr "केंद्र सम्मको दुरी"
-
-#. TRANS: dohyo is the playing field
-#: taextras.py:218
-msgid "get the distance to the center of the dohyo"
-msgstr "डोजोको केंद्र सम्मको दुरी लिऊ ।"
-
-#: taextras.py:219
-msgid "distance to Enemy"
-msgstr "शत्रुसम्मको दुरी"
-
-#: taextras.py:220
-msgid "get the distance to the Enemy"
-msgstr "शत्रुसम्मको दुरी लिऊ ।"
-
-#: taextras.py:221
-msgid "update information"
-msgstr "सुचना अद्यावधिक गर"
-
-#: taextras.py:222
-msgid "update information from the server"
-msgstr "सर्भरबाट सुचना अद्यावधिक गर"
-
-#. TRANS: Please use similar terms to those used in the Physics Activity
-#: taextras.py:227
-msgid "Palette of physics blocks"
-msgstr "भौतिकविज्ञान खण्डहरुको प्यालेट"
-
-#: taextras.py:228
-msgid "start polygon"
-msgstr "बहुभुज सुरु गर"
-
-#: taextras.py:229
-msgid "Begin defining a new polygon based on the current Turtle xy position."
-msgstr "हालको टर्टलको xy स्थानमा आधारित नयाँ बहुभुज परिभाषा गर्न सुरु गर।"
-
-#: taextras.py:231
-msgid "add point"
-msgstr "बिन्दु थप"
-
-#: taextras.py:232
-msgid ""
-"Add a new point to the current polygon based on the current Turtle xy "
-"position."
-msgstr "हालको टर्टलको xy स्थानमा आधारित हालको बहुभुजमा नयाँ बिन्दु थप ।"
-
-#: taextras.py:234
-msgid "end polygon"
-msgstr "बहुभुज अन्त गर"
-
-#: taextras.py:235
-msgid "Define a new polygon."
-msgstr "नयाँ बहुभुज परिभाषा गर।"
-
-#: taextras.py:236
-msgid "end filled polygon"
-msgstr "भरेको बहुभुज अन्त गर"
-
-#: taextras.py:237
-msgid "Not a simple polygon"
-msgstr "सामान्य बहुभुज हैन"
-
-#: taextras.py:238
-msgid "Define a new filled polygon."
-msgstr "नयाँ भरेको बहुभुज परिभाषा गर।"
-
-#: taextras.py:239
-msgid "triangle"
-msgstr "त्रिभुज"
-
-#. TRANS: base of a triangle
-#: taextras.py:241
-msgid "base"
-msgstr "सतह"
-
-#: taextras.py:243
-msgid "Add a triangle object to the project."
-msgstr "परियोजनामा त्रिभुज वस्तु थप ।"
-
-#: taextras.py:244
-msgid "circle"
-msgstr "वृत्त"
-
-#: taextras.py:245
-msgid "Add a circle object to the project."
-msgstr "परियोजनामा वृत्त वस्तु थप ।"
-
-#: taextras.py:246
-msgid "rectangle"
-msgstr "समकोण आयत"
-
-#: taextras.py:249
-msgid "Add a rectangle object to the project."
-msgstr "परियोजनामा समकोण आयत वस्तु थप ।"
-
-#: taextras.py:250
-msgid "reset"
-msgstr "पुनराम्भ"
-
-#: taextras.py:251
-msgid "Reset the project; clear the object list."
-msgstr "परियोजना पुनराम्भ गर; वस्तु सुचि सफा गर।"
-
-#: taextras.py:252
-msgid "motor"
-msgstr "मोटर"
-
-#. TRANS: torque as in engine torque
-#: taextras.py:254
-msgid "torque"
-msgstr "चक्रिय गति"
-
-#: taextras.py:255
-msgid "speed"
-msgstr "गति"
-
-#: taextras.py:256
-msgid ""
-"Motor torque and speed range from 0 (off) to positive numbers; motor is "
-"placed on the most recent object created."
-msgstr ""
-"मोटरको चक्रिय गति र गति ०(बन्द) देखि सकारात्मक अंकहरु सम्म फैलिएको हुन्छ; "
-"मोटर हालै मात्र बनाएको वस्तुमा राखिन्छ।"
-
-#: taextras.py:258 taextras.py:392
-msgid "pin"
-msgstr "पिन"
-
-#: taextras.py:259
-msgid "Pin an object down so that it cannot fall."
-msgstr "वस्तुलाई नखस्ने गरि त्यसलाई अड्याऊ।"
-
-#: taextras.py:260
-msgid "joint"
-msgstr "संयुक्त"
-
-#: taextras.py:263
-msgid ""
-"Join two objects together (the most recent object created and the object at "
-"point x, y)."
-msgstr "दुईवटा वस्तुहरु साथमा जोड(हालैमात्र बनाएको वस्तु र बिन्दु x, yको वस्तु)"
-
-#: taextras.py:265
-msgid "save as Physics activity"
-msgstr ""
-
-#: taextras.py:266
-msgid "Save the project to the Journal as a Physics activity."
-msgstr "भौतिकविज्ञान क्रियाकलापको रुपमा परियोजनालाई पंजिकामा सेभ गर।"
-
-#. TRANS: Here, gear means a toothed wheel, as in a clock-works
-#: taextras.py:268
-msgid "gear"
-msgstr ""
-
-#: taextras.py:269
-#, fuzzy
-msgid "Add a gear object to the project."
-msgstr "परियोजनामा वृत्त वस्तु थप ।"
-
-#: taextras.py:270
-msgid "density"
-msgstr "घनत्व"
-
-#: taextras.py:271
-msgid ""
-"Set the density property for objects (density can be any positive number)."
-msgstr ""
-"वस्तुहरुको लागि घनत्व गुण सेट गर(घनत्व कुनै पनि सकारात्मक अंक हुन सक्छ)।"
-
-#: taextras.py:273
-msgid "friction"
-msgstr "घर्षण"
-
-#: taextras.py:274
-msgid ""
-"Set the friction property for objects (value from 0 to 1, where 0 turns "
-"friction off and 1 is strong friction)."
-msgstr ""
-"वस्तुहरुको लागि घर्षण गुण सेट गर( ० देखि १ सम्घम मान, जहाँ ० ले घर्षणलाई "
-"बन्द गर्छ र १ मज़बूत घर्षण हो)।"
-
-#. TRANS: bounciness is coefficient of restitution
-#: taextras.py:277
-msgid "bounciness"
-msgstr "ठोक्किएर फर्कने गुण"
-
-#: taextras.py:278
-msgid ""
-"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-"no bounce and 1 is very bouncy)."
-msgstr ""
-"वस्तुहरुको लागि ठोक्किएर फर्कने गुण सेट गर( ० देखि १ सम्घम मान, जहाँ ० "
-"भन्नाले शून्य उछाल र १ घेरै उत्फुल्ल हो)।"
-
-#. TRANS: dynamic here means moving vs in a fixed position
-#: taextras.py:281
-msgid "dynamic"
-msgstr "गतिशील शक्ति"
-
-#: taextras.py:282
-msgid ""
-"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-msgstr ""
-"यदि गतिशील शक्ति ‍ = १, वस्तु चल्न सक्छ; यदि गतिशील शक्ति ‍ = ०, त्यो "
-"स्थानमा स्थापित हुन्छ।"
-
-#. TRANS: WeDo is a robotics product of the LEGO company
-#: taextras.py:288
-msgid "Palette of WeDo blocks"
-msgstr "WeDo खण्डहरुको प्यालेट"
-
-#: taextras.py:290
-msgid ""
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-"tilt left, 2 == tilt right)"
-msgstr ""
-"सेन्सरको आउट्पुट झुकाऊ:(-१==नझुकाऊ,०==अगाडि झुकाऊ,३==पछाडि झुकाऊ,१==बायाँ "
-"झुकाऊ,२‍‍‍‍==दायाँ झुकाऊ)"
-
-#. TRANS: This string is shorthand for "output of the distance sensor"
-#: taextras.py:294
-msgid "distance sensor output"
-msgstr "सेन्सरको आउट्पुटको दुरी"
-
-#: taextras.py:295
-msgid "Motor A"
-msgstr "मोटर A"
-
-#: taextras.py:296
-msgid "returns the current value of Motor A"
-msgstr "मोटर Aको हालको मान फर्काउँछ"
-
-#: taextras.py:297
-msgid "Motor B"
-msgstr "मोटर B"
-
-#: taextras.py:298
-msgid "returns the current value of Motor B"
-msgstr "मोटर Bको हालको मान फर्काउँछ"
-
-#: taextras.py:299
-msgid "set the value for Motor A"
-msgstr "मोटर Aको मान सेट गर"
-
-#: taextras.py:300
-msgid "set the value for Motor B"
-msgstr "मोटर Bको मान सेट गर"
-
-#. TRANS: Lego NXT is a robotics product of the LEGO company
-#: taextras.py:305
-msgid "Palette of LEGO NXT blocks of motors"
-msgstr "मोटरहरुको LEGO NXT खण्डहरुको प्यालेट"
-
-#: taextras.py:306
-msgid "Palette of LEGO NXT blocks of sensors"
-msgstr "सेन्सरहरुको LEGO NXT खण्डहरुको प्यालेट"
-
-#. TRANS: touch sensor (implemented as a button)
-#: taextras.py:308
-msgid "touch"
-msgstr "टच"
-
-#. TRANS: distance sensor (implemented using ultrasonics)
-#: taextras.py:310
-msgid "ultrasonic"
-msgstr "अल्त्रासोनिक"
-
-#: taextras.py:312
-msgid "light"
-msgstr "उज्यालो"
-
-#: taextras.py:314
-msgid "PORT A"
-msgstr "PORT A"
-
-#: taextras.py:315
-msgid "PORT B"
-msgstr "PORT B"
-
-#: taextras.py:316
-msgid "PORT C"
-msgstr "PORT C"
-
-#: taextras.py:317
-msgid "PORT 1"
-msgstr "PORT 1"
-
-#: taextras.py:318
-msgid "PORT 2"
-msgstr "PORT 2"
-
-#: taextras.py:319
-msgid "PORT 3"
-msgstr "PORT 2"
-
-#: taextras.py:320
-msgid "PORT 4"
-msgstr "PORT 4"
-
-#. TRANS: The brick is the NXT controller
-#: taextras.py:322
-msgid "Please check the connection with the brick."
-msgstr "कृपया ब्रिकसगँको जडान जाच।"
-
-#: taextras.py:323
-msgid "Please check the port."
-msgstr "कृपया पोर्ट जाच।"
-
-#: taextras.py:324
-msgid "The value of power must be between -127 to 127."
-msgstr "शक्तिको मान -१२७ देखि १२७ भित्र हुनुपर्छ।"
-
-#: taextras.py:325
-msgid "An error has occurred: check all connections and try to reconnect."
-msgstr "त्रुटि घट्यो: सबै जडानहरु जाच र फेरि जडान गर्न कोसिस गर।"
-
-#: taextras.py:326
-msgid "NXT found"
-msgstr "NXT भेटियो"
-
-#: taextras.py:327
-msgid "NXT not found"
-msgstr "NXT भटिएन"
-
-#: taextras.py:328
-msgid "refresh NXT"
-msgstr "NXTलाई ताजा पार"
-
-#: taextras.py:329
-msgid "Search for a connected NXT brick."
-msgstr "जडान भएको NXT ब्रिकलाई खोज।"
-
-#: taextras.py:330
-msgid "play tone"
-msgstr "टोन सुरु गर"
-
-#: taextras.py:331
-msgid "frequency"
-msgstr "आवृत्ति"
-
-#: taextras.py:333
-msgid "Play a tone at frequency for time."
-msgstr "समयको लागि आवृतिमा आवाज सुरु गर।"
-
-#. TRANS: turn is the action and rotations is quantity of turns
-#: taextras.py:335
-msgid ""
-"turn motor\n"
-"rotations"
-msgstr ""
-"मोटरलाई\n"
-"आवर्तन घूमाऊ"
-
-#: taextras.py:336
-msgid "port"
-msgstr "पोर्ट"
-
-#: taextras.py:337
-msgid "power"
-msgstr "शक्ति"
-
-#: taextras.py:338
-msgid "turn a motor"
-msgstr "मोटरलाई घूमाऊ"
-
-#: taextras.py:339
-msgid ""
-"synchronize motors\n"
-"steering"
-msgstr ""
-"मोटर \n"
-"परिचालन संकालन गर"
-
-#: taextras.py:340
-msgid "rotations"
-msgstr "आवर्तनहरु"
-
-#: taextras.py:341
-msgid "synchronize two motors connected in PORT B and PORT C"
-msgstr "PORT B र PORT C मा जडान भएको दुईवटा मोटरहरु संकालन गर"
-
-#: taextras.py:342
-msgid "PORT A of the brick"
-msgstr "ब्रिकको PORT A"
-
-#: taextras.py:343
-msgid "PORT B of the brick"
-msgstr "ब्रिकको PORT B"
-
-#: taextras.py:344
-msgid "PORT C of the brick"
-msgstr "ब्रिकको PORT C"
-
-#: taextras.py:345
-msgid "start motor"
-msgstr "मोटर सुरु गर"
-
-#: taextras.py:346
-msgid "Run a motor forever."
-msgstr "मोटरलाई सधैको लागि चलाऊ।"
-
-#: taextras.py:347
-msgid "brake motor"
-msgstr "मोटरलाई ब्रेक लगाऊ"
-
-#: taextras.py:348
-msgid "Stop a specified motor."
-msgstr "उल्लेखित मोटर बन्द गर।"
-
-#. TRANS: reset is used to reset the counter associated with the motor
-#: taextras.py:350
-msgid "reset motor"
-msgstr "मोटरलाई रिसेट गर"
-
-#: taextras.py:351
-msgid "Reset the motor counter."
-msgstr "मोटर काउन्टर रिसेट गर"
-
-#: taextras.py:352
-msgid "motor position"
-msgstr "मोटरको स्थान"
-
-#: taextras.py:353
-msgid "Get the motor position."
-msgstr "मोटरको स्थान प्राप्त गर।"
-
-#: taextras.py:354
-msgid "PORT 1 of the brick"
-msgstr "ब्रिकको PORT १"
-
-#: taextras.py:355
-msgid "PORT 2 of the brick"
-msgstr "ब्रिकको PORT २"
-
-#: taextras.py:356
-msgid "PORT 3 of the brick"
-msgstr "ब्रिकको PORT ३"
-
-#: taextras.py:357
-msgid "PORT 4 of the brick"
-msgstr "ब्रिकको PORT ४"
-
-#: taextras.py:358
-msgid "read"
-msgstr "पढ"
-
-#: taextras.py:359
-msgid "sensor"
-msgstr "संवेदक"
-
-#: taextras.py:360
-msgid "Read sensor output."
-msgstr "संवेदकको उपज पढ।"
-
-#: taextras.py:361
-msgid "color sensor"
-msgstr "रंगको संवेदक"
-
-#: taextras.py:362
-msgid "light sensor"
-msgstr "प्रकाश संवेदक"
-
-#: taextras.py:363
-msgid "touch sensor"
-msgstr "टच संवेदक"
-
-#: taextras.py:364
-msgid "distance sensor"
-msgstr "दुरी संवेदक"
-
-#: taextras.py:365
-msgid "sound sensor"
-msgstr "ध्वनिको सेन्सर"
-
-#. TRANS: set light is used to set the light level associated with
-#. the color sensor (which can emit light as well as sense it)
-#: taextras.py:368
-msgid "set light"
-msgstr "प्रकाश सेट गर"
-
-#: taextras.py:369
-msgid "Set color sensor light."
-msgstr "अनुरुप पढ"
-
-#. TRANS: the battery level is the charge level of the brick
-#: taextras.py:371
-msgid "battery level"
-msgstr ""
-
-#: taextras.py:372
-msgid "Get battery level of brick."
-msgstr ""
-
-#. TRANS: Arduino plugin to control an Arduino board
-#: taextras.py:377
-msgid "Palette of Arduino blocks"
-msgstr "TRANS:अर्दिउनो खण्डहरुको प्यालेट"
-
-#: taextras.py:378
-msgid "HIGH"
-msgstr "HIGH"
-
-#: taextras.py:379
-msgid "LOW"
-msgstr "LOW"
-
-#: taextras.py:380
-msgid "INPUT"
-msgstr "INPUT"
-
-#: taextras.py:381
-msgid "OUTPUT"
-msgstr "OUTPUT"
-
-#. TRANS: PWM is pulse-width modulation
-#: taextras.py:383
-msgid "PWM"
-msgstr "PWM"
-
-#: taextras.py:384
-msgid "SERVO"
-msgstr "SERVO"
-
-#: taextras.py:385
-msgid "ERROR: Check the Arduino and the number of port."
-msgstr "ERROR: अर्दिनो र पोर्टको सङ्ख्या जाच।"
-
-#: taextras.py:386
-msgid "ERROR: Value must be a number from 0 to 255."
-msgstr "ERROR: मान ० देखि २५५ सम्मको अंक हुनुपर्छ।"
-
-#: taextras.py:387
-msgid "ERROR: Value must be either HIGH or LOW."
-msgstr "ERROR: मान कि HIGH अथवा LOW हुनुपर्छ।"
-
-#: taextras.py:388
-msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-msgstr "ERROR: विधि कि INPUT, OUTPUT, PWM अथवा SERVO हुनुपर्छ।"
-
-#. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
-#. in which an I/O pin is being used.
-#: taextras.py:391
-msgid "pin mode"
-msgstr "पिन विधि"
-
-#: taextras.py:393
-msgid "mode"
-msgstr "विधि"
-
-#: taextras.py:394
-msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-msgstr "पिन कार्य(INPUT, OUTPUT, PWM, SERVO) छान।"
-
-#: taextras.py:395
-msgid "analog write"
-msgstr "अनुरुप लेख"
-
-#: taextras.py:397
-msgid "Write analog value in specified port."
-msgstr "उल्लेखित पोर्टमा अनुरुप मान लेख।"
-
-#: taextras.py:398
-msgid "analog read"
-msgstr "अनुरुप पढ"
-
-#: taextras.py:399
-msgid ""
-"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-"determine voltage. For USB, volt=((read)*5)/1024) approximately."
-msgstr ""
-"अनुरुप पोर्टबाट मान पढ। मान ० देखि १०२३ सम्मको हुन सक्छ। वोल्टेज निर्धारित "
-"गर्न Vref प्रयोग गर। USBको लागि, volt = लगभग (((read)*5)/1024)"
-
-#: taextras.py:401
-msgid "digital write"
-msgstr "डिजिटल लेख"
-
-#: taextras.py:402
-msgid "Write digital value to specified port."
-msgstr "उल्लेखित पोर्टमा डिजिटल मान लेख।"
-
-#: taextras.py:403
-msgid "digital read"
-msgstr "डिजिटल पढ"
-
-#: taextras.py:404
-msgid "Read value from digital port."
-msgstr "डिजिटल पोर्टबाट मान पढ।"
-
-#: taextras.py:405
-msgid "Set HIGH value for digital port."
-msgstr "डिजिटल पोर्टको लागि HIGH मान सेट गर।"
-
-#: taextras.py:406
-msgid "Configure Arduino port for digital input."
-msgstr "डिजिटल आगतको लागि Arduino समनुरूप गर"
-
-#: taextras.py:407
-msgid "Configure Arduino port to drive a servo."
-msgstr "सर्वो चलाउन Arduino समनुरूप गर।"
-
-#: taextras.py:408
-msgid "Set LOW value for digital port."
-msgstr "डिजिटल पोर्टको लागि LOW मान सेट गर।"
-
-#: taextras.py:409
-msgid "Configure Arduino port for digital output."
-msgstr "डिजिटल उत्पादको लागि Arduino समनुरूप गर"
-
-#: taextras.py:410
-msgid "Configure Arduino port for PWM (pulse-width modulation)."
-msgstr "PWM(pulse-width modulation)को लागि समनुरूप गर।"
-
-#: turtleblocks.py:80
+#: turtleblocks.py:81
 msgid "usage is"
 msgstr "प्रयोग हो"
 
-#: turtleblocks.py:232
+#: turtleblocks.py:234
 msgid "No option action:"
 msgstr "विकल्प नभएमा कार्य:"
 
-#: turtleblocks.py:247
+#: turtleblocks.py:249
 msgid "File not found"
 msgstr "फाइल भेटिएन"
 
-#: turtleblocks.py:271
+#: turtleblocks.py:273
 #, python-format
 msgid "Configuration directory not writable: %s"
 msgstr "कनफिगरेसन निर्देशिकामा लेख्न मिल्दैन: %s"
 
-#: turtleblocks.py:327
+#: turtleblocks.py:350
 msgid "New"
 msgstr "नयाँ"
 
-#: turtleblocks.py:328
+#: turtleblocks.py:351
 msgid "Open"
 msgstr "खोल"
 
-#: turtleblocks.py:329
+#: turtleblocks.py:352
 msgid "Save"
 msgstr "सेभ गर"
 
-#: turtleblocks.py:330
+#: turtleblocks.py:353
 msgid "Save as"
 msgstr "नाममा सेभ गर"
 
-#: turtleblocks.py:335
+#: turtleblocks.py:358
 msgid "Quit"
 msgstr "बन्द गर्नुहोस्"
 
-#: turtleblocks.py:336
+#: turtleblocks.py:359
 msgid "File"
 msgstr "फाइल"
 
-#: turtleblocks.py:343
+#: turtleblocks.py:366
 msgid "Rescale coordinates"
 msgstr "निर्देशांक रिस्केल गर"
 
-#: turtleblocks.py:349
+#: turtleblocks.py:372
 msgid "Reset block size"
 msgstr "खण्ड आकार रिसेट गर"
 
-#: turtleblocks.py:367
+#: turtleblocks.py:390
 msgid "Show/hide blocks"
 msgstr "खण्ड लुकाऊ/देखाऊ"
 
-#: turtleblocks.py:369
+#: turtleblocks.py:392
 msgid "Tools"
 msgstr "औजार"
 
-#: turtleblocks.py:375
+#: turtleblocks.py:398
 msgid "Debug"
 msgstr "त्रुटि सच्याउनुहोस्"
 
-#: turtleblocks.py:377
+#: turtleblocks.py:400
 msgid "Turtle"
 msgstr "टर्टल"
 
-#: turtleblocks.py:411
+#: turtleblocks.py:434
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr "तिमीसगँ बचत नगरिएको काम छ। बन्द गर्नुपूर्व बचत गर्न चाहनुहुन्छ?"
 
-#: turtleblocks.py:412
+#: turtleblocks.py:435
 msgid "Save project?"
 msgstr "परियोजना सेभ गर?"
+
+#~ msgid "Turtle Art Mini"
+#~ msgstr "टर्टल आर्ट मिनि"
+
+#~ msgid "Turtle Confusion"
+#~ msgstr "टर्टल स्तब्घ"
+
+#~ msgid "Select a challenge"
+#~ msgstr "एउटा मुकाब्ला छान"
+
+#~ msgid "Palette of Mexican pesos"
+#~ msgstr "मेक्सिकन पेसोको प्यालेट"
+
+#~ msgid "Palette of Colombian pesos"
+#~ msgstr "कोल्म्बियन पेसोको प्यालेट"
+
+#~ msgid "Palette of Rwandan francs"
+#~ msgstr "रूआण्डान फ्रेकंको प्यालेट"
+
+#~ msgid "Palette of US dollars"
+#~ msgstr "अमेरिकी डलरको प्यालेट"
+
+#~ msgid "Palette of Australian dollars"
+#~ msgstr "अस्ट्रेलियन डलरको प्यालेट"
+
+#~ msgid "Palette of Uruguayan Pesos"
+#~ msgstr "उरुगुएन पेसोको प्यालेट"
+
+#~ msgid "TurtleBots"
+#~ msgstr "टर्टलबोट्स"
+
+#~ msgid "adjust LED intensity between 0 and 255"
+#~ msgstr "LEDको प्रकाश-तीव्रता ० देखि २५५ भित्र समायोजित गर।"
+
+#~ msgid "returns the object gray level as a number between 0 and 1023"
+#~ msgstr "ऐम्बीअन्ट प्रकाश मात्रा ० देखि १०२३ भित्रको अंकको रुपमा फिर्ता गर्छ"
+
+#~ msgid "returns 1 when the button is press and 0 otherwise"
+#~ msgstr "बटन थिच्दा १ फर्काउँछ अथवा ० फर्काउँछ।"
+
+#~ msgid "returns the ambient light level as a number between 0 and 1023"
+#~ msgstr "ऐम्बीअन्ट प्रकाश मात्रा ० देखि १०२३ भित्रको अंकको रुपमा फिर्ता गर्छ"
+
+#~ msgid "returns the ambient temperature as a number between 0 and 255"
+#~ msgstr "ऐम्बीअन्ट तापमान ० देखि २५५ भित्रको अंकको रुपमा फिर्ता गर्छ"
+
+#~ msgid ""
+#~ "returns the distance from the object in front of the sensor as a number "
+#~ "between 0 and 255"
+#~ msgstr ""
+#~ "सेंसर अगाडि देखि वस्तु सम्मको दुरी ० देखि २५५ भित्रको अंकको रुपमा फिर्ता "
+#~ "गर्छ"
+
+#~ msgid "returns 0 or 1 depending on the sensor inclination"
+#~ msgstr "सेंसर झुकावमा निर्भर भई ० वा १ फिर्ता गर्छ"
+
+#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+#~ msgstr "सेंसरले चुंबकीय क्षेत्र पता लगाउँदा १ फिर्ता गर्छ, अथवा ० फिर्ता गर्छ।"
+
+#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
+#~ msgstr "० देखि १ मा बदल्नछ, आवृत्ति कंपनमा निर्भर हुन्छ"
+
+#~ msgid "LED"
+#~ msgstr "LED"
+
+#~ msgid "button"
+#~ msgstr "बटन"
+
+#~ msgid "grayscale"
+#~ msgstr "ग्रेस्केल"
+
+#~ msgid "ambient light"
+#~ msgstr "अ्यामबीअन्ट प्रकाश"
+
+#~ msgid "temperature"
+#~ msgstr "तापमान"
+
+#~ msgid "distance"
+#~ msgstr "दुरी"
+
+#~ msgid "tilt"
+#~ msgstr "झुकाव"
+
+#~ msgid "magnetic induction"
+#~ msgstr "चुंबकीय प्रेरण"
+
+#~ msgid "vibration"
+#~ msgstr "कंपन"
+
+#~ msgid "Butia Robot"
+#~ msgstr "बुटिया रोबट"
+
+#~ msgid "battery charge Butia"
+#~ msgstr "बुटियाको बैटरी चार्ज"
+
+#~ msgid "returns the battery charge as a number between 0 and 255"
+#~ msgstr "ब्याटरी चार्ज ० देखि २५५ सम्म अंकको रुपमा फिर्ता गर्छ"
+
+#~ msgid "speed Butia"
+#~ msgstr "बुटियाको गति बढाऊ"
+
+#~ msgid "forward Butia"
+#~ msgstr "बुटियालाई अगाडि लग"
+
+#~ msgid "move the Butia robot forward"
+#~ msgstr "बुटिया रोबटलाई अगाडि सार"
+
+#~ msgid "move the Butia robot forward a predefined distance"
+#~ msgstr "बुटिया रोबटलाई पूर्वनिर्धारित दुरीमा अगाडि सार"
+
+#~ msgid "left Butia"
+#~ msgstr "बायाँ बुटिया"
+
+#, fuzzy
+#~ msgid "turn the Butia robot at left"
+#~ msgstr "बुटिया रोबटलाई दायाँ मोड़"
+
+#~ msgid "backward Butia"
+#~ msgstr "बुटियालाई पछाडि सार"
+
+#~ msgid "move the Butia robot backward"
+#~ msgstr "बुटिया रोबटलाई पछाडि सार"
+
+#~ msgid "move the Butia robot backward a predefined distance"
+#~ msgstr "बुटिया रोबटलाई पूर्वनिर्धारित दुरीमा पछाडि सार"
+
+#~ msgid "right Butia"
+#~ msgstr "दायाँ बुटिया"
+
+#~ msgid "turn the Butia robot at right"
+#~ msgstr "बुटिया रोबटलाई दायाँ मोड़"
+
+#~ msgid "turn Butia"
+#~ msgstr "बुटियालाई मोड़"
+
+#~ msgid "turn the Butia robot x degrees"
+#~ msgstr "बुटिया रोबटलाई x डिग्री मोड़"
+
+#~ msgid "stop Butia"
+#~ msgstr "बुटियालाई रोक"
+
+#~ msgid "stop the Butia robot"
+#~ msgstr "बुटिया रोबटलाई रोक"
+
+#~ msgid "Butia"
+#~ msgstr "बुटिया"
+
+#, fuzzy
+#~ msgid "Error on initialization of the camera"
+#~ msgstr "क्यामेराको आरंभीकरणमा त्रुटि"
+
+#~ msgid "FollowMe"
+#~ msgstr "मलाई अनुगमन गर"
+
+#, fuzzy
+#~ msgid "Search for a connected camera."
+#~ msgstr "जडान भएको NXT ब्रिकलाई खोज।"
+
+#~ msgid "calibration"
+#~ msgstr "व्यासमापन"
+
+#, fuzzy
+#~ msgid "store a personalized calibration"
+#~ msgstr "व्यक्तिगत व्यासमापन भण्डार गर"
+
+#~ msgid "return a personalized calibration"
+#~ msgstr "व्यक्तिगत व्यासमापन फिर्ता गर"
+
+#~ msgid "follow"
+#~ msgstr "अनुगमन"
+
+#~ msgid "follow a color or calibration"
+#~ msgstr "रंग वा व्यासमापन अनुकरण गर"
+
+#~ msgid "minimum pixels"
+#~ msgstr "न्युनत्तम पिक्सेल"
+
+#~ msgid "set the minimal number of pixels to follow"
+#~ msgstr "परिणाम हेर्न न्यूनतम संख्या सेट गर"
+
+#~ msgid "threshold"
+#~ msgstr "सीमा"
+
+#~ msgid "set a threshold for a RGB color"
+#~ msgstr "RGB रंगको लागि सीमा रेखा सेट गर"
+
+#~ msgid "x position"
+#~ msgstr "x स्थान"
+
+#~ msgid "return x position"
+#~ msgstr "x स्थान फिर्ता गर"
+
+#~ msgid "y position"
+#~ msgstr "y स्थान"
+
+#~ msgid "return y position"
+#~ msgstr "y स्थान फिर्ता गर"
+
+#~ msgid "pixels"
+#~ msgstr "पिक्सेलहरु"
+
+#~ msgid "return the number of pixels of the biggest blob"
+#~ msgstr "सबैभन्दा ठुलो बल्बको पिक्सेलहरुको सङ्ख्या फर्काउँछ"
+
+#~ msgid "empty calibration"
+#~ msgstr "खाली व्यासमापन"
+
+#~ msgid "error in string conversion"
+#~ msgstr "स्ट्रिंग सम्परिवर्तनमा त्रुटि छ"
+
+#~ msgid "SumBot"
+#~ msgstr "समबोट्"
+
+#~ msgid "speed SumBot"
+#~ msgstr "सम्बोट्को गति बढाऊ"
+
+#~ msgid "submit the speed to the SumBot"
+#~ msgstr "सम्बोट्लाई गति देऊ"
+
+#~ msgid "set the default speed for the movement commands"
+#~ msgstr "चाल आदेशहरुको लागि पूर्वनिर्धारित गति सेट गर।"
+
+#~ msgid "forward SumBot"
+#~ msgstr "सम्बोट्लाई अगाडि लग"
+
+#~ msgid "move SumBot forward"
+#~ msgstr "सम्बोट्लाई अगाडि सार"
+
+#~ msgid "backward SumBot"
+#~ msgstr "सम्बोट्लाई पछाडि लग"
+
+#~ msgid "move SumBot backward"
+#~ msgstr "सम्बोट्लाई पछाडि सार"
+
+#~ msgid "stop SumBot"
+#~ msgstr "सम्बोट्लाई रोक"
+
+#~ msgid "stop the SumBot"
+#~ msgstr "सम्बोट्लाई रोक"
+
+#~ msgid "left SumBot"
+#~ msgstr "सम्बोट्लाई बायाँ मोड़"
+
+#~ msgid "turn left the SumBot"
+#~ msgstr "सम्बोट्लाई बायाँ मोड़"
+
+#~ msgid "right SumBot"
+#~ msgstr "सम्बोट्लाई दायाँ मोड़"
+
+#~ msgid "turn right the SumBot"
+#~ msgstr "सम्बोट्लाई दायाँ मोड़"
+
+#~ msgid "angle to center"
+#~ msgstr "केंद्र तर्फ कोण गर"
+
+#~ msgid "get the angle to the center of the dohyo"
+#~ msgstr "डोजोको केंद्र तर्फ कोण मिलाऊ"
+
+#~ msgid "angle to Enemy"
+#~ msgstr "शत्रु तर्फ कोण राख"
+
+#~ msgid "get the angle to the Enemy"
+#~ msgstr "शत्रु तर्फ कोण मिलाऊ"
+
+#~ msgid "x coor. SumBot"
+#~ msgstr "सम्बोट्को x निर्देशांक"
+
+#~ msgid "get the x coordinate of the SumBot"
+#~ msgstr "सम्बोट्को x निर्देशांक लिऊ ।"
+
+#~ msgid "y coor. SumBot"
+#~ msgstr "सम्बोट्को y निर्देशांक"
+
+#~ msgid "get the y coordinate of the SumBot"
+#~ msgstr "सम्बोट्को य निर्देशांक लिऊ ।"
+
+#~ msgid "x coor. Enemy"
+#~ msgstr "सम्बोट्को शत्रुको x निर्देशांक"
+
+#~ msgid "get the x coordinate of the Enemy"
+#~ msgstr "शत्रुको x निर्देशांक लिऊ ।"
+
+#~ msgid "y coor. Enemy"
+#~ msgstr "सम्बोट्को शत्रुको y निर्देशांक"
+
+#~ msgid "get the y coordinate of the Enemy"
+#~ msgstr "शत्रुको ञ निर्देशांक लिऊ ।"
+
+#~ msgid "rotation SumBot"
+#~ msgstr "सम्बोट्को परिक्रमण"
+
+#~ msgid "get the rotation of the Sumbot"
+#~ msgstr "सम्बोट्को परिक्रमण लिऊ ।"
+
+#~ msgid "rotation Enemy"
+#~ msgstr "शत्रुको परिक्रमण"
+
+#~ msgid "get the rotation of the Enemy"
+#~ msgstr "शत्रुको परिक्रमण लिऊ ।"
+
+#~ msgid "distance to center"
+#~ msgstr "केंद्र सम्मको दुरी"
+
+#~ msgid "get the distance to the center of the dohyo"
+#~ msgstr "डोजोको केंद्र सम्मको दुरी लिऊ ।"
+
+#~ msgid "distance to Enemy"
+#~ msgstr "शत्रुसम्मको दुरी"
+
+#~ msgid "get the distance to the Enemy"
+#~ msgstr "शत्रुसम्मको दुरी लिऊ ।"
+
+#~ msgid "update information"
+#~ msgstr "सुचना अद्यावधिक गर"
+
+#~ msgid "update information from the server"
+#~ msgstr "सर्भरबाट सुचना अद्यावधिक गर"
+
+#~ msgid "Palette of physics blocks"
+#~ msgstr "भौतिकविज्ञान खण्डहरुको प्यालेट"
+
+#~ msgid "start polygon"
+#~ msgstr "बहुभुज सुरु गर"
+
+#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
+#~ msgstr "हालको टर्टलको xy स्थानमा आधारित नयाँ बहुभुज परिभाषा गर्न सुरु गर।"
+
+#~ msgid "add point"
+#~ msgstr "बिन्दु थप"
+
+#~ msgid ""
+#~ "Add a new point to the current polygon based on the current Turtle xy "
+#~ "position."
+#~ msgstr "हालको टर्टलको xy स्थानमा आधारित हालको बहुभुजमा नयाँ बिन्दु थप ।"
+
+#~ msgid "end polygon"
+#~ msgstr "बहुभुज अन्त गर"
+
+#~ msgid "Define a new polygon."
+#~ msgstr "नयाँ बहुभुज परिभाषा गर।"
+
+#~ msgid "end filled polygon"
+#~ msgstr "भरेको बहुभुज अन्त गर"
+
+#~ msgid "Not a simple polygon"
+#~ msgstr "सामान्य बहुभुज हैन"
+
+#~ msgid "Define a new filled polygon."
+#~ msgstr "नयाँ भरेको बहुभुज परिभाषा गर।"
+
+#~ msgid "triangle"
+#~ msgstr "त्रिभुज"
+
+#~ msgid "base"
+#~ msgstr "सतह"
+
+#~ msgid "Add a triangle object to the project."
+#~ msgstr "परियोजनामा त्रिभुज वस्तु थप ।"
+
+#~ msgid "circle"
+#~ msgstr "वृत्त"
+
+#~ msgid "Add a circle object to the project."
+#~ msgstr "परियोजनामा वृत्त वस्तु थप ।"
+
+#~ msgid "rectangle"
+#~ msgstr "समकोण आयत"
+
+#~ msgid "Add a rectangle object to the project."
+#~ msgstr "परियोजनामा समकोण आयत वस्तु थप ।"
+
+#~ msgid "reset"
+#~ msgstr "पुनराम्भ"
+
+#~ msgid "Reset the project; clear the object list."
+#~ msgstr "परियोजना पुनराम्भ गर; वस्तु सुचि सफा गर।"
+
+#~ msgid "motor"
+#~ msgstr "मोटर"
+
+#~ msgid "torque"
+#~ msgstr "चक्रिय गति"
+
+#~ msgid "speed"
+#~ msgstr "गति"
+
+#~ msgid ""
+#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
+#~ "placed on the most recent object created."
+#~ msgstr ""
+#~ "मोटरको चक्रिय गति र गति ०(बन्द) देखि सकारात्मक अंकहरु सम्म फैलिएको हुन्छ; "
+#~ "मोटर हालै मात्र बनाएको वस्तुमा राखिन्छ।"
+
+#~ msgid "pin"
+#~ msgstr "पिन"
+
+#~ msgid "Pin an object down so that it cannot fall."
+#~ msgstr "वस्तुलाई नखस्ने गरि त्यसलाई अड्याऊ।"
+
+#~ msgid "joint"
+#~ msgstr "संयुक्त"
+
+#~ msgid ""
+#~ "Join two objects together (the most recent object created and the object at "
+#~ "point x, y)."
+#~ msgstr "दुईवटा वस्तुहरु साथमा जोड(हालैमात्र बनाएको वस्तु र बिन्दु x, yको वस्तु)"
+
+#~ msgid "Save the project to the Journal as a Physics activity."
+#~ msgstr "भौतिकविज्ञान क्रियाकलापको रुपमा परियोजनालाई पंजिकामा सेभ गर।"
+
+#, fuzzy
+#~ msgid "Add a gear object to the project."
+#~ msgstr "परियोजनामा वृत्त वस्तु थप ।"
+
+#~ msgid "density"
+#~ msgstr "घनत्व"
+
+#~ msgid ""
+#~ "Set the density property for objects (density can be any positive number)."
+#~ msgstr ""
+#~ "वस्तुहरुको लागि घनत्व गुण सेट गर(घनत्व कुनै पनि सकारात्मक अंक हुन सक्छ)।"
+
+#~ msgid "friction"
+#~ msgstr "घर्षण"
+
+#~ msgid ""
+#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
+#~ "friction off and 1 is strong friction)."
+#~ msgstr ""
+#~ "वस्तुहरुको लागि घर्षण गुण सेट गर( ० देखि १ सम्घम मान, जहाँ ० ले घर्षणलाई "
+#~ "बन्द गर्छ र १ मज़बूत घर्षण हो)।"
+
+#~ msgid "bounciness"
+#~ msgstr "ठोक्किएर फर्कने गुण"
+
+#~ msgid ""
+#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+#~ "no bounce and 1 is very bouncy)."
+#~ msgstr ""
+#~ "वस्तुहरुको लागि ठोक्किएर फर्कने गुण सेट गर( ० देखि १ सम्घम मान, जहाँ ० "
+#~ "भन्नाले शून्य उछाल र १ घेरै उत्फुल्ल हो)।"
+
+#~ msgid "dynamic"
+#~ msgstr "गतिशील शक्ति"
+
+#~ msgid ""
+#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+#~ msgstr ""
+#~ "यदि गतिशील शक्ति ‍ = १, वस्तु चल्न सक्छ; यदि गतिशील शक्ति ‍ = ०, त्यो "
+#~ "स्थानमा स्थापित हुन्छ।"
+
+#~ msgid "Palette of WeDo blocks"
+#~ msgstr "WeDo खण्डहरुको प्यालेट"
+
+#~ msgid ""
+#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+#~ "tilt left, 2 == tilt right)"
+#~ msgstr ""
+#~ "सेन्सरको आउट्पुट झुकाऊ:(-१==नझुकाऊ,०==अगाडि झुकाऊ,३==पछाडि झुकाऊ,१==बायाँ "
+#~ "झुकाऊ,२‍‍‍‍==दायाँ झुकाऊ)"
+
+#~ msgid "distance sensor output"
+#~ msgstr "सेन्सरको आउट्पुटको दुरी"
+
+#~ msgid "Motor A"
+#~ msgstr "मोटर A"
+
+#~ msgid "returns the current value of Motor A"
+#~ msgstr "मोटर Aको हालको मान फर्काउँछ"
+
+#~ msgid "Motor B"
+#~ msgstr "मोटर B"
+
+#~ msgid "returns the current value of Motor B"
+#~ msgstr "मोटर Bको हालको मान फर्काउँछ"
+
+#~ msgid "set the value for Motor A"
+#~ msgstr "मोटर Aको मान सेट गर"
+
+#~ msgid "set the value for Motor B"
+#~ msgstr "मोटर Bको मान सेट गर"
+
+#~ msgid "Palette of LEGO NXT blocks of motors"
+#~ msgstr "मोटरहरुको LEGO NXT खण्डहरुको प्यालेट"
+
+#~ msgid "Palette of LEGO NXT blocks of sensors"
+#~ msgstr "सेन्सरहरुको LEGO NXT खण्डहरुको प्यालेट"
+
+#~ msgid "touch"
+#~ msgstr "टच"
+
+#~ msgid "ultrasonic"
+#~ msgstr "अल्त्रासोनिक"
+
+#~ msgid "light"
+#~ msgstr "उज्यालो"
+
+#, fuzzy
+#~ msgid "grey"
+#~ msgstr "खरानी रङ"
+
+#, fuzzy
+#~ msgid "Please check the connection with the brick"
+#~ msgstr "कृपया ब्रिकसगँको जडान जाच।"
+
+#, fuzzy
+#~ msgid "The value of power must be between -127 to 127"
+#~ msgstr "शक्तिको मान -१२७ देखि १२७ भित्र हुनुपर्छ।"
+
+#, fuzzy
+#~ msgid "An error has occurred: check all connections and try to reconnect"
+#~ msgstr "त्रुटि घट्यो: सबै जडानहरु जाच र फेरि जडान गर्न कोसिस गर।"
+
+#~ msgid "NXT not found"
+#~ msgstr "NXT भटिएन"
+
+#~ msgid "refresh NXT"
+#~ msgstr "NXTलाई ताजा पार"
+
+#~ msgid "Search for a connected NXT brick."
+#~ msgstr "जडान भएको NXT ब्रिकलाई खोज।"
+
+#~ msgid "play tone"
+#~ msgstr "टोन सुरु गर"
+
+#~ msgid "frequency"
+#~ msgstr "आवृत्ति"
+
+#~ msgid "Play a tone at frequency for time."
+#~ msgstr "समयको लागि आवृतिमा आवाज सुरु गर।"
+
+#~ msgid "port"
+#~ msgstr "पोर्ट"
+
+#~ msgid "power"
+#~ msgstr "शक्ति"
+
+#~ msgid "rotations"
+#~ msgstr "आवर्तनहरु"
+
+#~ msgid "turn a motor"
+#~ msgstr "मोटरलाई घूमाऊ"
+
+#, fuzzy
+#~ msgid ""
+#~ "synchronize\n"
+#~ "\n"
+#~ "motors"
+#~ msgstr "दुईवटा मोटरहरु सनकालिन गर"
+
+#~ msgid "synchronize two motors connected in PORT B and PORT C"
+#~ msgstr "PORT B र PORT C मा जडान भएको दुईवटा मोटरहरु संकालन गर"
+
+#~ msgid "PORT A"
+#~ msgstr "PORT A"
+
+#~ msgid "PORT A of the brick"
+#~ msgstr "ब्रिकको PORT A"
+
+#~ msgid "PORT B"
+#~ msgstr "PORT B"
+
+#~ msgid "PORT B of the brick"
+#~ msgstr "ब्रिकको PORT B"
+
+#~ msgid "PORT C"
+#~ msgstr "PORT C"
+
+#~ msgid "PORT C of the brick"
+#~ msgstr "ब्रिकको PORT C"
+
+#~ msgid "start motor"
+#~ msgstr "मोटर सुरु गर"
+
+#~ msgid "Run a motor forever."
+#~ msgstr "मोटरलाई सधैको लागि चलाऊ।"
+
+#~ msgid "brake motor"
+#~ msgstr "मोटरलाई ब्रेक लगाऊ"
+
+#~ msgid "Stop a specified motor."
+#~ msgstr "उल्लेखित मोटर बन्द गर।"
+
+#~ msgid "reset motor"
+#~ msgstr "मोटरलाई रिसेट गर"
+
+#~ msgid "Reset the motor counter."
+#~ msgstr "मोटर काउन्टर रिसेट गर"
+
+#~ msgid "motor position"
+#~ msgstr "मोटरको स्थान"
+
+#~ msgid "Get the motor position."
+#~ msgstr "मोटरको स्थान प्राप्त गर।"
+
+#~ msgid "PORT 1"
+#~ msgstr "PORT 1"
+
+#~ msgid "PORT 1 of the brick"
+#~ msgstr "ब्रिकको PORT १"
+
+#~ msgid "read"
+#~ msgstr "पढ"
+
+#~ msgid "sensor"
+#~ msgstr "संवेदक"
+
+#~ msgid "Read sensor output."
+#~ msgstr "संवेदकको उपज पढ।"
+
+#~ msgid "PORT 2"
+#~ msgstr "PORT 2"
+
+#~ msgid "PORT 2 of the brick"
+#~ msgstr "ब्रिकको PORT २"
+
+#~ msgid "light sensor"
+#~ msgstr "प्रकाश संवेदक"
+
+#~ msgid "PORT 3"
+#~ msgstr "PORT 2"
+
+#~ msgid "PORT 3 of the brick"
+#~ msgstr "ब्रिकको PORT ३"
+
+#~ msgid "touch sensor"
+#~ msgstr "टच संवेदक"
+
+#~ msgid "distance sensor"
+#~ msgstr "दुरी संवेदक"
+
+#~ msgid "PORT 4"
+#~ msgstr "PORT 4"
+
+#~ msgid "PORT 4 of the brick"
+#~ msgstr "ब्रिकको PORT ४"
+
+#~ msgid "sound sensor"
+#~ msgstr "ध्वनिको सेन्सर"
+
+#~ msgid "color sensor"
+#~ msgstr "रंगको संवेदक"
+
+#~ msgid "set light"
+#~ msgstr "प्रकाश सेट गर"
+
+#~ msgid "Set color sensor light."
+#~ msgstr "अनुरुप पढ"
+
+#~ msgid "HIGH"
+#~ msgstr "HIGH"
+
+#~ msgid "LOW"
+#~ msgstr "LOW"
+
+#~ msgid "INPUT"
+#~ msgstr "INPUT"
+
+#~ msgid "OUTPUT"
+#~ msgstr "OUTPUT"
+
+#~ msgid "PWM"
+#~ msgstr "PWM"
+
+#~ msgid "SERVO"
+#~ msgstr "SERVO"
+
+#~ msgid "ERROR: Check the Arduino and the number of port."
+#~ msgstr "ERROR: अर्दिनो र पोर्टको सङ्ख्या जाच।"
+
+#~ msgid "ERROR: Value must be a number from 0 to 255."
+#~ msgstr "ERROR: मान ० देखि २५५ सम्मको अंक हुनुपर्छ।"
+
+#~ msgid "ERROR: Value must be either HIGH or LOW."
+#~ msgstr "ERROR: मान कि HIGH अथवा LOW हुनुपर्छ।"
+
+#~ msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+#~ msgstr "ERROR: विधि कि INPUT, OUTPUT, PWM अथवा SERVO हुनुपर्छ।"
+
+#~ msgid "pin mode"
+#~ msgstr "पिन विधि"
+
+#~ msgid "mode"
+#~ msgstr "विधि"
+
+#~ msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+#~ msgstr "पिन कार्य(INPUT, OUTPUT, PWM, SERVO) छान।"
+
+#~ msgid "analog write"
+#~ msgstr "अनुरुप लेख"
+
+#~ msgid "Write analog value in specified port."
+#~ msgstr "उल्लेखित पोर्टमा अनुरुप मान लेख।"
+
+#~ msgid "analog read"
+#~ msgstr "अनुरुप पढ"
+
+#~ msgid ""
+#~ "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+#~ "determine voltage. For USB, volt=((read)*5)/1024) approximately."
+#~ msgstr ""
+#~ "अनुरुप पोर्टबाट मान पढ। मान ० देखि १०२३ सम्मको हुन सक्छ। वोल्टेज निर्धारित "
+#~ "गर्न Vref प्रयोग गर। USBको लागि, volt = लगभग (((read)*5)/1024)"
+
+#~ msgid "digital write"
+#~ msgstr "डिजिटल लेख"
+
+#~ msgid "Write digital value to specified port."
+#~ msgstr "उल्लेखित पोर्टमा डिजिटल मान लेख।"
+
+#~ msgid "digital read"
+#~ msgstr "डिजिटल पढ"
+
+#~ msgid "Read value from digital port."
+#~ msgstr "डिजिटल पोर्टबाट मान पढ।"
+
+#~ msgid "Set HIGH value for digital port."
+#~ msgstr "डिजिटल पोर्टको लागि HIGH मान सेट गर।"
+
+#~ msgid "Configure Arduino port for digital input."
+#~ msgstr "डिजिटल आगतको लागि Arduino समनुरूप गर"
+
+#~ msgid "Configure Arduino port to drive a servo."
+#~ msgstr "सर्वो चलाउन Arduino समनुरूप गर।"
+
+#~ msgid "Set LOW value for digital port."
+#~ msgstr "डिजिटल पोर्टको लागि LOW मान सेट गर।"
+
+#~ msgid "Configure Arduino port for digital output."
+#~ msgstr "डिजिटल उत्पादको लागि Arduino समनुरूप गर"
+
+#~ msgid "Configure Arduino port for PWM (pulse-width modulation)."
+#~ msgstr "PWM(pulse-width modulation)को लागि समनुरूप गर।"
+
+#, fuzzy
+#~ msgid "Palette of Expeyes blocks"
+#~ msgstr "WeDo खण्डहरुको प्यालेट"
+
+#, fuzzy
+#~ msgid "samples"
+#~ msgstr "नमूनाहरु"
+
+#, fuzzy
+#~ msgid ""
+#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
+#~ "an argument"
+#~ msgstr ""
+#~ "बुटिया मोटरको गति ० देखि १०२३ सम्म मानको रुपमा सेट गर, एउटा बहसद्वारा पास "
+#~ "गरेपछि"
+
+#, fuzzy
+#~ msgid "turn the Butia robot to the left"
+#~ msgstr "बुटिया रोबटलाई बायाँ मोड़"
+
+#~ msgid "display Butia"
+#~ msgstr "बुटिया देखाऊ"
+
+#~ msgid "Hello World    Butia            "
+#~ msgstr "हेलो वल्ड  बुटिया                    "
+
+#~ msgid "print text in Butia robot 32-character ASCII display"
+#~ msgstr "बुटिया रोबटको पाठलाई ३२-क्यारेक्टर ASCII दिस्प्लेमा छाप।"
+
+#~ msgid "G"
+#~ msgstr "G"
+
+#~ msgid "R"
+#~ msgstr "R"
+
+#~ msgid "B"
+#~ msgstr "B"
+
+#~ msgid "follow a RGB color"
+#~ msgstr "RGB रंग अनुगमन गर"
+
+#~ msgid "save calibration 1"
+#~ msgstr "व्यासमापन १ सेभ गर"
+
+#~ msgid "stores a calibration in calibration 1"
+#~ msgstr "व्यासमापन १ मा व्यासमापनलाई भण्डार गर्छ"
+
+#~ msgid "save calibration 2"
+#~ msgstr "व्यासमापन २ सेभ गर"
+
+#~ msgid "stores a calibration in calibration 2"
+#~ msgstr "व्यासमापन २ मा व्यासमापनलाई भण्डार गर्छ"
+
+#~ msgid "calibration 1"
+#~ msgstr "व्यासमापन १"
+
+#~ msgid "return calibration 1"
+#~ msgstr "व्यासमापन १ फिर्ता गर"
+
+#~ msgid "calibration 2"
+#~ msgstr "व्यासमापन २"
+
+#~ msgid "return calibration 2"
+#~ msgstr "व्यासमापन २ फिर्ता गर"
+
+#~ msgid "Please check the port."
+#~ msgstr "कृपया पोर्ट जाच।"
+
+#~ msgid "NXT found"
+#~ msgstr "NXT भेटियो"
+
+#~ msgid ""
+#~ "turn motor\n"
+#~ "rotations"
+#~ msgstr ""
+#~ "मोटरलाई\n"
+#~ "आवर्तन घूमाऊ"
+
+#~ msgid ""
+#~ "synchronize motors\n"
+#~ "steering"
+#~ msgstr ""
+#~ "मोटर \n"
+#~ "परिचालन संकालन गर"
+
+#~ msgid "Palette of Arduino blocks"
+#~ msgstr "TRANS:अर्दिउनो खण्डहरुको प्यालेट"
 
 #~ msgid "delay Butia"
 #~ msgstr "बुटिया विलम्ब गर"
@@ -3093,9 +2743,6 @@ msgstr "परियोजना सेभ गर?"
 #~ msgstr ""
 #~ "मोटरलाई\n"
 #~ "परिचालक सनकालिन गर"
-
-#~ msgid "synchronize two motors"
-#~ msgstr "दुईवटा मोटरहरु सनकालिन गर"
 
 #~ msgid "<Ctrl>b"
 #~ msgstr "<Ctrl>b"
@@ -3252,9 +2899,6 @@ msgstr "परियोजना सेभ गर?"
 
 #~ msgid "Load my block"
 #~ msgstr "मेरो ब्लक सुरु गर"
-
-#~ msgid "Samples"
-#~ msgstr "नमूनाहरु"
 
 #~ msgid "picture left"
 #~ msgstr "चित्र बायाँतिर छ"

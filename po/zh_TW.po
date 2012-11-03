@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-27 14:55-0400\n"
+"POT-Creation-Date: 2012-11-02 10:01-0400\n"
 "PO-Revision-Date: 2012-03-21 19:17+0200\n"
 "Last-Translator: Yuan <yuanchao@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #. TRANS: "name" option from activity.info file
-#: TurtleArt/tawindow.py:3817 pysamples/grecord.py:205 turtleblocks.py:295
+#: TurtleArt/tawindow.py:3767 pysamples/grecord.py:205 turtleblocks.py:303
 msgid "Turtle Art"
 msgstr "小海龜"
 
@@ -101,11 +101,11 @@ msgstr "讓小烏龜跟著弧形移動"
 msgid "set xy"
 msgstr "指定座標"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257 taextras.py:261
+#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
 msgid "x"
 msgstr "X座標"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257 taextras.py:262
+#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
 msgid "y"
 msgstr "Y座標"
 
@@ -123,8 +123,8 @@ msgstr "設定標頭"
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "設定小烏龜的方向（0是正對螢幕上方）"
 
-#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3811
-#: TurtleArt/tawindow.py:3817 TurtleArtActivity.py:538
+#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3761
+#: TurtleArt/tawindow.py:3767 TurtleArtActivity.py:557
 msgid "xcor"
 msgstr "X座標"
 
@@ -134,8 +134,8 @@ msgid ""
 "number block)"
 msgstr "保持小烏龜現在的x座標值（可以用來代替數字區塊）"
 
-#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3811
-#: TurtleArt/tawindow.py:3817 TurtleArtActivity.py:539
+#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3761
+#: TurtleArt/tawindow.py:3767 TurtleArtActivity.py:558
 msgid "ycor"
 msgstr "Y座標"
 
@@ -145,8 +145,8 @@ msgid ""
 "number block)"
 msgstr "保持小烏龜目前的y座標值（可以用來代替數字區塊）"
 
-#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3812
-#: TurtleArt/tawindow.py:3818 TurtleArtActivity.py:539
+#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3762
+#: TurtleArt/tawindow.py:3768 TurtleArtActivity.py:558
 msgid "heading"
 msgstr "方向"
 
@@ -165,7 +165,7 @@ msgid "fill screen"
 msgstr "全螢幕"
 
 #: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
-#: TurtleArt/tabasics.py:340 taextras.py:311
+#: TurtleArt/tabasics.py:340
 msgid "color"
 msgstr "顏色"
 
@@ -570,8 +570,8 @@ msgstr "字串值"
 
 #: TurtleArt/tabasics.py:857 TurtleArt/tabasics.py:860
 #: TurtleArt/tabasics.py:868 TurtleArt/tabasics.py:872
-#: TurtleArt/tawindow.py:1250 TurtleArt/tawindow.py:1328
-#: TurtleArt/tawindow.py:1341 TurtleArt/tawindow.py:4061
+#: TurtleArt/tawindow.py:1269 TurtleArt/tawindow.py:1350
+#: TurtleArt/tawindow.py:1363 TurtleArt/tawindow.py:4016
 msgid "action"
 msgstr "動作"
 
@@ -579,7 +579,7 @@ msgstr "動作"
 msgid "top of nameable action stack"
 msgstr "可命名的動作堆疊上方"
 
-#: TurtleArt/tabasics.py:873 TurtleArt/tawindow.py:4075
+#: TurtleArt/tabasics.py:873 TurtleArt/tawindow.py:4030
 msgid "invokes named action stack"
 msgstr "援用已命名的主動堆疊"
 
@@ -615,7 +615,7 @@ msgstr "方塊二"
 msgid "Variable 2 (numeric value)"
 msgstr "變數2（數值）"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4129
+#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4080
 msgid "store in"
 msgstr "放入"
 
@@ -623,21 +623,21 @@ msgstr "放入"
 msgid "box"
 msgstr "方塊"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4129 taextras.py:396
+#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4080
 msgid "value"
 msgstr "值"
 
 #: TurtleArt/tabasics.py:929 TurtleArt/tabasics.py:942
-#: TurtleArt/tawindow.py:1254 TurtleArt/tawindow.py:4090
-#: TurtleArt/tawindow.py:4120
+#: TurtleArt/tawindow.py:1273 TurtleArt/tawindow.py:4043
+#: TurtleArt/tawindow.py:4071
 msgid "my box"
 msgstr "我的箱子"
 
-#: TurtleArt/tabasics.py:930 TurtleArt/tawindow.py:4134
+#: TurtleArt/tabasics.py:930 TurtleArt/tawindow.py:4085
 msgid "stores numeric value in named variable"
 msgstr "在已命名的變數中儲存數值"
 
-#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4104
+#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4057
 msgid "named variable (numeric value)"
 msgstr "命名前的變數（數值）"
 
@@ -693,14 +693,14 @@ msgstr "清除全部"
 msgid "move all blocks to trash"
 msgstr "把所有區塊移動到垃圾桶"
 
-#: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1783
-#: TurtleArtActivity.py:633
+#: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1790
+#: TurtleArtActivity.py:652
 msgid "Share selected blocks"
 msgstr ""
 
-#: TurtleArt/taconstants.py:241 TurtleArt/taconstants.py:263
-#: TurtleArt/taconstants.py:284 TurtleArt/taconstants.py:326
-#: TurtleArt/taconstants.py:368 TurtleArt/taconstants.py:410
+#: TurtleArt/taconstants.py:216 TurtleArt/taconstants.py:238
+#: TurtleArt/taconstants.py:259 TurtleArt/taconstants.py:301
+#: TurtleArt/taconstants.py:343 TurtleArt/taconstants.py:385
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:978
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:993
@@ -710,17 +710,17 @@ msgstr ""
 msgid "Title"
 msgstr "標題"
 
-#: TurtleArt/talogo.py:358 TurtleArtActivity.py:613
+#: TurtleArt/talogo.py:358 TurtleArtActivity.py:632
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1473
 msgid "Stop turtle"
 msgstr "停止執行"
 
-#: TurtleArt/talogo.py:369 TurtleArtActivity.py:288 TurtleArtActivity.py:614
+#: TurtleArt/talogo.py:369 TurtleArtActivity.py:288 TurtleArtActivity.py:633
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1466
 msgid "Show blocks"
 msgstr "顯示區塊"
 
-#: TurtleArt/talogo.py:373 TurtleArtActivity.py:292 TurtleArtActivity.py:791
+#: TurtleArt/talogo.py:373 TurtleArtActivity.py:292 TurtleArtActivity.py:810
 msgid "Hide blocks"
 msgstr "隱藏區塊"
 
@@ -748,47 +748,47 @@ msgstr "顯示下一個調色盤"
 msgid "changes the orientation of the palette of blocks"
 msgstr "改變區塊調色盤的方向"
 
-#: TurtleArt/tautils.py:191
+#: TurtleArt/tautils.py:192
 msgid "Load..."
 msgstr "載入"
 
-#: TurtleArt/tautils.py:201
+#: TurtleArt/tautils.py:202
 msgid "Save..."
 msgstr "儲存"
 
-#: TurtleArt/tautils.py:473
+#: TurtleArt/tautils.py:474
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
 msgid "click to open"
 msgstr "點選開啟"
 
-#: TurtleArt/tawindow.py:968 TurtleArt/tawindow.py:969
+#: TurtleArt/tawindow.py:987 TurtleArt/tawindow.py:988
 msgid "orientation"
 msgstr "方向"
 
-#: TurtleArt/tawindow.py:979 TurtleArt/tawindow.py:1413
+#: TurtleArt/tawindow.py:998 TurtleArt/tawindow.py:1435
 msgid "next"
 msgstr "下一步"
 
-#: TurtleArt/tawindow.py:991 TurtleArt/tawindow.py:992
-#: TurtleArt/tawindow.py:1433
+#: TurtleArt/tawindow.py:1010 TurtleArt/tawindow.py:1011
+#: TurtleArt/tawindow.py:1455
 msgid "shift"
 msgstr ""
 
-#: TurtleArt/tawindow.py:1268
+#: TurtleArt/tawindow.py:1287
 msgid "Select blocks to share"
 msgstr ""
 
-#: TurtleArt/tawindow.py:3916
+#: TurtleArt/tawindow.py:3873
 msgid "image"
 msgstr "圖片"
 
-#: TurtleArtActivity.py:132 TurtleArtActivity.py:639 TurtleArtActivity.py:730
-#: TurtleArtActivity.py:750 turtleblocks.py:333
+#: TurtleArtActivity.py:132 TurtleArtActivity.py:658 TurtleArtActivity.py:749
+#: TurtleArtActivity.py:769 turtleblocks.py:356
 msgid "Save as Logo"
 msgstr "另存為 Logo 檔"
 
-#: TurtleArtActivity.py:169 TurtleArtActivity.py:638 TurtleArtActivity.py:727
-#: TurtleArtActivity.py:747 turtleblocks.py:331
+#: TurtleArtActivity.py:169 TurtleArtActivity.py:657 TurtleArtActivity.py:746
+#: TurtleArtActivity.py:766 turtleblocks.py:354
 msgid "Save as image"
 msgstr "另存為圖片"
 
@@ -796,25 +796,25 @@ msgstr "另存為圖片"
 msgid "snapshot"
 msgstr "螢幕截圖"
 
-#: TurtleArtActivity.py:185 TurtleArtActivity.py:572 TurtleArtActivity.py:615
-#: TurtleArtActivity.py:753
+#: TurtleArtActivity.py:185 TurtleArtActivity.py:591 TurtleArtActivity.py:634
+#: TurtleArtActivity.py:772
 msgid "Save snapshot"
 msgstr "保存螢幕抓圖"
 
-#: TurtleArtActivity.py:226 TurtleArtActivity.py:550 TurtleArtActivity.py:689
-#: turtleblocks.py:351
+#: TurtleArtActivity.py:226 TurtleArtActivity.py:569 TurtleArtActivity.py:708
+#: turtleblocks.py:374
 msgid "Turn off hover help"
 msgstr ""
 
-#: TurtleArtActivity.py:232 turtleblocks.py:353
+#: TurtleArtActivity.py:232 turtleblocks.py:376
 msgid "Turn on hover help"
 msgstr ""
 
-#: TurtleArtActivity.py:240 turtleblocks.py:363
+#: TurtleArtActivity.py:240 turtleblocks.py:386
 msgid "Show palette"
 msgstr "顯示調色盤"
 
-#: TurtleArtActivity.py:246 TurtleArtActivity.py:779 turtleblocks.py:365
+#: TurtleArtActivity.py:246 TurtleArtActivity.py:798 turtleblocks.py:388
 msgid "Hide palette"
 msgstr "隱藏調色盤"
 
@@ -822,141 +822,141 @@ msgstr "隱藏調色盤"
 msgid "Rescale coordinates down"
 msgstr "縮小座標軸比例"
 
-#: TurtleArtActivity.py:404 TurtleArtActivity.py:542 TurtleArtActivity.py:685
+#: TurtleArtActivity.py:404 TurtleArtActivity.py:561 TurtleArtActivity.py:704
 msgid "Rescale coordinates up"
 msgstr "重新調整座標（上升）"
 
-#: TurtleArtActivity.py:476 TurtleArtActivity.py:512 TurtleArtActivity.py:607
-#: TurtleArtActivity.py:660 turtleblocks.py:360
+#: TurtleArtActivity.py:494 TurtleArtActivity.py:530 TurtleArtActivity.py:626
+#: TurtleArtActivity.py:679 turtleblocks.py:383
 msgid "Edit"
 msgstr "編輯"
 
-#: TurtleArtActivity.py:481 TurtleArtActivity.py:510 TurtleArtActivity.py:608
-#: TurtleArtActivity.py:677 turtleblocks.py:355
+#: TurtleArtActivity.py:499 TurtleArtActivity.py:528 TurtleArtActivity.py:627
+#: TurtleArtActivity.py:696 turtleblocks.py:378
 msgid "View"
 msgstr "檢視"
 
-#: TurtleArtActivity.py:508 TurtleArtActivity.py:609
+#: TurtleArtActivity.py:526 TurtleArtActivity.py:628
 msgid "Project"
 msgstr "專案"
 
-#: TurtleArtActivity.py:514 TurtleArtActivity.py:606 TurtleArtActivity.py:635
-#: TurtleArtActivity.py:637 TurtleArtActivity.py:722
+#: TurtleArtActivity.py:532 TurtleArtActivity.py:625 TurtleArtActivity.py:654
+#: TurtleArtActivity.py:656 TurtleArtActivity.py:741
 msgid "Save/Load"
 msgstr "儲存/讀取"
 
-#: TurtleArtActivity.py:522 TurtleArtActivity.py:661 turtleblocks.py:358
+#: TurtleArtActivity.py:540 TurtleArtActivity.py:680 turtleblocks.py:381
 msgid "Copy"
 msgstr "複製"
 
-#: TurtleArtActivity.py:524 TurtleArtActivity.py:662 turtleblocks.py:359
+#: TurtleArtActivity.py:542 TurtleArtActivity.py:681 turtleblocks.py:382
 msgid "Paste"
 msgstr "貼上"
 
-#: TurtleArtActivity.py:526
+#: TurtleArtActivity.py:544
 #, fuzzy
 msgid "Restore blocks from trash"
 msgstr "從垃圾桶救回所有區塊"
 
-#: TurtleArtActivity.py:528 TurtleArtActivity.py:678
+#: TurtleArtActivity.py:547 TurtleArtActivity.py:697
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
 msgid "Fullscreen"
 msgstr "全螢幕"
 
-#: TurtleArtActivity.py:530 TurtleArtActivity.py:679 turtleblocks.py:339
+#: TurtleArtActivity.py:549 TurtleArtActivity.py:698 turtleblocks.py:362
 msgid "Cartesian coordinates"
 msgstr "直角座標系"
 
-#: TurtleArtActivity.py:532 TurtleArtActivity.py:681 turtleblocks.py:341
+#: TurtleArtActivity.py:551 TurtleArtActivity.py:700 turtleblocks.py:364
 msgid "Polar coordinates"
 msgstr "極座標"
 
-#: TurtleArtActivity.py:535 TurtleArtActivity.py:683
+#: TurtleArtActivity.py:554 TurtleArtActivity.py:702
 msgid "Metric coordinates"
 msgstr "矩陣座標"
 
-#: TurtleArtActivity.py:545 TurtleArtActivity.py:687 turtleblocks.py:345
+#: TurtleArtActivity.py:564 TurtleArtActivity.py:706 turtleblocks.py:368
 msgid "Grow blocks"
 msgstr "顯示區塊"
 
-#: TurtleArtActivity.py:547 TurtleArtActivity.py:688 turtleblocks.py:347
+#: TurtleArtActivity.py:566 TurtleArtActivity.py:707 turtleblocks.py:370
 msgid "Shrink blocks"
 msgstr "縮小區塊"
 
-#: TurtleArtActivity.py:576 TurtleArtActivity.py:616
+#: TurtleArtActivity.py:595 TurtleArtActivity.py:635
 msgid "Load example"
 msgstr "載入範例"
 
-#: TurtleArtActivity.py:610 TurtleArtActivity.py:785 turtleblocks.py:372
+#: TurtleArtActivity.py:629 TurtleArtActivity.py:804 turtleblocks.py:395
 msgid "Clean"
 msgstr "清除畫面"
 
-#: TurtleArtActivity.py:611 TurtleArtActivity.py:787 turtleblocks.py:373
+#: TurtleArtActivity.py:630 TurtleArtActivity.py:806 turtleblocks.py:396
 msgid "Run"
 msgstr "執行"
 
-#: TurtleArtActivity.py:612 TurtleArtActivity.py:789 turtleblocks.py:374
+#: TurtleArtActivity.py:631 TurtleArtActivity.py:808 turtleblocks.py:397
 msgid "Step"
 msgstr "單步執行"
 
-#: TurtleArtActivity.py:617 util/helpbutton.py:45
+#: TurtleArtActivity.py:636 util/helpbutton.py:45
 msgid "Help"
 msgstr "幫助"
 
-#: TurtleArtActivity.py:618 turtleblocks.py:376
+#: TurtleArtActivity.py:637 turtleblocks.py:399
 msgid "Stop"
 msgstr "停止"
 
-#: TurtleArtActivity.py:640 TurtleArtActivity.py:733 TurtleArtActivity.py:755
+#: TurtleArtActivity.py:659 TurtleArtActivity.py:752 TurtleArtActivity.py:774
 msgid "Load project"
 msgstr "載入專案"
 
-#: TurtleArtActivity.py:643 TurtleArtActivity.py:738 TurtleArtActivity.py:760
+#: TurtleArtActivity.py:662 TurtleArtActivity.py:757 TurtleArtActivity.py:779
 msgid "Load plugin"
 msgstr ""
 
-#: TurtleArtActivity.py:644 TurtleArtActivity.py:741 TurtleArtActivity.py:763
+#: TurtleArtActivity.py:663 TurtleArtActivity.py:760 TurtleArtActivity.py:782
 msgid "Load Python block"
 msgstr "載入Python區塊"
 
-#: TurtleArtActivity.py:717
+#: TurtleArtActivity.py:736
 msgid "Sharing blocks disabled"
 msgstr ""
 
-#: TurtleArtActivity.py:780
+#: TurtleArtActivity.py:799
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
-#: TurtleArtActivity.py:785
+#: TurtleArtActivity.py:804
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
-#: TurtleArtActivity.py:787
+#: TurtleArtActivity.py:806
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
-#: TurtleArtActivity.py:789
+#: TurtleArtActivity.py:808
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
-#: TurtleArtActivity.py:792
+#: TurtleArtActivity.py:811
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
-#: TurtleArtActivity.py:927 TurtleArtActivity.py:932 TurtleArtActivity.py:999
+#: TurtleArtActivity.py:967 TurtleArtActivity.py:972 TurtleArtActivity.py:1039
 msgid "Plugin could not be installed."
 msgstr ""
 
-#: TurtleArtActivity.py:995
+#: TurtleArtActivity.py:1035
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr ""
 
-#: TurtleArtActivity.py:1013
+#: TurtleArtActivity.py:1053
 #, python-format
 msgid "Plugin %s already installed."
 msgstr ""
 
-#: TurtleArtActivity.py:1014
+#: TurtleArtActivity.py:1054
 #, python-format
 msgid "Do you want to reinstall %s?"
 msgstr ""
@@ -1065,7 +1065,7 @@ msgstr "上傳失敗"
 
 #: plugins/accelerometer/accelerometer.py:49
 #: plugins/audio_sensors/audio_sensors.py:75
-#: plugins/camera_sensor/camera_sensor.py:57
+#: plugins/camera_sensor/camera_sensor.py:63
 #: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
 msgid "Palette of sensor blocks"
@@ -1083,7 +1083,6 @@ msgstr "將 x, y, z 加速度放入堆疊"
 
 #: plugins/audio_sensors/audio_sensors.py:83
 #: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
-#: taextras.py:313
 msgid "sound"
 msgstr "音效"
 
@@ -1141,32 +1140,35 @@ msgstr "電壓"
 msgid "microphone input voltage"
 msgstr "麥克風輸入電壓"
 
-#: plugins/camera_sensor/camera_sensor.py:61
+#: plugins/camera_sensor/camera_sensor.py:67
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
 msgid "Palette of media objects"
 msgstr "媒體物件調色盤"
 
-#: plugins/camera_sensor/camera_sensor.py:73
-#: plugins/camera_sensor/camera_sensor.py:86
-#: plugins/camera_sensor/camera_sensor.py:105
-#: plugins/camera_sensor/camera_sensor.py:118
+#: plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
 #: plugins/light_sensor/light_sensor.py:56
 #: plugins/light_sensor/light_sensor.py:63
 msgid "brightness"
 msgstr "亮度"
 
-#: plugins/camera_sensor/camera_sensor.py:75
-#: plugins/camera_sensor/camera_sensor.py:107
+#: plugins/camera_sensor/camera_sensor.py:82
+#: plugins/camera_sensor/camera_sensor.py:130
 msgid "light level detected by camera"
 msgstr "由攝影機偵測亮度"
 
-#: plugins/camera_sensor/camera_sensor.py:88
-#: plugins/camera_sensor/camera_sensor.py:120
+#: plugins/camera_sensor/camera_sensor.py:95
+#: plugins/camera_sensor/camera_sensor.py:143
 msgid "Average RGB color from camera is pushed to the stack"
 msgstr "攝影機的RGB平均色彩已經進入堆疊中"
 
-#: plugins/camera_sensor/camera_sensor.py:99
-#: plugins/camera_sensor/camera_sensor.py:132
+#: plugins/camera_sensor/camera_sensor.py:106
+#: plugins/camera_sensor/camera_sensor.py:113
+#: plugins/camera_sensor/camera_sensor.py:121
+#: plugins/camera_sensor/camera_sensor.py:155
+#: plugins/camera_sensor/camera_sensor.py:163
 msgid "camera output"
 msgstr "攝影機輸出"
 
@@ -1419,7 +1421,7 @@ msgstr "小烏龜的視野"
 msgid "returns the color that the turtle \"sees\""
 msgstr "回傳小烏龜看到的顏色"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:445 taextras.py:332
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:445
 msgid "time"
 msgstr "時間"
 
@@ -1674,7 +1676,7 @@ msgstr "底端"
 msgid "ycor of bottom of screen"
 msgstr "螢幕下方的y座標"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870 taextras.py:247
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
 msgid "width"
 msgstr "寬度"
 
@@ -1690,8 +1692,7 @@ msgstr "螢幕右方的x座標"
 msgid "ycor of top of screen"
 msgstr "螢幕上方的y座標"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894 taextras.py:242
-#: taextras.py:248
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894
 msgid "height"
 msgstr "高度"
 
@@ -1768,1266 +1769,472 @@ msgstr "迴轉"
 msgid "make a uturn"
 msgstr "進行迴轉"
 
-#: taextras.py:36
-msgid "Turtle Art Mini"
-msgstr "迷你小海龜"
-
-#: taextras.py:40
-msgid "Turtle Confusion"
-msgstr "小海龜謎題"
-
-#: taextras.py:41
-msgid "Select a challenge"
-msgstr "選擇挑戰"
-
-#: taextras.py:47
-msgid "Palette of Mexican pesos"
-msgstr "墨西哥披索色盤"
-
-#: taextras.py:48
-msgid "Palette of Colombian pesos"
-msgstr "哥倫比亞披索色盤"
-
-#: taextras.py:49
-msgid "Palette of Rwandan francs"
-msgstr "盧安達法郎色盤"
-
-#: taextras.py:50
-msgid "Palette of US dollars"
-msgstr ""
-
-#: taextras.py:51
-msgid "Palette of Australian dollars"
-msgstr ""
-
-#: taextras.py:52
-msgid "Palette of Paraguayan Guaranies"
-msgstr ""
-
-#: taextras.py:53
-msgid "Palette of Peruvian Nuevo Soles"
-msgstr ""
-
-#: taextras.py:54
-msgid "Palette of Uruguayan Pesos"
-msgstr ""
-
-#. TRANS: Butia is the Arduino Robot Project from Uruguay
-#. (http://www.fing.edu.uy/inco/proyectos/butia/)
-#: taextras.py:60
-msgid "TurtleBots"
-msgstr ""
-
-#: taextras.py:61
-#, fuzzy
-msgid "adjust LED intensity between 0 and 255"
-msgstr "調整 LED 亮度值介於 0 到 255。"
-
-#: taextras.py:62
-#, fuzzy
-msgid "returns the object gray level as a number between 0 and 1023"
-msgstr "傳回環境亮度值介於 0 到 1023。"
-
-#: taextras.py:63
-#, fuzzy
-msgid "returns 1 when the button is press and 0 otherwise"
-msgstr "當按鈕被按下時傳回 1，否則傳回 0。"
-
-#: taextras.py:64
-#, fuzzy
-msgid "returns the ambient light level as a number between 0 and 1023"
-msgstr "傳回環境亮度值介於 0 到 1023。"
-
-#: taextras.py:65
-#, fuzzy
-msgid "returns the ambient temperature as a number between 0 and 255"
-msgstr "傳回環境溫度值介於 0 到 255。"
-
-#: taextras.py:66
-#, fuzzy
-msgid ""
-"returns the distance from the object in front of the sensor as a number "
-"between 0 and 255"
-msgstr "傳回感應器前方物體的距離值介於 0 到 255。"
-
-#: taextras.py:68
-#, fuzzy
-msgid "returns 0 or 1 depending on the sensor inclination"
-msgstr "傳回 0 或 1 取決於感應器是否傾斜。"
-
-#: taextras.py:69
-#, fuzzy
-msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-msgstr "當感應器偵測到磁場時傳回 1，否則傳回 0。"
-
-#: taextras.py:70
-#, fuzzy
-msgid "switches from 0 to 1, the frequency depends on the vibration"
-msgstr "由 0 切換到 1，頻率取決於震動。"
-
-#: taextras.py:71
-msgid "LED"
-msgstr "LED"
-
-#: taextras.py:72
-msgid "button"
-msgstr ""
-
-#: taextras.py:73
-msgid "grayscale"
-msgstr "灰階"
-
-#: taextras.py:74
-msgid "ambient light"
-msgstr "環境光"
-
-#: taextras.py:75
-msgid "temperature"
-msgstr "溫度"
-
-#: taextras.py:76 taextras.py:292
-msgid "distance"
-msgstr "距離"
-
-#: taextras.py:77 taextras.py:289
-msgid "tilt"
-msgstr "傾斜"
-
-#: taextras.py:78
-msgid "magnetic induction"
-msgstr "磁力感應"
-
-#: taextras.py:79
-msgid "vibration"
-msgstr "震動"
-
-#: taextras.py:80
-msgid "Butia Robot"
-msgstr "棕櫚機器人"
-
-#: taextras.py:81
-msgid "refresh Butia"
-msgstr ""
-
-#: taextras.py:82
-msgid "refresh the state of the Butia palette and blocks"
-msgstr ""
-
-#. TRANS: This string is shorthand for "battery charge of Butia"
-#: taextras.py:84
-msgid "battery charge Butia"
-msgstr ""
-
-#: taextras.py:85
-#, fuzzy
-msgid "returns the battery charge as a number between 0 and 255"
-msgstr "傳回電池電量值由 0 到 255。"
-
-#. TRANS: This string is shorthand for "speed of Butia"
-#: taextras.py:87
-msgid "speed Butia"
-msgstr ""
-
-#: taextras.py:88
-#, fuzzy
-msgid ""
-"set the speed of the Butia motors to a value between 0 and 1023, passed by "
-"an argument"
-msgstr "由給定參數設定棕櫚馬達的速度值由 0 到 1023。"
-
-#. TRANS: This string is shorthand for "move Butia forward"
-#: taextras.py:91
-msgid "forward Butia"
-msgstr "棕櫚往前移"
-
-#: taextras.py:92
-#, fuzzy
-msgid "move the Butia robot forward"
-msgstr "棕櫚機器人往前移動。"
-
-#: taextras.py:93
-#, fuzzy
-msgid "move the Butia robot forward a predefined distance"
-msgstr "棕櫚機器人往前移動一定的距離。"
-
-#. TRANS: This string is shorthand for "turn Butia left"
-#: taextras.py:95
-msgid "left Butia"
-msgstr "棕櫚左移"
-
-#: taextras.py:96
-#, fuzzy
-msgid "turn the Butia robot to the left"
-msgstr "棕櫚機器人轉 x 度。"
-
-#. TRANS: This string is shorthand for "move Butia backward"
-#: taextras.py:98
-msgid "backward Butia"
-msgstr "棕櫚往後移"
-
-#: taextras.py:99
-#, fuzzy
-msgid "move the Butia robot backward"
-msgstr "棕櫚機器人往後移動。"
-
-#: taextras.py:100
-#, fuzzy
-msgid "move the Butia robot backward a predefined distance"
-msgstr "棕櫚機器人往後移動一定的距離。"
-
-#. TRANS: This string is shorthand for "turn Butia right"
-#: taextras.py:102
-msgid "right Butia"
-msgstr "棕櫚右移"
-
-#: taextras.py:103
-msgid "turn the Butia robot at right"
-msgstr ""
-
-#: taextras.py:104
-msgid "turn Butia"
-msgstr ""
-
-#: taextras.py:105
-#, fuzzy
-msgid "turn the Butia robot x degrees"
-msgstr "棕櫚機器人轉 x 度。"
-
-#: taextras.py:106
-msgid "stop Butia"
-msgstr "停止棕櫚"
-
-#: taextras.py:107
-msgid "stop the Butia robot"
-msgstr ""
-
-#: taextras.py:108
-#, fuzzy
-msgid "display Butia"
-msgstr "延遲棕櫚"
-
-#: taextras.py:109
-msgid "Hello World    Butia            "
-msgstr ""
-
-#. TRANS: this string must contain only ASCII characters.
-#. The len must be 32 characters/spaces.
-#: taextras.py:112
-#, fuzzy
-msgid "print text in Butia robot 32-character ASCII display"
-msgstr "在棕櫚機器人32字ASCII 顯示器印出文字"
-
-#: taextras.py:113
-msgid "Butia"
-msgstr "棕櫚"
-
-#: taextras.py:117
-#, fuzzy
-msgid "Error on initialization of the camera"
-msgstr "初始化攝影機時發生錯誤。"
-
-#: taextras.py:118
-msgid "No camera was found"
-msgstr ""
-
-#: taextras.py:119
-msgid "Error stopping camera"
-msgstr ""
-
-#: taextras.py:120
-msgid "Error starting camera"
-msgstr ""
-
-#. TRANS: The "mask" is used to restrict processing to a region in the image
-#: taextras.py:122
-msgid "Error making mask"
-msgstr ""
-
-#: taextras.py:123
-msgid "FollowMe"
-msgstr "跟我來"
-
-#: taextras.py:124
-msgid "follow"
-msgstr ""
-
-#. TRANS: Green component of a color
-#: taextras.py:126
-msgid "G"
-msgstr ""
-
-#. TRANS: Red component of a color
-#: taextras.py:128
-msgid "R"
-msgstr ""
-
-#. TRANS: Blue component of a color
-#: taextras.py:130
-msgid "B"
-msgstr ""
-
-#: taextras.py:131
-msgid "follow a RGB color"
-msgstr "跟隨一個 RGB 顏色"
-
-#: taextras.py:132
-msgid "threshold"
-msgstr ""
-
-#: taextras.py:133
-msgid "set a threshold for a RGB color"
-msgstr ""
-
-#. TRANS: the calibration can be saved for later use
-#: taextras.py:135
-msgid "save calibration 1"
-msgstr ""
-
-#: taextras.py:136
-msgid "stores a calibration in calibration 1"
-msgstr ""
-
-#. TRANS: the calibration can be saved for later use
-#: taextras.py:138
-msgid "save calibration 2"
-msgstr ""
-
-#: taextras.py:139
-msgid "stores a calibration in calibration 2"
-msgstr ""
-
-#. TRANS: the calibration is used to match an RGB color to a target
-#: taextras.py:141
-msgid "calibration"
-msgstr ""
-
-#: taextras.py:142
-msgid "stores a personalized calibration"
-msgstr ""
-
-#: taextras.py:143
-msgid "calibration 1"
-msgstr ""
-
-#: taextras.py:144
-msgid "return calibration 1"
-msgstr ""
-
-#: taextras.py:145
-msgid "calibration 2"
-msgstr ""
-
-#: taextras.py:146
-msgid "return calibration 2"
-msgstr ""
-
-#: taextras.py:147
-msgid "return a personalized calibration"
-msgstr ""
-
-#: taextras.py:148
-msgid "x position"
-msgstr "x 位置"
-
-#: taextras.py:149
-msgid "return x position"
-msgstr "傳回 x 位置"
-
-#: taextras.py:150
-msgid "y position"
-msgstr "y 位置"
-
-#: taextras.py:151
-msgid "return y position"
-msgstr "傳回 y 位置"
-
-#: taextras.py:152
-msgid "pixels"
-msgstr ""
-
-#: taextras.py:153
-msgid "return the number of pixels of the biggest blob"
-msgstr ""
-
-#: taextras.py:154
-msgid "follow a color or calibration"
-msgstr ""
-
-#: taextras.py:155
-msgid "minimum pixels"
-msgstr ""
-
-#: taextras.py:156
-msgid "set the minimal number of pixels to follow"
-msgstr ""
-
-#: taextras.py:157
-msgid "camera mode"
-msgstr ""
-
-#: taextras.py:158
-msgid "set the color mode of the camera: RGB, YUV, or HSV"
-msgstr ""
-
-#: taextras.py:159
-msgid "RGB"
-msgstr ""
-
-#: taextras.py:160
-msgid "set the color mode of the camera to RGB"
-msgstr ""
-
-#: taextras.py:161
-msgid "YUV"
-msgstr ""
-
-#: taextras.py:162
-msgid "set the color mode of the camera to YUV"
-msgstr ""
-
-#: taextras.py:163
-msgid "HSV"
-msgstr ""
-
-#: taextras.py:164
-msgid "set the color mode of the camera to HSV"
-msgstr ""
-
-#: taextras.py:165
-msgid "empty calibration"
-msgstr ""
-
-#: taextras.py:166
-msgid "error in string conversion"
-msgstr ""
-
-#. TRANS: SumBot is a robot programmed for "Sumo wrestling"
-#: taextras.py:171
-msgid "SumBot"
-msgstr ""
-
-#: taextras.py:172
-msgid "speed SumBot"
-msgstr ""
-
-#: taextras.py:173
-msgid "submit the speed to the SumBot"
-msgstr ""
-
-#: taextras.py:174
-#, fuzzy
-msgid "set the default speed for the movement commands"
-msgstr "設定預設移動指令的速度。"
-
-#. TRANS: This string is shorthand for "move SumBot forward"
-#: taextras.py:176
-msgid "forward SumBot"
-msgstr ""
-
-#: taextras.py:177
-msgid "move SumBot forward"
-msgstr ""
-
-#. TRANS: This string is shorthand for "move SumBot backward"
-#: taextras.py:179
-msgid "backward SumBot"
-msgstr ""
-
-#: taextras.py:180
-msgid "move SumBot backward"
-msgstr ""
-
-#: taextras.py:181
-msgid "stop SumBot"
-msgstr ""
-
-#: taextras.py:182
-msgid "stop the SumBot"
-msgstr ""
-
-#. TRANS: This string is shorthand for "turn SumBot left"
-#: taextras.py:184
-msgid "left SumBot"
-msgstr ""
-
-#: taextras.py:185
-msgid "turn left the SumBot"
-msgstr ""
-
-#. TRANS: This string is shorthand for "move SumBot right"
-#: taextras.py:187
-msgid "right SumBot"
-msgstr ""
-
-#: taextras.py:188
-msgid "turn right the SumBot"
-msgstr ""
-
-#. TRANS: The angle to the center is the angle SumBot must turn to
-#. face the center of the playing field
-#: taextras.py:191
-msgid "angle to center"
-msgstr "距中心角度"
-
-#. TRANS: dohyo is the playing field
-#: taextras.py:193
-#, fuzzy
-msgid "get the angle to the center of the dohyo"
-msgstr "取得距道場中心的角度"
-
-#. TRANS: The angle to the center is the angle SumBot must turn to
-#. face the Enemy (opponent)
-#: taextras.py:196
-msgid "angle to Enemy"
-msgstr ""
-
-#: taextras.py:197
-#, fuzzy
-msgid "get the angle to the Enemy"
-msgstr "取得距對手的距離"
-
-#. TRANS: This string is shorthand for "x coordinate of SumBot"
-#: taextras.py:199
-msgid "x coor. SumBot"
-msgstr ""
-
-#: taextras.py:200
-#, fuzzy
-msgid "get the x coordinate of the SumBot"
-msgstr "取得機器人的 x 座標"
-
-#. TRANS: This string is shorthand for "y coordinate of SumBot"
-#: taextras.py:202
-msgid "y coor. SumBot"
-msgstr ""
-
-#: taextras.py:203
-#, fuzzy
-msgid "get the y coordinate of the SumBot"
-msgstr "取得機器人的 y 座標"
-
-#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
-#: taextras.py:205
-msgid "x coor. Enemy"
-msgstr ""
-
-#: taextras.py:206
-#, fuzzy
-msgid "get the x coordinate of the Enemy"
-msgstr "取得機器人的 x 座標"
-
-#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
-#: taextras.py:208
-msgid "y coor. Enemy"
-msgstr ""
-
-#: taextras.py:209
-#, fuzzy
-msgid "get the y coordinate of the Enemy"
-msgstr "取得機器人的 y 座標"
-
-#. TRANS: This string is shorthand for "rotation of SumBot"
-#: taextras.py:211
-msgid "rotation SumBot"
-msgstr ""
-
-#: taextras.py:212
-#, fuzzy
-msgid "get the rotation of the Sumbot"
-msgstr "取得對手的旋轉值"
-
-#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
-#: taextras.py:214
-msgid "rotation Enemy"
-msgstr ""
-
-#: taextras.py:215
-#, fuzzy
-msgid "get the rotation of the Enemy"
-msgstr "取得對手的旋轉值"
-
-#: taextras.py:216
-msgid "distance to center"
-msgstr "離中心的距離"
-
-#. TRANS: dohyo is the playing field
-#: taextras.py:218
-#, fuzzy
-msgid "get the distance to the center of the dohyo"
-msgstr "取得距道場中心的距離"
-
-#: taextras.py:219
-msgid "distance to Enemy"
-msgstr ""
-
-#: taextras.py:220
-#, fuzzy
-msgid "get the distance to the Enemy"
-msgstr "取得距對手的距離"
-
-#: taextras.py:221
-msgid "update information"
-msgstr "更新訊息"
-
-#: taextras.py:222
-#, fuzzy
-msgid "update information from the server"
-msgstr "自伺服器更新訊息"
-
-#. TRANS: Please use similar terms to those used in the Physics Activity
-#: taextras.py:227
-msgid "Palette of physics blocks"
-msgstr "物件區塊的顏色"
-
-#: taextras.py:228
-msgid "start polygon"
-msgstr "開始畫多邊形"
-
-#: taextras.py:229
-msgid "Begin defining a new polygon based on the current Turtle xy position."
-msgstr "由目前小海龜的位置，開始定義一個新的多邊形。"
-
-#: taextras.py:231
-msgid "add point"
-msgstr "新增頂點"
-
-#: taextras.py:232
-msgid ""
-"Add a new point to the current polygon based on the current Turtle xy "
-"position."
-msgstr "由目前小海龜的位置，在目前的多邊形上新增頂點。"
-
-#: taextras.py:234
-msgid "end polygon"
-msgstr "結束多邊形"
-
-#: taextras.py:235
-msgid "Define a new polygon."
-msgstr "定義一個新的多邊形。"
-
-#: taextras.py:236
-msgid "end filled polygon"
-msgstr "結束填充多邊形"
-
-#: taextras.py:237
-msgid "Not a simple polygon"
-msgstr "不是一個簡單的多邊形"
-
-#: taextras.py:238
-msgid "Define a new filled polygon."
-msgstr "定義一個新的填充多邊形。"
-
-#: taextras.py:239
-msgid "triangle"
-msgstr "三角形"
-
-#. TRANS: base of a triangle
-#: taextras.py:241
-msgid "base"
-msgstr "基底"
-
-#: taextras.py:243
-msgid "Add a triangle object to the project."
-msgstr "專案中新增一個三角形物件。"
-
-#: taextras.py:244
-msgid "circle"
-msgstr "圓形"
-
-#: taextras.py:245
-msgid "Add a circle object to the project."
-msgstr "專案中新增一個圓形物件。"
-
-#: taextras.py:246
-msgid "rectangle"
-msgstr "長方形"
-
-#: taextras.py:249
-msgid "Add a rectangle object to the project."
-msgstr "專案中新增一個長方形物件。"
-
-#: taextras.py:250
-msgid "reset"
-msgstr "重置"
-
-#: taextras.py:251
-msgid "Reset the project; clear the object list."
-msgstr "重置專案，清除物件清單。"
-
-#: taextras.py:252
-msgid "motor"
-msgstr "發動機"
-
-#. TRANS: torque as in engine torque
-#: taextras.py:254
-msgid "torque"
-msgstr "扭力"
-
-#: taextras.py:255
-msgid "speed"
-msgstr "速度"
-
-#: taextras.py:256
-msgid ""
-"Motor torque and speed range from 0 (off) to positive numbers; motor is "
-"placed on the most recent object created."
-msgstr "發動機的扭力與速度值，由 0 (關閉)到一個正數，發動機放在最後建立的物件上。"
-
-#: taextras.py:258 taextras.py:392
-msgid "pin"
-msgstr "釘梢"
-
-#: taextras.py:259
-msgid "Pin an object down so that it cannot fall."
-msgstr "固定一個物件使其不掉落。"
-
-#: taextras.py:260
-msgid "joint"
-msgstr "關節"
-
-#: taextras.py:263
-msgid ""
-"Join two objects together (the most recent object created and the object at "
-"point x, y)."
-msgstr "用來連接兩個物件(上一個建立的物件與位於x, y位置的另一個物件)"
-
-#: taextras.py:265
-msgid "save as Physics activity"
-msgstr ""
-
-#: taextras.py:266
-msgid "Save the project to the Journal as a Physics activity."
-msgstr "保存專案到日誌上成為物理活動"
-
-#. TRANS: Here, gear means a toothed wheel, as in a clock-works
-#: taextras.py:268
-msgid "gear"
-msgstr ""
-
-#: taextras.py:269
-#, fuzzy
-msgid "Add a gear object to the project."
-msgstr "專案中新增一個圓形物件。"
-
-#: taextras.py:270
-msgid "density"
-msgstr "密度"
-
-#: taextras.py:271
-msgid ""
-"Set the density property for objects (density can be any positive number)."
-msgstr "訂定物件的密度值 (任意正數)。"
-
-#: taextras.py:273
-msgid "friction"
-msgstr "摩擦係數"
-
-#: taextras.py:274
-msgid ""
-"Set the friction property for objects (value from 0 to 1, where 0 turns "
-"friction off and 1 is strong friction)."
-msgstr "訂定物件的摩擦係數 (介於0無摩擦到1最大)。"
-
-#. TRANS: bounciness is coefficient of restitution
-#: taextras.py:277
-msgid "bounciness"
-msgstr "彈性係數"
-
-#: taextras.py:278
-msgid ""
-"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-"no bounce and 1 is very bouncy)."
-msgstr "訂定物件的彈性係數 (介於0無彈性到1最大)。"
-
-#. TRANS: dynamic here means moving vs in a fixed position
-#: taextras.py:281
-msgid "dynamic"
-msgstr "可動性"
-
-#: taextras.py:282
-msgid ""
-"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-msgstr "當可動性 = 1 時物件可以移動，可動性 = 0 時物件是固定的。"
-
-#. TRANS: WeDo is a robotics product of the LEGO company
-#: taextras.py:288
-#, fuzzy
-msgid "Palette of WeDo blocks"
-msgstr "偵測器區塊的顏色"
-
-#: taextras.py:290
-msgid ""
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-"tilt left, 2 == tilt right)"
-msgstr ""
-
-#. TRANS: This string is shorthand for "output of the distance sensor"
-#: taextras.py:294
-msgid "distance sensor output"
-msgstr ""
-
-#: taextras.py:295
-msgid "Motor A"
-msgstr ""
-
-#: taextras.py:296
-msgid "returns the current value of Motor A"
-msgstr ""
-
-#: taextras.py:297
-msgid "Motor B"
-msgstr ""
-
-#: taextras.py:298
-msgid "returns the current value of Motor B"
-msgstr ""
-
-#: taextras.py:299
-msgid "set the value for Motor A"
-msgstr ""
-
-#: taextras.py:300
-msgid "set the value for Motor B"
-msgstr ""
-
-#. TRANS: Lego NXT is a robotics product of the LEGO company
-#: taextras.py:305
-msgid "Palette of LEGO NXT blocks of motors"
-msgstr ""
-
-#: taextras.py:306
-msgid "Palette of LEGO NXT blocks of sensors"
-msgstr ""
-
-#. TRANS: touch sensor (implemented as a button)
-#: taextras.py:308
-msgid "touch"
-msgstr ""
-
-#. TRANS: distance sensor (implemented using ultrasonics)
-#: taextras.py:310
-msgid "ultrasonic"
-msgstr ""
-
-#: taextras.py:312
-#, fuzzy
-msgid "light"
-msgstr "右轉"
-
-#: taextras.py:314
-msgid "PORT A"
-msgstr ""
-
-#: taextras.py:315
-msgid "PORT B"
-msgstr ""
-
-#: taextras.py:316
-msgid "PORT C"
-msgstr ""
-
-#: taextras.py:317
-msgid "PORT 1"
-msgstr ""
-
-#: taextras.py:318
-msgid "PORT 2"
-msgstr ""
-
-#: taextras.py:319
-msgid "PORT 3"
-msgstr ""
-
-#: taextras.py:320
-msgid "PORT 4"
-msgstr ""
-
-#. TRANS: The brick is the NXT controller
-#: taextras.py:322
-msgid "Please check the connection with the brick."
-msgstr ""
-
-#: taextras.py:323
-msgid "Please check the port."
-msgstr ""
-
-#: taextras.py:324
-msgid "The value of power must be between -127 to 127."
-msgstr ""
-
-#: taextras.py:325
-msgid "An error has occurred: check all connections and try to reconnect."
-msgstr ""
-
-#: taextras.py:326
-msgid "NXT found"
-msgstr ""
-
-#: taextras.py:327
-msgid "NXT not found"
-msgstr ""
-
-#: taextras.py:328
-msgid "refresh NXT"
-msgstr ""
-
-#: taextras.py:329
-msgid "Search for a connected NXT brick."
-msgstr ""
-
-#: taextras.py:330
-msgid "play tone"
-msgstr ""
-
-#: taextras.py:331
-msgid "frequency"
-msgstr ""
-
-#: taextras.py:333
-msgid "Play a tone at frequency for time."
-msgstr ""
-
-#. TRANS: turn is the action and rotations is quantity of turns
-#: taextras.py:335
-msgid ""
-"turn motor\n"
-"rotations"
-msgstr ""
-
-#: taextras.py:336
-#, fuzzy
-msgid "port"
-msgstr "連接埠"
-
-#: taextras.py:337
-msgid "power"
-msgstr ""
-
-#: taextras.py:338
-msgid "turn a motor"
-msgstr ""
-
-#: taextras.py:339
-msgid ""
-"synchronize motors\n"
-"steering"
-msgstr ""
-
-#: taextras.py:340
-#, fuzzy
-msgid "rotations"
-msgstr "旋轉"
-
-#: taextras.py:341
-msgid "synchronize two motors connected in PORT B and PORT C"
-msgstr ""
-
-#: taextras.py:342
-msgid "PORT A of the brick"
-msgstr ""
-
-#: taextras.py:343
-msgid "PORT B of the brick"
-msgstr ""
-
-#: taextras.py:344
-msgid "PORT C of the brick"
-msgstr ""
-
-#: taextras.py:345
-msgid "start motor"
-msgstr ""
-
-#: taextras.py:346
-msgid "Run a motor forever."
-msgstr ""
-
-#: taextras.py:347
-msgid "brake motor"
-msgstr ""
-
-#: taextras.py:348
-msgid "Stop a specified motor."
-msgstr ""
-
-#. TRANS: reset is used to reset the counter associated with the motor
-#: taextras.py:350
-msgid "reset motor"
-msgstr ""
-
-#: taextras.py:351
-msgid "Reset the motor counter."
-msgstr ""
-
-#: taextras.py:352
-msgid "motor position"
-msgstr ""
-
-#: taextras.py:353
-msgid "Get the motor position."
-msgstr ""
-
-#: taextras.py:354
-msgid "PORT 1 of the brick"
-msgstr ""
-
-#: taextras.py:355
-msgid "PORT 2 of the brick"
-msgstr ""
-
-#: taextras.py:356
-msgid "PORT 3 of the brick"
-msgstr ""
-
-#: taextras.py:357
-msgid "PORT 4 of the brick"
-msgstr ""
-
-#: taextras.py:358
-#, fuzzy
-msgid "read"
-msgstr "紅色"
-
-#: taextras.py:359
-#, fuzzy
-msgid "sensor"
-msgstr "偵測器"
-
-#: taextras.py:360
-msgid "Read sensor output."
-msgstr ""
-
-#: taextras.py:361
-msgid "color sensor"
-msgstr ""
-
-#: taextras.py:362
-msgid "light sensor"
-msgstr ""
-
-#: taextras.py:363
-msgid "touch sensor"
-msgstr ""
-
-#: taextras.py:364
-msgid "distance sensor"
-msgstr ""
-
-#: taextras.py:365
-msgid "sound sensor"
-msgstr ""
-
-#. TRANS: set light is used to set the light level associated with
-#. the color sensor (which can emit light as well as sense it)
-#: taextras.py:368
-msgid "set light"
-msgstr ""
-
-#: taextras.py:369
-msgid "Set color sensor light."
-msgstr ""
-
-#. TRANS: the battery level is the charge level of the brick
-#: taextras.py:371
-msgid "battery level"
-msgstr ""
-
-#: taextras.py:372
-msgid "Get battery level of brick."
-msgstr ""
-
-#. TRANS: Arduino plugin to control an Arduino board
-#: taextras.py:377
-#, fuzzy
-msgid "Palette of Arduino blocks"
-msgstr "偵測器區塊的顏色"
-
-#: taextras.py:378
-msgid "HIGH"
-msgstr ""
-
-#: taextras.py:379
-msgid "LOW"
-msgstr ""
-
-#: taextras.py:380
-msgid "INPUT"
-msgstr ""
-
-#: taextras.py:381
-msgid "OUTPUT"
-msgstr ""
-
-#. TRANS: PWM is pulse-width modulation
-#: taextras.py:383
-msgid "PWM"
-msgstr ""
-
-#: taextras.py:384
-msgid "SERVO"
-msgstr ""
-
-#: taextras.py:385
-msgid "ERROR: Check the Arduino and the number of port."
-msgstr ""
-
-#: taextras.py:386
-msgid "ERROR: Value must be a number from 0 to 255."
-msgstr ""
-
-#: taextras.py:387
-msgid "ERROR: Value must be either HIGH or LOW."
-msgstr ""
-
-#: taextras.py:388
-msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-msgstr ""
-
-#. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
-#. in which an I/O pin is being used.
-#: taextras.py:391
-msgid "pin mode"
-msgstr ""
-
-#: taextras.py:393
-#, fuzzy
-msgid "mode"
-msgstr "模數"
-
-#: taextras.py:394
-msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-msgstr ""
-
-#: taextras.py:395
-msgid "analog write"
-msgstr ""
-
-#: taextras.py:397
-msgid "Write analog value in specified port."
-msgstr ""
-
-#: taextras.py:398
-msgid "analog read"
-msgstr ""
-
-#: taextras.py:399
-msgid ""
-"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-"determine voltage. For USB, volt=((read)*5)/1024) approximately."
-msgstr ""
-
-#: taextras.py:401
-msgid "digital write"
-msgstr ""
-
-#: taextras.py:402
-msgid "Write digital value to specified port."
-msgstr ""
-
-#: taextras.py:403
-msgid "digital read"
-msgstr ""
-
-#: taextras.py:404
-msgid "Read value from digital port."
-msgstr ""
-
-#: taextras.py:405
-msgid "Set HIGH value for digital port."
-msgstr ""
-
-#: taextras.py:406
-msgid "Configure Arduino port for digital input."
-msgstr ""
-
-#: taextras.py:407
-msgid "Configure Arduino port to drive a servo."
-msgstr ""
-
-#: taextras.py:408
-msgid "Set LOW value for digital port."
-msgstr ""
-
-#: taextras.py:409
-msgid "Configure Arduino port for digital output."
-msgstr ""
-
-#: taextras.py:410
-msgid "Configure Arduino port for PWM (pulse-width modulation)."
-msgstr ""
-
-#: turtleblocks.py:80
+#: turtleblocks.py:81
 msgid "usage is"
 msgstr "使用量為"
 
-#: turtleblocks.py:232
+#: turtleblocks.py:234
 msgid "No option action:"
 msgstr "沒有選項的行動"
 
-#: turtleblocks.py:247
+#: turtleblocks.py:249
 msgid "File not found"
 msgstr "找不到檔案"
 
-#: turtleblocks.py:271
+#: turtleblocks.py:273
 #, python-format
 msgid "Configuration directory not writable: %s"
 msgstr "無法直接寫入設定到：%s"
 
-#: turtleblocks.py:327
+#: turtleblocks.py:350
 msgid "New"
 msgstr "新增"
 
-#: turtleblocks.py:328
+#: turtleblocks.py:351
 msgid "Open"
 msgstr "開啟"
 
-#: turtleblocks.py:329
+#: turtleblocks.py:352
 msgid "Save"
 msgstr "儲存"
 
-#: turtleblocks.py:330
+#: turtleblocks.py:353
 msgid "Save as"
 msgstr "另存新檔"
 
-#: turtleblocks.py:335
+#: turtleblocks.py:358
 msgid "Quit"
 msgstr "離開"
 
-#: turtleblocks.py:336
+#: turtleblocks.py:359
 msgid "File"
 msgstr "檔案"
 
-#: turtleblocks.py:343
+#: turtleblocks.py:366
 msgid "Rescale coordinates"
 msgstr "重新縮放座標軸"
 
-#: turtleblocks.py:349
+#: turtleblocks.py:372
 msgid "Reset block size"
 msgstr "重設區塊大小"
 
-#: turtleblocks.py:367
+#: turtleblocks.py:390
 msgid "Show/hide blocks"
 msgstr "顯示/隱藏區塊"
 
-#: turtleblocks.py:369
+#: turtleblocks.py:392
 msgid "Tools"
 msgstr "工具"
 
-#: turtleblocks.py:375
+#: turtleblocks.py:398
 msgid "Debug"
 msgstr "除錯"
 
-#: turtleblocks.py:377
+#: turtleblocks.py:400
 msgid "Turtle"
 msgstr "小烏龜"
 
-#: turtleblocks.py:411
+#: turtleblocks.py:434
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr "你有尚未儲存的工作，是否要在關閉前儲存？"
 
-#: turtleblocks.py:412
+#: turtleblocks.py:435
 msgid "Save project?"
 msgstr "儲存計畫？"
+
+#~ msgid "Turtle Art Mini"
+#~ msgstr "迷你小海龜"
+
+#~ msgid "Turtle Confusion"
+#~ msgstr "小海龜謎題"
+
+#~ msgid "Select a challenge"
+#~ msgstr "選擇挑戰"
+
+#~ msgid "Palette of Mexican pesos"
+#~ msgstr "墨西哥披索色盤"
+
+#~ msgid "Palette of Colombian pesos"
+#~ msgstr "哥倫比亞披索色盤"
+
+#~ msgid "Palette of Rwandan francs"
+#~ msgstr "盧安達法郎色盤"
+
+#, fuzzy
+#~ msgid "adjust LED intensity between 0 and 255"
+#~ msgstr "調整 LED 亮度值介於 0 到 255。"
+
+#, fuzzy
+#~ msgid "returns the object gray level as a number between 0 and 1023"
+#~ msgstr "傳回環境亮度值介於 0 到 1023。"
+
+#, fuzzy
+#~ msgid "returns 1 when the button is press and 0 otherwise"
+#~ msgstr "當按鈕被按下時傳回 1，否則傳回 0。"
+
+#, fuzzy
+#~ msgid "returns the ambient light level as a number between 0 and 1023"
+#~ msgstr "傳回環境亮度值介於 0 到 1023。"
+
+#, fuzzy
+#~ msgid "returns the ambient temperature as a number between 0 and 255"
+#~ msgstr "傳回環境溫度值介於 0 到 255。"
+
+#, fuzzy
+#~ msgid ""
+#~ "returns the distance from the object in front of the sensor as a number "
+#~ "between 0 and 255"
+#~ msgstr "傳回感應器前方物體的距離值介於 0 到 255。"
+
+#, fuzzy
+#~ msgid "returns 0 or 1 depending on the sensor inclination"
+#~ msgstr "傳回 0 或 1 取決於感應器是否傾斜。"
+
+#, fuzzy
+#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+#~ msgstr "當感應器偵測到磁場時傳回 1，否則傳回 0。"
+
+#, fuzzy
+#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
+#~ msgstr "由 0 切換到 1，頻率取決於震動。"
+
+#~ msgid "LED"
+#~ msgstr "LED"
+
+#~ msgid "grayscale"
+#~ msgstr "灰階"
+
+#~ msgid "ambient light"
+#~ msgstr "環境光"
+
+#~ msgid "temperature"
+#~ msgstr "溫度"
+
+#~ msgid "distance"
+#~ msgstr "距離"
+
+#~ msgid "tilt"
+#~ msgstr "傾斜"
+
+#~ msgid "magnetic induction"
+#~ msgstr "磁力感應"
+
+#~ msgid "vibration"
+#~ msgstr "震動"
+
+#~ msgid "Butia Robot"
+#~ msgstr "棕櫚機器人"
+
+#, fuzzy
+#~ msgid "returns the battery charge as a number between 0 and 255"
+#~ msgstr "傳回電池電量值由 0 到 255。"
+
+#~ msgid "forward Butia"
+#~ msgstr "棕櫚往前移"
+
+#, fuzzy
+#~ msgid "move the Butia robot forward"
+#~ msgstr "棕櫚機器人往前移動。"
+
+#, fuzzy
+#~ msgid "move the Butia robot forward a predefined distance"
+#~ msgstr "棕櫚機器人往前移動一定的距離。"
+
+#~ msgid "left Butia"
+#~ msgstr "棕櫚左移"
+
+#, fuzzy
+#~ msgid "turn the Butia robot at left"
+#~ msgstr "棕櫚機器人轉 x 度。"
+
+#~ msgid "backward Butia"
+#~ msgstr "棕櫚往後移"
+
+#, fuzzy
+#~ msgid "move the Butia robot backward"
+#~ msgstr "棕櫚機器人往後移動。"
+
+#, fuzzy
+#~ msgid "move the Butia robot backward a predefined distance"
+#~ msgstr "棕櫚機器人往後移動一定的距離。"
+
+#~ msgid "right Butia"
+#~ msgstr "棕櫚右移"
+
+#, fuzzy
+#~ msgid "turn the Butia robot at right"
+#~ msgstr "棕櫚機器人轉 x 度。"
+
+#, fuzzy
+#~ msgid "turn the Butia robot x degrees"
+#~ msgstr "棕櫚機器人轉 x 度。"
+
+#~ msgid "stop Butia"
+#~ msgstr "停止棕櫚"
+
+#~ msgid "Butia"
+#~ msgstr "棕櫚"
+
+#, fuzzy
+#~ msgid "Error on initialization of the camera"
+#~ msgstr "初始化攝影機時發生錯誤。"
+
+#~ msgid "FollowMe"
+#~ msgstr "跟我來"
+
+#~ msgid "x position"
+#~ msgstr "x 位置"
+
+#~ msgid "return x position"
+#~ msgstr "傳回 x 位置"
+
+#~ msgid "y position"
+#~ msgstr "y 位置"
+
+#~ msgid "return y position"
+#~ msgstr "傳回 y 位置"
+
+#, fuzzy
+#~ msgid "set the default speed for the movement commands"
+#~ msgstr "設定預設移動指令的速度。"
+
+#~ msgid "angle to center"
+#~ msgstr "距中心角度"
+
+#, fuzzy
+#~ msgid "get the angle to the center of the dohyo"
+#~ msgstr "取得距道場中心的角度"
+
+#, fuzzy
+#~ msgid "get the angle to the Enemy"
+#~ msgstr "取得距對手的距離"
+
+#, fuzzy
+#~ msgid "get the x coordinate of the SumBot"
+#~ msgstr "取得機器人的 x 座標"
+
+#, fuzzy
+#~ msgid "get the y coordinate of the SumBot"
+#~ msgstr "取得機器人的 y 座標"
+
+#, fuzzy
+#~ msgid "get the x coordinate of the Enemy"
+#~ msgstr "取得機器人的 x 座標"
+
+#, fuzzy
+#~ msgid "get the y coordinate of the Enemy"
+#~ msgstr "取得機器人的 y 座標"
+
+#, fuzzy
+#~ msgid "get the rotation of the Sumbot"
+#~ msgstr "取得對手的旋轉值"
+
+#, fuzzy
+#~ msgid "get the rotation of the Enemy"
+#~ msgstr "取得對手的旋轉值"
+
+#~ msgid "distance to center"
+#~ msgstr "離中心的距離"
+
+#, fuzzy
+#~ msgid "get the distance to the center of the dohyo"
+#~ msgstr "取得距道場中心的距離"
+
+#, fuzzy
+#~ msgid "get the distance to the Enemy"
+#~ msgstr "取得距對手的距離"
+
+#~ msgid "update information"
+#~ msgstr "更新訊息"
+
+#, fuzzy
+#~ msgid "update information from the server"
+#~ msgstr "自伺服器更新訊息"
+
+#~ msgid "Palette of physics blocks"
+#~ msgstr "物件區塊的顏色"
+
+#~ msgid "start polygon"
+#~ msgstr "開始畫多邊形"
+
+#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
+#~ msgstr "由目前小海龜的位置，開始定義一個新的多邊形。"
+
+#~ msgid "add point"
+#~ msgstr "新增頂點"
+
+#~ msgid ""
+#~ "Add a new point to the current polygon based on the current Turtle xy "
+#~ "position."
+#~ msgstr "由目前小海龜的位置，在目前的多邊形上新增頂點。"
+
+#~ msgid "end polygon"
+#~ msgstr "結束多邊形"
+
+#~ msgid "Define a new polygon."
+#~ msgstr "定義一個新的多邊形。"
+
+#~ msgid "end filled polygon"
+#~ msgstr "結束填充多邊形"
+
+#~ msgid "Not a simple polygon"
+#~ msgstr "不是一個簡單的多邊形"
+
+#~ msgid "Define a new filled polygon."
+#~ msgstr "定義一個新的填充多邊形。"
+
+#~ msgid "triangle"
+#~ msgstr "三角形"
+
+#~ msgid "base"
+#~ msgstr "基底"
+
+#~ msgid "Add a triangle object to the project."
+#~ msgstr "專案中新增一個三角形物件。"
+
+#~ msgid "circle"
+#~ msgstr "圓形"
+
+#~ msgid "Add a circle object to the project."
+#~ msgstr "專案中新增一個圓形物件。"
+
+#~ msgid "rectangle"
+#~ msgstr "長方形"
+
+#~ msgid "Add a rectangle object to the project."
+#~ msgstr "專案中新增一個長方形物件。"
+
+#~ msgid "reset"
+#~ msgstr "重置"
+
+#~ msgid "Reset the project; clear the object list."
+#~ msgstr "重置專案，清除物件清單。"
+
+#~ msgid "motor"
+#~ msgstr "發動機"
+
+#~ msgid "torque"
+#~ msgstr "扭力"
+
+#~ msgid "speed"
+#~ msgstr "速度"
+
+#~ msgid ""
+#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
+#~ "placed on the most recent object created."
+#~ msgstr "發動機的扭力與速度值，由 0 (關閉)到一個正數，發動機放在最後建立的物件上。"
+
+#~ msgid "pin"
+#~ msgstr "釘梢"
+
+#~ msgid "Pin an object down so that it cannot fall."
+#~ msgstr "固定一個物件使其不掉落。"
+
+#~ msgid "joint"
+#~ msgstr "關節"
+
+#~ msgid ""
+#~ "Join two objects together (the most recent object created and the object at "
+#~ "point x, y)."
+#~ msgstr "用來連接兩個物件(上一個建立的物件與位於x, y位置的另一個物件)"
+
+#~ msgid "Save the project to the Journal as a Physics activity."
+#~ msgstr "保存專案到日誌上成為物理活動"
+
+#, fuzzy
+#~ msgid "Add a gear object to the project."
+#~ msgstr "專案中新增一個圓形物件。"
+
+#~ msgid "density"
+#~ msgstr "密度"
+
+#~ msgid ""
+#~ "Set the density property for objects (density can be any positive number)."
+#~ msgstr "訂定物件的密度值 (任意正數)。"
+
+#~ msgid "friction"
+#~ msgstr "摩擦係數"
+
+#~ msgid ""
+#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
+#~ "friction off and 1 is strong friction)."
+#~ msgstr "訂定物件的摩擦係數 (介於0無摩擦到1最大)。"
+
+#~ msgid "bounciness"
+#~ msgstr "彈性係數"
+
+#~ msgid ""
+#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+#~ "no bounce and 1 is very bouncy)."
+#~ msgstr "訂定物件的彈性係數 (介於0無彈性到1最大)。"
+
+#~ msgid "dynamic"
+#~ msgstr "可動性"
+
+#~ msgid ""
+#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+#~ msgstr "當可動性 = 1 時物件可以移動，可動性 = 0 時物件是固定的。"
+
+#, fuzzy
+#~ msgid "Palette of WeDo blocks"
+#~ msgstr "偵測器區塊的顏色"
+
+#, fuzzy
+#~ msgid "light"
+#~ msgstr "右轉"
+
+#, fuzzy
+#~ msgid "grey"
+#~ msgstr "灰色"
+
+#, fuzzy
+#~ msgid "port"
+#~ msgstr "連接埠"
+
+#, fuzzy
+#~ msgid "rotations"
+#~ msgstr "旋轉"
+
+#, fuzzy
+#~ msgid "read"
+#~ msgstr "紅色"
+
+#, fuzzy
+#~ msgid "sensor"
+#~ msgstr "偵測器"
+
+#, fuzzy
+#~ msgid "mode"
+#~ msgstr "模數"
+
+#, fuzzy
+#~ msgid "Palette of Expeyes blocks"
+#~ msgstr "偵測器區塊的顏色"
+
+#, fuzzy
+#~ msgid "samples"
+#~ msgstr "範例"
+
+#, fuzzy
+#~ msgid ""
+#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
+#~ "an argument"
+#~ msgstr "由給定參數設定棕櫚馬達的速度值由 0 到 1023。"
+
+#, fuzzy
+#~ msgid "display Butia"
+#~ msgstr "延遲棕櫚"
+
+#, fuzzy
+#~ msgid "print text in Butia robot 32-character ASCII display"
+#~ msgstr "在棕櫚機器人32字ASCII 顯示器印出文字"
+
+#~ msgid "follow a RGB color"
+#~ msgstr "跟隨一個 RGB 顏色"
+
+#, fuzzy
+#~ msgid "Palette of Arduino blocks"
+#~ msgstr "偵測器區塊的顏色"
 
 #~ msgid "delay Butia"
 #~ msgstr "延遲棕櫚"
@@ -3238,9 +2445,6 @@ msgstr "儲存計畫？"
 
 #~ msgid "Load my block"
 #~ msgstr "載入我的區塊"
-
-#~ msgid "Samples"
-#~ msgstr "範例"
 
 #~ msgid "picture left"
 #~ msgstr "圖片左側"
