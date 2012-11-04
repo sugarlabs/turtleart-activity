@@ -172,7 +172,8 @@ class Audio_sensors(Plugin):
                               help_string=_('microphone input voltage'),
                               prim_name='voltage')
 
-        if self.hw in [XO15, XO175, XO30] and self._status:
+        # FIXME: Only add stereo capture for XO15 (broken on ARM #3675)
+        if self.hw in [XO15] and self._status:
             palette.add_block('resistance2',
                               style='box-style',
                               label=_('resistance') + '2',
@@ -340,11 +341,21 @@ class Audio_sensors(Plugin):
             return 0
 
     def prim_resistance(self, channel):
-        ''' return resistance sensor value '''
         if not self.hw in [XO1, XO15, XO175, XO30] or not self._status:
             return 0
-        if self.hw == XO1 and channel != 0:
-            return 0
+        if self.hw == XO1:
+            return self._prim_resistance(0)
+        elif self.hw == XO15:
+            return self._prim_resistance(channel)
+        # FIXME: For ARM (XO175, XO4) channel assignment is seemingly
+        # random (#3675), so sum both channels
+        else:
+            chan0 = self._prim_resistance(0)
+            chan1 = self._prim_resistance(1)
+            return chan0 + chan1
+
+    def _prim_resistance(self, channel):
+        ''' return resistance sensor value '''
         buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
@@ -378,11 +389,21 @@ class Audio_sensors(Plugin):
             return 0
 
     def prim_voltage(self, channel):
-        ''' return voltage sensor value '''
         if not self.hw in [XO1, XO15, XO175, XO30] or not self._status:
             return 0
-        if self.hw == XO1 and channel != 0:
-            return 0
+        if self.hw == XO1:
+            return self._prim_voltage(0)
+        elif self.hw == XO15:
+            return self._prim_voltage(channel)
+        # FIXME: For ARM (XO175, XO4) channel assignment is seemingly
+        # random (#3675), so sum both channels
+        else:
+            chan0 = self._prim_voltage(0)
+            chan1 = self._prim_voltage(1)
+            return chan0 + chan1
+
+    def _prim_voltage(self, channel):
+        ''' return voltage sensor value '''
         buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
