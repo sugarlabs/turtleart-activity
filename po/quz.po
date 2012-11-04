@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-27 14:55-0400\n"
+"POT-Creation-Date: 2012-11-02 10:01-0400\n"
 "PO-Revision-Date: 2012-07-23 04:50+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: Voluntarios Quechua Sugar\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #  "TortugArte"
 #. TRANS: "name" option from activity.info file
-#: TurtleArt/tawindow.py:3817 pysamples/grecord.py:205 turtleblocks.py:295
+#: TurtleArt/tawindow.py:3767 pysamples/grecord.py:205 turtleblocks.py:303
 msgid "Turtle Art"
 msgstr "CharapArte"
 
@@ -114,12 +114,12 @@ msgid "set xy"
 msgstr "XY nisqata churay"
 
 #  "x"
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257 taextras.py:261
+#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
 msgid "x"
 msgstr "X"
 
 #  "y"
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257 taextras.py:262
+#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
 msgid "y"
 msgstr "Y"
 
@@ -146,8 +146,8 @@ msgstr ""
 "purichin)"
 
 #  "coorx"
-#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3811
-#: TurtleArt/tawindow.py:3817 TurtleArtActivity.py:538
+#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3761
+#: TurtleArt/tawindow.py:3767 TurtleArtActivity.py:557
 msgid "xcor"
 msgstr "xcor"
 
@@ -165,8 +165,8 @@ msgstr ""
 "hap'ikullanmanmi)"
 
 #  "coory"
-#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3811
-#: TurtleArt/tawindow.py:3817 TurtleArtActivity.py:539
+#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3761
+#: TurtleArt/tawindow.py:3767 TurtleArtActivity.py:558
 msgid "ycor"
 msgstr "ycor"
 
@@ -184,8 +184,8 @@ msgstr ""
 "hap'ikullanmanmi)"
 
 #  "rumbo"
-#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3812
-#: TurtleArt/tawindow.py:3818 TurtleArtActivity.py:539
+#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3762
+#: TurtleArt/tawindow.py:3768 TurtleArtActivity.py:558
 msgid "heading"
 msgstr "mayman"
 
@@ -214,7 +214,7 @@ msgstr "pantallata hunt'achiy"
 
 #  "color"
 #: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
-#: TurtleArt/tabasics.py:340 taextras.py:311
+#: TurtleArt/tabasics.py:340
 msgid "color"
 msgstr "llimp'i"
 
@@ -776,8 +776,8 @@ msgstr "waskarchakuqpa chanin"
 #  "acción"
 #: TurtleArt/tabasics.py:857 TurtleArt/tabasics.py:860
 #: TurtleArt/tabasics.py:868 TurtleArt/tabasics.py:872
-#: TurtleArt/tawindow.py:1250 TurtleArt/tawindow.py:1328
-#: TurtleArt/tawindow.py:1341 TurtleArt/tawindow.py:4061
+#: TurtleArt/tawindow.py:1269 TurtleArt/tawindow.py:1350
+#: TurtleArt/tawindow.py:1363 TurtleArt/tawindow.py:4016
 msgid "action"
 msgstr "ruway"
 
@@ -787,7 +787,7 @@ msgid "top of nameable action stack"
 msgstr "tawqap patan sutichakuq"
 
 #  "invocar la pila de acción nombrado"
-#: TurtleArt/tabasics.py:873 TurtleArt/tawindow.py:4075
+#: TurtleArt/tabasics.py:873 TurtleArt/tawindow.py:4030
 msgid "invokes named action stack"
 msgstr "sutichasqa tawqata waqyay"
 
@@ -832,7 +832,7 @@ msgid "Variable 2 (numeric value)"
 msgstr "2 variable nisqa (yupanap chanin)"
 
 #  "guardar en"
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4129
+#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4080
 msgid "store in"
 msgstr "imapi waqaychanki"
 
@@ -842,24 +842,24 @@ msgid "box"
 msgstr "tawak'uchu"
 
 #  "valor"
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4129 taextras.py:396
+#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4080
 msgid "value"
 msgstr "chani"
 
 #  "mi caja"
 #: TurtleArt/tabasics.py:929 TurtleArt/tabasics.py:942
-#: TurtleArt/tawindow.py:1254 TurtleArt/tawindow.py:4090
-#: TurtleArt/tawindow.py:4120
+#: TurtleArt/tawindow.py:1273 TurtleArt/tawindow.py:4043
+#: TurtleArt/tawindow.py:4071
 msgid "my box"
 msgstr "tawak'uchuy"
 
 #  "guarda valor numérico en la variable nombrada"
-#: TurtleArt/tabasics.py:930 TurtleArt/tawindow.py:4134
+#: TurtleArt/tabasics.py:930 TurtleArt/tawindow.py:4085
 msgid "stores numeric value in named variable"
 msgstr "yupanap chanintaqa variable sutichasqapim waqaychay"
 
 #  "variable nombrado (valor numérico)"
-#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4104
+#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4057
 msgid "named variable (numeric value)"
 msgstr "Sutichasqa Variable (yupanap chanin)"
 
@@ -929,15 +929,15 @@ msgid "move all blocks to trash"
 msgstr "llapan bloque nisqakunataqa q'upanaman wikch'uy"
 
 #  "Compartir bloques seleccionados"
-#: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1783
-#: TurtleArtActivity.py:633
+#: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1790
+#: TurtleArtActivity.py:652
 msgid "Share selected blocks"
 msgstr "Akllasqa bloques nisqakunata qunakuy"
 
 #  "Título"
-#: TurtleArt/taconstants.py:241 TurtleArt/taconstants.py:263
-#: TurtleArt/taconstants.py:284 TurtleArt/taconstants.py:326
-#: TurtleArt/taconstants.py:368 TurtleArt/taconstants.py:410
+#: TurtleArt/taconstants.py:216 TurtleArt/taconstants.py:238
+#: TurtleArt/taconstants.py:259 TurtleArt/taconstants.py:301
+#: TurtleArt/taconstants.py:343 TurtleArt/taconstants.py:385
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:978
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:993
@@ -948,19 +948,19 @@ msgid "Title"
 msgstr "Sutinchaynin"
 
 #  "Parar tortuga"
-#: TurtleArt/talogo.py:358 TurtleArtActivity.py:613
+#: TurtleArt/talogo.py:358 TurtleArtActivity.py:632
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1473
 msgid "Stop turtle"
 msgstr "Charapata utichiy"
 
 #  "Mostrar bloques"
-#: TurtleArt/talogo.py:369 TurtleArtActivity.py:288 TurtleArtActivity.py:614
+#: TurtleArt/talogo.py:369 TurtleArtActivity.py:288 TurtleArtActivity.py:633
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1466
 msgid "Show blocks"
 msgstr "Bloques nisqakunata rikuchiy"
 
 # "ocultar los bloques"
-#: TurtleArt/talogo.py:373 TurtleArtActivity.py:292 TurtleArtActivity.py:791
+#: TurtleArt/talogo.py:373 TurtleArtActivity.py:292 TurtleArtActivity.py:810
 #, fuzzy
 msgid "Hide blocks"
 msgstr "bloques nisqakunata pakay"
@@ -996,56 +996,56 @@ msgid "changes the orientation of the palette of blocks"
 msgstr "bloque nisqakuna mayman qhawariyninta t'ikrachiy"
 
 #  "Cargar..."
-#: TurtleArt/tautils.py:191
+#: TurtleArt/tautils.py:192
 msgid "Load..."
 msgstr "Purichkanña..."
 
 #  "Guardar..."
-#: TurtleArt/tautils.py:201
+#: TurtleArt/tautils.py:202
 msgid "Save..."
 msgstr "Waqaychay..."
 
 #  "clic para abrir"
-#: TurtleArt/tautils.py:473
+#: TurtleArt/tautils.py:474
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
 msgid "click to open"
 msgstr "kicharinapaqqa clickta ruway"
 
 #  "orientación"
-#: TurtleArt/tawindow.py:968 TurtleArt/tawindow.py:969
+#: TurtleArt/tawindow.py:987 TurtleArt/tawindow.py:988
 msgid "orientation"
 msgstr "mayman rinqa"
 
 #  "siguiente"
-#: TurtleArt/tawindow.py:979 TurtleArt/tawindow.py:1413
+#: TurtleArt/tawindow.py:998 TurtleArt/tawindow.py:1435
 msgid "next"
 msgstr "hamuq"
 
 #  "desplazar"
-#: TurtleArt/tawindow.py:991 TurtleArt/tawindow.py:992
-#: TurtleArt/tawindow.py:1433
+#: TurtleArt/tawindow.py:1010 TurtleArt/tawindow.py:1011
+#: TurtleArt/tawindow.py:1455
 msgid "shift"
 msgstr "purichiy"
 
 #  "Selecciona bloques para compartir"
-#: TurtleArt/tawindow.py:1268
+#: TurtleArt/tawindow.py:1287
 msgid "Select blocks to share"
 msgstr "Qukunapaq bloques nisqakunata akllay"
 
 #  "imagen"
-#: TurtleArt/tawindow.py:3916
+#: TurtleArt/tawindow.py:3873
 msgid "image"
 msgstr "wanki"
 
 #  "Guardar como Logo"
-#: TurtleArtActivity.py:132 TurtleArtActivity.py:639 TurtleArtActivity.py:730
-#: TurtleArtActivity.py:750 turtleblocks.py:333
+#: TurtleArtActivity.py:132 TurtleArtActivity.py:658 TurtleArtActivity.py:749
+#: TurtleArtActivity.py:769 turtleblocks.py:356
 msgid "Save as Logo"
 msgstr "Unancha hinata waqaychay"
 
 #  "Guardar como imagen"
-#: TurtleArtActivity.py:169 TurtleArtActivity.py:638 TurtleArtActivity.py:727
-#: TurtleArtActivity.py:747 turtleblocks.py:331
+#: TurtleArtActivity.py:169 TurtleArtActivity.py:657 TurtleArtActivity.py:746
+#: TurtleArtActivity.py:766 turtleblocks.py:354
 msgid "Save as image"
 msgstr "Wanki hinata waqaychay"
 
@@ -1055,29 +1055,29 @@ msgid "snapshot"
 msgstr "usqachiq"
 
 #  "Guardar instantánea"
-#: TurtleArtActivity.py:185 TurtleArtActivity.py:572 TurtleArtActivity.py:615
-#: TurtleArtActivity.py:753
+#: TurtleArtActivity.py:185 TurtleArtActivity.py:591 TurtleArtActivity.py:634
+#: TurtleArtActivity.py:772
 msgid "Save snapshot"
 msgstr "Utqaylla waqaychay"
 
 #  "Deshabilitar ayuda flotante"
-#: TurtleArtActivity.py:226 TurtleArtActivity.py:550 TurtleArtActivity.py:689
-#: turtleblocks.py:351
+#: TurtleArtActivity.py:226 TurtleArtActivity.py:569 TurtleArtActivity.py:708
+#: turtleblocks.py:374
 msgid "Turn off hover help"
 msgstr "Tuytuq yanapayta chinkachiy"
 
 #  "Habilitar ayuda flotante"
-#: TurtleArtActivity.py:232 turtleblocks.py:353
+#: TurtleArtActivity.py:232 turtleblocks.py:376
 msgid "Turn on hover help"
 msgstr "Tuytuq yanapayta rikuchiy"
 
 #  "Mostrar paleta"
-#: TurtleArtActivity.py:240 turtleblocks.py:363
+#: TurtleArtActivity.py:240 turtleblocks.py:386
 msgid "Show palette"
 msgstr "Llimp'ikunata rikuchiy"
 
 #  "Ocultar paleta"
-#: TurtleArtActivity.py:246 TurtleArtActivity.py:779 turtleblocks.py:365
+#: TurtleArtActivity.py:246 TurtleArtActivity.py:798 turtleblocks.py:388
 msgid "Hide palette"
 msgstr "Llimp'ikunata pakay"
 
@@ -1087,173 +1087,173 @@ msgid "Rescale coordinates down"
 msgstr "Coordenadasta urayman churay"
 
 #  "Escalar coordenadas hacia arriba"
-#: TurtleArtActivity.py:404 TurtleArtActivity.py:542 TurtleArtActivity.py:685
+#: TurtleArtActivity.py:404 TurtleArtActivity.py:561 TurtleArtActivity.py:704
 msgid "Rescale coordinates up"
 msgstr "Coordenadasta wichayman t'akyachiy"
 
 #  "Editar"
-#: TurtleArtActivity.py:476 TurtleArtActivity.py:512 TurtleArtActivity.py:607
-#: TurtleArtActivity.py:660 turtleblocks.py:360
+#: TurtleArtActivity.py:494 TurtleArtActivity.py:530 TurtleArtActivity.py:626
+#: TurtleArtActivity.py:679 turtleblocks.py:383
 msgid "Edit"
 msgstr "Allinchay"
 
 #  "Ver"
-#: TurtleArtActivity.py:481 TurtleArtActivity.py:510 TurtleArtActivity.py:608
-#: TurtleArtActivity.py:677 turtleblocks.py:355
+#: TurtleArtActivity.py:499 TurtleArtActivity.py:528 TurtleArtActivity.py:627
+#: TurtleArtActivity.py:696 turtleblocks.py:378
 msgid "View"
 msgstr "Qhaway"
 
 #  "Proyecto"
-#: TurtleArtActivity.py:508 TurtleArtActivity.py:609
+#: TurtleArtActivity.py:526 TurtleArtActivity.py:628
 msgid "Project"
 msgstr "Wakichina"
 
 #  "Guardar/Cargar"
-#: TurtleArtActivity.py:514 TurtleArtActivity.py:606 TurtleArtActivity.py:635
-#: TurtleArtActivity.py:637 TurtleArtActivity.py:722
+#: TurtleArtActivity.py:532 TurtleArtActivity.py:625 TurtleArtActivity.py:654
+#: TurtleArtActivity.py:656 TurtleArtActivity.py:741
 msgid "Save/Load"
 msgstr "Waqaychay/Wichachiy"
 
 #  "Copiar"
-#: TurtleArtActivity.py:522 TurtleArtActivity.py:661 turtleblocks.py:358
+#: TurtleArtActivity.py:540 TurtleArtActivity.py:680 turtleblocks.py:381
 msgid "Copy"
 msgstr "Kikinchay"
 
 #  "Pegar"
-#: TurtleArtActivity.py:524 TurtleArtActivity.py:662 turtleblocks.py:359
+#: TurtleArtActivity.py:542 TurtleArtActivity.py:681 turtleblocks.py:382
 msgid "Paste"
 msgstr "K'askachiy"
 
 # "restaura todos los bloques de la papelera"
-#: TurtleArtActivity.py:526
+#: TurtleArtActivity.py:544
 #, fuzzy
 msgid "Restore blocks from trash"
 msgstr "q'upanapi ima bloque nisqakuna kaqtaqa llipinta kutiyachiy"
 
 #  "Pantalla completa"
-#: TurtleArtActivity.py:528 TurtleArtActivity.py:678
+#: TurtleArtActivity.py:547 TurtleArtActivity.py:697
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
 msgid "Fullscreen"
 msgstr "Hunt'asqa pantalla"
 
 #  "Coordenadas cartesianas"
-#: TurtleArtActivity.py:530 TurtleArtActivity.py:679 turtleblocks.py:339
+#: TurtleArtActivity.py:549 TurtleArtActivity.py:698 turtleblocks.py:362
 msgid "Cartesian coordinates"
 msgstr "Coordenadas cartesianas nisqa"
 
 #  "Coordenadas polares"
-#: TurtleArtActivity.py:532 TurtleArtActivity.py:681 turtleblocks.py:341
+#: TurtleArtActivity.py:551 TurtleArtActivity.py:700 turtleblocks.py:364
 msgid "Polar coordinates"
 msgstr "Coordenadas polares nisqa"
 
 #  "Coordenadas centímetros"
-#: TurtleArtActivity.py:535 TurtleArtActivity.py:683
+#: TurtleArtActivity.py:554 TurtleArtActivity.py:702
 msgid "Metric coordinates"
 msgstr "Coordenadas centímetros nisqa"
 
 #  "Agrandar bloques"
-#: TurtleArtActivity.py:545 TurtleArtActivity.py:687 turtleblocks.py:345
+#: TurtleArtActivity.py:564 TurtleArtActivity.py:706 turtleblocks.py:368
 msgid "Grow blocks"
 msgstr "Bloques nisqakunata hatunyachiy"
 
 #  "Empequeñecer bloques"
-#: TurtleArtActivity.py:547 TurtleArtActivity.py:688 turtleblocks.py:347
+#: TurtleArtActivity.py:566 TurtleArtActivity.py:707 turtleblocks.py:370
 msgid "Shrink blocks"
 msgstr "Bloques nisqakunata huch'uyachiy"
 
 #  "Cargar ejemplos"
-#: TurtleArtActivity.py:576 TurtleArtActivity.py:616
+#: TurtleArtActivity.py:595 TurtleArtActivity.py:635
 msgid "Load example"
 msgstr "Qhawarichikunata wichachiy"
 
 #  "Limpiar"
-#: TurtleArtActivity.py:610 TurtleArtActivity.py:785 turtleblocks.py:372
+#: TurtleArtActivity.py:629 TurtleArtActivity.py:804 turtleblocks.py:395
 msgid "Clean"
 msgstr "Pichay"
 
 #  "Ejecutar"
-#: TurtleArtActivity.py:611 TurtleArtActivity.py:787 turtleblocks.py:373
+#: TurtleArtActivity.py:630 TurtleArtActivity.py:806 turtleblocks.py:396
 msgid "Run"
 msgstr "Ruway"
 
 #  "Dar un paso"
-#: TurtleArtActivity.py:612 TurtleArtActivity.py:789 turtleblocks.py:374
+#: TurtleArtActivity.py:631 TurtleArtActivity.py:808 turtleblocks.py:397
 msgid "Step"
 msgstr "Puriy"
 
 #  "Ayuda"
-#: TurtleArtActivity.py:617 util/helpbutton.py:45
+#: TurtleArtActivity.py:636 util/helpbutton.py:45
 msgid "Help"
 msgstr "Yanapay"
 
 #  "Parar"
-#: TurtleArtActivity.py:618 turtleblocks.py:376
+#: TurtleArtActivity.py:637 turtleblocks.py:399
 msgid "Stop"
 msgstr "Sayachiy"
 
 #  "Cargar proyecto"
-#: TurtleArtActivity.py:640 TurtleArtActivity.py:733 TurtleArtActivity.py:755
+#: TurtleArtActivity.py:659 TurtleArtActivity.py:752 TurtleArtActivity.py:774
 msgid "Load project"
 msgstr "Wakichinata wichachiy"
 
 #  "Cargar plugin"
-#: TurtleArtActivity.py:643 TurtleArtActivity.py:738 TurtleArtActivity.py:760
+#: TurtleArtActivity.py:662 TurtleArtActivity.py:757 TurtleArtActivity.py:779
 msgid "Load plugin"
 msgstr "Plugin nisqata churay"
 
 #  "Cargar bloque Python"
-#: TurtleArtActivity.py:644 TurtleArtActivity.py:741 TurtleArtActivity.py:763
+#: TurtleArtActivity.py:663 TurtleArtActivity.py:760 TurtleArtActivity.py:782
 msgid "Load Python block"
 msgstr "Pythonta wicharichiy"
 
 #  "Compartir bloques deshabilitado"
-#: TurtleArtActivity.py:717
+#: TurtleArtActivity.py:736
 msgid "Sharing blocks disabled"
 msgstr "Mana llamk'aq bloque nisqakunata qunakuy"
 
 #  "<Ctrl>p"
-#: TurtleArtActivity.py:780
+#: TurtleArtActivity.py:799
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
 #  "<Ctrl>e"
-#: TurtleArtActivity.py:785
+#: TurtleArtActivity.py:804
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
 #  "<Ctrl>r"
-#: TurtleArtActivity.py:787
+#: TurtleArtActivity.py:806
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
 #  "<Ctrl>w"
-#: TurtleArtActivity.py:789
+#: TurtleArtActivity.py:808
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
 #  "<Ctrl>s"
-#: TurtleArtActivity.py:792
+#: TurtleArtActivity.py:811
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
 #  "El plugin no puede ser instalado."
-#: TurtleArtActivity.py:927 TurtleArtActivity.py:932 TurtleArtActivity.py:999
+#: TurtleArtActivity.py:967 TurtleArtActivity.py:972 TurtleArtActivity.py:1039
 msgid "Plugin could not be installed."
 msgstr "Plugin nisqaqa churachiykuytaqa manam atichikunchu"
 
 #  "Reinicie TortugArte para poder usar el plugin."
-#: TurtleArtActivity.py:995
+#: TurtleArtActivity.py:1035
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr "Pluginwan kananpaqqa, wakmantam CharapArte sutichakuqtaqa qallarichiy."
 
 #  "El plugin %s ya se encuentra instalado."
-#: TurtleArtActivity.py:1013
+#: TurtleArtActivity.py:1053
 #, python-format
 msgid "Plugin %s already installed."
 msgstr "Plugin %s sutichakuqqa churasqañam kachkan."
 
 #  "¿Desea reinstalar %s?"
-#: TurtleArtActivity.py:1014
+#: TurtleArtActivity.py:1054
 #, python-format
 msgid "Do you want to reinstall %s?"
 msgstr "Munankichu %s sutichakuqta wakmanta churayta?"
@@ -1391,7 +1391,7 @@ msgstr "Urayachiyqa pantarun!"
 #  "Paleta de bloques sensor"
 #: plugins/accelerometer/accelerometer.py:49
 #: plugins/audio_sensors/audio_sensors.py:75
-#: plugins/camera_sensor/camera_sensor.py:57
+#: plugins/camera_sensor/camera_sensor.py:63
 #: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
 msgid "Palette of sensor blocks"
@@ -1412,7 +1412,6 @@ msgstr "utqhay puriytaqa tawqap x, y, z tinkuchaypi churay"
 #  "sonido"
 #: plugins/audio_sensors/audio_sensors.py:83
 #: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
-#: taextras.py:313
 msgid "sound"
 msgstr "uyarina"
 
@@ -1484,36 +1483,39 @@ msgstr ""
 "microfonopi uyarikusqanmanta DC voltaje nisqamanta (yupakuq: 0.40 - 1.90 V)"
 
 #  "Paleta de bloques medios
-#: plugins/camera_sensor/camera_sensor.py:61
+#: plugins/camera_sensor/camera_sensor.py:67
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
 msgid "Palette of media objects"
 msgstr "Media nisqakuna"
 
 #  "brillo"
-#: plugins/camera_sensor/camera_sensor.py:73
-#: plugins/camera_sensor/camera_sensor.py:86
-#: plugins/camera_sensor/camera_sensor.py:105
-#: plugins/camera_sensor/camera_sensor.py:118
+#: plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
 #: plugins/light_sensor/light_sensor.py:56
 #: plugins/light_sensor/light_sensor.py:63
 msgid "brightness"
 msgstr "llipipiynin"
 
 #  "nivel de luz detectado por la cámara"
-#: plugins/camera_sensor/camera_sensor.py:75
-#: plugins/camera_sensor/camera_sensor.py:107
+#: plugins/camera_sensor/camera_sensor.py:82
+#: plugins/camera_sensor/camera_sensor.py:130
 msgid "light level detected by camera"
 msgstr "cámarap mayk'a llipipiy rikusqan"
 
 #  "Promedio de color RGB de la cámara se desplaza a la pila"
-#: plugins/camera_sensor/camera_sensor.py:88
-#: plugins/camera_sensor/camera_sensor.py:120
+#: plugins/camera_sensor/camera_sensor.py:95
+#: plugins/camera_sensor/camera_sensor.py:143
 msgid "Average RGB color from camera is pushed to the stack"
 msgstr "Hayk'a llimp'i RGB sutiyumi cámarap pilankamaqa chayanqa"
 
 #  "imagen de la cámara"
-#: plugins/camera_sensor/camera_sensor.py:99
-#: plugins/camera_sensor/camera_sensor.py:132
+#: plugins/camera_sensor/camera_sensor.py:106
+#: plugins/camera_sensor/camera_sensor.py:113
+#: plugins/camera_sensor/camera_sensor.py:121
+#: plugins/camera_sensor/camera_sensor.py:155
+#: plugins/camera_sensor/camera_sensor.py:163
 msgid "camera output"
 msgstr "cámarap wankin"
 
@@ -1831,7 +1833,7 @@ msgid "returns the color that the turtle \"sees\""
 msgstr "charapa llimp'i \"qhawasqantam\" rikuchin"
 
 #  "tiempo"
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:445 taextras.py:332
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:445
 msgid "time"
 msgstr "pacha"
 
@@ -2153,7 +2155,7 @@ msgid "ycor of bottom of screen"
 msgstr "pantallap uray XCOR nisqan"
 
 #  "anchura"
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870 taextras.py:247
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
 msgid "width"
 msgstr "kinraynin"
 
@@ -2173,8 +2175,7 @@ msgid "ycor of top of screen"
 msgstr "pantallap wichay XCOR nisqan"
 
 #  "altura"
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894 taextras.py:242
-#: taextras.py:248
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894
 msgid "height"
 msgstr "sayaynin"
 
@@ -2267,1573 +2268,1217 @@ msgstr "U hinata muyuchiy"
 msgid "make a uturn"
 msgstr "U hinata muyuchiy"
 
-#  "TortugArte Mini"
-#: taextras.py:36
-msgid "Turtle Art Mini"
-msgstr "Huch'uy CharapArte"
-
-#  "TortugArte Confusión"
-#: taextras.py:40
-msgid "Turtle Confusion"
-msgstr "Muspaq CharapArte"
-
-#  "Selecciona un desafío"
-#: taextras.py:41
-msgid "Select a challenge"
-msgstr "Huk llallipayta akllay"
-
-#  "Paleta de Pesos Mexicanos"
-#: taextras.py:47
-msgid "Palette of Mexican pesos"
-msgstr "Pesos Mexicanos qullqimanta"
-
-#  "Paleta de Pesos Colombianos"
-#: taextras.py:48
-msgid "Palette of Colombian pesos"
-msgstr "Pesos Colombianos qullqimanta"
-
-#  "Paleta de Francos de Ruanda"
-#: taextras.py:49
-msgid "Palette of Rwandan francs"
-msgstr "Francos de Ruanda qullqimanta"
-
-#  "Paleta de Dólares Americanos"
-#  [es] "Paleta de Dólares Americanos"
-#: taextras.py:50
-msgid "Palette of US dollars"
-msgstr "dolar qullqimanta"
-
-#  "Paleta de Dólares Australianos"
-#  [es] "Paleta de Dólares Australianos"
-#: taextras.py:51
-msgid "Palette of Australian dollars"
-msgstr "Austrialiamanta dolar qullqimanta"
-
-#  "Paleta de Guaraníes Paraguayos"
-#  [es] "Paleta de Guaraníes Paraguayos"
-#: taextras.py:52
-msgid "Palette of Paraguayan Guaranies"
-msgstr "Paraguaymanta  Guaranies qullqimanta"
-
-#  "Paletea de Nuevos Soles Peruanos"
-#  [es] "Paletea de Nuevos Soles Peruanos"
-#: taextras.py:53
-msgid "Palette of Peruvian Nuevo Soles"
-msgstr "Perumanta Nuevos Soles qullqimanta"
-
-#  "Paleta de Pesos Uruguayos"
-#  [es] "Paleta de Pesos Uruguayos"
-#: taextras.py:54
-msgid "Palette of Uruguayan Pesos"
-msgstr "Uyuguaymanta Pesos qullqimanta"
-
-#  "TurtleBots"
-#  [es] "TurtleBots"
-#. TRANS: Butia is the Arduino Robot Project from Uruguay
-#. (http://www.fing.edu.uy/inco/proyectos/butia/)
-#: taextras.py:60
-msgid "TurtleBots"
-msgstr "CharapaBots"
-
-# "Ajusta la intensidad del LED entre 0 y 255."
-#: taextras.py:61
-msgid "adjust LED intensity between 0 and 255"
-msgstr "LED nisqapa utqayninqa 0 yupaymanta 255 yupaykama mat'ikunman"
-
-# "Devuelve el nivel de luz en el ambiente como un número entre 0 y 1023."
-#: taextras.py:62
-msgid "returns the object gray level as a number between 0 and 1023"
-msgstr "k'ancharichinaykipaqqa, 0 yupaymanta 1023 yupaykama churawaq"
-
-# "Devuelve 1 cuando el botón está presionado y 0 en otro caso."
-#: taextras.py:63
-msgid "returns 1 when the button is press and 0 otherwise"
-msgstr "rumpu q'apisqa kaptinqa 1 kutimunqa, mana chayna kaptinqa 0 kanqa"
-
-# "Devuelve el nivel de luz en el ambiente como un número entre 0 y 1023."
-#: taextras.py:64
-msgid "returns the ambient light level as a number between 0 and 1023"
-msgstr "k'ancharichinaykipaqqa, 0 yupaymanta 1023 yupaykama churawaq"
-
-# "Devuelve la temperatura en el ambiente como un número entre 0 y 255."
-#: taextras.py:65
-msgid "returns the ambient temperature as a number between 0 and 255"
-msgstr ""
-"q'uñiyachinaykipaq utaq chiriyachinaykipaqqa, 0 yupaymanta 1023 yupaykama "
-"churawaq"
-
-#  "returns the distance from the object in front of the sensor as a number "
-#  "between 0 and 255"
-#: taextras.py:66
-msgid ""
-"returns the distance from the object in front of the sensor as a number "
-"between 0 and 255"
-msgstr ""
-"musyanap ñawpanpi imaymana hayk'a karupi kasqantam 0 yupaymanta 255 "
-"yupaykamata rikuchin"
-
-#  "devuelve 0 o 1 dependiendo de la inclinación del sensor"
-#: taextras.py:68
-msgid "returns 0 or 1 depending on the sensor inclination"
-msgstr ""
-"imayna kinrayasqa musyana kasqanmantam 0 yupayta utaq 1 yupayta rikuchin"
-
-#  "devuelve 1 cuando el sensor detecta un campo magnético, 0 en otro caso"
-#: taextras.py:69
-msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-msgstr ""
-"huk campo magnetico nisqata musyana tariptinqa 1 yupaytam rikuchin mana "
-"chayqa 0 yupaytam rikuchin"
-
-#  "oscila entre 0 y 1 dependiendo de la vibración"
-#: taextras.py:70
-msgid "switches from 0 to 1, the frequency depends on the vibration"
-msgstr "imayna chukchuyasqanmantam 0 yupaymanta 1 yupaykama phawaykachan"
-
-#  "LED"
-#: taextras.py:71
-msgid "LED"
-msgstr "LED"
-
-#  "botón"
-#: taextras.py:72
-msgid "button"
-msgstr "rump'u"
-
-#  "escala de gris"
-#  [es] "escala de gris"
-#: taextras.py:73
-msgid "grayscale"
-msgstr "Ch'iqchiynin"
-
-#  "luz ambiente"
-#: taextras.py:74
-msgid "ambient light"
-msgstr "k'anchariynin"
-
-#  "temperatura"
-#: taextras.py:75
-msgid "temperature"
-msgstr "q'uñiynin"
-
-#  "distancia"
-#: taextras.py:76 taextras.py:292
-msgid "distance"
-msgstr "karukaynin"
-
-#  "inclinación"
-#: taextras.py:77 taextras.py:289
-msgid "tilt"
-msgstr "k'iraynin"
-
-#  "campo magnético"
-#: taextras.py:78
-msgid "magnetic induction"
-msgstr "ratapakuq campo magnético nisqa"
-
-#  "vibración"
-#: taextras.py:79
-msgid "vibration"
-msgstr "chukchuynin"
-
-#  "Robot Butiá"
-#: taextras.py:80
-msgid "Butia Robot"
-msgstr "Robot Butiá nisqa"
-
-#: taextras.py:81
-msgid "refresh Butia"
-msgstr ""
-
-#: taextras.py:82
-msgid "refresh the state of the Butia palette and blocks"
-msgstr ""
-
-#  "carga de batería Butiá"
-#. TRANS: This string is shorthand for "battery charge of Butia"
-#: taextras.py:84
-msgid "battery charge Butia"
-msgstr "Butiap bateriyanmanta"
-
-# "Devuelve la temperatura en el ambiente como un número entre 0 y 255."
-#: taextras.py:85
-msgid "returns the battery charge as a number between 0 and 255"
-msgstr ""
-"q'uñiyachinaykipaq utaq chiriyachinaykipaqqa, 0 yupaymanta 1023 yupaykama "
-"churawaq"
-
-# "velocidad Butiá"
-#. TRANS: This string is shorthand for "speed of Butia"
-#: taextras.py:87
-msgid "speed Butia"
-msgstr "Butiap utqhayninmanta"
-
-# "setea la velocidad de los motores del Butiá como un valor entre 0 y 1023 "
-#  "pasado como argumento"
-#: taextras.py:88
-#, fuzzy
-msgid ""
-"set the speed of the Butia motors to a value between 0 and 1023, passed by "
-"an argument"
-msgstr "Butiap motorninpa utqhaynintam 0 yupaymanta 1023 yupaykama akllapan"
-
-#  "adelante Butiá"
-#. TRANS: This string is shorthand for "move Butia forward"
-#: taextras.py:91
-msgid "forward Butia"
-msgstr "ñawpaqman Butia"
-
-#  "mueve el robot Butiá hacia adelante"
-#  [es] "mueve el robot Butiá hacia adelante"
-#: taextras.py:92
-msgid "move the Butia robot forward"
-msgstr "Butiataqa ñawpaqmanmi purichiy"
-
-#  "mueve el robot Butiá hacia adelante una distancia predefinida"
-#  [es] "mueve el robot Butiá hacia adelante una distancia predefinida"
-#: taextras.py:93
-msgid "move the Butia robot forward a predefined distance"
-msgstr "Butiataqa munasqa ñawpaqmanmi purichiy"
-
-#  "izquierda Butiá"
-#  [es] "izquierda Butiá"
-#. TRANS: This string is shorthand for "turn Butia left"
-#: taextras.py:95
-msgid "left Butia"
-msgstr "qulli Butia"
-
-# "gira el robot Butiá hacia la izquierda"
-#  [es] "gira el robot Butiá hacia la izquierda"
-#: taextras.py:96
-#, fuzzy
-msgid "turn the Butia robot to the left"
-msgstr "lluqimanhina Butiataqa muyuchiy"
-
-#  "atrás Butiá"
-#. TRANS: This string is shorthand for "move Butia backward"
-#: taextras.py:98
-msgid "backward Butia"
-msgstr "qhipaman Butia"
-
-#  "mueve el robot Butiá hacia atrás"
-#  [es] "mueve el robot Butiá hacia atrás"
-#: taextras.py:99
-msgid "move the Butia robot backward"
-msgstr "Butiataqa qhipamanmi purichiy"
-
-#  "mueve el robot Butiá hacia atrás una distancia predefinida"
-#  [es] "mueve el robot Butiá hacia atrás una distancia predefinida"
-#: taextras.py:100
-msgid "move the Butia robot backward a predefined distance"
-msgstr "Butiataqa munasqa qhipamanmi purichiy"
-
-#  "derecha Butiá"
-#  [es] "derecha Butiá"
-#. TRANS: This string is shorthand for "turn Butia right"
-#: taextras.py:102
-msgid "right Butia"
-msgstr "paña Butia"
-
-#  "gira el robot Butiá hacia la derecha"
-#  [es] "gira el robot Butiá hacia la derecha"
-#: taextras.py:103
-msgid "turn the Butia robot at right"
-msgstr "pañamanhina Butiataqa muyuchiy"
-
-#  "girar Butiá"
-#  [es] "girar Butiá"
-#: taextras.py:104
-msgid "turn Butia"
-msgstr "Butiata muyuchiy"
-
-#  "gira el robot Butiá x grados"
-#  [es] "gira el robot Butiá x grados"
-#: taextras.py:105
-msgid "turn the Butia robot x degrees"
-msgstr "Butiataqa x grados nisqamanmi muyuchiy"
-
-#  "detener Butiá"
-#  [es] "detener Butiá"
-#: taextras.py:106
-msgid "stop Butia"
-msgstr "Butiataqa sayachiy"
-
-#  "detiene al robot Butiá"
-#  [es] "detiene al robot Butiá"
-#: taextras.py:107
-msgid "stop the Butia robot"
-msgstr "robot Butiatam sayachin"
-
-# "espera Butiá"
-#: taextras.py:108
-msgid "display Butia"
-msgstr "Butiap suyaynin"
-
-# "Hola Mundo                 Butia"
-#: taextras.py:109
-msgid "Hello World    Butia            "
-msgstr "Llapaykichik allillanchu    Butia "
-
-#  "imprime texto en la pantalla de 32 caracteres ASCII del Butiá"
-#. TRANS: this string must contain only ASCII characters.
-#. The len must be 32 characters/spaces.
-#: taextras.py:112
-msgid "print text in Butia robot 32-character ASCII display"
-msgstr "Butiyap 32 siq'iyuq ASCII sutichakuqmantam pantallapi qillqata rikuchin"
-
-#  "Butiá"
-#  [es] "Butiá"
-#: taextras.py:113
-msgid "Butia"
-msgstr "Butia"
-
-# "Error en la inicialización de la cámara."
-#  [es] "Error en la inicialización de la cámara."
-#: taextras.py:117
-#, fuzzy
-msgid "Error on initialization of the camera"
-msgstr "camara qallarichiypiqa pantarunmi."
-
-#: taextras.py:118
-msgid "No camera was found"
-msgstr ""
-
-#: taextras.py:119
-msgid "Error stopping camera"
-msgstr ""
-
-#: taextras.py:120
-msgid "Error starting camera"
-msgstr ""
-
-#. TRANS: The "mask" is used to restrict processing to a region in the image
-#: taextras.py:122
-msgid "Error making mask"
-msgstr ""
-
-#  "FollowMe"
-#  [es] "FollowMe"
-#: taextras.py:123
-msgid "FollowMe"
-msgstr "FollowMe"
-
-#  "seguir"
-#  [es] "seguir"
-#: taextras.py:124
-msgid "follow"
-msgstr "qhatiy"
-
-#  "G"
-#  [es] "G"
-#. TRANS: Green component of a color
-#: taextras.py:126
-msgid "G"
-msgstr "G"
-
-#  "R"
-#  [es] "R"
-#. TRANS: Red component of a color
-#: taextras.py:128
-msgid "R"
-msgstr "R"
-
-#  "B"
-#  [es] "B"
-#. TRANS: Blue component of a color
-#: taextras.py:130
-msgid "B"
-msgstr "B"
-
-#  "seguir color RGB"
-#: taextras.py:131
-msgid "follow a RGB color"
-msgstr "RGB llimp'ita tariy"
-
-#: taextras.py:132
-msgid "threshold"
-msgstr ""
-
-#: taextras.py:133
-msgid "set a threshold for a RGB color"
-msgstr ""
-
-#  "guardar calibración 1"
-#. TRANS: the calibration can be saved for later use
-#: taextras.py:135
-msgid "save calibration 1"
-msgstr "1 mat'ichinata waqaychay"
-
-#  "almacena una calibración en calibración 1"
-#: taextras.py:136
-msgid "stores a calibration in calibration 1"
-msgstr "mat'ichinataqa 1 mat'ichina sutichasqapim waqaychan"
-
-#  "guardar calibración 2"
-#. TRANS: the calibration can be saved for later use
-#: taextras.py:138
-msgid "save calibration 2"
-msgstr "2 mat'ichinata waqaychay"
-
-#  "almacena una calibración en calibración 2"
-#: taextras.py:139
-msgid "stores a calibration in calibration 2"
-msgstr "mat'ichinataqa 2 mat'ichina sutichasqapim waqaychan"
-
-#  "calibración"
-#. TRANS: the calibration is used to match an RGB color to a target
-#: taextras.py:141
-msgid "calibration"
-msgstr "mat'ichina"
-
-#  "almacena una calibración personalizada"
-#: taextras.py:142
-msgid "stores a personalized calibration"
-msgstr "munasqa mat'ichisqata waqaychan"
-
-#  "calibración 1"
-#: taextras.py:143
-msgid "calibration 1"
-msgstr "1 mat'ichina"
-
-#  "devuelve la calibración 1"
-#: taextras.py:144
-msgid "return calibration 1"
-msgstr "1 mat'ichinata rikuchin"
-
-#  "calibración 2"
-#: taextras.py:145
-msgid "calibration 2"
-msgstr "2 mat'ichina"
-
-#  "devuelve la calibración 2"
-#: taextras.py:146
-msgid "return calibration 2"
-msgstr "2 mat'ichinata rikuchin"
-
-#  "devuelve una calibración personalizada"
-#: taextras.py:147
-msgid "return a personalized calibration"
-msgstr "munasqa mat'ichisqata rikuchin"
-
-#  "posición x"
-#: taextras.py:148
-msgid "x position"
-msgstr "X kinkay"
-
-#  "retorna la posición x"
-#: taextras.py:149
-msgid "return x position"
-msgstr "X kinrayman kutiy"
-
-#  "posición y"
-#: taextras.py:150
-msgid "y position"
-msgstr "Y kinray"
-
-#  "retorna la posición y"
-#: taextras.py:151
-msgid "return y position"
-msgstr "Y kinrayman kutiy"
-
-#  "píxeles"
-#: taextras.py:152
-msgid "pixels"
-msgstr "pixelkuna"
-
-#  "devuelve el número de píxeles de la mancha mas grande"
-#: taextras.py:153
-msgid "return the number of pixels of the biggest blob"
-msgstr "hatun kaqpa hayk'a pixelniyuq kasqantam rikuchin"
-
-#  "seguir un color o calibración"
-#: taextras.py:154
-msgid "follow a color or calibration"
-msgstr "llimp'i kaqta churay"
-
-#  "mínimo de pixeles"
-#: taextras.py:155
-msgid "minimum pixels"
-msgstr "pixelkunamanta pisi kaynin"
-
-#  "define el mínimo número de píxeles a seguir"
-#: taextras.py:156
-msgid "set the minimal number of pixels to follow"
-msgstr "hayk'a pixeles nisqakunawan llamk'anapaqmi rikuchin"
-
-#: taextras.py:157
-msgid "camera mode"
-msgstr ""
-
-#: taextras.py:158
-msgid "set the color mode of the camera: RGB, YUV, or HSV"
-msgstr ""
-
-#: taextras.py:159
-msgid "RGB"
-msgstr ""
-
-#: taextras.py:160
-msgid "set the color mode of the camera to RGB"
-msgstr ""
-
-#: taextras.py:161
-msgid "YUV"
-msgstr ""
-
-#: taextras.py:162
-msgid "set the color mode of the camera to YUV"
-msgstr ""
-
-#: taextras.py:163
-msgid "HSV"
-msgstr ""
-
-#: taextras.py:164
-msgid "set the color mode of the camera to HSV"
-msgstr ""
-
-#  "calibración vacía"
-#: taextras.py:165
-msgid "empty calibration"
-msgstr "ch'usaq mat'ichina"
-
-#  "error en la conversión de la cadena de texto"
-#: taextras.py:166
-msgid "error in string conversion"
-msgstr "qillqasqa t'ikrakuchkaptinmi pantarun"
-
-#  "SumBot"
-#. TRANS: SumBot is a robot programmed for "Sumo wrestling"
-#: taextras.py:171
-msgid "SumBot"
-msgstr "SumBot"
-
-#  "velocidad SumBot"
-#: taextras.py:172
-msgid "speed SumBot"
-msgstr "SumBotpa utqhaynin"
-
-#  "setea la velocidad del SumBot"
-#: taextras.py:173
-msgid "submit the speed to the SumBot"
-msgstr "SumBotpa utqhayninta kamachiy"
-
-# "Setea la velocidad por defecto para los comandos de movimiento."
-#: taextras.py:174
-msgid "set the default speed for the movement commands"
-msgstr "kikinmanta kuyurinanpaq kamachiyta churay"
-
-# "adelante SumBot
-#. TRANS: This string is shorthand for "move SumBot forward"
-#: taextras.py:176
-msgid "forward SumBot"
-msgstr "ñawpaqman SumBot"
-
-#  "mueve el SumBot hacia adelante"
-#: taextras.py:177
-msgid "move SumBot forward"
-msgstr "ñawpaqman SumBot sutichakuqtaqa purichiy"
-
-# "atrás SumBot"
-#. TRANS: This string is shorthand for "move SumBot backward"
-#: taextras.py:179
-msgid "backward SumBot"
-msgstr "qhipaman SumBot"
-
-#  "mueve el SumBot hacia atrás"
-#: taextras.py:180
-msgid "move SumBot backward"
-msgstr "qhipaman SumBot sutichakuqtaqa purichiy"
-
-#  "detener SumBot"
-#: taextras.py:181
-msgid "stop SumBot"
-msgstr "SumBot sutichakuqta utichiy"
-
-#  "detiene el SumBot"
-#: taextras.py:182
-msgid "stop the SumBot"
-msgstr "SumBot sutichakuqta utichin"
-
-#  "izquierda SumBot"
-#. TRANS: This string is shorthand for "turn SumBot left"
-#: taextras.py:184
-msgid "left SumBot"
-msgstr "lluqiman SumBot"
-
-#  "gira el SumBot hacia la izquierda"
-#: taextras.py:185
-msgid "turn left the SumBot"
-msgstr "lluqimanhina SumBot sutichakuqta muyuchiy"
-
-#  "derecha SumBot"
-#. TRANS: This string is shorthand for "move SumBot right"
-#: taextras.py:187
-msgid "right SumBot"
-msgstr "paña SumBot"
-
-#  "gira el SumBot hacia la derecha"
-#: taextras.py:188
-msgid "turn right the SumBot"
-msgstr "pañamanhina SumBot sutichakuqta muyuchiy|"
-
-#  "ángulo desde el centro"
-#. TRANS: The angle to the center is the angle SumBot must turn to
-#. face the center of the playing field
-#: taextras.py:191
-msgid "angle to center"
-msgstr "chawpimanta k'uchuchiy"
-
-# "Obtiene el ángulo desde el centro del dojo."
-#. TRANS: dohyo is the playing field
-#: taextras.py:193
-msgid "get the angle to the center of the dohyo"
-msgstr "dojop chawpinmanta k'uchutaqa hurquy"
-
-#  "ángulo al Enemigo"
-#. TRANS: The angle to the center is the angle SumBot must turn to
-#. face the Enemy (opponent)
-#: taextras.py:196
-msgid "angle to Enemy"
-msgstr "Ayqap k'uchun"
-
-#  "obtiene el ángulo al Enemigo"
-#: taextras.py:197
-msgid "get the angle to the Enemy"
-msgstr "Awqaqpa k'uchunta tariy"
-
-#  "coor. x SumBot"
-#. TRANS: This string is shorthand for "x coordinate of SumBot"
-#: taextras.py:199
-msgid "x coor. SumBot"
-msgstr "SumBot sutichakuqpa x coor."
-
-# "Obtiene la coordenada y del oponente."
-#: taextras.py:200
-msgid "get the x coordinate of the SumBot"
-msgstr "oponentep Y coordenandanta tarin"
-
-#  "coor. y SumBot"
-#. TRANS: This string is shorthand for "y coordinate of SumBot"
-#: taextras.py:202
-msgid "y coor. SumBot"
-msgstr "SumBot sutichakuqpa y coor."
-
-# "Obtiene la coordenada y del oponente."
-#: taextras.py:203
-msgid "get the y coordinate of the SumBot"
-msgstr "oponentep Y coordenandanta tarin"
-
-#  "coor. x Enemigo"
-#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
-#: taextras.py:205
-msgid "x coor. Enemy"
-msgstr "Awqaqpa x coor."
-
-# "Obtiene la coordenada y del oponente."
-#: taextras.py:206
-msgid "get the x coordinate of the Enemy"
-msgstr "oponentep Y coordenandanta tarin"
-
-#  "coor. y Enemigo"
-#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
-#: taextras.py:208
-msgid "y coor. Enemy"
-msgstr "Awqaqpa y coor."
-
-# "Obtiene la coordenada y del oponente."
-#: taextras.py:209
-msgid "get the y coordinate of the Enemy"
-msgstr "oponentep Y coordenandanta tarin"
-
-#  "rotación SumBot"
-#. TRANS: This string is shorthand for "rotation of SumBot"
-#: taextras.py:211
-msgid "rotation SumBot"
-msgstr "SumBot sutichakuqpa muyunan"
-
-#  "obtiene la rotación del SumBot"
-#: taextras.py:212
-msgid "get the rotation of the Sumbot"
-msgstr "SumBot muyunanta tariy"
-
-#  "rotación Enemigo"
-#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
-#: taextras.py:214
-msgid "rotation Enemy"
-msgstr "Awqaqpa muyunan"
-
-#  "obtiene la rotación del Enemigo"
-#: taextras.py:215
-msgid "get the rotation of the Enemy"
-msgstr "Awqa muyunanta tariy"
-
-#  "distancia al centro"
-#: taextras.py:216
-msgid "distance to center"
-msgstr "chawpikama chayanapaq"
-
-# "Obtiene el ángulo desde el centro del dojo."
-#. TRANS: dohyo is the playing field
-#: taextras.py:218
-msgid "get the distance to the center of the dohyo"
-msgstr "dojop chawpinmanta k'uchutaqa hurquy"
-
-#  "distancia al Enemigo"
-#: taextras.py:219
-msgid "distance to Enemy"
-msgstr "Awqakama chayanapaq"
-
-#  "obtiene la distancia al Enemigo"
-#: taextras.py:220
-msgid "get the distance to the Enemy"
-msgstr "Awqakama chayanapaqmi tarin"
-
-#  "actualizar información"
-#: taextras.py:221
-msgid "update information"
-msgstr "willanata kunanyachiy"
-
-#  "actualiza la información desde el servidor"
-#: taextras.py:222
-msgid "update information from the server"
-msgstr "servidormanta willanata kunanyachiy"
-
-#  "Paleta de bloques de física"
-#. TRANS: Please use similar terms to those used in the Physics Activity
-#: taextras.py:227
-msgid "Palette of physics blocks"
-msgstr "física nisqamanta bloquekuna"
-
-#  "comenzar polígono"
-#: taextras.py:228
-msgid "start polygon"
-msgstr "poligonota qallariy"
-
-#  "Comienza a definir un nuevo polígono basado en la posición actual xy de la "
-#  "Tortuga."
-#: taextras.py:229
-msgid "Begin defining a new polygon based on the current Turtle xy position."
-msgstr ""
-"Kunan kaq xy nisqapi charapa tarikusqanmantam musuq poligonotaqa yurichiy."
-
-#  "agregar punto"
-#: taextras.py:231
-msgid "add point"
-msgstr "Puntuta yapay"
-
-#  "Agrega un nuevo punto al polígono actual basado en la posición actual xy de "
-#  "la Tortuga."
-#: taextras.py:232
-msgid ""
-"Add a new point to the current polygon based on the current Turtle xy "
-"position."
-msgstr ""
-"Kunan kaq xy nisqapi charapa tarikusqanmantam musuq puntuta poligonoman "
-"churay."
-
-#  "terminar polígono"
-#: taextras.py:234
-msgid "end polygon"
-msgstr "poligonota tukuy"
-
-#  "Define un nuevo polígono."
-#: taextras.py:235
-msgid "Define a new polygon."
-msgstr "Musuq poligonota ruway"
-
-#  "termina polígono relleno"
-#: taextras.py:236
-msgid "end filled polygon"
-msgstr "unt'achisqa poligonota tukuy"
-
-#  "No es un polígono simple"
-#: taextras.py:237
-msgid "Not a simple polygon"
-msgstr "Manam yanqa poligono nisqachu"
-
-#  "Define un nuevo polígono relleno."
-#: taextras.py:238
-msgid "Define a new filled polygon."
-msgstr "Musuq hunt'achisqa poligonota ruway"
-
-#  "triángulo"
-#: taextras.py:239
-msgid "triangle"
-msgstr "Kimsak'uchu"
-
-#  "base"
-#. TRANS: base of a triangle
-#: taextras.py:241
-msgid "base"
-msgstr "t'iqsi"
-
-#  "Agrega un objeto triángulo al proyecto."
-#: taextras.py:243
-msgid "Add a triangle object to the project."
-msgstr "kimsak'uchuta churay"
-
-#  "círculo"
-#: taextras.py:244
-msgid "circle"
-msgstr "muyu"
-
-#  "Agrega un objeto círculo al proyecto."
-#: taextras.py:245
-msgid "Add a circle object to the project."
-msgstr "muyuta churay"
-
-#  "rectángulo"
-#: taextras.py:246
-msgid "rectangle"
-msgstr "suyt'u"
-
-#  "Agrega un objeto rectángulo al proyecto."
-#: taextras.py:249
-msgid "Add a rectangle object to the project."
-msgstr "suyt'uta churay"
-
-#  "resetear"
-#: taextras.py:250
-msgid "reset"
-msgstr "pichay"
-
-#  "Resetea el proyecto; limpia la lista de objetos."
-#: taextras.py:251
-msgid "Reset the project; clear the object list."
-msgstr "Wakichinata pichay; llapan sinrichasqakunata pichay."
-
-#  "motor"
-#: taextras.py:252
-msgid "motor"
-msgstr "motor nisqa"
-
-#  "torque"
-#. TRANS: torque as in engine torque
-#: taextras.py:254
-msgid "torque"
-msgstr "q'iwinan"
-
-#  "velocidad"
-#: taextras.py:255
-msgid "speed"
-msgstr "Utqhanan"
-
-#: taextras.py:256
-msgid ""
-"Motor torque and speed range from 0 (off) to positive numbers; motor is "
-"placed on the most recent object created."
-msgstr ""
-
-#  "tachuela
-#: taextras.py:258 taextras.py:392
-msgid "pin"
-msgstr "ratachiq"
-
-#  "Sujeta un objeto para que no se caiga."
-#: taextras.py:259
-msgid "Pin an object down so that it cannot fall."
-msgstr "imaynapas ama urmayananpaqmi ratachin"
-
-#  "unión"
-#: taextras.py:260
-msgid "joint"
-msgstr "Huñukuy"
-
-#  "Une dos objetos (el objeto creado mas reciententemente y el objeto en el "
-#  "punto x, y)."
-#: taextras.py:263
-msgid ""
-"Join two objects together (the most recent object created and the object at "
-"point x, y)."
-msgstr ""
-"Iskay imaymanakunatam tinkuchin ( chayraq imayman ruwasqatawan X, Y "
-"kasqakunawan ima)"
-
-#  "guardar como Actividad Física"
-#: taextras.py:265
-msgid "save as Physics activity"
-msgstr "Física ruwanatahina waqaychay"
-
-#  "Guarda el proyecto al Diario como una Actividad de Física."
-#: taextras.py:266
-msgid "Save the project to the Journal as a Physics activity."
-msgstr "Física ruwanatahina P'anqapi waqaychay."
-
-#  "círculo"
-#. TRANS: Here, gear means a toothed wheel, as in a clock-works
-#: taextras.py:268
-msgid "gear"
-msgstr "muyu"
-
-#  "Agrega un objeto engranaje al proyecto."
-#: taextras.py:269
-msgid "Add a gear object to the project."
-msgstr "Wakichinam t'akyakuq imaymanata churay."
-
-#  "densidad"
-#: taextras.py:270
-msgid "density"
-msgstr "densidad nisqa"
-
-#  "Establece la densidad de los objetos (la densidad puede ser cualquier número "
-#  "positivo)."
-#: taextras.py:271
-msgid ""
-"Set the density property for objects (density can be any positive number)."
-msgstr ""
-"Imaymankunap densidad nisqantam churan ( densidadqa yupana positivo nisqam "
-"kanman)"
-
-#  "fricción"
-#: taextras.py:273
-msgid "friction"
-msgstr "qhaquna"
-
-#  "Establece la propiedad de fricción de los objetos (un valor entre 0 y 1, "
-#  "donde 0 es sin fricción y el 1 es fuerte)."
-#: taextras.py:274
-msgid ""
-"Set the friction property for objects (value from 0 to 1, where 0 turns "
-"friction off and 1 is strong friction)."
-msgstr ""
-"Imaymanakunap qhaqunakuntam churan (chaniqa 0 utaq 1 kanman, 0 yupayqa "
-"qhaqunatam rikuchin 1 yupaytaq kallpasapa kaqta)."
-
-#  "restitución"
-#. TRANS: bounciness is coefficient of restitution
-#: taextras.py:277
-msgid "bounciness"
-msgstr "kikin kaqllaman kutichiq"
-
-#  "Establece la propiedad de restitución para los objetos (un valor entre 0 y "
-#  "1, donde 0 significa sin restitución y 1 mucha)."
-#: taextras.py:278
-msgid ""
-"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-"no bounce and 1 is very bouncy)."
-msgstr ""
-"Imaymanakunata kikin kaqllamanmi kutichin (chaniqa 0 utaq 1 kanman, 0 "
-"yupayqa kikin kaqllaman kutichisqanta rikuchin 1 yupaytaq sinchi kaqta)."
-
-#  "dinámico"
-#. TRANS: dynamic here means moving vs in a fixed position
-#: taextras.py:281
-msgid "dynamic"
-msgstr "ch'iti"
-
-#  "Si dinámico = 1, el objeto puede moverse; si dinámico = 0, queda fijo en su "
-#  "posición."
-#: taextras.py:282
-msgid ""
-"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-msgstr ""
-"Sichus ch'iti= 1 yupayniyuq kanqa chayqa, imaymanaqa puriyqachanqam; sichus "
-"ch'iti = 0 yupayniyuq kanqa chayqa imaymana kaqqa kikin kasqallapim kanqa."
-
-#  "Paleta de bloques WeDo"
-#. TRANS: WeDo is a robotics product of the LEGO company
-#: taextras.py:288
-msgid "Palette of WeDo blocks"
-msgstr "WeDo bloquekunamanta"
-
-#  "salida del sensor de inclinación: (-1 == no está inclinado, 0 == inclinado "
-#  "hacia adelante, 3 == inclinado hacia atrás, 1 == inclinado hacia la "
-#  "izquierda, 2 == inclinado hacia la derecha)"
-#: taextras.py:290
-msgid ""
-"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-"tilt left, 2 == tilt right)"
-msgstr ""
-"kinrayasqamanta musyasqan: (-1 == manam kinrayasqachu kachkan, 0 == ñawpaqma "
-"kinrayasqa kachkan, 3 == qhipaman kinrayasqa kachkan, 1 == lluqiman "
-"kinrayasqa kachkan, 2 == pañaman kinrayasqa kachkan)"
-
-#  "salida del sensor distancia"
-#. TRANS: This string is shorthand for "output of the distance sensor"
-#: taextras.py:294
-msgid "distance sensor output"
-msgstr "karu kaymanta musyasqan"
-
-#  "Motor A"
-#: taextras.py:295
-msgid "Motor A"
-msgstr "Motor A nisqa"
-
-#  "devuelve el valor actual del Motor A"
-#: taextras.py:296
-msgid "returns the current value of Motor A"
-msgstr "Motor A nisqapa kunan kaq chanintam kutichin"
-
-#  "Motor B"
-#: taextras.py:297
-msgid "Motor B"
-msgstr "Motor B nisqa"
-
-#  "devuelve el valor actual del Motor B"
-#: taextras.py:298
-msgid "returns the current value of Motor B"
-msgstr "Motor B nisqapa kunan kaq chanintam kutichin"
-
-#  "setea el valor del Motor A"
-#: taextras.py:299
-msgid "set the value for Motor A"
-msgstr "Motor A nisqapa chaninta akllapan"
-
-#  "setea el valor del Motor B"
-#: taextras.py:300
-msgid "set the value for Motor B"
-msgstr "Motor B nisqapa chaninta akllapan"
-
-#  "Paleta de bloques LEGO NXT de motores"
-#. TRANS: Lego NXT is a robotics product of the LEGO company
-#: taextras.py:305
-msgid "Palette of LEGO NXT blocks of motors"
-msgstr "LEGO NXT bloques motores nisqakunamanta"
-
-#  "Paleta de bloques LEGO NXT de sensores"
-#: taextras.py:306
-msgid "Palette of LEGO NXT blocks of sensors"
-msgstr "LEGO NXT bloques llakllana nisqakunamanta"
-
-#  "tocar"
-#. TRANS: touch sensor (implemented as a button)
-#: taextras.py:308
-msgid "touch"
-msgstr "llamina"
-
-#  "ultrasónico"
-#. TRANS: distance sensor (implemented using ultrasonics)
-#: taextras.py:310
-msgid "ultrasonic"
-msgstr "ultrasónico uyarina"
-
-# "luz"
-#: taextras.py:312
-msgid "light"
-msgstr "k'anchana"
-
-#  "PUERTO A"
-#: taextras.py:314
-msgid "PORT A"
-msgstr "PUERTO A nisqa"
-
-#  "PUERTO B"
-#: taextras.py:315
-msgid "PORT B"
-msgstr "PUERTO B nisqa"
-
-#  "PUERTO C"
-#: taextras.py:316
-msgid "PORT C"
-msgstr "PUERTO C nisqa"
-
-#  "PUERTO 1"
-#: taextras.py:317
-msgid "PORT 1"
-msgstr "PUERTO 1 nisqa"
-
-#  "PUERTO 2"
-#: taextras.py:318
-msgid "PORT 2"
-msgstr "PUERTO 2 nisqa"
-
-#  "PUERTO 3"
-#: taextras.py:319
-msgid "PORT 3"
-msgstr "PUERTO 3 nisqa"
-
-#  "PUERTO 4"
-#: taextras.py:320
-msgid "PORT 4"
-msgstr "PUERTO 4 nisqa"
-
-#  "Por favor chequee la conexión con el brick."
-#. TRANS: The brick is the NXT controller
-#: taextras.py:322
-msgid "Please check the connection with the brick."
-msgstr "Amahina kaychu, brick nisqaman t'inkichiyta qhawariy."
-
-#  "Por favor chequee el puerto."
-#: taextras.py:323
-msgid "Please check the port."
-msgstr "Amahina kaychu puerto nisqata qhawariy."
-
-#  "El valor de potencia debe ser entre -127 y 127."
-#: taextras.py:324
-msgid "The value of power must be between -127 to 127."
-msgstr "Potencia nisqapa chaninqa 127 yupanmanta 127 yupaykama kanman."
-
-#  "Un error ha ocurrido: chequee todas las conexiones y pruebe reconectar."
-#: taextras.py:325
-msgid "An error has occurred: check all connections and try to reconnect."
-msgstr ""
-"Pantaymi rikurin: llapan t'inkichiyta qhawariy chaymantataq wakmanta "
-"t'inkichiy."
-
-#  "NXT encontrado"
-#: taextras.py:326
-msgid "NXT found"
-msgstr "NXT tarisqa"
-
-#  "NXT no encontrado"
-#: taextras.py:327
-msgid "NXT not found"
-msgstr "NXT mana tarisqa"
-
-#  "refrescar NXT"
-#: taextras.py:328
-msgid "refresh NXT"
-msgstr "NXT nisqata kunanyachiy"
-
-#  "Busca por un brick NXT conectado."
-#: taextras.py:329
-msgid "Search for a connected NXT brick."
-msgstr "Huk brick NXT nisqata machkhay."
-
-#  "reproducir tono"
-#: taextras.py:330
-msgid "play tone"
-msgstr "uyarinap kunkanta uyarichiy"
-
-#  "frecuencia"
-#: taextras.py:331
-msgid "frequency"
-msgstr "frecuencia nisqa"
-
-#  "Reproduce un tono a cierta frecuencia por un determinado tiempo."
-#: taextras.py:333
-msgid "Play a tone at frequency for time."
-msgstr "Uyarinap kunkanta frecuenciatawan unayaynintawan churaspa uyarichiy."
-
-#  "girar motor\n"
-#  "rotaciones"
-#. TRANS: turn is the action and rotations is quantity of turns
-#: taextras.py:335
-msgid ""
-"turn motor\n"
-"rotations"
-msgstr ""
-"motorta\n"
-" muyuykunata muyuchiy"
-
-# "Puerto"
-#: taextras.py:336
-msgid "port"
-msgstr "puerto nisqa"
-
-#  "potencia"
-#: taextras.py:337
-msgid "power"
-msgstr "Potencia nisqa"
-
-#  "gira un motor"
-#: taextras.py:338
-msgid "turn a motor"
-msgstr "huk motorta muyuchiy"
-
-#  "sincronizar motores\n"
-#  "dirección"
-#: taextras.py:339
-msgid ""
-"synchronize motors\n"
-"steering"
-msgstr ""
-"motorkunata\n"
-"nisqaman purichiy"
-
-# "rotación"
-#: taextras.py:340
-msgid "rotations"
-msgstr "muyuna"
-
-#  "sincroniza dos motores conectados en el PUERTO B y PUERTO C"
-#: taextras.py:341
-msgid "synchronize two motors connected in PORT B and PORT C"
-msgstr ""
-"PUERTO B hinallataq PUERTO C nisqaman iskay motorkuna masichakuqta "
-"kuskanchay"
-
-#  "PUERTO A del brick"
-#: taextras.py:342
-msgid "PORT A of the brick"
-msgstr "brick nisqapa PUERTO A nisqan"
-
-#  "PUERTO B del brick"
-#: taextras.py:343
-msgid "PORT B of the brick"
-msgstr "brick nisqapa PUERTO B nisqan"
-
-#  "PUERTO C del brick"
-#: taextras.py:344
-msgid "PORT C of the brick"
-msgstr "brick nisqapa PUERTO C nisqan"
-
-#  "iniciar motor"
-#: taextras.py:345
-msgid "start motor"
-msgstr "motorta qallarichiy"
-
-#  "Girar un motor por siempre."
-#: taextras.py:346
-msgid "Run a motor forever."
-msgstr "Huk motorta wiñaypaq muyuchiy."
-
-#  "frenar motor"
-#: taextras.py:347
-msgid "brake motor"
-msgstr "motorta utichiy"
-
-#  "Frena un motor específico."
-#: taextras.py:348
-msgid "Stop a specified motor."
-msgstr "akllasqa motorta utichiy."
-
-#  "reiniciar motor"
-#. TRANS: reset is used to reset the counter associated with the motor
-#: taextras.py:350
-msgid "reset motor"
-msgstr "motorta hukmanta qallarichiy"
-
-#  "Reinicia el contador del motor."
-#: taextras.py:351
-msgid "Reset the motor counter."
-msgstr "Motorpa yupananta hukmanta qallarichiy."
-
-#  "posición del motor"
-#: taextras.py:352
-msgid "motor position"
-msgstr "motorpa maypi kasqaynin"
-
-#  "Obtiene la posición del motor."
-#: taextras.py:353
-msgid "Get the motor position."
-msgstr "Motorpa maypi kasqanta taripay."
-
-#  "PUERTO 1 del brick"
-#: taextras.py:354
-msgid "PORT 1 of the brick"
-msgstr "brick nisqapa PUERTO 1 nisqan"
-
-#  "PUERTO 2 del brick"
-#: taextras.py:355
-msgid "PORT 2 of the brick"
-msgstr "brick nisqapa PUERTO 2 nisqan"
-
-#  "PUERTO 3 del brick"
-#: taextras.py:356
-msgid "PORT 3 of the brick"
-msgstr "brick nisqapa PUERTO 3 nisqan"
-
-#  "PUERTO 4 del brick"
-#: taextras.py:357
-msgid "PORT 4 of the brick"
-msgstr "brick nisqapa PUERTO 4 nisqan"
-
-#  "leer"
-#: taextras.py:358
-msgid "read"
-msgstr "Ñawichay"
-
-#  "sensor"
-#: taextras.py:359
-msgid "sensor"
-msgstr "musyana"
-
-#  "Lee la salida del sensor."
-#: taextras.py:360
-msgid "Read sensor output."
-msgstr "Musyaymanta ñawirin."
-
-#  "sensor de color"
-#: taextras.py:361
-msgid "color sensor"
-msgstr "llimp'ip musyaynin"
-
-#  "sensor de luz"
-#: taextras.py:362
-msgid "light sensor"
-msgstr "k'anchariypa musyaynin"
-
-#  "sensor táctil"
-#: taextras.py:363
-msgid "touch sensor"
-msgstr "ruk'anapa musyaynin"
-
-#  "sensor de distancia"
-#: taextras.py:364
-msgid "distance sensor"
-msgstr "karu kaymanta musyaynin"
-
-#  "sensor de sonido"
-#: taextras.py:365
-msgid "sound sensor"
-msgstr "uyarinapa musyaynin"
-
-#  "prender luz"
-#. TRANS: set light is used to set the light level associated with
-#. the color sensor (which can emit light as well as sense it)
-#: taextras.py:368
-msgid "set light"
-msgstr "k'ancharichiy"
-
-#  "Prende la luz del sensor de color."
-#: taextras.py:369
-msgid "Set color sensor light."
-msgstr "Llimp'ip musyayninpa k'anchariyninta hap'ichiy"
-
-#. TRANS: the battery level is the charge level of the brick
-#: taextras.py:371
-msgid "battery level"
-msgstr ""
-
-#: taextras.py:372
-msgid "Get battery level of brick."
-msgstr ""
-
-#  "Paleta de bloques Arduino"
-#. TRANS: Arduino plugin to control an Arduino board
-#: taextras.py:377
-msgid "Palette of Arduino blocks"
-msgstr "Arduino sutichakuq bloquekuna"
-
-#  "ALTO"
-#: taextras.py:378
-msgid "HIGH"
-msgstr "ACHKHA"
-
-#  "BAJO"
-#: taextras.py:379
-msgid "LOW"
-msgstr "PISI"
-
-#  "ENTRADA"
-#: taextras.py:380
-msgid "INPUT"
-msgstr "HAYKUNA"
-
-#  "SALIDA"
-#: taextras.py:381
-msgid "OUTPUT"
-msgstr "LLUQSINA"
-
-# "PWM"
-#. TRANS: PWM is pulse-width modulation
-#: taextras.py:383
-msgid "PWM"
-msgstr "PWM"
-
-#  "SERVO"
-#: taextras.py:384
-msgid "SERVO"
-msgstr "SERVO"
-
-#  "ERROR: Chequee la Arduino y el número de puerto."
-#: taextras.py:385
-msgid "ERROR: Check the Arduino and the number of port."
-msgstr "PANTAY: Arduino nisqatawan puerto yupanantawan qhawariy."
-
-#  "ERROR: El valor debe ser un número entre 0 y 255."
-#: taextras.py:386
-msgid "ERROR: Value must be a number from 0 to 255."
-msgstr "PANTAY: chaniqa 0 yupaymanta 255 yupanakamanmi kanman."
-
-#  "ERROR: El valor debe ser ALTO o BAJO."
-#: taextras.py:387
-msgid "ERROR: Value must be either HIGH or LOW."
-msgstr "PANTAY: chaniqa ACHKHA utaq PISI kanman"
-
-#  "ERROR: El modo debe ser ENTRADA, SALIDA, PWM o SERVO."
-#: taextras.py:388
-msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-msgstr "PANTAY: imayna kayqa HAYKUNA, LLUQSINA, PWM utaq SERVO nispam kanman."
-
-#  "modo del pin"
-#. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
-#. in which an I/O pin is being used.
-#: taextras.py:391
-msgid "pin mode"
-msgstr "Pin nisqa imayna kaynin"
-
-# "modo"
-#: taextras.py:393
-msgid "mode"
-msgstr "imayna kaynin"
-
-#  "Selecciona la función del pin (ENTRADA, SALIDA, PWM, SERVO)."
-#: taextras.py:394
-msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-msgstr "Pin nisqapa purinanta akllay (HAYKUNA, LLUQSINA, PWM, SERVO)."
-
-#  "escribir analógico"
-#: taextras.py:395
-msgid "analog write"
-msgstr "analogico nisqata qillqay"
-
-#  "Escribe un valor analógico en el puerto especificado."
-#: taextras.py:397
-msgid "Write analog value in specified port."
-msgstr "alogico chanitam akllasqa puertopiqa qillqay."
-
-#  "leer analógico"
-#: taextras.py:398
-msgid "analog read"
-msgstr "analogico nisqata nawichay"
-
-#  "Lee un valor desde un puerto analógico. El valor puede ser entre 0 y 1023. "
-#  "Use Vref para determinar el voltaje. Para USB, volt=((leer)*5/1024) "
-#  "aproximadamente."
-#: taextras.py:399
-msgid ""
-"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-"determine voltage. For USB, volt=((read)*5)/1024) approximately."
-msgstr ""
-"Huk puesto analogico nisqamanta huk chaniqa ñawichay. Chaniqa 0 yupanamanta "
-"1023 yupanakama kanman. Voltaje churanapaqtaq Vref nisqawan purichiwaq. USB "
-"nisqapaqtaq, volt=((ñawiriy)*5/1024) nisqahinata."
-
-#  "escribir digital"
-#: taextras.py:401
-msgid "digital write"
-msgstr "digitalta qillqay"
-
-#  "Escribe un valor digital en un puerto específico."
-#: taextras.py:402
-msgid "Write digital value to specified port."
-msgstr "digital chanitam akllasqa puertopiqa qillqay."
-
-#  "leer digital"
-#: taextras.py:403
-msgid "digital read"
-msgstr "digitalta ñawichay"
-
-#  "Lee un valor desde un puerto digital."
-#: taextras.py:404
-msgid "Read value from digital port."
-msgstr "Purdo digitalmanta chanitaqa ñawichay"
-
-#  "Setea el valor ALTO en el puerto digital."
-#: taextras.py:405
-msgid "Set HIGH value for digital port."
-msgstr "Puerto digitalpiqa ACHKHA sutichakuq chanita akllapay."
-
-#  "Configura el puerto de la Arduino como entrada digital."
-#: taextras.py:406
-msgid "Configure Arduino port for digital input."
-msgstr "Digital haykunahina kananpaqmi Arduino puertotaqa kamachiy."
-
-#  "Configura el puerto de la Arduino para manejar un servo."
-#: taextras.py:407
-msgid "Configure Arduino port to drive a servo."
-msgstr "Servo sutichakuqta puriyachinapaqmi Arduino puertonta kamachiy."
-
-#  "Setea el valor BAJO en el puerto digital."
-#: taextras.py:408
-msgid "Set LOW value for digital port."
-msgstr "Puerto digitalpiqa PISI sutichakuq chanita akllapay."
-
-#  "Configura el puerto de la Arduino como salida digital."
-#: taextras.py:409
-msgid "Configure Arduino port for digital output."
-msgstr "Digital lluqsinahina kananpaqmi Arduino puertotaqa kamachiy."
-
-#  "Configura el puerto de la Arduino para PWM modulación por ancho de pulsos)."
-#: taextras.py:410
-msgid "Configure Arduino port for PWM (pulse-width modulation)."
-msgstr ""
-"PWM sutichakuqwan kananpaqmi Arduino puertonta kamachiy (sakhayninwan "
-"churachinkunqa)."
-
 #  "el uso es"
-#: turtleblocks.py:80
+#: turtleblocks.py:81
 msgid "usage is"
 msgstr "hap'iyqa kan"
 
 #  "Sin acción alternativa:"
-#: turtleblocks.py:232
+#: turtleblocks.py:234
 msgid "No option action:"
 msgstr "Mana ima ruwayniyuq:"
 
 #  "Fichero no encontrado"
-#: turtleblocks.py:247
+#: turtleblocks.py:249
 msgid "File not found"
 msgstr "Mana tarisqa khipu"
 
 #  "Directorio de configuración no modificable: %s"
-#: turtleblocks.py:271
+#: turtleblocks.py:273
 #, python-format
 msgid "Configuration directory not writable: %s"
 msgstr "Mana t'ikranapaq wayaqa: %s"
 
 #  "Nuevo"
-#: turtleblocks.py:327
+#: turtleblocks.py:350
 msgid "New"
 msgstr "Musuq"
 
 #  "Abrir"
-#: turtleblocks.py:328
+#: turtleblocks.py:351
 msgid "Open"
 msgstr "Kichay"
 
 #  "Guardar"
-#: turtleblocks.py:329
+#: turtleblocks.py:352
 msgid "Save"
 msgstr "Waqaychay"
 
 #  "Guardar como"
-#: turtleblocks.py:330
+#: turtleblocks.py:353
 msgid "Save as"
 msgstr "Kay hinata waqaychay"
 
 #  "Salir"
-#: turtleblocks.py:335
+#: turtleblocks.py:358
 msgid "Quit"
 msgstr "Lluqsiy"
 
 #  "Archivo"
-#: turtleblocks.py:336
+#: turtleblocks.py:359
 msgid "File"
 msgstr "Khipu"
 
 #  "Escalar coordenadas"
-#: turtleblocks.py:343
+#: turtleblocks.py:366
 msgid "Rescale coordinates"
 msgstr "Coordenadasta wichay"
 
 #  "Restaurar el tamaño del bloque"
-#: turtleblocks.py:349
+#: turtleblocks.py:372
 msgid "Reset block size"
 msgstr "Bloques nisqakunata allinchay"
 
 #  "Mostar/ocultar bloques"
-#: turtleblocks.py:367
+#: turtleblocks.py:390
 msgid "Show/hide blocks"
 msgstr "Bloques nisqakunata Qhawachiy/Pakay"
 
 #  "Herramientas"
-#: turtleblocks.py:369
+#: turtleblocks.py:392
 msgid "Tools"
 msgstr "Llamk'anakuna"
 
 #  "Depurar"
-#: turtleblocks.py:375
+#: turtleblocks.py:398
 msgid "Debug"
 msgstr "Allichay"
 
 #  "Tortuga"
-#: turtleblocks.py:377
+#: turtleblocks.py:400
 msgid "Turtle"
 msgstr "Charapa"
 
 #  "Hay trabajo sin guardar. ¿Le gustaría guardar antes de salir?"
-#: turtleblocks.py:411
+#: turtleblocks.py:434
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr "Llamk'asqa mana waqaychasqa kachkan. Munankichu waqaychayta?"
 
 #  "¿Guardar el proyecto?"
-#: turtleblocks.py:412
+#: turtleblocks.py:435
 msgid "Save project?"
 msgstr "Waqaychakunqachu?"
+
+#  "TortugArte Mini"
+#~ msgid "Turtle Art Mini"
+#~ msgstr "Huch'uy CharapArte"
+
+#  "TortugArte Confusión"
+#~ msgid "Turtle Confusion"
+#~ msgstr "Muspaq CharapArte"
+
+#  "Selecciona un desafío"
+#~ msgid "Select a challenge"
+#~ msgstr "Huk llallipayta akllay"
+
+#  "Paleta de Pesos Mexicanos"
+#~ msgid "Palette of Mexican pesos"
+#~ msgstr "Pesos Mexicanos qullqimanta"
+
+#  "Paleta de Pesos Colombianos"
+#~ msgid "Palette of Colombian pesos"
+#~ msgstr "Pesos Colombianos qullqimanta"
+
+#  "Paleta de Francos de Ruanda"
+#~ msgid "Palette of Rwandan francs"
+#~ msgstr "Francos de Ruanda qullqimanta"
+
+#  "Paleta de Dólares Americanos"
+#  [es] "Paleta de Dólares Americanos"
+#~ msgid "Palette of US dollars"
+#~ msgstr "dolar qullqimanta"
+
+#  "Paleta de Dólares Australianos"
+#  [es] "Paleta de Dólares Australianos"
+#~ msgid "Palette of Australian dollars"
+#~ msgstr "Austrialiamanta dolar qullqimanta"
+
+#  "Paleta de Guaraníes Paraguayos"
+#  [es] "Paleta de Guaraníes Paraguayos"
+#~ msgid "Palette of Paraguayan Guaranies"
+#~ msgstr "Paraguaymanta  Guaranies qullqimanta"
+
+#  "Paletea de Nuevos Soles Peruanos"
+#  [es] "Paletea de Nuevos Soles Peruanos"
+#~ msgid "Palette of Peruvian Nuevo Soles"
+#~ msgstr "Perumanta Nuevos Soles qullqimanta"
+
+#  "Paleta de Pesos Uruguayos"
+#  [es] "Paleta de Pesos Uruguayos"
+#~ msgid "Palette of Uruguayan Pesos"
+#~ msgstr "Uyuguaymanta Pesos qullqimanta"
+
+#  "TurtleBots"
+#  [es] "TurtleBots"
+#~ msgid "TurtleBots"
+#~ msgstr "CharapaBots"
+
+# "Ajusta la intensidad del LED entre 0 y 255."
+#~ msgid "adjust LED intensity between 0 and 255"
+#~ msgstr "LED nisqapa utqayninqa 0 yupaymanta 255 yupaykama mat'ikunman"
+
+# "Devuelve el nivel de luz en el ambiente como un número entre 0 y 1023."
+#~ msgid "returns the object gray level as a number between 0 and 1023"
+#~ msgstr "k'ancharichinaykipaqqa, 0 yupaymanta 1023 yupaykama churawaq"
+
+# "Devuelve 1 cuando el botón está presionado y 0 en otro caso."
+#~ msgid "returns 1 when the button is press and 0 otherwise"
+#~ msgstr "rumpu q'apisqa kaptinqa 1 kutimunqa, mana chayna kaptinqa 0 kanqa"
+
+# "Devuelve el nivel de luz en el ambiente como un número entre 0 y 1023."
+#~ msgid "returns the ambient light level as a number between 0 and 1023"
+#~ msgstr "k'ancharichinaykipaqqa, 0 yupaymanta 1023 yupaykama churawaq"
+
+# "Devuelve la temperatura en el ambiente como un número entre 0 y 255."
+#~ msgid "returns the ambient temperature as a number between 0 and 255"
+#~ msgstr ""
+#~ "q'uñiyachinaykipaq utaq chiriyachinaykipaqqa, 0 yupaymanta 1023 yupaykama "
+#~ "churawaq"
+
+#  "returns the distance from the object in front of the sensor as a number "
+#  "between 0 and 255"
+#~ msgid ""
+#~ "returns the distance from the object in front of the sensor as a number "
+#~ "between 0 and 255"
+#~ msgstr ""
+#~ "musyanap ñawpanpi imaymana hayk'a karupi kasqantam 0 yupaymanta 255 "
+#~ "yupaykamata rikuchin"
+
+#  "devuelve 0 o 1 dependiendo de la inclinación del sensor"
+#~ msgid "returns 0 or 1 depending on the sensor inclination"
+#~ msgstr ""
+#~ "imayna kinrayasqa musyana kasqanmantam 0 yupayta utaq 1 yupayta rikuchin"
+
+#  "devuelve 1 cuando el sensor detecta un campo magnético, 0 en otro caso"
+#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+#~ msgstr ""
+#~ "huk campo magnetico nisqata musyana tariptinqa 1 yupaytam rikuchin mana "
+#~ "chayqa 0 yupaytam rikuchin"
+
+#  "oscila entre 0 y 1 dependiendo de la vibración"
+#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
+#~ msgstr "imayna chukchuyasqanmantam 0 yupaymanta 1 yupaykama phawaykachan"
+
+#  "LED"
+#~ msgid "LED"
+#~ msgstr "LED"
+
+#  "botón"
+#~ msgid "button"
+#~ msgstr "rump'u"
+
+#  "escala de gris"
+#  [es] "escala de gris"
+#~ msgid "grayscale"
+#~ msgstr "Ch'iqchiynin"
+
+#  "luz ambiente"
+#~ msgid "ambient light"
+#~ msgstr "k'anchariynin"
+
+#  "temperatura"
+#~ msgid "temperature"
+#~ msgstr "q'uñiynin"
+
+#  "distancia"
+#~ msgid "distance"
+#~ msgstr "karukaynin"
+
+#  "inclinación"
+#~ msgid "tilt"
+#~ msgstr "k'iraynin"
+
+#  "campo magnético"
+#~ msgid "magnetic induction"
+#~ msgstr "ratapakuq campo magnético nisqa"
+
+#  "vibración"
+#~ msgid "vibration"
+#~ msgstr "chukchuynin"
+
+#  "Robot Butiá"
+#~ msgid "Butia Robot"
+#~ msgstr "Robot Butiá nisqa"
+
+#  "carga de batería Butiá"
+#~ msgid "battery charge Butia"
+#~ msgstr "Butiap bateriyanmanta"
+
+# "Devuelve la temperatura en el ambiente como un número entre 0 y 255."
+#~ msgid "returns the battery charge as a number between 0 and 255"
+#~ msgstr ""
+#~ "q'uñiyachinaykipaq utaq chiriyachinaykipaqqa, 0 yupaymanta 1023 yupaykama "
+#~ "churawaq"
+
+# "velocidad Butiá"
+#~ msgid "speed Butia"
+#~ msgstr "Butiap utqhayninmanta"
+
+#  "adelante Butiá"
+#~ msgid "forward Butia"
+#~ msgstr "ñawpaqman Butia"
+
+#  "mueve el robot Butiá hacia adelante"
+#  [es] "mueve el robot Butiá hacia adelante"
+#~ msgid "move the Butia robot forward"
+#~ msgstr "Butiataqa ñawpaqmanmi purichiy"
+
+#  "mueve el robot Butiá hacia adelante una distancia predefinida"
+#  [es] "mueve el robot Butiá hacia adelante una distancia predefinida"
+#~ msgid "move the Butia robot forward a predefined distance"
+#~ msgstr "Butiataqa munasqa ñawpaqmanmi purichiy"
+
+#  "izquierda Butiá"
+#  [es] "izquierda Butiá"
+#~ msgid "left Butia"
+#~ msgstr "qulli Butia"
+
+# "gira el robot Butiá hacia la derecha"
+#  [es] "gira el robot Butiá hacia la derecha"
+#, fuzzy
+#~ msgid "turn the Butia robot at left"
+#~ msgstr "pañamanhina Butiataqa muyuchiy"
+
+#  "atrás Butiá"
+#~ msgid "backward Butia"
+#~ msgstr "qhipaman Butia"
+
+#  "mueve el robot Butiá hacia atrás"
+#  [es] "mueve el robot Butiá hacia atrás"
+#~ msgid "move the Butia robot backward"
+#~ msgstr "Butiataqa qhipamanmi purichiy"
+
+#  "mueve el robot Butiá hacia atrás una distancia predefinida"
+#  [es] "mueve el robot Butiá hacia atrás una distancia predefinida"
+#~ msgid "move the Butia robot backward a predefined distance"
+#~ msgstr "Butiataqa munasqa qhipamanmi purichiy"
+
+#  "derecha Butiá"
+#  [es] "derecha Butiá"
+#~ msgid "right Butia"
+#~ msgstr "paña Butia"
+
+#  "gira el robot Butiá hacia la derecha"
+#  [es] "gira el robot Butiá hacia la derecha"
+#~ msgid "turn the Butia robot at right"
+#~ msgstr "pañamanhina Butiataqa muyuchiy"
+
+#  "girar Butiá"
+#  [es] "girar Butiá"
+#~ msgid "turn Butia"
+#~ msgstr "Butiata muyuchiy"
+
+#  "gira el robot Butiá x grados"
+#  [es] "gira el robot Butiá x grados"
+#~ msgid "turn the Butia robot x degrees"
+#~ msgstr "Butiataqa x grados nisqamanmi muyuchiy"
+
+#  "detener Butiá"
+#  [es] "detener Butiá"
+#~ msgid "stop Butia"
+#~ msgstr "Butiataqa sayachiy"
+
+#  "detiene al robot Butiá"
+#  [es] "detiene al robot Butiá"
+#~ msgid "stop the Butia robot"
+#~ msgstr "robot Butiatam sayachin"
+
+#  "Butiá"
+#  [es] "Butiá"
+#~ msgid "Butia"
+#~ msgstr "Butia"
+
+# "Error en la inicialización de la cámara."
+#  [es] "Error en la inicialización de la cámara."
+#, fuzzy
+#~ msgid "Error on initialization of the camera"
+#~ msgstr "camara qallarichiypiqa pantarunmi."
+
+#  "FollowMe"
+#  [es] "FollowMe"
+#~ msgid "FollowMe"
+#~ msgstr "FollowMe"
+
+# "Busca por un brick NXT conectado."
+#, fuzzy
+#~ msgid "Search for a connected camera."
+#~ msgstr "Huk brick NXT nisqata machkhay."
+
+#  "calibración"
+#~ msgid "calibration"
+#~ msgstr "mat'ichina"
+
+# "almacena una calibración personalizada"
+#, fuzzy
+#~ msgid "store a personalized calibration"
+#~ msgstr "munasqa mat'ichisqata waqaychan"
+
+#  "devuelve una calibración personalizada"
+#~ msgid "return a personalized calibration"
+#~ msgstr "munasqa mat'ichisqata rikuchin"
+
+#  "seguir"
+#  [es] "seguir"
+#~ msgid "follow"
+#~ msgstr "qhatiy"
+
+#  "seguir un color o calibración"
+#~ msgid "follow a color or calibration"
+#~ msgstr "llimp'i kaqta churay"
+
+#  "mínimo de pixeles"
+#~ msgid "minimum pixels"
+#~ msgstr "pixelkunamanta pisi kaynin"
+
+#  "define el mínimo número de píxeles a seguir"
+#~ msgid "set the minimal number of pixels to follow"
+#~ msgstr "hayk'a pixeles nisqakunawan llamk'anapaqmi rikuchin"
+
+#  "posición x"
+#~ msgid "x position"
+#~ msgstr "X kinkay"
+
+#  "retorna la posición x"
+#~ msgid "return x position"
+#~ msgstr "X kinrayman kutiy"
+
+#  "posición y"
+#~ msgid "y position"
+#~ msgstr "Y kinray"
+
+#  "retorna la posición y"
+#~ msgid "return y position"
+#~ msgstr "Y kinrayman kutiy"
+
+#  "píxeles"
+#~ msgid "pixels"
+#~ msgstr "pixelkuna"
+
+#  "devuelve el número de píxeles de la mancha mas grande"
+#~ msgid "return the number of pixels of the biggest blob"
+#~ msgstr "hatun kaqpa hayk'a pixelniyuq kasqantam rikuchin"
+
+#  "calibración vacía"
+#~ msgid "empty calibration"
+#~ msgstr "ch'usaq mat'ichina"
+
+#  "error en la conversión de la cadena de texto"
+#~ msgid "error in string conversion"
+#~ msgstr "qillqasqa t'ikrakuchkaptinmi pantarun"
+
+#  "SumBot"
+#~ msgid "SumBot"
+#~ msgstr "SumBot"
+
+#  "velocidad SumBot"
+#~ msgid "speed SumBot"
+#~ msgstr "SumBotpa utqhaynin"
+
+#  "setea la velocidad del SumBot"
+#~ msgid "submit the speed to the SumBot"
+#~ msgstr "SumBotpa utqhayninta kamachiy"
+
+# "Setea la velocidad por defecto para los comandos de movimiento."
+#~ msgid "set the default speed for the movement commands"
+#~ msgstr "kikinmanta kuyurinanpaq kamachiyta churay"
+
+# "adelante SumBot
+#~ msgid "forward SumBot"
+#~ msgstr "ñawpaqman SumBot"
+
+#  "mueve el SumBot hacia adelante"
+#~ msgid "move SumBot forward"
+#~ msgstr "ñawpaqman SumBot sutichakuqtaqa purichiy"
+
+# "atrás SumBot"
+#~ msgid "backward SumBot"
+#~ msgstr "qhipaman SumBot"
+
+#  "mueve el SumBot hacia atrás"
+#~ msgid "move SumBot backward"
+#~ msgstr "qhipaman SumBot sutichakuqtaqa purichiy"
+
+#  "detener SumBot"
+#~ msgid "stop SumBot"
+#~ msgstr "SumBot sutichakuqta utichiy"
+
+#  "detiene el SumBot"
+#~ msgid "stop the SumBot"
+#~ msgstr "SumBot sutichakuqta utichin"
+
+#  "izquierda SumBot"
+#~ msgid "left SumBot"
+#~ msgstr "lluqiman SumBot"
+
+#  "gira el SumBot hacia la izquierda"
+#~ msgid "turn left the SumBot"
+#~ msgstr "lluqimanhina SumBot sutichakuqta muyuchiy"
+
+#  "derecha SumBot"
+#~ msgid "right SumBot"
+#~ msgstr "paña SumBot"
+
+#  "gira el SumBot hacia la derecha"
+#~ msgid "turn right the SumBot"
+#~ msgstr "pañamanhina SumBot sutichakuqta muyuchiy|"
+
+#  "ángulo desde el centro"
+#~ msgid "angle to center"
+#~ msgstr "chawpimanta k'uchuchiy"
+
+# "Obtiene el ángulo desde el centro del dojo."
+#~ msgid "get the angle to the center of the dohyo"
+#~ msgstr "dojop chawpinmanta k'uchutaqa hurquy"
+
+#  "ángulo al Enemigo"
+#~ msgid "angle to Enemy"
+#~ msgstr "Ayqap k'uchun"
+
+#  "obtiene el ángulo al Enemigo"
+#~ msgid "get the angle to the Enemy"
+#~ msgstr "Awqaqpa k'uchunta tariy"
+
+#  "coor. x SumBot"
+#~ msgid "x coor. SumBot"
+#~ msgstr "SumBot sutichakuqpa x coor."
+
+# "Obtiene la coordenada y del oponente."
+#~ msgid "get the x coordinate of the SumBot"
+#~ msgstr "oponentep Y coordenandanta tarin"
+
+#  "coor. y SumBot"
+#~ msgid "y coor. SumBot"
+#~ msgstr "SumBot sutichakuqpa y coor."
+
+# "Obtiene la coordenada y del oponente."
+#~ msgid "get the y coordinate of the SumBot"
+#~ msgstr "oponentep Y coordenandanta tarin"
+
+#  "coor. x Enemigo"
+#~ msgid "x coor. Enemy"
+#~ msgstr "Awqaqpa x coor."
+
+# "Obtiene la coordenada y del oponente."
+#~ msgid "get the x coordinate of the Enemy"
+#~ msgstr "oponentep Y coordenandanta tarin"
+
+#  "coor. y Enemigo"
+#~ msgid "y coor. Enemy"
+#~ msgstr "Awqaqpa y coor."
+
+# "Obtiene la coordenada y del oponente."
+#~ msgid "get the y coordinate of the Enemy"
+#~ msgstr "oponentep Y coordenandanta tarin"
+
+#  "rotación SumBot"
+#~ msgid "rotation SumBot"
+#~ msgstr "SumBot sutichakuqpa muyunan"
+
+#  "obtiene la rotación del SumBot"
+#~ msgid "get the rotation of the Sumbot"
+#~ msgstr "SumBot muyunanta tariy"
+
+#  "rotación Enemigo"
+#~ msgid "rotation Enemy"
+#~ msgstr "Awqaqpa muyunan"
+
+#  "obtiene la rotación del Enemigo"
+#~ msgid "get the rotation of the Enemy"
+#~ msgstr "Awqa muyunanta tariy"
+
+#  "distancia al centro"
+#~ msgid "distance to center"
+#~ msgstr "chawpikama chayanapaq"
+
+# "Obtiene el ángulo desde el centro del dojo."
+#~ msgid "get the distance to the center of the dohyo"
+#~ msgstr "dojop chawpinmanta k'uchutaqa hurquy"
+
+#  "distancia al Enemigo"
+#~ msgid "distance to Enemy"
+#~ msgstr "Awqakama chayanapaq"
+
+#  "obtiene la distancia al Enemigo"
+#~ msgid "get the distance to the Enemy"
+#~ msgstr "Awqakama chayanapaqmi tarin"
+
+#  "actualizar información"
+#~ msgid "update information"
+#~ msgstr "willanata kunanyachiy"
+
+#  "actualiza la información desde el servidor"
+#~ msgid "update information from the server"
+#~ msgstr "servidormanta willanata kunanyachiy"
+
+#  "Paleta de bloques de física"
+#~ msgid "Palette of physics blocks"
+#~ msgstr "física nisqamanta bloquekuna"
+
+#  "comenzar polígono"
+#~ msgid "start polygon"
+#~ msgstr "poligonota qallariy"
+
+#  "Comienza a definir un nuevo polígono basado en la posición actual xy de la "
+#  "Tortuga."
+#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
+#~ msgstr ""
+#~ "Kunan kaq xy nisqapi charapa tarikusqanmantam musuq poligonotaqa yurichiy."
+
+#  "agregar punto"
+#~ msgid "add point"
+#~ msgstr "Puntuta yapay"
+
+#  "Agrega un nuevo punto al polígono actual basado en la posición actual xy de "
+#  "la Tortuga."
+#~ msgid ""
+#~ "Add a new point to the current polygon based on the current Turtle xy "
+#~ "position."
+#~ msgstr ""
+#~ "Kunan kaq xy nisqapi charapa tarikusqanmantam musuq puntuta poligonoman "
+#~ "churay."
+
+#  "terminar polígono"
+#~ msgid "end polygon"
+#~ msgstr "poligonota tukuy"
+
+#  "Define un nuevo polígono."
+#~ msgid "Define a new polygon."
+#~ msgstr "Musuq poligonota ruway"
+
+#  "termina polígono relleno"
+#~ msgid "end filled polygon"
+#~ msgstr "unt'achisqa poligonota tukuy"
+
+#  "No es un polígono simple"
+#~ msgid "Not a simple polygon"
+#~ msgstr "Manam yanqa poligono nisqachu"
+
+#  "Define un nuevo polígono relleno."
+#~ msgid "Define a new filled polygon."
+#~ msgstr "Musuq hunt'achisqa poligonota ruway"
+
+#  "triángulo"
+#~ msgid "triangle"
+#~ msgstr "Kimsak'uchu"
+
+#  "base"
+#~ msgid "base"
+#~ msgstr "t'iqsi"
+
+#  "Agrega un objeto triángulo al proyecto."
+#~ msgid "Add a triangle object to the project."
+#~ msgstr "kimsak'uchuta churay"
+
+#  "círculo"
+#~ msgid "circle"
+#~ msgstr "muyu"
+
+#  "Agrega un objeto círculo al proyecto."
+#~ msgid "Add a circle object to the project."
+#~ msgstr "muyuta churay"
+
+#  "rectángulo"
+#~ msgid "rectangle"
+#~ msgstr "suyt'u"
+
+#  "Agrega un objeto rectángulo al proyecto."
+#~ msgid "Add a rectangle object to the project."
+#~ msgstr "suyt'uta churay"
+
+#  "resetear"
+#~ msgid "reset"
+#~ msgstr "pichay"
+
+#  "Resetea el proyecto; limpia la lista de objetos."
+#~ msgid "Reset the project; clear the object list."
+#~ msgstr "Wakichinata pichay; llapan sinrichasqakunata pichay."
+
+#  "motor"
+#~ msgid "motor"
+#~ msgstr "motor nisqa"
+
+#  "torque"
+#~ msgid "torque"
+#~ msgstr "q'iwinan"
+
+#  "velocidad"
+#~ msgid "speed"
+#~ msgstr "Utqhanan"
+
+#  "tachuela
+#~ msgid "pin"
+#~ msgstr "ratachiq"
+
+#  "Sujeta un objeto para que no se caiga."
+#~ msgid "Pin an object down so that it cannot fall."
+#~ msgstr "imaynapas ama urmayananpaqmi ratachin"
+
+#  "unión"
+#~ msgid "joint"
+#~ msgstr "Huñukuy"
+
+#  "Une dos objetos (el objeto creado mas reciententemente y el objeto en el "
+#  "punto x, y)."
+#~ msgid ""
+#~ "Join two objects together (the most recent object created and the object at "
+#~ "point x, y)."
+#~ msgstr ""
+#~ "Iskay imaymanakunatam tinkuchin ( chayraq imayman ruwasqatawan X, Y "
+#~ "kasqakunawan ima)"
+
+#  "guardar como Actividad Física"
+#~ msgid "save as Physics activity"
+#~ msgstr "Física ruwanatahina waqaychay"
+
+#  "Guarda el proyecto al Diario como una Actividad de Física."
+#~ msgid "Save the project to the Journal as a Physics activity."
+#~ msgstr "Física ruwanatahina P'anqapi waqaychay."
+
+#  "círculo"
+#~ msgid "gear"
+#~ msgstr "muyu"
+
+#  "Agrega un objeto engranaje al proyecto."
+#~ msgid "Add a gear object to the project."
+#~ msgstr "Wakichinam t'akyakuq imaymanata churay."
+
+#  "densidad"
+#~ msgid "density"
+#~ msgstr "densidad nisqa"
+
+#  "Establece la densidad de los objetos (la densidad puede ser cualquier número "
+#  "positivo)."
+#~ msgid ""
+#~ "Set the density property for objects (density can be any positive number)."
+#~ msgstr ""
+#~ "Imaymankunap densidad nisqantam churan ( densidadqa yupana positivo nisqam "
+#~ "kanman)"
+
+#  "fricción"
+#~ msgid "friction"
+#~ msgstr "qhaquna"
+
+#  "Establece la propiedad de fricción de los objetos (un valor entre 0 y 1, "
+#  "donde 0 es sin fricción y el 1 es fuerte)."
+#~ msgid ""
+#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
+#~ "friction off and 1 is strong friction)."
+#~ msgstr ""
+#~ "Imaymanakunap qhaqunakuntam churan (chaniqa 0 utaq 1 kanman, 0 yupayqa "
+#~ "qhaqunatam rikuchin 1 yupaytaq kallpasapa kaqta)."
+
+#  "restitución"
+#~ msgid "bounciness"
+#~ msgstr "kikin kaqllaman kutichiq"
+
+#  "Establece la propiedad de restitución para los objetos (un valor entre 0 y "
+#  "1, donde 0 significa sin restitución y 1 mucha)."
+#~ msgid ""
+#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+#~ "no bounce and 1 is very bouncy)."
+#~ msgstr ""
+#~ "Imaymanakunata kikin kaqllamanmi kutichin (chaniqa 0 utaq 1 kanman, 0 "
+#~ "yupayqa kikin kaqllaman kutichisqanta rikuchin 1 yupaytaq sinchi kaqta)."
+
+#  "dinámico"
+#~ msgid "dynamic"
+#~ msgstr "ch'iti"
+
+#  "Si dinámico = 1, el objeto puede moverse; si dinámico = 0, queda fijo en su "
+#  "posición."
+#~ msgid ""
+#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+#~ msgstr ""
+#~ "Sichus ch'iti= 1 yupayniyuq kanqa chayqa, imaymanaqa puriyqachanqam; sichus "
+#~ "ch'iti = 0 yupayniyuq kanqa chayqa imaymana kaqqa kikin kasqallapim kanqa."
+
+#  "Paleta de bloques WeDo"
+#~ msgid "Palette of WeDo blocks"
+#~ msgstr "WeDo bloquekunamanta"
+
+#  "salida del sensor de inclinación: (-1 == no está inclinado, 0 == inclinado "
+#  "hacia adelante, 3 == inclinado hacia atrás, 1 == inclinado hacia la "
+#  "izquierda, 2 == inclinado hacia la derecha)"
+#~ msgid ""
+#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+#~ "tilt left, 2 == tilt right)"
+#~ msgstr ""
+#~ "kinrayasqamanta musyasqan: (-1 == manam kinrayasqachu kachkan, 0 == ñawpaqma "
+#~ "kinrayasqa kachkan, 3 == qhipaman kinrayasqa kachkan, 1 == lluqiman "
+#~ "kinrayasqa kachkan, 2 == pañaman kinrayasqa kachkan)"
+
+#  "salida del sensor distancia"
+#~ msgid "distance sensor output"
+#~ msgstr "karu kaymanta musyasqan"
+
+#  "Motor A"
+#~ msgid "Motor A"
+#~ msgstr "Motor A nisqa"
+
+#  "devuelve el valor actual del Motor A"
+#~ msgid "returns the current value of Motor A"
+#~ msgstr "Motor A nisqapa kunan kaq chanintam kutichin"
+
+#  "Motor B"
+#~ msgid "Motor B"
+#~ msgstr "Motor B nisqa"
+
+#  "devuelve el valor actual del Motor B"
+#~ msgid "returns the current value of Motor B"
+#~ msgstr "Motor B nisqapa kunan kaq chanintam kutichin"
+
+#  "setea el valor del Motor A"
+#~ msgid "set the value for Motor A"
+#~ msgstr "Motor A nisqapa chaninta akllapan"
+
+#  "setea el valor del Motor B"
+#~ msgid "set the value for Motor B"
+#~ msgstr "Motor B nisqapa chaninta akllapan"
+
+#  "Paleta de bloques LEGO NXT de motores"
+#~ msgid "Palette of LEGO NXT blocks of motors"
+#~ msgstr "LEGO NXT bloques motores nisqakunamanta"
+
+#  "Paleta de bloques LEGO NXT de sensores"
+#~ msgid "Palette of LEGO NXT blocks of sensors"
+#~ msgstr "LEGO NXT bloques llakllana nisqakunamanta"
+
+#  "tocar"
+#~ msgid "touch"
+#~ msgstr "llamina"
+
+#  "ultrasónico"
+#~ msgid "ultrasonic"
+#~ msgstr "ultrasónico uyarina"
+
+# "luz"
+#~ msgid "light"
+#~ msgstr "k'anchana"
+
+# "gris"
+#, fuzzy
+#~ msgid "grey"
+#~ msgstr "chiqchi"
+
+# "Por favor chequee la conexión con el brick."
+#, fuzzy
+#~ msgid "Please check the connection with the brick"
+#~ msgstr "Amahina kaychu, brick nisqaman t'inkichiyta qhawariy."
+
+# "El valor de potencia debe ser entre -127 y 127."
+#, fuzzy
+#~ msgid "The value of power must be between -127 to 127"
+#~ msgstr "Potencia nisqapa chaninqa 127 yupanmanta 127 yupaykama kanman."
+
+# "Un error ha ocurrido: chequee todas las conexiones y pruebe reconectar."
+#, fuzzy
+#~ msgid "An error has occurred: check all connections and try to reconnect"
+#~ msgstr ""
+#~ "Pantaymi rikurin: llapan t'inkichiyta qhawariy chaymantataq wakmanta "
+#~ "t'inkichiy."
+
+#  "NXT no encontrado"
+#~ msgid "NXT not found"
+#~ msgstr "NXT mana tarisqa"
+
+#  "refrescar NXT"
+#~ msgid "refresh NXT"
+#~ msgstr "NXT nisqata kunanyachiy"
+
+#  "Busca por un brick NXT conectado."
+#~ msgid "Search for a connected NXT brick."
+#~ msgstr "Huk brick NXT nisqata machkhay."
+
+#  "reproducir tono"
+#~ msgid "play tone"
+#~ msgstr "uyarinap kunkanta uyarichiy"
+
+#  "frecuencia"
+#~ msgid "frequency"
+#~ msgstr "frecuencia nisqa"
+
+#  "Reproduce un tono a cierta frecuencia por un determinado tiempo."
+#~ msgid "Play a tone at frequency for time."
+#~ msgstr "Uyarinap kunkanta frecuenciatawan unayaynintawan churaspa uyarichiy."
+
+# "Puerto"
+#~ msgid "port"
+#~ msgstr "puerto nisqa"
+
+#  "potencia"
+#~ msgid "power"
+#~ msgstr "Potencia nisqa"
+
+# "rotación"
+#~ msgid "rotations"
+#~ msgstr "muyuna"
+
+#  "gira un motor"
+#~ msgid "turn a motor"
+#~ msgstr "huk motorta muyuchiy"
+
+#  "sincroniza dos motores conectados en el PUERTO B y PUERTO C"
+#~ msgid "synchronize two motors connected in PORT B and PORT C"
+#~ msgstr ""
+#~ "PUERTO B hinallataq PUERTO C nisqaman iskay motorkuna masichakuqta "
+#~ "kuskanchay"
+
+#  "PUERTO A"
+#~ msgid "PORT A"
+#~ msgstr "PUERTO A nisqa"
+
+#  "PUERTO A del brick"
+#~ msgid "PORT A of the brick"
+#~ msgstr "brick nisqapa PUERTO A nisqan"
+
+#  "PUERTO B"
+#~ msgid "PORT B"
+#~ msgstr "PUERTO B nisqa"
+
+#  "PUERTO B del brick"
+#~ msgid "PORT B of the brick"
+#~ msgstr "brick nisqapa PUERTO B nisqan"
+
+#  "PUERTO C"
+#~ msgid "PORT C"
+#~ msgstr "PUERTO C nisqa"
+
+#  "PUERTO C del brick"
+#~ msgid "PORT C of the brick"
+#~ msgstr "brick nisqapa PUERTO C nisqan"
+
+#  "iniciar motor"
+#~ msgid "start motor"
+#~ msgstr "motorta qallarichiy"
+
+#  "Girar un motor por siempre."
+#~ msgid "Run a motor forever."
+#~ msgstr "Huk motorta wiñaypaq muyuchiy."
+
+#  "frenar motor"
+#~ msgid "brake motor"
+#~ msgstr "motorta utichiy"
+
+#  "Frena un motor específico."
+#~ msgid "Stop a specified motor."
+#~ msgstr "akllasqa motorta utichiy."
+
+#  "reiniciar motor"
+#~ msgid "reset motor"
+#~ msgstr "motorta hukmanta qallarichiy"
+
+#  "Reinicia el contador del motor."
+#~ msgid "Reset the motor counter."
+#~ msgstr "Motorpa yupananta hukmanta qallarichiy."
+
+#  "posición del motor"
+#~ msgid "motor position"
+#~ msgstr "motorpa maypi kasqaynin"
+
+#  "Obtiene la posición del motor."
+#~ msgid "Get the motor position."
+#~ msgstr "Motorpa maypi kasqanta taripay."
+
+#  "PUERTO 1"
+#~ msgid "PORT 1"
+#~ msgstr "PUERTO 1 nisqa"
+
+#  "PUERTO 1 del brick"
+#~ msgid "PORT 1 of the brick"
+#~ msgstr "brick nisqapa PUERTO 1 nisqan"
+
+#  "leer"
+#~ msgid "read"
+#~ msgstr "Ñawichay"
+
+#  "sensor"
+#~ msgid "sensor"
+#~ msgstr "musyana"
+
+#  "Lee la salida del sensor."
+#~ msgid "Read sensor output."
+#~ msgstr "Musyaymanta ñawirin."
+
+#  "PUERTO 2"
+#~ msgid "PORT 2"
+#~ msgstr "PUERTO 2 nisqa"
+
+#  "PUERTO 2 del brick"
+#~ msgid "PORT 2 of the brick"
+#~ msgstr "brick nisqapa PUERTO 2 nisqan"
+
+#  "sensor de luz"
+#~ msgid "light sensor"
+#~ msgstr "k'anchariypa musyaynin"
+
+#  "PUERTO 3"
+#~ msgid "PORT 3"
+#~ msgstr "PUERTO 3 nisqa"
+
+#  "PUERTO 3 del brick"
+#~ msgid "PORT 3 of the brick"
+#~ msgstr "brick nisqapa PUERTO 3 nisqan"
+
+#  "sensor táctil"
+#~ msgid "touch sensor"
+#~ msgstr "ruk'anapa musyaynin"
+
+#  "sensor de distancia"
+#~ msgid "distance sensor"
+#~ msgstr "karu kaymanta musyaynin"
+
+#  "PUERTO 4"
+#~ msgid "PORT 4"
+#~ msgstr "PUERTO 4 nisqa"
+
+#  "PUERTO 4 del brick"
+#~ msgid "PORT 4 of the brick"
+#~ msgstr "brick nisqapa PUERTO 4 nisqan"
+
+#  "sensor de sonido"
+#~ msgid "sound sensor"
+#~ msgstr "uyarinapa musyaynin"
+
+#  "sensor de color"
+#~ msgid "color sensor"
+#~ msgstr "llimp'ip musyaynin"
+
+#  "prender luz"
+#~ msgid "set light"
+#~ msgstr "k'ancharichiy"
+
+#  "Prende la luz del sensor de color."
+#~ msgid "Set color sensor light."
+#~ msgstr "Llimp'ip musyayninpa k'anchariyninta hap'ichiy"
+
+#  "ALTO"
+#~ msgid "HIGH"
+#~ msgstr "ACHKHA"
+
+#  "BAJO"
+#~ msgid "LOW"
+#~ msgstr "PISI"
+
+#  "ENTRADA"
+#~ msgid "INPUT"
+#~ msgstr "HAYKUNA"
+
+#  "SALIDA"
+#~ msgid "OUTPUT"
+#~ msgstr "LLUQSINA"
+
+# "PWM"
+#~ msgid "PWM"
+#~ msgstr "PWM"
+
+#  "SERVO"
+#~ msgid "SERVO"
+#~ msgstr "SERVO"
+
+#  "ERROR: Chequee la Arduino y el número de puerto."
+#~ msgid "ERROR: Check the Arduino and the number of port."
+#~ msgstr "PANTAY: Arduino nisqatawan puerto yupanantawan qhawariy."
+
+#  "ERROR: El valor debe ser un número entre 0 y 255."
+#~ msgid "ERROR: Value must be a number from 0 to 255."
+#~ msgstr "PANTAY: chaniqa 0 yupaymanta 255 yupanakamanmi kanman."
+
+#  "ERROR: El valor debe ser ALTO o BAJO."
+#~ msgid "ERROR: Value must be either HIGH or LOW."
+#~ msgstr "PANTAY: chaniqa ACHKHA utaq PISI kanman"
+
+#  "ERROR: El modo debe ser ENTRADA, SALIDA, PWM o SERVO."
+#~ msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+#~ msgstr "PANTAY: imayna kayqa HAYKUNA, LLUQSINA, PWM utaq SERVO nispam kanman."
+
+#  "modo del pin"
+#~ msgid "pin mode"
+#~ msgstr "Pin nisqa imayna kaynin"
+
+# "modo"
+#~ msgid "mode"
+#~ msgstr "imayna kaynin"
+
+#  "Selecciona la función del pin (ENTRADA, SALIDA, PWM, SERVO)."
+#~ msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+#~ msgstr "Pin nisqapa purinanta akllay (HAYKUNA, LLUQSINA, PWM, SERVO)."
+
+#  "escribir analógico"
+#~ msgid "analog write"
+#~ msgstr "analogico nisqata qillqay"
+
+#  "Escribe un valor analógico en el puerto especificado."
+#~ msgid "Write analog value in specified port."
+#~ msgstr "alogico chanitam akllasqa puertopiqa qillqay."
+
+#  "leer analógico"
+#~ msgid "analog read"
+#~ msgstr "analogico nisqata nawichay"
+
+#  "Lee un valor desde un puerto analógico. El valor puede ser entre 0 y 1023. "
+#  "Use Vref para determinar el voltaje. Para USB, volt=((leer)*5/1024) "
+#  "aproximadamente."
+#~ msgid ""
+#~ "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+#~ "determine voltage. For USB, volt=((read)*5)/1024) approximately."
+#~ msgstr ""
+#~ "Huk puesto analogico nisqamanta huk chaniqa ñawichay. Chaniqa 0 yupanamanta "
+#~ "1023 yupanakama kanman. Voltaje churanapaqtaq Vref nisqawan purichiwaq. USB "
+#~ "nisqapaqtaq, volt=((ñawiriy)*5/1024) nisqahinata."
+
+#  "escribir digital"
+#~ msgid "digital write"
+#~ msgstr "digitalta qillqay"
+
+#  "Escribe un valor digital en un puerto específico."
+#~ msgid "Write digital value to specified port."
+#~ msgstr "digital chanitam akllasqa puertopiqa qillqay."
+
+#  "leer digital"
+#~ msgid "digital read"
+#~ msgstr "digitalta ñawichay"
+
+#  "Lee un valor desde un puerto digital."
+#~ msgid "Read value from digital port."
+#~ msgstr "Purdo digitalmanta chanitaqa ñawichay"
+
+#  "Setea el valor ALTO en el puerto digital."
+#~ msgid "Set HIGH value for digital port."
+#~ msgstr "Puerto digitalpiqa ACHKHA sutichakuq chanita akllapay."
+
+#  "Configura el puerto de la Arduino como entrada digital."
+#~ msgid "Configure Arduino port for digital input."
+#~ msgstr "Digital haykunahina kananpaqmi Arduino puertotaqa kamachiy."
+
+#  "Configura el puerto de la Arduino para manejar un servo."
+#~ msgid "Configure Arduino port to drive a servo."
+#~ msgstr "Servo sutichakuqta puriyachinapaqmi Arduino puertonta kamachiy."
+
+#  "Setea el valor BAJO en el puerto digital."
+#~ msgid "Set LOW value for digital port."
+#~ msgstr "Puerto digitalpiqa PISI sutichakuq chanita akllapay."
+
+#  "Configura el puerto de la Arduino como salida digital."
+#~ msgid "Configure Arduino port for digital output."
+#~ msgstr "Digital lluqsinahina kananpaqmi Arduino puertotaqa kamachiy."
+
+#  "Configura el puerto de la Arduino para PWM modulación por ancho de pulsos)."
+#~ msgid "Configure Arduino port for PWM (pulse-width modulation)."
+#~ msgstr ""
+#~ "PWM sutichakuqwan kananpaqmi Arduino puertonta kamachiy (sakhayninwan "
+#~ "churachinkunqa)."
+
+# "Paleta de bloques WeDo"
+#, fuzzy
+#~ msgid "Palette of Expeyes blocks"
+#~ msgstr "WeDo bloquekunamanta"
+
+# "setea la velocidad de los motores del Butiá como un valor entre 0 y 1023 "
+#  "pasado como argumento"
+#, fuzzy
+#~ msgid ""
+#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
+#~ "an argument"
+#~ msgstr "Butiap motorninpa utqhaynintam 0 yupaymanta 1023 yupaykama akllapan"
+
+# "gira el robot Butiá hacia la izquierda"
+#  [es] "gira el robot Butiá hacia la izquierda"
+#, fuzzy
+#~ msgid "turn the Butia robot to the left"
+#~ msgstr "lluqimanhina Butiataqa muyuchiy"
+
+# "espera Butiá"
+#~ msgid "display Butia"
+#~ msgstr "Butiap suyaynin"
+
+# "Hola Mundo                 Butia"
+#~ msgid "Hello World    Butia            "
+#~ msgstr "Llapaykichik allillanchu    Butia "
+
+#  "imprime texto en la pantalla de 32 caracteres ASCII del Butiá"
+#~ msgid "print text in Butia robot 32-character ASCII display"
+#~ msgstr "Butiyap 32 siq'iyuq ASCII sutichakuqmantam pantallapi qillqata rikuchin"
+
+#  "G"
+#  [es] "G"
+#~ msgid "G"
+#~ msgstr "G"
+
+#  "R"
+#  [es] "R"
+#~ msgid "R"
+#~ msgstr "R"
+
+#  "B"
+#  [es] "B"
+#~ msgid "B"
+#~ msgstr "B"
+
+#  "seguir color RGB"
+#~ msgid "follow a RGB color"
+#~ msgstr "RGB llimp'ita tariy"
+
+#  "guardar calibración 1"
+#~ msgid "save calibration 1"
+#~ msgstr "1 mat'ichinata waqaychay"
+
+#  "almacena una calibración en calibración 1"
+#~ msgid "stores a calibration in calibration 1"
+#~ msgstr "mat'ichinataqa 1 mat'ichina sutichasqapim waqaychan"
+
+#  "guardar calibración 2"
+#~ msgid "save calibration 2"
+#~ msgstr "2 mat'ichinata waqaychay"
+
+#  "almacena una calibración en calibración 2"
+#~ msgid "stores a calibration in calibration 2"
+#~ msgstr "mat'ichinataqa 2 mat'ichina sutichasqapim waqaychan"
+
+#  "calibración 1"
+#~ msgid "calibration 1"
+#~ msgstr "1 mat'ichina"
+
+#  "devuelve la calibración 1"
+#~ msgid "return calibration 1"
+#~ msgstr "1 mat'ichinata rikuchin"
+
+#  "calibración 2"
+#~ msgid "calibration 2"
+#~ msgstr "2 mat'ichina"
+
+#  "devuelve la calibración 2"
+#~ msgid "return calibration 2"
+#~ msgstr "2 mat'ichinata rikuchin"
+
+#  "Por favor chequee el puerto."
+#~ msgid "Please check the port."
+#~ msgstr "Amahina kaychu puerto nisqata qhawariy."
+
+#  "NXT encontrado"
+#~ msgid "NXT found"
+#~ msgstr "NXT tarisqa"
+
+#  "girar motor\n"
+#  "rotaciones"
+#~ msgid ""
+#~ "turn motor\n"
+#~ "rotations"
+#~ msgstr ""
+#~ "motorta\n"
+#~ " muyuykunata muyuchiy"
+
+#  "sincronizar motores\n"
+#  "dirección"
+#~ msgid ""
+#~ "synchronize motors\n"
+#~ "steering"
+#~ msgstr ""
+#~ "motorkunata\n"
+#~ "nisqaman purichiy"
+
+#  "Paleta de bloques Arduino"
+#~ msgid "Palette of Arduino blocks"
+#~ msgstr "Arduino sutichakuq bloquekuna"
 
 #  "espera Butiá"
 #~ msgid "delay Butia"
