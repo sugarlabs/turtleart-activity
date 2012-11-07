@@ -1328,7 +1328,14 @@ class TurtleArtWindow():
                 elif blk.name == 'trashall':
                     for b in self.just_blocks():
                         if b.type != 'trash':
-                            self._put_in_trash(find_top_block(b))
+                            if b.name == 'start':  # Don't trash start block
+                                b1 = b.connections[-1]
+                                if b1 is not None:
+                                    b.connections[-1] = None
+                                    b1.connections[0] = None
+                                    self._put_in_trash(b1)
+                            else:
+                                self._put_in_trash(find_top_block(b))
                 elif blk.name in MACROS:
                     self.new_macro(blk.name, x + 20, y + 20)
                 else:
