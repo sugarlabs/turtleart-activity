@@ -570,10 +570,12 @@ class TurtleMain():
 
     def _do_stop_cb(self, widget):
         ''' Callback for stop button. '''
-        self.tw.lc.trace = 0
+        if not self.tw.hide and not self.tw.running_blocks:
+            self.tw.hideblocks()
+        else:
+            self.tw.showblocks()
         self.tw.stop_button()
         self.tw.display_coordinates()
-        return
 
     def _do_copy_cb(self, button):
         ''' Callback for copy button. '''
