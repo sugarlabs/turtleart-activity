@@ -135,17 +135,17 @@ class Audio_sensors(Plugin):
         primitive_dictionary['voltage'] = self.prim_voltage
         if self.hw in [XO1, XO15, XO175, XO30] and self._status:
             if self.hw == XO1:
-                self.voltage_gain = 0.00002225
-                self.voltage_bias = 1.140
+                self.voltage_gain = 0.000022
+                self.voltage_bias = 1.14
             elif self.hw == XO15:
-                self.voltage_gain = -0.0001471
-                self.voltage_bias = 1.695
-            elif self.hw == XO175:
-                self.voltage_gain = 0.000051
-                self.voltage_bias = 1.372
+                self.voltage_gain = -0.00015
+                self.voltage_bias = 1.70
+            elif self.hw == XO175:  # recalibrate in light of #3675?
+                self.voltage_gain = 0.000071
+                self.voltage_bias = 0.55
             else:  # XO 3.0
-                self.voltage_gain = 0.00007692
-                self.voltage_bias = 0.719
+                self.voltage_gain = 0.000077
+                self.voltage_bias = 0.72
             palette.add_block('resistance',
                               style='box-style',
                               label=_('resistance'),
@@ -295,9 +295,18 @@ class Audio_sensors(Plugin):
     # Block primitives used in talogo
 
     def prim_volume(self, channel):
-        ''' return mic in value '''
         if not self._status:
             return 0
+        # Return average of both channels if sampling in stereo
+        if self._channels == 2:
+            chan0 = self._prim_volume(0)
+            chan1 = self._prim_volume(1)
+            return (chan0 + chan1) / 2
+        else:
+            return self._prim_volume(0)
+
+    def _prim_volume(self, channel):
+        ''' return mic in value '''
         buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
             volume = float(_avg(buf, abs_value=True))
@@ -307,9 +316,18 @@ class Audio_sensors(Plugin):
             return 0
 
     def prim_sound(self, channel):
-        ''' return raw mic in value '''
         if not self._status:
             return 0
+        # Return average of both channels if sampling in stereo
+        if self._channels == 2:
+            chan0 = self._prim_sound(0)
+            chan1 = self._prim_sound(1)
+            return (chan0 + chan1) / 2
+        else:
+            return self._prim_sound(0)
+
+    def _prim_sound(self, channel):
+        ''' return raw mic in value '''
         buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
             sound = float(buf[0])
@@ -319,9 +337,18 @@ class Audio_sensors(Plugin):
             return 0
 
     def prim_pitch(self, channel):
-        ''' return index of max value in fft of mic in values '''
         if not PITCH_AVAILABLE or not self._status:
             return 0
+        # Return average of both channels if sampling in stereo
+        if self._channels == 2:
+            chan0 = self._prim_pitch(0)
+            chan1 = self._prim_pitch(1)
+            return (chan0 + chan1) / 2
+        else:
+            return self._prim_pitch(0)
+
+    def _prim_pitch(self, channel):
+        ''' return index of max value in fft of mic in values '''
         buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
             buf = rfft(buf)
@@ -344,15 +371,21 @@ class Audio_sensors(Plugin):
         if not self.hw in [XO1, XO15, XO175, XO30] or not self._status:
             return 0
         if self.hw == XO1:
-            return self._prim_resistance(0)
+            resistance = self._prim_resistance(0)
+            self._update_resistance_labels(0, resistance)
+            return resistance
         elif self.hw == XO15:
-            return self._prim_resistance(channel)
+            resistance = self._prim_resistance(channel)
+            self._update_resistance_labels(channel, resistance)
+            return resistance
         # FIXME: For ARM (XO175, XO4) channel assignment is seemingly
         # random (#3675), so sum both channels
         else:
             chan0 = self._prim_resistance(0)
             chan1 = self._prim_resistance(1)
-            return chan0 + chan1
+            resistance = (chan0 + chan1) / 2.
+            self._update_resistance_labels(0, resistance)
+            return resistance
 
     def _prim_resistance(self, channel):
         ''' return resistance sensor value '''
@@ -370,7 +403,7 @@ class Audio_sensors(Plugin):
                     resistance = 420000000
             elif self.hw == XO175:
                 if avg_buf < 30700:
-                    resistance = (180000000 / (30700 - avg_buf)) - 3150
+                    resistance = .12 * ((180000000 / (30700 - avg_buf)) - 3150)
                 else:
                     resistance = 999999999
             else:  # XO 3.0
@@ -378,29 +411,37 @@ class Audio_sensors(Plugin):
                     resistance = (46000000 / (30514 - avg_buf)) - 1150
                 else:
                     resistance = 999999999
-            if channel == 0:
-                self._parent.lc.update_label_value('resistance', resistance)
-            else:
-                self._parent.lc.update_label_value('resistance2', resistance)
             if resistance < 0:
                 resistance = 0
             return resistance
         else:
             return 0
 
+    def _update_resistance_labels(self, channel, resistance):
+        if channel == 0:
+            self._parent.lc.update_label_value('resistance', resistance)
+        else:
+            self._parent.lc.update_label_value('resistance2', resistance)
+
     def prim_voltage(self, channel):
         if not self.hw in [XO1, XO15, XO175, XO30] or not self._status:
             return 0
         if self.hw == XO1:
-            return self._prim_voltage(0)
+            voltage = self._prim_voltage(0)
+            self._update_voltage_labels(0, voltage)
+            return voltage
         elif self.hw == XO15:
-            return self._prim_voltage(channel)
+            voltage = self._prim_voltage(channel)
+            self._update_voltage_labels(channel, voltage)
+            return voltage
         # FIXME: For ARM (XO175, XO4) channel assignment is seemingly
         # random (#3675), so sum both channels
         else:
             chan0 = self._prim_voltage(0)
             chan1 = self._prim_voltage(1)
-            return chan0 + chan1
+            voltage = (chan0 + chan1) / 2.
+            self._update_voltage_labels(0, voltage)
+            return voltage
 
     def _prim_voltage(self, channel):
         ''' return voltage sensor value '''
@@ -408,10 +449,12 @@ class Audio_sensors(Plugin):
         if len(buf) > 0:
             # See <http://bugs.sugarlabs.org/ticket/552#comment:7>
             voltage = float(_avg(buf)) * self.voltage_gain + self.voltage_bias
-            if channel == 0:
-                self._parent.lc.update_label_value('voltage', voltage)
-            else:
-                self._parent.lc.update_label_value('voltage2', voltage)
             return voltage
         else:
             return 0
+
+    def _update_voltage_labels(self, channel, voltage):
+        if channel == 0:
+            self._parent.lc.update_label_value('voltage', voltage)
+        else:
+            self._parent.lc.update_label_value('voltage2', voltage)
