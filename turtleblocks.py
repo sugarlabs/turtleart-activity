@@ -95,7 +95,6 @@ class TurtleMain():
             # Outputing to file, so no need for a canvas
             self.canvas = None
             self._build_window(interactive=False)
-            self.init_complete = True
             self._draw_and_quit()
         else:
             self._read_initial_pos()
@@ -104,7 +103,6 @@ class TurtleMain():
             self._build_window()
             self._run_gnome_plugins()
             self._start_gtk()
-            self.init_complete = True
 
     def get_config_home(self):
         return CONFIG_HOME
@@ -168,6 +166,7 @@ class TurtleMain():
         ''' Get a main window set up. '''
         self.win.connect('configure_event', self.tw.update_overlay_position)
         self.tw.parent = self.win
+        self.init_complete = True
         if self._ta_file is None:
             self.tw.load_start()
         else:
