@@ -78,6 +78,7 @@ class TurtleArtActivity(activity.Activity):
         except dbus.exceptions.DBusException, e:
             _logger.error(str(e))
 
+        self.tw = None
         self._check_ver_change(get_path(activity, 'data'))
         self.connect("notify::active", self._notify_active_cb)
 
@@ -1073,7 +1074,7 @@ in order to use the plugin.'))
 
     def read_file(self, file_path, run_it=False, plugin=False):
         ''' Open a project or plugin and then run it. '''
-        if hasattr(self, 'tw'):
+        if hasattr(self, 'tw') and self.tw is not None:
             _logger.debug('Read file: %s' % (file_path))
             # Could be a plugin or deprecated gtar or tar file...
             if plugin or file_path.endswith(('.gtar', '.tar', '.tar.gz')):
