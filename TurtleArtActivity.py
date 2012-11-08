@@ -79,6 +79,8 @@ class TurtleArtActivity(activity.Activity):
             _logger.error(str(e))
 
         self.tw = None
+        self.init_complete = False
+
         self._check_ver_change(get_path(activity, 'data'))
         self.connect("notify::active", self._notify_active_cb)
 
@@ -111,6 +113,7 @@ class TurtleArtActivity(activity.Activity):
             self.metadata['activity count'] = str(count)
 
         self._defer_palette_move = False
+        self.init_complete = True
 
     # Activity toolbar callbacks
     def do_save_as_logo_cb(self, button):
@@ -1005,7 +1008,7 @@ Plugin section of plugin.info file.')
                             create_palette.append(False)
                 _logger.debug('Initializing plugin...')
                 self.tw.init_plugin(plugin_name)
-                self.tw._plugins[-1].setup()
+                self.tw.turtleart_plugins[-1].setup()
                 self.tw.load_media_shapes()
                 for i, palette_name in enumerate(palette_name_list):
                     if create_palette[i]:
