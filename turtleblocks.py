@@ -47,7 +47,8 @@ sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 
 import gettext
 
-from TurtleArt.taconstants import OVERLAY_LAYER, DEFAULT_TURTLE_COLORS
+from TurtleArt.taconstants import OVERLAY_LAYER, DEFAULT_TURTLE_COLORS, \
+                                  TAB_LAYER
 from TurtleArt.tautils import data_to_string, data_from_string, get_save_name
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
@@ -553,6 +554,7 @@ class TurtleMain():
         self.tw.lc.trace = 0
         self.tw.hideblocks()
         self.tw.display_coordinates(clear=True)
+        self.tw.toolbar_shapes['stopiton'].set_layer(TAB_LAYER)
         self.tw.run_button(0, running_from_button_push=True)
         return
 
@@ -570,10 +572,13 @@ class TurtleMain():
 
     def _do_stop_cb(self, widget):
         ''' Callback for stop button. '''
-        self.tw.lc.trace = 0
+        if not self.tw.hide and not self.tw.running_blocks:
+            self.tw.hideblocks()
+        else:
+            self.tw.showblocks()
+            self.tw.toolbar_shapes['stopiton'].hide()
         self.tw.stop_button()
         self.tw.display_coordinates()
-        return
 
     def _do_copy_cb(self, button):
         ''' Callback for copy button. '''
