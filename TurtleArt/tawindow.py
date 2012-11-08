@@ -368,7 +368,7 @@ class TurtleArtWindow():
         for plugin in self.turtleart_plugins:
             plugin.start()
 
-    def _stop_plugins(self):
+    def stop_plugins(self):
         ''' Stop is called whenever we stop execution. '''
         for plugin in self.turtleart_plugins:
             plugin.stop()
