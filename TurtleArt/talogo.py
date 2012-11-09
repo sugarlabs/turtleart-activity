@@ -155,8 +155,7 @@ class LogoCode:
     def stop_logo(self):
         """ Stop logo is called from the Stop button on the toolbar """
         self.step = _just_stop()
-        for plugin in self.tw._plugins:
-            plugin.stop()
+        self.tw.stop_plugins()
         if self.tw.gst_available:
             from tagplay import stop_media
             stop_media(self)

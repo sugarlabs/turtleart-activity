@@ -95,7 +95,6 @@ class TurtleArtWindow():
         self._loaded_project = ''
         self._sharing = False
         self.parent = parent
-        self.window_init_complete = False
         self.turtle_canvas = turtle_canvas
         self.send_event = None  # method to send events over the network
         self.gst_available = GST_AVAILABLE
@@ -263,7 +262,7 @@ class TurtleArtWindow():
         CONSTANTS['height'] = int(self.canvas.height / self.coord_scale)
 
         self._icon_paths = [os.path.join(self.path, 'icons')]
-        self._plugins = []
+        self.turtleart_plugins = []
 
         self._init_plugins()
         self.lc = LogoCode(self)
@@ -283,7 +282,6 @@ class TurtleArtWindow():
                                           show=True)
         self.saved_pictures = []
         self.block_operation = ''
-        self.window_init_complete = True
 
     def _set_screen_dpi(self):
         dpi = get_screen_dpi()
@@ -329,7 +327,7 @@ class TurtleArtWindow():
         # NOTE: When debugging plugins, it may be useful to not trap errors
         try:
             exec f in globals(), plugins
-            self._plugins.append(plugins.values()[0](self))
+            self.turtleart_plugins.append(plugins.values()[0](self))
             debug_output('Successfully importing %s' % (plugin_class),
                          self.running_sugar)
             # Add the icon dir to the icon_theme search path
@@ -356,44 +354,44 @@ class TurtleArtWindow():
             self._get_plugin_home())
         if plugin_name in list_plugins:
             number_plugin = list_plugins.index(plugin_name)
-            return self._plugins[number_plugin]
+            return self.turtleart_plugins[number_plugin]
         else:
             return None
 
     def _setup_plugins(self):
         ''' Initial setup -- called just once. '''
-        for plugin in self._plugins:
+        for plugin in self.turtleart_plugins:
             plugin.setup()
 
     def _start_plugins(self):
         ''' Start is called everytime we execute blocks. '''
-        for plugin in self._plugins:
+        for plugin in self.turtleart_plugins:
             plugin.start()
 
-    def _stop_plugins(self):
+    def stop_plugins(self):
         ''' Stop is called whenever we stop execution. '''
-        for plugin in self._plugins:
+        for plugin in self.turtleart_plugins:
             plugin.stop()
 
     def clear_plugins(self):
         ''' Clear is called from the clean block and erase button. '''
-        for plugin in self._plugins:
+        for plugin in self.turtleart_plugins:
             if hasattr(plugin, 'clear'):
                 plugin.clear()
 
     def background_plugins(self):
         ''' Background is called when we are pushed to the background. '''
-        for plugin in self._plugins:
+        for plugin in self.turtleart_plugins:
             plugin.goto_background()
 
     def foreground_plugins(self):
         ''' Foreground is called when we are return from the background. '''
-        for plugin in self._plugins:
+        for plugin in self.turtleart_plugins:
             plugin.return_to_foreground()
 
     def quit_plugins(self):
         ''' Quit is called upon program exit. '''
-        for plugin in self._plugins:
+        for plugin in self.turtleart_plugins:
             plugin.quit()
 
     def _setup_events(self):

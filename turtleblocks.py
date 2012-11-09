@@ -89,7 +89,7 @@ class TurtleMain():
         self._init_vars()
         self._parse_command_line()
         self._ensure_sugar_paths()
-        self._plugins = []
+        self._gnome_plugins = []
 
         if self._output_png:
             # Outputing to file, so no need for a canvas
@@ -98,10 +98,10 @@ class TurtleMain():
             self._draw_and_quit()
         else:
             self._read_initial_pos()
-            self._init_plugins()
+            self._init_gnome_plugins()
             self._setup_gtk()
             self._build_window()
-            self._run_plugins()
+            self._run_gnome_plugins()
             self._start_gtk()
 
     def get_config_home(self):
@@ -125,7 +125,7 @@ class TurtleMain():
                     plugin_files.append(c.split('.')[0])
         return plugin_files
 
-    def _init_plugins(self):
+    def _init_gnome_plugins(self):
         ''' Try launching any plugins we may have found. '''
         for p in self._get_plugin_candidates(self._get_gnome_plugin_home()):
             P = p.capitalize()
@@ -134,13 +134,13 @@ class TurtleMain():
             plugin = {}
             try:
                 exec f in globals(), plugin
-                self._plugins.append(plugin.values()[0](self))
+                self._gnome_plugins.append(plugin.values()[0](self))
             except ImportError, e:
                 print 'failed to import %s: %s' % (P, str(e))
 
-    def _run_plugins(self):
+    def _run_gnome_plugins(self):
         ''' Tell the plugin about the TurtleWindow instance. '''
-        for p in self._plugins:
+        for p in self._gnome_plugins:
             p.set_tw(self.tw)
 
     def _mkdir_p(self, path):
@@ -166,6 +166,7 @@ class TurtleMain():
         ''' Get a main window set up. '''
         self.win.connect('configure_event', self.tw.update_overlay_position)
         self.tw.parent = self.win
+        self.init_complete = True
         if self._ta_file is None:
             self.tw.load_start()
         else:
@@ -212,6 +213,7 @@ class TurtleMain():
         self.current_palette = 0
         self.scale = 2.0
         self.tw = None
+        self.init_complete = False
 
     def _parse_command_line(self):
         ''' Try to make sense of the command-line arguments. '''
@@ -408,7 +410,7 @@ class TurtleMain():
         menu_bar.append(turtle_menu)
 
         # Add menus for plugins
-        for p in self._plugins:
+        for p in self._gnome_plugins:
             menu_bar.append(p.get_menu())
         return menu_bar
 
@@ -421,7 +423,7 @@ class TurtleMain():
             else:
                 if self.tw.project_has_changed():
                     self._show_save_dialog(False)
-        for plugin in self.tw._plugins:
+        for plugin in self.tw.turtleart_plugins:
             if hasattr(plugin, 'quit'):
                 plugin.quit()
         gtk.main_quit()
