@@ -1803,6 +1803,8 @@ class TurtleArtWindow():
     def _unselect_block(self):
         ''' Unselect block '''
         # After unselecting a 'number' block, we need to check its value
+        if self.selected_blk is None:
+            return
         if self.selected_blk.name == 'number':
             if self._text_to_check:
                 self._test_number()
@@ -2408,6 +2410,8 @@ class TurtleArtWindow():
                 by += self.activity.menu_height + 4  # FIXME: padding
             mx, my = blk.spr.label_left_top()
             self._text_entry.set_pixels_above_lines(my)
+            bx -= int(self.activity.sw.get_hadjustment().get_value())
+            by -= int(self.activity.sw.get_vadjustment().get_value())
             self.activity.fixed.move(self._text_entry, bx + mx, by + my * 2)
             self.activity.fixed.show()
             self._focus_out_id = self._text_entry.connect(
@@ -3202,10 +3206,9 @@ class TurtleArtWindow():
         bounds = self._text_buffer.get_bounds()
         text = self._text_buffer.get_text(bounds[0], bounds[1])
         self._text_to_check = True
-        if self.selected_blk.type == 'number':
-            self._number_check(text)
-        else:
-            self._string_check(text)
+        if self.selected_blk is not None and \
+           self.selected_blk.name == 'string':
+            self._unselect_block()
 
     def _test_string(self):
         if hasattr(self, '_text_entry'):
