@@ -151,7 +151,7 @@ class Sprites:
             print 'sprites.redraw_sprites: no Cairo context'
             return
         for spr in self.list:
-            if area == None:
+            if area is None:
                 spr.draw(cr=cr)
             else:
                 intersection = spr.rect.intersect(area)
