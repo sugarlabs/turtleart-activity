@@ -207,7 +207,6 @@ class TurtleArtWindow():
         self.selected_blk = None
         self.selected_spr = None
         self.selected_turtle = None
-        self.triangle_sprs = []
         self.drag_group = None
         self.drag_turtle = 'move', 0, 0
         self.drag_pos = 0, 0
@@ -484,20 +483,6 @@ class TurtleArtWindow():
                 self.toolbar_shapes[name].type = 'toolbar'
             self.toolbar_shapes['stopiton'].hide()
 
-        # Make the triangle buttons for adjusting numeric values
-        svg = SVG()
-        svg.set_scale(self.scale)
-        self.triangle_sprs.append(Sprite(self.sprite_list, 0, 0,
-            svg_str_to_pixbuf(svg.triangle_up(["#FF00FF", "#A000A0"]))))
-        self.triangle_sprs[-1].set_label('+')
-        self.triangle_sprs[-1].type = 'control'
-        self.triangle_sprs[-1].hide()
-        self.triangle_sprs.append(Sprite(self.sprite_list, 0, 0,
-            svg_str_to_pixbuf(svg.triangle_down(["#FF00FF", "#A000A0"]))))
-        self.triangle_sprs[-1].set_label('-')
-        self.triangle_sprs[-1].type = 'control'
-        self.triangle_sprs[-1].hide()
-
     def set_sharing(self, shared):
         self._sharing = shared
 
@@ -660,8 +645,6 @@ class TurtleArtWindow():
         if not self.hide:
             for blk in self.just_blocks():
                 blk.spr.hide()
-            for spr in self.triangle_sprs:
-                spr.hide()
             self.hide_palette()
             self.hide = True
         else:
@@ -1248,22 +1231,7 @@ class TurtleArtWindow():
 
         # Unselect things that may have been selected earlier
         if self.selected_blk is not None:
-            if self.selected_blk.name == 'number' and \
-               spr in self.triangle_sprs:
-                nf = float(self.selected_blk.spr.labels[0])
-                ni = int(nf)
-                if ni == nf:
-                    n = ni
-                else:
-                    n = nf
-                if spr == self.triangle_sprs[0]:
-                    n += 1
-                else:
-                    n -= 1
-                self.selected_blk.spr.set_label(str(n))
-                self._text_buffer.set_text(str(n))
-                return True
-            elif self._action_name(self.selected_blk, hat=True):
+            if self._action_name(self.selected_blk, hat=True):
                 if self.selected_blk.values[0] == _('action'):
                     self._new_stack_block(self.selected_blk.spr.labels[0])
                 self._update_action_names(self.selected_blk.spr.labels[0])
@@ -1803,11 +1771,11 @@ class TurtleArtWindow():
     def _unselect_block(self):
         ''' Unselect block '''
         # After unselecting a 'number' block, we need to check its value
+        if self.selected_blk is None:
+            return
         if self.selected_blk.name == 'number':
             if self._text_to_check:
                 self._test_number()
-            for spr in self.triangle_sprs:
-                spr.hide()
         elif self.selected_blk.name == 'string':
             if self._text_to_check:
                 self._test_string()
@@ -2383,11 +2351,6 @@ class TurtleArtWindow():
             if blk.name == 'number':
                 bx, by = blk.spr.get_xy()
                 bw, bh = blk.spr.get_dimensions()
-                tw, th = self.triangle_sprs[0].get_dimensions()
-                for spr in self.triangle_sprs:
-                    spr.set_layer(TOP_LAYER)
-                self.triangle_sprs[0].move((int(bx + (bw - tw) / 2), by - th))
-                self.triangle_sprs[1].move((int(bx + (bw - tw) / 2), by + bh))
             if not hasattr(self, '_text_entry'):
                 self._text_entry = gtk.TextView()
                 self._text_entry.set_justification(gtk.JUSTIFY_CENTER)
@@ -2408,6 +2371,8 @@ class TurtleArtWindow():
                 by += self.activity.menu_height + 4  # FIXME: padding
             mx, my = blk.spr.label_left_top()
             self._text_entry.set_pixels_above_lines(my)
+            bx -= int(self.activity.sw.get_hadjustment().get_value())
+            by -= int(self.activity.sw.get_vadjustment().get_value())
             self.activity.fixed.move(self._text_entry, bx + mx, by + my * 2)
             self.activity.fixed.show()
             self._focus_out_id = self._text_entry.connect(
@@ -3202,10 +3167,8 @@ class TurtleArtWindow():
         bounds = self._text_buffer.get_bounds()
         text = self._text_buffer.get_text(bounds[0], bounds[1])
         self._text_to_check = True
-        if self.selected_blk.type == 'number':
-            self._number_check(text)
-        else:
-            self._string_check(text)
+        if self.selected_blk is not None:
+            self._unselect_block()
 
     def _test_string(self):
         if hasattr(self, '_text_entry'):

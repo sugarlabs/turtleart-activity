@@ -4,14 +4,18 @@ BUG FIX:
 * Fixed rounding error in calculating turtle movement
 * Fixed truncation error in display of turtle position
 * Fixed some grammatical errors in strings (cjl)
+* Fixed inconsistent behaviour of Stop Button when running in GNOME
+* Work-around for #3675 (sensor channel swapping on XO 1.75)
+* More fine-tuning of on-screen keyboard support
 
 NOTE:
-* taextras.py has been moved to its own repository
+* As of v167, taextras.py has been moved to its own repository
 
 166
 
 BUG FIXES:
 * Fixed problem with label alignment on some blocks
+* Fixed problem with help label size (#4095)
 * Fixed problem inserting blocks into some stacks
 
 165

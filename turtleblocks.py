@@ -329,16 +329,16 @@ class TurtleMain():
         self.menu_bar.show()
         self.menu_height = self.menu_bar.size_request()[1]
 
-        sw = gtk.ScrolledWindow()
-        sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        sw.show()
+        self.sw = gtk.ScrolledWindow()
+        self.sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        self.sw.show()
         canvas = gtk.DrawingArea()
         width = gtk.gdk.screen_width() * 2
         height = gtk.gdk.screen_height() * 2
         canvas.set_size_request(width, height)
-        sw.add_with_viewport(canvas)
+        self.sw.add_with_viewport(canvas)
         canvas.show()
-        self.vbox.pack_end(sw, True, True)
+        self.vbox.pack_end(self.sw, True, True)
         self.fixed.put(self.vbox, 0, 0)
         self.fixed.show()
 
