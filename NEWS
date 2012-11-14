@@ -1,3 +1,13 @@
+168
+
+ENHANCEMENT:
+* New translations
+* Expand textview vertically when editing multiline strings
+* Set maximum width of string blocks
+
+BUG FIX:
+* Fixed regression in renaming action and box blocks
+
 167
 
 BUG FIX:
