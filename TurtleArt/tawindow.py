@@ -1780,6 +1780,16 @@ class TurtleArtWindow():
             if self._text_to_check:
                 self._test_string()
         self._text_to_check = False
+        if self._action_name(self.selected_blk, hat=True):
+            if self._saved_action_name == _('action'):
+                self._new_stack_block(self.selected_blk.spr.labels[0])
+            self._update_action_names(self.selected_blk.spr.labels[0])
+        elif self._box_name(self.selected_blk, storein=True):
+            if self._saved_box_name == _('my box'):
+                self._new_storein_block(self.selected_blk.spr.labels[0])
+                self._new_box_block(self.selected_blk.spr.labels[0])
+            self._update_storein_names(self.selected_blk.spr.labels[0])
+            self._update_box_names(self.selected_blk.spr.labels[0])
         self.selected_blk.unhighlight()
         self.selected_blk = None
 
@@ -2361,10 +2371,11 @@ class TurtleArtWindow():
                 self._text_entry.modify_font(font_desc)
                 self.activity.fixed.put(self._text_entry, 0, 0)
             self._text_entry.show()
+            count = self._saved_string.count(RETURN)
             self._text_buffer.set_text(
                 self._saved_string.replace(RETURN, '\12'))
             w = blk.spr.label_safe_width()
-            h = blk.spr.label_safe_height()
+            h = blk.spr.label_safe_height() * (count + 1)
             self._text_entry.set_size_request(w, h)
             bx, by = blk.spr.get_xy()
             if not self.running_sugar:
@@ -3164,8 +3175,8 @@ class TurtleArtWindow():
             self.selected_blk.values[0] = float(str(num))
 
     def _text_focus_out_cb(self, widget=None, event=None):
-        bounds = self._text_buffer.get_bounds()
-        text = self._text_buffer.get_text(bounds[0], bounds[1])
+        # bounds = self._text_buffer.get_bounds()
+        # text = self._text_buffer.get_text(bounds[0], bounds[1])
         self._text_to_check = True
         if self.selected_blk is not None:
             self._unselect_block()
@@ -3181,9 +3192,6 @@ class TurtleArtWindow():
             self._text_entry.hide()
         else:
             text = self.selected_blk.spr.labels[0]
-        self._string_check(text)
-
-    def _string_check(self, text):
         self.selected_blk.spr.set_label(text.replace('\12', RETURN))
         self.selected_blk.resize()
         self.selected_blk.values[0] = text.replace(RETURN, '\12')
