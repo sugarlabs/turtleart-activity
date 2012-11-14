@@ -40,6 +40,7 @@ class Blocks:
 
     def __init__(self, font_scale_factor=1, decimal_point='.'):
         self.list = []
+        self.max_width = 400
         self.font_scale_factor = font_scale_factor
         self.decimal_point = decimal_point
 
@@ -245,7 +246,7 @@ class Block:
             return False
         if self.name in block_styles['box-style']:
             return False
-        if self.name in ['storein', 'box',
+        if self.name in ['storein', 'box', 'string',
                          # Deprecated blocks
                          'sandwichtop', 'sandwichtop_no_label']:
             return False
@@ -267,7 +268,12 @@ class Block:
             return
         dx = (self.spr.label_width() - self.spr.label_safe_width()) / \
             self.scale
-        if dx != 0:
+        if self.dx + dx >= self.block_list.max_width and \
+           self.name == 'string':
+            self.dx = self.block_list.max_width
+            self.refresh()
+            self._set_labels(0, self.spr.labels[0])
+        elif dx != 0:
             self.dx += dx
             if self.dx < 0:
                 self.dx = 0
@@ -543,6 +549,8 @@ class Block:
                                               i=i)
             elif self.name in EXPANDABLE_FLOW:
                 self._calc_moving_labels(i)
+            elif self.name == 'string':
+                self.spr.set_label_attributes(size, False, 'center', 'middle')
             elif i == 1:  # top
                 self.spr.set_label_attributes(size, True, 'right', 'top', i=i)
             elif i > 0 and i == n - 1:  # bottom
