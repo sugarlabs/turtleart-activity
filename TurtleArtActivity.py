@@ -294,8 +294,10 @@ class TurtleArtActivity(activity.Activity):
             self.tw.showblocks()
             self.stop_turtle_button.set_icon('hideshowoff')
             self.stop_turtle_button.set_tooltip(_('Hide blocks'))
-        self.run_button.set_icon('run-fastoff')
-        self.step_button.set_icon('run-slowoff')
+        # Note: We leave the old button state highlighted to indicate
+        # speed if blocks are clicked to run.
+        # self.run_button.set_icon('run-fastoff')
+        # self.step_button.set_icon('run-slowoff')
         self.tw.stop_button()
         self.tw.display_coordinates()
 
