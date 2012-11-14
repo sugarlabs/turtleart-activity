@@ -361,7 +361,6 @@ class LogoCode:
         self.icall(self.evline, blklist)
         yield True
         if self.tw.running_sugar:
-            # self.tw.activity.stop_turtle_button.set_icon("stopitoff")
             if self.tw.step_time == 0 and self.tw.selected_blk is None:
                 self.tw.activity.stop_turtle_button.set_icon("hideshowon")
                 self.tw.activity.stop_turtle_button.set_tooltip(
