@@ -337,7 +337,11 @@ class SVG:
     def boolean_not(self, notnot):
         ''' Booleans are in a class of their own: not and not not '''
         self.reset_min_max()
-        if not notnot:
+        if self._innie[0]:
+            svg = self._start_boolean(
+                self._stroke_width / 2.0,
+                self._radius * 1.25 + self._stroke_width / 2.0)
+        elif not notnot:
             svg = self._start_boolean(
                 self._stroke_width / 2.0,
                 self._radius * 2.0 + self._stroke_width / 2.0)
@@ -345,19 +349,32 @@ class SVG:
             svg = self._start_boolean(
                 self._stroke_width / 2.0,
                 self._radius + self._stroke_width / 2.0)
+
         svg += self._rline_to(0, -self._stroke_width)
-        if not notnot:
+
+        if self._innie[0]:
+            svg += self._rline_to(0, -self._radius / 4.0)
+        elif not notnot:
             svg += self._rarc_to(1, -1)
         svg += self._rline_to(self._radius / 2.0 + self._expand_x, 0)
         xx = self._x
-        if not notnot:
+
+        if self._innie[0]:
+            svg += self._rline_to(0, self._radius)
+            svg += self._do_innie()
+            svg += self._rline_to(0, self._radius)
+        elif not notnot:
             svg += self._rline_to(0, self._radius / 2.0)
             svg += self._do_boolean()
             svg += self._rline_to(0, self._radius / 2.0)
         else:
             svg += self._rline_to(0, self._radius * 2)
+
         svg += self.line_to(xx, self._y)
-        if not notnot:
+        if self._innie[0]:
+            svg += self._rline_to(-self._radius / 2.0 - self._expand_x, 0)
+            svg += self._rline_to(0, -self._radius / 4.0)
+        elif not notnot:
             svg += self._rline_to(-self._expand_x, 0)
         else:
             svg += self._rline_to(-self._radius / 2.0 - self._expand_x, 0)
@@ -1215,6 +1232,16 @@ def generator(datapath):
     close_file(f)
 
     svg = SVG()
+    f = open_file(datapath, "boolean-arg.svg")
+    svg.set_scale(2)
+    svg.expand(30, 0, 0, 0)
+    svg.set_innie([True])
+    svg_str = svg.boolean_not(True)
+    f.write(svg_str)
+    close_file(f)
+
+    '''
+    svg = SVG()
     f = open_file(datapath, "basic.svg")
     svg.set_scale(2)
     svg.expand(30, 0, 0, 0)
@@ -1438,7 +1465,7 @@ def generator(datapath):
     svg_str = svg.clamp()
     f.write(svg_str)
     close_file(f)
-
+    '''
 
 def main():
     return 0

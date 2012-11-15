@@ -180,6 +180,7 @@ class Block:
             'boolean-style': self._make_boolean_style,
             'not-style': self._make_not_style,
             'boolean-block-style': self._make_boolean_block_style,
+            'boolean-1arg-block-style': self._make_boolean_1arg_block_style,
             'clamp-style': self._make_clamp_style,
             'clamp-style-collapsible': self._make_clamp_style_collapsible,
             'clamp-style-collapsed': self._make_clamp_style_collapsed,
@@ -898,6 +899,15 @@ class Block:
         self.docks = [['bool', True, self.svg.docks[0][0],
                                      self.svg.docks[0][1]],
                       ['unavailable', False, 0, 0]]
+
+    def _make_boolean_1arg_block_style(self, svg):
+        self.svg.expand(15 + self.dx + self.ex, self.ey)
+        self.svg.set_innie([True])
+        self._make_block_graphics(svg, self.svg.boolean_not, arg=True)
+        self.docks = [['bool', True, self.svg.docks[0][0],
+                                     self.svg.docks[0][1]],
+                      ['number', False, self.svg.docks[1][0],
+                                        self.svg.docks[1][1]]]
 
     def _make_clamp_style(self, svg, extend_x=0, extend_y=4):
         self.svg.expand(self.dx + self.ex + extend_x, self.ey + extend_y)
