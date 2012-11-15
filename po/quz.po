@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-02 10:01-0400\n"
-"PO-Revision-Date: 2012-07-23 04:50+0200\n"
+"PO-Revision-Date: 2012-11-15 06:48+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: Voluntarios Quechua Sugar\n"
 "Language: quz\n"
@@ -1239,7 +1239,7 @@ msgstr "<Ctrl>s"
 #  "El plugin no puede ser instalado."
 #: TurtleArtActivity.py:967 TurtleArtActivity.py:972 TurtleArtActivity.py:1039
 msgid "Plugin could not be installed."
-msgstr "Plugin nisqaqa churachiykuytaqa manam atichikunchu"
+msgstr "Plugin nisqaqa churachiykuytaqa manam atichikunchu."
 
 #  "Reinicie TortugArte para poder usar el plugin."
 #: TurtleArtActivity.py:1035

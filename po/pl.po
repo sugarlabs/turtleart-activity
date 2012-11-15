@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-02 10:01-0400\n"
-"PO-Revision-Date: 2012-10-01 22:10+0200\n"
-"Last-Translator: KatSitko <xanthe1808@gmail.com>\n"
+"PO-Revision-Date: 2012-11-14 05:39+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -876,7 +876,7 @@ msgstr "Wklej"
 
 #: TurtleArtActivity.py:544
 msgid "Restore blocks from trash"
-msgstr "przywróć  klocki z kosza"
+msgstr "przywróć klocki z kosza"
 
 #: TurtleArtActivity.py:547 TurtleArtActivity.py:697
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789

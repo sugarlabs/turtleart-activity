@@ -19,15 +19,15 @@ msgstr ""
 "Project-Id-Version: turtleart-activity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-02 10:01-0400\n"
-"PO-Revision-Date: 2012-10-08 21:33+0200\n"
-"Last-Translator: Markus Schlager <m.slg@gmx.de>\n"
+"PO-Revision-Date: 2012-11-12 12:08+0200\n"
+"Last-Translator: Markus <m.slg@gmx.de>\n"
 "Language-Team: Deutsche OLPC-Lokalisierung\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.0\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #. TRANS: "name" option from activity.info file
 #: TurtleArt/tawindow.py:3767 pysamples/grecord.py:205 turtleblocks.py:303
@@ -1113,9 +1113,8 @@ msgstr "Beschleunigung"
 
 #: plugins/accelerometer/accelerometer.py:58
 #: plugins/accelerometer/accelerometer.py:65
-#, fuzzy
 msgid "push acceleration in x, y, z to heap"
-msgstr "x,y,z-Beschleunigung auf dem Stapel ablegen"
+msgstr "x,y,z-Beschleunigung auf zum Stapel hinzufügen"
 
 #: plugins/audio_sensors/audio_sensors.py:83
 #: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
@@ -1410,7 +1409,6 @@ msgid "returns 1 if mouse button is pressed"
 msgstr "Gibt 1 zurück, wenn die Maustaste gedrückt ist."
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:351
-#, fuzzy
 msgid "returns True if mouse button is pressed"
 msgstr "Gibt Wahr zurück, wenn die Maustaste gedrückt ist."
 
@@ -1792,9 +1790,8 @@ msgid "presentation 2x2"
 msgstr "Präsentation 2x2"
 
 #: pysamples/forward_push.py:45
-#, fuzzy
 msgid "push destination rgb value to heap"
-msgstr "lege den Ziel-RGB-Wert auf dem Stapel ab"
+msgstr "Füge den Ziel-RGB-Wert zum Stapel hinzu"
 
 #: pysamples/grecord.py:215
 #, fuzzy
