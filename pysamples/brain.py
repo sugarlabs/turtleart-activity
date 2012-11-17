@@ -1,0 +1,105 @@
+# A Turtle Block based on the Speak Activity interface to AIML
+# Copyright 2012 Walter Bender, Sugar Labs
+#
+# Copyright (C) 2008 Sebastian Silva Fundacion FuenteLibre
+# sebastian@fuentelibre.org
+#
+# Style and structure taken from Speak.activity Copyright (C) Joshua Minor
+#
+#     HablarConSara.activity is free software: you can redistribute it
+#     and/or modify it under the terms of the GNU General Public
+#     License as published by the Free Software Foundation, either
+#     version 3 of the License, or (at your option) any later version.
+#
+#     HablarConSara.activity is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+#
+#     You should have received a copy of the GNU General Public
+#     License along with HablarConSara.activity.  If not, see
+#     <http://www.gnu.org/licenses/>.
+
+def myblock(tw, text):
+    ''' Dialog with AIML library: Usage: Load this code into a Python
+        Block. Pass text as an argument and the robot's response will
+        be pushed to the stack. Use a Pop Block to pop the response
+        off the the stack.'''
+
+    # The aiml library is bundled with the Speak activity
+    SPEAKPATH = '/home/olpc/Activities/Speak.activity'
+    import os
+    from gettext import gettext as _
+    if not os.path.exists(SPEAKPATH):
+        tw.lc.heap.append(_('Please install the Speak Activity and try again.'))
+        return
+    import sys
+    sys.path.append(SPEAKPATH)
+
+    import gobject
+    import aiml
+    import voice
+
+
+    BOTS = {
+        _('Spanish'): { 'name': 'Sara',
+                        'brain': os.path.join(SPEAKPATH, 'bot', 'sara.brn'),
+                        'predicates': { 'nombre_bot': 'Sara',
+                                        'botmaster': 'La comunidad Azucar' } },
+        _('English'): { 'name': 'Alice',
+                        'brain': os.path.join(SPEAKPATH, 'bot', 'alice.brn'),
+                        'predicates': { 'name': 'Alice',
+                                        'master': 'The Sugar Community' } } }
+    
+
+    def get_mem_info(tag):
+        meminfo = file('/proc/meminfo').readlines()
+        return int([i for i in meminfo if i.startswith(tag)][0].split()[1])
+
+    # load Standard AIML set for restricted systems
+    if get_mem_info('MemTotal:') < 524288:
+        mem_free = get_mem_info('MemFree:') + get_mem_info('Cached:')
+        if mem_free < 102400:
+            BOTS[_('English')]['brain'] = None
+        else:
+            BOTS[_('English')]['brain'] = os.path.join(SPEAKPATH, 'bot',
+                                                       'alisochka.brn')
+
+    def get_default_voice():
+        default_voice = voice.defaultVoice()
+        if default_voice.friendlyname not in BOTS:
+            return voice.allVoices()[_('English')]
+        else:
+            return default_voice
+
+    def brain_respond(kernel, text):
+        print 'brain_respond', kernel
+        if kernel is not None:
+            text = kernel.respond(text)
+        print text
+        if kernel is None or not text:
+            text = _("Sorry, I can't understand what you are asking about.")
+        return text
+
+    def brain_load(kernel, voice, sorry=None):
+        brain = BOTS[voice.friendlyname]
+        kernel = aiml.Kernel()
+
+        if brain['brain'] is None:
+            warning = _("Sorry, there is no free memory to load my brain. \
+Close other activities and try once more.")
+            print warning
+            return kernel, None
+
+        kernel.loadBrain(brain['brain'])
+        for name, value in brain['predicates'].items():
+            kernel.setBotPredicate(name, value)
+
+        return kernel, 'load complete'
+    
+    kernel = None
+    voice = get_default_voice()
+    kernel, load_text = brain_load(kernel, voice, None)
+    response_text = brain_respond(kernel, text)
+    tw.lc.heap.append(response_text)
+    return
