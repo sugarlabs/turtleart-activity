@@ -20,13 +20,14 @@
 #     License along with HablarConSara.activity.  If not, see
 #     <http://www.gnu.org/licenses/>.
 
+
 def myblock(tw, text):
     ''' Dialog with AIML library: Usage: Load this code into a Python
         Block. Pass text as an argument and the robot's response will
         be pushed to the stack. Use a Pop Block to pop the response
         off the the stack.'''
 
-    # The aiml library is bundled with the Speak activity
+    # The AIML library is bundled with the Speak activity
     SPEAKPATH = '/home/olpc/Activities/Speak.activity'
     import os
     from gettext import gettext as _
@@ -73,33 +74,29 @@ def myblock(tw, text):
             return default_voice
 
     def brain_respond(kernel, text):
-        print 'brain_respond', kernel
         if kernel is not None:
             text = kernel.respond(text)
-        print text
         if kernel is None or not text:
-            text = _("Sorry, I can't understand what you are asking about.")
+            text = ""
         return text
 
-    def brain_load(kernel, voice, sorry=None):
+    def brain_load(kernel, voice):
         brain = BOTS[voice.friendlyname]
         kernel = aiml.Kernel()
 
         if brain['brain'] is None:
-            warning = _("Sorry, there is no free memory to load my brain. \
-Close other activities and try once more.")
-            print warning
-            return kernel, None
+            print "Sorry, there is no free memory to load my brain. \
+Close other activities and try once more."
+            return kernel
 
         kernel.loadBrain(brain['brain'])
         for name, value in brain['predicates'].items():
             kernel.setBotPredicate(name, value)
 
-        return kernel, 'load complete'
-    
+        return kernel
+
     kernel = None
-    voice = get_default_voice()
-    kernel, load_text = brain_load(kernel, voice, None)
+    kernel = brain_load(kernel, get_default_voice())
     response_text = brain_respond(kernel, text)
     tw.lc.heap.append(response_text)
     return
