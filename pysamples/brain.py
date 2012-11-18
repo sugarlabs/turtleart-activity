@@ -96,7 +96,8 @@ Close other activities and try once more."
         return kernel
 
     kernel = None
-    kernel = brain_load(kernel, get_default_voice())
-    response_text = brain_respond(kernel, text)
+    if not hasattr(tw, 'aiml_kernel'):
+        tw.aiml_kernel = brain_load(tw, get_default_voice())
+    response_text = brain_respond(tw.aiml_kernel, text)
     tw.lc.heap.append(response_text)
     return
