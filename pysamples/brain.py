@@ -32,7 +32,8 @@ def myblock(tw, text):
     import os
     from gettext import gettext as _
     if not os.path.exists(SPEAKPATH):
-        tw.lc.heap.append(_('Please install the Speak Activity and try again.'))
+        tw.showlabel(
+            'status', _('Please install the Speak Activity and try again.'))
         return
     import sys
     sys.path.append(SPEAKPATH)
@@ -77,7 +78,10 @@ def myblock(tw, text):
         if kernel is not None:
             text = kernel.respond(text)
         if kernel is None or not text:
-            text = ""
+            text = ''
+            tw.showlabel(
+                'status',
+                _("Sorry, I can't understand what you are asking about."))
         return text
 
     def brain_load(kernel, voice):
@@ -85,8 +89,9 @@ def myblock(tw, text):
         kernel = aiml.Kernel()
 
         if brain['brain'] is None:
-            print "Sorry, there is no free memory to load my brain. \
-Close other activities and try once more."
+            tw.showlabel(
+                'status', _('Sorry, there is no free memory to load my brain. \
+Close other activities and try once more.'))
             return kernel
 
         kernel.loadBrain(brain['brain'])
