@@ -28,15 +28,20 @@ def myblock(tw, text):
         off the the stack.'''
 
     # The AIML library is bundled with the Speak activity
-    SPEAKPATH = '/home/olpc/Activities/Speak.activity'
+    SPEAKPATHS = ['/home/olpc/Activities/Speak.activity',
+                  '/usr/share/sugar/activities/Speak.activity']
     import os
     from gettext import gettext as _
-    if not os.path.exists(SPEAKPATH):
+    if os.path.exists(SPEAKPATHS[0]):
+        speakpath = SPEAKPATHS[0]
+    elif os.path.exists(SPEAKPATHS[1]):
+        speakpath = SPEAKPATHS[1]
+    else:
         tw.showlabel(
             'status', _('Please install the Speak Activity and try again.'))
         return
     import sys
-    sys.path.append(SPEAKPATH)
+    sys.path.append(speakpath)
 
     import gobject
     import aiml
@@ -45,11 +50,11 @@ def myblock(tw, text):
 
     BOTS = {
         _('Spanish'): { 'name': 'Sara',
-                        'brain': os.path.join(SPEAKPATH, 'bot', 'sara.brn'),
+                        'brain': os.path.join(speakpath, 'bot', 'sara.brn'),
                         'predicates': { 'nombre_bot': 'Sara',
                                         'botmaster': 'La comunidad Azucar' } },
         _('English'): { 'name': 'Alice',
-                        'brain': os.path.join(SPEAKPATH, 'bot', 'alice.brn'),
+                        'brain': os.path.join(speakpath, 'bot', 'alice.brn'),
                         'predicates': { 'name': 'Alice',
                                         'master': 'The Sugar Community' } } }
     
@@ -64,7 +69,7 @@ def myblock(tw, text):
         if mem_free < 102400:
             BOTS[_('English')]['brain'] = None
         else:
-            BOTS[_('English')]['brain'] = os.path.join(SPEAKPATH, 'bot',
+            BOTS[_('English')]['brain'] = os.path.join(speakpath, 'bot',
                                                        'alisochka.brn')
 
     def get_default_voice():
