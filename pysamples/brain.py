@@ -29,14 +29,16 @@ def myblock(tw, text):
 
     # The AIML library is bundled with the Speak activity
     SPEAKPATHS = ['/home/olpc/Activities/Speak.activity',
+                  '/home/liveuser/Activities/Speak.activity',
                   '/usr/share/sugar/activities/Speak.activity']
     import os
     from gettext import gettext as _
-    if os.path.exists(SPEAKPATHS[0]):
-        speakpath = SPEAKPATHS[0]
-    elif os.path.exists(SPEAKPATHS[1]):
-        speakpath = SPEAKPATHS[1]
-    else:
+    speakpath = None
+    for sp in SPEAKPATHS:
+        if os.path.exists(sp):
+            speakpath = sp
+            break
+    if speakpath is None:
         tw.showlabel(
             'status', _('Please install the Speak Activity and try again.'))
         return
