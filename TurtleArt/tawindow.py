@@ -135,6 +135,7 @@ class TurtleArtWindow():
         self.keypress = ''
         self.keyvalue = 0
         self._focus_out_id = None
+        self._insert_text_id = None
         self._text_to_check = False
         self.mouse_flag = 0
         self.mouse_x = 0
@@ -2358,9 +2359,6 @@ class TurtleArtWindow():
 
         if blk.name in ['string', 'number']:
             self._saved_string = blk.spr.labels[0]
-            if blk.name == 'number':
-                bx, by = blk.spr.get_xy()
-                bw, bh = blk.spr.get_dimensions()
             if not hasattr(self, '_text_entry'):
                 self._text_entry = gtk.TextView()
                 self._text_entry.set_justification(gtk.JUSTIFY_CENTER)
@@ -2386,6 +2384,9 @@ class TurtleArtWindow():
             by -= int(self.activity.sw.get_vadjustment().get_value())
             self.activity.fixed.move(self._text_entry, bx + mx, by + my * 2)
             self.activity.fixed.show()
+            if blk.name == 'number':
+                self._insert_text_id = self._text_buffer.connect(
+                    'insert-text', self._insert_text_cb)
             self._focus_out_id = self._text_entry.connect(
                 'focus-out-event', self._text_focus_out_cb)
             self._text_entry.grab_focus()
@@ -3175,10 +3176,13 @@ class TurtleArtWindow():
             self.selected_blk.values[0] = float(str(num))
 
     def _text_focus_out_cb(self, widget=None, event=None):
-        # bounds = self._text_buffer.get_bounds()
-        # text = self._text_buffer.get_text(bounds[0], bounds[1])
         self._text_to_check = True
         if self.selected_blk is not None:
+            self._unselect_block()
+
+    def _insert_text_cb(self, textbuffer, textiter, text, length):
+        if '\12' in text and self.selected_blk is not None:
+            self._text_to_check = True
             self._unselect_block()
 
     def _test_string(self):
@@ -3186,6 +3190,9 @@ class TurtleArtWindow():
             if self._focus_out_id is not None:
                 self._text_entry.disconnect(self._focus_out_id)
             self._focus_out_id = None
+            if self._insert_text_id is not None:
+                self._text_buffer.disconnect(self._insert_text_id)
+            self._insert_text_id = None
             bounds = self._text_buffer.get_bounds()
             text = self._text_buffer.get_text(bounds[0], bounds[1])
             self._text_buffer.set_text('')
