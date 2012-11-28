@@ -422,7 +422,9 @@ class TurtleArtWindow():
         elif data and data.format == 8 and \
              self.selected_blk is not None and \
              self.selected_blk.name == 'string':
-            self._text_buffer.set_text(self._text_buffer.get_text() + data.data)
+            bounds = self._text_buffer.get_bounds()
+            self._text_buffer.set_text(
+                self._text_buffer.get_text(bounds[0], bounds[1]) + data.data)
             self.text_entry.set_buffer(self._text_buffer)
             context.finish(True, False, time)
         else:
@@ -2369,11 +2371,15 @@ class TurtleArtWindow():
                 self._text_entry.modify_font(font_desc)
                 self.activity.fixed.put(self._text_entry, 0, 0)
             self._text_entry.show()
-            count = self._saved_string.count(RETURN)
-            self._text_buffer.set_text(
-                self._saved_string.replace(RETURN, '\12'))
             w = blk.spr.label_safe_width()
-            h = blk.spr.label_safe_height() * (count + 1)
+            if blk.name == 'string':
+                count = self._saved_string.count(RETURN)
+                self._text_buffer.set_text(
+                    self._saved_string.replace(RETURN, '\12'))
+                h = blk.spr.label_safe_height() * (count + 1)
+            else:
+                self._text_buffer.set_text(self._saved_string)
+                h = blk.spr.label_safe_height()
             self._text_entry.set_size_request(w, h)
             bx, by = blk.spr.get_xy()
             if not self.running_sugar:
@@ -3133,12 +3139,14 @@ class TurtleArtWindow():
     def _test_number(self):
         ''' Make sure a 'number' block contains a number. '''
         if hasattr(self, '_text_entry'):
-            if self._focus_out_id is not None:
-                self._text_entry.disconnect(self._focus_out_id)
-            self._focus_out_id = None
             bounds = self._text_buffer.get_bounds()
             text = self._text_buffer.get_text(bounds[0], bounds[1])
-            self._text_buffer.set_text('')
+            if self._focus_out_id is not None:
+                self._text_entry.disconnect(self._focus_out_id)
+                self._focus_out_id = None
+            if self._insert_text_id is not None:
+                self._text_buffer.disconnect(self._insert_text_id)
+                self._insert_text_id = None
             self._text_entry.hide()
         else:
             text = self.selected_blk.spr.labels[0]
@@ -3177,25 +3185,20 @@ class TurtleArtWindow():
 
     def _text_focus_out_cb(self, widget=None, event=None):
         self._text_to_check = True
-        if self.selected_blk is not None:
-            self._unselect_block()
+        self._unselect_block()
 
     def _insert_text_cb(self, textbuffer, textiter, text, length):
-        if '\12' in text and self.selected_blk is not None:
-            self._text_to_check = True
+        self._text_to_check = True
+        if '\12' in text:
             self._unselect_block()
 
     def _test_string(self):
         if hasattr(self, '_text_entry'):
             if self._focus_out_id is not None:
                 self._text_entry.disconnect(self._focus_out_id)
-            self._focus_out_id = None
-            if self._insert_text_id is not None:
-                self._text_buffer.disconnect(self._insert_text_id)
-            self._insert_text_id = None
+                self._focus_out_id = None
             bounds = self._text_buffer.get_bounds()
             text = self._text_buffer.get_text(bounds[0], bounds[1])
-            self._text_buffer.set_text('')
             self._text_entry.hide()
         else:
             text = self.selected_blk.spr.labels[0]
