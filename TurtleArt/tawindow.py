@@ -111,6 +111,8 @@ class TurtleArtWindow():
                 self.nick = profile.get_nick_name()
             else:
                 self.nick = None
+                self._lock = False
+                self._needs_redraw = False
             self._setup_events()
         else:
             self.interactive_mode = False
@@ -498,8 +500,23 @@ class TurtleArtWindow():
 
     def _expose_cb(self, win=None, event=None):
         ''' Repaint '''
+        if not self.running_sugar:
+            if self._lock:
+                self._needs_redraw = True
+                return False
+            self._needs_redraw = False
+            self._lock = True
+            gobject.timeout_add(20, self._unlock)
+
         self.do_expose_event(event)
         return True
+
+    def _unlock(self):
+        if self.running_sugar:
+            return
+        self._lock = False
+        if self._needs_redraw:
+            self.do_expose_event()
 
     def do_expose_event(self, event=None):
         ''' Handle the expose-event by drawing '''
