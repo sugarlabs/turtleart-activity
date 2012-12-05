@@ -1841,6 +1841,10 @@ class TurtleArtWindow():
                 elif argname == 'number' and \
                      (type(argvalue) is str or type(argvalue) is unicode):
                     argname = 'string'
+                elif argname == 'string' and \
+                     name in block_styles['number-style-1strarg'] and \
+                     type(argvalue) in [int, float]:
+                    argname = 'number'
                 elif argname == 'bool':
                     argname = argvalue
                 elif argname == 'flow':
