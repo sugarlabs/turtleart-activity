@@ -154,6 +154,7 @@ class AudioGrab():
                                                          'dc input bias',
                                                          'v_refout'])
             self._mic_boost_control = self._find_control(['mic boost',
+                                                          'mic1 boost',
                                                           'mic boost (+20db)',
                                                           'internal mic boost',
                                                           'analog mic boost'])
@@ -525,18 +526,17 @@ class AudioGrab():
         if self._labels_available:
             if self._mic_boost_control is None:
                 return
-            # If there is a flag property, use set_mute
-            if self._mic_boost_control not in self._mixer.list_tracks() or \
+            # If there is a volume, use set volume
+            if hasattr(self._mic_boost_control, 'min_volume'):
+                if mic_boost:
+                    self._set_volume(self._mic_boost_control, 'boost', 100)
+                else:
+                    self._set_volume(self._mic_boost_control, 'boost', 0)
+            # Else if there is a flag property, use set_mute
+            elif self._mic_boost_control not in self._mixer.list_tracks() or \
                hasattr(self._mic_boost_control.props, 'flags'):
                 self._set_mute(
                     self._mic_boost_control, 'Mic Boost', not mic_boost)
-            # Otherwise, set volume to max or min value
-            elif mic_boost:
-                self._mixer.set_volume(self._mic_boost_control,
-                                       self._mic_boost_control.max_volume)
-            else:
-                self._mixer.set_volume(self._mic_boost_control,
-                                       self._mic_boost_control.min_volume)
         else:
             self.amixer_set('Mic Boost (+20dB)', mic_boost)
 

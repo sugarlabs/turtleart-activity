@@ -312,8 +312,8 @@ class TurtleMain():
         ''' Create a scrolled window to contain the turtle canvas. We
         add a Fixed container in order to position text Entry widgets
         on top of string and number blocks.'''
-        vbox = gtk.VBox(False, 0)    
-        win.add(vbox)
+        # vbox = gtk.VBox(False, 0)    
+        # win.add(vbox)
 
         self.fixed = gtk.Fixed()
         self.fixed.connect('size-allocate', self._fixed_resize_cb)
@@ -342,7 +342,8 @@ class TurtleMain():
         self.fixed.put(self.vbox, 0, 0)
         self.fixed.show()
 
-        vbox.pack_start(self.fixed, False, False, 0)
+        # vbox.pack_start(self.fixed, False, False, 0)
+        win.add(self.fixed)
         win.show_all()
         self.win = win
         self.canvas = canvas
