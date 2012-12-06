@@ -3,10 +3,14 @@
 ENHANCEMENT:
 * New translations
 * Expand textview vertically when editing multiline strings
-* Set maximum width of string blocks
+* Add sample python code for accessing Alice engine
+* Add new graphic example by Jonny Emerson
+* Enable use of Enter on number blocks (#4271)
 
-BUG FIX:
+BUG FIXES:
 * Fixed regression in renaming action and box blocks
+* Fixed problem with mic boost on XO 1.75 (#4288)
+* Set maximum width of string blocks to prevent them from running off screen
 
 167
 
