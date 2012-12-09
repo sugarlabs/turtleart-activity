@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-19 00:31-0500\n"
-"PO-Revision-Date: 2012-11-05 21:00+0200\n"
+"PO-Revision-Date: 2012-11-28 20:54+0200\n"
 "Last-Translator: whe <heppew@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1768,26 +1768,28 @@ msgstr "presentatie 2x2"
 
 #: pysamples/brain.py:36
 msgid "Please install the Speak Activity and try again."
-msgstr ""
+msgstr "Installeer de Spraak Activiteit en probeer opnieuw."
 
 #: pysamples/brain.py:47
 msgid "Spanish"
-msgstr ""
+msgstr "Spaans"
 
 #: pysamples/brain.py:51 pysamples/brain.py:65 pysamples/brain.py:67
 #: pysamples/brain.py:73
 msgid "English"
-msgstr ""
+msgstr "Engels"
 
 #: pysamples/brain.py:84
 msgid "Sorry, I can't understand what you are asking about."
-msgstr ""
+msgstr "Sorry, ik begrijp niet waarover je vraagt."
 
 #: pysamples/brain.py:93
 msgid ""
 "Sorry, there is no free memory to load my brain. Close other activities and "
 "try once more."
 msgstr ""
+"Sorry, er is geen vrij geheugen meer om mijn brein te laden. Sluit andere "
+"activiteiten en probeer opnieuw."
 
 #: pysamples/forward_push.py:45
 msgid "push destination rgb value to heap"
