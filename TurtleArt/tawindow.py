@@ -1898,12 +1898,14 @@ class TurtleArtWindow():
         self._extra_block_data = []
         # Create the blocks (or turtle).
         blocks = []
-        for blk in self._process_block_data:
+        for i, blk in enumerate(self._process_block_data):
             if not self._found_a_turtle(blk):
                 newblk = self.load_block(blk, offset)
                 if newblk is not None:
                     blocks.append(newblk)
                     newblk.spr.set_layer(TOP_LAYER)
+                else:
+                    blocks.append(None)
         # Some extra blocks may have been added by load_block
         for blk in self._extra_block_data:
             self._process_block_data.append(blk)
@@ -1913,10 +1915,12 @@ class TurtleArtWindow():
                 newblk.spr.set_layer(TOP_LAYER)
 
         # Make the connections.
-        for i in range(len(blocks)):
+        for i, blk in enumerate(blocks):
+            if blk is None:
+                continue
             cons = []
             # Normally, it is simply a matter of copying the connections.
-            if blocks[i].connections is None:
+            if blk.connections is None:
                 if self._process_block_data[i][4] is not None:
                     for c in self._process_block_data[i][4]:
                         if c is None or c > (len(blocks) - 1):
@@ -1928,7 +1932,7 @@ class TurtleArtWindow():
                             str(self._process_block_data[i])),
                                  self.running_sugar)
                     cons.append(None)
-            elif blocks[i].connections == 'check':
+            elif blk.connections == 'check':
                 # Convert old-style boolean and arithmetic blocks
                 cons.append(None)  # Add an extra connection.
                 for c in self._process_block_data[i][4]:
@@ -1937,16 +1941,16 @@ class TurtleArtWindow():
                     else:
                         cons.append(blocks[c])
                 # If the boolean op was connected, readjust the plumbing.
-                if blocks[i].name in block_styles['boolean-style']:
+                if blk.name in block_styles['boolean-style']:
                     if self._process_block_data[i][4][0] is not None:
                         c = self._process_block_data[i][4][0]
                         cons[0] = blocks[self._process_block_data[c][4][0]]
                         c0 = self._process_block_data[c][4][0]
                         for j, cj in enumerate(self._process_block_data[c0][4]):
                             if cj == c:
-                                blocks[c0].connections[j] = blocks[i]
+                                blocks[c0].connections[j] = blk
                         if c < i:
-                            blocks[c].connections[0] = blocks[i]
+                            blocks[c].connections[0] = blk
                             blocks[c].connections[3] = None
                         else:
                             # Connection was to a block we haven't seen yet.
@@ -1959,9 +1963,9 @@ class TurtleArtWindow():
                         c0 = self._process_block_data[c][4][0]
                         for j, cj in enumerate(self._process_block_data[c0][4]):
                             if cj == c:
-                                blocks[c0].connections[j] = blocks[i]
+                                blocks[c0].connections[j] = blk
                         if c < i:
-                            blocks[c].connections[0] = blocks[i]
+                            blocks[c].connections[0] = blk
                             blocks[c].connections[1] = None
                         else:
                             # Connection was to a block we haven't seen yet.
@@ -1969,22 +1973,28 @@ class TurtleArtWindow():
                                          self.running_sugar)
             else:
                 debug_output("Warning: unknown connection state %s" % \
-                                  (str(blocks[i].connections)),
+                                  (str(blk.connections)),
                              self.running_sugar)
-            blocks[i].connections = cons[:]
+            blk.connections = cons[:]
 
         # Block sizes and shapes may have changed.
         for blk in blocks:
+            if blk is None:
+                continue
             self._adjust_dock_positions(blk)
 
         # Look for any stacks that need to be collapsed
         for blk in blocks:
+            if blk is None:
+                continue
             if blk.name == 'sandwichclampcollapsed':
                 collapse_clamp(blk, False)
 
         # process in reverse order
         for i in range(len(blocks)):
             blk = blocks[-i - 1]
+            if blk is None:
+                continue
             if blk.name in EXPANDABLE_FLOW:
                 if blk.name in block_styles['clamp-style-1arg'] or\
                    blk.name in block_styles['clamp-style-boolean']:
@@ -1998,6 +2008,13 @@ class TurtleArtWindow():
                         self._resize_clamp(blk, blk.connections[2], dockn=2)
                     if blk.connections[3] is not None:
                         self._resize_clamp(blk, blk.connections[3], dockn=3)
+
+        # Eliminate None blocks from the block list
+        blocks_copy = []
+        for blk in blocks:
+            if blk is not None:
+                blocks_copy.append(blk)
+        blocks = blocks_copy[:]
 
         # Resize blocks to current scale
         self.resize_blocks(blocks)
@@ -3394,6 +3411,8 @@ class TurtleArtWindow():
         if self.running_sugar:
             from sugar.datastore import datastore
 
+        if b[1] == 0:
+            return None
         # A block is saved as: (i, (btype, value), x, y, (c0,... cn))
         # The x, y position is saved/loaded for backward compatibility
         btype, value = b[1], None
