@@ -20,6 +20,7 @@
 #THE SOFTWARE.
 
 import gtk
+import cairo
 from gettext import gettext as _
 
 from taconstants import EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS, \
@@ -1091,13 +1092,27 @@ class Block:
         self._set_colors(svg)
         self.svg.set_gradient(True, GRADIENT_COLOR)
         if arg is None:
-            self.shapes[0] = svg_str_to_pixbuf(function())
+            pixbuf = svg_str_to_pixbuf(function())
         else:
-            self.shapes[0] = svg_str_to_pixbuf(function(arg))
+            pixbuf = svg_str_to_pixbuf(function(arg))
         self.width = self.svg.get_width()
         self.height = self.svg.get_height()
+        self.shapes[0] = _pixbuf_to_cairo_surface(pixbuf,
+                                                  self.width, self.height)
         self.svg.set_gradient(False)
         if arg is None:
-            self.shapes[1] = svg_str_to_pixbuf(function())
+            pixbuf = svg_str_to_pixbuf(function())
         else:
-            self.shapes[1] = svg_str_to_pixbuf(function(arg))
+            pixbuf = svg_str_to_pixbuf(function(arg))
+        self.shapes[1] = _pixbuf_to_cairo_surface(pixbuf,
+                                                  self.width, self.height)
+
+def _pixbuf_to_cairo_surface(image, width, height):
+    surface = cairo.ImageSurface(
+        cairo.FORMAT_ARGB32, int(width), int(height))
+    context = cairo.Context(surface)
+    context = gtk.gdk.CairoContext(context)
+    context.set_source_pixbuf(image, 0, 0)
+    context.rectangle(0, 0, int(width), int(height))
+    context.fill()
+    return surface
