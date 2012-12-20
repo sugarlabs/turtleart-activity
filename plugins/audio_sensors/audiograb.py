@@ -383,19 +383,15 @@ class AudioGrab():
     def amixer_set(self, control, state):
         ''' Direct call to amixer for old systems. '''
         if state:
-            try:
-                output = subprocess.check_output(
-                    ['amixer', 'set', "%s" % (control), 'unmute'])
-            except subprocess.CalledProcessError:
-                debug_output('Problem with amixer set "%s" unmute' % (control),
-                             self.parent.running_sugar)
+            output = check_output(
+                ['amixer', 'set', "%s" % (control), 'unmute'],
+                'Problem with amixer set "%s" unmute' % (control),
+                self.parent.running_sugar)
         else:
-            try:
-                output = subprocess.check_output(
-                    ['amixer', 'set', "%s" % (control), 'mute'])
-            except subprocess.CalledProcessError:
-                debug_output('Problem with amixer set "%s" mute' % (control),
-                             self.parent.running_sugar)
+            output = check_output(
+                ['amixer', 'set', "%s" % (control), 'mute'],
+                'Problem with amixer set "%s" mute' % (control),
+                self.parent.running_sugar)
 
     def mute_master(self):
         '''Mutes the Master Control'''
@@ -418,12 +414,10 @@ class AudioGrab():
         if self._labels_available:
             self._set_volume(self._master_control, 'Master', master_val)
         else:
-            try:
-                output = subprocess.check_output(
-                    ['amixer', 'set', 'Master', "%d%s" % (master_val, '%')])
-            except subprocess.CalledProcessError:
-                debug_output('Problem with amixer set Master',
-                             self.parent.running_sugar)
+            output = check_output(
+                ['amixer', 'set', 'Master', "%d%s" % (master_val, '%')],
+                'Problem with amixer set Master',
+                self.parent.running_sugar)
 
     def get_master(self):
         '''Gets the MIC gain slider settings. The value returned is an
@@ -431,14 +425,16 @@ class AudioGrab():
         if self._labels_available:
             return self._get_volume(self._master_control, 'master')
         else:
-            try:
-                output = subprocess.check_output(['amixer', 'get', 'Master'])
+            output = check_output(['amixer', 'get', 'Master'],
+                                  'amixer: Could not get Master volume',
+                                  self.parent.running_sugar)
+            if output is None:
+                return 100
+            else:
                 output = output[find(output, 'Front Left:'):]
                 output = output[find(output, '[') + 1:]
                 output = output[:find(output, '%]')]
                 return int(output)
-            except subprocess.CalledProcessError:
-                return 100
 
     def set_bias(self, bias_state=False):
         '''Enables / disables bias voltage.'''
@@ -478,16 +474,17 @@ class AudioGrab():
                 return False
             return True
         else:
-            try:
-                output = subprocess.check_output(['amixer', 'get',
-                                                  "V_REFOUT Enable"])
+            output = check_output(['amixer', 'get', "V_REFOUT Enable"],
+                                  'amixer: Could not get mic bias voltage',
+                                  self.parent.running_sugar)
+            if output is None:
+                return False
+            else:
                 output = output[find(output, 'Mono:'):]
                 output = output[find(output, '[') + 1:]
                 output = output[:find(output, ']')]
                 if output == 'on':
                     return True
-                return False
-            except subprocess.CalledProcessError:
                 return False
 
     def set_dc_mode(self, dc_mode=False):
@@ -508,16 +505,17 @@ class AudioGrab():
             else:
                 return False
         else:
-            try:
-                output = subprocess.check_output(['amixer', 'get',
-                                                  "DC Mode Enable"])
+            output = check_output(['amixer', 'get', "DC Mode Enable"],
+                                  'amixer: Could not get DC Mode',
+                                  self.parent.running_sugar)
+            if output is None:
+                return False
+            else:
                 output = output[find(output, 'Mono:'):]
                 output = output[find(output, '[') + 1:]
                 output = output[:find(output, ']')]
                 if output == 'on':
                     return True
-                return False
-            except subprocess.CalledProcessError:
                 return False
 
     def set_mic_boost(self, mic_boost=False):
@@ -556,16 +554,17 @@ class AudioGrab():
                     return True
                 return False
         else:
-            try:
-                output = subprocess.check_output(['amixer', 'get',
-                                                  "Mic Boost (+20dB)"])
+            output = check_output(['amixer', 'get', "Mic Boost (+20dB)"],
+                                  'amixer: Could not get mic boost',
+                                  self.parent.running_sugar)
+            if output is None:
+                return False
+            else:
                 output = output[find(output, 'Mono:'):]
                 output = output[find(output, '[') + 1:]
                 output = output[:find(output, ']')]
                 if output == 'on':
                     return True
-                return False
-            except subprocess.CalledProcessError:
                 return False
 
     def set_capture_gain(self, capture_val):
@@ -576,12 +575,10 @@ class AudioGrab():
             if self._capture_control is not None:
                 self._set_volume(self._capture_control, 'Capture', capture_val)
         else:
-            try:
-                output = subprocess.check_output(
-                    ['amixer', 'set', 'Capture', "%d%s" % (capture_val, '%')])
-            except subprocess.CalledProcessError:
-                debug_output('Problem with amixer set Capture',
-                             self.parent.running_sugar)
+            output = check_output(
+                ['amixer', 'set', 'Capture', "%d%s" % (capture_val, '%')],
+                'Problem with amixer set Capture',
+                self.parent.running_sugar)
 
     def get_capture_gain(self):
         '''Gets the Capture gain slider settings. The value returned is an
@@ -592,16 +589,16 @@ class AudioGrab():
             else:
                 return 0
         else:
-            try:
-                output = subprocess.check_output(['amixer', 'get', 'Capture'])
+            output = check_output(['amixer', 'get', 'Capture'],
+                                  'amixer: Could not get Capture level',
+                                  self.parent.running_sugar)
+            if output is None:
+                return 100
+            else:
                 output = output[find(output, 'Front Left:'):]
                 output = output[find(output, '[') + 1:]
                 output = output[:find(output, '%]')]
                 return int(output)
-            except subprocess.CalledProcessError:
-                debug_output('amixer: Could not get Capture level',
-                             self.parent.running_sugar)
-                return 100
 
     def set_mic_gain(self, mic_val):
         '''Sets the MIC gain slider settings
@@ -610,12 +607,10 @@ class AudioGrab():
         if self._labels_available and self.parent.hw != XO1:
             self._set_volume(self._mic_gain_control, 'Mic', mic_val)
         else:
-            try:
-                output = subprocess.check_output(
-                    ['amixer', 'set', 'Mic', "%d%s" % (mic_val, '%')])
-            except subprocess.CalledProcessError:
-                debug_output('Problem with amixer set Mic',
-                             self.parent.running_sugar)
+            output = check_output(
+                ['amixer', 'set', 'Mic', "%d%s" % (mic_val, '%')],
+                'Problem with amixer set Mic',
+                self.parent.running_sugar)
 
     def get_mic_gain(self):
         '''Gets the MIC gain slider settings. The value returned is an
@@ -623,16 +618,16 @@ class AudioGrab():
         if self._labels_available and self.parent.hw != XO1:
             return self._get_volume(self._mic_gain_control, 'Mic')
         else:
-            try:
-                output = subprocess.check_output(['amixer', 'get', 'Mic'])
+            output = check_output(['amixer', 'get', 'Mic'],
+                                  'amixer: Could not get mic gain level',
+                                  self.parent.running_sugar)
+            if output is None:
+                return 100
+            else:
                 output = output[find(output, 'Mono:'):]
                 output = output[find(output, '[') + 1:]
                 output = output[:find(output, '%]')]
                 return int(output)
-            except subprocess.CalledProcessError:
-                debug_output('amixer: Could not get Mic level',
-                             self.parent.running_sugar)
-                return 100
 
     def _set_sensor_type(self, mode=None, bias=None, gain=None, boost=None):
         '''Helper to modify (some) of the sensor settings.'''
@@ -653,3 +648,25 @@ class AudioGrab():
         self.set_capture_gain(QUIT_CAPTURE_GAIN)
         self.set_bias(QUIT_BIAS)
         self.stop_sound_device()
+
+
+def check_output(command, warning, running_sugar=True):
+    ''' Workaround for old systems without subprocess.check_output'''
+    if hasattr(subprocess, 'check_output'):
+        try:
+            output = subprocess.check_output(command)
+        except subprocess.CalledProcessError:
+            debug_output(warning, running_sugar)
+            return None
+    else:
+        import commands
+
+        cmd = ''
+        for c in command:
+            cmd += c
+            cmd += ' '
+        (status, output) = commands.getstatusoutput(cmd)
+        if status != 0:
+            debug_output(warning, running_sugar)
+            return None
+    return output
