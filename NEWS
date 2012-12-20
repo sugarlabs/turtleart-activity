@@ -1,3 +1,10 @@
+169
+
+BUG FIXES:
+* Ignore null block definitions (#4316)
+* Fix sensor-block regression on 0.84 system (due to use of
+  subprocess.check_output)
+
 168
 
 ENHANCEMENT:
