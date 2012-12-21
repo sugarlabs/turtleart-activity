@@ -587,6 +587,11 @@ class TurtleArtActivity(activity.Activity):
     def _setup_extra_controls(self):
         ''' Add the rest of the buttons to the main toolbar '''
         if not self.has_toolbarbox:
+            self.samples_button = self._add_button(
+                'ta-open', _('Load example'), self.do_samples_cb,
+                self._project_toolbar)
+            self._add_separator(self._project_toolbar, expand=False,
+                                visible=True)
             self._make_project_buttons(self._project_toolbar)
             return
 
