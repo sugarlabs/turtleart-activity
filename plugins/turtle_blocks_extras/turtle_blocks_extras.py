@@ -1059,7 +1059,8 @@ bullets'))
                     'KP_Right': 3}[self.tw.keypress]
             except KeyError:
                 self.tw.lc.keyboard = 0
-        self.tw.lc.update_label_value('keyboard', self.tw.lc.keyboard)
+        if self.tw.lc.update_values:
+            self.tw.lc.update_label_value('keyboard', self.tw.lc.keyboard)
         self.tw.keypress = ''
 
     def _prim_list(self, blklist):
@@ -1130,10 +1131,11 @@ bullets'))
         if len(self.tw.lc.heap) == 0:
             raise logoerror("#emptyheap")
         else:
-            if len(self.tw.lc.heap) == 1:
-                self.tw.lc.update_label_value('pop')
-            else:
-                self.tw.lc.update_label_value('pop', self.tw.lc.heap[-2])
+            if self.tw.lc.update_values:
+                if len(self.tw.lc.heap) == 1:
+                    self.tw.lc.update_label_value('pop')
+                else:
+                    self.tw.lc.update_label_value('pop', self.tw.lc.heap[-2])
             return self.tw.lc.heap.pop(-1)
 
     def _prim_print(self, n, flag):
@@ -1178,7 +1180,8 @@ bullets'))
     def _prim_push(self, val):
         """ Push value onto FILO """
         self.tw.lc.heap.append(val)
-        self.tw.lc.update_label_value('pop', val)
+        if self.tw.lc.update_values:
+            self.tw.lc.update_label_value('pop', val)
 
     def _prim_readpixel(self):
         """ Read r, g, b, a from the canvas and push b, g, r to the stack """
@@ -1363,13 +1366,15 @@ bullets'))
         color """
         r, g, b, a = self.tw.canvas.get_pixel()
         color_index = self.tw.canvas.get_color_index(r, g, b)
-        self.tw.lc.update_label_value('see', color_index)
+        if self.tw.lc.update_values:
+            self.tw.lc.update_label_value('see', color_index)
         return color_index
 
     def _prim_setscale(self, scale):
         """ Set the scale used by the show block """
         self.tw.lc.scale = scale
-        self.tw.lc.update_label_value('scale', scale)
+        if self.tw.lc.update_values:
+            self.tw.lc.update_label_value('scale', scale)
 
     def _prim_show(self, string, center=False):
         """ Show is the general-purpose media-rendering block. """
@@ -1455,7 +1460,8 @@ bullets'))
         """ Number of seconds since program execution has started or
         clean (prim_clear) block encountered """
         elapsed_time = int(time() - self.tw.lc.start_time)
-        self.tw.lc.update_label_value('time', elapsed_time)
+        if self.tw.lc.update_values:
+            self.tw.lc.update_label_value('time', elapsed_time)
         return elapsed_time
 
     def _prim_hideblocks(self):
