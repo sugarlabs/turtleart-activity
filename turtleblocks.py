@@ -79,7 +79,7 @@ class TurtleMain():
         gettext.textdomain(bundle_id)
         global _
         _ = gettext.gettext
-        _HELP_MSG = 'turtleart.py: ' + _('usage is') + '''
+        self._HELP_MSG = 'turtleart.py: ' + _('usage is') + '''
  \tturtleart.py
  \tturtleart.py project.ta
  \tturtleart.py --output_png project.ta
