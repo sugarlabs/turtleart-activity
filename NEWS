@@ -1,13 +1,25 @@
 169
 
+ENHANCEMENTS:
+* New translations
+* Disable hover help while program is running
+* Add sensor support for XO4
+
 BUG FIXES:
+* Fixed major memory leak introduced back in Version 123 that was
+  causing TA to crash (#4346, #3291).
+* Fixed minor memory leak (with help from Alan Aguiar) caused by
+  incomplete clean up after hitting stop button.
 * Ignore null block definitions (#4316)
-* Fix sensor-block regression on 0.84 system (due to use of
+* Fixed sensor-block regression on 0.84 system (due to use of
   subprocess.check_output)
+* Add sample toolbar to 0.84 toolbars
+* Improved dectection of host computer (used for sensor blocks) needed
+  for XO4
 
 168
 
-ENHANCEMENT:
+ENHANCEMENTS:
 * New translations
 * Expand textview vertically when editing multiline strings
 * Add sample python code for accessing Alice engine
