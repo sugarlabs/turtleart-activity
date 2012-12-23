@@ -147,6 +147,7 @@ class LogoCode:
         self.pixbuf = None
         self.dsobject = None
         self.start_time = None
+        self._disable_help = False
 
         self.body_height = int((self.tw.canvas.height / 40) * self.tw.scale)
 
@@ -164,6 +165,10 @@ class LogoCode:
             stop_media(self)
         self.tw.active_turtle.show()
         self.tw.running_blocks = False
+        # If we disabled hover help, reenable it
+        if self._disable_help:
+            self.tw.no_help = False
+            self._disable_help = False
 
     def def_prim(self, name, args, fcn, rprim=False):
         """ Define the primitives associated with the blocks """
@@ -195,6 +200,10 @@ class LogoCode:
             self.update_values = True
         else:
             self.update_values = False
+            # Disabled hover help while program is running
+            if not self.tw.no_help:
+                self._disable_help = True
+                self.tw.no_help = True
 
         for b in blocks:
             b.unhighlight()
@@ -376,6 +385,10 @@ class LogoCode:
             self.tw.toolbar_shapes['stopiton'].hide()
         yield False
         self.running = False
+        # If we disabled hover help, reenable it
+        if self._disable_help:
+            self.tw.no_help = False
+            self._disable_help = False
 
     def icall(self, fcn, *args):
         """ Add a function and its arguments to the program stack. """
