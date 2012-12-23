@@ -354,6 +354,7 @@ class Sprite:
                          self.rect.width,
                          self.rect.height)
             cr.fill()
+
         if len(self.labels) > 0:
             self.draw_label(cr)
 
@@ -385,7 +386,11 @@ class Sprite:
             my_width = 0
         my_height = self.rect.height - self._margins[1] - self._margins[3]
         for i in range(len(self.labels)):
-            pl = cr.create_layout()
+            if hasattr(self, 'pl'):  # Reuse the pango layout
+                pl = self.pl
+            else:
+                self.pl = cr.create_layout()
+                pl = self.pl
             pl.set_text(str(self.labels[i]))
             self._fd.set_size(int(self._scale[i] * pango.SCALE))
             pl.set_font_description(self._fd)
@@ -422,6 +427,7 @@ class Sprite:
                 y = int(self.rect.y + self._margins[1])
             else:  # bottom
                 y = int(self.rect.y + self.rect.height - h - self._margins[3])
+
             cr.save()
             cr.translate(x, y)
             cr.set_source_rgb(self._color[0], self._color[1], self._color[2])
