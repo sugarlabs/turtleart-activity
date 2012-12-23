@@ -32,7 +32,7 @@ from plugins.audio_sensors.audiograb import AudioGrab, \
 from plugins.audio_sensors.ringbuffer import RingBuffer1d
 
 from TurtleArt.tapalette import make_palette
-from TurtleArt.taconstants import XO1, XO15, XO175, XO30
+from TurtleArt.taconstants import XO1, XO15, XO175, XO30, XO4
 from TurtleArt.talogo import primitive_dictionary
 from TurtleArt.tautils import debug_output
 
@@ -133,14 +133,14 @@ class Audio_sensors(Plugin):
 
         primitive_dictionary['resistance'] = self.prim_resistance
         primitive_dictionary['voltage'] = self.prim_voltage
-        if self.hw in [XO1, XO15, XO175, XO30] and self._status:
+        if self.hw in [XO1, XO15, XO175, XO4, XO30] and self._status:
             if self.hw == XO1:
                 self.voltage_gain = 0.000022
                 self.voltage_bias = 1.14
             elif self.hw == XO15:
                 self.voltage_gain = -0.00015
                 self.voltage_bias = 1.70
-            elif self.hw == XO175:  # recalibrate in light of #3675?
+            elif self.hw in [XO175, XO4]:  # recalibrate in light of #3675?
                 self.voltage_gain = 0.000071
                 self.voltage_bias = 0.55
             else:  # XO 3.0
@@ -211,7 +211,7 @@ class Audio_sensors(Plugin):
             'voltage2', 0, lambda self: primitive_dictionary['voltage'](1))
 
         self.audio_started = False
-        if self.hw in [XO175, XO30]:
+        if self.hw in [XO175, XO30, XO4]:
             self.PARAMETERS = {
                 SENSOR_AC_BIAS: (False, True, 80, True),
                 SENSOR_DC_NO_BIAS: (True, False, 80, False),
@@ -368,7 +368,7 @@ class Audio_sensors(Plugin):
             return 0
 
     def prim_resistance(self, channel):
-        if not self.hw in [XO1, XO15, XO175, XO30] or not self._status:
+        if not self.hw in [XO1, XO15, XO175, XO30, XO4] or not self._status:
             return 0
         if self.hw == XO1:
             resistance = self._prim_resistance(0)
@@ -401,7 +401,7 @@ class Audio_sensors(Plugin):
                     resistance = (420000000 / avg_buf) - 13500
                 else:
                     resistance = 420000000
-            elif self.hw == XO175:
+            elif self.hw in [XO175, XO4]:
                 if avg_buf < 30700:
                     resistance = .12 * ((180000000 / (30700 - avg_buf)) - 3150)
                 else:
@@ -424,7 +424,7 @@ class Audio_sensors(Plugin):
             self._parent.lc.update_label_value('resistance2', resistance)
 
     def prim_voltage(self, channel):
-        if not self.hw in [XO1, XO15, XO175, XO30] or not self._status:
+        if not self.hw in [XO1, XO15, XO175, XO30, XO4] or not self._status:
             return 0
         if self.hw == XO1:
             voltage = self._prim_voltage(0)

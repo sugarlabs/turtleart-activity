@@ -706,7 +706,7 @@ def get_hardware():
     elif version == '1.75':
         return XO175
     elif version == '4':
-        return XO175  # XO4
+        return XO4
     else:
          return UNKNOWN
 
