@@ -14,8 +14,10 @@ BUG FIXES:
 * Fixed sensor-block regression on 0.84 system (due to use of
   subprocess.check_output)
 * Add sample toolbar to 0.84 toolbars
-* Improved dectection of host computer (used for sensor blocks) needed
-  for XO4
+* Improved detection of host computer (used for sensor blocks) needed
+  for XO4 (Gonzalo Odiard)
+* Fixed problem with HELP_MSG in GNOME version (Alan Aguiar)
+* Fixed problem with .desktop file (Daniel Francis)
 
 168
 
