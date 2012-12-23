@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 # 
 # Copyright (c) 2011 Butiá Team butia@fing.edu.uy 
-# Butia is a free open plataform for robotics projects
-# www.fing.edu.uy/inco/proyectos/butia
-# Universidad de la República del Uruguay
+# Copyright (c) 2012 Walter Bender
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -33,3 +31,4 @@ if len(argv) > 1:
     os.system(os.path.join(TAPATH, 'turtleblocks.py') + ' ' + argv.join(' '))
 else:
     os.system(os.path.join(TAPATH, 'turtleblocks.py'))
+
