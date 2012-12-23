@@ -47,32 +47,31 @@ DEGTOR = 2 * pi / 360
 
 import locale
 
-from taconstants import HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE, \
-    MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES, \
-    TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER, CATEGORY_LAYER, \
-    BLOCKS_WITH_SKIN, ICON_SIZE, PALETTE_SCALE, PALETTE_WIDTH, SKIN_PATHS, \
-    MACROS, TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, \
-    EXPANDABLE, NO_IMPORT, \
-    TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK, \
-    EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, TITLEXY, CONTENT_ARGS, \
-    CONSTANTS, EXPAND_SKIN, PROTO_LAYER, EXPANDABLE_FLOW
-from tapalette import palette_names, palette_blocks, expandable_blocks, \
-    block_names, content_blocks, default_values, special_names, block_styles, \
-    help_strings, hidden_proto_blocks, string_or_number_args, \
-    make_palette, palette_name_to_index, palette_init_on_start
+from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
+    MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES, TOOLBAR_SHAPES, TAB_LAYER,
+    RETURN, OVERLAY_LAYER, CATEGORY_LAYER, BLOCKS_WITH_SKIN, ICON_SIZE,
+    PALETTE_SCALE, PALETTE_WIDTH, SKIN_PATHS, MACROS, TOP_LAYER, BLOCK_LAYER,
+    OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, EXPANDABLE, NO_IMPORT,
+    TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
+    EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY, CONTENT_ARGS,
+    CONSTANTS, EXPAND_SKIN, PROTO_LAYER, EXPANDABLE_FLOW)
+from tapalette import (palette_names, palette_blocks, expandable_blocks,
+    block_names, content_blocks, default_values, special_names, block_styles,
+    help_strings, hidden_proto_blocks, string_or_number_args,
+    make_palette, palette_name_to_index, palette_init_on_start)
 from talogo import LogoCode, primitive_dictionary, logoerror
 from tacanvas import TurtleGraphics
 from tablock import Blocks, Block
 from taturtle import Turtles, Turtle
-from tautils import magnitude, get_load_name, get_save_name, data_from_file, \
-    data_to_file, round_int, get_id, get_pixbuf_from_journal, \
-    movie_media_type, audio_media_type, image_media_type, save_picture, \
-    calc_image_size, get_path, hide_button_hit, show_button_hit, chooser, \
-    arithmetic_check, xy, find_block_to_run, find_top_block, journal_check, \
-    find_group, find_blk_below, data_to_string, find_start_stack, \
-    get_hardware, debug_output, error_output, data_to_string, convert, \
-    find_bot_block, restore_clamp, collapse_clamp, data_from_string, \
-    increment_name, get_screen_dpi
+from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
+    data_to_file, round_int, get_id, get_pixbuf_from_journal,
+    movie_media_type, audio_media_type, image_media_type, save_picture,
+    calc_image_size, get_path, hide_button_hit, show_button_hit, chooser,
+    arithmetic_check, xy, find_block_to_run, find_top_block, journal_check,
+    find_group, find_blk_below, data_to_string, find_start_stack,
+    get_hardware, debug_output, error_output, data_to_string, convert,
+    find_bot_block, restore_clamp, collapse_clamp, data_from_string,
+    increment_name, get_screen_dpi)
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
 from sprites import Sprites, Sprite
 
@@ -154,7 +153,7 @@ class TurtleArtWindow():
 
         self.hw = get_hardware()
         self.lead = 1.0
-        if self.hw in (XO1, XO15, XO175):
+        if self.hw in (XO1, XO15, XO175, XO4):
             self.scale = 1.0
             self.entry_scale = 0.67
             if self.hw == XO1:
@@ -224,8 +223,7 @@ class TurtleArtWindow():
 
         self.canvas = TurtleGraphics(self, self.width, self.height)
         if self.hw == XO175 and self.canvas.width == 1024:
-            # FIXME: Need test for XO40
-            self.hw = XO30  # FIXME: temporary test
+            self.hw = XO30
         if self.interactive_mode:
             self.sprite_list.set_cairo_context(self.canvas.canvas)
 
@@ -285,7 +283,7 @@ class TurtleArtWindow():
 
     def _set_screen_dpi(self):
         dpi = get_screen_dpi()
-        if self.hw in (XO1, XO15, XO175):
+        if self.hw in (XO1, XO15, XO175, XO4):
             dpi = 133  # Tweek because of XO display peculiarities
         font_map_default = pangocairo.cairo_font_map_get_default()
         font_map_default.set_resolution(dpi)
@@ -506,6 +504,7 @@ class TurtleArtWindow():
 
         # Create the cairo context
         cr = self.window.window.cairo_create()
+
         # TODO: set global scale
         # find_sprite needs rescaled coordinates
         # sw needs new bounds set
@@ -540,6 +539,7 @@ class TurtleArtWindow():
         ''' Run turtle! '''
         if self.running_sugar:
             self.activity.recenter()
+
         # Look for a 'start' block
         for blk in self.just_blocks():
             if find_start_stack(blk):
@@ -1268,7 +1268,8 @@ class TurtleArtWindow():
         self.dragging_canvas[1] = x
         self.dragging_canvas[2] = y
         if spr is None:
-            if not self.running_blocks and not self.hw in (XO1, XO15, XO175):
+            if not self.running_blocks and not self.hw in (
+                XO1, XO15, XO175, XO4):
                 self.dragging_canvas[0] = True
             return True
         self.dragging_canvas[0] = False
@@ -2322,7 +2323,8 @@ class TurtleArtWindow():
         # Find the block we clicked on and process it.
         # Consider a very small move a click (for touch interfaces)
         if self.block_operation == 'click' or \
-           (self.hw in [XO175, XO30] and self.block_operation == 'move' and (
+           (self.hw in [XO175, XO30, XO4] and \
+            self.block_operation == 'move' and (
                 abs(self.dx) < MOTION_THRESHOLD and \
                 abs(self.dy < MOTION_THRESHOLD))):
             self._click_block(x, y)
