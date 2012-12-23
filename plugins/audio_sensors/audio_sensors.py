@@ -26,8 +26,8 @@ except:
 
 from plugins.plugin import Plugin
 
-from plugins.audio_sensors.audiograb import AudioGrab, \
-    SENSOR_DC_NO_BIAS, SENSOR_DC_BIAS, SENSOR_AC_BIAS
+from plugins.audio_sensors.audiograb import (AudioGrab,
+    SENSOR_DC_NO_BIAS, SENSOR_DC_BIAS, SENSOR_AC_BIAS)
 
 from plugins.audio_sensors.ringbuffer import RingBuffer1d
 
@@ -331,7 +331,8 @@ class Audio_sensors(Plugin):
         buf = self.ringbuffer[channel].read(None, self.input_step)
         if len(buf) > 0:
             sound = float(buf[0])
-            self._parent.lc.update_label_value('sound', sound)
+            if self._parent.lc.update_values:
+                self._parent.lc.update_label_value('sound', sound)
             return sound
         else:
             return 0
@@ -362,7 +363,8 @@ class Audio_sensors(Plugin):
                 maxi += c / float(a + b + c)
                 pitch = maxi * 48000 / (len(buf) * 2)
             
-            self._parent.lc.update_label_value('pitch', pitch)
+            if self._parent.lc.update_values:
+                self._parent.lc.update_label_value('pitch', pitch)
             return pitch
         else:
             return 0
@@ -372,11 +374,13 @@ class Audio_sensors(Plugin):
             return 0
         if self.hw == XO1:
             resistance = self._prim_resistance(0)
-            self._update_resistance_labels(0, resistance)
+            if self._parent.lc.update_values:
+                self._update_resistance_labels(0, resistance)
             return resistance
         elif self.hw == XO15:
             resistance = self._prim_resistance(channel)
-            self._update_resistance_labels(channel, resistance)
+            if self._parent.lc.update_values:
+                self._update_resistance_labels(channel, resistance)
             return resistance
         # FIXME: For ARM (XO175, XO4) channel assignment is seemingly
         # random (#3675), so sum both channels
@@ -384,7 +388,8 @@ class Audio_sensors(Plugin):
             chan0 = self._prim_resistance(0)
             chan1 = self._prim_resistance(1)
             resistance = (chan0 + chan1) / 2.
-            self._update_resistance_labels(0, resistance)
+            if self._parent.lc.update_values:
+                self._update_resistance_labels(0, resistance)
             return resistance
 
     def _prim_resistance(self, channel):
@@ -428,11 +433,13 @@ class Audio_sensors(Plugin):
             return 0
         if self.hw == XO1:
             voltage = self._prim_voltage(0)
-            self._update_voltage_labels(0, voltage)
+            if self._parent.lc.update_values:
+                self._update_voltage_labels(0, voltage)
             return voltage
         elif self.hw == XO15:
             voltage = self._prim_voltage(channel)
-            self._update_voltage_labels(channel, voltage)
+            if self._parent.lc.update_values:
+                self._update_voltage_labels(channel, voltage)
             return voltage
         # FIXME: For ARM (XO175, XO4) channel assignment is seemingly
         # random (#3675), so sum both channels
@@ -440,7 +447,8 @@ class Audio_sensors(Plugin):
             chan0 = self._prim_voltage(0)
             chan1 = self._prim_voltage(1)
             voltage = (chan0 + chan1) / 2.
-            self._update_voltage_labels(0, voltage)
+            if self._parent.lc.update_values:
+                self._update_voltage_labels(0, voltage)
             return voltage
 
     def _prim_voltage(self, channel):

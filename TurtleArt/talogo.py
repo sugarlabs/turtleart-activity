@@ -200,6 +200,7 @@ class LogoCode:
             self.update_values = True
         else:
             self.update_values = False
+            self.clear_value_blocks()
             # Disabled hover help while program is running
             if not self.tw.no_help:
                 self._disable_help = True
@@ -599,6 +600,9 @@ class LogoCode:
         self.scale = DEFAULT_SCALE
         self.hidden_turtle = None
         self.start_time = time()
+        self.clear_value_blocks()
+
+    def clear_value_blocks(self):
         for name in value_blocks:
             self.update_label_value(name)
 

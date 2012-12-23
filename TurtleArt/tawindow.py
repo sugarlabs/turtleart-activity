@@ -2112,6 +2112,10 @@ class TurtleArtWindow():
                     self.canvas.setpen(True)
                 else:
                     self.canvas.setxy(tx, ty, share=False)
+                self.lc.update_label_value('xcor',
+                                           self.canvas.xcor / self.coord_scale)
+                self.lc.update_label_value('ycor',
+                                           self.canvas.ycor / self.coord_scale)
             else:
                 dx = x - sx - self.selected_turtle.spr.rect.width / 2
                 dy = y - sy - self.selected_turtle.spr.rect.height / 2

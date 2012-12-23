@@ -1015,11 +1015,12 @@ variable'))
     def _prim_arc(self, cmd, value1, value2):
         """ Turtle draws an arc of degree, radius """
         cmd(float(value1), float(value2))
-        self.tw.lc.update_label_value(
-            'xcor', self.tw.canvas.xcor / self.tw.coord_scale)
-        self.tw.lc.update_label_value(
-            'ycor', self.tw.canvas.ycor / self.tw.coord_scale)
-        self.tw.lc.update_label_value('heading', self.tw.canvas.heading)
+        if self.tw.lc.update_values:
+            self.tw.lc.update_label_value(
+                'xcor', self.tw.canvas.xcor / self.tw.coord_scale)
+            self.tw.lc.update_label_value(
+                'ycor', self.tw.canvas.ycor / self.tw.coord_scale)
+            self.tw.lc.update_label_value('heading', self.tw.canvas.heading)
 
     def _prim_box(self, x):
         """ Retrieve value from named box """
@@ -1064,10 +1065,11 @@ variable'))
             cmd(value1)
         else:
             cmd(float(value1), float(value2), pendown=pendown)
-        self.tw.lc.update_label_value('xcor',
-                           self.tw.canvas.xcor / self.tw.coord_scale)
-        self.tw.lc.update_label_value('ycor',
-                           self.tw.canvas.ycor / self.tw.coord_scale)
+        if self.tw.lc.update_values:
+            self.tw.lc.update_label_value(
+                'xcor', self.tw.canvas.xcor / self.tw.coord_scale)
+            self.tw.lc.update_label_value(
+                'ycor', self.tw.canvas.ycor / self.tw.coord_scale)
 
     def _prim_or(self, x, y):
         """ Logical or """
@@ -1087,13 +1089,15 @@ variable'))
     def _prim_right(self, value):
         """ Turtle rotates clockwise """
         self.tw.canvas.right(float(value))
-        self.tw.lc.update_label_value('heading', self.tw.canvas.heading)
+        if self.tw.lc.update_values:
+            self.tw.lc.update_label_value('heading', self.tw.canvas.heading)
 
     def _prim_set(self, name, cmd, value=None):
         """ Set a value and update the associated value blocks """
         if value is not None:
             cmd(value)
-            self.tw.lc.update_label_value(name, value)
+            if self.tw.lc.update_values:
+                self.tw.lc.update_label_value(name, value)
 
     def _prim_setbox(self, name, x, val):
         """ Define value of named box """
@@ -1102,10 +1106,12 @@ variable'))
                 if int(float(x)) == x:
                     x = int(x)
             self.tw.lc.boxes[name + str(x)] = val
-            self.tw.lc.update_label_value('box', val, label=x)
+            if self.tw.lc.update_values:
+                self.tw.lc.update_label_value('box', val, label=x)
         else:
             self.tw.lc.boxes[name] = val
-            self.tw.lc.update_label_value(name, val)            
+            if self.tw.lc.update_values:
+                self.tw.lc.update_label_value(name, val)            
 
     def _prim_stack(self, x):
         """ Process a named stack """
