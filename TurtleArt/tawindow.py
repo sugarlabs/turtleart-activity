@@ -304,6 +304,7 @@ class TurtleArtWindow():
         plugin_files = []
         if path is not None:
             candidates = os.listdir(path)
+            candidates.sort()
             for dirname in candidates:
                 if os.path.exists(
                     os.path.join(path, dirname, dirname + '.py')):
