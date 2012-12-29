@@ -735,7 +735,7 @@ def check_output(command, warning):
         try:
             output = subprocess.check_output(command)
         except subprocess.CalledProcessError:
-            log.warning(warning)
+            print(warning)
             return None
     else:
         import commands
@@ -746,7 +746,7 @@ def check_output(command, warning):
             cmd += ' '
         (status, output) = commands.getstatusoutput(cmd)
         if status != 0:
-            log.warning(warning)
+            print(warning)
             return None
     return output
 
