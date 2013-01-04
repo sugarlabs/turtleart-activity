@@ -1321,7 +1321,7 @@ class TurtleArtWindow():
                             return True
                     # We need to check to see if there is already a
                     # similarly default named stack
-                    elif blk.name in ['hat']:
+                    elif blk.name == 'hat':
                         similars = self.block_list.get_similar_blocks(
                             'block', blk.name)
                         # First look for a hat with _('action') as its label
@@ -1361,6 +1361,16 @@ class TurtleArtWindow():
                     # and label[1] from foo to box
                     elif blk.name[0:8] == 'storein_':
                         defaults = [blk.name[8:], 100]
+                        name = 'storein'
+                    # storein my_box gets incremented
+                    elif blk.name == 'storein':
+                        defaults = [_('my box'), 100]
+                        defaults[0] = increment_name(defaults[0])
+                        while self._find_proto_name('storein_%s' % (
+                                defaults[0]), defaults[0]):
+                            defaults[0] = increment_name(defaults[0])
+                        self._new_storein_block(defaults[0])
+                        self._new_box_block(defaults[0])
                         name = 'storein'
                     # You cannot mix and match sensor blocks
                     elif blk.name in ['sound', 'volume', 'pitch']:
@@ -4022,6 +4032,11 @@ class TurtleArtWindow():
                 blk_label = blk_label.encode('ascii', 'replace')
             if blk.name == name and blk_label == label:
                 return True
+            # Check labels[1] too (e.g., store in block)
+            if len(blk.spr.labels) > 1:
+                blk_label = blk.spr.labels[1]
+                if blk.name == name and blk_label == label:
+                    return True
         return False
 
     def _new_stack_block(self, name):
