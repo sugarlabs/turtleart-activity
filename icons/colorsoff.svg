@@ -61,7 +61,7 @@
          cy="15.5"
          r="10"
          id="circle3075"
-         style="stroke:#ffffff;stroke-width:2.25" />
+         style="fill:#010101;stroke:#ffffff;stroke-width:2.25" />
     </g>
   </g>
 </svg>
