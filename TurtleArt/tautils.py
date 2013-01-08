@@ -113,8 +113,8 @@ def strtype(x):
 
 
 def increment_name(name):
-    ''' If name is of the form foo_2, change it to foo_3. Otherwise,
-    return name_2'''
+    ''' If name is of the form foo_1, change it to foo_2. Otherwise,
+    return name_1'''
     if '_' in name:
         parts = name.split('_')
         try:
@@ -123,9 +123,9 @@ def increment_name(name):
             parts[-1] = str(i)
             newname = string.join(parts, '_')
         except ValueError:
-            newname = '%s_2' % (name)
+            newname = '%s_1' % (name)
     else:
-        newname = '%s_2' % (name)
+        newname = '%s_1' % (name)
     return newname
 
 
