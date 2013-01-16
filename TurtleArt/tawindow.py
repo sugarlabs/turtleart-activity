@@ -98,6 +98,7 @@ class TurtleArtWindow():
         self.send_event = None  # method to send events over the network
         self.gst_available = GST_AVAILABLE
         self.running_sugar = False
+        self.nick = None
         if type(canvas_window) == gtk.DrawingArea:
             self.interactive_mode = True
             self.window = canvas_window
@@ -108,8 +109,6 @@ class TurtleArtWindow():
                 self.running_sugar = True
                 from sugar import profile
                 self.nick = profile.get_nick_name()
-            else:
-                self.nick = None
             self._setup_events()
         else:
             self.interactive_mode = False
@@ -1916,7 +1915,8 @@ class TurtleArtWindow():
                 newblk = self.load_block(blk, offset)
                 if newblk is not None:
                     blocks.append(newblk)
-                    newblk.spr.set_layer(TOP_LAYER)
+                    if newblk.spr is not None:
+                        newblk.spr.set_layer(TOP_LAYER)
                 else:
                     blocks.append(None)
         # Some extra blocks may have been added by load_block
@@ -1925,7 +1925,8 @@ class TurtleArtWindow():
             newblk = self.load_block(blk, offset)
             if newblk is not None:
                 blocks.append(newblk)
-                newblk.spr.set_layer(TOP_LAYER)
+                if newblk.spr is not None:
+                    newblk.spr.set_layer(TOP_LAYER)
 
         # Make the connections.
         for i, blk in enumerate(blocks):
@@ -2030,7 +2031,8 @@ class TurtleArtWindow():
         blocks = blocks_copy[:]
 
         # Resize blocks to current scale
-        self.resize_blocks(blocks)
+        if self.interactive_mode:
+            self.resize_blocks(blocks)
 
         if len(blocks) > 0:
             return blocks[0]
@@ -2914,6 +2916,8 @@ class TurtleArtWindow():
 
     def _resize_clamp(self, blk, gblk, dockn=-2):
         ''' If the content of a clamp changes, resize it '''
+        if not self.interactive_mode:
+            return
         if dockn < 0:
             dockn = len(blk.docks) + dockn
         y1 = blk.docks[-1][3]

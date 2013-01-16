@@ -689,7 +689,7 @@ class TurtleGraphics:
                 (self.cx + x - self.tw.active_turtle.spr.rect.width / 2.,
                  self.cy + y - self.tw.active_turtle.spr.rect.height / 2.))
         else:
-            self.tw.active_turtle.move(self.cx + x, self.cy + y)
+            self.tw.active_turtle.move((self.cx + x, self.cy + y))
 
     def get_color_index(self, r, g, b, a=0):
         ''' Find the closest palette entry to the rgb triplet '''
