@@ -2652,6 +2652,11 @@ class TurtleArtWindow():
 
     def _run_stack(self, blk):
         ''' Run a stack of blocks. '''
+        if not self.interactive_mode:
+            # Test for forever block
+            if len(self.block_list.get_similar_blocks('block', 'forever')) > 0:
+                debug_output('WARNING: Projects with forever blocks \
+may not terminate.', False)
         if self.status_spr is not None:
             self.status_spr.hide()
         self._autohide_shape = True
