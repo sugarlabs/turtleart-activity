@@ -1084,6 +1084,9 @@ bullets'))
 
     def _prim_myfunction(self, f, x):
         """ Programmable block """
+        for i, v in enumerate(x):
+            if type(v) == int:  # Pass float values to Python block
+                x[i] = float(v)
         try:
             y = myfunc(f, x)
             if str(y) == 'nan':
