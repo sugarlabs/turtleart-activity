@@ -1,5 +1,5 @@
 #copyright (c) 2007-8, Playful Invention Company.
-#Copyright (c) 2008-12, Walter Bender
+#Copyright (c) 2008-13, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -44,7 +44,7 @@ except (ImportError, AttributeError):
 from StringIO import StringIO
 
 from taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO30, XO4,
-                         UNKNOWN)
+                         UNKNOWN, MAGICNUMBER)
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -140,8 +140,12 @@ def json_load(text):
     if OLD_SUGAR_SYSTEM is True:
         listdata = json.read(text)
     else:
-        # Strip out leading and trailing whitespace, nulls, and newlines
-        clean_text = text.lstrip()
+        # Remove MAGIC NUMBER, if present, and leading whitespace
+        if text[0:2] == MAGICNUMBER:
+            clean_text = text[2:].lstrip()
+        else:
+            clean_text = text.lstrip()
+        # Strip out trailing whitespace, nulls, and newlines
         clean_text = clean_text.replace('\12', '')
         clean_text = clean_text.replace('\00', '')
         clean_text = clean_text.rstrip()

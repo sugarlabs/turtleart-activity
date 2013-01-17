@@ -48,7 +48,7 @@ sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 import gettext
 
 from TurtleArt.taconstants import OVERLAY_LAYER, DEFAULT_TURTLE_COLORS, \
-                                  TAB_LAYER
+                                  TAB_LAYER, SUFFIX
 from TurtleArt.tautils import data_to_string, data_from_string, get_save_name
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
@@ -79,13 +79,13 @@ class TurtleMain():
         gettext.textdomain(bundle_id)
         global _
         _ = gettext.gettext
-        self._HELP_MSG = 'turtleart.py: ' + _('usage is') + '''
- \tturtleart.py
- \tturtleart.py project.ta
- \tturtleart.py --output_png project.ta
- \tturtleart.py -o project
- \tturtleart.py --run project.ta
- \tturtleart.py -r project'''
+        self._HELP_MSG = 'turtleblocks.py: ' + _('usage is') + '''
+ \tturtleblocks.py
+ \tturtleblocks.py project.tb
+ \tturtleblocks.py --output_png project.tb
+ \tturtleblocks.py -o project
+ \tturtleblocks.py --run project.tb
+ \tturtleblocks.py -r project'''
         self._init_vars()
         self._parse_command_line()
         self._ensure_sugar_paths()
@@ -243,8 +243,8 @@ class TurtleMain():
             sys.exit()
 
         if self._ta_file is not None:
-            if not self._ta_file.endswith(('.ta')):
-                self._ta_file += '.ta'
+            if not self._ta_file.endswith(SUFFIX):
+                self._ta_file += '.tb'
             if not os.path.exists(self._ta_file):
                 self._ta_file = os.path.join(self._abspath, self._ta_file)
                 if not os.path.exists(self._ta_file):

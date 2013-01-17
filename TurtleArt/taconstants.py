@@ -21,10 +21,12 @@
 
 from gettext import gettext as _
 
-#
-# Sprite layers
-#
+# Packaging constants
+SUFFIX = ['.ta', '.tb']
+MAGICNUMBER = 'TB'
+MIMETYPE = ['application/x-turtle-art', 'application/vnd.turtleblocks']
 
+# Sprite layers
 OVERLAY_LAYER = 400
 TURTLE_LAYER = 500
 BLOCK_LAYER = 600
@@ -45,9 +47,7 @@ BOX_COLORS = {'red': ["#FF0000", "#A00000"],
               'white': ["#FFFFFF", "#A0A0A0"],
               'black': ["#000000", "#000000"]}
 
-#
 # Misc. parameters
-#
 PALETTE_HEIGHT = 120
 PALETTE_WIDTH = 175
 SELECTOR_WIDTH = 55
@@ -84,9 +84,7 @@ CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
              'purple': 90, 'titlex': None, 'titley': None, 'leftx': None,
              'topy': None, 'rightx': None, 'bottomy': None}
 
-#
 # Blocks that are expandable
-#
 EXPANDABLE_STYLE = ['boolean-style', 'compare-porch-style', 'compare-style',
                     'number-style-porch', 'number-style', 'basic-style-2arg',
                     'number-style-block', 'box-style-media']
@@ -100,9 +98,7 @@ EXPANDABLE_ARGS = ['list', 'myfunc1arg', 'myfunc2arg', 'myfunc3arg',
                    'userdefined', 'userdefined2args', 'userdefined3args',
                    'loadblock', 'loadblock2arg', 'loadblock3arg']
 
-#
 # Deprecated block styles that need dock adjustments
-#
 OLD_DOCK = ['and', 'or', 'plus', 'minus', 'division', 'product', 'remainder']
 
 CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
@@ -110,9 +106,7 @@ CONTENT_ARGS = ['show', 'showaligned', 'push', 'storein', 'storeinbox1',
 
 PREFIX_DICTIONARY = {}
 
-#
 # These blocks get a special skin
-#
 BLOCKS_WITH_SKIN = []
 
 PYTHON_SKIN = []
@@ -125,9 +119,7 @@ NO_IMPORT = []
 
 EXPAND_SKIN = {}
 
-#
 # Status blocks
-#
 OVERLAY_SHAPES = ['Cartesian', 'Cartesian_labeled', 'polar', 'metric']
 
 STATUS_SHAPES = ['status', 'info', 'nostack', 'dupstack', 'noinput',
@@ -135,15 +127,11 @@ STATUS_SHAPES = ['status', 'info', 'nostack', 'dupstack', 'noinput',
                  'negroot', 'syntaxerror', 'nofile', 'nojournal', 'zerodivide',
                  'notanumber', 'incompatible', 'help', 'print']
 
-#
 # Emulate Sugar toolbar when running from outside of Sugar
-#
 TOOLBAR_SHAPES = ['hideshowoff', 'eraseron', 'run-fastoff',
                   'run-slowoff', 'stopiton']
 
-#
 # Legacy names
-#
 OLD_NAMES = {'product': 'product2', 'storeinbox': 'storein', 'minus': 'minus2',
              'division': 'division2', 'plus': 'plus2', 'and': 'and2',
              'or': 'or2', 'less': 'less2', 'greater': 'greater2',
@@ -157,15 +145,12 @@ OLD_NAMES = {'product': 'product2', 'storeinbox': 'storein', 'minus': 'minus2',
              'sandwichtop2': 'sandwichtop', 'image': 'show',
              'container': 'indentity2', 'insertimage': 'show'}
 
-#
 # Define the relative size and postion of media objects
 #                    (w, h, x, y, dx, dy)
 #
 TITLEXY = (0.9375, 0.875)
 
-#
 # Relative placement of portfolio objects (used by deprecated blocks)
-#
 TEMPLATES = {'t1x1': (0.5, 0.5, 0.0625, 0.125, 1.05, 0),
              't2z1': (0.5, 0.5, 0.0625, 0.125, 1.05, 1.05),
              't1x2': (0.45, 0.45, 0.0625, 0.125, 1.05, 1.05),
@@ -190,9 +175,7 @@ VOICES = {'af': 'afrikaans', 'cy': 'welsh-test', 'el': 'greek',
           'cs': 'czech', 'it': 'italian', 'pl': 'polish',
           'ru': 'russian_test', 'sv': 'swedish', 'tr': 'turkish'}
 
-#
 # Macros (groups of blocks)
-#
 MACROS = {
     'ifthenelse':  # Because it is too big to fit on the palette
               [[0, 'ifelse', 0, 0, [None, None, None, None, None]]],

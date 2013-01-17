@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007, Playful Invention Company
-#Copyright (c) 2008-12, Walter Bender
+#Copyright (c) 2008-13, Walter Bender
 #Copyright (c) 2009-11 Raúl Gutiérrez Segalés
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
@@ -54,7 +54,7 @@ from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
     OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, EXPANDABLE, NO_IMPORT,
     TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
     EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY, CONTENT_ARGS,
-    CONSTANTS, EXPAND_SKIN, PROTO_LAYER, EXPANDABLE_FLOW)
+    CONSTANTS, EXPAND_SKIN, PROTO_LAYER, EXPANDABLE_FLOW, SUFFIX)
 from tapalette import (palette_names, palette_blocks, expandable_blocks,
     block_names, content_blocks, default_values, special_names, block_styles,
     help_strings, hidden_proto_blocks, string_or_number_args,
@@ -3401,8 +3401,8 @@ may not terminate.', False)
                                                      self.load_save_folder)
         if _file_name is None:
             return
-        if not _file_name[-3:] in ['.ta', '.tb']:
-            _file_name = _file_name + '.tb'
+        if not _file_name[-3:] in SUFFIX:
+            _file_name = _file_name + SUFFIX[1]
         self.load_files(_file_name, create_new_project)
         if create_new_project:
             self.save_file_name = os.path.basename(_file_name)
@@ -3698,19 +3698,19 @@ may not terminate.', False)
         else:
             self.process_data(data_from_file(ta_file))
 
-    def save_file(self, _file_name=None):
+    def save_file(self, file_name=None):
         ''' Start a project to a file '''
         if self.save_folder is not None:
             self.load_save_folder = self.save_folder
-        if _file_name is None:
-            _file_name, self.load_save_folder = get_save_name('.t[a-b]',
-                self.load_save_folder, self.save_file_name)
-        if _file_name is None:
+        if file_name is None:
+            file_name, self.load_save_folder = get_save_name(
+                '.t[a-b]', self.load_save_folder, self.save_file_name)
+        if file_name is None:
             return
-        if not _file_name[-3:] in ['.ta', '.tb']:
-            _file_name = _file_name + '.tb'
-        data_to_file(self.assemble_data_to_save(), _file_name)
-        self.save_file_name = os.path.basename(_file_name)
+        if not file_name[-3:] in  SUFFIX:
+            file_name = file_name +  SUFFIX[1]
+        data_to_file(self.assemble_data_to_save(), file_name)
+        self.save_file_name = os.path.basename(file_name)
         if not self.running_sugar:
             self.save_folder = self.load_save_folder
 
@@ -3852,14 +3852,17 @@ may not terminate.', False)
         dy *= h
         return(w, h, x, y, dx, dy)
 
-    def save_for_upload(self, _file_name):
+    def save_for_upload(self, file_name):
         ''' Grab the current canvas and save it for upload '''
-        if _file_name[-3:] in ['.ta', '.tb']:
-            _file_name = _file_name[0: -3]
-        data_to_file(self.assemble_data_to_save(), _file_name + '.ta')
-        save_picture(self.canvas, _file_name + '.png')
-        ta_file = _file_name + '.ta'
-        image_file = _file_name + '.png'
+        if not file_name[-3:] in SUFFIX:
+            ta_name = file_name + SUFFIX[1]
+            image_file = file_name + '.png'
+        else:
+            ta_file = file_name
+            image_file = file_name[0:-3] + '.png'
+        
+        data_to_file(self.assemble_data_to_save(), ta_file)
+        save_picture(self.canvas, image_file)
         return ta_file, image_file
 
     def save_as_image(self, name="", svg=False):

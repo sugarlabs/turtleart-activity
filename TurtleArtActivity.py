@@ -57,7 +57,7 @@ from gettext import gettext as _
 from TurtleArt.tapalette import palette_names, help_strings, help_palettes, \
                                 help_windows
 from TurtleArt.taconstants import ICON_SIZE, BLOCK_SCALE, XO1, XO15, XO175, \
-                                  XO30
+                                  XO30, XO4, MIMETYPE
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
                               get_path, chooser, get_hardware
@@ -180,7 +180,7 @@ class TurtleArtActivity(activity.Activity):
             dsobject.metadata['title'] = self.metadata['title'] + ' ' + \
                 _('snapshot')
             dsobject.metadata['icon-color'] = profile.get_color().to_string()
-            dsobject.metadata['mime_type'] = 'application/x-turtle-art'
+            dsobject.metadata['mime_type'] = MIMETYPE[0]
             dsobject.metadata['activity'] = 'org.laptop.TurtleArtActivity'
             dsobject.set_file_path(tmpfile)
             datastore.write(dsobject)
@@ -558,7 +558,7 @@ class TurtleArtActivity(activity.Activity):
                          self.do_cartesian_cb, view_toolbar)
         self._add_button('view-polar', _('Polar coordinates'),
                          self.do_polar_cb, view_toolbar)
-        if get_hardware() in [XO1, XO15, XO175]:
+        if get_hardware() in [XO1, XO15, XO175, XO4]:
             self._add_button('view-metric', _('Metric coordinates'),
                              self.do_metric_cb, view_toolbar)
         self._add_separator(view_toolbar, visible=False)
@@ -711,7 +711,7 @@ class TurtleArtActivity(activity.Activity):
         add_paragraph(help_box, _('Cartesian coordinates'),
                       icon='view-Cartesian')
         add_paragraph(help_box, _('Polar coordinates'), icon='view-polar')
-        if get_hardware() in [XO1, XO15, XO175]:
+        if get_hardware() in [XO1, XO15, XO175, XO4]:
             add_paragraph(help_box, _('Metric coordinates'),
                           icon='view-metric')
         add_paragraph(help_box, _('Rescale coordinates up'),
@@ -736,7 +736,7 @@ class TurtleArtActivity(activity.Activity):
                         self.do_palette_buttons_cb, i,
                         help_strings[palette_name],
                         palette_group))
-            if self.tw.hw in [XO1, XO15, XO175]:
+            if self.tw.hw in [XO1, XO15, XO175, XO4]:
                 self._add_separator(self._palette_toolbar, expand=True,
                                     visible=False)
             self._make_palette_buttons(self._palette_toolbar)
@@ -963,7 +963,7 @@ class TurtleArtActivity(activity.Activity):
     def write_file(self, file_path):
         ''' Write the project to the Journal. '''
         data_to_file(self.tw.assemble_data_to_save(), file_path)
-        self.metadata['mime_type'] = 'application/x-turtle-art'
+        self.metadata['mime_type'] = MIMETYPE[0]
         self.metadata['turtle blocks'] = ''.join(self.tw.used_block_list)
         self.metadata['public'] = data_to_string(['activity count',
                                                   'turtle blocks'])
