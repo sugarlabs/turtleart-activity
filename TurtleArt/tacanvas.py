@@ -34,7 +34,7 @@ from sprites import Sprite
 from tasprite_factory import SVG
 from tautils import image_to_base64, get_path, data_to_string, round_int, \
     debug_output
-from taconstants import BLACK, WHITE
+from taconstants import CONSTANTS, COLORDICT, BLACK, WHITE
 
 
 def wrap100(n):
@@ -423,6 +423,17 @@ class TurtleGraphics:
 
     def setcolor(self, c, share=True):
         ''' Set the pen color '''
+
+        # Special case for color blocks
+        if c in CONSTANTS:
+            self.setshade(COLORDICT[c][1], share)
+            self.setgray(COLORDICT[c][2], share)
+            if COLORDICT[c][0] is not None:
+                self.setcolor(COLORDICT[c][0], share)
+                c = COLORDICT[c][0]
+            else:
+                c = self.color
+
         try:
             self.color = c
         except TypeError, ValueError:
