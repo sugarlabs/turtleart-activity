@@ -22,7 +22,7 @@
 from gettext import gettext as _
 
 # Packaging constants
-SUFFIX = ['.ta', '.tb']
+SUFFIX = ('.ta', '.tb')
 MAGICNUMBER = 'TB'
 MIMETYPE = ['application/x-turtle-art', 'application/vnd.turtleblocks']
 
@@ -79,10 +79,19 @@ XO4 = 'xo4'
 UNKNOWN = 'unknown'
 
 CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
-             'bottompos': None, 'width': None, 'height': None, 'red': 0,
-             'orange': 10, 'yellow': 20, 'green': 40, 'cyan': 50, 'blue': 70,
-             'purple': 90, 'titlex': None, 'titley': None, 'leftx': None,
+             'bottompos': None, 'width': None, 'height': None,
+             'black': 'black', 'white': 'white', 'red': 'red',
+             'orange': 'orange', 'yellow': 'yellow', 'green': 'green',
+             'cyan': 'cyan', 'blue': 'blue', 'purple': 'purple',
+             'titlex': None, 'titley': None, 'leftx': None,
              'topy': None, 'rightx': None, 'bottomy': None}
+
+COLORDICT = {'black': [None, 0, 0], 'white': [None, 100, 0],
+             'red': [0, 50, 100], 'orange': [10, 50, 100],
+             'yellow': [20, 50, 100], 'green': [40, 50, 100],
+             'cyan': [50, 50, 100], 'blue': [70, 50, 100],
+             'purple': [90, 50, 100]}
+
 
 # Blocks that are expandable
 EXPANDABLE_STYLE = ['boolean-style', 'compare-porch-style', 'compare-style',
