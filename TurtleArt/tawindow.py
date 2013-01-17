@@ -3397,13 +3397,13 @@ may not terminate.', False)
 
     def load_file_from_chooser(self, create_new_project=True):
         ''' Load a project from file chooser '''
-        _file_name, self.load_save_folder = get_load_name('.ta',
+        _file_name, self.load_save_folder = get_load_name('.t[a-b]',
                                                      self.load_save_folder)
         if _file_name is None:
             return
-        if _file_name[-3:] == '.ta':
-            _file_name = _file_name[0: -3]
-        self.load_files(_file_name + '.ta', create_new_project)
+        if not _file_name[-3:] in ['.ta', '.tb']:
+            _file_name = _file_name + '.tb'
+        self.load_files(_file_name, create_new_project)
         if create_new_project:
             self.save_file_name = os.path.basename(_file_name)
         if self.running_sugar:
@@ -3703,13 +3703,13 @@ may not terminate.', False)
         if self.save_folder is not None:
             self.load_save_folder = self.save_folder
         if _file_name is None:
-            _file_name, self.load_save_folder = get_save_name('.ta',
+            _file_name, self.load_save_folder = get_save_name('.t[a-b]',
                 self.load_save_folder, self.save_file_name)
         if _file_name is None:
             return
-        if _file_name[-3:] == '.ta':
-            _file_name = _file_name[0: -3]
-        data_to_file(self.assemble_data_to_save(), _file_name + '.ta')
+        if not _file_name[-3:] in ['.ta', '.tb']:
+            _file_name = _file_name + '.tb'
+        data_to_file(self.assemble_data_to_save(), _file_name)
         self.save_file_name = os.path.basename(_file_name)
         if not self.running_sugar:
             self.save_folder = self.load_save_folder
@@ -3854,7 +3854,7 @@ may not terminate.', False)
 
     def save_for_upload(self, _file_name):
         ''' Grab the current canvas and save it for upload '''
-        if _file_name[-3:] == '.ta':
+        if _file_name[-3:] in ['.ta', '.tb']:
             _file_name = _file_name[0: -3]
         data_to_file(self.assemble_data_to_save(), _file_name + '.ta')
         save_picture(self.canvas, _file_name + '.png')
@@ -3874,7 +3874,7 @@ may not terminate.', False)
             return
         if self.running_sugar:
             if len(name) == 0:
-                filename = 'ta' + suffix
+                filename = 'turtleblocks' + suffix
             else:
                 filename = name + suffix
             datapath = get_path(self.activity, 'instance')
