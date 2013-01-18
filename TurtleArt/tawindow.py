@@ -3401,7 +3401,7 @@ may not terminate.', False)
                                                      self.load_save_folder)
         if _file_name is None:
             return
-        if not _file_name[-3:] in SUFFIX:
+        if not file_name.endswith(SUFFIX):
             _file_name = _file_name + SUFFIX[1]
         self.load_files(_file_name, create_new_project)
         if create_new_project:
@@ -3707,7 +3707,7 @@ may not terminate.', False)
                 '.t[a-b]', self.load_save_folder, self.save_file_name)
         if file_name is None:
             return
-        if not file_name[-3:] in  SUFFIX:
+        if not file_name.endswith(SUFFIX):
             file_name = file_name +  SUFFIX[1]
         data_to_file(self.assemble_data_to_save(), file_name)
         self.save_file_name = os.path.basename(file_name)
@@ -3854,7 +3854,7 @@ may not terminate.', False)
 
     def save_for_upload(self, file_name):
         ''' Grab the current canvas and save it for upload '''
-        if not file_name[-3:] in SUFFIX:
+        if not file_name.endswith(SUFFIX):
             ta_name = file_name + SUFFIX[1]
             image_file = file_name + '.png'
         else:

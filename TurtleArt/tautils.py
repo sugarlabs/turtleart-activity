@@ -44,7 +44,7 @@ except (ImportError, AttributeError):
 from StringIO import StringIO
 
 from taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO30, XO4,
-                         UNKNOWN, MAGICNUMBER)
+                         UNKNOWN, MAGICNUMBER, SUFFIX)
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -191,17 +191,17 @@ def json_dump(data):
         return io.getvalue()
 
 
-def get_load_name(suffix, load_save_folder):
+def get_load_name(filefilter, load_save_folder):
     ''' Open a load file dialog. '''
     dialog = gtk.FileChooserDialog(
         _('Load...'), None,
         gtk.FILE_CHOOSER_ACTION_OPEN, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                                        gtk.STOCK_OPEN, gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
-    return do_dialog(dialog, suffix, load_save_folder)
+    return do_dialog(dialog, filefilter, load_save_folder)
 
 
-def get_save_name(suffix, load_save_folder, save_file_name):
+def get_save_name(filefilter, load_save_folder, save_file_name):
     ''' Open a save file dialog. '''
     dialog = gtk.FileChooserDialog(
         _('Save...'), None,
@@ -209,8 +209,10 @@ def get_save_name(suffix, load_save_folder, save_file_name):
                                        gtk.STOCK_SAVE, gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
     if save_file_name is not None:
-        dialog.set_current_name(save_file_name + suffix)
-    return do_dialog(dialog, suffix, load_save_folder)
+        if not save_file_name.endswith(SUFFIX):
+            save_file_name = save_file_name + SUFFIX[1]
+        dialog.set_current_name(save_file_name)
+    return do_dialog(dialog, filefilter, load_save_folder)
 
 
 def chooser(parent_window, filter, action):
