@@ -435,7 +435,7 @@ class TurtleGraphics:
         ''' Set the pen color '''
 
         # Special case for color blocks
-        if c in CONSTANTS:
+        if c in COLORDICT:
             self.setshade(COLORDICT[c][1], share)
             self.setgray(COLORDICT[c][2], share)
             if COLORDICT[c][0] is not None:
@@ -516,15 +516,15 @@ class TurtleGraphics:
         oldc, olds, oldg = self.color, self.shade, self.gray
 
         # Special case for color blocks
-        if c in CONSTANTS:
+        if c in COLORDICT:
             if COLORDICT[c][0] is None:
                 s = COLORDICT[c][1]
                 c = self.color
             else:
                 c = COLORDICT[c][0]
-        if s in CONSTANTS:
+        if s in COLORDICT:
             s = COLORDICT[s][1]
-        if g in CONSTANTS:
+        if g in COLORDICT:
             g = COLORDICT[g][2]
 
         self.setcolor(c, False)

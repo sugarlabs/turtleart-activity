@@ -80,17 +80,17 @@ UNKNOWN = 'unknown'
 
 CONSTANTS = {'leftpos': None, 'toppos': None, 'rightpos': None,
              'bottompos': None, 'width': None, 'height': None,
-             'black': 'black', 'white': 'white', 'red': 'red',
-             'orange': 'orange', 'yellow': 'yellow', 'green': 'green',
-             'cyan': 'cyan', 'blue': 'blue', 'purple': 'purple',
+             'black': '_black', 'white': '_white', 'red': '_red',
+             'orange': '_orange', 'yellow': '_yellow', 'green': '_green',
+             'cyan': '_cyan', 'blue': '_blue', 'purple': '_purple',
              'titlex': None, 'titley': None, 'leftx': None,
              'topy': None, 'rightx': None, 'bottomy': None}
 
-COLORDICT = {'black': [None, 0, 0], 'white': [None, 100, 0],
-             'red': [0, 50, 100], 'orange': [10, 50, 100],
-             'yellow': [20, 50, 100], 'green': [40, 50, 100],
-             'cyan': [50, 50, 100], 'blue': [70, 50, 100],
-             'purple': [90, 50, 100]}
+COLORDICT = {'_black': [None, 0, 0], '_white': [None, 100, 0],
+             '_red': [0, 50, 100], '_orange': [10, 50, 100],
+             '_yellow': [20, 50, 100], '_green': [40, 50, 100],
+             '_cyan': [50, 50, 100], '_blue': [70, 50, 100],
+             '_purple': [90, 50, 100]}
 
 
 # Blocks that are expandable

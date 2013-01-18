@@ -506,10 +506,10 @@ class Block:
                     else:
                         self._set_labels(i, str(v))
         elif self.type == 'block' and self.name in CONSTANTS:
-            if self.name in COLORDICT:
-                v = COLORDICT[self.name][0]
+            if CONSTANTS[self.name] in COLORDICT:
+                v = COLORDICT[CONSTANTS[self.name]][0]
                 if v is None:
-                    v = COLORDICT[self.name][1]
+                    v = COLORDICT[CONSTANTS[self.name]][1]
             else:
                 v = CONSTANTS[self.name]
             self._set_labels(0, block_names[self.name][0] + ' = ' + str(v))
