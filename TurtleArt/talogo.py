@@ -38,7 +38,11 @@ from tapalette import block_names, value_blocks
 from tautils import get_pixbuf_from_journal, convert, data_from_file, \
     text_media_type, round_int, debug_output, find_group
 
-from util.RtfParser import RtfTextOnly
+try:
+    from util.RtfParser import RtfTextOnly
+    RTFPARSE = True
+except ImportError:
+    RTFPARSE = False
 
 from gettext import gettext as _
 
@@ -761,8 +765,9 @@ class LogoCode:
             return
         text = None
         if text_media_type(self.filepath):
-            if mimetype == 'application/rtf' or \
-               self.filepath.endswith(('rtf')):
+            if RTFPARSE and (
+                mimetype == 'application/rtf' or \
+                    self.filepath.endswith(('rtf'))):
                 text_only = RtfTextOnly()
                 for line in open(self.filepath, 'r'):
                     text_only.feed(line)
