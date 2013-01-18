@@ -34,7 +34,7 @@ from sprites import Sprite
 from tasprite_factory import SVG
 from tautils import image_to_base64, get_path, data_to_string, round_int, \
     debug_output
-from taconstants import CONSTANTS, COLORDICT, BLACK, WHITE
+from taconstants import CONSTANTS, COLORDICT
 
 
 def wrap100(n):
@@ -49,6 +49,7 @@ def wrap100(n):
 def calc_shade(c, s, invert=False):
     ''' Convert a color to the current shade (lightness/darkness). '''
     # Assumes 16 bit input values
+    '''
     if invert:
         if s < 0:
             return int(c / (1 + s * 0.8))
@@ -57,6 +58,15 @@ def calc_shade(c, s, invert=False):
         if s < 0:
             return int(c * (1 + s * 0.8))
         return int(c + (65536 - c) * s * 0.9)
+    '''
+    if invert:
+        if s < 0:
+            return int(c / (1 + s))
+        return int((c - 65536 * s) / (1 - s))
+    else:
+        if s < 0:
+            return int(c * (1 + s))
+        return int(c + (65536 - c) * s)
 
 
 def calc_gray(c, g, invert=False):
@@ -504,6 +514,19 @@ class TurtleGraphics:
     def fillscreen_with_gray(self, c, s, g):
         ''' Fill screen with color/shade/gray and reset to defaults '''
         oldc, olds, oldg = self.color, self.shade, self.gray
+
+        # Special case for color blocks
+        if c in CONSTANTS:
+            if COLORDICT[c][0] is None:
+                s = COLORDICT[c][1]
+                c = self.color
+            else:
+                c = COLORDICT[c][0]
+        if s in CONSTANTS:
+            s = COLORDICT[s][1]
+        if g in CONSTANTS:
+            g = COLORDICT[g][2]
+
         self.setcolor(c, False)
         self.setshade(s, False)
         self.setgray(g, False)
@@ -526,32 +549,17 @@ class TurtleGraphics:
 
     def set_fgcolor(self):
         ''' Set the foreground color '''
-        if self.color == WHITE or self.shade == WHITE:
-            r = 0xFF00
-            g = 0xFF00
-            b = 0xFF00
-            self.color = 0
-            self.shade = 100
-            self.gray = 0
-        elif self.color == BLACK or self.shade == BLACK:
-            r = 0x0000
-            g = 0x0000
-            b = 0x0000
-            self.color = 0
-            self.shade = 0
-            self.gray = 0
-        else:
-            sh = (wrap100(self.shade) - 50) / 50.0
-            rgb = COLOR_TABLE[wrap100(self.color)]
-            r = (rgb >> 8) & 0xff00
-            r = calc_gray(r, self.gray)
-            r = calc_shade(r, sh)
-            g = rgb & 0xff00
-            g = calc_gray(g, self.gray)
-            g = calc_shade(g, sh)
-            b = (rgb << 8) & 0xff00
-            b = calc_gray(b, self.gray)
-            b = calc_shade(b, sh)
+        sh = (wrap100(self.shade) - 50) / 50.0
+        rgb = COLOR_TABLE[wrap100(self.color)]
+        r = (rgb >> 8) & 0xff00
+        r = calc_gray(r, self.gray)
+        r = calc_shade(r, sh)
+        g = rgb & 0xff00
+        g = calc_gray(g, self.gray)
+        g = calc_shade(g, sh)
+        b = (rgb << 8) & 0xff00
+        b = calc_gray(b, self.gray)
+        b = calc_shade(b, sh)
         self.fgrgb = [r >> 8, g >> 8, b >> 8]
 
     def setpen(self, bool, share=True):
