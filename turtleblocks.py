@@ -572,11 +572,10 @@ class TurtleMain():
 
     def _do_stop_cb(self, widget):
         ''' Callback for stop button. '''
-        if not self.tw.hide and not self.tw.running_blocks:
-            self.tw.hideblocks()
-        else:
-            self.tw.showblocks()
+        if self.tw.running_blocks:
             self.tw.toolbar_shapes['stopiton'].hide()
+        if self.tw.hide:
+            self.tw.showblocks()
         self.tw.stop_button()
         self.tw.display_coordinates()
 
