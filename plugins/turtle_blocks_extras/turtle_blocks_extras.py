@@ -30,7 +30,7 @@ from TurtleArt.talogo import primitive_dictionary, logoerror, \
     media_blocks_dictionary
 from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS, \
     MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN, PYTHON_SKIN, \
-    PREFIX_DICTIONARY, VOICES, MACROS
+    PREFIX_DICTIONARY, VOICES, MACROS, COLORDICT
 from TurtleArt.tautils import convert, round_int, debug_output, get_path, \
     data_to_string, find_group, image_to_base64
 from TurtleArt.tajail import myfunc, myfunc_import
@@ -1148,7 +1148,12 @@ bullets'))
         if type(n) == list:
             self.tw.showlabel('print', n)
         elif type(n) == str or type(n) == unicode:
-            if n[0:6] == 'media_' and \
+            if n in COLORDICT:
+                if COLORDICT[n][0] is None:
+                    self.tw.showlabel('print', COLORDICT[n][1])
+                else:
+                    self.tw.showlabel('print', COLORDICT[n][0])
+            elif n[0:6] == 'media_' and \
                n[6:].lower not in media_blocks_dictionary:
                 try:
                     if self.tw.running_sugar:
