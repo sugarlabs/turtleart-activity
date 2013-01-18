@@ -25,7 +25,7 @@ from gettext import gettext as _
 
 from taconstants import EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS, \
     STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS, GRADIENT_COLOR, \
-    EXPANDABLE_FLOW
+    EXPANDABLE_FLOW, COLORDICT
 from tapalette import palette_blocks, block_colors, expandable_blocks, \
     content_blocks, block_names, block_primitives, block_styles, \
     special_block_colors
@@ -506,8 +506,13 @@ class Block:
                     else:
                         self._set_labels(i, str(v))
         elif self.type == 'block' and self.name in CONSTANTS:
-                self._set_labels(0, block_names[self.name][0] + ' = ' + \
-                                     str(CONSTANTS[self.name]))
+            if self.name in COLORDICT:
+                v = COLORDICT[self.name][0]
+                if v is None:
+                    v = COLORDICT[self.name][1]
+            else:
+                v = CONSTANTS[self.name]
+            self._set_labels(0, block_names[self.name][0] + ' = ' + str(v))
 
         elif self.name in block_names:
             for i, n in enumerate(block_names[self.name]):
