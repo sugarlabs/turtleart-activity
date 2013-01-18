@@ -303,7 +303,15 @@ class TurtleArtActivity(activity.Activity):
 
     def do_samples_cb(self, button):
         ''' Sample-projects open dialog '''
+        if hasattr(self, 'get_window'):
+            _logger.debug('setting watch cursor')
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+            self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
         self.tw.load_file_from_chooser(True)
+        # Now that the file is loaded, restore the cursor
+        _logger.debug('restoring cursor')
+        self.restore_cursor()
 
     def adjust_sw(self, dx, dy):
         ''' Adjust the scrolled window position. '''
@@ -1087,6 +1095,12 @@ in order to use the plugin.'))
     def read_file(self, file_path, run_it=False, plugin=False):
         ''' Open a project or plugin and then run it. '''
         if hasattr(self, 'tw') and self.tw is not None:
+            # While the file is loading, use the watch cursor
+            if hasattr(self, 'get_window'):
+                _logger.debug('setting watch cursor')
+                if hasattr(self.get_window(), 'get_cursor'):
+                    self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
             _logger.debug('Read file: %s' % (file_path))
             # Could be a plugin or deprecated gtar or tar file...
             if plugin or file_path.endswith(('.gtar', '.tar', '.tar.gz')):
@@ -1137,6 +1151,10 @@ in order to use the plugin.'))
             else:
                 _logger.debug('Trying to open a .ta file:' + file_path)
                 self.tw.load_files(file_path, run_it)
+
+            # Now that the file is loaded, restore the cursor
+            _logger.debug('restoring cursor')
+            self.restore_cursor()
 
             # Finally, run the project.
             if run_it:
