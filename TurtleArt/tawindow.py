@@ -3401,7 +3401,7 @@ may not terminate.', False)
                                                      self.load_save_folder)
         if _file_name is None:
             return
-        if not file_name.endswith(SUFFIX):
+        if not _file_name.endswith(SUFFIX):
             _file_name = _file_name + SUFFIX[1]
         self.load_files(_file_name, create_new_project)
         if create_new_project:
