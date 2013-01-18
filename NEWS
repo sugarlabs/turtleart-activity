@@ -1,3 +1,20 @@
+170
+
+ENHANCEMENTS:
+* New translations
+* More consistent behavior for color blocks
+* Increased contrast for shade block: full range between black and white
+* Auto-increment my_box name when creating new prototype box block
+* New sample Python project: load data from filesystem
+* Use .tb suffix for TurtleBlocks
+* Add MAGIC NUMBER support for .tb files
+* Convert int args to float when using Python block (#4382)
+* Improved behavior of stop button in GNOME (Alan Aguiar)
+
+BUG FIXES:
+* Cleaned up some bugs that broke non-interactive mode
+* Add warning if use of forever block in non-interactive mode is detected
+
 169
 
 ENHANCEMENTS:
