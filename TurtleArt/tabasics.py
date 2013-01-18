@@ -67,7 +67,14 @@ from gettext import gettext as _
 from tapalette import make_palette, define_logo_function
 from talogo import primitive_dictionary, logoerror
 from tautils import convert, chr_to_ord, round_int, strtype
-from taconstants import BLACK, WHITE, CONSTANTS, XO30
+from taconstants import COLORDICT, CONSTANTS, XO30
+
+
+def _color_to_num(c):
+    if COLORDICT[c][0] is None:
+        return(COLORDICT[c][1])
+    else:
+        return(COLORDICT[c][0])
 
 
 def _num_type(x):
@@ -447,8 +454,8 @@ pensize\rend\r')
         self._make_constant(palette, 'blue', _('blue'), CONSTANTS['blue'])
         self._make_constant(palette, 'purple', _('purple'),
                             CONSTANTS['purple'])
-        self._make_constant(palette, 'white', _('white'), WHITE)
-        self._make_constant(palette, 'black', _('black'), BLACK)
+        self._make_constant(palette, 'white', _('white'), CONSTANTS['white'])
+        self._make_constant(palette, 'black', _('black'), CONSTANTS['black'])
 
         # deprecated blocks
         palette.add_block('settextcolor',
@@ -1241,6 +1248,10 @@ variable'))
 
     def _prim_plus(self, x, y):
         """ Add numbers, concat strings """
+        if x in COLORDICT:
+            x = _color_to_num(x)
+        if y in COLORDICT:
+            y = _color_to_num(y)
         if _num_type(x) and _num_type(y):
             return(x + y)
         elif type(x) == list and type(y) == list:
@@ -1341,6 +1352,7 @@ variable'))
 
     def _string_to_num(self, x):
         """ Try to comvert a string to a number """
+        print x
         if type(x) is float:
             return(x)
         if type(x) is int:
@@ -1349,6 +1361,8 @@ variable'))
             return(int(x))
         if type(x) is list:
             raise logoerror("#syntaxerror")
+        if x in COLORDICT:
+            return _color_to_num(x)
         xx = convert(x.replace(self.tw.decimal_point, '.'), float)
         if type(xx) is float:
             return xx
