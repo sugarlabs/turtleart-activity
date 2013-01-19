@@ -1352,7 +1352,6 @@ variable'))
 
     def _string_to_num(self, x):
         """ Try to comvert a string to a number """
-        print x
         if type(x) is float:
             return(x)
         if type(x) is int:
