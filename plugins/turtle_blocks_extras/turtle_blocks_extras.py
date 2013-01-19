@@ -1150,9 +1150,14 @@ bullets'))
         elif type(n) == str or type(n) == unicode:
             if n in COLORDICT:
                 if COLORDICT[n][0] is None:
-                    self.tw.showlabel('print', COLORDICT[n][1])
+                    self.tw.showlabel('print', '%s %d, %s %d' % (
+                            _('shade'), COLORDICT[n][1],
+                            _('gray'), COLORDICT[n][2]))
                 else:
-                    self.tw.showlabel('print', COLORDICT[n][0])
+                    self.tw.showlabel('print', '%s %d, %s %d, %s %d' % (
+                            _('color'), COLORDICT[n][0],
+                            _('shade'), COLORDICT[n][1],
+                            _('gray'), COLORDICT[n][2]))
             elif n[0:6] == 'media_' and \
                n[6:].lower not in media_blocks_dictionary:
                 try:
