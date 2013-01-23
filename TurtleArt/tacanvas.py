@@ -49,18 +49,10 @@ def wrap100(n):
 def calc_shade(c, s, invert=False):
     ''' Convert a color to the current shade (lightness/darkness). '''
     # Assumes 16 bit input values
-    '''
     if invert:
-        if s < 0:
-            return int(c / (1 + s * 0.8))
-        return int((c - 65536 * s * 0.9) / (1 - (s * 0.9)))
-    else:
-        if s < 0:
-            return int(c * (1 + s * 0.8))
-        return int(c + (65536 - c) * s * 0.9)
-    '''
-    if invert:
-        if s < 0:
+        if s == -1:
+            return int(c)
+        elif s < 0:
             return int(c / (1 + s))
         return int((c - 65536 * s) / (1 - s))
     else:
@@ -73,10 +65,10 @@ def calc_gray(c, g, invert=False):
     ''' Gray is a psuedo saturation calculation. '''
     # Assumes 16 bit input values
     if g == 100:
-        return c
+        return int(c)
     if invert:
         if g == 0:
-            return c
+            return int(c)
         else:
             return int(((c * 100) - (32768 * (100 - g))) / g)
     else:
