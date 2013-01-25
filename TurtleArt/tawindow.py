@@ -1466,6 +1466,8 @@ class TurtleArtWindow():
                     blk.spr.labels[0] = name
                     blk.values[0] = name
                 blk.spr.set_layer(BLOCK_LAYER)
+                if blk.status == 'collapsed':
+                    blk.spr.hide()
         self._update_proto_name(name, 'stack_%s' % (self._saved_action_name),
                                 'stack_%s' % (name), 'basic-style-1arg')
 
@@ -1481,6 +1483,8 @@ class TurtleArtWindow():
                     blk.spr.labels[0] = name
                     blk.values[0] = name
                 blk.spr.set_layer(BLOCK_LAYER)
+                if blk.status == 'collapsed':
+                    blk.spr.hide()
         self._update_proto_name(name, 'box_%s' % (self._saved_box_name),
                                 'box_%s' % (name), 'number-style-1strarg')
 
@@ -1496,6 +1500,8 @@ class TurtleArtWindow():
                     blk.spr.labels[0] = name
                     blk.values[0] = name
                 blk.spr.set_layer(BLOCK_LAYER)
+                if blk.status == 'collapsed':
+                    blk.spr.hide()
         self._update_proto_name(name, 'storein_%s' % (self._saved_box_name),
                                 'storein_%s' % (name), 'basic-style-2arg',
                                 label=1)
