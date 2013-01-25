@@ -226,15 +226,17 @@ def chooser(parent_window, filter, action):
         chooser = ObjectChooser(None, parent_window,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
     if chooser is not None:
+        dsobject = None
         try:
             result = chooser.run()
             if result == gtk.RESPONSE_ACCEPT:
                 dsobject = chooser.get_selected_object()
-                action(dsobject)
-                dsobject.destroy()
         finally:
             chooser.destroy()
             del chooser
+        if dsobject is not None:
+            action(dsobject)
+            dsobject.destroy()
 
 
 def data_from_file(ta_file):
@@ -265,6 +267,7 @@ def data_from_string(text):
     else:
         print 'type error (%s) in data_from_string' % (type(text))
         return None
+
 
 def data_to_file(data, ta_file):
     ''' Write data to a file. '''
