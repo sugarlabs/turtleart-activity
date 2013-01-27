@@ -430,7 +430,7 @@ class TurtleMain():
     def _show_save_dialog(self, new_project=True):
         ''' Dialog for save project '''
         dlg = gtk.MessageDialog(parent=None, type=gtk.MESSAGE_INFO,
-                                buttons=gtk.BUTTONS_OK_CANCEL,
+                                buttons=gtk.BUTTONS_YES_NO,
                                 message_format=_(
              'You have unsaved work. Would you like to save before quitting?'))
         dlg.set_title(_('Save project?'))
@@ -438,7 +438,7 @@ class TurtleMain():
 
         resp = dlg.run()
         dlg.destroy()
-        if resp == gtk.RESPONSE_OK:
+        if resp == gtk.RESPONSE_YES:
             if new_project:
                 self._save_as()
             else:
