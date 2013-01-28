@@ -400,6 +400,10 @@ class TurtleMain():
         MenuBuilder.make_menu_item(menu, _('Stop'), self._do_stop_cb)
         turtle_menu = MenuBuilder.make_sub_menu(menu, _('Turtle'))
 
+        menu = gtk.Menu()
+        MenuBuilder.make_menu_item(menu, _('About...'), self._do_about_cb)
+        help_menu = MenuBuilder.make_sub_menu(menu, _('Help'))
+
         menu_bar = gtk.MenuBar()
         menu_bar.append(activity_menu)
         menu_bar.append(edit_menu)
@@ -410,6 +414,9 @@ class TurtleMain():
         # Add menus for plugins
         for p in self._gnome_plugins:
             menu_bar.append(p.get_menu())
+
+        menu_bar.append(help_menu)
+
         return menu_bar
 
     def _quit_ta(self, widget=None, e=None):
@@ -602,6 +609,17 @@ class TurtleMain():
                 self.tw.process_data(data_from_string(text),
                                      self.tw.paste_offset)
                 self.tw.paste_offset += 20
+
+    def _do_about_cb(self, widget):
+        about = gtk.AboutDialog()
+        about.set_program_name(_("TurtleBlocks"))
+        about.set_version(self.version)
+        about.set_copyright("(c) Walter Bender")
+        about.set_comments(_('A Logo-inspired turtle that draws colorful pictures with snap-together visual programming blocks'))
+        about.set_website("http://wiki.sugarlabs.org/go/Activities/Turtle_Art")
+        about.set_logo(gtk.gdk.pixbuf_new_from_file("activity/turtleart.svg"))
+        about.run()
+        about.destroy()
 
     def _window_event(self, event, data):
         ''' Callback for resize event. '''
