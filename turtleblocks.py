@@ -612,12 +612,11 @@ class TurtleMain():
 
     def _do_about_cb(self, widget):
         about = gtk.AboutDialog()
-        about.set_program_name(_("TurtleBlocks"))
+        about.set_program_name(_('TurtleBlocks'))
         about.set_version(self.version)
-        about.set_copyright("(c) Walter Bender")
         about.set_comments(_('A Logo-inspired turtle that draws colorful pictures with snap-together visual programming blocks'))
-        about.set_website("http://wiki.sugarlabs.org/go/Activities/Turtle_Art")
-        about.set_logo(gtk.gdk.pixbuf_new_from_file("activity/turtleart.svg"))
+        about.set_website('http://wiki.sugarlabs.org/go/Activities/Turtle_Art')
+        about.set_logo(gtk.gdk.pixbuf_new_from_file('activity/turtleart.svg'))
         about.run()
         about.destroy()
 
