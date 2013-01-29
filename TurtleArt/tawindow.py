@@ -3864,7 +3864,7 @@ may not terminate.', False)
     def save_for_upload(self, file_name):
         ''' Grab the current canvas and save it for upload '''
         if not file_name.endswith(SUFFIX):
-            ta_name = file_name + SUFFIX[1]
+            ta_file = file_name + SUFFIX[1]
             image_file = file_name + '.png'
         else:
             ta_file = file_name
