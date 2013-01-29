@@ -74,6 +74,10 @@ class TurtleMain():
         file_activity_info.read(activity_info_path)
         bundle_id = file_activity_info.get('Activity', 'bundle_id')
         self.version = file_activity_info.get('Activity', 'activity_version')
+        self.name = file_activity_info.get('Activity', 'name')
+        self.summary = file_activity_info.get('Activity', 'summary')
+        self.website = file_activity_info.get('Activity', 'website')
+        self.icon_name = file_activity_info.get('Activity', 'icon')
         path = os.path.abspath('./locale/')
         gettext.bindtextdomain(bundle_id, path)
         gettext.textdomain(bundle_id)
@@ -303,7 +307,7 @@ class TurtleMain():
         win.set_default_size(self.width, self.height)
         win.move(self.x, self.y)
         win.maximize()
-        win.set_title('%s %s' % (_('Turtle Art'), str(self.version)))
+        win.set_title('%s %s' % (self.name, str(self.version)))
         if os.path.exists(os.path.join(self._execdirname, self._ICON_SUBPATH)):
             win.set_icon_from_file(os.path.join(self._execdirname,
                                                 self._ICON_SUBPATH))
@@ -612,11 +616,11 @@ class TurtleMain():
 
     def _do_about_cb(self, widget):
         about = gtk.AboutDialog()
-        about.set_program_name(_('TurtleBlocks'))
+        about.set_program_name(self.name)
         about.set_version(self.version)
-        about.set_comments(_('A Logo-inspired turtle that draws colorful pictures with snap-together visual programming blocks'))
-        about.set_website('http://wiki.sugarlabs.org/go/Activities/Turtle_Art')
-        about.set_logo(gtk.gdk.pixbuf_new_from_file('activity/turtleart.svg'))
+        about.set_comments(self.summary)
+        about.set_website(self.website)
+        about.set_logo(gtk.gdk.pixbuf_new_from_file('activity/' + self.icon_name + '.svg'))
         about.run()
         about.destroy()
 
