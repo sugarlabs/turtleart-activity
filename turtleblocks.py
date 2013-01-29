@@ -616,9 +616,9 @@ class TurtleMain():
 
     def _do_about_cb(self, widget):
         about = gtk.AboutDialog()
-        about.set_program_name(self.name)
+        about.set_program_name(_(self.name))
         about.set_version(self.version)
-        about.set_comments(self.summary)
+        about.set_comments(_(self.summary))
         about.set_website(self.website)
         about.set_logo(gtk.gdk.pixbuf_new_from_file('activity/' + self.icon_name + '.svg'))
         about.run()
