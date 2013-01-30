@@ -417,7 +417,9 @@ class TurtleMain():
 
         # Add menus for plugins
         for p in self._gnome_plugins:
-            menu_bar.append(p.get_menu())
+            menu_item = p.get_menu()
+            if menu_item is not None:
+                menu_bar.append(menu_item)
 
         menu_bar.append(help_menu)
 

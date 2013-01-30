@@ -17,12 +17,21 @@
 
 import gtk
 
+MENUBAR = {}
 
 class MenuBuilder():
+    @classmethod
+    def get_sub_menu_by_name(cls, name):
+        if name in MENUBAR:
+            return MENUBAR[name]
+        else:
+            return None
+
     @classmethod
     def make_sub_menu(cls, menu, name):
         """ add a new submenu to the toolbar """
         sub_menu = gtk.MenuItem(name)
+        MENUBAR[name] = [menu, sub_menu]  # Maintain a dictionary
         sub_menu.show()
         sub_menu.set_submenu(menu)
         return sub_menu
