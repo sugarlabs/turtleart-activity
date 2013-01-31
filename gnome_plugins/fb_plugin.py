@@ -36,7 +36,11 @@ import sys
 import urlparse
 
 import gtk
-import webkit
+try:
+    import webkit
+    WEBKIT = True
+except ImportError:
+    WEBKIT = False
 from plugin import Plugin
 from util.menubuilder import MenuBuilder, MENUBAR
 from gettext import gettext as _
@@ -95,6 +99,12 @@ class Fb_plugin(Plugin):
         return True
 
     def _post_menu_cb(self, widget):
+        if not WEBKIT:
+            self.tw.showlabel('status',
+                              'install webkit: sudo yum install pywebkitgtk')
+            print('webkit not installed: sudo yum install pywebkitgtk')
+            return
+
         if self._access_token == "":
             self._grab_fb_app_token()
             return
@@ -104,18 +114,24 @@ class Fb_plugin(Plugin):
     def _grab_fb_app_token(self):
         url = self._get_auth_url()
         w = gtk.Window()
+        sw = gtk.ScrolledWindow()
+        sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        sw.show()
         w.move(200, 200)
         w.set_size_request(800, 400)
         wkv = webkit.WebView()
         wkv.load_uri(url)
         wkv.grab_focus()
-        wkv.connect('navigation-policy-decision-requested', self._nav_policy_cb)
-        w.add(wkv)
+        wkv.connect('navigation-policy-decision-requested',
+                    self._nav_policy_cb)
+        sw.add_with_viewport(wkv)
+        w.add(sw)
         w.show_all()
         self._auth_win = w
 
     def _get_auth_url(self):
-        url = "http://www.facebook.com/dialog/oauth?client_id=%s" % (self.APP_ID)
+        url = "http://www.facebook.com/dialog/oauth?client_id=%s" % (
+            self.APP_ID)
         url += "&redirect_uri=%s" % (self.REDIRECT_URI)
         url += "&response_type=token&scope=publish_stream"
 
