@@ -174,7 +174,6 @@ class TurtleMain():
         if self._ta_file is None:
             self.tw.load_start()
         else:
-            print self._ta_file
             self.tw.load_start(self._ta_file)
             self.tw.lc.trace = 0
             if self._run_on_launch:
@@ -206,7 +205,7 @@ class TurtleMain():
         self.tw = TurtleArtWindow(self.canvas, self._execdirname,
                                   turtle_canvas=self.turtle_canvas,
                                   parent=self, running_sugar=False)
-        self.tw.save_folder = os.path.expanduser('~')
+        self.tw.save_folder = self._abspath  # os.path.expanduser('~')
 
     def _init_vars(self):
         ''' If we are invoked to start a project from Gnome, we should make
@@ -468,7 +467,7 @@ class TurtleMain():
 
     def _do_save_cb(self, widget):
         ''' Callback for save project. '''
-        self.tw.save_file()
+        self.tw.save_file(self._ta_file)
 
     def _do_save_as_cb(self, widget):
         ''' Callback for save-as project. '''
@@ -476,12 +475,12 @@ class TurtleMain():
 
     def _save_as(self):
         ''' Save as is called from callback and quit '''
-        self.tw.save_file_name = None
+        self.tw.save_file_name = self._ta_file
         self.tw.save_file()
 
     def _save_changes(self):
         ''' Save changes to current project '''
-        self.tw.save_file_name = None
+        self.tw.save_file_name = self._ta_file
         self.tw.save_file(self.tw._loaded_project)
 
     def _do_save_picture_cb(self, widget):
