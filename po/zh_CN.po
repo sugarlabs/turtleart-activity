@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-19 00:31-0500\n"
-"PO-Revision-Date: 2012-11-21 18:29+0200\n"
+"POT-Creation-Date: 2013-01-31 00:31-0500\n"
+"PO-Revision-Date: 2013-02-01 11:34+0200\n"
 "Last-Translator: lite <litekok@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -22,9 +22,8 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #. TRANS: "name" option from activity.info file
-#: TurtleArt/tawindow.py:3743 pysamples/grecord.py:205 turtleblocks.py:306
-msgid "Turtle Art"
-msgstr "海龟绘画"
+msgid "TurtleBlocks"
+msgstr "海龟积木"
 
 #. TRANS: "summary" option from activity.info file
 #. TRANS: "description" option from activity.info file
@@ -33,527 +32,532 @@ msgid ""
 "visual programming blocks"
 msgstr "一个受Logo启发连接可视化编程块并画有彩色图片的海龟"
 
-#: TurtleArt/tabasics.py:116
+#: TurtleArt/tabasics.py:123
 msgid "Palette of turtle commands"
 msgstr "海龟指令模板"
 
-#: TurtleArt/tabasics.py:121
+#: TurtleArt/tabasics.py:128
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
 msgid "forward"
 msgstr "前进"
 
-#: TurtleArt/tabasics.py:125
+#: TurtleArt/tabasics.py:132
 msgid "moves turtle forward"
 msgstr "向前移动海龟"
 
-#: TurtleArt/tabasics.py:132
+#: TurtleArt/tabasics.py:139
 msgid "back"
 msgstr "后退"
 
-#: TurtleArt/tabasics.py:136
+#: TurtleArt/tabasics.py:143
 msgid "moves turtle backward"
 msgstr "向后移动海龟"
 
-#: TurtleArt/tabasics.py:144
+#: TurtleArt/tabasics.py:151
 msgid "clean"
 msgstr "清屏"
 
-#: TurtleArt/tabasics.py:147
+#: TurtleArt/tabasics.py:154
 msgid "clears the screen and reset the turtle"
 msgstr "清空屏幕并重置海龟"
 
-#: TurtleArt/tabasics.py:155
+#: TurtleArt/tabasics.py:162
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
 msgid "left"
 msgstr "左边"
 
-#: TurtleArt/tabasics.py:159
+#: TurtleArt/tabasics.py:166
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "逆时针转动海龟（角度）"
 
-#: TurtleArt/tabasics.py:166
+#: TurtleArt/tabasics.py:173
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:878
 msgid "right"
 msgstr "右边"
 
-#: TurtleArt/tabasics.py:170
+#: TurtleArt/tabasics.py:177
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "顺时针转动海龟（角度）"
 
-#: TurtleArt/tabasics.py:178
+#: TurtleArt/tabasics.py:185
 msgid "arc"
 msgstr "走弧形"
 
-#: TurtleArt/tabasics.py:178
+#: TurtleArt/tabasics.py:185
 msgid "angle"
 msgstr "角度"
 
-#: TurtleArt/tabasics.py:178
+#: TurtleArt/tabasics.py:185
 msgid "radius"
 msgstr "半径"
 
-#: TurtleArt/tabasics.py:182
+#: TurtleArt/tabasics.py:189
 msgid "moves turtle along an arc"
 msgstr "延弧形移动海龟"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
+#: TurtleArt/tabasics.py:198 TurtleArt/tabasics.py:264
 msgid "set xy"
 msgstr "设置 坐标"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
+#: TurtleArt/tabasics.py:198 TurtleArt/tabasics.py:264
 msgid "x"
 msgstr "横"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
+#: TurtleArt/tabasics.py:198 TurtleArt/tabasics.py:264
 msgid "y"
 msgstr "纵"
 
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+#: TurtleArt/tabasics.py:202 TurtleArt/tabasics.py:268
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr "移动海龟到座标（x，y）；（0，0）是屏幕中心。"
 
-#: TurtleArt/tabasics.py:205
+#: TurtleArt/tabasics.py:212
 msgid "set heading"
 msgstr "设置朝向"
 
-#: TurtleArt/tabasics.py:209
+#: TurtleArt/tabasics.py:216
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "设置海龟朝向（0表示朝向屏幕上方）"
 
-#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3737
-#: TurtleArt/tawindow.py:3743 TurtleArtActivity.py:565
+#: TurtleArt/tabasics.py:224 TurtleArt/tawindow.py:3806
+#: TurtleArt/tawindow.py:3812 TurtleArtActivity.py:573
 msgid "xcor"
 msgstr "横坐标"
 
-#: TurtleArt/tabasics.py:218
+#: TurtleArt/tabasics.py:225
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr "包含海龟当前位置的X座标值（可以用来替换数字块）"
 
-#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3737
-#: TurtleArt/tawindow.py:3743 TurtleArtActivity.py:566
+#: TurtleArt/tabasics.py:235 TurtleArt/tawindow.py:3806
+#: TurtleArt/tawindow.py:3812 TurtleArtActivity.py:574
 msgid "ycor"
 msgstr "纵坐标"
 
-#: TurtleArt/tabasics.py:229
+#: TurtleArt/tabasics.py:236
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr "包含海龟当前位置的Y座标值（可以用来替换数字块）"
 
-#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3738
-#: TurtleArt/tawindow.py:3744 TurtleArtActivity.py:566
+#: TurtleArt/tabasics.py:246 TurtleArt/tawindow.py:3807
+#: TurtleArt/tawindow.py:3813 TurtleArtActivity.py:574
 msgid "heading"
 msgstr "朝向"
 
-#: TurtleArt/tabasics.py:240
+#: TurtleArt/tabasics.py:247
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
 msgstr "包含海龟当前的朝向的角度值（可以用来替换数字块）"
 
-#: TurtleArt/tabasics.py:274
+#: TurtleArt/tabasics.py:281
 msgid "Palette of pen commands"
 msgstr "画笔指令模板"
 
-#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
+#: TurtleArt/tabasics.py:286 TurtleArt/tabasics.py:297
 msgid "fill screen"
 msgstr "涂满全屏"
 
-#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
-#: TurtleArt/tabasics.py:340
+#: TurtleArt/tabasics.py:286 TurtleArt/tabasics.py:297
+#: TurtleArt/tabasics.py:347
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1158
 msgid "color"
 msgstr "颜色"
 
-#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:291
-#: TurtleArt/tabasics.py:350
+#: TurtleArt/tabasics.py:286 TurtleArt/tabasics.py:298
+#: TurtleArt/tabasics.py:357
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1154
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1159
 msgid "shade"
 msgstr "深度"
 
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
+#: TurtleArt/tabasics.py:290 TurtleArt/tabasics.py:302
 msgid "fills the background with (color, shade)"
 msgstr "以（颜色，阴影）填充背景"
 
-#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:359
+#: TurtleArt/tabasics.py:298 TurtleArt/tabasics.py:366
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1160
 msgid "gray"
 msgstr "灰度"
 
-#: TurtleArt/tabasics.py:305
+#: TurtleArt/tabasics.py:312
 msgid "set color"
 msgstr "设置颜色"
 
-#: TurtleArt/tabasics.py:309
+#: TurtleArt/tabasics.py:316
 msgid "sets color of the line drawn by the turtle"
 msgstr "设置海龟绘制的线条的颜色"
 
-#: TurtleArt/tabasics.py:317
+#: TurtleArt/tabasics.py:324
 msgid "set shade"
 msgstr "设置深度"
 
-#: TurtleArt/tabasics.py:321
+#: TurtleArt/tabasics.py:328
 msgid "sets shade of the line drawn by the turtle"
 msgstr "设置海龟绘制的线条的深度"
 
-#: TurtleArt/tabasics.py:329
+#: TurtleArt/tabasics.py:336
 msgid "set gray"
 msgstr "设置灰度"
 
-#: TurtleArt/tabasics.py:332
+#: TurtleArt/tabasics.py:339
 msgid "sets gray level of the line drawn by the turtle"
 msgstr "设置海龟绘制的线条的灰度"
 
-#: TurtleArt/tabasics.py:341
+#: TurtleArt/tabasics.py:348
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr "包含当前画笔的颜色（可以用来替换数字块）"
 
-#: TurtleArt/tabasics.py:351
+#: TurtleArt/tabasics.py:358
 msgid "holds current pen shade"
 msgstr "设置当前画笔的深度"
 
-#: TurtleArt/tabasics.py:360
+#: TurtleArt/tabasics.py:367
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr "包含当前的灰度值（可以用来替换数字块）"
 
-#: TurtleArt/tabasics.py:368
+#: TurtleArt/tabasics.py:375
 msgid "pen up"
 msgstr "抬笔"
 
-#: TurtleArt/tabasics.py:371
+#: TurtleArt/tabasics.py:378
 msgid "Turtle will not draw when moved."
 msgstr "海龟将不会在移动时绘图。"
 
-#: TurtleArt/tabasics.py:377
+#: TurtleArt/tabasics.py:384
 msgid "pen down"
 msgstr "落笔"
 
-#: TurtleArt/tabasics.py:380
+#: TurtleArt/tabasics.py:387
 msgid "Turtle will draw when moved."
 msgstr "海龟将在移动时绘图。"
 
-#: TurtleArt/tabasics.py:386
+#: TurtleArt/tabasics.py:393
 msgid "set pen size"
 msgstr "设置笔的粗细"
 
-#: TurtleArt/tabasics.py:390
+#: TurtleArt/tabasics.py:397
 msgid "sets size of the line drawn by the turtle"
 msgstr "设置海龟绘制的线条的宽度"
 
-#: TurtleArt/tabasics.py:400
+#: TurtleArt/tabasics.py:407
 msgid "start fill"
 msgstr "开始填充"
 
-#: TurtleArt/tabasics.py:402
+#: TurtleArt/tabasics.py:409
 msgid "starts filled polygon (used with end fill block)"
 msgstr "开始填充多边形的绘制（和完成填充一起使用）"
 
-#: TurtleArt/tabasics.py:409
+#: TurtleArt/tabasics.py:416
 msgid "end fill"
 msgstr "完成填充"
 
-#: TurtleArt/tabasics.py:411
+#: TurtleArt/tabasics.py:418
 msgid "completes filled polygon (used with start fill block)"
 msgstr "完成填充多边形的绘制（和开始填充一起使用）"
 
-#: TurtleArt/tabasics.py:418
+#: TurtleArt/tabasics.py:425
 msgid "pen size"
 msgstr "笔的粗细"
 
-#: TurtleArt/tabasics.py:419
+#: TurtleArt/tabasics.py:426
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr "包含当前画笔的大小（可以用来替换数字块）"
 
-#: TurtleArt/tabasics.py:434 TurtleArt/tabasics.py:438
+#: TurtleArt/tabasics.py:441 TurtleArt/tabasics.py:445
 msgid "Palette of pen colors"
 msgstr "画笔颜色模板"
 
-#: TurtleArt/tabasics.py:440
+#: TurtleArt/tabasics.py:447
 msgid "red"
 msgstr "红色"
 
-#: TurtleArt/tabasics.py:441
+#: TurtleArt/tabasics.py:448
 msgid "orange"
 msgstr "橙黄色"
 
-#: TurtleArt/tabasics.py:443
+#: TurtleArt/tabasics.py:450
 msgid "yellow"
 msgstr "黄色"
 
-#: TurtleArt/tabasics.py:445
+#: TurtleArt/tabasics.py:452
 msgid "green"
 msgstr "绿色"
 
-#: TurtleArt/tabasics.py:446
+#: TurtleArt/tabasics.py:453
 msgid "cyan"
 msgstr "青色"
 
-#: TurtleArt/tabasics.py:447
+#: TurtleArt/tabasics.py:454
 msgid "blue"
 msgstr "蓝色"
 
-#: TurtleArt/tabasics.py:448
+#: TurtleArt/tabasics.py:455
 msgid "purple"
 msgstr "紫色"
 
-#: TurtleArt/tabasics.py:450
+#: TurtleArt/tabasics.py:457
 msgid "white"
 msgstr "白色"
 
-#: TurtleArt/tabasics.py:451
+#: TurtleArt/tabasics.py:458
 msgid "black"
 msgstr "黑色"
 
-#: TurtleArt/tabasics.py:457
+#: TurtleArt/tabasics.py:464
 msgid "set text color"
 msgstr "设置文字颜色"
 
-#: TurtleArt/tabasics.py:460
+#: TurtleArt/tabasics.py:467
 msgid "sets color of text drawn by the turtle"
 msgstr "设置海龟绘制文字的颜色"
 
-#: TurtleArt/tabasics.py:468
+#: TurtleArt/tabasics.py:475
 msgid "set text size"
 msgstr "设置文字大小"
 
-#: TurtleArt/tabasics.py:471
+#: TurtleArt/tabasics.py:478
 msgid "sets size of text drawn by the turtle"
 msgstr "设置海龟绘制的文字的大小"
 
-#: TurtleArt/tabasics.py:554
+#: TurtleArt/tabasics.py:561
 msgid "Palette of numeric operators"
 msgstr "数值运算模板"
 
-#: TurtleArt/tabasics.py:560
+#: TurtleArt/tabasics.py:567
 msgid "plus"
 msgstr "加"
 
-#: TurtleArt/tabasics.py:564
+#: TurtleArt/tabasics.py:571
 msgid "adds two alphanumeric inputs"
 msgstr "将两个字符数值型输入相加"
 
-#: TurtleArt/tabasics.py:572
+#: TurtleArt/tabasics.py:579
 msgid "minus"
 msgstr "减"
 
-#: TurtleArt/tabasics.py:575
+#: TurtleArt/tabasics.py:582
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr "将顶部输入减去底部输入"
 
-#: TurtleArt/tabasics.py:586
+#: TurtleArt/tabasics.py:593
 msgid "multiply"
 msgstr "乘"
 
-#: TurtleArt/tabasics.py:589
+#: TurtleArt/tabasics.py:596
 msgid "multiplies two numeric inputs"
 msgstr "将两个数值型输入相乘"
 
-#: TurtleArt/tabasics.py:598
+#: TurtleArt/tabasics.py:605
 msgid "divide"
 msgstr "除"
 
-#: TurtleArt/tabasics.py:601
+#: TurtleArt/tabasics.py:608
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr "将顶部输入（分子）除以底部输入（分母）"
 
-#: TurtleArt/tabasics.py:611
+#: TurtleArt/tabasics.py:618
 msgid "identity"
 msgstr "自身"
 
-#: TurtleArt/tabasics.py:613
+#: TurtleArt/tabasics.py:620
 msgid "identity operator used for extending blocks"
 msgstr "用来拉长积木块的“自身”操作符"
 
-#: TurtleArt/tabasics.py:621 TurtleArt/tabasics.py:622
+#: TurtleArt/tabasics.py:628 TurtleArt/tabasics.py:629
 msgid "mod"
 msgstr "同余"
 
-#: TurtleArt/tabasics.py:625
+#: TurtleArt/tabasics.py:632
 msgid "modular (remainder) operator"
 msgstr "取模（余数）操作符"
 
-#: TurtleArt/tabasics.py:632
+#: TurtleArt/tabasics.py:639
 msgid "√"
 msgstr "√"
 
-#: TurtleArt/tabasics.py:633
+#: TurtleArt/tabasics.py:640
 msgid "square root"
 msgstr "平方根"
 
-#: TurtleArt/tabasics.py:636
+#: TurtleArt/tabasics.py:643
 msgid "calculates square root"
 msgstr "计算平方根"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:650
 msgid "random"
 msgstr "随机值"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:650
 msgid "min"
 msgstr "最小值"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:650
 msgid "max"
 msgstr "最大值"
 
-#: TurtleArt/tabasics.py:647
+#: TurtleArt/tabasics.py:654
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr "返回最小值（顶部）和最大值（底部）之间的随机数"
 
-#: TurtleArt/tabasics.py:659
+#: TurtleArt/tabasics.py:666
 msgid "number"
 msgstr "数字"
 
-#: TurtleArt/tabasics.py:660
+#: TurtleArt/tabasics.py:667
 msgid "used as numeric input in mathematic operators"
 msgstr "在数学运算符中作为数值型输入"
 
-#: TurtleArt/tabasics.py:668
+#: TurtleArt/tabasics.py:675
 msgid "greater than"
 msgstr "大于"
 
-#: TurtleArt/tabasics.py:671
+#: TurtleArt/tabasics.py:678
 msgid "logical greater-than operator"
 msgstr "逻辑“大于”运算符"
 
-#: TurtleArt/tabasics.py:680
+#: TurtleArt/tabasics.py:687
 msgid "less than"
 msgstr "小于"
 
-#: TurtleArt/tabasics.py:684
+#: TurtleArt/tabasics.py:691
 msgid "logical less-than operator"
 msgstr "逻辑“小于”运算符"
 
-#: TurtleArt/tabasics.py:692
+#: TurtleArt/tabasics.py:699
 msgid "equal"
 msgstr "等于"
 
-#: TurtleArt/tabasics.py:696
+#: TurtleArt/tabasics.py:703
 msgid "logical equal-to operator"
 msgstr "逻辑“等于”运算符"
 
-#: TurtleArt/tabasics.py:702
+#: TurtleArt/tabasics.py:709
 msgid "not"
 msgstr "非"
 
-#: TurtleArt/tabasics.py:705
+#: TurtleArt/tabasics.py:712
 msgid "logical NOT operator"
 msgstr "逻辑“非”运算符"
 
-#: TurtleArt/tabasics.py:711 TurtleArt/tabasics.py:714
+#: TurtleArt/tabasics.py:718 TurtleArt/tabasics.py:721
 msgid "and"
 msgstr "与"
 
-#: TurtleArt/tabasics.py:715
+#: TurtleArt/tabasics.py:722
 msgid "logical AND operator"
 msgstr "逻辑“与”运算符"
 
-#: TurtleArt/tabasics.py:722 TurtleArt/tabasics.py:725
+#: TurtleArt/tabasics.py:729 TurtleArt/tabasics.py:732
 msgid "or"
 msgstr "或"
 
-#: TurtleArt/tabasics.py:726
+#: TurtleArt/tabasics.py:733
 msgid "logical OR operator"
 msgstr "逻辑“或”运算符"
 
-#: TurtleArt/tabasics.py:735
+#: TurtleArt/tabasics.py:742
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
 msgid "Palette of flow operators"
 msgstr "流程控制模板"
 
-#: TurtleArt/tabasics.py:740
+#: TurtleArt/tabasics.py:747
 msgid "wait"
 msgstr "等待"
 
-#: TurtleArt/tabasics.py:744
+#: TurtleArt/tabasics.py:751
 msgid "pauses program execution a specified number of seconds"
 msgstr "暂停程序执行指定秒数"
 
 # Here, 'forever' means 'forever repeat'.
-#: TurtleArt/tabasics.py:751
+#: TurtleArt/tabasics.py:758
 msgid "forever"
 msgstr "永远执行"
 
-#: TurtleArt/tabasics.py:755
+#: TurtleArt/tabasics.py:762
 msgid "loops forever"
 msgstr "永远执行的循环"
 
-#: TurtleArt/tabasics.py:762 TurtleArt/tabasics.py:766
+#: TurtleArt/tabasics.py:769 TurtleArt/tabasics.py:773
 msgid "repeat"
 msgstr "重复"
 
-#: TurtleArt/tabasics.py:767
+#: TurtleArt/tabasics.py:774
 msgid "loops specified number of times"
 msgstr "循环指定次数"
 
-#: TurtleArt/tabasics.py:773 TurtleArt/tabasics.py:786
+#: TurtleArt/tabasics.py:780 TurtleArt/tabasics.py:793
 msgid "if"
 msgstr "如果"
 
-#: TurtleArt/tabasics.py:773 TurtleArt/tabasics.py:786
+#: TurtleArt/tabasics.py:780 TurtleArt/tabasics.py:793
 msgid "then"
 msgstr "那么"
 
-#: TurtleArt/tabasics.py:776
+#: TurtleArt/tabasics.py:783
 msgid "if then"
 msgstr "如果 那么"
 
-#: TurtleArt/tabasics.py:778
+#: TurtleArt/tabasics.py:785
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr "“如果-那么”运算符，会用到数值模板中的布尔运算符"
 
-#: TurtleArt/tabasics.py:786
+#: TurtleArt/tabasics.py:793
 msgid "else"
 msgstr "否则"
 
-#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
+#: TurtleArt/tabasics.py:797 TurtleArt/tabasics.py:805
 msgid "if then else"
 msgstr "如果 那么 或者"
 
-#: TurtleArt/tabasics.py:791 TurtleArt/tabasics.py:799
+#: TurtleArt/tabasics.py:798 TurtleArt/tabasics.py:806
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr "“如果-那么-或者”运算符，会用到数值模板中的布尔运算符"
 
-#: TurtleArt/tabasics.py:808
+#: TurtleArt/tabasics.py:815
 msgid "horizontal space"
 msgstr "水平空白"
 
-#: TurtleArt/tabasics.py:809
+#: TurtleArt/tabasics.py:816
 msgid "jogs stack right"
 msgstr "将块堆向右推"
 
-#: TurtleArt/tabasics.py:816
+#: TurtleArt/tabasics.py:823
 msgid "vertical space"
 msgstr "竖直空白"
 
-#: TurtleArt/tabasics.py:817
+#: TurtleArt/tabasics.py:824
 msgid "jogs stack down"
 msgstr "将积木堆向下推"
 
-#: TurtleArt/tabasics.py:823
+#: TurtleArt/tabasics.py:830
 msgid "stop action"
 msgstr "停止动作"
 
-#: TurtleArt/tabasics.py:826
+#: TurtleArt/tabasics.py:833
 msgid "stops current action"
 msgstr "停止当前动作"
 
-#: TurtleArt/tabasics.py:835
+#: TurtleArt/tabasics.py:842
 msgid "Palette of variable blocks"
 msgstr "可变块模板"
 
-#: TurtleArt/tabasics.py:840 pysamples/grecord.py:213
+#: TurtleArt/tabasics.py:847 pysamples/grecord.py:213
 msgid "start"
 msgstr "开始"
 
-#: TurtleArt/tabasics.py:843
+#: TurtleArt/tabasics.py:850
 msgid "connects action to toolbar run buttons"
 msgstr "关联动作到工具栏中的运行按钮"
 
-#: TurtleArt/tabasics.py:850 TurtleArt/tabasics.py:851
-#: TurtleArt/tabasics.py:852
+#: TurtleArt/tabasics.py:857 TurtleArt/tabasics.py:858
+#: TurtleArt/tabasics.py:859
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
@@ -563,145 +567,146 @@ msgstr "关联动作到工具栏中的运行按钮"
 msgid "text"
 msgstr "文本"
 
-#: TurtleArt/tabasics.py:853
+#: TurtleArt/tabasics.py:860
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
 msgid "string value"
 msgstr "字符串值"
 
-#: TurtleArt/tabasics.py:857 TurtleArt/tabasics.py:860
-#: TurtleArt/tabasics.py:868 TurtleArt/tabasics.py:872
-#: TurtleArt/tawindow.py:1235 TurtleArt/tawindow.py:1323
-#: TurtleArt/tawindow.py:1336 TurtleArt/tawindow.py:1784
-#: TurtleArt/tawindow.py:3992
+#: TurtleArt/tabasics.py:864 TurtleArt/tabasics.py:867
+#: TurtleArt/tabasics.py:875 TurtleArt/tabasics.py:879
+#: TurtleArt/tawindow.py:1239 TurtleArt/tawindow.py:1328
+#: TurtleArt/tawindow.py:1341 TurtleArt/tawindow.py:1808
+#: TurtleArt/tawindow.py:4069
 msgid "action"
 msgstr "动作"
 
-#: TurtleArt/tabasics.py:862
+#: TurtleArt/tabasics.py:869
 msgid "top of nameable action stack"
 msgstr "可命名动作堆的顶部"
 
-#: TurtleArt/tabasics.py:873 TurtleArt/tawindow.py:4006
+#: TurtleArt/tabasics.py:880 TurtleArt/tawindow.py:4083
 msgid "invokes named action stack"
 msgstr "执行可命名动作堆"
 
-#: TurtleArt/tabasics.py:880
+#: TurtleArt/tabasics.py:887
 msgid "store in box 1"
 msgstr "保存到盒子1"
 
-#: TurtleArt/tabasics.py:885
+#: TurtleArt/tabasics.py:892
 msgid "stores numeric value in Variable 1"
 msgstr "保存数值到变量1"
 
-#: TurtleArt/tabasics.py:893
+#: TurtleArt/tabasics.py:900
 msgid "store in box 2"
 msgstr "保存到盒子2"
 
-#: TurtleArt/tabasics.py:898
+#: TurtleArt/tabasics.py:905
 msgid "stores numeric value in Variable 2"
 msgstr "保存数值到变量2"
 
-#: TurtleArt/tabasics.py:906
+#: TurtleArt/tabasics.py:913
 msgid "box 1"
 msgstr "盒子1"
 
-#: TurtleArt/tabasics.py:909
+#: TurtleArt/tabasics.py:916
 msgid "Variable 1 (numeric value)"
 msgstr "变量1（数值）"
 
-#: TurtleArt/tabasics.py:916
+#: TurtleArt/tabasics.py:923
 msgid "box 2"
 msgstr "盒子2"
 
-#: TurtleArt/tabasics.py:919
+#: TurtleArt/tabasics.py:926
 msgid "Variable 2 (numeric value)"
 msgstr "变量2（数值）"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4056
+#: TurtleArt/tabasics.py:932 TurtleArt/tawindow.py:4133
 msgid "store in"
 msgstr "放入"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tabasics.py:939
+#: TurtleArt/tabasics.py:932 TurtleArt/tabasics.py:946
 msgid "box"
 msgstr "盒子"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4056
+#: TurtleArt/tabasics.py:932 TurtleArt/tawindow.py:4133
 msgid "value"
 msgstr "值"
 
-#: TurtleArt/tabasics.py:929 TurtleArt/tabasics.py:942
-#: TurtleArt/tawindow.py:1239 TurtleArt/tawindow.py:1788
-#: TurtleArt/tawindow.py:4019 TurtleArt/tawindow.py:4047
+#: TurtleArt/tabasics.py:936 TurtleArt/tabasics.py:949
+#: TurtleArt/tawindow.py:1243 TurtleArt/tawindow.py:1366
+#: TurtleArt/tawindow.py:1812 TurtleArt/tawindow.py:4096
+#: TurtleArt/tawindow.py:4124
 msgid "my box"
 msgstr "我的盒子"
 
-#: TurtleArt/tabasics.py:930 TurtleArt/tawindow.py:4061
+#: TurtleArt/tabasics.py:937 TurtleArt/tawindow.py:4138
 msgid "stores numeric value in named variable"
 msgstr "保存数值到命名的变量"
 
-#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4033
+#: TurtleArt/tabasics.py:952 TurtleArt/tawindow.py:4110
 msgid "named variable (numeric value)"
 msgstr "命名的变量（数值）"
 
-#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
+#: TurtleArt/tabasics.py:959 TurtleArt/tabasics.py:978
 msgid "action 1"
 msgstr "动作1"
 
-#: TurtleArt/tabasics.py:955
+#: TurtleArt/tabasics.py:962
 msgid "top of Action 1 stack"
 msgstr "动作堆1的顶部"
 
-#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
+#: TurtleArt/tabasics.py:968 TurtleArt/tabasics.py:988
 msgid "action 2"
 msgstr "动作2"
 
-#: TurtleArt/tabasics.py:964
+#: TurtleArt/tabasics.py:971
 msgid "top of Action 2 stack"
 msgstr "动作堆2的顶部"
 
-#: TurtleArt/tabasics.py:974
+#: TurtleArt/tabasics.py:981
 msgid "invokes Action 1 stack"
 msgstr "执行动作堆1"
 
-#: TurtleArt/tabasics.py:984
+#: TurtleArt/tabasics.py:991
 msgid "invokes Action 2 stack"
 msgstr "执行动作堆2"
 
-#: TurtleArt/tabasics.py:992
+#: TurtleArt/tabasics.py:999
 msgid "trash"
 msgstr "回收站"
 
-#: TurtleArt/tabasics.py:996
+#: TurtleArt/tabasics.py:1003
 msgid "empty trash"
 msgstr "清空回收站"
 
-#: TurtleArt/tabasics.py:997
+#: TurtleArt/tabasics.py:1004
 msgid "permanently deletes items in trash"
 msgstr "永久性地删除回收站中的项"
 
-#: TurtleArt/tabasics.py:1001
+#: TurtleArt/tabasics.py:1008
 msgid "restore all"
 msgstr "全部还原"
 
-#: TurtleArt/tabasics.py:1002
+#: TurtleArt/tabasics.py:1009
 msgid "restore all blocks from trash"
 msgstr "还原回收站中的所有积木块"
 
-#: TurtleArt/tabasics.py:1006
+#: TurtleArt/tabasics.py:1013
 msgid "clear all"
 msgstr "全部清除"
 
-#: TurtleArt/tabasics.py:1007
+#: TurtleArt/tabasics.py:1014
 msgid "move all blocks to trash"
 msgstr "将所有积木块移入回收站"
 
-#: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1763
-#: TurtleArtActivity.py:660
+#: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1787
+#: TurtleArtActivity.py:673
 msgid "Share selected blocks"
 msgstr "分享选中积木块"
 
-#: TurtleArt/taconstants.py:216 TurtleArt/taconstants.py:238
-#: TurtleArt/taconstants.py:259 TurtleArt/taconstants.py:301
-#: TurtleArt/taconstants.py:343 TurtleArt/taconstants.py:385
+#: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
+#: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
+#: TurtleArt/taconstants.py:336 TurtleArt/taconstants.py:378
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:978
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:993
@@ -711,33 +716,33 @@ msgstr "分享选中积木块"
 msgid "Title"
 msgstr "标题"
 
-#: TurtleArt/talogo.py:357 TurtleArtActivity.py:640
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1473
+#: TurtleArt/talogo.py:374 TurtleArtActivity.py:653
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1492
 msgid "Stop turtle"
 msgstr "停止"
 
-#: TurtleArt/talogo.py:367 TurtleArtActivity.py:292 TurtleArtActivity.py:641
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1466
+#: TurtleArt/talogo.py:384 TurtleArtActivity.py:292 TurtleArtActivity.py:654
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1485
 msgid "Show blocks"
 msgstr "显示积木块"
 
-#: TurtleArt/talogo.py:371 TurtleArtActivity.py:296 TurtleArtActivity.py:818
+#: TurtleArt/talogo.py:388 TurtleArtActivity.py:296 TurtleArtActivity.py:831
 msgid "Hide blocks"
 msgstr "隐藏积木块"
 
-#: TurtleArt/talogo.py:490
+#: TurtleArt/talogo.py:511
 msgid "did not output to"
 msgstr "没有输出到"
 
-#: TurtleArt/talogo.py:549
+#: TurtleArt/talogo.py:570
 msgid "I don't know how to"
 msgstr "我不知道怎样"
 
-#: TurtleArt/talogo.py:600
+#: TurtleArt/talogo.py:624
 msgid "doesn't like"
 msgstr "不喜欢"
 
-#: TurtleArt/talogo.py:600
+#: TurtleArt/talogo.py:624
 msgid "as input"
 msgstr "作为输入"
 
@@ -749,47 +754,51 @@ msgstr "显示下一个模板"
 msgid "changes the orientation of the palette of blocks"
 msgstr "改变积木块模板的方向"
 
-#: TurtleArt/tautils.py:192
+#: TurtleArt/tautils.py:197
 msgid "Load..."
 msgstr "载入..."
 
-#: TurtleArt/tautils.py:202
+#: TurtleArt/tautils.py:207
 msgid "Save..."
 msgstr "保存..."
 
-#: TurtleArt/tautils.py:474
+#: TurtleArt/tautils.py:484
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
 msgid "click to open"
 msgstr "点击打开"
 
-#: TurtleArt/tawindow.py:968 TurtleArt/tawindow.py:969
+#: TurtleArt/tawindow.py:972 TurtleArt/tawindow.py:973
 msgid "orientation"
 msgstr "方向"
 
-#: TurtleArt/tawindow.py:979 TurtleArt/tawindow.py:1408
+#: TurtleArt/tawindow.py:983 TurtleArt/tawindow.py:1423
 msgid "next"
 msgstr "下一个"
 
-#: TurtleArt/tawindow.py:991 TurtleArt/tawindow.py:992
-#: TurtleArt/tawindow.py:1428
+#: TurtleArt/tawindow.py:995 TurtleArt/tawindow.py:996
+#: TurtleArt/tawindow.py:1443
 msgid "shift"
 msgstr "移动"
 
-#: TurtleArt/tawindow.py:1253
+#: TurtleArt/tawindow.py:1257
 msgid "Select blocks to share"
 msgstr "选择要分享的积木块"
 
-#: TurtleArt/tawindow.py:3849
+#: TurtleArt/tawindow.py:3812 pysamples/grecord.py:205
+msgid "Turtle Art"
+msgstr "海龟绘画"
+
+#: TurtleArt/tawindow.py:3921
 msgid "image"
 msgstr "图片"
 
-#: TurtleArtActivity.py:136 TurtleArtActivity.py:666 TurtleArtActivity.py:757
-#: TurtleArtActivity.py:777 turtleblocks.py:359
+#: TurtleArtActivity.py:136 TurtleArtActivity.py:679 TurtleArtActivity.py:770
+#: TurtleArtActivity.py:790 turtleblocks.py:361
 msgid "Save as Logo"
 msgstr "另存为Logo"
 
-#: TurtleArtActivity.py:173 TurtleArtActivity.py:665 TurtleArtActivity.py:754
-#: TurtleArtActivity.py:774 turtleblocks.py:357
+#: TurtleArtActivity.py:173 TurtleArtActivity.py:678 TurtleArtActivity.py:767
+#: TurtleArtActivity.py:787 turtleblocks.py:359
 msgid "Save as image"
 msgstr "另存为图片"
 
@@ -797,166 +806,166 @@ msgstr "另存为图片"
 msgid "snapshot"
 msgstr "屏幕截图"
 
-#: TurtleArtActivity.py:189 TurtleArtActivity.py:599 TurtleArtActivity.py:642
-#: TurtleArtActivity.py:780
+#: TurtleArtActivity.py:189 TurtleArtActivity.py:612 TurtleArtActivity.py:655
+#: TurtleArtActivity.py:793
 msgid "Save snapshot"
 msgstr "保存屏幕截图"
 
-#: TurtleArtActivity.py:230 TurtleArtActivity.py:577 TurtleArtActivity.py:716
-#: turtleblocks.py:377
+#: TurtleArtActivity.py:230 TurtleArtActivity.py:585 TurtleArtActivity.py:729
+#: turtleblocks.py:379
 msgid "Turn off hover help"
 msgstr "关闭悬停帮助"
 
-#: TurtleArtActivity.py:236 turtleblocks.py:379
+#: TurtleArtActivity.py:236 turtleblocks.py:381
 msgid "Turn on hover help"
 msgstr "开启悬停帮助"
 
-#: TurtleArtActivity.py:244 turtleblocks.py:389
+#: TurtleArtActivity.py:244 turtleblocks.py:391
 msgid "Show palette"
 msgstr "显示模板"
 
-#: TurtleArtActivity.py:250 TurtleArtActivity.py:806 turtleblocks.py:391
+#: TurtleArtActivity.py:250 TurtleArtActivity.py:819 turtleblocks.py:393
 msgid "Hide palette"
 msgstr "隐藏模板"
 
-#: TurtleArtActivity.py:408
+#: TurtleArtActivity.py:416
 msgid "Rescale coordinates down"
 msgstr "缩小坐标轴比例"
 
-#: TurtleArtActivity.py:412 TurtleArtActivity.py:569 TurtleArtActivity.py:712
+#: TurtleArtActivity.py:420 TurtleArtActivity.py:577 TurtleArtActivity.py:725
 msgid "Rescale coordinates up"
 msgstr "增大坐标轴比例"
 
-#: TurtleArtActivity.py:502 TurtleArtActivity.py:538 TurtleArtActivity.py:634
-#: TurtleArtActivity.py:687 turtleblocks.py:386
+#: TurtleArtActivity.py:510 TurtleArtActivity.py:546 TurtleArtActivity.py:647
+#: TurtleArtActivity.py:700 turtleblocks.py:388
 msgid "Edit"
 msgstr "编辑"
 
-#: TurtleArtActivity.py:507 TurtleArtActivity.py:536 TurtleArtActivity.py:635
-#: TurtleArtActivity.py:704 turtleblocks.py:381
+#: TurtleArtActivity.py:515 TurtleArtActivity.py:544 TurtleArtActivity.py:648
+#: TurtleArtActivity.py:717 turtleblocks.py:383
 msgid "View"
 msgstr "视图"
 
-#: TurtleArtActivity.py:534 TurtleArtActivity.py:636
+#: TurtleArtActivity.py:542 TurtleArtActivity.py:649
 msgid "Project"
 msgstr "项目"
 
-#: TurtleArtActivity.py:540 TurtleArtActivity.py:633 TurtleArtActivity.py:662
-#: TurtleArtActivity.py:664 TurtleArtActivity.py:749
+#: TurtleArtActivity.py:548 TurtleArtActivity.py:646 TurtleArtActivity.py:675
+#: TurtleArtActivity.py:677 TurtleArtActivity.py:762
 msgid "Save/Load"
 msgstr "保存/读取"
 
-#: TurtleArtActivity.py:548 TurtleArtActivity.py:688 turtleblocks.py:384
+#: TurtleArtActivity.py:556 TurtleArtActivity.py:701 turtleblocks.py:386
 msgid "Copy"
 msgstr "复制"
 
-#: TurtleArtActivity.py:550 TurtleArtActivity.py:689 turtleblocks.py:385
+#: TurtleArtActivity.py:558 TurtleArtActivity.py:702 turtleblocks.py:387
 msgid "Paste"
 msgstr "粘贴"
 
-#: TurtleArtActivity.py:552
+#: TurtleArtActivity.py:560
 msgid "Restore blocks from trash"
 msgstr "还原回收站中的所有拼块"
 
-#: TurtleArtActivity.py:555 TurtleArtActivity.py:705
+#: TurtleArtActivity.py:563 TurtleArtActivity.py:718
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
 msgid "Fullscreen"
 msgstr "全屏"
 
-#: TurtleArtActivity.py:557 TurtleArtActivity.py:706 turtleblocks.py:365
+#: TurtleArtActivity.py:565 TurtleArtActivity.py:719 turtleblocks.py:367
 msgid "Cartesian coordinates"
 msgstr "直角坐标"
 
-#: TurtleArtActivity.py:559 TurtleArtActivity.py:708 turtleblocks.py:367
+#: TurtleArtActivity.py:567 TurtleArtActivity.py:721 turtleblocks.py:369
 msgid "Polar coordinates"
 msgstr "极坐标"
 
-#: TurtleArtActivity.py:562 TurtleArtActivity.py:710
+#: TurtleArtActivity.py:570 TurtleArtActivity.py:723
 msgid "Metric coordinates"
 msgstr "公制坐标"
 
-#: TurtleArtActivity.py:572 TurtleArtActivity.py:714 turtleblocks.py:371
+#: TurtleArtActivity.py:580 TurtleArtActivity.py:727 turtleblocks.py:373
 msgid "Grow blocks"
 msgstr "增大积木块"
 
-#: TurtleArtActivity.py:574 TurtleArtActivity.py:715 turtleblocks.py:373
+#: TurtleArtActivity.py:582 TurtleArtActivity.py:728 turtleblocks.py:375
 msgid "Shrink blocks"
 msgstr "缩小积木块"
 
-#: TurtleArtActivity.py:603 TurtleArtActivity.py:643
+#: TurtleArtActivity.py:599 TurtleArtActivity.py:616 TurtleArtActivity.py:656
 msgid "Load example"
 msgstr "载入示例"
 
-#: TurtleArtActivity.py:637 TurtleArtActivity.py:812 turtleblocks.py:398
+#: TurtleArtActivity.py:650 TurtleArtActivity.py:825 turtleblocks.py:400
 msgid "Clean"
 msgstr "清屏"
 
-#: TurtleArtActivity.py:638 TurtleArtActivity.py:814 turtleblocks.py:399
+#: TurtleArtActivity.py:651 TurtleArtActivity.py:827 turtleblocks.py:401
 msgid "Run"
 msgstr "运行"
 
-#: TurtleArtActivity.py:639 TurtleArtActivity.py:816 turtleblocks.py:400
+#: TurtleArtActivity.py:652 TurtleArtActivity.py:829 turtleblocks.py:402
 msgid "Step"
 msgstr "单步"
 
-#: TurtleArtActivity.py:644 util/helpbutton.py:45
+#: TurtleArtActivity.py:657 turtleblocks.py:409 util/helpbutton.py:45
 msgid "Help"
 msgstr "帮助"
 
-#: TurtleArtActivity.py:645 turtleblocks.py:402
+#: TurtleArtActivity.py:658 turtleblocks.py:404
 msgid "Stop"
 msgstr "停止"
 
-#: TurtleArtActivity.py:667 TurtleArtActivity.py:760 TurtleArtActivity.py:782
+#: TurtleArtActivity.py:680 TurtleArtActivity.py:773 TurtleArtActivity.py:795
 msgid "Load project"
 msgstr "加载作品"
 
-#: TurtleArtActivity.py:670 TurtleArtActivity.py:765 TurtleArtActivity.py:787
+#: TurtleArtActivity.py:683 TurtleArtActivity.py:778 TurtleArtActivity.py:800
 msgid "Load plugin"
 msgstr "加载插件"
 
-#: TurtleArtActivity.py:671 TurtleArtActivity.py:768 TurtleArtActivity.py:790
+#: TurtleArtActivity.py:684 TurtleArtActivity.py:781 TurtleArtActivity.py:803
 msgid "Load Python block"
 msgstr "载入Python积木块"
 
-#: TurtleArtActivity.py:744
+#: TurtleArtActivity.py:757
 msgid "Sharing blocks disabled"
 msgstr "分享积木块被禁用"
 
-#: TurtleArtActivity.py:807
+#: TurtleArtActivity.py:820
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
-#: TurtleArtActivity.py:812
+#: TurtleArtActivity.py:825
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
-#: TurtleArtActivity.py:814
+#: TurtleArtActivity.py:827
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
-#: TurtleArtActivity.py:816
+#: TurtleArtActivity.py:829
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
-#: TurtleArtActivity.py:819
+#: TurtleArtActivity.py:832
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
-#: TurtleArtActivity.py:975 TurtleArtActivity.py:980 TurtleArtActivity.py:1047
+#: TurtleArtActivity.py:988 TurtleArtActivity.py:993 TurtleArtActivity.py:1060
 msgid "Plugin could not be installed."
 msgstr "插件不能安装。"
 
-#: TurtleArtActivity.py:1043
+#: TurtleArtActivity.py:1056
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr "使用该插件，请重新启动龟背艺术。"
 
-#: TurtleArtActivity.py:1061
+#: TurtleArtActivity.py:1074
 #, python-format
 msgid "Plugin %s already installed."
 msgstr "插件 %s 已经被安装。"
 
-#: TurtleArtActivity.py:1062
+#: TurtleArtActivity.py:1075
 #, python-format
 msgid "Do you want to reinstall %s?"
 msgstr "想重新 %s 吗？"
@@ -1017,49 +1026,55 @@ msgstr "注册"
 msgid "Colors"
 msgstr "颜色"
 
-#: gnome_plugins/uploader_plugin.py:64
-msgid "Upload to Web"
-msgstr "上传到网站"
-
-#: gnome_plugins/uploader_plugin.py:66
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
 msgid "Upload"
 msgstr "上传"
 
-#: gnome_plugins/uploader_plugin.py:83
+#: gnome_plugins/fb_plugin.py:87
+msgid "Facebook wall post"
+msgstr "发布到 Facebook 墙"
+
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "上传到网站"
+
+#: gnome_plugins/uploader_plugin.py:90
 msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
 msgstr "你必须在 http://turtleartsite.sugarlabs.org 中注册一个帐号才能上传你的作品。"
 
-#: gnome_plugins/uploader_plugin.py:92
+#: gnome_plugins/uploader_plugin.py:99
 msgid "Username:"
 msgstr "用户名："
 
-#: gnome_plugins/uploader_plugin.py:102
+#: gnome_plugins/uploader_plugin.py:109
 msgid "Password:"
 msgstr "密码："
 
-#: gnome_plugins/uploader_plugin.py:113
+#: gnome_plugins/uploader_plugin.py:120
 msgid "Title:"
 msgstr "标题："
 
-#: gnome_plugins/uploader_plugin.py:123
+#: gnome_plugins/uploader_plugin.py:130
 msgid "Description:"
 msgstr "描述："
 
-#: gnome_plugins/uploader_plugin.py:133
+#: gnome_plugins/uploader_plugin.py:140
 msgid "Submit to Web"
 msgstr "提交到网站"
 
-#: gnome_plugins/uploader_plugin.py:137
+#: gnome_plugins/uploader_plugin.py:144
 msgid "Cancel"
 msgstr "取消"
 
-#: gnome_plugins/uploader_plugin.py:159
+#: gnome_plugins/uploader_plugin.py:166
 msgid "Login failed"
 msgstr "登录失败"
 
-#: gnome_plugins/uploader_plugin.py:196
+#: gnome_plugins/uploader_plugin.py:203
 msgid "Failed to upload!"
 msgstr "上传失败！"
 
@@ -1736,24 +1751,24 @@ msgstr "以 1x2 方式演示"
 msgid "presentation 2x2"
 msgstr "以 2x2 方式演示"
 
-#: pysamples/brain.py:36
+#: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
 msgstr "请安装的说话活动，然后再试一次。"
 
-#: pysamples/brain.py:47
+#: pysamples/brain.py:54
 msgid "Spanish"
 msgstr "西班牙语"
 
-#: pysamples/brain.py:51 pysamples/brain.py:65 pysamples/brain.py:67
-#: pysamples/brain.py:73
+#: pysamples/brain.py:58 pysamples/brain.py:72 pysamples/brain.py:74
+#: pysamples/brain.py:80
 msgid "English"
 msgstr "英语"
 
-#: pysamples/brain.py:84
+#: pysamples/brain.py:91
 msgid "Sorry, I can't understand what you are asking about."
 msgstr "很抱歉，我不明白你问的是什么。"
 
-#: pysamples/brain.py:93
+#: pysamples/brain.py:100
 msgid ""
 "Sorry, there is no free memory to load my brain. Close other activities and "
 "try once more."
@@ -1787,76 +1802,80 @@ msgstr "翻转"
 msgid "make a uturn"
 msgstr "做一个翻转"
 
-#: turtleblocks.py:82
+#: turtleblocks.py:86
 msgid "usage is"
 msgstr "用法是"
 
-#: turtleblocks.py:237
+#: turtleblocks.py:241
 msgid "No option action:"
 msgstr "无选项的动作："
 
-#: turtleblocks.py:252
+#: turtleblocks.py:256
 msgid "File not found"
 msgstr "文件未找到"
 
-#: turtleblocks.py:276
+#: turtleblocks.py:280
 #, python-format
 msgid "Configuration directory not writable: %s"
 msgstr "配置不可写的目录：%s"
 
-#: turtleblocks.py:353
+#: turtleblocks.py:355
 msgid "New"
 msgstr "新建"
 
-#: turtleblocks.py:354
+#: turtleblocks.py:356
 msgid "Open"
 msgstr "打开"
 
-#: turtleblocks.py:355
+#: turtleblocks.py:357
 msgid "Save"
 msgstr "保存"
 
-#: turtleblocks.py:356
+#: turtleblocks.py:358
 msgid "Save as"
 msgstr "另存为"
 
-#: turtleblocks.py:361
+#: turtleblocks.py:363
 msgid "Quit"
 msgstr "退出"
 
-#: turtleblocks.py:362
+#: turtleblocks.py:364
 msgid "File"
 msgstr "文件"
 
-#: turtleblocks.py:369
+#: turtleblocks.py:371
 msgid "Rescale coordinates"
 msgstr "重新调整坐标"
 
-#: turtleblocks.py:375
+#: turtleblocks.py:377
 msgid "Reset block size"
 msgstr "复位块大小"
 
-#: turtleblocks.py:393
+#: turtleblocks.py:395
 msgid "Show/hide blocks"
 msgstr "显示/隐藏块"
 
-#: turtleblocks.py:395
+#: turtleblocks.py:397
 msgid "Tools"
 msgstr "工具"
 
-#: turtleblocks.py:401
+#: turtleblocks.py:403
 msgid "Debug"
 msgstr "调试"
 
-#: turtleblocks.py:403
+#: turtleblocks.py:405
 msgid "Turtle"
 msgstr "海龟"
 
-#: turtleblocks.py:437
+#: turtleblocks.py:408
+msgid "About..."
+msgstr "关于..."
+
+#: turtleblocks.py:448
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr "你有尚未保存的工作。想退出前保存吗？"
 
-#: turtleblocks.py:438
+#: turtleblocks.py:449
 msgid "Save project?"
 msgstr "保存项目？"
 
@@ -1892,9 +1911,6 @@ msgstr "保存项目？"
 
 #~ msgid "Palette of Uruguayan Pesos"
 #~ msgstr "乌拉圭比索模板"
-
-#~ msgid "TurtleBots"
-#~ msgstr "海龟机器人"
 
 #~ msgid "adjust LED intensity between 0 and 255"
 #~ msgstr "调整指示灯的光强度（0到255之间）"
