@@ -143,7 +143,7 @@ class Palettes():
                           help_string=_('moves turtle backward'))
         self.tw.lc.def_prim('back', 1,
                              lambda self, x: primitive_dictionary['move'](
-                self.tw.canvas.forward, -x))
+                self.tw.canvas.forward, x, reverse=True))
 
         primitive_dictionary['clean'] = self.tw.lc.prim_clear
         palette.add_block('clean',
@@ -165,8 +165,9 @@ turtle'))
                           logo_command='left',
                           help_string=_('turns turtle counterclockwise (angle \
 in degrees)'))
-        self.tw.lc.def_prim('left', 1,
-                             lambda self, x: primitive_dictionary['right'](-x))
+        self.tw.lc.def_prim(
+            'left', 1, lambda self,
+            x: primitive_dictionary['right'](x, reverse=True))
 
         palette.add_block('right',
                           style='basic-style-1arg',
@@ -1066,11 +1067,18 @@ variable'))
             self.tw.lc.ijmp(self.tw.lc.evline, list2[:])
             yield True
 
-    def _prim_move(self, cmd, value1, value2=None, pendown=True):
+    def _prim_move(self, cmd, value1, value2=None, pendown=True, reverse=False):
         """ Turtle moves by method specified in value1 """
+        if not _num_type(value1):
+            raise logoerror("#notanumber")
         if value2 is None:
-            cmd(value1)
+            if reverse:
+                cmd(float(-value1))
+            else:
+                cmd(float(value1))
         else:
+            if not _num_type(value2):
+                raise logoerror("#notanumber")
             cmd(float(value1), float(value2), pendown=pendown)
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value(
@@ -1084,6 +1092,8 @@ variable'))
 
     def _prim_repeat(self, num, blklist):
         """ Repeat list num times. """
+        if not _num_type(num):
+            raise logoerror("#notanumber")
         num = self.tw.lc.int(num)
         for i in range(num):
             self.tw.lc.icall(self.tw.lc.evline, blklist[:])
@@ -1093,9 +1103,14 @@ variable'))
         self.tw.lc.ireturn()
         yield True
 
-    def _prim_right(self, value):
+    def _prim_right(self, value, reverse=False):
         """ Turtle rotates clockwise """
-        self.tw.canvas.right(float(value))
+        if not _num_type(value):
+            raise logoerror("#notanumber")
+        if reverse:
+            self.tw.canvas.right(float(-value))
+        else:
+            self.tw.canvas.right(float(value))
         if self.tw.lc.update_values:
             self.tw.lc.update_label_value('heading', self.tw.canvas.heading)
 
