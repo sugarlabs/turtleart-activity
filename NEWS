@@ -6,6 +6,11 @@ ENHANCEMENTS:
 * New sample program: calculate and display prime factors
 * Facebook upload from GNOME
 
+BUG FIXES:
+* Cleaned up some corner cases where NAN errors are not reported
+* More efficient calculation of ... in text blocks
+* Proper formatting of multi-mime-type field
+
 170
 
 ENHANCEMENTS:

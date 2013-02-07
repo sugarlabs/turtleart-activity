@@ -402,14 +402,10 @@ class Sprite:
                     pl.set_font_description(self._fd)
                     w = pl.get_size()[0] / pango.SCALE
                 else:
-                    j = len(self.labels[i]) - 1
-                    while(w > my_width and j > 0):
-                        pl.set_text(
-                            "…" + self.labels[i][len(self.labels[i]) - j:])
-                        self._fd.set_size(int(self._scale[i] * pango.SCALE))
-                        pl.set_font_description(self._fd)
-                        w = pl.get_size()[0] / pango.SCALE
-                        j -= 1
+                    pl.set_width(int(my_width * pango.SCALE))
+                    pl.set_ellipsize(pango.ELLIPSIZE_MIDDLE)
+                    pl.set_text(str(self.labels[i]))
+                    w = pl.get_size()[0] / pango.SCALE
             if self._x_pos[i] is not None:
                 x = int(self.rect.x + self._x_pos[i])
             elif self._horiz_align[i] == "center":
