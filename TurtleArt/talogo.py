@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007-8, Playful Invention Company.
-#Copyright (c) 2008-12, Walter Bender
+#Copyright (c) 2008-13, Walter Bender
 #Copyright (c) 2008-10, Raúl Gutiérrez Segalés
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33,10 +33,10 @@ try:
 except ImportError:
     GRID_CELL_SIZE = 55
 
-from taconstants import TAB_LAYER, DEFAULT_SCALE, PREFIX_DICTIONARY
-from tapalette import block_names, value_blocks
-from tautils import get_pixbuf_from_journal, convert, data_from_file, \
-    text_media_type, round_int, debug_output, find_group
+from taconstants import (TAB_LAYER, DEFAULT_SCALE, PREFIX_DICTIONARY)
+from tapalette import (block_names, value_blocks)
+from tautils import (get_pixbuf_from_journal, convert, data_from_file,
+                     text_media_type, round_int, debug_output, find_group)
 
 try:
     from util.RtfParser import RtfTextOnly

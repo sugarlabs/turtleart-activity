@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#Copyright (c) 2011,12 Walter Bender
+#Copyright (c) 2011-13 Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -81,14 +81,14 @@ import gtk
 
 try:
     from sugar.graphics import style
-    from util.helpbutton import add_section, add_paragraph
+    from util.helpbutton import (add_section, add_paragraph)
     GRID_CELL_SIZE = style.GRID_CELL_SIZE
     HELP_PALETTE = True
 except ImportError:
     GRID_CELL_SIZE = 55
     HELP_PALETTE = False
 
-from taconstants import EXPANDABLE_STYLE, EXPANDABLE_FLOW
+from taconstants import (EXPANDABLE_STYLE, EXPANDABLE_FLOW)
 from tautils import debug_output
 
 from gettext import gettext as _

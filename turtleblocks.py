@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #Copyright (c) 2007-8, Playful Invention Company
-#Copyright (c) 2008-12, Walter Bender
+#Copyright (c) 2008-13, Walter Bender
 #Copyright (c) 2011 Collabora Ltd. <http://www.collabora.co.uk/>
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,9 +47,9 @@ sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 
 import gettext
 
-from TurtleArt.taconstants import OVERLAY_LAYER, DEFAULT_TURTLE_COLORS, \
-                                  TAB_LAYER, SUFFIX
-from TurtleArt.tautils import data_to_string, data_from_string, get_save_name
+from TurtleArt.taconstants import (OVERLAY_LAYER, DEFAULT_TURTLE_COLORS,
+                                  TAB_LAYER, SUFFIX)
+from TurtleArt.tautils import (data_to_string, data_from_string, get_save_name)
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
 

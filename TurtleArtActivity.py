@@ -1,5 +1,5 @@
 #Copyright (c) 2007, Playful Invention Company
-#Copyright (c) 2008-12, Walter Bender
+#Copyright (c) 2008-13, Walter Bender
 #Copyright (c) 2009-10 Raul Gutierrez Segales
 #Copyright (c) 2012 Alan Aguiar
 
@@ -33,14 +33,14 @@ _logger = logging.getLogger('turtleart-activity')
 
 from sugar.activity import activity
 try:  # 0.86 toolbar widgets
-    from sugar.activity.widgets import ActivityToolbarButton, StopButton
-    from sugar.graphics.toolbarbox import ToolbarBox, ToolbarButton
+    from sugar.activity.widgets import (ActivityToolbarButton, StopButton)
+    from sugar.graphics.toolbarbox import (ToolbarBox, ToolbarButton)
     HAS_TOOLBARBOX = True
 except ImportError:
     HAS_TOOLBARBOX = False
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.radiotoolbutton import RadioToolButton
-from sugar.graphics.alert import ConfirmationAlert, NotifyAlert
+from sugar.graphics.alert import (ConfirmationAlert, NotifyAlert)
 from sugar.graphics import style
 from sugar.datastore import datastore
 from sugar import profile
@@ -54,18 +54,18 @@ import tempfile
 
 from gettext import gettext as _
 
-from TurtleArt.tapalette import palette_names, help_strings, help_palettes, \
-                                help_windows
-from TurtleArt.taconstants import BLOCK_SCALE, XO1, XO15, XO175, \
-                                  XO30, XO4, MIMETYPE
+from TurtleArt.tapalette import (palette_names, help_strings, help_palettes,
+                                help_windows)
+from TurtleArt.taconstants import (BLOCK_SCALE, XO1, XO15, XO175, XO30, XO4,
+                                   MIMETYPE)
 from TurtleArt.taexportlogo import save_logo
-from TurtleArt.tautils import data_to_file, data_to_string, data_from_string, \
-                              get_path, chooser, get_hardware
+from TurtleArt.tautils import (data_to_file, data_to_string, data_from_string,
+                              get_path, chooser, get_hardware)
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.tacollaboration import Collaboration
 
 if HAS_TOOLBARBOX:
-    from util.helpbutton import HelpButton, add_section, add_paragraph
+    from util.helpbutton import (HelpButton, add_section, add_paragraph)
 
 
 class TurtleArtActivity(activity.Activity):
@@ -619,9 +619,7 @@ class TurtleArtActivity(activity.Activity):
         self._toolbox.toolbar.insert(self._help_button, -1)
         self._help_button.show()
 
-        if not self.tw.hw in [XO30]:
-            self._add_separator(self._toolbox.toolbar, expand=True,
-                                visible=False)
+        self._add_separator(self._toolbox.toolbar, expand=True, visible=False)
 
         stop_button = StopButton(self)
         stop_button.props.accelerator = '<Ctrl>Q'
@@ -756,7 +754,7 @@ class TurtleArtActivity(activity.Activity):
         self.share_button = self._add_button('shareoff',
                                              _('Sharing blocks disabled'),
                                              self._share_cb, toolbar)
-        if self.has_toolbarbox and gtk.gdk.screen_width() < 1024:
+        if self.has_toolbarbox:
             self._add_separator(toolbar, expand=False, visible=True)
             save_load_button = self._add_button(
                 'save-load', _('Save/Load'), self._save_load_palette_cb,

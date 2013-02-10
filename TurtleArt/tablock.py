@@ -22,16 +22,16 @@
 import gtk
 import cairo
 
-from taconstants import EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS, \
-    STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS, GRADIENT_COLOR, \
-    EXPANDABLE_FLOW, COLORDICT
-from tapalette import palette_blocks, block_colors, expandable_blocks, \
-    content_blocks, block_names, block_primitives, block_styles, \
-    special_block_colors
-from tasprite_factory import SVG, svg_str_to_pixbuf
+from taconstants import (EXPANDABLE, EXPANDABLE_ARGS, OLD_NAMES, CONSTANTS,
+                         STANDARD_STROKE_WIDTH, BLOCK_SCALE, BOX_COLORS,
+                         GRADIENT_COLOR, EXPANDABLE_FLOW, COLORDICT)
+from tapalette import (palette_blocks, block_colors, expandable_blocks,
+                       content_blocks, block_names, block_primitives,
+                       block_styles, special_block_colors)
+from tasprite_factory import (SVG, svg_str_to_pixbuf)
 import sprites
 
-from tautils import debug_output, error_output
+from tautils import (debug_output, error_output)
 
 
 class Blocks:
