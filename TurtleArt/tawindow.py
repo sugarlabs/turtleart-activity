@@ -570,7 +570,6 @@ class TurtleArtWindow():
     def stop_button(self):
         ''' Stop button '''
         self.lc.stop_logo()
-        # self._stop_plugins()
 
     def set_userdefined(self, blk=None):
         ''' Change icon for user-defined blocks after loading Python code. '''
@@ -1227,11 +1226,44 @@ class TurtleArtWindow():
         return True
 
     def button_press(self, mask, x, y):
-        self.block_operation = 'click'
-
         # Find out what was clicked
         spr = self.sprite_list.find_sprite((x, y))
 
+        if self.running_blocks:
+            if spr is not None:
+                blk = self.block_list.spr_to_block(spr)
+                if blk is not None:
+                    self.showlabel('status',
+                                   label=_('Please hit the Stop Button \
+before making changes to your Turtle Blocks program'))
+                    self._autohide_shape = True
+                    return True
+
+        self.block_operation = 'click'
+
+        self._unselect_all_blocks()
+        self._hide_status_layer(spr)
+
+        self.dx = 0
+        self.dy = 0
+        self.dragging_canvas[1] = x
+        self.dragging_canvas[2] = y
+        if spr is None:
+            if not self.running_blocks and not self.hw in (
+                XO1, XO15, XO175, XO4):
+                self.dragging_canvas[0] = True
+            return True
+        self.dragging_canvas[0] = False
+        self.selected_spr = spr
+
+        if self._look_for_a_blk(spr, x, y):
+            return True
+        elif self._look_for_a_turtle(spr, x, y):
+            return True
+        elif self._check_for_anything_else(spr, x, y):
+            return True
+
+    def _unselect_all_blocks(self):
         # Unselect things that may have been selected earlier
         if self.selected_blk is not None:
             if self._action_name(self.selected_blk, hat=True):
@@ -1256,6 +1288,7 @@ class TurtleArtWindow():
                     _('Select blocks to share'))
         self.selected_turtle = None
 
+    def _hide_status_layer(self, spr):
         # Almost always hide the status layer on a click
         if self._autohide_shape and self.status_spr is not None:
             self.status_spr.hide()
@@ -1263,18 +1296,7 @@ class TurtleArtWindow():
             self.status_spr.hide()
             self._autohide_shape = True
 
-        self.dx = 0
-        self.dy = 0
-        self.dragging_canvas[1] = x
-        self.dragging_canvas[2] = y
-        if spr is None:
-            if not self.running_blocks and not self.hw in (
-                XO1, XO15, XO175, XO4):
-                self.dragging_canvas[0] = True
-            return True
-        self.dragging_canvas[0] = False
-        self.selected_spr = spr
-
+    def _look_for_a_blk(self, spr, x, y):
         # From the sprite at x, y, look for a corresponding block
         blk = self.block_list.spr_to_block(spr)
         ''' If we were copying and didn't click on a block... '''
@@ -1398,7 +1420,9 @@ class TurtleArtWindow():
                     self._new_block(name, x, y, defaults=defaults)
                     blk.unhighlight()
             return True
+        return False
 
+    def _look_for_a_turtle(self, spr, x, y):
         # Next, look for a turtle
         t = self.turtles.spr_to_turtle(spr)
         if t is not None:
@@ -1409,7 +1433,9 @@ class TurtleArtWindow():
             self.canvas.set_turtle(self.turtles.get_turtle_key(t))
             self._turtle_pressed(x, y)
             return True
+        return False
 
+    def _check_for_anything_else(self, spr, x, y):
         # Finally, check for anything else
         if hasattr(spr, 'type'):
             if spr.type == 'selector':
@@ -1451,7 +1477,7 @@ class TurtleArtWindow():
                     self.show_palette(self.selected_palette)
             elif spr.type == 'toolbar':
                 self._select_toolbar_button(spr)
-            return True
+        return False
 
     def _update_action_names(self, name):
         ''' change the label on action blocks of the same name '''
