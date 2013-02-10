@@ -25,7 +25,6 @@ import pickle
 import subprocess
 import os
 import string
-from string import find
 from gettext import gettext as _
 
 try:
@@ -43,7 +42,7 @@ except (ImportError, AttributeError):
         OLD_SUGAR_SYSTEM = True
 from StringIO import StringIO
 
-from taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO30, XO4,
+from taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO4,
                          UNKNOWN, MAGICNUMBER, SUFFIX)
 
 import logging

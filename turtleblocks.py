@@ -621,7 +621,8 @@ class TurtleMain():
         about.set_version(self.version)
         about.set_comments(_(self.summary))
         about.set_website(self.website)
-        about.set_logo(gtk.gdk.pixbuf_new_from_file('activity/' + self.icon_name + '.svg'))
+        about.set_logo(gtk.gdk.pixbuf_new_from_file(
+                'activity/' + self.icon_name + '.svg'))
         about.run()
         about.destroy()
 

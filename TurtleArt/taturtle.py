@@ -21,7 +21,6 @@
 
 from random import uniform
 from math import sin, cos, pi, sqrt
-from gettext import gettext as _
 import gtk
 import cairo
 

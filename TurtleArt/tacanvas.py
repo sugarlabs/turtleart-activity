@@ -22,19 +22,15 @@
 
 import gtk
 import gobject
-from math import sin, cos, atan, pi, sqrt
+from math import sin, cos, pi
 import os
 import pango
 import cairo
 import pangocairo
-import base64
-from gettext import gettext as _
 
-from sprites import Sprite
-from tasprite_factory import SVG
 from tautils import image_to_base64, get_path, data_to_string, round_int, \
     debug_output
-from taconstants import CONSTANTS, COLORDICT
+from taconstants import COLORDICT
 
 
 def wrap100(n):
@@ -239,7 +235,7 @@ class TurtleGraphics:
         try:
             self.xcor += nn * sin(self.heading * DEGTOR)
             self.ycor += nn * cos(self.heading * DEGTOR)
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self.tw.running_sugar)
             return
@@ -257,7 +253,7 @@ class TurtleGraphics:
         ''' Set the turtle heading. '''
         try:
             self.heading = n
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self.tw.running_sugar)
             return
@@ -272,7 +268,7 @@ class TurtleGraphics:
         ''' Rotate turtle clockwise '''
         try:
             self.heading += n
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self.tw.running_sugar)
             return
@@ -295,7 +291,7 @@ class TurtleGraphics:
                 self.larc(-a, r)
             else:
                 self.rarc(a, r)
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self.tw.running_sugar)
             return
@@ -311,9 +307,6 @@ class TurtleGraphics:
         if r < 0:
             r = -r
             a = -a
-            s = 0
-        else:
-            s = 1
         oldx, oldy = self.xcor, self.ycor
         cx = self.xcor + r * cos(self.heading * DEGTOR)
         cy = self.ycor - r * sin(self.heading * DEGTOR)
@@ -346,9 +339,6 @@ class TurtleGraphics:
         if r < 0:
             r = -r
             a = -a
-            s = 1
-        else:
-            s = 0
         oldx, oldy = self.xcor, self.ycor
         cx = self.xcor - r * cos(self.heading * DEGTOR)
         cy = self.ycor + r * sin(self.heading * DEGTOR)
@@ -382,7 +372,7 @@ class TurtleGraphics:
         y *= self.tw.coord_scale
         try:
             self.xcor, self.ycor = x, y
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self.tw.running_sugar)
             return
@@ -410,7 +400,7 @@ class TurtleGraphics:
             if ps < 0:
                 ps = 0
             self.pensize = ps
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self.tw.running_sugar)
             return
@@ -438,7 +428,7 @@ class TurtleGraphics:
 
         try:
             self.color = c
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self.tw.running_sugar)
             return
@@ -453,7 +443,7 @@ class TurtleGraphics:
         ''' Set the gray level '''
         try:
             self.gray = g
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self.tw.running_sugar)
             return
@@ -480,7 +470,7 @@ class TurtleGraphics:
         ''' Set the text size '''
         try:
             self.tw.textsize = c
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self.tw.running_sugar)
 
@@ -488,7 +478,7 @@ class TurtleGraphics:
         ''' Set the color shade '''
         try:
             self.shade = s
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             debug_output('bad value sent to %s' % (__name__),
                          self.tw.running_sugar)
             return

@@ -24,7 +24,6 @@ from dbus.gobject_service import ExportedGObject
 import telepathy
 import os
 import gtk
-import base64
 
 from gettext import gettext as _
 
@@ -115,7 +114,7 @@ class Collaboration():
         debug_output('This is my activity: making a tube...',
                      self._tw.running_sugar)
 
-        id = self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].OfferDBusTube(
+        self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].OfferDBusTube(
             SERVICE, {})
         self._enable_share_button()
 

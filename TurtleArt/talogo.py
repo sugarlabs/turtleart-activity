@@ -738,8 +738,6 @@ class LogoCode:
                 debug_output("Couldn't open filepath %s" % (self.filepath),
                              self.tw.running_sugar)
         if self.pixbuf is not None:
-            x = self.tw.canvas.xcor
-            y = self.tw.canvas.ycor
             w *= self.tw.coord_scale
             h *= self.tw.coord_scale
             if center:

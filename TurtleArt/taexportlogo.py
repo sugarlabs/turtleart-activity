@@ -18,8 +18,6 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
-from gettext import gettext as _
-
 try:
     from sugar.datastore import datastore
     HAS_DATASTORE = True

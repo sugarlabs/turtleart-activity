@@ -28,7 +28,6 @@ import gtk
 import gobject
 import pango
 import pangocairo
-from StringIO import StringIO
 
 from gettext import gettext as _
 
@@ -69,7 +68,7 @@ from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
     calc_image_size, get_path, hide_button_hit, show_button_hit, chooser,
     arithmetic_check, xy, find_block_to_run, find_top_block, journal_check,
     find_group, find_blk_below, data_to_string, find_start_stack,
-    get_hardware, debug_output, error_output, data_to_string, convert,
+    get_hardware, debug_output, error_output, convert,
     find_bot_block, restore_clamp, collapse_clamp, data_from_string,
     increment_name, get_screen_dpi)
 from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
@@ -265,7 +264,7 @@ class TurtleArtWindow():
         self.lc = LogoCode(self)
 
         from tabasics import Palettes
-        p = Palettes(self)
+        Palettes(self)
         self._setup_plugins()
 
         if self.interactive_mode:
@@ -1530,7 +1529,6 @@ class TurtleArtWindow():
                          self.running_sugar)
             '''
             return
-        found = False
 
         if old in block_styles[style]:
             block_styles[style].remove(old)
@@ -3061,10 +3059,8 @@ may not terminate.', False)
         keyunicode = gtk.gdk.keyval_to_unicode(event.keyval)
         if event.get_state() & gtk.gdk.MOD1_MASK:
             alt_mask = True
-            alt_flag = 'T'
         else:
             alt_mask = False
-            alt_flag = 'F'
         self._key_press(alt_mask, keyname, keyunicode)
         return keyname
 

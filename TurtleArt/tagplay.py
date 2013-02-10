@@ -32,7 +32,6 @@ pygtk.require('2.0')
 import gobject
 gobject.threads_init()
 
-import pygst
 import gst
 import gst.interfaces
 import gtk
