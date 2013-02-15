@@ -717,7 +717,7 @@ def get_hardware():
     elif version == '4':
         return XO4
     else:
-        # Older systems don't have dmi info
+        # Some systems (e.g. ARM) don't have dmi info
         if os.path.exists('/sys/devices/platform/lis3lv02d/position'):
             return XO175        
         elif os.path.exists('/etc/olpc-release'):
@@ -763,4 +763,3 @@ def check_output(command, warning):
             print(warning)
             return None
     return output
-
