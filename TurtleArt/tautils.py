@@ -717,7 +717,13 @@ def get_hardware():
     elif version == '4':
         return XO4
     else:
-         return UNKNOWN
+        # Older systems don't have dmi info
+        if os.path.exists('/sys/devices/platform/lis3lv02d/position'):
+            return XO175        
+        elif os.path.exists('/etc/olpc-release'):
+            return XO1
+        else:
+            return UNKNOWN
 
 
 def _get_dmi(node):
