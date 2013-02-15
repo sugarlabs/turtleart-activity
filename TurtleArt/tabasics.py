@@ -64,10 +64,10 @@ from random import uniform
 
 from gettext import gettext as _
 
-from tapalette import make_palette, define_logo_function
-from talogo import primitive_dictionary, logoerror
-from tautils import convert, chr_to_ord, round_int, strtype
-from taconstants import COLORDICT, CONSTANTS, XO30
+from tapalette import (make_palette, define_logo_function)
+from talogo import (primitive_dictionary, logoerror)
+from tautils import (convert, chr_to_ord, round_int, strtype)
+from taconstants import (COLORDICT, CONSTANTS)
 
 
 def _color_to_num(c):
@@ -436,14 +436,9 @@ pensize\rend\r')
     def _color_palette(self):
         """ The basic Turtle Art color palette """
 
-        if self.tw.hw == XO30:
-            palette = make_palette('pen',
-                                   colors=["#00FFFF", "#00A0A0"],
-                                   help_string=_('Palette of pen colors'))
-        else:
-            palette = make_palette('colors',
-                                   colors=["#00FFFF", "#00A0A0"],
-                                   help_string=_('Palette of pen colors'))
+        palette = make_palette('colors',
+                               colors=["#00FFFF", "#00A0A0"],
+                               help_string=_('Palette of pen colors'))
 
         self._make_constant(palette, 'red', _('red'), CONSTANTS['red'])
         self._make_constant(palette, 'orange', _('orange'),

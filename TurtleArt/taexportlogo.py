@@ -1,4 +1,4 @@
-#Copyright (c) 2008-11, Walter Bender
+#Copyright (c) 2008-13, Walter Bender
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,9 @@ try:
 except:
     HAS_DATASTORE = False
 
-from TurtleArt.tapalette import logo_commands, logo_functions
-from TurtleArt.taconstants import TITLEXY, CONSTANTS
+from TurtleArt.tapalette import (logo_commands, logo_functions)
+from TurtleArt.taconstants import (TITLEXY, CONSTANTS)
+
 
 def save_logo(tw):
     """ Set up the Turtle Art color palette and color processing. """

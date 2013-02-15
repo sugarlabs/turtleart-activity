@@ -58,10 +58,10 @@ from tapalette import (palette_names, palette_blocks, expandable_blocks,
     block_names, content_blocks, default_values, special_names, block_styles,
     help_strings, hidden_proto_blocks, string_or_number_args,
     make_palette, palette_name_to_index, palette_init_on_start)
-from talogo import LogoCode, primitive_dictionary, logoerror
+from talogo import (LogoCode, primitive_dictionary, logoerror)
 from tacanvas import TurtleGraphics
-from tablock import Blocks, Block
-from taturtle import Turtles, Turtle
+from tablock import (Blocks, Block)
+from taturtle import (Turtles, Turtle)
 from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
     data_to_file, round_int, get_id, get_pixbuf_from_journal,
     movie_media_type, audio_media_type, image_media_type, save_picture,
@@ -71,8 +71,8 @@ from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
     get_hardware, debug_output, error_output, convert,
     find_bot_block, restore_clamp, collapse_clamp, data_from_string,
     increment_name, get_screen_dpi)
-from tasprite_factory import SVG, svg_str_to_pixbuf, svg_from_file
-from sprites import Sprites, Sprite
+from tasprite_factory import (SVG, svg_str_to_pixbuf, svg_from_file)
+from sprites import (Sprites, Sprite)
 
 if GST_AVAILABLE:
     from tagplay import stop_media

@@ -42,8 +42,8 @@ except (ImportError, AttributeError):
         OLD_SUGAR_SYSTEM = True
 from StringIO import StringIO
 
-from taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO4,
-                         UNKNOWN, MAGICNUMBER, SUFFIX)
+from taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO4, UNKNOWN,
+                         MAGICNUMBER, SUFFIX)
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
@@ -717,7 +717,13 @@ def get_hardware():
     elif version == '4':
         return XO4
     else:
-         return UNKNOWN
+        # Older systems don't have dmi info
+        if os.path.exists('/sys/devices/platform/lis3lv02d/position'):
+            return XO175        
+        elif os.path.exists('/etc/olpc-release'):
+            return XO1
+        else:
+            return UNKNOWN
 
 
 def _get_dmi(node):

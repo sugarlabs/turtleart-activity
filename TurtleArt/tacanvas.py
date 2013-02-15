@@ -28,8 +28,8 @@ import pango
 import cairo
 import pangocairo
 
-from tautils import image_to_base64, get_path, data_to_string, round_int, \
-    debug_output
+from tautils import (image_to_base64, get_path, data_to_string, round_int,
+                     debug_output)
 from taconstants import COLORDICT
 
 
