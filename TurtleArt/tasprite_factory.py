@@ -305,7 +305,7 @@ class SVG:
                              self._innie_spacer - self._stroke_width)
 
         self._hide_x = self._x + self._radius + self._stroke_width
-        self._hide_y = self._y - self._radius * 0 + self._stroke_width
+        self._hide_y = self._y + self._stroke_width
         self._show_x = self._x + self._radius + self._stroke_width
 
         svg += self._rarc_to(1, -1)
@@ -321,7 +321,7 @@ class SVG:
         svg += self._do_boolean()
         svg += self._rline_to(0, self._radius / 2.0)
 
-        self._show_y = self._y + self._radius * 0
+        self._show_y = self._y
         self._show_y -= (self._innie_y1 + self._innie_y2 + self._stroke_width)
 
         svg += self.line_to(xx, self._y)
@@ -402,7 +402,7 @@ class SVG:
         svg += self._rline_to(0, yoffset)
 
         self._hide_x = self._x + self._radius + self._stroke_width
-        self._hide_y = self._y - self._radius * 0 + self._stroke_width
+        self._hide_y = self._y + self._stroke_width
         self._show_x = self._x + self._radius + self._stroke_width
 
         svg += self._rarc_to(1, -1)
@@ -421,7 +421,7 @@ class SVG:
 
         svg += self._rline_to(-self._expand_x, 0)
 
-        self._show_y = self._y + self._radius * 0
+        self._show_y = self._y
         self._show_y -= (self._innie_y1 + self._innie_y2 + self._stroke_width)
 
         svg += self._end_boolean()
@@ -949,12 +949,15 @@ class SVG:
         svg_str = ""
         if sign_x == 1 and sign_y == -1:
             self._hide_x = self._x + self._radius + self._stroke_width
-            self._hide_y = self._y - self._radius * 0 + self._stroke_width
+            self._hide_y = self._y + self._stroke_width
             self._show_x = self._x + self._radius + self._stroke_width
-        if sign_x == 1 and sign_y == 1 and len(self._innie) == 1:
-            self._show_x = self._x - self._radius + self._stroke_width
+        if sign_x == 1 and sign_y == 1 \
+           and len(self._innie) == 1 and self._innie[0]:
+            self._show_x = self._x - self._radius
+            self._show_y = self._hide_y
         if sign_x == -1 and sign_y == 1:
-            self._show_y = self._y + self._radius * 0 - self._stroke_width
+            if not (len(self._innie) == 1 and self._innie[0]):
+                self._show_y = self._y - self._stroke_width
         if self._radius > 0:
             r2 = self._radius / 2.0
             if start:
@@ -1010,14 +1013,11 @@ class SVG:
         self._fill, self._stroke = _saved_fill, _saved_stroke
         return svg
 
-    def _show_dot(self, noscale=False):
+    def _show_dot(self):
         _saved_fill, _saved_stroke = self._fill, self._stroke
         self._fill, self._stroke = HIT_GREEN, HIT_GREEN
         svg = "</g>/n<g>/n"
-        if noscale:
-            scale = self._scale
-        else:
-            scale = self._scale * 2
+        scale = self._scale * 2
         scale2 = scale / 2
         svg += self._circle(self._dot_radius * scale2, self._show_x * scale2,
                                                     self._show_y * scale2)

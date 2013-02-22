@@ -866,7 +866,7 @@ class Block:
                                         self.svg.docks[1][1]]]
 
     def _make_compare_style(self, svg):
-        self.svg.expand(10 + self.dx + self.ex, self.ey)
+        self.svg.expand(15 + self.dx + self.ex, self.ey)
         self._make_block_graphics(svg, self.svg.boolean_compare)
         self.docks = [['bool', True, self.svg.docks[0][0],
                                      self.svg.docks[0][1], '('],
@@ -881,7 +881,7 @@ class Block:
         self._make_compare_style(svg)
 
     def _make_boolean_style(self, svg):
-        self.svg.expand(10 + self.dx + self.ex, self.ey)
+        self.svg.expand(15 + self.dx + self.ex, self.ey)
         self._make_block_graphics(svg, self.svg.boolean_and_or)
         self.docks = [['bool', True, self.svg.docks[0][0],
                                      self.svg.docks[0][1]],
