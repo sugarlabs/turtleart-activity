@@ -1250,8 +1250,11 @@ before making changes to your Turtle Blocks program'))
         self.dragging_canvas[2] = y
         if spr is None:
             if not self.running_blocks and not self.hw in (
-                XO1, XO15, XO175, XO4):
+                XO1, XO15, XO175, XO30):
                 self.dragging_canvas[0] = True
+                self.dragging_counter = 0
+                self.dragging_dx = 0
+                self.dragging_dy = 0
             return True
         self.dragging_canvas[0] = False
         self.selected_spr = spr
@@ -2133,11 +2136,18 @@ before making changes to your Turtle Blocks program'))
         ''' Process mouse movements '''
 
         if self.running_sugar and self.dragging_canvas[0]:
-            dx = self.dragging_canvas[1] - x
-            dy = self.dragging_canvas[2] - y
-            self.dragging_canvas[1] = x
-            self.dragging_canvas[2] = y
-            self.activity.adjust_sw(dx, dy)
+            # Don't adjust with each mouse move or GTK cannot keep pace.
+            if self.dragging_counter < 10:
+                self.dragging_dx += self.dragging_canvas[1] - x
+                self.dragging_dy += self.dragging_canvas[2] - y
+                self.dragging_canvas[1] = x
+                self.dragging_canvas[2] = y
+                self.dragging_counter += 1
+            else:
+                self.activity.adjust_sw(self.dragging_dx, self.dragging_dy)
+                self.dragging_counter = 0
+                self.dragging_dx = 0
+                self.dragging_dy = 0
             return True
 
         self.block_operation = 'move'
@@ -2309,6 +2319,11 @@ before making changes to your Turtle Blocks program'))
 
     def button_release(self, x, y):
         if self.running_sugar and self.dragging_canvas[0]:
+            if self.dragging_counter > 0:
+                self.activity.adjust_sw(self.dragging_dx, self.dragging_dy)
+            self.dragging_counter = 0
+            self.dragging_dx = 0
+            self.dragging_dy = 0
             self.dragging_canvas[0] = False
             self.dragging_canvas[1] = x
             self.dragging_canvas[2] = y
