@@ -304,9 +304,9 @@ class SVG:
         svg += self._rline_to(0, -self._radius * 3.5 - self._innie_y2 - \
                              self._innie_spacer - self._stroke_width)
 
-        self._hide_x = self._x + self._radius + self._stroke_width
-        self._hide_y = self._y + self._stroke_width
-        self._show_x = self._x + self._radius + self._stroke_width
+        self._hide_x = self._x + self._radius + self._stroke_width * 2
+        self._hide_y = self._y + self._radius * .25
+        self._show_x = self._x + self._radius + self._stroke_width * 2
 
         svg += self._rarc_to(1, -1)
         svg += self._rline_to(self._radius / 2.0 + self._expand_x, 0)
@@ -323,6 +323,7 @@ class SVG:
 
         self._show_y = self._y
         self._show_y -= (self._innie_y1 + self._innie_y2 + self._stroke_width)
+        self._show_y += self._radius * .75
 
         svg += self.line_to(xx, self._y)
         svg += self._rline_to(-self._expand_x, 0)
@@ -401,9 +402,9 @@ class SVG:
         yoffset = -2 * self._innie_y2 - self._innie_spacer - self._stroke_width
         svg += self._rline_to(0, yoffset)
 
-        self._hide_x = self._x + self._radius + self._stroke_width
-        self._hide_y = self._y + self._stroke_width
-        self._show_x = self._x + self._radius + self._stroke_width
+        self._hide_x = self._x + self._radius + self._stroke_width * 2
+        self._hide_y = self._y + self._radius * .25
+        self._show_x = self._x + self._radius + self._stroke_width * 2
 
         svg += self._rarc_to(1, -1)
         svg += self._rline_to(self._radius / 2.0 + self._expand_x, 0)
@@ -422,7 +423,9 @@ class SVG:
         svg += self._rline_to(-self._expand_x, 0)
 
         self._show_y = self._y
-        self._show_y -= (self._innie_y1 + self._innie_y2 + self._stroke_width)
+        self._show_y -= \
+            (self._innie_y1 + self._innie_y2 + self._stroke_width * 2)
+        self._show_y += self._radius * .75
 
         svg += self._end_boolean()
         self.margins[0] = int((self._radius + self._stroke_width) * \
@@ -948,16 +951,25 @@ class SVG:
     def _corner(self, sign_x, sign_y, a=90, l=0, s=1, start=True, end=True):
         svg_str = ""
         if sign_x == 1 and sign_y == -1:
-            self._hide_x = self._x + self._radius + self._stroke_width
-            self._hide_y = self._y + self._stroke_width
-            self._show_x = self._x + self._radius + self._stroke_width
-        if sign_x == 1 and sign_y == 1 \
-           and len(self._innie) == 1 and self._innie[0]:
-            self._show_x = self._x - self._radius
-            self._show_y = self._hide_y
+            if self._outie:
+                self._hide_x = self._x + self._radius + self._stroke_width * 2
+                self._show_x = self._x + self._radius + self._stroke_width * 2
+            else:
+                self._hide_x = self._x + self._radius + self._stroke_width
+                self._show_x = self._x + self._radius + self._stroke_width
+            self._hide_y = self._y + self._stroke_width + self._radius * .25
+        if sign_x == 1 and sign_y == 1:
+            if len(self._innie) == 1 and self._innie[0]:
+                self._show_x = self._x - self._radius
+                self._show_y = self._hide_y
         if sign_x == -1 and sign_y == 1:
             if not (len(self._innie) == 1 and self._innie[0]):
-                self._show_y = self._y - self._stroke_width
+                if not self._innie[0]:
+                    self._show_y = \
+                        self._y - self._stroke_width + self._radius * .25
+                else:
+                    self._show_y = \
+                        self._y - self._stroke_width + self._radius * .75
         if self._radius > 0:
             r2 = self._radius / 2.0
             if start:
@@ -1001,7 +1013,7 @@ class SVG:
             r = self._dot_radius
             y2 = y - 1.5
         else:
-            scale = self._scale * 2
+            scale = self._scale * 1.75
             scale2 = scale / 2
             x = self._hide_x * scale2
             y = self._hide_y * scale2
@@ -1017,7 +1029,7 @@ class SVG:
         _saved_fill, _saved_stroke = self._fill, self._stroke
         self._fill, self._stroke = HIT_GREEN, HIT_GREEN
         svg = "</g>/n<g>/n"
-        scale = self._scale * 2
+        scale = self._scale * 1.75
         scale2 = scale / 2
         svg += self._circle(self._dot_radius * scale2, self._show_x * scale2,
                                                     self._show_y * scale2)
