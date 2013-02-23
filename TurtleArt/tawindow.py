@@ -502,6 +502,8 @@ class TurtleArtWindow():
         if event is None:
             return
 
+        self.activity.check_buttons_for_fit()
+
         # If there are any constant blocks on the canvas, relabel them
         for blk in self.just_blocks():
             if blk.name in ['leftpos', 'toppos', 'rightpos', 'bottompos',
