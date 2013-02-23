@@ -571,7 +571,7 @@ tasetshade :shade \r')
         primitive_dictionary['minus'] = self._prim_minus
         palette.add_block('minus2',
                           style='number-style-porch',
-                          label='–',
+                          label='        –',
                           special_name=_('minus'),
                           prim_name='minus',
                           logo_command='taminus',
@@ -597,7 +597,7 @@ minus :y\rend\r')
         primitive_dictionary['division'] = self._prim_careful_divide
         palette.add_block('division2',
                           style='number-style-porch',
-                          label='/',
+                          label='        /',
                           special_name=_('divide'),
                           prim_name='division',
                           logo_command='quotient',
@@ -666,7 +666,7 @@ operators'))
         primitive_dictionary['more'] = self._prim_more
         palette.add_block('greater2',
                           style='compare-porch-style',
-                          label='>',
+                          label='    >',
                           string_or_number=True,
                           special_name=_('greater than'),
                           prim_name='greater?',
@@ -679,7 +679,7 @@ operators'))
         primitive_dictionary['less'] = self._prim_less
         palette.add_block('less2',
                           style='compare-porch-style',
-                          label='<',
+                          label='    <',
                           special_name=_('less than'),
                           string_or_number=True,
                           prim_name='less?',

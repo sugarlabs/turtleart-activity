@@ -239,23 +239,7 @@ class TurtleArtWindow():
 
         self.canvas.clearscreen(False)
 
-        CONSTANTS['titlex'] = int(-(self.canvas.width * TITLEXY[0]) / \
-            (self.coord_scale * 2))
-        CONSTANTS['leftx'] = int(-(self.canvas.width * TITLEXY[0]) / \
-            (self.coord_scale * 2))
-        CONSTANTS['rightx'] = 0
-        CONSTANTS['titley'] = int((self.canvas.height * TITLEXY[1]) / \
-            (self.coord_scale * 2))
-        CONSTANTS['topy'] = int((self.canvas.height * (TITLEXY[1] - 0.125)) / \
-            (self.coord_scale * 2))
-        CONSTANTS['bottomy'] = 0
-        CONSTANTS['leftpos'] = int(-self.canvas.width / (self.coord_scale * 2))
-        CONSTANTS['toppos'] = int(self.canvas.height / (self.coord_scale * 2))
-        CONSTANTS['rightpos'] = int(self.canvas.width / (self.coord_scale * 2))
-        CONSTANTS['bottompos'] = int(-self.canvas.height / \
-                                          (self.coord_scale * 2))
-        CONSTANTS['width'] = int(self.canvas.width / self.coord_scale)
-        CONSTANTS['height'] = int(self.canvas.height / self.coord_scale)
+        self._configure_cb(None)
 
         self._icon_paths = [os.path.join(self.path, 'icons')]
         self.turtleart_plugins = []
@@ -402,6 +386,7 @@ class TurtleArtWindow():
         self.window.connect("button-release-event", self._buttonrelease_cb)
         self.window.connect("motion-notify-event", self._move_cb)
         self.window.connect("key-press-event", self._keypress_cb)
+        gtk.gdk.screen_get_default().connect('size-changed', self._configure_cb)
 
         target = [("text/plain", 0, 0)]
         self.window.drag_dest_set(gtk.DEST_DEFAULT_ALL, target,
@@ -492,6 +477,38 @@ class TurtleArtWindow():
     def is_project_empty(self):
         ''' Check to see if project has any blocks in use '''
         return len(self.just_blocks()) == 1
+
+    def _configure_cb(self, event):
+        ''' Screen size has changed '''
+        self.width = gtk.gdk.screen_width()
+        self.height = gtk.gdk.screen_height()
+        CONSTANTS['titlex'] = int(-(self.width * TITLEXY[0]) / \
+            (self.coord_scale * 2))
+        CONSTANTS['leftx'] = int(-(self.width * TITLEXY[0]) / \
+            (self.coord_scale * 2))
+        CONSTANTS['rightx'] = 0
+        CONSTANTS['titley'] = int((self.height * TITLEXY[1]) / \
+            (self.coord_scale * 2))
+        CONSTANTS['topy'] = int((self.height * (TITLEXY[1] - 0.125)) / \
+            (self.coord_scale * 2))
+        CONSTANTS['bottomy'] = 0
+        CONSTANTS['leftpos'] = int(-self.width / (self.coord_scale * 2))
+        CONSTANTS['toppos'] = int(self.height / (self.coord_scale * 2))
+        CONSTANTS['rightpos'] = int(self.width / (self.coord_scale * 2))
+        CONSTANTS['bottompos'] = int(-self.height / (self.coord_scale * 2))
+        CONSTANTS['width'] = int(self.width / self.coord_scale)
+        CONSTANTS['height'] = int(self.height / self.coord_scale)
+
+        if event is None:
+            return
+
+        # If there are any constant blocks on the canvas, relabel them
+        for blk in self.just_blocks():
+            if blk.name in ['leftpos', 'toppos', 'rightpos', 'bottompos',
+                            'width', 'height']:
+                blk.spr.set_label('%s = %d' % (block_names[blk.name][0],
+                                               CONSTANTS[blk.name]))
+                blk.resize()
 
     def _expose_cb(self, win=None, event=None):
         ''' Repaint '''
@@ -1250,8 +1267,11 @@ before making changes to your Turtle Blocks program'))
         self.dragging_canvas[2] = y
         if spr is None:
             if not self.running_blocks and not self.hw in (
-                XO1, XO15, XO175, XO4):
+                XO1, XO15, XO175, XO30):
                 self.dragging_canvas[0] = True
+                self.dragging_counter = 0
+                self.dragging_dx = 0
+                self.dragging_dy = 0
             return True
         self.dragging_canvas[0] = False
         self.selected_spr = spr
@@ -2133,11 +2153,18 @@ before making changes to your Turtle Blocks program'))
         ''' Process mouse movements '''
 
         if self.running_sugar and self.dragging_canvas[0]:
-            dx = self.dragging_canvas[1] - x
-            dy = self.dragging_canvas[2] - y
-            self.dragging_canvas[1] = x
-            self.dragging_canvas[2] = y
-            self.activity.adjust_sw(dx, dy)
+            # Don't adjust with each mouse move or GTK cannot keep pace.
+            if self.dragging_counter < 10:
+                self.dragging_dx += self.dragging_canvas[1] - x
+                self.dragging_dy += self.dragging_canvas[2] - y
+                self.dragging_canvas[1] = x
+                self.dragging_canvas[2] = y
+                self.dragging_counter += 1
+            else:
+                self.activity.adjust_sw(self.dragging_dx, self.dragging_dy)
+                self.dragging_counter = 0
+                self.dragging_dx = 0
+                self.dragging_dy = 0
             return True
 
         self.block_operation = 'move'
@@ -2309,6 +2336,11 @@ before making changes to your Turtle Blocks program'))
 
     def button_release(self, x, y):
         if self.running_sugar and self.dragging_canvas[0]:
+            if self.dragging_counter > 0:
+                self.activity.adjust_sw(self.dragging_dx, self.dragging_dy)
+            self.dragging_counter = 0
+            self.dragging_dx = 0
+            self.dragging_dy = 0
             self.dragging_canvas[0] = False
             self.dragging_canvas[1] = x
             self.dragging_canvas[2] = y
