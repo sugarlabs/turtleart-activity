@@ -89,7 +89,7 @@ class Collaboration():
             }
 
     def _shared_cb(self, activity):
-        self._shared_activity = self._activity._shared_activity
+        self._shared_activity = self._activity.get_shared_activity()
         if self._shared_activity is None:
             debug_output('Failed to share or join activity ... \
                 _shared_activity is null in _shared_cb()',
@@ -119,7 +119,7 @@ class Collaboration():
         self._enable_share_button()
 
     def _joined_cb(self, activity):
-        self._shared_activity = self._activity._shared_activity
+        self._shared_activity = self._activity.get_shared_activity()
         if self._shared_activity is None:
             debug_output('Failed to share or join activity ... \
                 _shared_activity is null in _shared_cb()',
