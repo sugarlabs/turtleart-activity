@@ -1,7 +1,9 @@
 173
 
 ENHANCEMENTS:
-* Increase expand/shrink dots touch
+* Increase expand/shrink dots for touch
+* Enable canvas dragging with touch
+* Update screen constants (e.g., width, height) when screen rotates
 
 172
 

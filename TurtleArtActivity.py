@@ -113,7 +113,37 @@ class TurtleArtActivity(activity.Activity):
             self.metadata['activity count'] = str(count)
 
         self._defer_palette_move = False
+        self.check_buttons_for_fit()
         self.init_complete = True
+
+    def check_buttons_for_fit(self):
+        ''' Check to see which set of buttons to display '''
+        if gtk.gdk.screen_width() > gtk.gdk.screen_height():
+            self.extras_separator.props.draw = True
+            self.extras_separator.show()
+            self.keep_button.show()
+            self.stop_separator.show()
+            self.palette_toolbar_button.show()
+            self.keep_button2.hide()
+            self.keep_label2.hide()
+            self.samples_button.show()
+            self.samples_button2.hide()
+            self.samples_label2.hide()
+            self.palette_palette_button.hide()
+        else:
+            self.extras_separator.props.draw = False
+            self.extras_separator.hide()
+            self.keep_button.hide()
+            self.stop_separator.hide()
+            if self.palette_toolbar_button.is_expanded():
+                self.palette_toolbar_button.set_expanded(False)
+            self.palette_toolbar_button.hide()
+            self.keep_button2.show()
+            self.keep_label2.show()
+            self.samples_button.hide()
+            self.samples_button2.show()
+            self.samples_label2.show()
+            self.palette_palette_button.show()
 
     # Activity toolbar callbacks
     def do_save_as_logo_cb(self, button):
@@ -315,6 +345,8 @@ class TurtleArtActivity(activity.Activity):
 
     def adjust_sw(self, dx, dy):
         ''' Adjust the scrolled window position. '''
+        if not self.tw.hw in [XO1]:
+            self._defer_palette_move = True
         hadj = self.sw.get_hadjustment()
         hvalue = hadj.get_value() + dx
         try:
@@ -339,7 +371,6 @@ class TurtleArtActivity(activity.Activity):
                 'get_lower, get_upper only available in PyGTK 2.14 and above.')
         vadj.set_value(vvalue)
         self.sw.set_vadjustment(vadj)
-        self._defer_palette_move = True
 
     def adjust_palette(self):
         ''' Align palette to scrolled window position. '''
@@ -605,8 +636,8 @@ class TurtleArtActivity(activity.Activity):
 
         self._make_project_buttons(self._toolbox.toolbar)
 
-        self._add_separator(self._toolbox.toolbar, expand=False,
-                            visible=True)
+        self.extras_separator = self._add_separator(
+            self._toolbox.toolbar, expand=False, visible=True)
 
         self.keep_button = self._add_button(
             'filesaveoff', _('Save snapshot'), self.do_keep_cb,
@@ -619,7 +650,8 @@ class TurtleArtActivity(activity.Activity):
         self._toolbox.toolbar.insert(self._help_button, -1)
         self._help_button.show()
 
-        self._add_separator(self._toolbox.toolbar, expand=True, visible=False)
+        self.stop_separator = self._add_separator(
+            self._toolbox.toolbar, expand=True, visible=False)
 
         stop_button = StopButton(self)
         stop_button.props.accelerator = '<Ctrl>Q'
@@ -729,6 +761,13 @@ class TurtleArtActivity(activity.Activity):
     def _setup_palette_toolbar(self):
         ''' The palette toolbar must be setup *after* plugins are loaded. '''
         if self.has_toolbarbox:
+
+            self.palette_palette_button = self._add_button(
+                'palette', _('Palettes'), self._palette_palette_cb,
+                self._toolbox.toolbar)
+            self._palette_palette = self.palette_palette_button.get_palette()
+            button_box = gtk.VBox()
+
             self.palette_buttons = []
             for i, palette_name in enumerate(palette_names):
                 if i == 0:
@@ -742,11 +781,27 @@ class TurtleArtActivity(activity.Activity):
                         self.do_palette_buttons_cb, i,
                         help_strings[palette_name],
                         palette_group))
+                self._add_button_and_label(
+                    palette_name + 'off',
+                    help_strings[palette_name],
+                    self.do_palette_buttons_cb, i,
+                    button_box)
             if self.tw.hw in [XO1, XO15, XO175, XO4]:
                 self._add_separator(self._palette_toolbar, expand=True,
                                     visible=False)
             self._make_palette_buttons(self._palette_toolbar)
             self._palette_toolbar.show()
+            button_box.show_all()
+            self._palette_palette.set_content(button_box)
+
+    def _palette_palette_cb(self, button):
+        if self._palette_palette:
+            if not self._palette_palette.is_up():
+                self._palette_palette.popup(immediate=True,
+                                    state=self._palette_palette.SECONDARY)
+            else:
+                self._palette_palette.popdown(immediate=True)
+            return
 
     def _make_load_save_buttons(self, toolbar):
         ''' Additional toolbar buttons for file IO '''
@@ -761,23 +816,33 @@ class TurtleArtActivity(activity.Activity):
                 toolbar)
             self._palette = save_load_button.get_palette()
             button_box = gtk.VBox()
-            self.save_as_image = self._add_button_and_label(
+            self.save_as_image, label = self._add_button_and_label(
                 'image-saveoff', _('Save as image'), self.do_save_as_image_cb,
-                button_box)
-            self.save_as_logo = self._add_button_and_label(
+                None, button_box)
+            self.save_as_logo, label = self._add_button_and_label(
                 'logo-saveoff', _('Save as Logo'), self.do_save_as_logo_cb,
-                button_box)
-            self.load_ta_project = self._add_button_and_label(
+                None, button_box)
+
+            # When screen is in portrait mode, the buttons don't fit
+            # on the main toolbar, so put them here.
+            self.keep_button2, self.keep_label2 = self._add_button_and_label(
+                'filesaveoff', _('Save snapshot'), self.do_keep_cb,
+                None, button_box)
+            self.samples_button2, self.samples_label2 = \
+                self._add_button_and_label('ta-open', _('Load example'),
+                                           self.do_samples_cb, None, button_box)
+
+            self.load_ta_project, label = self._add_button_and_label(
                 'load-from-journal', _('Load project'),
-                self.do_load_ta_project_cb, button_box)
+                self.do_load_ta_project_cb, None, button_box)
             # Only enable plugin loading if installed in $HOME
             if activity.get_bundle_path()[0:len(home)] == home:
-                self.load_ta_plugin = self._add_button_and_label(
+                self.load_ta_plugin, label = self._add_button_and_label(
                     'pluginoff', _('Load plugin'),
-                    self.do_load_ta_plugin_cb, button_box)
-            self.load_python = self._add_button_and_label(
+                    self.do_load_ta_plugin_cb, None, button_box)
+            self.load_python, label = self._add_button_and_label(
                 'pippy-openoff', _('Load Python block'),
-                self.do_load_python_cb, button_box)
+                self.do_load_python_cb, None, button_box)
             button_box.show_all()
             self._palette.set_content(button_box)
         else:
@@ -904,10 +969,8 @@ class TurtleArtActivity(activity.Activity):
         floating palettes. '''
         self.hadj_value = self.sw.get_hadjustment().get_value()
         self.vadj_value = self.sw.get_vadjustment().get_value()
-        if not self.tw.hw in [XO1] and \
-           not self._defer_palette_move:
-            gobject.idle_add(self.tw.move_palettes, self.hadj_value,
-                             self.vadj_value)
+        if not self._defer_palette_move:
+            gobject.idle_add(self.adjust_palettes)
 
     def _setup_canvas(self, canvas_window):
         ''' Initialize the turtle art canvas. '''
@@ -1279,6 +1342,7 @@ in order to use the plugin.'))
         else:
             toolbar.props.page.insert(separator, -1)
         separator.show()
+        return separator
 
     def _add_button(self, name, tooltip, callback, toolbar, accelerator=None,
                     arg=None):
@@ -1325,17 +1389,17 @@ in order to use the plugin.'))
             button.set_tooltip(tooltip)
         return button
 
-    def _add_button_and_label(self, icon_name, tooltip, cb, box):
+    def _add_button_and_label(self, name, tooltip, cb, cb_args, box):
         ''' Add a button and a label to a box '''
         button_and_label = gtk.HBox()
-        button = self._add_button(icon_name, None, cb, None)
+        button = self._add_button(name, None, cb, None, arg=cb_args)
+        button_and_label.pack_start(button)
         label = gtk.Label(tooltip)
         label.show()
-        button_and_label.pack_start(button)
         button_and_label.pack_start(label)
         box.pack_start(button_and_label)
         button_and_label.show()
-        return button
+        return button, label
 
     def _notify_successful_save(self, title='', msg=''):
         ''' Notify user when saves are completed '''
