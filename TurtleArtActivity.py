@@ -118,6 +118,27 @@ class TurtleArtActivity(activity.Activity):
 
     def check_buttons_for_fit(self):
         ''' Check to see which set of buttons to display '''
+        if not self.has_toolbarbox:
+            return
+
+        # If there are too many palettes to fit, put them in a
+        # scrolling window
+        if gtk.gdk.screen_width() / (len(self.palette_buttons) + 2) < 55:
+            if self.palette_toolbar_button.is_expanded():
+                self.palette_toolbar_button.set_expanded(False)
+            self.palette_toolbar_button.hide()
+            self.palette_palette_button.show()
+        else:
+            self.palette_toolbar_button.show()
+            self.palette_palette_button.hide()
+
+        # Refresh the buttons to the right of our intervention
+        self.eraser_button.show()
+        self.run_button.show()
+        self.step_button.show()
+        self.stop_turtle_button.show()
+        self._help_button.show()
+
         if gtk.gdk.screen_width() > gtk.gdk.screen_height() and \
                 gtk.gdk.screen_width() > 799:
             self.extras_separator.props.draw = True
@@ -140,16 +161,7 @@ class TurtleArtActivity(activity.Activity):
             self.samples_button2.show()
             self.samples_label2.show()
 
-        # If there are too many palettes to fit, put them in a
-        # scrolling window
-        if gtk.gdk.screen_width() / (len(self.palette_buttons) + 2) < 55:
-            if self.palette_toolbar_button.is_expanded():
-                self.palette_toolbar_button.set_expanded(False)
-            self.palette_toolbar_button.hide()
-            self.palette_palette_button.show()
-        else:
-            self.palette_toolbar_button.show()
-            self.palette_palette_button.hide()
+        self._toolbox.show()
 
     # Activity toolbar callbacks
     def do_save_as_logo_cb(self, button):
