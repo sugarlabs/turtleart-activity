@@ -118,32 +118,50 @@ class TurtleArtActivity(activity.Activity):
 
     def check_buttons_for_fit(self):
         ''' Check to see which set of buttons to display '''
-        if gtk.gdk.screen_width() > gtk.gdk.screen_height():
+        if not self.has_toolbarbox:
+            return
+
+        # If there are too many palettes to fit, put them in a
+        # scrolling window
+        if gtk.gdk.screen_width() / (len(self.palette_buttons) + 2) \
+                < style.GRID_CELL_SIZE:
+            if self.palette_toolbar_button.is_expanded():
+                self.palette_toolbar_button.set_expanded(False)
+            self.palette_toolbar_button.hide()
+            self.palette_palette_button.show()
+        else:
+            self.palette_toolbar_button.show()
+            self.palette_palette_button.hide()
+
+        if gtk.gdk.screen_width() / 14 > style.GRID_CELL_SIZE:
             self.extras_separator.props.draw = True
             self.extras_separator.show()
             self.keep_button.show()
             self.stop_separator.show()
-            self.palette_toolbar_button.show()
             self.keep_button2.hide()
             self.keep_label2.hide()
             self.samples_button.show()
             self.samples_button2.hide()
             self.samples_label2.hide()
-            self.palette_palette_button.hide()
         else:
             self.extras_separator.props.draw = False
             self.extras_separator.hide()
             self.keep_button.hide()
             self.stop_separator.hide()
-            if self.palette_toolbar_button.is_expanded():
-                self.palette_toolbar_button.set_expanded(False)
-            self.palette_toolbar_button.hide()
             self.keep_button2.show()
             self.keep_label2.show()
             self.samples_button.hide()
             self.samples_button2.show()
             self.samples_label2.show()
-            self.palette_palette_button.show()
+
+        # Refresh the buttons to the right of our intervention
+        self.eraser_button.show()
+        self.run_button.show()
+        self.step_button.show()
+        self.stop_turtle_button.show()
+        self._help_button.show()
+
+        self._toolbox.show()
 
     # Activity toolbar callbacks
     def do_save_as_logo_cb(self, button):
@@ -767,6 +785,14 @@ class TurtleArtActivity(activity.Activity):
                 self._toolbox.toolbar)
             self._palette_palette = self.palette_palette_button.get_palette()
             button_box = gtk.VBox()
+            button_box.set_homogeneous(False)
+            button_sw = gtk.ScrolledWindow()
+            button_sw.set_size_request(
+                int(gtk.gdk.screen_width() / 3),
+                gtk.gdk.screen_height() - style.GRID_CELL_SIZE * 3)
+            button_sw.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+            button_sw.add_with_viewport(button_box)
+            button_sw.show()
 
             self.palette_buttons = []
             for i, palette_name in enumerate(palette_names):
@@ -792,7 +818,7 @@ class TurtleArtActivity(activity.Activity):
             self._make_palette_buttons(self._palette_toolbar)
             self._palette_toolbar.show()
             button_box.show_all()
-            self._palette_palette.set_content(button_box)
+            self._palette_palette.set_content(button_sw)
 
     def _palette_palette_cb(self, button):
         if self._palette_palette:
@@ -1393,10 +1419,12 @@ in order to use the plugin.'))
         ''' Add a button and a label to a box '''
         button_and_label = gtk.HBox()
         button = self._add_button(name, None, cb, None, arg=cb_args)
-        button_and_label.pack_start(button)
+        button_and_label.pack_start(button, False, False, padding=5)
         label = gtk.Label(tooltip)
+        label.set_justify(gtk.JUSTIFY_LEFT)
+        label.set_line_wrap(True)
         label.show()
-        button_and_label.pack_start(label)
+        button_and_label.pack_start(label, False, False, padding=5)
         box.pack_start(button_and_label)
         button_and_label.show()
         return button, label
