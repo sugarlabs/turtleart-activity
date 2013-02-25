@@ -123,7 +123,8 @@ class TurtleArtActivity(activity.Activity):
 
         # If there are too many palettes to fit, put them in a
         # scrolling window
-        if gtk.gdk.screen_width() / (len(self.palette_buttons) + 2) < 55:
+        if gtk.gdk.screen_width() / (len(self.palette_buttons) + 2) \
+                < style.GRID_CELL_SIZE:
             if self.palette_toolbar_button.is_expanded():
                 self.palette_toolbar_button.set_expanded(False)
             self.palette_toolbar_button.hide()
@@ -132,15 +133,7 @@ class TurtleArtActivity(activity.Activity):
             self.palette_toolbar_button.show()
             self.palette_palette_button.hide()
 
-        # Refresh the buttons to the right of our intervention
-        self.eraser_button.show()
-        self.run_button.show()
-        self.step_button.show()
-        self.stop_turtle_button.show()
-        self._help_button.show()
-
-        if gtk.gdk.screen_width() > gtk.gdk.screen_height() and \
-                gtk.gdk.screen_width() > 799:
+        if gtk.gdk.screen_width() / 14 > style.GRID_CELL_SIZE:
             self.extras_separator.props.draw = True
             self.extras_separator.show()
             self.keep_button.show()
@@ -160,6 +153,13 @@ class TurtleArtActivity(activity.Activity):
             self.samples_button.hide()
             self.samples_button2.show()
             self.samples_label2.show()
+
+        # Refresh the buttons to the right of our intervention
+        self.eraser_button.show()
+        self.run_button.show()
+        self.step_button.show()
+        self.stop_turtle_button.show()
+        self._help_button.show()
 
         self._toolbox.show()
 
