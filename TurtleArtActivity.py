@@ -123,15 +123,22 @@ class TurtleArtActivity(activity.Activity):
 
         # If there are too many palettes to fit, put them in a
         # scrolling window
+        if self.palette_toolbar_button.is_expanded():
+            palette_was_expanded = True
+            self.palette_toolbar_button.set_expanded(False)
+        else:
+            palette_was_expanded = False
+        self._toolbox.toolbar.remove(self.palette_toolbar_button)
+        self._toolbox.toolbar.remove(self.palette_palette_button)
         if gtk.gdk.screen_width() / (len(self.palette_buttons) + 2) \
                 < style.GRID_CELL_SIZE:
-            if self.palette_toolbar_button.is_expanded():
-                self.palette_toolbar_button.set_expanded(False)
-            self.palette_toolbar_button.hide()
+            self._toolbox.toolbar.insert(self.palette_palette_button, 3)
             self.palette_palette_button.show()
         else:
+            self._toolbox.toolbar.insert(self.palette_toolbar_button, 3)
             self.palette_toolbar_button.show()
-            self.palette_palette_button.hide()
+            if palette_was_expanded:
+                self.palette_toolbar_button.set_expanded(True)
 
         if self.keep_button in self._toolbox.toolbar:
             self._toolbox.toolbar.remove(self.extras_separator)
@@ -170,7 +177,7 @@ class TurtleArtActivity(activity.Activity):
         self._help_button.show()
         self.stop_button.show()
 
-        self._toolbox.show()
+        self._toolbox.show_all()
 
     # Activity toolbar callbacks
     def do_save_as_logo_cb(self, button):
