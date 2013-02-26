@@ -133,26 +133,34 @@ class TurtleArtActivity(activity.Activity):
             self.palette_toolbar_button.show()
             self.palette_palette_button.hide()
 
-        if gtk.gdk.screen_width() / 14 > style.GRID_CELL_SIZE:
-            self.extras_separator.props.draw = True
-            self.extras_separator.show()
-            self.keep_button.show()
-            self.stop_separator.show()
-            self.keep_button2.hide()
-            self.keep_label2.hide()
-            self.samples_button.show()
-            self.samples_button2.hide()
-            self.samples_label2.hide()
-        else:
-            self.extras_separator.props.draw = False
-            self.extras_separator.hide()
-            self.keep_button.hide()
-            self.stop_separator.hide()
+        if self.keep_button in self._toolbox.toolbar:
+            self._toolbox.toolbar.remove(self.extras_separator)
+            self._toolbox.toolbar.remove(self.keep_button)
+            self._toolbox.toolbar.remove(self.samples_button)
+            self._toolbox.toolbar.remove(self.stop_separator)
+        self._toolbox.toolbar.remove(self.stop_button)
+
+        if gtk.gdk.screen_width() / 14 < style.GRID_CELL_SIZE:
             self.keep_button2.show()
             self.keep_label2.show()
-            self.samples_button.hide()
             self.samples_button2.show()
             self.samples_label2.show()
+            self._toolbox.toolbar.insert(self.stop_button, -1)
+        else:
+            self.keep_button2.hide()
+            self.keep_label2.hide()
+            self.samples_button2.hide()
+            self.samples_label2.hide()
+            self._toolbox.toolbar.insert(self.extras_separator, -1)
+            self.extras_separator.props.draw = True
+            self.extras_separator.show()
+            self._toolbox.toolbar.insert(self.keep_button, -1)
+            self.keep_button.show()
+            self._toolbox.toolbar.insert(self.samples_button, -1)
+            self.samples_button.show()
+            self._toolbox.toolbar.insert(self.stop_separator, -1)
+            self.stop_separator.show()
+            self._toolbox.toolbar.insert(self.stop_button, -1)
 
         # Refresh the buttons to the right of our intervention
         self.eraser_button.show()
@@ -160,6 +168,7 @@ class TurtleArtActivity(activity.Activity):
         self.step_button.show()
         self.stop_turtle_button.show()
         self._help_button.show()
+        self.stop_button.show()
 
         self._toolbox.show()
 
@@ -671,10 +680,10 @@ class TurtleArtActivity(activity.Activity):
         self.stop_separator = self._add_separator(
             self._toolbox.toolbar, expand=True, visible=False)
 
-        stop_button = StopButton(self)
-        stop_button.props.accelerator = '<Ctrl>Q'
-        self._toolbox.toolbar.insert(stop_button, -1)
-        stop_button.show()
+        self.stop_button = StopButton(self)
+        self.stop_button.props.accelerator = '<Ctrl>Q'
+        self._toolbox.toolbar.insert(self.stop_button, -1)
+        self.stop_button.show()
 
     def _setup_toolbar_help(self):
         ''' Set up a help palette for the main toolbars '''
