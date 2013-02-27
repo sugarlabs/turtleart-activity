@@ -138,6 +138,7 @@ class TurtleArtWindow():
         self.mouse_x = 0
         self.mouse_y = 0
         self.running_blocks = False
+        self._coordinate_counter = 0
 
         try:
             locale.setlocale(locale.LC_NUMERIC, '')
@@ -1268,8 +1269,8 @@ before making changes to your Turtle Blocks program'))
         self.dragging_canvas[1] = x
         self.dragging_canvas[2] = y
         if spr is None:
-            if not self.running_blocks and not self.hw in (
-                XO1, XO15, XO175, XO30):
+            if not self.running_blocks and not self.hw in [XO1]:
+                # should be OK on XO15, XO175, XO30
                 self.dragging_canvas[0] = True
                 self.dragging_counter = 0
                 self.dragging_dx = 0
@@ -2188,10 +2189,12 @@ before making changes to your Turtle Blocks program'))
                     self.canvas.setpen(True)
                 else:
                     self.canvas.setxy(tx, ty, share=False)
-                self.lc.update_label_value('xcor',
-                                           self.canvas.xcor / self.coord_scale)
-                self.lc.update_label_value('ycor',
-                                           self.canvas.ycor / self.coord_scale)
+                if self._coordinate_counter % 10 == 0:
+                    self.lc.update_label_value(
+                        'xcor', self.canvas.xcor / self.coord_scale)
+                    self.lc.update_label_value(
+                        'ycor', self.canvas.ycor / self.coord_scale)
+                self._coordinate_counter += 1
             else:
                 dx = x - sx - self.selected_turtle.spr.rect.width / 2
                 dy = y - sy - self.selected_turtle.spr.rect.height / 2
@@ -2453,12 +2456,12 @@ before making changes to your Turtle Blocks program'))
         self.canvas.move_turtle()
         if self.interactive_mode:
             self.display_coordinates()
-        if self.running_sugar:
-            self.selected_turtle.spr.set_layer(TURTLE_LAYER)
-            self.lc.update_label_value('xcor',
-                                       self.canvas.xcor / self.coord_scale)
-            self.lc.update_label_value('ycor',
-                                       self.canvas.ycor / self.coord_scale)
+            if self.running_sugar:
+                self.selected_turtle.spr.set_layer(TURTLE_LAYER)
+                self.lc.update_label_value(
+                    'xcor', self.canvas.xcor / self.coord_scale)
+                self.lc.update_label_value(
+                    'ycor', self.canvas.ycor / self.coord_scale)
 
     def _click_block(self, x, y):
         ''' Click block: lots of special cases to handle... '''
@@ -3854,13 +3857,12 @@ may not terminate.', False)
             y = round_int(float(self.canvas.ycor) / self.coord_scale)
             h = round_int(self.canvas.heading)
             if int(x) == x and int(y) == y and int(h) == h:
-                formatting = '%s: %d %s: %d %s: %d'
+                formatting = '%s: %d %s: %d %s %d'
             else:
-                formatting = '%s: %0.2f %s: %0.2f %s: %0.2f'
+                formatting = '%s: %0.2f %s: %0.2f %s %0.2f'
             if self.running_sugar:
                 self.activity.coordinates_label.set_text(
-                    formatting % (_('xcor'), x, _('ycor'), y,
-                                              _('heading'), h))
+                    formatting % ('x', x, 'y', y, '⟳', h))
                 self.activity.coordinates_label.show()
             elif self.interactive_mode:
                 formatting = '%s — ' + formatting
