@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-24 00:31-0500\n"
-"PO-Revision-Date: 2013-02-14 15:30+0200\n"
+"PO-Revision-Date: 2013-02-27 14:13+0200\n"
 "Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: fr\n"
@@ -960,9 +960,8 @@ msgid "Load Python block"
 msgstr "Charger un bloc Python"
 
 #: TurtleArtActivity.py:766
-#, fuzzy
 msgid "Palettes"
-msgstr "palette"
+msgstr "Palettes"
 
 #: TurtleArtActivity.py:810
 msgid "Sharing blocks disabled"
