@@ -38,6 +38,7 @@ try:  # 0.86 toolbar widgets
     HAS_TOOLBARBOX = True
 except ImportError:
     HAS_TOOLBARBOX = False
+from sugar.graphics.icon import Icon
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.radiotoolbutton import RadioToolButton
 from sugar.graphics.alert import (ConfirmationAlert, NotifyAlert)
@@ -97,6 +98,8 @@ class TurtleArtActivity(activity.Activity):
         self.canvas = self.sw
 
         _logger.debug('_setup_palette_toolbar')
+        self.palette_buttons = []
+        self._overflow_buttons = []
         self._setup_palette_toolbar()
         self._setup_extra_controls()
 
@@ -121,32 +124,21 @@ class TurtleArtActivity(activity.Activity):
         if not self.has_toolbarbox:
             return
 
-        # If there are too many palettes to fit, put them in a
-        # scrolling window
-        if self.palette_toolbar_button.is_expanded():
-            palette_was_expanded = True
-            self.palette_toolbar_button.set_expanded(False)
-        else:
-            palette_was_expanded = False
-        self._toolbox.toolbar.remove(self.palette_toolbar_button)
-        self._toolbox.toolbar.remove(self.palette_palette_button)
-        if gtk.gdk.screen_width() / (len(self.palette_buttons) + 2) \
-                < style.GRID_CELL_SIZE:
-            self._toolbox.toolbar.insert(self.palette_palette_button, 3)
-            self.palette_palette_button.show()
-        else:
-            self._toolbox.toolbar.insert(self.palette_toolbar_button, 3)
-            self.palette_toolbar_button.show()
-            if palette_was_expanded:
-                self.palette_toolbar_button.set_expanded(True)
+        # If the screen width has changed, we may need to reformat
+        # the palette toolbar
+        self._setup_palette_toolbar()
 
+        # And we may need to shuffle some buttons
         if self.keep_button in self._toolbox.toolbar:
             self._toolbox.toolbar.remove(self.extras_separator)
             self._toolbox.toolbar.remove(self.keep_button)
             self._toolbox.toolbar.remove(self.samples_button)
             self._toolbox.toolbar.remove(self.stop_separator)
         self._toolbox.toolbar.remove(self.stop_button)
-
+        if self._view_sep_1 in self._view_toolbar:
+            self._view_toolbar.remove(self._view_sep_1)
+            self._view_toolbar.remove(self.coordinates_toolitem)
+            self._view_toolbar.remove(self._view_sep_2)
         if gtk.gdk.screen_width() / 14 < style.GRID_CELL_SIZE:
             self.keep_button2.show()
             self.keep_label2.show()
@@ -168,16 +160,16 @@ class TurtleArtActivity(activity.Activity):
             self._toolbox.toolbar.insert(self.stop_separator, -1)
             self.stop_separator.show()
             self._toolbox.toolbar.insert(self.stop_button, -1)
-
-        # Refresh the buttons to the right of our intervention
-        self.eraser_button.show()
-        self.run_button.show()
-        self.step_button.show()
-        self.stop_turtle_button.show()
-        self._help_button.show()
-        self.stop_button.show()
-
+            if get_hardware() in [XO1, XO15, XO175, XO4]:
+                self._view_toolbar.insert(self._view_sep_1, 4)
+                self._view_toolbar.insert(self.coordinates_toolitem, 5)
+                self._view_toolbar.insert(self._view_sep_2, 6)
+            else:
+                self._view_toolbar.insert(self._view_sep_1, 3)
+                self._view_toolbar.insert(self.coordinates_toolitem, 4)
+                self._view_toolbar.insert(self._view_sep_2, 5)
         self._toolbox.show_all()
+        self._view_toolbar.show_all()
 
     # Activity toolbar callbacks
     def do_save_as_logo_cb(self, button):
@@ -576,9 +568,9 @@ class TurtleArtActivity(activity.Activity):
                                                 page=edit_toolbar,
                                                 icon_name='toolbar-edit')
 
-            view_toolbar = gtk.Toolbar()
+            self._view_toolbar = gtk.Toolbar()
             self.view_toolbar_button = ToolbarButton(label=_('View'),
-                                                page=view_toolbar,
+                                                page=self._view_toolbar,
                                                 icon_name='toolbar-view')
             self._palette_toolbar = gtk.Toolbar()
             self.palette_toolbar_button = ToolbarButton(
@@ -605,8 +597,8 @@ class TurtleArtActivity(activity.Activity):
 
             self._project_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Project'), self._project_toolbar)
-            view_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('View'), view_toolbar)
+            self._view_toolbar = gtk.Toolbar()
+            self._toolbox.add_toolbar(_('View'), self._view_toolbar)
             edit_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Edit'), edit_toolbar)
             journal_toolbar = gtk.Toolbar()
@@ -626,32 +618,38 @@ class TurtleArtActivity(activity.Activity):
                          self._undo_cb, edit_toolbar)
 
         self._add_button('view-fullscreen', _('Fullscreen'),
-                         self.do_fullscreen_cb, view_toolbar, '<Alt>Return')
+                         self.do_fullscreen_cb, self._view_toolbar,
+                         '<Alt>Return')
         self._add_button('view-Cartesian', _('Cartesian coordinates'),
-                         self.do_cartesian_cb, view_toolbar)
+                         self.do_cartesian_cb, self._view_toolbar)
         self._add_button('view-polar', _('Polar coordinates'),
-                         self.do_polar_cb, view_toolbar)
+                         self.do_polar_cb, self._view_toolbar)
         if get_hardware() in [XO1, XO15, XO175, XO4]:
             self._add_button('view-metric', _('Metric coordinates'),
-                             self.do_metric_cb, view_toolbar)
-        self._add_separator(view_toolbar, visible=False)
-        self.coordinates_label = self._add_label(_('xcor') + ' = 0 ' + \
-            _('ycor') + ' = 0 ' + _('heading') + ' = 0', view_toolbar)
-        self._add_separator(view_toolbar, expand=True, visible=False)
+                             self.do_metric_cb, self._view_toolbar)
+        self._view_sep_1 = self._add_separator(self._view_toolbar,
+                                               visible=False)
+        self.coordinates_label, self.coordinates_toolitem = \
+            self._add_label(
+            _('xcor') + ' = 0 ' +  _('ycor') + ' = 0 ' + _('heading') + ' = 0',
+            self._view_toolbar)
+        self._view_sep_2 = self._add_separator(self._view_toolbar,
+                                               expand=True, visible=False)
         self.rescale_button = self._add_button(
             'expand-coordinates', _('Rescale coordinates up'),
-            self.do_rescale_cb, view_toolbar)
+            self.do_rescale_cb, self._view_toolbar)
         self.resize_up_button = self._add_button(
-            'resize+', _('Grow blocks'), self.do_grow_blocks_cb, view_toolbar)
+            'resize+', _('Grow blocks'), self.do_grow_blocks_cb,
+            self._view_toolbar)
         self.resize_down_button = self._add_button(
             'resize-', _('Shrink blocks'), self.do_shrink_blocks_cb,
-            view_toolbar)
+            self._view_toolbar)
         self._hover_help_toggle = self._add_button(
             'help-off', _('Turn off hover help'), self._do_hover_help_toggle,
-            view_toolbar)
+            self._view_toolbar)
 
         edit_toolbar.show()
-        view_toolbar.show()
+        self._view_toolbar.show()
         self._toolbox.show()
 
         if not self.has_toolbarbox:
@@ -795,54 +793,92 @@ class TurtleArtActivity(activity.Activity):
     def _setup_palette_toolbar(self):
         ''' The palette toolbar must be setup *after* plugins are loaded. '''
         if self.has_toolbarbox:
-
-            self.palette_palette_button = self._add_button(
-                'palette', _('Palettes'), self._palette_palette_cb,
-                self._toolbox.toolbar)
-            self._palette_palette = self.palette_palette_button.get_palette()
-            button_box = gtk.VBox()
-            button_box.set_homogeneous(False)
-            button_sw = gtk.ScrolledWindow()
-            button_sw.set_size_request(
-                int(gtk.gdk.screen_width() / 3),
-                gtk.gdk.screen_height() - style.GRID_CELL_SIZE * 3)
-            button_sw.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-            button_sw.add_with_viewport(button_box)
-            button_sw.show()
-
-            self.palette_buttons = []
-            for i, palette_name in enumerate(palette_names):
-                if i == 0:
-                    palette_group = None
-                else:
-                    palette_group = self.palette_buttons[0]
-                _logger.debug('palette_buttons.append %s', palette_name)
-                self.palette_buttons.append(self._radio_button_factory(
-                        palette_name + 'off',
-                        self._palette_toolbar,
-                        self.do_palette_buttons_cb, i,
-                        help_strings[palette_name],
-                        palette_group))
-                self._add_button_and_label(
-                    palette_name + 'off',
-                    help_strings[palette_name],
-                    self.do_palette_buttons_cb, i,
-                    button_box)
-            if self.tw.hw in [XO1, XO15, XO175, XO4]:
-                self._add_separator(self._palette_toolbar, expand=True,
-                                    visible=False)
-            self._make_palette_buttons(self._palette_toolbar)
-            self._palette_toolbar.show()
-            button_box.show_all()
-            self._palette_palette.set_content(button_sw)
-
-    def _palette_palette_cb(self, button):
-        if self._palette_palette:
-            if not self._palette_palette.is_up():
-                self._palette_palette.popup(immediate=True,
-                                    state=self._palette_palette.SECONDARY)
+            n = int(gtk.gdk.screen_width() / style.GRID_CELL_SIZE) - 2
+            if len(palette_names) > n:
+                n -= 1  # Make room for the palette button
+            m = len(palette_names) - n
+            if gtk.gdk.screen_width() - style.GRID_CELL_SIZE < \
+                    int(m * (style.GRID_CELL_SIZE + 2)):
+                width = gtk.gdk.screen_width() - style.GRID_CELL_SIZE
+                height = int(style.GRID_CELL_SIZE * 1.5)
             else:
-                self._palette_palette.popdown(immediate=True)
+                width = int(m * (style.GRID_CELL_SIZE + 2))
+                height = style.GRID_CELL_SIZE
+
+            if len(self.palette_buttons) == 0:
+                self._generate_palette_buttons()
+                self._overflow_palette = \
+                    self._overflow_palette_button.get_palette()
+                self._overflow_box = gtk.HBox()
+                self._overflow_box.set_homogeneous(False)
+                self._overflow_sw = gtk.ScrolledWindow()
+                self._overflow_sw.set_policy(gtk.POLICY_AUTOMATIC,
+                                             gtk.POLICY_NEVER)
+                self._overflow_sw.add_with_viewport(self._overflow_box)
+            else:  # remove the radio buttons and overflow buttons
+                for button in self.palette_buttons:
+                    if button in self._palette_toolbar:
+                        self._palette_toolbar.remove(button)
+                if self._overflow_palette_button in self._palette_toolbar:
+                    self._palette_toolbar.remove(self._overflow_palette_button)
+
+            for i in range(len(self.palette_buttons)):
+                if i < n:
+                    self._palette_toolbar.insert(self.palette_buttons[i], -1)
+                if i == n and n < len(self.palette_buttons):
+                    self._palette_toolbar.insert(
+                        self._overflow_palette_button, -1)
+                if i >= n:
+                    self._overflow_box.pack_start(self._overflow_buttons[i])
+
+            self._overflow_sw.set_size_request(width, height)
+            self._overflow_sw.show()
+
+            '''
+            if self.tw.hw in [XO1, XO15, XO175, XO4]:
+                self._make_palette_buttons(self._palette_toolbar)
+            '''
+            self._palette_toolbar.show()
+            self._overflow_box.show_all()
+            self._overflow_palette.set_content(self._overflow_sw)
+
+    def _generate_palette_buttons(self):
+        ''' Create a radio button and a normal button for each palette '''
+        for i, palette_name in enumerate(palette_names):
+            if i == 0:
+                palette_group = None
+            else:
+                palette_group = self.palette_buttons[0]
+            _logger.debug('palette_buttons.append %s', palette_name)
+            self.palette_buttons.append(self._radio_button_factory(
+                    palette_name + 'off',
+                    None,
+                    # self._palette_toolbar,
+                    self.do_palette_buttons_cb, i,
+                    help_strings[palette_name],
+                    palette_group))
+            self._overflow_buttons.append(self._add_button(
+                palette_name + 'off',
+                None,
+                self.do_palette_buttons_cb,
+                None,
+                arg=i))
+        # And we need an extra button for the overflow
+        self._overflow_palette_button = self._radio_button_factory(
+                'overflow',
+                None,
+                # self._palette_toolbar,
+                self._overflow_palette_cb, None,
+                _('Palettes'),
+                palette_group)
+
+    def _overflow_palette_cb(self, button):
+        if self._overflow_palette:
+            if not self._overflow_palette.is_up():
+                self._overflow_palette.popup(immediate=True,
+                                    state=self._overflow_palette.SECONDARY)
+            else:
+                self._overflow_palette.popdown(immediate=True)
             return
 
     def _make_load_save_buttons(self, toolbar):
@@ -920,6 +956,8 @@ class TurtleArtActivity(activity.Activity):
     def _make_palette_buttons(self, toolbar, palette_button=False):
         ''' Creates the palette and block buttons for both toolbar types'''
         if palette_button:  # old-style toolbars need this button
+            self._add_separator(self._palette_toolbar, expand=True,
+                                visible=False)
             self.palette_button = self._add_button(
                 'paletteoff', _('Hide palette'), self.do_palette_cb,
                 toolbar, _('<Ctrl>p'))
@@ -1372,7 +1410,7 @@ in order to use the plugin.'))
         toolitem.add(label)
         toolbar.insert(toolitem, -1)
         toolitem.show()
-        return label
+        return label, toolitem
 
     def _add_separator(self, toolbar, expand=False, visible=True):
         ''' Add a separator to a toolbar. '''
@@ -1403,8 +1441,8 @@ in order to use the plugin.'))
                 pass
         button.show()
         if toolbar is not None:
-            if hasattr(toolbar, 'insert'):  # Add button to the main toolbar...
-                toolbar.insert(button, -1)
+            if hasattr(toolbar, 'insert'):
+                toolbar.insert(button, -1)  # Add button to the main toolbar...
             else:  # ...or a secondary toolbar.
                 toolbar.props.page.insert(button, -1)
 
@@ -1422,28 +1460,29 @@ in order to use the plugin.'))
                 button.connect('clicked', cb)
             else:
                 button.connect('clicked', cb, arg)
-        if hasattr(toolbar, 'insert'):  # Add button to the main toolbar...
-            toolbar.insert(button, position)
-        else:  # ...or a secondary toolbar.
-            toolbar.props.page.insert(button, position)
+        if toolbar is not None:
+            if hasattr(toolbar, 'insert'):  # Add button to the main toolbar...
+                toolbar.insert(button, position)
+            else:  # ...or a secondary toolnbar.
+                toolbar.props.page.insert(button, position)
         button.show()
         if tooltip is not None:
             button.set_tooltip(tooltip)
         return button
 
-    def _add_button_and_label(self, name, tooltip, cb, cb_args, box):
+    def _add_button_and_label(self, name, label, cb, cb_args, box):
         ''' Add a button and a label to a box '''
-        button_and_label = gtk.HBox()
         button = self._add_button(name, None, cb, None, arg=cb_args)
-        button_and_label.pack_start(button, False, False, padding=5)
-        label = gtk.Label(tooltip)
-        label.set_justify(gtk.JUSTIFY_LEFT)
-        label.set_line_wrap(True)
-        label.show()
-        button_and_label.pack_start(label, False, False, padding=5)
+        button_and_label = gtk.HBox()
+        button_and_label.pack_start(button, False, False, padding=0)
+        mylabel = gtk.Label(label)
+        mylabel.set_justify(gtk.JUSTIFY_LEFT)
+        mylabel.set_line_wrap(True)
+        mylabel.show()
+        button_and_label.pack_start(mylabel, False, False, padding=1)
         box.pack_start(button_and_label)
         button_and_label.show()
-        return button, label
+        return button, mylabel
 
     def _notify_successful_save(self, title='', msg=''):
         ''' Notify user when saves are completed '''
