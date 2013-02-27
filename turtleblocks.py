@@ -310,6 +310,7 @@ class TurtleMain():
         if os.path.exists(os.path.join(self._execdirname, self._ICON_SUBPATH)):
             win.set_icon_from_file(os.path.join(self._execdirname,
                                                 self._ICON_SUBPATH))
+        win.show()
         win.connect('delete_event', self._quit_ta)
 
         ''' Create a scrolled window to contain the turtle canvas. We
@@ -319,7 +320,7 @@ class TurtleMain():
         self.fixed = gtk.Fixed()
         self.fixed.connect('size-allocate', self._fixed_resize_cb)
         width = gtk.gdk.screen_width() - 80
-        height = gtk.gdk.screen_height() - 60
+        height = gtk.gdk.screen_height() - 80
         self.fixed.set_size_request(width, height)
 
         self.vbox = gtk.VBox(False, 0)
