@@ -809,18 +809,17 @@ class TurtleArtActivity(activity.Activity):
     def _setup_palette_toolbar(self):
         ''' The palette toolbar must be setup *after* plugins are loaded. '''
         if self.has_toolbarbox:
-            n = int(gtk.gdk.screen_width() / style.GRID_CELL_SIZE) - 2
-            _logger.debug(palette_names)
-            if len(palette_names) > n:
-                n -= 1  # Make room for the palette button
-            n = 6
-            m = len(palette_names) - n
+            max_palettes = int(gtk.gdk.screen_width() / style.GRID_CELL_SIZE)
+            max_palettes -= 2  # the margins
+            if len(palette_names) > max_palettes:
+                max_palettes -= 1  # Make room for the palette button
+            overflow = len(palette_names) - max_palettes
             if gtk.gdk.screen_width() - style.GRID_CELL_SIZE < \
-                    int(m * (style.GRID_CELL_SIZE + 2)):
+                    int(overflow * (style.GRID_CELL_SIZE + 2)):
                 width = gtk.gdk.screen_width() - style.GRID_CELL_SIZE
                 height = int(style.GRID_CELL_SIZE * 1.5)
             else:
-                width = int(m * (style.GRID_CELL_SIZE + 2))
+                width = int(overflow * (style.GRID_CELL_SIZE + 2))
                 height = style.GRID_CELL_SIZE
 
             # Overflow palette
@@ -854,17 +853,14 @@ class TurtleArtActivity(activity.Activity):
                     self._palette_toolbar.remove(self._overflow_palette_button)
 
             for i in range(len(self.palette_buttons)):
-                if i < n:
+                if i < max_palettes:
                     self._palette_toolbar.insert(self.palette_buttons[i], -1)
-                    # self.palette_buttons[i].connect(
-                    #     'clicked', self.do_palette_buttons_cb, i)
-                if i == n and n < len(self.palette_buttons):
+                if i == max_palettes and \
+                   max_palettes < len(self.palette_buttons):
                     self._palette_toolbar.insert(
                         self._overflow_palette_button, -1)
-                if i >= n:
+                if i >= max_palettes:
                     self._overflow_box.pack_start(self._overflow_buttons[i])
-                    # self._overflow_buttons[i].connect(
-                    #     'clicked', self.do_palette_buttons_cb, i)
 
             self._overflow_sw.set_size_request(width, height)
             self._overflow_sw.show()
@@ -913,54 +909,6 @@ class TurtleArtActivity(activity.Activity):
             else:
                 self._palette_palette.popdown(immediate=True)
             return
-
-    '''
-    def _overflow_palette_cb(self, button):
-        if self._overflow_palette:
-            if not self._overflow_palette.is_up():
-                self._overflow_palette.popup(immediate=True,
-                                    state=self._overflow_palette.SECONDARY)
-
-            self.overflow_palette_button = self._add_button(
-                'palette', _('Palettes'), self._overflow_palette_cb,
-                self._toolbox.toolbar)
-            self._overflow_palette = self.overflow_palette_button.get_palette()
-            button_box = gtk.VBox()
-            button_box.set_homogeneous(False)
-            button_sw = gtk.ScrolledWindow()
-            button_sw.set_size_request(
-                int(gtk.gdk.screen_width() / 3),
-                gtk.gdk.screen_height() - style.GRID_CELL_SIZE * 3)
-            button_sw.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-            button_sw.add_with_viewport(button_box)
-            button_sw.show()
-
-            self.palette_buttons = []
-            for i, palette_name in enumerate(palette_names):
-                if i == 0:
-                    palette_group = None
-                else:
-                    palette_group = self.palette_buttons[0]
-                _logger.debug('palette_buttons.append %s', palette_name)
-                self.palette_buttons.append(self._radio_button_factory(
-                        palette_name + 'off',
-                        self._palette_toolbar,
-                        self.do_palette_buttons_cb, i,
-                        help_strings[palette_name],
-                        palette_group))
-                self._add_button_and_label(
-                    palette_name + 'off',
-                    help_strings[palette_name],
-                    self.do_palette_buttons_cb, i,
-                    button_box)
-            if self.tw.hw in [XO1, XO15, XO175, XO4]:
-                self._add_separator(self._palette_toolbar, expand=True,
-                                    visible=False)
-            self._make_palette_buttons(self._palette_toolbar)
-            self._palette_toolbar.show()
-            button_box.show_all()
-            self._overflow_palette.set_content(button_sw)
-    '''
 
     def _overflow_palette_cb(self, button):
         if self._overflow_palette:
