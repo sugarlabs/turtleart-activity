@@ -998,11 +998,16 @@ class SVG:
         svg = "</g>/n<g>/n"
         if noscale:
             scale = 2.0
-            scale2 = 1.0
             x = self._hide_x * scale
             y = self._hide_y * scale
-            r = self._dot_radius
-            y2 = y - 1.5
+            r = self._dot_radius * 2
+            scale = 5
+            scale2 = 2
+            y2 = y - 10
+            svg += self._circle(r, x - r / 2, y - r / 2)
+            self._fill, self._stroke = HIDE_WHITE, HIDE_WHITE
+            svg += self._rect(10 * scale2, scale, x - 9 * scale2, y2)
+            self._fill, self._stroke = _saved_fill, _saved_stroke
         else:
             scale = self._scale * 1.75
             scale2 = scale / 2
@@ -1010,10 +1015,10 @@ class SVG:
             y = self._hide_y * self._scale
             r = self._dot_radius * scale2
             y2 = y - scale2
-        svg += self._circle(r, x, y)
-        self._fill, self._stroke = HIDE_WHITE, HIDE_WHITE
-        svg += self._rect(10 * scale2, scale, x - 5 * scale2, y2)
-        self._fill, self._stroke = _saved_fill, _saved_stroke
+            svg += self._circle(r, x, y)
+            self._fill, self._stroke = HIDE_WHITE, HIDE_WHITE
+            svg += self._rect(10 * scale2, scale, x - 5 * scale2, y2)
+            self._fill, self._stroke = _saved_fill, _saved_stroke
         return svg
 
     def _show_dot(self):

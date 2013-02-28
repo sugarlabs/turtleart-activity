@@ -201,6 +201,11 @@ class TurtleArtActivity(activity.Activity):
 
     def do_load_ta_project_cb(self, button):
         ''' Load a project from the Journal. '''
+        if hasattr(self, 'get_window'):
+            _logger.debug('setting watch cursor')
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
         chooser(self, 'org.laptop.TurtleArtActivity', self._load_ta_project)
 
     def _load_ta_project(self, dsobject):
@@ -214,6 +219,12 @@ class TurtleArtActivity(activity.Activity):
     def do_load_ta_plugin_cb(self, button):
         ''' Load a plugin from the Journal. '''
         # FIXME: we are looking for tar files
+        # While the file is loading, use the watch cursor
+        if hasattr(self, 'get_window'):
+            _logger.debug('setting watch cursor')
+            if hasattr(self.get_window(), 'get_cursor'):
+                self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
         chooser(self, '', self._load_ta_plugin)
 
     def _load_ta_plugin(self, dsobject):
@@ -795,6 +806,96 @@ class TurtleArtActivity(activity.Activity):
     def _setup_palette_toolbar(self):
         ''' The palette toolbar must be setup *after* plugins are loaded. '''
         if self.has_toolbarbox:
+<<<<<<< HEAD
+            n = int(gtk.gdk.screen_width() / style.GRID_CELL_SIZE) - 2
+            _logger.debug(palette_names)
+            if len(palette_names) > n:
+                n -= 1  # Make room for the palette button
+            # n = 6
+            m = len(palette_names) - n
+            if gtk.gdk.screen_width() - style.GRID_CELL_SIZE < \
+                    int(m * (style.GRID_CELL_SIZE + 2)):
+                width = gtk.gdk.screen_width() - style.GRID_CELL_SIZE
+                height = int(style.GRID_CELL_SIZE * 1.5)
+            else:
+                width = int(m * (style.GRID_CELL_SIZE + 2))
+                height = style.GRID_CELL_SIZE
+
+            if len(self.palette_buttons) == 0:
+                self._generate_palette_buttons()
+                self._overflow_palette = \
+                    self._overflow_palette_button.get_palette()
+                self._overflow_box = gtk.HBox()
+                self._overflow_box.set_homogeneous(False)
+                self._overflow_sw = gtk.ScrolledWindow()
+                self._overflow_sw.set_policy(gtk.POLICY_AUTOMATIC,
+                                             gtk.POLICY_NEVER)
+                self._overflow_sw.add_with_viewport(self._overflow_box)
+            else:  # remove the radio buttons and overflow buttons
+                for button in self.palette_buttons:
+                    if button in self._palette_toolbar:
+                        self._palette_toolbar.remove(button)
+                if self._overflow_palette_button in self._palette_toolbar:
+                    self._palette_toolbar.remove(self._overflow_palette_button)
+
+            for i in range(len(self.palette_buttons)):
+                if i < n:
+                    self._palette_toolbar.insert(self.palette_buttons[i], -1)
+                    # self.palette_buttons[i].connect(
+                    #     'clicked', self.do_palette_buttons_cb, i)
+                if i == n and n < len(self.palette_buttons):
+                    self._palette_toolbar.insert(
+                        self._overflow_palette_button, -1)
+                if i >= n:
+                    self._overflow_box.pack_start(self._overflow_buttons[i])
+                    # self._overflow_buttons[i].connect(
+                    #     'clicked', self.do_palette_buttons_cb, i)
+
+            self._overflow_sw.set_size_request(width, height)
+            self._overflow_sw.show()
+
+            '''
+            if self.tw.hw in [XO1, XO15, XO175, XO4]:
+                self._make_palette_buttons(self._palette_toolbar)
+            '''
+            self._palette_toolbar.show()
+            self._overflow_box.show_all()
+            self._overflow_palette.set_content(self._overflow_sw)
+
+    def _generate_palette_buttons(self):
+        ''' Create a radio button and a normal button for each palette '''
+        for i, palette_name in enumerate(palette_names):
+            if i == 0:
+                palette_group = None
+            else:
+                palette_group = self.palette_buttons[0]
+            _logger.debug('palette_buttons.append %s', palette_name)
+            self.palette_buttons.append(self._radio_button_factory(
+                    palette_name + 'off',
+                    None,
+                    self.do_palette_buttons_cb, i,
+                    help_strings[palette_name],
+                    palette_group))
+            self._overflow_buttons.append(self._add_button(
+                palette_name + 'off',
+                None,
+                self.do_palette_buttons_cb,
+                None,
+                arg=i))
+        # And we need an extra button for the overflow
+        self._overflow_palette_button = self._radio_button_factory(
+                'overflow',
+                None,
+                self._overflow_palette_cb, None,
+                _('Palettes'),
+                palette_group)
+
+    def _overflow_palette_cb(self, button):
+        if self._overflow_palette:
+            if not self._overflow_palette.is_up():
+                self._overflow_palette.popup(immediate=True,
+                                    state=self._overflow_palette.SECONDARY)
+=======
 
             self.palette_palette_button = self._add_button(
                 'palette', _('Palettes'), self._palette_palette_cb,
@@ -841,6 +942,7 @@ class TurtleArtActivity(activity.Activity):
             if not self._palette_palette.is_up():
                 self._palette_palette.popup(immediate=True,
                                     state=self._palette_palette.SECONDARY)
+>>>>>>> cabc4e32f1559efd82c1a52e0f8c3db9255fb6f5
             else:
                 self._palette_palette.popdown(immediate=True)
             return
@@ -1135,25 +1237,33 @@ Plugin section of plugin.info file.')
                         _logger.debug('Creating plugin palette %s...' % (
                                 palette_name.strip()))
                         j = len(self.palette_buttons)
-                        self.palette_buttons.insert(j - 1,
+                        _logger.debug('radio button')
+                        self.palette_buttons.append(
                             self._radio_button_factory(
                                 palette_name.strip() + 'off',
                                 self._palette_toolbar,
                                 self.do_palette_buttons_cb,
                                 j - 1,
                                 help_strings[palette_name.strip()],
-                                self.palette_buttons[0],
-                                position=j - 1))
+                                self.palette_buttons[0]))
+                        _logger.debug('overflow button')
+                        self._overflow_buttons.append(
+                            self._add_button(
+                                palette_name.strip() + 'off',
+                                None,
+                                self.do_palette_buttons_cb,
+                                None,
+                                arg=j - 1))
+                        _logger.debug('pack in box')
+                        self._overflow_box.pack_start(
+                            self._overflow_buttons[j - 1])
                         self.tw.palettes.insert(j - 1, [])
                         self.tw.palette_sprs.insert(j - 1, [None, None])
                     else:
                         _logger.debug('Palette already exists... \
 skipping insert')
-                # We need to change the index associated with the
-                # Trash Palette Button.
-                j = len(palette_names)
-                self.palette_buttons[j - 1].connect(
-                    'clicked', self.do_palette_buttons_cb, j - 1)
+                _logger.debug('reinitializing palette toolbar')
+                self._setup_palette_toolbar()
             else:
                 self.tw.showlabel('status',
                                   label=_('Please restart Turtle Art \
@@ -1198,12 +1308,8 @@ in order to use the plugin.'))
     def read_file(self, file_path, run_it=False, plugin=False):
         ''' Open a project or plugin and then run it. '''
         if hasattr(self, 'tw') and self.tw is not None:
-            # While the file is loading, use the watch cursor
-            if hasattr(self, 'get_window'):
-                _logger.debug('setting watch cursor')
-                if hasattr(self.get_window(), 'get_cursor'):
-                    self._old_cursor = self.get_window().get_cursor()
-                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+            if not hasattr(self, '_old_cursor'):
+                self._old_cursor = gtk.gdk.Cursor(gtk.gdk.LEFT_PTR)
             _logger.debug('Read file: %s' % (file_path))
             # Could be a plugin or deprecated gtar or tar file...
             if plugin or file_path.endswith(('.gtar', '.tar', '.tar.gz')):

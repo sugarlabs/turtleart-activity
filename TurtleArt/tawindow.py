@@ -1173,29 +1173,32 @@ class TurtleArtWindow():
 
     def _layout_palette(self, n, regenerate=False, show=True):
         ''' Layout prototypes in a palette. '''
+        BUTTON_SIZE = 32
+        MARGIN = 5
         if n is not None:
             if self.orientation == HORIZONTAL_PALETTE:
-                x, y = 20, self.toolbar_offset + 5
+                x, y = BUTTON_SIZE, self.toolbar_offset + MARGIN
                 x, y, max_w = self._horizontal_layout(x, y, self.palettes[n])
                 if n == palette_names.index('trash'):
                     x, y, max_w = self._horizontal_layout(x + max_w, y,
                                                           self.trash_stack)
-                w = x + max_w + 25
+                w = x + max_w + BUTTON_SIZE + MARGIN
                 self._make_palette_spr(n, 0, self.toolbar_offset,
                                        w, PALETTE_HEIGHT, regenerate)
                 if show:
-                    self.palette_button[2].move((w - 20, self.toolbar_offset))
+                    self.palette_button[2].move(
+                        (w - BUTTON_SIZE, self.toolbar_offset))
             else:
-                x, y = 5, self.toolbar_offset + 15
+                x, y = MARGIN, self.toolbar_offset + BUTTON_SIZE + MARGIN
                 x, y, max_h = self._vertical_layout(x, y, self.palettes[n])
                 if n == palette_names.index('trash'):
                     x, y, max_h = self._vertical_layout(x, y + max_h,
                                                         self.trash_stack)
-                h = y + max_h + 25 - self.toolbar_offset
+                h = y + max_h + BUTTON_SIZE + MARGIN - self.toolbar_offset
                 self._make_palette_spr(n, 0, self.toolbar_offset,
                                        PALETTE_WIDTH, h, regenerate)
                 if show:
-                    self.palette_button[2].move((PALETTE_WIDTH - 20,
+                    self.palette_button[2].move((PALETTE_WIDTH - BUTTON_SIZE,
                                                  self.toolbar_offset))
             if show:
                 self.palette_button[2].save_xy = \
@@ -1350,6 +1353,8 @@ before making changes to your Turtle Blocks program'))
                                     self._put_in_trash(b1)
                             else:
                                 self._put_in_trash(find_top_block(b))
+                    self.show_toolbar_palette(palette_names.index('trash'),
+                                      regenerate=True)
                 elif blk.name in MACROS:
                     self.new_macro(blk.name, x + 20, y + 20)
                 else:
@@ -1797,6 +1802,7 @@ before making changes to your Turtle Blocks program'))
                 blk.type = 'deleted'
                 blk.spr.hide()
         self.trash_stack = []
+        self.show_toolbar_palette(palette_names.index('trash'), regenerate=True)
 
     def _in_the_trash(self, x, y):
         ''' Is x, y over a palette? '''
@@ -2375,6 +2381,7 @@ before making changes to your Turtle Blocks program'))
             self.selected_turtle = None
             if self.active_turtle is None:
                 self.canvas.set_turtle(self.default_turtle_name)
+            self._coordinate_counter = 0
             return
 
         # If we don't have a group of blocks, then there is nothing to do.
