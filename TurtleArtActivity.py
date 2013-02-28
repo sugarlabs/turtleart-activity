@@ -81,6 +81,9 @@ class TurtleArtActivity(activity.Activity):
         self.tw = None
         self.init_complete = False
 
+        self.palette_buttons = []
+        self._overflow_buttons = []
+
         self._check_ver_change(get_path(activity, 'data'))
         self.connect("notify::active", self._notify_active_cb)
 
@@ -129,11 +132,11 @@ class TurtleArtActivity(activity.Activity):
         else:
             palette_was_expanded = False
         self._toolbox.toolbar.remove(self.palette_toolbar_button)
-        self._toolbox.toolbar.remove(self.palette_palette_button)
+        self._toolbox.toolbar.remove(self.overflow_palette_button)
         if gtk.gdk.screen_width() / (len(self.palette_buttons) + 2) \
                 < style.GRID_CELL_SIZE:
-            self._toolbox.toolbar.insert(self.palette_palette_button, 3)
-            self.palette_palette_button.show()
+            self._toolbox.toolbar.insert(self.overflow_palette_button, 3)
+            self.overflow_palette_button.show()
         else:
             self._toolbox.toolbar.insert(self.palette_toolbar_button, 3)
             self.palette_toolbar_button.show()
@@ -225,7 +228,7 @@ class TurtleArtActivity(activity.Activity):
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
-        chooser(self, '', self._load_ta_plugin)
+        gobject.idle_add(chooser, self, '', self._load_ta_plugin)
 
     def _load_ta_plugin(self, dsobject):
         ''' Load a TA plugin from the datastore. '''
@@ -806,12 +809,11 @@ class TurtleArtActivity(activity.Activity):
     def _setup_palette_toolbar(self):
         ''' The palette toolbar must be setup *after* plugins are loaded. '''
         if self.has_toolbarbox:
-<<<<<<< HEAD
             n = int(gtk.gdk.screen_width() / style.GRID_CELL_SIZE) - 2
             _logger.debug(palette_names)
             if len(palette_names) > n:
                 n -= 1  # Make room for the palette button
-            # n = 6
+            n = 6
             m = len(palette_names) - n
             if gtk.gdk.screen_width() - style.GRID_CELL_SIZE < \
                     int(m * (style.GRID_CELL_SIZE + 2)):
@@ -820,6 +822,19 @@ class TurtleArtActivity(activity.Activity):
             else:
                 width = int(m * (style.GRID_CELL_SIZE + 2))
                 height = style.GRID_CELL_SIZE
+
+            # Overflow palette
+            self.overflow_palette_button = self._add_button(
+                'palette', _('Palettes'), self._overflow_palette_cb,
+                None)
+            self._overflow_palette = self.overflow_palette_button.get_palette()
+            button_box = gtk.HBox()
+            button_box.set_homogeneous(False)
+            button_sw = gtk.ScrolledWindow()
+            button_sw.set_size_request(width, height)
+            button_sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_NEVER)
+            button_sw.add_with_viewport(button_box)
+            button_sw.show()
 
             if len(self.palette_buttons) == 0:
                 self._generate_palette_buttons()
@@ -891,16 +906,25 @@ class TurtleArtActivity(activity.Activity):
                 palette_group)
 
     def _overflow_palette_cb(self, button):
+        if self._palette_palette:
+            if not self._palette_palette.is_up():
+                self._palette_palette.popup(immediate=True,
+                                    state=self._palette_palette.SECONDARY)
+            else:
+                self._palette_palette.popdown(immediate=True)
+            return
+
+    '''
+    def _overflow_palette_cb(self, button):
         if self._overflow_palette:
             if not self._overflow_palette.is_up():
                 self._overflow_palette.popup(immediate=True,
                                     state=self._overflow_palette.SECONDARY)
-=======
 
-            self.palette_palette_button = self._add_button(
-                'palette', _('Palettes'), self._palette_palette_cb,
+            self.overflow_palette_button = self._add_button(
+                'palette', _('Palettes'), self._overflow_palette_cb,
                 self._toolbox.toolbar)
-            self._palette_palette = self.palette_palette_button.get_palette()
+            self._overflow_palette = self.overflow_palette_button.get_palette()
             button_box = gtk.VBox()
             button_box.set_homogeneous(False)
             button_sw = gtk.ScrolledWindow()
@@ -935,16 +959,16 @@ class TurtleArtActivity(activity.Activity):
             self._make_palette_buttons(self._palette_toolbar)
             self._palette_toolbar.show()
             button_box.show_all()
-            self._palette_palette.set_content(button_sw)
+            self._overflow_palette.set_content(button_sw)
+    '''
 
-    def _palette_palette_cb(self, button):
-        if self._palette_palette:
-            if not self._palette_palette.is_up():
-                self._palette_palette.popup(immediate=True,
-                                    state=self._palette_palette.SECONDARY)
->>>>>>> cabc4e32f1559efd82c1a52e0f8c3db9255fb6f5
+    def _overflow_palette_cb(self, button):
+        if self._overflow_palette:
+            if not self._overflow_palette.is_up():
+                self._overflow_palette.popup(immediate=True,
+                                    state=self._overflow_palette.SECONDARY)
             else:
-                self._palette_palette.popdown(immediate=True)
+                self._overflow_palette.popdown(immediate=True)
             return
 
     def _make_load_save_buttons(self, toolbar):
@@ -1262,6 +1286,13 @@ Plugin section of plugin.info file.')
                     else:
                         _logger.debug('Palette already exists... \
 skipping insert')
+                # We need to change the index associated with the
+                # Trash Palette Button.
+                j = len(palette_names)
+                self.palette_buttons[j - 1].connect(
+                    'clicked', self.do_palette_buttons_cb, j - 1)
+                self._overflow_buttons[j - 1].connect(
+                    'clicked', self.do_palette_buttons_cb, j - 1)
                 _logger.debug('reinitializing palette toolbar')
                 self._setup_palette_toolbar()
             else:
@@ -1528,10 +1559,11 @@ in order to use the plugin.'))
                 button.connect('clicked', cb)
             else:
                 button.connect('clicked', cb, arg)
-        if hasattr(toolbar, 'insert'):  # Add button to the main toolbar...
-            toolbar.insert(button, position)
-        else:  # ...or a secondary toolbar.
-            toolbar.props.page.insert(button, position)
+        if toolbar is not None:
+            if hasattr(toolbar, 'insert'):  # Add button to the main toolbar...
+                toolbar.insert(button, position)
+            else:  # ...or a secondary toolbar.
+                toolbar.props.page.insert(button, position)
         button.show()
         if tooltip is not None:
             button.set_tooltip(tooltip)
