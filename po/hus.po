@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-02 10:01-0400\n"
+"POT-Creation-Date: 2013-02-24 00:31-0500\n"
 "PO-Revision-Date: 2012-10-10 10:02+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
 
-# TortugArte = WitsixPet
 #. TRANS: "name" option from activity.info file
-#: TurtleArt/tawindow.py:3767 pysamples/grecord.py:205 turtleblocks.py:303
-msgid "Turtle Art"
-msgstr "Witsix Pet"
+#, fuzzy
+msgid "TurtleBlocks"
+msgstr "Ts'ejkadh pat'ál Pet"
 
 #. TRANS: "summary" option from activity.info file
 #. TRANS: "description" option from activity.info file
@@ -30,113 +29,113 @@ msgid ""
 "visual programming blocks"
 msgstr ""
 
-#: TurtleArt/tabasics.py:116
+#: TurtleArt/tabasics.py:123
 msgid "Palette of turtle commands"
 msgstr "Kwene' an abatnomtaláb k'al an pet"
 
-#: TurtleArt/tabasics.py:121
+#: TurtleArt/tabasics.py:128
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
 msgid "forward"
 msgstr "ne'etsnanchij"
 
 # ka ne'etsnanchij ka yatsiy' an pet
-#: TurtleArt/tabasics.py:125
+#: TurtleArt/tabasics.py:132
 msgid "moves turtle forward"
 msgstr "ka ne'etsnanchij ka yatsiy' an pet"
 
 # taj kúx
-#: TurtleArt/tabasics.py:132
+#: TurtleArt/tabasics.py:139
 msgid "back"
 msgstr "wichiy"
 
-#: TurtleArt/tabasics.py:136
+#: TurtleArt/tabasics.py:143
 msgid "moves turtle backward"
 msgstr "ka wichba' ti in kúx an pet"
 
-#: TurtleArt/tabasics.py:144
+#: TurtleArt/tabasics.py:151
 msgid "clean"
 msgstr "t'oka'"
 
 # ka t'oka' an walek ani ka wichkow an pet
 #
-#: TurtleArt/tabasics.py:147
+#: TurtleArt/tabasics.py:154
 msgid "clears the screen and reset the turtle"
 msgstr "in t'okál an walek ani in wichk'owal an pet"
 
-#: TurtleArt/tabasics.py:155
+#: TurtleArt/tabasics.py:162
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
 msgid "left"
 msgstr "k'watab'"
 
-#: TurtleArt/tabasics.py:159
+#: TurtleArt/tabasics.py:166
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr ""
 "in tsawindhál an pet ti in k'et'ach jant'ojdha' ti belal an lejbaxk'ij "
 "(t'ipchidh in kexem)"
 
-#: TurtleArt/tabasics.py:166
+#: TurtleArt/tabasics.py:174
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:878
 msgid "right"
 msgstr "winab"
 
-#: TurtleArt/tabasics.py:170
+#: TurtleArt/tabasics.py:178
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "in tsawindhál an pet jant'ojdha' an lejbaxk'ij (t'ipchidh in kexem)"
 
-#: TurtleArt/tabasics.py:178
+#: TurtleArt/tabasics.py:186
 msgid "arc"
 msgstr "pulich"
 
-#: TurtleArt/tabasics.py:178
+#: TurtleArt/tabasics.py:186
 msgid "angle"
 msgstr "kexem"
 
 # játs tam a kiloyal jún i kwechoch ti in waltelíl ma ti in ts'ejéltal
-#: TurtleArt/tabasics.py:178
+#: TurtleArt/tabasics.py:186
 msgid "radius"
 msgstr "tin tsejeltal jun i kweche' anij ma walté"
 
-#: TurtleArt/tabasics.py:182
+#: TurtleArt/tabasics.py:190
 msgid "moves turtle along an arc"
 msgstr "ka yatsiy an pet ti in nakél an pulich"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid "set xy"
 msgstr "ka ts'at'ba' xy"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid "x"
 msgstr "x"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid "y"
 msgstr "y"
 
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+#: TurtleArt/tabasics.py:203 TurtleArt/tabasics.py:269
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr ""
 "ka yatsiy an pet ju'táj ti k'wajat xcor, ycor; (0, 0) k'wajat ti in "
 "ts'ejéltal an walek."
 
-#: TurtleArt/tabasics.py:205
+#: TurtleArt/tabasics.py:213
 msgid "set heading"
 msgstr "ka ts'at'ba' ti in áy"
 
-#: TurtleArt/tabasics.py:209
+#: TurtleArt/tabasics.py:217
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr ""
 "ka ts'at'banchij in áy an pet ju'taj tin tomnal ka k'alej (0 já'its abal "
 "ebál ti walek.)"
 
-#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3761
-#: TurtleArt/tawindow.py:3767 TurtleArtActivity.py:557
+#: TurtleArt/tabasics.py:225 TurtleArt/tawindow.py:3862
+#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:604
 msgid "xcor"
 msgstr "xcor"
 
 # elax kits'lab=coordenada
-#: TurtleArt/tabasics.py:218
+#: TurtleArt/tabasics.py:226
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -144,13 +143,13 @@ msgstr ""
 "in kwa'al xuwék'ij an pet an éláx kits'lab x (i ejtowal ki eyendha' ti in "
 "jalk'úl jún i kwene' t'ojlab i ajixtaláb)"
 
-#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3761
-#: TurtleArt/tawindow.py:3767 TurtleArtActivity.py:558
+#: TurtleArt/tabasics.py:236 TurtleArt/tawindow.py:3862
+#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:605
 msgid "ycor"
 msgstr "ycor"
 
 # éláx kits'lab=coordenanda
-#: TurtleArt/tabasics.py:229
+#: TurtleArt/tabasics.py:237
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -158,13 +157,13 @@ msgstr ""
 "in kwa'al xuwék'ij an pet an éláx kits'lab y (i ejtowal ki eyendha' ti in "
 "jalk'úl jún i kwene' t'ojláb i ajixtaláb)"
 
-#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3762
-#: TurtleArt/tawindow.py:3768 TurtleArtActivity.py:558
+#: TurtleArt/tabasics.py:247 TurtleArt/tawindow.py:3863
+#: TurtleArt/tawindow.py:3869 TurtleArtActivity.py:605
 msgid "heading"
 msgstr "in bélil, in ók'"
 
 # in kwa'al xuwék'ij in bélil an pet (i ejtowal ki eyendha' ti in jalk'úl jún i kwene' t'ojlab i ajixtaláb)
-#: TurtleArt/tabasics.py:240
+#: TurtleArt/tabasics.py:248
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
@@ -173,432 +172,437 @@ msgstr ""
 "jalk'ul jun i kwene' t'ojlab ajumtalab)"
 
 # kwene' abatnaxtal=paleta de ordenes de...
-#: TurtleArt/tabasics.py:274
+#: TurtleArt/tabasics.py:282
 msgid "Palette of pen commands"
 msgstr "I kwene' abatnaxtaláb k'al an kits'oxtaláb"
 
-#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
 msgid "fill screen"
 msgstr "ka t'uchiy an walek"
 
-#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
-#: TurtleArt/tabasics.py:340
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
+#: TurtleArt/tabasics.py:348
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1158
 msgid "color"
 msgstr "mukuxtaláb"
 
 # in alwá' an mukuxtaláb
-#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:291
-#: TurtleArt/tabasics.py:350
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
+#: TurtleArt/tabasics.py:358
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1154
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1159
 msgid "shade"
 msgstr "in tsapik in majub"
 
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
+#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:303
 msgid "fills the background with (color, shade)"
 msgstr "ka t'uchinchij in wal k'an (mukuxtaláb)"
 
-#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:359
+#: TurtleArt/tabasics.py:299 TurtleArt/tabasics.py:367
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1160
 msgid "gray"
 msgstr "aku'"
 
-#: TurtleArt/tabasics.py:305
+#: TurtleArt/tabasics.py:313
 msgid "set color"
 msgstr "ka ts'at'ba' an mukuxtaláb"
 
-#: TurtleArt/tabasics.py:309
+#: TurtleArt/tabasics.py:317
 msgid "sets color of the line drawn by the turtle"
 msgstr "ka ts'at'banchij in mukuxtalábil an kits'lab axi in t'ipoyal an pet"
 
-#: TurtleArt/tabasics.py:317
+#: TurtleArt/tabasics.py:325
 msgid "set shade"
 msgstr "ka ts'at'banchij in ts'apik in tajax"
 
-#: TurtleArt/tabasics.py:321
+#: TurtleArt/tabasics.py:329
 msgid "sets shade of the line drawn by the turtle"
 msgstr "ka tsa'tbanchij in yik'uax an kitslab axi in ts'ejkal an pet"
 
-#: TurtleArt/tabasics.py:329
+#: TurtleArt/tabasics.py:337
 msgid "set gray"
 msgstr "ka punchij aku'"
 
-#: TurtleArt/tabasics.py:332
+#: TurtleArt/tabasics.py:340
 msgid "sets gray level of the line drawn by the turtle"
 msgstr "ka punchij in junkul an aku' ti ba' an kitslab xi tsejkadh k'al an pet"
 
-#: TurtleArt/tabasics.py:341
+#: TurtleArt/tabasics.py:349
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr ""
 "xuwek'ij in kwa'al in mukuxlabil a dhuchumtalábil (ejtowab ka eyendhaj tin "
 "jalu'k an kwene' ajumtalab)"
 
-#: TurtleArt/tabasics.py:351
+#: TurtleArt/tabasics.py:359
 msgid "holds current pen shade"
 msgstr "xuwek'ij in kwa'al in mukub a dhuchumtal"
 
-#: TurtleArt/tabasics.py:360
+#: TurtleArt/tabasics.py:368
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr ""
 "ka ko'onchij in junkul an aku' (ka ejtowat ka eyendhaj tin jalk'ul an jun i "
 "kwene' ajixtalab)"
 
-#: TurtleArt/tabasics.py:368
+#: TurtleArt/tabasics.py:376
 msgid "pen up"
 msgstr "ka k'adhba' i kits'oxtaláb"
 
-#: TurtleArt/tabasics.py:371
+#: TurtleArt/tabasics.py:379
 msgid "Turtle will not draw when moved."
 msgstr "An pet tam ka yatsin yab jant'oj ne'ets ki in t'ipoy."
 
 # ka pa'ba' i kits'oxtaláb
-#: TurtleArt/tabasics.py:377
+#: TurtleArt/tabasics.py:385
 msgid "pen down"
 msgstr "ka pa'ba' a kits'oxtal"
 
 # An pet ne'ets ti t'ipox tam ka yatsin.
-#: TurtleArt/tabasics.py:380
+#: TurtleArt/tabasics.py:388
 msgid "Turtle will draw when moved."
 msgstr "An pet ne'ets kin t'ipoy tam ka belats."
 
 # ka ts'at'banchij in puwél
-#: TurtleArt/tabasics.py:386
+#: TurtleArt/tabasics.py:394
 msgid "set pen size"
 msgstr "ka ts'atba' in puwel"
 
 # ka ts'at'banchij in ts'ikwél an kits´lab a xi an pet in t'ipoyal
-#: TurtleArt/tabasics.py:390
+#: TurtleArt/tabasics.py:398
 msgid "sets size of the line drawn by the turtle"
 msgstr "ka t'ipchij in ts'ikwel an kits´lab axi an pet ne kin t'ipoy"
 
-#: TurtleArt/tabasics.py:400
+#: TurtleArt/tabasics.py:408
 msgid "start fill"
 msgstr "ka ts'i'kinchij ka t'uchiy"
 
-#: TurtleArt/tabasics.py:402
+#: TurtleArt/tabasics.py:410
 msgid "starts filled polygon (used with end fill block)"
 msgstr ""
 "ka ts'ikinchij ka t'uchiy an poligono (tan ka eyendha' in taltal an "
 "t'uchixtalab k'al an kw`'ne' dhuche')"
 
-#: TurtleArt/tabasics.py:409
+#: TurtleArt/tabasics.py:417
 msgid "end fill"
 msgstr "ka t'uchiy an mukuxtalab"
 
-#: TurtleArt/tabasics.py:411
+#: TurtleArt/tabasics.py:419
 msgid "completes filled polygon (used with start fill block)"
 msgstr ""
 "ka kidhbay an poligono xi t'uchidh (tam ka eyendha' tin tujtal in t'uchix an "
 "kwen'e t'ojlab)"
 
-#: TurtleArt/tabasics.py:418
+#: TurtleArt/tabasics.py:426
 msgid "pen size"
 msgstr "puwél"
 
-#: TurtleArt/tabasics.py:419
+#: TurtleArt/tabasics.py:427
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr ""
 "ja'its in puwel xuwe'k'ij an dhuchumtalab (i ejtowal ki eyendha tin jalk'ul "
 "jun i k'enel ajixtalab)"
 
-#: TurtleArt/tabasics.py:434 TurtleArt/tabasics.py:438
+#: TurtleArt/tabasics.py:441
 msgid "Palette of pen colors"
 msgstr "In kwene' mukuxtalabil a dhuchumtalabil"
 
-#: TurtleArt/tabasics.py:440
+#: TurtleArt/tabasics.py:443
 msgid "red"
 msgstr "tsakni'"
 
-#: TurtleArt/tabasics.py:441
+#: TurtleArt/tabasics.py:444
 msgid "orange"
 msgstr "t'a'at manu'"
 
-#: TurtleArt/tabasics.py:443
+#: TurtleArt/tabasics.py:446
 msgid "yellow"
 msgstr "manu'"
 
-#: TurtleArt/tabasics.py:445
+#: TurtleArt/tabasics.py:448
 msgid "green"
 msgstr "yaxu'"
 
-#: TurtleArt/tabasics.py:446
+#: TurtleArt/tabasics.py:449
 msgid "cyan"
 msgstr "cian"
 
-#: TurtleArt/tabasics.py:447
+#: TurtleArt/tabasics.py:450
 msgid "blue"
 msgstr "tok'i"
 
-#: TurtleArt/tabasics.py:448
+#: TurtleArt/tabasics.py:451
 msgid "purple"
 msgstr "tamkulom mukuxtaláb"
 
-#: TurtleArt/tabasics.py:450
+#: TurtleArt/tabasics.py:453
 msgid "white"
 msgstr "dhakni'"
 
-#: TurtleArt/tabasics.py:451
+#: TurtleArt/tabasics.py:454
 msgid "black"
 msgstr "t'unu'"
 
-#: TurtleArt/tabasics.py:457
+#: TurtleArt/tabasics.py:460
 msgid "set text color"
 msgstr "ka ts'atba' in mukuxtalabil an dhuchlab"
 
-#: TurtleArt/tabasics.py:460
+#: TurtleArt/tabasics.py:463
 msgid "sets color of text drawn by the turtle"
 msgstr "ka tsat'abaj in mukuxtalab an dhuchlab axi in t'ipoy an pet"
 
-#: TurtleArt/tabasics.py:468
+#: TurtleArt/tabasics.py:471
 msgid "set text size"
 msgstr "ka ts'atba' in puwél an dhuchlab"
 
-#: TurtleArt/tabasics.py:471
+#: TurtleArt/tabasics.py:474
 msgid "sets size of text drawn by the turtle"
 msgstr "ka ts'atba' in puwel an dhuchlab axi in tsejkaj an pet"
 
-#: TurtleArt/tabasics.py:554
+#: TurtleArt/tabasics.py:557
 msgid "Palette of numeric operators"
 msgstr "Kwene' t'ojnalchik kal an ajumtabal"
 
-#: TurtleArt/tabasics.py:560
+#: TurtleArt/tabasics.py:563
 msgid "plus"
 msgstr "tamkuy"
 
-#: TurtleArt/tabasics.py:564
+#: TurtleArt/tabasics.py:567
 msgid "adds two alphanumeric inputs"
 msgstr "ka tamkuy tsab i otseltaláb alfanuméricas"
 
-#: TurtleArt/tabasics.py:572
+#: TurtleArt/tabasics.py:575
 msgid "minus"
 msgstr "we'medhax"
 
-#: TurtleArt/tabasics.py:575
+#: TurtleArt/tabasics.py:578
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr ""
 "ka kaldha' in otsemtal an ajumtalab xi kwajat tin alam an ajumtalab xi ebal"
 
-#: TurtleArt/tabasics.py:586
+#: TurtleArt/tabasics.py:589
 msgid "multiply"
 msgstr "yanedhom ajixtalab"
 
-#: TurtleArt/tabasics.py:589
+#: TurtleArt/tabasics.py:592
 msgid "multiplies two numeric inputs"
 msgstr "ka yanedha' tsab i otseltalab ajumtalab"
 
-#: TurtleArt/tabasics.py:598
+#: TurtleArt/tabasics.py:601
 msgid "divide"
 msgstr "buk'uxtalab"
 
-#: TurtleArt/tabasics.py:601
+#: TurtleArt/tabasics.py:604
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
 "ka buk'uw an otseltalab k'al an ajumtalab axi ebal (numerador) k'al an "
 "ajumtalab axi alal (denominador)"
 
-#: TurtleArt/tabasics.py:611
+#: TurtleArt/tabasics.py:614
 msgid "identity"
 msgstr "ibíl"
 
-#: TurtleArt/tabasics.py:613
+#: TurtleArt/tabasics.py:616
 msgid "identity operator used for extending blocks"
 msgstr "in ibíl an t'ojnal eyendhach abal ka yanedha' an kwen'e t'ojlab"
 
-#: TurtleArt/tabasics.py:621 TurtleArt/tabasics.py:622
+#: TurtleArt/tabasics.py:624 TurtleArt/tabasics.py:625
 msgid "mod"
 msgstr "mod"
 
-#: TurtleArt/tabasics.py:625
+#: TurtleArt/tabasics.py:628
 msgid "modular (remainder) operator"
 msgstr "an t'ojnal axi ne ti tsejkanchij jant'odha ta lé"
 
-#: TurtleArt/tabasics.py:632
+#: TurtleArt/tabasics.py:635
 msgid "√"
 msgstr "√"
 
-#: TurtleArt/tabasics.py:633
+#: TurtleArt/tabasics.py:636
 msgid "square root"
 msgstr "raiz cuadrada"
 
-#: TurtleArt/tabasics.py:636
+#: TurtleArt/tabasics.py:639
 msgid "calculates square root"
 msgstr "ka aliy an raiz cuadrada"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:646
 msgid "random"
 msgstr "yab aykadh"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:646
 msgid "min"
 msgstr "min"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:646
 msgid "max"
 msgstr "max"
 
-#: TurtleArt/tabasics.py:647
+#: TurtleArt/tabasics.py:650
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
 "ka wichba' jun i ajumtalab tin ay an jolat tsiptí jalbil (walk'i') anij an "
 "pulik alal"
 
-#: TurtleArt/tabasics.py:659
+#: TurtleArt/tabasics.py:662
 msgid "number"
 msgstr "ajixtaláb"
 
-#: TurtleArt/tabasics.py:660
+#: TurtleArt/tabasics.py:663
 msgid "used as numeric input in mathematic operators"
 msgstr ""
 "eyendhach etil in otseltal ajumtalab ti ba' an tolmix k'al an matematicas"
 
-#: TurtleArt/tabasics.py:668
+#: TurtleArt/tabasics.py:671
 msgid "greater than"
 msgstr "mas pulik etil a"
 
-#: TurtleArt/tabasics.py:671
+#: TurtleArt/tabasics.py:674
 msgid "logical greater-than operator"
 msgstr "an bolk'idh t'ojnal axi lej pulik etil a"
 
-#: TurtleArt/tabasics.py:680
+#: TurtleArt/tabasics.py:683
 msgid "less than"
 msgstr "lej tsipti' etil a"
 
-#: TurtleArt/tabasics.py:684
+#: TurtleArt/tabasics.py:687
 msgid "logical less-than operator"
 msgstr "an bolk'dh t'ojnal axi lej pulik etil a"
 
-#: TurtleArt/tabasics.py:692
+#: TurtleArt/tabasics.py:695
 msgid "equal"
 msgstr "jununúl"
 
 # jununúl se utiliza para los dos conceptos equivalante e igual.
-#: TurtleArt/tabasics.py:696
+#: TurtleArt/tabasics.py:699
 msgid "logical equal-to operator"
 msgstr "an bolk'idh t'ojnal axi jununúl"
 
-#: TurtleArt/tabasics.py:702
+#: TurtleArt/tabasics.py:705
 msgid "not"
 msgstr "ibáj"
 
-#: TurtleArt/tabasics.py:705
+#: TurtleArt/tabasics.py:708
 msgid "logical NOT operator"
 msgstr "t'ojnal YAB bolk'idh"
 
-#: TurtleArt/tabasics.py:711 TurtleArt/tabasics.py:714
+#: TurtleArt/tabasics.py:714 TurtleArt/tabasics.py:717
 msgid "and"
 msgstr "y"
 
-#: TurtleArt/tabasics.py:715
+#: TurtleArt/tabasics.py:718
 msgid "logical AND operator"
 msgstr "to'jnal ANI bolk'idh"
 
-#: TurtleArt/tabasics.py:722 TurtleArt/tabasics.py:725
+#: TurtleArt/tabasics.py:725 TurtleArt/tabasics.py:728
 msgid "or"
 msgstr "o"
 
-#: TurtleArt/tabasics.py:726
+#: TurtleArt/tabasics.py:729
 msgid "logical OR operator"
 msgstr "t'ojnal O bolk'idh"
 
 # paleta = kwene';  operadores, controladores = abatnom
-#: TurtleArt/tabasics.py:735
+#: TurtleArt/tabasics.py:738
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
 msgid "Palette of flow operators"
 msgstr "Kwene' k'al an wat'etél abatnom"
 
-#: TurtleArt/tabasics.py:740
+#: TurtleArt/tabasics.py:743
 msgid "wait"
 msgstr "aychíj"
 
-#: TurtleArt/tabasics.py:744
+#: TurtleArt/tabasics.py:747
 msgid "pauses program execution a specified number of seconds"
 msgstr "in kubál jun i wé an k'ij tam kw'ajat ti t'ojnal jun i tsalpadh t'ojláb"
 
-#: TurtleArt/tabasics.py:751
+#: TurtleArt/tabasics.py:754
 msgid "forever"
 msgstr "abal ets'ey"
 
-#: TurtleArt/tabasics.py:755
+#: TurtleArt/tabasics.py:758
 msgid "loops forever"
 msgstr "ka wichk'ow abal ets'ey"
 
-#: TurtleArt/tabasics.py:762 TurtleArt/tabasics.py:766
+#: TurtleArt/tabasics.py:765 TurtleArt/tabasics.py:769
 msgid "repeat"
 msgstr "ka wichk'ow"
 
-#: TurtleArt/tabasics.py:767
+#: TurtleArt/tabasics.py:770
 msgid "loops specified number of times"
 msgstr "wenk'ow an ajixtaláb ti jayil ti uludh"
 
-#: TurtleArt/tabasics.py:773 TurtleArt/tabasics.py:786
+#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
 msgid "if"
 msgstr "anits"
 
-#: TurtleArt/tabasics.py:773 TurtleArt/tabasics.py:786
+#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
 msgid "then"
 msgstr "tam"
 
-#: TurtleArt/tabasics.py:776
+#: TurtleArt/tabasics.py:779
 msgid "if then"
 msgstr "anits tam"
 
-#: TurtleArt/tabasics.py:778
+#: TurtleArt/tabasics.py:781
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr ""
 "beldhom anits-tam axi in eyendhal i beldhomchik ti in ey an kwene' Ajixtaláb"
 
-#: TurtleArt/tabasics.py:786
+#: TurtleArt/tabasics.py:789
 msgid "else"
 msgstr "max ibáj"
 
-#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
+#: TurtleArt/tabasics.py:793 TurtleArt/tabasics.py:801
 msgid "if then else"
 msgstr "anits tam max inbáj"
 
-#: TurtleArt/tabasics.py:791 TurtleArt/tabasics.py:799
+#: TurtleArt/tabasics.py:794 TurtleArt/tabasics.py:802
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr ""
 "beldhom anits-tam-junake' axi in eyendhal i beldhomchik ti in ey an kwene' "
 "Ajixtaláb"
 
-#: TurtleArt/tabasics.py:808
+#: TurtleArt/tabasics.py:811
 msgid "horizontal space"
 msgstr "peltom i jolat"
 
-#: TurtleArt/tabasics.py:809
+#: TurtleArt/tabasics.py:812
 msgid "jogs stack right"
 msgstr "ka bodhondha' an t'i'e' ta wínab"
 
-#: TurtleArt/tabasics.py:816
+#: TurtleArt/tabasics.py:819
 msgid "vertical space"
 msgstr "jolataláb xi kubladh"
 
-#: TurtleArt/tabasics.py:817
+#: TurtleArt/tabasics.py:820
 msgid "jogs stack down"
 msgstr "t'ajdhidhixtaláb abal alal an t'i'adh"
 
-#: TurtleArt/tabasics.py:823
+#: TurtleArt/tabasics.py:826
 msgid "stop action"
 msgstr "kuba' an pakdha' t'ojláb"
 
-#: TurtleArt/tabasics.py:826
+#: TurtleArt/tabasics.py:829
 msgid "stops current action"
 msgstr "xowe' ka kuba' an pakdha' t'ojláb"
 
-#: TurtleArt/tabasics.py:835
+#: TurtleArt/tabasics.py:838
 msgid "Palette of variable blocks"
 msgstr "An kwene' axi ti kwene' t'ojláb k'al an bijlabchik"
 
-#: TurtleArt/tabasics.py:840 pysamples/grecord.py:213
+#: TurtleArt/tabasics.py:843 pysamples/grecord.py:213
 msgid "start"
 msgstr "tujuw"
 
-#: TurtleArt/tabasics.py:843
+#: TurtleArt/tabasics.py:846
 msgid "connects action to toolbar run buttons"
 msgstr ""
 "in ts'ot'k'oyal an kwene' t'ojláb ti dhuche' ani ka t'ajan ti kwene' "
 "ayendhanél"
 
-#: TurtleArt/tabasics.py:850 TurtleArt/tabasics.py:851
-#: TurtleArt/tabasics.py:852
+#: TurtleArt/tabasics.py:853 TurtleArt/tabasics.py:854
+#: TurtleArt/tabasics.py:855
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
@@ -609,144 +613,146 @@ msgid "text"
 msgstr "dhuchlab"
 
 # valor = jalbíl ; cadena = dhuchlab
-#: TurtleArt/tabasics.py:853
+#: TurtleArt/tabasics.py:856
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
 msgid "string value"
 msgstr "in jalbíl an dhuchlab"
 
-#: TurtleArt/tabasics.py:857 TurtleArt/tabasics.py:860
-#: TurtleArt/tabasics.py:868 TurtleArt/tabasics.py:872
-#: TurtleArt/tawindow.py:1269 TurtleArt/tawindow.py:1350
-#: TurtleArt/tawindow.py:1363 TurtleArt/tawindow.py:4016
+#: TurtleArt/tabasics.py:860 TurtleArt/tabasics.py:863
+#: TurtleArt/tabasics.py:871 TurtleArt/tabasics.py:875
+#: TurtleArt/tawindow.py:1292 TurtleArt/tawindow.py:1371
+#: TurtleArt/tawindow.py:1384 TurtleArt/tawindow.py:1854
+#: TurtleArt/tawindow.py:4125
 msgid "action"
 msgstr "pakdha' t'ojláb"
 
-#: TurtleArt/tabasics.py:862
+#: TurtleArt/tabasics.py:865
 msgid "top of nameable action stack"
 msgstr "eblim tin chum an t'i'e' k'al an pakdha' t'ojláb xi bijidh"
 
-#: TurtleArt/tabasics.py:873 TurtleArt/tawindow.py:4030
+#: TurtleArt/tabasics.py:876 TurtleArt/tawindow.py:4139
 msgid "invokes named action stack"
 msgstr "ki tsalapna' an t'i'e' ba an pakdha' t'ojláb xi bijidh"
 
-#: TurtleArt/tabasics.py:880
+#: TurtleArt/tabasics.py:883
 msgid "store in box 1"
 msgstr "ki dhaya' ti ál an ka'al baltse' 1"
 
-#: TurtleArt/tabasics.py:885
+#: TurtleArt/tabasics.py:888
 msgid "stores numeric value in Variable 1"
 msgstr "dhaya' in jabil an ajixtaláb ti Bijlab 1"
 
-#: TurtleArt/tabasics.py:893
+#: TurtleArt/tabasics.py:896
 msgid "store in box 2"
 msgstr "dhaya' ti baltse' 2"
 
-#: TurtleArt/tabasics.py:898
+#: TurtleArt/tabasics.py:901
 msgid "stores numeric value in Variable 2"
 msgstr "dhaya' in jabil an ajixtaláb ti Bijlab 2"
 
-#: TurtleArt/tabasics.py:906
+#: TurtleArt/tabasics.py:909
 msgid "box 1"
 msgstr "baltse' 1"
 
-#: TurtleArt/tabasics.py:909
+#: TurtleArt/tabasics.py:912
 msgid "Variable 1 (numeric value)"
 msgstr "Bijlab 1 (jalbil ajixtaláb)"
 
-#: TurtleArt/tabasics.py:916
+#: TurtleArt/tabasics.py:919
 msgid "box 2"
 msgstr "baltse' 2"
 
-#: TurtleArt/tabasics.py:919
+#: TurtleArt/tabasics.py:922
 msgid "Variable 2 (numeric value)"
 msgstr "Bijilab 2 (jalbil ajixtaláb)"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4080
+#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
 msgid "store in"
 msgstr "ki dhaya' ti"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tabasics.py:939
+#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
 msgid "box"
 msgstr "baltse'"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4080
+#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
 msgid "value"
 msgstr "jalbíl"
 
-#: TurtleArt/tabasics.py:929 TurtleArt/tabasics.py:942
-#: TurtleArt/tawindow.py:1273 TurtleArt/tawindow.py:4043
-#: TurtleArt/tawindow.py:4071
+#: TurtleArt/tabasics.py:932 TurtleArt/tabasics.py:945
+#: TurtleArt/tawindow.py:1296 TurtleArt/tawindow.py:1409
+#: TurtleArt/tawindow.py:1858 TurtleArt/tawindow.py:4152
+#: TurtleArt/tawindow.py:4180
 msgid "my box"
 msgstr "u baltse'"
 
-#: TurtleArt/tabasics.py:930 TurtleArt/tawindow.py:4085
+#: TurtleArt/tabasics.py:933 TurtleArt/tawindow.py:4194
 msgid "stores numeric value in named variable"
 msgstr "dhaya' in jalbil an ajixtaláb ti bijláb xi bijidh"
 
-#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4057
+#: TurtleArt/tabasics.py:948 TurtleArt/tawindow.py:4166
 msgid "named variable (numeric value)"
 msgstr "bijilab xi bijidh (jalbil ajixtaláb)"
 
-#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
+#: TurtleArt/tabasics.py:955 TurtleArt/tabasics.py:974
 msgid "action 1"
 msgstr "pakdha' t'ojláb 1"
 
-#: TurtleArt/tabasics.py:955
+#: TurtleArt/tabasics.py:958
 msgid "top of Action 1 stack"
 msgstr "ebal ti t'i'e' k'al an Pakdha' t'ojláb 1"
 
-#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
+#: TurtleArt/tabasics.py:964 TurtleArt/tabasics.py:984
 msgid "action 2"
 msgstr "pakdha' t'ojláb 2"
 
-#: TurtleArt/tabasics.py:964
+#: TurtleArt/tabasics.py:967
 msgid "top of Action 2 stack"
 msgstr "ebal ti t'i'e' k'al an Pakdha' t'ojláb 2"
 
-#: TurtleArt/tabasics.py:974
+#: TurtleArt/tabasics.py:977
 msgid "invokes Action 1 stack"
 msgstr "ki tsalapna' an t'i'e' ba an Pakdha' t'ojláb 1"
 
-#: TurtleArt/tabasics.py:984
+#: TurtleArt/tabasics.py:987
 msgid "invokes Action 2 stack"
 msgstr "ebal ti t'i'e' k'al an Pakdha' t'ojláb 2"
 
-#: TurtleArt/tabasics.py:992
+#: TurtleArt/tabasics.py:995
 msgid "trash"
 msgstr "ámul"
 
-#: TurtleArt/tabasics.py:996
+#: TurtleArt/tabasics.py:999
 msgid "empty trash"
 msgstr "jolk'ow an balixtaláb amúl"
 
-#: TurtleArt/tabasics.py:997
+#: TurtleArt/tabasics.py:1000
 msgid "permanently deletes items in trash"
 msgstr "pakuw abal etsey an ayendhanel xi tin bál an úw"
 
-#: TurtleArt/tabasics.py:1001
+#: TurtleArt/tabasics.py:1004
 msgid "restore all"
 msgstr "ki wichba' patal"
 
-#: TurtleArt/tabasics.py:1002
+#: TurtleArt/tabasics.py:1005
 msgid "restore all blocks from trash"
 msgstr "ki wichba' patalchik an muke' ti al an balixtal úw"
 
-#: TurtleArt/tabasics.py:1006
+#: TurtleArt/tabasics.py:1009
 msgid "clear all"
 msgstr "ki pakuw patal"
 
-#: TurtleArt/tabasics.py:1007
+#: TurtleArt/tabasics.py:1010
 msgid "move all blocks to trash"
 msgstr "ki nedha' patal an kwene' abal ti amul"
 
-#: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1790
-#: TurtleArtActivity.py:652
+#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:1833
+#: TurtleArtActivity.py:703
 msgid "Share selected blocks"
 msgstr "Pexchixna' an takudh kwene'"
 
-#: TurtleArt/taconstants.py:216 TurtleArt/taconstants.py:238
-#: TurtleArt/taconstants.py:259 TurtleArt/taconstants.py:301
-#: TurtleArt/taconstants.py:343 TurtleArt/taconstants.py:385
+#: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
+#: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
+#: TurtleArt/taconstants.py:336 TurtleArt/taconstants.py:378
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:978
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:993
@@ -757,268 +763,286 @@ msgid "Title"
 msgstr "Bijláb"
 
 # Tortuga = Pet
-#: TurtleArt/talogo.py:358 TurtleArtActivity.py:632
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1473
+#: TurtleArt/talogo.py:374 TurtleArtActivity.py:683
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1492
 msgid "Stop turtle"
 msgstr "Ka kuba' an pet"
 
 # bloque = kwene't'ojláb (conjunto de actividades)
-#: TurtleArt/talogo.py:369 TurtleArtActivity.py:288 TurtleArtActivity.py:633
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1466
+#: TurtleArt/talogo.py:384 TurtleArtActivity.py:322 TurtleArtActivity.py:684
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1485
 msgid "Show blocks"
 msgstr "Ka tejwa'méjdha' an kwene't'ojlábl"
 
-#: TurtleArt/talogo.py:373 TurtleArtActivity.py:292 TurtleArtActivity.py:810
+#: TurtleArt/talogo.py:388 TurtleArtActivity.py:326 TurtleArtActivity.py:894
 msgid "Hide blocks"
 msgstr "Ka dhibk'oy an kwene't'ojlábchik"
 
 # No produjo salida a
-#: TurtleArt/talogo.py:492
+#: TurtleArt/talogo.py:511
 msgid "did not output to"
 msgstr "yab in t'aja' i kadhaxtaláb abal"
 
-#: TurtleArt/talogo.py:551
+#: TurtleArt/talogo.py:570
 msgid "I don't know how to"
 msgstr "Inbáj u exlál jant'odha' ku t'aja'"
 
-#: TurtleArt/talogo.py:602
+#: TurtleArt/talogo.py:624
 msgid "doesn't like"
 msgstr "inbáj in kulbetnal"
 
-#: TurtleArt/talogo.py:602
+#: TurtleArt/talogo.py:624
 msgid "as input"
 msgstr "ejtil i otseltaláb"
 
-#: TurtleArt/tapalette.py:96
+#: TurtleArt/tapalette.py:97
 msgid "displays next palette"
 msgstr "ki tejwa'medha' xi júnakej i kwene'"
 
-#: TurtleArt/tapalette.py:97
+#: TurtleArt/tapalette.py:98
 msgid "changes the orientation of the palette of blocks"
 msgstr "ka jalk'unchij in áy an kewne' ti kwene' t´'ojláb"
 
-#: TurtleArt/tautils.py:192
+#: TurtleArt/tautils.py:196
 msgid "Load..."
 msgstr "K'adhba'..."
 
-#: TurtleArt/tautils.py:202
+#: TurtleArt/tautils.py:206
 msgid "Save..."
 msgstr "Dhaya'..."
 
-#: TurtleArt/tautils.py:474
+#: TurtleArt/tautils.py:483
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
 msgid "click to open"
 msgstr "ni'inchij abal ka japiy"
 
-#: TurtleArt/tawindow.py:987 TurtleArt/tawindow.py:988
+#: TurtleArt/tawindow.py:989 TurtleArt/tawindow.py:990
 msgid "orientation"
 msgstr "bolidhtaláb"
 
-#: TurtleArt/tawindow.py:998 TurtleArt/tawindow.py:1435
+#: TurtleArt/tawindow.py:1000 TurtleArt/tawindow.py:1470
 msgid "next"
 msgstr "júnakej"
 
-#: TurtleArt/tawindow.py:1010 TurtleArt/tawindow.py:1011
-#: TurtleArt/tawindow.py:1455
+#: TurtleArt/tawindow.py:1012 TurtleArt/tawindow.py:1013
+#: TurtleArt/tawindow.py:1490
 msgid "shift"
 msgstr "nixk'iy"
 
-#: TurtleArt/tawindow.py:1287
+#: TurtleArt/tawindow.py:1256
+msgid ""
+"Please hit the Stop Button before making changes to your Turtle Blocks "
+"program"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1310
 msgid "Select blocks to share"
 msgstr "Takuy an kwene'chik abal ki pejchíxna'"
 
-#: TurtleArt/tawindow.py:3873
+# TortugArte = WitsixPet
+#: TurtleArt/tawindow.py:3868 pysamples/grecord.py:205
+msgid "Turtle Art"
+msgstr "Witsix Pet"
+
+#: TurtleArt/tawindow.py:3977
 msgid "image"
 msgstr "t'iplab"
 
 # Logo = T'iplab
-#: TurtleArtActivity.py:132 TurtleArtActivity.py:658 TurtleArtActivity.py:749
-#: TurtleArtActivity.py:769 turtleblocks.py:356
+#: TurtleArtActivity.py:166 TurtleArtActivity.py:709 TurtleArtActivity.py:823
+#: TurtleArtActivity.py:853 turtleblocks.py:360
 msgid "Save as Logo"
 msgstr "Ka dhaya' jant'ini' i T'iplab"
 
 # imagen o logo = t'iplab
-#: TurtleArtActivity.py:169 TurtleArtActivity.py:657 TurtleArtActivity.py:746
-#: TurtleArtActivity.py:766 turtleblocks.py:354
+#: TurtleArtActivity.py:203 TurtleArtActivity.py:708 TurtleArtActivity.py:820
+#: TurtleArtActivity.py:850 turtleblocks.py:358
 msgid "Save as image"
 msgstr "Ka dhaya' jant'ini' i t'iplab"
 
 # Instantánea=adhik
-#: TurtleArtActivity.py:177
+#: TurtleArtActivity.py:211
 msgid "snapshot"
 msgstr "adhik"
 
 # Instantánea (o) = Jun adhik
-#: TurtleArtActivity.py:185 TurtleArtActivity.py:591 TurtleArtActivity.py:634
-#: TurtleArtActivity.py:772
+#: TurtleArtActivity.py:219 TurtleArtActivity.py:643 TurtleArtActivity.py:685
+#: TurtleArtActivity.py:829 TurtleArtActivity.py:856
 msgid "Save snapshot"
 msgstr "Dhayaxtaláb k'al an jun adhik"
 
-#: TurtleArtActivity.py:226 TurtleArtActivity.py:569 TurtleArtActivity.py:708
-#: turtleblocks.py:374
+#: TurtleArtActivity.py:260 TurtleArtActivity.py:616 TurtleArtActivity.py:759
+#: turtleblocks.py:378
 msgid "Turn off hover help"
 msgstr "Ki tixk'anchij in tsáp an dhememél tolmix"
 
-#: TurtleArtActivity.py:232 turtleblocks.py:376
+#: TurtleArtActivity.py:266 turtleblocks.py:380
 msgid "Turn on hover help"
 msgstr "Punchij in tsáp an dhememél tolmix"
 
 # paleta = kwene'mukuxtaláb
-#: TurtleArtActivity.py:240 turtleblocks.py:386
+#: TurtleArtActivity.py:274 turtleblocks.py:390
 msgid "Show palette"
 msgstr "Tejwa'méjdha' an kwene'mukuxtaláb"
 
 # Ocultar = dhibk'oy, tsina'; esconder = tsina'
-#: TurtleArtActivity.py:246 TurtleArtActivity.py:798 turtleblocks.py:388
+#: TurtleArtActivity.py:280 TurtleArtActivity.py:882 turtleblocks.py:392
 msgid "Hide palette"
 msgstr "Ka dhibk'oy an kwene'mukuxtaláb"
 
 # escalar=k'adhíl(subir)
-#: TurtleArtActivity.py:400
+#: TurtleArtActivity.py:447
 msgid "Rescale coordinates down"
 msgstr "K'adhíl ti coordenadas abal alál"
 
-#: TurtleArtActivity.py:404 TurtleArtActivity.py:561 TurtleArtActivity.py:704
+#: TurtleArtActivity.py:451 TurtleArtActivity.py:608 TurtleArtActivity.py:755
 msgid "Rescale coordinates up"
 msgstr "K'adhíl ti coordenadas abal ebál"
 
-#: TurtleArtActivity.py:494 TurtleArtActivity.py:530 TurtleArtActivity.py:626
-#: TurtleArtActivity.py:679 turtleblocks.py:383
+#: TurtleArtActivity.py:541 TurtleArtActivity.py:577 TurtleArtActivity.py:677
+#: TurtleArtActivity.py:730 turtleblocks.py:387
 msgid "Edit"
 msgstr "Jalk'uy"
 
-#: TurtleArtActivity.py:499 TurtleArtActivity.py:528 TurtleArtActivity.py:627
-#: TurtleArtActivity.py:696 turtleblocks.py:378
+#: TurtleArtActivity.py:546 TurtleArtActivity.py:575 TurtleArtActivity.py:678
+#: TurtleArtActivity.py:747 turtleblocks.py:382
 msgid "View"
 msgstr "Tsu'uw"
 
-#: TurtleArtActivity.py:526 TurtleArtActivity.py:628
+#: TurtleArtActivity.py:573 TurtleArtActivity.py:679
 msgid "Project"
 msgstr "Tsalapnadh t'ojláb"
 
-#: TurtleArtActivity.py:532 TurtleArtActivity.py:625 TurtleArtActivity.py:654
-#: TurtleArtActivity.py:656 TurtleArtActivity.py:741
+#: TurtleArtActivity.py:579 TurtleArtActivity.py:676 TurtleArtActivity.py:705
+#: TurtleArtActivity.py:707 TurtleArtActivity.py:815
 msgid "Save/Load"
 msgstr "Dhaya'/K'adhba'"
 
-#: TurtleArtActivity.py:540 TurtleArtActivity.py:680 turtleblocks.py:381
+#: TurtleArtActivity.py:587 TurtleArtActivity.py:731 turtleblocks.py:385
 msgid "Copy"
 msgstr "K'ot'biy"
 
-#: TurtleArtActivity.py:542 TurtleArtActivity.py:681 turtleblocks.py:382
+#: TurtleArtActivity.py:589 TurtleArtActivity.py:732 turtleblocks.py:386
 msgid "Paste"
 msgstr "Ts'at'k'a'"
 
-#: TurtleArtActivity.py:544
+#: TurtleArtActivity.py:591
 #, fuzzy
 msgid "Restore blocks from trash"
 msgstr "ki wichba' patalchik an muke' ti al an balixtal úw"
 
-#: TurtleArtActivity.py:547 TurtleArtActivity.py:697
+#: TurtleArtActivity.py:594 TurtleArtActivity.py:748
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
 msgid "Fullscreen"
 msgstr "Putat walek"
 
-#: TurtleArtActivity.py:549 TurtleArtActivity.py:698 turtleblocks.py:362
+#: TurtleArtActivity.py:596 TurtleArtActivity.py:749 turtleblocks.py:366
 msgid "Cartesian coordinates"
 msgstr "Coordenadas cartesianas"
 
-#: TurtleArtActivity.py:551 TurtleArtActivity.py:700 turtleblocks.py:364
+#: TurtleArtActivity.py:598 TurtleArtActivity.py:751 turtleblocks.py:368
 msgid "Polar coordinates"
 msgstr "Coordenadas polares"
 
-#: TurtleArtActivity.py:554 TurtleArtActivity.py:702
+#: TurtleArtActivity.py:601 TurtleArtActivity.py:753
 msgid "Metric coordinates"
 msgstr "Coordenadas centímetros"
 
-#: TurtleArtActivity.py:564 TurtleArtActivity.py:706 turtleblocks.py:368
+#: TurtleArtActivity.py:611 TurtleArtActivity.py:757 turtleblocks.py:372
 msgid "Grow blocks"
 msgstr "Ka púwedha' an kwene' t'ojlábchik"
 
-#: TurtleArtActivity.py:566 TurtleArtActivity.py:707 turtleblocks.py:370
+#: TurtleArtActivity.py:613 TurtleArtActivity.py:758 turtleblocks.py:374
 msgid "Shrink blocks"
 msgstr "Tsipti'méjdha' an kwene' t'ojlábchik"
 
 # Ejemplo = t'ipoxtaláb
-#: TurtleArtActivity.py:595 TurtleArtActivity.py:635
+#: TurtleArtActivity.py:630 TurtleArtActivity.py:647 TurtleArtActivity.py:686
+#: TurtleArtActivity.py:832
 msgid "Load example"
 msgstr "Ka k'adhba' an t'ipoxtalábchik"
 
-#: TurtleArtActivity.py:629 TurtleArtActivity.py:804 turtleblocks.py:395
+#: TurtleArtActivity.py:680 TurtleArtActivity.py:888 turtleblocks.py:399
 msgid "Clean"
 msgstr "T'oka'"
 
-#: TurtleArtActivity.py:630 TurtleArtActivity.py:806 turtleblocks.py:396
+#: TurtleArtActivity.py:681 TurtleArtActivity.py:890 turtleblocks.py:400
 msgid "Run"
 msgstr "Ka t'aja'"
 
-#: TurtleArtActivity.py:631 TurtleArtActivity.py:808 turtleblocks.py:397
+#: TurtleArtActivity.py:682 TurtleArtActivity.py:892 turtleblocks.py:401
 msgid "Step"
 msgstr "Ka t'aja' jun xakab"
 
 # Ayuda = tolmix(conjugado, naná' in tolmix); Ayuda(La) = Tolmixtaláb(como sustantivo: an tolmixtaláb)
-#: TurtleArtActivity.py:636 util/helpbutton.py:45
+#: TurtleArtActivity.py:687 turtleblocks.py:408 util/helpbutton.py:45
 msgid "Help"
 msgstr "Tolmixtaláb"
 
-#: TurtleArtActivity.py:637 turtleblocks.py:399
+#: TurtleArtActivity.py:688 turtleblocks.py:403
 msgid "Stop"
 msgstr "Kuba'"
 
-#: TurtleArtActivity.py:659 TurtleArtActivity.py:752 TurtleArtActivity.py:774
+#: TurtleArtActivity.py:710 TurtleArtActivity.py:836 TurtleArtActivity.py:858
 msgid "Load project"
 msgstr "K'adhba' an tojláb"
 
 # T'uchinchij in kidhtal
-#: TurtleArtActivity.py:662 TurtleArtActivity.py:757 TurtleArtActivity.py:779
+#: TurtleArtActivity.py:713 TurtleArtActivity.py:841 TurtleArtActivity.py:863
 msgid "Load plugin"
 msgstr "An k'adhbomáts k'al in kidhtal"
 
-#: TurtleArtActivity.py:663 TurtleArtActivity.py:760 TurtleArtActivity.py:782
+#: TurtleArtActivity.py:714 TurtleArtActivity.py:844 TurtleArtActivity.py:866
 msgid "Load Python block"
 msgstr "K'adhba' an Python kwene' t'ojláb"
 
-#: TurtleArtActivity.py:736
+#: TurtleArtActivity.py:766
+#, fuzzy
+msgid "Palettes"
+msgstr "kwene' mukuxtaláb"
+
+#: TurtleArtActivity.py:810
 msgid "Sharing blocks disabled"
 msgstr "An dhéymáts k'al an kwene' t'ojláb a xi yabáts éynal"
 
-#: TurtleArtActivity.py:799
+#: TurtleArtActivity.py:883
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
-#: TurtleArtActivity.py:804
+#: TurtleArtActivity.py:888
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
-#: TurtleArtActivity.py:806
+#: TurtleArtActivity.py:890
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
-#: TurtleArtActivity.py:808
+#: TurtleArtActivity.py:892
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
-#: TurtleArtActivity.py:811
+#: TurtleArtActivity.py:895
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
 # plugin=complemento
-#: TurtleArtActivity.py:967 TurtleArtActivity.py:972 TurtleArtActivity.py:1039
+#: TurtleArtActivity.py:1049 TurtleArtActivity.py:1054
+#: TurtleArtActivity.py:1121
 msgid "Plugin could not be installed."
 msgstr "An kidhataláb yab elat ka punuwat."
 
-#: TurtleArtActivity.py:1035
+#: TurtleArtActivity.py:1117
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr ""
 "T'ajchij an alwa'taláb ka tsab tujchij an Witsix Pet abal ka ejtow ayendha' "
 "an kidhataláb."
 
-#: TurtleArtActivity.py:1053
+#: TurtleArtActivity.py:1135
 #, python-format
 msgid "Plugin %s already installed."
 msgstr "An kidhataláb %s k'wajatits punudh."
 
-#: TurtleArtActivity.py:1054
+#: TurtleArtActivity.py:1136
 #, python-format
 msgid "Do you want to reinstall %s?"
 msgstr "¿A lé'xe' ka tsab punuw %s?"
@@ -1080,15 +1104,21 @@ msgstr "Dhuchadh"
 msgid "Colors"
 msgstr "Mukuxtaláb"
 
-#: gnome_plugins/uploader_plugin.py:64
-msgid "Upload to Web"
-msgstr "K'adhba' ti ál an web"
-
-#: gnome_plugins/uploader_plugin.py:66
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
 msgid "Upload"
 msgstr "K'adhba'"
 
-#: gnome_plugins/uploader_plugin.py:83
+#: gnome_plugins/fb_plugin.py:87
+msgid "Facebook wall post"
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "K'adhba' ti ál an web"
+
+#: gnome_plugins/uploader_plugin.py:90
 msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
@@ -1096,35 +1126,35 @@ msgstr ""
 "In yejenchal ka ko'oy jun i kwet-ajixtaláb ti "
 "http://turtleartsite.sugarlabs.org to upload your project."
 
-#: gnome_plugins/uploader_plugin.py:92
+#: gnome_plugins/uploader_plugin.py:99
 msgid "Username:"
 msgstr "Ayendhóm:"
 
-#: gnome_plugins/uploader_plugin.py:102
+#: gnome_plugins/uploader_plugin.py:109
 msgid "Password:"
 msgstr "Tsinatbijiláb:"
 
-#: gnome_plugins/uploader_plugin.py:113
+#: gnome_plugins/uploader_plugin.py:120
 msgid "Title:"
 msgstr "Bijláb:"
 
-#: gnome_plugins/uploader_plugin.py:123
+#: gnome_plugins/uploader_plugin.py:130
 msgid "Description:"
 msgstr "Tejwa'méjdhomtaláb:"
 
-#: gnome_plugins/uploader_plugin.py:133
+#: gnome_plugins/uploader_plugin.py:140
 msgid "Submit to Web"
 msgstr "Abna' ti ál an web"
 
-#: gnome_plugins/uploader_plugin.py:137
+#: gnome_plugins/uploader_plugin.py:144
 msgid "Cancel"
 msgstr "T'apiy"
 
-#: gnome_plugins/uploader_plugin.py:159
+#: gnome_plugins/uploader_plugin.py:166
 msgid "Login failed"
 msgstr "Kibts'ontaláb k'al in chubáx éy"
 
-#: gnome_plugins/uploader_plugin.py:196
+#: gnome_plugins/uploader_plugin.py:203
 msgid "Failed to upload!"
 msgstr "¡Kibts'obtaláb k'al an k'adhbaxtaláb!"
 
@@ -1180,15 +1210,15 @@ msgstr "jolát an otseltaláb ti kawidhomtaláb"
 
 #: plugins/audio_sensors/audio_sensors.py:151
 #: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:178
-#: plugins/audio_sensors/audio_sensors.py:192
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
 msgid "resistance"
 msgstr "kuxúdh"
 
 #: plugins/audio_sensors/audio_sensors.py:152
 #: plugins/audio_sensors/audio_sensors.py:166
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
+#: plugins/audio_sensors/audio_sensors.py:180
+#: plugins/audio_sensors/audio_sensors.py:194
 msgid "microphone input resistance"
 msgstr ""
 "in jalbidh in kuxúdh ts'ot'kodh ti otseltaláb k'al an kawidhomtaláb (ajidh "
@@ -1196,15 +1226,15 @@ msgstr ""
 
 #: plugins/audio_sensors/audio_sensors.py:157
 #: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:184
-#: plugins/audio_sensors/audio_sensors.py:198
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
 msgid "voltage"
 msgstr "k'amáltsáj"
 
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:172
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
+#: plugins/audio_sensors/audio_sensors.py:186
+#: plugins/audio_sensors/audio_sensors.py:200
 msgid "microphone input voltage"
 msgstr ""
 "in tsapik an k'amáltsáj DC ts'ot'k'odh ti otseltaláb kawidhomtaláb (ti: 0.40 "
@@ -1866,6 +1896,29 @@ msgstr "tejwa'medhomtaláb 1x2"
 msgid "presentation 2x2"
 msgstr "tejwa'medhomtaláb 2x2"
 
+#: pysamples/brain.py:43
+msgid "Please install the Speak Activity and try again."
+msgstr ""
+
+#: pysamples/brain.py:54
+msgid "Spanish"
+msgstr ""
+
+#: pysamples/brain.py:58 pysamples/brain.py:72 pysamples/brain.py:74
+#: pysamples/brain.py:80
+msgid "English"
+msgstr ""
+
+#: pysamples/brain.py:91
+msgid "Sorry, I can't understand what you are asking about."
+msgstr ""
+
+#: pysamples/brain.py:100
+msgid ""
+"Sorry, there is no free memory to load my brain. Close other activities and "
+"try once more."
+msgstr ""
+
 #: pysamples/forward_push.py:45
 msgid "push destination rgb value to heap"
 msgstr ""
@@ -1895,79 +1948,83 @@ msgid "make a uturn"
 msgstr "ka t'aja' jun i wilk'ixtaláb ti U"
 
 # el uso es = se usa para = ayendháb abal
-#: turtleblocks.py:81
+#: turtleblocks.py:86
 msgid "usage is"
 msgstr "ayendháb abal"
 
-#: turtleblocks.py:234
+#: turtleblocks.py:240
 msgid "No option action:"
 msgstr "Yab ka t'aja' i jolat takudhtaláb:"
 
-#: turtleblocks.py:249
+#: turtleblocks.py:255
 msgid "File not found"
 msgstr "Ibáj elan i dhuchlab"
 
-#: turtleblocks.py:273
+#: turtleblocks.py:279
 #, python-format
 msgid "Configuration directory not writable: %s"
 msgstr "An t'ojojoxtaláb ti dhayab-úw ibáj ka jalk'unchij: %s"
 
 # Nuevo = Ít
-#: turtleblocks.py:350
+#: turtleblocks.py:354
 msgid "New"
 msgstr "Ít"
 
-#: turtleblocks.py:351
+#: turtleblocks.py:355
 msgid "Open"
 msgstr "Japiy"
 
-#: turtleblocks.py:352
+#: turtleblocks.py:356
 msgid "Save"
 msgstr "Dhaya'"
 
-#: turtleblocks.py:353
+#: turtleblocks.py:357
 msgid "Save as"
 msgstr "Dhaya' jant'ojdha'"
 
-#: turtleblocks.py:358
+#: turtleblocks.py:362
 msgid "Quit"
 msgstr "Kalej"
 
-#: turtleblocks.py:359
+#: turtleblocks.py:363
 msgid "File"
 msgstr "Dhuchlab"
 
-#: turtleblocks.py:366
+#: turtleblocks.py:370
 msgid "Rescale coordinates"
 msgstr "Kadhiy ti coordenadas"
 
-#: turtleblocks.py:372
+#: turtleblocks.py:376
 msgid "Reset block size"
 msgstr "Ka wichk'ow in púwél an kwene' t'ojláb"
 
-#: turtleblocks.py:390
+#: turtleblocks.py:394
 msgid "Show/hide blocks"
 msgstr "Tejwa'méjdha'/dhibk'oy an kwene' t'ojláb"
 
 # Herramientas = Ayixtaláb/ayendhanél
-#: turtleblocks.py:392
+#: turtleblocks.py:396
 msgid "Tools"
 msgstr "Ayixtaláb"
 
 # Depurar = Takwláts
-#: turtleblocks.py:398
+#: turtleblocks.py:402
 msgid "Debug"
 msgstr "Takwláts"
 
-#: turtleblocks.py:400
+#: turtleblocks.py:404
 msgid "Turtle"
 msgstr "Pet"
 
-#: turtleblocks.py:434
+#: turtleblocks.py:407
+msgid "About..."
+msgstr ""
+
+#: turtleblocks.py:447
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr "Yab a dhaya' an t'ojláb. ¿A kulbétnal ka dhaya' ok'xidh ki it kalej?"
 
-#: turtleblocks.py:435
+#: turtleblocks.py:448
 msgid "Save project?"
 msgstr "¿Ki dhaya' an tsalapnadh t'ojláb?"
 
@@ -2005,9 +2062,6 @@ msgstr "¿Ki dhaya' an tsalapnadh t'ojláb?"
 
 #~ msgid "Palette of Uruguayan Pesos"
 #~ msgstr "Kwene' i Uruguayjíb Pexuj"
-
-#~ msgid "TurtleBots"
-#~ msgstr "Ts'ejkadh pat'ál Pet"
 
 # In junkunchal in tsapík xi ti LED ti al an 0 ani 255
 #~ msgid "adjust LED intensity between 0 and 255"

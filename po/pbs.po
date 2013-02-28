@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-02 10:01-0400\n"
+"POT-Creation-Date: 2013-02-24 00:31-0500\n"
 "PO-Revision-Date: 2012-08-29 02:04+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,8 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #. TRANS: "name" option from activity.info file
-#: TurtleArt/tawindow.py:3767 pysamples/grecord.py:205 turtleblocks.py:303
-msgid "Turtle Art"
-msgstr "Kumú' majau matsjau"
+msgid "TurtleBlocks"
+msgstr ""
 
 #. TRANS: "summary" option from activity.info file
 #. TRANS: "description" option from activity.info file
@@ -29,103 +28,103 @@ msgid ""
 "visual programming blocks"
 msgstr ""
 
-#: TurtleArt/tabasics.py:116
+#: TurtleArt/tabasics.py:123
 msgid "Palette of turtle commands"
 msgstr "Nijang se lumei kad-er k'ua manague' ngunjiu' kumu'"
 
-#: TurtleArt/tabasics.py:121
+#: TurtleArt/tabasics.py:128
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
 msgid "forward"
 msgstr "D-uaja'"
 
-#: TurtleArt/tabasics.py:125
+#: TurtleArt/tabasics.py:132
 msgid "moves turtle forward"
 msgstr "vikia'aut ne kumu' nimia ma kutau"
 
-#: TurtleArt/tabasics.py:132
+#: TurtleArt/tabasics.py:139
 msgid "back"
 msgstr "ma ngupeix"
 
-#: TurtleArt/tabasics.py:136
+#: TurtleArt/tabasics.py:143
 msgid "moves turtle backward"
 msgstr "vikia'aut pu kumú' nimia ma ngupeix"
 
-#: TurtleArt/tabasics.py:144
+#: TurtleArt/tabasics.py:151
 msgid "clean"
 msgstr "matseiñ'"
 
-#: TurtleArt/tabasics.py:147
+#: TurtleArt/tabasics.py:154
 msgid "clears the screen and reset the turtle"
 msgstr "vichiñ' ne kutau nak'ujuly' tsukuet vimiaik majau ne kumú'"
 
-#: TurtleArt/tabasics.py:155
+#: TurtleArt/tabasics.py:162
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
 msgid "left"
 msgstr "meje'ep"
 
-#: TurtleArt/tabasics.py:159
+#: TurtleArt/tabasics.py:166
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "vikia't pu kumú' nimia ngupeix (angelo en grados)"
 
-#: TurtleArt/tabasics.py:166
+#: TurtleArt/tabasics.py:174
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:878
 msgid "right"
 msgstr "majaap"
 
-#: TurtleArt/tabasics.py:170
+#: TurtleArt/tabasics.py:178
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "vikia't pu kumú' nimia ma kutau (angulo engrados)"
 
-#: TurtleArt/tabasics.py:178
+#: TurtleArt/tabasics.py:186
 msgid "arc"
 msgstr "ngulja'"
 
-#: TurtleArt/tabasics.py:178
+#: TurtleArt/tabasics.py:186
 msgid "angle"
 msgstr "ngumúu se liviuch' nui niñ'eje'"
 
-#: TurtleArt/tabasics.py:178
+#: TurtleArt/tabasics.py:186
 msgid "radius"
 msgstr "ngube'ei"
 
-#: TurtleArt/tabasics.py:182
+#: TurtleArt/tabasics.py:190
 msgid "moves turtle along an arc"
 msgstr "vikia'aut pu kumú' lagu'ust' pu ngulja'"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid "set xy"
 msgstr "makeje' xy"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid "x"
 msgstr "x"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid "y"
 msgstr "y"
 
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+#: TurtleArt/tabasics.py:203 TurtleArt/tabasics.py:269
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr ""
 "vikia't pu kumú' nimia xcor, ycor; (0,0) vanjiu' kiñkie mejep kutau "
 "nak'ujuly'."
 
-#: TurtleArt/tabasics.py:205
+#: TurtleArt/tabasics.py:213
 msgid "set heading"
 msgstr "makeje' peuk manamá"
 
-#: TurtleArt/tabasics.py:209
+#: TurtleArt/tabasics.py:217
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "kiji'it peuk mane'ei pu kumú' (0 se maa kibia ne kutau nak'ujuly"
 
-#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3761
-#: TurtleArt/tawindow.py:3767 TurtleArtActivity.py:557
+#: TurtleArt/tabasics.py:225 TurtleArt/tawindow.py:3862
+#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:604
 msgid "xcor"
 msgstr "coorx"
 
-#: TurtleArt/tabasics.py:218
+#: TurtleArt/tabasics.py:226
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -133,12 +132,12 @@ msgstr ""
 "lumei peuk se ma nat'ei ma nanju sad-ia' x lumei ne kumu' (lania'at lakje "
 "kujui nip manakje' rabe'en)"
 
-#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3761
-#: TurtleArt/tawindow.py:3767 TurtleArtActivity.py:558
+#: TurtleArt/tabasics.py:236 TurtleArt/tawindow.py:3862
+#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:605
 msgid "ycor"
 msgstr "coory"
 
-#: TurtleArt/tabasics.py:229
+#: TurtleArt/tabasics.py:237
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -146,431 +145,436 @@ msgstr ""
 "lumei peuk se ma nat'ei nanju sad-ia' y lumei ne kumú' (lania'at lakje' "
 "kujui nip manakje rabe'en)"
 
-#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3762
-#: TurtleArt/tawindow.py:3768 TurtleArtActivity.py:558
+#: TurtleArt/tabasics.py:247 TurtleArt/tawindow.py:3863
+#: TurtleArt/tawindow.py:3869 TurtleArtActivity.py:605
 msgid "heading"
 msgstr "peuk manamaa"
 
-#: TurtleArt/tabasics.py:240
+#: TurtleArt/tabasics.py:248
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
 msgstr "lumei kad-er vu'u' ne kumu' (lania'at make' kujui nip make' rabe'en)"
 
-#: TurtleArt/tabasics.py:274
+#: TurtleArt/tabasics.py:282
 msgid "Palette of pen commands"
 msgstr "Nijang se vupai re nde'ets kily'e"
 
-#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
 msgid "fill screen"
 msgstr "mane'ep ne kutau nak'ujuly'"
 
-#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
-#: TurtleArt/tabasics.py:340
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
+#: TurtleArt/tabasics.py:348
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1158
 msgid "color"
 msgstr "xikjia'"
 
-#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:291
-#: TurtleArt/tabasics.py:350
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
+#: TurtleArt/tabasics.py:358
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1154
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1159
 msgid "shade"
 msgstr "lijiú"
 
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
+#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:303
 msgid "fills the background with (color, shade)"
 msgstr "viñee't pu kimviu'p lamejep (xikjia't, nixaú)"
 
-#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:359
+#: TurtleArt/tabasics.py:299 TurtleArt/tabasics.py:367
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1160
 msgid "gray"
 msgstr "tsundué"
 
-#: TurtleArt/tabasics.py:305
+#: TurtleArt/tabasics.py:313
 msgid "set color"
 msgstr "makeje' xikjia'"
 
-#: TurtleArt/tabasics.py:309
+#: TurtleArt/tabasics.py:317
 msgid "sets color of the line drawn by the turtle"
 msgstr "kiji'it ne xikjia' se mane'eima nad-es niñ'eje' ne kumu´"
 
-#: TurtleArt/tabasics.py:317
+#: TurtleArt/tabasics.py:325
 msgid "set shade"
 msgstr "makeje' peuk lu'ue lijiú"
 
-#: TurtleArt/tabasics.py:321
+#: TurtleArt/tabasics.py:329
 msgid "sets shade of the line drawn by the turtle"
 msgstr "kiji'it peuk ma vakja ne niñ'eje' se pu kumú' ve'es"
 
-#: TurtleArt/tabasics.py:329
+#: TurtleArt/tabasics.py:337
 msgid "set gray"
 msgstr "mamejep tsuntué"
 
-#: TurtleArt/tabasics.py:332
+#: TurtleArt/tabasics.py:340
 msgid "sets gray level of the line drawn by the turtle"
 msgstr "mamejep majau masau se tsundue ne niñ'eje se ve'es pu kumú'"
 
-#: TurtleArt/tabasics.py:341
+#: TurtleArt/tabasics.py:349
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr ""
 "lumei re xikjia' se chu' mani ne nde'ets kily'e (lania'at make' kijui ni "
 "mvake rabe'en)"
 
-#: TurtleArt/tabasics.py:351
+#: TurtleArt/tabasics.py:359
 msgid "holds current pen shade"
 msgstr "lumei majau masau' xikjia' ne nde'ets kily'e"
 
-#: TurtleArt/tabasics.py:360
+#: TurtleArt/tabasics.py:368
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr ""
 "lumei majau masau' se tsunduep ( lania'at lakje kujui nip manakje rabe'en)"
 
-#: TurtleArt/tabasics.py:368
+#: TurtleArt/tabasics.py:376
 msgid "pen up"
 msgstr "majáu ne nde'ets kil'e"
 
-#: TurtleArt/tabasics.py:371
+#: TurtleArt/tabasics.py:379
 msgid "Turtle will not draw when moved."
 msgstr "Pu kumú' nip manaju'u natsjau sania' xi'iap se likia'aut."
 
-#: TurtleArt/tabasics.py:377
+#: TurtleArt/tabasics.py:385
 msgid "pen down"
 msgstr "mapuu' ne nde'ets kily'e"
 
-#: TurtleArt/tabasics.py:380
+#: TurtleArt/tabasics.py:388
 msgid "Turtle will draw when moved."
 msgstr "Pu kumú' laju'u' latsjau lagueje' sania' xi'iap se likia'aut."
 
-#: TurtleArt/tabasics.py:386
+#: TurtleArt/tabasics.py:394
 msgid "set pen size"
 msgstr "makeje' ngutue'p"
 
-#: TurtleArt/tabasics.py:390
+#: TurtleArt/tabasics.py:398
 msgid "sets size of the line drawn by the turtle"
 msgstr "makeje' ne nixi'ip pu niñ'eje' se vakeje' ne kumú'"
 
-#: TurtleArt/tabasics.py:400
+#: TurtleArt/tabasics.py:408
 msgid "start fill"
 msgstr "mapúp mánee"
 
-#: TurtleArt/tabasics.py:402
+#: TurtleArt/tabasics.py:410
 msgid "starts filled polygon (used with end fill block)"
 msgstr ""
 "Mapup mane´p pu ranju'muu se me'ei mata'aun( make' se me'ei mane'ei ravú "
 "kad-a)"
 
-#: TurtleArt/tabasics.py:409
+#: TurtleArt/tabasics.py:417
 msgid "end fill"
 msgstr "maljung se mane'p"
 
-#: TurtleArt/tabasics.py:411
+#: TurtleArt/tabasics.py:419
 msgid "completes filled polygon (used with start fill block)"
 msgstr ""
 "Vipiát pu ranjumuu se mata'aung nda nangaú viñe't (make' se mapup ravú kad-a"
 
-#: TurtleArt/tabasics.py:418
+#: TurtleArt/tabasics.py:426
 msgid "pen size"
 msgstr "ngutue'p"
 
-#: TurtleArt/tabasics.py:419
+#: TurtleArt/tabasics.py:427
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr ""
 "lumei ne ngutue'p se chu' lumei ne nde'ets kily'e (lania'at make kujui nip "
 "make' rabe'en)"
 
-#: TurtleArt/tabasics.py:434 TurtleArt/tabasics.py:438
+#: TurtleArt/tabasics.py:441
 msgid "Palette of pen colors"
 msgstr "Nijang se lumei xikjia' nde'ets kily'e"
 
-#: TurtleArt/tabasics.py:440
+#: TurtleArt/tabasics.py:443
 msgid "red"
 msgstr "nu'ua"
 
-#: TurtleArt/tabasics.py:441
+#: TurtleArt/tabasics.py:444
 msgid "orange"
 msgstr "ni'an"
 
-#: TurtleArt/tabasics.py:443
+#: TurtleArt/tabasics.py:446
 msgid "yellow"
 msgstr "niján'"
 
-#: TurtleArt/tabasics.py:445
+#: TurtleArt/tabasics.py:448
 msgid "green"
 msgstr "niñkijily'"
 
-#: TurtleArt/tabasics.py:446
+#: TurtleArt/tabasics.py:449
 msgid "cyan"
 msgstr "cian"
 
-#: TurtleArt/tabasics.py:447
+#: TurtleArt/tabasics.py:450
 msgid "blue"
 msgstr "skusuá'"
 
-#: TurtleArt/tabasics.py:448
+#: TurtleArt/tabasics.py:451
 msgid "purple"
 msgstr "niñkijiñ"
 
-#: TurtleArt/tabasics.py:450
+#: TurtleArt/tabasics.py:453
 msgid "white"
 msgstr "kad-uá"
 
-#: TurtleArt/tabasics.py:451
+#: TurtleArt/tabasics.py:454
 msgid "black"
 msgstr "numvúu"
 
-#: TurtleArt/tabasics.py:457
+#: TurtleArt/tabasics.py:460
 msgid "set text color"
 msgstr "makeje' kad-er xikjia' me'ets kily'e"
 
-#: TurtleArt/tabasics.py:460
+#: TurtleArt/tabasics.py:463
 msgid "sets color of text drawn by the turtle"
 msgstr "makeje' peuk vakja xikjia'p re kily'e se ndutsjau pu kumú'"
 
-#: TurtleArt/tabasics.py:468
+#: TurtleArt/tabasics.py:471
 msgid "set text size"
 msgstr "makeje' mandap re kily'e me'ets"
 
-#: TurtleArt/tabasics.py:471
+#: TurtleArt/tabasics.py:474
 msgid "sets size of text drawn by the turtle"
 msgstr "kiji'it ne ngutue'p re kily'e se ndutsjau pu kumú'"
 
-#: TurtleArt/tabasics.py:554
+#: TurtleArt/tabasics.py:557
 msgid "Palette of numeric operators"
 msgstr "Nijang se lumei rabe'en make'"
 
-#: TurtleArt/tabasics.py:560
+#: TurtleArt/tabasics.py:563
 msgid "plus"
 msgstr "masal' mamejep"
 
-#: TurtleArt/tabasics.py:564
+#: TurtleArt/tabasics.py:567
 msgid "adds two alphanumeric inputs"
 msgstr "lamejep lasalt nui ndejei' se lumei rabe'en"
 
-#: TurtleArt/tabasics.py:572
+#: TurtleArt/tabasics.py:575
 msgid "minus"
 msgstr "maleje'p"
 
-#: TurtleArt/tabasics.py:575
+#: TurtleArt/tabasics.py:578
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr ""
 "kia'ant pu ndejei' rabe'en se vanjiu' kimviu'p navé ndejei' rabe'en se "
 "kimvia' njuts"
 
-#: TurtleArt/tabasics.py:586
+#: TurtleArt/tabasics.py:589
 msgid "multiply"
 msgstr "vilyip lamejep"
 
-#: TurtleArt/tabasics.py:589
+#: TurtleArt/tabasics.py:592
 msgid "multiplies two numeric inputs"
 msgstr "vilyip lamejep nui ndejei' rabe'en"
 
-#: TurtleArt/tabasics.py:598
+#: TurtleArt/tabasics.py:601
 msgid "divide"
 msgstr "masajaik"
 
-#: TurtleArt/tabasics.py:601
+#: TurtleArt/tabasics.py:604
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
 "xajaik ne ndejei lumei rabe'en kuts'iñ'a (re rabe'en) kujaiñ'a ndejei' "
 "rabe'en (malejeiñ re rabe'en)"
 
-#: TurtleArt/tabasics.py:611
+#: TurtleArt/tabasics.py:614
 msgid "identity"
 msgstr "jui malep"
 
-#: TurtleArt/tabasics.py:613
+#: TurtleArt/tabasics.py:616
 msgid "identity operator used for extending blocks"
 msgstr "katsjau malep vake' manalei kad-er limi"
 
-#: TurtleArt/tabasics.py:621 TurtleArt/tabasics.py:622
+#: TurtleArt/tabasics.py:624 TurtleArt/tabasics.py:625
 msgid "mod"
 msgstr "mod"
 
-#: TurtleArt/tabasics.py:625
+#: TurtleArt/tabasics.py:628
 msgid "modular (remainder) operator"
 msgstr "katsjau sad-ia' (lijeng)"
 
-#: TurtleArt/tabasics.py:632
+#: TurtleArt/tabasics.py:635
 msgid "√"
 msgstr "√"
 
-#: TurtleArt/tabasics.py:633
+#: TurtleArt/tabasics.py:636
 msgid "square root"
 msgstr "nikji ne kiñui muu"
 
-#: TurtleArt/tabasics.py:636
+#: TurtleArt/tabasics.py:639
 msgid "calculates square root"
 msgstr "vichjaut vipiat ne nikji kiñuimuu"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:646
 msgid "random"
 msgstr "kensemakeje'"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:646
 msgid "min"
 msgstr "sau' lakejé"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:646
 msgid "max"
 msgstr "kutue' le'ei lakejé"
 
-#: TurtleArt/tabasics.py:647
+#: TurtleArt/tabasics.py:650
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
 "vikiñ ne nabe'en semanakeje kiñyep se lu'ue lulejeñ sau' malejeiñ (kimvia) "
 "maiñ kutue' lakeje (kujañ'a"
 
-#: TurtleArt/tabasics.py:659
+#: TurtleArt/tabasics.py:662
 msgid "number"
 msgstr "rabe'en"
 
-#: TurtleArt/tabasics.py:660
+#: TurtleArt/tabasics.py:663
 msgid "used as numeric input in mathematic operators"
 msgstr "make' nkjai' rabe'en se vat'ei vatsjau rabe'en"
 
-#: TurtleArt/tabasics.py:668
+#: TurtleArt/tabasics.py:671
 msgid "greater than"
 msgstr "mad-uajap navú"
 
-#: TurtleArt/tabasics.py:671
+#: TurtleArt/tabasics.py:674
 msgid "logical greater-than operator"
 msgstr "katsjau kapaat mad-uajap navú"
 
-#: TurtleArt/tabasics.py:680
+#: TurtleArt/tabasics.py:683
 msgid "less than"
 msgstr "mana'p navú"
 
-#: TurtleArt/tabasics.py:684
+#: TurtleArt/tabasics.py:687
 msgid "logical less-than operator"
 msgstr "katsjau kapat mana'p navú"
 
-#: TurtleArt/tabasics.py:692
+#: TurtleArt/tabasics.py:695
 msgid "equal"
 msgstr "skad-a lulejem"
 
-#: TurtleArt/tabasics.py:696
+#: TurtleArt/tabasics.py:699
 msgid "logical equal-to operator"
 msgstr "katsjau kapat skad-a lulejem"
 
-#: TurtleArt/tabasics.py:702
+#: TurtleArt/tabasics.py:705
 msgid "not"
 msgstr "mut"
 
-#: TurtleArt/tabasics.py:705
+#: TurtleArt/tabasics.py:708
 msgid "logical NOT operator"
 msgstr "katsjau nip lupat"
 
-#: TurtleArt/tabasics.py:711 TurtleArt/tabasics.py:714
+#: TurtleArt/tabasics.py:714 TurtleArt/tabasics.py:717
 msgid "and"
 msgstr "y"
 
-#: TurtleArt/tabasics.py:715
+#: TurtleArt/tabasics.py:718
 msgid "logical AND operator"
 msgstr "katsjau kad-ep lupat"
 
-#: TurtleArt/tabasics.py:722 TurtleArt/tabasics.py:725
+#: TurtleArt/tabasics.py:725 TurtleArt/tabasics.py:728
 msgid "or"
 msgstr "o"
 
-#: TurtleArt/tabasics.py:726
+#: TurtleArt/tabasics.py:729
 msgid "logical OR operator"
 msgstr "katsjau nip kapat"
 
-#: TurtleArt/tabasics.py:735
+#: TurtleArt/tabasics.py:738
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
 msgid "Palette of flow operators"
 msgstr "Nijang se katsjau lumei kute"
 
-#: TurtleArt/tabasics.py:740
+#: TurtleArt/tabasics.py:743
 msgid "wait"
 msgstr "mapee"
 
-#: TurtleArt/tabasics.py:744
+#: TurtleArt/tabasics.py:747
 msgid "pauses program execution a specified number of seconds"
 msgstr "luma'ai se sania' lustjau na'a kad-a kusau rabe'en tijia'p"
 
-#: TurtleArt/tabasics.py:751
+#: TurtleArt/tabasics.py:754
 msgid "forever"
 msgstr "Leem"
 
-#: TurtleArt/tabasics.py:755
+#: TurtleArt/tabasics.py:758
 msgid "loops forever"
 msgstr "Meleix leem"
 
-#: TurtleArt/tabasics.py:762 TurtleArt/tabasics.py:766
+#: TurtleArt/tabasics.py:765 TurtleArt/tabasics.py:769
 msgid "repeat"
 msgstr "Maleix"
 
-#: TurtleArt/tabasics.py:767
+#: TurtleArt/tabasics.py:770
 msgid "loops specified number of times"
 msgstr "vilyix re rabe'en se me'eje valeima"
 
-#: TurtleArt/tabasics.py:773 TurtleArt/tabasics.py:786
+#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
 msgid "if"
 msgstr "lik'iajam"
 
-#: TurtleArt/tabasics.py:773 TurtleArt/tabasics.py:786
+#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
 msgid "then"
 msgstr "xi'iap"
 
-#: TurtleArt/tabasics.py:776
+#: TurtleArt/tabasics.py:779
 msgid "if then"
 msgstr "lik'iajam xi'iap"
 
-#: TurtleArt/tabasics.py:778
+#: TurtleArt/tabasics.py:781
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr "katsjau lik'iajam kujui vake' ne nijang se lumei rabe'en"
 
-#: TurtleArt/tabasics.py:786
+#: TurtleArt/tabasics.py:789
 msgid "else"
 msgstr "kad-ep"
 
-#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
+#: TurtleArt/tabasics.py:793 TurtleArt/tabasics.py:801
 msgid "if then else"
 msgstr "lik'iajam kujui nipeuk"
 
-#: TurtleArt/tabasics.py:791 TurtleArt/tabasics.py:799
+#: TurtleArt/tabasics.py:794 TurtleArt/tabasics.py:802
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr ""
 "katsjau lik'iajam-kujui-nipeuk vake't katsjau vupaat se lumei pu nijang "
 "lumei kily'e"
 
-#: TurtleArt/tabasics.py:808
+#: TurtleArt/tabasics.py:811
 msgid "horizontal space"
 msgstr "tejiap mameje'p"
 
-#: TurtleArt/tabasics.py:809
+#: TurtleArt/tabasics.py:812
 msgid "jogs stack right"
 msgstr "vikjiu't pu manajap nimia mamajap"
 
-#: TurtleArt/tabasics.py:816
+#: TurtleArt/tabasics.py:819
 msgid "vertical space"
 msgstr "tejiap mamajap"
 
-#: TurtleArt/tabasics.py:817
+#: TurtleArt/tabasics.py:820
 msgid "jogs stack down"
 msgstr "vikjiu't pu manap nimia kupu'"
 
-#: TurtleArt/tabasics.py:823
+#: TurtleArt/tabasics.py:826
 msgid "stop action"
 msgstr "Mama'ai kanen vatsjau"
 
-#: TurtleArt/tabasics.py:826
+#: TurtleArt/tabasics.py:829
 msgid "stops current action"
 msgstr "luma'ai kanen vatsjau chu'maní"
 
-#: TurtleArt/tabasics.py:835
+#: TurtleArt/tabasics.py:838
 msgid "Palette of variable blocks"
 msgstr "Nijang se lumei valei me'ets kad-er ndavai"
 
-#: TurtleArt/tabasics.py:840 pysamples/grecord.py:213
+#: TurtleArt/tabasics.py:843 pysamples/grecord.py:213
 msgid "start"
 msgstr "ndapup"
 
-#: TurtleArt/tabasics.py:843
+#: TurtleArt/tabasics.py:846
 msgid "connects action to toolbar run buttons"
 msgstr "kia'an ne ndavaí re ndaleiñ se me'e make'"
 
-#: TurtleArt/tabasics.py:850 TurtleArt/tabasics.py:851
-#: TurtleArt/tabasics.py:852
+#: TurtleArt/tabasics.py:853 TurtleArt/tabasics.py:854
+#: TurtleArt/tabasics.py:855
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
@@ -580,144 +584,146 @@ msgstr "kia'an ne ndavaí re ndaleiñ se me'e make'"
 msgid "text"
 msgstr "kily'e keich'"
 
-#: TurtleArt/tabasics.py:853
+#: TurtleArt/tabasics.py:856
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
 msgid "string value"
 msgstr "liñjup ne ngulje'e"
 
-#: TurtleArt/tabasics.py:857 TurtleArt/tabasics.py:860
-#: TurtleArt/tabasics.py:868 TurtleArt/tabasics.py:872
-#: TurtleArt/tawindow.py:1269 TurtleArt/tawindow.py:1350
-#: TurtleArt/tawindow.py:1363 TurtleArt/tawindow.py:4016
+#: TurtleArt/tabasics.py:860 TurtleArt/tabasics.py:863
+#: TurtleArt/tabasics.py:871 TurtleArt/tabasics.py:875
+#: TurtleArt/tawindow.py:1292 TurtleArt/tawindow.py:1371
+#: TurtleArt/tawindow.py:1384 TurtleArt/tawindow.py:1854
+#: TurtleArt/tawindow.py:4125
 msgid "action"
 msgstr "matsjau"
 
-#: TurtleArt/tabasics.py:862
+#: TurtleArt/tabasics.py:865
 msgid "top of nameable action stack"
 msgstr "stiñkjia'p ne manajap se vatsjaú nam'ejep ngunjiu'"
 
-#: TurtleArt/tabasics.py:873 TurtleArt/tawindow.py:4030
+#: TurtleArt/tabasics.py:876 TurtleArt/tawindow.py:4139
 msgid "invokes named action stack"
 msgstr "ma'ajau ne manajap matsjau mamejep ngunju'"
 
-#: TurtleArt/tabasics.py:880
+#: TurtleArt/tabasics.py:883
 msgid "store in box 1"
 msgstr "makjaat kiñkie' nda ndajul'"
 
-#: TurtleArt/tabasics.py:885
+#: TurtleArt/tabasics.py:888
 msgid "stores numeric value in Variable 1"
 msgstr "vikjiaat re rabe'en kupu se vania'at liviaun' nda"
 
-#: TurtleArt/tabasics.py:893
+#: TurtleArt/tabasics.py:896
 msgid "store in box 2"
 msgstr "makjaat kiñkie' ndakjaat nui"
 
-#: TurtleArt/tabasics.py:898
+#: TurtleArt/tabasics.py:901
 msgid "stores numeric value in Variable 2"
 msgstr "makjaat pu rabe'en kupu se vania'at liviau'n nui"
 
-#: TurtleArt/tabasics.py:906
+#: TurtleArt/tabasics.py:909
 msgid "box 1"
 msgstr "ndakjaat nda"
 
-#: TurtleArt/tabasics.py:909
+#: TurtleArt/tabasics.py:912
 msgid "Variable 1 (numeric value)"
 msgstr "lu'uei liviaun (kusau' rave'en)"
 
-#: TurtleArt/tabasics.py:916
+#: TurtleArt/tabasics.py:919
 msgid "box 2"
 msgstr "ndakjaat nui"
 
-#: TurtleArt/tabasics.py:919
+#: TurtleArt/tabasics.py:922
 msgid "Variable 2 (numeric value)"
 msgstr "se lu'uei liviaun' (kusau rabe'en)"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4080
+#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
 msgid "store in"
 msgstr "makjaat kiñkiep'"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tabasics.py:939
+#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
 msgid "box"
 msgstr "ndakjaat"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4080
+#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
 msgid "value"
 msgstr "liñjú"
 
-#: TurtleArt/tabasics.py:929 TurtleArt/tabasics.py:942
-#: TurtleArt/tawindow.py:1273 TurtleArt/tawindow.py:4043
-#: TurtleArt/tawindow.py:4071
+#: TurtleArt/tabasics.py:932 TurtleArt/tabasics.py:945
+#: TurtleArt/tawindow.py:1296 TurtleArt/tawindow.py:1409
+#: TurtleArt/tawindow.py:1858 TurtleArt/tawindow.py:4152
+#: TurtleArt/tawindow.py:4180
 msgid "my box"
 msgstr "ndakjaat lapai"
 
-#: TurtleArt/tabasics.py:930 TurtleArt/tawindow.py:4085
+#: TurtleArt/tabasics.py:933 TurtleArt/tawindow.py:4194
 msgid "stores numeric value in named variable"
 msgstr "vikjiat se liñju kupu se nam'ejep ngfunjiu' se vania'at liviaun,"
 
-#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4057
+#: TurtleArt/tabasics.py:948 TurtleArt/tawindow.py:4166
 msgid "named variable (numeric value)"
 msgstr "se lu'uei liviaun' mamejep ngunjiu' (kusau rabe'en)"
 
-#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
+#: TurtleArt/tabasics.py:955 TurtleArt/tabasics.py:974
 msgid "action 1"
 msgstr "matsjau nda"
 
-#: TurtleArt/tabasics.py:955
+#: TurtleArt/tabasics.py:958
 msgid "top of Action 1 stack"
 msgstr "kutap se ne manajap matsjau nda"
 
-#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
+#: TurtleArt/tabasics.py:964 TurtleArt/tabasics.py:984
 msgid "action 2"
 msgstr "matsjau nui"
 
-#: TurtleArt/tabasics.py:964
+#: TurtleArt/tabasics.py:967
 msgid "top of Action 2 stack"
 msgstr "kutap se ne manajap matsjau nui"
 
-#: TurtleArt/tabasics.py:974
+#: TurtleArt/tabasics.py:977
 msgid "invokes Action 1 stack"
 msgstr "maka'an ne manajap se matsjau nda"
 
-#: TurtleArt/tabasics.py:984
+#: TurtleArt/tabasics.py:987
 msgid "invokes Action 2 stack"
 msgstr "maka'an ne manajap se matsjau nui"
 
-#: TurtleArt/tabasics.py:992
+#: TurtleArt/tabasics.py:995
 msgid "trash"
 msgstr "xik'iai'"
 
-#: TurtleArt/tabasics.py:996
+#: TurtleArt/tabasics.py:999
 msgid "empty trash"
 msgstr "majian ngk'uix"
 
-#: TurtleArt/tabasics.py:997
+#: TurtleArt/tabasics.py:1000
 msgid "permanently deletes items in trash"
 msgstr "viviun lem re se lumei ndakal' ngk'uix"
 
-#: TurtleArt/tabasics.py:1001
+#: TurtleArt/tabasics.py:1004
 msgid "restore all"
 msgstr "tsukue't matsjau"
 
-#: TurtleArt/tabasics.py:1002
+#: TurtleArt/tabasics.py:1005
 msgid "restore all blocks from trash"
 msgstr "vichjaut mi'ia re se lumei ngk'uix"
 
-#: TurtleArt/tabasics.py:1006
+#: TurtleArt/tabasics.py:1009
 msgid "clear all"
 msgstr "matseiñ' mi'ia"
 
-#: TurtleArt/tabasics.py:1007
+#: TurtleArt/tabasics.py:1010
 msgid "move all blocks to trash"
 msgstr "vikia'aut mi'ia re se xik'iai'"
 
-#: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1790
-#: TurtleArtActivity.py:652
+#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:1833
+#: TurtleArtActivity.py:703
 msgid "Share selected blocks"
 msgstr "Skad-a make' re se vu-ua me'ets"
 
-#: TurtleArt/taconstants.py:216 TurtleArt/taconstants.py:238
-#: TurtleArt/taconstants.py:259 TurtleArt/taconstants.py:301
-#: TurtleArt/taconstants.py:343 TurtleArt/taconstants.py:385
+#: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
+#: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
+#: TurtleArt/taconstants.py:336 TurtleArt/taconstants.py:378
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:978
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:993
@@ -727,252 +733,268 @@ msgstr "Skad-a make' re se vu-ua me'ets"
 msgid "Title"
 msgstr "Ngunjiu' re kily'e me'ets"
 
-#: TurtleArt/talogo.py:358 TurtleArtActivity.py:632
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1473
+#: TurtleArt/talogo.py:374 TurtleArtActivity.py:683
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1492
 msgid "Stop turtle"
 msgstr "Mama'ai ne kumu'"
 
-#: TurtleArt/talogo.py:369 TurtleArtActivity.py:288 TurtleArtActivity.py:633
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1466
+#: TurtleArt/talogo.py:384 TurtleArtActivity.py:322 TurtleArtActivity.py:684
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1485
 msgid "Show blocks"
 msgstr "Ma'u'up re se vud-ua me'ets"
 
-#: TurtleArt/talogo.py:373 TurtleArtActivity.py:292 TurtleArtActivity.py:810
+#: TurtleArt/talogo.py:388 TurtleArtActivity.py:326 TurtleArtActivity.py:894
 msgid "Hide blocks"
 msgstr "Ma'aung me'ets kily'e"
 
-#: TurtleArt/talogo.py:492
+#: TurtleArt/talogo.py:511
 msgid "did not output to"
 msgstr "nip nduju'u ndu'uets man'eiñ"
 
-#: TurtleArt/talogo.py:551
+#: TurtleArt/talogo.py:570
 msgid "I don't know how to"
 msgstr "nip la'u' peuk munu'uei mu nutsjau"
 
-#: TurtleArt/talogo.py:602
+#: TurtleArt/talogo.py:624
 msgid "doesn't like"
 msgstr "nip mvandaich'"
 
-#: TurtleArt/talogo.py:602
+#: TurtleArt/talogo.py:624
 msgid "as input"
 msgstr "njai' ndejei'"
 
-#: TurtleArt/tapalette.py:96
+#: TurtleArt/tapalette.py:97
 msgid "displays next palette"
 msgstr "ma'u'up ne nijang likiu'uch'"
 
-#: TurtleArt/tapalette.py:97
+#: TurtleArt/tapalette.py:98
 msgid "changes the orientation of the palette of blocks"
 msgstr "lavaun' kale nimia ne nijang se lumei re kily'e me'ets"
 
-#: TurtleArt/tautils.py:192
+#: TurtleArt/tautils.py:196
 msgid "Load..."
 msgstr "Maveje'p..."
 
-#: TurtleArt/tautils.py:202
+#: TurtleArt/tautils.py:206
 msgid "Save..."
 msgstr "Makjaat..."
 
-#: TurtleArt/tautils.py:474
+#: TurtleArt/tautils.py:483
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
 msgid "click to open"
 msgstr "mates maseiñ"
 
-#: TurtleArt/tawindow.py:987 TurtleArt/tawindow.py:988
+#: TurtleArt/tawindow.py:989 TurtleArt/tawindow.py:990
 msgid "orientation"
 msgstr "masep peukma"
 
-#: TurtleArt/tawindow.py:998 TurtleArt/tawindow.py:1435
+#: TurtleArt/tawindow.py:1000 TurtleArt/tawindow.py:1470
 msgid "next"
 msgstr "likiu'uch'"
 
-#: TurtleArt/tawindow.py:1010 TurtleArt/tawindow.py:1011
-#: TurtleArt/tawindow.py:1455
+#: TurtleArt/tawindow.py:1012 TurtleArt/tawindow.py:1013
+#: TurtleArt/tawindow.py:1490
 msgid "shift"
 msgstr "mantsux"
 
-#: TurtleArt/tawindow.py:1287
+#: TurtleArt/tawindow.py:1256
+msgid ""
+"Please hit the Stop Button before making changes to your Turtle Blocks "
+"program"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1310
 msgid "Select blocks to share"
 msgstr "Vixa'aun re kily'e metets skad-a makee'"
 
-#: TurtleArt/tawindow.py:3873
+#: TurtleArt/tawindow.py:3868 pysamples/grecord.py:205
+msgid "Turtle Art"
+msgstr "Kumú' majau matsjau"
+
+#: TurtleArt/tawindow.py:3977
 msgid "image"
 msgstr "xikji'ik"
 
-#: TurtleArtActivity.py:132 TurtleArtActivity.py:658 TurtleArtActivity.py:749
-#: TurtleArtActivity.py:769 turtleblocks.py:356
+#: TurtleArtActivity.py:166 TurtleArtActivity.py:709 TurtleArtActivity.py:823
+#: TurtleArtActivity.py:853 turtleblocks.py:360
 msgid "Save as Logo"
 msgstr "Makjaat matsjau"
 
-#: TurtleArtActivity.py:169 TurtleArtActivity.py:657 TurtleArtActivity.py:746
-#: TurtleArtActivity.py:766 turtleblocks.py:354
+#: TurtleArtActivity.py:203 TurtleArtActivity.py:708 TurtleArtActivity.py:820
+#: TurtleArtActivity.py:850 turtleblocks.py:358
 msgid "Save as image"
 msgstr "Makjaat njai' xikji'ik"
 
-#: TurtleArtActivity.py:177
+#: TurtleArtActivity.py:211
 msgid "snapshot"
 msgstr "manei"
 
-#: TurtleArtActivity.py:185 TurtleArtActivity.py:591 TurtleArtActivity.py:634
-#: TurtleArtActivity.py:772
+#: TurtleArtActivity.py:219 TurtleArtActivity.py:643 TurtleArtActivity.py:685
+#: TurtleArtActivity.py:829 TurtleArtActivity.py:856
 msgid "Save snapshot"
 msgstr "Manei makjaat"
 
-#: TurtleArtActivity.py:226 TurtleArtActivity.py:569 TurtleArtActivity.py:708
-#: turtleblocks.py:374
+#: TurtleArtActivity.py:260 TurtleArtActivity.py:616 TurtleArtActivity.py:759
+#: turtleblocks.py:378
 msgid "Turn off hover help"
 msgstr "kad-ep make' ne nabaik ta'ats"
 
-#: TurtleArtActivity.py:232 turtleblocks.py:376
+#: TurtleArtActivity.py:266 turtleblocks.py:380
 msgid "Turn on hover help"
 msgstr "Make' nabaik ta'ats"
 
-#: TurtleArtActivity.py:240 turtleblocks.py:386
+#: TurtleArtActivity.py:274 turtleblocks.py:390
 msgid "Show palette"
 msgstr "Ma'u'up nijang"
 
-#: TurtleArtActivity.py:246 TurtleArtActivity.py:798 turtleblocks.py:388
+#: TurtleArtActivity.py:280 TurtleArtActivity.py:882 turtleblocks.py:392
 msgid "Hide palette"
 msgstr "ma'aung nijang"
 
-#: TurtleArtActivity.py:400
+#: TurtleArtActivity.py:447
 msgid "Rescale coordinates down"
 msgstr "Tajaich maku'uts nimia kuvú"
 
-#: TurtleArtActivity.py:404 TurtleArtActivity.py:561 TurtleArtActivity.py:704
+#: TurtleArtActivity.py:451 TurtleArtActivity.py:608 TurtleArtActivity.py:755
 msgid "Rescale coordinates up"
 msgstr "tajaich' maku'uts sad-ia ma kujaich'"
 
-#: TurtleArtActivity.py:494 TurtleArtActivity.py:530 TurtleArtActivity.py:626
-#: TurtleArtActivity.py:679 turtleblocks.py:383
+#: TurtleArtActivity.py:541 TurtleArtActivity.py:577 TurtleArtActivity.py:677
+#: TurtleArtActivity.py:730 turtleblocks.py:387
 msgid "Edit"
 msgstr "Malejeiñ"
 
-#: TurtleArtActivity.py:499 TurtleArtActivity.py:528 TurtleArtActivity.py:627
-#: TurtleArtActivity.py:696 turtleblocks.py:378
+#: TurtleArtActivity.py:546 TurtleArtActivity.py:575 TurtleArtActivity.py:678
+#: TurtleArtActivity.py:747 turtleblocks.py:382
 msgid "View"
 msgstr "Man´´u"
 
-#: TurtleArtActivity.py:526 TurtleArtActivity.py:628
+#: TurtleArtActivity.py:573 TurtleArtActivity.py:679
 msgid "Project"
 msgstr "Kanen se k'ua manatsjau"
 
-#: TurtleArtActivity.py:532 TurtleArtActivity.py:625 TurtleArtActivity.py:654
-#: TurtleArtActivity.py:656 TurtleArtActivity.py:741
+#: TurtleArtActivity.py:579 TurtleArtActivity.py:676 TurtleArtActivity.py:705
+#: TurtleArtActivity.py:707 TurtleArtActivity.py:815
 msgid "Save/Load"
 msgstr "Makjaat/Maveje'p"
 
-#: TurtleArtActivity.py:540 TurtleArtActivity.py:680 turtleblocks.py:381
+#: TurtleArtActivity.py:587 TurtleArtActivity.py:731 turtleblocks.py:385
 msgid "Copy"
 msgstr "Make'eik"
 
-#: TurtleArtActivity.py:542 TurtleArtActivity.py:681 turtleblocks.py:382
+#: TurtleArtActivity.py:589 TurtleArtActivity.py:732 turtleblocks.py:386
 msgid "Paste"
 msgstr "Makua'al"
 
-#: TurtleArtActivity.py:544
+#: TurtleArtActivity.py:591
 msgid "Restore blocks from trash"
 msgstr "Vichjaut mi'ia re se lumei ngk'uix"
 
-#: TurtleArtActivity.py:547 TurtleArtActivity.py:697
+#: TurtleArtActivity.py:594 TurtleArtActivity.py:748
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
 msgid "Fullscreen"
 msgstr "Mi'ia kutau nak'uju'ly"
 
-#: TurtleArtActivity.py:549 TurtleArtActivity.py:698 turtleblocks.py:362
+#: TurtleArtActivity.py:596 TurtleArtActivity.py:749 turtleblocks.py:366
 msgid "Cartesian coordinates"
 msgstr ""
 
-#: TurtleArtActivity.py:551 TurtleArtActivity.py:700 turtleblocks.py:364
+#: TurtleArtActivity.py:598 TurtleArtActivity.py:751 turtleblocks.py:368
 msgid "Polar coordinates"
 msgstr ""
 
-#: TurtleArtActivity.py:554 TurtleArtActivity.py:702
+#: TurtleArtActivity.py:601 TurtleArtActivity.py:753
 msgid "Metric coordinates"
 msgstr ""
 
-#: TurtleArtActivity.py:564 TurtleArtActivity.py:706 turtleblocks.py:368
+#: TurtleArtActivity.py:611 TurtleArtActivity.py:757 turtleblocks.py:372
 msgid "Grow blocks"
 msgstr "Mandap re kily'e me'ets"
 
-#: TurtleArtActivity.py:566 TurtleArtActivity.py:707 turtleblocks.py:370
+#: TurtleArtActivity.py:613 TurtleArtActivity.py:758 turtleblocks.py:374
 msgid "Shrink blocks"
 msgstr "Matseí re kily'e me'ets"
 
-#: TurtleArtActivity.py:595 TurtleArtActivity.py:635
+#: TurtleArtActivity.py:630 TurtleArtActivity.py:647 TurtleArtActivity.py:686
+#: TurtleArtActivity.py:832
 msgid "Load example"
 msgstr "Maveje'p manu peuk me'ei matsjau"
 
-#: TurtleArtActivity.py:629 TurtleArtActivity.py:804 turtleblocks.py:395
+#: TurtleArtActivity.py:680 TurtleArtActivity.py:888 turtleblocks.py:399
 msgid "Clean"
 msgstr "Matseiñ'"
 
-#: TurtleArtActivity.py:630 TurtleArtActivity.py:806 turtleblocks.py:396
+#: TurtleArtActivity.py:681 TurtleArtActivity.py:890 turtleblocks.py:400
 msgid "Run"
 msgstr "Mapai latsjau"
 
-#: TurtleArtActivity.py:631 TurtleArtActivity.py:808 turtleblocks.py:397
+#: TurtleArtActivity.py:682 TurtleArtActivity.py:892 turtleblocks.py:401
 msgid "Step"
 msgstr "Kigyuá"
 
-#: TurtleArtActivity.py:636 util/helpbutton.py:45
+#: TurtleArtActivity.py:687 turtleblocks.py:408 util/helpbutton.py:45
 msgid "Help"
 msgstr "Nabaik"
 
-#: TurtleArtActivity.py:637 turtleblocks.py:399
+#: TurtleArtActivity.py:688 turtleblocks.py:403
 msgid "Stop"
 msgstr "Ndama'ai"
 
-#: TurtleArtActivity.py:659 TurtleArtActivity.py:752 TurtleArtActivity.py:774
+#: TurtleArtActivity.py:710 TurtleArtActivity.py:836 TurtleArtActivity.py:858
 msgid "Load project"
 msgstr "Maveje'p kanen k'ua manatsjau"
 
-#: TurtleArtActivity.py:662 TurtleArtActivity.py:757 TurtleArtActivity.py:779
+#: TurtleArtActivity.py:713 TurtleArtActivity.py:841 TurtleArtActivity.py:863
 msgid "Load plugin"
 msgstr "Maveje'p plugin"
 
-#: TurtleArtActivity.py:663 TurtleArtActivity.py:760 TurtleArtActivity.py:782
+#: TurtleArtActivity.py:714 TurtleArtActivity.py:844 TurtleArtActivity.py:866
 msgid "Load Python block"
 msgstr "Maveje'p kily'e keich' Python"
 
-#: TurtleArtActivity.py:736
+#: TurtleArtActivity.py:766
+msgid "Palettes"
+msgstr ""
+
+#: TurtleArtActivity.py:810
 msgid "Sharing blocks disabled"
 msgstr "Skad-a make' se keich' kily'e"
 
-#: TurtleArtActivity.py:799
+#: TurtleArtActivity.py:883
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
-#: TurtleArtActivity.py:804
+#: TurtleArtActivity.py:888
 msgid "<Ctrl>e"
 msgstr "<Ctrol>e"
 
-#: TurtleArtActivity.py:806
+#: TurtleArtActivity.py:890
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
-#: TurtleArtActivity.py:808
+#: TurtleArtActivity.py:892
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
-#: TurtleArtActivity.py:811
+#: TurtleArtActivity.py:895
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
-#: TurtleArtActivity.py:967 TurtleArtActivity.py:972 TurtleArtActivity.py:1039
+#: TurtleArtActivity.py:1049 TurtleArtActivity.py:1054
+#: TurtleArtActivity.py:1121
 msgid "Plugin could not be installed."
 msgstr "navú plugin nip mvania'at manam'ejep."
 
-#: TurtleArtActivity.py:1035
+#: TurtleArtActivity.py:1117
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr "Vipiup ne TortugArte pa ke kijiu'u kigui' ne plugin."
 
-#: TurtleArtActivity.py:1053
+#: TurtleArtActivity.py:1135
 #, python-format
 msgid "Plugin %s already installed."
 msgstr "Ne plugin %s majau mamejep."
 
-#: TurtleArtActivity.py:1054
+#: TurtleArtActivity.py:1136
 #, python-format
 msgid "Do you want to reinstall %s?"
 msgstr "¿Kimieng tsukuet manamejep %s?"
@@ -1033,15 +1055,21 @@ msgstr "Matsjau"
 msgid "Colors"
 msgstr "Xikjia'"
 
-#: gnome_plugins/uploader_plugin.py:64
-msgid "Upload to Web"
-msgstr "Mapai namá pu web"
-
-#: gnome_plugins/uploader_plugin.py:66
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
 msgid "Upload"
 msgstr "Maveje'p"
 
-#: gnome_plugins/uploader_plugin.py:83
+#: gnome_plugins/fb_plugin.py:87
+msgid "Facebook wall post"
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "Mapai namá pu web"
+
+#: gnome_plugins/uploader_plugin.py:90
 msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
@@ -1049,35 +1077,35 @@ msgstr ""
 "tumei numei peuk nu'uei njui pu http://turtleartesite.sugarlabs.org kujui "
 "luju'u lupu navu se ndul'ueje ma natsjau."
 
-#: gnome_plugins/uploader_plugin.py:92
+#: gnome_plugins/uploader_plugin.py:99
 msgid "Username:"
 msgstr "k'ua' vake':"
 
-#: gnome_plugins/uploader_plugin.py:102
+#: gnome_plugins/uploader_plugin.py:109
 msgid "Password:"
 msgstr "Kily'e se liji vupai:"
 
-#: gnome_plugins/uploader_plugin.py:113
+#: gnome_plugins/uploader_plugin.py:120
 msgid "Title:"
 msgstr "Ngunjiu' kily'e me'ets:"
 
-#: gnome_plugins/uploader_plugin.py:123
+#: gnome_plugins/uploader_plugin.py:130
 msgid "Description:"
 msgstr "Mamang peuk vakja:"
 
-#: gnome_plugins/uploader_plugin.py:133
+#: gnome_plugins/uploader_plugin.py:140
 msgid "Submit to Web"
 msgstr "Mapai nama web"
 
-#: gnome_plugins/uploader_plugin.py:137
+#: gnome_plugins/uploader_plugin.py:144
 msgid "Cancel"
 msgstr "Mapejeel'"
 
-#: gnome_plugins/uploader_plugin.py:159
+#: gnome_plugins/uploader_plugin.py:166
 msgid "Login failed"
 msgstr "Ndich'u se me'ei maní"
 
-#: gnome_plugins/uploader_plugin.py:196
+#: gnome_plugins/uploader_plugin.py:203
 msgid "Failed to upload!"
 msgstr "Matsu' se mave'eje'p"
 
@@ -1132,15 +1160,15 @@ msgstr "manaja se vat'ei vum'ejep ndape'et leet"
 
 #: plugins/audio_sensors/audio_sensors.py:151
 #: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:178
-#: plugins/audio_sensors/audio_sensors.py:192
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
 msgid "resistance"
 msgstr "ne se lu'ujuñ manajap xikich'"
 
 #: plugins/audio_sensors/audio_sensors.py:152
 #: plugins/audio_sensors/audio_sensors.py:166
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
+#: plugins/audio_sensors/audio_sensors.py:180
+#: plugins/audio_sensors/audio_sensors.py:194
 msgid "microphone input resistance"
 msgstr ""
 "li'iajam ne se lu'uei lu'ujuñ xikich' se njei' pu ndejei ne ndape'et leet "
@@ -1148,15 +1176,15 @@ msgstr ""
 
 #: plugins/audio_sensors/audio_sensors.py:157
 #: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:184
-#: plugins/audio_sensors/audio_sensors.py:198
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
 msgid "voltage"
 msgstr "xikich' manajap"
 
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:172
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
+#: plugins/audio_sensors/audio_sensors.py:186
+#: plugins/audio_sensors/audio_sensors.py:200
 msgid "microphone input voltage"
 msgstr "manajap se llu'ujuñ re xikich' se vat'ei vum'ejep ndape'et leet"
 
@@ -1769,6 +1797,29 @@ msgstr ""
 msgid "presentation 2x2"
 msgstr ""
 
+#: pysamples/brain.py:43
+msgid "Please install the Speak Activity and try again."
+msgstr ""
+
+#: pysamples/brain.py:54
+msgid "Spanish"
+msgstr ""
+
+#: pysamples/brain.py:58 pysamples/brain.py:72 pysamples/brain.py:74
+#: pysamples/brain.py:80
+msgid "English"
+msgstr ""
+
+#: pysamples/brain.py:91
+msgid "Sorry, I can't understand what you are asking about."
+msgstr ""
+
+#: pysamples/brain.py:100
+msgid ""
+"Sorry, there is no free memory to load my brain. Close other activities and "
+"try once more."
+msgstr ""
+
 #: pysamples/forward_push.py:45
 msgid "push destination rgb value to heap"
 msgstr ""
@@ -1799,79 +1850,83 @@ msgstr ""
 msgid "make a uturn"
 msgstr ""
 
-#: turtleblocks.py:81
+#: turtleblocks.py:86
 msgid "usage is"
 msgstr ""
 
-#: turtleblocks.py:234
+#: turtleblocks.py:240
 msgid "No option action:"
 msgstr ""
 
-#: turtleblocks.py:249
+#: turtleblocks.py:255
 msgid "File not found"
 msgstr ""
 
-#: turtleblocks.py:273
+#: turtleblocks.py:279
 #, python-format
 msgid "Configuration directory not writable: %s"
 msgstr ""
 
-#: turtleblocks.py:350
+#: turtleblocks.py:354
 msgid "New"
 msgstr ""
 
-#: turtleblocks.py:351
+#: turtleblocks.py:355
 #, fuzzy
 msgid "Open"
 msgstr "Maseiñ"
 
-#: turtleblocks.py:352
+#: turtleblocks.py:356
 #, fuzzy
 msgid "Save"
 msgstr "Makjat"
 
-#: turtleblocks.py:353
+#: turtleblocks.py:357
 msgid "Save as"
 msgstr ""
 
-#: turtleblocks.py:358
+#: turtleblocks.py:362
 msgid "Quit"
 msgstr ""
 
-#: turtleblocks.py:359
+#: turtleblocks.py:363
 msgid "File"
 msgstr ""
 
-#: turtleblocks.py:366
+#: turtleblocks.py:370
 #, fuzzy
 msgid "Rescale coordinates"
 msgstr "tajaich' maku'uts sad-ia ma kujaich'"
 
-#: turtleblocks.py:372
+#: turtleblocks.py:376
 msgid "Reset block size"
 msgstr ""
 
-#: turtleblocks.py:390
+#: turtleblocks.py:394
 msgid "Show/hide blocks"
 msgstr ""
 
-#: turtleblocks.py:392
+#: turtleblocks.py:396
 msgid "Tools"
 msgstr ""
 
-#: turtleblocks.py:398
+#: turtleblocks.py:402
 msgid "Debug"
 msgstr ""
 
-#: turtleblocks.py:400
+#: turtleblocks.py:404
 msgid "Turtle"
 msgstr ""
 
-#: turtleblocks.py:434
+#: turtleblocks.py:407
+msgid "About..."
+msgstr ""
+
+#: turtleblocks.py:447
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr ""
 
-#: turtleblocks.py:435
+#: turtleblocks.py:448
 msgid "Save project?"
 msgstr ""
 

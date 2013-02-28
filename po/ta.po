@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-02 10:01-0400\n"
+"POT-Creation-Date: 2013-02-24 00:31-0500\n"
 "PO-Revision-Date: 2011-10-27 08:14+0200\n"
 "Last-Translator: Thangamani <thangam.arunx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,9 +22,8 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #. TRANS: "name" option from activity.info file
-#: TurtleArt/tawindow.py:3767 pysamples/grecord.py:205 turtleblocks.py:303
-msgid "Turtle Art"
-msgstr "ஆமைச்சித்திரம்"
+msgid "TurtleBlocks"
+msgstr ""
 
 #. TRANS: "summary" option from activity.info file
 #. TRANS: "description" option from activity.info file
@@ -33,101 +32,101 @@ msgid ""
 "visual programming blocks"
 msgstr ""
 
-#: TurtleArt/tabasics.py:116
+#: TurtleArt/tabasics.py:123
 msgid "Palette of turtle commands"
 msgstr "ஆமை நிறப்பட்டையின் கட்டளைகள்"
 
-#: TurtleArt/tabasics.py:121
+#: TurtleArt/tabasics.py:128
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
 msgid "forward"
 msgstr "முன்னோக்கி அனுப்பு"
 
-#: TurtleArt/tabasics.py:125
+#: TurtleArt/tabasics.py:132
 msgid "moves turtle forward"
 msgstr "ஆமையை முன்னோக்கி நகர்த்து"
 
-#: TurtleArt/tabasics.py:132
+#: TurtleArt/tabasics.py:139
 msgid "back"
 msgstr "பின்னால்"
 
-#: TurtleArt/tabasics.py:136
+#: TurtleArt/tabasics.py:143
 msgid "moves turtle backward"
 msgstr "ஆமையை பின் நகர்த்து"
 
-#: TurtleArt/tabasics.py:144
+#: TurtleArt/tabasics.py:151
 msgid "clean"
 msgstr "சுத்தம்"
 
-#: TurtleArt/tabasics.py:147
+#: TurtleArt/tabasics.py:154
 msgid "clears the screen and reset the turtle"
 msgstr "திரையை தூய்மைப்படுத்து மற்றும் ஆமையை பாழையதாக்கு"
 
-#: TurtleArt/tabasics.py:155
+#: TurtleArt/tabasics.py:162
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
 msgid "left"
 msgstr "இடது"
 
-#: TurtleArt/tabasics.py:159
+#: TurtleArt/tabasics.py:166
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "ஆமையை கடிகார சுழற்சியில் திரும்பியது (கோணம் டிகிரி அளவில்)"
 
-#: TurtleArt/tabasics.py:166
+#: TurtleArt/tabasics.py:174
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:878
 msgid "right"
 msgstr "வலது"
 
-#: TurtleArt/tabasics.py:170
+#: TurtleArt/tabasics.py:178
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "ஆமையானது கடிகார திசையில் திரும்புகிறது (கோணம் டிகிரியில்)"
 
-#: TurtleArt/tabasics.py:178
+#: TurtleArt/tabasics.py:186
 msgid "arc"
 msgstr "வில்"
 
-#: TurtleArt/tabasics.py:178
+#: TurtleArt/tabasics.py:186
 msgid "angle"
 msgstr "கோணம்"
 
-#: TurtleArt/tabasics.py:178
+#: TurtleArt/tabasics.py:186
 msgid "radius"
 msgstr "குறை"
 
-#: TurtleArt/tabasics.py:182
+#: TurtleArt/tabasics.py:190
 msgid "moves turtle along an arc"
 msgstr "ஆமையானது வளைவு கோட்டை ஒட்டி நகர்கிறது"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid "set xy"
 msgstr "ஒழுங்கு  படுத்துக"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid "x"
 msgstr "எக்ஸ்"
 
-#: TurtleArt/tabasics.py:191 TurtleArt/tabasics.py:257
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid "y"
 msgstr "y"
 
-#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
+#: TurtleArt/tabasics.py:203 TurtleArt/tabasics.py:269
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr "xcor,ycor:(0,0) நிலைக்கு ஆமை நகர்கிறது. இது திரையின் மையப்பகுதியாகும்"
 
-#: TurtleArt/tabasics.py:205
+#: TurtleArt/tabasics.py:213
 msgid "set heading"
 msgstr "தலைப்பை ஒழுங்கு செய்"
 
-#: TurtleArt/tabasics.py:209
+#: TurtleArt/tabasics.py:217
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr "ஆமையின் தலைப்பை வை (0 ஆனது திரையின் உச்சை நேக்குகிறது.)"
 
-#: TurtleArt/tabasics.py:217 TurtleArt/tawindow.py:3761
-#: TurtleArt/tawindow.py:3767 TurtleArtActivity.py:557
+#: TurtleArt/tabasics.py:225 TurtleArt/tawindow.py:3862
+#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:604
 msgid "xcor"
 msgstr "xcor"
 
-#: TurtleArt/tabasics.py:218
+#: TurtleArt/tabasics.py:226
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -135,12 +134,12 @@ msgstr ""
 "தற்ப்போது ஆமையின் x-coordinate மதிப்பைக் கொண்டுள்ளது (எண் மாறிலி தொகுதி "
 "இடத்தில் பயன்படுத்தலாம்)"
 
-#: TurtleArt/tabasics.py:228 TurtleArt/tawindow.py:3761
-#: TurtleArt/tawindow.py:3767 TurtleArtActivity.py:558
+#: TurtleArt/tabasics.py:236 TurtleArt/tawindow.py:3862
+#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:605
 msgid "ycor"
 msgstr "வை கோ"
 
-#: TurtleArt/tabasics.py:229
+#: TurtleArt/tabasics.py:237
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -148,12 +147,12 @@ msgstr ""
 "தற்ப்போது ஆமையின் ல-coordinate மதிப்பைக் கொண்டுள்ளது (எண் மாறிலி தொகுதி "
 "இடத்தில் பயன்படுத்தலாம்)"
 
-#: TurtleArt/tabasics.py:239 TurtleArt/tawindow.py:3762
-#: TurtleArt/tawindow.py:3768 TurtleArtActivity.py:558
+#: TurtleArt/tabasics.py:247 TurtleArt/tawindow.py:3863
+#: TurtleArt/tawindow.py:3869 TurtleArtActivity.py:605
 msgid "heading"
 msgstr "தலைப்பு"
 
-#: TurtleArt/tabasics.py:240
+#: TurtleArt/tabasics.py:248
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
@@ -161,417 +160,422 @@ msgstr ""
 "தற்ப்போதுள்ள ஆமையின் தலைப்பை பிடித்துவை(எண் தொகுதியின் இடத்தில் "
 "பயன்படுத்தலாம்)"
 
-#: TurtleArt/tabasics.py:274
+#: TurtleArt/tabasics.py:282
 msgid "Palette of pen commands"
 msgstr "நிறப்பட்டை எழுதுகோளின் கட்டளைகள்"
 
-#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
 msgid "fill screen"
 msgstr "முழுத்திரை"
 
-#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:290
-#: TurtleArt/tabasics.py:340
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
+#: TurtleArt/tabasics.py:348
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1158
 msgid "color"
 msgstr "நிறம்"
 
-#: TurtleArt/tabasics.py:279 TurtleArt/tabasics.py:291
-#: TurtleArt/tabasics.py:350
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
+#: TurtleArt/tabasics.py:358
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1154
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1159
 msgid "shade"
 msgstr "நிழல்"
 
-#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
+#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:303
 msgid "fills the background with (color, shade)"
 msgstr "பின் பக்கத்தை உடன்(நிறம், நிழல்) நிரப்பு"
 
-#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:359
+#: TurtleArt/tabasics.py:299 TurtleArt/tabasics.py:367
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1160
 msgid "gray"
 msgstr "கிறே"
 
-#: TurtleArt/tabasics.py:305
+#: TurtleArt/tabasics.py:313
 msgid "set color"
 msgstr "நிறத்தை  ஒழுங்கு படுத்து"
 
-#: TurtleArt/tabasics.py:309
+#: TurtleArt/tabasics.py:317
 msgid "sets color of the line drawn by the turtle"
 msgstr "ஆமையால் வரையப்பட்ட கோட்டுக்கு நிறத்தை அமைக்கவும்"
 
-#: TurtleArt/tabasics.py:317
+#: TurtleArt/tabasics.py:325
 msgid "set shade"
 msgstr "நிழலை ஒழுங்கு படுத்து"
 
-#: TurtleArt/tabasics.py:321
+#: TurtleArt/tabasics.py:329
 msgid "sets shade of the line drawn by the turtle"
 msgstr "ஆமையால் வரையப்பட்ட கோட்டடின் நிழலை அமைக்கவும்"
 
-#: TurtleArt/tabasics.py:329
+#: TurtleArt/tabasics.py:337
 msgid "set gray"
 msgstr "கிறேவை அமை"
 
-#: TurtleArt/tabasics.py:332
+#: TurtleArt/tabasics.py:340
 msgid "sets gray level of the line drawn by the turtle"
 msgstr "ஆமையால் வரையப்பட்ட கோட்டின் மட்டத்திற்கு கிரே அளவை அமைத்தது"
 
-#: TurtleArt/tabasics.py:341
+#: TurtleArt/tabasics.py:349
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr ""
 "இப்பொழுதுள்ள எழுதுகோளின் நிறம்(எண் தொகுதியின் இடத்தில் பயன்படுத்தலாம்)"
 
-#: TurtleArt/tabasics.py:351
+#: TurtleArt/tabasics.py:359
 msgid "holds current pen shade"
 msgstr "தற்ப்போதுள்ள எழுதுகோளின் நிழலை வைத்துள்ளது"
 
-#: TurtleArt/tabasics.py:360
+#: TurtleArt/tabasics.py:368
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr ""
 "தற்ப்போது எழுதுகோளின் அளவை வைத்திருக்கிறது (எண்ணிலக்க தொகுதி இடத்தில் "
 "பயன்படுத்திக்கொள்ள முடியும்)"
 
-#: TurtleArt/tabasics.py:368
+#: TurtleArt/tabasics.py:376
 msgid "pen up"
 msgstr "பேனை மேலே"
 
-#: TurtleArt/tabasics.py:371
+#: TurtleArt/tabasics.py:379
 msgid "Turtle will not draw when moved."
 msgstr "ஆமை நகர்ந்த பிறகு வரையாது"
 
-#: TurtleArt/tabasics.py:377
+#: TurtleArt/tabasics.py:385
 msgid "pen down"
 msgstr "பேனை கீழே"
 
-#: TurtleArt/tabasics.py:380
+#: TurtleArt/tabasics.py:388
 msgid "Turtle will draw when moved."
 msgstr "ஆமை நகர்ந்த பிறகு வரையும்"
 
-#: TurtleArt/tabasics.py:386
+#: TurtleArt/tabasics.py:394
 msgid "set pen size"
 msgstr "பேனையின் அளவினை ஒழுங்குபடுத்து"
 
-#: TurtleArt/tabasics.py:390
+#: TurtleArt/tabasics.py:398
 msgid "sets size of the line drawn by the turtle"
 msgstr "ஆமையால் வரையப்பட்ட கோட்டுக்கு அளவை அமைக்கவும்"
 
-#: TurtleArt/tabasics.py:400
+#: TurtleArt/tabasics.py:408
 msgid "start fill"
 msgstr "தொடக்க நிரப்பி"
 
-#: TurtleArt/tabasics.py:402
+#: TurtleArt/tabasics.py:410
 msgid "starts filled polygon (used with end fill block)"
 msgstr "ஆரம்பங்கள் பல்வடித்தை நிரப்பியது (கடைசி பகுதியுடன் பயன்படுத்தப்பட்டது)"
 
-#: TurtleArt/tabasics.py:409
+#: TurtleArt/tabasics.py:417
 msgid "end fill"
 msgstr "கடைசி நிரப்பல்"
 
-#: TurtleArt/tabasics.py:411
+#: TurtleArt/tabasics.py:419
 msgid "completes filled polygon (used with start fill block)"
 msgstr ""
 "நிரப்பற்ற ஒழுங்கற்ற வடிவம் முடிவடைகிறது (முதல் நிரம்பிய பகுதியுடன் "
 "பயன்படுத்தப்பட்டது)"
 
-#: TurtleArt/tabasics.py:418
+#: TurtleArt/tabasics.py:426
 msgid "pen size"
 msgstr "பேனை அளவு"
 
-#: TurtleArt/tabasics.py:419
+#: TurtleArt/tabasics.py:427
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr ""
 "தற்ப்போது எழுதுகோளின் அளவை வைத்திருக்கிறது (எண்ணிலக்க தொகுதி இடத்தில் "
 "பயன்படுத்திக்கொள்ள முடியும்)"
 
-#: TurtleArt/tabasics.py:434 TurtleArt/tabasics.py:438
+#: TurtleArt/tabasics.py:441
 msgid "Palette of pen colors"
 msgstr "பட்டைகளாக எழுதுகொளின் நிறம்"
 
-#: TurtleArt/tabasics.py:440
+#: TurtleArt/tabasics.py:443
 msgid "red"
 msgstr "சிவப்பு"
 
-#: TurtleArt/tabasics.py:441
+#: TurtleArt/tabasics.py:444
 msgid "orange"
 msgstr "ஆரஞ்சு"
 
-#: TurtleArt/tabasics.py:443
+#: TurtleArt/tabasics.py:446
 msgid "yellow"
 msgstr "மஞ்சள்"
 
-#: TurtleArt/tabasics.py:445
+#: TurtleArt/tabasics.py:448
 msgid "green"
 msgstr "பச்சை"
 
-#: TurtleArt/tabasics.py:446
+#: TurtleArt/tabasics.py:449
 msgid "cyan"
 msgstr "ஆகாய நிறம்"
 
-#: TurtleArt/tabasics.py:447
+#: TurtleArt/tabasics.py:450
 msgid "blue"
 msgstr "நீலம்"
 
-#: TurtleArt/tabasics.py:448
+#: TurtleArt/tabasics.py:451
 msgid "purple"
 msgstr "பழுப்பு"
 
-#: TurtleArt/tabasics.py:450
+#: TurtleArt/tabasics.py:453
 msgid "white"
 msgstr "வெள்ளை"
 
-#: TurtleArt/tabasics.py:451
+#: TurtleArt/tabasics.py:454
 msgid "black"
 msgstr "தடு"
 
-#: TurtleArt/tabasics.py:457
+#: TurtleArt/tabasics.py:460
 msgid "set text color"
 msgstr "உரைக்கான நிறத்தை தெரிவு செய்"
 
-#: TurtleArt/tabasics.py:460
+#: TurtleArt/tabasics.py:463
 msgid "sets color of text drawn by the turtle"
 msgstr "ஆமையால் வரையப்பட்ட உரையின் நிறத்தை அமைத்தது"
 
-#: TurtleArt/tabasics.py:468
+#: TurtleArt/tabasics.py:471
 msgid "set text size"
 msgstr "உரை அளவினை ஒழுங்குபடுத்து"
 
-#: TurtleArt/tabasics.py:471
+#: TurtleArt/tabasics.py:474
 msgid "sets size of text drawn by the turtle"
 msgstr "ஆமையால் வரையப்பட்ட உரையின் அளவை அமைத்தது"
 
-#: TurtleArt/tabasics.py:554
+#: TurtleArt/tabasics.py:557
 msgid "Palette of numeric operators"
 msgstr "பட்டை எண்ணியக்கிகள்"
 
-#: TurtleArt/tabasics.py:560
+#: TurtleArt/tabasics.py:563
 msgid "plus"
 msgstr "கூட்டல்"
 
-#: TurtleArt/tabasics.py:564
+#: TurtleArt/tabasics.py:567
 msgid "adds two alphanumeric inputs"
 msgstr "இரண்டு ஆஃல்பா எண்ணிலக்க உள்ளீடுகள் சேர்க்கப்படுகிறது"
 
-#: TurtleArt/tabasics.py:572
+#: TurtleArt/tabasics.py:575
 msgid "minus"
 msgstr "கழித்தல்"
 
-#: TurtleArt/tabasics.py:575
+#: TurtleArt/tabasics.py:578
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr ""
 "மேல் மட்ட உள்ளீட்டு எண்ணிலிருந்து கீழ் அடிமட்ட உள்ளீட்டு எண்ணானது "
 "கழிக்கப்படுகிறது"
 
-#: TurtleArt/tabasics.py:586
+#: TurtleArt/tabasics.py:589
 msgid "multiply"
 msgstr "பெருக்கல்"
 
-#: TurtleArt/tabasics.py:589
+#: TurtleArt/tabasics.py:592
 msgid "multiplies two numeric inputs"
 msgstr "இரட்டிப்பகளில் இரண்டு எண்ணிலக்க உள்ளீடுகள்"
 
-#: TurtleArt/tabasics.py:598
+#: TurtleArt/tabasics.py:601
 msgid "divide"
 msgstr "பிரி"
 
-#: TurtleArt/tabasics.py:601
+#: TurtleArt/tabasics.py:604
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr ""
 "அடியிலுள்ள(கீழெண்) எண்ணிலக்கத்தை உச்சி(மேலெண்) எண்ணிலக்கத்தை கொண்டு பிரி"
 
-#: TurtleArt/tabasics.py:611
+#: TurtleArt/tabasics.py:614
 msgid "identity"
 msgstr "அடையாளம்"
 
-#: TurtleArt/tabasics.py:613
+#: TurtleArt/tabasics.py:616
 msgid "identity operator used for extending blocks"
 msgstr "அடையாள இயக்குனர் தொகுதிகளை நீட்டிக்க பயன்படுகிறார்"
 
-#: TurtleArt/tabasics.py:621 TurtleArt/tabasics.py:622
+#: TurtleArt/tabasics.py:624 TurtleArt/tabasics.py:625
 msgid "mod"
 msgstr "புதுப்பி"
 
-#: TurtleArt/tabasics.py:625
+#: TurtleArt/tabasics.py:628
 msgid "modular (remainder) operator"
 msgstr "மாறும்(மீதமுள்ள) இயக்கி"
 
-#: TurtleArt/tabasics.py:632
+#: TurtleArt/tabasics.py:635
 msgid "√"
 msgstr "√"
 
-#: TurtleArt/tabasics.py:633
+#: TurtleArt/tabasics.py:636
 msgid "square root"
 msgstr "இரட்டிப்பு வீதம்"
 
-#: TurtleArt/tabasics.py:636
+#: TurtleArt/tabasics.py:639
 msgid "calculates square root"
 msgstr "இரட்டை வீத்தை கணிக்கவும்"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:646
 msgid "random"
 msgstr "எழுமாறாக"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:646
 msgid "min"
 msgstr "மிகக்குறைய"
 
-#: TurtleArt/tabasics.py:643
+#: TurtleArt/tabasics.py:646
 msgid "max"
 msgstr "மிகக்கூடிய"
 
-#: TurtleArt/tabasics.py:647
+#: TurtleArt/tabasics.py:650
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr "மிக-அதிக மற்றும் மிக-குறைவு எண்களுக்கிடையே எழுமாறான எண் கிடைக்ப்பெறும்"
 
-#: TurtleArt/tabasics.py:659
+#: TurtleArt/tabasics.py:662
 msgid "number"
 msgstr "எண்"
 
-#: TurtleArt/tabasics.py:660
+#: TurtleArt/tabasics.py:663
 msgid "used as numeric input in mathematic operators"
 msgstr "கணித இயக்கிகளில் எண்ணிலக்கங்கள் உள்ளீடாக பயன்படுத்தப்படுகிறது"
 
-#: TurtleArt/tabasics.py:668
+#: TurtleArt/tabasics.py:671
 msgid "greater than"
 msgstr "இதைவிட அதிகம்"
 
-#: TurtleArt/tabasics.py:671
+#: TurtleArt/tabasics.py:674
 msgid "logical greater-than operator"
 msgstr "லாஜிக்கல் மிகை எண்"
 
-#: TurtleArt/tabasics.py:680
+#: TurtleArt/tabasics.py:683
 msgid "less than"
 msgstr "இதற்க்கு குறைவாக"
 
-#: TurtleArt/tabasics.py:684
+#: TurtleArt/tabasics.py:687
 msgid "logical less-than operator"
 msgstr "லாஜிக்கல் less-than இயக்கி"
 
-#: TurtleArt/tabasics.py:692
+#: TurtleArt/tabasics.py:695
 msgid "equal"
 msgstr "சமம்"
 
-#: TurtleArt/tabasics.py:696
+#: TurtleArt/tabasics.py:699
 msgid "logical equal-to operator"
 msgstr "லாஜிக்கல் சமநிலை செயலி"
 
-#: TurtleArt/tabasics.py:702
+#: TurtleArt/tabasics.py:705
 msgid "not"
 msgstr "இல்லை"
 
-#: TurtleArt/tabasics.py:705
+#: TurtleArt/tabasics.py:708
 msgid "logical NOT operator"
 msgstr "லாஜிக்கல் இயக்கி"
 
-#: TurtleArt/tabasics.py:711 TurtleArt/tabasics.py:714
+#: TurtleArt/tabasics.py:714 TurtleArt/tabasics.py:717
 msgid "and"
 msgstr "உடன்"
 
-#: TurtleArt/tabasics.py:715
+#: TurtleArt/tabasics.py:718
 msgid "logical AND operator"
 msgstr "சரியான அன்டு இயக்குனர்"
 
-#: TurtleArt/tabasics.py:722 TurtleArt/tabasics.py:725
+#: TurtleArt/tabasics.py:725 TurtleArt/tabasics.py:728
 msgid "or"
 msgstr "அல்லது"
 
-#: TurtleArt/tabasics.py:726
+#: TurtleArt/tabasics.py:729
 msgid "logical OR operator"
 msgstr "லாஜிக்கல் NOT இயக்கி"
 
-#: TurtleArt/tabasics.py:735
+#: TurtleArt/tabasics.py:738
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
 msgid "Palette of flow operators"
 msgstr "செயலிகள் செல்லும் பட்டை"
 
-#: TurtleArt/tabasics.py:740
+#: TurtleArt/tabasics.py:743
 msgid "wait"
 msgstr "பொறு"
 
-#: TurtleArt/tabasics.py:744
+#: TurtleArt/tabasics.py:747
 msgid "pauses program execution a specified number of seconds"
 msgstr "ஒரு குறிப்பிட்ட வினாடிகளுக்கு நிரலின் இயக்கமானது இடைநிறுத்தப்படுகிறது"
 
-#: TurtleArt/tabasics.py:751
+#: TurtleArt/tabasics.py:754
 msgid "forever"
 msgstr "எப்போதும்"
 
-#: TurtleArt/tabasics.py:755
+#: TurtleArt/tabasics.py:758
 msgid "loops forever"
 msgstr "எப்பொழுதும் தொடர்படுத்து"
 
-#: TurtleArt/tabasics.py:762 TurtleArt/tabasics.py:766
+#: TurtleArt/tabasics.py:765 TurtleArt/tabasics.py:769
 msgid "repeat"
 msgstr ", திருப்பிச்செய்"
 
-#: TurtleArt/tabasics.py:767
+#: TurtleArt/tabasics.py:770
 msgid "loops specified number of times"
 msgstr "தொடர்படுத்தல் எத்தனை மறை என்பது குறிப்பிடப்படுகின்றது"
 
-#: TurtleArt/tabasics.py:773 TurtleArt/tabasics.py:786
+#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
 msgid "if"
 msgstr "எனின்"
 
-#: TurtleArt/tabasics.py:773 TurtleArt/tabasics.py:786
+#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
 msgid "then"
 msgstr "அதன்பின்"
 
-#: TurtleArt/tabasics.py:776
+#: TurtleArt/tabasics.py:779
 msgid "if then"
 msgstr "இப்படியானால்"
 
-#: TurtleArt/tabasics.py:778
+#: TurtleArt/tabasics.py:781
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr ""
 "if-then இயக்குனர் பூலியன் இயக்குனரை பட்டை எண்களிலிருந்து பயன்படுத்திகிறார்"
 
-#: TurtleArt/tabasics.py:786
+#: TurtleArt/tabasics.py:789
 msgid "else"
 msgstr "வேறு"
 
-#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
+#: TurtleArt/tabasics.py:793 TurtleArt/tabasics.py:801
 msgid "if then else"
 msgstr "இப்படியானால் என்ன"
 
-#: TurtleArt/tabasics.py:791 TurtleArt/tabasics.py:799
+#: TurtleArt/tabasics.py:794 TurtleArt/tabasics.py:802
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr ""
 "if-then-else இயக்குனர் பூலியன் இயக்குனரை பட்டை எண்களிலிருந்து "
 "பயன்படுத்திகிறார்"
 
-#: TurtleArt/tabasics.py:808
+#: TurtleArt/tabasics.py:811
 msgid "horizontal space"
 msgstr "கிடைமட்ட வெளி"
 
-#: TurtleArt/tabasics.py:809
+#: TurtleArt/tabasics.py:812
 msgid "jogs stack right"
 msgstr "இடது அடுக்கின் ஜாக்ஸ்"
 
-#: TurtleArt/tabasics.py:816
+#: TurtleArt/tabasics.py:819
 msgid "vertical space"
 msgstr "நெடு வெளி"
 
-#: TurtleArt/tabasics.py:817
+#: TurtleArt/tabasics.py:820
 msgid "jogs stack down"
 msgstr "ஜேகஸ் அடுக்கு கீழே"
 
-#: TurtleArt/tabasics.py:823
+#: TurtleArt/tabasics.py:826
 msgid "stop action"
 msgstr "செயலை நிறுத்து"
 
-#: TurtleArt/tabasics.py:826
+#: TurtleArt/tabasics.py:829
 msgid "stops current action"
 msgstr "தற்ப்போது செயலை நுறுத்துகிறது"
 
-#: TurtleArt/tabasics.py:835
+#: TurtleArt/tabasics.py:838
 msgid "Palette of variable blocks"
 msgstr "மாறிலிகளின் தொகுதி பட்டை"
 
-#: TurtleArt/tabasics.py:840 pysamples/grecord.py:213
+#: TurtleArt/tabasics.py:843 pysamples/grecord.py:213
 msgid "start"
 msgstr "ஆரம்பி"
 
-#: TurtleArt/tabasics.py:843
+#: TurtleArt/tabasics.py:846
 msgid "connects action to toolbar run buttons"
 msgstr "பொத்தான்களை இயக்கி கருவிப்பட்டைக்கு செயல்களை இணைக்கிறது"
 
-#: TurtleArt/tabasics.py:850 TurtleArt/tabasics.py:851
-#: TurtleArt/tabasics.py:852
+#: TurtleArt/tabasics.py:853 TurtleArt/tabasics.py:854
+#: TurtleArt/tabasics.py:855
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
@@ -581,144 +585,146 @@ msgstr "பொத்தான்களை இயக்கி கருவி�
 msgid "text"
 msgstr "உரை"
 
-#: TurtleArt/tabasics.py:853
+#: TurtleArt/tabasics.py:856
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
 msgid "string value"
 msgstr "வார்த்தை மதிப்பு"
 
-#: TurtleArt/tabasics.py:857 TurtleArt/tabasics.py:860
-#: TurtleArt/tabasics.py:868 TurtleArt/tabasics.py:872
-#: TurtleArt/tawindow.py:1269 TurtleArt/tawindow.py:1350
-#: TurtleArt/tawindow.py:1363 TurtleArt/tawindow.py:4016
+#: TurtleArt/tabasics.py:860 TurtleArt/tabasics.py:863
+#: TurtleArt/tabasics.py:871 TurtleArt/tabasics.py:875
+#: TurtleArt/tawindow.py:1292 TurtleArt/tawindow.py:1371
+#: TurtleArt/tawindow.py:1384 TurtleArt/tawindow.py:1854
+#: TurtleArt/tawindow.py:4125
 msgid "action"
 msgstr "செயற்படு"
 
-#: TurtleArt/tabasics.py:862
+#: TurtleArt/tabasics.py:865
 msgid "top of nameable action stack"
 msgstr "பெயற்சொல்லும் செயலின் உச்சி அடுக்கு"
 
-#: TurtleArt/tabasics.py:873 TurtleArt/tawindow.py:4030
+#: TurtleArt/tabasics.py:876 TurtleArt/tawindow.py:4139
 msgid "invokes named action stack"
 msgstr "பெயருள்ள செயல் அடுக்கை தூண்டுகிறது"
 
-#: TurtleArt/tabasics.py:880
+#: TurtleArt/tabasics.py:883
 msgid "store in box 1"
 msgstr "1 வது பெட்டியில் சேமி"
 
-#: TurtleArt/tabasics.py:885
+#: TurtleArt/tabasics.py:888
 msgid "stores numeric value in Variable 1"
 msgstr "மாறிலி 1 ல் எண்ணிலக்க மதிப்பு சேமிக்கப்படுகின்றன."
 
-#: TurtleArt/tabasics.py:893
+#: TurtleArt/tabasics.py:896
 msgid "store in box 2"
 msgstr "2 ஆவது பெட்டியில் சேமி"
 
-#: TurtleArt/tabasics.py:898
+#: TurtleArt/tabasics.py:901
 msgid "stores numeric value in Variable 2"
 msgstr "மாறிலி 2 ல் எண்ணிலக்க மதிப்பு சேமிக்கப்படுகின்றன."
 
-#: TurtleArt/tabasics.py:906
+#: TurtleArt/tabasics.py:909
 msgid "box 1"
 msgstr "முதலாவது பெட்டி"
 
-#: TurtleArt/tabasics.py:909
+#: TurtleArt/tabasics.py:912
 msgid "Variable 1 (numeric value)"
 msgstr "மாறிலி 1 (எண்மதிப்பு)"
 
-#: TurtleArt/tabasics.py:916
+#: TurtleArt/tabasics.py:919
 msgid "box 2"
 msgstr "இரண்டாவது பெட்டி"
 
-#: TurtleArt/tabasics.py:919
+#: TurtleArt/tabasics.py:922
 msgid "Variable 2 (numeric value)"
 msgstr "மாறிலி 2 (எண்மதிப்பு)"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4080
+#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
 msgid "store in"
 msgstr "சேமிப்புக்கலனில்"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tabasics.py:939
+#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
 msgid "box"
 msgstr "பெட்டி"
 
-#: TurtleArt/tabasics.py:925 TurtleArt/tawindow.py:4080
+#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
 msgid "value"
 msgstr "மதிப்பு"
 
-#: TurtleArt/tabasics.py:929 TurtleArt/tabasics.py:942
-#: TurtleArt/tawindow.py:1273 TurtleArt/tawindow.py:4043
-#: TurtleArt/tawindow.py:4071
+#: TurtleArt/tabasics.py:932 TurtleArt/tabasics.py:945
+#: TurtleArt/tawindow.py:1296 TurtleArt/tawindow.py:1409
+#: TurtleArt/tawindow.py:1858 TurtleArt/tawindow.py:4152
+#: TurtleArt/tawindow.py:4180
 msgid "my box"
 msgstr "என் பெட்டி"
 
-#: TurtleArt/tabasics.py:930 TurtleArt/tawindow.py:4085
+#: TurtleArt/tabasics.py:933 TurtleArt/tawindow.py:4194
 msgid "stores numeric value in named variable"
 msgstr "பெயரிடப்பட்ட மாறிலியில் எண்ணிலக்க மதிப்பு சேமிக்கப்படுகின்றன."
 
-#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4057
+#: TurtleArt/tabasics.py:948 TurtleArt/tawindow.py:4166
 msgid "named variable (numeric value)"
 msgstr "பெயர்களின் மாறிலி(எண்மதிப்பு)"
 
-#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
+#: TurtleArt/tabasics.py:955 TurtleArt/tabasics.py:974
 msgid "action 1"
 msgstr "செயற்படு 1"
 
-#: TurtleArt/tabasics.py:955
+#: TurtleArt/tabasics.py:958
 msgid "top of Action 1 stack"
 msgstr "உச்சி செயல் 1ன் அடுக்கு"
 
-#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
+#: TurtleArt/tabasics.py:964 TurtleArt/tabasics.py:984
 msgid "action 2"
 msgstr "செயற்படு 2"
 
-#: TurtleArt/tabasics.py:964
+#: TurtleArt/tabasics.py:967
 msgid "top of Action 2 stack"
 msgstr "உச்சி செயல் 2ன் அடுக்கு"
 
-#: TurtleArt/tabasics.py:974
+#: TurtleArt/tabasics.py:977
 msgid "invokes Action 1 stack"
 msgstr "செயல் அடுக்கு 1 தூண்டல்"
 
-#: TurtleArt/tabasics.py:984
+#: TurtleArt/tabasics.py:987
 msgid "invokes Action 2 stack"
 msgstr "செயல் அடுக்கு 2 தூண்டல்"
 
-#: TurtleArt/tabasics.py:992
+#: TurtleArt/tabasics.py:995
 msgid "trash"
 msgstr "குப்பை"
 
-#: TurtleArt/tabasics.py:996
+#: TurtleArt/tabasics.py:999
 msgid "empty trash"
 msgstr "குப்பையை துய்மையாக்கு"
 
-#: TurtleArt/tabasics.py:997
+#: TurtleArt/tabasics.py:1000
 msgid "permanently deletes items in trash"
 msgstr "குப்பையில் உள்ள உருப்படிகளை நிரந்திரமாள அழி"
 
-#: TurtleArt/tabasics.py:1001
+#: TurtleArt/tabasics.py:1004
 msgid "restore all"
 msgstr "எல்லாத்தையும் சேமி"
 
-#: TurtleArt/tabasics.py:1002
+#: TurtleArt/tabasics.py:1005
 msgid "restore all blocks from trash"
 msgstr "குப்பையிலிருந்து அனைத்து தொகுதிகளையும் திரும்பச்சேமி"
 
-#: TurtleArt/tabasics.py:1006
+#: TurtleArt/tabasics.py:1009
 msgid "clear all"
 msgstr "எல்லாத்தையும் நீக்கு"
 
-#: TurtleArt/tabasics.py:1007
+#: TurtleArt/tabasics.py:1010
 msgid "move all blocks to trash"
 msgstr "எல்லா அடைக்கிகளையும் குப்பைக்கு நகர்த்து"
 
-#: TurtleArt/tacollaboration.py:153 TurtleArt/tawindow.py:1790
-#: TurtleArtActivity.py:652
+#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:1833
+#: TurtleArtActivity.py:703
 msgid "Share selected blocks"
 msgstr ""
 
-#: TurtleArt/taconstants.py:216 TurtleArt/taconstants.py:238
-#: TurtleArt/taconstants.py:259 TurtleArt/taconstants.py:301
-#: TurtleArt/taconstants.py:343 TurtleArt/taconstants.py:385
+#: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
+#: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
+#: TurtleArt/taconstants.py:336 TurtleArt/taconstants.py:378
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:978
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:993
@@ -728,253 +734,269 @@ msgstr ""
 msgid "Title"
 msgstr "தலைப்பு"
 
-#: TurtleArt/talogo.py:358 TurtleArtActivity.py:632
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1473
+#: TurtleArt/talogo.py:374 TurtleArtActivity.py:683
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1492
 msgid "Stop turtle"
 msgstr "ஆமையை நிறுத்து"
 
-#: TurtleArt/talogo.py:369 TurtleArtActivity.py:288 TurtleArtActivity.py:633
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1466
+#: TurtleArt/talogo.py:384 TurtleArtActivity.py:322 TurtleArtActivity.py:684
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1485
 msgid "Show blocks"
 msgstr "தொகுதிகளைக்காட்டு"
 
-#: TurtleArt/talogo.py:373 TurtleArtActivity.py:292 TurtleArtActivity.py:810
+#: TurtleArt/talogo.py:388 TurtleArtActivity.py:326 TurtleArtActivity.py:894
 msgid "Hide blocks"
 msgstr "தொகுதிகளை மறை"
 
-#: TurtleArt/talogo.py:492
+#: TurtleArt/talogo.py:511
 msgid "did not output to"
 msgstr "வெளியீடு வெளியீடி இல்லவே இல்லை"
 
-#: TurtleArt/talogo.py:551
+#: TurtleArt/talogo.py:570
 msgid "I don't know how to"
 msgstr "எப்படி என்று எனக்கு தெறியாது"
 
-#: TurtleArt/talogo.py:602
+#: TurtleArt/talogo.py:624
 msgid "doesn't like"
 msgstr "பிடிக்காது"
 
-#: TurtleArt/talogo.py:602
+#: TurtleArt/talogo.py:624
 msgid "as input"
 msgstr "உள்ளீடாக"
 
-#: TurtleArt/tapalette.py:96
+#: TurtleArt/tapalette.py:97
 msgid "displays next palette"
 msgstr "அடுத்த நிறப்பட்டையை தெறியப்படுத்து"
 
-#: TurtleArt/tapalette.py:97
+#: TurtleArt/tapalette.py:98
 msgid "changes the orientation of the palette of blocks"
 msgstr "நிறப்பட்டைகளின் தொகுதி ஒத்தமைந்த மாற்றங்கள்"
 
-#: TurtleArt/tautils.py:192
+#: TurtleArt/tautils.py:196
 msgid "Load..."
 msgstr "ஏற்று..."
 
-#: TurtleArt/tautils.py:202
+#: TurtleArt/tautils.py:206
 msgid "Save..."
 msgstr "சேமி..."
 
-#: TurtleArt/tautils.py:474
+#: TurtleArt/tautils.py:483
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
 msgid "click to open"
 msgstr "திறப்பதற்கு சொடுக்கவும்"
 
-#: TurtleArt/tawindow.py:987 TurtleArt/tawindow.py:988
+#: TurtleArt/tawindow.py:989 TurtleArt/tawindow.py:990
 msgid "orientation"
 msgstr "ஒத்தமைவு"
 
-#: TurtleArt/tawindow.py:998 TurtleArt/tawindow.py:1435
+#: TurtleArt/tawindow.py:1000 TurtleArt/tawindow.py:1470
 msgid "next"
 msgstr "அடுத்து"
 
-#: TurtleArt/tawindow.py:1010 TurtleArt/tawindow.py:1011
-#: TurtleArt/tawindow.py:1455
+#: TurtleArt/tawindow.py:1012 TurtleArt/tawindow.py:1013
+#: TurtleArt/tawindow.py:1490
 msgid "shift"
 msgstr ""
 
-#: TurtleArt/tawindow.py:1287
+#: TurtleArt/tawindow.py:1256
+msgid ""
+"Please hit the Stop Button before making changes to your Turtle Blocks "
+"program"
+msgstr ""
+
+#: TurtleArt/tawindow.py:1310
 msgid "Select blocks to share"
 msgstr ""
 
-#: TurtleArt/tawindow.py:3873
+#: TurtleArt/tawindow.py:3868 pysamples/grecord.py:205
+msgid "Turtle Art"
+msgstr "ஆமைச்சித்திரம்"
+
+#: TurtleArt/tawindow.py:3977
 msgid "image"
 msgstr "படம்"
 
-#: TurtleArtActivity.py:132 TurtleArtActivity.py:658 TurtleArtActivity.py:749
-#: TurtleArtActivity.py:769 turtleblocks.py:356
+#: TurtleArtActivity.py:166 TurtleArtActivity.py:709 TurtleArtActivity.py:823
+#: TurtleArtActivity.py:853 turtleblocks.py:360
 msgid "Save as Logo"
 msgstr "சிறிய படமாக சேமி"
 
-#: TurtleArtActivity.py:169 TurtleArtActivity.py:657 TurtleArtActivity.py:746
-#: TurtleArtActivity.py:766 turtleblocks.py:354
+#: TurtleArtActivity.py:203 TurtleArtActivity.py:708 TurtleArtActivity.py:820
+#: TurtleArtActivity.py:850 turtleblocks.py:358
 msgid "Save as image"
 msgstr "படமாக சேமி"
 
-#: TurtleArtActivity.py:177
+#: TurtleArtActivity.py:211
 msgid "snapshot"
 msgstr "மாதிறி எடுத்தல்"
 
-#: TurtleArtActivity.py:185 TurtleArtActivity.py:591 TurtleArtActivity.py:634
-#: TurtleArtActivity.py:772
+#: TurtleArtActivity.py:219 TurtleArtActivity.py:643 TurtleArtActivity.py:685
+#: TurtleArtActivity.py:829 TurtleArtActivity.py:856
 msgid "Save snapshot"
 msgstr "எடுத்த மாதிறியை சேமிக்கவும்"
 
-#: TurtleArtActivity.py:226 TurtleArtActivity.py:569 TurtleArtActivity.py:708
-#: turtleblocks.py:374
+#: TurtleArtActivity.py:260 TurtleArtActivity.py:616 TurtleArtActivity.py:759
+#: turtleblocks.py:378
 msgid "Turn off hover help"
 msgstr ""
 
-#: TurtleArtActivity.py:232 turtleblocks.py:376
+#: TurtleArtActivity.py:266 turtleblocks.py:380
 msgid "Turn on hover help"
 msgstr ""
 
-#: TurtleArtActivity.py:240 turtleblocks.py:386
+#: TurtleArtActivity.py:274 turtleblocks.py:390
 msgid "Show palette"
 msgstr "நிறப்பட்டையை காட்டு"
 
-#: TurtleArtActivity.py:246 TurtleArtActivity.py:798 turtleblocks.py:388
+#: TurtleArtActivity.py:280 TurtleArtActivity.py:882 turtleblocks.py:392
 msgid "Hide palette"
 msgstr "நிறப்பட்டையை மறை"
 
-#: TurtleArtActivity.py:400
+#: TurtleArtActivity.py:447
 msgid "Rescale coordinates down"
 msgstr "கீழ் நோக்கிய இணைப்புள்ளிகளை மறுஅளவீடவும்"
 
-#: TurtleArtActivity.py:404 TurtleArtActivity.py:561 TurtleArtActivity.py:704
+#: TurtleArtActivity.py:451 TurtleArtActivity.py:608 TurtleArtActivity.py:755
 msgid "Rescale coordinates up"
 msgstr "மேழ் நோக்கிய இணைப்புள்ளிகளை மறுஅளவீடவும்"
 
-#: TurtleArtActivity.py:494 TurtleArtActivity.py:530 TurtleArtActivity.py:626
-#: TurtleArtActivity.py:679 turtleblocks.py:383
+#: TurtleArtActivity.py:541 TurtleArtActivity.py:577 TurtleArtActivity.py:677
+#: TurtleArtActivity.py:730 turtleblocks.py:387
 msgid "Edit"
 msgstr "திருத்து"
 
-#: TurtleArtActivity.py:499 TurtleArtActivity.py:528 TurtleArtActivity.py:627
-#: TurtleArtActivity.py:696 turtleblocks.py:378
+#: TurtleArtActivity.py:546 TurtleArtActivity.py:575 TurtleArtActivity.py:678
+#: TurtleArtActivity.py:747 turtleblocks.py:382
 msgid "View"
 msgstr "பார்"
 
-#: TurtleArtActivity.py:526 TurtleArtActivity.py:628
+#: TurtleArtActivity.py:573 TurtleArtActivity.py:679
 msgid "Project"
 msgstr "செயற்றிட்டம்"
 
-#: TurtleArtActivity.py:532 TurtleArtActivity.py:625 TurtleArtActivity.py:654
-#: TurtleArtActivity.py:656 TurtleArtActivity.py:741
+#: TurtleArtActivity.py:579 TurtleArtActivity.py:676 TurtleArtActivity.py:705
+#: TurtleArtActivity.py:707 TurtleArtActivity.py:815
 msgid "Save/Load"
 msgstr ""
 
-#: TurtleArtActivity.py:540 TurtleArtActivity.py:680 turtleblocks.py:381
+#: TurtleArtActivity.py:587 TurtleArtActivity.py:731 turtleblocks.py:385
 msgid "Copy"
 msgstr "பிரதி செய்"
 
-#: TurtleArtActivity.py:542 TurtleArtActivity.py:681 turtleblocks.py:382
+#: TurtleArtActivity.py:589 TurtleArtActivity.py:732 turtleblocks.py:386
 msgid "Paste"
 msgstr "ஒட்டு"
 
-#: TurtleArtActivity.py:544
+#: TurtleArtActivity.py:591
 #, fuzzy
 msgid "Restore blocks from trash"
 msgstr "குப்பையிலிருந்து அனைத்து தொகுதிகளையும் திரும்பச்சேமி"
 
-#: TurtleArtActivity.py:547 TurtleArtActivity.py:697
+#: TurtleArtActivity.py:594 TurtleArtActivity.py:748
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
 msgid "Fullscreen"
 msgstr "முழுத்திரை"
 
-#: TurtleArtActivity.py:549 TurtleArtActivity.py:698 turtleblocks.py:362
+#: TurtleArtActivity.py:596 TurtleArtActivity.py:749 turtleblocks.py:366
 msgid "Cartesian coordinates"
 msgstr "கார்டீஷியன் இணைப்புள்ளிகள்"
 
-#: TurtleArtActivity.py:551 TurtleArtActivity.py:700 turtleblocks.py:364
+#: TurtleArtActivity.py:598 TurtleArtActivity.py:751 turtleblocks.py:368
 msgid "Polar coordinates"
 msgstr "போலார் இணைப்புள்ளிகள்"
 
-#: TurtleArtActivity.py:554 TurtleArtActivity.py:702
+#: TurtleArtActivity.py:601 TurtleArtActivity.py:753
 msgid "Metric coordinates"
 msgstr "அளவியல் இணைப்புள்ளிகள்"
 
-#: TurtleArtActivity.py:564 TurtleArtActivity.py:706 turtleblocks.py:368
+#: TurtleArtActivity.py:611 TurtleArtActivity.py:757 turtleblocks.py:372
 msgid "Grow blocks"
 msgstr "தொகுதியை வளர்"
 
-#: TurtleArtActivity.py:566 TurtleArtActivity.py:707 turtleblocks.py:370
+#: TurtleArtActivity.py:613 TurtleArtActivity.py:758 turtleblocks.py:374
 msgid "Shrink blocks"
 msgstr "தொகுதியை சுருக்கு"
 
-#: TurtleArtActivity.py:595 TurtleArtActivity.py:635
+#: TurtleArtActivity.py:630 TurtleArtActivity.py:647 TurtleArtActivity.py:686
+#: TurtleArtActivity.py:832
 msgid "Load example"
 msgstr "உதாரணத்தை ஏற்று"
 
-#: TurtleArtActivity.py:629 TurtleArtActivity.py:804 turtleblocks.py:395
+#: TurtleArtActivity.py:680 TurtleArtActivity.py:888 turtleblocks.py:399
 msgid "Clean"
 msgstr "சுத்தமக்கு"
 
-#: TurtleArtActivity.py:630 TurtleArtActivity.py:806 turtleblocks.py:396
+#: TurtleArtActivity.py:681 TurtleArtActivity.py:890 turtleblocks.py:400
 msgid "Run"
 msgstr "இயக்கு"
 
-#: TurtleArtActivity.py:631 TurtleArtActivity.py:808 turtleblocks.py:397
+#: TurtleArtActivity.py:682 TurtleArtActivity.py:892 turtleblocks.py:401
 msgid "Step"
 msgstr "படி"
 
-#: TurtleArtActivity.py:636 util/helpbutton.py:45
+#: TurtleArtActivity.py:687 turtleblocks.py:408 util/helpbutton.py:45
 msgid "Help"
 msgstr "உதவி"
 
-#: TurtleArtActivity.py:637 turtleblocks.py:399
+#: TurtleArtActivity.py:688 turtleblocks.py:403
 msgid "Stop"
 msgstr "நிறுத்து"
 
-#: TurtleArtActivity.py:659 TurtleArtActivity.py:752 TurtleArtActivity.py:774
+#: TurtleArtActivity.py:710 TurtleArtActivity.py:836 TurtleArtActivity.py:858
 msgid "Load project"
 msgstr ""
 
-#: TurtleArtActivity.py:662 TurtleArtActivity.py:757 TurtleArtActivity.py:779
+#: TurtleArtActivity.py:713 TurtleArtActivity.py:841 TurtleArtActivity.py:863
 msgid "Load plugin"
 msgstr ""
 
-#: TurtleArtActivity.py:663 TurtleArtActivity.py:760 TurtleArtActivity.py:782
+#: TurtleArtActivity.py:714 TurtleArtActivity.py:844 TurtleArtActivity.py:866
 msgid "Load Python block"
 msgstr "பைத்தான் அடைப்பை ஏற்று"
 
-#: TurtleArtActivity.py:736
+#: TurtleArtActivity.py:766
+msgid "Palettes"
+msgstr ""
+
+#: TurtleArtActivity.py:810
 msgid "Sharing blocks disabled"
 msgstr ""
 
-#: TurtleArtActivity.py:799
+#: TurtleArtActivity.py:883
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
-#: TurtleArtActivity.py:804
+#: TurtleArtActivity.py:888
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
-#: TurtleArtActivity.py:806
+#: TurtleArtActivity.py:890
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
-#: TurtleArtActivity.py:808
+#: TurtleArtActivity.py:892
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
-#: TurtleArtActivity.py:811
+#: TurtleArtActivity.py:895
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
-#: TurtleArtActivity.py:967 TurtleArtActivity.py:972 TurtleArtActivity.py:1039
+#: TurtleArtActivity.py:1049 TurtleArtActivity.py:1054
+#: TurtleArtActivity.py:1121
 msgid "Plugin could not be installed."
 msgstr ""
 
-#: TurtleArtActivity.py:1035
+#: TurtleArtActivity.py:1117
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr ""
 
-#: TurtleArtActivity.py:1053
+#: TurtleArtActivity.py:1135
 #, python-format
 msgid "Plugin %s already installed."
 msgstr ""
 
-#: TurtleArtActivity.py:1054
+#: TurtleArtActivity.py:1136
 #, python-format
 msgid "Do you want to reinstall %s?"
 msgstr ""
@@ -1035,15 +1057,21 @@ msgstr "பதிவு"
 msgid "Colors"
 msgstr "நிறங்கள்"
 
-#: gnome_plugins/uploader_plugin.py:64
-msgid "Upload to Web"
-msgstr "இணையத்திற்கு எற்று"
-
-#: gnome_plugins/uploader_plugin.py:66
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
 msgid "Upload"
 msgstr "பதிவேற்று"
 
-#: gnome_plugins/uploader_plugin.py:83
+#: gnome_plugins/fb_plugin.py:87
+msgid "Facebook wall post"
+msgstr ""
+
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "இணையத்திற்கு எற்று"
+
+#: gnome_plugins/uploader_plugin.py:90
 msgid ""
 "You must have an account at http://turtleartsite.sugarlabs.org to upload "
 "your project."
@@ -1051,35 +1079,35 @@ msgstr ""
 "திட்டங்களை http://turtleartsite.sugarlabs.org இந்த தளத்தில் எற்ற அதில் "
 "கட்டாயம் ஒரு கணக்கு வைத்திருக்க வேண்டும்."
 
-#: gnome_plugins/uploader_plugin.py:92
+#: gnome_plugins/uploader_plugin.py:99
 msgid "Username:"
 msgstr "பயனர்பெயர்:"
 
-#: gnome_plugins/uploader_plugin.py:102
+#: gnome_plugins/uploader_plugin.py:109
 msgid "Password:"
 msgstr "கடவுச்சொல்:"
 
-#: gnome_plugins/uploader_plugin.py:113
+#: gnome_plugins/uploader_plugin.py:120
 msgid "Title:"
 msgstr "தலைப்பு:"
 
-#: gnome_plugins/uploader_plugin.py:123
+#: gnome_plugins/uploader_plugin.py:130
 msgid "Description:"
 msgstr "விரிவாக்கம்:"
 
-#: gnome_plugins/uploader_plugin.py:133
+#: gnome_plugins/uploader_plugin.py:140
 msgid "Submit to Web"
 msgstr "இணையதடதிற்கு அளிக்கவும்"
 
-#: gnome_plugins/uploader_plugin.py:137
+#: gnome_plugins/uploader_plugin.py:144
 msgid "Cancel"
 msgstr "இரத்துசெய்"
 
-#: gnome_plugins/uploader_plugin.py:159
+#: gnome_plugins/uploader_plugin.py:166
 msgid "Login failed"
 msgstr "நுழைவு தோழ்வியுற்றது"
 
-#: gnome_plugins/uploader_plugin.py:196
+#: gnome_plugins/uploader_plugin.py:203
 msgid "Failed to upload!"
 msgstr "எற்றம் தோழ்வியில்!"
 
@@ -1134,29 +1162,29 @@ msgstr "ஒலி வாங்கியின் உள்ளீட்டு ச
 
 #: plugins/audio_sensors/audio_sensors.py:151
 #: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:178
-#: plugins/audio_sensors/audio_sensors.py:192
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
 msgid "resistance"
 msgstr "எதிர்ப்பு"
 
 #: plugins/audio_sensors/audio_sensors.py:152
 #: plugins/audio_sensors/audio_sensors.py:166
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
+#: plugins/audio_sensors/audio_sensors.py:180
+#: plugins/audio_sensors/audio_sensors.py:194
 msgid "microphone input resistance"
 msgstr "ஒலிவாங்கியில் உள்ளீட்டு எதிர்ப்பு"
 
 #: plugins/audio_sensors/audio_sensors.py:157
 #: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:184
-#: plugins/audio_sensors/audio_sensors.py:198
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
 msgid "voltage"
 msgstr "மின்னழுத்தம்"
 
 #: plugins/audio_sensors/audio_sensors.py:158
 #: plugins/audio_sensors/audio_sensors.py:172
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
+#: plugins/audio_sensors/audio_sensors.py:186
+#: plugins/audio_sensors/audio_sensors.py:200
 msgid "microphone input voltage"
 msgstr "ஒலிவாங்கியில் உள்ளீடு சத்த மின்னளவு"
 
@@ -1777,6 +1805,29 @@ msgstr "அளிக்கை 1x2"
 msgid "presentation 2x2"
 msgstr "அளிக்கை 2x2"
 
+#: pysamples/brain.py:43
+msgid "Please install the Speak Activity and try again."
+msgstr ""
+
+#: pysamples/brain.py:54
+msgid "Spanish"
+msgstr ""
+
+#: pysamples/brain.py:58 pysamples/brain.py:72 pysamples/brain.py:74
+#: pysamples/brain.py:80
+msgid "English"
+msgstr ""
+
+#: pysamples/brain.py:91
+msgid "Sorry, I can't understand what you are asking about."
+msgstr ""
+
+#: pysamples/brain.py:100
+msgid ""
+"Sorry, there is no free memory to load my brain. Close other activities and "
+"try once more."
+msgstr ""
+
 #: pysamples/forward_push.py:45
 msgid "push destination rgb value to heap"
 msgstr ""
@@ -1805,78 +1856,82 @@ msgstr "ப வளைவு"
 msgid "make a uturn"
 msgstr "ப வளைவுவை உருவாக்கு"
 
-#: turtleblocks.py:81
+#: turtleblocks.py:86
 msgid "usage is"
 msgstr "பயன்பாடு என்பது"
 
-#: turtleblocks.py:234
+#: turtleblocks.py:240
 msgid "No option action:"
 msgstr "செயல் என்ற தேர்வில்லை:"
 
-#: turtleblocks.py:249
+#: turtleblocks.py:255
 msgid "File not found"
 msgstr "கோப்பை கண்டுபிடிக்கவில்லை"
 
-#: turtleblocks.py:273
+#: turtleblocks.py:279
 #, python-format
 msgid "Configuration directory not writable: %s"
 msgstr "கட்டமைப்புகளின் அடைவுக்கு எழுதும் உறிமை இல்லை: %s"
 
-#: turtleblocks.py:350
+#: turtleblocks.py:354
 msgid "New"
 msgstr "புதிய"
 
-#: turtleblocks.py:351
+#: turtleblocks.py:355
 msgid "Open"
 msgstr "திற"
 
-#: turtleblocks.py:352
+#: turtleblocks.py:356
 msgid "Save"
 msgstr "சேமி"
 
-#: turtleblocks.py:353
+#: turtleblocks.py:357
 msgid "Save as"
 msgstr "மாற்றி சேமி"
 
-#: turtleblocks.py:358
+#: turtleblocks.py:362
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: turtleblocks.py:359
+#: turtleblocks.py:363
 msgid "File"
 msgstr "கோப்பு"
 
-#: turtleblocks.py:366
+#: turtleblocks.py:370
 msgid "Rescale coordinates"
 msgstr "இணைப்புள்ளிகளை மறு அளவீடு"
 
-#: turtleblocks.py:372
+#: turtleblocks.py:376
 msgid "Reset block size"
 msgstr "பட்டை அளவை மீழச்செய்"
 
-#: turtleblocks.py:390
+#: turtleblocks.py:394
 msgid "Show/hide blocks"
 msgstr "பிரிவுகளை காட்டு/மறை"
 
-#: turtleblocks.py:392
+#: turtleblocks.py:396
 msgid "Tools"
 msgstr "கருவிகள்"
 
-#: turtleblocks.py:398
+#: turtleblocks.py:402
 msgid "Debug"
 msgstr "வலு கண்டுபிடி"
 
-#: turtleblocks.py:400
+#: turtleblocks.py:404
 msgid "Turtle"
 msgstr "ஆமை"
 
-#: turtleblocks.py:434
+#: turtleblocks.py:407
+msgid "About..."
+msgstr ""
+
+#: turtleblocks.py:447
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr ""
 "நீங்கள் வைத்திருக்கும் வேலை சேமிக்கப்படாதது. வெளியேறும் முன் சேமிக்க "
 "விரும்புகிறீர்களா?"
 
-#: turtleblocks.py:435
+#: turtleblocks.py:448
 msgid "Save project?"
 msgstr "திட்டத்தை சேமிக்கவா?"
 
