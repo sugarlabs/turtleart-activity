@@ -805,6 +805,8 @@ class TurtleArtWindow():
         for blk in self.palettes[n]:
             if blk.get_visibility():
                 blk.spr.move_relative((dx, dy))
+        self.palette_button[self.orientation].set_layer(TOP_LAYER)
+        self.palette_button[self.orientation + 3].set_layer(TOP_LAYER)
 
     def show_toolbar_palette(self, n, init_only=False, regenerate=False,
                              show=True):
