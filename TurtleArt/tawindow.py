@@ -2183,8 +2183,8 @@ before making changes to your Turtle Blocks program'))
             dtype, dragx, dragy = self.drag_turtle
             (sx, sy) = self.selected_turtle.get_xy()
             # self.canvas.set_turtle(self.selected_turtle.get_name())
+            self.update_counter += 1
             if dtype == 'move':
-                self.update_counter += 1
                 dx = x - dragx - sx + self.selected_turtle.spr.rect.width / 2
                 dy = y - dragy - sy + self.selected_turtle.spr.rect.height / 2
                 self.selected_turtle.spr.set_layer(TOP_LAYER)
@@ -2196,7 +2196,7 @@ before making changes to your Turtle Blocks program'))
                     self.canvas.setpen(True)
                 else:
                     self.canvas.setxy(tx, ty, share=False)
-                if self.update_counter % 10:
+                if self.update_counter % 5:
                     self.lc.update_label_value(
                         'xcor', self.canvas.xcor / self.coord_scale)
                     self.lc.update_label_value(
@@ -2206,11 +2206,10 @@ before making changes to your Turtle Blocks program'))
                 dy = y - sy - self.selected_turtle.spr.rect.height / 2
                 self.canvas.seth(int(dragx + atan2(dy, dx) / DEGTOR + 5) / \
                                      10 * 10, share=False)
-                if self.update_counter % 10:
+                if self.update_counter % 5:
                     self.lc.update_label_value('heading', self.canvas.heading)
-            if self.update_counter % 10:
+            if self.update_counter % 20:
                 self.display_coordinates()
-                self.update_counter = 0
             self.turtle_movement_to_share = self.selected_turtle
 
         # If we are hoving, show popup help.
@@ -2388,7 +2387,6 @@ before making changes to your Turtle Blocks program'))
             self.selected_turtle = None
             if self.active_turtle is None:
                 self.canvas.set_turtle(self.default_turtle_name)
-            self._coordinate_counter = 0
             self.display_coordinates()
             return
 
@@ -3884,6 +3882,7 @@ may not terminate.', False)
                 self.parent.set_title(
                     formatting % (_('Turtle Art'), _('xcor'), x, _('ycor'), y,
                                   _('heading'), h))
+        self.update_counter = 0
 
     def showlabel(self, shp, label=''):
         ''' Display a message on a status block '''
