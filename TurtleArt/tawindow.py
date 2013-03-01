@@ -3873,7 +3873,7 @@ may not terminate.', False)
                     formatting = '(%d, %d) %d'
                 else:
                     formatting = '(%0.2f, %0.2f) %0.2f'
-                    self.activity.coordinates_label.set_text(
+                self.activity.coordinates_label.set_text(
                         formatting % (x, y, h))
                 self.activity.coordinates_label.show()
             elif self.interactive_mode:
