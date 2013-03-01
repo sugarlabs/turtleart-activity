@@ -126,22 +126,7 @@ class TurtleArtActivity(activity.Activity):
 
         # If there are too many palettes to fit, put them in a
         # scrolling window
-        if self.palette_toolbar_button.is_expanded():
-            palette_was_expanded = True
-            self.palette_toolbar_button.set_expanded(False)
-        else:
-            palette_was_expanded = False
-        self._toolbox.toolbar.remove(self.palette_toolbar_button)
-        self._toolbox.toolbar.remove(self.overflow_palette_button)
-        if gtk.gdk.screen_width() / (len(self.palette_buttons) + 2) \
-                < style.GRID_CELL_SIZE:
-            self._toolbox.toolbar.insert(self.overflow_palette_button, 3)
-            self.overflow_palette_button.show()
-        else:
-            self._toolbox.toolbar.insert(self.palette_toolbar_button, 3)
-            self.palette_toolbar_button.show()
-            if palette_was_expanded:
-                self.palette_toolbar_button.set_expanded(True)
+        self._setup_palette_toolbar()
 
         if self.keep_button in self._toolbox.toolbar:
             self._toolbox.toolbar.remove(self.extras_separator)
@@ -171,14 +156,6 @@ class TurtleArtActivity(activity.Activity):
             self._toolbox.toolbar.insert(self.stop_separator, -1)
             self.stop_separator.show()
             self._toolbox.toolbar.insert(self.stop_button, -1)
-
-        # Refresh the buttons to the right of our intervention
-        self.eraser_button.show()
-        self.run_button.show()
-        self.step_button.show()
-        self.stop_turtle_button.show()
-        self._help_button.show()
-        self.stop_button.show()
 
         self._toolbox.show_all()
 
@@ -822,19 +799,6 @@ class TurtleArtActivity(activity.Activity):
                 width = int(overflow * (style.GRID_CELL_SIZE + 2))
                 height = style.GRID_CELL_SIZE
 
-            # Overflow palette
-            self.overflow_palette_button = self._add_button(
-                'palette', _('Palettes'), self._overflow_palette_cb,
-                None)
-            self._overflow_palette = self.overflow_palette_button.get_palette()
-            button_box = gtk.HBox()
-            button_box.set_homogeneous(False)
-            button_sw = gtk.ScrolledWindow()
-            button_sw.set_size_request(width, height)
-            button_sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_NEVER)
-            button_sw.add_with_viewport(button_box)
-            button_sw.show()
-
             if len(self.palette_buttons) == 0:
                 self._generate_palette_buttons()
                 self._overflow_palette = \
@@ -849,6 +813,9 @@ class TurtleArtActivity(activity.Activity):
                 for button in self.palette_buttons:
                     if button in self._palette_toolbar:
                         self._palette_toolbar.remove(button)
+                for button in self._overflow_buttons:
+                    if button in self._overflow_box:
+                        self._overflow_box.remove(button)
                 if self._overflow_palette_button in self._palette_toolbar:
                     self._palette_toolbar.remove(self._overflow_palette_button)
 
@@ -884,7 +851,8 @@ class TurtleArtActivity(activity.Activity):
             self.palette_buttons.append(self._radio_button_factory(
                     palette_name + 'off',
                     None,
-                    self.do_palette_buttons_cb, i,
+                    self.do_palette_buttons_cb,
+                    i,
                     help_strings[palette_name],
                     palette_group))
             self._overflow_buttons.append(self._add_button(
@@ -897,18 +865,10 @@ class TurtleArtActivity(activity.Activity):
         self._overflow_palette_button = self._radio_button_factory(
                 'overflow',
                 None,
-                self._overflow_palette_cb, None,
+                self._overflow_palette_cb,
+                None,
                 _('Palettes'),
                 palette_group)
-
-    def _overflow_palette_cb(self, button):
-        if self._palette_palette:
-            if not self._palette_palette.is_up():
-                self._palette_palette.popup(immediate=True,
-                                    state=self._palette_palette.SECONDARY)
-            else:
-                self._palette_palette.popdown(immediate=True)
-            return
 
     def _overflow_palette_cb(self, button):
         if self._overflow_palette:
