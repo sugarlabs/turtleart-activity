@@ -2382,6 +2382,7 @@ before making changes to your Turtle Blocks program'))
             if self.active_turtle is None:
                 self.canvas.set_turtle(self.default_turtle_name)
             self._coordinate_counter = 0
+            self.display_coordinates()
             return
 
         # If we don't have a group of blocks, then there is nothing to do.
@@ -3860,17 +3861,19 @@ may not terminate.', False)
             x = round_int(float(self.canvas.xcor) / self.coord_scale)
             y = round_int(float(self.canvas.ycor) / self.coord_scale)
             h = round_int(self.canvas.heading)
-            if int(x) == x and int(y) == y and int(h) == h:
-                formatting = '%s: %d %s: %d %s: %d'
-            else:
-                formatting = '%s: %0.2f %s: %0.2f %s: %0.2f'
             if self.running_sugar:
-                self.activity.coordinates_label.set_text(
-                    formatting % (_('xcor'), x, _('ycor'), y,
-                                              _('heading'), h))
+                if int(x) == x and int(y) == y and int(h) == h:
+                    formatting = '(%d, %d) %d'
+                else:
+                    formatting = '(%0.2f, %0.2f) %0.2f'
+                    self.activity.coordinates_label.set_text(
+                        formatting % (x, y, h))
                 self.activity.coordinates_label.show()
             elif self.interactive_mode:
-                formatting = '%s — ' + formatting
+                if int(x) == x and int(y) == y and int(h) == h:
+                    formatting = '%s — %s: %d %s: %d %s: %d'
+                else:
+                    formatting = '%s — %s: %0.2f %s: %0.2f %s: %0.2f'
                 self.parent.set_title(
                     formatting % (_('Turtle Art'), _('xcor'), x, _('ycor'), y,
                                   _('heading'), h))

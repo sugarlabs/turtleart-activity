@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #Copyright (c) 2007, Playful Invention Company
 #Copyright (c) 2008-13, Walter Bender
 #Copyright (c) 2009-10 Raul Gutierrez Segales
@@ -630,8 +631,7 @@ class TurtleArtActivity(activity.Activity):
             self._add_button('view-metric', _('Metric coordinates'),
                              self.do_metric_cb, view_toolbar)
         self._add_separator(view_toolbar, visible=False)
-        self.coordinates_label = self._add_label(_('xcor') + ' = 0 ' + \
-            _('ycor') + ' = 0 ' + _('heading') + ' = 0', view_toolbar)
+        self.coordinates_label = self._add_label('(0, 0) 0', view_toolbar)
         self._add_separator(view_toolbar, expand=True, visible=False)
         self.rescale_button = self._add_button(
             'expand-coordinates', _('Rescale coordinates up'),
