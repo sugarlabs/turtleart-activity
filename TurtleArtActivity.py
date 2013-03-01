@@ -135,6 +135,7 @@ class TurtleArtActivity(activity.Activity):
             self._toolbox.toolbar.remove(self.samples_button)
             self._toolbox.toolbar.remove(self.stop_separator)
         self._toolbox.toolbar.remove(self.stop_button)
+        self._view_toolbar.remove(self._coordinates_toolitem)
 
         if gtk.gdk.screen_width() / 14 < style.GRID_CELL_SIZE:
             self.keep_button2.show()
@@ -157,6 +158,7 @@ class TurtleArtActivity(activity.Activity):
             self._toolbox.toolbar.insert(self.stop_separator, -1)
             self.stop_separator.show()
             self._toolbox.toolbar.insert(self.stop_button, -1)
+            self._view_toolbar.insert(self._coordinates_toolitem, -1)
 
         self._toolbox.show_all()
 
@@ -572,9 +574,9 @@ class TurtleArtActivity(activity.Activity):
                                                 page=edit_toolbar,
                                                 icon_name='toolbar-edit')
 
-            view_toolbar = gtk.Toolbar()
+            self._view_toolbar = gtk.Toolbar()
             self.view_toolbar_button = ToolbarButton(label=_('View'),
-                                                page=view_toolbar,
+                                                page=self._view_toolbar,
                                                 icon_name='toolbar-view')
             self._palette_toolbar = gtk.Toolbar()
             self.palette_toolbar_button = ToolbarButton(
@@ -601,8 +603,8 @@ class TurtleArtActivity(activity.Activity):
 
             self._project_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Project'), self._project_toolbar)
-            view_toolbar = gtk.Toolbar()
-            self._toolbox.add_toolbar(_('View'), view_toolbar)
+            self._view_toolbar = gtk.Toolbar()
+            self._toolbox.add_toolbar(_('View'), self._view_toolbar)
             edit_toolbar = gtk.Toolbar()
             self._toolbox.add_toolbar(_('Edit'), edit_toolbar)
             journal_toolbar = gtk.Toolbar()
@@ -622,31 +624,37 @@ class TurtleArtActivity(activity.Activity):
                          self._undo_cb, edit_toolbar)
 
         self._add_button('view-fullscreen', _('Fullscreen'),
-                         self.do_fullscreen_cb, view_toolbar, '<Alt>Return')
+                         self.do_fullscreen_cb, self._view_toolbar,
+                         '<Alt>Return')
         self._add_button('view-Cartesian', _('Cartesian coordinates'),
-                         self.do_cartesian_cb, view_toolbar)
+                         self.do_cartesian_cb, self._view_toolbar)
         self._add_button('view-polar', _('Polar coordinates'),
-                         self.do_polar_cb, view_toolbar)
+                         self.do_polar_cb, self._view_toolbar)
         if get_hardware() in [XO1, XO15, XO175, XO4]:
             self._add_button('view-metric', _('Metric coordinates'),
-                             self.do_metric_cb, view_toolbar)
-        self._add_separator(view_toolbar, visible=False)
-        self.coordinates_label = self._add_label('(0, 0) 0', view_toolbar)
-        self._add_separator(view_toolbar, expand=True, visible=False)
+                             self.do_metric_cb, self._view_toolbar)
         self.rescale_button = self._add_button(
             'expand-coordinates', _('Rescale coordinates up'),
-            self.do_rescale_cb, view_toolbar)
+            self.do_rescale_cb, self._view_toolbar)
         self.resize_up_button = self._add_button(
-            'resize+', _('Grow blocks'), self.do_grow_blocks_cb, view_toolbar)
+            'resize+', _('Grow blocks'), self.do_grow_blocks_cb,
+            self._view_toolbar)
         self.resize_down_button = self._add_button(
             'resize-', _('Shrink blocks'), self.do_shrink_blocks_cb,
-            view_toolbar)
+            self._view_toolbar)
         self._hover_help_toggle = self._add_button(
             'help-off', _('Turn off hover help'), self._do_hover_help_toggle,
-            view_toolbar)
+            self._view_toolbar)
+        self._add_separator(self._view_toolbar, visible=False)
+        self.coordinates_label = gtk.Label('(0, 0) 0')
+        self.coordinates_label.show()
+        self._coordinates_toolitem = gtk.ToolItem()
+        self._coordinates_toolitem.add(self.coordinates_label)
+        self._coordinates_toolitem.show()
+        self._view_toolbar.insert(self._coordinates_toolitem, -1)
 
         edit_toolbar.show()
-        view_toolbar.show()
+        self._view_toolbar.show()
         self._toolbox.show()
 
         if not self.has_toolbarbox:

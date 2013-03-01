@@ -137,6 +137,7 @@ class TurtleArtWindow():
         self.mouse_flag = 0
         self.mouse_x = 0
         self.mouse_y = 0
+        self.update_counter = 0
         self.running_blocks = False
 
         try:
@@ -1271,8 +1272,7 @@ before making changes to your Turtle Blocks program'))
         self.dragging_canvas[1] = x
         self.dragging_canvas[2] = y
         if spr is None:
-            if not self.running_blocks and not self.hw in (
-                XO1, XO15, XO175, XO30):
+            if not self.running_blocks and not self.hw in [XO1]:
                 self.dragging_canvas[0] = True
                 self.dragging_counter = 0
                 self.dragging_dx = 0
@@ -1459,6 +1459,7 @@ before making changes to your Turtle Blocks program'))
             self.selected_turtle = t
             self.canvas.set_turtle(self.turtles.get_turtle_key(t))
             self._turtle_pressed(x, y)
+            self.update_counter = 0
             return True
         return False
 
@@ -2183,6 +2184,7 @@ before making changes to your Turtle Blocks program'))
             (sx, sy) = self.selected_turtle.get_xy()
             # self.canvas.set_turtle(self.selected_turtle.get_name())
             if dtype == 'move':
+                self.update_counter += 1
                 dx = x - dragx - sx + self.selected_turtle.spr.rect.width / 2
                 dy = y - dragy - sy + self.selected_turtle.spr.rect.height / 2
                 self.selected_turtle.spr.set_layer(TOP_LAYER)
@@ -2194,16 +2196,21 @@ before making changes to your Turtle Blocks program'))
                     self.canvas.setpen(True)
                 else:
                     self.canvas.setxy(tx, ty, share=False)
-                self.lc.update_label_value('xcor',
-                                           self.canvas.xcor / self.coord_scale)
-                self.lc.update_label_value('ycor',
-                                           self.canvas.ycor / self.coord_scale)
+                if self.update_counter % 10:
+                    self.lc.update_label_value(
+                        'xcor', self.canvas.xcor / self.coord_scale)
+                    self.lc.update_label_value(
+                        'ycor', self.canvas.ycor / self.coord_scale)
             else:
                 dx = x - sx - self.selected_turtle.spr.rect.width / 2
                 dy = y - sy - self.selected_turtle.spr.rect.height / 2
                 self.canvas.seth(int(dragx + atan2(dy, dx) / DEGTOR + 5) / \
                                      10 * 10, share=False)
-                self.lc.update_label_value('heading', self.canvas.heading)
+                if self.update_counter % 10:
+                    self.lc.update_label_value('heading', self.canvas.heading)
+            if self.update_counter % 10:
+                self.display_coordinates()
+                self.update_counter = 0
             self.turtle_movement_to_share = self.selected_turtle
 
         # If we are hoving, show popup help.
