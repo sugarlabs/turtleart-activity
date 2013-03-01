@@ -792,7 +792,6 @@ class TurtleArtActivity(activity.Activity):
         if self.has_toolbarbox:
             max_palettes = int(gtk.gdk.screen_width() / style.GRID_CELL_SIZE)
             max_palettes -= 2  # the margins
-            max_palettes = 6
             if len(palette_names) > max_palettes:
                 max_palettes -= 1  # Make room for the palette button
             overflow = len(palette_names) - max_palettes
