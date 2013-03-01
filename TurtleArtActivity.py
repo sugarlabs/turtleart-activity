@@ -261,6 +261,10 @@ class TurtleArtActivity(activity.Activity):
 
     def do_palette_buttons_cb(self, button, i):
         ''' Palette selector buttons '''
+        if hasattr(button, 'get_active') and not button.get_active():
+            return
+        if self._overflow_palette.is_up():
+            self._overflow_palette.popdown(immediate=True)
         if self.tw.selected_palette is not None:
             if not self.has_toolbarbox:
                 self.palette_buttons[self.tw.selected_palette].set_icon(
@@ -788,6 +792,7 @@ class TurtleArtActivity(activity.Activity):
         if self.has_toolbarbox:
             max_palettes = int(gtk.gdk.screen_width() / style.GRID_CELL_SIZE)
             max_palettes -= 2  # the margins
+            max_palettes = 6
             if len(palette_names) > max_palettes:
                 max_palettes -= 1  # Make room for the palette button
             overflow = len(palette_names) - max_palettes
@@ -871,6 +876,7 @@ class TurtleArtActivity(activity.Activity):
                 palette_group)
 
     def _overflow_palette_cb(self, button):
+        _logger.debug('overflow palette cb')
         if self._overflow_palette:
             if not self._overflow_palette.is_up():
                 self._overflow_palette.popup(immediate=True,
