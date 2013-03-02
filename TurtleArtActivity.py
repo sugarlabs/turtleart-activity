@@ -201,13 +201,12 @@ class TurtleArtActivity(activity.Activity):
 
     def do_load_ta_plugin_cb(self, button):
         ''' Load a plugin from the Journal. '''
-        # FIXME: we are looking for tar files
         # While the file is loading, use the watch cursor
         if hasattr(self, 'get_window'):
-            _logger.debug('setting watch cursor')
             if hasattr(self.get_window(), 'get_cursor'):
                 self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        # FIXME: we are looking for tar files
         gobject.idle_add(chooser, self, '', self._load_ta_plugin)
 
     def _load_ta_plugin(self, dsobject):
@@ -1179,10 +1178,9 @@ Plugin section of plugin.info file.')
                 self.tw.load_media_shapes()
                 for i, palette_name in enumerate(palette_name_list):
                     if create_palette[i]:
-                        _logger.debug('Creating plugin palette %s...' % (
-                                palette_name.strip()))
+                        _logger.debug('Creating plugin palette %s (%d)' % (
+                                palette_name.strip(), i))
                         j = len(self.palette_buttons)
-                        _logger.debug('radio button')
                         self.palette_buttons.append(
                             self._radio_button_factory(
                                 palette_name.strip() + 'off',
@@ -1191,7 +1189,6 @@ Plugin section of plugin.info file.')
                                 j - 1,
                                 help_strings[palette_name.strip()],
                                 self.palette_buttons[0]))
-                        _logger.debug('overflow button')
                         self._overflow_buttons.append(
                             self._add_button(
                                 palette_name.strip() + 'off',
@@ -1199,7 +1196,6 @@ Plugin section of plugin.info file.')
                                 self.do_palette_buttons_cb,
                                 None,
                                 arg=j - 1))
-                        _logger.debug('pack in box')
                         self._overflow_box.pack_start(
                             self._overflow_buttons[j - 1])
                         self.tw.palettes.insert(j - 1, [])
@@ -1210,9 +1206,11 @@ skipping insert')
                 # We need to change the index associated with the
                 # Trash Palette Button.
                 j = len(palette_names)
-                self.palette_buttons[j - 1].connect(
+                self.palette_buttons[palette_names.index(
+                        palette_name.strip())].connect(
                     'clicked', self.do_palette_buttons_cb, j - 1)
-                self._overflow_buttons[j - 1].connect(
+                self._overflow_buttons[palette_names.index(
+                        palette_name.strip())].connect(
                     'clicked', self.do_palette_buttons_cb, j - 1)
                 _logger.debug('reinitializing palette toolbar')
                 self._setup_palette_toolbar()
