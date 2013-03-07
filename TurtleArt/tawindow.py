@@ -3474,6 +3474,8 @@ may not terminate.', False)
             self.new_project()
         self.process_data(data_from_file(ta_file))
         self._loaded_project = ta_file
+        # Always start on the Turtle palette
+        self.show_toolbar_palette(palette_name_to_index('turtle'))
 
     def load_file_from_chooser(self, create_new_project=True):
         ''' Load a project from file chooser '''

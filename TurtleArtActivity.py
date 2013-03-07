@@ -1058,7 +1058,7 @@ class TurtleArtActivity(activity.Activity):
         self.hadj_value = self.sw.get_hadjustment().get_value()
         self.vadj_value = self.sw.get_vadjustment().get_value()
         if not self._defer_palette_move:
-            gobject.idle_add(self.adjust_palettes)
+            gobject.idle_add(self.adjust_palette)
 
     def _setup_canvas(self, canvas_window):
         ''' Initialize the turtle art canvas. '''
