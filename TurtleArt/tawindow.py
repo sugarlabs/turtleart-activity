@@ -80,6 +80,8 @@ if GST_AVAILABLE:
 MOTION_THRESHOLD = 6
 SNAP_THRESHOLD = 200
 NO_DOCK = (100, 100)  # Blocks cannot be docked
+BUTTON_SIZE = 32
+MARGIN = 5
 
 
 class TurtleArtWindow():
@@ -716,10 +718,8 @@ class TurtleArtWindow():
     def hide_palette(self):
         ''' Hide the palette. '''
         self._hide_toolbar_palette()
-        self.palette_button[self.orientation].hide()
-        self.palette_button[2].hide()
-        self.palette_button[3].hide()
-        self.palette_button[4].hide()
+        for button in self.palette_button:
+            button.hide()
         if not self.running_sugar or not self.activity.has_toolbarbox:
             self.toolbar_spr.hide()
         self.palette = False
@@ -793,20 +793,27 @@ class TurtleArtWindow():
         w, h = self.palette_sprs[n][self.orientation].get_dimensions()
         bx, by = self.palettes[n][0].spr.get_xy()
         if self.orientation == 0:
-            dx = w - self.width
+            if bx != BUTTON_SIZE:
+                dx = w - self.width
+            else:
+                dx = self.width - w
             dy = 0
-            if bx - x > 0:
-                dx *= -1
         else:
             dx = 0
-            dy = h - self.height + ICON_SIZE
-            if by - y > 0:
-                dy *= -1
+            if by != self.toolbar_offset + BUTTON_SIZE + MARGIN:
+                dy = h - self.height + ICON_SIZE
+            else:
+                dy = self.height - h - ICON_SIZE
         for blk in self.palettes[n]:
             if blk.get_visibility():
                 blk.spr.move_relative((dx, dy))
         self.palette_button[self.orientation].set_layer(TOP_LAYER)
-        self.palette_button[self.orientation + 3].set_layer(TOP_LAYER)
+        if dx < 0 or dy < 0:
+            self.palette_button[self.orientation + 5].set_layer(TOP_LAYER)
+            self.palette_button[self.orientation + 3].hide()
+        else:
+            self.palette_button[self.orientation + 5].hide()
+            self.palette_button[self.orientation + 3].set_layer(TOP_LAYER)
 
     def show_toolbar_palette(self, n, init_only=False, regenerate=False,
                              show=True):
@@ -916,17 +923,14 @@ class TurtleArtWindow():
 
     def _display_palette_shift_button(self, n):
         ''' Palettes too wide (or tall) for the screen get a shift button '''
+        for i in range(4):
+            self.palette_button[i + 3].hide()
         if self.palette_sprs[n][self.orientation].type == \
                 'category-shift-horizontal':
             self.palette_button[3].set_layer(CATEGORY_LAYER)
-            self.palette_button[4].hide()
         elif self.palette_sprs[n][self.orientation].type == \
                 'category-shift-vertical':
-            self.palette_button[3].hide()
             self.palette_button[4].set_layer(CATEGORY_LAYER)
-        else:
-            self.palette_button[3].hide()
-            self.palette_button[4].hide()
 
     def _create_the_selectors(self):
         ''' Create the palette selector buttons: only when running
@@ -1012,12 +1016,16 @@ class TurtleArtWindow():
         self.palette_button.append(Sprite(self.sprite_list, dims[0],
             self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
                         "%s/images/palettevshift.svg" % (self.path)))))
-        self.palette_button[3].name = _('shift')
-        self.palette_button[4].name = _('shift')
-        self.palette_button[3].type = 'palette'
-        self.palette_button[4].type = 'palette'
-        self.palette_button[3].hide()
-        self.palette_button[4].hide()
+        self.palette_button.append(Sprite(self.sprite_list, 0,
+            self.toolbar_offset + dims[1], svg_str_to_pixbuf(svg_from_file(
+                        "%s/images/palettehshift2.svg" % (self.path)))))
+        self.palette_button.append(Sprite(self.sprite_list, dims[0],
+            self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
+                        "%s/images/palettevshift2.svg" % (self.path)))))
+        for i in range(4):
+            self.palette_button[3 + i].name = _('shift')
+            self.palette_button[3 + i].type = 'palette'
+            self.palette_button[3 + i].hide()
 
     def _create_proto_blocks(self, n):
         ''' Create the protoblocks that will populate a palette. '''
@@ -1176,8 +1184,6 @@ class TurtleArtWindow():
 
     def _layout_palette(self, n, regenerate=False, show=True):
         ''' Layout prototypes in a palette. '''
-        BUTTON_SIZE = 32
-        MARGIN = 5
         if n is not None:
             if self.orientation == HORIZONTAL_PALETTE:
                 x, y = BUTTON_SIZE, self.toolbar_offset + MARGIN
@@ -1191,6 +1197,10 @@ class TurtleArtWindow():
                 if show:
                     self.palette_button[2].move(
                         (w - BUTTON_SIZE, self.toolbar_offset))
+                    self.palette_button[4].move(
+                        (BUTTON_SIZE, self.toolbar_offset))
+                    self.palette_button[6].move(
+                        (BUTTON_SIZE, self.toolbar_offset))
             else:
                 x, y = MARGIN, self.toolbar_offset + BUTTON_SIZE + MARGIN
                 x, y, max_h = self._vertical_layout(x, y, self.palettes[n])
@@ -1203,6 +1213,10 @@ class TurtleArtWindow():
                 if show:
                     self.palette_button[2].move((PALETTE_WIDTH - BUTTON_SIZE,
                                                  self.toolbar_offset))
+                    self.palette_button[3].move((0,
+                                                 self.toolbar_offset + BUTTON_SIZE))
+                    self.palette_button[5].move((0,
+                                                 self.toolbar_offset + BUTTON_SIZE))
             if show:
                 self.palette_button[2].save_xy = \
                     self.palette_button[2].get_xy()
