@@ -1,3 +1,13 @@
+174
+
+ENHANCEMENTS:
+* Always open Turtle Palette after loading new project
+* Make shift-palette icons directional
+* New translations
+
+BUG FIX:
+* Fix typo that prevented palette repositioning to work properly
+
 173
 
 ENHANCEMENTS:
