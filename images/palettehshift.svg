@@ -46,45 +46,24 @@
          offset="1" />
     </linearGradient>
   </defs>
+  <path
+     d="m 1.0632856,15.997629 a 14.936714,14.936714 0 1 0 29.8734274,0 14.936714,14.936714 0 1 0 -29.8734274,0 z"
+     id="path2819"
+     style="fill:#ffd000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.12657046;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  <path
+     d="m 26.666665,15.997628 -21.3333324,0"
+     id="path3106"
+     style="fill:none;stroke:#000000;stroke-width:2.66666651px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
   <g
-     transform="matrix(1.9999999,0,0,1.9999999,3.5982256e-7,-0.00237004)"
-     id="g2995">
+     transform="matrix(0,-2.6666665,2.6666665,0,-5.4949494,37.250152)"
+     id="g3896-4">
     <path
-       d="m 18.983051,7.5932202 a 10.915255,10.169492 0 1 1 -21.8305089,0 10.915255,10.169492 0 1 1 21.8305089,0 z"
-       transform="matrix(0.68421284,0,0,0.73438846,2.4799099,2.4236267)"
-       id="path2819"
-       style="fill:#ffd000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-    <g
-       transform="matrix(0,-1.3333333,1.3333333,0,-2.6666664,18.666666)"
-       id="g3924">
-      <path
-         d="m 8,4 0,8"
-         id="path3106"
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-      <g
-         transform="translate(0.0303029,-0.060606)"
-         id="g3896">
-        <path
-           d="M 7.939394,4.060606 6,6"
-           id="path3108"
-           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-        <path
-           d="M 8,4.060606 9.9393942,6"
-           id="path3108-6"
-           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-      </g>
-      <g
-         transform="matrix(1,0,0,-1,0.0303029,16.060606)"
-         id="g3896-4">
-        <path
-           d="M 7.939394,4.060606 6,6"
-           id="path3108-0"
-           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-        <path
-           d="M 8,4.060606 9.9393942,6"
-           id="path3108-6-8"
-           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
-      </g>
-    </g>
+       d="M 7.939394,4.060606 6,6"
+       id="path3108-0"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       d="M 8,4.060606 9.9393942,6"
+       id="path3108-6-8"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1" />
   </g>
 </svg>
