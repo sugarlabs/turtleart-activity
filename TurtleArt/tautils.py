@@ -207,9 +207,13 @@ def get_save_name(filefilter, load_save_folder, save_file_name):
         gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                                        gtk.STOCK_SAVE, gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
+    if filefilter in ['.png', '.svg']:
+        suffix = filefilter
+    else:
+        suffix = SUFFIX[1]
     if save_file_name is not None:
-        if not save_file_name.endswith(SUFFIX):
-            save_file_name = save_file_name + SUFFIX[1]
+        if not save_file_name.endswith(suffix):
+            save_file_name = save_file_name + suffix
         dialog.set_current_name(save_file_name)
     return do_dialog(dialog, filefilter, load_save_folder)
 
