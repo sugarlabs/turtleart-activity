@@ -460,7 +460,7 @@ class TurtleArtWindow():
 
         if not self.running_sugar:
             # offset = 2 * self.width - 55 * len(TOOLBAR_SHAPES)
-            offset = 55 * (2 + len(palette_blocks))
+            offset = 55 * (1 + len(palette_blocks))
             for i, name in enumerate(TOOLBAR_SHAPES):
                 self.toolbar_shapes[name] = Sprite(
                     self.sprite_list, i * 55 + offset, 0,
@@ -936,7 +936,10 @@ class TurtleArtWindow():
         ''' Create the palette selector buttons: only when running
         old-style Sugar toolbars or from GNOME '''
         svg = SVG()
-        x, y = 50, 0  # positioned at the left, top
+        if self.running_sugar:
+            x, y = 50, 0  # positioned at the left, top
+        else:
+            x, y = 0, 0
         for i, name in enumerate(palette_names):
             for path in self._icon_paths:
                 if os.path.exists(os.path.join(path, '%soff.svg' % (name))):

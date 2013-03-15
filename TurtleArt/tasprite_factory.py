@@ -539,8 +539,8 @@ class SVG:
         self._width, self._height = width, height
         self._fill, self._stroke = PALETTE_COLOR, "none"
         svg = self._rect(width, height, 0, 0)
-        self._hide_x = (width - self._radius * 1.5) / 2
-        self._hide_y = (height - self._radius * 1.5) / 2
+        self._hide_x = (width - self._radius) / 2
+        self._hide_y = (height - self._radius) / 2
         svg += self._hide_dot(noscale=True)
         svg += self.footer()
         return self.header() + svg
