@@ -317,11 +317,8 @@ class TurtleArtWindow():
             # Add the icon dir to the icon_theme search path
             self._add_plugin_icon_dir(os.path.join(self._get_plugin_home(),
                                                    plugin_dir))
-        except ImportError as e:
-            debug_output('Failed to import %s: %s' % (plugin_class, str(e)),
-                         self.running_sugar)
-        except:
-            debug_output('Failed to load %s' % (plugin_class),
+        except Exception as e:
+            debug_output('Failed to load %s: %s' % (plugin_class, str(e)),
                          self.running_sugar)
 
     def _add_plugin_icon_dir(self, dirname):
@@ -2769,7 +2766,8 @@ may not terminate.', False)
         self.running_blocks = True
         self._start_plugins()  # Let the plugins know we are running.
         top = find_top_block(blk)
-        self.lc.run_blocks(top, self.just_blocks(), True)
+        code = self.lc.generate_code(top, self.just_blocks())
+        self.lc.run_blocks(code)
         if self.interactive_mode:
             gobject.idle_add(self.lc.doevalstep)
         else:
@@ -3984,7 +3982,7 @@ may not terminate.', False)
                 filename = name + suffix
             datapath = get_path(self.activity, 'instance')
         elif len(name) == 0:
-            name = 'ta'
+            name = 'turtleblocks' + suffix
             if self.save_folder is not None:
                 self.load_save_folder = self.save_folder
             filename, self.load_save_folder = get_save_name(

@@ -1,5 +1,6 @@
-#copyright (c) 2007-8, Playful Invention Company.
+#copyright (c) 2007-8, Playful Invention Company
 #Copyright (c) 2008-13, Walter Bender
+#Copyright (c) 2013 Alan Aguiar
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -805,11 +806,11 @@ def power_manager_off(status):
     except gconf.GError:
         pass
 
-    bus = dbus.SystemBus()
+    _bus = dbus.SystemBus()
     try:
-        proxy = bus.get_object(OHM_SERVICE_NAME, OHM_SERVICE_PATH)
-        self._keystore = dbus.Interface(proxy, OHM_SERVICE_IFACE)
-        self._keystore.SetKey('suspend.automatic_pm', bool(VALUE))
+        _proxy = _bus.get_object(OHM_SERVICE_NAME, OHM_SERVICE_PATH)
+        _keystore = dbus.Interface(_proxy, OHM_SERVICE_IFACE)
+        _keystore.SetKey('suspend.automatic_pm', bool(VALUE))
     except dbus.exceptions.DBusException:
         if status:
             try:
