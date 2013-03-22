@@ -89,9 +89,9 @@ def save_logo(tw):
                 logo_command = logo_commands[blk]
             else:
                 logo_command = None
-            if i == 0 and not logo_command in ['to stack1\r', 'to stack2\r',
-                                               'to action', 'to start\r']:
-                this_stack = 'to turtleblocks_%d\r' % (stack_count)
+            if i == 0 and not logo_command in ['to stack1\n', 'to stack2\n',
+                                               'to action', 'to start\n']:
+                this_stack = 'to turtleblocks_%d\n' % (stack_count)
                 stack_count += 1
             if logo_command in dispatch_table:
                 if i + 1 < len(psuedocode):
@@ -113,7 +113,7 @@ def save_logo(tw):
             this_stack += ' '
 
         logocode += this_stack
-        logocode += '\rend\r'
+        logocode += '\nend\n'
 
     # We may need to prepend some additional procedures.
     for key in logo_functions.iterkeys():
@@ -124,7 +124,7 @@ def save_logo(tw):
        'tasetbackground' in logocode:
         logocode = logo_functions['tacolor'] + logocode
 
-    logocode = 'window\r' + logocode
+    logocode = 'window\n' + logocode
     return logocode
 
 
@@ -142,16 +142,16 @@ def _add_label(string):
             string = string[2:]
             string = '"' + string
         if string.count(' ') > 0:
-            return 'label sentence %s\r' % (string.replace(' ', ' "'))
+            return 'label sentence %s\n' % (string.replace(' ', ' "'))
         else:
             return 'label %s' % (string.replace(' ', '_'))
 
 
 def _add_named_stack(action):
         if type(action) == str and action[0:2] == '#s':
-            return 'to %s\r' % (str(action[2:]).replace(' ', '_'))
+            return 'to %s\n' % (str(action[2:]).replace(' ', '_'))
         else:
-            return 'to %s\r' % (str(action).replace(' ', '_'))
+            return 'to %s\n' % (str(action).replace(' ', '_'))
 
 
 def _add_reference_to_stack(action):
