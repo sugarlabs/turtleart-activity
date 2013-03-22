@@ -20,6 +20,8 @@
 #THE SOFTWARE.
 
 import gtk
+import gconf
+import dbus
 import cairo
 import pickle
 import subprocess
@@ -47,6 +49,9 @@ from taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO4, UNKNOWN,
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
+
+
+FIRST_TIME = True
 
 
 def debug_output(message_string, running_sugar=False):
@@ -767,3 +772,53 @@ def check_output(command, warning):
             print(warning)
             return None
     return output
+
+
+def power_manager_off(status):
+    '''
+    Power management in Sugar
+         power_manager_off(True) --> Disable power manager
+         power_manager_off(False) --> Use custom power manager
+    '''
+    global FIRST_TIME
+
+    OHM_SERVICE_NAME = 'org.freedesktop.ohm'
+    OHM_SERVICE_PATH = '/org/freedesktop/ohm/Keystore'
+    OHM_SERVICE_IFACE = 'org.freedesktop.ohm.Keystore'
+    PATH = '/etc/powerd/flags/inhibit-suspend'
+
+    client = gconf.client_get_default()
+
+    ACTUAL_POWER = True
+
+    if FIRST_TIME:
+        ACTUAL_POWER = client.get_bool('/desktop/sugar/power/automatic')
+        FIRST_TIME = False
+
+    if status:
+        VALUE = False
+    else:
+        VALUE = ACTUAL_POWER
+
+    try:
+        client.set_bool('/desktop/sugar/power/automatic', VALUE)
+    except gconf.GError:
+        pass
+
+    bus = dbus.SystemBus()
+    try:
+        proxy = bus.get_object(OHM_SERVICE_NAME, OHM_SERVICE_PATH)
+        self._keystore = dbus.Interface(proxy, OHM_SERVICE_IFACE)
+        self._keystore.SetKey('suspend.automatic_pm', bool(VALUE))
+    except dbus.exceptions.DBusException:
+        if status:
+            try:
+                fd = open(PATH, 'w')
+                fd.close()
+            except IOError:
+                pass
+        elif ACTUAL_POWER:
+            try:
+                os.remove(PATH)
+            except OSError:
+                pass
