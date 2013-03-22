@@ -1,5 +1,6 @@
-#copyright (c) 2007-8, Playful Invention Company.
+#copyright (c) 2007-8, Playful Invention Company
 #Copyright (c) 2008-13, Walter Bender
+#Copyright (c) 2013 Alan Aguiar
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +21,8 @@
 #THE SOFTWARE.
 
 import gtk
+import gconf
+import dbus
 import cairo
 import pickle
 import subprocess
@@ -47,6 +50,9 @@ from taconstants import (HIT_HIDE, HIT_SHOW, XO1, XO15, XO175, XO4, UNKNOWN,
 
 import logging
 _logger = logging.getLogger('turtleart-activity')
+
+
+FIRST_TIME = True
 
 
 def debug_output(message_string, running_sugar=False):
@@ -207,9 +213,13 @@ def get_save_name(filefilter, load_save_folder, save_file_name):
         gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                                        gtk.STOCK_SAVE, gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
+    if filefilter in ['.png', '.svg']:
+        suffix = filefilter
+    else:
+        suffix = SUFFIX[1]
     if save_file_name is not None:
-        if not save_file_name.endswith(SUFFIX):
-            save_file_name = save_file_name + SUFFIX[1]
+        if not save_file_name.endswith(suffix):
+            save_file_name = save_file_name + suffix
         dialog.set_current_name(save_file_name)
     return do_dialog(dialog, filefilter, load_save_folder)
 
@@ -763,3 +773,53 @@ def check_output(command, warning):
             print(warning)
             return None
     return output
+
+
+def power_manager_off(status):
+    '''
+    Power management in Sugar
+         power_manager_off(True) --> Disable power manager
+         power_manager_off(False) --> Use custom power manager
+    '''
+    global FIRST_TIME
+
+    OHM_SERVICE_NAME = 'org.freedesktop.ohm'
+    OHM_SERVICE_PATH = '/org/freedesktop/ohm/Keystore'
+    OHM_SERVICE_IFACE = 'org.freedesktop.ohm.Keystore'
+    PATH = '/etc/powerd/flags/inhibit-suspend'
+
+    client = gconf.client_get_default()
+
+    ACTUAL_POWER = True
+
+    if FIRST_TIME:
+        ACTUAL_POWER = client.get_bool('/desktop/sugar/power/automatic')
+        FIRST_TIME = False
+
+    if status:
+        VALUE = False
+    else:
+        VALUE = ACTUAL_POWER
+
+    try:
+        client.set_bool('/desktop/sugar/power/automatic', VALUE)
+    except gconf.GError:
+        pass
+
+    _bus = dbus.SystemBus()
+    try:
+        _proxy = _bus.get_object(OHM_SERVICE_NAME, OHM_SERVICE_PATH)
+        _keystore = dbus.Interface(_proxy, OHM_SERVICE_IFACE)
+        _keystore.SetKey('suspend.automatic_pm', bool(VALUE))
+    except dbus.exceptions.DBusException:
+        if status:
+            try:
+                fd = open(PATH, 'w')
+                fd.close()
+            except IOError:
+                pass
+        elif ACTUAL_POWER:
+            try:
+                os.remove(PATH)
+            except OSError:
+                pass
