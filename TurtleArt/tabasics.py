@@ -58,7 +58,7 @@ that the icons should be the same size (55x55) as the others. (This is
 the default icon size for Sugar toolbars.)
 """
 
-from time import time
+from time import time, sleep
 from math import sqrt
 from random import uniform
 
@@ -1180,6 +1180,7 @@ variable'))
         self.tw.active_turtle.show()
         endtime = _millisecond() + wait_time * 1000.
         while _millisecond() < endtime:
+            sleep(wait_time / 10.)
             yield True
         self.tw.active_turtle.hide()
         self.tw.lc.ireturn()
