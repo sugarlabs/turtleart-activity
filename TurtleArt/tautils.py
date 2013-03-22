@@ -806,11 +806,11 @@ def power_manager_off(status):
     except gconf.GError:
         pass
 
-    _bus = dbus.SystemBus()
+    bus = dbus.SystemBus()
     try:
-        _proxy = _bus.get_object(OHM_SERVICE_NAME, OHM_SERVICE_PATH)
-        _keystore = dbus.Interface(_proxy, OHM_SERVICE_IFACE)
-        _keystore.SetKey('suspend.automatic_pm', bool(VALUE))
+        proxy = bus.get_object(OHM_SERVICE_NAME, OHM_SERVICE_PATH)
+        keystore = dbus.Interface(proxy, OHM_SERVICE_IFACE)
+        keystore.SetKey('suspend.automatic_pm', bool(VALUE))
     except dbus.exceptions.DBusException:
         if status:
             try:
