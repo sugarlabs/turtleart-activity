@@ -213,7 +213,7 @@ def get_save_name(filefilter, load_save_folder, save_file_name):
         gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                                        gtk.STOCK_SAVE, gtk.RESPONSE_OK))
     dialog.set_default_response(gtk.RESPONSE_OK)
-    if filefilter in ['.png', '.svg']:
+    if filefilter in ['.png', '.svg', '.lg']:
         suffix = filefilter
     else:
         suffix = SUFFIX[1]
@@ -806,11 +806,11 @@ def power_manager_off(status):
     except gconf.GError:
         pass
 
-    _bus = dbus.SystemBus()
+    bus = dbus.SystemBus()
     try:
-        _proxy = _bus.get_object(OHM_SERVICE_NAME, OHM_SERVICE_PATH)
-        _keystore = dbus.Interface(_proxy, OHM_SERVICE_IFACE)
-        _keystore.SetKey('suspend.automatic_pm', bool(VALUE))
+        proxy = bus.get_object(OHM_SERVICE_NAME, OHM_SERVICE_PATH)
+        keystore = dbus.Interface(proxy, OHM_SERVICE_IFACE)
+        keystore.SetKey('suspend.automatic_pm', bool(VALUE))
     except dbus.exceptions.DBusException:
         if status:
             try:

@@ -22,7 +22,7 @@
 #THE SOFTWARE.
 
 import gtk
-from time import time
+from time import time, sleep
 
 from operator import isNumberType
 from UserDict import UserDict
@@ -188,8 +188,11 @@ class LogoCode:
         self.oblist[string] = sym
         return sym
 
-    def run_blocks(self, blk, blocks, run_flag):
-        """ Given a block to run... """
+    def run_blocks(self, code):
+        self.start_time = time()
+        self._setup_cmd(code)
+
+    def generate_code(self, blk, blocks):
         for k in self.stacks.keys():
             self.stacks[k] = None
         self.stacks['stack1'] = None
@@ -264,12 +267,7 @@ class LogoCode:
                 if b[3] is not None:
                     b[0].connections[-2].connections[b[3]] = b[0]
 
-        if run_flag:
-            # debug_output("running code: %s" % (code), self.tw.running_sugar)
-            self.start_time = time()
-            self._setup_cmd(code)
-        else:
-            return code
+        return code
 
     def _blocks_to_code(self, blk):
         """ Convert a stack of blocks to pseudocode. """
@@ -420,6 +418,7 @@ class LogoCode:
                 self.tw.active_turtle.show()
                 endtime = _millisecond() + self.tw.step_time * 100.
                 while _millisecond() < endtime:
+                    sleep(0.1)
                     yield True
                 self.tw.active_turtle.hide()
 
