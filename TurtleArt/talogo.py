@@ -606,6 +606,8 @@ class LogoCode:
         self.clear_value_blocks()
 
     def clear_value_blocks(self):
+        if not hasattr(self, 'value_blocks_to_update'):
+            return
         for name in value_blocks:
             self.update_label_value(name)
 
