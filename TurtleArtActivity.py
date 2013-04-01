@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #Copyright (c) 2007, Playful Invention Company
 #Copyright (c) 2008-13, Walter Bender
-#Copyright (c) 2009-10 Raul Gutierrez Segales
+#Copyright (c) 2009-13 Raul Gutierrez Segales
 #Copyright (c) 2012 Alan Aguiar
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy
