@@ -25,7 +25,7 @@ import traceback
 from string import find
 from threading import Timer
 
-from TurtleArt.taconstants import XO1
+from TurtleArt.taconstants import XO1, XO4
 from TurtleArt.tautils import debug_output
 
 # Initial device settings
@@ -63,7 +63,8 @@ class AudioGrab():
         self.temp_buffer = [0]
 
         self.rate = RATE
-        if self.parent.hw == XO1:
+        # Force XO1 and XO4 to use just 1 channel
+        if self.parent.hw in [XO1, XO4]:
             self.channels = 1
         else:
             self.channels = None
