@@ -1,3 +1,14 @@
+175
+
+ENHANCEMENT:
+* Power management utility: Alan Aguiar
+
+BUG FIXES:
+* Force audio sensors to use single channel on XO 4
+* Fix problem with file naming when saving images in GNOME
+* Fix problem with file naming when saving Logo code in GNOME
+* Use newline (\n) instead of return (\r) in exported Logo code
+
 174
 
 ENHANCEMENTS:

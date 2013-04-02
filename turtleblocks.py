@@ -496,7 +496,10 @@ class TurtleMain():
         save_type = '.lg'
         filename, self.tw.load_save_folder = get_save_name(save_type,
                       self.tw.load_save_folder, 'logosession')
-        f = file(filename, 'w')
+        if type(filename) == unicode:
+            f = file(filename.encode('ascii', 'replace'), 'w')
+        else:
+            f = file(filename, 'w')
         f.write(logocode)
         f.close()
 
