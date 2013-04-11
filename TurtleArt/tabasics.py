@@ -939,6 +939,7 @@ variable'))
         primitive_dictionary['box'] = self._prim_box
         palette.add_block('box',
                           style='number-style-1strarg',
+                          hidden=True,
                           label=_('box'),
                           string_or_number=True,
                           prim_name='box',
