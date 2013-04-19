@@ -1480,6 +1480,8 @@ bullets'))
     def _prim_hideblocks(self):
         """ hide blocks and show showblocks button """
         self.tw.hideblocks()
+        self.tw.lc.trace = 0
+        self.tw.step_time = 0
         if self.tw.running_sugar:
             self.tw.activity.stop_turtle_button.set_icon("hideshowoff")
             self.tw.activity.stop_turtle_button.set_tooltip(_('Show blocks'))
@@ -1487,6 +1489,8 @@ bullets'))
     def _prim_showblocks(self):
         """ show blocks and show stop turtle button """
         self.tw.showblocks()
+        self.tw.lc.trace = 1
+        self.tw.step_time = 3
         if self.tw.running_sugar:
             self.tw.activity.stop_turtle_button.set_icon("stopiton")
             self.tw.activity.stop_turtle_button.set_tooltip(_('Stop turtle'))
