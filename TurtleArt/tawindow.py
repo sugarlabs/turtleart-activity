@@ -3223,6 +3223,9 @@ may not terminate.', False)
                                          mov_dict[keyname][1])
             elif not block_flag:
                 self._jog_turtle(mov_dict[keyname][0], mov_dict[keyname][1])
+            # Always exit fullscreen mode if applicable
+            if self.running_sugar and self.activity.is_fullscreen:
+                self.activity.unfullscreen()
         return True
 
     def _jog_turtle(self, dx, dy):
