@@ -82,6 +82,7 @@ SNAP_THRESHOLD = 200
 NO_DOCK = (100, 100)  # Blocks cannot be docked
 BUTTON_SIZE = 32
 MARGIN = 5
+_UNFULLSCREEN_BUTTON_VISIBILITY_TIMEOUT = 2
 
 
 class TurtleArtWindow():
@@ -392,6 +393,24 @@ class TurtleArtWindow():
         self.window.drag_dest_set(gtk.DEST_DEFAULT_ALL, target,
                            gtk.gdk.ACTION_COPY | gtk.gdk.ACTION_MOVE)
         self.window.connect('drag_data_received', self._drag_data_received)
+
+    def _show_unfullscreen_button(self):
+	if self.activity._is_fullscreen and \
+                self.activity.props.enable_fullscreen_mode:
+            if not self.activity._unfullscreen_button.props.visible:
+                self.activity._unfullscreen_button.show()
+        # Reset the timer
+        if self.activity._unfullscreen_button_timeout_id is not None:
+            gobject.source_remove(self.activity._unfullscreen_button_timeout_id)
+            self.activity._unfullscreen_button_timeout_id = None
+	
+	self.activity._unfullscreen_button_timeout_id = \
+            gobject.timeout_add_seconds(
+            _UNFULLSCREEN_BUTTON_VISIBILITY_TIMEOUT,
+            self.__unfullscreen_button_timeout_cb)
+
+    def __unfullscreen_button_timeout_cb(self):
+	self.activity._unfullscreen_button.hide()
 
     def _drag_data_received(self, w, context, x, y, data, info, time):
         ''' Handle dragging of block data from clipboard to canvas. '''
@@ -1265,6 +1284,9 @@ class TurtleArtWindow():
         return True
 
     def button_press(self, mask, x, y):
+        if self.running_sugar:
+            self._show_unfullscreen_button()
+
         # Find out what was clicked
         spr = self.sprite_list.find_sprite((x, y))
 
