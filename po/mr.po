@@ -2,8 +2,33 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  mr.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-02 00:32-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.7.0\n"
+"#-#-#-#-#  mr.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  mr.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-02 00:32-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.7.0\n"
+"#-#-#-#-#  mr.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-24 00:31-0500\n"
@@ -16,6 +41,2111 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.1\n"
+
+#. TRANS: "name" option from activity.info file
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid "turtleart-extras (master)"
+msgstr ""
+
+#: taextras.py:36
+msgid "Turtle Art Mini"
+msgstr ""
+
+#: taextras.py:40
+msgid "Turtle Confusion"
+msgstr ""
+
+#: taextras.py:41 taextras.py:46
+msgid "Select a challenge"
+msgstr ""
+
+#: taextras.py:45
+msgid "Amazonas Tortuga"
+msgstr ""
+
+#: taextras.py:52
+msgid "Palette of Mexican pesos"
+msgstr ""
+
+#: taextras.py:53
+msgid "Palette of Colombian pesos"
+msgstr ""
+
+#: taextras.py:54
+msgid "Palette of Rwandan francs"
+msgstr ""
+
+#: taextras.py:55
+msgid "Palette of US dollars"
+msgstr ""
+
+#: taextras.py:56
+msgid "Palette of Australian dollars"
+msgstr ""
+
+#: taextras.py:57
+msgid "Palette of Paraguayan Guaranies"
+msgstr ""
+
+#: taextras.py:58
+msgid "Palette of Peruvian Nuevo Soles"
+msgstr ""
+
+#: taextras.py:59
+msgid "Palette of Uruguayan Pesos"
+msgstr ""
+
+#. TRANS: Butia is the Arduino Robot Project from Uruguay
+#. (http://www.fing.edu.uy/inco/proyectos/butia/)
+#: taextras.py:65
+msgid "TurtleBots"
+msgstr ""
+
+#: taextras.py:66
+msgid "adjust LED intensity between 0 and 255"
+msgstr ""
+
+#: taextras.py:67
+msgid "returns the object gray level as a number between 0 and 1023"
+msgstr ""
+
+#: taextras.py:68
+msgid "returns 1 when the button is press and 0 otherwise"
+msgstr ""
+
+#: taextras.py:69
+msgid "returns the ambient light level as a number between 0 and 1023"
+msgstr ""
+
+#: taextras.py:70
+msgid "returns the ambient temperature as a number between 0 and 255"
+msgstr ""
+
+#: taextras.py:71
+msgid ""
+"returns the distance from the object in front of the sensor as a number "
+"between 0 and 255"
+msgstr ""
+
+#: taextras.py:73
+msgid "returns 0 or 1 depending on the sensor inclination"
+msgstr ""
+
+#: taextras.py:74
+msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+msgstr ""
+
+#: taextras.py:75
+msgid "switches from 0 to 1, the frequency depends on the vibration"
+msgstr ""
+
+#: taextras.py:76
+msgid "returns the value of the resistance"
+msgstr ""
+
+#: taextras.py:77
+msgid "LED"
+msgstr ""
+
+#: taextras.py:78
+msgid "button"
+msgstr ""
+
+#: taextras.py:79
+msgid "grayscale"
+msgstr ""
+
+#: taextras.py:80
+msgid "ambient light"
+msgstr ""
+
+#: taextras.py:81
+msgid "temperature"
+msgstr ""
+
+#: taextras.py:82 taextras.py:291
+msgid "distance"
+msgstr ""
+
+#: taextras.py:83 taextras.py:288
+msgid "tilt"
+msgstr ""
+
+#: taextras.py:84
+msgid "magnetic induction"
+msgstr ""
+
+#: taextras.py:85
+msgid "vibration"
+msgstr ""
+
+#: taextras.py:86 plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:165
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
+msgid "resistance"
+msgstr ""
+
+#: taextras.py:87
+msgid "Butia Robot"
+msgstr ""
+
+#: taextras.py:88
+msgid "refresh Butia"
+msgstr ""
+
+#: taextras.py:89
+msgid "refresh the state of the Butia palette and blocks"
+msgstr ""
+
+#. TRANS: This string is shorthand for "battery charge of Butia"
+#: taextras.py:91
+msgid "battery charge Butia"
+msgstr ""
+
+#: taextras.py:92
+msgid "returns the battery charge as a number between 0 and 255"
+msgstr ""
+
+#. TRANS: This string is shorthand for "speed of Butia"
+#: taextras.py:94
+msgid "speed Butia"
+msgstr ""
+
+#: taextras.py:95
+msgid "set the speed of the Butia motors"
+msgstr ""
+
+#: taextras.py:96
+msgid "the speed must be a value between 0 and 1023"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move Butia forward"
+#: taextras.py:98
+msgid "forward Butia"
+msgstr ""
+
+#: taextras.py:99
+msgid "move the Butia robot forward"
+msgstr ""
+
+#: taextras.py:100
+msgid "move the Butia robot forward a predefined distance"
+msgstr ""
+
+#. TRANS: This string is shorthand for "turn Butia left"
+#: taextras.py:102
+msgid "left Butia"
+msgstr ""
+
+#: taextras.py:103
+msgid "turn the Butia robot at left"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move Butia backward"
+#: taextras.py:105
+msgid "backward Butia"
+msgstr ""
+
+#: taextras.py:106
+msgid "move the Butia robot backward"
+msgstr ""
+
+#: taextras.py:107
+msgid "move the Butia robot backward a predefined distance"
+msgstr ""
+
+#. TRANS: This string is shorthand for "turn Butia right"
+#: taextras.py:109
+msgid "right Butia"
+msgstr ""
+
+#: taextras.py:110
+msgid "turn the Butia robot at right"
+msgstr ""
+
+#: taextras.py:111
+msgid "turn Butia"
+msgstr ""
+
+#: taextras.py:112
+msgid "turn the Butia robot x degrees"
+msgstr ""
+
+#: taextras.py:113
+msgid "stop Butia"
+msgstr ""
+
+#: taextras.py:114
+msgid "stop the Butia robot"
+msgstr ""
+
+#: taextras.py:115
+msgid "Butia"
+msgstr ""
+
+#: taextras.py:119
+msgid "Error importing Pygame. This plugin require Pygame 1.9"
+msgstr ""
+
+#: taextras.py:120
+msgid "Error on initialization of the camera"
+msgstr ""
+
+#: taextras.py:121
+msgid "No camera was found"
+msgstr ""
+
+#: taextras.py:122
+msgid "Error stopping camera"
+msgstr ""
+
+#: taextras.py:123
+msgid "Error starting camera"
+msgstr ""
+
+#. TRANS: The "mask" is used to restrict processing to a region in the image
+#: taextras.py:125
+msgid "Error in get mask"
+msgstr ""
+
+#: taextras.py:126
+msgid "FollowMe"
+msgstr ""
+
+#: taextras.py:127
+msgid "refresh FollowMe"
+msgstr ""
+
+#: taextras.py:128
+msgid "Search for a connected camera."
+msgstr ""
+
+#. TRANS: the calibration is used to match an RGB color to a target
+#: taextras.py:130
+msgid "calibration"
+msgstr ""
+
+#: taextras.py:131
+msgid "store a personalized calibration"
+msgstr ""
+
+#: taextras.py:132
+msgid "return a personalized calibration"
+msgstr ""
+
+#: taextras.py:133
+msgid "follow"
+msgstr ""
+
+#: taextras.py:134
+msgid "follow a color or calibration"
+msgstr ""
+
+#: taextras.py:135 plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
+#: plugins/light_sensor/light_sensor.py:56
+#: plugins/light_sensor/light_sensor.py:63
+msgid "brightness"
+msgstr "प्रकाशमान"
+
+#: taextras.py:136
+msgid "set the camera brightness as a value between 0 to 255."
+msgstr ""
+
+#: taextras.py:137
+msgid "minimum pixels"
+msgstr ""
+
+#: taextras.py:138
+msgid "set the minimal number of pixels to follow"
+msgstr ""
+
+#: taextras.py:139
+msgid "threshold"
+msgstr ""
+
+#. TRANS: RGB color space (red, green, blue)
+#: taextras.py:141
+msgid "set a threshold for a RGB color"
+msgstr ""
+
+#: taextras.py:142
+msgid "camera mode"
+msgstr ""
+
+#. TRANS: RGB, YUV, and HSV are color spaces
+#: taextras.py:144
+msgid "set the color mode of the camera: RGB; YUV or HSV"
+msgstr ""
+
+#: taextras.py:145
+msgid "get brightness"
+msgstr ""
+
+#: taextras.py:146
+msgid "get the brightness of the ambient light"
+msgstr ""
+
+#: taextras.py:147
+msgid "average color"
+msgstr ""
+
+#: taextras.py:148
+msgid ""
+"if set to 0 then color averaging is off during calibration; for other values "
+"it is on"
+msgstr ""
+
+#: taextras.py:149
+msgid "x position"
+msgstr ""
+
+#: taextras.py:150
+msgid "return x position"
+msgstr ""
+
+#: taextras.py:151
+msgid "y position"
+msgstr ""
+
+#: taextras.py:152
+msgid "return y position"
+msgstr ""
+
+#: taextras.py:153
+msgid "pixels"
+msgstr ""
+
+#: taextras.py:154
+msgid "return the number of pixels of the biggest blob"
+msgstr ""
+
+#. TRANS: RGB color space (red, green, blue)
+#: taextras.py:156
+msgid "set the color mode of the camera to RGB"
+msgstr ""
+
+#. TRANS: YUV color space (luminance, chrominance)
+#: taextras.py:158
+msgid "set the color mode of the camera to YUV"
+msgstr ""
+
+#. TRANS: HSV color space (hue, saturation, value)
+#: taextras.py:160
+msgid "set the color mode of the camera to HSV"
+msgstr ""
+
+#: taextras.py:161
+msgid "empty calibration"
+msgstr ""
+
+#: taextras.py:162
+msgid "error in string conversion"
+msgstr ""
+
+#. TRANS: SumBot is a robot programmed for "Sumo wrestling"
+#: taextras.py:167
+msgid "SumBot"
+msgstr ""
+
+#: taextras.py:168
+msgid "speed SumBot"
+msgstr ""
+
+#: taextras.py:169
+msgid "submit the speed to the SumBot"
+msgstr ""
+
+#: taextras.py:170
+msgid "set the default speed for the movement commands"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move SumBot forward"
+#: taextras.py:172
+msgid "forward SumBot"
+msgstr ""
+
+#: taextras.py:173
+msgid "move SumBot forward"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move SumBot backward"
+#: taextras.py:175
+msgid "backward SumBot"
+msgstr ""
+
+#: taextras.py:176
+msgid "move SumBot backward"
+msgstr ""
+
+#: taextras.py:177
+msgid "stop SumBot"
+msgstr ""
+
+#: taextras.py:178
+msgid "stop the SumBot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "turn SumBot left"
+#: taextras.py:180
+msgid "left SumBot"
+msgstr ""
+
+#: taextras.py:181
+msgid "turn left the SumBot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "move SumBot right"
+#: taextras.py:183
+msgid "right SumBot"
+msgstr ""
+
+#: taextras.py:184
+msgid "turn right the SumBot"
+msgstr ""
+
+#. TRANS: The angle to the center is the angle SumBot must turn to
+#. face the center of the playing field
+#: taextras.py:187
+msgid "angle to center"
+msgstr ""
+
+#. TRANS: dohyo is the playing field
+#: taextras.py:189
+msgid "get the angle to the center of the dohyo"
+msgstr ""
+
+#. TRANS: The angle to the center is the angle SumBot must turn to
+#. face the Enemy (opponent)
+#: taextras.py:192
+msgid "angle to Enemy"
+msgstr ""
+
+#: taextras.py:193
+msgid "get the angle to the Enemy"
+msgstr ""
+
+#. TRANS: This string is shorthand for "x coordinate of SumBot"
+#: taextras.py:195
+msgid "x coor. SumBot"
+msgstr ""
+
+#: taextras.py:196
+msgid "get the x coordinate of the SumBot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "y coordinate of SumBot"
+#: taextras.py:198
+msgid "y coor. SumBot"
+msgstr ""
+
+#: taextras.py:199
+msgid "get the y coordinate of the SumBot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
+#: taextras.py:201
+msgid "x coor. Enemy"
+msgstr ""
+
+#: taextras.py:202
+msgid "get the x coordinate of the Enemy"
+msgstr ""
+
+#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
+#: taextras.py:204
+msgid "y coor. Enemy"
+msgstr ""
+
+#: taextras.py:205
+msgid "get the y coordinate of the Enemy"
+msgstr ""
+
+#. TRANS: This string is shorthand for "rotation of SumBot"
+#: taextras.py:207
+msgid "rotation SumBot"
+msgstr ""
+
+#: taextras.py:208
+msgid "get the rotation of the Sumbot"
+msgstr ""
+
+#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
+#: taextras.py:210
+msgid "rotation Enemy"
+msgstr ""
+
+#: taextras.py:211
+msgid "get the rotation of the Enemy"
+msgstr ""
+
+#: taextras.py:212
+msgid "distance to center"
+msgstr ""
+
+#. TRANS: dohyo is the playing field
+#: taextras.py:214
+msgid "get the distance to the center of the dohyo"
+msgstr ""
+
+#: taextras.py:215
+msgid "distance to Enemy"
+msgstr ""
+
+#: taextras.py:216
+msgid "get the distance to the Enemy"
+msgstr ""
+
+#: taextras.py:217
+msgid "update information"
+msgstr ""
+
+#: taextras.py:218
+msgid "update information from the server"
+msgstr ""
+
+#. #-#-#-#-#  mr.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Please use similar terms to those used in the Physics Activity
+#. #-#-#-#-#  mr.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  mr.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Please use similar terms to those used in the Physics Activity
+#: taextras.py:223
+#, fuzzy
+msgid "Palette of physics blocks"
+msgstr "सेन्सर ब्लॉक्सची पट्टी"
+
+#: taextras.py:224
+msgid "start polygon"
+msgstr ""
+
+#: taextras.py:225
+msgid "Begin defining a new polygon based on the current Turtle xy position."
+msgstr ""
+
+#: taextras.py:227
+msgid "add point"
+msgstr ""
+
+#: taextras.py:228
+msgid ""
+"Add a new point to the current polygon based on the current Turtle xy "
+"position."
+msgstr ""
+
+#: taextras.py:230
+msgid "end polygon"
+msgstr ""
+
+#: taextras.py:231
+msgid "Define a new polygon."
+msgstr ""
+
+#: taextras.py:232
+msgid "end filled polygon"
+msgstr ""
+
+#: taextras.py:233
+msgid "Not a simple polygon"
+msgstr ""
+
+#: taextras.py:234
+msgid "Define a new filled polygon."
+msgstr ""
+
+#: taextras.py:235
+msgid "triangle"
+msgstr ""
+
+#. TRANS: base of a triangle
+#: taextras.py:237
+msgid "base"
+msgstr ""
+
+#: taextras.py:238 taextras.py:244
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894
+msgid "height"
+msgstr ""
+
+#: taextras.py:239
+msgid "Add a triangle object to the project."
+msgstr ""
+
+#: taextras.py:240
+msgid "circle"
+msgstr ""
+
+#: taextras.py:241
+msgid "Add a circle object to the project."
+msgstr ""
+
+#: taextras.py:242
+msgid "rectangle"
+msgstr ""
+
+#: taextras.py:243 plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
+msgid "width"
+msgstr ""
+
+#: taextras.py:245
+msgid "Add a rectangle object to the project."
+msgstr ""
+
+#: taextras.py:246
+msgid "reset"
+msgstr ""
+
+#: taextras.py:247
+msgid "Reset the project; clear the object list."
+msgstr ""
+
+#: taextras.py:248
+msgid "motor"
+msgstr ""
+
+#. TRANS: torque as in engine torque
+#: taextras.py:250
+msgid "torque"
+msgstr ""
+
+#: taextras.py:251
+msgid "speed"
+msgstr ""
+
+#: taextras.py:252
+msgid ""
+"Motor torque and speed range from 0 (off) to positive numbers; motor is "
+"placed on the most recent object created."
+msgstr ""
+
+#: taextras.py:254 taextras.py:417
+msgid "pin"
+msgstr ""
+
+#: taextras.py:255
+msgid "Pin an object down so that it cannot fall."
+msgstr ""
+
+#: taextras.py:256
+msgid "joint"
+msgstr ""
+
+#: taextras.py:257 TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+msgid "x"
+msgstr ""
+
+#: taextras.py:258 TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+msgid "y"
+msgstr ""
+
+#: taextras.py:259
+msgid ""
+"Join two objects together (the most recent object created and the object at "
+"point x, y)."
+msgstr ""
+
+#: taextras.py:261
+msgid "save as Physics activity"
+msgstr ""
+
+#: taextras.py:262
+msgid "Save the project to the Journal as a Physics activity."
+msgstr ""
+
+#. TRANS: Here, gear means a toothed wheel, as in a clock-works
+#: taextras.py:264
+msgid "gear"
+msgstr ""
+
+#: taextras.py:265
+msgid "Add a gear object to the project."
+msgstr ""
+
+#: taextras.py:266
+msgid "density"
+msgstr ""
+
+#: taextras.py:267
+msgid ""
+"Set the density property for objects (density can be any positive number)."
+msgstr ""
+
+#: taextras.py:269
+msgid "friction"
+msgstr ""
+
+#: taextras.py:270
+msgid ""
+"Set the friction property for objects (value from 0 to 1, where 0 turns "
+"friction off and 1 is strong friction)."
+msgstr ""
+
+#. TRANS: bounciness is coefficient of restitution
+#: taextras.py:273
+msgid "bounciness"
+msgstr ""
+
+#: taextras.py:274
+msgid ""
+"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+"no bounce and 1 is very bouncy)."
+msgstr ""
+
+#. TRANS: dynamic here means moving vs in a fixed position
+#: taextras.py:277
+msgid "dynamic"
+msgstr ""
+
+#: taextras.py:278
+msgid ""
+"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+msgstr ""
+
+#. #-#-#-#-#  mr.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: WeDo is a robotics product of the LEGO company
+#. #-#-#-#-#  mr.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  mr.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: WeDo is a robotics product of the LEGO company
+#: taextras.py:284
+#, fuzzy
+msgid "Palette of WeDo blocks"
+msgstr "सेन्सर ब्लॉक्सची पट्टी"
+
+#: taextras.py:285
+msgid "WeDo"
+msgstr ""
+
+#: taextras.py:286
+msgid "set current WeDo device"
+msgstr ""
+
+#: taextras.py:287
+msgid "number of WeDo devices"
+msgstr ""
+
+#: taextras.py:289
+msgid ""
+"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt left, 2 == tilt right)"
+msgstr ""
+
+#. TRANS: This string is shorthand for "output of the distance sensor"
+#: taextras.py:293
+msgid "distance sensor output"
+msgstr ""
+
+#: taextras.py:294
+msgid "Motor A"
+msgstr ""
+
+#: taextras.py:295
+msgid "returns the current value of Motor A"
+msgstr ""
+
+#: taextras.py:296
+msgid "Motor B"
+msgstr ""
+
+#: taextras.py:297
+msgid "returns the current value of Motor B"
+msgstr ""
+
+#: taextras.py:298
+msgid "set the value for Motor A"
+msgstr ""
+
+#: taextras.py:299
+msgid "set the value for Motor B"
+msgstr ""
+
+#: taextras.py:300
+msgid "WeDo is unavailable"
+msgstr ""
+
+#. TRANS: e.g., Wedo 2 is unavailable, defaulting to 1
+#: taextras.py:302
+#, python-format
+msgid "WeDo %d is unavailable; defaulting to 1"
+msgstr ""
+
+#. TRANS: %(device)s and %(wedo_number)d are substitution strings;
+#. please leave untranslated
+#: taextras.py:305
+#, python-format
+msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
+msgstr ""
+
+#. TRANS: Lego NXT is a robotics product of the LEGO company
+#: taextras.py:311
+msgid "Palette of LEGO NXT blocks of motors"
+msgstr ""
+
+#: taextras.py:312
+msgid "Palette of LEGO NXT blocks of sensors"
+msgstr ""
+
+#. TRANS: touch sensor (implemented as a button)
+#: taextras.py:314
+msgid "touch"
+msgstr ""
+
+#. TRANS: distance sensor (implemented using ultrasonics)
+#: taextras.py:316
+msgid "ultrasonic"
+msgstr ""
+
+#: taextras.py:317 TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
+#: TurtleArt/tabasics.py:348
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1158
+msgid "color"
+msgstr ""
+
+#: taextras.py:318
+msgid "light"
+msgstr ""
+
+#: taextras.py:319 plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
+msgid "sound"
+msgstr "आवाज"
+
+#: taextras.py:320
+msgid "grey"
+msgstr ""
+
+#. TRANS: The brick is the NXT controller
+#: taextras.py:322
+msgid "Please check the connection with the brick"
+msgstr ""
+
+#: taextras.py:323
+#, python-format
+msgid "Invalid port '%s'. Port must be: PORT A, B or C"
+msgstr ""
+
+#: taextras.py:324
+#, python-format
+msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
+msgstr ""
+
+#: taextras.py:325
+msgid "The value of power must be between -127 to 127"
+msgstr ""
+
+#: taextras.py:326
+#, python-format
+msgid "The parameter must be a integer, not '%s'"
+msgstr ""
+
+#: taextras.py:327
+msgid "An error has occurred: check all connections and try to reconnect"
+msgstr ""
+
+#: taextras.py:328
+#, python-format
+msgid "NXT found %s bricks"
+msgstr ""
+
+#: taextras.py:329
+msgid "NXT not found"
+msgstr ""
+
+#: taextras.py:330
+#, python-format
+msgid "Brick number %s was not found"
+msgstr ""
+
+#: taextras.py:331
+msgid "refresh NXT"
+msgstr ""
+
+#: taextras.py:332
+msgid "Search for a connected NXT brick."
+msgstr ""
+
+#: taextras.py:333
+msgid "NXT"
+msgstr ""
+
+#: taextras.py:334
+msgid "set current NXT device"
+msgstr ""
+
+#: taextras.py:335
+msgid "number of NXT devices"
+msgstr ""
+
+#: taextras.py:336
+msgid "brick name"
+msgstr ""
+
+#: taextras.py:337
+msgid "Get the name of a brick."
+msgstr ""
+
+#: taextras.py:338
+msgid "play tone"
+msgstr ""
+
+#: taextras.py:339
+msgid "frequency"
+msgstr ""
+
+#: taextras.py:340 plugins/turtle_blocks_extras/turtle_blocks_extras.py:445
+msgid "time"
+msgstr ""
+
+#: taextras.py:341
+msgid "Play a tone at frequency for time."
+msgstr ""
+
+#. TRANS: turn is the action
+#: taextras.py:343
+msgid ""
+"turn motor\n"
+"\n"
+msgstr ""
+
+#: taextras.py:344
+#, fuzzy
+msgid "port"
+msgstr "पोर्ट"
+
+#: taextras.py:345
+msgid "power"
+msgstr ""
+
+#. TRANS: rotations is quantity of turns
+#: taextras.py:347
+msgid "rotations"
+msgstr ""
+
+#: taextras.py:348
+msgid "turn a motor"
+msgstr ""
+
+#: taextras.py:349
+msgid ""
+"synchronize\n"
+"\n"
+"motors"
+msgstr ""
+
+#: taextras.py:350
+msgid "steering"
+msgstr ""
+
+#: taextras.py:351
+msgid "synchronize two motors connected in PORT B and PORT C"
+msgstr ""
+
+#: taextras.py:352
+msgid "PORT A"
+msgstr ""
+
+#: taextras.py:353
+msgid "PORT A of the brick"
+msgstr ""
+
+#: taextras.py:354
+msgid "PORT B"
+msgstr ""
+
+#: taextras.py:355
+msgid "PORT B of the brick"
+msgstr ""
+
+#: taextras.py:356
+msgid "PORT C"
+msgstr ""
+
+#: taextras.py:357
+msgid "PORT C of the brick"
+msgstr ""
+
+#: taextras.py:358
+msgid "start motor"
+msgstr ""
+
+#: taextras.py:359
+msgid "Run a motor forever."
+msgstr ""
+
+#: taextras.py:360
+msgid "brake motor"
+msgstr ""
+
+#: taextras.py:361
+msgid "Stop a specified motor."
+msgstr ""
+
+#. TRANS: reset is used to reset the counter associated with the motor
+#: taextras.py:363
+msgid "reset motor"
+msgstr ""
+
+#: taextras.py:364
+msgid "Reset the motor counter."
+msgstr ""
+
+#: taextras.py:365
+msgid "motor position"
+msgstr ""
+
+#: taextras.py:366
+msgid "Get the motor position."
+msgstr ""
+
+#: taextras.py:367
+msgid "PORT 1"
+msgstr ""
+
+#: taextras.py:368
+msgid "PORT 1 of the brick"
+msgstr ""
+
+#: taextras.py:369
+msgid "read"
+msgstr ""
+
+#: taextras.py:370
+msgid "sensor"
+msgstr ""
+
+#: taextras.py:371
+msgid "Read sensor output."
+msgstr ""
+
+#: taextras.py:372
+msgid "PORT 2"
+msgstr ""
+
+#: taextras.py:373
+msgid "PORT 2 of the brick"
+msgstr ""
+
+#: taextras.py:374
+msgid "light sensor"
+msgstr ""
+
+#: taextras.py:375
+msgid "grey sensor"
+msgstr ""
+
+#: taextras.py:376
+msgid "PORT 3"
+msgstr ""
+
+#: taextras.py:377
+msgid "PORT 3 of the brick"
+msgstr ""
+
+#: taextras.py:378
+msgid "touch sensor"
+msgstr ""
+
+#: taextras.py:379
+msgid "distance sensor"
+msgstr ""
+
+#: taextras.py:380
+msgid "PORT 4"
+msgstr ""
+
+#: taextras.py:381
+msgid "PORT 4 of the brick"
+msgstr ""
+
+#: taextras.py:382
+msgid "sound sensor"
+msgstr ""
+
+#: taextras.py:383
+msgid "color sensor"
+msgstr ""
+
+#. TRANS: set light is used to set the light level associated with
+#. the color sensor (which can emit light as well as sense it)
+#: taextras.py:386
+msgid "set light"
+msgstr ""
+
+#: taextras.py:387
+msgid "Set color sensor light."
+msgstr ""
+
+#. TRANS: the battery level is the charge level of the brick
+#: taextras.py:389
+msgid "battery level"
+msgstr ""
+
+#: taextras.py:390
+msgid "Get battery level of the brick"
+msgstr ""
+
+#. TRANS: Arduino plugin to control an Arduino board
+#: taextras.py:395
+msgid "HIGH"
+msgstr ""
+
+#: taextras.py:396
+msgid "LOW"
+msgstr ""
+
+#: taextras.py:397
+msgid "INPUT"
+msgstr ""
+
+#: taextras.py:398
+msgid "OUTPUT"
+msgstr ""
+
+#. TRANS: PWM is pulse-width modulation
+#: taextras.py:400
+msgid "PWM"
+msgstr ""
+
+#: taextras.py:401
+msgid "SERVO"
+msgstr ""
+
+#: taextras.py:402
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr ""
+
+#: taextras.py:403
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr ""
+
+#: taextras.py:404
+msgid "ERROR: Value must be either HIGH or LOW."
+msgstr ""
+
+#: taextras.py:405
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr ""
+
+#: taextras.py:406
+msgid "refresh Arduino"
+msgstr ""
+
+#: taextras.py:407
+msgid "Search for connected Arduinos."
+msgstr ""
+
+#: taextras.py:408
+msgid "Arduino"
+msgstr ""
+
+#: taextras.py:409
+msgid "set current Arduino board"
+msgstr ""
+
+#: taextras.py:410
+msgid "number of Arduinos"
+msgstr ""
+
+#: taextras.py:411
+msgid "number of Arduino boards"
+msgstr ""
+
+#: taextras.py:412
+msgid "Arduino name"
+msgstr ""
+
+#: taextras.py:413
+msgid "Get the name of an Arduino."
+msgstr ""
+
+#. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
+#. in which an I/O pin is being used.
+#: taextras.py:416
+msgid "pin mode"
+msgstr ""
+
+#: taextras.py:418
+msgid "mode"
+msgstr ""
+
+#: taextras.py:419
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr ""
+
+#: taextras.py:420
+msgid "analog write"
+msgstr ""
+
+#: taextras.py:421 TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
+msgid "value"
+msgstr ""
+
+#: taextras.py:422
+msgid "Write analog value in specified port."
+msgstr ""
+
+#: taextras.py:423
+msgid "analog read"
+msgstr ""
+
+#: taextras.py:424
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+
+#: taextras.py:426
+msgid "digital write"
+msgstr ""
+
+#: taextras.py:427
+msgid "Write digital value to specified port."
+msgstr ""
+
+#: taextras.py:428
+msgid "digital read"
+msgstr ""
+
+#: taextras.py:429
+msgid "Read value from digital port."
+msgstr ""
+
+#: taextras.py:430
+msgid "Set HIGH value for digital port."
+msgstr ""
+
+#: taextras.py:431
+msgid "Configure Arduino port for digital input."
+msgstr ""
+
+#: taextras.py:432
+msgid "Configure Arduino port to drive a servo."
+msgstr ""
+
+#: taextras.py:433
+msgid "Set LOW value for digital port."
+msgstr ""
+
+#: taextras.py:434
+msgid "Configure Arduino port for digital output."
+msgstr ""
+
+#: taextras.py:435
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr ""
+
+#. #-#-#-#-#  mr.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: plugin to control an ExpEyes device
+#. #-#-#-#-#  mr.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  mr.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: plugin to control an ExpEyes device
+#: taextras.py:440
+#, fuzzy
+msgid "Palette of Expeyes blocks"
+msgstr "सेन्सर ब्लॉक्सची पट्टी"
+
+#. TRANS: Programmable voltage output
+#: taextras.py:442
+msgid "set PVS"
+msgstr ""
+
+#: taextras.py:443
+msgid "set programmable voltage output"
+msgstr ""
+
+#. TRANS: Square wave 1 voltage output
+#: taextras.py:445
+msgid "set SQR1 voltage"
+msgstr ""
+
+#: taextras.py:446
+msgid "set square wave 1 voltage output"
+msgstr ""
+
+#. TRANS: Square wave 2 voltage output
+#: taextras.py:448
+msgid "set SQR2 voltage"
+msgstr ""
+
+#: taextras.py:449
+msgid "set square wave 2 voltage output"
+msgstr ""
+
+#. TRANS: Digital output level
+#: taextras.py:451
+msgid "set OD1"
+msgstr ""
+
+#: taextras.py:452
+msgid "set digital output level (OD1) low (0) or high (1)"
+msgstr ""
+
+#. TRANS: Input 1 voltage level
+#: taextras.py:454
+msgid "IN1 level"
+msgstr ""
+
+#: taextras.py:455
+msgid ""
+"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
+"volts"
+msgstr ""
+
+#. TRANS: Input 2 voltage level
+#: taextras.py:458
+msgid "IN2 level"
+msgstr ""
+
+#: taextras.py:459
+msgid ""
+"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
+"volts"
+msgstr ""
+
+#. TRANS: Resistive sensor voltage level
+#: taextras.py:462
+msgid "SEN level"
+msgstr ""
+
+#: taextras.py:463
+msgid ""
+"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
+"voltage level <= 2.5 volts"
+msgstr ""
+
+#: taextras.py:465
+msgid "capture"
+msgstr ""
+
+#: taextras.py:466
+msgid "input"
+msgstr ""
+
+#: taextras.py:467
+msgid "samples"
+msgstr ""
+
+#: taextras.py:468
+msgid "interval"
+msgstr ""
+
+#. TRANS: MS is microseconds
+#: taextras.py:470
+msgid ""
+"capture multiple samples from input at interval (MS); results pushed to FIFO"
+msgstr ""
+
+#. TRANS: Analog input 1 voltage level
+#: taextras.py:473
+msgid "A1"
+msgstr ""
+
+#: taextras.py:474
+msgid "read analog input 1 voltage"
+msgstr ""
+
+#. TRANS: Analog input 2 voltage level
+#: taextras.py:476
+msgid "A2"
+msgstr ""
+
+#: taextras.py:477
+msgid "read analog input 2 voltage"
+msgstr ""
+
+#. TRANS: Read input 1 voltage
+#: taextras.py:479
+msgid "IN1"
+msgstr ""
+
+#: taextras.py:480
+msgid "read input 1 voltage"
+msgstr ""
+
+#. TRANS: Read input 2 voltage
+#: taextras.py:482
+msgid "IN2"
+msgstr ""
+
+#: taextras.py:483
+msgid "read input 2 voltage"
+msgstr ""
+
+#. TRANS: Read analog sensor input voltage
+#: taextras.py:485
+msgid "SEN"
+msgstr ""
+
+#: taextras.py:486
+msgid "read analog sensor input voltage"
+msgstr ""
+
+#. TRANS: Read square wave 1 input voltage
+#: taextras.py:488
+msgid "SQR1"
+msgstr ""
+
+#: taextras.py:489
+msgid "read square wave 1 voltage"
+msgstr ""
+
+#. TRANS: Read square wave 2 input voltage
+#: taextras.py:491
+msgid "SQR2"
+msgstr ""
+
+#: taextras.py:492
+msgid "read square wave 2 voltage"
+msgstr ""
+
+#. TRANS: Read programmable voltage
+#: taextras.py:494
+msgid "PVS"
+msgstr ""
+
+#: taextras.py:495
+msgid "read programmable voltage"
+msgstr ""
+
+#: taextras.py:496
+msgid "Expeyes device not found"
+msgstr ""
+
+#: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
+#: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
+#: TurtleArt/taconstants.py:336 TurtleArt/taconstants.py:378
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:978
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:993
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1008
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1023
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
+msgid "Title"
+msgstr "शिर्षक"
+
+#: plugins/camera_sensor/camera_sensor.py:95
+#: plugins/camera_sensor/camera_sensor.py:143
+msgid "Average RGB color from camera is pushed to the stack"
+msgstr "Average RGB color from camera is pushed to the stack"
+
+#: plugins/camera_sensor/camera_sensor.py:106
+#: plugins/camera_sensor/camera_sensor.py:113
+#: plugins/camera_sensor/camera_sensor.py:121
+#: plugins/camera_sensor/camera_sensor.py:155
+#: plugins/camera_sensor/camera_sensor.py:163
+msgid "camera output"
+msgstr "कॅमे-याचे आऊटपुट"
+
+#: TurtleArt/tabasics.py:781
+#, fuzzy
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr ""
+"do-while-True operator that uses boolean operators from Numbers palette"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
+msgid "Sugar Journal media object"
+msgstr "शुगर जर्नल मिडिया साधन"
+
+#: TurtleArtActivity.py:682 TurtleArtActivity.py:892 turtleblocks.py:401
+msgid "Step"
+msgstr "पायरी"
+
+#: turtleblocks.py:394
+msgid "Show/hide blocks"
+msgstr "ब्लॉक दाखवा/लपवा"
+
+#: TurtleArtActivity.py:280 TurtleArtActivity.py:882 turtleblocks.py:392
+msgid "Hide palette"
+msgstr "पट्टी लपवा"
+
+#: gnome_plugins/collaboration_plugin.py:125
+msgid "Buddies"
+msgstr "मित्र"
+
+#: gnome_plugins/collaboration_plugin.py:67
+msgid "My Turtle Art session"
+msgstr "माझा टर्टलआर्टचा सत्र"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:165
+msgid "Sugar Journal video object"
+msgstr "शुगर जर्नल व्हिडीयो साधन"
+
+#: TurtleArtActivity.py:630 TurtleArtActivity.py:647 TurtleArtActivity.py:686
+#: TurtleArtActivity.py:832
+msgid "Load example"
+msgstr "उदाहरण दाखवा"
+
+#: turtleblocks.py:279
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr "Configuration directory not writable: %s"
+
+#: TurtleArt/tabasics.py:247 TurtleArt/tawindow.py:3863
+#: TurtleArt/tawindow.py:3869 TurtleArtActivity.py:605
+msgid "heading"
+msgstr "शिर्षक"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:259
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr "शुगर जर्नलमध्ये टर्टल चित्रे SVG फाईल म्हणून जतन करा"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:211
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:226
+msgid "draws text or show media from the Journal"
+msgstr "जर्नलमधून मजकूर किंवा मिडीया दाखवते"
+
+#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
+msgid "RFID"
+msgstr "RFID"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:163
+msgid "video"
+msgstr "व्हिडीयो"
+
+#: turtleblocks.py:240
+msgid "No option action:"
+msgstr "अपर्यायी अॅक्शन"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:256
+msgid "save SVG"
+msgstr "SVG जतन करा"
+
+#: gnome_plugins/uploader_plugin.py:203
+msgid "Failed to upload!"
+msgstr "दाखल अयशस्वी"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:117
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"do-until-True operator that uses boolean operators from Numbers palette"
+
+#: turtleblocks.py:86
+msgid "usage is"
+msgstr "असा वापर करा"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:247
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:258
+msgid "picture name"
+msgstr "चित्राचे नाव"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:103
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:106
+msgid "while"
+msgstr "ज्यावेळी"
+
+#: TurtleArt/tawindow.py:1000 TurtleArt/tawindow.py:1470
+msgid "next"
+msgstr "पुढिल"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:116
+msgid "until"
+msgstr "जोपर्यंत"
+
+#: pysamples/uturn.py:24
+msgid "uturn"
+msgstr "युटर्न घ्या"
+
+#: TurtleArt/tabasics.py:738
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
+msgid "Palette of flow operators"
+msgstr "फ्लो अॉपरेटरची पट्टी"
+
+#: TurtleArt/tabasics.py:794 TurtleArt/tabasics.py:802
+#, fuzzy
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+"do-while-True operator that uses boolean operators from Numbers palette"
+
+#: gnome_plugins/uploader_plugin.py:166
+msgid "Login failed"
+msgstr "प्रवेश अयशस्वी"
+
+#
+#: TurtleArt/tabasics.py:213
+msgid "set heading"
+msgstr "seth"
+
+#: TurtleArtActivity.py:892
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:890
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:895
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: TurtleArtActivity.py:883
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:888
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: TurtleArtActivity.py:601 TurtleArtActivity.py:753
+msgid "Metric coordinates"
+msgstr "मेट्रीक निर्देशक"
+
+#: TurtleArt/tabasics.py:856
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
+msgid "string value"
+msgstr "स्ट्रींग किंमत"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
+msgid "description"
+msgstr "वर्णन"
+
+#: gnome_plugins/uploader_plugin.py:99
+msgid "Username:"
+msgstr "वापरासाठी नाव:"
+
+#: TurtleArtActivity.py:546 TurtleArtActivity.py:575 TurtleArtActivity.py:678
+#: TurtleArtActivity.py:747 turtleblocks.py:382
+msgid "View"
+msgstr "दृश्य"
+
+#: gnome_plugins/uploader_plugin.py:109
+msgid "Password:"
+msgstr "परवलीचा शब्द (पासवर्ड):"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:245
+msgid "save picture"
+msgstr "चित्र जतन करा"
+
+#: TurtleArtActivity.py:451 TurtleArtActivity.py:608 TurtleArtActivity.py:755
+msgid "Rescale coordinates up"
+msgstr "निर्देशकांचे परिमाण वाढवा"
+
+#: gnome_plugins/collaboration_plugin.py:302
+msgid "Register"
+msgstr "नोंदणी करा"
+
+#: turtleblocks.py:376
+msgid "Reset block size"
+msgstr "ब्लॉकची साईझ पुर्ववत करा"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:756
+msgid "turtle"
+msgstr "कासव"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:772
+msgid "hide blocks"
+msgstr "ब्लॉक्स लपवा"
+
+#: plugins/camera_sensor/camera_sensor.py:82
+#: plugins/camera_sensor/camera_sensor.py:130
+msgid "light level detected by camera"
+msgstr "कॅमे-याने प्रकाशाची पातळी तपासली"
+
+#: turtleblocks.py:356
+msgid "Save"
+msgstr "साठवा"
+
+#: TurtleArtActivity.py:166 TurtleArtActivity.py:709 TurtleArtActivity.py:823
+#: TurtleArtActivity.py:853 turtleblocks.py:360
+msgid "Save as Logo"
+msgstr "लोगो मध्ये जतन करा"
+
+#: gnome_plugins/collaboration_plugin.py:115
+msgid "Enable collaboration"
+msgstr "सहयोग कार्यान्वित करा"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
+msgid "query keyboard"
+msgstr "शंका किबोर्ड"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:124
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
+msgid "top"
+msgstr "वरचा"
+
+#: gnome_plugins/uploader_plugin.py:140
+msgid "Submit to Web"
+msgstr "संकेतस्थळावर दाखल करा"
+
+#: TurtleArtActivity.py:596 TurtleArtActivity.py:749 turtleblocks.py:366
+msgid "Cartesian coordinates"
+msgstr "कार्टेशियन निर्देशक"
+
+#: gnome_plugins/collaboration_plugin.py:292
+msgid "Nickname"
+msgstr "टोपणनाव"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:234
+msgid "set scale"
+msgstr "प्रमाण निश्चित करा"
+
+#: TurtleArt/tabasics.py:453
+#, fuzzy
+msgid "white"
+msgstr "ज्यावेळी"
+
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr "रद्द करा"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:994
+msgid "presentation 2x1"
+msgstr "प्रस्तुतीकरण 2x1"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:275
+msgid "media wait"
+msgstr "मिडीया विश्रांती"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:107
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"do-while-True operator that uses boolean operators from Numbers palette"
+
+#: turtleblocks.py:363
+msgid "File"
+msgstr "फाईल"
+
+#: TurtleArt/tabasics.py:557
+#, fuzzy
+msgid "Palette of numeric operators"
+msgstr "फ्लो अॉपरेटरची पट्टी"
+
+#: TurtleArtActivity.py:211
+msgid "snapshot"
+msgstr "फोटो"
+
+#: TurtleArt/tabasics.py:151
+msgid "clean"
+msgstr "साफ"
+
+#: TurtleArtActivity.py:611 TurtleArtActivity.py:757 turtleblocks.py:372
+msgid "Grow blocks"
+msgstr "ब्लॉक मोठे करा"
+
+#: TurtleArtActivity.py:594 TurtleArtActivity.py:748
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
+msgid "Fullscreen"
+msgstr "मोठी स्क्रीन"
+
+#: turtleblocks.py:255
+msgid "File not found"
+msgstr "फाईल मिळाली नाही"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:222
+msgid "show"
+msgstr "दाखवा"
+
+#: TurtleArt/tabasics.py:853 TurtleArt/tabasics.py:854
+#: TurtleArt/tabasics.py:855
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:208
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:223
+msgid "text"
+msgstr "मजकूर"
+
+#: pysamples/grecord.py:215
+msgid "stop"
+msgstr "थांबा"
+
+#: TurtleArt/tabasics.py:225 TurtleArt/tawindow.py:3862
+#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:604
+msgid "xcor"
+msgstr "क्ष निर्देशक"
+
+#: TurtleArtActivity.py:687 turtleblocks.py:408 util/helpbutton.py:45
+msgid "Help"
+msgstr "मदत"
+
+#: turtleblocks.py:448
+msgid "Save project?"
+msgstr "प्रकल्प जतन करायचा का?"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
+msgid "keyboard"
+msgstr "किबोर्ड"
+
+#: TurtleArtActivity.py:598 TurtleArtActivity.py:751 turtleblocks.py:368
+msgid "Polar coordinates"
+msgstr "पोलार निर्देशक"
+
+#: TurtleArt/tabasics.py:325
+msgid "set shade"
+msgstr "रंगाचा दर्जा निश्चीत करा"
+
+#: gnome_plugins/uploader_plugin.py:90
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+"तुमचा प्रकल्प दाखल करण्यासाठी http://turtleartsite.sugarlabs.org या संकेतस्थळावर "
+"तुमचे खाते असणे आवश्यक आहे."
+
+#: TurtleArtActivity.py:681 TurtleArtActivity.py:890 turtleblocks.py:400
+msgid "Run"
+msgstr "धावा"
+
+#: gnome_plugins/uploader_plugin.py:120
+msgid "Title:"
+msgstr "शिर्षक:"
+
+#: plugins/camera_sensor/camera_sensor.py:67
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
+msgid "Palette of media objects"
+msgstr "मिडिया साधनांची पट्टी"
+
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
+msgid "Upload"
+msgstr "दाखल करा"
+
+#: gnome_plugins/collaboration_plugin.py:296
+msgid "Server"
+msgstr "सर्वर"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "presentation 2x2"
+msgstr "प्रस्तुतीकरण 2x2"
+
+#: gnome_plugins/collaboration_plugin.py:132
+msgid "Neighborhood"
+msgstr "प्रांगण (नेबरहूड)"
+
+#: turtleblocks.py:447
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr "तुमचे काम जतन झालेले नाही. बंद करण्याआधी ते जतन करायचे का?"
+
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
+msgid "read value from RFID device"
+msgstr "RFID उपकरणातून किंमत वाचा"
+
+#: pysamples/uturn.py:26
+msgid "make a uturn"
+msgstr "एक युटर्न बनवा"
+
+#: TurtleArt/talogo.py:384 TurtleArtActivity.py:322 TurtleArtActivity.py:684
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1485
+msgid "Show blocks"
+msgstr "ब्लॉक्स दाखवा"
+
+#: pysamples/grecord.py:217
+msgid "play"
+msgstr "खेळा"
+
+#: pysamples/grecord.py:219
+msgid "save"
+msgstr "जतन करा"
+
+#: gnome_plugins/collaboration_plugin.py:304
+msgid "Colors"
+msgstr "रंग"
+
+#: turtleblocks.py:355
+msgid "Open"
+msgstr "उघडा"
+
+#: TurtleArt/tawindow.py:989 TurtleArt/tawindow.py:990
+msgid "orientation"
+msgstr "अनुस्थापन"
+
+#: TurtleArt/tabasics.py:236 TurtleArt/tawindow.py:3862
+#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:605
+msgid "ycor"
+msgstr "य निर्देशक"
+
+#: TurtleArtActivity.py:688 turtleblocks.py:403
+msgid "Stop"
+msgstr "थांबा"
+
+#: TurtleArtActivity.py:587 TurtleArtActivity.py:731 turtleblocks.py:385
+msgid "Copy"
+msgstr "कॉपी"
+
+#: TurtleArtActivity.py:589 TurtleArtActivity.py:732 turtleblocks.py:386
+msgid "Paste"
+msgstr "पेस्ट"
+
+#: gnome_plugins/collaboration_plugin.py:120
+msgid "Activities"
+msgstr "कृती"
+
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "इंटरनेटवर दाखल करा"
+
+#: TurtleArtActivity.py:680 TurtleArtActivity.py:888 turtleblocks.py:399
+msgid "Clean"
+msgstr "साफ"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:151
+msgid "audio"
+msgstr "ध्वनी"
+
+#: turtleblocks.py:396
+msgid "Tools"
+msgstr "साधने"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:381
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr "query for keyboard input (results stored in keyboard block)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:207
+msgid "show aligned"
+msgstr "रांगेतले दाखवा"
+
+#: TurtleArt/tawindow.py:3868 pysamples/grecord.py:205
+msgid "Turtle Art"
+msgstr "टर्टलआर्ट"
+
+#: TurtleArtActivity.py:573 TurtleArtActivity.py:679
+msgid "Project"
+msgstr "प्रकल्प"
+
+#: turtleblocks.py:402
+msgid "Debug"
+msgstr "चूक शोधा"
+
+#: gnome_plugins/collaboration_plugin.py:300
+msgid "Password"
+msgstr "परवलीचा शब्द (पासवर्ड)"
+
+#: gnome_plugins/collaboration_plugin.py:128
+msgid "Share"
+msgstr "सामायिक करा"
+
+#: turtleblocks.py:370
+msgid "Rescale coordinates"
+msgstr "निर्देशकांचे परिमाण बदला"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:781
+msgid "show blocks"
+msgstr "ब्लॉक्स दाखवा"
+
+#: turtleblocks.py:362
+msgid "Quit"
+msgstr "बंद"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:177
+msgid "Sugar Journal description field"
+msgstr "शुगर जर्नल वर्णन क्षेत्र"
+
+#: turtleblocks.py:354
+msgid "New"
+msgstr "नवीन"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:266
+msgid "scale"
+msgstr "प्रमाण"
+
+#: TurtleArtActivity.py:447
+msgid "Rescale coordinates down"
+msgstr "निर्देशकांचे परिमाण कमी करा"
+
+#: gnome_plugins/collaboration_plugin.py:129
+msgid "Configuration"
+msgstr "संरचना (कॉन्फिगरेशन)"
+
+#: gnome_plugins/uploader_plugin.py:130
+msgid "Description:"
+msgstr "वर्णन:"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:140
+msgid "journal"
+msgstr "जर्नल"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
+msgid "Sugar Journal audio object"
+msgstr "शुगर जर्नल ध्वनी साधन"
+
+#: TurtleArt/talogo.py:374 TurtleArtActivity.py:683
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1492
+msgid "Stop turtle"
+msgstr "कासव थांबवा"
+
+#: turtleblocks.py:404
+msgid "Turtle"
+msgstr "कासव"
+
+#: TurtleArt/talogo.py:388 TurtleArtActivity.py:326 TurtleArtActivity.py:894
+msgid "Hide blocks"
+msgstr "ब्लॉक्स लपवा"
+
+#: TurtleArtActivity.py:714 TurtleArtActivity.py:844 TurtleArtActivity.py:866
+msgid "Load Python block"
+msgstr "पायथन ब्लॉक दाखवा"
+
+#: TurtleArtActivity.py:613 TurtleArtActivity.py:758 turtleblocks.py:374
+msgid "Shrink blocks"
+msgstr "ब्लॉक लहान करा"
+
+#: TurtleArtActivity.py:274 turtleblocks.py:390
+msgid "Show palette"
+msgstr "पट्टी दाखवा"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:248
+msgid "saves a picture to the Sugar Journal"
+msgstr "शुगर जर्नलमध्ये चित्र जतन करा"
+
+#: TurtleArtActivity.py:219 TurtleArtActivity.py:643 TurtleArtActivity.py:685
+#: TurtleArtActivity.py:829 TurtleArtActivity.py:856
+msgid "Save snapshot"
+msgstr "फोटो जतन करा"
+
+#: TurtleArt/tabasics.py:843 pysamples/grecord.py:213
+msgid "start"
+msgstr "सुरूवात"
+
+#: gnome_plugins/collaboration_plugin.py:294
+msgid "Account ID"
+msgstr "खाते क्रमांक"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:238
+msgid "sets the scale of media"
+msgstr "मिडीयाचे प्रमाण निश्चित करा"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
+msgid "holds current scale value"
+msgstr "चालू प्रमाणाची किंमत दाखवते"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:964
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:979
+msgid "presentation 1x1"
+msgstr "प्रस्तुतीकरण 1x1"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1009
+msgid "presentation 1x2"
+msgstr "प्रस्तुतीकरण 1x2"
+
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
+msgid "fill screen"
+msgstr "स्क्रीन भरा"
+
+#: turtleblocks.py:357
+msgid "Save as"
+msgstr "यानावे जतन करा"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:277
+msgid "wait for current video or audio to complete"
+msgstr "चालू चित्रफित किंवा ध्वनीफित संपेपर्यंत थांबा"
+
+#: TurtleArtActivity.py:203 TurtleArtActivity.py:708 TurtleArtActivity.py:820
+#: TurtleArtActivity.py:850 turtleblocks.py:358
+msgid "Save as image"
+msgstr "चित्र म्हणून जतन करा"
+
+#: TurtleArtActivity.py:541 TurtleArtActivity.py:577 TurtleArtActivity.py:677
+#: TurtleArtActivity.py:730 turtleblocks.py:387
+msgid "Edit"
+msgstr "बदल करा"
 
 #. TRANS: "name" option from activity.info file
 msgid "TurtleBlocks"
@@ -49,10 +2179,6 @@ msgstr ""
 #: TurtleArt/tabasics.py:143
 msgid "moves turtle backward"
 msgstr ""
-
-#: TurtleArt/tabasics.py:151
-msgid "clean"
-msgstr "साफ"
 
 #: TurtleArt/tabasics.py:154
 msgid "clears the screen and reset the turtle"
@@ -96,32 +2222,14 @@ msgstr ""
 msgid "set xy"
 msgstr ""
 
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
-msgid "x"
-msgstr ""
-
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
-msgid "y"
-msgstr ""
-
 #: TurtleArt/tabasics.py:203 TurtleArt/tabasics.py:269
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr ""
 
-#
-#: TurtleArt/tabasics.py:213
-msgid "set heading"
-msgstr "seth"
-
 #: TurtleArt/tabasics.py:217
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr ""
-
-#: TurtleArt/tabasics.py:225 TurtleArt/tawindow.py:3862
-#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:604
-msgid "xcor"
-msgstr "क्ष निर्देशक"
 
 #: TurtleArt/tabasics.py:226
 msgid ""
@@ -129,21 +2237,11 @@ msgid ""
 "number block)"
 msgstr ""
 
-#: TurtleArt/tabasics.py:236 TurtleArt/tawindow.py:3862
-#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:605
-msgid "ycor"
-msgstr "य निर्देशक"
-
 #: TurtleArt/tabasics.py:237
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
 msgstr ""
-
-#: TurtleArt/tabasics.py:247 TurtleArt/tawindow.py:3863
-#: TurtleArt/tawindow.py:3869 TurtleArtActivity.py:605
-msgid "heading"
-msgstr "शिर्षक"
 
 #: TurtleArt/tabasics.py:248
 msgid ""
@@ -153,16 +2251,6 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:282
 msgid "Palette of pen commands"
-msgstr ""
-
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
-msgid "fill screen"
-msgstr "स्क्रीन भरा"
-
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
-#: TurtleArt/tabasics.py:348
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1158
-msgid "color"
 msgstr ""
 
 #: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
@@ -189,10 +2277,6 @@ msgstr ""
 #: TurtleArt/tabasics.py:317
 msgid "sets color of the line drawn by the turtle"
 msgstr ""
-
-#: TurtleArt/tabasics.py:325
-msgid "set shade"
-msgstr "रंगाचा दर्जा निश्चीत करा"
 
 #: TurtleArt/tabasics.py:329
 msgid "sets shade of the line drawn by the turtle"
@@ -298,11 +2382,6 @@ msgstr ""
 msgid "purple"
 msgstr ""
 
-#: TurtleArt/tabasics.py:453
-#, fuzzy
-msgid "white"
-msgstr "ज्यावेळी"
-
 #: TurtleArt/tabasics.py:454
 msgid "black"
 msgstr ""
@@ -322,11 +2401,6 @@ msgstr ""
 #: TurtleArt/tabasics.py:474
 msgid "sets size of text drawn by the turtle"
 msgstr ""
-
-#: TurtleArt/tabasics.py:557
-#, fuzzy
-msgid "Palette of numeric operators"
-msgstr "फ्लो अॉपरेटरची पट्टी"
 
 #: TurtleArt/tabasics.py:563
 msgid "plus"
@@ -461,11 +2535,6 @@ msgstr ""
 msgid "logical OR operator"
 msgstr ""
 
-#: TurtleArt/tabasics.py:738
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
-msgid "Palette of flow operators"
-msgstr "फ्लो अॉपरेटरची पट्टी"
-
 #: TurtleArt/tabasics.py:743
 msgid "wait"
 msgstr ""
@@ -502,11 +2571,6 @@ msgstr ""
 msgid "if then"
 msgstr ""
 
-#: TurtleArt/tabasics.py:781
-#, fuzzy
-msgid "if-then operator that uses boolean operators from Numbers palette"
-msgstr "do-while-True operator that uses boolean operators from Numbers palette"
-
 #: TurtleArt/tabasics.py:789
 msgid "else"
 msgstr ""
@@ -514,11 +2578,6 @@ msgstr ""
 #: TurtleArt/tabasics.py:793 TurtleArt/tabasics.py:801
 msgid "if then else"
 msgstr ""
-
-#: TurtleArt/tabasics.py:794 TurtleArt/tabasics.py:802
-#, fuzzy
-msgid "if-then-else operator that uses boolean operators from Numbers palette"
-msgstr "do-while-True operator that uses boolean operators from Numbers palette"
 
 #: TurtleArt/tabasics.py:811
 msgid "horizontal space"
@@ -548,29 +2607,9 @@ msgstr ""
 msgid "Palette of variable blocks"
 msgstr ""
 
-#: TurtleArt/tabasics.py:843 pysamples/grecord.py:213
-msgid "start"
-msgstr "सुरूवात"
-
 #: TurtleArt/tabasics.py:846
 msgid "connects action to toolbar run buttons"
 msgstr ""
-
-#: TurtleArt/tabasics.py:853 TurtleArt/tabasics.py:854
-#: TurtleArt/tabasics.py:855
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:208
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:223
-msgid "text"
-msgstr "मजकूर"
-
-#: TurtleArt/tabasics.py:856
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
-msgid "string value"
-msgstr "स्ट्रींग किंमत"
 
 #: TurtleArt/tabasics.py:860 TurtleArt/tabasics.py:863
 #: TurtleArt/tabasics.py:871 TurtleArt/tabasics.py:875
@@ -626,10 +2665,6 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
 msgid "box"
-msgstr ""
-
-#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
-msgid "value"
 msgstr ""
 
 #: TurtleArt/tabasics.py:932 TurtleArt/tabasics.py:945
@@ -704,32 +2739,6 @@ msgstr ""
 msgid "Share selected blocks"
 msgstr ""
 
-#: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
-#: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
-#: TurtleArt/taconstants.py:336 TurtleArt/taconstants.py:378
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:978
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:993
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1008
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1023
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
-msgid "Title"
-msgstr "शिर्षक"
-
-#: TurtleArt/talogo.py:374 TurtleArtActivity.py:683
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1492
-msgid "Stop turtle"
-msgstr "कासव थांबवा"
-
-#: TurtleArt/talogo.py:384 TurtleArtActivity.py:322 TurtleArtActivity.py:684
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1485
-msgid "Show blocks"
-msgstr "ब्लॉक्स दाखवा"
-
-#: TurtleArt/talogo.py:388 TurtleArtActivity.py:326 TurtleArtActivity.py:894
-msgid "Hide blocks"
-msgstr "ब्लॉक्स लपवा"
-
 #: TurtleArt/talogo.py:511
 msgid "did not output to"
 msgstr ""
@@ -767,14 +2776,6 @@ msgstr ""
 msgid "click to open"
 msgstr ""
 
-#: TurtleArt/tawindow.py:989 TurtleArt/tawindow.py:990
-msgid "orientation"
-msgstr "अनुस्थापन"
-
-#: TurtleArt/tawindow.py:1000 TurtleArt/tawindow.py:1470
-msgid "next"
-msgstr "पुढिल"
-
 #: TurtleArt/tawindow.py:1012 TurtleArt/tawindow.py:1013
 #: TurtleArt/tawindow.py:1490
 msgid "shift"
@@ -790,32 +2791,9 @@ msgstr ""
 msgid "Select blocks to share"
 msgstr ""
 
-#: TurtleArt/tawindow.py:3868 pysamples/grecord.py:205
-msgid "Turtle Art"
-msgstr "टर्टलआर्ट"
-
 #: TurtleArt/tawindow.py:3977
 msgid "image"
 msgstr ""
-
-#: TurtleArtActivity.py:166 TurtleArtActivity.py:709 TurtleArtActivity.py:823
-#: TurtleArtActivity.py:853 turtleblocks.py:360
-msgid "Save as Logo"
-msgstr "लोगो मध्ये जतन करा"
-
-#: TurtleArtActivity.py:203 TurtleArtActivity.py:708 TurtleArtActivity.py:820
-#: TurtleArtActivity.py:850 turtleblocks.py:358
-msgid "Save as image"
-msgstr "चित्र म्हणून जतन करा"
-
-#: TurtleArtActivity.py:211
-msgid "snapshot"
-msgstr "फोटो"
-
-#: TurtleArtActivity.py:219 TurtleArtActivity.py:643 TurtleArtActivity.py:685
-#: TurtleArtActivity.py:829 TurtleArtActivity.py:856
-msgid "Save snapshot"
-msgstr "फोटो जतन करा"
 
 #: TurtleArtActivity.py:260 TurtleArtActivity.py:616 TurtleArtActivity.py:759
 #: turtleblocks.py:378
@@ -826,102 +2804,14 @@ msgstr ""
 msgid "Turn on hover help"
 msgstr ""
 
-#: TurtleArtActivity.py:274 turtleblocks.py:390
-msgid "Show palette"
-msgstr "पट्टी दाखवा"
-
-#: TurtleArtActivity.py:280 TurtleArtActivity.py:882 turtleblocks.py:392
-msgid "Hide palette"
-msgstr "पट्टी लपवा"
-
-#: TurtleArtActivity.py:447
-msgid "Rescale coordinates down"
-msgstr "निर्देशकांचे परिमाण कमी करा"
-
-#: TurtleArtActivity.py:451 TurtleArtActivity.py:608 TurtleArtActivity.py:755
-msgid "Rescale coordinates up"
-msgstr "निर्देशकांचे परिमाण वाढवा"
-
-#: TurtleArtActivity.py:541 TurtleArtActivity.py:577 TurtleArtActivity.py:677
-#: TurtleArtActivity.py:730 turtleblocks.py:387
-msgid "Edit"
-msgstr "बदल करा"
-
-#: TurtleArtActivity.py:546 TurtleArtActivity.py:575 TurtleArtActivity.py:678
-#: TurtleArtActivity.py:747 turtleblocks.py:382
-msgid "View"
-msgstr "दृश्य"
-
-#: TurtleArtActivity.py:573 TurtleArtActivity.py:679
-msgid "Project"
-msgstr "प्रकल्प"
-
 #: TurtleArtActivity.py:579 TurtleArtActivity.py:676 TurtleArtActivity.py:705
 #: TurtleArtActivity.py:707 TurtleArtActivity.py:815
 msgid "Save/Load"
 msgstr ""
 
-#: TurtleArtActivity.py:587 TurtleArtActivity.py:731 turtleblocks.py:385
-msgid "Copy"
-msgstr "कॉपी"
-
-#: TurtleArtActivity.py:589 TurtleArtActivity.py:732 turtleblocks.py:386
-msgid "Paste"
-msgstr "पेस्ट"
-
 #: TurtleArtActivity.py:591
 msgid "Restore blocks from trash"
 msgstr ""
-
-#: TurtleArtActivity.py:594 TurtleArtActivity.py:748
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
-msgid "Fullscreen"
-msgstr "मोठी स्क्रीन"
-
-#: TurtleArtActivity.py:596 TurtleArtActivity.py:749 turtleblocks.py:366
-msgid "Cartesian coordinates"
-msgstr "कार्टेशियन निर्देशक"
-
-#: TurtleArtActivity.py:598 TurtleArtActivity.py:751 turtleblocks.py:368
-msgid "Polar coordinates"
-msgstr "पोलार निर्देशक"
-
-#: TurtleArtActivity.py:601 TurtleArtActivity.py:753
-msgid "Metric coordinates"
-msgstr "मेट्रीक निर्देशक"
-
-#: TurtleArtActivity.py:611 TurtleArtActivity.py:757 turtleblocks.py:372
-msgid "Grow blocks"
-msgstr "ब्लॉक मोठे करा"
-
-#: TurtleArtActivity.py:613 TurtleArtActivity.py:758 turtleblocks.py:374
-msgid "Shrink blocks"
-msgstr "ब्लॉक लहान करा"
-
-#: TurtleArtActivity.py:630 TurtleArtActivity.py:647 TurtleArtActivity.py:686
-#: TurtleArtActivity.py:832
-msgid "Load example"
-msgstr "उदाहरण दाखवा"
-
-#: TurtleArtActivity.py:680 TurtleArtActivity.py:888 turtleblocks.py:399
-msgid "Clean"
-msgstr "साफ"
-
-#: TurtleArtActivity.py:681 TurtleArtActivity.py:890 turtleblocks.py:400
-msgid "Run"
-msgstr "धावा"
-
-#: TurtleArtActivity.py:682 TurtleArtActivity.py:892 turtleblocks.py:401
-msgid "Step"
-msgstr "पायरी"
-
-#: TurtleArtActivity.py:687 turtleblocks.py:408 util/helpbutton.py:45
-msgid "Help"
-msgstr "मदत"
-
-#: TurtleArtActivity.py:688 turtleblocks.py:403
-msgid "Stop"
-msgstr "थांबा"
 
 #: TurtleArtActivity.py:710 TurtleArtActivity.py:836 TurtleArtActivity.py:858
 msgid "Load project"
@@ -931,10 +2821,6 @@ msgstr ""
 msgid "Load plugin"
 msgstr ""
 
-#: TurtleArtActivity.py:714 TurtleArtActivity.py:844 TurtleArtActivity.py:866
-msgid "Load Python block"
-msgstr "पायथन ब्लॉक दाखवा"
-
 #: TurtleArtActivity.py:766
 msgid "Palettes"
 msgstr ""
@@ -942,26 +2828,6 @@ msgstr ""
 #: TurtleArtActivity.py:810
 msgid "Sharing blocks disabled"
 msgstr ""
-
-#: TurtleArtActivity.py:883
-msgid "<Ctrl>p"
-msgstr "<Ctrl>p"
-
-#: TurtleArtActivity.py:888
-msgid "<Ctrl>e"
-msgstr "<Ctrl>e"
-
-#: TurtleArtActivity.py:890
-msgid "<Ctrl>r"
-msgstr "<Ctrl>r"
-
-#: TurtleArtActivity.py:892
-msgid "<Ctrl>w"
-msgstr "<Ctrl>w"
-
-#: TurtleArtActivity.py:895
-msgid "<Ctrl>s"
-msgstr "<Ctrl>s"
 
 #: TurtleArtActivity.py:1049 TurtleArtActivity.py:1054
 #: TurtleArtActivity.py:1121
@@ -982,115 +2848,13 @@ msgstr ""
 msgid "Do you want to reinstall %s?"
 msgstr ""
 
-#: gnome_plugins/collaboration_plugin.py:67
-msgid "My Turtle Art session"
-msgstr "माझा टर्टलआर्टचा सत्र"
-
-#: gnome_plugins/collaboration_plugin.py:115
-msgid "Enable collaboration"
-msgstr "सहयोग कार्यान्वित करा"
-
-#: gnome_plugins/collaboration_plugin.py:120
-msgid "Activities"
-msgstr "कृती"
-
-#: gnome_plugins/collaboration_plugin.py:125
-msgid "Buddies"
-msgstr "मित्र"
-
-#: gnome_plugins/collaboration_plugin.py:128
-msgid "Share"
-msgstr "सामायिक करा"
-
-#: gnome_plugins/collaboration_plugin.py:129
-msgid "Configuration"
-msgstr "संरचना (कॉन्फिगरेशन)"
-
-#: gnome_plugins/collaboration_plugin.py:132
-msgid "Neighborhood"
-msgstr "प्रांगण (नेबरहूड)"
-
-#: gnome_plugins/collaboration_plugin.py:292
-msgid "Nickname"
-msgstr "टोपणनाव"
-
-#: gnome_plugins/collaboration_plugin.py:294
-msgid "Account ID"
-msgstr "खाते क्रमांक"
-
-#: gnome_plugins/collaboration_plugin.py:296
-msgid "Server"
-msgstr "सर्वर"
-
 #: gnome_plugins/collaboration_plugin.py:298
 msgid "Port"
 msgstr "पोर्ट"
 
-#: gnome_plugins/collaboration_plugin.py:300
-msgid "Password"
-msgstr "परवलीचा शब्द (पासवर्ड)"
-
-#: gnome_plugins/collaboration_plugin.py:302
-msgid "Register"
-msgstr "नोंदणी करा"
-
-#: gnome_plugins/collaboration_plugin.py:304
-msgid "Colors"
-msgstr "रंग"
-
-#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
-#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
-#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
-msgid "Upload"
-msgstr "दाखल करा"
-
 #: gnome_plugins/fb_plugin.py:87
 msgid "Facebook wall post"
 msgstr ""
-
-#: gnome_plugins/uploader_plugin.py:68
-msgid "Upload to Web"
-msgstr "इंटरनेटवर दाखल करा"
-
-#: gnome_plugins/uploader_plugin.py:90
-msgid ""
-"You must have an account at http://turtleartsite.sugarlabs.org to upload "
-"your project."
-msgstr ""
-"तुमचा प्रकल्प दाखल करण्यासाठी http://turtleartsite.sugarlabs.org या "
-"संकेतस्थळावर तुमचे खाते असणे आवश्यक आहे."
-
-#: gnome_plugins/uploader_plugin.py:99
-msgid "Username:"
-msgstr "वापरासाठी नाव:"
-
-#: gnome_plugins/uploader_plugin.py:109
-msgid "Password:"
-msgstr "परवलीचा शब्द (पासवर्ड):"
-
-#: gnome_plugins/uploader_plugin.py:120
-msgid "Title:"
-msgstr "शिर्षक:"
-
-#: gnome_plugins/uploader_plugin.py:130
-msgid "Description:"
-msgstr "वर्णन:"
-
-#: gnome_plugins/uploader_plugin.py:140
-msgid "Submit to Web"
-msgstr "संकेतस्थळावर दाखल करा"
-
-#: gnome_plugins/uploader_plugin.py:144
-msgid "Cancel"
-msgstr "रद्द करा"
-
-#: gnome_plugins/uploader_plugin.py:166
-msgid "Login failed"
-msgstr "प्रवेश अयशस्वी"
-
-#: gnome_plugins/uploader_plugin.py:203
-msgid "Failed to upload!"
-msgstr "दाखल अयशस्वी"
 
 #: plugins/accelerometer/accelerometer.py:49
 #: plugins/audio_sensors/audio_sensors.py:75
@@ -1109,11 +2873,6 @@ msgstr ""
 #: plugins/accelerometer/accelerometer.py:65
 msgid "push acceleration in x, y, z to heap"
 msgstr ""
-
-#: plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
-msgid "sound"
-msgstr "आवाज"
 
 #: plugins/audio_sensors/audio_sensors.py:84
 #: plugins/audio_sensors/audio_sensors.py:99
@@ -1141,13 +2900,6 @@ msgstr ""
 msgid "microphone input pitch"
 msgstr ""
 
-#: plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
-msgid "resistance"
-msgstr ""
-
 #: plugins/audio_sensors/audio_sensors.py:152
 #: plugins/audio_sensors/audio_sensors.py:166
 #: plugins/audio_sensors/audio_sensors.py:180
@@ -1169,170 +2921,14 @@ msgstr ""
 msgid "microphone input voltage"
 msgstr ""
 
-#: plugins/camera_sensor/camera_sensor.py:67
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
-msgid "Palette of media objects"
-msgstr "मिडिया साधनांची पट्टी"
-
-#: plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
-msgid "brightness"
-msgstr "प्रकाशमान"
-
-#: plugins/camera_sensor/camera_sensor.py:82
-#: plugins/camera_sensor/camera_sensor.py:130
-msgid "light level detected by camera"
-msgstr "कॅमे-याने प्रकाशाची पातळी तपासली"
-
-#: plugins/camera_sensor/camera_sensor.py:95
-#: plugins/camera_sensor/camera_sensor.py:143
-msgid "Average RGB color from camera is pushed to the stack"
-msgstr "Average RGB color from camera is pushed to the stack"
-
-#: plugins/camera_sensor/camera_sensor.py:106
-#: plugins/camera_sensor/camera_sensor.py:113
-#: plugins/camera_sensor/camera_sensor.py:121
-#: plugins/camera_sensor/camera_sensor.py:155
-#: plugins/camera_sensor/camera_sensor.py:163
-msgid "camera output"
-msgstr "कॅमे-याचे आऊटपुट"
-
 #: plugins/light_sensor/light_sensor.py:58
 #: plugins/light_sensor/light_sensor.py:65
 msgid "light level detected by light sensor"
 msgstr ""
 
-#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
-msgid "RFID"
-msgstr "RFID"
-
-#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
-msgid "read value from RFID device"
-msgstr "RFID उपकरणातून किंमत वाचा"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:103
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:106
-msgid "while"
-msgstr "ज्यावेळी"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:107
-msgid "do-while-True operator that uses boolean operators from Numbers palette"
-msgstr "do-while-True operator that uses boolean operators from Numbers palette"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:116
-msgid "until"
-msgstr "जोपर्यंत"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:117
-msgid "do-until-True operator that uses boolean operators from Numbers palette"
-msgstr "do-until-True operator that uses boolean operators from Numbers palette"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:124
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
-msgid "top"
-msgstr "वरचा"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:126
 msgid "top of a collapsible stack"
 msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:140
-msgid "journal"
-msgstr "जर्नल"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
-msgid "Sugar Journal media object"
-msgstr "शुगर जर्नल मिडिया साधन"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:151
-msgid "audio"
-msgstr "ध्वनी"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
-msgid "Sugar Journal audio object"
-msgstr "शुगर जर्नल ध्वनी साधन"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:163
-msgid "video"
-msgstr "व्हिडीयो"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:165
-msgid "Sugar Journal video object"
-msgstr "शुगर जर्नल व्हिडीयो साधन"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
-msgid "description"
-msgstr "वर्णन"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:177
-msgid "Sugar Journal description field"
-msgstr "शुगर जर्नल वर्णन क्षेत्र"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:222
-msgid "show"
-msgstr "दाखवा"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:211
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:226
-msgid "draws text or show media from the Journal"
-msgstr "जर्नलमधून मजकूर किंवा मिडीया दाखवते"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:207
-msgid "show aligned"
-msgstr "रांगेतले दाखवा"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:234
-msgid "set scale"
-msgstr "प्रमाण निश्चित करा"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:238
-msgid "sets the scale of media"
-msgstr "मिडीयाचे प्रमाण निश्चित करा"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:245
-msgid "save picture"
-msgstr "चित्र जतन करा"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:247
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:258
-msgid "picture name"
-msgstr "चित्राचे नाव"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:248
-msgid "saves a picture to the Sugar Journal"
-msgstr "शुगर जर्नलमध्ये चित्र जतन करा"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:256
-msgid "save SVG"
-msgstr "SVG जतन करा"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:259
-msgid "saves turtle graphics as an SVG file in the Sugar Journal"
-msgstr "शुगर जर्नलमध्ये टर्टल चित्रे SVG फाईल म्हणून जतन करा"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:266
-msgid "scale"
-msgstr "प्रमाण"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
-msgid "holds current scale value"
-msgstr "चालू प्रमाणाची किंमत दाखवते"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:275
-msgid "media wait"
-msgstr "मिडीया विश्रांती"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:277
-msgid "wait for current video or audio to complete"
-msgstr "चालू चित्रफित किंवा ध्वनीफित संपेपर्यंत थांबा"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
 msgid "media stop"
@@ -1416,18 +3012,6 @@ msgstr ""
 msgid "returns mouse y coordinate"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
-msgid "query keyboard"
-msgstr "शंका किबोर्ड"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:381
-msgid "query for keyboard input (results stored in keyboard block)"
-msgstr "query for keyboard input (results stored in keyboard block)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
-msgid "keyboard"
-msgstr "किबोर्ड"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
 msgid "holds results of query-keyboard block as ASCII"
 msgstr ""
@@ -1446,10 +3030,6 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:437
 msgid "returns the color that the turtle \"sees\""
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:445
-msgid "time"
 msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:448
@@ -1581,11 +3161,6 @@ msgstr ""
 msgid "displays polar coordinates"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:756
-msgid "turtle"
-msgstr "कासव"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
 msgid "chooses which turtle to command"
 msgstr ""
@@ -1632,17 +3207,9 @@ msgstr ""
 msgid "Palette of presentation templates"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:772
-msgid "hide blocks"
-msgstr "ब्लॉक्स लपवा"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
 msgid "declutters canvas by hiding blocks"
 msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:781
-msgid "show blocks"
-msgstr "ब्लॉक्स दाखवा"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:783
 msgid "restores hidden blocks"
@@ -1700,10 +3267,6 @@ msgstr ""
 msgid "ycor of bottom of screen"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
-msgid "width"
-msgstr ""
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
 msgid "the canvas width"
 msgstr ""
@@ -1714,10 +3277,6 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:889
 msgid "ycor of top of screen"
-msgstr ""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894
-msgid "height"
 msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
@@ -1748,23 +3307,6 @@ msgstr ""
 msgid "bottom y"
 msgstr ""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:964
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:979
-msgid "presentation 1x1"
-msgstr "प्रस्तुतीकरण 1x1"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:994
-msgid "presentation 2x1"
-msgstr "प्रस्तुतीकरण 2x1"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1009
-msgid "presentation 1x2"
-msgstr "प्रस्तुतीकरण 1x2"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
-msgid "presentation 2x2"
-msgstr "प्रस्तुतीकरण 2x2"
-
 #: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
 msgstr ""
@@ -1792,122 +3334,13 @@ msgstr ""
 msgid "push destination rgb value to heap"
 msgstr ""
 
-#: pysamples/grecord.py:215
-msgid "stop"
-msgstr "थांबा"
-
-#: pysamples/grecord.py:217
-msgid "play"
-msgstr "खेळा"
-
-#: pysamples/grecord.py:219
-msgid "save"
-msgstr "जतन करा"
-
 #: pysamples/journal-stats.py:78
 msgid "other"
 msgstr ""
 
-#: pysamples/uturn.py:24
-msgid "uturn"
-msgstr "युटर्न घ्या"
-
-#: pysamples/uturn.py:26
-msgid "make a uturn"
-msgstr "एक युटर्न बनवा"
-
-#: turtleblocks.py:86
-msgid "usage is"
-msgstr "असा वापर करा"
-
-#: turtleblocks.py:240
-msgid "No option action:"
-msgstr "अपर्यायी अॅक्शन"
-
-#: turtleblocks.py:255
-msgid "File not found"
-msgstr "फाईल मिळाली नाही"
-
-#: turtleblocks.py:279
-#, python-format
-msgid "Configuration directory not writable: %s"
-msgstr "Configuration directory not writable: %s"
-
-#: turtleblocks.py:354
-msgid "New"
-msgstr "नवीन"
-
-#: turtleblocks.py:355
-msgid "Open"
-msgstr "उघडा"
-
-#: turtleblocks.py:356
-msgid "Save"
-msgstr "साठवा"
-
-#: turtleblocks.py:357
-msgid "Save as"
-msgstr "यानावे जतन करा"
-
-#: turtleblocks.py:362
-msgid "Quit"
-msgstr "बंद"
-
-#: turtleblocks.py:363
-msgid "File"
-msgstr "फाईल"
-
-#: turtleblocks.py:370
-msgid "Rescale coordinates"
-msgstr "निर्देशकांचे परिमाण बदला"
-
-#: turtleblocks.py:376
-msgid "Reset block size"
-msgstr "ब्लॉकची साईझ पुर्ववत करा"
-
-#: turtleblocks.py:394
-msgid "Show/hide blocks"
-msgstr "ब्लॉक दाखवा/लपवा"
-
-#: turtleblocks.py:396
-msgid "Tools"
-msgstr "साधने"
-
-#: turtleblocks.py:402
-msgid "Debug"
-msgstr "चूक शोधा"
-
-#: turtleblocks.py:404
-msgid "Turtle"
-msgstr "कासव"
-
 #: turtleblocks.py:407
 msgid "About..."
 msgstr ""
-
-#: turtleblocks.py:447
-msgid "You have unsaved work. Would you like to save before quitting?"
-msgstr "तुमचे काम जतन झालेले नाही. बंद करण्याआधी ते जतन करायचे का?"
-
-#: turtleblocks.py:448
-msgid "Save project?"
-msgstr "प्रकल्प जतन करायचा का?"
-
-#, fuzzy
-#~ msgid "Palette of physics blocks"
-#~ msgstr "सेन्सर ब्लॉक्सची पट्टी"
-
-#, fuzzy
-#~ msgid "Palette of WeDo blocks"
-#~ msgstr "सेन्सर ब्लॉक्सची पट्टी"
-
-#, fuzzy
-#~ msgid "port"
-#~ msgstr "पोर्ट"
-
-#, fuzzy
-#~ msgid "Palette of Expeyes blocks"
-#~ msgstr "सेन्सर ब्लॉक्सची पट्टी"
 
 #, fuzzy
 #~ msgid "Palette of Arduino blocks"

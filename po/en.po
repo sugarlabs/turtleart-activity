@@ -2,8 +2,37 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-03 00:32-0400\n"
+"PO-Revision-Date: 2013-04-03 08:17+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+"#-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-03 00:32-0400\n"
+"PO-Revision-Date: 2013-04-03 08:17+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+"#-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-24 00:31-0500\n"
@@ -18,697 +47,1869 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #. TRANS: "name" option from activity.info file
-msgid "TurtleBlocks"
-msgstr "TurtleBlocks"
-
 #. TRANS: "summary" option from activity.info file
 #. TRANS: "description" option from activity.info file
-msgid ""
-"A Logo-inspired turtle that draws colorful pictures with snap-together "
-"visual programming blocks"
-msgstr ""
-"A Logo-inspired turtle that draws colorful pictures with snap-together "
-"visual programming blocks"
+msgid "turtleart-extras (master)"
+msgstr "turtleart-extras (master)"
 
-#: TurtleArt/tabasics.py:123
-msgid "Palette of turtle commands"
-msgstr "Palette of turtle commands"
+#: taextras.py:37
+msgid "Turtle Blocks"
+msgstr "Turtle Blocks"
 
-#: TurtleArt/tabasics.py:128
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
-msgid "forward"
-msgstr "forward"
+#: taextras.py:38 TurtleArt/tawindow.py:3868 pysamples/grecord.py:205
+msgid "Turtle Art"
+msgstr "Turtle Art"
 
-#: TurtleArt/tabasics.py:132
-msgid "moves turtle forward"
-msgstr "moves turtle forward"
+#: taextras.py:42
+msgid "Turtle Art Mini"
+msgstr "Turtle Art Mini"
 
-#: TurtleArt/tabasics.py:139
-msgid "back"
-msgstr "back"
+#: taextras.py:46
+msgid "Turtle Confusion"
+msgstr "Turtle Confusion"
 
-#: TurtleArt/tabasics.py:143
-msgid "moves turtle backward"
-msgstr "moves turtle backward"
+#: taextras.py:47 taextras.py:52
+msgid "Select a challenge"
+msgstr "Select a challenge"
 
-#: TurtleArt/tabasics.py:151
-msgid "clean"
-msgstr "clean"
+#: taextras.py:51
+msgid "Amazonas Tortuga"
+msgstr "Amazonas Tortuga"
 
-#: TurtleArt/tabasics.py:154
-msgid "clears the screen and reset the turtle"
-msgstr "clears the screen and reset the turtle"
+#: taextras.py:58
+msgid "Palette of Mexican pesos"
+msgstr "Palette of Mexican pesos"
 
-#: TurtleArt/tabasics.py:162
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
-msgid "left"
-msgstr "left"
+#: taextras.py:59
+msgid "Palette of Colombian pesos"
+msgstr "Palette of Colombian pesos"
 
-#: TurtleArt/tabasics.py:166
-msgid "turns turtle counterclockwise (angle in degrees)"
-msgstr "turns turtle counterclockwise (angle in degrees)"
+#: taextras.py:60
+msgid "Palette of Rwandan francs"
+msgstr "Palette of Rwandan francs"
 
-#: TurtleArt/tabasics.py:174
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:878
-msgid "right"
-msgstr "right"
+#: taextras.py:61
+msgid "Palette of US dollars"
+msgstr "Palette of US dollars"
 
-#: TurtleArt/tabasics.py:178
-msgid "turns turtle clockwise (angle in degrees)"
-msgstr "turns turtle clockwise (angle in degrees)"
+#: taextras.py:62
+msgid "Palette of Australian dollars"
+msgstr "Palette of Australian dollars"
 
-#: TurtleArt/tabasics.py:186
-msgid "arc"
-msgstr "arc"
+#: taextras.py:63
+msgid "Palette of Paraguayan Guaranies"
+msgstr "Palette of Paraguayan Guaranies"
 
-#: TurtleArt/tabasics.py:186
-msgid "angle"
-msgstr "angle"
+#: taextras.py:64
+msgid "Palette of Peruvian Nuevo Soles"
+msgstr "Palette of Peruvian Nuevo Soles"
 
-#: TurtleArt/tabasics.py:186
-msgid "radius"
-msgstr "radius"
+#: taextras.py:65
+msgid "Palette of Uruguayan Pesos"
+msgstr "Palette of Uruguayan Pesos"
 
-#: TurtleArt/tabasics.py:190
-msgid "moves turtle along an arc"
-msgstr "moves turtle along an arc"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Butia is a Robot Project from Uruguay
+#. (http://www.fing.edu.uy/inco/proyectos/butia/)
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Butia is a Robot Project from Uruguay
+#. (http://www.fing.edu.uy/inco/proyectos/butia/)
+#: taextras.py:71
+msgid "TurtleBots"
+msgstr "TurtleBots"
 
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
-msgid "set xy"
-msgstr "set xy"
+#. TRANS: summary of TurtleBots activity
+#: taextras.py:73
+msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
+msgstr "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
 
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
-msgid "x"
-msgstr "x"
+#: taextras.py:74
+msgid "ERROR: The speed must be a value between 0 and 1023"
+msgstr "ERROR: The speed must be a value between 0 and 1023"
 
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
-msgid "y"
-msgstr "y"
+#: taextras.py:75
+msgid "ERROR: The pin must be between 1 and 8"
+msgstr "ERROR: The pin must be between 1 and 8"
 
-#: TurtleArt/tabasics.py:203 TurtleArt/tabasics.py:269
-msgid ""
-"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-msgstr ""
-"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+#: taextras.py:76
+msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
+msgstr "ERROR: The value must be 0 or 1, LOW or HIGH"
 
-#
-#: TurtleArt/tabasics.py:213
-msgid "set heading"
-msgstr "seth"
+#: taextras.py:77
+msgid "ERROR: The mode must be INPUT or OUTPUT."
+msgstr "ERROR: The mode must be INPUT or OUTPUT."
 
-#: TurtleArt/tabasics.py:217
-msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
-msgstr "sets the heading of the turtle (0 is towards the top of the screen.)"
+#: taextras.py:78
+msgid "Turn LED on and off: 0 is off; 1 is on"
+msgstr "Turn LED on and off: 0 is off; 1 is on"
 
-#: TurtleArt/tabasics.py:225 TurtleArt/tawindow.py:3862
-#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:604
-msgid "xcor"
-msgstr "xcor"
+#: taextras.py:79
+msgid "returns the gray level"
+msgstr "returns the object gray level"
 
-#: TurtleArt/tabasics.py:226
-msgid ""
-"holds current x-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr ""
-"holds current x-coordinate value of the turtle (can be used in place of a "
-"number block)"
+#: taextras.py:80
+msgid "returns 1 when the button is press and 0 otherwise"
+msgstr "returns 1 when the button is press and 0 otherwise"
 
-#: TurtleArt/tabasics.py:236 TurtleArt/tawindow.py:3862
-#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:605
-msgid "ycor"
-msgstr "ycor"
+#: taextras.py:81
+msgid "returns the light level"
+msgstr "returns the light level"
 
-#: TurtleArt/tabasics.py:237
-msgid ""
-"holds current y-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr ""
-"holds current y-coordinate value of the turtle (can be used in place of a "
-"number block)"
+#: taextras.py:82
+msgid "returns the temperature"
+msgstr "returns the temperature"
 
-#: TurtleArt/tabasics.py:247 TurtleArt/tawindow.py:3863
-#: TurtleArt/tawindow.py:3869 TurtleArtActivity.py:605
-msgid "heading"
-msgstr "heading"
+#: taextras.py:83
+msgid "returns the distance from the object in front of the sensor"
+msgstr "returns the distance from the object in front of the sensor"
 
-#: TurtleArt/tabasics.py:248
-msgid ""
-"holds current heading value of the turtle (can be used in place of a number "
-"block)"
-msgstr ""
-"holds current heading value of the turtle (can be used in place of a number "
-"block)"
+#: taextras.py:84
+msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+msgstr "returns 1 when the sensors detects a magnetic field, 0 otherwise"
 
-#: TurtleArt/tabasics.py:282
-msgid "Palette of pen commands"
-msgstr "Palette of pen commands"
+#: taextras.py:85
+msgid "returns the value of the resistance"
+msgstr "returns the value of the resistance"
 
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
-msgid "fill screen"
-msgstr "fill screen"
+#: taextras.py:86
+msgid "returns the value of the voltage"
+msgstr "returns the value of the voltage"
 
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
-#: TurtleArt/tabasics.py:348
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1158
-msgid "color"
-msgstr "color"
+#: taextras.py:87
+msgid "gpio"
+msgstr "gpio"
 
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
-#: TurtleArt/tabasics.py:358
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1154
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1159
-msgid "shade"
-msgstr "shade"
+#: taextras.py:88
+msgid "LED"
+msgstr "LED"
 
-#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:303
-msgid "fills the background with (color, shade)"
-msgstr "fills the background with (color, shade)"
+#: taextras.py:89
+msgid "button"
+msgstr "button"
 
-#: TurtleArt/tabasics.py:299 TurtleArt/tabasics.py:367
+#: taextras.py:90 taextras.py:358 TurtleArt/tabasics.py:299
+#: TurtleArt/tabasics.py:367
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1160
 msgid "gray"
 msgstr "gray"
 
-#: TurtleArt/tabasics.py:313
-msgid "set color"
-msgstr "set color"
+#: taextras.py:91 taextras.py:356
+msgid "light"
+msgstr "light"
 
-#: TurtleArt/tabasics.py:317
-msgid "sets color of the line drawn by the turtle"
-msgstr "sets color of the line drawn by the turtle"
+#: taextras.py:92
+msgid "temperature"
+msgstr "temperature"
 
-#: TurtleArt/tabasics.py:325
-msgid "set shade"
-msgstr "set shade"
+#: taextras.py:93 taextras.py:330
+msgid "distance"
+msgstr "distance"
 
-#: TurtleArt/tabasics.py:329
-msgid "sets shade of the line drawn by the turtle"
-msgstr "sets shade of the line drawn by the turtle"
+#: taextras.py:94 plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:165
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
+msgid "resistance"
+msgstr "resistance"
 
-#: TurtleArt/tabasics.py:337
-msgid "set gray"
-msgstr "set gray"
+#: taextras.py:95 plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:171
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
+msgid "voltage"
+msgstr "voltage"
 
-#: TurtleArt/tabasics.py:340
-msgid "sets gray level of the line drawn by the turtle"
-msgstr "sets gray level of the line drawn by the turtle"
+#: taextras.py:96
+msgid "Butia Robot"
+msgstr "Butia Robot"
 
-#: TurtleArt/tabasics.py:349
-msgid "holds current pen color (can be used in place of a number block)"
-msgstr "holds current pen color (can be used in place of a number block)"
+#: taextras.py:97
+msgid "refresh Butia"
+msgstr "refresh Butia"
 
-#: TurtleArt/tabasics.py:359
-msgid "holds current pen shade"
-msgstr "holds current pen shade"
+#: taextras.py:98
+msgid "refresh the state of the Butia palette and blocks"
+msgstr "refresh the state of the Butia palette and blocks"
 
-#: TurtleArt/tabasics.py:368
-msgid "holds current gray level (can be used in place of a number block)"
-msgstr "holds current gray level (can be used in place of a number block)"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "battery charge of Butia"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "battery charge of Butia"
+#: taextras.py:100
+msgid "battery charge Butia"
+msgstr "battery charge Butia"
 
-#: TurtleArt/tabasics.py:376
-msgid "pen up"
-msgstr "pen up"
-
-#: TurtleArt/tabasics.py:379
-msgid "Turtle will not draw when moved."
-msgstr "Turtle will not draw when moved."
-
-#: TurtleArt/tabasics.py:385
-msgid "pen down"
-msgstr "pen down"
-
-#: TurtleArt/tabasics.py:388
-msgid "Turtle will draw when moved."
-msgstr "Turtle will draw when moved."
-
-#: TurtleArt/tabasics.py:394
-msgid "set pen size"
-msgstr "set pen size"
-
-#: TurtleArt/tabasics.py:398
-msgid "sets size of the line drawn by the turtle"
-msgstr "sets size of the line drawn by the turtle"
-
-#: TurtleArt/tabasics.py:408
-msgid "start fill"
-msgstr "start fill"
-
-#: TurtleArt/tabasics.py:410
-msgid "starts filled polygon (used with end fill block)"
-msgstr "starts filled polygon (used with end fill block)"
-
-#: TurtleArt/tabasics.py:417
-msgid "end fill"
-msgstr "end fill"
-
-#: TurtleArt/tabasics.py:419
-msgid "completes filled polygon (used with start fill block)"
-msgstr "completes filled polygon (used with start fill block)"
-
-#: TurtleArt/tabasics.py:426
-msgid "pen size"
-msgstr "pen size"
-
-#: TurtleArt/tabasics.py:427
-msgid "holds current pen size (can be used in place of a number block)"
-msgstr "holds current pen size (can be used in place of a number block)"
-
-#: TurtleArt/tabasics.py:441
-msgid "Palette of pen colors"
-msgstr "Palette of pen colors"
-
-#: TurtleArt/tabasics.py:443
-msgid "red"
-msgstr "red"
-
-#: TurtleArt/tabasics.py:444
-msgid "orange"
-msgstr "orange"
-
-#: TurtleArt/tabasics.py:446
-msgid "yellow"
-msgstr "yellow"
-
-#: TurtleArt/tabasics.py:448
-msgid "green"
-msgstr "green"
-
-#: TurtleArt/tabasics.py:449
-msgid "cyan"
-msgstr "cyan"
-
-#: TurtleArt/tabasics.py:450
-msgid "blue"
-msgstr "blue"
-
-#: TurtleArt/tabasics.py:451
-msgid "purple"
-msgstr "purple"
-
-#: TurtleArt/tabasics.py:453
-msgid "white"
-msgstr "white"
-
-#: TurtleArt/tabasics.py:454
-msgid "black"
-msgstr "black"
-
-#: TurtleArt/tabasics.py:460
-msgid "set text color"
-msgstr "set text color"
-
-#: TurtleArt/tabasics.py:463
-msgid "sets color of text drawn by the turtle"
-msgstr "sets color of text drawn by the turtle"
-
-#: TurtleArt/tabasics.py:471
-msgid "set text size"
-msgstr "set text size"
-
-#: TurtleArt/tabasics.py:474
-msgid "sets size of text drawn by the turtle"
-msgstr "sets size of text drawn by the turtle"
-
-#: TurtleArt/tabasics.py:557
-msgid "Palette of numeric operators"
-msgstr "Palette of numeric operators"
-
-#: TurtleArt/tabasics.py:563
-msgid "plus"
-msgstr "plus"
-
-#: TurtleArt/tabasics.py:567
-msgid "adds two alphanumeric inputs"
-msgstr "adds two alphanumeric inputs"
-
-#: TurtleArt/tabasics.py:575
-msgid "minus"
-msgstr "minus"
-
-#: TurtleArt/tabasics.py:578
-msgid "subtracts bottom numeric input from top numeric input"
-msgstr "subtracts bottom numeric input from top numeric input"
-
-#: TurtleArt/tabasics.py:589
-msgid "multiply"
-msgstr "multiply"
-
-#: TurtleArt/tabasics.py:592
-msgid "multiplies two numeric inputs"
-msgstr "multiplies two numeric inputs"
-
-#: TurtleArt/tabasics.py:601
-msgid "divide"
-msgstr "divide"
-
-#: TurtleArt/tabasics.py:604
+#: taextras.py:101
 msgid ""
-"divides top numeric input (numerator) by bottom numeric input (denominator)"
+"returns the battery charge in volts. If no motors present, it returns 255"
 msgstr ""
-"divides top numeric input (numerator) by bottom numeric input (denominator)"
-
-#: TurtleArt/tabasics.py:614
-msgid "identity"
-msgstr "identity"
-
-#: TurtleArt/tabasics.py:616
-msgid "identity operator used for extending blocks"
-msgstr "identity operator used for extending blocks"
-
-#: TurtleArt/tabasics.py:624 TurtleArt/tabasics.py:625
-msgid "mod"
-msgstr "mod"
-
-#: TurtleArt/tabasics.py:628
-msgid "modular (remainder) operator"
-msgstr "modular (remainder) operator"
-
-#: TurtleArt/tabasics.py:635
-msgid "√"
-msgstr "√"
-
-#: TurtleArt/tabasics.py:636
-msgid "square root"
-msgstr "square root"
-
-#: TurtleArt/tabasics.py:639
-msgid "calculates square root"
-msgstr "calculates square root"
-
-#: TurtleArt/tabasics.py:646
-msgid "random"
-msgstr "random"
-
-#: TurtleArt/tabasics.py:646
-msgid "min"
-msgstr "min"
-
-#: TurtleArt/tabasics.py:646
-msgid "max"
-msgstr "max"
-
-#: TurtleArt/tabasics.py:650
-msgid "returns random number between minimum (top) and maximum (bottom) values"
-msgstr "returns random number between minimum (top) and maximum (bottom) values"
-
-#: TurtleArt/tabasics.py:662
-msgid "number"
-msgstr "number"
-
-#: TurtleArt/tabasics.py:663
-msgid "used as numeric input in mathematic operators"
-msgstr "used as numeric input in mathematic operators"
-
-#: TurtleArt/tabasics.py:671
-msgid "greater than"
-msgstr "greater than"
-
-#: TurtleArt/tabasics.py:674
-msgid "logical greater-than operator"
-msgstr "logical greater-than operator"
-
-#: TurtleArt/tabasics.py:683
-msgid "less than"
-msgstr "less than"
-
-#: TurtleArt/tabasics.py:687
-msgid "logical less-than operator"
-msgstr "logical less-than operator"
-
-#: TurtleArt/tabasics.py:695
-msgid "equal"
-msgstr "equal"
-
-#: TurtleArt/tabasics.py:699
-msgid "logical equal-to operator"
-msgstr "logical equal-to operator"
-
-#: TurtleArt/tabasics.py:705
-msgid "not"
-msgstr "not"
-
-#: TurtleArt/tabasics.py:708
-msgid "logical NOT operator"
-msgstr "logical NOT operator"
-
-#: TurtleArt/tabasics.py:714 TurtleArt/tabasics.py:717
-msgid "and"
-msgstr "and"
-
-#: TurtleArt/tabasics.py:718
-msgid "logical AND operator"
-msgstr "logical AND operator"
-
-#: TurtleArt/tabasics.py:725 TurtleArt/tabasics.py:728
-msgid "or"
-msgstr "or"
-
-#: TurtleArt/tabasics.py:729
-msgid "logical OR operator"
-msgstr "logical OR operator"
-
-#: TurtleArt/tabasics.py:738
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
-msgid "Palette of flow operators"
-msgstr "Palette of flow operators"
-
-#: TurtleArt/tabasics.py:743
-msgid "wait"
-msgstr "wait"
-
-#: TurtleArt/tabasics.py:747
-msgid "pauses program execution a specified number of seconds"
-msgstr "pauses program execution a specified number of seconds"
-
-#: TurtleArt/tabasics.py:754
-msgid "forever"
-msgstr "forever"
-
-#: TurtleArt/tabasics.py:758
-msgid "loops forever"
-msgstr "loops forever"
-
-#: TurtleArt/tabasics.py:765 TurtleArt/tabasics.py:769
-msgid "repeat"
-msgstr "repeat"
-
-#: TurtleArt/tabasics.py:770
-msgid "loops specified number of times"
-msgstr "loops specified number of times"
-
-#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
-msgid "if"
-msgstr "if"
-
-#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
-msgid "then"
-msgstr "then"
-
-#: TurtleArt/tabasics.py:779
-msgid "if then"
-msgstr "if then"
-
-#: TurtleArt/tabasics.py:781
-msgid "if-then operator that uses boolean operators from Numbers palette"
-msgstr "if-then operator that uses boolean operators from Numbers palette"
-
-#: TurtleArt/tabasics.py:789
-msgid "else"
-msgstr "else"
-
-#: TurtleArt/tabasics.py:793 TurtleArt/tabasics.py:801
-msgid "if then else"
-msgstr "if then else"
-
-#: TurtleArt/tabasics.py:794 TurtleArt/tabasics.py:802
-msgid "if-then-else operator that uses boolean operators from Numbers palette"
-msgstr "if-then-else operator that uses boolean operators from Numbers palette"
-
-#: TurtleArt/tabasics.py:811
-msgid "horizontal space"
-msgstr "horizontal space"
-
-#: TurtleArt/tabasics.py:812
-msgid "jogs stack right"
-msgstr "jogs stack right"
-
-#: TurtleArt/tabasics.py:819
-msgid "vertical space"
-msgstr "vertical space"
-
-#: TurtleArt/tabasics.py:820
-msgid "jogs stack down"
-msgstr "jogs stack down"
-
-#: TurtleArt/tabasics.py:826
-msgid "stop action"
-msgstr "stop action"
-
-#: TurtleArt/tabasics.py:829
-msgid "stops current action"
-msgstr "stops current action"
-
-#: TurtleArt/tabasics.py:838
-msgid "Palette of variable blocks"
-msgstr "Palette of variable blocks"
-
-#: TurtleArt/tabasics.py:843 pysamples/grecord.py:213
-msgid "start"
-msgstr "start"
-
-#: TurtleArt/tabasics.py:846
-msgid "connects action to toolbar run buttons"
-msgstr "connects action to toolbar run buttons"
-
-#: TurtleArt/tabasics.py:853 TurtleArt/tabasics.py:854
-#: TurtleArt/tabasics.py:855
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:208
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:223
-msgid "text"
-msgstr "text"
-
-#: TurtleArt/tabasics.py:856
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
-msgid "string value"
-msgstr "string value"
-
-#: TurtleArt/tabasics.py:860 TurtleArt/tabasics.py:863
-#: TurtleArt/tabasics.py:871 TurtleArt/tabasics.py:875
-#: TurtleArt/tawindow.py:1292 TurtleArt/tawindow.py:1371
-#: TurtleArt/tawindow.py:1384 TurtleArt/tawindow.py:1854
-#: TurtleArt/tawindow.py:4125
-msgid "action"
-msgstr "action"
-
-#: TurtleArt/tabasics.py:865
-msgid "top of nameable action stack"
-msgstr "top of nameable action stack"
-
-#: TurtleArt/tabasics.py:876 TurtleArt/tawindow.py:4139
-msgid "invokes named action stack"
-msgstr "invokes named action stack"
-
-#: TurtleArt/tabasics.py:883
-msgid "store in box 1"
-msgstr "store in box 1"
-
-#: TurtleArt/tabasics.py:888
-msgid "stores numeric value in Variable 1"
-msgstr "stores numeric value in Variable 1"
-
-#: TurtleArt/tabasics.py:896
-msgid "store in box 2"
-msgstr "store in box 2"
-
-#: TurtleArt/tabasics.py:901
-msgid "stores numeric value in Variable 2"
-msgstr "stores numeric value in Variable 2"
-
-#: TurtleArt/tabasics.py:909
-msgid "box 1"
-msgstr "box 1"
-
-#: TurtleArt/tabasics.py:912
-msgid "Variable 1 (numeric value)"
-msgstr "Variable 1 (numeric value)"
-
-#: TurtleArt/tabasics.py:919
-msgid "box 2"
-msgstr "box 2"
-
-#: TurtleArt/tabasics.py:922
-msgid "Variable 2 (numeric value)"
-msgstr "Variable 2 (numeric value)"
-
-#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
-msgid "store in"
-msgstr "store in"
-
-#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
-msgid "box"
-msgstr "box"
-
-#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
+"returns the battery charge in volts. If no motors present, it returns 255"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "speed of Butia"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "speed of Butia"
+#: taextras.py:103
+msgid "speed Butia"
+msgstr "speed Butia"
+
+#: taextras.py:104
+msgid "set the speed of the Butia motors"
+msgstr "set the speed of the Butia motors"
+
+#: taextras.py:105
+msgid "move Butia"
+msgstr "move Butia"
+
+#: taextras.py:106 TurtleArt/tabasics.py:162
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
+msgid "left"
+msgstr "left"
+
+#: taextras.py:107 TurtleArt/tabasics.py:174
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:878
+msgid "right"
+msgstr "right"
+
+#: taextras.py:108
+msgid "moves the Butia motors at the specified speed"
+msgstr "moves the Butia motors at the specified speed"
+
+#: taextras.py:109
+msgid "stop Butia"
+msgstr "stop Butia"
+
+#: taextras.py:110
+msgid "stop the Butia robot"
+msgstr "stop the Butia robot"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move Butia forward"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move Butia forward"
+#: taextras.py:112
+msgid "forward Butia"
+msgstr "forward Butia"
+
+#: taextras.py:113
+msgid "move the Butia robot forward"
+msgstr "move the Butia robot forward"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "turn Butia left"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "turn Butia left"
+#: taextras.py:115
+msgid "left Butia"
+msgstr "left Butia"
+
+#: taextras.py:116
+msgid "turn the Butia robot at left"
+msgstr "turn the Butia robot at left"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "turn Butia right"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "turn Butia right"
+#: taextras.py:118
+msgid "right Butia"
+msgstr "right Butia"
+
+#: taextras.py:119
+msgid "turn the Butia robot at right"
+msgstr "turn the Butia robot at right"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move Butia backward"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move Butia backward"
+#: taextras.py:121
+msgid "backward Butia"
+msgstr "backward Butia"
+
+#: taextras.py:122
+msgid "move the Butia robot backward"
+msgstr "move the Butia robot backward"
+
+#: taextras.py:123
+msgid "Butia Robot extra blocks"
+msgstr "Butia Robot extra blocks"
+
+#: taextras.py:124
+msgid "hack pin mode"
+msgstr "hack pin mode"
+
+#: taextras.py:125 taextras.py:293 taextras.py:456
+msgid "pin"
+msgstr "pin"
+
+#: taextras.py:126 taextras.py:457
+msgid "mode"
+msgstr "mode"
+
+#: taextras.py:127
+msgid "Select the pin function (INPUT, OUTPUT)."
+msgstr "Select the pin function (INPUT, OUTPUT)."
+
+#: taextras.py:128
+msgid "write hack pin Butia"
+msgstr "write hack pin Butia"
+
+#: taextras.py:129 taextras.py:460 TurtleArt/tabasics.py:928
+#: TurtleArt/tawindow.py:4189
 msgid "value"
 msgstr "value"
 
-#: TurtleArt/tabasics.py:932 TurtleArt/tabasics.py:945
-#: TurtleArt/tawindow.py:1296 TurtleArt/tawindow.py:1409
-#: TurtleArt/tawindow.py:1858 TurtleArt/tawindow.py:4152
-#: TurtleArt/tawindow.py:4180
-msgid "my box"
-msgstr "my box"
+#: taextras.py:130
+msgid "set a hack pin to 0 or 1"
+msgstr "set a hack pin to 0 or 1"
 
-#: TurtleArt/tabasics.py:933 TurtleArt/tawindow.py:4194
-msgid "stores numeric value in named variable"
-msgstr "stores numeric value in named variable"
+#: taextras.py:131
+msgid "read hack pin Butia"
+msgstr "read hack pin Butia"
 
-#: TurtleArt/tabasics.py:948 TurtleArt/tawindow.py:4166
-msgid "named variable (numeric value)"
-msgstr "named variable (numeric value)"
+#: taextras.py:132
+msgid "read the value of a hack pin"
+msgstr "read the value of a hack pin"
 
-#: TurtleArt/tabasics.py:955 TurtleArt/tabasics.py:974
-msgid "action 1"
-msgstr "action 1"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Arduino plugin to control an Arduino board
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Arduino plugin to control an Arduino board
+#: taextras.py:133 taextras.py:434
+msgid "HIGH"
+msgstr "HIGH"
 
-#: TurtleArt/tabasics.py:958
-msgid "top of Action 1 stack"
-msgstr "top of Action 1 stack"
+#: taextras.py:134 taextras.py:469
+msgid "Set HIGH value for digital port."
+msgstr "Set HIGH value for digital port."
 
-#: TurtleArt/tabasics.py:964 TurtleArt/tabasics.py:984
-msgid "action 2"
-msgstr "action 2"
+#: taextras.py:135 taextras.py:436
+msgid "INPUT"
+msgstr "INPUT"
 
-#: TurtleArt/tabasics.py:967
-msgid "top of Action 2 stack"
-msgstr "top of Action 2 stack"
+#: taextras.py:136
+msgid "Configure hack port for digital input."
+msgstr "Configure hack port for digital input."
 
-#: TurtleArt/tabasics.py:977
-msgid "invokes Action 1 stack"
-msgstr "invokes Action 1 stack"
+#: taextras.py:137 taextras.py:435
+msgid "LOW"
+msgstr "LOW"
 
-#: TurtleArt/tabasics.py:987
-msgid "invokes Action 2 stack"
-msgstr "invokes Action 2 stack"
+#: taextras.py:138 taextras.py:472
+msgid "Set LOW value for digital port."
+msgstr "Set LOW value for digital port."
 
-#: TurtleArt/tabasics.py:995
-msgid "trash"
-msgstr "trash"
+#: taextras.py:139 taextras.py:437
+msgid "OUTPUT"
+msgstr "OUTPUT"
 
-#: TurtleArt/tabasics.py:999
-msgid "empty trash"
-msgstr "empty trash"
+#: taextras.py:140
+msgid "Configure hack port for digital output."
+msgstr "Configure hack port for digital output."
 
-#: TurtleArt/tabasics.py:1000
-msgid "permanently deletes items in trash"
-msgstr "permanently deletes items in trash"
+#: taextras.py:141
+msgid "Butia"
+msgstr "Butia"
 
-#: TurtleArt/tabasics.py:1004
-msgid "restore all"
-msgstr "restore all"
+#: taextras.py:142
+#, python-format
+msgid "ERROR: The pin %s must be in OUTPUT mode."
+msgstr "ERROR: The pin %s must be in OUTPUT mode."
 
-#: TurtleArt/tabasics.py:1005
-msgid "restore all blocks from trash"
-msgstr "restore all blocks from trash"
+#: taextras.py:143
+#, python-format
+msgid "ERROR: The pin %s must be in INPUT mode."
+msgstr "ERROR: The pin %s must be in INPUT mode."
 
-#: TurtleArt/tabasics.py:1009
-msgid "clear all"
-msgstr "clear all"
+#: taextras.py:147
+msgid "Error importing Pygame. This plugin require Pygame 1.9"
+msgstr "Error importing Pygame. This plugin require Pygame 1.9"
 
-#: TurtleArt/tabasics.py:1010
-msgid "move all blocks to trash"
-msgstr "move all blocks to trash"
+#: taextras.py:148
+msgid "Error on initialization of the camera"
+msgstr "Error on initialization of the camera"
 
-#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:1833
-#: TurtleArtActivity.py:703
-msgid "Share selected blocks"
-msgstr "Share selected blocks"
+#: taextras.py:149
+msgid "No camera was found"
+msgstr "No camera was found"
+
+#: taextras.py:150
+msgid "Error stopping camera"
+msgstr "Error stopping camera"
+
+#: taextras.py:151
+msgid "Error starting camera"
+msgstr "Error starting camera"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: The "mask" is used to restrict processing to a region in the image
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: The "mask" is used to restrict processing to a region in the image
+#: taextras.py:153
+msgid "Error in get mask"
+msgstr "Error in get mask"
+
+#: taextras.py:154
+msgid "FollowMe"
+msgstr "FollowMe"
+
+#: taextras.py:155
+msgid "refresh FollowMe"
+msgstr "refresh FollowMe"
+
+#: taextras.py:156
+msgid "Search for a connected camera."
+msgstr "Search for a connected camera."
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: the calibration is used to match an RGB color to a target
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: the calibration is used to match an RGB color to a target
+#: taextras.py:158
+msgid "calibration"
+msgstr "calibration"
+
+#: taextras.py:159
+msgid "store a personalized calibration"
+msgstr "store a personalized calibration"
+
+#: taextras.py:160
+msgid "return a personalized calibration"
+msgstr "return a personalized calibration"
+
+#: taextras.py:161
+msgid "follow"
+msgstr "follow"
+
+#: taextras.py:162
+msgid "follow a color or calibration"
+msgstr "follow a color or calibration"
+
+#: taextras.py:163 plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
+#: plugins/light_sensor/light_sensor.py:56
+#: plugins/light_sensor/light_sensor.py:63
+msgid "brightness"
+msgstr "brightness"
+
+#: taextras.py:164
+msgid "set the camera brightness as a value between 0 to 255."
+msgstr "set the camera brightness as a value between 0 to 255."
+
+#: taextras.py:165
+msgid "minimum pixels"
+msgstr "minimum pixels"
+
+#: taextras.py:166
+msgid "set the minimal number of pixels to follow"
+msgstr "set the minimal number of pixels to follow"
+
+#: taextras.py:167
+msgid "threshold"
+msgstr "threshold"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: RGB color space (red, green, blue)
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: RGB color space (red, green, blue)
+#: taextras.py:169
+msgid "set a threshold for a RGB color"
+msgstr "set a threshold for a RGB color"
+
+#: taextras.py:170
+msgid "camera mode"
+msgstr "camera mode"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: RGB, YUV, and HSV are color spaces
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: RGB, YUV, and HSV are color spaces
+#: taextras.py:172
+msgid "set the color mode of the camera: RGB; YUV or HSV"
+msgstr "set the color mode of the camera: RGB; YUV or HSV"
+
+#: taextras.py:173
+msgid "get brightness"
+msgstr "get brightness"
+
+#: taextras.py:174
+msgid "get the brightness of the ambient light"
+msgstr "get the brightness of the ambient light"
+
+#: taextras.py:175
+msgid "average color"
+msgstr "average color"
+
+#: taextras.py:176
+msgid ""
+"if set to 0 then color averaging is off during calibration; for other values "
+"it is on"
+msgstr ""
+"if set to 0 then color averaging is off during calibration; for other values "
+"it is on"
+
+#: taextras.py:178
+msgid "x position"
+msgstr "x position"
+
+#: taextras.py:179
+msgid "return x position"
+msgstr "return x position"
+
+#: taextras.py:180
+msgid "y position"
+msgstr "y position"
+
+#: taextras.py:181
+msgid "return y position"
+msgstr "return y position"
+
+#: taextras.py:182
+msgid "pixels"
+msgstr "pixels"
+
+#: taextras.py:183
+msgid "return the number of pixels of the biggest blob"
+msgstr "return the number of pixels of the biggest blob"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: RGB color space (red, green, blue)
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: RGB color space (red, green, blue)
+#: taextras.py:185
+msgid "set the color mode of the camera to RGB"
+msgstr "set the color mode of the camera to RGB"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: YUV color space (luminance, chrominance)
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: YUV color space (luminance, chrominance)
+#: taextras.py:187
+msgid "set the color mode of the camera to YUV"
+msgstr "set the color mode of the camera to YUV"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: HSV color space (hue, saturation, value)
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: HSV color space (hue, saturation, value)
+#: taextras.py:189
+msgid "set the color mode of the camera to HSV"
+msgstr "set the color mode of the camera to HSV"
+
+#: taextras.py:190
+msgid "empty calibration"
+msgstr "empty calibration"
+
+#: taextras.py:191
+msgid "error in string conversion"
+msgstr "error in string conversion"
+
+#. TRANS: Pattern detection is a plugin that allow detect signals
+#. with the camera
+#: taextras.py:197
+msgid "Pattern detection"
+msgstr "Pattern detection"
+
+#: taextras.py:198
+msgid "Seeing signal"
+msgstr "Seeing signal"
+
+#: taextras.py:199
+msgid "Returns True if the signal is in front of the camera"
+msgstr "Returns True if the signal is in front of the camera"
+
+#: taextras.py:200
+msgid "Distance to signal"
+msgstr "Distance to signal"
+
+#: taextras.py:201
+msgid "Returns the distance of the signal to the camera in millimeters"
+msgstr "Returns the distance of the signal to the camera in millimeters"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: SumBot is a robot programmed for "Sumo wrestling"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: SumBot is a robot programmed for "Sumo wrestling"
+#: taextras.py:206
+msgid "SumBot"
+msgstr "SumBot"
+
+#: taextras.py:207
+msgid "speed SumBot"
+msgstr "speed SumBot"
+
+#: taextras.py:208
+msgid "submit the speed to the SumBot"
+msgstr "submit the speed to the SumBot"
+
+#: taextras.py:209
+msgid "set the default speed for the movement commands"
+msgstr "set the default speed for the movement commands"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move SumBot forward"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move SumBot forward"
+#: taextras.py:211
+msgid "forward SumBot"
+msgstr "forward SumBot"
+
+#: taextras.py:212
+msgid "move SumBot forward"
+msgstr "move SumBot forward"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move SumBot backward"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move SumBot backward"
+#: taextras.py:214
+msgid "backward SumBot"
+msgstr "backward SumBot"
+
+#: taextras.py:215
+msgid "move SumBot backward"
+msgstr "move SumBot backward"
+
+#: taextras.py:216
+msgid "stop SumBot"
+msgstr "stop SumBot"
+
+#: taextras.py:217
+msgid "stop the SumBot"
+msgstr "stop the SumBot"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "turn SumBot left"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "turn SumBot left"
+#: taextras.py:219
+msgid "left SumBot"
+msgstr "left SumBot"
+
+#: taextras.py:220
+msgid "turn left the SumBot"
+msgstr "turn left the SumBot"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move SumBot right"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move SumBot right"
+#: taextras.py:222
+msgid "right SumBot"
+msgstr "right SumBot"
+
+#: taextras.py:223
+msgid "turn right the SumBot"
+msgstr "turn right the SumBot"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: The angle to the center is the angle SumBot must turn to
+#. face the center of the playing field
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: The angle to the center is the angle SumBot must turn to
+#. face the center of the playing field
+#: taextras.py:226
+msgid "angle to center"
+msgstr "angle to center"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: dohyo is the playing field
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: dohyo is the playing field
+#: taextras.py:228
+msgid "get the angle to the center of the dohyo"
+msgstr "get the angle to the center of the dohyo"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: The angle to the center is the angle SumBot must turn to
+#. face the Enemy (opponent)
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: The angle to the center is the angle SumBot must turn to
+#. face the Enemy (opponent)
+#: taextras.py:231
+msgid "angle to Enemy"
+msgstr "angle to Enemy"
+
+#: taextras.py:232
+msgid "get the angle to the Enemy"
+msgstr "get the angle to the Enemy"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "x coordinate of SumBot"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "x coordinate of SumBot"
+#: taextras.py:234
+msgid "x coor. SumBot"
+msgstr "x coor. SumBot"
+
+#: taextras.py:235
+msgid "get the x coordinate of the SumBot"
+msgstr "get the x coordinate of the SumBot"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "y coordinate of SumBot"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "y coordinate of SumBot"
+#: taextras.py:237
+msgid "y coor. SumBot"
+msgstr "y coor. SumBot"
+
+#: taextras.py:238
+msgid "get the y coordinate of the SumBot"
+msgstr "get the y coordinate of the SumBot"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
+#: taextras.py:240
+msgid "x coor. Enemy"
+msgstr "x coor. Enemy"
+
+#: taextras.py:241
+msgid "get the x coordinate of the Enemy"
+msgstr "get the x coordinate of the Enemy"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
+#: taextras.py:243
+msgid "y coor. Enemy"
+msgstr "y coor. Enemy"
+
+#: taextras.py:244
+msgid "get the y coordinate of the Enemy"
+msgstr "get the y coordinate of the Enemy"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "rotation of SumBot"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "rotation of SumBot"
+#: taextras.py:246
+msgid "rotation SumBot"
+msgstr "rotation SumBot"
+
+#: taextras.py:247
+msgid "get the rotation of the Sumbot"
+msgstr "get the rotation of the Sumbot"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
+#: taextras.py:249
+msgid "rotation Enemy"
+msgstr "rotation Enemy"
+
+#: taextras.py:250
+msgid "get the rotation of the Enemy"
+msgstr "get the rotation of the Enemy"
+
+#: taextras.py:251
+msgid "distance to center"
+msgstr "distance to center"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: dohyo is the playing field
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: dohyo is the playing field
+#: taextras.py:253
+msgid "get the distance to the center of the dohyo"
+msgstr "get the distance to the center of the dohyo"
+
+#: taextras.py:254
+msgid "distance to Enemy"
+msgstr "distance to Enemy"
+
+#: taextras.py:255
+msgid "get the distance to the Enemy"
+msgstr "get the distance to the Enemy"
+
+#: taextras.py:256
+msgid "update information"
+msgstr "update information"
+
+#: taextras.py:257
+msgid "update information from the server"
+msgstr "update information from the server"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Please use similar terms to those used in the Physics Activity
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Please use similar terms to those used in the Physics Activity
+#: taextras.py:262
+msgid "Palette of physics blocks"
+msgstr "Palette of physics blocks"
+
+#: taextras.py:263
+msgid "start polygon"
+msgstr "start polygon"
+
+#: taextras.py:264
+msgid "Begin defining a new polygon based on the current Turtle xy position."
+msgstr "Begin defining a new polygon based on the current Turtle xy position."
+
+#: taextras.py:266
+msgid "add point"
+msgstr "add point"
+
+#: taextras.py:267
+msgid ""
+"Add a new point to the current polygon based on the current Turtle xy "
+"position."
+msgstr ""
+"Add a new point to the current polygon based on the current Turtle xy "
+"position."
+
+#: taextras.py:269
+msgid "end polygon"
+msgstr "end polygon"
+
+#: taextras.py:270
+msgid "Define a new polygon."
+msgstr "Define a new polygon."
+
+#: taextras.py:271
+msgid "end filled polygon"
+msgstr "end filled polygon"
+
+#: taextras.py:272
+msgid "Not a simple polygon"
+msgstr "Not a simple polygon"
+
+#: taextras.py:273
+msgid "Define a new filled polygon."
+msgstr "Define a new filled polygon."
+
+#: taextras.py:274
+msgid "triangle"
+msgstr "triangle"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: base of a triangle
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: base of a triangle
+#: taextras.py:276
+msgid "base"
+msgstr "base"
+
+#: taextras.py:277 taextras.py:283
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894
+msgid "height"
+msgstr "height"
+
+#: taextras.py:278
+msgid "Add a triangle object to the project."
+msgstr "Add a triangle object to the project."
+
+#: taextras.py:279
+msgid "circle"
+msgstr "circle"
+
+#: taextras.py:280
+msgid "Add a circle object to the project."
+msgstr "Add a circle object to the project."
+
+#: taextras.py:281
+msgid "rectangle"
+msgstr "rectangle"
+
+#: taextras.py:282 plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
+msgid "width"
+msgstr "width"
+
+#: taextras.py:284
+msgid "Add a rectangle object to the project."
+msgstr "Add a rectangle object to the project."
+
+#: taextras.py:285
+msgid "reset"
+msgstr "reset"
+
+#: taextras.py:286
+msgid "Reset the project; clear the object list."
+msgstr "Reset the project; clear the object list."
+
+#: taextras.py:287
+msgid "motor"
+msgstr "motor"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: torque as in engine torque
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: torque as in engine torque
+#: taextras.py:289
+msgid "torque"
+msgstr "torque"
+
+#: taextras.py:290
+msgid "speed"
+msgstr "speed"
+
+#: taextras.py:291
+msgid ""
+"Motor torque and speed range from 0 (off) to positive numbers; motor is "
+"placed on the most recent object created."
+msgstr ""
+"Motor torque and speed range from 0 (off) to positive numbers; motor is "
+"placed on the most recent object created."
+
+#: taextras.py:294
+msgid "Pin an object down so that it cannot fall."
+msgstr "Pin an object down so that it cannot fall."
+
+#: taextras.py:295
+msgid "joint"
+msgstr "joint"
+
+#: taextras.py:296 TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+msgid "x"
+msgstr "x"
+
+#: taextras.py:297 TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+msgid "y"
+msgstr "y"
+
+#: taextras.py:298
+msgid ""
+"Join two objects together (the most recent object created and the object at "
+"point x, y)."
+msgstr ""
+"Join two objects together (the most recent object created and the object at "
+"point x, y)."
+
+#: taextras.py:300
+msgid "save as Physics activity"
+msgstr "save as Physics activity"
+
+#: taextras.py:301
+msgid "Save the project to the Journal as a Physics activity."
+msgstr "Save the project to the Journal as a Physics activity."
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Here, gear means a toothed wheel, as in a clock-works
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Here, gear means a toothed wheel, as in a clock-works
+#: taextras.py:303
+msgid "gear"
+msgstr "gear"
+
+#: taextras.py:304
+msgid "Add a gear object to the project."
+msgstr "Add a gear object to the project."
+
+#: taextras.py:305
+msgid "density"
+msgstr "density"
+
+#: taextras.py:306
+msgid ""
+"Set the density property for objects (density can be any positive number)."
+msgstr ""
+"Set the density property for objects (density can be any positive number)."
+
+#: taextras.py:308
+msgid "friction"
+msgstr "friction"
+
+#: taextras.py:309
+msgid ""
+"Set the friction property for objects (value from 0 to 1, where 0 turns "
+"friction off and 1 is strong friction)."
+msgstr ""
+"Set the friction property for objects (value from 0 to 1, where 0 turns "
+"friction off and 1 is strong friction)."
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: bounciness is coefficient of restitution
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: bounciness is coefficient of restitution
+#: taextras.py:312
+msgid "bounciness"
+msgstr "bounciness"
+
+#: taextras.py:313
+msgid ""
+"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+"no bounce and 1 is very bouncy)."
+msgstr ""
+"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+"no bounce and 1 is very bouncy)."
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: dynamic here means moving vs in a fixed position
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: dynamic here means moving vs in a fixed position
+#: taextras.py:316
+msgid "dynamic"
+msgstr "dynamic"
+
+#: taextras.py:317
+msgid ""
+"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+msgstr ""
+"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: WeDo is a robotics product of the LEGO company
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: WeDo is a robotics product of the LEGO company
+#: taextras.py:323
+msgid "Palette of WeDo blocks"
+msgstr "Palette of WeDo blocks"
+
+#: taextras.py:324
+msgid "WeDo"
+msgstr "WeDo"
+
+#: taextras.py:325
+msgid "set current WeDo device"
+msgstr "set current WeDo device"
+
+#: taextras.py:326
+msgid "number of WeDo devices"
+msgstr "number of WeDo devices"
+
+#: taextras.py:327
+msgid "tilt"
+msgstr "tilt"
+
+#: taextras.py:328
+msgid ""
+"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt left, 2 == tilt right)"
+msgstr ""
+"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt left, 2 == tilt right)"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "output of the distance sensor"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "output of the distance sensor"
+#: taextras.py:332
+msgid "distance sensor output"
+msgstr "distance sensor output"
+
+#: taextras.py:333
+msgid "Motor A"
+msgstr "Motor A"
+
+#: taextras.py:334
+msgid "returns the current value of Motor A"
+msgstr "returns the current value of Motor A"
+
+#: taextras.py:335
+msgid "Motor B"
+msgstr "Motor B"
+
+#: taextras.py:336
+msgid "returns the current value of Motor B"
+msgstr "returns the current value of Motor B"
+
+#: taextras.py:337
+msgid "set the value for Motor A"
+msgstr "set the value for Motor A"
+
+#: taextras.py:338
+msgid "set the value for Motor B"
+msgstr "set the value for Motor B"
+
+#: taextras.py:339
+msgid "WeDo is unavailable"
+msgstr "WeDo is unavailable"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: e.g., Wedo 2 is unavailable, defaulting to 1
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: e.g., Wedo 2 is unavailable, defaulting to 1
+#: taextras.py:341
+#, python-format
+msgid "WeDo %d is unavailable; defaulting to 1"
+msgstr "WeDo %d is unavailable; defaulting to 1"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: %(device)s and %(wedo_number)d are substitution strings;
+#. please leave untranslated
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: %(device)s and %(wedo_number)d are substitution strings;
+#. please leave untranslated
+#: taextras.py:344
+#, python-format
+msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
+msgstr "%(device)s is unavailable on WeDo %(wedo_number)d"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Lego NXT is a robotics product of the LEGO company
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Lego NXT is a robotics product of the LEGO company
+#: taextras.py:349
+msgid "Palette of LEGO NXT blocks of motors"
+msgstr "Palette of LEGO NXT blocks of motors"
+
+#: taextras.py:350
+msgid "Palette of LEGO NXT blocks of sensors"
+msgstr "Palette of LEGO NXT blocks of sensors"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: touch sensor (implemented as a button)
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: touch sensor (implemented as a button)
+#: taextras.py:352
+msgid "touch"
+msgstr "touch"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: distance sensor (implemented using ultrasonics)
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: distance sensor (implemented using ultrasonics)
+#: taextras.py:354
+msgid "ultrasonic"
+msgstr "ultrasonic"
+
+#: taextras.py:355 TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
+#: TurtleArt/tabasics.py:348
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1158
+msgid "color"
+msgstr "color"
+
+#: taextras.py:357 plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
+msgid "sound"
+msgstr "sound"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: The brick is the NXT controller
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: The brick is the NXT controller
+#: taextras.py:360
+msgid "Please check the connection with the brick"
+msgstr "Please check the connection with the brick"
+
+#: taextras.py:361
+#, python-format
+msgid "Invalid port '%s'. Port must be: PORT A, B or C"
+msgstr "Invalid port '%s'. Port must be: PORT A, B or C"
+
+#: taextras.py:362
+#, python-format
+msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
+msgstr "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
+
+#: taextras.py:363
+msgid "The value of power must be between -127 to 127"
+msgstr "The value of power must be between -127 to 127"
+
+#: taextras.py:364
+#, python-format
+msgid "The parameter must be a integer, not '%s'"
+msgstr "The parameter must be a integer, not '%s'"
+
+#: taextras.py:365
+msgid "An error has occurred: check all connections and try to reconnect"
+msgstr "An error has occurred: check all connections and try to reconnect"
+
+#: taextras.py:366
+#, python-format
+msgid "NXT found %s bricks"
+msgstr "NXT found %s bricks"
+
+#: taextras.py:367
+msgid "NXT not found"
+msgstr "NXT not found"
+
+#: taextras.py:368
+#, python-format
+msgid "Brick number %s was not found"
+msgstr "Brick number %s was not found"
+
+#: taextras.py:369
+msgid "refresh NXT"
+msgstr "refresh NXT"
+
+#: taextras.py:370
+msgid "Search for a connected NXT brick."
+msgstr "Search for a connected NXT brick."
+
+#: taextras.py:371
+msgid "NXT"
+msgstr "NXT"
+
+#: taextras.py:372
+msgid "set current NXT device"
+msgstr "set current NXT device"
+
+#: taextras.py:373
+msgid "number of NXT devices"
+msgstr "number of NXT devices"
+
+#: taextras.py:374
+msgid "brick name"
+msgstr "brick name"
+
+#: taextras.py:375
+msgid "Get the name of a brick."
+msgstr "Get the name of a brick."
+
+#: taextras.py:376
+msgid "play tone"
+msgstr "play tone"
+
+#: taextras.py:377
+msgid "frequency"
+msgstr "frequency"
+
+#: taextras.py:378 plugins/turtle_blocks_extras/turtle_blocks_extras.py:445
+msgid "time"
+msgstr "time"
+
+#: taextras.py:379
+msgid "Play a tone at frequency for time."
+msgstr "Play a tone at frequency for time."
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: turn is the action
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: turn is the action
+#: taextras.py:381
+msgid ""
+"turn motor\n"
+"\n"
+msgstr ""
+"turn motor\n"
+"\n"
+
+#: taextras.py:382
+msgid "port"
+msgstr "port"
+
+#: taextras.py:383
+msgid "power"
+msgstr "power"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: rotations is quantity of turns
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: rotations is quantity of turns
+#: taextras.py:385
+msgid "rotations"
+msgstr "rotations"
+
+#: taextras.py:386
+msgid "turn a motor"
+msgstr "turn a motor"
+
+#: taextras.py:387
+msgid ""
+"synchronize\n"
+"\n"
+"motors"
+msgstr ""
+"synchronize\n"
+"\n"
+"motors"
+
+#: taextras.py:388
+msgid "steering"
+msgstr "steering"
+
+#: taextras.py:389
+msgid "synchronize two motors connected in PORT B and PORT C"
+msgstr "synchronize two motors connected in PORT B and PORT C"
+
+#: taextras.py:390
+msgid "PORT A"
+msgstr "PORT A"
+
+#: taextras.py:391
+msgid "PORT A of the brick"
+msgstr "PORT A of the brick"
+
+#: taextras.py:392
+msgid "PORT B"
+msgstr "PORT B"
+
+#: taextras.py:393
+msgid "PORT B of the brick"
+msgstr "PORT B of the brick"
+
+#: taextras.py:394
+msgid "PORT C"
+msgstr "PORT C"
+
+#: taextras.py:395
+msgid "PORT C of the brick"
+msgstr "PORT C of the brick"
+
+#: taextras.py:396
+msgid ""
+"synchronize\n"
+"motors"
+msgstr ""
+"synchronize\n"
+"motors"
+
+#: taextras.py:397
+msgid "start motor"
+msgstr "start motor"
+
+#: taextras.py:398
+msgid "Run a motor forever."
+msgstr "Run a motor forever."
+
+#: taextras.py:399
+msgid "brake motor"
+msgstr "brake motor"
+
+#: taextras.py:400
+msgid "Stop a specified motor."
+msgstr "Stop a specified motor."
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: reset is used to reset the counter associated with the motor
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: reset is used to reset the counter associated with the motor
+#: taextras.py:402
+msgid "reset motor"
+msgstr "reset motor"
+
+#: taextras.py:403
+msgid "Reset the motor counter."
+msgstr "Reset the motor counter."
+
+#: taextras.py:404
+msgid "motor position"
+msgstr "motor position"
+
+#: taextras.py:405
+msgid "Get the motor position."
+msgstr "Get the motor position."
+
+#: taextras.py:406
+msgid "PORT 1"
+msgstr "PORT 1"
+
+#: taextras.py:407
+msgid "PORT 1 of the brick"
+msgstr "PORT 1 of the brick"
+
+#: taextras.py:408
+msgid "read"
+msgstr "read"
+
+#: taextras.py:409
+msgid "sensor"
+msgstr "sensor"
+
+#: taextras.py:410
+msgid "Read sensor output."
+msgstr "Read sensor output."
+
+#: taextras.py:411
+msgid "PORT 2"
+msgstr "PORT 2"
+
+#: taextras.py:412
+msgid "PORT 2 of the brick"
+msgstr "PORT 2 of the brick"
+
+#: taextras.py:413
+msgid "light sensor"
+msgstr "light sensor"
+
+#: taextras.py:414
+msgid "gray sensor"
+msgstr "gray sensor"
+
+#: taextras.py:415
+msgid "PORT 3"
+msgstr "PORT 3"
+
+#: taextras.py:416
+msgid "PORT 3 of the brick"
+msgstr "PORT 3 of the brick"
+
+#: taextras.py:417
+msgid "touch sensor"
+msgstr "touch sensor"
+
+#: taextras.py:418
+msgid "distance sensor"
+msgstr "distance sensor"
+
+#: taextras.py:419
+msgid "PORT 4"
+msgstr "PORT 4"
+
+#: taextras.py:420
+msgid "PORT 4 of the brick"
+msgstr "PORT 4 of the brick"
+
+#: taextras.py:421
+msgid "sound sensor"
+msgstr "sound sensor"
+
+#: taextras.py:422
+msgid "color sensor"
+msgstr "color sensor"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: set light is used to set the light level associated with
+#. the color sensor (which can emit light as well as sense it)
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: set light is used to set the light level associated with
+#. the color sensor (which can emit light as well as sense it)
+#: taextras.py:425
+msgid "set light"
+msgstr "set light"
+
+#: taextras.py:426
+msgid "Set color sensor light."
+msgstr "Set color sensor light."
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: the battery level is the charge level of the brick
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: the battery level is the charge level of the brick
+#: taextras.py:428
+msgid "battery level"
+msgstr "battery level"
+
+#: taextras.py:429
+msgid "Get the battery level of the brick in millivolts"
+msgstr "Get the battery level of the brick in millivolts"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: PWM is pulse-width modulation
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: PWM is pulse-width modulation
+#: taextras.py:439
+msgid "PWM"
+msgstr "PWM"
+
+#: taextras.py:440
+msgid "SERVO"
+msgstr "SERVO"
+
+#: taextras.py:441
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr "ERROR: Check the Arduino and the number of port."
+
+#: taextras.py:442
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr "ERROR: Value must be a number from 0 to 255."
+
+#: taextras.py:443
+msgid "ERROR: Value must be either HIGH or LOW."
+msgstr "ERROR: Value must be either HIGH or LOW."
+
+#: taextras.py:444
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+
+#: taextras.py:445
+msgid "refresh Arduino"
+msgstr "refresh Arduino"
+
+#: taextras.py:446
+msgid "Search for connected Arduinos."
+msgstr "Search for connected Arduinos."
+
+#: taextras.py:447
+msgid "Arduino"
+msgstr "Arduino"
+
+#: taextras.py:448
+msgid "set current Arduino board"
+msgstr "set current Arduino board"
+
+#: taextras.py:449
+msgid "number of Arduinos"
+msgstr "number of Arduinos"
+
+#: taextras.py:450
+msgid "number of Arduino boards"
+msgstr "number of Arduino boards"
+
+#: taextras.py:451
+msgid "Arduino name"
+msgstr "Arduino name"
+
+#: taextras.py:452
+msgid "Get the name of an Arduino."
+msgstr "Get the name of an Arduino."
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
+#. in which an I/O pin is being used.
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
+#. in which an I/O pin is being used.
+#: taextras.py:455
+msgid "pin mode"
+msgstr "pin mode"
+
+#: taextras.py:458
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+
+#: taextras.py:459
+msgid "analog write"
+msgstr "analog write"
+
+#: taextras.py:461
+msgid "Write analog value in specified port."
+msgstr "Write analog value in specified port."
+
+#: taextras.py:462
+msgid "analog read"
+msgstr "analog read"
+
+#: taextras.py:463
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+
+#: taextras.py:465
+msgid "digital write"
+msgstr "digital write"
+
+#: taextras.py:466
+msgid "Write digital value to specified port."
+msgstr "Write digital value to specified port."
+
+#: taextras.py:467
+msgid "digital read"
+msgstr "digital read"
+
+#: taextras.py:468
+msgid "Read value from digital port."
+msgstr "Read value from digital port."
+
+#: taextras.py:470
+msgid "Configure Arduino port for digital input."
+msgstr "Configure Arduino port for digital input."
+
+#: taextras.py:471
+msgid "Configure Arduino port to drive a servo."
+msgstr "Configure Arduino port to drive a servo."
+
+#: taextras.py:473
+msgid "Configure Arduino port for digital output."
+msgstr "Configure Arduino port for digital output."
+
+#: taextras.py:474
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr "Configure Arduino port for PWM (pulse-width modulation)."
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: plugin to control an ExpEyes device
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: plugin to control an ExpEyes device
+#: taextras.py:479
+msgid "Palette of Expeyes blocks"
+msgstr "Palette of Expeyes blocks"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Programmable voltage output
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Programmable voltage output
+#: taextras.py:481
+msgid "set PVS"
+msgstr "set PVS"
+
+#: taextras.py:482
+msgid "set programmable voltage output"
+msgstr "set programmable voltage output"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Square wave 1 voltage output
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Square wave 1 voltage output
+#: taextras.py:484
+msgid "set SQR1 voltage"
+msgstr "set SQR1 voltage"
+
+#: taextras.py:485
+msgid "set square wave 1 voltage output"
+msgstr "set square wave 1 voltage output"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Square wave 2 voltage output
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Square wave 2 voltage output
+#: taextras.py:487
+msgid "set SQR2 voltage"
+msgstr "set SQR2 voltage"
+
+#: taextras.py:488
+msgid "set square wave 2 voltage output"
+msgstr "set square wave 2 voltage output"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Digital output level
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Digital output level
+#: taextras.py:490
+msgid "set OD1"
+msgstr "set OD1"
+
+#: taextras.py:491
+msgid "set digital output level (OD1) low (0) or high (1)"
+msgstr "set digital output level (OD1) low (0) or high (1)"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Input 1 voltage level
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Input 1 voltage level
+#: taextras.py:493
+msgid "IN1 level"
+msgstr "IN1 level"
+
+#: taextras.py:494
+msgid ""
+"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
+"volts"
+msgstr ""
+"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
+"volts"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Input 2 voltage level
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Input 2 voltage level
+#: taextras.py:497
+msgid "IN2 level"
+msgstr "IN2 level"
+
+#: taextras.py:498
+msgid ""
+"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
+"volts"
+msgstr ""
+"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
+"volts"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Resistive sensor voltage level
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Resistive sensor voltage level
+#: taextras.py:501
+msgid "SEN level"
+msgstr "SEN level"
+
+#: taextras.py:502
+msgid ""
+"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
+"voltage level <= 2.5 volts"
+msgstr ""
+"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
+"voltage level <= 2.5 volts"
+
+#: taextras.py:504
+msgid "capture"
+msgstr "capture"
+
+#: taextras.py:505
+msgid "input"
+msgstr "input"
+
+#: taextras.py:506
+msgid "samples"
+msgstr "samples"
+
+#: taextras.py:507
+msgid "interval"
+msgstr "interval"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: MS is microseconds
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: MS is microseconds
+#: taextras.py:509
+msgid ""
+"capture multiple samples from input at interval (MS); results pushed to FIFO"
+msgstr ""
+"capture multiple samples from input at interval (MS); results pushed to FIFO"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Analog input 1 voltage level
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Analog input 1 voltage level
+#: taextras.py:512
+msgid "A1"
+msgstr "A1"
+
+#: taextras.py:513
+msgid "read analog input 1 voltage"
+msgstr "read analog input 1 voltage"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Analog input 2 voltage level
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Analog input 2 voltage level
+#: taextras.py:515
+msgid "A2"
+msgstr "A2"
+
+#: taextras.py:516
+msgid "read analog input 2 voltage"
+msgstr "read analog input 2 voltage"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Read input 1 voltage
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Read input 1 voltage
+#: taextras.py:518
+msgid "IN1"
+msgstr "IN1"
+
+#: taextras.py:519
+msgid "read input 1 voltage"
+msgstr "read input 1 voltage"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Read input 2 voltage
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Read input 2 voltage
+#: taextras.py:521
+msgid "IN2"
+msgstr "IN2"
+
+#: taextras.py:522
+msgid "read input 2 voltage"
+msgstr "read input 2 voltage"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Read analog sensor input voltage
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Read analog sensor input voltage
+#: taextras.py:524
+msgid "SEN"
+msgstr "SEN"
+
+#: taextras.py:525
+msgid "read analog sensor input voltage"
+msgstr "read analog sensor input voltage"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Read square wave 1 input voltage
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Read square wave 1 input voltage
+#: taextras.py:527
+msgid "SQR1"
+msgstr "SQR1"
+
+#: taextras.py:528
+msgid "read square wave 1 voltage"
+msgstr "read square wave 1 voltage"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Read square wave 2 input voltage
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Read square wave 2 input voltage
+#: taextras.py:530
+msgid "SQR2"
+msgstr "SQR2"
+
+#: taextras.py:531
+msgid "read square wave 2 voltage"
+msgstr "read square wave 2 voltage"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Read programmable voltage
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Read programmable voltage
+#: taextras.py:533
+msgid "PVS"
+msgstr "PVS"
+
+#: taextras.py:534
+msgid "read programmable voltage"
+msgstr "read programmable voltage"
+
+#: taextras.py:535
+msgid "Expeyes device not found"
+msgstr "Expeyes device not found"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:299
+msgid "resume playing video or audio"
+msgstr "resume playing video or audio"
 
 #: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
 #: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
@@ -722,484 +1923,22 @@ msgstr "Share selected blocks"
 msgid "Title"
 msgstr "Title"
 
-#: TurtleArt/talogo.py:374 TurtleArtActivity.py:683
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1492
-msgid "Stop turtle"
-msgstr "Stop turtle"
-
-#: TurtleArt/talogo.py:384 TurtleArtActivity.py:322 TurtleArtActivity.py:684
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1485
-msgid "Show blocks"
-msgstr "Show blocks"
-
-#: TurtleArt/talogo.py:388 TurtleArtActivity.py:326 TurtleArtActivity.py:894
-msgid "Hide blocks"
-msgstr "Hide blocks"
-
-#: TurtleArt/talogo.py:511
-msgid "did not output to"
-msgstr "did not output to"
-
-#: TurtleArt/talogo.py:570
-msgid "I don't know how to"
-msgstr "I don't know how to"
-
-#: TurtleArt/talogo.py:624
-msgid "doesn't like"
-msgstr "doesn't like"
-
-#: TurtleArt/talogo.py:624
-msgid "as input"
-msgstr "as input"
-
-#: TurtleArt/tapalette.py:97
-msgid "displays next palette"
-msgstr "displays next palette"
-
-#: TurtleArt/tapalette.py:98
-msgid "changes the orientation of the palette of blocks"
-msgstr "changes the orientation of the palette of blocks"
-
-#: TurtleArt/tautils.py:196
-msgid "Load..."
-msgstr "Load..."
-
-#: TurtleArt/tautils.py:206
-msgid "Save..."
-msgstr "Save..."
-
-#: TurtleArt/tautils.py:483
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
-msgid "click to open"
-msgstr "click to open"
-
-#: TurtleArt/tawindow.py:989 TurtleArt/tawindow.py:990
-msgid "orientation"
-msgstr "orientation"
-
-#: TurtleArt/tawindow.py:1000 TurtleArt/tawindow.py:1470
-msgid "next"
-msgstr "next"
-
-#: TurtleArt/tawindow.py:1012 TurtleArt/tawindow.py:1013
-#: TurtleArt/tawindow.py:1490
-msgid "shift"
-msgstr "shift"
-
-#: TurtleArt/tawindow.py:1256
-msgid ""
-"Please hit the Stop Button before making changes to your Turtle Blocks "
-"program"
-msgstr ""
-"Please hit the Stop Button before making changes to your Turtle Blocks "
-"program"
-
-#: TurtleArt/tawindow.py:1310
-msgid "Select blocks to share"
-msgstr "Select blocks to share"
-
-#: TurtleArt/tawindow.py:3868 pysamples/grecord.py:205
-msgid "Turtle Art"
-msgstr "Turtle Art"
-
-#: TurtleArt/tawindow.py:3977
-msgid "image"
-msgstr "image"
-
-#: TurtleArtActivity.py:166 TurtleArtActivity.py:709 TurtleArtActivity.py:823
-#: TurtleArtActivity.py:853 turtleblocks.py:360
-msgid "Save as Logo"
-msgstr "Save as Logo"
-
-#: TurtleArtActivity.py:203 TurtleArtActivity.py:708 TurtleArtActivity.py:820
-#: TurtleArtActivity.py:850 turtleblocks.py:358
-msgid "Save as image"
-msgstr "Save as image"
-
-#: TurtleArtActivity.py:211
-msgid "snapshot"
-msgstr "snapshot"
-
-#: TurtleArtActivity.py:219 TurtleArtActivity.py:643 TurtleArtActivity.py:685
-#: TurtleArtActivity.py:829 TurtleArtActivity.py:856
-msgid "Save snapshot"
-msgstr "Save snapshot"
-
-#: TurtleArtActivity.py:260 TurtleArtActivity.py:616 TurtleArtActivity.py:759
-#: turtleblocks.py:378
-msgid "Turn off hover help"
-msgstr "Turn off hover help"
-
-#: TurtleArtActivity.py:266 turtleblocks.py:380
-msgid "Turn on hover help"
-msgstr "Turn on hover help"
-
-#: TurtleArtActivity.py:274 turtleblocks.py:390
-msgid "Show palette"
-msgstr "Show palette"
-
-#: TurtleArtActivity.py:280 TurtleArtActivity.py:882 turtleblocks.py:392
-msgid "Hide palette"
-msgstr "Hide palette"
-
-#: TurtleArtActivity.py:447
-msgid "Rescale coordinates down"
-msgstr "Rescale coordinates down"
-
-#: TurtleArtActivity.py:451 TurtleArtActivity.py:608 TurtleArtActivity.py:755
-msgid "Rescale coordinates up"
-msgstr "Rescale coordinates up"
-
-#: TurtleArtActivity.py:541 TurtleArtActivity.py:577 TurtleArtActivity.py:677
-#: TurtleArtActivity.py:730 turtleblocks.py:387
-msgid "Edit"
-msgstr "Edit"
-
-#: TurtleArtActivity.py:546 TurtleArtActivity.py:575 TurtleArtActivity.py:678
-#: TurtleArtActivity.py:747 turtleblocks.py:382
-msgid "View"
-msgstr "View"
-
-#: TurtleArtActivity.py:573 TurtleArtActivity.py:679
-msgid "Project"
-msgstr "Project"
-
-#: TurtleArtActivity.py:579 TurtleArtActivity.py:676 TurtleArtActivity.py:705
-#: TurtleArtActivity.py:707 TurtleArtActivity.py:815
-msgid "Save/Load"
-msgstr "Save/Load"
-
-#: TurtleArtActivity.py:587 TurtleArtActivity.py:731 turtleblocks.py:385
-msgid "Copy"
-msgstr "Copy"
-
-#: TurtleArtActivity.py:589 TurtleArtActivity.py:732 turtleblocks.py:386
-msgid "Paste"
-msgstr "Paste"
-
-#: TurtleArtActivity.py:591
-msgid "Restore blocks from trash"
-msgstr "Restore blocks from trash"
-
-#: TurtleArtActivity.py:594 TurtleArtActivity.py:748
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
-msgid "Fullscreen"
-msgstr "Fullscreen"
-
-#: TurtleArtActivity.py:596 TurtleArtActivity.py:749 turtleblocks.py:366
-msgid "Cartesian coordinates"
-msgstr "Cartesian coordinates"
-
-#: TurtleArtActivity.py:598 TurtleArtActivity.py:751 turtleblocks.py:368
-msgid "Polar coordinates"
-msgstr "Polar coordinates"
-
-#: TurtleArtActivity.py:601 TurtleArtActivity.py:753
-msgid "Metric coordinates"
-msgstr "Metric coordinates"
-
-#: TurtleArtActivity.py:611 TurtleArtActivity.py:757 turtleblocks.py:372
-msgid "Grow blocks"
-msgstr "Grow blocks"
-
-#: TurtleArtActivity.py:613 TurtleArtActivity.py:758 turtleblocks.py:374
-msgid "Shrink blocks"
-msgstr "Shrink blocks"
-
-#: TurtleArtActivity.py:630 TurtleArtActivity.py:647 TurtleArtActivity.py:686
-#: TurtleArtActivity.py:832
-msgid "Load example"
-msgstr "Load example"
-
-#: TurtleArtActivity.py:680 TurtleArtActivity.py:888 turtleblocks.py:399
-msgid "Clean"
-msgstr "Clean"
-
-#: TurtleArtActivity.py:681 TurtleArtActivity.py:890 turtleblocks.py:400
-msgid "Run"
-msgstr "Run"
-
-#: TurtleArtActivity.py:682 TurtleArtActivity.py:892 turtleblocks.py:401
-msgid "Step"
-msgstr "Step"
-
-#: TurtleArtActivity.py:687 turtleblocks.py:408 util/helpbutton.py:45
-msgid "Help"
-msgstr "Help"
-
-#: TurtleArtActivity.py:688 turtleblocks.py:403
-msgid "Stop"
-msgstr "Stop"
-
-#: TurtleArtActivity.py:710 TurtleArtActivity.py:836 TurtleArtActivity.py:858
-msgid "Load project"
-msgstr "Load project"
-
-#: TurtleArtActivity.py:713 TurtleArtActivity.py:841 TurtleArtActivity.py:863
-msgid "Load plugin"
-msgstr "Load plugin"
-
-#: TurtleArtActivity.py:714 TurtleArtActivity.py:844 TurtleArtActivity.py:866
-msgid "Load Python block"
-msgstr "Load Python block"
-
-#: TurtleArtActivity.py:766
-msgid "Palettes"
-msgstr "Palettes"
-
-#: TurtleArtActivity.py:810
-msgid "Sharing blocks disabled"
-msgstr "Sharing blocks disabled"
-
-#: TurtleArtActivity.py:883
-msgid "<Ctrl>p"
-msgstr "<Ctrl>p"
-
-#: TurtleArtActivity.py:888
-msgid "<Ctrl>e"
-msgstr "<Ctrl>e"
-
-#: TurtleArtActivity.py:890
-msgid "<Ctrl>r"
-msgstr "<Ctrl>r"
-
-#: TurtleArtActivity.py:892
-msgid "<Ctrl>w"
-msgstr "<Ctrl>w"
-
-#: TurtleArtActivity.py:895
-msgid "<Ctrl>s"
-msgstr "<Ctrl>s"
-
-#: TurtleArtActivity.py:1049 TurtleArtActivity.py:1054
-#: TurtleArtActivity.py:1121
-msgid "Plugin could not be installed."
-msgstr "Plugin could not be installed."
-
-#: TurtleArtActivity.py:1117
-msgid "Please restart Turtle Art in order to use the plugin."
-msgstr "Please restart Turtle Art in order to use the plugin."
-
-#: TurtleArtActivity.py:1135
-#, python-format
-msgid "Plugin %s already installed."
-msgstr "Plugin %s already installed."
-
-#: TurtleArtActivity.py:1136
-#, python-format
-msgid "Do you want to reinstall %s?"
-msgstr "Do you want to reinstall %s?"
-
-#: gnome_plugins/collaboration_plugin.py:67
-msgid "My Turtle Art session"
-msgstr "My Turtle Art session"
-
-#: gnome_plugins/collaboration_plugin.py:115
-msgid "Enable collaboration"
-msgstr "Enable collaboration"
-
-#: gnome_plugins/collaboration_plugin.py:120
-msgid "Activities"
-msgstr "Activities"
-
-#: gnome_plugins/collaboration_plugin.py:125
-msgid "Buddies"
-msgstr "Buddies"
-
-#: gnome_plugins/collaboration_plugin.py:128
-msgid "Share"
-msgstr "Share"
-
-#: gnome_plugins/collaboration_plugin.py:129
-msgid "Configuration"
-msgstr "Configuration"
-
-#: gnome_plugins/collaboration_plugin.py:132
-msgid "Neighborhood"
-msgstr "Neighborhood"
-
-#: gnome_plugins/collaboration_plugin.py:292
-msgid "Nickname"
-msgstr "Nickname"
-
-#: gnome_plugins/collaboration_plugin.py:294
-msgid "Account ID"
-msgstr "Account ID"
-
-#: gnome_plugins/collaboration_plugin.py:296
-msgid "Server"
-msgstr "Server"
-
-#: gnome_plugins/collaboration_plugin.py:298
-msgid "Port"
-msgstr "Port"
-
-#: gnome_plugins/collaboration_plugin.py:300
-msgid "Password"
-msgstr "Password"
-
-#: gnome_plugins/collaboration_plugin.py:302
-msgid "Register"
-msgstr "Register"
-
-#: gnome_plugins/collaboration_plugin.py:304
-msgid "Colors"
-msgstr "Colors"
-
-#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
-#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
-#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
-msgid "Upload"
-msgstr "Upload"
-
-#: gnome_plugins/fb_plugin.py:87
-msgid "Facebook wall post"
-msgstr "Facebook wall post"
-
-#: gnome_plugins/uploader_plugin.py:68
-msgid "Upload to Web"
-msgstr "Upload to Web"
-
-#: gnome_plugins/uploader_plugin.py:90
-msgid ""
-"You must have an account at http://turtleartsite.sugarlabs.org to upload "
-"your project."
-msgstr ""
-"You must have an account at http://turtleartsite.sugarlabs.org to upload "
-"your project."
-
-#: gnome_plugins/uploader_plugin.py:99
-msgid "Username:"
-msgstr "Username:"
-
-#: gnome_plugins/uploader_plugin.py:109
-msgid "Password:"
-msgstr "Password:"
-
-#: gnome_plugins/uploader_plugin.py:120
-msgid "Title:"
-msgstr "Title:"
-
-#: gnome_plugins/uploader_plugin.py:130
-msgid "Description:"
-msgstr "Description:"
-
-#: gnome_plugins/uploader_plugin.py:140
-msgid "Submit to Web"
-msgstr "Submit to Web"
-
-#: gnome_plugins/uploader_plugin.py:144
-msgid "Cancel"
-msgstr "Cancel"
-
-#: gnome_plugins/uploader_plugin.py:166
-msgid "Login failed"
-msgstr "Login failed"
-
-#: gnome_plugins/uploader_plugin.py:203
-msgid "Failed to upload!"
-msgstr "Failed to upload!"
-
-#: plugins/accelerometer/accelerometer.py:49
-#: plugins/audio_sensors/audio_sensors.py:75
-#: plugins/camera_sensor/camera_sensor.py:63
-#: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
-msgid "Palette of sensor blocks"
-msgstr "Palette of sensor blocks"
-
-#: plugins/accelerometer/accelerometer.py:56
-#: plugins/accelerometer/accelerometer.py:63
-msgid "acceleration"
-msgstr "acceleration"
-
-#: plugins/accelerometer/accelerometer.py:58
-#: plugins/accelerometer/accelerometer.py:65
-msgid "push acceleration in x, y, z to heap"
-msgstr "push acceleration in x, y, z to heap"
-
-#: plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
-msgid "sound"
-msgstr "sound"
-
-#: plugins/audio_sensors/audio_sensors.py:84
-#: plugins/audio_sensors/audio_sensors.py:99
-msgid "raw microphone input signal"
-msgstr "raw microphone input signal"
-
-#: plugins/audio_sensors/audio_sensors.py:90
-#: plugins/audio_sensors/audio_sensors.py:105
-msgid "loudness"
-msgstr "loudness"
-
-#: plugins/audio_sensors/audio_sensors.py:91
-#: plugins/audio_sensors/audio_sensors.py:106
-msgid "microphone input volume"
-msgstr "microphone input volume"
-
-#: plugins/audio_sensors/audio_sensors.py:119
-#: plugins/audio_sensors/audio_sensors.py:127
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
-msgid "pitch"
-msgstr "pitch"
-
-#: plugins/audio_sensors/audio_sensors.py:120
-#: plugins/audio_sensors/audio_sensors.py:128
-msgid "microphone input pitch"
-msgstr "microphone input pitch"
-
-#: plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
-msgid "resistance"
-msgstr "resistance"
-
-#: plugins/audio_sensors/audio_sensors.py:152
-#: plugins/audio_sensors/audio_sensors.py:166
-#: plugins/audio_sensors/audio_sensors.py:180
-#: plugins/audio_sensors/audio_sensors.py:194
-msgid "microphone input resistance"
-msgstr "microphone input resistance"
-
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
-msgid "voltage"
-msgstr "voltage"
-
-#: plugins/audio_sensors/audio_sensors.py:158
-#: plugins/audio_sensors/audio_sensors.py:172
-#: plugins/audio_sensors/audio_sensors.py:186
-#: plugins/audio_sensors/audio_sensors.py:200
-msgid "microphone input voltage"
-msgstr "microphone input voltage"
-
-#: plugins/camera_sensor/camera_sensor.py:67
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
-msgid "Palette of media objects"
-msgstr "Palette of media objects"
-
-#: plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
-msgid "brightness"
-msgstr "brightness"
-
-#: plugins/camera_sensor/camera_sensor.py:82
-#: plugins/camera_sensor/camera_sensor.py:130
-msgid "light level detected by camera"
-msgstr "light level detected by camera"
-
 #: plugins/camera_sensor/camera_sensor.py:95
 #: plugins/camera_sensor/camera_sensor.py:143
 msgid "Average RGB color from camera is pushed to the stack"
 msgstr "Average RGB color from camera is pushed to the stack"
+
+#: TurtleArt/tabasics.py:446
+msgid "yellow"
+msgstr "yellow"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:679
+msgid "displays polar coordinates"
+msgstr "displays polar coordinates"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:493
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "emptys FILO (first-in-last-out heap)"
 
 #: plugins/camera_sensor/camera_sensor.py:106
 #: plugins/camera_sensor/camera_sensor.py:113
@@ -1209,83 +1948,116 @@ msgstr "Average RGB color from camera is pushed to the stack"
 msgid "camera output"
 msgstr "camera output"
 
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:65
-msgid "light level detected by light sensor"
-msgstr "light level detected by light sensor"
+#: plugins/accelerometer/accelerometer.py:58
+#: plugins/accelerometer/accelerometer.py:65
+msgid "push acceleration in x, y, z to heap"
+msgstr "push acceleration in x, y, z to heap"
 
-#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
-msgid "RFID"
-msgstr "RFID"
+#: TurtleArt/tabasics.py:781
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr "if-then operator that uses boolean operators from Numbers palette"
 
-#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
-msgid "read value from RFID device"
-msgstr "read value from RFID device"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:103
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:106
-msgid "while"
-msgstr "while"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:107
-msgid "do-while-True operator that uses boolean operators from Numbers palette"
-msgstr "do-while-True operator that uses boolean operators from Numbers palette"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:116
-msgid "until"
-msgstr "until"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:117
-msgid "do-until-True operator that uses boolean operators from Numbers palette"
-msgstr "do-until-True operator that uses boolean operators from Numbers palette"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:124
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
-msgid "top"
-msgstr "top"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:126
-msgid "top of a collapsible stack"
-msgstr "top of a collapsible stack"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:140
-msgid "journal"
-msgstr "journal"
+#: TurtleArt/tabasics.py:812
+msgid "jogs stack right"
+msgstr "jogs stack right"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
 msgid "Sugar Journal media object"
 msgstr "Sugar Journal media object"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:151
-msgid "audio"
-msgstr "audio"
+#: TurtleArt/tabasics.py:919
+msgid "box 2"
+msgstr "box 2"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
-msgid "Sugar Journal audio object"
-msgstr "Sugar Journal audio object"
+#: TurtleArt/tabasics.py:909
+msgid "box 1"
+msgstr "box 1"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:163
-msgid "video"
-msgstr "video"
+#: TurtleArtActivity.py:682 TurtleArtActivity.py:892 turtleblocks.py:401
+msgid "Step"
+msgstr "Step"
+
+#: TurtleArt/tabasics.py:592
+msgid "multiplies two numeric inputs"
+msgstr "multiplies two numeric inputs"
+
+#: turtleblocks.py:394
+msgid "Show/hide blocks"
+msgstr "Show/hide blocks"
+
+#: TurtleArtActivity.py:280 TurtleArtActivity.py:882 turtleblocks.py:392
+msgid "Hide palette"
+msgstr "Hide palette"
+
+#: gnome_plugins/collaboration_plugin.py:125
+msgid "Buddies"
+msgstr "Buddies"
+
+#: gnome_plugins/collaboration_plugin.py:67
+msgid "My Turtle Art session"
+msgstr "My Turtle Art session"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:165
 msgid "Sugar Journal video object"
 msgstr "Sugar Journal video object"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
-msgid "description"
-msgstr "description"
+#: TurtleArt/tabasics.py:449
+msgid "cyan"
+msgstr "cyan"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:177
-msgid "Sugar Journal description field"
-msgstr "Sugar Journal description field"
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"A Logo-inspired turtle that draws colorful pictures with snap-together "
+"visual programming blocks"
+msgstr ""
+"A Logo-inspired turtle that draws colorful pictures with snap-together "
+"visual programming blocks"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:222
-msgid "show"
-msgstr "show"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:881
+msgid "xcor of right of screen"
+msgstr "xcor of right of screen"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:457
+msgid "Palette of extra options"
+msgstr "Palette of extra options"
+
+#: TurtleArtActivity.py:630 TurtleArtActivity.py:647 TurtleArtActivity.py:686
+#: TurtleArtActivity.py:832
+msgid "Load example"
+msgstr "Load example"
+
+#: TurtleArt/tabasics.py:1010
+msgid "move all blocks to trash"
+msgstr "move all blocks to trash"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
+msgid "list"
+msgstr "list"
+
+#: turtleblocks.py:279
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr "Configuration directory not writable: %s"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
+msgid "media resume"
+msgstr "media resume"
+
+#: TurtleArt/tabasics.py:247 TurtleArt/tawindow.py:3863
+#: TurtleArt/tawindow.py:3869 TurtleArtActivity.py:605
+msgid "heading"
+msgstr "heading"
+
+#: TurtleArtActivity.py:810
+msgid "Sharing blocks disabled"
+msgstr "Sharing blocks disabled"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:259
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr "saves turtle graphics as an SVG file in the Sugar Journal"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:211
@@ -1293,285 +2065,41 @@ msgstr "show"
 msgid "draws text or show media from the Journal"
 msgstr "draws text or show media from the Journal"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:207
-msgid "show aligned"
-msgstr "show aligned"
+#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
+msgid "RFID"
+msgstr "RFID"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:234
-msgid "set scale"
-msgstr "set scale"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:163
+msgid "video"
+msgstr "video"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:238
-msgid "sets the scale of media"
-msgstr "sets the scale of media"
+#: TurtleArt/tabasics.py:450
+msgid "blue"
+msgstr "blue"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:245
-msgid "save picture"
-msgstr "save picture"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:671
+msgid "displays Cartesian coordinates"
+msgstr "displays Cartesian coordinates"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:247
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:258
-msgid "picture name"
-msgstr "picture name"
+#: turtleblocks.py:240
+msgid "No option action:"
+msgstr "No option action:"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:248
-msgid "saves a picture to the Sugar Journal"
-msgstr "saves a picture to the Sugar Journal"
+#: TurtleArt/tabasics.py:820
+msgid "jogs stack down"
+msgstr "jogs stack down"
+
+#: TurtleArt/tabasics.py:628
+msgid "modular (remainder) operator"
+msgstr "modular (remainder) operator"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:949
+msgid "bottom y"
+msgstr "bottom y"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:256
 msgid "save SVG"
 msgstr "save SVG"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:259
-msgid "saves turtle graphics as an SVG file in the Sugar Journal"
-msgstr "saves turtle graphics as an SVG file in the Sugar Journal"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:266
-msgid "scale"
-msgstr "scale"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
-msgid "holds current scale value"
-msgstr "holds current scale value"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:275
-msgid "media wait"
-msgstr "media wait"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:277
-msgid "wait for current video or audio to complete"
-msgstr "wait for current video or audio to complete"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
-msgid "media stop"
-msgstr "media stop"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
-msgid "stop video or audio"
-msgstr "stop video or audio"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:290
-msgid "media pause"
-msgstr "media pause"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:292
-msgid "pause video or audio"
-msgstr "pause video or audio"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
-msgid "media resume"
-msgstr "media resume"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:299
-msgid "resume playing video or audio"
-msgstr "resume playing video or audio"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
-msgid "speak"
-msgstr "speak"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
-msgid "hello"
-msgstr "hello"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:308
-msgid "speaks text"
-msgstr "speaks text"
-
-#. TRANS: pitch, duration, amplitude
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
-msgid "sinewave"
-msgstr "sinewave"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
-msgid "amplitude"
-msgstr "amplitude"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
-msgid "duration"
-msgstr "duration"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:320
-msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
-msgstr "plays a sinewave at frequency, amplitude, and duration (in seconds)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:337
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:348
-msgid "button down"
-msgstr "button down"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:340
-msgid "returns 1 if mouse button is pressed"
-msgstr "returns 1 if mouse button is pressed"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:351
-msgid "returns True if mouse button is pressed"
-msgstr "returns True if mouse button is pressed"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:358
-msgid "mouse x"
-msgstr "mouse x"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:361
-msgid "returns mouse x coordinate"
-msgstr "returns mouse x coordinate"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
-msgid "mouse y"
-msgstr "mouse y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
-msgid "returns mouse y coordinate"
-msgstr "returns mouse y coordinate"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
-msgid "query keyboard"
-msgstr "query keyboard"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:381
-msgid "query for keyboard input (results stored in keyboard block)"
-msgstr "query for keyboard input (results stored in keyboard block)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
-msgid "keyboard"
-msgstr "keyboard"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
-msgid "holds results of query-keyboard block as ASCII"
-msgstr "holds results of query-keyboard block as ASCII"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
-msgid "read pixel"
-msgstr "read pixel"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:427
-msgid "RGB color under the turtle is pushed to the stack"
-msgstr "RGB color under the turtle is pushed to the stack"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:435
-msgid "turtle sees"
-msgstr "turtle sees"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:437
-msgid "returns the color that the turtle \"sees\""
-msgstr "returns the color that the turtle \"sees\""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:445
-msgid "time"
-msgstr "time"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:448
-msgid "elapsed time (in seconds) since program started"
-msgstr "elapsed time (in seconds) since program started"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:457
-msgid "Palette of extra options"
-msgstr "Palette of extra options"
-
-#. TRANS: push adds a new item to the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
-msgid "push"
-msgstr "push"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:467
-msgid "pushes value onto FILO (first-in last-out heap)"
-msgstr "pushes value onto FILO (first-in last-out heap)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:477
-msgid "show heap"
-msgstr "show heap"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:480
-msgid "shows values in FILO (first-in last-out heap)"
-msgstr "shows values in FILO (first-in last-out heap)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:490
-msgid "empty heap"
-msgstr "empty heap"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:493
-msgid "emptys FILO (first-in-last-out heap)"
-msgstr "emptys FILO (first-in-last-out heap)"
-
-#. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:504
-msgid "pop"
-msgstr "pop"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
-msgid "pops value off FILO (first-in last-out heap)"
-msgstr "pops value off FILO (first-in last-out heap)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
-msgid "empty heap?"
-msgstr "empty heap?"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:522
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
-msgid "returns True if heap is empty"
-msgstr "returns True if heap is empty"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:539
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:541
-msgid "comment"
-msgstr "comment"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:543
-msgid "places a comment in your code"
-msgstr "places a comment in your code"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
-msgid "print"
-msgstr "print"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:553
-msgid "prints value in status block at bottom of the screen"
-msgstr "prints value in status block at bottom of the screen"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:563
-msgid "Python chr operator"
-msgstr "Python chr operator"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
-msgid "Python int operator"
-msgstr "Python int operator"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:579
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:592
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:606
-msgid "Python"
-msgstr "Python"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:583
-msgid ""
-"a programmable block: used to add advanced single-variable math equations, e."
-"g., sin(x)"
-msgstr ""
-"a programmable block: used to add advanced single-variable math equations, "
-"e.g., sin(x)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:596
-msgid ""
-"a programmable block: used to add advanced multi-variable math equations, e."
-"g., sqrt(x*x+y*y)"
-msgstr ""
-"a programmable block: used to add advanced multi-variable math equations, "
-"e.g., sqrt(x*x+y*y)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:610
-msgid ""
-"a programmable block: used to add advanced multi-variable math equations, e."
-"g., sin(x+y+z)"
-msgstr ""
-"a programmable block: used to add advanced multi-variable math equations, "
-"e.g., sin(x+y+z)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:622
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:638
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:653
-msgid "Python block"
-msgstr "Python block"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:624
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:640
@@ -1579,50 +2107,559 @@ msgstr "Python block"
 msgid "runs code found in the tamyblock.py module found in the Journal"
 msgstr "runs code found in the tamyblock.py module found in the Journal"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
-msgid "Cartesian"
-msgstr "Cartesian"
+#: TurtleArt/tabasics.py:385
+msgid "pen down"
+msgstr "pen down"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:671
-msgid "displays Cartesian coordinates"
-msgstr "displays Cartesian coordinates"
+#: TurtleArt/tabasics.py:743
+msgid "wait"
+msgstr "wait"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
-msgid "polar"
-msgstr "polar"
+#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
+msgid "box"
+msgstr "box"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:679
-msgid "displays polar coordinates"
-msgstr "displays polar coordinates"
+#: gnome_plugins/uploader_plugin.py:203
+msgid "Failed to upload!"
+msgstr "Failed to upload!"
+
+#: TurtleArt/tawindow.py:1012 TurtleArt/tawindow.py:1013
+#: TurtleArt/tawindow.py:1490
+msgid "shift"
+msgstr "shift"
+
+#: TurtleArt/tabasics.py:876 TurtleArt/tawindow.py:4139
+msgid "invokes named action stack"
+msgstr "invokes named action stack"
+
+#: TurtleArt/tabasics.py:860 TurtleArt/tabasics.py:863
+#: TurtleArt/tabasics.py:871 TurtleArt/tabasics.py:875
+#: TurtleArt/tawindow.py:1292 TurtleArt/tawindow.py:1371
+#: TurtleArt/tawindow.py:1384 TurtleArt/tawindow.py:1854
+#: TurtleArt/tawindow.py:4125
+msgid "action"
+msgstr "action"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:117
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"do-until-True operator that uses boolean operators from Numbers palette"
+
+#: turtleblocks.py:86
+msgid "usage is"
+msgstr "usage is"
+
+#: TurtleArt/tabasics.py:922
+msgid "Variable 2 (numeric value)"
+msgstr "Variable 2 (numeric value)"
+
+#: TurtleArt/tabasics.py:601
+msgid "divide"
+msgstr "divide"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:247
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:258
+msgid "picture name"
+msgstr "picture name"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:103
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:106
+msgid "while"
+msgstr "while"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
+msgid "the canvas width"
+msgstr "the canvas width"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
+msgid "empty heap?"
+msgstr "empty heap?"
+
+#: TurtleArt/tabasics.py:948 TurtleArt/tawindow.py:4166
+msgid "named variable (numeric value)"
+msgstr "named variable (numeric value)"
+
+#: TurtleArt/tawindow.py:1000 TurtleArt/tawindow.py:1470
+msgid "next"
+msgstr "next"
+
+#: TurtleArt/tabasics.py:779
+msgid "if then"
+msgstr "if then"
+
+#: TurtleArt/tabasics.py:394
+msgid "set pen size"
+msgstr "set pen size"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:819
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
+msgid "presentation template: select Journal object (no description)"
+msgstr "presentation template: select Journal object (no description)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:116
+msgid "until"
+msgstr "until"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
+msgid "media stop"
+msgstr "media stop"
+
+#: TurtleArtActivity.py:266 turtleblocks.py:380
+msgid "Turn on hover help"
+msgstr "Turn on hover help"
+
+#: TurtleArt/tabasics.py:1000
+msgid "permanently deletes items in trash"
+msgstr "permanently deletes items in trash"
+
+#: pysamples/uturn.py:24
+msgid "uturn"
+msgstr "uturn"
+
+#: TurtleArt/tabasics.py:958
+msgid "top of Action 1 stack"
+msgstr "top of Action 1 stack"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:583
+msgid ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+msgstr ""
+"a programmable block: used to add advanced single-variable math equations, e."
+"g., sin(x)"
+
+#: TurtleArt/tabasics.py:738
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
+msgid "Palette of flow operators"
+msgstr "Palette of flow operators"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:716
+msgid "top of a collapsed stack"
+msgstr "top of a collapsed stack"
+
+#: TurtleArt/tabasics.py:794 TurtleArt/tabasics.py:802
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr "if-then-else operator that uses boolean operators from Numbers palette"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
+msgid "returns mouse y coordinate"
+msgstr "returns mouse y coordinate"
+
+#: TurtleArt/tabasics.py:359
+msgid "holds current pen shade"
+msgstr "holds current pen shade"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: pitch, duration, amplitude
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
+msgid "sinewave"
+msgstr "sinewave"
+
+#: gnome_plugins/uploader_plugin.py:166
+msgid "Login failed"
+msgstr "Login failed"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:922
+msgid "left x"
+msgstr "left x"
+
+#
+#: TurtleArt/tabasics.py:213
+msgid "set heading"
+msgstr "seth"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:427
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr "RGB color under the turtle is pushed to the stack"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
+msgid "declutters canvas by hiding blocks"
+msgstr "declutters canvas by hiding blocks"
+
+#: TurtleArtActivity.py:892
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:890
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:895
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: TurtleArtActivity.py:883
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:888
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:563
+msgid "Python chr operator"
+msgstr "Python chr operator"
+
+#: TurtleArt/tabasics.py:811
+msgid "horizontal space"
+msgstr "horizontal space"
+
+#: TurtleArtActivity.py:601 TurtleArtActivity.py:753
+msgid "Metric coordinates"
+msgstr "Metric coordinates"
+
+#: TurtleArt/tabasics.py:856
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
+msgid "string value"
+msgstr "string value"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
+msgid "description"
+msgstr "description"
+
+#: TurtleArt/talogo.py:570
+msgid "I don't know how to"
+msgstr "I don't know how to"
+
+#: TurtleArt/tabasics.py:471
+msgid "set text size"
+msgstr "set text size"
+
+#: gnome_plugins/uploader_plugin.py:99
+msgid "Username:"
+msgstr "Username:"
+
+#: TurtleArt/tabasics.py:410
+msgid "starts filled polygon (used with end fill block)"
+msgstr "starts filled polygon (used with end fill block)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:833
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
+msgid "presentation template: select four Journal objects"
+msgstr "presentation template: select four Journal objects"
+
+#: TurtleArtActivity.py:546 TurtleArtActivity.py:575 TurtleArtActivity.py:678
+#: TurtleArtActivity.py:747 turtleblocks.py:382
+msgid "View"
+msgstr "View"
+
+#: TurtleArt/tabasics.py:340
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "sets gray level of the line drawn by the turtle"
+
+#: gnome_plugins/uploader_plugin.py:109
+msgid "Password:"
+msgstr "Password:"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:435
+msgid "turtle sees"
+msgstr "turtle sees"
+
+#: TurtleArt/tabasics.py:826
+msgid "stop action"
+msgstr "stop action"
+
+#: TurtleArt/tabasics.py:448
+msgid "green"
+msgstr "green"
+
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
+#: TurtleArt/tabasics.py:358
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1154
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1159
+msgid "shade"
+msgstr "shade"
+
+#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:303
+msgid "fills the background with (color, shade)"
+msgstr "fills the background with (color, shade)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:245
+msgid "save picture"
+msgstr "save picture"
+
+#: plugins/audio_sensors/audio_sensors.py:119
+#: plugins/audio_sensors/audio_sensors.py:127
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
+msgid "pitch"
+msgstr "pitch"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:340
+msgid "returns 1 if mouse button is pressed"
+msgstr "returns 1 if mouse button is pressed"
+
+#: TurtleArtActivity.py:451 TurtleArtActivity.py:608 TurtleArtActivity.py:755
+msgid "Rescale coordinates up"
+msgstr "Rescale coordinates up"
+
+#: TurtleArt/tabasics.py:376
+msgid "pen up"
+msgstr "pen up"
+
+#: TurtleArt/tabasics.py:444
+msgid "orange"
+msgstr "orange"
+
+#: TurtleArt/tabasics.py:747
+msgid "pauses program execution a specified number of seconds"
+msgstr "pauses program execution a specified number of seconds"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:467
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "pushes value onto FILO (first-in last-out heap)"
+
+#: TurtleArt/tabasics.py:1009
+msgid "clear all"
+msgstr "clear all"
+
+#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
+msgid "then"
+msgstr "then"
+
+#: gnome_plugins/collaboration_plugin.py:302
+msgid "Register"
+msgstr "Register"
+
+#: TurtleArt/tabasics.py:705
+msgid "not"
+msgstr "not"
+
+#: TurtleArt/tabasics.py:793 TurtleArt/tabasics.py:801
+msgid "if then else"
+msgstr "if then else"
+
+#: TurtleArt/tabasics.py:829
+msgid "stops current action"
+msgstr "stops current action"
+
+#: TurtleArt/tabasics.py:178
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "turns turtle clockwise (angle in degrees)"
+
+#: TurtleArt/tabasics.py:368
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr "holds current gray level (can be used in place of a number block)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
+msgid "xcor of left of screen"
+msgstr "xcor of left of screen"
+
+#: turtleblocks.py:376
+msgid "Reset block size"
+msgstr "Reset block size"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:756
 msgid "turtle"
 msgstr "turtle"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
-msgid "chooses which turtle to command"
-msgstr "chooses which turtle to command"
+#: TurtleArt/tapalette.py:97
+msgid "displays next palette"
+msgstr "displays next palette"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:698
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:707
-msgid "turtle shell"
-msgstr "turtle shell"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:772
+msgid "hide blocks"
+msgstr "hide blocks"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:700
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:708
-msgid "put a custom 'shell' on the turtle"
-msgstr "put a custom 'shell' on the turtle"
+#: plugins/camera_sensor/camera_sensor.py:82
+#: plugins/camera_sensor/camera_sensor.py:130
+msgid "light level detected by camera"
+msgstr "light level detected by camera"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:716
-msgid "top of a collapsed stack"
-msgstr "top of a collapsed stack"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
+msgid "Python int operator"
+msgstr "Python int operator"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:721
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
-msgid "load"
-msgstr "load"
+#: TurtleArt/tabasics.py:687
+msgid "logical less-than operator"
+msgstr "logical less-than operator"
+
+#: TurtleArt/tabasics.py:1005
+msgid "restore all blocks from trash"
+msgstr "restore all blocks from trash"
+
+#: turtleblocks.py:356
+msgid "Save"
+msgstr "Save"
+
+#: TurtleArt/tabasics.py:883
+msgid "store in box 1"
+msgstr "store in box 1"
+
+#: TurtleArt/tabasics.py:896
+msgid "store in box 2"
+msgstr "store in box 2"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
+msgid "hides the Sugar toolbars"
+msgstr "hides the Sugar toolbars"
+
+#: TurtleArt/tabasics.py:226
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
+msgid "print"
+msgstr "print"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:361
+msgid "returns mouse x coordinate"
+msgstr "returns mouse x coordinate"
+
+#: TurtleArt/tabasics.py:443
+msgid "red"
+msgstr "red"
+
+#: TurtleArtActivity.py:166 TurtleArtActivity.py:709 TurtleArtActivity.py:823
+#: TurtleArtActivity.py:853 turtleblocks.py:360
+msgid "Save as Logo"
+msgstr "Save as Logo"
+
+#: TurtleArt/tabasics.py:317
+msgid "sets color of the line drawn by the turtle"
+msgstr "sets color of the line drawn by the turtle"
+
+#: TurtleArt/tabasics.py:460
+msgid "set text color"
+msgstr "set text color"
+
+#: plugins/audio_sensors/audio_sensors.py:90
+#: plugins/audio_sensors/audio_sensors.py:105
+msgid "loudness"
+msgstr "loudness"
+
+#: gnome_plugins/collaboration_plugin.py:115
+msgid "Enable collaboration"
+msgstr "Enable collaboration"
+
+#: plugins/accelerometer/accelerometer.py:49
+#: plugins/audio_sensors/audio_sensors.py:75
+#: plugins/camera_sensor/camera_sensor.py:63
+#: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
+msgid "Palette of sensor blocks"
+msgstr "Palette of sensor blocks"
+
+#: TurtleArtActivity.py:713 TurtleArtActivity.py:841 TurtleArtActivity.py:863
+msgid "Load plugin"
+msgstr "Load plugin"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:351
+msgid "returns True if mouse button is pressed"
+msgstr "returns True if mouse button is pressed"
+
+#: TurtleArt/tabasics.py:662
+msgid "number"
+msgstr "number"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
+msgid "query keyboard"
+msgstr "query keyboard"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:124
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
+msgid "top"
+msgstr "top"
+
+#: gnome_plugins/uploader_plugin.py:140
+msgid "Submit to Web"
+msgstr "Submit to Web"
+
+#: TurtleArtActivity.py:596 TurtleArtActivity.py:749 turtleblocks.py:366
+msgid "Cartesian coordinates"
+msgstr "Cartesian coordinates"
+
+#: gnome_plugins/collaboration_plugin.py:292
+msgid "Nickname"
+msgstr "Nickname"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:234
+msgid "set scale"
+msgstr "set scale"
+
+#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:1833
+#: TurtleArtActivity.py:703
+msgid "Share selected blocks"
+msgstr "Share selected blocks"
+
+#: TurtleArt/tabasics.py:453
+msgid "white"
+msgstr "white"
+
+#: TurtleArt/tabasics.py:846
+msgid "connects action to toolbar run buttons"
+msgstr "connects action to toolbar run buttons"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:448
+msgid "elapsed time (in seconds) since program started"
+msgstr "elapsed time (in seconds) since program started"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
+msgid "amplitude"
+msgstr "amplitude"
+
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr "Cancel"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
+msgid "the canvas height"
+msgstr "the canvas height"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:994
+msgid "presentation 2x1"
+msgstr "presentation 2x1"
+
+#: TurtleArt/tabasics.py:575
+msgid "minus"
+msgstr "minus"
+
+#: TurtleArt/tabasics.py:714 TurtleArt/tabasics.py:717
+msgid "and"
+msgstr "and"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:126
+msgid "top of a collapsible stack"
+msgstr "top of a collapsible stack"
+
+#: TurtleArt/talogo.py:624
+msgid "as input"
+msgstr "as input"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:622
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:638
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:653
+msgid "Python block"
+msgstr "Python block"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:275
+msgid "media wait"
+msgstr "media wait"
+
+#: plugins/accelerometer/accelerometer.py:56
+#: plugins/accelerometer/accelerometer.py:63
+msgid "acceleration"
+msgstr "acceleration"
+
+#: TurtleArt/tabasics.py:427
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr "holds current pen size (can be used in place of a number block)"
+
+#: TurtleArt/tabasics.py:313
+msgid "set color"
+msgstr "set color"
+
+#: TurtleArt/tabasics.py:646
+msgid "min"
+msgstr "min"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:735
@@ -1630,70 +2667,68 @@ msgstr "load"
 msgid "loads a block"
 msgstr "loads a block"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:745
-msgid "setxy"
-msgstr "setxy"
+#: TurtleArt/tabasics.py:282
+msgid "Palette of pen commands"
+msgstr "Palette of pen commands"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:754
-msgid "palette"
-msgstr "palette"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:480
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "shows values in FILO (first-in last-out heap)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:757
-msgid "selects a palette"
-msgstr "selects a palette"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:107
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"do-while-True operator that uses boolean operators from Numbers palette"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:765
-msgid "Palette of presentation templates"
-msgstr "Palette of presentation templates"
+#: turtleblocks.py:363
+msgid "File"
+msgstr "File"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:772
-msgid "hide blocks"
-msgstr "hide blocks"
+#: TurtleArt/tabasics.py:708
+msgid "logical NOT operator"
+msgstr "logical NOT operator"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
-msgid "declutters canvas by hiding blocks"
-msgstr "declutters canvas by hiding blocks"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:781
-msgid "show blocks"
-msgstr "show blocks"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:783
-msgid "restores hidden blocks"
-msgstr "restores hidden blocks"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
-msgid "hides the Sugar toolbars"
-msgstr "hides the Sugar toolbars"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
-msgid "list"
-msgstr "list"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1039
-msgid "presentation bulleted list"
-msgstr "presentation bulleted list"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:812
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
-msgid "presentation template: list of bullets"
-msgstr "presentation template: list of bullets"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:819
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
-msgid "presentation template: select Journal object (no description)"
-msgstr "presentation template: select Journal object (no description)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:865
+msgid "ycor of bottom of screen"
+msgstr "ycor of bottom of screen"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:826
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
 msgid "presentation template: select Journal object (with description)"
 msgstr "presentation template: select Journal object (with description)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:833
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
-msgid "presentation template: select four Journal objects"
-msgstr "presentation template: select four Journal objects"
+#: TurtleArt/tabasics.py:557
+msgid "Palette of numeric operators"
+msgstr "Palette of numeric operators"
+
+#: TurtleArt/tabasics.py:589
+msgid "multiply"
+msgstr "multiply"
+
+#: TurtleArt/tabasics.py:754
+msgid "forever"
+msgstr "forever"
+
+#: TurtleArtActivity.py:1135
+#, python-format
+msgid "Plugin %s already installed."
+msgstr "Plugin %s already installed."
+
+#: TurtleArt/tabasics.py:329
+msgid "sets shade of the line drawn by the turtle"
+msgstr "sets shade of the line drawn by the turtle"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:308
+msgid "speaks text"
+msgstr "speaks text"
+
+#: TurtleArtActivity.py:211
+msgid "snapshot"
+msgstr "snapshot"
+
+#: TurtleArt/tabasics.py:151
+msgid "clean"
+msgstr "clean"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:840
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:847
@@ -1702,82 +2737,971 @@ msgstr "presentation template: select four Journal objects"
 msgid "presentation template: select two Journal objects"
 msgstr "presentation template: select two Journal objects"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
-msgid "xcor of left of screen"
-msgstr "xcor of left of screen"
+#: TurtleArtActivity.py:611 TurtleArtActivity.py:757 turtleblocks.py:372
+msgid "Grow blocks"
+msgstr "Grow blocks"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
-msgid "bottom"
-msgstr "bottom"
+#: TurtleArtActivity.py:594 TurtleArtActivity.py:748
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
+msgid "Fullscreen"
+msgstr "Fullscreen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:865
-msgid "ycor of bottom of screen"
-msgstr "ycor of bottom of screen"
+#: turtleblocks.py:255
+msgid "File not found"
+msgstr "File not found"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
-msgid "width"
-msgstr "width"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:222
+msgid "show"
+msgstr "show"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
-msgid "the canvas width"
-msgstr "the canvas width"
+#: TurtleArt/tabasics.py:853 TurtleArt/tabasics.py:854
+#: TurtleArt/tabasics.py:855
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:208
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:223
+msgid "text"
+msgstr "text"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:881
-msgid "xcor of right of screen"
-msgstr "xcor of right of screen"
+#: TurtleArt/tabasics.py:646
+msgid "random"
+msgstr "random"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:889
-msgid "ycor of top of screen"
-msgstr "ycor of top of screen"
+#: TurtleArt/tabasics.py:674
+msgid "logical greater-than operator"
+msgstr "logical greater-than operator"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894
-msgid "height"
-msgstr "height"
+#: TurtleArt/tabasics.py:166
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "turns turtle counterclockwise (angle in degrees)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
-msgid "the canvas height"
-msgstr "the canvas height"
+#: TurtleArt/tabasics.py:454
+msgid "black"
+msgstr "black"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:904
-msgid "title x"
-msgstr "title x"
+#: TurtleArt/tabasics.py:639
+msgid "calculates square root"
+msgstr "calculates square root"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:913
-msgid "title y"
-msgstr "title y"
+#: TurtleArt/tabasics.py:237
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:922
-msgid "left x"
-msgstr "left x"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:358
+msgid "mouse x"
+msgstr "mouse x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:931
-msgid "top y"
-msgstr "top y"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
+msgid "mouse y"
+msgstr "mouse y"
+
+#: pysamples/grecord.py:215
+msgid "stop"
+msgstr "stop"
+
+#: TurtleArt/tabasics.py:671
+msgid "greater than"
+msgstr "greater than"
+
+#: TurtleArt/tabasics.py:225 TurtleArt/tawindow.py:3862
+#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:604
+msgid "xcor"
+msgstr "xcor"
+
+#: TurtleArtActivity.py:687 turtleblocks.py:408 util/helpbutton.py:45
+msgid "Help"
+msgstr "Help"
+
+#: turtleblocks.py:448
+msgid "Save project?"
+msgstr "Save project?"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
+msgid "chooses which turtle to command"
+msgstr "chooses which turtle to command"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:940
 msgid "right x"
 msgstr "right x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:949
-msgid "bottom y"
-msgstr "bottom y"
+#: TurtleArt/tabasics.py:463
+msgid "sets color of text drawn by the turtle"
+msgstr "sets color of text drawn by the turtle"
+
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:65
+msgid "light level detected by light sensor"
+msgstr "light level detected by light sensor"
+
+#: TurtleArtActivity.py:1049 TurtleArtActivity.py:1054
+#: TurtleArtActivity.py:1121
+msgid "Plugin could not be installed."
+msgstr "Plugin could not be installed."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
+msgid "keyboard"
+msgstr "keyboard"
+
+#: TurtleArt/tabasics.py:186
+msgid "arc"
+msgstr "arc"
+
+#: TurtleArt/tabasics.py:186
+msgid "radius"
+msgstr "radius"
+
+#: TurtleArtActivity.py:598 TurtleArtActivity.py:751 turtleblocks.py:368
+msgid "Polar coordinates"
+msgstr "Polar coordinates"
+
+#: TurtleArt/tabasics.py:325
+msgid "set shade"
+msgstr "set shade"
+
+#: TurtleArt/tabasics.py:718
+msgid "logical AND operator"
+msgstr "logical AND operator"
+
+#: gnome_plugins/uploader_plugin.py:90
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:754
+msgid "palette"
+msgstr "palette"
+
+#: TurtleArtActivity.py:681 TurtleArtActivity.py:890 turtleblocks.py:400
+msgid "Run"
+msgstr "Run"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:477
+msgid "show heap"
+msgstr "show heap"
+
+#: TurtleArt/tabasics.py:217
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr "sets the heading of the turtle (0 is towards the top of the screen.)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:757
+msgid "selects a palette"
+msgstr "selects a palette"
+
+#: plugins/audio_sensors/audio_sensors.py:91
+#: plugins/audio_sensors/audio_sensors.py:106
+msgid "microphone input volume"
+msgstr "microphone input volume"
+
+#: gnome_plugins/uploader_plugin.py:120
+msgid "Title:"
+msgstr "Title:"
+
+#: plugins/camera_sensor/camera_sensor.py:67
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
+msgid "Palette of media objects"
+msgstr "Palette of media objects"
+
+#: TurtleArtActivity.py:591
+msgid "Restore blocks from trash"
+msgstr "Restore blocks from trash"
+
+#: TurtleArt/tabasics.py:838
+msgid "Palette of variable blocks"
+msgstr "Palette of variable blocks"
+
+#: TurtleArt/tabasics.py:663
+msgid "used as numeric input in mathematic operators"
+msgstr "used as numeric input in mathematic operators"
+
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
+msgid "Upload"
+msgstr "Upload"
+
+#: gnome_plugins/collaboration_plugin.py:296
+msgid "Server"
+msgstr "Server"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "presentation 2x2"
+msgstr "presentation 2x2"
+
+#: TurtleArt/tabasics.py:912
+msgid "Variable 1 (numeric value)"
+msgstr "Variable 1 (numeric value)"
+
+#: gnome_plugins/collaboration_plugin.py:132
+msgid "Neighborhood"
+msgstr "Neighborhood"
+
+#: TurtleArt/tabasics.py:567
+msgid "adds two alphanumeric inputs"
+msgstr "adds two alphanumeric inputs"
+
+#: TurtleArt/tabasics.py:695
+msgid "equal"
+msgstr "equal"
+
+#: TurtleArt/tabasics.py:789
+msgid "else"
+msgstr "else"
+
+#: TurtleArt/talogo.py:624
+msgid "doesn't like"
+msgstr "doesn't like"
+
+#: turtleblocks.py:447
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr "You have unsaved work. Would you like to save before quitting?"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:783
+msgid "restores hidden blocks"
+msgstr "restores hidden blocks"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:721
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
+msgid "load"
+msgstr "load"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
+msgid "stop video or audio"
+msgstr "stop video or audio"
+
+#: TurtleArt/tabasics.py:379
+msgid "Turtle will not draw when moved."
+msgstr "Turtle will not draw when moved."
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:504
+msgid "pop"
+msgstr "pop"
+
+#: TurtleArt/tabasics.py:426
+msgid "pen size"
+msgstr "pen size"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:698
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:707
+msgid "turtle shell"
+msgstr "turtle shell"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:320
+msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
+msgstr "plays a sinewave at frequency, amplitude, and duration (in seconds)"
+
+#: TurtleArt/tabasics.py:635
+msgid "√"
+msgstr "√"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
+msgid "speak"
+msgstr "speak"
+
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
+msgid "read value from RFID device"
+msgstr "read value from RFID device"
+
+#: TurtleArt/tabasics.py:190
+msgid "moves turtle along an arc"
+msgstr "moves turtle along an arc"
+
+#: pysamples/uturn.py:26
+msgid "make a uturn"
+msgstr "make a uturn"
+
+#: TurtleArt/tabasics.py:699
+msgid "logical equal-to operator"
+msgstr "logical equal-to operator"
+
+#: TurtleArt/tabasics.py:441
+msgid "Palette of pen colors"
+msgstr "Palette of pen colors"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:292
+msgid "pause video or audio"
+msgstr "pause video or audio"
+
+#: TurtleArt/tabasics.py:888
+msgid "stores numeric value in Variable 1"
+msgstr "stores numeric value in Variable 1"
+
+#: TurtleArt/tabasics.py:901
+msgid "stores numeric value in Variable 2"
+msgstr "stores numeric value in Variable 2"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:700
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:708
+msgid "put a custom 'shell' on the turtle"
+msgstr "put a custom 'shell' on the turtle"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:337
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:348
+msgid "button down"
+msgstr "button down"
+
+#: TurtleArt/tabasics.py:143
+msgid "moves turtle backward"
+msgstr "moves turtle backward"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:889
+msgid "ycor of top of screen"
+msgstr "ycor of top of screen"
+
+#: TurtleArt/talogo.py:384 TurtleArtActivity.py:322 TurtleArtActivity.py:684
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1485
+msgid "Show blocks"
+msgstr "Show blocks"
+
+#: pysamples/grecord.py:217
+msgid "play"
+msgstr "play"
+
+#: pysamples/grecord.py:219
+msgid "save"
+msgstr "save"
+
+#: gnome_plugins/collaboration_plugin.py:304
+msgid "Colors"
+msgstr "Colors"
+
+#: TurtleArt/tabasics.py:398
+msgid "sets size of the line drawn by the turtle"
+msgstr "sets size of the line drawn by the turtle"
+
+#: turtleblocks.py:355
+msgid "Open"
+msgstr "Open"
+
+#: TurtleArt/tawindow.py:989 TurtleArt/tawindow.py:990
+msgid "orientation"
+msgstr "orientation"
+
+#: TurtleArt/tabasics.py:236 TurtleArt/tawindow.py:3862
+#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:605
+msgid "ycor"
+msgstr "ycor"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:596
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+msgstr ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sqrt(x*x+y*y)"
+
+#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
+msgid "if"
+msgstr "if"
+
+#: TurtleArt/tabasics.py:203 TurtleArt/tabasics.py:269
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:579
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:592
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:606
+msgid "Python"
+msgstr "Python"
+
+#: TurtleArtActivity.py:688 turtleblocks.py:403
+msgid "Stop"
+msgstr "Stop"
+
+#: TurtleArt/tabasics.py:964 TurtleArt/tabasics.py:984
+msgid "action 2"
+msgstr "action 2"
+
+#: TurtleArt/tabasics.py:955 TurtleArt/tabasics.py:974
+msgid "action 1"
+msgstr "action 1"
+
+#: TurtleArt/tabasics.py:417
+msgid "end fill"
+msgstr "end fill"
+
+#: TurtleArtActivity.py:587 TurtleArtActivity.py:731 turtleblocks.py:385
+msgid "Copy"
+msgstr "Copy"
+
+#: TurtleArtActivity.py:589 TurtleArtActivity.py:732 turtleblocks.py:386
+msgid "Paste"
+msgstr "Paste"
+
+#: TurtleArt/talogo.py:511
+msgid "did not output to"
+msgstr "did not output to"
+
+#: gnome_plugins/collaboration_plugin.py:120
+msgid "Activities"
+msgstr "Activities"
+
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "Upload to Web"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:490
+msgid "empty heap"
+msgstr "empty heap"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "pops value off FILO (first-in last-out heap)"
+
+#: TurtleArtActivity.py:680 TurtleArtActivity.py:888 turtleblocks.py:399
+msgid "Clean"
+msgstr "Clean"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:765
+msgid "Palette of presentation templates"
+msgstr "Palette of presentation templates"
+
+#: TurtleArt/tabasics.py:186
+msgid "angle"
+msgstr "angle"
+
+#: TurtleArt/tabasics.py:614
+msgid "identity"
+msgstr "identity"
+
+#: TurtleArtActivity.py:579 TurtleArtActivity.py:676 TurtleArtActivity.py:705
+#: TurtleArtActivity.py:707 TurtleArtActivity.py:815
+msgid "Save/Load"
+msgstr "Save/Load"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:931
+msgid "top y"
+msgstr "top y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:151
+msgid "audio"
+msgstr "audio"
+
+#: turtleblocks.py:396
+msgid "Tools"
+msgstr "Tools"
+
+#: gnome_plugins/collaboration_plugin.py:298
+msgid "Port"
+msgstr "Port"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:539
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:541
+msgid "comment"
+msgstr "comment"
+
+#: TurtleArt/tabasics.py:578
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "subtracts bottom numeric input from top numeric input"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:290
+msgid "media pause"
+msgstr "media pause"
+
+#: pysamples/forward_push.py:45
+msgid "push destination rgb value to heap"
+msgstr "push destination rgb value to heap"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:381
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr "query for keyboard input (results stored in keyboard block)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
+msgid "Cartesian"
+msgstr "Cartesian"
+
+#: TurtleArt/tabasics.py:154
+msgid "clears the screen and reset the turtle"
+msgstr "clears the screen and reset the turtle"
+
+#: plugins/audio_sensors/audio_sensors.py:84
+#: plugins/audio_sensors/audio_sensors.py:99
+msgid "raw microphone input signal"
+msgstr "raw microphone input signal"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:437
+msgid "returns the color that the turtle \"sees\""
+msgstr "returns the color that the turtle \"sees\""
+
+#: TurtleArt/tabasics.py:977
+msgid "invokes Action 1 stack"
+msgstr "invokes Action 1 stack"
+
+#: TurtleArt/tabasics.py:123
+msgid "Palette of turtle commands"
+msgstr "Palette of turtle commands"
+
+#: TurtleArt/tabasics.py:758
+msgid "loops forever"
+msgstr "loops forever"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:207
+msgid "show aligned"
+msgstr "show aligned"
+
+#: TurtleArtActivity.py:1136
+#, python-format
+msgid "Do you want to reinstall %s?"
+msgstr "Do you want to reinstall %s?"
+
+#: TurtleArtActivity.py:710 TurtleArtActivity.py:836 TurtleArtActivity.py:858
+msgid "Load project"
+msgstr "Load project"
+
+#: TurtleArtActivity.py:573 TurtleArtActivity.py:679
+msgid "Project"
+msgstr "Project"
+
+#: turtleblocks.py:402
+msgid "Debug"
+msgstr "Debug"
+
+#: TurtleArtActivity.py:260 TurtleArtActivity.py:616 TurtleArtActivity.py:759
+#: turtleblocks.py:378
+msgid "Turn off hover help"
+msgstr "Turn off hover help"
+
+#: TurtleArt/tabasics.py:624 TurtleArt/tabasics.py:625
+msgid "mod"
+msgstr "mod"
+
+#: gnome_plugins/collaboration_plugin.py:300
+msgid "Password"
+msgstr "Password"
+
+#: TurtleArt/tabasics.py:819
+msgid "vertical space"
+msgstr "vertical space"
+
+#: TurtleArtActivity.py:1117
+msgid "Please restart Turtle Art in order to use the plugin."
+msgstr "Please restart Turtle Art in order to use the plugin."
+
+#: TurtleArt/tabasics.py:419
+msgid "completes filled polygon (used with start fill block)"
+msgstr "completes filled polygon (used with start fill block)"
+
+#: gnome_plugins/collaboration_plugin.py:128
+msgid "Share"
+msgstr "Share"
+
+#: TurtleArt/tabasics.py:683
+msgid "less than"
+msgstr "less than"
+
+#: TurtleArt/tabasics.py:636
+msgid "square root"
+msgstr "square root"
+
+#: turtleblocks.py:370
+msgid "Rescale coordinates"
+msgstr "Rescale coordinates"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:781
+msgid "show blocks"
+msgstr "show blocks"
+
+#: turtleblocks.py:362
+msgid "Quit"
+msgstr "Quit"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:177
+msgid "Sugar Journal description field"
+msgstr "Sugar Journal description field"
+
+#: TurtleArt/tabasics.py:337
+msgid "set gray"
+msgstr "set gray"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1039
+msgid "presentation bulleted list"
+msgstr "presentation bulleted list"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
+msgid "duration"
+msgstr "duration"
+
+#: turtleblocks.py:354
+msgid "New"
+msgstr "New"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:543
+msgid "places a comment in your code"
+msgstr "places a comment in your code"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
+msgid "read pixel"
+msgstr "read pixel"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:266
+msgid "scale"
+msgstr "scale"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
+msgid "bottom"
+msgstr "bottom"
+
+#: TurtleArt/tabasics.py:451
+msgid "purple"
+msgstr "purple"
+
+#: TurtleArtActivity.py:447
+msgid "Rescale coordinates down"
+msgstr "Rescale coordinates down"
+
+#: TurtleArt/tautils.py:483
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
+msgid "click to open"
+msgstr "click to open"
+
+#: plugins/audio_sensors/audio_sensors.py:120
+#: plugins/audio_sensors/audio_sensors.py:128
+msgid "microphone input pitch"
+msgstr "microphone input pitch"
+
+#: gnome_plugins/collaboration_plugin.py:129
+msgid "Configuration"
+msgstr "Configuration"
+
+#: gnome_plugins/uploader_plugin.py:130
+msgid "Description:"
+msgstr "Description:"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:140
+msgid "journal"
+msgstr "journal"
+
+#: TurtleArt/tabasics.py:999
+msgid "empty trash"
+msgstr "empty trash"
+
+#: TurtleArt/tabasics.py:388
+msgid "Turtle will draw when moved."
+msgstr "Turtle will draw when moved."
+
+#: TurtleArt/tautils.py:196
+msgid "Load..."
+msgstr "Load..."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
+msgid "Sugar Journal audio object"
+msgstr "Sugar Journal audio object"
+
+#: TurtleArt/talogo.py:374 TurtleArtActivity.py:683
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1492
+msgid "Stop turtle"
+msgstr "Stop turtle"
+
+#: turtleblocks.py:404
+msgid "Turtle"
+msgstr "Turtle"
+
+#: TurtleArt/tapalette.py:98
+msgid "changes the orientation of the palette of blocks"
+msgstr "changes the orientation of the palette of blocks"
+
+#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
+msgid "store in"
+msgstr "store in"
+
+#: TurtleArt/talogo.py:388 TurtleArtActivity.py:326 TurtleArtActivity.py:894
+msgid "Hide blocks"
+msgstr "Hide blocks"
+
+#: TurtleArtActivity.py:714 TurtleArtActivity.py:844 TurtleArtActivity.py:866
+msgid "Load Python block"
+msgstr "Load Python block"
+
+#: TurtleArt/tabasics.py:563
+msgid "plus"
+msgstr "plus"
+
+#: TurtleArt/tabasics.py:725 TurtleArt/tabasics.py:728
+msgid "or"
+msgstr "or"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:812
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
+msgid "presentation template: list of bullets"
+msgstr "presentation template: list of bullets"
+
+#: TurtleArt/tabasics.py:616
+msgid "identity operator used for extending blocks"
+msgstr "identity operator used for extending blocks"
+
+#: TurtleArtActivity.py:613 TurtleArtActivity.py:758 turtleblocks.py:374
+msgid "Shrink blocks"
+msgstr "Shrink blocks"
+
+#: TurtleArt/tabasics.py:474
+msgid "sets size of text drawn by the turtle"
+msgstr "sets size of text drawn by the turtle"
+
+#: TurtleArt/tabasics.py:248
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+
+#: TurtleArt/tawindow.py:3977
+msgid "image"
+msgstr "image"
+
+#: TurtleArt/tabasics.py:650
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+"returns random number between minimum (top) and maximum (bottom) values"
+
+#: TurtleArt/tabasics.py:349
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr "holds current pen color (can be used in place of a number block)"
+
+#: TurtleArtActivity.py:274 turtleblocks.py:390
+msgid "Show palette"
+msgstr "Show palette"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:248
+msgid "saves a picture to the Sugar Journal"
+msgstr "saves a picture to the Sugar Journal"
+
+#: TurtleArtActivity.py:219 TurtleArtActivity.py:643 TurtleArtActivity.py:685
+#: TurtleArtActivity.py:829 TurtleArtActivity.py:856
+msgid "Save snapshot"
+msgstr "Save snapshot"
+
+#: TurtleArt/tabasics.py:843 pysamples/grecord.py:213
+msgid "start"
+msgstr "start"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:522
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
+msgid "returns True if heap is empty"
+msgstr "returns True if heap is empty"
+
+#: TurtleArt/tabasics.py:132
+msgid "moves turtle forward"
+msgstr "moves turtle forward"
+
+#: TurtleArt/tabasics.py:128
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
+msgid "forward"
+msgstr "forward"
+
+#: TurtleArt/tabasics.py:932 TurtleArt/tabasics.py:945
+#: TurtleArt/tawindow.py:1296 TurtleArt/tawindow.py:1409
+#: TurtleArt/tawindow.py:1858 TurtleArt/tawindow.py:4152
+#: TurtleArt/tawindow.py:4180
+msgid "my box"
+msgstr "my box"
+
+#: gnome_plugins/collaboration_plugin.py:294
+msgid "Account ID"
+msgstr "Account ID"
+
+#: TurtleArt/tawindow.py:1310
+msgid "Select blocks to share"
+msgstr "Select blocks to share"
+
+#: TurtleArt/tabasics.py:139
+msgid "back"
+msgstr "back"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:238
+msgid "sets the scale of media"
+msgstr "sets the scale of media"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
+msgid "holds current scale value"
+msgstr "holds current scale value"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:964
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:979
 msgid "presentation 1x1"
 msgstr "presentation 1x1"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:994
-msgid "presentation 2x1"
-msgstr "presentation 2x1"
-
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1009
 msgid "presentation 1x2"
 msgstr "presentation 1x2"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
-msgid "presentation 2x2"
-msgstr "presentation 2x2"
+#: TurtleArt/tabasics.py:865
+msgid "top of nameable action stack"
+msgstr "top of nameable action stack"
+
+#: TurtleArt/tabasics.py:933 TurtleArt/tawindow.py:4194
+msgid "stores numeric value in named variable"
+msgstr "stores numeric value in named variable"
+
+#: TurtleArt/tabasics.py:729
+msgid "logical OR operator"
+msgstr "logical OR operator"
+
+#: plugins/audio_sensors/audio_sensors.py:158
+#: plugins/audio_sensors/audio_sensors.py:172
+#: plugins/audio_sensors/audio_sensors.py:186
+#: plugins/audio_sensors/audio_sensors.py:200
+msgid "microphone input voltage"
+msgstr "microphone input voltage"
+
+#: TurtleArt/tabasics.py:770
+msgid "loops specified number of times"
+msgstr "loops specified number of times"
+
+#: TurtleArt/tautils.py:206
+msgid "Save..."
+msgstr "Save..."
+
+#: TurtleArt/tabasics.py:987
+msgid "invokes Action 2 stack"
+msgstr "invokes Action 2 stack"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:745
+msgid "setxy"
+msgstr "setxy"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:913
+msgid "title y"
+msgstr "title y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:904
+msgid "title x"
+msgstr "title x"
+
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
+msgid "fill screen"
+msgstr "fill screen"
+
+#: pysamples/journal-stats.py:78
+msgid "other"
+msgstr "other"
+
+#: turtleblocks.py:357
+msgid "Save as"
+msgstr "Save as"
+
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+msgid "set xy"
+msgstr "set xy"
+
+#: TurtleArt/tabasics.py:995
+msgid "trash"
+msgstr "trash"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
+msgid "polar"
+msgstr "polar"
+
+#: TurtleArt/tabasics.py:765 TurtleArt/tabasics.py:769
+msgid "repeat"
+msgstr "repeat"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:277
+msgid "wait for current video or audio to complete"
+msgstr "wait for current video or audio to complete"
+
+#: TurtleArtActivity.py:203 TurtleArtActivity.py:708 TurtleArtActivity.py:820
+#: TurtleArtActivity.py:850 turtleblocks.py:358
+msgid "Save as image"
+msgstr "Save as image"
+
+#: TurtleArtActivity.py:541 TurtleArtActivity.py:577 TurtleArtActivity.py:677
+#: TurtleArtActivity.py:730 turtleblocks.py:387
+msgid "Edit"
+msgstr "Edit"
+
+#: plugins/audio_sensors/audio_sensors.py:152
+#: plugins/audio_sensors/audio_sensors.py:166
+#: plugins/audio_sensors/audio_sensors.py:180
+#: plugins/audio_sensors/audio_sensors.py:194
+msgid "microphone input resistance"
+msgstr "microphone input resistance"
+
+#: TurtleArt/tabasics.py:967
+msgid "top of Action 2 stack"
+msgstr "top of Action 2 stack"
+
+#: TurtleArt/tabasics.py:604
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+
+#: TurtleArt/tabasics.py:646
+msgid "max"
+msgstr "max"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:553
+msgid "prints value in status block at bottom of the screen"
+msgstr "prints value in status block at bottom of the screen"
+
+#: TurtleArt/tabasics.py:408
+msgid "start fill"
+msgstr "start fill"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
+msgid "holds results of query-keyboard block as ASCII"
+msgstr "holds results of query-keyboard block as ASCII"
+
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  en.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: push adds a new item to the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
+msgid "push"
+msgstr "push"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:610
+msgid ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+msgstr ""
+"a programmable block: used to add advanced multi-variable math equations, e."
+"g., sin(x+y+z)"
+
+#: TurtleArt/tabasics.py:1004
+msgid "restore all"
+msgstr "restore all"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
+msgid "hello"
+msgstr "hello"
+
+#. TRANS: "name" option from activity.info file
+msgid "TurtleBlocks"
+msgstr "TurtleBlocks"
+
+#: TurtleArt/tawindow.py:1256
+msgid ""
+"Please hit the Stop Button before making changes to your Turtle Blocks "
+"program"
+msgstr ""
+"Please hit the Stop Button before making changes to your Turtle Blocks "
+"program"
+
+#: TurtleArtActivity.py:766
+msgid "Palettes"
+msgstr "Palettes"
+
+#: gnome_plugins/fb_plugin.py:87
+msgid "Facebook wall post"
+msgstr "Facebook wall post"
 
 #: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
@@ -1804,158 +3728,68 @@ msgstr ""
 "Sorry, there is no free memory to load my brain. Close other activities and "
 "try once more."
 
-#: pysamples/forward_push.py:45
-msgid "push destination rgb value to heap"
-msgstr "push destination rgb value to heap"
-
-#: pysamples/grecord.py:215
-msgid "stop"
-msgstr "stop"
-
-#: pysamples/grecord.py:217
-msgid "play"
-msgstr "play"
-
-#: pysamples/grecord.py:219
-msgid "save"
-msgstr "save"
-
-#: pysamples/journal-stats.py:78
-msgid "other"
-msgstr "other"
-
-#: pysamples/uturn.py:24
-msgid "uturn"
-msgstr "uturn"
-
-#: pysamples/uturn.py:26
-msgid "make a uturn"
-msgstr "make a uturn"
-
-#: turtleblocks.py:86
-msgid "usage is"
-msgstr "usage is"
-
-#: turtleblocks.py:240
-msgid "No option action:"
-msgstr "No option action:"
-
-#: turtleblocks.py:255
-msgid "File not found"
-msgstr "File not found"
-
-#: turtleblocks.py:279
-#, python-format
-msgid "Configuration directory not writable: %s"
-msgstr "Configuration directory not writable: %s"
-
-#: turtleblocks.py:354
-msgid "New"
-msgstr "New"
-
-#: turtleblocks.py:355
-msgid "Open"
-msgstr "Open"
-
-#: turtleblocks.py:356
-msgid "Save"
-msgstr "Save"
-
-#: turtleblocks.py:357
-msgid "Save as"
-msgstr "Save as"
-
-#: turtleblocks.py:362
-msgid "Quit"
-msgstr "Quit"
-
-#: turtleblocks.py:363
-msgid "File"
-msgstr "File"
-
-#: turtleblocks.py:370
-msgid "Rescale coordinates"
-msgstr "Rescale coordinates"
-
-#: turtleblocks.py:376
-msgid "Reset block size"
-msgstr "Reset block size"
-
-#: turtleblocks.py:394
-msgid "Show/hide blocks"
-msgstr "Show/hide blocks"
-
-#: turtleblocks.py:396
-msgid "Tools"
-msgstr "Tools"
-
-#: turtleblocks.py:402
-msgid "Debug"
-msgstr "Debug"
-
-#: turtleblocks.py:404
-msgid "Turtle"
-msgstr "Turtle"
-
 #: turtleblocks.py:407
 msgid "About..."
 msgstr "About..."
 
-#: turtleblocks.py:447
-msgid "You have unsaved work. Would you like to save before quitting?"
-msgstr "You have unsaved work. Would you like to save before quitting?"
+#~ msgid "returns the battery charge as a number between 0 and 255"
+#~ msgstr "returns the battery charge as a number between 0 and 255"
 
-#: turtleblocks.py:448
-msgid "Save project?"
-msgstr "Save project?"
-
-#~ msgid "Turtle Art Mini"
-#~ msgstr "Turtle Art Mini"
-
-#~ msgid "Turtle Confusion"
-#~ msgstr "Turtle Confusion"
-
-#~ msgid "Select a challenge"
-#~ msgstr "Select a challenge"
-
-#~ msgid "Amazonas Tortuga"
-#~ msgstr "Amazonas Tortuga"
-
-#~ msgid "Palette of Mexican pesos"
-#~ msgstr "Palette of Mexican pesos"
-
-#~ msgid "Palette of Colombian pesos"
-#~ msgstr "Palette of Colombian pesos"
-
-#~ msgid "Palette of Rwandan francs"
-#~ msgstr "Palette of Rwandan francs"
-
-#~ msgid "Palette of US dollars"
-#~ msgstr "Palette of US dollars"
-
-#~ msgid "Palette of Australian dollars"
-#~ msgstr "Palette of Australian dollars"
-
-#~ msgid "Palette of Paraguayan Guaranies"
-#~ msgstr "Palette of Paraguayan Guaranies"
-
-#~ msgid "Palette of Peruvian Nuevo Soles"
-#~ msgstr "Palette of Peruvian Nuevo Soles"
-
-#~ msgid "Palette of Uruguayan Pesos"
-#~ msgstr "Palette of Uruguayan Pesos"
-
-#~ msgid "TurtleBots"
-#~ msgstr "TurtleBots"
+#~ msgid "Get battery level of the brick"
+#~ msgstr "Get battery level of the brick"
 
 #~ msgid "adjust LED intensity between 0 and 255"
 #~ msgstr "adjust LED intensity between 0 and 255"
 
+#~ msgid "returns the ambient light level"
+#~ msgstr "returns the ambient light level"
+
+#~ msgid "returns the ambient temperature"
+#~ msgstr "returns the ambient temperature"
+
+#~ msgid "returns 0 or 1 depending on the sensor inclination"
+#~ msgstr "returns 0 or 1 depending on the sensor inclination"
+
+#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
+#~ msgstr "switches from 0 to 1, the frequency depends on the vibration"
+
+#~ msgid "grayscale"
+#~ msgstr "grayscale"
+
+#~ msgid "ambient light"
+#~ msgstr "ambient light"
+
+#~ msgid ""
+#~ "TurtleBlocks with some robot plugins: Butia, Lego NxT, WeDo, FollowMe"
+#~ msgstr ""
+#~ "TurtleBlocks with some robot plugins: Butia, Lego NxT, WeDo, FollowMe"
+
+#~ msgid "magnetic induction"
+#~ msgstr "magnetic induction"
+
+#~ msgid "vibration"
+#~ msgstr "vibration"
+
+#~ msgid "move the Butia robot forward a predefined distance"
+#~ msgstr "move the Butia robot forward a predefined distance"
+
+#~ msgid "move the Butia robot backward a predefined distance"
+#~ msgstr "move the Butia robot backward a predefined distance"
+
+#~ msgid "turn Butia"
+#~ msgstr "turn Butia"
+
+#~ msgid "turn the Butia robot x degrees"
+#~ msgstr "turn the Butia robot x degrees"
+
+#~ msgid "moves the Butia at specify speed motors"
+#~ msgstr "moves the Butia at specified speed motors"
+
+#~ msgid "grey"
+#~ msgstr "gray"
+
 #~ msgid "returns the object gray level as a number between 0 and 1023"
 #~ msgstr "returns the object gray level as a number between 0 and 1023"
-
-#~ msgid "returns 1 when the button is press and 0 otherwise"
-#~ msgstr "returns 1 when the button is press and 0 otherwise"
 
 #~ msgid "returns the ambient light level as a number between 0 and 1023"
 #~ msgstr "returns the ambient light level as a number between 0 and 1023"
@@ -1970,944 +3804,15 @@ msgstr "Save project?"
 #~ "returns the distance from the object in front of the sensor as a number "
 #~ "between 0 and 255"
 
-#~ msgid "returns 0 or 1 depending on the sensor inclination"
-#~ msgstr "returns 0 or 1 depending on the sensor inclination"
-
-#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-#~ msgstr "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-
-#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
-#~ msgstr "switches from 0 to 1, the frequency depends on the vibration"
-
-#~ msgid "returns the value of the resistance"
-#~ msgstr "returns the value of the resistance"
-
-#~ msgid "LED"
-#~ msgstr "LED"
-
-#~ msgid "button"
-#~ msgstr "button"
-
-#~ msgid "grayscale"
-#~ msgstr "grayscale"
-
-#~ msgid "ambient light"
-#~ msgstr "ambient light"
-
-#~ msgid "temperature"
-#~ msgstr "temperature"
-
-#~ msgid "distance"
-#~ msgstr "distance"
-
-#~ msgid "tilt"
-#~ msgstr "tilt"
-
-#~ msgid "magnetic induction"
-#~ msgstr "magnetic induction"
-
-#~ msgid "vibration"
-#~ msgstr "vibration"
-
-#~ msgid "Butia Robot"
-#~ msgstr "Butia Robot"
-
-#~ msgid "refresh Butia"
-#~ msgstr "refresh Butia"
-
-#~ msgid "refresh the state of the Butia palette and blocks"
-#~ msgstr "refresh the state of the Butia palette and blocks"
-
-#~ msgid "battery charge Butia"
-#~ msgstr "battery charge Butia"
-
-#~ msgid "returns the battery charge as a number between 0 and 255"
-#~ msgstr "returns the battery charge as a number between 0 and 255"
-
-#~ msgid "speed Butia"
-#~ msgstr "speed Butia"
-
-#~ msgid "forward Butia"
-#~ msgstr "forward Butia"
-
-#~ msgid "move the Butia robot forward"
-#~ msgstr "move the Butia robot forward"
-
-#~ msgid "move the Butia robot forward a predefined distance"
-#~ msgstr "move the Butia robot forward a predefined distance"
-
-#~ msgid "left Butia"
-#~ msgstr "left Butia"
-
-#~ msgid "turn the Butia robot at left"
-#~ msgstr "turn the Butia robot at left"
-
-#~ msgid "backward Butia"
-#~ msgstr "backward Butia"
-
-#~ msgid "move the Butia robot backward"
-#~ msgstr "move the Butia robot backward"
-
-#~ msgid "move the Butia robot backward a predefined distance"
-#~ msgstr "move the Butia robot backward a predefined distance"
-
-#~ msgid "right Butia"
-#~ msgstr "right Butia"
-
-#~ msgid "turn the Butia robot at right"
-#~ msgstr "turn the Butia robot at right"
-
-#~ msgid "turn Butia"
-#~ msgstr "turn Butia"
-
-#~ msgid "turn the Butia robot x degrees"
-#~ msgstr "turn the Butia robot x degrees"
-
-#~ msgid "stop Butia"
-#~ msgstr "stop Butia"
-
-#~ msgid "stop the Butia robot"
-#~ msgstr "stop the Butia robot"
-
-#~ msgid "Butia"
-#~ msgstr "Butia"
-
-#~ msgid "Error importing Pygame. This plugin require Pygame 1.9"
-#~ msgstr "Error importing Pygame. This plugin require Pygame 1.9"
-
-#~ msgid "Error on initialization of the camera"
-#~ msgstr "Error on initialization of the camera"
-
-#~ msgid "No camera was found"
-#~ msgstr "No camera was found"
-
-#~ msgid "Error stopping camera"
-#~ msgstr "Error stopping camera"
-
-#~ msgid "Error starting camera"
-#~ msgstr "Error starting camera"
-
-#~ msgid "Error in get mask"
-#~ msgstr "Error in get mask"
-
-#~ msgid "FollowMe"
-#~ msgstr "FollowMe"
-
-#~ msgid "refresh FollowMe"
-#~ msgstr "refresh FollowMe"
-
-#~ msgid "Search for a connected camera."
-#~ msgstr "Search for a connected camera."
-
-#~ msgid "calibration"
-#~ msgstr "calibration"
-
-#~ msgid "store a personalized calibration"
-#~ msgstr "store a personalized calibration"
-
-#~ msgid "return a personalized calibration"
-#~ msgstr "return a personalized calibration"
-
-#~ msgid "follow"
-#~ msgstr "follow"
-
-#~ msgid "follow a color or calibration"
-#~ msgstr "follow a color or calibration"
-
-#~ msgid "set the camera brightness as a value between 0 to 255."
-#~ msgstr "set the camera brightness as a value between 0 to 255."
-
-#~ msgid "minimum pixels"
-#~ msgstr "minimum pixels"
-
-#~ msgid "set the minimal number of pixels to follow"
-#~ msgstr "set the minimal number of pixels to follow"
-
-#~ msgid "threshold"
-#~ msgstr "threshold"
-
-#~ msgid "set a threshold for a RGB color"
-#~ msgstr "set a threshold for a RGB color"
-
-#~ msgid "camera mode"
-#~ msgstr "camera mode"
-
-#~ msgid "set the color mode of the camera: RGB; YUV or HSV"
-#~ msgstr "set the color mode of the camera: RGB; YUV or HSV"
-
-#~ msgid "get brightness"
-#~ msgstr "get brightness"
-
-#~ msgid "average color"
-#~ msgstr "average color"
-
-#~ msgid "x position"
-#~ msgstr "x position"
-
-#~ msgid "return x position"
-#~ msgstr "return x position"
-
-#~ msgid "y position"
-#~ msgstr "y position"
-
-#~ msgid "return y position"
-#~ msgstr "return y position"
-
-#~ msgid "pixels"
-#~ msgstr "pixels"
-
-#~ msgid "return the number of pixels of the biggest blob"
-#~ msgstr "return the number of pixels of the biggest blob"
-
-#~ msgid "set the color mode of the camera to RGB"
-#~ msgstr "set the color mode of the camera to RGB"
-
-#~ msgid "set the color mode of the camera to YUV"
-#~ msgstr "set the color mode of the camera to YUV"
-
-#~ msgid "set the color mode of the camera to HSV"
-#~ msgstr "set the color mode of the camera to HSV"
-
-#~ msgid "empty calibration"
-#~ msgstr "empty calibration"
-
-#~ msgid "error in string conversion"
-#~ msgstr "error in string conversion"
-
-#~ msgid "SumBot"
-#~ msgstr "SumBot"
-
-#~ msgid "speed SumBot"
-#~ msgstr "speed SumBot"
-
-#~ msgid "submit the speed to the SumBot"
-#~ msgstr "submit the speed to the SumBot"
-
-#~ msgid "set the default speed for the movement commands"
-#~ msgstr "set the default speed for the movement commands"
-
-#~ msgid "forward SumBot"
-#~ msgstr "forward SumBot"
-
-#~ msgid "move SumBot forward"
-#~ msgstr "move SumBot forward"
-
-#~ msgid "backward SumBot"
-#~ msgstr "backward SumBot"
-
-#~ msgid "move SumBot backward"
-#~ msgstr "move SumBot backward"
-
-#~ msgid "stop SumBot"
-#~ msgstr "stop SumBot"
-
-#~ msgid "stop the SumBot"
-#~ msgstr "stop the SumBot"
-
-#~ msgid "left SumBot"
-#~ msgstr "left SumBot"
-
-#~ msgid "turn left the SumBot"
-#~ msgstr "turn left the SumBot"
-
-#~ msgid "right SumBot"
-#~ msgstr "right SumBot"
-
-#~ msgid "turn right the SumBot"
-#~ msgstr "turn right the SumBot"
-
-#~ msgid "angle to center"
-#~ msgstr "angle to center"
-
-#~ msgid "get the angle to the center of the dohyo"
-#~ msgstr "get the angle to the center of the dohyo"
-
-#~ msgid "angle to Enemy"
-#~ msgstr "angle to Enemy"
-
-#~ msgid "get the angle to the Enemy"
-#~ msgstr "get the angle to the Enemy"
-
-#~ msgid "x coor. SumBot"
-#~ msgstr "x coor. SumBot"
-
-#~ msgid "get the x coordinate of the SumBot"
-#~ msgstr "get the x coordinate of the SumBot"
-
-#~ msgid "y coor. SumBot"
-#~ msgstr "y coor. SumBot"
-
-#~ msgid "get the y coordinate of the SumBot"
-#~ msgstr "get the y coordinate of the SumBot"
-
-#~ msgid "x coor. Enemy"
-#~ msgstr "x coor. Enemy"
-
-#~ msgid "get the x coordinate of the Enemy"
-#~ msgstr "get the x coordinate of the Enemy"
-
-#~ msgid "y coor. Enemy"
-#~ msgstr "y coor. Enemy"
-
-#~ msgid "get the y coordinate of the Enemy"
-#~ msgstr "get the y coordinate of the Enemy"
-
-#~ msgid "rotation SumBot"
-#~ msgstr "rotation SumBot"
-
-#~ msgid "get the rotation of the Sumbot"
-#~ msgstr "get the rotation of the Sumbot"
-
-#~ msgid "rotation Enemy"
-#~ msgstr "rotation Enemy"
-
-#~ msgid "get the rotation of the Enemy"
-#~ msgstr "get the rotation of the Enemy"
-
-#~ msgid "distance to center"
-#~ msgstr "distance to center"
-
-#~ msgid "get the distance to the center of the dohyo"
-#~ msgstr "get the distance to the center of the dohyo"
-
-#~ msgid "distance to Enemy"
-#~ msgstr "distance to Enemy"
-
-#~ msgid "get the distance to the Enemy"
-#~ msgstr "get the distance to the Enemy"
-
-#~ msgid "update information"
-#~ msgstr "update information"
-
-#~ msgid "update information from the server"
-#~ msgstr "update information from the server"
-
-#~ msgid "Palette of physics blocks"
-#~ msgstr "Palette of physics blocks"
-
-#~ msgid "start polygon"
-#~ msgstr "start polygon"
-
-#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
-#~ msgstr "Begin defining a new polygon based on the current Turtle xy position."
-
-#~ msgid "add point"
-#~ msgstr "add point"
-
 #~ msgid ""
-#~ "Add a new point to the current polygon based on the current Turtle xy "
-#~ "position."
+#~ "set the speed of the Butia motors as a value between 0 and 1023, passed "
+#~ "by an argument"
 #~ msgstr ""
-#~ "Add a new point to the current polygon based on the current Turtle xy "
-#~ "position."
-
-#~ msgid "end polygon"
-#~ msgstr "end polygon"
-
-#~ msgid "Define a new polygon."
-#~ msgstr "Define a new polygon."
-
-#~ msgid "end filled polygon"
-#~ msgstr "end filled polygon"
-
-#~ msgid "Not a simple polygon"
-#~ msgstr "Not a simple polygon"
-
-#~ msgid "Define a new filled polygon."
-#~ msgstr "Define a new filled polygon."
-
-#~ msgid "triangle"
-#~ msgstr "triangle"
-
-#~ msgid "base"
-#~ msgstr "base"
-
-#~ msgid "Add a triangle object to the project."
-#~ msgstr "Add a triangle object to the project."
-
-#~ msgid "circle"
-#~ msgstr "circle"
-
-#~ msgid "Add a circle object to the project."
-#~ msgstr "Add a circle object to the project."
-
-#~ msgid "rectangle"
-#~ msgstr "rectangle"
-
-#~ msgid "Add a rectangle object to the project."
-#~ msgstr "Add a rectangle object to the project."
-
-#~ msgid "reset"
-#~ msgstr "reset"
-
-#~ msgid "Reset the project; clear the object list."
-#~ msgstr "Reset the project; clear the object list."
-
-#~ msgid "motor"
-#~ msgstr "motor"
-
-#~ msgid "torque"
-#~ msgstr "torque"
-
-#~ msgid "speed"
-#~ msgstr "speed"
-
-#~ msgid ""
-#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
-#~ "placed on the most recent object created."
-#~ msgstr ""
-#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
-#~ "placed on the most recent object created."
-
-#~ msgid "pin"
-#~ msgstr "pin"
-
-#~ msgid "Pin an object down so that it cannot fall."
-#~ msgstr "Pin an object down so that it cannot fall."
-
-#~ msgid "joint"
-#~ msgstr "joint"
-
-#~ msgid ""
-#~ "Join two objects together (the most recent object created and the object at "
-#~ "point x, y)."
-#~ msgstr ""
-#~ "Join two objects together (the most recent object created and the object at "
-#~ "point x, y)."
-
-#~ msgid "save as Physics activity"
-#~ msgstr "save as Physics activity"
-
-#~ msgid "Save the project to the Journal as a Physics activity."
-#~ msgstr "Save the project to the Journal as a Physics activity."
-
-#~ msgid "gear"
-#~ msgstr "gear"
-
-#~ msgid "Add a gear object to the project."
-#~ msgstr "Add a gear object to the project."
-
-#~ msgid "density"
-#~ msgstr "density"
-
-#~ msgid ""
-#~ "Set the density property for objects (density can be any positive number)."
-#~ msgstr ""
-#~ "Set the density property for objects (density can be any positive number)."
-
-#~ msgid "friction"
-#~ msgstr "friction"
-
-#~ msgid ""
-#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
-#~ "friction off and 1 is strong friction)."
-#~ msgstr ""
-#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
-#~ "friction off and 1 is strong friction)."
-
-#~ msgid "bounciness"
-#~ msgstr "bounciness"
-
-#~ msgid ""
-#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-#~ "no bounce and 1 is very bouncy)."
-#~ msgstr ""
-#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-#~ "no bounce and 1 is very bouncy)."
-
-#~ msgid "dynamic"
-#~ msgstr "dynamic"
-
-#~ msgid ""
-#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-#~ msgstr ""
-#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in "
-#~ "position."
-
-#~ msgid "Palette of WeDo blocks"
-#~ msgstr "Palette of WeDo blocks"
-
-#~ msgid "WeDo"
-#~ msgstr "WeDo"
-
-#~ msgid "set current WeDo device"
-#~ msgstr "set current WeDo device"
-
-#~ msgid "number of WeDo devices"
-#~ msgstr "number of WeDo devices"
-
-#~ msgid ""
-#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-#~ "tilt left, 2 == tilt right)"
-#~ msgstr ""
-#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-#~ "tilt left, 2 == tilt right)"
-
-#~ msgid "distance sensor output"
-#~ msgstr "distance sensor output"
-
-#~ msgid "Motor A"
-#~ msgstr "Motor A"
-
-#~ msgid "returns the current value of Motor A"
-#~ msgstr "returns the current value of Motor A"
-
-#~ msgid "Motor B"
-#~ msgstr "Motor B"
-
-#~ msgid "returns the current value of Motor B"
-#~ msgstr "returns the current value of Motor B"
-
-#~ msgid "set the value for Motor A"
-#~ msgstr "set the value for Motor A"
-
-#~ msgid "set the value for Motor B"
-#~ msgstr "set the value for Motor B"
-
-#~ msgid "WeDo is unavailable"
-#~ msgstr "WeDo is unavailable"
-
-#, python-format
-#~ msgid "WeDo %d is unavailable; defaulting to 1"
-#~ msgstr "WeDo %d is unavailable; defaulting to 1"
-
-#, python-format
-#~ msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
-#~ msgstr "%(device)s is unavailable on WeDo %(wedo_number)d"
-
-#~ msgid "Palette of LEGO NXT blocks of motors"
-#~ msgstr "Palette of LEGO NXT blocks of motors"
-
-#~ msgid "Palette of LEGO NXT blocks of sensors"
-#~ msgstr "Palette of LEGO NXT blocks of sensors"
-
-#~ msgid "touch"
-#~ msgstr "touch"
-
-#~ msgid "ultrasonic"
-#~ msgstr "ultrasonic"
-
-#~ msgid "light"
-#~ msgstr "light"
-
-#~ msgid "grey"
-#~ msgstr "gray"
-
-#~ msgid "Please check the connection with the brick"
-#~ msgstr "Please check the connection with the brick"
-
-#, python-format
-#~ msgid "Invalid port '%s'. Port must be: PORT A, B or C"
-#~ msgstr "Invalid port '%s'. Port must be: PORT A, B or C"
-
-#, python-format
-#~ msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
-#~ msgstr "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
-
-#~ msgid "The value of power must be between -127 to 127"
-#~ msgstr "The value of power must be between -127 to 127"
-
-#~ msgid "An error has occurred: check all connections and try to reconnect"
-#~ msgstr "An error has occurred: check all connections and try to reconnect"
-
-#, python-format
-#~ msgid "NXT found %s bricks"
-#~ msgstr "NXT found %s bricks"
-
-#~ msgid "NXT not found"
-#~ msgstr "NXT not found"
-
-#~ msgid "refresh NXT"
-#~ msgstr "refresh NXT"
-
-#~ msgid "Search for a connected NXT brick."
-#~ msgstr "Search for a connected NXT brick."
-
-#~ msgid "set current NXT device"
-#~ msgstr "set current NXT device"
-
-#~ msgid "number of NXT devices"
-#~ msgstr "number of NXT devices"
-
-#~ msgid "brick name"
-#~ msgstr "brick name"
-
-#~ msgid "Get the name of a brick."
-#~ msgstr "Get the name of a brick."
-
-#~ msgid "play tone"
-#~ msgstr "play tone"
-
-#~ msgid "frequency"
-#~ msgstr "frequency"
-
-#~ msgid "Play a tone at frequency for time."
-#~ msgstr "Play a tone at frequency for time."
-
-#~ msgid ""
-#~ "turn motor\n"
-#~ "\n"
-#~ msgstr ""
-#~ "turn motor\n"
-#~ "\n"
-
-#~ msgid "port"
-#~ msgstr "port"
-
-#~ msgid "power"
-#~ msgstr "power"
-
-#~ msgid "rotations"
-#~ msgstr "rotations"
-
-#~ msgid "turn a motor"
-#~ msgstr "turn a motor"
-
-#~ msgid ""
-#~ "synchronize\n"
-#~ "\n"
-#~ "motors"
-#~ msgstr ""
-#~ "synchronize\n"
-#~ "\n"
-#~ "motors"
-
-#~ msgid "steering"
-#~ msgstr "steering"
-
-#~ msgid "synchronize two motors connected in PORT B and PORT C"
-#~ msgstr "synchronize two motors connected in PORT B and PORT C"
-
-#~ msgid "PORT A"
-#~ msgstr "PORT A"
-
-#~ msgid "PORT A of the brick"
-#~ msgstr "PORT A of the brick"
-
-#~ msgid "PORT B"
-#~ msgstr "PORT B"
-
-#~ msgid "PORT B of the brick"
-#~ msgstr "PORT B of the brick"
-
-#~ msgid "PORT C"
-#~ msgstr "PORT C"
-
-#~ msgid "PORT C of the brick"
-#~ msgstr "PORT C of the brick"
-
-#~ msgid "start motor"
-#~ msgstr "start motor"
-
-#~ msgid "Run a motor forever."
-#~ msgstr "Run a motor forever."
-
-#~ msgid "brake motor"
-#~ msgstr "brake motor"
-
-#~ msgid "Stop a specified motor."
-#~ msgstr "Stop a specified motor."
-
-#~ msgid "reset motor"
-#~ msgstr "reset motor"
-
-#~ msgid "Reset the motor counter."
-#~ msgstr "Reset the motor counter."
-
-#~ msgid "motor position"
-#~ msgstr "motor position"
-
-#~ msgid "Get the motor position."
-#~ msgstr "Get the motor position."
-
-#~ msgid "PORT 1"
-#~ msgstr "PORT 1"
-
-#~ msgid "PORT 1 of the brick"
-#~ msgstr "PORT 1 of the brick"
-
-#~ msgid "read"
-#~ msgstr "read"
-
-#~ msgid "sensor"
-#~ msgstr "sensor"
-
-#~ msgid "Read sensor output."
-#~ msgstr "Read sensor output."
-
-#~ msgid "PORT 2"
-#~ msgstr "PORT 2"
-
-#~ msgid "PORT 2 of the brick"
-#~ msgstr "PORT 2 of the brick"
-
-#~ msgid "light sensor"
-#~ msgstr "light sensor"
+#~ "set the speed of the Butia motors as a value between 0 and 1023, passed "
+#~ "by an argument"
 
 #~ msgid "grey sensor"
 #~ msgstr "gray sensor"
-
-#~ msgid "PORT 3"
-#~ msgstr "PORT 3"
-
-#~ msgid "PORT 3 of the brick"
-#~ msgstr "PORT 3 of the brick"
-
-#~ msgid "touch sensor"
-#~ msgstr "touch sensor"
-
-#~ msgid "distance sensor"
-#~ msgstr "distance sensor"
-
-#~ msgid "PORT 4"
-#~ msgstr "PORT 4"
-
-#~ msgid "PORT 4 of the brick"
-#~ msgstr "PORT 4 of the brick"
-
-#~ msgid "sound sensor"
-#~ msgstr "sound sensor"
-
-#~ msgid "color sensor"
-#~ msgstr "color sensor"
-
-#~ msgid "set light"
-#~ msgstr "set light"
-
-#~ msgid "Set color sensor light."
-#~ msgstr "Set color sensor light."
-
-#~ msgid "battery level"
-#~ msgstr "battery level"
-
-#~ msgid "Get battery level of the brick"
-#~ msgstr "Get battery level of the brick"
-
-#~ msgid "HIGH"
-#~ msgstr "HIGH"
-
-#~ msgid "LOW"
-#~ msgstr "LOW"
-
-#~ msgid "INPUT"
-#~ msgstr "INPUT"
-
-#~ msgid "OUTPUT"
-#~ msgstr "OUTPUT"
-
-#~ msgid "PWM"
-#~ msgstr "PWM"
-
-#~ msgid "SERVO"
-#~ msgstr "SERVO"
-
-#~ msgid "ERROR: Check the Arduino and the number of port."
-#~ msgstr "ERROR: Check the Arduino and the number of port."
-
-#~ msgid "ERROR: Value must be a number from 0 to 255."
-#~ msgstr "ERROR: Value must be a number from 0 to 255."
-
-#~ msgid "ERROR: Value must be either HIGH or LOW."
-#~ msgstr "ERROR: Value must be either HIGH or LOW."
-
-#~ msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-#~ msgstr "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-
-#~ msgid "refresh Arduino"
-#~ msgstr "refresh Arduino"
-
-#~ msgid "Search for connected Arduinos."
-#~ msgstr "Search for connected Arduinos."
-
-#~ msgid "Get the name of an Arduino."
-#~ msgstr "Get the name of an Arduino."
-
-#~ msgid "pin mode"
-#~ msgstr "pin mode"
-
-#~ msgid "mode"
-#~ msgstr "mode"
-
-#~ msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-#~ msgstr "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-
-#~ msgid "analog write"
-#~ msgstr "analog write"
-
-#~ msgid "Write analog value in specified port."
-#~ msgstr "Write analog value in specified port."
-
-#~ msgid "analog read"
-#~ msgstr "analog read"
-
-#~ msgid ""
-#~ "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-#~ "determine voltage. For USB, volt=((read)*5)/1024) approximately."
-#~ msgstr ""
-#~ "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-#~ "determine voltage. For USB, volt=((read)*5)/1024) approximately."
-
-#~ msgid "digital write"
-#~ msgstr "digital write"
-
-#~ msgid "Write digital value to specified port."
-#~ msgstr "Write digital value to specified port."
-
-#~ msgid "digital read"
-#~ msgstr "digital read"
-
-#~ msgid "Read value from digital port."
-#~ msgstr "Read value from digital port."
-
-#~ msgid "Set HIGH value for digital port."
-#~ msgstr "Set HIGH value for digital port."
-
-#~ msgid "Configure Arduino port for digital input."
-#~ msgstr "Configure Arduino port for digital input."
-
-#~ msgid "Configure Arduino port to drive a servo."
-#~ msgstr "Configure Arduino port to drive a servo."
-
-#~ msgid "Set LOW value for digital port."
-#~ msgstr "Set LOW value for digital port."
-
-#~ msgid "Configure Arduino port for digital output."
-#~ msgstr "Configure Arduino port for digital output."
-
-#~ msgid "Configure Arduino port for PWM (pulse-width modulation)."
-#~ msgstr "Configure Arduino port for PWM (pulse-width modulation)."
-
-#~ msgid "Palette of Expeyes blocks"
-#~ msgstr "Palette of Expeyes blocks"
-
-#~ msgid "set PVS"
-#~ msgstr "set PVS"
-
-#~ msgid "set programmable voltage output"
-#~ msgstr "set programmable voltage output"
-
-#~ msgid "set SQR1 voltage"
-#~ msgstr "set SQR1 voltage"
-
-#~ msgid "set square wave 1 voltage output"
-#~ msgstr "set square wave 1 voltage output"
-
-#~ msgid "set SQR2 voltage"
-#~ msgstr "set SQR2 voltage"
-
-#~ msgid "set square wave 2 voltage output"
-#~ msgstr "set square wave 2 voltage output"
-
-#~ msgid "set OD1"
-#~ msgstr "set OD1"
-
-#~ msgid "set digital output level (OD1) low (0) or high (1)"
-#~ msgstr "set digital output level (OD1) low (0) or high (1)"
-
-#~ msgid "IN1 level"
-#~ msgstr "IN1 level"
-
-#~ msgid ""
-#~ "returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
-#~ "volts"
-#~ msgstr ""
-#~ "returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
-#~ "volts"
-
-#~ msgid "IN2 level"
-#~ msgstr "IN2 level"
-
-#~ msgid ""
-#~ "returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
-#~ "volts"
-#~ msgstr ""
-#~ "returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
-#~ "volts"
-
-#~ msgid "SEN level"
-#~ msgstr "SEN level"
-
-#~ msgid ""
-#~ "returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
-#~ "voltage level <= 2.5 volts"
-#~ msgstr ""
-#~ "returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
-#~ "voltage level <= 2.5 volts"
-
-#~ msgid "capture"
-#~ msgstr "capture"
-
-#~ msgid "input"
-#~ msgstr "input"
-
-#~ msgid "samples"
-#~ msgstr "samples"
-
-#~ msgid "interval"
-#~ msgstr "interval"
-
-#~ msgid ""
-#~ "capture multiple samples from input at interval (MS); results pushed to FIFO"
-#~ msgstr ""
-#~ "capture multiple samples from input at interval (MS); results pushed to FIFO"
-
-#~ msgid "A1"
-#~ msgstr "A1"
-
-#~ msgid "read analog input 1 voltage"
-#~ msgstr "read analog input 1 voltage"
-
-#~ msgid "A2"
-#~ msgstr "A2"
-
-#~ msgid "read analog input 2 voltage"
-#~ msgstr "read analog input 2 voltage"
-
-#~ msgid "IN1"
-#~ msgstr "IN1"
-
-#~ msgid "read input 1 voltage"
-#~ msgstr "read input 1 voltage"
-
-#~ msgid "IN2"
-#~ msgstr "IN2"
-
-#~ msgid "read input 2 voltage"
-#~ msgstr "read input 2 voltage"
-
-#~ msgid "SEN"
-#~ msgstr "SEN"
-
-#~ msgid "read analog sensor input voltage"
-#~ msgstr "read analog sensor input voltage"
-
-#~ msgid "SQR1"
-#~ msgstr "SQR1"
-
-#~ msgid "read square wave 1 voltage"
-#~ msgstr "read square wave 1 voltage"
-
-#~ msgid "SQR2"
-#~ msgstr "SQR2"
-
-#~ msgid "read square wave 2 voltage"
-#~ msgstr "read square wave 2 voltage"
-
-#~ msgid "PVS"
-#~ msgstr "PVS"
-
-#~ msgid "read programmable voltage"
-#~ msgstr "read programmable voltage"
-
-#~ msgid "Expeyes device not found"
-#~ msgstr "Expeyes device not found"
-
-#~ msgid ""
-#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
-#~ "an argument"
-#~ msgstr ""
-#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
-#~ "an argument"
 
 #~ msgid "NxT"
 #~ msgstr "NXT"
@@ -3090,9 +3995,11 @@ msgstr "Save project?"
 #~ msgstr "brake a specified motor"
 
 #~ msgid ""
-#~ "returns the object gray level encountered him as a number between 0 and 1023"
+#~ "returns the object gray level encountered him as a number between 0 and "
+#~ "1023"
 #~ msgstr ""
-#~ "returns the object gray level encountered him as a number between 0 and 1023"
+#~ "returns the object gray level encountered him as a number between 0 and "
+#~ "1023"
 
 #~ msgid "activity count"
 #~ msgstr "activity count"
@@ -3186,8 +4093,10 @@ msgstr "Save project?"
 #~ msgstr ""
 #~ "Returns the level of ligth in the ambient as a number between 0 and 1023."
 
-#~ msgid "Returns the temperature in the ambient as a number between 0 and 255."
-#~ msgstr "Returns the temperature in the ambient as a number between 0 and 255."
+#~ msgid ""
+#~ "Returns the temperature in the ambient as a number between 0 and 255."
+#~ msgstr ""
+#~ "Returns the temperature in the ambient as a number between 0 and 255."
 
 #~ msgid "stack"
 #~ msgstr "stack"
@@ -3207,8 +4116,10 @@ msgstr "Save project?"
 #~ msgid "restore last"
 #~ msgstr "restore last"
 
-#~ msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
-#~ msgstr "a programmable block: used to add advanced math equations, e.g., sin(x)"
+#~ msgid ""
+#~ "a programmable block: used to add advanced math equations, e.g., sin(x)"
+#~ msgstr ""
+#~ "a programmable block: used to add advanced math equations, e.g., sin(x)"
 
 #~ msgid "blocks"
 #~ msgstr "blocks"

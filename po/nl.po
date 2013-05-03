@@ -1,3 +1,15 @@
+# #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+# #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
@@ -10,8 +22,37 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-15 00:34-0500\n"
+"PO-Revision-Date: 2013-02-21 20:10+0200\n"
+"Last-Translator: whe <heppew@yahoo.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-15 00:34-0500\n"
+"PO-Revision-Date: 2013-02-21 20:10+0200\n"
+"Last-Translator: whe <heppew@yahoo.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+"#-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-24 00:31-0500\n"
@@ -26,701 +67,1694 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #. TRANS: "name" option from activity.info file
-msgid "TurtleBlocks"
-msgstr "SchildpadBlokken"
-
 #. TRANS: "summary" option from activity.info file
 #. TRANS: "description" option from activity.info file
-msgid ""
-"A Logo-inspired turtle that draws colorful pictures with snap-together "
-"visual programming blocks"
-msgstr ""
-"Een Logo-geïnspireerd schildpad die kleurrijke plaatjes tekent met samenklik "
-"visueel programmeerblokken"
+msgid "turtleart-extras (master)"
+msgstr "schildpadkunst-extra's (hoofd)"
 
-#: TurtleArt/tabasics.py:123
-msgid "Palette of turtle commands"
-msgstr "Palet van schildpadcommando's"
+#: taextras.py:37
+msgid "Turtle Blocks"
+msgstr "Schildpad Blokken"
 
-#: TurtleArt/tabasics.py:128
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
-msgid "forward"
-msgstr "vooruit"
+#: taextras.py:38 TurtleArt/tawindow.py:3868 pysamples/grecord.py:205
+msgid "Turtle Art"
+msgstr "Schildpad Kunst"
 
-#: TurtleArt/tabasics.py:132
-msgid "moves turtle forward"
-msgstr "beweeg schildpad vooruit"
+#: taextras.py:42
+msgid "Turtle Art Mini"
+msgstr "Schildpad Kunst Mini"
 
-#: TurtleArt/tabasics.py:139
-msgid "back"
-msgstr "terug"
+#: taextras.py:46
+msgid "Turtle Confusion"
+msgstr "Schildpad Verwarring"
 
-#: TurtleArt/tabasics.py:143
-msgid "moves turtle backward"
-msgstr "beweegt schildpad achteruit"
+#: taextras.py:47 taextras.py:52
+msgid "Select a challenge"
+msgstr "Kies een uitdaging"
 
-#: TurtleArt/tabasics.py:151
-msgid "clean"
-msgstr "wissen"
+#: taextras.py:51
+msgid "Amazonas Tortuga"
+msgstr "Amazoneschildpad"
 
-#: TurtleArt/tabasics.py:154
-msgid "clears the screen and reset the turtle"
-msgstr "schoont het scherm en herstelt het schildpad"
+#: taextras.py:58
+msgid "Palette of Mexican pesos"
+msgstr "Palet van Mexicaanse pesos"
 
-#: TurtleArt/tabasics.py:162
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
-msgid "left"
-msgstr "links"
+#: taextras.py:59
+msgid "Palette of Colombian pesos"
+msgstr "Palet van Colombiaanse pesos"
 
-#: TurtleArt/tabasics.py:166
-msgid "turns turtle counterclockwise (angle in degrees)"
-msgstr "draait schildpad tegen de klok in (hoek in graden)"
+#: taextras.py:60
+msgid "Palette of Rwandan francs"
+msgstr "Palet van Rwandaanse franken"
 
-#: TurtleArt/tabasics.py:174
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:878
-msgid "right"
-msgstr "rechts"
+#: taextras.py:61
+msgid "Palette of US dollars"
+msgstr "Palet van US dollars"
 
-#: TurtleArt/tabasics.py:178
-msgid "turns turtle clockwise (angle in degrees)"
-msgstr "draait schildpad met de klok mee (hoek in graden)"
+#: taextras.py:62
+msgid "Palette of Australian dollars"
+msgstr "Palet van Australische dollars"
 
-#: TurtleArt/tabasics.py:186
-msgid "arc"
-msgstr "boog"
+#: taextras.py:63
+msgid "Palette of Paraguayan Guaranies"
+msgstr "Palet van Paraguayse Guaranies"
 
-#: TurtleArt/tabasics.py:186
-msgid "angle"
-msgstr "hoek"
+#: taextras.py:64
+msgid "Palette of Peruvian Nuevo Soles"
+msgstr "Palet van Peruviaanse Nuevo Soles"
 
-#: TurtleArt/tabasics.py:186
-msgid "radius"
-msgstr "straal"
+#: taextras.py:65
+msgid "Palette of Uruguayan Pesos"
+msgstr "Paler van Uruguayse Pesos"
 
-#: TurtleArt/tabasics.py:190
-msgid "moves turtle along an arc"
-msgstr "beweegt schildpad langs een boog"
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Butia is a Robot Project from Uruguay
+#. (http://www.fing.edu.uy/inco/proyectos/butia/)
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Butia is a Robot Project from Uruguay
+#. (http://www.fing.edu.uy/inco/proyectos/butia/)
+#: taextras.py:71
+msgid "TurtleBots"
+msgstr "TurtleBots"
 
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
-msgid "set xy"
-msgstr "zet xy"
+#. TRANS: summary of TurtleBots activity
+#: taextras.py:73
+msgid "TurtleBlocks with Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
+msgstr "TurtleBlokken met Butia, Lego NxT, WeDo, Arduino, FollowMe plugins"
 
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
-msgid "x"
-msgstr "x"
+#: taextras.py:74
+msgid "ERROR: The speed must be a value between 0 and 1023"
+msgstr "FOUT: De snelheid moet een waarde zijn tussen 0 en 1023"
 
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
-msgid "y"
-msgstr "y"
+#: taextras.py:75
+msgid "ERROR: The pin must be between 1 and 8"
+msgstr "FOUT: De pin moet zijn tussen 1 en 8"
 
-#: TurtleArt/tabasics.py:203 TurtleArt/tabasics.py:269
-msgid ""
-"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
-msgstr ""
-"beweegt schildpad naar positie xcor, ycor; (0, 0) is in het midden van het "
-"scherm."
+#: taextras.py:76
+msgid "ERROR: The value must be 0 or 1, LOW or HIGH"
+msgstr "FOUT: De waarde moet zijn 0 of 1, LAAG of HOOG"
 
-#
-#: TurtleArt/tabasics.py:213
-msgid "set heading"
-msgstr "richting instellen"
+#: taextras.py:77
+msgid "ERROR: The mode must be INPUT or OUTPUT."
+msgstr "FOUT: De modus moet zijn INPUT of OUTPUT."
 
-#: TurtleArt/tabasics.py:217
-msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
-msgstr ""
-"stelt de richting in van het schildpad (0 is naar de bovenkant van het "
-"scherm.)"
+#: taextras.py:78
+msgid "Turn LED on and off: 0 is off; 1 is on"
+msgstr "Draai LED aan en uit: 0 is uit; 1 is aan"
 
-#: TurtleArt/tabasics.py:225 TurtleArt/tawindow.py:3862
-#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:604
-msgid "xcor"
-msgstr "xcor"
+#: taextras.py:79
+msgid "returns the gray level"
+msgstr "geeft het grijsniveau"
 
-#: TurtleArt/tabasics.py:226
-msgid ""
-"holds current x-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr ""
-"behoudt deze x-coördinaat waarde voor schildpad (kan worden gebruikt in "
-"plaats van nummerblok)"
+#: taextras.py:80
+msgid "returns 1 when the button is press and 0 otherwise"
+msgstr "geeft 1 terug als knop is ingedrukt en anders 0"
 
-#: TurtleArt/tabasics.py:236 TurtleArt/tawindow.py:3862
-#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:605
-msgid "ycor"
-msgstr "ycor"
+#: taextras.py:81
+msgid "returns the light level"
+msgstr "geeft het grijsniveau"
 
-#: TurtleArt/tabasics.py:237
-msgid ""
-"holds current y-coordinate value of the turtle (can be used in place of a "
-"number block)"
-msgstr ""
-"behoudt deze y-coördinaat waarde voor schildpad (kan worden gebruikt in "
-"plaats van nummerblok)"
+#: taextras.py:82
+msgid "returns the temperature"
+msgstr "geeft de temperatuur terug"
 
-#: TurtleArt/tabasics.py:247 TurtleArt/tawindow.py:3863
-#: TurtleArt/tawindow.py:3869 TurtleArtActivity.py:605
-msgid "heading"
-msgstr "richting"
+#: taextras.py:83
+msgid "returns the distance from the object in front of the sensor"
+msgstr "geeft de afstand tot het voorwerp voor de sensor"
 
-#: TurtleArt/tabasics.py:248
-msgid ""
-"holds current heading value of the turtle (can be used in place of a number "
-"block)"
-msgstr ""
-"houdt deze richtingwaarde van het schildpad vast (kan worden gebruikt in "
-"plaats van nummerblok)"
+#: taextras.py:84
+msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
+msgstr "geeft een 1 als de sensors een magnetisch veld waarneemt, anders 0"
 
-#: TurtleArt/tabasics.py:282
-msgid "Palette of pen commands"
-msgstr "Palet van pencommando's"
+#: taextras.py:85
+msgid "returns the value of the resistance"
+msgstr "geeft de waarde van de weerstand"
 
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
-msgid "fill screen"
-msgstr "vul scherm"
+#: taextras.py:86
+msgid "returns the value of the voltage"
+msgstr "geeft de waarde van de spanning"
 
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
-#: TurtleArt/tabasics.py:348
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1158
-msgid "color"
-msgstr "kleur"
+#: taextras.py:87
+msgid "gpio"
+msgstr "gpio"
 
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
-#: TurtleArt/tabasics.py:358
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1154
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1159
-msgid "shade"
-msgstr "schaduw"
+#: taextras.py:88
+msgid "LED"
+msgstr "LED"
 
-#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:303
-msgid "fills the background with (color, shade)"
-msgstr "vult de achtergrond met (kleur, schaduw)"
+#: taextras.py:89
+msgid "button"
+msgstr "knop"
 
-#: TurtleArt/tabasics.py:299 TurtleArt/tabasics.py:367
+#: taextras.py:90 taextras.py:358 TurtleArt/tabasics.py:299
+#: TurtleArt/tabasics.py:367
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1160
 msgid "gray"
 msgstr "grijs"
 
-#: TurtleArt/tabasics.py:313
-msgid "set color"
-msgstr "zet kleur"
-
-#: TurtleArt/tabasics.py:317
-msgid "sets color of the line drawn by the turtle"
-msgstr "stelt kleur in van de lijn die getekend is door het schildpad"
-
-#: TurtleArt/tabasics.py:325
-msgid "set shade"
-msgstr "zet schaduw"
-
-#: TurtleArt/tabasics.py:329
-msgid "sets shade of the line drawn by the turtle"
-msgstr "stelt de schaduw van de lijn in getekend door het schildpad"
-
-#: TurtleArt/tabasics.py:337
-msgid "set gray"
-msgstr "zet grijs"
-
-#: TurtleArt/tabasics.py:340
-msgid "sets gray level of the line drawn by the turtle"
-msgstr "stelt het grijsniveau van de lijn in getekend door de schildpad"
-
-#: TurtleArt/tabasics.py:349
-msgid "holds current pen color (can be used in place of a number block)"
-msgstr "houdt deze penkleur (kan gebruikt worden in plaats van een nummerblok)"
-
-#: TurtleArt/tabasics.py:359
-msgid "holds current pen shade"
-msgstr "behoudt deze pen schaduw"
-
-#: TurtleArt/tabasics.py:368
-msgid "holds current gray level (can be used in place of a number block)"
-msgstr "houdt dit grijsniveau (wordt gebruikt ipv een nummerblok)"
-
-#: TurtleArt/tabasics.py:376
-msgid "pen up"
-msgstr "pen omhoog"
-
-#: TurtleArt/tabasics.py:379
-msgid "Turtle will not draw when moved."
-msgstr "Schildpad tekent niet als die beweegt."
-
-#: TurtleArt/tabasics.py:385
-msgid "pen down"
-msgstr "pen omlaag"
-
-#: TurtleArt/tabasics.py:388
-msgid "Turtle will draw when moved."
-msgstr "Schildpad tekent als die beweegt."
-
-#: TurtleArt/tabasics.py:394
-msgid "set pen size"
-msgstr "zet pen dikte"
-
-#: TurtleArt/tabasics.py:398
-msgid "sets size of the line drawn by the turtle"
-msgstr "stelt de grootte van de lijn in getekend door het schildpad"
-
-#: TurtleArt/tabasics.py:408
-msgid "start fill"
-msgstr "begin met vullen"
-
-#: TurtleArt/tabasics.py:410
-msgid "starts filled polygon (used with end fill block)"
-msgstr "begint met een gevuld vlak (gebruik met eindig vullen van blok)"
-
-#: TurtleArt/tabasics.py:417
-msgid "end fill"
-msgstr "stop met vullen"
-
-#: TurtleArt/tabasics.py:419
-msgid "completes filled polygon (used with start fill block)"
-msgstr "eindigt met vullen van vlak (gebruik met begin met een gevuld vlak)"
-
-#: TurtleArt/tabasics.py:426
-msgid "pen size"
-msgstr "pen dikte"
-
-#: TurtleArt/tabasics.py:427
-msgid "holds current pen size (can be used in place of a number block)"
-msgstr "houdt deze pengrootte (wordt gebruikt ipv een nummerblok)"
-
-#: TurtleArt/tabasics.py:441
-msgid "Palette of pen colors"
-msgstr "Palet van penkleuren"
-
-#: TurtleArt/tabasics.py:443
-msgid "red"
-msgstr "rood"
-
-#: TurtleArt/tabasics.py:444
-msgid "orange"
-msgstr "oranje"
-
-#: TurtleArt/tabasics.py:446
-msgid "yellow"
-msgstr "geel"
-
-#: TurtleArt/tabasics.py:448
-msgid "green"
-msgstr "groen"
-
-#: TurtleArt/tabasics.py:449
-msgid "cyan"
-msgstr "cyaan"
-
-#: TurtleArt/tabasics.py:450
-msgid "blue"
-msgstr "blauw"
-
-#: TurtleArt/tabasics.py:451
-msgid "purple"
-msgstr "paars"
-
-#: TurtleArt/tabasics.py:453
-msgid "white"
-msgstr "wit"
-
-#: TurtleArt/tabasics.py:454
-msgid "black"
-msgstr "zwart"
-
-#: TurtleArt/tabasics.py:460
-msgid "set text color"
-msgstr "zet tekstkleur"
-
-#: TurtleArt/tabasics.py:463
-msgid "sets color of text drawn by the turtle"
-msgstr "stelt de kleur van tekst in getekend door het schildpad"
-
-#: TurtleArt/tabasics.py:471
-msgid "set text size"
-msgstr "stel tekstgrootte in"
-
-#: TurtleArt/tabasics.py:474
-msgid "sets size of text drawn by the turtle"
-msgstr "stelt grootte van tekst in getekend door schildpad"
-
-#: TurtleArt/tabasics.py:557
-msgid "Palette of numeric operators"
-msgstr "Palet van getals operator"
-
-#: TurtleArt/tabasics.py:563
-msgid "plus"
-msgstr "getal"
-
-#: TurtleArt/tabasics.py:567
-msgid "adds two alphanumeric inputs"
-msgstr "voegt twee alfanumerieke invoer toe"
-
-#: TurtleArt/tabasics.py:575
-msgid "minus"
-msgstr "min"
-
-#: TurtleArt/tabasics.py:578
-msgid "subtracts bottom numeric input from top numeric input"
-msgstr "trekt onderste getalsinvoer af van bovenste getalsinvoer"
-
-#: TurtleArt/tabasics.py:589
-msgid "multiply"
-msgstr "vermenigvuldig"
-
-#: TurtleArt/tabasics.py:592
-msgid "multiplies two numeric inputs"
-msgstr "vermenigvuldigt twee getallen invoer"
-
-#: TurtleArt/tabasics.py:601
-msgid "divide"
-msgstr "gedeeld door"
-
-#: TurtleArt/tabasics.py:604
-msgid ""
-"divides top numeric input (numerator) by bottom numeric input (denominator)"
-msgstr "deelt bovenste getalinvoer (teller) door onderste getalinvoer (noemer)"
-
-#: TurtleArt/tabasics.py:614
-msgid "identity"
-msgstr "identiteit"
-
-#: TurtleArt/tabasics.py:616
-msgid "identity operator used for extending blocks"
-msgstr "identiteit operator gebruikt voor uitbreiding blokken"
-
-#: TurtleArt/tabasics.py:624 TurtleArt/tabasics.py:625
-msgid "mod"
-msgstr "mod"
-
-#: TurtleArt/tabasics.py:628
-msgid "modular (remainder) operator"
-msgstr "modulair (restwaarde) operator"
-
-#: TurtleArt/tabasics.py:635
-msgid "√"
-msgstr "√"
-
-#: TurtleArt/tabasics.py:636
-msgid "square root"
-msgstr "vierkantswortel"
-
-#: TurtleArt/tabasics.py:639
-msgid "calculates square root"
-msgstr "berekent vierkantswortel"
-
-#: TurtleArt/tabasics.py:646
-msgid "random"
-msgstr "willekeurig"
-
-#: TurtleArt/tabasics.py:646
-msgid "min"
-msgstr "min"
-
-#: TurtleArt/tabasics.py:646
-msgid "max"
-msgstr "max"
-
-#: TurtleArt/tabasics.py:650
-msgid "returns random number between minimum (top) and maximum (bottom) values"
-msgstr ""
-"geeft waarde terug tussen minimum (bovenste) en maximum (onderste) waarden"
-
-#: TurtleArt/tabasics.py:662
-msgid "number"
-msgstr "nummer"
-
-#: TurtleArt/tabasics.py:663
-msgid "used as numeric input in mathematic operators"
-msgstr "gebruikt als getalsinvoer in wiskundige opetatoren"
-
-#: TurtleArt/tabasics.py:671
-msgid "greater than"
-msgstr "groter dan"
-
-#: TurtleArt/tabasics.py:674
-msgid "logical greater-than operator"
-msgstr "logische groter-dan operator"
-
-#: TurtleArt/tabasics.py:683
-msgid "less than"
-msgstr "kleiner dan"
-
-#: TurtleArt/tabasics.py:687
-msgid "logical less-than operator"
-msgstr "logische kleiner-dan operator"
-
-#: TurtleArt/tabasics.py:695
-msgid "equal"
-msgstr "gelijk aan"
-
-#: TurtleArt/tabasics.py:699
-msgid "logical equal-to operator"
-msgstr "logische gelijk-aan operator"
-
-#: TurtleArt/tabasics.py:705
-msgid "not"
-msgstr "niet"
-
-#: TurtleArt/tabasics.py:708
-msgid "logical NOT operator"
-msgstr "logische NIET operator"
-
-#: TurtleArt/tabasics.py:714 TurtleArt/tabasics.py:717
-msgid "and"
-msgstr "en"
-
-#: TurtleArt/tabasics.py:718
-msgid "logical AND operator"
-msgstr "logische AND bewerker"
-
-#: TurtleArt/tabasics.py:725 TurtleArt/tabasics.py:728
-msgid "or"
-msgstr "of"
-
-#: TurtleArt/tabasics.py:729
-msgid "logical OR operator"
-msgstr "logische OF operator"
-
-#: TurtleArt/tabasics.py:738
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
-msgid "Palette of flow operators"
-msgstr "Palet van stroom operators"
-
-#: TurtleArt/tabasics.py:743
-msgid "wait"
-msgstr "wacht"
-
-#: TurtleArt/tabasics.py:747
-msgid "pauses program execution a specified number of seconds"
-msgstr "pauzeert programmauitvoering een aangegeven aantal seconden"
-
-#: TurtleArt/tabasics.py:754
-msgid "forever"
-msgstr "altijd"
-
-#: TurtleArt/tabasics.py:758
-msgid "loops forever"
-msgstr "lust voor altijd"
-
-#: TurtleArt/tabasics.py:765 TurtleArt/tabasics.py:769
-msgid "repeat"
-msgstr "herhaal"
-
-#: TurtleArt/tabasics.py:770
-msgid "loops specified number of times"
-msgstr "lust een aangegeven aantal keren"
-
-#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
-msgid "if"
-msgstr "als"
-
-#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
-msgid "then"
-msgstr "dan"
-
-#: TurtleArt/tabasics.py:779
-msgid "if then"
-msgstr "als dan"
-
-#: TurtleArt/tabasics.py:781
-msgid "if-then operator that uses boolean operators from Numbers palette"
-msgstr "als-dan operator die gebruikt booleaanse operators van Getallen palet"
-
-#: TurtleArt/tabasics.py:789
-msgid "else"
-msgstr "anders"
-
-#: TurtleArt/tabasics.py:793 TurtleArt/tabasics.py:801
-msgid "if then else"
-msgstr "als dan anders"
-
-#: TurtleArt/tabasics.py:794 TurtleArt/tabasics.py:802
-msgid "if-then-else operator that uses boolean operators from Numbers palette"
-msgstr ""
-"als-dan-anders operator die gebruikt booleaanse operators van Getallen palet"
-
-#: TurtleArt/tabasics.py:811
-msgid "horizontal space"
-msgstr "horizontale ruimte"
-
-#: TurtleArt/tabasics.py:812
-msgid "jogs stack right"
-msgstr "schudt stapel rechts"
-
-#: TurtleArt/tabasics.py:819
-msgid "vertical space"
-msgstr "verticale ruimte"
-
-#: TurtleArt/tabasics.py:820
-msgid "jogs stack down"
-msgstr "stoot stapel neer"
-
-#: TurtleArt/tabasics.py:826
-msgid "stop action"
-msgstr "stop actie"
-
-#: TurtleArt/tabasics.py:829
-msgid "stops current action"
-msgstr "stop deze actie"
-
-#: TurtleArt/tabasics.py:838
-msgid "Palette of variable blocks"
-msgstr "Palet van variabele blokken"
-
-#: TurtleArt/tabasics.py:843 pysamples/grecord.py:213
-msgid "start"
-msgstr "begin"
-
-#: TurtleArt/tabasics.py:846
-msgid "connects action to toolbar run buttons"
-msgstr "verbindt actie aan werkbalk start knoppen"
-
-#: TurtleArt/tabasics.py:853 TurtleArt/tabasics.py:854
-#: TurtleArt/tabasics.py:855
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:208
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:223
-msgid "text"
-msgstr "tekst"
-
-#: TurtleArt/tabasics.py:856
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
-msgid "string value"
-msgstr "rijwaarde"
-
-#: TurtleArt/tabasics.py:860 TurtleArt/tabasics.py:863
-#: TurtleArt/tabasics.py:871 TurtleArt/tabasics.py:875
-#: TurtleArt/tawindow.py:1292 TurtleArt/tawindow.py:1371
-#: TurtleArt/tawindow.py:1384 TurtleArt/tawindow.py:1854
-#: TurtleArt/tawindow.py:4125
-msgid "action"
-msgstr "actie"
-
-#: TurtleArt/tabasics.py:865
-msgid "top of nameable action stack"
-msgstr "bovenste van benoembare actie stapel"
-
-#: TurtleArt/tabasics.py:876 TurtleArt/tawindow.py:4139
-msgid "invokes named action stack"
-msgstr "roept benoemde actie stapel aan"
-
-#: TurtleArt/tabasics.py:883
-msgid "store in box 1"
-msgstr "opslaan in doos 1"
-
-#: TurtleArt/tabasics.py:888
-msgid "stores numeric value in Variable 1"
-msgstr "slaat getalswaarde op in Variabele 1"
-
-#: TurtleArt/tabasics.py:896
-msgid "store in box 2"
-msgstr "opslaan in doos 2"
-
-#: TurtleArt/tabasics.py:901
-msgid "stores numeric value in Variable 2"
-msgstr "slaat getalswaarde op in Variabele 2"
-
-#: TurtleArt/tabasics.py:909
-msgid "box 1"
-msgstr "doos 1"
-
-#: TurtleArt/tabasics.py:912
-msgid "Variable 1 (numeric value)"
-msgstr "Variabele 1 (getalswaarde)"
-
-#: TurtleArt/tabasics.py:919
-msgid "box 2"
-msgstr "doos 2"
-
-#: TurtleArt/tabasics.py:922
-msgid "Variable 2 (numeric value)"
-msgstr "Variabele 2 (getalswaarde)"
-
-#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
-msgid "store in"
-msgstr "sla op in"
-
-#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
-msgid "box"
-msgstr "doos"
-
-#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
+#: taextras.py:91 taextras.py:356
+msgid "light"
+msgstr "licht"
+
+#: taextras.py:92
+msgid "temperature"
+msgstr "temperatuur"
+
+#: taextras.py:93 taextras.py:330
+msgid "distance"
+msgstr "afstand"
+
+#: taextras.py:94 plugins/audio_sensors/audio_sensors.py:151
+#: plugins/audio_sensors/audio_sensors.py:165
+#: plugins/audio_sensors/audio_sensors.py:179
+#: plugins/audio_sensors/audio_sensors.py:193
+msgid "resistance"
+msgstr "weerstand"
+
+#: taextras.py:95 plugins/audio_sensors/audio_sensors.py:157
+#: plugins/audio_sensors/audio_sensors.py:171
+#: plugins/audio_sensors/audio_sensors.py:185
+#: plugins/audio_sensors/audio_sensors.py:199
+msgid "voltage"
+msgstr "spanning"
+
+#: taextras.py:96
+msgid "Butia Robot"
+msgstr "Butia Robot"
+
+#: taextras.py:97
+msgid "refresh Butia"
+msgstr "ververs Butia"
+
+#: taextras.py:98
+msgid "refresh the state of the Butia palette and blocks"
+msgstr "ververs de status vam de Butia palet en blokken"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "battery charge of Butia"
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "battery charge of Butia"
+#: taextras.py:100
+msgid "battery charge Butia"
+msgstr "accu lading Butia"
+
+#: taextras.py:101
+msgid "returns the battery charge as a number between 0 and 255"
+msgstr "geeft de batterijlading als een getal tussen 0 en 255"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "speed of Butia"
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "speed of Butia"
+#: taextras.py:103
+msgid "speed Butia"
+msgstr "snelheid Butia"
+
+#: taextras.py:104
+msgid "set the speed of the Butia motors"
+msgstr "stel de snelheid van de Butiamotoren in"
+
+#: taextras.py:105
+msgid "move Butia"
+msgstr "beweeg Butia"
+
+#: taextras.py:106 TurtleArt/tabasics.py:162
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
+msgid "left"
+msgstr "links"
+
+#: taextras.py:107 TurtleArt/tabasics.py:174
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:878
+msgid "right"
+msgstr "rechts"
+
+#: taextras.py:108
+msgid "moves the Butia motors at the specified speed"
+msgstr "beweegt de Butia motors met de gekozen snelheid"
+
+#: taextras.py:109
+msgid "stop Butia"
+msgstr "stop Butia"
+
+#: taextras.py:110
+msgid "stop the Butia robot"
+msgstr "stop de Butia robot"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move Butia forward"
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move Butia forward"
+#: taextras.py:112
+msgid "forward Butia"
+msgstr "vooruit Butia"
+
+#: taextras.py:113
+msgid "move the Butia robot forward"
+msgstr "beweeg de Butia robot vooruit"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "turn Butia left"
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "turn Butia left"
+#: taextras.py:115
+msgid "left Butia"
+msgstr "links Butia"
+
+#: taextras.py:116
+msgid "turn the Butia robot at left"
+msgstr "draai de Butia-robot naar links"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "turn Butia right"
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "turn Butia right"
+#: taextras.py:118
+msgid "right Butia"
+msgstr "rechts Butia"
+
+#: taextras.py:119
+msgid "turn the Butia robot at right"
+msgstr "draai de Butia robot naar rechts"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move Butia backward"
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "move Butia backward"
+#: taextras.py:121
+msgid "backward Butia"
+msgstr "achteruit Butia"
+
+#: taextras.py:122
+msgid "move the Butia robot backward"
+msgstr "beweeg de Butia robot achteruit"
+
+#: taextras.py:123
+msgid "Butia Robot extra blocks"
+msgstr "Butia Robot extra blokken"
+
+#: taextras.py:124
+msgid "hack pin mode"
+msgstr "hack pin modus"
+
+#: taextras.py:125 taextras.py:293 taextras.py:455
+msgid "pin"
+msgstr "speld"
+
+#: taextras.py:126 taextras.py:456
+msgid "mode"
+msgstr "modus"
+
+#: taextras.py:127
+msgid "Select the pin function (INPUT, OUTPUT)."
+msgstr "Selecteer de pin functie (INVOER, UITVOER)."
+
+#: taextras.py:128
+msgid "write hack pin Butia"
+msgstr "schrijf hack pin Butia"
+
+#: taextras.py:129 taextras.py:459 TurtleArt/tabasics.py:928
+#: TurtleArt/tawindow.py:4189
 msgid "value"
 msgstr "waarde"
 
-#: TurtleArt/tabasics.py:932 TurtleArt/tabasics.py:945
-#: TurtleArt/tawindow.py:1296 TurtleArt/tawindow.py:1409
-#: TurtleArt/tawindow.py:1858 TurtleArt/tawindow.py:4152
-#: TurtleArt/tawindow.py:4180
-msgid "my box"
-msgstr "mijn vakje"
+#: taextras.py:130
+msgid "set a hack pin to 0 or 1"
+msgstr "stel een hack pin op 0 of 1"
 
-#: TurtleArt/tabasics.py:933 TurtleArt/tawindow.py:4194
-msgid "stores numeric value in named variable"
-msgstr "slaat getalswaarde op in benoemde variabele"
+#: taextras.py:131
+msgid "read hack pin Butia"
+msgstr "lees hack pin Butia"
 
-#: TurtleArt/tabasics.py:948 TurtleArt/tawindow.py:4166
-msgid "named variable (numeric value)"
-msgstr "benoemde variabele (getalswaarde)"
+#: taextras.py:132
+msgid "read the value of a hack pin"
+msgstr "lees de waarde van een hack pin"
 
-#: TurtleArt/tabasics.py:955 TurtleArt/tabasics.py:974
-msgid "action 1"
-msgstr "actie 1"
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Arduino plugin to control an Arduino board
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Arduino plugin to control an Arduino board
+#: taextras.py:133 taextras.py:433
+msgid "HIGH"
+msgstr "HOOG"
 
-#: TurtleArt/tabasics.py:958
-msgid "top of Action 1 stack"
-msgstr "bovenste van Actie 1 stapel"
+#: taextras.py:134 taextras.py:468
+msgid "Set HIGH value for digital port."
+msgstr "Zet HOOG waarde voor digitale poort."
 
-#: TurtleArt/tabasics.py:964 TurtleArt/tabasics.py:984
-msgid "action 2"
-msgstr "actie 2"
+#: taextras.py:135 taextras.py:435
+msgid "INPUT"
+msgstr "INVOER"
 
-#: TurtleArt/tabasics.py:967
-msgid "top of Action 2 stack"
-msgstr "bovenste van Actie 2 stapel"
+#: taextras.py:136
+msgid "Configure hack port for digital input."
+msgstr "Configureer hack poort voor digitale invoer."
 
-#: TurtleArt/tabasics.py:977
-msgid "invokes Action 1 stack"
-msgstr "roept Actie 1 stapel aan"
+#: taextras.py:137 taextras.py:434
+msgid "LOW"
+msgstr "LAAG"
 
-#: TurtleArt/tabasics.py:987
-msgid "invokes Action 2 stack"
-msgstr "roept Actie 2 stapel aan"
+#: taextras.py:138 taextras.py:471
+msgid "Set LOW value for digital port."
+msgstr "Zet LAAG waarde voor digitale poort."
 
-#: TurtleArt/tabasics.py:995
-msgid "trash"
-msgstr "prullenbak"
+#: taextras.py:139 taextras.py:436
+msgid "OUTPUT"
+msgstr "UITVOER"
 
-#: TurtleArt/tabasics.py:999
-msgid "empty trash"
-msgstr "leeg afval"
+#: taextras.py:140
+msgid "Configure hack port for digital output."
+msgstr "Configureer hack poort voor digitale uitvoer."
 
-#: TurtleArt/tabasics.py:1000
-msgid "permanently deletes items in trash"
-msgstr "verwijdert items uit afval voorgoed"
+#: taextras.py:141
+msgid "Butia"
+msgstr "Butia"
 
-#: TurtleArt/tabasics.py:1004
-msgid "restore all"
-msgstr "herlaad alles"
+#: taextras.py:142
+#, python-format
+msgid "ERROR: The pin %s must be in OUTPUT mode."
+msgstr "FOUT: De pin %s moet zijn in OUTPUT modus."
 
-#: TurtleArt/tabasics.py:1005
-msgid "restore all blocks from trash"
-msgstr "herlaad alle blokken van afval"
+#: taextras.py:143
+#, python-format
+msgid "ERROR: The pin %s must be in INPUT mode."
+msgstr "FOUT: De pin %s moet zijn in INPUT modus."
 
-#: TurtleArt/tabasics.py:1009
-msgid "clear all"
-msgstr "wis alles"
+#: taextras.py:147
+msgid "Error importing Pygame. This plugin require Pygame 1.9"
+msgstr "Fout bij het importeren van Pygame. Deze plugin vereist Pygame 1.9"
 
-#: TurtleArt/tabasics.py:1010
-msgid "move all blocks to trash"
-msgstr "verplaats alle blokken naar de prullenbak"
+#: taextras.py:148
+msgid "Error on initialization of the camera"
+msgstr "Fout bij initialisatie van de camera"
 
-#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:1833
-#: TurtleArtActivity.py:703
-msgid "Share selected blocks"
-msgstr "Deel geselecteerde blokken"
+#: taextras.py:149
+msgid "No camera was found"
+msgstr "Geen camera gevonden"
+
+#: taextras.py:150
+msgid "Error stopping camera"
+msgstr "Fout bij stoppen camera"
+
+#: taextras.py:151
+msgid "Error starting camera"
+msgstr "Fout bij starten camera"
+
+#. TRANS: The "mask" is used to restrict processing to a region in the image
+#: taextras.py:153
+msgid "Error in get mask"
+msgstr "Fout in geef masker"
+
+#: taextras.py:154
+msgid "FollowMe"
+msgstr "VolgMe"
+
+#: taextras.py:155
+msgid "refresh FollowMe"
+msgstr "ververs VolgMij"
+
+#: taextras.py:156
+msgid "Search for a connected camera."
+msgstr "Zoek naar een verbonden camera."
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: the calibration is used to match an RGB color to a target
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: the calibration is used to match an RGB color to a target
+#: taextras.py:158
+msgid "calibration"
+msgstr "calibratie"
+
+#: taextras.py:159
+msgid "store a personalized calibration"
+msgstr "bewaar een aangepaste calibratie"
+
+#: taextras.py:160
+msgid "return a personalized calibration"
+msgstr "geeft terug een gepersonaliseerde calibratie"
+
+#: taextras.py:161
+msgid "follow"
+msgstr "volg"
+
+#: taextras.py:162
+msgid "follow a color or calibration"
+msgstr "volg een kleur of calibratie"
+
+#: taextras.py:163 plugins/camera_sensor/camera_sensor.py:80
+#: plugins/camera_sensor/camera_sensor.py:93
+#: plugins/camera_sensor/camera_sensor.py:128
+#: plugins/camera_sensor/camera_sensor.py:141
+#: plugins/light_sensor/light_sensor.py:56
+#: plugins/light_sensor/light_sensor.py:63
+msgid "brightness"
+msgstr "helderheid"
+
+#: taextras.py:164
+msgid "set the camera brightness as a value between 0 to 255."
+msgstr "stel de helderheid van de camera in als een waarde tussen 0 en 255."
+
+#: taextras.py:165
+msgid "minimum pixels"
+msgstr "minimum pixels"
+
+#: taextras.py:166
+msgid "set the minimal number of pixels to follow"
+msgstr "stel een minimum aantal pixels in om te volgen"
+
+#: taextras.py:167
+msgid "threshold"
+msgstr "drempel"
+
+#. TRANS: RGB color space (red, green, blue)
+#: taextras.py:169
+msgid "set a threshold for a RGB color"
+msgstr "stel de drempel voor een RGB-kleur in"
+
+#: taextras.py:170
+msgid "camera mode"
+msgstr "cameramodus"
+
+#. TRANS: RGB, YUV, and HSV are color spaces
+#: taextras.py:172
+msgid "set the color mode of the camera: RGB; YUV or HSV"
+msgstr "stel de kleurmodus van de camera in: RGB, YUV of HSV"
+
+#: taextras.py:173
+msgid "get brightness"
+msgstr "lees de helderheid"
+
+#: taextras.py:174
+msgid "get the brightness of the ambient light"
+msgstr "lees de helderheid van het omgevingslicht"
+
+#: taextras.py:175
+msgid "average color"
+msgstr "gemiddelde kleur"
+
+#: taextras.py:176
+msgid ""
+"if set to 0 then color averaging is off during calibration; for other values "
+"it is on"
+msgstr ""
+"indien ingesteld op 0, wordt de gemiddelde kleur niet berekend tijdens de "
+"kalibratie, bij andere waardes wel"
+
+#: taextras.py:178
+msgid "x position"
+msgstr "x-positie"
+
+#: taextras.py:179
+msgid "return x position"
+msgstr "geef x-positie"
+
+#: taextras.py:180
+msgid "y position"
+msgstr "y-positie"
+
+#: taextras.py:181
+msgid "return y position"
+msgstr "geef y-positie"
+
+#: taextras.py:182
+msgid "pixels"
+msgstr "pixels"
+
+#: taextras.py:183
+msgid "return the number of pixels of the biggest blob"
+msgstr "geef het aantal pixels van de grootste blob"
+
+#. TRANS: RGB color space (red, green, blue)
+#: taextras.py:185
+msgid "set the color mode of the camera to RGB"
+msgstr "zet de kleurmodus van de camera op RGB"
+
+#. TRANS: YUV color space (luminance, chrominance)
+#: taextras.py:187
+msgid "set the color mode of the camera to YUV"
+msgstr "zet de kleurmodus van de camera op YUV"
+
+#. TRANS: HSV color space (hue, saturation, value)
+#: taextras.py:189
+msgid "set the color mode of the camera to HSV"
+msgstr "zet de kleurmodus van de camera op HSV"
+
+#: taextras.py:190
+msgid "empty calibration"
+msgstr "lege kalibratie"
+
+#: taextras.py:191
+msgid "error in string conversion"
+msgstr "fout in tekenreeksconversie"
+
+#. TRANS: Pattern detection is a plugin that allow detect signals
+#. with the camera
+#: taextras.py:197
+msgid "Pattern detection"
+msgstr "Patroonherkenning"
+
+#: taextras.py:198
+msgid "Seeing signal"
+msgstr "Signaal zien"
+
+#: taextras.py:199
+msgid "Returns True if the signal is in front of the camera"
+msgstr "Geeft Waar als het signaal voor de camera is"
+
+#: taextras.py:200
+msgid "Distance to signal"
+msgstr "Afstand tot signaal"
+
+#: taextras.py:201
+msgid "Returns the distance of the signal to the camera in millimeters"
+msgstr "Geeft de afstand van het signaal tot de camera in millimeters"
+
+#. TRANS: SumBot is a robot programmed for "Sumo wrestling"
+#: taextras.py:206
+msgid "SumBot"
+msgstr "SumBot"
+
+#: taextras.py:207
+msgid "speed SumBot"
+msgstr "snelheid SumBot"
+
+#: taextras.py:208
+msgid "submit the speed to the SumBot"
+msgstr "stuur de snelheid naar de SumBot"
+
+#: taextras.py:209
+msgid "set the default speed for the movement commands"
+msgstr "stel de standaardsnelheid voor de bewegingsopdrachten in"
+
+#. TRANS: This string is shorthand for "move SumBot forward"
+#: taextras.py:211
+msgid "forward SumBot"
+msgstr "voorwaarts SumBot"
+
+#: taextras.py:212
+msgid "move SumBot forward"
+msgstr "verplaats de SumBot voorwaarts"
+
+#. TRANS: This string is shorthand for "move SumBot backward"
+#: taextras.py:214
+msgid "backward SumBot"
+msgstr "achterwaarts SumBot"
+
+#: taextras.py:215
+msgid "move SumBot backward"
+msgstr "verplaats SumBot achterwaarts"
+
+#: taextras.py:216
+msgid "stop SumBot"
+msgstr "stop SumBot"
+
+#: taextras.py:217
+msgid "stop the SumBot"
+msgstr "stop de SumBot"
+
+#. TRANS: This string is shorthand for "turn SumBot left"
+#: taextras.py:219
+msgid "left SumBot"
+msgstr "links SumBot"
+
+#: taextras.py:220
+msgid "turn left the SumBot"
+msgstr "draai SumBot naar links"
+
+#. TRANS: This string is shorthand for "move SumBot right"
+#: taextras.py:222
+msgid "right SumBot"
+msgstr "rechts SumBot"
+
+#: taextras.py:223
+msgid "turn right the SumBot"
+msgstr "draai SumBot naar rechts"
+
+#. TRANS: The angle to the center is the angle SumBot must turn to
+#. face the center of the playing field
+#: taextras.py:226
+msgid "angle to center"
+msgstr "hoek tot midden"
+
+#. TRANS: dohyo is the playing field
+#: taextras.py:228
+msgid "get the angle to the center of the dohyo"
+msgstr "geef de hoek naar het midden van het speelveld"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: The angle to the center is the angle SumBot must turn to
+#. face the Enemy (opponent)
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: The angle to the center is the angle SumBot must turn to
+#. face the Enemy (opponent)
+#: taextras.py:231
+msgid "angle to Enemy"
+msgstr "hoek naar Vijand"
+
+#: taextras.py:232
+msgid "get the angle to the Enemy"
+msgstr "geef de afstand tot de Vijand"
+
+#. TRANS: This string is shorthand for "x coordinate of SumBot"
+#: taextras.py:234
+msgid "x coor. SumBot"
+msgstr "x-coör. SumBot"
+
+#: taextras.py:235
+msgid "get the x coordinate of the SumBot"
+msgstr "geef de x-coördinaat van de Sumbot"
+
+#. TRANS: This string is shorthand for "y coordinate of SumBot"
+#: taextras.py:237
+msgid "y coor. SumBot"
+msgstr "y-coör. SumBot"
+
+#: taextras.py:238
+msgid "get the y coordinate of the SumBot"
+msgstr "geef de y-coördinaat van de Sumbot"
+
+#. TRANS: This string is shorthand for "x coordinate of SumBot's enemy"
+#: taextras.py:240
+msgid "x coor. Enemy"
+msgstr "x-coör. Vijand"
+
+#: taextras.py:241
+msgid "get the x coordinate of the Enemy"
+msgstr "geef de x-coördinaat van de Vijand"
+
+#. TRANS: This string is shorthand for "y coordinate of SumBot's enemy"
+#: taextras.py:243
+msgid "y coor. Enemy"
+msgstr "y-coör. Vijand"
+
+#: taextras.py:244
+msgid "get the y coordinate of the Enemy"
+msgstr "geef de y-coördinaat van de Vijand"
+
+#. TRANS: This string is shorthand for "rotation of SumBot"
+#: taextras.py:246
+msgid "rotation SumBot"
+msgstr "draaiing SumBot"
+
+#: taextras.py:247
+msgid "get the rotation of the Sumbot"
+msgstr "geef de draaiing van de Sumbot"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "rotation of SumBot's enemy"
+#: taextras.py:249
+msgid "rotation Enemy"
+msgstr "draaiing Vijand"
+
+#: taextras.py:250
+msgid "get the rotation of the Enemy"
+msgstr "geef de draaiing van de Vijand"
+
+#: taextras.py:251
+msgid "distance to center"
+msgstr "afstand tot het midden"
+
+#. TRANS: dohyo is the playing field
+#: taextras.py:253
+msgid "get the distance to the center of the dohyo"
+msgstr "geef de afstand tot het midden van het speelveld"
+
+#: taextras.py:254
+msgid "distance to Enemy"
+msgstr "afstand tot Vijand"
+
+#: taextras.py:255
+msgid "get the distance to the Enemy"
+msgstr "geef de afstand tot de Vijand"
+
+#: taextras.py:256
+msgid "update information"
+msgstr "informatie bijwerken"
+
+#: taextras.py:257
+msgid "update information from the server"
+msgstr "informatie bijwerken vanaf de server"
+
+#. TRANS: Please use similar terms to those used in the Physics Activity
+#: taextras.py:262
+msgid "Palette of physics blocks"
+msgstr "Palet van fysica-blokken"
+
+#: taextras.py:263
+msgid "start polygon"
+msgstr "start veelhoek"
+
+#: taextras.py:264
+msgid "Begin defining a new polygon based on the current Turtle xy position."
+msgstr ""
+"Begin een nieuwe veelhoek gebaseerd op de huidige xy-positie van de "
+"Schildpad."
+
+#: taextras.py:266
+msgid "add point"
+msgstr "voeg punt toe"
+
+#: taextras.py:267
+msgid ""
+"Add a new point to the current polygon based on the current Turtle xy "
+"position."
+msgstr ""
+"Voeg een nieuw punt toe aan de huidige veelhoek gebaseerd op deze xy positie "
+"van het Schildpad."
+
+#: taextras.py:269
+msgid "end polygon"
+msgstr "eind veelhoek"
+
+#: taextras.py:270
+msgid "Define a new polygon."
+msgstr "Definieer een nieuwe veelhoek."
+
+#: taextras.py:271
+msgid "end filled polygon"
+msgstr "eind gevulde veelhoek"
+
+#: taextras.py:272
+msgid "Not a simple polygon"
+msgstr "Geen eenvoudige veelhoek"
+
+#: taextras.py:273
+msgid "Define a new filled polygon."
+msgstr "Definieer een nieuwe gevulde veelhoek."
+
+#: taextras.py:274
+msgid "triangle"
+msgstr "driehoek"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: base of a triangle
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: base of a triangle
+#: taextras.py:276
+msgid "base"
+msgstr "basis"
+
+#: taextras.py:277 taextras.py:283
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894
+msgid "height"
+msgstr "hoogte"
+
+#: taextras.py:278
+msgid "Add a triangle object to the project."
+msgstr "Voeg een driehoek voorwerp toe aan het project."
+
+#: taextras.py:279
+msgid "circle"
+msgstr "cirkel"
+
+#: taextras.py:280
+msgid "Add a circle object to the project."
+msgstr "Voeg een cirkel voorwerp toe aan het project."
+
+#: taextras.py:281
+msgid "rectangle"
+msgstr "rechthoek"
+
+#: taextras.py:282 plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
+msgid "width"
+msgstr "breedte"
+
+#: taextras.py:284
+msgid "Add a rectangle object to the project."
+msgstr "Voeg een rechthoek voorwerp toe aan het project."
+
+#: taextras.py:285
+msgid "reset"
+msgstr "reset"
+
+#: taextras.py:286
+msgid "Reset the project; clear the object list."
+msgstr "Reset het project, schoon de voorwerplijst."
+
+#: taextras.py:287
+msgid "motor"
+msgstr "motor"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: torque as in engine torque
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: torque as in engine torque
+#: taextras.py:289
+msgid "torque"
+msgstr "koppel"
+
+#: taextras.py:290
+msgid "speed"
+msgstr "snelheid"
+
+#: taextras.py:291
+msgid ""
+"Motor torque and speed range from 0 (off) to positive numbers; motor is "
+"placed on the most recent object created."
+msgstr ""
+"Motor koppel en snelheid lopen van 0 (uit) naar positieve getallen; de motor "
+"wordt geplaatst op het meest recent gecreeerde voorwerp."
+
+#: taextras.py:294
+msgid "Pin an object down so that it cannot fall."
+msgstr "Speld een voorwerp vast zodat het niet kan vallen."
+
+#: taextras.py:295
+msgid "joint"
+msgstr "gewricht"
+
+#: taextras.py:296 TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+msgid "x"
+msgstr "x"
+
+#: taextras.py:297 TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+msgid "y"
+msgstr "y"
+
+#: taextras.py:298
+msgid ""
+"Join two objects together (the most recent object created and the object at "
+"point x, y)."
+msgstr ""
+"Voeg twee voorwerpen samen (het meest recent aangemaakte en het voorwerp op "
+"punt x, y)."
+
+#: taextras.py:300
+msgid "save as Physics activity"
+msgstr "bewaar als Natuurkunde activiteit"
+
+#: taextras.py:301
+msgid "Save the project to the Journal as a Physics activity."
+msgstr "Bewaar het project bij het Dagboek als Natuurkunde activiteit."
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Here, gear means a toothed wheel, as in a clock-works
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Here, gear means a toothed wheel, as in a clock-works
+#: taextras.py:303
+msgid "gear"
+msgstr "versnelling"
+
+#: taextras.py:304
+msgid "Add a gear object to the project."
+msgstr "Voeg een versnelling voorwerp toe aan het project."
+
+#: taextras.py:305
+msgid "density"
+msgstr "dichtheid"
+
+#: taextras.py:306
+msgid ""
+"Set the density property for objects (density can be any positive number)."
+msgstr ""
+"Stel de dichtheid eigenschap in voor voorwerpen (dichtheid kan ieder "
+"positief getal zijn)."
+
+#: taextras.py:308
+msgid "friction"
+msgstr "wrijving"
+
+#: taextras.py:309
+msgid ""
+"Set the friction property for objects (value from 0 to 1, where 0 turns "
+"friction off and 1 is strong friction)."
+msgstr ""
+"Stel de wrijving eigenschap in voor voorwerpen (waarde 0 tot 1, waar 0 "
+"wrijvingsloos is en 1 sterke wrijving)."
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: bounciness is coefficient of restitution
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: bounciness is coefficient of restitution
+#: taextras.py:312
+msgid "bounciness"
+msgstr "stuiterbaarheid"
+
+#: taextras.py:313
+msgid ""
+"Set the bounciness property for objects (a value from 0 to 1, where 0 means "
+"no bounce and 1 is very bouncy)."
+msgstr ""
+"Stel de stuiterbaarheid eigenschap in voor voorwerpen (waarde 0 tot 1, waar "
+"0 stuiterloos is en 1 sterk stuiteren)."
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: dynamic here means moving vs in a fixed position
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: dynamic here means moving vs in a fixed position
+#: taextras.py:316
+msgid "dynamic"
+msgstr "dynamiek"
+
+#: taextras.py:317
+msgid ""
+"If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
+msgstr ""
+"Als dynamiek = 1, kan het voorwerp bewegen; als dynamiek = 0 , is het op een "
+"vaste positie."
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: WeDo is a robotics product of the LEGO company
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: WeDo is a robotics product of the LEGO company
+#: taextras.py:323
+msgid "Palette of WeDo blocks"
+msgstr "Palet van WeDo blokken"
+
+#: taextras.py:324
+msgid "WeDo"
+msgstr "WeDo"
+
+#: taextras.py:325
+msgid "set current WeDo device"
+msgstr "stel het huidige WeDo-apparaat in"
+
+#: taextras.py:326
+msgid "number of WeDo devices"
+msgstr "aantal WeDo-apparaten"
+
+#: taextras.py:327
+msgid "tilt"
+msgstr "hoogtehoek"
+
+#: taextras.py:328
+msgid ""
+"tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
+"tilt left, 2 == tilt right)"
+msgstr ""
+"tilt sensor uitvoer: (-1 == geen tilt, 0 == tilt voorwaarts, 3 == tilt "
+"achterwaarts, 1 == tilt links, 2 == tilt rechts)"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "output of the distance sensor"
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: This string is shorthand for "output of the distance sensor"
+#: taextras.py:332
+msgid "distance sensor output"
+msgstr "afstand sensor uitvoer"
+
+#: taextras.py:333
+msgid "Motor A"
+msgstr "Motor A"
+
+#: taextras.py:334
+msgid "returns the current value of Motor A"
+msgstr "geeft de huidige waarde van Motor A"
+
+#: taextras.py:335
+msgid "Motor B"
+msgstr "Motor B"
+
+#: taextras.py:336
+msgid "returns the current value of Motor B"
+msgstr "geeft de huidige waarde van Motor B"
+
+#: taextras.py:337
+msgid "set the value for Motor A"
+msgstr "zet de waarde voor Motor A"
+
+#: taextras.py:338
+msgid "set the value for Motor B"
+msgstr "zet de waarde voor Motor B"
+
+#: taextras.py:339
+msgid "WeDo is unavailable"
+msgstr "WeDo is niet beschikbaar"
+
+#. TRANS: e.g., Wedo 2 is unavailable, defaulting to 1
+#: taextras.py:341
+#, python-format
+msgid "WeDo %d is unavailable; defaulting to 1"
+msgstr "WeDo %d is niet beschikbaar; standaard 1 wordt gebruikt"
+
+#. TRANS: %(device)s and %(wedo_number)d are substitution strings;
+#. please leave untranslated
+#: taextras.py:344
+#, python-format
+msgid "%(device)s is unavailable on WeDo %(wedo_number)d"
+msgstr "%(device)s is niet beschikbaar op WeDo %(wedo_number)d"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Lego NXT is a robotics product of the LEGO company
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: Lego NXT is a robotics product of the LEGO company
+#: taextras.py:349
+msgid "Palette of LEGO NXT blocks of motors"
+msgstr "Palet van LEGO NXT blokken van motoren"
+
+#: taextras.py:350
+msgid "Palette of LEGO NXT blocks of sensors"
+msgstr "Palet van LEGO NXT blokken van sensors"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: touch sensor (implemented as a button)
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: touch sensor (implemented as a button)
+#: taextras.py:352
+msgid "touch"
+msgstr "aanraken"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: distance sensor (implemented using ultrasonics)
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: distance sensor (implemented using ultrasonics)
+#: taextras.py:354
+msgid "ultrasonic"
+msgstr "ultrasoon"
+
+#: taextras.py:355 TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
+#: TurtleArt/tabasics.py:348
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1158
+msgid "color"
+msgstr "kleur"
+
+#: taextras.py:357 plugins/audio_sensors/audio_sensors.py:83
+#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
+msgid "sound"
+msgstr "geluid"
+
+#. TRANS: The brick is the NXT controller
+#: taextras.py:360
+msgid "Please check the connection with the brick"
+msgstr "Gelieve de verbinding met het blok na te kijken"
+
+#: taextras.py:361
+#, python-format
+msgid "Invalid port '%s'. Port must be: PORT A, B or C"
+msgstr "Ongeldige poort '%s'. Poort moet zijn: PORT A, B of C"
+
+#: taextras.py:362
+#, python-format
+msgid "Invalid port '%s'. Port must be: PORT 1, 2, 3 or 4"
+msgstr "Ongeldige poort '%s'. Poort moet zijn: PORT 1, 2, 3 of 4"
+
+#: taextras.py:363
+msgid "The value of power must be between -127 to 127"
+msgstr "De waarde van de energie moet tussen -127 en 127 liggen"
+
+#: taextras.py:364
+#, python-format
+msgid "The parameter must be a integer, not '%s'"
+msgstr "De parameter moet een geheel nummer zijn, niet '%s'"
+
+#: taextras.py:365
+msgid "An error has occurred: check all connections and try to reconnect"
+msgstr ""
+"Er deed zich een fout voor: kijk alle verbindingen na en probeer opnieuw"
+
+#: taextras.py:366
+#, python-format
+msgid "NXT found %s bricks"
+msgstr "NXT vond %s blokken"
+
+#: taextras.py:367
+msgid "NXT not found"
+msgstr "NXT niet gevonden"
+
+#: taextras.py:368
+#, python-format
+msgid "Brick number %s was not found"
+msgstr "Blok nummer %s is niet gevonden"
+
+#: taextras.py:369
+msgid "refresh NXT"
+msgstr "ververs NXT"
+
+#: taextras.py:370
+msgid "Search for a connected NXT brick."
+msgstr "Zoek naar een verbonden NXT steen."
+
+#: taextras.py:371
+msgid "NXT"
+msgstr "NXT"
+
+#: taextras.py:372
+msgid "set current NXT device"
+msgstr "stel huidig NXT-apparaat in"
+
+#: taextras.py:373
+msgid "number of NXT devices"
+msgstr "aantal NXT-apparaten"
+
+#: taextras.py:374
+msgid "brick name"
+msgstr "bloknaam"
+
+#: taextras.py:375
+msgid "Get the name of a brick."
+msgstr "Geef de naam van een blok."
+
+#: taextras.py:376
+msgid "play tone"
+msgstr "speel toon"
+
+#: taextras.py:377
+msgid "frequency"
+msgstr "frequentie"
+
+#: taextras.py:378 plugins/turtle_blocks_extras/turtle_blocks_extras.py:445
+msgid "time"
+msgstr "tijd"
+
+#: taextras.py:379
+msgid "Play a tone at frequency for time."
+msgstr "Speel een toon op frequrntie gedurende tijd."
+
+#. TRANS: turn is the action
+#: taextras.py:381
+msgid ""
+"turn motor\n"
+"\n"
+msgstr ""
+"draai motor\n"
+"\n"
+
+#: taextras.py:382
+msgid "port"
+msgstr "poort"
+
+#: taextras.py:383
+msgid "power"
+msgstr "macht"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: rotations is quantity of turns
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: rotations is quantity of turns
+#: taextras.py:385
+msgid "rotations"
+msgstr "omwentelingen"
+
+#: taextras.py:386
+msgid "turn a motor"
+msgstr "draai een motor"
+
+#: taextras.py:387
+msgid ""
+"synchronize\n"
+"\n"
+"motors"
+msgstr ""
+"synchroniseer\n"
+"\n"
+"motoren"
+
+#: taextras.py:388
+msgid "steering"
+msgstr "sturen"
+
+#: taextras.py:389
+msgid "synchronize two motors connected in PORT B and PORT C"
+msgstr "synchroniseer twee motoren verbonden met PORT B en PORT C"
+
+#: taextras.py:390
+msgid "PORT A"
+msgstr "PORT A"
+
+#: taextras.py:391
+msgid "PORT A of the brick"
+msgstr "PORT A van een steen"
+
+#: taextras.py:392
+msgid "PORT B"
+msgstr "PORT B"
+
+#: taextras.py:393
+msgid "PORT B of the brick"
+msgstr "PORT B van een steen"
+
+#: taextras.py:394
+msgid "PORT C"
+msgstr "PORT C"
+
+#: taextras.py:395
+msgid "PORT C of the brick"
+msgstr "PORT C van een steen"
+
+#: taextras.py:396
+msgid "start motor"
+msgstr "start motor"
+
+#: taextras.py:397
+msgid "Run a motor forever."
+msgstr "Draai motor voor altijd."
+
+#: taextras.py:398
+msgid "brake motor"
+msgstr "rem motor"
+
+#: taextras.py:399
+msgid "Stop a specified motor."
+msgstr "Stop een opgegeven motor."
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: reset is used to reset the counter associated with the motor
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: reset is used to reset the counter associated with the motor
+#: taextras.py:401
+msgid "reset motor"
+msgstr "herstel motor"
+
+#: taextras.py:402
+msgid "Reset the motor counter."
+msgstr "Herstel motor teller."
+
+#: taextras.py:403
+msgid "motor position"
+msgstr "motor positie"
+
+#: taextras.py:404
+msgid "Get the motor position."
+msgstr "Verkrijg de motor positie."
+
+#: taextras.py:405
+msgid "PORT 1"
+msgstr "PORT 1"
+
+#: taextras.py:406
+msgid "PORT 1 of the brick"
+msgstr "PORT 1 van de steen"
+
+#: taextras.py:407
+msgid "read"
+msgstr "lees"
+
+#: taextras.py:408
+msgid "sensor"
+msgstr "sensor"
+
+#: taextras.py:409
+msgid "Read sensor output."
+msgstr "Lees sensor uitvier."
+
+#: taextras.py:410
+msgid "PORT 2"
+msgstr "PORT 2"
+
+#: taextras.py:411
+msgid "PORT 2 of the brick"
+msgstr "PORT 2 van de steen"
+
+#: taextras.py:412
+msgid "light sensor"
+msgstr "lichtsensor"
+
+#: taextras.py:413
+msgid "gray sensor"
+msgstr "grijssensor"
+
+#: taextras.py:414
+msgid "PORT 3"
+msgstr "PORT 3"
+
+#: taextras.py:415
+msgid "PORT 3 of the brick"
+msgstr "PORT 3 van de steen"
+
+#: taextras.py:416
+msgid "touch sensor"
+msgstr "aanraak sensor"
+
+#: taextras.py:417
+msgid "distance sensor"
+msgstr "afstandsensor"
+
+#: taextras.py:418
+msgid "PORT 4"
+msgstr "PORT 4"
+
+#: taextras.py:419
+msgid "PORT 4 of the brick"
+msgstr "PORT 4 van de steen"
+
+#: taextras.py:420
+msgid "sound sensor"
+msgstr "geluid sensor"
+
+#: taextras.py:421
+msgid "color sensor"
+msgstr "kleur sensor"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: set light is used to set the light level associated with
+#. the color sensor (which can emit light as well as sense it)
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: set light is used to set the light level associated with
+#. the color sensor (which can emit light as well as sense it)
+#: taextras.py:424
+msgid "set light"
+msgstr "zet licht"
+
+#: taextras.py:425
+msgid "Set color sensor light."
+msgstr "Zet kleur sensor light."
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: the battery level is the charge level of the brick
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: the battery level is the charge level of the brick
+#: taextras.py:427
+msgid "battery level"
+msgstr "accu niveau"
+
+#: taextras.py:428
+msgid "Get battery level of the brick"
+msgstr "Geef batterijniveau van het blok"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: PWM is pulse-width modulation
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: PWM is pulse-width modulation
+#: taextras.py:438
+msgid "PWM"
+msgstr "PWM"
+
+#: taextras.py:439
+msgid "SERVO"
+msgstr "SERVO"
+
+#: taextras.py:440
+msgid "ERROR: Check the Arduino and the number of port."
+msgstr "FOUT: Controleer de Arduino en het nummer van de poort."
+
+#: taextras.py:441
+msgid "ERROR: Value must be a number from 0 to 255."
+msgstr "FOUT: Waarde moet zijn een getal van 0 tot 255."
+
+#: taextras.py:442
+msgid "ERROR: Value must be either HIGH or LOW."
+msgstr "FOUT: Waarde moet zijn óf HOOG óf LAAG."
+
+#: taextras.py:443
+msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
+msgstr "FOUT: De nodus moet zijn INVOER, UITVOER, PWM of SERVO."
+
+#: taextras.py:444
+msgid "refresh Arduino"
+msgstr "ververs Arduino"
+
+#: taextras.py:445
+msgid "Search for connected Arduinos."
+msgstr "Zoek naar verbonden Arduino's."
+
+#: taextras.py:446
+msgid "Arduino"
+msgstr "Arduino"
+
+#: taextras.py:447
+msgid "set current Arduino board"
+msgstr "stel het huidig Arduino-bord in"
+
+#: taextras.py:448
+msgid "number of Arduinos"
+msgstr "aantal Arduiono's"
+
+#: taextras.py:449
+msgid "number of Arduino boards"
+msgstr "aantal Arduino-borden"
+
+#: taextras.py:450
+msgid "Arduino name"
+msgstr "Arduino-naam"
+
+#: taextras.py:451
+msgid "Get the name of an Arduino."
+msgstr "Geef de naam van een Arduino."
+
+#. TRANS: pin mode is used to specify the mode (INPUT, OUTPUT, etc)
+#. in which an I/O pin is being used.
+#: taextras.py:454
+msgid "pin mode"
+msgstr "pinmodus"
+
+#: taextras.py:457
+msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
+msgstr "Selecteer de pin functie (INVOER, UITVOER, PWM, SERVO)."
+
+#: taextras.py:458
+msgid "analog write"
+msgstr "analoog schrijven"
+
+#: taextras.py:460
+msgid "Write analog value in specified port."
+msgstr "Schrijf analoge waarde in aangegeven poort."
+
+#: taextras.py:461
+msgid "analog read"
+msgstr "analoog lezen"
+
+#: taextras.py:462
+msgid ""
+"Read value from analog port. Value may be between 0 and 1023. Use Vref to "
+"determine voltage. For USB, volt=((read)*5)/1024) approximately."
+msgstr ""
+"Lees waarde van analoge poort. Waarde mag zijn tussen 0 en 1023. Gebruik "
+"Vref om spanning te bepalen. Voor USB, volt=((lees)*5)/1024) ongeveer."
+
+#: taextras.py:464
+msgid "digital write"
+msgstr "digitaal schrijven"
+
+#: taextras.py:465
+msgid "Write digital value to specified port."
+msgstr "Schrijf digitale waarde naar aangegeven poort."
+
+#: taextras.py:466
+msgid "digital read"
+msgstr "digitaal lezen"
+
+#: taextras.py:467
+msgid "Read value from digital port."
+msgstr "Lees waarde van digitale poort."
+
+#: taextras.py:469
+msgid "Configure Arduino port for digital input."
+msgstr "Configureer Arduino poort voor digitale invoer."
+
+#: taextras.py:470
+msgid "Configure Arduino port to drive a servo."
+msgstr "Configureer Arduino poort om servo te besturen."
+
+#: taextras.py:472
+msgid "Configure Arduino port for digital output."
+msgstr "Configureer Arduino poort voor digitale uitvoer."
+
+#: taextras.py:473
+msgid "Configure Arduino port for PWM (pulse-width modulation)."
+msgstr "Configureer Arduino poort voor PWM (pulsbreedte modulatie)."
+
+#. TRANS: plugin to control an ExpEyes device
+#: taextras.py:478
+msgid "Palette of Expeyes blocks"
+msgstr "Palet van Expeyes-blokken"
+
+#. TRANS: Programmable voltage output
+#: taextras.py:480
+msgid "set PVS"
+msgstr "stel PVS in"
+
+#: taextras.py:481
+msgid "set programmable voltage output"
+msgstr "stel programmeerbare stroomuitvoer in"
+
+#. TRANS: Square wave 1 voltage output
+#: taextras.py:483
+msgid "set SQR1 voltage"
+msgstr "stel SQR1-stroomsterkte in"
+
+#: taextras.py:484
+msgid "set square wave 1 voltage output"
+msgstr "stel blokgolf 1 spanningsuitvoer in"
+
+#. TRANS: Square wave 2 voltage output
+#: taextras.py:486
+msgid "set SQR2 voltage"
+msgstr "stel SQR2 spanning in"
+
+#: taextras.py:487
+msgid "set square wave 2 voltage output"
+msgstr "stel blokgolf 2 spanningsuitvoer in"
+
+#. TRANS: Digital output level
+#: taextras.py:489
+msgid "set OD1"
+msgstr "stel OD1 in"
+
+#: taextras.py:490
+msgid "set digital output level (OD1) low (0) or high (1)"
+msgstr "stel digitaal uitvoerniveau (OD1) laag (0) of hoog (1)"
+
+#. TRANS: Input 1 voltage level
+#: taextras.py:492
+msgid "IN1 level"
+msgstr "IN1 niveau"
+
+#: taextras.py:493
+msgid ""
+"returns 1 if IN1 voltage level >2.5 volts, 0 if IN1 voltage level <= 2.5 "
+"volts"
+msgstr ""
+"geeft 1 als IN1 spanningsniveau >2.5 volts, 0 als IN1 spanningsniveau <= 2.5 "
+"volts"
+
+#. TRANS: Input 2 voltage level
+#: taextras.py:496
+msgid "IN2 level"
+msgstr "IN2 niveau"
+
+#: taextras.py:497
+msgid ""
+"returns 1 if IN2 voltage level >2.5 volts, 0 if IN2 voltage level <= 2.5 "
+"volts"
+msgstr ""
+"geeft 1 als IN2 spanningsniveau >2.5 volts, 0 als IN2 spanningsniveau <= 2.5 "
+"volts"
+
+#. TRANS: Resistive sensor voltage level
+#: taextras.py:500
+msgid "SEN level"
+msgstr "SEN niveau"
+
+#: taextras.py:501
+msgid ""
+"returns 1 if resistive sensor (SEN) voltage level > 2.5 volts, 0 if SEN "
+"voltage level <= 2.5 volts"
+msgstr ""
+"geeft 1 als weerstandssensor (SEN) spanningsniveau > 2.5 volts, 0 als SEN "
+"spanningsniveau <= 2.5 volts"
+
+#: taextras.py:503
+msgid "capture"
+msgstr "opnemen"
+
+#: taextras.py:504
+msgid "input"
+msgstr "invoer"
+
+#: taextras.py:505
+msgid "samples"
+msgstr "voorbeelden"
+
+#: taextras.py:506
+msgid "interval"
+msgstr "interval"
+
+#. TRANS: MS is microseconds
+#: taextras.py:508
+msgid ""
+"capture multiple samples from input at interval (MS); results pushed to FIFO"
+msgstr ""
+"neem meerdere monsters op van invoer met interval (MS); resultaat gestuurd "
+"naar FIFO"
+
+#. TRANS: Analog input 1 voltage level
+#: taextras.py:511
+msgid "A1"
+msgstr "A1"
+
+#: taextras.py:512
+msgid "read analog input 1 voltage"
+msgstr "lees analoge invoer 1 voltage"
+
+#. TRANS: Analog input 2 voltage level
+#: taextras.py:514
+msgid "A2"
+msgstr "A2"
+
+#: taextras.py:515
+msgid "read analog input 2 voltage"
+msgstr "lees analoge invoer 2 voltage"
+
+#. TRANS: Read input 1 voltage
+#: taextras.py:517
+msgid "IN1"
+msgstr "IN1"
+
+#: taextras.py:518
+msgid "read input 1 voltage"
+msgstr "lees invoer 1 voltage"
+
+#. TRANS: Read input 2 voltage
+#: taextras.py:520
+msgid "IN2"
+msgstr "IN2"
+
+#: taextras.py:521
+msgid "read input 2 voltage"
+msgstr "lees invoer 2 voltage"
+
+#. TRANS: Read analog sensor input voltage
+#: taextras.py:523
+msgid "SEN"
+msgstr "SEN"
+
+#: taextras.py:524
+msgid "read analog sensor input voltage"
+msgstr "lees analoge sensor invoer voltage"
+
+#. TRANS: Read square wave 1 input voltage
+#: taextras.py:526
+msgid "SQR1"
+msgstr "SQR1"
+
+#: taextras.py:527
+msgid "read square wave 1 voltage"
+msgstr "lees blokgolf 1 voltage"
+
+#. TRANS: Read square wave 2 input voltage
+#: taextras.py:529
+msgid "SQR2"
+msgstr "SQR2"
+
+#: taextras.py:530
+msgid "read square wave 2 voltage"
+msgstr "lees blokgolf 2 voltage"
+
+#. TRANS: Read programmable voltage
+#: taextras.py:532
+msgid "PVS"
+msgstr "PVS"
+
+#: taextras.py:533
+msgid "read programmable voltage"
+msgstr "lees programmeerbaar voltage"
+
+#: taextras.py:534
+msgid "Expeyes device not found"
+msgstr "Expeyes apparaat niet gevonden"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:299
+msgid "resume playing video or audio"
+msgstr "hervatten video of audio spelen"
 
 #: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
 #: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
@@ -734,484 +1768,22 @@ msgstr "Deel geselecteerde blokken"
 msgid "Title"
 msgstr "Titel"
 
-#: TurtleArt/talogo.py:374 TurtleArtActivity.py:683
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1492
-msgid "Stop turtle"
-msgstr "Stop schildpad"
-
-#: TurtleArt/talogo.py:384 TurtleArtActivity.py:322 TurtleArtActivity.py:684
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1485
-msgid "Show blocks"
-msgstr "Toon blokken"
-
-#: TurtleArt/talogo.py:388 TurtleArtActivity.py:326 TurtleArtActivity.py:894
-msgid "Hide blocks"
-msgstr "Verberg blokken"
-
-#: TurtleArt/talogo.py:511
-msgid "did not output to"
-msgstr "gaf geen uitvoer naar"
-
-#: TurtleArt/talogo.py:570
-msgid "I don't know how to"
-msgstr "Ik weet niet hoe"
-
-#: TurtleArt/talogo.py:624
-msgid "doesn't like"
-msgstr "houdt niet van"
-
-#: TurtleArt/talogo.py:624
-msgid "as input"
-msgstr "als invoer"
-
-#: TurtleArt/tapalette.py:97
-msgid "displays next palette"
-msgstr "toont volgende palet"
-
-#: TurtleArt/tapalette.py:98
-msgid "changes the orientation of the palette of blocks"
-msgstr "wijzigt de richting van het blokkenpalet"
-
-#: TurtleArt/tautils.py:196
-msgid "Load..."
-msgstr "Laden..."
-
-#: TurtleArt/tautils.py:206
-msgid "Save..."
-msgstr "Bewaren..."
-
-#: TurtleArt/tautils.py:483
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
-msgid "click to open"
-msgstr "klik om te openen"
-
-#: TurtleArt/tawindow.py:989 TurtleArt/tawindow.py:990
-msgid "orientation"
-msgstr "oriëntatie"
-
-#: TurtleArt/tawindow.py:1000 TurtleArt/tawindow.py:1470
-msgid "next"
-msgstr "volgende"
-
-#: TurtleArt/tawindow.py:1012 TurtleArt/tawindow.py:1013
-#: TurtleArt/tawindow.py:1490
-msgid "shift"
-msgstr "schuif"
-
-#: TurtleArt/tawindow.py:1256
-msgid ""
-"Please hit the Stop Button before making changes to your Turtle Blocks "
-"program"
-msgstr ""
-"Druk op de Stop Knop voor het maken van wijzigingen op je Schildpad Blokken "
-"programma"
-
-#: TurtleArt/tawindow.py:1310
-msgid "Select blocks to share"
-msgstr "Selecteer blokken om te delen"
-
-#: TurtleArt/tawindow.py:3868 pysamples/grecord.py:205
-msgid "Turtle Art"
-msgstr "Schildpad Kunst"
-
-#: TurtleArt/tawindow.py:3977
-msgid "image"
-msgstr "afbeelding"
-
-#: TurtleArtActivity.py:166 TurtleArtActivity.py:709 TurtleArtActivity.py:823
-#: TurtleArtActivity.py:853 turtleblocks.py:360
-msgid "Save as Logo"
-msgstr "Bewaar als Logo"
-
-#: TurtleArtActivity.py:203 TurtleArtActivity.py:708 TurtleArtActivity.py:820
-#: TurtleArtActivity.py:850 turtleblocks.py:358
-msgid "Save as image"
-msgstr "Opslaan als afbeelding"
-
-#: TurtleArtActivity.py:211
-msgid "snapshot"
-msgstr "foto"
-
-#: TurtleArtActivity.py:219 TurtleArtActivity.py:643 TurtleArtActivity.py:685
-#: TurtleArtActivity.py:829 TurtleArtActivity.py:856
-msgid "Save snapshot"
-msgstr "Bewaar foto"
-
-#: TurtleArtActivity.py:260 TurtleArtActivity.py:616 TurtleArtActivity.py:759
-#: turtleblocks.py:378
-msgid "Turn off hover help"
-msgstr "Zet uit muistips"
-
-#: TurtleArtActivity.py:266 turtleblocks.py:380
-msgid "Turn on hover help"
-msgstr "Zet aan muistips"
-
-#: TurtleArtActivity.py:274 turtleblocks.py:390
-msgid "Show palette"
-msgstr "Toon palet"
-
-#: TurtleArtActivity.py:280 TurtleArtActivity.py:882 turtleblocks.py:392
-msgid "Hide palette"
-msgstr "Verberg palet"
-
-#: TurtleArtActivity.py:447
-msgid "Rescale coordinates down"
-msgstr "Herschaal coördinaten neer"
-
-#: TurtleArtActivity.py:451 TurtleArtActivity.py:608 TurtleArtActivity.py:755
-msgid "Rescale coordinates up"
-msgstr "Herschaal coördinaten op"
-
-#: TurtleArtActivity.py:541 TurtleArtActivity.py:577 TurtleArtActivity.py:677
-#: TurtleArtActivity.py:730 turtleblocks.py:387
-msgid "Edit"
-msgstr "Bewerk"
-
-#: TurtleArtActivity.py:546 TurtleArtActivity.py:575 TurtleArtActivity.py:678
-#: TurtleArtActivity.py:747 turtleblocks.py:382
-msgid "View"
-msgstr "Bekijk"
-
-#: TurtleArtActivity.py:573 TurtleArtActivity.py:679
-msgid "Project"
-msgstr "Project"
-
-#: TurtleArtActivity.py:579 TurtleArtActivity.py:676 TurtleArtActivity.py:705
-#: TurtleArtActivity.py:707 TurtleArtActivity.py:815
-msgid "Save/Load"
-msgstr "BewaarLaden"
-
-#: TurtleArtActivity.py:587 TurtleArtActivity.py:731 turtleblocks.py:385
-msgid "Copy"
-msgstr "Kopieer"
-
-#: TurtleArtActivity.py:589 TurtleArtActivity.py:732 turtleblocks.py:386
-msgid "Paste"
-msgstr "Plak"
-
-#: TurtleArtActivity.py:591
-msgid "Restore blocks from trash"
-msgstr "Herlaad alle blokken van afval"
-
-#: TurtleArtActivity.py:594 TurtleArtActivity.py:748
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
-msgid "Fullscreen"
-msgstr "Schermvullend"
-
-#: TurtleArtActivity.py:596 TurtleArtActivity.py:749 turtleblocks.py:366
-msgid "Cartesian coordinates"
-msgstr "Cartesische coördinaten"
-
-#: TurtleArtActivity.py:598 TurtleArtActivity.py:751 turtleblocks.py:368
-msgid "Polar coordinates"
-msgstr "Polaire coördinaten"
-
-#: TurtleArtActivity.py:601 TurtleArtActivity.py:753
-msgid "Metric coordinates"
-msgstr "Metrische coördinaten"
-
-#: TurtleArtActivity.py:611 TurtleArtActivity.py:757 turtleblocks.py:372
-msgid "Grow blocks"
-msgstr "Vergroot blokken"
-
-#: TurtleArtActivity.py:613 TurtleArtActivity.py:758 turtleblocks.py:374
-msgid "Shrink blocks"
-msgstr "Verklein blokken"
-
-#: TurtleArtActivity.py:630 TurtleArtActivity.py:647 TurtleArtActivity.py:686
-#: TurtleArtActivity.py:832
-msgid "Load example"
-msgstr "Laad voorbeeld"
-
-#: TurtleArtActivity.py:680 TurtleArtActivity.py:888 turtleblocks.py:399
-msgid "Clean"
-msgstr "Wissen"
-
-#: TurtleArtActivity.py:681 TurtleArtActivity.py:890 turtleblocks.py:400
-msgid "Run"
-msgstr "Draai"
-
-#: TurtleArtActivity.py:682 TurtleArtActivity.py:892 turtleblocks.py:401
-msgid "Step"
-msgstr "Stap"
-
-#: TurtleArtActivity.py:687 turtleblocks.py:408 util/helpbutton.py:45
-msgid "Help"
-msgstr "Help"
-
-#: TurtleArtActivity.py:688 turtleblocks.py:403
-msgid "Stop"
-msgstr "Stop"
-
-#: TurtleArtActivity.py:710 TurtleArtActivity.py:836 TurtleArtActivity.py:858
-msgid "Load project"
-msgstr "Laad project"
-
-#: TurtleArtActivity.py:713 TurtleArtActivity.py:841 TurtleArtActivity.py:863
-msgid "Load plugin"
-msgstr "Laad plugin"
-
-#: TurtleArtActivity.py:714 TurtleArtActivity.py:844 TurtleArtActivity.py:866
-msgid "Load Python block"
-msgstr "Laad Python blok"
-
-#: TurtleArtActivity.py:766
-msgid "Palettes"
-msgstr "Palet"
-
-#: TurtleArtActivity.py:810
-msgid "Sharing blocks disabled"
-msgstr "Blokken delen uitgeschakeld"
-
-#: TurtleArtActivity.py:883
-msgid "<Ctrl>p"
-msgstr "<Ctrl>p"
-
-#: TurtleArtActivity.py:888
-msgid "<Ctrl>e"
-msgstr "<Ctrl>e"
-
-#: TurtleArtActivity.py:890
-msgid "<Ctrl>r"
-msgstr "<Ctrl>r"
-
-#: TurtleArtActivity.py:892
-msgid "<Ctrl>w"
-msgstr "<Ctrl>w"
-
-#: TurtleArtActivity.py:895
-msgid "<Ctrl>s"
-msgstr "<Ctrl>s"
-
-#: TurtleArtActivity.py:1049 TurtleArtActivity.py:1054
-#: TurtleArtActivity.py:1121
-msgid "Plugin could not be installed."
-msgstr "Plugin kon niet geïnstalleerd worden."
-
-#: TurtleArtActivity.py:1117
-msgid "Please restart Turtle Art in order to use the plugin."
-msgstr "Herstart Turtle Art om plugin te kunnen gebruiken."
-
-#: TurtleArtActivity.py:1135
-#, python-format
-msgid "Plugin %s already installed."
-msgstr "Plugin %s is al geïnstalleerd."
-
-#: TurtleArtActivity.py:1136
-#, python-format
-msgid "Do you want to reinstall %s?"
-msgstr "Wil je herinstalleren %s?"
-
-#: gnome_plugins/collaboration_plugin.py:67
-msgid "My Turtle Art session"
-msgstr "Mijn Schildpad Kunst sessie"
-
-#: gnome_plugins/collaboration_plugin.py:115
-msgid "Enable collaboration"
-msgstr "Samenwerken aanzetten"
-
-#: gnome_plugins/collaboration_plugin.py:120
-msgid "Activities"
-msgstr "Activiteiten"
-
-#: gnome_plugins/collaboration_plugin.py:125
-msgid "Buddies"
-msgstr "Maatjes"
-
-#: gnome_plugins/collaboration_plugin.py:128
-msgid "Share"
-msgstr "Delen"
-
-#: gnome_plugins/collaboration_plugin.py:129
-msgid "Configuration"
-msgstr "Configuratie"
-
-#: gnome_plugins/collaboration_plugin.py:132
-msgid "Neighborhood"
-msgstr "Omgeving"
-
-#: gnome_plugins/collaboration_plugin.py:292
-msgid "Nickname"
-msgstr "Bijnaam"
-
-#: gnome_plugins/collaboration_plugin.py:294
-msgid "Account ID"
-msgstr "Account ID"
-
-#: gnome_plugins/collaboration_plugin.py:296
-msgid "Server"
-msgstr "Server"
-
-#: gnome_plugins/collaboration_plugin.py:298
-msgid "Port"
-msgstr "Poort"
-
-#: gnome_plugins/collaboration_plugin.py:300
-msgid "Password"
-msgstr "Wachtwoord"
-
-#: gnome_plugins/collaboration_plugin.py:302
-msgid "Register"
-msgstr "Register"
-
-#: gnome_plugins/collaboration_plugin.py:304
-msgid "Colors"
-msgstr "Kleuren"
-
-#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
-#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
-#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
-msgid "Upload"
-msgstr "Uploaden"
-
-#: gnome_plugins/fb_plugin.py:87
-msgid "Facebook wall post"
-msgstr "Facebook muurpost"
-
-#: gnome_plugins/uploader_plugin.py:68
-msgid "Upload to Web"
-msgstr "Naar web uploaden"
-
-#: gnome_plugins/uploader_plugin.py:90
-msgid ""
-"You must have an account at http://turtleartsite.sugarlabs.org to upload "
-"your project."
-msgstr ""
-"Je moet een account op http://turtleartsite.sugarlabs.org hebben om je "
-"project te uploaden."
-
-#: gnome_plugins/uploader_plugin.py:99
-msgid "Username:"
-msgstr "Gebruikersnaam:"
-
-#: gnome_plugins/uploader_plugin.py:109
-msgid "Password:"
-msgstr "Wachtwoord:"
-
-#: gnome_plugins/uploader_plugin.py:120
-msgid "Title:"
-msgstr "Titel:"
-
-#: gnome_plugins/uploader_plugin.py:130
-msgid "Description:"
-msgstr "Beschrijving:"
-
-#: gnome_plugins/uploader_plugin.py:140
-msgid "Submit to Web"
-msgstr "Naar web opsturen"
-
-#: gnome_plugins/uploader_plugin.py:144
-msgid "Cancel"
-msgstr "Annuleren"
-
-#: gnome_plugins/uploader_plugin.py:166
-msgid "Login failed"
-msgstr "Aanmelden mislukt"
-
-#: gnome_plugins/uploader_plugin.py:203
-msgid "Failed to upload!"
-msgstr "Uploaden mislukt!"
-
-#: plugins/accelerometer/accelerometer.py:49
-#: plugins/audio_sensors/audio_sensors.py:75
-#: plugins/camera_sensor/camera_sensor.py:63
-#: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
-msgid "Palette of sensor blocks"
-msgstr "Palet van sensorblokken"
-
-#: plugins/accelerometer/accelerometer.py:56
-#: plugins/accelerometer/accelerometer.py:63
-msgid "acceleration"
-msgstr "versnelling"
-
-#: plugins/accelerometer/accelerometer.py:58
-#: plugins/accelerometer/accelerometer.py:65
-msgid "push acceleration in x, y, z to heap"
-msgstr "duw versnelling in x, y, z naar hoop"
-
-#: plugins/audio_sensors/audio_sensors.py:83
-#: plugins/audio_sensors/audio_sensors.py:98 pysamples/grecord.py:205
-msgid "sound"
-msgstr "geluid"
-
-#: plugins/audio_sensors/audio_sensors.py:84
-#: plugins/audio_sensors/audio_sensors.py:99
-msgid "raw microphone input signal"
-msgstr "ruw microfoon invoer signaal"
-
-#: plugins/audio_sensors/audio_sensors.py:90
-#: plugins/audio_sensors/audio_sensors.py:105
-msgid "loudness"
-msgstr "luidheid"
-
-#: plugins/audio_sensors/audio_sensors.py:91
-#: plugins/audio_sensors/audio_sensors.py:106
-msgid "microphone input volume"
-msgstr "microfoon invoer volume"
-
-#: plugins/audio_sensors/audio_sensors.py:119
-#: plugins/audio_sensors/audio_sensors.py:127
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
-msgid "pitch"
-msgstr "toonhoogte"
-
-#: plugins/audio_sensors/audio_sensors.py:120
-#: plugins/audio_sensors/audio_sensors.py:128
-msgid "microphone input pitch"
-msgstr "microfoon invoer toonhoogte"
-
-#: plugins/audio_sensors/audio_sensors.py:151
-#: plugins/audio_sensors/audio_sensors.py:165
-#: plugins/audio_sensors/audio_sensors.py:179
-#: plugins/audio_sensors/audio_sensors.py:193
-msgid "resistance"
-msgstr "weerstand"
-
-#: plugins/audio_sensors/audio_sensors.py:152
-#: plugins/audio_sensors/audio_sensors.py:166
-#: plugins/audio_sensors/audio_sensors.py:180
-#: plugins/audio_sensors/audio_sensors.py:194
-msgid "microphone input resistance"
-msgstr "microfoon invoerweerstand"
-
-#: plugins/audio_sensors/audio_sensors.py:157
-#: plugins/audio_sensors/audio_sensors.py:171
-#: plugins/audio_sensors/audio_sensors.py:185
-#: plugins/audio_sensors/audio_sensors.py:199
-msgid "voltage"
-msgstr "spanning"
-
-#: plugins/audio_sensors/audio_sensors.py:158
-#: plugins/audio_sensors/audio_sensors.py:172
-#: plugins/audio_sensors/audio_sensors.py:186
-#: plugins/audio_sensors/audio_sensors.py:200
-msgid "microphone input voltage"
-msgstr "microfoon invoer spanning"
-
-#: plugins/camera_sensor/camera_sensor.py:67
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
-msgid "Palette of media objects"
-msgstr "Palet van media voorwerpen"
-
-#: plugins/camera_sensor/camera_sensor.py:80
-#: plugins/camera_sensor/camera_sensor.py:93
-#: plugins/camera_sensor/camera_sensor.py:128
-#: plugins/camera_sensor/camera_sensor.py:141
-#: plugins/light_sensor/light_sensor.py:56
-#: plugins/light_sensor/light_sensor.py:63
-msgid "brightness"
-msgstr "helderheid"
-
-#: plugins/camera_sensor/camera_sensor.py:82
-#: plugins/camera_sensor/camera_sensor.py:130
-msgid "light level detected by camera"
-msgstr "lichtniveau ontdekt door camera"
-
 #: plugins/camera_sensor/camera_sensor.py:95
 #: plugins/camera_sensor/camera_sensor.py:143
 msgid "Average RGB color from camera is pushed to the stack"
 msgstr "Gemiddelde RGB kleur van camera is naar de stapel geduwd"
+
+#: TurtleArt/tabasics.py:446
+msgid "yellow"
+msgstr "geel"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:679
+msgid "displays polar coordinates"
+msgstr "toont polaire coördinaten"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:493
+msgid "emptys FILO (first-in-last-out heap)"
+msgstr "leegt FILO (eerste-in-laatste-uit hoop)"
 
 #: plugins/camera_sensor/camera_sensor.py:106
 #: plugins/camera_sensor/camera_sensor.py:113
@@ -1221,86 +1793,105 @@ msgstr "Gemiddelde RGB kleur van camera is naar de stapel geduwd"
 msgid "camera output"
 msgstr "camera uitvoer"
 
-#: plugins/light_sensor/light_sensor.py:58
-#: plugins/light_sensor/light_sensor.py:65
-msgid "light level detected by light sensor"
-msgstr "lichtniveau ontdekt door lichtsensor"
+#: plugins/accelerometer/accelerometer.py:58
+#: plugins/accelerometer/accelerometer.py:65
+msgid "push acceleration in x, y, z to heap"
+msgstr "duw versnelling in x, y, z naar hoop"
 
-#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
-msgid "RFID"
-msgstr "RFID"
+#: TurtleArt/tabasics.py:781
+msgid "if-then operator that uses boolean operators from Numbers palette"
+msgstr "als-dan operator die gebruikt booleaanse operators van Getallen palet"
 
-#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
-msgid "read value from RFID device"
-msgstr "lees waarde van RFID apparaat"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:103
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:106
-msgid "while"
-msgstr "zolang"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:107
-msgid "do-while-True operator that uses boolean operators from Numbers palette"
-msgstr ""
-"do-zolang-Waar operator die booleaanse operators gebruikt van Getal palet"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:116
-msgid "until"
-msgstr "totdat"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:117
-msgid "do-until-True operator that uses boolean operators from Numbers palette"
-msgstr ""
-"doe-totdat-Waar operator die gebruik maakt van booleaanse operators van "
-"Getal palet"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:124
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
-msgid "top"
-msgstr "bovenin"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:126
-msgid "top of a collapsible stack"
-msgstr "bovenkant van een inklapbare stapel"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:140
-msgid "journal"
-msgstr "dagboek"
+#: TurtleArt/tabasics.py:812
+msgid "jogs stack right"
+msgstr "schudt stapel rechts"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
 msgid "Sugar Journal media object"
 msgstr "Sugar Dagboek media voorwerp"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:151
-msgid "audio"
-msgstr "audio"
+#: TurtleArt/tabasics.py:919
+msgid "box 2"
+msgstr "doos 2"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
-msgid "Sugar Journal audio object"
-msgstr "Sugar Dagboek geluidsvoorwerp"
+#: TurtleArt/tabasics.py:909
+msgid "box 1"
+msgstr "doos 1"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:163
-msgid "video"
-msgstr "video"
+#: TurtleArtActivity.py:682 TurtleArtActivity.py:892 turtleblocks.py:401
+msgid "Step"
+msgstr "Stap"
+
+#: TurtleArt/tabasics.py:592
+msgid "multiplies two numeric inputs"
+msgstr "vermenigvuldigt twee getallen invoer"
+
+#: turtleblocks.py:394
+msgid "Show/hide blocks"
+msgstr "Toon/verberg blokken"
+
+#: TurtleArtActivity.py:280 TurtleArtActivity.py:882 turtleblocks.py:392
+msgid "Hide palette"
+msgstr "Verberg palet"
+
+#: gnome_plugins/collaboration_plugin.py:125
+msgid "Buddies"
+msgstr "Maatjes"
+
+#: gnome_plugins/collaboration_plugin.py:67
+msgid "My Turtle Art session"
+msgstr "Mijn Schildpad Kunst sessie"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:165
 msgid "Sugar Journal video object"
 msgstr "Sugar Dagboek geluidsvoorwerp"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
-msgid "description"
-msgstr "beschrijving"
+#: TurtleArt/tabasics.py:449
+msgid "cyan"
+msgstr "cyaan"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:177
-msgid "Sugar Journal description field"
-msgstr "Sugar Dagboek beschrijvingveld"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:881
+msgid "xcor of right of screen"
+msgstr "xcor van rechterkant van scherm"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:222
-msgid "show"
-msgstr "toon"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:457
+msgid "Palette of extra options"
+msgstr "Palet van extra opties"
+
+#: TurtleArtActivity.py:630 TurtleArtActivity.py:647 TurtleArtActivity.py:686
+#: TurtleArtActivity.py:832
+msgid "Load example"
+msgstr "Laad voorbeeld"
+
+#: TurtleArt/tabasics.py:1010
+msgid "move all blocks to trash"
+msgstr "verplaats alle blokken naar de prullenbak"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
+msgid "list"
+msgstr "lijst"
+
+#: turtleblocks.py:279
+#, python-format
+msgid "Configuration directory not writable: %s"
+msgstr "Configuratiedirectory is niet schrijfbaar: %s"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
+msgid "media resume"
+msgstr "media hervatten"
+
+#: TurtleArt/tabasics.py:247 TurtleArt/tawindow.py:3863
+#: TurtleArt/tawindow.py:3869 TurtleArtActivity.py:605
+msgid "heading"
+msgstr "richting"
+
+#: TurtleArtActivity.py:810
+msgid "Sharing blocks disabled"
+msgstr "Blokken delen uitgeschakeld"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:259
+msgid "saves turtle graphics as an SVG file in the Sugar Journal"
+msgstr "bewaart een schikdpad plaatje als een SVG bestand in het Sugar Dagboek"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:211
@@ -1308,256 +1899,163 @@ msgstr "toon"
 msgid "draws text or show media from the Journal"
 msgstr "tekent tekst of toont media uit het Dagboek"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:207
-msgid "show aligned"
-msgstr "toon uitgelijnd"
+#: plugins/rfid/rfid.py:92 plugins/rfid/rfid.py:100
+msgid "RFID"
+msgstr "RFID"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:234
-msgid "set scale"
-msgstr "stel schaal in"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:163
+msgid "video"
+msgstr "video"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:238
-msgid "sets the scale of media"
-msgstr "stelt de schaal van de media in"
+#: TurtleArt/tabasics.py:450
+msgid "blue"
+msgstr "blauw"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:245
-msgid "save picture"
-msgstr "bewaar afbeelding"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:671
+msgid "displays Cartesian coordinates"
+msgstr "toont Cartesische coördinaten"
+
+#: turtleblocks.py:240
+msgid "No option action:"
+msgstr "Geen optie actie:"
+
+#: TurtleArt/tabasics.py:820
+msgid "jogs stack down"
+msgstr "stoot stapel neer"
+
+#: TurtleArt/tabasics.py:628
+msgid "modular (remainder) operator"
+msgstr "modulair (restwaarde) operator"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:949
+msgid "bottom y"
+msgstr "onderkant y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:256
+msgid "save SVG"
+msgstr "bewaar SVG"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:624
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:640
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:656
+msgid "runs code found in the tamyblock.py module found in the Journal"
+msgstr "draait code gevonden in tamyblock.py module gevonden in het Dagboek"
+
+#: TurtleArt/tabasics.py:385
+msgid "pen down"
+msgstr "pen omlaag"
+
+#: TurtleArt/tabasics.py:743
+msgid "wait"
+msgstr "wacht"
+
+#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
+msgid "box"
+msgstr "doos"
+
+#: gnome_plugins/uploader_plugin.py:203
+msgid "Failed to upload!"
+msgstr "Uploaden mislukt!"
+
+#: TurtleArt/tawindow.py:1012 TurtleArt/tawindow.py:1013
+#: TurtleArt/tawindow.py:1490
+msgid "shift"
+msgstr "schuif"
+
+#: TurtleArt/tabasics.py:876 TurtleArt/tawindow.py:4139
+msgid "invokes named action stack"
+msgstr "roept benoemde actie stapel aan"
+
+#: TurtleArt/tabasics.py:860 TurtleArt/tabasics.py:863
+#: TurtleArt/tabasics.py:871 TurtleArt/tabasics.py:875
+#: TurtleArt/tawindow.py:1292 TurtleArt/tawindow.py:1371
+#: TurtleArt/tawindow.py:1384 TurtleArt/tawindow.py:1854
+#: TurtleArt/tawindow.py:4125
+msgid "action"
+msgstr "actie"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:117
+msgid "do-until-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"doe-totdat-Waar operator die gebruik maakt van booleaanse operators van "
+"Getal palet"
+
+#: turtleblocks.py:86
+msgid "usage is"
+msgstr "gebruik is"
+
+#: TurtleArt/tabasics.py:922
+msgid "Variable 2 (numeric value)"
+msgstr "Variabele 2 (getalswaarde)"
+
+#: TurtleArt/tabasics.py:601
+msgid "divide"
+msgstr "gedeeld door"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:247
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:258
 msgid "picture name"
 msgstr "afbeeldingnaam"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:248
-msgid "saves a picture to the Sugar Journal"
-msgstr "bewaart een afbeelding in het Sugar Dagboek"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:103
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:106
+msgid "while"
+msgstr "zolang"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:256
-msgid "save SVG"
-msgstr "bewaar SVG"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:259
-msgid "saves turtle graphics as an SVG file in the Sugar Journal"
-msgstr "bewaart een schikdpad plaatje als een SVG bestand in het Sugar Dagboek"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:266
-msgid "scale"
-msgstr "schaal"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
-msgid "holds current scale value"
-msgstr "houdt deze schaalwaarde"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:275
-msgid "media wait"
-msgstr "media wacht"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:277
-msgid "wait for current video or audio to complete"
-msgstr "wacht tot huidige video of audio gereed is"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
-msgid "media stop"
-msgstr "media stop"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
-msgid "stop video or audio"
-msgstr "stop video of audio"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:290
-msgid "media pause"
-msgstr "media pauze"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:292
-msgid "pause video or audio"
-msgstr "pauze video of audio"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
-msgid "media resume"
-msgstr "media hervatten"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:299
-msgid "resume playing video or audio"
-msgstr "hervatten video of audio spelen"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
-msgid "speak"
-msgstr "spreek"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
-msgid "hello"
-msgstr "hallo"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:308
-msgid "speaks text"
-msgstr "spreekt tekst"
-
-#. TRANS: pitch, duration, amplitude
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
-msgid "sinewave"
-msgstr "sinusgolf"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
-msgid "amplitude"
-msgstr "amplitude"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
-msgid "duration"
-msgstr "duur"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:320
-msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
-msgstr "speelt een sinusgolf met frequentie, amplitude en duur (in secomden)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:337
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:348
-msgid "button down"
-msgstr "knop ingedrukt"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:340
-msgid "returns 1 if mouse button is pressed"
-msgstr "geeft 1 als muisknop is ingedrukt"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:351
-msgid "returns True if mouse button is pressed"
-msgstr "geeft Waar als muisknop is ingedrukt"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:358
-msgid "mouse x"
-msgstr "muis x"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:361
-msgid "returns mouse x coordinate"
-msgstr "geeft muis x coördinaat"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
-msgid "mouse y"
-msgstr "muis y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
-msgid "returns mouse y coordinate"
-msgstr "geeft muis y coördinaat"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
-msgid "query keyboard"
-msgstr "vraag toetsenbord uit"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:381
-msgid "query for keyboard input (results stored in keyboard block)"
-msgstr ""
-"uitvraging van toetsenbord invoer (resultaten opgeslagen in toetsenbordblok)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
-msgid "keyboard"
-msgstr "toetsenbord"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
-msgid "holds results of query-keyboard block as ASCII"
-msgstr "bevat resultaten van uitvraging-toetsnebordblok als ASCII"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
-msgid "read pixel"
-msgstr "lees pixel"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:427
-msgid "RGB color under the turtle is pushed to the stack"
-msgstr "RGB kleur onder de schildpad is op de stapel gelegd"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:435
-msgid "turtle sees"
-msgstr "schildpad ziet"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:437
-msgid "returns the color that the turtle \"sees\""
-msgstr "geeft de kleur dat de schildpad \"ziet\""
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:445
-msgid "time"
-msgstr "tijd"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:448
-msgid "elapsed time (in seconds) since program started"
-msgstr "verstreken tijd (in seconden) sinds programma startte"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:457
-msgid "Palette of extra options"
-msgstr "Palet van extra opties"
-
-#. TRANS: push adds a new item to the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
-msgid "push"
-msgstr "neerleggen"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:467
-msgid "pushes value onto FILO (first-in last-out heap)"
-msgstr "duwt waarde op FILO (eerst-in-laatst-uit hoop)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:477
-msgid "show heap"
-msgstr "stapel weergeven"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:480
-msgid "shows values in FILO (first-in last-out heap)"
-msgstr "toont waarden in FILO (eerst-in-laatst-uit hoop)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:490
-msgid "empty heap"
-msgstr "stapel wissen"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:493
-msgid "emptys FILO (first-in-last-out heap)"
-msgstr "leegt FILO (eerste-in-laatste-uit hoop)"
-
-#. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:504
-msgid "pop"
-msgstr "afnemen"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
-msgid "pops value off FILO (first-in last-out heap)"
-msgstr "duwt waarde van FILO (eerst-in-laatst-uit hoop)"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
+msgid "the canvas width"
+msgstr "de schilderij breedte"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
 msgid "empty heap?"
 msgstr "stapel wissen?"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:522
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
-msgid "returns True if heap is empty"
-msgstr "geeft Waar terug als hoop leeg is"
+#: TurtleArt/tabasics.py:948 TurtleArt/tawindow.py:4166
+msgid "named variable (numeric value)"
+msgstr "benoemde variabele (getalswaarde)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:539
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:541
-msgid "comment"
-msgstr "commentaar"
+#: TurtleArt/tawindow.py:1000 TurtleArt/tawindow.py:1470
+msgid "next"
+msgstr "volgende"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:543
-msgid "places a comment in your code"
-msgstr "plaatst een commentaar in je code"
+#: TurtleArt/tabasics.py:779
+msgid "if then"
+msgstr "als dan"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
-msgid "print"
-msgstr "druk af"
+#: TurtleArt/tabasics.py:394
+msgid "set pen size"
+msgstr "zet pen dikte"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:553
-msgid "prints value in status block at bottom of the screen"
-msgstr "drukt waarde af in status blok bij de onderkant van het scherm"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:819
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
+msgid "presentation template: select Journal object (no description)"
+msgstr "presentatie sjabloon: selecteer Dagboek voorwerp (zonder beschrijving)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:563
-msgid "Python chr operator"
-msgstr "Python chr operator"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:116
+msgid "until"
+msgstr "totdat"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
-msgid "Python int operator"
-msgstr "Python int operator"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
+msgid "media stop"
+msgstr "media stop"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:579
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:592
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:606
-msgid "Python"
-msgstr "Python"
+#: TurtleArtActivity.py:266 turtleblocks.py:380
+msgid "Turn on hover help"
+msgstr "Zet aan muistips"
+
+#: TurtleArt/tabasics.py:1000
+msgid "permanently deletes items in trash"
+msgstr "verwijdert items uit afval voorgoed"
+
+#: pysamples/uturn.py:24
+msgid "uturn"
+msgstr "u-bocht"
+
+#: TurtleArt/tabasics.py:958
+msgid "top of Action 1 stack"
+msgstr "bovenste van Actie 1 stapel"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:583
 msgid ""
@@ -1567,6 +2065,876 @@ msgstr ""
 "een programmeerbaar blok: gebruikt om geavanceerde enkele-variabele "
 "wiskundige vergelijkingen toe te voegen, zoals sin(x)"
 
+#: TurtleArt/tabasics.py:738
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
+msgid "Palette of flow operators"
+msgstr "Palet van stroom operators"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:716
+msgid "top of a collapsed stack"
+msgstr "bovenkant van een ingeklapte stapel"
+
+#: TurtleArt/tabasics.py:794 TurtleArt/tabasics.py:802
+msgid "if-then-else operator that uses boolean operators from Numbers palette"
+msgstr ""
+"als-dan-anders operator die gebruikt booleaanse operators van Getallen palet"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
+msgid "returns mouse y coordinate"
+msgstr "geeft muis y coördinaat"
+
+#: TurtleArt/tabasics.py:359
+msgid "holds current pen shade"
+msgstr "behoudt deze pen schaduw"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: pitch, duration, amplitude
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
+msgid "sinewave"
+msgstr "sinusgolf"
+
+#: gnome_plugins/uploader_plugin.py:166
+msgid "Login failed"
+msgstr "Aanmelden mislukt"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:922
+msgid "left x"
+msgstr "links x"
+
+#
+#: TurtleArt/tabasics.py:213
+msgid "set heading"
+msgstr "richting instellen"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:427
+msgid "RGB color under the turtle is pushed to the stack"
+msgstr "RGB kleur onder de schildpad is op de stapel gelegd"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
+msgid "declutters canvas by hiding blocks"
+msgstr "ontwar schilderij door blokken te verbergen"
+
+#: TurtleArtActivity.py:892
+msgid "<Ctrl>w"
+msgstr "<Ctrl>w"
+
+#: TurtleArtActivity.py:890
+msgid "<Ctrl>r"
+msgstr "<Ctrl>r"
+
+#: TurtleArtActivity.py:895
+msgid "<Ctrl>s"
+msgstr "<Ctrl>s"
+
+#: TurtleArtActivity.py:883
+msgid "<Ctrl>p"
+msgstr "<Ctrl>p"
+
+#: TurtleArtActivity.py:888
+msgid "<Ctrl>e"
+msgstr "<Ctrl>e"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:563
+msgid "Python chr operator"
+msgstr "Python chr operator"
+
+#: TurtleArt/tabasics.py:811
+msgid "horizontal space"
+msgstr "horizontale ruimte"
+
+#: TurtleArtActivity.py:601 TurtleArtActivity.py:753
+msgid "Metric coordinates"
+msgstr "Metrische coördinaten"
+
+#: TurtleArt/tabasics.py:856
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
+msgid "string value"
+msgstr "rijwaarde"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
+msgid "description"
+msgstr "beschrijving"
+
+#: TurtleArt/talogo.py:570
+msgid "I don't know how to"
+msgstr "Ik weet niet hoe"
+
+#: TurtleArt/tabasics.py:471
+msgid "set text size"
+msgstr "stel tekstgrootte in"
+
+#: gnome_plugins/uploader_plugin.py:99
+msgid "Username:"
+msgstr "Gebruikersnaam:"
+
+#: TurtleArt/tabasics.py:410
+msgid "starts filled polygon (used with end fill block)"
+msgstr "begint met een gevuld vlak (gebruik met eindig vullen van blok)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:833
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
+msgid "presentation template: select four Journal objects"
+msgstr "presentatie sjabloon: selecteer vier Dagboek voorwerpen"
+
+#: TurtleArtActivity.py:546 TurtleArtActivity.py:575 TurtleArtActivity.py:678
+#: TurtleArtActivity.py:747 turtleblocks.py:382
+msgid "View"
+msgstr "Bekijk"
+
+#: TurtleArt/tabasics.py:340
+msgid "sets gray level of the line drawn by the turtle"
+msgstr "stelt het grijsniveau van de lijn in getekend door de schildpad"
+
+#: gnome_plugins/uploader_plugin.py:109
+msgid "Password:"
+msgstr "Wachtwoord:"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:435
+msgid "turtle sees"
+msgstr "schildpad ziet"
+
+#: TurtleArt/tabasics.py:826
+msgid "stop action"
+msgstr "stop actie"
+
+#: TurtleArt/tabasics.py:448
+msgid "green"
+msgstr "groen"
+
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
+#: TurtleArt/tabasics.py:358
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1154
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1159
+msgid "shade"
+msgstr "schaduw"
+
+#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:303
+msgid "fills the background with (color, shade)"
+msgstr "vult de achtergrond met (kleur, schaduw)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:245
+msgid "save picture"
+msgstr "bewaar afbeelding"
+
+#: plugins/audio_sensors/audio_sensors.py:119
+#: plugins/audio_sensors/audio_sensors.py:127
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
+msgid "pitch"
+msgstr "toonhoogte"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:340
+msgid "returns 1 if mouse button is pressed"
+msgstr "geeft 1 als muisknop is ingedrukt"
+
+#: TurtleArtActivity.py:451 TurtleArtActivity.py:608 TurtleArtActivity.py:755
+msgid "Rescale coordinates up"
+msgstr "Herschaal coördinaten op"
+
+#: TurtleArt/tabasics.py:376
+msgid "pen up"
+msgstr "pen omhoog"
+
+#: TurtleArt/tabasics.py:444
+msgid "orange"
+msgstr "oranje"
+
+#: TurtleArt/tabasics.py:747
+msgid "pauses program execution a specified number of seconds"
+msgstr "pauzeert programmauitvoering een aangegeven aantal seconden"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:467
+msgid "pushes value onto FILO (first-in last-out heap)"
+msgstr "duwt waarde op FILO (eerst-in-laatst-uit hoop)"
+
+#: TurtleArt/tabasics.py:1009
+msgid "clear all"
+msgstr "wis alles"
+
+#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
+msgid "then"
+msgstr "dan"
+
+#: gnome_plugins/collaboration_plugin.py:302
+msgid "Register"
+msgstr "Register"
+
+#: TurtleArt/tabasics.py:705
+msgid "not"
+msgstr "niet"
+
+#: TurtleArt/tabasics.py:793 TurtleArt/tabasics.py:801
+msgid "if then else"
+msgstr "als dan anders"
+
+#: TurtleArt/tabasics.py:829
+msgid "stops current action"
+msgstr "stop deze actie"
+
+#: TurtleArt/tabasics.py:178
+msgid "turns turtle clockwise (angle in degrees)"
+msgstr "draait schildpad met de klok mee (hoek in graden)"
+
+#: TurtleArt/tabasics.py:368
+msgid "holds current gray level (can be used in place of a number block)"
+msgstr "houdt dit grijsniveau (wordt gebruikt ipv een nummerblok)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
+msgid "xcor of left of screen"
+msgstr "xcor van linkerkant van scherm"
+
+#: turtleblocks.py:376
+msgid "Reset block size"
+msgstr "Herstel blokgrootte"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:756
+msgid "turtle"
+msgstr "schildpad"
+
+#: TurtleArt/tapalette.py:97
+msgid "displays next palette"
+msgstr "toont volgende palet"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:772
+msgid "hide blocks"
+msgstr "blokken verbergen"
+
+#: plugins/camera_sensor/camera_sensor.py:82
+#: plugins/camera_sensor/camera_sensor.py:130
+msgid "light level detected by camera"
+msgstr "lichtniveau ontdekt door camera"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
+msgid "Python int operator"
+msgstr "Python int operator"
+
+#: TurtleArt/tabasics.py:687
+msgid "logical less-than operator"
+msgstr "logische kleiner-dan operator"
+
+#: TurtleArt/tabasics.py:1005
+msgid "restore all blocks from trash"
+msgstr "herlaad alle blokken van afval"
+
+#: turtleblocks.py:356
+msgid "Save"
+msgstr "Bewaar"
+
+#: TurtleArt/tabasics.py:883
+msgid "store in box 1"
+msgstr "opslaan in doos 1"
+
+#: TurtleArt/tabasics.py:896
+msgid "store in box 2"
+msgstr "opslaan in doos 2"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
+msgid "hides the Sugar toolbars"
+msgstr "verbergt de Sugar werkbalken"
+
+#: TurtleArt/tabasics.py:226
+msgid ""
+"holds current x-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"behoudt deze x-coördinaat waarde voor schildpad (kan worden gebruikt in "
+"plaats van nummerblok)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
+msgid "print"
+msgstr "druk af"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:361
+msgid "returns mouse x coordinate"
+msgstr "geeft muis x coördinaat"
+
+#: TurtleArt/tabasics.py:443
+msgid "red"
+msgstr "rood"
+
+#: TurtleArtActivity.py:166 TurtleArtActivity.py:709 TurtleArtActivity.py:823
+#: TurtleArtActivity.py:853 turtleblocks.py:360
+msgid "Save as Logo"
+msgstr "Bewaar als Logo"
+
+#: TurtleArt/tabasics.py:317
+msgid "sets color of the line drawn by the turtle"
+msgstr "stelt kleur in van de lijn die getekend is door het schildpad"
+
+#: TurtleArt/tabasics.py:460
+msgid "set text color"
+msgstr "zet tekstkleur"
+
+#: plugins/audio_sensors/audio_sensors.py:90
+#: plugins/audio_sensors/audio_sensors.py:105
+msgid "loudness"
+msgstr "luidheid"
+
+#: gnome_plugins/collaboration_plugin.py:115
+msgid "Enable collaboration"
+msgstr "Samenwerken aanzetten"
+
+#: plugins/accelerometer/accelerometer.py:49
+#: plugins/audio_sensors/audio_sensors.py:75
+#: plugins/camera_sensor/camera_sensor.py:63
+#: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
+msgid "Palette of sensor blocks"
+msgstr "Palet van sensorblokken"
+
+#: TurtleArtActivity.py:713 TurtleArtActivity.py:841 TurtleArtActivity.py:863
+msgid "Load plugin"
+msgstr "Laad plugin"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:351
+msgid "returns True if mouse button is pressed"
+msgstr "geeft Waar als muisknop is ingedrukt"
+
+#: TurtleArt/tabasics.py:662
+msgid "number"
+msgstr "nummer"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
+msgid "query keyboard"
+msgstr "vraag toetsenbord uit"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:124
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
+msgid "top"
+msgstr "bovenin"
+
+#: gnome_plugins/uploader_plugin.py:140
+msgid "Submit to Web"
+msgstr "Naar web opsturen"
+
+#: TurtleArtActivity.py:596 TurtleArtActivity.py:749 turtleblocks.py:366
+msgid "Cartesian coordinates"
+msgstr "Cartesische coördinaten"
+
+#: gnome_plugins/collaboration_plugin.py:292
+msgid "Nickname"
+msgstr "Bijnaam"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:234
+msgid "set scale"
+msgstr "stel schaal in"
+
+#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:1833
+#: TurtleArtActivity.py:703
+msgid "Share selected blocks"
+msgstr "Deel geselecteerde blokken"
+
+#: TurtleArt/tabasics.py:453
+msgid "white"
+msgstr "wit"
+
+#: TurtleArt/tabasics.py:846
+msgid "connects action to toolbar run buttons"
+msgstr "verbindt actie aan werkbalk start knoppen"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:448
+msgid "elapsed time (in seconds) since program started"
+msgstr "verstreken tijd (in seconden) sinds programma startte"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
+msgid "amplitude"
+msgstr "amplitude"
+
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
+msgid "the canvas height"
+msgstr "de schlderijhoogte"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:994
+msgid "presentation 2x1"
+msgstr "presentatie 2x1"
+
+#: TurtleArt/tabasics.py:575
+msgid "minus"
+msgstr "min"
+
+#: TurtleArt/tabasics.py:714 TurtleArt/tabasics.py:717
+msgid "and"
+msgstr "en"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:126
+msgid "top of a collapsible stack"
+msgstr "bovenkant van een inklapbare stapel"
+
+#: TurtleArt/talogo.py:624
+msgid "as input"
+msgstr "als invoer"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:622
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:638
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:653
+msgid "Python block"
+msgstr "Python blok"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:275
+msgid "media wait"
+msgstr "media wacht"
+
+#: plugins/accelerometer/accelerometer.py:56
+#: plugins/accelerometer/accelerometer.py:63
+msgid "acceleration"
+msgstr "versnelling"
+
+#: TurtleArt/tabasics.py:427
+msgid "holds current pen size (can be used in place of a number block)"
+msgstr "houdt deze pengrootte (wordt gebruikt ipv een nummerblok)"
+
+#: TurtleArt/tabasics.py:313
+msgid "set color"
+msgstr "zet kleur"
+
+#: TurtleArt/tabasics.py:646
+msgid "min"
+msgstr "min"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:735
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:746
+msgid "loads a block"
+msgstr "laad een blok"
+
+#: TurtleArt/tabasics.py:282
+msgid "Palette of pen commands"
+msgstr "Palet van pencommando's"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:480
+msgid "shows values in FILO (first-in last-out heap)"
+msgstr "toont waarden in FILO (eerst-in-laatst-uit hoop)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:107
+msgid "do-while-True operator that uses boolean operators from Numbers palette"
+msgstr ""
+"do-zolang-Waar operator die booleaanse operators gebruikt van Getal palet"
+
+#: turtleblocks.py:363
+msgid "File"
+msgstr "Bestand"
+
+#: TurtleArt/tabasics.py:708
+msgid "logical NOT operator"
+msgstr "logische NIET operator"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:865
+msgid "ycor of bottom of screen"
+msgstr "ycor voor onderkant van scherm"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:826
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
+msgid "presentation template: select Journal object (with description)"
+msgstr "presentatie sjabloon: selecteer Dagboek voorwerp (met beschrijving)"
+
+#: TurtleArt/tabasics.py:557
+msgid "Palette of numeric operators"
+msgstr "Palet van getals operator"
+
+#: TurtleArt/tabasics.py:589
+msgid "multiply"
+msgstr "vermenigvuldig"
+
+#: TurtleArt/tabasics.py:754
+msgid "forever"
+msgstr "altijd"
+
+#: TurtleArtActivity.py:1135
+#, python-format
+msgid "Plugin %s already installed."
+msgstr "Plugin %s is al geïnstalleerd."
+
+#: TurtleArt/tabasics.py:329
+msgid "sets shade of the line drawn by the turtle"
+msgstr "stelt de schaduw van de lijn in getekend door het schildpad"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:308
+msgid "speaks text"
+msgstr "spreekt tekst"
+
+#: TurtleArtActivity.py:211
+msgid "snapshot"
+msgstr "foto"
+
+#: TurtleArt/tabasics.py:151
+msgid "clean"
+msgstr "wissen"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:840
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:847
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:996
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1011
+msgid "presentation template: select two Journal objects"
+msgstr "presentatie sjabloon: selecteer twee Dagboek voorwerpen"
+
+#: TurtleArtActivity.py:611 TurtleArtActivity.py:757 turtleblocks.py:372
+msgid "Grow blocks"
+msgstr "Vergroot blokken"
+
+#: TurtleArtActivity.py:594 TurtleArtActivity.py:748
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
+msgid "Fullscreen"
+msgstr "Schermvullend"
+
+#: turtleblocks.py:255
+msgid "File not found"
+msgstr "Bestand niet gevonden"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:222
+msgid "show"
+msgstr "toon"
+
+#: TurtleArt/tabasics.py:853 TurtleArt/tabasics.py:854
+#: TurtleArt/tabasics.py:855
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:208
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:223
+msgid "text"
+msgstr "tekst"
+
+#: TurtleArt/tabasics.py:646
+msgid "random"
+msgstr "willekeurig"
+
+#: TurtleArt/tabasics.py:674
+msgid "logical greater-than operator"
+msgstr "logische groter-dan operator"
+
+#: TurtleArt/tabasics.py:166
+msgid "turns turtle counterclockwise (angle in degrees)"
+msgstr "draait schildpad tegen de klok in (hoek in graden)"
+
+#: TurtleArt/tabasics.py:454
+msgid "black"
+msgstr "zwart"
+
+#: TurtleArt/tabasics.py:639
+msgid "calculates square root"
+msgstr "berekent vierkantswortel"
+
+#: TurtleArt/tabasics.py:237
+msgid ""
+"holds current y-coordinate value of the turtle (can be used in place of a "
+"number block)"
+msgstr ""
+"behoudt deze y-coördinaat waarde voor schildpad (kan worden gebruikt in "
+"plaats van nummerblok)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:358
+msgid "mouse x"
+msgstr "muis x"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
+msgid "mouse y"
+msgstr "muis y"
+
+#: pysamples/grecord.py:215
+msgid "stop"
+msgstr "stop"
+
+#: TurtleArt/tabasics.py:671
+msgid "greater than"
+msgstr "groter dan"
+
+#: TurtleArt/tabasics.py:225 TurtleArt/tawindow.py:3862
+#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:604
+msgid "xcor"
+msgstr "xcor"
+
+#: TurtleArtActivity.py:687 turtleblocks.py:408 util/helpbutton.py:45
+msgid "Help"
+msgstr "Help"
+
+#: turtleblocks.py:448
+msgid "Save project?"
+msgstr "Project opslaan?"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
+msgid "chooses which turtle to command"
+msgstr "kies welk schildpad te besturen"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:940
+msgid "right x"
+msgstr "rechts x"
+
+#: TurtleArt/tabasics.py:463
+msgid "sets color of text drawn by the turtle"
+msgstr "stelt de kleur van tekst in getekend door het schildpad"
+
+#: plugins/light_sensor/light_sensor.py:58
+#: plugins/light_sensor/light_sensor.py:65
+msgid "light level detected by light sensor"
+msgstr "lichtniveau ontdekt door lichtsensor"
+
+#: TurtleArtActivity.py:1049 TurtleArtActivity.py:1054
+#: TurtleArtActivity.py:1121
+msgid "Plugin could not be installed."
+msgstr "Plugin kon niet geïnstalleerd worden."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
+msgid "keyboard"
+msgstr "toetsenbord"
+
+#: TurtleArt/tabasics.py:186
+msgid "arc"
+msgstr "boog"
+
+#: TurtleArt/tabasics.py:186
+msgid "radius"
+msgstr "straal"
+
+#: TurtleArtActivity.py:598 TurtleArtActivity.py:751 turtleblocks.py:368
+msgid "Polar coordinates"
+msgstr "Polaire coördinaten"
+
+#: TurtleArt/tabasics.py:325
+msgid "set shade"
+msgstr "zet schaduw"
+
+#: TurtleArt/tabasics.py:718
+msgid "logical AND operator"
+msgstr "logische AND bewerker"
+
+#: gnome_plugins/uploader_plugin.py:90
+msgid ""
+"You must have an account at http://turtleartsite.sugarlabs.org to upload "
+"your project."
+msgstr ""
+"Je moet een account op http://turtleartsite.sugarlabs.org hebben om je "
+"project te uploaden."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:754
+msgid "palette"
+msgstr "palet"
+
+#: TurtleArtActivity.py:681 TurtleArtActivity.py:890 turtleblocks.py:400
+msgid "Run"
+msgstr "Draai"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:477
+msgid "show heap"
+msgstr "stapel weergeven"
+
+#: TurtleArt/tabasics.py:217
+msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
+msgstr ""
+"stelt de richting in van het schildpad (0 is naar de bovenkant van het "
+"scherm.)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:757
+msgid "selects a palette"
+msgstr "selecteert een palet"
+
+#: plugins/audio_sensors/audio_sensors.py:91
+#: plugins/audio_sensors/audio_sensors.py:106
+msgid "microphone input volume"
+msgstr "microfoon invoer volume"
+
+#: gnome_plugins/uploader_plugin.py:120
+msgid "Title:"
+msgstr "Titel:"
+
+#: plugins/camera_sensor/camera_sensor.py:67
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
+msgid "Palette of media objects"
+msgstr "Palet van media voorwerpen"
+
+#: TurtleArtActivity.py:591
+msgid "Restore blocks from trash"
+msgstr "Herlaad alle blokken van afval"
+
+#: TurtleArt/tabasics.py:838
+msgid "Palette of variable blocks"
+msgstr "Palet van variabele blokken"
+
+#: TurtleArt/tabasics.py:663
+msgid "used as numeric input in mathematic operators"
+msgstr "gebruikt als getalsinvoer in wiskundige opetatoren"
+
+#: gnome_plugins/fb_plugin.py:82 gnome_plugins/fb_plugin.py:83
+#: gnome_plugins/fb_plugin.py:92 gnome_plugins/uploader_plugin.py:63
+#: gnome_plugins/uploader_plugin.py:64 gnome_plugins/uploader_plugin.py:73
+msgid "Upload"
+msgstr "Uploaden"
+
+#: gnome_plugins/collaboration_plugin.py:296
+msgid "Server"
+msgstr "Server"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+msgid "presentation 2x2"
+msgstr "presentatie 2x2"
+
+#: TurtleArt/tabasics.py:912
+msgid "Variable 1 (numeric value)"
+msgstr "Variabele 1 (getalswaarde)"
+
+#: gnome_plugins/collaboration_plugin.py:132
+msgid "Neighborhood"
+msgstr "Omgeving"
+
+#: TurtleArt/tabasics.py:567
+msgid "adds two alphanumeric inputs"
+msgstr "voegt twee alfanumerieke invoer toe"
+
+#: TurtleArt/tabasics.py:695
+msgid "equal"
+msgstr "gelijk aan"
+
+#: TurtleArt/tabasics.py:789
+msgid "else"
+msgstr "anders"
+
+#: TurtleArt/talogo.py:624
+msgid "doesn't like"
+msgstr "houdt niet van"
+
+#: turtleblocks.py:447
+msgid "You have unsaved work. Would you like to save before quitting?"
+msgstr ""
+"Je hebt nog werk dat niet is opgeslagen. Wil je het opslaan voor het "
+"afsluiten?"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:783
+msgid "restores hidden blocks"
+msgstr "herlaad verborgen blokken"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:721
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
+msgid "load"
+msgstr "laad"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
+msgid "stop video or audio"
+msgstr "stop video of audio"
+
+#: TurtleArt/tabasics.py:379
+msgid "Turtle will not draw when moved."
+msgstr "Schildpad tekent niet als die beweegt."
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:504
+msgid "pop"
+msgstr "afnemen"
+
+#: TurtleArt/tabasics.py:426
+msgid "pen size"
+msgstr "pen dikte"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:698
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:707
+msgid "turtle shell"
+msgstr "turtle shall"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:320
+msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
+msgstr "speelt een sinusgolf met frequentie, amplitude en duur (in secomden)"
+
+#: TurtleArt/tabasics.py:635
+msgid "√"
+msgstr "√"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
+msgid "speak"
+msgstr "spreek"
+
+#: plugins/rfid/rfid.py:93 plugins/rfid/rfid.py:101
+msgid "read value from RFID device"
+msgstr "lees waarde van RFID apparaat"
+
+#: TurtleArt/tabasics.py:190
+msgid "moves turtle along an arc"
+msgstr "beweegt schildpad langs een boog"
+
+#: pysamples/uturn.py:26
+msgid "make a uturn"
+msgstr "maak een u-bocht"
+
+#: TurtleArt/tabasics.py:699
+msgid "logical equal-to operator"
+msgstr "logische gelijk-aan operator"
+
+#: TurtleArt/tabasics.py:441
+msgid "Palette of pen colors"
+msgstr "Palet van penkleuren"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:292
+msgid "pause video or audio"
+msgstr "pauze video of audio"
+
+#: TurtleArt/tabasics.py:888
+msgid "stores numeric value in Variable 1"
+msgstr "slaat getalswaarde op in Variabele 1"
+
+#: TurtleArt/tabasics.py:901
+msgid "stores numeric value in Variable 2"
+msgstr "slaat getalswaarde op in Variabele 2"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:700
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:708
+msgid "put a custom 'shell' on the turtle"
+msgstr "legt een aangepast 'schild' op de schildpad"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:337
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:348
+msgid "button down"
+msgstr "knop ingedrukt"
+
+#: TurtleArt/tabasics.py:143
+msgid "moves turtle backward"
+msgstr "beweegt schildpad achteruit"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:889
+msgid "ycor of top of screen"
+msgstr "ycor van bovenkant van het scherm"
+
+#: TurtleArt/talogo.py:384 TurtleArtActivity.py:322 TurtleArtActivity.py:684
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1485
+msgid "Show blocks"
+msgstr "Toon blokken"
+
+#: pysamples/grecord.py:217
+msgid "play"
+msgstr "speel"
+
+#: pysamples/grecord.py:219
+msgid "save"
+msgstr "bewaar"
+
+#: gnome_plugins/collaboration_plugin.py:304
+msgid "Colors"
+msgstr "Kleuren"
+
+#: TurtleArt/tabasics.py:398
+msgid "sets size of the line drawn by the turtle"
+msgstr "stelt de grootte van de lijn in getekend door het schildpad"
+
+#: turtleblocks.py:355
+msgid "Open"
+msgstr "Open"
+
+#: TurtleArt/tawindow.py:989 TurtleArt/tawindow.py:990
+msgid "orientation"
+msgstr "oriëntatie"
+
+#: TurtleArt/tabasics.py:236 TurtleArt/tawindow.py:3862
+#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:605
+msgid "ycor"
+msgstr "ycor"
+
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:596
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
@@ -1574,6 +2942,571 @@ msgid ""
 msgstr ""
 "een programmeerbaar blok: gebruikt om geavanceerde meer-variabelen wisk "
 "vergelijkingen toe te voegen, zoals sqrt(x*x+y*y)"
+
+#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
+msgid "if"
+msgstr "als"
+
+#: TurtleArt/tabasics.py:203 TurtleArt/tabasics.py:269
+msgid ""
+"moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
+msgstr ""
+"beweegt schildpad naar positie xcor, ycor; (0, 0) is in het midden van het "
+"scherm."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:579
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:592
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:606
+msgid "Python"
+msgstr "Python"
+
+#: TurtleArtActivity.py:688 turtleblocks.py:403
+msgid "Stop"
+msgstr "Stop"
+
+#: TurtleArt/tabasics.py:964 TurtleArt/tabasics.py:984
+msgid "action 2"
+msgstr "actie 2"
+
+#: TurtleArt/tabasics.py:955 TurtleArt/tabasics.py:974
+msgid "action 1"
+msgstr "actie 1"
+
+#: TurtleArt/tabasics.py:417
+msgid "end fill"
+msgstr "stop met vullen"
+
+#: TurtleArtActivity.py:587 TurtleArtActivity.py:731 turtleblocks.py:385
+msgid "Copy"
+msgstr "Kopieer"
+
+#: TurtleArtActivity.py:589 TurtleArtActivity.py:732 turtleblocks.py:386
+msgid "Paste"
+msgstr "Plak"
+
+#: TurtleArt/talogo.py:511
+msgid "did not output to"
+msgstr "gaf geen uitvoer naar"
+
+#: gnome_plugins/collaboration_plugin.py:120
+msgid "Activities"
+msgstr "Activiteiten"
+
+#: gnome_plugins/uploader_plugin.py:68
+msgid "Upload to Web"
+msgstr "Naar web uploaden"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:490
+msgid "empty heap"
+msgstr "stapel wissen"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
+msgid "pops value off FILO (first-in last-out heap)"
+msgstr "duwt waarde van FILO (eerst-in-laatst-uit hoop)"
+
+#: TurtleArtActivity.py:680 TurtleArtActivity.py:888 turtleblocks.py:399
+msgid "Clean"
+msgstr "Wissen"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:765
+msgid "Palette of presentation templates"
+msgstr "Palet van presentatie sjablonen"
+
+#: TurtleArt/tabasics.py:186
+msgid "angle"
+msgstr "hoek"
+
+#: TurtleArt/tabasics.py:614
+msgid "identity"
+msgstr "identiteit"
+
+#: TurtleArtActivity.py:579 TurtleArtActivity.py:676 TurtleArtActivity.py:705
+#: TurtleArtActivity.py:707 TurtleArtActivity.py:815
+msgid "Save/Load"
+msgstr "BewaarLaden"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:931
+msgid "top y"
+msgstr "boven y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:151
+msgid "audio"
+msgstr "audio"
+
+#: turtleblocks.py:396
+msgid "Tools"
+msgstr "Werktuigen"
+
+#: gnome_plugins/collaboration_plugin.py:298
+msgid "Port"
+msgstr "Poort"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:539
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:541
+msgid "comment"
+msgstr "commentaar"
+
+#: TurtleArt/tabasics.py:578
+msgid "subtracts bottom numeric input from top numeric input"
+msgstr "trekt onderste getalsinvoer af van bovenste getalsinvoer"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:290
+msgid "media pause"
+msgstr "media pauze"
+
+#: pysamples/forward_push.py:45
+msgid "push destination rgb value to heap"
+msgstr "duw bestemming rgb waarde naar hoop"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:381
+msgid "query for keyboard input (results stored in keyboard block)"
+msgstr ""
+"uitvraging van toetsenbord invoer (resultaten opgeslagen in toetsenbordblok)"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
+msgid "Cartesian"
+msgstr "Cartesisch"
+
+#: TurtleArt/tabasics.py:154
+msgid "clears the screen and reset the turtle"
+msgstr "schoont het scherm en herstelt het schildpad"
+
+#: plugins/audio_sensors/audio_sensors.py:84
+#: plugins/audio_sensors/audio_sensors.py:99
+msgid "raw microphone input signal"
+msgstr "ruw microfoon invoer signaal"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:437
+msgid "returns the color that the turtle \"sees\""
+msgstr "geeft de kleur dat de schildpad \"ziet\""
+
+#: TurtleArt/tabasics.py:977
+msgid "invokes Action 1 stack"
+msgstr "roept Actie 1 stapel aan"
+
+#: TurtleArt/tabasics.py:123
+msgid "Palette of turtle commands"
+msgstr "Palet van schildpadcommando's"
+
+#: TurtleArt/tabasics.py:758
+msgid "loops forever"
+msgstr "lust voor altijd"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:207
+msgid "show aligned"
+msgstr "toon uitgelijnd"
+
+#: TurtleArtActivity.py:1136
+#, python-format
+msgid "Do you want to reinstall %s?"
+msgstr "Wil je herinstalleren %s?"
+
+#: TurtleArtActivity.py:710 TurtleArtActivity.py:836 TurtleArtActivity.py:858
+msgid "Load project"
+msgstr "Laad project"
+
+#: TurtleArtActivity.py:573 TurtleArtActivity.py:679
+msgid "Project"
+msgstr "Project"
+
+#: turtleblocks.py:402
+msgid "Debug"
+msgstr "Debug"
+
+#: TurtleArtActivity.py:260 TurtleArtActivity.py:616 TurtleArtActivity.py:759
+#: turtleblocks.py:378
+msgid "Turn off hover help"
+msgstr "Zet uit muistips"
+
+#: TurtleArt/tabasics.py:624 TurtleArt/tabasics.py:625
+msgid "mod"
+msgstr "mod"
+
+#: gnome_plugins/collaboration_plugin.py:300
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: TurtleArt/tabasics.py:819
+msgid "vertical space"
+msgstr "verticale ruimte"
+
+#: TurtleArtActivity.py:1117
+msgid "Please restart Turtle Art in order to use the plugin."
+msgstr "Herstart Turtle Art om plugin te kunnen gebruiken."
+
+#: TurtleArt/tabasics.py:419
+msgid "completes filled polygon (used with start fill block)"
+msgstr "eindigt met vullen van vlak (gebruik met begin met een gevuld vlak)"
+
+#: gnome_plugins/collaboration_plugin.py:128
+msgid "Share"
+msgstr "Delen"
+
+#: TurtleArt/tabasics.py:683
+msgid "less than"
+msgstr "kleiner dan"
+
+#: TurtleArt/tabasics.py:636
+msgid "square root"
+msgstr "vierkantswortel"
+
+#: turtleblocks.py:370
+msgid "Rescale coordinates"
+msgstr "Herschaal coördinaten"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:781
+msgid "show blocks"
+msgstr "blokken weergeven"
+
+#: turtleblocks.py:362
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:177
+msgid "Sugar Journal description field"
+msgstr "Sugar Dagboek beschrijvingveld"
+
+#: TurtleArt/tabasics.py:337
+msgid "set gray"
+msgstr "zet grijs"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1039
+msgid "presentation bulleted list"
+msgstr "presentatiepuntenlijst"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
+msgid "duration"
+msgstr "duur"
+
+#: turtleblocks.py:354
+msgid "New"
+msgstr "Nieuw"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:543
+msgid "places a comment in your code"
+msgstr "plaatst een commentaar in je code"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
+msgid "read pixel"
+msgstr "lees pixel"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:266
+msgid "scale"
+msgstr "schaal"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
+msgid "bottom"
+msgstr "onderkant"
+
+#: TurtleArt/tabasics.py:451
+msgid "purple"
+msgstr "paars"
+
+#: TurtleArtActivity.py:447
+msgid "Rescale coordinates down"
+msgstr "Herschaal coördinaten neer"
+
+#: TurtleArt/tautils.py:483
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
+msgid "click to open"
+msgstr "klik om te openen"
+
+#: plugins/audio_sensors/audio_sensors.py:120
+#: plugins/audio_sensors/audio_sensors.py:128
+msgid "microphone input pitch"
+msgstr "microfoon invoer toonhoogte"
+
+#: gnome_plugins/collaboration_plugin.py:129
+msgid "Configuration"
+msgstr "Configuratie"
+
+#: gnome_plugins/uploader_plugin.py:130
+msgid "Description:"
+msgstr "Beschrijving:"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:140
+msgid "journal"
+msgstr "dagboek"
+
+#: TurtleArt/tabasics.py:999
+msgid "empty trash"
+msgstr "leeg afval"
+
+#: TurtleArt/tabasics.py:388
+msgid "Turtle will draw when moved."
+msgstr "Schildpad tekent als die beweegt."
+
+#: TurtleArt/tautils.py:196
+msgid "Load..."
+msgstr "Laden..."
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
+msgid "Sugar Journal audio object"
+msgstr "Sugar Dagboek geluidsvoorwerp"
+
+#: TurtleArt/talogo.py:374 TurtleArtActivity.py:683
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1492
+msgid "Stop turtle"
+msgstr "Stop schildpad"
+
+#: turtleblocks.py:404
+msgid "Turtle"
+msgstr "Schildpad"
+
+#: TurtleArt/tapalette.py:98
+msgid "changes the orientation of the palette of blocks"
+msgstr "wijzigt de richting van het blokkenpalet"
+
+#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
+msgid "store in"
+msgstr "sla op in"
+
+#: TurtleArt/talogo.py:388 TurtleArtActivity.py:326 TurtleArtActivity.py:894
+msgid "Hide blocks"
+msgstr "Verberg blokken"
+
+#: TurtleArtActivity.py:714 TurtleArtActivity.py:844 TurtleArtActivity.py:866
+msgid "Load Python block"
+msgstr "Laad Python blok"
+
+#: TurtleArt/tabasics.py:563
+msgid "plus"
+msgstr "getal"
+
+#: TurtleArt/tabasics.py:725 TurtleArt/tabasics.py:728
+msgid "or"
+msgstr "of"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:812
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
+msgid "presentation template: list of bullets"
+msgstr "presentatie sjabloon: puntenlijst"
+
+#: TurtleArt/tabasics.py:616
+msgid "identity operator used for extending blocks"
+msgstr "identiteit operator gebruikt voor uitbreiding blokken"
+
+#: TurtleArtActivity.py:613 TurtleArtActivity.py:758 turtleblocks.py:374
+msgid "Shrink blocks"
+msgstr "Verklein blokken"
+
+#: TurtleArt/tabasics.py:474
+msgid "sets size of text drawn by the turtle"
+msgstr "stelt grootte van tekst in getekend door schildpad"
+
+#: TurtleArt/tabasics.py:248
+msgid ""
+"holds current heading value of the turtle (can be used in place of a number "
+"block)"
+msgstr ""
+"houdt deze richtingwaarde van het schildpad vast (kan worden gebruikt in "
+"plaats van nummerblok)"
+
+#: TurtleArt/tawindow.py:3977
+msgid "image"
+msgstr "afbeelding"
+
+#: TurtleArt/tabasics.py:650
+msgid "returns random number between minimum (top) and maximum (bottom) values"
+msgstr ""
+"geeft waarde terug tussen minimum (bovenste) en maximum (onderste) waarden"
+
+#: TurtleArt/tabasics.py:349
+msgid "holds current pen color (can be used in place of a number block)"
+msgstr "houdt deze penkleur (kan gebruikt worden in plaats van een nummerblok)"
+
+#: TurtleArtActivity.py:274 turtleblocks.py:390
+msgid "Show palette"
+msgstr "Toon palet"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:248
+msgid "saves a picture to the Sugar Journal"
+msgstr "bewaart een afbeelding in het Sugar Dagboek"
+
+#: TurtleArtActivity.py:219 TurtleArtActivity.py:643 TurtleArtActivity.py:685
+#: TurtleArtActivity.py:829 TurtleArtActivity.py:856
+msgid "Save snapshot"
+msgstr "Bewaar foto"
+
+#: TurtleArt/tabasics.py:843 pysamples/grecord.py:213
+msgid "start"
+msgstr "begin"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:522
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
+msgid "returns True if heap is empty"
+msgstr "geeft Waar terug als hoop leeg is"
+
+#: TurtleArt/tabasics.py:132
+msgid "moves turtle forward"
+msgstr "beweeg schildpad vooruit"
+
+#: TurtleArt/tabasics.py:128
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
+msgid "forward"
+msgstr "vooruit"
+
+#: TurtleArt/tabasics.py:932 TurtleArt/tabasics.py:945
+#: TurtleArt/tawindow.py:1296 TurtleArt/tawindow.py:1409
+#: TurtleArt/tawindow.py:1858 TurtleArt/tawindow.py:4152
+#: TurtleArt/tawindow.py:4180
+msgid "my box"
+msgstr "mijn vakje"
+
+#: gnome_plugins/collaboration_plugin.py:294
+msgid "Account ID"
+msgstr "Account ID"
+
+#: TurtleArt/tawindow.py:1310
+msgid "Select blocks to share"
+msgstr "Selecteer blokken om te delen"
+
+#: TurtleArt/tabasics.py:139
+msgid "back"
+msgstr "terug"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:238
+msgid "sets the scale of media"
+msgstr "stelt de schaal van de media in"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
+msgid "holds current scale value"
+msgstr "houdt deze schaalwaarde"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:964
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:979
+msgid "presentation 1x1"
+msgstr "presentatie 1x1"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1009
+msgid "presentation 1x2"
+msgstr "presentatie 1x2"
+
+#: TurtleArt/tabasics.py:865
+msgid "top of nameable action stack"
+msgstr "bovenste van benoembare actie stapel"
+
+#: TurtleArt/tabasics.py:933 TurtleArt/tawindow.py:4194
+msgid "stores numeric value in named variable"
+msgstr "slaat getalswaarde op in benoemde variabele"
+
+#: TurtleArt/tabasics.py:729
+msgid "logical OR operator"
+msgstr "logische OF operator"
+
+#: plugins/audio_sensors/audio_sensors.py:158
+#: plugins/audio_sensors/audio_sensors.py:172
+#: plugins/audio_sensors/audio_sensors.py:186
+#: plugins/audio_sensors/audio_sensors.py:200
+msgid "microphone input voltage"
+msgstr "microfoon invoer spanning"
+
+#: TurtleArt/tabasics.py:770
+msgid "loops specified number of times"
+msgstr "lust een aangegeven aantal keren"
+
+#: TurtleArt/tautils.py:206
+msgid "Save..."
+msgstr "Bewaren..."
+
+#: TurtleArt/tabasics.py:987
+msgid "invokes Action 2 stack"
+msgstr "roept Actie 2 stapel aan"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:745
+msgid "setxy"
+msgstr "zetxy"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:913
+msgid "title y"
+msgstr "titel y"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:904
+msgid "title x"
+msgstr "titel x"
+
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
+msgid "fill screen"
+msgstr "vul scherm"
+
+#: pysamples/journal-stats.py:78
+msgid "other"
+msgstr "ander"
+
+#: turtleblocks.py:357
+msgid "Save as"
+msgstr "Opslaan als"
+
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+msgid "set xy"
+msgstr "zet xy"
+
+#: TurtleArt/tabasics.py:995
+msgid "trash"
+msgstr "prullenbak"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
+msgid "polar"
+msgstr "polair"
+
+#: TurtleArt/tabasics.py:765 TurtleArt/tabasics.py:769
+msgid "repeat"
+msgstr "herhaal"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:277
+msgid "wait for current video or audio to complete"
+msgstr "wacht tot huidige video of audio gereed is"
+
+#: TurtleArtActivity.py:203 TurtleArtActivity.py:708 TurtleArtActivity.py:820
+#: TurtleArtActivity.py:850 turtleblocks.py:358
+msgid "Save as image"
+msgstr "Opslaan als afbeelding"
+
+#: TurtleArtActivity.py:541 TurtleArtActivity.py:577 TurtleArtActivity.py:677
+#: TurtleArtActivity.py:730 turtleblocks.py:387
+msgid "Edit"
+msgstr "Bewerk"
+
+#: plugins/audio_sensors/audio_sensors.py:152
+#: plugins/audio_sensors/audio_sensors.py:166
+#: plugins/audio_sensors/audio_sensors.py:180
+#: plugins/audio_sensors/audio_sensors.py:194
+msgid "microphone input resistance"
+msgstr "microfoon invoerweerstand"
+
+#: TurtleArt/tabasics.py:967
+msgid "top of Action 2 stack"
+msgstr "bovenste van Actie 2 stapel"
+
+#: TurtleArt/tabasics.py:604
+msgid ""
+"divides top numeric input (numerator) by bottom numeric input (denominator)"
+msgstr "deelt bovenste getalinvoer (teller) door onderste getalinvoer (noemer)"
+
+#: TurtleArt/tabasics.py:646
+msgid "max"
+msgstr "max"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:553
+msgid "prints value in status block at bottom of the screen"
+msgstr "drukt waarde af in status blok bij de onderkant van het scherm"
+
+#: TurtleArt/tabasics.py:408
+msgid "start fill"
+msgstr "begin met vullen"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
+msgid "holds results of query-keyboard block as ASCII"
+msgstr "bevat resultaten van uitvraging-toetsnebordblok als ASCII"
+
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  nl.po (PACKAGE VERSION)  #-#-#-#-#
+#. TRANS: push adds a new item to the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
+msgid "push"
+msgstr "neerleggen"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:610
 msgid ""
@@ -1583,217 +3516,33 @@ msgstr ""
 "een programmeerbaar blok: gebruikt om geavanceerde meer-variabelen "
 "wiskundige vergelijkingen toe te voegen, zoals sin(x+y+z)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:622
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:638
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:653
-msgid "Python block"
-msgstr "Python blok"
+#: TurtleArt/tabasics.py:1004
+msgid "restore all"
+msgstr "herlaad alles"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:624
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:640
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:656
-msgid "runs code found in the tamyblock.py module found in the Journal"
-msgstr "draait code gevonden in tamyblock.py module gevonden in het Dagboek"
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
+msgid "hello"
+msgstr "hallo"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
-msgid "Cartesian"
-msgstr "Cartesisch"
+#. TRANS: "name" option from activity.info file
+msgid "TurtleBlocks"
+msgstr "SchildpadBlokken"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:671
-msgid "displays Cartesian coordinates"
-msgstr "toont Cartesische coördinaten"
+#: TurtleArt/tawindow.py:1256
+msgid ""
+"Please hit the Stop Button before making changes to your Turtle Blocks "
+"program"
+msgstr ""
+"Druk op de Stop Knop voor het maken van wijzigingen op je Schildpad Blokken "
+"programma"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
-msgid "polar"
-msgstr "polair"
+#: TurtleArtActivity.py:766
+msgid "Palettes"
+msgstr "Palet"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:679
-msgid "displays polar coordinates"
-msgstr "toont polaire coördinaten"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:756
-msgid "turtle"
-msgstr "schildpad"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
-msgid "chooses which turtle to command"
-msgstr "kies welk schildpad te besturen"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:698
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:707
-msgid "turtle shell"
-msgstr "turtle shall"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:700
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:708
-msgid "put a custom 'shell' on the turtle"
-msgstr "legt een aangepast 'schild' op de schildpad"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:716
-msgid "top of a collapsed stack"
-msgstr "bovenkant van een ingeklapte stapel"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:721
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
-msgid "load"
-msgstr "laad"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:735
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:746
-msgid "loads a block"
-msgstr "laad een blok"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:745
-msgid "setxy"
-msgstr "zetxy"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:754
-msgid "palette"
-msgstr "palet"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:757
-msgid "selects a palette"
-msgstr "selecteert een palet"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:765
-msgid "Palette of presentation templates"
-msgstr "Palet van presentatie sjablonen"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:772
-msgid "hide blocks"
-msgstr "blokken verbergen"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
-msgid "declutters canvas by hiding blocks"
-msgstr "ontwar schilderij door blokken te verbergen"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:781
-msgid "show blocks"
-msgstr "blokken weergeven"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:783
-msgid "restores hidden blocks"
-msgstr "herlaad verborgen blokken"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
-msgid "hides the Sugar toolbars"
-msgstr "verbergt de Sugar werkbalken"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
-msgid "list"
-msgstr "lijst"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1039
-msgid "presentation bulleted list"
-msgstr "presentatiepuntenlijst"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:812
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
-msgid "presentation template: list of bullets"
-msgstr "presentatie sjabloon: puntenlijst"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:819
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
-msgid "presentation template: select Journal object (no description)"
-msgstr "presentatie sjabloon: selecteer Dagboek voorwerp (zonder beschrijving)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:826
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
-msgid "presentation template: select Journal object (with description)"
-msgstr "presentatie sjabloon: selecteer Dagboek voorwerp (met beschrijving)"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:833
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
-msgid "presentation template: select four Journal objects"
-msgstr "presentatie sjabloon: selecteer vier Dagboek voorwerpen"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:840
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:847
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:996
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1011
-msgid "presentation template: select two Journal objects"
-msgstr "presentatie sjabloon: selecteer twee Dagboek voorwerpen"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
-msgid "xcor of left of screen"
-msgstr "xcor van linkerkant van scherm"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
-msgid "bottom"
-msgstr "onderkant"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:865
-msgid "ycor of bottom of screen"
-msgstr "ycor voor onderkant van scherm"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
-msgid "width"
-msgstr "breedte"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
-msgid "the canvas width"
-msgstr "de schilderij breedte"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:881
-msgid "xcor of right of screen"
-msgstr "xcor van rechterkant van scherm"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:889
-msgid "ycor of top of screen"
-msgstr "ycor van bovenkant van het scherm"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894
-msgid "height"
-msgstr "hoogte"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
-msgid "the canvas height"
-msgstr "de schlderijhoogte"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:904
-msgid "title x"
-msgstr "titel x"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:913
-msgid "title y"
-msgstr "titel y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:922
-msgid "left x"
-msgstr "links x"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:931
-msgid "top y"
-msgstr "boven y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:940
-msgid "right x"
-msgstr "rechts x"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:949
-msgid "bottom y"
-msgstr "onderkant y"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:964
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:979
-msgid "presentation 1x1"
-msgstr "presentatie 1x1"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:994
-msgid "presentation 2x1"
-msgstr "presentatie 2x1"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1009
-msgid "presentation 1x2"
-msgstr "presentatie 1x2"
-
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
-msgid "presentation 2x2"
-msgstr "presentatie 2x2"
+#: gnome_plugins/fb_plugin.py:87
+msgid "Facebook wall post"
+msgstr "Facebook muurpost"
 
 #: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
@@ -1820,160 +3569,54 @@ msgstr ""
 "Sorry, er is geen vrij geheugen meer om mijn brein te laden. Sluit andere "
 "activiteiten en probeer opnieuw."
 
-#: pysamples/forward_push.py:45
-msgid "push destination rgb value to heap"
-msgstr "duw bestemming rgb waarde naar hoop"
-
-#: pysamples/grecord.py:215
-msgid "stop"
-msgstr "stop"
-
-#: pysamples/grecord.py:217
-msgid "play"
-msgstr "speel"
-
-#: pysamples/grecord.py:219
-msgid "save"
-msgstr "bewaar"
-
-#: pysamples/journal-stats.py:78
-msgid "other"
-msgstr "ander"
-
-#: pysamples/uturn.py:24
-msgid "uturn"
-msgstr "u-bocht"
-
-#: pysamples/uturn.py:26
-msgid "make a uturn"
-msgstr "maak een u-bocht"
-
-#: turtleblocks.py:86
-msgid "usage is"
-msgstr "gebruik is"
-
-#: turtleblocks.py:240
-msgid "No option action:"
-msgstr "Geen optie actie:"
-
-#: turtleblocks.py:255
-msgid "File not found"
-msgstr "Bestand niet gevonden"
-
-#: turtleblocks.py:279
-#, python-format
-msgid "Configuration directory not writable: %s"
-msgstr "Configuratiedirectory is niet schrijfbaar: %s"
-
-#: turtleblocks.py:354
-msgid "New"
-msgstr "Nieuw"
-
-#: turtleblocks.py:355
-msgid "Open"
-msgstr "Open"
-
-#: turtleblocks.py:356
-msgid "Save"
-msgstr "Bewaar"
-
-#: turtleblocks.py:357
-msgid "Save as"
-msgstr "Opslaan als"
-
-#: turtleblocks.py:362
-msgid "Quit"
-msgstr "Afsluiten"
-
-#: turtleblocks.py:363
-msgid "File"
-msgstr "Bestand"
-
-#: turtleblocks.py:370
-msgid "Rescale coordinates"
-msgstr "Herschaal coördinaten"
-
-#: turtleblocks.py:376
-msgid "Reset block size"
-msgstr "Herstel blokgrootte"
-
-#: turtleblocks.py:394
-msgid "Show/hide blocks"
-msgstr "Toon/verberg blokken"
-
-#: turtleblocks.py:396
-msgid "Tools"
-msgstr "Werktuigen"
-
-#: turtleblocks.py:402
-msgid "Debug"
-msgstr "Debug"
-
-#: turtleblocks.py:404
-msgid "Turtle"
-msgstr "Schildpad"
-
 #: turtleblocks.py:407
 msgid "About..."
 msgstr "Over..."
 
-#: turtleblocks.py:447
-msgid "You have unsaved work. Would you like to save before quitting?"
-msgstr ""
-"Je hebt nog werk dat niet is opgeslagen. Wil je het opslaan voor het "
-"afsluiten?"
-
-#: turtleblocks.py:448
-msgid "Save project?"
-msgstr "Project opslaan?"
-
-#~ msgid "Turtle Art Mini"
-#~ msgstr "Schildpad Kunst Mini"
-
-#~ msgid "Turtle Confusion"
-#~ msgstr "Schildpad Verwarring"
-
-#~ msgid "Select a challenge"
-#~ msgstr "Kies een uitdaging"
-
-#~ msgid "Palette of Mexican pesos"
-#~ msgstr "Palet van Mexicaanse pesos"
-
-#~ msgid "Palette of Colombian pesos"
-#~ msgstr "Palet van Colombiaanse pesos"
-
-#~ msgid "Palette of Rwandan francs"
-#~ msgstr "Palet van Rwandaanse franken"
-
-#~ msgid "Palette of US dollars"
-#~ msgstr "Palet van US dollars"
-
-#~ msgid "Palette of Australian dollars"
-#~ msgstr "Palet van Australische dollars"
-
-#~ msgid "Palette of Paraguayan Guaranies"
-#~ msgstr "Palett van Paraguayse Guaranies"
-
-#~ msgid "Palette of Peruvian Nuevo Soles"
-#~ msgstr "Palet van Peruviaanse Nuevo Soles"
-
-#~ msgid "Palette of Uruguayan Pesos"
-#~ msgstr "Paler van Uruguayse Pesos"
-
-#~ msgid "TurtleBots"
-#~ msgstr "TurtleBots"
-
 #~ msgid "adjust LED intensity between 0 and 255"
 #~ msgstr "pas LED intensiteit aan tussen 0 en 255"
+
+#~ msgid "returns the ambient light level"
+#~ msgstr "geeft het omgevingslichtniveau"
+
+#~ msgid "returns the ambient temperature"
+#~ msgstr "geeft de omgevingstemperatuur"
+
+#~ msgid "returns 0 or 1 depending on the sensor inclination"
+#~ msgstr "geeft een 0 of 1 afhankelijk van de hoek van de sensor"
+
+#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
+#~ msgstr "schakelt tussen 0 en 1, de frequentie hangt af van de trilling"
+
+#~ msgid "grayscale"
+#~ msgstr "grijsschaal"
+
+#~ msgid "ambient light"
+#~ msgstr "omgevingslicht"
+
+#~ msgid "magnetic induction"
+#~ msgstr "magnetische inductie"
+
+#~ msgid "vibration"
+#~ msgstr "trilling"
+
+#~ msgid "move the Butia robot forward a predefined distance"
+#~ msgstr "beweeg de Butia robot de voorgedefinieerde afstand vooruit"
+
+#~ msgid "move the Butia robot backward a predefined distance"
+#~ msgstr "beweeg de Butia robot de voorgedefinieerde afstand achteruit"
+
+#~ msgid "turn Butia"
+#~ msgstr "draai Butia"
+
+#~ msgid "turn the Butia robot x degrees"
+#~ msgstr "draai de Butia robot x graden"
 
 #~ msgid "returns the object gray level as a number between 0 and 1023"
 #~ msgstr "geeft voorwerpgrijs niveau als getal tussen 0 en 1023"
 
-#~ msgid "returns 1 when the button is press and 0 otherwise"
-#~ msgstr "geeft 1 terug als knop is ingedrukt en anders 0"
-
 #~ msgid "returns the ambient light level as a number between 0 and 1023"
-#~ msgstr "geeft omgevingslicht niveau als getal tussen 0 en 1023"
+#~ msgstr "geeft omgevingslichtniveau als getal tussen 0 en 1023"
 
 #~ msgid "returns the ambient temperature as a number between 0 and 255"
 #~ msgstr "geeft omgevingstemperatuur als een getal tussen 0 en 255"
@@ -1982,754 +3625,24 @@ msgstr "Project opslaan?"
 #~ "returns the distance from the object in front of the sensor as a number "
 #~ "between 0 and 255"
 #~ msgstr ""
-#~ "geeft de afstand van het voorwerp voor de sensor als een getal tussen 0 en "
-#~ "255"
-
-#~ msgid "returns 0 or 1 depending on the sensor inclination"
-#~ msgstr "geeft een 0 of 1 afhankelijk van de hoek van de sensor"
-
-#~ msgid "returns 1 when the sensors detects a magnetic field, 0 otherwise"
-#~ msgstr "geeft een 1 als de sensors een magnetisch veld waarneemt, anders 0"
-
-#~ msgid "switches from 0 to 1, the frequency depends on the vibration"
-#~ msgstr "schakelt tussen 0 en 1, de frequentie hangt af van de trilling"
-
-#~ msgid "LED"
-#~ msgstr "LED"
-
-#~ msgid "button"
-#~ msgstr "knop"
-
-#~ msgid "grayscale"
-#~ msgstr "grijsschaal"
-
-#~ msgid "ambient light"
-#~ msgstr "omgevingslicht"
-
-#~ msgid "temperature"
-#~ msgstr "temperatuur"
-
-#~ msgid "distance"
-#~ msgstr "afstand"
-
-#~ msgid "tilt"
-#~ msgstr "hoogtehoek"
-
-#~ msgid "magnetic induction"
-#~ msgstr "magnetische inductie"
-
-#~ msgid "vibration"
-#~ msgstr "trilling"
-
-#~ msgid "Butia Robot"
-#~ msgstr "Butia Robot"
-
-#~ msgid "refresh Butia"
-#~ msgstr "ververs Butia"
-
-#~ msgid "refresh the state of the Butia palette and blocks"
-#~ msgstr "ververs de status vam de Butia palet en blokken"
-
-#~ msgid "battery charge Butia"
-#~ msgstr "accu lading Butia"
-
-#~ msgid "returns the battery charge as a number between 0 and 255"
-#~ msgstr "geeft de batterijlading als een getal tussen 0 en 255"
-
-#~ msgid "speed Butia"
-#~ msgstr "snelheid Butia"
-
-#~ msgid "forward Butia"
-#~ msgstr "vooruit Butia"
-
-#~ msgid "move the Butia robot forward"
-#~ msgstr "beweeg de Butia robot vooruit"
-
-#~ msgid "move the Butia robot forward a predefined distance"
-#~ msgstr "beweeg de Butia robot de voorgedefinieerde afstand vooruit"
-
-#~ msgid "left Butia"
-#~ msgstr "links Butia"
-
-#, fuzzy
-#~ msgid "turn the Butia robot at left"
-#~ msgstr "draai de Butia robot naar rechts"
-
-#~ msgid "backward Butia"
-#~ msgstr "achteruit Butia"
-
-#~ msgid "move the Butia robot backward"
-#~ msgstr "beweeg de Butia robot achteruit"
-
-#~ msgid "move the Butia robot backward a predefined distance"
-#~ msgstr "beweeg de Butia robot de voorgedefinieerde afstand achteruit"
-
-#~ msgid "right Butia"
-#~ msgstr "rechts Butia"
-
-#~ msgid "turn the Butia robot at right"
-#~ msgstr "draai de Butia robot naar rechts"
-
-#~ msgid "turn Butia"
-#~ msgstr "draai Butia"
-
-#~ msgid "turn the Butia robot x degrees"
-#~ msgstr "draai de Butia robot x graden"
-
-#~ msgid "stop Butia"
-#~ msgstr "stop Butia"
-
-#~ msgid "stop the Butia robot"
-#~ msgstr "stop de Butia robot"
-
-#~ msgid "Butia"
-#~ msgstr "Butia"
-
-#~ msgid "Error on initialization of the camera"
-#~ msgstr "Fout bij initialisatie van de camera"
-
-#, fuzzy
-#~ msgid "No camera was found"
-#~ msgstr "Geen camera gevonden"
-
-#~ msgid "Error stopping camera"
-#~ msgstr "Fout bij stoppen camera"
-
-#~ msgid "Error starting camera"
-#~ msgstr "Fout bij starten camera"
-
-#~ msgid "FollowMe"
-#~ msgstr "VolgMe"
-
-#, fuzzy
-#~ msgid "Search for a connected camera."
-#~ msgstr "Zoek naar een verbonden NXT steen."
-
-#~ msgid "calibration"
-#~ msgstr "calibratie"
-
-#, fuzzy
-#~ msgid "store a personalized calibration"
-#~ msgstr "bewaart een persoonlijke calibratie"
-
-#~ msgid "return a personalized calibration"
-#~ msgstr "geeft terug een gepersonaliseerde calibratie"
-
-#~ msgid "follow"
-#~ msgstr "volg"
-
-#~ msgid "follow a color or calibration"
-#~ msgstr "volg een kluer of een calibratie"
-
-#~ msgid "minimum pixels"
-#~ msgstr "minimum pixels"
-
-#~ msgid "set the minimal number of pixels to follow"
-#~ msgstr "stel een minimum aantal pixels in om te volgen"
-
-#~ msgid "threshold"
-#~ msgstr "drempel"
-
-#~ msgid "set a threshold for a RGB color"
-#~ msgstr "zet de drempel voor een RGB kleur"
-
-#~ msgid "camera mode"
-#~ msgstr "camera modus"
-
-#, fuzzy
-#~ msgid "set the color mode of the camera: RGB; YUV or HSV"
-#~ msgstr "zet kleurmodus van de camera op RGB, YUV of HSV"
-
-#~ msgid "x position"
-#~ msgstr "x positie"
-
-#~ msgid "return x position"
-#~ msgstr "geeft x positie"
-
-#~ msgid "y position"
-#~ msgstr "y positie"
-
-#~ msgid "return y position"
-#~ msgstr "geeft y positie"
-
-#~ msgid "pixels"
-#~ msgstr "pixels"
-
-#~ msgid "return the number of pixels of the biggest blob"
-#~ msgstr "geef terug het aantal pixels van de grootste blob"
-
-#~ msgid "set the color mode of the camera to RGB"
-#~ msgstr "zet kleurmodus van de camera op RGB"
-
-#~ msgid "set the color mode of the camera to YUV"
-#~ msgstr "zet kleurmodus van de camera op YUV"
-
-#~ msgid "set the color mode of the camera to HSV"
-#~ msgstr "zet kleurmodus van de camera op HSV"
-
-#~ msgid "empty calibration"
-#~ msgstr "lege calibratie"
-
-#~ msgid "error in string conversion"
-#~ msgstr "fout in rekst expressie"
-
-#~ msgid "SumBot"
-#~ msgstr "SomBot"
-
-#~ msgid "speed SumBot"
-#~ msgstr "snelheid SomBot"
-
-#~ msgid "submit the speed to the SumBot"
-#~ msgstr "stel in de snelheid naar de SomBot"
-
-#~ msgid "set the default speed for the movement commands"
-#~ msgstr "stel de standaard snelheid voor de beweegcommando's"
-
-#~ msgid "forward SumBot"
-#~ msgstr "stuur door de SomBot"
-
-#~ msgid "move SumBot forward"
-#~ msgstr "verplaats de SomBot voorwaarts"
-
-#~ msgid "backward SumBot"
-#~ msgstr "terug SomBot"
-
-#~ msgid "move SumBot backward"
-#~ msgstr "verplaats SomBot achterwaarts"
-
-#~ msgid "stop SumBot"
-#~ msgstr "stop SomBot"
-
-#~ msgid "stop the SumBot"
-#~ msgstr "stop de SomBot"
-
-#~ msgid "left SumBot"
-#~ msgstr "links SomBot"
-
-#~ msgid "turn left the SumBot"
-#~ msgstr "draai SomBot naar links"
-
-#~ msgid "right SumBot"
-#~ msgstr "rechts SomBot"
-
-#~ msgid "turn right the SumBot"
-#~ msgstr "draai SomBot naar rechts"
-
-#~ msgid "angle to center"
-#~ msgstr "hoek van midden"
-
-#~ msgid "get the angle to the center of the dohyo"
-#~ msgstr "neem de hoek naar het midden van het speelveld"
-
-#~ msgid "angle to Enemy"
-#~ msgstr "hoek naar Vijand"
-
-#~ msgid "get the angle to the Enemy"
-#~ msgstr "neem de afstand tot de Vijand"
-
-#~ msgid "x coor. SumBot"
-#~ msgstr "x coör. SomBot"
-
-#~ msgid "get the x coordinate of the SumBot"
-#~ msgstr "neem de x coördinaat van de Sombot"
-
-#~ msgid "y coor. SumBot"
-#~ msgstr "y coör. SomBot"
-
-#~ msgid "get the y coordinate of the SumBot"
-#~ msgstr "neem de y coördinaat van de Sombot"
-
-#~ msgid "x coor. Enemy"
-#~ msgstr "x coör. Vijand"
-
-#~ msgid "get the x coordinate of the Enemy"
-#~ msgstr "neem de x coördinaat van de Vijand"
-
-#~ msgid "y coor. Enemy"
-#~ msgstr "y coör. Vijand"
-
-#~ msgid "get the y coordinate of the Enemy"
-#~ msgstr "neem de y coördinaat van de Vijand"
-
-#~ msgid "rotation SumBot"
-#~ msgstr "draaiing SomBot"
-
-#~ msgid "get the rotation of the Sumbot"
-#~ msgstr "neem de rotatie van de Sombot"
-
-#~ msgid "rotation Enemy"
-#~ msgstr "draaiing Vijand"
-
-#~ msgid "get the rotation of the Enemy"
-#~ msgstr "neem de rotatie van de Vijand"
-
-#~ msgid "distance to center"
-#~ msgstr "afstand naar het midden"
-
-#~ msgid "get the distance to the center of the dohyo"
-#~ msgstr "neem de afstand tot het midden van het speelveld"
-
-#~ msgid "distance to Enemy"
-#~ msgstr "afstand tot Vijand"
-
-#~ msgid "get the distance to the Enemy"
-#~ msgstr "neem de afstand tot de Vijand"
-
-#~ msgid "update information"
-#~ msgstr "informatie bijwerken"
-
-#~ msgid "update information from the server"
-#~ msgstr "informatie bijwerken van de server"
-
-#~ msgid "Palette of physics blocks"
-#~ msgstr "Palet van fysica blokken"
-
-#~ msgid "start polygon"
-#~ msgstr "start veelhoek"
-
-#~ msgid "Begin defining a new polygon based on the current Turtle xy position."
-#~ msgstr ""
-#~ "Begin definiëren van een nieuwe veelhoek gebaseerd op de huidige xy positie "
-#~ "van het Schildpad."
-
-#~ msgid "add point"
-#~ msgstr "voeg punt toe"
+#~ "geeft de afstand van het voorwerp voor de sensor als een getal tussen 0 "
+#~ "en 255"
 
 #~ msgid ""
-#~ "Add a new point to the current polygon based on the current Turtle xy "
-#~ "position."
+#~ "A Logo-inspired turtle that draws colorful pictures with snap-together "
+#~ "visual programming blocks"
 #~ msgstr ""
-#~ "Voeg een nieuw punt toe aan de huidige veelhoek gebaseerd op deze xy positie "
-#~ "van het Schildpad."
-
-#~ msgid "end polygon"
-#~ msgstr "eind veelhoek"
-
-#~ msgid "Define a new polygon."
-#~ msgstr "Definieer een nieuwe veelhoek."
-
-#~ msgid "end filled polygon"
-#~ msgstr "eind gevulde veelhoek"
-
-#~ msgid "Not a simple polygon"
-#~ msgstr "Geen eenvoudige veelhoek"
-
-#~ msgid "Define a new filled polygon."
-#~ msgstr "Definieer een nieuwe gevulde veelhoek."
-
-#~ msgid "triangle"
-#~ msgstr "driehoek"
-
-#~ msgid "base"
-#~ msgstr "basis"
-
-#~ msgid "Add a triangle object to the project."
-#~ msgstr "Voeg een driehoek voorwerp toe aan het project."
-
-#~ msgid "circle"
-#~ msgstr "cirkel"
-
-#~ msgid "Add a circle object to the project."
-#~ msgstr "Voeg een cirkel voorwerp toe aan het project."
-
-#~ msgid "rectangle"
-#~ msgstr "rechthoek"
-
-#~ msgid "Add a rectangle object to the project."
-#~ msgstr "Voeg een rechthoek voorwerp toe aan het project."
-
-#~ msgid "reset"
-#~ msgstr "reset"
-
-#~ msgid "Reset the project; clear the object list."
-#~ msgstr "Reset het project, schoon de voorwerplijst."
-
-#~ msgid "motor"
-#~ msgstr "motor"
-
-#~ msgid "torque"
-#~ msgstr "koppel"
-
-#~ msgid "speed"
-#~ msgstr "snelheid"
-
-#~ msgid ""
-#~ "Motor torque and speed range from 0 (off) to positive numbers; motor is "
-#~ "placed on the most recent object created."
-#~ msgstr ""
-#~ "Motor koppel en snelheid lopen van 0 (uit) naar positieve getallen; de motor "
-#~ "wordt geplaatst op het meest recent gecreeerde voorwerp."
-
-#~ msgid "pin"
-#~ msgstr "speld"
-
-#~ msgid "Pin an object down so that it cannot fall."
-#~ msgstr "Speld een voorwerp vast zodat het niet kan vallen."
-
-#~ msgid "joint"
-#~ msgstr "gewricht"
-
-#~ msgid ""
-#~ "Join two objects together (the most recent object created and the object at "
-#~ "point x, y)."
-#~ msgstr ""
-#~ "Voeg twee voorwerpen samen (het meest recent aangemaakte en het voorwerp op "
-#~ "punt x, y)."
-
-#~ msgid "save as Physics activity"
-#~ msgstr "bewaar als Natuurkunde activiteit"
-
-#~ msgid "Save the project to the Journal as a Physics activity."
-#~ msgstr "Bewaar het project bij het Dagboek als Natuurkunde activiteit."
-
-#~ msgid "gear"
-#~ msgstr "versnelling"
-
-#~ msgid "Add a gear object to the project."
-#~ msgstr "Voeg een versnelling voorwerp toe aan het project."
-
-#~ msgid "density"
-#~ msgstr "dichtheid"
-
-#~ msgid ""
-#~ "Set the density property for objects (density can be any positive number)."
-#~ msgstr ""
-#~ "Stel de dichtheid eigenschap in voor voorwerpen (dichtheid kan ieder "
-#~ "positief getal zijn)."
-
-#~ msgid "friction"
-#~ msgstr "wrijving"
-
-#~ msgid ""
-#~ "Set the friction property for objects (value from 0 to 1, where 0 turns "
-#~ "friction off and 1 is strong friction)."
-#~ msgstr ""
-#~ "Stel de wrijving eigenschap in voor voorwerpen (waarde 0 tot 1, waar 0 "
-#~ "wrijvingsloos is en 1 sterke wrijving)."
-
-#~ msgid "bounciness"
-#~ msgstr "stuiterbaarheid"
-
-#~ msgid ""
-#~ "Set the bounciness property for objects (a value from 0 to 1, where 0 means "
-#~ "no bounce and 1 is very bouncy)."
-#~ msgstr ""
-#~ "Stel de stuiterbaarheid eigenschap in voor voorwerpen (waarde 0 tot 1, waar "
-#~ "0 stuiterloos is en 1 sterk stuiteren)."
-
-#~ msgid "dynamic"
-#~ msgstr "dynamiek"
-
-#~ msgid ""
-#~ "If dynamic = 1, the object can move; if dynamic = 0, it is fixed in position."
-#~ msgstr ""
-#~ "Als dynamiek = 1, kan het voorwerp bewegen; als dynamiek = 0 , is het op een "
-#~ "vaste positie."
-
-#~ msgid "Palette of WeDo blocks"
-#~ msgstr "Palet van WeDo blokken"
-
-#~ msgid ""
-#~ "tilt sensor output: (-1 == no tilt, 0 == tilt forward, 3 == tilt back, 1 == "
-#~ "tilt left, 2 == tilt right)"
-#~ msgstr ""
-#~ "tilt sensor uitvoer: (-1 == geen tilt, 0 == tilt voorwaarts, 3 == tilt "
-#~ "achterwaarts, 1 == tilt links, 2 == tilt rechts)"
-
-#~ msgid "distance sensor output"
-#~ msgstr "afstand sensor uitvoer"
-
-#~ msgid "Motor A"
-#~ msgstr "Motor A"
-
-#~ msgid "returns the current value of Motor A"
-#~ msgstr "geeft de huidige waarde van Motor A"
-
-#~ msgid "Motor B"
-#~ msgstr "Motor B"
-
-#~ msgid "returns the current value of Motor B"
-#~ msgstr "geeft de huidige waarde van Motor B"
-
-#~ msgid "set the value for Motor A"
-#~ msgstr "zet de waarde voor Motor A"
-
-#~ msgid "set the value for Motor B"
-#~ msgstr "zet de waarde voor Motor B"
-
-#~ msgid "Palette of LEGO NXT blocks of motors"
-#~ msgstr "Palet van LEGO NXT blokken van motoren"
-
-#~ msgid "Palette of LEGO NXT blocks of sensors"
-#~ msgstr "Palet van LEGO NXT blokken van sensors"
-
-#~ msgid "touch"
-#~ msgstr "aanraken"
-
-#~ msgid "ultrasonic"
-#~ msgstr "ultrasoon"
-
-#~ msgid "light"
-#~ msgstr "licht"
+#~ "Een Lgog-geïnspireerd schildpad die kleurrijke plaatjes tekent met "
+#~ "samenklik visueel programmeerblokken."
 
 #, fuzzy
 #~ msgid "grey"
 #~ msgstr "grijs"
 
 #, fuzzy
-#~ msgid "Please check the connection with the brick"
-#~ msgstr "Controleer de verbinding met de baksteen."
-
-#, fuzzy
-#~ msgid "The value of power must be between -127 to 127"
-#~ msgstr "De waarde van macht moet zijn tussen -127 en 127."
-
-#, fuzzy
-#~ msgid "An error has occurred: check all connections and try to reconnect"
-#~ msgstr ""
-#~ "Fout opgetreden controleer alle verbindingen en probeer opnieuw verbinding "
-#~ "te maken."
-
-#~ msgid "NXT not found"
-#~ msgstr "NXT niet gevonden"
-
-#~ msgid "refresh NXT"
-#~ msgstr "ververs NXT"
-
-#~ msgid "Search for a connected NXT brick."
-#~ msgstr "Zoek naar een verbonden NXT steen."
-
-#~ msgid "play tone"
-#~ msgstr "speel toon"
-
-#~ msgid "frequency"
-#~ msgstr "frequentie"
-
-#~ msgid "Play a tone at frequency for time."
-#~ msgstr "Speel een toon op frequrntie gedurende tijd."
-
-#~ msgid "port"
-#~ msgstr "poort"
-
-#~ msgid "power"
-#~ msgstr "macht"
-
-#~ msgid "rotations"
-#~ msgstr "omwentelingen"
-
-#~ msgid "turn a motor"
-#~ msgstr "draai een motor"
-
-#, fuzzy
 #~ msgid ""
-#~ "synchronize\n"
-#~ "\n"
-#~ "motors"
-#~ msgstr "synchroniseer twee motoren"
-
-#~ msgid "synchronize two motors connected in PORT B and PORT C"
-#~ msgstr "synchroniseer twee motoren verbonden met POORT B en POORT C"
-
-#~ msgid "PORT A"
-#~ msgstr "PORT A"
-
-#~ msgid "PORT A of the brick"
-#~ msgstr "PORT A van een steen"
-
-#~ msgid "PORT B"
-#~ msgstr "PORT B"
-
-#~ msgid "PORT B of the brick"
-#~ msgstr "PORT B van een steen"
-
-#~ msgid "PORT C"
-#~ msgstr "PORT C"
-
-#~ msgid "PORT C of the brick"
-#~ msgstr "PORT C van een steen"
-
-#~ msgid "start motor"
-#~ msgstr "start motor"
-
-#~ msgid "Run a motor forever."
-#~ msgstr "Draai motor voor altijd."
-
-#~ msgid "brake motor"
-#~ msgstr "rem motor"
-
-#~ msgid "Stop a specified motor."
-#~ msgstr "Stop een opgegeven motor."
-
-#~ msgid "reset motor"
-#~ msgstr "herstel motor"
-
-#~ msgid "Reset the motor counter."
-#~ msgstr "Herstel motor teller."
-
-#~ msgid "motor position"
-#~ msgstr "motor positie"
-
-#~ msgid "Get the motor position."
-#~ msgstr "Verkrijg de motor positie."
-
-#~ msgid "PORT 1"
-#~ msgstr "PORT 1"
-
-#~ msgid "PORT 1 of the brick"
-#~ msgstr "PORT 1 van de steen"
-
-#~ msgid "read"
-#~ msgstr "lees"
-
-#~ msgid "sensor"
-#~ msgstr "sensor"
-
-#~ msgid "Read sensor output."
-#~ msgstr "Lees sensor uitvier."
-
-#~ msgid "PORT 2"
-#~ msgstr "PORT 2"
-
-#~ msgid "PORT 2 of the brick"
-#~ msgstr "PORT 2 van de steen"
-
-#~ msgid "light sensor"
-#~ msgstr "lichtsensor"
-
-#~ msgid "PORT 3"
-#~ msgstr "PORT 3"
-
-#~ msgid "PORT 3 of the brick"
-#~ msgstr "PORT 3 van de steen"
-
-#~ msgid "touch sensor"
-#~ msgstr "aanraak sensor"
-
-#~ msgid "distance sensor"
-#~ msgstr "afstandsensor"
-
-#~ msgid "PORT 4"
-#~ msgstr "PORT 4"
-
-#~ msgid "PORT 4 of the brick"
-#~ msgstr "PORT 4 van de steen"
-
-#~ msgid "sound sensor"
-#~ msgstr "geluid sensor"
-
-#~ msgid "color sensor"
-#~ msgstr "kleur sensor"
-
-#~ msgid "set light"
-#~ msgstr "zet licht"
-
-#~ msgid "Set color sensor light."
-#~ msgstr "Zet kleur sensor light."
-
-#~ msgid "battery level"
-#~ msgstr "accu niveau"
-
-#, fuzzy
-#~ msgid "Get battery level of the brick"
-#~ msgstr "Lees accuniveau van steen."
-
-#~ msgid "HIGH"
-#~ msgstr "HOOG"
-
-#~ msgid "LOW"
-#~ msgstr "LAAG"
-
-#~ msgid "INPUT"
-#~ msgstr "INVOER"
-
-#~ msgid "OUTPUT"
-#~ msgstr "UITVOER"
-
-#~ msgid "PWM"
-#~ msgstr "PWM"
-
-#~ msgid "SERVO"
-#~ msgstr "SERVO"
-
-#~ msgid "ERROR: Check the Arduino and the number of port."
-#~ msgstr "FOUT: Controleer de Arduino en het nummer van de poort."
-
-#~ msgid "ERROR: Value must be a number from 0 to 255."
-#~ msgstr "FOUT: Waarde moet zijn een getal van 0 tot 255."
-
-#~ msgid "ERROR: Value must be either HIGH or LOW."
-#~ msgstr "FOUT: Waarde moet zijn óf HOOG óf LAAG."
-
-#~ msgid "ERROR: The mode must be either INPUT, OUTPUT, PWM or SERVO."
-#~ msgstr "FOUT: De nodus moet zijn INVOER, UITVOER, PWM of SERVO."
-
-#~ msgid "pin mode"
-#~ msgstr "pin modus"
-
-#~ msgid "mode"
-#~ msgstr "modus"
-
-#~ msgid "Select the pin function (INPUT, OUTPUT, PWM, SERVO)."
-#~ msgstr "Selecteer de pin functie (INVOER, UITVOER, PWM, SERVO)."
-
-#~ msgid "analog write"
-#~ msgstr "analoog schrijven"
-
-#~ msgid "Write analog value in specified port."
-#~ msgstr "Schrijf analoge waarde in aangegeven poort."
-
-#~ msgid "analog read"
-#~ msgstr "analoog lezen"
-
-#~ msgid ""
-#~ "Read value from analog port. Value may be between 0 and 1023. Use Vref to "
-#~ "determine voltage. For USB, volt=((read)*5)/1024) approximately."
-#~ msgstr ""
-#~ "Lees waarde van analoge poort. Waarde mag zijn tussen 0 en 1023. Gebruik "
-#~ "Vref om spanning te bepalen. Voor USB, volt=((lees)*5)/1024) ongeveer."
-
-#~ msgid "digital write"
-#~ msgstr "digitaal schrijven"
-
-#~ msgid "Write digital value to specified port."
-#~ msgstr "Schrijf digitale waarde naar aangegeven poort."
-
-#~ msgid "digital read"
-#~ msgstr "digitaal lezen"
-
-#~ msgid "Read value from digital port."
-#~ msgstr "Lees waarde van digitale poort."
-
-#~ msgid "Set HIGH value for digital port."
-#~ msgstr "Zet HOOG waarde voor digitale poort."
-
-#~ msgid "Configure Arduino port for digital input."
-#~ msgstr "Configureer Arduino poort voor digitale invoer."
-
-#~ msgid "Configure Arduino port to drive a servo."
-#~ msgstr "Configureer Arduino poort om servo te besturen."
-
-#~ msgid "Set LOW value for digital port."
-#~ msgstr "Zet LAAG waarde voor digitale poort."
-
-#~ msgid "Configure Arduino port for digital output."
-#~ msgstr "Configureer Arduino poort voor digitale uitvoer."
-
-#~ msgid "Configure Arduino port for PWM (pulse-width modulation)."
-#~ msgstr "Configureer Arduino poort voor PWM (pulsbreedte modulatie)."
-
-#, fuzzy
-#~ msgid "Palette of Expeyes blocks"
-#~ msgstr "Palet van WeDo blokken"
-
-#, fuzzy
-#~ msgid "samples"
-#~ msgstr "Voorbeelden"
-
-#, fuzzy
-#~ msgid ""
-#~ "set the speed of the Butia motors as a value between 0 and 1023, passed by "
-#~ "an argument"
+#~ "set the speed of the Butia motors as a value between 0 and 1023, passed "
+#~ "by an argument"
 #~ msgstr ""
 #~ "zet de snelheid van de Butia motoren als een waarde tussen 0 en 1023, "
 #~ "doorgegeven als een argument"
@@ -2901,10 +3814,11 @@ msgstr "Project opslaan?"
 
 #, fuzzy
 #~ msgid ""
-#~ "returns the object gray level encountered him as a number between 0 and 1023"
-#~ msgstr ""
-#~ "geeft de waargenomen voorwerp grijswaarde terug als een nummer tussen 0 en "
+#~ "returns the object gray level encountered him as a number between 0 and "
 #~ "1023"
+#~ msgstr ""
+#~ "geeft de waargenomen voorwerp grijswaarde terug als een nummer tussen 0 "
+#~ "en 1023"
 
 #~ msgid "activity count"
 #~ msgstr "aantal activiteiten"
@@ -3008,10 +3922,11 @@ msgstr "Project opslaan?"
 #~ msgid "restore last"
 #~ msgstr "herlaad laatste"
 
-#~ msgid "a programmable block: used to add advanced math equations, e.g., sin(x)"
+#~ msgid ""
+#~ "a programmable block: used to add advanced math equations, e.g., sin(x)"
 #~ msgstr ""
-#~ "een programmeerbaar blok: gebruikt om geavanceerde wisk vergelijkingen toe "
-#~ "te voegen, zoals sin(x)"
+#~ "een programmeerbaar blok: gebruikt om geavanceerde wisk vergelijkingen "
+#~ "toe te voegen, zoals sin(x)"
 
 #~ msgid "blocks"
 #~ msgstr "blokken"
@@ -3024,7 +3939,8 @@ msgstr "Project opslaan?"
 
 #~ msgid "holds current text color (can be used in place of a number block)"
 #~ msgstr ""
-#~ "behoudt deze tekst kleur (kan worden gebruikt in plaats van een nummerblok)"
+#~ "behoudt deze tekst kleur (kan worden gebruikt in plaats van een "
+#~ "nummerblok)"
 
 #~ msgid "picture top"
 #~ msgstr "afbeelding bovenin"
@@ -3070,7 +3986,8 @@ msgstr "Project opslaan?"
 
 #~ msgid "holds current text size (can be used in place of a number block)"
 #~ msgstr ""
-#~ "behoudt deze tekstgrootte (kan worden gebruikt in plaats van een nummerblok)"
+#~ "behoudt deze tekstgrootte (kan worden gebruikt in plaats van een "
+#~ "nummerblok)"
 
 #~ msgid "extras"
 #~ msgstr "extra's"

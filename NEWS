@@ -1,7 +1,12 @@
+175.1
+
+OLPC AU branch
+
 175
 
 ENHANCEMENT:
 * Power management utility: Alan Aguiar
+* Game keys exit fullscreen mode
 
 BUG FIXES:
 * Force audio sensors to use single channel on XO 4

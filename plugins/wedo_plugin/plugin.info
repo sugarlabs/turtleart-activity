@@ -1,0 +1,5 @@
+[Plugin]
+name=wedo_plugin
+palette=wedo
+version=2.2
+
