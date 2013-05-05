@@ -61,7 +61,7 @@ class Turtles:
         else:
             if colors == None:
                 Turtle(self, k)
-            elif type(colors) in [list, tuple]:
+            elif isinstance(colors, (list, tuple)):
                 Turtle(self, k, colors)
             else:
                 Turtle(self, k, colors.split(','))

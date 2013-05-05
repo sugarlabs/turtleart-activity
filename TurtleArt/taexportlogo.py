@@ -83,7 +83,7 @@ def save_logo(tw):
                 skip = False
                 continue
             blk = psuedocode[i]
-            if type(blk) == type((1, 2)):
+            if isinstance(blk, tuple):
                 (blk, _blk_no) = blk
             if blk in logo_commands:
                 logo_command = logo_commands[blk]
@@ -106,7 +106,7 @@ def save_logo(tw):
                 this_stack += logo_command
             else:  # assume it is an argument
                 if not blk in ['nop', 'nop1', 'nop2', 'nop3']:
-                    if type(blk) == str and blk[0:2] == '#s':
+                    if isinstance(blk, str) and blk[0:2] == '#s':
                         this_stack += str(blk[2:]).replace(' ', '_')
                     else:
                         this_stack += str(blk).replace(' ', '_')
@@ -129,8 +129,8 @@ def save_logo(tw):
 
 
 def _add_label(string):
-        if type(string) == str and string[0:8] in ['#smedia_', '#saudio_',
-                                                   '#svideo_', '#sdescr_']:
+        if isinstance(string, str) and string[0:8] in ['#smedia_', '#saudio_',
+                                                       '#svideo_', '#sdescr_']:
             string = string[8:]
             if HAS_DATASTORE:
                 dsobject = datastore.get(string[8:])
@@ -148,28 +148,28 @@ def _add_label(string):
 
 
 def _add_named_stack(action):
-        if type(action) == str and action[0:2] == '#s':
+        if isinstance(action, str) and action[0:2] == '#s':
             return 'to %s\n' % (str(action[2:]).replace(' ', '_'))
         else:
             return 'to %s\n' % (str(action).replace(' ', '_'))
 
 
 def _add_reference_to_stack(action):
-        if type(action) == str and action[0:2] == '#s':
+        if isinstance(action, str) and action[0:2] == '#s':
             return '%s' % (str(action[2:]).replace(' ', '_'))
         else:
             return '%s' % (str(action).replace(' ', '_'))
 
 
 def _add_named_box(box_name):
-        if type(box_name) == str and box_name[0:2] == '#s':
+        if isinstance(box_name, str) and box_name[0:2] == '#s':
             return 'make "%s' % (str(box_name[2:]).replace(' ', '_'))
         else:
             return 'make "%s' % (str(box_name).replace(' ', '_'))
 
 
 def _add_reference_to_box(box_name):
-        if type(box_name) == str and box_name[0:2] == '#s':
+        if isinstance(box_name, str) and box_name[0:2] == '#s':
             return ':%s' % (str(box_name[2:]).replace(' ', '_'))
         else:
             return ':%s' % (str(box_name).replace(' ', '_'))

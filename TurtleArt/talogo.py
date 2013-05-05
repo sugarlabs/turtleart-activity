@@ -124,7 +124,6 @@ class LogoCode:
                 self.def_prim(p, DEFPRIM[p][0], DEFPRIM[p][1], DEFPRIM[p][2])
 
         self.symtype = type(self._intern('print'))
-        self.listtype = type([])
         self.symnothing = self._intern('%nothing%')
         self.symopar = self._intern('(')
         self.iline = None
@@ -248,7 +247,7 @@ class LogoCode:
                         self.tw.showblocks()
                         self.tw.running_blocks = False
                         return None
-                    if type(convert(x, float, False)) == float:
+                    if isinstance(convert(x, float, False), float):
                         if int(float(x)) == x:
                             x = int(x)
                     self.stacks['stack3' + str(x)] = self._readline(code)
@@ -291,8 +290,7 @@ class LogoCode:
                     code.append(float(ord(blk.values[0][0])))
             elif blk.name == 'string' or \
                  blk.name == 'title':  # deprecated block
-                if type(blk.values[0]) == float or \
-                   type(blk.values[0]) == int:
+                if isinstance(blk.values[0], (float, int)):
                     if int(blk.values[0]) == blk.values[0]:
                         blk.values[0] = int(blk.values[0])
                     code.append('#s' + str(blk.values[0]))
@@ -342,7 +340,7 @@ class LogoCode:
         while line:
             token = line.pop(0)
             bindex = None
-            if type(token) == tuple:
+            if isinstance(token, tuple):
                 (token, bindex) = token
             if isNumberType(token):
                 res.append(token)
@@ -358,7 +356,7 @@ class LogoCode:
                 res.append(self._readline(line))
             elif token == ']':
                 return res
-            elif bindex is None or type(bindex) is not int:
+            elif bindex is None or not isinstance(bindex, int):
                 res.append(self._intern(token))
             else:
                 res.append((self._intern(token), bindex))
@@ -406,7 +404,7 @@ class LogoCode:
         while self.iline:
             token = self.iline[0]
             self.bindex = None
-            if type(token) == tuple:
+            if isinstance(token, tuple):
                 (token, self.bindex) = self.iline[0]
 
             # If the blocks are visible, highlight the current block.
@@ -425,7 +423,7 @@ class LogoCode:
             # 'Stand-alone' booleans are handled here.
             if token == self.symopar:
                 token = self.iline[1]
-                if type(token) == tuple:
+                if isinstance(token, tuple):
                     (token, self.bindex) = self.iline[1]
 
             # Process the token and any arguments.
@@ -456,11 +454,11 @@ class LogoCode:
         """ Evaluate the next token on the line of code we are processing. """
         token = self.iline.pop(0)
         bindex = None
-        if type(token) == tuple:
+        if isinstance(token, tuple):
             (token, bindex) = token
 
         # Either we are processing a symbol or a value.
-        if type(token) == self.symtype:
+        if isinstance(token, self.symtype):
             # We highlight blocks here in case an error occurs...
             if not self.tw.hide and bindex is not None:
                 self.tw.block_list.list[bindex].highlight()
@@ -492,7 +490,7 @@ class LogoCode:
             yield True
             self.arglist.append(self.iresult)
         if self.cfun.rprim:
-            if type(self.cfun.fcn) == self.listtype:
+            if isinstance(self.cfun.fcn, list):
                 # debug_output('evalsym rprim list: %s' % (str(token)),
                 #              self.tw.running_sugar)
                 self.icall(self._ufuncall, self.cfun.fcn)
@@ -588,7 +586,7 @@ class LogoCode:
 
     def _prim_define(self, name, body):
         """ Define a primitive """
-        if type(name) is not self.symtype:
+        if not isinstance(name, self.symtype):
             name = self._intern(name)
         name.nargs, name.fcn = 0, body
         name.rprim = True
@@ -613,11 +611,11 @@ class LogoCode:
 
     def int(self, n):
         """ Raise an error if n doesn't convert to int. """
-        if type(n) == int:
+        if isinstance(n, int):
             return n
-        elif type(n) == float:
+        elif isinstance(n, float):
             return int(n)
-        elif type(n) == str:
+        elif isinstance(n, str):
             return int(ord(n[0]))
         else:
             self.tw.showblocks()
@@ -655,7 +653,7 @@ class LogoCode:
                 else:
                     block.resize()
         elif self.update_values:
-            if type(value) == float:
+            if isinstance(value, float):
                 valstring = str(round_int(value)).replace('.',
                     self.tw.decimal_point)
             else:

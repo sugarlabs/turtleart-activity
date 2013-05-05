@@ -496,12 +496,12 @@ class TurtleMain():
         save_type = '.lg'
         filename, self.tw.load_save_folder = get_save_name(save_type,
                       self.tw.load_save_folder, 'logosession')
-        if type(filename) == unicode:
-            f = file(filename.encode('ascii', 'replace'), 'w')
-        else:
+        if isinstance(filename, unicode):
+            filename = filename.encode('ascii', 'replace')
+        if filename is not None:
             f = file(filename, 'w')
-        f.write(logocode)
-        f.close()
+            f.write(logocode)
+            f.close()
 
     def _do_resize_cb(self, widget, factor):
         ''' Callback to resize blocks. '''

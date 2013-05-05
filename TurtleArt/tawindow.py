@@ -101,7 +101,7 @@ class TurtleArtWindow():
         self.gst_available = GST_AVAILABLE
         self.running_sugar = False
         self.nick = None
-        if type(canvas_window) == gtk.DrawingArea:
+        if isinstance(canvas_window, gtk.DrawingArea):
             self.interactive_mode = True
             self.window = canvas_window
             self.window.set_flags(gtk.CAN_FOCUS)
@@ -1412,13 +1412,13 @@ before making changes to your Turtle Blocks program'))
                         # First look for a hat with _('action') as its label
                         found_the_action_block = False
                         bname = _('action')
-                        if type(bname) == unicode:
+                        if isinstance(bname, unicode):
                             bname = bname.encode('ascii', 'replace')
                         for sblk in similars:
                             cblk = sblk.connections[1]
                             if cblk is not None:
                                 blabel = cblk.spr.labels[0]
-                                if type(blabel) == unicode:
+                                if isinstance(blabel, unicode):
                                     blabel = blabel.encode('ascii', 'replace')
                                 if bname == blabel:
                                     found_the_action_block = True
@@ -1547,9 +1547,9 @@ before making changes to your Turtle Blocks program'))
 
     def _update_action_names(self, name):
         ''' change the label on action blocks of the same name '''
-        if type(name) in [float, int]:
+        if isinstance(name, (float, int)):
             return
-        if type(name) == 'unicode':
+        if isinstance(name, unicode):
             name = name.encode('ascii', 'replace')
         for blk in self.just_blocks():
             if self._action_name(blk, hat=False):
@@ -1565,9 +1565,9 @@ before making changes to your Turtle Blocks program'))
 
     def _update_box_names(self, name):
         ''' change the label on box blocks of the same name '''
-        if type(name) in [float, int]:
+        if isinstance(name, (float, int)):
             return
-        if type(name) == 'unicode':
+        if isinstance(name, unicode):
             name = name.encode('ascii', 'replace')
         for blk in self.just_blocks():
             if self._box_name(blk, storein=False):
@@ -1583,9 +1583,9 @@ before making changes to your Turtle Blocks program'))
 
     def _update_storein_names(self, name):
         ''' change the label on storin blocks of the same name '''
-        if type(name) in [float, int]:
+        if isinstance(name, (float, int)):
             return
-        if type(name) == 'unicode':
+        if isinstance(name, unicode):
             name = name.encode('ascii', 'replace')
         for blk in self.just_blocks():
             if self._box_name(blk, storein=True):
@@ -1608,11 +1608,11 @@ before making changes to your Turtle Blocks program'))
         # (2) The list of block styles
         # (3) The list of proto blocks on the palette
         # (4) The list of block names
-        if type(name) == unicode:
+        if isinstance(name, unicode):
             name = name.encode('ascii', 'replace')
-        if type(old) == unicode:
+        if isinstance(old, unicode):
             old = old.encode('ascii', 'replace')
-        if type(new) == unicode:
+        if isinstance(new, unicode):
             new = new.encode('ascii', 'replace')
 
         if old == new:
@@ -1951,11 +1951,11 @@ before making changes to your Turtle Blocks program'))
                 if argname == 'media':
                     argname = 'journal'
                 elif argname == 'number' and \
-                     (type(argvalue) is str or type(argvalue) is unicode):
+                     isinstance(argvalue, (str, unicode)):
                     argname = 'string'
                 elif argname == 'string' and \
                      name in block_styles['number-style-1strarg'] and \
-                     type(argvalue) in [int, float]:
+                     isinstance(argvalue, (float, int)):
                     argname = 'number'
                 elif argname == 'bool':
                     argname = argvalue
@@ -3536,7 +3536,7 @@ may not terminate.', False)
         if blk[1] == 'turtle':
             self.load_turtle(blk)
             return True
-        elif type(blk[1]) in [list, tuple] and blk[1][0] == 'turtle':
+        elif isinstance(blk[1], (list, tuple)) and blk[1][0] == 'turtle':
             if blk[1][1] == DEFAULT_TURTLE:
                 if self.nick is not None and self.nick is not '':
                     self.load_turtle(blk, self.nick)
@@ -3565,9 +3565,9 @@ may not terminate.', False)
         # A block is saved as: (i, (btype, value), x, y, (c0,... cn))
         # The x, y position is saved/loaded for backward compatibility
         btype, value = b[1], None
-        if type(btype) == tuple:
+        if isinstance(btype, tuple):
             btype, value = btype
-        elif type(btype) == list:
+        elif isinstance(btype, list):
             btype, value = btype[0], btype[1]
 
         # Replace deprecated sandwich blocks
@@ -3703,7 +3703,7 @@ may not terminate.', False)
                     self.set_userdefined(blk)
         if btype == 'string' and blk.spr is not None:
             value = blk.values[0]
-            if type(value) == unicode:
+            if isinstance(value, unicode):
                 value = value.encode('ascii', 'replace')
             blk.spr.set_label(value.replace('\n', RETURN))
         elif btype == 'start':  # block size is saved in start block
@@ -3768,7 +3768,7 @@ may not terminate.', False)
                     blk.expand_in_x(value)
             elif btype in EXPANDABLE_FLOW:
                 if value is not None:
-                    if type(value) is int:
+                    if isinstance(value, int):
                         blk.expand_in_y(value)
                     else:  # thenelse blocks
                         blk.expand_in_y(value[0])
@@ -3924,8 +3924,8 @@ may not terminate.', False)
                 else:
                     formatting = '%s — %s: %0.2f %s: %0.2f %s: %0.2f'
                 self.parent.set_title(
-                    formatting % (_('Turtle Art'), _('xcor'), x, _('ycor'), y,
-                                  _('heading'), h))
+                    formatting % (self.activity.name, _('xcor'), x,
+                                  _('ycor'), y, _('heading'), h))
         self.update_counter = 0
 
     def showlabel(self, shp, label=''):
@@ -4156,16 +4156,16 @@ may not terminate.', False)
 
     def _find_proto_name(self, name, label, palette='blocks'):
         ''' Look for a protoblock with this name '''
-        if type(name) == unicode:
+        if isinstance(name, unicode):
             name = name.encode('ascii', 'replace')
-        if type(label) == unicode:
+        if isinstance(label, unicode):
             label = label.encode('ascii', 'replace')
         i = palette_name_to_index(palette)
         for blk in self.palettes[i]:
             blk_label = blk.spr.labels[0]
-            if type(blk.name) == unicode:
+            if isinstance(blk.name, unicode):
                 blk.name = blk.name.encode('ascii', 'replace')
-            if type(blk_label) == unicode:
+            if isinstance(blk_label, unicode):
                 blk_label = blk_label.encode('ascii', 'replace')
             if blk.name == name and blk_label == label:
                 return True
@@ -4178,9 +4178,9 @@ may not terminate.', False)
 
     def _new_stack_block(self, name):
         ''' Add a stack block to the 'blocks' palette '''
-        if type(name) in [float, int]:
+        if isinstance(name, (float, int)):
             return
-        if type(name) == unicode:
+        if isinstance(name, unicode):
             name = name.encode('ascii', 'replace')
         if name == _('action'):
             return
@@ -4205,9 +4205,9 @@ may not terminate.', False)
 
     def _new_box_block(self, name):
         ''' Add a box block to the 'blocks' palette '''
-        if type(name) in [float, int]:
+        if isinstance(name, (float, int)):
             return
-        if type(name) == unicode:
+        if isinstance(name, unicode):
             name = name.encode('ascii', 'replace')
         if name == _('my box'):
             return
@@ -4233,9 +4233,9 @@ may not terminate.', False)
 
     def _new_storein_block(self, name):
         ''' Add a storin block to the 'blocks' palette '''
-        if type(name) in [float, int]:
+        if isinstance(name, (float, int)):
             return
-        if type(name) == unicode:
+        if isinstance(name, unicode):
             name = name.encode('ascii', 'replace')
         if name == _('my box'):
             return
@@ -4263,7 +4263,7 @@ variable'))
 
     def _prim_stack(self, x):
         ''' Process a named stack '''
-        if type(convert(x, float, False)) == float:
+        if isinstance(convert(x, float, False), float):
             if int(float(x)) == x:
                 x = int(x)
         if 'stack3' + str(x) not in self.lc.stacks or \
@@ -4278,7 +4278,7 @@ variable'))
 
     def _prim_box(self, x):
         ''' Retrieve value from named box '''
-        if type(convert(x, float, False)) == float:
+        if isinstance(convert(x, float, False), float):
             if int(float(x)) == x:
                 x = int(x)
         try:
@@ -4289,7 +4289,7 @@ variable'))
     def _prim_setbox(self, name, x, val):
         """ Define value of named box """
         if x is not None:
-            if type(convert(x, float, False)) == float:
+            if isinstance(convert(x, float, False), float):
                 if int(float(x)) == x:
                     x = int(x)
             self.lc.boxes[name + str(x)] = val

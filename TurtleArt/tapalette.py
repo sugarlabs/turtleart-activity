@@ -138,7 +138,7 @@ class Palette():
         else:
             i = len(palette_names)
 
-        if position is not None and type(position) is int and position < i:
+        if position is not None and isinstance(position, int) and position < i:
             i = position
 
         if self._name not in palette_names:
@@ -193,7 +193,7 @@ class Palette():
             if not hidden: 
                 first_arg = None
                 if special_name is None:
-                    if type(label) == list:
+                    if isinstance(label, list):
                         first_arg = label[0]
                     else:
                         first_arg = label
@@ -294,7 +294,7 @@ class Block():
                 debug_output('%s already in palette %s, skipping...' % (
                         self._name, self._palette))
             else:
-                if position is not None and type(position) is int and \
+                if position is not None and isinstance(position, int) and \
                         position < len(palette_blocks[i]):
                     palette_blocks[i].insert(position, self._name)
                 else:
@@ -365,13 +365,13 @@ class Block():
         self._special_name = name
 
     def set_label(self, label):
-        if type(label) == type([]):
+        if isinstance(label, list):
             self._label = label[:]
         else:
             self._label = [label]
 
     def set_default(self, default):
-        if type(default) == type([]):
+        if isinstance(default, list):
             self._default = default[:]
         else:
             self._default = [default]

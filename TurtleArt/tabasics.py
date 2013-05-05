@@ -79,11 +79,7 @@ def _color_to_num(c):
 
 def _num_type(x):
     """ Is x a number type? """
-    if type(x) == int:
-        return True
-    if type(x) == float:
-        return True
-    if type(x) == ord:
+    if isinstance(x, (int, float, ord)):
         return True
     return False
 
@@ -1028,7 +1024,7 @@ variable'))
 
     def _prim_box(self, x):
         """ Retrieve value from named box """
-        if type(convert(x, float, False)) == float:
+        if isinstance(convert(x, float, False), float):
             if int(float(x)) == x:
                 x = int(x)
         try:
@@ -1120,7 +1116,7 @@ variable'))
     def _prim_setbox(self, name, x, val):
         """ Define value of named box """
         if x is not None:
-            if type(convert(x, float, False)) == float:
+            if isinstance(convert(x, float, False), float):
                 if int(float(x)) == x:
                     x = int(x)
             self.tw.lc.boxes[name + str(x)] = val
@@ -1133,7 +1129,7 @@ variable'))
 
     def _prim_stack(self, x):
         """ Process a named stack """
-        if type(convert(x, float, False)) == float:
+        if isinstance(convert(x, float, False), float):
             if int(float(x)) == x:
                 x = int(x)
         if 'stack3' + str(x) not in self.tw.lc.stacks or \
@@ -1191,7 +1187,7 @@ variable'))
 
     def _prim_careful_divide(self, x, y):
         """ Raise error on divide by zero """
-        if type(x) == list and _num_type(y):
+        if isinstance(x, list) and _num_type(y):
             z = []
             for i in range(len(x)):
                 try:
@@ -1215,7 +1211,7 @@ variable'))
 
     def _prim_equal(self, x, y):
         """ Numeric and logical equal """
-        if type(x) == list and type(y) == list:
+        if isinstance(x, list) and isinstance(y, list):
             for i in range(len(x)):
                 if x[i] != y[i]:
                     return False
@@ -1237,7 +1233,7 @@ variable'))
 
     def _prim_less(self, x, y):
         """ Compare numbers and strings """
-        if type(x) == list or type(y) == list:
+        if isinstance(x, list) or isinstance(y, list):
             raise logoerror("#syntaxerror")
         try:
             return float(x) < float(y)
@@ -1266,7 +1262,7 @@ variable'))
             y = _color_to_num(y)
         if _num_type(x) and _num_type(y):
             return(x + y)
-        elif type(x) == list and type(y) == list:
+        elif isinstance(x, list) and isinstance(y, list):
             z = []
             for i in range(len(x)):
                 z.append(x[i] + y[i])
@@ -1286,7 +1282,7 @@ variable'))
         """ Numerical subtraction """
         if _num_type(x) and _num_type(y):
             return(x - y)
-        elif type(x) == list and type(y) == list:
+        elif isinstance(x, list) and isinstance(y, list):
             z = []
             for i in range(len(x)):
                 z.append(x[i] - y[i])
@@ -1300,12 +1296,12 @@ variable'))
         """ Numerical multiplication """
         if _num_type(x) and _num_type(y):
             return(x * y)
-        elif type(x) == list and _num_type(y):
+        elif isinstance(x, list) and _num_type(y):
             z = []
             for i in range(len(x)):
                 z.append(x[i] * y)
             return(z)
-        elif type(y) == list and _num_type(x):
+        elif isinstance(y, list) and _num_type(x):
             z = []
             for i in range(len(y)):
                 z.append(y[i] * x)
@@ -1364,18 +1360,16 @@ variable'))
 
     def _string_to_num(self, x):
         """ Try to comvert a string to a number """
-        if type(x) is float:
+        if isinstance(x, (int, float)):
             return(x)
-        if type(x) is int:
-            return(x)
-        if type(x) is ord:
+        if isinstance(x, ord):
             return(int(x))
-        if type(x) is list:
+        if isinstance(x, list):
             raise logoerror("#syntaxerror")
         if x in COLORDICT:
             return _color_to_num(x)
         xx = convert(x.replace(self.tw.decimal_point, '.'), float)
-        if type(xx) is float:
+        if isinstance(xx, float):
             return xx
         else:
             xx, xflag = chr_to_ord(x)

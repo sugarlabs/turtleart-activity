@@ -113,7 +113,7 @@ class Blocks:
 
     def get_similar_blocks(self, block_type, name):
         block_list = []
-        if type(name) == type(''):
+        if isinstance(name, str):
             for block in self.list:
                 if block.type == block_type and block.name == name:
                     block_list.append(block)
@@ -530,7 +530,7 @@ class Block:
     def _set_label_attributes(self):
         if self.spr is None:
             return
-        if type(self.name) == unicode:
+        if isinstance(self.name, unicode):
             self.name = self.name.encode('ascii', 'replace')
         if self.name in content_blocks:
             n = len(self.values)
@@ -611,11 +611,11 @@ class Block:
         self._bottom = 0
         self.svg.set_stroke_width(STANDARD_STROKE_WIDTH)
         self.svg.clear_docks()
-        if type(self.name) == unicode:
+        if isinstance(self.name, unicode):
             self.name = self.name.encode('ascii', 'replace')
         for k in block_styles.keys():
             if self.name in block_styles[k]:
-                if type(self.block_methods[k]) == type([]):
+                if isinstance(self.block_methods[k], list):
                     self.block_methods[k][0](svg, self.block_methods[k][1],
                                              self.block_methods[k][2])
                 else:

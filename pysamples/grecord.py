@@ -202,7 +202,7 @@ def myblock(tw, arg):
         tw.grecord = Grecord(tw)
 
     # Sometime we need to parse multiple arguments, e.g., save, savename
-    save_name = _('Turtle Art') + ' ' + _('sound')
+    save_name = '%s_%s' % (tw.activity.name, _('sound'))
     if type(arg) == type([]):
         cmd = arg[0].lower()
         if len(arg) > 1:

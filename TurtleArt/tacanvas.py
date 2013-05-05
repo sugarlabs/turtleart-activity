@@ -619,9 +619,9 @@ class TurtleGraphics:
             fd = pango.FontDescription('Sans')
             fd.set_size(int(size * scale) * pango.SCALE)
             pl.set_font_description(fd)
-            if type(label) == str or type(label) == unicode:
+            if isinstance(label, (str, unicode)):
                 pl.set_text(label.replace('\0', ' '))
-            elif type(label) == float or type(label) == int:
+            elif isinstance(label, (float, int)):
                 pl.set_text(str(label))
             else:
                 pl.set_text(str(label))

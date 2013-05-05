@@ -268,7 +268,7 @@ class Sprite:
     def set_label(self, new_label, i=0):
         ''' Set the label drawn on the sprite '''
         self._extend_labels_array(i)
-        if type(new_label) is str or type(new_label) is unicode:
+        if isinstance(new_label, (str, unicode)):
             # pango doesn't like nulls
             self.labels[i] = new_label.replace("\0", " ")
         else:

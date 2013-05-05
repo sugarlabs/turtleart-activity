@@ -110,9 +110,7 @@ def chr_to_ord(x):
 
 def strtype(x):
     ''' Is x a string type? '''
-    if type(x) == str:
-        return True
-    if type(x) == unicode:
+    if isinstance(x, (str, unicode)):
         return True
     return False
 
@@ -174,7 +172,7 @@ def json_load(text):
 
 def _tuplify(tup):
     ''' Convert to tuples '''
-    if type(tup) is not list:
+    if not isinstance(tup, list):
         return tup
     return tuple(map(_tuplify, tup))
 
@@ -268,9 +266,9 @@ def data_from_file(ta_file):
 
 def data_from_string(text):
     ''' JSON load data from a string. '''
-    if type(text) == str:
+    if isinstance(text, str):
         return json_load(text.replace(']],\n', ']], '))
-    elif type(text) == unicode:
+    elif isinstance(text, unicode):
         text = text.encode('ascii', 'replace')
         return json_load(text.replace(']],\n', ']], '))
     else:
@@ -314,7 +312,7 @@ def save_picture(canvas, file_name):
     cr = cairo.Context(img_surface)
     cr.set_source_surface(x_surface)
     cr.paint()
-    if type(file_name) == unicode:
+    if isinstance(file_name, unicode):
         img_surface.write_to_png(str(file_name.encode('ascii', 'replace')))
     else:
         img_surface.write_to_png(str(file_name))
@@ -523,7 +521,7 @@ def show_button_hit(spr, x, y):
 
 def numeric_arg(value):
     ''' Dock test: looking for a numeric value '''
-    if type(convert(value, float)) is float:
+    if isinstance(convert(value, float), float):
         return True
     return False
 
@@ -699,7 +697,7 @@ def find_blk_below(blk, namelist):
     ''' Find a specific block below this block. '''
     if blk == None or len(blk.connections) == 0:
         return
-    if type(namelist) != list:
+    if not isinstance(namelist, list):
         namelist = [namelist]
     group = find_group(blk)
     for gblk in group:
