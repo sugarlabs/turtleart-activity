@@ -30,6 +30,7 @@ import getopt
 import sys
 import os
 import os.path
+import glob
 import cStringIO
 import errno
 import ConfigParser
@@ -48,10 +49,12 @@ sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 import gettext
 
 from TurtleArt.taconstants import (OVERLAY_LAYER, DEFAULT_TURTLE_COLORS,
-                                  TAB_LAYER, SUFFIX)
-from TurtleArt.tautils import (data_to_string, data_from_string, get_save_name)
+                                  TAB_LAYER, SUFFIX, MACROS)
+from TurtleArt.tautils import (data_to_string, data_from_string, listify,
+                               data_from_file, get_save_name, hat_on_top)
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
+from TurtleArt.tapalette import make_palette
 
 from util.menubuilder import MenuBuilder
 
@@ -63,6 +66,7 @@ class TurtleMain():
         '/usr/local/share/sugar/activities/TurtleArt.activity'
     _ICON_SUBPATH = 'images/turtle.png'
     _GNOME_PLUGIN_SUBPATH = 'gnome_plugins'
+    _MACROS_SUBPATH = 'macros'
 
     def __init__(self):
         self._abspath = os.path.abspath('.')
@@ -105,6 +109,7 @@ class TurtleMain():
             self._init_gnome_plugins()
             self._setup_gtk()
             self._build_window()
+            self._load_user_macros()
             self._run_gnome_plugins()
             self._start_gtk()
 
@@ -166,6 +171,37 @@ class TurtleMain():
         if not exists(dpath):
             makedirs(dpath)
 
+    def _load_user_macros(self):
+        ''' User-defined macros are saved as a json-encoded file;
+        these get loaded into a palette on startup '''
+        macros_path = os.path.join(self._execdirname, self._MACROS_SUBPATH)
+        self.tw.macros_path = macros_path
+        if os.path.exists(macros_path):
+            files = glob.glob(os.path.join(macros_path, '*.tb'))
+            print 'creating macros palette'
+            if len(files) > 0:
+                palette = make_palette('macros',
+                                       colors=["#FFC000", "#A08000"],
+                                       help_string=\
+_('Palette of user-defined operators'))
+
+            for tafile in files:
+                data = data_from_file(tafile)
+                name = os.path.basename(tafile)[:-3]
+                print 'loading macro %s' % (name)
+                MACROS['user-defined-' + name] = hat_on_top(listify(data))
+                palette.add_block('user-defined-' + name,
+                                  style='basic-style-extended-vertical',
+                                  label=name)
+
+    def _do_save_macro_cb(self, widget):
+        if self.saving_macro:
+            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+            self.tw.saving_macro = False
+        else:
+            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+            self.tw.saving_macro = True
+
     def _start_gtk(self):
         ''' Get a main window set up. '''
         self.win.connect('configure_event', self.tw.update_overlay_position)
@@ -216,6 +252,7 @@ class TurtleMain():
         self.current_palette = 0
         self.scale = 2.0
         self.tw = None
+        self.saving_macro = False
         self.init_complete = False
 
     def _parse_command_line(self):
@@ -385,6 +422,8 @@ class TurtleMain():
         menu = gtk.Menu()
         MenuBuilder.make_menu_item(menu, _('Copy'), self._do_copy_cb)
         MenuBuilder.make_menu_item(menu, _('Paste'), self._do_paste_cb)
+        MenuBuilder.make_menu_item(menu, _('Save stack'),
+                                   self._do_save_macro_cb)
         edit_menu = MenuBuilder.make_sub_menu(menu, _('Edit'))
 
         menu = gtk.Menu()

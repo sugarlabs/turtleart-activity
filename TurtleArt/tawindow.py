@@ -40,7 +40,9 @@ except ImportError:
 
 import os
 import subprocess
+import errno
 
+from random import uniform
 from math import atan2, pi
 DEGTOR = 2 * pi / 360
 
@@ -68,7 +70,7 @@ from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
     calc_image_size, get_path, hide_button_hit, show_button_hit, chooser,
     arithmetic_check, xy, find_block_to_run, find_top_block, journal_check,
     find_group, find_blk_below, data_to_string, find_start_stack,
-    get_hardware, debug_output, error_output, convert,
+    get_hardware, debug_output, error_output, convert, find_hat,
     find_bot_block, restore_clamp, collapse_clamp, data_from_string,
     increment_name, get_screen_dpi)
 from tasprite_factory import (SVG, svg_str_to_pixbuf, svg_from_file)
@@ -142,6 +144,8 @@ class TurtleArtWindow():
         self.mouse_y = 0
         self.update_counter = 0
         self.running_blocks = False
+        self.saving_macro = False
+        self.macros_path = ''
 
         try:
             locale.setlocale(locale.LC_NUMERIC, '')
@@ -1862,6 +1866,34 @@ before making changes to your Turtle Blocks program'))
             for blk in self.drag_group:
                 if blk.status != 'collapsed':
                     blk.spr.set_layer(TOP_LAYER)
+            if self.saving_macro:
+                for blk in self.drag_group:
+                    if blk.status != 'collapsed':
+                        blk.highlight()
+                self.block_operation = 'copying'
+                data = self.assemble_data_to_save(False, False)
+                i = find_hat(data)
+                if i is not None and data[i][4][1] is not None:
+                    try:
+                        name = str(data[data[i][4][1]][1][1])
+                    except:
+                        name = 'macro%d' % (int(uniform(0, 10000)))
+                    debug_output('saving macro %s' % (name),
+                                 self.running_sugar)
+                    if not os.path.exists(self.macros_path):
+                        try:
+                            os.makedirs(self.macros_path)
+                        except OSError, exc:
+                            if exc.errno == errno.EEXIST:
+                                pass
+                            else:
+                                raise
+                    data_to_file(data, os.path.join(self.macros_path,
+                                                    '%s.tb' % (name)))
+                self.parent.get_window().set_cursor(
+                    gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+                self.saving_macro = False
+
             if self.running_sugar and \
                (self.activity.copying or self.activity.sharing_blocks):
                 for blk in self.drag_group:
