@@ -81,11 +81,7 @@ def _num_type(x):
     """ Is x a number type? """
     if isinstance(x, (int, float)):
         return True
-    try:
-        ord(x)
-        return True
-    except TypeError:
-        return False
+    return False
 
 
 def _millisecond():
