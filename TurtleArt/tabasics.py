@@ -79,9 +79,13 @@ def _color_to_num(c):
 
 def _num_type(x):
     """ Is x a number type? """
-    if isinstance(x, (int, float, ord)):
+    if isinstance(x, (int, float)):
         return True
-    return False
+    try:
+        ord(x)
+        return True
+    finally:
+        return False
 
 
 def _millisecond():
@@ -1362,8 +1366,10 @@ variable'))
         """ Try to comvert a string to a number """
         if isinstance(x, (int, float)):
             return(x)
-        if isinstance(x, ord):
-            return(int(x))
+        try:
+            return int(ord(x))
+        finally:
+            pass
         if isinstance(x, list):
             raise logoerror("#syntaxerror")
         if x in COLORDICT:
