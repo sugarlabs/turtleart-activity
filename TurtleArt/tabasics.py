@@ -84,7 +84,7 @@ def _num_type(x):
     try:
         ord(x)
         return True
-    finally:
+    except TypeError:
         return False
 
 
@@ -1368,7 +1368,7 @@ variable'))
             return(x)
         try:
             return int(ord(x))
-        finally:
+        except TypeError:
             pass
         if isinstance(x, list):
             raise logoerror("#syntaxerror")
