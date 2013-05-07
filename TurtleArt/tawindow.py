@@ -117,7 +117,7 @@ class TurtleArtWindow():
                 self.macros_path = os.path.join(
                     get_path(parent, 'data'), self._MACROS_SUBPATH)
             else:
-                self.macros_path = os.path.join(self.path, self._MACROS_SUBPATH)
+                self.macros_path = os.path.join(path, self._MACROS_SUBPATH)
             self._setup_events()
         else:
             self.interactive_mode = False
