@@ -621,6 +621,8 @@ class TurtleArtActivity(activity.Activity):
                          edit_toolbar, '<Ctrl>v')
         self._add_button('edit-undo', _('Restore blocks from trash'),
                          self._undo_cb, edit_toolbar)
+        self._add_button('save-macro', _('Save stack'), self._save_macro_cb,
+                         edit_toolbar)
 
         self._add_button('view-fullscreen', _('Fullscreen'),
                          self.do_fullscreen_cb, self._view_toolbar,
@@ -766,6 +768,7 @@ class TurtleArtActivity(activity.Activity):
         add_section(help_box, _('Edit'), icon='toolbar-edit')
         add_paragraph(help_box, _('Copy'), icon='edit-copy')
         add_paragraph(help_box, _('Paste'), icon='edit-paste')
+        add_paragraph(help_box, _('Save stack'), icon='save-macro')
 
         help_box = gtk.VBox()
         help_box.set_homogeneous(False)
@@ -1089,6 +1092,7 @@ class TurtleArtActivity(activity.Activity):
             self._old_cursor = None
         self.copying = False
         self.sharing_blocks = False
+        self.tw.saving_macro = False
 
     def _setup_sharing(self):
         ''' Setup the Collabora stack. '''
@@ -1351,9 +1355,22 @@ in order to use the plugin.'))
     def _copy_cb(self, button):
         ''' Copy to the clipboard. '''
         if self.copying:
+            self.copying = False
             self.restore_cursor()
         else:
             self.copying = True
+            if hasattr(self, 'get_window'):
+                if hasattr(self.get_window(), 'get_cursor'):
+                    self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+
+    def _save_macro_cb(self, button):
+        ''' Save stack macros_path '''
+        if self.tw.saving_macro:
+            self.tw.saving_macro = False
+            self.restore_cursor()
+        else:
+            self.tw.saving_macro = True
             if hasattr(self, 'get_window'):
                 if hasattr(self.get_window(), 'get_cursor'):
                     self._old_cursor = self.get_window().get_cursor()

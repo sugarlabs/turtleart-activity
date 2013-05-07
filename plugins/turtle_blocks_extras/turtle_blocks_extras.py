@@ -19,21 +19,25 @@ import gtk
 import gobject
 from time import time
 import os
+import glob
 
 from gettext import gettext as _
 
 from plugins.plugin import Plugin
-from TurtleArt.tapalette import make_palette, define_logo_function, \
-     block_names, block_primitives, special_names, content_blocks, \
-     palette_name_to_index, palette_names
-from TurtleArt.talogo import primitive_dictionary, logoerror, \
-    media_blocks_dictionary
-from TurtleArt.taconstants import DEFAULT_SCALE, ICON_SIZE, CONSTANTS, \
-    MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN, PYTHON_SKIN, \
-    PREFIX_DICTIONARY, VOICES, MACROS, COLORDICT
-from TurtleArt.tautils import convert, round_int, debug_output, get_path, \
-    data_to_string, find_group, image_to_base64
-from TurtleArt.tajail import myfunc, myfunc_import
+from TurtleArt.tapalette import (make_palette, define_logo_function,
+                                 block_names, block_primitives, special_names,
+                                 content_blocks, palette_name_to_index,
+                                 palette_names)
+from TurtleArt.talogo import (primitive_dictionary, logoerror,
+                              media_blocks_dictionary)
+from TurtleArt.taconstants import (DEFAULT_SCALE, ICON_SIZE, CONSTANTS,
+                                   MEDIA_SHAPES, SKIN_PATHS, BLOCKS_WITH_SKIN,
+                                   PYTHON_SKIN, PREFIX_DICTIONARY, VOICES,
+                                   MACROS, COLORDICT)
+from TurtleArt.tautils import (convert, round_int, debug_output, get_path,
+                               data_to_string, find_group, image_to_base64,
+                               hat_on_top, listify, data_from_file)
+from TurtleArt.tajail import (myfunc, myfunc_import)
 
 
 def _num_type(x):
@@ -89,6 +93,8 @@ class Turtle_blocks_extras(Plugin):
         self._extras_palette()
 
         self._portfolio_palette()
+
+        self._macros_palette()
 
     # Palette definitions
 
@@ -1041,6 +1047,29 @@ Journal objects"))
                           help_string=_('presentation template: list of \
 bullets'))
         self.tw.lc.def_prim('bullet', 1, self._prim_list, True)
+
+    def _macros_palette(self):
+        ''' User-defined macros are saved as a json-encoded file;
+        these get loaded into a palette on startup '''
+
+        if os.path.exists(self.tw.macros_path):
+            files = glob.glob(os.path.join(self.tw.macros_path, '*.tb'))
+            print 'creating macros palette'
+            if len(files) > 0:
+                palette = make_palette('macros',
+                                       colors=["#FFC000", "#A08000"],
+                                       help_string=\
+_('Palette of user-defined operators'))
+
+            for tafile in files:
+                data = data_from_file(tafile)
+                name = os.path.basename(tafile)[:-3]
+                print 'loading macro %s' % (name)
+                MACROS['user-defined-' + name] = hat_on_top(listify(data))
+                palette.add_block('user-defined-' + name,
+                                  style='basic-style-extended-vertical',
+                                  label=name)
+
 
     # Block primitives
 

@@ -107,11 +107,6 @@ class Palettes():
 
         self._blocks_palette()
 
-        palette = make_palette('macros',
-                               colors=["#FFC000", "#A08000"],
-                               help_string=\
-                                   _('Palette of user-defined operators'))
-
         self._trash_palette()
 
     # Palette definitions

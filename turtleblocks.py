@@ -109,7 +109,6 @@ class TurtleMain():
             self._init_gnome_plugins()
             self._setup_gtk()
             self._build_window()
-            self._load_user_macros()
             self._run_gnome_plugins()
             self._start_gtk()
 
@@ -171,31 +170,8 @@ class TurtleMain():
         if not exists(dpath):
             makedirs(dpath)
 
-    def _load_user_macros(self):
-        ''' User-defined macros are saved as a json-encoded file;
-        these get loaded into a palette on startup '''
-        macros_path = os.path.join(self._execdirname, self._MACROS_SUBPATH)
-        self.tw.macros_path = macros_path
-        if os.path.exists(macros_path):
-            files = glob.glob(os.path.join(macros_path, '*.tb'))
-            print 'creating macros palette'
-            if len(files) > 0:
-                palette = make_palette('macros',
-                                       colors=["#FFC000", "#A08000"],
-                                       help_string=\
-_('Palette of user-defined operators'))
-
-            for tafile in files:
-                data = data_from_file(tafile)
-                name = os.path.basename(tafile)[:-3]
-                print 'loading macro %s' % (name)
-                MACROS['user-defined-' + name] = hat_on_top(listify(data))
-                palette.add_block('user-defined-' + name,
-                                  style='basic-style-extended-vertical',
-                                  label=name)
-
     def _do_save_macro_cb(self, widget):
-        if self.saving_macro:
+        if self.tw.saving_macro:
             self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
             self.tw.saving_macro = False
         else:
@@ -252,7 +228,6 @@ _('Palette of user-defined operators'))
         self.current_palette = 0
         self.scale = 2.0
         self.tw = None
-        self.saving_macro = False
         self.init_complete = False
 
     def _parse_command_line(self):

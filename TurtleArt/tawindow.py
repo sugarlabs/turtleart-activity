@@ -91,6 +91,7 @@ class TurtleArtWindow():
     ''' TurtleArt Window class abstraction  '''
     timeout_tag = [0]
     _PLUGIN_SUBPATH = 'plugins'
+    _MACROS_SUBPATH = 'macros'
 
     def __init__(self, canvas_window, path, parent=None,
                  mycolors=None, mynick=None, turtle_canvas=None,
@@ -113,6 +114,10 @@ class TurtleArtWindow():
                 self.running_sugar = True
                 from sugar import profile
                 self.nick = profile.get_nick_name()
+                self.macros_path = os.path.join(
+                    get_path(parent, 'data'), self._MACROS_SUBPATH)
+            else:
+                self.macros_path = os.path.join(self.path, self._MACROS_SUBPATH)
             self._setup_events()
         else:
             self.interactive_mode = False
@@ -145,7 +150,6 @@ class TurtleArtWindow():
         self.update_counter = 0
         self.running_blocks = False
         self.saving_macro = False
-        self.macros_path = ''
 
         try:
             locale.setlocale(locale.LC_NUMERIC, '')
@@ -170,9 +174,9 @@ class TurtleArtWindow():
                 self.orientation = VERTICAL_PALETTE
         else:
             self.scale = 1.0
-            self.entry_scale = 1.0            
+            self.entry_scale = 1.0
             self.color_mode = '888'  # TODO: Read visual mode from gtk image
-        self._set_screen_dpi()        
+        self._set_screen_dpi()
 
         self.block_scale = BLOCK_SCALE[3]
         self.trash_scale = 0.5
