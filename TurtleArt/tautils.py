@@ -170,11 +170,106 @@ def json_load(text):
     return _tuplify(listdata)
 
 
+def find_hat(data):
+    ''' Find a hat in a stack '''
+    for i, blk in enumerate(data):
+        if _to_str(blk[1]) == 'hat':
+            return i
+    return None
+
+
+def _to_str(text):
+    ''' Convert whatever to a str type '''
+    if isinstance(text, unicode):
+        return text.encode('ascii', 'replace')
+    elif isinstance(text, str):
+        return text
+    else:
+        try:
+            return str(text)
+        except ValueError:
+            return ''
+
+
+def hat_on_top(data):
+    ''' Move the hat block in a stack to the top '''
+    hat = find_hat(data)
+    if hat is None or hat == 0:
+        return data
+
+    data_was_tuple = False
+    if isinstance(data, tuple):
+        data_was_tuple = True
+        data = listify(data)
+
+    # First put the vertical flow together
+    stack = [hat]
+    sort = [hat]
+    sorted_data = [[0, 'hat', data[hat][2], data[hat][3], []]]
+    i = 1
+    while len(stack) > 0:
+        branch = stack[0]
+        stack.remove(stack[0])
+        if branch is None:
+            continue
+        else:
+            blk = data[branch]
+
+        if branch != hat:
+            sort.append(blk[0])
+            sorted_data.append([i, blk[1], 0, 0, []])
+            i += 1
+
+        while blk[4][-1] is not None:
+            cblk = blk[4][-1]
+            sort.append(cblk)
+            name = data[cblk][1]
+            sorted_data.append([i, name, 0, 0, []])
+            if isinstance(name, list):
+                name = name[0]
+            # Some blocks have multiple branches
+            if _to_str(name) in ['repeat', 'forever', 'while', 'until',
+                                 'ifelse', 'if', 'sandwichclamp',
+                                 'sandwichclampcollapsed']:
+                stack.append(data[cblk][4][-2])
+            if _to_str(name) in ['ifelse']:
+                stack.append(data[cblk][4][-3])
+            i += 1
+            blk = data[cblk]
+
+    # Then add the argument blocks
+    for blk in data:
+        if blk[0] in sort:
+            continue
+        sort.append(blk[0])
+        sorted_data.append([i, blk[1], 0, 0, []])
+        i += 1
+
+    # Then add the connections
+    for i, blk in enumerate(sort):
+        for j in data[blk][4]:
+            if j is None:
+                sorted_data[i][4].append(None)
+            else:
+                sorted_data[i][4].append(sort.index(j))
+
+    if data_was_tuple:
+        return _tuplify(sorted_data)
+    return sorted_data
+
+
 def _tuplify(tup):
     ''' Convert to tuples '''
     if not isinstance(tup, list):
         return tup
     return tuple(map(_tuplify, tup))
+
+
+def listify(tup):
+    ''' Convert to list '''
+    if not isinstance(tup, tuple):
+        return tup
+    return list(map(listify, tup))
 
 
 def get_id(connection):
@@ -349,9 +444,9 @@ def get_pixbuf_from_journal(dsobject, w, h):
 
 def get_path(activity, subpath):
     ''' Find a Rainbow-approved place for temporary files. '''
-    try:
+    if hasattr(activity, "get_activity_root"):
         return(os.path.join(activity.get_activity_root(), subpath))
-    except:
+    else:
         # Early versions of Sugar didn't support get_activity_root()
         return(os.path.join(os.environ['HOME'], '.sugar/default',
                             'org.laptop.TurtleArtActivity', subpath))
