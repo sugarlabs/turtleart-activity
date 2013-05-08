@@ -49,12 +49,10 @@ sys.argv[1:] = []  # Execution of import gst cannot see '--help' or '-h'
 import gettext
 
 from TurtleArt.taconstants import (OVERLAY_LAYER, DEFAULT_TURTLE_COLORS,
-                                  TAB_LAYER, SUFFIX, MACROS)
-from TurtleArt.tautils import (data_to_string, data_from_string, listify,
-                               data_from_file, get_save_name, hat_on_top)
+                                  TAB_LAYER, SUFFIX)
+from TurtleArt.tautils import (data_from_string, get_save_name)
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.taexportlogo import save_logo
-from TurtleArt.tapalette import make_palette
 
 from util.menubuilder import MenuBuilder
 
@@ -66,7 +64,6 @@ class TurtleMain():
         '/usr/local/share/sugar/activities/TurtleArt.activity'
     _ICON_SUBPATH = 'images/turtle.png'
     _GNOME_PLUGIN_SUBPATH = 'gnome_plugins'
-    _MACROS_SUBPATH = 'macros'
 
     def __init__(self):
         self._abspath = os.path.abspath('.')
@@ -169,14 +166,6 @@ class TurtleMain():
         dpath = normpath(dirname(path))
         if not exists(dpath):
             makedirs(dpath)
-
-    def _do_save_macro_cb(self, widget):
-        if self.tw.saving_macro:
-            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
-            self.tw.saving_macro = False
-        else:
-            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
-            self.tw.saving_macro = True
 
     def _start_gtk(self):
         ''' Get a main window set up. '''
@@ -609,16 +598,31 @@ class TurtleMain():
         self.tw.stop_button()
         self.tw.display_coordinates()
 
+    def _do_save_macro_cb(self, widget):
+        ''' Callback for save stack button. '''
+        self.tw.copying_blocks = False
+        if self.tw.saving_blocks:
+            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+            self.tw.saving_blocks = False
+        else:
+            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+            self.tw.saving_blocks = True
+
     def _do_copy_cb(self, button):
         ''' Callback for copy button. '''
-        clipBoard = gtk.Clipboard()
-        data = self.tw.assemble_data_to_save(False, False)
-        if data is not []:
-            text = data_to_string(data)
-            clipBoard.set_text(text)
+        self.tw.saving_blocks = False
+        if self.tw.copying_blocks:
+            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+            self.tw.copying_blocks = False
+        else:
+            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+            self.tw.copying_blocks = True
 
     def _do_paste_cb(self, button):
         ''' Callback for paste button. '''
+        self.tw.copying_blocks = False
+        self.tw.saving_blocks = False
+        self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
         clipBoard = gtk.Clipboard()
         text = clipBoard.wait_for_text()
         if text is not None:

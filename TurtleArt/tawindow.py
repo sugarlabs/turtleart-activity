@@ -152,7 +152,9 @@ class TurtleArtWindow():
         self.mouse_y = 0
         self.update_counter = 0
         self.running_blocks = False
-        self.saving_macro = False
+        self.saving_blocks = False
+        self.copying_blocks = False
+        self.sharing_blocks = False
 
         try:
             locale.setlocale(locale.LC_NUMERIC, '')
@@ -1374,10 +1376,13 @@ before making changes to your Turtle Blocks program'))
         # From the sprite at x, y, look for a corresponding block
         blk = self.block_list.spr_to_block(spr)
         ''' If we were copying and didn't click on a block... '''
-        if self.running_sugar and \
-           (self.activity.copying or self.activity.sharing_blocks):
+        if self.copying_blocks or self.sharing_blocks or self.saving_blocks:
             if blk is None or blk.type != 'block':
-                self.activity.restore_cursor()
+                self.parent.get_window().set_cursor(
+                    gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+                self.copying_blocks = False
+                self.sharing_blocks = False
+                self.saving_blocks = False
         if blk is not None:
             if blk.type == 'block':
                 self.selected_blk = blk
@@ -1873,48 +1878,59 @@ before making changes to your Turtle Blocks program'))
             for blk in self.drag_group:
                 if blk.status != 'collapsed':
                     blk.spr.set_layer(TOP_LAYER)
-            if self.saving_macro:
+            if self.copying_blocks or self.sharing_blocks or \
+               self.saving_blocks:
                 for blk in self.drag_group:
                     if blk.status != 'collapsed':
                         blk.highlight()
                 self.block_operation = 'copying'
                 data = self.assemble_data_to_save(False, False)
-                i = find_hat(data)
-                if i is not None and data[i][4][1] is not None:
-                    try:
-                        name = str(data[data[i][4][1]][1][1])
-                    except:
-                        name = 'macro%d' % (int(uniform(0, 10000)))
-                    debug_output('saving macro %s' % (name),
-                                 self.running_sugar)
-                    if not os.path.exists(self.macros_path):
-                        try:
-                            os.makedirs(self.macros_path)
-                        except OSError, exc:
-                            if exc.errno == errno.EEXIST:
-                                pass
-                            else:
-                                raise
-                    data_to_file(data, os.path.join(self.macros_path,
-                                                    '%s.tb' % (name)))
-                self.parent.get_window().set_cursor(
-                    gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
-                self.saving_macro = False
 
-            if self.running_sugar and \
-               (self.activity.copying or self.activity.sharing_blocks):
-                for blk in self.drag_group:
-                    if blk.status != 'collapsed':
-                        blk.highlight()
-                self.block_operation = 'copying'
-                if self.activity.copying:
-                    self.activity.send_to_clipboard()
-                else:
-                    self.activity.share_blocks()
+                if data is not []:
+                    if self.saving_blocks:
+                        debug_output('Serialize blocks and save.',
+                                     self.running_sugar)
+                        i = find_hat(data)
+                        if i is not None and data[i][4][1] is not None:
+                            try:
+                                name = str(data[data[i][4][1]][1][1])
+                            except:
+                                name = 'macro%d' % (int(uniform(0, 10000)))
+                            debug_output('saving macro %s' % (name),
+                                         self.running_sugar)
+                            if not os.path.exists(self.macros_path):
+                                try:
+                                    os.makedirs(self.macros_path)
+                                except OSError, exc:
+                                    if exc.errno == errno.EEXIST:
+                                        pass
+                                    else:
+                                        raise
+                            data_to_file(data, os.path.join(self.macros_path,
+                                                            '%s.tb' % (name)))
+                    elif self.copying_blocks:
+                        clipboard = gtk.Clipboard()
+                        debug_output('Serialize blocks and copy to clipboard',
+                                     self.running_sugar)
+                        text = data_to_string(data)
+                        clipboard.set_text(text)
+                    elif self.sharing():
+                        debug_output('Serialize blocks and send as event',
+                                     self.running_sugar)
+                        text = data_to_string(data)
+                        event = 'B|%s' % (data_to_string([self.nick, text]))
+                        self.send_event(event)
+            self.paste_offset = 20
+
+            self.parent.get_window().set_cursor(
+                gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+            self.saving_blocks = False
+
             if self.running_sugar and self._sharing and \
                hasattr(self.activity, 'share_button'):
                 self.activity.share_button.set_tooltip(
                     _('Share selected blocks'))
+
             if len(blk.spr.labels) > 0:
                 self._saved_string = blk.spr.labels[0]
                 self._saved_action_name = self._saved_string

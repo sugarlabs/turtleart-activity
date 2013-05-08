@@ -1090,9 +1090,9 @@ class TurtleArtActivity(activity.Activity):
             self._old_cursor = self.get_window().get_cursor()
         else:
             self._old_cursor = None
-        self.copying = False
-        self.sharing_blocks = False
-        self.tw.saving_macro = False
+        self.tw.copying_blocks = False
+        self.tw.sharing_blocks = False
+        self.tw.saving_blocks = False
 
     def _setup_sharing(self):
         ''' Setup the Collabora stack. '''
@@ -1344,8 +1344,9 @@ in order to use the plugin.'))
 
     def restore_cursor(self):
         ''' No longer copying or sharing, so restore standard cursor. '''
-        self.copying = False
-        self.sharing_blocks = False
+        self.tw.copying_blocks = False
+        self.tw.sharing_blocks = False
+        self.tw.saving_blocks = False
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self.get_window().set_cursor(self._old_cursor)
@@ -1354,11 +1355,11 @@ in order to use the plugin.'))
 
     def _copy_cb(self, button):
         ''' Copy to the clipboard. '''
-        if self.copying:
-            self.copying = False
+        if self.tw.copying_blocks:
+            self.tw.copying_blocks = False
             self.restore_cursor()
         else:
-            self.copying = True
+            self.tw.copying_blocks = True
             if hasattr(self, 'get_window'):
                 if hasattr(self.get_window(), 'get_cursor'):
                     self._old_cursor = self.get_window().get_cursor()
@@ -1366,30 +1367,19 @@ in order to use the plugin.'))
 
     def _save_macro_cb(self, button):
         ''' Save stack macros_path '''
-        if self.tw.saving_macro:
-            self.tw.saving_macro = False
+        if self.tw.saving_blocks:
+            self.tw.saving_blocks = False
             self.restore_cursor()
         else:
-            self.tw.saving_macro = True
+            self.tw.saving_blocks = True
             if hasattr(self, 'get_window'):
                 if hasattr(self.get_window(), 'get_cursor'):
                     self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
 
-    def send_to_clipboard(self):
-        ''' Send selected stack to clipboard. '''
-        self.restore_cursor()
-        clipboard = gtk.Clipboard()
-        _logger.debug('Serialize the project and copy to clipboard.')
-        data = self.tw.assemble_data_to_save(False, False)
-        if data is not []:
-            text = data_to_string(data)
-            clipboard.set_text(text)
-        self.tw.paste_offset = 20
-
     def _paste_cb(self, button):
         ''' Paste from the clipboard. '''
-        if self.copying:
+        if self.tw.copying_blocks:
             self.restore_cursor()
         clipboard = gtk.Clipboard()
         _logger.debug('Paste to the project.')
@@ -1412,27 +1402,14 @@ in order to use the plugin.'))
 
     def _share_cb(self, button):
         ''' Share a stack of blocks. '''
-        if self.sharing_blocks:
+        if self.tw.sharing_blocks:
             self.restore_cursor()
         else:
-            self.sharing_blocks = True
+            self.tw.sharing_blocks = True
             if hasattr(self, 'get_window'):
                 if hasattr(self.get_window(), 'get_cursor'):
                     self._old_cursor = self.get_window().get_cursor()
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
-
-    def share_blocks(self):
-        ''' Share selected stack. '''
-        if not self.tw.sharing():
-            return
-        _logger.debug('Serialize a stack and send as event.')
-        self.restore_cursor()
-        data = self.tw.assemble_data_to_save(False, False)
-        if data is not []:
-            text = data_to_string(data)
-            event = 'B|%s' % (data_to_string([self.tw.nick, text]))  # Paste
-            self.tw.send_event(event)
-        self.tw.paste_offset = 20
 
     def _add_label(self, string, toolbar, width=None):
         ''' Add a label to a toolbar. '''
