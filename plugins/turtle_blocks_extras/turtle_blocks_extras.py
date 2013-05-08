@@ -1057,7 +1057,7 @@ bullets'))
             print 'creating macros palette'
             if len(files) > 0:
                 palette = make_palette('macros',
-                                       colors=["#FFC000", "#A08000"],
+                                       colors=["#FFFF00", "#A0A000"],
                                        help_string=\
 _('Palette of user-defined operators'))
 
