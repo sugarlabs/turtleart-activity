@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-24 00:31-0500\n"
-"PO-Revision-Date: 2013-04-19 15:32+0200\n"
-"Last-Translator: anushnur <anush.mkrtchyan@ca1492.com>\n"
+"PO-Revision-Date: 2013-05-07 20:24+0200\n"
+"Last-Translator: Jasmine <udea_jasmine@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hy\n"
 "MIME-Version: 1.0\n"
@@ -810,6 +810,8 @@ msgid ""
 "Please hit the Stop Button before making changes to your Turtle Blocks "
 "program"
 msgstr ""
+"Խնդրվում է սեղմել \"Կանգ\" կոճակը նախքան Կրիայի ծրագրի մասնիկների խմբում որևէ "
+"փոփոխություն կատարելը: "
 
 #: TurtleArt/tawindow.py:1310
 msgid "Select blocks to share"
@@ -963,9 +965,8 @@ msgid "Load Python block"
 msgstr "Ներբեռնել «Python» ծրագրի մասնիկները"
 
 #: TurtleArtActivity.py:766
-#, fuzzy
 msgid "Palettes"
-msgstr "պահոց"
+msgstr "Պահոց"
 
 #: TurtleArtActivity.py:810
 msgid "Sharing blocks disabled"
@@ -1077,7 +1078,7 @@ msgstr "Վերբեռնել"
 
 #: gnome_plugins/fb_plugin.py:87
 msgid "Facebook wall post"
-msgstr ""
+msgstr "\"Ֆեյսբուք\"-ի պատ"
 
 #: gnome_plugins/uploader_plugin.py:68
 msgid "Upload to Web"
@@ -1414,9 +1415,10 @@ msgstr "Արտաբերել տեքստ"
 msgid "sinewave"
 msgstr "Սինուսոիդ"
 
+# Ամպլիտուդ
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
 msgid "amplitude"
-msgstr ""
+msgstr "Տատանման մեծություն"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
 msgid "duration"
@@ -1826,30 +1828,33 @@ msgstr "Ներկայացում 2x2"
 
 #: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
-msgstr ""
+msgstr "Խնդրեմ ներբեռնեք \"Խոսել\" գործունեությունն ու փորձեք նորից: "
 
 #: pysamples/brain.py:54
 msgid "Spanish"
-msgstr ""
+msgstr "Իսպաներեն"
 
 #: pysamples/brain.py:58 pysamples/brain.py:72 pysamples/brain.py:74
 #: pysamples/brain.py:80
 msgid "English"
-msgstr ""
+msgstr "Անգլերեն"
 
 #: pysamples/brain.py:91
 msgid "Sorry, I can't understand what you are asking about."
-msgstr ""
+msgstr "Ների՛ր, չեմ հասկանում, թե ինչ ես հարցնում: "
 
 #: pysamples/brain.py:100
 msgid ""
 "Sorry, there is no free memory to load my brain. Close other activities and "
 "try once more."
 msgstr ""
+"Ցավում եմ, ուղեղումս հիշողության ազատ տարածք չի մնացել: Գոցի՛ր մյուս "
+"գործունեություններն ու նորից փորձի՛ր:  "
 
+# ԿԿԿ =RGB = Red, Green, Blue (Կարմիր, Կանաչ, Կապույտ)
 #: pysamples/forward_push.py:45
 msgid "push destination rgb value to heap"
-msgstr ""
+msgstr "Տար նպատակակետի ԿԿԿ արժեքը դեպի մասնիկների խումբը:  "
 
 #: pysamples/grecord.py:215
 msgid "stop"
@@ -1865,7 +1870,7 @@ msgstr "պահել"
 
 #: pysamples/journal-stats.py:78
 msgid "other"
-msgstr ""
+msgstr "Մյուսները"
 
 # լրիվ շրջադարձ
 #: pysamples/uturn.py:24
@@ -1944,7 +1949,7 @@ msgstr "Կրիա"
 
 #: turtleblocks.py:407
 msgid "About..."
-msgstr ""
+msgstr "... մասին"
 
 #: turtleblocks.py:447
 msgid "You have unsaved work. Would you like to save before quitting?"
