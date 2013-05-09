@@ -388,6 +388,8 @@ class TurtleMain():
         MenuBuilder.make_menu_item(menu, _('Paste'), self._do_paste_cb)
         MenuBuilder.make_menu_item(menu, _('Save stack'),
                                    self._do_save_macro_cb)
+        MenuBuilder.make_menu_item(menu, _('Delete stack'),
+                                   self._do_delete_macro_cb)
         edit_menu = MenuBuilder.make_sub_menu(menu, _('Edit'))
 
         menu = gtk.Menu()
@@ -601,6 +603,7 @@ class TurtleMain():
     def _do_save_macro_cb(self, widget):
         ''' Callback for save stack button. '''
         self.tw.copying_blocks = False
+        self.tw.deleting_blocks = False
         if self.tw.saving_blocks:
             self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
             self.tw.saving_blocks = False
@@ -608,9 +611,21 @@ class TurtleMain():
             self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
             self.tw.saving_blocks = True
 
+    def _do_delete_macro_cb(self, widget):
+        ''' Callback for delete stack button. '''
+        self.tw.copying_blocks = False
+        self.tw.saving_blocks = False
+        if self.tw.deleting_blocks:
+            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+            self.tw.deleting_blocks = False
+        else:
+            self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+            self.tw.deleting_blocks = True
+
     def _do_copy_cb(self, button):
         ''' Callback for copy button. '''
         self.tw.saving_blocks = False
+        self.tw.deleting_blocks = False
         if self.tw.copying_blocks:
             self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
             self.tw.copying_blocks = False
@@ -622,6 +637,7 @@ class TurtleMain():
         ''' Callback for paste button. '''
         self.tw.copying_blocks = False
         self.tw.saving_blocks = False
+        self.tw.deleting_blocks = False
         self.win.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
         clipBoard = gtk.Clipboard()
         text = clipBoard.wait_for_text()

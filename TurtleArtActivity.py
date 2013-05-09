@@ -621,8 +621,11 @@ class TurtleArtActivity(activity.Activity):
                          edit_toolbar, '<Ctrl>v')
         self._add_button('edit-undo', _('Restore blocks from trash'),
                          self._undo_cb, edit_toolbar)
-        self._add_button('save-macro', _('Save stack'), self._save_macro_cb,
+        self._add_separator(edit_toolbar)
+        self._add_button('save-blocks', _('Save stack'), self._save_macro_cb,
                          edit_toolbar)
+        self._add_button('delete-blocks', _('Delete stack'),
+                         self._delete_macro_cb, edit_toolbar)
 
         self._add_button('view-fullscreen', _('Fullscreen'),
                          self.do_fullscreen_cb, self._view_toolbar,
@@ -1347,6 +1350,7 @@ in order to use the plugin.'))
         self.tw.copying_blocks = False
         self.tw.sharing_blocks = False
         self.tw.saving_blocks = False
+        self.tw.deleting_blocks = False
         if hasattr(self, 'get_window'):
             if hasattr(self.get_window(), 'get_cursor'):
                 self.get_window().set_cursor(self._old_cursor)
@@ -1366,12 +1370,24 @@ in order to use the plugin.'))
                 self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
 
     def _save_macro_cb(self, button):
-        ''' Save stack macros_path '''
+        ''' Save stack to macros_path '''
         if self.tw.saving_blocks:
             self.tw.saving_blocks = False
             self.restore_cursor()
         else:
             self.tw.saving_blocks = True
+            if hasattr(self, 'get_window'):
+                if hasattr(self.get_window(), 'get_cursor'):
+                    self._old_cursor = self.get_window().get_cursor()
+                self.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND1))
+
+    def _delete_macro_cb(self, button):
+        ''' Delete stack from macros_path '''
+        if self.tw.deleting_blocks:
+            self.tw.deleting_blocks = False
+            self.restore_cursor()
+        else:
+            self.tw.deleting_blocks = True
             if hasattr(self, 'get_window'):
                 if hasattr(self.get_window(), 'get_cursor'):
                     self._old_cursor = self.get_window().get_cursor()

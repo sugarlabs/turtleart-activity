@@ -48,6 +48,8 @@ DEGTOR = 2 * pi / 360
 
 import locale
 
+import logging
+
 from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
     MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES, TOOLBAR_SHAPES, TAB_LAYER,
     RETURN, OVERLAY_LAYER, CATEGORY_LAYER, BLOCKS_WITH_SKIN, ICON_SIZE,
@@ -112,7 +114,9 @@ class TurtleArtWindow():
             if running_sugar:
                 self.parent.show_all()
                 self.running_sugar = True
+
                 from sugar import profile
+
                 self.nick = profile.get_nick_name()
                 self.macros_path = os.path.join(
                     get_path(parent, 'data'), self._MACROS_SUBPATH)
@@ -155,6 +159,7 @@ class TurtleArtWindow():
         self.saving_blocks = False
         self.copying_blocks = False
         self.sharing_blocks = False
+        self.deleting_blocks = False
 
         try:
             locale.setlocale(locale.LC_NUMERIC, '')
@@ -1383,6 +1388,11 @@ before making changes to your Turtle Blocks program'))
                 self.copying_blocks = False
                 self.sharing_blocks = False
                 self.saving_blocks = False
+        elif self.deleting_blocks:
+            if blk is None or blk.type != 'proto':
+                self.parent.get_window().set_cursor(
+                    gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+                self.deleting_blocks = False
         if blk is not None:
             if blk.type == 'block':
                 self.selected_blk = blk
@@ -1390,7 +1400,14 @@ before making changes to your Turtle Blocks program'))
             elif blk.type == 'trash':
                 self._restore_from_trash(find_top_block(blk))
             elif blk.type == 'proto':
-                if blk.name == 'restoreall':
+                if self.deleting_blocks:
+                    if self.selected_palette == \
+                            palette_names.index('myblocks'):
+                        self._delete_stack_alert(blk)
+                    self.parent.get_window().set_cursor(
+                        gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+                    self.deleting_blocks = False
+                elif blk.name == 'restoreall':
                     self._restore_all_from_trash()
                 elif blk.name == 'restore':
                     self.restore_latest_from_trash()
@@ -1502,6 +1519,62 @@ before making changes to your Turtle Blocks program'))
                     blk.unhighlight()
             return True
         return False
+
+    def _delete_stack_alert(self, blk):
+        if self.running_sugar:
+            from sugar.graphics.alert import Alert
+            from sugar.graphics.icon import Icon
+
+            alert = Alert()
+            alert.props.title = _('Delete stack')
+            alert.props.msg = _('Really delete stack?')
+
+            cancel_icon = Icon(icon_name='dialog-cancel')
+            alert.add_button(gtk.RESPONSE_CANCEL, _('Cancel'),
+                             cancel_icon)
+            stop_icon = Icon(icon_name='dialog-ok')
+            alert.add_button(gtk.RESPONSE_OK,
+                             '%s %s' % (_('Delete stack'), blk.spr.labels[0]),
+                             stop_icon)
+
+            self.activity.add_alert(alert)
+            alert.connect('response', self._delete_stack_dialog_response_cb,
+                          blk)
+        else:
+            msg = _('Really delete stack?')
+            dialog = gtk.MessageDialog(self.parent, 0, gtk.MESSAGE_WARNING,
+                                       gtk.BUTTONS_OK_CANCEL, msg)
+            dialog.set_title('%s %s' % (_('Delete stack'), blk.spr.labels[0]))
+            answer = dialog.run()
+            dialog.destroy()
+            if answer == gtk.RESPONSE_OK:
+                self._delete_stack(blk)
+
+    def _delete_stack_dialog_response_cb(self, alert, response_id, blk):
+        self.activity.remove_alert(alert)
+        if response_id == gtk.RESPONSE_OK:
+            self._delete_stack(blk)
+
+    def _delete_stack(self, blk):
+            name = blk.spr.labels[0]
+            error_output('deleting proto: clicked on %s %s' % (blk.name, name),
+                         self.running_sugar)
+            macro_path = os.path.join(self.macros_path, '%s.tb' % (name))
+            if os.path.exists(macro_path):
+                try:
+                    os.remove(macro_path)
+                except Exception, e:
+                    error_debug('Could not remove macro %s: %s' % (
+                            macro_path, e))
+                    return
+                i = palette_names.index('myblocks')
+                palette_blocks[i].remove(blk.name)
+                for pblk in self.palettes[i]:
+                    if pblk.name == blk.name:
+                        pblk.spr.hide()
+                        self.palettes[i].remove(pblk)
+                        break
+                self.show_toolbar_palette(i, regenerate=True)
 
     def _look_for_a_turtle(self, spr, x, y):
         # Next, look for a turtle
@@ -1891,11 +1964,14 @@ before making changes to your Turtle Blocks program'))
                         debug_output('Serialize blocks and save.',
                                      self.running_sugar)
                         i = find_hat(data)
-                        if i is not None and data[i][4][1] is not None:
+                        if i is not None:
+                            name = ''
                             try:
                                 name = str(data[data[i][4][1]][1][1])
                             except:
-                                name = 'macro%d' % (int(uniform(0, 10000)))
+                                pass
+                            if name == '':
+                                name = 'stack_%d' % (int(uniform(0, 10000)))
                             debug_output('saving macro %s' % (name),
                                          self.running_sugar)
                             if not os.path.exists(self.macros_path):
@@ -1906,8 +1982,12 @@ before making changes to your Turtle Blocks program'))
                                         pass
                                     else:
                                         raise
-                            data_to_file(data, os.path.join(self.macros_path,
-                                                            '%s.tb' % (name)))
+                            macro_path = os.path.join(
+                                self.macros_path, '%s.tb' % (name))
+                            # Make sure name is unique
+                            while os.path.exists(macro_path):
+                                macro_path = increment_name(macro_path)
+                            data_to_file(data, macro_path)
                     elif self.copying_blocks:
                         clipboard = gtk.Clipboard()
                         debug_output('Serialize blocks and copy to clipboard',
@@ -2415,7 +2495,7 @@ before making changes to your Turtle Blocks program'))
         if block_name in special_names:
             special_block_name = special_names[block_name]
         elif block_name in block_names:
-            special_block_name = block_names[block_name][0]
+            special_block_name = str(block_names[block_name][0])
         elif block_name in TOOLBAR_SHAPES:
             special_block_name = ''
         else:
