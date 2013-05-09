@@ -94,7 +94,7 @@ class Turtle_blocks_extras(Plugin):
 
         self._portfolio_palette()
 
-        self._macros_palette()
+        self._myblocks_palette()
 
     # Palette definitions
 
@@ -1048,7 +1048,7 @@ Journal objects"))
 bullets'))
         self.tw.lc.def_prim('bullet', 1, self._prim_list, True)
 
-    def _macros_palette(self):
+    def _myblocks_palette(self):
         ''' User-defined macros are saved as a json-encoded file;
         these get loaded into a palette on startup '''
 
@@ -1056,7 +1056,7 @@ bullets'))
             files = glob.glob(os.path.join(self.tw.macros_path, '*.tb'))
             print 'creating macros palette'
             if len(files) > 0:
-                palette = make_palette('macros',
+                palette = make_palette('myblocks',
                                        colors=["#FFFF00", "#A0A000"],
                                        help_string=\
 _('Palette of user-defined operators'))
@@ -1069,7 +1069,6 @@ _('Palette of user-defined operators'))
                 palette.add_block('user-defined-' + name,
                                   style='basic-style-extended-vertical',
                                   label=name)
-
 
     # Block primitives
 
