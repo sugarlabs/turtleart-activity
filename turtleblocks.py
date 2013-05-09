@@ -34,6 +34,7 @@ import glob
 import cStringIO
 import errno
 import ConfigParser
+import gconf
 
 try:
     # Try to use XDG Base Directory standard for config files.
@@ -64,6 +65,7 @@ class TurtleMain():
         '/usr/local/share/sugar/activities/TurtleArt.activity'
     _ICON_SUBPATH = 'images/turtle.png'
     _GNOME_PLUGIN_SUBPATH = 'gnome_plugins'
+    _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
 
     def __init__(self):
         self._abspath = os.path.abspath('.')
@@ -104,10 +106,14 @@ class TurtleMain():
         else:
             self._read_initial_pos()
             self._init_gnome_plugins()
+            self._get_gconf_settings()
             self._setup_gtk()
             self._build_window()
             self._run_gnome_plugins()
             self._start_gtk()
+
+    def _get_gconf_settings(self):
+        self.client = gconf.client_get_default()
 
     def get_config_home(self):
         return CONFIG_HOME
@@ -207,6 +213,9 @@ class TurtleMain():
                                   turtle_canvas=self.turtle_canvas,
                                   parent=self, running_sugar=False)
         self.tw.save_folder = self._abspath  # os.path.expanduser('~')
+        if self.client.get_int(self._HOVER_HELP) == 1:
+            self.hover.set_active(False)
+            self._do_hover_help_off_cb(None)
 
     def _init_vars(self):
         ''' If we are invoked to start a project from Gnome, we should make
@@ -377,10 +386,9 @@ class TurtleMain():
                         self._do_resize_cb, 0.667)
         MenuBuilder.make_menu_item(menu, _('Reset block size'),
                         self._do_resize_cb, -1)
-        MenuBuilder.make_menu_item(menu, _('Turn off hover help'),
-                        self._do_hover_help_off_cb)
-        MenuBuilder.make_menu_item(menu, _('Turn on hover help'),
-                        self._do_hover_help_on_cb)
+        self.hover = MenuBuilder.make_checkmenu_item(
+            menu, _('Turn on hover help'),
+            self._do_toggle_hover_help_cb, status=True)
         view_menu = MenuBuilder.make_sub_menu(menu, _('View'))
 
         menu = gtk.Menu()
@@ -540,15 +548,27 @@ class TurtleMain():
                 self.tw.overlay_shapes['Cartesian_labeled'].set_layer(
                                                               OVERLAY_LAYER)
 
+    def _do_toggle_hover_help_cb(self, button):
+        ''' Toggle hover help on/off '''
+        self.tw.no_help = not self.tw.no_help
+        if self.tw.no_help:
+            self._do_hover_help_off_cb(None)
+        else:
+            self._do_hover_help_on_cb(None)
+
     def _do_hover_help_on_cb(self, button):
         ''' Turn hover help on '''
         self.tw.no_help = False
+        self.hover.set_active(True)
+        self.client.set_int(self._HOVER_HELP, 0)
 
     def _do_hover_help_off_cb(self, button):
         ''' Turn hover help off '''
         self.tw.no_help = True
         self.tw.last_label = None
         self.tw.status_spr.hide()
+        self.hover.set_active(False)
+        self.client.set_int(self._HOVER_HELP, 1)
 
     def _do_palette_cb(self, widget):
         ''' Callback to show/hide palette of blocks. '''

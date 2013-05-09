@@ -46,3 +46,16 @@ class MenuBuilder():
         else:
             menu_items.connect('activate', callback, arg)
         menu_items.show()
+
+    @classmethod
+    def make_checkmenu_item(cls, menu, tooltip, callback, status=True,
+                            arg=None):
+        menu_items = gtk.CheckMenuItem(tooltip)
+        menu_items.set_active(status)
+        menu.append(menu_items)
+        if arg is None:
+            menu_items.connect('activate', callback)
+        else:
+            menu_items.connect('activate', callback, arg)
+        menu_items.show()
+        return menu_items
