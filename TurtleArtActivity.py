@@ -52,6 +52,7 @@ import subprocess
 import ConfigParser
 import shutil
 import tempfile
+import gconf
 
 from gettext import gettext as _
 
@@ -71,6 +72,7 @@ if HAS_TOOLBARBOX:
 
 class TurtleArtActivity(activity.Activity):
     ''' Activity subclass for Turtle Art '''
+    _HOVER_HELP = '/desktop/sugar/activities/turtleart/hoverhelp'
 
     def __init__(self, handle):
         ''' Set up the toolbars, canvas, sharing, etc. '''
@@ -118,6 +120,9 @@ class TurtleArtActivity(activity.Activity):
 
         self._defer_palette_move = False
         self.check_buttons_for_fit()
+        self.client = gconf.client_get_default()
+        if self.client.get_int(self._HOVER_HELP) == 1:
+            self._do_hover_help_toggle(None)
         self.init_complete = True
 
     def check_buttons_for_fit(self):
@@ -289,12 +294,14 @@ class TurtleArtActivity(activity.Activity):
             self.tw.no_help = False
             self._hover_help_toggle.set_icon('help-off')
             self._hover_help_toggle.set_tooltip(_('Turn off hover help'))
+            self.client.set_int(self._HOVER_HELP, 0)
         else:
             self.tw.no_help = True
             self.tw.last_label = None
             self.tw.status_spr.hide()
             self._hover_help_toggle.set_icon('help-on')
             self._hover_help_toggle.set_tooltip(_('Turn on hover help'))
+            self.client.set_int(self._HOVER_HELP, 1)
 
     # These methods are called both from toolbar buttons and blocks.
 
