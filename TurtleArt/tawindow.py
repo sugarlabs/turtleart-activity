@@ -1401,7 +1401,8 @@ before making changes to your Turtle Blocks program'))
                 self._restore_from_trash(find_top_block(blk))
             elif blk.type == 'proto':
                 if self.deleting_blocks:
-                    if self.selected_palette == \
+                    if 'myblocks' in palette_names and \
+                            self.selected_palette == \
                             palette_names.index('myblocks'):
                         self._delete_stack_alert(blk)
                     self.parent.get_window().set_cursor(
