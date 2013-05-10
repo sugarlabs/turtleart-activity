@@ -1521,6 +1521,46 @@ before making changes to your Turtle Blocks program'))
             return True
         return False
 
+    def _save_stack_alert(self, name, data, macro_path):
+        if self.running_sugar:
+            from sugar.graphics.alert import Alert
+            from sugar.graphics.icon import Icon
+
+            alert = Alert()
+            alert.props.title = _('Save stack')
+            alert.props.msg = _('Really overwrite stack?')
+
+            cancel_icon = Icon(icon_name='dialog-cancel')
+            alert.add_button(gtk.RESPONSE_CANCEL, _('Cancel'),
+                             cancel_icon)
+            stop_icon = Icon(icon_name='dialog-ok')
+            alert.add_button(gtk.RESPONSE_OK,
+                             '%s %s' % (_('Overwrite stack'), name),
+                             stop_icon)
+
+            self.activity.add_alert(alert)
+            alert.connect('response',
+                          self._overwrite_stack_dialog_response_cb, data,
+                          macro_path)
+        else:
+            msg = _('Really overwrite stack?')
+            dialog = gtk.MessageDialog(self.parent, 0, gtk.MESSAGE_WARNING,
+                                       gtk.BUTTONS_OK_CANCEL, msg)
+            dialog.set_title('%s %s' % (_('Overwrite stack'), name))
+            answer = dialog.run()
+            dialog.destroy()
+            if answer == gtk.RESPONSE_OK:
+                self._save_stack(data, macro_path)
+
+    def _overwrite_stack_dialog_response_cb(self, alert, response_id,
+                                            data, macro_path):
+        self.activity.remove_alert(alert)
+        if response_id == gtk.RESPONSE_OK:
+            self._save_stack(data, macro_path)
+
+    def _save_stack(self, data, macro_path):
+        data_to_file(data, macro_path)
+
     def _delete_stack_alert(self, blk):
         if self.running_sugar:
             from sugar.graphics.alert import Alert
@@ -1986,9 +2026,11 @@ before making changes to your Turtle Blocks program'))
                             macro_path = os.path.join(
                                 self.macros_path, '%s.tb' % (name))
                             # Make sure name is unique
-                            while os.path.exists(macro_path):
-                                macro_path = increment_name(macro_path)
-                            data_to_file(data, macro_path)
+                            if os.path.exists(macro_path):
+                                self._save_stack_alert(name, data, macro_path)
+                            else:
+                                self._save_stack(data, macro_path)
+                            self.drag_group = None
                     elif self.copying_blocks:
                         clipboard = gtk.Clipboard()
                         debug_output('Serialize blocks and copy to clipboard',
