@@ -815,9 +815,8 @@ class TurtleArtActivity(activity.Activity):
             if len(palette_names) > max_palettes:
                 max_palettes -= 1  # Make room for the palette button
             overflow = len(palette_names) - max_palettes
-            if overflow < 0:
-                overflow = 1  # Force overflow to be positive
-            if gtk.gdk.screen_width() - style.GRID_CELL_SIZE < \
+            if overflow < 1 or \
+                    gtk.gdk.screen_width() - style.GRID_CELL_SIZE < \
                     int(overflow * (style.GRID_CELL_SIZE + 2)):
                 width = gtk.gdk.screen_width() - style.GRID_CELL_SIZE
                 height = int(style.GRID_CELL_SIZE * 1.5)
