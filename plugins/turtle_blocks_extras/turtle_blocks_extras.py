@@ -696,6 +696,17 @@ module found in the Journal'))
         self.tw.lc.def_prim('turtle', 1,
             lambda self, x: self.tw.canvas.set_turtle(x))
 
+        primitive_dictionary['activeturtle'] = self._prim_active_turtle
+        palette.add_block('activeturtle',
+                          style='box-style',
+                          #TRANS: pop removes a new item from the program stack
+                          label=_('active turtle'),
+                          prim_name='activeturtle',
+                          value_block=True,
+                          help_string=_('the name of the active turtle'))
+        self.tw.lc.def_prim('activeturtle', 0,
+                            lambda self: primitive_dictionary['activeturtle']())
+
         primitive_dictionary['skin'] = self._prim_reskin
         palette.add_block('skin',
                           hidden=True,
@@ -1230,6 +1241,9 @@ _('Palette of user-defined operators'))
         self.tw.lc.heap.append(b)
         self.tw.lc.heap.append(g)
         self.tw.lc.heap.append(r)
+
+    def _prim_active_turtle(self):
+        return(self.tw.active_turtle.name)
 
     def _prim_reskin(self, media):
         """ Reskin the turtle with an image from a file """
