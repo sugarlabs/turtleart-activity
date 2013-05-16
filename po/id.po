@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-24 00:31-0500\n"
-"PO-Revision-Date: 2013-01-09 06:33+0200\n"
+"PO-Revision-Date: 2013-04-06 09:28+0200\n"
 "Last-Translator: andika <andika@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: id\n"
@@ -602,80 +602,78 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:883
 msgid "store in box 1"
-msgstr ""
+msgstr "simpan di kotak 1"
 
 #: TurtleArt/tabasics.py:888
 msgid "stores numeric value in Variable 1"
-msgstr ""
+msgstr "simpan nilai numerik di Variabel 1"
 
 #: TurtleArt/tabasics.py:896
 msgid "store in box 2"
-msgstr ""
+msgstr "simpan di kotak 2"
 
 #: TurtleArt/tabasics.py:901
 msgid "stores numeric value in Variable 2"
-msgstr ""
+msgstr "simpan nilai numerik di Variabel 2"
 
 #: TurtleArt/tabasics.py:909
 msgid "box 1"
-msgstr ""
+msgstr "kotak 1"
 
 #: TurtleArt/tabasics.py:912
 msgid "Variable 1 (numeric value)"
-msgstr ""
+msgstr "Variabel 1 (nilai numerik)"
 
 #: TurtleArt/tabasics.py:919
 msgid "box 2"
-msgstr ""
+msgstr "kotak 2"
 
 #: TurtleArt/tabasics.py:922
 msgid "Variable 2 (numeric value)"
-msgstr ""
+msgstr "Variabel 2 (nilai numerik)"
 
 #: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
 msgid "store in"
-msgstr ""
+msgstr "simpan di"
 
 #: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
 msgid "box"
-msgstr ""
+msgstr "kotak"
 
 #: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
 msgid "value"
-msgstr ""
+msgstr "nilai"
 
 #: TurtleArt/tabasics.py:932 TurtleArt/tabasics.py:945
 #: TurtleArt/tawindow.py:1296 TurtleArt/tawindow.py:1409
 #: TurtleArt/tawindow.py:1858 TurtleArt/tawindow.py:4152
 #: TurtleArt/tawindow.py:4180
 msgid "my box"
-msgstr ""
+msgstr "kotakku"
 
 #: TurtleArt/tabasics.py:933 TurtleArt/tawindow.py:4194
 msgid "stores numeric value in named variable"
-msgstr ""
+msgstr "simpan nilai numerik dalam variabel bernama"
 
 #: TurtleArt/tabasics.py:948 TurtleArt/tawindow.py:4166
 msgid "named variable (numeric value)"
-msgstr ""
+msgstr "variabel bernama (nilai numerik)"
 
 #: TurtleArt/tabasics.py:955 TurtleArt/tabasics.py:974
-#, fuzzy
 msgid "action 1"
-msgstr "aksi"
+msgstr "aksi 1"
 
 #: TurtleArt/tabasics.py:958
 msgid "top of Action 1 stack"
-msgstr ""
+msgstr "puncak dari tumpukan Aksi 1"
 
 #: TurtleArt/tabasics.py:964 TurtleArt/tabasics.py:984
-#, fuzzy
 msgid "action 2"
-msgstr "aksi"
+msgstr "aksi 2"
 
 #: TurtleArt/tabasics.py:967
 msgid "top of Action 2 stack"
-msgstr ""
+msgstr "puncak dari tumpukan Aksi 2"
 
 #: TurtleArt/tabasics.py:977
 msgid "invokes Action 1 stack"
@@ -687,36 +685,36 @@ msgstr ""
 
 #: TurtleArt/tabasics.py:995
 msgid "trash"
-msgstr ""
+msgstr "tong sampah"
 
 #: TurtleArt/tabasics.py:999
 msgid "empty trash"
-msgstr ""
+msgstr "kosongkan tong sampah"
 
 #: TurtleArt/tabasics.py:1000
 msgid "permanently deletes items in trash"
-msgstr ""
+msgstr "menghapus isi tong sampah secara permanen"
 
 #: TurtleArt/tabasics.py:1004
 msgid "restore all"
-msgstr ""
+msgstr "pulihkan semua"
 
 #: TurtleArt/tabasics.py:1005
 msgid "restore all blocks from trash"
-msgstr ""
+msgstr "pulihkan semua blok dari tong sampah"
 
 #: TurtleArt/tabasics.py:1009
 msgid "clear all"
-msgstr ""
+msgstr "bersihkan semua"
 
 #: TurtleArt/tabasics.py:1010
 msgid "move all blocks to trash"
-msgstr ""
+msgstr "pindahkan semua blok ke tong sampah"
 
 #: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:1833
 #: TurtleArtActivity.py:703
 msgid "Share selected blocks"
-msgstr ""
+msgstr "Berbagi pakai blok-blok yang dipilih"
 
 #: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
 #: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
@@ -727,14 +725,13 @@ msgstr ""
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1008
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1023
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
-#, fuzzy
 msgid "Title"
-msgstr "judul"
+msgstr "Judul"
 
 #: TurtleArt/talogo.py:374 TurtleArtActivity.py:683
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1492
 msgid "Stop turtle"
-msgstr ""
+msgstr "Hentikan kura-kura"
 
 #: TurtleArt/talogo.py:384 TurtleArtActivity.py:322 TurtleArtActivity.py:684
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1485
@@ -747,64 +744,65 @@ msgstr ""
 
 #: TurtleArt/talogo.py:511
 msgid "did not output to"
-msgstr ""
+msgstr "jangan keluarkan ke"
 
 #: TurtleArt/talogo.py:570
 msgid "I don't know how to"
-msgstr ""
+msgstr "Saya tak tahu bagaimana cara"
 
 #: TurtleArt/talogo.py:624
 msgid "doesn't like"
-msgstr ""
+msgstr "tak suka"
 
 #: TurtleArt/talogo.py:624
 msgid "as input"
-msgstr ""
+msgstr "sebagai masukan"
 
 #: TurtleArt/tapalette.py:97
 msgid "displays next palette"
-msgstr ""
+msgstr "tampilkan palet selajutnya"
 
 #: TurtleArt/tapalette.py:98
 msgid "changes the orientation of the palette of blocks"
-msgstr ""
+msgstr "ubah orientasi palet dari blok"
 
 #: TurtleArt/tautils.py:196
 msgid "Load..."
-msgstr ""
+msgstr "Muat..."
 
 #: TurtleArt/tautils.py:206
 msgid "Save..."
-msgstr ""
+msgstr "Simpan..."
 
 #: TurtleArt/tautils.py:483
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
 msgid "click to open"
-msgstr ""
+msgstr "klik untuk membuka"
 
 #: TurtleArt/tawindow.py:989 TurtleArt/tawindow.py:990
 msgid "orientation"
-msgstr ""
+msgstr "orientasi"
 
 #: TurtleArt/tawindow.py:1000 TurtleArt/tawindow.py:1470
-#, fuzzy
 msgid "next"
-msgstr "teks"
+msgstr "selanjutnya"
 
 #: TurtleArt/tawindow.py:1012 TurtleArt/tawindow.py:1013
 #: TurtleArt/tawindow.py:1490
 msgid "shift"
-msgstr ""
+msgstr "geser"
 
 #: TurtleArt/tawindow.py:1256
 msgid ""
 "Please hit the Stop Button before making changes to your Turtle Blocks "
 "program"
 msgstr ""
+"Harap tekan Tombol Berhenti sebelum membuat perubahan ke program Blok Kura-"
+"kura Anda"
 
 #: TurtleArt/tawindow.py:1310
 msgid "Select blocks to share"
-msgstr ""
+msgstr "Pilih blok untuk berbagi pakai"
 
 #: TurtleArt/tawindow.py:3868 pysamples/grecord.py:205
 msgid "Turtle Art"
@@ -812,17 +810,17 @@ msgstr "Seni Kura-kura"
 
 #: TurtleArt/tawindow.py:3977
 msgid "image"
-msgstr ""
+msgstr "citra"
 
 #: TurtleArtActivity.py:166 TurtleArtActivity.py:709 TurtleArtActivity.py:823
 #: TurtleArtActivity.py:853 turtleblocks.py:360
 msgid "Save as Logo"
-msgstr ""
+msgstr "Simpan sebagai Logo"
 
 #: TurtleArtActivity.py:203 TurtleArtActivity.py:708 TurtleArtActivity.py:820
 #: TurtleArtActivity.py:850 turtleblocks.py:358
 msgid "Save as image"
-msgstr ""
+msgstr "Simpan sebagai citra"
 
 #: TurtleArtActivity.py:211
 msgid "snapshot"
@@ -886,8 +884,9 @@ msgid "Paste"
 msgstr ""
 
 #: TurtleArtActivity.py:591
+#, fuzzy
 msgid "Restore blocks from trash"
-msgstr ""
+msgstr "pulihkan semua blok dari tong sampah"
 
 #: TurtleArtActivity.py:594 TurtleArtActivity.py:748
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
