@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-24 00:31-0500\n"
-"PO-Revision-Date: 2011-12-29 00:38+0200\n"
-"Last-Translator: 623633 <623633@gmx.com>\n"
+"PO-Revision-Date: 2013-05-13 18:46+0200\n"
+"Last-Translator: Larry <larry@denenberg.com>\n"
 "Language-Team: LANGUAGE <walter@sugarlabs.org>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -153,9 +153,8 @@ msgstr ""
 "מכיל את הערך הנוכחי של כיוון (אזימוט) הצב (יכול לשמש במקום בלוק מסוג מספר)"
 
 #: TurtleArt/tabasics.py:282
-#, fuzzy
 msgid "Palette of pen commands"
-msgstr "לוח צבעי עט"
+msgstr "לוח פקודות עט"
 
 #: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
 msgid "fill screen"
@@ -182,7 +181,7 @@ msgstr "מלא את הרקע עם (צבע, גוון)"
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1160
 msgid "gray"
-msgstr "gray"
+msgstr "אפור"
 
 #: TurtleArt/tabasics.py:313
 msgid "set color"
@@ -222,7 +221,7 @@ msgstr "מכיל את הערך הנוכחי של גוון האפור (יכול �
 
 #: TurtleArt/tabasics.py:376
 msgid "pen up"
-msgstr ""
+msgstr "הרם עט"
 
 #: TurtleArt/tabasics.py:379
 msgid "Turtle will not draw when moved."
@@ -441,7 +440,7 @@ msgstr "שווה (אופרטור לוגי)"
 
 #: TurtleArt/tabasics.py:705
 msgid "not"
-msgstr "not"
+msgstr "לא"
 
 #: TurtleArt/tabasics.py:708
 msgid "logical NOT operator"
@@ -510,11 +509,12 @@ msgstr "אופרטור אם\\אז שמשתמש בבלוקים של אופרטו�
 
 #: TurtleArt/tabasics.py:789
 msgid "else"
-msgstr ""
+msgstr "ואם לא"
 
+# אחרת ואם לא will be understood more easily by children is more formal, but  
 #: TurtleArt/tabasics.py:793 TurtleArt/tabasics.py:801
 msgid "if then else"
-msgstr "אם-אז-אחרת"
+msgstr "אם-אז-ואם לא"
 
 #: TurtleArt/tabasics.py:794 TurtleArt/tabasics.py:802
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
@@ -1338,7 +1338,7 @@ msgstr "ממתין עד סיום הוידאו או הצליל הנוכחי"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
 msgid "media stop"
-msgstr ""
+msgstr "הפסק מדיה"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
 msgid "stop video or audio"
@@ -1346,7 +1346,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:290
 msgid "media pause"
-msgstr ""
+msgstr "עצור מדיה"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:292
 msgid "pause video or audio"
@@ -1354,7 +1354,7 @@ msgstr ""
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
 msgid "media resume"
-msgstr ""
+msgstr "המשך מדיה"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:299
 msgid "resume playing video or audio"
@@ -1379,7 +1379,7 @@ msgstr "גל סינוס"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
 msgid "amplitude"
-msgstr ""
+msgstr "עוצמה"
 
 #: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
 msgid "duration"
