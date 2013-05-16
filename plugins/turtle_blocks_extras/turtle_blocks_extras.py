@@ -704,6 +704,17 @@ module found in the Journal'))
                             lambda self:
                             primitive_dictionary['activeturtle']())
 
+        primitive_dictionary['activeturtle'] = self._prim_active_turtle
+        palette.add_block('activeturtle',
+                          style='box-style',
+                          #TRANS: pop removes a new item from the program stack
+                          label=_('active turtle'),
+                          prim_name='activeturtle',
+                          value_block=True,
+                          help_string=_('the name of the active turtle'))
+        self.tw.lc.def_prim('activeturtle', 0,
+                            lambda self: primitive_dictionary['activeturtle']())
+
         primitive_dictionary['skin'] = self._prim_reskin
         palette.add_block('skin',
                           hidden=True,
