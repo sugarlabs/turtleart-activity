@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-24 00:31-0500\n"
-"PO-Revision-Date: 2013-03-01 21:16+0200\n"
+"POT-Creation-Date: 2013-05-17 00:31-0400\n"
+"PO-Revision-Date: 2013-05-21 10:06+0200\n"
 "Last-Translator: whe <heppew@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -38,83 +38,83 @@ msgstr ""
 "Een Logo-geïnspireerd schildpad die kleurrijke plaatjes tekent met samenklik "
 "visueel programmeerblokken"
 
-#: TurtleArt/tabasics.py:123
+#: TurtleArt/tabasics.py:119
 msgid "Palette of turtle commands"
 msgstr "Palet van schildpadcommando's"
 
-#: TurtleArt/tabasics.py:128
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:723
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:734
+#: TurtleArt/tabasics.py:124
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:740
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:751
 msgid "forward"
 msgstr "vooruit"
 
-#: TurtleArt/tabasics.py:132
+#: TurtleArt/tabasics.py:128
 msgid "moves turtle forward"
 msgstr "beweeg schildpad vooruit"
 
-#: TurtleArt/tabasics.py:139
+#: TurtleArt/tabasics.py:135
 msgid "back"
 msgstr "terug"
 
-#: TurtleArt/tabasics.py:143
+#: TurtleArt/tabasics.py:139
 msgid "moves turtle backward"
 msgstr "beweegt schildpad achteruit"
 
-#: TurtleArt/tabasics.py:151
+#: TurtleArt/tabasics.py:147
 msgid "clean"
 msgstr "wissen"
 
-#: TurtleArt/tabasics.py:154
+#: TurtleArt/tabasics.py:150
 msgid "clears the screen and reset the turtle"
 msgstr "schoont het scherm en herstelt het schildpad"
 
-#: TurtleArt/tabasics.py:162
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:854
+#: TurtleArt/tabasics.py:158
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:871
 msgid "left"
 msgstr "links"
 
-#: TurtleArt/tabasics.py:166
+#: TurtleArt/tabasics.py:162
 msgid "turns turtle counterclockwise (angle in degrees)"
 msgstr "draait schildpad tegen de klok in (hoek in graden)"
 
-#: TurtleArt/tabasics.py:174
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:878
+#: TurtleArt/tabasics.py:170
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:895
 msgid "right"
 msgstr "rechts"
 
-#: TurtleArt/tabasics.py:178
+#: TurtleArt/tabasics.py:174
 msgid "turns turtle clockwise (angle in degrees)"
 msgstr "draait schildpad met de klok mee (hoek in graden)"
 
-#: TurtleArt/tabasics.py:186
+#: TurtleArt/tabasics.py:182
 msgid "arc"
 msgstr "boog"
 
-#: TurtleArt/tabasics.py:186
+#: TurtleArt/tabasics.py:182
 msgid "angle"
 msgstr "hoek"
 
-#: TurtleArt/tabasics.py:186
+#: TurtleArt/tabasics.py:182
 msgid "radius"
 msgstr "straal"
 
-#: TurtleArt/tabasics.py:190
+#: TurtleArt/tabasics.py:186
 msgid "moves turtle along an arc"
 msgstr "beweegt schildpad langs een boog"
 
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "set xy"
 msgstr "zet xy"
 
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "x"
 msgstr "x"
 
-#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
+#: TurtleArt/tabasics.py:195 TurtleArt/tabasics.py:261
 msgid "y"
 msgstr "y"
 
-#: TurtleArt/tabasics.py:203 TurtleArt/tabasics.py:269
+#: TurtleArt/tabasics.py:199 TurtleArt/tabasics.py:265
 msgid ""
 "moves turtle to position xcor, ycor; (0, 0) is in the center of the screen."
 msgstr ""
@@ -122,22 +122,21 @@ msgstr ""
 "scherm."
 
 #
-#: TurtleArt/tabasics.py:213
+#: TurtleArt/tabasics.py:209
 msgid "set heading"
 msgstr "richting instellen"
 
-#: TurtleArt/tabasics.py:217
+#: TurtleArt/tabasics.py:213
 msgid "sets the heading of the turtle (0 is towards the top of the screen.)"
 msgstr ""
 "stelt de richting in van het schildpad (0 is naar de bovenkant van het "
 "scherm.)"
 
-#: TurtleArt/tabasics.py:225 TurtleArt/tawindow.py:3862
-#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:604
+#: TurtleArt/tabasics.py:221 TurtleArt/tawindow.py:4105
 msgid "xcor"
 msgstr "xcor"
 
-#: TurtleArt/tabasics.py:226
+#: TurtleArt/tabasics.py:222
 msgid ""
 "holds current x-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -145,12 +144,11 @@ msgstr ""
 "behoudt deze x-coördinaat waarde voor schildpad (kan worden gebruikt in "
 "plaats van nummerblok)"
 
-#: TurtleArt/tabasics.py:236 TurtleArt/tawindow.py:3862
-#: TurtleArt/tawindow.py:3868 TurtleArtActivity.py:605
+#: TurtleArt/tabasics.py:232 TurtleArt/tawindow.py:4106
 msgid "ycor"
 msgstr "ycor"
 
-#: TurtleArt/tabasics.py:237
+#: TurtleArt/tabasics.py:233
 msgid ""
 "holds current y-coordinate value of the turtle (can be used in place of a "
 "number block)"
@@ -158,12 +156,11 @@ msgstr ""
 "behoudt deze y-coördinaat waarde voor schildpad (kan worden gebruikt in "
 "plaats van nummerblok)"
 
-#: TurtleArt/tabasics.py:247 TurtleArt/tawindow.py:3863
-#: TurtleArt/tawindow.py:3869 TurtleArtActivity.py:605
+#: TurtleArt/tabasics.py:243 TurtleArt/tawindow.py:4106
 msgid "heading"
 msgstr "richting"
 
-#: TurtleArt/tabasics.py:248
+#: TurtleArt/tabasics.py:244
 msgid ""
 "holds current heading value of the turtle (can be used in place of a number "
 "block)"
@@ -171,596 +168,596 @@ msgstr ""
 "houdt deze richtingwaarde van het schildpad vast (kan worden gebruikt in "
 "plaats van nummerblok)"
 
-#: TurtleArt/tabasics.py:282
+#: TurtleArt/tabasics.py:278
 msgid "Palette of pen commands"
 msgstr "Palet van pencommando's"
 
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
 msgid "fill screen"
 msgstr "vul scherm"
 
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:298
-#: TurtleArt/tabasics.py:348
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1158
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:294
+#: TurtleArt/tabasics.py:344
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1197
 msgid "color"
 msgstr "kleur"
 
-#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
-#: TurtleArt/tabasics.py:358
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1154
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1159
+#: TurtleArt/tabasics.py:283 TurtleArt/tabasics.py:295
+#: TurtleArt/tabasics.py:354
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1193
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1198
 msgid "shade"
 msgstr "schaduw"
 
-#: TurtleArt/tabasics.py:291 TurtleArt/tabasics.py:303
+#: TurtleArt/tabasics.py:287 TurtleArt/tabasics.py:299
 msgid "fills the background with (color, shade)"
 msgstr "vult de achtergrond met (kleur, schaduw)"
 
-#: TurtleArt/tabasics.py:299 TurtleArt/tabasics.py:367
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1155
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1160
+#: TurtleArt/tabasics.py:295 TurtleArt/tabasics.py:363
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1194
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1199
 msgid "gray"
 msgstr "grijs"
 
-#: TurtleArt/tabasics.py:313
+#: TurtleArt/tabasics.py:309
 msgid "set color"
 msgstr "zet kleur"
 
-#: TurtleArt/tabasics.py:317
+#: TurtleArt/tabasics.py:313
 msgid "sets color of the line drawn by the turtle"
 msgstr "stelt kleur in van de lijn die getekend is door het schildpad"
 
-#: TurtleArt/tabasics.py:325
+#: TurtleArt/tabasics.py:321
 msgid "set shade"
 msgstr "zet schaduw"
 
-#: TurtleArt/tabasics.py:329
+#: TurtleArt/tabasics.py:325
 msgid "sets shade of the line drawn by the turtle"
 msgstr "stelt de schaduw van de lijn in getekend door het schildpad"
 
-#: TurtleArt/tabasics.py:337
+#: TurtleArt/tabasics.py:333
 msgid "set gray"
 msgstr "zet grijs"
 
-#: TurtleArt/tabasics.py:340
+#: TurtleArt/tabasics.py:336
 msgid "sets gray level of the line drawn by the turtle"
 msgstr "stelt het grijsniveau van de lijn in getekend door de schildpad"
 
-#: TurtleArt/tabasics.py:349
+#: TurtleArt/tabasics.py:345
 msgid "holds current pen color (can be used in place of a number block)"
 msgstr "houdt deze penkleur (kan gebruikt worden in plaats van een nummerblok)"
 
-#: TurtleArt/tabasics.py:359
+#: TurtleArt/tabasics.py:355
 msgid "holds current pen shade"
 msgstr "behoudt deze pen schaduw"
 
-#: TurtleArt/tabasics.py:368
+#: TurtleArt/tabasics.py:364
 msgid "holds current gray level (can be used in place of a number block)"
 msgstr "houdt dit grijsniveau (wordt gebruikt ipv een nummerblok)"
 
-#: TurtleArt/tabasics.py:376
+#: TurtleArt/tabasics.py:372
 msgid "pen up"
 msgstr "pen omhoog"
 
-#: TurtleArt/tabasics.py:379
+#: TurtleArt/tabasics.py:375
 msgid "Turtle will not draw when moved."
 msgstr "Schildpad tekent niet als die beweegt."
 
-#: TurtleArt/tabasics.py:385
+#: TurtleArt/tabasics.py:381
 msgid "pen down"
 msgstr "pen omlaag"
 
-#: TurtleArt/tabasics.py:388
+#: TurtleArt/tabasics.py:384
 msgid "Turtle will draw when moved."
 msgstr "Schildpad tekent als die beweegt."
 
-#: TurtleArt/tabasics.py:394
+#: TurtleArt/tabasics.py:390
 msgid "set pen size"
 msgstr "zet pen dikte"
 
-#: TurtleArt/tabasics.py:398
+#: TurtleArt/tabasics.py:394
 msgid "sets size of the line drawn by the turtle"
 msgstr "stelt de grootte van de lijn in getekend door het schildpad"
 
-#: TurtleArt/tabasics.py:408
+#: TurtleArt/tabasics.py:404
 msgid "start fill"
 msgstr "begin met vullen"
 
-#: TurtleArt/tabasics.py:410
+#: TurtleArt/tabasics.py:406
 msgid "starts filled polygon (used with end fill block)"
 msgstr "begint met een gevuld vlak (gebruik met eindig vullen van blok)"
 
-#: TurtleArt/tabasics.py:417
+#: TurtleArt/tabasics.py:413
 msgid "end fill"
 msgstr "stop met vullen"
 
-#: TurtleArt/tabasics.py:419
+#: TurtleArt/tabasics.py:415
 msgid "completes filled polygon (used with start fill block)"
 msgstr "eindigt met vullen van vlak (gebruik met begin met een gevuld vlak)"
 
-#: TurtleArt/tabasics.py:426
+#: TurtleArt/tabasics.py:422
 msgid "pen size"
 msgstr "pen dikte"
 
-#: TurtleArt/tabasics.py:427
+#: TurtleArt/tabasics.py:423
 msgid "holds current pen size (can be used in place of a number block)"
 msgstr "houdt deze pengrootte (wordt gebruikt ipv een nummerblok)"
 
-#: TurtleArt/tabasics.py:441
+#: TurtleArt/tabasics.py:437
 msgid "Palette of pen colors"
 msgstr "Palet van penkleuren"
 
-#: TurtleArt/tabasics.py:443
+#: TurtleArt/tabasics.py:439
 msgid "red"
 msgstr "rood"
 
-#: TurtleArt/tabasics.py:444
+#: TurtleArt/tabasics.py:440
 msgid "orange"
 msgstr "oranje"
 
-#: TurtleArt/tabasics.py:446
+#: TurtleArt/tabasics.py:442
 msgid "yellow"
 msgstr "geel"
 
-#: TurtleArt/tabasics.py:448
+#: TurtleArt/tabasics.py:444
 msgid "green"
 msgstr "groen"
 
-#: TurtleArt/tabasics.py:449
+#: TurtleArt/tabasics.py:445
 msgid "cyan"
 msgstr "cyaan"
 
-#: TurtleArt/tabasics.py:450
+#: TurtleArt/tabasics.py:446
 msgid "blue"
 msgstr "blauw"
 
-#: TurtleArt/tabasics.py:451
+#: TurtleArt/tabasics.py:447
 msgid "purple"
 msgstr "paars"
 
-#: TurtleArt/tabasics.py:453
+#: TurtleArt/tabasics.py:449
 msgid "white"
 msgstr "wit"
 
-#: TurtleArt/tabasics.py:454
+#: TurtleArt/tabasics.py:450
 msgid "black"
 msgstr "zwart"
 
-#: TurtleArt/tabasics.py:460
+#: TurtleArt/tabasics.py:456
 msgid "set text color"
 msgstr "zet tekstkleur"
 
-#: TurtleArt/tabasics.py:463
+#: TurtleArt/tabasics.py:459
 msgid "sets color of text drawn by the turtle"
 msgstr "stelt de kleur van tekst in getekend door het schildpad"
 
-#: TurtleArt/tabasics.py:471
+#: TurtleArt/tabasics.py:467
 msgid "set text size"
 msgstr "stel tekstgrootte in"
 
-#: TurtleArt/tabasics.py:474
+#: TurtleArt/tabasics.py:470
 msgid "sets size of text drawn by the turtle"
 msgstr "stelt grootte van tekst in getekend door schildpad"
 
-#: TurtleArt/tabasics.py:557
+#: TurtleArt/tabasics.py:553
 msgid "Palette of numeric operators"
 msgstr "Palet van getals operator"
 
-#: TurtleArt/tabasics.py:563
+#: TurtleArt/tabasics.py:559
 msgid "plus"
 msgstr "getal"
 
-#: TurtleArt/tabasics.py:567
+#: TurtleArt/tabasics.py:563
 msgid "adds two alphanumeric inputs"
 msgstr "voegt twee alfanumerieke invoer toe"
 
-#: TurtleArt/tabasics.py:575
+#: TurtleArt/tabasics.py:571
 msgid "minus"
 msgstr "min"
 
-#: TurtleArt/tabasics.py:578
+#: TurtleArt/tabasics.py:574
 msgid "subtracts bottom numeric input from top numeric input"
 msgstr "trekt onderste getalsinvoer af van bovenste getalsinvoer"
 
-#: TurtleArt/tabasics.py:589
+#: TurtleArt/tabasics.py:585
 msgid "multiply"
 msgstr "vermenigvuldig"
 
-#: TurtleArt/tabasics.py:592
+#: TurtleArt/tabasics.py:588
 msgid "multiplies two numeric inputs"
 msgstr "vermenigvuldigt twee getallen invoer"
 
-#: TurtleArt/tabasics.py:601
+#: TurtleArt/tabasics.py:597
 msgid "divide"
 msgstr "gedeeld door"
 
-#: TurtleArt/tabasics.py:604
+#: TurtleArt/tabasics.py:600
 msgid ""
 "divides top numeric input (numerator) by bottom numeric input (denominator)"
 msgstr "deelt bovenste getalinvoer (teller) door onderste getalinvoer (noemer)"
 
-#: TurtleArt/tabasics.py:614
+#: TurtleArt/tabasics.py:610
 msgid "identity"
 msgstr "identiteit"
 
-#: TurtleArt/tabasics.py:616
+#: TurtleArt/tabasics.py:612
 msgid "identity operator used for extending blocks"
 msgstr "identiteit operator gebruikt voor uitbreiding blokken"
 
-#: TurtleArt/tabasics.py:624 TurtleArt/tabasics.py:625
+#: TurtleArt/tabasics.py:620 TurtleArt/tabasics.py:621
 msgid "mod"
 msgstr "mod"
 
-#: TurtleArt/tabasics.py:628
+#: TurtleArt/tabasics.py:624
 msgid "modular (remainder) operator"
 msgstr "modulair (restwaarde) operator"
 
-#: TurtleArt/tabasics.py:635
+#: TurtleArt/tabasics.py:631
 msgid "√"
 msgstr "√"
 
-#: TurtleArt/tabasics.py:636
+#: TurtleArt/tabasics.py:632
 msgid "square root"
 msgstr "vierkantswortel"
 
-#: TurtleArt/tabasics.py:639
+#: TurtleArt/tabasics.py:635
 msgid "calculates square root"
 msgstr "berekent vierkantswortel"
 
-#: TurtleArt/tabasics.py:646
+#: TurtleArt/tabasics.py:642
 msgid "random"
 msgstr "willekeurig"
 
-#: TurtleArt/tabasics.py:646
+#: TurtleArt/tabasics.py:642
 msgid "min"
 msgstr "min"
 
-#: TurtleArt/tabasics.py:646
+#: TurtleArt/tabasics.py:642
 msgid "max"
 msgstr "max"
 
-#: TurtleArt/tabasics.py:650
+#: TurtleArt/tabasics.py:646
 msgid "returns random number between minimum (top) and maximum (bottom) values"
 msgstr ""
 "geeft waarde terug tussen minimum (bovenste) en maximum (onderste) waarden"
 
-#: TurtleArt/tabasics.py:662
+#: TurtleArt/tabasics.py:658
 msgid "number"
 msgstr "nummer"
 
-#: TurtleArt/tabasics.py:663
+#: TurtleArt/tabasics.py:659
 msgid "used as numeric input in mathematic operators"
 msgstr "gebruikt als getalsinvoer in wiskundige opetatoren"
 
-#: TurtleArt/tabasics.py:671
+#: TurtleArt/tabasics.py:667
 msgid "greater than"
 msgstr "groter dan"
 
-#: TurtleArt/tabasics.py:674
+#: TurtleArt/tabasics.py:670
 msgid "logical greater-than operator"
 msgstr "logische groter-dan operator"
 
-#: TurtleArt/tabasics.py:683
+#: TurtleArt/tabasics.py:679
 msgid "less than"
 msgstr "kleiner dan"
 
-#: TurtleArt/tabasics.py:687
+#: TurtleArt/tabasics.py:683
 msgid "logical less-than operator"
 msgstr "logische kleiner-dan operator"
 
-#: TurtleArt/tabasics.py:695
+#: TurtleArt/tabasics.py:691
 msgid "equal"
 msgstr "gelijk aan"
 
-#: TurtleArt/tabasics.py:699
+#: TurtleArt/tabasics.py:695
 msgid "logical equal-to operator"
 msgstr "logische gelijk-aan operator"
 
-#: TurtleArt/tabasics.py:705
+#: TurtleArt/tabasics.py:701
 msgid "not"
 msgstr "niet"
 
-#: TurtleArt/tabasics.py:708
+#: TurtleArt/tabasics.py:704
 msgid "logical NOT operator"
 msgstr "logische NIET operator"
 
-#: TurtleArt/tabasics.py:714 TurtleArt/tabasics.py:717
+#: TurtleArt/tabasics.py:710 TurtleArt/tabasics.py:713
 msgid "and"
 msgstr "en"
 
-#: TurtleArt/tabasics.py:718
+#: TurtleArt/tabasics.py:714
 msgid "logical AND operator"
 msgstr "logische AND bewerker"
 
-#: TurtleArt/tabasics.py:725 TurtleArt/tabasics.py:728
+#: TurtleArt/tabasics.py:721 TurtleArt/tabasics.py:724
 msgid "or"
 msgstr "of"
 
-#: TurtleArt/tabasics.py:729
+#: TurtleArt/tabasics.py:725
 msgid "logical OR operator"
 msgstr "logische OF operator"
 
-#: TurtleArt/tabasics.py:738
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:98
+#: TurtleArt/tabasics.py:734
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:104
 msgid "Palette of flow operators"
 msgstr "Palet van stroom operators"
 
-#: TurtleArt/tabasics.py:743
+#: TurtleArt/tabasics.py:739
 msgid "wait"
 msgstr "wacht"
 
-#: TurtleArt/tabasics.py:747
+#: TurtleArt/tabasics.py:743
 msgid "pauses program execution a specified number of seconds"
 msgstr "pauzeert programmauitvoering een aangegeven aantal seconden"
 
-#: TurtleArt/tabasics.py:754
+#: TurtleArt/tabasics.py:750
 msgid "forever"
 msgstr "altijd"
 
-#: TurtleArt/tabasics.py:758
+#: TurtleArt/tabasics.py:754
 msgid "loops forever"
 msgstr "lust voor altijd"
 
-#: TurtleArt/tabasics.py:765 TurtleArt/tabasics.py:769
+#: TurtleArt/tabasics.py:761 TurtleArt/tabasics.py:765
 msgid "repeat"
 msgstr "herhaal"
 
-#: TurtleArt/tabasics.py:770
+#: TurtleArt/tabasics.py:766
 msgid "loops specified number of times"
 msgstr "lust een aangegeven aantal keren"
 
-#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
+#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
 msgid "if"
 msgstr "als"
 
-#: TurtleArt/tabasics.py:776 TurtleArt/tabasics.py:789
+#: TurtleArt/tabasics.py:772 TurtleArt/tabasics.py:785
 msgid "then"
 msgstr "dan"
 
-#: TurtleArt/tabasics.py:779
+#: TurtleArt/tabasics.py:775
 msgid "if then"
 msgstr "als dan"
 
-#: TurtleArt/tabasics.py:781
+#: TurtleArt/tabasics.py:777
 msgid "if-then operator that uses boolean operators from Numbers palette"
 msgstr "als-dan operator die gebruikt booleaanse operators van Getallen palet"
 
-#: TurtleArt/tabasics.py:789
+#: TurtleArt/tabasics.py:785
 msgid "else"
 msgstr "anders"
 
-#: TurtleArt/tabasics.py:793 TurtleArt/tabasics.py:801
+#: TurtleArt/tabasics.py:789 TurtleArt/tabasics.py:797
 msgid "if then else"
 msgstr "als dan anders"
 
-#: TurtleArt/tabasics.py:794 TurtleArt/tabasics.py:802
+#: TurtleArt/tabasics.py:790 TurtleArt/tabasics.py:798
 msgid "if-then-else operator that uses boolean operators from Numbers palette"
 msgstr ""
 "als-dan-anders operator die gebruikt booleaanse operators van Getallen palet"
 
-#: TurtleArt/tabasics.py:811
+#: TurtleArt/tabasics.py:807
 msgid "horizontal space"
 msgstr "horizontale ruimte"
 
-#: TurtleArt/tabasics.py:812
+#: TurtleArt/tabasics.py:808
 msgid "jogs stack right"
 msgstr "schudt stapel rechts"
 
-#: TurtleArt/tabasics.py:819
+#: TurtleArt/tabasics.py:815
 msgid "vertical space"
 msgstr "verticale ruimte"
 
-#: TurtleArt/tabasics.py:820
+#: TurtleArt/tabasics.py:816
 msgid "jogs stack down"
 msgstr "stoot stapel neer"
 
-#: TurtleArt/tabasics.py:826
+#: TurtleArt/tabasics.py:822
 msgid "stop action"
 msgstr "stop actie"
 
-#: TurtleArt/tabasics.py:829
+#: TurtleArt/tabasics.py:825
 msgid "stops current action"
 msgstr "stop deze actie"
 
-#: TurtleArt/tabasics.py:838
+#: TurtleArt/tabasics.py:834
 msgid "Palette of variable blocks"
 msgstr "Palet van variabele blokken"
 
-#: TurtleArt/tabasics.py:843 pysamples/grecord.py:213
+#: TurtleArt/tabasics.py:839 pysamples/grecord.py:213
 msgid "start"
 msgstr "begin"
 
-#: TurtleArt/tabasics.py:846
+#: TurtleArt/tabasics.py:842
 msgid "connects action to toolbar run buttons"
 msgstr "verbindt actie aan werkbalk start knoppen"
 
-#: TurtleArt/tabasics.py:853 TurtleArt/tabasics.py:854
-#: TurtleArt/tabasics.py:855
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:186
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:187
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:188
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:208
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:223
+#: TurtleArt/tabasics.py:849 TurtleArt/tabasics.py:850
+#: TurtleArt/tabasics.py:851
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:192
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:193
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:201
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:214
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:229
 msgid "text"
 msgstr "tekst"
 
-#: TurtleArt/tabasics.py:856
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:189
+#: TurtleArt/tabasics.py:852
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:195
 msgid "string value"
 msgstr "rijwaarde"
 
-#: TurtleArt/tabasics.py:860 TurtleArt/tabasics.py:863
-#: TurtleArt/tabasics.py:871 TurtleArt/tabasics.py:875
-#: TurtleArt/tawindow.py:1292 TurtleArt/tawindow.py:1371
-#: TurtleArt/tawindow.py:1384 TurtleArt/tawindow.py:1854
-#: TurtleArt/tawindow.py:4125
+#: TurtleArt/tabasics.py:856 TurtleArt/tabasics.py:859
+#: TurtleArt/tabasics.py:867 TurtleArt/tabasics.py:871
+#: TurtleArt/tawindow.py:1351 TurtleArt/tawindow.py:1448
+#: TurtleArt/tawindow.py:1461 TurtleArt/tawindow.py:2077
+#: TurtleArt/tawindow.py:4363
 msgid "action"
 msgstr "actie"
 
-#: TurtleArt/tabasics.py:865
+#: TurtleArt/tabasics.py:861
 msgid "top of nameable action stack"
 msgstr "bovenste van benoembare actie stapel"
 
-#: TurtleArt/tabasics.py:876 TurtleArt/tawindow.py:4139
+#: TurtleArt/tabasics.py:872 TurtleArt/tawindow.py:4377
 msgid "invokes named action stack"
 msgstr "roept benoemde actie stapel aan"
 
-#: TurtleArt/tabasics.py:883
+#: TurtleArt/tabasics.py:879
 msgid "store in box 1"
 msgstr "opslaan in doos 1"
 
-#: TurtleArt/tabasics.py:888
+#: TurtleArt/tabasics.py:884
 msgid "stores numeric value in Variable 1"
 msgstr "slaat getalswaarde op in Variabele 1"
 
-#: TurtleArt/tabasics.py:896
+#: TurtleArt/tabasics.py:892
 msgid "store in box 2"
 msgstr "opslaan in doos 2"
 
-#: TurtleArt/tabasics.py:901
+#: TurtleArt/tabasics.py:897
 msgid "stores numeric value in Variable 2"
 msgstr "slaat getalswaarde op in Variabele 2"
 
-#: TurtleArt/tabasics.py:909
+#: TurtleArt/tabasics.py:905
 msgid "box 1"
 msgstr "doos 1"
 
-#: TurtleArt/tabasics.py:912
+#: TurtleArt/tabasics.py:908
 msgid "Variable 1 (numeric value)"
 msgstr "Variabele 1 (getalswaarde)"
 
-#: TurtleArt/tabasics.py:919
+#: TurtleArt/tabasics.py:915
 msgid "box 2"
 msgstr "doos 2"
 
-#: TurtleArt/tabasics.py:922
+#: TurtleArt/tabasics.py:918
 msgid "Variable 2 (numeric value)"
 msgstr "Variabele 2 (getalswaarde)"
 
-#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
+#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
 msgid "store in"
 msgstr "sla op in"
 
-#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
+#: TurtleArt/tabasics.py:924 TurtleArt/tabasics.py:939
 msgid "box"
 msgstr "doos"
 
-#: TurtleArt/tabasics.py:928 TurtleArt/tawindow.py:4189
+#: TurtleArt/tabasics.py:924 TurtleArt/tawindow.py:4427
 msgid "value"
 msgstr "waarde"
 
-#: TurtleArt/tabasics.py:932 TurtleArt/tabasics.py:945
-#: TurtleArt/tawindow.py:1296 TurtleArt/tawindow.py:1409
-#: TurtleArt/tawindow.py:1858 TurtleArt/tawindow.py:4152
-#: TurtleArt/tawindow.py:4180
+#: TurtleArt/tabasics.py:928 TurtleArt/tabasics.py:942
+#: TurtleArt/tawindow.py:1355 TurtleArt/tawindow.py:1486
+#: TurtleArt/tawindow.py:2081 TurtleArt/tawindow.py:4390
+#: TurtleArt/tawindow.py:4418
 msgid "my box"
 msgstr "mijn vakje"
 
-#: TurtleArt/tabasics.py:933 TurtleArt/tawindow.py:4194
+#: TurtleArt/tabasics.py:929 TurtleArt/tawindow.py:4432
 msgid "stores numeric value in named variable"
 msgstr "slaat getalswaarde op in benoemde variabele"
 
-#: TurtleArt/tabasics.py:948 TurtleArt/tawindow.py:4166
+#: TurtleArt/tabasics.py:945 TurtleArt/tawindow.py:4404
 msgid "named variable (numeric value)"
 msgstr "benoemde variabele (getalswaarde)"
 
-#: TurtleArt/tabasics.py:955 TurtleArt/tabasics.py:974
+#: TurtleArt/tabasics.py:952 TurtleArt/tabasics.py:971
 msgid "action 1"
 msgstr "actie 1"
 
-#: TurtleArt/tabasics.py:958
+#: TurtleArt/tabasics.py:955
 msgid "top of Action 1 stack"
 msgstr "bovenste van Actie 1 stapel"
 
-#: TurtleArt/tabasics.py:964 TurtleArt/tabasics.py:984
+#: TurtleArt/tabasics.py:961 TurtleArt/tabasics.py:981
 msgid "action 2"
 msgstr "actie 2"
 
-#: TurtleArt/tabasics.py:967
+#: TurtleArt/tabasics.py:964
 msgid "top of Action 2 stack"
 msgstr "bovenste van Actie 2 stapel"
 
-#: TurtleArt/tabasics.py:977
+#: TurtleArt/tabasics.py:974
 msgid "invokes Action 1 stack"
 msgstr "roept Actie 1 stapel aan"
 
-#: TurtleArt/tabasics.py:987
+#: TurtleArt/tabasics.py:984
 msgid "invokes Action 2 stack"
 msgstr "roept Actie 2 stapel aan"
 
-#: TurtleArt/tabasics.py:995
+#: TurtleArt/tabasics.py:992
 msgid "trash"
 msgstr "prullenbak"
 
-#: TurtleArt/tabasics.py:999
+#: TurtleArt/tabasics.py:996
 msgid "empty trash"
 msgstr "leeg afval"
 
-#: TurtleArt/tabasics.py:1000
+#: TurtleArt/tabasics.py:997
 msgid "permanently deletes items in trash"
 msgstr "verwijdert items uit afval voorgoed"
 
-#: TurtleArt/tabasics.py:1004
+#: TurtleArt/tabasics.py:1001
 msgid "restore all"
 msgstr "herlaad alles"
 
-#: TurtleArt/tabasics.py:1005
+#: TurtleArt/tabasics.py:1002
 msgid "restore all blocks from trash"
 msgstr "herlaad alle blokken van afval"
 
-#: TurtleArt/tabasics.py:1009
+#: TurtleArt/tabasics.py:1006
 msgid "clear all"
 msgstr "wis alles"
 
-#: TurtleArt/tabasics.py:1010
+#: TurtleArt/tabasics.py:1007
 msgid "move all blocks to trash"
 msgstr "verplaats alle blokken naar de prullenbak"
 
-#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:1833
-#: TurtleArtActivity.py:703
+#: TurtleArt/tacollaboration.py:152 TurtleArt/tawindow.py:2055
+#: TurtleArtActivity.py:751
 msgid "Share selected blocks"
 msgstr "Deel geselecteerde blokken"
 
 #: TurtleArt/taconstants.py:209 TurtleArt/taconstants.py:231
 #: TurtleArt/taconstants.py:252 TurtleArt/taconstants.py:294
 #: TurtleArt/taconstants.py:336 TurtleArt/taconstants.py:378
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:963
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:978
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:993
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1008
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1023
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1038
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:980
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:995
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1010
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1025
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1040
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1055
 msgid "Title"
 msgstr "Titel"
 
-#: TurtleArt/talogo.py:374 TurtleArtActivity.py:683
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1492
+#: TurtleArt/talogo.py:370 TurtleArtActivity.py:731
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1538
 msgid "Stop turtle"
 msgstr "Stop schildpad"
 
-#: TurtleArt/talogo.py:384 TurtleArtActivity.py:322 TurtleArtActivity.py:684
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1485
+#: TurtleArt/talogo.py:380 TurtleArtActivity.py:360 TurtleArtActivity.py:732
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1529
 msgid "Show blocks"
 msgstr "Toon blokken"
 
-#: TurtleArt/talogo.py:388 TurtleArtActivity.py:326 TurtleArtActivity.py:894
+#: TurtleArt/talogo.py:384 TurtleArtActivity.py:364 TurtleArtActivity.py:996
 msgid "Hide blocks"
 msgstr "Verberg blokken"
 
-#: TurtleArt/talogo.py:511
+#: TurtleArt/talogo.py:508
 msgid "did not output to"
 msgstr "gaf geen uitvoer naar"
 
-#: TurtleArt/talogo.py:570
+#: TurtleArt/talogo.py:567
 msgid "I don't know how to"
 msgstr "Ik weet niet hoe"
 
-#: TurtleArt/talogo.py:624
+#: TurtleArt/talogo.py:623
 msgid "doesn't like"
 msgstr "houdt niet van"
 
-#: TurtleArt/talogo.py:624
+#: TurtleArt/talogo.py:623
 msgid "as input"
 msgstr "als invoer"
 
@@ -772,33 +769,32 @@ msgstr "toont volgende palet"
 msgid "changes the orientation of the palette of blocks"
 msgstr "wijzigt de richting van het blokkenpalet"
 
-#: TurtleArt/tautils.py:196
+#: TurtleArt/tautils.py:295
 msgid "Load..."
 msgstr "Laden..."
 
-#: TurtleArt/tautils.py:206
+#: TurtleArt/tautils.py:305
 msgid "Save..."
 msgstr "Bewaren..."
 
-#: TurtleArt/tautils.py:483
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:713
+#: TurtleArt/tautils.py:586
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:730
 msgid "click to open"
 msgstr "klik om te openen"
 
-#: TurtleArt/tawindow.py:989 TurtleArt/tawindow.py:990
+#: TurtleArt/tawindow.py:1033 TurtleArt/tawindow.py:1034
 msgid "orientation"
 msgstr "oriëntatie"
 
-#: TurtleArt/tawindow.py:1000 TurtleArt/tawindow.py:1470
+#: TurtleArt/tawindow.py:1044 TurtleArt/tawindow.py:1644
 msgid "next"
 msgstr "volgende"
 
-#: TurtleArt/tawindow.py:1012 TurtleArt/tawindow.py:1013
-#: TurtleArt/tawindow.py:1490
+#: TurtleArt/tawindow.py:1063 TurtleArt/tawindow.py:1664
 msgid "shift"
 msgstr "schuif"
 
-#: TurtleArt/tawindow.py:1256
+#: TurtleArt/tawindow.py:1316
 msgid ""
 "Please hit the Stop Button before making changes to your Turtle Blocks "
 "program"
@@ -806,198 +802,220 @@ msgstr ""
 "Druk op de Stop Knop voor het maken van wijzigingen op je Schildpad Blokken "
 "programma"
 
-#: TurtleArt/tawindow.py:1310
+#: TurtleArt/tawindow.py:1369
 msgid "Select blocks to share"
 msgstr "Selecteer blokken om te delen"
 
-#: TurtleArt/tawindow.py:3868 pysamples/grecord.py:205
-msgid "Turtle Art"
-msgstr "Schildpad Kunst"
+#: TurtleArt/tawindow.py:1530 TurtleArtActivity.py:632
+#: TurtleArtActivity.py:781 turtleblocks.py:397
+msgid "Save stack"
+msgstr "Opslaan stapel"
 
-#: TurtleArt/tawindow.py:3977
+#: TurtleArt/tawindow.py:1531 TurtleArt/tawindow.py:1546
+msgid "Really overwrite stack?"
+msgstr "Echt stapel overschrijven?"
+
+#: TurtleArt/tawindow.py:1534 TurtleArt/tawindow.py:1574
+#: gnome_plugins/uploader_plugin.py:144
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: TurtleArt/tawindow.py:1538 TurtleArt/tawindow.py:1549
+msgid "Overwrite stack"
+msgstr "Overschrijven stapel"
+
+#: TurtleArt/tawindow.py:1570 TurtleArt/tawindow.py:1578
+#: TurtleArt/tawindow.py:1588 TurtleArtActivity.py:634 turtleblocks.py:399
+msgid "Delete stack"
+msgstr "Verwijderen stapel"
+
+#: TurtleArt/tawindow.py:1571 TurtleArt/tawindow.py:1585
+msgid "Really delete stack?"
+msgstr "Echt stapel verwijderen?"
+
+#: TurtleArt/tawindow.py:4215
 msgid "image"
 msgstr "afbeelding"
 
-#: TurtleArtActivity.py:166 TurtleArtActivity.py:709 TurtleArtActivity.py:823
-#: TurtleArtActivity.py:853 turtleblocks.py:360
+#: TurtleArtActivity.py:188 TurtleArtActivity.py:757 TurtleArtActivity.py:925
+#: TurtleArtActivity.py:955 turtleblocks.py:371
 msgid "Save as Logo"
 msgstr "Bewaar als Logo"
 
-#: TurtleArtActivity.py:203 TurtleArtActivity.py:708 TurtleArtActivity.py:820
-#: TurtleArtActivity.py:850 turtleblocks.py:358
+#: TurtleArtActivity.py:235 TurtleArtActivity.py:756 TurtleArtActivity.py:922
+#: TurtleArtActivity.py:952 turtleblocks.py:369
 msgid "Save as image"
 msgstr "Opslaan als afbeelding"
 
-#: TurtleArtActivity.py:211
+#: TurtleArtActivity.py:243
 msgid "snapshot"
 msgstr "foto"
 
-#: TurtleArtActivity.py:219 TurtleArtActivity.py:643 TurtleArtActivity.py:685
-#: TurtleArtActivity.py:829 TurtleArtActivity.py:856
+#: TurtleArtActivity.py:251 TurtleArtActivity.py:691 TurtleArtActivity.py:733
+#: TurtleArtActivity.py:931 TurtleArtActivity.py:958
 msgid "Save snapshot"
 msgstr "Bewaar foto"
 
-#: TurtleArtActivity.py:260 TurtleArtActivity.py:616 TurtleArtActivity.py:759
-#: turtleblocks.py:378
+#: TurtleArtActivity.py:296 TurtleArtActivity.py:657 TurtleArtActivity.py:808
 msgid "Turn off hover help"
 msgstr "Zet uit muistips"
 
-#: TurtleArtActivity.py:266 turtleblocks.py:380
+#: TurtleArtActivity.py:303 turtleblocks.py:390
 msgid "Turn on hover help"
 msgstr "Zet aan muistips"
 
-#: TurtleArtActivity.py:274 turtleblocks.py:390
+#: TurtleArtActivity.py:312 turtleblocks.py:404
 msgid "Show palette"
 msgstr "Toon palet"
 
-#: TurtleArtActivity.py:280 TurtleArtActivity.py:882 turtleblocks.py:392
+#: TurtleArtActivity.py:318 TurtleArtActivity.py:984 turtleblocks.py:406
 msgid "Hide palette"
 msgstr "Verberg palet"
 
-#: TurtleArtActivity.py:447
+#: TurtleArtActivity.py:485
 msgid "Rescale coordinates down"
 msgstr "Herschaal coördinaten neer"
 
-#: TurtleArtActivity.py:451 TurtleArtActivity.py:608 TurtleArtActivity.py:755
+#: TurtleArtActivity.py:489 TurtleArtActivity.py:648 TurtleArtActivity.py:804
 msgid "Rescale coordinates up"
 msgstr "Herschaal coördinaten op"
 
-#: TurtleArtActivity.py:541 TurtleArtActivity.py:577 TurtleArtActivity.py:677
-#: TurtleArtActivity.py:730 turtleblocks.py:387
+#: TurtleArtActivity.py:579 TurtleArtActivity.py:615 TurtleArtActivity.py:725
+#: TurtleArtActivity.py:778 turtleblocks.py:401
 msgid "Edit"
 msgstr "Bewerk"
 
-#: TurtleArtActivity.py:546 TurtleArtActivity.py:575 TurtleArtActivity.py:678
-#: TurtleArtActivity.py:747 turtleblocks.py:382
+#: TurtleArtActivity.py:584 TurtleArtActivity.py:613 TurtleArtActivity.py:726
+#: TurtleArtActivity.py:796 turtleblocks.py:392
 msgid "View"
 msgstr "Bekijk"
 
-#: TurtleArtActivity.py:573 TurtleArtActivity.py:679
+#: TurtleArtActivity.py:611 TurtleArtActivity.py:727
 msgid "Project"
 msgstr "Project"
 
-#: TurtleArtActivity.py:579 TurtleArtActivity.py:676 TurtleArtActivity.py:705
-#: TurtleArtActivity.py:707 TurtleArtActivity.py:815
+#: TurtleArtActivity.py:617 TurtleArtActivity.py:724 TurtleArtActivity.py:753
+#: TurtleArtActivity.py:755 TurtleArtActivity.py:917
 msgid "Save/Load"
 msgstr "BewaarLaden"
 
-#: TurtleArtActivity.py:587 TurtleArtActivity.py:731 turtleblocks.py:385
+#: TurtleArtActivity.py:625 TurtleArtActivity.py:779 turtleblocks.py:395
 msgid "Copy"
 msgstr "Kopieer"
 
-#: TurtleArtActivity.py:589 TurtleArtActivity.py:732 turtleblocks.py:386
+#: TurtleArtActivity.py:627 TurtleArtActivity.py:780 turtleblocks.py:396
 msgid "Paste"
 msgstr "Plak"
 
-#: TurtleArtActivity.py:591
+#: TurtleArtActivity.py:629
 msgid "Restore blocks from trash"
 msgstr "Herlaad alle blokken van afval"
 
-#: TurtleArtActivity.py:594 TurtleArtActivity.py:748
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
+#: TurtleArtActivity.py:637 TurtleArtActivity.py:797
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:806
 msgid "Fullscreen"
 msgstr "Schermvullend"
 
-#: TurtleArtActivity.py:596 TurtleArtActivity.py:749 turtleblocks.py:366
+#: TurtleArtActivity.py:640 TurtleArtActivity.py:798 turtleblocks.py:377
 msgid "Cartesian coordinates"
 msgstr "Cartesische coördinaten"
 
-#: TurtleArtActivity.py:598 TurtleArtActivity.py:751 turtleblocks.py:368
+#: TurtleArtActivity.py:642 TurtleArtActivity.py:800 turtleblocks.py:379
 msgid "Polar coordinates"
 msgstr "Polaire coördinaten"
 
-#: TurtleArtActivity.py:601 TurtleArtActivity.py:753
+#: TurtleArtActivity.py:645 TurtleArtActivity.py:802
 msgid "Metric coordinates"
 msgstr "Metrische coördinaten"
 
-#: TurtleArtActivity.py:611 TurtleArtActivity.py:757 turtleblocks.py:372
+#: TurtleArtActivity.py:651 TurtleArtActivity.py:806 turtleblocks.py:383
 msgid "Grow blocks"
 msgstr "Vergroot blokken"
 
-#: TurtleArtActivity.py:613 TurtleArtActivity.py:758 turtleblocks.py:374
+#: TurtleArtActivity.py:654 TurtleArtActivity.py:807 turtleblocks.py:385
 msgid "Shrink blocks"
 msgstr "Verklein blokken"
 
-#: TurtleArtActivity.py:630 TurtleArtActivity.py:647 TurtleArtActivity.py:686
-#: TurtleArtActivity.py:832
+#: TurtleArtActivity.py:678 TurtleArtActivity.py:695 TurtleArtActivity.py:734
+#: TurtleArtActivity.py:934
 msgid "Load example"
 msgstr "Laad voorbeeld"
 
-#: TurtleArtActivity.py:680 TurtleArtActivity.py:888 turtleblocks.py:399
+#: TurtleArtActivity.py:728 TurtleArtActivity.py:990 turtleblocks.py:413
 msgid "Clean"
 msgstr "Wissen"
 
-#: TurtleArtActivity.py:681 TurtleArtActivity.py:890 turtleblocks.py:400
+#: TurtleArtActivity.py:729 TurtleArtActivity.py:992 turtleblocks.py:414
 msgid "Run"
 msgstr "Draai"
 
-#: TurtleArtActivity.py:682 TurtleArtActivity.py:892 turtleblocks.py:401
+#: TurtleArtActivity.py:730 TurtleArtActivity.py:994 turtleblocks.py:415
 msgid "Step"
 msgstr "Stap"
 
-#: TurtleArtActivity.py:687 turtleblocks.py:408 util/helpbutton.py:45
+#: TurtleArtActivity.py:735 turtleblocks.py:422 util/helpbutton.py:45
 msgid "Help"
 msgstr "Help"
 
-#: TurtleArtActivity.py:688 turtleblocks.py:403
+#: TurtleArtActivity.py:736 turtleblocks.py:417
 msgid "Stop"
 msgstr "Stop"
 
-#: TurtleArtActivity.py:710 TurtleArtActivity.py:836 TurtleArtActivity.py:858
+#: TurtleArtActivity.py:758 TurtleArtActivity.py:938 TurtleArtActivity.py:960
 msgid "Load project"
 msgstr "Laad project"
 
-#: TurtleArtActivity.py:713 TurtleArtActivity.py:841 TurtleArtActivity.py:863
+#: TurtleArtActivity.py:761 TurtleArtActivity.py:943 TurtleArtActivity.py:965
 msgid "Load plugin"
 msgstr "Laad plugin"
 
-#: TurtleArtActivity.py:714 TurtleArtActivity.py:844 TurtleArtActivity.py:866
+#: TurtleArtActivity.py:762 TurtleArtActivity.py:946 TurtleArtActivity.py:968
 msgid "Load Python block"
 msgstr "Laad Python blok"
 
-#: TurtleArtActivity.py:766
+#: TurtleArtActivity.py:895
 msgid "Palettes"
 msgstr "Palet"
 
-#: TurtleArtActivity.py:810
+#: TurtleArtActivity.py:912
 msgid "Sharing blocks disabled"
 msgstr "Blokken delen uitgeschakeld"
 
-#: TurtleArtActivity.py:883
+#: TurtleArtActivity.py:985
 msgid "<Ctrl>p"
 msgstr "<Ctrl>p"
 
-#: TurtleArtActivity.py:888
+#: TurtleArtActivity.py:990
 msgid "<Ctrl>e"
 msgstr "<Ctrl>e"
 
-#: TurtleArtActivity.py:890
+#: TurtleArtActivity.py:992
 msgid "<Ctrl>r"
 msgstr "<Ctrl>r"
 
-#: TurtleArtActivity.py:892
+#: TurtleArtActivity.py:994
 msgid "<Ctrl>w"
 msgstr "<Ctrl>w"
 
-#: TurtleArtActivity.py:895
+#: TurtleArtActivity.py:997
 msgid "<Ctrl>s"
 msgstr "<Ctrl>s"
 
-#: TurtleArtActivity.py:1049 TurtleArtActivity.py:1054
-#: TurtleArtActivity.py:1121
+#: TurtleArtActivity.py:1152 TurtleArtActivity.py:1157
+#: TurtleArtActivity.py:1238
 msgid "Plugin could not be installed."
 msgstr "Plugin kon niet geïnstalleerd worden."
 
-#: TurtleArtActivity.py:1117
+#: TurtleArtActivity.py:1234
 msgid "Please restart Turtle Art in order to use the plugin."
 msgstr "Herstart Turtle Art om plugin te kunnen gebruiken."
 
-#: TurtleArtActivity.py:1135
+#: TurtleArtActivity.py:1252
 #, python-format
 msgid "Plugin %s already installed."
 msgstr "Plugin %s is al geïnstalleerd."
 
-#: TurtleArtActivity.py:1136
+#: TurtleArtActivity.py:1253
 #, python-format
 msgid "Do you want to reinstall %s?"
 msgstr "Wil je herinstalleren %s?"
@@ -1100,10 +1118,6 @@ msgstr "Beschrijving:"
 msgid "Submit to Web"
 msgstr "Naar web opsturen"
 
-#: gnome_plugins/uploader_plugin.py:144
-msgid "Cancel"
-msgstr "Annuleren"
-
 #: gnome_plugins/uploader_plugin.py:166
 msgid "Login failed"
 msgstr "Aanmelden mislukt"
@@ -1116,7 +1130,7 @@ msgstr "Uploaden mislukt!"
 #: plugins/audio_sensors/audio_sensors.py:75
 #: plugins/camera_sensor/camera_sensor.py:63
 #: plugins/light_sensor/light_sensor.py:49 plugins/rfid/rfid.py:86
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:330
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:336
 msgid "Palette of sensor blocks"
 msgstr "Palet van sensorblokken"
 
@@ -1152,7 +1166,7 @@ msgstr "microfoon invoer volume"
 
 #: plugins/audio_sensors/audio_sensors.py:119
 #: plugins/audio_sensors/audio_sensors.py:127
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
 msgid "pitch"
 msgstr "toonhoogte"
 
@@ -1190,7 +1204,7 @@ msgid "microphone input voltage"
 msgstr "microfoon invoer spanning"
 
 #: plugins/camera_sensor/camera_sensor.py:67
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:133
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:139
 msgid "Palette of media objects"
 msgstr "Palet van media voorwerpen"
 
@@ -1234,332 +1248,332 @@ msgstr "RFID"
 msgid "read value from RFID device"
 msgstr "lees waarde van RFID apparaat"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:103
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:106
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:109
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:112
 msgid "while"
 msgstr "zolang"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:107
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
 msgid "do-while-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 "do-zolang-Waar operator die booleaanse operators gebruikt van Getal palet"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:113
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:116
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:119
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:122
 msgid "until"
 msgstr "totdat"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:117
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:123
 msgid "do-until-True operator that uses boolean operators from Numbers palette"
 msgstr ""
 "doe-totdat-Waar operator die gebruik maakt van booleaanse operators van "
 "Getal palet"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:124
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:886
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:130
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:732
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:903
 msgid "top"
 msgstr "bovenin"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:126
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:132
 msgid "top of a collapsible stack"
 msgstr "bovenkant van een inklapbare stapel"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:140
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:146
 msgid "journal"
 msgstr "dagboek"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:141
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:147
 msgid "Sugar Journal media object"
 msgstr "Sugar Dagboek media voorwerp"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:151
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:157
 msgid "audio"
 msgstr "audio"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:153
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:159
 msgid "Sugar Journal audio object"
 msgstr "Sugar Dagboek geluidsvoorwerp"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:163
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:169
 msgid "video"
 msgstr "video"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:165
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:171
 msgid "Sugar Journal video object"
 msgstr "Sugar Dagboek geluidsvoorwerp"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:175
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:181
 msgid "description"
 msgstr "beschrijving"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:177
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:183
 msgid "Sugar Journal description field"
 msgstr "Sugar Dagboek beschrijvingveld"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:194
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:222
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:200
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:228
 msgid "show"
 msgstr "toon"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:198
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:211
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:226
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:204
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:217
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:232
 msgid "draws text or show media from the Journal"
 msgstr "tekent tekst of toont media uit het Dagboek"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:207
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:213
 msgid "show aligned"
 msgstr "toon uitgelijnd"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:234
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:240
 msgid "set scale"
 msgstr "stel schaal in"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:238
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:244
 msgid "sets the scale of media"
 msgstr "stelt de schaal van de media in"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:245
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:251
 msgid "save picture"
 msgstr "bewaar afbeelding"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:247
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:258
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:253
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:264
 msgid "picture name"
 msgstr "afbeeldingnaam"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:248
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:254
 msgid "saves a picture to the Sugar Journal"
 msgstr "bewaart een afbeelding in het Sugar Dagboek"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:256
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:262
 msgid "save SVG"
 msgstr "bewaar SVG"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:259
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:265
 msgid "saves turtle graphics as an SVG file in the Sugar Journal"
 msgstr "bewaart een schikdpad plaatje als een SVG bestand in het Sugar Dagboek"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:266
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:272
 msgid "scale"
 msgstr "schaal"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:270
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:276
 msgid "holds current scale value"
 msgstr "houdt deze schaalwaarde"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:275
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:281
 msgid "media wait"
 msgstr "media wacht"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:277
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
 msgid "wait for current video or audio to complete"
 msgstr "wacht tot huidige video of audio gereed is"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:283
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:289
 msgid "media stop"
 msgstr "media stop"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:285
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:291
 msgid "stop video or audio"
 msgstr "stop video of audio"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:290
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:296
 msgid "media pause"
 msgstr "media pauze"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:292
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:298
 msgid "pause video or audio"
 msgstr "pauze video of audio"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:297
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:303
 msgid "media resume"
 msgstr "media hervatten"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:299
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
 msgid "resume playing video or audio"
 msgstr "hervatten video of audio spelen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:305
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:311
 msgid "speak"
 msgstr "spreek"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:307
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:313
 msgid "hello"
 msgstr "hallo"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:308
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:314
 msgid "speaks text"
 msgstr "spreekt tekst"
 
 #. TRANS: pitch, duration, amplitude
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:316
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:322
 msgid "sinewave"
 msgstr "sinusgolf"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
 msgid "amplitude"
 msgstr "amplitude"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:317
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:323
 msgid "duration"
 msgstr "duur"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:320
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:326
 msgid "plays a sinewave at frequency, amplitude, and duration (in seconds)"
 msgstr "speelt een sinusgolf met frequentie, amplitude en duur (in secomden)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:337
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:348
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:343
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:354
 msgid "button down"
 msgstr "knop ingedrukt"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:340
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:346
 msgid "returns 1 if mouse button is pressed"
 msgstr "geeft 1 als muisknop is ingedrukt"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:351
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:357
 msgid "returns True if mouse button is pressed"
 msgstr "geeft Waar als muisknop is ingedrukt"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:358
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:364
 msgid "mouse x"
 msgstr "muis x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:361
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:367
 msgid "returns mouse x coordinate"
 msgstr "geeft muis x coördinaat"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:368
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:374
 msgid "mouse y"
 msgstr "muis y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:371
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:377
 msgid "returns mouse y coordinate"
 msgstr "geeft muis y coördinaat"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:379
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:385
 msgid "query keyboard"
 msgstr "vraag toetsenbord uit"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:381
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:387
 msgid "query for keyboard input (results stored in keyboard block)"
 msgstr ""
 "uitvraging van toetsenbord invoer (resultaten opgeslagen in toetsenbordblok)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:388
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:394
 msgid "keyboard"
 msgstr "toetsenbord"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:392
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:398
 msgid "holds results of query-keyboard block as ASCII"
 msgstr "bevat resultaten van uitvraging-toetsnebordblok als ASCII"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:424
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:430
 msgid "read pixel"
 msgstr "lees pixel"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:427
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:433
 msgid "RGB color under the turtle is pushed to the stack"
 msgstr "RGB kleur onder de schildpad is op de stapel gelegd"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:435
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:441
 msgid "turtle sees"
 msgstr "schildpad ziet"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:437
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:443
 msgid "returns the color that the turtle \"sees\""
 msgstr "geeft de kleur dat de schildpad \"ziet\""
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:445
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:451
 msgid "time"
 msgstr "tijd"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:448
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:454
 msgid "elapsed time (in seconds) since program started"
 msgstr "verstreken tijd (in seconden) sinds programma startte"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:457
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:463
 msgid "Palette of extra options"
 msgstr "Palet van extra opties"
 
 #. TRANS: push adds a new item to the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:464
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:470
 msgid "push"
 msgstr "neerleggen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:467
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:473
 msgid "pushes value onto FILO (first-in last-out heap)"
 msgstr "duwt waarde op FILO (eerst-in-laatst-uit hoop)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:477
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:483
 msgid "show heap"
 msgstr "stapel weergeven"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:480
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:486
 msgid "shows values in FILO (first-in last-out heap)"
 msgstr "toont waarden in FILO (eerst-in-laatst-uit hoop)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:490
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:496
 msgid "empty heap"
 msgstr "stapel wissen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:493
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:499
 msgid "emptys FILO (first-in-last-out heap)"
 msgstr "leegt FILO (eerste-in-laatste-uit hoop)"
 
 #. TRANS: pop removes a new item from the program stack
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:504
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:510
 msgid "pop"
 msgstr "afnemen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:508
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:514
 msgid "pops value off FILO (first-in last-out heap)"
 msgstr "duwt waarde van FILO (eerst-in-laatst-uit hoop)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:519
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:529
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:525
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:535
 msgid "empty heap?"
 msgstr "stapel wissen?"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:522
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:532
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:528
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:538
 msgid "returns True if heap is empty"
 msgstr "geeft Waar terug als hoop leeg is"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:539
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:541
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:545
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:547
 msgid "comment"
 msgstr "commentaar"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:543
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
 msgid "places a comment in your code"
 msgstr "plaatst een commentaar in je code"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:549
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:555
 msgid "print"
 msgstr "druk af"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:553
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:559
 msgid "prints value in status block at bottom of the screen"
 msgstr "drukt waarde af in status blok bij de onderkant van het scherm"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:563
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:569
 msgid "Python chr operator"
 msgstr "Python chr operator"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:572
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:578
 msgid "Python int operator"
 msgstr "Python int operator"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:579
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:592
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:606
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:585
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:598
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:612
 msgid "Python"
 msgstr "Python"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:583
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:589
 msgid ""
 "a programmable block: used to add advanced single-variable math equations, e."
 "g., sin(x)"
@@ -1567,7 +1581,7 @@ msgstr ""
 "een programmeerbaar blok: gebruikt om geavanceerde enkele-variabele "
 "wiskundige vergelijkingen toe te voegen, zoals sin(x)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:596
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:602
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sqrt(x*x+y*y)"
@@ -1575,7 +1589,7 @@ msgstr ""
 "een programmeerbaar blok: gebruikt om geavanceerde meer-variabelen wisk "
 "vergelijkingen toe te voegen, zoals sqrt(x*x+y*y)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:610
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:616
 msgid ""
 "a programmable block: used to add advanced multi-variable math equations, e."
 "g., sin(x+y+z)"
@@ -1583,217 +1597,230 @@ msgstr ""
 "een programmeerbaar blok: gebruikt om geavanceerde meer-variabelen "
 "wiskundige vergelijkingen toe te voegen, zoals sin(x+y+z)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:622
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:638
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:653
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:628
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:644
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:659
 msgid "Python block"
 msgstr "Python blok"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:624
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:640
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:656
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:630
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:646
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:662
 msgid "runs code found in the tamyblock.py module found in the Journal"
 msgstr "draait code gevonden in tamyblock.py module gevonden in het Dagboek"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:669
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:675
 msgid "Cartesian"
 msgstr "Cartesisch"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:671
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
 msgid "displays Cartesian coordinates"
 msgstr "toont Cartesische coördinaten"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:677
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:683
 msgid "polar"
 msgstr "polair"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:679
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
 msgid "displays polar coordinates"
 msgstr "toont polaire coördinaten"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:685
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:756
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:691
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:773
 msgid "turtle"
 msgstr "schildpad"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:689
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:695
 msgid "chooses which turtle to command"
 msgstr "kies welk schildpad te besturen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:698
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:707
+#. TRANS: pop removes a new item from the program stack
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:703
+msgid "active turtle"
+msgstr "actief schildpad"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:706
+msgid "the name of the active turtle"
+msgstr "de naam van de actieve schildpad"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:715
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
 msgid "turtle shell"
 msgstr "turtle shall"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:700
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:708
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:717
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:725
 msgid "put a custom 'shell' on the turtle"
 msgstr "legt een aangepast 'schild' op de schildpad"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:716
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:733
 msgid "top of a collapsed stack"
 msgstr "bovenkant van een ingeklapte stapel"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:721
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:731
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:742
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:738
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:748
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:759
 msgid "load"
 msgstr "laad"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:724
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:735
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:746
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:741
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:752
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:763
 msgid "loads a block"
 msgstr "laad een blok"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:745
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:762
 msgid "setxy"
 msgstr "zetxy"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:754
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:771
 msgid "palette"
 msgstr "palet"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:757
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
 msgid "selects a palette"
 msgstr "selecteert een palet"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:765
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:782
 msgid "Palette of presentation templates"
 msgstr "Palet van presentatie sjablonen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:772
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:789
 msgid "hide blocks"
 msgstr "blokken verbergen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:774
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
 msgid "declutters canvas by hiding blocks"
 msgstr "ontwar schilderij door blokken te verbergen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:781
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:798
 msgid "show blocks"
 msgstr "blokken weergeven"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:783
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
 msgid "restores hidden blocks"
 msgstr "herlaad verborgen blokken"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:791
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:808
 msgid "hides the Sugar toolbars"
 msgstr "verbergt de Sugar werkbalken"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:800
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:817
 msgid "list"
 msgstr "lijst"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:804
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1039
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:821
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1056
 msgid "presentation bulleted list"
 msgstr "presentatiepuntenlijst"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:812
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:829
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1058
 msgid "presentation template: list of bullets"
 msgstr "presentatie sjabloon: puntenlijst"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:819
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:836
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:998
 msgid "presentation template: select Journal object (no description)"
 msgstr "presentatie sjabloon: selecteer Dagboek voorwerp (zonder beschrijving)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:826
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:843
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:983
 msgid "presentation template: select Journal object (with description)"
 msgstr "presentatie sjabloon: selecteer Dagboek voorwerp (met beschrijving)"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:833
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:850
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1043
 msgid "presentation template: select four Journal objects"
 msgstr "presentatie sjabloon: selecteer vier Dagboek voorwerpen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:840
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:847
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:996
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1011
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:864
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1013
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1028
 msgid "presentation template: select two Journal objects"
 msgstr "presentatie sjabloon: selecteer twee Dagboek voorwerpen"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:857
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:874
 msgid "xcor of left of screen"
 msgstr "xcor van linkerkant van scherm"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:862
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:879
 msgid "bottom"
 msgstr "onderkant"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:865
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:882
 msgid "ycor of bottom of screen"
 msgstr "ycor voor onderkant van scherm"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:870
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:887
 msgid "width"
 msgstr "breedte"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:873
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:890
 msgid "the canvas width"
 msgstr "de schilderij breedte"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:881
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:898
 msgid "xcor of right of screen"
 msgstr "xcor van rechterkant van scherm"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:889
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:906
 msgid "ycor of top of screen"
 msgstr "ycor van bovenkant van het scherm"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:894
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:911
 msgid "height"
 msgstr "hoogte"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:897
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:914
 msgid "the canvas height"
 msgstr "de schlderijhoogte"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:904
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:921
 msgid "title x"
 msgstr "titel x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:913
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:930
 msgid "title y"
 msgstr "titel y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:922
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:939
 msgid "left x"
 msgstr "links x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:931
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:948
 msgid "top y"
 msgstr "boven y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:940
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:957
 msgid "right x"
 msgstr "rechts x"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:949
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:966
 msgid "bottom y"
 msgstr "onderkant y"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:964
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:979
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:981
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:996
 msgid "presentation 1x1"
 msgstr "presentatie 1x1"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:994
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1011
 msgid "presentation 2x1"
 msgstr "presentatie 2x1"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1009
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1026
 msgid "presentation 1x2"
 msgstr "presentatie 1x2"
 
-#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1024
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1041
 msgid "presentation 2x2"
 msgstr "presentatie 2x2"
+
+#: plugins/turtle_blocks_extras/turtle_blocks_extras.py:1073
+msgid "Palette of user-defined operators"
+msgstr "Palet van door gebruiker-bepaalde operators"
 
 #: pysamples/brain.py:43
 msgid "Please install the Speak Activity and try again."
@@ -1848,84 +1875,87 @@ msgstr "u-bocht"
 msgid "make a uturn"
 msgstr "maak een u-bocht"
 
-#: turtleblocks.py:86
+#: turtleblocks.py:89
 msgid "usage is"
 msgstr "gebruik is"
 
-#: turtleblocks.py:240
+#: turtleblocks.py:250
 msgid "No option action:"
 msgstr "Geen optie actie:"
 
-#: turtleblocks.py:255
+#: turtleblocks.py:265
 msgid "File not found"
 msgstr "Bestand niet gevonden"
 
-#: turtleblocks.py:279
+#: turtleblocks.py:289
 #, python-format
 msgid "Configuration directory not writable: %s"
 msgstr "Configuratiedirectory is niet schrijfbaar: %s"
 
-#: turtleblocks.py:354
+#: turtleblocks.py:365
 msgid "New"
 msgstr "Nieuw"
 
-#: turtleblocks.py:355
+#: turtleblocks.py:366
 msgid "Open"
 msgstr "Open"
 
-#: turtleblocks.py:356
+#: turtleblocks.py:367
 msgid "Save"
 msgstr "Bewaar"
 
-#: turtleblocks.py:357
+#: turtleblocks.py:368
 msgid "Save as"
 msgstr "Opslaan als"
 
-#: turtleblocks.py:362
+#: turtleblocks.py:373
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: turtleblocks.py:363
+#: turtleblocks.py:374
 msgid "File"
 msgstr "Bestand"
 
-#: turtleblocks.py:370
+#: turtleblocks.py:381
 msgid "Rescale coordinates"
 msgstr "Herschaal coördinaten"
 
-#: turtleblocks.py:376
+#: turtleblocks.py:387
 msgid "Reset block size"
 msgstr "Herstel blokgrootte"
 
-#: turtleblocks.py:394
+#: turtleblocks.py:408
 msgid "Show/hide blocks"
 msgstr "Toon/verberg blokken"
 
-#: turtleblocks.py:396
+#: turtleblocks.py:410
 msgid "Tools"
 msgstr "Werktuigen"
 
-#: turtleblocks.py:402
+#: turtleblocks.py:416
 msgid "Debug"
 msgstr "Debug"
 
-#: turtleblocks.py:404
+#: turtleblocks.py:418
 msgid "Turtle"
 msgstr "Schildpad"
 
-#: turtleblocks.py:407
+#: turtleblocks.py:421
 msgid "About..."
 msgstr "Over..."
 
-#: turtleblocks.py:447
+#: turtleblocks.py:461
 msgid "You have unsaved work. Would you like to save before quitting?"
 msgstr ""
 "Je hebt nog werk dat niet is opgeslagen. Wil je het opslaan voor het "
 "afsluiten?"
 
-#: turtleblocks.py:448
+#: turtleblocks.py:462
 msgid "Save project?"
 msgstr "Project opslaan?"
+
+#~ msgid "Turtle Art"
+#~ msgstr "Schildpad Kunst"
 
 #~ msgid "Turtle Art Mini"
 #~ msgstr "Schildpad Kunst Mini"
