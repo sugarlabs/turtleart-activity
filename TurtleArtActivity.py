@@ -57,12 +57,12 @@ import gconf
 from gettext import gettext as _
 
 from TurtleArt.tapalette import (palette_names, help_strings, help_palettes,
-                                help_windows)
+                                 help_windows)
 from TurtleArt.taconstants import (BLOCK_SCALE, XO1, XO15, XO175, XO30, XO4,
                                    MIMETYPE)
 from TurtleArt.taexportlogo import save_logo
 from TurtleArt.tautils import (data_to_file, data_to_string, data_from_string,
-                              get_path, chooser, get_hardware)
+                               get_path, chooser, get_hardware)
 from TurtleArt.tawindow import TurtleArtWindow
 from TurtleArt.tacollaboration import Collaboration
 
@@ -199,10 +199,10 @@ class TurtleArtActivity(activity.Activity):
     def _load_ta_project(self, dsobject):
         ''' Load a TA project from the datastore. '''
         try:
-            _logger.debug('Opening %s ' % dsobject.file_path)
+            _logger.debug('Opening %s ' % (dsobject.file_path))
             self.read_file(dsobject.file_path, run_it=False, plugin=False)
         except:
-            _logger.debug("Couldn't open %s" % dsobject.file_path)
+            _logger.debug("Couldn't open %s" % (dsobject.file_path))
 
     def do_load_ta_plugin_cb(self, button):
         ''' Load a plugin from the Journal. '''
@@ -216,7 +216,7 @@ class TurtleArtActivity(activity.Activity):
 
     def _load_ta_plugin(self, dsobject):
         ''' Load a TA plugin from the datastore. '''
-        _logger.debug('Opening %s ' % dsobject.file_path)
+        _logger.debug('Opening %s ' % (dsobject.file_path))
         self.read_file(dsobject.file_path, run_it=False, plugin=True)
 
     def do_load_python_cb(self, button):
@@ -531,7 +531,7 @@ class TurtleArtActivity(activity.Activity):
 
     def is_fullscreen(self):
         ''' Are we in fullscreen mode (toolbars hidden)? '''
-        # Fixme: this should be a exposed as a window property, not private 
+        # Fixme: this should be a exposed as a window property, not private
         return self._is_fullscreen
 
     def toolbars_expanded(self, palette=False):
@@ -577,13 +577,13 @@ class TurtleArtActivity(activity.Activity):
 
             edit_toolbar = gtk.Toolbar()
             self.edit_toolbar_button = ToolbarButton(label=_('Edit'),
-                                                page=edit_toolbar,
-                                                icon_name='toolbar-edit')
+                                                     page=edit_toolbar,
+                                                     icon_name='toolbar-edit')
 
             self._view_toolbar = gtk.Toolbar()
             self.view_toolbar_button = ToolbarButton(label=_('View'),
-                                                page=self._view_toolbar,
-                                                icon_name='toolbar-view')
+                                                     page=self._view_toolbar,
+                                                     icon_name='toolbar-view')
             self._palette_toolbar = gtk.Toolbar()
             self.palette_toolbar_button = ToolbarButton(
                 page=self._palette_toolbar, icon_name='palette')
@@ -802,7 +802,7 @@ class TurtleArtActivity(activity.Activity):
             add_paragraph(help_box, _('Metric coordinates'),
                           icon='view-metric')
         add_paragraph(help_box, _('Rescale coordinates up'),
-                           icon='expand-coordinates')
+                      icon='expand-coordinates')
         add_paragraph(help_box, _('Grow blocks'), icon='resize+')
         add_paragraph(help_box, _('Shrink blocks'), icon='resize-')
         add_paragraph(help_box, _('Turn off hover help'), icon='help-off')
@@ -872,35 +872,38 @@ class TurtleArtActivity(activity.Activity):
                 palette_group = None
             else:
                 palette_group = self.palette_buttons[0]
-            _logger.debug('palette_buttons.append %s', palette_name)
-            self.palette_buttons.append(self._radio_button_factory(
+            _logger.debug('palette_buttons.append %s', (palette_name))
+            self.palette_buttons.append(
+                self._radio_button_factory(
                     palette_name + 'off',
                     None,
                     self.do_palette_buttons_cb,
                     i,
                     help_strings[palette_name],
                     palette_group))
-            self._overflow_buttons.append(self._add_button(
-                palette_name + 'off',
-                None,
-                self.do_palette_buttons_cb,
-                None,
-                arg=i))
+            self._overflow_buttons.append(
+                self._add_button(
+                    palette_name + 'off',
+                    None,
+                    self.do_palette_buttons_cb,
+                    None,
+                    arg=i))
         # And we need an extra button for the overflow
         self._overflow_palette_button = self._radio_button_factory(
-                'overflow',
-                None,
-                self._overflow_palette_cb,
-                None,
-                _('Palettes'),
-                palette_group)
+            'overflow',
+            None,
+            self._overflow_palette_cb,
+            None,
+            _('Palettes'),
+            palette_group)
 
     def _overflow_palette_cb(self, button):
         _logger.debug('overflow palette cb')
         if self._overflow_palette:
             if not self._overflow_palette.is_up():
-                self._overflow_palette.popup(immediate=True,
-                                    state=self._overflow_palette.SECONDARY)
+                self._overflow_palette.popup(
+                    immediate=True,
+                    state=self._overflow_palette.SECONDARY)
             else:
                 self._overflow_palette.popdown(immediate=True)
             return
@@ -931,8 +934,11 @@ class TurtleArtActivity(activity.Activity):
                 'filesaveoff', _('Save snapshot'), self.do_keep_cb,
                 None, button_box)
             self.samples_button2, self.samples_label2 = \
-                self._add_button_and_label('ta-open', _('Load example'),
-                                           self.do_samples_cb, None, button_box)
+                self._add_button_and_label('ta-open',
+                                           _('Load example'),
+                                           self.do_samples_cb,
+                                           None,
+                                           button_box)
 
             self.load_ta_project, label = self._add_button_and_label(
                 'load-from-journal', _('Load project'),
@@ -1040,8 +1046,8 @@ class TurtleArtActivity(activity.Activity):
         self.set_canvas(self.fixed)
         self.vbox = gtk.VBox(False, 0)
         self.vbox.set_size_request(gtk.gdk.screen_width(),
-                                   gtk.gdk.screen_height() - \
-                                       2 * style.GRID_CELL_SIZE)
+                                   gtk.gdk.screen_height() -
+                                   2 * style.GRID_CELL_SIZE)
         self.sw = gtk.ScrolledWindow()
         # self.set_canvas(self.sw)
         self.vbox.pack_end(self.sw, True, True)
@@ -1139,7 +1145,7 @@ class TurtleArtActivity(activity.Activity):
         self.metadata['turtle blocks'] = ''.join(self.tw.used_block_list)
         self.metadata['public'] = data_to_string(['activity count',
                                                   'turtle blocks'])
-        _logger.debug('Wrote to file: %s' % file_path)
+        _logger.debug('Wrote to file: %s' % (file_path))
 
     def _load_a_plugin(self, tmp_dir):
         ''' Load a plugin from the Journal and initialize it '''
@@ -1193,8 +1199,8 @@ Plugin section of plugin.info file.')
                 self.tw.load_media_shapes()
                 for i, palette_name in enumerate(palette_name_list):
                     if create_palette[i]:
-                        _logger.debug('Creating plugin palette %s (%d)' % (
-                                palette_name.strip(), i))
+                        _logger.debug('Creating plugin palette %s (%d)' %
+                                      (palette_name.strip(), i))
                         j = len(self.palette_buttons)
                         self.palette_buttons.append(
                             self._radio_button_factory(
@@ -1221,11 +1227,10 @@ skipping insert')
                 # We need to change the index associated with the
                 # Trash Palette Button.
                 j = len(palette_names)
-                self.palette_buttons[palette_names.index(
-                        palette_name.strip())].connect(
+                pidx = palette_names.index(palette_name.strip())
+                self.palette_buttons[pidx].connect(
                     'clicked', self.do_palette_buttons_cb, j - 1)
-                self._overflow_buttons[palette_names.index(
-                        palette_name.strip())].connect(
+                self._overflow_buttons[pidx].connect(
                     'clicked', self.do_palette_buttons_cb, j - 1)
                 _logger.debug('reinitializing palette toolbar')
                 self._setup_palette_toolbar()
@@ -1286,17 +1291,17 @@ in order to use the plugin.'))
                     subprocess.call(['cp', file_path, tmpfile])
                     status = subprocess.call(['gunzip', tmpfile])
                     if status == 0:
-                        _logger.debug('tarfile.open %s' % tmpfile[:3])
+                        _logger.debug('tarfile.open %s' % (tmpfile[:3]))
                         tar_fd = tarfile.open(tmpfile[:-3], 'r')
                     else:
-                        _logger.debug('tarfile.open %s' % tmpfile)
+                        _logger.debug('tarfile.open %s' % (tmpfile))
                         tar_fd = tarfile.open(tmpfile, 'r')
                 except:
-                    _logger.debug('tarfile.open %s' % file_path)
+                    _logger.debug('tarfile.open %s' % (file_path))
                     tar_fd = tarfile.open(file_path, 'r')
 
                 tmp_dir = tempfile.mkdtemp()
-                _logger.debug('tmp_dir %s' % tmp_dir)
+                _logger.debug('tmp_dir %s' % (tmp_dir))
 
                 try:
                     tar_fd.extractall(tmp_dir)
@@ -1308,11 +1313,11 @@ in order to use the plugin.'))
                         if os.path.exists(turtle_code):
                             self.tw.load_files(turtle_code, run_it)
                     else:
-                        _logger.debug('load a plugin from %s' % tmp_dir)
+                        _logger.debug('load a plugin from %s' % (tmp_dir))
                         self._load_a_plugin(tmp_dir)
                 except:
-                    _logger.debug('Could not extract files from %s.' % (
-                            file_path))
+                    _logger.debug('Could not extract files from %s.' %
+                                  (file_path))
                 finally:
                     if not plugin:
                         shutil.rmtree(tmp_dir)
