@@ -51,30 +51,37 @@ import locale
 import logging
 
 from taconstants import (HORIZONTAL_PALETTE, VERTICAL_PALETTE, BLOCK_SCALE,
-    MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES, TOOLBAR_SHAPES, TAB_LAYER,
-    RETURN, OVERLAY_LAYER, CATEGORY_LAYER, BLOCKS_WITH_SKIN, ICON_SIZE,
-    PALETTE_SCALE, PALETTE_WIDTH, SKIN_PATHS, MACROS, TOP_LAYER, BLOCK_LAYER,
-    OLD_NAMES, DEFAULT_TURTLE, TURTLE_LAYER, EXPANDABLE, NO_IMPORT,
-    TEMPLATES, PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
-    EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY, CONTENT_ARGS,
-    CONSTANTS, EXPAND_SKIN, PROTO_LAYER, EXPANDABLE_FLOW, SUFFIX)
+                         MEDIA_SHAPES, STATUS_SHAPES, OVERLAY_SHAPES,
+                         TOOLBAR_SHAPES, TAB_LAYER, RETURN, OVERLAY_LAYER,
+                         CATEGORY_LAYER, BLOCKS_WITH_SKIN, ICON_SIZE,
+                         PALETTE_SCALE, PALETTE_WIDTH, SKIN_PATHS, MACROS,
+                         TOP_LAYER, BLOCK_LAYER, OLD_NAMES, DEFAULT_TURTLE,
+                         TURTLE_LAYER, EXPANDABLE, NO_IMPORT, TEMPLATES,
+                         PYTHON_SKIN, PALETTE_HEIGHT, STATUS_LAYER, OLD_DOCK,
+                         EXPANDABLE_ARGS, XO1, XO15, XO175, XO30, XO4, TITLEXY,
+                         CONTENT_ARGS, CONSTANTS, EXPAND_SKIN, PROTO_LAYER,
+                         EXPANDABLE_FLOW, SUFFIX)
 from tapalette import (palette_names, palette_blocks, expandable_blocks,
-    block_names, content_blocks, default_values, special_names, block_styles,
-    help_strings, hidden_proto_blocks, string_or_number_args,
-    make_palette, palette_name_to_index, palette_init_on_start)
+                       block_names, content_blocks, default_values,
+                       special_names, block_styles, help_strings,
+                       hidden_proto_blocks, string_or_number_args,
+                       make_palette, palette_name_to_index,
+                       palette_init_on_start)
 from talogo import (LogoCode, primitive_dictionary, logoerror)
 from tacanvas import TurtleGraphics
 from tablock import (Blocks, Block)
 from taturtle import (Turtles, Turtle)
 from tautils import (magnitude, get_load_name, get_save_name, data_from_file,
-    data_to_file, round_int, get_id, get_pixbuf_from_journal,
-    movie_media_type, audio_media_type, image_media_type, save_picture,
-    calc_image_size, get_path, hide_button_hit, show_button_hit, chooser,
-    arithmetic_check, xy, find_block_to_run, find_top_block, journal_check,
-    find_group, find_blk_below, data_to_string, find_start_stack,
-    get_hardware, debug_output, error_output, convert, find_hat,
-    find_bot_block, restore_clamp, collapse_clamp, data_from_string,
-    increment_name, get_screen_dpi)
+                     data_to_file, round_int, get_id, get_pixbuf_from_journal,
+                     movie_media_type, audio_media_type, image_media_type,
+                     save_picture, calc_image_size, get_path, hide_button_hit,
+                     show_button_hit, chooser, arithmetic_check, xy,
+                     find_block_to_run, find_top_block, journal_check,
+                     find_group, find_blk_below, data_to_string,
+                     find_start_stack, get_hardware, debug_output,
+                     error_output, convert, find_hat, find_bot_block,
+                     restore_clamp, collapse_clamp, data_from_string,
+                     increment_name, get_screen_dpi)
 from tasprite_factory import (SVG, svg_str_to_pixbuf, svg_from_file)
 from sprites import (Sprites, Sprite)
 
@@ -86,7 +93,7 @@ SNAP_THRESHOLD = 200
 NO_DOCK = (100, 100)  # Blocks cannot be docked
 BUTTON_SIZE = 32
 MARGIN = 5
-_UNFULLSCREEN_BUTTON_VISIBILITY_TIMEOUT = 2
+_UNFULLSCREEN_VISIBILITY_TIMEOUT = 2
 
 
 class TurtleArtWindow():
@@ -281,7 +288,7 @@ class TurtleArtWindow():
                                           init_only=False, regenerate=True,
                                           show=False)
             self.show_toolbar_palette(0, init_only=False, regenerate=True,
-                                          show=True)
+                                      show=True)
         self.saved_pictures = []
         self.block_operation = ''
 
@@ -310,15 +317,15 @@ class TurtleArtWindow():
             candidates = os.listdir(path)
             candidates.sort()
             for dirname in candidates:
-                if os.path.exists(
-                    os.path.join(path, dirname, dirname + '.py')):
+                pname = os.path.join(path, dirname, dirname + '.py')
+                if os.path.exists(pname):
                     plugin_files.append(dirname)
-        return plugin_files
+            return plugin_files
 
     def _init_plugins(self):
         ''' Try importing plugin files from the plugin dir. '''
-        for plugin_dir in self._get_plugins_from_plugins_dir(
-            self._get_plugin_home()):
+        plist = self._get_plugins_from_plugins_dir(self._get_plugin_home())
+        for plugin_dir in plist:
             self.init_plugin(plugin_dir)
 
     def init_plugin(self, plugin_dir):
@@ -405,30 +412,31 @@ class TurtleArtWindow():
         self.window.connect("button-release-event", self._buttonrelease_cb)
         self.window.connect("motion-notify-event", self._move_cb)
         self.window.connect("key-press-event", self._keypress_cb)
-        gtk.gdk.screen_get_default().connect('size-changed', self._configure_cb)
+        gtk.gdk.screen_get_default().connect('size-changed',
+                                             self._configure_cb)
 
         target = [("text/plain", 0, 0)]
         self.window.drag_dest_set(gtk.DEST_DEFAULT_ALL, target,
-                           gtk.gdk.ACTION_COPY | gtk.gdk.ACTION_MOVE)
+                                  gtk.gdk.ACTION_COPY | gtk.gdk.ACTION_MOVE)
         self.window.connect('drag_data_received', self._drag_data_received)
 
     def _show_unfullscreen_button(self):
-	if self.activity._is_fullscreen and \
+        if self.activity._is_fullscreen and \
                 self.activity.props.enable_fullscreen_mode:
             if not self.activity._unfullscreen_button.props.visible:
                 self.activity._unfullscreen_button.show()
         # Reset the timer
         if self.activity._unfullscreen_button_timeout_id is not None:
-            gobject.source_remove(self.activity._unfullscreen_button_timeout_id)
+            gobject.source_remove(
+                self.activity._unfullscreen_button_timeout_id)
             self.activity._unfullscreen_button_timeout_id = None
-	
-	self.activity._unfullscreen_button_timeout_id = \
-            gobject.timeout_add_seconds(
-            _UNFULLSCREEN_BUTTON_VISIBILITY_TIMEOUT,
-            self.__unfullscreen_button_timeout_cb)
+
+        self.activity._unfullscreen_button_timeout_id = \
+            gobject.timeout_add_seconds(_UNFULLSCREEN_VISIBILITY_TIMEOUT,
+                                        self.__unfullscreen_button_timeout_cb)
 
     def __unfullscreen_button_timeout_cb(self):
-	self.activity._unfullscreen_button.hide()
+        self.activity._unfullscreen_button.hide()
 
     def _drag_data_received(self, w, context, x, y, data, info, time):
         ''' Handle dragging of block data from clipboard to canvas. '''
@@ -439,8 +447,8 @@ class TurtleArtWindow():
             self.paste_offset += 20
             context.finish(True, False, time)
         elif data and data.format == 8 and \
-             self.selected_blk is not None and \
-             self.selected_blk.name == 'string':
+                self.selected_blk is not None and \
+                self.selected_blk.name == 'string':
             bounds = self._text_buffer.get_bounds()
             self._text_buffer.set_text(
                 self._text_buffer.get_text(bounds[0], bounds[1]) + data.data)
@@ -462,7 +470,8 @@ class TurtleArtWindow():
             for path in SKIN_PATHS:
                 if os.path.exists(os.path.join(self.path, path,
                                                filename + '.svg')):
-                    self.media_shapes[name] = svg_str_to_pixbuf(svg_from_file(
+                    self.media_shapes[name] = svg_str_to_pixbuf(
+                        svg_from_file(
                             os.path.join(self.path, path, filename + '.svg')))
                     break
 
@@ -472,10 +481,12 @@ class TurtleArtWindow():
         for i, name in enumerate(STATUS_SHAPES):
             # Temporary hack to use wider shapes
             if name in ['print', 'help', 'status'] and self.width > 1024:
-                self.status_shapes[name] = svg_str_to_pixbuf(svg_from_file(
+                self.status_shapes[name] = svg_str_to_pixbuf(
+                    svg_from_file(
                         os.path.join(self.path, 'images', name + '1200.svg')))
             else:
-                self.status_shapes[name] = svg_str_to_pixbuf(svg_from_file(
+                self.status_shapes[name] = svg_str_to_pixbuf(
+                    svg_from_file(
                         os.path.join(self.path, 'images', name + '.svg')))
         self.status_spr = Sprite(self.sprite_list, 0, self.height - 200,
                                  self.status_shapes['status'])
@@ -484,10 +495,11 @@ class TurtleArtWindow():
         self._autohide_shape = True
 
         for name in OVERLAY_SHAPES:
-            self.overlay_shapes[name] = Sprite(self.sprite_list,
-                                                int(self.width / 2 - 600),
-                                                int(self.height / 2 - 450),
-                                                svg_str_to_pixbuf(
+            self.overlay_shapes[name] = Sprite(
+                self.sprite_list,
+                int(self.width / 2 - 600),
+                int(self.height / 2 - 450),
+                svg_str_to_pixbuf(
                     svg_from_file("%s/images/%s.svg" % (self.path, name))))
             self.overlay_shapes[name].hide()
             self.overlay_shapes[name].type = 'overlay'
@@ -498,7 +510,9 @@ class TurtleArtWindow():
             for i, name in enumerate(TOOLBAR_SHAPES):
                 self.toolbar_shapes[name] = Sprite(
                     self.sprite_list, i * 55 + offset, 0,
-                    svg_str_to_pixbuf(svg_from_file(os.path.join(
+                    svg_str_to_pixbuf(
+                        svg_from_file(
+                            os.path.join(
                                 self.path, 'icons', '%s.svg' % (name)))))
                 self.toolbar_shapes[name].set_layer(TAB_LAYER)
                 self.toolbar_shapes[name].name = name
@@ -519,15 +533,15 @@ class TurtleArtWindow():
         ''' Screen size has changed '''
         self.width = gtk.gdk.screen_width()
         self.height = gtk.gdk.screen_height()
-        CONSTANTS['titlex'] = int(-(self.width * TITLEXY[0]) / \
-            (self.coord_scale * 2))
-        CONSTANTS['leftx'] = int(-(self.width * TITLEXY[0]) / \
-            (self.coord_scale * 2))
+        CONSTANTS['titlex'] = int(-(self.width * TITLEXY[0]) /
+                                   (self.coord_scale * 2))
+        CONSTANTS['leftx'] = int(-(self.width * TITLEXY[0]) /
+                                  (self.coord_scale * 2))
         CONSTANTS['rightx'] = 0
-        CONSTANTS['titley'] = int((self.height * TITLEXY[1]) / \
-            (self.coord_scale * 2))
-        CONSTANTS['topy'] = int((self.height * (TITLEXY[1] - 0.125)) / \
-            (self.coord_scale * 2))
+        CONSTANTS['titley'] = int((self.height * TITLEXY[1]) /
+                                  (self.coord_scale * 2))
+        CONSTANTS['topy'] = int((self.height * (TITLEXY[1] - 0.125)) /
+                                (self.coord_scale * 2))
         CONSTANTS['bottomy'] = 0
         CONSTANTS['leftpos'] = int(-self.width / (self.coord_scale * 2))
         CONSTANTS['toppos'] = int(self.height / (self.coord_scale * 2))
@@ -681,10 +695,11 @@ class TurtleArtWindow():
             if shape in shape._sprites.list:
                 shape.hide()
                 showing = True
-            self.overlay_shapes[name] = Sprite(self.sprite_list,
-                                                int(self.width / 2 - 600),
-                                                int(self.height / 2 - 450),
-                                                svg_str_to_pixbuf(
+            self.overlay_shapes[name] = Sprite(
+                self.sprite_list,
+                int(self.width / 2 - 600),
+                int(self.height / 2 - 450),
+                svg_str_to_pixbuf(
                     svg_from_file("%s/images/%s.svg" % (self.path, name))))
             if showing:
                 self.overlay_shapes[name].set_layer(OVERLAY_LAYER)
@@ -982,7 +997,9 @@ class TurtleArtWindow():
             if icon_pathname is not None:
                 off_shape = svg_str_to_pixbuf(svg_from_file(icon_pathname))
             else:
-                off_shape = svg_str_to_pixbuf(svg_from_file(os.path.join(
+                off_shape = svg_str_to_pixbuf(
+                    svg_from_file(
+                        os.path.join(
                             self._icon_paths[0], 'extrasoff.svg')))
                 error_output('Unable to open %soff.svg' % (name),
                              self.running_sugar)
@@ -993,7 +1010,9 @@ class TurtleArtWindow():
             if icon_pathname is not None:
                 on_shape = svg_str_to_pixbuf(svg_from_file(icon_pathname))
             else:
-                on_shape = svg_str_to_pixbuf(svg_from_file(os.path.join(
+                on_shape = svg_str_to_pixbuf(
+                    svg_from_file(
+                        os.path.join(
                             self._icon_paths[0], 'extrason.svg')))
                 error_output('Unable to open %son.svg' % (name),
                              self.running_sugar)
@@ -1009,7 +1028,8 @@ class TurtleArtWindow():
         # Create the toolbar background for the selectors
         self.toolbar_offset = ICON_SIZE
         self.toolbar_spr = Sprite(self.sprite_list, 0, 0,
-            svg_str_to_pixbuf(svg.toolbar(2 * self.width, ICON_SIZE)))
+                                  svg_str_to_pixbuf(svg.toolbar(2 * self.width,
+                                                                ICON_SIZE)))
         self.toolbar_spr.type = 'toolbar'
         self.toolbar_spr.set_layer(CATEGORY_LAYER)
 
@@ -1024,11 +1044,21 @@ class TurtleArtWindow():
             self.palette_sprs.append([None, None])
 
         # Create the palette orientation button
-        self.palette_button.append(Sprite(self.sprite_list, 0,
-            self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
+        self.palette_button.append(
+            Sprite(
+                self.sprite_list,
+                0,
+                self.toolbar_offset,
+                svg_str_to_pixbuf(
+                    svg_from_file(
                         "%s/images/palettehorizontal.svg" % (self.path)))))
-        self.palette_button.append(Sprite(self.sprite_list, 0,
-            self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
+        self.palette_button.append(
+            Sprite(
+                self.sprite_list,
+                0,
+                self.toolbar_offset,
+                svg_str_to_pixbuf(
+                    svg_from_file(
                         "%s/images/palettevertical.svg" % (self.path)))))
         self.palette_button[0].name = _('orientation')
         self.palette_button[1].name = _('orientation')
@@ -1038,8 +1068,12 @@ class TurtleArtWindow():
         self.palette_button[1 - self.orientation].hide()
 
         # Create the palette next button
-        self.palette_button.append(Sprite(self.sprite_list, 16,
-            self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
+        self.palette_button.append(
+            Sprite(
+                self.sprite_list, 16,
+                self.toolbar_offset,
+                svg_str_to_pixbuf(
+                    svg_from_file(
                         "%s/images/palettenext.svg" % (self.path)))))
         self.palette_button[2].name = _('next')
         self.palette_button[2].type = 'palette'
@@ -1047,17 +1081,37 @@ class TurtleArtWindow():
 
         # Create the palette shift buttons
         dims = self.palette_button[0].get_dimensions()
-        self.palette_button.append(Sprite(self.sprite_list, 0,
-            self.toolbar_offset + dims[1], svg_str_to_pixbuf(svg_from_file(
+        self.palette_button.append(
+            Sprite(
+                self.sprite_list,
+                0,
+                self.toolbar_offset + dims[1],
+                svg_str_to_pixbuf(
+                    svg_from_file(
                         "%s/images/palettehshift.svg" % (self.path)))))
-        self.palette_button.append(Sprite(self.sprite_list, dims[0],
-            self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
+        self.palette_button.append(
+            Sprite(
+                self.sprite_list,
+                dims[0],
+                self.toolbar_offset,
+                svg_str_to_pixbuf(
+                    svg_from_file(
                         "%s/images/palettevshift.svg" % (self.path)))))
-        self.palette_button.append(Sprite(self.sprite_list, 0,
-            self.toolbar_offset + dims[1], svg_str_to_pixbuf(svg_from_file(
+        self.palette_button.append(
+            Sprite(
+                self.sprite_list,
+                0,
+                self.toolbar_offset + dims[1],
+                svg_str_to_pixbuf(
+                    svg_from_file(
                         "%s/images/palettehshift2.svg" % (self.path)))))
-        self.palette_button.append(Sprite(self.sprite_list, dims[0],
-            self.toolbar_offset, svg_str_to_pixbuf(svg_from_file(
+        self.palette_button.append(
+            Sprite(
+                self.sprite_list,
+                dims[0],
+                self.toolbar_offset,
+                svg_str_to_pixbuf(
+                    svg_from_file(
                         "%s/images/palettevshift2.svg" % (self.path)))))
         for i in range(4):
             self.palette_button[3 + i].name = _('shift')
@@ -1071,8 +1125,8 @@ class TurtleArtWindow():
 
         if not n < len(self.palettes):
             debug_output(
-                '_create_proto_blocks: palette index %d is out of range' % (n),
-                self.running_sugar)
+                '_create_proto_blocks: palette index %d is out of range' %
+                (n), self.running_sugar)
             return
 
         for blk in self.palettes[n]:
@@ -1087,9 +1141,9 @@ class TurtleArtWindow():
                     found_block = True
                     break
             if not found_block:
-                self.palettes[n].append(Block(
-                        self.block_list, self.sprite_list, name, 0, 0,
-                        'proto', [], PALETTE_SCALE))
+                self.palettes[n].append(
+                    Block(self.block_list, self.sprite_list, name, 0, 0,
+                          'proto', [], PALETTE_SCALE))
                 if name in hidden_proto_blocks:
                     self.palettes[n][-1].set_visibility(False)
                 else:
@@ -1097,8 +1151,9 @@ class TurtleArtWindow():
                         self.palettes[n][-1].spr.set_layer(PROTO_LAYER)
                         self.palettes[n][-1].unhighlight()
                     else:
-                        debug_output('WARNING: block sprite is None' % (
-                                self.palettes[n][-1].name), self.running_sugar)
+                        debug_output('WARNING: block sprite is None' %
+                                     (self.palettes[n][-1].name),
+                                     self.running_sugar)
 
             # Some proto blocks get a skin.
             if name in block_styles['box-style-media']:
@@ -1119,7 +1174,7 @@ class TurtleArtWindow():
             for i in range(len(palette_blocks)):
                 self.selectors[i].hide()
         elif self.selected_palette is not None and \
-             not self.activity.has_toolbarbox:
+                not self.activity.has_toolbarbox:
             self.activity.palette_buttons[self.selected_palette].set_icon(
                 palette_names[self.selected_palette] + 'off')
 
@@ -1131,8 +1186,8 @@ class TurtleArtWindow():
         if palette is not None:
             if not palette < len(self.palettes):
                 debug_output(
-                    '_hide_previous_palette: index %d is out of range' % \
-                        (palette), self.running_sugar)
+                    '_hide_previous_palette: index %d is out of range' %
+                    (palette), self.running_sugar)
                 return
             for proto in self.palettes[palette]:
                 proto.spr.hide()
@@ -1142,9 +1197,9 @@ class TurtleArtWindow():
                 self.selectors[palette].set_shape(
                     self.selector_shapes[palette][0])
             elif palette is not None and palette != self.selected_palette \
-                 and not self.activity.has_toolbarbox:
-                    self.activity.palette_buttons[palette].set_icon(
-                        palette_names[palette] + 'off')
+                    and not self.activity.has_toolbarbox:
+                self.activity.palette_buttons[palette].set_icon(
+                    palette_names[palette] + 'off')
             if palette == palette_names.index('trash'):
                 for blk in self.trash_stack:
                     for gblk in find_group(blk):
@@ -1250,10 +1305,10 @@ class TurtleArtWindow():
                 if show:
                     self.palette_button[2].move((PALETTE_WIDTH - BUTTON_SIZE,
                                                  self.toolbar_offset))
-                    self.palette_button[3].move((0,
-                                                 self.toolbar_offset + BUTTON_SIZE))
-                    self.palette_button[5].move((0,
-                                                 self.toolbar_offset + BUTTON_SIZE))
+                    self.palette_button[3].move(
+                        (0, self.toolbar_offset + BUTTON_SIZE))
+                    self.palette_button[5].move(
+                        (0, self.toolbar_offset + BUTTON_SIZE))
             if show:
                 self.palette_button[2].save_xy = \
                     self.palette_button[2].get_xy()
@@ -1426,7 +1481,7 @@ before making changes to your Turtle Blocks program'))
                             else:
                                 self._put_in_trash(find_top_block(b))
                     self.show_toolbar_palette(palette_names.index('trash'),
-                                      regenerate=True)
+                                              regenerate=True)
                 elif blk.name in MACROS:
                     self.new_macro(blk.name, x + 20, y + 20)
                 else:
@@ -1461,8 +1516,9 @@ before making changes to your Turtle Blocks program'))
                             defaults = [_('action')]
                             if self._find_proto_name('stack', defaults[0]):
                                 defaults[0] = increment_name(defaults[0])
-                                while self._find_proto_name('stack_%s' % (
-                                        defaults[0]), defaults[0]):
+                                while self._find_proto_name('stack_%s' %
+                                                            (defaults[0]),
+                                                            defaults[0]):
                                     defaults[0] = increment_name(defaults[0])
                                 self._new_stack_block(defaults[0])
                     # If we autogenerated a stack prototype, we need
@@ -1485,8 +1541,9 @@ before making changes to your Turtle Blocks program'))
                     elif blk.name == 'storein':
                         defaults = [_('my box'), 100]
                         defaults[0] = increment_name(defaults[0])
-                        while self._find_proto_name('storein_%s' % (
-                                defaults[0]), defaults[0]):
+                        while self._find_proto_name('storein_%s' %
+                                                    (defaults[0]),
+                                                    defaults[0]):
                             defaults[0] = increment_name(defaults[0])
                         self._new_storein_block(defaults[0])
                         self._new_box_block(defaults[0])
@@ -1534,9 +1591,8 @@ before making changes to your Turtle Blocks program'))
             alert.add_button(gtk.RESPONSE_CANCEL, _('Cancel'),
                              cancel_icon)
             stop_icon = Icon(icon_name='dialog-ok')
-            alert.add_button(gtk.RESPONSE_OK,
-                             '%s %s' % (_('Overwrite stack'), name),
-                             stop_icon)
+            alert.add_button(gtk.RESPONSE_OK, '%s %s' %
+                             (_('Overwrite stack'), name), stop_icon)
 
             self.activity.add_alert(alert)
             alert.connect('response',
@@ -1574,9 +1630,8 @@ before making changes to your Turtle Blocks program'))
             alert.add_button(gtk.RESPONSE_CANCEL, _('Cancel'),
                              cancel_icon)
             stop_icon = Icon(icon_name='dialog-ok')
-            alert.add_button(gtk.RESPONSE_OK,
-                             '%s %s' % (_('Delete stack'), blk.spr.labels[0]),
-                             stop_icon)
+            alert.add_button(gtk.RESPONSE_OK, '%s %s' %
+                             (_('Delete stack'), blk.spr.labels[0]), stop_icon)
 
             self.activity.add_alert(alert)
             alert.connect('response', self._delete_stack_dialog_response_cb,
@@ -1605,8 +1660,8 @@ before making changes to your Turtle Blocks program'))
                 try:
                     os.remove(macro_path)
                 except Exception, e:
-                    error_debug('Could not remove macro %s: %s' % (
-                            macro_path, e))
+                    error_debug('Could not remove macro %s: %s' %
+                                (macro_path, e))
                     return
                 i = palette_names.index('myblocks')
                 palette_blocks[i].remove(blk.name)
@@ -1650,10 +1705,11 @@ before making changes to your Turtle Blocks program'))
                         self._select_category(self.selectors[i])
                     else:
                         if self.selected_palette is not None and \
-                           not self.activity.has_toolbarbox:
+                                not self.activity.has_toolbarbox:
                             self.activity.palette_buttons[
                                 self.selected_palette].set_icon(
-                                palette_names[self.selected_palette] + 'off')
+                                    palette_names[self.selected_palette] +
+                                    'off')
                         else:
                             # select radio button associated with this palette
                             self.activity.palette_buttons[i].set_active(True)
@@ -1879,9 +1935,9 @@ before making changes to your Turtle Blocks program'))
                gblk.connections[1].name == 'string':
                 if gblk.name == 'hat':
                     self._remove_palette_blocks(
-                        'stack_%s' % gblk.connections[1].values[0],
+                        'stack_%s' % (gblk.connections[1].values[0]),
                         'basic-style-1arg')
-                else:  # Only if it was the only one 
+                else:  # Only if it was the only one
                     remove = True
                     similars = self.block_list.get_similar_blocks(
                         'block', 'storein')
@@ -1971,13 +2027,14 @@ before making changes to your Turtle Blocks program'))
                 blk.type = 'deleted'
                 blk.spr.hide()
         self.trash_stack = []
-        self.show_toolbar_palette(palette_names.index('trash'), regenerate=True)
+        self.show_toolbar_palette(palette_names.index('trash'),
+                                  regenerate=True)
 
     def _in_the_trash(self, x, y):
         ''' Is x, y over a palette? '''
         if self.selected_palette is not None and \
-           self.palette_sprs[self.selected_palette][self.orientation].hit(
-            (x, y)):
+                self.palette_sprs[self.selected_palette][self.orientation]\
+                .hit((x, y)):
             return True
         return False
 
@@ -2091,7 +2148,7 @@ before making changes to your Turtle Blocks program'))
         x_pos = x - 20
         y_pos = y - 20
         if name in content_blocks:
-            if defaults == None:
+            if defaults is None:
                 defaults = default_values[name]
             newblk = Block(self.block_list, self.sprite_list, name, x_pos,
                            y_pos, 'block', defaults, self.block_scale)
@@ -2118,7 +2175,7 @@ before making changes to your Turtle Blocks program'))
         self.drag_pos = 20, 20
         newblk.connections = [None] * len(newblk.docks)
         if newblk.name in default_values:
-            if defaults == None:
+            if defaults is None:
                 defaults = default_values[newblk.name]
             for i, argvalue in enumerate(defaults):
                 # skip the first dock position since it is always a connector
@@ -2129,11 +2186,11 @@ before making changes to your Turtle Blocks program'))
                 if argname == 'media':
                     argname = 'journal'
                 elif argname == 'number' and \
-                     isinstance(argvalue, (str, unicode)):
+                        isinstance(argvalue, (str, unicode)):
                     argname = 'string'
                 elif argname == 'string' and \
-                     name in block_styles['number-style-1strarg'] and \
-                     isinstance(argvalue, (float, int)):
+                        name in block_styles['number-style-1strarg'] and \
+                        isinstance(argvalue, (float, int)):
                     argname = 'number'
                 elif argname == 'bool':
                     argname = argvalue
@@ -2220,8 +2277,8 @@ before making changes to your Turtle Blocks program'))
                         else:
                             cons.append(blocks[c])
                 else:
-                    debug_output("connection error %s" % (
-                            str(self._process_block_data[i])),
+                    debug_output("connection error %s" %
+                                 (str(self._process_block_data[i])),
                                  self.running_sugar)
                     cons.append(None)
             elif blk.connections == 'check':
@@ -2238,7 +2295,8 @@ before making changes to your Turtle Blocks program'))
                         c = self._process_block_data[i][4][0]
                         cons[0] = blocks[self._process_block_data[c][4][0]]
                         c0 = self._process_block_data[c][4][0]
-                        for j, cj in enumerate(self._process_block_data[c0][4]):
+                        for j, cj \
+                                in enumerate(self._process_block_data[c0][4]):
                             if cj == c:
                                 blocks[c0].connections[j] = blk
                         if c < i:
@@ -2253,7 +2311,8 @@ before making changes to your Turtle Blocks program'))
                         c = self._process_block_data[i][4][0]
                         cons[0] = blocks[self._process_block_data[c][4][0]]
                         c0 = self._process_block_data[c][4][0]
-                        for j, cj in enumerate(self._process_block_data[c0][4]):
+                        for j, cj \
+                                in enumerate(self._process_block_data[c0][4]):
                             if cj == c:
                                 blocks[c0].connections[j] = blk
                         if c < i:
@@ -2264,9 +2323,8 @@ before making changes to your Turtle Blocks program'))
                             debug_output("Warning: dock to the future",
                                          self.running_sugar)
             else:
-                debug_output("Warning: unknown connection state %s" % \
-                                  (str(blk.connections)),
-                             self.running_sugar)
+                debug_output("Warning: unknown connection state %s" %
+                             (str(blk.connections)), self.running_sugar)
             blk.connections = cons[:]
 
         # Block sizes and shapes may have changed.
@@ -2344,8 +2402,8 @@ before making changes to your Turtle Blocks program'))
             self.lc.find_value_blocks()
         self.lc.update_values = True
         if (dx * dx) + (dy * dy) > ((w * w) + (h * h)) / 6:
-            self.drag_turtle = ('turn',
-                self.canvas.heading - atan2(dy, dx) / DEGTOR, 0)
+            self.drag_turtle = \
+                ('turn', self.canvas.heading - atan2(dy, dx) / DEGTOR, 0)
         else:
             self.drag_turtle = ('move', x - tx, y - ty)
 
@@ -2360,16 +2418,18 @@ before making changes to your Turtle Blocks program'))
         ''' Share turtle movement and rotation after button up '''
         if self.sharing():
             nick = self.turtle_movement_to_share.get_name()
-            self.send_event("r|%s" % (
-                    data_to_string([nick, round_int(self.canvas.heading)])))
+            self.send_event("r|%s" %
+                            (data_to_string([nick,
+                                             round_int(self.canvas.heading)])))
             if self.canvas.pendown:
                 self.send_event('p|%s' % (data_to_string([nick, False])))
                 put_pen_back_down = True
             else:
                 put_pen_back_down = False
-            self.send_event("x|%s" % (
-                    data_to_string([nick, [round_int(self.canvas.xcor),
-                                           round_int(self.canvas.ycor)]])))
+            self.send_event("x|%s" %
+                            (data_to_string([nick,
+                                             [round_int(self.canvas.xcor),
+                                              round_int(self.canvas.ycor)]])))
             if put_pen_back_down:
                 self.send_event('p|%s' % (data_to_string([nick, True])))
         self.turtle_movement_to_share = None
@@ -2420,8 +2480,8 @@ before making changes to your Turtle Blocks program'))
             else:
                 dx = x - sx - self.selected_turtle.spr.rect.width / 2
                 dy = y - sy - self.selected_turtle.spr.rect.height / 2
-                self.canvas.seth(int(dragx + atan2(dy, dx) / DEGTOR + 5) / \
-                                     10 * 10, share=False)
+                self.canvas.seth(int(dragx + atan2(dy, dx) / DEGTOR + 5) /
+                                 10 * 10, share=False)
                 if self.update_counter % 5:
                     self.lc.update_label_value('heading', self.canvas.heading)
             if self.update_counter % 20:
@@ -2510,9 +2570,10 @@ before making changes to your Turtle Blocks program'))
                         self.timeout_tag[0] = 0
                     except:
                         self.timeout_tag[0] = 0
-        elif spr and hasattr(spr, 'type') and (spr.type == 'selector' or \
-                                               spr.type == 'palette' or \
-                                               spr.type == 'toolbar'):
+        elif spr and hasattr(spr, 'type') and \
+                (spr.type == 'selector' or
+                 spr.type == 'palette' or
+                 spr.type == 'toolbar'):
             if self.timeout_tag[0] == 0 and hasattr(spr, 'name'):
                 self.timeout_tag[0] = self._do_show_popup(spr.name)
                 self.selected_spr = spr
@@ -2596,10 +2657,10 @@ before making changes to your Turtle Blocks program'))
                     self.active_turtle = None
             else:
                 self._move_turtle(
-                    tx - self.canvas.width / 2. + \
-                        self.active_turtle.spr.rect.width / 2.,
-                    self.canvas.height / 2. - ty - \
-                        self.active_turtle.spr.rect.height / 2.)
+                    tx - self.canvas.width / 2. +
+                    self.active_turtle.spr.rect.width / 2.,
+                    self.canvas.height / 2. - ty -
+                    self.active_turtle.spr.rect.height / 2.)
             self.selected_turtle = None
             if self.active_turtle is None:
                 self.canvas.set_turtle(self.default_turtle_name)
@@ -2637,26 +2698,26 @@ before making changes to your Turtle Blocks program'))
         # Find the block we clicked on and process it.
         # Consider a very small move a click (for touch interfaces)
         if self.block_operation == 'click' or \
-           (self.hw in [XO175, XO30, XO4] and \
+           (self.hw in [XO175, XO30, XO4] and
             self.block_operation == 'move' and (
-                abs(self.dx) < MOTION_THRESHOLD and \
+                abs(self.dx) < MOTION_THRESHOLD and
                 abs(self.dy < MOTION_THRESHOLD))):
             self._click_block(x, y)
         elif self.block_operation == 'copying':
             gobject.timeout_add(500, self._unhighlight_drag_group, blk)
 
     def _unhighlight_drag_group(self, blk):
-            self.drag_group = find_group(blk)
-            for gblk in self.drag_group:
-                gblk.unhighlight()
-            self.drag_group = None
+        self.drag_group = find_group(blk)
+        for gblk in self.drag_group:
+            gblk.unhighlight()
+        self.drag_group = None
 
     def remote_turtle(self, name):
         ''' Is this a remote turtle? '''
         if name == self.nick:
             return False
         if hasattr(self, 'remote_turtle_dictionary') and \
-           name in self.remote_turtle_dictionary:
+                name in self.remote_turtle_dictionary:
             return True
         return False
 
@@ -2665,8 +2726,13 @@ before making changes to your Turtle Blocks program'))
         turtle = self.turtles.get_turtle(name)
         if turtle is not None:
             turtle.label_block = Block(self.block_list,
-                                       self.sprite_list, 'turtle-label', 0, 0,
-                                       'label', [], 2.0 / self.scale,
+                                       self.sprite_list,
+                                       'turtle-label',
+                                       0,
+                                       0,
+                                       'label',
+                                       [],
+                                       2.0 / self.scale,
                                        colors)
             turtle.label_block.spr.set_label_attributes(12.0 / self.scale)
             if len(name) > 6:
@@ -2735,7 +2801,7 @@ before making changes to your Turtle Blocks program'))
             self._text_entry.grab_focus()
 
         elif blk.name in block_styles['box-style-media'] and \
-             blk.name not in NO_IMPORT:
+                blk.name not in NO_IMPORT:
             self._import_from_journal(self.selected_blk)
             if blk.name == 'journal' and self.running_sugar:
                 self._load_description_block(blk)
@@ -2844,8 +2910,8 @@ before making changes to your Turtle Blocks program'))
                     gblk.spr.move_relative((0, dy))
                 blk.connections.append(blk.connections[n - 1])
                 argname = blk.docks[n - 1][0]
-                argvalue = default_values[blk.name][len(
-                        default_values[blk.name]) - 1]
+                argvalue = default_values[blk.name][
+                    len(default_values[blk.name]) - 1]
                 argblk = Block(self.block_list, self.sprite_list, argname,
                                0, 0, 'block', [argvalue], self.block_scale)
                 argdock = argblk.docks[0]
@@ -2902,7 +2968,7 @@ before making changes to your Turtle Blocks program'))
             if gblk not in group:
                 gblk.spr.move_relative((0, dy * blk.scale))
         if blk.name in block_styles['compare-style'] or \
-           blk.name in block_styles['compare-porch-style']:
+                blk.name in block_styles['compare-porch-style']:
             for gblk in find_group(blk):
                 gblk.spr.move_relative((0, -dy * blk.scale))
 
@@ -2940,7 +3006,7 @@ before making changes to your Turtle Blocks program'))
                         if gblk not in group:
                             gblk.spr.move_relative((0, dy * blk.scale))
                     if blk.name in block_styles['compare-style'] or \
-                       blk.name in block_styles['compare-porch-style']:
+                            blk.name in block_styles['compare-porch-style']:
                         for gblk in find_group(blk):
                             gblk.spr.move_relative((0, -dy * blk.scale))
             else:
@@ -2952,7 +3018,7 @@ before making changes to your Turtle Blocks program'))
             # Test for forever block
             if len(self.block_list.get_similar_blocks('block', 'forever')) > 0:
                 debug_output('WARNING: Projects with forever blocks \
-may not terminate.', False)
+ may not terminate.', False)
         if self.status_spr is not None:
             self.status_spr.hide()
         self._autohide_shape = True
@@ -2976,7 +3042,7 @@ may not terminate.', False)
 
     def _snap_to_dock(self):
         ''' Snap a block (selected_block) to the dock of another block
-            (destination_block). '''
+        (destination_block). '''
         selected_block = self.drag_group[0]
         best_destination = None
         d = SNAP_THRESHOLD
@@ -3008,8 +3074,8 @@ may not terminate.', False)
                                     best_destination_dockn):
                 return
             if not journal_check(selected_block, best_destination,
-                                    best_selected_block_dockn,
-                                    best_destination_dockn):
+                                 best_selected_block_dockn,
+                                 best_destination_dockn):
                 return
 
             # Move the selected blocks into the docked position
@@ -3029,11 +3095,11 @@ may not terminate.', False)
                         blk_in_dock.connections[0] = bot
                         bot.connections[-1] = blk_in_dock
                         dx = bot.spr.get_xy()[0] - \
-                             self.drag_group[0].spr.get_xy()[0] + \
-                             bot.docks[-1][2] - blk_in_dock.docks[0][2]
+                            self.drag_group[0].spr.get_xy()[0] + \
+                            bot.docks[-1][2] - blk_in_dock.docks[0][2]
                         dy = bot.spr.get_xy()[1] - \
-                             self.drag_group[0].spr.get_xy()[1] + \
-                             bot.docks[-1][3] - blk_in_dock.docks[0][3]
+                            self.drag_group[0].spr.get_xy()[1] + \
+                            bot.docks[-1][3] - blk_in_dock.docks[0][3]
                         # Move each sprite in the group associated
                         # with the block we are moving.
                         for gblk in drag_group:
@@ -3057,7 +3123,8 @@ may not terminate.', False)
 
             # Are we renaming an action or variable?
             if best_destination.name in ['hat', 'storein'] and \
-               selected_block.name == 'string' and best_destination_dockn == 1:
+                    selected_block.name == 'string' and \
+                    best_destination_dockn == 1:
                 name = selected_block.values[0]
                 if best_destination.name == 'storein':
                     if not self._find_proto_name('storein_%s' % (name), name):
@@ -3073,9 +3140,9 @@ may not terminate.', False)
                         if blk == best_destination:
                             continue
                         if blk.connections is not None and \
-                           blk.connections[1] is not None and \
-                           blk.connections[1].name == 'string':
-                            if blk.connections[1].values[0] == name: 
+                                blk.connections[1] is not None and \
+                                blk.connections[1].name == 'string':
+                            if blk.connections[1].values[0] == name:
                                 unique = False
                     if not unique:
                         while self._find_proto_name('stack_%s' % (name), name):
@@ -3088,10 +3155,13 @@ may not terminate.', False)
             # Some destination blocks expand to accomodate large blocks
             if best_destination.name in block_styles['boolean-style']:
                 if best_destination_dockn == 2 and \
-                   (selected_block.name in block_styles['boolean-style'] or \
-                    selected_block.name in block_styles['compare-style'] or \
-                    selected_block.name in block_styles['compare-porch-style']
-                    ):
+                        (selected_block.name in
+                         block_styles['boolean-style'] or
+                         selected_block.name in
+                         block_styles['compare-style'] or
+                         selected_block.name in
+                         block_styles['compare-porch-style']
+                         ):
                     dy = selected_block.ey - best_destination.ey
                     if selected_block.name in block_styles['boolean-style']:
                         # Even without expanding, boolean blocks are
@@ -3100,15 +3170,19 @@ may not terminate.', False)
                     best_destination.expand_in_y(dy)
                     self._expand_boolean(best_destination, selected_block, dy)
             elif best_destination.name in EXPANDABLE_FLOW:
-                if best_destination.name in block_styles['clamp-style-1arg'] or\
-                   best_destination.name in block_styles['clamp-style-boolean']:
+                if best_destination.name in \
+                        block_styles['clamp-style-1arg'] or \
+                        best_destination.name in \
+                        block_styles['clamp-style-boolean']:
                     if best_destination_dockn == 2:
-                        self._resize_clamp(best_destination, self.drag_group[0])
+                        self._resize_clamp(best_destination,
+                                           self.drag_group[0])
                 elif best_destination.name in block_styles['clamp-style'] or \
-                     best_destination.name in block_styles[
-                    'clamp-style-collapsible']:
+                        best_destination.name in \
+                        block_styles['clamp-style-collapsible']:
                     if best_destination_dockn == 1:
-                        self._resize_clamp(best_destination, self.drag_group[0])
+                        self._resize_clamp(best_destination,
+                                           self.drag_group[0])
                 elif best_destination.name in block_styles['clamp-style-else']:
                     if best_destination_dockn == 2:
                         self._resize_clamp(
@@ -3117,7 +3191,7 @@ may not terminate.', False)
                         self._resize_clamp(
                             best_destination, self.drag_group[0], dockn=3)
             elif best_destination.name in expandable_blocks and \
-                 best_destination_dockn == 1:
+                    best_destination_dockn == 1:
                 dy = 0
                 if (selected_block.name in expandable_blocks or
                     selected_block.name in block_styles[
@@ -3201,11 +3275,11 @@ may not terminate.', False)
                 self._cascade_expandable(blk2)
         elif c is not None and blk2.name in EXPANDABLE_FLOW:
             if blk2.name in block_styles['clamp-style-1arg'] or\
-               blk2.name in block_styles['clamp-style-boolean']:
+                    blk2.name in block_styles['clamp-style-boolean']:
                 if c == 2:
                     self._resize_clamp(blk2, None, c)
             elif blk2.name in block_styles['clamp-style'] or \
-                 blk2.name in block_styles['clamp-style-collapsible']:
+                    blk2.name in block_styles['clamp-style-collapsible']:
                 if c == 1:
                     self._resize_clamp(blk2, None)
             elif blk2.name in block_styles['clamp-style-else']:
@@ -3292,7 +3366,8 @@ may not terminate.', False)
         _blk = blk.connections[0]
         dblk = find_blk_below(_blk, 'description')
         # Autoupdate the block if it is empty
-        if dblk != None and (len(dblk.values) == 0 or dblk.values[0] is None):
+        if dblk is not None and \
+                (len(dblk.values) == 0 or dblk.values[0] is None):
             self._update_media_icon(dblk, None, blk.values[0])
 
     def _update_media_blk(self, dsobject):
@@ -3372,7 +3447,7 @@ may not terminate.', False)
                 self._align_to_grid()
 
         elif self.selected_blk is not None and \
-             self.selected_blk.name != 'proto':
+                self.selected_blk.name != 'proto':
             self._process_keyboard_commands(keyname, block_flag=True)
 
         elif self.turtles.spr_to_turtle(self.selected_spr) is not None:
@@ -3414,13 +3489,13 @@ may not terminate.', False)
                         return True
                     block.unhighlight()
                     block = self.block_list.get_next_block_of_same_type(
-                                block)
+                        block)
                     if block is not None:
                         self.selected_spr = block.spr
                         block.highlight()
                 else:
                     self._jog_block(blk, mov_dict[keyname][0],
-                                         mov_dict[keyname][1])
+                                    mov_dict[keyname][1])
             elif not block_flag:
                 self._jog_turtle(mov_dict[keyname][0], mov_dict[keyname][1])
             # Always exit fullscreen mode if applicable
@@ -3558,7 +3633,8 @@ may not terminate.', False)
         id = None
         self.python_code = None
         if fname is None:
-            fname, self.py_load_save_folder = get_load_name('.py',
+            fname, self.py_load_save_folder = get_load_name(
+                '.py',
                 self.py_load_save_folder)
         if fname is None:
             return id
@@ -3678,9 +3754,8 @@ may not terminate.', False)
             saved_project_data = f.read()
             f.close()
         except:
-            debug_output("problem loading saved project data from %s" % \
-                              (self._loaded_project),
-                         self.running_sugar)
+            debug_output("problem loading saved project data from %s" %
+                         (self._loaded_project), self.running_sugar)
             saved_project_data = ""
         current_project_data = data_to_string(self.assemble_data_to_save())
 
@@ -3697,17 +3772,18 @@ may not terminate.', False)
 
     def load_file_from_chooser(self, create_new_project=True):
         ''' Load a project from file chooser '''
-        _file_name, self.load_save_folder = get_load_name('.t[a-b]',
-                                                     self.load_save_folder)
-        if _file_name is None:
+        file_name, self.load_save_folder = get_load_name(
+            '.t[a-b]',
+            self.load_save_folder)
+        if file_name is None:
             return
-        if not _file_name.endswith(SUFFIX):
-            _file_name = _file_name + SUFFIX[1]
-        self.load_files(_file_name, create_new_project)
+        if not file_name.endswith(SUFFIX):
+            file_name = file_name + SUFFIX[1]
+        self.load_files(file_name, create_new_project)
         if create_new_project:
-            self.save_file_name = os.path.basename(_file_name)
+            self.save_file_name = os.path.basename(file_name)
         if self.running_sugar:
-            self.activity.metadata['title'] = os.path.split(_file_name)[1]
+            self.activity.metadata['title'] = os.path.split(file_name)[1]
 
     def _found_a_turtle(self, blk):
         ''' Either [-1, 'turtle', ...] or [-1, ['turtle', key], ...] '''
@@ -3785,7 +3861,7 @@ may not terminate.', False)
                 btype = 'hat'
                 self._process_block_data[b[0]] = [
                     b[0], b[1], b[2], b[3], [b[4][0], i, b[4][1]]]
-        elif btype  == 'hat':
+        elif btype == 'hat':
             if b[4][1] < len(self._process_block_data):
                 i = b[4][1]
                 name = self._process_block_data[i][1][1]
@@ -3803,7 +3879,7 @@ may not terminate.', False)
                     self._extra_block_data[i] = [dblk[0], (dblk[1][0], name),
                                                  dblk[2], dblk[3], dblk[4]]
             self._new_stack_block(name)
-        elif btype  == 'storein':
+        elif btype == 'storein':
             if b[4][1] < len(self._process_block_data):
                 i = b[4][1]
                 name = self._process_block_data[i][1][1]
@@ -3841,8 +3917,9 @@ may not terminate.', False)
         # If it was an unknown block type, we need to match the number
         # of dock items. TODO: Try to infer the dock type from connections
         if blk.unknown and len(b[4]) > len(blk.docks):
-            debug_output('%s: dock mismatch %d > %d' % (
-                    btype, len(b[4]), len(blk.docks)), self.running_sugar)
+            debug_output('%s: dock mismatch %d > %d' %
+                         (btype, len(b[4]), len(blk.docks)),
+                         self.running_sugar)
             for i in range(len(b[4]) - len(blk.docks)):
                 blk.docks.append(['unavailable', True, 0, 0])
 
@@ -3866,7 +3943,7 @@ may not terminate.', False)
                             dsobject = datastore.get(value)
                         except:  # Should be IOError, but dbus error is raised
                             dsobject = None
-                            debug_output("couldn't get dsobject %s" % value,
+                            debug_output("couldn't get dsobject %s" % (value),
                                          self.running_sugar)
                         if dsobject is not None:
                             self.load_python_code_from_journal(dsobject, blk)
@@ -3914,19 +3991,19 @@ may not terminate.', False)
                     try:
                         w, h, = calc_image_size(blk.spr)
                         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
-                                     blk.values[0], w, h)
+                            blk.values[0], w, h)
                         x, y = self._calc_image_offset('', blk.spr)
                         blk.set_image(pixbuf, x, y)
                     except:
-                        debug_output("Couldn't open dsobject (%s)" % \
-                              (blk.values[0]), self.running_sugar)
+                        debug_output("Couldn't open dsobject (%s)" %
+                                     (blk.values[0]), self.running_sugar)
                         self._block_skin('journaloff', blk)
             else:
                 if not movie_media_type(blk.values[0][-4:]):
                     try:
                         w, h, = calc_image_size(blk.spr)
                         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
-                                     blk.values[0], w, h)
+                            blk.values[0], w, h)
                         x, y = self._calc_image_offset('', blk.spr)
                         blk.set_image(pixbuf, x, y)
                     except:
@@ -3935,9 +4012,11 @@ may not terminate.', False)
                     self._block_skin('journalon', blk)
             blk.spr.set_label(' ')
             blk.resize()
-        elif btype in EXPANDABLE or btype in expandable_blocks or \
-             btype in EXPANDABLE_FLOW or btype in EXPANDABLE_ARGS or \
-             btype == 'nop':
+        elif btype in EXPANDABLE or \
+                btype in expandable_blocks or \
+                btype in EXPANDABLE_FLOW or \
+                btype in EXPANDABLE_ARGS or \
+                btype == 'nop':
             if btype == 'vspace' or btype in expandable_blocks:
                 if value is not None:
                     blk.expand_in_y(value)
@@ -3954,12 +4033,16 @@ may not terminate.', False)
             elif btype == 'templatelist' or btype == 'list':
                 for i in range(len(b[4]) - 4):
                     blk.add_arg()
-            elif btype == 'myfunc2arg' or btype == 'myfunc3arg' or\
-                 btype == 'userdefined2args' or btype == 'userdefined3args' or\
-                 btype == 'loadblock2arg' or btype == 'loadblock3arg':
+            elif btype == 'myfunc2arg' or \
+                    btype == 'myfunc3arg' or \
+                    btype == 'userdefined2args' or \
+                    btype == 'userdefined3args' or\
+                    btype == 'loadblock2arg' or \
+                    btype == 'loadblock3arg':
                 blk.add_arg()
-            if btype == 'myfunc3arg' or btype == 'userdefined3args' or \
-               btype == 'loadblock3arg':
+            if btype == 'myfunc3arg' or \
+                    btype == 'userdefined3args' or \
+                    btype == 'loadblock3arg':
                 blk.add_arg(False)
             if btype in PYTHON_SKIN:
                 if self.nop == 'pythonloaded':
@@ -4008,7 +4091,7 @@ may not terminate.', False)
         if file_name is None:
             return
         if not file_name.endswith(SUFFIX):
-            file_name = file_name +  SUFFIX[1]
+            file_name = file_name + SUFFIX[1]
         data_to_file(self.assemble_data_to_save(), file_name)
         self.save_file_name = os.path.basename(file_name)
         if not self.running_sugar:
@@ -4035,10 +4118,10 @@ may not terminate.', False)
                 else:
                     name = (blk.name)
             elif blk.name in block_styles['basic-style-var-arg'] and \
-                 len(blk.values) > 0:
+                    len(blk.values) > 0:
                 name = (blk.name, blk.values[0])
             elif blk.name in EXPANDABLE or blk.name in expandable_blocks or \
-                 blk.name in EXPANDABLE_ARGS or blk.name in EXPANDABLE_FLOW:
+                    blk.name in EXPANDABLE_ARGS or blk.name in EXPANDABLE_FLOW:
                 ex, ey, ey2 = blk.get_expand_x_y()
                 if blk.name in block_styles['clamp-style-else']:
                     name = (blk.name, (ey, ey2))
@@ -4070,10 +4153,12 @@ may not terminate.', False)
                     # Save default turtle as 'Yertle'
                     if turtle == self.nick:
                         turtle = DEFAULT_TURTLE
-                    data.append((-1, ['turtle', turtle],
-                                   self.canvas.xcor, self.canvas.ycor,
-                                   self.canvas.heading, self.canvas.color,
-                                   self.canvas.shade, self.canvas.pensize))
+                    data.append(
+                        (-1,
+                         ['turtle', turtle],
+                         self.canvas.xcor, self.canvas.ycor,
+                         self.canvas.heading, self.canvas.color,
+                         self.canvas.shade, self.canvas.pensize))
         return data
 
     def display_coordinates(self, clear=False):
@@ -4094,7 +4179,7 @@ may not terminate.', False)
                 else:
                     formatting = '(%0.2f, %0.2f) %0.2f'
                 self.activity.coordinates_label.set_text(
-                        formatting % (x, y, h))
+                    formatting % (x, y, h))
                 self.activity.coordinates_label.show()
             elif self.interactive_mode:
                 if int(x) == x and int(y) == y and int(h) == h:
@@ -4139,8 +4224,10 @@ may not terminate.', False)
         else:
             # Adjust vertical position based on scrolled window adjustment
             if self.running_sugar:
-                self.status_spr.move((0, self.height - 200 + \
-                    self.activity.sw.get_vadjustment().get_value()))
+                self.status_spr.move(
+                    (0,
+                     self.height - 200 +
+                     self.activity.sw.get_vadjustment().get_value()))
             elif self.interactive_mode:
                 self.status_spr.move((0, self.height - 100))
 
@@ -4163,7 +4250,7 @@ may not terminate.', False)
         else:
             ta_file = file_name
             image_file = file_name[0:-3] + '.png'
-        
+
         data_to_file(self.assemble_data_to_save(), ta_file)
         save_picture(self.canvas, image_file)
         return ta_file, image_file
@@ -4403,7 +4490,7 @@ may not terminate.', False)
                           logo_command='box',
                           help_string=_('named variable (numeric value)'))
         self.lc.def_prim('box', 1,
-                             lambda self, x: primitive_dictionary['box'](x))
+                         lambda self, x: primitive_dictionary['box'](x))
 
         # Regenerate the palette, which will now include the new block.
         self.show_toolbar_palette(palette_name_to_index('blocks'),
@@ -4431,9 +4518,10 @@ may not terminate.', False)
                           default=[name, 100],
                           help_string=_('stores numeric value in named \
 variable'))
-        self.lc.def_prim('storeinbox', 2,
-                         lambda self, x, y: primitive_dictionary['setbox'](
-                'box3', x, y))
+        self.lc.def_prim(
+            'storeinbox',
+            2,
+            lambda self, x, y: primitive_dictionary['setbox']('box3', x, y))
 
         # Regenerate the palette, which will now include the new block.
         self.show_toolbar_palette(palette_name_to_index('blocks'),
@@ -4474,7 +4562,7 @@ variable'))
             self.lc.update_label_value('box', val, label=x)
         else:
             self.lc.boxes[name] = val
-            self.lc.update_label_value(name, val)            
+            self.lc.update_label_value(name, val)
 
     def dock_dx_dy(self, block1, dock1n, block2, dock2n):
         ''' Find the distance between the dock points of two blocks. '''
@@ -4499,18 +4587,18 @@ variable'))
                block1.connections[dock1n] is not None:
                 self.inserting_block_mid_stack = True
             elif block1.connections is not None and \
-               block1.name in EXPANDABLE_FLOW and \
-               block1.connections[dock1n] is not None:
+                    block1.name in EXPANDABLE_FLOW and \
+                    block1.connections[dock1n] is not None:
                 self.inserting_block_mid_stack = True
         # Only number blocks can be docked when the dock is not empty
         elif d2type is not 'number' or dock2n is not 0:
             if block1.connections is not None and \
-               dock1n < len(block1.connections) and \
-               block1.connections[dock1n] is not None:
+                    dock1n < len(block1.connections) and \
+                    block1.connections[dock1n] is not None:
                 return NO_DOCK
             if block2.connections is not None and \
-               dock2n < len(block2.connections) and \
-               block2.connections[dock2n] is not None:
+                    dock2n < len(block2.connections) and \
+                    block2.connections[dock2n] is not None:
                 return NO_DOCK
         # Only some dock types are interchangeable
         if d1type != d2type:
